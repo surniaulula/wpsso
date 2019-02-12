@@ -363,7 +363,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 				if ( count( $og_images ) > 0 ) {
 
-					$og_single_image = reset( $og_images );
+					$og_single_image     = reset( $og_images );
 					$og_single_image_url = SucomUtil::get_mt_media_url( $og_single_image );
 
 					$mt_tc[ 'twitter:image' ] = $og_single_image_url;
@@ -374,12 +374,15 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
+
 				if ( ! empty( $mt_tc[ 'twitter:card' ] ) ) {
+
 					if ( ! empty( $mt_tc[ 'twitter:image' ] ) ) {
 						$this->p->debug->log( $mt_tc[ 'twitter:card' ] . ' card: image ' . $mt_tc[ 'twitter:image' ] );
 					} else {
 						$this->p->debug->log( $mt_tc[ 'twitter:card' ] . ' card: no image defined' );
 					}
+
 				} else {
 					$this->p->debug->log( 'no twitter card type defined' );
 				}
@@ -400,10 +403,13 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			$card_type = 'summary';
 
 			if ( is_string( $mixed ) ) {
+
 				if ( ! empty( $this->p->options[ 'tc_type_' . $mixed ] ) ) {
 					$card_type = $this->p->options[ 'tc_type_' . $mixed ];
 				}
+
 			} elseif ( is_array( $mixed ) ) {
+
 				if ( ! empty( $mixed[ 'is_post' ] ) ) {
 					$card_type = $this->p->options[ 'tc_type_post' ];
 				}

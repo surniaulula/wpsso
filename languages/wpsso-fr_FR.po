@@ -3266,8 +3266,7 @@ msgid "The maximum number of images to include in the Schema meta tags and JSON-
 msgstr "Le nombre maximum d'images à inclure dans les balises méta et balisage JSON-LD de Schéma."
 
 #: lib/messages.php:241
-#, fuzzy
-msgid "A customized image ID to include first in the Google / Schema meta tags and JSON-LD markup before any featured, attached, or content images."
+msgid "A customized image ID to include first in the Google / Schema meta tags and JSON-LD markup, before any featured, attached, or content images."
 msgstr "Un ID d'image personnalisé à inclure en premier dans les balises méta Google / Schéma et balisage JSON-LD, avant l'image à la Une, les images attachées, ou de contenu."
 
 #: lib/messages.php:247
@@ -3275,14 +3274,12 @@ msgid "A customized image URL (instead of an image ID) to include first in the G
 msgstr "Un URL d'image personnalisé (au lieu d'un ID d'image) à inclure en premier dans les balises méta Google / Schéma et balisage JSON-LD."
 
 #: lib/messages.php:254
-#, fuzzy
-msgid "A customized image ID for the Twitter card image."
-msgstr "Un URL personnalisé pour la balise d'entête \"%1$s\"."
+msgid "A customized image ID for the Twitter Card image."
+msgstr "Un ID d'image personnalisé pour l'image Twitter Card."
 
 #: lib/messages.php:261
-#, fuzzy
-msgid "A customized image URL (instead of an image ID) for the Twitter card image."
-msgstr "Un URL d'image personnalisé (au lieu d'un ID d'image) à inclure en premier, avant l'image à la Une, les images attachées, ou de contenue."
+msgid "A customized image URL (instead of an image ID) for the Twitter Card image."
+msgstr "Un URL d'image personnalisé (au lieu d'un ID d'image) pour l'image Twitter Card."
 
 #: lib/messages.php:282
 msgid "A customized Facebook / Open Graph type for this content."

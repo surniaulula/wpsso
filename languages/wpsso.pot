@@ -6563,38 +6563,38 @@ msgstr ""
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: wpsso.php:393
+#: wpsso.php:392
 msgid ""
 "Database option table row \"%1$s\" for plugin settings was found and "
 "converted to \"%2$s\"."
 msgstr ""
 
-#: wpsso.php:413
+#: wpsso.php:412
 msgid ""
 "Database site option table row \"%1$s\" for plugin settings was found and "
 "converted to \"%2$s\"."
 msgstr ""
 
-#: wpsso.php:446
+#: wpsso.php:445
 msgid ""
 "WP debug logging mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:464
+#: wpsso.php:463
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: wpsso.php:474
+#: wpsso.php:473
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:475
+#: wpsso.php:474
 msgid "Please disable debug mode when debugging is complete."
 msgstr ""
 
@@ -6609,7 +6609,8 @@ msgstr ""
 #. Description of the plugin/theme
 msgid ""
 "WPSSO Core makes sure your content looks great on all social and search "
-"sites - no matter how it's crawled, shared, re-shared, posted, or embedded!"
+"sites - no matter how URLs are crawled, shared, re-shared, posted, or "
+"embedded!"
 msgstr ""
 
 #. Author of the plugin/theme
