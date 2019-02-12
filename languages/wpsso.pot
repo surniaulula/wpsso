@@ -1243,7 +1243,8 @@ msgstr ""
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core makes sure your content looks great on all social and search "
-"sites - no matter how it's crawled, shared, re-shared, posted, or embedded!"
+"sites - no matter how URLs are crawled, shared, re-shared, posted, or "
+"embedded!"
 msgstr ""
 
 #: lib/gettext-config.php:36

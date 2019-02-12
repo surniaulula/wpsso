@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.23.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-02-11 11:35-0800\n"
-"PO-Revision-Date: 2019-02-11 11:35-0800\n"
+"POT-Creation-Date: 2019-02-12 06:47-0800\n"
+"PO-Revision-Date: 2019-02-12 06:48-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1173,8 +1173,8 @@ msgstr "Outils"
 
 #: lib/gettext-config.php:35
 msgctxt "plugin description"
-msgid "WPSSO Core makes sure your content looks great on all social and search sites - no matter how it's crawled, shared, re-shared, posted, or embedded!"
-msgstr "WPSSO Core veille à ce que votre contenu ait une belle apparence sur tous les sites sociaux et de recherche, quelle que soit la façon qu'il est partagé, re-partagé, publié ou intégré!"
+msgid "WPSSO Core makes sure your content looks great on all social and search sites - no matter how URLs are crawled, shared, re-shared, posted, or embedded!"
+msgstr "WPSSO Core veille à ce que votre contenu ait fière allure sur tous les sites de recherche et réseaux sociaux, quel que soit la façon qu'un URL est partagé, re-partagé, publié ou intégré!"
 
 #: lib/gettext-config.php:36
 msgctxt "plugin description"
@@ -5757,28 +5757,28 @@ msgstr "Valider le balisage AMP"
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr "La validation du jeton nonce pour le formulaire soumis a échoué (mise à jour ignorée)."
 
-#: wpsso.php:393
+#: wpsso.php:392
 msgid "Database option table row \"%1$s\" for plugin settings was found and converted to \"%2$s\"."
 msgstr "La ligne \"%1$s\" dans la table d'option de base de données pour les réglages d'extension a été trouvée et convertie a \"%2$s\"."
 
-#: wpsso.php:413
+#: wpsso.php:412
 msgid "Database site option table row \"%1$s\" for plugin settings was found and converted to \"%2$s\"."
 msgstr "La ligne \"%1$s\" dans la table d'option site de base de données pour les réglages d'extension a été trouvée et convertie a \"%2$s\"."
 
-#: wpsso.php:446
+#: wpsso.php:445
 msgid "WP debug logging mode is active &mdash; debug messages are being sent to the WordPress debug log."
 msgstr "Le mode débogage WP est actif &mdash; des messages de débogage sont envoyés dans le fichier de débogage WordPress."
 
-#: wpsso.php:464
+#: wpsso.php:463
 msgid "HTML debug mode is active &mdash; debug messages are being added to webpages as hidden HTML comments."
 msgstr "Le mode de débogage HTML est actif &mdash; des messages de débogage sont ajoutés aux pages Web en commentaires HTML masqués."
 
 #. translators: %s is the short plugin name
-#: wpsso.php:474
+#: wpsso.php:473
 msgid "Debug mode disables some %s caching features, which degrades performance slightly."
 msgstr "Le mode de débogage désactive certaines fonctionnalités de mise en cache de %s, ce qui dégrade la performance légèrement."
 
-#: wpsso.php:475
+#: wpsso.php:474
 msgid "Please disable debug mode when debugging is complete."
 msgstr "SVP désactiver le mode de débogage lorsque le débogage est terminé."
 
@@ -5791,8 +5791,8 @@ msgid "https://wpsso.com/extend/plugins/wpsso/"
 msgstr "https://wpsso.com/extend/plugins/wpsso/"
 
 #. Description of the plugin/theme
-msgid "WPSSO Core makes sure your content looks great on all social and search sites - no matter how it's crawled, shared, re-shared, posted, or embedded!"
-msgstr "WPSSO Core veille à ce que votre contenu ait une belle apparence sur tous les sites sociaux et de recherche, quelle que soit la façon qu'il est partagé, re-partagé, publié ou intégré!"
+msgid "WPSSO Core makes sure your content looks great on all social and search sites - no matter how URLs are crawled, shared, re-shared, posted, or embedded!"
+msgstr "WPSSO Core veille à ce que votre contenu ait fière allure sur tous les sites de recherche et réseaux sociaux, quel que soit la façon qu'un URL est partagé, re-partagé, publié ou intégré!"
 
 #. Author of the plugin/theme
 msgid "JS Morisset"
@@ -5801,3 +5801,7 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
+
+#~ msgctxt "plugin description"
+#~ msgid "WPSSO Core makes sure your content looks great on all social and search sites - no matter how it's crawled, shared, re-shared, posted, or embedded!"
+#~ msgstr "WPSSO Core veille à ce que votre contenu ait une belle apparence sur tous les sites sociaux et de recherche, quelle que soit la façon qu'il est partagé, re-partagé, publié ou intégré!"
