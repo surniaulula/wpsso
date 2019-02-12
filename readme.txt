@@ -14,17 +14,15 @@ Tested Up To: 5.0
 WC Tested Up To: 3.5
 Stable Tag: 4.23.0
 
-WPSSO Core makes sure your content looks great on all social and search sites, no matter how it's crawled, shared, re-shared, posted or embedded!
+WPSSO Core makes sure your content looks great on all social and search sites, no matter how URLs are crawled, shared, re-shared, posted or embedded!
 
 == Description ==
 
 <p style="margin:0;"><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
 
-<h3 class="top">What makes WPSSO Core better?</h3>
+**WPSSO Core makes sure your content looks great on all social and search sites - no matter how URLs are crawled, shared, re-shared, posted, or embedded!**
 
-**Makes sure your content looks great on all social and search sites - no matter how it's crawled, shared, re-shared, posted, or embedded!**
-
-WPSSO Core makes sure that all social crawlers, search crawlers, web browser extensions, mail and messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), and embedded object / iframe content, always get *accurate and complete* information about your webpage content, business, and authors.
+All social crawlers (Facebook, Pinterest, Twitter, LinkedIn, etc.), search crawlers / bots, web browser extensions, mail and messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), and embedded object / iframe content, will receive accurate and complete information about your webpage content, your website / business and its authors.
 
 **Uses your *existing content* for meta tags and Schema markup:**
 
