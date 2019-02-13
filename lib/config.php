@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.23.0',	// Plugin version.
+					'version'     => '4.23.1-dev.1',	// Plugin version.
 					'opt_version' => '630',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -2282,7 +2282,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'music.playlist' => 'https://schema.org/MusicPlaylist',
 								'music.release'  => 'https://schema.org/MusicRelease',
 							),
-							'music.recording'    => 'https://schema.org/MusicRecording ',
+							'music.recording'    => 'https://schema.org/MusicRecording',
 							'painting'           => 'https://schema.org/Painting',
 							'photograph'         => 'https://schema.org/Photograph',
 							'publication.issue'  => 'https://schema.org/PublicationIssue',
@@ -2351,7 +2351,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'audience'             => 'https://schema.org/Audience',
 								'audience.business'    => 'https://schema.org/BusinessAudience',
 								'audience.educational' => 'https://schema.org/EducationalAudience',
-								'audience.medical'     => 'https://health-lifesci.schema.org/MedicalAudience',
+								// 'audience.medical' xref 'https://health-lifesci.schema.org/MedicalAudience'.
 								'audience.people'      => 'https://schema.org/PeopleAudience',
 							),
 							'bed.details'                 => 'https://schema.org/BedDetails',
@@ -2381,18 +2381,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'item.availability'                => 'https://schema.org/ItemAvailability',
 								'item.list.order.type'             => 'https://schema.org/ItemListOrderType',
 								'map.category.type'                => 'https://schema.org/MapCategoryType',
-								'music.album.production.type'      => 'https://schema.org/MusicAlbumProductionType',
-								'music.album.release.type'         => 'https://schema.org/MusicAlbumReleaseType',
-								'music.release.format.type'        => 'https://schema.org/MusicReleaseFormatType',
-								'offer.item.condition'             => 'https://schema.org/OfferItemCondition',
-								'order.status'                     => 'https://schema.org/OrderStatus',
-								'payment.method'                   => 'https://schema.org/PaymentMethod',
-								'payment.status.type'              => 'https://schema.org/PaymentStatusType',
-								'qualitative.value'                => 'https://schema.org/QualitativeValue',
-								'reservation.status.type'          => 'https://schema.org/ReservationStatusType',
-								'restricted.diet'                  => 'https://schema.org/RestrictedDiet',
-								'rsvp.response.type'               => 'https://schema.org/RsvpResponseType',
-								'specialty'                        => array(
+								'medical.enumeration' => array(
+									'medical.enumeration' => 'https://health-lifesci.schema.org/MedicalEnumeration',
+									'medical.audience' => 'https://health-lifesci.schema.org/MedicalAudience',
 									'medical.specialty' => array( 
 										'anesthesia.specialty'           => 'https://health-lifesci.schema.org/Anesthesia',
 										'cardiovascular.specialty'       => 'https://health-lifesci.schema.org/Cardiovascular',
@@ -2439,7 +2430,30 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 										'toxicologic.specialty'          => 'https://health-lifesci.schema.org/Toxicologic',
 										'urologic.specialty'             => 'https://health-lifesci.schema.org/Urologic',
 									),
+									'medicine.system' => array(
+										'ayurvedic.system'            => 'https://health-lifesci.schema.org/Ayurvedic',
+										'chiropractic.system'         => 'https://health-lifesci.schema.org/Chiropractic',
+										'homeopathic.system'          => 'https://health-lifesci.schema.org/Homeopathic',
+										'medicine.system'             => 'https://health-lifesci.schema.org/MedicineSystem',
+										'osteopathic.system'          => 'https://health-lifesci.schema.org/Osteopathic',
+										'traditional.chinese.system'  => 'https://health-lifesci.schema.org/TraditionalChinese',
+										'western.conventional.system' => 'https://health-lifesci.schema.org/WesternConventional',
+									),
+								),
+								'music.album.production.type'      => 'https://schema.org/MusicAlbumProductionType',
+								'music.album.release.type'         => 'https://schema.org/MusicAlbumReleaseType',
+								'music.release.format.type'        => 'https://schema.org/MusicReleaseFormatType',
+								'offer.item.condition'             => 'https://schema.org/OfferItemCondition',
+								'order.status'                     => 'https://schema.org/OrderStatus',
+								'payment.method'                   => 'https://schema.org/PaymentMethod',
+								'payment.status.type'              => 'https://schema.org/PaymentStatusType',
+								'qualitative.value'                => 'https://schema.org/QualitativeValue',
+								'reservation.status.type'          => 'https://schema.org/ReservationStatusType',
+								'restricted.diet'                  => 'https://schema.org/RestrictedDiet',
+								'rsvp.response.type'               => 'https://schema.org/RsvpResponseType',
+								'specialty'                        => array(
 									'specialty' => 'https://schema.org/Specialty',
+									// 'medical.specialty' xref 'https://health-lifesci.schema.org/MedicalSpecialty'.
 								),
 								'warranty.scope' => 'https://schema.org/WarrantyScope',
 							),
@@ -2452,14 +2466,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'how.to.section'  => 'https://schema.org/HowToSection',
 								'how.to.step'     => 'https://schema.org/HowToStep',
 								'item.list'       => 'https://schema.org/ItemList',
-								'offer.catalog'   => 'https://schema.org/OfferCatalog ',
+								'offer.catalog'   => 'https://schema.org/OfferCatalog',
 							),
-							'job.posting' => 'https://schema.org/JobPosting',
-							'language'    => 'https://schema.org/Language',
-							'list.item'   => 'https://schema.org/ListItem',
-							'medical.enumeration' => array(
-								'medical.enumeration' => 'https://health-lifesci.schema.org/MedicalEnumeration',
-							),
+							'job.posting'                  => 'https://schema.org/JobPosting',
+							'language'                     => 'https://schema.org/Language',
+							'list.item'                    => 'https://schema.org/ListItem',
 							'menu.item'                    => 'https://schema.org/MenuItem',
 							'offer'                        => 'https://schema.org/Offer',
 							'order'                        => 'https://schema.org/Order',
@@ -2474,8 +2485,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'rating.aggregate' => 'https://schema.org/AggregateRating',
 							),
 							'reservation' => 'https://schema.org/Reservation',
-							'role' => 'https://schema.org/Role',
-							'seat' => 'https://schema.org/Seat',
+							'role'        => 'https://schema.org/Role',
+							'seat'        => 'https://schema.org/Seat',
 							
 							/**
 							 * A service provided by an organization, e.g. delivery service, print services, etc.
@@ -2491,11 +2502,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 									'service.investment.or.deposit' => 'https://schema.org/InvestmentOrDeposit',
 									'service.loan.or.credit'        => 'https://schema.org/LoanOrCredit',
 									'service.payment.card'          => 'https://schema.org/PaymentCard',
-									'service.payment'               => 'https://schema.org/PaymentService ',
+									'service.payment'               => 'https://schema.org/PaymentService',
 								),
 								'service.food'       => 'https://schema.org/FoodService',
 								'service.government' => 'https://schema.org/GovernmentService',
-								'service.taxi'       => 'https://schema.org/TaxiService ',
+								'service.taxi'       => 'https://schema.org/TaxiService',
 							),
 							'service.channel'  => 'https://schema.org/ServiceChannel',
 							'structured.value' => 'https://schema.org/StructuredValue',
@@ -2537,7 +2548,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'government.organization' => 'https://schema.org/GovernmentOrganization',
 							'medical.organization' => array(
 								'dentist.organization'   => 'https://schema.org/Dentist',
-								// xref hospital -> place/local.business/emergency.service/hospital
+								// 'hospital' xref 'https://schema.org/Hospital'.
 								'medical.organization'   => 'https://schema.org/MedicalOrganization',
 								'pharmacy.organization'  => 'https://schema.org/Pharmacy',
 								'physician.organization' => 'https://schema.org/Physician',
@@ -2617,7 +2628,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 									'automotive.business' => 'https://schema.org/AutomotiveBusiness',
 									'gas.station'         => 'https://schema.org/GasStation',
 									'motorcycle.dealer'   => 'https://schema.org/MotorcycleDealer',
-									'motorcycle.repair'   => 'https://schema.org/MotorcycleRepair ',
+									'motorcycle.repair'   => 'https://schema.org/MotorcycleRepair',
 								),
 								'child.care' => 'https://schema.org/ChildCare',
 								'dry.cleaning.or.laundry' => 'https://schema.org/DryCleaningOrLaundry',

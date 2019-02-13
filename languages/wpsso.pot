@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.23.0\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.23.1-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3827,15 +3827,15 @@ msgstr ""
 
 #: lib/messages.php:658 lib/messages.php:2084
 msgid ""
-"Many themes and plugins have badly coded content filters, so this option is "
+"MANY THEMES AND PLUGINS HAVE BADLY CODED CONTENT FILTERS, so this option is "
 "disabled by default."
 msgstr ""
 
 #: lib/messages.php:660 lib/messages.php:2086
 msgid ""
 "If you use shortcodes in your content text, this option should be enabled "
-"&mdash; if you experience webpage layout or performance issues after "
-"enabling this option, determine which theme or plugin is filtering the "
+"&mdash; IF YOU EXPERIENCE WEBPAGE LAYOUT OR PERFORMANCE ISSUES AFTER "
+"ENABLING THIS OPTION, determine which theme or plugin is filtering the "
 "content incorrectly and report the problem to its author(s)."
 msgstr ""
 
@@ -5822,27 +5822,27 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:2561 lib/schema.php:2566
+#: lib/schema.php:2568 lib/schema.php:2573
 msgid "adding schema for %1$s ID %2$s"
 msgstr ""
 
-#: lib/schema.php:3207
+#: lib/schema.php:3215
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:3249
+#: lib/schema.php:3257
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:3256
+#: lib/schema.php:3264
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:3534
+#: lib/schema.php:3542
 msgid "adding schema for place"
 msgstr ""
 

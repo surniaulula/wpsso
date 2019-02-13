@@ -667,6 +667,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		/**
 		 * Add array cross-references for schema sub-types that exist under more than one type.
+		 *
 		 * For example, Thing > Place > LocalBusiness also exists under Thing > Organization > LocalBusiness.
 		 */
 		protected function add_schema_type_xrefs( &$schema_types ) {
@@ -674,10 +675,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$thing =& $schema_types[ 'thing' ];	// Quick ref variable for the 'thing' array.
 
 			/**
+			 * Intangible > Audience
+			 */
+			$thing[ 'intangible' ][ 'audience' ][ 'audience.medical' ] =&
+				$thing[ 'intangible' ][ 'enumeration' ][ 'medical.enumeration' ][ 'medical.audience' ];
+
+			/**
 			 * Intangible > Enumeration
 			 */
-			$thing[ 'intangible' ][ 'enumeration' ][ 'medical.enumeration' ][ 'medical.specialty' ] =&
-				$thing[ 'intangible' ][ 'enumeration' ][ 'specialty' ][ 'medical.specialty' ];
+			$thing[ 'intangible' ][ 'enumeration' ][ 'specialty' ][ 'medical.specialty' ] =&
+				$thing[ 'intangible' ][ 'enumeration' ][ 'medical.enumeration' ][ 'medical.specialty' ];
 
 			/**
 			 * Organization > Local Business
@@ -2846,6 +2853,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						'offer_price_currency' => 'schema_event_offer_currency',
 						'offer_availability'   => 'schema_event_offer_avail',
 					) as $opt_key => $md_pre ) {
+
 						$offer_opts[ $opt_key ] = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_pre . '_' . $key_num );
 					}
 				}
