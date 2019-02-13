@@ -433,7 +433,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None.
 * *Improvements*
-	* Added support for the https://health-lifesci.schema.org/MedicineSystem type and sub-types:
+	* Added support for the https://health-lifesci.schema.org/MedicineSystem type and its sub-types:
 		* https://health-lifesci.schema.org/Ayurvedic
 		* https://health-lifesci.schema.org/Chiropractic
 		* https://health-lifesci.schema.org/Osteopathic
@@ -640,7 +640,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.23.1-dev.1 =
 
-(2019/02/13) Added support for the https://health-lifesci.schema.org/MedicineSystem type and sub-types:
+(2019/02/13) Added support for the https://health-lifesci.schema.org/MedicineSystem type and its sub-types.
 
 = 4.23.0 =
 
