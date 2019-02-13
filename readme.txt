@@ -428,6 +428,22 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.23.1-dev.1 (2019/02/13)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* Added support for the https://health-lifesci.schema.org/MedicineSystem type and sub-types:
+		* https://health-lifesci.schema.org/Ayurvedic
+		* https://health-lifesci.schema.org/Chiropractic
+		* https://health-lifesci.schema.org/Osteopathic
+		* https://health-lifesci.schema.org/TraditionalChinese
+		* https://health-lifesci.schema.org/WesternConventional
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* None.
+
 **Version 4.23.0 (2019/02/11)**
 
 * *New Features*
@@ -621,6 +637,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 
 == Upgrade Notice ==
+
+= 4.23.1-dev.1 =
+
+(2019/02/13) Added support for the https://health-lifesci.schema.org/MedicineSystem type and sub-types:
 
 = 4.23.0 =
 
