@@ -13,7 +13,7 @@
  * Description: WPSSO Core makes sure your content looks great on all social and search sites - no matter how URLs are crawled, shared, re-shared, posted, or embedded!
  * Requires PHP: 5.5
  * Requires At Least: 3.8
- * Tested Up To: 5.0
+ * Tested Up To: 5.1
  * WC Tested Up To: 3.5
  * Version: 4.23.1-dev.1
  *
