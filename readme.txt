@@ -10,7 +10,7 @@ Tags: open graph, rich pins, rich cards, twitter cards, schema, social media, me
 Contributors: jsmoriss
 Requires PHP: 5.5
 Requires At Least: 3.8
-Tested Up To: 5.0
+Tested Up To: 5.1
 WC Tested Up To: 3.5
 Stable Tag: 4.23.0
 
