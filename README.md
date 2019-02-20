@@ -21,13 +21,13 @@
 
 <p><strong>Uses your <em>existing content</em> for meta tags and Schema markup:</strong></p>
 
-<p>There's no need to manually re-enter descriptions, titles, product information, select images / videos, etc. &mdash; WPSSO Core can read your existing content automatically and offers fine-tuning and customization options for just about anything and everything. ;-)</p>
+<p>There's no need to manually select meta tags, re-enter descriptions, titles, product information, or select images / videos, etc. &mdash; WPSSO Core reads your existing content automatically and offers fine-tuning and customization options for just about anything and everything. ;-)</p>
 
-<p>WPSSO Core is language / locale aware, which means you can customize your site information, social page URLs and Knowledge Graph for different languages!</p>
+<p>WPSSO Core is also language / locale aware, which means you can customize your site information, social page URLs and Knowledge Graph for different languages!</p>
 
 <p><strong>Creates <em>accurate and complete</em> meta tags and Schema markup:</strong></p>
 
-<p>WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph SEO, Google Rich Card SEO, Google Merchant SEO, Mobile Web Browsers, Pinterest Rich Pins, Twitter Cards, Weibo and many more &mdash; including complete markup for images, videos, extensive eCommerce product markup, mobile apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content!</p>
+<p>WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph SEO, Google Rich Card SEO, Google Merchant SEO, Mobile Web Browsers, Pinterest Rich Pins, Twitter Cards, Weibo and many more &mdash; including complete markup for images, videos, extensive eCommerce product markup (for WooCommerce and others), mobile apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content!</p>
 
 <p><strong>Includes advanced <em>quality assurance</em> features and options:</strong></p>
 
