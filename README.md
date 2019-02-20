@@ -357,6 +357,8 @@
 
 <p>WPSSO Core offers hundreds of filter hooks to customize its behavior and output, provides extensive developer documentation with examples, includes dozens of 3rd party integration modules in the Pro version, and offers several optional Free and Pro add-ons to extend WPSSO Core's features.</p>
 
+<p><a href="http://coderisk.com/wp/plugin/wpsso/RIPS-kqOXSzraYI"></a></p>
+
 
 <h2>Installation</h2>
 

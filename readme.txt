@@ -302,6 +302,8 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 
 WPSSO Core offers hundreds of filter hooks to customize its behavior and output, provides extensive developer documentation with examples, includes dozens of 3rd party integration modules in the Pro version, and offers several optional Free and Pro add-ons to extend WPSSO Core's features.
 
+[](http://coderisk.com/wp/plugin/wpsso/RIPS-kqOXSzraYI)
+
 == Installation ==
 
 <h3 class="top">Install and Uninstall</h3>
