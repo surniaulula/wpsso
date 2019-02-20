@@ -1,4 +1,4 @@
-=== WPSSO Core - Advanced Meta Tags and Schema Markup for Facebook, Google, Pinterest, Twitter, SEO and More ===
+=== WPSSO Core - Advanced Meta Tags and Schema Markup for Facebook, Google, Pinterest, SEO, Twitter and More ===
 Plugin Name: WPSSO Core [Main Plugin]
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -6,7 +6,7 @@ Domain Path: /languages
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
-Tags: open graph, rich pins, rich cards, twitter cards, schema, social media, meta tags, merchant, seo, yoast seo, woocommerce, facebook, google, pinterest, twitter, linkedin, whatsapp, skype
+Tags: open graph, rich pins, rich cards, twitter cards, schema, seo, social media, meta tags, merchant, yoast seo, woocommerce, facebook, google, pinterest, twitter, linkedin, whatsapp, skype
 Contributors: jsmoriss
 Requires PHP: 5.5
 Requires At Least: 3.8
