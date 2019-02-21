@@ -26,7 +26,7 @@ Provides *accurate and complete* information about your webpage content, website
 
 **Uses your *existing content* for meta tags and Schema markup:**
 
-There's no need to manually select meta tags, re-enter descriptions, titles, product information, or select images / videos, etc. &mdash; WPSSO Core reads your existing content automatically and offers fine-tuning and customization options for just about anything and everything. ;-)
+There's no need to select meta tag names, manually enter descriptions, titles, product information, select images / videos, etc. &mdash; WPSSO Core reads your existing post, page, product, media, recipe, event, forum, and SEO content automatically, and offers fine-tuning and customization options for just about anything and everything. ;-)
 
 WPSSO Core is also language / locale aware, which means you can customize your site information, social page URLs and Knowledge Graph for different languages!
 

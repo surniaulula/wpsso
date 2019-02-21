@@ -21,7 +21,7 @@
 
 <p><strong>Uses your <em>existing content</em> for meta tags and Schema markup:</strong></p>
 
-<p>There's no need to manually select meta tags, re-enter descriptions, titles, product information, or select images / videos, etc. &mdash; WPSSO Core reads your existing content automatically and offers fine-tuning and customization options for just about anything and everything. ;-)</p>
+<p>There's no need to select meta tag names, manually enter descriptions, titles, product information, select images / videos, etc. &mdash; WPSSO Core reads your existing post, page, product, media, recipe, event, forum, and SEO content automatically, and offers fine-tuning and customization options for just about anything and everything. ;-)</p>
 
 <p>WPSSO Core is also language / locale aware, which means you can customize your site information, social page URLs and Knowledge Graph for different languages!</p>
 
