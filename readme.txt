@@ -71,21 +71,21 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 
 * Includes an option to hide the preview of all Pro settings and features. ;-)
 
-* Free add-ons for additional functionality:
+<h3>Free Add-ons for Even More Advanced Functionality</h3>
 
-	* [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
-	* [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/) to manage multiple Organizations.
-	* [WPSSO Place / Location and Local Business Meta](https://wordpress.org/plugins/wpsso-plm/) to manage multiple Locations.
-	* [WPSSO Ratings and Reviews](https://wordpress.org/plugins/wpsso-ratings-and-reviews/) to add ratings in WordPress comments.
-	* [WPSSO REST API](https://wordpress.org/plugins/wpsso-rest-api/) to add meta tags and Schema markup in REST API queries.
-	* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) to add responsive share buttons.
-	* [WPSSO Schema Breadcrumbs Markup](https://wordpress.org/plugins/wpsso-breadcrumbs/) to add Breadcrumbs markup for Google.
-	* [WPSSO Schema JSON-LD Markup](https://wordpress.org/plugins/wpsso-schema-json-ld/) to add JSON-LD in post and archive pages.
-	* [WPSSO Social Sharing Buttons](https://wordpress.org/plugins/wpsso-ssb/) to add traditional share buttons.
-	* [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata) to strip incorrect markup from templates.
-	* [WPSSO Tune WP Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors) for better looking WordPress thumbnails.
-	* [WPSSO Tweet a Quote](https://wordpress.org/plugins/wpsso-tweet-a-quote) to add tweetable quotes to your content.
-	* [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale) to switch languages quickly and easily.
+* [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
+* [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/) to manage multiple Organizations.
+* [WPSSO Place / Location and Local Business Meta](https://wordpress.org/plugins/wpsso-plm/) to manage multiple Locations.
+* [WPSSO Ratings and Reviews](https://wordpress.org/plugins/wpsso-ratings-and-reviews/) to add ratings in WordPress comments.
+* [WPSSO REST API](https://wordpress.org/plugins/wpsso-rest-api/) to add meta tags and Schema markup in REST API queries.
+* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) to add responsive share buttons.
+* [WPSSO Schema Breadcrumbs Markup](https://wordpress.org/plugins/wpsso-breadcrumbs/) to add Breadcrumbs markup for Google.
+* [WPSSO Schema JSON-LD Markup](https://wordpress.org/plugins/wpsso-schema-json-ld/) to add JSON-LD in post and archive pages.
+* [WPSSO Social Sharing Buttons](https://wordpress.org/plugins/wpsso-ssb/) to add traditional share buttons.
+* [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata) to strip incorrect markup from templates.
+* [WPSSO Tune WP Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors) for better looking WordPress thumbnails.
+* [WPSSO Tweet a Quote](https://wordpress.org/plugins/wpsso-tweet-a-quote) to add tweetable quotes to your content.
+* [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale) to switch languages quickly and easily.
 
 <h3>WPSSO Core Additional Features (Pro version)</h3>
 
@@ -283,16 +283,6 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 		* WP-PostRatings
 		* Yoast SEO (aka WordPress SEO)
 		* Yotpo Social Reviews for WooCommerce
-
-* Pro add-ons for even more advanced functionality:
-
-	* [WPSSO Mobile App Meta Pro](https://wpsso.com/extend/plugins/wpsso-am/) to manage mobile App information.
-	* [WPSSO Organization Markup Pro](https://wpsso.com/extend/plugins/wpsso-organization/) to manage multiple Organizations.
-	* [WPSSO Place / Location and Local Business Meta Pro](https://wpsso.com/extend/plugins/wpsso-plm/) to manage multiple Locations.
-	* [WPSSO Ridiculously Responsive Social Sharing Buttons Pro](https://wpsso.com/extend/plugins/wpsso-rrssb/) to add responsive share buttons.
-	* [WPSSO Schema JSON-LD Markup Pro](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) to add JSON-LD in post and archive pages.
-	* [WPSSO Social Sharing Buttons Pro](https://wpsso.com/extend/plugins/wpsso-ssb/) to add traditional share buttons.
-	* [WPSSO Tune WP Image Editors Pro](https://wpsso.com/extend/plugins/wpsso-tune-image-editors/) for better looking WordPress thumbnails.
 
 <h3>Coded for Performance</h3>
 
