@@ -73,7 +73,7 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 
 * Offers an option to easily hide the preview of Pro settings and features. ;-)
 
-<h3>Free Add-ons for Special Features</h3>
+<h3>Free Add-ons for Special Features and Needs</h3>
 
 * [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
 * [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/) to manage multiple Organizations.
