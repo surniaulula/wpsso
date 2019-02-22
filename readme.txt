@@ -55,11 +55,11 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 
 <h3>WPSSO Core Standard Features</h3>
 
-* Complete and accurate meta tags for all social sites, search engines, web browser extensions, mail and messaging apps, and embedded object / iframe content.
+* *Complete and accurate* meta tags for all social sites, search engines, web browser extensions, mail and messaging apps, and embedded object / iframe content.
 
-* Provides meta tags and markup for custom post types, custom taxonomy / terms, user profile pages, and attachment pages.
+* Provides meta tags and markup for posts, pages, custom post types, tags, categories, custom taxonomy / terms, user profile pages, search pages, and attachment pages.
 
-* Uses images from several sources, including featured, attached, gallery shortcode, images from HTML tags, or a custom fallback image.
+* Uses images from numerous sources, including featured, attached, gallery shortcode, images from HTML tags, or a custom fallback image.
 
 * Customizable image dimensions for Facebook / Open Graph, Schema markup, Google Rich Card SEO, Pinterest Rich Pins, and Twitter Cards.
 
@@ -69,7 +69,9 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 
 * Supports advanced WordPress configurations, including WordPress Network / Multisite installations and WordPress MU Domain Mapping.
 
-* Includes an option to hide the preview of all Pro settings and features. ;-)
+* Includes advanced *quality assurance* features and options.
+
+* Offers an option to easily hide the preview of Pro settings and features. ;-)
 
 <h3>Get Free Add-ons for Special Features</h3>
 
