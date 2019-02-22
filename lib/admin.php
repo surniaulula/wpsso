@@ -725,7 +725,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			/**
 			 * Get plugin data from the plugin readme.
 			 */
-			$plugin_data = $this->get_plugin_data( $ext, true );
+			$plugin_data = $this->get_plugin_data( $ext, $read_cache = true );
 
 			/**
 			 * Make sure we have something to return.
