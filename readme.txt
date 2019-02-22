@@ -71,7 +71,7 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 
 * Includes an option to hide the preview of all Pro settings and features. ;-)
 
-<h3>Get Free Add-ons for Even More Features!</h3>
+<h3>Get Free Add-ons for Special Features</h3>
 
 * [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
 * [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/) to manage multiple Organizations.
@@ -87,7 +87,7 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 * [WPSSO Tweet a Quote](https://wordpress.org/plugins/wpsso-tweet-a-quote) to add tweetable quotes to your content.
 * [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale) to switch languages quickly and easily.
 
-<h3>WPSSO Core Pro Version Features</h3>
+<h3>WPSSO Core Additional / Pro Version Features</h3>
 
 * Customize default values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags, custom post types, and user profiles:
 
