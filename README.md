@@ -85,7 +85,7 @@
 <h3>WPSSO Core Additional / Pro Version Features</h3>
 
 <ul>
-<li><p>Customize default values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags, custom post types, and user profiles:</p>
+<li><p>Customize default values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags), custom post types, and user profiles:</p>
 
 <ul>
 <li>Customize Text

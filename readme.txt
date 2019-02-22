@@ -91,7 +91,7 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 
 <h3>WPSSO Core Additional / Pro Version Features</h3>
 
-* Customize default values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags, custom post types, and user profiles:
+* Customize default values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags), custom post types, and user profiles:
 
 	* Customize Text
 		* Open Graph Type
