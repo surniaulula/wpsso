@@ -6,7 +6,7 @@ Domain Path: /languages
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
-Tags: open graph, rich pins, rich cards, twitter cards, schema, seo, social media, meta tags, merchant, yoast seo, woocommerce, facebook, google, pinterest, twitter, linkedin, whatsapp, skype
+Tags: google, seo, tags, schema, open graph, rich pins, rich cards, twitter cards, social media, meta tags, merchant, woocommerce, facebook, pinterest, twitter, linkedin
 Contributors: jsmoriss
 Requires PHP: 5.5
 Requires At Least: 3.8
@@ -22,17 +22,17 @@ WPSSO Core makes sure your content looks great on all social and search sites, n
 
 **WPSSO Core makes sure your content looks great on all social and search sites - no matter how URLs are crawled, shared, re-shared, posted, or embedded!**
 
-Provides *accurate and complete* information about your webpage content, website / business, and authors for all social crawlers (Facebook, Pinterest, Twitter, LinkedIn, etc.), search crawlers and bots, web browser extensions, mail and messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), and embedded object / iframe content.
+WPSSO Core is fast, simple, and provides *complete and accurate* information about your webpage content to social crawlers (Facebook, Pinterest, Twitter, LinkedIn, etc.), search crawlers, mail and messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), and embedded object / iframe content.
 
 **Uses your *existing content* for meta tags and Schema markup:**
 
-There's no need to select meta tag names, manually enter descriptions, titles, product information, select images / videos, etc. &mdash; WPSSO Core reads your existing post, page, product, media, recipe, event, forum, and SEO content automatically, and offers fine-tuning and customization options for just about anything and everything. ;-)
+There's no need to manually select meta tag names, re-enter descriptions, titles, product information, select images / videos, etc. &mdash; WPSSO Core reads your existing post, page, product, media, recipe, event, forum, and SEO content automatically, and offers fine-tuning and customization options for just about anything and everything. ;-)
 
 WPSSO Core is also language / locale aware, which means you can customize your site information, social page URLs and Knowledge Graph for different languages!
 
-**Creates *accurate and complete* meta tags and Schema markup:**
+**Creates *complete and accurate* meta tags and Schema markup:**
 
-WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph SEO, Google Rich Card SEO, Google Merchant SEO, Mobile Web Browsers, Pinterest Rich Pins, Twitter Cards, Weibo and many more &mdash; including complete markup for images, videos, extensive eCommerce product markup (for WooCommerce and others), mobile apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content!
+WPSSO Core and its optional Free add-ons offer meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph SEO, Google Rich Card SEO, Google Merchant SEO, Mobile Web Browsers, Pinterest Rich Pins, Twitter Cards, Weibo and many more &mdash; including complete markup for images, videos, extensive eCommerce product markup (for WooCommerce and others), mobile apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content!
 
 **Includes advanced *quality assurance* features and options:**
 
