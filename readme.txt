@@ -387,8 +387,8 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 
 == Screenshots ==
 
-01. [WordPress v5.0] The document SSO metabox provides tabs to customize text, select priority media, preview social shares (shown here), view head markup, and several validation tools.
-02. [WordPress v5.0] The essential settings page (shown here) provides a quick and easy setup.
+01. The document SSO metabox offers tabs to customize text, select priority media, preview social shares (shown here), preview meta tags and Schema markup, and links to several markup validation tools.
+02. The essential settings page provides a quick and easy setup.
 
 == Changelog ==
 
