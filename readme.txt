@@ -22,7 +22,7 @@ WPSSO Core makes sure your content looks great on all social and search sites, n
 
 **WPSSO Core makes sure your content looks great on social and search sites** -- no matter how URLs are crawled, shared, re-shared, posted, or embedded!
 
-WPSSO Core is fast, simple, and provides *complete and accurate* information about your webpage content to social crawlers (Facebook, Pinterest, Twitter, LinkedIn, etc.), search crawlers, mail and messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), and embedded object / iframe content.
+WPSSO Core is fast, simple, and provides *complete and accurate* information about your webpage content to social sites (Facebook, Pinterest, Twitter, LinkedIn, etc.), search crawlers, mail and messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), and embedded object / iframe content.
 
 **Uses your *existing content* for meta tags and Schema markup:**
 
