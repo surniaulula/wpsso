@@ -2385,7 +2385,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) { // Don't bother if already dismissed.
 
-					$this->p->notice->warn( sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engine and social crawlers from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck the option to allow search engines and social crawlers to access your content.', 'wpsso' ), get_admin_url( null, 'options-reading.php' ) ), null, $notice_key, MONTH_IN_SECONDS * 3 );
+					$this->p->notice->warn( sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engine and social sites from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck the option to allow search engines and social sites to access your content.', 'wpsso' ), get_admin_url( null, 'options-reading.php' ) ), null, $notice_key, MONTH_IN_SECONDS * 3 );
 				}
 			}
 		}

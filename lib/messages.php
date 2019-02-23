@@ -1075,7 +1075,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_add_link_rel_shortlink':
 
-							$text = sprintf( __( 'Add a "%s" HTML tag for social crawlers and web browsers to the head section of webpages.', 'wpsso' ), 'link&nbsp;rel&nbsp;shortlink' );
+							$text = sprintf( __( 'Add a "%s" HTML tag for social sites and web browsers to the head section of webpages.', 'wpsso' ), 'link&nbsp;rel&nbsp;shortlink' );
 
 							break;
 

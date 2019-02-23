@@ -381,10 +381,10 @@ msgstr ""
 #: lib/admin.php:2388
 msgid ""
 "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to "
-"discourage search engine and social crawlers from indexing this site. This "
-"is not compatible with the purpose of sharing content on social sites "
-"&mdash; please uncheck the option to allow search engines and social "
-"crawlers to access your content."
+"discourage search engine and social sites from indexing this site. This is "
+"not compatible with the purpose of sharing content on social sites &mdash; "
+"please uncheck the option to allow search engines and social sites to access "
+"your content."
 msgstr ""
 
 #: lib/admin.php:2395 lib/gettext-pro.php:218
@@ -4268,8 +4268,8 @@ msgstr ""
 
 #: lib/messages.php:1078
 msgid ""
-"Add a \"%s\" HTML tag for social crawlers and web browsers to the head "
-"section of webpages."
+"Add a \"%s\" HTML tag for social sites and web browsers to the head section "
+"of webpages."
 msgstr ""
 
 #: lib/messages.php:1084
