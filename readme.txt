@@ -28,7 +28,7 @@ WPSSO Core is fast, simple, and provides *complete and accurate* information abo
 
 There's no need to manually select meta tag names, re-enter descriptions, titles, product information, select images / videos, etc. &mdash; WPSSO Core reads your existing post, page, product, media, recipe, event, forum, and SEO content automatically, and offers fine-tuning and customization options for just about anything and everything. ;-)
 
-WPSSO Core is also language / locale aware, which means you can customize your site information, social page URLs and Knowledge Graph for different languages!
+WPSSO Core is also language / locale aware, which means you can customize your site information, social page URLs and Knowledge Graph for different languages.
 
 **Creates *complete and accurate* meta tags and Schema markup:**
 
