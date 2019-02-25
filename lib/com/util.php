@@ -1446,7 +1446,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					/**
 					 * "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)"
 					 */
-					case ( false !== strpos( $ua, 'facebookexternalhit/' ) ):
+					case ( 0 === strpos( $ua, 'facebookexternalhit/' ) ):
 
 						self::$cache_crawler_name = 'facebook';
 
@@ -1480,10 +1480,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						break;
 
 					/**
+					 * "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MTC19V) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.81 Mobile Safari/537.36 (compatible; validator.ampproject.org) AppEngine-Google; (+http://code.google.com/appengine; appid: s~amp-validator)"
+					 */
+					case ( false !== strpos( $ua, 'validator.ampproject.org' ) ):
+
+						self::$cache_crawler_name = 'amp';
+
+						break;
+
+					/**
 					 * "Pinterest/0.2 (+http://www.pinterest.com/bot.html)"
 					 */
-					case ( false !== strpos( $ua, 'pinterest/' ) ):
-					case ( false !== strpos( $ua, 'pinterestbot/' ) ):
+					case ( 0 === strpos( $ua, 'pinterest/' ) ):
+					case ( 0 === strpos( $ua, 'pinterestbot/' ) ):
 
 						self::$cache_crawler_name = 'pinterest';
 
@@ -1492,34 +1501,34 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					/**
 					 * "Twitterbot/1.0"
 					 */
-					case ( false !== strpos( $ua, 'twitterbot/' ) ):
+					case ( 0 === strpos( $ua, 'twitterbot/' ) ):
 						self::$cache_crawler_name = 'twitter';
-						break;
-
-					/**
-					 * "W3C_Validator/1.3 http://validator.w3.org/services"
-					 */
-					case ( false !== strpos( $ua, 'w3c_validator/' ) ):
-
-						self::$cache_crawler_name = 'w3c';
-
 						break;
 
 					/**
 					 * "Validator.nu/LV http://validator.w3.org/services"
 					 */
-					case ( false !== strpos( $ua, 'validator.nu/' ) ):
+					case ( 0 === strpos( $ua, 'validator.nu/' ) ):
 
 						self::$cache_crawler_name = 'w3c';
 
 						break;
 
 					/**
-					 * "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MTC19V) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.81 Mobile Safari/537.36 (compatible; validator.ampproject.org) AppEngine-Google; (+http://code.google.com/appengine; appid: s~amp-validator)"
+					 * "W3C_Validator/1.3 http://validator.w3.org/services"
 					 */
-					case ( false !== strpos( $ua, 'validator.ampproject.org' ) ):
+					case ( 0 === strpos( $ua, 'w3c_validator/' ) ):
 
-						self::$cache_crawler_name = 'amp';
+						self::$cache_crawler_name = 'w3c';
+
+						break;
+
+					/**
+					 * "WhatsApp/0.3.1850 N"
+					 */
+					case ( 0 === strpos( $ua, 'whatsapp/' ) ):
+
+						self::$cache_crawler_name = 'whatsapp';
 
 						break;
 
