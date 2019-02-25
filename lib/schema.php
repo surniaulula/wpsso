@@ -28,7 +28,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$this->p->util->add_plugin_filters( $this, array( 
-				'plugin_image_sizes' => 3,
+				'plugin_image_sizes' => 1,
 			), 5 );
 
 			add_action( 'add_head_attributes', array( $this, 'add_head_attributes' ), -1000 );
@@ -56,14 +56,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		public function filter_plugin_image_sizes( $sizes, $mod, $crawler_name ) {
+		public function filter_plugin_image_sizes( $sizes ) {
 
 			$sizes[ 'schema_img' ] = array(		// Options prefix.
 				'name'  => 'schema',
 				'label' => _x( 'Google / Schema Image', 'image size label', 'wpsso' ),
 			);
 
-			$sizes[ 'schema_article_img' ] = array(	// Options prefix
+			$sizes[ 'schema_article_img' ] = array(	// Options prefix.
 				'name'   => 'schema-article',
 				'label'  => _x( 'Google / Schema Image', 'image size label', 'wpsso' ),
 				'prefix' => 'schema_img',
@@ -3745,6 +3745,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						'dateModified'  => 'article:modified_time',
 					) );
 
+					if ( ! empty( $this->p->options[ 'add_link_itemprop_thumbnailurl' ] ) ) {
+
+						$mt_schema[ 'thumbnailurl' ] = $this->p->og->get_thumbnail_url( $this->p->lca . '-thumbnail', $mod, $md_pre = 'schema' );
+
+						if ( empty( $mt_schema[ 'thumbnailurl' ] ) ) {
+							unset( $mt_schema[ 'thumbnailurl' ] );
+						}
+					}
+
 					break;
 			}
 
@@ -3754,7 +3763,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$this->p->debug->log( 'skipping images: noscript is enabled for ' . $crawler_name );
 				}
 
-			} elseif ( empty( $this->p->options[ 'add_meta_itemprop_image' ] ) ) {
+			} elseif ( empty( $this->p->options[ 'add_link_itemprop_image' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'skipping images: meta itemprop image is disabled' );
@@ -3772,6 +3781,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$og_images = $this->p->media->get_default_images( 1, $size_name, true );
 				}
 
+				/**
+				 * WpssoHead::get_single_mt() will make sure
+				 * this URL is added as a link itemprop tag and
+				 * not a meta itemprop tag.
+				 */
 				foreach ( $og_images as $og_single_image ) {
 					$mt_schema[ 'image' ][] = SucomUtil::get_mt_media_url( $og_single_image );
 				}
@@ -3959,10 +3973,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 * Defines a two-dimensional array.
 				 */
 				$mt_image = array_merge(
-					$this->p->head->get_single_mt( 'link', 'itemprop', 'image.url', $image_url, '', $mod ),
-					( empty( $mixed[ $mt_image_pre . ':width' ] ) ? array() : $this->p->head->get_single_mt( 'meta',
+					$this->p->head->get_single_mt( 'link', 'itemprop', 'image.url', $image_url, '', $mod ),			// Link itemprop.
+					( empty( $mixed[ $mt_image_pre . ':width' ] ) ? array() : $this->p->head->get_single_mt( 'meta',	// Meta itemprop.
 						'itemprop', 'image.width', $mixed[ $mt_image_pre . ':width' ], '', $mod ) ),
-					( empty( $mixed[ $mt_image_pre . ':height' ] ) ? array() : $this->p->head->get_single_mt( 'meta',
+					( empty( $mixed[ $mt_image_pre . ':height' ] ) ? array() : $this->p->head->get_single_mt( 'meta',	// Meta itemprop.
 						'itemprop', 'image.height', $mixed[ $mt_image_pre . ':height' ], '', $mod ) )
 				);
 
@@ -3971,7 +3985,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/**
 				 * Defines a two-dimensional array.
 				 */
-				$mt_image = $this->p->head->get_single_mt( 'link', 'itemprop', 'image.url', $mixed, '', $mod );
+				$mt_image = $this->p->head->get_single_mt( 'link', 'itemprop', 'image.url', $mixed, '', $mod );	// Link itemprop.
 			}
 
 			/**
@@ -3980,18 +3994,23 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$have_image_html = false;
 
 			foreach ( $mt_image as $num => $img ) {
+
 				if ( ! empty( $img[0] ) ) {
+
 					$have_image_html = true;
+
 					break;
 				}
 			}
 
 			if ( $have_image_html ) {
+
 				return array_merge(
 					array( array( '<noscript itemprop="image" itemscope itemtype="https://schema.org/ImageObject">' . "\n" ) ),
 					$mt_image,
 					array( array( '</noscript>' . "\n" ) )
 				);
+
 			} else {
 				return array();
 			}
@@ -4098,11 +4117,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$mt_author = array_merge(
-				( empty( $author_url ) ? array() : $this->p->head->get_single_mt( 'link',
+				( empty( $author_url ) ? array() : $this->p->head->get_single_mt( 'link',	// Link itemprop.
 					'itemprop', $prop_name . '.url', $author_url, '', $user_mod ) ),
-				( empty( $author_name ) ? array() : $this->p->head->get_single_mt( 'meta',
+				( empty( $author_name ) ? array() : $this->p->head->get_single_mt( 'meta',	// Meta itemprop.
 					'itemprop', $prop_name . '.name', $author_name, '', $user_mod ) ),
-				( empty( $author_desc ) ? array() : $this->p->head->get_single_mt( 'meta',
+				( empty( $author_desc ) ? array() : $this->p->head->get_single_mt( 'meta',	// Meta itemprop.
 					'itemprop', $prop_name . '.description', $author_desc, '', $user_mod ) )
 			);
 

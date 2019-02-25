@@ -54,8 +54,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 		public function filter_plugin_image_sizes( $sizes ) {
 
-			$sizes[ 'og_img' ] = array( 		// options prefix
-				'name'  => 'opengraph',		// wpsso-opengraph
+			$sizes[ 'og_img' ] = array( 		// Options prefix.
+				'name'  => 'opengraph',
 				'label' => _x( 'Facebook / Open Graph', 'image size label', 'wpsso' ),
 			);
 
@@ -1111,6 +1111,17 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				return $og_ret;
 			}
+		}
+
+		public function get_thumbnail_url( $size_name = 'thumbnail', array $mod, $md_pre = 'og' ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			$og_images = $this->get_all_images( $num = 1, $size_name, $mod, $check_dupes = false, $md_pre );
+
+			return SucomUtil::get_mt_media_url( $og_images );
 		}
 
 		public function get_all_images( $num = 0, $size_name = 'thumbnail', array $mod, $check_dupes = true, $md_pre = 'og' ) {

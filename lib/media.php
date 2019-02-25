@@ -31,6 +31,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$this->p->util->add_plugin_filters( $this, array(
+				'plugin_image_sizes' => 1,
+			) );
+
 			add_action( 'init', array( $this, 'allow_img_data_attributes' ) );
 
 			/**
@@ -43,6 +47,16 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			add_filter( 'wp_get_attachment_image_attributes', array( $this, 'add_attachment_image_attributes' ), 10, 2 );
 			add_filter( 'get_image_tag', array( $this, 'get_image_tag' ), 10, 6 );
 			add_filter( 'get_header_image_tag', array( $this, 'get_header_image_tag' ), 10, 3 );
+		}
+
+		public function filter_plugin_image_sizes( $sizes ) {
+
+			$sizes[ 'thumb_img' ] = array( 		// Options prefix.
+				'name'  => 'thumbnail',
+				'label' => _x( 'Thumbnail', 'image size label', 'wpsso' ),
+			);
+
+			return $sizes;
 		}
 
 		public function allow_img_data_attributes() {
@@ -130,7 +144,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			$og_images   = array();
-			$force_regen = $this->p->util->is_force_regen( $post_id, $md_pre );	// false by default
+			$force_regen = $this->p->util->is_force_regen( $post_id, $md_pre );	// False by default.
 
 			if ( ! empty( $post_id ) ) {
 
@@ -138,8 +152,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				 * get_og_images() also provides filter hooks for additional image ids and urls
 				 * unless $md_pre is 'none', get_og_images() will fallback to the 'og' custom meta.
 				 */
-				$og_images = array_merge( $og_images, $this->p->m[ 'util' ][ 'post' ]->get_og_images( 1,
-					$size_name, $post_id, $check_dupes, $force_regen, $md_pre ) );
+				if ( isset( $this->p->m[ 'util' ][ 'post' ] ) ) {	// Just in case.
+					$og_images = array_merge( $og_images, $this->p->m[ 'util' ][ 'post' ]->get_og_images( 1,
+						$size_name, $post_id, $check_dupes, $force_regen, $md_pre ) );
+				}
 			}
 
 			/**

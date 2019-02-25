@@ -213,6 +213,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'seo_publisher_url'        => '',
 					'plugin_cf_product_gender' => 'plugin_cf_product_target_gender',
 				),
+				631 => array(
+					'tc_type_post' => 'tc_type_singular',
+				),
 			),
 			'wpssoorg' => array(	// WPSSO ORG add-on.
 				2 => array(

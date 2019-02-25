@@ -1422,7 +1422,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-tc_type_post':
+						case 'tooltip-tc_type_singular':
 
 							$text = 'The Twitter Card type for posts / pages with a custom, featured, and/or attached image.';
 

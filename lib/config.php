@@ -17,8 +17,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.23.1',	// Plugin version.
-					'opt_version' => '630',		// Increment when changing default option values.
+					'version'     => '4.24.0-dev.1',	// Plugin version.
+					'opt_version' => '635',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
 					'desc'        => 'WPSSO Core makes sure your content looks great on all social and search sites - no matter how URLs are crawled, shared, re-shared, posted, or embedded!',
@@ -745,6 +745,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'site_url'                     => '',
 					'site_org_schema_type'         => 'organization',
 					'site_place_id'                => 'none',
+					'thumb_img_width'              => 600,
+					'thumb_img_height'             => 315,
+					'thumb_img_crop'               => 1,
+					'thumb_img_crop_x'             => 'center',
+					'thumb_img_crop_y'             => 'center',
 					'schema_add_noscript'          => 1,
 					'schema_add_home_organization' => 1,
 					'schema_add_home_person'       => 0,
@@ -752,12 +757,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_home_person_id'        => 'none',
 					'schema_logo_url'              => '',
 					'schema_banner_url'            => '',
-					'schema_img_max'               => 1,
 					'schema_img_width'             => 800,		// Must be at least 696px for Articles.
 					'schema_img_height'            => 1600,
 					'schema_img_crop'              => 0,
 					'schema_img_crop_x'            => 'center',
 					'schema_img_crop_y'            => 'center',
+					'schema_img_max'               => 1,
 					'schema_desc_max_len'          => 250,		// Meta itemprop="description" maximum text length (hard limit).
 
 					/**
@@ -869,7 +874,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'tc_site'           => '',			// Twitter Business @username (localized).
 					'tc_desc_max_len'   => 200,			// Maximum Description Length (hard limit).
-					'tc_type_post'      => 'summary_large_image',
+					'tc_type_singular'  => 'summary_large_image',
 					'tc_type_default'   => 'summary',
 					'tc_sum_img_width'  => 600,			// Summary Card Image Dimensions.
 					'tc_sum_img_height' => 315,
@@ -1035,14 +1040,25 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_name_twitter:app:url:googleplay'                 => 1,
 					'add_meta_name_weibo:article:create_at'                    => 1,
 					'add_meta_name_weibo:article:update_at'                    => 1,
+
+					/**
+					 * Link itemprop.
+					 */
 					'add_link_itemprop_url'                                    => 1,
-					'add_link_itemprop_image'                                  => 1,
-					'add_link_itemprop_image.url'                              => 1,
 					'add_link_itemprop_author.url'                             => 1,
 					'add_link_itemprop_author.image'                           => 1,
 					'add_link_itemprop_contributor.url'                        => 1,
 					'add_link_itemprop_contributor.image'                      => 1,
+					'add_link_itemprop_image'                                  => 1,
+					'add_link_itemprop_image.url'                              => 1,
 					'add_link_itemprop_menu'                                   => 1,
+					'add_link_itemprop_thumbnailurl'                           => 1,
+
+					/**
+					 * Meta itemprop.
+					 *
+					 * Note that meta itemprop values should not be URLs. Use link itemprop for URLs.
+					 */
 					'add_meta_itemprop_name'                                   => 1,
 					'add_meta_itemprop_alternatename'                          => 1,
 					'add_meta_itemprop_description'                            => 1,
@@ -1135,7 +1151,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_product_attr_isbn'          => 'ISBN',			// Product ISBN Attribute Name.
 					'plugin_product_attr_material'      => 'Material',		// Product Material Attribute Name.
 					'plugin_product_attr_size'          => 'Size',			// Product Size Attribute Name.
-					'plugin_product_attr_target_gender' => 'Gender',		// Product Target Gender Attribute Name.
+					'plugin_product_attr_target_gender' => 'Gender',		// Product Target Gender Attr. Name.
 					
 					/**
 					 * Advanced settings - Custom Meta tab.
@@ -1898,7 +1914,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_product_attr_isbn'           => 'Product ISBN Attribute Name',
 					'plugin_product_attr_material'       => 'Product Material Attribute Name',
 					'plugin_product_attr_size'           => 'Product Size Attribute Name',
-					'plugin_product_attr_target__gender' => 'Product Target Gender Attribute Name',
+					'plugin_product_attr_target_gender'  => 'Product Target Gender Attr. Name',
 				),
 				
 				/**
@@ -1972,6 +1988,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_img_height'         => 160,
 					'seo_desc_len'              => 156,
 					'tc_desc_len'               => 160,
+					'thumb_img_width'           => 300,	// Recommended minimum for WhatsApp is 300x200px.
+					'thumb_img_height'          => 200,
 				),
 				'limit_max' => array(
 					'og_img_ratio'                => 3,

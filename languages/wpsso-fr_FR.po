@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.23.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-02-14 08:45-0800\n"
-"PO-Revision-Date: 2019-02-14 08:48-0800\n"
+"POT-Creation-Date: 2019-02-24 10:41-0800\n"
+"PO-Revision-Date: 2019-02-24 10:42-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -354,8 +354,8 @@ msgid "Please contact your hosting provider to have the missing PHP function ins
 msgstr "SVP contacter votre hébergeur pour installer la fonction PHP manquante."
 
 #: lib/admin.php:2388
-msgid "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to discourage search engine and social crawlers from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck the option to allow search engines and social crawlers to access your content."
-msgstr "L'option de WordPress <a href=\"%s\">Visibilité pour les moteurs de recherche</a> est définie afin de demander aux moteurs de recherche et robots sociaux de ne pas indexer ce site. Ceci n'est pas compatible avec le but de partager du contenu sur les sites sociaux &mdash; veuillez décocher cette option pour autoriser les moteurs de recherche et robots sociaux d'accéder votre contenu."
+msgid "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to discourage search engine and social sites from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck the option to allow search engines and social sites to access your content."
+msgstr "L'option de WordPress <a href=\"%s\">Visibilité pour les moteurs de recherche</a> est définie afin de demander aux moteurs de recherche et sites sociaux de ne pas indexer ce site. Ceci n'est pas compatible avec le but de partager du contenu sur les sites sociaux &mdash; veuillez décocher cette option pour autoriser les moteurs de recherche et sites sociaux d'accéder votre contenu."
 
 #: lib/admin.php:2395 lib/gettext-pro.php:218
 #: lib/pro/rating/wppostratings.php:51
@@ -3816,8 +3816,8 @@ msgid "Use the shortened sharing URL for the <em>Get Shortlink</em> button in ad
 msgstr "Utilisez l'URL de partage raccourcie pour le bouton <em>Obtenir le lien court</em> dans les pages d'édition d'administration, ainsi que la valeur du tag HTML \"%s\"."
 
 #: lib/messages.php:1078
-msgid "Add a \"%s\" HTML tag for social crawlers and web browsers to the head section of webpages."
-msgstr "Ajouter une balise HTML \"%s\" pour les robots sociaux et les navigateurs Web à section d'en-tête des pages Web."
+msgid "Add a \"%s\" HTML tag for social sites and web browsers to the head section of webpages."
+msgstr "Ajouter une balise HTML \"%s\" pour les sites sociaux et les navigateurs Web à section d'en-tête des pages Web."
 
 #: lib/messages.php:1084
 msgid "The Bitly username to use with the Generic Access Token or API Key (deprecated)."

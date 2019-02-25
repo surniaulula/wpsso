@@ -97,21 +97,25 @@ if ( ! class_exists( 'WpssoSettingImageDimensions' ) && class_exists( 'WpssoAdmi
 
 				case 'image-dimensions-general':
 
-					$table_rows['og_img_dimensions'] = $this->form->get_th_html( _x( 'Facebook / Open Graph',
-						'option label', 'wpsso' ), null, 'og_img_dimensions' ).
+					$table_rows[ 'og_img_dimensions' ] = '' .
+					$this->form->get_th_html( _x( 'Facebook / Open Graph', 'option label', 'wpsso' ), null, 'og_img_dimensions' ).
 					'<td>'.$this->form->get_input_image_dimensions( 'og_img' ).'</td>';	// $use_opts = false
 
-					$table_rows['schema_img_dimensions'] = $this->form->get_th_html( _x( 'Google / Schema / Pinterest',
-						'option label', 'wpsso' ), null, 'schema_img_dimensions' ).
+					$table_rows[ 'schema_img_dimensions' ] = '' .
+					$this->form->get_th_html( _x( 'Google / Schema / Pinterest', 'option label', 'wpsso' ), null, 'schema_img_dimensions' ).
 					'<td>'.$this->form->get_input_image_dimensions( 'schema_img' ).'</td>';	// $use_opts = false
 
-					$table_rows['tc_sum_img_dimensions'] = $this->form->get_th_html( _x( 'Twitter <em>Summary</em> Card',
-						'option label', 'wpsso' ), null, 'tc_sum_img_dimensions' ).
+					$table_rows[ 'tc_sum_img_dimensions' ] = '' .
+					$this->form->get_th_html( _x( 'Twitter <em>Summary</em> Card', 'option label', 'wpsso' ), null, 'tc_sum_img_dimensions' ).
 					'<td>'.$this->form->get_input_image_dimensions( 'tc_sum_img' ).'</td>';	// $use_opts = false
 
-					$table_rows['tc_lrg_img_dimensions'] = $this->form->get_th_html( _x( 'Twitter <em>Large Image Summary</em> Card',
-						'option label', 'wpsso' ), null, 'tc_lrg_img_dimensions' ).
+					$table_rows[ 'tc_lrg_img_dimensions' ] = '' .
+					$this->form->get_th_html( _x( 'Twitter <em>Large Image Summary</em> Card', 'option label', 'wpsso' ), null, 'tc_lrg_img_dimensions' ).
 					'<td>'.$this->form->get_input_image_dimensions( 'tc_lrg_img' ).'</td>';	// $use_opts = false
+
+					$table_rows[ 'thumb_img_dimensions' ] = '' .
+					$this->form->get_th_html( _x( 'Thumbnail Image', 'option label', 'wpsso' ), null, 'thumb_img_dimensions' ).
+					'<td>'.$this->form->get_input_image_dimensions( 'thumb_img' ).'</td>';	// $use_opts = false
 
 					break;
 			}

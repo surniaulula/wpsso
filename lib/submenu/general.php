@@ -311,7 +311,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 				case 'pub-twitter':
 
 					$tc_types = array(
-						'summary' => _x( 'Summary', 'option value', 'wpsso' ),
+						'summary'             => _x( 'Summary', 'option value', 'wpsso' ),
 						'summary_large_image' => _x( 'Summary Large Image', 'option value', 'wpsso' ),
 					);
 
@@ -325,9 +325,9 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>' . $this->form->get_input( 'tc_desc_max_len', 'short' ) . ' ' . 
 					_x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
 
-					$table_rows[ 'tc_type_singular' ] = $this->form->get_tr_hide( 'basic', 'tc_type_post' ) . 
-					$this->form->get_th_html( _x( 'Twitter Card for Post / Page Image', 'option label', 'wpsso' ), '', 'tc_type_post' ) . 
-					'<td>' . $this->form->get_select( 'tc_type_post', $tc_types ) . '</td>';
+					$table_rows[ 'tc_type_singular' ] = $this->form->get_tr_hide( 'basic', 'tc_type_singular' ) . 
+					$this->form->get_th_html( _x( 'Twitter Card for Post / Page Image', 'option label', 'wpsso' ), '', 'tc_type_singular' ) . 
+					'<td>' . $this->form->get_select( 'tc_type_singular', $tc_types ) . '</td>';
 
 					$table_rows[ 'tc_type_default' ] = $this->form->get_tr_hide( 'basic', 'tc_type_default' ) . 
 					$this->form->get_th_html( _x( 'Twitter Card Type by Default', 'option label', 'wpsso' ), '', 'tc_type_default' ) . 

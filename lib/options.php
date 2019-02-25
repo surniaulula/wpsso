@@ -542,6 +542,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 */
 			foreach ( array( 'og', 'schema' ) as $md_pre ) {
 
+				if ( ! isset( $this->p->cf[ 'head' ][ 'limit_max' ][ $md_pre . '_img_ratio' ] ) ) {
+					continue;
+				}
+
 				if ( ! empty( $opts[ $md_pre . '_img_width' ] ) && 
 					! empty( $opts[ $md_pre . '_img_height' ] ) && 
 					! empty( $opts[ $md_pre . '_img_crop' ] ) ) {
@@ -549,9 +553,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$img_width  = $opts[ $md_pre . '_img_width' ];
 					$img_height = $opts[ $md_pre . '_img_height' ];
 					$img_ratio  = $img_width >= $img_height ? $img_width / $img_height : $img_height / $img_width;
-					$max_ratio  = isset( $this->p->cf[ 'head' ][ 'limit_max' ][ $md_pre . '_img_ratio' ] ) ?
-						$this->p->cf[ 'head' ][ 'limit_max' ][ $md_pre . '_img_ratio' ] :
-						$this->p->cf[ 'head' ][ 'limit_max' ][ 'og_img_ratio' ];
+					$max_ratio  = $this->p->cf[ 'head' ][ 'limit_max' ][ $md_pre . '_img_ratio' ];
 
 					if ( $img_ratio >= $max_ratio ) {
 
@@ -959,18 +961,20 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				case 'pos_num':
 
-					if ( $option_type === 'img_width' ) {
-						$min_int = $this->p->cf[ 'head' ][ 'limit_min' ][ 'og_img_width' ];
-					} elseif ( $option_type === 'img_height' ) {
-						$min_int = $this->p->cf[ 'head' ][ 'limit_min' ][ 'og_img_height' ];
+					if ( isset( $this->p->cf[ 'head' ][ 'limit_min' ][ $base_key ] ) ) {
+						$min_int = $this->p->cf[ 'head' ][ 'limit_min' ][ $base_key ];
 					} else {
 						$min_int = 1;
 					}
 
-					if ( ! empty( $mod[ 'name' ] ) && $opt_val === '' ) {	// custom meta options can be empty
+					if ( ! empty( $mod[ 'name' ] ) && $opt_val === '' ) {	// Custom meta options can be empty.
+
 						$ret_int = false;
+
 					} elseif ( ! is_numeric( $opt_val ) || $opt_val < $min_int ) {
+
 						$this->p->notice->err( sprintf( $error_messages[ 'pos_num' ], $opt_key, $min_int ) );
+
 						$opt_val = $def_val;
 					}
 

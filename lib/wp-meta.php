@@ -1195,6 +1195,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				$mt_single_image = array();
 
+				/**
+				 * Get the smaller thumbnail image as a preview image.
+				 */
 				$this->p->media->add_mt_single_image_src( $mt_single_image, $head_info[ $mt_pre . ':image:id' ], 'thumbnail', false, $force_regen );
 
 				if ( ! empty( $mt_single_image[ $mt_pre . ':image:url' ] ) ) {	// Just in case.

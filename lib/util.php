@@ -560,10 +560,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 *			[name] => opengraph
 			 *			[label] => Open Graph Image Dimensions
 			 *		)
-			 *		[p_img] => Array (
-			 *			[name] => richpin
-			 *			[label] => Rich Pin Image Dimensions
-			 *		)
 			 *	)
 			 */
 			if ( $this->p->debug->enabled ) {
@@ -576,6 +572,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->log( '$wp_obj is ' . $wp_obj_type );
 				$this->p->debug->log( 'DOING_AJAX is ' . $is_ajax_str );
 			}
+
+			static $def_opts = null;	// Get defaults once if required.
 
 			$use_post = in_the_loop() ? true : false;				// Use the $post object inside the loop.
 			$use_post = apply_filters( $this->p->lca . '_use_post', $use_post );	// Used by woocommerce with is_shop().
@@ -602,13 +600,17 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			if ( empty( $mod[ 'id' ] ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'module id is unknown' );
 				}
+
 			} elseif ( empty( $mod[ 'name' ] ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'module name is unknown' );
 				}
+
 			} elseif ( ! empty( $mod[ 'id' ] ) && ! empty( $mod[ 'obj' ] ) && $has_pp ) {
 
 				/**

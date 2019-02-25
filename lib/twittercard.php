@@ -30,13 +30,13 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 		public function filter_plugin_image_sizes( $sizes ) {
 
-			$sizes[ 'tc_sum_img' ] = array(		// options prefix
-				'name'  => 'tc-summary',	// wpsso-tc-summary
+			$sizes[ 'tc_sum_img' ] = array(		// Options prefix.
+				'name'  => 'tc-summary',
 				'label' => _x( 'Twitter Summary Card', 'image size label', 'wpsso' ),
 			);
 
-			$sizes[ 'tc_lrg_img' ] = array(		// options prefix
-				'name'  => 'tc-lrgimg',		// wpsso-tc-lrgimg
+			$sizes[ 'tc_lrg_img' ] = array(		// Options prefix.
+				'name'  => 'tc-lrgimg',
 				'label' => _x( 'Twitter Large Image Card', 'image size label', 'wpsso' ),
 			);
 
@@ -116,7 +116,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 					foreach ( $mt_og[ 'og:video' ] as $og_single_video ) {
 
-						$player_embed_url = '';
+						$player_embed_url  = '';
 						$player_stream_url = '';
 
 						/**
@@ -236,7 +236,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 							) as $og_name => $tc_name ) {
 
 								if ( ! empty( $og_single_video[$og_name] ) ) {
-									$mt_tc[$tc_name] = $og_single_video[$og_name];
+									$mt_tc[ $tc_name ] = $og_single_video[ $og_name ];
 								}
 							}
 
@@ -273,7 +273,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 				if ( $mod[ 'is_post' ] ) {
 
-					list( $card_type, $size_name, $md_pre ) = $this->get_card_type_size( 'post' );
+					list( $card_type, $size_name, $md_pre ) = $this->get_image_card_info( $mod );
 					
 					/**
 					 * Post meta image.
@@ -347,7 +347,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				/**
 				 * Maybe term or user meta image.
 				 */
-				list( $card_type, $size_name, $md_pre ) = $this->get_card_type_size( 'default' );
+				list( $card_type, $size_name, $md_pre ) = $this->get_image_card_info( 'default' );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $card_type . ' card: using default card type' );
@@ -392,9 +392,9 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 		}
 
 		/**
-		 * $mixed = 'post' | 'default' | $mod.
+		 * $mixed = 'singular' | 'default' | $mod.
 		 */
-		public function get_card_type_size( $mixed ) {
+		public function get_image_card_info( $mixed ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -411,7 +411,25 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			} elseif ( is_array( $mixed ) ) {
 
 				if ( ! empty( $mixed[ 'is_post' ] ) ) {
-					$card_type = $this->p->options[ 'tc_type_post' ];
+
+					if ( ! empty( $mixed[ 'post_type' ] ) ) {
+
+						if ( ! empty( $this->p->options[ 'tc_type_for_' . $mixed[ 'post_type' ] ] ) ) {
+							$card_type = $this->p->options[ 'tc_type_for_' . $mixed[ 'post_type' ] ];
+						}
+
+					} elseif ( ! empty( $this->p->options[ 'tc_type_singular' ] ) ) {
+						$card_type = $this->p->options[ 'tc_type_singular' ];
+					}
+				}
+
+				if ( ! empty( $mixed[ 'obj' ] ) ) {
+
+					$md_card_type = $mixed[ 'obj' ]->get_options( $mixed[ 'id' ], 'tc_type' );	// Returns null if index key not found.
+
+					if ( ! empty( $md_card_type ) ) {
+						$card_type = $md_card_type;
+					}
 				}
 			}
 

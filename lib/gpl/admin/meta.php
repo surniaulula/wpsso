@@ -296,10 +296,9 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 			/**
 			 * Twitter Card
 			 */
-			list( $card_type, $size_name, $md_pre ) = $this->p->tc->get_card_type_size( $mod );
+			list( $card_type, $size_name, $md_pre ) = $this->p->tc->get_image_card_info( $mod );
 
-			$media_info = $this->p->og->get_media_info( $size_name,
-				array( 'pid', 'img_url' ), $mod, 'og', 'og' );
+			$media_info = $this->p->og->get_media_info( $size_name, array( 'pid', 'img_url' ), $mod, 'og', 'og' );
 	
 			$tc_tr_class = $form->in_options( '/^' . $md_pre . '_img_/', true ) ? '' : 'hide_in_basic';	// Hide unless a custom twitter card image exists.
 

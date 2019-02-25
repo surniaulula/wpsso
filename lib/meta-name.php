@@ -69,9 +69,11 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 			 */
 			if ( ! empty( $this->p->options[ 'add_meta_name_thumbnail' ] ) ) {
 
-				$og_images = $this->p->og->get_all_images( 1, 'thumbnail', $mod, false, $md_pre = 'schema' );
+				$mt_name[ 'thumbnail' ] = $this->p->og->get_thumbnail_url( $this->p->lca . '-thumbnail', $mod, $md_pre = 'og' );
 
-				$mt_name[ 'thumbnail' ] = SucomUtil::get_mt_media_url( $og_images );
+				if ( empty( $mt_name[ 'thumbnail' ] ) ) {
+					unset( $mt_name[ 'thumbnail' ] );
+				}
 			}
 
 			/**
