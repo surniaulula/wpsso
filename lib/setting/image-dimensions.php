@@ -36,11 +36,17 @@ if ( ! class_exists( 'WpssoSettingImageDimensions' ) && class_exists( 'WpssoAdmi
 			$row_num = null;
 
 			switch ( $menu_id ) {
+
 				case 'image-dimensions':
+
 					$row_num = 0;
+
 					break;
+
 				case 'tools':
+
 					$row_num = 2;
+
 					break;
 			}
 

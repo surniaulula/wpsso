@@ -1307,7 +1307,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = sprintf( __( 'The image dimensions used for the Google / Schema meta tags and JSON-LD markup (the default dimensions are %s).', 'wpsso' ), $def_dimensions ) . ' ';
 							
 							$text .= __( 'The minimum width required by Google for the resulting image is 696px.', 'wpsso' ) . ' ';
-							
+
 							$text .= __( 'If you choose not to crop this image size, make sure the height value is large enough for portrait / vertical images.', 'wpsso' );
 
 							break;
@@ -1622,6 +1622,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-site-use':
 
 							$text = __( 'Individual sites/blogs may use this value as a default (when the plugin is first activated), if the current site/blog option value is blank, or force every site/blog to use this specific value.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-thumb_img_dimensions':
+
+							$def_dimensions = $this->p->opt->get_defaults( 'thumb_img_width' ) . 'x' .
+								$this->p->opt->get_defaults( 'thumb_img_height' ) . ' ' .
+									( $this->p->opt->get_defaults( 'thumb_img_crop' ) == 0 ? 'uncropped' : 'cropped' );
+
+							$text = sprintf( __( 'The image dimensions used for the Schema "%1$s" property and "%2$s" tag image URL value (the default dimensions are %3$s).', 'wpsso' ), 'thumbnailUrl', 'meta name thumbnail', $def_dimensions );
 
 							break;
 
