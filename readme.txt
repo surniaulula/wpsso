@@ -425,7 +425,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None.
 * *Improvements*
-	* Added a new 'wpsso-thumbnail' image size for the "meta name thumbnail" tag and the Schema 'thumbnailUrl' values.
+	* Added a new 'wpsso-thumbnail' image size (600x315px cropped by default) for the Schema 'thumbnailUrl' property and the "meta name thumbnail" tag image URL value.
 * *Bugfixes*
 	* None.
 * *Developer Notes*
@@ -643,7 +643,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.24.0-dev.1 =
 
-(2019/02/25) Added a new 'wpsso-thumbnail' image size for the "meta name thumbnail" tag and the Schema 'thumbnailUrl' values.
+(2019/02/25) Added a new 'wpsso-thumbnail' image size (600x315px cropped by default) for the Schema 'thumbnailUrl' property the "meta name thumbnail" tag image URL value.
 
 = 4.23.1 =
 
