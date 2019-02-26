@@ -1631,7 +1631,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								$this->p->opt->get_defaults( 'thumb_img_height' ) . ' ' .
 									( $this->p->opt->get_defaults( 'thumb_img_crop' ) == 0 ? 'uncropped' : 'cropped' );
 
-							$text = sprintf( __( 'The image dimensions used for the Schema "%1$s" property and "%2$s" tag image URL value (the default dimensions are %3$s).', 'wpsso' ), 'thumbnailUrl', 'meta name thumbnail', $def_dimensions );
+							$text = sprintf( __( 'The image dimensions used for the Schema "%1$s" property and the "%2$s" tag (the default dimensions are %3$s).', 'wpsso' ), 'thumbnailUrl', 'meta name thumbnail', $def_dimensions );
 
 							break;
 

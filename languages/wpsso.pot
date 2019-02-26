@@ -4711,8 +4711,8 @@ msgstr ""
 
 #: lib/messages.php:1634
 msgid ""
-"The image dimensions used for the Schema \"%1$s\" property and \"%2$s\" tag "
-"image URL value (the default dimensions are %3$s)."
+"The image dimensions used for the Schema \"%1$s\" property and the \"%2$s\" "
+"tag (the default dimensions are %3$s)."
 msgstr ""
 
 #: lib/messages.php:1661
