@@ -3919,18 +3919,25 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$file_name_gz = WpssoConfig::get_version( $add_slug = true ) . '-' . $home_slug . '-' . $date_slug . '.json.gz';
 			$opts_encoded = SucomUtil::json_encode_array( $this->p->options );
 			$gzdata       = gzencode( $opts_encoded, 9, FORCE_GZIP );
+			$filesize     = strlen( $gzdata );
+			$disposition  = 'attachment';
+			$chunksize    = 1024 * 32;	// 32kb per fread().
 
 			session_write_close();
-			@ignore_user_abort();
-			@set_time_limit( 0 );
-			@apache_setenv( 'no-gzip', 1 );
-			@ini_set( 'zlib.output_compression', 0 );
-			@ini_set( 'implicit_flush', 1 );
-			@ob_end_flush();
 
-			$filesize    = strlen( $gzdata );
-			$disposition = 'attachment';
-			$chunksize   = 1024 * 32;	// 32kb per fread().
+			ignore_user_abort();
+
+			set_time_limit( 0 );
+
+			ini_set( 'zlib.output_compression', 0 );
+
+			ini_set( 'implicit_flush', 1 );
+
+			if ( function_exists( 'apache_setenv' ) ) {
+				apache_setenv( 'no-gzip', 1 );
+			}
+
+			ob_end_flush();
 
 			/**
 			 * Remove all dots, except last one, for MSIE clients.
