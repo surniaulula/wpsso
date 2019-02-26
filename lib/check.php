@@ -56,7 +56,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				foreach ( $lib as $id => $name ) {
 
 					$chk = array();
-					$get_avail[$sub][$id] = false;	// default value
+					$get_avail[ $sub ][ $id ] = false;	// Default value.
 
 					switch ( $sub . '-' . $id ) {
 
@@ -421,8 +421,8 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			$ext = empty( $ext ) ? $this->p->lca : $ext;
 			$key = $ext . '-' . $lic . '-' . $rv;
 
-			if ( $uc && isset( self::$pp_c[$key] ) ) {
-				return self::$pp_c[$key];
+			if ( $uc && isset( self::$pp_c[ $key ] ) ) {
+				return self::$pp_c[ $key ];
 			}
 
 			$uca = strtoupper( $ext );
@@ -431,28 +431,28 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 				$pdir = constant( $uca . '_PLUGINDIR' );
 
-			} elseif ( isset( $this->p->cf[ 'plugin' ][$ext][ 'slug' ] ) ) {
+			} elseif ( isset( $this->p->cf[ 'plugin' ][ $ext ][ 'slug' ] ) ) {
 
-				$slug = $this->p->cf[ 'plugin' ][$ext][ 'slug' ];
+				$slug = $this->p->cf[ 'plugin' ][ $ext ][ 'slug' ];
 
 				if ( ! defined ( 'WPMU_PLUGIN_DIR' ) ||
 					! is_dir( $pdir = WPMU_PLUGIN_DIR . '/' . $slug . '/' ) ) {
 
 					if ( ! defined ( 'WP_PLUGIN_DIR' ) ||
 						! is_dir( $pdir = WP_PLUGIN_DIR . '/' . $slug . '/' ) ) {
-						return self::$pp_c[$key] = false;
+						return self::$pp_c[ $key ] = false;
 					}
 				}
 
 			} else {
-				return self::$pp_c[$key] = false;
+				return self::$pp_c[ $key ] = false;
 			}
 
 			$key = 'plugin_' . $ext . '_tid';
 			$ins = is_dir( $pdir . 'lib/pro/' ) ? $rv : false;
 
-			return self::$pp_c[$key] = true === $lic ?
-				( ( ! empty( $this->p->options[$key] ) &&
+			return self::$pp_c[ $key ] = true === $lic ?
+				( ( ! empty( $this->p->options[ $key ] ) &&
 					$ins && class_exists( 'SucomUpdate' ) &&
 						( $uerr = SucomUpdate::get_umsg( $ext ) ?
 							false : $ins ) ) ? $uerr : false ) : $ins;
