@@ -268,74 +268,94 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 			?>
 			<script type="text/javascript">
-				jQuery( document ).ready( function() {
 
-					// Just in case - make sure the same block editor function does not exist.
-					if ( typeof wpssoUpdateToolbar == 'function' ) {
-						return;
-					}
+				/**
+				 * Make sure the equivalent block editor function is not loaded.
+				 */
+				if ( typeof wpssoUpdateToolbar !== "function" ) {
 
-					var ajaxNoticesData = {
-						action: 'wpsso_get_notices_json',
-						context: 'toolbar_notices',
-						_ajax_nonce: '<?php echo wp_create_nonce( WPSSO_NONCE_NAME ); ?>',
-						_notice_types: '<?php echo implode( ',', $this->tb_notices ); ?>',
-					}
+					jQuery( document ).ready( wpssoUpdateToolbar() );
 
-					jQuery.getJSON( ajaxurl, ajaxNoticesData, function( data ) {
+					function wpssoUpdateToolbar( updateNoticeHtml ) {
 
-						var noticeHtml       = '';
-						var noticeStatus     = '';
-						var noticeTotalCount = 0;
-						var noticeTypeCount  = {};
-						var noNoticesHtml    = '<?php echo $no_notices_html; ?>';
+						/**
+						 * Update the notification drop-down by default.
+						 */
+						updateNoticeHtml = typeof updateNoticeHtml !== 'undefined' ? updateNoticeHtml : true;
 
-						jQuery.each( data, function( noticeType ) {
-
-							jQuery.each( data[noticeType], function( noticeKey ) {
-
-								noticeHtml += data[noticeType][noticeKey]['msg_html'];
-
-								noticeTypeCount[noticeType] = ++noticeTypeCount[noticeType] || 1;
-
-								noticeTotalCount++;
+						var ajaxNoticesData = {
+							action: 'wpsso_get_notices_json',
+							context: 'toolbar_notices',
+							_ajax_nonce: '<?php echo wp_create_nonce( WPSSO_NONCE_NAME ); ?>',
+							_notice_types: '<?php echo implode( ',', $this->tb_notices ); ?>',
+						}
+	
+						jQuery.getJSON( ajaxurl, ajaxNoticesData, function( data ) {
+	
+							var noticeHtml       = '';
+							var noticeStatus     = '';
+							var noticeTotalCount = 0;
+							var noticeTypeCount  = {};
+							var noNoticesHtml    = '<?php echo $no_notices_html; ?>';
+	
+							jQuery.each( data, function( noticeType ) {
+	
+								jQuery.each( data[ noticeType ], function( noticeKey ) {
+	
+									noticeHtml += data[ noticeType ][ noticeKey ][ 'msg_html' ];
+	
+									noticeTypeCount[ noticeType ] = ++noticeTypeCount[ noticeType ] || 1;
+	
+									noticeTotalCount++;
+								} );
 							} );
-						} );
+	
+							/**
+							 * Cleanup any pre-existing notice classes.
+							 */
+							jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).removeClass( 'have-notices-error' );
+							jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).removeClass( 'have-notices-warning' );
+							jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).removeClass( 'have-notices-info' );
+							jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).removeClass( 'have-notices-success' );
 
-						// Cleanup any pre-existing notice classes.
-						jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).removeClass( 'have-notices-error' );
-						jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).removeClass( 'have-notices-warning' );
-						jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).removeClass( 'have-notices-info' );
-						jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).removeClass( 'have-notices-success' );
+							if ( updateNoticeHtml ) {
 
-						if ( noticeHtml ) {
-							jQuery( '#wp-admin-bar-wpsso-toolbar-notices-container' ).html( noticeHtml );
-							jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).addClass( 'have-notices' );
-						} else {
-							jQuery( '#wp-admin-bar-wpsso-toolbar-notices-container' ).html( noNoticesHtml );
-							jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).removeClass( 'have-notices' );
-						}
+								if ( noticeHtml ) {
 
-						jQuery( '#wpsso-toolbar-notices-count' ).html( noticeTotalCount );
+									jQuery( '#wp-admin-bar-wpsso-toolbar-notices-container' ).html( noticeHtml );
+									jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).addClass( 'have-notices' );
 
-						if ( noticeTotalCount ) {
+								} else {
 
-							var noticeStatus = '';
-
-							if ( noticeTypeCount['err'] ) {
-								noticeStatus = 'error';
-							} else if ( noticeTypeCount['warn'] ) {
-								noticeStatus = 'warning';
-							} else if ( noticeTypeCount['inf'] ) {
-								noticeStatus = 'info';
-							} else if ( noticeTypeCount['upd'] ) {
-								noticeStatus = 'success';
+									/**
+									 * Add "No new SSO notifications." text to the SSO drop-down.
+									 */
+									jQuery( '#wp-admin-bar-wpsso-toolbar-notices-container' ).html( noNoticesHtml );
+									jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).removeClass( 'have-notices' );
+								}
 							}
-
-							jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).addClass( 'have-notices-' + noticeStatus );
-						}
-					} );
-				} );
+	
+							jQuery( '#wpsso-toolbar-notices-count' ).html( noticeTotalCount );
+	
+							if ( noticeTotalCount ) {
+	
+								var noticeStatus = '';
+	
+								if ( noticeTypeCount[ 'err' ] ) {
+									noticeStatus = 'error';
+								} else if ( noticeTypeCount[ 'warn' ] ) {
+									noticeStatus = 'warning';
+								} else if ( noticeTypeCount[ 'inf' ] ) {
+									noticeStatus = 'info';
+								} else if ( noticeTypeCount[ 'upd' ] ) {
+									noticeStatus = 'success';
+								}
+	
+								jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).addClass( 'have-notices-' + noticeStatus );
+							}
+						} );
+					}
+				}
 			</script>
 			<?php
 		}
