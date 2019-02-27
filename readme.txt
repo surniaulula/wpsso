@@ -420,14 +420,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.24.0-dev.2 (2019/02/26)**
+**Version 4.24.0-b.1 (2019/02/27)**
 
 * *New Features*
 	* None.
 * *Improvements*
 	* Added a new 'wpsso-thumbnail' image size (600x315px cropped by default) for the Schema 'thumbnailUrl' property and the "meta name thumbnail" tag.
 * *Bugfixes*
-	* Fixed test for `apache_setenv()` (which may or may not exist) when exporting settings.
+	* Fixed an optional `apache_setenv()` function call when exporting settings.
 * *Developer Notes*
 	* None.
 
@@ -641,9 +641,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.24.0-dev.2 =
+= 4.24.0-b.1 =
 
-(2019/02/26) Added a new 'wpsso-thumbnail' image size (600x315px cropped by default) for the Schema 'thumbnailUrl' property the "meta name thumbnail" tag.
+(2019/02/27) Added a new 'wpsso-thumbnail' image size (600x315px cropped by default) for the Schema 'thumbnailUrl' property the "meta name thumbnail" tag.
 
 = 4.23.1 =
 
