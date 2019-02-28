@@ -420,7 +420,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.24.0-b.1 (2019/02/27)**
+**Version 4.24.0-rc.1 (2019/02/28)**
 
 * *New Features*
 	* None.
@@ -641,9 +641,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.24.0-b.1 =
+= 4.24.0-rc.1 =
 
-(2019/02/27) Added a new 'wpsso-thumbnail' image size (600x315px cropped by default) for the Schema 'thumbnailUrl' property the "meta name thumbnail" tag.
+(2019/02/28) Added a new 'wpsso-thumbnail' image size (600x315px cropped by default) for the Schema 'thumbnailUrl' property the "meta name thumbnail" tag.
 
 = 4.23.1 =
 
