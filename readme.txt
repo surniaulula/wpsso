@@ -420,7 +420,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.24.0-rc.1 (2019/02/28)**
+**Version 4.24.0 (2019/03/01)**
 
 * *New Features*
 	* None.
@@ -487,165 +487,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Updated the SucomUtilWP::raw_get_site_url() method to use the WP_SITEURL constant when available.
 	* Updated the required minimum PHP version from 5.4 to 5.5.
 
-**Version 4.21.0 (2019/01/23)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* Added a new "meta name thumbnail" meta tag.
-	* Added new status under the SSO &gt; Dashboard &gt; Standard Features metabox:
-		* Use Filtered (SEO) Title
-		* Use WordPress Content Filters
-		* Use WordPress Excerpt Filters
-	* Added new options under the SSO &gt; Advanced &gt; Custom Meta tab:
-		* How-To Steps Custom Field
-		* How-To Supplies Custom Field
-		* How-To Tools Custom Field
-* *Bugfixes*
-	* None.
-* *Developer Notes*
-	* Added a new SucomPlugin class.
-	* Added a new WpssoMetaName class.
-	* Renamed the WpssoMeta class to WpssoWpMeta.
-	* Moved several WordPress related methods from the SucomUtil class to the SucomUtilWP class.
-	* Optimized the WpssoOptions check_banner_image_size() call by moving it from check_options() to refresh_image_url_sizes().
-	* Changed calls from 'SucomUtil' to 'self' in the WpssoUtil class (which extends SucomUtil).
-	* Renamed the SucomUtil is_opt_id() method to is_valid_option_id().
-
-**Version 4.20.0 (2019/01/15)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* Optimized the checking of updates when an Authentication ID is changed (Pro version).
-* *Bugfixes*
-	* Fixed an incorrect SucomNotice method call when upgrading post/term/user meta.
-* *Developer Notes*
-	* Renamed the SucomUtil is_doing_block_editor() method to doing_block_editor().
-	* Removed the DOING_BLOCK_EDITOR constant.
-
-**Version 4.19.0 (2019/01/13)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* Updated the default term description strings (ie. when the term does not have a description).
-	* Improved cell spacing in the SSO &gt; Add-ons and Licenses settings pages.
-	* Renamed option labels:
-		* "Apply WordPress Content Filters" to "Use WordPress Content Filters".
-		* "Apply WordPress Excerpt Filters" to "Use WordPress Excerpt Filters".
-* *Bugfixes*
-	* None.
-* *Developer Notes*
-	* Renamed filters:
-		* 'wpsso_user_object_description' to 'wpsso_user_archive_description'
-		* 'wpsso_user_object_title' to 'wpsso_user_archive_title'
-	* Added new filters:
-		* 'wpsso_category_archive_description'
-		* 'wpsso_daily_archive_description'
-		* 'wpsso_monthly_archive_description'
-		* 'wpsso_tag_archive_description'
-		* 'wpsso_term_archive_description'
-		* 'wpsso_yearly_archive_description'
-	* Updated the SucomUtil protect_filter_value() method arguments.
-	* Added a new SucomUtil unprotect_filter_value() method.
-	* Added a new SucomUtil raw_do_option() method.
-
-**Version 4.18.4 (2019/01/09)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* Added the Schema type https://health-lifesci.schema.org/MedicalEntity and it's sub-types.
-* *Bugfixes*
-	* None.
-* *Developer Notes*
-	* Added a fallback call to `do_blocks()` when the "Apply WordPress Content Filters" option is disabled.
-	* Added new functions to get a single og image array for posts, terms, and users:
-		* wpsso_get_mod_og_image( array $mod, $size_name = 'thumbnail' );
-		* wpsso_get_post_og_image( $post_id, $size_name = 'thumbnail' );
-		* wpsso_get_term_og_image( $term_id, $size_name = 'thumbnail' );
-		* wpsso_get_user_og_image( $user_id, $size_name = 'thumbnail' );
-
-**Version 4.18.3 (2018/12/30)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* None.
-* *Bugfixes*
-	* Fixed issue with text + hashtags returning a single space for excerpts in WpsoPage::get_caption().
-* *Developer Notes*
-	* Added new methods to compliment the SucomUtil update_transient_array() method:
-		* SucomUtil get_transient_array().
-		* SucomUtil delete_transient_array().
-
-**Version 4.18.2 (2018/12/22)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* None.
-* *Bugfixes*
-	* Fixed WooCommerce Shop page $mod array element values (Pro version).
-* *Developer Notes*
-	* Added a new 'is_post_type_archive' array element in the $mod array.
-	* Added a filter to set the $mod 'post_type' to "product" and 'is_post_type_archive' to true for the WooCommerce Shop page (Pro version).
-
-**Version 4.18.1 (2018/12/19)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* Updated the Setup Guide with a new "Schema vs Google Rich Cards" section.
-	* Moved the wpsso/cache/ sub-folder to wp-content/cache/wpsso/. The wpsso/cache folder is no longer included in the plugin ZIP.
-* *Bugfixes*
-	* None.
-* *Developer Notes*
-	* Removed $wp_query as a salt for transient cache array index keys (created too much entropy).
-	* Updated the WPSSO_CACHEDIR and WPSSO_CACHEURL default values:
-		* Defines WPSSO_CACHEDIR as trailingslashit( WP_CONTENT_DIR ) . 'cache/wpsso/' if possible.
-		* Defines WPSSO_CACHEURL as content_url( 'cache/wpsso/' ) if possible.
-
-**Version 4.18.0 (2018/12/14)**
-
-* *New Features*
-	* Added a new SSO &gt; Tools settings page.
-	* Added new action buttons in the SSO &gt; Tools settings page:
-		* Export Plugin and Add-on Settings
-		* Import Plugin and Add-on Settings
-	* Added new options under the SSO &gt; Advanced &gt; Custom Meta tab:
-		* Product EAN Custom Field
-		* Product GTIN-8 Custom Field
-		* Product GTIN-12 Custom Field
-		* Product GTIN-13 Custom Field
-		* Product GTIN-14 Custom Field
-		* Product ISBN Custom Field
-	* Added new options in the Document SSO metabox for products (Pro version):
-		* Product EAN
-		* Product GTIN-8
-		* Product GTIN-12
-		* Product GTIN-13
-		* Product GTIN-14
-		* Product ISBN
-* *Improvements*
-	* Moved action buttons to the SSO &gt; Tools settings page:
-		* Clear All Caches
-		* Clear All Caches and Short URLs
-		* Reset Metabox Layout
-		* Reset Dismissed Notices
-* *Bugfixes*
-	* None.
-* *Developer Notes*
-	* None.
-
 == Upgrade Notice ==
 
-= 4.24.0-rc.1 =
+= 4.24.0 =
 
-(2019/02/28) Added a new 'wpsso-thumbnail' image size (600x315px cropped by default) for the Schema 'thumbnailUrl' property the "meta name thumbnail" tag.
-
-= 4.23.1 =
-
-(2019/02/22) Added support for the https://health-lifesci.schema.org/MedicineSystem type and its sub-types.
+(2019/03/01) Added a new 'wpsso-thumbnail' image size (600x315px cropped by default) for the Schema 'thumbnailUrl' property the "meta name thumbnail" tag.
 
