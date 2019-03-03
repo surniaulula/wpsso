@@ -120,7 +120,7 @@ if ( ! class_exists( 'WpssoSettingImageDimensions' ) && class_exists( 'WpssoAdmi
 					'<td>'.$this->form->get_input_image_dimensions( 'tc_lrg_img' ).'</td>';	// $use_opts = false
 
 					$table_rows[ 'thumb_img_dimensions' ] = '' .
-					$this->form->get_th_html( _x( 'Thumbnail Image', 'option label', 'wpsso' ), null, 'thumb_img_dimensions' ).
+					$this->form->get_th_html( _x( 'Thumbnail Images', 'option label', 'wpsso' ), null, 'thumb_img_dimensions' ).
 					'<td>'.$this->form->get_input_image_dimensions( 'thumb_img' ).'</td>';	// $use_opts = false
 
 					break;

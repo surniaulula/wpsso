@@ -412,11 +412,10 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 				if ( ! empty( $mixed[ 'is_post' ] ) ) {
 
-					if ( ! empty( $mixed[ 'post_type' ] ) ) {
+					if ( ! empty( $mixed[ 'post_type' ] ) &&
+						! empty( $this->p->options[ 'tc_type_for_' . $mixed[ 'post_type' ] ] ) ) {
 
-						if ( ! empty( $this->p->options[ 'tc_type_for_' . $mixed[ 'post_type' ] ] ) ) {
-							$card_type = $this->p->options[ 'tc_type_for_' . $mixed[ 'post_type' ] ];
-						}
+						$card_type = $this->p->options[ 'tc_type_for_' . $mixed[ 'post_type' ] ];
 
 					} elseif ( ! empty( $this->p->options[ 'tc_type_singular' ] ) ) {
 						$card_type = $this->p->options[ 'tc_type_singular' ];

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.24.0\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.24.1-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2869,32 +2869,32 @@ msgid "Priority Image Information"
 msgstr ""
 
 #: lib/gettext-pro.php:141 lib/gettext-pro.php:158 lib/gpl/admin/meta.php:194
-#: lib/gpl/admin/meta.php:358 lib/pro/admin/meta.php:203
-#: lib/pro/admin/meta.php:357
+#: lib/gpl/admin/meta.php:359 lib/pro/admin/meta.php:203
+#: lib/pro/admin/meta.php:359
 msgctxt "option label"
 msgid "Maximum Images"
 msgstr ""
 
 #: lib/gettext-pro.php:142 lib/gettext-pro.php:154 lib/gettext-pro.php:159
-#: lib/gpl/admin/meta.php:205 lib/gpl/admin/meta.php:316
-#: lib/gpl/admin/meta.php:369 lib/pro/admin/meta.php:213
-#: lib/pro/admin/meta.php:318 lib/pro/admin/meta.php:367
+#: lib/gpl/admin/meta.php:205 lib/gpl/admin/meta.php:317
+#: lib/gpl/admin/meta.php:370 lib/pro/admin/meta.php:213
+#: lib/pro/admin/meta.php:319 lib/pro/admin/meta.php:369
 msgctxt "option label"
 msgid "Image Dimensions"
 msgstr ""
 
 #: lib/gettext-pro.php:143 lib/gettext-pro.php:155 lib/gettext-pro.php:160
-#: lib/gpl/admin/meta.php:213 lib/gpl/admin/meta.php:325
-#: lib/gpl/admin/meta.php:378 lib/pro/admin/meta.php:220
-#: lib/pro/admin/meta.php:326 lib/pro/admin/meta.php:375
+#: lib/gpl/admin/meta.php:213 lib/gpl/admin/meta.php:326
+#: lib/gpl/admin/meta.php:379 lib/pro/admin/meta.php:220
+#: lib/pro/admin/meta.php:327 lib/pro/admin/meta.php:377
 msgctxt "option label"
 msgid "Image ID"
 msgstr ""
 
 #: lib/gettext-pro.php:144 lib/gettext-pro.php:156 lib/gettext-pro.php:161
-#: lib/gpl/admin/meta.php:221 lib/gpl/admin/meta.php:334
-#: lib/gpl/admin/meta.php:387 lib/pro/admin/meta.php:227
-#: lib/pro/admin/meta.php:334 lib/pro/admin/meta.php:383
+#: lib/gpl/admin/meta.php:221 lib/gpl/admin/meta.php:335
+#: lib/gpl/admin/meta.php:388 lib/pro/admin/meta.php:227
+#: lib/pro/admin/meta.php:335 lib/pro/admin/meta.php:385
 msgctxt "option label"
 msgid "or an Image URL"
 msgstr ""
@@ -2947,14 +2947,14 @@ msgctxt "option label"
 msgid "Video Description"
 msgstr ""
 
-#: lib/gettext-pro.php:153 lib/gpl/admin/meta.php:309
-#: lib/pro/admin/meta.php:312
+#: lib/gettext-pro.php:153 lib/gpl/admin/meta.php:310
+#: lib/pro/admin/meta.php:313
 msgctxt "metabox title"
-msgid "Twitter Card"
+msgid "Twitter Summary Card"
 msgstr ""
 
-#: lib/gettext-pro.php:157 lib/gpl/admin/meta.php:350
-#: lib/pro/admin/meta.php:350
+#: lib/gettext-pro.php:157 lib/gpl/admin/meta.php:351
+#: lib/pro/admin/meta.php:352
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup / Pinterest"
 msgstr ""
@@ -5898,7 +5898,7 @@ msgstr ""
 
 #: lib/setting/image-dimensions.php:123
 msgctxt "option label"
-msgid "Thumbnail Image"
+msgid "Thumbnail Images"
 msgstr ""
 
 #: lib/setting/social-accounts.php:38
