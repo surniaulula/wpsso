@@ -420,6 +420,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.24.1-dev.1 (2019/03/03)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* None.
+* *Bugfixes*
+	* Fixed defining the Twitter card type for non-post object post types (like pages and products).
+* *Developer Notes*
+	* None.
+
 **Version 4.24.0 (2019/03/01)**
 
 * *New Features*
@@ -488,6 +499,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Updated the required minimum PHP version from 5.4 to 5.5.
 
 == Upgrade Notice ==
+
+= 4.24.1-dev.1 =
+
+(2019/03/03) Fixed defining the Twitter card type for non-post object post types (like pages and products).
 
 = 4.24.0 =
 
