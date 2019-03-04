@@ -1420,18 +1420,19 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'product_isbn':
 				case 'product_currency':
 				case 'product_size':
+				case 'plugin_bitly_login':
 				case 'plugin_col_title_width':
 				case 'plugin_col_title_width_max':
 				case 'plugin_col_def_width':
 				case 'plugin_col_def_width_max':
+				case 'plugin_head_attr_filter_name':
+				case 'plugin_html_attr_filter_name':
 				case 'plugin_img_alt_prefix':
 				case 'plugin_p_cap_prefix':
-				case 'plugin_bitly_login':
 				case 'plugin_yourls_username':
 				case 'plugin_yourls_password':
 				case 'plugin_yourls_token':
 				case ( 0 === strpos( $base_key, 'plugin_cf_' ) ? true : false ):	// Value is the name of a meta key.
-				case ( false !== strpos( $base_key, '_filter_name' ) ? true : false ):
 
 					return 'one_line';
 
