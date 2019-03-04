@@ -3608,8 +3608,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		/**
 		 * Wrap a filter to return its original / unchanged value.
 		 * Returns true if protection filters were added, false if protection filters are not required.
-		 *
-		 * Since WPSSO Core v3.46.2.
 		 */
 		public static function protect_filter_value( $filter_name, $auto_unprotect = true ) {
 
@@ -3641,6 +3639,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return true;
 		}
 
+		public static function get_original_filter_value( $filter_name ) {
+
+			if ( isset( self::$cache_filter_values[ $filter_name ][ 'original_value' ] ) ) {
+				return self::$cache_filter_values[ $filter_name ][ 'original_value' ];
+			}
+
+			return null;
+		}
+
 		public static function get_modified_filter_value( $filter_name ) {
 
 			if ( isset( self::$cache_filter_values[ $filter_name ][ 'modified_value' ] ) ) {
@@ -3655,6 +3662,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$filter_name = current_filter();
 
 			self::$cache_filter_values[ $filter_name ][ 'original_value' ] = $value;	// Save value to static cache.
+			self::$cache_filter_values[ $filter_name ][ 'modified_value' ] = $value;	// Save value to static cache.
 
 			return $value;
 		}
@@ -3663,19 +3671,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$filter_name = current_filter();
 
-			unset( self::$cache_filter_values[ $filter_name ][ 'modified_value' ] );			// Just in case.
-
 			if ( isset( self::$cache_filter_values[ $filter_name ][ 'original_value' ] ) ) {		// Just in case.
 
+				self::$cache_filter_values[ $filter_name ][ 'modified_value' ] = $value;		// Save for get_modified_filter_value().
+
 				if ( $value !== self::$cache_filter_values[ $filter_name ][ 'original_value' ] ) {
-
-					self::$cache_filter_values[ $filter_name ][ 'modified_value' ] = $value;	// Save for get_modified_filter_value().
-
 					$value = self::$cache_filter_values[ $filter_name ][ 'original_value' ];	// Restore value from static cache.
 				}
 			}
 
 			if ( ! empty( self::$cache_filter_values[ $filter_name ][ 'auto_unprotect' ] ) ) {
+
 				remove_filter( $filter_name, array( __CLASS__, __FUNCTION__ ), self::get_min_int() );
 				remove_filter( $filter_name, array( __CLASS__, __FUNCTION__ ), self::get_max_int() );
 			}

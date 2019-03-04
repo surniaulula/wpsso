@@ -284,10 +284,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			if ( ! $filter_title ) {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'protecting filter value for wp_title' );
+					$this->p->debug->log( 'protecting filter value for wp_title (auto_unprotect is false)' );
 				}
 
-				SucomUtil::protect_filter_value( 'wp_title', $auto_unprotect = true );
+				SucomUtil::protect_filter_value( 'wp_title', $auto_unprotect = false );
 			}
 
 			/**
@@ -426,8 +426,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			if ( ! $filter_title ) {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'ignored modified wp_title value: ' . SucomUtil::get_modified_filter_value( 'wp_title' ) );
+					$this->p->debug->log( 'original wp_title value: ' . SucomUtil::get_original_filter_value( 'wp_title' ) );
+					$this->p->debug->log( 'modified wp_title value: ' . SucomUtil::get_modified_filter_value( 'wp_title' ) );
+					$this->p->debug->log( 'unprotecting filter value for wp_title' );
 				}
+
+				SucomUtil::unprotect_filter_value( 'wp_title' );
 			}
 
 			/**
