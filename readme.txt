@@ -427,7 +427,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Improvements*
 	* The Twitter Card section under the Document SSO &gt; Priority Media tab will now show only for the Summary and Summary Large Image card type.
 * *Bugfixes*
-	* None.
+	* Fixed protection of original 'wp_title' filter value.
 * *Developer Notes*
 	* French translation updates.
 
