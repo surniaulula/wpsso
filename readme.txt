@@ -420,14 +420,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.24.1-dev.1 (2019/03/03)**
+**Version 4.24.1 (2019/03/04)**
 
 * *New Features*
 	* None.
 * *Improvements*
 	* None.
 * *Bugfixes*
-	* Fixed defining the Twitter card type for non-post object post types (like pages and products).
+	* Fixed the Twitter card type value for singular non-post types (like pages and products).
 * *Developer Notes*
 	* None.
 
@@ -500,11 +500,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.24.1-dev.1 =
+= 4.24.1 =
 
-(2019/03/03) Fixed defining the Twitter card type for non-post object post types (like pages and products).
-
-= 4.24.0 =
-
-(2019/03/01) Added a new 'wpsso-thumbnail' image size (600x315px cropped by default) for the Schema 'thumbnailUrl' property the "meta name thumbnail" tag.
+(2019/03/04) Fixed the Twitter card type value for singular non-post types (like pages and products).
 
