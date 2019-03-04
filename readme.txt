@@ -429,7 +429,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None.
 * *Developer Notes*
-	* None.
+	* French translation updates.
 
 **Version 4.24.1 (2019/03/04)**
 
