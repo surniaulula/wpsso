@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.24.1-dev.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.24.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3216,7 +3216,7 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
 #: lib/loader.php:175 lib/loader.php:201 lib/post.php:278 lib/register.php:300
-#: lib/term.php:255 lib/user.php:222 lib/util.php:485 lib/util.php:3169
+#: lib/term.php:255 lib/user.php:222 lib/util.php:485 lib/util.php:3170
 msgid "%s warning:"
 msgstr ""
 
@@ -3782,7 +3782,7 @@ msgid ""
 "%s</em>\" message - after enabling this option."
 msgstr ""
 
-#: lib/messages.php:622 lib/util.php:3453
+#: lib/messages.php:622 lib/util.php:3454
 msgid "No options available."
 msgstr ""
 
@@ -5612,7 +5612,7 @@ msgstr ""
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
 #: lib/post.php:264 lib/term.php:241 lib/user.php:208 lib/util.php:471
-#: lib/util.php:3141
+#: lib/util.php:3142
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -6415,13 +6415,13 @@ msgid ""
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max.
-#: lib/util.php:3144
+#: lib/util.php:3145
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3161
+#: lib/util.php:3162
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -6430,33 +6430,33 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3161
+#: lib/util.php:3162
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3448
+#: lib/util.php:3449
 msgid "Have you hidden the Pro options?"
 msgstr ""
 
-#: lib/util.php:3483
+#: lib/util.php:3484
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3486
+#: lib/util.php:3487
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:3491
+#: lib/util.php:3492
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3494
+#: lib/util.php:3495
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

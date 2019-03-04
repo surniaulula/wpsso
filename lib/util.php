@@ -2518,6 +2518,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						$numpages = substr_count( $post_obj->post_content, '<!--nextpage-->' ) + 1;
 
 						if ( $numpages && get_query_var( 'page' ) <= $numpages ) {
+
 							if ( ! $wp_rewrite->using_permalinks() || false !== strpos( $url, '?' ) ) {
 								$url = add_query_arg( 'page', get_query_var( 'page' ), $url );
 							} else {
