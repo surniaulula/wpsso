@@ -420,12 +420,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.24.2-dev.1 (TBD)**
+**Version 4.24.2-dev.1 (2019/03/04)**
 
 * *New Features*
 	* None.
 * *Improvements*
-	* None.
+	* The Twitter Card section under the Document SSO &gt; Priority Media tab will now show only for the Summary and Summary Large Image card type.
 * *Bugfixes*
 	* None.
 * *Developer Notes*
@@ -513,7 +513,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.24.2-dev.1 =
 
-(TBD) None.
+(2019/03/04) The Twitter Card section under the Document SSO &gt; Priority Media tab will now show only for the Summary and Summary Large Image card type.
 
 = 4.24.1 =
 
