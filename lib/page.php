@@ -62,7 +62,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					'max_len'      => $max_len,
 					'mod'          => $mod,
 					'read_cache'   => $read_cache,
-					'add_hashtags' => $add_hashtags,	// true/false/numeric
+					'add_hashtags' => $add_hashtags,	// True, false, or numeric.
 					'do_encode'    => $do_encode,
 					'md_key'       => $md_key,
 				) );
@@ -85,13 +85,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
 
-			if ( false === $md_key ) {	// false would return the complete meta array
+			if ( false === $md_key ) {	// False would return the complete meta array.
 
 				$md_key       = '';
 				$md_key_title = '';
 				$md_key_desc  = '';
 
-			} elseif ( true === $md_key ) {	// true signals the use of the standard / fallback value
+			} elseif ( true === $md_key ) {	// True signals the use of the standard / fallback value.
 
 				switch ( $type ) {
 
@@ -236,7 +236,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					'dots'         => $dots,
 					'mod'          => $mod,
 					'read_cache'   => $read_cache,
-					'add_hashtags' => $add_hashtags,	// true/false/numeric
+					'add_hashtags' => $add_hashtags,	// True, false, or numeric.
 					'do_encode'    => $do_encode,
 					'md_key'       => $md_key,
 					'sep'          => $sep,
@@ -527,7 +527,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					'dots'         => $dots,
 					'mod'          => $mod,
 					'read_cache'   => $read_cache,
-					'add_hashtags' => $add_hashtags, 	// true | false | numeric
+					'add_hashtags' => $add_hashtags, 	// True, false, or numeric.
 					'do_encode'    => $do_encode,
 					'md_key'       => $md_key,
 				) );
@@ -946,11 +946,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$filter_content = empty( $this->p->options[ 'plugin_filter_content' ] ) ? false : true;
 			$filter_content = apply_filters( $this->p->lca . '_can_filter_the_content', $filter_content, $mod );
 
-			static $cache_exp_secs = null;	// filter the cache expiration value only once
+			static $cache_exp_secs = null;	// Filter the cache expiration value only once.
 
 			$cache_md5_pre = $this->p->lca . '_c_';
 
-			if ( ! isset( $cache_exp_secs ) ) {	// filter cache expiration if not already set
+			if ( ! isset( $cache_exp_secs ) ) {	// Filter cache expiration if not already set.
 				$cache_exp_filter = $this->p->cf[ 'wp' ][ 'wp_cache' ][ $cache_md5_pre ][ 'filter' ];
 				$cache_opt_key    = $this->p->cf[ 'wp' ][ 'wp_cache' ][ $cache_md5_pre ][ 'opt_key' ];
 				$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, $this->p->options[ $cache_opt_key ] );
@@ -1086,7 +1086,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			$content = preg_replace( '/[\s\n\r]+/s', ' ', $content );		// put everything on one line
+			$content = preg_replace( '/[\s\n\r]+/s', ' ', $content );		// Put everything on one line.
 			$content = preg_replace( '/^.*<!--' . $this->p->lca . '-content-->(.*)<!--\/' . 
 				$this->p->lca . '-content-->.*$/', '$1', $content );
 
