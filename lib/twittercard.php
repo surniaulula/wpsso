@@ -273,7 +273,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 				if ( $mod[ 'is_post' ] ) {
 
-					list( $card_type, $size_name, $md_pre ) = $this->get_image_card_info( $mod );
+					list( $card_type, $card_label, $size_name, $md_pre ) = $this->get_card_info( $mod );
 					
 					/**
 					 * Post meta image.
@@ -347,7 +347,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				/**
 				 * Maybe term or user meta image.
 				 */
-				list( $card_type, $size_name, $md_pre ) = $this->get_image_card_info( 'default' );
+				list( $card_type, $card_label, $size_name, $md_pre ) = $this->get_card_info( 'default' );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $card_type . ' card: using default card type' );
@@ -394,21 +394,28 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 		/**
 		 * $mixed = 'singular' | 'default' | $mod.
 		 */
-		public function get_image_card_info( $mixed ) {
+		public function get_card_info( $mixed, $head = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			$card_type = 'summary';
+			$card_type  = 'summary';
+			$size_label = '';
+			$size_name  = '';
+			$md_pre     = '';
 
-			if ( is_string( $mixed ) ) {
+			if ( ! empty( $head[ 'twitter:card' ] ) ) {
+
+				$card_type = $head[ 'twitter:card' ];
+
+			} elseif ( is_string( $mixed ) ) {	// Aka 'singular' or 'default'.
 
 				if ( ! empty( $this->p->options[ 'tc_type_' . $mixed ] ) ) {
 					$card_type = $this->p->options[ 'tc_type_' . $mixed ];
 				}
 
-			} elseif ( is_array( $mixed ) ) {
+			} elseif ( is_array( $mixed ) ) {	// Aka $mod.
 
 				if ( ! empty( $mixed[ 'is_post' ] ) ) {
 
@@ -434,18 +441,35 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 			switch ( $card_type ) {
 
+				case 'app':
+
+					$card_label = _x( 'Twitter App Card', 'metabox title', 'wpsso' );
+					$size_name  = '';
+					$md_pre     = 'tc_app';
+
+					break;
+
+				case 'player':
+
+					$card_label = _x( 'Twitter Player Card', 'metabox title', 'wpsso' );
+					$size_name  = '';
+					$md_pre     = 'tc_play';
+
+					break;
+
 				case 'summary_large_image':
 
-					$size_name = $this->p->lca . '-tc-lrgimg';
-					$md_pre    = 'tc_lrg';
+					$card_label = _x( 'Twitter Summary Large Image Card', 'metabox title', 'wpsso' );
+					$size_name  = $this->p->lca . '-tc-lrgimg';
+					$md_pre     = 'tc_lrg';
 
 					break;
 
 				case 'summary':
-				default:
 
-					$size_name = $this->p->lca . '-tc-summary';
-					$md_pre    = 'tc_sum';
+					$card_label = _x( 'Twitter Summary Card', 'metabox title', 'wpsso' );
+					$size_name  = $this->p->lca . '-tc-summary';
+					$md_pre     = 'tc_sum';
 
 					break;
 			}
@@ -458,7 +482,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			 *		'tc_lrg',
 			 *	)
 			 */
-			$ret = array( $card_type, $size_name, $md_pre );
+			$ret = array( $card_type, $card_label, $size_name, $md_pre );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_arr( '$ret', $ret );

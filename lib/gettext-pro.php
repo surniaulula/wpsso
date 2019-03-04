@@ -150,7 +150,6 @@ _x( 'Video Embed HTML', 'option label', 'wpsso' );
 _x( 'or a Video URL', 'option label', 'wpsso' );
 _x( 'Video Name / Title', 'option label', 'wpsso' );
 _x( 'Video Description', 'option label', 'wpsso' );
-_x( 'Twitter Summary Card', 'metabox title', 'wpsso' );
 _x( 'Image Dimensions', 'option label', 'wpsso' );
 _x( 'Image ID', 'option label', 'wpsso' );
 _x( 'or an Image URL', 'option label', 'wpsso' );

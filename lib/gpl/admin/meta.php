@@ -296,46 +296,49 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 			/**
 			 * Twitter Card
 			 */
-			list( $card_type, $size_name, $tc_pre ) = $this->p->tc->get_image_card_info( $mod );
+			list( $card_type, $card_label, $size_name, $tc_pre ) = $this->p->tc->get_card_info( $mod, $head );
 
-			$media_info = $this->p->og->get_media_info( $size_name,
-				array( 'pid', 'img_url' ), $mod, $md_pre = 'og', $mt_pre = 'og' );
+			if ( ! empty( $size_name ) ) {
+
+				$media_info = $this->p->og->get_media_info( $size_name,
+					array( 'pid', 'img_url' ), $mod, $md_pre = 'og', $mt_pre = 'og' );
 	
-			$tc_tr_class = $form->in_options( '/^' . $tc_pre . '_img_/', true ) ? '' : 'hide_in_basic';	// Hide unless a custom twitter card image exists.
+				$tc_tr_class = $form->in_options( '/^' . $tc_pre . '_img_/', true ) ? '' : 'hide_in_basic';	// Hide unless a custom twitter card image exists.
 
-			$form_rows[ 'subsection_tc' ] = array(
-				'tr_class' => $tc_tr_class,
-				'td_class' => 'subsection',
-				'header'   => 'h4',
-				'label'    => _x( 'Twitter Summary Card', 'metabox title', 'wpsso' )
-			);
+				$form_rows[ 'subsection_tc' ] = array(
+					'tr_class' => $tc_tr_class,
+					'td_class' => 'subsection',
+					'header'   => 'h4',
+					'label'    => $card_label,
+				);
 
-			$form_rows[ $tc_pre . '_img_dimensions' ] = array(
-				'tr_class' => $form->get_css_class_hide_img_dim( 'basic', $tc_pre . '_img' ),
-				'th_class' => 'medium',
-				'td_class' => 'blank',
-				'label'    => _x( 'Image Dimensions', 'option label', 'wpsso' ),
-				'tooltip'  => $tc_pre . '_img_dimensions',
-				'content'  => $form->get_no_input_image_dimensions( $tc_pre . '_img', true ),	// $use_opts is true.
-			);
+				$form_rows[ $tc_pre . '_img_dimensions' ] = array(
+					'tr_class' => $form->get_css_class_hide_img_dim( 'basic', $tc_pre . '_img' ),
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Image Dimensions', 'option label', 'wpsso' ),
+					'tooltip'  => $tc_pre . '_img_dimensions',
+					'content'  => $form->get_no_input_image_dimensions( $tc_pre . '_img', true ),	// $use_opts is true.
+				);
 
-			$form_rows[ $tc_pre . '_img_id' ] = array(
-				'tr_class' => $tc_tr_class,
-				'th_class' => 'medium',
-				'td_class' => 'blank',
-				'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
-				'tooltip'  => 'meta-' . $tc_pre . '_img_id',
-				'content'  => $form->get_no_input_image_upload( $tc_pre . '_img', $media_info[ 'pid' ], true ),
-			);
+				$form_rows[ $tc_pre . '_img_id' ] = array(
+					'tr_class' => $tc_tr_class,
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-' . $tc_pre . '_img_id',
+					'content'  => $form->get_no_input_image_upload( $tc_pre . '_img', $media_info[ 'pid' ], true ),
+				);
 
-			$form_rows[ $tc_pre . '_img_url' ] = array(
-				'tr_class' => $tc_tr_class,
-				'th_class' => 'medium',
-				'td_class' => 'blank',
-				'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
-				'tooltip'  => 'meta-' . $tc_pre . '_img_url',
-				'content'  => $form->get_no_input_value( $media_info[ 'img_url' ], 'wide' ),
-			);
+				$form_rows[ $tc_pre . '_img_url' ] = array(
+					'tr_class' => $tc_tr_class,
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-' . $tc_pre . '_img_url',
+					'content'  => $form->get_no_input_value( $media_info[ 'img_url' ], 'wide' ),
+				);
+			}
 
 			/**
 			 * Structured Data / Schema Markup / Pinterest

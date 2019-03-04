@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 4.24.0\n"
+"Project-Id-Version: WPSSO Core 4.24.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-02-26 13:07-0800\n"
-"PO-Revision-Date: 2019-02-26 13:11-0800\n"
+"POT-Creation-Date: 2019-03-04 05:00-0800\n"
+"PO-Revision-Date: 2019-03-04 05:26-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -347,8 +347,8 @@ msgstr "SVP contacter votre hébergeur pour installer et activer l'extension PHP
 msgid "The <a href=\"%1$s\">PHP %2$s extension module</a> is loaded but the %3$s function is missing."
 msgstr "Le <a href=\"%1$s\">module d'extension PHP %2$s</a> est chargé mais la fonction %3$s est manquante."
 
-#: lib/admin.php:2365 lib/gettext-pro.php:169 lib/gettext-pro.php:172
-#: lib/gettext-pro.php:175 lib/pro/media/slideshare.php:192
+#: lib/admin.php:2365 lib/gettext-pro.php:168 lib/gettext-pro.php:171
+#: lib/gettext-pro.php:174 lib/pro/media/slideshare.php:192
 #: lib/pro/media/vimeo.php:157 lib/pro/media/wistia.php:314 lib/util.php:1909
 msgid "Please contact your hosting provider to have the missing PHP function installed."
 msgstr "SVP contacter votre hébergeur pour installer la fonction PHP manquante."
@@ -357,7 +357,7 @@ msgstr "SVP contacter votre hébergeur pour installer la fonction PHP manquante.
 msgid "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to discourage search engine and social sites from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck the option to allow search engines and social sites to access your content."
 msgstr "L'option de WordPress <a href=\"%s\">Visibilité pour les moteurs de recherche</a> est définie afin de demander aux moteurs de recherche et sites sociaux de ne pas indexer ce site. Ceci n'est pas compatible avec le but de partager du contenu sur les sites sociaux &mdash; veuillez décocher cette option pour autoriser les moteurs de recherche et sites sociaux d'accéder votre contenu."
 
-#: lib/admin.php:2395 lib/gettext-pro.php:218
+#: lib/admin.php:2395 lib/gettext-pro.php:217
 #: lib/pro/rating/wppostratings.php:51
 msgid "Plugin conflict detected"
 msgstr "Conflit détecté"
@@ -537,7 +537,7 @@ msgstr "Facebook profile URL"
 #. translators: please ignore - translation uses a different text domain
 #: lib/admin.php:2667 lib/admin.php:2774
 msgid "Facebook App ID"
-msgstr "Facebook App ID"
+msgstr "ID d'application Facebook"
 
 #. translators: please ignore - translation uses a different text domain
 #: lib/admin.php:2669 lib/admin.php:2721
@@ -1179,7 +1179,7 @@ msgstr "WPSSO Core veille à ce que votre contenu ait fière allure sur tous les
 #: lib/gettext-config.php:36
 msgctxt "plugin description"
 msgid "WPSSO Core add-on provides Apple Store / iTunes and Google Play App meta tags for Apple's mobile Safari banner and Twitter's App Card."
-msgstr "Ajout WPSSO Core pour fournir des balises méta Apple Store / iTunes et Google Play App pour mobile Safari de Apple et la carte App de Twitter."
+msgstr "Ajout WPSSO Core pour fournir des balises méta Apple Store / iTunes et Google Play app pour mobile Safari de Apple et la carte app de Twitter."
 
 #: lib/gettext-config.php:37
 msgctxt "plugin description"
@@ -2235,7 +2235,7 @@ msgstr "Devise par défaut"
 msgid "Posts, Pages, Custom Post Types"
 msgstr "Articles, pages, types d'articles personnalisés"
 
-#: lib/gettext-pro.php:30 lib/gettext-pro.php:203
+#: lib/gettext-pro.php:30 lib/gettext-pro.php:202
 #: lib/gpl/admin/advanced.php:246 lib/media.php:499 lib/media.php:663
 #: lib/media.php:1557 lib/pro/admin/advanced.php:246
 #: lib/pro/util/checkimgdims.php:92
@@ -2406,14 +2406,14 @@ msgctxt "metabox title"
 msgid "Bitly URL Shortener"
 msgstr "Raccourcisseur de lien Bitly"
 
-#: lib/gettext-pro.php:66 lib/gettext-pro.php:189
+#: lib/gettext-pro.php:66 lib/gettext-pro.php:188
 #: lib/gpl/admin/advanced.php:436 lib/pro/admin/advanced.php:430
 #: lib/pro/util/shorten.php:268
 msgctxt "option label"
 msgid "Bitly Username"
 msgstr "Nom d'utilisateur Bitly"
 
-#: lib/gettext-pro.php:67 lib/gettext-pro.php:191
+#: lib/gettext-pro.php:67 lib/gettext-pro.php:190
 #: lib/gpl/admin/advanced.php:441 lib/pro/admin/advanced.php:435
 #: lib/pro/util/shorten.php:283
 msgctxt "option label"
@@ -2444,7 +2444,7 @@ msgctxt "metabox title"
 msgid "DLMY.App URL Shortener"
 msgstr "Raccourcisseur de lien DLMY.App"
 
-#: lib/gettext-pro.php:72 lib/gettext-pro.php:194
+#: lib/gettext-pro.php:72 lib/gettext-pro.php:193
 #: lib/gpl/admin/advanced.php:462 lib/pro/admin/advanced.php:456
 #: lib/pro/util/shorten.php:312
 msgctxt "option label"
@@ -2457,7 +2457,7 @@ msgctxt "metabox title"
 msgid "Ow.ly URL Shortener"
 msgstr "Raccourcisseur de lien Ow.ly"
 
-#: lib/gettext-pro.php:74 lib/gettext-pro.php:196
+#: lib/gettext-pro.php:74 lib/gettext-pro.php:195
 #: lib/gpl/admin/advanced.php:472 lib/pro/admin/advanced.php:466
 #: lib/pro/util/shorten.php:335
 msgctxt "option label"
@@ -2470,7 +2470,7 @@ msgctxt "metabox title"
 msgid "Your Own URL Shortener (YOURLS)"
 msgstr "Your Own URL Shortener (YOURLS)"
 
-#: lib/gettext-pro.php:76 lib/gettext-pro.php:198
+#: lib/gettext-pro.php:76 lib/gettext-pro.php:197
 #: lib/gpl/admin/advanced.php:482 lib/pro/admin/advanced.php:476
 #: lib/pro/util/shorten.php:383
 msgctxt "option label"
@@ -2763,33 +2763,33 @@ msgctxt "metabox title"
 msgid "Priority Image Information"
 msgstr "Informations d'image prioritaire"
 
-#: lib/gettext-pro.php:141 lib/gettext-pro.php:158 lib/gpl/admin/meta.php:194
-#: lib/gpl/admin/meta.php:358 lib/pro/admin/meta.php:203
-#: lib/pro/admin/meta.php:357
+#: lib/gettext-pro.php:141 lib/gettext-pro.php:157 lib/gpl/admin/meta.php:194
+#: lib/gpl/admin/meta.php:362 lib/pro/admin/meta.php:203
+#: lib/pro/admin/meta.php:362
 msgctxt "option label"
 msgid "Maximum Images"
 msgstr "Images maximum"
 
-#: lib/gettext-pro.php:142 lib/gettext-pro.php:154 lib/gettext-pro.php:159
-#: lib/gpl/admin/meta.php:205 lib/gpl/admin/meta.php:316
-#: lib/gpl/admin/meta.php:369 lib/pro/admin/meta.php:213
-#: lib/pro/admin/meta.php:318 lib/pro/admin/meta.php:367
+#: lib/gettext-pro.php:142 lib/gettext-pro.php:153 lib/gettext-pro.php:158
+#: lib/gpl/admin/meta.php:205 lib/gpl/admin/meta.php:319
+#: lib/gpl/admin/meta.php:373 lib/pro/admin/meta.php:213
+#: lib/pro/admin/meta.php:321 lib/pro/admin/meta.php:372
 msgctxt "option label"
 msgid "Image Dimensions"
 msgstr "Dimensions de l'image"
 
-#: lib/gettext-pro.php:143 lib/gettext-pro.php:155 lib/gettext-pro.php:160
-#: lib/gpl/admin/meta.php:213 lib/gpl/admin/meta.php:325
-#: lib/gpl/admin/meta.php:378 lib/pro/admin/meta.php:220
-#: lib/pro/admin/meta.php:326 lib/pro/admin/meta.php:375
+#: lib/gettext-pro.php:143 lib/gettext-pro.php:154 lib/gettext-pro.php:159
+#: lib/gpl/admin/meta.php:213 lib/gpl/admin/meta.php:328
+#: lib/gpl/admin/meta.php:382 lib/pro/admin/meta.php:220
+#: lib/pro/admin/meta.php:329 lib/pro/admin/meta.php:380
 msgctxt "option label"
 msgid "Image ID"
 msgstr "ID d'une image"
 
-#: lib/gettext-pro.php:144 lib/gettext-pro.php:156 lib/gettext-pro.php:161
-#: lib/gpl/admin/meta.php:221 lib/gpl/admin/meta.php:334
-#: lib/gpl/admin/meta.php:387 lib/pro/admin/meta.php:227
-#: lib/pro/admin/meta.php:334 lib/pro/admin/meta.php:383
+#: lib/gettext-pro.php:144 lib/gettext-pro.php:155 lib/gettext-pro.php:160
+#: lib/gpl/admin/meta.php:221 lib/gpl/admin/meta.php:337
+#: lib/gpl/admin/meta.php:391 lib/pro/admin/meta.php:227
+#: lib/pro/admin/meta.php:337 lib/pro/admin/meta.php:388
 msgctxt "option label"
 msgid "or an Image URL"
 msgstr "ou URL d'une image"
@@ -2842,199 +2842,193 @@ msgctxt "option label"
 msgid "Video Description"
 msgstr "Description du vidéo"
 
-#: lib/gettext-pro.php:153 lib/gpl/admin/meta.php:309
-#: lib/pro/admin/meta.php:312
-msgctxt "metabox title"
-msgid "Twitter Card"
-msgstr "Carte Twitter"
-
-#: lib/gettext-pro.php:157 lib/gpl/admin/meta.php:350
-#: lib/pro/admin/meta.php:350
+#: lib/gettext-pro.php:156 lib/gpl/admin/meta.php:354
+#: lib/pro/admin/meta.php:355
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup / Pinterest"
 msgstr "Données structurées / balisage Schéma / Pinterest"
 
-#: lib/gettext-pro.php:162 lib/pro/ecom/woocommerce.php:897
+#: lib/gettext-pro.php:161 lib/pro/ecom/woocommerce.php:897
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr "\"%s\" est une condition de produit Schéma inconnue."
 
-#: lib/gettext-pro.php:163 lib/pro/ecom/woocommerce.php:900
+#: lib/gettext-pro.php:162 lib/pro/ecom/woocommerce.php:900
 msgid "Valid item condition values are (case is important): %s."
 msgstr "Les valeurs de condition d'élément valides sont (les majuscules et minuscules sont importants): %s."
 
-#: lib/gettext-pro.php:164 lib/pro/ecom/woocommerce.php:1120
+#: lib/gettext-pro.php:163 lib/pro/ecom/woocommerce.php:1120
 msgid "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax.html"
 msgstr "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax.html"
 
-#: lib/gettext-pro.php:165 lib/pro/ecom/woocommerce.php:1122
+#: lib/gettext-pro.php:164 lib/pro/ecom/woocommerce.php:1122
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr "La <a href=\"%1$s\">fonction WooCommerce %2$s</a> n'est pas disponible."
 
-#: lib/gettext-pro.php:166 lib/pro/ecom/woocommerce.php:1125
+#: lib/gettext-pro.php:165 lib/pro/ecom/woocommerce.php:1125
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr "SVP mettre à jour votre site à WooCommerce version %s ou mieux."
 
-#: lib/gettext-pro.php:167 lib/gettext-pro.php:170 lib/gettext-pro.php:173
+#: lib/gettext-pro.php:166 lib/gettext-pro.php:169 lib/gettext-pro.php:172
 #: lib/pro/media/slideshare.php:187 lib/pro/media/vimeo.php:152
 #: lib/pro/media/wistia.php:309 lib/util.php:1904
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr "https://secure.php.net/manual/fr/function.simplexml-load-string.php"
 
-#: lib/gettext-pro.php:168 lib/gettext-pro.php:171 lib/gettext-pro.php:174
+#: lib/gettext-pro.php:167 lib/gettext-pro.php:170 lib/gettext-pro.php:173
 #: lib/pro/media/slideshare.php:189 lib/pro/media/vimeo.php:154
 #: lib/pro/media/wistia.php:311 lib/util.php:1906
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr "La <a href=\"%1$s\">fonction PHP %2$s</a> n'est pas disponible."
 
-#: lib/gettext-pro.php:176 lib/pro/media/upscale.php:222
+#: lib/gettext-pro.php:175 lib/pro/media/upscale.php:222
 msgid "Failed to upscale image ID %1$s of %2$s by %3$s from %4$s to %5$s for the %6$s image size (exceeds %7$s maximum upscale setting)."
 msgstr "L'image avec l'ID %1$s de %2$s ne peut pas être agrandie par %3$s de %4$s à %5$s pour les dimensions de %6$s (dépasse le maximum défini de %7$s)."
 
-#: lib/gettext-pro.php:177 lib/pro/media/upscale.php:230
+#: lib/gettext-pro.php:176 lib/pro/media/upscale.php:230
 msgid "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the %6$s image size."
 msgstr "L'image avec l'ID %1$s de %2$s a été agrandie par %3$s de %4$s à %5$s pour les dimensions de %6$s."
 
-#: lib/gettext-pro.php:178 lib/gettext-pro.php:182 lib/pro/media/ngg.php:131
+#: lib/gettext-pro.php:177 lib/gettext-pro.php:181 lib/pro/media/ngg.php:131
 #: lib/pro/media/ngg.php:1279
 msgid "NextGEN Gallery"
 msgstr "NextGEN Gallery"
 
-#: lib/gettext-pro.php:179 lib/gettext-pro.php:204 lib/media.php:1563
+#: lib/gettext-pro.php:178 lib/gettext-pro.php:203 lib/media.php:1563
 #: lib/pro/media/ngg.php:132 lib/pro/util/checkimgdims.php:94
 msgid "image ID %s"
 msgstr "ID d'image %s"
 
-#: lib/gettext-pro.php:180 lib/gettext-pro.php:205 lib/pro/media/ngg.php:136
+#: lib/gettext-pro.php:179 lib/gettext-pro.php:204 lib/pro/media/ngg.php:136
 #: lib/pro/util/checkimgdims.php:99
 msgid "cropped"
 msgstr "recadrée"
 
-#: lib/gettext-pro.php:181 lib/gettext-pro.php:206 lib/pro/media/ngg.php:138
+#: lib/gettext-pro.php:180 lib/gettext-pro.php:205 lib/pro/media/ngg.php:138
 #: lib/pro/util/checkimgdims.php:101
 msgid "%1$s %2$s ignored &mdash; the resulting image of %3$s is too small for the required %4$s image dimensions."
 msgstr "L'%2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est trop petite pour les dimensions requis par %4$s."
 
-#: lib/gettext-pro.php:183 lib/gpl/social/buddypress.php:52
+#: lib/gettext-pro.php:182 lib/gpl/social/buddypress.php:52
 #: lib/pro/social/buddypress.php:100
 msgctxt "option label"
 msgid "BuddyPress Member Bio Field Name"
 msgstr "Nom du champ biographique de membre BuddyPress"
 
-#: lib/gettext-pro.php:184 lib/gpl/social/buddypress.php:69
+#: lib/gettext-pro.php:183 lib/gpl/social/buddypress.php:69
 #: lib/pro/social/buddypress.php:119
 msgid "The BuddyPress member profile page does not include the <em>Biographical Info</em> text from the WordPress user profile. If you've created an additional BuddyPress Profile Field for members to enter their profile description, enter the field name here (example: Biographical Info, About Me, etc.)."
 msgstr "La page de profil du membre BuddyPress n'inclut pas le texte <em>À propos de vous</em> du profil utilisateur WordPress. Si vous avez créé un champ de profil BuddyPress supplémentaire pour que les membres puissent entrer leur description de profil, entrez le nom du champ ici (exemple: Informations biographiques, À propos de moi, etc.)."
 
-#: lib/gettext-pro.php:185 lib/pro/social/buddypress.php:662
+#: lib/gettext-pro.php:184 lib/pro/social/buddypress.php:662
 msgid "No Description"
 msgstr "Aucune description"
 
-#: lib/gettext-pro.php:186 lib/pro/util/post.php:89
+#: lib/gettext-pro.php:185 lib/pro/util/post.php:89
 msgid "Database meta table row \"%2$s\" for post ID %1$d was found and converted to \"%3$s\"."
 msgstr "La ligne \"%2$s\" dans la table méta de base de données pour l'ID d'article %1$d a été trouvée et convertie a \"%3$s\"."
 
-#: lib/gettext-pro.php:187 lib/pro/util/shorten.php:248
+#: lib/gettext-pro.php:186 lib/pro/util/shorten.php:248
 msgid "The URL shortening library file \"%s\" is missing and required."
 msgstr "Le fichier de bibliothèque \"%s\" pour le raccourcissement URL est manquant et requis."
 
-#: lib/gettext-pro.php:188 lib/gettext-pro.php:193 lib/gettext-pro.php:195
-#: lib/gettext-pro.php:197 lib/pro/util/shorten.php:267
+#: lib/gettext-pro.php:187 lib/gettext-pro.php:192 lib/gettext-pro.php:194
+#: lib/gettext-pro.php:196 lib/pro/util/shorten.php:267
 #: lib/pro/util/shorten.php:311 lib/pro/util/shorten.php:334
 #: lib/pro/util/shorten.php:382
 msgid "The \"%s\" option value is empty and required."
 msgstr "La valeur de l'option \"%s\" est vide et requise."
 
-#: lib/gettext-pro.php:190 lib/pro/util/shorten.php:279
+#: lib/gettext-pro.php:189 lib/pro/util/shorten.php:279
 msgid "The \"%1$s\" and \"%2$s\" option values are empty &mdash; at least one option value is required."
 msgstr "Les valeurs d'options \"%1$s\" et \"%2$s\" sont vides &mdash; au moins une valeur d'option est nécessaire."
 
-#: lib/gettext-pro.php:192 lib/pro/util/shorten.php:284
+#: lib/gettext-pro.php:191 lib/pro/util/shorten.php:284
 msgctxt "option label"
 msgid "Bitly API Key"
 msgstr "Clé d'API pour Bitly"
 
-#: lib/gettext-pro.php:199 lib/pro/util/shorten.php:426
+#: lib/gettext-pro.php:198 lib/pro/util/shorten.php:426
 msgid "Incomplete and/or missing API credentials for the \"%s\" URL shortening service."
 msgstr "Identifiants d'API incomplet et/ou manquant pour le service de raccourcissement d'URL \"%s\"."
 
-#: lib/gettext-pro.php:200 lib/pro/util/user.php:108
+#: lib/gettext-pro.php:199 lib/pro/util/user.php:108
 msgid "Database meta table row \"%2$s\" for user ID %1$d was found and converted to \"%3$s\"."
 msgstr "La ligne \"%2$s\" dans la table méta de base de données pour l'ID d'utilisateur %1$d a été trouvée et convertie a \"%3$s\"."
 
-#: lib/gettext-pro.php:201 lib/pro/util/term.php:81
+#: lib/gettext-pro.php:200 lib/pro/util/term.php:81
 msgid "Database meta table row \"%2$s\" for term ID %1$d was found and converted to \"%3$s\"."
 msgstr "La ligne \"%2$s\" dans la table méta de base de données pour l'ID de terme %1$d a été trouvée et convertie a \"%3$s\"."
 
-#: lib/gettext-pro.php:202 lib/pro/util/checkimgdims.php:74
+#: lib/gettext-pro.php:201 lib/pro/util/checkimgdims.php:74
 msgid "full size original"
 msgstr "originale pleine grandeur"
 
-#: lib/gettext-pro.php:207 lib/pro/util/checkimgdims.php:167
+#: lib/gettext-pro.php:206 lib/pro/util/checkimgdims.php:167
 msgid "Image %1$s in content ignored &mdash; the image width / height is too small for the required %2$s image dimensions."
 msgstr "L'image %1$s du contenu a été ignoré &mdash; la largeur / hauteur est insuffisante pour les dimensions requis par %2$s."
 
-#: lib/gettext-pro.php:208 lib/pro/util/checkimgdims.php:168
+#: lib/gettext-pro.php:207 lib/pro/util/checkimgdims.php:168
 msgid "%1$s includes an additional 'data-wp-pid' attribute for Media Library images &mdash; if this image was selected from the Media Library before %1$s was activated, try removing and adding the image back to your content."
 msgstr "%1$s inclut un attribut supplémentaire 'data-wp-pid' pour les images de la bibliothèque de médias &mdash; si cette image provient de la bibliothèque de médias, et quelle a été inséré au contenu avant que %1$s soit activé, essayez de supprimer et ré-ajouter à nouveau l'image au contenu."
 
-#: lib/gettext-pro.php:209 lib/pro/form/gravityview.php:55
+#: lib/gettext-pro.php:208 lib/pro/form/gravityview.php:55
 msgctxt "metabox title"
 msgid "Single Entry Integration"
 msgstr "Intégration d'entrée unique"
 
-#: lib/gettext-pro.php:210 lib/pro/form/gravityview.php:82
+#: lib/gettext-pro.php:209 lib/pro/form/gravityview.php:82
 msgctxt "option label"
 msgid "Title Field ID"
 msgstr "ID champ de titre"
 
-#: lib/gettext-pro.php:211 lib/pro/form/gravityview.php:86
+#: lib/gettext-pro.php:210 lib/pro/form/gravityview.php:86
 msgctxt "option label"
 msgid "Description Field ID"
 msgstr "ID champ de description"
 
-#: lib/gettext-pro.php:212 lib/pro/form/gravityview.php:90
+#: lib/gettext-pro.php:211 lib/pro/form/gravityview.php:90
 msgctxt "option label"
 msgid "Post Image Field ID"
 msgstr "ID champ image d'article"
 
 #. translators: %s is "App Key"
 #. translators: %s is "Secret Key"
-#: lib/gettext-pro.php:213 lib/gettext-pro.php:214
+#: lib/gettext-pro.php:212 lib/gettext-pro.php:213
 #: lib/pro/rating/yotpowc.php:67 lib/pro/rating/yotpowc.php:82
 msgid "Yotpo for WooCommerce \"%s\" setting value is empty."
 msgstr "La valeur de réglage \"%s\" de Yotpo pour WooCommerce est vide."
 
 #. translators: %s is "wc_yotpo_compatible()"
-#: lib/gettext-pro.php:215 lib/pro/rating/yotpowc.php:97
+#: lib/gettext-pro.php:214 lib/pro/rating/yotpowc.php:97
 msgid "Yotpo for WooCommerce %s function returned an error."
 msgstr "La fonction %s de Yotpo pour WooCommerce a retourné une erreur."
 
 #. translators: %s is "yotpo-social-reviews-for-woocommerce"
-#: lib/gettext-pro.php:216 lib/pro/rating/yotpowc.php:120
+#: lib/gettext-pro.php:215 lib/pro/rating/yotpowc.php:120
 msgid "\"%s\" not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
 msgstr "\"%s\" est introuvable dans les dossiers WPMU_PLUGIN_DIR ou WP_PLUGIN_DIR."
 
 #. translators: %s is the API library file path
-#: lib/gettext-pro.php:217 lib/pro/rating/yotpowc.php:147
+#: lib/gettext-pro.php:216 lib/pro/rating/yotpowc.php:147
 msgid "Yotpo for WooCommerce API library file \"%s\" not found."
 msgstr "Le fichier \"%s\" de bibliothèque API de Yotpo pour WooCommerce est introuvable."
 
 #. translators: please ignore - translation uses a different text domain
-#: lib/gettext-pro.php:220 lib/pro/rating/wppostratings.php:58
+#: lib/gettext-pro.php:219 lib/pro/rating/wppostratings.php:58
 msgid "Enable Google Rich Snippets?"
 msgstr "Enable Google Rich Snippets?"
 
 #. translators: please ignore - translation uses a different text domain
-#: lib/gettext-pro.php:222 lib/pro/rating/wppostratings.php:62
+#: lib/gettext-pro.php:221 lib/pro/rating/wppostratings.php:62
 msgid "Ratings"
 msgstr "Ratings"
 
 #. translators: please ignore - translation uses a different text domain
-#: lib/gettext-pro.php:224 lib/pro/rating/wppostratings.php:64
+#: lib/gettext-pro.php:223 lib/pro/rating/wppostratings.php:64
 msgid "Ratings Options"
 msgstr "Ratings Options"
 
-#: lib/gettext-pro.php:225 lib/pro/rating/wppostratings.php:70
+#: lib/gettext-pro.php:224 lib/pro/rating/wppostratings.php:70
 msgid "please disable the %1$s option in the %2$s settings page."
 msgstr "SVP désactiver l'option %1$s dans la page de réglages %2$s."
 
@@ -3042,27 +3036,27 @@ msgstr "SVP désactiver l'option %1$s dans la page de réglages %2$s."
 msgid "Video discovery and integration modules are provided with the Pro version."
 msgstr "Les modules d'intégration et de découverte vidéo sont fournis avec la version Pro."
 
-#: lib/head.php:524
+#: lib/head.php:532
 msgid "adding open graph meta tags"
 msgstr "ajout de balises méta open graph"
 
-#: lib/head.php:536
+#: lib/head.php:544
 msgid "adding twitter card meta tags"
 msgstr "ajout de balises méta carte twitter"
 
-#: lib/head.php:543
+#: lib/head.php:551
 msgid "adding meta name meta tags"
 msgstr "ajout de balises nom de méta"
 
-#: lib/head.php:550
+#: lib/head.php:558
 msgid "adding link relation tags"
 msgstr "ajout de balises de relation de lien"
 
-#: lib/head.php:557
+#: lib/head.php:565
 msgid "adding schema meta tags"
 msgstr "ajout de balises méta de schéma"
 
-#: lib/head.php:564
+#: lib/head.php:572
 msgid "adding schema json-ld markup"
 msgstr "ajout de balisage schéma json-ld"
 
@@ -3082,7 +3076,7 @@ msgstr "Classe de  bibliothèque \"%s\" manquante."
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
 #: lib/loader.php:175 lib/loader.php:201 lib/post.php:278 lib/register.php:300
-#: lib/term.php:255 lib/user.php:222 lib/util.php:485 lib/util.php:3169
+#: lib/term.php:255 lib/user.php:222 lib/util.php:485 lib/util.php:3170
 msgid "%s warning:"
 msgstr "Alerte %s:"
 
@@ -3256,7 +3250,7 @@ msgstr "Si le vidéo provient d'un service vidéo externe reconnu, une connexion
 
 #: lib/messages.php:218
 msgid "A customized video URL for the first video in the Facebook / Open Graph and Twitter Card meta tags, and in the Schema JSON-LD markup."
-msgstr "Un URL de vidéo personnalisé pour le premier vidéo des balises méta Facebook / Open Graph et Twitter Card, et dans le balisage Schéma JSON-LD."
+msgstr "Un URL de vidéo personnalisé pour le premier vidéo des balises méta Facebook / Open Graph et carte Twitter, et dans le balisage Schéma JSON-LD."
 
 #: lib/messages.php:227
 msgid "The %1$s video API modules can offer a default video name / title and description, provided that information is available from the API service."
@@ -3280,11 +3274,11 @@ msgstr "Un URL d'image personnalisé (au lieu d'un ID d'image) à inclure en pre
 
 #: lib/messages.php:254
 msgid "A customized image ID for the Twitter Card image."
-msgstr "Un ID d'image personnalisé pour l'image Twitter Card."
+msgstr "Un ID d'image personnalisé pour l'image de carte Twitter."
 
 #: lib/messages.php:261
 msgid "A customized image URL (instead of an image ID) for the Twitter Card image."
-msgstr "Un URL d'image personnalisé (au lieu d'un ID d'image) pour l'image Twitter Card."
+msgstr "Un URL d'image personnalisé (au lieu d'un ID d'image) pour l'image de carte Twitter."
 
 #: lib/messages.php:282
 msgid "A customized Facebook / Open Graph type for this content."
@@ -3486,7 +3480,7 @@ msgstr "Masquer la pré-visualisation des réglages de la version Pro dans les p
 msgid "Please note that some metaboxes and tabs may be empty - showing only a \"<em>%s</em>\" message - after enabling this option."
 msgstr "SVP prendre note que certains métabox et onglets peuvent être vides - ne montrant qu'un message \"<em>%s</em>\" - après avoir activé cette option."
 
-#: lib/messages.php:622 lib/util.php:3453
+#: lib/messages.php:622 lib/util.php:3454
 msgid "No options available."
 msgstr "Aucune options disponibles."
 
@@ -3903,11 +3897,11 @@ msgstr "https://developers.facebook.com/docs/insights/?locale=fr_FR"
 
 #: lib/messages.php:1173
 msgid "If you have a <a href=\"%1$s\">Facebook App ID for your website</a>, enter it here (see <a href=\"%2$s\">Register and Configure an App</a> for help on creating a Facebook App ID)."
-msgstr "Si vous avez un <a href=\"%1$s\">ID d'App Facebook pour votre site Web</a>, entrez-le ici (voir <a href=\"%2$s\">Enregistrer et configurer une App</a> pour obtenir de l'aide sur la création d'un ID d'App Facebook)."
+msgstr "Si vous avez un <a href=\"%1$s\">ID d'application Facebook pour votre site Web</a>, entrez-le ici (voir <a href=\"%2$s\">Enregistrer et configurer une application</a> pour obtenir de l'aide sur la création d'un ID d'application Facebook)."
 
 #: lib/messages.php:1177
 msgid "The Facebook App ID will appear in webpage meta tags and is used by Facebook to allow access to <a href=\"%1$s\">Facebook Insight</a> data for accounts associated with that App ID."
-msgstr "L'ID d'App Facebook sera utilisé dans les balises méta de pages Web et est utilisé par Facebook pour permettre l'accès aux données de <a href=\"%1$s\">Facebook Insight</a> pour les comptes associée à cet ID d'App."
+msgstr "L'ID d'application Facebook sera utilisé dans les balises méta de pages Web et est utilisé par Facebook pour permettre l'accès aux données de <a href=\"%1$s\">Facebook Insight</a> pour les comptes associée à cet ID d'App."
 
 #: lib/messages.php:1184
 msgid "https://www.facebook.com/settings?tab=account&section=username&view"
@@ -4732,7 +4726,7 @@ msgstr "Les valeurs d'options '%1$s' et  '%2$s' ont un rapport d'aspect égal à
 
 #: lib/options.php:636
 msgid "The Facebook App ID must be numeric and 32 characters or less in length &mdash; the value of \"%s\" is not valid."
-msgstr "L'ID de l'App Facebook doit être numérique et 32 ​​caractères ou moins de longueur - la valeur \"%s\" n'est pas valide."
+msgstr "L'ID d'application Facebook doit être numérique et 32 ​​caractères ou moins de longueur - la valeur \"%s\" n'est pas valide."
 
 #: lib/options.php:709
 msgid "The value of option '%s' must be alpha-numeric - resetting this option to its default value."
@@ -4860,7 +4854,7 @@ msgstr "Aucune description."
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
 #: lib/post.php:264 lib/term.php:241 lib/user.php:208 lib/util.php:471
-#: lib/util.php:3141
+#: lib/util.php:3142
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr "supérieur au max recommandé de %1$0.3f secs"
 
@@ -5115,8 +5109,8 @@ msgstr "Carte Twitter <em>grande image</em>"
 
 #: lib/setting/image-dimensions.php:123
 msgctxt "option label"
-msgid "Thumbnail Image"
-msgstr "Miniature d'image"
+msgid "Thumbnail Images"
+msgstr "Miniatures d'images"
 
 #: lib/setting/social-accounts.php:38
 msgctxt "metabox title"
@@ -5303,7 +5297,7 @@ msgstr "URL page d'affaires Facebook"
 #: lib/submenu/essential.php:137 lib/submenu/general.php:230
 msgctxt "option label"
 msgid "Facebook Application ID"
-msgstr "ID de l'application Facebook"
+msgstr "ID d'application Facebook"
 
 #: lib/submenu/essential.php:141 lib/submenu/general.php:209
 msgctxt "option label"
@@ -5537,6 +5531,26 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr "Carte Twitter grande image"
 
+#: lib/twittercard.php:446
+msgctxt "option value"
+msgid "Twitter App Card"
+msgstr "Carte app de Twitter"
+
+#: lib/twittercard.php:454
+msgctxt "option value"
+msgid "Twitter Player Card"
+msgstr "Carte joueur de Twitter"
+
+#: lib/twittercard.php:462
+msgctxt "option value"
+msgid "Twitter Summary Large Image Card"
+msgstr "Carte sommaire grande image de Twitter"
+
+#: lib/twittercard.php:470
+msgctxt "option value"
+msgid "Twitter Summary Card"
+msgstr "Carte sommaire de Twitter"
+
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a recommended max
 #: lib/user.php:211
 msgid "Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts authored by user ID %2$d (%3$s)."
@@ -5616,38 +5630,38 @@ msgid "The %1$s PHP class is missing - please contact your hosting provider to i
 msgstr "La classe PHP %1$s est manquante - veuillez communiquer avec votre fournisseur d'hébergement pour installer la classe PHP %1$s manquante."
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max.
-#: lib/util.php:3144
+#: lib/util.php:3145
 msgid "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the \"%2$s\" filter (%3$s)."
 msgstr "Crochet(s) de filtre lent détecté - WordPress a pris %1$0.3f secs pour exécuter le filtre \"%2$s\" (%3$s)."
 
-#: lib/util.php:3161
+#: lib/util.php:3162
 msgid "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f seconds to execute. This is longer than the recommended maximum of %3$0.3f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr "Crochet(s) de filtre lent détecté &mdash le filtre WordPress %1$s a pris %2$0.3f secondes pour exécuter. Ceci est plus long que le maximum recommandé de %3$0.3f secondes et peut affecter le temps de chargement de la page. S'il vous plaît, envisagez d'examiner les fonctions d'extensions de tiers partie et de thème accrochées au filtre WordPress %1$s pour du code PHP lent et/ou sous-optimal."
 
-#: lib/util.php:3161
+#: lib/util.php:3162
 msgid "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance."
 msgstr "Si vous activez l'extension %1$s et effacez le cache de %2$s (pour ré-appliquer le filtre), vous obtiendrez peut-être plus d'informations sur les crochets spécifiques ou le code PHP affectant les performances."
 
-#: lib/util.php:3448
+#: lib/util.php:3449
 msgid "Have you hidden the Pro options?"
 msgstr "Avez-vous masqué les options Pro?"
 
-#: lib/util.php:3483
+#: lib/util.php:3484
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr "%1$d options supplémentaires ne figurent pas dans la vue \"%2$s\""
 
-#: lib/util.php:3486
+#: lib/util.php:3487
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr "afficher ces options"
 
-#: lib/util.php:3491
+#: lib/util.php:3492
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue \"%2$s\""
 
-#: lib/util.php:3494
+#: lib/util.php:3495
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"

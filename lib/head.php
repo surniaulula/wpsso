@@ -180,9 +180,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					case 'property-og:description':
 					case 'property-article:author:name':
 					case ( strpos( $mt_match, 'name-schema:' ) === 0 ? true : false ):
+					case ( strpos( $mt_match, 'name-twitter:' ) === 0 ? true : false ):
 
-						if ( ! isset( $head_info[$mt[ 3 ]] ) ) {	// Only save the first meta tag value.
-							$head_info[$mt[ 3 ]] = $mt[ 5 ];
+						if ( ! isset( $head_info[ $mt[ 3 ] ] ) ) {	// Only save the first meta tag value.
+							$head_info[ $mt[ 3 ] ] = $mt[ 5 ];
 						}
 
 						break;
@@ -198,12 +199,14 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			/**
-			 * Save the first image and video information found. Assumes array key order
-			 * defined by SucomUtil::get_mt_image_seed() and SucomUtil::get_mt_video_seed().
+			 * Save the first image and video information found.
+			 * Assumes array key order defined by
+			 * SucomUtil::get_mt_image_seed() and
+			 * SucomUtil::get_mt_video_seed().
 			 */
 			foreach ( array( 'og:image', 'og:video', 'p:image' ) as $mt_prefix ) {
 
-				if ( empty( $has_media[$mt_prefix] ) ) {
+				if ( empty( $has_media[ $mt_prefix ] ) ) {
 					continue;
 				}
 
@@ -222,7 +225,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						/**
 						 * If we already found media, then skip to the next media prefix.
 						 */
-						if ( ! empty( $head_info[$mt_prefix] ) ) {
+						if ( ! empty( $head_info[ $mt_prefix ] ) ) {
 							continue 2;
 						} else {
 							continue;	// Skip meta tags without matching prefix.
@@ -252,7 +255,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 								continue 2;		// Get the next meta tag.
 							}
 
-							$head_info[$mt[ 3 ]] = $mt[ 5 ];
+							$head_info[ $mt[ 3 ] ] = $mt[ 5 ];
 
 							break;
 					}
@@ -260,7 +263,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			/**
-			 * Save meta tag values for later sorting in list tables.
+			 * Save meta tag values for later sorting in list
+			 * tables.
 			 */
 			foreach ( WpssoWpMeta::get_sortable_columns() as $col_key => $col_info ) {
 				
@@ -271,11 +275,15 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$meta_value = 'none';
 
 				if ( ! empty( $col_info[ 'mt_name' ]  ) ) {
+
 					if ( $col_info[ 'mt_name' ] === 'og:image' ) {	// Get the image thumbnail HTML.
+
 						if ( $og_img = $mod[ 'obj' ]->get_og_img_column_html( $head_info, $mod ) ) {
 							$meta_value = $og_img;
 						}
+
 					} elseif ( isset( $head_info[ $col_info[ 'mt_name' ] ] ) ) {
+
 						$meta_value = $head_info[ $col_info[ 'mt_name' ] ];
 					}
 				}
@@ -427,9 +435,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$cache_md5_pre = $this->p->lca . '_h_';
 
 			if ( ! isset( $cache_exp_secs ) ) {	// Filter cache expiration if not already set.
-				$cache_exp_filter = $this->p->cf[ 'wp' ][ 'transient' ][$cache_md5_pre][ 'filter' ];
-				$cache_opt_key    = $this->p->cf[ 'wp' ][ 'transient' ][$cache_md5_pre][ 'opt_key' ];
-				$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, $this->p->options[$cache_opt_key] );
+				$cache_exp_filter = $this->p->cf[ 'wp' ][ 'transient' ][ $cache_md5_pre ][ 'filter' ];
+				$cache_opt_key    = $this->p->cf[ 'wp' ][ 'transient' ][ $cache_md5_pre ][ 'opt_key' ];
+				$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, $this->p->options[ $cache_opt_key ] );
 			}
 
 			$cache_salt  = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $sharing_url ) . ')';
@@ -1022,7 +1030,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				 */
 				$opt_name = strtolower( 'add_' . $parts[ 1 ] . '_' . $parts[ 2 ] . '_' . $parts[ 3 ] );
 
-				if ( ! empty( $this->p->options[$opt_name] ) ) {
+				if ( ! empty( $this->p->options[ $opt_name ] ) ) {
 
 					$parts[0] = ( empty( $parts[ 6 ] ) ? '' : '<!-- ' . $parts[ 6 ] . ' -->' ) . 
 						'<' . $parts[ 1 ] . ' ' . $parts[ 2 ] . '="' . $match_name . '" ' . $parts[ 4 ] . '="' . $parts[ 5 ] . '"/>' . "\n";
