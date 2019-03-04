@@ -427,7 +427,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Improvements*
 	* The Twitter Card section under the Document SSO &gt; Priority Media tab will now show only for the Summary and Summary Large Image card type.
 * *Bugfixes*
-	* Fixed protection of original 'wp_title' filter value.
+	* Fixed protection of original 'wp_title' filter value when the "Use Filtered (SEO) Title" option is enabled.
 * *Developer Notes*
 	* French translation updates.
 
@@ -513,5 +513,5 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.24.2 =
 
-(2019/03/05) The Twitter Card section under the Document SSO &gt; Priority Media tab will now show only for the Summary and Summary Large Image card type.
+(2019/03/05) Fixed protection of original 'wp_title' filter value. The Twitter Card section under the Document SSO &gt; Priority Media tab will now show only for the Summary and Summary Large Image card types.
 
