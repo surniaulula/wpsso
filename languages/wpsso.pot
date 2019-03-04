@@ -765,220 +765,220 @@ msgstr[1] ""
 msgid "No header templates found in the parent or child theme directories."
 msgstr ""
 
-#: lib/admin.php:3270
+#: lib/admin.php:3271
 msgid "No %1$s HTML tag found in the %2$s template."
 msgstr ""
 
-#: lib/admin.php:3278
+#: lib/admin.php:3281
 msgid "Error copying %1$s to %2$s."
 msgstr ""
 
-#: lib/admin.php:3286
+#: lib/admin.php:3291
 msgid "Failed to open template file %s for writing."
 msgstr ""
 
-#: lib/admin.php:3292
+#: lib/admin.php:3298
 msgid ""
 "The %1$s template has been successfully modified and saved. A backup copy of "
 "the original template is available as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:3297
+#: lib/admin.php:3303
 msgid ""
 "Failed to write the %1$s template. You may need to restore the original "
 "template saved as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:3323 lib/admin.php:3441
+#: lib/admin.php:3329 lib/admin.php:3447
 msgctxt "option label"
 msgid "Type for Blog Front Page"
 msgstr ""
 
-#: lib/admin.php:3324 lib/admin.php:3442
+#: lib/admin.php:3330 lib/admin.php:3448
 msgctxt "option label"
 msgid "Type for Static Front Page"
 msgstr ""
 
-#: lib/admin.php:3325 lib/admin.php:3443
+#: lib/admin.php:3331 lib/admin.php:3449
 msgctxt "option label"
 msgid "Type for User / Author Page"
 msgstr ""
 
-#: lib/admin.php:3326 lib/admin.php:3444
+#: lib/admin.php:3332 lib/admin.php:3450
 msgctxt "option label"
 msgid "Type for Search Results Page"
 msgstr ""
 
-#: lib/admin.php:3327 lib/admin.php:3445
+#: lib/admin.php:3333 lib/admin.php:3451
 msgctxt "option label"
 msgid "Type for Other Archive Page"
 msgstr ""
 
-#: lib/admin.php:3352 lib/admin.php:3358 lib/admin.php:3384 lib/admin.php:3471
-#: lib/admin.php:3477 lib/admin.php:3504
+#: lib/admin.php:3358 lib/admin.php:3364 lib/admin.php:3390 lib/admin.php:3477
+#: lib/admin.php:3483 lib/admin.php:3510
 msgctxt "option comment"
 msgid "for %s"
 msgstr ""
 
-#: lib/admin.php:3358 lib/admin.php:3477
+#: lib/admin.php:3364 lib/admin.php:3483
 msgctxt "option comment"
 msgid "(Post Type) Archive Page"
 msgstr ""
 
-#: lib/admin.php:3362 lib/admin.php:3481
+#: lib/admin.php:3368 lib/admin.php:3487
 msgctxt "option label"
 msgid "Type by Post Type"
 msgstr ""
 
-#: lib/admin.php:3389 lib/admin.php:3509
+#: lib/admin.php:3395 lib/admin.php:3515
 msgctxt "option label"
 msgid "Type by Term Taxonomy"
 msgstr ""
 
-#: lib/admin.php:3409 lib/submenu/essential.php:156
+#: lib/admin.php:3415 lib/submenu/essential.php:156
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:3413 lib/options.php:1184 lib/submenu/essential.php:161
+#: lib/admin.php:3419 lib/options.php:1184 lib/submenu/essential.php:161
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
 
-#: lib/admin.php:3417 lib/submenu/general.php:199
+#: lib/admin.php:3423 lib/submenu/general.php:199
 msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr ""
 
-#: lib/admin.php:3419 lib/submenu/general.php:202
+#: lib/admin.php:3425 lib/submenu/general.php:202
 msgctxt "option comment"
 msgid "video preview images are enabled (and included first)"
 msgstr ""
 
-#: lib/admin.php:3423
+#: lib/admin.php:3429
 msgctxt "option label"
 msgid "Schema Image Dimensions"
 msgstr ""
 
-#: lib/admin.php:3427 lib/submenu/general.php:173 lib/submenu/general.php:324
+#: lib/admin.php:3433 lib/submenu/general.php:173 lib/submenu/general.php:324
 msgctxt "option label"
 msgid "Maximum Description Length"
 msgstr ""
 
-#: lib/admin.php:3428 lib/submenu/general.php:252 lib/submenu/general.php:326
+#: lib/admin.php:3434 lib/submenu/general.php:252 lib/submenu/general.php:326
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
-#: lib/admin.php:3527
+#: lib/admin.php:3533
 msgctxt "option label"
 msgid "Knowledge Graph for Home Page"
 msgstr ""
 
-#: lib/admin.php:3530
+#: lib/admin.php:3536
 msgid "Include <a href=\"%s\">WebSite Information</a> for Google Search"
 msgstr ""
 
-#: lib/admin.php:3533
+#: lib/admin.php:3539
 msgid ""
 "Include <a href=\"%s\">Organization Social Profile</a> for a Business Site"
 msgstr ""
 
-#: lib/admin.php:3536
+#: lib/admin.php:3542
 msgid "Include <a href=\"%s\">Person Social Profile</a> for a Personal Site"
 msgstr ""
 
-#: lib/admin.php:3545
+#: lib/admin.php:3551
 msgctxt "option label"
 msgid "User for Person Social Profile"
 msgstr ""
 
-#: lib/admin.php:3556
+#: lib/admin.php:3562
 msgctxt "option label"
 msgid "Remove All Settings on Uninstall"
 msgstr ""
 
-#: lib/admin.php:3559
+#: lib/admin.php:3565
 msgctxt "option comment"
 msgid "including any custom meta for posts, terms, and users"
 msgstr ""
 
-#: lib/admin.php:3564
+#: lib/admin.php:3570
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
 
-#: lib/admin.php:3566
+#: lib/admin.php:3572
 msgctxt "option comment"
 msgid "WPSSO_HTML_DEBUG constant is true"
 msgstr ""
 
-#: lib/admin.php:3574
+#: lib/admin.php:3580
 msgctxt "option label"
 msgid "Hide All Pro Version Options"
 msgstr ""
 
-#: lib/admin.php:3583
+#: lib/admin.php:3589
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr ""
 
-#: lib/admin.php:3590
+#: lib/admin.php:3596
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:3771
+#: lib/admin.php:3777
 msgid "Return to %s"
 msgstr ""
 
 #. translators: please ignore - translation uses a different text domain
-#: lib/admin.php:3802
+#: lib/admin.php:3808
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name
-#: lib/admin.php:3824
+#: lib/admin.php:3830
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL
-#: lib/admin.php:3831
+#: lib/admin.php:3837
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes, and translations)</a> to check if newer versions are "
 "available."
 msgstr ""
 
-#: lib/admin.php:3896
+#: lib/admin.php:3902
 msgctxt "option comment"
 msgid "%s add-on required"
 msgstr ""
 
-#: lib/admin.php:3998
+#: lib/admin.php:4004
 msgid "Please select a %1$s settings file to import."
 msgstr ""
 
-#: lib/admin.php:4005
+#: lib/admin.php:4011
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr ""
 
-#: lib/admin.php:4012
+#: lib/admin.php:4018
 msgid ""
 "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr ""
 
-#: lib/admin.php:4026
+#: lib/admin.php:4032
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr ""
 
-#: lib/admin.php:4036
+#: lib/admin.php:4042
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr ""
 
-#: lib/admin.php:4046
+#: lib/admin.php:4052
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 

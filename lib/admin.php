@@ -3267,7 +3267,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * Double check in case of reloads etc.
 				 */
 				if ( empty( $html_stripped ) || strpos( $html_stripped, '<head>' ) === false ) {
+
 					$this->p->notice->err( sprintf( __( 'No %1$s HTML tag found in the %2$s template.', 'wpsso' ), '&lt;head&gt;', $tmpl_file ) );
+
 					continue;
 				}
 
@@ -3275,7 +3277,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * Make a backup of the original.
 				 */
 				if ( ! copy( $tmpl_file, $backup_file ) ) {
+
 					$this->p->notice->err( sprintf( __( 'Error copying %1$s to %2$s.', 'wpsso' ), $tmpl_file, $backup_base ) );
+
 					continue;
 				}
 
@@ -3283,7 +3287,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$tmpl_contents = str_replace( '<head>', $head_action_php, $tmpl_contents );
 
 				if ( ! $tmpl_fh = @fopen( $tmpl_file, 'wb' ) ) {
+
 					$this->p->notice->err( sprintf( __( 'Failed to open template file %s for writing.', 'wpsso' ), $tmpl_file ) );
+
 					continue;
 				}
 
