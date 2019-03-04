@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.24.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-03-04 05:00-0800\n"
-"PO-Revision-Date: 2019-03-04 05:26-0800\n"
+"POT-Creation-Date: 2019-03-04 05:44-0800\n"
+"PO-Revision-Date: 2019-03-04 05:44-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -5532,22 +5532,22 @@ msgid "Twitter Large Image Card"
 msgstr "Carte Twitter grande image"
 
 #: lib/twittercard.php:446
-msgctxt "option value"
+msgctxt "metabox title"
 msgid "Twitter App Card"
 msgstr "Carte app de Twitter"
 
 #: lib/twittercard.php:454
-msgctxt "option value"
+msgctxt "metabox title"
 msgid "Twitter Player Card"
 msgstr "Carte joueur de Twitter"
 
 #: lib/twittercard.php:462
-msgctxt "option value"
+msgctxt "metabox title"
 msgid "Twitter Summary Large Image Card"
 msgstr "Carte sommaire grande image de Twitter"
 
 #: lib/twittercard.php:470
-msgctxt "option value"
+msgctxt "metabox title"
 msgid "Twitter Summary Card"
 msgstr "Carte sommaire de Twitter"
 
