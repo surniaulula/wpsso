@@ -429,6 +429,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* Fixed protection of original 'wp_title' filter value when the "Use Filtered (SEO) Title" option is enabled.
 * *Developer Notes*
+	* Added a new SCHEMA_PRODUCT_VALID_MAX_TIME constant for the WPSSO JSON add-on (default is 1 year).
 	* French translation updates.
 
 **Version 4.24.1 (2019/03/04)**
