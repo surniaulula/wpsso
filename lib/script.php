@@ -49,7 +49,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 					 * Add jQuery to update the toolbar menu item counter and container on page load.
 					 */
 					if ( ! empty( $this->tb_notices ) ) {
-						add_action( 'admin_footer', array( $this, 'add_update_tb_notices_script' ) );
+						add_action( 'admin_footer', array( $this, 'add_update_tb_notices_script' ), 1000 );
 					}
 				}
 			}
@@ -246,6 +246,9 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			);
 		}
 
+		/**
+		 * Hooked to the WordPress 'admin_footer' action.
+		 */
 		public function add_update_tb_notices_script() {
 
 			/**
@@ -270,7 +273,11 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			<script type="text/javascript">
 
 				/**
-				 * Make sure the equivalent block editor function is not loaded.
+				 * A wpssoUpdateToolbar() function will exist in block editor pages
+				 * (see js/block-editor-admin.js), but not in other admin pages, like
+				 * settings pages for example. If the function does not exist, then
+				 * create the wpssoUpdateToolbar() function and call it when the
+				 * document is loaded (aka ready).
 				 */
 				if ( typeof wpssoUpdateToolbar !== "function" ) {
 

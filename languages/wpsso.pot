@@ -310,7 +310,7 @@ msgstr ""
 msgid "%d of %d site addresses registered"
 msgstr ""
 
-#: lib/admin.php:2201 lib/script.php:227 lib/script.php:266
+#: lib/admin.php:2201 lib/script.php:227 lib/script.php:269
 msgid "No new %s notifications."
 msgstr ""
 
