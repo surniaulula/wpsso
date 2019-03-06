@@ -269,25 +269,22 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			$no_notices_text = sprintf( __( 'No new %s notifications.', 'wpsso' ), $this->p->cf['menu']['title'] );
 			$no_notices_html = '<div class="ab-item ab-empty-item">' . $no_notices_text . '</div>';
 
+			/**
+			 * A wpssoUpdateToolbar() function will exist in block editor pages
+			 * (see js/block-editor-admin.js), but not in other admin pages, like
+			 * settings pages for example. If the function does not exist, then
+			 * create the wpssoUpdateToolbar() function and call it when the
+			 * document is loaded (aka ready).
+			 */
 			?>
 			<script type="text/javascript">
 
-				/**
-				 * A wpssoUpdateToolbar() function will exist in block editor pages
-				 * (see js/block-editor-admin.js), but not in other admin pages, like
-				 * settings pages for example. If the function does not exist, then
-				 * create the wpssoUpdateToolbar() function and call it when the
-				 * document is loaded (aka ready).
-				 */
 				if ( typeof wpssoUpdateToolbar !== "function" ) {
 
 					jQuery( document ).ready( wpssoUpdateToolbar() );
 
 					function wpssoUpdateToolbar( updateNoticeHtml ) {
 
-						/**
-						 * Update the notification drop-down by default.
-						 */
 						updateNoticeHtml = typeof updateNoticeHtml !== 'undefined' ? updateNoticeHtml : true;
 
 						var ajaxNoticesData = {
@@ -317,9 +314,6 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 								} );
 							} );
 	
-							/**
-							 * Cleanup any pre-existing notice classes.
-							 */
 							jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).removeClass( 'have-notices-error' );
 							jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).removeClass( 'have-notices-warning' );
 							jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).removeClass( 'have-notices-info' );
@@ -334,9 +328,6 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 								} else {
 
-									/**
-									 * Add "No new SSO notifications." text to the SSO drop-down.
-									 */
 									jQuery( '#wp-admin-bar-wpsso-toolbar-notices-container' ).html( noNoticesHtml );
 									jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).removeClass( 'have-notices' );
 								}
@@ -379,7 +370,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				$this->p->debug->mark();
 			}
 
-			wp_enqueue_script( 'plugin-install' );	// required for the plugin details box
+			wp_enqueue_script( 'plugin-install' );	// Required for the plugin details box.
 
 			/**
 			 * Fix the update / install button to load the href when clicked.
