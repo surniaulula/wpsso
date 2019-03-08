@@ -420,6 +420,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.25.0-dev.1 (2019/03/08)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* None.
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* Added validation for correct plugin names when doing an update check.
+
 **Version 4.24.2 (2019/03/05)**
 
 * *New Features*
@@ -511,6 +522,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Updated the required minimum PHP version from 5.4 to 5.5.
 
 == Upgrade Notice ==
+
+= 4.25.0-dev.1 =
+
+(2019/03/08) Added validation for correct plugin names when doing an update check.
 
 = 4.24.2 =
 
