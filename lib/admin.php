@@ -126,6 +126,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					add_filter( 'plugins_api_result', array( $this, 'external_plugin_data' ), 1000, 3 );	// Since WP v2.7.
 				}
 
+				add_filter( 'http_request_args', array( $this, 'check_plugin_names' ), 500, 2 );
 				add_filter( 'http_request_args', array( $this, 'add_expect_header' ), 1000, 2 );
 				add_filter( 'http_request_host_is_external', array( $this, 'maybe_allow_hosts' ), 1000, 3 );
 				add_filter( 'install_plugin_complete_actions', array( $this, 'plugin_complete_actions' ), 1000, 1 );
@@ -660,6 +661,58 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
+		 * Check and maybe fix plugin names for update checks.
+		 */
+		public function check_plugin_names( $req, $url ) {
+
+			if ( false === strpos( $url, '/api.wordpress.org/plugins/update-check/' ) ) {
+				return $req;
+			}
+
+			if ( empty( $req[ 'body' ][ 'plugins' ] ) ) {
+				return $req;
+			}
+
+			$data = json_decode( $req[ 'body' ][ 'plugins' ], true );
+
+			if ( empty( $data[ 'plugins' ] ) || ! is_array( $data[ 'plugins' ] ) ) {
+				return $req;
+			}
+
+			$have_changes = false;							// Only re-encode $data when required.
+
+			foreach ( $data[ 'plugins' ] as $file_path => &$details ) {		// Use reference to modify plugin $details.
+
+				$slug = preg_replace( '/\/.*$/', '', $file_path );		// Get the plugin slug (without the filename).
+
+				if ( empty( $this->p->cf[ '*' ][ 'slug' ][ $slug ] ) ) {	// Make sure the plugin slug is one of ours.
+					continue;
+				}
+
+				$ext  = $this->p->cf[ '*' ][ 'slug' ][ $slug ];			// Get the add-on acronym to read its config.
+
+				if ( empty( $this->p->cf[ 'plugin' ][ $ext ] ) ) {		// Make sure we have a config for that acronym.
+					continue;
+				}
+
+				$info = $this->p->cf[ 'plugin' ][ $ext ];
+
+				if ( empty( $details[ 'Name' ] ) || $details[ 'Name' ] !== $info[ 'name' ] ) {
+
+					$have_changes = true;					// Re-encoding the $data will be necessary.
+
+					$details[ 'Name' ] = $details[ 'Title' ] = $info[ 'name' ];
+				}
+			}
+
+			if ( $have_changes ) {							// Only re-encode $data when necessary.
+				$req[ 'body' ][ 'plugins' ] = wp_json_encode( $data );
+			}
+
+			return $req;
+		}
+
+		/**
 		 * Define and disable the "Expect: 100-continue" header. $req should be an array,
 		 * so make sure other filters aren't giving us a string or boolean.
 		 */
@@ -710,34 +763,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return $res;
 			}
 
-			/**
-			 * Get the add-on acronym to read its config.
-			 */
-			$ext = $this->p->cf[ '*' ][ 'slug' ][ $args->slug ];
+			$ext = $this->p->cf[ '*' ][ 'slug' ][ $args->slug ];			// Get the add-on acronym to read its config.
 
-			/**
-			 * Make sure we have a config for that slug.
-			 */
-			if ( empty( $this->p->cf[ 'plugin' ][ $ext ] ) ) {
+			if ( empty( $this->p->cf[ 'plugin' ][ $ext ] ) ) {			// Make sure we have a config for that acronym.
 				return $res;
 			}
 
-			/**
-			 * Get plugin data from the plugin readme.
-			 */
-			$plugin_data = $this->get_plugin_data( $ext, $read_cache = true );
+			$plugin_data = $this->get_plugin_data( $ext, $read_cache = true );	// Get plugin data from the plugin readme.
 
-			/**
-			 * Make sure we have something to return.
-			 */
-			if ( empty( $plugin_data ) ) {
+			if ( empty( $plugin_data ) ) {						// Make sure we have some data to return.
 				return $res;
 			}
 
-			/**
-			 * Let WordPress known that this is not a wordpress.org plugin.
-			 */
-			$plugin_data->external = true;
+			$plugin_data->external = true;						// Let WordPress known that this is not a wordpress.org plugin.
 
 			return $plugin_data;
 		}
@@ -751,13 +789,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$info   = $this->p->cf[ 'plugin' ][ $ext ];
 			$readme = $this->get_readme_info( $ext, $read_cache );
 
-			// make sure we got something back
-			if ( empty( $readme ) ) {
+			if ( empty( $readme ) ) {	// Make sure we got something back.
 				return array();
 			}
 
 			foreach ( array(
-				// readme array => plugin object
+
+				/**
+				 * Readme array => Plugin object.
+				 */
 				'plugin_name'       => 'name',
 				'plugin_slug'       => 'slug',
 				'base'              => 'plugin',
@@ -770,7 +810,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'upgrade_notice'    => 'upgrade_notice',
 				'last_updated'      => 'last_updated',
 				'sections'          => 'sections',
-				'remaining_content' => 'other_notes',	// added to sections
+				'remaining_content' => 'other_notes',	// Added to sections.
 				'banners'           => 'banners',
 			) as $readme_key => $prop_name ) {
 
