@@ -420,7 +420,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.25.0-dev.2 (2019/03/08)**
+**Version 4.25.0-dev.3 (2019/03/09)**
 
 * *New Features*
 	* None.
@@ -430,6 +430,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * *Developer Notes*
 	* Added validation for correct plugin names when doing an update check.
+	* Added an `$only_prefix` argument to the WpssoUtil::delete_all_db_transients() method.
 
 **Version 4.24.2 (2019/03/05)**
 
@@ -523,9 +524,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.25.0-dev.2 =
+= 4.25.0-dev.3 =
 
-(2019/03/08) Added validation for correct plugin names when doing an update check.
+(2019/03/09) Added validation for correct plugin names when doing an update check.
 
 = 4.24.2 =
 
