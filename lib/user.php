@@ -79,7 +79,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				/**
 				 * Exit here if not a user or profile page.
 				 */
-				$user_id = SucomUtil::get_request_value( 'user_id' );	// uses sanitize_text_field
+				$user_id = SucomUtil::get_request_value( 'user_id' );	// Uses sanitize_text_field.
 
 				if ( empty( $user_id ) ) {
 

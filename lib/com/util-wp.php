@@ -682,8 +682,11 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			}
 
 			if ( '' !== $offset ) {
+
 				if ( empty( $user_names ) ) {
+
 					$offset = '';	// Allow the next call to start fresh.
+
 					return false;	// To break the while loop.
 				}
 			}

@@ -3282,13 +3282,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 						$json_md5 = md5( $matches[1] );	// md5() input must be a string.
 					
-						if ( $do_decode ) {	// Return only the decoded json data.
+						if ( $do_decode ) {		// Return only the decoded json data.
 
 							$json_decoded = json_decode( $matches[1], $assoc = true );
 
 							$json_data[ $json_md5 ] = $json_decoded;
 
-						} else {	// Return the complete script container.
+						} else {			// Return the complete script container.
 
 							$json_data[ $json_md5 ] = $matches[0];
 						}
