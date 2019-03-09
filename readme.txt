@@ -420,7 +420,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.25.0-dev.1 (2019/03/08)**
+**Version 4.25.0-dev.2 (2019/03/08)**
 
 * *New Features*
 	* None.
@@ -523,7 +523,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.25.0-dev.1 =
+= 4.25.0-dev.2 =
 
 (2019/03/08) Added validation for correct plugin names when doing an update check.
 
