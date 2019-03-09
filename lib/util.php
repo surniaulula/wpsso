@@ -1545,15 +1545,34 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 		}
 
-		public function delete_all_db_transients( $clear_short = false ) {
+		public function delete_expired_db_transients() {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			$deleted_count  = 0;
-			$only_expired   = false;
-			$transient_keys = $this->get_db_transient_keys( $only_expired );
+			$deleted_count = 0;
+
+			$transient_keys = $this->get_db_transient_keys( $only_expired = true );
+
+			foreach( $transient_keys as $cache_id ) {
+				if ( delete_transient( $cache_id ) ) {
+					$deleted_count++;
+				}
+			}
+
+			return $deleted_count;
+		}
+
+		public function delete_all_db_transients( $clear_short = false, $only_prefix = '' ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			$deleted_count = 0;
+
+			$transient_keys = $this->get_db_transient_keys( $only_expired = false );
 
 			foreach( $transient_keys as $cache_id ) {
 
@@ -1567,31 +1586,21 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				/**
 				 * Maybe delete shortened urls.
 				 */
-				if ( ! $clear_short ) {	// False by default.
-					if ( strpos( $cache_id, $this->p->lca . '_s_' ) === 0 ) {
-						continue;
+				if ( ! $clear_short ) {							// If not clearing short URLs.
+					if ( strpos( $cache_id, $this->p->lca . '_s_' ) === 0 ) {	// This is a shortened URL.
+						continue;						// Get the next transient.
 					}
 				}
 
-				if ( delete_transient( $cache_id ) ) {
-					$deleted_count++;
+				/**
+				 * Maybe only clear a specific transient ID prefix.
+				 */
+				if ( $only_prefix ) {							// We're only clearing a specific prefix.
+					if ( strpos( $cache_id, $only_prefix ) !== 0 ) {		// The cache ID does not match that prefix.
+						continue;						// Get the next transient.
+					}
 				}
-			}
 
-			return $deleted_count;
-		}
-
-		public function delete_expired_db_transients() {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
-
-			$deleted_count  = 0;
-			$only_expired   = true;
-			$transient_keys = $this->get_db_transient_keys( $only_expired );
-
-			foreach( $transient_keys as $cache_id ) {
 				if ( delete_transient( $cache_id ) ) {
 					$deleted_count++;
 				}
