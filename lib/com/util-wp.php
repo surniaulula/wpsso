@@ -650,6 +650,25 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $user_names;
 		}
 
+		/**
+		 * Keep in mind that the 'wp_capabilities' meta value is a
+		 * serialized array, so WordPress uses a LIKE query to match
+		 * any string within the serialized array.
+		 *
+		 * Example query:
+		 *
+		 * 	SELECT wp_users.ID,wp_users.display_name
+		 * 	FROM wp_users
+		 * 	INNER JOIN wp_usermeta
+		 * 	ON ( wp_users.ID = wp_usermeta.user_id )
+		 * 	WHERE 1=1
+		 * 	AND ( ( ( wp_usermeta.meta_key = 'wp_capabilities'
+		 * 	AND wp_usermeta.meta_value LIKE '%\"person\"%' ) ) )
+		 * 	ORDER BY display_name ASC
+		 *
+		 * If using the $limit argument, you must keep calling
+		 * get_user_names() until it returns false.
+		 */
 		public static function get_user_names( $blog_id = null, $role = '', $limit = '' ) {
 
 			static $offset = '';
