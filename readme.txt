@@ -108,6 +108,7 @@ WPSSO Core and its optional Free add-ons offer meta tags and Schema markup for F
 		* Product Color
 		* Product Condition
 		* Product Material
+		* Product MPN
 		* Product SKU
 		* Product EAN
 		* Product GTIN-8
@@ -420,12 +421,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.25.0-dev.3 (2019/03/09)**
+**Version 4.25.0-b.1 (2019/03/10)**
 
 * *New Features*
 	* None.
 * *Improvements*
-	* None.
+	* Added a new "Product MPN Custom Field" option (aka Manufacturer Part Number) under the SSO &gt; Advanced &gt; Custom Meta tab (Pro version).
+	* Added a new "Product MPN Attribute Name" option (aka Manufacturer Part Number) for WooCommerce under the SSO &gt; Advanced &gt; Integration tab (Pro version).
 * *Bugfixes*
 	* None.
 * *Developer Notes*
@@ -524,9 +526,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.25.0-dev.3 =
+= 4.25.0-b.1 =
 
-(2019/03/09) Added validation for correct plugin names when doing an update check.
+(2019/03/10) Added new "Product MPN Custom Field" and "Product MPN Attribute Name" options (aka Manufacturer Part Number) in the SSO &gt; Advanced settings (Pro version).
 
 = 4.24.2 =
 

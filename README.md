@@ -105,6 +105,7 @@
 <li>Product Color</li>
 <li>Product Condition</li>
 <li>Product Material</li>
+<li>Product MPN</li>
 <li>Product SKU</li>
 <li>Product EAN</li>
 <li>Product GTIN-8</li>
