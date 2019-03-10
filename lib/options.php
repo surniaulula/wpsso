@@ -1411,6 +1411,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'pin_desc':
 				case 'product_brand':
 				case 'product_color':
+				case 'product_mpn':
 				case 'product_sku':
 				case 'product_ean':
 				case 'product_gtin8':

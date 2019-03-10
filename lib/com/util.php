@@ -1593,6 +1593,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function natksort( &$arr ) {
+
 			return uksort( $arr, 'strnatcmp' );
 		}
 

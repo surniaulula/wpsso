@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.25.0-dev.3\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.25.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -370,8 +370,8 @@ msgid ""
 "function is missing."
 msgstr ""
 
-#: lib/admin.php:2405 lib/gettext-pro.php:168 lib/gettext-pro.php:171
-#: lib/gettext-pro.php:174 lib/pro/media/slideshare.php:192
+#: lib/admin.php:2405 lib/gettext-pro.php:169 lib/gettext-pro.php:172
+#: lib/gettext-pro.php:175 lib/pro/media/slideshare.php:192
 #: lib/pro/media/vimeo.php:157 lib/pro/media/wistia.php:314 lib/util.php:1918
 msgid ""
 "Please contact your hosting provider to have the missing PHP function "
@@ -387,7 +387,7 @@ msgid ""
 "your content."
 msgstr ""
 
-#: lib/admin.php:2435 lib/gettext-pro.php:217
+#: lib/admin.php:2435 lib/gettext-pro.php:218
 #: lib/pro/rating/wppostratings.php:51
 msgid "Plugin conflict detected"
 msgstr ""
@@ -1577,9 +1577,9 @@ msgstr ""
 #: lib/gettext-config.php:102 lib/gettext-config.php:106
 #: lib/gettext-config.php:109 lib/gettext-config.php:112
 #: lib/gettext-config.php:126 lib/gettext-config.php:129
-#: lib/gettext-config.php:131 lib/gettext-config.php:191
-#: lib/gettext-config.php:194 lib/gettext-config.php:206
-#: lib/gettext-config.php:215
+#: lib/gettext-config.php:131 lib/gettext-config.php:193
+#: lib/gettext-config.php:196 lib/gettext-config.php:208
+#: lib/gettext-config.php:217
 msgctxt "option value"
 msgid "[None]"
 msgstr ""
@@ -1871,325 +1871,335 @@ msgstr ""
 
 #: lib/gettext-config.php:163
 msgctxt "option label"
-msgid "Product SKU Custom Field"
+msgid "Product MPN Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:164
 msgctxt "option label"
-msgid "Product EAN Custom Field"
+msgid "Product SKU Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:165
 msgctxt "option label"
-msgid "Product GTIN-8 Custom Field"
+msgid "Product EAN Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:166
 msgctxt "option label"
-msgid "Product GTIN-12 Custom Field"
+msgid "Product GTIN-8 Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:167
 msgctxt "option label"
-msgid "Product GTIN-13 Custom Field"
+msgid "Product GTIN-12 Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:168
 msgctxt "option label"
-msgid "Product GTIN-14 Custom Field"
+msgid "Product GTIN-13 Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:169
 msgctxt "option label"
-msgid "Product ISBN Custom Field"
+msgid "Product GTIN-14 Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:170
 msgctxt "option label"
-msgid "Product Price Custom Field"
+msgid "Product ISBN Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:171
 msgctxt "option label"
-msgid "Product Currency Custom Field"
+msgid "Product Price Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:172
 msgctxt "option label"
-msgid "Product Size Custom Field"
+msgid "Product Currency Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:173
 msgctxt "option label"
-msgid "Product Target Gender Custom Field"
+msgid "Product Size Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:174
 msgctxt "option label"
-msgid "Recipe Ingredients Custom Field"
+msgid "Product Target Gender Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:175
 msgctxt "option label"
-msgid "Recipe Instructions Custom Field"
+msgid "Recipe Ingredients Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:176
 msgctxt "option label"
-msgid "Same-As URLs Custom Field"
+msgid "Recipe Instructions Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:177
 msgctxt "option label"
-msgid "Video URL Custom Field"
+msgid "Same-As URLs Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:178
 msgctxt "option label"
-msgid "Video Embed HTML Custom Field"
+msgid "Video URL Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:179
-msgctxt "option value"
-msgid "Product Brand Attribute Name"
+msgctxt "option label"
+msgid "Video Embed HTML Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:180
 msgctxt "option value"
-msgid "Product Color Attribute Name"
+msgid "Product Brand Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:181
 msgctxt "option value"
-msgid "Product Condition Attribute Name"
+msgid "Product Color Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:182
 msgctxt "option value"
-msgid "Product EAN Attribute Name"
+msgid "Product Condition Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:183
 msgctxt "option value"
-msgid "Product GTIN-8 Attribute Name"
+msgid "Product MPN Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:184
 msgctxt "option value"
-msgid "Product GTIN-12 Attribute Name"
+msgid "Product EAN Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:185
 msgctxt "option value"
-msgid "Product GTIN-13 Attribute Name"
+msgid "Product GTIN-8 Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:186
 msgctxt "option value"
-msgid "Product GTIN-14 Attribute Name"
+msgid "Product GTIN-12 Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:187
 msgctxt "option value"
-msgid "Product ISBN Attribute Name"
+msgid "Product GTIN-13 Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:188
 msgctxt "option value"
-msgid "Product Material Attribute Name"
+msgid "Product GTIN-14 Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:189
 msgctxt "option value"
-msgid "Product Size Attribute Name"
+msgid "Product ISBN Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:190
 msgctxt "option value"
-msgid "Product Target Gender Attr. Name"
+msgid "Product Material Attribute Name"
+msgstr ""
+
+#: lib/gettext-config.php:191
+msgctxt "option value"
+msgid "Product Size Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:192
 msgctxt "option value"
-msgid "Kids"
+msgid "Product Target Gender Attr. Name"
 msgstr ""
 
-#: lib/gettext-config.php:193
+#: lib/gettext-config.php:194
 msgctxt "option value"
-msgid "Adult"
+msgid "Kids"
 msgstr ""
 
 #: lib/gettext-config.php:195
 msgctxt "option value"
-msgid "Male"
-msgstr ""
-
-#: lib/gettext-config.php:196
-msgctxt "option value"
-msgid "Female"
+msgid "Adult"
 msgstr ""
 
 #: lib/gettext-config.php:197
 msgctxt "option value"
-msgid "Unisex"
+msgid "Male"
 msgstr ""
 
 #: lib/gettext-config.php:198
 msgctxt "option value"
-msgid "Full Time"
+msgid "Female"
 msgstr ""
 
 #: lib/gettext-config.php:199
 msgctxt "option value"
-msgid "Part Time"
+msgid "Unisex"
 msgstr ""
 
 #: lib/gettext-config.php:200
 msgctxt "option value"
-msgid "Contractor"
+msgid "Full Time"
 msgstr ""
 
 #: lib/gettext-config.php:201
 msgctxt "option value"
-msgid "Temporary"
+msgid "Part Time"
 msgstr ""
 
 #: lib/gettext-config.php:202
 msgctxt "option value"
-msgid "Intern"
+msgid "Contractor"
 msgstr ""
 
 #: lib/gettext-config.php:203
 msgctxt "option value"
-msgid "Volunteer"
+msgid "Temporary"
 msgstr ""
 
 #: lib/gettext-config.php:204
 msgctxt "option value"
-msgid "Per Diem"
+msgid "Intern"
 msgstr ""
 
 #: lib/gettext-config.php:205
 msgctxt "option value"
-msgid "Other"
+msgid "Volunteer"
+msgstr ""
+
+#: lib/gettext-config.php:206
+msgctxt "option value"
+msgid "Per Diem"
 msgstr ""
 
 #: lib/gettext-config.php:207
 msgctxt "option value"
-msgid "Discontinued"
-msgstr ""
-
-#: lib/gettext-config.php:208
-msgctxt "option value"
-msgid "In Stock"
+msgid "Other"
 msgstr ""
 
 #: lib/gettext-config.php:209
 msgctxt "option value"
-msgid "In Store Only"
+msgid "Discontinued"
 msgstr ""
 
 #: lib/gettext-config.php:210
 msgctxt "option value"
-msgid "Limited Availability"
+msgid "In Stock"
 msgstr ""
 
 #: lib/gettext-config.php:211
 msgctxt "option value"
-msgid "Online Only"
+msgid "In Store Only"
 msgstr ""
 
 #: lib/gettext-config.php:212
 msgctxt "option value"
-msgid "Out of Stock"
+msgid "Limited Availability"
 msgstr ""
 
 #: lib/gettext-config.php:213
 msgctxt "option value"
-msgid "Pre-Order"
+msgid "Online Only"
 msgstr ""
 
 #: lib/gettext-config.php:214
 msgctxt "option value"
-msgid "Sold Out"
+msgid "Out of Stock"
+msgstr ""
+
+#: lib/gettext-config.php:215
+msgctxt "option value"
+msgid "Pre-Order"
 msgstr ""
 
 #: lib/gettext-config.php:216
 msgctxt "option value"
-msgid "Damaged"
-msgstr ""
-
-#: lib/gettext-config.php:217
-msgctxt "option value"
-msgid "New"
+msgid "Sold Out"
 msgstr ""
 
 #: lib/gettext-config.php:218
 msgctxt "option value"
-msgid "Refurbished"
+msgid "Damaged"
 msgstr ""
 
 #: lib/gettext-config.php:219
 msgctxt "option value"
-msgid "Used"
+msgid "New"
 msgstr ""
 
 #: lib/gettext-config.php:220
 msgctxt "option value"
-msgid "Every day"
+msgid "Refurbished"
 msgstr ""
 
 #: lib/gettext-config.php:221
 msgctxt "option value"
-msgid "Every two days"
+msgid "Used"
 msgstr ""
 
 #: lib/gettext-config.php:222
 msgctxt "option value"
-msgid "Every three days"
+msgid "Every day"
 msgstr ""
 
 #: lib/gettext-config.php:223
 msgctxt "option value"
-msgid "Every four days"
+msgid "Every two days"
 msgstr ""
 
 #: lib/gettext-config.php:224
 msgctxt "option value"
-msgid "Every five days"
+msgid "Every three days"
 msgstr ""
 
 #: lib/gettext-config.php:225
 msgctxt "option value"
-msgid "Every six days"
+msgid "Every four days"
 msgstr ""
 
 #: lib/gettext-config.php:226
 msgctxt "option value"
-msgid "Every week"
+msgid "Every five days"
 msgstr ""
 
 #: lib/gettext-config.php:227
 msgctxt "option value"
-msgid "Development and Up"
+msgid "Every six days"
 msgstr ""
 
 #: lib/gettext-config.php:228
 msgctxt "option value"
-msgid "Alpha and Up"
+msgid "Every week"
 msgstr ""
 
 #: lib/gettext-config.php:229
 msgctxt "option value"
-msgid "Beta and Up"
+msgid "Development and Up"
 msgstr ""
 
 #: lib/gettext-config.php:230
 msgctxt "option value"
-msgid "Release Candidate and Up"
+msgid "Alpha and Up"
 msgstr ""
 
 #: lib/gettext-config.php:231
+msgctxt "option value"
+msgid "Beta and Up"
+msgstr ""
+
+#: lib/gettext-config.php:232
+msgctxt "option value"
+msgid "Release Candidate and Up"
+msgstr ""
+
+#: lib/gettext-config.php:233
 msgctxt "option value"
 msgid "Stable / Production"
 msgstr ""
@@ -2337,7 +2347,7 @@ msgstr ""
 msgid "Posts, Pages, Custom Post Types"
 msgstr ""
 
-#: lib/gettext-pro.php:30 lib/gettext-pro.php:202
+#: lib/gettext-pro.php:30 lib/gettext-pro.php:203
 #: lib/gpl/admin/advanced.php:246 lib/media.php:499 lib/media.php:663
 #: lib/media.php:1557 lib/pro/admin/advanced.php:246
 #: lib/pro/util/checkimgdims.php:92
@@ -2508,14 +2518,14 @@ msgctxt "metabox title"
 msgid "Bitly URL Shortener"
 msgstr ""
 
-#: lib/gettext-pro.php:66 lib/gettext-pro.php:188
+#: lib/gettext-pro.php:66 lib/gettext-pro.php:189
 #: lib/gpl/admin/advanced.php:436 lib/pro/admin/advanced.php:430
 #: lib/pro/util/shorten.php:268
 msgctxt "option label"
 msgid "Bitly Username"
 msgstr ""
 
-#: lib/gettext-pro.php:67 lib/gettext-pro.php:190
+#: lib/gettext-pro.php:67 lib/gettext-pro.php:191
 #: lib/gpl/admin/advanced.php:441 lib/pro/admin/advanced.php:435
 #: lib/pro/util/shorten.php:283
 msgctxt "option label"
@@ -2546,7 +2556,7 @@ msgctxt "metabox title"
 msgid "DLMY.App URL Shortener"
 msgstr ""
 
-#: lib/gettext-pro.php:72 lib/gettext-pro.php:193
+#: lib/gettext-pro.php:72 lib/gettext-pro.php:194
 #: lib/gpl/admin/advanced.php:462 lib/pro/admin/advanced.php:456
 #: lib/pro/util/shorten.php:312
 msgctxt "option label"
@@ -2559,7 +2569,7 @@ msgctxt "metabox title"
 msgid "Ow.ly URL Shortener"
 msgstr ""
 
-#: lib/gettext-pro.php:74 lib/gettext-pro.php:195
+#: lib/gettext-pro.php:74 lib/gettext-pro.php:196
 #: lib/gpl/admin/advanced.php:472 lib/pro/admin/advanced.php:466
 #: lib/pro/util/shorten.php:335
 msgctxt "option label"
@@ -2572,7 +2582,7 @@ msgctxt "metabox title"
 msgid "Your Own URL Shortener (YOURLS)"
 msgstr ""
 
-#: lib/gettext-pro.php:76 lib/gettext-pro.php:197
+#: lib/gettext-pro.php:76 lib/gettext-pro.php:198
 #: lib/gpl/admin/advanced.php:482 lib/pro/admin/advanced.php:476
 #: lib/pro/util/shorten.php:383
 msgctxt "option label"
@@ -2674,14 +2684,14 @@ msgctxt "option label"
 msgid "Force Autoplay when Possible"
 msgstr ""
 
-#: lib/gettext-pro.php:100 lib/gettext-pro.php:128 lib/gpl/admin/meta.php:77
+#: lib/gettext-pro.php:100 lib/gettext-pro.php:129 lib/gpl/admin/meta.php:77
 #: lib/gpl/admin/post.php:73 lib/pro/admin/meta.php:88
 #: lib/pro/admin/post.php:82
 msgid ""
 "Activate the %s add-on for additional Schema markup features and options."
 msgstr ""
 
-#: lib/gettext-pro.php:101 lib/gettext-pro.php:129 lib/gpl/admin/meta.php:84
+#: lib/gettext-pro.php:101 lib/gettext-pro.php:130 lib/gpl/admin/meta.php:84
 #: lib/gpl/admin/post.php:80 lib/pro/admin/meta.php:95
 #: lib/pro/admin/post.php:89
 msgid ""
@@ -2700,42 +2710,42 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gettext-pro.php:104 lib/gettext-pro.php:130 lib/gpl/admin/meta.php:92
+#: lib/gettext-pro.php:104 lib/gettext-pro.php:131 lib/gpl/admin/meta.php:92
 #: lib/gpl/admin/post.php:109 lib/pro/admin/meta.php:100
 #: lib/pro/admin/post.php:109
 msgctxt "option label"
 msgid "Default Title"
 msgstr ""
 
-#: lib/gettext-pro.php:105 lib/gettext-pro.php:131 lib/gpl/admin/meta.php:99
+#: lib/gettext-pro.php:105 lib/gettext-pro.php:132 lib/gpl/admin/meta.php:99
 #: lib/gpl/admin/post.php:117 lib/pro/admin/meta.php:108
 #: lib/pro/admin/post.php:117
 msgctxt "option label"
 msgid "Default Description"
 msgstr ""
 
-#: lib/gettext-pro.php:106 lib/gettext-pro.php:132 lib/gpl/admin/meta.php:107
+#: lib/gettext-pro.php:106 lib/gettext-pro.php:133 lib/gpl/admin/meta.php:107
 #: lib/gpl/admin/post.php:126 lib/pro/admin/meta.php:117
 #: lib/pro/admin/post.php:126
 msgctxt "option label"
 msgid "Search Description"
 msgstr ""
 
-#: lib/gettext-pro.php:107 lib/gettext-pro.php:133 lib/gpl/admin/meta.php:116
+#: lib/gettext-pro.php:107 lib/gettext-pro.php:134 lib/gpl/admin/meta.php:116
 #: lib/gpl/admin/post.php:136 lib/pro/admin/meta.php:126
 #: lib/pro/admin/post.php:136
 msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
-#: lib/gettext-pro.php:108 lib/gettext-pro.php:134 lib/gpl/admin/meta.php:124
+#: lib/gettext-pro.php:108 lib/gettext-pro.php:135 lib/gpl/admin/meta.php:124
 #: lib/gpl/admin/post.php:145 lib/pro/admin/meta.php:133
 #: lib/pro/admin/post.php:144 lib/wp-meta.php:269 lib/wp-meta.php:293
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
-#: lib/gettext-pro.php:109 lib/gettext-pro.php:135 lib/gpl/admin/meta.php:132
+#: lib/gettext-pro.php:109 lib/gettext-pro.php:136 lib/gpl/admin/meta.php:132
 #: lib/gpl/admin/post.php:154 lib/pro/admin/meta.php:140
 #: lib/pro/admin/post.php:152 lib/wp-meta.php:273 lib/wp-meta.php:297
 msgctxt "option label"
@@ -2775,107 +2785,113 @@ msgstr ""
 #: lib/gettext-pro.php:115 lib/gpl/admin/post.php:205 lib/messages.php:2372
 #: lib/pro/admin/post.php:199
 msgctxt "option label"
-msgid "Product SKU"
+msgid "Product MPN"
 msgstr ""
 
 #: lib/gettext-pro.php:116 lib/gpl/admin/post.php:213 lib/messages.php:2376
 #: lib/pro/admin/post.php:206
 msgctxt "option label"
-msgid "Product EAN"
+msgid "Product SKU"
 msgstr ""
 
 #: lib/gettext-pro.php:117 lib/gpl/admin/post.php:221 lib/messages.php:2380
 #: lib/pro/admin/post.php:213
 msgctxt "option label"
-msgid "Product GTIN-8"
+msgid "Product EAN"
 msgstr ""
 
 #: lib/gettext-pro.php:118 lib/gpl/admin/post.php:229 lib/messages.php:2384
 #: lib/pro/admin/post.php:220
 msgctxt "option label"
-msgid "Product GTIN-12"
+msgid "Product GTIN-8"
 msgstr ""
 
 #: lib/gettext-pro.php:119 lib/gpl/admin/post.php:237 lib/messages.php:2388
 #: lib/pro/admin/post.php:227
 msgctxt "option label"
-msgid "Product GTIN-13"
+msgid "Product GTIN-12"
 msgstr ""
 
 #: lib/gettext-pro.php:120 lib/gpl/admin/post.php:245 lib/messages.php:2392
 #: lib/pro/admin/post.php:234
 msgctxt "option label"
-msgid "Product GTIN-14"
+msgid "Product GTIN-13"
 msgstr ""
 
 #: lib/gettext-pro.php:121 lib/gpl/admin/post.php:253 lib/messages.php:2396
 #: lib/pro/admin/post.php:241
 msgctxt "option label"
-msgid "Product ISBN"
+msgid "Product GTIN-14"
 msgstr ""
 
 #: lib/gettext-pro.php:122 lib/gpl/admin/post.php:261 lib/messages.php:2400
 #: lib/pro/admin/post.php:248
 msgctxt "option label"
-msgid "Product Price"
+msgid "Product ISBN"
 msgstr ""
 
-#: lib/gettext-pro.php:123 lib/gpl/admin/post.php:270 lib/messages.php:2408
-#: lib/pro/admin/post.php:256
+#: lib/gettext-pro.php:123 lib/gpl/admin/post.php:269 lib/messages.php:2404
+#: lib/pro/admin/post.php:255
 msgctxt "option label"
-msgid "Product Size"
+msgid "Product Price"
 msgstr ""
 
 #: lib/gettext-pro.php:124 lib/gpl/admin/post.php:278 lib/messages.php:2412
 #: lib/pro/admin/post.php:263
 msgctxt "option label"
+msgid "Product Size"
+msgstr ""
+
+#: lib/gettext-pro.php:125 lib/gpl/admin/post.php:286 lib/messages.php:2416
+#: lib/pro/admin/post.php:270
+msgctxt "option label"
 msgid "Product Target Gender"
 msgstr ""
 
-#: lib/gettext-pro.php:125 lib/gettext-pro.php:136 lib/gpl/admin/meta.php:141
-#: lib/gpl/admin/post.php:285 lib/pro/admin/meta.php:150
-#: lib/pro/admin/post.php:270 lib/submenu/general.php:259
+#: lib/gettext-pro.php:126 lib/gettext-pro.php:137 lib/gpl/admin/meta.php:141
+#: lib/gpl/admin/post.php:293 lib/pro/admin/meta.php:150
+#: lib/pro/admin/post.php:277 lib/submenu/general.php:259
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup"
 msgstr ""
 
-#: lib/gettext-pro.php:126 lib/gettext-pro.php:137 lib/gpl/admin/meta.php:146
-#: lib/gpl/admin/post.php:291 lib/pro/admin/meta.php:154
-#: lib/pro/admin/post.php:275
+#: lib/gettext-pro.php:127 lib/gettext-pro.php:138 lib/gpl/admin/meta.php:146
+#: lib/gpl/admin/post.php:299 lib/pro/admin/meta.php:154
+#: lib/pro/admin/post.php:282
 msgctxt "option label"
 msgid "Description"
 msgstr ""
 
-#: lib/gettext-pro.php:127 lib/gpl/admin/post.php:297
-#: lib/pro/admin/post.php:281 lib/wp-meta.php:265
+#: lib/gettext-pro.php:128 lib/gpl/admin/post.php:305
+#: lib/pro/admin/post.php:288 lib/wp-meta.php:265
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
-#: lib/gettext-pro.php:138 lib/gpl/admin/meta.php:164 lib/post.php:1320
+#: lib/gettext-pro.php:139 lib/gpl/admin/meta.php:164 lib/post.php:1320
 #: lib/pro/admin/meta.php:177
 msgid "Save a draft version or publish the %s to display these options."
 msgstr ""
 
-#: lib/gettext-pro.php:139 lib/gpl/admin/meta.php:180
+#: lib/gettext-pro.php:140 lib/gpl/admin/meta.php:180
 #: lib/pro/admin/meta.php:190 lib/submenu/general.php:38
 msgctxt "metabox title"
 msgid "All Social WebSites / Open Graph"
 msgstr ""
 
-#: lib/gettext-pro.php:140 lib/gpl/admin/meta.php:186
+#: lib/gettext-pro.php:141 lib/gpl/admin/meta.php:186
 #: lib/pro/admin/meta.php:196
 msgctxt "metabox title"
 msgid "Priority Image Information"
 msgstr ""
 
-#: lib/gettext-pro.php:141 lib/gettext-pro.php:157 lib/gpl/admin/meta.php:194
+#: lib/gettext-pro.php:142 lib/gettext-pro.php:158 lib/gpl/admin/meta.php:194
 #: lib/gpl/admin/meta.php:362 lib/pro/admin/meta.php:203
 #: lib/pro/admin/meta.php:362
 msgctxt "option label"
 msgid "Maximum Images"
 msgstr ""
 
-#: lib/gettext-pro.php:142 lib/gettext-pro.php:153 lib/gettext-pro.php:158
+#: lib/gettext-pro.php:143 lib/gettext-pro.php:154 lib/gettext-pro.php:159
 #: lib/gpl/admin/meta.php:205 lib/gpl/admin/meta.php:319
 #: lib/gpl/admin/meta.php:373 lib/pro/admin/meta.php:213
 #: lib/pro/admin/meta.php:321 lib/pro/admin/meta.php:372
@@ -2883,7 +2899,7 @@ msgctxt "option label"
 msgid "Image Dimensions"
 msgstr ""
 
-#: lib/gettext-pro.php:143 lib/gettext-pro.php:154 lib/gettext-pro.php:159
+#: lib/gettext-pro.php:144 lib/gettext-pro.php:155 lib/gettext-pro.php:160
 #: lib/gpl/admin/meta.php:213 lib/gpl/admin/meta.php:328
 #: lib/gpl/admin/meta.php:382 lib/pro/admin/meta.php:220
 #: lib/pro/admin/meta.php:329 lib/pro/admin/meta.php:380
@@ -2891,7 +2907,7 @@ msgctxt "option label"
 msgid "Image ID"
 msgstr ""
 
-#: lib/gettext-pro.php:144 lib/gettext-pro.php:155 lib/gettext-pro.php:160
+#: lib/gettext-pro.php:145 lib/gettext-pro.php:156 lib/gettext-pro.php:161
 #: lib/gpl/admin/meta.php:221 lib/gpl/admin/meta.php:337
 #: lib/gpl/admin/meta.php:391 lib/pro/admin/meta.php:227
 #: lib/pro/admin/meta.php:337 lib/pro/admin/meta.php:388
@@ -2899,135 +2915,135 @@ msgctxt "option label"
 msgid "or an Image URL"
 msgstr ""
 
-#: lib/gettext-pro.php:145 lib/gpl/admin/meta.php:229
+#: lib/gettext-pro.php:146 lib/gpl/admin/meta.php:229
 #: lib/pro/admin/meta.php:235
 msgctxt "metabox title"
 msgid "Priority Video Information"
 msgstr ""
 
-#: lib/gettext-pro.php:146 lib/gpl/admin/meta.php:236
+#: lib/gettext-pro.php:147 lib/gpl/admin/meta.php:236
 #: lib/pro/admin/meta.php:241
 msgctxt "option label"
 msgid "Include Preview Images"
 msgstr ""
 
-#: lib/gettext-pro.php:147 lib/gpl/admin/meta.php:246
+#: lib/gettext-pro.php:148 lib/gpl/admin/meta.php:246
 #: lib/pro/admin/meta.php:250
 msgctxt "option label"
 msgid "Maximum Videos"
 msgstr ""
 
-#: lib/gettext-pro.php:148 lib/gpl/admin/meta.php:257
+#: lib/gettext-pro.php:149 lib/gpl/admin/meta.php:257
 #: lib/pro/admin/meta.php:260
 msgctxt "option label"
 msgid "Video Dimensions"
 msgstr ""
 
-#: lib/gettext-pro.php:149 lib/gpl/admin/meta.php:265 lib/messages.php:2428
+#: lib/gettext-pro.php:150 lib/gpl/admin/meta.php:265 lib/messages.php:2432
 #: lib/pro/admin/meta.php:267
 msgctxt "option label"
 msgid "Video Embed HTML"
 msgstr ""
 
-#: lib/gettext-pro.php:150 lib/gpl/admin/meta.php:273
+#: lib/gettext-pro.php:151 lib/gpl/admin/meta.php:273
 #: lib/pro/admin/meta.php:274
 msgctxt "option label"
 msgid "or a Video URL"
 msgstr ""
 
-#: lib/gettext-pro.php:151 lib/gpl/admin/meta.php:282
+#: lib/gettext-pro.php:152 lib/gpl/admin/meta.php:282
 #: lib/pro/admin/meta.php:282
 msgctxt "option label"
 msgid "Video Name / Title"
 msgstr ""
 
-#: lib/gettext-pro.php:152 lib/gpl/admin/meta.php:291
+#: lib/gettext-pro.php:153 lib/gpl/admin/meta.php:291
 #: lib/pro/admin/meta.php:292
 msgctxt "option label"
 msgid "Video Description"
 msgstr ""
 
-#: lib/gettext-pro.php:156 lib/gpl/admin/meta.php:354
+#: lib/gettext-pro.php:157 lib/gpl/admin/meta.php:354
 #: lib/pro/admin/meta.php:355
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup / Pinterest"
 msgstr ""
 
-#: lib/gettext-pro.php:161 lib/pro/ecom/woocommerce.php:897
+#: lib/gettext-pro.php:162 lib/pro/ecom/woocommerce.php:897
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
-#: lib/gettext-pro.php:162 lib/pro/ecom/woocommerce.php:900
+#: lib/gettext-pro.php:163 lib/pro/ecom/woocommerce.php:900
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/gettext-pro.php:163 lib/pro/ecom/woocommerce.php:1120
+#: lib/gettext-pro.php:164 lib/pro/ecom/woocommerce.php:1120
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/gettext-pro.php:164 lib/pro/ecom/woocommerce.php:1122
+#: lib/gettext-pro.php:165 lib/pro/ecom/woocommerce.php:1122
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:165 lib/pro/ecom/woocommerce.php:1125
+#: lib/gettext-pro.php:166 lib/pro/ecom/woocommerce.php:1125
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 
-#: lib/gettext-pro.php:166 lib/gettext-pro.php:169 lib/gettext-pro.php:172
+#: lib/gettext-pro.php:167 lib/gettext-pro.php:170 lib/gettext-pro.php:173
 #: lib/pro/media/slideshare.php:187 lib/pro/media/vimeo.php:152
 #: lib/pro/media/wistia.php:309 lib/util.php:1913
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
-#: lib/gettext-pro.php:167 lib/gettext-pro.php:170 lib/gettext-pro.php:173
+#: lib/gettext-pro.php:168 lib/gettext-pro.php:171 lib/gettext-pro.php:174
 #: lib/pro/media/slideshare.php:189 lib/pro/media/vimeo.php:154
 #: lib/pro/media/wistia.php:311 lib/util.php:1915
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:175 lib/pro/media/upscale.php:222
+#: lib/gettext-pro.php:176 lib/pro/media/upscale.php:222
 msgid ""
 "Failed to upscale image ID %1$s of %2$s by %3$s from %4$s to %5$s for the "
 "%6$s image size (exceeds %7$s maximum upscale setting)."
 msgstr ""
 
-#: lib/gettext-pro.php:176 lib/pro/media/upscale.php:230
+#: lib/gettext-pro.php:177 lib/pro/media/upscale.php:230
 msgid ""
 "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the "
 "%6$s image size."
 msgstr ""
 
-#: lib/gettext-pro.php:177 lib/gettext-pro.php:181 lib/pro/media/ngg.php:131
+#: lib/gettext-pro.php:178 lib/gettext-pro.php:182 lib/pro/media/ngg.php:131
 #: lib/pro/media/ngg.php:1279
 msgid "NextGEN Gallery"
 msgstr ""
 
-#: lib/gettext-pro.php:178 lib/gettext-pro.php:203 lib/media.php:1563
+#: lib/gettext-pro.php:179 lib/gettext-pro.php:204 lib/media.php:1563
 #: lib/pro/media/ngg.php:132 lib/pro/util/checkimgdims.php:94
 msgid "image ID %s"
 msgstr ""
 
-#: lib/gettext-pro.php:179 lib/gettext-pro.php:204 lib/pro/media/ngg.php:136
+#: lib/gettext-pro.php:180 lib/gettext-pro.php:205 lib/pro/media/ngg.php:136
 #: lib/pro/util/checkimgdims.php:99
 msgid "cropped"
 msgstr ""
 
-#: lib/gettext-pro.php:180 lib/gettext-pro.php:205 lib/pro/media/ngg.php:138
+#: lib/gettext-pro.php:181 lib/gettext-pro.php:206 lib/pro/media/ngg.php:138
 #: lib/pro/util/checkimgdims.php:101
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is too small for the "
 "required %4$s image dimensions."
 msgstr ""
 
-#: lib/gettext-pro.php:182 lib/gpl/social/buddypress.php:52
+#: lib/gettext-pro.php:183 lib/gpl/social/buddypress.php:52
 #: lib/pro/social/buddypress.php:100
 msgctxt "option label"
 msgid "BuddyPress Member Bio Field Name"
 msgstr ""
 
-#: lib/gettext-pro.php:183 lib/gpl/social/buddypress.php:69
+#: lib/gettext-pro.php:184 lib/gpl/social/buddypress.php:69
 #: lib/pro/social/buddypress.php:119
 msgid ""
 "The BuddyPress member profile page does not include the <em>Biographical "
@@ -3037,131 +3053,131 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: lib/gettext-pro.php:184 lib/pro/social/buddypress.php:662
+#: lib/gettext-pro.php:185 lib/pro/social/buddypress.php:662
 msgid "No Description"
 msgstr ""
 
-#: lib/gettext-pro.php:185 lib/pro/util/post.php:89
+#: lib/gettext-pro.php:186 lib/pro/util/post.php:89
 msgid ""
 "Database meta table row \"%2$s\" for post ID %1$d was found and converted to "
 "\"%3$s\"."
 msgstr ""
 
-#: lib/gettext-pro.php:186 lib/pro/util/shorten.php:248
+#: lib/gettext-pro.php:187 lib/pro/util/shorten.php:248
 msgid "The URL shortening library file \"%s\" is missing and required."
 msgstr ""
 
-#: lib/gettext-pro.php:187 lib/gettext-pro.php:192 lib/gettext-pro.php:194
-#: lib/gettext-pro.php:196 lib/pro/util/shorten.php:267
+#: lib/gettext-pro.php:188 lib/gettext-pro.php:193 lib/gettext-pro.php:195
+#: lib/gettext-pro.php:197 lib/pro/util/shorten.php:267
 #: lib/pro/util/shorten.php:311 lib/pro/util/shorten.php:334
 #: lib/pro/util/shorten.php:382
 msgid "The \"%s\" option value is empty and required."
 msgstr ""
 
-#: lib/gettext-pro.php:189 lib/pro/util/shorten.php:279
+#: lib/gettext-pro.php:190 lib/pro/util/shorten.php:279
 msgid ""
 "The \"%1$s\" and \"%2$s\" option values are empty &mdash; at least one "
 "option value is required."
 msgstr ""
 
-#: lib/gettext-pro.php:191 lib/pro/util/shorten.php:284
+#: lib/gettext-pro.php:192 lib/pro/util/shorten.php:284
 msgctxt "option label"
 msgid "Bitly API Key"
 msgstr ""
 
-#: lib/gettext-pro.php:198 lib/pro/util/shorten.php:426
+#: lib/gettext-pro.php:199 lib/pro/util/shorten.php:426
 msgid ""
 "Incomplete and/or missing API credentials for the \"%s\" URL shortening "
 "service."
 msgstr ""
 
-#: lib/gettext-pro.php:199 lib/pro/util/user.php:108
+#: lib/gettext-pro.php:200 lib/pro/util/user.php:108
 msgid ""
 "Database meta table row \"%2$s\" for user ID %1$d was found and converted to "
 "\"%3$s\"."
 msgstr ""
 
-#: lib/gettext-pro.php:200 lib/pro/util/term.php:81
+#: lib/gettext-pro.php:201 lib/pro/util/term.php:81
 msgid ""
 "Database meta table row \"%2$s\" for term ID %1$d was found and converted to "
 "\"%3$s\"."
 msgstr ""
 
-#: lib/gettext-pro.php:201 lib/pro/util/checkimgdims.php:74
+#: lib/gettext-pro.php:202 lib/pro/util/checkimgdims.php:74
 msgid "full size original"
 msgstr ""
 
-#: lib/gettext-pro.php:206 lib/pro/util/checkimgdims.php:167
+#: lib/gettext-pro.php:207 lib/pro/util/checkimgdims.php:167
 msgid ""
 "Image %1$s in content ignored &mdash; the image width / height is too small "
 "for the required %2$s image dimensions."
 msgstr ""
 
-#: lib/gettext-pro.php:207 lib/pro/util/checkimgdims.php:168
+#: lib/gettext-pro.php:208 lib/pro/util/checkimgdims.php:168
 msgid ""
 "%1$s includes an additional 'data-wp-pid' attribute for Media Library images "
 "&mdash; if this image was selected from the Media Library before %1$s was "
 "activated, try removing and adding the image back to your content."
 msgstr ""
 
-#: lib/gettext-pro.php:208 lib/pro/form/gravityview.php:55
+#: lib/gettext-pro.php:209 lib/pro/form/gravityview.php:55
 msgctxt "metabox title"
 msgid "Single Entry Integration"
 msgstr ""
 
-#: lib/gettext-pro.php:209 lib/pro/form/gravityview.php:82
+#: lib/gettext-pro.php:210 lib/pro/form/gravityview.php:82
 msgctxt "option label"
 msgid "Title Field ID"
 msgstr ""
 
-#: lib/gettext-pro.php:210 lib/pro/form/gravityview.php:86
+#: lib/gettext-pro.php:211 lib/pro/form/gravityview.php:86
 msgctxt "option label"
 msgid "Description Field ID"
 msgstr ""
 
-#: lib/gettext-pro.php:211 lib/pro/form/gravityview.php:90
+#: lib/gettext-pro.php:212 lib/pro/form/gravityview.php:90
 msgctxt "option label"
 msgid "Post Image Field ID"
 msgstr ""
 
 #. translators: %s is "App Key"
 #. translators: %s is "Secret Key"
-#: lib/gettext-pro.php:212 lib/gettext-pro.php:213
+#: lib/gettext-pro.php:213 lib/gettext-pro.php:214
 #: lib/pro/rating/yotpowc.php:67 lib/pro/rating/yotpowc.php:82
 msgid "Yotpo for WooCommerce \"%s\" setting value is empty."
 msgstr ""
 
 #. translators: %s is "wc_yotpo_compatible()"
-#: lib/gettext-pro.php:214 lib/pro/rating/yotpowc.php:97
+#: lib/gettext-pro.php:215 lib/pro/rating/yotpowc.php:97
 msgid "Yotpo for WooCommerce %s function returned an error."
 msgstr ""
 
 #. translators: %s is "yotpo-social-reviews-for-woocommerce"
-#: lib/gettext-pro.php:215 lib/pro/rating/yotpowc.php:120
+#: lib/gettext-pro.php:216 lib/pro/rating/yotpowc.php:120
 msgid "\"%s\" not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
 msgstr ""
 
 #. translators: %s is the API library file path
-#: lib/gettext-pro.php:216 lib/pro/rating/yotpowc.php:147
+#: lib/gettext-pro.php:217 lib/pro/rating/yotpowc.php:147
 msgid "Yotpo for WooCommerce API library file \"%s\" not found."
 msgstr ""
 
 #. translators: please ignore - translation uses a different text domain
-#: lib/gettext-pro.php:219 lib/pro/rating/wppostratings.php:58
+#: lib/gettext-pro.php:220 lib/pro/rating/wppostratings.php:58
 msgid "Enable Google Rich Snippets?"
 msgstr ""
 
 #. translators: please ignore - translation uses a different text domain
-#: lib/gettext-pro.php:221 lib/pro/rating/wppostratings.php:62
+#: lib/gettext-pro.php:222 lib/pro/rating/wppostratings.php:62
 msgid "Ratings"
 msgstr ""
 
 #. translators: please ignore - translation uses a different text domain
-#: lib/gettext-pro.php:223 lib/pro/rating/wppostratings.php:64
+#: lib/gettext-pro.php:224 lib/pro/rating/wppostratings.php:64
 msgid "Ratings Options"
 msgstr ""
 
-#: lib/gettext-pro.php:224 lib/pro/rating/wppostratings.php:70
+#: lib/gettext-pro.php:225 lib/pro/rating/wppostratings.php:70
 msgid "please disable the %1$s option in the %2$s settings page."
 msgstr ""
 
@@ -5301,107 +5317,112 @@ msgstr ""
 
 #: lib/messages.php:2373
 msgctxt "tooltip fragment"
-msgid "a stock-keeping unit (aka unique product identifier)"
+msgid "a Manufacturer Part Number (MPN)"
 msgstr ""
 
 #: lib/messages.php:2377
 msgctxt "tooltip fragment"
-msgid "an International Article Number (aka European Article Number)"
+msgid "a Stock-Keeping Unit (aka unique product identifier)"
 msgstr ""
 
 #: lib/messages.php:2381
 msgctxt "tooltip fragment"
-msgid "a product GTIN-8 code (aka EAN/UCC-8 or 8-digit EAN)"
+msgid "an International Article Number (aka European Article Number)"
 msgstr ""
 
 #: lib/messages.php:2385
+msgctxt "tooltip fragment"
+msgid "a product GTIN-8 code (aka EAN/UCC-8 or 8-digit EAN)"
+msgstr ""
+
+#: lib/messages.php:2389
 msgctxt "tooltip fragment"
 msgid ""
 "a product GTIN-12 code (12-digit GS1 identification key composed of a U.P.C. "
 "company prefix, item reference, and check digit)"
 msgstr ""
 
-#: lib/messages.php:2389
+#: lib/messages.php:2393
 msgctxt "tooltip fragment"
 msgid "a product GTIN-13 code (aka 13-digit ISBN codes or EAN/UCC-13)"
 msgstr ""
 
-#: lib/messages.php:2393
+#: lib/messages.php:2397
 msgctxt "tooltip fragment"
 msgid "a product GTIN-14 code"
 msgstr ""
 
-#: lib/messages.php:2397
+#: lib/messages.php:2401
 msgctxt "tooltip fragment"
 msgid "an ISBN code (aka International Standard Book Number)"
 msgstr ""
 
-#: lib/messages.php:2401
+#: lib/messages.php:2405
 msgctxt "tooltip fragment"
 msgid "a product price"
 msgstr ""
 
-#: lib/messages.php:2404
+#: lib/messages.php:2408
 msgctxt "option label"
 msgid "Product Currency"
 msgstr ""
 
-#: lib/messages.php:2405
+#: lib/messages.php:2409
 msgctxt "tooltip fragment"
 msgid "a product currency"
 msgstr ""
 
-#: lib/messages.php:2409
+#: lib/messages.php:2413
 msgctxt "tooltip fragment"
 msgid "a product size"
 msgstr ""
 
-#: lib/messages.php:2413
+#: lib/messages.php:2417
 msgctxt "tooltip fragment"
 msgid "a product target gender"
 msgstr ""
 
-#: lib/messages.php:2416
+#: lib/messages.php:2420
 msgctxt "option label"
 msgid "Recipe Ingredients"
 msgstr ""
 
-#: lib/messages.php:2417
+#: lib/messages.php:2421
 msgctxt "tooltip fragment"
 msgid "recipe ingredients"
 msgstr ""
 
-#: lib/messages.php:2420
+#: lib/messages.php:2424
 msgctxt "option label"
 msgid "Recipe Instructions"
 msgstr ""
 
-#: lib/messages.php:2421
+#: lib/messages.php:2425
 msgctxt "tooltip fragment"
 msgid "recipe instructions"
 msgstr ""
 
-#: lib/messages.php:2424
+#: lib/messages.php:2428
 msgctxt "option label"
 msgid "Same-As URLs"
 msgstr ""
 
-#: lib/messages.php:2425
+#: lib/messages.php:2429
 msgctxt "tooltip fragment"
 msgid "additional Same-As URLs"
 msgstr ""
 
-#: lib/messages.php:2429
+#: lib/messages.php:2433
 msgctxt "tooltip fragment"
 msgid "video embed HTML code (not a URL)"
 msgstr ""
 
-#: lib/messages.php:2432
+#: lib/messages.php:2436
 msgctxt "option label"
 msgid "Video URL"
 msgstr ""
 
-#: lib/messages.php:2433
+#: lib/messages.php:2437
 msgctxt "tooltip fragment"
 msgid "a video URL (not HTML code)"
 msgstr ""
@@ -6590,7 +6611,7 @@ msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/wp-meta.php:895
+#: lib/wp-meta.php:896
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 

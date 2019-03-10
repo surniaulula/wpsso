@@ -435,6 +435,15 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					$opts[ 'plugin_product_attr_size' ]      = 'size';
 				}
 
+				/**
+				 * All product meta tags are not enabled by default.
+				 */
+				if ( $prev_version > 0 && $prev_version <= 637 ) {
+					foreach ( SucomUtil::get_opts_begin( 'add_meta_property_product:', $opts ) as $key => $val ) {
+						$opts[ $key ] = 1;
+					}
+				}
+
 			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) ) {
 
 				$this->p->util->rename_opts_by_ext( $opts, apply_filters( $this->p->lca . '_rename_site_options_keys',

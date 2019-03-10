@@ -2368,9 +2368,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						_x( 'Product Material', 'option label', 'wpsso' ),
 						_x( 'a product material', 'tooltip fragment', 'wpsso' ),
 					),
+					$key_prefix . 'product_mpn' => array(
+						_x( 'Product MPN', 'option label', 'wpsso' ),
+						_x( 'a Manufacturer Part Number (MPN)', 'tooltip fragment', 'wpsso' ),
+					),
 					$key_prefix . 'product_sku' => array(
 						_x( 'Product SKU', 'option label', 'wpsso' ),
-						_x( 'a stock-keeping unit (aka unique product identifier)', 'tooltip fragment', 'wpsso' ),
+						_x( 'a Stock-Keeping Unit (aka unique product identifier)', 'tooltip fragment', 'wpsso' ),
 					),
 					$key_prefix . 'product_ean' => array(
 						_x( 'Product EAN', 'option label', 'wpsso' ),

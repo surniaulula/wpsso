@@ -198,6 +198,14 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'tooltip'  => 'meta-product_material',
 					'content'  => $form->get_no_input( 'product_material', '', '', $placeholder = true ),
 				),
+				'product_mpn' => array(
+					'tr_class' => 'hide_og_type hide_og_type_product',
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Product MPN', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_mpn',
+					'content'  => $form->get_no_input( 'product_mpn', '', '', $placeholder = true ),
+				),
 				'product_sku' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',

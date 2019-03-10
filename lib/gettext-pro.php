@@ -112,6 +112,7 @@ _x( 'Product Brand', 'option label', 'wpsso' );
 _x( 'Product Color', 'option label', 'wpsso' );
 _x( 'Product Condition', 'option label', 'wpsso' );
 _x( 'Product Material', 'option label', 'wpsso' );
+_x( 'Product MPN', 'option label', 'wpsso' );
 _x( 'Product SKU', 'option label', 'wpsso' );
 _x( 'Product EAN', 'option label', 'wpsso' );
 _x( 'Product GTIN-8', 'option label', 'wpsso' );
