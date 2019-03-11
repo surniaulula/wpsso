@@ -152,7 +152,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$wpsso =& Wpsso::get_instance();
 
 			$roles = $wpsso->cf[ 'wp' ][ 'roles' ][ 'person' ];
-			$limit = WPSSO_SELECT_PERSON_NAMES_MAX;
+			$limit = WPSSO_SELECT_PERSON_NAMES_MAX;	// Default is 500 user names.
 
 			return SucomUtilWP::get_user_select_for_roles( $roles, null, $add_none, $limit );
 		}
