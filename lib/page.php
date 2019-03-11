@@ -133,7 +133,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				$cap_text = $mod[ 'obj' ] ? $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
 
-				list( $cap_text, $hashtags ) = $this->get_text_and_hashtags( $cap_text, $mod, false );
+				/**
+				 * Extract custom hashtags, or get hashtags if $add_hashtags is true or numeric.
+				 */
+				list( $cap_text, $hashtags, $add_hashtags ) = $this->get_text_and_hashtags( $cap_text, $mod, $add_hashtags );
 
 				if ( ! empty( $cap_text ) ) {
 
@@ -324,7 +327,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			/**
-			 * Check for hashtags in meta or seed title, remove and then add again after shorten.
+			 * Extract custom hashtags, or get hashtags if $add_hashtags is true or numeric.
 			 */
 			list( $title_text, $hashtags ) = $this->get_text_and_hashtags( $title_text, $mod, $add_hashtags );
 
@@ -494,7 +497,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$title_text .= ' ' . $paged_suffix;
 			}
 
-			if ( ! empty( $add_hashtags ) && ! empty( $hashtags ) ) {
+			if ( ! empty( $hashtags ) ) {
 				$title_text = trim( $title_text . ' ' . $hashtags );	// Trim in case text is empty.
 			}
 
@@ -595,7 +598,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			/**
-			 * Check for hashtags in meta or seed desc, remove and then add again after shorten.
+			 * Extract custom hashtags, or get hashtags if $add_hashtags is true or numeric.
 			 */
 			list( $desc_text, $hashtags ) = $this->get_text_and_hashtags( $desc_text, $mod, $add_hashtags );
 
@@ -823,7 +826,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'skipped the description length limit' );
 			}
 
-			if ( ! empty( $add_hashtags ) && ! empty( $hashtags ) ) {
+			if ( ! empty( $hashtags ) ) {
 				$desc_text = trim( $desc_text . ' ' . $hashtags );	// Trim in case text is empty.
 			}
 
@@ -867,9 +870,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$text = $this->get_the_text( $mod, $read_cache, $md_key );
 
 			/**
-			 * Check for hashtags in meta or seed text, remove and then add again after shorten.
+			 * Extract custom hashtags, or get hashtags if $add_hashtags is true or numeric.
 			 */
-			list( $text, $hashtags ) = $this->get_text_and_hashtags( $text, $mod, $add_hashtags );
+			list( $text, $hashtags, $add_hashtags ) = $this->get_text_and_hashtags( $text, $mod, $add_hashtags );
 
 			if ( $max_len > 0 ) {
 
@@ -885,7 +888,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'skipped the text length limit' );
 			}
 
-			if ( ! empty( $add_hashtags ) && ! empty( $hashtags ) ) {
+			if ( ! empty( $hashtags ) ) {
 				$text = trim( $text . ' ' . $hashtags );	// Trim in case text is empty.
 			}
 
@@ -1256,6 +1259,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $keywords;
 		}
 
+		/**
+		 * Extract custom hashtags, or get hashtags if $add_hashtags is true or numeric.
+		 */
 		public function get_text_and_hashtags( $text, array $mod, $add_hashtags = true ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -1283,7 +1289,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'hashtags found = "' . $hashtags . '"' );
 			}
 
-			return array( $text, $hashtags );
+			$add_hashtags = false;
+
+			return array( $text, $hashtags, $add_hashtags );
 		}
 
 		/**
