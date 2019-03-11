@@ -12,7 +12,7 @@ Requires PHP: 5.5
 Requires At Least: 3.8
 Tested Up To: 5.1
 WC Tested Up To: 3.5
-Stable Tag: 4.24.2
+Stable Tag: 4.25.0
 
 WPSSO Core makes sure your content looks great on all social and search sites, no matter how URLs are crawled, shared, re-shared, posted or embedded!
 
@@ -530,8 +530,4 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 4.25.0 =
 
 (2019/03/11) Added new "Product MPN Custom Field" and "Product MPN Attribute Name" options (aka Manufacturer Part Number) in the SSO &gt; Advanced settings (Pro version).
-
-= 4.24.2 =
-
-(2019/03/05) Fixed protection of original 'wp_title' filter value. The Twitter Card section under the Document SSO &gt; Priority Media tab will now show only for the Summary and Summary Large Image card types.
 
