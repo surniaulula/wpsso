@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.25.0-rc.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.25.0-rc.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -111,7 +111,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:1016 lib/post.php:738 lib/term.php:451 lib/user.php:456
+#: lib/admin.php:1016 lib/post.php:738 lib/term.php:451 lib/user.php:457
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -888,97 +888,97 @@ msgstr ""
 msgid "Include <a href=\"%s\">Person Social Profile</a> for a Personal Site"
 msgstr ""
 
-#: lib/admin.php:3591
+#: lib/admin.php:3590
 msgctxt "option label"
 msgid "User for Person Social Profile"
 msgstr ""
 
-#: lib/admin.php:3602
+#: lib/admin.php:3601
 msgctxt "option label"
 msgid "Remove All Settings on Uninstall"
 msgstr ""
 
-#: lib/admin.php:3605
+#: lib/admin.php:3604
 msgctxt "option comment"
 msgid "including any custom meta for posts, terms, and users"
 msgstr ""
 
-#: lib/admin.php:3610
+#: lib/admin.php:3609
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
 
-#: lib/admin.php:3612
+#: lib/admin.php:3611
 msgctxt "option comment"
 msgid "WPSSO_HTML_DEBUG constant is true"
 msgstr ""
 
-#: lib/admin.php:3620
+#: lib/admin.php:3619
 msgctxt "option label"
 msgid "Hide All Pro Version Options"
 msgstr ""
 
-#: lib/admin.php:3629
+#: lib/admin.php:3628
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr ""
 
-#: lib/admin.php:3636
+#: lib/admin.php:3635
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:3817
+#: lib/admin.php:3816
 msgid "Return to %s"
 msgstr ""
 
 #. translators: please ignore - translation uses a different text domain
-#: lib/admin.php:3848
+#: lib/admin.php:3847
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name
-#: lib/admin.php:3870
+#: lib/admin.php:3869
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL
-#: lib/admin.php:3877
+#: lib/admin.php:3876
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes, and translations)</a> to check if newer versions are "
 "available."
 msgstr ""
 
-#: lib/admin.php:3942
+#: lib/admin.php:3941
 msgctxt "option comment"
 msgid "%s add-on required"
 msgstr ""
 
-#: lib/admin.php:4044
+#: lib/admin.php:4043
 msgid "Please select a %1$s settings file to import."
 msgstr ""
 
-#: lib/admin.php:4051
+#: lib/admin.php:4050
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr ""
 
-#: lib/admin.php:4058
+#: lib/admin.php:4057
 msgid ""
 "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr ""
 
-#: lib/admin.php:4072
+#: lib/admin.php:4071
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr ""
 
-#: lib/admin.php:4082
+#: lib/admin.php:4081
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr ""
 
-#: lib/admin.php:4092
+#: lib/admin.php:4091
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 
@@ -3226,7 +3226,7 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
 #: lib/loader.php:175 lib/loader.php:201 lib/post.php:278 lib/register.php:300
-#: lib/term.php:255 lib/user.php:222 lib/util.php:485 lib/util.php:3179
+#: lib/term.php:255 lib/user.php:223 lib/util.php:485 lib/util.php:3179
 msgid "%s warning:"
 msgstr ""
 
@@ -3980,7 +3980,7 @@ msgstr ""
 msgid "Automatically add the \"%s\" role when a new user is created."
 msgstr ""
 
-#: lib/messages.php:758 lib/user.php:32 lib/user.php:255
+#: lib/messages.php:758 lib/user.php:32 lib/user.php:256
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -5626,7 +5626,7 @@ msgstr ""
 
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
-#: lib/post.php:264 lib/term.php:241 lib/user.php:208 lib/util.php:471
+#: lib/post.php:264 lib/term.php:241 lib/user.php:209 lib/util.php:471
 #: lib/util.php:3151
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
@@ -6358,29 +6358,29 @@ msgid "Twitter Summary Card"
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a recommended max
-#: lib/user.php:211
+#: lib/user.php:212
 msgid ""
 "Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts "
 "authored by user ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/user.php:684
+#: lib/user.php:685
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:767
+#: lib/user.php:768
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:768
+#: lib/user.php:769
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:769
+#: lib/user.php:770
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1232
+#: lib/user.php:1233
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 

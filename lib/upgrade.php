@@ -266,19 +266,19 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 			/**
 			 * Save / create the current options version number for version checks to follow.
 			 */
-			$prev_version = empty( $opts['plugin_' . $this->p->lca . '_opt_version'] ) ?
-				0 : $opts['plugin_' . $this->p->lca . '_opt_version'];
+			$prev_version = empty( $opts[ 'plugin_' . $this->p->lca . '_opt_version' ] ) ?
+				0 : $opts[ 'plugin_' . $this->p->lca . '_opt_version' ];
 
 			/**
 			 * Adjust before renaming the option key(s).
 			 */
 			if ( $prev_version > 0 && $prev_version <= 342 ) {
 
-				if ( ! empty( $opts['plugin_file_cache_hrs'] ) ) {
-					$opts['plugin_social_file_cache_exp'] = $opts['plugin_file_cache_hrs'] * HOUR_IN_SECONDS;
+				if ( ! empty( $opts[ 'plugin_file_cache_hrs' ] ) ) {
+					$opts[ 'plugin_social_file_cache_exp' ] = $opts[ 'plugin_file_cache_hrs' ] * HOUR_IN_SECONDS;
 				}
 
-				unset( $opts['plugin_file_cache_hrs'] );
+				unset( $opts[ 'plugin_file_cache_hrs' ] );
 			}
 
 			if ( $options_name === constant( 'WPSSO_OPTIONS_NAME' ) ) {
@@ -292,8 +292,8 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				$keys_preg = 'schema_type_.*|site_org_schema_type|org_schema_type|plm_place_schema_type';
 
 				foreach ( SucomUtil::preg_grep_keys( '/^(' . $keys_preg . ')(_[0-9]+)?$/', $opts ) as $key => $val ) {
-					if ( ! empty( $this->p->cf['head']['schema_renamed'][$val] ) ) {
-						$opts[$key] = $this->p->cf['head']['schema_renamed'][$val];
+					if ( ! empty( $this->p->cf[ 'head' ][ 'schema_renamed' ][ $val ] ) ) {
+						$opts[ $key ] = $this->p->cf[ 'head' ][ 'schema_renamed' ][ $val ];
 					}
 				}
 
@@ -322,38 +322,38 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 							}
 
 							if ( ! empty( $new_key ) ) {
-								$opts[$new_key] = $val;
+								$opts[ $new_key ] = $val;
 							}
 
-							unset( $opts[$key] );
+							unset( $opts[ $key ] );
 						}
 					}
 				}
 
 				if ( $prev_version > 0 && $prev_version <= 296 ) {
-					if ( empty( $opts['plugin_min_shorten'] ) || $opts['plugin_min_shorten'] < 22 ) {
-						$opts['plugin_min_shorten'] = 22;
+					if ( empty( $opts[ 'plugin_min_shorten' ] ) || $opts[ 'plugin_min_shorten' ] < 22 ) {
+						$opts[ 'plugin_min_shorten' ] = 22;
 					}
 				}
 
 				if ( $prev_version > 0 && $prev_version <= 373 ) {
-					if ( ! empty( $opts['plugin_head_attr_filter_name'] ) && $opts['plugin_head_attr_filter_name'] === 'language_attributes' ) {
-						$opts['plugin_head_attr_filter_name'] = 'head_attributes';
+					if ( ! empty( $opts[ 'plugin_head_attr_filter_name' ] ) && $opts[ 'plugin_head_attr_filter_name' ] === 'language_attributes' ) {
+						$opts[ 'plugin_head_attr_filter_name' ] = 'head_attributes';
 					}
 				}
 
 				if ( $prev_version > 0 && $prev_version <= 557 ) {
 
-					if ( isset( $opts['plugin_cm_fb_label'] ) && $opts['plugin_cm_fb_label'] === 'Facebook URL' ) {
-						$opts['plugin_cm_fb_label'] = 'Facebook User URL';
+					if ( isset( $opts[ 'plugin_cm_fb_label' ] ) && $opts[ 'plugin_cm_fb_label' ] === 'Facebook URL' ) {
+						$opts[ 'plugin_cm_fb_label' ] = 'Facebook User URL';
 					}
 
 					SucomUtil::transl_key_values( '/^plugin_(cm_.*_label|.*_prefix)$/', $this->p->options, 'wpsso' );
 				}
 
 				if ( $prev_version > 0 && $prev_version <= 564 ) {
-					if ( isset( $opts['schema_type_for_job_listing'] ) && $opts['schema_type_for_job_listing'] === 'webpage' ) {
-						$opts['schema_type_for_job_listing'] = 'job.posting';
+					if ( isset( $opts[ 'schema_type_for_job_listing' ] ) && $opts[ 'schema_type_for_job_listing' ] === 'webpage' ) {
+						$opts[ 'schema_type_for_job_listing' ] = 'job.posting';
 					}
 				}
 
@@ -363,8 +363,8 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				 */
 				if ( $prev_version > 0 && $prev_version <= 591 ) {
 					foreach ( array( 'og:image', 'og:video' ) as $mt_name ) {
-						$opts['add_meta_property_' . $mt_name] = 1;
-						$opts['add_meta_property_' . $mt_name . ':url'] = 0;
+						$opts[ 'add_meta_property_' . $mt_name] = 1;
+						$opts[ 'add_meta_property_' . $mt_name . ':url' ] = 0;
 					}
 				}
 
@@ -372,7 +372,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				 * Remove the 'person' role from all subscribers.
 				 */
 				if ( $prev_version > 0 && $prev_version <= 599 ) {
-					if ( empty( $this->p->options['plugin_new_user_is_person'] ) ) {
+					if ( empty( $this->p->options[ 'plugin_new_user_is_person' ] ) ) {
 						foreach ( SucomUtilWP::get_user_ids_for_roles( array( 'subscriber' ) ) as $user_id ) {
 							$user_obj = get_user_by( 'ID', $user_id );
 							$user_obj->remove_role( 'person' );
@@ -384,20 +384,20 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				 * The Google URL Shortener was discontinued by Google in March 2018.
 				 */
 				if ( $prev_version > 0 && $prev_version <= 614 ) {
-					if ( isset( $this->p->options['plugin_shortener'] ) ) {
-						if ( $this->p->options['plugin_shortener'] === 'googl' ||
-							$this->p->options['plugin_shortener'] === 'google-url-shortener' ) {
+					if ( isset( $this->p->options[ 'plugin_shortener' ] ) ) {
+						if ( $this->p->options[ 'plugin_shortener' ] === 'googl' ||
+							$this->p->options[ 'plugin_shortener' ] === 'google-url-shortener' ) {
 
-							$this->p->options['plugin_shortener'] = 'none';
+							$this->p->options[ 'plugin_shortener' ] = 'none';
 						}
 					}
 				}
 
 				if ( $prev_version > 0 && $prev_version <= 619 ) {
 					foreach ( array( 'og:image', 'og:video' ) as $mt_name ) {
-						$opts['add_meta_property_' . $mt_name . ':secure_url'] = 0;
-						$opts['add_meta_property_' . $mt_name . ':url']        = 0;
-						$opts['add_meta_property_' . $mt_name ]                = 1;
+						$opts[ 'add_meta_property_' . $mt_name . ':secure_url' ] = 0;
+						$opts[ 'add_meta_property_' . $mt_name . ':url' ]        = 0;
+						$opts[ 'add_meta_property_' . $mt_name ]                = 1;
 					}
 				}
 

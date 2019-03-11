@@ -599,21 +599,21 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return false;
 		}
 
-		public static function get_user_ids_for_roles( array $roles, $blog_id = null ) {
+		public static function get_user_ids_for_roles( array $roles, $blog_id = null, $limit = '' ) {
 
 			/**
 			 * Get the user ID => name associative array, and keep only the array keys.
 			 */
-			$user_ids = array_keys( self::get_user_names_for_roles( $roles, $blog_id ) );
+			$user_ids = array_keys( self::get_user_names_for_roles( $roles, $blog_id, $limit ) );
 
 			rsort( $user_ids );	// Newest user first.
 
 			return $user_ids;
 		}
 
-		public static function get_user_select_for_roles( array $roles, $blog_id = null, $add_none = true ) {
+		public static function get_user_select_for_roles( array $roles, $blog_id = null, $add_none = true, $limit = '' ) {
 
-			$user_select = self::get_user_names_for_roles( $roles, $blog_id );
+			$user_select = self::get_user_names_for_roles( $roles, $blog_id, $limit );
 
 			if ( $add_none ) {
 				$user_select = array( 'none' => 'none' ) + $user_select;
@@ -622,7 +622,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $user_select;
 		}
 
-		public static function get_user_names_for_roles( array $roles, $blog_id = null ) {
+		public static function get_user_names_for_roles( array $roles, $blog_id = null, $limit = '' ) {
 
 			if ( empty( $roles ) ) {
 				return array();
@@ -635,7 +635,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			$user_names = array();
 
 			foreach ( $roles as $role ) {
-				$user_names += self::get_user_names( $blog_id, $role );
+				$user_names += self::get_user_names( $role, $blog_id, $limit );
 			}
 
 			/**
@@ -669,7 +669,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		 * If using the $limit argument, you must keep calling
 		 * get_user_names() until it returns false.
 		 */
-		public static function get_user_names( $blog_id = null, $role = '', $limit = '' ) {
+		public static function get_user_names( $role = '', $blog_id = null, $limit = '' ) {
 
 			static $offset = '';
 

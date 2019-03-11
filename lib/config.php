@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.25.0-rc.1',	// Plugin version.
+					'version'     => '4.25.0-rc.2',	// Plugin version.
 					'opt_version' => '637',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -3056,6 +3056,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_GET_POSTS_MAX_TIME' ]          = 0.10;	// Send an error to trigger_error() if get_posts() takes longer.
 			$var_const[ 'WPSSO_PHP_GETIMGSIZE_MAX_TIME' ]     = 1.50;	// Send an error to trigger_error() if getimagesize() takes longer.
 			$var_const[ 'WPSSO_REFRESH_CACHE_SLEEP_TIME' ]    = 0.25;	// Seconds to sleep between requests when refreshing the cache.
+			$var_const[ 'WPSSO_SELECT_PERSON_NAMES_MAX' ]     = 500;	// Maximum number of persons to include in a form select.
 
 			/**
 			 * WPSSO schema limits.

@@ -1094,7 +1094,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					case 'person_names':
 
-						self::$form_cache[ $key ] = WpssoUser::get_person_names();
+						self::$form_cache[ $key ] = WpssoUser::get_person_names( $add_none = true );
 
 						break;
 

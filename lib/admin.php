@@ -3584,7 +3584,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			'</td>';
 
 			$owner_roles = $this->p->cf[ 'wp' ][ 'roles' ][ 'owner' ];
-
 			$site_owners = SucomUtilWP::get_user_select_for_roles( $owner_roles );
 
 			$table_rows[ 'schema_home_person_id' ] = '' . 
