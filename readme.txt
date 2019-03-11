@@ -421,7 +421,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.25.0-rc.1 (2019/03/10)**
+**Version 4.25.0-rc.2 (2019/03/11)**
 
 * *New Features*
 	* None.
@@ -526,9 +526,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.25.0-rc.1 =
+= 4.25.0-rc.2 =
 
-(2019/03/10) Added new "Product MPN Custom Field" and "Product MPN Attribute Name" options (aka Manufacturer Part Number) in the SSO &gt; Advanced settings (Pro version).
+(2019/03/11) Added new "Product MPN Custom Field" and "Product MPN Attribute Name" options (aka Manufacturer Part Number) in the SSO &gt; Advanced settings (Pro version).
 
 = 4.24.2 =
 
