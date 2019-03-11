@@ -421,7 +421,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.25.0-rc.2 (2019/03/11)**
+**Version 4.25.0 (2019/03/11)**
 
 * *New Features*
 	* None.
@@ -433,6 +433,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Developer Notes*
 	* Added validation for correct plugin names when doing an update check.
 	* Added an `$only_prefix` argument to the WpssoUtil::delete_all_db_transients() method.
+	* Added a new WPSSO_SELECT_PERSON_NAMES_MAX constant (default is 500 user names).
 
 **Version 4.24.2 (2019/03/05)**
 
@@ -526,7 +527,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.25.0-rc.2 =
+= 4.25.0 =
 
 (2019/03/11) Added new "Product MPN Custom Field" and "Product MPN Attribute Name" options (aka Manufacturer Part Number) in the SSO &gt; Advanced settings (Pro version).
 
