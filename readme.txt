@@ -428,7 +428,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Improvements*
 	* Added support for custom hashtags in the Schema description text.
 * *Bugfixes*
-	* None.
+	* Fixed handling of possible false return value from SucomUtilWP::get_user_names().
 * *Developer Notes*
 	* None.
 
