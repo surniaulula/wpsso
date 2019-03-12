@@ -116,6 +116,26 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			$this->p->set_options( $activate = true ); // Read / create options and site_options.
 			$this->p->set_objects( $activate = true ); // Load all the class objects.
 
+			$new_install = false === $this->p->util->get_ext_action_time( 'wpsso', 'install' ) ? true : false;
+
+			/**
+			 * Add the "person" role for all WpssoUser::get_public_user_ids(). 
+			 */
+			if ( $new_install ) {
+				$this->p->util->schedule_add_user_roles();
+			}
+
+			/**
+			 * Save plugin install, activation, update times.
+			 */
+			$version = WpssoConfig::$cf[ 'plugin' ][ 'wpsso' ][ 'version' ];
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'saving all times for wpsso v' . $version );
+			}
+
+			WpssoUtil::register_ext_version( 'wpsso', $version );
+
 			/**
 			 * Clear all caches on activate.
 			 */
@@ -129,22 +149,6 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 				$this->p->util->schedule_clear_all_cache( $user_id = get_current_user_id(), $clear_other = true );
 			}
-
-			/**
-			 * Save plugin install, activation, update times.
-			 */
-			$plugin_version = WpssoConfig::$cf[ 'plugin' ][ 'wpsso' ][ 'version' ];
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'saving all times for wpsso v' . $plugin_version );
-			}
-
-			WpssoUtil::save_all_times( 'wpsso', $plugin_version );
-
-			/**
-			 * Add the Person role for WpssoUser::get_public_user_ids(). 
-			 */
-			$this->p->util->schedule_add_user_roles();
 
 			/**
 			 * End of plugin activation.

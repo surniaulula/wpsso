@@ -241,6 +241,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 * Called from several class __construct() methods to hook their filters.
 		 */
 		public function add_plugin_filters( $class, $filters, $prio = 10, $ext = '' ) {
+
 			$this->add_plugin_hooks( 'filter', $class, $filters, $prio, $ext );
 		}
 
@@ -248,6 +249,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 * Called from several class __construct() methods to hook their actions.
 		 */
 		public function add_plugin_actions( $class, $actions, $prio = 10, $ext = '' ) {
+
 			$this->add_plugin_hooks( 'action', $class, $actions, $prio, $ext );
 		}
 
@@ -1193,9 +1195,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				set_time_limit( HOUR_IN_SECONDS );
 			}
 
-			$user_id = $this->maybe_change_user_id( $user_id );
+			$user_id    = $this->maybe_change_user_id( $user_id );
+			$public_ids = WpssoUser::get_public_user_ids();			// Aka 'administrator', 'editor', 'author', and 'contributor'.
 
-			foreach ( WpssoUser::get_public_user_ids() as $user_id ) {
+			foreach ( $public_ids as $person_id ) {
 
 				if ( get_transient( $cache_id ) !== $cache_status ) {	// Check that we are allowed to continue.
 
@@ -1204,7 +1207,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					return;
 				}
 
-				$user_obj = get_user_by( 'ID', $user_id );
+				$user_obj = get_user_by( 'ID', $person_id );
 
 				$user_obj->add_role( 'person' );
 			}
@@ -2078,21 +2081,33 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $function_info;
 		}
 
+		/**
+		 * Deprecated on 2019/03/12.
+		 */
 		public static function save_all_times( $ext, $version ) {
-			self::save_time( $ext, $version, 'update', $version );	// $protect only if same version.
-			self::save_time( $ext, $version, 'install', true );	// $protect is true.
-			self::save_time( $ext, $version, 'activate' );		// Always update timestamp.
+			return self::register_ext_version( $ext, $version );
+		}
+
+		public static function register_ext_version( $ext, $version ) {
+
+			self::register_ext_action( $ext, $version, 'update', $version );	// $protect only if same version.
+			self::register_ext_action( $ext, $version, 'install', true );		// $protect is true.
+			self::register_ext_action( $ext, $version, 'activate' );		// Always update timestamp.
+		}
+
+		public static function unregister_ext( $ext ) {
 		}
 
 		/**
 		 * $protect = true | false | version
 		 */
-		public static function save_time( $ext, $version, $type, $protect = false ) {
+		public static function register_ext_action( $ext, $version, $action, $protect = false ) {
 
 			if ( ! is_bool( $protect ) ) {
+
 				if ( ! empty( $protect ) ) {
 
-					$ts_version = self::get_option_key( WPSSO_TS_NAME, $ext . '_' . $type . '_version' );
+					$ts_version = self::get_option_key( WPSSO_TS_NAME, $ext . '_' . $action . '_version' );
 
 					if ( $ts_version !== null && version_compare( $ts_version, $protect, '==' ) ) {
 						$protect = true;
@@ -2105,19 +2120,30 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			if ( ! empty( $version ) ) {
-				self::update_option_key( WPSSO_TS_NAME, $ext . '_' . $type . '_version', $version, $protect );
+				self::update_option_key( WPSSO_TS_NAME, $ext . '_' . $action . '_version', $version, $protect );
 			}
 
-			self::update_option_key( WPSSO_TS_NAME, $ext . '_' . $type . '_time', time(), $protect );
+			self::update_option_key( WPSSO_TS_NAME, $ext . '_' . $action . '_time', time(), $protect );
+		}
+
+		public function get_ext_action_time( $ext, $action ) {
+
+			$ext_reg_actions = get_option( WPSSO_TS_NAME, array() );
+
+			if ( ! empty( $ext_reg_actions[ $ext . '_' . $action . '_time' ] ) ) {
+				return $ext_reg_actions[ $ext . '_' . $action . '_time' ];
+			}
+
+			return false;
 		}
 
 		/**
 		 * Get the timestamp array and perform a quick sanity check.
 		 */
-		public function get_all_times() {
+		public function get_registered_actions() {
 
-			$has_changed = false;
-			$all_times   = get_option( WPSSO_TS_NAME, array() );
+			$has_changed     = false;
+			$ext_reg_actions = get_option( WPSSO_TS_NAME, array() );
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
@@ -2125,18 +2151,18 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					continue;
 				}
 
-				foreach ( array( 'update', 'install', 'activate' ) as $type ) {
+				foreach ( array( 'update', 'install', 'activate' ) as $action ) {
 
-					if ( empty( $all_times[ $ext . '_' . $type . '_time' ] ) ||
-						( $type === 'update' && ( empty( $all_times[ $ext . '_' . $type . '_version' ] ) ||
-							version_compare( $all_times[ $ext . '_' . $type . '_version' ], $info[ 'version' ], '!=' ) ) ) ) {
+					if ( empty( $ext_reg_actions[ $ext . '_' . $action . '_time' ] ) ||
+						( $action === 'update' && ( empty( $ext_reg_actions[ $ext . '_' . $action . '_version' ] ) ||
+							version_compare( $ext_reg_actions[ $ext . '_' . $action . '_version' ], $info[ 'version' ], '!=' ) ) ) ) {
 
-						$has_changed = self::save_time( $ext, $info[ 'version' ], $type );
+						$has_changed = self::register_ext_action( $ext, $info[ 'version' ], $action );
 					}
 				}
 			}
 
-			return false === $has_changed ? $all_times : get_option( WPSSO_TS_NAME, array() );
+			return false === $has_changed ? $ext_reg_actions : get_option( WPSSO_TS_NAME, array() );
 		}
 
 		/**

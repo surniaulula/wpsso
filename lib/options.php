@@ -248,7 +248,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					if ( empty( $opts[ $version_key ] ) || version_compare( $opts[ $version_key ], $info[ 'version' ], '!=' ) ) {
 
-						WpssoUtil::save_time( $ext, $info[ 'version' ], 'update' );
+						WpssoUtil::register_ext_action( $ext, $info[ 'version' ], 'update' );
 
 						$opts[ $version_key ] = $info[ 'version' ];
 

@@ -1413,6 +1413,28 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
+		public static function delete_option_key( $name, $key, $site = false ) {
+
+			if ( true === $site ) {
+				$opts = get_site_option( $name, array() );
+			} else {
+				$opts = get_option( $name, array() );
+			}
+
+			if ( isset( $opts[ $key ] ) ) {
+
+				unset( $opts[ $key ] );
+
+				if ( true === $site ) {
+					return update_site_option( $name, $opts );
+				} else {
+					return update_option( $name, $opts );
+				}
+			}
+
+			return false;
+		}
+
 		/**
 		 * Check that the id value is not true, false, null, or 'none'.
 		 */

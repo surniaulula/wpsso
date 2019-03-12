@@ -2940,7 +2940,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$short   = $this->p->cf[ 'plugin' ][ $lca ][ 'short' ];
 			$user_id = get_current_user_id();
 
-			$all_times           = $this->p->util->get_all_times();
+			$ext_reg_actions     = $this->p->util->get_registered_actions();
 			$one_week_ago_secs   = time() - WEEK_IN_SECONDS;
 			$six_months_ago_secs = time() - ( 6 * MONTH_IN_SECONDS );
 			$one_year_ago_secs   = time() - YEAR_IN_SECONDS;
@@ -2974,11 +2974,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					continue;							// Get the next plugin.
 
-				} elseif ( empty( $all_times[ $ext . '_activate_time' ] ) ) {		// Never activated.
+				} elseif ( empty( $ext_reg_actions[ $ext . '_activate_time' ] ) ) {		// Never activated.
 
 					continue;
 
-				} elseif ( $all_times[ $ext . '_activate_time' ] > $one_week_ago_secs ) {	// Activated less than time ago.
+				} elseif ( $ext_reg_actions[ $ext . '_activate_time' ] > $one_week_ago_secs ) {	// Activated less than time ago.
 
 					continue;
 
@@ -3061,7 +3061,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! self::$pkg[ $lca ][ 'pp' ] ) {
 
-				if ( ! empty( $all_times[ $lca . '_install_time' ] ) && $all_times[ $lca . '_install_time' ] < $six_months_ago_secs ) {
+				if ( ! empty( $ext_reg_actions[ $lca . '_install_time' ] ) &&
+					$ext_reg_actions[ $lca . '_install_time' ] < $six_months_ago_secs ) {
 
 					$info         = $this->p->cf[ 'plugin' ][ $lca ];
 					$purchase_url = add_query_arg( 'utm_source', 'pro-purchase-notice', $info[ 'url' ][ 'purchase' ] );
