@@ -431,12 +431,14 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$crawler_name = SucomUtil::get_crawler_name();
 
 			static $cache_exp_secs = null;	// Set the cache expiration value once.
-			static $max_exp_secs = null;	// Set the cache expiration value once.
+			static $max_exp_secs   = null;	// Set the maximum expiration value once.
 
 			$cache_md5_pre = $this->p->lca . '_h_';
 
-			if ( ! isset( $cache_exp_secs ) ) {	// Filter cache expiration if not already set.
-
+			/**
+			 * Set and filter the static cache expiration value if not already set.
+			 */
+			if ( ! isset( $cache_exp_secs ) ) {
 				$cache_exp_filter = $this->p->cf[ 'wp' ][ 'transient' ][ $cache_md5_pre ][ 'filter' ];
 				$cache_opt_key    = $this->p->cf[ 'wp' ][ 'transient' ][ $cache_md5_pre ][ 'opt_key' ];
 				$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, $this->p->options[ $cache_opt_key ] );
