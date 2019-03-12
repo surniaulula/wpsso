@@ -635,16 +635,23 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			$user_names = array();
 
 			foreach ( $roles as $role ) {
-				$user_names += self::get_user_names( $role, $blog_id, $limit );
+
+				$role_users = self::get_user_names( $role, $blog_id, $limit );	// Can return false with a numeric $limit argument.
+
+				if ( ! empty( $role_users ) && is_array( $role_users ) ) {	// Check return value, just in case.
+					$user_names += $role_users;
+				}
 			}
 
 			/**
 			 * Use asort() or uasort() to maintain the ID => display_name association.
 			 */
-			if ( defined( 'SORT_STRING' ) ) {
-				asort( $user_names, SORT_STRING );
-			} else {
-				uasort( $user_names, 'strcasecmp' ); // Case-insensitive string comparison.
+			if ( ! empty( $user_names ) ) {	// Skip if nothing to sort.
+				if ( defined( 'SORT_STRING' ) ) {
+					asort( $user_names, SORT_STRING );
+				} else {
+					uasort( $user_names, 'strcasecmp' ); // Case-insensitive string comparison.
+				}
 			}
 
 			return $user_names;
@@ -667,7 +674,9 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		 * 	ORDER BY display_name ASC
 		 *
 		 * If using the $limit argument, you must keep calling
-		 * get_user_names() until it returns false.
+		 * get_user_names() until it returns false - it may also return
+		 * false on the first query if there are no users in the
+		 * specified role.
 		 */
 		public static function get_user_names( $role = '', $blog_id = null, $limit = '' ) {
 
@@ -700,7 +709,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				$user_names[ $user_obj->ID ] = $user_obj->display_name;
 			}
 
-			if ( '' !== $offset ) {
+			if ( '' !== $offset ) {		// 0 or multiple of $limit.
 
 				if ( empty( $user_names ) ) {
 
