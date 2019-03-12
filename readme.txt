@@ -421,7 +421,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.25.1-b.1 (2019/03/12)**
+**Version 4.25.1 (2019/03/12)**
 
 * *New Features*
 	* None.
@@ -430,7 +430,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a check for new installs when activating to add the "person" role to public user IDs only on new installs.
 	* When the "robots" meta tag is enabled, 404 and search pages will now default to 'noindex, follow, noarchive, nosnippet'.
 * *Bugfixes*
-	* Fixed handling of possible `false` return value from SucomUtilWP::get_user_names().
+	* Fixed handling of possible `false` return value from SucomUtilWP::get_user_names() when passing a limit argument.
 * *Developer Notes*
 	* Added a new SucomUtil::check_transient_timeout() method.
 
@@ -540,11 +540,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.25.1-b.1 =
+= 4.25.1 =
 
 (2019/03/12) Added support for custom hashtags in the Schema description text. Added a check for new installs to add the "person" role only on new installs.
-
-= 4.25.0 =
-
-(2019/03/11) Added new "Product MPN Custom Field" and "Product MPN Attribute Name" options (aka Manufacturer Part Number) in the SSO &gt; Advanced settings (Pro version).
 
