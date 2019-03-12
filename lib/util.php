@@ -3702,6 +3702,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						$content .= $inverse_name . ', ';
 					}
 				}
+
+			} elseif ( is_404() || is_search() ) {
+				$content .= 'noindex, follow, noarchive, nosnippet';
 			}
 
 			return apply_filters( $this->p->lca . '_get_robots_content', rtrim( $content, ', ' ), $mod );
