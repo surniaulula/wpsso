@@ -2443,6 +2443,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return ltrim( $salt_str, $val_glue );
 		}
 
+		/**
+		 * Check that the transient has not expired, and does not exceed the max expiration time.
+		 */
+		public static function check_transient_timeout( $cache_id, $max_exp_secs ) {
+
+			if ( $transient_timeout = get_option( '_transient_timeout_' . $cache_id ) ) {
+
+				$current_time = time();	// Get the time only once.
+
+				if ( $transient_timeout < $current_time || $transient_timeout > ( $current_time + $max_exp_secs ) ) {
+					delete_transient( $cache_id );
+				}
+			}
+		}
+
 		public static function get_transient_array( $cache_id ) {
 
 			$cache_array = get_transient( $cache_id );

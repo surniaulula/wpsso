@@ -430,14 +430,17 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$is_admin     = is_admin();	// Call the function only once.
 			$crawler_name = SucomUtil::get_crawler_name();
 
-			static $cache_exp_secs = null;	// Filter the cache expiration value only once.
+			static $cache_exp_secs = null;	// Set the cache expiration value once.
+			static $max_exp_secs = null;	// Set the cache expiration value once.
 
 			$cache_md5_pre = $this->p->lca . '_h_';
 
 			if ( ! isset( $cache_exp_secs ) ) {	// Filter cache expiration if not already set.
+
 				$cache_exp_filter = $this->p->cf[ 'wp' ][ 'transient' ][ $cache_md5_pre ][ 'filter' ];
 				$cache_opt_key    = $this->p->cf[ 'wp' ][ 'transient' ][ $cache_md5_pre ][ 'opt_key' ];
 				$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, $this->p->options[ $cache_opt_key ] );
+				$max_exp_secs     = $this->p->avail[ '*' ][ 'p_dir' ] && ! $this->p->check->pp() ? DAY_IN_SECONDS : $cache_exp_secs;
 			}
 
 			$cache_salt  = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $sharing_url ) . ')';
@@ -452,6 +455,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->log( 'cache salt = ' . $cache_salt );
 				$this->p->debug->log( 'cache id = ' . $cache_id );
 				$this->p->debug->log( 'cache index = ' . $cache_index );
+			}
+
+			if ( $cache_exp_secs > $max_exp_secs ) {
+				SucomUtil::check_transient_timeout( $cache_id, $max_exp_secs );
 			}
 
 			if ( $cache_exp_secs > 0 ) {
