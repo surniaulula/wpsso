@@ -421,6 +421,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.25.1-dev.1 (2019/03/11)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* Added support for custom hashtags in the Schema description text.
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* None.
+
 **Version 4.25.0 (2019/03/11)**
 
 * *New Features*
@@ -526,6 +537,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Updated the required minimum PHP version from 5.4 to 5.5.
 
 == Upgrade Notice ==
+
+= 4.25.1-dev.1 =
+
+(2019/03/11) Added support for custom hashtags in the Schema description text.
 
 = 4.25.0 =
 
