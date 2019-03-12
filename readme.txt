@@ -421,17 +421,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.25.1-dev.2 (2019/03/12)**
+**Version 4.25.1-b.1 (2019/03/12)**
 
 * *New Features*
 	* None.
 * *Improvements*
 	* Added support for custom hashtags in the Schema description text.
-	* Added a check for new installs when activating, to add the "person" role to public user IDs only on new installs.
+	* Added a check for new installs when activating to add the "person" role to public user IDs only on new installs.
 * *Bugfixes*
 	* Fixed handling of possible `false` return value from SucomUtilWP::get_user_names().
 * *Developer Notes*
-	* None.
+	* Added a new SucomUtil::check_transient_timeout() method.
 
 **Version 4.25.0 (2019/03/11)**
 
@@ -539,9 +539,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.25.1-dev.2 =
+= 4.25.1-b.1 =
 
-(2019/03/12) Added support for custom hashtags in the Schema description text.
+(2019/03/12) Added support for custom hashtags in the Schema description text. Added a check for new installs to add the "person" role only on new installs.
 
 = 4.25.0 =
 
