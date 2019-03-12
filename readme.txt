@@ -428,6 +428,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Improvements*
 	* Added support for custom hashtags in the Schema description text.
 	* Added a check for new installs when activating to add the "person" role to public user IDs only on new installs.
+	* When the "robots" meta tag is enabled, 404 and search pages will now default to 'noindex, follow, noarchive, nosnippet'.
 * *Bugfixes*
 	* Fixed handling of possible `false` return value from SucomUtilWP::get_user_names().
 * *Developer Notes*
