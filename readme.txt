@@ -426,7 +426,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None.
 * *Improvements*
-	* Disabled head meta tags cache for 404 and search pages.
+	* Disabled head meta tags transient cache for 404 and search pages.
 * *Bugfixes*
 	* None.
 * *Developer Notes*
@@ -553,7 +553,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.25.2-dev.1 =
 
-(2019/03/14) Disabled head meta tags cache for 404 and search pages.
+(2019/03/14) Disabled head meta tags transient cache for 404 and search pages.
 
 = 4.25.1 =
 
