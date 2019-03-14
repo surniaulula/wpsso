@@ -3186,27 +3186,27 @@ msgid ""
 "Video discovery and integration modules are provided with the Pro version."
 msgstr ""
 
-#: lib/head.php:553
+#: lib/head.php:549
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:565
+#: lib/head.php:561
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:572
+#: lib/head.php:568
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:579
+#: lib/head.php:575
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:586
+#: lib/head.php:582
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:593
+#: lib/head.php:589
 msgid "adding schema json-ld markup"
 msgstr ""
 

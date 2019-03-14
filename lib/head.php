@@ -431,9 +431,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$crawler_name = SucomUtil::get_crawler_name();
 
 			static $cache_exp_secs = null;	// Set the cache expiration value once.
-			static $max_exp_secs   = null;	// Set the maximum expiration value once.
 
 			$cache_md5_pre = $this->p->lca . '_h_';
+			$cache_salt    = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $sharing_url ) . ')';
+			$cache_id      = $cache_md5_pre . md5( $cache_salt );
+			$cache_index   = $this->get_head_cache_index( $mod, $sharing_url );	// Includes locale, url, $wp_query args, etc.
+			$cache_array   = array();
 
 			/**
 			 * Set and filter the static cache expiration value if not already set.
@@ -450,17 +453,14 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$cache_exp_secs = 0;
 				}
 
-				$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, $this->p->options[ $cache_opt_key ] );
+				$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $this->p->options[ $cache_opt_key ] );
 
 				if ( $cache_exp_secs > DAY_IN_SECONDS ) {
-					$max_exp_secs = $this->p->avail[ '*' ][ 'p_dir' ] && ! $this->p->check->pp() ? DAY_IN_SECONDS : $cache_exp_secs;
+					if ( $this->p->avail[ '*' ][ 'p_dir' ] && ! $this->p->check->pp() ) {
+						SucomUtil::check_transient_timeout( $cache_id, DAY_IN_SECONDS );
+					}
 				}
 			}
-
-			$cache_salt  = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $sharing_url ) . ')';
-			$cache_id    = $cache_md5_pre . md5( $cache_salt );
-			$cache_index = $this->get_head_cache_index( $mod, $sharing_url );	// Includes locale, url, $wp_query args, etc.
-			$cache_array = array();
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'sharing url = ' . $sharing_url );
@@ -469,10 +469,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->log( 'cache salt = ' . $cache_salt );
 				$this->p->debug->log( 'cache id = ' . $cache_id );
 				$this->p->debug->log( 'cache index = ' . $cache_index );
-			}
-
-			if ( $cache_exp_secs > $max_exp_secs ) {
-				SucomUtil::check_transient_timeout( $cache_id, $max_exp_secs );
 			}
 
 			if ( $cache_exp_secs > 0 ) {
