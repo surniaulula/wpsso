@@ -421,6 +421,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.25.2-dev.1 (2019/03/14)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* Disabled head meta tags cache for 404 and search pages.
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* None.
+
 **Version 4.25.1 (2019/03/12)**
 
 * *New Features*
@@ -539,6 +550,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Updated the required minimum PHP version from 5.4 to 5.5.
 
 == Upgrade Notice ==
+
+= 4.25.2-dev.1 =
+
+(2019/03/14) Disabled head meta tags cache for 404 and search pages.
 
 = 4.25.1 =
 
