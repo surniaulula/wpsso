@@ -439,10 +439,22 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * Set and filter the static cache expiration value if not already set.
 			 */
 			if ( ! isset( $cache_exp_secs ) ) {
+
 				$cache_exp_filter = $this->p->cf[ 'wp' ][ 'transient' ][ $cache_md5_pre ][ 'filter' ];
 				$cache_opt_key    = $this->p->cf[ 'wp' ][ 'transient' ][ $cache_md5_pre ][ 'opt_key' ];
+
+				if ( is_404() || is_search() ) {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'setting cache expiration to 0 seconds for 404 or search page' );
+					}
+					$cache_exp_secs = 0;
+				}
+
 				$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, $this->p->options[ $cache_opt_key ] );
-				$max_exp_secs     = $this->p->avail[ '*' ][ 'p_dir' ] && ! $this->p->check->pp() ? DAY_IN_SECONDS : $cache_exp_secs;
+
+				if ( $cache_exp_secs > DAY_IN_SECONDS ) {
+					$max_exp_secs = $this->p->avail[ '*' ][ 'p_dir' ] && ! $this->p->check->pp() ? DAY_IN_SECONDS : $cache_exp_secs;
+				}
 			}
 
 			$cache_salt  = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $sharing_url ) . ')';

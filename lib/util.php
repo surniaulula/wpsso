@@ -414,14 +414,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return $local_cache[ $image_url ] = $def_image_info;	// Stop here.
 			}
 
-			static $cache_exp_secs = null;	// Filter the cache expiration value only once.
+			static $cache_exp_secs = null;		// Filter the cache expiration value only once.
 
 			$cache_md5_pre = $this->p->lca . '_i_';
 
 			if ( ! isset( $cache_exp_secs ) ) {	// Filter cache expiration if not already set.
 				$cache_exp_filter = $this->p->cf[ 'wp' ][ 'transient' ][ $cache_md5_pre ][ 'filter' ];
 				$cache_opt_key    = $this->p->cf[ 'wp' ][ 'transient' ][ $cache_md5_pre ][ 'opt_key' ];
-				$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, $this->p->options[ $cache_opt_key ] );	// 1 * DAY_IN_SECONDS by default
+				$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, $this->p->options[ $cache_opt_key ] );	// DAY_IN_SECONDS by default.
 			}
 
 			if ( $cache_exp_secs > 0 ) {

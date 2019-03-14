@@ -2520,14 +2520,14 @@ msgstr ""
 
 #: lib/gettext-pro.php:66 lib/gettext-pro.php:189
 #: lib/gpl/admin/advanced.php:436 lib/pro/admin/advanced.php:430
-#: lib/pro/util/shorten.php:268
+#: lib/pro/util/shorten.php:269
 msgctxt "option label"
 msgid "Bitly Username"
 msgstr ""
 
 #: lib/gettext-pro.php:67 lib/gettext-pro.php:191
 #: lib/gpl/admin/advanced.php:441 lib/pro/admin/advanced.php:435
-#: lib/pro/util/shorten.php:283
+#: lib/pro/util/shorten.php:284
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
 msgstr ""
@@ -2558,7 +2558,7 @@ msgstr ""
 
 #: lib/gettext-pro.php:72 lib/gettext-pro.php:194
 #: lib/gpl/admin/advanced.php:462 lib/pro/admin/advanced.php:456
-#: lib/pro/util/shorten.php:312
+#: lib/pro/util/shorten.php:313
 msgctxt "option label"
 msgid "DLMY.App API Key"
 msgstr ""
@@ -2571,7 +2571,7 @@ msgstr ""
 
 #: lib/gettext-pro.php:74 lib/gettext-pro.php:196
 #: lib/gpl/admin/advanced.php:472 lib/pro/admin/advanced.php:466
-#: lib/pro/util/shorten.php:335
+#: lib/pro/util/shorten.php:336
 msgctxt "option label"
 msgid "Ow.ly API Key"
 msgstr ""
@@ -2584,7 +2584,7 @@ msgstr ""
 
 #: lib/gettext-pro.php:76 lib/gettext-pro.php:198
 #: lib/gpl/admin/advanced.php:482 lib/pro/admin/advanced.php:476
-#: lib/pro/util/shorten.php:383
+#: lib/pro/util/shorten.php:384
 msgctxt "option label"
 msgid "YOURLS API URL"
 msgstr ""
@@ -3063,29 +3063,29 @@ msgid ""
 "\"%3$s\"."
 msgstr ""
 
-#: lib/gettext-pro.php:187 lib/pro/util/shorten.php:248
+#: lib/gettext-pro.php:187 lib/pro/util/shorten.php:249
 msgid "The URL shortening library file \"%s\" is missing and required."
 msgstr ""
 
 #: lib/gettext-pro.php:188 lib/gettext-pro.php:193 lib/gettext-pro.php:195
-#: lib/gettext-pro.php:197 lib/pro/util/shorten.php:267
-#: lib/pro/util/shorten.php:311 lib/pro/util/shorten.php:334
-#: lib/pro/util/shorten.php:382
+#: lib/gettext-pro.php:197 lib/pro/util/shorten.php:268
+#: lib/pro/util/shorten.php:312 lib/pro/util/shorten.php:335
+#: lib/pro/util/shorten.php:383
 msgid "The \"%s\" option value is empty and required."
 msgstr ""
 
-#: lib/gettext-pro.php:190 lib/pro/util/shorten.php:279
+#: lib/gettext-pro.php:190 lib/pro/util/shorten.php:280
 msgid ""
 "The \"%1$s\" and \"%2$s\" option values are empty &mdash; at least one "
 "option value is required."
 msgstr ""
 
-#: lib/gettext-pro.php:192 lib/pro/util/shorten.php:284
+#: lib/gettext-pro.php:192 lib/pro/util/shorten.php:285
 msgctxt "option label"
 msgid "Bitly API Key"
 msgstr ""
 
-#: lib/gettext-pro.php:199 lib/pro/util/shorten.php:426
+#: lib/gettext-pro.php:199 lib/pro/util/shorten.php:427
 msgid ""
 "Incomplete and/or missing API credentials for the \"%s\" URL shortening "
 "service."
@@ -3186,27 +3186,27 @@ msgid ""
 "Video discovery and integration modules are provided with the Pro version."
 msgstr ""
 
-#: lib/head.php:541
+#: lib/head.php:553
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:553
+#: lib/head.php:565
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:560
+#: lib/head.php:572
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:567
+#: lib/head.php:579
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:574
+#: lib/head.php:586
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:581
+#: lib/head.php:593
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -5848,27 +5848,27 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:2568 lib/schema.php:2573
+#: lib/schema.php:2569 lib/schema.php:2574
 msgid "adding schema for %1$s ID %2$s"
 msgstr ""
 
-#: lib/schema.php:3215
+#: lib/schema.php:3216
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:3257
+#: lib/schema.php:3258
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:3264
+#: lib/schema.php:3265
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:3542
+#: lib/schema.php:3543
 msgid "adding schema for place"
 msgstr ""
 

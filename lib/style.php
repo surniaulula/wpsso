@@ -157,10 +157,13 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					array(), $plugin_version );
 
 			if ( $custom_style_css = get_transient( $cache_id ) ) {	// Not empty.
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'settings page style retrieved from cache' );
 				}
+
 				wp_add_inline_style( 'sucom-settings-page', $custom_style_css );
+
 				return;
 			}
 
