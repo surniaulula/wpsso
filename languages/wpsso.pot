@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.25.2-dev.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.25.2-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3186,27 +3186,27 @@ msgid ""
 "Video discovery and integration modules are provided with the Pro version."
 msgstr ""
 
-#: lib/head.php:549
+#: lib/head.php:560
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:561
+#: lib/head.php:572
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:568
+#: lib/head.php:579
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:575
+#: lib/head.php:586
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:582
+#: lib/head.php:593
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:589
+#: lib/head.php:600
 msgid "adding schema json-ld markup"
 msgstr ""
 

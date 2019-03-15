@@ -447,17 +447,27 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$cache_opt_key    = $this->p->cf[ 'wp' ][ 'transient' ][ $cache_md5_pre ][ 'opt_key' ];
 
 				if ( is_404() || is_search() ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'setting cache expiration to 0 seconds for 404 or search page' );
 					}
+
 					$cache_exp_secs = 0;
 				}
 
 				$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $this->p->options[ $cache_opt_key ] );
 
 				if ( $cache_exp_secs > DAY_IN_SECONDS ) {
+
 					if ( $this->p->avail[ '*' ][ 'p_dir' ] && ! $this->p->check->pp() ) {
-						SucomUtil::check_transient_timeout( $cache_id, DAY_IN_SECONDS );
+
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'setting cache expiration to ' . DAY_IN_SECONDS . ' seconds' );
+						}
+
+						$cache_exp_secs = DAY_IN_SECONDS;
+
+						SucomUtil::check_transient_timeout( $cache_id, $cache_exp_secs );
 					}
 				}
 			}
@@ -520,10 +530,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			} else {
 			
 				if ( $this->p->debug->enabled ) {
-
 					$this->p->debug->log( 'head array transient cache is disabled' );
+				}
 
-					if ( SucomUtil::delete_transient_array( $cache_id ) ) {
+				if ( SucomUtil::delete_transient_array( $cache_id ) ) {
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'deleted transient cache id ' . $cache_id );
 					}
 				}
