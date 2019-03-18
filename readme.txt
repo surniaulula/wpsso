@@ -12,7 +12,7 @@ Requires PHP: 5.5
 Requires At Least: 3.8
 Tested Up To: 5.1
 WC Tested Up To: 3.5
-Stable Tag: 4.25.1
+Stable Tag: 4.25.2
 
 WPSSO Core makes sure your content looks great on all social and search sites, no matter how URLs are crawled, shared, re-shared, posted or embedded!
 
@@ -554,8 +554,4 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 4.25.2 =
 
 (2019/03/18) Disabled head meta tags transient cache for 404 and search pages.
-
-= 4.25.1 =
-
-(2019/03/12) Added support for custom hashtags in the Schema description text. Added a check for new installs to add the "person" role only on new installs.
 
