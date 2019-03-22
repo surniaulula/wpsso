@@ -2969,25 +2969,25 @@ msgctxt "metabox title"
 msgid "Structured Data / Schema Markup / Pinterest"
 msgstr ""
 
-#: lib/gettext-pro.php:162 lib/pro/ecom/woocommerce.php:897
+#: lib/gettext-pro.php:162 lib/pro/ecom/woocommerce.php:914
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
-#: lib/gettext-pro.php:163 lib/pro/ecom/woocommerce.php:900
+#: lib/gettext-pro.php:163 lib/pro/ecom/woocommerce.php:917
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/gettext-pro.php:164 lib/pro/ecom/woocommerce.php:1120
+#: lib/gettext-pro.php:164 lib/pro/ecom/woocommerce.php:1137
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/gettext-pro.php:165 lib/pro/ecom/woocommerce.php:1122
+#: lib/gettext-pro.php:165 lib/pro/ecom/woocommerce.php:1139
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:166 lib/pro/ecom/woocommerce.php:1125
+#: lib/gettext-pro.php:166 lib/pro/ecom/woocommerce.php:1142
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 
