@@ -8,7 +8,7 @@ License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
 Tags: open graph, rich cards, rich pins, twitter cards, schema, google merchant, seo, tags, social media, social sharing, meta tags, woocommerce, linkedin, facebook, pinterest, twitter
 Contributors: jsmoriss
-Requires PHP: 5.5
+Requires PHP: 5.6
 Requires At Least: 3.8
 Tested Up To: 5.1
 WC Tested Up To: 3.5
