@@ -478,6 +478,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public function show_admin_notices() {
 
+			if ( ! empty( $this->p->debug->enabled ) ) {
+				$this->p->debug->mark();
+			}
+
 			$notice_types = $this->all_types;
 
 			/**
@@ -485,7 +489,16 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 * The default toolbar notices array is err, warn, and inf.
 			 */
 			if ( is_array( $this->tb_notices ) ) {
+
+				if ( ! empty( $this->p->debug->enabled ) ) {
+					$this->p->debug->log_arr( 'tb_notices', $this->tb_notices );
+				}
+
 				$notice_types = array_diff( $notice_types, $this->tb_notices );
+			}
+
+			if ( ! empty( $this->p->debug->enabled ) ) {
+				$this->p->debug->log_arr( 'notice_types', $notice_types );
 			}
 
 			if ( empty( $notice_types ) ) {	// Just in case.
@@ -502,7 +515,16 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 * The notices will be retrieved using an ajax call on page load and post save.
 			 */
 			if ( SucomUtilWP::doing_block_editor() ) {
+
+				if ( ! empty( $this->p->debug->enabled ) ) {
+					$this->p->debug->log( 'exiting early: doing block editor' );
+				}
+
 				return;
+			}
+
+			if ( ! empty( $this->p->debug->enabled ) ) {
+				$this->p->debug->log( 'doing block editor is false' );
 			}
 
 			$msg_html         = '';
@@ -600,7 +622,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				echo $this->get_notice_html( 'nag', $payload );
 			}
 
-			echo $msg_html;
+			echo $msg_html . "\n";
 			echo '<!-- ' . $this->lca . ' admin notices end -->' . "\n";
 		}
 
