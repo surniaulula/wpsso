@@ -1,4 +1,4 @@
-<h1>WPSSO Core</h1><h3>Complete Meta Tags and Schema Markup for Facebook, Google, Pinterest, SEO, Twitter and More</h3>
+<h1>WPSSO Core</h1><h3>Complete Open Graph, Rich Pins, Twitter Cards, SEO Meta Tags and Rich Cards, Schema Markup</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core [Main Plugin]</td></tr>
@@ -8,7 +8,7 @@
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 5.1</td></tr>
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
 <tr><th align="right" valign="top" nowrap>License</th><td><a href="https://www.gnu.org/licenses/gpl.txt">GPLv3</a></td></tr>
-<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>open graph, rich cards, rich pins, twitter cards, schema, google merchant, seo, tags, social media, social sharing, meta tags, woocommerce, linkedin, facebook, pinterest, twitter</td></tr>
+<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>facebook, twitter, google, pinterest, twitter, linkedin, open graph, rich cards, rich pins, twitter cards, schema, woocommerce, google merchant, seo, tags, social media, social sharing, meta tags</td></tr>
 </table>
 
 <h2>Description</h2>

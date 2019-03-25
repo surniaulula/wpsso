@@ -64,7 +64,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 
 				add_filter( 'views_users', array( $this, 'add_person_view' ) );
-				add_filter( 'manage_users_columns', array( $this, 'add_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
+				add_filter( 'manage_users_columns', array( $this, 'add_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );	// Default is 100.
 				add_filter( 'manage_users_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
 				add_filter( 'manage_users_custom_column', array( $this, 'get_column_content',), 10, 3 );
 
@@ -96,12 +96,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				add_action( 'edit_user_profile', array( $this, 'show_metabox_section' ), 20 );
 
 				add_action( 'edit_user_profile_update', array( $this, 'sanitize_submit_cm' ), 5 );
-				add_action( 'edit_user_profile_update', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
-				add_action( 'edit_user_profile_update', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
+				add_action( 'edit_user_profile_update', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );	// Default is -10.
+				add_action( 'edit_user_profile_update', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );	// Default is 0.
 
 				add_action( 'personal_options_update', array( $this, 'sanitize_submit_cm' ), 5 );
-				add_action( 'personal_options_update', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
-				add_action( 'personal_options_update', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
+				add_action( 'personal_options_update', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );	// Default is -10.
+				add_action( 'personal_options_update', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );	// Default is 0.
 			}
 		}
 

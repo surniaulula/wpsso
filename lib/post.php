@@ -49,20 +49,20 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 * The 'save_post' action is run after other post type specific actions,
 				 * so we can use it to save post meta for any post type.
 				 */
-				add_action( 'save_post', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
+				add_action( 'save_post', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );	// Default is -10.
 
 				/**
 				 * Don't hook the 'clean_post_cache' action since 'save_post' is run after
 				 * 'clean_post_cache' and our custom post meta has not been saved yet.
 				 */
-				add_action( 'save_post', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
+				add_action( 'save_post', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );	// Default is 0.
 
 				/**
 				 * The wp_insert_post() function returns after running the 'edit_attachment' action,
 				 * so the 'save_post' action is never run for attachments.
 				 */
-				add_action( 'edit_attachment', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
-				add_action( 'edit_attachment', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
+				add_action( 'edit_attachment', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );	// Default is -10.
+				add_action( 'edit_attachment', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );	// Default is 0.
 
 				if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
 					add_action( 'post_submitbox_misc_actions', array( $this, 'show_robots_options' ) );
@@ -91,13 +91,17 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						/**
 						 * See https://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns.
 						 */
-						add_filter( 'manage_' . $ptn . '_posts_columns', array( $this, 'add_post_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
-						add_filter( 'manage_edit-' . $ptn . '_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
+						add_filter( 'manage_' . $ptn . '_posts_columns',
+							array( $this, 'add_post_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );	// Default is 100.
+
+						add_filter( 'manage_edit-' . $ptn . '_sortable_columns',
+							array( $this, 'add_sortable_columns' ), 10, 1 );
 
 						/**
 						 * See https://codex.wordpress.org/Plugin_API/Action_Reference/manage_$post_type_posts_custom_column.
 						 */
-						add_action( 'manage_' . $ptn . '_posts_custom_column', array( $this, 'show_column_content' ), 10, 2 );
+						add_action( 'manage_' . $ptn . '_posts_custom_column',
+							array( $this, 'show_column_content' ), 10, 2 );
 					}
 				}
 
@@ -105,7 +109,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->debug->log( 'adding column filters for media library' );
 				}
 
-				add_filter( 'manage_media_columns', array( $this, 'add_media_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
+				add_filter( 'manage_media_columns', array( $this, 'add_media_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );	// Default is 100.
 				add_filter( 'manage_upload_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
 				add_action( 'manage_media_custom_column', array( $this, 'show_column_content' ), 10, 2 );
 
