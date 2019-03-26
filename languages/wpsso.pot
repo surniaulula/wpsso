@@ -3143,22 +3143,22 @@ msgstr ""
 #. translators: %s is "App Key"
 #. translators: %s is "Secret Key"
 #: lib/gettext-pro.php:213 lib/gettext-pro.php:214
-#: lib/pro/rating/yotpowc.php:67 lib/pro/rating/yotpowc.php:82
+#: lib/pro/rating/yotpowc.php:69 lib/pro/rating/yotpowc.php:84
 msgid "Yotpo for WooCommerce \"%s\" setting value is empty."
 msgstr ""
 
 #. translators: %s is "wc_yotpo_compatible()"
-#: lib/gettext-pro.php:215 lib/pro/rating/yotpowc.php:97
+#: lib/gettext-pro.php:215 lib/pro/rating/yotpowc.php:99
 msgid "Yotpo for WooCommerce %s function returned an error."
 msgstr ""
 
 #. translators: %s is "yotpo-social-reviews-for-woocommerce"
-#: lib/gettext-pro.php:216 lib/pro/rating/yotpowc.php:120
+#: lib/gettext-pro.php:216 lib/pro/rating/yotpowc.php:122
 msgid "\"%s\" not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
 msgstr ""
 
 #. translators: %s is the API library file path
-#: lib/gettext-pro.php:217 lib/pro/rating/yotpowc.php:147
+#: lib/gettext-pro.php:217 lib/pro/rating/yotpowc.php:149
 msgid "Yotpo for WooCommerce API library file \"%s\" not found."
 msgstr ""
 
