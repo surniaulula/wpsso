@@ -2240,7 +2240,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$no_notices_text = sprintf( __( 'No new %s notifications.', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
 
-			$wp_admin_bar->add_node( array(	// Since wp 3.1
+			$wp_admin_bar->add_node( array(	// Since WP v3.1.
 				'id'     => $this->p->lca . '-toolbar-notices',
 				'title'  => $menu_icon . $menu_count,
 				'parent' => false,

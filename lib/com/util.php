@@ -821,12 +821,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_min_int() {
 
-			return defined( 'PHP_INT_MIN' ) ? PHP_INT_MIN : -2147483648;    // Since PHP 7.0.0.
+			return defined( 'PHP_INT_MIN' ) ? PHP_INT_MIN : -2147483648;	// Since PHP v7.0.0.
 		}
 
 		public static function get_max_int() {
 
-			return defined( 'PHP_INT_MAX' ) ? PHP_INT_MAX : 2147483647;     // Since PHP 5.0.2.
+			return PHP_INT_MAX;	// Since PHP v5.0.2.
 		}
 
 		private static function get_formatted_timezone( $tz_name, $format ) {
@@ -2338,7 +2338,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			} else {
 
-				if ( is_admin() && function_exists( 'get_user_locale' ) ) { // Since wp 4.7.
+				if ( is_admin() && function_exists( 'get_user_locale' ) ) { // Since WP v4.7.
 					$locale = get_user_locale();
 				} else {
 					$locale = get_locale();
@@ -2350,7 +2350,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_available_locales() {
 
-			$available_locales = get_available_languages(); // Since wp 3.0.
+			$available_locales = get_available_languages(); // Since WP v3.0.
 
 			$default_locale = self::get_locale( 'default' );
 
@@ -2754,7 +2754,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( is_numeric( $term_id ) && $term_id > 0 ) {
 
-				$ret = term_exists( $term_id, $tax_slug ); // Since wp 3.0.
+				$ret = term_exists( $term_id, $tax_slug ); // Since WP v3.0.
 
 			} elseif ( is_tax() || is_category() || is_tag() ) {
 
@@ -2764,7 +2764,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				$screen_base = self::get_screen_base();
 
-				if ( $screen_base === 'term' ) { // Since wp v4.5.
+				if ( $screen_base === 'term' ) { // Since WP v4.5.
 					$ret = true;
 				} elseif ( ( false === $screen_base || $screen_base === 'edit-tags' ) &&	
 					( self::get_request_value( 'taxonomy' ) !== '' && // Uses sanitize_text_field().
@@ -2783,7 +2783,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( is_numeric( $term_id ) && $term_id > 0 ) {
 
-				$ret = term_exists( $term_id, 'category' ); // Since wp 3.0.
+				$ret = term_exists( $term_id, 'category' ); // Since WP v3.0.
 
 			} elseif ( is_category() ) {
 
@@ -2807,7 +2807,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( is_numeric( $term_id ) && $term_id > 0 ) {
 
-				$ret = term_exists( $term_id, 'post_tag' ); // Since wp 3.0.
+				$ret = term_exists( $term_id, 'post_tag' ); // Since WP v3.0.
 
 			} elseif ( is_tag() ) {
 

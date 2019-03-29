@@ -212,9 +212,11 @@ _x( 'Description Field ID', 'option label', 'wpsso' );
 _x( 'Post Image Field ID', 'option label', 'wpsso' );
 __( 'Yotpo for WooCommerce "%s" setting value is empty.', 'wpsso' );
 __( 'Yotpo for WooCommerce "%s" setting value is empty.', 'wpsso' );
-__( 'Yotpo for WooCommerce %s function returned an error.', 'wpsso' );
-__( '"%s" not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders.', 'wpsso' );
+__( 'Yotpo for WooCommerce %s function is missing.', 'wpsso' );
+__( 'Yotpo for WooCommerce %s function returned false.', 'wpsso' );
+__( '"%s" plugin not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders.', 'wpsso' );
 __( 'Yotpo for WooCommerce API library file "%s" not found.', 'wpsso' );
+__( 'Yotpo for WooCommerce "%s" class does not exist.', 'wpsso' );
 __( 'Plugin conflict detected', 'wpsso' );
 // translators: please ignore - translation uses a different text domain
 __( 'Enable Google Rich Snippets?', 'wp-postratings' );

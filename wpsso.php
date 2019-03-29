@@ -15,7 +15,7 @@
  * Requires At Least: 3.8
  * Tested Up To: 5.1
  * WC Tested Up To: 3.5
- * Version: 4.25.2
+ * Version: 4.26.0-dev.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -239,7 +239,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				 */
 				if ( is_array( $this->options ) && is_array( $this->site_options ) ) {
 
-					$blog_id = get_current_blog_id();	// Since wp 3.1.
+					$blog_id = get_current_blog_id();	// Since WP v3.1.
 
 					$defined_constants = get_defined_constants( true );	// $categorize is true.
 

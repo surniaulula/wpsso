@@ -251,11 +251,20 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 		 */
 		public function add_update_tb_notices_script() {
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
 			/**
 			 * Exit early if this is a block editor page.
 			 * The notices will be retrieved using an ajax call on page load and post save.
 			 */
 			if ( SucomUtilWP::doing_block_editor() ) {
+
+				if ( ! empty( $this->p->debug->enabled ) ) {
+					$this->p->debug->log( 'exiting early: doing block editor' );
+				}
+
 				return;
 			}
 

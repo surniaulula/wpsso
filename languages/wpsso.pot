@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.25.2\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.26.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -310,7 +310,7 @@ msgstr ""
 msgid "%d of %d site addresses registered"
 msgstr ""
 
-#: lib/admin.php:2241 lib/script.php:227 lib/script.php:269
+#: lib/admin.php:2241 lib/script.php:227 lib/script.php:278
 msgid "No new %s notifications."
 msgstr ""
 
@@ -387,7 +387,7 @@ msgid ""
 "your content."
 msgstr ""
 
-#: lib/admin.php:2435 lib/gettext-pro.php:218
+#: lib/admin.php:2435 lib/gettext-pro.php:220
 #: lib/pro/rating/wppostratings.php:51
 msgid "Plugin conflict detected"
 msgstr ""
@@ -2969,25 +2969,25 @@ msgctxt "metabox title"
 msgid "Structured Data / Schema Markup / Pinterest"
 msgstr ""
 
-#: lib/gettext-pro.php:162 lib/pro/ecom/woocommerce.php:914
+#: lib/gettext-pro.php:162 lib/pro/ecom/woocommerce.php:915
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
-#: lib/gettext-pro.php:163 lib/pro/ecom/woocommerce.php:917
+#: lib/gettext-pro.php:163 lib/pro/ecom/woocommerce.php:918
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/gettext-pro.php:164 lib/pro/ecom/woocommerce.php:1137
+#: lib/gettext-pro.php:164 lib/pro/ecom/woocommerce.php:1138
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/gettext-pro.php:165 lib/pro/ecom/woocommerce.php:1139
+#: lib/gettext-pro.php:165 lib/pro/ecom/woocommerce.php:1140
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:166 lib/pro/ecom/woocommerce.php:1142
+#: lib/gettext-pro.php:166 lib/pro/ecom/woocommerce.php:1143
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 
@@ -3141,43 +3141,54 @@ msgid "Post Image Field ID"
 msgstr ""
 
 #. translators: %s is "App Key"
-#. translators: %s is "Secret Key"
+#. translators: %s is "Secret Token"
 #: lib/gettext-pro.php:213 lib/gettext-pro.php:214
-#: lib/pro/rating/yotpowc.php:69 lib/pro/rating/yotpowc.php:84
+#: lib/pro/rating/yotpowc.php:115 lib/pro/rating/yotpowc.php:130
 msgid "Yotpo for WooCommerce \"%s\" setting value is empty."
 msgstr ""
 
 #. translators: %s is "wc_yotpo_compatible()"
-#: lib/gettext-pro.php:215 lib/pro/rating/yotpowc.php:99
-msgid "Yotpo for WooCommerce %s function returned an error."
+#: lib/gettext-pro.php:215 lib/pro/rating/yotpowc.php:145
+msgid "Yotpo for WooCommerce %s function is missing."
+msgstr ""
+
+#. translators: %s is "wc_yotpo_compatible()"
+#: lib/gettext-pro.php:216 lib/pro/rating/yotpowc.php:161
+msgid "Yotpo for WooCommerce %s function returned false."
 msgstr ""
 
 #. translators: %s is "yotpo-social-reviews-for-woocommerce"
-#: lib/gettext-pro.php:216 lib/pro/rating/yotpowc.php:122
-msgid "\"%s\" not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
+#: lib/gettext-pro.php:217 lib/pro/rating/yotpowc.php:184
+msgid ""
+"\"%s\" plugin not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
 msgstr ""
 
 #. translators: %s is the API library file path
-#: lib/gettext-pro.php:217 lib/pro/rating/yotpowc.php:149
+#: lib/gettext-pro.php:218 lib/pro/rating/yotpowc.php:201
 msgid "Yotpo for WooCommerce API library file \"%s\" not found."
 msgstr ""
 
+#. translators: %s is the API library file path
+#: lib/gettext-pro.php:219 lib/pro/rating/yotpowc.php:222
+msgid "Yotpo for WooCommerce \"%s\" class does not exist."
+msgstr ""
+
 #. translators: please ignore - translation uses a different text domain
-#: lib/gettext-pro.php:220 lib/pro/rating/wppostratings.php:58
+#: lib/gettext-pro.php:222 lib/pro/rating/wppostratings.php:58
 msgid "Enable Google Rich Snippets?"
 msgstr ""
 
 #. translators: please ignore - translation uses a different text domain
-#: lib/gettext-pro.php:222 lib/pro/rating/wppostratings.php:62
+#: lib/gettext-pro.php:224 lib/pro/rating/wppostratings.php:62
 msgid "Ratings"
 msgstr ""
 
 #. translators: please ignore - translation uses a different text domain
-#: lib/gettext-pro.php:224 lib/pro/rating/wppostratings.php:64
+#: lib/gettext-pro.php:226 lib/pro/rating/wppostratings.php:64
 msgid "Ratings Options"
 msgstr ""
 
-#: lib/gettext-pro.php:225 lib/pro/rating/wppostratings.php:70
+#: lib/gettext-pro.php:227 lib/pro/rating/wppostratings.php:70
 msgid "please disable the %1$s option in the %2$s settings page."
 msgstr ""
 

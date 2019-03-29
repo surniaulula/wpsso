@@ -602,10 +602,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 					if ( empty( $user_dismissed ) ) {
 
-						delete_user_option( $user_id, $this->dis_name, false );	// $global is false
-						delete_user_option( $user_id, $this->dis_name, true );	// $global is true
+						delete_user_option( $user_id, $this->dis_name, false );	// $global is false.
+						delete_user_option( $user_id, $this->dis_name, true );	// $global is true.
 					} else {
-						update_user_option( $user_id, $this->dis_name, $user_dismissed, false );	// $global is false
+						update_user_option( $user_id, $this->dis_name, $user_dismissed, false );	// $global is false.
 					}
 				}
 			}

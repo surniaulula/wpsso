@@ -90,7 +90,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			if ( ! empty( $this->p->options[ 'add_link_rel_canonical' ] ) ) {
 
-				$current = current_filter();	// Since wp v2.5, aka current_action() in wp v3.9.
+				$current = current_filter();	// Since WP v2.5, aka current_action() in WP v3.9.
 
 				switch( $current ) {
 
