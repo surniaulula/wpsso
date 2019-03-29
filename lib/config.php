@@ -139,6 +139,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 							'rating' => array(
 								'wppostratings' => '(plugin) WP-PostRatings',
+							),
+							'review' => array(
 								'yotpowc'       => '(plugin) Yotpo Social Reviews for WooCommerce',
 							),
 							'seo' => array(

@@ -1678,11 +1678,21 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
-						case 'info-meta-validate-google':
+						case 'info-meta-validate-google-testing-tool':
 
 							$text = '<p class="top">';
 
 							$text .= __( 'Verify the webpage structured data markup (meta tags, Schema, Microdata, and JSON-LD).', 'wpsso' );
+
+							$text .= '</p>';
+
+						 	break;
+
+						case 'info-meta-validate-google-rich-results':
+
+							$text = '<p class="top">';
+
+							$text .= __( 'Check the webpage known for Google rich result types (Job posting, Resipe, Course, etc.).', 'wpsso' );
 
 							$text .= '</p>';
 

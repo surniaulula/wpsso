@@ -138,7 +138,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							break;
 
-						case 'rating-yotpowc':				// yotpo-social-reviews-for-woocommerce
+						case 'review-yotpowc':				// yotpo-social-reviews-for-woocommerce
 
 							$chk[ 'function' ] = 'wc_yotpo_init';
 

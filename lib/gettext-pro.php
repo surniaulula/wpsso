@@ -210,13 +210,6 @@ _x( 'Single Entry Integration', 'metabox title', 'wpsso' );
 _x( 'Title Field ID', 'option label', 'wpsso' );
 _x( 'Description Field ID', 'option label', 'wpsso' );
 _x( 'Post Image Field ID', 'option label', 'wpsso' );
-__( 'Yotpo for WooCommerce "%s" setting value is empty.', 'wpsso' );
-__( 'Yotpo for WooCommerce "%s" setting value is empty.', 'wpsso' );
-__( 'Yotpo for WooCommerce %s function is missing.', 'wpsso' );
-__( 'Yotpo for WooCommerce %s function returned false.', 'wpsso' );
-__( '"%s" plugin not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders.', 'wpsso' );
-__( 'Yotpo for WooCommerce API library file "%s" not found.', 'wpsso' );
-__( 'Yotpo for WooCommerce "%s" class does not exist.', 'wpsso' );
 __( 'Plugin conflict detected', 'wpsso' );
 // translators: please ignore - translation uses a different text domain
 __( 'Enable Google Rich Snippets?', 'wp-postratings' );
@@ -225,3 +218,10 @@ __( 'Ratings', 'wp-postratings' );
 // translators: please ignore - translation uses a different text domain
 __( 'Ratings Options', 'wp-postratings' );
 __( 'please disable the %1$s option in the %2$s settings page.', 'wpsso' );
+__( 'Yotpo for WooCommerce "%s" setting value is empty.', 'wpsso' );
+__( 'Yotpo for WooCommerce "%s" setting value is empty.', 'wpsso' );
+__( 'Yotpo for WooCommerce %s function is missing.', 'wpsso' );
+__( 'Yotpo for WooCommerce %s function returned false.', 'wpsso' );
+__( '"%s" plugin not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders.', 'wpsso' );
+__( 'Yotpo for WooCommerce API library file "%s" not found.', 'wpsso' );
+__( 'Yotpo for WooCommerce "%s" class does not exist.', 'wpsso' );

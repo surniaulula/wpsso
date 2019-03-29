@@ -438,7 +438,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			$buttons = array(
 				'facebook' => array(
-					'title' => _x( 'Facebook Open Graph Object Debugger', 'option label', 'wpsso' ),
+					'title' => _x( 'Facebook Open Graph Debugger', 'option label', 'wpsso' ),
 					'label' => _x( 'Validate Open Graph', 'submit button', 'wpsso' ),
 					'url'   => 'https://developers.facebook.com/tools/debug/og/object?q=' . $sharing_url_encoded,
 				),
@@ -447,10 +447,15 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'label' => _x( 'Validate Metadata', 'submit button', 'wpsso' ),
 					'url'   => 'https://www.linkedin.com/post-inspector/inspect/' . $sharing_url_encoded,
 				),
-				'google' => array(
-					'title' => _x( 'Google Structured Data Testing Tool', 'option label', 'wpsso' ),
+				'google-testing-tool' => array(
+					'title' => _x( 'Google Structured Data Test', 'option label', 'wpsso' ),
 					'label' => _x( 'Validate Structured Data', 'submit button', 'wpsso' ),
 					'url'   => 'https://search.google.com/structured-data/testing-tool/u/0/#url=' . $sharing_url_encoded,
+				),
+				'google-rich-results' => array(
+					'title' => _x( 'Google Rich Results Test', 'option label', 'wpsso' ),
+					'label' => _x( 'Validate Rich Results', 'submit button', 'wpsso' ),
+					'url'   => 'https://search.google.com/test/rich-results?url=' . $sharing_url_encoded,
 				),
 				'pinterest' => array(
 					'title' => _x( 'Pinterest Rich Pins Validator', 'option label', 'wpsso' ),
