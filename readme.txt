@@ -430,7 +430,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None.
 * *Developer Notes*
-	* None.
+	* Refactored the Yotpo Social Reviews for WooCommerce module (Pro version).
 
 **Version 4.25.2 (2019/03/18)**
 
@@ -564,7 +564,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.26.0-dev.1 =
 
-(2019/03/29) None.
+(2019/03/29) Refactored the Yotpo Social Reviews for WooCommerce module (Pro version).
 
 = 4.25.2 =
 
