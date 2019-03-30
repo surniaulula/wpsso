@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.26.0-dev.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.26.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2740,14 +2740,14 @@ msgstr ""
 
 #: lib/gettext-pro.php:108 lib/gettext-pro.php:135 lib/gpl/admin/meta.php:124
 #: lib/gpl/admin/post.php:145 lib/pro/admin/meta.php:133
-#: lib/pro/admin/post.php:144 lib/wp-meta.php:269 lib/wp-meta.php:293
+#: lib/pro/admin/post.php:144 lib/wp-meta.php:276 lib/wp-meta.php:300
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
 #: lib/gettext-pro.php:109 lib/gettext-pro.php:136 lib/gpl/admin/meta.php:132
 #: lib/gpl/admin/post.php:154 lib/pro/admin/meta.php:140
-#: lib/pro/admin/post.php:152 lib/wp-meta.php:273 lib/wp-meta.php:297
+#: lib/pro/admin/post.php:152 lib/wp-meta.php:280 lib/wp-meta.php:304
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
@@ -2863,7 +2863,7 @@ msgid "Description"
 msgstr ""
 
 #: lib/gettext-pro.php:128 lib/gpl/admin/post.php:305
-#: lib/pro/admin/post.php:288 lib/wp-meta.php:265
+#: lib/pro/admin/post.php:288 lib/wp-meta.php:272
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
@@ -2969,25 +2969,25 @@ msgctxt "metabox title"
 msgid "Structured Data / Schema Markup / Pinterest"
 msgstr ""
 
-#: lib/gettext-pro.php:162 lib/pro/ecom/woocommerce.php:917
+#: lib/gettext-pro.php:162 lib/pro/ecom/woocommerce.php:919
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
-#: lib/gettext-pro.php:163 lib/pro/ecom/woocommerce.php:920
+#: lib/gettext-pro.php:163 lib/pro/ecom/woocommerce.php:922
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/gettext-pro.php:164 lib/pro/ecom/woocommerce.php:1140
+#: lib/gettext-pro.php:164 lib/pro/ecom/woocommerce.php:1142
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/gettext-pro.php:165 lib/pro/ecom/woocommerce.php:1142
+#: lib/gettext-pro.php:165 lib/pro/ecom/woocommerce.php:1144
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:166 lib/pro/ecom/woocommerce.php:1145
+#: lib/gettext-pro.php:166 lib/pro/ecom/woocommerce.php:1147
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 
@@ -3162,33 +3162,33 @@ msgstr ""
 #. translators: %s is "App Key"
 #. translators: %s is "Secret Token"
 #: lib/gettext-pro.php:221 lib/gettext-pro.php:222
-#: lib/pro/review/yotpowc.php:115 lib/pro/review/yotpowc.php:130
+#: lib/pro/review/yotpowc.php:202 lib/pro/review/yotpowc.php:217
 msgid "Yotpo for WooCommerce \"%s\" setting value is empty."
 msgstr ""
 
 #. translators: %s is "wc_yotpo_compatible()"
-#: lib/gettext-pro.php:223 lib/pro/review/yotpowc.php:145
+#: lib/gettext-pro.php:223 lib/pro/review/yotpowc.php:232
 msgid "Yotpo for WooCommerce %s function is missing."
 msgstr ""
 
 #. translators: %s is "wc_yotpo_compatible()"
-#: lib/gettext-pro.php:224 lib/pro/review/yotpowc.php:161
+#: lib/gettext-pro.php:224 lib/pro/review/yotpowc.php:248
 msgid "Yotpo for WooCommerce %s function returned false."
 msgstr ""
 
 #. translators: %s is "yotpo-social-reviews-for-woocommerce"
-#: lib/gettext-pro.php:225 lib/pro/review/yotpowc.php:184
+#: lib/gettext-pro.php:225 lib/pro/review/yotpowc.php:271
 msgid ""
 "\"%s\" plugin not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
 msgstr ""
 
 #. translators: %s is the API library file path
-#: lib/gettext-pro.php:226 lib/pro/review/yotpowc.php:201
+#: lib/gettext-pro.php:226 lib/pro/review/yotpowc.php:288
 msgid "Yotpo for WooCommerce API library file \"%s\" not found."
 msgstr ""
 
 #. translators: %s is the API library file path
-#: lib/gettext-pro.php:227 lib/pro/review/yotpowc.php:222
+#: lib/gettext-pro.php:227 lib/pro/review/yotpowc.php:309
 msgid "Yotpo for WooCommerce \"%s\" class does not exist."
 msgstr ""
 
@@ -5001,7 +5001,7 @@ msgid ""
 "by the %s plugin."
 msgstr ""
 
-#: lib/messages.php:2018 lib/wp-meta.php:178
+#: lib/messages.php:2018 lib/wp-meta.php:185
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr ""
@@ -6513,132 +6513,132 @@ msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: lib/wp-meta.php:177
+#: lib/wp-meta.php:184
 msgctxt "metabox tab"
 msgid "Customize"
 msgstr ""
 
-#: lib/wp-meta.php:179
+#: lib/wp-meta.php:186
 msgctxt "metabox tab"
 msgid "Preview"
 msgstr ""
 
-#: lib/wp-meta.php:180
+#: lib/wp-meta.php:187
 msgctxt "metabox tab"
 msgid "Head"
 msgstr ""
 
-#: lib/wp-meta.php:181
+#: lib/wp-meta.php:188
 msgctxt "metabox tab"
 msgid "Validate"
 msgstr ""
 
-#: lib/wp-meta.php:250
+#: lib/wp-meta.php:257
 msgctxt "preview image error"
 msgid "Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/wp-meta.php:255
+#: lib/wp-meta.php:262
 msgctxt "preview image error"
 msgid "Image Dimensions Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/wp-meta.php:260
+#: lib/wp-meta.php:267
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/wp-meta.php:277 lib/wp-meta.php:303
+#: lib/wp-meta.php:284 lib/wp-meta.php:310
 msgctxt "option label"
 msgid "Shortlink URL"
 msgstr ""
 
-#: lib/wp-meta.php:308
+#: lib/wp-meta.php:315
 msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/wp-meta.php:441
+#: lib/wp-meta.php:448
 msgctxt "option label"
 msgid "Facebook Open Graph Debugger"
 msgstr ""
 
-#: lib/wp-meta.php:442
+#: lib/wp-meta.php:449
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/wp-meta.php:446
+#: lib/wp-meta.php:453
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/wp-meta.php:447
+#: lib/wp-meta.php:454
 msgctxt "submit button"
 msgid "Validate Metadata"
 msgstr ""
 
-#: lib/wp-meta.php:451
+#: lib/wp-meta.php:458
 msgctxt "option label"
 msgid "Google Structured Data Test"
 msgstr ""
 
-#: lib/wp-meta.php:452
+#: lib/wp-meta.php:459
 msgctxt "submit button"
 msgid "Validate Structured Data"
 msgstr ""
 
-#: lib/wp-meta.php:456
+#: lib/wp-meta.php:463
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/wp-meta.php:457
+#: lib/wp-meta.php:464
 msgctxt "submit button"
 msgid "Validate Rich Results"
 msgstr ""
 
-#: lib/wp-meta.php:461
+#: lib/wp-meta.php:468
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/wp-meta.php:462
+#: lib/wp-meta.php:469
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/wp-meta.php:466
+#: lib/wp-meta.php:473
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/wp-meta.php:467
+#: lib/wp-meta.php:474
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/wp-meta.php:472
+#: lib/wp-meta.php:479
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr ""
 
-#: lib/wp-meta.php:473
+#: lib/wp-meta.php:480
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr ""
 
-#: lib/wp-meta.php:477
+#: lib/wp-meta.php:484
 msgctxt "option label"
 msgid "The AMP Validator"
 msgstr ""
 
-#: lib/wp-meta.php:478
+#: lib/wp-meta.php:485
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/wp-meta.php:901
+#: lib/wp-meta.php:929
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 

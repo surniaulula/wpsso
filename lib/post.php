@@ -1641,9 +1641,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 
 				if ( count( $ret ) > $reviews_max ) {
+
 					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( count( $ret ) . ' reviews found (adjusted to ' . $reviews_max . ')' );
 					}
+
 					$ret = array_slice( $ret, 0, $reviews_max );
 				}
 			}
@@ -1654,16 +1656,24 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		public function get_og_review_mt( $comment_obj, $og_type = 'product', $rating_meta = 'rating' ) {
 
 			$ret = array();
+
 			$rating_value = (float) get_comment_meta( $comment_obj->comment_ID, $rating_meta, true );
 
 			$ret[ $og_type . ':review:id' ]           = $comment_obj->comment_ID;
 			$ret[ $og_type . ':review:url' ]          = get_comment_link( $comment_obj->comment_ID );
-			$ret[ $og_type . ':review:author:id' ]    = $comment_obj->user_id;	// Author ID if registered (0 otherwise).
-			$ret[ $og_type . ':review:author:name' ]  = $comment_obj->comment_author;	// Author display name.
+			$ret[ $og_type . ':review:title' ]        = '';
+			$ret[ $og_type . ':review:content' ]      = get_comment_excerpt( $comment_obj->comment_ID );
 			$ret[ $og_type . ':review:created_time' ] = mysql2date( 'c', $comment_obj->comment_date_gmt );
-			$ret[ $og_type . ':review:excerpt' ]      = get_comment_excerpt( $comment_obj->comment_ID );
 
 			/**
+			 * Review author.
+			 */
+			$ret[ $og_type . ':review:author:id' ]    = $comment_obj->user_id;	// Author ID if registered (0 otherwise).
+			$ret[ $og_type . ':review:author:name' ]  = $comment_obj->comment_author;	// Author display name.
+
+			/**
+			 * Review rating.
+			 *
 			 * Rating values must be larger than 0 to include rating info.
 			 */
 			if ( $rating_value > 0 ) {

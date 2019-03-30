@@ -108,10 +108,12 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		}
 
 		public function get_mod( $mod_id ) {
+
 			return $this->must_be_extended( __METHOD__, self::$mod_defaults );
 		}
 
 		public function get_posts_ids( array $mod, $ppp = false, $paged = false, array $posts_args = array() ) {
+
 			return $this->must_be_extended( __METHOD__, array() );	// Return an empty array.
 		}
 
@@ -132,22 +134,27 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		}
 
 		protected function add_actions() {
+
 			return $this->must_be_extended( __METHOD__ );
 		}
 
 		public function add_meta_boxes() {
+
 			return $this->must_be_extended( __METHOD__ );
 		}
 
 		public function ajax_metabox_custom_meta() {
+
 			return $this->must_be_extended( __METHOD__ );
 		}
 
 		public function show_metabox_custom_meta( $obj ) {
+
 			return $this->must_be_extended( __METHOD__ );
 		}
 
 		public function get_metabox_custom_meta( $obj ) {
+
 			return $this->must_be_extended( __METHOD__ );
 		}
 
@@ -764,14 +771,17 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		}
 
 		public function save_options( $mod_id, $rel_id = false ) {
+
 			return $this->must_be_extended( __METHOD__ );
 		}
 
 		public function user_can_edit( $mod_id, $rel_id = false ) {
+
 			return $this->must_be_extended( __METHOD__, false );	// return false by default
 		}
 
 		public function clear_cache( $mod_id, $rel_id = false ) {
+
 			return $this->must_be_extended( __METHOD__ );
 		}
 
@@ -865,46 +875,66 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		}
 
 		public function delete_options( $mod_id, $rel_id = false ) {
+
 			return $this->must_be_extended( __METHOD__, $mod_id );
 		}
 
 		protected function not_implemented( $method, $ret = true ) {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( $method . ' not implemented in this version', get_class( $this ) );	// log the extended class name
 			}
+
 			return $ret;
 		}
 
 		protected function must_be_extended( $method, $ret = true ) {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( $method . ' must be extended', get_class( $this ) );	// log the extended class name
 			}
+
 			return $ret;
 		}
 
 		protected function verify_submit_nonce() {
+
 			if ( empty( $_POST ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'empty POST for submit' );
 				}
+
 				return false;
-			} elseif ( empty( $_POST[ WPSSO_NONCE_NAME ] ) ) {
+
+			}
+			
+			if ( empty( $_POST[ WPSSO_NONCE_NAME ] ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'submit POST missing nonce token' );
 				}
+
 				return false;
-			} elseif ( ! wp_verify_nonce( $_POST[ WPSSO_NONCE_NAME ], WpssoAdmin::get_nonce_action() ) ) {
+
+			}
+			
+			if ( ! wp_verify_nonce( $_POST[ WPSSO_NONCE_NAME ], WpssoAdmin::get_nonce_action() ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'submit nonce token validation failed' );
 				}
+
 				if ( is_admin() ) {
 					$this->p->notice->err( __( 'Nonce token validation failed for the submitted form (update ignored).',
 						'wpsso' ) );
 				}
+
 				return false;
-			} else {
-				return true;
+
 			}
+
+			return true;
 		}
 
 		protected function get_submit_opts( $mod_id ) {
@@ -1452,10 +1482,12 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		}
 
 		public function get_og_type_reviews( $mod_id, $og_type = 'product', $rating_meta = 'rating' ) {
+
 			return $this->must_be_extended( __METHOD__, array() );	// return an empty array
 		}
 
 		public function get_og_review_mt( $comment_obj, $og_type = 'product', $rating_meta = 'rating' ) {
+
 			return $this->must_be_extended( __METHOD__, array() );	// return an empty array
 		}
 
@@ -1613,22 +1645,27 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		}
 
 		public function get_sharing_shortlink( $shortlink = false, $post_id = 0, $context = 'post', $allow_slugs = true ) {
+
 			return $this->must_be_extended( __METHOD__, '' );
 		}
 
 		public function maybe_restore_shortlink( $shortlink = false, $post_id = 0, $context = 'post', $allow_slugs = true ) {
+
 			return $this->must_be_extended( __METHOD__, '' );
 		}
 
 		public static function get_public_post_ids() {
+		
 			return $this->must_be_extended( __METHOD__, array() );
 		}
 
 		public static function get_public_term_ids( $tax_name = null ) {
+
 			return $this->must_be_extended( __METHOD__, array() );
 		}
 
 		public static function get_public_user_ids() {
+
 			return $this->must_be_extended( __METHOD__, array() );
 		}
 	}

@@ -2021,6 +2021,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':rating:count'                    => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':rating:worst'                    => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':rating:best'                     => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':review:count'                    => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':sale_price:amount'               => '',
 				$mt_pre . ':sale_price:currency'             => '',
 				$mt_pre . ':sale_price_dates:start'          => '',
