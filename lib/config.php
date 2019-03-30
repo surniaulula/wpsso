@@ -2408,8 +2408,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'map.category.type'                => 'https://schema.org/MapCategoryType',
 								'medical.enumeration' => array(
 									'medical.enumeration' => 'https://health-lifesci.schema.org/MedicalEnumeration',
-									'medical.audience' => 'https://health-lifesci.schema.org/MedicalAudience',
-									'medical.specialty' => array( 
+									'medical.audience'    => 'https://health-lifesci.schema.org/MedicalAudience',
+									'medical.specialty'   => array( 
 										'anesthesia.specialty'           => 'https://health-lifesci.schema.org/Anesthesia',
 										'cardiovascular.specialty'       => 'https://health-lifesci.schema.org/Cardiovascular',
 										'community.health.specialty'     => 'https://health-lifesci.schema.org/CommunityHealth',
@@ -2486,7 +2486,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'game.server' => 'https://schema.org/GameServer',
 							'intangible'  => 'https://schema.org/Intangible',
 							'invoice'     => 'https://schema.org/Invoice',
-							'item.list' => array(
+							'item.list'   => array(
 								'breadcrumb.list' => 'https://schema.org/BreadcrumbList',
 								'how.to.section'  => 'https://schema.org/HowToSection',
 								'how.to.step'     => 'https://schema.org/HowToStep',
@@ -2497,7 +2497,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'language'                     => 'https://schema.org/Language',
 							'list.item'                    => 'https://schema.org/ListItem',
 							'menu.item'                    => 'https://schema.org/MenuItem',
-							'offer'                        => 'https://schema.org/Offer',
+							'offer'                        => array(
+								'offer'                        => 'https://schema.org/Offer',
+								'offer.aggregate'              => 'https://schema.org/AggregateOffer',
+							),
 							'order'                        => 'https://schema.org/Order',
 							'order.item'                   => 'https://schema.org/OrderItem',
 							'parcel.delivery'              => 'https://schema.org/ParcelDelivery',
@@ -2505,7 +2508,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'program.membership'           => 'https://schema.org/ProgramMembership',
 							'property.value.specification' => 'https://schema.org/PropertyValueSpecification',
 							'quantity'                     => 'https://schema.org/Quantity',
-							'rating' => array(
+							'rating'                       => array(
 								'rating'           => 'https://schema.org/Rating',
 								'rating.aggregate' => 'https://schema.org/AggregateRating',
 							),
@@ -2559,8 +2562,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'medical.test'                    => 'https://health-lifesci.schema.org/MedicalTest',
 						),
 						'organization' => array(
-							'airline'     => 'https://schema.org/Airline',
-							'corporation' => 'https://schema.org/Corporation',
+							'airline'                  => 'https://schema.org/Airline',
+							'corporation'              => 'https://schema.org/Corporation',
 							'educational.organization' => array(
 								'college.or.university'    => 'https://schema.org/CollegeOrUniversity',
 								'educational.organization' => 'https://schema.org/EducationalOrganization',
@@ -2571,7 +2574,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'school'                   => 'https://schema.org/School',
 							),
 							'government.organization' => 'https://schema.org/GovernmentOrganization',
-							'medical.organization' => array(
+							'medical.organization'    => array(
 								'dentist.organization'   => 'https://schema.org/Dentist',
 								// 'hospital' xref 'https://schema.org/Hospital'.
 								'medical.organization'   => 'https://schema.org/MedicalOrganization',
@@ -2580,7 +2583,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 							'non-governmental.organization' => 'https://schema.org/NGO',
 							'organization'                  => 'https://schema.org/Organization',
-							'performing.group' => array(
+							'performing.group'              => array(
 								'dance.group'      => 'https://schema.org/DanceGroup',
 								'music.group'      => 'https://schema.org/MusicGroup',
 								'performing.group' => 'https://schema.org/PerformingGroup',
@@ -2592,12 +2595,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 						),
 						'person' => 'https://schema.org/Person',
-						'place' => array(
+						'place'  => array(
 							'accommodation' => array(
 								'accommodation' => 'https://schema.org/Accommodation',
 								'apartment'     => 'https://schema.org/Apartment',
 								'camping.pitch' => 'https://schema.org/CampingPitch',
-								'house' => array(
+								'house'         => array(
 									'house'                   => 'https://schema.org/House',
 									'residence.single.family' => 'https://schema.org/SingleFamilyResidence',
 								),
@@ -2639,10 +2642,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'train.station'           => 'https://schema.org/TrainStation',
 								'zoo'                     => 'https://schema.org/Zoo',
 							),
-							'landform' => 'https://schema.org/Landform',
+							'landform'                          => 'https://schema.org/Landform',
 							'landmarks.or.historical.buildings' => 'https://schema.org/LandmarksOrHistoricalBuildings',
-							'local.business' => array(
-								'animal.shelter' => 'https://schema.org/AnimalShelter',
+							'local.business'                    => array(
+								'animal.shelter'      => 'https://schema.org/AnimalShelter',
 								'automotive.business' => array(
 									'auto.body.shop'      => 'https://schema.org/AutoBodyShop',
 									'auto.dealer'         => 'https://schema.org/AutoDealer',
@@ -2655,15 +2658,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 									'motorcycle.dealer'   => 'https://schema.org/MotorcycleDealer',
 									'motorcycle.repair'   => 'https://schema.org/MotorcycleRepair',
 								),
-								'child.care' => 'https://schema.org/ChildCare',
+								'child.care'              => 'https://schema.org/ChildCare',
 								'dry.cleaning.or.laundry' => 'https://schema.org/DryCleaningOrLaundry',
-								'emergency.service' => array(
+								'emergency.service'       => array(
 									'emergency.service' => 'https://schema.org/EmergencyService',
 									'fire.station'      => 'https://schema.org/FireStation',
 									'hospital'          => 'https://schema.org/Hospital',
 									'police.station'    => 'https://schema.org/PoliceStation',
 								),
-								'employment.agency' => 'https://schema.org/EmploymentAgency',
+								'employment.agency'      => 'https://schema.org/EmploymentAgency',
 								'entertainment.business' => array(
 									'adult.entertainment'    => 'https://schema.org/AdultEntertainment',
 									'amusement.park'         => 'https://schema.org/AmusementPark',
@@ -2674,7 +2677,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 									'movie.theatre'          => 'https://schema.org/MovieTheatre',
 									'night.club'             => 'https://schema.org/NightClub',
 								),
-								'financial.service' => 'https://schema.org/FinancialService',
+								'financial.service'  => 'https://schema.org/FinancialService',
 								'food.establishment' => array(
 									'bakery'               => 'https://schema.org/Bakery',
 									'bar.or.pub'           => 'https://schema.org/BarOrPub',
@@ -2686,7 +2689,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 									'restaurant'           => 'https://schema.org/Restaurant',
 									'winery'               => 'https://schema.org/Winery',
 								),
-								'government.office' => 'https://schema.org/GovernmentOffice',
+								'government.office'          => 'https://schema.org/GovernmentOffice',
 								'health.and.beauty.business' => array(
 									'beauty.salon'               => 'https://schema.org/BeautySalon',
 									'day.spa'                    => 'https://schema.org/DaySpa',
@@ -2713,8 +2716,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 									'legal.service' => 'https://schema.org/LegalService',
 									'notary'        => 'https://schema.org/Notary',
 								),
-								'library' => 'https://schema.org/Library',
-								'local.business' => 'https://schema.org/LocalBusiness',
+								'library'          => 'https://schema.org/Library',
+								'local.business'   => 'https://schema.org/LocalBusiness',
 								'lodging.business' => array(
 									'bed.and.breakfast' => 'https://schema.org/BedAndBreakfast',
 									'campground'        => 'https://schema.org/Campground',
@@ -2898,7 +2901,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 				self::$cf[ '*' ] = array(
 					'base' => array(),
-					'lib' => array(
+					'lib'  => array(
 						'gpl' => array(),
 						'pro' => array(),
 					),

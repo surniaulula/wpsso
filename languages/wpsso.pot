@@ -3162,33 +3162,33 @@ msgstr ""
 #. translators: %s is "App Key"
 #. translators: %s is "Secret Token"
 #: lib/gettext-pro.php:221 lib/gettext-pro.php:222
-#: lib/pro/review/yotpowc.php:202 lib/pro/review/yotpowc.php:217
+#: lib/pro/review/yotpowc.php:203 lib/pro/review/yotpowc.php:218
 msgid "Yotpo for WooCommerce \"%s\" setting value is empty."
 msgstr ""
 
 #. translators: %s is "wc_yotpo_compatible()"
-#: lib/gettext-pro.php:223 lib/pro/review/yotpowc.php:232
+#: lib/gettext-pro.php:223 lib/pro/review/yotpowc.php:233
 msgid "Yotpo for WooCommerce %s function is missing."
 msgstr ""
 
 #. translators: %s is "wc_yotpo_compatible()"
-#: lib/gettext-pro.php:224 lib/pro/review/yotpowc.php:248
+#: lib/gettext-pro.php:224 lib/pro/review/yotpowc.php:249
 msgid "Yotpo for WooCommerce %s function returned false."
 msgstr ""
 
 #. translators: %s is "yotpo-social-reviews-for-woocommerce"
-#: lib/gettext-pro.php:225 lib/pro/review/yotpowc.php:271
+#: lib/gettext-pro.php:225 lib/pro/review/yotpowc.php:272
 msgid ""
 "\"%s\" plugin not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
 msgstr ""
 
 #. translators: %s is the API library file path
-#: lib/gettext-pro.php:226 lib/pro/review/yotpowc.php:288
+#: lib/gettext-pro.php:226 lib/pro/review/yotpowc.php:289
 msgid "Yotpo for WooCommerce API library file \"%s\" not found."
 msgstr ""
 
 #. translators: %s is the API library file path
-#: lib/gettext-pro.php:227 lib/pro/review/yotpowc.php:309
+#: lib/gettext-pro.php:227 lib/pro/review/yotpowc.php:310
 msgid "Yotpo for WooCommerce \"%s\" class does not exist."
 msgstr ""
 
