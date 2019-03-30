@@ -421,12 +421,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.26.0-dev.1 (2019/03/29)**
+**Version 4.26.0-dev.2 (2019/03/30)**
 
 * *New Features*
 	* None.
 * *Improvements*
-	* None.
+	* Added product reviews from the Yotpo Social Reviews for WooCommerce API for the WPSSO JSON Pro add-on (Pro version).
 * *Bugfixes*
 	* None.
 * *Developer Notes*
@@ -562,9 +562,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.26.0-dev.1 =
+= 4.26.0-dev.2 =
 
-(2019/03/29) Refactored the Yotpo Social Reviews for WooCommerce module (Pro version).
+(2019/03/30) Added product reviews from the Yotpo Social Reviews for WooCommerce API for the WPSSO JSON Pro add-on (Pro version).
 
 = 4.25.2 =
 
