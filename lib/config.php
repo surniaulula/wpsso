@@ -18,7 +18,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '4.26.0-b.1',	// Plugin version.
-					'opt_version' => '637',		// Increment when changing default option values.
+					'opt_version' => '638',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
 					'desc'        => 'WPSSO Core makes sure your content looks great on all social and search sites - no matter how URLs are crawled, shared, re-shared, posted, or embedded!',
@@ -866,7 +866,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'p_add_nopin_media_img_tag'    => 1,			// Add "nopin" to WordPress Media
 					'p_add_img_html'               => 1,			// Add Hidden Image for Pin It Button
 					'sc_publisher_url'             => '',
-					'seo_desc_max_len'             => 156,			// Search / SEO Description Length (hard limit).
+					'seo_desc_max_len'             => 220,			// Search / SEO Description Length (hard limit).
 					'seo_author_name'              => 'display_name',	// Author / Person Name Format
 					'tumblr_publisher_url'         => '',
 					'yt_publisher_url'             => '',

@@ -444,6 +444,15 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					}
 				}
 
+				/**
+				 * Increase the default SEO description length from 156 to 220 characters.
+				 */
+				if ( $prev_version > 0 && $prev_version <= 637 ) {
+					if ( $opts[ 'seo_desc_max_len' ] === 156 ) {
+						$opts[ 'seo_desc_max_len' ] = 220;
+					}
+				}
+
 			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) ) {
 
 				$this->p->util->rename_opts_by_ext( $opts, apply_filters( $this->p->lca . '_rename_site_options_keys',
