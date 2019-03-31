@@ -421,7 +421,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.26.0-dev.3 (2019/03/30)**
+**Version 4.26.0-dev.4 (2019/03/30)**
 
 * *New Features*
 	* None.
@@ -431,6 +431,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * *Developer Notes*
 	* Refactored the Yotpo Social Reviews for WooCommerce module (Pro version).
+	* Added new internal meta tags for the WPSSO JSON Pro add-on:
+		* product:quantity:value
+		* product:quantity:minimum
+		* product:quantity:maximum
+		* product:quantity:unit_code
+		* product:quantity:unit_text
 
 **Version 4.25.2 (2019/03/18)**
 
@@ -562,7 +568,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.26.0-dev.3 =
+= 4.26.0-dev.4 =
 
 (2019/03/30) Added product reviews from the Yotpo Social Reviews for WooCommerce API for the WPSSO JSON Pro add-on (Pro version).
 
