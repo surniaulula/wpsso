@@ -3612,7 +3612,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$text = preg_replace( '/<style\b[^>]*>(.*)<\/style>/Ui', ' ', $text );		// Remove inline stylesheets.
 
 			/**
-			 * Remove text between ignore markers.
+			 * Maybe remove text between ignore markers.
 			 */
 			if ( false !== strpos( $text, $this->p->lca . '-ignore' ) ) {
 				$text = preg_replace( '/<!-- *' . $this->p->lca . '-ignore *-->.*' .

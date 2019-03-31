@@ -999,6 +999,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'read cache for content is false' );
 				}
+
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'content array wp_cache is disabled' );
 			}
@@ -1090,8 +1091,22 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			$content = preg_replace( '/[\s\n\r]+/s', ' ', $content );		// Put everything on one line.
-			$content = preg_replace( '/^.*<!--' . $this->p->lca . '-content-->(.*)<!--\/' . 
-				$this->p->lca . '-content-->.*$/', '$1', $content );
+
+			/**
+			 * Maybe use only a certain part of the content.
+			 */
+			if ( false !== strpos( $content, $this->p->lca . '-content' ) ) {
+				$content = preg_replace( '/^.*<!-- *' . $this->p->lca . '-content-->(.*)<!--\/' . 
+					$this->p->lca . '-content *-->.*$/', '$1', $content );
+			}
+
+			/**
+			 * Maybe remove text between ignore markers.
+			 */
+			if ( false !== strpos( $content, $this->p->lca . '-ignore' ) ) {
+				$content = preg_replace( '/<!-- *' . $this->p->lca . '-ignore *-->.*' .
+					'<!-- *\/' . $this->p->lca . '-ignore *-->/U', ' ', $content );
+			}
 
 			/**
 			 * Remove "Google+" link and text.
