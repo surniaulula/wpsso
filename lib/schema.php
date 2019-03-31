@@ -965,6 +965,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				);
 
 				if ( ! empty( $type_id ) ) {
+
+					if ( ! empty( $json_data[ 'url' ] ) ) {
+						$json_values[ 'url' ] = $json_data[ 'url' ];	// Required if type_id is not a URL.
+					}
+
 					self::update_json_data_id( $json_values, $type_id );
 				}
 
@@ -991,9 +996,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( empty( $type_id ) ) {
+
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'exiting early: type_id value is empty and required' );
 				}
+
 				return;
 			}
 	
@@ -1022,14 +1029,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( empty( $json_data[ 'url' ] ) ) {
+
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'exiting early: json_data url is empty and required' );
 				}
+
 				return;
 			}
 
 			$id_separator = '/';
 			$id_anchor    = '#id' . $id_separator;
+			$type_id      = preg_replace( '/^#id\//', '', $type_id );	// Just in case.
 			$default_id   = $json_data[ 'url' ] . $id_anchor . $type_id;
 
 			/**
@@ -1391,7 +1401,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 * The $json_data array will almost always be a single associative array,
 				 * but the breadcrumblist filter may return an array of $json_data arrays.
 				 */
-				if ( isset( $json_data[0] ) && ! SucomUtil::is_assoc( $json_data ) ) {	// Multiple json scripts returned.
+				if ( isset( $json_data[ 0 ] ) && ! SucomUtil::is_assoc( $json_data ) ) {	// Multiple json arrays returned.
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'multiple json data arrays returned' );
@@ -1538,7 +1548,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			self::update_json_data_id( $json_data, $page_type_id );
+			if ( isset( $json_data[ 0 ] ) && ! SucomUtil::is_assoc( $json_data ) ) {	// Multiple json arrays returned.
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'multiple json data arrays returned' );
+				}
+
+			} else {
+				self::update_json_data_id( $json_data, $page_type_id );
+			}
 
 			/**
 			 * If this is a single post, save the json data to the transient cache to optimize the 
@@ -1670,12 +1688,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			if ( ! empty( $merge_data[ 'mainEntity' ] ) ) {
+			if ( ! $is_main || ! empty( $merge_data[ 'mainEntity' ] ) ) {
 
+				unset( $json_data[ 'mainEntity' ] );
 				unset( $json_data[ 'mainEntityOfPage' ] );
 
-			} elseif ( $is_main ) {
-
+			} else {
 				if ( ! isset( $merge_data[ 'mainEntityOfPage' ] ) ) {
 					if ( ! empty( $merge_data[ 'url' ] ) ) {
 						$merge_data[ 'mainEntityOfPage' ] = $merge_data[ 'url' ];
