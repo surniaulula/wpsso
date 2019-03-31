@@ -421,7 +421,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.26.0-dev.4 (2019/03/30)**
+**Version 4.26.0-dev.5 (2019/03/30)**
 
 * *New Features*
 	* None.
@@ -568,7 +568,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.26.0-dev.4 =
+= 4.26.0-dev.5 =
 
 (2019/03/30) Added product reviews from the Yotpo Social Reviews for WooCommerce API for the WPSSO JSON Pro add-on (Pro version).
 
