@@ -2325,7 +2325,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
+		 * Deprecated on 2019/03/30.
+		 */
+		public static function add_data_quant_from_assoc( array &$json_data, array $assoc, array $names ) {
+			return $this->add_data_unitcode_from_assoc( $json_data, $assoc, $names );
+		}
+
+		/**
 		 * QuantitativeValue (width, height, length, depth, weight).
+		 *
 		 * unitCodes from http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes.
 		 *
 		 * Example $names array:
@@ -2337,7 +2345,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * 	'weight' => 'product:weight:value',
 		 * );
 		 */
-		public static function add_data_quant_from_assoc( array &$json_data, array $assoc, array $names ) {
+		public static function add_data_unitcode_from_assoc( array &$json_data, array $assoc, array $names ) {
 
 			foreach ( $names as $prop_name => $key_name ) {
 
@@ -4056,9 +4064,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public function get_author_list_noscript( array &$mod ) {
 
 			if ( empty( $mod[ 'post_author' ] ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: empty post_author' );
 				}
+
 				return array();
 			}
 
