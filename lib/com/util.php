@@ -2010,6 +2010,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':pretax_price:currency'           => '',
 				$mt_pre . ':price:amount'                    => '',
 				$mt_pre . ':price:currency'                  => '',
+				$mt_pre . ':price:quantity'                  => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':price:quantity_min'              => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':price:quantity_max'              => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':price:unit_code'                 => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':price:unit_text'                 => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':product_link'                    => '',
 				$mt_pre . ':purchase_limit'                  => '',
 				$mt_pre . ':retailer'                        => '',
