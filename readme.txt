@@ -12,7 +12,7 @@ Requires PHP: 5.6
 Requires At Least: 3.8
 Tested Up To: 5.1
 WC Tested Up To: 3.5
-Stable Tag: 4.25.2
+Stable Tag: 4.26.0
 
 WPSSO Core makes sure your content looks great on all social and search sites, no matter how URLs are crawled, shared, re-shared, posted or embedded!
 
@@ -571,8 +571,4 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 4.26.0 =
 
 (2019/03/31) Added product reviews from the Yotpo Social Reviews for WooCommerce API for the WPSSO JSON Pro add-on (Pro version).
-
-= 4.25.2 =
-
-(2019/03/18) Disabled head meta tags transient cache for 404 and search pages.
 
