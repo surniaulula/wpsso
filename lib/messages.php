@@ -1692,7 +1692,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = '<p class="top">';
 
-							$text .= __( 'Check the webpage known for Google rich result types (Job posting, Resipe, Course, etc.).', 'wpsso' );
+							$text .= __( 'Check the webpage known for Google rich result types (Job posting, Recipe, Course, etc.).', 'wpsso' );
 
 							$text .= '</p>';
 

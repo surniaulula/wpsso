@@ -74,7 +74,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			 */
 			wp_register_script( 'jquery-qtip', 
 				WPSSO_URLPATH . 'js/ext/jquery-qtip.' . $js_file_ext, 
-					array( 'jquery' ), $this->p->cf['jquery-qtip'][ 'version' ], true );
+					array( 'jquery' ), $this->p->cf[ 'jquery-qtip' ][ 'version' ], true );
 
 			wp_register_script( 'sucom-settings-page', 
 				WPSSO_URLPATH . 'js/com/jquery-settings-page.' . $js_file_ext, 
@@ -221,10 +221,10 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 		 */
 		public function get_block_editor_admin_script_data() {
 
-			$metabox_id   = $this->p->cf['meta'][ 'id' ];
+			$metabox_id   = $this->p->cf[ 'meta' ][ 'id' ];
 			$container_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
 
-			$no_notices_text = sprintf( __( 'No new %s notifications.', 'wpsso' ), $this->p->cf['menu']['title'] );
+			$no_notices_text = sprintf( __( 'No new %s notifications.', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
 			$no_notices_html = '<div class="ab-item ab-empty-item">' . $no_notices_text . '</div>';
 
 			$option_labels = array( 'robots'   => _x( 'Robots', 'option label', 'wpsso' ) );
@@ -275,7 +275,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				return;
 			}
 
-			$no_notices_text = sprintf( __( 'No new %s notifications.', 'wpsso' ), $this->p->cf['menu']['title'] );
+			$no_notices_text = sprintf( __( 'No new %s notifications.', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
 			$no_notices_html = '<div class="ab-item ab-empty-item">' . $no_notices_text . '</div>';
 
 			/**
@@ -289,8 +289,6 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			<script type="text/javascript">
 
 				if ( typeof wpssoUpdateToolbar !== "function" ) {
-
-					jQuery( document ).ready( wpssoUpdateToolbar() );
 
 					function wpssoUpdateToolbar( updateNoticeHtml ) {
 
@@ -362,6 +360,8 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 							}
 						} );
 					}
+
+					jQuery( document ).ready( wpssoUpdateToolbar() );
 				}
 			</script>
 			<?php

@@ -4764,7 +4764,7 @@ msgstr ""
 
 #: lib/messages.php:1695
 msgid ""
-"Check the webpage known for Google rich result types (Job posting, Resipe, "
+"Check the webpage known for Google rich result types (Job posting, Recipe, "
 "Course, etc.)."
 msgstr ""
 
