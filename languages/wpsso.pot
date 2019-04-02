@@ -6642,38 +6642,38 @@ msgstr ""
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: wpsso.php:392
+#: wpsso.php:391
 msgid ""
 "Database option table row \"%1$s\" for plugin settings was found and "
 "converted to \"%2$s\"."
 msgstr ""
 
-#: wpsso.php:412
+#: wpsso.php:411
 msgid ""
 "Database site option table row \"%1$s\" for plugin settings was found and "
 "converted to \"%2$s\"."
 msgstr ""
 
-#: wpsso.php:445
+#: wpsso.php:444
 msgid ""
 "WP debug logging mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:463
+#: wpsso.php:462
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: wpsso.php:473
+#: wpsso.php:472
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:474
+#: wpsso.php:473
 msgid "Please disable debug mode when debugging is complete."
 msgstr ""
 
