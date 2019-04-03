@@ -420,6 +420,19 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.27.0-dev.1 (2019/04/03)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* None.
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* Added two new WpssoSchema methods for the WPSSO JSON Pro add-on:
+		* add_aggregate_offer_data();
+		* get_single_offer_data();
+
 **Version 4.26.0 (2019/03/31)**
 
 * *New Features*
@@ -566,6 +579,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Updated the required minimum PHP version from 5.4 to 5.5.
 
 == Upgrade Notice ==
+
+= 4.27.0-dev.1 =
+
+(2019/04/03) Added two new WpssoSchema methods for the WPSSO JSON Pro add-on.
 
 = 4.26.0 =
 
