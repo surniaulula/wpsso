@@ -470,10 +470,10 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 				$id_key = empty( $info[ 'update_auth' ] ) ? '' : 'plugin_' . $ext . '_' . $info[ 'update_auth' ];
 				$has_id = empty( $this->p->options[ $id_key ] ) ? '' : '*';
-				$has_p  = $this->pp( $ext, false );
+				$has_p  = $this->pp( $ext, false ) ? 'U' : 'F';
 
 				$ext_list[] = $info[ 'short' ] . ' ' . $info[ 'version' ] . '/' . 
-					( $this->is_pp( $ext ) ? 'L' : ( $has_p ? 'U' : 'F' ) ) . $has_id;
+					( $this->is_pp( $ext ) ? 'L' : $has_p ) . $has_id;
 			}
 
 			return $ext_list;
