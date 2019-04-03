@@ -464,14 +464,16 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				if ( empty( $info[ 'version' ] ) ) {	// Only active add-ons.
+				if ( empty( $info[ 'version' ] ) ) {	// Include only active add-ons.
 					continue;
 				}
 
-				$ins = $this->pp( $ext, false );
+				$id_key = empty( $info[ 'update_auth' ] ) ? '' : 'plugin_' . $ext . '_' . $info[ 'update_auth' ];
+				$has_id = empty( $this->p->options[ $id_key ] ) ? '' : '*';
+				$has_p  = $this->pp( $ext, false );
 
 				$ext_list[] = $info[ 'short' ] . ' ' . $info[ 'version' ] . '/' . 
-					( $this->is_pp( $ext ) ? 'L' : ( $ins ? 'U' : 'F' ) );
+					( $this->is_pp( $ext ) ? 'L' : ( $has_p ? 'U' : 'F' ) ) . $has_id;
 			}
 
 			return $ext_list;
