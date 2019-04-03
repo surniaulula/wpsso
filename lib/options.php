@@ -797,6 +797,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					$opt_val = trim( preg_replace( '/[^A-Z0-9\-]+/', '-', $opt_val ), '-' );
 
+					$opt_val = preg_replace( '/^ID-/', '', $opt_val );	// Just in case.
+
 					break;
 
 				/**
@@ -1376,7 +1378,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					break;
 
 				/**
-				 * Empty of alpha-numeric uppercase (hyphens are allowed as well).
+				 * Empty or alpha-numeric uppercase (hyphens are allowed as well).
 				 */
 				case ( preg_match( '/_tid$/', $base_key ) ? true : false ):
 
