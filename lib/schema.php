@@ -1599,9 +1599,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$action_name  = 'creating';
 
 			if ( $single_id === 'none' ) {
+
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'exiting early: ' . $single_name . ' id is ' . $single_id );
 				}
+
 				return $single_added;
 			}
 
@@ -1613,18 +1615,24 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$single_data =& $local_cache[ $mod[ 'name' ] ][ $mod[ 'id' ] ][ $single_name ][ $single_id ];
 
 				if ( false === $single_data ) {
+
 					$single_added = 0;
+
 				} else {
+
 					if ( empty( $list_element ) ) {
 						$json_data = $single_data;
 					} else {
 						$json_data[] = $single_data;
 					}
+
 					$single_added = 1;
 				}
 
 			} else {
+
 				$local_cache[ $mod[ 'name' ] ][ $mod[ 'id' ] ][ $single_name ][ $single_id ] = false;
+
 				$single_added =& $local_cache[ $mod[ 'name' ] ][ $mod[ 'id' ] ][ $single_name ][ $single_id ];	// Return reference to false.
 			}
 
@@ -3172,6 +3180,262 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			return 1;
+		}
+
+		/**
+		 * Since WPSSO Core v4.27.0.
+		 */
+		public static function add_aggregate_offer_data( &$json_data, array $mod, array $mt_offers ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->mark();
+			}
+
+			$aggregate_added  = 0;
+			$aggregate_prices = array();
+			$aggregate_offers = array();
+			$aggregate_common = array();
+
+			foreach ( $mt_offers as $offer_num => $mt_offer ) {
+
+				if ( ! is_array( $mt_offer ) ) {	// Just in case.
+
+					if ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log( 'skipping offer #' . $offer_num . ': not an array' );
+					}
+
+					continue;
+				}
+
+				$single_offer = self::get_single_offer_data( $mod, $mt_offer );
+
+				if ( false === $single_offer ) {
+					continue;
+				}
+
+				/**
+				 * Make sure we have a price currency value.
+				 */
+				$price_currency = isset( $single_offer[ 'priceCurrency' ] ) ?
+					$single_offer[ 'priceCurrency' ] : $wpsso->options[ 'plugin_def_currency' ];
+
+				/**
+				 * Keep track of the lowest and highest price by currency.
+				 */
+				if ( isset( $single_offer[ 'price' ] ) ) {	// Just in case.
+
+					if ( ! isset( $aggregate_prices[ $price_currency ][ 'low' ] )
+						|| $aggregate_prices[ $price_currency ][ 'low' ] > $single_offer[ 'price' ] ) {		// Save lower price.
+						$aggregate_prices[ $price_currency ][ 'low' ] = $single_offer[ 'price' ];
+					}
+
+					if ( ! isset( $aggregate_prices[ $price_currency ][ 'high' ] )
+						|| $aggregate_prices[ $price_currency ][ 'high' ] < $single_offer[ 'price' ] ) {	// Save higher price.
+						$aggregate_prices[ $price_currency ][ 'high' ] = $single_offer[ 'price' ];
+					}
+				}
+
+				/**
+				 * Save common properties (by currency) to include in the AggregateOffer markup.
+				 */
+				if ( $offer_num === 0 ) {
+					foreach ( preg_grep( '/^[^@]/', array_keys( $single_offer ) ) as $key ) {
+						$aggregate_common[ $price_currency ][ $key ] = $single_offer[ $key ];
+					}
+				} elseif ( ! empty( $aggregate_common[ $price_currency ] ) ) {
+					foreach ( $aggregate_common[ $price_currency ] as $key => $val ) {
+						if ( ! isset( $single_offer[ $key ] ) ) {
+							unset( $aggregate_common[ $price_currency ][ $key ] );
+						} elseif ( $val !== $single_offer[ $key ] ) {
+							unset( $aggregate_common[ $price_currency ][ $key ] );
+						}
+					}
+				}
+
+				/**
+				 * Add the complete offer.
+				 */
+				$aggregate_offers[ $price_currency ][] = self::get_schema_type_context( 'https://schema.org/Offer', $single_offer );
+			}
+
+			/**
+			 * Add aggregate offers grouped by currency.
+			 */
+			foreach ( $aggregate_offers as $price_currency => $currency_offers ) {
+
+				if ( ( $offer_count = count( $currency_offers ) ) > 0 ) {
+
+					$offer_group = array();
+
+					foreach ( array( 'low', 'high' ) as $mark ) {
+						if ( isset( $aggregate_prices[ $price_currency ][ $mark ] ) ) {
+							$offer_group[ $mark . 'Price' ] = $aggregate_prices[ $price_currency ][ $mark ];
+						}
+					}
+
+					$offer_group[ 'priceCurrency' ] = $price_currency;
+
+					if ( ! empty( $aggregate_common[ $price_currency ] ) ) {
+						foreach ( $aggregate_common[ $price_currency ] as $key => $val ) {
+							$offer_group[ $key ] = $val;
+						}
+					}
+
+					$offer_group[ 'offerCount' ] = $offer_count;
+					$offer_group[ 'offers' ]     = $currency_offers;
+
+					$json_data[ 'offers' ][] = self::get_schema_type_context( 'https://schema.org/AggregateOffer', $offer_group );
+
+					$aggregate_added++;
+				}
+			}
+
+			return $aggregate_added;
+		}
+
+		/**
+		 * Since WPSSO Core v4.27.0.
+		 */
+		public static function get_single_offer_data( array $mod, array $mt_offer ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->mark();
+			}
+
+			/**
+			 * Do not include an 'ean' property for the 'product:ean' value - there is no Schema 'ean' property.
+			 */
+			$offer = self::get_data_itemprop_from_assoc( $mt_offer, array( 
+				'url'             => 'product:url',
+				'name'            => 'product:title',
+				'description'     => 'product:description',
+				'category'        => 'product:category',
+				'mpn'             => 'product:mfr_part_no',
+				'sku'             => 'product:sku',
+				'gtin8'           => 'product:gtin8',
+				'gtin12'          => 'product:gtin12',
+				'gtin13'          => 'product:gtin13',
+				'gtin14'          => 'product:gtin14',
+				'itemCondition'   => 'product:condition',
+				'availability'    => 'product:availability',
+				'price'           => 'product:price:amount',
+				'priceCurrency'   => 'product:price:currency',
+				'priceValidUntil' => 'product:sale_price_dates:end',
+			) );
+
+			if ( false === $offer ) {	// Just in case.
+
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( 'exiting early: missing basic product meta tags' );
+				}
+
+				return false;
+			}
+
+			self::check_itemprop_content_map( $offer, 'itemCondition', 'product:condition' );
+
+			self::check_itemprop_content_map( $offer, 'availability', 'product:availability' );
+
+			/**
+			 * Prevents a missing property warning from the Google validator.
+			 */
+			if ( empty( $offer[ 'priceValidUntil' ] ) ) {
+
+				/**
+				 * By default, define normal product prices (not on sale) as valid for 1 year.
+				 */
+				$valid_max_time  = SucomUtil::get_const( 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME', YEAR_IN_SECONDS );
+
+				/**
+				 * Only define once for all offers to allow for (maybe) a common value in the AggregateOffer markup.
+				 */
+				static $price_valid_until = null;
+
+				if ( null === $price_valid_until ) {
+					$price_valid_until = gmdate( 'c', time() + $valid_max_time );
+				}
+	
+				$offer[ 'priceValidUntil' ] = $price_valid_until;
+			}
+
+			$quantity = self::get_data_itemprop_from_assoc( $mt_offer, array( 
+				'value'    => 'product:quantity:value',
+				'minValue' => 'product:quantity:minimum',
+				'maxValue' => 'product:quantity:maximum',
+				'unitCode' => 'product:quantity:unit_code',
+				'unitText' => 'product:quantity:unit_text',
+			) );
+
+			if ( false !== $quantity ) {
+				$offer[ 'eligibleQuantity' ] = self::get_schema_type_context( 'https://schema.org/QuantitativeValue ', $quantity );
+			}
+
+			$price_spec = self::get_data_itemprop_from_assoc( $mt_offer, array( 
+				'price'                 => 'product:price:amount',
+				'priceCurrency'         => 'product:price:currency',
+				'priceValidUntil'       => 'product:sale_price_dates:end',
+				'valueAddedTaxIncluded' => 'product:price:vat_included',
+			) );
+
+			if ( false !== $price_spec ) {
+
+				if ( isset( $offer[ 'eligibleQuantity' ] ) ) {
+					$price_spec[ 'eligibleQuantity' ] = $offer[ 'eligibleQuantity' ];
+				}
+
+				$offer[ 'priceSpecification' ] = self::get_schema_type_context( 'https://schema.org/PriceSpecification', $price_spec );
+			}
+
+			/**
+			 * Returns 0 if no organization was found / added.
+			 */
+			if ( ! self::add_single_organization_data( $offer[ 'seller' ], $mod, 'site', 'org_logo_url', false ) ) {
+				unset( $offer[ 'seller' ] );	// just in case
+			}
+
+			/**
+			 * Add the product variation image.
+			 */
+			if ( ! empty( $mt_offer[ 'product:image:id' ] ) ) {
+
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( 'getting product variation image ID ' . $mt_offer[ 'product:image:id' ] );
+				}
+
+				/**
+				 * Set reference values for admin notices.
+				 */
+				if ( is_admin() ) {
+					if ( ! empty( $offer[ 'url' ] ) ) {
+						$wpsso->notice->set_ref( $offer[ 'url' ], $mod,
+							__( 'adding schema for product offer', 'wpsso-schema-json-ld' ) );
+					}
+				}
+
+				$og_image = $wpsso->media->get_attachment_image( 1, $size_name = $wpsso->lca . '-schema',
+					$mt_offer[ 'product:image:id' ], $check_dupes = false );
+
+				if ( ! empty( $og_image ) ) {
+					if ( ! self::add_og_image_list_data( $offer[ 'image' ], $og_image ) ) {
+						unset( $offer[ 'image' ] );	// Prevent null assignment.
+					}
+				}
+
+				/**
+				 * Restore previous reference values for admin notices.
+				 */
+				if ( is_admin() ) {
+					if ( ! empty( $offer[ 'url' ] ) ) {
+						$wpsso->notice->unset_ref( $offer[ 'url' ] );
+					}
+				}
+			}
+
+			return self::get_schema_type_context( 'https://schema.org/Offer', $offer );
 		}
 
 		/**
