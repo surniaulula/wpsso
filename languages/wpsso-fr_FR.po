@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 4.26.0\n"
+"Project-Id-Version: WPSSO Core 4.27.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-04-04 08:29-0700\n"
-"PO-Revision-Date: 2019-04-04 08:29-0700\n"
+"POT-Creation-Date: 2019-04-04 08:37-0700\n"
+"PO-Revision-Date: 2019-04-04 08:37-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -5087,23 +5087,23 @@ msgstr "Image Google / Schéma"
 msgid "adding schema for %1$s ID %2$s"
 msgstr "ajout de schéma pour %1$s ID %2$s"
 
-#: lib/schema.php:3415
-msgid "adding schema for product offer"
-msgstr "ajout de schéma pour offre de produit"
+#: lib/schema.php:3419
+msgid "adding schema for offer"
+msgstr "ajout de schéma pour offre"
 
-#: lib/schema.php:3506
+#: lib/schema.php:3510
 msgid "adding schema for organization"
 msgstr "ajout de schéma d'organisation"
 
-#: lib/schema.php:3548
+#: lib/schema.php:3552
 msgid "The \"%1$s\" Organization Logo image is missing and required for the Schema %2$s markup."
 msgstr "L'image logo de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema.php:3555
+#: lib/schema.php:3559
 msgid "The \"%1$s\" Organization Banner (600x60px) image is missing and required for the Schema %2$s markup."
 msgstr "L'image bannière (600x60px) de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema.php:3833
+#: lib/schema.php:3837
 msgid "adding schema for place"
 msgstr "ajout de schéma de place"
 

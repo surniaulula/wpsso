@@ -210,7 +210,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 			wp_enqueue_script( 'sucom-block-editor-admin', 
 				WPSSO_URLPATH . 'js/block-editor-admin.' . $js_file_ext, 
-					array( 'wp-data' ), $plugin_version, false );
+					array( 'wp-data', 'wp-editor', 'wp-edit-post' ), $plugin_version, false );
 
 			wp_localize_script( 'sucom-block-editor-admin', 'sucomBlockEditorL10n',
 				$this->get_block_editor_admin_script_data() );
