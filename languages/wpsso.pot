@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.27.0-dev.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.27.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5869,27 +5869,27 @@ msgstr ""
 msgid "adding schema for %1$s ID %2$s"
 msgstr ""
 
-#: lib/schema.php:3415
-msgid "adding schema for product offer"
+#: lib/schema.php:3419
+msgid "adding schema for offer"
 msgstr ""
 
-#: lib/schema.php:3506
+#: lib/schema.php:3510
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:3548
+#: lib/schema.php:3552
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:3555
+#: lib/schema.php:3559
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:3833
+#: lib/schema.php:3837
 msgid "adding schema for place"
 msgstr ""
 

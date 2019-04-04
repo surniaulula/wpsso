@@ -3198,6 +3198,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$aggregate_offers = array();
 			$aggregate_common = array();
 
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->log( 'adding ' . count( $mt_offers ) . ' offers as aggregateoffer' );
+			}
+
 			foreach ( $mt_offers as $offer_num => $mt_offer ) {
 
 				if ( ! is_array( $mt_offer ) ) {	// Just in case.
@@ -3403,7 +3407,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! empty( $mt_offer[ 'product:image:id' ] ) ) {
 
 				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'getting product variation image ID ' . $mt_offer[ 'product:image:id' ] );
+					$wpsso->debug->log( 'getting offer image ID ' . $mt_offer[ 'product:image:id' ] );
 				}
 
 				/**
@@ -3412,7 +3416,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( is_admin() ) {
 					if ( ! empty( $offer[ 'url' ] ) ) {
 						$wpsso->notice->set_ref( $offer[ 'url' ], $mod,
-							__( 'adding schema for product offer', 'wpsso-schema-json-ld' ) );
+							__( 'adding schema for offer', 'wpsso-schema-json-ld' ) );
 					}
 				}
 

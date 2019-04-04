@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.26.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-04-01 11:32-0700\n"
-"PO-Revision-Date: 2019-04-01 11:32-0700\n"
+"POT-Creation-Date: 2019-04-04 08:29-0700\n"
+"PO-Revision-Date: 2019-04-04 08:29-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -793,7 +793,7 @@ msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr "URL logo de organisation"
 
-#: lib/admin.php:3460 lib/options.php:1184 lib/submenu/essential.php:161
+#: lib/admin.php:3460 lib/options.php:1186 lib/submenu/essential.php:161
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr "URL bannière d'organisation"
@@ -4811,23 +4811,23 @@ msgstr "La valeur de l'option '%s' doit être une heure hh:mm - l'option est rem
 msgid "The value of option '%s' must be a URL - resetting this option to its default value."
 msgstr "La valeur de l'option '%s' doit être un URL - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1154
+#: lib/options.php:1156
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr "Les réglages (%s) ont été mis à jour et sauvegardés."
 
-#: lib/options.php:1217
+#: lib/options.php:1219
 msgid "The %1$s image dimensions cannot be determined."
 msgstr "Les dimensions de l'image %1$s ne peuvent pas être déterminées."
 
-#: lib/options.php:1220
+#: lib/options.php:1222
 msgid "Please make sure this site can access the image URL at %1$s using the PHP getimagesize() function."
 msgstr "Assurez-vous que ce site peut accéder à l'URL d'image %1$s en utilisant la fonction PHP getimagesize()."
 
-#: lib/options.php:1225
+#: lib/options.php:1227
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr "Les dimensions de l'image %1$s sont %2$s et doivent être exactement %3$s."
 
-#: lib/options.php:1228
+#: lib/options.php:1230
 msgid "Please correct the banner image at %s."
 msgstr "Veuillez corriger l'image bannière à %s."
 
@@ -5083,23 +5083,27 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr "Image Google / Schéma"
 
-#: lib/schema.php:2595 lib/schema.php:2600
+#: lib/schema.php:2603 lib/schema.php:2608
 msgid "adding schema for %1$s ID %2$s"
 msgstr "ajout de schéma pour %1$s ID %2$s"
 
-#: lib/schema.php:3242
+#: lib/schema.php:3415
+msgid "adding schema for product offer"
+msgstr "ajout de schéma pour offre de produit"
+
+#: lib/schema.php:3506
 msgid "adding schema for organization"
 msgstr "ajout de schéma d'organisation"
 
-#: lib/schema.php:3284
+#: lib/schema.php:3548
 msgid "The \"%1$s\" Organization Logo image is missing and required for the Schema %2$s markup."
 msgstr "L'image logo de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema.php:3291
+#: lib/schema.php:3555
 msgid "The \"%1$s\" Organization Banner (600x60px) image is missing and required for the Schema %2$s markup."
 msgstr "L'image bannière (600x60px) de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema.php:3569
+#: lib/schema.php:3833
 msgid "adding schema for place"
 msgstr "ajout de schéma de place"
 
@@ -5830,28 +5834,28 @@ msgstr "Valider le balisage AMP"
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr "La validation du jeton nonce pour le formulaire soumis a échoué (mise à jour ignorée)."
 
-#: wpsso.php:392
+#: wpsso.php:391
 msgid "Database option table row \"%1$s\" for plugin settings was found and converted to \"%2$s\"."
 msgstr "La ligne \"%1$s\" dans la table d'option de base de données pour les réglages d'extension a été trouvée et convertie a \"%2$s\"."
 
-#: wpsso.php:412
+#: wpsso.php:411
 msgid "Database site option table row \"%1$s\" for plugin settings was found and converted to \"%2$s\"."
 msgstr "La ligne \"%1$s\" dans la table d'option site de base de données pour les réglages d'extension a été trouvée et convertie a \"%2$s\"."
 
-#: wpsso.php:445
+#: wpsso.php:444
 msgid "WP debug logging mode is active &mdash; debug messages are being sent to the WordPress debug log."
 msgstr "Le mode débogage WP est actif &mdash; des messages de débogage sont envoyés dans le fichier de débogage WordPress."
 
-#: wpsso.php:463
+#: wpsso.php:462
 msgid "HTML debug mode is active &mdash; debug messages are being added to webpages as hidden HTML comments."
 msgstr "Le mode de débogage HTML est actif &mdash; des messages de débogage sont ajoutés aux pages Web en commentaires HTML masqués."
 
 #. translators: %s is the short plugin name
-#: wpsso.php:473
+#: wpsso.php:472
 msgid "Debug mode disables some %s caching features, which degrades performance slightly."
 msgstr "Le mode de débogage désactive certaines fonctionnalités de mise en cache de %s, ce qui dégrade la performance légèrement."
 
-#: wpsso.php:474
+#: wpsso.php:473
 msgid "Please disable debug mode when debugging is complete."
 msgstr "SVP désactiver le mode de débogage lorsque le débogage est terminé."
 
