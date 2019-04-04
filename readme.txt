@@ -420,7 +420,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.27.0-dev.1 (2019/04/03)**
+**Version 4.27.0-dev.2 (2019/04/04)**
 
 * *New Features*
 	* None.
@@ -580,9 +580,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.27.0-dev.1 =
+= 4.27.0-dev.2 =
 
-(2019/04/03) Added two new WpssoSchema methods for the WPSSO JSON Pro add-on.
+(2019/04/04) Added two new WpssoSchema methods for the WPSSO JSON Pro add-on.
 
 = 4.26.0 =
 
