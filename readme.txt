@@ -225,7 +225,9 @@ WPSSO Core and its optional Free add-ons offer meta tags and Schema markup for F
 		* Review Rating 
 		* Review Rating Name
 	* Claim Review Information
-		* Specific Claims Reviewed
+		* Summary of Claim
+		* Claimed by Type
+		* Claimed by Name
 	* Software Application Information
 		* Operating System
 
@@ -420,7 +422,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.27.0-dev.2 (2019/04/04)**
+**Version 4.27.0-dev.3 (2019/04/04)**
 
 * *New Features*
 	* None.
@@ -429,6 +431,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None.
 * *Developer Notes*
+	* Added 'wp-editor' and 'wp-edit-post' as dependencies for the 'block-editor-admin.js' script.
 	* Added two new WpssoSchema methods for the WPSSO JSON Pro add-on:
 		* add_aggregate_offer_data();
 		* get_single_offer_data();
@@ -580,7 +583,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.27.0-dev.2 =
+= 4.27.0-dev.3 =
 
 (2019/04/04) Added two new WpssoSchema methods for the WPSSO JSON Pro add-on.
 
