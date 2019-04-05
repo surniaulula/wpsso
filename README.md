@@ -278,9 +278,9 @@
 <li>Claim Review Information
 
 <ul>
-<li>Summary of Claim</li>
-<li>Claimed by Type</li>
-<li>Claimed by Name</li>
+<li>Claim Author Type</li>
+<li>Claim Author Name</li>
+<li>Claim Summary</li>
 </ul></li>
 <li>Software Application Information
 
