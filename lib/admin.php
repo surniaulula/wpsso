@@ -811,7 +811,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				switch ( $readme_key ) {
 
-					case 'base':	// from plugin config
+					case 'base':	// From plugin config.
 
 						if ( ! empty( $info[ $readme_key ] ) ) {
 							$data->$prop_name = $info[ $readme_key ];
@@ -819,9 +819,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						break;
 
-					case 'home':	// from plugin config
+					case 'home':	// From plugin config.
 
-						if ( ! empty( $info[ 'url' ][ 'purchase' ] ) ) {	// check for purchase url first
+						if ( ! empty( $info[ 'url' ][ 'purchase' ] ) ) {	// Check for purchase url first.
 
 							$data->$prop_name = $info[ 'url' ][ 'purchase' ];
 
@@ -830,7 +830,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						// no break - override with 'home' url from config (if one is defined)
 
-					case 'latest':	// from plugin config
+					case 'latest':	// From plugin config.
 
 						if ( ! empty( $info[ 'url' ][ $readme_key ] ) ) {
 							$data->$prop_name = $info[ 'url' ][ $readme_key ];
@@ -838,10 +838,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						break;
 
-					case 'banners':	// from plugin config
+					case 'banners':	// From plugin config.
 
-						if ( ! empty( $info[ 'img' ][ $readme_key ] ) ) {
-							$data->$prop_name = $info[ 'img' ][ $readme_key ];	// array with low/high images
+						if ( ! empty( $info[ 'assets' ][ $readme_key ] ) ) {
+							$data->$prop_name = $info[ 'assets' ][ $readme_key ];	// Array with low / high images.
 						}
 
 						break;
@@ -1755,15 +1755,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$status_info = array(
 				'on' => array(
-					'img' => 'green-circle.png',
+					'img'   => 'green-circle.png',
 					'title' => __( 'Feature is enabled.', 'wpsso' ),
 				),
 				'off' => array(
-					'img' => 'gray-circle.png',
+					'img'   => 'gray-circle.png',
 					'title' => __( 'Feature is disabled.', 'wpsso' ),
 				),
 				'rec' => array(
-					'img' => 'red-circle.png',
+					'img'   => 'red-circle.png',
 					'title' => __( 'Feature is recommended but disabled.', 'wpsso' ),
 				),
 			);
@@ -3886,9 +3886,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 */
 			$img_src = 'src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="';
 
-			if ( ! empty( $this->p->cf[ 'plugin' ][ $ext ][ 'img' ][ 'icons' ] ) ) {
+			if ( ! empty( $this->p->cf[ 'plugin' ][ $ext ][ 'assets' ][ 'icons' ] ) ) {
 
-				$icons = $this->p->cf[ 'plugin' ][ $ext ][ 'img' ][ 'icons' ];
+				$icons = $this->p->cf[ 'plugin' ][ $ext ][ 'assets' ][ 'icons' ];
 
 				if ( ! empty( $icons[ 'low' ] ) ) {
 					$img_src = 'src="' . $icons[ 'low' ] . '"';

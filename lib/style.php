@@ -583,9 +583,9 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 				$ext = $this->p->cf[ '*' ][ 'slug' ][$plugin_slug];
 
-				if ( ! empty( $this->p->cf[ 'plugin' ][$ext]['img']['banners'] ) ) {
+				if ( ! empty( $this->p->cf[ 'plugin' ][$ext][ 'assets' ]['banners'] ) ) {
 
-					$banners = $this->p->cf[ 'plugin' ][$ext]['img']['banners'];
+					$banners = $this->p->cf[ 'plugin' ][$ext][ 'assets' ]['banners'];
 
 					if ( ! empty( $banners['low'] ) || ! empty( $banners['high'] ) ) {	// Must have at least one banner.
 
