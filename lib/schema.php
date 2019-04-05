@@ -2506,47 +2506,88 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			foreach ( $opts_md_pre as $opt_pre => $md_pre ) {
 
-				$md_date = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_pre . '_date' );
-				
-				if ( ( $md_time = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_pre . '_time' ) ) === 'none' ) {
-					$md_time = '';
-				}
-
-				if ( empty( $md_date ) && empty( $md_time ) ) {
-
-					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( 'skipping ' . $md_pre . ': date and time are empty' );
-					}
-
-					continue;	// Nothing to do.
-
-				} elseif ( ! empty( $md_date ) && empty( $md_time ) ) {	// Date with no time.
-
-					$md_time = '00:00';
-
-					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( $md_pre . ' time is empty - using time ' . $md_time );
-					}
-
-				} elseif ( empty( $md_date ) && ! empty( $md_time ) ) {	// Time with no date.
-
-					$md_date = gmdate( 'Y-m-d', time() );
-
-					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( $md_pre . ' date is empty - using date ' . $md_date );
-					}
-				}
-
-				if ( ! $md_timezone = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_pre . '_timezone' ) ) {
-					$md_timezone = get_option( 'timezone_string' );
-				}
+				$date_iso = self::get_mod_opts_date_iso( $mod, $md_pre );
 
 				if ( ! is_array( $opts ) ) {	// Just in case.
 					$opts = array();
 				}
 
-				$opts[ $opt_pre . '_iso' ] = date_format( date_create( $md_date . ' ' . $md_time . ' ' . $md_timezone ), 'c' );
+				$opts[ $opt_pre . '_iso' ] = $date_iso;
 			}
+		}
+
+		public static function get_mod_date_iso( array $mod, $md_pre ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->mark();
+			}
+
+			if ( ! is_string( $md_pre ) ) {	// Just in case.
+				return '';
+			}
+
+			$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
+
+			return self::get_mod_date_iso( $md_opts, $md_pre );
+		}
+
+		public static function get_opts_date_iso( array $opts, $md_pre ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->mark();
+			}
+
+			if ( ! is_string( $md_pre ) ) {	// Just in case.
+				return '';
+			}
+
+			$md_date     = empty( $opts[ $md_pre . '_date' ] ) || $opts[ $md_pre . '_date' ] === 'none' ? '' : $opts[ $md_pre . '_date' ];
+			$md_time     = empty( $opts[ $md_pre . '_time' ] ) || $opts[ $md_pre . '_time' ] === 'none' ? '' : $opts[ $md_pre . '_time' ];
+			$md_timezone = empty( $opts[ $md_pre . '_timezone' ] ) || $opts[ $md_pre . '_timezone' ] === 'none' ? '' : $opts[ $md_pre . '_timezone' ];
+				
+			if ( empty( $md_date ) && empty( $md_time ) ) {		// No date or time.
+
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( 'exiting early: ' . $md_pre . ' date and time are empty' );
+				}
+
+				return '';	// Nothing to do.
+
+			}
+			
+			if ( ! empty( $md_date ) && empty( $md_time ) ) {	// Date with no time.
+
+				$md_time = '00:00';
+
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( $md_pre . ' time is empty: using time ' . $md_time );
+				}
+
+			}
+			
+			if ( empty( $md_date ) && ! empty( $md_time ) ) {	// Time with no date.
+
+				$md_date = gmdate( 'Y-m-d', time() );
+
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( $md_pre . ' date is empty: using date ' . $md_date );
+				}
+			}
+
+			if ( empty( $md_timezone ) ) {				// No timezone.
+
+				$md_timezone = get_option( 'timezone_string' );
+
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( $md_pre . ' timezone is empty: using timezone ' . $md_timezone );
+				}
+			}
+
+			return date_format( date_create( $md_date . ' ' . $md_time . ' ' . $md_timezone ), 'c' );
 		}
 
 		/**
@@ -3091,7 +3132,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->log( 'checking for custom job expire date and time' );
 			}
 
-			self::add_mod_opts_date_iso( $mod, $job_opts, array( 'job_expire' => 'schema_job_expire' ) );
+			self::add_mod_opts_date_iso( $mod, $job_opts, array(
+				'job_expire' => 'schema_job_expire',	// Prefix for date, time, timezone, iso.
+			) );
 
 			/**
 			 * Add schema properties from the job options.

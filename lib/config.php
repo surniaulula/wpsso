@@ -1794,7 +1794,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'excerpt' => 'Excerpt Only',
 					'both'    => 'Title and Excerpt',
 				),
-				'claim_types' => array(
+				'claim_author_types' => array(
+					'none'         => '[None]',
 					'organization'  => 'Organization',
 					'person'        => 'Person',
 				),
@@ -2273,6 +2274,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 							'blog'                 => 'https://schema.org/Blog',
 							'book'                 => 'https://schema.org/Book',
+							'claim'                => 'https://schema.org/Claim',
 							'clip'                 => 'https://schema.org/Clip',
 							'comment'              => 'https://schema.org/Comment',
 							'conversation'         => 'https://schema.org/Conversation',
