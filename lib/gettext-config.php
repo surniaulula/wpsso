@@ -99,7 +99,6 @@ _x( '[None]', 'option value', 'wpsso' );
 _x( 'Title Only', 'option value', 'wpsso' );
 _x( 'Excerpt Only', 'option value', 'wpsso' );
 _x( 'Title and Excerpt', 'option value', 'wpsso' );
-_x( 'WebSite', 'option value', 'wpsso' );
 _x( 'Organization', 'option value', 'wpsso' );
 _x( 'Person', 'option value', 'wpsso' );
 _x( '[None]', 'option value', 'wpsso' );

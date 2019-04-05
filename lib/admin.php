@@ -206,22 +206,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				self::$pkg[ $ext ][ 'pdir' ] = $this->p->check->pp( $ext, false, $has_pdir );
+				$ext_star = $this->p->check->get_ext_star( $ext );
+				$ext_pdir = $this->p->check->pp( $ext, false, $has_pdir );
+				$ext_pp   = $has_pp && $ext_star && $this->p->check->pp( $ext, true, WPSSO_UNDEF ) === WPSSO_UNDEF ? true : false;
+				$ext_stat = ( $ext_pp ? 'L' : ( $ext_pdir ? 'U' : 'F' ) ) . $ext_star;
 
-				self::$pkg[ $ext ][ 'pp' ] = ! empty( $this->p->options[ 'plugin_' . $ext . '_tid' ] ) &&
-					$has_pp && $this->p->check->pp( $ext, true, WPSSO_UNDEF ) === WPSSO_UNDEF ? true : false;
-
-				self::$pkg[ $ext ][ 'type' ] = self::$pkg[ $ext ][ 'pp' ] ?
-					_x( 'Pro', 'package type', 'wpsso' ) : _x( 'Free', 'package type', 'wpsso' );
-
+				self::$pkg[ $ext ][ 'pdir' ]  = $ext_pdir;
+				self::$pkg[ $ext ][ 'pp' ]    = $ext_pp;
+				self::$pkg[ $ext ][ 'type' ]  = $ext_pp ? _x( 'Pro', 'package type', 'wpsso' ) : _x( 'Free', 'package type', 'wpsso' );
 				self::$pkg[ $ext ][ 'short' ] = $info[ 'short' ] . ' ' . self::$pkg[ $ext ][ 'type' ];
-
-				self::$pkg[ $ext ][ 'name' ] = SucomUtil::get_pkg_name( $info[ 'name' ], self::$pkg[ $ext ][ 'type' ] );
-
-				self::$pkg[ $ext ][ 'status' ] = self::$pkg[ $ext ][ 'pp' ] ? 'L' : ( self::$pkg[ $ext ][ 'pdir' ] ? 'U' : 'F' );
-
-				self::$pkg[ $ext ][ 'gen' ] = $info[ 'short' ] . ' ' . ( isset( $info[ 'version' ] ) ?
-					$info[ 'version' ] . '/' . self::$pkg[ $ext ][ 'status' ] : '' );
+				self::$pkg[ $ext ][ 'name' ]  = SucomUtil::get_pkg_name( $info[ 'name' ], self::$pkg[ $ext ][ 'type' ] );
+				self::$pkg[ $ext ][ 'gen' ]   = $info[ 'short' ] . ( isset( $info[ 'version' ] ) ? ' ' . $info[ 'version' ] . '/' . $ext_stat : '' );
 			}
 		}
 
