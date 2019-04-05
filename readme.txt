@@ -228,6 +228,8 @@ WPSSO Core and its optional Free add-ons offer meta tags and Schema markup for F
 		* Claim Author Type
 		* Claim Author Name
 		* Claim Summary
+		* Claim Made on Date
+		* First Appearance URL
 	* Software Application Information
 		* Operating System
 
