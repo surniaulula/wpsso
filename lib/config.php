@@ -1796,8 +1796,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'claim_author_types' => array(
 					'none'         => '[None]',
-					'organization'  => 'Organization',
-					'person'        => 'Person',
+					'organization' => 'Organization',
+					'person'       => 'Person',
 				),
 				'user_name_fields' => array(
 					'none'         => '[None]',

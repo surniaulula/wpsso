@@ -769,7 +769,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					$opt_val = trim( $opt_val );	// Removed extra spaces from copy-paste.
 
-					if ( $opt_val !== '' && preg_match( '/[^a-zA-Z0-9_\-]/', $opt_val ) ) {
+					if ( '' !== $opt_val && preg_match( '/[^a-zA-Z0-9_\-]/', $opt_val ) ) {
 
 						$this->p->notice->err( sprintf( $error_messages[ 'api_key' ], $opt_key ) );
 
@@ -783,7 +783,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'at_name':
 
-					if ( $opt_val !== '' ) {
+					if ( '' !== $opt_val ) {
 						$opt_val = SucomUtil::get_at_name( $opt_val );
 					}
 
@@ -812,7 +812,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				case 'blank_num':
 
-					if ( $opt_val === '' ) {
+					if ( '' === $opt_val ) {
 						$ret_int = false;
 					} else {
 						if ( ! is_numeric( $opt_val ) ) {
@@ -821,7 +821,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 							$opt_val = $def_val;
 
-							if ( $opt_val === '' ) {
+							if ( '' === $opt_val ) {
 								$ret_int = false;
 							}
 						}
@@ -835,7 +835,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'code':
 				case 'not_blank':
 
-					if ( $opt_val === '' && $def_val !== '' ) {
+					if ( '' === $opt_val && '' !== $def_val ) {
 
 						$this->p->notice->err( sprintf( $error_messages[ 'not_blank' ], $opt_key ) );
 
@@ -846,7 +846,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				case 'csv_blank':
 
-					if ( $opt_val !== '' ) {
+					if ( '' !== $opt_val ) {
 						$opt_val = implode( ', ', SucomUtil::explode_csv( $opt_val ) );
 					}
 
@@ -854,7 +854,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				case 'csv_urls':
 
-					if ( $opt_val !== '' ) {
+					if ( '' !== $opt_val ) {
 
 						$parts = array();
 
@@ -900,7 +900,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'html':
 
-					if ( $opt_val !== '' ) {
+					if ( '' !== $opt_val ) {
 
 						$opt_val = trim( $opt_val );
 
@@ -919,7 +919,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'img_id':
 
-					if ( $opt_val !== '' ) {
+					if ( '' !== $opt_val ) {
 
 						if ( ! preg_match( '/^[0-9]+$/', $opt_val ) ) {
 
@@ -969,7 +969,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$min_int = 1;
 					}
 
-					if ( ! empty( $mod[ 'name' ] ) && $opt_val === '' ) {	// Custom meta options can be empty.
+					if ( ! empty( $mod[ 'name' ] ) && '' === $opt_val ) {	// Custom meta options can be empty.
 
 						$ret_int = false;
 
@@ -988,15 +988,15 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					$opt_val = trim( $opt_val );
 
-					if ( $option_type === 'color' ) {
-						$fmt = '/^#[a-fA-f0-9]{6,6}$/';	// Color as #000000.
-					} elseif ( $option_type === 'date' ) {
-						$fmt = '/^[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2}$/';	// Date as yyyy-mm-dd.
-					} elseif ( $option_type === 'time' ) {
+					if ( 'color' === $option_type ) {
+						$fmt = '/^#[a-fA-f0-9]{6,6}$/';				// Color as #000000.
+					} elseif ( 'date' === $option_type ) {
+						$fmt = '/^[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2}$/';		// Date as yyyy-mm-dd.
+					} elseif ( 'time' === $option_type ) {
 						$fmt = '/^[0-9]{2,2}:[0-9]{2,2}(:[0-9]{2,2})?$/';	// Time as hh:mm or hh:mm:ss.
 					}
 
-					if ( $opt_val !== '' && $fmt && ! preg_match( $fmt, $opt_val ) ) {
+					if ( '' !== $opt_val && 'none' !== $opt_val && $fmt && ! preg_match( $fmt, $opt_val ) ) {
 						$this->p->notice->err( sprintf( $error_messages[ $option_type ], $opt_key ) );
 						$opt_val = $def_val;
 					}
@@ -1008,7 +1008,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'ok_blank':
 
-					if ( $opt_val !== '' ) {
+					if ( '' !== $opt_val ) {
 						$opt_val = trim( $opt_val );
 					}
 
@@ -1021,7 +1021,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'desc':
 				case 'one_line':
 
-					if ( $opt_val !== '' ) {
+					if ( '' !== $opt_val ) {
 						$opt_val = trim( preg_replace( '/[\s\n\r]+/s', ' ', $opt_val ) );
 					}
 
@@ -1032,7 +1032,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'textured':
 
-					if ( $opt_val !== '' ) {
+					if ( '' !== $opt_val ) {
 						$opt_val = trim( wptexturize( ' ' . $opt_val . ' ' ) );
 					}
 
@@ -1043,7 +1043,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'url':
 
-					if ( $opt_val !== '' ) {
+					if ( '' !== $opt_val ) {
 
 						$opt_val = SucomUtil::decode_html( $opt_val );	// Just in case.
 
@@ -1060,7 +1060,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'url_base':
 
-					if ( $opt_val !== '' ) {
+					if ( '' !== $opt_val ) {
 						$opt_val = preg_replace( '/(http|https):\/\/[^\/]*?\//', '', $opt_val );
 					}
 

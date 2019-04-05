@@ -16,9 +16,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		private $p;
 		private $lca;
 		private $opts_name       = null;
-		private $menu_ext        = null;		// lca or ext lowercase acronym
-		private $text_domain     = false;		// lca or ext text domain
-		private $def_text_domain = false;	// lca text domain (fallback)
+		private $menu_ext        = null;	// Lca or ext lowercase acronym.
+		private $text_domain     = false;	// Lca or ext text domain.
+		private $def_text_domain = false;	// Lca text domain (fallback).
 
 		public $options  = array();
 		public $defaults = array();
@@ -36,7 +36,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$this->opts_name  =& $opts_name;
 			$this->options    =& $opts;
 			$this->defaults   =& $def_opts;
-			$this->menu_ext   = empty( $menu_ext ) ? $this->lca : $menu_ext;	// lca or ext lowercase acronym
+			$this->menu_ext   = empty( $menu_ext ) ? $this->lca : $menu_ext;	// Lca or ext lowercase acronym.
 
 			$this->set_text_domain( $this->menu_ext );
 			$this->set_default_text_domain( $this->lca );
