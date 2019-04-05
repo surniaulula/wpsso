@@ -271,7 +271,7 @@
 <li>Review Information
 
 <ul>
-<li>Subject Webpage URL </li>
+<li>Review Subject URL </li>
 <li>Review Rating </li>
 <li>Review Rating Name</li>
 </ul></li>

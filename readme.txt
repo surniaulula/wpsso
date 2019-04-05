@@ -221,7 +221,7 @@ WPSSO Core and its optional Free add-ons offer meta tags and Schema markup for F
 			* Trans Fat
 			* Cholesterol
 	* Review Information
-		* Subject Webpage URL 
+		* Review Subject URL 
 		* Review Rating 
 		* Review Rating Name
 	* Claim Review Information
@@ -422,17 +422,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.27.0-dev.3 (2019/04/04)**
+**Version 4.27.0-dev.4 (2019/04/05)**
 
 * *New Features*
 	* None.
 * *Improvements*
 	* None.
 * *Bugfixes*
-	* None.
+	* Fixed 'wp-editor' and 'wp-edit-post' block editor dependencies for the 'block-editor-admin.js' script.
 * *Developer Notes*
-	* Added 'wp-editor' and 'wp-edit-post' as dependencies for the 'block-editor-admin.js' script.
-	* Added two new WpssoSchema methods for the WPSSO JSON Pro add-on:
+	* Added new WpssoSchema methods for the WPSSO JSON Pro add-on:
 		* add_aggregate_offer_data();
 		* get_single_offer_data();
 
@@ -583,9 +582,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.27.0-dev.3 =
+= 4.27.0-dev.4 =
 
-(2019/04/04) Added two new WpssoSchema methods for the WPSSO JSON Pro add-on.
+(2019/04/05) Fixed 'wp-editor' and 'wp-edit-post' block editor dependencies for the 'block-editor-admin.js' script. Added new WpssoSchema methods for the WPSSO JSON Pro add-on.
 
 = 4.26.0 =
 
