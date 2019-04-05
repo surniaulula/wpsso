@@ -425,7 +425,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.27.0-dev.4 (2019/04/05)**
+**Version 4.27.0-dev.5 (2019/04/05)**
 
 * *New Features*
 	* None.
@@ -585,7 +585,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.27.0-dev.4 =
+= 4.27.0-dev.5 =
 
 (2019/04/05) Fixed 'wp-editor' and 'wp-edit-post' block editor dependencies for the 'block-editor-admin.js' script. Added new WpssoSchema methods for the WPSSO JSON Pro add-on.
 
