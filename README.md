@@ -278,10 +278,11 @@
 <li>Claim Review Information
 
 <ul>
+<li>Claim Short Summary</li>
+<li>Claim Made on Date</li>
 <li>Claim Author Type</li>
 <li>Claim Author Name</li>
-<li>Claim Summary</li>
-<li>Claim Made on Date</li>
+<li>Claim Author URL</li>
 <li>First Appearance URL</li>
 </ul></li>
 <li>Software Application Information

@@ -225,10 +225,11 @@ WPSSO Core and its optional Free add-ons offer meta tags and Schema markup for F
 		* Review Rating 
 		* Review Rating Name
 	* Claim Review Information
+		* Claim Short Summary
+		* Claim Made on Date
 		* Claim Author Type
 		* Claim Author Name
-		* Claim Summary
-		* Claim Made on Date
+		* Claim Author URL
 		* First Appearance URL
 	* Software Application Information
 		* Operating System
