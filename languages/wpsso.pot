@@ -2877,7 +2877,7 @@ msgstr ""
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
-#: lib/gettext-pro.php:139 lib/gpl/admin/meta.php:164 lib/post.php:1324
+#: lib/gettext-pro.php:139 lib/gpl/admin/meta.php:164 lib/post.php:1327
 #: lib/pro/admin/meta.php:177
 msgid "Save a draft version or publish the %s to display these options."
 msgstr ""
@@ -5790,40 +5790,40 @@ msgstr ""
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1503 lib/script.php:230
+#: lib/post.php:1506 lib/script.php:230
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1513
+#: lib/post.php:1516
 msgid "Edit"
 msgstr ""
 
-#: lib/post.php:1514
+#: lib/post.php:1517
 msgid "Edit robots"
-msgstr ""
-
-#: lib/post.php:1525
-msgctxt "option label"
-msgid "No index"
-msgstr ""
-
-#: lib/post.php:1526
-msgctxt "option label"
-msgid "No follow"
-msgstr ""
-
-#: lib/post.php:1527
-msgctxt "option label"
-msgid "No archive"
 msgstr ""
 
 #: lib/post.php:1528
 msgctxt "option label"
+msgid "No index"
+msgstr ""
+
+#: lib/post.php:1529
+msgctxt "option label"
+msgid "No follow"
+msgstr ""
+
+#: lib/post.php:1530
+msgctxt "option label"
+msgid "No archive"
+msgstr ""
+
+#: lib/post.php:1531
+msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1602
+#: lib/post.php:1605
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -6354,7 +6354,7 @@ msgid ""
 "for term ID %2$d in taxonomy %3$s (%4$s)."
 msgstr ""
 
-#: lib/term.php:629
+#: lib/term.php:632
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -6395,23 +6395,23 @@ msgid ""
 "authored by user ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/user.php:685
+#: lib/user.php:688
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:768
+#: lib/user.php:771
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:769
+#: lib/user.php:772
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:770
+#: lib/user.php:773
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1233
+#: lib/user.php:1236
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 

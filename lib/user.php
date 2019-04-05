@@ -591,14 +591,17 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				'layout' => 'vertical',
 			);
 
+			$container_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
 			$metabox_html = $this->p->util->get_metabox_tabbed( $metabox_id, $tabs, $table_rows, $tabbed_args );
+			$metabox_html = "\n" . '<div id="' . $container_id . '">' . $metabox_html . '</div><!-- #'. $container_id . ' -->' . "\n";
 
 			if ( $doing_ajax ) {
-				$metabox_html .= '<script type="text/javascript">sucomInitTooltips();</script>' . "\n";
+				$metabox_html .= '<script type="text/javascript">
+					sucomInitTooltips();
+					jQuery( "#' . $container_id . ' input.colorpicker" ).wpColorPicker();
+					jQuery( "#' . $container_id . ' input.datepicker" ).datepicker( { dateFormat:"yy-mm-dd" } );
+				</script>' . "\n";
 			}
-
-			$container_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
-			$metabox_html = "\n" . '<div id="' . $container_id . '">' . $metabox_html . '</div><!-- #'. $container_id . ' -->' . "\n";
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( $metabox_id . ' table rows' );	// End timer.
