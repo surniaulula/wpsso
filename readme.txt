@@ -425,7 +425,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.27.0-rc.1 (2019/04/06)**
+**Version 4.27.0 (2019/04/06)**
 
 * *New Features*
 	* None.
@@ -585,11 +585,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.27.0-rc.1 =
+= 4.27.0 =
 
 (2019/04/06) Fixed 'wp-editor' and 'wp-edit-post' block editor dependencies for the 'block-editor-admin.js' script. Added new WpssoSchema methods for the WPSSO JSON Pro add-on.
-
-= 4.26.0 =
-
-(2019/03/31) Added product reviews from the Yotpo Social Reviews for WooCommerce API for the WPSSO JSON Pro add-on (Pro version).
 
