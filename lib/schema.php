@@ -2540,7 +2540,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
 
-			return self::get_mod_date_iso( $md_opts, $md_pre );
+			return self::get_opts_date_iso( $md_opts, $md_pre );
 		}
 
 		public static function get_opts_date_iso( array $opts, $md_pre ) {
