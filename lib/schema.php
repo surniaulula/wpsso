@@ -2497,7 +2497,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Create and add ISO formatted date options.
+		 * Add ISO formatted date options to the options array (passed by reference).
 		 *
 		 * $opts_md_pre = array( 
 		 *	'event_start_date'        => 'schema_event_start',        // Prefix for date, time, timezone, iso.
