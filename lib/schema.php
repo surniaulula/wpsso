@@ -2516,7 +2516,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			foreach ( $opts_md_pre as $opt_pre => $md_pre ) {
 
-				$date_iso = self::get_mod_opts_date_iso( $mod, $md_pre );
+				$date_iso = self::get_mod_date_iso( $mod, $md_pre );
 
 				if ( ! is_array( $opts ) ) {	// Just in case.
 					$opts = array();
