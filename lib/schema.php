@@ -3236,7 +3236,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Since WPSSO Core v4.27.0.
+		 * Since WPSSO Core v4.27.1.
 		 */
 		public static function add_aggregate_offer_data( &$json_data, array $mod, array $mt_offers ) {
 
@@ -3353,7 +3353,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Since WPSSO Core v4.27.0.
+		 * Since WPSSO Core v4.27.1.
 		 */
 		public static function get_single_offer_data( array $mod, array $mt_offer ) {
 
