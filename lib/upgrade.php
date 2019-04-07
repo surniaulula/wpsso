@@ -216,6 +216,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				631 => array(
 					'tc_type_post' => 'tc_type_singular',
 				),
+				640 => array(
+					'add_meta_property_product:sku' => '',
+				),
 			),
 			'wpssoorg' => array(	// WPSSO ORG add-on.
 				2 => array(

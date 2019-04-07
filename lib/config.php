@@ -18,7 +18,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'      => '4.27.1',	// Plugin version.
-					'opt_version'  => '640',	// Increment when changing default option values.
+					'opt_version'  => '641',	// Increment when changing default option values.
 					'short'        => 'WPSSO Core',	// Short plugin name.
 					'name'         => 'WPSSO Core [Main Plugin]',
 					'desc'         => 'WPSSO Core makes sure your content looks great on all social and search sites - no matter how URLs are crawled, shared, re-shared, posted, or embedded!',
@@ -998,7 +998,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_product:purchase_limit'                 => 1,
 					'add_meta_property_product:retailer'                       => 1,
 					'add_meta_property_product:retailer_category'              => 1,
-					'add_meta_property_product:retailer_item_id'               => 1,
+					'add_meta_property_product:retailer_item_id'               => 0,
 					'add_meta_property_product:retailer_part_no'               => 1,
 					'add_meta_property_product:retailer_title'                 => 1,
 					'add_meta_property_product:sale_price:amount'              => 1,
@@ -2180,7 +2180,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:shipping_weight:value'   => '',
 						'product:shipping_weight:units'   => '',
 						'product:size'                    => 'product_size',
-						'product:sku'                     => 'product_sku',
+						'product:sku'                     => 'product_sku',	// Non-standard / internal meta tag.
 						'product:target_gender'           => 'product_target_gender',
 						'product:upc'                     => '',
 						'product:weight:value'            => '',

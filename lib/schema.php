@@ -3372,7 +3372,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'description'     => 'product:description',
 				'category'        => 'product:category',
 				'mpn'             => 'product:mfr_part_no',
-				'sku'             => 'product:sku',
+				'sku'             => 'product:sku',	// Non-standard / internal meta tag.
 				'gtin8'           => 'product:gtin8',
 				'gtin12'          => 'product:gtin12',
 				'gtin13'          => 'product:gtin13',
