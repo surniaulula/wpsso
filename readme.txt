@@ -425,6 +425,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.27.2-dev.1 (2019/04/08)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* Improved the SSO metabox tab layout to better accompany the WooCommere tab layout.
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* None.
+
 **Version 4.27.1 (2019/04/06)**
 
 * *New Features*
@@ -456,6 +467,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* product:quantity:unit_text
 
 == Upgrade Notice ==
+
+= 4.27.2-dev.1 =
+
+(2019/04/08) Improved the SSO metabox tab layout to better accompany the WooCommere tab layout.
 
 = 4.27.1 =
 
