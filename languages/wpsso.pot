@@ -1087,23 +1087,23 @@ msgstr ""
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: lib/com/notice.php:158 lib/gettext-com.php:25
+#: lib/com/notice.php:159 lib/gettext-com.php:25
 msgid "Forever"
 msgstr ""
 
-#: lib/com/notice.php:160 lib/gettext-com.php:26
+#: lib/com/notice.php:161 lib/gettext-com.php:26
 msgid "This notice can be dismissed permanently."
 msgstr ""
 
-#: lib/com/notice.php:171 lib/gettext-com.php:27
+#: lib/com/notice.php:172 lib/gettext-com.php:27
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:360 lib/gettext-com.php:28
+#: lib/com/notice.php:361 lib/gettext-com.php:28
 msgid "edit"
 msgstr ""
 
-#: lib/com/notice.php:362 lib/gettext-com.php:29
+#: lib/com/notice.php:363 lib/gettext-com.php:29
 msgid "Reference: %s"
 msgstr ""
 

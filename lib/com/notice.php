@@ -93,6 +93,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		private function add_actions() {
+
 			if ( is_admin() ) {
 				add_action( 'wp_ajax_' . $this->lca . '_dismiss_notice', array( $this, 'ajax_dismiss_notice' ) );
 				add_action( 'wp_ajax_' . $this->lca . '_get_notices_json', array( $this, 'ajax_get_notices_json' ) );
@@ -627,6 +628,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		public function admin_footer_script() {
+
 			echo $this->get_notice_script();
 		}
 
@@ -1424,6 +1426,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		private function get_notice_script() {
+
 			return '
 <script type="text/javascript">
 
