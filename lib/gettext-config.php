@@ -44,6 +44,7 @@ _x( 'rich pin', 'search term', 'wpsso' );
 _x( 'schema', 'search term', 'wpsso' );
 _x( 'seo', 'search term', 'wpsso' );
 _x( 'sharing', 'search term', 'wpsso' );
+_x( 'snippet', 'search term', 'wpsso' );
 _x( 'social', 'search term', 'wpsso' );
 _x( 'twitter', 'search term', 'wpsso' );
 _x( 'woocommerce', 'search term', 'wpsso' );

@@ -34,6 +34,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'schema',
 						'seo',
 						'sharing',
+						'snippet',
 						'social',
 						'twitter',
 						'woocommerce',
