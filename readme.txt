@@ -448,6 +448,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added new WpssoSchema methods for the WPSSO JSON Pro add-on:
 		* add_aggregate_offer_data();
 		* get_single_offer_data();
+	* Renamed the 'img' config array key to 'assets'.
+	* Added a 'search_terms' config array key.
 
 **Version 4.26.0 (2019/03/31)**
 
