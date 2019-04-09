@@ -47,15 +47,15 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			 */
 			wp_register_style( 'jquery-ui.js',
 				'https://ajax.googleapis.com/ajax/libs/jqueryui/' . 
-					$this->p->cf['jquery-ui'][ 'version' ] . '/themes/smoothness/jquery-ui.css',
-						array(), $this->p->cf['jquery-ui'][ 'version' ] );
+					$this->p->cf[ 'jquery-ui' ][ 'version' ] . '/themes/smoothness/jquery-ui.css',
+						array(), $this->p->cf[ 'jquery-ui' ][ 'version' ] );
 
 			/**
 			 * See http://qtip2.com/download.
 			 */
 			wp_register_style( 'jquery-qtip.js',
 				WPSSO_URLPATH . 'css/ext/jquery-qtip.' . $css_file_ext,
-					array(), $this->p->cf['jquery-qtip'][ 'version' ] );
+					array(), $this->p->cf[ 'jquery-qtip' ][ 'version' ] );
 
 			wp_register_style( 'sucom-settings-table',
 				WPSSO_URLPATH . 'css/com/settings-table.' . $css_file_ext,
@@ -176,22 +176,22 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			 */
 			$custom_style_css .= '
 				#poststuff #side-info-column .postbox {
-					border:1px solid ' . $this->p->cf['notice']['update-nag']['border-color'] . ';
+					border:1px solid ' . $this->p->cf[ 'notice' ][ 'update-nag' ][ 'border-color' ] . ';
 				}
 				#poststuff #side-info-column .postbox h2 {
-					border-bottom:1px dotted ' . $this->p->cf['notice']['update-nag']['border-color'] . ';
+					border-bottom:1px dotted ' . $this->p->cf[ 'notice' ][ 'update-nag' ][ 'border-color' ] . ';
 				}
 				#poststuff #side-info-column .postbox.closed h2 {
-					border-bottom:1px solid ' . $this->p->cf['notice']['update-nag']['border-color'] . ';
+					border-bottom:1px solid ' . $this->p->cf[ 'notice' ][ 'update-nag' ][ 'border-color' ] . ';
 				}
 				#poststuff #side-info-column .postbox.closed {
 					border-bottom:none;
 				}
 				#poststuff #side-info-column .postbox .inside td.blank,
 				#poststuff .dashboard_col .postbox .inside td.blank {
-					color:' . $this->p->cf['notice']['update-nag']['color'] . ';
-					border-color:' . $this->p->cf['notice']['update-nag']['border-color'] . ';
-					background-color:' . $this->p->cf['notice']['update-nag']['background-color'] . ';
+					color:' . $this->p->cf[ 'notice' ][ 'update-nag' ][ 'color' ] . ';
+					border-color:' . $this->p->cf[ 'notice' ][ 'update-nag' ][ 'border-color' ] . ';
+					background-color:' . $this->p->cf[ 'notice' ][ 'update-nag' ][ 'background-color' ] . ';
 				}
 			';
 
@@ -259,9 +259,9 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			}
 
 			$sort_cols  = WpssoWpMeta::get_sortable_columns();
-			$metabox_id = $this->p->cf['meta'][ 'id' ];
-			$menu       = $this->p->lca . '-' . key( $this->p->cf[ '*' ][ 'lib' ]['submenu'] );
-			$sitemenu   = $this->p->lca . '-' . key( $this->p->cf[ '*' ][ 'lib' ]['sitesubmenu'] );
+			$metabox_id = $this->p->cf[ 'meta' ][ 'id' ];
+			$menu       = $this->p->lca . '-' . key( $this->p->cf[ '*' ][ 'lib' ][ 'submenu' ] );
+			$sitemenu   = $this->p->lca . '-' . key( $this->p->cf[ '*' ][ 'lib' ][ 'sitesubmenu' ] );
 
 			$custom_style_css = '
 				@font-face {
@@ -288,7 +288,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					display:none;
 				}
 				#wpadminbar #wp-toolbar #' . $this->p->lca . '-toolbar-notices-icon.ab-icon::before { 
-					content:"' . $this->p->cf['menu']['before'] . '";
+					content:"' . $this->p->cf[ 'menu' ][ 'before' ] . '";
 					font-size:28px;
 					font-style:normal;
 					top:1px;
@@ -297,7 +297,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				#adminmenu li.menu-top.toplevel_page_' . $sitemenu . ' div.wp-menu-image::before,
 				#adminmenu li.menu-top.toplevel_page_' . $menu . ':hover div.wp-menu-image::before,
 				#adminmenu li.menu-top.toplevel_page_' . $sitemenu . ':hover div.wp-menu-image::before {
-					content:"' . $this->p->cf['menu']['before'] . '";
+					content:"' . $this->p->cf[ 'menu' ][ 'before' ] . '";
 					font-size:30px;
 					font-style:normal;
 					display:inline;
@@ -500,23 +500,23 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				        width:10%;
 				}
 				.column-' . $this->p->lca . '_schema_type {
-					max-width:' . $sort_cols['schema_type']['width'] . ' !important;
+					max-width:' . $sort_cols[ 'schema_type' ][ 'width' ] . ' !important;
 					white-space:nowrap;
 					overflow:hidden;
 				}
 				.column-' . $this->p->lca . '_og_type {
-					max-width:' . $sort_cols['og_type']['width'] . ' !important;
+					max-width:' . $sort_cols[ 'og_type' ][ 'width' ] . ' !important;
 					white-space:nowrap;
 					overflow:hidden;
 				}
 				.column-' . $this->p->lca . '_og_img { 
-					max-width:' . $sort_cols['og_img']['width'] . ' !important;
+					max-width:' . $sort_cols[ 'og_img' ][ 'width' ] . ' !important;
 				}
 				.column-' . $this->p->lca . '_og_img .preview_img { 
-					max-width:' . $sort_cols['og_img']['width'] . ' !important;
-					height:' . $sort_cols['og_img']['height'] . ';
-					min-height:' . $sort_cols['og_img']['height'] . ';
-					background-size:' . $sort_cols['og_img']['width'] . ' auto;
+					max-width:' . $sort_cols[ 'og_img' ][ 'width' ] . ' !important;
+					height:' . $sort_cols[ 'og_img' ][ 'height' ] . ';
+					min-height:' . $sort_cols[ 'og_img' ][ 'height' ] . ';
+					background-size:' . $sort_cols[ 'og_img' ][ 'width' ] . ' auto;
 					background-repeat:no-repeat;
 					background-position:center center;
 					overflow:hidden;
@@ -543,12 +543,12 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			';
 
 			foreach ( $sort_cols as $col_name => $col_info ) {
-				if ( isset( $col_info['width'] ) ) {
+				if ( isset( $col_info[ 'width' ] ) ) {
 					$custom_style_css .= '
 						table.wp-list-table > thead > tr > th.column-' . $this->p->lca . '_' . $col_name . ',
 						table.wp-list-table > tbody > tr > td.column-' . $this->p->lca . '_' . $col_name . ' {
-							width:' . $col_info['width'] . ' !important;
-							min-width:' . $col_info['width'] . ' !important;
+							width:' . $col_info[ 'width' ] . ' !important;
+							min-width:' . $col_info[ 'width' ] . ' !important;
 						}
 					';
 				}
@@ -583,14 +583,14 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 				$ext = $this->p->cf[ '*' ][ 'slug' ][$plugin_slug];
 
-				if ( ! empty( $this->p->cf[ 'plugin' ][$ext][ 'assets' ]['banners'] ) ) {
+				if ( ! empty( $this->p->cf[ 'plugin' ][$ext][ 'assets' ][ 'banners' ] ) ) {
 
-					$banners = $this->p->cf[ 'plugin' ][$ext][ 'assets' ]['banners'];
+					$banners = $this->p->cf[ 'plugin' ][$ext][ 'assets' ][ 'banners' ];
 
-					if ( ! empty( $banners['low'] ) || ! empty( $banners['high'] ) ) {	// Must have at least one banner.
+					if ( ! empty( $banners[ 'low' ] ) || ! empty( $banners[ 'high' ] ) ) {	// Must have at least one banner.
 
-						$low  = empty( $banners['low'] ) ? $banners['high'] : $banners['low'];
-						$high = empty( $banners['high'] ) ? $banners['low'] : $banners['high'];
+						$low  = empty( $banners[ 'low' ] ) ? $banners[ 'high' ] : $banners[ 'low' ];
+						$high = empty( $banners[ 'high' ] ) ? $banners[ 'low' ] : $banners[ 'high' ];
 					
 						echo '<style type="text/css">' . "\n";
 						echo '#plugin-information #plugin-information-title.with-banner { '.
