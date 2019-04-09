@@ -85,16 +85,16 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			if ( $this->text_domain ) {	// Just in case.
 
-				$value_transl = _x( $value, 'option value', $this->text_domain );	// lca or ext text domain
+				$value_transl = _x( $value, 'option value', $this->text_domain );	// Lca or ext text domain.
 
 				if ( $value === $value_transl && $this->text_domain !== $this->def_text_domain ) {
-					$value_transl = _x( $value, 'option value', $this->def_text_domain );	// lca text domain
+					$value_transl = _x( $value, 'option value', $this->def_text_domain );	// Lca text domain.
 				}
 
 				return $value_transl;
 
 			} elseif ( $this->def_text_domain ) {
-				return _x( $value, 'option value', $this->def_text_domain );	// lca text domain
+				return _x( $value, 'option value', $this->def_text_domain );	// Lca text domain.
 			}
 
 			return $value;
@@ -1002,7 +1002,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				foreach ( array( 'crop_x', 'crop_y' ) as $key ) {
 					$crop_area_select .= ' ' . $this->get_select( $name . '_' . $key, $this->p->cf[ 'form' ][ 'position_' . $key ],
-						$css_class = 'medium', $css_id = '', $is_assoc = true, $disabled );
+						$css_class = 'crop_area', $css_id = '', $is_assoc = true, $disabled );
 				}
 
 				$crop_area_select .= '</div>';
