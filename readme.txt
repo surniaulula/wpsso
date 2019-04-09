@@ -6,7 +6,7 @@ Domain Path: /languages
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
-Tags: open graph, pinterest rich pins, twitter cards, google rich cards, schema.org, seo, woocommerce, facebook, twitter, google, pinterest, twitter, linkedin, google merchant, social media, social sharing, meta tags
+Tags: social, open graph, pinterest rich pins, twitter cards, google rich cards, schema.org, seo, woocommerce, facebook, twitter, google, pinterest, twitter, linkedin, social media, social sharing, meta tags
 Contributors: jsmoriss
 Requires At Least: 3.8
 Tested Up To: 5.1.1
@@ -425,7 +425,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.27.2-dev.2 (2019/04/09)**
+**Version 4.27.2 (2019/04/09)**
 
 * *New Features*
 	* None.
@@ -468,7 +468,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.27.2-dev.2 =
+= 4.27.2 =
 
 (2019/04/09) Improved the settings page and SSO metabox CSS for mobile devices. Fix to prevent WordPress from moving notices out of the toolbar on WooCommerce product pages.
 
