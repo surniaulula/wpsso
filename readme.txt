@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires At Least: 3.8
 Tested Up To: 5.1.1
 WC Tested Up To: 3.5
-Stable Tag: 4.27.1
+Stable Tag: 4.27.2
 
 WPSSO Core makes sure your content looks great on all social and search sites, no matter how URLs are crawled, shared, re-shared, posted or embedded!
 
@@ -471,8 +471,4 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 4.27.2 =
 
 (2019/04/09) Improved the settings page and SSO metabox CSS for mobile devices. Fix to prevent WordPress from moving notices out of the toolbar on WooCommerce product pages.
-
-= 4.27.1 =
-
-(2019/04/06) Fixed 'wp-editor' and 'wp-edit-post' block editor dependencies for the 'block-editor-admin.js' script. Added new WpssoSchema methods for the WPSSO JSON Pro add-on.
 
