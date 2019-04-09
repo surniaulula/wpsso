@@ -306,7 +306,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				}
 				#adminmenu #toplevel_page_' . $menu . ' ul > li > a,
 				#adminmenu #toplevel_page_' . $sitemenu . ' ul > li > a {
-					padding:6px 8px;	/* default is 6px 12px */
+					padding:6px 8px;	/* Default is 6px 12px. */
 				}
 				#adminmenu ul.wp-submenu div.' . $this->p->lca . '-menu-item {
 					display:table-cell;
@@ -319,7 +319,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					font-size:1.2em;
 					text-align:left;
 					opacity:0.5;
-					filter:alpha(opacity=50);	/* ie8 and earlier */
+					filter:alpha(opacity=50);	/* IE8 and earlier. */
 				}
 				#adminmenu ul.wp-submenu div.' . $this->p->lca . '-menu-item.menu-item-label {
 					width:100%;
@@ -331,8 +331,8 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				#profile-page.wrap #your-profile #' . $this->p->lca . '_' . $metabox_id . '.postbox h3:first-of-type {
 					margin:0;
 				}
-				#' . $this->p->lca . '_' . $metabox_id . '.postbox { 
-					min-width:760px;
+				#' . $this->p->lca . '_' . $metabox_id . '.postbox {
+					min-width:455px;	/* The default WordPress postbox minimum width is 255px. */
 				}
 				#' . $this->p->lca . '_' . $metabox_id . ' .inside {
 					padding:0;
@@ -344,7 +344,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					vertical-align:top;
 				}
 				.' . $this->p->lca . '-rate-heart::before {
-					content:"\2665";	/* heart */
+					content:"\2665";	/* Heart. */
 				}
 				#post-' . $this->p->lca . '-robots {
 					display:table;
@@ -381,7 +381,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				''              => 'plugin_col_def_width',
 			) as $css_class => $opt_key ) {
 
-				$custom_style_css .= "@media (min-width: 783px) {\n";
+				$custom_style_css .= "@media ( min-width:783px ) {\n";
 
 				switch ( $css_class ) {
 
@@ -445,11 +445,11 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				table.wp-list-table > tbody > tr > td.column-description {
 					width:20%;
 				}
-				table.wp-list-table.plugins > thead > tr > th.column-description,	/* Plugins table */
+				table.wp-list-table.plugins > thead > tr > th.column-description,	/* Plugins table. */
 				table.wp-list-table.plugins > tbody > tr > td.column-description {
 					width:75%;
 				}
-				table.wp-list-table.users > thead > tr > th,	/* Users table */
+				table.wp-list-table.users > thead > tr > th,	/* Users table. */
 				table.wp-list-table.users > tbody > tr > td {
 					width:15%;
 				}
@@ -465,7 +465,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				table.wp-list-table > tbody > tr > td.column-expirationdate {
 					width:7em;
 				}
-				table.wp-list-table > thead > tr > th.column-seotitle,	/* All In One SEO */
+				table.wp-list-table > thead > tr > th.column-seotitle,	/* All In One SEO. */
 				table.wp-list-table > tbody > tr > td.column-seotitle,
 				table.wp-list-table > thead > tr > th.column-seodesc,
 				table.wp-list-table > tbody > tr > td.column-seodesc {
@@ -475,7 +475,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				table.wp-list-table > tbody > tr > td.column-term-id {
 					width:40px;
 				}
-				table.wp-list-table > thead > tr > th.column-wpseo-links,	/* Yoast SEO */
+				table.wp-list-table > thead > tr > th.column-wpseo-links,	/* Yoast SEO. */
 				table.wp-list-table > tbody > tr > td.column-wpseo-links,
 				table.wp-list-table > thead > tr > th.column-wpseo-linked,
 				table.wp-list-table > tbody > tr > td.column-wpseo-linked,
@@ -485,13 +485,13 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				table.wp-list-table > tbody > tr > td.column-wpseo-score-readability {
 					width:40px;
 				}
-				table.wp-list-table > thead > tr > th.column-wpseo-title,	/* Yoast SEO */
+				table.wp-list-table > thead > tr > th.column-wpseo-title,	/* Yoast SEO. */
 				table.wp-list-table > tbody > tr > td.column-wpseo-title,
 				table.wp-list-table > thead > tr > th.column-wpseo-metadesc,
 				table.wp-list-table > tbody > tr > td.column-wpseo-metadesc {
 					width:15%;
 				}
-				table.wp-list-table > thead > tr > th.column-wpseo-focuskw,	/* Yoast SEO */
+				table.wp-list-table > thead > tr > th.column-wpseo-focuskw,	/* Yoast SEO. */
 				table.wp-list-table > tbody > tr > td.column-wpseo-focuskw {
 					width:10%;
 				}
@@ -605,7 +605,9 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			echo '
 				<style type="text/css">
-					/* Hide the plugin name overlay */
+					/**
+					 * Hide the plugin name overlay.
+					 */
 					body#plugin-information div#plugin-information-title.with-banner h2 {
 						display:none;
 					}

@@ -290,6 +290,15 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 				if ( typeof wpssoUpdateToolbar !== "function" ) {
 
+					/**
+					 * Make sure to run this script last, so WordPress does not move notices out of the toolbar.
+					 */
+					jQuery( document ).ready( function() {
+						jQuery( window ).load( function() {
+							wpssoUpdateToolbar();
+						});
+					});
+
 					function wpssoUpdateToolbar( updateNoticeHtml ) {
 
 						updateNoticeHtml = typeof updateNoticeHtml !== 'undefined' ? updateNoticeHtml : true;
@@ -360,8 +369,6 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 							}
 						} );
 					}
-
-					jQuery( document ).ready( wpssoUpdateToolbar() );
 				}
 			</script>
 			<?php
