@@ -425,14 +425,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.27.2-dev.1 (2019/04/08)**
+**Version 4.27.2-dev.2 (2019/04/08)**
 
 * *New Features*
 	* None.
 * *Improvements*
-	* Improved the SSO metabox tab layout to better accompany the WooCommere tab layout.
+	* Improved the settings page and SSO metabox CSS for mobile devices (ie. tab icon sizes, tab text shown/hidden, vertical tab width, and minimum metabox width).
 * *Bugfixes*
-	* None.
+	* Fix to prevent WordPress from moving notices out of the toolbar on WooCommerce product pages.
 * *Developer Notes*
 	* None.
 
@@ -468,9 +468,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.27.2-dev.1 =
+= 4.27.2-dev.2 =
 
-(2019/04/08) Improved the SSO metabox tab layout to better accompany the WooCommere tab layout.
+(2019/04/08) Improved the settings page and SSO metabox CSS for mobile devices. Fix to prevent WordPress from moving notices out of the toolbar on WooCommerce product pages.
 
 = 4.27.1 =
 
