@@ -73,7 +73,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				/**
 				 * Addons and license settings page.
 				 */
-				case ( preg_match( '/_page_' . $this->p->lca . '-(site)?(addons|licenses)/', $hook_name ) ? true : false ):
+				case ( preg_match( '/_page_' . $this->p->lca . '-.*(addons|licenses)/', $hook_name ) ? true : false ):
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing styles for addons and licenses page' );

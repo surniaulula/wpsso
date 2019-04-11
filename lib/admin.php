@@ -155,15 +155,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$this->set_plugin_pkg_info();
 
+			/**
+			 * Use the default single site setting pages.
+			 */
 			if ( empty( $menu_libs ) ) {
-
-				/**
-				 * Note that 'setting' MUST follow 'submenu' to extend submenu/advanced.php.
-				 */
-				$menu_libs = array( 'submenu', 'setting', 'profile' );
+				$menu_libs = array( 'plugin', 'profile', 'setting', 'submenu' );
 			}
 
-			foreach ( $menu_libs as $menu_lib ) {	// profile, setting, submenu, or sitesubmenu
+			foreach ( $menu_libs as $menu_lib ) {
 
 				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
@@ -232,7 +231,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		/**
 		 * Add a new main menu, and its sub-menu items.
 		 *
-		 * $menu_lib = profile | setting | submenu | sitesubmenu
+		 * $menu_lib = 'plugins' | 'profile' | 'setting' | 'submenu' | 'sitesubmenu'
 		 */
 		public function add_admin_menus( $menu_lib = '' ) {
 
@@ -343,12 +342,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 */
 		public function add_admin_submenus() {
 
-			foreach ( array( 'profile', 'setting' ) as $menu_lib ) {
+			foreach ( array( 'plugin', 'profile', 'setting' ) as $menu_lib ) {
 
 				/**
 				 * Match WordPress behavior (users page for admins, profile page for everyone else).
 				 */
-				if ( $menu_lib === 'profile' && current_user_can( 'list_users' ) ) {
+				if ( 'profile' === $menu_lib && current_user_can( 'list_users' ) ) {
 					$parent_slug = $this->p->cf[ 'wp' ][ 'admin' ][ 'users' ][ 'page' ];
 				} else {
 					$parent_slug = $this->p->cf[ 'wp' ][ 'admin' ][ $menu_lib ][ 'page' ];
@@ -1281,57 +1280,68 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$menu_hookname = SucomUtil::sanitize_hookname( $this->menu_id );
 
-			if ( $this->menu_lib === 'profile' ) {
+			switch ( $this->menu_lib ) {
 
-				$user_id       = get_current_user_id();
-				$user_obj      = get_user_to_edit( $user_id );
-				$admin_color   = get_user_option( 'admin_color', $user_id );
+				case 'profile':
+	
+					$user_id       = get_current_user_id();
+					$user_obj      = get_user_to_edit( $user_id );
+					$admin_color   = get_user_option( 'admin_color', $user_id );
+	
+					if ( empty( $admin_color ) ) {
+						$admin_color = 'fresh';
+					}
 
-				if ( empty( $admin_color ) ) {
-					$admin_color = 'fresh';
-				}
+					/**
+					 * Match WordPress behavior (users page for admins, profile page for everyone else).
+					 */
+					$referer_admin_url = current_user_can( 'list_users' ) ?
+						$this->p->util->get_admin_url( $this->menu_id, null, 'users' ) :
+						$this->p->util->get_admin_url( $this->menu_id, null, $this->menu_lib );
+	
+					echo '<form name="' . $this->p->lca . '" ' .
+						'id="' . $this->p->lca . '_setting_form_' . $menu_hookname . '" ' .
+						'action="user-edit.php" method="post">' . "\n";
+	
+					echo '<input type="hidden" name="wp_http_referer" value="' . $referer_admin_url . '" />' . "\n";
+					echo '<input type="hidden" name="action" value="update" />' . "\n";
+					echo '<input type="hidden" name="user_id" value="' . $user_id . '" />' . "\n";
+					echo '<input type="hidden" name="nickname" value="' . $user_obj->nickname . '" />' . "\n";
+					echo '<input type="hidden" name="email" value="' . $user_obj->user_email . '" />' . "\n";
+					echo '<input type="hidden" name="admin_color" value="' . $admin_color . '" />' . "\n";
+					echo '<input type="hidden" name="rich_editing" value="' . $user_obj->rich_editing . '" />' . "\n";
+					echo '<input type="hidden" name="comment_shortcuts" value="' . $user_obj->comment_shortcuts . '" />' . "\n";
+					echo '<input type="hidden" name="admin_bar_front" value="' . _get_admin_bar_pref( 'front', $user_id ) . '" />' . "\n";
 
-				/**
-				 * Match WordPress behavior (users page for admins, profile page for everyone else).
-				 */
-				$referer_admin_url = current_user_can( 'list_users' ) ?
-					$this->p->util->get_admin_url( $this->menu_id, null, 'users' ) :
-					$this->p->util->get_admin_url( $this->menu_id, null, $this->menu_lib );
+					wp_nonce_field( 'update-user_' . $user_id );
 
-				echo '<form name="' . $this->p->lca . '" ' .
-					'id="' . $this->p->lca . '_setting_form_' . $menu_hookname . '" ' .
-					'action="user-edit.php" method="post">' . "\n";
+					break;
 
-				echo '<input type="hidden" name="wp_http_referer" value="' . $referer_admin_url . '" />' . "\n";
-				echo '<input type="hidden" name="action" value="update" />' . "\n";
-				echo '<input type="hidden" name="user_id" value="' . $user_id . '" />' . "\n";
-				echo '<input type="hidden" name="nickname" value="' . $user_obj->nickname . '" />' . "\n";
-				echo '<input type="hidden" name="email" value="' . $user_obj->user_email . '" />' . "\n";
-				echo '<input type="hidden" name="admin_color" value="' . $admin_color . '" />' . "\n";
-				echo '<input type="hidden" name="rich_editing" value="' . $user_obj->rich_editing . '" />' . "\n";
-				echo '<input type="hidden" name="comment_shortcuts" value="' . $user_obj->comment_shortcuts . '" />' . "\n";
-				echo '<input type="hidden" name="admin_bar_front" value="' . _get_admin_bar_pref( 'front', $user_id ) . '" />' . "\n";
+				case 'plugin':
+				case 'setting':
+				case 'submenu':
 
-				wp_nonce_field( 'update-user_' . $user_id );
+					echo '<form name="' . $this->p->lca . '" ' .
+						'id="' . $this->p->lca . '_setting_form_' . $menu_hookname . '" ' .
+						'action="options.php" method="post">' . "\n";
+	
+					settings_fields( $this->p->lca . '_setting' );
 
-			} elseif ( $this->menu_lib === 'setting' || $this->menu_lib === 'submenu' ) {
+					break;
 
-				echo '<form name="' . $this->p->lca . '" ' .
-					'id="' . $this->p->lca . '_setting_form_' . $menu_hookname . '" ' .
-					'action="options.php" method="post">' . "\n";
+				case 'sitesubmenu':
 
-				settings_fields( $this->p->lca . '_setting' );
+					echo '<form name="' . $this->p->lca . '" ' .
+						'id="' . $this->p->lca . '_setting_form_' . $menu_hookname . '" ' .
+						'action="edit.php?action=' . WPSSO_SITE_OPTIONS_NAME . '" method="post">' . "\n";
+	
+					echo '<input type="hidden" name="page" value="' . $this->menu_id . '" />' . "\n";
 
-			} elseif ( $this->menu_lib === 'sitesubmenu' ) {
+					break;
 
-				echo '<form name="' . $this->p->lca . '" ' .
-					'id="' . $this->p->lca . '_setting_form_' . $menu_hookname . '" ' .
-					'action="edit.php?action=' . WPSSO_SITE_OPTIONS_NAME . '" method="post">' . "\n";
+				default:
 
-				echo '<input type="hidden" name="page" value="' . $this->menu_id . '" />' . "\n";
-
-			} else {
-				return;
+					return;
 			}
 
 			echo "\n" . '<!-- ' . $this->p->lca . ' nonce fields -->' . "\n";

@@ -9,7 +9,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
-if ( ! class_exists( 'WpssoSettingContactfields' ) && class_exists( 'WpssoSubmenuAdvanced' ) ) {
+/**
+ * Make sure the WpssoSubmenuAdvanced class exists.
+ */
+if ( ! class_exists( 'WpssoSubmenuAdvanced' ) ) {
+	require_once WPSSO_PLUGINDIR . 'lib/submenu/advanced.php';
+}
+
+if ( ! class_exists( 'WpssoSettingContactfields' ) && class_exists( 'WpssoAdmin' ) ) {
 
 	class WpssoSettingContactfields extends WpssoSubmenuAdvanced {
 

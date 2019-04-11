@@ -67,14 +67,12 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 
 		protected function add_meta_boxes() {
 
-			$dashboard_col = 0;
-
-			$using_external_cache = wp_using_ext_object_cache();
-
 			/**
 			 * Don't include the 'cache_status' metabox if we're using an external object cache.
 			 */
-			if ( $using_external_cache ) {
+			$external_cache = wp_using_ext_object_cache();
+
+			if ( $external_cache ) {
 
 				$metabox_ids = array( 
 
@@ -111,6 +109,8 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 					'version_info' => _x( 'Version Information', 'metabox title', 'wpsso' ), 
 				);
 			}
+
+			$dashboard_col = 0;
 
 			foreach ( $metabox_ids as $metabox_id => $metabox_title ) {
 

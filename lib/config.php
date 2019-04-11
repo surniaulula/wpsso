@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'      => '4.27.2',	// Plugin version.
+					'version'      => '4.28.0-dev.1',	// Plugin version.
 					'opt_version'  => '641',	// Increment when changing default option values.
 					'short'        => 'WPSSO Core',	// Short plugin name.
 					'name'         => 'WPSSO Core [Main Plugin]',
@@ -75,6 +75,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'latest'    => '',
 					),
 					'lib' => array(
+						'plugin' => array(
+							'sso-addons' => 'SSO Add-ons',
+						),
 						'profile' => array(
 							'your-sso' => 'Your SSO',
 						),
@@ -1558,13 +1561,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'yim'    => 'Yahoo Messenger',
 				),
 				'admin' => array(
-					'users' => array(
-						'page' => 'users.php',
-						'cap'  => 'list_users',
+					'plugin' => array(
+						'page' => 'plugins.php',
+						'cap'  => 'install_plugins',
 					),
 					'profile' => array(
 						'page' => 'profile.php',
-						'cap'  => 'edit_posts',
+						'cap'  => 'publish_posts',
 					),
 					'setting' => array(
 						'page' => 'options-general.php',
@@ -1577,6 +1580,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'sitesubmenu' => array(
 						'page' => 'admin.php',
 						'cap'  => 'manage_options',
+					),
+					'users' => array(
+						'page' => 'users.php',
+						'cap'  => 'list_users',
 					),
 				),
 				'roles' => array(
@@ -3029,10 +3036,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Define fixed constants.
 			 */
 			define( 'WPSSO_FILEPATH', $plugin_filepath );						
-			define( 'WPSSO_PLUGINBASE', self::$cf[ 'plugin' ][ 'wpsso' ][ 'base' ] );			// Example: wpsso/wpsso.php.
+			define( 'WPSSO_PLUGINBASE', self::$cf[ 'plugin' ][ 'wpsso' ][ 'base' ] );		// Example: wpsso/wpsso.php.
 			define( 'WPSSO_PLUGINDIR', trailingslashit( realpath( dirname( $plugin_filepath ) ) ) );
-			define( 'WPSSO_PLUGINSLUG', self::$cf[ 'plugin' ][ 'wpsso' ][ 'slug' ] );			// Example: wpsso.
-			define( 'WPSSO_UNDEF', -1 );								// Undefined image width / height value.
+			define( 'WPSSO_PLUGINSLUG', self::$cf[ 'plugin' ][ 'wpsso' ][ 'slug' ] );		// Example: wpsso.
+			define( 'WPSSO_UNDEF', -1 );								// Default undefined image width / height value.
 			define( 'WPSSO_URLPATH', trailingslashit( plugins_url( '', $plugin_filepath ) ) );
 			define( 'WPSSO_VERSION', self::$cf[ 'plugin' ][ 'wpsso' ][ 'version' ] );						
 
