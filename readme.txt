@@ -425,6 +425,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.28.0-dev.1 (2019/04/11)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* Added a new "SSO Add-ons" settings page under the WordPress Plugins admin menu.
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* None.
+
 **Version 4.27.2 (2019/04/09)**
 
 * *New Features*
@@ -469,6 +480,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* product:quantity:unit_text
 
 == Upgrade Notice ==
+
+= 4.28.0-dev.1 =
+
+(2019/04/11) Added a new "SSO Add-ons" settings page under the WordPress Plugins admin menu.
 
 = 4.27.2 =
 
