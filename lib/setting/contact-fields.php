@@ -9,9 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
-/**
- * Make sure the WpssoSubmenuAdvanced class exists.
- */
 if ( ! class_exists( 'WpssoSubmenuAdvanced' ) ) {
 	require_once WPSSO_PLUGINDIR . 'lib/submenu/advanced.php';
 }

@@ -9,7 +9,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
-if ( ! class_exists( 'WpssoSiteSubmenuSiteSetup' ) && class_exists( 'WpssoSubmenuSetup' ) ) {
+if ( ! class_exists( 'WpssoSubmenuSetup' ) ) {
+	require_once WPSSO_PLUGINDIR . 'lib/submenu/setup.php';
+}
+
+if ( ! class_exists( 'WpssoSiteSubmenuSiteSetup' ) && class_exists( 'WpssoAdmin' ) ) {
 
 	class WpssoSiteSubmenuSiteSetup extends WpssoSubmenuSetup {
 	}

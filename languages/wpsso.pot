@@ -5982,7 +5982,7 @@ msgstr ""
 msgid "Select Image"
 msgstr ""
 
-#: lib/setting/contact-fields.php:43
+#: lib/setting/contact-fields.php:40
 msgctxt "metabox title"
 msgid "User Profile Contact Fields"
 msgstr ""
