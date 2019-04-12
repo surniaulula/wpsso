@@ -425,11 +425,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.28.0-dev.2 (2019/04/11)**
+**Version 4.28.0-b.1 (2019/04/12)**
 
 * *New Features*
 	* None.
 * *Improvements*
+	* Added a new "SSO Dashboard" settings page under the WordPress Dashboard admin menu.
 	* Added a new "SSO Add-ons" settings page under the WordPress Plugins admin menu.
 * *Bugfixes*
 	* Fixed the extra space under the metabox horizontal tab layout.
@@ -481,9 +482,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.28.0-dev.2 =
+= 4.28.0-b.1 =
 
-(2019/04/11) Added a new "SSO Add-ons" settings page under the WordPress Plugins admin menu. Fixed the extra space under the metabox horizontal tab layout.
+(2019/04/12) Added a new "SSO Add-ons" settings page under the WordPress Plugins admin menu. Fixed the extra space under the metabox horizontal tab layout.
 
 = 4.27.2 =
 
