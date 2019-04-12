@@ -543,8 +543,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$this->p->debug->log( 'getting description for og:description meta tag' );
 				}
 
-				$mt_og[ 'og:description' ] = $this->p->page->get_description( $this->p->options[ 'og_desc_max_len' ], '...', $mod,
-					$read_cache = true, $this->p->options[ 'og_desc_hashtags' ] );
+				$mt_og[ 'og:description' ] = $this->p->page->get_description( $this->p->options[ 'og_desc_max_len' ],
+					'...', $mod, $read_cache = true, $this->p->options[ 'og_desc_hashtags' ] );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'og:description value = ' . $mt_og[ 'og:description' ] );

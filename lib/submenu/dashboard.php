@@ -36,7 +36,10 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 			) );
 
 			$this->p->util->add_plugin_actions( $this, array(
-				'form_content_metaboxes_dashboard' => 1,	// Show four-column metaboxes.
+				'form_content_metaboxes_dashboard' => array(
+					'form_content_metaboxes_dashboard' => 1,
+					'form_content_metaboxes_sso_dashboard' => 1,
+				)
 			) );
 		}
 
@@ -49,6 +52,12 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 		}
 
 		public function action_form_content_metaboxes_dashboard( $pagehook ) {
+
+			/**
+			 * This settings page does not have any "normal" metaboxes, so hide that container.
+			 * Also set the container height to 0 to prevent drag-and-drop in that area, just in case.
+			 */
+			echo '<style type="text/css">div#' . $pagehook . ' div#normal-sortables { display:none; height:0; min-height:0; }</style>';
 
 			foreach ( range( 1, $this->max_cols ) as $dashboard_col ) {
 

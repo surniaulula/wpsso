@@ -1321,7 +1321,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Determine the maximum number of hashtags to return.
 			 */
-			if ( empty( $add_hashtags ) ) {	// Check for false or 0.
+			if ( empty( $add_hashtags ) ) {	// False or 0.
 
 				return '';
 

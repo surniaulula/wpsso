@@ -82,7 +82,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				}
 
 				$mt_tc[ 'twitter:description' ] = $this->p->page->get_description( $this->p->options[ 'tc_desc_max_len' ], 
-					'...', $mod, true, true, true, 'tc_desc' );	// $add_hashtags is true.
+					'...', $mod, $read_cache = true, $this->p->options[ 'og_desc_hashtags' ], $do_encode = true, $md_key = 'tc_desc' );
 			}
 
 			if ( ! isset( $mt_tc[ 'twitter:creator' ] ) ) {

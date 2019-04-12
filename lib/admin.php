@@ -1355,7 +1355,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			do_meta_boxes( $this->pagehook, $context = 'normal', $object = null );
 
-			do_action( $this->p->lca . '_form_content_metaboxes_' . $menu_hookname, $this->pagehook );
+			$action_name = $this->p->lca . '_form_content_metaboxes_' . $menu_hookname;
+
+			do_action( $action_name, $this->pagehook );
 
 			if ( $this->menu_lib === 'profile' ) {
 				echo $this->get_form_buttons( _x( 'Save All Profile Settings', 'submit button', 'wpsso' ) );
@@ -1501,6 +1503,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					}
 				}
 
+				echo '<tr>' . "\n";
 				echo '<th class="cache-label">' . $cache_label_transl . ':</th>';
 				echo '<td class="cache-count">' . $cache_count . '</td>';
 				echo '<td class="cache-expiration">' . $cache_exp_html . '</td>';
