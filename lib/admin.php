@@ -1582,13 +1582,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( apply_filters( $this->p->lca . '_newer_version_available',
 						$newer_avail, $ext, $installed_version, $stable_version, $latest_version ) ) {
 
-						$installed_style = 'style="background-color:#f00;"';	// red
+						$installed_style = 'style="background-color:#f00;"';	// Red background.
 
-					} elseif ( preg_match( '/[a-z]/', $installed_version ) ) {	// current but not stable (alpha chars in version)
+					} elseif ( preg_match( '/[a-z]/', $installed_version ) ) {	// Current but not stable (alpha chars in version).
 
-						$installed_style = 'style="background-color:#ff0;"';	// yellow
+						$installed_style = 'style="background-color:#ff0;"';	// Yellow background.
 					} else {
-						$installed_style = 'style="background-color:#0f0;"';	// green
+						$installed_style = 'style="background-color:#0f0;"';	// Green background.
 					}
 				}
 
@@ -1603,11 +1603,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				echo '<tr><th class="version-label">' . _x( 'Latest', 'option label', 'wpsso' ) . ':</th>
 					<td class="version-number">' . $latest_version . '</td></tr>';
 
-				echo '<tr><td colspan="' . $table_cols . '" class="latest-notice">' .
-					( empty( $latest_notice ) ? '' : '<p><em><strong>Version ' .
-						$latest_version . '</strong> ' . $latest_notice . '</em></p>' ).
-					'<p><a href="' . $changelog_url . '">' . sprintf( __( 'View %s changelog...',
-						'wpsso' ), $info[ 'short' ] ) . '</a></p></td></tr>';
+				/**
+				 * Only show the latest version notice message if there's a newer / non-matching version.
+				 */
+				if ( $installed_version !== $stable_version || $installed_version !== $latest_version ) {
+
+					echo '<tr><td colspan="' . $table_cols . '" class="latest-notice">' .
+						( empty( $latest_notice ) ? '' : '<p><em><strong>Version ' .
+							$latest_version . '</strong> ' . $latest_notice . '</em></p>' ).
+						'<p><a href="' . $changelog_url . '">' . sprintf( __( 'View %s changelog...',
+							'wpsso' ), $info[ 'short' ] ) . '</a></p></td></tr>';
+				}
 			}
 
 			do_action( $this->p->lca . '_column_metabox_version_info_table_rows', $table_cols, $this->form );
