@@ -3363,13 +3363,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$class_icon_key = $class_link . ' ' . $class_link . $metabox_id . ' ' . $class_link . '-icon ' . $class_link . '-href_' . $tab;
 				$class_link_key = $class_link . ' ' . $class_link . $metabox_id . ' ' . $class_link . '-text ' . $class_link . '-href_' . $tab;
 
-				$metabox_html .= '<div class="tab_space' . ( $tab_num === 1 ? ' first_tab' : '' ) . '">&nbsp;</div>';
+				$metabox_html .= '<li class="tab_space' . ( $tab_num === 1 ? ' start_tabs' : '' ) . '"></li>';
 				$metabox_html .= '<li class="' . $class_href_key . '">';
 				$metabox_html .= '<a class="' . $class_icon_key . '" href="#' . $class_href_key . '"></a>';
 				$metabox_html .= '<a class="' . $class_link_key . '" href="#' . $class_href_key . '">' . $title . '</a>';
 				$metabox_html .= '</li>';	// Do not add a newline.
 			}
 
+			$metabox_html .= '<li class="tab_space end_tabs"></li>';
 			$metabox_html .= '</ul><!-- .' . $class_metabox_tabs . ' -->' . "\n";
 
 			/**

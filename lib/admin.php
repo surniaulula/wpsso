@@ -141,9 +141,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
-			 * Some network menu pages extend the site menu pages.
-			 */
 			$this->load_menu_objects( array( 'submenu', 'sitesubmenu' ) );
 		}
 
@@ -155,11 +152,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$this->set_plugin_pkg_info();
 
-			/**
-			 * Use the default single site setting pages.
-			 */
 			if ( empty( $menu_libs ) ) {
-				$menu_libs = array( 'plugin', 'profile', 'setting', 'submenu' );
+				$menu_libs = array( 'dashboard', 'plugin', 'profile', 'setting', 'submenu' );
 			}
 
 			foreach ( $menu_libs as $menu_lib ) {
@@ -231,7 +225,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		/**
 		 * Add a new main menu, and its sub-menu items.
 		 *
-		 * $menu_lib = 'plugins' | 'profile' | 'setting' | 'submenu' | 'sitesubmenu'
+		 * $menu_lib = 'dashboard' | 'plugins' | 'profile' | 'setting' | 'submenu' | 'sitesubmenu'
 		 */
 		public function add_admin_menus( $menu_lib = '' ) {
 
@@ -239,7 +233,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( empty( $menu_lib ) ) {
+			if ( empty( $menu_lib ) ) {	// Just in case.
 				$menu_lib = 'submenu';
 			}
 
@@ -338,11 +332,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
-		 * Add sub-menu items to existing menus (profile and setting).
+		 * Add sub-menu items to existing menus (dashboard, plugin, profile, and setting).
 		 */
 		public function add_admin_submenus() {
 
-			foreach ( array( 'plugin', 'profile', 'setting' ) as $menu_lib ) {
+			foreach ( array( 'dashboard', 'plugin', 'profile', 'setting' ) as $menu_lib ) {
 
 				/**
 				 * Match WordPress behavior (users page for admins, profile page for everyone else).
@@ -972,7 +966,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$def_opts = $this->p->opt->get_site_defaults();
 
-			$opts = empty( $_POST[WPSSO_SITE_OPTIONS_NAME] ) ? $def_opts : SucomUtil::restore_checkboxes( $_POST[WPSSO_SITE_OPTIONS_NAME] );
+			$opts = empty( $_POST[ WPSSO_SITE_OPTIONS_NAME ] ) ? $def_opts : SucomUtil::restore_checkboxes( $_POST[ WPSSO_SITE_OPTIONS_NAME ] );
 			$opts = array_merge( $this->p->site_options, $opts );
 			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network = true );
 			$opts = apply_filters( $this->p->lca . '_save_site_options', $opts, $def_opts, $network = true );
@@ -1317,6 +1311,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					break;
 
+				case 'dashboard':
 				case 'plugin':
 				case 'setting':
 				case 'submenu':
