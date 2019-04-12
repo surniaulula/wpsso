@@ -430,8 +430,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None.
 * *Improvements*
-	* Added a new "SSO Dashboard" settings page under the WordPress Dashboard admin menu.
-	* Added a new "SSO Add-ons" settings page under the WordPress Plugins admin menu.
+	* Added a new "SSO Dashboard" page under the WordPress Dashboard admin menu.
+	* Added a new "SSO Add-ons" page under the WordPress Plugins admin menu.
+	* Added a new "SSO Tools" page under the WordPress Tools admin menu.
 * *Bugfixes*
 	* Fixed the extra space under the metabox horizontal tab layout.
 * *Developer Notes*
@@ -484,7 +485,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.28.0-b.1 =
 
-(2019/04/12) Added a new "SSO Add-ons" settings page under the WordPress Plugins admin menu. Fixed the extra space under the metabox horizontal tab layout.
+(2019/04/12) Fixed the extra space under the metabox horizontal tab layout. Added new "SSO Dashboard", "SSO Add-ons", and "SSO Tools" pages.
 
 = 4.27.2 =
 
