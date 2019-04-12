@@ -2852,97 +2852,97 @@ msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
 
-#: lib/gettext-pro.php:110 lib/gpl/admin/post.php:164 lib/messages.php:2362
+#: lib/gettext-pro.php:110 lib/gpl/admin/post.php:164 lib/messages.php:2364
 #: lib/pro/admin/post.php:162
 msgctxt "option label"
 msgid "Product Availability"
 msgstr ""
 
-#: lib/gettext-pro.php:111 lib/gpl/admin/post.php:173 lib/messages.php:2366
+#: lib/gettext-pro.php:111 lib/gpl/admin/post.php:173 lib/messages.php:2368
 #: lib/pro/admin/post.php:171
 msgctxt "option label"
 msgid "Product Brand"
 msgstr ""
 
-#: lib/gettext-pro.php:112 lib/gpl/admin/post.php:181 lib/messages.php:2370
+#: lib/gettext-pro.php:112 lib/gpl/admin/post.php:181 lib/messages.php:2372
 #: lib/pro/admin/post.php:178
 msgctxt "option label"
 msgid "Product Color"
 msgstr ""
 
-#: lib/gettext-pro.php:113 lib/gpl/admin/post.php:189 lib/messages.php:2374
+#: lib/gettext-pro.php:113 lib/gpl/admin/post.php:189 lib/messages.php:2376
 #: lib/pro/admin/post.php:185
 msgctxt "option label"
 msgid "Product Condition"
 msgstr ""
 
-#: lib/gettext-pro.php:114 lib/gpl/admin/post.php:197 lib/messages.php:2378
+#: lib/gettext-pro.php:114 lib/gpl/admin/post.php:197 lib/messages.php:2380
 #: lib/pro/admin/post.php:192
 msgctxt "option label"
 msgid "Product Material"
 msgstr ""
 
-#: lib/gettext-pro.php:115 lib/gpl/admin/post.php:205 lib/messages.php:2382
+#: lib/gettext-pro.php:115 lib/gpl/admin/post.php:205 lib/messages.php:2384
 #: lib/pro/admin/post.php:199
 msgctxt "option label"
 msgid "Product MPN"
 msgstr ""
 
-#: lib/gettext-pro.php:116 lib/gpl/admin/post.php:213 lib/messages.php:2386
+#: lib/gettext-pro.php:116 lib/gpl/admin/post.php:213 lib/messages.php:2388
 #: lib/pro/admin/post.php:206
 msgctxt "option label"
 msgid "Product SKU"
 msgstr ""
 
-#: lib/gettext-pro.php:117 lib/gpl/admin/post.php:221 lib/messages.php:2390
+#: lib/gettext-pro.php:117 lib/gpl/admin/post.php:221 lib/messages.php:2392
 #: lib/pro/admin/post.php:213
 msgctxt "option label"
 msgid "Product EAN"
 msgstr ""
 
-#: lib/gettext-pro.php:118 lib/gpl/admin/post.php:229 lib/messages.php:2394
+#: lib/gettext-pro.php:118 lib/gpl/admin/post.php:229 lib/messages.php:2396
 #: lib/pro/admin/post.php:220
 msgctxt "option label"
 msgid "Product GTIN-8"
 msgstr ""
 
-#: lib/gettext-pro.php:119 lib/gpl/admin/post.php:237 lib/messages.php:2398
+#: lib/gettext-pro.php:119 lib/gpl/admin/post.php:237 lib/messages.php:2400
 #: lib/pro/admin/post.php:227
 msgctxt "option label"
 msgid "Product GTIN-12"
 msgstr ""
 
-#: lib/gettext-pro.php:120 lib/gpl/admin/post.php:245 lib/messages.php:2402
+#: lib/gettext-pro.php:120 lib/gpl/admin/post.php:245 lib/messages.php:2404
 #: lib/pro/admin/post.php:234
 msgctxt "option label"
 msgid "Product GTIN-13"
 msgstr ""
 
-#: lib/gettext-pro.php:121 lib/gpl/admin/post.php:253 lib/messages.php:2406
+#: lib/gettext-pro.php:121 lib/gpl/admin/post.php:253 lib/messages.php:2408
 #: lib/pro/admin/post.php:241
 msgctxt "option label"
 msgid "Product GTIN-14"
 msgstr ""
 
-#: lib/gettext-pro.php:122 lib/gpl/admin/post.php:261 lib/messages.php:2410
+#: lib/gettext-pro.php:122 lib/gpl/admin/post.php:261 lib/messages.php:2412
 #: lib/pro/admin/post.php:248
 msgctxt "option label"
 msgid "Product ISBN"
 msgstr ""
 
-#: lib/gettext-pro.php:123 lib/gpl/admin/post.php:269 lib/messages.php:2414
+#: lib/gettext-pro.php:123 lib/gpl/admin/post.php:269 lib/messages.php:2416
 #: lib/pro/admin/post.php:255
 msgctxt "option label"
 msgid "Product Price"
 msgstr ""
 
-#: lib/gettext-pro.php:124 lib/gpl/admin/post.php:278 lib/messages.php:2422
+#: lib/gettext-pro.php:124 lib/gpl/admin/post.php:278 lib/messages.php:2424
 #: lib/pro/admin/post.php:263
 msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gettext-pro.php:125 lib/gpl/admin/post.php:286 lib/messages.php:2426
+#: lib/gettext-pro.php:125 lib/gpl/admin/post.php:286 lib/messages.php:2428
 #: lib/pro/admin/post.php:270
 msgctxt "option label"
 msgid "Product Target Gender"
@@ -3039,7 +3039,7 @@ msgctxt "option label"
 msgid "Video Dimensions"
 msgstr ""
 
-#: lib/gettext-pro.php:150 lib/gpl/admin/meta.php:265 lib/messages.php:2442
+#: lib/gettext-pro.php:150 lib/gpl/admin/meta.php:265 lib/messages.php:2444
 #: lib/pro/admin/meta.php:267
 msgctxt "option label"
 msgid "Video Embed HTML"
@@ -3322,12 +3322,12 @@ msgid "adding schema json-ld markup"
 msgstr ""
 
 #. translators: %1$s is the PHP library path, %2$s is the PHP library class name
-#: lib/loader.php:166
+#: lib/loader.php:162
 msgid "Error loading %1$s: Library class \"%2$s\" is missing."
 msgstr ""
 
 #. translators: %s is the PHP library class name
-#: lib/loader.php:171
+#: lib/loader.php:167
 msgid "Library class \"%s\" is missing."
 msgstr ""
 
@@ -3336,24 +3336,24 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
-#: lib/loader.php:175 lib/loader.php:201 lib/post.php:282 lib/register.php:304
+#: lib/loader.php:171 lib/loader.php:197 lib/post.php:282 lib/register.php:304
 #: lib/term.php:255 lib/user.php:223 lib/util.php:487 lib/util.php:3208
 msgid "%s warning:"
 msgstr ""
 
-#: lib/loader.php:186
+#: lib/loader.php:182
 msgid ""
 "The installed plugin is incomplete or the web server cannot access the "
 "library file."
 msgstr ""
 
 #. translators: %1$s is the short plugin name, %2$s is the PHP library path
-#: lib/loader.php:192
+#: lib/loader.php:188
 msgid "%1$s library class name for \"%2$s\" is not available."
 msgstr ""
 
 #. translators: %s is the PHP library path
-#: lib/loader.php:197
+#: lib/loader.php:193
 msgid "Library class name for \"%s\" is not available."
 msgstr ""
 
@@ -5343,203 +5343,205 @@ msgstr ""
 #: lib/messages.php:2300
 msgid ""
 "<strong>Great ratings are a terrific way to encourage your plugin "
-"developers</strong> &mdash; and it only takes a minute."
+"developers</strong> &mdash; and it only takes a minute!"
 msgstr ""
 
-#: lib/messages.php:2302
-msgid "Say thank you %s to your developers by rating the plugins you use."
+#: lib/messages.php:2304
+msgid ""
+"Please take a moment to %1$s thank your developers %1$s by rating the "
+"plugins you use."
 msgstr ""
 
 #. translators: %s is the wordpress.org URL for the WPSSO User Locale Selector add-on
-#: lib/messages.php:2322
+#: lib/messages.php:2324
 msgid ""
 "This option is localized &mdash; <a href=\"%s\">you may change the WordPress "
 "locale</a> to define alternate values for different languages."
 msgstr ""
 
-#: lib/messages.php:2342
+#: lib/messages.php:2344
 msgctxt "option label"
 msgid "Microdata Type URLs"
 msgstr ""
 
-#: lib/messages.php:2343
+#: lib/messages.php:2345
 msgctxt "tooltip fragment"
 msgid "additional microdata type URLs"
 msgstr ""
 
-#: lib/messages.php:2346
+#: lib/messages.php:2348
 msgctxt "option label"
 msgid "How-To Steps"
 msgstr ""
 
-#: lib/messages.php:2347
+#: lib/messages.php:2349
 msgctxt "tooltip fragment"
 msgid "how-to steps"
 msgstr ""
 
-#: lib/messages.php:2350
+#: lib/messages.php:2352
 msgctxt "option label"
 msgid "How-To Supplies"
 msgstr ""
 
-#: lib/messages.php:2351
+#: lib/messages.php:2353
 msgctxt "tooltip fragment"
 msgid "how-to supplies"
 msgstr ""
 
-#: lib/messages.php:2354
+#: lib/messages.php:2356
 msgctxt "option label"
 msgid "How-To Tools"
 msgstr ""
 
-#: lib/messages.php:2355
+#: lib/messages.php:2357
 msgctxt "tooltip fragment"
 msgid "how-to tools"
 msgstr ""
 
-#: lib/messages.php:2358
+#: lib/messages.php:2360
 msgctxt "option label"
 msgid "Image URL"
 msgstr ""
 
-#: lib/messages.php:2359
+#: lib/messages.php:2361
 msgctxt "tooltip fragment"
 msgid "an image URL"
 msgstr ""
 
-#: lib/messages.php:2363
+#: lib/messages.php:2365
 msgctxt "tooltip fragment"
 msgid "a product availability"
 msgstr ""
 
-#: lib/messages.php:2367
+#: lib/messages.php:2369
 msgctxt "tooltip fragment"
 msgid "a product brand"
 msgstr ""
 
-#: lib/messages.php:2371
+#: lib/messages.php:2373
 msgctxt "tooltip fragment"
 msgid "a product color"
 msgstr ""
 
-#: lib/messages.php:2375
+#: lib/messages.php:2377
 msgctxt "tooltip fragment"
 msgid "a product condition"
 msgstr ""
 
-#: lib/messages.php:2379
+#: lib/messages.php:2381
 msgctxt "tooltip fragment"
 msgid "a product material"
 msgstr ""
 
-#: lib/messages.php:2383
+#: lib/messages.php:2385
 msgctxt "tooltip fragment"
 msgid "a Manufacturer Part Number (MPN)"
 msgstr ""
 
-#: lib/messages.php:2387
+#: lib/messages.php:2389
 msgctxt "tooltip fragment"
 msgid "a Stock-Keeping Unit (aka unique product identifier)"
 msgstr ""
 
-#: lib/messages.php:2391
+#: lib/messages.php:2393
 msgctxt "tooltip fragment"
 msgid "an International Article Number (aka European Article Number)"
 msgstr ""
 
-#: lib/messages.php:2395
+#: lib/messages.php:2397
 msgctxt "tooltip fragment"
 msgid "a product GTIN-8 code (aka EAN/UCC-8 or 8-digit EAN)"
 msgstr ""
 
-#: lib/messages.php:2399
+#: lib/messages.php:2401
 msgctxt "tooltip fragment"
 msgid ""
 "a product GTIN-12 code (12-digit GS1 identification key composed of a U.P.C. "
 "company prefix, item reference, and check digit)"
 msgstr ""
 
-#: lib/messages.php:2403
+#: lib/messages.php:2405
 msgctxt "tooltip fragment"
 msgid "a product GTIN-13 code (aka 13-digit ISBN codes or EAN/UCC-13)"
 msgstr ""
 
-#: lib/messages.php:2407
+#: lib/messages.php:2409
 msgctxt "tooltip fragment"
 msgid "a product GTIN-14 code"
 msgstr ""
 
-#: lib/messages.php:2411
+#: lib/messages.php:2413
 msgctxt "tooltip fragment"
 msgid "an ISBN code (aka International Standard Book Number)"
 msgstr ""
 
-#: lib/messages.php:2415
+#: lib/messages.php:2417
 msgctxt "tooltip fragment"
 msgid "a product price"
 msgstr ""
 
-#: lib/messages.php:2418
+#: lib/messages.php:2420
 msgctxt "option label"
 msgid "Product Currency"
 msgstr ""
 
-#: lib/messages.php:2419
+#: lib/messages.php:2421
 msgctxt "tooltip fragment"
 msgid "a product currency"
 msgstr ""
 
-#: lib/messages.php:2423
+#: lib/messages.php:2425
 msgctxt "tooltip fragment"
 msgid "a product size"
 msgstr ""
 
-#: lib/messages.php:2427
+#: lib/messages.php:2429
 msgctxt "tooltip fragment"
 msgid "a product target gender"
 msgstr ""
 
-#: lib/messages.php:2430
+#: lib/messages.php:2432
 msgctxt "option label"
 msgid "Recipe Ingredients"
 msgstr ""
 
-#: lib/messages.php:2431
+#: lib/messages.php:2433
 msgctxt "tooltip fragment"
 msgid "recipe ingredients"
 msgstr ""
 
-#: lib/messages.php:2434
+#: lib/messages.php:2436
 msgctxt "option label"
 msgid "Recipe Instructions"
 msgstr ""
 
-#: lib/messages.php:2435
+#: lib/messages.php:2437
 msgctxt "tooltip fragment"
 msgid "recipe instructions"
 msgstr ""
 
-#: lib/messages.php:2438
+#: lib/messages.php:2440
 msgctxt "option label"
 msgid "Same-As URLs"
 msgstr ""
 
-#: lib/messages.php:2439
+#: lib/messages.php:2441
 msgctxt "tooltip fragment"
 msgid "additional Same-As URLs"
 msgstr ""
 
-#: lib/messages.php:2443
+#: lib/messages.php:2445
 msgctxt "tooltip fragment"
 msgid "video embed HTML code (not a URL)"
 msgstr ""
 
-#: lib/messages.php:2446
+#: lib/messages.php:2448
 msgctxt "option label"
 msgid "Video URL"
 msgstr ""
 
-#: lib/messages.php:2447
+#: lib/messages.php:2449
 msgctxt "tooltip fragment"
 msgid "a video URL (not HTML code)"
 msgstr ""

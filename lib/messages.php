@@ -2297,10 +2297,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text = '<p>';
 						
-						$text .= __( '<strong>Great ratings are a terrific way to encourage your plugin developers</strong> &mdash; and it only takes a minute.', 'wpsso' ) . ' ';
+						$text .= __( '<strong>Great ratings are a terrific way to encourage your plugin developers</strong> &mdash; and it only takes a minute!', 'wpsso' ) . ' :-) ';
 
-						$text .= sprintf( __( 'Say thank you %s to your developers by rating the plugins you use.', 'wpsso' ),
-							'<span class="' . $lca . '-rate-heart"></span>' ) . ' :-)';
+						$text .= '</p><p>';
+
+						$text .= sprintf( __( 'Please take a moment to %1$s thank your developers %1$s by rating the plugins you use.', 'wpsso' ),
+							'<span class="' . $lca . '-rate-heart"></span>' );
 
 						$text .= '</p>';
 

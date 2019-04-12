@@ -35,11 +35,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 				 */
 				switch ( basename( $_SERVER['PHP_SELF'] ) ) {
 
-					case 'index.php':		// Dashboard
-					case 'edit-comments.php':	// Comments
 					case 'themes.php':		// Appearance
-					case 'plugins.php':		// Plugins
-					case 'tools.php':		// Tools
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'no modules required for current page' );
