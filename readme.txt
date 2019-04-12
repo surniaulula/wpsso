@@ -425,7 +425,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.28.0-rc.1 (2019/04/13)**
+**Version 4.28.0 (2019/04/13)**
 
 * *New Features*
 	* None.
@@ -483,11 +483,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.28.0-rc.1 =
+= 4.28.0 =
 
 (2019/04/13) Fixed the extra space under the metabox horizontal tab layout. Added new "SSO Dashboard", "SSO Add-ons", and "SSO Tools" pages.
-
-= 4.27.2 =
-
-(2019/04/09) Improved the settings page and SSO metabox CSS for mobile devices. Fix to prevent WordPress from moving notices out of the toolbar on WooCommerce product pages.
 
