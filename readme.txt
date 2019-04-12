@@ -425,7 +425,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.28.0-b.1 (2019/04/12)**
+**Version 4.28.0-rc.1 (2019/04/13)**
 
 * *New Features*
 	* None.
@@ -483,9 +483,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.28.0-b.1 =
+= 4.28.0-rc.1 =
 
-(2019/04/12) Fixed the extra space under the metabox horizontal tab layout. Added new "SSO Dashboard", "SSO Add-ons", and "SSO Tools" pages.
+(2019/04/13) Fixed the extra space under the metabox horizontal tab layout. Added new "SSO Dashboard", "SSO Add-ons", and "SSO Tools" pages.
 
 = 4.27.2 =
 
