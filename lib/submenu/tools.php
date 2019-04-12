@@ -59,7 +59,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$using_external_cache = wp_using_ext_object_cache();
 
-			if ( ! $using_external_cache && $this->p->options['plugin_shortener'] !== 'none' ) {
+			if ( ! $using_external_cache && $this->p->options[ 'plugin_shortener' ] !== 'none' ) {
 
 				$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
 					_x( 'Refresh Short URLs on Clear Cache', 'option label', 'wpsso' ) );
@@ -83,19 +83,19 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			$using_external_cache = wp_using_ext_object_cache();
 
 			if ( is_multisite() ) {
-				$clear_label_transl = sprintf( _x( 'Clear All Caches for Site ID %d',
-					'submit button', 'wpsso' ), get_current_blog_id() );
-				$export_label_transl = sprintf( _x( 'Export Settings for Site ID %d',
-					'submit button', 'wpsso' ), get_current_blog_id() );
-				$import_label_transl = sprintf( _x( 'Import Settings for Site ID %d',
-					'submit button', 'wpsso' ), get_current_blog_id() );
+
+				$clear_label_transl = sprintf( _x( 'Clear All Caches for Site ID %d', 'submit button', 'wpsso' ), get_current_blog_id() );
+				$export_label_transl = sprintf( _x( 'Export Settings for Site ID %d', 'submit button', 'wpsso' ), get_current_blog_id() );
+				$import_label_transl = sprintf( _x( 'Import Settings for Site ID %d', 'submit button', 'wpsso' ), get_current_blog_id() );
+
 			} else {
-				$clear_label_transl = _x( 'Clear All Caches', 'submit button', 'wpsso' );
+
+				$clear_label_transl  = _x( 'Clear All Caches', 'submit button', 'wpsso' );
 				$export_label_transl = _x( 'Export Plugin and Add-on Settings', 'submit button', 'wpsso' );
 				$import_label_transl = _x( 'Import Plugin and Add-on Settings', 'submit button', 'wpsso' );
 			}
 
-			if ( ! $using_external_cache && $this->p->options['plugin_shortener'] !== 'none' ) {
+			if ( ! $using_external_cache && $this->p->options[ 'plugin_shortener' ] !== 'none' ) {
 				$clear_label_transl .= ' [*]';
 			}
 
@@ -127,7 +127,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 				),
 			);
 
-			if ( ! $using_external_cache && $this->p->options['plugin_shortener'] !== 'none' ) {
+			if ( ! $using_external_cache && $this->p->options[ 'plugin_shortener' ] !== 'none' ) {
 				if ( empty( $this->p->options[ 'plugin_clear_short_urls' ] ) ) {
 					$form_button_rows[ 0 ][ 'clear_all_cache_and_short_urls' ] = _x( 'Clear All Caches and Short URLs',
 						'submit button', 'wpsso' );

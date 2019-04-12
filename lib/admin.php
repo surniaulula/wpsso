@@ -153,7 +153,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->set_plugin_pkg_info();
 
 			if ( empty( $menu_libs ) ) {
-				$menu_libs = array( 'dashboard', 'plugin', 'profile', 'setting', 'submenu' );
+				$menu_libs = array( 'dashboard', 'plugins', 'profile', 'settings', 'submenu', 'tools' );
 			}
 
 			foreach ( $menu_libs as $menu_lib ) {
@@ -225,7 +225,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		/**
 		 * Add a new main menu, and its sub-menu items.
 		 *
-		 * $menu_lib = 'dashboard' | 'plugins' | 'profile' | 'setting' | 'submenu' | 'sitesubmenu'
+		 * $menu_lib = 'dashboard' | 'plugins' | 'profile' | 'settings' | 'submenu' | 'sitesubmenu' | 'tools'
 		 */
 		public function add_admin_menus( $menu_lib = '' ) {
 
@@ -336,7 +336,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 */
 		public function add_admin_submenus() {
 
-			foreach ( array( 'dashboard', 'plugin', 'profile', 'setting' ) as $menu_lib ) {
+			foreach ( array( 'dashboard', 'plugins', 'profile', 'settings', 'tools' ) as $menu_lib ) {
 
 				/**
 				 * Match WordPress behavior (users page for admins, profile page for everyone else).
@@ -1187,7 +1187,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_setting_page() {
 
-			if ( ! $this->is_setting() ) {
+			if ( ! $this->is_settings() ) {	// Default check is for $this->menu_id.
 				settings_errors( WPSSO_OPTIONS_NAME );
 			}
 
@@ -1312,9 +1312,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					break;
 
 				case 'dashboard':
-				case 'plugin':
-				case 'setting':
+				case 'plugins':
+				case 'settings':
 				case 'submenu':
+				case 'tools':
 
 					echo '<form name="' . $this->p->lca . '" ' .
 						'id="' . $this->p->lca . '_setting_form_' . $menu_hookname . '" ' .
@@ -1974,24 +1975,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return md5( $salt );
 		}
 
-		private function is_profile( $menu_id = false ) {
+		private function is_settings( $menu_id = false ) {
 
-			return $this->is_lib( 'profile', $menu_id );
-		}
-
-		private function is_setting( $menu_id = false ) {
-
-			return $this->is_lib( 'setting', $menu_id );
-		}
-
-		private function is_submenu( $menu_id = false ) {
-
-			return $this->is_lib( 'submenu', $menu_id );
-		}
-
-		private function is_sitesubmenu( $menu_id = false ) {
-
-			return $this->is_lib( 'sitesubmenu', $menu_id );
+			return $this->is_lib( 'settings', $menu_id );
 		}
 
 		private function is_lib( $lib_name, $menu_id = false ) {

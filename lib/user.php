@@ -1059,7 +1059,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$parent_slug = 'options-general.php';
 
-			foreach ( array_keys( $cf[ '*' ][ 'lib' ][ 'setting' ] ) as $lib_id ) {
+			foreach ( array_keys( $cf[ '*' ][ 'lib' ][ 'settings' ] ) as $lib_id ) {
 
 				$menu_slug = $slug_prefix . '-' . $lib_id;
 

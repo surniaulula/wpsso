@@ -78,34 +78,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'dashboard' => array(
 							'sso-dashboard' => 'SSO Dashboard',
 						),
-						'plugin' => array(
-							'sso-addons' => 'SSO Add-ons',
-						),
-						'profile' => array(
-							'your-sso' => 'Your SSO',
-						),
-						'setting' => array(
-							'image-dimensions' => 'SSO Image Sizes',
-							'contact-fields'   => 'SSO Contact Fields',
-							'social-accounts'  => 'SSO WebSite Pages',
-						),
-						'submenu' => array(	// Note that submenu elements must have unique keys.
-							'essential' => 'Essential',
-							'general'   => 'General',
-							'advanced'  => 'Advanced',
-							'addons'    => 'Add-ons',
-							'licenses'  => 'Licenses',
-							'dashboard' => 'Dashboard',
-							'setup'     => 'Setup Guide',
-							'tools'     => 'Tools',
-						),
-						'sitesubmenu' => array(	// Note that submenu elements must have unique keys.
-							'site-advanced' => 'Advanced',
-							'site-addons'   => 'Add-ons',
-							'site-licenses' => 'Licenses',
-							'site-setup'    => 'Setup Guide',
-							'site-tools'    => 'Tools',
-						),
 						'gpl' => array(
 							'admin' => array(
 								'general'  => 'Extend General Settings',
@@ -121,6 +93,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'term' => '(feature) Custom Term Meta',
 								'user' => '(feature) Custom User Meta',
 							),
+						),
+						'plugins' => array(
+							'sso-addons' => 'SSO Add-ons',
 						),
 						'pro' => array(
 							'admin' => array(
@@ -185,6 +160,34 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'user'         => '(feature) Custom User Meta',
 								'wpseo_meta'   => '(feature) Yoast SEO Social Meta',
 							),
+						),
+						'profile' => array(
+							'your-sso' => 'Your SSO',
+						),
+						'settings' => array(
+							'image-dimensions' => 'SSO Image Sizes',
+							'contact-fields'   => 'SSO Contact Fields',
+							'social-accounts'  => 'SSO WebSite Pages',
+						),
+						'sitesubmenu' => array(	// Note that submenu elements must have unique keys.
+							'site-advanced' => 'Advanced',
+							'site-addons'   => 'Add-ons',
+							'site-licenses' => 'Licenses',
+							'site-setup'    => 'Setup Guide',
+							'site-tools'    => 'Tools',
+						),
+						'submenu' => array(	// Note that submenu elements must have unique keys.
+							'essential' => 'Essential',
+							'general'   => 'General',
+							'advanced'  => 'Advanced',
+							'addons'    => 'Add-ons',
+							'licenses'  => 'Licenses',
+							'dashboard' => 'Dashboard',
+							'setup'     => 'Setup Guide',
+							'tools'     => 'Tools',
+						),
+						'tools' => array(
+							'sso-tools' => 'SSO Tools',
 						),
 					),
 				),
@@ -1568,7 +1571,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'page' => 'index.php',
 						'cap'  => 'manage_options',
 					),
-					'plugin' => array(
+					'plugins' => array(
 						'page' => 'plugins.php',
 						'cap'  => 'install_plugins',
 					),
@@ -1576,16 +1579,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'page' => 'profile.php',
 						'cap'  => 'publish_posts',
 					),
-					'setting' => array(
+					'settings' => array(
 						'page' => 'options-general.php',
+						'cap'  => 'manage_options',
+					),
+					'sitesubmenu' => array(
+						'page' => 'admin.php',
 						'cap'  => 'manage_options',
 					),
 					'submenu' => array(
 						'page' => 'admin.php',
 						'cap'  => 'manage_options',
 					),
-					'sitesubmenu' => array(
-						'page' => 'admin.php',
+					'tools' => array(
+						'page' => 'tools.php',
 						'cap'  => 'manage_options',
 					),
 					'users' => array(
