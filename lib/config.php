@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'      => '4.28.0-b.1',	// Plugin version.
+					'version'      => '4.28.0-rc.1',	// Plugin version.
 					'opt_version'  => '641',	// Increment when changing default option values.
 					'short'        => 'WPSSO Core',	// Short plugin name.
 					'name'         => 'WPSSO Core [Main Plugin]',
@@ -169,14 +169,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'contact-fields'   => 'SSO Contact Fields',
 							'social-accounts'  => 'SSO WebSite Pages',
 						),
-						'sitesubmenu' => array(	// Note that submenu elements must have unique keys.
+						'sitesubmenu' => array(
 							'site-advanced' => 'Advanced',
 							'site-addons'   => 'Add-ons',
 							'site-licenses' => 'Licenses',
 							'site-setup'    => 'Setup Guide',
 							'site-tools'    => 'Tools',
 						),
-						'submenu' => array(	// Note that submenu elements must have unique keys.
+						'submenu' => array(
 							'essential' => 'Essential',
 							'general'   => 'General',
 							'advanced'  => 'Advanced',
