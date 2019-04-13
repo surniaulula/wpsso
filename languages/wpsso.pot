@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.28.0\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.28.1-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -310,7 +310,7 @@ msgstr ""
 msgid "%d of %d site addresses registered"
 msgstr ""
 
-#: lib/admin.php:2241 lib/script.php:227 lib/script.php:278
+#: lib/admin.php:2241 lib/script.php:234 lib/script.php:285
 msgid "No new %s notifications."
 msgstr ""
 
@@ -2967,7 +2967,7 @@ msgstr ""
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
-#: lib/gettext-pro.php:139 lib/gpl/admin/meta.php:164 lib/post.php:1327
+#: lib/gettext-pro.php:139 lib/gpl/admin/meta.php:164 lib/post.php:1328
 #: lib/pro/admin/meta.php:177
 msgid "Save a draft version or publish the %s to display these options."
 msgstr ""
@@ -5882,40 +5882,40 @@ msgstr ""
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1506 lib/script.php:230
+#: lib/post.php:1507 lib/script.php:237
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1516
+#: lib/post.php:1517
 msgid "Edit"
 msgstr ""
 
-#: lib/post.php:1517
+#: lib/post.php:1518
 msgid "Edit robots"
-msgstr ""
-
-#: lib/post.php:1528
-msgctxt "option label"
-msgid "No index"
 msgstr ""
 
 #: lib/post.php:1529
 msgctxt "option label"
-msgid "No follow"
+msgid "No index"
 msgstr ""
 
 #: lib/post.php:1530
 msgctxt "option label"
-msgid "No archive"
+msgid "No follow"
 msgstr ""
 
 #: lib/post.php:1531
 msgctxt "option label"
+msgid "No archive"
+msgstr ""
+
+#: lib/post.php:1532
+msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1605
+#: lib/post.php:1606
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -5995,7 +5995,7 @@ msgstr ""
 msgid "adding schema for place"
 msgstr ""
 
-#: lib/script.php:194
+#: lib/script.php:201
 msgid "Select Image"
 msgstr ""
 
@@ -6446,7 +6446,7 @@ msgid ""
 "for term ID %2$d in taxonomy %3$s (%4$s)."
 msgstr ""
 
-#: lib/term.php:632
+#: lib/term.php:633
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -6487,23 +6487,23 @@ msgid ""
 "authored by user ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/user.php:688
+#: lib/user.php:689
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:771
+#: lib/user.php:772
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:772
+#: lib/user.php:773
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:773
+#: lib/user.php:774
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1236
+#: lib/user.php:1237
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 

@@ -148,6 +148,10 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 					if ( function_exists( 'wp_enqueue_media' ) ) {
 
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'wp_enqueue_media() function is available' );
+						}
+
 						if ( SucomUtil::is_post_page( false ) &&
 							( $post_id = SucomUtil::get_post_object( false, 'id' ) ) > 0 ) {
 
@@ -160,6 +164,9 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 						wp_localize_script( 'sucom-admin-media', 'sucomMediaL10n',
 							$this->get_admin_media_script_data() );
+
+					} elseif ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'wp_enqueue_media() function not found' );
 					}
 
 					break;	// stop here

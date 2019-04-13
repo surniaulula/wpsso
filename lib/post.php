@@ -1308,7 +1308,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $doing_ajax ) {
 				$metabox_html .= '<script type="text/javascript">
-					sucomInitTooltips();
+					sucomInitToolTips();
+					sucomInitImageUpload();
 					jQuery( "#' . $container_id . ' input.colorpicker" ).wpColorPicker();
 					jQuery( "#' . $container_id . ' input.datepicker" ).datepicker( { dateFormat:"yy-mm-dd" } );
 				</script>' . "\n";
