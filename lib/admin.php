@@ -1597,8 +1597,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				echo '<tr><th class="version-label">' . _x( 'Installed', 'option label', 'wpsso' ) . ':</th>
 					<td class="version-number" ' . $installed_style . '>' . $installed_version . '</td></tr>';
 
-				echo '<tr><th class="version-label">' . _x( 'Stable', 'option label', 'wpsso' ) . ':</th>
-					<td class="version-number">' . $stable_version . '</td></tr>';
+				/**
+				 * Only show the stable version if the latest version is different (ie. latest is a non-stable version).
+				 */
+				if ( $stable_version !== $latest_version ) {
+					echo '<tr><th class="version-label">' . _x( 'Stable', 'option label', 'wpsso' ) . ':</th>
+						<td class="version-number">' . $stable_version . '</td></tr>';
+				}
 
 				echo '<tr><th class="version-label">' . _x( 'Latest', 'option label', 'wpsso' ) . ':</th>
 					<td class="version-number">' . $latest_version . '</td></tr>';
