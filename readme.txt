@@ -426,6 +426,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.28.1-dev.1 (2019/04/13)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* None.
+* *Bugfixes*
+	* Fixed the "Select or Upload Image" button functionality when the SSO metabox is refreshed via ajax (ie. after clicking "Update" in the new block editor).
+* *Developer Notes*
+	* None.
+
 **Version 4.28.0 (2019/04/13)**
 
 * *New Features*
@@ -483,6 +494,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* product:quantity:unit_text
 
 == Upgrade Notice ==
+
+= 4.28.1-dev.1 =
+
+(2019/04/13) Fixed the "Select or Upload Image" button functionality when the SSO metabox is refreshed via ajax (ie. after clicking "Update" in the new block editor).
 
 = 4.28.0 =
 
