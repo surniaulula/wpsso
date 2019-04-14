@@ -536,7 +536,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		public function get_metabox_custom_meta( $term_obj ) {
 
-			$doing_ajax = defined( 'DOING_AJAX' ) ? DOING_AJAX : false;
 			$metabox_id = $this->p->cf['meta'][ 'id' ];
 			$mod        = $this->get_mod( $term_obj->term_id, $this->query_tax_slug );
 			$tabs       = $this->get_custom_meta_tabs( $metabox_id, $mod );
@@ -569,15 +568,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$container_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
 			$metabox_html = $this->p->util->get_metabox_tabbed( $metabox_id, $tabs, $table_rows, $tabbed_args );
 			$metabox_html = "\n" . '<div id="' . $container_id . '">' . $metabox_html . '</div><!-- #'. $container_id . ' -->' . "\n";
-
-			if ( $doing_ajax ) {
-				$metabox_html .= '<script type="text/javascript">
-					sucomInitToolTips();
-					sucomInitImageUpload();
-					jQuery( "#' . $container_id . ' input.colorpicker" ).wpColorPicker();
-					jQuery( "#' . $container_id . ' input.datepicker" ).datepicker( { dateFormat:"yy-mm-dd" } );
-				</script>' . "\n";
-			}
+			$metabox_html .= $this->get_metabox_javascript( $container_id );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( $metabox_id . ' table rows' );	// End timer.

@@ -158,6 +158,23 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $this->must_be_extended( __METHOD__ );
 		}
 
+		public function get_metabox_javascript( $container_id ) {
+
+			$doing_ajax   = defined( 'DOING_AJAX' ) ? DOING_AJAX : false;
+			$container_id = empty( $container_id ) ? '' : '#' . $container_id;
+			$metabox_html = '';
+
+			if ( $doing_ajax ) {
+				$metabox_html .= '<script type="text/javascript">
+					sucomInitAdminMedia( "' . $container_id . '" );
+					sucomInitMetabox( "' . $container_id . '" );
+					sucomInitToolTips( "' . $container_id . '" );
+				</script>' . "\n";
+			}
+
+			return $metabox_html;
+		}
+
 		/**
 		 * Does this page have a post/term/user SSO metabox?
 		 *

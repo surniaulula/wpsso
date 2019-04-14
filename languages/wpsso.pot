@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.28.1-dev.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.28.1-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2840,14 +2840,14 @@ msgstr ""
 
 #: lib/gettext-pro.php:108 lib/gettext-pro.php:135 lib/gpl/admin/meta.php:124
 #: lib/gpl/admin/post.php:145 lib/pro/admin/meta.php:133
-#: lib/pro/admin/post.php:144 lib/wp-meta.php:276 lib/wp-meta.php:300
+#: lib/pro/admin/post.php:144 lib/wp-meta.php:293 lib/wp-meta.php:317
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
 #: lib/gettext-pro.php:109 lib/gettext-pro.php:136 lib/gpl/admin/meta.php:132
 #: lib/gpl/admin/post.php:154 lib/pro/admin/meta.php:140
-#: lib/pro/admin/post.php:152 lib/wp-meta.php:280 lib/wp-meta.php:304
+#: lib/pro/admin/post.php:152 lib/wp-meta.php:297 lib/wp-meta.php:321
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
@@ -2963,11 +2963,11 @@ msgid "Description"
 msgstr ""
 
 #: lib/gettext-pro.php:128 lib/gpl/admin/post.php:305
-#: lib/pro/admin/post.php:288 lib/wp-meta.php:272
+#: lib/pro/admin/post.php:288 lib/wp-meta.php:289
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
-#: lib/gettext-pro.php:139 lib/gpl/admin/meta.php:164 lib/post.php:1328
+#: lib/gettext-pro.php:139 lib/gpl/admin/meta.php:164 lib/post.php:1319
 #: lib/pro/admin/meta.php:177
 msgid "Save a draft version or publish the %s to display these options."
 msgstr ""
@@ -5101,7 +5101,7 @@ msgid ""
 "by the %s plugin."
 msgstr ""
 
-#: lib/messages.php:2018 lib/wp-meta.php:185
+#: lib/messages.php:2018 lib/wp-meta.php:202
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr ""
@@ -5882,40 +5882,40 @@ msgstr ""
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1507 lib/script.php:237
+#: lib/post.php:1498 lib/script.php:237
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1517
+#: lib/post.php:1508
 msgid "Edit"
 msgstr ""
 
-#: lib/post.php:1518
+#: lib/post.php:1509
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1529
+#: lib/post.php:1520
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1530
+#: lib/post.php:1521
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1531
+#: lib/post.php:1522
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1532
+#: lib/post.php:1523
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1606
+#: lib/post.php:1597
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -6446,7 +6446,7 @@ msgid ""
 "for term ID %2$d in taxonomy %3$s (%4$s)."
 msgstr ""
 
-#: lib/term.php:633
+#: lib/term.php:624
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -6487,23 +6487,23 @@ msgid ""
 "authored by user ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/user.php:689
+#: lib/user.php:680
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:772
+#: lib/user.php:763
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:773
+#: lib/user.php:764
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:774
+#: lib/user.php:765
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1237
+#: lib/user.php:1228
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
@@ -6619,132 +6619,132 @@ msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: lib/wp-meta.php:184
+#: lib/wp-meta.php:201
 msgctxt "metabox tab"
 msgid "Customize"
 msgstr ""
 
-#: lib/wp-meta.php:186
+#: lib/wp-meta.php:203
 msgctxt "metabox tab"
 msgid "Preview"
 msgstr ""
 
-#: lib/wp-meta.php:187
+#: lib/wp-meta.php:204
 msgctxt "metabox tab"
 msgid "Head"
 msgstr ""
 
-#: lib/wp-meta.php:188
+#: lib/wp-meta.php:205
 msgctxt "metabox tab"
 msgid "Validate"
 msgstr ""
 
-#: lib/wp-meta.php:257
+#: lib/wp-meta.php:274
 msgctxt "preview image error"
 msgid "Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/wp-meta.php:262
+#: lib/wp-meta.php:279
 msgctxt "preview image error"
 msgid "Image Dimensions Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/wp-meta.php:267
+#: lib/wp-meta.php:284
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/wp-meta.php:284 lib/wp-meta.php:310
+#: lib/wp-meta.php:301 lib/wp-meta.php:327
 msgctxt "option label"
 msgid "Shortlink URL"
 msgstr ""
 
-#: lib/wp-meta.php:315
+#: lib/wp-meta.php:332
 msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/wp-meta.php:448
+#: lib/wp-meta.php:465
 msgctxt "option label"
 msgid "Facebook Open Graph Debugger"
 msgstr ""
 
-#: lib/wp-meta.php:449
+#: lib/wp-meta.php:466
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/wp-meta.php:453
+#: lib/wp-meta.php:470
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/wp-meta.php:454
+#: lib/wp-meta.php:471
 msgctxt "submit button"
 msgid "Validate Metadata"
 msgstr ""
 
-#: lib/wp-meta.php:458
+#: lib/wp-meta.php:475
 msgctxt "option label"
 msgid "Google Structured Data Test"
 msgstr ""
 
-#: lib/wp-meta.php:459
+#: lib/wp-meta.php:476
 msgctxt "submit button"
 msgid "Validate Structured Data"
 msgstr ""
 
-#: lib/wp-meta.php:463
+#: lib/wp-meta.php:480
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/wp-meta.php:464
+#: lib/wp-meta.php:481
 msgctxt "submit button"
 msgid "Validate Rich Results"
 msgstr ""
 
-#: lib/wp-meta.php:468
+#: lib/wp-meta.php:485
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/wp-meta.php:469
+#: lib/wp-meta.php:486
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/wp-meta.php:473
+#: lib/wp-meta.php:490
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/wp-meta.php:474
+#: lib/wp-meta.php:491
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/wp-meta.php:479
+#: lib/wp-meta.php:496
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr ""
 
-#: lib/wp-meta.php:480
+#: lib/wp-meta.php:497
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr ""
 
-#: lib/wp-meta.php:484
+#: lib/wp-meta.php:501
 msgctxt "option label"
 msgid "The AMP Validator"
 msgstr ""
 
-#: lib/wp-meta.php:485
+#: lib/wp-meta.php:502
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/wp-meta.php:929
+#: lib/wp-meta.php:946
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
