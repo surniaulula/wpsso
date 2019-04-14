@@ -426,7 +426,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.28.1-dev.1 (2019/04/13)**
+**Version 4.28.1-dev.2 (2019/04/13)**
 
 * *New Features*
 	* None.
@@ -495,7 +495,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.28.1-dev.1 =
+= 4.28.1-dev.2 =
 
 (2019/04/13) Fixed the "Select or Upload Image" button functionality when the SSO metabox is refreshed via ajax (ie. after clicking "Update" in the new block editor).
 
