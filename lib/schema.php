@@ -1306,8 +1306,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark( 'build json array' );	// Begin timer for json array.
 			}
 
-			$ret = array();
-
+			$graph_data    = array();
+			$json_scripts  = array();
 			$page_type_id  = $mt_og[ 'schema:type:id' ]  = $this->get_mod_schema_type( $mod, $get_schema_id = true );	// Example: article.tech.
 			$page_type_url = $mt_og[ 'schema:type:url' ] = $this->get_schema_type_url( $page_type_id );		// Example: https://schema.org/TechArticle.
 
@@ -1450,10 +1450,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$this->p->debug->log( 'existing @type property is ' . print_r( $json_data[ '@type' ], true ) );	// @type can be an array.
 					}
 	
-					/**
-					 * Encode the json data in an HTML script block.
-					 */
-					$ret[] = '<script type="application/ld+json">' . $this->p->util->json_format( $json_data ) . '</script>' . "\n";
+					$graph_data[] = $json_data;
 				}
 
 				if ( $this->p->debug->enabled ) {
@@ -1461,14 +1458,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			$ret = SucomUtil::a_to_aa( $ret );	// Convert to array of arrays.
+			$json_scripts[][] = '<script type="application/ld+json">' .
+				$this->p->util->json_format( array(
+					'@context' => 'https://schema.org',
+					'@graph'   => $graph_data,
+				) ) .
+				'</script>' . "\n";
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( $ret );
+				$this->p->debug->log( $json_scripts );
 				$this->p->debug->mark( 'build json array' );	// End timer for json array.
 			}
 
-			return $ret;
+			return $json_scripts;
 		}
 
 		/**
