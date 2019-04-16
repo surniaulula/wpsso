@@ -426,12 +426,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.28.1-dev.2 (2019/04/13)**
+**Version 4.28.1-dev.3 (2019/04/16)**
 
 * *New Features*
 	* None.
 * *Improvements*
-	* None.
+	* Added a MB total for "All Transients" in the SSO &gt; Dashboard &gt; Cache Status metabox.
 * *Bugfixes*
 	* Fixed the "Select or Upload Image" button functionality when the SSO metabox is refreshed via ajax (ie. after clicking "Update" in the new block editor).
 * *Developer Notes*
@@ -495,9 +495,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.28.1-dev.2 =
+= 4.28.1-dev.3 =
 
-(2019/04/13) Fixed the "Select or Upload Image" button functionality when the SSO metabox is refreshed via ajax (ie. after clicking "Update" in the new block editor).
+(2019/04/16) Fixed the "Select or Upload Image" button functionality when the SSO metabox is refreshed via ajax (ie. after clicking "Update" in the new block editor). Added a MB total for "All Transients" in the SSO &gt; Dashboard &gt; Cache Status metabox.
 
 = 4.28.0 =
 
