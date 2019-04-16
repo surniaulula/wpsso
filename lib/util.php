@@ -1615,6 +1615,27 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $deleted_count;
 		}
 
+		public function get_db_transient_size_mb( $decimals = 2, $dec_point = '.', $thousands_sep = ',' ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			global $wpdb;
+
+			$db_query = 'SELECT CHAR_LENGTH( option_value ) / 1024';
+			$db_query .= ', CHAR_LENGTH( option_value )';
+			$db_query .= ' FROM ' . $wpdb->options;
+			$db_query .= ' WHERE option_name LIKE \'_transient_' . $this->p->lca . '_%\'';
+			$db_query .= ';';	// End of query.
+
+			$result  = $wpdb->get_col( $db_query );
+			$size_kb = array_sum( $result );
+			$size_mb = number_format( $size_kb / 1024, $decimals, $dec_point, $thousands_sep );
+
+			return $size_mb;
+		}
+
 		public function get_db_transient_keys( $only_expired = false ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -1625,25 +1646,24 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$transient_keys = array();
 			$transient_pre  = $only_expired ? '_transient_timeout_' : '_transient_';
+			$current_time   = isset ( $_SERVER[ 'REQUEST_TIME' ] ) ? (int) $_SERVER[ 'REQUEST_TIME' ] : time() ;
 
-			$db_query = 'SELECT option_name FROM ' . $wpdb->options . ' WHERE option_name LIKE \'' . $transient_pre . $this->p->lca . '_%\'';
+			$db_query = 'SELECT option_name';
+			$db_query .= ' FROM ' . $wpdb->options;
+			$db_query .= ' WHERE option_name LIKE \'' . $transient_pre . $this->p->lca . '_%\'';
 
 			if ( $only_expired ) {
-
-				$current_time = isset ( $_SERVER[ 'REQUEST_TIME' ] ) ? (int) $_SERVER[ 'REQUEST_TIME' ] : time() ;
-
-				$db_query .= ' AND option_value < ' . $current_time . ';';	// Expiration time older than current time.
-
-			} else {
-				$db_query .= ';';	// End of query.
+				$db_query .= ' AND option_value < ' . $current_time;	// Expiration time older than current time.
 			}
 
-			$transient_names = $wpdb->get_col( $db_query );
+			$db_query .= ';';	// End of query.
+
+			$result = $wpdb->get_col( $db_query );
 
 			/**
 			 * Remove '_transient_' or '_transient_timeout_' prefix from option name.
 			 */
-			foreach( $transient_names as $option_name ) {
+			foreach( $result as $option_name ) {
 				$transient_keys[] = str_replace( $transient_pre, '', $option_name );
 			}
 

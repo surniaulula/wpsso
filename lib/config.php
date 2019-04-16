@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'      => '4.28.1-dev.2',	// Plugin version.
+					'version'      => '4.28.1-dev.3',	// Plugin version.
 					'opt_version'  => '641',	// Increment when changing default option values.
 					'short'        => 'WPSSO Core',	// Short plugin name.
 					'name'         => 'WPSSO Core [Main Plugin]',
@@ -1157,9 +1157,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Advanced settings - Integration tab.
 					 */
 					'plugin_html_attr_filter_name'      => 'language_attributes',	// <html> Attributes Filter Hook.
-					'plugin_html_attr_filter_prio'      => 100,
+					'plugin_html_attr_filter_prio'      => 1000,
 					'plugin_head_attr_filter_name'      => 'head_attributes',	// <head> Attributes Filter Hook.
-					'plugin_head_attr_filter_prio'      => 100,
+					'plugin_head_attr_filter_prio'      => 1000,
 					'plugin_honor_force_ssl'            => 1,			// Honor the FORCE_SSL Constant.
 					'plugin_new_user_is_person'         => 0,			// Add Person Role for New Users.
 					'plugin_page_excerpt'               => 0,			// Enable WP Excerpt for Pages.
@@ -1352,11 +1352,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'plugin_html_attr_filter_name'     => 'language_attributes',
 					'plugin_html_attr_filter_name:use' => 'default',
-					'plugin_html_attr_filter_prio'     => 100,
+					'plugin_html_attr_filter_prio'     => 1000,
 					'plugin_html_attr_filter_prio:use' => 'default',
 					'plugin_head_attr_filter_name'     => 'head_attributes',
 					'plugin_head_attr_filter_name:use' => 'default',
-					'plugin_head_attr_filter_prio'     => 100,
+					'plugin_head_attr_filter_prio'     => 1000,
 					'plugin_head_attr_filter_prio:use' => 'default',
 					'plugin_honor_force_ssl'           => 1,		// Honor the FORCE_SSL Constant.
 					'plugin_honor_force_ssl:use'       => 'default',

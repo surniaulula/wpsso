@@ -647,28 +647,22 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= sprintf( __( 'Uncheck this option to always use the original unmodified title value from WordPress (default is %s).', 'wpsso' ), $def_checked ) . ' ';
 
-							$text .= sprintf( __( 'Advanced users can also hook the \'%s\' filter and return true / false to enable / disable this feature.', 'wpsso' ), $this->p->lca . '_can_filter_title' );
-
 							break;
 
 						case 'tooltip-plugin_filter_content':
 
-							$text .= sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions and detect additional images and/or embedded videos provided by shortcodes.', 'wpsso' ), $info[ 'name' ] ) . ' ';
+							$text .= __( 'The use of WordPress content filters allows the plugin to fully render your content text for meta tag descriptions and detect additional images and/or embedded videos provided by shortcodes.', 'wpsso' ) . ' ';
 							
 							$text .= __( 'MANY THEMES AND PLUGINS HAVE BADLY CODED CONTENT FILTERS, so this option is disabled by default.', 'wpsso' ) . ' ';
 							
 							$text .= __( 'If you use shortcodes in your content text, this option should be enabled &mdash; IF YOU EXPERIENCE WEBPAGE LAYOUT OR PERFORMANCE ISSUES AFTER ENABLING THIS OPTION, determine which theme or plugin is filtering the content incorrectly and report the problem to its author(s).', 'wpsso' ) . ' ';
 							
-							$text .= sprintf( __( 'Advanced users can also hook the "%s" filter and return true / false to enable or disable this feature dynamically.', 'wpsso' ), $this->p->lca . '_can_filter_the_content' );
-
 							break;
 
 						case 'tooltip-plugin_filter_excerpt':
 
 							$text = __( 'Apply the WordPress \'get_the_excerpt\' filter to the excerpt text (default is unchecked). Enable this option if you use shortcodes in your excerpts, for example.', 'wpsso' ) . ' ';
 							
-							$text .= sprintf( __( 'Advanced users can also hook the \'%s\' filter and return true / false to enable / disable this feature.', 'wpsso' ), $this->p->lca . '_can_filter_the_excerpt' );
-
 							break;
 
 						case 'tooltip-plugin_p_strip':

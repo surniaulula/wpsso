@@ -1448,14 +1448,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_cache_status() {
 
-			$info           = $this->p->cf[ 'plugin' ][ $this->p->lca ];
-			$table_cols     = 3;
-			$transient_keys = $this->p->util->get_db_transient_keys();
+			$table_cols         = 3;
+			$db_transient_keys  = $this->p->util->get_db_transient_keys();
+			$all_transients_pre = $this->p->lca . '_';
+			$have_filtered_exp  = false;
 
 			echo '<table class="sucom-settings ' . $this->p->lca . ' column-metabox cache-status">';
 
 			echo '<tr><td colspan="' . $table_cols . '"><h4>';
-			echo sprintf( __( '%s Database Transients', 'wpsso' ), $info[ 'short' ] );
+			echo sprintf( __( '%s Database Transients', 'wpsso' ), $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'short' ] );
 			echo '</h4></td></tr>';
 
 			echo '<tr>';
@@ -1465,14 +1466,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '</tr>';
 
 			/**
-			 * Make sure the "All Transients" count is last.
+			 * The $this->p->cf is filtered and may have been modified by add-ons,
+			 * so make sure the "All Transients" count is last.
 			 */
-			if ( isset( $this->p->cf[ 'wp' ][ 'transient' ][ $this->p->lca . '_' ] ) ) {	
-				SucomUtil::move_to_end( $this->p->cf[ 'wp' ][ 'transient' ], $this->p->lca . '_' );
+			if ( isset( $this->p->cf[ 'wp' ][ 'transient' ][ $all_transients_pre ] ) ) {	
+				SucomUtil::move_to_end( $this->p->cf[ 'wp' ][ 'transient' ], $all_transients_pre );
 			}
-
-			$short_urls_count  = 0;
-			$have_filtered_exp = false;
 
 			foreach ( $this->p->cf[ 'wp' ][ 'transient' ] as $cache_md5_pre => $cache_info ) {
 
@@ -1484,15 +1483,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$cache_text_dom     = empty( $cache_info[ 'text_domain' ] ) ? $this->p->lca : $cache_info[ 'text_domain' ];
 				$cache_label_transl = _x( $cache_info[ 'label' ], 'option label', $cache_text_dom );
-				$cache_count        = count( preg_grep( '/^' . $cache_md5_pre . '/', $transient_keys ) );
+				$cache_count        = count( preg_grep( '/^' . $cache_md5_pre . '/', $db_transient_keys ) );
 				$cache_opt_key      = isset( $cache_info[ 'opt_key' ] ) ? $cache_info[ 'opt_key' ] : false;
 				$cache_exp_secs     = $cache_opt_key && isset( $this->p->options[ $cache_opt_key ] ) ? $this->p->options[ $cache_opt_key ] : 0;
 				$cache_exp_html     = $cache_opt_key ? $cache_exp_secs : '';
 				
-				if ( $cache_md5_pre === $this->p->lca . '_s_' ) {
-					$short_urls_count = $cache_count;
-				}
-
 				if ( ! empty( $cache_info[ 'filter' ] ) ) {
 
 					$filter_name        = $cache_info[ 'filter' ];
@@ -1504,22 +1499,29 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					}
 				}
 
-				echo '<tr>' . "\n";
+				echo '<tr>';
 				echo '<th class="cache-label">' . $cache_label_transl . ':</th>';
 				echo '<td class="cache-count">' . $cache_count . '</td>';
-				echo '<td class="cache-expiration">' . $cache_exp_html . '</td>';
+
+				if ( $cache_md5_pre === $all_transients_pre ) {
+					echo '</tr>' . "\n" . '<tr>';
+					echo '<th class="cache-label"></th>';
+					echo '<td class="cache-count">' . $this->p->util->get_db_transient_size_mb() . '</td>';
+					echo '<td class="cache-expiration" style="text-align:left;">' . __( 'MB', 'wpsso' ) . '</td>';
+				} else {
+					echo '<td class="cache-expiration">' . $cache_exp_html . '</td>';
+				}
+
 				echo '</tr>' . "\n";
 			}
 
-			do_action( $this->p->lca . '_column_metabox_cache_status_table_rows', $table_cols, $this->form, $transient_keys );
+			do_action( $this->p->lca . '_column_metabox_cache_status_table_rows', $table_cols, $this->form, $db_transient_keys );
 
 			if ( $have_filtered_exp ) {
-				if ( self::$pkg[ $this->p->lca ][ 'pp' ] ) {
-					echo '<tr><td></td></tr>' . "\n";
-					echo '<tr><td colspan="' . $table_cols . '"><p><small>[F] ' .
-						__( 'The expiration option value is modified by a filter.',
-							'wpsso' ) . '</small></p></td></tr>' . "\n";
-				}
+				echo '<tr><td></td></tr>' . "\n";
+				echo '<tr><td colspan="' . $table_cols . '"><p><small>[F] ' .
+					__( 'The expiration option value is modified by a filter.',
+						'wpsso' ) . '</small></p></td></tr>' . "\n";
 			}
 
 			echo '</table>';
@@ -2275,15 +2277,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			global $wpdb;
 
-			$query = 'SHOW VARIABLES LIKE "%s";';
-			$args  = array( 'max_allowed_packet' );
+			$db_query = 'SHOW VARIABLES LIKE "%s";';
+			$db_args  = array( 'max_allowed_packet' );
 
-			$query = $wpdb->prepare( $query, $args );
+			$db_query = $wpdb->prepare( $db_query, $db_args );
 
 			/**
 			 * OBJECT_K returns an associative array of objects.
 			 */
-			$result = $wpdb->get_results( $query, OBJECT_K );
+			$result = $wpdb->get_results( $db_query, OBJECT_K );
 
 			/**
 			 * https://dev.mysql.com/doc/refman/8.0/en/program-variables.html
