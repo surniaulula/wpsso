@@ -2294,8 +2294,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 *    migrate the schema.org site itself towards using https: as the default
 				 *    version of the site and our preferred form in examples.
 				 */
-				'schema_type' => array(	// Element of 'head' array.
-					'thing' => array(	// Most generic type.
+				'schema_type' => array(				// Element of 'head' array.
+					'thing' => array(			// Most generic type.
 						'creative.work' => array(	// Creative work, including books, movies, photographs, software programs, etc.
 							'answer'  => 'https://schema.org/Answer',
 							'article' => array(

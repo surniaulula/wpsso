@@ -1506,7 +1506,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( $cache_md5_pre === $all_transients_pre ) {
 					echo '</tr>' . "\n" . '<tr>';
 					echo '<th class="cache-label"></th>';
-					echo '<td class="cache-count">' . $this->p->util->get_db_transient_size_mb() . '</td>';
+					echo '<td class="cache-count">' . $this->p->util->get_db_transient_size_mb( $decimals = 1 ) . '</td>';
 					echo '<td class="cache-expiration" style="text-align:left;">' . __( 'MB', 'wpsso' ) . '</td>';
 				} else {
 					echo '<td class="cache-expiration">' . $cache_exp_html . '</td>';

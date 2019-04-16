@@ -1306,10 +1306,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark( 'build json array' );	// Begin timer for json array.
 			}
 
-			$graph_data    = array();
-			$json_scripts  = array();
 			$page_type_id  = $mt_og[ 'schema:type:id' ]  = $this->get_mod_schema_type( $mod, $get_schema_id = true );	// Example: article.tech.
 			$page_type_url = $mt_og[ 'schema:type:url' ] = $this->get_schema_type_url( $page_type_id );		// Example: https://schema.org/TechArticle.
+			$graph_context = 'https://schema.org';
+			$graph_data    = array();
+			$json_scripts  = array();
 
 			list(
 				$mt_og[ 'schema:type:context' ],
@@ -1449,7 +1450,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					} elseif ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'existing @type property is ' . print_r( $json_data[ '@type' ], true ) );	// @type can be an array.
 					}
-	
+
 					$graph_data[] = $json_data;
 				}
 
@@ -1460,7 +1461,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$json_scripts[][] = '<script type="application/ld+json">' .
 				$this->p->util->json_format( array(
-					'@context' => 'https://schema.org',
+					'@context' => $graph_context,
 					'@graph'   => $graph_data,
 				) ) .
 				'</script>' . "\n";

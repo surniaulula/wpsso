@@ -1623,17 +1623,15 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			global $wpdb;
 
-			$db_query = 'SELECT CHAR_LENGTH( option_value ) / 1024';
+			$db_query = 'SELECT CHAR_LENGTH( option_value ) / 1024 / 1024';
 			$db_query .= ', CHAR_LENGTH( option_value )';
 			$db_query .= ' FROM ' . $wpdb->options;
 			$db_query .= ' WHERE option_name LIKE \'_transient_' . $this->p->lca . '_%\'';
 			$db_query .= ';';	// End of query.
 
 			$result  = $wpdb->get_col( $db_query );
-			$size_kb = array_sum( $result );
-			$size_mb = number_format( $size_kb / 1024, $decimals, $dec_point, $thousands_sep );
 
-			return $size_mb;
+			return number_format( array_sum( $result ), $decimals, $dec_point, $thousands_sep );
 		}
 
 		public function get_db_transient_keys( $only_expired = false ) {
