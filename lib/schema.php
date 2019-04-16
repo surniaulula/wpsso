@@ -1466,7 +1466,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'</script>' . "\n";
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( $json_scripts );
 				$this->p->debug->mark( 'build json array' );	// End timer for json array.
 			}
 
