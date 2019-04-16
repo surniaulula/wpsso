@@ -435,7 +435,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* Fixed the "Select or Upload Image" button functionality when the SSO metabox is refreshed via ajax (ie. after clicking "Update" in the new block editor).
 * *Developer Notes*
-	* None.
+	* Moved the Schema json data for a webpage into a single '@graph' array.
 
 **Version 4.28.0 (2019/04/13)**
 
