@@ -364,7 +364,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->meta_name = new WpssoMetaName( $this );		// Meta name tags.
 			$this->noscript  = new WpssoNoScript( $this );		// NoScript containers.
 			$this->og        = new WpssoOpenGraph( $this );		// Open Graph meta tags.
-			$this->schema    = new WpssoSchema( $this );		// Schema meta tags and json markup.
+			$this->schema    = new WpssoSchema( $this );		// Schema json markup.
 			$this->tc        = new WpssoTwitterCard( $this );	// Twitter Card meta tags.
 			$this->weibo     = new WpssoWeibo( $this );		// Weibo meta tags.
 
