@@ -14,7 +14,7 @@
  * Requires At Least: 3.8
  * Tested Up To: 5.1.1
  * WC Tested Up To: 3.5
- * Version: 4.28.1-dev.3
+ * Version: 4.28.1-dev.4
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -62,7 +62,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 * Library class object variables for meta tags and markup.
 		 */
 		public $link_rel;	// WpssoLinkRel
+		public $meta_item;	// WpssoMetaItem
 		public $meta_name;	// WpssoMetaName
+		public $noscript;	// WpssoNoScript
 		public $og;		// WpssoOpenGraph
 		public $schema;		// WpssoSchema
 		public $tc;		// WpssoTwitterCard
@@ -358,11 +360,13 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 * Meta tags and json-ld markup.
 			 */
 			$this->link_rel  = new WpssoLinkRel( $this );		// Link relation tags.
+			$this->meta_item = new WpssoMetaItem( $this );		// Meta name tags.
 			$this->meta_name = new WpssoMetaName( $this );		// Meta name tags.
+			$this->noscript  = new WpssoNoScript( $this );		// NoScript containers.
 			$this->og        = new WpssoOpenGraph( $this );		// Open Graph meta tags.
-			$this->weibo     = new WpssoWeibo( $this );		// Weibo meta tags.
-			$this->tc        = new WpssoTwitterCard( $this );	// Twitter Card meta tags.
 			$this->schema    = new WpssoSchema( $this );		// Schema meta tags and json markup.
+			$this->tc        = new WpssoTwitterCard( $this );	// Twitter Card meta tags.
+			$this->weibo     = new WpssoWeibo( $this );		// Weibo meta tags.
 
 			if ( $is_admin ) {
 				$this->msgs  = new WpssoMessages( $this );	// admin tooltip messages

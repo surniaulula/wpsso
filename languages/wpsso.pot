@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.28.1-dev.3\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.28.1-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3301,27 +3301,27 @@ msgid ""
 "Video discovery and integration modules are provided with the Pro version."
 msgstr ""
 
-#: lib/head.php:560
+#: lib/head.php:559
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:572
+#: lib/head.php:571
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:579
+#: lib/head.php:578
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:586
+#: lib/head.php:585
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:593
+#: lib/head.php:592
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:600
+#: lib/head.php:599
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -5967,36 +5967,36 @@ msgstr ""
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
-#: lib/schema.php:63 lib/schema.php:68
+#: lib/schema.php:43 lib/schema.php:48
 msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:2656 lib/schema.php:2661
+#: lib/schema.php:2500 lib/schema.php:2505
 msgid "adding schema for %1$s ID %2$s"
 msgstr ""
 
-#: lib/schema.php:3474
+#: lib/schema.php:3318
 msgid "adding schema for offer"
 msgstr ""
 
-#: lib/schema.php:3565
+#: lib/schema.php:3409
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:3607
+#: lib/schema.php:3451
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:3614
+#: lib/schema.php:3458
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:3892
+#: lib/schema.php:3736
 msgid "adding schema for place"
 msgstr ""
 
@@ -6753,38 +6753,38 @@ msgstr ""
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: wpsso.php:391
+#: wpsso.php:395
 msgid ""
 "Database option table row \"%1$s\" for plugin settings was found and "
 "converted to \"%2$s\"."
 msgstr ""
 
-#: wpsso.php:411
+#: wpsso.php:415
 msgid ""
 "Database site option table row \"%1$s\" for plugin settings was found and "
 "converted to \"%2$s\"."
 msgstr ""
 
-#: wpsso.php:444
+#: wpsso.php:448
 msgid ""
 "WP debug logging mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:462
+#: wpsso.php:466
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: wpsso.php:472
+#: wpsso.php:476
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:473
+#: wpsso.php:477
 msgid "Please disable debug mode when debugging is complete."
 msgstr ""
 

@@ -263,8 +263,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			/**
-			 * Save meta tag values for later sorting in list
-			 * tables.
+			 * Save meta tag values for later sorting in list tables.
 			 */
 			foreach ( WpssoWpMeta::get_sortable_columns() as $col_key => $col_info ) {
 				
@@ -562,65 +561,65 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
 
 			/**
-			 * Weibo
+			 * Weibo.
 			 */
 			$mt_weibo = $this->p->weibo->get_array( $mod, $mt_og, $crawler_name );
 
 			/**
-			 * Twitter Cards
+			 * Twitter Cards.
 			 */
 			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod, __( 'adding twitter card meta tags', 'wpsso' ) ) : false;
 			$mt_tc = $this->p->tc->get_array( $mod, $mt_og, $crawler_name );
 			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
 
 			/**
-			 * Name / SEO meta tags
+			 * Name / SEO meta tags.
 			 */
 			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod, __( 'adding meta name meta tags', 'wpsso' ) ) : false;
 			$mt_name = $this->p->meta_name->get_array( $mod, $mt_og, $crawler_name, $author_id );
 			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
 
 			/**
-			 * Link relation tags
+			 * Link relation tags.
 			 */
 			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod, __( 'adding link relation tags', 'wpsso' ) ) : false;
 			$link_rel = $this->p->link_rel->get_array( $mod, $mt_og, $crawler_name, $author_id, $sharing_url );
 			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
 
 			/**
-			 * Schema meta tags
+			 * Schema itemprop meta tags.
 			 */
 			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod, __( 'adding schema meta tags', 'wpsso' ) ) : false;
-			$mt_schema = $this->p->schema->get_meta_array( $mod, $mt_og, $crawler_name );
+			$mt_item = $this->p->meta_item->get_array( $mod, $mt_og, $crawler_name );
 			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
 
 			/**
-			 * JSON-LD script
+			 * Schema json-ld scripts.
 			 */
 			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod, __( 'adding schema json-ld markup', 'wpsso' ) ) : false;
-			$mt_json_array = $this->p->schema->get_json_array( $mod, $mt_og, $crawler_name );
+			$json_ld = $this->p->schema->get_array( $mod, $mt_og, $crawler_name );
 			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
 
 			/**
-			 * Generator meta tags
+			 * Generator meta tags.
 			 */
-			$mt_generators[ 'generator' ] = $this->p->check->get_ext_list();
+			$mt_gen = array( 'generator' => $this->p->check->get_ext_list() );
 
 			/**
-			 * Combine and return all meta tags
+			 * Combine and return all meta tags.
 			 */
 			$mt_og = $this->p->og->sanitize_array( $mod, $mt_og );	// Unset mis-matched og_type meta tags.
 
 			$cache_array[ $cache_index ] = array_merge(
-				$this->get_mt_array( 'meta', 'name', $mt_generators, $mod ),
+				$this->get_mt_array( 'meta', 'name', $mt_gen, $mod ),
 				$this->get_mt_array( 'link', 'rel', $link_rel, $mod ),
 				$this->get_mt_array( 'meta', 'property', $mt_og, $mod ),
 				$this->get_mt_array( 'meta', 'name', $mt_weibo, $mod ),
 				$this->get_mt_array( 'meta', 'name', $mt_tc, $mod ),
-				$this->get_mt_array( 'meta', 'itemprop', $mt_schema, $mod ),
+				$this->get_mt_array( 'meta', 'itemprop', $mt_item, $mod ),
 				$this->get_mt_array( 'meta', 'name', $mt_name, $mod ),	// SEO description is last.
-				$this->p->schema->get_noscript_array( $mod, $mt_og, $crawler_name ),
-				$mt_json_array
+				$this->p->noscript->get_array( $mod, $mt_og, $crawler_name ),
+				$json_ld
 			);
 
 			if ( $cache_exp_secs > 0 ) {

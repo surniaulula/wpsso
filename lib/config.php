@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'      => '4.28.1-dev.3',	// Plugin version.
+					'version'      => '4.28.1-dev.4',	// Plugin version.
 					'opt_version'  => '641',	// Increment when changing default option values.
 					'short'        => 'WPSSO Core',	// Short plugin name.
 					'name'         => 'WPSSO Core [Main Plugin]',
@@ -3304,7 +3304,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Meta tags and markup.
 			 */
 			require_once WPSSO_PLUGINDIR . 'lib/link-rel.php';
+			require_once WPSSO_PLUGINDIR . 'lib/meta-item.php';
 			require_once WPSSO_PLUGINDIR . 'lib/meta-name.php';
+			require_once WPSSO_PLUGINDIR . 'lib/noscript.php';
 			require_once WPSSO_PLUGINDIR . 'lib/opengraph.php';
 			require_once WPSSO_PLUGINDIR . 'lib/schema.php';
 			require_once WPSSO_PLUGINDIR . 'lib/twittercard.php';

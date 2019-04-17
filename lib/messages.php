@@ -1727,7 +1727,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '</p>';
 
-							if ( $this->p->schema->is_noscript_enabled() ) {
+							if ( WpssoNoScript::is_enabled() ) {
 
 								$text .= '<p><i>';
 

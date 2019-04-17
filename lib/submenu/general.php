@@ -258,7 +258,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$table_rows[ 'subsection_google_schema' ] = '<td colspan="2" class="subsection"><h4>' . 
 					_x( 'Structured Data / Schema Markup', 'metabox title', 'wpsso' ) . '</h4></td>';
 
-					if ( $this->p->schema->is_noscript_enabled() ) {
+					if ( WpssoNoScript::is_enabled() ) {
 						$table_rows[ 'schema_add_noscript' ] = $this->form->get_tr_hide( 'basic', 'schema_add_noscript' ) . 
 						$this->form->get_th_html( _x( 'Meta Property Containers', 'option label', 'wpsso' ), '', 'schema_add_noscript' ) . 
 						'<td>' . $this->form->get_checkbox( 'schema_add_noscript' ) . '</td>';
