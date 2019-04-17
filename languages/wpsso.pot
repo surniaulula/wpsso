@@ -5967,36 +5967,36 @@ msgstr ""
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
-#: lib/schema.php:43 lib/schema.php:48
+#: lib/schema.php:39 lib/schema.php:44
 msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:2500 lib/schema.php:2505
+#: lib/schema.php:2436 lib/schema.php:2441
 msgid "adding schema for %1$s ID %2$s"
 msgstr ""
 
-#: lib/schema.php:3318
+#: lib/schema.php:3254
 msgid "adding schema for offer"
 msgstr ""
 
-#: lib/schema.php:3409
+#: lib/schema.php:3345
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:3451
+#: lib/schema.php:3387
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:3458
+#: lib/schema.php:3394
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:3736
+#: lib/schema.php:3672
 msgid "adding schema for place"
 msgstr ""
 
@@ -6753,38 +6753,38 @@ msgstr ""
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: wpsso.php:395
+#: wpsso.php:397
 msgid ""
 "Database option table row \"%1$s\" for plugin settings was found and "
 "converted to \"%2$s\"."
 msgstr ""
 
-#: wpsso.php:415
+#: wpsso.php:417
 msgid ""
 "Database site option table row \"%1$s\" for plugin settings was found and "
 "converted to \"%2$s\"."
 msgstr ""
 
-#: wpsso.php:448
+#: wpsso.php:450
 msgid ""
 "WP debug logging mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:466
+#: wpsso.php:468
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: wpsso.php:476
+#: wpsso.php:478
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:477
+#: wpsso.php:479
 msgid "Please disable debug mode when debugging is complete."
 msgstr ""
 

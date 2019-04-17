@@ -594,7 +594,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
 
 			/**
-			 * Schema json-ld scripts.
+			 * Schema json scripts.
 			 */
 			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod, __( 'adding schema json-ld markup', 'wpsso' ) ) : false;
 			$json_ld = $this->p->schema->get_array( $mod, $mt_og, $crawler_name );

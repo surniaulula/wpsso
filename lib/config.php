@@ -3308,6 +3308,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			require_once WPSSO_PLUGINDIR . 'lib/meta-name.php';
 			require_once WPSSO_PLUGINDIR . 'lib/noscript.php';
 			require_once WPSSO_PLUGINDIR . 'lib/opengraph.php';
+			require_once WPSSO_PLUGINDIR . 'lib/pinterest.php';
 			require_once WPSSO_PLUGINDIR . 'lib/schema.php';
 			require_once WPSSO_PLUGINDIR . 'lib/twittercard.php';
 			require_once WPSSO_PLUGINDIR . 'lib/weibo.php';

@@ -66,6 +66,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $meta_name;	// WpssoMetaName
 		public $noscript;	// WpssoNoScript
 		public $og;		// WpssoOpenGraph
+		public $pinterest;	// WpssoPinterest
 		public $schema;		// WpssoSchema
 		public $tc;		// WpssoTwitterCard
 		public $weibo;		// WpssoWeibo
@@ -360,11 +361,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 * Meta tags and json-ld markup.
 			 */
 			$this->link_rel  = new WpssoLinkRel( $this );		// Link relation tags.
-			$this->meta_item = new WpssoMetaItem( $this );		// Meta name tags.
+			$this->meta_item = new WpssoMetaItem( $this );		// Meta itemprop tags.
 			$this->meta_name = new WpssoMetaName( $this );		// Meta name tags.
-			$this->noscript  = new WpssoNoScript( $this );		// NoScript containers.
+			$this->noscript  = new WpssoNoScript( $this );		// Noscript containers.
 			$this->og        = new WpssoOpenGraph( $this );		// Open Graph meta tags.
-			$this->schema    = new WpssoSchema( $this );		// Schema json markup.
+			$this->pinterest = new WpssoPinterest( $this );		// Pinterest image markup.
+			$this->schema    = new WpssoSchema( $this );		// Schema json scripts.
 			$this->tc        = new WpssoTwitterCard( $this );	// Twitter Card meta tags.
 			$this->weibo     = new WpssoWeibo( $this );		// Weibo meta tags.
 
