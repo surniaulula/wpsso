@@ -426,7 +426,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.28.1-dev.3 (2019/04/16)**
+**Version 4.28.1-dev.4 (2019/04/17)**
 
 * *New Features*
 	* None.
@@ -435,7 +435,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* Fixed the "Select or Upload Image" button functionality when the SSO metabox is refreshed via ajax (ie. after clicking "Update" in the new block editor).
 * *Developer Notes*
-	* Moved the Schema json data for a webpage into a single '@graph' array.
+	* Added a new WpssoNoScript class in lib/noscript.php.
+	* Added a new WpssoMetaItem class in lib/meta-item.php.
+	* Moved noscript meta tag related code from WpssoSchema to the new WpssoNoScript class.
+	* Moved itemprop meta tag related code from WpssoSchema to the new WpssoMetaItem class.
+	* Moved the Schema json arrays for a webpage into a single '@graph' array.
 
 **Version 4.28.0 (2019/04/13)**
 
@@ -495,9 +499,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.28.1-dev.3 =
+= 4.28.1-dev.4 =
 
-(2019/04/16) Fixed the "Select or Upload Image" button functionality when the SSO metabox is refreshed via ajax (ie. after clicking "Update" in the new block editor). Added a MB total for "All Transients" in the SSO &gt; Dashboard &gt; Cache Status metabox.
+(2019/04/17) Fixed the "Select or Upload Image" button functionality when the SSO metabox is refreshed via ajax (ie. after clicking "Update" in the new block editor). Added a MB total for "All Transients" in the SSO &gt; Dashboard &gt; Cache Status metabox.
 
 = 4.28.0 =
 
