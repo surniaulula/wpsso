@@ -29,7 +29,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			 */
 			if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) || ! $this->p->check->pp( 'wpssojson' ) ) {
 				if ( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) {
-					add_filter( 'woocommerce_structured_data_product', array( $this, 'add_wc_product_id_marker' ), 1000, 2 );
+					add_filter( 'woocommerce_structured_data_product', array( __CLASS__, 'add_wc_product_id_marker' ), 1000, 2 );
 				}
 			}
 
@@ -90,7 +90,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			}
 		}
 
-		public function add_wc_product_id_marker( $json_data, $product ) {
+		public static function add_wc_product_id_marker( $json_data, $product ) {
 
 			if ( ! empty( $json_data[ '@id' ] ) ) {
 
