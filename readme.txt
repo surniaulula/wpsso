@@ -435,10 +435,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* Fixed the "Select or Upload Image" button functionality when the SSO metabox is refreshed via ajax (ie. after clicking "Update" in the new block editor).
 * *Developer Notes*
-	* Added a new WpssoNoScript class in lib/noscript.php.
 	* Added a new WpssoMetaItem class in lib/meta-item.php.
-	* Moved noscript meta tag related code from WpssoSchema to the new WpssoNoScript class.
+	* Added a new WpssoNoScript class in lib/noscript.php.
+	* Added a new WpssoPinterest class in lib/pinterest.php.
 	* Moved itemprop meta tag related code from WpssoSchema to the new WpssoMetaItem class.
+	* Moved noscript meta tag related code from WpssoSchema to the new WpssoNoScript class.
+	* Moved pinterest markup related code from WpssoSchema to the new WpssoPinterest class.
 	* Moved the Schema json arrays for a webpage into a single '@graph' array.
 
 **Version 4.28.0 (2019/04/13)**
