@@ -6749,7 +6749,7 @@ msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/wp-meta.php:946
+#: lib/wp-meta.php:950
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 

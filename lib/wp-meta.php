@@ -833,7 +833,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			foreach ( $cache_types as $type_name => $type_keys ) {
 
+				/**
+				 * $filter_name example: 'wpsso_post_cache_transient_keys'.
+				 */
 				$filter_name = $this->p->lca . '_' . $mod[ 'name' ] . '_cache_' . $type_name . '_keys';
+
 				$type_keys = (array) apply_filters( $filter_name, $type_keys, $mod, $sharing_url, $mod_salt );
 
 				foreach ( $type_keys as $mixed ) {
