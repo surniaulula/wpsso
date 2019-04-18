@@ -30,7 +30,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'open graph',
 						'pinterest',
 						'rich card',
+						'rich results',
 						'rich pin',
+						'structured data',
 						'schema',
 						'seo',
 						'sharing',
@@ -232,7 +234,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssobc' => array(			// Plugin acronym.
 					'short'       => 'WPSSO BC',		// Short plugin name.
 					'name'        => 'WPSSO Schema Breadcrumbs Markup',
-					'desc'        => 'WPSSO Core add-on offers Schema BreadcrumbList markup using the preferred JSON-LD format for Google Rich Cards and SEO.',
+					'desc'        => 'WPSSO Core add-on offers Schema BreadcrumbList markup using Google\'s preferred JSON-LD format for Rich Results and SEO.',
 					'slug'        => 'wpsso-breadcrumbs',
 					'base'        => 'wpsso-breadcrumbs/wpsso-breadcrumbs.php',
 					'update_auth' => '',
@@ -308,7 +310,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssojson' => array(			// Plugin acronym.
 					'short'       => 'WPSSO JSON',	// Short plugin name.
 					'name'        => 'WPSSO Schema JSON-LD Markup',
-					'desc'        => 'WPSSO Core add-on offers Schema JSON-LD / Rich Card markup for Articles, Events, Local Business, Products, Recipes, Reviews and many more.',
+					'desc'        => 'WPSSO Core add-on offers Schema JSON-LD / Rich Results markup for Articles, Events, Local Business, Products, Recipes, Reviews and many more.',
 					'slug'        => 'wpsso-schema-json-ld',
 					'base'        => 'wpsso-schema-json-ld/wpsso-schema-json-ld.php',
 					'update_auth' => 'tid',
@@ -575,7 +577,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssossm' => array(			// Plugin acronym.
 					'short'       => 'WPSSO SSM',		// Short plugin name.
 					'name'        => 'WPSSO Strip Schema Microdata',
-					'desc'        => 'WPSSO Core add-on to remove outdated or incomplete Schema Microdata to use Google\'s preferred Schema JSON-LD / Rich Card markup.',
+					'desc'        => 'WPSSO Core add-on to remove outdated / incomplete Schema Microdata to use Google\'s preferred Schema JSON-LD for Rich Results and SEO.',
 					'slug'        => 'wpsso-strip-schema-microdata',
 					'base'        => 'wpsso-strip-schema-microdata/wpsso-strip-schema-microdata.php',
 					'update_auth' => '',

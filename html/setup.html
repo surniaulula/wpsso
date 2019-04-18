@@ -42,7 +42,7 @@
 <p><strong>Do not forget to submit a few example posts / pages to the validation tools mentioned bellow.</strong> Some markup formats, like Pinterest Rich Pins, must be requested / enabled when submitting an example post / page to their validation tool.</p>
 </dd>
 
-<dt><h3>Schema vs Google Rich Cards</h3></dt>
+<dt><h3>Schema vs Google Rich Results</h3></dt>
 
 <dd>
 <p>
@@ -50,15 +50,15 @@ Schema (aka "Schema.org") is a collaborative, community lead standard for struct
 </p>
 
 <p>
-<a href="https://developers.google.com/search/docs/guides/intro-structured-data">Google Rich Cards are a set of minimum requirements for some Schema types</a>, which includes specific images dimensions (example, a 600x60px banner "logo" image for article publishers), limited selections for some properties (example, product conditions), specific Schema types for some property relations, and much more. Google Rich Cards require several layers of Schema markup (aka a multi-dimensional array) that can be expressed using JSON-LD scripts in the webpage header or footer (preferred by Google), or with RDFa or Microdata markup in theme templates (older standard).
+<a href="https://developers.google.com/search/docs/guides/intro-structured-data">Google Rich Results are a set of minimum requirements for some Schema types</a>, which includes specific images dimensions (example, a 600x60px banner "logo" image for article publishers), limited selections for some properties (example, product conditions), specific Schema types for some property relations, and much more. Google Rich Results require several layers of Schema markup (aka a multi-dimensional array) that can be expressed using JSON-LD scripts in the webpage header or footer (preferred by Google), or with RDFa or Microdata markup in theme templates (older standard).
 </p>
 
 <p>
-If your theme templates do not include RDFa or Microdata markup for Google Rich Cards, you should enable the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> add-on. And if your theme templates include <em>incomplete or incorrect</em> RDFa or Microdata markup, you should enable both the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> add-on and the <a href="https://wordpress.org/plugins/wpsso-strip-schema-microdata/">WPSSO Strip Schema Microdata</a> add-on (to remove the incomplete or incorrect markup from your templates).
+If your theme templates do not include RDFa or Microdata markup for Google Rich Results, you should enable the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> add-on. And if your theme templates include <em>incomplete or incorrect</em> RDFa or Microdata markup, you should enable both the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> add-on and the <a href="https://wordpress.org/plugins/wpsso-strip-schema-microdata/">WPSSO Strip Schema Microdata</a> add-on (to remove the incomplete or incorrect markup from your templates).
 </p>
 
 <p>
-<strong>Not sure if your theme templates support Google Rich Cards?</strong> Submit an example post / page URL from your site (not the home page) to the <a href="https://search.google.com/structured-data/testing-tool/u/0/">Google Structured Data Testing Tool</a>, and compare the results before / after enabling the WPSSO JSON add-on. Between checks, don't forget to clear the cache of any caching plugin or service you may use, along with clearing the WPSSO cache in the SSO &gt; Tools settings page.
+<strong>Not sure if your theme templates support Google Rich Results?</strong> Submit an example post / page URL from your site (not the home page) to the <a href="https://search.google.com/structured-data/testing-tool/u/0/">Google Structured Data Testing Tool</a>, and compare the results before / after enabling the WPSSO JSON add-on. Between checks, don't forget to clear the cache of any caching plugin or service you may use, along with clearing the WPSSO cache in the SSO &gt; Tools settings page.
 </p>
 </dd>
 
@@ -174,9 +174,9 @@ If your theme templates do not include RDFa or Microdata markup for Google Rich 
 
 <p>The <a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/">WooCommerce Integration notes</a> is useful to include additional product information in meta tags and Schema markup, like the product brand, color, condition, material, size, etc.</p>
 
-<p>The WooCommerce plugin offers incomplete Schema markup for Google's Product Rich Card requirements.</p>
+<p>The <a href="https://wordpress.org/plugins/woocommerce/">WooCommerce plugin by Automattic</a> offers incomplete Schema markup for Google's Product Rich Results requirements.</p>
 
-<p>The Schema markup provided by the <a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup Pro add-on</a> includes <em>complete and correct</em> markup for Google Rich Cards,  with additional product images, product variations, product attributes (brand, color, condition, dimensions, EAN, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, and much, much more.</p>
+<p>The Schema markup provided by the <a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup Pro add-on</a> includes <em>complete and correct</em> markup for Google Rich Results / Rich Cards, with additional product images, product variations, product attributes (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, and much, much more.</p>
 </dd>
 
 <dt><h3>Developers and WebSite Designers</h3></dt>
