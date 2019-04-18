@@ -30,7 +30,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'open graph',
 						'pinterest',
 						'rich card',
-						'rich results',
+						'rich result',
 						'rich pin',
 						'structured data',
 						'schema',

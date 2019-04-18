@@ -1303,7 +1303,7 @@ msgstr ""
 
 #: lib/gettext-config.php:46
 msgctxt "search term"
-msgid "rich results"
+msgid "rich result"
 msgstr ""
 
 #: lib/gettext-config.php:47

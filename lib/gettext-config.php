@@ -43,7 +43,7 @@ _x( 'meta tag', 'search term', 'wpsso' );
 _x( 'open graph', 'search term', 'wpsso' );
 _x( 'pinterest', 'search term', 'wpsso' );
 _x( 'rich card', 'search term', 'wpsso' );
-_x( 'rich results', 'search term', 'wpsso' );
+_x( 'rich result', 'search term', 'wpsso' );
 _x( 'rich pin', 'search term', 'wpsso' );
 _x( 'structured data', 'search term', 'wpsso' );
 _x( 'schema', 'search term', 'wpsso' );
