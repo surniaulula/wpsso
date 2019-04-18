@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'      => '4.29.0-dev.5',	// Plugin version.
+					'version'      => '4.29.0-b.1',	// Plugin version.
 					'opt_version'  => '641',	// Increment when changing default option values.
 					'short'        => 'WPSSO Core',	// Short plugin name.
 					'name'         => 'WPSSO Core [Main Plugin]',
@@ -2366,7 +2366,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 									'webpage.gallery.video' => 'https://schema.org/VideoGallery',
 								),
 								'webpage.contact'        => 'https://schema.org/ContactPage',
-								'webpage.faq'            => 'https://pending.schema.org/FAQPage',
+								'webpage.faq'            => 'https://schema.org/FAQPage',
 								'webpage.item'           => 'https://schema.org/ItemPage',
 								'webpage.medical'        => 'https://health-lifesci.schema.org/MedicalWebPage',
 								'webpage.profile'        => 'https://schema.org/ProfilePage',
@@ -2853,7 +2853,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 				),
 				'schema_url_fix' => array(	// Element of 'head' array.
-					'https://schema.org/FAQPage'  => 'https://pending.schema.org/FAQPage',
+					//'https://schema.org/FAQPage' => 'https://pending.schema.org/FAQPage',
 				),
 				'schema_renamed' => array(	// Element of 'head' array.
 					'anesthesia'           => 'anesthesia.specialty',

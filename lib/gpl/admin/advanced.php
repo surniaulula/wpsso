@@ -361,12 +361,12 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$form->get_td_no_checkbox( 'plugin_clear_all_refresh' ) . 
 			WpssoAdmin::get_option_site_use( 'plugin_clear_all_refresh', $form, $network );
 
-			$table_rows[ 'plugin_clear_post_terms' ] = '' . 
+			$table_rows[ 'plugin_clear_post_terms' ] = $form->get_tr_hide( 'basic', 'plugin_clear_post_terms' ) . 
 			$form->get_th_html( _x( 'Clear Term Cache for Published Post', 'option label', 'wpsso' ), '', 'plugin_clear_post_terms' ) . 
 			$form->get_td_no_checkbox( 'plugin_clear_post_terms' ) . 
 			WpssoAdmin::get_option_site_use( 'plugin_clear_post_terms', $form, $network );
 
-			$table_rows[ 'plugin_clear_for_comment' ] = '' . 
+			$table_rows[ 'plugin_clear_for_comment' ] = $form->get_tr_hide( 'basic', 'plugin_clear_for_comment' ) . 
 			$form->get_th_html( _x( 'Clear Post Cache for New Comment', 'option label', 'wpsso' ), '', 'plugin_clear_for_comment' ) . 
 			$form->get_td_no_checkbox( 'plugin_clear_for_comment' ) . 
 			WpssoAdmin::get_option_site_use( 'plugin_clear_for_comment', $form, $network );

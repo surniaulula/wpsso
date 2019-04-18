@@ -257,6 +257,22 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return self::return_data_from_filter( $json_data, $ret, $is_main );
 		}
 
+		public function has_json_data_filter( array &$mod, $type_url = '' ) {
+
+			$filter_name = $this->get_json_data_filter( $mod, $type_url );
+
+			return ! empty( $filter_name ) && has_filter( $filter_name ) ? true : false;
+		}
+
+		public function get_json_data_filter( array &$mod, $type_url = '' ) {
+
+			if ( empty( $type_url ) ) {
+				$type_url = $this->get_mod_schema_type( $mod );
+			}
+
+			return $this->p->lca . '_json_data_' . SucomUtil::sanitize_hookname( $type_url );
+		}
+
 		/**
 		 * Schema json scripts.
 		 *
@@ -1725,9 +1741,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return 1;	// Return count of images added.
 		}
 
-		/**
-		 * Since WPSSO Core v4.27.1.
-		 */
 		public static function add_aggregate_offer_data( &$json_data, array $mod, array $mt_offers ) {
 
 			$wpsso =& Wpsso::get_instance();
@@ -2209,6 +2222,26 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
+		/**
+		 * Returns the number of Schema properties added to $json_data.
+		 *
+		 * Example usage:
+		 *
+		 *	WpssoSchema::add_data_itemprop_from_assoc( $ret, $mt_og, array(
+		 *		'datePublished' => 'article:published_time',
+		 *		'dateModified'  => 'article:modified_time',
+		 *	) );
+		 *
+		 *	WpssoSchema::add_data_itemprop_from_assoc( $ret, $org_opts, array(
+		 *		'url'           => 'org_url',
+		 *		'name'          => 'org_name',
+		 *		'alternateName' => 'org_name_alt',
+		 *		'description'   => 'org_desc',
+		 *		'email'         => 'org_email',
+		 *		'telephone'     => 'org_phone',
+		 *	) );
+		 *
+		 */
 		public static function add_data_itemprop_from_assoc( array &$json_data, array $assoc, array $names, $overwrite = true ) {
 
 			$wpsso =& Wpsso::get_instance();
@@ -2255,6 +2288,27 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $prop_added;
 		}
 
+		/**
+		 * Example usage:
+		 *
+		 *	$offer = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array( 
+		 *		'url'             => 'product:url',
+		 *		'name'            => 'product:title',
+		 *		'description'     => 'product:description',
+		 *		'category'        => 'product:category',
+		 *		'mpn'             => 'product:mfr_part_no',
+		 *		'sku'             => 'product:sku',	// Non-standard / internal meta tag.
+		 *		'gtin8'           => 'product:gtin8',
+		 *		'gtin12'          => 'product:gtin12',
+		 *		'gtin13'          => 'product:gtin13',
+		 *		'gtin14'          => 'product:gtin14',
+		 *		'itemCondition'   => 'product:condition',
+		 *		'availability'    => 'product:availability',
+		 *		'price'           => 'product:price:amount',
+		 *		'priceCurrency'   => 'product:price:currency',
+		 *		'priceValidUntil' => 'product:sale_price_dates:end',
+		 *	) );
+		 */
 		public static function get_data_itemprop_from_assoc( array $assoc, array $names, $exclude = array( '' ) ) {
 
 			$wpsso =& Wpsso::get_instance();
@@ -2280,6 +2334,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return empty( $json_data ) ? false : $json_data;
 		}
 
+		/**
+		 * Example usage:
+		 *
+		 *	WpssoSchema::check_itemprop_content_map( $offer, 'itemCondition', 'product:condition' );
+		 *	WpssoSchema::check_itemprop_content_map( $offer, 'availability', 'product:availability' );
+		 */
 		public static function check_itemprop_content_map( &$json_data, $prop_name, $map_name ) {
 
 			$wpsso =& Wpsso::get_instance();
@@ -2325,22 +2385,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 				}
 			}
-		}
-
-		public function has_json_data_filter( array &$mod, $type_url = '' ) {
-
-			$filter_name = $this->get_json_data_filter( $mod, $type_url );
-
-			return ! empty( $filter_name ) && has_filter( $filter_name ) ? true : false;
-		}
-
-		public function get_json_data_filter( array &$mod, $type_url = '' ) {
-
-			if ( empty( $type_url ) ) {
-				$type_url = $this->get_mod_schema_type( $mod );
-			}
-
-			return $this->p->lca . '_json_data_' . SucomUtil::sanitize_hookname( $type_url );
 		}
 
 		public static function update_json_data_id( &$json_data, $type_id ) {
