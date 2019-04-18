@@ -1204,7 +1204,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				delete_user_meta( $user_id, $meta_key );
 			}
 
-			$this->clear_mod_cache_types( $mod );
+			$this->clear_mod_cache( $mod );
 		}
 
 		public function user_can_edit( $user_id, $rel_id = false ) {

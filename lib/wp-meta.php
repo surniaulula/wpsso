@@ -802,7 +802,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $this->must_be_extended( __METHOD__ );
 		}
 
-		protected function clear_mod_cache_types( array $mod, array $cache_types = array(), $sharing_url = false ) {
+		protected function clear_mod_cache( array $mod, array $cache_types = array(), $sharing_url = false ) {
 
 			if ( false === $sharing_url ) {
 				$sharing_url = $this->p->util->get_sharing_url( $mod );
@@ -817,9 +817,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			);
 
 			$cache_types[ 'transient' ][] = array(
-				'id'   => $this->p->lca . '_j_' . md5( 'WpssoSchema::get_mod_cache_data(' . $mod_salt . ')' ),
+				'id'   => $this->p->lca . '_j_' . md5( 'WpssoSchemaCache::mod_data(' . $mod_salt . ')' ),
 				'pre'  => $this->p->lca . '_j_',
-				'salt' => 'WpssoSchema::get_mod_cache_data(' . $mod_salt . ')',
+				'salt' => 'WpssoSchemaCache::mod_data(' . $mod_salt . ')',
 			);
 
 			$cache_types[ 'wp_cache' ][] = array(

@@ -602,7 +602,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				self::delete_term_meta( $term_id, $meta_key );
 			}
 
-			$this->clear_mod_cache_types( $mod );
+			$this->clear_mod_cache( $mod );
 		}
 
 		public function user_can_edit( $term_id, $term_tax_id = false ) {

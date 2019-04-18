@@ -1452,7 +1452,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				);
 			}
 
-			$this->clear_mod_cache_types( $mod, $cache_types );
+			$this->clear_mod_cache( $mod, $cache_types );
 
 			/**
 			 * Clear the post terms (categories, tags, etc.) for published (aka public) posts.

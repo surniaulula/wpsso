@@ -17,30 +17,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'      => '4.29.0-dev.4',	// Plugin version.
+					'version'      => '4.29.0-dev.5',	// Plugin version.
 					'opt_version'  => '641',	// Increment when changing default option values.
 					'short'        => 'WPSSO Core',	// Short plugin name.
 					'name'         => 'WPSSO Core [Main Plugin]',
 					'desc'         => 'WPSSO Core makes sure your content looks great on all social and search sites - no matter how URLs are crawled, shared, re-shared, posted, or embedded!',
-					'search_terms' => array(
-						'facebook',
-						'google',
-						'linkedin',
-						'meta tag',
-						'open graph',
-						'pinterest',
-						'rich card',
-						'rich result',
-						'rich pin',
-						'structured data',
-						'schema',
-						'seo',
-						'sharing',
-						'snippet',
-						'social',
-						'twitter',
-						'woocommerce',
-					),
 					'slug'        => 'wpsso',
 					'base'        => 'wpsso/wpsso.php',
 					'update_auth' => 'tid',

@@ -523,7 +523,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					/**
 					 * Force a refresh of the schema json data cache.
 					 */
-					WpssoSchema::delete_mod_cache_data( $mod );
+					WpssoSchemaCache::delete_mod_data( $mod );
 				}
 
 			} else {
