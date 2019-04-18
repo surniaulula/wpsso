@@ -31,7 +31,7 @@ WPSSO Core is also language / locale aware, which means you can customize your s
 
 **Creates *complete and accurate* meta tags and Schema markup:**
 
-WPSSO Core and its optional Free add-ons offer meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph SEO, Google Rich Results SEO ([Free add-on](https://wordpress.org/plugins/wpsso-schema-json-ld/)), Google Merchant SEO, Mobile Web Browsers, Pinterest Rich Pins, Twitter Cards, Weibo and many more &mdash; including complete markup for images, videos, extensive eCommerce product markup (for WooCommerce and others), mobile apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content!
+WPSSO Core and its optional Free add-ons offer meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph SEO, Google Rich Results SEO ([Free add-on](https://wordpress.org/plugins/wpsso-schema-json-ld/)), Google Merchant SEO, Mobile Web Browsers, Pinterest Rich Pins, Twitter Cards, Weibo and many more &mdash; including complete markup for images, videos, extensive e-Commerce product markup (for WooCommerce and others), mobile apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content!
 
 **Includes advanced *quality assurance* features and options:**
 
@@ -240,7 +240,7 @@ WPSSO Core and its optional Free add-ons offer meta tags and Schema markup for F
 
 * Render shortcodes and blocks for accurate description texts and embedded video detection.
 
-* Additional Facebook, Open Graph, Rich Pin meta tags and Schema markup for videos and eCommerce products.
+* Additional Facebook, Open Graph, Rich Pin meta tags and Schema markup for videos and e-Commerce products.
 
 * Support for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube in content text.
 
@@ -248,7 +248,7 @@ WPSSO Core and its optional Free add-ons offer meta tags and Schema markup for F
 
 * URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.
 
-* Integrates with services and 3rd party plugins for additional image, video, eCommerce product details, SEO settings, and more.
+* Integrates with services and 3rd party plugins for additional image, video, e-Commerce product details, SEO settings, and more.
 
 * The following integration modules are provided with the Pro version, and are automatically loaded when the supported services are required or 3rd party plugins detected.
 
