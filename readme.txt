@@ -31,7 +31,7 @@ WPSSO Core is also language / locale aware, which means you can customize your s
 
 **Creates *complete and accurate* meta tags and Schema markup:**
 
-WPSSO Core and its optional Free add-ons offer meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph SEO, Google Rich Results SEO ([Free add-on](https://wordpress.org/plugins/wpsso-schema-json-ld/)), Google Merchant SEO, Mobile Web Browsers, Pinterest Rich Pins, Twitter Cards, Weibo and many more &mdash; including complete markup for images, videos, extensive e-Commerce product markup (for WooCommerce and others), mobile apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content!
+WPSSO Core and its optional Free add-ons offer meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph, Google Rich Results / SEO ([Free add-on](https://wordpress.org/plugins/wpsso-schema-json-ld/)), Google Merchant, Mobile Web Browsers, Pinterest Rich Pins, Twitter Cards, Weibo and many more &mdash; including complete markup for images, videos, extensive e-Commerce product markup (for WooCommerce and others), mobile apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content!
 
 **Includes advanced *quality assurance* features and options:**
 
@@ -60,7 +60,7 @@ WPSSO Core and its optional Free add-ons offer meta tags and Schema markup for F
 
 * Uses images from numerous sources, including featured, attached, gallery shortcode, images from HTML tags, or a custom fallback image.
 
-* Customizable image dimensions for Facebook / Open Graph, Schema markup, Google Rich Results SEO, Pinterest Rich Pins, and Twitter Cards.
+* Customizable image dimensions for Facebook / Open Graph, Schema markup, Google Rich Results / SEO, Pinterest Rich Pins, and Twitter Cards.
 
 * Contextual help for *every* plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/).
 
@@ -426,7 +426,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.29.0-dev.4 (2019/04/17)**
+**Version 4.29.0-dev.5 (2019/04/18)**
 
 * *New Features*
 	* None.
@@ -438,9 +438,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new WpssoMetaItem class in lib/meta-item.php.
 	* Added a new WpssoNoScript class in lib/noscript.php.
 	* Added a new WpssoPinterest class in lib/pinterest.php.
-	* Moved itemprop meta tag related code from WpssoSchema to the new WpssoMetaItem class.
-	* Moved noscript meta tag related code from WpssoSchema to the new WpssoNoScript class.
-	* Moved pinterest markup related code from WpssoSchema to the new WpssoPinterest class.
+	* Added a new WpssoSchemaCache class in lib/schema-cache.php.
+	* Added a new WpssoSchemaSingle class in lib/schema-single.php.
+	* Moved itemprop meta tag related code from WpssoSchema to the WpssoMetaItem class.
+	* Moved noscript meta tag related code from WpssoSchema to the WpssoNoScript class.
+	* Moved pinterest markup related code from WpssoSchema to the WpssoPinterest class.
+	* Moved data caching methods in WpssoSchema to the WpssoSchemaCache class.
+	* Moved add/get_single methods in WpssoSchema to the WpssoSchemaSingle class.
 	* Moved the Schema json arrays for a webpage into a single '@graph' array.
 
 **Version 4.28.0 (2019/04/13)**
@@ -501,9 +505,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.29.0-dev.4 =
+= 4.29.0-dev.5 =
 
-(2019/04/17) Fixed the "Select or Upload Image" button functionality when the SSO metabox is refreshed via ajax (ie. after clicking "Update" in the new block editor). Added a MB total for "All Transients" in the SSO &gt; Dashboard &gt; Cache Status metabox.
+(2019/04/18) Fixed the "Select or Upload Image" button functionality when the SSO metabox is refreshed via ajax (ie. after clicking "Update" in the new block editor). Added a MB total for "All Transients" in the SSO &gt; Dashboard &gt; Cache Status metabox.
 
 = 4.28.0 =
 
