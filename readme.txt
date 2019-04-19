@@ -434,6 +434,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a MB total for "All Transients" in the SSO &gt; Dashboard &gt; Cache Status metabox.
 * *Bugfixes*
 	* Fixed the "Select or Upload Image" button functionality when the SSO metabox is refreshed via ajax (ie. after clicking "Update" in the new block editor).
+	* Fixed the Schema JSON-LD <code>&lt;script&gt;lt;script&gt;</code> matching pattern to allow for script tag attributes.
 * *Developer Notes*
 	* Added a new WpssoMetaItem class in lib/meta-item.php.
 	* Added a new WpssoNoScript class in lib/noscript.php.
