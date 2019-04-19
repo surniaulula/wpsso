@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 4.29.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-04-18 08:10-0700\n"
-"PO-Revision-Date: 2019-04-18 08:10-0700\n"
+"PO-Revision-Date: 2019-04-19 13:37-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1203,7 +1203,7 @@ msgstr "Ajout WPSSO Core pour fournir des balises méta Apple Store / iTunes et 
 #: lib/gettext-config.php:40
 msgctxt "plugin description"
 msgid "WPSSO Core add-on offers Schema BreadcrumbList markup using Google's preferred JSON-LD format for Rich Results and SEO."
-msgstr "Ajout WPSSO Core pour fournir le balisage Schéma BreadcrumbList utilisant le format JSON-LD préféré pour Google résultats riches et SEO."
+msgstr "Ajout WPSSO Core pour fournir le balisage Schéma BreadcrumbList utilisant le format JSON-LD préféré de Google pour les résultats riches et SEO."
 
 #: lib/gettext-config.php:41
 msgctxt "plugin description"
