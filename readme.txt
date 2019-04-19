@@ -10,7 +10,7 @@ Tags: open graph, meta tags, schema.org, rich results, structured data, rich pin
 Contributors: jsmoriss
 Requires At Least: 3.8
 Tested Up To: 5.1.1
-WC Tested Up To: 3.5
+WC Tested Up To: 3.6
 Stable Tag: 4.28.0
 
 WPSSO Core makes sure your content looks great on all social and search sites, no matter how URLs are crawled, shared, re-shared, posted or embedded!
@@ -426,7 +426,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.29.0-b.1 (2019/04/19)**
+**Version 4.29.0-rc.1 (2019/04/19)**
 
 * *New Features*
 	* None.
@@ -505,7 +505,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.29.0-b.1 =
+= 4.29.0-rc.1 =
 
 (2019/04/19) Fixed the "Select or Upload Image" button functionality when the SSO metabox is refreshed via ajax (ie. after clicking "Update" in the new block editor). Added a MB total for "All Transients" in the SSO &gt; Dashboard &gt; Cache Status metabox.
 
