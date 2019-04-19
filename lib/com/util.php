@@ -3313,13 +3313,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( is_string( $html ) ) {
 
 				/**
+				 * U = Inverts the "greediness" of quantifiers so that they are not greedy by default.
 				 * i = Letters in the pattern match both upper and lower case letters. 
 				 * s = A dot metacharacter in the pattern matches all characters, including newlines.
-				 * U = Inverts the "greediness" of quantifiers so that they are not greedy by default.
 				 *
 				 * See http://php.net/manual/en/reference.pcre.pattern.modifiers.php.
 				 */
-				if ( preg_match_all( '/<script type=[\'"]application\/ld\+json[\'"]>(.*)<\/script>/isU',
+				if ( preg_match_all( '/<script\b[^>]*type=["\']application\/ld\+json["\'][^>]*>(.*)<\/script>/Uis',
 					$html, $all_matches, PREG_SET_ORDER ) ) {
 
 					foreach ( $all_matches as $num => $matches ) {
