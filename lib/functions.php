@@ -52,7 +52,7 @@ if ( ! function_exists( 'wpsso_get_is_functions' ) ) {
 
 		$wpsso =& Wpsso::get_instance();
 
-		if ( is_object( $wpsso->util ) ) {
+		if ( is_object( $wpsso->util ) ) {	// Just in case.
 			return $wpsso->util->get_is_functions();
 		}
 	}
@@ -64,8 +64,20 @@ if ( ! function_exists( 'wpsso_schema_attributes' ) ) {
 
 		$wpsso =& Wpsso::get_instance();
 
-		if ( is_object( $wpsso->schema ) ) {
+		if ( is_object( $wpsso->schema ) ) {	// Just in case.
 			echo $wpsso->schema->filter_head_attributes( $attr );
+		}
+	}
+}
+
+if ( ! function_exists( 'wpsso_show_head' ) ) {
+
+	function wpsso_show_head( $attr = '' ) {
+
+		$wpsso =& Wpsso::get_instance();
+
+		if ( is_object( $wpsso->head ) ) {	// Just in case.
+			echo $wpsso->head->show_head();
 		}
 	}
 }
@@ -76,7 +88,7 @@ if ( ! function_exists( 'wpsso_clear_all_cache' ) ) {
 
 		$wpsso =& Wpsso::get_instance();
 
-		if ( is_object( $wpsso->util ) ) {
+		if ( is_object( $wpsso->util ) ) {	// Just in case.
 
 			$user_id = get_current_user_id();
 
@@ -108,7 +120,7 @@ if ( ! function_exists( 'wpsso_get_page_mod' ) ) {
 
 		$wpsso =& Wpsso::get_instance();
 
-		if ( is_object( $wpsso->util ) ) {
+		if ( is_object( $wpsso->util ) ) {	// Just in case.
 			return $wpsso->util->get_page_mod( $use_post );
 		}
 
@@ -253,7 +265,7 @@ if ( ! function_exists( 'wpsso_get_sharing_url' ) ) {
 
 		$wpsso =& Wpsso::get_instance();
 
-		if ( is_object( $wpsso->util ) ) {
+		if ( is_object( $wpsso->util ) ) {	// Just in case.
 			return $wpsso->util->get_sharing_url( $mod, $add_page );
 		}
 
