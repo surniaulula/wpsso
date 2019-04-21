@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires At Least: 3.8
 Tested Up To: 5.1.1
 WC Tested Up To: 3.6
-Stable Tag: 4.28.0
+Stable Tag: 4.29.0
 
 WPSSO Core makes sure your content looks great on all social and search sites, no matter how URLs are crawled, shared, re-shared, posted or embedded!
 
@@ -434,7 +434,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a MB total for "All Transients" in the SSO &gt; Dashboard &gt; Cache Status metabox.
 * *Bugfixes*
 	* Fixed the "Select or Upload Image" button functionality when the SSO metabox is refreshed via ajax (ie. after clicking "Update" in the new block editor).
-	* Fixed the Schema JSON-LD <code>&lt;script&gt;lt;script&gt;</code> matching pattern to allow for script tag attributes.
+	* Fixed the Schema JSON-LD <code>&lt;script&gt;&lt;script&gt;</code> matching pattern to allow for script tag attributes.
 * *Developer Notes*
 	* Added a new WpssoMetaItem class in lib/meta-item.php.
 	* Added a new WpssoNoScript class in lib/noscript.php.
