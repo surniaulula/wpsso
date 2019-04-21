@@ -426,7 +426,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.29.0-rc.2 (2019/04/20)**
+**Version 4.29.0 (2019/04/21)**
 
 * *New Features*
 	* None.
@@ -506,11 +506,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.29.0-rc.2 =
+= 4.29.0 =
 
-(2019/04/20) Fixed the "Select or Upload Image" button functionality when the SSO metabox is refreshed via ajax (ie. after clicking "Update" in the new block editor). Added a MB total for "All Transients" in the SSO &gt; Dashboard &gt; Cache Status metabox.
-
-= 4.28.0 =
-
-(2019/04/13) Fixed the extra space under the metabox horizontal tab layout. Added new "SSO Dashboard", "SSO Add-ons", and "SSO Tools" pages.
+(2019/04/21) Fixed the "Select or Upload Image" button functionality when the SSO metabox is refreshed via ajax (ie. after clicking "Update" in the new block editor). Added a MB total for "All Transients" in the SSO &gt; Dashboard &gt; Cache Status metabox.
 
