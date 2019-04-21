@@ -14,7 +14,7 @@
  * Requires At Least: 3.8
  * Tested Up To: 5.1.1
  * WC Tested Up To: 3.6
- * Version: 4.29.0-rc.2
+ * Version: 4.29.0
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -354,8 +354,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->script  = new WpssoScript( $this );		// Admin jquery tooltips.
 			$this->page    = new WpssoPage( $this );		// Webpage title, desc, etc.
 			$this->media   = new WpssoMedia( $this );		// Images, videos, etc.
-			$this->filters = new WpssoFilters( $this );		// Integration filters
-			$this->head    = new WpssoHead( $this );
+			$this->head    = new WpssoHead( $this );		// wp_head() meta tags and Schema markup.
+			$this->filters = new WpssoFilters( $this );
 
 			/**
 			 * Meta tags and json-ld markup.

@@ -75,7 +75,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				/**
 				 * Honor the FORCE_SSL constant on the front-end with a 301 redirect.
 				 */
-				if ( ! empty( $this->p->options['plugin_honor_force_ssl'] ) ) {
+				if ( ! empty( $this->p->options[ 'plugin_honor_force_ssl' ] ) ) {
 					if ( SucomUtil::get_const( 'FORCE_SSL' ) ) {
 						add_action( 'wp_loaded', array( __CLASS__, 'force_ssl_redirect' ), -1000 );
 					}
@@ -152,8 +152,8 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 
 			if ( class_exists( 'Yoast_Notification_Center' ) ) {
 
-				$info = $this->p->cf[ 'plugin' ][$this->p->lca];
-				$name = $this->p->cf[ 'plugin' ][$this->p->lca][ 'name' ];
+				$info = $this->p->cf[ 'plugin' ][ $this->p->lca ];
+				$name = $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'name' ];
 
 				/**
 				 * Since WordPress SEO v4.0.
@@ -202,7 +202,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 
 									if ( false !== strpos( $notif_msgs->message, $name ) ) {
 
-										unset( $wpseo_notif[$num] );
+										unset( $wpseo_notif[ $num ] );
 
 										set_transient( Yoast_Notification_Center::TRANSIENT_KEY,
 											json_encode( $wpseo_notif ) );
@@ -224,15 +224,15 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( isset( $GLOBALS['wpseo_og'] ) && is_object( $GLOBALS['wpseo_og'] ) ) {
+			if ( isset( $GLOBALS[ 'wpseo_og' ] ) && is_object( $GLOBALS[ 'wpseo_og' ] ) ) {
 
-				if ( false !== ( $prio = has_action( 'wpseo_head', array( $GLOBALS['wpseo_og'], 'opengraph' ) ) ) ) {
+				if ( false !== ( $prio = has_action( 'wpseo_head', array( $GLOBALS[ 'wpseo_og' ], 'opengraph' ) ) ) ) {
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'removing wpseo_head action for opengraph' );
 					}
 
-					$ret = remove_action( 'wpseo_head', array( $GLOBALS['wpseo_og'], 'opengraph' ), $prio );
+					$ret = remove_action( 'wpseo_head', array( $GLOBALS[ 'wpseo_og' ], 'opengraph' ), $prio );
 				}
 			}
 
@@ -277,11 +277,11 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			/**
 			 * Check for web server variables in case WP is being used from the command line.
 			 */
-			if ( isset( $_SERVER['HTTP_HOST'] ) && isset( $_SERVER['REQUEST_URI'] ) ) {
+			if ( isset( $_SERVER[ 'HTTP_HOST' ] ) && isset( $_SERVER[ 'REQUEST_URI' ] ) ) {
 
 				if ( ! SucomUtil::is_https() ) {
 
-					wp_redirect( 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], 301 );
+					wp_redirect( 'https://' . $_SERVER[ 'HTTP_HOST' ] . $_SERVER[ 'REQUEST_URI' ], 301 );
 
 					exit();
 				}
