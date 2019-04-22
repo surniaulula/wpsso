@@ -3934,7 +3934,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return $html;
 			} elseif ( ! empty( $this->p->avail[ 'p_ext' ][ $p_ext ] ) ) {		// Add-on is already active.
 				return $html;
-			} elseif ( empty( $this->p->cf[ 'plugin' ][ $ext ][ 'short' ] ) ) {	// Add-on config is not defined.
+			} elseif ( empty( $this->p->cf[ 'plugin' ][ $ext ][ 'short' ] ) ) {	// Unknown add-on.
 				return $html;
 			}
 

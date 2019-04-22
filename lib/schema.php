@@ -441,7 +441,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$json_scripts[][] = '<script type="application/ld+json">' .
 					$this->p->util->json_format( array(
 						'@context' => $graph_context,
-						'@graph'   => $graph_data,
+						'@graph'   => apply_filters( $this->p->lca . '_json_prop_https_schema_org_graph',
+							$graph_data, $mod, $mt_og, $page_type_id, $is_main ),
 					) ) .
 					'</script>' . "\n";
 			}
