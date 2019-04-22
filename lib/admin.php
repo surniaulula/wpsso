@@ -199,10 +199,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				$ext_star = $this->p->check->get_ext_star( $ext );
-				$ext_pdir = $this->p->check->pp( $ext, false, $has_pdir );
-				$ext_pp   = $has_pp && $ext_star && $this->p->check->pp( $ext, true, WPSSO_UNDEF ) === WPSSO_UNDEF ? true : false;
-				$ext_stat = ( $ext_pp ? 'L' : ( $ext_pdir ? 'U' : 'F' ) ) . $ext_star;
+				$ext_pdir    = $this->p->check->pp( $ext, false, $has_pdir );
+				$ext_auth_id = $this->p->check->get_ext_auth_id( $ext );
+				$ext_pp      = $has_pp && $ext_auth_id && $this->p->check->pp( $ext, true, WPSSO_UNDEF ) === WPSSO_UNDEF ? true : false;
+				$ext_stat    = ( $ext_pp ? 'L' : ( $ext_pdir ? 'U' : 'F' ) ) . ( $ext_auth_id ? '*' : '' );
 
 				self::$pkg[ $ext ][ 'pdir' ]  = $ext_pdir;
 				self::$pkg[ $ext ][ 'pp' ]    = $ext_pp;
