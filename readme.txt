@@ -426,6 +426,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.29.1-dev.1 (2019/04/22)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* None.
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* Added a 'wpsso_json_prop_https_schema_org_graph' filter hook for the Schema "@graph" value.
+
 **Version 4.29.0 (2019/04/21)**
 
 * *New Features*
@@ -505,6 +516,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* product:quantity:unit_text
 
 == Upgrade Notice ==
+
+= 4.29.1-dev.1 =
+
+(2019/04/22) Added a 'wpsso_json_prop_https_schema_org_graph' filter hook for the Schema "@graph" value.
 
 = 4.29.0 =
 
