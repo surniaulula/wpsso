@@ -476,10 +476,10 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 					continue;
 				}
 
-				$ext_star = $this->get_ext_star( $ext );
+				$auth_id  = $this->get_auth_id( $ext );
 				$ext_pdir = $this->pp( $ext, false, $has_pdir );
-				$ext_pp   = $has_pp && $ext_star && $this->pp( $ext, true, WPSSO_UNDEF ) === WPSSO_UNDEF ? true : false;
-				$ext_stat = ( $ext_pp ? 'L' : ( $ext_pdir ? 'U' : 'F' ) ) . $ext_star;
+				$ext_pp   = $has_pp && $auth_id && $this->pp( $ext, true, WPSSO_UNDEF ) === WPSSO_UNDEF ? true : false;
+				$ext_stat = ( $ext_pp ? 'L' : ( $ext_pdir ? 'U' : 'F' ) ) . ( $auth_id ? '*' : '' );
 
 				$ext_list[] = $info[ 'short' ] . ' ' . $info[ 'version' ] . '/' . $ext_stat;
 			}
@@ -487,12 +487,19 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			return $ext_list;
 		}
 
-		public function get_ext_star( $ext ) {
+		public function get_auth_id( $ext ) {
 
-			$auth_type = empty( $this->p->cf[ 'plugin' ][ $ext ][ 'update_auth' ] ) ?
+			$auth_type = $this->get_auth_type( $ext );
+			$auth_key  = 'plugin_' . $ext . '_' . $auth_type;
+
+			return empty( $this->p->options[ $auth_key ] ) ?
+				'' : $this->p->options[ $auth_key ];
+		}
+
+		public function get_auth_type( $ext ) {
+
+			return empty( $this->p->cf[ 'plugin' ][ $ext ][ 'update_auth' ] ) ?
 				'none' : $this->p->cf[ 'plugin' ][ $ext ][ 'update_auth' ];
-
-			return empty( $this->p->options[ 'plugin_' . $ext . '_' . $auth_type ] ) ? '' : '*';
 		}
 
 		private function is_opt_enabled( $opt_key ) {
