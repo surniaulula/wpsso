@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'      => '4.29.1-dev.1',	// Plugin version.
+					'version'      => '4.29.1-dev.2',	// Plugin version.
 					'opt_version'  => '641',	// Increment when changing default option values.
 					'short'        => 'WPSSO Core',	// Short plugin name.
 					'name'         => 'WPSSO Core [Main Plugin]',
@@ -1127,7 +1127,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_use_img_alt'    => 1,		// Use Image Alt if No Content.
 					'plugin_img_alt_prefix' => 'Image:',	// Image Alt Text Prefix.
 					'plugin_p_cap_prefix'   => 'Caption:',	// WP Caption Prefix.
-					'plugin_gravatar_api'   => 0,		// Gravatar is Author Default Image
+					'plugin_gravatar_api'   => 1,		// Gravatar is Author Default Image
 					'plugin_facebook_api'   => 1,		// Check for Embedded Media: Facebook Videos.
 					'plugin_slideshare_api' => 1,		// Check for Embedded Media: Slideshare Presentations.
 					'plugin_soundcloud_api' => 1,		// Check for Embedded Media: Soundcloud Tracks.
@@ -1465,7 +1465,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '1.19.2',	// Minimum update manager version (soft limit).
+				'rec_version' => '1.19.3-dev.2',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',

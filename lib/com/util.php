@@ -3594,7 +3594,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Site Title
+		 * Site Title.
 		 *
 		 * Returns a custom site name or the default WordPress site name.
 		 * $mixed = 'default' | 'current' | post ID | $mod array
@@ -3616,7 +3616,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Tagline
+		 * Tagline.
 		 * 
 		 * Returns a custom site description or the default WordPress site description / tagline.
 		 * $mixed = 'default' | 'current' | post ID | $mod array
@@ -3633,7 +3633,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Site Address (URL)
+		 * Site Address (URL).
 		 *
 		 * Returns a custom site address URL or the default WordPress site address URL (aka home URL).
 		 * $mixed = 'default' | 'current' | post ID | $mod array
@@ -3647,6 +3647,18 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return $ret;
+		}
+
+		/**
+		 * $mixed = 'default' | 'current' | post ID | $mod array
+		 */
+		public static function is_site_https( array $opts, $mixed = 'current' ) {
+
+			if ( self::get_const( 'FORCE_SSL' ) ) {	// Optimize - all front-end URLs are forced to https.
+				return true;
+			} else {
+				return self::is_https( self::get_site_url( $opts, $mixed ) );
+			}
 		}
 
 		/**

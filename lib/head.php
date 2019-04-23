@@ -883,6 +883,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 					if ( $secure_url !== $value ) {	// Just in case.
 
+						/**
+						 * The 'add_meta_property_og:image:secure_url' and
+						 * 'add_meta_property_og:video:secure_url' options
+						 * are disabled by default.
+						 */
 						if ( ! empty( $this->p->options[ 'add_meta_property_og:image:secure_url' ] ) ) {
 
 							$name_secure_suffix = str_replace( ':url', ':secure_url', $name );

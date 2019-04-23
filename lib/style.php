@@ -264,6 +264,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			$sitemenu   = $this->p->lca . '-' . key( $this->p->cf[ '*' ][ 'lib' ][ 'sitesubmenu' ] );
 
 			$custom_style_css = '
+
 				@font-face {
 					font-family:"WpssoIcons";
 					font-weight:normal;
@@ -274,6 +275,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 						url("' . $plugin_urlpath . 'fonts/icons.ttf?' . $plugin_version . '") format("truetype"),
 						url("' . $plugin_urlpath . 'fonts/icons.svg?' . $plugin_version . '#icons") format("svg");
 				}
+
 				@font-face {
 					font-family:"WpssoStar";
 					font-weight:normal;
@@ -284,89 +286,121 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 						url("' . $plugin_urlpath . 'fonts/star.ttf?' . $plugin_version . '") format("truetype"),
 						url("' . $plugin_urlpath . 'fonts/star.svg?' . $plugin_version . '#star") format("svg");
 				}
+
+
+				/**
+				 * Admin toolbar notices.
+				 */
 				#wpadminbar #wp-toolbar #' . $this->p->lca . '-toolbar-notices-count {
 					display:none;
 				}
+
 				#wpadminbar #wp-toolbar #' . $this->p->lca . '-toolbar-notices-icon.ab-icon::before { 
-					content:"' . $this->p->cf[ 'menu' ][ 'before' ] . '";
-					font-size:28px;
+					font-size:26px;
 					font-style:normal;
+					content:"' . $this->p->cf[ 'menu' ][ 'before' ] . '";
 					top:1px;
 				}
+
+				/**
+				 * Admin menu and sub-menu items.
+				 */
 				#adminmenu li.menu-top.toplevel_page_' . $menu . ' div.wp-menu-image::before,
 				#adminmenu li.menu-top.toplevel_page_' . $sitemenu . ' div.wp-menu-image::before,
 				#adminmenu li.menu-top.toplevel_page_' . $menu . ':hover div.wp-menu-image::before,
 				#adminmenu li.menu-top.toplevel_page_' . $sitemenu . ':hover div.wp-menu-image::before {
+					display:inline-block;
+					font-size:26px;
 					content:"' . $this->p->cf[ 'menu' ][ 'before' ] . '";
-					font-size:30px;
-					font-style:normal;
-					display:inline;
-					line-height:inherit;
-					vertical-align:middle;
+					margin:-1px 0 0 0;
+					padding:0;
 				}
+
 				#adminmenu #toplevel_page_' . $menu . ' ul > li > a,
 				#adminmenu #toplevel_page_' . $sitemenu . ' ul > li > a {
 					padding:6px 8px;	/* Default is 6px 12px. */
 				}
+
 				#adminmenu ul.wp-submenu div.' . $this->p->lca . '-menu-item {
 					display:table-cell;
 				}
+
 				#adminmenu ul.wp-submenu div.' . $this->p->lca . '-menu-item.dashicons-before {
-					max-width:1.2em;
+					max-width:1.3em;
 					padding-right:6px;
 				}
+
 				#adminmenu ul.wp-submenu div.' . $this->p->lca . '-menu-item.dashicons-before::before {
-					font-size:1.2em;
+					font-size:1.3em;
 					text-align:left;
 					opacity:0.5;
 					filter:alpha(opacity=50);	/* IE8 and earlier. */
 				}
+
 				#adminmenu ul.wp-submenu div.' . $this->p->lca . '-menu-item.menu-item-label {
 					width:100%;
 				}
+
 				#adminmenu ul.wp-submenu div.' . $this->p->lca . '-menu-item.top-last-submenu-page.with-add-ons {
 					padding-bottom:12px;
 					border-bottom:1px solid;
 				}
+
+				/**
+				 * Settings pages.
+				 */
 				#profile-page.wrap #your-profile #' . $this->p->lca . '_' . $metabox_id . '.postbox h3:first-of-type {
 					margin:0;
 				}
+
 				#' . $this->p->lca . '_' . $metabox_id . '.postbox {
 					min-width:455px;	/* The default WordPress postbox minimum width is 255px. */
 				}
+
 				#' . $this->p->lca . '_' . $metabox_id . ' .inside {
 					padding:0;
 					margin:0;
 				}
+
 				.' . $this->p->lca . '-rate-heart {
 					color:red;
 					font-size:1.5em;
 					vertical-align:top;
 				}
+
 				.' . $this->p->lca . '-rate-heart::before {
 					content:"\2665";	/* Heart. */
 				}
+
+				/**
+				 * Post publish robots option.
+				 */
 				#post-' . $this->p->lca . '-robots {
 					display:table;
 				}
+
 				#post-' . $this->p->lca . '-robots-label {
 					display:table-cell;
 					padding-left:3px;
 					vertical-align:top;
 				}
+
 				#post-' . $this->p->lca . '-robots-display {
 					display:table-cell;
 					padding-left:3px;
 					vertical-align:top;
 				}
+
 				#post-' . $this->p->lca . '-robots-content {
 					display:block;
 					word-wrap:normal;
 					font-weight:bold;
 				}
+
 				#post-' . $this->p->lca . '-robots-content a {
 					font-weight:normal;
 				}
+
 				#post-' . $this->p->lca . '-robots-select {
 					display:none;
 				}
