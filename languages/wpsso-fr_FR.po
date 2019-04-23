@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.29.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-04-18 08:10-0700\n"
-"PO-Revision-Date: 2019-04-19 13:37-0700\n"
+"POT-Creation-Date: 2019-04-23 15:30-0700\n"
+"PO-Revision-Date: 2019-04-23 15:33-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1202,8 +1202,8 @@ msgstr "Ajout WPSSO Core pour fournir des balises méta Apple Store / iTunes et 
 
 #: lib/gettext-config.php:40
 msgctxt "plugin description"
-msgid "WPSSO Core add-on offers Schema BreadcrumbList markup using Google's preferred JSON-LD format for Rich Results and SEO."
-msgstr "Ajout WPSSO Core pour fournir le balisage Schéma BreadcrumbList utilisant le format JSON-LD préféré de Google pour les résultats riches et SEO."
+msgid "WPSSO Core add-on offers Schema BreadcrumbList markup using Google's preferred JSON-LD format for Rich Results SEO."
+msgstr "Ajout WPSSO Core pour fournir le balisage Schéma BreadcrumbList en format JSON-LD préféré par Google pour les résultats riches."
 
 #: lib/gettext-config.php:41
 msgctxt "plugin description"
@@ -1247,8 +1247,8 @@ msgstr "Ajout WPSSO Core pour fournir des boutons de partage social avec support
 
 #: lib/gettext-config.php:49
 msgctxt "plugin description"
-msgid "WPSSO Core add-on to remove outdated / incomplete Schema Microdata to use Google's preferred Schema JSON-LD for Rich Results and SEO."
-msgstr "Ajout WPSSO Core pour supprimer les microdonnées de Schéma obsolètes / incomplètes afin d’utiliser le balisage Schema JSON-LD / résultats riches préféré par Google."
+msgid "WPSSO Core add-on to remove outdated / incomplete Schema Microdata to use Google's preferred Schema JSON-LD for Rich Results SEO."
+msgstr "Ajout WPSSO Core pour supprimer les microdonnées de Schéma obsolètes / incomplètes afin d'utiliser le balisage Schéma JSON-LD préféré par Google."
 
 #: lib/gettext-config.php:50
 msgctxt "plugin description"
@@ -5107,34 +5107,34 @@ msgstr "%1$s nécessite %2$s version %3$s ou supérieure et a été désactivé.
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr "SVP mettre à jour %1$s avant d'essayer de réactiver l'extension %2$s."
 
-#: lib/schema.php:39 lib/schema.php:44
-msgctxt "image size label"
-msgid "Google / Schema Image"
-msgstr "Image Google / Schéma"
-
-#: lib/schema.php:2436 lib/schema.php:2441
+#: lib/schema-cache.php:72 lib/schema-cache.php:77
 msgid "adding schema for %1$s ID %2$s"
 msgstr "ajout de schéma pour %1$s ID %2$s"
 
-#: lib/schema.php:3254
+#: lib/schema-single.php:533
 msgid "adding schema for offer"
 msgstr "ajout de schéma pour offre"
 
-#: lib/schema.php:3345
+#: lib/schema-single.php:624
 msgid "adding schema for organization"
 msgstr "ajout de schéma d'organisation"
 
-#: lib/schema.php:3387
+#: lib/schema-single.php:666
 msgid "The \"%1$s\" Organization Logo image is missing and required for the Schema %2$s markup."
 msgstr "L'image logo de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema.php:3394
+#: lib/schema-single.php:673
 msgid "The \"%1$s\" Organization Banner (600x60px) image is missing and required for the Schema %2$s markup."
 msgstr "L'image bannière (600x60px) de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema.php:3731
+#: lib/schema-single.php:951
 msgid "adding schema for place"
 msgstr "ajout de schéma de place"
+
+#: lib/schema.php:45 lib/schema.php:50
+msgctxt "image size label"
+msgid "Google / Schema Image"
+msgstr "Image Google / Schéma"
 
 #: lib/script.php:201
 msgid "Select Image"
