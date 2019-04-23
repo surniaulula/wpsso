@@ -393,8 +393,9 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 
 == Screenshots ==
 
-01. The document SSO metabox offers tabs to customize text, select priority media, preview social shares (shown here), preview meta tags and Schema markup, and links to several markup validation tools.
-02. The essential settings page provides a quick and easy setup.
+01. The document SSO metabox offers a customization tab with options specific to the selected content type (aka Schema type). 
+02. The document SSO metabox offers a preview tab to show an example share using the current Open Graph meta tags.
+03. The essential settings page provides a single-page, quick and easy setup.
 
 == Changelog ==
 
@@ -426,16 +427,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.29.1-dev.1 (2019/04/22)**
+**Version 4.29.1-dev.2 (2019/04/23)**
 
 * *New Features*
 	* None.
 * *Improvements*
-	* None.
+	* Updated the menu dashicon styling for WordPress v5.2.
 * *Bugfixes*
 	* None.
 * *Developer Notes*
 	* Added a 'wpsso_json_prop_https_schema_org_graph' filter hook for the Schema "@graph" value.
+	* Minor refactoring to improve the code used to define the authentication ID status.
 
 **Version 4.29.0 (2019/04/21)**
 
@@ -517,9 +519,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.29.1-dev.1 =
+= 4.29.1-dev.2 =
 
-(2019/04/22) Added a 'wpsso_json_prop_https_schema_org_graph' filter hook for the Schema "@graph" value.
+(2019/04/23) Updated the menu dashicon styling for WordPress v5.2. Added a 'wpsso_json_prop_https_schema_org_graph' filter hook for the Schema "@graph" value.
 
 = 4.29.0 =
 
