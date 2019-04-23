@@ -393,7 +393,7 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 
 == Screenshots ==
 
-01. The document SSO metabox offers a customization tab with options specific to the selected content type (aka Schema type). 
+01. The document SSO metabox offers a customization tab with options specific to the content type (aka Schema type) selected.
 02. The document SSO metabox offers a preview tab to show an example share using the current Open Graph meta tags.
 03. The essential settings page provides a single-page, quick and easy setup.
 
