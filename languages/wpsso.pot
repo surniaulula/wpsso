@@ -1277,7 +1277,7 @@ msgstr ""
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on offers Schema BreadcrumbList markup using Google's "
-"preferred JSON-LD format for Rich Results and SEO."
+"preferred JSON-LD format for Rich Results SEO."
 msgstr ""
 
 #: lib/gettext-config.php:41
@@ -1341,7 +1341,7 @@ msgstr ""
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to remove outdated / incomplete Schema Microdata to use "
-"Google's preferred Schema JSON-LD for Rich Results and SEO."
+"Google's preferred Schema JSON-LD for Rich Results SEO."
 msgstr ""
 
 #: lib/gettext-config.php:50

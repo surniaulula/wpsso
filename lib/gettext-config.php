@@ -37,7 +37,7 @@ _x( 'Tools', 'lib file description', 'wpsso' );
 _x( 'SSO Tools', 'lib file description', 'wpsso' );
 _x( 'WPSSO Core makes sure your content looks great on all social and search sites - no matter how URLs are crawled, shared, re-shared, posted, or embedded!', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on provides Apple Store / iTunes and Google Play App meta tags for Apple\'s mobile Safari banner and Twitter\'s App Card.', 'plugin description', 'wpsso' );
-_x( 'WPSSO Core add-on offers Schema BreadcrumbList markup using Google\'s preferred JSON-LD format for Rich Results and SEO.', 'plugin description', 'wpsso' );
+_x( 'WPSSO Core add-on offers Schema BreadcrumbList markup using Google\'s preferred JSON-LD format for Rich Results SEO.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on to inherit featured and custom images from parents for posts, pages, custom post types, categories, tags, and custom taxonomies.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on offers Schema JSON-LD / Rich Results markup for Articles, Events, Local Business, Products, Recipes, Reviews and many more.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on to customize the home page Schema Organization markup and manage additional Organizations (publisher, organizer, performer, etc.).', 'plugin description', 'wpsso' );
@@ -46,7 +46,7 @@ _x( 'WPSSO Core add-on provides ratings and reviews for WordPress comments, with
 _x( 'WPSSO Core add-on offers an array of meta tags and Schema markup in the WordPress REST API post, term, and user queries.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on offers Ridiculously Responsive (SVG) Social Sharing Buttons in your content, excerpts, CSS sidebar, widget, shortcode, editor pages, etc.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on offers social sharing buttons with support for hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more.', 'plugin description', 'wpsso' );
-_x( 'WPSSO Core add-on to remove outdated / incomplete Schema Microdata to use Google\'s preferred Schema JSON-LD for Rich Results and SEO.', 'plugin description', 'wpsso' );
+_x( 'WPSSO Core add-on to remove outdated / incomplete Schema Microdata to use Google\'s preferred Schema JSON-LD for Rich Results SEO.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on offers Twitter-style quoted text for your content, with a convenient Tweet share link and customizable CSS.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on offers tuning options for the WordPress image editors and PHP image extensions.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on provides a convenient locale / language / region selector in the WordPress admin toolbar.', 'plugin description', 'wpsso' );
