@@ -438,6 +438,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Developer Notes*
 	* Added a 'wpsso_json_prop_https_schema_org_graph' filter hook for the Schema "@graph" value.
 	* Minor refactoring to improve the code used to define the authentication ID status.
+	* Added a new SucomUtil::is_site_https() method.
 
 **Version 4.29.0 (2019/04/21)**
 
