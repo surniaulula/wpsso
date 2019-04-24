@@ -427,7 +427,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.29.1-dev.2 (2019/04/23)**
+**Version 4.29.1-dev.3 (2019/04/24)**
 
 * *New Features*
 	* None.
@@ -436,9 +436,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None.
 * *Developer Notes*
-	* Added a 'wpsso_json_prop_https_schema_org_graph' filter hook for the Schema "@graph" value.
 	* Minor refactoring to improve the code used to define the authentication ID status.
-	* Added a new SucomUtil::is_site_https() method.
+	* Added a 'wpsso_json_prop_https_schema_org_graph' filter hook for the Schema "@graph" value.
+	* Added notice references in WpssoNoScript::get_single_author() and WpssoSchemaSingle::add_person_data().
+	* Added a new SucomUtil::is_site_https() method for future use.
 
 **Version 4.29.0 (2019/04/21)**
 
@@ -520,9 +521,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.29.1-dev.2 =
+= 4.29.1-dev.3 =
 
-(2019/04/23) Updated the menu dashicon styling for WordPress v5.2. Added a 'wpsso_json_prop_https_schema_org_graph' filter hook for the Schema "@graph" value.
+(2019/04/24) Updated the menu dashicon styling for WordPress v5.2.
 
 = 4.29.0 =
 
