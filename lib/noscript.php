@@ -276,7 +276,7 @@ if ( ! class_exists( 'WpssoNoScript' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'getting user_mod for author id '.$author_id );
+				$this->p->debug->log( 'getting user_mod for author id ' . $author_id );
 			}
 
 			$user_mod = $this->p->m[ 'util' ][ 'user' ]->get_mod( $author_id );
@@ -288,7 +288,8 @@ if ( ! class_exists( 'WpssoNoScript' ) ) {
 
 				$sharing_url = $wpsso->util->get_sharing_url( $user_mod );
 	
-				$wpsso->notice->set_ref( $sharing_url, $user_mod, __( 'adding schema noscript for author', 'wpsso' ) );
+				$wpsso->notice->set_ref( $sharing_url, $user_mod,
+					sprintf( __( 'adding schema noscript for author user ID %1$s', 'wpsso' ), $author_id ) );
 			}
 
 			$author_url  = $user_mod[ 'obj' ]->get_author_website( $author_id, 'url' );

@@ -815,7 +815,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 	
 					$sharing_url = $wpsso->util->get_sharing_url( $user_mod );
 	
-					$wpsso->notice->set_ref( $sharing_url, $user_mod, __( 'adding schema for person', 'wpsso' ) );
+					$wpsso->notice->set_ref( $sharing_url, $user_mod,
+						sprintf( __( 'adding schema for person user ID %1$s', 'wpsso' ), $user_id ) );
 				}
 
 				$user_desc = $user_mod[ 'obj' ]->get_options_multi( $user_id, $md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.29.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-04-24 08:25-0700\n"
-"PO-Revision-Date: 2019-04-24 08:28-0700\n"
+"POT-Creation-Date: 2019-04-24 09:15-0700\n"
+"PO-Revision-Date: 2019-04-24 09:19-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4763,9 +4763,9 @@ msgctxt "tooltip fragment"
 msgid "a video URL (not HTML code)"
 msgstr "l'URL d'un vidéo (pas de code HTML)"
 
-#: lib/noscript.php:291
-msgid "adding schema noscript for author"
-msgstr "ajout de schéma noscript pour auteur"
+#: lib/noscript.php:292
+msgid "adding schema noscript for author user ID %1$s"
+msgstr "ajout de schéma noscript d'auteur pour l'ID d'utilisateur %1$s"
 
 #: lib/opengraph.php:59
 msgctxt "image size label"
@@ -5135,11 +5135,11 @@ msgstr "L'image logo de l'organisation \"%1$s\" est manquante et nécessaire pou
 msgid "The \"%1$s\" Organization Banner (600x60px) image is missing and required for the Schema %2$s markup."
 msgstr "L'image bannière (600x60px) de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema-single.php:818
-msgid "adding schema for person"
-msgstr "ajout de schéma pour personne"
+#: lib/schema-single.php:819
+msgid "adding schema for person user ID %1$s"
+msgstr "ajout de schéma de personne pour l'ID d'utilisateur %1$s"
 
-#: lib/schema-single.php:971
+#: lib/schema-single.php:972
 msgid "adding schema for place"
 msgstr "ajout de schéma de place"
 
@@ -5919,6 +5919,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
-
-#~ msgid "edit"
-#~ msgstr "modifier"

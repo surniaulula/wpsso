@@ -5490,8 +5490,8 @@ msgctxt "tooltip fragment"
 msgid "a video URL (not HTML code)"
 msgstr ""
 
-#: lib/noscript.php:291
-msgid "adding schema noscript for author"
+#: lib/noscript.php:292
+msgid "adding schema noscript for author user ID %1$s"
 msgstr ""
 
 #: lib/opengraph.php:59
@@ -5930,11 +5930,11 @@ msgid ""
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema-single.php:818
-msgid "adding schema for person"
+#: lib/schema-single.php:819
+msgid "adding schema for person user ID %1$s"
 msgstr ""
 
-#: lib/schema-single.php:971
+#: lib/schema-single.php:972
 msgid "adding schema for place"
 msgstr ""
 
