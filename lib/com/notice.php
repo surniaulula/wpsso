@@ -316,24 +316,35 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			if ( 'edit' === $ref_key ) {
 
+				$link = '';
+
 				if ( isset( $refs[ 'mod' ] ) ) {
 
-					if ( $refs[ 'mod' ][ 'is_post' ] && $refs[ 'mod' ][ 'id' ] ) {
-						return $text_prefix . get_edit_post_link( $refs[ 'mod' ][ 'id' ], false ) . $text_suffix;	// $display is false.
-					} else {
-						return '';
-					}
+					if ( $refs[ 'mod' ][ 'id' ] ) {
 
-				} else {
-					return '';
+						if ( $refs[ 'mod' ][ 'is_post' ] ) {
+
+							$link = get_edit_post_link( $refs[ 'mod' ][ 'id' ], $display = false );
+
+						} elseif ( $refs[ 'mod' ][ 'is_user' ] ) {
+
+							$link = get_edit_user_link( $refs[ 'mod' ][ 'id' ] );
+
+						} elseif ( $refs[ 'mod' ][ 'is_term' ] ) {
+
+							$link = get_edit_term_link( $refs[ 'mod' ][ 'id' ], $refs[ 'mod' ][ 'tax_slug' ] );
+						}
+					}
 				}
+
+				return empty( $link ) ? '' : $text_prefix . $link . $text_suffix;
 
 			} elseif ( false !== $ref_key ) {
 
 				if ( isset( $refs[ $ref_key ] ) ) {
 					return $text_prefix . $refs[ $ref_key ] . $text_suffix;
 				} else {
-					null;
+					return null;
 				}
 
 			} else {
@@ -358,7 +369,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					'<a href="' . $url . '">' . $pretty_url . '</a>' :
 					'<a href="' . $url . '">' . $context_transl . '</a>';
 
-				$edit_link = $this->get_ref( 'edit', ' (<a href="', '">' . __( 'edit', $this->text_domain ) . '</a>)' );
+				$edit_link = $this->get_ref( 'edit', $text_prefix = ' (<a href="',
+					$text_suffix = '">' . __( 'Edit', $this->text_domain ) . '</a>)' );
 
 				$ref_html .= '<p class="reference-message">' . sprintf( __( 'Reference: %s', $this->text_domain ),
 					$context_transl . $edit_link ) . '</p>';

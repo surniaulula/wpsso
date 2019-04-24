@@ -255,6 +255,8 @@ if ( ! class_exists( 'WpssoNoScript' ) ) {
 
 			$og_ret = array();
 
+			$size_name = $this->p->lca . '-schema';
+
 			if ( empty( $author_id ) || $author_id === 'none' ) {
 
 				if ( $this->p->debug->enabled ) {
@@ -266,18 +268,27 @@ if ( ! class_exists( 'WpssoNoScript' ) ) {
 			} elseif ( empty( $this->p->m[ 'util' ][ 'user' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: empty user module' );
+					$this->p->debug->log( 'exiting early: user class not loaded' );
 				}
 
 				return array();
 
-			} else {
+			}
 
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'getting user_mod for author id '.$author_id );
-				}
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'getting user_mod for author id '.$author_id );
+			}
 
-				$user_mod = $this->p->m[ 'util' ][ 'user' ]->get_mod( $author_id );
+			$user_mod = $this->p->m[ 'util' ][ 'user' ]->get_mod( $author_id );
+
+			/**
+			 * Set the reference values for admin notices.
+			 */
+			if ( is_admin() ) {
+
+				$sharing_url = $wpsso->util->get_sharing_url( $user_mod );
+	
+				$wpsso->notice->set_ref( $sharing_url, $user_mod, __( 'adding schema noscript for author', 'wpsso' ) );
 			}
 
 			$author_url  = $user_mod[ 'obj' ]->get_author_website( $author_id, 'url' );
@@ -305,7 +316,6 @@ if ( ! class_exists( 'WpssoNoScript' ) ) {
 				/**
 				 * get_og_images() also provides filter hooks for additional image ids and urls.
 				 */
-				$size_name = $this->p->lca . '-schema';
 				$og_images = $user_mod[ 'obj' ]->get_og_images( 1, $size_name, $author_id, false );	// $check_dupes is false.
 	
 				foreach ( $og_images as $og_single_image ) {
@@ -317,6 +327,13 @@ if ( ! class_exists( 'WpssoNoScript' ) ) {
 							'itemprop', $prop_name . '.image', $image_url, '', $user_mod ) );
 					}
 				}
+			}
+
+			/**
+			 * Restore previous reference values for admin notices.
+			 */
+			if ( is_admin() ) {
+				$wpsso->notice->unset_ref( $sharing_url );
 			}
 
 			/**

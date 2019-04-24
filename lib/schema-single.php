@@ -424,6 +424,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->debug->mark();
 			}
 
+			$size_name = $wpsso->lca . '-schema';
+
 			/**
 			 * Do not include an 'ean' property for the 'product:ean' value - there is no Schema 'ean' property.
 			 */
@@ -529,13 +531,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				 */
 				if ( is_admin() ) {
 					if ( ! empty( $offer[ 'url' ] ) ) {
-						$wpsso->notice->set_ref( $offer[ 'url' ], $mod,
-							__( 'adding schema for offer', 'wpsso-schema-json-ld' ) );
+						$wpsso->notice->set_ref( $offer[ 'url' ], $mod, __( 'adding schema for offer', 'wpsso-schema-json-ld' ) );
 					}
 				}
 
-				$og_image = $wpsso->media->get_attachment_image( 1, $size_name = $wpsso->lca . '-schema',
-					$mt_offer[ 'product:image:id' ], $check_dupes = false );
+				$og_image = $wpsso->media->get_attachment_image( 1, $size_name, $mt_offer[ 'product:image:id' ], $check_dupes = false );
 
 				if ( ! empty( $og_image ) ) {
 					if ( ! WpssoSchema::add_og_image_list_data( $offer[ 'image' ], $og_image ) ) {
@@ -769,7 +769,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				return $ret;
 			}
 
-			$size_name   = $wpsso->lca . '-schema';
+			$size_name = $wpsso->lca . '-schema';
 
 			/**
 			 * Maybe get options from Pro version integration modules.
@@ -795,18 +795,27 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				} elseif ( empty( $wpsso->m[ 'util' ][ 'user' ] ) ) {
 
 					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( 'exiting early: empty user module' );
+						$wpsso->debug->log( 'exiting early: user class not loaded' );
 					}
 
 					return 0;
 
-				} else {
+				}
 
-					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( 'getting user module for user_id ' . $user_id );
-					}
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( 'getting user module for user_id ' . $user_id );
+				}
 
-					$user_mod = $wpsso->m[ 'util' ][ 'user' ]->get_mod( $user_id );
+				$user_mod = $wpsso->m[ 'util' ][ 'user' ]->get_mod( $user_id );
+
+				/**
+				 * Set the reference values for admin notices.
+				 */
+				if ( is_admin() ) {
+	
+					$sharing_url = $wpsso->util->get_sharing_url( $user_mod );
+	
+					$wpsso->notice->set_ref( $sharing_url, $user_mod, __( 'adding schema for person', 'wpsso' ) );
 				}
 
 				$user_desc = $user_mod[ 'obj' ]->get_options_multi( $user_id, $md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
@@ -846,6 +855,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					'person_og_image'  => $user_mod[ 'obj' ]->get_og_images( 1, $size_name, $user_id, false ),
 					'person_sameas'    => $user_sameas,
 				);
+
+				/**
+				 * Restore previous reference values for admin notices.
+				 */
+				if ( is_admin() ) {
+					$wpsso->notice->unset_ref( $sharing_url );
+				}
 			}
 
 			if ( $wpsso->debug->enabled ) {
@@ -916,7 +932,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				return $ret;
 			}
 
-			$size_name  = $wpsso->lca . '-schema';
+			$size_name = $wpsso->lca . '-schema';
 
 			/**
 			 * Maybe get options from Pro version integration modules.
@@ -924,13 +940,17 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$place_opts = apply_filters( $wpsso->lca . '_get_place_options', false, $mod, $place_id );
 
 			if ( ! empty( $place_opts ) ) {
+
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log_arr( 'get_place_options filters returned', $place_opts );
 				}
+
 			} else {
+
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'exiting early: empty place options' );
 				}
+
 				return 0;
 			}
 

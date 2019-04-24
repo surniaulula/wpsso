@@ -1425,8 +1425,19 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$title_text = '';
 
 			if ( is_object( $term_id ) ) {
+
+				if ( is_wp_error( $term_id ) ) {	// Just in case.
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'exiting early: term object is WP_Error' );
+					}
+
+					return $title_text;
+				}
+
 				$term_obj = $term_id;
 				$term_id  = $term_obj->term_id;
+
 			} else {
 				$term_obj = get_category( $term_id );
 			}

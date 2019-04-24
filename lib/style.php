@@ -175,18 +175,23 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			 * Re-use the notice border colors for the side column and dashboard metaboxes.
 			 */
 			$custom_style_css .= '
+
 				#poststuff #side-info-column .postbox {
 					border:1px solid ' . $this->p->cf[ 'notice' ][ 'update-nag' ][ 'border-color' ] . ';
 				}
+
 				#poststuff #side-info-column .postbox h2 {
 					border-bottom:1px dotted ' . $this->p->cf[ 'notice' ][ 'update-nag' ][ 'border-color' ] . ';
 				}
+
 				#poststuff #side-info-column .postbox.closed h2 {
 					border-bottom:1px solid ' . $this->p->cf[ 'notice' ][ 'update-nag' ][ 'border-color' ] . ';
 				}
+
 				#poststuff #side-info-column .postbox.closed {
 					border-bottom:none;
 				}
+
 				#poststuff #side-info-column .postbox .inside td.blank,
 				#poststuff .dashboard_col .postbox .inside td.blank {
 					color:' . $this->p->cf[ 'notice' ][ 'update-nag' ][ 'color' ] . ';
@@ -310,9 +315,9 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				#adminmenu li.menu-top.toplevel_page_' . $menu . ':hover div.wp-menu-image::before,
 				#adminmenu li.menu-top.toplevel_page_' . $sitemenu . ':hover div.wp-menu-image::before {
 					display:inline-block;
-					font-size:26px;
+					font-size:28px;
 					content:"' . $this->p->cf[ 'menu' ][ 'before' ] . '";
-					margin:-1px 0 0 0;
+					margin:-2px 0 0 0;
 					padding:0;
 				}
 

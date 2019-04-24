@@ -1239,9 +1239,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $msg_key ) {
 
-						case 'tooltip-schema_add_noscript':
+						case 'tooltip-schema_add_noscript':	// Meta Property Containers.
 
-							$text = 'When additional schema properties are available (product ratings, recipe ingredients, etc.), one or more <code>noscript</code> containers may be included in the webpage head section. <code>noscript</code> containers are read correctly by Google and Pinterest, but the W3C Validator will show errors for the included meta tags (these errors can be safely ignored). The <code>noscript</code> containers are always disabled for AMP webpages, and always enabled for the Pinterest crawler.';
+							$text = sprintf( __( 'When additional Schema properties are available (product ratings, recipe ingredients, etc.), one or more %1$s containers may be included in the webpage head section.', 'wpsso' ), '<code>noscript</code>' ) . ' ';
+
+							$text .= sprintf( __( '%1$s containers are read correctly by the Google and Pinterest crawlers, but the W3C Validator will show errors for the %1$s container markup (these errors can be safely ignored).', 'wpsso' ), '<code>noscript</code>' ) . ' ';
 
 							break;
 

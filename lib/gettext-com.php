@@ -25,7 +25,7 @@ __( 'Notice', 'wpsso' );
 __( 'Forever', 'wpsso' );
 __( 'This notice can be dismissed permanently.', 'wpsso' );
 __( 'This notice can be dismissed for %s.', 'wpsso' );
-__( 'edit', 'wpsso' );
+__( 'Edit', 'wpsso' );
 __( 'Reference: %s', 'wpsso' );
 __( '%s Notice', 'wpsso' );
 __( 'Notice', 'wpsso' );
