@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.29.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-04-25 10:59-0700\n"
-"PO-Revision-Date: 2019-04-25 10:59-0700\n"
+"POT-Creation-Date: 2019-04-25 11:25-0700\n"
+"PO-Revision-Date: 2019-04-25 11:26-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -281,8 +281,8 @@ msgid "<a href=\"%s\">Community Support Forum</a>"
 msgstr "<a href=\"%s\">Forum de soutien communautaire</a>"
 
 #: lib/admin.php:1955
-msgid "Rate these plugins"
-msgstr "Notez ces extensions"
+msgid "Rate your plugins"
+msgstr "Notez vos extensions"
 
 #: lib/admin.php:2107
 msgctxt "option label"
@@ -4566,8 +4566,8 @@ msgid "<strong>Development of %1$s is driven by user requests</strong> &mdash; w
 msgstr "<strong>Le développement de %1$s est motivé par les requêtes de nos utilisateurs</strong> &mdash; nous accueillons tous vos commentaires et suggestions."
 
 #: lib/messages.php:2296
-msgid "<strong>Great ratings are a terrific way to encourage your plugin developers</strong> &mdash; and it only takes a minute!"
-msgstr "<strong>Une bonne cote est une excellente façon d'encourager vos développeurs d'extensions</strong> &mdash; et ça ne prend qu'une minute!"
+msgid "<strong>Great ratings are a terrific way to encourage your plugin developers</strong> &mdash; and it only takes a minute."
+msgstr "<strong>Une bonne cote est une excellente façon d'encourager vos développeurs d'extensions</strong> &mdash; et ça ne prend qu'une minute."
 
 #: lib/messages.php:2300
 msgid "Please take a moment to %1$s thank your developers %1$s by rating the plugins you use."
@@ -5301,8 +5301,8 @@ msgstr "SEO / autre"
 
 #: lib/submenu/dashboard.php:91 lib/submenu/dashboard.php:110
 msgctxt "metabox title"
-msgid "Ratings are Awesome!"
-msgstr "Une note c'est génial!"
+msgid "Your Rating is Valued!"
+msgstr "Votre note est appréciée!"
 
 #: lib/submenu/dashboard.php:92 lib/submenu/dashboard.php:111
 msgctxt "metabox title"
@@ -5919,3 +5919,7 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
+
+#~ msgctxt "metabox title"
+#~ msgid "Ratings are Awesome!"
+#~ msgstr "Une note c'est génial!"

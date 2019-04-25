@@ -88,7 +88,7 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 					/**
 					 * First row.
 					 */
-					'rate_review'  => _x( 'Ratings are Awesome!', 'metabox title', 'wpsso' ),
+					'rate_review'  => _x( 'Your Rating is Valued!', 'metabox title', 'wpsso' ),
 					'help_support' => _x( 'Help and Support', 'metabox title', 'wpsso' ),
 					'version_info' => _x( 'Version Information', 'metabox title', 'wpsso' ), 
 
@@ -107,7 +107,7 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 					 * First row.
 					 */
 					'cache_status' => _x( 'Cache Status', 'metabox title', 'wpsso' ), 
-					'rate_review'  => _x( 'Ratings are Awesome!', 'metabox title', 'wpsso' ),
+					'rate_review'  => _x( 'Your Rating is Valued!', 'metabox title', 'wpsso' ),
 					'help_support' => _x( 'Help and Support', 'metabox title', 'wpsso' ),
 
 					/**

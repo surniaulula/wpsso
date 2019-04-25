@@ -288,7 +288,7 @@ msgid "<a href=\"%s\">Community Support Forum</a>"
 msgstr ""
 
 #: lib/admin.php:1955
-msgid "Rate these plugins"
+msgid "Rate your plugins"
 msgstr ""
 
 #: lib/admin.php:2107
@@ -5287,7 +5287,7 @@ msgstr ""
 #: lib/messages.php:2296
 msgid ""
 "<strong>Great ratings are a terrific way to encourage your plugin "
-"developers</strong> &mdash; and it only takes a minute!"
+"developers</strong> &mdash; and it only takes a minute."
 msgstr ""
 
 #: lib/messages.php:2300
@@ -6096,7 +6096,7 @@ msgstr ""
 
 #: lib/submenu/dashboard.php:91 lib/submenu/dashboard.php:110
 msgctxt "metabox title"
-msgid "Ratings are Awesome!"
+msgid "Your Rating is Valued!"
 msgstr ""
 
 #: lib/submenu/dashboard.php:92 lib/submenu/dashboard.php:111

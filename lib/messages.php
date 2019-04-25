@@ -2293,7 +2293,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text = '<p>';
 						
-						$text .= __( '<strong>Great ratings are a terrific way to encourage your plugin developers</strong> &mdash; and it only takes a minute!', 'wpsso' ) . ' :-) ';
+						$text .= __( '<strong>Great ratings are a terrific way to encourage your plugin developers</strong> &mdash; and it only takes a minute.', 'wpsso' ) . ' :-) ';
 
 						$text .= '</p><p>';
 
