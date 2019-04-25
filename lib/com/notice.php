@@ -318,9 +318,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				$link = '';
 
-				if ( isset( $refs[ 'mod' ] ) ) {
+				if ( ! empty( $refs[ 'mod' ] ) ) {
 
-					if ( $refs[ 'mod' ][ 'id' ] ) {
+					if ( ! empty( $refs[ 'mod' ][ 'id' ] ) && is_numeric( $refs[ 'mod' ][ 'id' ] ) ) {
 
 						if ( $refs[ 'mod' ][ 'is_post' ] ) {
 
@@ -369,11 +369,16 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					'<a href="' . $url . '">' . $pretty_url . '</a>' :
 					'<a href="' . $url . '">' . $context_transl . '</a>';
 
-				$edit_link = $this->get_ref( 'edit', $text_prefix = ' (<a href="',
+				/**
+				 * Returns an empty string or a clickable (Edit) link.
+				 */
+				$edit_html = $this->get_ref( 'edit',
+					$text_prefix = ' (<a href="',
 					$text_suffix = '">' . __( 'Edit', $this->text_domain ) . '</a>)' );
 
-				$ref_html .= '<p class="reference-message">' . sprintf( __( 'Reference: %s', $this->text_domain ),
-					$context_transl . $edit_link ) . '</p>';
+				$ref_html .= '<p class="reference-message">' .
+					sprintf( __( 'Reference: %s', $this->text_domain ),
+						$context_transl . $edit_html ) . '</p>';
 			}
 
 			return $ref_html;
