@@ -427,7 +427,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.29.1-dev.5 (2019/04/25)**
+**Version 4.29.1-b.1 (2019/04/26)**
 
 * *New Features*
 	* None.
@@ -521,9 +521,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.29.1-dev.5 =
+= 4.29.1-b.1 =
 
-(2019/04/25) Updated the menu dashicon styling for WordPress v5.2.
+(2019/04/26) Updated the menu dashicon styling for WordPress v5.2.
 
 = 4.29.0 =
 
