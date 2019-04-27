@@ -9,7 +9,7 @@ Assets URI: https://surniaulula.github.io/wpsso/assets/
 Tags: open graph, meta tags, social sharing, rich results, rich pins, schema.org, structured data, twitter cards, snippet, seo, social, social media, facebook, twitter, linkedin, pinterest, google
 Contributors: jsmoriss
 Requires At Least: 3.8
-Tested Up To: 5.1.1
+Tested Up To: 5.2
 WC Tested Up To: 3.6
 Stable Tag: 4.29.0
 
@@ -427,7 +427,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.29.1-rc.1 (2019/04/27)**
+**Version 4.29.1 (2019/04/27)**
 
 * *New Features*
 	* None.
@@ -521,11 +521,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.29.1-rc.1 =
+= 4.29.1 =
 
 (2019/04/27) Updated the menu dashicon styling for WordPress v5.2.
-
-= 4.29.0 =
-
-(2019/04/21) Fixed the "Select or Upload Image" button functionality when the SSO metabox is refreshed via ajax (ie. after clicking "Update" in the new block editor). Added a MB total for "All Transients" in the SSO &gt; Dashboard &gt; Cache Status metabox.
 
