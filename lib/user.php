@@ -128,6 +128,17 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return apply_filters( $this->p->lca . '_get_user_mod', $mod, $mod_id );
 		}
 
+		public function refresh_head_meta( $user_id ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			$mod = $this->get_mod( $user_id );
+
+			$this->p->util->refresh_mod_head_meta( $mod, $do_sleep = false );
+		}
+
 		public static function get_public_user_ids() {
 
 			$wpsso =& Wpsso::get_instance();

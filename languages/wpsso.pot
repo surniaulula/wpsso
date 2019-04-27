@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.29.1-rc.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.29.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -111,7 +111,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:1004 lib/post.php:742 lib/term.php:451 lib/user.php:457
+#: lib/admin.php:1004 lib/post.php:742 lib/term.php:451 lib/user.php:468
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -376,7 +376,7 @@ msgstr ""
 
 #: lib/admin.php:2407 lib/gettext-pro.php:169 lib/gettext-pro.php:172
 #: lib/gettext-pro.php:175 lib/pro/media/slideshare.php:192
-#: lib/pro/media/vimeo.php:157 lib/pro/media/wistia.php:314 lib/util.php:1942
+#: lib/pro/media/vimeo.php:157 lib/pro/media/wistia.php:314 lib/util.php:1945
 msgid ""
 "Please contact your hosting provider to have the missing PHP function "
 "installed."
@@ -2494,7 +2494,7 @@ msgid "Refresh Short URLs on Clear Cache"
 msgstr ""
 
 #: lib/gettext-pro.php:57 lib/gpl/admin/advanced.php:360
-#: lib/pro/admin/advanced.php:357 lib/util.php:1361
+#: lib/pro/admin/advanced.php:357 lib/util.php:1362
 msgctxt "option label"
 msgid "Auto-Refresh Cache After Clearing"
 msgstr ""
@@ -3022,13 +3022,13 @@ msgstr ""
 
 #: lib/gettext-pro.php:167 lib/gettext-pro.php:170 lib/gettext-pro.php:173
 #: lib/pro/media/slideshare.php:187 lib/pro/media/vimeo.php:152
-#: lib/pro/media/wistia.php:309 lib/util.php:1937
+#: lib/pro/media/wistia.php:309 lib/util.php:1940
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
 #: lib/gettext-pro.php:168 lib/gettext-pro.php:171 lib/gettext-pro.php:174
 #: lib/pro/media/slideshare.php:189 lib/pro/media/vimeo.php:154
-#: lib/pro/media/wistia.php:311 lib/util.php:1939
+#: lib/pro/media/wistia.php:311 lib/util.php:1942
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
@@ -3266,7 +3266,7 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
 #: lib/loader.php:171 lib/loader.php:197 lib/post.php:282 lib/register.php:304
-#: lib/term.php:255 lib/user.php:223 lib/util.php:487 lib/util.php:3226
+#: lib/term.php:255 lib/user.php:234 lib/util.php:487 lib/util.php:3232
 msgid "%s warning:"
 msgstr ""
 
@@ -3832,7 +3832,7 @@ msgid ""
 "%s</em>\" message - after enabling this option."
 msgstr ""
 
-#: lib/messages.php:622 lib/util.php:3514
+#: lib/messages.php:622 lib/util.php:3520
 msgid "No options available."
 msgstr ""
 
@@ -4008,7 +4008,7 @@ msgstr ""
 msgid "Automatically add the \"%s\" role when a new user is created."
 msgstr ""
 
-#: lib/messages.php:752 lib/user.php:32 lib/user.php:256
+#: lib/messages.php:752 lib/user.php:32 lib/user.php:267
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -5693,8 +5693,8 @@ msgstr ""
 
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
-#: lib/post.php:268 lib/term.php:241 lib/user.php:209 lib/util.php:473
-#: lib/util.php:3198
+#: lib/post.php:268 lib/term.php:241 lib/user.php:220 lib/util.php:473
+#: lib/util.php:3204
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -6429,29 +6429,29 @@ msgid "Twitter Summary Card"
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a recommended max
-#: lib/user.php:212
+#: lib/user.php:223
 msgid ""
 "Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts "
 "authored by user ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/user.php:680
+#: lib/user.php:691
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:763
+#: lib/user.php:774
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:764
+#: lib/user.php:775
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:765
+#: lib/user.php:776
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1228
+#: lib/user.php:1239
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
@@ -6462,33 +6462,33 @@ msgid ""
 "(%3$s)."
 msgstr ""
 
-#: lib/util.php:1289
+#: lib/util.php:1290
 msgid ""
 "%s cached files, transient cache, column meta, and WordPress object cache "
 "have all been cleared."
 msgstr ""
 
-#: lib/util.php:1294
+#: lib/util.php:1295
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:1346 lib/util.php:1476
+#: lib/util.php:1347 lib/util.php:1477
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/util.php:1352
+#: lib/util.php:1353
 msgid ""
 "A background task will begin shortly to refresh the post, term, and user "
 "cache objects."
 msgstr ""
 
-#: lib/util.php:1363
+#: lib/util.php:1364
 msgid ""
 "All cache objects will be re-created as they are needed (the %s option is "
 "disabled)."
 msgstr ""
 
-#: lib/util.php:1470
+#: lib/util.php:1471
 msgid ""
 "The meta tag and Schema markup caches for %1$d posts, %2$d terms, and %3$d "
 "users have been refreshed."
@@ -6514,20 +6514,20 @@ msgstr ""
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:1993
+#: lib/util.php:2064
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max.
-#: lib/util.php:3201
+#: lib/util.php:3207
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3218
+#: lib/util.php:3224
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -6536,33 +6536,33 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3218
+#: lib/util.php:3224
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3509
+#: lib/util.php:3515
 msgid "Have you hidden the Pro options?"
 msgstr ""
 
-#: lib/util.php:3544
+#: lib/util.php:3550
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3547
+#: lib/util.php:3553
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:3552
+#: lib/util.php:3558
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3555
+#: lib/util.php:3561
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

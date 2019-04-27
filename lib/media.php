@@ -1743,11 +1743,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			/**
 			 * Fetch HTML using the Facebook user agent to get Open Graph meta tags.
 			 *
-			 * get_head_meta( $request, $query, $libxml_errors, $curl_opts );
+			 * get_html_head_meta( $request, $query, $libxml_errors, $curl_opts );
 			 */
 			$curl_opts = array( 'CURLOPT_USERAGENT' => WPSSO_PHP_CURL_USERAGENT_FACEBOOK );
 
-			$metas = $this->p->util->get_head_meta( $url, '//meta', false, $curl_opts );
+			$metas = $this->p->util->get_html_head_meta( $url, '//meta', false, $curl_opts );
 
 			if ( isset( $metas[ 'meta' ] ) ) {
 

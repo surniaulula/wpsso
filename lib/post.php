@@ -1070,7 +1070,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->log( 'checking the stripped webpage html for duplicates' );
 			}
 
-			$metas           = $this->p->util->get_head_meta( $html_stripped, '/html/head/link|/html/head/meta', true );	// False on error.
+			$metas           = $this->p->util->get_html_head_meta( $html_stripped, '/html/head/link|/html/head/meta', true );	// False on error.
 			$check_opts      = SucomUtil::preg_grep_keys( '/^add_/', $this->p->options, false, '' );
 			$conflicts_msg   = __( 'Conflict detected &mdash; your theme or another plugin is adding %1$s to the head section of this webpage.', 'wpsso' );
 			$conflicts_found = 0;

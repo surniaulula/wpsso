@@ -1195,7 +1195,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				set_time_limit( HOUR_IN_SECONDS );
 			}
 
-			$user_id    = $this->maybe_change_user_id( $user_id );
+			$user_id = $this->maybe_change_user_id( $user_id );
+
 			$public_ids = WpssoUser::get_public_user_ids();			// Aka 'administrator', 'editor', 'author', and 'contributor'.
 
 			foreach ( $public_ids as $person_id ) {
@@ -1481,20 +1482,19 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			delete_transient( $cache_id );
 		}
 
-		private function refresh_mod_head_meta( array $mod ) {
+		public function refresh_mod_head_meta( array $mod, $do_sleep = true ) {
 
-			$wp_obj       = false;
-			$image_sizes  = array();
-			$filter_sizes = true;
-
-			$this->add_plugin_image_sizes( $wp_obj, $image_sizes, $mod, $filter_sizes );
+			$this->add_plugin_image_sizes( $wp_obj = false, $image_sizes = array(), $mod, $filter_sizes = true );
 
 			$head_meta_tags = $this->p->head->get_head_array( false, $mod, true );
 			$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
 
-			$sleep_secs = WPSSO_REFRESH_CACHE_SLEEP_TIME;
+			if ( $do_sleep ) {
 
-			usleep( $sleep_secs * 1000000 );	// Sleeps for 0.25 seconds by default.
+				$sleep_secs = WPSSO_REFRESH_CACHE_SLEEP_TIME;
+
+				usleep( $sleep_secs * 1000000 );	// Sleeps for 0.25 seconds by default.
+			}
 		}
 
 		public function delete_all_column_meta() {
@@ -1802,7 +1802,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 * 	/html/head/link[@rel="canonical"]
 		 * 	/html/head/meta[starts-with(@property, "og:video:")]
 		 */
-		public function get_head_meta( $request, $query = '/html/head/meta', $libxml_errors = false, array $curl_opts = array() ) {
+		public function get_html_head_meta( $request, $query = '/html/head/meta', $libxml_errors = false, array $curl_opts = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -1900,6 +1900,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						}
 
 						foreach ( libxml_get_errors() as $error ) {
+
 							/**
 							 *	libXMLError {
 							 *		public int $level;
@@ -1913,6 +1914,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'libxml error: ' . $error->message );
 							}
+
 							if ( is_admin() ) {
 								$this->p->notice->err( 'PHP libXML error: ' . $error->message );
 							}
@@ -1933,6 +1935,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					}
 
 					if ( is_admin() ) {
+
 						$func_name = 'simplexml_load_string()';
 						$func_url  = __( 'https://secure.php.net/manual/en/function.simplexml-load-string.php', 'wpsso' );
 
@@ -1969,12 +1972,15 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
+
 				if ( empty( $ret ) ) {	// Empty array.
+
 					if ( false === $request ) {	// $request argument is html
 						$this->p->debug->log( 'meta tags found in submitted html' );
 					} else {
 						$this->p->debug->log( 'no meta tags found in ' . $request );
 					}
+
 				} else {
 					$this->p->debug->log( 'returning array of ' . count( $ret ) . ' meta tags' );
 				}
@@ -1983,19 +1989,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $ret;
 		}
 
-		public function missing_php_class_error( $classname ) {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( $classname . ' PHP class is missing' );
-			}
-
-			if ( is_admin() ) {
-				$this->p->notice->err( sprintf( __( 'The %1$s PHP class is missing - please contact your hosting provider to install the missing %1$s PHP class.',
-					'wpsso' ), $classname ) );
-			}
-		}
-
-		public function get_body_html( $request, $remove_script = true ) {
+		public function get_html_body( $request, $remove_script = true ) {
 
 			$html = '';
 
@@ -2058,6 +2052,18 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			return $html;
+		}
+
+		public function missing_php_class_error( $classname ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( $classname . ' PHP class is missing' );
+			}
+
+			if ( is_admin() ) {
+				$this->p->notice->err( sprintf( __( 'The %1$s PHP class is missing - please contact your hosting provider to install the missing %1$s PHP class.',
+					'wpsso' ), $classname ) );
+			}
 		}
 
 		public function log_is_functions() {
