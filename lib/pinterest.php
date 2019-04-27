@@ -29,6 +29,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 		}
 
 		public function show_pinterest_img_html() {
+
 			echo $this->get_pinterest_img_html();
 		}
 

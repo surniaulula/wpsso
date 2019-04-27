@@ -286,9 +286,9 @@ if ( ! class_exists( 'WpssoNoScript' ) ) {
 			 */
 			if ( is_admin() ) {
 
-				$sharing_url = $wpsso->util->get_sharing_url( $user_mod );
+				$sharing_url = $this->p->util->get_sharing_url( $user_mod );
 	
-				$wpsso->notice->set_ref( $sharing_url, $user_mod,
+				$this->p->notice->set_ref( $sharing_url, $user_mod,
 					sprintf( __( 'adding schema noscript for author user ID %1$s', 'wpsso' ), $author_id ) );
 			}
 
@@ -334,7 +334,7 @@ if ( ! class_exists( 'WpssoNoScript' ) ) {
 			 * Restore previous reference values for admin notices.
 			 */
 			if ( is_admin() ) {
-				$wpsso->notice->unset_ref( $sharing_url );
+				$this->p->notice->unset_ref( $sharing_url );
 			}
 
 			/**
