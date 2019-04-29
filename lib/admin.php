@@ -2938,21 +2938,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return;	// Stop here.
 			}
 
-			$lca     = $this->p->lca;
-			$short   = $this->p->cf[ 'plugin' ][ $lca ][ 'short' ];
-			$user_id = get_current_user_id();
+			$core_short = $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'short' ];
+			$user_id    = get_current_user_id();
 
 			$ext_reg_actions     = $this->p->util->get_registered_actions();
 			$one_week_ago_secs   = time() - WEEK_IN_SECONDS;
 			$six_months_ago_secs = time() - ( 6 * MONTH_IN_SECONDS );
 			$one_year_ago_secs   = time() - YEAR_IN_SECONDS;
 
-			$cache_md5_pre  = $lca . '_';
+			$cache_md5_pre  = $this->p->lca . '_';
 			$cache_exp_secs = 2 * DAY_IN_SECONDS;
 			$cache_salt     = __METHOD__ . '(user_id:' . $user_id . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 
-			$this->get_form_object( $lca );
+			$this->get_form_object( $this->p->lca );
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
@@ -3027,25 +3026,23 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				
 				$notice_msg .= '<b>' . __( 'Fantastic!', 'wpsso' ) . '</b> ';
 				
-				$notice_msg .= sprintf( __( 'You\'ve been using <b>%s</b> for a while now, which is awesome!', 'wpsso' ), $wp_plugin_link );
+				$notice_msg .= sprintf( __( 'You\'ve been using <b>%s</b> for a while now, which is awesome!', 'wpsso' ), $wp_plugin_link ) . ' ';
 
 				$notice_msg .= '</p><p>';
 
-				$notice_msg .= sprintf( __( 'We\'ve put a lot of effort into making %s and its add-ons the best possible, so it\'s great to know that you\'re finding this plugin useful.', 'wpsso' ), $short ) . ' :-)';
+				$notice_msg .= sprintf( __( 'We\'ve put a lot of effort into making %s and its add-ons the best possible, so it\'s great to know that you\'re finding this plugin useful.', 'wpsso' ), $core_short ) . ' :-) ';
 
 				$notice_msg .= '</p><p>';
 
 				$notice_msg .= sprintf( __( 'Now that you\'re familiar with %s, could you do me a small favor?', 'wpsso' ), $info[ 'short' ] ) . ' ';
 
-				$notice_msg .= __( 'Just for me?', 'wpsso' );
+				$notice_msg .= '</p><p>';
+
+				$notice_msg .= __( 'Would you rate this plugin on WordPress.org?', 'wpsso' ) . ' ';
 
 				$notice_msg .= '</p><p>';
 
-				$notice_msg .= __( 'Would you rate this plugin on WordPress.org?', 'wpsso' );
-
-				$notice_msg .= '</p><p>';
-
-				$notice_msg .= __( 'Your rating is a great way to encourage us, and it helps other WordPress users find great plugins as well!', 'wpsso' );
+				$notice_msg .= __( 'Your rating is a great way to encourage us, and it helps other WordPress users find great plugins as well!', 'wpsso' ) . ' ';
 
 				$notice_msg .= '</p>';
 				
@@ -3061,14 +3058,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return;	// Show only one notice at a time.
 			}
 
-			if ( ! self::$pkg[ $lca ][ 'pp' ] ) {
+			if ( ! self::$pkg[ $this->p->lca ][ 'pp' ] ) {
 
-				if ( ! empty( $ext_reg_actions[ $lca . '_install_time' ] ) &&
-					$ext_reg_actions[ $lca . '_install_time' ] < $six_months_ago_secs ) {
+				if ( ! empty( $ext_reg_actions[ $this->p->lca . '_install_time' ] ) &&
+					$ext_reg_actions[ $this->p->lca . '_install_time' ] < $six_months_ago_secs ) {
 
-					$info         = $this->p->cf[ 'plugin' ][ $lca ];
+					$info         = $this->p->cf[ 'plugin' ][ $this->p->lca ];
 					$purchase_url = add_query_arg( 'utm_source', 'pro-purchase-notice', $info[ 'url' ][ 'purchase' ] );
-					$notice_key   = 'timed-notice-' . $lca . '-pro-purchase-notice';
+					$notice_key   = 'timed-notice-' . $this->p->lca . '-pro-purchase-notice';
 					$dismiss_time = 3 * MONTH_IN_SECONDS;
 
 					$purchase_label   = __( 'Yes! Get the Pro update in just moments!', 'wpsso' );
