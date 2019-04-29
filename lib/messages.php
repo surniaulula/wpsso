@@ -54,10 +54,29 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			$url = isset( $this->p->cf[ 'plugin' ][ $lca ][ 'url' ] ) ?
 				$this->p->cf[ 'plugin' ][ $lca ][ 'url' ] : array();
 
+			/**
+			 * utm_source   = Use utm_source to identify a search engine,
+			 *                newsletter name, or other source. Example: google.
+			 *
+			 * utm_medium   = Use utm_medium to identify a medium such as email or
+			 *                cost-per-click. Example: cpc.
+			 *
+			 * utm_campaign = Used for keyword analysis. Use utm_campaign to
+			 *                identify a specific product promotion or strategic
+			 *                campaign. Example: spring_sale.
+			 *
+			 * utm_term     = Used for paid search. Use utm_term to note the
+			 *                keywords for this ad. Example: running+shoes.
+			 *
+			 * utm_content  = Used for A/B testing and content-targeted ads. Use
+			 *                utm_content to differentiate ads or links that point
+			 *                to the same URL. Examples: logolink or textlink
+			 */
 			if ( ! empty( $url[ 'purchase' ] ) ) {
 
 				$url[ 'purchase' ] = add_query_arg( array(
 					'utm_source'  => $lca,
+					'utm_medium'  => 'plugin',
 					'utm_content' => $msg_key,
 				), $url[ 'purchase' ] );
 

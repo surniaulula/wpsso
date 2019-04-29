@@ -638,6 +638,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$purchase_url = add_query_arg( array( 
 					'utm_source'  => $ext,
+					'utm_medium'  => 'plugin',
 					'utm_content' => 'licenses-action-links',
 				), $info[ 'url' ][ 'purchase' ] );
 
@@ -1727,6 +1728,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					self::$pkg[ $ext ][ 'purchase' ] = add_query_arg( array(
 						'utm_source'  => $ext,
+						'utm_medium'  => 'plugin',
 						'utm_content' => 'status-pro-feature',
 					), $info[ 'url' ][ 'purchase' ] );
 
@@ -1897,6 +1899,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$purchase_url = add_query_arg( array(
 					'utm_source'  => $this->p->lca,
+					'utm_medium'  => 'plugin',
 					'utm_content' => 'column-purchase-pro',
 				), $info[ 'url' ][ 'purchase' ] );
 
@@ -3081,7 +3084,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$dismiss_time = 3 * MONTH_IN_SECONDS;
 
 					$purchase_url = add_query_arg( array(
-						'utm_source' => $this->p->lca,
+						'utm_source'  => $this->p->lca,
+						'utm_medium'  => 'plugin',
 						'utm_content' => 'pro-purchase-notice',
 					), $info[ 'url' ][ 'purchase' ] );
 
