@@ -636,7 +636,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! empty( $info[ 'url' ][ 'purchase' ] ) ) {
 
-				$purchase_url = add_query_arg( 'utm_source', 'licenses-action-links', $info[ 'url' ][ 'purchase' ] );
+				$purchase_url = add_query_arg( array( 
+					'utm_source'  => $ext,
+					'utm_content' => 'licenses-action-links',
+				), $info[ 'url' ][ 'purchase' ] );
 
 				$action_links[] = $this->p->msgs->get( 'pro-purchase-link', array(
 					'ext'      => $ext,
@@ -1721,7 +1724,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$features = array();
 
 				if ( ! empty( $info[ 'url' ][ 'purchase' ] ) ) {
-					self::$pkg[ $ext ][ 'purchase' ] = add_query_arg( 'utm_source', 'status-pro-feature', $info[ 'url' ][ 'purchase' ] );
+
+					self::$pkg[ $ext ][ 'purchase' ] = add_query_arg( array(
+						'utm_source'  => $ext,
+						'utm_content' => 'status-pro-feature',
+					), $info[ 'url' ][ 'purchase' ] );
+
 				} else {
 					self::$pkg[ $ext ][ 'purchase' ] = '';
 				}
@@ -1886,7 +1894,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$info =& $this->p->cf[ 'plugin' ][ $this->p->lca ];
 
 			if ( ! empty( $info[ 'url' ][ 'purchase' ] ) ) {
-				$purchase_url = add_query_arg( 'utm_source', 'column-purchase-pro', $info[ 'url' ][ 'purchase' ] );
+
+				$purchase_url = add_query_arg( array(
+					'utm_source'  => $this->p->lca,
+					'utm_content' => 'column-purchase-pro',
+				), $info[ 'url' ][ 'purchase' ] );
+
 			} else {
 				$purchase_url = '';
 			}
@@ -3064,9 +3077,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$ext_reg_actions[ $this->p->lca . '_install_time' ] < $six_months_ago_secs ) {
 
 					$info         = $this->p->cf[ 'plugin' ][ $this->p->lca ];
-					$purchase_url = add_query_arg( 'utm_source', 'pro-purchase-notice', $info[ 'url' ][ 'purchase' ] );
 					$notice_key   = 'timed-notice-' . $this->p->lca . '-pro-purchase-notice';
 					$dismiss_time = 3 * MONTH_IN_SECONDS;
+
+					$purchase_url = add_query_arg( array(
+						'utm_source' => $this->p->lca,
+						'utm_content' => 'pro-purchase-notice',
+					), $info[ 'url' ][ 'purchase' ] );
 
 					$purchase_label   = __( 'Yes! Get the Pro update in just moments!', 'wpsso' );
 					$purchase_clicked = __( 'Thank you for your support! You\'re awesome!', 'wpsso' );

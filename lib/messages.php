@@ -55,7 +55,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				$this->p->cf[ 'plugin' ][ $lca ][ 'url' ] : array();
 
 			if ( ! empty( $url[ 'purchase' ] ) ) {
-				$url[ 'purchase' ] = add_query_arg( 'utm_source', $msg_key, $url[ 'purchase' ] );
+
+				$url[ 'purchase' ] = add_query_arg( array(
+					'utm_source'  => $lca,
+					'utm_content' => $msg_key,
+				), $url[ 'purchase' ] );
+
 			} else {
 				$url[ 'purchase' ] = '';
 			}
@@ -1886,13 +1891,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'pro-feature-msg':
 
-						/**
-						 * The $msg_key value has already been added to the purchase URL as a 'utm_source' query value.
-						 */
-						$begin_p = '<p class="pro-feature-msg">' .
-							( empty( $url[ 'purchase' ] ) ? '' : '<a href="' . $url[ 'purchase' ] . '">' );
-
-						$end_p = ( empty( $url[ 'purchase' ] ) ? '' : '</a>' ) . '</p>';
+						$begin_p = '<p class="pro-feature-msg">' . ( empty( $url[ 'purchase' ] ) ? '' : '<a href="' . $url[ 'purchase' ] . '">' );
+						$end_p   = ( empty( $url[ 'purchase' ] ) ? '' : '</a>' ) . '</p>';
 
 						if ( $lca === $this->p->lca ) {
 

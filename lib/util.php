@@ -2693,8 +2693,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				/**
 				 * Strip out tracking query arguments by facebook, google, etc.
 				 */
-				$url = preg_replace( '/([\?&])(fb_action_ids|fb_action_types|fb_source|fb_aggregation_id|' . 
-					'utm_source|utm_medium|utm_campaign|utm_term|gclid|pk_campaign|pk_kwd)=[^&]*&?/i', '$1', $url );
+				$url = preg_replace( '/([\?&])(' .
+					'fb_action_ids|fb_action_types|fb_source|fb_aggregation_id|' . 
+					'utm_source|utm_medium|utm_campaign|utm_term|utm_content|' .
+					'gclid|pk_campaign|pk_kwd' .
+					')=[^&]*&?/i', '$1', $url );
 
 				$url = apply_filters( $this->p->lca . '_server_request_url', $url, $mod, $add_page, $src_id );
 
