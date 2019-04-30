@@ -34,7 +34,7 @@ msgstr ""
 
 #: lib/admin.php:571
 msgctxt "plugin action link"
-msgid "Add-ons"
+msgid "Add-on Features"
 msgstr ""
 
 #: lib/admin.php:603
@@ -1184,7 +1184,7 @@ msgstr ""
 
 #: lib/gettext-config.php:19
 msgctxt "lib file description"
-msgid "SSO Add-ons"
+msgid "SSO Add-on Features"
 msgstr ""
 
 #: lib/gettext-config.php:20
@@ -1214,14 +1214,14 @@ msgstr ""
 
 #: lib/gettext-config.php:25 lib/gettext-config.php:32
 msgctxt "lib file description"
-msgid "Add-ons"
+msgid "Add-on Features"
 msgstr ""
 
 #: lib/gettext-config.php:26 lib/gettext-config.php:33 lib/messages.php:1829
 #: lib/messages.php:2160 lib/messages.php:2170 lib/messages.php:2179
 #: lib/messages.php:2191
 msgctxt "lib file description"
-msgid "Licenses"
+msgid "Pro Licenses"
 msgstr ""
 
 #: lib/gettext-config.php:27 lib/gettext-config.php:35
@@ -5990,7 +5990,7 @@ msgstr ""
 
 #: lib/sitesubmenu/site-addons.php:69 lib/submenu/addons.php:58
 msgctxt "metabox title"
-msgid "Add-ons for %s"
+msgid "Add-on Features for %s"
 msgstr ""
 
 #: lib/sitesubmenu/site-advanced.php:47
@@ -6010,7 +6010,7 @@ msgstr ""
 
 #: lib/sitesubmenu/site-licenses.php:52 lib/submenu/licenses.php:41
 msgctxt "metabox title"
-msgid "Licenses for Core Pro and Pro Add-ons"
+msgid "Pro Licenses Authentication IDs"
 msgstr ""
 
 #: lib/submenu/advanced.php:36

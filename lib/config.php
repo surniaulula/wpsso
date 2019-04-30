@@ -78,7 +78,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 						),
 						'plugins' => array(
-							'sso-addons' => 'SSO Add-ons',
+							'sso-addons' => 'SSO Add-on Features',
 						),
 						'pro' => array(
 							'admin' => array(
@@ -154,8 +154,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 						'sitesubmenu' => array(
 							'site-advanced' => 'Advanced',
-							'site-addons'   => 'Add-ons',
-							'site-licenses' => 'Licenses',
+							'site-addons'   => 'Add-on Features',
+							'site-licenses' => 'Pro Licenses',
 							'site-setup'    => 'Setup Guide',
 							'site-tools'    => 'Tools',
 						),
@@ -163,8 +163,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'essential' => 'Essential',
 							'general'   => 'General',
 							'advanced'  => 'Advanced',
-							'addons'    => 'Add-ons',
-							'licenses'  => 'Licenses',
+							'addons'    => 'Add-on Features',
+							'licenses'  => 'Pro Licenses',
 							'dashboard' => 'Dashboard',
 							'setup'     => 'Setup Guide',
 							'tools'     => 'Tools',
