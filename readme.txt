@@ -427,6 +427,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.29.2-dev.1 (2019/04/30)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* Renamed the "Add-ons" settings page to "Add-on Features".
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* None.
+
 **Version 4.29.1 (2019/04/27)**
 
 * *New Features*
@@ -520,6 +531,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* product:quantity:unit_text
 
 == Upgrade Notice ==
+
+= 4.29.2-dev.1 =
+
+(2019/04/30) Renamed the "Add-ons" settings page to "Add-on Features".
 
 = 4.29.1 =
 
