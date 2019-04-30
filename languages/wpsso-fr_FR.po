@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.29.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-04-30 08:56-0700\n"
-"PO-Revision-Date: 2019-04-30 08:56-0700\n"
+"POT-Creation-Date: 2019-04-30 09:27-0700\n"
+"PO-Revision-Date: 2019-04-30 09:28-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -42,23 +42,23 @@ msgstr "Ajouts complémentaires"
 
 #: lib/admin.php:603
 msgctxt "plugin action link"
-msgid "Plugin Details and Update"
-msgstr "Afficher détails et mise à jour"
+msgid "More Details and Update (Optional)"
+msgstr "Plus de détails et mise à jour (facultatif)"
 
 #: lib/admin.php:607
 msgctxt "plugin action link"
-msgid "Plugin Details"
-msgstr "Afficher détails"
+msgid "More Details"
+msgstr "Plus de détails"
 
 #: lib/admin.php:612
 msgctxt "plugin action link"
-msgid "Plugin Details and Install"
-msgstr "Afficher détails et installer"
+msgid "More Details and Install (Optional)"
+msgstr "Plus de détails et installer (facultatif)"
 
 #: lib/admin.php:617
 msgctxt "plugin action link"
-msgid "Plugin Description"
-msgstr "Description de l'extension"
+msgid "About Page"
+msgstr "Page à propos"
 
 #: lib/admin.php:623
 msgctxt "plugin action link"

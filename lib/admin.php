@@ -600,21 +600,21 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					if ( SucomPlugin::have_plugin_update( $info[ 'base' ] ) ) {
 						$action_links[] = '<a href="' . $details_url . '" class="thickbox" tabindex="' . ++$tabindex . '">' .
-							'<font color="red">' . _x( 'Plugin Details and Update', 'plugin action link',
+							'<font color="red">' . _x( 'More Details and Update (Optional)', 'plugin action link',
 								'wpsso' ) . '</font></a>';
 					} else {
 						$action_links[] = '<a href="' . $details_url . '" class="thickbox" tabindex="' . ++$tabindex . '">' .
-							_x( 'Plugin Details', 'plugin action link', 'wpsso' ) . '</a>';
+							_x( 'More Details', 'plugin action link', 'wpsso' ) . '</a>';
 					}
 
 				} else {
 					$action_links[] = '<a href="' . $details_url . '" class="thickbox" tabindex="' . ++$tabindex . '">' .
-						_x( 'Plugin Details and Install', 'plugin action link', 'wpsso' ) . '</a>';
+						_x( 'More Details and Install (Optional)', 'plugin action link', 'wpsso' ) . '</a>';
 				}
 
 			} elseif ( ! empty( $info[ 'url' ][ 'home' ] ) ) {
 				$action_links[] = '<a href="' . $info[ 'url' ][ 'home' ] . '" tabindex="' . ++$tabindex . '">' .
-					_x( 'Plugin Description', 'plugin action link', 'wpsso' ) . '</a>';
+					_x( 'About Page', 'plugin action link', 'wpsso' ) . '</a>';
 			}
 
 			if ( ! empty( $info[ 'url' ][ 'docs' ] ) ) {

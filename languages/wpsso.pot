@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.29.2-dev.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.29.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -39,22 +39,22 @@ msgstr ""
 
 #: lib/admin.php:603
 msgctxt "plugin action link"
-msgid "Plugin Details and Update"
+msgid "More Details and Update (Optional)"
 msgstr ""
 
 #: lib/admin.php:607
 msgctxt "plugin action link"
-msgid "Plugin Details"
+msgid "More Details"
 msgstr ""
 
 #: lib/admin.php:612
 msgctxt "plugin action link"
-msgid "Plugin Details and Install"
+msgid "More Details and Install (Optional)"
 msgstr ""
 
 #: lib/admin.php:617
 msgctxt "plugin action link"
-msgid "Plugin Description"
+msgid "About Page"
 msgstr ""
 
 #: lib/admin.php:623
