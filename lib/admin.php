@@ -1918,8 +1918,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '</div>';
 
 			echo '<div class="column-metabox-buttons">';
-			echo $this->form->get_button( _x( 'Purchase Pro Version', 'submit button', 'wpsso' ),
-				'button-primary', 'column-purchase-pro', $purchase_url, true );
+			echo $this->form->get_button( sprintf( _x( 'Purchase %s', 'submit button', 'wpsso' ),
+				$info[ 'short' ] . ' ' . _x( 'Pro', 'package type', 'wpsso' ) ) ,
+					'button-primary', 'column-purchase-pro', $purchase_url, true );
 			echo '</div>';
 
 			echo '</td></tr></table>';

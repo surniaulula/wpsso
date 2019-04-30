@@ -50,7 +50,7 @@ _x( 'WPSSO Core add-on to remove outdated / incomplete Schema Microdata to use G
 _x( 'WPSSO Core add-on offers Twitter-style quoted text for your content, with a convenient Tweet share link and customizable CSS.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on offers tuning options for the WordPress image editors and PHP image extensions.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on provides a convenient locale / language / region selector in the WordPress admin toolbar.', 'plugin description', 'wpsso' );
-_x( 'WPSSO Core add-on provides updates for the WPSSO Core Pro plugin and its Pro add-ons.', 'plugin description', 'wpsso' );
+_x( 'WPSSO Core add-on provides updates for the WPSSO Core Pro plugin and its Pro add-on features.', 'plugin description', 'wpsso' );
 _x( 'SSO', 'menu title', 'wpsso' );
 _x( 'Document SSO (Social and Search Optimization)', 'metabox title', 'wpsso' );
 _x( 'Schema', 'column header', 'wpsso' );

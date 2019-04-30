@@ -1807,14 +1807,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = '<blockquote class="top-info">';
 
-							$text .= '<p>' . sprintf( __( 'After purchasing the %1$s plugin &mdash; or any of its Pro add-ons &mdash; you\'ll receive an email with a unique Authentication ID for the plugin / add-on you purchased.', 'wpsso' ), $info[ 'short_pro' ] ) . ' ';
+							$text .= '<p>' . sprintf( __( 'After purchasing the %1$s plugin, or any Pro add-on features, you\'ll receive an email with a unique Authentication ID for the plugin / add-on you purchased.', 'wpsso' ), $info[ 'short_pro' ] ) . ' ';
 
 							$text .=  __( 'Enter the Authentication ID in the option field corresponding to the plugin / add-on you purchased.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'Don\'t forget that the %1$s Free add-on must also be installed and active to check for Pro version updates.', 'wpsso' ), $um_info[ 'name' ] ) . ' ;-)</p>';
+							$text .= sprintf( __( 'Don\'t forget that the %1$s Free add-on must be installed and active to check for Pro version updates.', 'wpsso' ), $um_info[ 'name' ] ) . ' ;-)</p>';
 
 							if ( ! WpssoAdmin::$pkg[ $lca ][ 'pp' ] ) {
-								$text .= '<p>' . sprintf( __( 'Please note that Pro add-ons use several %1$s features. This means that all Pro add-ons require an active and licensed %1$s plugin &mdash; don\'t forget to purchase %1$s before purchasing any of its Pro add-ons.', 'wpsso' ), $info[ 'short_pro' ] ) . ' ;-)</p>';
+								$text .= '<p>' . sprintf( __( 'Note that all Pro add-on features require a licensed and active %1$s plugin &mdash; don\'t forget to purchase %1$s before purchasing any of its Pro add-on features.', 'wpsso' ), $info[ 'short_pro' ] ) . ' ;-)</p>';
 							}
 
 							$text .= '</blockquote>';
@@ -1965,11 +1965,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						}
 						
 						if ( WpssoAdmin::$pkg[ $info[ 'ext' ] ][ 'pp' ] ) {
-							$text = _x( 'More Licenses', 'plugin action link', 'wpsso' );
+							$text = _x( 'Get More Licenses', 'plugin action link', 'wpsso' );
 						} elseif ( $info[ 'ext' ] === $lca ) {
 							$text = _x( 'Purchase Core Pro', 'plugin action link', 'wpsso' );
 						} else {
-							$text = _x( 'Purchase Pro Add-on', 'plugin action link', 'wpsso' );
+							$text = _x( 'Purchase the Pro Add-on', 'plugin action link', 'wpsso' );
 						}
 
 						if ( ! empty( $info[ 'url' ] ) ) {
@@ -2198,7 +2198,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '<b>'.sprintf( __( 'At least one Authentication ID has been entered in the %1$s settings page,<br/>but the %2$s add-on is not active.', 'wpsso' ), $settings_page_link, $um_info[ 'name' ] ).'</b> ';
 
-						$text .= sprintf( __( 'This Free add-on is required to update and enable the %1$s plugin and its Pro add-ons.', 'wpsso' ), $info[ 'name_pro' ] );
+						$text .= sprintf( __( 'This Free add-on is required to update and enable the %1$s plugin and its Pro add-on features.', 'wpsso' ), $info[ 'name_pro' ] );
 
 						$text .= '</p><p>';
 
@@ -2282,7 +2282,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '<li>'.__( 'Integration with 3rd party plugins and service APIs.', 'wpsso' ).'</li>';
 
-						$text .= '<li>'.__( 'Ability to purchase Pro add-ons.', 'wpsso' ).'</li>';
+						$text .= '<li>'.__( 'Ability to purchase Pro add-on features.', 'wpsso' ).'</li>';
 
 						$text .= '</ul>';
 
