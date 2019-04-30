@@ -433,6 +433,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * *Improvements*
 	* Renamed the "Add-ons" settings page to "Add-on Features".
+	* Renamed the "Plugin Details" link to "More Details".
 * *Bugfixes*
 	* None.
 * *Developer Notes*
