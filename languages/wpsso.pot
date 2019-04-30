@@ -3247,12 +3247,12 @@ msgid "adding schema json-ld markup"
 msgstr ""
 
 #. translators: %1$s is the PHP library path, %2$s is the PHP library class name
-#: lib/loader.php:162
+#: lib/loader.php:164
 msgid "Error loading %1$s: Library class \"%2$s\" is missing."
 msgstr ""
 
 #. translators: %s is the PHP library class name
-#: lib/loader.php:167
+#: lib/loader.php:169
 msgid "Library class \"%s\" is missing."
 msgstr ""
 
@@ -3261,24 +3261,24 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
-#: lib/loader.php:171 lib/loader.php:197 lib/post.php:282 lib/register.php:304
+#: lib/loader.php:173 lib/loader.php:199 lib/post.php:282 lib/register.php:304
 #: lib/term.php:255 lib/user.php:234 lib/util.php:487 lib/util.php:3235
 msgid "%s warning:"
 msgstr ""
 
-#: lib/loader.php:182
+#: lib/loader.php:184
 msgid ""
 "The installed plugin is incomplete or the web server cannot access the "
 "library file."
 msgstr ""
 
 #. translators: %1$s is the short plugin name, %2$s is the PHP library path
-#: lib/loader.php:188
+#: lib/loader.php:190
 msgid "%1$s library class name for \"%2$s\" is not available."
 msgstr ""
 
 #. translators: %s is the PHP library path
-#: lib/loader.php:193
+#: lib/loader.php:195
 msgid "Library class name for \"%s\" is not available."
 msgstr ""
 

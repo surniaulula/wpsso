@@ -33,7 +33,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 				/**
 				 * Save time on known admin pages we don't modify.
 				 */
-				switch ( basename( $_SERVER['PHP_SELF'] ) ) {
+				switch ( basename( $_SERVER[ 'PHP_SELF' ] ) ) {
 
 					case 'themes.php':		// Appearance
 
@@ -106,16 +106,18 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 						$log_prefix = 'loading ' . $ext . ' ' . $type . '/' . $sub . '/' . $id . ': ';
 
-						if ( $this->p->avail[$sub][$id] ) {
+						if ( $this->p->avail[ $sub ][ $id ] ) {
 
 							/**
 							 * Compare $action from library id with $has_action method argument.
 							 * This is usually / almost always a false === false comparison.
 							 */
 							if ( $action !== $has_action ) {
+
 								if ( $this->p->debug->enabled ) {
-									$this->p->debug->log( $log_prefix . 'ignored for action ' . $has_action );
+									$this->p->debug->log( $log_prefix . 'ignored for action ' . $action );
 								}
+
 								continue;
 							}
 
@@ -135,8 +137,8 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 											$this->p->debug->log( $log_prefix . 'new library module for ' . $classname );
 										}
 
-										if ( ! isset( $this->p->m[$sub][$id] ) ) {
-											$this->p->m[$sub][$id] = new $classname( $this->p );
+										if ( ! isset( $this->p->m[ $sub ][ $id ] ) ) {
+											$this->p->m[ $sub ][ $id ] = new $classname( $this->p );
 										} elseif ( $this->p->debug->enabled ) {
 											$this->p->debug->log( $log_prefix . 'library module already defined' );
 										}
@@ -144,8 +146,8 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 									/**
 									 * Loaded module objects from extensions / add-ons.
 									 */
-									} elseif ( ! isset( $this->p->m_ext[$ext][$sub][$id] ) ) {
-										$this->p->m_ext[$ext][$sub][$id] = new $classname( $this->p );
+									} elseif ( ! isset( $this->p->m_ext[ $ext ][ $sub ][ $id ] ) ) {
+										$this->p->m_ext[ $ext ][ $sub ][ $id ] = new $classname( $this->p );
 									} elseif ( $this->p->debug->enabled ) {
 										$this->p->debug->log( $log_prefix . 'library ext module already defined' );
 									}
