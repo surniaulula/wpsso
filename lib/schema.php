@@ -2504,12 +2504,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public static function return_data_from_filter( $json_data, $merge_data, $is_main = false ) {
 
-			$wpsso =& Wpsso::get_instance();
-
-			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->mark();
-			}
-
 			if ( ! $is_main || ! empty( $merge_data[ 'mainEntity' ] ) ) {
 
 				unset( $json_data[ 'mainEntity' ] );
