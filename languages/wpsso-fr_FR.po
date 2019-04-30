@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.29.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-04-30 10:00-0700\n"
-"PO-Revision-Date: 2019-04-30 10:05-0700\n"
+"POT-Creation-Date: 2019-04-30 10:36-0700\n"
+"PO-Revision-Date: 2019-04-30 10:37-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4984,8 +4984,8 @@ msgid "The PHP preg_replace() function failed to remove the %1$s meta tag sectio
 msgstr "La fonction PHP preg_replace() n'a pas réussi à supprimer la section de balises méta %1$s &mdash; ceci pourrait être une indication d'un problème avec la bibliothèque PHP PCRE ou un filtre de page Web qui corrompt les balises méta de %1$s."
 
 #: lib/post.php:1031
-msgid "The webpage at %1$s includes only basic and incomplete Schema JSON-LD product markup added by the WooCommerce plugin."
-msgstr "La page Web à %1$s inclut seulement un balisage de produit Schéma JSON-LD de base et incomplet ajouté par l'extension WooCommerce."
+msgid "The webpage at %1$s includes only basic (and incomplete) Schema JSON-LD product markup added by the WooCommerce plugin."
+msgstr "La page Web à %1$s inclut seulement un balisage de produit Schéma JSON-LD de base (et incomplet) ajouté par l'extension WooCommerce."
 
 #: lib/post.php:1033 lib/post.php:1057
 msgid "Complete and accurate Schema JSON-LD markup is highly recommended for better ranking and click-through in Google search results."
