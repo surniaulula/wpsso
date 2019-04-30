@@ -352,7 +352,7 @@
 
 <h3>Highly Customizable</h3>
 
-<p>WPSSO Core offers hundreds of filter hooks to customize its behavior and output, provides extensive developer documentation with examples, includes dozens of 3rd party integration modules in the Pro version, and offers several optional Free and Pro add-ons to extend WPSSO Core's features.</p>
+<p>WPSSO Core offers hundreds of filter hooks to customize its behavior and output, provides extensive developer documentation with examples, includes dozens of 3rd party integration modules in the Pro version, and offers several optional Free and Pro add-on features to extend WPSSO Core's functionality.</p>
 
 
 <h2>Installation</h2>
