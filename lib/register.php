@@ -141,11 +141,14 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			 */
 			if ( ! empty( $this->p->options[ 'plugin_clear_on_activate' ] ) ) {
 
+				$short = WpssoConfig::$cf[ 'plugin' ][ 'wpsso' ][ 'short' ];
+
 				$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
 					_x( 'Clear All Caches on Activate', 'option label', 'wpsso' ) );
 
-				$this->p->notice->upd( sprintf( __( 'A background task will begin shortly to clear all caches (the %s option is enabled).',
-					'wpsso' ), $settings_page_link ) );
+				$this->p->notice->upd( '<strong>' . sprintf( __( 'The %s plugin has been activated.', 'wpsso' ), $short ) . '</strong> ' .
+					sprintf( __( 'A background task will begin shortly to clear the cache (%s option is enabled).',
+						'wpsso' ), $settings_page_link ) );
 
 				$this->p->util->schedule_clear_all_cache( $user_id = get_current_user_id(), $clear_other = true );
 			}
