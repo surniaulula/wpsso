@@ -72,7 +72,7 @@ WPSSO Core and its optional Free add-ons offer meta tags and Schema markup for F
 
 * Offers an option to easily hide the preview of Pro settings and features. ;-)
 
-<h3>Free Add-on Features</h3>
+<h3>Free Complementary Add-ons</h3>
 
 * [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
 * [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/) to manage multiple Organizations.
@@ -297,7 +297,7 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 
 <h3>Highly Customizable</h3>
 
-WPSSO Core offers hundreds of filter hooks to customize its behavior and output, provides extensive developer documentation with examples, includes dozens of 3rd party integration modules in the Pro version, and offers several optional Free and Pro add-on features to extend WPSSO Core's functionality.
+WPSSO Core offers hundreds of filter hooks to customize its behavior and output, provides extensive developer documentation with examples, includes dozens of 3rd party integration modules in the Pro version, and offers several optional Free and complementary Pro add-ons to extend WPSSO Core's functionality.
 
 == Installation ==
 
@@ -426,12 +426,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.29.2-dev.1 (2019/04/30)**
+**Version 4.29.2-dev.2 (2019/04/30)**
 
 * *New Features*
 	* None.
 * *Improvements*
-	* Renamed the "Add-ons" settings page to "Add-on Features".
+	* Renamed the "Add-ons" settings page to "Complementary Add-ons".
 	* Renamed the "Plugin Details" link to "More Details".
 * *Bugfixes*
 	* None.
@@ -532,9 +532,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.29.2-dev.1 =
+= 4.29.2-dev.2 =
 
-(2019/04/30) Renamed the "Add-ons" settings page to "Add-on Features".
+(2019/04/30) Renamed the "Add-ons" settings page to "Complementary Add-ons".
 
 = 4.29.1 =
 

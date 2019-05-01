@@ -64,7 +64,7 @@
 <li><p>Offers an option to easily hide the preview of Pro settings and features. ;-)</p></li>
 </ul>
 
-<h3>Free Add-on Features</h3>
+<h3>Free Complementary Add-ons</h3>
 
 <ul>
 <li><a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a> to manage mobile App information.</li>
@@ -352,7 +352,7 @@
 
 <h3>Highly Customizable</h3>
 
-<p>WPSSO Core offers hundreds of filter hooks to customize its behavior and output, provides extensive developer documentation with examples, includes dozens of 3rd party integration modules in the Pro version, and offers several optional Free and Pro add-on features to extend WPSSO Core's functionality.</p>
+<p>WPSSO Core offers hundreds of filter hooks to customize its behavior and output, provides extensive developer documentation with examples, includes dozens of 3rd party integration modules in the Pro version, and offers several optional Free and complementary Pro add-ons to extend WPSSO Core's functionality.</p>
 
 
 <h2>Installation</h2>
