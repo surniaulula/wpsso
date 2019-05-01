@@ -1287,7 +1287,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$this->delete_all_column_meta();
 
-			$status_msg = $user_id ? sprintf( __( '%s cached files, transient cache, column meta, and WordPress object cache have all been cleared.',
+			$status_msg = $user_id ? sprintf( __( '%s cached files, transient cache, column meta, and WordPress object cache have been cleared.',
 				'wpsso' ), $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'short' ] ) : '';
 
 			if ( $clear_other ) {
@@ -1361,7 +1361,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
 						_x( 'Auto-Refresh Cache After Clearing', 'option label', 'wpsso' ) );
 
-					$status_msg .= ' ' . sprintf( __( 'All cache objects will be re-created as they are needed (the %s option is disabled).',
+					$status_msg .= ' ' . sprintf( __( 'Cache objects will be re-created as they are needed (%s is disabled).',
 						'wpsso' ), $settings_page_link );
 				}
 			}

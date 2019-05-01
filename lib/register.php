@@ -147,7 +147,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 					_x( 'Clear All Caches on Activate', 'option label', 'wpsso' ) );
 
 				$this->p->notice->upd( '<strong>' . sprintf( __( 'The %s plugin has been activated.', 'wpsso' ), $short ) . '</strong> ' .
-					sprintf( __( 'A background task will begin shortly to clear the cache (%s option is enabled).',
+					sprintf( __( 'A background task will begin shortly to clear the cache (%s is enabled).',
 						'wpsso' ), $settings_page_link ) );
 
 				$this->p->util->schedule_clear_all_cache( $user_id = get_current_user_id(), $clear_other = true );

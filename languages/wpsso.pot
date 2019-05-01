@@ -99,8 +99,7 @@ msgstr ""
 
 #: lib/admin.php:913 lib/register.php:150
 msgid ""
-"A background task will begin shortly to clear the cache (%s option is "
-"enabled)."
+"A background task will begin shortly to clear the cache (%s is enabled)."
 msgstr ""
 
 #: lib/admin.php:951
@@ -6472,7 +6471,7 @@ msgstr ""
 #: lib/util.php:1290
 msgid ""
 "%s cached files, transient cache, column meta, and WordPress object cache "
-"have all been cleared."
+"have been cleared."
 msgstr ""
 
 #: lib/util.php:1295
@@ -6490,9 +6489,7 @@ msgid ""
 msgstr ""
 
 #: lib/util.php:1364
-msgid ""
-"All cache objects will be re-created as they are needed (the %s option is "
-"disabled)."
+msgid "Cache objects will be re-created as they are needed (%s is disabled)."
 msgstr ""
 
 #: lib/util.php:1471
