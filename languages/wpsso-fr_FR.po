@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.29.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-04-30 10:36-0700\n"
-"PO-Revision-Date: 2019-04-30 10:37-0700\n"
+"POT-Creation-Date: 2019-04-30 17:10-0700\n"
+"PO-Revision-Date: 2019-04-30 17:11-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -98,9 +98,9 @@ msgctxt "option label"
 msgid "Clear All Caches on Save Settings"
 msgstr "Vider les caches lors de l'enregistrement des réglages"
 
-#: lib/admin.php:913 lib/register.php:147
-msgid "A background task will begin shortly to clear all caches (the %s option is enabled)."
-msgstr "Une tâche en arrière-plan commencera sous peu pour vider tous les caches (l'option %s est activée)."
+#: lib/admin.php:913 lib/register.php:150
+msgid "A background task will begin shortly to clear the cache (%s is enabled)."
+msgstr "Une tâche en arrière-plan commencera sous peu pour vider le cache (%s est activée)."
 
 #: lib/admin.php:951
 msgid "Nonce token validation failed for network options (update ignored)."
@@ -2370,7 +2370,7 @@ msgid "Schema Types Array Cache Expiry"
 msgstr "Expiration cache types de Schéma"
 
 #: lib/gettext-pro.php:53 lib/gpl/admin/advanced.php:340
-#: lib/pro/admin/advanced.php:337 lib/register.php:145
+#: lib/pro/admin/advanced.php:337 lib/register.php:147
 msgctxt "option label"
 msgid "Clear All Caches on Activate"
 msgstr "Vider les caches lors d'activation"
@@ -3112,12 +3112,12 @@ msgid "adding schema json-ld markup"
 msgstr "ajout de balisage schéma json-ld"
 
 #. translators: %1$s is the PHP library path, %2$s is the PHP library class name
-#: lib/loader.php:162
+#: lib/loader.php:164
 msgid "Error loading %1$s: Library class \"%2$s\" is missing."
 msgstr "Erreur lors du chargement de %1$s: La classe de bibliothèque \"%2$s\" est manquante."
 
 #. translators: %s is the PHP library class name
-#: lib/loader.php:167
+#: lib/loader.php:169
 msgid "Library class \"%s\" is missing."
 msgstr "Classe de  bibliothèque \"%s\" manquante."
 
@@ -3126,22 +3126,22 @@ msgstr "Classe de  bibliothèque \"%s\" manquante."
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
-#: lib/loader.php:171 lib/loader.php:197 lib/post.php:282 lib/register.php:304
+#: lib/loader.php:173 lib/loader.php:199 lib/post.php:282 lib/register.php:307
 #: lib/term.php:255 lib/user.php:234 lib/util.php:487 lib/util.php:3235
 msgid "%s warning:"
 msgstr "Alerte %s:"
 
-#: lib/loader.php:182
+#: lib/loader.php:184
 msgid "The installed plugin is incomplete or the web server cannot access the library file."
 msgstr "Le plugin installé est incomplet ou le serveur Web ne peut pas accéder au fichier de bibliothèque."
 
 #. translators: %1$s is the short plugin name, %2$s is the PHP library path
-#: lib/loader.php:188
+#: lib/loader.php:190
 msgid "%1$s library class name for \"%2$s\" is not available."
 msgstr "Le nom de classe de bibliothèque %1$s pour \"%2$s\" n'est pas disponible."
 
 #. translators: %s is the PHP library path
-#: lib/loader.php:193
+#: lib/loader.php:195
 msgid "Library class name for \"%s\" is not available."
 msgstr "Le nom de classe de bibliothèque pour \"%s\" n'est pas disponible."
 
@@ -4517,7 +4517,7 @@ msgstr "%1$s version %2$s requiert l'utilisation de %3$s version %4$s ou plus r�
 msgid "If an update for %1$s is not available under the WordPress %2$s page, use the <em>%3$s</em> button in the %4$s settings page to force an immediate refresh of the plugin update information."
 msgstr "Si une mise à jour pour %1$s n'est pas disponible sous la page %2$s WordPress, utilisez le bouton <em>%3$s</em> dans la page de réglages %4$s pour forcer une actualisation immédiate de toutes les informations de mise à jour."
 
-#: lib/messages.php:2252 lib/register.php:314
+#: lib/messages.php:2252 lib/register.php:317
 msgid "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version is outdated, unsupported, possibly insecure</a>, and may lack important updates and features."
 msgstr "Vous utilisez la version %2$s de %1$s &mdash; <a href=\"%3$s\">cette version de %1$s est obsolète, non supportée, peut-être insécure</a> et pourrait manquer certaines mises à jour et caractéristiques importantes."
 
@@ -5106,12 +5106,16 @@ msgstr "Modifier le profil de %s"
 msgid "Invalid user ID."
 msgstr "ID d'utilisateur non valide"
 
+#: lib/register.php:149
+msgid "The %s plugin has been activated."
+msgstr "L'extension %s a été activé."
+
 #. translators: %1$s is the short plugin name, %2$s is the application name, %3$s is the application version number.
-#: lib/register.php:307 lib/register.php:316
+#: lib/register.php:310 lib/register.php:319
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr "%1$s nécessite %2$s version %3$s ou supérieure et a été désactivé."
 
-#: lib/register.php:318
+#: lib/register.php:321
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr "SVP mettre à jour %1$s avant d'essayer de réactiver l'extension %2$s."
 
@@ -5662,8 +5666,8 @@ msgid "Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s (%
 msgstr "Fonction PHP lente détectée - getimagesize() a pris %1$0.3f secs pour %2$s (%3$s)."
 
 #: lib/util.php:1290
-msgid "%s cached files, transient cache, column meta, and WordPress object cache have all been cleared."
-msgstr "Les fichiers en cache, le cache transitoire, et le méta de colonnes pour %s, ainsi que le cache d'objets WordPress ont été vidés."
+msgid "%s cached files, transient cache, column meta, and the WordPress object cache have been cleared."
+msgstr "Les fichiers en cache, le cache transitoire, le méta de colonnes %s, et le cache d'objets WordPress ont été vidés."
 
 #: lib/util.php:1295
 msgid "The cache for %s has also been cleared."
@@ -5678,8 +5682,8 @@ msgid "A background task will begin shortly to refresh the post, term, and user 
 msgstr "Une tâche d'arrière-plan commencera sous peu pour recréer les objets de cache d'articles, de termes et d'utilisateurs."
 
 #: lib/util.php:1364
-msgid "All cache objects will be re-created as they are needed (the %s option is disabled)."
-msgstr "Les objets de cache seront recréés à mesure qu'ils sont requis (l'option %s est désactivée)."
+msgid "Cache objects will be re-created as they are needed (%s is disabled)."
+msgstr "Les objets de cache seront recréés à mesure qu'ils sont requis (%s est désactivée)."
 
 #: lib/util.php:1471
 msgid "The meta tag and Schema markup caches for %1$d posts, %2$d terms, and %3$d users have been refreshed."

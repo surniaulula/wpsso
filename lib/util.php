@@ -1287,7 +1287,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$this->delete_all_column_meta();
 
-			$status_msg = $user_id ? sprintf( __( '%s cached files, transient cache, column meta, and WordPress object cache have been cleared.',
+			$status_msg = $user_id ? sprintf( __( '%s cached files, transient cache, column meta, and the WordPress object cache have been cleared.',
 				'wpsso' ), $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'short' ] ) : '';
 
 			if ( $clear_other ) {

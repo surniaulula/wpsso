@@ -6470,8 +6470,8 @@ msgstr ""
 
 #: lib/util.php:1290
 msgid ""
-"%s cached files, transient cache, column meta, and WordPress object cache "
-"have been cleared."
+"%s cached files, transient cache, column meta, and the WordPress object "
+"cache have been cleared."
 msgstr ""
 
 #: lib/util.php:1295
