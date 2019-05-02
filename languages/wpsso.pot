@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.29.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.29.2-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr ""
 
 #: lib/admin.php:571
 msgctxt "plugin action link"
-msgid "Add-on Features"
+msgid "Complementary Add-ons"
 msgstr ""
 
 #: lib/admin.php:603
@@ -1183,7 +1183,7 @@ msgstr ""
 
 #: lib/gettext-config.php:19
 msgctxt "lib file description"
-msgid "SSO Add-on Features"
+msgid "SSO Complementary Add-ons"
 msgstr ""
 
 #: lib/gettext-config.php:20
@@ -1213,7 +1213,7 @@ msgstr ""
 
 #: lib/gettext-config.php:25 lib/gettext-config.php:32
 msgctxt "lib file description"
-msgid "Add-on Features"
+msgid "Complementary Add-ons"
 msgstr ""
 
 #: lib/gettext-config.php:26 lib/gettext-config.php:33 lib/messages.php:1829
@@ -1363,8 +1363,8 @@ msgstr ""
 #: lib/gettext-config.php:53
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core add-on provides updates for the WPSSO Core Pro plugin and its Pro "
-"add-on features."
+"WPSSO Core add-on provides updates for the WPSSO Core Pro plugin and its "
+"complementary Pro add-ons."
 msgstr ""
 
 #: lib/gettext-config.php:54
@@ -4855,8 +4855,8 @@ msgstr ""
 
 #: lib/messages.php:1810
 msgid ""
-"After purchasing the %1$s plugin, or any Pro add-on features, you'll receive "
-"an email with a unique Authentication ID for the plugin / add-on you "
+"After purchasing the %1$s plugin, or any complementary Pro add-ons, you'll "
+"receive an email with a unique Authentication ID for the plugin / add-on you "
 "purchased."
 msgstr ""
 
@@ -4874,9 +4874,9 @@ msgstr ""
 
 #: lib/messages.php:1817
 msgid ""
-"Note that all Pro add-on features require a licensed and active %1$s plugin "
-"&mdash; don't forget to purchase %1$s before purchasing any of its Pro add-"
-"on features."
+"Note that all complementary Pro add-ons require a licensed and active %1$s "
+"plugin &mdash; don't forget to purchase %1$s before purchasing any of its "
+"complementary Pro add-ons."
 msgstr ""
 
 #: lib/messages.php:1833
@@ -5168,7 +5168,7 @@ msgstr ""
 #: lib/messages.php:2201
 msgid ""
 "This Free add-on is required to update and enable the %1$s plugin and its "
-"Pro add-on features."
+"complementary Pro add-ons."
 msgstr ""
 
 #: lib/messages.php:2207
@@ -5254,7 +5254,7 @@ msgid "Integration with 3rd party plugins and service APIs."
 msgstr ""
 
 #: lib/messages.php:2285
-msgid "Ability to purchase Pro add-on features."
+msgid "Ability to purchase complementary Pro add-ons."
 msgstr ""
 
 #: lib/messages.php:2289
@@ -6000,7 +6000,7 @@ msgstr ""
 
 #: lib/sitesubmenu/site-addons.php:69 lib/submenu/addons.php:58
 msgctxt "metabox title"
-msgid "Add-on Features for %s"
+msgid "Complementary Add-ons for %s"
 msgstr ""
 
 #: lib/sitesubmenu/site-advanced.php:47

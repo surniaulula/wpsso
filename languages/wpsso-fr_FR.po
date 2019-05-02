@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 4.29.1\n"
+"Project-Id-Version: WPSSO Core 4.29.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-04-30 17:10-0700\n"
-"PO-Revision-Date: 2019-04-30 17:11-0700\n"
+"POT-Creation-Date: 2019-05-01 21:01-0700\n"
+"PO-Revision-Date: 2019-05-01 21:05-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -37,7 +37,7 @@ msgstr "Tableau de bord"
 
 #: lib/admin.php:571
 msgctxt "plugin action link"
-msgid "Add-on Features"
+msgid "Complementary Add-ons"
 msgstr "Ajouts complémentaires"
 
 #: lib/admin.php:603
@@ -1116,7 +1116,7 @@ msgstr "Tableau de bord SSO"
 
 #: lib/gettext-config.php:19
 msgctxt "lib file description"
-msgid "SSO Add-on Features"
+msgid "SSO Complementary Add-ons"
 msgstr "Ajouts complémentaires SSO"
 
 #: lib/gettext-config.php:20
@@ -1146,7 +1146,7 @@ msgstr "Avancé"
 
 #: lib/gettext-config.php:25 lib/gettext-config.php:32
 msgctxt "lib file description"
-msgid "Add-on Features"
+msgid "Complementary Add-ons"
 msgstr "Ajouts complémentaires"
 
 #: lib/gettext-config.php:26 lib/gettext-config.php:33 lib/messages.php:1829
@@ -1263,7 +1263,7 @@ msgstr "Ajout WPSSO Core pour fournir un sélecteur pratique de langue / région
 
 #: lib/gettext-config.php:53
 msgctxt "plugin description"
-msgid "WPSSO Core add-on provides updates for the WPSSO Core Pro plugin and its Pro add-on features."
+msgid "WPSSO Core add-on provides updates for the WPSSO Core Pro plugin and its complementary Pro add-ons."
 msgstr "Ajout WPSSO Core pour fournir des mises à jour pour l'extension WPSSO Core Pro et ses ajouts complémentaires Pro."
 
 #: lib/gettext-config.php:54
@@ -4250,7 +4250,7 @@ msgid "The example image container uses the minimum recommended Facebook image d
 msgstr "Le conteneur d'image de cet exemple utilise les dimensions d'image Facebook recommandées minimales de %s."
 
 #: lib/messages.php:1810
-msgid "After purchasing the %1$s plugin, or any Pro add-on features, you'll receive an email with a unique Authentication ID for the plugin / add-on you purchased."
+msgid "After purchasing the %1$s plugin, or any complementary Pro add-ons, you'll receive an email with a unique Authentication ID for the plugin / add-on you purchased."
 msgstr "Après l'achat de l'extension %1$s, ou l'un de ses ajouts complémentaires Pro, vous recevrez un email avec un ID d'authentification unique pour l'extension / l'ajout que vous avez acheté."
 
 #: lib/messages.php:1812
@@ -4262,7 +4262,7 @@ msgid "Don't forget that the %1$s Free add-on must be installed and active to ch
 msgstr "N'oubliez pas que l'ajout gratuit %1$s doit être installé et actif pour vérifier les mises à jour de versions Pro."
 
 #: lib/messages.php:1817
-msgid "Note that all Pro add-on features require a licensed and active %1$s plugin &mdash; don't forget to purchase %1$s before purchasing any of its Pro add-on features."
+msgid "Note that all complementary Pro add-ons require a licensed and active %1$s plugin &mdash; don't forget to purchase %1$s before purchasing any of its complementary Pro add-ons."
 msgstr "Notez que les ajouts complémentaires Pro nécessitent que %1$s soit actif et sous licence &mdash; n'oubliez pas d'acheter %1$s avant d'acheter ses ajouts complémentaires Pro."
 
 #: lib/messages.php:1833
@@ -4470,7 +4470,7 @@ msgid "At least one Authentication ID has been entered in the %1$s settings page
 msgstr "Au moins un ID d'authentification a été fourni dans la page de réglages %1$s,<br/>mais l'ajout %2$s n'est pas actif."
 
 #: lib/messages.php:2201
-msgid "This Free add-on is required to update and enable the %1$s plugin and its Pro add-on features."
+msgid "This Free add-on is required to update and enable the %1$s plugin and its complementary Pro add-ons."
 msgstr "Cette ajout gratuit est requis pour mettre à jour et activer l'extension %1$s et ses ajouts complémentaires Pro."
 
 #: lib/messages.php:2207
@@ -4542,7 +4542,7 @@ msgid "Integration with 3rd party plugins and service APIs."
 msgstr "Modules d'intégration pour extensions tierces et APIs de services."
 
 #: lib/messages.php:2285
-msgid "Ability to purchase Pro add-on features."
+msgid "Ability to purchase complementary Pro add-ons."
 msgstr "Possibilité d'acheter des ajouts complémentaires Pro."
 
 #: lib/messages.php:2289
@@ -5203,8 +5203,8 @@ msgstr "Pages et comptes sociaux du site Web"
 
 #: lib/sitesubmenu/site-addons.php:69 lib/submenu/addons.php:58
 msgctxt "metabox title"
-msgid "Add-on Features for %s"
-msgstr "Ajouts complémentaires  pour %s"
+msgid "Complementary Add-ons for %s"
+msgstr "Ajouts complémentaires pour %s"
 
 #: lib/sitesubmenu/site-advanced.php:47
 msgctxt "metabox title"

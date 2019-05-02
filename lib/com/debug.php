@@ -38,7 +38,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 			$this->is_enabled();	// sets $this->enabled value
 
-			if ( ! empty( $subsys['log'] ) ) {
+			if ( ! empty( $subsys[ 'log' ] ) ) {
 				if ( ! isset( $_SESSION ) ) {
 					session_start();
 				}
@@ -52,7 +52,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		public function is_enabled( $name = '' ) {
 
 			if ( ! empty( $name ) ) {
-				return isset( $this->subsys[$name] ) ? $this->subsys[$name] : false;
+				return isset( $this->subsys[ $name ] ) ? $this->subsys[ $name ] : false;
 			} else {
 				// return true if any sybsys is true (use strict checking)
 				$this->enabled = in_array( true, $this->subsys, true ) ? true : false;
@@ -65,7 +65,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 			if ( ! empty( $name ) ) {
 
-				$this->subsys[$name] = $state;
+				$this->subsys[ $name ] = $state;
 
 				if ( $name === 'log' ) {
 					if ( ! isset( $_SESSION ) ) {
@@ -150,7 +150,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				if ( false === $func_seq ) {
 					$func_seq = $class_seq;
 				}
-				$log_msg .= sprintf( $first_col, ( empty( $stack[$class_seq][ 'class' ] ) ? '' : $stack[$class_seq][ 'class' ] ) );
+				$log_msg .= sprintf( $first_col, ( empty( $stack[ $class_seq ][ 'class' ] ) ? '' : $stack[ $class_seq ][ 'class' ] ) );
 			} else {
 				if ( false === $func_seq ) {
 					$func_seq = 1;
@@ -159,7 +159,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			}
 
 			if ( is_int( $func_seq ) ) {
-				$log_msg .= sprintf( $second_col, ( empty( $stack[$func_seq][ 'function' ] ) ? '' : $stack[$func_seq][ 'function' ] ) );
+				$log_msg .= sprintf( $second_col, ( empty( $stack[ $func_seq ][ 'function' ] ) ? '' : $stack[ $func_seq ][ 'function' ] ) );
 			} else {
 				$log_msg .= sprintf( $second_col, $func_seq );
 			}
@@ -177,14 +177,14 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				$log_msg .= $input;
 			}
 
-			if ( $this->subsys['html'] ) {
+			if ( $this->subsys[ 'html' ] ) {
 				$this->buffer[] = $log_msg;
 			}
 
-			if ( $this->subsys['log'] ) {
+			if ( $this->subsys[ 'log' ] ) {
 
 				$session_id    = session_id();
-				$connection_id = $session_id ? $session_id : $_SERVER['REMOTE_ADDR'];
+				$connection_id = $session_id ? $session_id : $_SERVER[ 'REMOTE_ADDR' ];
 
 				error_log( $connection_id . ' ' . $this->log_prefix . ' ' . $log_msg );
 			}
@@ -209,29 +209,29 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 				$append_text = '- - - - - - ' . $id;
 
-				if ( isset( $this->begin_marks[$id] ) ) {
+				if ( isset( $this->begin_marks[ $id ] ) ) {
 
-					$mtime_diff = $cur_stats['mtime'] - $this->begin_marks[$id]['mtime'];
-					$mem_diff   = $cur_stats['mem'] - $this->begin_marks[$id]['mem'];
+					$mtime_diff = $cur_stats[ 'mtime' ] - $this->begin_marks[ $id ][ 'mtime' ];
+					$mem_diff   = $cur_stats[ 'mem' ] - $this->begin_marks[ $id ][ 'mem' ];
 					$stats_text = $this->get_time_text( $mtime_diff ) . ' / ' . $this->get_mem_text( $mem_diff );
 
 					$append_text .= ' end + (' . $stats_text . ')';
 
-					unset( $this->begin_marks[$id] );
+					unset( $this->begin_marks[ $id ] );
 
 				} else {
 
 					$append_text .= ' begin';
 
 					$this->begin_marks[ $id ] = array(
-						'mtime' => $cur_stats['mtime'],
-						'mem'   => $cur_stats['mem'],
+						'mtime' => $cur_stats[ 'mtime' ],
+						'mem'   => $cur_stats[ 'mem' ],
 					);
 				}
 			}
 
-			$mtime_diff = $cur_stats['mtime'] - $this->start_stats['mtime'];
-			$mem_diff   = $cur_stats['mem'] - $this->start_stats['mem'];
+			$mtime_diff = $cur_stats[ 'mtime' ] - $this->start_stats[ 'mtime' ];
+			$mem_diff   = $cur_stats[ 'mem' ] - $this->start_stats[ 'mem' ];
 			$stats_text = $this->get_time_text( $mtime_diff ) . ' / ' . $this->get_mem_text( $mem_diff );
 
 			$this->log( 'mark (' . $stats_text . ')' . ( $comment ? ' ' . $comment : '' ) . ( false !== $id ? "\n\t" . $append_text : '' ), 2 );
@@ -276,12 +276,12 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			$html  = '<!-- ' . $this->display_name . ' debug';
 			$stack = debug_backtrace();
 
-			if ( ! empty( $stack[$class_seq][ 'class' ] ) ) {
-				$from .= $stack[$class_seq][ 'class' ] . '::';
+			if ( ! empty( $stack[ $class_seq ][ 'class' ] ) ) {
+				$from .= $stack[ $class_seq ][ 'class' ] . '::';
 			}
 
-			if ( ! empty( $stack[$func_seq][ 'function' ] ) ) {
-				$from .= $stack[$func_seq][ 'function' ];
+			if ( ! empty( $stack[ $func_seq ][ 'function' ] ) ) {
+				$from .= $stack[ $func_seq ][ 'function' ];
 			}
 
 			if ( null === $data ) {
@@ -341,9 +341,9 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 					if ( $flatten ) {
 						$ret .= $key.'=' . $val.', ';
 					} else {
-						if ( is_object( $mixed[$key] ) )
-							unset ( $mixed[$key] );	// dereference the object first
-						$mixed[$key] = $val;
+						if ( is_object( $mixed[ $key ] ) )
+							unset ( $mixed[ $key ] );	// dereference the object first
+						$mixed[ $key ] = $val;
 					}
 				}
 				if ( $flatten ) {

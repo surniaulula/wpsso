@@ -1275,18 +1275,18 @@ if ( ! class_exists( 'SucomCountryCodes' ) ) {
 			}
 
 			// only create the code -> name array map once
-			if ( ! isset( self::$codes[$key] ) ) {
+			if ( ! isset( self::$codes[ $key ] ) ) {
 				foreach ( self::$countries as $name => $arr ) {
-					if ( isset( $arr[$key] ) ) {
-						self::$codes[$key][$arr[$key]] = $name;
+					if ( isset( $arr[ $key ] ) ) {
+						self::$codes[ $key ][ $arr[ $key ] ] = $name;
 					}
 				}
-				if ( ! isset( self::$codes[$key] ) ) {	// Just in case.
-					self::$codes[$key] = false;
+				if ( ! isset( self::$codes[ $key ] ) ) {	// Just in case.
+					self::$codes[ $key ] = false;
 				}
 			}
 
-			return self::$codes[$key];
+			return self::$codes[ $key ];
 		}
 	}
 }

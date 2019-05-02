@@ -40,7 +40,7 @@ if ( ! class_exists( 'WpssoSubmenuAddons' ) && class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
-		 * Remove all submit / action buttons from the Add-on Features page.
+		 * Remove all submit / action buttons from the Complementary Add-ons page.
 		 */
 		public function filter_form_button_rows( $form_button_rows ) {
 
@@ -55,7 +55,7 @@ if ( ! class_exists( 'WpssoSubmenuAddons' ) && class_exists( 'WpssoAdmin' ) ) {
 			$short_name = $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'short' ];
 
 			$metabox_id      = 'addons';
-			$metabox_title   = sprintf( _x( 'Add-on Features for %s', 'metabox title', 'wpsso' ), $short_name );
+			$metabox_title   = sprintf( _x( 'Complementary Add-ons for %s', 'metabox title', 'wpsso' ), $short_name );
 			$metabox_screen  = $this->pagehook;
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';

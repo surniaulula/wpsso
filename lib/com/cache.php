@@ -67,15 +67,15 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			if ( $text_domain !== null ) {
 				$this->text_domain = $text_domain;
-			} elseif ( ! empty( $this->p->cf[ 'plugin' ][$this->lca]['text_domain'] ) ) {
-				$this->text_domain = $this->p->cf[ 'plugin' ][$this->lca]['text_domain'];
+			} elseif ( ! empty( $this->p->cf[ 'plugin' ][ $this->lca ][ 'text_domain' ] ) ) {
+				$this->text_domain = $this->p->cf[ 'plugin' ][ $this->lca ][ 'text_domain' ];
 			}
 
 			if ( $label_transl !== null ) {
 				$this->label_transl = $label_transl;	// argument is already translated
-			} elseif ( ! empty( $this->p->cf['menu']['title'] ) ) {
+			} elseif ( ! empty( $this->p->cf[ 'menu' ][ 'title' ] ) ) {
 				$this->label_transl = sprintf( __( '%s Notice', $this->text_domain ),
-					_x( $this->p->cf['menu']['title'], 'menu title', $this->text_domain ) );
+					_x( $this->p->cf[ 'menu' ][ 'title' ], 'menu title', $this->text_domain ) );
 			} else {
 				$this->label_transl = __( 'Notice', $this->text_domain );
 			}
@@ -86,7 +86,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		public function load_transient() {
 
-			if ( true !== $this->transient['loaded'] ) {
+			if ( true !== $this->transient[ 'loaded' ] ) {
 
 				$cache_md5_pre = $this->lca . '_';
 				$cache_salt    = __CLASS__ . '::transient';
@@ -97,19 +97,19 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					$this->transient = $cache_ret;
 				}
 
-				$this->transient['loaded'] = true;
+				$this->transient[ 'loaded' ] = true;
 			}
 		}
 
 		public function save_transient() {
 
-			if ( true === $this->transient['loaded'] ) {
+			if ( true === $this->transient[ 'loaded' ] ) {
 
 				$cache_md5_pre = $this->lca . '_';
 				$cache_salt    = __CLASS__ . '::transient';
 				$cache_id      = $cache_md5_pre . md5( $cache_salt );
 
-				set_transient( $cache_id, $this->transient, $this->transient['expire'] );
+				set_transient( $cache_id, $this->transient, $this->transient[ 'expire' ] );
 			}
 		}
 
@@ -248,11 +248,11 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		public function get_url_mtime( $url, $precision = 3 ) {
 
-			if ( isset( $this->url_mtimes[$url] ) ) {
-				if ( is_bool( $this->url_mtimes[$url] ) ) {
-					return $this->url_mtimes[$url];
+			if ( isset( $this->url_mtimes[ $url ] ) ) {
+				if ( is_bool( $this->url_mtimes[ $url ] ) ) {
+					return $this->url_mtimes[ $url ];
 				} else {
-					return sprintf( '%.0' . $precision . 'f', $this->url_mtimes[$url] );
+					return sprintf( '%.0' . $precision . 'f', $this->url_mtimes[ $url ] );
 				}
 			} else {
 				return false;

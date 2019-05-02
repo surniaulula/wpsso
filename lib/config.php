@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'      => '4.29.1',	// Plugin version.
+					'version'      => '4.29.2-dev.2',	// Plugin version.
 					'opt_version'  => '641',	// Increment when changing default option values.
 					'short'        => 'WPSSO Core',	// Short plugin name.
 					'name'         => 'WPSSO Core [Main Plugin]',
@@ -78,7 +78,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 						),
 						'plugins' => array(
-							'sso-addons' => 'SSO Add-on Features',
+							'sso-addons' => 'SSO Complementary Add-ons',
 						),
 						'pro' => array(
 							'admin' => array(
@@ -154,7 +154,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 						'sitesubmenu' => array(
 							'site-advanced' => 'Advanced',
-							'site-addons'   => 'Add-on Features',
+							'site-addons'   => 'Complementary Add-ons',
 							'site-licenses' => 'Pro Licenses',
 							'site-setup'    => 'Setup Guide',
 							'site-tools'    => 'Tools',
@@ -163,7 +163,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'essential' => 'Essential',
 							'general'   => 'General',
 							'advanced'  => 'Advanced',
-							'addons'    => 'Add-on Features',
+							'addons'    => 'Complementary Add-ons',
 							'licenses'  => 'Pro Licenses',
 							'dashboard' => 'Dashboard',
 							'setup'     => 'Setup Guide',
@@ -710,7 +710,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssoum' => array(			// Plugin acronym.
 					'short'       => 'WPSSO UM',	// Short plugin name.
 					'name'        => 'WPSSO Update Manager',
-					'desc'        => 'WPSSO Core add-on provides updates for the WPSSO Core Pro plugin and its Pro add-on features.',
+					'desc'        => 'WPSSO Core add-on provides updates for the WPSSO Core Pro plugin and its complementary Pro add-ons.',
 					'slug'        => 'wpsso-um',
 					'base'        => 'wpsso-um/wpsso-um.php',
 					'update_auth' => '',

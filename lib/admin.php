@@ -568,7 +568,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( ! empty( $addons_page ) ) {
 				if ( $ext === $this->p->lca ) {	// Only add for the core plugin.
 					$action_links[] = '<a href="' . $this->p->util->get_admin_url( $addons_page ) . '">' . 
-						_x( 'Add-on Features', 'plugin action link', 'wpsso' ) . '</a>';
+						_x( 'Complementary Add-ons', 'plugin action link', 'wpsso' ) . '</a>';
 				}
 			}
 
