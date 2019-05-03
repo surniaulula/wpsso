@@ -426,7 +426,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.29.2-dev.2 (2019/04/30)**
+**Version 4.29.2-rc.1 (2019/05/03)**
 
 * *New Features*
 	* None.
@@ -532,9 +532,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.29.2-dev.2 =
+= 4.29.2-rc.1 =
 
-(2019/04/30) Renamed the "Add-ons" settings page to "Complementary Add-ons".
+(2019/05/03) Renamed the "Add-ons" settings page to "Complementary Add-ons".
 
 = 4.29.1 =
 
