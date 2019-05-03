@@ -1826,6 +1826,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					switch ( $icon_type ) {
 
 						case 'api':
+						case 'cloud':
 
 							$icon_type  = 'cloud';
 							$icon_title = __( 'Service API module', 'wpsso' );
@@ -1833,28 +1834,39 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							break;
 
 						case 'code':
+						case 'media-code':
 
-							$icon_type  = 'editor-code';
-							$icon_title = __( 'Meta tag and markup module', 'wpsso' );
+							$icon_type  = 'media-code';
+							$icon_title = __( 'HTML tag and markup module', 'wpsso' );
 
 							break;
 
 						case 'plugin':
+						case 'admin-plugins':
 
 							$icon_type  = 'admin-plugins';
 							$icon_title = __( 'Plugin integration module', 'wpsso' );
 
 							break;
 
+						case 'plus':
+						case 'welcome-add-page':
+
+							$icon_type  = 'welcome-add-page';
+							$icon_title = __( 'Markup property module', 'wpsso' );
+
+							break;
+
 						case 'sharing':
+						case 'screenoptions':
 
 							$icon_type  = 'screenoptions';
 							$icon_title = __( 'Sharing functionality module', 'wpsso' );
 
 							break;
 
-						case 'tool':	// Deprecated on 2018/10/02.
 						case 'feature':
+						case 'admin-generic':
 
 							$icon_type  = 'admin-generic';
 							$icon_title = __( 'Additional functionality module', 'wpsso' );
