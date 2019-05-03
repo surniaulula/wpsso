@@ -3220,16 +3220,14 @@ msgstr ""
 msgid "Yotpo for WooCommerce \"%s\" class does not exist."
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain
 #. translators: %s is the WP Job Manager plugin name
-#: lib/gettext-pro.php:229 lib/pro/job/wpjobmanager.php:316
+#: lib/gettext-pro.php:228 lib/pro/job/wpjobmanager.php:317
 msgctxt "option value"
 msgid "%s Organization"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain
 #. translators: %s is the WP Job Manager plugin name
-#: lib/gettext-pro.php:231 lib/pro/job/wpjobmanager.php:324
+#: lib/gettext-pro.php:229 lib/pro/job/wpjobmanager.php:325
 msgctxt "option value"
 msgid "%s Location"
 msgstr ""
