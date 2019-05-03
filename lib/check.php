@@ -114,6 +114,18 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							break;
 
+						case 'job-simplejobboard':
+
+							$chk[ 'class' ] = 'Simple_Job_Board';
+
+							break;
+
+						case 'job-wpjobmanager':
+
+							$chk[ 'class' ] = 'WP_Job_Manager';
+
+							break;
+
 						case 'lang-polylang':
 
 							$chk[ 'class' ] = 'Polylang';
@@ -134,13 +146,31 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 						case 'rating-wppostratings':			// wp-postratings
 
-							$chk['constant'] = 'WP_POSTRATINGS_VERSION';
+							$chk[ 'constant' ] = 'WP_POSTRATINGS_VERSION';
+
+							break;
+
+						case 'recipe-wprecipemaker':
+
+							$chk[ 'class' ] = 'WP_Recipe_Maker';
+
+							break;
+
+						case 'recipe-wpultimaterecipe':
+
+							$chk[ 'class' ] = 'WPUltimateRecipe';
 
 							break;
 
 						case 'review-yotpowc':				// yotpo-social-reviews-for-woocommerce
 
 							$chk[ 'function' ] = 'wc_yotpo_init';
+
+							break;
+
+						case 'review-wpproductreview':
+
+							$chk[ 'class' ] = 'WPPR';
 
 							break;
 
@@ -216,7 +246,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							// only load on the settings pages
 							if ( $is_admin ) {
-								$page = basename( $_SERVER['PHP_SELF'] );
+								$page = basename( $_SERVER[ 'PHP_SELF' ] );
 								if ( $page === 'admin.php' || $page === 'options-general.php' ) {
 									$get_avail[ $sub ][ 'any' ] = $get_avail[ $sub ][ $id ] = true;
 								}
@@ -321,9 +351,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								$get_avail[ $sub ][ 'any' ] = $get_avail[ $sub ][ $id ] = true;
 							}
 
-						} elseif ( isset( $chk['constant'] ) ) {
+						} elseif ( isset( $chk[ 'constant' ] ) ) {
 
-							if ( defined( $chk['constant'] ) ) {
+							if ( defined( $chk[ 'constant' ] ) ) {
 								$get_avail[ $sub ][ 'any' ] = $get_avail[ $sub ][ $id ] = true;
 							}
 						}
@@ -372,8 +402,8 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				case 'head_html':
 
 					$is_avail = ! SucomUtil::get_const( 'WPSSO_HEAD_HTML_DISABLE' ) &&
-						empty( $_SERVER['WPSSO_HEAD_HTML_DISABLE'] ) &&
-							empty( $_GET['WPSSO_HEAD_HTML_DISABLE'] ) ?
+						empty( $_SERVER[ 'WPSSO_HEAD_HTML_DISABLE' ] ) &&
+							empty( $_GET[ 'WPSSO_HEAD_HTML_DISABLE' ] ) ?
 								true : false;
 
 					break;

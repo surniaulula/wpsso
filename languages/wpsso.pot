@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.29.2-rc.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.30.0-rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3216,6 +3216,20 @@ msgstr ""
 msgid "Yotpo for WooCommerce \"%s\" class does not exist."
 msgstr ""
 
+#. translators: please ignore - translation uses a different text domain
+#. translators: %s is the WP Job Manager plugin name
+#: lib/gettext-pro.php:229 lib/pro/job/wpjobmanager.php:316
+msgctxt "option value"
+msgid "%s Organization"
+msgstr ""
+
+#. translators: please ignore - translation uses a different text domain
+#. translators: %s is the WP Job Manager plugin name
+#: lib/gettext-pro.php:231 lib/pro/job/wpjobmanager.php:324
+msgctxt "option value"
+msgid "%s Location"
+msgstr ""
+
 #: lib/gpl/admin/general.php:76
 msgid ""
 "Video discovery and integration modules are provided with the Pro version."
@@ -3260,7 +3274,7 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
-#: lib/loader.php:173 lib/loader.php:199 lib/post.php:282 lib/register.php:307
+#: lib/loader.php:173 lib/loader.php:199 lib/post.php:282 lib/register.php:311
 #: lib/term.php:255 lib/user.php:234 lib/util.php:487 lib/util.php:3235
 msgid "%s warning:"
 msgstr ""
@@ -5222,7 +5236,7 @@ msgid ""
 "refresh of the plugin update information."
 msgstr ""
 
-#: lib/messages.php:2252 lib/register.php:317
+#: lib/messages.php:2252 lib/register.php:321
 msgid ""
 "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version "
 "is outdated, unsupported, possibly insecure</a>, and may lack important "
@@ -5904,11 +5918,11 @@ msgid "The %s plugin has been activated."
 msgstr ""
 
 #. translators: %1$s is the short plugin name, %2$s is the application name, %3$s is the application version number.
-#: lib/register.php:310 lib/register.php:319
+#: lib/register.php:314 lib/register.php:323
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr ""
 
-#: lib/register.php:321
+#: lib/register.php:325
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 

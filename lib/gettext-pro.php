@@ -225,3 +225,7 @@ __( 'Yotpo for WooCommerce %s function returned false.', 'wpsso' );
 __( '"%s" plugin not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders.', 'wpsso' );
 __( 'Yotpo for WooCommerce API library file "%s" not found.', 'wpsso' );
 __( 'Yotpo for WooCommerce "%s" class does not exist.', 'wpsso' );
+// translators: please ignore - translation uses a different text domain
+_x( '%s Organization', 'option value', 'wpsso-schema-json-ld' );
+// translators: please ignore - translation uses a different text domain
+_x( '%s Location', 'option value', 'wpsso-schema-json-ld' );

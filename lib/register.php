@@ -204,9 +204,9 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			$blog_id = get_current_blog_id();
 			$opts    = get_option( WPSSO_OPTIONS_NAME, array() );
 
-			delete_option( WPSSO_TS_NAME );
-
 			if ( ! empty( $opts[ 'plugin_clean_on_uninstall' ] ) ) {
+
+				delete_option( WPSSO_TS_NAME );
 
 				delete_option( WPSSO_OPTIONS_NAME );
 
@@ -214,6 +214,10 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				 * Delete post settings and meta.
 				 */
 				delete_metadata( 'post', null, WPSSO_META_NAME, '', true );	// $delete_all is true.
+
+				delete_post_meta_by_key( '_wpsso_wpproductreview' );	// Re-created automatically.
+				delete_post_meta_by_key( '_wpsso_wprecipemaker' );	// Re-created automatically.
+				delete_post_meta_by_key( '_wpsso_wpultimaterecipe' );	// Re-created automatically.
 
 				/**
 				 * Delete term settings and meta.
