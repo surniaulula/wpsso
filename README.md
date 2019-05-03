@@ -334,12 +334,17 @@
 <li>NextGEN Gallery</li>
 <li>Polylang</li>
 <li>rtMedia for WordPress, BuddyPress and bbPress</li>
+<li>Simple Job Board</li>
 <li>The Events Calendar</li>
 <li>The SEO Framework</li>
 <li>WooCommerce (versions 1, 2, and 3)</li>
 <li>WP eCommerce</li>
+<li>WP Job Manager</li>
 <li>WP Meta SEO</li>
 <li>WP-PostRatings</li>
+<li>WP Product Review</li>
+<li>WP Recipe Maker</li>
+<li>WP Ultimate Recipe</li>
 <li>Yoast SEO (aka WordPress SEO)</li>
 <li>Yotpo Social Reviews for WooCommerce</li>
 </ul></li>

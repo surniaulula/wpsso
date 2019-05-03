@@ -282,12 +282,17 @@ WPSSO Core and its optional Free add-ons offer meta tags and Schema markup for F
 		* NextGEN Gallery
 		* Polylang
 		* rtMedia for WordPress, BuddyPress and bbPress
+		* Simple Job Board
 		* The Events Calendar
 		* The SEO Framework
 		* WooCommerce (versions 1, 2, and 3)
 		* WP eCommerce
+		* WP Job Manager
 		* WP Meta SEO
 		* WP-PostRatings
+		* WP Product Review
+		* WP Recipe Maker
+		* WP Ultimate Recipe
 		* Yoast SEO (aka WordPress SEO)
 		* Yotpo Social Reviews for WooCommerce
 
@@ -426,7 +431,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.29.2-rc.1 (2019/05/03)**
+**Version 4.30.0-rc.1 (2019/05/03)**
 
 * *New Features*
 	* None.
@@ -436,7 +441,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None.
 * *Developer Notes*
-	* None.
+	* Moved the following 3rd party integration modules from WPSSO JSON Pro to WPSSO Core Pro:
+		* Simple Job Board
+		* WP Job Manager
+		* WP Product Review
+		* WP Recipe Maker
+		* WP Ultimate Recipe
 
 **Version 4.29.1 (2019/04/27)**
 
@@ -532,9 +542,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.29.2-rc.1 =
+= 4.30.0-rc.1 =
 
-(2019/05/03) Renamed the "Add-ons" settings page to "Complementary Add-ons".
+(2019/05/03) Renamed the "Add-ons" settings page to "Complementary Add-ons". Moved several 3rd party integration modules from WPSSO JSON Pro to WPSSO Core Pro.
 
 = 4.29.1 =
 
