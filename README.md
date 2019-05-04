@@ -64,7 +64,7 @@
 <li><p>Offers an option to easily hide the preview of Pro settings and features. ;-)</p></li>
 </ul>
 
-<h3>Free Complementary Add-ons</h3>
+<h3>Complementary Add-ons</h3>
 
 <ul>
 <li><a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a> to manage mobile App information.</li>

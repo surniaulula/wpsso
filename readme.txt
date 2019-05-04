@@ -72,7 +72,7 @@ WPSSO Core and its optional Free add-ons offer meta tags and Schema markup for F
 
 * Offers an option to easily hide the preview of Pro settings and features. ;-)
 
-<h3>Free Complementary Add-ons</h3>
+<h3>Complementary Add-ons</h3>
 
 * [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
 * [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/) to manage multiple Organizations.
@@ -431,7 +431,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.30.0-rc.1 (2019/05/03)**
+**Version 4.30.0 (2019/05/04)**
 
 * *New Features*
 	* None.
@@ -441,7 +441,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None.
 * *Developer Notes*
-	* Moved the following 3rd party integration modules from WPSSO JSON Pro to WPSSO Core Pro:
+	* Moved the 3rd party integration modules from WPSSO JSON Pro to WPSSO Core Pro:
 		* Simple Job Board
 		* WP Job Manager
 		* WP Product Review
@@ -542,11 +542,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.30.0-rc.1 =
+= 4.30.0 =
 
-(2019/05/03) Renamed the "Add-ons" settings page to "Complementary Add-ons". Moved several 3rd party integration modules from WPSSO JSON Pro to WPSSO Core Pro.
-
-= 4.29.1 =
-
-(2019/04/27) Updated the menu dashicon styling for WordPress v5.2.
+(2019/05/04) Renamed the "Add-ons" settings page to "Complementary Add-ons". Moved 3rd party integration modules from WPSSO JSON Pro to WPSSO Core Pro.
 
