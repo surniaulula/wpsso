@@ -464,7 +464,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				'facebook' => array(
 					'title' => _x( 'Facebook Open Graph Debugger', 'option label', 'wpsso' ),
 					'label' => _x( 'Validate Open Graph', 'submit button', 'wpsso' ),
-					'url'   => 'https://developers.facebook.com/tools/debug/og/object?q=' . $sharing_url_encoded,
+					'url'   => 'https://developers.facebook.com/tools/debug/og/object/?q=' . $sharing_url_encoded,
 				),
 				'linkedin' => array(
 					'title' => _x( 'LinkedIn Post Inspector', 'option label', 'wpsso' ),
