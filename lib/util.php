@@ -1449,7 +1449,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				 * Note that PHP class names are not case sensitive, so we can 
 				 * use "wpssopost" here instead of "WpssoPost".
 				 */
-				$object_ids = call_user_func( array( $this->p->lca . $name, 'get_public_ids' ) );
+				$object_ids = call_user_func( array( $this->p->lca . $name, 'get_public_ids' ) );	// Call static method.
 				
 				foreach ( $object_ids as $object_id ) {
 
@@ -1459,7 +1459,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					$count++;
 
-					$object_mod = $this->p->m[ 'util' ][ $name ]->get_mod( $object_id );
+					$object_mod = $this->p->$name->get_mod( $object_id );
 
 					$this->refresh_mod_head_meta( $object_mod );
 				}
@@ -2364,7 +2364,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			/**
-			 * Check for a recognized object.
+			 * Check for known WP objects and set the object module name and its object ID.
 			 */
 			if ( is_object( $wp_obj ) ) {
 
@@ -2397,9 +2397,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 			}
 
-			/**
-			 * We need a module name to get its id and class object.
-			 */
 			if ( empty( $mod[ 'name' ] ) ) {
 
 				if ( self::is_post_page( $use_post ) ) {	// $use_post = true | false | post_id
@@ -2433,38 +2430,67 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( empty( $mod[ 'id' ] ) ) {
 
-				if ( $mod[ 'name' ] === 'post' ) {
+				switch ( $mod[ 'name' ] ) {
 
-					$mod[ 'id' ] = self::get_post_object( $use_post, 'id' );	// $use_post = true | false | post_id
+					case 'post':
 
-				} elseif ( $mod[ 'name' ] === 'term' ) {
+						$mod[ 'id' ] = self::get_post_object( $use_post, 'id' );	// $use_post = true | false | post_id
 
-					$mod[ 'id' ] = self::get_term_object( false, '', 'id' );
+						break;
 
-				} elseif ( $mod[ 'name' ] === 'user' ) {
+					case 'term':
 
-					$mod[ 'id' ] = self::get_user_object( false, 'id' );
+						$mod[ 'id' ] = self::get_term_object( false, '', 'id' );
 
-				} else {
-					$mod[ 'id' ] = false;
+						break;
+
+					case 'user':
+
+						$mod[ 'id' ] = self::get_user_object( false, 'id' );
+
+						break;
+
+					default:
+
+						$mod[ 'id' ] = false;
+
+						break;
 				}
 			}
 
-			if ( isset( $this->p->m[ 'util' ][ $mod[ 'name' ] ] ) ) {	// Make sure we have a complete $mod array.
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'getting $mod array from ' . $mod[ 'name' ] . ' module object' );
+			}
 
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'getting $mod array from ' . $mod[ 'name' ] . ' module object' );
-				}
+			switch ( $mod[ 'name' ] ) {
 
-				$mod = $this->p->m[ 'util' ][ $mod[ 'name' ] ]->get_mod( $mod[ 'id' ] );
+				case 'post':
 
-			} else {
+					$mod = $this->p->post->get_mod( $mod[ 'id' ] );
 
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'object is unknown - merging $mod defaults' );
-				}
+					break;
 
-				$mod = array_merge( WpssoWpMeta::$mod_defaults, $mod );
+				case 'term':
+
+					$mod = $this->p->term->get_mod( $mod[ 'id' ] );
+
+					break;
+
+				case 'user':
+
+					$mod = $this->p->user->get_mod( $mod[ 'id' ] );
+
+					break;
+
+				default:
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'object is unknown - merging $mod defaults' );
+					}
+
+					$mod = array_merge( WpssoWpMeta::$mod_defaults, $mod );
+
+					break;
 			}
 
 			$mod[ 'use_post' ] = $use_post;
