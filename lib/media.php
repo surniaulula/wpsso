@@ -152,10 +152,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				 * get_og_images() also provides filter hooks for additional image ids and urls
 				 * unless $md_pre is 'none', get_og_images() will fallback to the 'og' custom meta.
 				 */
-				if ( isset( $this->p->m[ 'util' ][ 'post' ] ) ) {	// Just in case.
-					$og_images = array_merge( $og_images, $this->p->m[ 'util' ][ 'post' ]->get_og_images( 1,
-						$size_name, $post_id, $check_dupes, $force_regen, $md_pre ) );
-				}
+				$og_images = array_merge( $og_images, $this->p->post->get_og_images( 1,
+					$size_name, $post_id, $check_dupes, $force_regen, $md_pre ) );
 			}
 
 			/**

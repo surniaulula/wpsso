@@ -39,14 +39,8 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 
 				if ( isset( $mt_og[ 'og:type' ] ) && $mt_og[ 'og:type' ] === 'article' ) {
 
-					if ( is_object( $this->p->m[ 'util' ][ 'user' ] ) ) {	// Just in case.
-
-						$mt_name[ 'author' ] = $this->p->m[ 'util' ][ 'user' ]->get_author_meta( $author_id,
-							$this->p->options[ 'seo_author_name' ] );
-
-					} elseif ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'skipped author meta tag - user module not defined' );
-					}
+					$mt_name[ 'author' ] = $this->p->user->get_author_meta( $author_id,
+						$this->p->options[ 'seo_author_name' ] );
 
 				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'skipped author meta tag - og:type is not an article' );

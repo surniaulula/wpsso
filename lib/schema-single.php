@@ -791,22 +791,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					}
 
 					return 0;
-
-				} elseif ( empty( $wpsso->m[ 'util' ][ 'user' ] ) ) {
-
-					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( 'exiting early: user class not loaded' );
-					}
-
-					return 0;
-
 				}
 
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'getting user module for user_id ' . $user_id );
 				}
 
-				$user_mod = $wpsso->m[ 'util' ][ 'user' ]->get_mod( $user_id );
+				$user_mod = $wpsso->user->get_mod( $user_id );
 
 				/**
 				 * Set the reference values for admin notices.

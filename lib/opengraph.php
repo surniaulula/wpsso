@@ -796,19 +796,19 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				if ( ! isset( $mt_og[ 'article:author' ] ) ) {
 
-					if ( $mod[ 'is_post' ] && isset( $this->p->m[ 'util' ][ 'user' ] ) ) {
+					if ( $mod[ 'is_post' ] ) {
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'getting names / urls for article:author meta tags' );
 						}
 
-						$user_mod =& $this->p->m[ 'util' ][ 'user' ];
-
 						if ( $mod[ 'post_author' ] ) {
 
-							$mt_og[ 'article:author' ] = $user_mod->get_og_profile_urls( $mod[ 'post_author' ], $crawler_name );
+							$mt_og[ 'article:author' ] = $this->p->user->get_authors_websites( $mod[ 'post_author' ],
+								$this->p->options[ 'og_author_field' ] );
 
-							$mt_og[ 'article:author:name' ] = $user_mod->get_author_meta( $mod[ 'post_author' ], $this->p->options[ 'seo_author_name' ] );
+							$mt_og[ 'article:author:name' ] = $this->p->user->get_author_meta( $mod[ 'post_author' ],
+								$this->p->options[ 'seo_author_name' ] );
 
 						} else {
 							$mt_og[ 'article:author' ] = array();
@@ -816,7 +816,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						if ( ! empty( $mod[ 'post_coauthors' ] ) ) {
 
-							$og_profile_urls = $user_mod->get_og_profile_urls( $mod[ 'post_coauthors' ], $crawler_name );
+							$og_profile_urls = $this->p->user->get_authors_websites( $mod[ 'post_coauthors' ],
+								$this->p->options[ 'og_author_field' ] );
 
 							$mt_og[ 'article:author' ] = array_merge( $mt_og[ 'article:author' ], $og_profile_urls );
 						}

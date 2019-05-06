@@ -18,10 +18,12 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		protected $opts = array();	// Cache for options.
 		protected $defs = array();	// Cache for default values.
 
-		protected static $head_meta_tags = false;
-		protected static $head_meta_info = array();
-		protected static $last_column_id = null;	// Cache id of the last column request in list table.
+		protected static $head_meta_tags    = false;
+		protected static $head_meta_info    = array();
+		protected static $last_column_id    = null;	// Cache id of the last column request in list table.
 		protected static $last_column_array = array();	// Array of column values for last column requested.
+		protected static $cache_short_url   = null;
+		protected static $cache_shortlinks  = array();
 
 		protected static $rename_md_options_keys = array(
 			'wpsso' => array(
@@ -105,11 +107,230 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		);
 
 		public function __construct() {
+
+			return $this->must_be_extended( __METHOD__ );
 		}
 
+		/**
+		 * Add WordPress action and filters hooks.
+		 */
+		protected function add_wp_hooks() {
+
+			return $this->must_be_extended( __METHOD__ );
+		}
+
+		/**
+		 * Get the $mod object for a post, term, or user ID.
+		 */
 		public function get_mod( $mod_id ) {
 
 			return $this->must_be_extended( __METHOD__, self::$mod_defaults );
+		}
+
+		/**
+		 * Option handling methods:
+		 *
+		 *	get_defaults()
+		 *	get_options()
+		 *	save_options()
+		 *	delete_options()
+		 */
+		public function get_defaults( $mod_id, $md_key = false ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			/**
+			 * Maybe initialize the cache.
+			 */
+			if ( ! isset( $this->defs[ $mod_id ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'initializing the default options cache array' );
+				}
+
+				$this->defs[ $mod_id ] = array();
+			}
+
+			$md_defs =& $this->defs[ $mod_id ];	// Shortcut variable name.
+
+			if ( ! WpssoOptions::can_cache() || empty( $md_defs[ 'options_filtered' ] ) ) {
+
+				$mod = $this->get_mod( $mod_id );
+
+				$opts =& $this->p->options;		// Shortcut variable name.
+
+				$og_type = $this->p->og->get_mod_og_type( $mod, false, false );	// $ret_og_ns is false, $use_mod_opts is false
+
+				$md_defs = array(
+					'options_filtered' => '',
+					'options_version'  => '',
+
+					/**
+					 * Customize Tab.
+					 */
+					'og_type'        => $og_type,
+					'og_art_section' => isset( $opts[ 'og_art_section' ] ) ? $opts[ 'og_art_section' ] : 'none',
+					'og_title'       => '',
+					'og_desc'        => '',
+					'seo_desc'       => '',
+					'tc_desc'        => '',
+					'sharing_url'    => '',
+					'canonical_url'  => '',
+					'schema_desc'    => '',
+
+					/**
+					 * Open Graph - Product Information.
+					 */
+					'product_avail'         => 'none',
+					'product_brand'         => '',
+					'product_color'         => '',
+					'product_condition'     => 'none',
+					'product_material'      => '',
+					'product_mpn'           => '',
+					'product_sku'           => '',
+					'product_ean'           => '',
+					'product_gtin8'         => '',
+					'product_gtin12'        => '',
+					'product_gtin13'        => '',
+					'product_gtin14'        => '',
+					'product_isbn'          => '',
+					'product_price'         => '0.00',
+					'product_currency'      => empty( $opts[ 'plugin_def_currency' ] ) ? 'USD' : $opts[ 'plugin_def_currency' ],
+					'product_size'          => '',
+					'product_target_gender' => 'none',
+
+					/**
+					 * Open Graph - Priority Image.
+					 */
+					'og_img_max'    => isset( $opts[ 'og_img_max' ] ) ? (int) $opts[ 'og_img_max' ] : 1,	// Cast as integer.
+					'og_img_width'  => isset( $opts[ 'og_img_width' ] ) ? $opts[ 'og_img_width' ] : '',
+					'og_img_height' => isset( $opts[ 'og_img_height' ] ) ? $opts[ 'og_img_height' ] : '',
+					'og_img_crop'   => empty( $opts[ 'og_img_crop' ] ) ? 0 : 1,
+					'og_img_crop_x' => empty( $opts[ 'og_img_crop_x' ] ) ? 'center' : $opts[ 'og_img_crop_x' ],
+					'og_img_crop_y' => empty( $opts[ 'og_img_crop_y' ] ) ? 'center' : $opts[ 'og_img_crop_y' ],
+					'og_img_id'     => '',
+					'og_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
+					'og_img_url'    => '',
+
+					/**
+					 * Open Graph - Priority Video.
+					 */
+					'og_vid_prev_img' => empty( $opts[ 'og_vid_prev_img' ] ) ? 0 : 1,
+					'og_vid_max'      => isset( $opts[ 'og_vid_max' ] ) ? (int) $opts[ 'og_vid_max' ] : 1,	// Cast as integer.
+					'og_vid_width'    => '',	// Custom value for first video.
+					'og_vid_height'   => '',	// Custom value for first video.
+					'og_vid_embed'    => '',
+					'og_vid_url'      => '',
+					'og_vid_title'    => '',	// Custom value for first video.
+					'og_vid_desc'     => '',	// Custom value for first video.
+
+					/**
+					 * Twitter Card.
+					 */
+					'tc_lrg_img_width'  => isset( $opts[ 'tc_lrg_img_width' ] ) ? $opts[ 'tc_lrg_img_width' ] : '',
+					'tc_lrg_img_height' => isset( $opts[ 'tc_lrg_img_height' ] ) ? $opts[ 'tc_lrg_img_height' ] : '',
+					'tc_lrg_img_crop'   => empty( $opts[ 'tc_lrg_img_crop' ] ) ? 0 : 1,
+					'tc_lrg_img_crop_x' => empty( $opts[ 'tc_lrg_img_crop_x' ] ) ? 'center' : $opts[ 'tc_lrg_img_crop_x' ],
+					'tc_lrg_img_crop_y' => empty( $opts[ 'tc_lrg_img_crop_y' ] ) ? 'center' : $opts[ 'tc_lrg_img_crop_y' ],
+					'tc_lrg_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
+					'tc_lrg_img_url'    => '',
+					'tc_sum_img_width'  => isset( $opts[ 'tc_sum_img_width' ] ) ? $opts[ 'tc_sum_img_width' ] : '',
+					'tc_sum_img_height' => isset( $opts[ 'tc_sum_img_height' ] ) ? $opts[ 'tc_sum_img_height' ] : '',
+					'tc_sum_img_crop'   => empty( $opts[ 'tc_sum_img_crop' ] ) ? 0 : 1,
+					'tc_sum_img_crop_x' => empty( $opts[ 'tc_sum_img_crop_x' ] ) ? 'center' : $opts[ 'tc_sum_img_crop_x' ],
+					'tc_sum_img_crop_y' => empty( $opts[ 'tc_sum_img_crop_y' ] ) ? 'center' : $opts[ 'tc_sum_img_crop_y' ],
+					'tc_sum_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
+					'tc_sum_img_url'    => '',
+
+					/**
+					 * Structured Data / Schema Markup / Pinterest.
+					 */
+					'schema_img_max'    => isset( $opts[ 'schema_img_max' ] ) ? (int) $opts[ 'schema_img_max' ] : 1,	// Cast as integer.
+					'schema_img_width'  => isset( $opts[ 'schema_img_width' ] ) ? $opts[ 'schema_img_width' ] : '',
+					'schema_img_height' => isset( $opts[ 'schema_img_height' ] ) ? $opts[ 'schema_img_height' ] : '',
+					'schema_img_crop'   => empty( $opts[ 'schema_img_crop' ] ) ? 0 : 1,
+					'schema_img_crop_x' => empty( $opts[ 'schema_img_crop_x' ] ) ? 'center' : $opts[ 'schema_img_crop_x' ],
+					'schema_img_crop_y' => empty( $opts[ 'schema_img_crop_y' ] ) ? 'center' : $opts[ 'schema_img_crop_y' ],
+					'schema_img_id'     => '',
+					'schema_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
+					'schema_img_url'    => '',
+
+					/**
+					 * Gravity View (Side Metabox).
+					 */
+					'gv_id_title' => 0,	// Title Field ID
+					'gv_id_desc'  => 0,	// Description Field ID
+					'gv_id_img'   => 0,	// Post Image Field ID
+				);
+
+				if ( WpssoOptions::can_cache() ) {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'setting options_filtered to true' );
+					}
+
+					$md_defs[ 'options_filtered' ] = true;	// Set before calling filter to prevent recursion.
+
+				} elseif ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'options_filtered value unchanged' );
+				}
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'applying get_md_defaults filters' );
+				}
+
+				$md_defs = apply_filters( $this->p->lca . '_get_md_defaults', $md_defs, $mod );
+
+			} elseif ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'get_md_defaults filter skipped' );
+			}
+
+			if ( false !== $md_key ) {
+
+				if ( isset( $md_defs[ $md_key ] ) ) {
+					return $md_defs[ $md_key ];
+				} else {
+					return null;
+				}
+
+			} else {
+				return $md_defs;
+			}
+		}
+
+		public function get_options( $mod_id, $md_key = false, $filter_opts = true, $def_fallback = false ) {
+
+			$ret_val = array();
+
+			if ( false !== $md_key ) {
+				if ( $def_fallback ) {
+					$ret_val = $this->get_defaults( $mod_id, $md_key );
+				} else {
+					$ret_val = null;
+				}
+			}
+
+			return $this->must_be_extended( __METHOD__, $ret_val );
+		}
+
+		public function save_options( $mod_id, $rel_id = false ) {
+
+			return $this->must_be_extended( __METHOD__ );
+		}
+
+		public function delete_options( $mod_id, $rel_id = false ) {
+
+			return $this->must_be_extended( __METHOD__, $mod_id );
+		}
+
+		/**
+		 * Get all publicly accessible post, term, or user IDs.
+		 */
+		public static function get_public_ids() {
+
+			return array();
 		}
 
 		public function get_posts_ids( array $mod, $ppp = false, $paged = false, array $posts_args = array() ) {
@@ -127,15 +348,10 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					$this->p->debug->log( 'getting mod for post object ID ' . $post_id );
 				}
 
-				$posts_mods[] = $this->p->m[ 'util' ][ 'post' ]->get_mod( $post_id );
+				$posts_mods[] = $this->p->post->get_mod( $post_id );
 			}
 
 			return $posts_mods;
-		}
-
-		protected function add_actions() {
-
-			return $this->must_be_extended( __METHOD__ );
 		}
 
 		public function add_meta_boxes() {
@@ -607,191 +823,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $md_val;
 		}
 
-		public function get_options( $mod_id, $md_key = false, $filter_opts = true, $def_fallback = false ) {
-
-			$ret_val = array();
-
-			if ( false !== $md_key ) {
-				if ( $def_fallback ) {
-					$ret_val = $this->get_defaults( $mod_id, $md_key );
-				} else {
-					$ret_val = null;
-				}
-			}
-
-			return $this->must_be_extended( __METHOD__, $ret_val );
-		}
-
-		public function get_defaults( $mod_id, $md_key = false ) {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
-
-			/**
-			 * Maybe initialize the cache.
-			 */
-			if ( ! isset( $this->defs[ $mod_id ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'initializing the default options cache array' );
-				}
-
-				$this->defs[ $mod_id ] = array();
-			}
-
-			$md_defs =& $this->defs[ $mod_id ];	// Shortcut variable name.
-
-			if ( ! WpssoOptions::can_cache() || empty( $md_defs[ 'options_filtered' ] ) ) {
-
-				$mod = $this->get_mod( $mod_id );
-
-				$opts =& $this->p->options;		// Shortcut variable name.
-
-				$og_type = $this->p->og->get_mod_og_type( $mod, false, false );	// $ret_og_ns is false, $use_mod_opts is false
-
-				$md_defs = array(
-					'options_filtered' => '',
-					'options_version'  => '',
-
-					/**
-					 * Customize Tab.
-					 */
-					'og_type'        => $og_type,
-					'og_art_section' => isset( $opts[ 'og_art_section' ] ) ? $opts[ 'og_art_section' ] : 'none',
-					'og_title'       => '',
-					'og_desc'        => '',
-					'seo_desc'       => '',
-					'tc_desc'        => '',
-					'sharing_url'    => '',
-					'canonical_url'  => '',
-					'schema_desc'    => '',
-
-					/**
-					 * Open Graph - Product Information.
-					 */
-					'product_avail'         => 'none',
-					'product_brand'         => '',
-					'product_color'         => '',
-					'product_condition'     => 'none',
-					'product_material'      => '',
-					'product_mpn'           => '',
-					'product_sku'           => '',
-					'product_ean'           => '',
-					'product_gtin8'         => '',
-					'product_gtin12'        => '',
-					'product_gtin13'        => '',
-					'product_gtin14'        => '',
-					'product_isbn'          => '',
-					'product_price'         => '0.00',
-					'product_currency'      => empty( $opts[ 'plugin_def_currency' ] ) ? 'USD' : $opts[ 'plugin_def_currency' ],
-					'product_size'          => '',
-					'product_target_gender' => 'none',
-
-					/**
-					 * Open Graph - Priority Image.
-					 */
-					'og_img_max'    => isset( $opts[ 'og_img_max' ] ) ? (int) $opts[ 'og_img_max' ] : 1,	// Cast as integer.
-					'og_img_width'  => isset( $opts[ 'og_img_width' ] ) ? $opts[ 'og_img_width' ] : '',
-					'og_img_height' => isset( $opts[ 'og_img_height' ] ) ? $opts[ 'og_img_height' ] : '',
-					'og_img_crop'   => empty( $opts[ 'og_img_crop' ] ) ? 0 : 1,
-					'og_img_crop_x' => empty( $opts[ 'og_img_crop_x' ] ) ? 'center' : $opts[ 'og_img_crop_x' ],
-					'og_img_crop_y' => empty( $opts[ 'og_img_crop_y' ] ) ? 'center' : $opts[ 'og_img_crop_y' ],
-					'og_img_id'     => '',
-					'og_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
-					'og_img_url'    => '',
-
-					/**
-					 * Open Graph - Priority Video.
-					 */
-					'og_vid_prev_img' => empty( $opts[ 'og_vid_prev_img' ] ) ? 0 : 1,
-					'og_vid_max'      => isset( $opts[ 'og_vid_max' ] ) ? (int) $opts[ 'og_vid_max' ] : 1,	// Cast as integer.
-					'og_vid_width'    => '',	// Custom value for first video.
-					'og_vid_height'   => '',	// Custom value for first video.
-					'og_vid_embed'    => '',
-					'og_vid_url'      => '',
-					'og_vid_title'    => '',	// Custom value for first video.
-					'og_vid_desc'     => '',	// Custom value for first video.
-
-					/**
-					 * Twitter Card.
-					 */
-					'tc_lrg_img_width'  => isset( $opts[ 'tc_lrg_img_width' ] ) ? $opts[ 'tc_lrg_img_width' ] : '',
-					'tc_lrg_img_height' => isset( $opts[ 'tc_lrg_img_height' ] ) ? $opts[ 'tc_lrg_img_height' ] : '',
-					'tc_lrg_img_crop'   => empty( $opts[ 'tc_lrg_img_crop' ] ) ? 0 : 1,
-					'tc_lrg_img_crop_x' => empty( $opts[ 'tc_lrg_img_crop_x' ] ) ? 'center' : $opts[ 'tc_lrg_img_crop_x' ],
-					'tc_lrg_img_crop_y' => empty( $opts[ 'tc_lrg_img_crop_y' ] ) ? 'center' : $opts[ 'tc_lrg_img_crop_y' ],
-					'tc_lrg_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
-					'tc_lrg_img_url'    => '',
-					'tc_sum_img_width'  => isset( $opts[ 'tc_sum_img_width' ] ) ? $opts[ 'tc_sum_img_width' ] : '',
-					'tc_sum_img_height' => isset( $opts[ 'tc_sum_img_height' ] ) ? $opts[ 'tc_sum_img_height' ] : '',
-					'tc_sum_img_crop'   => empty( $opts[ 'tc_sum_img_crop' ] ) ? 0 : 1,
-					'tc_sum_img_crop_x' => empty( $opts[ 'tc_sum_img_crop_x' ] ) ? 'center' : $opts[ 'tc_sum_img_crop_x' ],
-					'tc_sum_img_crop_y' => empty( $opts[ 'tc_sum_img_crop_y' ] ) ? 'center' : $opts[ 'tc_sum_img_crop_y' ],
-					'tc_sum_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
-					'tc_sum_img_url'    => '',
-
-					/**
-					 * Structured Data / Schema Markup / Pinterest.
-					 */
-					'schema_img_max'    => isset( $opts[ 'schema_img_max' ] ) ? (int) $opts[ 'schema_img_max' ] : 1,	// Cast as integer.
-					'schema_img_width'  => isset( $opts[ 'schema_img_width' ] ) ? $opts[ 'schema_img_width' ] : '',
-					'schema_img_height' => isset( $opts[ 'schema_img_height' ] ) ? $opts[ 'schema_img_height' ] : '',
-					'schema_img_crop'   => empty( $opts[ 'schema_img_crop' ] ) ? 0 : 1,
-					'schema_img_crop_x' => empty( $opts[ 'schema_img_crop_x' ] ) ? 'center' : $opts[ 'schema_img_crop_x' ],
-					'schema_img_crop_y' => empty( $opts[ 'schema_img_crop_y' ] ) ? 'center' : $opts[ 'schema_img_crop_y' ],
-					'schema_img_id'     => '',
-					'schema_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
-					'schema_img_url'    => '',
-
-					/**
-					 * Gravity View (Side Metabox).
-					 */
-					'gv_id_title' => 0,	// Title Field ID
-					'gv_id_desc'  => 0,	// Description Field ID
-					'gv_id_img'   => 0,	// Post Image Field ID
-				);
-
-				if ( WpssoOptions::can_cache() ) {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'setting options_filtered to true' );
-					}
-
-					$md_defs[ 'options_filtered' ] = true;	// Set before calling filter to prevent recursion.
-
-				} elseif ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'options_filtered value unchanged' );
-				}
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'applying get_md_defaults filters' );
-				}
-
-				$md_defs = apply_filters( $this->p->lca . '_get_md_defaults', $md_defs, $mod );
-
-			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'get_md_defaults filter skipped' );
-			}
-
-			if ( false !== $md_key ) {
-
-				if ( isset( $md_defs[ $md_key ] ) ) {
-					return $md_defs[ $md_key ];
-				} else {
-					return null;
-				}
-
-			} else {
-				return $md_defs;
-			}
-		}
-
-		public function save_options( $mod_id, $rel_id = false ) {
-
-			return $this->must_be_extended( __METHOD__ );
-		}
-
 		public function user_can_edit( $mod_id, $rel_id = false ) {
 
 			return $this->must_be_extended( __METHOD__, false );	// return false by default
@@ -893,29 +924,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			}
 
 			return $deleted_count;
-		}
-
-		public function delete_options( $mod_id, $rel_id = false ) {
-
-			return $this->must_be_extended( __METHOD__, $mod_id );
-		}
-
-		protected function not_implemented( $method, $ret = true ) {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( $method . ' not implemented in this version', get_class( $this ) );	// log the extended class name
-			}
-
-			return $ret;
-		}
-
-		protected function must_be_extended( $method, $ret = true ) {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( $method . ' must be extended', get_class( $this ) );	// log the extended class name
-			}
-
-			return $ret;
 		}
 
 		protected function verify_submit_nonce() {
@@ -1239,42 +1247,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $columns;
 		}
 
-		public function get_og_img_column_html( $head_info, $mod, $md_pre = 'og', $mt_pre = 'og' ) {
-
-			$media_html  = false;
-			$force_regen = $this->p->util->is_force_regen( $mod, $md_pre );	// false by default
-
-			if ( ! empty( $head_info[ $mt_pre . ':image:id' ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'getting thumbnail for image id ' . $head_info[ $mt_pre . ':image:id' ] );
-				}
-
-				$mt_single_image = array();
-
-				/**
-				 * Get the smaller thumbnail image as a preview image.
-				 */
-				$this->p->media->add_mt_single_image_src( $mt_single_image, $head_info[ $mt_pre . ':image:id' ], 'thumbnail', false, $force_regen );
-
-				if ( ! empty( $mt_single_image[ $mt_pre . ':image:url' ] ) ) {	// Just in case.
-					$head_info =& $mt_single_image;
-				}
-			}
-
-			$media_url = SucomUtil::get_mt_media_url( $head_info );
-			
-			if ( $force_regen ) {
-				$media_url = add_query_arg( 'force_regen', time(), $media_url );
-			}
-
-			if ( ! empty( $media_url ) ) {
-				$media_html = '<div class="preview_img" style="background-image:url(' . $media_url . ');"></div>';
-			}
-
-			return $media_html;
-		}
-
 		public function get_pid_thumb_img_html( $pid, $mod, $md_pre = 'og' ) {
 
 			if ( empty( $pid ) ) {
@@ -1306,10 +1278,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			}
 
 			return $media_html;
-		}
-
-		public function get_og_images( $num, $size_name, $mod_id, $check_dupes = true, $force_regen = false, $md_pre = 'og' ) {
-			return $this->must_be_extended( __METHOD__, array() );
 		}
 
 		public function get_md_images( $num, $size_name, array $mod, $check_dupes = true, $force_regen = false, $md_pre = 'og', $mt_pre = 'og' ) {
@@ -1435,81 +1403,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			}
 
 			return $mt_ret;
-		}
-
-		public function get_og_videos( $num = 0, $mod_id, $check_dupes = false, $md_pre = 'og', $mt_pre = 'og' ) {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log_args( array( 
-					'num'         => $num,
-					'mod_id'      => $mod_id,
-					'check_dupes' => $check_dupes,
-					'md_pre'      => $md_pre,
-					'mt_pre'      => $mt_pre,
-				), get_class( $this ) );
-			}
-
-			$mod       = $this->get_mod( $mod_id );	// required for get_content_videos()
-			$og_ret    = array();
-			$og_videos = array();
-
-			if ( empty( $mod_id ) ) {
-				return $og_ret;
-			}
-
-			foreach( array_unique( array( $md_pre, 'og' ) ) as $opt_pre ) {
-
-				$embed_html = $this->get_options( $mod_id, $opt_pre . '_vid_embed' );
-				$video_url  = $this->get_options( $mod_id, $opt_pre . '_vid_url' );
-
-				/**
-				 * Retrieve one or more videos from the embed HTML code . 
-				 */
-				if ( ! empty( $embed_html ) ) {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'fetching video(s) from custom ' . $opt_pre . ' embed code',
-							get_class( $this ) );	// log extended class name
-					}
-
-					$og_ret = array_merge( $og_ret, $this->p->media->get_content_videos( $num, $mod, $check_dupes, $embed_html ) );
-				}
-
-				if ( ! empty( $video_url ) && ( $check_dupes == false || $this->p->util->is_uniq_url( $video_url ) ) ) {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'fetching video from custom ' . $opt_pre . ' url ' . $video_url, get_class( $this ) );
-					}
-
-					$args = array(
-						'url'      => $video_url,
-						'width'    => WPSSO_UNDEF,
-						'height'   => WPSSO_UNDEF,
-						'type'     => '',
-						'prev_url' => '',
-						'post_id'  => null,
-						'api'      => '',
-					);
-
-					$og_videos = $this->p->media->get_video_details( $args, $check_dupes, true );
-
-					if ( $this->p->util->push_max( $og_ret, $og_videos, $num ) )  {
-						return $og_ret;
-					}
-				}
-			}
-
-			return $og_ret;
-		}
-
-		public function get_og_type_reviews( $mod_id, $og_type = 'product', $rating_meta = 'rating' ) {
-
-			return $this->must_be_extended( __METHOD__, array() );	// return an empty array
-		}
-
-		public function get_og_review_mt( $comment_obj, $og_type = 'product', $rating_meta = 'rating' ) {
-
-			return $this->must_be_extended( __METHOD__, array() );	// return an empty array
 		}
 
 		/**
@@ -1665,29 +1558,164 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $md_opts;
 		}
 
-		public function get_sharing_shortlink( $shortlink = false, $post_id = 0, $context = 'post', $allow_slugs = true ) {
+		protected function must_be_extended( $method, $ret = true ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( $method . ' must be extended', get_class( $this ) );	// Log the extended class name.
+			}
+
+			return $ret;
+		}
+
+		/**
+		 * Methods that return an associative array of Open Graph meta tags.
+		 */
+		public function get_og_images( $num, $size_name, $mod_id, $check_dupes = true, $force_regen = false, $md_pre = 'og' ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			$mod = $this->get_mod( $mod_id );
+
+			return $this->get_md_images( $num, $size_name, $mod, $check_dupes, $force_regen, $md_pre, 'og' );
+		}
+
+		public function get_og_videos( $num = 0, $mod_id, $check_dupes = false, $md_pre = 'og', $mt_pre = 'og' ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log_args( array( 
+					'num'         => $num,
+					'mod_id'      => $mod_id,
+					'check_dupes' => $check_dupes,
+					'md_pre'      => $md_pre,
+					'mt_pre'      => $mt_pre,
+				), get_class( $this ) );
+			}
+
+			$mod       = $this->get_mod( $mod_id );	// required for get_content_videos()
+			$og_ret    = array();
+			$og_videos = array();
+
+			if ( empty( $mod_id ) ) {
+				return $og_ret;
+			}
+
+			foreach( array_unique( array( $md_pre, 'og' ) ) as $opt_pre ) {
+
+				$embed_html = $this->get_options( $mod_id, $opt_pre . '_vid_embed' );
+				$video_url  = $this->get_options( $mod_id, $opt_pre . '_vid_url' );
+
+				/**
+				 * Retrieve one or more videos from the embed HTML code . 
+				 */
+				if ( ! empty( $embed_html ) ) {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'fetching video(s) from custom ' . $opt_pre . ' embed code',
+							get_class( $this ) );	// log extended class name
+					}
+
+					$og_ret = array_merge( $og_ret, $this->p->media->get_content_videos( $num, $mod, $check_dupes, $embed_html ) );
+				}
+
+				if ( ! empty( $video_url ) && ( $check_dupes == false || $this->p->util->is_uniq_url( $video_url ) ) ) {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'fetching video from custom ' . $opt_pre . ' url ' . $video_url, get_class( $this ) );
+					}
+
+					$args = array(
+						'url'      => $video_url,
+						'width'    => WPSSO_UNDEF,
+						'height'   => WPSSO_UNDEF,
+						'type'     => '',
+						'prev_url' => '',
+						'post_id'  => null,
+						'api'      => '',
+					);
+
+					$og_videos = $this->p->media->get_video_details( $args, $check_dupes, true );
+
+					if ( $this->p->util->push_max( $og_ret, $og_videos, $num ) )  {
+						return $og_ret;
+					}
+				}
+			}
+
+			return $og_ret;
+		}
+
+		public function get_og_img_column_html( $head_info, $mod, $md_pre = 'og', $mt_pre = 'og' ) {
+
+			$media_html  = false;
+			$force_regen = $this->p->util->is_force_regen( $mod, $md_pre );	// false by default
+
+			if ( ! empty( $head_info[ $mt_pre . ':image:id' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'getting thumbnail for image id ' . $head_info[ $mt_pre . ':image:id' ] );
+				}
+
+				$mt_single_image = array();
+
+				/**
+				 * Get the smaller thumbnail image as a preview image.
+				 */
+				$this->p->media->add_mt_single_image_src( $mt_single_image, $head_info[ $mt_pre . ':image:id' ], 'thumbnail', false, $force_regen );
+
+				if ( ! empty( $mt_single_image[ $mt_pre . ':image:url' ] ) ) {	// Just in case.
+					$head_info =& $mt_single_image;
+				}
+			}
+
+			$media_url = SucomUtil::get_mt_media_url( $head_info );
+			
+			if ( $force_regen ) {
+				$media_url = add_query_arg( 'force_regen', time(), $media_url );
+			}
+
+			if ( ! empty( $media_url ) ) {
+				$media_html = '<div class="preview_img" style="background-image:url(' . $media_url . ');"></div>';
+			}
+
+			return $media_html;
+		}
+
+		public function get_og_type_reviews( $mod_id, $og_type = 'product', $rating_meta = 'rating' ) {
+
+			return $this->must_be_extended( __METHOD__, array() );	// return an empty array
+		}
+
+		public function get_og_review_mt( $comment_obj, $og_type = 'product', $rating_meta = 'rating' ) {
+
+			return $this->must_be_extended( __METHOD__, array() );	// return an empty array
+		}
+
+		/**
+		 * WpssoPost class specific methods.
+		 */
+		public function get_sharing_shortlink( $shortlink = false, $mod_id = 0, $context = 'post', $allow_slugs = true ) {
 
 			return $this->must_be_extended( __METHOD__, '' );
 		}
 
-		public function maybe_restore_shortlink( $shortlink = false, $post_id = 0, $context = 'post', $allow_slugs = true ) {
+		public function maybe_restore_shortlink( $shortlink = false, $mod_id = 0, $context = 'post', $allow_slugs = true ) {
 
 			return $this->must_be_extended( __METHOD__, '' );
 		}
 
-		public static function get_public_post_ids() {
-		
-			return $this->must_be_extended( __METHOD__, array() );
-		}
-
-		public static function get_public_term_ids( $tax_name = null ) {
+		/**
+		 * WpssoUser class specific methods.
+		 */
+		public function get_authors_websites( $user_ids, $field_id = null ) {
 
 			return $this->must_be_extended( __METHOD__, array() );
 		}
 
-		public static function get_public_user_ids() {
+		public function get_author_website( $user_id, $field_id = 'url' ) {
 
-			return $this->must_be_extended( __METHOD__, array() );
+			return $this->must_be_extended( __METHOD__, '' );
 		}
 	}
 }

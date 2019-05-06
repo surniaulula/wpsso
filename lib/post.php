@@ -11,19 +11,37 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'WpssoPost' ) ) {
 
-	/**
-	 * This class is extended by gpl/util/post.php or pro/util/post.php
-	 * and the class object is created as $this->p->m[ 'util' ][ 'post' ].
-	 */
 	class WpssoPost extends WpssoWpMeta {
 
-		protected static $cache_short_url = null;
-		protected static $cache_shortlinks = array();
+		public function __construct( &$plugin ) {
 
-		public function __construct() {
+			$this->p =& $plugin;
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			/**
+			 * Maybe enable WP post excerpt for pages.
+			 */
+			if ( ! empty( $this->p->options[ 'plugin_page_excerpt' ] ) ) {
+				add_post_type_support( 'page', array( 'excerpt' ) );
+			}
+
+			/**
+			 * Maybe enable WP post tags for pages.
+			 */
+			if ( ! empty( $this->p->options[ 'plugin_page_tags' ] ) ) {
+				register_taxonomy_for_object_type( 'post_tag', 'page' );
+			}
+
+			$this->add_wp_hooks();
 		}
 
-		protected function add_actions() {
+		/**
+		 * Add WordPress action and filters hooks.
+		 */
+		protected function add_wp_hooks() {
 
 			$is_admin   = is_admin();
 			$doing_ajax = defined( 'DOING_AJAX' ) && DOING_AJAX ? true : false;
@@ -111,6 +129,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				add_filter( 'manage_media_columns', array( $this, 'add_media_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );	// Default is 100.
 				add_filter( 'manage_upload_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
+
 				add_action( 'manage_media_custom_column', array( $this, 'show_column_content' ), 10, 2 );
 
 				/**
@@ -161,6 +180,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 		}
 
+		/**
+		 * Get the $mod object for a post ID.
+		 */
 		public function get_mod( $mod_id ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -199,15 +221,208 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return apply_filters( $this->p->lca . '_get_post_mod', $mod, $mod_id );
 		}
 
-		public static function get_public_post_ids() {
+		/**
+		 * Option handling methods:
+		 *
+		 *	get_defaults()
+		 *	get_options()
+		 *	save_options()
+		 *	delete_options()
+		 */
+		public function get_options( $post_id, $md_key = false, $filter_opts = true, $def_fallback = false ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log_args( array( 
+					'post_id'      => $post_id, 
+					'md_key'       => $md_key, 
+					'filter_opts'  => $filter_opts, 
+					'def_fallback' => $def_fallback,	// Fallback to value in meta defaults.
+				) );
+			}
+
+			if ( empty( $this->opts[ $post_id ][ 'options_filtered' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'options_filtered key is empty' );
+					$this->p->debug->log( 'retrieving post_id ' . $post_id . ' meta' );
+				}
+
+				$this->opts[ $post_id ] = get_post_meta( $post_id, WPSSO_META_NAME, $single = true );
+
+				/**
+				 * Look for an alternate meta options name.
+				 */
+				if ( ! is_array( $this->opts[ $post_id ] ) ) {
+
+					if ( SucomUtil::get_const( 'WPSSO_META_NAME_ALT' ) ) {
+
+						$this->opts[ $post_id ] = get_post_meta( $post_id, WPSSO_META_NAME_ALT, true );
+
+						if ( is_array( $this->opts[ $post_id ] ) ) {
+
+							update_post_meta( $post_id, WPSSO_META_NAME, $this->opts[ $post_id ] );
+							delete_post_meta( $post_id, WPSSO_META_NAME_ALT );
+
+							$this->p->notice->upd( sprintf( __( 'Database meta table row "%2$s" for post ID %1$d was found and converted to "%3$s".',
+								'wpsso' ), $post_id, WPSSO_META_NAME_ALT, WPSSO_META_NAME ) );
+						}
+					}
+				}
+
+				if ( ! is_array( $this->opts[ $post_id ] ) ) {
+					$this->opts[ $post_id ] = array();
+				}
+
+				/**
+				 * Check if the options version string is current (example: -wpsso566pro-wpssojson9pro ).
+				*/
+				if ( ! empty( $this->opts[ $post_id ] ) && 
+					( empty( $this->opts[ $post_id ][ 'options_version' ] ) || 
+						$this->opts[ $post_id ][ 'options_version' ] !== $this->p->cf[ 'opt' ][ 'version' ] ) ) {
+
+					/**
+					 * Save the current wpsso opt_version number.
+					 */
+					$prev_version = empty( $this->opts[ $post_id ][ 'plugin_' . $this->p->lca . '_opt_version' ] ) ?	
+						0 : $this->opts[ $post_id ][ 'plugin_' . $this->p->lca . '_opt_version' ];
+
+					$this->p->util->rename_opts_by_ext( $this->opts[ $post_id ],
+						apply_filters( $this->p->lca . '_rename_md_options_keys', self::$rename_md_options_keys ) );
+
+					/**
+					 * Check for schema type IDs to be renamed.
+					 */
+					$keys_preg = 'schema_type|plm_place_schema_type';
+
+					foreach ( SucomUtil::preg_grep_keys( '/^(' . $keys_preg . ')(_[0-9]+)?$/', $this->opts[ $post_id ] ) as $key => $val ) {
+						if ( ! empty( $this->p->cf[ 'head' ][ 'schema_renamed' ][ $val ] ) ) {
+							$this->opts[ $post_id ][ $key ] = $this->p->cf[ 'head' ][ 'schema_renamed' ][ $val ];
+						}
+					}
+
+					update_post_meta( $post_id, WPSSO_META_NAME, $this->opts[ $post_id ] );
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'post_id ' . $post_id . ' settings upgraded' );
+					}
+				}
+
+				if ( $filter_opts ) {
+
+					/**
+					 * Allow certain 3rd-party custom field values to override those of our social settings.
+					 */
+					$this->opts[ $post_id ] = $this->get_custom_fields( $this->opts[ $post_id ], get_post_meta( $post_id ) );
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'applying get_post_options filters for post_id ' . $post_id . ' meta' );
+					}
+
+					$this->opts[ $post_id ][ 'options_filtered' ] = true;	// Set before calling filter to prevent recursion.
+
+					$mod = $this->get_mod( $post_id );
+
+					$this->opts[ $post_id ] = apply_filters( $this->p->lca . '_get_post_options', $this->opts[ $post_id ], $post_id, $mod );
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log_arr( 'post meta options', $this->opts[ $post_id ] );
+					}
+
+				} elseif ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'get_post_options filter skipped' );
+				}
+
+			} elseif ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'options from local cache for post_id ' . $post_id );
+			}
+
+			if ( false !== $md_key ) {
+
+				if ( isset( $this->opts[ $post_id ][ $md_key ] ) && $this->opts[ $post_id ][ $md_key ] !== '' ) {	// just in case
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'returning meta value: ' . $md_key . ' = ' . $this->opts[ $post_id ][ $md_key ] );
+					}
+
+					return $this->opts[ $post_id ][ $md_key ];
+
+				} elseif ( $def_fallback ) {
+
+					$def_val = $this->get_defaults( $post_id, $md_key );
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'returning default value: ' . $md_key . ' = ' . $def_val );
+					}
+
+					return $def_val;
+
+				} else {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'returning null value: ' . $md_key . ' options key not found' );
+					}
+
+					return null;
+				}
+
+			} else {
+				return $this->opts[ $post_id ];
+			}
+		}
+
+		public function save_options( $post_id, $rel_id = false ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			if ( ! $this->user_can_edit( $post_id, $rel_id ) ) {
+				return;
+			}
+
+			$mod  = $this->get_mod( $post_id );
+			$opts = $this->get_submit_opts( $post_id );
+
+			/**
+			 * Just in case - do not save the SEO description if an SEO plugin is active.
+			 */
+			if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
+				unset( $opts[ 'seo_desc' ] );
+			}
+
+			/**
+			 * Just in case - do not save the product availability if an e-commerce plugin is active.
+			 */
+			if ( ! empty( $this->p->avail[ 'ecom' ][ 'any' ] ) ) {
+				unset( $opts[ 'product_avail' ] );
+			}
+
+			$opts = apply_filters( $this->p->lca . '_save_post_options', $opts, $post_id, $rel_id, $mod );
+
+			if ( empty( $opts ) ) {
+				delete_post_meta( $post_id, WPSSO_META_NAME );
+			} else {
+				update_post_meta( $post_id, WPSSO_META_NAME, $opts );
+			}
+		}
+
+		public function delete_options( $post_id, $rel_id = false ) {
+
+			return delete_post_meta( $post_id, WPSSO_META_NAME );
+		}
+
+		/**
+		 * Get all publicly accessible post IDs.
+		 */
+		public static function get_public_ids() {
 
 			$posts_args = array(
 				'has_password'   => false,
 				'orderby'        => 'date',
 				'order'          => 'DESC',
 				'paged'          => false,
-				'post_status'    => 'publish',		// Only 'publish', not 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', or 'trash'.
-				'post_type'      => 'any',		// Return post, page, or any custom post type.
+				'post_status'    => 'publish',		// Only 'publish' (not 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', or 'trash').
+				'post_type'      => 'any',		// Return any post, page, or custom post type.
 				'posts_per_page' => -1,
 				'fields'         => 'ids',		// Return an array of post ids.
 			);
@@ -215,6 +430,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return get_posts( $posts_args );
 		}
 
+		/**
+		 * Return an array of post IDs for a given $mod object.
+		 */
 		public function get_posts_ids( array $mod, $ppp = false, $paged = false, array $posts_args = array() ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -291,186 +509,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $post_ids;
 		}
 
-		/**
-		 * Filters the wp shortlink for a post - returns the shortened sharing URL.
-		 * The wp_shortlink_wp_head() function calls wp_get_shortlink( 0, 'query' );
-		 */
-		public function get_sharing_shortlink( $shortlink = false, $post_id = 0, $context = 'post', $allow_slugs = true ) {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log_args( array(
-					'shortlink'   => $shortlink,
-					'post_id'     => $post_id,
-					'context'     => $context,
-					'allow_slugs' => $allow_slugs,
-				) );
-			}
-
-			self::$cache_short_url = null;	// Just in case.
-
-			if ( isset( self::$cache_shortlinks[ $post_id ][ $context ][ $allow_slugs ] ) ) {
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'returning shortlink (from static cache) = ' . 
-						self::$cache_shortlinks[ $post_id ][ $context ][ $allow_slugs ] );
-				}
-				return self::$cache_short_url = self::$cache_shortlinks[ $post_id ][ $context ][ $allow_slugs ];
-			}
-
-			/**
-			 * Check to make sure we have a plugin shortener selected.
-			 */
-			if ( empty( $this->p->options[ 'plugin_shortener' ] ) || $this->p->options[ 'plugin_shortener' ] === 'none' ) {
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: no shortening service defined' );
-				}
-				return $shortlink;	// Return original shortlink.
-			}
-
-			/**
-			 * The WordPress link-template.php functions call wp_get_shortlink() with a post ID of 0.
-			 * Recreate the same code here to get a real post ID and create a default shortlink (if required).
-			 */
-			if ( $post_id === 0 ) {
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'provided post id is 0 (current post)' );
-				}
-
-				if ( $context === 'query' && is_singular() ) {	// wp_get_shortlink() uses the same logic.
-					$post_id = get_queried_object_id();
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'setting post id ' . $post_id . ' from queried object' );
-					}
-				} elseif ( $context === 'post' ) {
-					$post_obj = get_post();
-					if ( empty( $post_obj->ID ) ) {
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'exiting early: post object ID is empty' );
-						}
-						return $shortlink;	// Return original shortlink.
-					} else {
-						$post_id = $post_obj->ID;
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'setting post id ' . $post_id . ' from post object' );
-						}
-					}
-				}
-
-				if ( empty( $post_id ) ) {
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'exiting early: unable to determine the post id' );
-					}
-					return $shortlink;	// Return original shortlink.
-				}
-
-				if ( empty( $shortlink ) ) {
-					if ( get_post_type( $post_id ) === 'page' && get_option( 'page_on_front' ) == $post_id && get_option( 'show_on_front' ) == 'page' ) {
-						$shortlink = home_url( '/' );
-					} else {
-						$shortlink = home_url( '?p=' . $post_id );
-					}
-				}
-
-			} elseif ( ! is_numeric( $post_id ) ) {
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: post_id argument is not numeric' );
-				}
-				return $shortlink;	// Return original shortlink.
-			}
-
-			$mod = $this->get_mod( $post_id );
-
-			if ( empty( $mod[ 'post_type' ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: post_type is empty' );
-				}
-
-				return $shortlink;	// Return original shortlink.
-
-			} elseif ( empty( $mod[ 'post_status' ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: post_status is empty' );
-				}
-
-				return $shortlink;	// Return original shortlink.
-
-			} elseif ( $mod[ 'post_status' ] === 'auto-draft' ) {
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: post_status is auto-draft' );
-				}
-
-				return $shortlink;	// Return original shortlink.
-
-			} elseif ( $mod[ 'post_status' ] === 'trash' ) {
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: post_status is trash' );
-				}
-
-				return $shortlink;	// Return original shortlink.
-			}
-
-			$sharing_url = $this->p->util->get_sharing_url( $mod, $add_page = false );
-
-			$short_url = apply_filters( $this->p->lca . '_get_short_url', $sharing_url,
-				$this->p->options[ 'plugin_shortener' ], $mod );
-
-			if ( filter_var( $short_url, FILTER_VALIDATE_URL ) === false ) {	// Invalid url.
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: invalid short URL (' . $short_url . ') returned by filters' );
-				}
-
-				return $shortlink;	// Return original shortlink.
-			}
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'returning shortlink = ' . $short_url );
-			}
-
-			return self::$cache_short_url = self::$cache_shortlinks[ $post_id ][ $context ][ $allow_slugs ] = $short_url;	// Success - return short url.
-		}
-
-		public function maybe_restore_shortlink( $shortlink = false, $post_id = 0, $context = 'post', $allow_slugs = true ) {
-
-			if ( self::$cache_short_url === $shortlink ) {	// Shortlink value has not changed.
-
-				self::$cache_short_url = null;	// Just in case.
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: shortlink value has not changed' );
-				}
-
-				return $shortlink;
-			}
-
-			self::$cache_short_url = null;	// Just in case.
-
-			if ( isset( self::$cache_shortlinks[ $post_id ][ $context ][ $allow_slugs ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'restoring shortlink ' . $shortlink . ' to ' . 
-						self::$cache_shortlinks[ $post_id ][ $context ][ $allow_slugs ] );
-				}
-
-				return self::$cache_shortlinks[ $post_id ][ $context ][ $allow_slugs ];
-			}
-
-			return $shortlink;
-		}
-
-		public function add_post_column_headings( $columns ) {
-			return $this->add_mod_column_headings( $columns, 'post' );
-		}
-
 		public function add_media_column_headings( $columns ) {
+
 			return $this->add_mod_column_headings( $columns, 'media' );
 		}
 
 		public function show_column_content( $column_name, $post_id ) {
+
 			echo $this->get_column_content( '', $column_name, $post_id );
 		}
 
@@ -1266,6 +1311,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		public function show_metabox_custom_meta( $post_obj ) {
+
 			echo $this->get_metabox_custom_meta( $post_obj );
 		}
 
@@ -1468,7 +1514,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$post_terms = wp_get_post_terms( $post_id, $tax_slug );
 		
 						foreach ( $post_terms as $post_term ) {
-							$this->p->m[ 'util' ][ 'term' ]->clear_cache( $post_term->term_id, $post_term->term_taxonomy_id );
+							$this->p->term->clear_cache( $post_term->term_id, $post_term->term_taxonomy_id );
 						}
 					}
 				}
@@ -1602,6 +1648,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $user_can_edit;
 		}
 
+		public function add_post_column_headings( $columns ) {
+
+			return $this->add_mod_column_headings( $columns, 'post' );
+		}
+
+		/**
+		 * Methods that return an associative array of Open Graph meta tags.
+		 */
 		public function get_og_type_reviews( $post_id, $og_type = 'product', $rating_meta = 'rating' ) {
 
 			static $reviews_max = null;
@@ -1679,5 +1733,197 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			return $ret;
 		}
+
+		/**
+		 * WpssoPost class specific methods.
+		 *
+		 * Filters the wp shortlink for a post - returns the shortened sharing URL.
+		 * The wp_shortlink_wp_head() function calls wp_get_shortlink( 0, 'query' );
+		 */
+		public function get_sharing_shortlink( $shortlink = false, $post_id = 0, $context = 'post', $allow_slugs = true ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log_args( array(
+					'shortlink'   => $shortlink,
+					'post_id'     => $post_id,
+					'context'     => $context,
+					'allow_slugs' => $allow_slugs,
+				) );
+			}
+
+			self::$cache_short_url = null;	// Just in case.
+
+			if ( isset( self::$cache_shortlinks[ $post_id ][ $context ][ $allow_slugs ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'returning shortlink (from static cache) = ' . 
+						self::$cache_shortlinks[ $post_id ][ $context ][ $allow_slugs ] );
+				}
+
+				return self::$cache_short_url = self::$cache_shortlinks[ $post_id ][ $context ][ $allow_slugs ];
+			}
+
+			/**
+			 * Check to make sure we have a plugin shortener selected.
+			 */
+			if ( empty( $this->p->options[ 'plugin_shortener' ] ) || $this->p->options[ 'plugin_shortener' ] === 'none' ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: no shortening service defined' );
+				}
+
+				return $shortlink;	// Return original shortlink.
+			}
+
+			/**
+			 * The WordPress link-template.php functions call wp_get_shortlink() with a post ID of 0.
+			 * Recreate the same code here to get a real post ID and create a default shortlink (if required).
+			 */
+			if ( $post_id === 0 ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'provided post id is 0 (current post)' );
+				}
+
+				if ( $context === 'query' && is_singular() ) {	// wp_get_shortlink() uses the same logic.
+
+					$post_id = get_queried_object_id();
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'setting post id ' . $post_id . ' from queried object' );
+					}
+
+				} elseif ( $context === 'post' ) {
+
+					$post_obj = get_post();
+
+					if ( empty( $post_obj->ID ) ) {
+
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'exiting early: post object ID is empty' );
+						}
+
+						return $shortlink;	// Return original shortlink.
+
+					} else {
+
+						$post_id = $post_obj->ID;
+
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'setting post id ' . $post_id . ' from post object' );
+						}
+					}
+				}
+
+				if ( empty( $post_id ) ) {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'exiting early: unable to determine the post id' );
+					}
+
+					return $shortlink;	// Return original shortlink.
+				}
+
+				if ( empty( $shortlink ) ) {
+					if ( get_post_type( $post_id ) === 'page' && get_option( 'page_on_front' ) == $post_id && get_option( 'show_on_front' ) == 'page' ) {
+						$shortlink = home_url( '/' );
+					} else {
+						$shortlink = home_url( '?p=' . $post_id );
+					}
+				}
+
+			} elseif ( ! is_numeric( $post_id ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: post_id argument is not numeric' );
+				}
+
+				return $shortlink;	// Return original shortlink.
+			}
+
+			$mod = $this->get_mod( $post_id );
+
+			if ( empty( $mod[ 'post_type' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: post_type is empty' );
+				}
+
+				return $shortlink;	// Return original shortlink.
+
+			} elseif ( empty( $mod[ 'post_status' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: post_status is empty' );
+				}
+
+				return $shortlink;	// Return original shortlink.
+
+			} elseif ( $mod[ 'post_status' ] === 'auto-draft' ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: post_status is auto-draft' );
+				}
+
+				return $shortlink;	// Return original shortlink.
+
+			} elseif ( $mod[ 'post_status' ] === 'trash' ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: post_status is trash' );
+				}
+
+				return $shortlink;	// Return original shortlink.
+			}
+
+			$sharing_url = $this->p->util->get_sharing_url( $mod, $add_page = false );
+
+			$short_url = apply_filters( $this->p->lca . '_get_short_url', $sharing_url,
+				$this->p->options[ 'plugin_shortener' ], $mod );
+
+			if ( filter_var( $short_url, FILTER_VALIDATE_URL ) === false ) {	// Invalid url.
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: invalid short URL (' . $short_url . ') returned by filters' );
+				}
+
+				return $shortlink;	// Return original shortlink.
+			}
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'returning shortlink = ' . $short_url );
+			}
+
+			return self::$cache_short_url = self::$cache_shortlinks[ $post_id ][ $context ][ $allow_slugs ] = $short_url;	// Success - return short url.
+		}
+
+		public function maybe_restore_shortlink( $shortlink = false, $post_id = 0, $context = 'post', $allow_slugs = true ) {
+
+			if ( self::$cache_short_url === $shortlink ) {	// Shortlink value has not changed.
+
+				self::$cache_short_url = null;	// Just in case.
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: shortlink value has not changed' );
+				}
+
+				return $shortlink;
+			}
+
+			self::$cache_short_url = null;	// Just in case.
+
+			if ( isset( self::$cache_shortlinks[ $post_id ][ $context ][ $allow_slugs ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'restoring shortlink ' . $shortlink . ' to ' . 
+						self::$cache_shortlinks[ $post_id ][ $context ][ $allow_slugs ] );
+				}
+
+				return self::$cache_shortlinks[ $post_id ][ $context ][ $allow_slugs ];
+			}
+
+			return $shortlink;
+		}
+
 	}
 }

@@ -264,22 +264,13 @@ if ( ! class_exists( 'WpssoNoScript' ) ) {
 				}
 
 				return array();
-
-			} elseif ( empty( $this->p->m[ 'util' ][ 'user' ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: user class not loaded' );
-				}
-
-				return array();
-
 			}
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'getting user_mod for author id ' . $author_id );
 			}
 
-			$user_mod = $this->p->m[ 'util' ][ 'user' ]->get_mod( $author_id );
+			$user_mod = $this->p->user->get_mod( $author_id );
 
 			/**
 			 * Set the reference values for admin notices.

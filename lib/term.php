@@ -17,10 +17,21 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		protected $query_tax_slug = '';
 		protected $query_tax_obj  = false;
 
-		public function __construct() {
+		public function __construct( &$plugin ) {
+
+			$this->p =& $plugin;
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			$this->add_wp_hooks();
 		}
 
-		protected function add_actions() {
+		/**
+		 * Add WordPress action and filters hooks.
+		 */
+		protected function add_wp_hooks() {
 
 			$is_admin   = is_admin();
 			$doing_ajax = defined( 'DOING_AJAX' ) && DOING_AJAX ? true : false;
@@ -49,7 +60,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				/**
 				 * Enable orderby meta_key only if we have a meta table.
 				 */
-				if ( self::use_meta_table() ) {
+				if ( self::use_term_meta_table() ) {
 					add_filter( 'manage_edit-' . $this->query_tax_slug . '_sortable_columns', 
 						array( $this, 'add_sortable_columns' ), 10, 1 );
 				}
@@ -109,6 +120,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 		}
 
+		/**
+		 * Get the $mod object for a term ID.
+		 */
 		public function get_mod( $mod_id, $tax_slug = '' ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -133,7 +147,183 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return apply_filters( $this->p->lca . '_get_term_mod', $mod, $mod_id, $tax_slug );
 		}
 
-		public static function get_public_term_ids( $tax_name = null ) {
+		/**
+		 * Option handling methods:
+		 *
+		 *	get_defaults()
+		 *	get_options()
+		 *	save_options()
+		 *	delete_options()
+		 */
+		public function get_options( $term_id, $md_key = false, $filter_opts = true, $def_fallback = false ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log_args( array( 
+					'term_id'      => $term_id, 
+					'md_key'       => $md_key, 
+					'filter_opts'  => $filter_opts, 
+					'def_fallback' => $def_fallback,	// Fallback to value in meta defaults.
+				) );
+			}
+
+			if ( empty( $this->opts[ $term_id ][ 'options_filtered' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'options_filtered key is empty' );
+					$this->p->debug->log( 'retrieving term_id ' . $term_id . ' meta' );
+				}
+
+				$this->opts[ $term_id ] = self::get_term_meta( $term_id, WPSSO_META_NAME, true );
+
+				/**
+				 * Look for an alternate meta options name.
+				 */
+				if ( ! is_array( $this->opts[ $term_id ] ) ) {
+
+					if ( SucomUtil::get_const( 'WPSSO_META_NAME_ALT' ) ) {
+
+						$this->opts[ $term_id ] = self::get_term_meta( $term_id, WPSSO_META_NAME_ALT, true );
+
+						if ( is_array( $this->opts[ $term_id ] ) ) {
+
+							self::update_term_meta( $term_id, WPSSO_META_NAME, $this->opts[ $term_id ] );
+							self::delete_term_meta( $term_id, WPSSO_META_NAME_ALT );
+
+							$this->p->notice->upd( sprintf( __( 'Database meta table row "%2$s" for term ID %1$d was found and converted to "%3$s".',
+								'wpsso' ), $term_id, WPSSO_META_NAME_ALT, WPSSO_META_NAME ) );
+						}
+					}
+				}
+
+				if ( ! is_array( $this->opts[ $term_id ] ) ) {
+					$this->opts[ $term_id ] = array();
+				}
+
+				if ( ! empty( $this->opts[ $term_id ] ) && 
+					( empty( $this->opts[ $term_id ]['options_version'] ) || 
+						$this->opts[ $term_id ]['options_version'] !== $this->p->cf['opt'][ 'version' ] ) ) {
+
+					/**
+					 * Save the current opt_version number.
+					 */
+					$prev_version = empty( $this->opts[ $term_id ]['plugin_' . $this->p->lca . '_opt_version'] ) ?	
+						0 : $this->opts[ $term_id ]['plugin_' . $this->p->lca . '_opt_version'];
+
+					$this->p->util->rename_opts_by_ext( $this->opts[ $term_id ],
+						apply_filters( $this->p->lca . '_rename_md_options_keys', self::$rename_md_options_keys ) );
+
+					self::update_term_meta( $term_id, WPSSO_META_NAME, $this->opts[ $term_id ] );
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'term_id ' . $term_id . ' settings upgraded' );
+					}
+				}
+
+				if ( $filter_opts ) {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'applying get_term_options filters for term_id ' . $term_id . ' meta' );
+					}
+
+					$this->opts[ $term_id ]['options_filtered'] = true;	// Set before calling filter to prevent recursion.
+
+					$mod = $this->get_mod( $term_id );
+
+					$this->opts[ $term_id ] = apply_filters( $this->p->lca . '_get_term_options', $this->opts[ $term_id ], $term_id, $mod );
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log_arr( 'term meta options', $this->opts[ $term_id ] );
+					}
+
+				} elseif ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'get_term_options filter skipped' );
+				}
+
+			} elseif ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'options from local cache for term_id ' . $term_id );
+			}
+
+			if ( false !== $md_key ) {
+
+				if ( isset( $this->opts[ $term_id ][ $md_key ] ) && $this->opts[ $term_id ][ $md_key ] !== '' ) {	// just in case
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'returning meta options key: ' . $md_key . ' = ' . $this->opts[ $term_id ][ $md_key ] );
+					}
+
+					return $this->opts[ $term_id ][ $md_key ];
+
+				} elseif ( $def_fallback ) {
+
+					$def_val = $this->get_defaults( $term_id, $md_key );
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'returning default value: ' . $md_key . ' = ' . $def_val );
+					}
+
+					return $def_val;
+
+				} else {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'returning null: ' . $md_key . ' options key not found' );
+					}
+
+					return null;
+				}
+
+			} else {
+				return $this->opts[ $term_id ];
+			}
+		}
+
+		public function save_options( $term_id, $term_tax_id = false ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			if ( ! $this->user_can_edit( $term_id, $term_tax_id ) ) {
+				return;
+			}
+
+			/**
+			 * Get first term with matching 'term_taxonomy_id'.
+			 */
+			$term = get_term_by( 'term_taxonomy_id', $term_tax_id );
+
+			if ( is_object( $term ) ) {	// Just in case.
+				$mod = $this->get_mod( $term_id, $term->term_taxonomy_id );
+			} else {
+				$mod = $this->get_mod( $term_id );
+			}
+
+			$opts = $this->get_submit_opts( $term_id );
+
+			if ( ! empty( $this->p->avail['seo'][ 'any' ] ) ) {
+				unset( $opts['seo_desc'] );
+			}
+
+			$opts = apply_filters( $this->p->lca . '_save_term_options', $opts, $term_id, $term_tax_id, $mod );
+
+			if ( empty( $opts ) ) {
+				self::delete_term_meta( $term_id, WPSSO_META_NAME );
+			} else {
+				self::update_term_meta( $term_id, WPSSO_META_NAME, $opts );
+			}
+
+			return $term_id;
+		}
+
+		public function delete_options( $term_id, $term_tax_id = false ) {
+
+			return self::delete_term_meta( $term_id, WPSSO_META_NAME );
+		}
+
+		/**
+		 * Get all publicly accessible term IDs for a taxonomy slug (optional).
+		 */
+		public static function get_public_ids( $tax_name = null ) {
 
 			global $wp_version;
 
@@ -147,8 +337,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			foreach ( self::get_public_tax_names( $tax_name ) as $term_tax_name ) {
 				
 				if ( $add_tax_in_args ) {	// Since WP v4.5.
+
 					$terms_args[ 'taxonomy' ] = $term_tax_name;
+
 					$term_ids = get_terms( $terms_args );
+
 				} else {
 					$term_ids = get_terms( $term_tax_name, $terms_args );
 				}
@@ -163,6 +356,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return $public_term_ids;
 		}
 
+		/**
+		 * Get all publicly accessible taxonomy names for a taxonomy slug (optional).
+		 */
 		public static function get_public_tax_names( $tax_name = null ) {
 
 			$get_tax_args = array(
@@ -180,7 +376,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		/**
-		 * Note that this method returns posts of child terms as well.
+		 * Return an array of post IDs for a given $mod object.
+		 *
+		 * Note that this method returns posts in child terms as well.
 		 */
 		public function get_posts_ids( array $mod, $ppp = false, $paged = false, array $posts_args = array() ) {
 
@@ -230,7 +428,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $mtime_max > 0 && $mtime_total > $mtime_max ) {
 
-				$info = $this->p->cf[ 'plugin' ][$this->p->lca];
+				$info = $this->p->cf[ 'plugin' ][ $this->p->lca ];
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( sprintf( 'slow query detected - WordPress get_posts() took %1$0.3f secs'.
@@ -265,6 +463,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		public function add_column_headings( $columns ) {
+
 			return $this->add_mod_column_headings( $columns, 'term' );
 		}
 
@@ -288,8 +487,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$meta_cache = wp_cache_get( $term_id, 'term_meta' );	// optimize and check wp_cache first
 
-			if ( isset( $meta_cache[$meta_key][0] ) ) {
-				$value = (string) maybe_unserialize( $meta_cache[$meta_key][0] );
+			if ( isset( $meta_cache[ $meta_key ][ 0 ] ) ) {
+				$value = (string) maybe_unserialize( $meta_cache[ $meta_key ][ 0 ] );
 			} else {
 				$value = (string) self::get_term_meta( $term_id, $meta_key, true );	// $single = true
 			}
@@ -324,10 +523,10 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				return $value;	// return null
 			}
 
-			if ( isset( $do_once[$term_id][$meta_key] ) ) {
+			if ( isset( $do_once[ $term_id ][ $meta_key ] ) ) {
 				return $value;	// return null
 			} else {
-				$do_once[$term_id][$meta_key] = true;	// prevent recursion
+				$do_once[ $term_id ][ $meta_key ] = true;	// prevent recursion
 			}
 
 			if ( self::get_term_meta( $term_id, $meta_key, true ) === '' ) {	// returns empty string if meta not found
@@ -338,7 +537,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
 			}
 
-			if ( ! self::use_meta_table( $term_id ) ) {
+			if ( ! self::use_term_meta_table( $term_id ) ) {
 				return self::get_term_meta( $term_id, $meta_key, $single );	// provide the options value
 			}
 
@@ -432,9 +631,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$action_query = $this->p->lca . '-action';
 
-			if ( ! empty( $_GET[$action_query] ) ) {
+			if ( ! empty( $_GET[ $action_query ] ) ) {
 
-				$action_name = SucomUtil::sanitize_hookname( $_GET[$action_query] );
+				$action_name = SucomUtil::sanitize_hookname( $_GET[ $action_query ] );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'found action query: ' . $action_name );
@@ -517,7 +716,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$metabox_context = 'normal';
 
 			echo "\n" . '<!-- ' . $this->p->lca . ' term metabox section begin -->' . "\n";
-			echo '<h3 id="' . $this->p->lca . '-metaboxes">' . WpssoAdmin::$pkg[$this->p->lca][ 'short' ] . '</h3>' . "\n";
+			echo '<h3 id="' . $this->p->lca . '-metaboxes">' . WpssoAdmin::$pkg[ $this->p->lca ][ 'short' ] . '</h3>' . "\n";
 			echo '<div id="poststuff">' . "\n";
 
 			do_meta_boxes( $metabox_screen, 'normal', $term_obj );
@@ -555,7 +754,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				$filter_name = $this->p->lca . '_' . $mod[ 'name' ] . '_' . $tab_key . '_rows';
 
-				$table_rows[$tab_key] = array_merge(
+				$table_rows[ $tab_key ] = array_merge(
 					$this->get_table_rows( $metabox_id, $tab_key, WpssoWpMeta::$head_meta_info, $mod ),
 					(array) apply_filters( $filter_name, array(), $this->form, WpssoWpMeta::$head_meta_info, $mod )
 				);
@@ -629,11 +828,14 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return $user_can_edit;
 		}
 
+		/**
+		 * Backwards compatible methods for handling term meta, which did not exist before WordPress v4.4.
+		 */
 		public static function get_term_meta( $term_id, $key_name, $single = false ) {
 
 			$term_meta = false === $single ? array() : '';
 
-			if ( self::use_meta_table( $term_id ) ) {
+			if ( self::use_term_meta_table( $term_id ) ) {
 
 				$term_meta = get_term_meta( $term_id, $key_name, $single );	// Since WP v4.4.
 
@@ -650,14 +852,19 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 						$updated = update_term_meta( $term_id, $key_name, $opt_term_meta );	// Since WP v4.4.
 
 						if ( ! is_wp_error( $updated ) ) {
+
 							delete_option( $key_name . '_term_' . $term_id );
+
 							$term_meta = get_term_meta( $term_id, $key_name, $single );
+
 						} else {
 							$term_meta = false === $single ? array( $opt_term_meta ) : $opt_term_meta;
 						}
 					}
 				}
+
 			} elseif ( ( $opt_term_meta = get_option( $key_name . '_term_' . $term_id, null ) ) !== null ) {
+
 				$term_meta = false === $single ? array( $opt_term_meta ) : $opt_term_meta;
 			}
 
@@ -665,34 +872,46 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		public static function update_term_meta( $term_id, $key_name, $opts ) {
-			if ( self::use_meta_table( $term_id ) ) {
+
+			if ( self::use_term_meta_table( $term_id ) ) {
+
 				return update_term_meta( $term_id, $key_name, $opts );	// Since WP v4.4.
+
 			} else {
 				return update_option( $key_name . '_term_' . $term_id, $opts );
 			}
 		}
 
 		public static function delete_term_meta( $term_id, $key_name ) {
-			if ( self::use_meta_table( $term_id ) ) {
+
+			if ( self::use_term_meta_table( $term_id ) ) {
+
 				return delete_term_meta( $term_id, $key_name );	// Since WP v4.4.
+
 			} else {
 				return delete_option( $key_name . '_term_' . $term_id );
 			}
 		}
 
-		public static function use_meta_table( $term_id = false ) {
+		public static function use_term_meta_table( $term_id = false ) {
+
 			static $local_cache = null;
-			if ( null === $local_cache )	{	// optimize and check only once
+
+			if ( null === $local_cache )	{	// Optimize and check only once.
+
 				if ( function_exists( 'get_term_meta' ) && get_option( 'db_version' ) >= 34370 ) {
+
 					if ( false === $term_id || ! wp_term_is_shared( $term_id ) ) {
 						$local_cache = true;
 					} else {
 						$local_cache = false;
 					}
+
 				} else {
 					$local_cache = false;
 				}
 			}
+
 			return $local_cache;
 		}
 	}

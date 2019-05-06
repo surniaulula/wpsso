@@ -32,8 +32,8 @@ if ( ! class_exists( 'WpssoProfileYourSSO' ) && class_exists( 'WpssoAdmin' ) ) {
 		 */
 		protected function add_meta_boxes() {
 
-			$metabox_id      = $this->p->cf['meta'][ 'id' ];
-			$metabox_title   = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
+			$metabox_id      = $this->p->cf[ 'meta' ][ 'id' ];
+			$metabox_title   = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 			$metabox_screen  = $this->pagehook;
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
@@ -54,7 +54,7 @@ if ( ! class_exists( 'WpssoProfileYourSSO' ) && class_exists( 'WpssoAdmin' ) ) {
 				wp_die( __( 'Invalid user ID.' ) );
 			}
 
-			$this->p->m[ 'util' ][ 'user' ]->show_metabox_custom_meta( $user_obj );
+			$this->p->user->show_metabox_custom_meta( $user_obj );
 		}
 	}
 }

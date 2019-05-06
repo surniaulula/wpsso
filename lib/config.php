@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'      => '4.30.0',	// Plugin version.
+					'version'      => '5.0.0-dev.1',	// Plugin version.
 					'opt_version'  => '641',	// Increment when changing default option values.
 					'short'        => 'WPSSO Core',	// Short plugin name.
 					'name'         => 'WPSSO Core [Main Plugin]',
@@ -71,11 +71,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'social' => array(
 								'buddypress' => '(plugin) BuddyPress',
 							),
-							'util' => array(
-								'post' => '(feature) Custom Post Meta',
-								'term' => '(feature) Custom Term Meta',
-								'user' => '(feature) Custom User Meta',
-							),
 						),
 						'plugins' => array(
 							'sso-addons' => 'SSO Complementary Add-ons',
@@ -116,7 +111,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'rtmedia'    => '(plugin) rtMedia for WordPress, BuddyPress and bbPress',
 								'slideshare' => '(api) Slideshare API',
 								'soundcloud' => '(api) Soundcloud API',
-								'upscale'    => '(feature) WP Media Library Image Upscaling',
+								'upscale'    => '(feature) Media Library Image Upscaling',
 								'vimeo'      => '(api) Vimeo Video API',
 								'wistia'     => '(api) Wistia Video API',
 								'wpvideo'    => '(api) WordPress Video Shortcode',
@@ -147,9 +142,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'checkimgdims' => '(feature) Verify Image Dimensions',
 								'coauthors'    => '(plugin) Co-Authors Plus',
 								'shorten'      => '(api) URL Shortening Service APIs',
-								'post'         => '(feature) Custom Post Meta',
-								'term'         => '(feature) Custom Term Meta',
-								'user'         => '(feature) Custom User Meta',
 								'wpseo_meta'   => '(feature) Yoast SEO Social Meta',
 							),
 						),

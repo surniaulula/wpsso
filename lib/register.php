@@ -119,7 +119,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			$new_install = false === $this->p->util->get_ext_action_time( 'wpsso', 'install' ) ? true : false;
 
 			/**
-			 * Add the "person" role for all WpssoUser::get_public_user_ids(). 
+			 * Add the "person" role for all WpssoUser::get_public_ids(). 
 			 */
 			if ( $new_install ) {
 				$this->p->util->schedule_add_user_roles();
@@ -222,7 +222,8 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				/**
 				 * Delete term settings and meta.
 				 */
-				foreach ( WpssoTerm::get_public_term_ids() as $term_id ) {
+				foreach ( WpssoTerm::get_public_ids() as $term_id ) {
+
 					WpssoTerm::delete_term_meta( $term_id, WPSSO_META_NAME );
 				}
 

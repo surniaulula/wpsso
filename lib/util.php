@@ -534,12 +534,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return $image;
 			}
 
-			$wp_obj       = false;
-			$image_sizes  = array();
-			$mod          = $this->p->m[ 'util' ][ 'post' ]->get_mod( $post_id );
-			$filter_sizes = true;
+			$mod = $this->p->post->get_mod( $post_id );
 
-			$this->add_plugin_image_sizes( $wp_obj, $image_sizes, $mod, $filter_sizes );
+			$this->add_plugin_image_sizes( $wp_obj = false, $image_sizes = array(), $mod, $filter_sizes = true );
 
 			return $image;
 		}
@@ -1150,7 +1147,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Schedule the addition of user roles for WpssoUser::get_public_user_ids().
+		 * Schedule the addition of user roles for WpssoUser::get_public_ids().
 		 */
 		public function schedule_add_user_roles( $user_id = null ) {
 
@@ -1197,7 +1194,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$user_id = $this->maybe_change_user_id( $user_id );
 
-			$public_ids = WpssoUser::get_public_user_ids();			// Aka 'administrator', 'editor', 'author', and 'contributor'.
+			$public_ids = WpssoUser::get_public_ids();			// Aka 'administrator', 'editor', 'author', and 'contributor'.
 
 			foreach ( $public_ids as $person_id ) {
 
@@ -1452,7 +1449,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				 * Note that PHP class names are not case sensitive, so we can 
 				 * use "wpssopost" here instead of "WpssoPost".
 				 */
-				$object_ids = call_user_func( array( 'wpsso' . $name, 'get_public_' . $name . '_ids' ) );
+				$object_ids = call_user_func( array( $this->p->lca . $name, 'get_public_ids' ) );
 				
 				foreach ( $object_ids as $object_id ) {
 
@@ -1521,7 +1518,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			foreach ( $col_meta_keys as $col_key => $meta_key ) {
-				foreach ( WpssoTerm::get_public_term_ids() as $term_id ) {
+
+				foreach ( WpssoTerm::get_public_ids() as $term_id ) {
+
 					WpssoTerm::delete_term_meta( $term_id, $meta_key );
 				}
 			}

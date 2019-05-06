@@ -1202,8 +1202,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 * Get custom article section from post meta.
 			 */
 			if ( $use_mod_opts ) {
-				if ( ! empty( $post_id ) ) {
-					$section = $this->p->m[ 'util' ][ 'post' ]->get_options( $post_id, 'og_art_section' );	// Returns null if index key not found.
+				if ( ! empty( $post_id ) ) {	// Just in case.
+					$section = $this->p->post->get_options( $post_id, 'og_art_section' );	// Returns null if index key not found.
 				}
 			}
 
@@ -1447,7 +1447,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			if ( ! is_array( $mod ) ) {
-				$mod = $this->p->m[ 'util' ][ 'term' ]->get_mod( $term_id );
+				$mod = $this->p->term->get_mod( $term_id );
 			}
 
 			if ( isset( $term_obj->name ) ) {

@@ -1647,7 +1647,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! empty( $opts[ $mt_image_pre . ':id' ] ) && is_numeric( $opts[ $mt_image_pre . ':id' ] ) ) {
 
 				$post_id = $opts[ $mt_image_pre . ':id' ];
-				$mod     = $wpsso->m[ 'util' ][ 'post' ]->get_mod( $post_id );
+
+				$mod = $wpsso->post->get_mod( $post_id );
 
 				/**
 				 * Get the image title.
@@ -1972,12 +1973,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			if ( empty( $post_id ) ) {	// Just in case.
+			if ( empty( $post_id ) ) {		// Just in case.
 				return false;
 			} elseif ( empty( $md_type ) ) {	// Just in case.
 				return false;
-			} elseif ( isset( $wpsso->m[ 'util' ][ 'post' ] ) ) {
-				$mod = $wpsso->m[ 'util' ][ 'post' ]->get_mod( $post_id );
+			} elseif ( ! empty( $wpsso->post ) ) {	// Just in case.
+				$mod = $wpsso->post->get_mod( $post_id );
 			} else {
 				return false;
 			}

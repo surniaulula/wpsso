@@ -11,18 +11,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'WpssoUser' ) ) {
 
-	/**
-	 * This class is extended by gpl/util/user.php or pro/util/user.php
-	 * and the class object is created as $this->p->m[ 'util' ][ 'user' ].
-	 */
 	class WpssoUser extends WpssoWpMeta {
 
-		protected static $cache_pref = array();
+		protected static $cache_pref = array();	// Used by get_pref() and save_pref().
 
-		public function __construct() {
+		public function __construct( &$plugin ) {
+
+			$this->p =& $plugin;
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			$this->add_wp_hooks();	// Method from extended WpssoUser.
 		}
 
-		protected function add_actions() {
+		/**
+		 * Add WordPress action and filters hooks.
+		 */
+		protected function add_wp_hooks() {
 
 			$is_admin   = is_admin();
 			$doing_ajax = defined( 'DOING_AJAX' ) && DOING_AJAX ? true : false;
@@ -105,6 +112,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 		}
 
+		/**
+		 * Get the $mod object for a user ID.
+		 */
 		public function get_mod( $mod_id ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -128,18 +138,196 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return apply_filters( $this->p->lca . '_get_user_mod', $mod, $mod_id );
 		}
 
-		public function refresh_head_meta( $user_id ) {
+		/**
+		 * Option handling methods:
+		 *
+		 *	get_defaults()
+		 *	get_options()
+		 *	save_options()
+		 *	delete_options()
+		 */
+		public function get_options( $user_id, $md_key = false, $filter_opts = true, $def_fallback = false ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log_args( array( 
+					'user_id'      => $user_id, 
+					'md_key'       => $md_key, 
+					'filter_opts'  => $filter_opts, 
+					'def_fallback' => $def_fallback,	// Fallback to value in meta defaults.
+				) );
+			}
+
+			$user_id = false === $user_id ? get_current_user_id() : $user_id;
+
+			if ( empty( $user_id ) ) {
+				if ( false !== $md_key ) {
+					return null;
+				} else {
+					return array();
+				}
+			}
+
+			if ( empty( $this->opts[ $user_id ][ 'options_filtered' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'options_filtered key is empty' );
+					$this->p->debug->log( 'retrieving user_id ' . $user_id . ' meta' );
+				}
+
+				/**
+				 * Check if this is a valid WordPress user.
+				 */
+				$user_exists = SucomUtilWP::user_exists( $user_id );
+
+				if ( $user_exists ) {
+
+					$this->opts[ $user_id ] = get_user_meta( $user_id, WPSSO_META_NAME, true );
+
+					/**
+					 * Look for an alternate meta options name.
+					 */
+					if ( ! is_array( $this->opts[ $user_id ] ) ) {
+
+						if ( SucomUtil::get_const( 'WPSSO_META_NAME_ALT' ) ) {
+
+							$this->opts[ $user_id ] = get_user_meta( $user_id, WPSSO_META_NAME_ALT, true );
+
+							if ( is_array( $this->opts[ $user_id ] ) ) {
+
+								update_user_meta( $user_id, WPSSO_META_NAME, $this->opts[ $user_id ] );
+								delete_user_meta( $user_id, WPSSO_META_NAME_ALT );
+
+								$this->p->notice->upd( sprintf( __( 'Database meta table row "%2$s" for user ID %1$d was found and converted to "%3$s".',
+									'wpsso' ), $user_id, WPSSO_META_NAME_ALT, WPSSO_META_NAME ) );
+							}
+						}
+					}
+				} else {
+					$this->opts[ $user_id ] = apply_filters( $this->p->lca . '_get_other_user_meta', false, $user_id );
+				}
+
+				if ( ! is_array( $this->opts[ $user_id ] ) ) {
+					$this->opts[ $user_id ] = array();
+				}
+
+				if ( ! empty( $this->opts[ $user_id ] ) && 
+					( empty( $this->opts[ $user_id ]['options_version'] ) || 
+						$this->opts[ $user_id ]['options_version'] !== $this->p->cf['opt'][ 'version' ] ) ) {
+
+					// save the current wpsso opt_version number
+					$prev_version = empty( $this->opts[ $user_id ]['plugin_' . $this->p->lca . '_opt_version'] ) ?	
+						0 : $this->opts[ $user_id ]['plugin_' . $this->p->lca . '_opt_version'];
+
+					$this->p->util->rename_opts_by_ext( $this->opts[ $user_id ],
+						apply_filters( $this->p->lca . '_rename_md_options_keys', self::$rename_md_options_keys ) );
+
+					if ( $user_exists ) {
+						update_user_meta( $user_id, WPSSO_META_NAME, $this->opts[ $user_id ] );
+					} else {
+						apply_filters( $this->p->lca . '_update_other_user_meta', $this->opts[ $user_id ], $user_id );
+					}
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'user_id ' . $user_id . ' settings upgraded' );
+					}
+				}
+
+				if ( $filter_opts ) {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'applying get_user_options filters for user_id ' . $user_id . ' meta' );
+					}
+
+					$this->opts[ $user_id ]['options_filtered'] = true;	// Set before calling filter to prevent recursion.
+
+					$mod = $this->get_mod( $user_id );
+
+					$this->opts[ $user_id ] = apply_filters( $this->p->lca . '_get_user_options', $this->opts[ $user_id ], $user_id, $mod );
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log_arr( 'user meta options', $this->opts[ $user_id ] );
+					}
+
+				} elseif ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'get_user_options filter skipped' );
+				}
+
+			} elseif ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'options from local cache for user_id ' . $user_id );
+			}
+
+			if ( false !== $md_key ) {
+
+
+				if ( isset( $this->opts[ $user_id ][ $md_key ] ) && $this->opts[ $user_id ][ $md_key ] !== '' ) {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'returning meta options key: ' . $md_key . ' = ' . $this->opts[ $user_id ][ $md_key ] );
+					}
+
+					return $this->opts[ $user_id ][ $md_key ];
+
+				} elseif ( $def_fallback ) {
+
+					$def_val = $this->get_defaults( $user_id, $md_key );
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'returning default value: ' . $md_key . ' = ' . $def_val );
+					}
+
+					return $def_val;
+
+				} else {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'returning null: ' . $md_key . ' options key not found' );
+					}
+
+					return null;
+				}
+
+			} else {
+				return $this->opts[ $user_id ];
+			}
+		}
+
+		public function save_options( $user_id, $rel_id = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			$mod = $this->get_mod( $user_id );
+			if ( ! $this->user_can_edit( $user_id, $rel_id ) ) {
+				return;
+			}
 
-			$this->p->util->refresh_mod_head_meta( $mod, $do_sleep = false );
+			$mod  = $this->get_mod( $user_id );
+			$opts = $this->get_submit_opts( $user_id );
+
+			if ( ! empty( $this->p->avail['seo'][ 'any' ] ) ) {
+				unset( $opts['seo_desc'] );
+			}
+
+			$opts = apply_filters( $this->p->lca . '_save_user_options', $opts, $user_id, $rel_id, $mod );
+
+			if ( empty( $opts ) ) {
+				delete_user_meta( $user_id, WPSSO_META_NAME );
+			} else {
+				update_user_meta( $user_id, WPSSO_META_NAME, $opts );
+			}
+
+			return $user_id;
 		}
 
-		public static function get_public_user_ids() {
+		public function delete_options( $user_id, $rel_id = false ) {
+
+			return delete_user_meta( $user_id, WPSSO_META_NAME );
+		}
+
+		/**
+		 * Get all publicly accessible user IDs in the 'writer' array.
+		 */
+		public static function get_public_ids() {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -158,16 +346,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return SucomUtilWP::get_user_ids_for_roles( $roles );
 		}
 
-		public static function get_person_names( $add_none = true ) {
-
-			$wpsso =& Wpsso::get_instance();
-
-			$roles = $wpsso->cf[ 'wp' ][ 'roles' ][ 'person' ];
-			$limit = WPSSO_SELECT_PERSON_NAMES_MAX;	// Default is 500 user names.
-
-			return SucomUtilWP::get_user_select_for_roles( $roles, $blog_id = null, $add_none, $limit );
-		}
-
+		/**
+		 * Return an array of post IDs for a given $mod object.
+		 */
 		public function get_posts_ids( array $mod, $ppp = false, $paged = false, array $posts_args = array() ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -241,6 +422,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			return $post_ids;
+		}
+
+		public static function get_person_names( $add_none = true ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			$roles = $wpsso->cf[ 'wp' ][ 'roles' ][ 'person' ];
+			$limit = WPSSO_SELECT_PERSON_NAMES_MAX;	// Default is 500 user names.
+
+			return SucomUtilWP::get_user_select_for_roles( $roles, $blog_id = null, $add_none, $limit );
 		}
 
 		public static function add_person_role( $user_id ) {
@@ -352,6 +543,17 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			return $value;	// return null
+		}
+
+		public function refresh_head_meta( $user_id ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			$mod = $this->get_mod( $user_id );
+
+			$this->p->util->refresh_mod_head_meta( $mod, $do_sleep = false );
 		}
 
 		/**
@@ -781,37 +983,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 		}
 
-		/**
-		 * Returns an array of author website URLs, or author names for the pinterest crawler.
-		 */
-		public function get_og_profile_urls( $user_ids, $crawler_name = false ) {
-
-			$ret = array();
-
-			if ( empty( $user_ids ) ) {	// Just in case.
-				return $ret;
-			}
-
-			if ( ! is_array( $user_ids ) ) {
-				$user_ids = array( $user_ids );
-			}
-
-			foreach ( $user_ids as $user_id ) {
-
-				if ( empty( $user_id ) ) {
-					continue;
-				}
-
-				$value = $this->get_author_website( $user_id, $this->p->options[ 'og_author_field' ] );
-
-				if ( ! empty( $value ) ) {	// Make sure we don't add empty values.
-					$ret[] = $value;
-				}
-			}
-
-			return $ret;
-		}
-
 		public static function get_author_id( array $mod ) {
 
 			$author_id = false;
@@ -874,62 +1045,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			return $author_meta;
-		}
-
-		public function get_author_website( $user_id, $field_id = 'url' ) {
-
-			$user_exists = SucomUtilWP::user_exists( $user_id );
-			$website_url = '';
-
-			if ( $user_exists ) {
-
-				switch ( $field_id ) {
-
-					case 'none':
-
-						break;
-
-					case 'index':
-
-						$website_url = get_author_posts_url( $user_id );
-
-						break;
-
-					case 'twitter':
-
-						$website_url = get_the_author_meta( $field_id, $user_id );
-
-						if ( filter_var( $website_url, FILTER_VALIDATE_URL ) === false ) {
-							$website_url = 'https://twitter.com/' . preg_replace( '/^@/', '', $website_url );
-						}
-
-						break;
-
-					case 'website':	// Just in case.
-
-						$website_url = get_the_author_meta( 'url', $user_id );
-
-						break;
-					default:
-
-						$website_url = get_the_author_meta( $field_id, $user_id );
-
-						break;
-				}
-
-				$website_url = trim( $website_url );	// just in case
-
-			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'user id ' . $user_id . ' is not a WordPress user' );
-			}
-
-			$website_url = apply_filters( $this->p->lca . '_get_author_website', $website_url, $user_id, $field_id, $user_exists );
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'user id ' . $user_id . ' ' . $field_id . ' = ' . $website_url );
-			}
-
-			return $website_url;
 		}
 
 		public static function reset_metabox_prefs( $pagehook, $box_ids = array(), $meta_name = '', $context = '', $force = false ) {
@@ -1113,39 +1228,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 		}
 
-		public static function save_pref( $user_prefs, $user_id = false ) {
-
-			$user_id = empty( $user_id ) ? get_current_user_id() : $user_id;
-
-			if ( ! current_user_can( 'edit_user', $user_id ) ) {
-				return false;
-			}
-
-			if ( ! is_array( $user_prefs ) || empty( $user_prefs ) ) {
-				return false;
-			}
-
-			$old_prefs = self::get_pref( false, $user_id );	// get all prefs for user
-			$new_prefs = array_merge( $old_prefs, $user_prefs );
-
-			/**
-			 * Don't bother saving unless we have to.
-			 */
-			if ( $old_prefs !== $new_prefs ) {
-
-				self::$cache_pref[ $user_id ] = $new_prefs;	// update the pref cache
-
-				unset( $new_prefs[ 'prefs_filtered' ] );
-
-				update_user_meta( $user_id, WPSSO_PREF_NAME, $new_prefs );
-
-				return true;
-
-			} else {
-				return false;
-			}
-		}
-
 		public static function get_pref( $pref_key = false, $user_id = false ) {
 
 			$user_id = empty( $user_id ) ? get_current_user_id() : $user_id;
@@ -1177,6 +1259,39 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 			} else {
 				return self::$cache_pref[ $user_id ];
+			}
+		}
+
+		public static function save_pref( $user_prefs, $user_id = false ) {
+
+			$user_id = empty( $user_id ) ? get_current_user_id() : $user_id;
+
+			if ( ! current_user_can( 'edit_user', $user_id ) ) {
+				return false;
+			}
+
+			if ( ! is_array( $user_prefs ) || empty( $user_prefs ) ) {
+				return false;
+			}
+
+			$old_prefs = self::get_pref( false, $user_id );	// get all prefs for user
+			$new_prefs = array_merge( $old_prefs, $user_prefs );
+
+			/**
+			 * Don't bother saving unless we have to.
+			 */
+			if ( $old_prefs !== $new_prefs ) {
+
+				self::$cache_pref[ $user_id ] = $new_prefs;	// update the pref cache
+
+				unset( $new_prefs[ 'prefs_filtered' ] );
+
+				update_user_meta( $user_id, WPSSO_PREF_NAME, $new_prefs );
+
+				return true;
+
+			} else {
+				return false;
 			}
 		}
 
@@ -1223,9 +1338,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$user_can_edit = false;
 
 			if ( ! $this->verify_submit_nonce() ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: verify_submit_nonce failed' );
 				}
+
 				return $user_can_edit;
 			}
 
@@ -1242,6 +1359,125 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			return $user_can_edit;
+		}
+
+		/**
+		 * Methods that return an associative array of Open Graph meta tags.
+		 */
+		public function get_og_images( $num, $size_name, $user_id, $check_dupes = true, $force_regen = false, $md_pre = 'og' ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+			
+			$mod = $this->get_mod( $user_id );
+
+			/**
+			 * Check if this is a valid WordPress user.
+			 */
+			$user_exists = SucomUtilWP::user_exists( $user_id );
+
+			if ( $user_exists ) {
+				return $this->get_md_images( $num, $size_name, $mod, $check_dupes, $force_regen, $md_pre, 'og' );
+			} else {
+				return apply_filters( $this->p->lca . '_get_other_user_images',
+					array(), $num, $size_name, $user_id, $check_dupes, $force_regen, $md_pre );
+			}
+		}
+
+		/**
+		 * WpssoUser class specific methods.
+		 */
+		public function get_authors_websites( $user_ids, $field_id = null ) {
+
+			$ret = array();
+
+			if ( empty( $user_ids ) ) {	// Just in case.
+				return $ret;
+			}
+
+			if ( ! is_array( $user_ids ) ) {
+				$user_ids = array( $user_ids );
+			}
+
+			if ( empty( $field_id ) ) {
+				$field_id = $this->p->options[ 'og_author_field' ];	// Provide a default value.
+			}
+
+			foreach ( $user_ids as $user_id ) {
+
+				if ( empty( $user_id ) ) {
+					continue;
+				}
+
+				$value = $this->get_author_website( $user_id, $field_id );
+
+				if ( ! empty( $value ) ) {	// Make sure we don't add empty values.
+					$ret[] = $value;
+				}
+			}
+
+			return $ret;
+		}
+
+		public function get_author_website( $user_id, $field_id = 'url' ) {
+
+			$user_exists = SucomUtilWP::user_exists( $user_id );
+			$website_url = '';
+
+			if ( $user_exists ) {
+
+				switch ( $field_id ) {
+
+					case 'none':
+
+						break;
+
+					case 'index':
+
+						$website_url = get_author_posts_url( $user_id );
+
+						break;
+
+					case 'twitter':
+
+						$website_url = get_the_author_meta( $field_id, $user_id );
+
+						if ( filter_var( $website_url, FILTER_VALIDATE_URL ) === false ) {
+							$website_url = 'https://twitter.com/' . preg_replace( '/^@/', '', $website_url );
+						}
+
+						break;
+
+					case 'website':	// Just in case.
+
+						$website_url = get_the_author_meta( 'url', $user_id );
+
+						break;
+
+					default:
+
+						$website_url = get_the_author_meta( $field_id, $user_id );
+
+						break;
+				}
+
+				$website_url = trim( $website_url );	// just in case
+
+			} else {
+			
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'user id ' . $user_id . ' is not a WordPress user' );
+				}
+			}
+
+			$website_url = apply_filters( $this->p->lca . '_get_author_website', $website_url, $user_id, $field_id, $user_exists );
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'user id ' . $user_id . ' ' . $field_id . ' = ' . $website_url );
+			}
+
+			return $website_url;
 		}
 	}
 }

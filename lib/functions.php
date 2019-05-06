@@ -52,7 +52,7 @@ if ( ! function_exists( 'wpsso_get_is_functions' ) ) {
 
 		$wpsso =& Wpsso::get_instance();
 
-		if ( is_object( $wpsso->util ) ) {	// Just in case.
+		if ( ! empty( $wpsso->util ) ) {	// Just in case.
 			return $wpsso->util->get_is_functions();
 		}
 	}
@@ -64,7 +64,7 @@ if ( ! function_exists( 'wpsso_schema_attributes' ) ) {
 
 		$wpsso =& Wpsso::get_instance();
 
-		if ( is_object( $wpsso->schema ) ) {	// Just in case.
+		if ( ! empty( $wpsso->schema ) ) {	// Just in case.
 			echo $wpsso->schema->filter_head_attributes( $attr );
 		}
 	}
@@ -76,7 +76,7 @@ if ( ! function_exists( 'wpsso_show_head' ) ) {
 
 		$wpsso =& Wpsso::get_instance();
 
-		if ( is_object( $wpsso->head ) ) {	// Just in case.
+		if ( ! empty( $wpsso->head ) ) {	// Just in case.
 			echo $wpsso->head->show_head();
 		}
 	}
@@ -88,7 +88,7 @@ if ( ! function_exists( 'wpsso_clear_all_cache' ) ) {
 
 		$wpsso =& Wpsso::get_instance();
 
-		if ( is_object( $wpsso->util ) ) {	// Just in case.
+		if ( ! empty( $wpsso->util ) ) {	// Just in case.
 
 			$user_id = get_current_user_id();
 
@@ -103,8 +103,8 @@ if ( ! function_exists( 'wpsso_clear_post_cache' ) ) {
 
 		$wpsso =& Wpsso::get_instance();
 
-		if ( isset( $wpsso->m[ 'util' ][ 'post' ] ) ) {	// Just in case.
-			$wpsso->m[ 'util' ][ 'post' ]->clear_cache( $post_id );
+		if ( ! empty( $wpsso->post ) ) {	// Just in case.
+			$wpsso->post->clear_cache( $post_id );
 		}
 	}
 }
@@ -120,7 +120,7 @@ if ( ! function_exists( 'wpsso_get_page_mod' ) ) {
 
 		$wpsso =& Wpsso::get_instance();
 
-		if ( is_object( $wpsso->util ) ) {	// Just in case.
+		if ( ! empty( $wpsso->util ) ) {	// Just in case.
 			return $wpsso->util->get_page_mod( $use_post );
 		}
 
@@ -134,8 +134,8 @@ if ( ! function_exists( 'wpsso_get_post_mod' ) ) {
 
 		$wpsso =& Wpsso::get_instance();
 
-		if ( isset( $wpsso->m[ 'util' ][ 'post' ] ) ) {	// Just in case.
-			return $wpsso->m[ 'util' ][ 'post' ]->get_mod( $post_id );
+		if ( ! empty( $wpsso->post ) ) {	// Just in case.
+			return $wpsso->post->get_mod( $post_id );
 		}
 
 		return false;
@@ -148,8 +148,8 @@ if ( ! function_exists( 'wpsso_get_term_mod' ) ) {
 
 		$wpsso =& Wpsso::get_instance();
 
-		if ( isset( $wpsso->m[ 'util' ][ 'term' ] ) ) {	// Just in case.
-			return $wpsso->m[ 'util' ][ 'term' ]->get_mod( $term_id );
+		if ( ! empty( $wpsso->term ) ) {	// Just in case.
+			return $wpsso->term->get_mod( $term_id );
 		}
 
 		return false;
@@ -162,8 +162,8 @@ if ( ! function_exists( 'wpsso_get_user_mod' ) ) {
 
 		$wpsso =& Wpsso::get_instance();
 
-		if ( isset( $wpsso->m[ 'util' ][ 'user' ] ) ) {	// Just in case.
-			return $wpsso->m[ 'util' ][ 'user' ]->get_mod( $user_id );
+		if ( ! empty( $wpsso->user ) ) {	// Just in case.
+			return $wpsso->user->get_mod( $user_id );
 		}
 
 		return false;
@@ -265,7 +265,7 @@ if ( ! function_exists( 'wpsso_get_sharing_url' ) ) {
 
 		$wpsso =& Wpsso::get_instance();
 
-		if ( is_object( $wpsso->util ) ) {	// Just in case.
+		if ( ! empty( $wpsso->util ) ) {	// Just in case.
 			return $wpsso->util->get_sharing_url( $mod, $add_page );
 		}
 
@@ -289,6 +289,7 @@ if ( ! function_exists( 'wpsso_get_short_url' ) ) {
 if ( ! function_exists( 'wpsso_get_post_event_options' ) ) {
 
 	function wpsso_get_post_event_options( $post_id, $type_id = false ) {
+
 		return WpssoSchema::get_post_md_type_opts( $post_id, 'event', $type_id );
 	}
 }
@@ -296,6 +297,7 @@ if ( ! function_exists( 'wpsso_get_post_event_options' ) ) {
 if ( ! function_exists( 'wpsso_get_post_job_options' ) ) {
 
 	function wpsso_get_post_job_options( $post_id, $type_id = false ) {
+
 		return WpssoSchema::get_post_md_type_opts( $post_id, 'job', $type_id );
 	}
 }
@@ -315,8 +317,8 @@ if ( ! function_exists( 'wpsso_get_post_organization_options' ) ) {
 
 		if ( empty( $post_id ) ) {	// Just in case.
 			return false;
-		} elseif ( isset( $wpsso->m[ 'util' ][ 'post' ] ) ) {	// Just in case.
-			$mod = $wpsso->m[ 'util' ][ 'post' ]->get_mod( $post_id );
+		} elseif ( ! empty( $wpsso->post ) ) {	// Just in case.
+			$mod = $wpsso->post->get_mod( $post_id );
 		} else {
 			return false;
 		}
@@ -341,8 +343,8 @@ if ( ! function_exists( 'wpsso_get_post_place_options' ) ) {
 
 		if ( empty( $post_id ) ) {	// Just in case.
 			return false;
-		} elseif ( isset( $wpsso->m[ 'util' ][ 'post' ] ) ) {	// Just in case.
-			$mod = $wpsso->m[ 'util' ][ 'post' ]->get_mod( $post_id );
+		} elseif ( ! empty( $wpsso->post ) ) {	// Just in case.
+			$mod = $wpsso->post->get_mod( $post_id );
 		} else {
 			return false;
 		}

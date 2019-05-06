@@ -1501,10 +1501,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		private function get_text_length_js( $css_id ) {
 
 			return empty( $css_id ) ? '' : '<script type="text/javascript">
-				jQuery(document).ready(function(){
-					jQuery(\'#' . esc_js( $css_id ) . '\').focus(function(){ sucomTextLen(\'' . esc_js( $css_id ) . '\'); });
-					jQuery(\'#' . esc_js( $css_id ) . '\').keyup(function(){ sucomTextLen(\'' . esc_js( $css_id ) . '\'); });
-				});</script>';
+				jQuery( document ).ready( function() {
+					jQuery( \'#' . esc_js( $css_id ) . '\' ).focus( function() { sucomTextLen(\'' . esc_js( $css_id ) . '\'); } );
+					jQuery( \'#' . esc_js( $css_id ) . '\' ).keyup( function() { sucomTextLen(\'' . esc_js( $css_id ) . '\'); } );
+				} );</script>';
 		}
 
 		private function get_placeholder_sanitized( $name, $placeholder ) {

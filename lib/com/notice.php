@@ -39,7 +39,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 
 				$this->set_config( $plugin, $lca, $text_domain, $label_transl );
-				$this->add_actions();
+
+				$this->add_wp_hooks();
 			}
 		}
 
@@ -92,34 +93,43 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 		}
 
-		private function add_actions() {
+		/**
+		 * Add WordPress action and filters hooks.
+		 */
+		private function add_wp_hooks() {
 
 			if ( is_admin() ) {
+
 				add_action( 'wp_ajax_' . $this->lca . '_dismiss_notice', array( $this, 'ajax_dismiss_notice' ) );
 				add_action( 'wp_ajax_' . $this->lca . '_get_notices_json', array( $this, 'ajax_get_notices_json' ) );
-				add_action( 'in_admin_header', array( $this, 'hook_admin_notices' ), PHP_INT_MAX );
+				add_action( 'in_admin_header', array( $this, 'admin_header_notices' ), PHP_INT_MAX );
 				add_action( 'admin_footer', array( $this, 'admin_footer_script' ) );
 				add_action( 'shutdown', array( $this, 'shutdown_notice_cache' ) );
 			}
 		}
 
 		public function nag( $msg_text, $user_id = null, $notice_key = false ) {
+
 			$this->log( 'nag', $msg_text, $user_id, $notice_key, false );	// $dismiss_time is false.
 		}
 
 		public function err( $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false ) {
+
 			$this->log( 'err', $msg_text, $user_id, $notice_key, $dismiss_time );
 		}
 
 		public function warn( $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false ) {
+
 			$this->log( 'warn', $msg_text, $user_id, $notice_key, $dismiss_time );
 		}
 
 		public function inf( $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false ) {
+
 			$this->log( 'inf', $msg_text, $user_id, $notice_key, $dismiss_time );
 		}
 
 		public function upd( $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false ) {
+
 			$this->log( 'upd', $msg_text, $user_id, $notice_key, $dismiss_time );
 		}
 
@@ -217,6 +227,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		 * Clear a single notice key from the notice cache.
 		 */
 		public function clear_key( $notice_key, $user_id = null ) {
+
 			$this->clear( '', '', $notice_key, $user_id );
 		}
 
@@ -490,7 +501,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 		}
 
-		public function hook_admin_notices() {
+		public function admin_header_notices() {
+
 			add_action( 'all_admin_notices', array( $this, 'show_admin_notices' ), -10 );
 		}
 
@@ -968,7 +980,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		public function shutdown_notice_cache() {
 
 			foreach ( $this->notice_cache as $user_id => $user_notices ) {
+
 				$this->maybe_set_notice_cache( $user_id );
+
 				$this->update_notice_transient( $user_id );
 			}
 		}

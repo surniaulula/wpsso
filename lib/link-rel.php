@@ -47,29 +47,6 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 			$link_rel = apply_filters( $this->p->lca . '_link_rel_seed', array(), $mod );
 
 			/**
-			 * Link rel author.
-			 *
-			 * Google does not use the author URL value anymore and this meta tag is no longer useful.
-			 *
-			 * if ( ! empty( $author_id ) ) {
-			 *
-			 * 	$add_link_rel_author = empty( $this->p->options[ 'add_link_rel_author' ] ) ? false : true;
-			 *
-			 * 	if ( apply_filters( $this->p->lca . '_add_link_rel_author', $add_link_rel_author, $mod ) ) {
-			 *
-			 * 		if ( is_object( $this->p->m[ 'util' ][ 'user' ] ) ) {	// Just in case.
-			 *
-			 * 			$link_rel[ 'author' ] = $this->p->m[ 'util' ][ 'user' ]->get_author_website( $author_id,
-			 * 				$this->p->options[ 'seo_author_field' ] );
-			 * 		}
-			 * 	}
-			 *
-			 * } elseif ( $this->p->debug->enabled ) {
-			 * 	$this->p->debug->log( 'skipping author: author id is empty' );
-			 * }
-			 */
-
-			/**
 			 * Link rel canonical.
 			 */
 			$add_link_rel_canonical = empty( $this->p->options[ 'add_link_rel_canonical' ] ) ? false : true;
@@ -77,24 +54,6 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 			if ( apply_filters( $this->p->lca . '_add_link_rel_canonical', $add_link_rel_canonical, $mod ) ) {
 				$link_rel[ 'canonical' ] = $this->p->util->get_canonical_url( $mod );
 			}
-
-			/**
-			 * Link rel publisher.
-			 *
-			 * Google does not use the publisher URL value anymore and this meta tag is no longer useful.
-			 *
-			 * if ( ! empty( $this->p->options[ 'seo_publisher_url' ] ) ) {
-			 *
-			 * 	$add_link_rel_publisher = empty( $this->p->options[ 'add_link_rel_publisher' ] ) ? false : true;
-			 *
-			 *	if ( apply_filters( $this->p->lca . '_add_link_rel_publisher', $add_link_rel_publisher, $mod ) ) {
-			 *		$link_rel[ 'publisher' ] = $this->p->options[ 'seo_publisher_url' ];
-			 *	}
-			 *
-			 * } elseif ( $this->p->debug->enabled ) {
-			 *	$this->p->debug->log( 'skipping publisher: seo publisher url is empty' );
-			 * }
-			 */
 
 			/**
 			 * Link rel shortlink.

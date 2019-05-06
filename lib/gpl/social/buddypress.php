@@ -42,16 +42,16 @@ if ( ! class_exists( 'WpssoGplSocialBuddypress' ) ) {
 
 			$bio_const_name = strtoupper( $this->p->lca ).'_BP_MEMBER_BIOGRAPHICAL_FIELD';
 
-			$def_opts['plugin_bp_bio_field'] = SucomUtil::get_const( $bio_const_name );
+			$def_opts[ 'plugin_bp_bio_field' ] = SucomUtil::get_const( $bio_const_name );
 
 			return $def_opts;
 		}
 
 		public function filter_plugin_integration_rows( $table_rows, $form ) {
 
-			$table_rows['plugin_bp_bio_field'] = $form->get_th_html( _x( 'BuddyPress Member Bio Field Name',
+			$table_rows[ 'plugin_bp_bio_field' ] = $form->get_th_html( _x( 'BuddyPress Member Bio Field Name',
 				'option label', 'wpsso' ), '', 'plugin_bp_bio_field' ).
-			'<td class="blank">'.$this->p->options['plugin_bp_bio_field'].'</td>';
+			'<td class="blank">'.$this->p->options[ 'plugin_bp_bio_field' ].'</td>';
 
 			return $table_rows;
 		}

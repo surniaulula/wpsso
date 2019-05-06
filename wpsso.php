@@ -14,7 +14,7 @@
  * Requires At Least: 3.8
  * Tested Up To: 5.2
  * WC Tested Up To: 3.6
- * Version: 4.30.0
+ * Version: 5.0.0-dev.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -53,9 +53,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $notice;		// SucomNotice or SucomNoNotice
 		public $opt;		// WpssoOptions
 		public $page;		// WpssoPage (page title, desc, etc.)
+		public $post;		// WpssoPost
 		public $reg;		// WpssoRegister
 		public $script;		// WpssoScript (admin jquery tooltips)
 		public $style;		// WpssoStyle (admin styles)
+		public $term;		// WpssoTerm
+		public $user;		// WpssoUser
 		public $util;		// WpssoUtil (extends SucomUtil)
 
 		/**
@@ -291,19 +294,13 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$is_admin   = is_admin() ? true : false;
 			$network    = is_multisite() ? true : false;
 			$doing_cron = defined( 'DOING_CRON' ) ? DOING_CRON : false;
+			$debug_log  = false;
+			$debug_html = false;
 
-			$this->check = new WpssoCheck( $this );
-			$this->avail = $this->check->get_avail();	// Uses $this->options for availability checks.
-
-			/**
-			 * Configure the debug class.
-			 */
 			if ( defined( 'WPSSO_DEBUG_LOG' ) && WPSSO_DEBUG_LOG ) {
 				$debug_log = true;
 			} elseif ( $is_admin && defined( 'WPSSO_ADMIN_DEBUG_LOG' ) && WPSSO_ADMIN_DEBUG_LOG ) {
 				$debug_log = true;
-			} else {
-				$debug_log = false;
 			}
 
 			if ( ! empty( $this->options[ 'plugin_debug' ] ) ) {
@@ -312,15 +309,36 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$debug_html = true;
 			} elseif ( $is_admin && defined( 'WPSSO_ADMIN_DEBUG_HTML' ) && WPSSO_ADMIN_DEBUG_HTML ) {
 				$debug_html = true;
-			} else {
-				$debug_html = false;
 			}
 
-			if ( $debug_html || $debug_log ) {
+			/**
+			 * Setup core classes:
+			 *
+			 *	$check
+			 *	$avail
+			 *	$debug
+			 *	$notice
+			 *	$cache
+			 *	$util
+			 *	$opt
+			 *	$script
+			 *	$style
+			 *	$filters
+			 *	$msgs
+			 *	$admin
+			 */
+			$this->check = new WpssoCheck( $this );
+
+			$this->avail = $this->check->get_avail();	// Uses $this->options array for availability checks.
+
+			if ( $debug_log || $debug_html ) {
 
 				require_once WPSSO_PLUGINDIR . 'lib/com/debug.php';
 
-				$this->debug = new SucomDebug( $this, array( 'html' => $debug_html, 'log' => $debug_log ) );
+				$this->debug = new SucomDebug( $this, array(
+					'log' => $debug_log,
+					'html' => $debug_html,
+				) );
 
 				if ( $this->debug->enabled ) {
 
@@ -333,7 +351,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				}
 
 			} else {
-				$this->debug = new SucomNoDebug();	// make sure debug property is always available
+				$this->debug = new SucomNoDebug();		// Make sure a debug object is always available.
 			}
 
 			do_action( 'wpsso_init_textdomain', $this->debug->enabled );
@@ -343,23 +361,54 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				require_once WPSSO_PLUGINDIR . 'lib/com/notice.php';
 
 				$this->notice = new SucomNotice( $this );
+
 			} else {
-				$this->notice = new SucomNoNotice();		// Make sure the notice property is always available.
+				$this->notice = new SucomNoNotice();		// Make sure the a notice object is always available.
 			}
 
+			$this->cache   = new SucomCache( $this );
 			$this->util    = new WpssoUtil( $this );		// Extends SucomUtil.
 			$this->opt     = new WpssoOptions( $this );
-			$this->cache   = new SucomCache( $this );		// Object and file caching.
-			$this->style   = new WpssoStyle( $this );		// Admin styles.
-			$this->script  = new WpssoScript( $this );		// Admin jquery tooltips.
-			$this->page    = new WpssoPage( $this );		// Webpage title, desc, etc.
-			$this->media   = new WpssoMedia( $this );		// Images, videos, etc.
-			$this->head    = new WpssoHead( $this );		// wp_head() meta tags and Schema markup.
+			$this->script  = new WpssoScript( $this );
+			$this->style   = new WpssoStyle( $this );
 			$this->filters = new WpssoFilters( $this );
 
+			if ( $is_admin ) {
+				$this->msgs  = new WpssoMessages( $this );	// Admin tooltip messages.
+				$this->admin = new WpssoAdmin( $this );		// Admin menus and settings page loader.
+			}
+
 			/**
-			 * Meta tags and json-ld markup.
+			 * Setup resource classes:
+			 *
+			 *	$media
+			 *	$page
+			 *	$post
+			 *	$term
+			 *	$user
 			 */
+			$this->media   = new WpssoMedia( $this );
+			$this->page    = new WpssoPage( $this );
+			$this->post    = new WpssoPost( $this );		// Extends WpssoWpMeta.
+			$this->term    = new WpssoTerm( $this );		// Extends WpssoWpMeta.
+			$this->user    = new WpssoUser( $this );		// Extends WpssoWpMeta.
+
+			/**
+			 * Setup classe for meta tags and Schema markup:
+			 *
+			 *	$head
+			 *	$link_rel
+			 *	$meta_item
+			 *	$meta_name
+			 *	$noscript
+			 *	$og
+			 *	$pinterest
+			 *	$schema
+			 *	$tc
+			 *	$weibo
+			 *	$loader
+			 */
+			$this->head      = new WpssoHead( $this );
 			$this->link_rel  = new WpssoLinkRel( $this );		// Link relation tags.
 			$this->meta_item = new WpssoMetaItem( $this );		// Meta itemprop tags.
 			$this->meta_name = new WpssoMetaName( $this );		// Meta name tags.
@@ -370,12 +419,10 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->tc        = new WpssoTwitterCard( $this );	// Twitter Card meta tags.
 			$this->weibo     = new WpssoWeibo( $this );		// Weibo meta tags.
 
-			if ( $is_admin ) {
-				$this->msgs  = new WpssoMessages( $this );	// admin tooltip messages
-				$this->admin = new WpssoAdmin( $this );		// admin menus and page loader
-			}
-
-			$this->loader = new WpssoLoader( $this );		// module loader
+			/**
+			 * Setup additional modules:
+			 */
+			$this->loader = new WpssoLoader( $this );		// Module loader.
 
 			if ( $this->debug->enabled ) {
 				$this->debug->mark( 'do init objects action' );	// Begin timer.
