@@ -639,14 +639,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_hide_pro': // Hide All Pro Settings.
-
-							$text = __( 'Remove Pro version preview options from settings pages and metaboxes (default is unchecked).', 'wpsso' ) . ' ';
-
-							$text .= sprintf( __( 'Please note that some metaboxes and tabs may be empty - showing only a "<em>%s</em>" message - after enabling this option.', 'wpsso' ), __( 'No options available.', 'wpsso' ) );
-
-							break;
-
 						case 'tooltip-plugin_show_opts': // Options to Show by Default.
 
 							$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
@@ -2023,10 +2015,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'notice-image-rejected':
 
-						/**
-						 * Do not add this text if hidding pro options or on a settings page.
-						 */
-						if ( empty( $this->p->options[ 'plugin_hide_pro' ] ) && WpssoWpMeta::is_meta_page() ) {
+						if ( WpssoWpMeta::is_meta_page() ) {
 
 							$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 

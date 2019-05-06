@@ -329,7 +329,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 */
 			$this->check = new WpssoCheck( $this );
 
-			$this->avail = $this->check->get_avail();	// Uses $this->options array for availability checks.
+			$this->avail = $this->check->get_avail();		// Uses $this->options for availability checks.
 
 			if ( $debug_log || $debug_html ) {
 
@@ -387,11 +387,20 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 *	$term
 			 *	$user
 			 */
-			$this->media   = new WpssoMedia( $this );
-			$this->page    = new WpssoPage( $this );
-			$this->post    = new WpssoPost( $this );		// Extends WpssoWpMeta.
-			$this->term    = new WpssoTerm( $this );		// Extends WpssoWpMeta.
-			$this->user    = new WpssoUser( $this );		// Extends WpssoWpMeta.
+			$this->media = new WpssoMedia( $this );
+			$this->page  = new WpssoPage( $this );
+			$this->post  = new WpssoPost( $this );			// Extends WpssoWpMeta.
+			$this->term  = new WpssoTerm( $this );			// Extends WpssoWpMeta.
+			$this->user  = new WpssoUser( $this );			// Extends WpssoWpMeta.
+
+			/**
+			 * Deprecated on 2019/05/06.
+			 *
+			 * Maintain backwards compatibility for older add-ons.
+			 */
+			$this->m[ 'util' ][ 'post' ] =& $this->post;
+			$this->m[ 'util' ][ 'term' ] =& $this->term;
+			$this->m[ 'util' ][ 'user' ] =& $this->user;
 
 			/**
 			 * Setup classe for meta tags and Schema markup:

@@ -18,7 +18,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'      => '5.0.0-dev.1',	// Plugin version.
-					'opt_version'  => '641',	// Increment when changing default option values.
+					'opt_version'  => '642',	// Increment when changing default option values.
 					'short'        => 'WPSSO Core',	// Short plugin name.
 					'name'         => 'WPSSO Core [Main Plugin]',
 					'desc'         => 'WPSSO Core makes sure your content looks great on all social and search sites - no matter how URLs are crawled, shared, re-shared, posted, or embedded!',
@@ -1115,7 +1115,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'plugin_clean_on_uninstall' => 0,	// Remove All Settings on Uninstall.
 					'plugin_debug'              => 0,	// Add Hidden Debug Messages.
-					'plugin_hide_pro'           => 0,	// Hide All Pro Version Options.
 					'plugin_show_opts'          => 'basic',	// Options to Show by Default.
 					
 					/**
@@ -1326,8 +1325,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_clean_on_uninstall:use' => 'default',
 					'plugin_debug'                  => 0,		// Add Hidden Debug Messages
 					'plugin_debug:use'              => 'default',
-					'plugin_hide_pro'               => 0,		// Hide All Pro Version Options
-					'plugin_hide_pro:use'           => 'default',
 					'plugin_show_opts'              => 'basic',	// Options to Show by Default
 					'plugin_show_opts:use'          => 'default',
 					

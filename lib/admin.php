@@ -3647,17 +3647,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			'</td>' .
 			self::get_option_site_use( 'plugin_debug', $this->form, $network, true );
 
-			if ( $network || ! $this->p->check->pp( $this->p->lca, false, $this->p->avail[ '*' ][ 'p_dir' ] ) ) {
-
-				$table_rows[ 'plugin_hide_pro' ] = '' .
-				$this->form->get_th_html( _x( 'Hide All Pro Version Options', 'option label', 'wpsso' ), '', 'plugin_hide_pro' ) .
-				'<td>' . $this->form->get_checkbox( 'plugin_hide_pro' ) . '</td>' .
-				self::get_option_site_use( 'plugin_show_opts', $this->form, $network, true );
-
-			} else {
-				$this->form->get_hidden( 'plugin_hide_pro', 0, true );
-			}
-
 			$table_rows[ 'plugin_show_opts' ] = '' .
 			$this->form->get_th_html( _x( 'Options to Show by Default', 'option label', 'wpsso' ), '', 'plugin_show_opts' ) .
 			'<td>' . $this->form->get_select( 'plugin_show_opts', $this->p->cf[ 'form' ][ 'show_options' ] ) . '</td>' .
@@ -3665,7 +3654,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public static function get_option_site_use( $name, $form, $network = false, $enabled = false ) {
+
 			if ( $network ) {
+
 				return $form->get_th_html( _x( 'Site Use', 'option label (very short)', 'wpsso' ), 'site_use' ) . 
 					( $enabled || self::$pkg[ 'wpsso' ][ 'pp' ] ? '<td class="site_use">' . $form->get_select( $name . ':use',
 						WpssoConfig::$cf[ 'form' ][ 'site_option_use' ], 'site_use' ) . '</td>' :

@@ -219,10 +219,8 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				640 => array(
 					'add_meta_property_product:sku' => '',
 				),
-			),
-			'wpssoorg' => array(	// WPSSO ORG add-on.
-				2 => array(
-					'org_alt_name' => 'org_name_alt',
+				641 => array(
+					'plugin_hide_pro' => '',
 				),
 			),
 		);

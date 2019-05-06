@@ -292,54 +292,43 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				if ( ! $network ) {
 
-					if ( $this->p->check->pp( $this->p->lca, false, $this->p->avail[ '*' ][ 'p_dir' ] ) ) {
+					if ( ! $this->p->check->pp( $this->p->lca, false, $this->p->avail[ '*' ][ 'p_dir' ] ) ) {
 
-						foreach ( array( 'plugin_hide_pro' => 0 ) as $opt_key => $def_val ) {
+						if ( ! $has_new_options && $has_diff_version && empty( $opts[ 'plugin_' . $this->p->lca . '_tid' ] ) ) {
 
-							if ( $opts[ $opt_key ] === $def_val ) {
-								continue;
+							if ( null === $def_opts ) {	// only get default options once
+								$def_opts = $this->get_defaults();
 							}
 
-							$opts[ $opt_key ] = $def_val;
+							$advanced_opts = SucomUtil::preg_grep_keys( '/^plugin_/', $def_opts );
 
-							$has_diff_options = true;	// Save the options.
-						}
-
-					} elseif ( ! $has_new_options && $has_diff_version && empty( $opts[ 'plugin_' . $this->p->lca . '_tid' ] ) ) {
-
-						if ( null === $def_opts ) {	// only get default options once
-							$def_opts = $this->get_defaults();
-						}
-
-						$check_opts = SucomUtil::preg_grep_keys( '/^plugin_/', $def_opts );
-
-						foreach ( array(
-							'plugin_clean_on_uninstall',
-							'plugin_debug',
-							'plugin_hide_pro',
-							'plugin_show_opts',
-						) as $opt_key ) {
-							unset( $check_opts[ $opt_key ] );
-						}
-
-						$warn_msg = __( 'Non-standard value found for "%s" option - resetting to default value.', 'wpsso' );
-
-						foreach ( $check_opts as $opt_key => $def_val ) {
-
-							if ( isset( $opts[ $opt_key ] ) ) {
-
-								if ( $opts[ $opt_key ] === $def_val ) {
-									continue;
-								}
-
-								if ( is_admin() ) {
-									$this->p->notice->warn( sprintf( $warn_msg, $opt_key ) );
-								}
+							foreach ( array(
+								'plugin_clean_on_uninstall',
+								'plugin_debug',
+								'plugin_show_opts',
+							) as $opt_key ) {
+								unset( $advanced_opts[ $opt_key ] );
 							}
 
-							$opts[ $opt_key ] = $def_val;
+							$warn_msg = __( 'Non-standard value found for "%s" option - resetting to default value.', 'wpsso' );
 
-							$has_diff_options = true;	// Save the options.
+							foreach ( $advanced_opts as $opt_key => $def_val ) {
+
+								if ( isset( $opts[ $opt_key ] ) ) {
+
+									if ( $opts[ $opt_key ] === $def_val ) {
+										continue;
+									}
+
+									if ( is_admin() ) {
+										$this->p->notice->warn( sprintf( $warn_msg, $opt_key ) );
+									}
+								}
+
+								$opts[ $opt_key ] = $def_val;
+
+								$has_diff_options = true;	// Save the options.
+							}
 						}
 					}
 

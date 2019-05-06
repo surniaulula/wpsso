@@ -190,7 +190,6 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 					 * Don't show these options in the Essential settings page.
 					 */
 					unset ( $table_rows[ 'plugin_debug' ] );
-					unset ( $table_rows[ 'plugin_hide_pro' ] );
 
 					break;
 			}

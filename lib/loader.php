@@ -76,18 +76,10 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 					if ( $sub === 'admin' ) {
 
-						if ( ! is_admin() ) {	// load admin sub-folder only in back-end
+						if ( ! is_admin() ) {	// Load the admin/ sub-folder in the back-end only.
 
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( $log_prefix . 'ignored - not in admin back-end' );
-							}
-
-							continue;
-
-						} elseif ( $type === 'gpl' && ! empty( $this->p->options[ 'plugin_hide_pro' ] ) ) {
-
-							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( $log_prefix . 'ignored - pro features hidden' );
 							}
 
 							continue;
