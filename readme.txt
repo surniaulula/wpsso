@@ -431,16 +431,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.0.0-dev.1 (TBD)**
+**Version 4.31.0-dev.1 (2019/05/07)**
 
 * *New Features*
 	* None.
 * *Improvements*
 	* None.
 * *Bugfixes*
-	* None.
+	* Fixed an incorrect method call in the 'wpsso_schema_attributes' function.
+	* Fixed an incorrect post status value in WpssoUtil::get_page_url().
 * *Developer Notes*
-	* Merged the 'post', 'term', and 'user' modules into the WpssoPost, WpssoTerm, and WpssoUser classes.
+	* Merged the 'post', 'term', and 'user' integration modules into the WpssoPost, WpssoTerm, and WpssoUser classes.
 
 **Version 4.30.0 (2019/05/04)**
 
@@ -553,9 +554,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 5.0.0-dev.1 =
+= 4.31.0-dev.1 =
 
-(TBD) None.
+(2019/05/07) Fixed an incorrect method call in the 'wpsso_schema_attributes' function. Fixed an incorrect post status value in WpssoUtil::get_page_url().
 
 = 4.30.0 =
 
