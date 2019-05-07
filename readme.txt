@@ -440,7 +440,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None.
 * *Developer Notes*
-	* None.
+	* Merged the 'post', 'term', and 'user' modules into the WpssoPost, WpssoTerm, and WpssoUser classes.
 
 **Version 4.30.0 (2019/05/04)**
 
