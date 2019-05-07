@@ -696,9 +696,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			if ( empty( $img_url ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: image_downsize returned an empty url' );
 				}
+
 				return self::reset_image_src_args();
 			}
 
@@ -707,9 +709,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 */
 			$img_size_within_limits = $this->img_size_within_limits( $pid, $size_name, $img_width, $img_height );
 
-			/**
-			 * The 'wpsso_attached_accept_img_dims' filter is hooked by the WpssoProCheckImgSize class.
-			 */
 			if ( apply_filters( $this->p->lca . '_attached_accept_img_dims', $img_size_within_limits,
 				$img_url, $img_width, $img_height, $size_name, $pid ) ) {
 
@@ -720,6 +719,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					}
 
 					$img_url = $this->p->util->fix_relative_url( $img_url );
+
 					$img_url = apply_filters( $this->p->lca . '_rewrite_image_url', $img_url );
 
 					return self::reset_image_src_args( array( $img_url, $img_width, $img_height, $img_cropped, $pid, $img_alt ) );
@@ -749,9 +749,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			if ( empty( $def_img[ 'id' ] ) && empty( $def_img[ 'url' ] ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: no default image defined' );
 				}
+
 				return $og_images;
 			}
 
@@ -1055,9 +1057,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 									' (' . $og_single_image[ 'og:image:width' ] . 'x' . $og_single_image[ 'og:image:height' ] . ')' );
 							}
 
-							/**
-							 * The 'wpsso_attached_accept_img_dims' filter is hooked by the WpssoProCheckImgSize class.
-							 */
 							if ( ! apply_filters( $this->p->lca . '_content_accept_img_dims', $img_size_within_limits,
 								$og_single_image, $size_name, $attr_name, $content_passed ) ) {
 

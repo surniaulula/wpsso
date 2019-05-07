@@ -106,7 +106,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 							'media' => array(
 								'facebook'   => '(api) Facebook Video API',
-								'gravatar'   => '(api) Author Gravatar Image',
+								'gravatar'   => '(api) Gravatar Image API',
 								'ngg'        => '(plugin) NextGEN Gallery, NextCellent Gallery',
 								'rtmedia'    => '(plugin) rtMedia for WordPress, BuddyPress and bbPress',
 								'slideshare' => '(api) Slideshare API',
@@ -114,7 +114,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'upscale'    => '(feature) Media Library Image Upscaling',
 								'vimeo'      => '(api) Vimeo Video API',
 								'wistia'     => '(api) Wistia Video API',
-								'wpvideo'    => '(api) WordPress Video Shortcode',
+								'wpvideo'    => '(api) WP Video Shortcode API',
 								'youtube'    => '(api) YouTube Video / Playlist API',
 							),
 							'rating' => array(
@@ -141,7 +141,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'util' => array(
 								'checkimgdims' => '(feature) Verify Image Dimensions',
 								'coauthors'    => '(plugin) Co-Authors Plus',
-								'shorten'      => '(api) URL Shortening Service APIs',
+								'shorten'      => '(api) URL Shortening APIs',
 								'wpseo_meta'   => '(feature) Yoast SEO Social Meta',
 							),
 						),

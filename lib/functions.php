@@ -64,8 +64,8 @@ if ( ! function_exists( 'wpsso_schema_attributes' ) ) {
 
 		$wpsso =& Wpsso::get_instance();
 
-		if ( ! empty( $wpsso->schema ) ) {	// Just in case.
-			echo $wpsso->schema->filter_head_attributes( $attr );
+		if ( ! empty( $wpsso->meta_item ) ) {	// Just in case.
+			echo $wpsso->meta_item->filter_head_attributes( $attr );
 		}
 	}
 }
