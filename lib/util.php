@@ -2572,11 +2572,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 							$this->p->debug->log( 'custom post ' . $type . '_url = ' . $url );
 						}
 
-					} elseif ( $mod[ 'post_status' ] !== 'published' ) {
+					} elseif ( $mod[ 'post_status' ] !== 'publish' ) {
 
 						$post_obj = self::get_post_object( $mod[ 'id' ] );
 
-						$post_obj->post_status = 'published';
+						$post_obj->post_status = 'publish';
 						$post_obj->post_name   = $post_obj->post_name ? 
 							$post_obj->post_name : sanitize_title( $post_obj->post_title );
 
