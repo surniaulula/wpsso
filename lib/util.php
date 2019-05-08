@@ -1047,7 +1047,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					case 'all_types':
 
-						self::$form_cache[ $key ] = $this->p->schema->get_schema_types_array( false );	// $flatten = false
+						self::$form_cache[ $key ] = $this->p->schema->get_schema_types_array( $flatten = false );
 
 						break;
 

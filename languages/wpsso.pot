@@ -3223,23 +3223,23 @@ msgstr ""
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:571
+#: lib/head.php:573
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:578
+#: lib/head.php:582
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:585
+#: lib/head.php:591
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:592
+#: lib/head.php:600
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:599
+#: lib/head.php:609
 msgid "adding schema json-ld markup"
 msgstr ""
 

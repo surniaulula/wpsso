@@ -557,7 +557,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * Open Graph - define first to pass the mt_og array to other methods.
 			 */
 			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod, __( 'adding open graph meta tags', 'wpsso' ) ) : false;
+
 			$mt_og = $this->p->og->get_array( $mod, $mt_og, $crawler_name );
+
 			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
 
 			/**
@@ -569,35 +571,45 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * Twitter Cards.
 			 */
 			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod, __( 'adding twitter card meta tags', 'wpsso' ) ) : false;
+
 			$mt_tc = $this->p->tc->get_array( $mod, $mt_og, $crawler_name );
+
 			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
 
 			/**
 			 * Name / SEO meta tags.
 			 */
 			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod, __( 'adding meta name meta tags', 'wpsso' ) ) : false;
+
 			$mt_name = $this->p->meta_name->get_array( $mod, $mt_og, $crawler_name, $author_id );
+
 			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
 
 			/**
 			 * Link relation tags.
 			 */
 			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod, __( 'adding link relation tags', 'wpsso' ) ) : false;
+
 			$link_rel = $this->p->link_rel->get_array( $mod, $mt_og, $crawler_name, $author_id, $sharing_url );
+
 			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
 
 			/**
 			 * Schema itemprop meta tags.
 			 */
 			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod, __( 'adding schema meta tags', 'wpsso' ) ) : false;
+
 			$mt_item = $this->p->meta_item->get_array( $mod, $mt_og, $crawler_name );
+
 			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
 
 			/**
 			 * Schema json scripts.
 			 */
 			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod, __( 'adding schema json-ld markup', 'wpsso' ) ) : false;
+
 			$json_ld = $this->p->schema->get_array( $mod, $mt_og, $crawler_name );
+
 			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
 
 			/**
