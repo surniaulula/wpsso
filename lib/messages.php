@@ -806,7 +806,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_upscale_images':	// Allow Upscale of WP Media Images
+						case 'tooltip-plugin_upscale_images':	// Allow Upscale of Media Library Images
 
 							$text = __( 'WordPress does not upscale / enlarge images &mdash; WordPress can only create smaller images from larger full size originals.', 'wpsso' ) . ' ';
 							
@@ -2041,7 +2041,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								_x( 'Enforce Image Dimensions Check', 'option label', 'wpsso' ) );
 
 							$upscale_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
-								_x( 'Allow Upscale of WP Media Images', 'option label', 'wpsso' ) );
+								_x( 'Allow Upscale of Media Library Images', 'option label', 'wpsso' ) );
 
 							$percent_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
 								_x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ) );

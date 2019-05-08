@@ -2667,7 +2667,7 @@ msgstr ""
 #: lib/gettext-pro.php:90 lib/gpl/admin/general.php:59 lib/messages.php:2044
 #: lib/pro/admin/general.php:64
 msgctxt "option label"
-msgid "Allow Upscale of WP Media Images"
+msgid "Allow Upscale of Media Library Images"
 msgstr ""
 
 #: lib/gettext-pro.php:92 lib/gpl/admin/general.php:80

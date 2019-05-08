@@ -87,7 +87,7 @@ __( 'An SEO plugin has been detected &mdash; some basic SEO meta tags have been 
 _x( 'Gravatar is Author Default Image', 'option label', 'wpsso' );
 _x( 'Enforce Image Dimensions Check', 'option label', 'wpsso' );
 _x( 'recommended', 'option comment', 'wpsso' );
-_x( 'Allow Upscale of WP Media Images', 'option label', 'wpsso' );
+_x( 'Allow Upscale of Media Library Images', 'option label', 'wpsso' );
 _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' );
 _x( 'Maximum Videos to Include', 'option label', 'wpsso' );
 _x( 'Use HTTPS for Video API Requests', 'option label', 'wpsso' );
