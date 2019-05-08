@@ -441,7 +441,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed an incorrect method call in the 'wpsso_schema_attributes' function.
 	* Fixed an incorrect post status value in WpssoUtil::get_page_url().
 * *Developer Notes*
-	* Merged the 'post', 'term', and 'user' integration modules into the WpssoPost, WpssoTerm, and WpssoUser classes.
+	* Merged the 'post', 'term', and 'user' module methods into the WpssoPost, WpssoTerm, and WpssoUser classes.
+	* Deprecated the `$this->p->m[ 'util' ][ 'post' ]` variable by `$this->p->post`.
+	* Deprecated the `$this->p->m[ 'util' ][ 'term' ]` variable by `$this->p->term`.
+	* Deprecated the `$this->p->m[ 'util' ][ 'user' ]` variable by `$this->p->user`.
 
 **Version 4.30.0 (2019/05/04)**
 
