@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.31.0-dev.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.31.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2732,165 +2732,165 @@ msgctxt "option label"
 msgid "Open Graph Type"
 msgstr ""
 
-#: lib/gettext-pro.php:103 lib/gpl/admin/post.php:100
+#: lib/gettext-pro.php:103 lib/gpl/admin/post.php:101
 #: lib/pro/admin/post.php:102
 msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
 #: lib/gettext-pro.php:104 lib/gettext-pro.php:131 lib/gpl/admin/meta.php:92
-#: lib/gpl/admin/post.php:109 lib/pro/admin/meta.php:100
+#: lib/gpl/admin/post.php:111 lib/pro/admin/meta.php:100
 #: lib/pro/admin/post.php:109
 msgctxt "option label"
 msgid "Default Title"
 msgstr ""
 
 #: lib/gettext-pro.php:105 lib/gettext-pro.php:132 lib/gpl/admin/meta.php:99
-#: lib/gpl/admin/post.php:117 lib/pro/admin/meta.php:108
+#: lib/gpl/admin/post.php:119 lib/pro/admin/meta.php:108
 #: lib/pro/admin/post.php:117
 msgctxt "option label"
 msgid "Default Description"
 msgstr ""
 
 #: lib/gettext-pro.php:106 lib/gettext-pro.php:133 lib/gpl/admin/meta.php:107
-#: lib/gpl/admin/post.php:126 lib/pro/admin/meta.php:117
+#: lib/gpl/admin/post.php:128 lib/pro/admin/meta.php:117
 #: lib/pro/admin/post.php:126
 msgctxt "option label"
 msgid "Search Description"
 msgstr ""
 
 #: lib/gettext-pro.php:107 lib/gettext-pro.php:134 lib/gpl/admin/meta.php:116
-#: lib/gpl/admin/post.php:136 lib/pro/admin/meta.php:126
+#: lib/gpl/admin/post.php:138 lib/pro/admin/meta.php:126
 #: lib/pro/admin/post.php:136
 msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
 #: lib/gettext-pro.php:108 lib/gettext-pro.php:135 lib/gpl/admin/meta.php:124
-#: lib/gpl/admin/post.php:145 lib/pro/admin/meta.php:133
+#: lib/gpl/admin/post.php:147 lib/pro/admin/meta.php:133
 #: lib/pro/admin/post.php:144 lib/wp-meta.php:509 lib/wp-meta.php:533
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
 #: lib/gettext-pro.php:109 lib/gettext-pro.php:136 lib/gpl/admin/meta.php:132
-#: lib/gpl/admin/post.php:154 lib/pro/admin/meta.php:140
+#: lib/gpl/admin/post.php:156 lib/pro/admin/meta.php:140
 #: lib/pro/admin/post.php:152 lib/wp-meta.php:513 lib/wp-meta.php:537
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
 
-#: lib/gettext-pro.php:110 lib/gpl/admin/post.php:164 lib/messages.php:2368
+#: lib/gettext-pro.php:110 lib/gpl/admin/post.php:166 lib/messages.php:2368
 #: lib/pro/admin/post.php:162
 msgctxt "option label"
 msgid "Product Availability"
 msgstr ""
 
-#: lib/gettext-pro.php:111 lib/gpl/admin/post.php:173 lib/messages.php:2372
+#: lib/gettext-pro.php:111 lib/gpl/admin/post.php:175 lib/messages.php:2372
 #: lib/pro/admin/post.php:171
 msgctxt "option label"
 msgid "Product Brand"
 msgstr ""
 
-#: lib/gettext-pro.php:112 lib/gpl/admin/post.php:181 lib/messages.php:2376
+#: lib/gettext-pro.php:112 lib/gpl/admin/post.php:183 lib/messages.php:2376
 #: lib/pro/admin/post.php:178
 msgctxt "option label"
 msgid "Product Color"
 msgstr ""
 
-#: lib/gettext-pro.php:113 lib/gpl/admin/post.php:189 lib/messages.php:2380
+#: lib/gettext-pro.php:113 lib/gpl/admin/post.php:191 lib/messages.php:2380
 #: lib/pro/admin/post.php:185
 msgctxt "option label"
 msgid "Product Condition"
 msgstr ""
 
-#: lib/gettext-pro.php:114 lib/gpl/admin/post.php:197 lib/messages.php:2384
+#: lib/gettext-pro.php:114 lib/gpl/admin/post.php:199 lib/messages.php:2384
 #: lib/pro/admin/post.php:192
 msgctxt "option label"
 msgid "Product Material"
 msgstr ""
 
-#: lib/gettext-pro.php:115 lib/gpl/admin/post.php:205 lib/messages.php:2388
+#: lib/gettext-pro.php:115 lib/gpl/admin/post.php:207 lib/messages.php:2388
 #: lib/pro/admin/post.php:199
 msgctxt "option label"
 msgid "Product MPN"
 msgstr ""
 
-#: lib/gettext-pro.php:116 lib/gpl/admin/post.php:213 lib/messages.php:2392
+#: lib/gettext-pro.php:116 lib/gpl/admin/post.php:215 lib/messages.php:2392
 #: lib/pro/admin/post.php:206
 msgctxt "option label"
 msgid "Product SKU"
 msgstr ""
 
-#: lib/gettext-pro.php:117 lib/gpl/admin/post.php:221 lib/messages.php:2396
+#: lib/gettext-pro.php:117 lib/gpl/admin/post.php:223 lib/messages.php:2396
 #: lib/pro/admin/post.php:213
 msgctxt "option label"
 msgid "Product EAN"
 msgstr ""
 
-#: lib/gettext-pro.php:118 lib/gpl/admin/post.php:229 lib/messages.php:2400
+#: lib/gettext-pro.php:118 lib/gpl/admin/post.php:231 lib/messages.php:2400
 #: lib/pro/admin/post.php:220
 msgctxt "option label"
 msgid "Product GTIN-8"
 msgstr ""
 
-#: lib/gettext-pro.php:119 lib/gpl/admin/post.php:237 lib/messages.php:2404
+#: lib/gettext-pro.php:119 lib/gpl/admin/post.php:239 lib/messages.php:2404
 #: lib/pro/admin/post.php:227
 msgctxt "option label"
 msgid "Product GTIN-12"
 msgstr ""
 
-#: lib/gettext-pro.php:120 lib/gpl/admin/post.php:245 lib/messages.php:2408
+#: lib/gettext-pro.php:120 lib/gpl/admin/post.php:247 lib/messages.php:2408
 #: lib/pro/admin/post.php:234
 msgctxt "option label"
 msgid "Product GTIN-13"
 msgstr ""
 
-#: lib/gettext-pro.php:121 lib/gpl/admin/post.php:253 lib/messages.php:2412
+#: lib/gettext-pro.php:121 lib/gpl/admin/post.php:255 lib/messages.php:2412
 #: lib/pro/admin/post.php:241
 msgctxt "option label"
 msgid "Product GTIN-14"
 msgstr ""
 
-#: lib/gettext-pro.php:122 lib/gpl/admin/post.php:261 lib/messages.php:2416
+#: lib/gettext-pro.php:122 lib/gpl/admin/post.php:263 lib/messages.php:2416
 #: lib/pro/admin/post.php:248
 msgctxt "option label"
 msgid "Product ISBN"
 msgstr ""
 
-#: lib/gettext-pro.php:123 lib/gpl/admin/post.php:269 lib/messages.php:2420
+#: lib/gettext-pro.php:123 lib/gpl/admin/post.php:271 lib/messages.php:2420
 #: lib/pro/admin/post.php:255
 msgctxt "option label"
 msgid "Product Price"
 msgstr ""
 
-#: lib/gettext-pro.php:124 lib/gpl/admin/post.php:278 lib/messages.php:2428
+#: lib/gettext-pro.php:124 lib/gpl/admin/post.php:280 lib/messages.php:2428
 #: lib/pro/admin/post.php:263
 msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gettext-pro.php:125 lib/gpl/admin/post.php:286 lib/messages.php:2432
+#: lib/gettext-pro.php:125 lib/gpl/admin/post.php:288 lib/messages.php:2432
 #: lib/pro/admin/post.php:270
 msgctxt "option label"
 msgid "Product Target Gender"
 msgstr ""
 
 #: lib/gettext-pro.php:126 lib/gettext-pro.php:137 lib/gpl/admin/meta.php:141
-#: lib/gpl/admin/post.php:293 lib/pro/admin/meta.php:150
+#: lib/gpl/admin/post.php:295 lib/pro/admin/meta.php:150
 #: lib/pro/admin/post.php:277 lib/submenu/general.php:260
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup"
 msgstr ""
 
 #: lib/gettext-pro.php:127 lib/gettext-pro.php:138 lib/gpl/admin/meta.php:146
-#: lib/gpl/admin/post.php:299 lib/pro/admin/meta.php:154
+#: lib/gpl/admin/post.php:301 lib/pro/admin/meta.php:154
 #: lib/pro/admin/post.php:282
 msgctxt "option label"
 msgid "Description"
 msgstr ""
 
-#: lib/gettext-pro.php:128 lib/gpl/admin/post.php:305
+#: lib/gettext-pro.php:128 lib/gpl/admin/post.php:307
 #: lib/pro/admin/post.php:288 lib/wp-meta.php:505
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""

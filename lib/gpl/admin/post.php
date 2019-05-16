@@ -90,8 +90,9 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Open Graph Type', 'option label', 'wpsso' ),
 					'tooltip'  => 'post-og_type',
-					'content'  => $form->get_select( 'og_type', $og_types, '', '', true, $def_og_type, $def_og_type, 'on_change_unhide_rows' ) .
-						$this->p->msgs->get( 'pro-select-msg' ),
+					'content'  => $form->get_select( 'og_type', $og_types,
+						'', '', true, $def_og_type, $def_og_type, 'on_change_unhide_rows' ) . ' ' .
+							$this->p->msgs->get( 'pro-select-msg' ),
 				),
 				'og_art_section' => array(
 					'tr_class' => 'hide_og_type hide_og_type_article',
@@ -99,8 +100,9 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Article Topic', 'option label', 'wpsso' ),
 					'tooltip'  => 'post-og_art_section',
-					'content'  => $form->get_select( 'og_art_section', $art_topics, '', '', false, $def_art_section, $def_art_section ) .
-						$this->p->msgs->get( 'pro-select-msg' ),
+					'content'  => $form->get_select( 'og_art_section', $art_topics,
+						'', '', false, $def_art_section, $def_art_section ) . ' ' .
+							$this->p->msgs->get( 'pro-select-msg' ),
 				),
 				'og_title' => array(
 					'no_auto_draft' => true,
