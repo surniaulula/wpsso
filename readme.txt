@@ -431,7 +431,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.31.0-dev.2 (2019/05/15)**
+**Version 4.31.0-b.1 (2019/05/16)**
 
 * *New Features*
 	* None.
@@ -557,9 +557,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.31.0-dev.2 =
+= 4.31.0-b.1 =
 
-(2019/05/15) Fixed an incorrect method call in the 'wpsso_schema_attributes' function. Fixed an incorrect post status value in WpssoUtil::get_page_url().
+(2019/05/16) Fixed an incorrect method call in the 'wpsso_schema_attributes' function. Fixed an incorrect post status value in WpssoUtil::get_page_url().
 
 = 4.30.0 =
 
