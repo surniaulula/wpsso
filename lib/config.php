@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'      => '4.31.0-b.1',	// Plugin version.
+					'version'      => '4.31.0-b.2',	// Plugin version.
 					'opt_version'  => '642',	// Increment when changing default option values.
 					'short'        => 'WPSSO Core',	// Short plugin name.
 					'name'         => 'WPSSO Core [Main Plugin]',
@@ -2311,7 +2311,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 							'how.to' => array(
 								'how.to'  => 'https://schema.org/HowTo',
-								'recipe' => 'https://schema.org/Recipe',
+								'recipe' => 'https://schema.org/Recipe',	// Recipe is a sub-type of HowTo.
 							),
 							'map'          => 'https://schema.org/Map',
 							'media.object' => array(
@@ -2513,14 +2513,23 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'invoice'     => 'https://schema.org/Invoice',
 							'item.list'   => array(
 								'breadcrumb.list' => 'https://schema.org/BreadcrumbList',
-								'how.to.section'  => 'https://schema.org/HowToSection',
-								'how.to.step'     => 'https://schema.org/HowToStep',
 								'item.list'       => 'https://schema.org/ItemList',
 								'offer.catalog'   => 'https://schema.org/OfferCatalog',
 							),
 							'job.posting'                  => 'https://schema.org/JobPosting',
 							'language'                     => 'https://schema.org/Language',
-							'list.item'                    => 'https://schema.org/ListItem',
+							'list.item'                    => array(
+								'how.to.direction' => 'https://schema.org/HowToDirection',
+								'how.to.item'      => array(
+									'how.to.item'      => 'https://schema.org/HowToItem',
+									'how.to.supply'    => 'https://schema.org/HowToSupply',
+									'how.to.tool'      => 'https://schema.org/HowToTool',
+								),
+								'how.to.section'   => 'https://schema.org/HowToSection',
+								'how.to.step'      => 'https://schema.org/HowToStep',
+								'how.to.tip'       => 'https://schema.org/HowToTip',
+								'list.item'        => 'https://schema.org/ListItem',
+							),
 							'menu.item'                    => 'https://schema.org/MenuItem',
 							'offer'                        => array(
 								'offer'                        => 'https://schema.org/Offer',

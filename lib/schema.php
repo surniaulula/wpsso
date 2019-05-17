@@ -1022,6 +1022,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$thing[ 'intangible' ][ 'enumeration' ][ 'medical.enumeration' ][ 'medical.audience' ];
 
 			/**
+			 * Intangible > ItemList
+			 */
+			$thing[ 'intangible' ][ 'item.list' ][ 'how.to.section' ] =&
+				$thing[ 'intangible' ][ 'list.item' ][ 'how.to.section' ];
+
+			$thing[ 'intangible' ][ 'item.list' ][ 'how.to.step' ] =&
+				$thing[ 'intangible' ][ 'list.item' ][ 'how.to.step' ];
+
+			/**
 			 * Intangible > Enumeration
 			 */
 			$thing[ 'intangible' ][ 'enumeration' ][ 'specialty' ][ 'medical.specialty' ] =&
