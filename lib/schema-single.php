@@ -260,13 +260,15 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			$ret = apply_filters( $wpsso->lca . '_json_data_single_event', $ret, $mod, $event_id );
 
-			if ( empty( $list_element ) ) {
+			if ( empty( $list_element ) ) {		// Add a single item.
 				$json_data = $ret;
+			} elseif ( is_array( $json_data ) ) {	// Just in case.
+				$json_data[] = $ret;		// Add an item to the list.
 			} else {
-				$json_data[] = $ret;
+				$json_data = array( $ret );	// Add an item to the list.
 			}
 
-			return 1;
+			return 1;	// Return count of events added.
 		}
 
 		public static function add_job_data( &$json_data, array $mod, $job_id = false, $list_element = false ) {
@@ -407,13 +409,15 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			$ret = apply_filters( $wpsso->lca . '_json_data_single_job', $ret, $mod, $job_id );
 
-			if ( empty( $list_element ) ) {
+			if ( empty( $list_element ) ) {		// Add a single item.
 				$json_data = $ret;
+			} elseif ( is_array( $json_data ) ) {	// Just in case.
+				$json_data[] = $ret;		// Add an item to the list.
 			} else {
-				$json_data[] = $ret;
+				$json_data = array( $ret );	// Add an item to the list.
 			}
 
-			return 1;
+			return 1;	// Return count of jobs added.
 		}
 
 		public static function get_offer_data( array $mod, array $mt_offer ) {
@@ -743,13 +747,15 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->notice->unset_ref( $sharing_url );
 			}
 
-			if ( empty( $list_element ) ) {
+			if ( empty( $list_element ) ) {		// Add a single item.
 				$json_data = $ret;
+			} elseif ( is_array( $json_data ) ) {	// Just in case.
+				$json_data[] = $ret;		// Add an item to the list.
 			} else {
-				$json_data[] = $ret;
+				$json_data = array( $ret );	// Add an item to the list.
 			}
 
-			return 1;
+			return 1;	// Return count of organizations added.
 		}
 
 		/**
@@ -901,13 +907,15 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			$ret = apply_filters( $wpsso->lca . '_json_data_single_person', $ret, $mod, $user_id );
 
-			if ( empty( $list_element ) ) {
+			if ( empty( $list_element ) ) {		// Add a single item.
 				$json_data = $ret;
+			} elseif ( is_array( $json_data ) ) {	// Just in case.
+				$json_data[] = $ret;		// Add an item to the list.
 			} else {
-				$json_data[] = $ret;
+				$json_data = array( $ret );	// Add an item to the list.
 			}
 
-			return 1;
+			return 1;	// Return count of persons added.
 		}
 
 		public static function add_place_data( &$json_data, $mod, $place_id = false, $list_element = false ) {
@@ -1103,13 +1111,15 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->notice->unset_ref( $sharing_url );
 			}
 
-			if ( empty( $list_element ) ) {
+			if ( empty( $list_element ) ) {		// Add a single item.
 				$json_data = $ret;
+			} elseif ( is_array( $json_data ) ) {	// Just in case.
+				$json_data[] = $ret;		// Add an item to the list.
 			} else {
-				$json_data[] = $ret;
+				$json_data = array( $ret );	// Add an item to the list.
 			}
 
-			return 1;
+			return 1;	// Return count of places added.
 		}
 
 		/**
