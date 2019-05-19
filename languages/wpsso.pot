@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.31.0-b.3\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.31.0-rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3853,11 +3853,11 @@ msgstr ""
 
 #: lib/messages.php:672 lib/messages.php:2108
 msgid ""
-"MANY THEMES AND PLUGINS HAVE BADLY CODED CONTENT FILTERS, so this option is "
+"Many themes and plugins have badly coded content filters, so this option is "
 "disabled by default."
 msgstr ""
 
-#: lib/messages.php:674 lib/messages.php:2110
+#: lib/messages.php:674
 msgid ""
 "If you use shortcodes in your content text, this option should be enabled "
 "&mdash; IF YOU EXPERIENCE WEBPAGE LAYOUT OR PERFORMANCE ISSUES AFTER "
@@ -5078,6 +5078,14 @@ msgid ""
 "The use of WordPress content filters allows %s to fully render your content "
 "text for meta tag descriptions and detect additional images and/or embedded "
 "videos provided by shortcodes."
+msgstr ""
+
+#: lib/messages.php:2110
+msgid ""
+"If you use shortcodes in your content text, this option should be enabled "
+"&mdash; IF YOU EXPERIENCE WEBPAGE LAYOUT OR PERFORMANCE ISSUES AFTER "
+"ENABLING THIS OPTION, you should determine which theme or plugin is "
+"filtering the content incorrectly, and report the problem to its author(s)."
 msgstr ""
 
 #: lib/messages.php:2112
