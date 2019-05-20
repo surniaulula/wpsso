@@ -443,9 +443,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed adding an array element to a possible json data string value. 
 * *Developer Notes*
 	* Merged the 'post', 'term', and 'user' module methods into the WpssoPost, WpssoTerm, and WpssoUser classes.
-	* Deprecated the `$this->p->m[ 'util' ][ 'post' ]` variable by `$this->p->post`.
-	* Deprecated the `$this->p->m[ 'util' ][ 'term' ]` variable by `$this->p->term`.
-	* Deprecated the `$this->p->m[ 'util' ][ 'user' ]` variable by `$this->p->user`.
+	* Deprecated the `$this->p->m[ 'util' ][ 'post' ]` class object variable by `$this->p->post`.
+	* Deprecated the `$this->p->m[ 'util' ][ 'term' ]` class object variable by `$this->p->term`.
+	* Deprecated the `$this->p->m[ 'util' ][ 'user' ]` class object variable by `$this->p->user`.
+	* Updated the following add-ons to use the new class object variables:
+		* WPSSO Mobile App Meta
+		* WPSSO Organization Markup 
+		* WPSSO Place / Location and Local Business Meta
+		* WPSSO REST API
+		* WPSSO Ridiculously Responsive Social Sharing Buttons
+		* WPSSO Schema Breadcrumbs Markup
+		* WPSSO Schema JSON-LD Markup
+		* WPSSO Social Sharing Buttons 
 
 **Version 4.30.0 (2019/05/04)**
 
