@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.31.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-05-07 18:54-0700\n"
-"PO-Revision-Date: 2019-05-07 18:55-0700\n"
+"POT-Creation-Date: 2019-05-20 11:09-0700\n"
+"PO-Revision-Date: 2019-05-20 11:10-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2626,166 +2626,166 @@ msgctxt "option label"
 msgid "Open Graph Type"
 msgstr "Type Open Graph"
 
-#: lib/gettext-pro.php:103 lib/gpl/admin/post.php:100
+#: lib/gettext-pro.php:103 lib/gpl/admin/post.php:101
 #: lib/pro/admin/post.php:102
 msgctxt "option label"
 msgid "Article Topic"
 msgstr "Rubrique d'article"
 
 #: lib/gettext-pro.php:104 lib/gettext-pro.php:131 lib/gpl/admin/meta.php:92
-#: lib/gpl/admin/post.php:109 lib/pro/admin/meta.php:100
+#: lib/gpl/admin/post.php:111 lib/pro/admin/meta.php:100
 #: lib/pro/admin/post.php:109
 msgctxt "option label"
 msgid "Default Title"
 msgstr "Titre par défaut"
 
 #: lib/gettext-pro.php:105 lib/gettext-pro.php:132 lib/gpl/admin/meta.php:99
-#: lib/gpl/admin/post.php:117 lib/pro/admin/meta.php:108
+#: lib/gpl/admin/post.php:119 lib/pro/admin/meta.php:108
 #: lib/pro/admin/post.php:117
 msgctxt "option label"
 msgid "Default Description"
 msgstr "Description par défaut"
 
 #: lib/gettext-pro.php:106 lib/gettext-pro.php:133 lib/gpl/admin/meta.php:107
-#: lib/gpl/admin/post.php:126 lib/pro/admin/meta.php:117
+#: lib/gpl/admin/post.php:128 lib/pro/admin/meta.php:117
 #: lib/pro/admin/post.php:126
 msgctxt "option label"
 msgid "Search Description"
 msgstr "Description de recherche"
 
 #: lib/gettext-pro.php:107 lib/gettext-pro.php:134 lib/gpl/admin/meta.php:116
-#: lib/gpl/admin/post.php:136 lib/pro/admin/meta.php:126
+#: lib/gpl/admin/post.php:138 lib/pro/admin/meta.php:126
 #: lib/pro/admin/post.php:136
 msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr "Description carte Twitter"
 
 #: lib/gettext-pro.php:108 lib/gettext-pro.php:135 lib/gpl/admin/meta.php:124
-#: lib/gpl/admin/post.php:145 lib/pro/admin/meta.php:133
+#: lib/gpl/admin/post.php:147 lib/pro/admin/meta.php:133
 #: lib/pro/admin/post.php:144 lib/wp-meta.php:509 lib/wp-meta.php:533
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr "URL de partage"
 
 #: lib/gettext-pro.php:109 lib/gettext-pro.php:136 lib/gpl/admin/meta.php:132
-#: lib/gpl/admin/post.php:154 lib/pro/admin/meta.php:140
+#: lib/gpl/admin/post.php:156 lib/pro/admin/meta.php:140
 #: lib/pro/admin/post.php:152 lib/wp-meta.php:513 lib/wp-meta.php:537
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr "URL canonique"
 
-#: lib/gettext-pro.php:110 lib/gpl/admin/post.php:164 lib/messages.php:2368
+#: lib/gettext-pro.php:110 lib/gpl/admin/post.php:166 lib/messages.php:2368
 #: lib/pro/admin/post.php:162
 msgctxt "option label"
 msgid "Product Availability"
 msgstr "Disponibilité du produit"
 
-#: lib/gettext-pro.php:111 lib/gpl/admin/post.php:173 lib/messages.php:2372
+#: lib/gettext-pro.php:111 lib/gpl/admin/post.php:175 lib/messages.php:2372
 #: lib/pro/admin/post.php:171
 msgctxt "option label"
 msgid "Product Brand"
 msgstr "Marque du produit"
 
-#: lib/gettext-pro.php:112 lib/gpl/admin/post.php:181 lib/messages.php:2376
+#: lib/gettext-pro.php:112 lib/gpl/admin/post.php:183 lib/messages.php:2376
 #: lib/pro/admin/post.php:178
 msgctxt "option label"
 msgid "Product Color"
 msgstr "Couleur du produit"
 
-#: lib/gettext-pro.php:113 lib/gpl/admin/post.php:189 lib/messages.php:2380
+#: lib/gettext-pro.php:113 lib/gpl/admin/post.php:191 lib/messages.php:2380
 #: lib/pro/admin/post.php:185
 msgctxt "option label"
 msgid "Product Condition"
 msgstr "Condition du produit"
 
-#: lib/gettext-pro.php:114 lib/gpl/admin/post.php:197 lib/messages.php:2384
+#: lib/gettext-pro.php:114 lib/gpl/admin/post.php:199 lib/messages.php:2384
 #: lib/pro/admin/post.php:192
 msgctxt "option label"
 msgid "Product Material"
 msgstr "Matériel du produit"
 
-#: lib/gettext-pro.php:115 lib/gpl/admin/post.php:205 lib/messages.php:2388
+#: lib/gettext-pro.php:115 lib/gpl/admin/post.php:207 lib/messages.php:2388
 #: lib/pro/admin/post.php:199
 msgctxt "option label"
 msgid "Product MPN"
 msgstr "MPN du produit"
 
-#: lib/gettext-pro.php:116 lib/gpl/admin/post.php:213 lib/messages.php:2392
+#: lib/gettext-pro.php:116 lib/gpl/admin/post.php:215 lib/messages.php:2392
 #: lib/pro/admin/post.php:206
 msgctxt "option label"
 msgid "Product SKU"
 msgstr "SKU du produit"
 
-#: lib/gettext-pro.php:117 lib/gpl/admin/post.php:221 lib/messages.php:2396
+#: lib/gettext-pro.php:117 lib/gpl/admin/post.php:223 lib/messages.php:2396
 #: lib/pro/admin/post.php:213
 msgctxt "option label"
 msgid "Product EAN"
 msgstr "EAN du produit"
 
-#: lib/gettext-pro.php:118 lib/gpl/admin/post.php:229 lib/messages.php:2400
+#: lib/gettext-pro.php:118 lib/gpl/admin/post.php:231 lib/messages.php:2400
 #: lib/pro/admin/post.php:220
 msgctxt "option label"
 msgid "Product GTIN-8"
 msgstr "GTIN-8 du produit"
 
-#: lib/gettext-pro.php:119 lib/gpl/admin/post.php:237 lib/messages.php:2404
+#: lib/gettext-pro.php:119 lib/gpl/admin/post.php:239 lib/messages.php:2404
 #: lib/pro/admin/post.php:227
 msgctxt "option label"
 msgid "Product GTIN-12"
 msgstr "GTIN-12 du produit"
 
-#: lib/gettext-pro.php:120 lib/gpl/admin/post.php:245 lib/messages.php:2408
+#: lib/gettext-pro.php:120 lib/gpl/admin/post.php:247 lib/messages.php:2408
 #: lib/pro/admin/post.php:234
 msgctxt "option label"
 msgid "Product GTIN-13"
 msgstr "GTIN-13 du produit"
 
-#: lib/gettext-pro.php:121 lib/gpl/admin/post.php:253 lib/messages.php:2412
+#: lib/gettext-pro.php:121 lib/gpl/admin/post.php:255 lib/messages.php:2412
 #: lib/pro/admin/post.php:241
 msgctxt "option label"
 msgid "Product GTIN-14"
 msgstr "GTIN-14 du produit"
 
-#: lib/gettext-pro.php:122 lib/gpl/admin/post.php:261 lib/messages.php:2416
+#: lib/gettext-pro.php:122 lib/gpl/admin/post.php:263 lib/messages.php:2416
 #: lib/pro/admin/post.php:248
 msgctxt "option label"
 msgid "Product ISBN"
 msgstr "ISBN du produit"
 
-#: lib/gettext-pro.php:123 lib/gpl/admin/post.php:269 lib/messages.php:2420
+#: lib/gettext-pro.php:123 lib/gpl/admin/post.php:271 lib/messages.php:2420
 #: lib/pro/admin/post.php:255
 msgctxt "option label"
 msgid "Product Price"
 msgstr "Prix du produit"
 
-#: lib/gettext-pro.php:124 lib/gpl/admin/post.php:278 lib/messages.php:2428
+#: lib/gettext-pro.php:124 lib/gpl/admin/post.php:280 lib/messages.php:2428
 #: lib/pro/admin/post.php:263
 msgctxt "option label"
 msgid "Product Size"
 msgstr "Taille du produit"
 
-#: lib/gettext-pro.php:125 lib/gpl/admin/post.php:286 lib/messages.php:2432
+#: lib/gettext-pro.php:125 lib/gpl/admin/post.php:288 lib/messages.php:2432
 #: lib/pro/admin/post.php:270
 msgctxt "option label"
 msgid "Product Target Gender"
 msgstr "Sexe cible du produit"
 
 #: lib/gettext-pro.php:126 lib/gettext-pro.php:137 lib/gpl/admin/meta.php:141
-#: lib/gpl/admin/post.php:293 lib/pro/admin/meta.php:150
+#: lib/gpl/admin/post.php:295 lib/pro/admin/meta.php:150
 #: lib/pro/admin/post.php:277 lib/submenu/general.php:260
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup"
 msgstr "Données structurées / balisage Schéma"
 
 #: lib/gettext-pro.php:127 lib/gettext-pro.php:138 lib/gpl/admin/meta.php:146
-#: lib/gpl/admin/post.php:299 lib/pro/admin/meta.php:154
+#: lib/gpl/admin/post.php:301 lib/pro/admin/meta.php:154
 #: lib/pro/admin/post.php:282
 msgctxt "option label"
 msgid "Description"
 msgstr "Description"
 
 # Ignore the post type to avoid gender issues in the French translation.
-#: lib/gettext-pro.php:128 lib/gpl/admin/post.php:305
+#: lib/gettext-pro.php:128 lib/gpl/admin/post.php:307
 #: lib/pro/admin/post.php:288 lib/wp-meta.php:505
 msgid "Save a draft version or publish the %s to update this value."
 msgstr "Enregistrer un brouillon ou publiez pour mettre à jour cette valeur."
@@ -3095,23 +3095,23 @@ msgstr "Les modules d'intégration et de découverte vidéo sont fournis avec la
 msgid "adding open graph meta tags"
 msgstr "ajout de balises méta open graph"
 
-#: lib/head.php:571
+#: lib/head.php:573
 msgid "adding twitter card meta tags"
 msgstr "ajout de balises méta carte twitter"
 
-#: lib/head.php:578
+#: lib/head.php:582
 msgid "adding meta name meta tags"
 msgstr "ajout de balises nom de méta"
 
-#: lib/head.php:585
+#: lib/head.php:591
 msgid "adding link relation tags"
 msgstr "ajout de balises de relation de lien"
 
-#: lib/head.php:592
+#: lib/head.php:600
 msgid "adding schema meta tags"
 msgstr "ajout de balises méta de schéma"
 
-#: lib/head.php:599
+#: lib/head.php:609
 msgid "adding schema json-ld markup"
 msgstr "ajout de balisage schéma json-ld"
 
@@ -3552,10 +3552,10 @@ msgid "The use of WordPress content filters allows the plugin to fully render yo
 msgstr "L'utilisation de filtres de contenu WordPress permet a l'extension de rendre pleinement le texte du contenu pour les balises méta de description et de détecter des images additionnelles et/ou des vidéos intégrées ajouté a partir de shortcodes."
 
 #: lib/messages.php:672 lib/messages.php:2108
-msgid "MANY THEMES AND PLUGINS HAVE BADLY CODED CONTENT FILTERS, so this option is disabled by default."
-msgstr "PLUSIEURS THÈMES ET EXTENSIONS ONT DES FILTRES DE CONTENU MAL CODÉ, donc cette option est désactivée par défaut."
+msgid "Many themes and plugins have badly coded content filters, so this option is disabled by default."
+msgstr "Plusieurs thèmes et extensions ont des filtres de contenu mal codé, donc cette option est désactivée par défaut."
 
-#: lib/messages.php:674 lib/messages.php:2110
+#: lib/messages.php:674
 msgid "If you use shortcodes in your content text, this option should be enabled &mdash; IF YOU EXPERIENCE WEBPAGE LAYOUT OR PERFORMANCE ISSUES AFTER ENABLING THIS OPTION, determine which theme or plugin is filtering the content incorrectly and report the problem to its author(s)."
 msgstr "Si vous utilisez des shortcodes dans votre contenu, cette option devrait être activée &mdash; SI VOUS RENCONTREZ DES PROBLÈMES DE MISE EN PAGE OU DE PERFORMANCES APRÈS AVOIR ACTIVÉ CETTE OPTION, déterminer quel thème ou extension filtre le contenu d'une façon incorrecte et signalez le problème à son auteur(s)."
 
@@ -4416,6 +4416,10 @@ msgstr "L'option avancée %1$s est actuellement désactivé."
 msgid "The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions and detect additional images and/or embedded videos provided by shortcodes."
 msgstr "L'utilisation de filtres de contenu WordPress permet a %s de rendre pleinement le texte du contenu pour les balises méta de description et de détecter des images additionnelles ainsi que des vidéos intégrées ajouté a partir de shortcodes."
 
+#: lib/messages.php:2110
+msgid "If you use shortcodes in your content text, this option should be enabled &mdash; IF YOU EXPERIENCE WEBPAGE LAYOUT OR PERFORMANCE ISSUES AFTER ENABLING THIS OPTION, you should determine which theme or plugin is filtering the content incorrectly, and report the problem to its author(s)."
+msgstr "Si vous utilisez des shortcodes dans votre contenu, cette option devrait être activée &mdash; SI VOUS RENCONTREZ DES PROBLÈMES DE MISE EN PAGE OU DE PERFORMANCES APRÈS AVOIR ACTIVÉ CETTE OPTION, déterminer quel thème ou extension filtre le contenu d'une façon incorrecte et signalez le problème à son auteur(s)."
+
 #: lib/messages.php:2112
 msgid "Advanced users can also hook the \"%s\" filter and return true / false to enable or disable this feature dynamically."
 msgstr "Les utilisateurs avancés peuvent également accrocher le filtre \"%s\" et retourner true / false pour activer ou désactiver cette fonctionnalité de manière dynamique."
@@ -5119,27 +5123,27 @@ msgstr "SVP mettre à jour %1$s avant d'essayer de réactiver l'extension %2$s."
 msgid "adding schema for %1$s ID %2$s"
 msgstr "ajout de schéma pour %1$s ID %2$s"
 
-#: lib/schema-single.php:534
+#: lib/schema-single.php:538
 msgid "adding schema for offer"
 msgstr "ajout de schéma pour offre"
 
-#: lib/schema-single.php:624
+#: lib/schema-single.php:628
 msgid "adding schema for organization"
 msgstr "ajout de schéma d'organisation"
 
-#: lib/schema-single.php:666
+#: lib/schema-single.php:670
 msgid "The \"%1$s\" Organization Logo image is missing and required for the Schema %2$s markup."
 msgstr "L'image logo de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema-single.php:673
+#: lib/schema-single.php:677
 msgid "The \"%1$s\" Organization Banner (600x60px) image is missing and required for the Schema %2$s markup."
 msgstr "L'image bannière (600x60px) de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema-single.php:810
+#: lib/schema-single.php:816
 msgid "adding schema for person user ID %1$s"
 msgstr "ajout de schéma de personne pour l'ID d'utilisateur %1$s"
 
-#: lib/schema-single.php:963
+#: lib/schema-single.php:971
 msgid "adding schema for place"
 msgstr "ajout de schéma de place"
 
@@ -5931,3 +5935,6 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
+
+#~ msgid "MANY THEMES AND PLUGINS HAVE BADLY CODED CONTENT FILTERS, so this option is disabled by default."
+#~ msgstr "PLUSIEURS THÈMES ET EXTENSIONS ONT DES FILTRES DE CONTENU MAL CODÉ, donc cette option est désactivée par défaut."
