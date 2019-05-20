@@ -431,7 +431,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.31.0-rc.1 (2019/05/19)**
+**Version 4.31.0 (2019/05/20)**
 
 * *New Features*
 	* None.
@@ -509,69 +509,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Moved add/get_single methods in WpssoSchema to the WpssoSchemaSingle class.
 	* Moved the Schema json arrays for a webpage into a single '@graph' array.
 
-**Version 4.28.0 (2019/04/13)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* Added a new "SSO Dashboard" page under the WordPress Dashboard admin menu.
-	* Added a new "SSO Add-ons" page under the WordPress Plugins admin menu.
-	* Added a new "SSO Tools" page under the WordPress Tools admin menu.
-* *Bugfixes*
-	* Fixed the extra space under the metabox horizontal tab layout.
-* *Developer Notes*
-	* None.
-
-**Version 4.27.2 (2019/04/09)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* Improved the settings page and SSO metabox CSS for mobile devices (ie. tab icon sizes, tab text shown/hidden, vertical tab width, and minimum metabox width).
-* *Bugfixes*
-	* Fix to prevent WordPress from moving notices out of the toolbar on WooCommerce product pages.
-* *Developer Notes*
-	* None.
-
-**Version 4.27.1 (2019/04/06)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* None.
-* *Bugfixes*
-	* Fixed 'wp-editor' and 'wp-edit-post' block editor dependencies for the 'block-editor-admin.js' script.
-* *Developer Notes*
-	* Added new WpssoSchema methods for the WPSSO JSON Pro add-on:
-		* add_aggregate_offer_data();
-		* get_single_offer_data();
-	* Renamed the 'img' config array key to 'assets'.
-	* Added a 'search_terms' config array key.
-
-**Version 4.26.0 (2019/03/31)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* Added product reviews from the Yotpo Social Reviews for WooCommerce API for the WPSSO JSON Pro add-on (Pro version).
-* *Bugfixes*
-	* None.
-* *Developer Notes*
-	* Refactored the Yotpo Social Reviews for WooCommerce module (Pro version).
-	* Added new internal meta tags for the WPSSO JSON Pro add-on:
-		* product:quantity:value
-		* product:quantity:minimum
-		* product:quantity:maximum
-		* product:quantity:unit_code
-		* product:quantity:unit_text
-
 == Upgrade Notice ==
 
-= 4.31.0-rc.1 =
+= 4.31.0 =
 
-(2019/05/19) Fixed an incorrect method call in the 'wpsso_schema_attributes' function. Fixed an incorrect post status value in WpssoUtil::get_page_url().
-
-= 4.30.0 =
-
-(2019/05/04) Renamed the "Add-ons" settings page to "Complementary Add-ons". Moved 3rd party integration modules from WPSSO JSON Pro to WPSSO Core Pro.
+(2019/05/20) Fixed an incorrect method call in the 'wpsso_schema_attributes' function. Fixed an incorrect post status value in WpssoUtil::get_page_url().
 
