@@ -2715,8 +2715,7 @@ msgstr ""
 #: lib/gettext-pro.php:100 lib/gettext-pro.php:129 lib/gpl/admin/meta.php:77
 #: lib/gpl/admin/post.php:73 lib/pro/admin/meta.php:88
 #: lib/pro/admin/post.php:82
-msgid ""
-"Activate the %s add-on for additional Schema markup features and options."
+msgid "Activate the %s add-on for additional Schema markup options."
 msgstr ""
 
 #: lib/gettext-pro.php:101 lib/gettext-pro.php:130 lib/gpl/admin/meta.php:84
@@ -2763,7 +2762,7 @@ msgstr ""
 #: lib/gpl/admin/post.php:138 lib/pro/admin/meta.php:126
 #: lib/pro/admin/post.php:136
 msgctxt "option label"
-msgid "Twitter Card Description"
+msgid "Twitter Card Desc"
 msgstr ""
 
 #: lib/gettext-pro.php:108 lib/gettext-pro.php:135 lib/gpl/admin/meta.php:124

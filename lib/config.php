@@ -1417,9 +1417,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 */
 				'cf_md_key' => array(
 					'plugin_cf_addl_type_urls'        => 'schema_addl_type_url',	// Microdata Type URLs Custom Field.
-					'plugin_cf_howto_steps'           => 'schema_howto_step',
-					'plugin_cf_howto_supplies'        => 'schema_howto_supply',
-					'plugin_cf_howto_tools'           => 'schema_howto_tool',
+					'plugin_cf_howto_steps'           => 'schema_howto_step',	// How-To Steps Custom Field.
+					'plugin_cf_howto_supplies'        => 'schema_howto_supply',	// How-To Supplies Custom Field.
+					'plugin_cf_howto_tools'           => 'schema_howto_tool',	// How-To Tools Custom Field.
 					'plugin_cf_img_url'               => 'og_img_url',
 					'plugin_cf_product_avail'         => 'product_avail',
 					'plugin_cf_product_brand'         => 'product_brand',
@@ -1450,9 +1450,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 */
 				'cf_md_multi' => array(
 					'schema_addl_type_url'      => true,	// Microdata Type URLs.
-					'schema_howto_step'         => true,
-					'schema_howto_supply'       => true,
-					'schema_howto_tool'         => true,
+					'schema_howto_step'         => true,	// How-To Steps.
+					'schema_howto_supply'       => true,	// How-To Supplies.
+					'schema_howto_tool'         => true,	// How-To Tools.
 					'schema_recipe_ingredient'  => true,
 					'schema_recipe_instruction' => true,
 					'schema_sameas_url'         => true,

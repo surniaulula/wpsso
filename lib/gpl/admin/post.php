@@ -70,7 +70,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 				$json_info       = $this->p->cf[ 'plugin' ][ 'wpssojson' ];
 				$json_addon_link = $this->p->util->get_admin_url( 'addons#wpssojson', $json_info[ 'name' ] );
 				$json_msg_transl = '<p class="status-msg smaller">' . 
-					sprintf( __( 'Activate the %s add-on for additional Schema markup features and options.',
+					sprintf( __( 'Activate the %s add-on for additional Schema markup options.',
 						'wpsso' ), $json_addon_link ) . '</p>';
 
 			} else {
@@ -135,7 +135,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'no_auto_draft' => true,
 					'th_class'      => 'medium',
 					'td_class'      => 'blank',
-					'label'         => _x( 'Twitter Card Description', 'option label', 'wpsso' ),
+					'label'         => _x( 'Twitter Card Desc', 'option label', 'wpsso' ),
 					'tooltip'       => 'meta-tc_desc',
 					'content'       => $form->get_no_textarea_value( $def_tc_desc, '', '', $tc_desc_max_len ),
 				),

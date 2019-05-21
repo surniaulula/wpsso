@@ -834,14 +834,17 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			foreach ( range( 0, $end_num, 1 ) as $key_num ) {
 
 				if ( $max_input > 1 ) {
+
 					$input_id = empty( $css_id ) ? '' : $css_id . '_' . $key_num;
+
 					$html .= '<div class="wrap_multi">' . "\n";
+					$html .= '<p style="display:inline">' . ( $key_num + 1 ) . '.</p> ';
 				}
 
 				$html .= '<input type="text" disabled="disabled"' .
 					( empty( $input_class ) ? '' : ' class="' . esc_attr( $input_class ) . '"' ) .
 					( empty( $input_id ) ? '' : ' id="text_' . esc_attr( $input_id ) . '"' ) .
-					( $placeholder === '' ? '' : ' placeholder="' . esc_attr( $placeholder ) . '"' ) .
+					( $placeholder === '' || $key_num > 0 ? '' : ' placeholder="' . esc_attr( $placeholder ) . '"' ) .
 					' value="' . esc_attr( $value ) . '" />' . "\n";
 
 				if ( $max_input > 1 ) {
@@ -1132,14 +1135,16 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$input_value   = $this->in_options( $opt_key ) ? $this->options[ $opt_key ] : '';
 				$display       = empty( $one_more ) && $key_num >= $show_first ? false : true;
 
-				$html .= '<div class="wrap_multi" id="wrap_' . esc_attr( $input_id ) . '"' .
-					( $display ? '' : ' style="display:none;"' ) . '>' . "\n";
-
 				if ( $disabled && $key_num >= $show_first && empty( $display ) ) {
-
 					continue;
+				}
+				
+				$html .= '<div class="wrap_multi" id="wrap_' . esc_attr( $input_id ) . '"';
+				$html .= $display ? '' : ' style="display:none;"';
+				$html .= '>' . "\n";
+				$html .= '<p style="display:inline">' . ( $key_num + 1 ) . '.</p> ';
 
-				} elseif ( $opt_disabled ) {
+				if ( $opt_disabled ) {
 
 					$html .= $this->get_no_input( $opt_key, $input_class, $input_id );	// adds 'text_' to the id value
 
@@ -1202,8 +1207,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$wrap_id_next = $css_id . '_' . $next_num;
 				$display      = empty( $one_more ) && $key_num >= $show_first ? false : true;
 
-				$html .= '<div class="wrap_multi" id="wrap_' . esc_attr( $wrap_id ) . '"' .
-					( $display ? '' : ' style="display:none;"' ) . '>' . "\n";
+				$html .= '<div class="wrap_multi" id="wrap_' . esc_attr( $wrap_id ) . '"';
+				$html .= $display ? '' : ' style="display:none;"';
+				$html .= '>' . "\n";
+				$html .= '<p style="display:inline">' . ( $key_num + 1 ) . '.</p> ';
 
 				foreach ( $mixed as $name => $atts ) {
 
