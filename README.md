@@ -95,9 +95,9 @@
 <li>Article Topic</li>
 <li>Default Title</li>
 <li>Default Description</li>
-<li>Search Description</li>
 <li>Schema Description</li>
-<li>Twitter Card Description</li>
+<li>Search Description</li>
+<li>Twitter Card Desc</li>
 <li>Sharing URL</li>
 <li>Canonical URL</li>
 <li>Product Availability</li>
@@ -184,15 +184,15 @@
 
 <ul>
 <li>Event Language</li>
-<li>Event Organizer Org.</li>
+<li>Event Organizer Org</li>
 <li>Event Organizer Person</li>
-<li>Event Performer Org.</li>
+<li>Event Performer Org</li>
 <li>Event Performer Person</li>
 <li>Event Venue</li>
 <li>Event Start (date, time, timezone)</li>
 <li>Event End (date, time, timezone)</li>
-<li>Offers Start (date, time, timezone)</li>
-<li>Offers End (date, time, timezone)</li>
+<li>Event Offers Start (date, time, timezone)</li>
+<li>Event Offers End (date, time, timezone)</li>
 <li>Event Offers (name, price, currency, availability)</li>
 </ul></li>
 <li>How-To

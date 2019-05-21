@@ -97,9 +97,9 @@ WPSSO Core and its optional Free add-ons offer meta tags and Schema markup for F
 		* Article Topic
 		* Default Title
 		* Default Description
-		* Search Description
 		* Schema Description
-		* Twitter Card Description
+		* Search Description
+		* Twitter Card Desc
 		* Sharing URL
 		* Canonical URL
 		* Product Availability
@@ -161,15 +161,15 @@ WPSSO Core and its optional Free add-ons offer meta tags and Schema markup for F
 		* Service Provider
 	* Event Information
 		* Event Language
-		* Event Organizer Org.
+		* Event Organizer Org
 		* Event Organizer Person
-		* Event Performer Org.
+		* Event Performer Org
 		* Event Performer Person
 		* Event Venue
 		* Event Start (date, time, timezone)
 		* Event End (date, time, timezone)
-		* Offers Start (date, time, timezone)
-		* Offers End (date, time, timezone)
+		* Event Offers Start (date, time, timezone)
+		* Event Offers End (date, time, timezone)
 		* Event Offers (name, price, currency, availability)
 	* How-To
 		* How-To Makes 
