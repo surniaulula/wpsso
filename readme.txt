@@ -431,6 +431,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.31.1-dev.2 (2019/05/21)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* Added numbers to multi line input options (HowTo Steps, etc).
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* None.
+
 **Version 4.31.0 (2019/05/20)**
 
 * *New Features*
@@ -510,6 +521,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Moved the Schema json arrays for a webpage into a single '@graph' array.
 
 == Upgrade Notice ==
+
+= 4.31.1-dev.2 =
+
+(2019/05/21) Added numbers to multi line input options (HowTo Steps, etc).
 
 = 4.31.0 =
 
