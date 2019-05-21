@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 4.31.0\n"
+"Project-Id-Version: WPSSO Core 4.31.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-05-20 11:09-0700\n"
-"PO-Revision-Date: 2019-05-20 11:10-0700\n"
+"POT-Creation-Date: 2019-05-21 09:48-0700\n"
+"PO-Revision-Date: 2019-05-21 09:49-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2612,8 +2612,8 @@ msgstr "Forcer a jouer lorsque possible"
 #: lib/gettext-pro.php:100 lib/gettext-pro.php:129 lib/gpl/admin/meta.php:77
 #: lib/gpl/admin/post.php:73 lib/pro/admin/meta.php:88
 #: lib/pro/admin/post.php:82
-msgid "Activate the %s add-on for additional Schema markup features and options."
-msgstr "Activer l'ajout %s pour plus de fonctions et options de balisage Schéma."
+msgid "Activate the %s add-on for additional Schema markup options."
+msgstr "Activer l'ajout %s pour d'autres d'options de balisage Schéma."
 
 #: lib/gettext-pro.php:101 lib/gettext-pro.php:130 lib/gpl/admin/meta.php:84
 #: lib/gpl/admin/post.php:80 lib/pro/admin/meta.php:95
@@ -2657,8 +2657,8 @@ msgstr "Description de recherche"
 #: lib/gpl/admin/post.php:138 lib/pro/admin/meta.php:126
 #: lib/pro/admin/post.php:136
 msgctxt "option label"
-msgid "Twitter Card Description"
-msgstr "Description carte Twitter"
+msgid "Twitter Card Desc"
+msgstr "Desc. carte Twitter"
 
 #: lib/gettext-pro.php:108 lib/gettext-pro.php:135 lib/gpl/admin/meta.php:124
 #: lib/gpl/admin/post.php:147 lib/pro/admin/meta.php:133
@@ -5935,6 +5935,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
-
-#~ msgid "MANY THEMES AND PLUGINS HAVE BADLY CODED CONTENT FILTERS, so this option is disabled by default."
-#~ msgstr "PLUSIEURS THÈMES ET EXTENSIONS ONT DES FILTRES DE CONTENU MAL CODÉ, donc cette option est désactivée par défaut."
