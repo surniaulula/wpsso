@@ -203,7 +203,7 @@
 <li>How-To Total Time </li>
 <li>How-To Supplies </li>
 <li>How-To Tools </li>
-<li>How-To Steps (name, description)</li>
+<li>How-To Steps (step name, direction text)</li>
 </ul></li>
 <li>Job Posting Information
 

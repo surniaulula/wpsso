@@ -177,7 +177,7 @@ WPSSO Core and its optional Free add-ons offer meta tags and Schema markup for F
 		* How-To Total Time 
 		* How-To Supplies 
 		* How-To Tools 
-		* How-To Steps (name, description)
+		* How-To Steps (step name, direction text)
 	* Job Posting Information
 		* Job Posting Job Title
 		* Job Posting Hiring Organization
