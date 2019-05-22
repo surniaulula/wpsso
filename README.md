@@ -203,7 +203,7 @@
 <li>How-To Total Time </li>
 <li>How-To Supplies </li>
 <li>How-To Tools </li>
-<li>How-To Steps </li>
+<li>How-To Steps (name, description)</li>
 </ul></li>
 <li>Job Posting Information
 
@@ -353,11 +353,11 @@
 
 <h3>Coded for Performance</h3>
 
-<p>WPSSO Core makes full use of all available caching methods &mdash; along with offering advanced caching features like pre-seeding the cache in background. WPSSO Core and its add-ons use only the library files and object classes they need, keeping their code small, fast and light. All code is fully tested and compatible with the latest version of WordPress and PHP v7.x (PHP v5.5 or better required).</p>
+<p>WPSSO Core makes full use of all available caching methods &mdash; along with offering advanced caching features like pre-seeding the cache in background. WPSSO Core and its complementary add-ons use only the library files and object classes they need, keeping their code small, fast and light. All code is fully tested and compatible with the latest version of WordPress and PHP v7.x (PHP v5.5 or better required).</p>
 
 <h3>Highly Customizable</h3>
 
-<p>WPSSO Core offers hundreds of filter hooks to customize its behavior and output, provides extensive developer documentation with examples, includes dozens of 3rd party integration modules in the Pro version, and offers several optional Free and complementary Pro add-ons to extend WPSSO Core's functionality.</p>
+<p>WPSSO Core offers hundreds of filter hooks to customize its behavior and output, provides extensive developer documentation with examples, includes dozens of 3rd party integration modules in the Pro version, and offers several optional Free and Pro add-ons to extend WPSSO Core's functionality.</p>
 
 
 <h2>Installation</h2>

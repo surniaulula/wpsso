@@ -177,7 +177,7 @@ WPSSO Core and its optional Free add-ons offer meta tags and Schema markup for F
 		* How-To Total Time 
 		* How-To Supplies 
 		* How-To Tools 
-		* How-To Steps 
+		* How-To Steps (name, description)
 	* Job Posting Information
 		* Job Posting Job Title
 		* Job Posting Hiring Organization
@@ -298,11 +298,11 @@ WPSSO Core and its optional Free add-ons offer meta tags and Schema markup for F
 
 <h3>Coded for Performance</h3>
 
-WPSSO Core makes full use of all available caching methods &mdash; along with offering advanced caching features like pre-seeding the cache in background. WPSSO Core and its add-ons use only the library files and object classes they need, keeping their code small, fast and light. All code is fully tested and compatible with the latest version of WordPress and PHP v7.x (PHP v5.5 or better required).
+WPSSO Core makes full use of all available caching methods &mdash; along with offering advanced caching features like pre-seeding the cache in background. WPSSO Core and its complementary add-ons use only the library files and object classes they need, keeping their code small, fast and light. All code is fully tested and compatible with the latest version of WordPress and PHP v7.x (PHP v5.5 or better required).
 
 <h3>Highly Customizable</h3>
 
-WPSSO Core offers hundreds of filter hooks to customize its behavior and output, provides extensive developer documentation with examples, includes dozens of 3rd party integration modules in the Pro version, and offers several optional Free and complementary Pro add-ons to extend WPSSO Core's functionality.
+WPSSO Core offers hundreds of filter hooks to customize its behavior and output, provides extensive developer documentation with examples, includes dozens of 3rd party integration modules in the Pro version, and offers several optional Free and Pro add-ons to extend WPSSO Core's functionality.
 
 == Installation ==
 
@@ -431,7 +431,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.31.1-dev.2 (2019/05/21)**
+**Version 4.31.1-dev.3 (2019/05/22)**
 
 * *New Features*
 	* None.
@@ -522,9 +522,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.31.1-dev.2 =
+= 4.31.1-dev.3 =
 
-(2019/05/21) Added numbers to multi line input options (HowTo Steps, etc).
+(2019/05/22) Added numbers to multi line input options (HowTo Steps, etc).
 
 = 4.31.0 =
 
