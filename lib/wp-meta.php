@@ -1060,26 +1060,58 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			 */
 			foreach ( $this->p->cf[ 'opt' ][ 'cf_md_multi' ] as $md_multi => $is_multi ) {
 
-				if ( ! $is_multi ) {	// Just in case.
+				if ( empty( $is_multi ) ) {	// True, false, or array.
 					continue;
 				}
 
-				$md_seq = array();	// Start with a fresh array.
+				/**
+				 * Get multi option values indexed only by their number.
+				 */
+				$md_multi_opts = SucomUtil::preg_grep_keys( '/^' . $md_multi . '_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
 
-				$md_orig = SucomUtil::preg_grep_keys( '/^' . $md_multi . '_[0-9]+$/', $md_opts );
+				$md_renum_opts = array();	// Start with a fresh array.
 
-				foreach ( $md_orig as $md_key => $md_val ) {
+				$renum = 0;	// Start a new index at 0.
 
-					unset( $md_opts[ $md_key ] );
+				foreach ( $md_multi_opts as $md_num => $md_val ) {
 
-					if ( $md_val !== '' ) {
-						$md_seq[] = $md_val;
+					if ( $md_val !== '' ) {	// Only save non-empty values.
+						$md_renum_opts[ $md_multi . '_' . $renum ] = $md_val;
+					}
+
+					/**
+					 * Check if there are linked options, and if so, re-number those options as well.
+					 */
+					if ( is_array( $is_multi ) ) {
+						foreach ( $is_multi as $md_multi_linked ) {
+							if ( isset( $md_opts[ $md_multi_linked . '_' . $md_num ] ) ) {	// Just in case.
+								$md_renum_opts[ $md_multi_linked . '_' . $renum ] = $md_opts[ $md_multi_linked . '_' . $md_num ];
+							}
+						}
+					}
+
+					$renum++;	// Increment the new index number.
+				}
+
+				/**
+				 * Remove any existing multi options, including any linked options.
+				 */
+				$md_opts = SucomUtil::preg_grep_keys( '/^' . $md_multi . '_([0-9]+)$/', $md_opts, $invert = true );
+
+				if ( is_array( $is_multi ) ) {
+					foreach ( $is_multi as $md_multi_linked ) {
+						$md_opts = SucomUtil::preg_grep_keys( '/^' . $md_multi_linked . '_([0-9]+)$/', $md_opts, $invert = true );
 					}
 				}
 
-				foreach ( $md_seq as $num => $md_val ) {	// Start at 0.
-					$md_opts[ $md_multi . '_' . $num ] = $md_val;
+				/**
+				 * Save the re-numbered options.
+				 */
+				foreach ( $md_renum_opts as $md_key => $md_val ) {
+					$md_opts[ $md_key ] = $md_val;
 				}
+
+				unset( $md_renum_opts );
 			}
 
 			/**
@@ -1495,19 +1527,26 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				 * Decode the string or each array element.
 				 */
 				if ( is_array( $mixed ) ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $meta_key . ' is array of ' . count( $mixed ) . ' values (decoding each value)' );
 					}
+
 					foreach ( $mixed as $val ) {
+
 						if ( is_array( $val ) ) {
 							$val = SucomUtil::array_implode( $val );
 						}
+
 						$values[] = trim( html_entity_decode( SucomUtil::decode_utf8( $val ), ENT_QUOTES, $charset ) );
 					}
+
 				} else {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'decoding ' . $meta_key . ' as string of ' . strlen( $mixed ) . ' chars' );
 					}
+
 					$values[] = trim( html_entity_decode( SucomUtil::decode_utf8( $mixed ), ENT_QUOTES, $charset ) );
 				}
 
@@ -1516,7 +1555,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				 */
 				if ( empty( $this->p->cf[ 'opt' ][ 'cf_md_multi' ][ $md_key ] ) ) {
 
-					$is_multi = false;
+					$md_opts[ $md_key ] = reset( $values );	// Get first element of $values array.
+
+					$md_opts[ $md_key . ':is' ] = 'disabled';
 
 				} else {
 
@@ -1529,29 +1570,15 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 						}
 					}
 
-					$is_multi = true;	// Increment the option name.
-				}
-
-				/**
-				 * Increment the option name starting at 0.
-				 */
-				if ( $is_multi ) {
-
 					/**
 					 * Remove any old values from the options array.
 					 */
-					$md_opts = SucomUtil::preg_grep_keys( '/^' . $md_key . '_[0-9]+$/', $md_opts, true );	// $invert is true.
+					$md_opts = SucomUtil::preg_grep_keys( '/^' . $md_key . '_[0-9]+$/', $md_opts, $invert = true );
 
 					foreach ( $values as $num => $val ) {
 						$md_opts[ $md_key . '_' . $num ] = $val;
 						$md_opts[ $md_key . '_' . $num . ':is' ] = 'disabled';
 					}
-
-				} else {
-
-					$md_opts[ $md_key ] = reset( $values );	// Get first element of $values array.
-
-					$md_opts[ $md_key . ':is' ] = 'disabled';
 				}
 			}
 

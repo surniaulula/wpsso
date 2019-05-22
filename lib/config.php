@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'      => '4.31.1-dev.2',	// Plugin version.
+					'version'      => '4.31.1-dev.3',	// Plugin version.
 					'opt_version'  => '642',	// Increment when changing default option values.
 					'short'        => 'WPSSO Core',	// Short plugin name.
 					'name'         => 'WPSSO Core [Main Plugin]',
@@ -1446,11 +1446,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				
 				/**
-				 * Read meta values into numeric meta data index.
+				 * Read and split custom field values into numbered meta keys.
 				 */
 				'cf_md_multi' => array(
 					'schema_addl_type_url'      => true,	// Microdata Type URLs.
-					'schema_howto_step'         => true,	// How-To Steps.
+					'schema_howto_step'         => array(	// How-To Step Name.
+						'schema_howto_step_text',	// How-To Direction Text.
+					),
 					'schema_howto_supply'       => true,	// How-To Supplies.
 					'schema_howto_tool'         => true,	// How-To Tools.
 					'schema_recipe_ingredient'  => true,

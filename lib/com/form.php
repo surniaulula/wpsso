@@ -838,7 +838,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$input_id = empty( $css_id ) ? '' : $css_id . '_' . $key_num;
 
 					$html .= '<div class="wrap_multi">' . "\n";
-					$html .= '<p style="display:inline">' . ( $key_num + 1 ) . '.</p> ';
+					$html .= '<p class="input_num">' . ( $key_num + 1 ) . '.</p>';
 				}
 
 				$html .= '<input type="text" disabled="disabled"' .
@@ -1124,16 +1124,19 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			foreach ( range( $start_num, $end_num, 1 ) as $key_num ) {
 
-				$prev_num      = $key_num > 0 ? $key_num - 1 : 0;
-				$next_num      = $key_num + 1;
-				$opt_key       = $name . '_' . $key_num;
-				$opt_disabled  = $disabled || $this->get_options( $opt_key . ':is' ) === 'disabled' ? true : false;
+				$prev_num = $key_num > 0 ? $key_num - 1 : 0;
+				$next_num = $key_num + 1;
+
+				$opt_key      = $name . '_' . $key_num;
+				$opt_disabled = $disabled || $this->get_options( $opt_key . ':is' ) === 'disabled' ? true : false;
+
 				$input_class   = empty( $css_class ) ? 'multi' : 'multi ' . $css_class;
-				$input_id      = empty( $css_id ) ? $name . '_' . $key_num : $css_id . '_' . $key_num;
+				$input_id      = empty( $css_id ) ? $opt_key : $css_id . '_' . $key_num;
 				$input_id_prev = empty( $css_id ) ? $name . '_' . $prev_num : $css_id . '_' . $prev_num;
 				$input_id_next = empty( $css_id ) ? $name . '_' . $next_num : $css_id . '_' . $next_num;
 				$input_value   = $this->in_options( $opt_key ) ? $this->options[ $opt_key ] : '';
-				$display       = empty( $one_more ) && $key_num >= $show_first ? false : true;
+
+				$display = empty( $one_more ) && $key_num >= $show_first ? false : true;
 
 				if ( $disabled && $key_num >= $show_first && empty( $display ) ) {
 					continue;
@@ -1142,26 +1145,20 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= '<div class="wrap_multi" id="wrap_' . esc_attr( $input_id ) . '"';
 				$html .= $display ? '' : ' style="display:none;"';
 				$html .= '>' . "\n";
-				$html .= '<p style="display:inline">' . ( $key_num + 1 ) . '.</p> ';
+				$html .= '<p class="input_num">' . ( $key_num + 1 ) . '.</p>';
 
-				if ( $opt_disabled ) {
+				$html .= '<input type="text"' . ( $opt_disabled ? ' disabled="disabled"' : '' ) .
+					' name="' . esc_attr( $this->opts_name . '[' . $opt_key . ']' ) . '"' .
+					' class="' . esc_attr( $input_class ) . '"' .
+					' id="text_' . esc_attr( $input_id ) . '"' .
+					' value="' . esc_attr( $input_value ) . '"' .
+					' onFocus="if ( jQuery(\'input#text_' . $input_id_prev . '\').val().length ) { '.
+						'jQuery(\'div#wrap_' . esc_attr( $input_id_next ) . '\').show(); }" />';
 
-					$html .= $this->get_no_input( $opt_key, $input_class, $input_id );	// adds 'text_' to the id value
-
-				} else {
-
-					$html .= '<input type="text"' .
-						' name="' . esc_attr( $this->opts_name . '[' . $opt_key . ']' ) . '"' .
-						' class="' . esc_attr( $input_class ) . '"' .
-						' id="text_' . esc_attr( $input_id ) . '"' .
-						' value="' . esc_attr( $input_value ) . '"' .
-						' onFocus="if ( jQuery(\'input#text_' . $input_id_prev . '\').val().length ) { '.
-							'jQuery(\'div#wrap_' . esc_attr( $input_id_next ) . '\').show(); }" />';
-				}
+				$html .= '</div>' . "\n";
 
 				$one_more = empty( $input_value ) ? false : true;
 
-				$html .= '</div>' . "\n";
 			}
 
 			return $html;
@@ -1200,34 +1197,47 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			foreach ( range( $start_num, $end_num, 1 ) as $key_num ) {
 
-				$prev_num     = $key_num > 0 ? $key_num - 1 : 0;
-				$next_num     = $key_num + 1;
+				$prev_num = $key_num > 0 ? $key_num - 1 : 0;
+				$next_num = $key_num + 1;
+
 				$wrap_id      = $css_id . '_' . $key_num;
 				$wrap_id_prev = $css_id . '_' . $prev_num;
 				$wrap_id_next = $css_id . '_' . $next_num;
-				$display      = empty( $one_more ) && $key_num >= $show_first ? false : true;
+
+				$display = empty( $one_more ) && $key_num >= $show_first ? false : true;
 
 				$html .= '<div class="wrap_multi" id="wrap_' . esc_attr( $wrap_id ) . '"';
 				$html .= $display ? '' : ' style="display:none;"';
 				$html .= '>' . "\n";
-				$html .= '<p style="display:inline">' . ( $key_num + 1 ) . '.</p> ';
+				$html .= '<p class="input_num">' . ( $key_num + 1 ) . '.</p>';
 
 				foreach ( $mixed as $name => $atts ) {
 
 					$opt_key      = $name . '_' . $key_num;
 					$opt_disabled = $disabled || $this->get_options( $opt_key . ':is' ) === 'disabled' ? true : false;
-					$in_options   = $this->in_options( $opt_key );	// Optimize and call only once.
-					$in_defaults  = $this->in_defaults( $opt_key );	// Optimize and call only once.
-					$input_title  = empty( $atts[ 'input_title' ] ) ? '' : $atts[ 'input_title' ];
-					$input_class  = empty( $atts[ 'input_class' ] ) ? 'multi' : 'multi ' . $atts[ 'input_class' ];
-					$input_id     = empty( $atts[ 'input_id' ] ) ? $name . '_' . $key_num : $atts[ 'input_id' ] . '_' . $key_num;
+
+					$in_options  = $this->in_options( $opt_key );	// Optimize and call only once.
+					$in_defaults = $this->in_defaults( $opt_key );	// Optimize and call only once.
+
+					$input_title = empty( $atts[ 'input_title' ] ) ? '' : $atts[ 'input_title' ];
+					$input_class = empty( $atts[ 'input_class' ] ) ? 'multi' : 'multi ' . $atts[ 'input_class' ];
+					$input_id    = empty( $atts[ 'input_id' ] ) ? $opt_key : $atts[ 'input_id' ] . '_' . $key_num;
+
+					if ( isset( $atts[ 'placeholder' ] ) ) {
+						$placeholder = $this->get_placeholder_sanitized( $opt_key, $atts[ 'placeholder' ] );
+					} else {
+						$placeholder = '';
+					}
 	
 					if ( $disabled && $key_num >= $show_first && empty( $display ) ) {
 						continue;
 					}
-	
+
+					/**
+					 * Default paragraph display is an inline-block.
+					 */
 					if ( ! empty( $atts[ 'input_label' ] ) ) {
-						$html .= '<p style="display:inline">' . $atts[ 'input_label' ] . '</p> ';
+						$html .= '<p class="' . esc_attr( $input_class ) . '">' . $atts[ 'input_label' ] . '</p> ';
 					}
 
 					if ( isset( $atts[ 'input_type' ] ) ) {
@@ -1238,32 +1248,37 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 								$input_value = $in_options ? $this->options[ $opt_key ] : '';
 
-								if ( $opt_disabled ) {
-									$html .= $this->get_no_input( $opt_key, $input_class, $input_id );
-								} else {
-									$html .= '<input type="text"' .
-										' name="' . esc_attr( $this->opts_name . '[' . $opt_key . ']' ) . '"' .
-										' title="' . esc_attr( $input_title ) . '"' .
-										' class="' . esc_attr( $input_class ) . '"' .
-										' id="text_' . esc_attr( $input_id ) . '"' .
-										' value="' . esc_attr( $input_value ) . '"' .
-										' onFocus="jQuery(\'div#wrap_' . esc_attr( $wrap_id_next ) . '\').show();" />' . "\n";
-								}
+								$html .= '<input type="text"' . ( $opt_disabled ? ' disabled="disabled"' : '' ) .
+									' name="' . esc_attr( $this->opts_name . '[' . $opt_key . ']' ) . '"' .
+									' title="' . esc_attr( $input_title ) . '"' .
+									' class="' . esc_attr( $input_class ) . '"' .
+									' id="text_' . esc_attr( $input_id ) . '"' .
+									' value="' . esc_attr( $input_value ) . '"' .
+									' onFocus="jQuery(\'div#wrap_' . esc_attr( $wrap_id_next ) . '\').show();" />' . "\n";
 
 								$one_more = empty( $input_value ) ? false : true;
 
 								break;
 
+							case 'textarea':
+
+								$input_value = $in_options ? $this->options[ $opt_key ] : '';
+
+								$html .= '<textarea ' . ( $opt_disabled ? ' disabled="disabled"' : '' ) .
+									' name="' . esc_attr( $this->opts_name . '[' . $opt_key . ']' ) . '"' .
+									' title="' . esc_attr( $input_title ) . '"' .
+									' class="' . esc_attr( $input_class ) . '"' .
+									' id="textarea_' . esc_attr( $input_id ) . '"' .
+									( $this->get_placeholder_events( 'textarea', $placeholder ) ) .
+									'>' . esc_attr( $input_value ) . '</textarea>';
+
+								break;
+
 							case 'select':
 
-								if ( $opt_disabled ) {
-									$html .= '<select disabled="disabled"';
-								} else {
-									$html .= '<select name="' . esc_attr( $this->opts_name . '[' . $opt_key . ']' ) . '"';
-								}
-
-									
-								$html .= ' title="' . esc_attr( $input_title ) . '"' .
+								$html .= '<select ' . ( $opt_disabled ? ' disabled="disabled"' : '' ) .
+									' name="' . esc_attr( $this->opts_name . '[' . $opt_key . ']' ) . '"' .
+									' title="' . esc_attr( $input_title ) . '"' .
 									' class="' . esc_attr( $input_class ) . '"' .
 									' id="select_' . esc_attr( $input_id ) . '"' .
 									' onFocus="jQuery(\'div#wrap_' . esc_attr( $wrap_id_next ) . '\').show();">' . "\n";
@@ -1521,13 +1536,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				} );</script>';
 		}
 
-		private function get_placeholder_sanitized( $name, $placeholder ) {
+		private function get_placeholder_sanitized( $name, $placeholder = '' ) {
 
-			if ( empty( $name ) ) {
-				return $placeholder;	// Just in case.
+			if ( empty( $name ) ) {	// Just in case.
+				return $placeholder;
 			}
 
 			if ( true === $placeholder ) {	// Use default value.
+
 				if ( isset( $this->defaults[ $name ] ) ) {
 					$placeholder = $this->defaults[ $name ];
 				}
@@ -1542,8 +1558,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					if ( $name !== $key_default ) {
 
 						if ( isset( $this->options[ $key_default ] ) ) {
+
 							$placeholder = $this->options[ $key_default ];
+
 						} elseif ( true === $placeholder ) {
+
 							if ( isset( $this->defaults[ $key_default ] ) ) {
 								$placeholder = $this->defaults[ $key_default ];
 							}
@@ -1553,13 +1572,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			if ( true === $placeholder ) {
-				$placeholder = '';	// must be a string
+				$placeholder = '';	// Must be a string.
 			}
 
 			return $placeholder;
 		}
 
-		private function get_placeholder_events( $type = 'input', $placeholder ) {
+		private function get_placeholder_events( $type = 'input', $placeholder = '' ) {
 
 			if ( $placeholder === '' ) {
 				return '';
