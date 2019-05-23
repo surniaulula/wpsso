@@ -3754,7 +3754,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$ini_set = array(
 				'display_errors' => 0,
 				'log_errors'     => 1,
-				'error_log'      => WP_CONTENT_DIR . '/debug.log',
+				'error_log'      => is_string( WP_DEBUG_LOG ) ? WP_DEBUG_LOG : WP_CONTENT_DIR . '/debug.log',
 			);
 
 			$ini_saved = array();
@@ -3764,23 +3764,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			 */
 			foreach ( $ini_set as $name => $value ) {
 
-				/**
-				 * Returns false if option does not exist.
-				 */
-				$ini_saved[ $name ] = ini_get( $name );
+				$ini_saved[ $name ] = ini_get( $name );	// Returns false if option does not exist.
 
-				/**
-				 * Only set the option the existing value is different.
-				 */
 				if ( false !== $ini_saved[ $name ] && $ini_saved[ $name ] !== $value ) {
-
 					ini_set( $name, $value );
-
-				/**
-				 * Unset the array element to avoid restoring it.
-				 */
 				} else {
-
 					unset( $ini_saved[ $name ] );
 				}
 			}
