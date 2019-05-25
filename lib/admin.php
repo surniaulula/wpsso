@@ -1650,19 +1650,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$ext_num++;
 
-				if ( $ext === $this->p->lca ) {	// features for this plugin
+				if ( $ext === $this->p->lca ) {	// Features for WPSSO Core plugin.
+
 					$features = array(
 						'(feature) Debug Logging Enabled' => array(
 							'classname' => 'SucomDebug',
+							'link'      => $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_settings' ),
 						),
-						'(feature) Use Filtered (SEO) Title' => array(
-							'status' => $this->p->options[ 'plugin_filter_title' ] ? 'on' : 'off',
-						),
-						'(feature) Use WordPress Content Filters' => array(
-							'status' => $this->p->options[ 'plugin_filter_content' ] ? 'on' : 'rec',
-						),
-						'(feature) Use WordPress Excerpt Filters' => array(
-							'status' => $this->p->options[ 'plugin_filter_excerpt' ] ? 'on' : 'off',
+						'(feature) Remove Settings on Uninstall' => array(
+							'status' => $this->p->options[ 'plugin_clean_on_uninstall' ] ? 'on' : 'off',
+							'link'   => $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_settings' ),
 						),
 						'(code) Facebook / Open Graph Meta Tags' => array(
 							'status' => class_exists( $this->p->lca . 'opengraph' ) ? 'on' : 'rec',
@@ -1676,13 +1673,21 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						'(code) Knowledge Graph WebSite Markup' => array(
 							'status' => $this->p->options[ 'schema_add_home_website' ] ? 'on' : 'rec',
 						),
-						'(code) Schema Meta Property Containers' => array(
-							'status' => WpssoNoScript::is_enabled() ? 'on' : 'off',
-						),
 						'(code) Twitter Card Meta Tags' => array(
 							'status' => class_exists( $this->p->lca . 'twittercard' ) ? 'on' : 'rec',
 						),
 					);
+
+					/**
+					 * Always returns false when the WPSSO JSON add-on is active.
+					 */
+					if ( apply_filters( $this->p->lca . '_add_schema_noscript_array', true, $crawler_name = 'none' ) ) {
+					
+						$features[ '(code) Schema Meta Property Containers' ] = array(
+							'status' => WpssoNoScript::is_enabled( 'none' ) ? 'on' : 'off',
+						);
+					}
+
 				} else {
 					$features = array();
 				}
@@ -1722,7 +1727,26 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$ext_num++;
 
-				$features = array();
+				if ( $ext === $this->p->lca ) {	// Features for WPSSO Core plugin.
+
+					$features = array(
+						'(feature) Use Filtered (SEO) Title' => array(
+							'status' => $this->p->options[ 'plugin_filter_title' ] ? 'on' : 'off',
+							'link'   => $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' ),
+						),
+						'(feature) Use WordPress Content Filters' => array(
+							'status' => $this->p->options[ 'plugin_filter_content' ] ? 'on' : 'rec',
+							'link'   => $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' ),
+						),
+						'(feature) Use WordPress Excerpt Filters' => array(
+							'status' => $this->p->options[ 'plugin_filter_excerpt' ] ? 'on' : 'off',
+							'link'   => $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' ),
+						),
+					);
+
+				} else {
+					$features = array();
+				}
 
 				if ( ! empty( $info[ 'url' ][ 'purchase' ] ) ) {
 
@@ -1821,6 +1845,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$icon_title   = __( 'Generic feature module', 'wpsso' );
 					$label_text   = empty( $match[2] ) ? $label : $match[2];
 					$label_text   = empty( $arr[ 'label' ] ) ? $label_text : $arr[ 'label' ];
+					$label_url    = empty( $arr[ 'link' ] ) ?  '' : $arr[ 'link' ];
 					$purchase_url = $status_key === 'rec' && ! empty( $arr[ 'purchase' ] ) ? $arr[ 'purchase' ] : '';
 
 					switch ( $icon_type ) {
@@ -1876,13 +1901,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					echo '<tr>' .
 					'<td><span class="dashicons dashicons-' . $icon_type . '" title="' . $icon_title . '"></span></td>' .
-					'<td class="' . trim( $td_class ) . '">' . $label_text . '</td>' .
+					'<td class="' . trim( $td_class ) . '">' .
+					( $label_url ? '<a href="' . $label_url . '">' : '' ).
+					$label_text .
+					( $label_url ? '</a>' : '' ).
+					'</td>' .
 					'<td>' .
-						( $purchase_url ? '<a href="' . $purchase_url . '">' : '' ).
-						'<img src="' . WPSSO_URLPATH . 'images/' .
-							$status_info[ $status_key ][ 'img' ] . '" width="12" height="12" title="' .
-							$status_info[ $status_key ][ 'title' ] . '"/>' .
-						( $purchase_url ? '</a>' : '' ).
+					( $purchase_url ? '<a href="' . $purchase_url . '">' : '' ).
+					'<img src="' . WPSSO_URLPATH . 'images/' . $status_info[ $status_key ][ 'img' ] . '" ' .
+					'width="12" height="12" title="' . $status_info[ $status_key ][ 'title' ] . '"/>' .
+					( $purchase_url ? '</a>' : '' ).
 					'</td>' .
 					'</tr>' . "\n";
 				}
@@ -3632,7 +3660,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected function add_optional_advanced_table_rows( array &$table_rows, $network = false ) {
 
 			$table_rows[ 'plugin_clean_on_uninstall' ] = '' .
-			$this->form->get_th_html( _x( 'Remove All Settings on Uninstall', 'option label', 'wpsso' ), '', 'plugin_clean_on_uninstall' ) . 
+			$this->form->get_th_html( _x( 'Remove Settings on Uninstall', 'option label', 'wpsso' ), '', 'plugin_clean_on_uninstall' ) . 
 			'<td>' .
 				$this->form->get_checkbox( 'plugin_clean_on_uninstall' ) . ' ' .
 				_x( 'including any custom meta for posts, terms, and users', 'option comment', 'wpsso' ) . ' ' . 

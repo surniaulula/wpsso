@@ -627,7 +627,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/**
 						 * Plugin Behavior settings.
 						 */
-						case 'tooltip-plugin_clean_on_uninstall': // Remove All Settings on Uninstall.
+						case 'tooltip-plugin_clean_on_uninstall': // Remove Settings on Uninstall.
 
 							$text = sprintf( __( 'Check this option to remove all %s settings when you <em>uninstall</em> the plugin. This includes any custom post, term, and user meta.', 'wpsso' ), $info[ 'short' ] );
 
@@ -1255,7 +1255,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $msg_key ) {
 
-						case 'tooltip-schema_add_noscript':	// Meta Property Containers.
+						case 'tooltip-schema_add_noscript':	// Schema Meta Property Containers.
 
 							$text = sprintf( __( 'When additional Schema properties are available (product ratings, recipe ingredients, etc.), one or more %1$s containers may be included in the webpage head section.', 'wpsso' ), '<code>noscript</code>' ) . ' ';
 
@@ -1733,7 +1733,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'info-meta-validate-w3c':
 
 							$settings_page_link = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google',
-								_x( 'Meta Property Containers', 'option label', 'wpsso' ) );
+								_x( 'Schema Meta Property Containers', 'option label', 'wpsso' ) );
 
 							$text = '<p class="top">';
 
@@ -1745,7 +1745,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '</p>';
 
-							if ( WpssoNoScript::is_enabled() ) {
+							if ( WpssoNoScript::is_enabled( 'none' ) ) {
 
 								$text .= '<p><i>';
 

@@ -1025,7 +1025,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			foreach ( $wpsso->cf[ 'form' ][ 'weekdays' ] as $day => $label ) {
 
-				if ( ! empty( $place_opts['place_day_' . $day] ) ) {
+				if ( ! empty( $place_opts[ 'place_day_' . $day ] ) ) {
 
 					$dayofweek = array(
 						'@context'  => 'https://schema.org',

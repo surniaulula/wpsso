@@ -53,9 +53,13 @@ if ( ! class_exists( 'WpssoNoScript' ) ) {
 			$is_enabled = empty( $wpsso->options[ 'schema_add_noscript' ] ) ? false : true;
 
 			/**
-			 * Returns false when the wpsso-schema-json-ld add-on is active.
+			 * Always returns false when the WPSSO JSON add-on is active.
 			 */
-			if ( ! apply_filters( $wpsso->lca . '_add_schema_noscript_array', $is_enabled, $crawler_name ) ) {
+			if ( apply_filters( $wpsso->lca . '_add_schema_noscript_array', $is_enabled, $crawler_name ) ) {
+
+				return true;
+
+			} else {
 
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'noscript is disabled for crawler "' . $crawler_name . '"' );
@@ -63,8 +67,6 @@ if ( ! class_exists( 'WpssoNoScript' ) ) {
 
 				return false;
 			}
-
-			return true;
 		}
 
 		public function get_array( array &$mod, array &$mt_og, $crawler_name ) {

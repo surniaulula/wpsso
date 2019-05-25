@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'      => '4.31.1-dev.3',	// Plugin version.
+					'version'      => '4.31.1-dev.4',	// Plugin version.
 					'opt_version'  => '642',	// Increment when changing default option values.
 					'short'        => 'WPSSO Core',	// Short plugin name.
 					'name'         => 'WPSSO Core [Main Plugin]',
@@ -1113,7 +1113,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced settings - Plugin Behavior tab.
 					 */
-					'plugin_clean_on_uninstall' => 0,	// Remove All Settings on Uninstall.
+					'plugin_clean_on_uninstall' => 0,	// Remove Settings on Uninstall.
 					'plugin_debug'              => 0,	// Add Hidden Debug Messages.
 					'plugin_show_opts'          => 'basic',	// Options to Show by Default.
 					
@@ -1321,7 +1321,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced settings - Plugin Behavior tab.
 					 */
-					'plugin_clean_on_uninstall'     => 0,		// Remove All Settings on Uninstall
+					'plugin_clean_on_uninstall'     => 0,		// Remove Settings on Uninstall
 					'plugin_clean_on_uninstall:use' => 'default',
 					'plugin_debug'                  => 0,		// Add Hidden Debug Messages
 					'plugin_debug:use'              => 'default',
