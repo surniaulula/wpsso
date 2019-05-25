@@ -18,6 +18,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		private static $extend_lib_checks = array(
 			'seo' => array(
 				'jetpack-seo' => 'Jetpack SEO Tools',
+				'rankmath'    => 'SEO by Rank Math',
 				'seou'        => 'SEO Ultimate',
 				'sq'          => 'Squirrly SEO',
 			),
@@ -199,6 +200,12 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 									$get_avail[ $sub ][ 'any' ] = $get_avail[ $sub ][ $id ] = true;
 								}
 							}
+
+							break;
+
+						case 'seo-rankmath':
+
+							$chk[ 'class' ] = 'RankMath';
 
 							break;
 
