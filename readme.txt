@@ -431,7 +431,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.31.1-dev.3 (2019/05/22)**
+**Version 4.31.1-dev.4 (2019/05/22)**
 
 * *New Features*
 	* None.
@@ -522,7 +522,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.31.1-dev.3 =
+= 4.31.1-dev.4 =
 
 (2019/05/22) Added numbers to multi line input options (HowTo Steps, etc).
 
