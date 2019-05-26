@@ -436,7 +436,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None.
 * *Improvements*
-	* Added numbers to multi line input options (HowTo Steps, etc).
+	* Added numbers to multi line input options (SameAs, HowTo Steps, etc).
+	* Added the SEO by Rank Math plugin to the list of recognized SEO plugins.
 * *Bugfixes*
 	* None.
 * *Developer Notes*
@@ -524,7 +525,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.31.1-dev.4 =
 
-(2019/05/22) Added numbers to multi line input options (HowTo Steps, etc).
+(2019/05/22) Added numbers to multi line input options (SameAs, HowTo Steps, etc). Added the SEO by Rank Math plugin to the list of recognized SEO plugins.
 
 = 4.31.0 =
 
