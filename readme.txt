@@ -431,7 +431,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.31.1-dev.5 (2019/05/27)**
+**Version 4.31.1-rc.1 (2019/05/27)**
 
 * *New Features*
 	* None.
@@ -523,7 +523,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.31.1-dev.5 =
+= 4.31.1-rc.1 =
 
 (2019/05/27) Added numbers to multi line input options (SameAs, HowTo Steps, etc). Added the SEO by Rank Math plugin to the list of recognized SEO plugins.
 
