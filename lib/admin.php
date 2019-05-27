@@ -1683,7 +1683,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					 */
 					if ( apply_filters( $this->p->lca . '_add_schema_noscript_array', true, $crawler_name = 'none' ) ) {
 					
-						$features[ '(code) Schema Meta Property Containers' ] = array(
+						$features[ '(code) Schema Property Meta Containers' ] = array(
 							'status' => WpssoNoScript::is_enabled( 'none' ) ? 'on' : 'off',
 						);
 					}
