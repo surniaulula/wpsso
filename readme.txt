@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires At Least: 3.8
 Tested Up To: 5.2.1
 WC Tested Up To: 3.6
-Stable Tag: 4.31.0
+Stable Tag: 4.31.1
 
 WPSSO Core makes sure your content looks great on all social and search sites, no matter how URLs are crawled, shared, re-shared, posted or embedded!
 
@@ -431,6 +431,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.31.2-dev.5 (2019/05/27)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* None.
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* None.
+
 **Version 4.31.1 (2019/05/27)**
 
 * *New Features*
@@ -522,6 +533,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Moved the Schema json arrays for a webpage into a single '@graph' array.
 
 == Upgrade Notice ==
+
+= 4.31.2-dev.5 =
+
+(2019/05/27) None.
 
 = 4.31.1 =
 
