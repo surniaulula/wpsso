@@ -6415,22 +6415,22 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/twittercard.php:446
+#: lib/twittercard.php:447
 msgctxt "metabox title"
 msgid "Twitter App Card"
 msgstr ""
 
-#: lib/twittercard.php:454
+#: lib/twittercard.php:455
 msgctxt "metabox title"
 msgid "Twitter Player Card"
 msgstr ""
 
-#: lib/twittercard.php:462
+#: lib/twittercard.php:463
 msgctxt "metabox title"
 msgid "Twitter Summary Large Image Card"
 msgstr ""
 
-#: lib/twittercard.php:470
+#: lib/twittercard.php:471
 msgctxt "metabox title"
 msgid "Twitter Summary Card"
 msgstr ""
