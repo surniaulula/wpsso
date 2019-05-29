@@ -1029,6 +1029,18 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
+		public static function is_valid_midday( $open, $midday_close, $midday_open, $close ) {
+
+			if ( strtotime( $midday_close ) < strtotime( $midday_open ) &&
+				strtotime( $open ) < strtotime( $midday_close ) &&
+					strtotime( $midday_open ) < strtotime( $close ) ) {
+
+				return true;
+			}
+
+			return false;
+		}
+
 		public static function is_amp() {
 
 			if ( ! defined( 'AMP_QUERY_VAR' ) ) {
@@ -1599,6 +1611,33 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return strlen( $serialized );
+		}
+
+		public static function get_opts_open_close( $opts, $key_open, $key_midday_close, $key_midday_open, $key_close ) {
+
+			$open_close = array();
+
+			if ( ! empty( $opts[ $key_open ] ) && ! empty( $opts[ $key_close ] ) ) {	// Have opening and closing hours.
+
+				$open_close[ $opts[ $key_open ] ] = $opts[ $key_close ];
+
+				if ( ! empty( $opts[ $key_midday_close ] ) && ! empty( $opts[ $key_midday_open ] ) ) {
+
+					$has_midday = self::is_valid_midday(
+						$opts[ $key_open ],
+						$opts[ $key_midday_close ],
+						$opts[ $key_midday_open ],
+						$opts[ $key_close ]
+					);
+
+					if ( $has_midday ) {
+						$open_close[ $opts[ $key_open ] ]        = $opts[ $key_midday_close ];
+						$open_close[ $opts[ $key_midday_open ] ] = $opts[ $key_close ];
+					}	
+				}
+			}
+
+			return $open_close;
 		}
 
 		public static function get_opts_begin( $str, array $opts ) {

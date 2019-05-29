@@ -1021,36 +1021,47 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Property:
 			 *	openingHoursSpecification as https://schema.org/OpeningHoursSpecification
 			 */
-			$opening_hours = array();
+			$opening_spec = array();
 
-			foreach ( $wpsso->cf[ 'form' ][ 'weekdays' ] as $day => $label ) {
+			foreach ( $wpsso->cf[ 'form' ][ 'weekdays' ] as $weekday => $label ) {
 
-				if ( ! empty( $place_opts[ 'place_day_' . $day ] ) ) {
+				if ( ! empty( $place_opts[ 'place_day_' . $weekday ] ) ) {
 
-					$dayofweek = array(
-						'@context'  => 'https://schema.org',
-						'@type'     => 'OpeningHoursSpecification',
-						'dayOfWeek' => $label,
+					$open_close = SucomUtil::get_opts_open_close(
+						$place_opts,
+						'place_day_' . $weekday . '_open',
+						'place_midday_close',
+						'place_midday_open',
+						'place_day_' . $weekday . '_close'
 					);
 
-					foreach ( array(
-						'opens'        => 'place_day_' . $day . '_open',
-						'closes'       => 'place_day_' . $day . '_close',
-						'validFrom'    => 'place_season_from_date',
-						'validThrough' => 'place_season_to_date',
-					) as $prop_name => $opt_key ) {
+					foreach ( $open_close as $open => $close ) {
 
-						if ( isset( $place_opts[ $opt_key ] ) && $place_opts[ $opt_key ] !== '' ) {
-							$dayofweek[ $prop_name ] = $place_opts[ $opt_key ];
+						$weekday_spec = array(
+							'@context'  => 'https://schema.org',
+							'@type'     => 'OpeningHoursSpecification',
+							'dayOfWeek' => $label,
+							'opens'     => $open,
+							'closes'    => $close,
+						);
+	
+						foreach ( array(
+							'validFrom'    => 'place_season_from_date',
+							'validThrough' => 'place_season_to_date',
+						) as $prop_name => $opt_key ) {
+	
+							if ( isset( $place_opts[ $opt_key ] ) && $place_opts[ $opt_key ] !== '' ) {
+								$weekday_spec[ $prop_name ] = $place_opts[ $opt_key ];
+							}
 						}
-					}
 
-					$opening_hours[] = $dayofweek;
+						$opening_spec[] = $weekday_spec;
+					}
 				}
 			}
 
-			if ( ! empty( $opening_hours ) ) {
-				$ret[ 'openingHoursSpecification' ] = $opening_hours;
+			if ( ! empty( $opening_spec ) ) {
+				$ret[ 'openingHoursSpecification' ] = $opening_spec;
 			}
 
 			/**
