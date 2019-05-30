@@ -431,7 +431,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.31.2-dev.6 (2019/05/29)**
+**Version 4.31.2-b.1 (2019/05/30)**
 
 * *New Features*
 	* None.
@@ -440,7 +440,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None.
 * *Developer Notes*
-	* Added a new SucomUtil::get_opts_open_close() method.
+	* Added a new SucomUtil::get_open_close() method.
 	* Added a new SucomUtil::is_valid_midday() method.
 
 **Version 4.31.1 (2019/05/27)**
@@ -535,9 +535,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.31.2-dev.6 =
+= 4.31.2-b.1 =
 
-(2019/05/29) Added support for Schema Place mid-day closure.
+(2019/05/30) Added support for Schema Place mid-day closure.
 
 = 4.31.1 =
 
