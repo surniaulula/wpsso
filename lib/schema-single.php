@@ -1027,7 +1027,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				if ( ! empty( $place_opts[ 'place_day_' . $weekday ] ) ) {
 
-					$open_close = SucomUtil::get_opts_open_close(
+					$open_close = SucomUtil::get_open_close(
 						$place_opts,
 						'place_day_' . $weekday . '_open',
 						'place_midday_close',

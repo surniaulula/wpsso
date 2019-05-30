@@ -1613,7 +1613,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return strlen( $serialized );
 		}
 
-		public static function get_opts_open_close( $opts, $key_open, $key_midday_close, $key_midday_open, $key_close ) {
+		public static function get_open_close( array $opts, $key_open, $key_midday_close, $key_midday_open, $key_close ) {
 
 			$open_close = array();
 
