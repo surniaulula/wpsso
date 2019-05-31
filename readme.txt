@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires At Least: 3.8
 Tested Up To: 5.2.1
 WC Tested Up To: 3.6
-Stable Tag: 4.31.1
+Stable Tag: 4.31.2
 
 WPSSO Core makes sure your content looks great on all social and search sites, no matter how URLs are crawled, shared, re-shared, posted or embedded!
 
@@ -511,35 +511,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added notice references in WpssoNoScript::get_single_author() and WpssoSchemaSingle::add_person_data().
 	* Added a new SucomUtil::is_site_https() method for future use.
 
-**Version 4.29.0 (2019/04/21)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* Added a MB total for "All Transients" in the SSO &gt; Dashboard &gt; Cache Status metabox.
-* *Bugfixes*
-	* Fixed the "Select or Upload Image" button functionality when the SSO metabox is refreshed via ajax (ie. after clicking "Update" in the new block editor).
-	* Fixed the Schema JSON-LD <code>&lt;script&gt;&lt;script&gt;</code> matching pattern to allow for script tag attributes.
-* *Developer Notes*
-	* Added a new WpssoMetaItem class in lib/meta-item.php.
-	* Added a new WpssoNoScript class in lib/noscript.php.
-	* Added a new WpssoPinterest class in lib/pinterest.php.
-	* Added a new WpssoSchemaCache class in lib/schema-cache.php.
-	* Added a new WpssoSchemaSingle class in lib/schema-single.php.
-	* Moved itemprop meta tag related code from WpssoSchema to the WpssoMetaItem class.
-	* Moved noscript meta tag related code from WpssoSchema to the WpssoNoScript class.
-	* Moved pinterest markup related code from WpssoSchema to the WpssoPinterest class.
-	* Moved data caching methods in WpssoSchema to the WpssoSchemaCache class.
-	* Moved add/get_single methods in WpssoSchema to the WpssoSchemaSingle class.
-	* Moved the Schema json arrays for a webpage into a single '@graph' array.
-
 == Upgrade Notice ==
 
 = 4.31.2 =
 
 (2019/05/31) Added support for Schema Place mid-day closure.
-
-= 4.31.1 =
-
-(2019/05/27) Added numbers to multi line input options (SameAs, HowTo Steps, etc). Added the SEO by Rank Math plugin to the list of recognized SEO plugins.
 
