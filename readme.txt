@@ -431,7 +431,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.31.2-rc.1 (2019/05/31)**
+**Version 4.31.2 (2019/05/31)**
 
 * *New Features*
 	* None.
@@ -535,7 +535,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.31.2-rc.1 =
+= 4.31.2 =
 
 (2019/05/31) Added support for Schema Place mid-day closure.
 
