@@ -501,7 +501,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$price_spec = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array( 
 				'price'                 => 'product:price:amount',
 				'priceCurrency'         => 'product:price:currency',
-				'priceValidUntil'       => 'product:sale_price_dates:end',
+				'validThrough'          => 'product:sale_price_dates:end',
 				'valueAddedTaxIncluded' => 'product:price:vat_included',
 			) );
 
