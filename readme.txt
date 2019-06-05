@@ -431,6 +431,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.31.3-dev.1 (2019/06/05)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* None.
+* *Bugfixes*
+	* Fixed product sale price specification by adding the 'validFrom' and 'validThrough' properties and removing the 'priceValidUntil' property.
+* *Developer Notes*
+	* None.
+
 **Version 4.31.2 (2019/05/31)**
 
 * *New Features*
@@ -512,6 +523,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new SucomUtil::is_site_https() method for future use.
 
 == Upgrade Notice ==
+
+= 4.31.3-dev.1 =
+
+(2019/06/05) Fixed product sale price specification by adding the 'validFrom' and 'validThrough' properties and removing the 'priceValidUntil' property.
 
 = 4.31.2 =
 
