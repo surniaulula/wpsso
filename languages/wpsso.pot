@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.31.2\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.31.3-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5911,31 +5911,31 @@ msgstr ""
 msgid "adding schema for %1$s ID %2$s"
 msgstr ""
 
-#: lib/schema-single.php:538
+#: lib/schema-single.php:539
 msgid "adding schema for offer"
 msgstr ""
 
-#: lib/schema-single.php:628
+#: lib/schema-single.php:629
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema-single.php:670
+#: lib/schema-single.php:671
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema-single.php:677
+#: lib/schema-single.php:678
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema-single.php:816
+#: lib/schema-single.php:817
 msgid "adding schema for person user ID %1$s"
 msgstr ""
 
-#: lib/schema-single.php:971
+#: lib/schema-single.php:972
 msgid "adding schema for place"
 msgstr ""
 
