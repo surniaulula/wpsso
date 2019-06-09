@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.31.3-dev.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.31.3-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5791,14 +5791,15 @@ msgstr ""
 
 #: lib/post.php:1136
 msgid ""
-"An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
+"An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
+"(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
 #: lib/post.php:1136
 msgid ""
-"The webpage may contain serious HTML syntax errors &mdash; please review the "
-"<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
-"errors."
+"The webpage may contain HTML syntax errors preventing PHP from successfully "
+"parsing the HTML &mdash; review the <a href=\"%1$s\">W3C Markup Validation "
+"Service</a> results and correct any errors."
 msgstr ""
 
 #: lib/post.php:1136
