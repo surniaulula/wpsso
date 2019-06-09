@@ -431,7 +431,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.31.3-dev.1 (2019/06/05)**
+**Version 4.31.3-b.1 (2019/06/09)**
 
 * *New Features*
 	* None.
@@ -524,9 +524,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.31.3-dev.1 =
+= 4.31.3-b.1 =
 
-(2019/06/05) Fixed product sale price specification by adding the 'validFrom' and 'validThrough' properties and removing the 'priceValidUntil' property.
+(2019/06/09) Fixed product sale price specification by adding the 'validFrom' and 'validThrough' properties and removing the 'priceValidUntil' property.
 
 = 4.31.2 =
 
