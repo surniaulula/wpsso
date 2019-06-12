@@ -431,7 +431,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.31.3-rc.1 (2019/06/10)**
+**Version 4.31.3 (2019/06/12)**
 
 * *New Features*
 	* None.
@@ -524,11 +524,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.31.3-rc.1 =
+= 4.31.3 =
 
-(2019/06/10) Fixed product sale price specification by adding the 'validFrom' and 'validThrough' properties and removing the 'priceValidUntil' property.
-
-= 4.31.2 =
-
-(2019/05/31) Added support for Schema Place mid-day closure.
+(2019/06/12) Fixed product sale price specification by adding the 'validFrom' and 'validThrough' properties and removing the 'priceValidUntil' property.
 
