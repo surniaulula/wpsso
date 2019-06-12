@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 4.31.2\n"
+"Project-Id-Version: WPSSO Core 4.31.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-05-30 08:03-0400\n"
-"PO-Revision-Date: 2019-05-30 08:03-0400\n"
+"POT-Creation-Date: 2019-06-11 19:46-0700\n"
+"PO-Revision-Date: 2019-06-11 19:48-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2893,23 +2893,23 @@ msgctxt "metabox title"
 msgid "Structured Data / Schema Markup / Pinterest"
 msgstr "Données structurées / balisage Schéma / Pinterest"
 
-#: lib/gettext-pro.php:162 lib/pro/ecom/woocommerce.php:928
+#: lib/gettext-pro.php:162 lib/pro/ecom/woocommerce.php:930
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr "\"%s\" est une condition de produit Schéma inconnue."
 
-#: lib/gettext-pro.php:163 lib/pro/ecom/woocommerce.php:931
+#: lib/gettext-pro.php:163 lib/pro/ecom/woocommerce.php:933
 msgid "Valid item condition values are (case is important): %s."
 msgstr "Les valeurs de condition d'élément valides sont (les majuscules et minuscules sont importants): %s."
 
-#: lib/gettext-pro.php:164 lib/pro/ecom/woocommerce.php:1151
+#: lib/gettext-pro.php:164 lib/pro/ecom/woocommerce.php:1153
 msgid "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax.html"
 msgstr "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax.html"
 
-#: lib/gettext-pro.php:165 lib/pro/ecom/woocommerce.php:1153
+#: lib/gettext-pro.php:165 lib/pro/ecom/woocommerce.php:1155
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr "La <a href=\"%1$s\">fonction WooCommerce %2$s</a> n'est pas disponible."
 
-#: lib/gettext-pro.php:166 lib/pro/ecom/woocommerce.php:1156
+#: lib/gettext-pro.php:166 lib/pro/ecom/woocommerce.php:1158
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr "SVP mettre à jour votre site à WooCommerce version %s ou mieux."
 
@@ -5008,12 +5008,12 @@ msgid "Conflict detected &mdash; your theme or another plugin is adding %1$s to 
 msgstr "Conflit détecté &mdash; votre thème ou une autre extension ajoute une balise %1$s à l'entête de cette page Web."
 
 #: lib/post.php:1136
-msgid "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
-msgstr "Une erreur s'est produite lors de l'analyse des balises méta de tête pour <a href=\"%1$s\">%1$s</a>."
+msgid "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> (no \"link\" or \"meta\" HTML tags were found)."
+msgstr "Une erreur s'est produite lors de l'analyse des balises méta de tête pour <a href=\"%1$s\">%1$s</a> (aucune balise HTML \"link\" ou \"meta\" ont été trouvée)."
 
 #: lib/post.php:1136
-msgid "The webpage may contain serious HTML syntax errors &mdash; please review the <a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any errors."
-msgstr "La page Web pourrait contenir de graves erreurs de syntaxe HTML &mdash; SVP consulter les résultats du <a href=\"%1$s\">W3C Markup Validation Service</a> et corrigez toutes les erreurs."
+msgid "The webpage may contain HTML syntax errors preventing PHP from successfully parsing the HTML &mdash; review the <a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any errors."
+msgstr "La page Web peut contenir des erreurs de syntaxe HTML empêchant PHP d’analyser correctement le code HTML &mdash; consulter les résultats du <a href=\"%1$s\">W3C Markup Validation Service</a> et corrigez les erreurs."
 
 #: lib/post.php:1136
 msgid "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
@@ -5123,27 +5123,27 @@ msgstr "SVP mettre à jour %1$s avant d'essayer de réactiver l'extension %2$s."
 msgid "adding schema for %1$s ID %2$s"
 msgstr "ajout de schéma pour %1$s ID %2$s"
 
-#: lib/schema-single.php:538
+#: lib/schema-single.php:539
 msgid "adding schema for offer"
 msgstr "ajout de schéma pour offre"
 
-#: lib/schema-single.php:628
+#: lib/schema-single.php:629
 msgid "adding schema for organization"
 msgstr "ajout de schéma d'organisation"
 
-#: lib/schema-single.php:670
+#: lib/schema-single.php:671
 msgid "The \"%1$s\" Organization Logo image is missing and required for the Schema %2$s markup."
 msgstr "L'image logo de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema-single.php:677
+#: lib/schema-single.php:678
 msgid "The \"%1$s\" Organization Banner (600x60px) image is missing and required for the Schema %2$s markup."
 msgstr "L'image bannière (600x60px) de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema-single.php:816
+#: lib/schema-single.php:817
 msgid "adding schema for person user ID %1$s"
 msgstr "ajout de schéma de personne pour l'ID d'utilisateur %1$s"
 
-#: lib/schema-single.php:971
+#: lib/schema-single.php:972
 msgid "adding schema for place"
 msgstr "ajout de schéma de place"
 
