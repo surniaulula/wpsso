@@ -496,7 +496,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				table.wp-list-table > tbody > tr > td.num,
 				table.wp-list-table > thead > tr > th.column-comments,
 				table.wp-list-table > tbody > tr > td.column-comments {
-					width:40px;
+					width:80px;	/* Leave room for sorting arrow. */
 				}
 				table.wp-list-table > thead > tr > th.column-date,
 				table.wp-list-table > tbody > tr > td.column-date,
