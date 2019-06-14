@@ -2615,9 +2615,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				if ( false !== $screen_base ) {
 					switch ( $screen_base ) {
-						case 'edit':		// post/page list
-						case 'edit-tags':	// categories/tags list
-						case 'users':		// users list
+						case 'edit':		// Post/page list.
+						case 'edit-tags':	// Categories/tags list.
+						case 'users':		// Users list.
 							$ret = true;
 							break;
 					}
@@ -2707,7 +2707,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$screen_base = self::get_screen_base();
 
 				if ( $screen_base === 'post' ) {
+
 					$ret = true;
+
 				} elseif ( false === $screen_base && // Called too early for screen.
 					( self::get_request_value( 'post_ID', 'POST' ) !== '' || // Uses sanitize_text_field().
 						self::get_request_value( 'post', 'GET' ) !== '' ) ) {
