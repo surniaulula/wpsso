@@ -431,6 +431,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.31.4-dev.1 (2019/06/14)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* Removed the WooCommerce `$product` global variable consistency check (Pro version).
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* None.
+
 **Version 4.31.3 (2019/06/12)**
 
 * *New Features*
@@ -523,6 +534,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new SucomUtil::is_site_https() method for future use.
 
 == Upgrade Notice ==
+
+= 4.31.4-dev.1 =
+
+(2019/06/14) Removed the WooCommerce `$product` global variable consistency check (Pro version).
 
 = 4.31.3 =
 
