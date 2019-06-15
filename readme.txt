@@ -431,7 +431,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.31.4-dev.1 (2019/06/14)**
+**Version 4.31.4 (2019/06/14)**
 
 * *New Features*
 	* None.
@@ -502,44 +502,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* WPSSO Schema JSON-LD Markup
 		* WPSSO Social Sharing Buttons 
 
-**Version 4.30.0 (2019/05/04)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* Renamed the "Add-ons" settings page to "Complementary Add-ons".
-	* Renamed the "Plugin Details" link to "More Details".
-* *Bugfixes*
-	* None.
-* *Developer Notes*
-	* Moved the 3rd party integration modules from WPSSO JSON Pro to WPSSO Core Pro:
-		* Simple Job Board
-		* WP Job Manager
-		* WP Product Review
-		* WP Recipe Maker
-		* WP Ultimate Recipe
-
-**Version 4.29.1 (2019/04/27)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* Updated the menu dashicon styling for WordPress v5.2.
-* *Bugfixes*
-	* None.
-* *Developer Notes*
-	* Minor refactoring to improve the code used to define the authentication ID status.
-	* Added a 'wpsso_json_prop_https_schema_org_graph' filter hook for the Schema "@graph" value.
-	* Added notice references in WpssoNoScript::get_single_author() and WpssoSchemaSingle::add_person_data().
-	* Added a new SucomUtil::is_site_https() method for future use.
-
 == Upgrade Notice ==
 
-= 4.31.4-dev.1 =
+= 4.31.4 =
 
 (2019/06/14) Removed the WooCommerce `$product` global variable consistency check (Pro version).
-
-= 4.31.3 =
-
-(2019/06/12) Fixed product sale price specification by adding the 'validFrom' and 'validThrough' properties and removing the 'priceValidUntil' property.
 
