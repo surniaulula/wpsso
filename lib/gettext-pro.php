@@ -159,6 +159,17 @@ _x( 'Maximum Images', 'option label', 'wpsso' );
 _x( 'Image Dimensions', 'option label', 'wpsso' );
 _x( 'Image ID', 'option label', 'wpsso' );
 _x( 'or an Image URL', 'option label', 'wpsso' );
+__( 'Please select a page in the <a href="%s">WooCommerce Settings &gt; Advanced &gt; Page setup</a> section.', 'wpsso' );
+__( 'Please select a page in the <a href="%s">WooCommerce Settings &gt; Products &gt; General</a> section.', 'wpsso' );
+// translators: please ignore - translation uses a different text domain
+__( 'My account page', 'woocommerce' );
+// translators: please ignore - translation uses a different text domain
+__( 'Cart page', 'woocommerce' );
+// translators: please ignore - translation uses a different text domain
+__( 'Checkout page', 'woocommerce' );
+// translators: please ignore - translation uses a different text domain
+__( 'Shop page', 'woocommerce' );
+__( 'The WooCommerce "%1$s" option value is empty.', 'wpsso' );
 __( '"%s" is  an unknown Schema product item condition.', 'wpsso' );
 __( 'Valid item condition values are (case is important): %s.', 'wpsso' );
 __( 'https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax.html', 'wpsso' );

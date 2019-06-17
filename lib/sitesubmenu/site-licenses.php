@@ -49,7 +49,7 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteLicenses' ) && class_exists( 'WpssoAdm
 		protected function add_meta_boxes() {
 
 			$metabox_id      = 'licenses';
-			$metabox_title   = _x( 'Premium Licenses', 'metabox title', 'wpsso' );
+			$metabox_title   = _x( 'Plugin and Add-on Licenses', 'metabox title', 'wpsso' );
 			$metabox_screen  = $this->pagehook;
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';

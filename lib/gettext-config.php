@@ -3,6 +3,8 @@
 /**
  * Extract of translatable text strings from the static config array.
  */
+_x( 'Premium', 'distribution name', 'wpsso' );
+_x( 'Standard', 'distribution name', 'wpsso' );
 _x( 'Image:', 'option value', 'wpsso' );
 _x( 'Caption:', 'option value', 'wpsso' );
 _x( 'Facebook User URL', 'option value', 'wpsso' );
@@ -23,14 +25,14 @@ _x( 'SSO Contact Fields', 'lib file description', 'wpsso' );
 _x( 'SSO WebSite Pages', 'lib file description', 'wpsso' );
 _x( 'Advanced', 'lib file description', 'wpsso' );
 _x( 'Complementary Add-ons', 'lib file description', 'wpsso' );
-_x( 'Premium Licenses', 'lib file description', 'wpsso' );
+_x( 'Licenses', 'lib file description', 'wpsso' );
 _x( 'Setup Guide', 'lib file description', 'wpsso' );
 _x( 'Tools', 'lib file description', 'wpsso' );
 _x( 'Essential', 'lib file description', 'wpsso' );
 _x( 'General', 'lib file description', 'wpsso' );
 _x( 'Advanced', 'lib file description', 'wpsso' );
 _x( 'Complementary Add-ons', 'lib file description', 'wpsso' );
-_x( 'Premium Licenses', 'lib file description', 'wpsso' );
+_x( 'Licenses', 'lib file description', 'wpsso' );
 _x( 'Dashboard', 'lib file description', 'wpsso' );
 _x( 'Setup Guide', 'lib file description', 'wpsso' );
 _x( 'Tools', 'lib file description', 'wpsso' );

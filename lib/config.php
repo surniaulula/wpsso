@@ -14,14 +14,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 	class WpssoConfig {
 
 		public static $cf = array(
-			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
+			'lca'  => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
+			'dist' => array(
+				'pro'    => 'Premium',
+				'std'    => 'Standard',
+			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'      => '5.0.0-dev.1',	// Plugin version.
-					'opt_version'  => '642',	// Increment when changing default option values.
-					'short'        => 'WPSSO Core',	// Short plugin name.
-					'name'         => 'WPSSO Core [Main Plugin]',
-					'desc'         => 'WPSSO Core makes sure your content looks great on all social and search sites - no matter how URLs are crawled, shared, re-shared, posted, or embedded!',
+					'version'     => '5.0.0-dev.1',	// Plugin version.
+					'opt_version' => '642',	// Increment when changing default option values.
+					'short'       => 'WPSSO Core',	// Short plugin name.
+					'name'        => 'WPSSO Core [Main Plugin]',
+					'desc'        => 'WPSSO Core makes sure your content looks great on all social and search sites - no matter how URLs are crawled, shared, re-shared, posted, or embedded!',
 					'slug'        => 'wpsso',
 					'base'        => 'wpsso/wpsso.php',
 					'update_auth' => 'tid',
@@ -60,17 +64,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'lib' => array(
 						'dashboard' => array(
 							'sso-dashboard' => 'SSO Dashboard',
-						),
-						'gpl' => array(
-							'admin' => array(
-								'general'  => 'Extend General Settings',
-								'advanced' => 'Extend Advanced Settings',
-								'post'     => 'Extend Post Settings',
-								'meta'     => 'Extend Term and User Settings',
-							),
-							'social' => array(
-								'buddypress' => '(plugin) BuddyPress',
-							),
 						),
 						'plugins' => array(
 							'sso-addons' => 'SSO Complementary Add-ons',
@@ -156,16 +149,27 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'sitesubmenu' => array(
 							'site-advanced' => 'Advanced',
 							'site-addons'   => 'Complementary Add-ons',
-							'site-licenses' => 'Premium Licenses',
+							'site-licenses' => 'Licenses',
 							'site-setup'    => 'Setup Guide',
 							'site-tools'    => 'Tools',
+						),
+						'std' => array(
+							'admin' => array(
+								'general'  => 'Extend General Settings',
+								'advanced' => 'Extend Advanced Settings',
+								'post'     => 'Extend Post Settings',
+								'meta'     => 'Extend Term and User Settings',
+							),
+							'social' => array(
+								'buddypress' => '(plugin) BuddyPress',
+							),
 						),
 						'submenu' => array(
 							'essential' => 'Essential',
 							'general'   => 'General',
 							'advanced'  => 'Advanced',
 							'addons'    => 'Complementary Add-ons',
-							'licenses'  => 'Premium Licenses',
+							'licenses'  => 'Licenses',
 							'dashboard' => 'Dashboard',
 							'setup'     => 'Setup Guide',
 							'tools'     => 'Tools',
@@ -1465,7 +1469,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '1.19.3',	// Minimum update manager version (soft limit).
+				'rec_version' => '2.0.0-dev.1',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',
@@ -2938,8 +2942,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				self::$cf[ '*' ] = array(
 					'base' => array(),
 					'lib'  => array(
-						'gpl' => array(),
 						'pro' => array(),
+						'std' => array(),
 					),
 					'version' => '',		// -wpsso3.29.0pro-wpssoplm1.5.1pro-wpssoum1.4.0gpl
 				);
@@ -2955,7 +2959,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					foreach ( self::$cf[ 'plugin' ] as $ext => $info ) {
 
 						if ( defined( strtoupper( $ext ) . '_PLUGINDIR' ) ) {
-							$pkg_lctype = is_dir( constant( strtoupper( $ext ) . '_PLUGINDIR' ) . 'lib/pro/' ) ? 'pro' : 'gpl';
+							$pkg_lctype = is_dir( constant( strtoupper( $ext ) . '_PLUGINDIR' ) . 'lib/pro/' ) ? 'pro' : 'std';
 						} else {
 							$pkg_lctype = '';
 						}

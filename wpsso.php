@@ -688,6 +688,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 * Only runs when debug is enabled.
 		 */
 		public function show_debug() {
+
 			$this->debug->show_html( null, 'debug log' );
 		}
 

@@ -95,7 +95,7 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 					/**
 					 * Second row.
 					 */
-					'status_gpl'   => _x( 'Standard Features', 'metabox title', 'wpsso' ),
+					'status_std'   => _x( 'Standard Features', 'metabox title', 'wpsso' ),
 					'status_pro'   => _x( 'Premium Features', 'metabox title', 'wpsso' ),
 				);
 
@@ -113,7 +113,7 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 					/**
 					 * Second row.
 					 */
-					'status_gpl'   => _x( 'Standard Features', 'metabox title', 'wpsso' ),
+					'status_std'   => _x( 'Standard Features', 'metabox title', 'wpsso' ),
 					'status_pro'   => _x( 'Premium Features', 'metabox title', 'wpsso' ),
 					'version_info' => _x( 'Version Information', 'metabox title', 'wpsso' ), 
 				);

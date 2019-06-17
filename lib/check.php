@@ -251,9 +251,13 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						case 'admin-general':
 						case 'admin-advanced':
 
-							// only load on the settings pages
+							/**
+							 * Only load on the settings pages.
+							 */
 							if ( $is_admin ) {
+
 								$page = basename( $_SERVER[ 'PHP_SELF' ] );
+
 								if ( $page === 'admin.php' || $page === 'options-general.php' ) {
 									$get_avail[ $sub ][ 'any' ] = $get_avail[ $sub ][ $id ] = true;
 								}
@@ -434,23 +438,10 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			return $is_avail;
 		}
 
-		/**
-		 * Deprecated on 2018/08/27.
-		 */
-		public function is_aop( $ext = '', $uc = true ) {
-			return $this->is_pp( $ext, $uc );
-		}
-
 		public function is_pp( $ext = '', $uc = true ) {
+
 			return $this->pp( $ext, true, ( isset( $this->p->avail[ '*' ][ 'p_dir' ] ) ?
 				$this->p->avail[ '*' ][ 'p_dir' ] : $this->is_avail( 'p_dir' ) ), $uc );
-		}
-
-		/**
-		 * Deprecated on 2018/08/27.
-		 */
-		public function aop( $ext = '', $lic = true, $rv = true, $uc = true ) {
-			return $this->pp( $ext, $lic, $rv, $uc );
 		}
 
 		public function pp( $ext = '', $lic = true, $rv = true, $uc = true ) {

@@ -94,7 +94,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					}
 				}
 
-				$info[ $info_key . '_pro' ] = SucomUtil::get_pkg_name( $info[ $info_key ], 'Premium' );
+				$info[ $info_key . '_pro' ] = SucomUtil::get_dist_name( $info[ $info_key ],
+					_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) );
 
 				$info[ $info_key . '_pro_purchase' ] = empty( $url[ 'purchase' ] ) ?
 					$info[ $info_key . '_pro' ] : '<a href="' . $url[ 'purchase' ] . '">' . $info[ $info_key . '_pro' ] . '</a>';
@@ -1793,19 +1794,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'info-plugin-tid':	// Displayed in the Licenses settings page.
 
-							$um_info = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
+							$um_info       = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
+							$um_addon_link = $this->p->util->get_admin_url( 'addons#wpssoum', $um_info[ 'name' ] );
 
 							$text = '<blockquote class="top-info">';
 
-							$text .= '<p>' . sprintf( __( 'After purchasing the %1$s plugin, or any complementary Pro add-ons, you\'ll receive an email with a unique Authentication ID for the plugin / add-on you purchased.', 'wpsso' ), $info[ 'short_pro' ] ) . ' ';
+							$text .= '<p>' . sprintf( __( 'After purchasing the %1$s plugin or any complementary %2$s add-on, you\'ll receive an email with a unique Authentication ID for the plugin or add-on you purchased.', 'wpsso' ), $info[ 'short_pro' ], _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) ) . ' ';
 
-							$text .=  __( 'Enter the Authentication ID in the option field corresponding to the plugin / add-on you purchased.', 'wpsso' ) . ' ';
+							$text .=  __( 'Enter the Authentication ID in the option field corresponding to the plugin or add-on you purchased.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'Don\'t forget that the %1$s Free add-on must be installed and active to check for Premium version updates.', 'wpsso' ), $um_info[ 'name' ] ) . ' ;-)</p>';
+							$text .= sprintf( __( 'Don\'t forget that the %1$s add-on must be installed and active to check for %2$s version updates.', 'wpsso' ), $um_addon_link, _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) ) . ' ;-)</p>';
 
-							if ( ! WpssoAdmin::$pkg[ $lca ][ 'pp' ] ) {
-								$text .= '<p>' . sprintf( __( 'Note that all complementary Pro add-ons require a licensed and active %1$s plugin &mdash; don\'t forget to purchase %1$s before purchasing any of its complementary Pro add-ons.', 'wpsso' ), $info[ 'short_pro' ] ) . ' ;-)</p>';
-							}
 
 							$text .= '</blockquote>';
 
@@ -1816,7 +1815,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$um_info = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
 
 							$settings_page_link = $this->p->util->get_admin_url( 'licenses',
-								_x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
+								_x( 'Licenses', 'lib file description', 'wpsso' ) );
 
 							$text = '<blockquote class="top-info">';
 
@@ -2144,7 +2143,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						if ( ! is_multisite() ) {
 
 							$settings_page_link = $this->p->util->get_admin_url( 'licenses',
-								_x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
+								_x( 'Licenses', 'lib file description', 'wpsso' ) );
 
 							$text = '<p><b>' . sprintf( __( 'The %1$s plugin Authentication ID option is empty.', 'wpsso' ), $info[ 'name' ] ) . '</b><br/>' . sprintf( __( 'To enable Premium version features and allow the plugin to authenticate itself for updates, please enter the unique Authentication ID you received by email in the %s settings page.', 'wpsso' ), $settings_page_link ) . '</p>';
 						}
@@ -2154,7 +2153,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'notice-pro-not-installed':
 
 						$settings_page_link = $this->p->util->get_admin_url( 'licenses',
-							_x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
+							_x( 'Licenses', 'lib file description', 'wpsso' ) );
 
 						$text = sprintf( __( 'An Authentication ID has been entered for %1$s but the plugin has not been installed &mdash; you can install and activate the Premium version from the %2$s settings page.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $settings_page_link ) . ' ;-)';
 
@@ -2163,7 +2162,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'notice-pro-not-updated':
 
 						$settings_page_link = $this->p->util->get_admin_url( 'licenses',
-							_x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
+							_x( 'Licenses', 'lib file description', 'wpsso' ) );
 
 						$text = sprintf( __( 'An Authentication ID has been entered for %1$s in the %2$s settings page but the Premium version has not been installed &mdash; don\'t forget to update the plugin to install the latest Premium version.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $settings_page_link ) . ' ;-)';
 
@@ -2175,7 +2174,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$um_info = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
 
 						$settings_page_link = $this->p->util->get_admin_url( 'licenses',
-							_x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
+							_x( 'Licenses', 'lib file description', 'wpsso' ) );
 
 						$plugins_page_link = '<a href="' . get_admin_url( null, 'plugins.php' ) . '">' .
 							// translators: please ignore - translation uses a different text domain
