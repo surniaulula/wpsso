@@ -436,7 +436,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None.
 * *Improvements*
-	* None.
+	* Added checks for missing WooCommerce "My account page", "Cart page", "Checkout page", and "Shop page" selections (Pro / Premium version).
 * *Bugfixes*
 	* None.
 * *Developer Notes*
