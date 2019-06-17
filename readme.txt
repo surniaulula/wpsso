@@ -88,7 +88,7 @@ WPSSO Core and its optional Free add-ons offer meta tags and Schema markup for F
 * [WPSSO Tweet a Quote](https://wordpress.org/plugins/wpsso-tweet-a-quote) to add tweetable quotes to your content.
 * [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale) to switch languages quickly and easily.
 
-<h3>WPSSO Core Pro Version Features</h3>
+<h3>WPSSO Core Pro / Premium Features</h3>
 
 * Customize default values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags), custom post types, and user profiles:
 
@@ -250,7 +250,7 @@ WPSSO Core and its optional Free add-ons offer meta tags and Schema markup for F
 
 * Integrates with services and 3rd party plugins for additional image, video, e-Commerce product details, SEO settings, and more.
 
-* The following integration modules are provided with the Pro version, and are automatically loaded when the supported services are required or 3rd party plugins detected.
+* The following integration modules are provided with the Pro / Premium version, and are automatically loaded when the supported services are required or 3rd party plugins detected.
 
 	* **Integration with Service APIs:**
 
@@ -302,7 +302,7 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 
 <h3>Highly Customizable</h3>
 
-WPSSO Core offers hundreds of filter hooks to customize its behavior and output, provides extensive developer documentation with examples, includes dozens of 3rd party integration modules in the Pro version, and offers several optional Free and Pro add-ons to extend WPSSO Core's functionality.
+WPSSO Core offers hundreds of filter hooks to customize its behavior and output, provides extensive developer documentation with examples, includes dozens of 3rd party integration modules in the Pro / Premium version, and offers several optional Free and Pro add-ons to extend WPSSO Core's functionality.
 
 == Installation ==
 
@@ -326,7 +326,7 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 
 <h3 class="top">Frequently Asked Questions</h3>
 
-* [Can I use the Pro version on multiple websites?](https://wpsso.com/docs/plugins/wpsso/faqs/can-i-use-the-pro-version-on-multiple-websites/)
+* [Can I use the Pro / Premium version on multiple websites?](https://wpsso.com/docs/plugins/wpsso/faqs/can-i-use-the-pro-version-on-multiple-websites/)
 * [Does LinkedIn read the Open Graph meta tags?](https://wpsso.com/docs/plugins/wpsso/faqs/does-linkedin-read-the-open-graph-meta-tags/)
 * [Doesn't an SEO plugin cover that?](https://wpsso.com/docs/plugins/wpsso/faqs/doesnt-an-seo-plugin-cover-that/)
 * [How can I add Schema aggregateRating values?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-add-schema-aggregaterating-values/)
@@ -340,7 +340,7 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 * [How do I attach an image without showing it on the webpage?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-attach-an-image-without-showing-it-on-the-webpage/)
 * [How do I fix Google Structured Data &gt; hatom errors?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-google-structured-data-hatom-errors/)
 * [How do I fix my theme's front page pagination?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-my-themes-front-page-pagination/)
-* [How do I install the WPSSO Core Pro version?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-install-the-wpsso-pro-version/)
+* [How do I install the WPSSO Core Pro / Premium version?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-install-the-wpsso-pro-version/)
 * [How do I remove duplicate meta tags?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-remove-duplicate-meta-tags/)
 * [How does WPSSO Core find / detect / select images?](https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/)
 * [How does WPSSO Core find / detect / select videos?](https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-videos/)
@@ -425,13 +425,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Development Updates for Pro Version</h3>
 
-<p>Development, alpha, beta, and release candidate updates are available to Pro version customers.</p>
+<p>Development, alpha, beta, and release candidate updates are available to Pro / Premium version customers.</p>
 
 <p>Under the SSO &gt; Update Manager settings page, select the "Development and Up" version filter for WPSSO Core and all its extensions (to satisfy any version dependencies). Save the plugin settings, and click the "Check for Updates" button to fetch the latest / current WPSSO version information. When new Development versions are available, they will automatically appear under your WordPress Dashboard &gt; Updates page. You can always re-select the "Stable / Production" version filter at any time to re-install the last stable / production version of a plugin.</p>
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.0.0-dev.1 (TBD)**
+**Version 5.0.0-dev.1 (2019/06/17)**
 
 * *New Features*
 	* None.
@@ -440,14 +440,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None.
 * *Developer Notes*
-	* None.
+	* Renamed the 'gpl' library sub-folder to 'std'.
 
 **Version 4.31.4 (2019/06/14)**
 
 * *New Features*
 	* None.
 * *Improvements*
-	* Removed the WooCommerce `$product` global variable consistency check (Pro version).
+	* Removed the WooCommerce `$product` global variable consistency check (Pro / Premium version).
 * *Bugfixes*
 	* None.
 * *Developer Notes*
@@ -517,9 +517,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 5.0.0-dev.1 =
 
-(TBD) None.
+(2019/06/17) Renamed the 'gpl' library sub-folder to 'std'.
 
 = 4.31.4 =
 
-(2019/06/14) Removed the WooCommerce `$product` global variable consistency check (Pro version).
+(2019/06/14) Removed the WooCommerce `$product` global variable consistency check (Pro / Premium version).
 
