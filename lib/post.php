@@ -207,7 +207,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$mod[ 'is_home_page' ]         = SucomUtil::is_home_page( $mod_id );
 			$mod[ 'is_home_index' ]        = $mod[ 'is_home_page' ] ? false : SucomUtil::is_home_index( $mod_id );
 			$mod[ 'is_home' ]              = $mod[ 'is_home_page' ] || $mod[ 'is_home_index' ] ? true : false;
-			$mod[ 'is_post_type_archive' ] = is_post_type_archive( $post_type );			// Post is an archive.
+			$mod[ 'is_post_type_archive' ] = is_post_type_archive( $post_type );			// Post is an archive page.
 			$mod[ 'post_slug' ]            = get_post_field( 'post_name', $mod_id );		// Post name (aka slug).
 			$mod[ 'post_type' ]            = $post_type;						// Post type name.
 			$mod[ 'post_mime' ]            = get_post_mime_type( $mod_id );				// Post mime type (ie. image/jpg).
@@ -1077,7 +1077,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 									$notice_msg .= __( 'Complete and accurate Schema JSON-LD markup is highly recommended for better ranking and click-through in Google search results.', 'wpsso' ) . ' ';
 						
-									$notice_msg .= sprintf( __( 'You should consider purchasing the %1$s Pro version add-on to include better Schema JSON-LD markup for WooCommerce products.', 'wpsso' ), $json_addon_link );
+									$notice_msg .= sprintf( __( 'You should consider purchasing the %1$s Premium version add-on to include better Schema JSON-LD markup for WooCommerce products.', 'wpsso' ), $json_addon_link );
 
 									$this->p->notice->warn( $notice_msg, null, $notice_key, true );
 								}

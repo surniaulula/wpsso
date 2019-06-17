@@ -45,7 +45,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$sharing_url = $wpsso->util->get_sharing_url( $mod );
 
 			/**
-			 * Maybe get options from Pro version integration modules.
+			 * Maybe get options from Premium version integration modules.
 			 */
 			$event_opts = apply_filters( $wpsso->lca . '_get_event_options', false, $mod, $event_id );
 
@@ -286,7 +286,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/**
-			 * Maybe get options from Pro version integration modules.
+			 * Maybe get options from Premium version integration modules.
 			 */
 			$job_opts = apply_filters( $wpsso->lca . '_get_job_options', false, $mod, $job_id );
 
@@ -779,7 +779,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$size_name = $wpsso->lca . '-schema';
 
 			/**
-			 * Maybe get options from Pro version integration modules.
+			 * Maybe get options from Premium version integration modules.
 			 */
 			$person_opts = apply_filters( $wpsso->lca . '_get_person_options', false, $mod, $user_id );
 
@@ -936,7 +936,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$size_name = $wpsso->lca . '-schema';
 
 			/**
-			 * Maybe get options from Pro version integration modules.
+			 * Maybe get options from Premium version integration modules.
 			 */
 			$place_opts = apply_filters( $wpsso->lca . '_get_place_options', false, $mod, $place_id );
 

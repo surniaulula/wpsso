@@ -73,7 +73,7 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 			}
 
 			$table_rows[] = '<td colspan="2"><p style="text-align:center;margin:0;">' .
-				__( 'Video discovery and integration modules are provided with the Pro version.', 'wpsso' ) .
+				__( 'Video discovery and integration modules are provided with the Premium version.', 'wpsso' ) .
 					'</p>' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
 
 			$table_rows[ 'og_vid_max' ] = $form->get_tr_hide( 'basic', 'og_vid_max' ) . 

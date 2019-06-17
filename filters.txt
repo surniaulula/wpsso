@@ -61,7 +61,7 @@
 
 'wpsso_cache_expire_schema_types' ( $secs )
 
-'wpsso_cache_expire_short_url' ( $secs )	// Pro version
+'wpsso_cache_expire_short_url' ( $secs )
 
 'wpsso_cache_expire_the_content' ( $secs )
 
@@ -101,15 +101,15 @@
 
 'wpsso_get_defaults' ( $defaults )
 
-'wpsso_get_post_options' ( $options, $post_id, $mod )	// Pro version
+'wpsso_get_post_options' ( $options, $post_id, $mod )
 
 'wpsso_get_short_url' ( $long_url, $service_id, $mod )
 
 'wpsso_get_site_defaults' ( $defaults )
 
-'wpsso_get_term_options' ( $options, $term_id, $mod )	// Pro version
+'wpsso_get_term_options' ( $options, $term_id, $mod )
 
-'wpsso_get_user_options' ( $options, $user_id, $mod )	// Pro version
+'wpsso_get_user_options' ( $options, $user_id, $mod )
 
 'wpsso_hashtags' ( $hashtags, $post_id )
 
@@ -117,11 +117,11 @@
 
 'wpsso_home_url' ( $url, $mod, $add_page, $src_id )
 
-'wpsso_image_upscale_all' ( WPSSO_IMAGE_UPSCALE_ALL = false )	// Pro version
+'wpsso_image_upscale_all' ( WPSSO_IMAGE_UPSCALE_ALL = false )
 
-'wpsso_image_upscale_max' ( $max_diff = 50, $image_src_args )	// Pro version
+'wpsso_image_upscale_max' ( $max_diff = 50, $image_src_args )
 
-'wpsso_image_upscale_test' ( WPSSO_IMAGE_UPSCALE_TEST = false, $image_src_args )	// Pro version
+'wpsso_image_upscale_test' ( WPSSO_IMAGE_UPSCALE_TEST = false, $image_src_args )
 
 'wpsso_is_functions' ( $is_functions )
 
@@ -157,9 +157,9 @@
 
 'wpsso_ngg_accept_img_dims' ( $bool, $img_url, $img_width, $img_height, $size_name, $pid )
 
-'wpsso_ngg_tags_seed' ( $tags, $pid )	// Pro version
+'wpsso_ngg_tags_seed' ( $tags, $pid )
 
-'wpsso_ngg_tags' ( $tags, $pid )	// Pro version
+'wpsso_ngg_tags' ( $tags, $pid )
 
 'wpsso_og_add_mt_offers' ( $bool, $mod )
 
@@ -175,13 +175,13 @@
 
 'wpsso_og_default_img_url' ( $image_url )
 
-'wpsso_og_ecom_edd' ( $og_ecom, $mod )	// Pro version
+'wpsso_og_ecom_edd' ( $og_ecom, $mod )
 
-'wpsso_og_ecom_marketpress' ( $og_ecom, $mod )	// Pro version
+'wpsso_og_ecom_marketpress' ( $og_ecom, $mod )
 
-'wpsso_og_ecom_woocommerce' ( $og_ecom, $mod )	// Pro version
+'wpsso_og_ecom_woocommerce' ( $og_ecom, $mod )
 
-'wpsso_og_ecom_wpecommerce' ( $og_ecom, $mod )	// Pro version
+'wpsso_og_ecom_wpecommerce' ( $og_ecom, $mod )
 
 'wpsso_og_featured' ( $og_ret, $num, $size_name, $post_id, $check_dupes, $force_regen )
 

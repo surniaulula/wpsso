@@ -38,7 +38,7 @@ if ( ! class_exists( 'WpssoSubmenuLicenses' ) && class_exists( 'WpssoAdmin' ) ) 
 		protected function add_meta_boxes() {
 	
 			$metabox_id      = 'licenses';
-			$metabox_title   = _x( 'Pro Licenses Authentication IDs', 'metabox title', 'wpsso' );
+			$metabox_title   = _x( 'Premium Licenses', 'metabox title', 'wpsso' );
 			$metabox_screen  = $this->pagehook;
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';

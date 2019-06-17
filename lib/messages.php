@@ -94,10 +94,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					}
 				}
 
-				$info[ $info_key . '_pro' ] = SucomUtil::get_pkg_name( $info[ $info_key ], 'Pro' );
+				$info[ $info_key . '_pro' ] = SucomUtil::get_pkg_name( $info[ $info_key ], 'Premium' );
 
 				$info[ $info_key . '_pro_purchase' ] = empty( $url[ 'purchase' ] ) ?
-					$info[ $info_key . '_pro' ] : '<a href="'.$url[ 'purchase' ].'">'.$info[ $info_key . '_pro' ].'</a>';
+					$info[ $info_key . '_pro' ] : '<a href="' . $url[ 'purchase' ] . '">' . $info[ $info_key . '_pro' ] . '</a>';
 			}
 
 			$fb_recommends_transl = __( 'Facebook has published a preference for Open Graph image dimensions of 1200x630px cropped (for retina and high-PPI displays), 600x315px cropped as a minimum (the default settings value), and ignores images smaller than 200x200px.', 'wpsso' );
@@ -268,7 +268,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-schema_img_url':
 
-							$text = __( 'A customized image URL (instead of an image ID) to include first in the Google / Schema meta tags and JSON-LD markup.', 'wpsso' ).' <em>'.__( 'This field is disabled if a custom image ID has been selected.', 'wpsso' ).'</em>';
+							$text = __( 'A customized image URL (instead of an image ID) to include first in the Google / Schema meta tags and JSON-LD markup.', 'wpsso' ) . ' <em>' . __( 'This field is disabled if a custom image ID has been selected.', 'wpsso' ) . '</em>';
 
 						 	break;
 
@@ -282,7 +282,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-meta-tc_lrg_img_url':
 						case 'tooltip-meta-tc_sum_img_url':
 
-							$text = __( 'A customized image URL (instead of an image ID) for the Twitter Card image.', 'wpsso' ).' <em>'.__( 'This field is disabled if a custom image ID has been selected.', 'wpsso' ).'</em>';
+							$text = __( 'A customized image URL (instead of an image ID) for the Twitter Card image.', 'wpsso' ) . ' <em>' . __( 'This field is disabled if a custom image ID has been selected.', 'wpsso' ) . '</em>';
 
 						 	break;
 
@@ -401,9 +401,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							
 							$text .= sprintf( __( 'This value will be used in the %s Facebook / Open Graph and Pinterest Rich Pin meta tags.', 'wpsso' ), '<code>article:section</code>' ) . ' ';
 							
-							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag.', 'wpsso' ), '<code>article:section</code>' ) . ' ';
-							
-							$text .= __( 'The Pro version also allows you to select a custom Topic for each individual Post and Page.', 'wpsso' );
+							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag.', 'wpsso' ), '<code>article:section</code>' );
 
 							break;
 
@@ -569,7 +567,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							
 							$text .= __( 'The image URL option allows you to use an image outside of a managed collection (WordPress Media Library or NextGEN Gallery), and/or a smaller logo style image.', 'wpsso' ) . ' ';
 							
-							$text .= sprintf( __( 'The image should be at least %s or more in width and height.', 'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ 'og_img_width' ] . 'x' . $this->p->cf[ 'head' ][ 'limit_min' ][ 'og_img_height' ].'px' ) . ' ';
+							$text .= sprintf( __( 'The image should be at least %s or more in width and height.', 'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ 'og_img_width' ] . 'x' . $this->p->cf[ 'head' ][ 'limit_min' ][ 'og_img_height' ] . 'px' ) . ' ';
 							
 							$text .= __( 'The default image is used for index / archive pages, and as a fallback for Posts and Pages that do not have a suitable image featured, attached, or in their content.', 'wpsso' );
 
@@ -732,7 +730,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = sprintf( __( '%1$s hooks the \'%2$s\' filter (by default) to add / modify the %3$s HTML tag attributes for Open Graph namespace prefix values.', 'wpsso' ), $info[ 'short' ], $filter_name, $tag_code ) . ' ';
 
-							$text .= sprintf( __( 'The <a href="%1$s">WordPress %2$s function</a> and its \'%3$s\' filter are used by most themes &mdash; if the namespace prefix values are missing from your %4$s HTML tag attributes, make sure your header template(s) use the %2$s function.', 'wpsso' ), $func_url, '<code>'.$func_name.'</code>', $filter_name, $tag_code ) . ' ';
+							$text .= sprintf( __( 'The <a href="%1$s">WordPress %2$s function</a> and its \'%3$s\' filter are used by most themes &mdash; if the namespace prefix values are missing from your %4$s HTML tag attributes, make sure your header template(s) use the %2$s function.', 'wpsso' ), $func_url, '<code>' . $func_name . '</code>', $filter_name, $tag_code ) . ' ';
 
 							$text .= __( 'Leaving this option empty disables the addition of Open Graph namespace values.', 'wpsso' ) . ' ';
 
@@ -814,7 +812,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							
 							$text .= sprintf( __( '%1$s includes a feature that allows upscaling of WordPress Media Library images for %2$s image sizes (up to a maximum upscale percentage).', 'wpsso' ), $info[ 'name_pro' ], $info[ 'short' ] ) . ' ';
 							
-							$text .= '<strong>'.__( 'Do not enable this option unless you want to publish lower quality images on social and search sites.', 'wpsso' ).'</strong>';
+							$text .= '<strong>' . __( 'Do not enable this option unless you want to publish lower quality images on social and search sites.', 'wpsso' ) . '</strong>';
 
 							break;
 
@@ -1268,13 +1266,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$settings_page_link = $this->p->util->get_admin_url( 'social-accounts',
 								_x( 'SSO WebSite Pages', 'lib file description', 'wpsso' ) );
 
-							$text = __( 'Include WebSite, Organization and/or Person Schema markup in the front page for Google\'s <em>Knowledge Graph</em>.', 'wpsso' ).'<br/><br/>';
+							$text = __( 'Include WebSite, Organization and/or Person Schema markup in the front page for Google\'s <em>Knowledge Graph</em>.', 'wpsso' ) . '<br/><br/>';
 							
 							$text .= __( 'The WebSite markup includes the site name, alternate site name, site URL and search query URL.', 'wpsso' ) . ' ';
 							
-							$text .= sprintf( __( 'Developers can hook the \'%s\' filter to modify the site search URL (or disable its addition by returning false).', 'wpsso' ), $this->p->lca . '_json_ld_search_url' ).'<br/><br/>';
+							$text .= sprintf( __( 'Developers can hook the \'%s\' filter to modify the site search URL (or disable its addition by returning false).', 'wpsso' ), $this->p->lca . '_json_ld_search_url' ) . '<br/><br/>';
 							
-							$text .= sprintf( __( 'The Organization markup includes all URLs entered in the %s settings page.', 'wpsso' ), $settings_page_link ).'<br/><br/>';
+							$text .= sprintf( __( 'The Organization markup includes all URLs entered in the %s settings page.', 'wpsso' ), $settings_page_link ) . '<br/><br/>';
 							
 							$text .= __( 'The Person markup includes all contact method URLs entered in the user\'s WordPress profile page.', 'wpsso' );
 
@@ -1760,7 +1758,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = '<p class="top">';
 							
-							$text .= __( 'Validate the HTML syntax and HTML AMP conformance of your meta tags and the AMP markup of your templates.', 'wpsso' ) .' ';
+							$text .= __( 'Validate the HTML syntax and HTML AMP conformance of your meta tags and the AMP markup of your templates.', 'wpsso' ) . ' ';
 
 							$text .= '</p>';
 
@@ -1803,7 +1801,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .=  __( 'Enter the Authentication ID in the option field corresponding to the plugin / add-on you purchased.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'Don\'t forget that the %1$s Free add-on must be installed and active to check for Pro version updates.', 'wpsso' ), $um_info[ 'name' ] ) . ' ;-)</p>';
+							$text .= sprintf( __( 'Don\'t forget that the %1$s Free add-on must be installed and active to check for Premium version updates.', 'wpsso' ), $um_info[ 'name' ] ) . ' ;-)</p>';
 
 							if ( ! WpssoAdmin::$pkg[ $lca ][ 'pp' ] ) {
 								$text .= '<p>' . sprintf( __( 'Note that all complementary Pro add-ons require a licensed and active %1$s plugin &mdash; don\'t forget to purchase %1$s before purchasing any of its complementary Pro add-ons.', 'wpsso' ), $info[ 'short_pro' ] ) . ' ;-)</p>';
@@ -1818,7 +1816,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$um_info = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
 
 							$settings_page_link = $this->p->util->get_admin_url( 'licenses',
-								_x( 'Pro Licenses', 'lib file description', 'wpsso' ) );
+								_x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
 
 							$text = '<blockquote class="top-info">';
 
@@ -1855,7 +1853,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							
 							$text .= '<center>';
 							
-							$text .= '<strong>'.__( 'DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE ARE CONTACT FIELD LABELS ONLY.', 'wpsso' ).'</strong><br/>';
+							$text .= '<strong>' . __( 'DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE ARE CONTACT FIELD LABELS ONLY.', 'wpsso' ) . '</strong><br/>';
 							
 							$text .= sprintf( __( 'Enter your personal contact information in <a href="%1$s">the user profile page</a>.', 'wpsso' ), get_admin_url( null, 'profile.php' ) );
 
@@ -2046,22 +2044,22 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$percent_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
 								_x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ) );
 
-							$text .= '<p style="margin-left:0;"><em>'.
+							$text .= '<p style="margin-left:0;"><em>' . 
 								__( 'Additional information shown only to users with Administrative privileges:',
-									'wpsso' ).'</em></p>';
+									'wpsso' ) . '</em></p>';
 
 							$text .= '<ul>';
 
-							$text .= '<li>'.sprintf( __( 'You can adjust the <b>%1$s</b> option in the %2$s settings.', 'wpsso' ),
-								$info[ 'size_label' ], $img_dim_page_link ).'</li>';
+							$text .= '<li>' . sprintf( __( 'You can adjust the <b>%1$s</b> option in the %2$s settings.', 'wpsso' ),
+								$info[ 'size_label' ], $img_dim_page_link ) . '</li>';
 
 							if ( empty( $this->p->options[ 'plugin_upscale_images' ] ) ) {
-								$text .= '<li>'.sprintf( __( 'Enable the %1$s option.', 'wpsso' ), $upscale_option_link ).'</li>';
+								$text .= '<li>' . sprintf( __( 'Enable the %1$s option.', 'wpsso' ), $upscale_option_link ) . '</li>';
 							}
 
-							$text .= '<li>'.sprintf( __( 'Increase the %1$s option value.', 'wpsso' ), $percent_option_link ).'</li>';
+							$text .= '<li>' . sprintf( __( 'Increase the %1$s option value.', 'wpsso' ), $percent_option_link ) . '</li>';
 
-							$text .= '<li>'.sprintf( __( 'Disable the %1$s option (not recommended).', 'wpsso' ), $img_dim_option_link ).'</li>';
+							$text .= '<li>' . sprintf( __( 'Disable the %1$s option (not recommended).', 'wpsso' ), $img_dim_option_link ) . '</li>';
 
 							$text .= '</ul>';
 						}
@@ -2105,7 +2103,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '</p><p>';
 
-						$text .= '<b>' . __( 'Many themes and plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ).'</b> ';
+						$text .= '<b>' . __( 'Many themes and plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ) . '</b> ';
 
 						$text .= __( 'If you use shortcodes in your content text, this option should be enabled &mdash; IF YOU EXPERIENCE WEBPAGE LAYOUT OR PERFORMANCE ISSUES AFTER ENABLING THIS OPTION, you should determine which theme or plugin is filtering the content incorrectly, and report the problem to its author(s).', 'wpsso' ) . ' ';
 
@@ -2120,7 +2118,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$filter_name = 'head_attributes';
 						$tag_code    = '<code>&lt;head&gt;</code>';
 						$php_code    = '<pre><code>&lt;head &lt;?php do_action( &#39;add_head_attributes&#39; ); ?&gt;&gt;</code></pre>';
-						$action_url  = wp_nonce_url( $this->p->util->get_admin_url( '?'.$this->p->cf[ 'lca' ].'-action=modify_tmpl_head_attributes' ),
+						$action_url  = wp_nonce_url( $this->p->util->get_admin_url( '?' . $this->p->cf[ 'lca' ] . '-action=modify_tmpl_head_attributes' ),
 							WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 
 						$text = '<p class="top">';
@@ -2133,7 +2131,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= sprintf( __( '%1$s can update your header template(s) automatically and change the existing %2$s HTML tag to:', 'wpsso' ), $info[ 'short' ], $tag_code );
 
-						$text .= '</p>'.$php_code.'<p>';
+						$text .= '</p>' . $php_code . '<p>';
 
 						$text .= sprintf( __( '<b><a href="%1$s">Click here to update header template(s) automatically</a></b> (recommended) or update the template(s) manually.', 'wpsso' ), $action_url );
 
@@ -2146,9 +2144,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						if ( ! is_multisite() ) {
 
 							$settings_page_link = $this->p->util->get_admin_url( 'licenses',
-								_x( 'Pro Licenses', 'lib file description', 'wpsso' ) );
+								_x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
 
-							$text = '<p><b>'.sprintf( __( 'The %1$s plugin Authentication ID option is empty.', 'wpsso' ), $info[ 'name' ] ).'</b><br/>'.sprintf( __( 'To enable Pro version features and allow the plugin to authenticate itself for updates, please enter the unique Authentication ID you received by email in the %s settings page.', 'wpsso' ), $settings_page_link ).'</p>';
+							$text = '<p><b>' . sprintf( __( 'The %1$s plugin Authentication ID option is empty.', 'wpsso' ), $info[ 'name' ] ) . '</b><br/>' . sprintf( __( 'To enable Premium version features and allow the plugin to authenticate itself for updates, please enter the unique Authentication ID you received by email in the %s settings page.', 'wpsso' ), $settings_page_link ) . '</p>';
 						}
 
 						break;
@@ -2156,18 +2154,18 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'notice-pro-not-installed':
 
 						$settings_page_link = $this->p->util->get_admin_url( 'licenses',
-							_x( 'Pro Licenses', 'lib file description', 'wpsso' ) );
+							_x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
 
-						$text = sprintf( __( 'An Authentication ID has been entered for %1$s but the plugin has not been installed &mdash; you can install and activate the Pro version from the %2$s settings page.', 'wpsso' ), '<b>'.$info[ 'name' ].'</b>', $settings_page_link ).' ;-)';
+						$text = sprintf( __( 'An Authentication ID has been entered for %1$s but the plugin has not been installed &mdash; you can install and activate the Premium version from the %2$s settings page.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $settings_page_link ) . ' ;-)';
 
 						break;
 
 					case 'notice-pro-not-updated':
 
 						$settings_page_link = $this->p->util->get_admin_url( 'licenses',
-							_x( 'Pro Licenses', 'lib file description', 'wpsso' ) );
+							_x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
 
-						$text = sprintf( __( 'An Authentication ID has been entered for %1$s in the %2$s settings page but the Pro version has not been installed &mdash; don\'t forget to update the plugin to install the latest Pro version.', 'wpsso' ), '<b>'.$info[ 'name' ].'</b>', $settings_page_link ).' ;-)';
+						$text = sprintf( __( 'An Authentication ID has been entered for %1$s in the %2$s settings page but the Premium version has not been installed &mdash; don\'t forget to update the plugin to install the latest Premium version.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $settings_page_link ) . ' ;-)';
 
 						break;
 
@@ -2177,15 +2175,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$um_info = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
 
 						$settings_page_link = $this->p->util->get_admin_url( 'licenses',
-							_x( 'Pro Licenses', 'lib file description', 'wpsso' ) );
+							_x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
 
-						$plugins_page_link = '<a href="'.get_admin_url( null, 'plugins.php' ) . '">' .
+						$plugins_page_link = '<a href="' . get_admin_url( null, 'plugins.php' ) . '">' .
 							// translators: please ignore - translation uses a different text domain
 							__( 'Plugins' ) . '</a>';
 
 						$text = '<p>';
 
-						$text .= '<b>'.sprintf( __( 'At least one Authentication ID has been entered in the %1$s settings page,<br/>but the %2$s add-on is not active.', 'wpsso' ), $settings_page_link, $um_info[ 'name' ] ).'</b> ';
+						$text .= '<b>' . sprintf( __( 'At least one Authentication ID has been entered in the %1$s settings page,<br/>but the %2$s add-on is not active.', 'wpsso' ), $settings_page_link, $um_info[ 'name' ] ) . '</b> ';
 
 						$text .= sprintf( __( 'This Free add-on is required to update and enable the %1$s plugin and its complementary Pro add-ons.', 'wpsso' ), $info[ 'name_pro' ] );
 
@@ -2194,7 +2192,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						if ( $msg_key === 'notice-um-add-on-required' ) {
 
 							$text .= '<b>' . sprintf( __( 'Install and activate the %1$s add-on from the %2$s settings page.', 'wpsso' ),
-								$um_info[ 'name' ], $settings_page_link ).'</b> ';
+								$um_info[ 'name' ], $settings_page_link ) . '</b> ';
 
 						} else {
 
@@ -2204,7 +2202,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= __( 'Please activate this Free add-on now.', 'wpsso' ) . ' ';
 						}
 
-						$text .= sprintf( __( 'When the %1$s add-on is active, one or more Pro version updates may be available for your licensed plugin and/or its add-on(s).', 'wpsso' ), $um_info[ 'name' ] );
+						$text .= sprintf( __( 'When the %1$s add-on is active, one or more Premium version updates may be available for your licensed plugin and/or its add-on(s).', 'wpsso' ), $um_info[ 'name' ] );
 
 						$text .= '</p>';
 
@@ -2224,7 +2222,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$um_settings_page_link = $this->p->util->get_admin_url( 'um-general',
 							_x( 'Update Manager', 'lib file description', 'wpsso' ) );
 
-						$wp_updates_page_link = '<a href="'.admin_url( 'update-core.php' ) . '">' . 
+						$wp_updates_page_link = '<a href="' . admin_url( 'update-core.php' ) . '">' . 
 							// translators: please ignore - translation uses a different text domain
 							__( 'Dashboard' ) . ' &gt; ' . 
 							// translators: please ignore - translation uses a different text domain
@@ -2261,28 +2259,24 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-						$text = '<p>'.sprintf( __( '<strong>%s includes:</strong>', 'wpsso' ), $info[ 'short_pro' ] ).'</p>';
+						$text = '<p>' . sprintf( __( '<strong>%s includes:</strong>', 'wpsso' ), $info[ 'short_pro' ] ) . '</p>';
 
 						$text .= '<ul>';
 
-						$text .= '<li>'.sprintf( __( '%s options for posts, pages, custom post types, terms (categories, tags, custom taxonomies), and user profiles.', 'wpsso' ), $metabox_title ).'</li>';
+						$text .= '<li>' . __( 'Advanced features and settings page.', 'wpsso' ) . '</li>';
 
-						$text .= '<li>'.__( 'Advanced features and settings page.', 'wpsso' ).'</li>';
-
-						$text .= '<li>'.__( 'Integration with 3rd party plugins and service APIs.', 'wpsso' ).'</li>';
-
-						$text .= '<li>'.__( 'Ability to purchase complementary Pro add-ons.', 'wpsso' ).'</li>';
+						$text .= '<li>' . __( 'Integration with 3rd party plugins and service APIs.', 'wpsso' ) . '</li>';
 
 						$text .= '</ul>';
 
-						$text .= '<p>'.__( '<strong>Pro licenses never expire</strong> &mdash; you may receive unlimited / lifetime updates and support for each licensed WordPress Site Address.', 'wpsso' ) . ' ';
+						$text .= '<p>' . __( '<strong>Pro licenses never expire</strong> &mdash; you may receive unlimited / lifetime updates and support for each licensed WordPress Site Address.', 'wpsso' ) . ' ';
 						
-						$text .= __( 'How great is that!?', 'wpsso' ).' :-)</p>';
+						$text .= __( 'How great is that!?', 'wpsso' ) . ' :-)</p>';
 
 						if ( $this->p->avail[ '*' ][ 'p_dir' ] ) {
-							$text .= '<p>'.sprintf( __( '<strong>Purchase %s easily and quickly with PayPal</strong> &mdash; license the Pro version immediately after your purchase!', 'wpsso' ), $info[ 'short_pro' ] ).'</p>';
+							$text .= '<p>' . sprintf( __( '<strong>Purchase %s easily and quickly with PayPal</strong> &mdash; license the Premium version immediately after your purchase!', 'wpsso' ), $info[ 'short_pro' ] ) . '</p>';
 						} else {
-							$text .= '<p>'.sprintf( __( '<strong>Purchase %s easily and quickly with PayPal</strong> &mdash; update the Free plugin to Pro immediately after your purchase!', 'wpsso' ), $info[ 'short_pro' ] ).'</p>';
+							$text .= '<p>' . sprintf( __( '<strong>Purchase %s easily and quickly with PayPal</strong> &mdash; update the Free plugin to Pro immediately after your purchase!', 'wpsso' ), $info[ 'short_pro' ] ) . '</p>';
 						}
 
 						break;

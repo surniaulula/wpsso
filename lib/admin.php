@@ -206,7 +206,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				self::$pkg[ $ext ][ 'pdir' ]  = $ext_pdir;
 				self::$pkg[ $ext ][ 'pp' ]    = $ext_pp;
-				self::$pkg[ $ext ][ 'type' ]  = $ext_pp ? _x( 'Pro', 'package type', 'wpsso' ) : _x( 'Free', 'package type', 'wpsso' );
+				self::$pkg[ $ext ][ 'type' ]  = $ext_pp ? _x( 'Premium', 'package type', 'wpsso' ) : _x( 'Basic', 'package type', 'wpsso' );
 				self::$pkg[ $ext ][ 'short' ] = $info[ 'short' ] . ' ' . self::$pkg[ $ext ][ 'type' ];
 				self::$pkg[ $ext ][ 'name' ]  = SucomUtil::get_pkg_name( $info[ 'name' ], self::$pkg[ $ext ][ 'type' ] );
 				self::$pkg[ $ext ][ 'gen' ]   = $info[ 'short' ] . ( isset( $info[ 'version' ] ) ? ' ' . $info[ 'version' ] . '/' . $ext_stat : '' );
@@ -1717,7 +1717,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '<table class="sucom-settings ' . $this->p->lca . ' column-metabox module-status">';
 
 			/**
-			 * Pro version features.
+			 * Premium version features.
 			 */
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
@@ -1959,7 +1959,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			echo '<div class="column-metabox-buttons">';
 			echo $this->form->get_button( sprintf( _x( 'Purchase %s', 'submit button', 'wpsso' ),
-				$info[ 'short' ] . ' ' . _x( 'Pro', 'package type', 'wpsso' ) ) ,
+				$info[ 'short' ] . ' ' . _x( 'Premium', 'package type', 'wpsso' ) ) ,
 					'button-primary', 'column-purchase-pro', $purchase_url, true );
 			echo '</div>';
 
@@ -1989,7 +1989,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( ! empty( $info[ 'url' ][ 'support' ] ) && self::$pkg[ $ext ][ 'pp' ] ) {
 
 					$action_links[] = sprintf( __( '<a href="%s">Priority Support Ticket</a>', 'wpsso' ), $info[ 'url' ][ 'support' ] ) .
-						' (' . __( 'Pro version', 'wpsso' ) . ')';
+						' (' . __( 'Premium version', 'wpsso' ) . ')';
 
 				} elseif ( ! empty( $info[ 'url' ][ 'forum' ] ) ) {
 
@@ -2130,7 +2130,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$ext_sorted = WpssoConfig::get_ext_sorted();
 
 			foreach ( $ext_sorted as $ext => $info ) {
-				if ( empty( $info[ 'update_auth' ] ) ) {	// Only show plugins with Pro versions.
+				if ( empty( $info[ 'update_auth' ] ) ) {	// Only show plugins with Premium versions.
 					unset( $ext_sorted[ $ext ] );
 				}
 			}
@@ -3155,9 +3155,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					$notice_msg .= '</p><p>';
 
-					$notice_msg .= '<b>' . __( 'Have you considered purchasing the Pro version?', 'wpsso' ) . '</b> ';
+					$notice_msg .= '<b>' . __( 'Have you considered purchasing the Premium version?', 'wpsso' ) . '</b> ';
 
-					$notice_msg .= __( 'The Pro version comes with a lot of new and exciting extra features!', 'wpsso' );
+					$notice_msg .= __( 'The Premium version comes with a lot of extra features!', 'wpsso' );
 
 					$notice_msg .= '</p>';
 					
