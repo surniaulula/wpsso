@@ -431,7 +431,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.0.0-dev.1 (2019/06/17)**
+**Version 5.0.0-dev.2 (2019/06/17)**
 
 * *New Features*
 	* None.
@@ -441,6 +441,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * *Developer Notes*
 	* Renamed the 'gpl' library sub-folder to 'std'.
+	* Added a new 'wpsso_scheduled_task_started' action.
 
 **Version 4.31.4 (2019/06/14)**
 
@@ -515,7 +516,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 5.0.0-dev.1 =
+= 5.0.0-dev.2 =
 
 (2019/06/17) Renamed the 'gpl' library sub-folder to 'std'.
 
