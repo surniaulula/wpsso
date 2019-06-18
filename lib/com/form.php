@@ -835,7 +835,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				if ( $max_input > 1 ) {
 
-					$input_id = empty( $css_id ) ? '' : $css_id . '_' . $key_num;
+					$input_class = empty( $css_class ) ? 'input_num' : $css_class . ' input_num';
+					$input_id    = empty( $css_id ) ? '' : $css_id . '_' . $key_num;
 
 					$html .= '<div class="wrap_multi">' . "\n";
 					$html .= '<p class="input_num">' . ( $key_num + 1 ) . '.</p>';
@@ -1130,7 +1131,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$opt_key      = $name . '_' . $key_num;
 				$opt_disabled = $disabled || $this->get_options( $opt_key . ':is' ) === 'disabled' ? true : false;
 
-				$input_class   = empty( $css_class ) ? 'multi' : 'multi ' . $css_class;
+				$input_class   = empty( $css_class ) ? 'multi input_num' : 'multi ' . $css_class . ' input_num';
 				$input_id      = empty( $css_id ) ? $opt_key : $css_id . '_' . $key_num;
 				$input_id_prev = empty( $css_id ) ? $name . '_' . $prev_num : $css_id . '_' . $prev_num;
 				$input_id_next = empty( $css_id ) ? $name . '_' . $next_num : $css_id . '_' . $next_num;
@@ -1145,6 +1146,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= '<div class="wrap_multi" id="wrap_' . esc_attr( $input_id ) . '"';
 				$html .= $display ? '' : ' style="display:none;"';
 				$html .= '>' . "\n";
+
 				$html .= '<p class="input_num">' . ( $key_num + 1 ) . '.</p>';
 
 				$html .= '<input type="text"' . ( $opt_disabled ? ' disabled="disabled"' : '' ) .
@@ -1209,6 +1211,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= '<div class="wrap_multi" id="wrap_' . esc_attr( $wrap_id ) . '"';
 				$html .= $display ? '' : ' style="display:none;"';
 				$html .= '>' . "\n";
+
 				$html .= '<p class="input_num">' . ( $key_num + 1 ) . '.</p>';
 
 				foreach ( $mixed as $name => $atts ) {
@@ -1220,7 +1223,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$in_defaults = $this->in_defaults( $opt_key );	// Optimize and call only once.
 
 					$input_title = empty( $atts[ 'input_title' ] ) ? '' : $atts[ 'input_title' ];
-					$input_class = empty( $atts[ 'input_class' ] ) ? 'multi' : 'multi ' . $atts[ 'input_class' ];
+					$input_class = empty( $atts[ 'input_class' ] ) ? 'multi input_num' : 'multi ' . $atts[ 'input_class' ] . ' input_num';
 					$input_id    = empty( $atts[ 'input_id' ] ) ? $opt_key : $atts[ 'input_id' ] . '_' . $key_num;
 
 					if ( isset( $atts[ 'placeholder' ] ) ) {
