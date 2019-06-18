@@ -14,7 +14,7 @@
  * Requires At Least: 3.8
  * Tested Up To: 5.2.1
  * WC Tested Up To: 3.6
- * Version: 5.0.0-dev.1
+ * Version: 5.0.0-dev.2
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -331,12 +331,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			$this->avail = $this->check->get_avail();		// Uses $this->options for availability checks.
 
-			if ( $debug_log || $debug_html ) {
+			if ( $debug_log || $debug_html || ( defined( 'WPSSO_LOAD_DEBUG' ) && WPSSO_LOAD_DEBUG ) ) {
 
 				require_once WPSSO_PLUGINDIR . 'lib/com/debug.php';
 
 				$this->debug = new SucomDebug( $this, array(
-					'log' => $debug_log,
+					'log'  => $debug_log,
 					'html' => $debug_html,
 				) );
 

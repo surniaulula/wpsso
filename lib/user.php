@@ -599,7 +599,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->log( 'locale default = ' . SucomUtil::get_locale( 'default' ) );
 				$this->p->debug->log( 'locale current = ' . SucomUtil::get_locale( 'current' ) );
 				$this->p->debug->log( 'locale mod = ' . SucomUtil::get_locale( $mod ) );
-				$this->p->debug->log( SucomDebug::pretty_array( $mod ) );
+				$this->p->debug->log( SucomUtil::pretty_array( $mod ) );
 			}
 
 			WpssoWpMeta::$head_meta_tags = array();

@@ -170,6 +170,7 @@ __( 'Checkout page', 'woocommerce' );
 // translators: please ignore - translation uses a different text domain
 __( 'Shop page', 'woocommerce' );
 __( 'The WooCommerce "%1$s" option value is empty.', 'wpsso' );
+__( 'The WooCommerce %s method is not available - please update to a newer version of WooCommerce.', 'wpsso' );
 __( '"%s" is  an unknown Schema product item condition.', 'wpsso' );
 __( 'Valid item condition values are (case is important): %s.', 'wpsso' );
 __( 'https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax.html', 'wpsso' );

@@ -479,6 +479,32 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $header_files;
 		}
 
+		public static function doing_frontend() {
+
+			if ( is_admin() ) {
+				return false;
+			} elseif ( defined( 'DOING_CRON' ) && DOING_CRON ) {
+				return false;
+			} elseif ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+				return true;	// An ajax call is considered a frontend task.
+			} elseif ( self::doing_rest() ) {
+				return false;
+			} else {
+				return true;
+			}
+		}
+
+		public static function doing_rest() { 
+
+			if ( empty( $_SERVER[ 'REQUEST_URI' ] ) ) {
+				return false;
+			}
+			
+			$rest_prefix = trailingslashit( rest_get_url_prefix() );
+
+			return strpos( $_SERVER[ 'REQUEST_URI' ], $rest_prefix ) !== false ? true : false;
+		}
+
 		public static function doing_block_editor() {
 
 			static $is_doing = null;

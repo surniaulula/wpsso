@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 5.0.0-dev.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 5.0.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -100,7 +100,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:1017 lib/post.php:787 lib/term.php:650 lib/user.php:670
+#: lib/admin.php:1017 lib/post.php:789 lib/term.php:650 lib/user.php:670
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -367,9 +367,9 @@ msgid ""
 "function is missing."
 msgstr ""
 
-#: lib/admin.php:2476 lib/gettext-pro.php:180 lib/gettext-pro.php:183
-#: lib/gettext-pro.php:186 lib/pro/media/slideshare.php:192
-#: lib/pro/media/vimeo.php:157 lib/pro/media/wistia.php:314 lib/util.php:1944
+#: lib/admin.php:2476 lib/gettext-pro.php:181 lib/gettext-pro.php:184
+#: lib/gettext-pro.php:187 lib/pro/media/slideshare.php:192
+#: lib/pro/media/vimeo.php:157 lib/pro/media/wistia.php:314 lib/util.php:1956
 msgid ""
 "Please contact your hosting provider to have the missing PHP function "
 "installed."
@@ -384,7 +384,7 @@ msgid ""
 "your content."
 msgstr ""
 
-#: lib/admin.php:2506 lib/gettext-pro.php:221
+#: lib/admin.php:2506 lib/gettext-pro.php:222
 #: lib/pro/rating/wppostratings.php:51
 msgid "Plugin conflict detected"
 msgstr ""
@@ -1087,7 +1087,7 @@ msgstr ""
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:388 lib/gettext-com.php:28 lib/post.php:1554
+#: lib/com/notice.php:388 lib/gettext-com.php:28 lib/post.php:1556
 msgid "Edit"
 msgstr ""
 
@@ -2369,7 +2369,7 @@ msgstr ""
 msgid "Posts, Pages, Custom Post Types"
 msgstr ""
 
-#: lib/gettext-pro.php:30 lib/gettext-pro.php:211 lib/media.php:497
+#: lib/gettext-pro.php:30 lib/gettext-pro.php:212 lib/media.php:497
 #: lib/media.php:661 lib/media.php:1554 lib/pro/admin/advanced.php:246
 #: lib/pro/util/checkimgdims.php:98 lib/std/admin/advanced.php:246
 msgid "Media Library"
@@ -2486,7 +2486,7 @@ msgid "Refresh Short URLs on Clear Cache"
 msgstr ""
 
 #: lib/gettext-pro.php:57 lib/pro/admin/advanced.php:357
-#: lib/std/admin/advanced.php:360 lib/util.php:1359
+#: lib/std/admin/advanced.php:360 lib/util.php:1367
 msgctxt "option label"
 msgid "Auto-Refresh Cache After Clearing"
 msgstr ""
@@ -2539,14 +2539,14 @@ msgctxt "metabox title"
 msgid "Bitly URL Shortener"
 msgstr ""
 
-#: lib/gettext-pro.php:66 lib/gettext-pro.php:199
+#: lib/gettext-pro.php:66 lib/gettext-pro.php:200
 #: lib/pro/admin/advanced.php:430 lib/pro/util/shorten.php:269
 #: lib/std/admin/advanced.php:436
 msgctxt "option label"
 msgid "Bitly Username"
 msgstr ""
 
-#: lib/gettext-pro.php:67 lib/gettext-pro.php:201
+#: lib/gettext-pro.php:67 lib/gettext-pro.php:202
 #: lib/pro/admin/advanced.php:435 lib/pro/util/shorten.php:284
 #: lib/std/admin/advanced.php:441
 msgctxt "option label"
@@ -2577,7 +2577,7 @@ msgctxt "metabox title"
 msgid "DLMY.App URL Shortener"
 msgstr ""
 
-#: lib/gettext-pro.php:72 lib/gettext-pro.php:204
+#: lib/gettext-pro.php:72 lib/gettext-pro.php:205
 #: lib/pro/admin/advanced.php:456 lib/pro/util/shorten.php:313
 #: lib/std/admin/advanced.php:462
 msgctxt "option label"
@@ -2590,7 +2590,7 @@ msgctxt "metabox title"
 msgid "Ow.ly URL Shortener"
 msgstr ""
 
-#: lib/gettext-pro.php:74 lib/gettext-pro.php:206
+#: lib/gettext-pro.php:74 lib/gettext-pro.php:207
 #: lib/pro/admin/advanced.php:466 lib/pro/util/shorten.php:336
 #: lib/std/admin/advanced.php:472
 msgctxt "option label"
@@ -2603,7 +2603,7 @@ msgctxt "metabox title"
 msgid "Your Own URL Shortener (YOURLS)"
 msgstr ""
 
-#: lib/gettext-pro.php:76 lib/gettext-pro.php:208
+#: lib/gettext-pro.php:76 lib/gettext-pro.php:209
 #: lib/pro/admin/advanced.php:476 lib/pro/util/shorten.php:384
 #: lib/std/admin/advanced.php:482
 msgctxt "option label"
@@ -2894,7 +2894,7 @@ msgstr ""
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
-#: lib/gettext-pro.php:139 lib/post.php:1365 lib/pro/admin/meta.php:177
+#: lib/gettext-pro.php:139 lib/post.php:1367 lib/pro/admin/meta.php:177
 #: lib/std/admin/meta.php:164
 msgid "Save a draft version or publish the %s to display these options."
 msgstr ""
@@ -2996,117 +2996,123 @@ msgctxt "metabox title"
 msgid "Structured Data / Schema Markup / Pinterest"
 msgstr ""
 
-#: lib/gettext-pro.php:162 lib/pro/ecom/woocommerce.php:61
+#: lib/gettext-pro.php:162 lib/pro/ecom/woocommerce.php:62
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Advanced &gt; Page setup</a> section."
 msgstr ""
 
-#: lib/gettext-pro.php:163 lib/pro/ecom/woocommerce.php:64
+#: lib/gettext-pro.php:163 lib/pro/ecom/woocommerce.php:65
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Products &gt; General</a> section."
 msgstr ""
 
 #. translators: please ignore - translation uses a different text domain
-#: lib/gettext-pro.php:165 lib/pro/ecom/woocommerce.php:68
+#: lib/gettext-pro.php:165 lib/pro/ecom/woocommerce.php:69
 msgid "My account page"
 msgstr ""
 
 #. translators: please ignore - translation uses a different text domain
-#: lib/gettext-pro.php:167 lib/pro/ecom/woocommerce.php:69
+#: lib/gettext-pro.php:167 lib/pro/ecom/woocommerce.php:70
 msgid "Cart page"
 msgstr ""
 
 #. translators: please ignore - translation uses a different text domain
-#: lib/gettext-pro.php:169 lib/pro/ecom/woocommerce.php:70
+#: lib/gettext-pro.php:169 lib/pro/ecom/woocommerce.php:71
 msgid "Checkout page"
 msgstr ""
 
 #. translators: please ignore - translation uses a different text domain
-#: lib/gettext-pro.php:171 lib/pro/ecom/woocommerce.php:71
+#: lib/gettext-pro.php:171 lib/pro/ecom/woocommerce.php:72
 msgid "Shop page"
 msgstr ""
 
-#: lib/gettext-pro.php:172 lib/pro/ecom/woocommerce.php:76
+#: lib/gettext-pro.php:172 lib/pro/ecom/woocommerce.php:77
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: lib/gettext-pro.php:173 lib/pro/ecom/woocommerce.php:935
+#: lib/gettext-pro.php:173 lib/pro/ecom/woocommerce.php:128
+msgid ""
+"The WooCommerce %s method is not available - please update to a newer "
+"version of WooCommerce."
+msgstr ""
+
+#: lib/gettext-pro.php:174 lib/pro/ecom/woocommerce.php:928
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
-#: lib/gettext-pro.php:174 lib/pro/ecom/woocommerce.php:938
+#: lib/gettext-pro.php:175 lib/pro/ecom/woocommerce.php:931
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/gettext-pro.php:175 lib/pro/ecom/woocommerce.php:1158
+#: lib/gettext-pro.php:176 lib/pro/ecom/woocommerce.php:1151
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/gettext-pro.php:176 lib/pro/ecom/woocommerce.php:1160
+#: lib/gettext-pro.php:177 lib/pro/ecom/woocommerce.php:1153
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:177 lib/pro/ecom/woocommerce.php:1163
+#: lib/gettext-pro.php:178 lib/pro/ecom/woocommerce.php:1156
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 
-#: lib/gettext-pro.php:178 lib/gettext-pro.php:181 lib/gettext-pro.php:184
+#: lib/gettext-pro.php:179 lib/gettext-pro.php:182 lib/gettext-pro.php:185
 #: lib/pro/media/slideshare.php:187 lib/pro/media/vimeo.php:152
-#: lib/pro/media/wistia.php:309 lib/util.php:1939
+#: lib/pro/media/wistia.php:309 lib/util.php:1951
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
-#: lib/gettext-pro.php:179 lib/gettext-pro.php:182 lib/gettext-pro.php:185
+#: lib/gettext-pro.php:180 lib/gettext-pro.php:183 lib/gettext-pro.php:186
 #: lib/pro/media/slideshare.php:189 lib/pro/media/vimeo.php:154
-#: lib/pro/media/wistia.php:311 lib/util.php:1941
+#: lib/pro/media/wistia.php:311 lib/util.php:1953
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:187 lib/pro/media/upscale.php:222
+#: lib/gettext-pro.php:188 lib/pro/media/upscale.php:222
 msgid ""
 "Failed to upscale image ID %1$s of %2$s by %3$s from %4$s to %5$s for the "
 "%6$s image size (exceeds %7$s maximum upscale setting)."
 msgstr ""
 
-#: lib/gettext-pro.php:188 lib/pro/media/upscale.php:230
+#: lib/gettext-pro.php:189 lib/pro/media/upscale.php:230
 msgid ""
 "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the "
 "%6$s image size."
 msgstr ""
 
-#: lib/gettext-pro.php:189 lib/gettext-pro.php:193 lib/pro/media/ngg.php:131
+#: lib/gettext-pro.php:190 lib/gettext-pro.php:194 lib/pro/media/ngg.php:131
 #: lib/pro/media/ngg.php:1279
 msgid "NextGEN Gallery"
 msgstr ""
 
-#: lib/gettext-pro.php:190 lib/gettext-pro.php:212 lib/media.php:1560
+#: lib/gettext-pro.php:191 lib/gettext-pro.php:213 lib/media.php:1560
 #: lib/pro/media/ngg.php:132 lib/pro/util/checkimgdims.php:100
 msgid "image ID %s"
 msgstr ""
 
-#: lib/gettext-pro.php:191 lib/gettext-pro.php:213 lib/pro/media/ngg.php:136
+#: lib/gettext-pro.php:192 lib/gettext-pro.php:214 lib/pro/media/ngg.php:136
 #: lib/pro/util/checkimgdims.php:105
 msgid "cropped"
 msgstr ""
 
-#: lib/gettext-pro.php:192 lib/gettext-pro.php:214 lib/pro/media/ngg.php:138
+#: lib/gettext-pro.php:193 lib/gettext-pro.php:215 lib/pro/media/ngg.php:138
 #: lib/pro/util/checkimgdims.php:107
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is too small for the "
 "required %4$s image dimensions."
 msgstr ""
 
-#: lib/gettext-pro.php:194 lib/pro/social/buddypress.php:100
+#: lib/gettext-pro.php:195 lib/pro/social/buddypress.php:100
 #: lib/std/social/buddypress.php:52
 msgctxt "option label"
 msgid "BuddyPress Member Bio Field Name"
 msgstr ""
 
-#: lib/gettext-pro.php:195 lib/pro/social/buddypress.php:119
+#: lib/gettext-pro.php:196 lib/pro/social/buddypress.php:119
 #: lib/std/social/buddypress.php:69
 msgid ""
 "The BuddyPress member profile page does not include the <em>Biographical "
@@ -3116,135 +3122,135 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: lib/gettext-pro.php:196 lib/pro/social/buddypress.php:661
+#: lib/gettext-pro.php:197 lib/pro/social/buddypress.php:661
 msgid "No Description"
 msgstr ""
 
-#: lib/gettext-pro.php:197 lib/pro/util/shorten.php:249
+#: lib/gettext-pro.php:198 lib/pro/util/shorten.php:249
 msgid "The URL shortening library file \"%s\" is missing and required."
 msgstr ""
 
-#: lib/gettext-pro.php:198 lib/gettext-pro.php:203 lib/gettext-pro.php:205
-#: lib/gettext-pro.php:207 lib/pro/util/shorten.php:268
+#: lib/gettext-pro.php:199 lib/gettext-pro.php:204 lib/gettext-pro.php:206
+#: lib/gettext-pro.php:208 lib/pro/util/shorten.php:268
 #: lib/pro/util/shorten.php:312 lib/pro/util/shorten.php:335
 #: lib/pro/util/shorten.php:383
 msgid "The \"%s\" option value is empty and required."
 msgstr ""
 
-#: lib/gettext-pro.php:200 lib/pro/util/shorten.php:280
+#: lib/gettext-pro.php:201 lib/pro/util/shorten.php:280
 msgid ""
 "The \"%1$s\" and \"%2$s\" option values are empty &mdash; at least one "
 "option value is required."
 msgstr ""
 
-#: lib/gettext-pro.php:202 lib/pro/util/shorten.php:285
+#: lib/gettext-pro.php:203 lib/pro/util/shorten.php:285
 msgctxt "option label"
 msgid "Bitly API Key"
 msgstr ""
 
-#: lib/gettext-pro.php:209 lib/pro/util/shorten.php:427
+#: lib/gettext-pro.php:210 lib/pro/util/shorten.php:427
 msgid ""
 "Incomplete and/or missing API credentials for the \"%s\" URL shortening "
 "service."
 msgstr ""
 
-#: lib/gettext-pro.php:210 lib/pro/util/checkimgdims.php:76
+#: lib/gettext-pro.php:211 lib/pro/util/checkimgdims.php:76
 msgid "full size original"
 msgstr ""
 
-#: lib/gettext-pro.php:215 lib/pro/util/checkimgdims.php:185
+#: lib/gettext-pro.php:216 lib/pro/util/checkimgdims.php:185
 msgid ""
 "Image %1$s in content ignored &mdash; the image width / height is too small "
 "for the required %2$s image dimensions."
 msgstr ""
 
-#: lib/gettext-pro.php:216 lib/pro/util/checkimgdims.php:186
+#: lib/gettext-pro.php:217 lib/pro/util/checkimgdims.php:186
 msgid ""
 "%1$s includes an additional 'data-wp-pid' attribute for Media Library images "
 "&mdash; if this image was selected from the Media Library before %1$s was "
 "activated, try removing and adding the image back to your content."
 msgstr ""
 
-#: lib/gettext-pro.php:217 lib/pro/form/gravityview.php:55
+#: lib/gettext-pro.php:218 lib/pro/form/gravityview.php:55
 msgctxt "metabox title"
 msgid "Single Entry Integration"
 msgstr ""
 
-#: lib/gettext-pro.php:218 lib/pro/form/gravityview.php:82
+#: lib/gettext-pro.php:219 lib/pro/form/gravityview.php:82
 msgctxt "option label"
 msgid "Title Field ID"
 msgstr ""
 
-#: lib/gettext-pro.php:219 lib/pro/form/gravityview.php:86
+#: lib/gettext-pro.php:220 lib/pro/form/gravityview.php:86
 msgctxt "option label"
 msgid "Description Field ID"
 msgstr ""
 
-#: lib/gettext-pro.php:220 lib/pro/form/gravityview.php:90
+#: lib/gettext-pro.php:221 lib/pro/form/gravityview.php:90
 msgctxt "option label"
 msgid "Post Image Field ID"
 msgstr ""
 
 #. translators: please ignore - translation uses a different text domain
-#: lib/gettext-pro.php:223 lib/pro/rating/wppostratings.php:58
+#: lib/gettext-pro.php:224 lib/pro/rating/wppostratings.php:58
 msgid "Enable Google Rich Snippets?"
 msgstr ""
 
 #. translators: please ignore - translation uses a different text domain
-#: lib/gettext-pro.php:225 lib/pro/rating/wppostratings.php:62
+#: lib/gettext-pro.php:226 lib/pro/rating/wppostratings.php:62
 msgid "Ratings"
 msgstr ""
 
 #. translators: please ignore - translation uses a different text domain
-#: lib/gettext-pro.php:227 lib/pro/rating/wppostratings.php:64
+#: lib/gettext-pro.php:228 lib/pro/rating/wppostratings.php:64
 msgid "Ratings Options"
 msgstr ""
 
-#: lib/gettext-pro.php:228 lib/pro/rating/wppostratings.php:70
+#: lib/gettext-pro.php:229 lib/pro/rating/wppostratings.php:70
 msgid "please disable the %1$s option in the %2$s settings page."
 msgstr ""
 
 #. translators: %s is "App Key"
 #. translators: %s is "Secret Token"
-#: lib/gettext-pro.php:229 lib/gettext-pro.php:230
+#: lib/gettext-pro.php:230 lib/gettext-pro.php:231
 #: lib/pro/review/yotpowc.php:203 lib/pro/review/yotpowc.php:218
 msgid "Yotpo for WooCommerce \"%s\" setting value is empty."
 msgstr ""
 
 #. translators: %s is "wc_yotpo_compatible()"
-#: lib/gettext-pro.php:231 lib/pro/review/yotpowc.php:233
+#: lib/gettext-pro.php:232 lib/pro/review/yotpowc.php:233
 msgid "Yotpo for WooCommerce %s function is missing."
 msgstr ""
 
 #. translators: %s is "wc_yotpo_compatible()"
-#: lib/gettext-pro.php:232 lib/pro/review/yotpowc.php:249
+#: lib/gettext-pro.php:233 lib/pro/review/yotpowc.php:249
 msgid "Yotpo for WooCommerce %s function returned false."
 msgstr ""
 
 #. translators: %s is "yotpo-social-reviews-for-woocommerce"
-#: lib/gettext-pro.php:233 lib/pro/review/yotpowc.php:272
+#: lib/gettext-pro.php:234 lib/pro/review/yotpowc.php:272
 msgid ""
 "\"%s\" plugin not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
 msgstr ""
 
 #. translators: %s is the API library file path
-#: lib/gettext-pro.php:234 lib/pro/review/yotpowc.php:289
+#: lib/gettext-pro.php:235 lib/pro/review/yotpowc.php:289
 msgid "Yotpo for WooCommerce API library file \"%s\" not found."
 msgstr ""
 
 #. translators: %s is the API library file path
-#: lib/gettext-pro.php:235 lib/pro/review/yotpowc.php:310
+#: lib/gettext-pro.php:236 lib/pro/review/yotpowc.php:310
 msgid "Yotpo for WooCommerce \"%s\" class does not exist."
 msgstr ""
 
 #. translators: %s is the WP Job Manager plugin name
-#: lib/gettext-pro.php:236 lib/pro/job/wpjobmanager.php:317
+#: lib/gettext-pro.php:237 lib/pro/job/wpjobmanager.php:317
 msgctxt "option value"
 msgid "%s Organization"
 msgstr ""
 
 #. translators: %s is the WP Job Manager plugin name
-#: lib/gettext-pro.php:237 lib/pro/job/wpjobmanager.php:325
+#: lib/gettext-pro.php:238 lib/pro/job/wpjobmanager.php:325
 msgctxt "option value"
 msgid "%s Location"
 msgstr ""
@@ -3289,7 +3295,7 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
 #: lib/loader.php:165 lib/loader.php:191 lib/post.php:500 lib/register.php:312
-#: lib/term.php:453 lib/user.php:415 lib/util.php:487 lib/util.php:3260
+#: lib/term.php:453 lib/user.php:415 lib/util.php:487 lib/util.php:3272
 msgid "%s warning:"
 msgstr ""
 
@@ -5699,7 +5705,7 @@ msgstr ""
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
 #: lib/post.php:486 lib/term.php:439 lib/user.php:401 lib/util.php:473
-#: lib/util.php:3232
+#: lib/util.php:3244
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -5710,162 +5716,162 @@ msgid ""
 "children of post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:731 lib/post.php:1287
+#: lib/post.php:733 lib/post.php:1289
 msgid "checking meta tags for %1$s ID %2$s"
 msgstr ""
 
-#: lib/post.php:922
+#: lib/post.php:924
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:960
+#: lib/post.php:962
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:962
+#: lib/post.php:964
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:964
+#: lib/post.php:966
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:965
+#: lib/post.php:967
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:977 lib/util.php:1855
+#: lib/post.php:979 lib/util.php:1867
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:990
+#: lib/post.php:992
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1003
+#: lib/post.php:1005
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1016
+#: lib/post.php:1018
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1038
+#: lib/post.php:1040
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:1076
+#: lib/post.php:1078
 msgid ""
 "The webpage at %1$s includes only basic (and incomplete) Schema JSON-LD "
 "product markup added by the WooCommerce plugin."
 msgstr ""
 
-#: lib/post.php:1078 lib/post.php:1102
+#: lib/post.php:1080 lib/post.php:1104
 msgid ""
 "Complete and accurate Schema JSON-LD markup is highly recommended for better "
 "ranking and click-through in Google search results."
 msgstr ""
 
-#: lib/post.php:1080
+#: lib/post.php:1082
 msgid ""
 "You should consider purchasing the %1$s Premium version add-on to include "
 "better Schema JSON-LD markup for WooCommerce products."
 msgstr ""
 
-#: lib/post.php:1100
+#: lib/post.php:1102
 msgid "The webpage at %1$s does not include any Schema JSON-LD script(s)."
 msgstr ""
 
-#: lib/post.php:1104
+#: lib/post.php:1106
 msgid ""
 "You should consider activating the %1$s add-on to include Schema JSON-LD "
 "markup in the webpage for Google."
 msgstr ""
 
-#: lib/post.php:1120
+#: lib/post.php:1122
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:1136
+#: lib/post.php:1138
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1136
+#: lib/post.php:1138
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML &mdash; review the <a href=\"%1$s\">W3C Markup Validation "
 "Service</a> results and correct any errors."
 msgstr ""
 
-#: lib/post.php:1136
+#: lib/post.php:1138
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:1168
+#: lib/post.php:1170
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1169
+#: lib/post.php:1171
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1175
+#: lib/post.php:1177
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1178
+#: lib/post.php:1180
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1180
+#: lib/post.php:1182
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1544 lib/script.php:237
+#: lib/post.php:1546 lib/script.php:237
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1555
+#: lib/post.php:1557
 msgid "Edit robots"
-msgstr ""
-
-#: lib/post.php:1566
-msgctxt "option label"
-msgid "No index"
-msgstr ""
-
-#: lib/post.php:1567
-msgctxt "option label"
-msgid "No follow"
 msgstr ""
 
 #: lib/post.php:1568
 msgctxt "option label"
-msgid "No archive"
+msgid "No index"
 msgstr ""
 
 #: lib/post.php:1569
 msgctxt "option label"
+msgid "No follow"
+msgstr ""
+
+#: lib/post.php:1570
+msgctxt "option label"
+msgid "No archive"
+msgstr ""
+
+#: lib/post.php:1571
+msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1643
+#: lib/post.php:1645
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -6490,70 +6496,70 @@ msgid ""
 "(%3$s)."
 msgstr ""
 
-#: lib/util.php:1287
+#: lib/util.php:1295
 msgid ""
 "%s cached files, transient cache, column meta, and the WordPress object "
 "cache have been cleared."
 msgstr ""
 
-#: lib/util.php:1292
+#: lib/util.php:1300
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:1344 lib/util.php:1474
+#: lib/util.php:1352 lib/util.php:1486
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/util.php:1350
+#: lib/util.php:1358
 msgid ""
 "A background task will begin shortly to refresh the post, term, and user "
 "cache objects."
 msgstr ""
 
-#: lib/util.php:1361
+#: lib/util.php:1369
 msgid "Cache objects will be re-created as they are needed (%s is disabled)."
 msgstr ""
 
-#: lib/util.php:1468
+#: lib/util.php:1480
 msgid ""
 "The meta tag and Schema markup caches for %1$d posts, %2$d terms, and %3$d "
 "users have been refreshed."
 msgstr ""
 
-#: lib/util.php:1686
+#: lib/util.php:1698
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util.php:1713
+#: lib/util.php:1725
 msgid "Failed to remove the cache file %s."
 msgstr ""
 
-#: lib/util.php:1772
+#: lib/util.php:1784
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:1842
+#: lib/util.php:1854
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1868
+#: lib/util.php:1880
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:2063
+#: lib/util.php:2075
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max.
-#: lib/util.php:3235
+#: lib/util.php:3247
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3252
+#: lib/util.php:3264
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -6562,37 +6568,37 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3252
+#: lib/util.php:3264
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3543
+#: lib/util.php:3555
 msgid "Have you hidden the Pro options?"
 msgstr ""
 
-#: lib/util.php:3548
+#: lib/util.php:3560
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:3578
+#: lib/util.php:3590
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3581
+#: lib/util.php:3593
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:3586
+#: lib/util.php:3598
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3589
+#: lib/util.php:3601
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

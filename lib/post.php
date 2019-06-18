@@ -626,8 +626,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			switch ( $screen->id ) {
+
 				case 'upload':
 				case ( strpos( $screen->id, 'edit-' ) === 0 ? true : false ):	// Posts list table.
+
 					return;
 			}
 
@@ -669,7 +671,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->log( 'locale default = ' . SucomUtil::get_locale( 'default' ) );
 				$this->p->debug->log( 'locale current = ' . SucomUtil::get_locale( 'current' ) );
 				$this->p->debug->log( 'locale mod = ' . SucomUtil::get_locale( $mod ) );
-				$this->p->debug->log( SucomDebug::pretty_array( $mod ) );
+				$this->p->debug->log( SucomUtil::pretty_array( $mod ) );
 			}
 
 			WpssoWpMeta::$head_meta_tags = array();
@@ -713,7 +715,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					/**
 					 * Hooked by woocommerce module to load front-end libraries and start a session.
 					 */
-					do_action( $this->p->lca . '_admin_post_head', $mod, $screen->id );
+					do_action( $this->p->lca . '_admin_post_head', $mod );
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'setting head_meta_info static property' );

@@ -21,7 +21,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		private $start_stats  = null;
 		private $begin_marks  = array();
 
-		public $enabled = false;	// true if at least one subsys is true
+		public $enabled = false;		// True if at least one subsys is true.
 
 		public function __construct( &$plugin, $subsys = array( 'html' => false, 'log' => false ) ) {
 
@@ -36,12 +36,16 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			$this->log_prefix   = strtoupper( $this->display_name );
 			$this->subsys       = $subsys;
 
-			$this->is_enabled();	// sets $this->enabled value
+			$this->is_enabled();	// Sets $this->enabled value.
 
 			if ( ! empty( $subsys[ 'log' ] ) ) {
 				if ( ! isset( $_SESSION ) ) {
 					session_start();
 				}
+			}
+
+			if ( ! class_exists( 'SucomUtil' ) ) {	// Just in case.
+				require_once trailingslashit( dirname( __FILE__ ) ) . 'util.php';
 			}
 
 			if ( $this->enabled ) {
@@ -52,9 +56,14 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		public function is_enabled( $name = '' ) {
 
 			if ( ! empty( $name ) ) {
+
 				return isset( $this->subsys[ $name ] ) ? $this->subsys[ $name ] : false;
+
 			} else {
-				// return true if any sybsys is true (use strict checking)
+
+				/**
+				 * Return true if any sybsys is true - use strict checking.
+				 */
 				$this->enabled = in_array( true, $this->subsys, true ) ? true : false;
 			}
 
@@ -74,7 +83,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				}
 			}
 
-			$this->is_enabled();	// sets $this->enabled value
+			$this->is_enabled();	// Sets $this->enabled value.
 		}
 
 		public function disable( $name ) {
@@ -101,7 +110,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				$func_seq = 2;
 			}
 
-			$this->log( 'args ' . self::pretty_array( $arr, true ), $class_seq, $func_seq );
+			$this->log( 'args ' . SucomUtil::pretty_array( $arr, true ), $class_seq, $func_seq );
 		}
 
 		public function log_arr( $prefix, $mixed, $class_seq = 1, $func_seq = false ) {
@@ -125,11 +134,11 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 			if ( is_object( $mixed ) ) {
 				$prefix = trim( $prefix . ' ' . get_class( $mixed ) . ' object vars' );
-				$mixed = get_object_vars( $mixed );
+				$mixed  = get_object_vars( $mixed );
 			}
 
 			if ( is_array( $mixed ) ) {
-				$this->log( $prefix . ' ' . trim( print_r( self::pretty_array( $mixed, false ), true ) ), $class_seq, $func_seq );
+				$this->log( $prefix . ' ' . trim( print_r( SucomUtil::pretty_array( $mixed, false ), true ) ), $class_seq, $func_seq );
 			} else {
 				$this->log( $prefix . ' ' . $mixed, $class_seq, $func_seq );
 			}
@@ -329,43 +338,6 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			$html .= ' -->' . "\n";
 
 			return $html;
-		}
-
-		public static function pretty_array( $mixed, $flatten = false ) {
-
-			$ret = '';
-
-			if ( is_array( $mixed ) ) {
-				foreach ( $mixed as $key => $val ) {
-					$val = self::pretty_array( $val, $flatten );
-					if ( $flatten ) {
-						$ret .= $key.'=' . $val.', ';
-					} else {
-						if ( is_object( $mixed[ $key ] ) )
-							unset ( $mixed[ $key ] );	// dereference the object first
-						$mixed[ $key ] = $val;
-					}
-				}
-				if ( $flatten ) {
-					$ret = '(' . trim( $ret, ', ' ) . ')';
-				} else {
-					$ret = $mixed;
-				}
-			} elseif ( false === $mixed ) {
-				$ret = 'false';
-			} elseif ( true === $mixed ) {
-				$ret = 'true';
-			} elseif ( null === $mixed ) {
-				$ret = 'null';
-			} elseif ( '' === $mixed ) {
-				$ret = '\'\'';
-			} elseif ( is_object( $mixed ) ) {
-				$ret = 'object ' . get_class( $mixed );
-			} else {
-				$ret = $mixed;
-			}
-
-			return $ret;
 		}
 	}
 }

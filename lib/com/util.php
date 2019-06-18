@@ -3830,5 +3830,52 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				ini_set( $name, $value );
 			}
 		}
+
+		public static function pretty_array( $mixed, $flatten = false ) {
+
+			$ret = '';
+
+			if ( is_array( $mixed ) ) {
+
+				foreach ( $mixed as $key => $val ) {
+
+					$val = self::pretty_array( $val, $flatten );
+
+					if ( $flatten ) {
+
+						$ret .= $key.'=' . $val.', ';
+
+					} else {
+
+						if ( is_object( $mixed[ $key ] ) ) {
+							unset ( $mixed[ $key ] );	// Dereference the object first.
+						}
+
+						$mixed[ $key ] = $val;
+					}
+				}
+
+				if ( $flatten ) {
+					$ret = '(' . trim( $ret, ', ' ) . ')';
+				} else {
+					$ret = $mixed;
+				}
+
+			} elseif ( false === $mixed ) {
+				$ret = 'false';
+			} elseif ( true === $mixed ) {
+				$ret = 'true';
+			} elseif ( null === $mixed ) {
+				$ret = 'null';
+			} elseif ( '' === $mixed ) {
+				$ret = '\'\'';
+			} elseif ( is_object( $mixed ) ) {
+				$ret = 'object ' . get_class( $mixed );
+			} else {
+				$ret = $mixed;
+			}
+
+			return $ret;
+		}
 	}
 }
