@@ -431,7 +431,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.0.0-dev.2 (2019/06/17)**
+**Version 5.0.0-dev.2 (2019/06/18)**
 
 * *New Features*
 	* None.
@@ -442,6 +442,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Developer Notes*
 	* Renamed the 'gpl' library sub-folder to 'std'.
 	* Added a new 'wpsso_scheduled_task_started' action.
+	* Improved WP_Query args for a post type archive when running in background.
 
 **Version 4.31.4 (2019/06/14)**
 
@@ -518,7 +519,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 5.0.0-dev.2 =
 
-(2019/06/17) Renamed the 'gpl' library sub-folder to 'std'.
+(2019/06/18) Renamed the 'gpl' library sub-folder to 'std'.
 
 = 4.31.4 =
 
