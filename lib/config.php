@@ -119,7 +119,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 							'review' => array(
 								'wpproductreview' => '(plugin) WP Product Review',
-								'yotpowc'         => '(plugin) Yotpo Social Reviews for WooCommerce',
 							),
 							'seo' => array(
 								'aioseop'         => '(plugin) All in One SEO Pack',

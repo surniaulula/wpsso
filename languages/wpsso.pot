@@ -3038,25 +3038,25 @@ msgid ""
 "version of WooCommerce."
 msgstr ""
 
-#: lib/gettext-pro.php:174 lib/pro/ecom/woocommerce.php:931
+#: lib/gettext-pro.php:174 lib/pro/ecom/woocommerce.php:918
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
-#: lib/gettext-pro.php:175 lib/pro/ecom/woocommerce.php:934
+#: lib/gettext-pro.php:175 lib/pro/ecom/woocommerce.php:921
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/gettext-pro.php:176 lib/pro/ecom/woocommerce.php:1154
+#: lib/gettext-pro.php:176 lib/pro/ecom/woocommerce.php:1141
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/gettext-pro.php:177 lib/pro/ecom/woocommerce.php:1156
+#: lib/gettext-pro.php:177 lib/pro/ecom/woocommerce.php:1143
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:178 lib/pro/ecom/woocommerce.php:1159
+#: lib/gettext-pro.php:178 lib/pro/ecom/woocommerce.php:1146
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 
@@ -3210,47 +3210,14 @@ msgstr ""
 msgid "please disable the %1$s option in the %2$s settings page."
 msgstr ""
 
-#. translators: %s is "App Key"
-#. translators: %s is "Secret Token"
-#: lib/gettext-pro.php:230 lib/gettext-pro.php:231
-#: lib/pro/review/yotpowc.php:203 lib/pro/review/yotpowc.php:218
-msgid "Yotpo for WooCommerce \"%s\" setting value is empty."
-msgstr ""
-
-#. translators: %s is "wc_yotpo_compatible()"
-#: lib/gettext-pro.php:232 lib/pro/review/yotpowc.php:233
-msgid "Yotpo for WooCommerce %s function is missing."
-msgstr ""
-
-#. translators: %s is "wc_yotpo_compatible()"
-#: lib/gettext-pro.php:233 lib/pro/review/yotpowc.php:249
-msgid "Yotpo for WooCommerce %s function returned false."
-msgstr ""
-
-#. translators: %s is "yotpo-social-reviews-for-woocommerce"
-#: lib/gettext-pro.php:234 lib/pro/review/yotpowc.php:272
-msgid ""
-"\"%s\" plugin not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
-msgstr ""
-
-#. translators: %s is the API library file path
-#: lib/gettext-pro.php:235 lib/pro/review/yotpowc.php:289
-msgid "Yotpo for WooCommerce API library file \"%s\" not found."
-msgstr ""
-
-#. translators: %s is the API library file path
-#: lib/gettext-pro.php:236 lib/pro/review/yotpowc.php:310
-msgid "Yotpo for WooCommerce \"%s\" class does not exist."
-msgstr ""
-
 #. translators: %s is the WP Job Manager plugin name
-#: lib/gettext-pro.php:237 lib/pro/job/wpjobmanager.php:317
+#: lib/gettext-pro.php:230 lib/pro/job/wpjobmanager.php:317
 msgctxt "option value"
 msgid "%s Organization"
 msgstr ""
 
 #. translators: %s is the WP Job Manager plugin name
-#: lib/gettext-pro.php:238 lib/pro/job/wpjobmanager.php:325
+#: lib/gettext-pro.php:231 lib/pro/job/wpjobmanager.php:325
 msgctxt "option value"
 msgid "%s Location"
 msgstr ""

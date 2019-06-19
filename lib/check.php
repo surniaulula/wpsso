@@ -163,12 +163,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							break;
 
-						case 'review-yotpowc':				// yotpo-social-reviews-for-woocommerce
-
-							$chk[ 'function' ] = 'wc_yotpo_init';
-
-							break;
-
 						case 'review-wpproductreview':
 
 							$chk[ 'class' ] = 'WPPR';
