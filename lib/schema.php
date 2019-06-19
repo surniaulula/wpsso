@@ -743,7 +743,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 								$this->p->debug->log( 'using schema type id "' . $type_id . '" for post_type_archive page' );
 							}
 
-						} elseif ( isset( $this->p->options['schema_type_for_' . $mod[ 'post_type' ]] ) ) {
+						} elseif ( isset( $this->p->options[ 'schema_type_for_' . $mod[ 'post_type' ] ] ) ) {
 
 							$type_id = $this->get_schema_type_id_for_name( $mod[ 'post_type' ] );
 
