@@ -442,6 +442,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Developer Notes*
 	* Renamed the 'gpl' library sub-folder to 'std'.
 	* Added a new 'wpsso_scheduled_task_started' action.
+	* Added a new `SucomUtilWP::doing_frontend()` method.
 	* Improved WP_Query for a post type archive (see https://codex.wordpress.org/Function_Reference/is_post_type_archive) when running as a background task.
 
 **Version 4.31.4 (2019/06/14)**
