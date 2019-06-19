@@ -345,6 +345,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$mtime_start = microtime( true );
+
+			$crawler_name = SucomUtil::get_crawler_name();
+
 			/**
 			 * The $mod array argument is preferred but not required.
 			 * $mod = true | false | post_id | $mod array
@@ -358,13 +362,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$mod = $this->p->util->get_page_mod( $use_post );
 			}
 
-			$mtime_start = microtime( true );
-
-			$crawler_name = SucomUtil::get_crawler_name();
+			$indent = 0;
 
 			$html = $this->get_mt_mark( 'begin' );
-
-			$indent = 0;
 
 			foreach ( $this->get_head_array( $use_post, $mod, $read_cache, $mt_og ) as $mt ) {
 
