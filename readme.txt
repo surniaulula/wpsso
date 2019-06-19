@@ -436,7 +436,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * *Improvements*
 	* Added checks for missing WooCommerce "My account page", "Cart page", "Checkout page", and "Shop page" selections (Pro / Premium version).
-	* Removed integration support for the Yotpo Social Reviews for WooCommerce plugin (too many bad reviews and too few active installations).
+	* Removed support for the Yotpo Social Reviews for WooCommerce plugin (too many bad reviews and too few active installations).
 * *Bugfixes*
 	* None.
 * *Developer Notes*
@@ -519,7 +519,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 5.0.0-dev.2 =
 
-(2019/06/18) Added checks for missing WooCommerce page selections. Removed integration support for the Yotpo Social Reviews for WooCommerce plugin. Renamed the 'gpl' library sub-folder to 'std'.
+(2019/06/18) Added checks for missing WooCommerce page selections. Removed support for the Yotpo Social Reviews for WooCommerce plugin. Renamed the 'gpl' library sub-folder to 'std'.
 
 = 4.31.4 =
 
