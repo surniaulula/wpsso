@@ -2262,9 +2262,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '<ul>';
 
-						$text .= '<li>' . __( 'Advanced features and settings page.', 'wpsso' ) . '</li>';
+						$text .= '<li>' . __( 'Advanced plugin features and settings page.', 'wpsso' ) . '</li>';
 
 						$text .= '<li>' . __( 'Integration with 3rd party plugins and service APIs.', 'wpsso' ) . '</li>';
+
+						$text .= '<li>' . __( 'Access to development and release candidate updates.', 'wpsso' ) . '</li>';
 
 						$text .= '</ul>';
 

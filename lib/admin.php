@@ -1143,7 +1143,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( ! self::$pkg[ $this->p->lca ][ 'pp' ] ) {
 
 				$metabox_id      = 'purchase_pro';
-				$metabox_title   = _x( 'Pro Version Available', 'metabox title', 'wpsso' );
+				$metabox_title   = sprintf( _x( '%s Version Available', 'metabox title', 'wpsso' ),
+					_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) );
 				$metabox_screen  = $this->pagehook;
 				$metabox_context = 'side_fixed';
 				$metabox_prio    = 'default';
@@ -1155,7 +1156,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$metabox_context, $metabox_prio, $callback_args );
 
 				$metabox_id      = 'status_pro';
-				$metabox_title   = _x( 'Pro Version Features', 'metabox title', 'wpsso' );
+				$metabox_title   = sprintf( _x( '%s Version Features', 'metabox title', 'wpsso' ),
+					_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) );
 				$metabox_screen  = $this->pagehook;
 				$metabox_context = 'side';
 				$metabox_prio    = 'default';
@@ -3142,14 +3144,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						'utm_content' => 'pro-purchase-notice',
 					), $info[ 'url' ][ 'purchase' ] );
 
-					$purchase_label   = __( 'Yes! Get the Pro update in just moments!', 'wpsso' );
+					$purchase_label   = sprintf( __( 'Yes! Get the %s update in just moments!', 'wpsso' ),
+						_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) );
+
 					$purchase_clicked = __( 'Thank you for your support! You\'re awesome!', 'wpsso' );
+
 					$purchase_button  = '<div style="display:inline-block;vertical-align:top;margin:1.2em 0.8em 0.8em 0;">' .
 						$this->form->get_button( $purchase_label, 'button-primary dismiss-on-click', '', $purchase_url,
 							true, false, array( 'dismiss-msg' => $purchase_clicked ) ) . '</div>';
 
-					$no_thanks_label   = __( 'No thanks, I\'ll stay with the Free version for now.', 'wpsso' );
-					$no_thanks_clicked = __( 'I\'m sorry to hear that &mdash; maybe you\'ll change your mind later.', 'wpsso' ) . ' ;-)';
+					$no_thanks_label   = sprintf( __( 'No thanks, I\'ll stay with the %s version for now.', 'wpsso' ),
+						_x( $this->p->cf[ 'dist' ][ 'std' ], 'distribution name', 'wpsso' ) );
+
+					$no_thanks_clicked = __( 'Sorry to hear that - hopefully you\'ll change your mind later.', 'wpsso' ) . ' ;-)';
+
 					$no_thanks_button  = '<div style="display:inline-block;vertical-align:top;margin:1.2em 0 0.8em 0;">' .
 						$this->form->get_button( $no_thanks_label, 'button-secondary dismiss-on-click', '', '',
 							false, false, array( 'dismiss-msg' => $no_thanks_clicked ) ) . '</div>';
