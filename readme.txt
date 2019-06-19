@@ -422,7 +422,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * [GitHub](https://surniaulula.github.io/wpsso/)
 * [WordPress.org](https://plugins.trac.wordpress.org/browser/wpsso/)
 
-<h3>Development Updates for Pro Version</h3>
+<h3>Development Updates for Pro / Premium Version</h3>
 
 <p>Development, alpha, beta, and release candidate updates are available to Pro / Premium version customers.</p>
 
