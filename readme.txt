@@ -294,7 +294,6 @@ WPSSO Core and its optional Free add-ons offer meta tags and Schema markup for F
 		* WP Recipe Maker
 		* WP Ultimate Recipe
 		* Yoast SEO (aka WordPress SEO)
-		* Yotpo Social Reviews for WooCommerce
 
 <h3>Coded for Performance</h3>
 
@@ -437,12 +436,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * *Improvements*
 	* Added checks for missing WooCommerce "My account page", "Cart page", "Checkout page", and "Shop page" selections (Pro / Premium version).
+	* Removed integration support for the Yotpo Social Reviews for WooCommerce plugin (too many bad reviews and too few active installations).
 * *Bugfixes*
 	* None.
 * *Developer Notes*
 	* Renamed the 'gpl' library sub-folder to 'std'.
 	* Added a new 'wpsso_scheduled_task_started' action.
-	* Improved WP_Query args for a post type archive when running in background.
+	* Improved WP_Query for a post type archive (see https://codex.wordpress.org/Function_Reference/is_post_type_archive) when running as a background task.
 
 **Version 4.31.4 (2019/06/14)**
 
@@ -519,7 +519,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 5.0.0-dev.2 =
 
-(2019/06/18) Renamed the 'gpl' library sub-folder to 'std'.
+(2019/06/18) Added checks for missing WooCommerce page selections. Removed integration support for the Yotpo Social Reviews for WooCommerce plugin. Renamed the 'gpl' library sub-folder to 'std'.
 
 = 4.31.4 =
 
