@@ -609,16 +609,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					if ( SucomPlugin::have_plugin_update( $info[ 'base' ] ) ) {
 						$action_links[] = '<a href="' . $details_url . '" class="thickbox" tabindex="' . ++$tabindex . '">' .
-							'<font color="red">' . _x( 'More Details and Update (Optional)', 'plugin action link',
-								'wpsso' ) . '</font></a>';
+							'<font color="red">' . ( $ext === $this->p->lca ? _x( 'Plugin Details and Update',
+								'plugin action link', 'wpsso' ) : _x( 'Add-on Details and Update',
+									'plugin action link', 'wpsso' ) ) . '</font></a>';
 					} else {
 						$action_links[] = '<a href="' . $details_url . '" class="thickbox" tabindex="' . ++$tabindex . '">' .
-							_x( 'More Details', 'plugin action link', 'wpsso' ) . '</a>';
+							( $ext === $this->p->lca ? _x( 'Plugin Details', 'plugin action link', 'wpsso' ) :
+								_x( 'Add-on Details', 'plugin action link', 'wpsso' ) ) . '</a>';
 					}
 
 				} else {
 					$action_links[] = '<a href="' . $details_url . '" class="thickbox" tabindex="' . ++$tabindex . '">' .
-						_x( 'More Details and Install (Optional)', 'plugin action link', 'wpsso' ) . '</a>';
+						( $ext === $this->p->lca ? _x( 'Plugin Details and Install', 'plugin action link', 'wpsso' ) :
+							_x( 'Add-on Details and Install', 'plugin action link', 'wpsso' ) ) . '</a>';
 				}
 
 			} elseif ( ! empty( $info[ 'url' ][ 'home' ] ) ) {
@@ -2178,93 +2181,80 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$table_rows[ 'plugin_tid' ] = $this->form->get_th_html( sprintf( _x( '%s Authentication ID',
 					'option label', 'wpsso' ), $info[ 'short' ] ), 'medium nowrap' );
 
-				if ( $this->p->lca === $ext || self::$pkg[ $this->p->lca ][ 'pp' ] ) {
+				$table_rows[ 'plugin_tid' ] .= '<td width="100%">' .
+					$this->form->get_input( 'plugin_' . $ext . '_tid', 'tid mono', '', 0, 
+						'', false, ++$tabindex ) . '</td>';
 
-					$table_rows[ 'plugin_tid' ] .= '<td width="100%">' .
-						$this->form->get_input( 'plugin_' . $ext . '_tid', 'tid mono', '', 0, 
-							'', false, ++$tabindex ) . '</td>';
+				if ( $network ) {
 
-					if ( $network ) {
+					$table_rows[ 'site_use' ] = self::get_option_site_use( 'plugin_' . $ext . '_tid', $this->form, $network, true );
 
-						$table_rows[ 'site_use' ] = self::get_option_site_use( 'plugin_' . $ext . '_tid', $this->form, $network, true );
+				} elseif ( ! empty( $this->p->options[ 'plugin_' . $ext . '_tid' ] ) && class_exists( 'SucomUpdate' ) ) {
 
-					} elseif ( class_exists( 'SucomUpdate' ) ) {	// Required to use SucomUpdate::get_option().
+					$show_update_opts = array(
+						'exp_date' => _x( 'Support and Updates Expire', 'option label', 'wpsso' ),
+						'qty_used' => _x( 'License Information', 'option label', 'wpsso' ),
+					);
 
-						$show_update_opts = array(
-							//'exp_date' => _x( 'Support and Updates Expire', 'option label', 'wpsso' ),
-							'qty_used' => _x( 'License Information', 'option label', 'wpsso' ),
-						);
+					foreach ( $show_update_opts as $key => $label ) {
 
-						foreach ( $show_update_opts as $key => $label ) {
+						$val = SucomUpdate::get_option( $ext, $key );
 
-							$val = SucomUpdate::get_option( $ext, $key );
+						if ( empty( $val ) ) {	// Add an empty row for empty values.
+							
+							$val = _x( 'Information not available', 'option value', 'wpsso' );
 
-							if ( empty( $val ) ) {	// Add an empty row for empty values.
-								
-								$label = $val = '&nbsp;';
+						} elseif ( $key === 'exp_date' ) {
 
-							} elseif ( $key === 'exp_date' ) {
+							if ( $val === '0000-00-00 00:00:00' ) {
+								$val = _x( 'Never', 'option value', 'wpsso' );
+							}
 
-								if ( $val === '0000-00-00 00:00:00' ) {
-									$val = _x( 'Never', 'option value', 'wpsso' );
-								}
+						} elseif ( $key === 'qty_used' ) {
 
-							} elseif ( $key === 'qty_used' ) {
+							/**
+							 * The default 'qty_used' value is a 'n/n' string.
+							 */
+							$val = sprintf( __( '%s site addresses registered', 'wpsso' ), $val );
 
-								/**
-								 * The default 'qty_used' value is a 'n/n' string.
-								 */
-								$val = sprintf( __( '%s site addresses registered', 'wpsso' ), $val );
+							/**
+							 * Use a better '# of #' string translation if possible.
+							 */
+							if ( version_compare( WpssoUmConfig::get_version(), '1.10.1', '>=' ) ) {
 
-								/**
-								 * Use a better '# of #' string translation if possible.
-								 */
-								if ( version_compare( WpssoUmConfig::get_version(), '1.10.1', '>=' ) ) {
+								$qty_reg   = SucomUpdate::get_option( $ext, 'qty_reg' );
+								$qty_total = SucomUpdate::get_option( $ext, 'qty_total' );
 
-									$qty_reg   = SucomUpdate::get_option( $ext, 'qty_reg' );
-									$qty_total = SucomUpdate::get_option( $ext, 'qty_total' );
-
-									if ( $qty_reg !== null && $qty_total !== null ) {
-										$val = sprintf( __( '%d of %d site addresses registered', 'wpsso' ),
-											$qty_reg, $qty_total );
-									}
-								}
-
-								/**
-								 * Add a license information link (thickbox). 
-								 */
-								if ( ! empty( $info[ 'url' ][ 'info' ] ) ) {
-
-									$locale = is_admin() && function_exists( 'get_user_locale' ) ?
-										get_user_locale() : get_locale();
-
-									$info_url = add_query_arg( array(
-										'tid'       => $this->p->options[ 'plugin_' . $ext . '_tid' ],
-										'locale'    => $locale,
-										'TB_iframe' => 'true',
-										'width'     => $this->p->cf[ 'wp' ][ 'tb_iframe' ][ 'width' ],
-										'height'    => $this->p->cf[ 'wp' ][ 'tb_iframe' ][ 'height' ],
-									), $info[ 'url' ][ 'purchase' ] . 'info/' );
-
-									$val = '<a href="' . $info_url . '" class="thickbox">' . $val . '</a>';
+								if ( $qty_reg !== null && $qty_total !== null ) {
+									$val = sprintf( __( '%d of %d site addresses registered', 'wpsso' ),
+										$qty_reg, $qty_total );
 								}
 							}
 
-							$table_rows[ $key ] = '<th class="medium nowrap">' . $label . '</th><td width="100%">' . $val . '</td>';
+							/**
+							 * Add a license information link (thickbox). 
+							 */
+							if ( ! empty( $info[ 'url' ][ 'info' ] ) ) {
+
+								$locale = is_admin() && function_exists( 'get_user_locale' ) ?
+									get_user_locale() : get_locale();
+
+								$info_url = add_query_arg( array(
+									'tid'       => $this->p->options[ 'plugin_' . $ext . '_tid' ],
+									'locale'    => $locale,
+									'TB_iframe' => 'true',
+									'width'     => $this->p->cf[ 'wp' ][ 'tb_iframe' ][ 'width' ],
+									'height'    => $this->p->cf[ 'wp' ][ 'tb_iframe' ][ 'height' ],
+								), $info[ 'url' ][ 'purchase' ] . 'info/' );
+
+								$val = '<a href="' . $info_url . '" class="thickbox">' . $val . '</a>';
+							}
 						}
 
-					} else {
-
-						$table_rows[] = '<th class="medium nowrap">&nbsp;</th><td width="100%">&nbsp;</td>';
+						$table_rows[ $key ] = '<th class="medium nowrap">' . $label . '</th><td width="100%">' . $val . '</td>';
 					}
 
 				} else {
-
-					$table_rows[ 'plugin_tid' ] .= '<td width="100%" class="blank">' .
-						( empty( $this->p->options[ 'plugin_' . $ext . '_tid' ] ) ?
-							$this->form->get_no_input( 'plugin_' . $ext . '_tid', 'tid mono' ) :
-							$this->form->get_input( 'plugin_' . $ext . '_tid', 'tid mono', '', 0, '', false, ++$tabindex ) ) .
-						'</td>';
 
 					$table_rows[] = '<th class="medium nowrap">&nbsp;</th><td width="100%">&nbsp;</td>';
 				}

@@ -1954,21 +1954,23 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						}
 						
 						if ( WpssoAdmin::$pkg[ $info[ 'ext' ] ][ 'pp' ] ) {
+
 							$text = _x( 'Get More Licenses', 'plugin action link', 'wpsso' );
+
 						} elseif ( $info[ 'ext' ] === $lca ) {
-							$text = _x( 'Purchase Core Pro', 'plugin action link', 'wpsso' );
+
+							$text = sprintf( _x( 'Purchase %s Plugin', 'plugin action link', 'wpsso' ),
+								_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) );
+
 						} else {
-							$text = _x( 'Purchase the Pro Add-on', 'plugin action link', 'wpsso' );
+
+							$text = sprintf( _x( 'Purchase %s Add-on', 'plugin action link', 'wpsso' ),
+								_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) );
 						}
 
 						if ( ! empty( $info[ 'url' ] ) ) {
-
-							if ( $info[ 'ext' ] !== $lca && ! WpssoAdmin::$pkg[ $lca ][ 'pp' ] ) {
-								$text .= ' <em>' . _x( '(Core Pro required)', 'plugin action link', 'wpsso' ) . '</em>';
-							} else {
-								$text = '<a href="' . $info[ 'url' ] . '"' . ( empty( $info[ 'tabindex' ] ) ? '' :
-									' tabindex="' . $info[ 'tabindex' ] . '"' ) . '>' .  $text . '</a>';
-							}
+							$text = '<a href="' . $info[ 'url' ] . '"' . ( empty( $info[ 'tabindex' ] ) ? '' :
+								' tabindex="' . $info[ 'tabindex' ] . '"' ) . '>' .  $text . '</a>';
 						}
 
 						break;
