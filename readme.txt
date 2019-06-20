@@ -430,7 +430,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.0.0-dev.2 (2019/06/18)**
+**Version 5.0.0-dev.3 (2019/06/20)**
 
 * *New Features*
 	* None.
@@ -518,9 +518,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 5.0.0-dev.2 =
+= 5.0.0-dev.3 =
 
-(2019/06/18) Added checks for missing WooCommerce page selections. Removed support for the Yotpo Social Reviews for WooCommerce plugin. Renamed the 'gpl' library sub-folder to 'std'.
+(2019/06/20) Added checks for missing WooCommerce page selections. Removed support for the Yotpo Social Reviews for WooCommerce plugin. Renamed the 'gpl' library sub-folder to 'std'.
 
 = 4.31.4 =
 
