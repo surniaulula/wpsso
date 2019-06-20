@@ -2686,11 +2686,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				$ret = true;
 
-			} elseif ( false === $use_post && is_post_type_archive() ) {
+			} elseif ( false === $use_post && is_singular() ) {
 
 				$ret = true;
 
-			} elseif ( false === $use_post && is_singular() ) {
+			} elseif ( false === $use_post && is_post_type_archive() ) {
 
 				$ret = true;
 
@@ -3022,12 +3022,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			} elseif ( is_admin() || is_object( $product_obj ) ) {
 
-				if ( ! is_object( $product_obj ) && ! empty( $use_post ) ) {
-					$product_obj = get_post( $use_post );
+				if ( ! is_object( $product_obj ) ) {
+
+					$product_obj = self::get_post_object( $use_post );
 				}
 
-				if ( isset( $product_obj->post_type ) && 
-					$product_obj->post_type === 'product' ) {
+				if ( isset( $product_obj->post_type ) && $product_obj->post_type === 'product' ) {
 
 					$ret = true;
 				}
