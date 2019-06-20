@@ -63,8 +63,24 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 				if ( ! isset( $info[ 'lib' ][ $type ] ) ) {
 
+					if ( 'std' === $type && isset( $info[ 'lib' ][ 'gpl' ] ) ) {
+
+						$type = 'gpl';
+
+					} else {
+
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( $ext . ' lib/' . $type . ' not defined' );
+						}
+	
+						continue;
+					}
+				}
+
+				if ( ! is_array( $info[ 'lib' ][ $type ] ) ) {
+
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $ext . ' lib/' . $type . ' not defined' );
+						$this->p->debug->log( $ext . ' lib/' . $type . ' not an array' );
 					}
 
 					continue;
