@@ -67,9 +67,12 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				 * Disable Yoast SEO social meta tags.
 				 *
 				 * Must be executed after add_action( 'template_redirect', 'wpseo_frontend_head_init', 999 );
+				 * 'template_redirect' is not executed by the AMP plugin, so hook the 'amp_post_template_head'
+				 * action as well.
 				 */
-				if ( function_exists( 'wpseo_init' ) ) {	// Includes wpseo premium.
+				if ( function_exists( 'wpseo_init' ) ) {	// Free and premium versions.
 					add_action( 'template_redirect', array( $this, 'cleanup_wpseo_filters' ), 9000 );
+					add_action( 'amp_post_template_head', array( $this, 'cleanup_wpseo_filters' ), -9000 );
 				}
 
 				/**
