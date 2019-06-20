@@ -435,8 +435,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None.
 * *Improvements*
-	* Added checks for missing WooCommerce "My account page", "Cart page", "Checkout page", and "Shop page" selections (Pro / Premium version).
 	* Removed support for the Yotpo Social Reviews for WooCommerce plugin (too many bad reviews and too few active installations).
+	* Added checks for missing WooCommerce "My account page", "Cart page", "Checkout page", and "Shop page" selections (Pro / Premium version).
+	* Added an action hook to remove duplicate JSON-LD markup in AMP pages from the Yoast SEO plugin.
 * *Bugfixes*
 	* None.
 * *Developer Notes*
@@ -520,7 +521,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 5.0.0-dev.3 =
 
-(2019/06/20) Added checks for missing WooCommerce page selections. Removed support for the Yotpo Social Reviews for WooCommerce plugin. Renamed the 'gpl' library sub-folder to 'std'.
+(2019/06/20) Removed support for the Yotpo Social Reviews for WooCommerce plugin. Added checks for missing WooCommerce pages. Added an action hook to remove duplicate JSON-LD markup in AMP pages from the Yoast SEO plugin. Renamed the 'gpl' library sub-folder to 'std'.
 
 = 4.31.4 =
 
