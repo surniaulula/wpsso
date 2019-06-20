@@ -438,13 +438,24 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Removed support for the Yotpo Social Reviews for WooCommerce plugin (too many bad reviews and too few active installations).
 	* Added checks for missing WooCommerce "My account page", "Cart page", "Checkout page", and "Shop page" selections (Pro / Premium version).
 	* Added an action hook to remove duplicate JSON-LD markup in AMP pages from the Yoast SEO plugin.
+	* Added new Schema Article sub-types:
+		* https://schema.org/AdvertiserContentArticle
+		* https://schema.org/AnalysisNewsArticle
+		* https://schema.org/AskPublicNewsArticle
+		* https://schema.org/BackgroundNewsArticle
+		* https://schema.org/OpinionNewsArticle
+		* https://schema.org/ReportageNewsArticle
+		* https://schema.org/ReviewNewsArticle
+		* https://schema.org/MedicalScholarlyArticle
+		* https://schema.org/APIReference
+		* https://schema.org/LiveBlogPosting
 * *Bugfixes*
 	* None.
 * *Developer Notes*
 	* Renamed the 'gpl' library sub-folder to 'std'.
 	* Added a new 'wpsso_scheduled_task_started' action.
 	* Added a new `SucomUtilWP::doing_frontend()` method.
-	* Improved WP_Query for a post type archive (see https://codex.wordpress.org/Function_Reference/is_post_type_archive) when running as a background task.
+	* Improved WP_Query for a post type archive (see https://codex.wordpress.org/Function_Reference/is_post_type_archive) when running as background task.
 
 **Version 4.31.4 (2019/06/14)**
 
