@@ -439,16 +439,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added checks for missing WooCommerce "My account page", "Cart page", "Checkout page", and "Shop page" selections (Pro / Premium version).
 	* Added an action hook to remove duplicate JSON-LD markup in AMP pages from the Yoast SEO plugin.
 	* Added new Schema Article sub-types:
+		* https://schema.org/APIReference
 		* https://schema.org/AdvertiserContentArticle
 		* https://schema.org/AnalysisNewsArticle
 		* https://schema.org/AskPublicNewsArticle
 		* https://schema.org/BackgroundNewsArticle
+		* https://schema.org/LiveBlogPosting
+		* https://schema.org/MedicalScholarlyArticle
 		* https://schema.org/OpinionNewsArticle
 		* https://schema.org/ReportageNewsArticle
 		* https://schema.org/ReviewNewsArticle
-		* https://schema.org/MedicalScholarlyArticle
-		* https://schema.org/APIReference
-		* https://schema.org/LiveBlogPosting
+		* https://schema.org/SatiricalArticle
 * *Bugfixes*
 	* None.
 * *Developer Notes*
