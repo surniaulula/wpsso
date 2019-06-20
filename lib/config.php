@@ -2287,13 +2287,32 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'creative.work' => array(	// Creative work, including books, movies, photographs, software programs, etc.
 							'answer'  => 'https://schema.org/Answer',
 							'article' => array(
-								'article'              => 'https://schema.org/Article',
-								'article.news'         => 'https://schema.org/NewsArticle',
-								'article.tech'         => 'https://schema.org/TechArticle',
-								'article.scholarly'    => 'https://schema.org/ScholarlyArticle',
+								'article'                    => 'https://schema.org/Article',
+								'article.advertiser.content' => 'https://schema.org/AdvertiserContentArticle',
+								'article.news'               => array(
+									'article.news'            => 'https://schema.org/NewsArticle',
+									'article.news.analysis'   => 'https://schema.org/AnalysisNewsArticle',
+									'article.news.ask.public' => 'https://schema.org/AskPublicNewsArticle',
+									'article.news.background' => 'https://schema.org/BackgroundNewsArticle',
+									'article.news.opinion'    => 'https://schema.org/OpinionNewsArticle',
+									'article.news.reportage'  => 'https://schema.org/ReportageNewsArticle',
+									'article.news.review'     => 'https://schema.org/ReviewNewsArticle',
+								),
+								'article.satirical' => 'https://schema.org/SatiricalArticle',
+								'article.scholarly' => array(
+									'article.scholarly'         => 'https://schema.org/ScholarlyArticle',
+									'article.scholarly.medical' => 'https://schema.org/MedicalScholarlyArticle',
+								),
+								'article.tech' => array(
+									'article.tech'               => 'https://schema.org/TechArticle',
+									'article.tech.reference.api' => 'https://schema.org/APIReference',
+								),
 								'report'               => 'https://schema.org/Report',
 								'social.media.posting' => array(
-									'blog.posting'             => 'https://schema.org/BlogPosting',
+									'blog.posting' => array(
+										'blog.posting'      => 'https://schema.org/BlogPosting',
+										'blog.posting.live' => 'https://schema.org/LiveBlogPosting',
+									),
 									'discussion.forum.posting' => 'https://schema.org/DiscussionForumPosting',
 									'social.media.posting'     => 'https://schema.org/SocialMediaPosting',
 								),
