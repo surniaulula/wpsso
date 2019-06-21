@@ -3,8 +3,8 @@
 /**
  * Extract of translatable text strings from the static config array.
  */
-_x( 'Pro', 'distribution name', 'wpsso' );
-_x( 'Free', 'distribution name', 'wpsso' );
+_x( 'Premium', 'distribution name', 'wpsso' );
+_x( 'Standard', 'distribution name', 'wpsso' );
 _x( 'Image:', 'option value', 'wpsso' );
 _x( 'Caption:', 'option value', 'wpsso' );
 _x( 'Facebook User URL', 'option value', 'wpsso' );

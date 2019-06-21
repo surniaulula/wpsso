@@ -1128,12 +1128,12 @@ msgstr ""
 
 #: lib/gettext-config.php:6
 msgctxt "distribution name"
-msgid "Pro"
+msgid "Premium"
 msgstr ""
 
 #: lib/gettext-config.php:7
 msgctxt "distribution name"
-msgid "Free"
+msgid "Standard"
 msgstr ""
 
 #: lib/gettext-config.php:8
