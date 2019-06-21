@@ -52,7 +52,7 @@ WPSSO Core and its optional Free add-ons offer meta tags and Schema markup for F
 
 &#x2605;&#x2605;&#x2605;&#x2605;&#x2605; &mdash; "Yoast on steroids! As an SEO marketer, I love using Yoast for my basic on-page SEO. But Yoast only allows you to enter basic Open Graph social settings. This plugin gives you SO many more options on completing the Open Graph for Facebook, Twitter cards, Pinterest etc. If you use WordPress, I totally recommend using this plugin to help with better rankings in the SERPS!" - [gregmontag](https://wordpress.org/support/topic/yoast-on-steroids/)
 
-<h3>WPSSO Core Standard Features</h3>
+<h3>WPSSO Core Free / Standard Features</h3>
 
 * *Complete and accurate* meta tags for all social sites, search engines, web browser extensions, mail and messaging apps, and embedded object / iframe content.
 
