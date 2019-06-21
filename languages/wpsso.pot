@@ -1128,12 +1128,12 @@ msgstr ""
 
 #: lib/gettext-config.php:6
 msgctxt "distribution name"
-msgid "Premium"
+msgid "Pro"
 msgstr ""
 
 #: lib/gettext-config.php:7
 msgctxt "distribution name"
-msgid "Standard"
+msgid "Free"
 msgstr ""
 
 #: lib/gettext-config.php:8
@@ -2300,7 +2300,7 @@ msgstr ""
 
 #: lib/gettext-pro.php:14 lib/gettext-pro.php:99 lib/pro/admin/advanced.php:94
 #: lib/pro/admin/general.php:108 lib/std/admin/advanced.php:88
-#: lib/std/admin/general.php:108
+#: lib/std/admin/general.php:109
 msgctxt "option label"
 msgid "Check for Embedded Media"
 msgstr ""
@@ -2692,43 +2692,43 @@ msgid "Allow Upscale of Media Library Images"
 msgstr ""
 
 #: lib/gettext-pro.php:92 lib/pro/admin/general.php:81
-#: lib/std/admin/general.php:80
+#: lib/std/admin/general.php:81
 msgctxt "option label"
 msgid "Maximum Videos to Include"
 msgstr ""
 
 #: lib/gettext-pro.php:93 lib/pro/admin/general.php:85
-#: lib/std/admin/general.php:84
+#: lib/std/admin/general.php:85
 msgctxt "option label"
 msgid "Use HTTPS for Video API Requests"
 msgstr ""
 
 #: lib/gettext-pro.php:94 lib/pro/admin/general.php:86
-#: lib/std/admin/general.php:85
+#: lib/std/admin/general.php:86
 msgctxt "option comment"
 msgid "uses %s"
 msgstr ""
 
 #: lib/gettext-pro.php:95 lib/messages.php:235 lib/pro/admin/general.php:90
-#: lib/std/admin/general.php:89
+#: lib/std/admin/general.php:90
 msgctxt "option label"
 msgid "Include Video Preview Images"
 msgstr ""
 
 #: lib/gettext-pro.php:96 lib/pro/admin/general.php:91
-#: lib/std/admin/general.php:90
+#: lib/std/admin/general.php:91
 msgctxt "option comment"
 msgid "video preview images are included first"
 msgstr ""
 
 #: lib/gettext-pro.php:97 lib/pro/admin/general.php:95
-#: lib/std/admin/general.php:94
+#: lib/std/admin/general.php:95
 msgctxt "option label"
 msgid "Include text/html Type Meta Tags"
 msgstr ""
 
 #: lib/gettext-pro.php:98 lib/pro/admin/general.php:99
-#: lib/std/admin/general.php:98
+#: lib/std/admin/general.php:99
 msgctxt "option label"
 msgid "Force Autoplay when Possible"
 msgstr ""
@@ -5753,8 +5753,8 @@ msgstr ""
 
 #: lib/post.php:1086
 msgid ""
-"You should consider purchasing the %1$s Premium version add-on to include "
-"better Schema JSON-LD markup for WooCommerce products."
+"You should consider purchasing the %1$s %2$s add-on to include better Schema "
+"JSON-LD markup for WooCommerce products."
 msgstr ""
 
 #: lib/post.php:1106
@@ -5896,31 +5896,31 @@ msgstr ""
 msgid "adding schema for %1$s ID %2$s"
 msgstr ""
 
-#: lib/schema-single.php:549
+#: lib/schema-single.php:551
 msgid "adding schema for offer"
 msgstr ""
 
-#: lib/schema-single.php:647
+#: lib/schema-single.php:649
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema-single.php:689
+#: lib/schema-single.php:691
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema-single.php:696
+#: lib/schema-single.php:698
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema-single.php:840
+#: lib/schema-single.php:842
 msgid "adding schema for person user ID %1$s"
 msgstr ""
 
-#: lib/schema-single.php:1000
+#: lib/schema-single.php:1002
 msgid "adding schema for place"
 msgstr ""
 
@@ -6005,8 +6005,7 @@ msgstr ""
 
 #: lib/std/admin/general.php:76
 msgid ""
-"Video discovery and integration modules are provided with the Premium "
-"version."
+"Video discovery and service API modules are provided with the %s version."
 msgstr ""
 
 #: lib/submenu/advanced.php:36
@@ -6086,32 +6085,28 @@ msgctxt "metabox tab"
 msgid "SEO / Other"
 msgstr ""
 
-#: lib/submenu/dashboard.php:91 lib/submenu/dashboard.php:110
+#: lib/submenu/dashboard.php:91 lib/submenu/dashboard.php:112
 msgctxt "metabox title"
 msgid "Your Rating is Valued!"
 msgstr ""
 
-#: lib/submenu/dashboard.php:92 lib/submenu/dashboard.php:111
+#: lib/submenu/dashboard.php:92 lib/submenu/dashboard.php:113
 msgctxt "metabox title"
 msgid "Help and Support"
 msgstr ""
 
-#: lib/submenu/dashboard.php:93 lib/submenu/dashboard.php:118
+#: lib/submenu/dashboard.php:93 lib/submenu/dashboard.php:122
 msgctxt "metabox title"
 msgid "Version Information"
 msgstr ""
 
-#: lib/submenu/dashboard.php:98 lib/submenu/dashboard.php:116
+#: lib/submenu/dashboard.php:98 lib/submenu/dashboard.php:100
+#: lib/submenu/dashboard.php:118 lib/submenu/dashboard.php:120
 msgctxt "metabox title"
-msgid "Standard Features"
+msgid "%s Features"
 msgstr ""
 
-#: lib/submenu/dashboard.php:99 lib/submenu/dashboard.php:117
-msgctxt "metabox title"
-msgid "Premium Features"
-msgstr ""
-
-#: lib/submenu/dashboard.php:109
+#: lib/submenu/dashboard.php:111
 msgctxt "metabox title"
 msgid "Cache Status"
 msgstr ""

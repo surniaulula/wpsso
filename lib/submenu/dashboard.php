@@ -95,8 +95,10 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 					/**
 					 * Second row.
 					 */
-					'status_std'   => _x( 'Standard Features', 'metabox title', 'wpsso' ),
-					'status_pro'   => _x( 'Premium Features', 'metabox title', 'wpsso' ),
+					'status_std'   => sprintf( _x( '%s Features', 'metabox title', 'wpsso' ),
+						_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) ),
+					'status_pro'   => sprintf( _x( '%s Features', 'metabox title', 'wpsso' ),
+						_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) ),
 				);
 
 			} else {
@@ -113,8 +115,10 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 					/**
 					 * Second row.
 					 */
-					'status_std'   => _x( 'Standard Features', 'metabox title', 'wpsso' ),
-					'status_pro'   => _x( 'Premium Features', 'metabox title', 'wpsso' ),
+					'status_std'   => sprintf( _x( '%s Features', 'metabox title', 'wpsso' ),
+						_x( $this->p->cf[ 'dist' ][ 'std' ], 'distribution name', 'wpsso' ) ),
+					'status_pro'   => sprintf( _x( '%s Features', 'metabox title', 'wpsso' ),
+						_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) ),
 					'version_info' => _x( 'Version Information', 'metabox title', 'wpsso' ), 
 				);
 			}

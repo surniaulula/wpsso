@@ -16,8 +16,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		public static $cf = array(
 			'lca'  => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'dist' => array(
-				'pro'    => 'Premium',
-				'std'    => 'Standard',
+				'pro'    => 'Pro',
+				'std'    => 'Free',
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.

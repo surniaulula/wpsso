@@ -1083,7 +1083,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 									$notice_msg .= __( 'Complete and accurate Schema JSON-LD markup is highly recommended for better ranking and click-through in Google search results.', 'wpsso' ) . ' ';
 						
-									$notice_msg .= sprintf( __( 'You should consider purchasing the %1$s Premium version add-on to include better Schema JSON-LD markup for WooCommerce products.', 'wpsso' ), $json_addon_link );
+									$notice_msg .= sprintf( __( 'You should consider purchasing the %1$s %2$s add-on to include better Schema JSON-LD markup for WooCommerce products.', 'wpsso' ), $json_addon_link, _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) );
 
 									$this->p->notice->warn( $notice_msg, null, $notice_key, true );
 								}

@@ -73,8 +73,9 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 			}
 
 			$table_rows[] = '<td colspan="2"><p style="text-align:center;margin:0;">' .
-				__( 'Video discovery and integration modules are provided with the Premium version.', 'wpsso' ) .
-					'</p>' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
+				sprintf( __( 'Video discovery and service API modules are provided with the %s version.', 'wpsso' ), 
+					_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) ) .
+						'</p>' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
 
 			$table_rows[ 'og_vid_max' ] = $form->get_tr_hide( 'basic', 'og_vid_max' ) . 
 			$form->get_th_html( _x( 'Maximum Videos to Include', 'option label', 'wpsso' ), null, 'og_vid_max' ) . 

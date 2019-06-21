@@ -50,6 +50,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$event_opts = apply_filters( $wpsso->lca . '_get_event_options', false, $mod, $event_id );
 
 			if ( ! empty( $event_opts ) ) {
+
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log_arr( 'get_event_options filters returned', $event_opts );
 				}
@@ -296,6 +297,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$job_opts = apply_filters( $wpsso->lca . '_get_job_options', false, $mod, $job_id );
 
 			if ( ! empty( $job_opts ) ) {
+
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log_arr( 'get_job_options filters returned', $job_opts );
 				}
