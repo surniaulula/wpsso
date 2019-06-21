@@ -240,7 +240,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							break;
 
 						/**
-						 * Premium Version Features / Options
+						 * Pro / Premium version features / options.
 						 */
 						case 'admin-general':
 						case 'admin-advanced':

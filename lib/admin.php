@@ -261,7 +261,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				if ( ! isset( $info[ 'lib' ][ $menu_lib ] ) ) {	// not all add-ons have submenus
+				if ( ! isset( $info[ 'lib' ][ $menu_lib ] ) ) {	// Not all add-ons have submenus.
 					continue;
 				}
 
@@ -353,7 +353,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-					if ( ! isset( $info[ 'lib' ][ $menu_lib ] ) ) {	// not all add-ons have submenus
+					if ( ! isset( $info[ 'lib' ][ $menu_lib ] ) ) {	// Not all add-ons have submenus.
 						continue;
 					}
 
@@ -380,7 +380,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		/**
 		 * Called by show_setting_page() and extended by the sitesubmenu classes to load site options instead.
 		 */
-		protected function set_form_object( $menu_ext ) {	// $menu_ext required for text_domain
+		protected function set_form_object( $menu_ext ) {	// $menu_ext required for text_domain.
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -392,7 +392,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->form = new SucomForm( $this->p, WPSSO_OPTIONS_NAME, $this->p->options, $def_opts, $menu_ext );
 		}
 
-		protected function &get_form_object( $menu_ext ) {	// $menu_ext required for text_domain
+		protected function &get_form_object( $menu_ext ) {	// $menu_ext required for text_domain.
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -452,7 +452,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$cap_name = isset( $this->p->cf[ 'wp' ][ 'admin' ][ $this->menu_lib ][ 'cap' ] ) ?	// Just in case.
 				$this->p->cf[ 'wp' ][ 'admin' ][ $this->menu_lib ][ 'cap' ] : 'manage_options';
 
-			$icon_url = null;	// An icon is provided by WpssoStyle::add_admin_page_style(). 
+			$icon_url = null;	// An icon is provided by WpssoStyle::add_admin_page_style().
 
 			$function = array( $this, 'show_setting_page' );
 
@@ -477,7 +477,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( empty( $menu_ext ) ) {
 
-				$menu_ext = $this->menu_ext;	// lowercase acronyn for plugin or add-on
+				$menu_ext = $this->menu_ext;	// Lowercase acronyn for plugin or add-on.
 
 				if ( empty( $menu_ext ) ) {
 					$menu_ext = $this->p->lca;
@@ -494,9 +494,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( empty( $this->p->cf[ 'menu' ][ 'dashicons' ][ $menu_id ] ) ) {
 
 					if ( $menu_ext === $this->p->lca ) {
-						$dashicon = 'admin-settings';	// use settings dashicon by default
+						$dashicon = 'admin-settings';	// Use settings dashicon by default.
 					} else {
-						$dashicon = 'admin-plugins';	// use plugin dashicon by default for add-ons
+						$dashicon = 'admin-plugins';	// Use plugin dashicon by default for add-ons.
 					}
 
 				} else {
@@ -608,39 +608,47 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( SucomPlugin::is_plugin_installed( $info[ 'base' ], $use_cache = true ) ) {
 
 					if ( SucomPlugin::have_plugin_update( $info[ 'base' ] ) ) {
+
 						$action_links[] = '<a href="' . $details_url . '" class="thickbox" tabindex="' . ++$tabindex . '">' .
 							'<font color="red">' . ( $ext === $this->p->lca ? _x( 'Plugin Details and Update',
 								'plugin action link', 'wpsso' ) : _x( 'Add-on Details and Update',
 									'plugin action link', 'wpsso' ) ) . '</font></a>';
 					} else {
+
 						$action_links[] = '<a href="' . $details_url . '" class="thickbox" tabindex="' . ++$tabindex . '">' .
 							( $ext === $this->p->lca ? _x( 'Plugin Details', 'plugin action link', 'wpsso' ) :
 								_x( 'Add-on Details', 'plugin action link', 'wpsso' ) ) . '</a>';
 					}
 
 				} else {
+
 					$action_links[] = '<a href="' . $details_url . '" class="thickbox" tabindex="' . ++$tabindex . '">' .
 						( $ext === $this->p->lca ? _x( 'Plugin Details and Install', 'plugin action link', 'wpsso' ) :
 							_x( 'Add-on Details and Install', 'plugin action link', 'wpsso' ) ) . '</a>';
 				}
 
 			} elseif ( ! empty( $info[ 'url' ][ 'home' ] ) ) {
+
 				$action_links[] = '<a href="' . $info[ 'url' ][ 'home' ] . '" tabindex="' . ++$tabindex . '">' .
 					_x( 'About Page', 'plugin action link', 'wpsso' ) . '</a>';
 			}
 
 			if ( ! empty( $info[ 'url' ][ 'docs' ] ) ) {
+
 				$action_links[] = '<a href="' . $info[ 'url' ][ 'docs' ] . '"' .
 					( false !== $tabindex ? ' tabindex="' . ++$tabindex . '"' : '' ) . '>' .
 						_x( 'Documentation', 'plugin action link', 'wpsso' ) . '</a>';
 			}
 
 			if ( ! empty( $info[ 'url' ][ 'support' ] ) && self::$pkg[ $ext ][ 'pp' ] ) {
+
 				$action_links[] = '<a href="' . $info[ 'url' ][ 'support' ] . '"' .
 					( false !== $tabindex ? ' tabindex="' . ++$tabindex . '"' : '' ) . '>' .
-						_x( 'Pro Support', 'plugin action link', 'wpsso' ) . '</a>';
+						sprintf( _x( '%s Support', 'plugin action link', 'wpsso' ),
+							_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) ) . '</a>';
 
 			} elseif ( ! empty( $info[ 'url' ][ 'forum' ] ) ) {
+
 				$action_links[] = '<a href="' . $info[ 'url' ][ 'forum' ] . '"' .
 					( false !== $tabindex ? ' tabindex="' . ++$tabindex . '"' : '' ) . '>' .
 						_x( 'Community Forum', 'plugin action link', 'wpsso' ) . '</a>';
@@ -837,7 +845,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							break;
 						}
 
-						// no break - override with 'home' url from config (if one is defined)
+						// No break - override with 'home' url from config (if one is defined).
 
 					case 'latest':	// From plugin config.
 
@@ -1059,8 +1067,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							$user_obj  = get_userdata( $user_id );
 							$user_name = $user_obj->display_name;
 
-							delete_user_option( $user_id, WPSSO_DISMISS_NAME, false );	// $global = false
-							delete_user_option( $user_id, WPSSO_DISMISS_NAME, true );	// $global = true
+							delete_user_option( $user_id, WPSSO_DISMISS_NAME, $global = false );
+							delete_user_option( $user_id, WPSSO_DISMISS_NAME, $global = true );
 
 							$this->p->notice->upd( sprintf( __( 'Dismissed notices for user ID #%d "%s" have been reset.',
 								'wpsso' ), $user_id, $user_name ) );
@@ -1250,15 +1258,21 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					</div><!-- #post-body -->
 				</div><!-- #poststuff -->
 			</div><!-- .wrap -->
+
 			<script type="text/javascript">
+
 				jQuery( document ).ready(
+
 					function( $ ) {
-						// close postboxes that should be closed
+
+						/* Close postboxes that should be closed. */
 						$( '.if-js-closed' ).removeClass( 'if-js-closed' ).addClass( 'closed' );
-						// postboxes setup
+
+						/* Postboxes setup. */
 						postboxes.add_postbox_toggles( '<?php echo $this->pagehook; ?>' );
 					}
 				);
+
 			</script>
 			<?php
 		}
@@ -1278,7 +1292,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( strpos( $parts[ 'wp_http_referer' ], $referer_match ) ) {
 
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					$this->p->notice->upd( __( 'Profile updated.' ) );
 
 					$url = add_query_arg( 'updated', true, $parts[ 'wp_http_referer' ] );
@@ -1731,7 +1745,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '<table class="sucom-settings ' . $this->p->lca . ' column-metabox module-status">';
 
 			/**
-			 * Premium version features.
+			 * Pro / Premium version features.
 			 */
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
@@ -1865,7 +1879,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				if ( empty( $info[ 'version' ] ) ) {	// filter out add-ons that are not installed
+				if ( empty( $info[ 'version' ] ) ) {	// Filter out add-ons that are not installed.
 					continue;
 				}
 
@@ -1881,8 +1895,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $info[ 'url' ][ 'support' ] ) && self::$pkg[ $ext ][ 'pp' ] ) {
 
-					$action_links[] = sprintf( __( '<a href="%s">Priority Support Ticket</a>', 'wpsso' ), $info[ 'url' ][ 'support' ] ) .
-						' (' . __( 'Premium version', 'wpsso' ) . ')';
+					$action_links[] = sprintf( __( '<a href="%s">Priority Support Ticket</a>', 'wpsso' ), $info[ 'url' ][ 'support' ] );
 
 				} elseif ( ! empty( $info[ 'url' ][ 'forum' ] ) ) {
 
@@ -1908,7 +1921,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				if ( empty( $info[ 'version' ] ) ) {	// filter out add-ons that are not installed
+				if ( empty( $info[ 'version' ] ) ) {	// Filter out add-ons that are not installed.
 					continue;
 				}
 
@@ -2147,7 +2160,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$ext_sorted = WpssoConfig::get_ext_sorted();
 
 			foreach ( $ext_sorted as $ext => $info ) {
-				if ( empty( $info[ 'update_auth' ] ) ) {	// Only show plugins with Premium versions.
+				if ( empty( $info[ 'update_auth' ] ) ) {	// Only show plugins with Pro / Premium versions.
 					unset( $ext_sorted[ $ext ] );
 				}
 			}
@@ -2507,13 +2520,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $opts[ 'modules' ][ 'aiosp_feature_manager_options' ][ 'aiosp_feature_manager_enable_opengraph' ] ) ) {
 
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					$label_transl = '<strong>' . __( 'Social Meta', 'all-in-one-seo-pack' ) . '</strong>';
 					$settings_url = get_admin_url( null, 'admin.php?page=all-in-one-seo-pack%2Fmodules%2Faioseop_feature_manager.php' );
 					$settings_link = '<a href="' . $settings_url . '">' .
-						// translators: please ignore - translation uses a different text domain
+						// translators: please ignore - translation uses a different text domain.
 						__( 'All in One SEO', 'all-in-one-seo-pack' ) . ' &gt; ' .
-						// translators: please ignore - translation uses a different text domain
+						// translators: please ignore - translation uses a different text domain.
 						__( 'Feature Manager', 'all-in-one-seo-pack' ) . '</a>';
 
 					if ( $this->p->debug->enabled ) {
@@ -2526,15 +2539,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( isset( $opts[ 'aiosp_google_disable_profile' ] ) && empty( $opts[ 'aiosp_google_disable_profile' ] ) ) {
 
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					$label_transl = '<strong>' . __( 'Disable Google Plus Profile', 'all-in-one-seo-pack' ) . '</strong>';
 					$settings_url = get_admin_url( null, 'admin.php?page=all-in-one-seo-pack%2Faioseop_class.php' );
 					$settings_link = '<a href="' . $settings_url . '">' .
-						// translators: please ignore - translation uses a different text domain
+						// translators: please ignore - translation uses a different text domain.
 						__( 'All in One SEO', 'all-in-one-seo-pack' ) . ' &gt; ' .
-						// translators: please ignore - translation uses a different text domain
+						// translators: please ignore - translation uses a different text domain.
 						__( 'General Settings', 'all-in-one-seo-pack' ) . ' &gt; ' .
-						// translators: please ignore - translation uses a different text domain
+						// translators: please ignore - translation uses a different text domain.
 						__( 'Google Settings', 'all-in-one-seo-pack' ) . '</a>';
 
 					if ( $this->p->debug->enabled ) {
@@ -2547,15 +2560,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $opts[ 'aiosp_schema_markup' ] ) ) {
 
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					$label_transl = '<strong>' . __( 'Use Schema.org Markup', 'all-in-one-seo-pack' ) . '</strong>';
 					$settings_url = get_admin_url( null, 'admin.php?page=all-in-one-seo-pack%2Faioseop_class.php' );
 					$settings_link = '<a href="' . $settings_url . '">' .
-						// translators: please ignore - translation uses a different text domain
+						// translators: please ignore - translation uses a different text domain.
 						__( 'All in One SEO', 'all-in-one-seo-pack' ) . ' &gt; ' .
-						// translators: please ignore - translation uses a different text domain
+						// translators: please ignore - translation uses a different text domain.
 						__( 'General Settings', 'all-in-one-seo-pack' ) . ' &gt; ' .
-						// translators: please ignore - translation uses a different text domain
+						// translators: please ignore - translation uses a different text domain.
 						__( 'General Settings', 'all-in-one-seo-pack' ) . '</a>';
 
 					if ( $this->p->debug->enabled ) {
@@ -2577,16 +2590,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$settings_url = get_admin_url( null, 'admin.php?page=seo' );
 
 				$settings_link = '<a href="' . $settings_url . '">' .
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					__( 'SEO Ultimate', 'seo-ultimate' ) . ' &gt; ' .
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					__( 'Modules', 'seo-ultimate' ) . '</a>';
 
 				if ( ! empty( $opts[ 'modules' ] ) && is_array( $opts[ 'modules' ] ) ) {
 
 					if ( array_key_exists( 'opengraph', $opts[ 'modules' ] ) && $opts[ 'modules' ][ 'opengraph' ] !== -10 ) {
 
-						// translators: please ignore - translation uses a different text domain
+						// translators: please ignore - translation uses a different text domain.
 						$label_transl = '<strong>' . __( 'Open Graph Integrator', 'seo-ultimate' ) . '</strong>';
 
 						if ( $this->p->debug->enabled ) {
@@ -2612,13 +2625,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$settings_url = get_admin_url( null, 'admin.php?page=sq_seo#socials' );
 
 				$settings_link = '<a href="' . $settings_url . '">' .
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					__( 'Squirrly', 'squirrly-seo' ) . ' &gt; ' .
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					__( 'SEO Settings', 'squirrly-seo' ) . ' &gt; ' .
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					__( 'Social Media', 'squirrly-seo' ) . ' &gt; ' .
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					__( 'Social Media Options', 'squirrly-seo' ) . '</a>';
 
 				foreach ( array(
@@ -2645,13 +2658,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$settings_url = get_admin_url( null, 'admin.php?page=sq_seo#seo' );
 
 				$settings_link = '<a href="' . $settings_url . '">' .
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					__( 'Squirrly', 'squirrly-seo' ) . ' &gt; ' .
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					__( 'SEO Settings', 'squirrly-seo' ) . ' &gt; ' .
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					__( 'SEO Settings', 'squirrly-seo' ) . ' &gt; ' .
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					__( 'Let Squirrly SEO Optimize This Blog', 'squirrly-seo' ) . '</a>';
 
 				foreach ( array(
@@ -2685,25 +2698,25 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$settings_url = get_admin_url( null, 'admin.php?page=theseoframework-settings' );
 
 				$settings_link = '<a href="' . $settings_url . '">' .
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					__( 'The SEO Framework', 'autodescription' ) . ' &gt; ' .
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					__( 'Social Meta Settings', 'autodescription' ) . '</a>';
 
-				// translators: please ignore - translation uses a different text domain
+				// translators: please ignore - translation uses a different text domain.
 				$posts_i18n = __( 'Posts', 'autodescription' );
 
 				foreach ( array(
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					'og_tags'       => '<strong>' . __( 'Output Open Graph meta tags?', 'autodescription' ) . '</strong>',
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					'facebook_tags' => '<strong>' . __( 'Output Facebook meta tags?', 'autodescription' ) . '</strong>',
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					'twitter_tags'  => '<strong>' . __( 'Output Twitter meta tags?', 'autodescription' ) . '</strong>',
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					'post_publish_time' => '<strong>' . sprintf( __( 'Add %1$s to %2$s?', 'autodescription' ),
 						'article:published_time', $posts_i18n ) . '</strong>',
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					'post_modify_time' => '<strong>' . sprintf( __( 'Add %1$s to %2$s?', 'autodescription' ),
 						'article:modified_time', $posts_i18n ) . '</strong>',
 				) as $opt_key => $label_transl ) {
@@ -2723,14 +2736,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * The SEO Framework > Schema Settings Metabox
 				 */
 				$settings_link = '<a href="' . $settings_url . '">' .
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					__( 'The SEO Framework', 'autodescription' ) . ' &gt; ' .
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					__( 'Schema Settings', 'autodescription' ) . '</a>';
 
 				if ( ! empty( $opts[ 'knowledge_output' ] ) ) {
 
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					$label_transl = '<strong>' . __( 'Output Authorized Presence?', 'autodescription' ) . '</strong>';
 
 					if ( $this->p->debug->enabled ) {
@@ -2756,19 +2769,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$settings_url = get_admin_url( null, 'admin.php?page=metaseo_settings' );
 
 				$settings_link = '<a href="' . $settings_url . '">' .
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					__( 'WP Meta SEO', 'wp-meta-seo' ) . ' &gt; ' .
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					__( 'Settings', 'wp-meta-seo' ) . ' &gt; ' .
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					__( 'Global', 'wp-meta-seo' ) . '</a>';
 
 				foreach ( array(
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					'metaseo_showfacebook' => '<strong>' . __( 'Facebook profile URL', 'wp-meta-seo' ) . '</strong>',
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					'metaseo_showfbappid'  => '<strong>' . __( 'Facebook App ID', 'wp-meta-seo' ) . '</strong>',
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					'metaseo_showtwitter'  => '<strong>' . __( 'Twitter Username', 'wp-meta-seo' ) . '</strong>',
 				) as $opt_key => $label_transl ) {
 
@@ -2785,7 +2798,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $opts[ 'metaseo_showsocial' ] ) ) {
 
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					$label_transl = '<strong>' . __( 'Social sharing block', 'wp-meta-seo' ) . '</strong>';
 
 					if ( $this->p->debug->enabled ) {
@@ -2810,27 +2823,27 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$settings_url = get_admin_url( null, 'admin.php?page=wpseo_social#top#accounts' );
 
 				$settings_link = '<a href="' . $settings_url . '">' .
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					__( 'Yoast SEO', 'wordpress-seo' ) . ' &gt; ' .
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					__( 'Social', 'wordpress-seo' ) . ' &gt; ' .
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					__( 'Accounts', 'wordpress-seo' ) . '</a>';
 
 				foreach ( array(
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					'facebook_site'   => '<strong>' . __( 'Facebook Page URL', 'wordpress-seo' ) . '</strong>',
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					'twitter_site'    => '<strong>' . __( 'Twitter Username', 'wordpress-seo' ) . '</strong>',
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					'instagram_url'   => '<strong>' . __( 'Instagram URL', 'wordpress-seo' ) . '</strong>',
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					'linkedin_url'    => '<strong>' . __( 'LinkedIn URL', 'wordpress-seo' ) . '</strong>',
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					'myspace_url'     => '<strong>' . __( 'MySpace URL', 'wordpress-seo' ) . '</strong>',
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					'pinterest_url'   => '<strong>' . __( 'Pinterest URL', 'wordpress-seo' ) . '</strong>',
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					'youtube_url'     => '<strong>' . __( 'YouTube URL', 'wordpress-seo' ) . '</strong>',
 				) as $opt_key => $label_transl ) {
 
@@ -2850,17 +2863,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 */
 				if ( ! empty( $opts[ 'opengraph' ] ) ) {
 
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					$label_transl = '<strong>' . __( 'Add Open Graph meta data', 'wordpress-seo' ) . '</strong>';
 
 					$settings_url = get_admin_url( null, 'admin.php?page=wpseo_social#top#facebook' );
 
 					$settings_link = '<a href="' . $settings_url . '">' .
-						// translators: please ignore - translation uses a different text domain
+						// translators: please ignore - translation uses a different text domain.
 						__( 'Yoast SEO', 'wordpress-seo' ) . ' &gt; ' .
-						// translators: please ignore - translation uses a different text domain
+						// translators: please ignore - translation uses a different text domain.
 						__( 'Social', 'wordpress-seo' ) . ' &gt; ' .
-						// translators: please ignore - translation uses a different text domain
+						// translators: please ignore - translation uses a different text domain.
 						__( 'Facebook', 'wordpress-seo' ) . '</a>';
 
 					if ( $this->p->debug->enabled ) {
@@ -2873,17 +2886,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $opts[ 'fbadminapp' ] ) ) {
 
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					$label_transl = '<strong>' . __( 'Facebook App ID', 'wordpress-seo' ) . '</strong>';
 
 					$settings_url = get_admin_url( null, 'admin.php?page=wpseo_social#top#facebook' );
 
 					$settings_link = '<a href="' . $settings_url . '">' .
-						// translators: please ignore - translation uses a different text domain
+						// translators: please ignore - translation uses a different text domain.
 						__( 'Yoast SEO', 'wordpress-seo' ) . ' &gt; ' .
-						// translators: please ignore - translation uses a different text domain
+						// translators: please ignore - translation uses a different text domain.
 						__( 'Social', 'wordpress-seo' ) . ' &gt; ' .
-						// translators: please ignore - translation uses a different text domain
+						// translators: please ignore - translation uses a different text domain.
 						__( 'Facebook', 'wordpress-seo' ) . '</a>';
 
 					if ( $this->p->debug->enabled ) {
@@ -2899,17 +2912,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 */
 				if ( ! empty( $opts[ 'twitter' ] ) ) {
 
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					$label_transl = '<strong>' . __( 'Add Twitter Card meta data', 'wordpress-seo' ) . '</strong>';
 
 					$settings_url = get_admin_url( null, 'admin.php?page=wpseo_social#top#twitterbox' );
 
 					$settings_link = '<a href="' . $settings_url . '">' .
-						// translators: please ignore - translation uses a different text domain
+						// translators: please ignore - translation uses a different text domain.
 						__( 'Yoast SEO', 'wordpress-seo' ) . ' &gt; ' .
-						// translators: please ignore - translation uses a different text domain
+						// translators: please ignore - translation uses a different text domain.
 						__( 'Social', 'wordpress-seo' ) . ' &gt; ' .
-						// translators: please ignore - translation uses a different text domain
+						// translators: please ignore - translation uses a different text domain.
 						__( 'Twitter', 'wordpress-seo' ) . '</a>';
 
 					if ( $this->p->debug->enabled ) {
@@ -3018,7 +3031,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$notice_key   = 'timed-notice-' . $ext . '-plugin-review';
 				$dismiss_time = true;							// Can be dismissed permanently.
-				$showing_ext  = get_transient( $cache_id );				// Returns empty string or $notice_key value. 
+				$showing_ext  = get_transient( $cache_id );				// Returns empty string or $notice_key value.
 
 				if ( empty( $info[ 'version' ] ) ) {					// Plugin not installed.
 
@@ -3165,9 +3178,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					$notice_msg .= '</p><p>';
 
-					$notice_msg .= '<b>' . __( 'Have you considered purchasing the Premium version?', 'wpsso' ) . '</b> ';
+					$notice_msg .= '<b>' . sprintf( __( 'Have you considered purchasing the %s version?', 'wpsso' ),
+						_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) ). '</b> ';
 
-					$notice_msg .= __( 'The Premium version comes with a lot of extra features!', 'wpsso' );
+					$notice_msg .= sprintf( __( 'The %s version comes with a lot of extra features!', 'wpsso' ),
+						_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) );
 
 					$notice_msg .= '</p>';
 					
@@ -3201,7 +3216,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $this->p->options[ 'plugin_' . $ext . '_tid' ] ) ) {
 
-					$have_tid = true;	// Found at least one plugin with an auth id
+					$have_tid = true;	// Found at least one plugin with an auth id.
 
 					/**
 					 * If the update manager is active, the version should be available.
@@ -3539,7 +3554,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$table_rows[ 'schema_img' ] = '' . 
 			$this->form->get_th_html( _x( 'Schema Image Dimensions', 'option label', 'wpsso' ), '', 'schema_img_dimensions' ) . 
-			'<td>' . $this->form->get_input_image_dimensions( 'schema_img' ) . '</td>';	// $use_opts = false
+			'<td>' . $this->form->get_input_image_dimensions( 'schema_img' ) . '</td>';
 
 			$table_rows[ 'schema_desc_max_len' ] = $this->form->get_tr_hide( 'basic', 'schema_desc_max_len' ) . 
 			$this->form->get_th_html( _x( 'Maximum Description Length', 'option label', 'wpsso' ), '', 'schema_desc_max_len' ) . 
@@ -3552,7 +3567,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected function add_schema_item_types_table_rows( array &$table_rows, array $hide_in_view = array(), $schema_types = null ) {
 
 			if ( ! is_array( $schema_types ) ) {
-				$schema_types = $this->p->schema->get_schema_types_select( null, true );	// $add_none = true
+				$schema_types = $this->p->schema->get_schema_types_select( null, $add_none = true );
 			}
 
 			foreach ( array( 
@@ -3784,7 +3799,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( empty( $readme_content ) ) {
 
-				$readme_info = array();	// save an empty array
+				$readme_info = array();	// Save an empty array.
 
 			} else {
 
@@ -3828,7 +3843,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$file_name   = SucomUtil::sanitize_file_path( $file_name );
-			$file_key    = SucomUtil::sanitize_hookname( basename( $file_name ) );	// html/setup.html -> setup_html
+			$file_key    = SucomUtil::sanitize_hookname( basename( $file_name ) );	// html/setup.html -> setup_html.
 			$file_dir    = SucomUtil::get_const( strtoupper( $ext ) . '_PLUGINDIR' );
 			$file_local  = $file_dir ? trailingslashit( $file_dir ) . $file_name : false;
 			$file_remote = isset( $this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] ) ? 
@@ -3845,7 +3860,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$cache_exp_secs = WEEK_IN_SECONDS;
 			}
 
-			$cache_exp_filter = $this->p->lca . '_cache_expire_' . $file_key;	// 'wpsso_cache_expire_setup_html'
+			$cache_exp_filter = $this->p->lca . '_cache_expire_' . $file_key;	// 'wpsso_cache_expire_setup_html'.
 			$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, $cache_exp_secs );
 			$cache_content    = false;
 
@@ -3906,7 +3921,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $this->pageref_url ) ) {
 
-					// translators: please ignore - translation uses a different text domain
+					// translators: please ignore - translation uses a different text domain.
 					$this->p->notice->upd( __( 'Plugin <strong>activated</strong>.' ) );
 
 					$url = $this->pageref_url;
@@ -3928,14 +3943,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$link_url = wp_nonce_url( $this->p->util->get_admin_url( 'um-general?' . $this->p->lca . '-action=check_for_updates' ),
 					WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 
-				// translators: %1$s is the URL, %2$s is the short plugin name
+				// translators: %1$s is the URL, %2$s is the short plugin name.
 				$link_html = sprintf( __( 'You may <a href="%1$s">refresh the update information for %2$s and its add-ons</a> to check if newer versions are available.', 'wpsso' ), $link_url, self::$pkg[ $this->p->lca ][ 'short' ] );
 
 			} elseif ( empty( $_GET[ 'force-check' ] ) ) {
 
 				$link_url = self_admin_url( 'update-core.php?force-check=1' );
 
-				// translators: %1$s is the URL
+				// translators: %1$s is the URL.
 				$link_html = sprintf( __( 'You may <a href="%1$s">refresh the update information for WordPress (plugins, themes, and translations)</a> to check if newer versions are available.', 'wpsso' ), $link_url );
 
 			}
@@ -3983,11 +3998,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( strpos( $mixed, $this->p->lca ) === 0 ) {				// A complete lower case acronym was provided.
-				$p_ext = substr( $ext, 0, strlen( $this->p->lca ) );		// Change 'wpssojson' to 'json'
+				$p_ext = substr( $ext, 0, strlen( $this->p->lca ) );		// Change 'wpssojson' to 'json'.
 				$ext   = $mixed;
 			} else {
 				$p_ext = $mixed;
-				$ext   = $this->p->lca . $p_ext;				// Change 'json' to 'wpssojson'
+				$ext   = $this->p->lca . $p_ext;				// Change 'json' to 'wpssojson'.
 			}
 
 			if ( $this->p->lca === $mixed ) {					// The main plugin is not considered an add-on.
@@ -4091,7 +4106,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$mime_type_gz  = 'application/x-gzip';
 			$dot_file_ext  = '.json.gz';
-			$max_file_size = 100000;	// 100K
+			$max_file_size = 100000;	// 100K.
 
 			if ( ! isset( $_FILES[ 'file' ][ 'error' ] ) ) {
 

@@ -14,7 +14,7 @@
  * Requires At Least: 3.8
  * Tested Up To: 5.2.1
  * WC Tested Up To: 3.6
- * Version: 5.0.0-dev.4
+ * Version: 5.0.0-dev.5
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -37,42 +37,42 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		/**
 		 * Wpsso plugin class object variable.
 		 */
-		public $p;		// Wpsso
+		public $p;		// Wpsso.
 
 		/**
 		 * Library class object variables.
 		 */
-		public $admin;		// WpssoAdmin (admin menus and page loader)
-		public $cache;		// SucomCache (object and file caching)
-		public $check;		// WpssoCheck
-		public $debug;		// SucomDebug or SucomNoDebug
-		public $head;		// WpssoHead
-		public $loader;		// WpssoLoader
-		public $media;		// WpssoMedia (images, videos, etc.)
-		public $msgs;		// WpssoMessages (admin tooltip messages)
-		public $notice;		// SucomNotice or SucomNoNotice
-		public $opt;		// WpssoOptions
-		public $page;		// WpssoPage (page title, desc, etc.)
-		public $post;		// WpssoPost
-		public $reg;		// WpssoRegister
-		public $script;		// WpssoScript (admin jquery tooltips)
-		public $style;		// WpssoStyle (admin styles)
-		public $term;		// WpssoTerm
-		public $user;		// WpssoUser
-		public $util;		// WpssoUtil (extends SucomUtil)
+		public $admin;		// WpssoAdmin (admin menus and page loader).
+		public $cache;		// SucomCache (object and file caching).
+		public $check;		// WpssoCheck.
+		public $debug;		// SucomDebug or SucomNoDebug.
+		public $head;		// WpssoHead.
+		public $loader;		// WpssoLoader.
+		public $media;		// WpssoMedia (images, videos, etc.).
+		public $msgs;		// WpssoMessages (admin tooltip messages).
+		public $notice;		// SucomNotice or SucomNoNotice.
+		public $opt;		// WpssoOptions.
+		public $page;		// WpssoPage (page title, desc, etc.).
+		public $post;		// WpssoPost.
+		public $reg;		// WpssoRegister.
+		public $script;		// WpssoScript (admin jquery tooltips).
+		public $style;		// WpssoStyle (admin styles).
+		public $term;		// WpssoTerm.
+		public $user;		// WpssoUser.
+		public $util;		// WpssoUtil (extends SucomUtil).
 
 		/**
 		 * Library class object variables for meta tags and markup.
 		 */
-		public $link_rel;	// WpssoLinkRel
-		public $meta_item;	// WpssoMetaItem
-		public $meta_name;	// WpssoMetaName
-		public $noscript;	// WpssoNoScript
-		public $og;		// WpssoOpenGraph
-		public $pinterest;	// WpssoPinterest
-		public $schema;		// WpssoSchema
-		public $tc;		// WpssoTwitterCard
-		public $weibo;		// WpssoWeibo
+		public $link_rel;	// WpssoLinkRel.
+		public $meta_item;	// WpssoMetaItem.
+		public $meta_name;	// WpssoMetaName.
+		public $noscript;	// WpssoNoScript.
+		public $og;		// WpssoOpenGraph.
+		public $pinterest;	// WpssoPinterest.
+		public $schema;		// WpssoSchema.
+		public $tc;		// WpssoTwitterCard.
+		public $weibo;		// WpssoWeibo.
 
 		/**
 		 * Reference variables (config, options, modules, etc.).
@@ -150,7 +150,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 						$classname = apply_filters( $ext . '_load_lib', false, 'widget/' . $id );
 
 						if ( false !== $classname && class_exists( $classname ) ) {
-							register_widget( $classname );	// name of a class that extends WP_Widget
+							register_widget( $classname );	// Name of a class that extends WP_Widget.
 						}
 					}
 				}
@@ -511,7 +511,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				if ( $this->debug->is_enabled( 'html' ) ) {
 
 					if ( SucomUtil::get_crawler_name() !== 'none' ) {
-						$this->debug->enable( 'html', false );	// disable HTML debug messages for crawlers
+						$this->debug->enable( 'html', false );	// Disable HTML debug messages for crawlers.
 					}
 				}
 
@@ -530,7 +530,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 					if ( ! empty( $warn_msg ) ) {
 
-						// translators: %s is the short plugin name
+						// translators: %s is the short plugin name.
 						$warn_msg .= sprintf( __( 'Debug mode disables some %s caching features, which degrades performance slightly.',
 							'wpsso' ), $info[ 'short' ] ) . ' ' . __( 'Please disable debug mode when debugging is complete.', 'wpsso' );
 
