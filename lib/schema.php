@@ -1217,7 +1217,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/**
 		 * Returns an array of schema type IDs for a given type URL.
 		 */
-		public function get_schema_type_ids( $type_url ) {
+		public function get_schema_type_url_ids( $type_url ) {
 
 			$type_ids = array();
 
@@ -1232,9 +1232,26 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $type_ids;
 		}
 
+		/**
+		 * Returns the first schema type ID for a given type URL.
+		 */
+		public function get_schema_type_url_id( $type_url, $default_id = false ) {
+
+			$schema_types = $this->get_schema_types_array( $flatten = true );
+
+			foreach ( $schema_types as $id => $url ) {
+				if ( $url === $type_url ) {
+					return $id;
+				}
+			}
+
+			return $default_id;
+		}
+
 		public function get_schema_type_id_for_name( $type_name, $default_id = null ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log_args( array( 
 					'type_name'  => $type_name,
 					'default_id' => $default_id,
@@ -1242,9 +1259,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( empty( $type_name ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: schema type name is empty' );
 				}
+
 				return $default_id;	// Just in case.
 			}
 
@@ -1386,8 +1405,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( ! empty( $type_id ) ) {
 
+					/**
+					 * A URL will be required if $type_id is not a URL.
+					 */
 					if ( ! empty( $json_data[ 'url' ] ) ) {
-						$json_values[ 'url' ] = $json_data[ 'url' ];	// Required if type_id is not a URL.
+						$json_values[ 'url' ] = $json_data[ 'url' ];
 					}
 
 					self::update_json_data_id( $json_values, $type_id );

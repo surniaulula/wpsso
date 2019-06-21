@@ -53,9 +53,9 @@ if ( ! class_exists( 'WpssoStdAdminMeta' ) ) {
 			$add_meta_name_desc = empty( $this->p->options[ 'add_meta_name_description' ] ) ? false : true;
 			$add_meta_name_desc = apply_filters( $this->p->lca . '_add_meta_name_description', $add_meta_name_desc, $mod );
 
-			$sharing_url   = $this->p->util->get_sharing_url( $mod, false );	// $add_page is false.
-			$canonical_url = $this->p->util->get_canonical_url( $mod, false );	// $add_page is false.
-
+			/**
+			 * Maximum option lengths.
+			 */
 			$og_title_max_len    = $this->p->options[ 'og_title_max_len' ];
 			$og_desc_max_len     = $this->p->options[ 'og_desc_max_len' ];
 			$seo_desc_max_len    = $this->p->options[ 'seo_desc_max_len' ];
@@ -63,12 +63,24 @@ if ( ! class_exists( 'WpssoStdAdminMeta' ) ) {
 			$schema_desc_max_len = $this->p->options[ 'schema_desc_max_len' ];
 			$schema_desc_md_key  = array( 'seo_desc', 'og_desc' );
 
+			/**
+			 * Default option values.
+			 */
 			$def_og_title    = $this->p->page->get_title( $og_title_max_len, $dots, $mod, $read_cache, $no_hashtags, $do_encode, 'none' );
 			$def_og_desc     = $this->p->page->get_description( $og_desc_max_len, $dots, $mod, $read_cache, $maybe_hashtags, $do_encode, 'none' );
 			$def_seo_desc    = $add_meta_name_desc ? $this->p->page->get_description( $seo_desc_max_len, $dots, $mod, $read_cache, $no_hashtags ) : '';
 			$def_tc_desc     = $this->p->page->get_description( $tc_desc_max_len, $dots, $mod, $read_cache );
 			$def_schema_desc = $this->p->page->get_description( $schema_desc_max_len, $dots, $mod, $read_cache, $no_hashtags, $do_encode, $schema_desc_md_key );
 
+			/**
+			 * Current option values.
+			 */
+			$sharing_url   = $this->p->util->get_sharing_url( $mod, $add_page = false );
+			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = false );
+
+			/**
+			 * Translated text strings.
+			 */
 			if ( empty( $this->p->cf[ 'plugin' ][ 'wpssojson' ][ 'version' ] ) ) {
 
 				$json_info       = $this->p->cf[ 'plugin' ][ 'wpssojson' ];
@@ -85,6 +97,9 @@ if ( ! class_exists( 'WpssoStdAdminMeta' ) ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
 
+			/**
+			 * Metabox form rows.
+			 */
 			$form_rows = array(
 				'og_title' => array(
 					'th_class' => 'medium',

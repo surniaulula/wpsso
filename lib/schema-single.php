@@ -260,6 +260,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			$ret = apply_filters( $wpsso->lca . '_json_data_single_event', $ret, $mod, $event_id );
 
+			/**
+			 * Update the @id string based on $ret[ 'url' ], $event_type_id, and $event_id values.
+			 */
+			WpssoSchema::update_json_data_id( $ret, $event_type_id . '/' . $event_id );
+
 			if ( empty( $list_element ) ) {		// Add a single item.
 				$json_data = $ret;
 			} elseif ( is_array( $json_data ) ) {	// Just in case.
@@ -408,6 +413,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			$ret = apply_filters( $wpsso->lca . '_json_data_single_job', $ret, $mod, $job_id );
+
+			/**
+			 * Update the @id string based on $ret[ 'url' ], $job_type_id, and $job_id values.
+			 */
+			WpssoSchema::update_json_data_id( $ret, $job_type_id . '/' . $job_id );
 
 			if ( empty( $list_element ) ) {		// Add a single item.
 				$json_data = $ret;
@@ -595,19 +605,27 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$org_opts = apply_filters( $wpsso->lca . '_get_organization_options', false, $mod, $org_id );
 
 			if ( ! empty( $org_opts ) ) {
+
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log_arr( 'get_organization_options filters returned', $org_opts );
 				}
+
 			} else {
+
 				if ( $org_id === 'site' ) {
+
 					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( 'getting site organization options array' );
 					}
+
 					$org_opts = WpssoSchema::get_site_organization( $mod ); // Returns localized values (not the key names).
+
 				} else {
+
 					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( 'exiting early: unknown org_id ' . $org_id );
 					}
+
 					return 0;
 				}
 			}
@@ -742,6 +760,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$ret = apply_filters( $wpsso->lca . '_json_data_single_organization', $ret, $mod, $org_id );
 
 			/**
+			 * Update the @id string based on $ret[ 'url' ], $org_type_id, and $org_id values.
+			 */
+			WpssoSchema::update_json_data_id( $ret, $org_type_id . '/' . $org_id );
+
+			/**
 			 * Restore previous reference values for admin notices.
 			 */
 			if ( is_admin() ) {
@@ -760,9 +783,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		}
 
 		/**
-		 * A $user_id argument is required.
+		 * A $person_id argument is required.
 		 */
-		public static function add_person_data( &$json_data, $mod, $user_id, $list_element = true ) {
+		public static function add_person_data( &$json_data, $mod, $person_id, $list_element = true ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -770,7 +793,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			$ret =& self::have_local_data( $json_data, $mod, 'person', $user_id, $list_element );
+			$ret =& self::have_local_data( $json_data, $mod, 'person', $person_id, $list_element );
 
 			if ( false !== $ret ) {	// 0 or 1 if data was retrieved from the local static cache.
 				return $ret;
@@ -781,7 +804,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Maybe get options from Premium version integration modules.
 			 */
-			$person_opts = apply_filters( $wpsso->lca . '_get_person_options', false, $mod, $user_id );
+			$person_opts = apply_filters( $wpsso->lca . '_get_person_options', false, $mod, $person_id );
 
 			if ( ! empty( $person_opts ) ) {
 
@@ -791,20 +814,20 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			} else {
 
-				if ( empty( $user_id ) || $user_id === 'none' ) {
+				if ( empty( $person_id ) || $person_id === 'none' ) {
 
 					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( 'exiting early: empty user_id' );
+						$wpsso->debug->log( 'exiting early: empty person_id' );
 					}
 
 					return 0;
 				}
 
 				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'getting user module for user_id ' . $user_id );
+					$wpsso->debug->log( 'getting user module for person_id ' . $person_id );
 				}
 
-				$user_mod = $wpsso->user->get_mod( $user_id );
+				$user_mod = $wpsso->user->get_mod( $person_id );
 
 				/**
 				 * Set the reference values for admin notices.
@@ -814,13 +837,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					$sharing_url = $wpsso->util->get_sharing_url( $user_mod );
 	
 					$wpsso->notice->set_ref( $sharing_url, $user_mod,
-						sprintf( __( 'adding schema for person user ID %1$s', 'wpsso' ), $user_id ) );
+						sprintf( __( 'adding schema for person user ID %1$s', 'wpsso' ), $person_id ) );
 				}
 
-				$user_desc = $user_mod[ 'obj' ]->get_options_multi( $user_id, $md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
+				$user_desc = $user_mod[ 'obj' ]->get_options_multi( $person_id, $md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
 
 				if ( empty( $user_desc ) ) {
-					$user_desc = $user_mod[ 'obj' ]->get_author_meta( $user_id, 'description' );
+					$user_desc = $user_mod[ 'obj' ]->get_author_meta( $person_id, 'description' );
 				}
 
 				/**
@@ -830,9 +853,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$user_sameas = array();
 
-				foreach ( WpssoUser::get_user_id_contact_methods( $user_id ) as $cm_id => $cm_label ) {
+				foreach ( WpssoUser::get_user_id_contact_methods( $person_id ) as $cm_id => $cm_label ) {
 
-					$url = $user_mod[ 'obj' ]->get_author_meta( $user_id, $cm_id );
+					$url = $user_mod[ 'obj' ]->get_author_meta( $person_id, $cm_id );
 
 					if ( empty( $url ) ) {
 						continue;
@@ -847,11 +870,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$person_opts = array(
 					'person_type'      => 'person',
-					'person_url'       => $user_mod[ 'obj' ]->get_author_website( $user_id, 'url' ),
-					'person_name'      => $user_mod[ 'obj' ]->get_author_meta( $user_id, $wpsso->options[ 'seo_author_name' ] ),
+					'person_url'       => $user_mod[ 'obj' ]->get_author_website( $person_id, 'url' ),
+					'person_name'      => $user_mod[ 'obj' ]->get_author_meta( $person_id, $wpsso->options[ 'seo_author_name' ] ),
 					'person_desc'      => $user_desc,
-					'person_job_title' => $user_mod[ 'obj' ]->get_options( $user_id, 'schema_person_job_title' ),
-					'person_og_image'  => $user_mod[ 'obj' ]->get_og_images( 1, $size_name, $user_id, false ),
+					'person_job_title' => $user_mod[ 'obj' ]->get_options( $person_id, 'schema_person_job_title' ),
+					'person_og_image'  => $user_mod[ 'obj' ]->get_og_images( 1, $size_name, $person_id, false ),
 					'person_sameas'    => $user_sameas,
 				);
 
@@ -896,7 +919,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Google's knowledge graph.
 			 */
 			$person_opts[ 'person_sameas' ] = isset( $person_opts[ 'person_sameas' ] ) ? $person_opts[ 'person_sameas' ] : array();
-			$person_opts[ 'person_sameas' ] = apply_filters( $wpsso->lca . '_json_data_single_person_sameas', $person_opts[ 'person_sameas' ], $mod, $user_id );
+			$person_opts[ 'person_sameas' ] = apply_filters( $wpsso->lca . '_json_data_single_person_sameas', $person_opts[ 'person_sameas' ], $mod, $person_id );
 
 			if ( ! empty( $person_opts[ 'person_sameas' ] ) && is_array( $person_opts[ 'person_sameas' ] ) ) {	// Just in case.
 				foreach ( $person_opts[ 'person_sameas' ] as $url ) {
@@ -906,7 +929,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			$ret = apply_filters( $wpsso->lca . '_json_data_single_person', $ret, $mod, $user_id );
+			$ret = apply_filters( $wpsso->lca . '_json_data_single_person', $ret, $mod, $person_id );
+
+			/**
+			 * Update the @id string based on $ret[ 'url' ], $person_type_id, and $person_id values.
+			 */
+			WpssoSchema::update_json_data_id( $ret, $person_type_id . '/' . $person_id );
 
 			if ( empty( $list_element ) ) {		// Add a single item.
 				$json_data = $ret;
@@ -1117,6 +1145,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$ret = apply_filters( $wpsso->lca . '_json_data_single_place', $ret, $mod, $place_id );
 
 			/**
+			 * Update the @id string based on $ret[ 'url' ], $place_type_id, and $place_id values.
+			 */
+			WpssoSchema::update_json_data_id( $ret, $place_type_id . '/' . $place_id );
+
+			/**
 			 * Restore previous reference values for admin notices.
 			 */
 			if ( is_admin() ) {
@@ -1147,10 +1180,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			$single_type_id   = false;
-			$single_type_url  = $list_element ? false : WpssoSchema::get_data_type_url( $json_data );
+			$single_type_url  = false;
 			$single_type_from = 'inherited';
 
-			if ( false === $single_type_url ) {
+			if ( ! $list_element ) {
+				$single_type_url = WpssoSchema::get_data_type_url( $json_data );
+			}
+
+			if ( ! $single_type_url ) {
 
 				/**
 				 * $type_opts may be false, null, or an array.
@@ -1167,6 +1204,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					$single_type_url  = $wpsso->schema->get_schema_type_url( $single_type_id, $default_id );
 					$single_type_from = 'options';
 				}
+
+			} else {
+
+				$single_type_id = $wpsso->schema->get_schema_type_url_id( $single_type_url, $default_id );
 			}
 
 			if ( $wpsso->debug->enabled ) {

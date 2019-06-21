@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '5.0.0-dev.3',	// Plugin version.
+					'version'     => '5.0.0-dev.4',	// Plugin version.
 					'opt_version' => '643',	// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -789,7 +789,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_attachment'   => 'webpage',
 					'schema_type_for_home_index'   => 'blog',
 					'schema_type_for_home_page'    => 'website',
-					'schema_type_for_page'         => 'webpage',
+					'schema_type_for_page'         => 'article',
 					'schema_type_for_post'         => 'blog.posting',
 					'schema_type_for_post_archive' => 'item.list',		// Post type archive page.
 					'schema_type_for_search_page'  => 'webpage.search.results',
@@ -835,7 +835,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'og_type_for_tax_category'     => 'website',
 					'og_type_for_tax_post_tag'     => 'website',
-					'og_type_for_archive_page'     => 'website',	// Date-based archives.
+					'og_type_for_archive_page'     => 'website',		// Date-based archives.
 					'og_type_for_attachment'       => 'website',
 					'og_type_for_home_index'       => 'website',
 					'og_type_for_home_page'        => 'website',
@@ -1470,7 +1470,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '2.0.0-dev.3',	// Minimum update manager version (soft limit).
+				'rec_version' => '2.0.0-dev.4',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',

@@ -1899,41 +1899,23 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'pro-feature-msg':
 
-						$begin_p = '<p class="pro-feature-msg">' . ( empty( $url[ 'purchase' ] ) ? '' : '<a href="' . $url[ 'purchase' ] . '">' );
-						$end_p   = ( empty( $url[ 'purchase' ] ) ? '' : '</a>' ) . '</p>';
+						$text = '<p class="pro-feature-msg">';
+
+						$text .= empty( $url[ 'purchase' ] ) ? '' : '<a href="' . $url[ 'purchase' ] . '">';
 
 						if ( $lca === $this->p->lca ) {
 
-							if ( $this->p->check->pp( $lca, false ) ) {
-								$text = $begin_p . sprintf( __( 'Purchase %s plugin license(s) to use the following features / options.',
-									'wpsso' ), $info[ 'short_pro' ] ) . $end_p;
-							} else {
-								$text = $begin_p . sprintf( __( 'Purchase the %s plugin to install the Pro update and use the following features / options.',
-									'wpsso' ), $info[ 'short_pro' ] ) . $end_p;
-							}
+							$text .= sprintf( __( 'Purchase %1$s plugin to get the following features / options.',
+								'wpsso' ), $info[ 'short_pro' ] );
 
 						} else {
-
-							$has_pdir = $this->p->avail[ '*' ][ 'p_dir' ];
-
-							if ( ! $this->p->check->pp( $this->p->lca, true, $has_pdir ) ) {
-
-								$req_short = $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'short' ] . ' Pro';
-
-								$req_msg = sprintf( __( '(note that all Pro add-ons require a licensed and active %1$s plugin)',
-									'wpsso' ), $req_short );
-
-								$end_p = ( empty( $url[ 'purchase' ] ) ? '' : '</a>' ) . '<br/>' . $req_msg . '</p>';
-							}
-
-							if ( $this->p->check->pp( $lca, false ) ) {
-								$text = $begin_p . sprintf( __( 'Purchase %s add-on licence(s) to use the following features / options.',
-									'wpsso' ), $info[ 'short_pro' ] ) . $end_p;
-							} else {
-								$text = $begin_p . sprintf( __( 'Purchase the %s add-on to install the Pro update and use the following features / options.',
-									'wpsso' ), $info[ 'short_pro' ] ) . $end_p;
-							}
+							$text .= sprintf( __( 'Purchase the %1$s add-on to get the following features / options.',
+								'wpsso' ), $info[ 'short_pro' ] );
 						}
+
+						$text .= empty( $url[ 'purchase' ] ) ? '' : '</a>';
+						
+						$text .= '</p>';
 
 						break;
 
@@ -1979,7 +1961,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text = '<p style="text-align:center;margin:0;">';
 
-						$text .= sprintf( __( 'You can update the %s excerpt or content text to change the default description values.', 'wpsso' ), $info[ 'post_type' ] );
+						$text .= sprintf( __( 'You may update the %s excerpt or content text to change the default description values.', 'wpsso' ), $info[ 'post_type' ] );
 
 						$text .= '</p>';
 
@@ -1989,7 +1971,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text = '<p style="text-align:center;margin:0;">';
 
-						$text .= __( 'You can change the social image by selecting a featured image, attaching image(s) or including images in the content.', 'wpsso' );
+						$text .= __( 'You may change the social image by selecting a featured image, attaching image(s) or including images in the content.', 'wpsso' );
 
 						$text .= '</br/>';
 

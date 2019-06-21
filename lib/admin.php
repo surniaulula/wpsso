@@ -1538,7 +1538,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( $have_filtered_exp ) {
 				echo '<tr><td></td></tr>' . "\n";
 				echo '<tr><td colspan="' . $table_cols . '"><p><small>[F] ' .
-					__( 'The expiration option value is modified by a filter.',
+					__( 'Expiration value modified by filter.',
 						'wpsso' ) . '</small></p></td></tr>' . "\n";
 			}
 
