@@ -4016,7 +4016,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$html .= ' <span class="ext-req-msg">';
 
 			$html .= $this->p->util->get_admin_url( 'addons#' . $ext, 
-				sprintf( _x( '%s add-on required', 'option comment', 'wpsso' ),
+				sprintf( _x( '%s required', 'option comment', 'wpsso' ),
 					$this->p->cf[ 'plugin' ][ $ext ][ 'short' ] ) );
 
 			$html .= '</span>';

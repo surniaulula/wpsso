@@ -95,8 +95,6 @@ if ( ! class_exists( 'WpssoStdAdminMeta' ) ) {
 
 			$seo_msg_transl = __( 'This option is disabled (the "%1$s" head tag is disabled or an SEO plugin was detected).', 'wpsso' );
 
-			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
-
 			/**
 			 * Metabox form rows.
 			 */
@@ -164,7 +162,15 @@ if ( ! class_exists( 'WpssoStdAdminMeta' ) ) {
 				),
 			);
 
-			return $form->get_md_form_rows( $table_rows, $form_rows, $head, $mod );
+			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head, $mod );
+
+			SucomUtil::add_before_key( $table_rows, 'og_title', 'wpsso-pro-feature-msg',
+				'<td colspan="2">' .
+				$this->p->msgs->get( 'pro-feature-msg' ) .
+				'</td>'
+			);
+
+			return $table_rows;
 		}
 
 		public function filter_meta_media_rows( $table_rows, $form, $head, $mod ) {
@@ -175,19 +181,20 @@ if ( ! class_exists( 'WpssoStdAdminMeta' ) ) {
 
 			if ( $mod[ 'is_post' ] && ( empty( $mod[ 'post_status' ] ) || $mod[ 'post_status' ] === 'auto-draft' ) ) {
 
-				$table_rows[] = '<td><blockquote class="status-info"><p class="centered">' . 
-					sprintf( __( 'Save a draft version or publish the %s to display these options.',
-						'wpsso' ), SucomUtil::titleize( $mod[ 'post_type' ] ) ) . '</p></td>';
+				$table_rows[] = '<td>' .
+					'<blockquote class="status-info">' .
+						'<p class="centered">' . 
+							sprintf( __( 'Save a draft version or publish the %s to display these options.', 'wpsso' ),
+								SucomUtil::titleize( $mod[ 'post_type' ] ) ) .
+						'</p>' .
+					'<blockquote>' .
+				'</td>';
 
 				return $table_rows;	// abort
 			}
 
 			$media_info = $this->p->og->get_media_info( $this->p->lca . '-opengraph',
 				array( 'pid', 'img_url' ), $mod, $md_pre = 'none', $mt_pre = 'og' );
-
-			$table_rows[] = '<td colspan="2">' .
-				( $mod[ 'is_post' ] ? $this->p->msgs->get( 'pro-about-msg-post-media' ) : '' ) .
-					$this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
 
 			$form_rows[ 'subsection_opengraph' ] = array(
 				'td_class' => 'subsection top',
@@ -408,7 +415,15 @@ if ( ! class_exists( 'WpssoStdAdminMeta' ) ) {
 				'content'  => $form->get_no_input_value( $media_info[ 'img_url' ], 'wide' ),
 			);
 
-			return $form->get_md_form_rows( $table_rows, $form_rows, $head, $mod );
+			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head, $mod );
+
+			SucomUtil::add_before_key( $table_rows, 'subsection_opengraph', 'wpsso-pro-feature-msg',
+				'<td colspan="2">' .
+				$this->p->msgs->get( 'pro-feature-msg' ) .
+				'</td>'
+			);
+
+			return $table_rows;
 		}
 	}
 }

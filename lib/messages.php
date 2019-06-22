@@ -1941,16 +1941,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						break;
 
-					case 'pro-select-msg':
-
-						$text = '<span class="pro-select-msg">';
-
-						$text .= sprintf( _x( 'select to preview %s options', 'option comment', 'wpsso' ), $pro_transl ) . ' ';
-
-						$text .= '</span>';
-
-						break;
-
 					case 'pro-purchase-link':
 
 						if ( empty( $info[ 'ext' ] ) ) {	// Nothing to do.
@@ -1971,30 +1961,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = '<a href="' . $info[ 'url' ] . '"' . ( empty( $info[ 'tabindex' ] ) ? '' :
 								' tabindex="' . $info[ 'tabindex' ] . '"' ) . '>' .  $text . '</a>';
 						}
-
-						break;
-
-					case 'pro-about-msg-post-text':
-
-						$text = '<p style="text-align:center;margin:0;">';
-
-						$text .= sprintf( __( 'You may update the %s excerpt or content text to change the default description values.', 'wpsso' ), $info[ 'post_type' ] );
-
-						$text .= '</p>';
-
-						break;
-
-					case 'pro-about-msg-post-media':
-
-						$text = '<p style="text-align:center;margin:0;">';
-
-						$text .= __( 'You may change the social image by selecting a featured image, attaching image(s) or including images in the content.', 'wpsso' );
-
-						$text .= '</br/>';
-
-						$text .= sprintf( __( 'Video service API modules, required to detect embedded videos, are provided by the %s plugin.', 'wpsso' ),  $info[ 'short_pro' ] );
-						
-						$text .= '</p>';
 
 						break;
 

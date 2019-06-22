@@ -502,8 +502,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			if ( isset( $mod[ 'post_status' ] ) && $mod[ 'post_status' ] === 'auto-draft' ) {
 
-				$auto_draft_msg = sprintf( __( 'Save a draft version or publish the %s to update this value.',
-					'wpsso' ), SucomUtil::titleize( $mod[ 'post_type' ] ) );
+				$auto_draft_msg = sprintf( __( 'Save a draft version or publish the %s to update this value.', 'wpsso' ),
+					SucomUtil::titleize( $mod[ 'post_type' ] ) );
 
 				$table_rows[] = '' . 
 				$form->get_th_html( _x( 'Sharing URL', 'option label', 'wpsso' ), 'medium' ) .

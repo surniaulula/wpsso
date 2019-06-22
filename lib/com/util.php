@@ -1783,7 +1783,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function add_before_key( array &$arr, $match_key, $mixed, $add_value = '' ) {
 
-			return self::insert_in_array( 'before', $arr, $match_key, $mixed, $add_value, true ); // $ret_matched = true.
+			return self::insert_in_array( 'before', $arr, $match_key, $mixed, $add_value, $ret_matched = true );
 		}
 
 		/**
@@ -1791,7 +1791,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function add_after_key( array &$arr, $match_key, $mixed, $add_value = '' ) {
 
-			return self::insert_in_array( 'after', $arr, $match_key, $mixed, $add_value, true ); // $ret_matched = true.
+			return self::insert_in_array( 'after', $arr, $match_key, $mixed, $add_value, $ret_matched = true );
 		}
 
 		/**
@@ -1799,7 +1799,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function do_replace_key( array &$arr, $match_key, $mixed, $add_value = '' ) {
 
-			return self::insert_in_array( 'replace', $arr, $match_key, $mixed, $add_value, true ); // $ret_matched = true.
+			return self::insert_in_array( 'replace', $arr, $match_key, $mixed, $add_value, $ret_matched = true );
 		}
 
 		private static function insert_in_array( $rel_pos, array &$arr, $match_key, $mixed, $add_value, $ret_matched = false ) {

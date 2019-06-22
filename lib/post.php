@@ -1368,6 +1368,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		protected function get_table_rows( $metabox_id, $tab_key, $head, $mod ) {
 
 			$is_auto_draft  = empty( $mod[ 'post_status' ] ) || $mod[ 'post_status' ] === 'auto-draft' ? true : false;
+
 			$auto_draft_msg = sprintf( __( 'Save a draft version or publish the %s to display these options.', 'wpsso' ),
 				SucomUtil::titleize( $mod[ 'post_type' ] ) );
 

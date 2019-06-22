@@ -91,23 +91,19 @@ if ( ! class_exists( 'WpssoStdAdminPost' ) ) {
 
 			$seo_msg_transl = __( 'This option is disabled (the "%1$s" head tag is disabled or an SEO plugin was detected).', 'wpsso' );
 
-			$table_rows[] = '<td colspan="2">' . 
-				$this->p->msgs->get( 'pro-about-msg-post-text', array( 'post_type' => $mod[ 'post_type' ] ) ) . 
-				$this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
+			$auto_draft_msg = sprintf( __( 'Save a draft version or publish the %s to update this value.', 'wpsso' ),
+				SucomUtil::titleize( $mod[ 'post_type' ] ) );
 
 			/**
 			 * Metabox form rows.
 			 */
 			$form_rows = array(
 				'og_type' => array(
-					'tr_class' => $form->get_css_class_hide( 'basic', 'og_type' ),
 					'th_class' => 'medium',
-					'td_class' => 'blank',
 					'label'    => _x( 'Open Graph Type', 'option label', 'wpsso' ),
 					'tooltip'  => 'post-og_type',
-					'content'  => $form->get_select( 'og_type', $og_types,
-						'', '', true, $def_og_type, $def_og_type, 'on_change_unhide_rows' ) . ' ' .
-							$this->p->msgs->get( 'pro-select-msg' ),
+					'content'  => $form->get_select( 'og_type',
+						$og_types, '', '', true, false, true, 'on_change_unhide_rows' ),
 				),
 				'og_art_section' => array(
 					'tr_class' => 'hide_og_type hide_og_type_article',
@@ -116,8 +112,7 @@ if ( ! class_exists( 'WpssoStdAdminPost' ) ) {
 					'label'    => _x( 'Article Topic', 'option label', 'wpsso' ),
 					'tooltip'  => 'post-og_art_section',
 					'content'  => $form->get_select( 'og_art_section', $art_topics,
-						'', '', false, $def_art_section, $def_art_section ) . ' ' .
-							$this->p->msgs->get( 'pro-select-msg' ),
+						'', '', false, $def_art_section, $def_art_section ),
 				),
 				'og_title' => array(
 					'no_auto_draft' => true,
@@ -319,10 +314,15 @@ if ( ! class_exists( 'WpssoStdAdminPost' ) ) {
 				),
 			);
 
-			$auto_draft_msg = sprintf( __( 'Save a draft version or publish the %s to update this value.',
-				'wpsso' ), SucomUtil::titleize( $mod[ 'post_type' ] ) );
+			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head, $mod, $auto_draft_msg );
 
-			return $form->get_md_form_rows( $table_rows, $form_rows, $head, $mod, $auto_draft_msg );
+			SucomUtil::add_before_key( $table_rows, 'og_art_section', 'wpsso-pro-feature-msg',
+				'<td colspan="2">' .
+				$this->p->msgs->get( 'pro-feature-msg' ) .
+				'</td>'
+			);
+
+			return $table_rows;
 		}
 	}
 }
