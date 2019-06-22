@@ -31,8 +31,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 */
 		protected function add_wp_hooks() {
 
-			$is_admin   = is_admin();
-			$doing_ajax = defined( 'DOING_AJAX' ) && DOING_AJAX ? true : false;
+			$is_admin   = is_admin();	// Only check once.
 			$cm_fb_name = $this->p->options[ 'plugin_cm_fb_name' ];
 
 			if ( ! SucomUtilWP::role_exists( 'person' ) ) {

@@ -33,8 +33,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		 */
 		protected function add_wp_hooks() {
 
-			$is_admin   = is_admin();
-			$doing_ajax = defined( 'DOING_AJAX' ) && DOING_AJAX ? true : false;
+			$is_admin = is_admin();	// Only check once.
 
 			if ( $is_admin ) {
 

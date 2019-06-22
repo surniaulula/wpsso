@@ -43,8 +43,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 */
 		protected function add_wp_hooks() {
 
-			$is_admin   = is_admin();
-			$doing_ajax = defined( 'DOING_AJAX' ) && DOING_AJAX ? true : false;
+			$is_admin = is_admin();	// Only check once.
 
 			if ( $is_admin ) {
 
@@ -91,7 +90,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Add the columns when doing AJAX as well to allow Quick Edit to add the required columns.
 			 */
-			if ( $is_admin || $doing_ajax ) {
+			if ( $is_admin || SucomUtil::get_const( 'DOING_AJAX' ) ) {
 
 				/**
 				 * Only use public post types (to avoid menu items, product variations, etc.).
@@ -1249,12 +1248,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function ajax_metabox_custom_meta() {
 
-			$doing_ajax     = defined( 'DOING_AJAX' ) ? DOING_AJAX : false;
-			$doing_autosave = defined( 'DOING_AUTOSAVE' ) ? DOING_AUTOSAVE : false;
-
-			if ( ! $doing_ajax ) {
+			if ( ! SucomUtil::get_const( 'DOING_AJAX' ) ) {
 				return;
-			} elseif ( $doing_autosave ) {
+			} elseif ( SucomUtil::get_const( 'DOING_AUTOSAVE' ) ) {
 				die( -1 );
 			}
 

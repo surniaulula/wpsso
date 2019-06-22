@@ -376,11 +376,10 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		public function get_metabox_javascript( $container_id ) {
 
-			$doing_ajax   = defined( 'DOING_AJAX' ) ? DOING_AJAX : false;
 			$container_id = empty( $container_id ) ? '' : '#' . $container_id;
 			$metabox_html = '';
 
-			if ( $doing_ajax ) {
+			if ( SucomUtil::get_const( 'DOING_AJAX' ) ) {
 				$metabox_html .= '<script type="text/javascript">
 					sucomInitAdminMedia( "' . $container_id . '" );
 					sucomInitMetabox( "' . $container_id . '" );

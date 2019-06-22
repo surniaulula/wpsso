@@ -663,9 +663,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public function ajax_dismiss_notice() {
 
-			$doing_ajax = defined( 'DOING_AJAX' ) ? DOING_AJAX : false;
-
-			if ( ! $doing_ajax ) {	// Just in case.
+			if ( ! SucomUtil::get_const( 'DOING_AJAX' ) ) {	// Just in case.
 				return;
 			}
 
@@ -708,12 +706,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public function ajax_get_notices_json() {
 
-			$doing_ajax     = defined( 'DOING_AJAX' ) ? DOING_AJAX : false;
-			$doing_autosave = defined( 'DOING_AUTOSAVE' ) ? DOING_AUTOSAVE : false;
-
-			if ( ! $doing_ajax ) {
+			if ( ! SucomUtil::get_const( 'DOING_AJAX' ) ) {
 				return;
-			} elseif ( $doing_autosave ) {
+			} elseif ( SucomUtil::get_const( 'DOING_AUTOSAVE' ) ) {
 				die( -1 );
 			}
 
