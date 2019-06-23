@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 5.0.0-b.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 5.0.0-rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4854,7 +4854,7 @@ msgid ""
 "dimensions of %s."
 msgstr ""
 
-#: lib/messages.php:1824
+#: lib/messages.php:1824 lib/messages.php:1844
 msgid ""
 "After purchasing the %1$s plugin or any complementary %2$s add-on, you'll "
 "receive an email with a unique Authentication ID for the plugin or add-on "
@@ -4871,13 +4871,6 @@ msgstr ""
 msgid ""
 "Don't forget that the %1$s add-on must be installed and active to check for "
 "%2$s version updates."
-msgstr ""
-
-#: lib/messages.php:1844
-msgid ""
-"After purchasing the %1$s plugin &mdash; or any of its %2$s add-ons &mdash; "
-"you'll receive an email with a unique Authentication ID for the plugin / add-"
-"on you purchased."
 msgstr ""
 
 #: lib/messages.php:1846
