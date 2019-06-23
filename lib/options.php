@@ -62,8 +62,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				$defs = $this->p->util->add_ptns_to_opts( $defs, array(
 					'og_type_for'     => 'article',
-					'schema_type_for' => 'webpage',
 					'plugin_add_to'   => 1,
+					'schema_type_for' => 'webpage',
 				) );
 
 				/**
@@ -406,8 +406,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				$opts = $this->p->util->add_ptns_to_opts( $opts, array(
-					'plugin_add_to'   => 1,
 					'og_type_for'     => 'article',
+					'plugin_add_to'   => 1,
 					'schema_type_for' => 'webpage',
 				) );
 
@@ -422,7 +422,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					'schema_type_for_tax' => 'item.list',
 				) );
 
-			} else {	// $opts is empty or not an array
+			} else {	// $opts is empty or not an array.
 
 				if ( false === $opts ) {
 					$error_msg = sprintf( __( 'WordPress could not find an entry for %s in the options table.', 'wpsso' ), $options_name );
