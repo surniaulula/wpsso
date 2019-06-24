@@ -1247,6 +1247,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 						switch ( $atts[ 'input_type' ] ) {
 
+							case 'radio':
+
+								break;
+
 							case 'text':
 
 								$input_value = $in_options ? $this->options[ $opt_key ] : '';

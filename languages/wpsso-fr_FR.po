@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 5.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-06-23 16:00-0700\n"
-"PO-Revision-Date: 2019-06-23 16:01-0700\n"
+"PO-Revision-Date: 2019-06-23 20:07-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -719,7 +719,7 @@ msgstr "Avez-vous envisagé d'acheter la version %s?"
 
 #: lib/admin.php:3184
 msgid "The %s version comes with a lot of extra features!"
-msgstr "La version% s comprend de nombreuses fonctionnalités supplémentaires!"
+msgstr "La version %s comprend de nombreuses fonctionnalités supplémentaires!"
 
 #: lib/admin.php:3324
 msgid "There is <a href=\"%1$s\">%2$d pending update for the %3$s plugin and/or its add-on(s)</a>."
@@ -4422,11 +4422,11 @@ msgstr "L'option ID d'authentification pour l'extension %1$s est vide."
 
 #: lib/messages.php:2115
 msgid "To enable %1$s version features and allow the plugin to authenticate itself for updates, please enter the unique Authentication ID you received by email in the %2$s settings page."
-msgstr "Pour activer les fonctionnalités %s et permettre l'extensions de s'authentifier pour des mises à jour, veuillez entrer l'ID d'authentification unique que vous avez reçu par courriel dans la page de réglages %s."
+msgstr "Pour activer les fonctionnalités %1$s et permettre l'extensions de s'authentifier pour des mises à jour, veuillez entrer l'ID d'authentification unique que vous avez reçu par courriel dans la page de réglages %2$s."
 
 #: lib/messages.php:2125
 msgid "An Authentication ID has been entered for %1$s but the plugin has not been installed &mdash; you can install and activate the %2$s version from the %3$s settings page."
-msgstr "Un ID d'authentification a été fourni pour %1$s mais l'extension n'a pas été installé &mdash; vous pouvez installer et activer la version %3$s de la page de réglages %3$s."
+msgstr "Un ID d'authentification a été fourni pour %1$s mais l'extension n'a pas été installé &mdash; vous pouvez installer et activer la version %2$s de la page de réglages %3$s."
 
 #: lib/messages.php:2134
 msgid "An Authentication ID has been entered for %1$s in the %2$s settings page but the %3$s version has not been installed &mdash; don't forget to update the plugin to install the latest %3$s version."
