@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '5.0.0-rc.1',	// Plugin version.
+					'version'     => '5.0.0',	// Plugin version.
 					'opt_version' => '643',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -1456,6 +1456,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'cf_md_multi' => array(
 					'schema_addl_type_url'      => true,	// Microdata Type URLs.
 					'schema_howto_step'         => array(	// How-To Step Name.
+						'schema_howto_step_section',	// How-To Section (checkbox).
 						'schema_howto_step_text',	// How-To Direction Text.
 					),
 					'schema_howto_supply'       => true,	// How-To Supplies.
@@ -1470,7 +1471,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '2.0.0-rc.1',	// Minimum update manager version (soft limit).
+				'rec_version' => '2.0.0',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',

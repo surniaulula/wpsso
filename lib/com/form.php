@@ -210,7 +210,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			/**
 			 * Use the "input_vertical_list" class to align the checbox input vertically.
 			 */
-			$html = '<div '.( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' ) . ' id="' . esc_attr( $input_id ) . '">' . "\n";
+			$html = '<div '.( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' ) .
+				' id="' . esc_attr( $input_id ) . '">' . "\n";
 
 			foreach ( $values as $name_suffix => $label ) {
 
@@ -305,7 +306,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			/**
 			 * Use the "input_vertical_list" class to align the radio input buttons vertically.
 			 */
-			$html = '<div '.( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' ) . ' id="' . esc_attr( $input_id ) . '">' . "\n";
+			$html = '<div ' . ( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' ) .
+				' id="' . esc_attr( $input_id ) . '">' . "\n";
 
 			foreach ( $values as $val => $label ) {
 
@@ -1222,9 +1224,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$in_options  = $this->in_options( $opt_key );	// Optimize and call only once.
 					$in_defaults = $this->in_defaults( $opt_key );	// Optimize and call only once.
 
-					$input_title = empty( $atts[ 'input_title' ] ) ? '' : $atts[ 'input_title' ];
-					$input_class = empty( $atts[ 'input_class' ] ) ? 'multi input_num' : 'multi ' . $atts[ 'input_class' ] . ' input_num';
-					$input_id    = empty( $atts[ 'input_id' ] ) ? $opt_key : $atts[ 'input_id' ] . '_' . $key_num;
+					$input_title   = empty( $atts[ 'input_title' ] ) ? '' : $atts[ 'input_title' ];
+					$input_class   = empty( $atts[ 'input_class' ] ) ? 'multi input_num' : 'multi ' . $atts[ 'input_class' ] . ' input_num';
+					$input_id      = empty( $atts[ 'input_id' ] ) ? $opt_key : $atts[ 'input_id' ] . '_' . $key_num;
+					$input_content = empty( $atts[ 'input_content' ] ) ? '' : $atts[ 'input_content' ];
+					$input_values  = empty( $atts[ 'input_values' ] ) ? array() : $atts[ 'input_values' ];
 
 					if ( isset( $atts[ 'placeholder' ] ) ) {
 						$placeholder = $this->get_placeholder_sanitized( $opt_key, $atts[ 'placeholder' ] );
@@ -1248,6 +1252,36 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						switch ( $atts[ 'input_type' ] ) {
 
 							case 'radio':
+
+								$radio_inputs = array();
+
+								foreach ( $input_values as $input_value ) {
+
+									if ( $in_options ) {
+										$input_checked = checked( $this->options[ $opt_key ], $input_value, false );
+									} elseif ( isset( $atts[ 'input_default' ] ) ) {
+										$input_checked = checked( $atts[ 'input_default' ], $input_value, false );
+									} elseif ( $in_defaults ) {
+										$input_checked = checked( $this->defaults[ $opt_key ], $input_value, false );
+									} else {
+										$input_checked = '';
+									}
+
+									$input_name_value = ' name="' . esc_attr( $this->opts_name . '[' . $opt_key . ']' ) . '" ' .
+										'value="' . esc_attr( $input_value ) . '"';
+
+									$radio_inputs[] = '<input type="radio"' .
+										( $opt_disabled ? ' disabled="disabled"' : $input_name_value ) .
+										$input_checked . '/>';
+								}
+
+								if ( ! empty( $radio_inputs ) ) {
+									$html .= '<p' .
+										' class="' . esc_attr( $input_class ) . '"' .
+										' id="' . esc_attr( $input_id ) . '">' .
+										vsprintf( $atts[ 'input_content' ], $radio_inputs ) .
+										'</p>';
+								}
 
 								break;
 
