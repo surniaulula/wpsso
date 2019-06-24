@@ -1742,7 +1742,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '<table class="sucom-settings ' . $this->p->lca . ' column-metabox module-status">';
 
 			/**
-			 * Pro / Premium version features.
+			 * Premium version features.
 			 */
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
@@ -2157,7 +2157,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$ext_sorted = WpssoConfig::get_ext_sorted();
 
 			foreach ( $ext_sorted as $ext => $info ) {
-				if ( empty( $info[ 'update_auth' ] ) ) {	// Only show plugins with Pro / Premium versions.
+				if ( empty( $info[ 'update_auth' ] ) ) {	// Only show plugins with Premium versions.
 					unset( $ext_sorted[ $ext ] );
 				}
 			}
