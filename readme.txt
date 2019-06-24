@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires At Least: 3.8
 Tested Up To: 5.2.1
 WC Tested Up To: 3.6
-Stable Tag: 4.31.4
+Stable Tag: 5.0.0
 
 WPSSO Core makes sure your content looks great on all social and search sites, no matter how URLs are crawled, shared, re-shared, posted or embedded!
 
@@ -534,8 +534,4 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 5.0.0 =
 
 (2019/06/24) Removed support for the Yotpo Social Reviews for WooCommerce plugin. Added checks for missing WooCommerce pages. Added an action hook to remove duplicate JSON-LD markup in AMP pages from the Yoast SEO plugin. Renamed the 'gpl' library sub-folder to 'std'.
-
-= 4.31.4 =
-
-(2019/06/14) Removed the WooCommerce `$product` global variable consistency check (Pro / Premium version).
 
