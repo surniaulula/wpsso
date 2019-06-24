@@ -440,13 +440,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$crawler_name = SucomUtil::get_crawler_name();
 			}
 
-			$has_pdir    = $this->p->avail[ '*' ][ 'p_dir' ];
-			$has_pp      = $this->p->check->pp( $this->p->lca, true, $has_pdir );
+			$mt_og       = apply_filters( $this->p->lca . '_og_seed', $mt_og, $mod );
+			$has_pp      = $this->p->check->pp();
 			$max_nums    = $this->p->util->get_max_nums( $mod );
 			$post_id     = $mod[ 'is_post' ] ? $mod[ 'id' ] : false;
 			$check_dupes = true;
 			$prev_count  = 0;
-			$mt_og       = apply_filters( $this->p->lca . '_og_seed', $mt_og, $mod );
 
 			if ( ! empty( $mt_og ) ) {
 				if ( $this->p->debug->enabled ) {
@@ -568,7 +567,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 *
 			 * Call before getting all images to find / use preview images.
 			 */
-			if ( ! isset( $mt_og[ 'og:video' ] ) && $has_pp ) {
+			if ( $has_pp && ! isset( $mt_og[ 'og:video' ] ) ) {
 
 				if ( empty( $max_nums[ 'og_vid_max' ] ) ) {
 
@@ -949,8 +948,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			$og_ret   = array();
-			$has_pdir = $this->p->avail[ '*' ][ 'p_dir' ];
-			$has_pp   = $this->p->check->pp( $this->p->lca, true, $has_pdir );
+			$has_pp   = $this->p->check->pp();
 			$use_prev = $this->p->options[ 'og_vid_prev_img' ];		// default option value is true/false
 			$num_diff = SucomUtil::count_diff( $og_ret, $num );
 
@@ -1262,8 +1260,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			$ret       = array();
-			$has_pdir  = $this->p->avail[ '*' ][ 'p_dir' ];
-			$has_pp    = $this->p->check->pp( $this->p->lca, true, $has_pdir );
+			$has_pp    = $this->p->check->pp();
 			$og_images = null;
 			$og_videos = null;
 
@@ -1282,7 +1279,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					case ( preg_match( '/^(vid|prev)/', $key ) ? true : false ):
 
-						if ( null === $og_videos && $has_pp ) {	// Get videos only once.
+						if ( $has_pp && null === $og_videos ) {	// Get videos only once.
 							$og_videos = $this->get_all_videos( 1, $mod, false, $md_pre );	// $check_dupes is false.
 						}
 

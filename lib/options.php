@@ -292,7 +292,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				if ( ! $network ) {
 
-					if ( ! $this->p->check->pp( $this->p->lca, false, $this->p->avail[ '*' ][ 'p_dir' ] ) ) {
+					if ( ! $this->p->check->pp( $this->p->lca, false ) ) {
 
 						if ( ! $has_new_options && $has_diff_version && empty( $opts[ 'plugin_' . $this->p->lca . '_tid' ] ) ) {
 

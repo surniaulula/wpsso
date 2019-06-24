@@ -43,7 +43,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			$jetpack_mods = method_exists( 'Jetpack', 'get_active_modules' ) ? Jetpack::get_active_modules() : array();
 			$get_avail    = array();	// Initialize the array to return.
 
-			foreach ( array( 'featured', 'amp', 'p_dir', 'head_html', 'vary_ua' ) as $key ) {
+			foreach ( array( 'featured', 'amp', 'head_html', 'vary_ua' ) as $key ) {
 				$get_avail[ '*' ][ $key ] = $this->is_avail( $key );
 			}
 
@@ -397,13 +397,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 					break;
 
-				case 'p_dir':
-
-					$is_avail = ! SucomUtil::get_const( 'WPSSO_PRO_DISABLE' ) &&
-						is_dir( WPSSO_PLUGINDIR . 'lib/pro/' ) ? true : false;
-
-					break;
-
 				case 'head_html':
 
 					$is_avail = ! SucomUtil::get_const( 'WPSSO_HEAD_HTML_DISABLE' ) &&
@@ -434,50 +427,54 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 		public function is_pp( $ext = '', $uc = true ) {
 
-			return $this->pp( $ext, true, ( isset( $this->p->avail[ '*' ][ 'p_dir' ] ) ?
-				$this->p->avail[ '*' ][ 'p_dir' ] : $this->is_avail( 'p_dir' ) ), $uc );
+			return $this->pp( $ext, true, true, $uc );
 		}
 
-		public function pp( $ext = '', $lic = true, $rv = true, $uc = true ) {
+		public function pp( $ext = '', $li = true, $rv = true, $uc = true ) {
 
 			$ext = empty( $ext ) ? $this->p->lca : $ext;
-			$key = $ext . '-' . $lic . '-' . $rv;
+			$cid = $ext . '-' . $li . '-' . $rv;
 
-			if ( $uc && isset( self::$pp_c[ $key ] ) ) {
-				return self::$pp_c[ $key ];
+			if ( $uc && isset( self::$pp_c[ $cid ] ) ) {
+				return self::$pp_c[ $cid ];
 			}
 
 			$uca = strtoupper( $ext );
 
-			if ( defined( $uca . '_PLUGINDIR' ) ) {
+			if ( defined( 'WPSSO_PRO_DISABLE' ) && WPSSO_PRO_DISABLE ) {
 
-				$pdir = constant( $uca . '_PLUGINDIR' );
+				return self::$pp_c[ $cid ] = false;
+
+			} elseif ( defined( $uca . '_PLUGINDIR' ) ) {
+
+				$dir = constant( $uca . '_PLUGINDIR' );
 
 			} elseif ( isset( $this->p->cf[ 'plugin' ][ $ext ][ 'slug' ] ) ) {
 
 				$slug = $this->p->cf[ 'plugin' ][ $ext ][ 'slug' ];
 
 				if ( ! defined ( 'WPMU_PLUGIN_DIR' ) ||
-					! is_dir( $pdir = WPMU_PLUGIN_DIR . '/' . $slug . '/' ) ) {
+					! is_dir( $dir = WPMU_PLUGIN_DIR . '/' . $slug . '/' ) ) {
 
 					if ( ! defined ( 'WP_PLUGIN_DIR' ) ||
-						! is_dir( $pdir = WP_PLUGIN_DIR . '/' . $slug . '/' ) ) {
-						return self::$pp_c[ $key ] = false;
+						! is_dir( $dir = WP_PLUGIN_DIR . '/' . $slug . '/' ) ) {
+
+						return self::$pp_c[ $cid ] = false;
 					}
 				}
 
 			} else {
-				return self::$pp_c[ $key ] = false;
+				return self::$pp_c[ $cid ] = false;
 			}
 
-			$key = 'plugin_' . $ext . '_tid';
-			$ins = is_dir( $pdir . 'lib/pro/' ) ? $rv : false;
+			$okey = 'plugin_' . $ext . '_tid';
+			$pdir = is_dir( $dir . 'lib/pro/' ) ? $rv : false;
 
-			return self::$pp_c[ $key ] = true === $lic ?
-				( ( ! empty( $this->p->options[ $key ] ) &&
-					$ins && class_exists( 'SucomUpdate' ) &&
-						( $uerr = SucomUpdate::get_umsg( $ext ) ?
-							false : $ins ) ) ? $uerr : false ) : $ins;
+			return self::$pp_c[ $cid ] = $li ?
+				( ( ! empty( $this->p->options[ $okey ] ) &&
+					$pdir && class_exists( 'SucomUpdate' ) &&
+						( $ue = SucomUpdate::get_umsg( $ext ) ?
+							false : $pdir ) ) ? $ue : false ) : $pdir;
 		}
 
 		public function get_ext_list() {
@@ -489,8 +486,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			}
 
 			$ext_list = array();
-			$has_pdir = $this->p->avail[ '*' ][ 'p_dir' ];
-			$has_pp   = $this->pp( $this->p->lca, true, $has_pdir );
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
@@ -498,12 +493,11 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 					continue;
 				}
 
-				$ext_pdir     = $this->pp( $ext, false, $has_pdir );
-				$ext_auth_id  = $this->get_ext_auth_id( $ext );
-				$ext_pp       = $has_pp && $ext_auth_id && $this->pp( $ext, true, WPSSO_UNDEF ) === WPSSO_UNDEF ? true : false;
-				$ext_stat     = ( $ext_pp ? 'L' : ( $ext_pdir ? 'U' : 'F' ) ) . ( $ext_auth_id ? '*' : '' );
-
-				$ext_list[] = $info[ 'short' ] . ' ' . $info[ 'version' ] . '/' . $ext_stat;
+				$ext_pdir    = $this->pp( $ext, false );
+				$ext_auth_id = $this->get_ext_auth_id( $ext );
+				$ext_pp      = $ext_auth_id && $this->pp( $ext, true, WPSSO_UNDEF ) === WPSSO_UNDEF ? true : false;
+				$ext_stat    = ( $ext_pp ? 'L' : ( $ext_pdir ? 'U' : 'F' ) ) . ( $ext_auth_id ? '*' : '' );
+				$ext_list[]  = $info[ 'short' ] . ' ' . $info[ 'version' ] . '/' . $ext_stat;
 			}
 
 			return $ext_list;

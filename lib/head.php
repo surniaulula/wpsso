@@ -455,20 +455,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 
 				$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $this->p->options[ $cache_opt_key ] );
-
-				if ( $cache_exp_secs > DAY_IN_SECONDS ) {
-
-					if ( $this->p->avail[ '*' ][ 'p_dir' ] && ! $this->p->check->pp() ) {
-
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'setting cache expiration to ' . DAY_IN_SECONDS . ' seconds' );
-						}
-
-						$cache_exp_secs = DAY_IN_SECONDS;
-
-						SucomUtil::check_transient_timeout( $cache_id, $cache_exp_secs );
-					}
-				}
 			}
 
 			if ( $this->p->debug->enabled ) {

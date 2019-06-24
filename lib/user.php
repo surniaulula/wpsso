@@ -824,13 +824,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function add_contact_methods( $fields = array(), $user = null ) {
 
-			$has_pdir = $this->p->avail[ '*' ][ 'p_dir' ];
-			$has_pp   = $this->p->check->pp( $this->p->lca, true, $has_pdir );
-
 			/**
 			 * Unset built-in contact fields and/or update their labels.
 			 */
-			if ( ! empty( $this->p->cf[ 'wp' ][ 'cm_names' ] ) && is_array( $this->p->cf[ 'wp' ][ 'cm_names' ] ) && $has_pp ) {
+			if ( ! empty( $this->p->cf[ 'wp' ][ 'cm_names' ] ) && is_array( $this->p->cf[ 'wp' ][ 'cm_names' ] ) ) {
 
 				foreach ( $this->p->cf[ 'wp' ][ 'cm_names' ] as $id => $desc ) {
 

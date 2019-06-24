@@ -194,14 +194,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return;
 			}
 
-			$has_pdir = $this->p->avail[ '*' ][ 'p_dir' ];
-			$has_pp   = $this->p->check->pp( $this->p->lca, true, $has_pdir );
-
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				$ext_pdir    = $this->p->check->pp( $ext, false, $has_pdir );
+				$ext_pdir    = $this->p->check->pp( $ext, false );
 				$ext_auth_id = $this->p->check->get_ext_auth_id( $ext );
-				$ext_pp      = $has_pp && $ext_auth_id && $this->p->check->pp( $ext, true, WPSSO_UNDEF ) === WPSSO_UNDEF ? true : false;
+				$ext_pp      = $ext_auth_id && $this->p->check->pp( $ext, true, WPSSO_UNDEF ) === WPSSO_UNDEF ? true : false;
 				$ext_stat    = ( $ext_pp ? 'L' : ( $ext_pdir ? 'U' : 'F' ) ) . ( $ext_auth_id ? '*' : '' );
 
 				self::$pkg[ $ext ][ 'pdir' ]  = $ext_pdir;
@@ -3200,17 +3197,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function required_notices() {
 
-			$has_pdir = $this->p->avail[ '*' ][ 'p_dir' ];
 			$version  = $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'version' ];
 			$um_info  = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
 			$have_tid = false;
-
-			if ( $has_pdir && empty( $this->p->options[ 'plugin_' . $this->p->lca . '_tid' ] ) &&
-				( empty( $this->p->options[ 'plugin_' . $this->p->lca . '_tid:is' ] ) ||
-					$this->p->options[ 'plugin_' . $this->p->lca . '_tid:is' ] !== 'disabled' ) ) {
-
-				$this->p->notice->nag( $this->p->msgs->get( 'notice-pro-tid-missing' ) );
-			}
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
@@ -3223,10 +3212,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					 * Skip individual warnings and show nag to install the update manager.
 					 */
 					if ( empty( $um_info[ 'version' ] ) ) {
+
 						break;
+
 					} else {
+
 						if ( ! self::$pkg[ $ext ][ 'pdir' ] ) {
+
 							if ( ! empty( $info[ 'base' ] ) && ! SucomPlugin::is_plugin_installed( $info[ 'base' ], $use_cache = true ) ) {
+
 								$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-installed', array( 'lca' => $ext ) ) );
 							} else {
 								$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-updated', array( 'lca' => $ext ) ) );
@@ -3243,6 +3237,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$um_rec_version = WpssoConfig::$cf[ 'um' ][ 'rec_version' ];
 
 					if ( version_compare( $um_info[ 'version' ], $um_rec_version, '<' ) ) {
+
 						$this->p->notice->err( $this->p->msgs->get( 'notice-um-version-recommended',
 							array( 'um_rec_version' => $um_rec_version ) ) );
 					}

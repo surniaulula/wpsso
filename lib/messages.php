@@ -2105,18 +2105,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						break;
 
-					case 'notice-pro-tid-missing':
-
-						if ( ! is_multisite() ) {
-
-							$settings_page_link = $this->p->util->get_admin_url( 'licenses',
-								_x( 'Licenses', 'lib file description', 'wpsso' ) );
-
-							$text = '<p><b>' . sprintf( __( 'The %1$s plugin Authentication ID option is empty.', 'wpsso' ), $info[ 'name' ] ) . '</b><br/>' . sprintf( __( 'To enable %1$s version features and allow the plugin to authenticate itself for updates, please enter the unique Authentication ID you received by email in the %2$s settings page.', 'wpsso' ), $pro_transl, $settings_page_link ) . '</p>';
-						}
-
-						break;
-
 					case 'notice-pro-not-installed':
 
 						$settings_page_link = $this->p->util->get_admin_url( 'licenses',

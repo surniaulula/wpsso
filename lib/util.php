@@ -576,8 +576,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$use_post = in_the_loop() ? true : false;				// Use the $post object inside the loop.
 			$use_post = apply_filters( $this->p->lca . '_use_post', $use_post );	// Used by woocommerce with is_shop().
-			$has_pdir = $this->p->avail[ '*' ][ 'p_dir' ];
-			$has_pp   = $this->p->check->pp( $this->p->lca, true, $has_pdir );
 
 			/**
 			 * The $mod array argument is preferred but not required.
@@ -610,7 +608,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$this->p->debug->log( 'module name is unknown' );
 				}
 
-			} elseif ( ! empty( $mod[ 'id' ] ) && ! empty( $mod[ 'obj' ] ) && $has_pp ) {
+			} elseif ( ! empty( $mod[ 'id' ] ) && ! empty( $mod[ 'obj' ] ) ) {
 
 				/**
 			 	 * Custom filters may use image sizes, so don't filter/cache the meta options.
@@ -3550,15 +3548,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( 0 === $count_rows ) {
 				
-				if ( ! $this->p->check->pp( $this->p->lca, true, $this->p->avail[ '*' ][ 'p_dir' ] ) ) {
-					$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_settings',
-						__( 'Have you hidden the Pro options?', 'wpsso' ) );
-				} else {
-					$settings_page_link = '';
-				}
-
-				$table_rows[] = '<tr><td align="center"><p><em>' . __( 'No options available.', 'wpsso' ) . ' ' .
-					$settings_page_link . '</em></p></td></tr>';
+				$table_rows[] = '<tr><td align="center"><p><em>' . __( 'No options available.', 'wpsso' ) . '</em></p></td></tr>';
 
 				$count_rows++;
 			}
