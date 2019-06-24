@@ -348,7 +348,6 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 * [Why does Facebook play videos instead of linking them?](https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-play-videos-instead-of-linking-them/)
 * [Why does Facebook show the wrong image / text?](https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/)
 * [Why does Google Structured Data Testing Tool show errors?](https://wpsso.com/docs/plugins/wpsso/faqs/why-does-google-structured-data-testing-tool-show-errors/)
-* [Why don't my Twitter Cards show on Twitter?](https://wpsso.com/docs/plugins/wpsso/faqs/why-dont-my-twitter-cards-show-on-twitter/)
 * [Why is the Open Graph title the same for every webpage?](https://wpsso.com/docs/plugins/wpsso/faqs/why-is-the-open-graph-title-the-same-for-every-webpage/)
 * [Why shouldn't I upload small images to the Media library?](https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/)
 
@@ -365,7 +364,6 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 	* [The Events Calendar](https://wpsso.com/docs/plugins/wpsso/notes/modules/the-events-calendar/)
 	* [WooCommerce](https://wpsso.com/docs/plugins/wpsso/notes/modules/woocommerce/)
 	* [Yoast SEO (aka WordPress SEO)](https://wpsso.com/docs/plugins/wpsso/notes/modules/yoast-seo-aka-wordpress-seo/)
-* [Contact Information and Feeds](https://wpsso.com/docs/plugins/wpsso/notes/contact-information/)
 * [Developer Resources](https://wpsso.com/docs/plugins/wpsso/notes/developer/)
 	* [Constants](https://wpsso.com/docs/plugins/wpsso/notes/developer/constants/)
 		* [All Constants](https://wpsso.com/docs/plugins/wpsso/notes/developer/constants/all/)
@@ -379,7 +377,6 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 			* [Modify the Default Article Topics List](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-default-topics-list/)
 			* [Modify the Home Page Title for Facebook / Open Graph](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-home-page-title-for-facebook-open-graph/)
 			* [Modify the Sharing URL](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-sharing-url/)
-			* [Read / Import Yoast SEO Social Meta](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/read-import-yoast-seo-social-meta/)
 			* [Remove / Fix 'hentry' Errors in your Theme Templates](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/remove-hentry-from-theme-templates/)
 			* [Strip Additional Shortcodes](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/strip-additional-shortcodes/)
 			* [Use the REQUEST_URI for Post URLs](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/use-the-request_uri-for-post-urls/)

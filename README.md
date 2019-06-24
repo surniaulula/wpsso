@@ -413,7 +413,6 @@
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-play-videos-instead-of-linking-them/">Why does Facebook play videos instead of linking them?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/">Why does Facebook show the wrong image / text?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-does-google-structured-data-testing-tool-show-errors/">Why does Google Structured Data Testing Tool show errors?</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-dont-my-twitter-cards-show-on-twitter/">Why don't my Twitter Cards show on Twitter?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-is-the-open-graph-title-the-same-for-every-webpage/">Why is the Open Graph title the same for every webpage?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/">Why shouldn't I upload small images to the Media library?</a></li>
 </ul>
@@ -435,7 +434,6 @@
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/modules/woocommerce/">WooCommerce</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/modules/yoast-seo-aka-wordpress-seo/">Yoast SEO (aka WordPress SEO)</a></li>
 </ul></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/notes/contact-information/">Contact Information and Feeds</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/">Developer Resources</a>
 
 <ul>
@@ -458,7 +456,6 @@
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-default-topics-list/">Modify the Default Article Topics List</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-home-page-title-for-facebook-open-graph/">Modify the Home Page Title for Facebook / Open Graph</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-sharing-url/">Modify the Sharing URL</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/read-import-yoast-seo-social-meta/">Read / Import Yoast SEO Social Meta</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/remove-hentry-from-theme-templates/">Remove / Fix 'hentry' Errors in your Theme Templates</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/strip-additional-shortcodes/">Strip Additional Shortcodes</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/use-the-request_uri-for-post-urls/">Use the REQUEST_URI for Post URLs</a></li>
