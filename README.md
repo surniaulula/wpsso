@@ -59,7 +59,7 @@
 <li><p>Customizable image dimensions for Facebook / Open Graph, Schema markup, Google Rich Results SEO, Pinterest Rich Pins, and Twitter Cards.</p></li>
 <li><p>Contextual help for <em>every</em> plugin option and <a href="https://wpsso.com/docs/plugins/wpsso/">comprehensive online documentation</a>.</p></li>
 <li><p>Built-in support for <a href="https://wordpress.org/plugins/amp/">Accelerated Mobile Pages (AMP)</a> and <a href="https://wordpress.org/plugins/accelerated-mobile-pages/">AMP for WP - Accelerated Mobile Pages</a> plugins.</p></li>
-<li><p>Supports advanced WordPress configurations, including WordPress Network / Multisite installations and WordPress MU Domain Mapping.</p></li>
+<li><p>Supports advanced WordPress configurations, including <a href="https://wpsso.com/docs/plugins/wpsso/notes/multisite-network-support/">WordPress Network / Multisite installations</a> and WordPress MU Domain Mapping.</p></li>
 <li><p>Includes advanced <em>quality assurance</em> features and options.</p></li>
 <li><p>Offers an option to easily hide the preview of Pro settings and features. ;-)</p></li>
 </ul>

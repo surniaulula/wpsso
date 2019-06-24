@@ -66,7 +66,7 @@ WPSSO Core and its optional Free add-ons offer meta tags and Schema markup for F
 
 * Built-in support for [Accelerated Mobile Pages (AMP)](https://wordpress.org/plugins/amp/) and [AMP for WP - Accelerated Mobile Pages](https://wordpress.org/plugins/accelerated-mobile-pages/) plugins.
 
-* Supports advanced WordPress configurations, including WordPress Network / Multisite installations and WordPress MU Domain Mapping.
+* Supports advanced WordPress configurations, including [WordPress Network / Multisite installations](https://wpsso.com/docs/plugins/wpsso/notes/multisite-network-support/) and WordPress MU Domain Mapping.
 
 * Includes advanced *quality assurance* features and options.
 
@@ -430,7 +430,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.0.0-rc.1 (2019/06/23)**
+**Version 5.0.0 (2019/06/24)**
 
 * *New Features*
 	* None.
@@ -531,9 +531,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 5.0.0-rc.1 =
+= 5.0.0 =
 
-(2019/06/23) Removed support for the Yotpo Social Reviews for WooCommerce plugin. Added checks for missing WooCommerce pages. Added an action hook to remove duplicate JSON-LD markup in AMP pages from the Yoast SEO plugin. Renamed the 'gpl' library sub-folder to 'std'.
+(2019/06/24) Removed support for the Yotpo Social Reviews for WooCommerce plugin. Added checks for missing WooCommerce pages. Added an action hook to remove duplicate JSON-LD markup in AMP pages from the Yoast SEO plugin. Renamed the 'gpl' library sub-folder to 'std'.
 
 = 4.31.4 =
 
