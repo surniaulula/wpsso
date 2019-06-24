@@ -1382,8 +1382,8 @@ msgstr ""
 #: lib/gettext-config.php:55
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core add-on provides updates for the WPSSO Core Pro plugin and its "
-"complementary Pro add-ons."
+"WPSSO Core add-on provides updates for the WPSSO Core Premium plugin and its "
+"complementary Premium add-ons."
 msgstr ""
 
 #: lib/gettext-config.php:56
