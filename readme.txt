@@ -31,7 +31,7 @@ WPSSO Core is also language / locale aware, which means you can customize your s
 
 **Creates *complete and accurate* meta tags and Schema markup:**
 
-WPSSO Core and its optional complimentary add-ons offer meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph, Google Rich Results SEO ([complimentary add-on](https://wordpress.org/plugins/wpsso-schema-json-ld/)), Google Merchant, Mobile Web Browsers, Pinterest Rich Pins, Twitter Cards, Weibo and many more &mdash; including complete markup for images, videos, extensive e-Commerce product markup (for WooCommerce and others), mobile apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content!
+WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph, Google Rich Results SEO (see the [WPSSO JSON add-on](https://wordpress.org/plugins/wpsso-schema-json-ld/)), Google Merchant, Mobile Web Browsers, Pinterest Rich Pins, Twitter Cards, Weibo and many more &mdash; including complete markup for image SEO, video SEO, extensive e-Commerce product markup (for WooCommerce and others), mobile apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content!
 
 **Includes advanced *quality assurance* features and options:**
 
@@ -93,6 +93,7 @@ WPSSO Core and its optional complimentary add-ons offer meta tags and Schema mar
 * Customize default values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags), custom post types, and user profiles:
 
 	* Customize Text
+		* Open Graph Type
 		* Article Topic
 		* Default Title
 		* Default Description
@@ -143,6 +144,7 @@ WPSSO Core and its optional complimentary add-ons offer meta tags and Schema mar
 * Additional custom Schema options are available from the [WPSSO Schema JSON-LD Markup Premium add-on](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/):
 
 	* All Schema Types
+		* Schema Type
 		* Name / Title
 		* Alternate Name
 		* Description
