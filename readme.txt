@@ -70,8 +70,6 @@ WPSSO Core and its optional complimentary add-ons offer meta tags and Schema mar
 
 * Includes advanced *quality assurance* features and options.
 
-* Offers an option to easily hide the preview of Pro settings and features. ;-)
-
 <h3>Complementary Add-ons</h3>
 
 * [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
@@ -141,7 +139,7 @@ WPSSO Core and its optional complimentary add-ons offer meta tags and Schema mar
 			* Image ID
 			* or Image URL
 
-* Additional custom Schema property options are also available from the [WPSSO Schema JSON-LD Markup Pro](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) add-on:
+* Additional custom Schema options are available from the [WPSSO Schema JSON-LD Markup Premium add-on](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/):
 
 	* All Schema Types
 		* Schema Type
@@ -250,7 +248,7 @@ WPSSO Core and its optional complimentary add-ons offer meta tags and Schema mar
 
 * Integrates with services and 3rd party plugins for additional image, video, e-Commerce product details, SEO settings, and more.
 
-* The following integration modules are provided with the Pro / Premium version, and are automatically loaded when the supported services are required or 3rd party plugins detected.
+* The following integration modules are provided with the Premium plugin, and are automatically loaded when the supported services are required or 3rd party plugins detected.
 
 	* **Integration with Service APIs:**
 
@@ -301,7 +299,7 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 
 <h3>Highly Customizable</h3>
 
-WPSSO Core offers hundreds of filter hooks to customize its behavior and output, provides extensive developer documentation with examples, includes dozens of 3rd party integration modules in the Pro / Premium version, and offers several optional complimentary and Premium add-ons to extend WPSSO Core's functionality.
+WPSSO Core offers hundreds of filter hooks to customize its behavior and output, provides extensive developer documentation with examples, includes dozens of 3rd party integration modules in the Premium plugin, and offers several optional complimentary and Premium add-ons to extend WPSSO Core's functionality.
 
 == Installation ==
 
@@ -325,7 +323,7 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 
 <h3 class="top">Frequently Asked Questions</h3>
 
-* [Can I use the Pro / Premium version on multiple websites?](https://wpsso.com/docs/plugins/wpsso/faqs/can-i-use-the-pro-version-on-multiple-websites/)
+* [Can I use the Premium plugin on multiple websites?](https://wpsso.com/docs/plugins/wpsso/faqs/can-i-use-the-pro-version-on-multiple-websites/)
 * [Does LinkedIn read the Open Graph meta tags?](https://wpsso.com/docs/plugins/wpsso/faqs/does-linkedin-read-the-open-graph-meta-tags/)
 * [Doesn't an SEO plugin cover that?](https://wpsso.com/docs/plugins/wpsso/faqs/doesnt-an-seo-plugin-cover-that/)
 * [How can I add Schema aggregateRating values?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-add-schema-aggregaterating-values/)
@@ -339,7 +337,7 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 * [How do I attach an image without showing it on the webpage?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-attach-an-image-without-showing-it-on-the-webpage/)
 * [How do I fix Google Structured Data &gt; hatom errors?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-google-structured-data-hatom-errors/)
 * [How do I fix my theme's front page pagination?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-my-themes-front-page-pagination/)
-* [How do I install the WPSSO Core Pro / Premium version?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-install-the-wpsso-pro-version/)
+* [How do I install the WPSSO Core Premium plugin?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-install-the-wpsso-pro-version/)
 * [How do I remove duplicate meta tags?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-remove-duplicate-meta-tags/)
 * [How does WPSSO Core find / detect / select images?](https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/)
 * [How does WPSSO Core find / detect / select videos?](https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-videos/)
@@ -353,7 +351,7 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 
 <h3>Advanced Documentation and Notes</h3>
 
-* [About WPSSO Core Pro Integration Modules](https://wpsso.com/docs/plugins/wpsso/notes/modules/)
+* [About WPSSO Core Premium Integration Modules](https://wpsso.com/docs/plugins/wpsso/notes/modules/)
 	* [Author Gravatar](https://wpsso.com/docs/plugins/wpsso/notes/modules/author-gravatar/)
 	* [Co-Author Plus](https://wpsso.com/docs/plugins/wpsso/notes/modules/co-author-plus/)
 	* [Easy Digital Downloads](https://wpsso.com/docs/plugins/wpsso/notes/modules/easy-digital-downloads/)
@@ -419,9 +417,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * [GitHub](https://surniaulula.github.io/wpsso/)
 * [WordPress.org](https://plugins.trac.wordpress.org/browser/wpsso/)
 
-<h3>Development Updates for Pro / Premium Version</h3>
+<h3>Development Updates for Premium Version</h3>
 
-<p>Development, alpha, beta, and release candidate updates are available to Pro / Premium version customers.</p>
+<p>Development, alpha, beta, and release candidate updates are available to Premium plugin customers.</p>
 
 <p>Under the SSO &gt; Update Manager settings page, select the "Development and Up" version filter for WPSSO Core and all its extensions (to satisfy any version dependencies). Save the plugin settings, and click the "Check for Updates" button to fetch the latest / current WPSSO version information. When new Development versions are available, they will automatically appear under your WordPress Dashboard &gt; Updates page. You can always re-select the "Stable / Production" version filter at any time to re-install the last stable / production version of a plugin.</p>
 
@@ -433,7 +431,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * *Improvements*
 	* Removed support for the Yotpo Social Reviews for WooCommerce plugin (too many bad reviews and too few active installations).
-	* Added checks for missing WooCommerce "My account page", "Cart page", "Checkout page", and "Shop page" selections (Pro / Premium version).
+	* Added checks for missing WooCommerce "My account page", "Cart page", "Checkout page", and "Shop page" selections (Premium plugin).
 	* Added an action hook to remove duplicate JSON-LD markup in AMP pages from the Yoast SEO plugin.
 	* Added new Schema Article sub-types:
 		* https://schema.org/APIReference
@@ -460,7 +458,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None.
 * *Improvements*
-	* Removed the WooCommerce `$product` global variable consistency check (Pro / Premium version).
+	* Removed the WooCommerce `$product` global variable consistency check (Premium plugin).
 * *Bugfixes*
 	* None.
 * *Developer Notes*
