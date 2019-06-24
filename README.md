@@ -81,7 +81,7 @@
 <li><a href="https://wordpress.org/plugins/wpsso-user-locale">WPSSO User Locale Selector</a> to switch languages quickly and easily.</li>
 </ul>
 
-<h3>WPSSO Core Pro / Premium Features</h3>
+<h3>WPSSO Core Premium Features</h3>
 
 <ul>
 <li><p>Customize default values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags), custom post types, and user profiles:</p>

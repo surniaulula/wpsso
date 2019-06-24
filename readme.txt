@@ -86,7 +86,7 @@ WPSSO Core and its optional complimentary add-ons offer meta tags and Schema mar
 * [WPSSO Tweet a Quote](https://wordpress.org/plugins/wpsso-tweet-a-quote) to add tweetable quotes to your content.
 * [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale) to switch languages quickly and easily.
 
-<h3>WPSSO Core Pro / Premium Features</h3>
+<h3>WPSSO Core Premium Features</h3>
 
 * Customize default values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags), custom post types, and user profiles:
 
@@ -412,12 +412,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * {bugfix} = Backwards-compatible bug fixes or small improvements.
 * {stage}.{level} = Pre-production release: dev &lt; a (alpha) &lt; b (beta) &lt; rc (release candidate).
 
-<h3>Free / Standard Version Repositories</h3>
+<h3>Free / Standard Add-on Repositories</h3>
 
 * [GitHub](https://surniaulula.github.io/wpsso/)
 * [WordPress.org](https://plugins.trac.wordpress.org/browser/wpsso/)
 
-<h3>Development Updates for Premium Version</h3>
+<h3>Development Updates for Premium Plugin</h3>
 
 <p>Development, alpha, beta, and release candidate updates are available to Premium plugin customers.</p>
 
