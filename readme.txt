@@ -58,9 +58,11 @@ WPSSO Core and its optional complimentary add-ons offer meta tags and Schema mar
 
 * Provides meta tags and markup for posts, pages, custom post types, tags, categories, custom taxonomy / terms, user profile pages, search pages, and attachment pages.
 
+* Optinally customize the Open Graph type "article", "place", "product", or "website" for each individual posts, pages, custom post types, etc.
+
 * Uses images from numerous sources, including featured, attached, gallery shortcode, images from HTML tags, or a custom fallback image.
 
-* Customizable image dimensions for Facebook / Open Graph, Schema markup, Google Rich Results SEO, Pinterest Rich Pins, and Twitter Cards.
+* Image dimension settings for Facebook / Open Graph, Schema markup, Google Rich Results SEO, Pinterest Rich Pins, and Twitter Cards.
 
 * Contextual help for *every* plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/).
 
@@ -91,7 +93,6 @@ WPSSO Core and its optional complimentary add-ons offer meta tags and Schema mar
 * Customize default values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags), custom post types, and user profiles:
 
 	* Customize Text
-		* Open Graph Type
 		* Article Topic
 		* Default Title
 		* Default Description
@@ -142,7 +143,6 @@ WPSSO Core and its optional complimentary add-ons offer meta tags and Schema mar
 * Additional custom Schema options are available from the [WPSSO Schema JSON-LD Markup Premium add-on](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/):
 
 	* All Schema Types
-		* Schema Type
 		* Name / Title
 		* Alternate Name
 		* Description
@@ -412,7 +412,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * {bugfix} = Backwards-compatible bug fixes or small improvements.
 * {stage}.{level} = Pre-production release: dev &lt; a (alpha) &lt; b (beta) &lt; rc (release candidate).
 
-<h3>Free / Standard Add-on Repositories</h3>
+<h3>Standard Add-on Repositories</h3>
 
 * [GitHub](https://surniaulula.github.io/wpsso/)
 * [WordPress.org](https://plugins.trac.wordpress.org/browser/wpsso/)
