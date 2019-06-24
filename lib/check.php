@@ -171,7 +171,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 						case 'seo-aioseop':
 
-							$chk[ 'function' ] = 'aioseop_init_class'; // Free and pro versions.
+							$chk[ 'function' ] = 'aioseop_init_class';
 
 							break;
 
@@ -223,7 +223,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 						case 'seo-wpseo':
 
-							$chk[ 'function' ] = 'wpseo_init'; // Free and premium versions.
+							$chk[ 'function' ] = 'wpseo_init';
 
 							break;
 

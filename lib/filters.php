@@ -70,7 +70,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				 * 'template_redirect' is not executed by the AMP plugin, so hook the 'amp_post_template_head'
 				 * action as well.
 				 */
-				if ( function_exists( 'wpseo_init' ) ) {	// Free and premium versions.
+				if ( function_exists( 'wpseo_init' ) ) {
 					add_action( 'template_redirect', array( $this, 'cleanup_wpseo_filters' ), 9000 );
 					add_action( 'amp_post_template_head', array( $this, 'cleanup_wpseo_filters' ), -9000 );
 				}
