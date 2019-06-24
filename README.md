@@ -27,7 +27,7 @@
 
 <p><strong>Creates <em>complete and accurate</em> meta tags and Schema markup:</strong></p>
 
-<p>WPSSO Core and its optional Free add-ons offer meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph, Google Rich Results SEO (<a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">Free add-on</a>), Google Merchant, Mobile Web Browsers, Pinterest Rich Pins, Twitter Cards, Weibo and many more &mdash; including complete markup for images, videos, extensive e-Commerce product markup (for WooCommerce and others), mobile apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content!</p>
+<p>WPSSO Core and its optional complimentary add-ons offer meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph, Google Rich Results SEO (<a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">complimentary add-on</a>), Google Merchant, Mobile Web Browsers, Pinterest Rich Pins, Twitter Cards, Weibo and many more &mdash; including complete markup for images, videos, extensive e-Commerce product markup (for WooCommerce and others), mobile apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content!</p>
 
 <p><strong>Includes advanced <em>quality assurance</em> features and options:</strong></p>
 
@@ -356,7 +356,7 @@
 
 <h3>Highly Customizable</h3>
 
-<p>WPSSO Core offers hundreds of filter hooks to customize its behavior and output, provides extensive developer documentation with examples, includes dozens of 3rd party integration modules in the Pro / Premium version, and offers several optional Free and Pro add-ons to extend WPSSO Core's functionality.</p>
+<p>WPSSO Core offers hundreds of filter hooks to customize its behavior and output, provides extensive developer documentation with examples, includes dozens of 3rd party integration modules in the Pro / Premium version, and offers several optional complimentary and Premium add-ons to extend WPSSO Core's functionality.</p>
 
 
 <h2>Installation</h2>
