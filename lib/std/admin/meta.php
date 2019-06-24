@@ -286,7 +286,7 @@ if ( ! class_exists( 'WpssoStdAdminMeta' ) ) {
 				'td_class' => 'blank',
 				'label'    => _x( 'Video Embed HTML', 'option label', 'wpsso' ),
 				'tooltip'  => 'meta-og_vid_embed',
-				'content'  => $form->get_no_textarea_value( '' ),	// Standard version does not include video modules.
+				'content'  => $form->get_no_textarea_value( '' ),	// The Free / Standard plugin does not include video modules.
 			);
 
 			$form_rows[ 'og_vid_url' ] = array(
@@ -294,7 +294,7 @@ if ( ! class_exists( 'WpssoStdAdminMeta' ) ) {
 				'td_class' => 'blank',
 				'label'    => _x( 'or a Video URL', 'option label', 'wpsso' ),
 				'tooltip'  => 'meta-og_vid_url',
-				'content'  => $form->get_no_input_value( '', 'wide' ),	// Standard version does not include video modules.
+				'content'  => $form->get_no_input_value( '', 'wide' ),	// The Free / Standard plugin does not include video modules.
 			);
 
 			$form_rows[ 'og_vid_title' ] = array(
@@ -303,7 +303,7 @@ if ( ! class_exists( 'WpssoStdAdminMeta' ) ) {
 				'td_class' => 'blank',
 				'label'    => _x( 'Video Name / Title', 'option label', 'wpsso' ),
 				'tooltip'  => 'meta-og_vid_title',
-				'content'  => $form->get_no_input_value( '', 'wide' ),	// Standard version does not include video modules.
+				'content'  => $form->get_no_input_value( '', 'wide' ),	// The Free / Standard plugin does not include video modules.
 			);
 
 			$form_rows[ 'og_vid_desc' ] = array(
@@ -312,7 +312,7 @@ if ( ! class_exists( 'WpssoStdAdminMeta' ) ) {
 				'td_class' => 'blank',
 				'label'    => _x( 'Video Description', 'option label', 'wpsso' ),
 				'tooltip'  => 'meta-og_vid_desc',
-				'content'  => $form->get_no_textarea_value( '' ),	// Standard version does not include video modules.
+				'content'  => $form->get_no_textarea_value( '' ),	// The Free / Standard plugin does not include video modules.
 			);
 
 			/**

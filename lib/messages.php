@@ -75,7 +75,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				$this->p->cf[ 'plugin' ][ $lca ][ 'url' ] : array();
 
 			/**
-			 * Add query arguments to the Pro / Premium purchase URL.
+			 * Add query arguments to the Premium purchase URL.
 			 *
 			 * utm_source   = Use utm_source to identify a search engine,
 			 *                newsletter name, or other source. Example: google.
