@@ -2432,7 +2432,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'bed.details'                 => 'https://schema.org/BedDetails',
 							'brand'                       => 'https://schema.org/Brand',
 							'broadcast.channel'           => 'https://schema.org/BroadcastChannel',
-							'bus.trip'                    => 'https://schema.org/BusTrip',
 							'computer.language'           => 'https://schema.org/ComputerLanguage',
 							'data.feed.item'              => 'https://schema.org/DataFeedItem',
 							'demand'                      => 'https://schema.org/Demand',
