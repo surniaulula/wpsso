@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 5.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-06-24 09:59-0700\n"
-"PO-Revision-Date: 2019-06-24 10:00-0700\n"
+"POT-Creation-Date: 2019-06-24 16:55-0700\n"
+"PO-Revision-Date: 2019-06-24 16:55-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1282,8 +1282,8 @@ msgstr "Ajout WPSSO Core pour fournir un sélecteur pratique de langue / région
 
 #: lib/gettext-config.php:55
 msgctxt "plugin description"
-msgid "WPSSO Core add-on provides updates for the WPSSO Core Pro plugin and its complementary Pro add-ons."
-msgstr "Ajout WPSSO Core pour fournir des mises à jour pour l'extension WPSSO Core Pro et ses ajouts complémentaires Pro."
+msgid "WPSSO Core add-on provides updates for the WPSSO Core Premium plugin and its complementary Premium add-ons."
+msgstr "Ajout WPSSO Core pour fournir des mises à jour pour l'extension WPSSO Core Premium et ses ajouts complémentaires Premium."
 
 #: lib/gettext-config.php:56
 msgctxt "menu title"

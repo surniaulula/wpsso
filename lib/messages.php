@@ -1855,7 +1855,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'info-cm':
 
-							// translators: please ignore - translation uses a different text domain.
+							// translators: Please ignore - translation uses a different text domain.
 							$contact_info_transl = __( 'Contact Info' );
 
 							$text = '<blockquote class="top-info">';
@@ -2131,7 +2131,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$settings_page_link = $this->p->util->get_admin_url( 'licenses',
 							_x( 'Licenses', 'lib file description', 'wpsso' ) );
 
-						// translators: please ignore - translation uses a different text domain.
+						// translators: Please ignore - translation uses a different text domain.
 						$plugins_page_link = '<a href="' . get_admin_url( null, 'plugins.php' ) . '">' . __( 'Plugins' ) . '</a>';
 
 						$text = '<p>';
@@ -2176,9 +2176,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							_x( 'Update Manager', 'lib file description', 'wpsso' ) );
 
 						$wp_updates_page_link = '<a href="' . admin_url( 'update-core.php' ) . '">' . 
-							// translators: please ignore - translation uses a different text domain.
+							// translators: Please ignore - translation uses a different text domain.
 							__( 'Dashboard' ) . ' &gt; ' . 
-							// translators: please ignore - translation uses a different text domain.
+							// translators: Please ignore - translation uses a different text domain.
 							__( 'Updates' ) . '</a>';
 
 						$text = sprintf( __( '%1$s version %2$s requires the use of %3$s version %4$s or newer (version %5$s is currently installed).', 'wpsso' ), $info[ 'name_pro' ], $info[ 'version' ], $um_info[ 'short' ], $um_rec_version, $um_version ) . ' ';

@@ -167,7 +167,7 @@ msgid ""
 "language only (not for the default language, or any other language)."
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:1293
 msgid "Profile updated."
 msgstr ""
@@ -410,17 +410,17 @@ msgstr ""
 msgid "Plugin conflict detected"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2521
 msgid "Social Meta"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2525 lib/admin.php:2544 lib/admin.php:2565
 msgid "All in One SEO"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2527
 msgid "Feature Manager"
 msgstr ""
@@ -429,17 +429,17 @@ msgstr ""
 msgid "please deactivate the %1$s feature in the %2$s settings."
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2540
 msgid "Disable Google Plus Profile"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2546 lib/admin.php:2567 lib/admin.php:2569
 msgid "General Settings"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2548
 msgid "Google Settings"
 msgstr ""
@@ -448,7 +448,7 @@ msgstr ""
 msgid "please check the %1$s option in the %2$s metabox."
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2561
 msgid "Use Schema.org Markup"
 msgstr ""
@@ -457,17 +457,17 @@ msgstr ""
 msgid "please uncheck the %1$s option in the %2$s metabox."
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2591
 msgid "SEO Ultimate"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2593
 msgid "Modules"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2600
 msgid "Open Graph Integrator"
 msgstr ""
@@ -476,22 +476,22 @@ msgstr ""
 msgid "please disable the %1$s module in the %2$s settings."
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2626 lib/admin.php:2659
 msgid "Squirrly"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2628 lib/admin.php:2661 lib/admin.php:2663
 msgid "SEO Settings"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2630
 msgid "Social Media"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2632
 msgid "Social Media Options"
 msgstr ""
@@ -509,7 +509,7 @@ msgstr ""
 msgid "please disable the %1$s option in the %2$s metabox."
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2665
 msgid "Let Squirrly SEO Optimize This Blog"
 msgstr ""
@@ -518,77 +518,77 @@ msgstr ""
 msgid "adds the Json-LD metas for Semantic SEO"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2699 lib/admin.php:2737
 msgid "The SEO Framework"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2701
 msgid "Social Meta Settings"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2704
 msgid "Posts"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2708
 msgid "Output Open Graph meta tags?"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2710
 msgid "Output Facebook meta tags?"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2712
 msgid "Output Twitter meta tags?"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2714 lib/admin.php:2717
 msgid "Add %1$s to %2$s?"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2739
 msgid "Schema Settings"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2744
 msgid "Output Authorized Presence?"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2770
 msgid "WP Meta SEO"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2772
 msgid "Settings"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2774
 msgid "Global"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2778
 msgid "Facebook profile URL"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2780 lib/admin.php:2887
 msgid "Facebook App ID"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2782 lib/admin.php:2834
 msgid "Twitter Username"
 msgstr ""
@@ -597,7 +597,7 @@ msgstr ""
 msgid "please remove the %1$s option value in the %2$s settings."
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2799
 msgid "Social sharing block"
 msgstr ""
@@ -606,67 +606,67 @@ msgstr ""
 msgid "please disable the %1$s option in the %2$s settings."
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2824 lib/admin.php:2870 lib/admin.php:2893 lib/admin.php:2919
 msgid "Yoast SEO"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2826 lib/admin.php:2872 lib/admin.php:2895 lib/admin.php:2921
 msgid "Social"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2828
 msgid "Accounts"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2832
 msgid "Facebook Page URL"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2836
 msgid "Instagram URL"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2838
 msgid "LinkedIn URL"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2840
 msgid "MySpace URL"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2842
 msgid "Pinterest URL"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2844
 msgid "YouTube URL"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2864
 msgid "Add Open Graph meta data"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2874 lib/admin.php:2897
 msgid "Facebook"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2913
 msgid "Add Twitter Card meta data"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2923
 msgid "Twitter"
 msgstr ""
@@ -941,7 +941,7 @@ msgstr ""
 msgid "Return to %s"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:3920
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
@@ -1116,12 +1116,12 @@ msgstr ""
 msgid "Reference: %s"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/com/plugin.php:271 lib/gettext-com.php:39
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/com/plugin.php:282 lib/gettext-com.php:41
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
@@ -2400,7 +2400,7 @@ msgstr ""
 msgid "Terms (Categories and Tags)"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/gettext-pro.php:33 lib/pro/admin/advanced.php:249
 #: lib/std/admin/advanced.php:249
 msgid "Users"
@@ -3029,22 +3029,22 @@ msgid ""
 "Products &gt; General</a> section."
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/gettext-pro.php:165 lib/pro/ecom/woocommerce.php:61
 msgid "My account page"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/gettext-pro.php:167 lib/pro/ecom/woocommerce.php:62
 msgid "Cart page"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/gettext-pro.php:169 lib/pro/ecom/woocommerce.php:63
 msgid "Checkout page"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/gettext-pro.php:171 lib/pro/ecom/woocommerce.php:64
 msgid "Shop page"
 msgstr ""
@@ -3212,17 +3212,17 @@ msgctxt "option label"
 msgid "Post Image Field ID"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/gettext-pro.php:224 lib/pro/rating/wppostratings.php:58
 msgid "Enable Google Rich Snippets?"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/gettext-pro.php:226 lib/pro/rating/wppostratings.php:62
 msgid "Ratings"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/gettext-pro.php:228 lib/pro/rating/wppostratings.php:64
 msgid "Ratings Options"
 msgstr ""
@@ -4896,7 +4896,7 @@ msgid ""
 "default site, and the default site is licensed."
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/messages.php:1859
 msgid "Contact Info"
 msgstr ""
@@ -5093,7 +5093,7 @@ msgid ""
 "to install the latest %3$s version."
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/messages.php:2135
 msgid "Plugins"
 msgstr ""
@@ -5138,12 +5138,12 @@ msgctxt "lib file description"
 msgid "Update Manager"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/messages.php:2180
 msgid "Dashboard"
 msgstr ""
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/messages.php:2182
 msgid "Updates"
 msgstr ""

@@ -29,7 +29,7 @@ _x( 'Default Currency', 'option label', 'wpsso' );
 __( 'Posts, Pages, Custom Post Types', 'wpsso' );
 __( 'Media Library', 'wpsso' );
 __( 'Terms (Categories and Tags)', 'wpsso' );
-// translators: please ignore - translation uses a different text domain
+// translators: Please ignore - translation uses a different text domain.
 __( 'Users' );
 _x( 'Additional List Table Columns', 'option label', 'wpsso' );
 _x( 'Title / Name Column Width', 'option label', 'wpsso' );
@@ -161,13 +161,13 @@ _x( 'Image ID', 'option label', 'wpsso' );
 _x( 'or an Image URL', 'option label', 'wpsso' );
 __( 'Please select a page in the <a href="%s">WooCommerce Settings &gt; Advanced &gt; Page setup</a> section.', 'wpsso' );
 __( 'Please select a page in the <a href="%s">WooCommerce Settings &gt; Products &gt; General</a> section.', 'wpsso' );
-// translators: please ignore - translation uses a different text domain
+// translators: Please ignore - translation uses a different text domain.
 __( 'My account page', 'woocommerce' );
-// translators: please ignore - translation uses a different text domain
+// translators: Please ignore - translation uses a different text domain.
 __( 'Cart page', 'woocommerce' );
-// translators: please ignore - translation uses a different text domain
+// translators: Please ignore - translation uses a different text domain.
 __( 'Checkout page', 'woocommerce' );
-// translators: please ignore - translation uses a different text domain
+// translators: Please ignore - translation uses a different text domain.
 __( 'Shop page', 'woocommerce' );
 __( 'The WooCommerce "%1$s" option value is empty.', 'wpsso' );
 __( 'The WooCommerce %s method is not available - please update to a newer version of WooCommerce.', 'wpsso' );
@@ -220,11 +220,11 @@ _x( 'Title Field ID', 'option label', 'wpsso' );
 _x( 'Description Field ID', 'option label', 'wpsso' );
 _x( 'Post Image Field ID', 'option label', 'wpsso' );
 __( 'Plugin conflict detected', 'wpsso' );
-// translators: please ignore - translation uses a different text domain
+// translators: Please ignore - translation uses a different text domain.
 __( 'Enable Google Rich Snippets?', 'wp-postratings' );
-// translators: please ignore - translation uses a different text domain
+// translators: Please ignore - translation uses a different text domain.
 __( 'Ratings', 'wp-postratings' );
-// translators: please ignore - translation uses a different text domain
+// translators: Please ignore - translation uses a different text domain.
 __( 'Ratings Options', 'wp-postratings' );
 __( 'please disable the %1$s option in the %2$s settings page.', 'wpsso' );
 _x( '%s Organization', 'option value', 'wpsso' );

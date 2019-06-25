@@ -245,7 +245,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'post'  => __( 'Posts, Pages, Custom Post Types', 'wpsso' ),
 				'media' => __( 'Media Library', 'wpsso' ),
 				'term'  => __( 'Terms (Categories and Tags)', 'wpsso' ),
-				// translators: please ignore - translation uses a different text domain
+				// translators: Please ignore - translation uses a different text domain.
 				'user'  => __( 'Users' ),
 			) as $mod_name => $mod_label ) {
 

@@ -35,7 +35,7 @@ __( 'Please contact the author of that filter hook and report this issue as a co
 __( 'Incorrect webpage output:', 'wpsso' );
 __( 'BEGIN OUTPUT', 'wpsso' );
 __( 'END OUTPUT', 'wpsso' );
-// translators: please ignore - translation uses a different text domain
+// translators: Please ignore - translation uses a different text domain.
 __( 'The plugin information for "%s" contains an invalid download link.' );
-// translators: please ignore - translation uses a different text domain
+// translators: Please ignore - translation uses a different text domain.
 __( 'The plugin information for "%s" does not contain a download link.' );
