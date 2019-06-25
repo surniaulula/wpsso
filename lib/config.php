@@ -1264,8 +1264,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_bitly_api_key'      => '',
 					'plugin_bitly_domain'       => '',
 					'plugin_dlmyapp_api_key'    => '',
-					//'plugin_google_api_key'     => '',			// Google Project API Key.
-					//'plugin_google_places'      => 0,			// Places API is Enabled.
 					'plugin_owly_api_key'       => '',
 					'plugin_yourls_api_url'     => '',
 					'plugin_yourls_username'    => '',
@@ -1456,7 +1454,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'cf_md_multi' => array(
 					'schema_addl_type_url'      => true,	// Microdata Type URLs.
 					'schema_howto_step'         => array(	// How-To Step Name.
-						'schema_howto_step_section',	// How-To Section (checkbox).
+						'schema_howto_step_section',	// How-To Section (radio buttons).
 						'schema_howto_step_text',	// How-To Direction Text.
 					),
 					'schema_howto_supply'       => true,	// How-To Supplies.
