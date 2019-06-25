@@ -2534,27 +2534,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
 
-				if ( isset( $opts[ 'aiosp_google_disable_profile' ] ) && empty( $opts[ 'aiosp_google_disable_profile' ] ) ) {
-
-					// translators: Please ignore - translation uses a different text domain.
-					$label_transl = '<strong>' . __( 'Disable Google Plus Profile', 'all-in-one-seo-pack' ) . '</strong>';
-					$settings_url = get_admin_url( null, 'admin.php?page=all-in-one-seo-pack%2Faioseop_class.php' );
-					$settings_link = '<a href="' . $settings_url . '">' .
-						// translators: Please ignore - translation uses a different text domain.
-						__( 'All in One SEO', 'all-in-one-seo-pack' ) . ' &gt; ' .
-						// translators: Please ignore - translation uses a different text domain.
-						__( 'General Settings', 'all-in-one-seo-pack' ) . ' &gt; ' .
-						// translators: Please ignore - translation uses a different text domain.
-						__( 'Google Settings', 'all-in-one-seo-pack' ) . '</a>';
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $log_pre . 'aioseop google plus profile is enabled' );
-					}
-
-					$this->p->notice->err( $err_pre . sprintf( __( 'please check the %1$s option in the %2$s metabox.',
-						'wpsso' ), $label_transl, $settings_link ) );
-				}
-
 				if ( ! empty( $opts[ 'aiosp_schema_markup' ] ) ) {
 
 					// translators: Please ignore - translation uses a different text domain.
