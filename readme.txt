@@ -427,6 +427,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 5.0.1-dev.1 (2019/06/24)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* None.
+* *Bugfixes*
+	* Fixed block editor global variable definition by changing "const" to "var" ([issue from GitHub](https://github.com/siteorigin/siteorigin-panels/issues/677)).
+* *Developer Notes*
+	* None.
+
 **Version 5.0.0 (2019/06/24)**
 
 * *New Features*
@@ -529,6 +540,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* WPSSO Social Sharing Buttons 
 
 == Upgrade Notice ==
+
+= 5.0.1-dev.1 =
+
+(2019/06/24) Fixed block editor global variable definition by changing "const" to "var".
 
 = 5.0.0 =
 
