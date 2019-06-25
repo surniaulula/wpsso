@@ -432,7 +432,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None.
 * *Improvements*
-	* None.
+	* Removed the (now deprecated) Google Plus Profile option check in All In One SEO settings.
 * *Bugfixes*
 	* Fixed block editor global variable definition by changing "const" to "var" ([issue from GitHub](https://github.com/siteorigin/siteorigin-panels/issues/677)).
 * *Developer Notes*
@@ -543,7 +543,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 5.0.1-dev.1 =
 
-(2019/06/24) Fixed block editor global variable definition by changing "const" to "var".
+(2019/06/24) Fixed block editor global variable definition by changing "const" to "var". Removed the (now deprecated) Google Plus Profile option check in All In One SEO settings.
 
 = 5.0.0 =
 
