@@ -432,6 +432,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None.
 * *Improvements*
+	* Renamed "Pro" distribution to "Premium".
+	* Renamed "Free" distribution to "Standard".
 	* Removed support for the Yotpo Social Reviews for WooCommerce plugin (too many bad reviews and too few active installations).
 	* Added checks for missing WooCommerce "My account page", "Cart page", "Checkout page", and "Shop page" selections (Premium plugin).
 	* Added an action hook to remove duplicate JSON-LD markup in AMP pages from the Yoast SEO plugin.
