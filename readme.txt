@@ -177,7 +177,7 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 		* How-To Total Time 
 		* How-To Supplies 
 		* How-To Tools 
-		* How-To Steps (step name, direction text)
+		* How-To Steps (section name, section description, step name, and direction text)
 	* Job Posting Information
 		* Job Posting Job Title
 		* Job Posting Hiring Organization
