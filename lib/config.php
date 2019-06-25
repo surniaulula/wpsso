@@ -2534,7 +2534,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								),
 								'warranty.scope' => 'https://schema.org/WarrantyScope',
 							),
-							'flight'      => 'https://schema.org/Flight',
 							'game.server' => 'https://schema.org/GameServer',
 							'intangible'  => 'https://schema.org/Intangible',
 							'invoice'     => 'https://schema.org/Invoice',
@@ -2600,7 +2599,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'service.channel'  => 'https://schema.org/ServiceChannel',
 							'structured.value' => 'https://schema.org/StructuredValue',
 							'ticket'           => 'https://schema.org/Ticket',
-							'train.trip'       => 'https://schema.org/TrainTrip',
+							'trip'             => array(
+								'trip'         => 'https://schema.org/Trip',
+								'trip.bus'     => 'https://schema.org/BusTrip',
+								'trip.flight'  => 'https://schema.org/Flight',
+								'trip.train'   => 'https://schema.org/TrainTrip',
+								'trip.tourist' => 'https://schema.org/TouristTrip',
+							),
 						),
 						'medical.entity' => array(
 							'medical.anatomical.structure'    => 'https://health-lifesci.schema.org/AnatomicalStructure',
@@ -2868,7 +2873,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'residence.apartment.complex' => 'https://schema.org/ApartmentComplex',
 								'residence.gated.community'   => 'https://schema.org/GatedResidenceCommunity',
 							),
-							'tourist.attraction' => 'https://schema.org/TouristAttraction',
+							'tourist.attraction'  => 'https://schema.org/TouristAttraction',
+							'tourist.destination' => 'https://schema.org/TouristDestination',
 						),
 						'product' => array(
 							'individual.product' => 'https://schema.org/IndividualProduct',	// Individual product w unique serial number.
@@ -2937,6 +2943,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'speech.pathology'     => 'speech.pathology.specialty',
 					'surgical'             => 'surgical.specialty',
 					'toxicologic'          => 'toxicologic.specialty',
+					'train.trip'           => 'trip.train',
 					'urologic'             => 'urologic.specialty',
 				),
 			),
