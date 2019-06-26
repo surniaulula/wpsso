@@ -122,16 +122,20 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				case 'plugin-install.php':
 
 					if ( isset( $_GET[ 'plugin' ] ) ) {
+
 						$plugin_slug = $_GET[ 'plugin' ];
-						if ( isset( $this->p->cf[ '*' ][ 'slug' ][$plugin_slug] ) ) {
+
+						if ( isset( $this->p->cf[ '*' ][ 'slug' ][ $plugin_slug ] ) ) {
+
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'enqueuing styles for plugin install page' );
 							}
+
 							$this->plugin_install_inline_style( $hook_name, $plugin_slug );
 						}
 					}
 
-					break;	// stop here
+					break;	// Stop here.
 			}
 
 			$this->add_admin_page_style( $hook_name, WPSSO_URLPATH, $css_file_ext, $plugin_version );
@@ -618,13 +622,13 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			/**
 			 * Fix the WordPress banner resolution.
 			 */
-			if ( false !== $plugin_slug && ! empty( $this->p->cf[ '*' ][ 'slug' ][$plugin_slug] ) ) {
+			if ( false !== $plugin_slug && ! empty( $this->p->cf[ '*' ][ 'slug' ][ $plugin_slug ] ) ) {
 
-				$ext = $this->p->cf[ '*' ][ 'slug' ][$plugin_slug];
+				$ext = $this->p->cf[ '*' ][ 'slug' ][ $plugin_slug ];
 
-				if ( ! empty( $this->p->cf[ 'plugin' ][$ext][ 'assets' ][ 'banners' ] ) ) {
+				if ( ! empty( $this->p->cf[ 'plugin' ][ $ext ][ 'assets' ][ 'banners' ] ) ) {
 
-					$banners = $this->p->cf[ 'plugin' ][$ext][ 'assets' ][ 'banners' ];
+					$banners = $this->p->cf[ 'plugin' ][ $ext ][ 'assets' ][ 'banners' ];
 
 					if ( ! empty( $banners[ 'low' ] ) || ! empty( $banners[ 'high' ] ) ) {	// Must have at least one banner.
 
@@ -632,11 +636,14 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 						$high = empty( $banners[ 'high' ] ) ? $banners[ 'low' ] : $banners[ 'high' ];
 					
 						echo '<style type="text/css">' . "\n";
+
 						echo '#plugin-information #plugin-information-title.with-banner { '.
 							'background-image: url( ' . esc_url( $low ) . ' ); }' . "\n";
+
 						echo '@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) { ' .
 							'#plugin-information #plugin-information-title.with-banner { ' .
 							'background-image: url( ' . esc_url( $high ) . ' ); } }' . "\n";
+
 						echo '</style>' . "\n";
 					}
 				}
@@ -644,15 +651,20 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			echo '
 				<style type="text/css">
-					/**
-					 * Hide the plugin name overlay.
-					 */
+
+					/* Hide the plugin name overlay. */
 					body#plugin-information div#plugin-information-title.with-banner h2 {
 						display:none;
 					}
+
+					body#plugin-information div#plugin-information-content div#section-holder.wrap {
+						clear:none;
+					}
+
 					body#plugin-information #section-description img {
 						max-width:100%;
 					}
+
 					body#plugin-information #section-description img.readme-icon {
 						float:left;
 						width:30%;
@@ -660,16 +672,19 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 						max-width:256px;
 						margin:0 30px 15px 0;
 					}
+
 					body#plugin-information #section-description img.readme-example {
 						width:100%;
 						min-width:256px;
 						max-width:600px;
 						margin:30px 0 30px 0;
 					}
+
 					body#plugin-information #section-other_notes h3 {
 						clear:none;
 						display:none;
 					}
+
 				</style>
 			';
 		}
