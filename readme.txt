@@ -427,7 +427,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.0.1-dev.2 (2019/06/25)**
+**Version 5.0.1-dev.3 (2019/06/25)**
 
 * *New Features*
 	* None.
@@ -541,7 +541,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 5.0.1-dev.2 =
+= 5.0.1-dev.3 =
 
 (2019/06/25) Fixed block editor global variable definition by changing "const" to "var". Removed the Google Plus Profile option check in All In One SEO settings.
 
