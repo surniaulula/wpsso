@@ -433,6 +433,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * *Improvements*
 	* Removed the Google Plus Profile option check in All In One SEO settings (now deprecated).
+	* Updated the WebSite (Front Page) Knowledge Graph option label and link.
 * *Bugfixes*
 	* Fixed block editor global variable definition by changing "const" to "var" ([issue from GitHub](https://github.com/siteorigin/siteorigin-panels/issues/677)).
 	* Fixed markup when selecting an Schema Organization, LocalBusiness, and Person type (or sub-type) in the Document SSO metabox, without specifying an Organization, LocalBusiness, or Person to get additional information about the Organization, LocalBusiness, and Person.
