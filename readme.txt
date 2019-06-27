@@ -427,7 +427,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.0.1-dev.4 (2019/06/26)**
+**Version 5.0.1-b.1 (2019/06/27)**
 
 * *New Features*
 	* None.
@@ -435,7 +435,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Removed the Google Plus Profile option check in All In One SEO settings (now deprecated).
 * *Bugfixes*
 	* Fixed block editor global variable definition by changing "const" to "var" ([issue from GitHub](https://github.com/siteorigin/siteorigin-panels/issues/677)).
-	* Fixed the selection of a Schema Organization, LocalBusiness, or Person type (or sub-type) in the Document SSO metabox, without selecting an Organization, LocalBusiness, or Person to fetch additional information.
+	* Fixed markup when selecting an Schema Organization, LocalBusiness, and Person type (or sub-type) in the Document SSO metabox, without specifying an Organization, LocalBusiness, or Person to get additional information about the Organization, LocalBusiness, and Person.
 * *Developer Notes*
 	* None.
 
@@ -542,9 +542,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 5.0.1-dev.4 =
+= 5.0.1-b.1 =
 
-(2019/06/26) Fixed block editor global variable definition by changing "const" to "var". Removed the Google Plus Profile option check in All In One SEO settings.
+(2019/06/27) Fixed block editor global variable definition by changing "const" to "var". Fixed markup when selecting an Schema Organization, LocalBusiness, and Person type (or sub-type) in the Document SSO metabox.
 
 = 5.0.0 =
 
