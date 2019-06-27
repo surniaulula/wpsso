@@ -3630,18 +3630,31 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 */
 		protected function add_schema_knowledge_graph_table_rows( array &$table_rows ) {
 
+			$website_info = __( 'WebSite Information', 'wpsso' );
+
+			$org_social = '<a href="https://developers.google.com/search/docs/guides/enhance-site#add-your-sites-name-logo-and-social-links">' .
+				__( 'Organization Social Profile', 'wpsso' ) . '</a>';
+
+			$person_social = __( 'Person Social Profile', 'wpsso' );
+
 			$table_rows[ 'schema_knowledge_graph' ] = '' . 
 			$this->form->get_th_html( _x( 'Knowledge Graph for Home Page', 'option label', 'wpsso' ), '', 'schema_knowledge_graph' ) . 
 			'<td>' .
-			'<p>' . $this->form->get_checkbox( 'schema_add_home_website' ) . ' ' .
-				sprintf( __( 'Include <a href="%s">WebSite Information</a> for Google Search',
-					'wpsso' ), 'https://developers.google.com/structured-data/site-name' ) . '</p>' .
-			'<p>' . $this->form->get_checkbox( 'schema_add_home_organization' ) . ' ' .
-				sprintf( __( 'Include <a href="%s">Organization Social Profile</a> for a Business Site',
-					'wpsso' ), 'https://developers.google.com/structured-data/customize/social-profiles' ) . '</p>' .
-			'<p>' . $this->form->get_checkbox( 'schema_add_home_person' ) . ' ' .
-				sprintf( __( 'Include <a href="%s">Person Social Profile</a> for a Personal Site',
-					'wpsso' ), 'https://developers.google.com/structured-data/customize/social-profiles' ) . '</p>' .
+			'<p>' .
+				$this->form->get_checkbox( 'schema_add_home_website' ) . ' ' .
+				// translators: %s is "WebSite Information".
+				sprintf( __( 'Include %s for Google Search', 'wpsso' ), $website_info ) .
+			'</p>' .
+			'<p>' .
+				$this->form->get_checkbox( 'schema_add_home_organization' ) . ' ' .
+				// translators: %s is "Organization Social Profile".
+				sprintf( __( 'Include %s for a Business Site', 'wpsso' ), $org_social ) .
+			'</p>' .
+			'<p>' .
+				$this->form->get_checkbox( 'schema_add_home_person' ) . ' ' .
+				// translators: %s is "Person Social Profile".
+				sprintf( __( 'Include %s for a Personal Site', 'wpsso' ), $person_social ) .
+			'</p>' .
 			'</td>';
 
 			$owner_roles = $this->p->cf[ 'wp' ][ 'roles' ][ 'owner' ];
