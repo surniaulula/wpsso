@@ -122,7 +122,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
-				$org_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_organization_org_id' );	// Returns null if an index key is not found.
+
+				/**
+				 * Fallback to default organization ID of 'none'.
+				 */
+				$org_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_organization_org_id',
+					$filter_opts = true, $def_fallback = true );
+
 			} else {
 				$org_id = null;
 			}
@@ -147,6 +153,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Possibly inherit the schema type.
 			 */
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'possibly inherit the schema type' );
+				$this->p->debug->log_arr( '$json_data', $json_data );
+			}
+
 			$ret = self::get_data_context( $json_data );	// Returns array() if no schema type found.
 
 		 	/**
@@ -154,6 +165,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 	 * $logo_key can be 'org_logo_url' or 'org_banner_url' (600x60px image) for Articles.
 			 * do not provide localized option names - the method will fetch the localized values.
 			 */
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'adding data for organization id = ' . $org_id );
+			}
+
 			WpssoSchemaSingle::add_organization_data( $ret, $mod, $org_id, 'org_logo_url', false );	// $list_element is false.
 
 			return self::return_data_from_filter( $json_data, $ret, $is_main );
@@ -192,7 +207,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
-				$user_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_person_id' );	// Returns null if an index key is not found.
+
+				/**
+				 * Fallback to default person ID of 'none'.
+				 */
+				$user_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_person_id',
+					$filter_opts = true, $def_fallback = true );
+
 			} else {
 				$user_id = null;
 			}
@@ -2052,11 +2073,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( is_object( $mod[ 'obj' ] ) ) {	// Just in case.
 
 				$md_defs = (array) $mod[ 'obj' ]->get_defaults( $mod[ 'id' ] );
+
 				$md_opts = (array) $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
 
 				foreach ( $opts_md_pre as $opt_key => $md_pre ) {
 
 					$md_defs = SucomUtil::preg_grep_keys( '/^' . $md_pre . '_/', $md_defs, false, $opt_key . '_' );
+
 					$md_opts = SucomUtil::preg_grep_keys( '/^' . $md_pre . '_/', $md_opts, false, $opt_key . '_' );
 	
 					/**
@@ -2454,7 +2477,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				unset( $json_data[ '@id' ] );	// Just in case.
 
-				$json_data = array( '@id' => $type_id ) + $json_data;
+				$json_data = array( '@id' => $type_id ) + $json_data;	// Make @id the first value in the array.
 
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'new @id property is ' . $json_data[ '@id' ] );

@@ -205,6 +205,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Use is_valid_option_id() to check that the id value is not true, false, null, or 'none'.
 			 */
 			if ( isset( $event_opts[ 'event_organizer_person_id' ] ) && SucomUtil::is_valid_option_id( $event_opts[ 'event_organizer_person_id' ] ) ) {
+
 				if ( ! self::add_person_data( $ret[ 'organizer' ], $mod, $event_opts[ 'event_organizer_person_id' ], $list_element = true ) ) {
 					unset( $ret[ 'organizer' ] );
 				}
@@ -721,7 +722,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				 * 'plm_place_id' can be 'none', 'custom', or numeric (including 0).
 				 */
 				if ( ! empty( $mod[ 'obj' ] ) ) {
+
+					/**
+					 * Fallback to default place ID of 'none'.
+					 */
 					$place_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'plm_place_id' );
+
 				} else {
 					$place_id = null;
 				}
