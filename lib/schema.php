@@ -163,7 +163,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 	/**
 			 * $org_id can be 'none', 'site', or a number (including 0).
 		 	 * $logo_key can be 'org_logo_url' or 'org_banner_url' (600x60px image) for Articles.
-			 * do not provide localized option names - the method will fetch the localized values.
+			 * Do not provide localized option names - the method will fetch the localized values.
 			 */
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'adding data for organization id = ' . $org_id );
@@ -264,7 +264,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Possibly inherit the schema type.
 			 */
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'possibly inherit the schema type' );
+				$this->p->debug->log_arr( '$json_data', $json_data );
+			}
+
 			$ret = self::get_data_context( $json_data );	// Returns array() if no schema type found.
+
+		 	/**
+			 * $user_id can be 'none' or a number (including 0).
+			 */
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'adding data for person id = ' . $user_id );
+			}
 
 			WpssoSchemaSingle::add_person_data( $ret, $mod, $user_id, $list_element = false );
 
