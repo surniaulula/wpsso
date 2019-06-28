@@ -3648,12 +3648,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			'<p>' .
 				$this->form->get_checkbox( 'schema_add_home_organization' ) . ' ' .
 				// translators: %s is "Organization Social Profile".
-				sprintf( __( 'Include %s for a Business Site', 'wpsso' ), $org_social ) .
+				sprintf( __( 'Include %s for a Business Website', 'wpsso' ), $org_social ) .
 			'</p>' .
 			'<p>' .
 				$this->form->get_checkbox( 'schema_add_home_person' ) . ' ' .
 				// translators: %s is "Person Social Profile".
-				sprintf( __( 'Include %s for a Personal Site', 'wpsso' ), $person_social ) .
+				sprintf( __( 'Include %s for a Personal Website', 'wpsso' ), $person_social ) .
 			'</p>' .
 			'</td>';
 

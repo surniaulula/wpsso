@@ -894,12 +894,12 @@ msgstr ""
 
 #. translators: %s is "Organization Social Profile".
 #: lib/admin.php:3651
-msgid "Include %s for a Business Site"
+msgid "Include %s for a Business Website"
 msgstr ""
 
 #. translators: %s is "Person Social Profile".
 #: lib/admin.php:3656
-msgid "Include %s for a Personal Site"
+msgid "Include %s for a Personal Website"
 msgstr ""
 
 #: lib/admin.php:3664

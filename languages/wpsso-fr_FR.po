@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 5.0.0\n"
+"Project-Id-Version: WPSSO Core 5.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-06-24 16:55-0700\n"
-"PO-Revision-Date: 2019-06-27 08:53-0700\n"
+"POT-Creation-Date: 2019-06-28 09:42-0700\n"
+"PO-Revision-Date: 2019-06-28 09:42-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -161,7 +161,7 @@ msgstr "SVP prendre note que votre langue actuelle est différente de celle par 
 msgid "Localized option values (%s) are used for webpages and content in that language only (not for the default language, or any other language)."
 msgstr "Les valeurs d'option localisées (%s) sont utilisées uniquement pour les pages Web et le contenu dans cette langue (et non pas pour la langue par défaut ou toute autre langue)."
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:1293
 msgid "Profile updated."
 msgstr "Profil mis à jour."
@@ -381,17 +381,17 @@ msgstr "L'option de WordPress <a href=\"%s\">Visibilité pour les moteurs de rec
 msgid "Plugin conflict detected"
 msgstr "Conflit détecté"
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2521
 msgid "Social Meta"
 msgstr "Social Meta"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2525 lib/admin.php:2544 lib/admin.php:2565
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2525 lib/admin.php:2544
 msgid "All in One SEO"
 msgstr "All in One SEO"
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2527
 msgid "Feature Manager"
 msgstr "Feature Manager"
@@ -400,541 +400,542 @@ msgstr "Feature Manager"
 msgid "please deactivate the %1$s feature in the %2$s settings."
 msgstr "SVP désactiver la fonction %1$s dans les réglages %2$s."
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/admin.php:2540
-msgid "Disable Google Plus Profile"
-msgstr "Disable Google Plus Profile"
-
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2546 lib/admin.php:2567 lib/admin.php:2569
-msgid "General Settings"
-msgstr "General Settings"
-
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2548
-msgid "Google Settings"
-msgstr "Google Settings"
-
-#: lib/admin.php:2554
-msgid "please check the %1$s option in the %2$s metabox."
-msgstr "SVP cocher l'option %1$s dans le métabox %2$s."
-
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2561
 msgid "Use Schema.org Markup"
 msgstr "Use Schema.org Markup"
 
-#: lib/admin.php:2575 lib/admin.php:2727 lib/admin.php:2750
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2546 lib/admin.php:2548
+msgid "General Settings"
+msgstr "General Settings"
+
+#: lib/admin.php:2554 lib/admin.php:2706 lib/admin.php:2729
 msgid "please uncheck the %1$s option in the %2$s metabox."
 msgstr "SVP décocher l'option %1$s dans le métabox %2$s."
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2591
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2570
 msgid "SEO Ultimate"
 msgstr "SEO Ultimate"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2593
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2572
 msgid "Modules"
 msgstr "Modules"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2600
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2579
 msgid "Open Graph Integrator"
 msgstr "Open Graph Integrator"
 
-#: lib/admin.php:2606
+#: lib/admin.php:2585
 msgid "please disable the %1$s module in the %2$s settings."
 msgstr "SVP désactiver le module %1$s dans les réglages %2$s."
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2626 lib/admin.php:2659
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2605 lib/admin.php:2638
 msgid "Squirrly"
 msgstr "Squirrly"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2628 lib/admin.php:2661 lib/admin.php:2663
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2607 lib/admin.php:2640 lib/admin.php:2642
 msgid "SEO Settings"
 msgstr "SEO Settings"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2630
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2609
 msgid "Social Media"
 msgstr "Social Media"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2632
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2611
 msgid "Social Media Options"
 msgstr "Social Media Options"
 
-#: lib/admin.php:2635
+#: lib/admin.php:2614
 msgid "Add the Social Open Graph protocol so that your Facebook shares look good."
 msgstr "Ajoutez le protocole social Open Graph pour que vos partages Facebook soient beaux."
 
-#: lib/admin.php:2637
+#: lib/admin.php:2616
 msgid "Add the Twitter card in your tweets."
 msgstr "Ajoutez la carte Twitter dans vos tweets."
 
-#: lib/admin.php:2647 lib/admin.php:2677
+#: lib/admin.php:2626 lib/admin.php:2656
 msgid "please disable the %1$s option in the %2$s metabox."
 msgstr "SVP désactiver l'option %1$s dans le métabox %2$s."
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2665
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2644
 msgid "Let Squirrly SEO Optimize This Blog"
 msgstr "Let Squirrly SEO Optimize This Blog"
 
-#: lib/admin.php:2668
+#: lib/admin.php:2647
 msgid "adds the Json-LD metas for Semantic SEO"
 msgstr "ajoute les metas Json-LD pour SEO sémantique"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2699 lib/admin.php:2737
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2678 lib/admin.php:2716
 msgid "The SEO Framework"
 msgstr "The SEO Framework"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2701
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2680
 msgid "Social Meta Settings"
 msgstr "Social Meta Settings"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2704
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2683
 msgid "Posts"
 msgstr "Posts"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2708
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2687
 msgid "Output Open Graph meta tags?"
 msgstr "Output Open Graph meta tags?"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2710
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2689
 msgid "Output Facebook meta tags?"
 msgstr "Output Facebook meta tags?"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2712
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2691
 msgid "Output Twitter meta tags?"
 msgstr "Output Twitter meta tags?"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2714 lib/admin.php:2717
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2693 lib/admin.php:2696
 msgid "Add %1$s to %2$s?"
 msgstr "Add %1$s to %2$s?"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2739
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2718
 msgid "Schema Settings"
 msgstr "Schema Settings"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2744
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2723
 msgid "Output Authorized Presence?"
 msgstr "Output Authorized Presence?"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2770
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2749
 msgid "WP Meta SEO"
 msgstr "WP Meta SEO"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2772
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2751
 msgid "Settings"
 msgstr "Settings"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2774
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2753
 msgid "Global"
 msgstr "Global"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2778
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2757
 msgid "Facebook profile URL"
 msgstr "Facebook profile URL"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2780 lib/admin.php:2887
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2759 lib/admin.php:2866
 msgid "Facebook App ID"
 msgstr "ID d'application Facebook"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2782 lib/admin.php:2834
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2761 lib/admin.php:2813
 msgid "Twitter Username"
 msgstr "Twitter Username"
 
-#: lib/admin.php:2791 lib/admin.php:2853 lib/admin.php:2903
+#: lib/admin.php:2770 lib/admin.php:2832 lib/admin.php:2882
 msgid "please remove the %1$s option value in the %2$s settings."
 msgstr "SVP supprimez la valeur de l'option %1$s dans les réglages %2$s."
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2799
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2778
 msgid "Social sharing block"
 msgstr "Social sharing block"
 
-#: lib/admin.php:2805 lib/admin.php:2880 lib/admin.php:2929
+#: lib/admin.php:2784 lib/admin.php:2859 lib/admin.php:2908
 msgid "please disable the %1$s option in the %2$s settings."
 msgstr "SVP désactiver l'option %1$s dans les réglages %2$s."
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2824 lib/admin.php:2870 lib/admin.php:2893 lib/admin.php:2919
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2803 lib/admin.php:2849 lib/admin.php:2872 lib/admin.php:2898
 msgid "Yoast SEO"
 msgstr "Yoast SEO"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2826 lib/admin.php:2872 lib/admin.php:2895 lib/admin.php:2921
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2805 lib/admin.php:2851 lib/admin.php:2874 lib/admin.php:2900
 msgid "Social"
 msgstr "Social"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2828
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2807
 msgid "Accounts"
 msgstr "Accounts"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2832
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2811
 msgid "Facebook Page URL"
 msgstr "Facebook Page URL"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2836
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2815
 msgid "Instagram URL"
 msgstr "Instagram URL"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2838
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2817
 msgid "LinkedIn URL"
 msgstr "LinkedIn URL"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2840
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2819
 msgid "MySpace URL"
 msgstr "MySpace URL"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2842
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2821
 msgid "Pinterest URL"
 msgstr "Pinterest URL"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2844
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2823
 msgid "YouTube URL"
 msgstr "YouTube URL"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2864
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2843
 msgid "Add Open Graph meta data"
 msgstr "Add Open Graph meta data"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2874 lib/admin.php:2897
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2853 lib/admin.php:2876
 msgid "Facebook"
 msgstr "Facebook"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2913
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2892
 msgid "Add Twitter Card meta data"
 msgstr "Add Twitter Card meta data"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:2923
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:2902
 msgid "Twitter"
 msgstr "Twitter"
 
-#: lib/admin.php:3067
+#: lib/admin.php:3046
 msgid "The %s plugin description page on WordPress.org."
 msgstr "La page de description pour l'extension %s sur WordPress.org."
 
-#: lib/admin.php:3073
+#: lib/admin.php:3052
 msgid "Yes! Rate %s 5 stars!"
 msgstr "Oui! Noter %s 5 étoiles!"
 
-#: lib/admin.php:3074
+#: lib/admin.php:3053
 msgid "Thank you for rating the %s plugin! You're awesome!"
 msgstr "Merci d'avoir noté l'extension %s! Vous êtes génial!"
 
-#: lib/admin.php:3079
+#: lib/admin.php:3058
 msgid "I've already rated %s."
 msgstr "J'ai déjà noté %s."
 
-#: lib/admin.php:3080
+#: lib/admin.php:3059
 msgid "Thanks again for that earlier rating of %s! You're awesome!"
 msgstr "Merci encore d'avoir noté l'extension %s plus tôt! Vous êtes génial!"
 
-#: lib/admin.php:3098 lib/admin.php:3167
+#: lib/admin.php:3077 lib/admin.php:3146
 msgid "Fantastic!"
 msgstr "Fantastique!"
 
-#: lib/admin.php:3100
+#: lib/admin.php:3079
 msgid "You've been using <b>%s</b> for a while now, which is awesome!"
 msgstr "Vous utilisez <b>%s</b> depuis un moment maintenant, ce qui est génial!"
 
-#: lib/admin.php:3104
+#: lib/admin.php:3083
 msgid "We've put a lot of effort into making %s and its add-ons the best possible, so it's great to know that you're finding this plugin useful."
 msgstr "Nous avons mis beaucoup d'efforts à faire %s et ses ajouts les meilleurs possible, c'est donc super de savoir que vous trouvez cette extension utile."
 
-#: lib/admin.php:3108
+#: lib/admin.php:3087
 msgid "Now that you're familiar with %s, could you do me a small favor?"
 msgstr "Maintenant que vous êtes familier avec %s, puis-je demander une petite faveur?"
 
-#: lib/admin.php:3112
+#: lib/admin.php:3091
 msgid "Would you rate this plugin on WordPress.org?"
 msgstr "Pourriez-vous noter cette extension sur WordPress.org?"
 
-#: lib/admin.php:3116
+#: lib/admin.php:3095
 msgid "Your rating is a great way to encourage us, and it helps other WordPress users find great plugins as well!"
 msgstr "Votre note est un excellent moyen de nous encourager, et cela aide aussi les autres utilisateurs de WordPress à trouver de bonnes extensions!"
 
-#: lib/admin.php:3147
+#: lib/admin.php:3126
 msgid "Yes! Get the %s update in just moments!"
 msgstr "Oui! Obtenir la mise à jour %s en quelques instants!"
 
-#: lib/admin.php:3150
+#: lib/admin.php:3129
 msgid "Thank you for your support! You're awesome!"
 msgstr "Merci pour votre soutien! Vous êtes génial!"
 
-#: lib/admin.php:3156
+#: lib/admin.php:3135
 msgid "No thanks, I'll stay with the %s version for now."
 msgstr "Je vais rester avec la version %s pour le moment."
 
-#: lib/admin.php:3159
+#: lib/admin.php:3138
 msgid "Sorry to hear that - hopefully you'll change your mind later."
 msgstr "Je suis désolé d'entendre ça - vous pouvez toujours changer d'avis plus tard."
 
-#: lib/admin.php:3169
+#: lib/admin.php:3148
 msgid "You've been using the %1$s plugin for more than %2$s now, which is awesome!"
 msgstr "Vous utilisez l'extension %1$s depuis plus de %2$s déja, ce qui est génial!"
 
-#: lib/admin.php:3170 lib/admin.php:3174
+#: lib/admin.php:3149 lib/admin.php:3153
 msgid "six months"
 msgstr "six mois"
 
-#: lib/admin.php:3174
+#: lib/admin.php:3153
 msgid "We've put a lot of effort into making %1$s and its add-ons the best possible &mdash; I hope you've enjoyed all the new features, improvements, and updates over the past %2$s."
 msgstr "Nous avons mis beaucoup d'efforts à faire %1$s et ses ajouts les meilleurs possible &mdash; Nous espérons que vous avez apprécié toutes les nouvelles fonctionnalités, améliorations, et mises à jour au cours des derniers %2$s."
 
-#: lib/admin.php:3178
+#: lib/admin.php:3157
 msgid "Have you considered purchasing the %s version?"
 msgstr "Avez-vous envisagé d'acheter la version %s?"
 
-#: lib/admin.php:3181
+#: lib/admin.php:3160
 msgid "The %s version comes with a lot of extra features!"
 msgstr "La version %s comprend de nombreuses fonctionnalités supplémentaires!"
 
-#: lib/admin.php:3319
+#: lib/admin.php:3298
 msgid "There is <a href=\"%1$s\">%2$d pending update for the %3$s plugin and/or its add-on(s)</a>."
 msgid_plural "There are <a href=\"%1$s\">%2$d pending updates for the %3$s plugin and/or its add-on(s)</a>."
 msgstr[0] "Il y a <a href=\"%1$s\">%2$d mise à jour en attente pour l'extension %3$s et/ou ses ajouts</a>."
 msgstr[1] "Il y a <a href=\"%1$s\">%2$d mises à jour en attente pour l'extension %3$s et/ou ses ajouts</a>."
 
-#: lib/admin.php:3319
+#: lib/admin.php:3298
 msgid "Please install this update at your earliest convenience."
 msgid_plural "Please install these updates at your earliest convenience."
 msgstr[0] "SVP installer cette mise à jour dès que possible."
 msgstr[1] "SVP installer ces mises à jour dès que possible."
 
-#: lib/admin.php:3376
+#: lib/admin.php:3355
 msgid "No header templates found in the parent or child theme directories."
 msgstr "Aucun modèle d'en-tête trouvés dans le répertoire de thème parent ou enfant."
 
-#: lib/admin.php:3393
+#: lib/admin.php:3372
 msgid "No %1$s HTML tag found in the %2$s template."
 msgstr "Aucune balise HTML%1$s trouvé dans le modèle %2$s."
 
-#: lib/admin.php:3403
+#: lib/admin.php:3382
 msgid "Error copying %1$s to %2$s."
 msgstr "Erreur copiant %1$s à %2$s."
 
-#: lib/admin.php:3413
+#: lib/admin.php:3392
 msgid "Failed to open template file %s for writing."
 msgstr "Impossible d'ouvrir le fichier modèle %s pour écriture."
 
-#: lib/admin.php:3420
+#: lib/admin.php:3399
 msgid "The %1$s template has been successfully modified and saved. A backup copy of the original template is available as %2$s in the same folder."
 msgstr "Le modèle %1$s a été mis à jour et enregistré avec succès. Une sauvegarde du fichier original est disponible tant que %2$s dans le même dossier."
 
-#: lib/admin.php:3425
+#: lib/admin.php:3404
 msgid "Failed to write the %1$s template. You may need to restore the original template saved as %2$s in the same folder."
 msgstr "Erreur lors de l'écriture du modèle %1$s. Vous pouvez restaurer le modèle original a partir de %2$s dans dans le même dossier."
 
-#: lib/admin.php:3451 lib/admin.php:3569
+#: lib/admin.php:3430 lib/admin.php:3548
 msgctxt "option label"
 msgid "Type for Blog Front Page"
 msgstr "Type pour page blog d'avant"
 
-#: lib/admin.php:3452 lib/admin.php:3570
+#: lib/admin.php:3431 lib/admin.php:3549
 msgctxt "option label"
 msgid "Type for Static Front Page"
 msgstr "Type page statique d'avant"
 
-#: lib/admin.php:3453 lib/admin.php:3571
+#: lib/admin.php:3432 lib/admin.php:3550
 msgctxt "option label"
 msgid "Type for User / Author Page"
 msgstr "Type pour page utilisateur / auteur"
 
-#: lib/admin.php:3454 lib/admin.php:3572
+#: lib/admin.php:3433 lib/admin.php:3551
 msgctxt "option label"
 msgid "Type for Search Results Page"
 msgstr "Type pour résultats de recherche"
 
-#: lib/admin.php:3455 lib/admin.php:3573
+#: lib/admin.php:3434 lib/admin.php:3552
 msgctxt "option label"
 msgid "Type for Other Archive Page"
 msgstr "Type pour autre page d'archive"
 
-#: lib/admin.php:3480 lib/admin.php:3486 lib/admin.php:3512 lib/admin.php:3599
-#: lib/admin.php:3605 lib/admin.php:3632
+#: lib/admin.php:3459 lib/admin.php:3465 lib/admin.php:3491 lib/admin.php:3578
+#: lib/admin.php:3584 lib/admin.php:3611
 msgctxt "option comment"
 msgid "for %s"
 msgstr "pour %s"
 
-#: lib/admin.php:3486 lib/admin.php:3605
+#: lib/admin.php:3465 lib/admin.php:3584
 msgctxt "option comment"
 msgid "(Post Type) Archive Page"
 msgstr "Page d'archive (type d'article)"
 
-#: lib/admin.php:3490 lib/admin.php:3609
+#: lib/admin.php:3469 lib/admin.php:3588
 msgctxt "option label"
 msgid "Type by Post Type"
 msgstr "Type par type d'article"
 
-#: lib/admin.php:3517 lib/admin.php:3637
+#: lib/admin.php:3496 lib/admin.php:3616
 msgctxt "option label"
 msgid "Type by Term Taxonomy"
 msgstr "Type par taxonomie de termes"
 
-#: lib/admin.php:3537 lib/submenu/essential.php:156
+#: lib/admin.php:3516 lib/submenu/essential.php:156
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr "URL logo de organisation"
 
-#: lib/admin.php:3541 lib/options.php:1175 lib/submenu/essential.php:161
+#: lib/admin.php:3520 lib/options.php:1175 lib/submenu/essential.php:161
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr "URL bannière d'organisation"
 
-#: lib/admin.php:3545 lib/submenu/general.php:200
+#: lib/admin.php:3524 lib/submenu/general.php:200
 msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr "Images maximum a inclure"
 
-#: lib/admin.php:3547 lib/submenu/general.php:203
+#: lib/admin.php:3526 lib/submenu/general.php:203
 msgctxt "option comment"
 msgid "video preview images are enabled (and included first)"
 msgstr "images d'aperçu vidéo sont activés (et inclus en premier)"
 
-#: lib/admin.php:3551
+#: lib/admin.php:3530
 msgctxt "option label"
 msgid "Schema Image Dimensions"
 msgstr "Dimensions d'images Schéma"
 
-#: lib/admin.php:3555 lib/submenu/general.php:174 lib/submenu/general.php:329
+#: lib/admin.php:3534 lib/submenu/general.php:174 lib/submenu/general.php:329
 msgctxt "option label"
 msgid "Maximum Description Length"
 msgstr "Longueur de description maximale"
 
-#: lib/admin.php:3556 lib/submenu/general.php:253 lib/submenu/general.php:331
+#: lib/admin.php:3535 lib/submenu/general.php:253 lib/submenu/general.php:331
 msgctxt "option comment"
 msgid "characters or less"
 msgstr "caractères ou moins"
 
-#: lib/admin.php:3655
+#: lib/admin.php:3633
+msgid "WebSite Information"
+msgstr "information du site Web"
+
+#: lib/admin.php:3636
+msgid "Organization Social Profile"
+msgstr "profil social de l'organisation"
+
+#: lib/admin.php:3638
+msgid "Person Social Profile"
+msgstr "profil social d'une personne"
+
+#: lib/admin.php:3641
 msgctxt "option label"
 msgid "Knowledge Graph for Home Page"
 msgstr "Knowledge Graph page d'accueil"
 
-#: lib/admin.php:3658
-msgid "Include <a href=\"%s\">WebSite Information</a> for Google Search"
-msgstr "Inclure les <a href=\"%s\">informations du site Web</a> pour Google Search"
+#. translators: %s is "WebSite Information".
+#: lib/admin.php:3646
+msgid "Include %s for Google Search"
+msgstr "Inclure l'%s pour Google Search"
 
-#: lib/admin.php:3661
-msgid "Include <a href=\"%s\">Organization Social Profile</a> for a Business Site"
-msgstr "Inclure le <a href=\"%s\">profil social de l'organisation</a> pour un site d'affaire"
+#. translators: %s is "Organization Social Profile".
+#: lib/admin.php:3651
+msgid "Include %s for a Business Website"
+msgstr "Inclure le %s pour un site Web d'entreprise"
+
+#. translators: %s is "Person Social Profile".
+#: lib/admin.php:3656
+msgid "Include %s for a Personal Website"
+msgstr "Inclure le %s pour un site Web personnel"
 
 #: lib/admin.php:3664
-msgid "Include <a href=\"%s\">Person Social Profile</a> for a Personal Site"
-msgstr "Inclure le <a href=\"%s\">profil social d'une personne</a> pour un site personnel"
-
-#: lib/admin.php:3672
 msgctxt "option label"
 msgid "User for Person Social Profile"
 msgstr "Utilisateur pour le profil social de personne"
 
-#: lib/admin.php:3683
+#: lib/admin.php:3675
 msgctxt "option label"
 msgid "Remove Settings on Uninstall"
 msgstr "Supprimer les réglages lors de la désinstallation"
 
-#: lib/admin.php:3686
+#: lib/admin.php:3678
 msgctxt "option comment"
 msgid "including any custom meta for posts, terms, and users"
 msgstr "y compris méta personnalisée d'articles, termes et utilisateurs"
 
-#: lib/admin.php:3691
+#: lib/admin.php:3683
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr "Ajout messages de débogage caché"
 
-#: lib/admin.php:3693
+#: lib/admin.php:3685
 msgctxt "option comment"
 msgid "WPSSO_HTML_DEBUG constant is true"
 msgstr "la constante WPSSO_HTML_DEBUG est vraie"
 
-#: lib/admin.php:3699
+#: lib/admin.php:3691
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr "Options a montrer par défaut"
 
-#: lib/admin.php:3708
+#: lib/admin.php:3700
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr "Util. par site"
 
-#: lib/admin.php:3889
+#: lib/admin.php:3881
 msgid "Return to %s"
 msgstr "Retour à %s"
 
-#. translators: please ignore - translation uses a different text domain.
-#: lib/admin.php:3920
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin.php:3912
 msgid "Plugin <strong>activated</strong>."
 msgstr "Extension <strong>activé</strong>."
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:3942
+#: lib/admin.php:3934
 msgid "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-ons</a> to check if newer versions are available."
 msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise à jour pour %2$s et ses ajouts</a> afin de vérifier si des versions plus récentes sont disponibles."
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:3949
+#: lib/admin.php:3941
 msgid "You may <a href=\"%1$s\">refresh the update information for WordPress (plugins, themes, and translations)</a> to check if newer versions are available."
 msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise à jour pour WordPress (extensions, thèmes et traductions)</a> afin de vérifier si des versions plus récentes sont disponibles."
 
-#: lib/admin.php:4014
+#: lib/admin.php:4006
 msgctxt "option comment"
 msgid "%s required"
 msgstr "%s requis"
 
-#: lib/admin.php:4116
+#: lib/admin.php:4108
 msgid "Please select a %1$s settings file to import."
 msgstr "Veuillez sélectionner un fichier de réglages %1$s à importer."
 
-#: lib/admin.php:4123
+#: lib/admin.php:4115
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr "Le fichier de réglages %1$s à importer doit être un type mime \"%2$s\"."
 
-#: lib/admin.php:4130
+#: lib/admin.php:4122
 msgid "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr "Le fichier de réglages %1$s dépasse le maximum autorisé de %2$d octets."
 
-#: lib/admin.php:4144
+#: lib/admin.php:4136
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr "Le fichier de réglages %1$s semble vide ou corrompu."
 
-#: lib/admin.php:4154
+#: lib/admin.php:4146
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr "Le fichier de réglages %1$s n'a pas pu être décodé dans un tableau de réglages."
 
-#: lib/admin.php:4164
+#: lib/admin.php:4156
 msgid "Import of plugin and add-on settings is complete."
 msgstr "L'importation des réglages d'extension et ajouts est terminée."
 
@@ -1049,12 +1050,12 @@ msgstr "Modifier"
 msgid "Reference: %s"
 msgstr "Référence: %s"
 
-#. translators: please ignore - translation uses a different text domain
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/com/plugin.php:271 lib/gettext-com.php:39
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr "Les informations pour l'extension \"%s\" contiennent un lien de téléchargement invalide."
 
-#. translators: please ignore - translation uses a different text domain
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/com/plugin.php:282 lib/gettext-com.php:41
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr "L'information pour l'extension \"%s\" ne contient pas de lien de téléchargement."
@@ -2299,7 +2300,7 @@ msgstr "la bibliothèque de médias"
 msgid "Terms (Categories and Tags)"
 msgstr "Termes (catégories et étiquettes)"
 
-#. translators: please ignore - translation uses a different text domain
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/gettext-pro.php:33 lib/pro/admin/advanced.php:249
 #: lib/std/admin/advanced.php:249
 msgid "Users"
@@ -2922,22 +2923,22 @@ msgstr "Veuillez choisir une page dans la section <a href=\"%s\">WooCommerce  R�
 msgid "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; Products &gt; General</a> section."
 msgstr "Veuillez choisir une page dans la section <a href=\"%s\">WooCommerce  Réglages &gt; Produits &gt; Général</a> ."
 
-#. translators: please ignore - translation uses a different text domain
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/gettext-pro.php:165 lib/pro/ecom/woocommerce.php:61
 msgid "My account page"
 msgstr "My account page"
 
-#. translators: please ignore - translation uses a different text domain
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/gettext-pro.php:167 lib/pro/ecom/woocommerce.php:62
 msgid "Cart page"
 msgstr "Cart page"
 
-#. translators: please ignore - translation uses a different text domain
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/gettext-pro.php:169 lib/pro/ecom/woocommerce.php:63
 msgid "Checkout page"
 msgstr "Checkout page"
 
-#. translators: please ignore - translation uses a different text domain
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/gettext-pro.php:171 lib/pro/ecom/woocommerce.php:64
 msgid "Shop page"
 msgstr "Shop page"
@@ -3081,17 +3082,17 @@ msgctxt "option label"
 msgid "Post Image Field ID"
 msgstr "ID champ image d'article"
 
-#. translators: please ignore - translation uses a different text domain
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/gettext-pro.php:224 lib/pro/rating/wppostratings.php:58
 msgid "Enable Google Rich Snippets?"
 msgstr "Enable Google Rich Snippets?"
 
-#. translators: please ignore - translation uses a different text domain
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/gettext-pro.php:226 lib/pro/rating/wppostratings.php:62
 msgid "Ratings"
 msgstr "Ratings"
 
-#. translators: please ignore - translation uses a different text domain
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/gettext-pro.php:228 lib/pro/rating/wppostratings.php:64
 msgid "Ratings Options"
 msgstr "Ratings Options"
@@ -4282,7 +4283,7 @@ msgstr "Si vous entrez des IDs d'authentification dans cette page de réglages r
 msgid "<strong>WordPress uses the default site / blog ID to install and/or update plugins from the Network Admin interface</strong> &mdash; to update the %1$s and its %2$s add-ons, please make sure the %3$s add-on is active on the default site, and the default site is licensed."
 msgstr "<strong>WordPress utilise l'ID du site / blog par défaut pour installer et/ou mettre à jour les extensions de l'interface Admin du réseau</strong> &mdash; pour mettre à jour %1$s et ses ajouts %2$s, assurez-vous que l'ajout %3$s est actif sur le site par défaut, et que le site par défaut est sous licence."
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/messages.php:1859
 msgid "Contact Info"
 msgstr "Informations de contacts"
@@ -4423,7 +4424,7 @@ msgstr "Un ID d'authentification a été fourni pour %1$s mais l'extension n'est
 msgid "An Authentication ID has been entered for %1$s in the %2$s settings page but the %3$s version is not installed &mdash; don't forget to update the plugin to install the latest %3$s version."
 msgstr "Un ID d'authentification a été fourni pour %1$s dans la page de réglages %2$s mais la version %3$s n'est pas installé &mdash; n'oubliez pas de mettre à jour l'extension pour installer la version %3$s courante."
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/messages.php:2135
 msgid "Plugins"
 msgstr "Extensions"
@@ -4462,12 +4463,12 @@ msgctxt "lib file description"
 msgid "Update Manager"
 msgstr "Gestion mises à jour"
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/messages.php:2180
 msgid "Dashboard"
 msgstr "Tableau de bord"
 
-#. translators: please ignore - translation uses a different text domain.
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/messages.php:2182
 msgid "Updates"
 msgstr "Mises à jour"
@@ -5086,27 +5087,27 @@ msgstr "SVP mettre à jour %1$s avant d'essayer de réactiver l'extension %2$s."
 msgid "adding schema for %1$s ID %2$s"
 msgstr "ajout de schéma pour %1$s ID %2$s"
 
-#: lib/schema-single.php:551
+#: lib/schema-single.php:552
 msgid "adding schema for offer"
 msgstr "ajout de schéma pour offre"
 
-#: lib/schema-single.php:649
+#: lib/schema-single.php:650
 msgid "adding schema for organization"
 msgstr "ajout de schéma d'organisation"
 
-#: lib/schema-single.php:691
+#: lib/schema-single.php:692
 msgid "The \"%1$s\" Organization Logo image is missing and required for the Schema %2$s markup."
 msgstr "L'image logo de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema-single.php:698
+#: lib/schema-single.php:699
 msgid "The \"%1$s\" Organization Banner (600x60px) image is missing and required for the Schema %2$s markup."
 msgstr "L'image bannière (600x60px) de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema-single.php:842
+#: lib/schema-single.php:848
 msgid "adding schema for person user ID %1$s"
 msgstr "ajout de schéma de personne pour l'ID d'utilisateur %1$s"
 
-#: lib/schema-single.php:1002
+#: lib/schema-single.php:1008
 msgid "adding schema for place"
 msgstr "ajout de schéma de place"
 
