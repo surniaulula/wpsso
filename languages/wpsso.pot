@@ -2741,9 +2741,7 @@ msgstr ""
 #: lib/gettext-pro.php:101 lib/gettext-pro.php:130 lib/pro/admin/meta.php:107
 #: lib/pro/admin/post.php:101 lib/std/admin/meta.php:96
 #: lib/std/admin/post.php:92
-msgid ""
-"This option is disabled (the \"%1$s\" head tag is disabled or an SEO plugin "
-"was detected)."
+msgid "Option disabled (\"%1$s\" head tag disabled or an SEO plugin detected)."
 msgstr ""
 
 #: lib/gettext-pro.php:102 lib/pro/admin/post.php:103 lib/std/admin/post.php:94

@@ -93,7 +93,7 @@ if ( ! class_exists( 'WpssoStdAdminMeta' ) ) {
 				$json_msg_transl = '';
 			}
 
-			$seo_msg_transl = __( 'This option is disabled (the "%1$s" head tag is disabled or an SEO plugin was detected).', 'wpsso' );
+			$seo_msg_transl = __( 'Option disabled ("%1$s" head tag disabled or an SEO plugin detected).', 'wpsso' );
 
 			/**
 			 * Metabox form rows.
