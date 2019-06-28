@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 5.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-06-24 16:55-0700\n"
-"PO-Revision-Date: 2019-06-24 16:55-0700\n"
+"PO-Revision-Date: 2019-06-27 08:53-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4530,7 +4530,7 @@ msgstr "<strong>Une bonne cote est une excellente façon d'encourager vos dével
 
 #: lib/messages.php:2256
 msgid "Please take a moment to %1$s thank your developers %1$s by rating the plugins you use."
-msgstr "Veuillez prendre un moment pour %1$s remercier vos développeurs %1$s et notez les extensions que vous utilisez."
+msgstr "SVP prennez un moment pour %1$s remercier vos développeurs %1$s et notez les extensions que vous utilisez."
 
 #. translators: %s is the wordpress.org URL for the WPSSO User Locale Selector add-on.
 #: lib/messages.php:2276
