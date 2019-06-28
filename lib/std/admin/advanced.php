@@ -146,17 +146,6 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			/**
 			 * Product attribute names.
 			 */
-			$attribute_names = SucomUtil::preg_grep_keys( '/^plugin_product_attr_/', $form->options, $invert = false, $replace = '' );
-
-			foreach ( $attribute_names as $attr_id => $attr_name ) {
-
-				if ( empty( $attr_name ) ) {	// Just in case.
-					continue;
-				}
-
-				$form->options[ 'plugin_product_attr_' . $attr_id ] = $attr_name;
-			}
-
 			foreach ( $this->p->cf[ 'form' ][ 'product_attr_labels' ] as $opt_key => $opt_label ) {
 
 				$table_rows[ $opt_key ] = $form->get_tr_hide( 'basic', $opt_key ) . 
