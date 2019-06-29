@@ -585,7 +585,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 			} else {
-				self::update_json_data_id( $json_data, $page_type_id );
+				self::update_data_id( $json_data, $page_type_id, $optimize = false );
 			}
 
 			/**
@@ -1445,7 +1445,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$json_values[ 'url' ] = $json_data[ 'url' ];
 					}
 
-					self::update_json_data_id( $json_values, $type_id );
+					self::update_data_id( $json_values, $type_id, $optimize = false );
 				}
 
 				$json_data = array_merge(
@@ -1646,167 +1646,59 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Pass a single or two dimension image array in $og_images.
+		 * Pass a single or two dimension image array in $mt_list.
 		 */
-		public static function add_og_image_list_data( &$json_data, &$og_images, $mt_image_pre = 'og:image' ) {
+		public static function add_images_data_mt( &$json_data, &$mt_list, $mt_prefix = 'og:image' ) {
 
 			$images_added = 0;
 
-			if ( isset( $og_images[0] ) && is_array( $og_images[0] ) ) {						// 2 dimensional array.
+			if ( isset( $mt_list[ 0 ] ) && is_array( $mt_list[ 0 ] ) ) {	// 2 dimensional array.
 
-				foreach ( $og_images as $og_single_image ) {
-					$images_added += self::add_og_single_image_data( $json_data, $og_single_image, $mt_image_pre, true );	// $list_element is true.
+				foreach ( $mt_list as $og_single_image ) {
+
+					$images_added += WpssoSchemaSingle::add_image_data_mt( $json_data,
+						$og_single_image, $mt_prefix, $list_element = true );
 				}
 
-			} elseif ( is_array( $og_images ) ) {
+			} elseif ( is_array( $mt_list ) ) {
 
-				$images_added += self::add_og_single_image_data( $json_data, $og_images, $mt_image_pre, true );	// $list_element is true.
+				$images_added += WpssoSchemaSingle::add_image_data_mt( $json_data,
+					$mt_list, $mt_prefix, $list_element = true );
 			}
 
 			return $images_added;	// Return count of images added.
 		}
 
 		/**
-		 * Pass a single dimension image array in $opts.
+		 * Deprecated on 2019/06/29.
 		 */
-		public static function add_og_single_image_data( &$json_data, $opts, $mt_image_pre = 'og:image', $list_element = true ) {
+		public static function add_og_single_image_data( &$json_data, $mt_single, $mt_prefix = 'og:image', $list_element = true ) {
 
-			$wpsso =& Wpsso::get_instance();
+			return WpssoSchemaSingle::add_image_data_mt( $json_data, $mt_single, $mt_prefix, $list_element );
+		}
 
-			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->mark();
+		/**
+		 * Provide a single or two-dimension video array in $mt_list.
+		 */
+		public static function add_videos_data_mt( &$json_data, $mt_list, $mt_prefix = 'og:video' ) {
+
+			$videos_added = 0;
+
+			if ( isset( $mt_list[ 0 ] ) && is_array( $mt_list[ 0 ] ) ) {	// 2 dimensional array.
+
+				foreach ( $mt_list as $og_single_video ) {
+
+					$videos_added += WpssoSchemaSingle::add_video_data_mt( $json_data,
+						$og_single_video, $mt_prefix, $list_element = true );
+				}
+
+			} elseif ( is_array( $mt_list ) ) {
+
+				$videos_added += WpssoSchemaSingle::add_video_data_mt( $json_data,
+					$mt_list, $mt_prefix, $list_element = true );
 			}
 
-			if ( empty( $opts ) || ! is_array( $opts ) ) {
-				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'exiting early: options array is empty or not an array' );
-				}
-				return 0;	// Return count of images added.
-			}
-
-			$image_url = SucomUtil::get_mt_media_url( $opts, $mt_image_pre );
-
-			if ( empty( $image_url ) ) {
-
-				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'exiting early: ' . $mt_image_pre . ' URL values are empty' );
-				}
-
-				return 0;	// Return count of images added.
-			}
-
-			/**
-			 * If not adding a list element, inherit the existing schema type url (if one exists).
-			 */
-			list( $image_type_id, $image_type_url ) = WpssoSchemaSingle::get_type_id_url( $json_data, false, 'image_type', 'image.object', $list_element );
-
-			$ret = self::get_schema_type_context( $image_type_url, array(
-				'url' => SucomUtil::esc_url_encode( $image_url ),
-			) );
-
-			/**
-			 * If we have an ID, and it's numeric (so exclude NGG v1 image IDs), 
-			 * check the WordPress Media Library for a title and description.
-			 */
-			if ( ! empty( $opts[ $mt_image_pre . ':id' ] ) && is_numeric( $opts[ $mt_image_pre . ':id' ] ) ) {
-
-				$post_id = $opts[ $mt_image_pre . ':id' ];
-
-				$mod = $wpsso->post->get_mod( $post_id );
-
-				/**
-				 * Get the image title.
-				 */
-				$ret[ 'name' ] = $wpsso->page->get_title( 0, '', $mod, true, false, true, 'schema_title', false );
-
-				if ( empty( $ret[ 'name' ] ) ) {
-					unset( $ret[ 'name' ] );
-				}
-
-				/**
-				 * Get the image alternate title, if one has been defined in the custom post meta.
-				 */
-				$title_max_len = $wpsso->options[ 'og_title_max_len' ];
-
-				$ret[ 'alternateName' ] = $wpsso->page->get_title( $title_max_len, '...', $mod, true, false, true, 'schema_title_alt' );
-
-				if ( empty( $ret[ 'alternateName' ] ) || $ret[ 'name' ] === $ret[ 'alternateName' ] ) {
-					unset( $ret[ 'alternateName' ] );
-				}
-
-				/**
-				 * Use the image "Alternative Text" for the 'alternativeHeadline' property.
-				 */
-				$ret[ 'alternativeHeadline' ] = get_post_meta( $mod[ 'id' ], '_wp_attachment_image_alt', true );
-
-				if ( empty( $ret[ 'alternativeHeadline' ] ) || $ret[ 'name' ] === $ret[ 'alternativeHeadline' ] ) {
-					unset( $ret[ 'alternativeHeadline' ] );
-				}
-
-				/**
-				 * Get the image caption (aka excerpt of the post object).
-				 */
-				$ret[ 'caption' ] = $wpsso->page->get_the_excerpt( $mod );
-
-				if ( empty( $ret[ 'caption' ] ) ) {
-					unset( $ret[ 'caption' ] );
-				}
-
-				/**
-				 * If we don't have a caption, then provide a short description.
-				 * If we have a caption, then add the complete image description.
-				 */
-				if ( empty( $ret[ 'caption' ] ) ) {
-
-					$ret[ 'description' ] = $wpsso->page->get_description( $wpsso->options[ 'schema_desc_max_len' ],
-						$dots = '...', $mod, $read_cache = true, $add_hashtags = false, $do_encode = true,
-							$md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
-
-				} else {
-
-					$ret[ 'description' ] = $wpsso->page->get_the_content( $mod, $read_cache = true,
-						$md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
-
-					$ret[ 'description' ] = $wpsso->util->cleanup_html_tags( $ret[ 'description' ] );
-				}
-
-				if ( empty( $ret[ 'description' ] ) ) {
-					unset( $ret[ 'description' ] );
-				}
-
-				/**
-				 * Set the 'fileFormat' property to the image mime type.
-				 */
-				$ret[ 'fileFormat' ] = get_post_mime_type( $mod[ 'id' ] );
-
-				if ( empty( $ret[ 'fileFormat' ] ) ) {
-					unset( $ret[ 'fileFormat' ] );
-				}
-			}
-
-			foreach ( array( 'width', 'height' ) as $prop_name ) {
-				if ( isset( $opts[ $mt_image_pre . ':' . $prop_name ] ) && $opts[ $mt_image_pre . ':' . $prop_name ] > 0 ) {	// Just in case.
-					$ret[ $prop_name ] = $opts[ $mt_image_pre . ':' . $prop_name ];
-				}
-			}
-
-			if ( ! empty( $opts[ $mt_image_pre . ':tag' ] ) ) {
-				if ( is_array( $opts[ $mt_image_pre . ':tag' ] ) ) {
-					$ret[ 'keywords' ] = implode( ', ', $opts[ $mt_image_pre . ':tag' ] );
-				} else {
-					$ret[ 'keywords' ] = $opts[ $mt_image_pre . ':tag' ];
-				}
-			}
-
-			if ( empty( $list_element ) ) {		// Add a single item.
-				$json_data = $ret;
-			} elseif ( is_array( $json_data ) ) {	// Just in case.
-				$json_data[] = $ret;		// Add an item to the list.
-			} else {
-				$json_data = array( $ret );	// Add an item to the list.
-			}
-
-			return 1;	// Return count of images added.
+			return $videos_added;	// return count of videos added
 		}
 
 		public static function add_aggregate_offer_data( &$json_data, array $mod, array $mt_offers ) {
@@ -2240,6 +2132,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Deprecated on 2019/03/30.
 		 */
 		public static function add_data_quant_from_assoc( array &$json_data, array $assoc, array $names ) {
+
 			return $this->add_data_unitcode_from_assoc( $json_data, $assoc, $names );
 		}
 
@@ -2457,7 +2350,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		public static function update_json_data_id( &$json_data, $type_id ) {
+		/**
+		 * WpssoSchemaSingle methods call this method with $optimize =
+		 * true to avoid duplicate JSON arrays.
+		 */
+		public static function update_data_id( &$json_data, $type_id, $optimize = false ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -2473,7 +2370,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				return;
 			}
-	
+
 			if ( false !== filter_var( $type_id, FILTER_VALIDATE_URL ) ) {
 
 				if ( $wpsso->debug->enabled ) {
@@ -2563,6 +2460,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 								$wpsso->debug->log( 'modified @id is ' . $json_data[ '@id' ] );
 							}
 						}
+					}
+				}
+			}
+
+			if ( $optimize ) {
+
+				static $local_cache = array();
+
+				if ( ! empty( $json_data[ '@id' ] ) ) {	// Just in case.
+					if ( isset( $local_cache[ $json_data[ '@id' ] ] ) ) {
+						$json_data = array( '@id' => $json_data[ '@id' ] );
+					} else {
+						$local_cache[ $json_data[ '@id' ] ] = $json_data;
 					}
 				}
 			}

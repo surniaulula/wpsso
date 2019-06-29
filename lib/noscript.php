@@ -122,7 +122,7 @@ if ( ! class_exists( 'WpssoNoScript' ) ) {
 			return (array) apply_filters( $this->p->lca . '_schema_noscript_array', $ret, $mod, $mt_og, $page_type_id );
 		}
 
-		public function get_single_image( array &$mod, &$mixed, $mt_image_pre = 'og:image' ) {
+		public function get_single_image( array &$mod, &$mixed, $mt_prefix = 'og:image' ) {
 
 			$mt_image = array();
 
@@ -132,11 +132,11 @@ if ( ! class_exists( 'WpssoNoScript' ) ) {
 
 			} elseif ( is_array( $mixed ) ) {
 
-				$image_url = SucomUtil::get_mt_media_url( $mixed, $mt_image_pre );
+				$image_url = SucomUtil::get_mt_media_url( $mixed, $mt_prefix );
 
 				if ( empty( $image_url ) ) {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'exiting early: ' . $mt_image_pre . ' url values are empty' );
+						$this->p->debug->log( 'exiting early: ' . $mt_prefix . ' url values are empty' );
 					}
 					return array();
 				}
@@ -146,10 +146,10 @@ if ( ! class_exists( 'WpssoNoScript' ) ) {
 				 */
 				$mt_image = array_merge(
 					$this->p->head->get_single_mt( 'link', 'itemprop', 'image.url', $image_url, '', $mod ),			// Link itemprop.
-					( empty( $mixed[ $mt_image_pre . ':width' ] ) ? array() : $this->p->head->get_single_mt( 'meta',	// Meta itemprop.
-						'itemprop', 'image.width', $mixed[ $mt_image_pre . ':width' ], '', $mod ) ),
-					( empty( $mixed[ $mt_image_pre . ':height' ] ) ? array() : $this->p->head->get_single_mt( 'meta',	// Meta itemprop.
-						'itemprop', 'image.height', $mixed[ $mt_image_pre . ':height' ], '', $mod ) )
+					( empty( $mixed[ $mt_prefix . ':width' ] ) ? array() : $this->p->head->get_single_mt( 'meta',	// Meta itemprop.
+						'itemprop', 'image.width', $mixed[ $mt_prefix . ':width' ], '', $mod ) ),
+					( empty( $mixed[ $mt_prefix . ':height' ] ) ? array() : $this->p->head->get_single_mt( 'meta',	// Meta itemprop.
+						'itemprop', 'image.height', $mixed[ $mt_prefix . ':height' ], '', $mod ) )
 				);
 
 			} else {

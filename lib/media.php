@@ -1071,7 +1071,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$og_single_image[ 'og:image:url' ] = apply_filters( $this->p->lca . '_rewrite_image_url',
 							$this->p->util->fix_relative_url( $og_single_image[ 'og:image:url' ] ) );
 
-						if ( false === $check_dupes || $this->p->util->is_uniq_url( $og_single_image[ 'og:image:url' ], $size_name ) ) {
+						if ( ! $check_dupes || $this->p->util->is_uniq_url( $og_single_image[ 'og:image:url' ], $size_name ) ) {
 							if ( $this->p->util->push_max( $og_images, $og_single_image, $num ) ) {
 								return $og_images;
 							}
@@ -1206,7 +1206,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					if ( ! empty( $media[3] ) ) {
 
-						if ( $check_dupes == false || $this->p->util->is_uniq_url( $media[3], 'content_video' ) ) {
+						if ( ! $check_dupes || $this->p->util->is_uniq_url( $media[3], 'content_video' ) ) {
 
 							$args = array(
 								'url'    => $media[3],
@@ -1267,7 +1267,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 								if ( ! empty( $args[ 'url' ] ) ) {
 
-									if ( $check_dupes == false || $this->p->util->is_uniq_url( $args[ 'url' ], 'content_video' ) ) {
+									if ( ! $check_dupes || $this->p->util->is_uniq_url( $args[ 'url' ], 'content_video' ) ) {
 
 										$og_single_video = $this->get_video_details( $args, $check_dupes );
 
@@ -1481,7 +1481,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				if ( ! $have_media[ $mt_media_pre ] || ( $check_dupes && ! $this->p->util->is_uniq_url( $media_url, 'video_details' ) ) ) {
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'no media url or duplicate - removing ' . $mt_media_pre . ' meta tags' );
+						$this->p->debug->log( 'no media url or duplicate media - removing ' . $mt_media_pre . ' meta tags' );
 					}
 
 					foreach( SucomUtil::preg_grep_keys( '/^' . $mt_media_pre . '(:.*)?$/', $og_single_video ) as $k => $v ) {

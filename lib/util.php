@@ -2823,14 +2823,18 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		private function check_url_string( $url, $context ) {
 
 			if ( is_string( $url ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $context . ' url = ' . $url );
 				}
+
 				return $url;	// Stop here.
 			}
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( $context . ' url is ' . gettype( $url ) );
+
 				if ( is_wp_error( $url ) ) {
 					$this->p->debug->log( $context . ' url error: ' . $url->get_error_message() );
 				}
@@ -3135,7 +3139,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$classname = apply_filters( $this->p->lca . '_load_lib', false, 'com/bfo', 'SucomBFO' );
 
 				if ( is_string( $classname ) && class_exists( $classname ) ) {
+
 					$bfo_obj = new $classname( $this->p );
+
 					$bfo_obj->add_start_hooks( array( $filter_name ) );
 				}
 			}

@@ -1055,7 +1055,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function is_mobile() {
 
 			static $local_cache = null;
-			static $mobile_obj = null;
+			static $mobile_obj  = null;
 
 			if ( ! isset( $local_cache ) ) {
 
@@ -1955,7 +1955,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_first_num( array $input ) {
+
 			list( $first, $last, $next ) = self::get_first_last_next_nums( $input );
+
 			return $first;
 		}
 
