@@ -427,6 +427,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 5.1.0-dev.1 (TBD)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* None.
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* None.
+
 **Version 5.0.1 (2019/06/29)**
 
 * *New Features*
@@ -471,6 +482,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Improved WP_Query for a post type archive (see https://codex.wordpress.org/Function_Reference/is_post_type_archive) when running as background task.
 
 == Upgrade Notice ==
+
+= 5.1.0-dev.1 =
+
+(TBD) None.
 
 = 5.0.1 =
 
