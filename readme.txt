@@ -427,7 +427,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.0.1-rc.1 (2019/06/28)**
+**Version 5.0.1 (2019/06/29)**
 
 * *New Features*
 	* None.
@@ -543,9 +543,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 5.0.1-rc.1 =
+= 5.0.1 =
 
-(2019/06/28) Fixed block editor global variable definition by changing "const" to "var". Fixed markup when selecting an Schema Organization, LocalBusiness, and Person type (or sub-type) in the Document SSO metabox.
+(2019/06/29) Fixed block editor global variable definition by changing "const" to "var". Fixed markup when selecting an Schema Organization, LocalBusiness, and Person type (or sub-type) in the Document SSO metabox.
 
 = 5.0.0 =
 
