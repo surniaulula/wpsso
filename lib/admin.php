@@ -1935,15 +1935,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
-		 * Call as WpssoAdmin::get_nonce_action() to have a reliable __METHOD__ value.
+		 * Always call as WpssoAdmin::get_nonce_action() to have a reliable __METHOD__ value.
 		 */
 		public static function get_nonce_action() {
 
-			$salt = __FILE__.__METHOD__.__LINE__;
-
-			foreach ( array( 'AUTH_SALT', 'NONCE_SALT' ) as $const ) {
-				$salt .= defined( $const ) ? constant( $const ) : '';
-			}
+			$salt = __FILE__ . __LINE__ . __METHOD__;
 
 			return md5( $salt );
 		}

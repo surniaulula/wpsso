@@ -65,8 +65,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			 *
 			 * Example lcas: wpsso, wpssojson, wpssoum, etc.
 			 */
-			$info[ 'lca' ] = $lca = isset( $info[ 'lca' ] ) ?
-				$info[ 'lca' ] : $this->p->cf[ 'lca' ];
+			$info[ 'lca' ] = $lca = isset( $info[ 'lca' ] ) ? $info[ 'lca' ] : $this->p->lca;
 
 			/**
 			 * Get the array of plugin urls (download, purchase, etc.).
@@ -2084,7 +2083,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$filter_name = 'head_attributes';
 						$tag_code    = '<code>&lt;head&gt;</code>';
 						$php_code    = '<pre><code>&lt;head &lt;?php do_action( &#39;add_head_attributes&#39; ); ?&gt;&gt;</code></pre>';
-						$action_url  = wp_nonce_url( $this->p->util->get_admin_url( '?' . $this->p->cf[ 'lca' ] . '-action=modify_tmpl_head_attributes' ),
+						$action_url  = wp_nonce_url( $this->p->util->get_admin_url( '?' . $this->p->lca . '-action=modify_tmpl_head_attributes' ),
 							WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 
 						$text = '<p class="top">';
