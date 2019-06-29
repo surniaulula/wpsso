@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires At Least: 3.8
 Tested Up To: 5.2.2
 WC Tested Up To: 3.6
-Stable Tag: 5.0.0
+Stable Tag: 5.0.1
 
 WPSSO Core makes sure your content looks great on all social and search sites, no matter how URLs are crawled, shared, re-shared, posted or embedded!
 
@@ -470,84 +470,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new `SucomUtilWP::doing_frontend()` method.
 	* Improved WP_Query for a post type archive (see https://codex.wordpress.org/Function_Reference/is_post_type_archive) when running as background task.
 
-**Version 4.31.4 (2019/06/14)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* Removed the WooCommerce `$product` global variable consistency check (Premium plugin).
-* *Bugfixes*
-	* None.
-* *Developer Notes*
-	* None.
-
-**Version 4.31.3 (2019/06/12)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* None.
-* *Bugfixes*
-	* Fixed product sale price specification by adding the 'validFrom' and 'validThrough' properties and removing the 'priceValidUntil' property.
-* *Developer Notes*
-	* None.
-
-**Version 4.31.2 (2019/05/31)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* Added support for Schema Place mid-day closure.
-* *Bugfixes*
-	* None.
-* *Developer Notes*
-	* Added a new SucomUtil::get_open_close() method.
-	* Added a new SucomUtil::is_valid_midday() method.
-
-**Version 4.31.1 (2019/05/27)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* Added numbers to multi line input options (SameAs, HowTo Steps, etc).
-	* Added the SEO by Rank Math plugin to the list of recognized SEO plugins.
-* *Bugfixes*
-	* None.
-* *Developer Notes*
-	* None.
-
-**Version 4.31.0 (2019/05/20)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* None.
-* *Bugfixes*
-	* Fixed an incorrect method call in the 'wpsso_schema_attributes' function.
-	* Fixed an incorrect post status value in WpssoUtil::get_page_url().
-	* Fixed adding an array element to a possible json data string value. 
-* *Developer Notes*
-	* Merged the 'post', 'term', and 'user' module methods into the WpssoPost, WpssoTerm, and WpssoUser classes.
-	* Deprecated the `$this->p->m[ 'util' ][ 'post' ]` class object variable by `$this->p->post`.
-	* Deprecated the `$this->p->m[ 'util' ][ 'term' ]` class object variable by `$this->p->term`.
-	* Deprecated the `$this->p->m[ 'util' ][ 'user' ]` class object variable by `$this->p->user`.
-	* Updated the following add-ons to use the new class object variables:
-		* WPSSO Mobile App Meta
-		* WPSSO Organization Markup 
-		* WPSSO Place / Location and Local Business Meta
-		* WPSSO REST API
-		* WPSSO Ridiculously Responsive Social Sharing Buttons
-		* WPSSO Schema Breadcrumbs Markup
-		* WPSSO Schema JSON-LD Markup
-		* WPSSO Social Sharing Buttons 
-
 == Upgrade Notice ==
 
 = 5.0.1 =
 
 (2019/06/29) Fixed block editor global variable definition by changing "const" to "var". Fixed markup when selecting an Schema Organization, LocalBusiness, and Person type (or sub-type) in the Document SSO metabox.
-
-= 5.0.0 =
-
-(2019/06/24) Removed support for the Yotpo Social Reviews for WooCommerce plugin. Added checks for missing WooCommerce pages. Added an action hook to remove duplicate JSON-LD markup in AMP pages from the Yoast SEO plugin. Renamed the 'gpl' library sub-folder to 'std'.
 
