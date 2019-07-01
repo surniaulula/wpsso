@@ -427,7 +427,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.1.0-dev.1 (2019/06/29)**
+**Version 5.1.0-dev.2 (2019/06/29)**
 
 * *New Features*
 	* None.
@@ -488,7 +488,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 5.1.0-dev.1 =
+= 5.1.0-dev.2 =
 
 (2019/06/29) Schema method standardization and "@id" optimizations.
 
