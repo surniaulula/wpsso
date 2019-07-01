@@ -13,20 +13,23 @@ if ( ! class_exists( 'WpssoSchemaCache' ) ) {
 
 	class WpssoSchemaCache {
 
-		protected $p;
-
 		protected static $cache_exp_secs = null;
 
 		public function __construct( &$plugin ) {
-
-			$this->p =& $plugin;
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
 		}
 
+		/**
+		 * Deprecated on 2019/07/01.
+		 */
 		public static function get_single( array $mod, $mt_og, $page_type_id ) {
+
+			return self::get_mod_json_data( $mod, $mt_og, $page_type_id );
+		}
+
+		/**
+		 * Return a single cache element (false or json data array).
+		 */
+		public static function get_mod_json_data( array $mod, $mt_og, $page_type_id ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -53,10 +56,6 @@ if ( ! class_exists( 'WpssoSchemaCache' ) ) {
 				}
 
 				return $cache_data[ $cache_index ];	// Stop here.
-			}
-
-			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->mark( 'get single ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' data' );	// End timer.
 			}
 
 			/**
@@ -94,10 +93,6 @@ if ( ! class_exists( 'WpssoSchemaCache' ) ) {
 			}
 
 			self::save_mod_data( $mod, $cache_data );
-
-			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->mark( 'get single ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' data' );	// End timer.
-			}
 
 			return $cache_data[ $cache_index ];
 		}

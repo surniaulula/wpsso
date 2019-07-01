@@ -13,6 +13,10 @@ if ( ! class_exists( 'WpssoSchemaCache' ) ) {
 	require_once WPSSO_PLUGINDIR . 'lib/schema-cache.php';
 }
 
+if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
+	require_once WPSSO_PLUGINDIR . 'lib/schema-graph.php';
+}
+
 if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 	require_once WPSSO_PLUGINDIR . 'lib/schema-single.php';
 }
@@ -281,7 +285,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			WpssoSchemaSingle::add_person_data( $ret, $mod, $user_id, $list_element = false );
 
 			/**
-			 * Override author's website url and use the open graph url instead.
+			 * Override author's website url and use the og url instead.
 			 */
 			if ( $mod[ 'is_home' ] ) {
 				$ret[ 'url' ] = $mt_og[ 'og:url' ];
@@ -320,7 +324,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$page_type_id  = $mt_og[ 'schema:type:id' ]  = $this->get_mod_schema_type( $mod, $get_schema_id = true );	// Example: article.tech.
 			$page_type_url = $mt_og[ 'schema:type:url' ] = $this->get_schema_type_url( $page_type_id );		// Example: https://schema.org/TechArticle.
 			$graph_context = 'https://schema.org';
-			$graph_data    = array();
+			$graph_type    = 'graph';
 			$json_scripts  = array();
 
 			list(
@@ -441,7 +445,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				/**
-				 * Sanitize the @id and @type properties and encode the json data in an HTML script block.
+				 * Add the json data to the @graph array.
 				 */
 				foreach ( $scripts_data as $json_data ) {
 
@@ -462,7 +466,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$this->p->debug->log( 'existing @type property is ' . print_r( $json_data[ '@type' ], true ) );	// @type can be an array.
 					}
 
-					$graph_data[] = $json_data;
+					WpssoSchemaGraph::add( $json_data );
 				}
 
 				if ( $this->p->debug->enabled ) {
@@ -470,14 +474,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
+			$filter_name = $this->p->lca . '_json_prop_' . SucomUtil::sanitize_hookname( $graph_context . '/' . $graph_type );
+
+			$graph_data = WpssoSchemaGraph::get( $graph_context );
+
+			$graph_data = apply_filters( $filter_name, $graph_data, $mod, $mt_og, $page_type_id, $is_main );
+
+			$graph_data = WpssoSchemaGraph::optimize( $graph_data );
+
 			if ( ! empty( $graph_data ) ) {
 				$json_scripts[][] = '<script type="application/ld+json">' .
-					$this->p->util->json_format( array(
-						'@context' => $graph_context,
-						'@graph'   => apply_filters( $this->p->lca . '_json_prop_https_schema_org_graph',
-							$graph_data, $mod, $mt_og, $page_type_id, $is_main ),
-					) ) .
-					'</script>' . "\n";
+					$this->p->util->json_format( $graph_data ) . '</script>' . "\n";
 			}
 
 			if ( $this->p->debug->enabled ) {
@@ -501,16 +508,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			/**
 			 * $page_type_id is false when called by
-			 * WpssoSchemaCache::get_single().
+			 * WpssoSchemaCache::get_mod_json_data().
 			 *
 			 * Optimize and use $page_type_id (when not false) as a
 			 * signal to check if we have single mod data in the
 			 * transient cache.
 			 *
-			 * If we're called by WpssoSchemaCache::get_single()
-			 * ($page_type_id is false), then don't bother checking
-			 * because we wouldn't be called if the cached data
-			 * existed. ;-)
+			 * If we're called by
+			 * WpssoSchemaCache::get_mod_json_data() ($page_type_id
+			 * is false), then don't bother checking because we
+			 * wouldn't be called if the cached data existed. ;-)
 			 */
 			if ( false === $page_type_id ) {
 
@@ -585,7 +592,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 			} else {
-				self::update_data_id( $json_data, $page_type_id, $optimize = false );
+				self::update_data_id( $json_data, $page_type_id );
 			}
 
 			/**
@@ -595,8 +602,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * CollectionPage, ProfilePage, and SearchResultsPage.
 			 *
 			 * If $cache_index is not set, then we were called by
-			 * WpssoSchemaCache::get_single() and the cache  data
-			 * will be saved by that method instead.
+			 * WpssoSchemaCache::get_mod_json_data() and the cache
+			 * data will be saved by that method instead.
 			 */
 			if ( ! empty( $cache_index ) ) {
 
@@ -1445,7 +1452,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$json_values[ 'url' ] = $json_data[ 'url' ];
 					}
 
-					self::update_data_id( $json_values, $type_id, $optimize = false );
+					self::update_data_id( $json_values, $type_id );
 				}
 
 				$json_data = array_merge(
@@ -1616,9 +1623,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( empty( $user_id ) || $user_id === 'none' ) {
+
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'exiting early: empty user_id / post_author' );
 				}
+
 				return 0;
 			}
 
@@ -2350,11 +2359,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		/**
-		 * WpssoSchemaSingle methods call this method with $optimize =
-		 * true to avoid duplicate JSON arrays.
-		 */
-		public static function update_data_id( &$json_data, $type_id, $optimize = false ) {
+		public static function update_data_id( &$json_data, $type_id, $type_url = false ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -2395,8 +2400,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return;	// Stop here.
 			}
 
-			if ( empty( $json_data[ 'url' ] ) ) {
+			$id_separator = '/';
+			$id_anchor    = '#id' . $id_separator;
+			$type_id      = preg_replace( '/^#id\//', '', $type_id );	// Just in case.
 
+			if ( ! empty( $type_url ) ) {
+
+				$default_id = $type_url . $id_anchor . $type_id;
+
+			} elseif ( ! empty( $json_data[ 'url' ] ) ) {
+
+				$default_id = $json_data[ 'url' ] . $id_anchor . $type_id;
+
+			} else {
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'exiting early: json_data url is empty and required' );
 				}
@@ -2404,10 +2420,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return;
 			}
 
-			$id_separator = '/';
-			$id_anchor    = '#id' . $id_separator;
-			$type_id      = preg_replace( '/^#id\//', '', $type_id );	// Just in case.
-			$default_id   = $json_data[ 'url' ] . $id_anchor . $type_id;
 
 			/**
 			 * The combined url and schema type create a unique @id string.
@@ -2460,19 +2472,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 								$wpsso->debug->log( 'modified @id is ' . $json_data[ '@id' ] );
 							}
 						}
-					}
-				}
-			}
-
-			if ( $optimize ) {
-
-				static $local_cache = array();
-
-				if ( ! empty( $json_data[ '@id' ] ) ) {	// Just in case.
-					if ( isset( $local_cache[ $json_data[ '@id' ] ] ) ) {
-						$json_data = array( '@id' => $json_data[ '@id' ] );
-					} else {
-						$local_cache[ $json_data[ '@id' ] ] = $json_data;
 					}
 				}
 			}

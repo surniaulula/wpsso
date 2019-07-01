@@ -17,15 +17,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 	class WpssoSchemaSingle {
 
-		protected $p;
-
 		public function __construct( &$plugin ) {
-
-			$this->p =& $plugin;
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
 		}
 
 		/**
@@ -275,14 +267,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			$ret =& self::maybe_add_data( $json_data, $mod, 'event', $event_id, $list_element );
-
-			if ( false !== $ret ) {	// 0 or 1 if data was retrieved from the local static cache.
-				return $ret;
-			}
-
-			$sharing_url = $wpsso->util->get_sharing_url( $mod );
-
 			/**
 			 * Maybe get options from Premium version integration modules.
 			 */
@@ -336,6 +320,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			$have_event_offers = false;
 			$event_offers_max  = SucomUtil::get_const( 'WPSSO_SCHEMA_EVENT_OFFERS_MAX', 10 );
+			$def_sharing_url   = $wpsso->util->get_sharing_url( $mod );
+
 
 			foreach ( range( 0, $event_offers_max - 1, 1 ) as $key_num ) {
 
@@ -371,10 +357,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					if ( ! isset( $event_opts[ 'offer_url' ] ) ) {
 
 						if ( $wpsso->debug->enabled ) {
-							$wpsso->debug->log( 'setting offer_url to ' . $sharing_url );
+							$wpsso->debug->log( 'setting offer_url to ' . $def_sharing_url );
 						}
 
-						$offer_opts[ 'offer_url' ] = $sharing_url;
+						$offer_opts[ 'offer_url' ] = $def_sharing_url;
 					}
 
 					if ( ! isset( $offer_opts[ 'offer_valid_from_date' ] ) ) {
@@ -504,7 +490,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Update the @id string based on $ret[ 'url' ], $event_type_id, and $event_id values.
 			 */
-			WpssoSchema::update_data_id( $ret, $event_type_id . '/' . $event_id, $optimize = true );
+			WpssoSchema::update_data_id( $ret, $event_type_id . '/' . $event_id );
 
 			if ( empty( $list_element ) ) {		// Add a single item.
 				$json_data = $ret;
@@ -523,12 +509,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->mark();
-			}
-
-			$ret =& self::maybe_add_data( $json_data, $mod, 'job', $job_id, $list_element );
-
-			if ( false !== $ret ) {	// 0 or 1 if data was retrieved from the local static cache.
-				return $ret;
 			}
 
 			/**
@@ -659,7 +639,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Update the @id string based on $ret[ 'url' ], $job_type_id, and $job_id values.
 			 */
-			WpssoSchema::update_data_id( $ret, $job_type_id . '/' . $job_id, $optimize = true );
+			WpssoSchema::update_data_id( $ret, $job_type_id . '/' . $job_id );
 
 			if ( empty( $list_element ) ) {		// Add a single item.
 				$json_data = $ret;
@@ -833,12 +813,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				return 0;
 			}
 
-			$ret =& self::maybe_add_data( $json_data, $mod, 'organization', $org_id, $list_element );
-
-			if ( false !== $ret ) {	// 0 or 1 if data was retrieved from the local static cache.
-				return $ret;
-			}
-
 			/**
 			 * Returned organization option values can change depending on the locale, but the option key names should NOT be localized.
 			 *
@@ -1009,7 +983,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Update the @id string based on $ret[ 'url' ], $org_type_id, and $org_id values.
 			 */
-			WpssoSchema::update_data_id( $ret, $org_type_id . '/' . $org_id, $optimize = true );
+			WpssoSchema::update_data_id( $ret, $org_type_id . '/' . $org_id );
 
 			/**
 			 * Restore previous reference values for admin notices.
@@ -1038,12 +1012,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->mark();
-			}
-
-			$ret =& self::maybe_add_data( $json_data, $mod, 'person', $person_id, $list_element );
-
-			if ( false !== $ret ) {	// 0 or 1 if data was retrieved from the local static cache.
-				return $ret;
 			}
 
 			$size_name = $wpsso->lca . '-schema';
@@ -1076,13 +1044,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$user_mod = $wpsso->user->get_mod( $person_id );
 
+				$sharing_url = $wpsso->util->get_sharing_url( $user_mod );
+
 				/**
 				 * Set the reference values for admin notices.
 				 */
 				if ( is_admin() ) {
-	
-					$sharing_url = $wpsso->util->get_sharing_url( $user_mod );
-	
 					$wpsso->notice->set_ref( $sharing_url, $user_mod,
 						sprintf( __( 'adding schema for person user ID %1$s', 'wpsso' ), $person_id ) );
 				}
@@ -1179,9 +1146,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$ret = apply_filters( $wpsso->lca . '_json_data_single_person', $ret, $mod, $person_id );
 
 			/**
-			 * Update the @id string based on $ret[ 'url' ], $person_type_id, and $person_id values.
+			 * Update the @id string based on $sharing_url and $person_type_id.
 			 */
-			WpssoSchema::update_data_id( $ret, $person_type_id . '/' . $person_id, $optimize = true );
+			WpssoSchema::update_data_id( $ret, $person_type_id, $sharing_url );
 
 			if ( empty( $list_element ) ) {		// Add a single item.
 				$json_data = $ret;
@@ -1200,12 +1167,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->mark();
-			}
-
-			$ret =& self::maybe_add_data( $json_data, $mod, 'place', $place_id, $list_element );
-
-			if ( false !== $ret ) {	// 0 or 1 if data was retrieved from the local static cache.
-				return $ret;
 			}
 
 			$size_name = $wpsso->lca . '-schema';
@@ -1394,7 +1355,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Update the @id string based on $ret[ 'url' ], $place_type_id, and $place_id values.
 			 */
-			WpssoSchema::update_data_id( $ret, $place_type_id . '/' . $place_id, $optimize = true );
+			WpssoSchema::update_data_id( $ret, $place_type_id . '/' . $place_id );
 
 			/**
 			 * Restore previous reference values for admin notices.
@@ -1462,62 +1423,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			return array( $single_type_id, $single_type_url );
-		}
-
-		/**
-		 * Adds a $json_data array element and returns a reference
-		 * (false, 0 or 1).
-		 *
-		 * If the local static cache does not contain an existing
-		 * entry, a new cache entry is created (as false) and a
-		 * reference to that cache entry is returned.
-		 */
-		private static function &maybe_add_data( &$json_data, $mod, $single_name, $single_id, $list_element = false ) {
-
-			$single_added = 0;
-
-			if ( $single_id === 'none' ) {	// Optimize.
-				return $single_added;
-			}
-
-			static $local_cache = array();
-
-			$cache_salt = SucomUtil::get_mod_salt( $mod );
-
-			if ( isset( $local_cache[ $cache_salt ][ $single_name ][ $single_id ] ) ) {
-
-				$single_data = $local_cache[ $cache_salt ][ $single_name ][ $single_id ];	// Dereference.
-
-				if ( false === $single_data ) {
-
-					$single_added = 0;
-
-				} else {
-
-					if ( ! empty( $single_data[ '@id' ] ) ) {
-						$single_data = array( '@id' => $single_data[ '@id' ] );
-					}
-
-					if ( empty( $list_element ) ) {
-						$json_data = $single_data;
-					} else {
-						$json_data[] = $single_data;
-					}
-
-					$single_added = 1;
-				}
-
-			} else {
-
-				$local_cache[ $cache_salt ][ $single_name ][ $single_id ] = false;
-
-				/**
-				 * Return a reference to the local cache so data can be added.
-				 */
-				$single_added =& $local_cache[ $cache_salt ][ $single_name ][ $single_id ];
-			}
-
-			return $single_added;	// Return a reference to 0, 1, or false.
 		}
 	}
 }
