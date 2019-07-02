@@ -747,7 +747,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Returns 0 if no organization was found / added.
 			 */
 			if ( ! self::add_organization_data( $offer[ 'seller' ], $mod, 'site', 'org_logo_url', false ) ) {
-				unset( $offer[ 'seller' ] );	// just in case
+				unset( $offer[ 'seller' ] );	// Just in case.
 			}
 
 			/**
