@@ -432,11 +432,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None.
 * *Improvements*
-	* Facebook / Open Graph product attribute fields in the Document SSO metabox are disabled when an e-commerce plugin, that supports product attributes, is detected (to avoid confusion about the source of product attribute values).
+	* Facebook / Open Graph product customization fields in the Document SSO metabox are disabled when an e-commerce plugin provides those values (to avoid confusion about the source of product attribute values).
 * *Bugfixes*
 	* None.
 * *Developer Notes*
-	* Schema method standardization and "@id" optimizations:
+	* Refactored several Schema methods for standardization and "@id" optimizations:
 		* Added WpssoSchemaGraph class with add(), get(), and optimize() methods.
 		* Added WpssoSchema::add_videos_data_mt().
 		* Moved WpssoSchema::add_og_single_image_data() to WpssoSchemaSingle::add_image_data_mt().
@@ -490,7 +490,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 5.1.0-dev.4 =
 
-(2019/07/02) Facebook / Open Graph product attribute fields in the Document SSO metabox are disabled when an e-commerce plugin, that supports product attributes, is detected. Schema method standardization and "@id" optimizations.
+(2019/07/02) Facebook / Open Graph product customization fields in the Document SSO metabox are disabled when an e-commerce plugin provides those values. Refactored several Schema methods for standardization and "@id" optimizations.
 
 = 5.0.1 =
 
