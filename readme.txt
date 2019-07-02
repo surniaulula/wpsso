@@ -427,7 +427,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.1.0-dev.4 (2019/07/02)**
+**Version 5.1.0-dev.5 (2019/07/02)**
 
 * *New Features*
 	* None.
@@ -488,7 +488,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 5.1.0-dev.4 =
+= 5.1.0-dev.5 =
 
 (2019/07/02) Facebook / Open Graph product customization fields in the Document SSO metabox are disabled when an e-commerce plugin provides those values. Refactored several Schema methods for standardization and "@id" optimizations.
 
