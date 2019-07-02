@@ -9,10 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
-if ( ! class_exists( 'WpssoSchemaCache' ) ) {
-	require_once WPSSO_PLUGINDIR . 'lib/schema-cache.php';
-}
-
 if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 	class WpssoSchemaSingle {

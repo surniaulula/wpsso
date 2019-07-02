@@ -50,8 +50,51 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 			return $graph_data;
 		}
 
-		public static function optimize( array $data ) {
-			return $data;
+		public static function optimize( array &$data ) {
+
+			static $new_data  = array();
+			static $recursion = null;
+
+			if ( isset( $data[ '@graph' ] ) ) {
+				$recursion = 0;
+			} elseif ( null !== $recursion ) {
+				$recursion++;
+			}
+
+			foreach ( $data as $key => &$val ) {
+
+				if ( is_array( $val ) ) {
+
+					self::optimize( $val );
+
+				} elseif ( $recursion > 2 && '@id' === $key && strpos( $val, '#id/' ) ) {
+
+					if ( ! isset( $new_data[ $val ] ) ) {
+
+						$new_data[ $val ] = $data;
+
+						foreach ( $new_data[ $val ] as $new_key => &$new_val ) {
+							if ( is_array( $new_val ) ) {
+								self::optimize( $new_val );
+							}
+						}
+					}
+
+					$data = array( $key => $val );
+
+					break;
+				}
+			}
+
+			if ( isset( $data[ '@graph' ] ) ) {
+
+				$data[ '@graph' ] = array_merge( array_values( $new_data ), $data[ '@graph' ] );
+
+				return $data;
+
+			} elseif ( null !== $recursion ) {
+				$recursion--;
+			}
 		}
 	}
 }
