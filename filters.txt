@@ -341,5 +341,7 @@
 
 'wpsso_user_url' ( $url, $mod, $add_page, $src_id )
 
+'wpsso_wc_variation_title' ( $title, $variation, $product )
+
 'wpsso_yearly_archive_description' ( $desc_text, $mod )
 
