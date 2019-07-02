@@ -427,12 +427,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.1.0-dev.3 (2019/07/01)**
+**Version 5.1.0-dev.4 (2019/07/02)**
 
 * *New Features*
 	* None.
 * *Improvements*
-	* None.
+	* Facebook / Open Graph product attribute fields in the Document SSO metabox are disabled when an e-commerce plugin, that supports product attributes, is detected (to avoid confusion about the source of product attribute values).
 * *Bugfixes*
 	* None.
 * *Developer Notes*
@@ -442,7 +442,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Moved WpssoSchema::add_og_single_image_data() to WpssoSchemaSingle::add_image_data_mt().
 		* Renamed WpssoSchema::add_og_image_list_data() to WpssoSchema::add_images_data_mt().
 		* Renamed WpssoSchema::update_json_data_id() to WpssoSchema::update_data_id().
-		* Renamed WpssoSchemaSingle::have_local_data() to maybe_add_data().
 
 **Version 5.0.1 (2019/06/29)**
 
@@ -489,9 +488,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 5.1.0-dev.3 =
+= 5.1.0-dev.4 =
 
-(2019/07/01) Schema method standardization and "@id" optimizations.
+(2019/07/02) Facebook / Open Graph product attribute fields in the Document SSO metabox are disabled when an e-commerce plugin, that supports product attributes, is detected. Schema method standardization and "@id" optimizations.
 
 = 5.0.1 =
 
