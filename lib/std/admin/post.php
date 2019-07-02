@@ -200,7 +200,8 @@ if ( ! class_exists( 'WpssoStdAdminPost' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Condition', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_condition',
-					'content'  => $form->get_no_select( 'product_condition', $this->p->cf[ 'form' ][ 'item_condition' ] ),
+					'content'  => $form->get_no_select( 'product_condition', $this->p->cf[ 'form' ][ 'item_condition' ],
+						$css_class = '', $css_id = '', $is_assoc = true ),
 				),
 				'product_material' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
@@ -281,7 +282,8 @@ if ( ! class_exists( 'WpssoStdAdminPost' ) ) {
 					'label'    => _x( 'Product Price', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_price',
 					'content'  => $form->get_no_input( 'product_price', '', '', $placeholder = true ) . ' ' .
-						$form->get_no_select( 'product_currency', SucomUtil::get_currency_abbrev(), 'currency' ),
+						$form->get_no_select( 'product_currency', SucomUtil::get_currency_abbrev(),
+							$css_class = 'currency', $css_id = '', $is_assoc = true ),
 				),
 				'product_size' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
@@ -297,7 +299,8 @@ if ( ! class_exists( 'WpssoStdAdminPost' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Target Gender', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_target_gender',
-					'content'  => $form->get_no_select( 'product_target_gender', $this->p->cf[ 'form' ][ 'audience_gender' ] ),
+					'content'  => $form->get_no_select( 'product_target_gender', $this->p->cf[ 'form' ][ 'audience_gender' ],
+						$css_class = 'gender', $css_id = '', $is_assoc = true ),
 				),
 				'subsection_schema' => array(
 					'td_class' => 'subsection',

@@ -1282,13 +1282,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$this->stop_refresh_all_cache();	// Just in case.
 
-			wp_cache_flush();			// Clear non-database transients as well.
-
 			$this->delete_all_db_transients( $clear_short );
 
 			$this->delete_all_cache_files();
 
 			$this->delete_all_column_meta();
+
+			wp_cache_flush();	// Clear non-database transients as well.
 
 			$status_msg = $user_id ? sprintf( __( '%s cached files, transient cache, column meta, and the WordPress object cache have been cleared.',
 				'wpsso' ), $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'short' ] ) : '';

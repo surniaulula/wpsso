@@ -61,12 +61,19 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 				$recursion++;
 			}
 
+			if ( $recursion > 32 ) {	// Just in case.
+				return;
+			}
+
 			foreach ( $data as $key => &$val ) {
 
 				if ( is_array( $val ) ) {
 
 					self::optimize( $val );
 
+				/**
+				 * The first dimension is the @graph array, so only optimize the second dimension and up.
+				 */
 				} elseif ( $recursion > 2 && '@id' === $key && strpos( $val, '#id/' ) ) {
 
 					if ( ! isset( $new_data[ $val ] ) ) {
