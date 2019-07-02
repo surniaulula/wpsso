@@ -659,7 +659,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$size_name = $wpsso->lca . '-schema';
 
 			/**
-			 * Do not include an 'ean' property for the 'product:ean' value - there is no Schema 'ean' property.
+			 * Note that there is no Schema 'ean' property for the 'product:ean' value.
+			 * Note that there is no Schema 'size' property for the 'product:size' value.
 			 */
 			$offer = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array( 
 				'url'             => 'product:url',
@@ -667,11 +668,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'description'     => 'product:description',
 				'category'        => 'product:category',
 				'mpn'             => 'product:mfr_part_no',
-				'sku'             => 'product:sku',	// Non-standard / internal meta tag.
-				'gtin8'           => 'product:gtin8',
-				'gtin12'          => 'product:gtin12',
-				'gtin13'          => 'product:gtin13',
-				'gtin14'          => 'product:gtin14',
+				'sku'             => 'product:sku',		// Non-standard / internal meta tag.
+				'gtin8'           => 'product:gtin8',		// Valid for products and offers.
+				'gtin12'          => 'product:gtin12',		// Valid for products and offers.
+				'gtin13'          => 'product:gtin13',		// Valid for products and offers.
+				'gtin14'          => 'product:gtin14',		// Valid for products and offers.
 				'itemCondition'   => 'product:condition',
 				'availability'    => 'product:availability',
 				'price'           => 'product:price:amount',

@@ -5852,31 +5852,31 @@ msgstr ""
 msgid "adding schema for %1$s ID %2$s"
 msgstr ""
 
-#: lib/schema-single.php:767
+#: lib/schema-single.php:768
 msgid "adding schema for offer"
 msgstr ""
 
-#: lib/schema-single.php:859
+#: lib/schema-single.php:860
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema-single.php:901
+#: lib/schema-single.php:902
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema-single.php:908
+#: lib/schema-single.php:909
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema-single.php:1050
+#: lib/schema-single.php:1051
 msgid "adding schema for person user ID %1$s"
 msgstr ""
 
-#: lib/schema-single.php:1204
+#: lib/schema-single.php:1205
 msgid "adding schema for place"
 msgstr ""
 
