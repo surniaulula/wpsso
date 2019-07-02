@@ -427,7 +427,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.1.0-dev.2 (2019/07/01)**
+**Version 5.1.0-dev.3 (2019/07/01)**
 
 * *New Features*
 	* None.
@@ -436,11 +436,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None.
 * *Developer Notes*
-	* Schema method standardization and "@id" optimizations.
+	* Schema method standardization and "@id" optimizations:
+		* Added WpssoSchemaGraph class with add(), get(), and optimize() methods.
 		* Added WpssoSchema::add_videos_data_mt().
 		* Moved WpssoSchema::add_og_single_image_data() to WpssoSchemaSingle::add_image_data_mt().
 		* Renamed WpssoSchema::add_og_image_list_data() to WpssoSchema::add_images_data_mt().
-		* Renamed WpssoSchema::update_json_data_id() to WpssoSchema::update_data_id() and added an $optimize argument (returns only the "@id" from cache after first call).
+		* Renamed WpssoSchema::update_json_data_id() to WpssoSchema::update_data_id().
 		* Renamed WpssoSchemaSingle::have_local_data() to maybe_add_data().
 
 **Version 5.0.1 (2019/06/29)**
@@ -488,7 +489,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 5.1.0-dev.2 =
+= 5.1.0-dev.3 =
 
 (2019/07/01) Schema method standardization and "@id" optimizations.
 
