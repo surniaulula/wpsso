@@ -73,6 +73,11 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							break;
 
+						case 'ecom-jck-wssv':
+
+							$chk[ 'class' ] = 'JCK_WSSV';
+
+							break;
 						case 'ecom-marketpress':
 
 							$chk[ 'class' ] = 'Marketpress';

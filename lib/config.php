@@ -77,6 +77,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 							'ecom' => array(
 								'edd'         => '(plugin) Easy Digital Downloads',
+								'jck-wssv'    => '(plugin) WooCommerce Show Single Variations',
 								'marketpress' => '(plugin) MarketPress',
 								'woocommerce' => '(plugin) WooCommerce',
 								'wpecommerce' => '(plugin) WP eCommerce',
