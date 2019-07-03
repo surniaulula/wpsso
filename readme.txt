@@ -428,7 +428,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.1.0-dev.7 (2019/07/03)**
+**Version 5.1.0-dev.8 (2019/07/03)**
 
 * *New Features*
 	* Added support for the WooCommerce Show Single Variations plugin (Premium version).
@@ -491,7 +491,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 5.1.0-dev.7 =
+= 5.1.0-dev.8 =
 
 (2019/07/03) Added support for the WooCommerce Show Single Variations plugin. Added a fallback to the default attribute value when a WooCommerce variation attribute is empty. Facebook / Open Graph product customization fields in the Document SSO metabox are disabled when an e-commerce plugin provides those values.
 
