@@ -432,6 +432,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 * *New Features*
 	* Added support for the WooCommerce Show Single Variations plugin (Premium version).
+	* Added support for a WooCommerce "Volume" (in milliliters) product attribute (Premium version).
 * *Improvements*
 	* Added a fallback to the default attribute value when a WooCommerce variation attribute is empty (Premium version).
 	* WooCommerce attributes used for variations (ie. multiple values for a select option) are now excluded from the Facebook / Open Graph meta tags (Premium version).
@@ -439,6 +440,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None.
 * *Developer Notes*
+	* Added a new 'wpsso_wc_variation_title' filter.
 	* Refactored several Schema methods for standardization and "@id" optimizations:
 		* Added WpssoSchemaGraph class with add(), get(), and optimize() methods.
 		* Added WpssoSchema::add_videos_data_mt().
@@ -493,7 +495,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 5.1.0-dev.8 =
 
-(2019/07/03) Added support for the WooCommerce Show Single Variations plugin. Added a fallback to the default attribute value when a WooCommerce variation attribute is empty. Facebook / Open Graph product customization fields in the Document SSO metabox are disabled when an e-commerce plugin provides those values.
+(2019/07/03) Added support for the WooCommerce Show Single Variations plugin. Added support for a WooCommerce "Volume" (in milliliters) product attribute.
 
 = 5.0.1 =
 
