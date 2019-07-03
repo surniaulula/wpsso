@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 5.1.0-dev.7\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 5.1.0-dev.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1611,8 +1611,8 @@ msgstr ""
 #: lib/gettext-config.php:114 lib/gettext-config.php:117
 #: lib/gettext-config.php:120 lib/gettext-config.php:134
 #: lib/gettext-config.php:137 lib/gettext-config.php:139
-#: lib/gettext-config.php:201 lib/gettext-config.php:204
-#: lib/gettext-config.php:216 lib/gettext-config.php:225
+#: lib/gettext-config.php:202 lib/gettext-config.php:205
+#: lib/gettext-config.php:217 lib/gettext-config.php:226
 msgctxt "option value"
 msgid "[None]"
 msgstr ""
@@ -2062,187 +2062,192 @@ msgctxt "option value"
 msgid "Product Target Gender Attr. Name"
 msgstr ""
 
-#: lib/gettext-config.php:202
+#: lib/gettext-config.php:201
 msgctxt "option value"
-msgid "Kids"
+msgid "Product Volume (ml) Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:203
 msgctxt "option value"
-msgid "Adult"
+msgid "Kids"
 msgstr ""
 
-#: lib/gettext-config.php:205
+#: lib/gettext-config.php:204
 msgctxt "option value"
-msgid "Male"
+msgid "Adult"
 msgstr ""
 
 #: lib/gettext-config.php:206
 msgctxt "option value"
-msgid "Female"
+msgid "Male"
 msgstr ""
 
 #: lib/gettext-config.php:207
 msgctxt "option value"
-msgid "Unisex"
+msgid "Female"
 msgstr ""
 
 #: lib/gettext-config.php:208
 msgctxt "option value"
-msgid "Full Time"
+msgid "Unisex"
 msgstr ""
 
 #: lib/gettext-config.php:209
 msgctxt "option value"
-msgid "Part Time"
+msgid "Full Time"
 msgstr ""
 
 #: lib/gettext-config.php:210
 msgctxt "option value"
-msgid "Contractor"
+msgid "Part Time"
 msgstr ""
 
 #: lib/gettext-config.php:211
 msgctxt "option value"
-msgid "Temporary"
+msgid "Contractor"
 msgstr ""
 
 #: lib/gettext-config.php:212
 msgctxt "option value"
-msgid "Intern"
+msgid "Temporary"
 msgstr ""
 
 #: lib/gettext-config.php:213
 msgctxt "option value"
-msgid "Volunteer"
+msgid "Intern"
 msgstr ""
 
 #: lib/gettext-config.php:214
 msgctxt "option value"
-msgid "Per Diem"
+msgid "Volunteer"
 msgstr ""
 
 #: lib/gettext-config.php:215
 msgctxt "option value"
-msgid "Other"
+msgid "Per Diem"
 msgstr ""
 
-#: lib/gettext-config.php:217
+#: lib/gettext-config.php:216
 msgctxt "option value"
-msgid "Discontinued"
+msgid "Other"
 msgstr ""
 
 #: lib/gettext-config.php:218
 msgctxt "option value"
-msgid "In Stock"
+msgid "Discontinued"
 msgstr ""
 
 #: lib/gettext-config.php:219
 msgctxt "option value"
-msgid "In Store Only"
+msgid "In Stock"
 msgstr ""
 
 #: lib/gettext-config.php:220
 msgctxt "option value"
-msgid "Limited Availability"
+msgid "In Store Only"
 msgstr ""
 
 #: lib/gettext-config.php:221
 msgctxt "option value"
-msgid "Online Only"
+msgid "Limited Availability"
 msgstr ""
 
 #: lib/gettext-config.php:222
 msgctxt "option value"
-msgid "Out of Stock"
+msgid "Online Only"
 msgstr ""
 
 #: lib/gettext-config.php:223
 msgctxt "option value"
-msgid "Pre-Order"
+msgid "Out of Stock"
 msgstr ""
 
 #: lib/gettext-config.php:224
 msgctxt "option value"
-msgid "Sold Out"
+msgid "Pre-Order"
 msgstr ""
 
-#: lib/gettext-config.php:226
+#: lib/gettext-config.php:225
 msgctxt "option value"
-msgid "Damaged"
+msgid "Sold Out"
 msgstr ""
 
 #: lib/gettext-config.php:227
 msgctxt "option value"
-msgid "New"
+msgid "Damaged"
 msgstr ""
 
 #: lib/gettext-config.php:228
 msgctxt "option value"
-msgid "Refurbished"
+msgid "New"
 msgstr ""
 
 #: lib/gettext-config.php:229
 msgctxt "option value"
-msgid "Used"
+msgid "Refurbished"
 msgstr ""
 
 #: lib/gettext-config.php:230
 msgctxt "option value"
-msgid "Every day"
+msgid "Used"
 msgstr ""
 
 #: lib/gettext-config.php:231
 msgctxt "option value"
-msgid "Every two days"
+msgid "Every day"
 msgstr ""
 
 #: lib/gettext-config.php:232
 msgctxt "option value"
-msgid "Every three days"
+msgid "Every two days"
 msgstr ""
 
 #: lib/gettext-config.php:233
 msgctxt "option value"
-msgid "Every four days"
+msgid "Every three days"
 msgstr ""
 
 #: lib/gettext-config.php:234
 msgctxt "option value"
-msgid "Every five days"
+msgid "Every four days"
 msgstr ""
 
 #: lib/gettext-config.php:235
 msgctxt "option value"
-msgid "Every six days"
+msgid "Every five days"
 msgstr ""
 
 #: lib/gettext-config.php:236
 msgctxt "option value"
-msgid "Every week"
+msgid "Every six days"
 msgstr ""
 
 #: lib/gettext-config.php:237
 msgctxt "option value"
-msgid "Development and Up"
+msgid "Every week"
 msgstr ""
 
 #: lib/gettext-config.php:238
 msgctxt "option value"
-msgid "Alpha and Up"
+msgid "Development and Up"
 msgstr ""
 
 #: lib/gettext-config.php:239
 msgctxt "option value"
-msgid "Beta and Up"
+msgid "Alpha and Up"
 msgstr ""
 
 #: lib/gettext-config.php:240
 msgctxt "option value"
-msgid "Release Candidate and Up"
+msgid "Beta and Up"
 msgstr ""
 
 #: lib/gettext-config.php:241
+msgctxt "option value"
+msgid "Release Candidate and Up"
+msgstr ""
+
+#: lib/gettext-config.php:242
 msgctxt "option value"
 msgid "Stable / Production"
 msgstr ""
@@ -2827,19 +2832,19 @@ msgctxt "option label"
 msgid "Product Condition"
 msgstr ""
 
-#: lib/gettext-pro.php:115 lib/messages.php:2331 lib/pro/admin/post.php:210
+#: lib/gettext-pro.php:115 lib/messages.php:2335 lib/pro/admin/post.php:210
 #: lib/std/admin/post.php:210
 msgctxt "option label"
 msgid "Product Material"
 msgstr ""
 
-#: lib/gettext-pro.php:116 lib/messages.php:2335 lib/pro/admin/post.php:217
+#: lib/gettext-pro.php:116 lib/messages.php:2339 lib/pro/admin/post.php:217
 #: lib/std/admin/post.php:218
 msgctxt "option label"
 msgid "Product MPN"
 msgstr ""
 
-#: lib/gettext-pro.php:117 lib/messages.php:2339 lib/pro/admin/post.php:224
+#: lib/gettext-pro.php:117 lib/messages.php:2375 lib/pro/admin/post.php:224
 #: lib/std/admin/post.php:226
 msgctxt "option label"
 msgid "Product SKU"
@@ -2887,7 +2892,7 @@ msgctxt "option label"
 msgid "Product Price"
 msgstr ""
 
-#: lib/gettext-pro.php:125 lib/messages.php:2375 lib/pro/admin/post.php:282
+#: lib/gettext-pro.php:125 lib/messages.php:2371 lib/pro/admin/post.php:282
 #: lib/std/admin/post.php:292
 msgctxt "option label"
 msgid "Product Size"
@@ -2985,7 +2990,7 @@ msgctxt "option label"
 msgid "Video Dimensions"
 msgstr ""
 
-#: lib/gettext-pro.php:150 lib/messages.php:2395 lib/pro/admin/meta.php:282
+#: lib/gettext-pro.php:150 lib/messages.php:2399 lib/pro/admin/meta.php:282
 #: lib/std/admin/meta.php:287
 msgctxt "option label"
 msgid "Video Embed HTML"
@@ -3015,67 +3020,67 @@ msgctxt "metabox title"
 msgid "Structured Data / Schema Markup / Pinterest"
 msgstr ""
 
-#: lib/gettext-pro.php:162 lib/pro/ecom/woocommerce.php:57
+#: lib/gettext-pro.php:162 lib/pro/ecom/woocommerce.php:50
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Advanced &gt; Page setup</a> section."
 msgstr ""
 
-#: lib/gettext-pro.php:163 lib/pro/ecom/woocommerce.php:60
+#: lib/gettext-pro.php:163 lib/pro/ecom/woocommerce.php:53
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Products &gt; General</a> section."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:165 lib/pro/ecom/woocommerce.php:64
+#: lib/gettext-pro.php:165 lib/pro/ecom/woocommerce.php:57
 msgid "My account page"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:167 lib/pro/ecom/woocommerce.php:65
+#: lib/gettext-pro.php:167 lib/pro/ecom/woocommerce.php:58
 msgid "Cart page"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:169 lib/pro/ecom/woocommerce.php:66
+#: lib/gettext-pro.php:169 lib/pro/ecom/woocommerce.php:59
 msgid "Checkout page"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:171 lib/pro/ecom/woocommerce.php:67
+#: lib/gettext-pro.php:171 lib/pro/ecom/woocommerce.php:60
 msgid "Shop page"
 msgstr ""
 
-#: lib/gettext-pro.php:172 lib/pro/ecom/woocommerce.php:72
+#: lib/gettext-pro.php:172 lib/pro/ecom/woocommerce.php:65
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: lib/gettext-pro.php:173 lib/pro/ecom/woocommerce.php:135
+#: lib/gettext-pro.php:173 lib/pro/ecom/woocommerce.php:128
 msgid ""
 "The WooCommerce %s method is not available - please update to a newer "
 "version of WooCommerce."
 msgstr ""
 
-#: lib/gettext-pro.php:174 lib/pro/ecom/woocommerce.php:904
+#: lib/gettext-pro.php:174 lib/pro/ecom/woocommerce.php:879
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
-#: lib/gettext-pro.php:175 lib/pro/ecom/woocommerce.php:907
+#: lib/gettext-pro.php:175 lib/pro/ecom/woocommerce.php:882
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/gettext-pro.php:176 lib/pro/ecom/woocommerce.php:1144
+#: lib/gettext-pro.php:176 lib/pro/ecom/woocommerce.php:1119
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/gettext-pro.php:177 lib/pro/ecom/woocommerce.php:1146
+#: lib/gettext-pro.php:177 lib/pro/ecom/woocommerce.php:1121
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:178 lib/pro/ecom/woocommerce.php:1149
+#: lib/gettext-pro.php:178 lib/pro/ecom/woocommerce.php:1124
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 
@@ -5304,19 +5309,24 @@ msgctxt "tooltip fragment"
 msgid "a product condition"
 msgstr ""
 
+#: lib/messages.php:2331
+msgctxt "option label"
+msgid "Product Currency"
+msgstr ""
+
 #: lib/messages.php:2332
 msgctxt "tooltip fragment"
-msgid "a product material"
+msgid "a product currency"
 msgstr ""
 
 #: lib/messages.php:2336
 msgctxt "tooltip fragment"
-msgid "a Manufacturer Part Number (MPN)"
+msgid "a product material"
 msgstr ""
 
 #: lib/messages.php:2340
 msgctxt "tooltip fragment"
-msgid "a Stock-Keeping Unit (aka unique product identifier)"
+msgid "a Manufacturer Part Number (MPN)"
 msgstr ""
 
 #: lib/messages.php:2344
@@ -5356,19 +5366,14 @@ msgctxt "tooltip fragment"
 msgid "a product price"
 msgstr ""
 
-#: lib/messages.php:2371
-msgctxt "option label"
-msgid "Product Currency"
-msgstr ""
-
 #: lib/messages.php:2372
 msgctxt "tooltip fragment"
-msgid "a product currency"
+msgid "a product size"
 msgstr ""
 
 #: lib/messages.php:2376
 msgctxt "tooltip fragment"
-msgid "a product size"
+msgid "a Stock-Keeping Unit (aka unique product identifier)"
 msgstr ""
 
 #: lib/messages.php:2380
@@ -5378,45 +5383,55 @@ msgstr ""
 
 #: lib/messages.php:2383
 msgctxt "option label"
-msgid "Recipe Ingredients"
+msgid "Product Volume (ml)"
 msgstr ""
 
 #: lib/messages.php:2384
 msgctxt "tooltip fragment"
-msgid "recipe ingredients"
+msgid "a product volume (in milliliters)"
 msgstr ""
 
 #: lib/messages.php:2387
 msgctxt "option label"
-msgid "Recipe Instructions"
+msgid "Recipe Ingredients"
 msgstr ""
 
 #: lib/messages.php:2388
 msgctxt "tooltip fragment"
-msgid "recipe instructions"
+msgid "recipe ingredients"
 msgstr ""
 
 #: lib/messages.php:2391
 msgctxt "option label"
-msgid "Same-As URLs"
+msgid "Recipe Instructions"
 msgstr ""
 
 #: lib/messages.php:2392
 msgctxt "tooltip fragment"
-msgid "additional Same-As URLs"
+msgid "recipe instructions"
+msgstr ""
+
+#: lib/messages.php:2395
+msgctxt "option label"
+msgid "Same-As URLs"
 msgstr ""
 
 #: lib/messages.php:2396
 msgctxt "tooltip fragment"
+msgid "additional Same-As URLs"
+msgstr ""
+
+#: lib/messages.php:2400
+msgctxt "tooltip fragment"
 msgid "video embed HTML code (not a URL)"
 msgstr ""
 
-#: lib/messages.php:2399
+#: lib/messages.php:2403
 msgctxt "option label"
 msgid "Video URL"
 msgstr ""
 
-#: lib/messages.php:2400
+#: lib/messages.php:2404
 msgctxt "tooltip fragment"
 msgid "a video URL (not HTML code)"
 msgstr ""

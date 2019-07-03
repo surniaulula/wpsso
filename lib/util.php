@@ -3773,5 +3773,54 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			return apply_filters( $this->p->lca . '_get_robots_content', rtrim( $content, ', ' ), $mod );
 		}
+
+		public function get_product_attr_names( $prefix = 'product', $sep = ':' ) {
+
+			static $local_cache = null;
+
+			if ( null === $local_cache ) {
+
+				$local_cache = array();
+
+				foreach ( $this->p->options as $key => $val ) {
+
+					if ( 0 === strpos( $key, 'plugin_product_attr_' ) ) {
+
+						/**
+						 * Skip attributes that have no associated name.
+						 */
+						if ( empty( $val ) ) {
+							continue;
+						}
+
+						$key = preg_replace( '/^plugin_product_attr_/', '', $key );
+
+						$local_cache[ $key ] = $val;
+					}
+				}
+
+				$local_cache = apply_filters( $this->p->lca . '_product_attribute_names', $local_cache );
+			}
+
+			if ( empty( $prefix ) ) {
+
+				return $local_cache;
+
+			} else {
+
+				$ret = array();
+
+				foreach ( $local_cache as $key => $val ) {
+
+					if ( $sep !== '_' ) {
+						$key = preg_replace( '/_(value|units)$/', $sep . '$1', $key );
+					}
+
+					$ret[ $prefix . $sep . $key ] = $val;
+				}
+
+				return $ret;
+			}
+		}
 	}
 }

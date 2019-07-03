@@ -198,6 +198,7 @@ _x( 'Product ISBN Attribute Name', 'option value', 'wpsso' );
 _x( 'Product Material Attribute Name', 'option value', 'wpsso' );
 _x( 'Product Size Attribute Name', 'option value', 'wpsso' );
 _x( 'Product Target Gender Attr. Name', 'option value', 'wpsso' );
+_x( 'Product Volume (ml) Attribute Name', 'option value', 'wpsso' );
 _x( '[None]', 'option value', 'wpsso' );
 _x( 'Kids', 'option value', 'wpsso' );
 _x( 'Adult', 'option value', 'wpsso' );

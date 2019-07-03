@@ -2327,6 +2327,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						_x( 'Product Condition', 'option label', 'wpsso' ),
 						_x( 'a product condition', 'tooltip fragment', 'wpsso' ),
 					),
+					$key_prefix . 'product_currency' => array(
+						_x( 'Product Currency', 'option label', 'wpsso' ),
+						_x( 'a product currency', 'tooltip fragment', 'wpsso' ),
+					),
 					$key_prefix . 'product_material' => array(
 						_x( 'Product Material', 'option label', 'wpsso' ),
 						_x( 'a product material', 'tooltip fragment', 'wpsso' ),
@@ -2334,10 +2338,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					$key_prefix . 'product_mpn' => array(
 						_x( 'Product MPN', 'option label', 'wpsso' ),
 						_x( 'a Manufacturer Part Number (MPN)', 'tooltip fragment', 'wpsso' ),
-					),
-					$key_prefix . 'product_sku' => array(
-						_x( 'Product SKU', 'option label', 'wpsso' ),
-						_x( 'a Stock-Keeping Unit (aka unique product identifier)', 'tooltip fragment', 'wpsso' ),
 					),
 					$key_prefix . 'product_ean' => array(
 						_x( 'Product EAN', 'option label', 'wpsso' ),
@@ -2367,17 +2367,21 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						_x( 'Product Price', 'option label', 'wpsso' ),
 						_x( 'a product price', 'tooltip fragment', 'wpsso' ),
 					),
-					$key_prefix . 'product_currency' => array(
-						_x( 'Product Currency', 'option label', 'wpsso' ),
-						_x( 'a product currency', 'tooltip fragment', 'wpsso' ),
-					),
 					$key_prefix . 'product_size' => array(
 						_x( 'Product Size', 'option label', 'wpsso' ),
 						_x( 'a product size', 'tooltip fragment', 'wpsso' ),
 					),
+					$key_prefix . 'product_sku' => array(
+						_x( 'Product SKU', 'option label', 'wpsso' ),
+						_x( 'a Stock-Keeping Unit (aka unique product identifier)', 'tooltip fragment', 'wpsso' ),
+					),
 					$key_prefix . 'product_target_gender' => array(
 						_x( 'Product Target Gender', 'option label', 'wpsso' ),
 						_x( 'a product target gender', 'tooltip fragment', 'wpsso' ),
+					),
+					$key_prefix . 'product_volume_value' => array(
+						_x( 'Product Volume (ml)', 'option label', 'wpsso' ),
+						_x( 'a product volume (in milliliters)', 'tooltip fragment', 'wpsso' ),
 					),
 					$key_prefix . 'recipe_ingredients' => array(
 						_x( 'Recipe Ingredients', 'option label', 'wpsso' ),

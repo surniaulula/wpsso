@@ -2153,10 +2153,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Example $names array:
 		 *
 		 * array(
-		 * 	'width'  => 'product:width:value',
+		 * 	'depth'  => 'product:depth:value',
 		 * 	'height' => 'product:height:value',
 		 * 	'length' => 'product:length:value',
+		 * 	'volume' => 'product:volume:value',
 		 * 	'weight' => 'product:weight:value',
+		 * 	'width'  => 'product:width:value',
 		 * );
 		 */
 		public static function add_data_unitcode_from_assoc( array &$json_data, array $assoc, array $names ) {
@@ -2167,25 +2169,54 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					switch ( $prop_name ) {
 
-						case 'length':	// QuantitativeValue does not have a length itemprop
+						case 'length':
 
 							$json_data[ 'additionalProperty' ][] = array(
 								'@context'   => 'https://schema.org',
 								'@type'      => 'PropertyValue',
 								'propertyID' => $prop_name,
 								'value'      => $assoc[ $key_name ],
+								'unitText'   => 'cm',
 								'unitCode'   => 'CMT',
 							);
 
 							break;
 
-						default:
+						case 'volume':
+
+							$json_data[ 'additionalProperty' ][] = array(
+								'@context'   => 'https://schema.org',
+								'@type'      => 'PropertyValue',
+								'propertyID' => $prop_name,
+								'value'      => $assoc[ $key_name ],
+								'unitText'   => 'ml',
+								'unitCode'   => 'MLT',
+							);
+
+							break;
+
+						case 'weight':
 
 							$json_data[ $prop_name ] = array(
 								'@context' => 'https://schema.org',
 								'@type'    => 'QuantitativeValue',
 								'value'    => $assoc[ $key_name ],
-								'unitCode' => ( $prop_name === 'weight' ? 'KGM' : 'CMT' ),
+								'unitText' => 'kg',
+								'unitCode' => 'KGM',
+							);
+
+							break;
+
+						case 'depth':
+						case 'height':
+						case 'width':
+
+							$json_data[ $prop_name ] = array(
+								'@context' => 'https://schema.org',
+								'@type'    => 'QuantitativeValue',
+								'value'    => $assoc[ $key_name ],
+								'unitText' => 'cm',
+								'unitCode' => 'CMT',
 							);
 
 							break;

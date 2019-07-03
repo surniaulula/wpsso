@@ -423,17 +423,17 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				}
 
 				if ( $prev_version > 0 && $prev_version <= 625 ) {
-					$opts[ 'plugin_product_attr_brand' ]     = 'brand';
-					$opts[ 'plugin_product_attr_color' ]     = 'color';
-					$opts[ 'plugin_product_attr_condition' ] = 'condition';
-					$opts[ 'plugin_product_attr_ean' ]       = 'ean';
-					$opts[ 'plugin_product_attr_gtin8' ]     = 'gtin8';
-					$opts[ 'plugin_product_attr_gtin12' ]    = 'gtin12';
-					$opts[ 'plugin_product_attr_gtin13' ]    = 'gtin13';
-					$opts[ 'plugin_product_attr_gtin14' ]    = 'gtin14';
-					$opts[ 'plugin_product_attr_isbn' ]      = 'isbn';
-					$opts[ 'plugin_product_attr_material' ]  = 'material';
-					$opts[ 'plugin_product_attr_size' ]      = 'size';
+					$opts[ 'plugin_product_attr_brand' ]     = 'Brand';
+					$opts[ 'plugin_product_attr_color' ]     = 'Color';
+					$opts[ 'plugin_product_attr_condition' ] = 'Condition';
+					$opts[ 'plugin_product_attr_ean' ]       = 'EAN';
+					$opts[ 'plugin_product_attr_gtin8' ]     = 'GTIN-8';
+					$opts[ 'plugin_product_attr_gtin12' ]    = 'GTIN-12';
+					$opts[ 'plugin_product_attr_gtin13' ]    = 'GTIN-13';
+					$opts[ 'plugin_product_attr_gtin14' ]    = 'GTIN-14';
+					$opts[ 'plugin_product_attr_isbn' ]      = 'ISBN';
+					$opts[ 'plugin_product_attr_material' ]  = 'Material';
+					$opts[ 'plugin_product_attr_size' ]      = 'Size';
 				}
 
 				/**

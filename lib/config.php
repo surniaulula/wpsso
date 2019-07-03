@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '5.1.0-dev.7',	// Plugin version.
-					'opt_version' => '644',		// Increment when changing default option values.
+					'version'     => '5.1.0-dev.8',	// Plugin version.
+					'opt_version' => '647',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
 					'desc'        => 'WPSSO Core makes sure your content looks great on all social and search sites - no matter how URLs are crawled, shared, re-shared, posted, or embedded!',
@@ -1160,7 +1160,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_product_attr_brand'         => 'Brand',			// Product Brand Attribute Name.
 					'plugin_product_attr_color'         => 'Color',			// Product Color Attribute Name.
 					'plugin_product_attr_condition'     => 'Condition',		// Product Condition Attribute Name.
-					'plugin_product_attr_mpn'           => 'MPN',			// Product MPN Attribute Name.
 					'plugin_product_attr_ean'           => 'EAN',			// Product EAN Attribute Name.
 					'plugin_product_attr_gtin8'         => 'GTIN-8',		// Product GTIN-8 Attribute Name.
 					'plugin_product_attr_gtin12'        => 'GTIN-12',		// Product GTIN-12 Attribute Name.
@@ -1168,8 +1167,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_product_attr_gtin14'        => 'GTIN-14',		// Product GTIN-14 Attribute Name.
 					'plugin_product_attr_isbn'          => 'ISBN',			// Product ISBN Attribute Name.
 					'plugin_product_attr_material'      => 'Material',		// Product Material Attribute Name.
+					'plugin_product_attr_mpn'           => 'MPN',			// Product MPN Attribute Name.
 					'plugin_product_attr_size'          => 'Size',			// Product Size Attribute Name.
 					'plugin_product_attr_target_gender' => 'Gender',		// Product Target Gender Attr. Name.
+					'plugin_product_attr_volume_value'  => 'Volume',		// Product Volume (ml) Attribute Name.
 					
 					/**
 					 * Advanced settings - Custom Meta tab.
@@ -1940,19 +1941,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_vid_embed'             => 'Video Embed HTML Custom Field',
 				),
 				'product_attr_labels' => array(		// Product attribute option labels.
-					'plugin_product_attr_brand'          => 'Product Brand Attribute Name',
-					'plugin_product_attr_color'          => 'Product Color Attribute Name',
-					'plugin_product_attr_condition'      => 'Product Condition Attribute Name',
-					'plugin_product_attr_mpn'            => 'Product MPN Attribute Name',
-					'plugin_product_attr_ean'            => 'Product EAN Attribute Name',
-					'plugin_product_attr_gtin8'          => 'Product GTIN-8 Attribute Name',
-					'plugin_product_attr_gtin12'         => 'Product GTIN-12 Attribute Name',
-					'plugin_product_attr_gtin13'         => 'Product GTIN-13 Attribute Name',
-					'plugin_product_attr_gtin14'         => 'Product GTIN-14 Attribute Name',
-					'plugin_product_attr_isbn'           => 'Product ISBN Attribute Name',
-					'plugin_product_attr_material'       => 'Product Material Attribute Name',
-					'plugin_product_attr_size'           => 'Product Size Attribute Name',
-					'plugin_product_attr_target_gender'  => 'Product Target Gender Attr. Name',
+					'plugin_product_attr_brand'         => 'Product Brand Attribute Name',
+					'plugin_product_attr_color'         => 'Product Color Attribute Name',
+					'plugin_product_attr_condition'     => 'Product Condition Attribute Name',
+					'plugin_product_attr_mpn'           => 'Product MPN Attribute Name',
+					'plugin_product_attr_ean'           => 'Product EAN Attribute Name',
+					'plugin_product_attr_gtin8'         => 'Product GTIN-8 Attribute Name',
+					'plugin_product_attr_gtin12'        => 'Product GTIN-12 Attribute Name',
+					'plugin_product_attr_gtin13'        => 'Product GTIN-13 Attribute Name',
+					'plugin_product_attr_gtin14'        => 'Product GTIN-14 Attribute Name',
+					'plugin_product_attr_isbn'          => 'Product ISBN Attribute Name',
+					'plugin_product_attr_material'      => 'Product Material Attribute Name',
+					'plugin_product_attr_size'          => 'Product Size Attribute Name',
+					'plugin_product_attr_target_gender' => 'Product Target Gender Attr. Name',
+					'plugin_product_attr_volume_value'  => 'Product Volume (ml) Attribute Name',
 				),
 				
 				/**
