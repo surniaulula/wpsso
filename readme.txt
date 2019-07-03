@@ -286,6 +286,7 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 		* The Events Calendar
 		* The SEO Framework
 		* WooCommerce (versions 1, 2, and 3)
+		* WooCommerce Show Single Variations
 		* WP eCommerce
 		* WP Job Manager
 		* WP Meta SEO
@@ -430,7 +431,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 5.1.0-dev.7 (2019/07/03)**
 
 * *New Features*
-	* None.
+	* Added support for the WooCommerce Show Single Variations plugin (Premium version).
 * *Improvements*
 	* Added a fallback to the default attribute value when a WooCommerce variation attribute is empty (Premium version).
 	* WooCommerce attributes used for variations (ie. multiple values for a select option) are now excluded from the Facebook / Open Graph meta tags (Premium version).
@@ -492,7 +493,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 5.1.0-dev.7 =
 
-(2019/07/03) Added a fallback to the default attribute value when a WooCommerce variation attribute is empty. Facebook / Open Graph product customization fields in the Document SSO metabox are disabled when an e-commerce plugin provides those values.
+(2019/07/03) Added support for the WooCommerce Show Single Variations plugin. Added a fallback to the default attribute value when a WooCommerce variation attribute is empty. Facebook / Open Graph product customization fields in the Document SSO metabox are disabled when an e-commerce plugin provides those values.
 
 = 5.0.1 =
 
