@@ -806,7 +806,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Deprecated since 2019/01/23.
+		 * Deprecated on 2019/01/23.
 		 * 
 		 * Continue to maintain this method for old plugins using an old SucomUtil class.
 		 */

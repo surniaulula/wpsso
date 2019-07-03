@@ -430,9 +430,23 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			return $is_avail;
 		}
 
+		/**
+		 * Deprecated on 2018/08/27.
+		 */
+		public function is_aop( $ext = '', $uc = true ) {
+			return $this->is_pp( $ext, $uc );
+		}
+
 		public function is_pp( $ext = '', $uc = true ) {
 
 			return $this->pp( $ext, true, true, $uc );
+		}
+
+		/**
+		 * Deprecated on 2018/08/27.
+		 */
+		public function aop( $ext = '', $lic = true, $rv = true, $uc = true ) {
+			return $this->pp( $ext, $lic, $rv, $uc );
 		}
 
 		public function pp( $ext = '', $li = true, $rv = true, $uc = true ) {

@@ -2141,7 +2141,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Deprecated on 2019/03/30.
 		 */
 		public static function add_data_quant_from_assoc( array &$json_data, array $assoc, array $names ) {
-
 			return $this->add_data_unitcode_from_assoc( $json_data, $assoc, $names );
 		}
 
