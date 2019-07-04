@@ -428,11 +428,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.1.0-dev.8 (2019/07/03)**
+**Version 5.1.0-b.1 (2019/07/03)**
 
 * *New Features*
 	* Added support for the WooCommerce Show Single Variations plugin (Premium version).
 	* Added support for a WooCommerce "Volume" (in milliliters) product attribute (Premium version).
+	* Added a new "Product Volume (ml) Custom Field" option in the SSO &gt; Advanced &gt; Integration tab.
 * *Improvements*
 	* Added a fallback to the default attribute value when a WooCommerce variation attribute is empty (Premium version).
 	* WooCommerce attributes used for variations (ie. multiple values for a select option) are now excluded from the Facebook / Open Graph meta tags (Premium version).
@@ -493,7 +494,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 5.1.0-dev.8 =
+= 5.1.0-b.1 =
 
 (2019/07/03) Added support for the WooCommerce Show Single Variations plugin. Added support for a WooCommerce "Volume" (in milliliters) product attribute.
 
