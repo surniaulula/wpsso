@@ -2141,6 +2141,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Deprecated on 2019/03/30.
 		 */
 		public static function add_data_quant_from_assoc( array &$json_data, array $assoc, array $names ) {
+
 			return $this->add_data_unitcode_from_assoc( $json_data, $assoc, $names );
 		}
 
@@ -2155,6 +2156,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * 	'depth'  => 'product:depth:value',
 		 * 	'height' => 'product:height:value',
 		 * 	'length' => 'product:length:value',
+		 * 	'size'   => 'product:size',
 		 * 	'volume' => 'product:volume:value',
 		 * 	'weight' => 'product:weight:value',
 		 * 	'width'  => 'product:width:value',
@@ -2173,10 +2175,23 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							$json_data[ 'additionalProperty' ][] = array(
 								'@context'   => 'https://schema.org',
 								'@type'      => 'PropertyValue',
-								'propertyID' => $prop_name,
+								'propertyID' => 'length',
+								'name'       => 'Length',
 								'value'      => $assoc[ $key_name ],
 								'unitText'   => 'cm',
 								'unitCode'   => 'CMT',
+							);
+
+							break;
+
+						case 'size':
+
+							$json_data[ 'additionalProperty' ][] = array(
+								'@context'   => 'https://schema.org',
+								'@type'      => 'PropertyValue',
+								'propertyID' => 'size',
+								'name'       => 'Size',
+								'value'      => $assoc[ $key_name ],
 							);
 
 							break;
@@ -2186,7 +2201,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							$json_data[ 'additionalProperty' ][] = array(
 								'@context'   => 'https://schema.org',
 								'@type'      => 'PropertyValue',
-								'propertyID' => $prop_name,
+								'propertyID' => 'volume',
+								'name'       => 'Volume',
 								'value'      => $assoc[ $key_name ],
 								'unitText'   => 'ml',
 								'unitCode'   => 'MLT',
