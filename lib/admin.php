@@ -3416,11 +3416,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		/**
 		 * Called from the WpssoSubmenuGeneral class.
 		 */
-		protected function add_og_types_table_rows( array &$table_rows, array $hide_in_view = array(), $og_types = null ) {
+		protected function add_og_types_table_rows( array &$table_rows, $hide_in_basic = true ) {
 
-			if ( ! is_array( $og_types ) ) {
-				$og_types = $this->p->og->get_og_types_select( $add_none = true );
-			}
+			$og_types = $this->p->og->get_og_types_select( $add_none = true );
 
 			foreach ( array( 
 				'home_index'   => _x( 'Type for Blog Front Page', 'option label', 'wpsso' ),
@@ -3430,14 +3428,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'archive_page' => _x( 'Type for Other Archive Page', 'option label', 'wpsso' ),
 			) as $type_name => $th_label ) {
 
-				$tr_html = '';
 				$opt_key = 'og_type_for_' . $type_name;
+				$tr_html = $hide_in_basic ? $this->form->get_tr_hide( 'basic', $opt_key ) : '';
 
-				if ( ! empty( $hide_in_view[ $opt_key ] ) ) {
-					$tr_html = $this->form->get_tr_hide( $hide_in_view[ $opt_key ], $opt_key );
-				}
-
-				$table_rows[ $opt_key ] = $tr_html . $this->form->get_th_html( $th_label, '', $opt_key ) . 
+				$table_rows[ $opt_key ] = $tr_html .
+				$this->form->get_th_html( $th_label, '', $opt_key ) . 
 				'<td>' . $this->form->get_select( $opt_key, $og_types, 'og_type' ) . '</td>';
 			}
 
@@ -3460,15 +3455,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$type_select .= '<p>' . $this->form->get_select( $opt_key, $og_types, 'og_type' ) . ' ' .
 				sprintf( _x( 'for %s', 'option comment', 'wpsso' ), _x( '(Post Type) Archive Page', 'option comment', 'wpsso' ) ) . '</p>' . "\n";
 
-			$tr_html  = '';
 			$tr_key   = 'og_type_for_ptn';
 			$th_label = _x( 'Type by Post Type', 'option label', 'wpsso' );
+			$tr_html  = $hide_in_basic ? $this->form->get_tr_hide( 'basic', $type_keys ) : '';
 
-			if ( ! empty( $hide_in_view[ $tr_key ] ) ) {
-				$tr_html = $this->form->get_tr_hide( $hide_in_view[ $tr_key ], $type_keys );
-			}
-
-			$table_rows[ $tr_key ] = $tr_html . $this->form->get_th_html( $th_label, '', $tr_key ) .
+			$table_rows[ $tr_key ] = $tr_html .
+			$this->form->get_th_html( $th_label, '', $tr_key ) .
 			'<td>' . $type_select . '</td>';
 
 			unset( $type_select, $type_keys );	// Just in case.
@@ -3490,132 +3482,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$tr_html  = '';
 			$tr_key   = 'og_type_for_ttn';
 			$th_label = _x( 'Type by Term Taxonomy', 'option label', 'wpsso' );
-
-			if ( ! empty( $hide_in_view[ $tr_key ] ) ) {
-				$tr_html = $this->form->get_tr_hide( $hide_in_view[ $tr_key ], $type_keys );
-			}
+			$tr_html  = $hide_in_basic ? $this->form->get_tr_hide( 'basic', $type_keys ) : '';
 
 			$table_rows[ $tr_key ] = $tr_html . 
 			$this->form->get_th_html( $th_label, '', $tr_key ) . 
-			'<td>' . $type_select . '</td>';
-
-			unset( $type_select, $type_keys );	// Just in case.
-		}
-
-		/**
-		 * Called from the WpssoSubmenuGeneral and WpssoJsonSubmenuSchemaJsonLd classes.
-		 */
-		protected function add_schema_item_props_table_rows( array &$table_rows ) {
-
-			$table_rows[ 'schema_logo_url' ] = '' . 
-			$this->form->get_th_html( '<a href="https://developers.google.com/structured-data/customize/logos">' .
-			_x( 'Organization Logo URL', 'option label', 'wpsso' ) . '</a>', '', 'schema_logo_url', array( 'is_locale' => true ) ) . 
-			'<td>' . $this->form->get_input( SucomUtil::get_key_locale( 'schema_logo_url', $this->p->options ), 'wide' ) . '</td>';
-
-			$table_rows[ 'schema_banner_url' ] = '' . 
-			$this->form->get_th_html( _x( 'Organization Banner URL', 'option label', 'wpsso' ), '', 'schema_banner_url', array( 'is_locale' => true ) ) . 
-			'<td>' . $this->form->get_input( SucomUtil::get_key_locale( 'schema_banner_url', $this->p->options ), 'wide' ) . '</td>';
-
-			$table_rows[ 'schema_img_max' ] = $this->form->get_tr_hide( 'basic', 'schema_img_max' ) . 
-			$this->form->get_th_html( _x( 'Maximum Images to Include', 'option label', 'wpsso' ), '', 'schema_img_max' ) . 
-			'<td>' . $this->form->get_select( 'schema_img_max', range( 0, $this->p->cf[ 'form' ][ 'max_media_items' ] ), 'short', '', true ) . 
-			( empty( $this->form->options[ 'og_vid_prev_img' ] ) ? '' : ' <em>' . _x( 'video preview images are enabled (and included first)',
-				'option comment', 'wpsso' ) . '</em>' ) . '</td>';
-
-			$table_rows[ 'schema_img' ] = '' . 
-			$this->form->get_th_html( _x( 'Schema Image Dimensions', 'option label', 'wpsso' ), '', 'schema_img_dimensions' ) . 
-			'<td>' . $this->form->get_input_image_dimensions( 'schema_img' ) . '</td>';
-
-			$table_rows[ 'schema_desc_max_len' ] = $this->form->get_tr_hide( 'basic', 'schema_desc_max_len' ) . 
-			$this->form->get_th_html( _x( 'Maximum Description Length', 'option label', 'wpsso' ), '', 'schema_desc_max_len' ) . 
-			'<td>' . $this->form->get_input( 'schema_desc_max_len', 'short' ) . ' ' . _x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
-		}
-
-		/**
-		 * Called from the WpssoSubmenuGeneral and WpssoJsonSubmenuSchemaJsonLd classes.
-		 */
-		protected function add_schema_item_types_table_rows( array &$table_rows, array $hide_in_view = array(), $schema_types = null ) {
-
-			if ( ! is_array( $schema_types ) ) {
-				$schema_types = $this->p->schema->get_schema_types_select( null, $add_none = true );
-			}
-
-			foreach ( array( 
-				'home_index'   => _x( 'Type for Blog Front Page', 'option label', 'wpsso' ),
-				'home_page'    => _x( 'Type for Static Front Page', 'option label', 'wpsso' ),
-				'user_page'    => _x( 'Type for User / Author Page', 'option label', 'wpsso' ),
-				'search_page'  => _x( 'Type for Search Results Page', 'option label', 'wpsso' ),
-				'archive_page' => _x( 'Type for Other Archive Page', 'option label', 'wpsso' ),
-			) as $type_name => $th_label ) {
-
-				$tr_html = '';
-				$opt_key = 'schema_type_for_' . $type_name;
-
-				if ( ! empty( $hide_in_view[ $opt_key ] ) ) {
-					$tr_html = $this->form->get_tr_hide( $hide_in_view[ $opt_key ], $opt_key );
-				}
-
-				$table_rows[ $opt_key ] = $tr_html . 
-				$this->form->get_th_html( $th_label, '', $opt_key ) . 
-				'<td>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type' ) . '</td>';
-			}
-
-			/**
-			 * Type by Post Type
-			 */
-			$type_select = '';
-			$type_keys = array();
-
-			foreach ( $this->p->util->get_post_types( 'objects' ) as $pt ) {
-
-				$type_keys[] = $opt_key = 'schema_type_for_' . $pt->name;
-
-				$type_select .= '<p>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type' ) . ' ' .
-					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $pt->label ) . '</p>' . "\n";
-			}
-
-			$type_keys[] = $opt_key = 'schema_type_for_post_archive';
-
-			$type_select .= '<p>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type' ) . ' ' .
-				sprintf( _x( 'for %s', 'option comment', 'wpsso' ), _x( '(Post Type) Archive Page', 'option comment', 'wpsso' ) ) . '</p>' . "\n";
-
-			$tr_html  = '';
-			$tr_key   = 'schema_type_for_ptn';
-			$th_label = _x( 'Type by Post Type', 'option label', 'wpsso' );
-
-			if ( ! empty( $hide_in_view[ $tr_key ] ) ) {
-				$tr_html = $this->form->get_tr_hide( $hide_in_view[ $tr_key ], $type_keys );
-			}
-
-			$table_rows[ $tr_key ] = $tr_html . 
-			$this->form->get_th_html( $th_label, '', $tr_key ) . 
-			'<td>' . $type_select . '</td>';
-
-			unset( $type_select, $type_keys );	// Just in case.
-
-			/**
-			 * Type by Term Taxonomy
-			 */
-			$type_select   = '';
-			$type_keys = array();
-
-			foreach ( $this->p->util->get_taxonomies( 'objects' ) as $tax ) {
-
-				$type_keys[] = $opt_key = 'schema_type_for_tax_' . $tax->name;
-
-				$type_select .= '<p>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type' ) . ' ' .
-					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $tax->label ) . '</p>' . "\n";
-			}
-
-			$tr_html  = '';
-			$tr_key   = 'schema_type_for_ttn';
-			$th_label = _x( 'Type by Term Taxonomy', 'option label', 'wpsso' );
-
-			if ( ! empty( $hide_in_view[ $tr_key ] ) ) {
-				$tr_html = $this->form->get_tr_hide( $hide_in_view[ $tr_key ], $type_keys );
-			}
-
-			$table_rows[ $tr_key ] = $tr_html . $this->form->get_th_html( $th_label, '', $tr_key ) . 
 			'<td>' . $type_select . '</td>';
 
 			unset( $type_select, $type_keys );	// Just in case.
@@ -3662,10 +3532,115 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
-		 * Called from the WpssoSubmenuEssential, WpssoSubmenuAdvanced, and WpssoSitesubmenuSiteadvanced classes.
-		 * Note that the essential settings page will unset() some table rows to keep the options list to a minimum.
+		 * Called from the WpssoSubmenuGeneral and WpssoJsonSubmenuSchemaJsonLd classes.
 		 */
-		protected function add_optional_advanced_table_rows( array &$table_rows, $network = false ) {
+		protected function add_schema_item_props_table_rows( array &$table_rows ) {
+
+			$table_rows[ 'schema_logo_url' ] = '' . 
+			$this->form->get_th_html( '<a href="https://developers.google.com/structured-data/customize/logos">' .
+			_x( 'Organization Logo URL', 'option label', 'wpsso' ) . '</a>', '', 'schema_logo_url', array( 'is_locale' => true ) ) . 
+			'<td>' . $this->form->get_input( SucomUtil::get_key_locale( 'schema_logo_url', $this->p->options ), 'wide' ) . '</td>';
+
+			$table_rows[ 'schema_banner_url' ] = '' . 
+			$this->form->get_th_html( _x( 'Organization Banner URL', 'option label', 'wpsso' ), '', 'schema_banner_url', array( 'is_locale' => true ) ) . 
+			'<td>' . $this->form->get_input( SucomUtil::get_key_locale( 'schema_banner_url', $this->p->options ), 'wide' ) . '</td>';
+
+			$table_rows[ 'schema_img_max' ] = $this->form->get_tr_hide( 'basic', 'schema_img_max' ) . 
+			$this->form->get_th_html( _x( 'Maximum Images to Include', 'option label', 'wpsso' ), '', 'schema_img_max' ) . 
+			'<td>' . $this->form->get_select( 'schema_img_max', range( 0, $this->p->cf[ 'form' ][ 'max_media_items' ] ), 'short', '', true ) . 
+			( empty( $this->form->options[ 'og_vid_prev_img' ] ) ? '' : ' <em>' . _x( 'video preview images are enabled (and included first)',
+				'option comment', 'wpsso' ) . '</em>' ) . '</td>';
+
+			$table_rows[ 'schema_img' ] = '' . 
+			$this->form->get_th_html( _x( 'Schema Image Dimensions', 'option label', 'wpsso' ), '', 'schema_img_dimensions' ) . 
+			'<td>' . $this->form->get_input_image_dimensions( 'schema_img' ) . '</td>';
+
+			$table_rows[ 'schema_desc_max_len' ] = $this->form->get_tr_hide( 'basic', 'schema_desc_max_len' ) . 
+			$this->form->get_th_html( _x( 'Maximum Description Length', 'option label', 'wpsso' ), '', 'schema_desc_max_len' ) . 
+			'<td>' . $this->form->get_input( 'schema_desc_max_len', 'short' ) . ' ' . _x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
+		}
+
+		/**
+		 * Called from the WpssoSubmenuGeneral and WpssoJsonSubmenuSchemaJsonLd classes.
+		 */
+		protected function add_schema_item_types_table_rows( array &$table_rows, $hide_in_basic = true ) {
+
+			$schema_types = $this->p->schema->get_schema_types_select( null, $add_none = true );
+
+			foreach ( array( 
+				'home_index'   => _x( 'Type for Blog Front Page', 'option label', 'wpsso' ),
+				'home_page'    => _x( 'Type for Static Front Page', 'option label', 'wpsso' ),
+				'user_page'    => _x( 'Type for User / Author Page', 'option label', 'wpsso' ),
+				'search_page'  => _x( 'Type for Search Results Page', 'option label', 'wpsso' ),
+				'archive_page' => _x( 'Type for Other Archive Page', 'option label', 'wpsso' ),
+			) as $type_name => $th_label ) {
+
+				$opt_key = 'schema_type_for_' . $type_name;
+				$tr_html = $hide_in_basic ? $this->form->get_tr_hide( 'basic', $opt_key ) : '';
+
+				$table_rows[ $opt_key ] = $tr_html . 
+				$this->form->get_th_html( $th_label, '', $opt_key ) . 
+				'<td>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type' ) . '</td>';
+			}
+
+			/**
+			 * Type by Post Type
+			 */
+			$type_select = '';
+			$type_keys = array();
+
+			foreach ( $this->p->util->get_post_types( 'objects' ) as $pt ) {
+
+				$type_keys[] = $opt_key = 'schema_type_for_' . $pt->name;
+
+				$type_select .= '<p>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type' ) . ' ' .
+					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $pt->label ) . '</p>' . "\n";
+			}
+
+			$type_keys[] = $opt_key = 'schema_type_for_post_archive';
+
+			$type_select .= '<p>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type' ) . ' ' .
+				sprintf( _x( 'for %s', 'option comment', 'wpsso' ), _x( '(Post Type) Archive Page', 'option comment', 'wpsso' ) ) . '</p>' . "\n";
+
+			$tr_key   = 'schema_type_for_ptn';
+			$th_label = _x( 'Type by Post Type', 'option label', 'wpsso' );
+			$tr_html  = $hide_in_basic ? $this->form->get_tr_hide( 'basic', $type_keys ) : '';
+
+			$table_rows[ $tr_key ] = $tr_html . 
+			$this->form->get_th_html( $th_label, '', $tr_key ) . 
+			'<td>' . $type_select . '</td>';
+
+			unset( $type_select, $type_keys );	// Just in case.
+
+			/**
+			 * Type by Term Taxonomy
+			 */
+			$type_select   = '';
+			$type_keys = array();
+
+			foreach ( $this->p->util->get_taxonomies( 'objects' ) as $tax ) {
+
+				$type_keys[] = $opt_key = 'schema_type_for_tax_' . $tax->name;
+
+				$type_select .= '<p>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type' ) . ' ' .
+					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $tax->label ) . '</p>' . "\n";
+			}
+
+			$tr_key   = 'schema_type_for_ttn';
+			$th_label = _x( 'Type by Term Taxonomy', 'option label', 'wpsso' );
+			$tr_html  = $hide_in_basic ? $this->form->get_tr_hide( 'basic', $type_keys ) : '';
+
+			$table_rows[ $tr_key ] = $tr_html .
+			$this->form->get_th_html( $th_label, '', $tr_key ) . 
+			'<td>' . $type_select . '</td>';
+
+			unset( $type_select, $type_keys );	// Just in case.
+		}
+
+		/**
+		 * Called from the WpssoSubmenuEssential, WpssoSubmenuAdvanced, and WpssoSitesubmenuSiteadvanced classes.
+		 */
+		protected function add_advanced_plugin_settings_table_rows( array &$table_rows, $network = false ) {
 
 			$table_rows[ 'plugin_clean_on_uninstall' ] = '' .
 			$this->form->get_th_html( _x( 'Remove Settings on Uninstall', 'option label', 'wpsso' ), '', 'plugin_clean_on_uninstall' ) . 
@@ -3689,12 +3664,97 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			self::get_option_site_use( 'plugin_show_opts', $this->form, $network, true );
 		}
 
+		/**
+		 * Called from the WpssoStdAdminAdvanced, WpssoProAdminAdvanced, and WpssoJsonSubmenuSchemaGeneral classes.
+		 */
+		public function add_advanced_custom_fields_table_rows( array &$table_rows, $form, $hide_in_basic = true, $is_top_section = false ) {
+
+			$table_rows[ 'subsection_custom_fields' ] = ( $hide_in_basic ? $form->get_tr_hide( 'basic' ) : '' ) .
+				'<td colspan="2" class="subsection ' . ( $is_top_section ? ' top' : '' ) . '"><h4>' .
+					_x( 'Custom Field Names', 'metabox title', 'wpsso' ) . '</h4></td>';
+
+			if ( $is_top_section ) {
+				if ( ! self::$pkg[ $this->p->lca ][ 'pp' ] ) {
+					$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
+				}
+			}
+
+			/**
+			 * Example:
+			 *
+			 * $cf_md_keys = array(
+			 * 	'plugin_cf_vid_embed' => 'og_vid_embed',
+			 * 	'plugin_cf_vid_url'   => 'og_vid_url',
+			 * ),
+			 */
+			$cf_md_keys = (array) apply_filters( $this->p->lca . '_cf_md_keys', $this->p->cf[ 'opt' ][ 'cf_md_key' ] );
+
+			foreach ( $cf_md_keys as $opt_key => $cf_md_key ) {
+
+				/**
+				 * Make sure we have a label for the custom
+				 * field option.
+				 */
+				if ( empty( $this->p->cf[ 'form' ][ 'cf_labels' ][ $opt_key ] ) ) {
+					continue;
+				} else {
+					$opt_label = $this->p->cf[ 'form' ][ 'cf_labels' ][ $opt_key ];
+				}
+
+				/**
+				 * If we don't have a meta data key, then clear
+				 * the custom field name (just in case) and
+				 * disable the option.
+				 */
+				if ( empty( $cf_md_key ) ) {
+
+					$form->options[ $opt_key ] = '';
+
+					$disabled = true;
+
+				} else {
+					$disabled = false;
+				}
+
+				$table_rows[ $opt_key ] = ( $hide_in_basic ? $form->get_tr_hide( 'basic', $opt_key ) : '' ) .
+					$form->get_th_html( _x( $opt_label, 'option label', 'wpsso' ), '', $opt_key ) . 
+						( self::$pkg[ $this->p->lca ][ 'pp' ] ? '<td>' . $form->get_input( $opt_key,
+							$css_class = '', $css_id = '', $len = 0, $placeholder = '', $disabled ) . '</td>' :
+								'<td class="blank">' . $form->get_no_input( $opt_key ) . '</td>' );
+			}
+
+		}
+
+		/**
+		 * Called from the WpssoStdAdminAdvanced, WpssoProAdminAdvanced, and WpssoJsonSubmenuSchemaGeneral classes.
+		 */
+		public function add_advanced_product_attr_table_rows( array &$table_rows, $form, $hide_in_basic = true, $is_top_section = false ) {
+
+			$table_rows[ 'subsection_product_attr' ] = ( $hide_in_basic ? $form->get_tr_hide( 'basic' ) : '' ) .
+				'<td colspan="2" class="subsection ' . ( $is_top_section ? ' top' : '' ) . '"><h4>' .
+					_x( 'Product Attribute Names', 'metabox title', 'wpsso' ) . '</h4></td>';
+
+			if ( $is_top_section ) {
+				if ( ! self::$pkg[ $this->p->lca ][ 'pp' ] ) {
+					$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
+				}
+			}
+
+			foreach ( $this->p->cf[ 'form' ][ 'product_attr_labels' ] as $opt_key => $opt_label ) {
+
+				$table_rows[ $opt_key ] = ( $hide_in_basic ? $form->get_tr_hide( 'basic', $opt_key ) : '' ) .
+					$form->get_th_html( _x( $opt_label, 'option label', 'wpsso' ), '', $opt_key ) . 
+						( self::$pkg[ $this->p->lca ][ 'pp' ] ? '<td>' . $form->get_input( $opt_key ) . '</td>' :
+							'<td class="blank">' . $form->get_no_input( $opt_key ) . '</td>' );
+			}
+		}
+
 		public static function get_option_site_use( $name, $form, $network = false, $enabled = false ) {
 
 			if ( $network ) {
 
 				return $form->get_th_html( _x( 'Site Use', 'option label (very short)', 'wpsso' ), 'site_use' ) . 
-					( $enabled || self::$pkg[ 'wpsso' ][ 'pp' ] ? '<td class="site_use">' . $form->get_select( $name . ':use',
+					( $enabled || self::$pkg[ $this->p->lca ][ 'pp' ] ? '<td class="site_use">' . $form->get_select( $name . ':use',
 						WpssoConfig::$cf[ 'form' ][ 'site_option_use' ], 'site_use' ) . '</td>' :
 					'<td class="blank site_use">' . $form->get_select( $name . ':use',
 						WpssoConfig::$cf[ 'form' ][ 'site_option_use' ], 'site_use', '', true, true ) . '</td>' );

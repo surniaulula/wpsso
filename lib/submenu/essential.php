@@ -93,11 +93,12 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 		public function show_metabox_advanced() {
 
-			$metabox_id = 'optional';
-			$tab_key    = 'advanced';
+			$metabox_id  = 'optional';
+			$tab_key     = 'advanced';
+			$filter_name = $this->p->lca . '_' . $metabox_id . '_' . $tab_key . '_rows';
 
-			$this->p->util->do_metabox_table( apply_filters( $this->p->lca . '_' . $metabox_id . '_' . $tab_key . '_rows',
-				$this->get_table_rows( $metabox_id, $tab_key ), $this->form, false ), 'metabox-' . $metabox_id . '-' . $tab_key );
+			$this->p->util->do_metabox_table( apply_filters( $filter_name, $this->get_table_rows( $metabox_id, $tab_key ), $this->form, false ),
+				'metabox-' . $metabox_id . '-' . $tab_key );
 		}
 
 		protected function get_table_rows( $metabox_id, $tab_key ) {
@@ -184,7 +185,7 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 				case 'optional-advanced':
 
-					$this->add_optional_advanced_table_rows( $table_rows );
+					$this->add_advanced_plugin_settings_table_rows( $table_rows );
 
 					/**
 					 * Don't show these options in the Essential settings page.

@@ -82,8 +82,10 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 			$table_rows = array();
 
 			foreach ( $tabs as $tab_key => $title ) {
-				$table_rows[$tab_key] = apply_filters( $this->p->lca . '_' . $metabox_id . '_' . $tab_key . '_rows',
-					$this->get_table_rows( $metabox_id, $tab_key ), $this->form );
+
+				$filter_name = $this->p->lca . '_' . $metabox_id . '_' . $tab_key . '_rows';
+
+				$table_rows[ $tab_key ] = apply_filters( $filter_name, $this->get_table_rows( $metabox_id, $tab_key ), $this->form );
 			}
 
 			$this->p->util->do_metabox_tabbed( $metabox_id, $tabs, $table_rows );
@@ -139,18 +141,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->form->get_th_html( _x( 'Default Article Topic', 'option label', 'wpsso' ), '', 'og_art_section' ) . 
 					'<td>' . $this->form->get_select( 'og_art_section', $this->p->util->get_article_topics() ) . '</td>';
 
-					/**
-					 * Hide all options in basic view by default.
-					 */
-					$this->add_og_types_table_rows( $table_rows, array(
-						'og_type_for_home_index'   => 'basic',
-						'og_type_for_home_page'    => 'basic',
-						'og_type_for_user_page'    => 'basic',
-						'og_type_for_search_page'  => 'basic',
-						'og_type_for_archive_page' => 'basic',
-						'og_type_for_ptn'          => 'basic',
-						'og_type_for_ttn'          => 'basic',
-					) );
+					$this->add_og_types_table_rows( $table_rows, $hide_in_basic = true );
 
 					break;
 
@@ -256,9 +247,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->form->get_th_html( _x( 'Author / Person Name Format', 'option label', 'wpsso' ), '', 'seo_author_name' ) . 
 					'<td>' . $this->form->get_select( 'seo_author_name', $this->p->cf[ 'form' ][ 'user_name_fields' ] ) . '</td>';
 
-					$table_rows[ 'subsection_google_schema' ] = '<td colspan="2" class="subsection"><h4>' . 
-					_x( 'Structured Data / Schema Markup', 'metabox title', 'wpsso' ) . '</h4></td>';
-
 					/**
 					 * Always returns false when the WPSSO JSON add-on is active.
 					 */
@@ -273,18 +261,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$this->add_schema_item_props_table_rows( $table_rows );
 
-					/**
-					 * Hide all options in basic view by default.
-					 */
-					$this->add_schema_item_types_table_rows( $table_rows, array(
-						'schema_type_for_home_index'   => 'basic',
-						'schema_type_for_home_page'    => 'basic',
-						'schema_type_for_user_page'    => 'basic',
-						'schema_type_for_search_page'  => 'basic',
-						'schema_type_for_archive_page' => 'basic',
-						'schema_type_for_ptn'          => 'basic',
-						'schema_type_for_ttn'          => 'basic',
-					) );
+					$this->add_schema_item_types_table_rows( $table_rows, $hide_in_basic = true );
 
 					break;
 

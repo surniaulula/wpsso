@@ -144,15 +144,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			/**
 			 * Product attribute names.
 			 */
-			$table_rows[ 'subsection_product_attr' ] = $form->get_tr_hide( 'basic' ) .
-			'<td colspan="2" class="subsection"><h4>' . _x( 'Product Attribute Names', 'metabox title', 'wpsso' ) . '</h4></td>';
-
-			foreach ( $this->p->cf[ 'form' ][ 'product_attr_labels' ] as $opt_key => $opt_label ) {
-
-				$table_rows[ $opt_key ] = $form->get_tr_hide( 'basic', $opt_key ) . 
-				$form->get_th_html( _x( $opt_label, 'option label', 'wpsso' ), '', $opt_key ) . 
-				'<td class="blank">' . $form->get_no_input( $opt_key ) . '</td>';
-			}
+			$this->p->admin->add_advanced_product_attr_table_rows( $table_rows, $form, $hide_in_basic = true, $is_top_section = false );
 
 			return $table_rows;
 		}
@@ -194,26 +186,9 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			'<td class="blank">' . $form->get_no_select( 'plugin_def_currency', SucomUtil::get_currencies() ) . '</td>';
 
 			/**
-			 * Custom fields.
+			 * Custom field names.
 			 */
-			$table_rows[ 'subsection_custom_fields' ] = $form->get_tr_hide( 'basic' ) .
-			'<td colspan="2" class="subsection"><h4>' . _x( 'Custom Field Names', 'metabox title', 'wpsso' ) . '</h4></td>';
-
-			$cf_md_keys = (array) apply_filters( $this->p->lca . '_cf_md_keys', $this->p->cf[ 'opt' ][ 'cf_md_key' ] );
-
-			foreach ( $cf_md_keys as $opt_key => $cf_md_key ) {
-
-				if ( ! empty( $this->p->cf[ 'form' ][ 'cf_labels' ][ $opt_key ] ) ) {
-
-					if ( empty( $cf_md_key ) ) {
-						$form->options[ $opt_key ] = '';
-					}
-
-					$table_rows[ $opt_key ] = $form->get_tr_hide( 'basic', $opt_key ) . 
-					$form->get_th_html( _x( $this->p->cf[ 'form' ][ 'cf_labels' ][ $opt_key ], 'option label', 'wpsso' ), '', $opt_key ) . 
-					'<td class="blank">' . $form->get_no_input( $opt_key ) . '</td>';
-				}
-			}
+			$this->p->admin->add_advanced_custom_fields_table_rows( $table_rows, $form, $hide_in_basic = true, $is_top_section = false );
 
 			return $table_rows;
 		}
