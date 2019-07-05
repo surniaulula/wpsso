@@ -1240,7 +1240,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			/**
-			 * Additional filters / Pro modules may detect other embedded video markup.
+			 * Additional filters / modules may detect other embedded video markup.
 			 */
 			$filter_name = $this->p->lca . '_content_videos';
 
