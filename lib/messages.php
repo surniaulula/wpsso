@@ -887,7 +887,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$cf_key        = preg_replace( '/^tooltip-/', '', $msg_key );
 							$cf_info       = $this->get_cf_info( preg_replace( '/^tooltip-plugin_cf_/', '', $msg_key ) );
-							$cf_md_key     = empty( $this->p->cf[ 'opt' ][ 'cf_md_key' ][ $cf_key ] ) ? false : $this->p->cf[ 'opt' ][ 'cf_md_key' ][ $cf_key ];
+							$cf_md_key     = empty( $this->p->cf[ 'opt' ][ 'cf_md_key' ][ $cf_key ] ) ?
+								false : $this->p->cf[ 'opt' ][ 'cf_md_key' ][ $cf_key ];
 							$cf_is_multi   = empty( $this->p->cf[ 'opt' ][ 'cf_md_multi' ][ $cf_md_key ] ) ? false : true;
 							$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 

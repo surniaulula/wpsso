@@ -1446,9 +1446,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			}
 
 			if ( empty( $wp_meta ) || ! is_array( $wp_meta ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'wp_meta provided is empty or not an array' );
 				}
+
 				return $md_opts;
 			}
 

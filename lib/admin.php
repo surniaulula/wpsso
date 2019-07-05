@@ -3646,7 +3646,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->form->get_th_html( _x( 'Remove Settings on Uninstall', 'option label', 'wpsso' ), '', 'plugin_clean_on_uninstall' ) . 
 			'<td>' .
 				$this->form->get_checkbox( 'plugin_clean_on_uninstall' ) . ' ' .
-				_x( 'including any custom meta for posts, terms, and users', 'option comment', 'wpsso' ) . ' ' . 
+				_x( 'including custom meta for posts, terms, and users', 'option comment', 'wpsso' ) . ' ' . 
 			'</td>' .
 			self::get_option_site_use( 'plugin_clean_on_uninstall', $this->form, $network, true );
 
