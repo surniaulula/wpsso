@@ -1426,6 +1426,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'plugin_yourls_password':
 				case 'plugin_yourls_token':
 				case ( 0 === strpos( $base_key, 'plugin_cf_' ) ? true : false ):	// Value is the name of a meta key.
+				case ( 0 === strpos( $base_key, 'plugin_product_attr_' ) ? true : false ):	// Value is the name of a product attribute.
 
 					return 'one_line';
 
@@ -1447,7 +1448,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'product_avail':			// Select option with 'none' as default.
 				case 'product_condition':		// Select option with 'none' as default.
 				case 'product_target_gender':		// Select option with 'none' as default.
-				case ( 0 === strpos( $base_key, 'plugin_product_attr_' ) ? true : false ):	// Value is the name of a product attribute.
 				case ( false !== strpos( $base_key, '_crop_x' ) ? true : false ):
 				case ( false !== strpos( $base_key, '_crop_y' ) ? true : false ):
 				case ( preg_match( '/^(plugin|wp)_cm_[a-z]+_(name|label)$/', $base_key ) ? true : false ):
