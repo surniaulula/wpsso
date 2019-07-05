@@ -144,6 +144,9 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			/**
 			 * Product attribute names.
 			 */
+			$table_rows[ 'subsection_product_attr' ] = $form->get_tr_hide( 'basic' ) .
+			'<td colspan="2" class="subsection"><h4>' . _x( 'Product Attribute Names', 'metabox title', 'wpsso' ) . '</h4></td>';
+
 			foreach ( $this->p->cf[ 'form' ][ 'product_attr_labels' ] as $opt_key => $opt_label ) {
 
 				$table_rows[ $opt_key ] = $form->get_tr_hide( 'basic', $opt_key ) . 
@@ -193,6 +196,9 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			/**
 			 * Custom fields.
 			 */
+			$table_rows[ 'subsection_custom_fields' ] = $form->get_tr_hide( 'basic' ) .
+			'<td colspan="2" class="subsection"><h4>' . _x( 'Custom Field Names', 'metabox title', 'wpsso' ) . '</h4></td>';
+
 			$cf_md_keys = (array) apply_filters( $this->p->lca . '_cf_md_keys', $this->p->cf[ 'opt' ][ 'cf_md_key' ] );
 
 			foreach ( $cf_md_keys as $opt_key => $cf_md_key ) {

@@ -786,13 +786,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'schema_type_for_tax_category' => 'item.list',
 					'schema_type_for_tax_post_tag' => 'item.list',
-					'schema_type_for_archive_page' => 'webpage.collection',	// Date-based archives.
+					'schema_type_for_archive_page' => 'item.list',
 					'schema_type_for_attachment'   => 'webpage',
 					'schema_type_for_home_index'   => 'blog',
 					'schema_type_for_home_page'    => 'website',
 					'schema_type_for_page'         => 'article',
 					'schema_type_for_post'         => 'blog.posting',
-					'schema_type_for_post_archive' => 'item.list',		// Post type archive page.
+					'schema_type_for_post_archive' => 'item.list',
 					'schema_type_for_search_page'  => 'webpage.search.results',
 					'schema_type_for_user_page'    => 'webpage.profile',
 
@@ -836,13 +836,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'og_type_for_tax_category'     => 'website',
 					'og_type_for_tax_post_tag'     => 'website',
-					'og_type_for_archive_page'     => 'website',		// Date-based archives.
+					'og_type_for_archive_page'     => 'website',
 					'og_type_for_attachment'       => 'website',
 					'og_type_for_home_index'       => 'website',
 					'og_type_for_home_page'        => 'website',
 					'og_type_for_page'             => 'article',
 					'og_type_for_post'             => 'article',
-					'og_type_for_post_archive'     => 'website',		// Post type archive page.
+					'og_type_for_post_archive'     => 'website',
 					'og_type_for_search_page'      => 'website',
 					'og_type_for_user_page'        => 'website',
 					
