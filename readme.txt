@@ -94,7 +94,6 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 
 	* Customize Text
 		* Open Graph Type
-		* Article Topic
 		* Default Title
 		* Default Description
 		* Schema Description
@@ -102,22 +101,26 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 		* Twitter Card Desc
 		* Sharing URL
 		* Canonical URL
-		* Product Availability
-		* Product Brand
-		* Product Color
-		* Product Condition
-		* Product Material
-		* Product MPN
-		* Product SKU
-		* Product EAN
-		* Product GTIN-8
-		* Product GTIN-12
-		* Product GTIN-13
-		* Product GTIN-14
-		* Product ISBN
-		* Product Price
-		* Product Size
-		* Product Target Gender
+		* Article Information
+			* Article Topic
+		* Product Information
+			* Product Brand
+			* Product Availability
+			* Product Price and Currency
+			* Product Condition
+			* Product Material
+			* Product Color
+			* Product Target Gender
+			* Product Size
+			* Product Volume (ml)
+			* Product SKU
+			* Product MPN
+			* Product EAN
+			* Product GTIN-8
+			* Product GTIN-12
+			* Product GTIN-13
+			* Product GTIN-14
+			* Product ISBN
 	* Priority Media
 		* All Social WebSites / Open Graph
 			* Priority Image Information
@@ -428,12 +431,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.1.0-b.1 (2019/07/03)**
+**Version 5.1.0-b.2 (2019/07/04)**
 
 * *New Features*
 	* Added support for the WooCommerce Show Single Variations plugin (Premium version).
 	* Added support for a WooCommerce "Volume" (in milliliters) product attribute (Premium version).
-	* Added a new "Product Volume (ml) Custom Field" option in the SSO &gt; Advanced &gt; Integration tab.
+	* Added a new "Product Volume (ml) Custom Field" option in the SSO &gt; Advanced &gt; Integration tab (Premium version).
 * *Improvements*
 	* Added a fallback to the default attribute value when a WooCommerce variation attribute is empty (Premium version).
 	* WooCommerce attributes used for variations (ie. multiple values for a select option) are now excluded from the Facebook / Open Graph meta tags (Premium version).
@@ -494,9 +497,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 5.1.0-b.1 =
+= 5.1.0-b.2 =
 
-(2019/07/03) Added support for the WooCommerce Show Single Variations plugin. Added support for a WooCommerce "Volume" (in milliliters) product attribute.
+(2019/07/04) Added support for the WooCommerce Show Single Variations plugin. Added support for a WooCommerce "Volume" (in milliliters) product attribute.
 
 = 5.0.1 =
 
