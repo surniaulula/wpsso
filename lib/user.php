@@ -760,10 +760,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function ajax_metabox_custom_meta() {
+
 			die( '-1' );	// Nothing to do.
 		}
 
 		public function show_metabox_custom_meta( $user_obj ) {
+
 			echo $this->get_metabox_custom_meta( $user_obj );
 		}
 

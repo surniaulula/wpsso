@@ -58,4 +58,3 @@ if ( ! class_exists( 'WpssoProfileYourSSO' ) && class_exists( 'WpssoAdmin' ) ) {
 		}
 	}
 }
-

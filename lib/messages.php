@@ -191,15 +191,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case ( 0 === strpos( $msg_key, 'tooltip-meta-product_' ) ? true : false ):
 
-							$plugin_cf_info = $this->get_plugin_cf_info( 'tooltip-meta-', $msg_key );
+							$cf_info = $this->get_cf_info( preg_replace( '/^tooltip-meta-/', '', $msg_key ) );
 
-							if ( ! empty( $plugin_cf_info ) ) {	// Just in case.
+							if ( ! empty( $cf_info ) ) {	// Just in case.
 
-								$text = sprintf( __( 'You may specify %1$s, or leave the default value as-is.', 'wpsso' ), $plugin_cf_info[ 1 ] ) . ' ';
+								$text = sprintf( __( 'The value for %1$s can be used in Open Graph meta tags and Schema Product markup.', 'wpsso' ), $cf_info[ 1 ] ) . ' ';
 
-								$text .= sprintf( __( 'The "%1$s" value may be used in Open Graph meta tags and <em>the Schema markup of products with a single variation</em>.', 'wpsso' ), $plugin_cf_info[ 0 ] ) . ' ';
+								$text .= __( 'When product variations are available, the value retrieved from each variation will be used instead.', 'wpsso' ) . ' ';
 
-								$text .= sprintf( __( 'The Schema markup of products with multiple variations will include %1$s specific to each variation, when offered by a supported e-commerce plugin.', 'wpsso' ), $plugin_cf_info[ 1 ] );
+								$text .= __( 'This option may be disabled when a supported e-commerce plugin provides the source value.', 'wpsso' );
 							}
 
 						 	break;
@@ -672,7 +672,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						/**
-						 * Content and Filters settings.
+						 * Content Text settings.
 						 */
 						case 'tooltip-plugin_filter_title':
 
@@ -885,25 +885,20 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case ( 0 === strpos( $msg_key, 'tooltip-plugin_cf_' ) ? true : false ):
 
-							$cf_key = substr( $msg_key, 8 );	// Remove the 'tooltip-' prefix.
-
-							$md_key = empty( $this->p->cf[ 'opt' ][ 'cf_md_key' ][ $cf_key ] ) ?
-								false : $this->p->cf[ 'opt' ][ 'cf_md_key' ][ $cf_key ];
-
-							$is_multi = empty( $this->p->cf[ 'opt' ][ 'cf_md_multi' ][ $md_key ] ) ? false : true;
-
-							$plugin_cf_info = $this->get_plugin_cf_info( 'tooltip-plugin_cf_', $msg_key );
-
+							$cf_key        = preg_replace( '/^tooltip-/', '', $msg_key );
+							$cf_info       = $this->get_cf_info( preg_replace( '/^tooltip-plugin_cf_/', '', $msg_key ) );
+							$cf_md_key     = empty( $this->p->cf[ 'opt' ][ 'cf_md_key' ][ $cf_key ] ) ? false : $this->p->cf[ 'opt' ][ 'cf_md_key' ][ $cf_key ];
+							$cf_is_multi   = empty( $this->p->cf[ 'opt' ][ 'cf_md_multi' ][ $cf_md_key ] ) ? false : true;
 							$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-							if ( ! empty( $plugin_cf_info ) ) {	// Just in case.
+							if ( ! empty( $cf_info ) ) {	// Just in case.
 
-								$text = sprintf( __( 'If your theme or another plugin provides a custom field for %1$s, you may enter its custom field name here.', 'wpsso' ), $plugin_cf_info[ 1 ] ) . ' ';
+								$text = sprintf( __( 'If your theme or another plugin provides a custom field for %1$s, you may enter its custom field name here.', 'wpsso' ), $cf_info[ 1 ] ) . ' ';
 							
-								$text .= sprintf( __( 'If a custom field matching that name is found, its value may be used for the "%1$s" option in the %2$s metabox.', 'wpsso' ), $plugin_cf_info[ 0 ], $metabox_title ) . ' ';
+								$text .= sprintf( __( 'If a custom field matching that name is found, its value may be used for the "%1$s" option in the %2$s metabox.', 'wpsso' ), $cf_info[ 0 ], $metabox_title ) . ' ';
 
-								if ( $is_multi ) {
-									$text .= sprintf( __( 'The "%1$s" option offers multiple input fields &mdash; the custom field value will be split on newline characters, and each line used for an individual input field.', 'wpsso' ), $plugin_cf_info[ 0 ] );
+								if ( $cf_is_multi ) {
+									$text .= sprintf( __( 'The "%1$s" option offers multiple input fields &mdash; the custom field value will be split on newline characters, and each line used for an individual input field.', 'wpsso' ), $cf_info[ 0 ] );
 								}
 							}
 
@@ -2285,121 +2280,121 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			return $text;
 		}
 
-		private function get_plugin_cf_info( $key_prefix = '', $msg_key = false ) {
+		private function get_cf_info( $msg_key = false ) {
 
 			static $local_cache = null;
 
 			if ( null === $local_cache ) {
 				$local_cache = array(
-					$key_prefix . 'addl_type_urls' => array(
+					'addl_type_urls' => array(
 						_x( 'Microdata Type URLs', 'option label', 'wpsso' ),
 						_x( 'additional microdata type URLs', 'tooltip fragment', 'wpsso' ),
 					),
-					$key_prefix . 'howto_steps' => array(
+					'howto_steps' => array(
 						_x( 'How-To Steps', 'option label', 'wpsso' ),
 						_x( 'how-to steps', 'tooltip fragment', 'wpsso' ),
 					),
-					$key_prefix . 'howto_supplies' => array(
+					'howto_supplies' => array(
 						_x( 'How-To Supplies', 'option label', 'wpsso' ),
 						_x( 'how-to supplies', 'tooltip fragment', 'wpsso' ),
 					),
-					$key_prefix . 'howto_tools' => array(
+					'howto_tools' => array(
 						_x( 'How-To Tools', 'option label', 'wpsso' ),
 						_x( 'how-to tools', 'tooltip fragment', 'wpsso' ),
 					),
-					$key_prefix . 'img_url' => array(
+					'img_url' => array(
 						_x( 'Image URL', 'option label', 'wpsso' ),
 						_x( 'an image URL', 'tooltip fragment', 'wpsso' ),
 					),
-					$key_prefix . 'product_avail' => array(
+					'product_avail' => array(
 						_x( 'Product Availability', 'option label', 'wpsso' ),
 						_x( 'a product availability', 'tooltip fragment', 'wpsso' ),
 					),
-					$key_prefix . 'product_brand' => array(
+					'product_brand' => array(
 						_x( 'Product Brand', 'option label', 'wpsso' ),
 						_x( 'a product brand', 'tooltip fragment', 'wpsso' ),
 					),
-					$key_prefix . 'product_color' => array(
+					'product_color' => array(
 						_x( 'Product Color', 'option label', 'wpsso' ),
 						_x( 'a product color', 'tooltip fragment', 'wpsso' ),
 					),
-					$key_prefix . 'product_condition' => array(
+					'product_condition' => array(
 						_x( 'Product Condition', 'option label', 'wpsso' ),
 						_x( 'a product condition', 'tooltip fragment', 'wpsso' ),
 					),
-					$key_prefix . 'product_currency' => array(
+					'product_currency' => array(
 						_x( 'Product Currency', 'option label', 'wpsso' ),
 						_x( 'a product currency', 'tooltip fragment', 'wpsso' ),
 					),
-					$key_prefix . 'product_material' => array(
+					'product_material' => array(
 						_x( 'Product Material', 'option label', 'wpsso' ),
 						_x( 'a product material', 'tooltip fragment', 'wpsso' ),
 					),
-					$key_prefix . 'product_mpn' => array(
+					'product_mpn' => array(
 						_x( 'Product MPN', 'option label', 'wpsso' ),
 						_x( 'a Manufacturer Part Number (MPN)', 'tooltip fragment', 'wpsso' ),
 					),
-					$key_prefix . 'product_ean' => array(
+					'product_ean' => array(
 						_x( 'Product EAN', 'option label', 'wpsso' ),
 						_x( 'an International Article Number (aka European Article Number)', 'tooltip fragment', 'wpsso' ),
 					),
-					$key_prefix . 'product_gtin8' => array(
+					'product_gtin8' => array(
 						_x( 'Product GTIN-8', 'option label', 'wpsso' ),
 						_x( 'a product GTIN-8 code (aka EAN/UCC-8 or 8-digit EAN)', 'tooltip fragment', 'wpsso' ),
 					),
-					$key_prefix . 'product_gtin12' => array(
+					'product_gtin12' => array(
 						_x( 'Product GTIN-12', 'option label', 'wpsso' ),
 						_x( 'a product GTIN-12 code (12-digit GS1 identification key composed of a U.P.C. company prefix, item reference, and check digit)', 'tooltip fragment', 'wpsso' ),
 					),
-					$key_prefix . 'product_gtin13' => array(
+					'product_gtin13' => array(
 						_x( 'Product GTIN-13', 'option label', 'wpsso' ),
 						_x( 'a product GTIN-13 code (aka 13-digit ISBN codes or EAN/UCC-13)', 'tooltip fragment', 'wpsso' ),
 					),
-					$key_prefix . 'product_gtin14' => array(
+					'product_gtin14' => array(
 						_x( 'Product GTIN-14', 'option label', 'wpsso' ),
 						_x( 'a product GTIN-14 code', 'tooltip fragment', 'wpsso' ),
 					),
-					$key_prefix . 'product_isbn' => array(
+					'product_isbn' => array(
 						_x( 'Product ISBN', 'option label', 'wpsso' ),
 						_x( 'an ISBN code (aka International Standard Book Number)', 'tooltip fragment', 'wpsso' ),
 					),
-					$key_prefix . 'product_price' => array(
+					'product_price' => array(
 						_x( 'Product Price', 'option label', 'wpsso' ),
 						_x( 'a product price', 'tooltip fragment', 'wpsso' ),
 					),
-					$key_prefix . 'product_size' => array(
+					'product_size' => array(
 						_x( 'Product Size', 'option label', 'wpsso' ),
 						_x( 'a product size', 'tooltip fragment', 'wpsso' ),
 					),
-					$key_prefix . 'product_sku' => array(
+					'product_sku' => array(
 						_x( 'Product SKU', 'option label', 'wpsso' ),
 						_x( 'a Stock-Keeping Unit (aka unique product identifier)', 'tooltip fragment', 'wpsso' ),
 					),
-					$key_prefix . 'product_target_gender' => array(
+					'product_target_gender' => array(
 						_x( 'Product Target Gender', 'option label', 'wpsso' ),
 						_x( 'a product target gender', 'tooltip fragment', 'wpsso' ),
 					),
-					$key_prefix . 'product_volume_value' => array(
-						_x( 'Product Volume (ml)', 'option label', 'wpsso' ),
+					'product_volume_value' => array(
+						_x( 'Product Volume', 'option label', 'wpsso' ),
 						_x( 'a product volume (in milliliters)', 'tooltip fragment', 'wpsso' ),
 					),
-					$key_prefix . 'recipe_ingredients' => array(
+					'recipe_ingredients' => array(
 						_x( 'Recipe Ingredients', 'option label', 'wpsso' ),
 						_x( 'recipe ingredients', 'tooltip fragment', 'wpsso' ),
 					),
-					$key_prefix . 'recipe_instructions' => array(
+					'recipe_instructions' => array(
 						_x( 'Recipe Instructions', 'option label', 'wpsso' ),
 						_x( 'recipe instructions', 'tooltip fragment', 'wpsso' ),
 					),
-					$key_prefix . 'sameas_urls' => array(
+					'sameas_urls' => array(
 						_x( 'Same-As URLs', 'option label', 'wpsso' ),
 						_x( 'additional Same-As URLs', 'tooltip fragment', 'wpsso' ),
 					),
-					$key_prefix . 'vid_embed' => array(
+					'vid_embed' => array(
 						_x( 'Video Embed HTML', 'option label', 'wpsso' ),
 						_x( 'video embed HTML code (not a URL)', 'tooltip fragment', 'wpsso' ),
 					),
-					$key_prefix . 'vid_url' => array(
+					'vid_url' => array(
 						_x( 'Video URL', 'option label', 'wpsso' ),
 						_x( 'a video URL (not HTML code)', 'tooltip fragment', 'wpsso' ),
 					),

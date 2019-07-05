@@ -1318,6 +1318,22 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					break;
 
 				/**
+				 * Must be numeric (blank and zero are ok).
+				 */
+				case 'product_price':
+				case 'product_ean':
+				case 'product_gtin8':
+				case 'product_gtin12':
+				case 'product_gtin13':
+				case 'product_gtin14':
+				case 'product_isbn':
+				case 'product_volume_value':
+
+					return 'blank_num';
+
+					break;
+
+				/**
 				 * Empty string or an image ID.
 				 */
 				case 'og_def_img_id':
@@ -1327,15 +1343,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'tc_sum_img_id':
 
 					return 'img_id';
-
-				/**
-				 * Must be numeric (blank and zero are ok).
-				 */
-				case 'product_price':
-
-					return 'blank_num';
-
-					break;
 
 				/**
 				 * Image width, subject to minimum value (typically, at least 200px).
@@ -1402,16 +1409,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'pin_desc':
 				case 'product_brand':
 				case 'product_color':
-				case 'product_mpn':
-				case 'product_sku':
-				case 'product_ean':
-				case 'product_gtin8':
-				case 'product_gtin12':
-				case 'product_gtin13':
-				case 'product_gtin14':
-				case 'product_isbn':
 				case 'product_currency':
+				case 'product_mpn':
 				case 'product_size':
+				case 'product_sku':
 				case 'plugin_bitly_login':
 				case 'plugin_col_title_width':
 				case 'plugin_col_title_width_max':
@@ -1433,19 +1434,19 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/**
 				 * Options that cannot be blank.
 				 */
-				case 'site_org_schema_type':	// Example: 'organization' or a sub-type.
-				case 'site_place_id':		// Example: 'none' or place ID.
+				case 'site_org_schema_type':		// Example: 'organization' or a sub-type.
+				case 'site_place_id':			// Example: 'none' or place ID.
 				case 'og_author_field':
-				case 'og_def_img_id_pre': 	// Example: 'wp' or 'ngg' media library name.
-				case 'og_img_id_pre': 		// Example: 'wp' or 'ngg' media library name.
-				case 'plugin_shortener':	// Example: 'none' or name of shortener
+				case 'og_def_img_id_pre': 		// Example: 'wp' or 'ngg' media library name.
+				case 'og_img_id_pre': 			// Example: 'wp' or 'ngg' media library name.
+				case 'plugin_shortener':		// Example: 'none' or name of shortener
 				case 'plugin_col_def_width':
 				case 'plugin_col_def_width_max':
 				case 'plugin_col_title_width':
 				case 'plugin_col_title_width_max':
-				case 'product_avail':
-				case 'product_condition':
-				case 'product_target_gender':
+				case 'product_avail':			// Select option with 'none' as default.
+				case 'product_condition':		// Select option with 'none' as default.
+				case 'product_target_gender':		// Select option with 'none' as default.
 				case ( 0 === strpos( $base_key, 'plugin_product_attr_' ) ? true : false ):	// Value is the name of a product attribute.
 				case ( false !== strpos( $base_key, '_crop_x' ) ? true : false ):
 				case ( false !== strpos( $base_key, '_crop_y' ) ? true : false ):

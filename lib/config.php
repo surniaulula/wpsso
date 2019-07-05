@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '5.1.0-b.1',	// Plugin version.
+					'version'     => '5.1.0-b.2',	// Plugin version.
 					'opt_version' => '647',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -1124,7 +1124,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_show_opts'          => 'basic',	// Options to Show by Default.
 					
 					/**
-					 * Advanced settings - Content and Filters tab.
+					 * Advanced settings - Content Text tab.
 					 */
 					'plugin_filter_title'   => 0,		// Use Filtered (SEO) Title.
 					'plugin_filter_content' => 0,		// Use WordPress Content Filters.
