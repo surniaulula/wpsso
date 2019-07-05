@@ -2158,17 +2158,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'notice-um-version-recommended':
 
-						$um_info = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
-
-						$um_version = isset( $um_info[ 'version' ] ) ? $um_info[ 'version' ] : 'unknown';
-
-						$um_rec_version = isset( $info[ 'um_rec_version' ] ) ?
-							$info[ 'um_rec_version' ] : WpssoConfig::$cf[ 'um' ][ 'rec_version' ];
-
-						$um_check_updates_transl = _x( 'Check for Updates', 'submit button', 'wpsso' );
-
-						$um_settings_page_link = $this->p->util->get_admin_url( 'um-general',
-							_x( 'Update Manager', 'lib file description', 'wpsso' ) );
+						$um_info                  = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
+						$um_version               = isset( $um_info[ 'version' ] ) ? $um_info[ 'version' ] : 'unknown';
+						$um_rec_version           = WpssoConfig::$cf[ 'um' ][ 'rec_version' ];
+						$um_check_updates_transl  = _x( 'Check for Updates', 'submit button', 'wpsso' );
+						$tools_settings_page_link = $this->p->util->get_admin_url( 'tools', _x( 'Tools', 'lib file description', 'wpsso' ) );
 
 						$wp_updates_page_link = '<a href="' . admin_url( 'update-core.php' ) . '">' . 
 							// translators: Please ignore - translation uses a different text domain.
@@ -2178,7 +2172,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text = sprintf( __( '%1$s version %2$s requires the use of %3$s version %4$s or newer (version %5$s is currently installed).', 'wpsso' ), $info[ 'name_pro' ], $info[ 'version' ], $um_info[ 'short' ], $um_rec_version, $um_version ) . ' ';
 
-						$text .= sprintf( __( 'If an update for %1$s is not available under the WordPress %2$s page, use the <em>%3$s</em> button in the %4$s settings page to force an immediate refresh of the plugin update information.', 'wpsso' ), $um_info[ 'name' ], $wp_updates_page_link, $um_check_updates_transl, $um_settings_page_link );
+						$text .= sprintf( __( 'If an update for %1$s is not available under the WordPress %2$s page, use the <em>%3$s</em> button in the %4$s settings page to force an immediate refresh of the plugin update information.', 'wpsso' ), $um_info[ 'name' ], $wp_updates_page_link, $um_check_updates_transl, $tools_settings_page_link );
 
 						break;
 

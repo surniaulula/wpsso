@@ -3209,12 +3209,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $um_info[ 'version' ] ) ) {	// If UM is active, its version should be available.
 
-					$um_rec_version = WpssoConfig::$cf[ 'um' ][ 'rec_version' ];
+					$rec_version = WpssoConfig::$cf[ 'um' ][ 'rec_version' ];
 
-					if ( version_compare( $um_info[ 'version' ], $um_rec_version, '<' ) ) {
+					if ( version_compare( $um_info[ 'version' ], $rec_version, '<' ) ) {
 
-						$this->p->notice->err( $this->p->msgs->get( 'notice-um-version-recommended',
-							array( 'um_rec_version' => $um_rec_version ) ) );
+						$this->p->notice->warn( $this->p->msgs->get( 'notice-um-version-recommended' ) );
 					}
 
 				} elseif ( SucomPlugin::is_plugin_installed( $um_info[ 'base' ], $use_cache = true ) ) {	// Check if UM is installed.
