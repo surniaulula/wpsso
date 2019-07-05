@@ -431,7 +431,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.1.0-b.2 (2019/07/04)**
+**Version 5.1.0-rc.1 (2019/07/05)**
 
 * *New Features*
 	* Added support for the WooCommerce Show Single Variations plugin (Premium version).
@@ -497,9 +497,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 5.1.0-b.2 =
+= 5.1.0-rc.1 =
 
-(2019/07/04) Added support for the WooCommerce Show Single Variations plugin. Added support for a WooCommerce "Volume" (in milliliters) product attribute.
+(2019/07/05) Added support for the WooCommerce Show Single Variations plugin. Added support for a WooCommerce "Volume" (in milliliters) product attribute.
 
 = 5.0.1 =
 
