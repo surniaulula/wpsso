@@ -431,7 +431,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.1.0-rc.2 (2019/07/05)**
+**Version 5.1.0 (2019/07/06)**
 
 * *New Features*
 	* Added support for the WooCommerce Show Single Variations plugin (Premium version).
@@ -497,11 +497,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 5.1.0-rc.2 =
+= 5.1.0 =
 
-(2019/07/05) Added support for the WooCommerce Show Single Variations plugin. Added support for a WooCommerce "Volume" (in milliliters) product attribute.
-
-= 5.0.1 =
-
-(2019/06/29) Fixed block editor global variable definition by changing "const" to "var". Fixed markup when selecting an Schema Organization, LocalBusiness, and Person type (or sub-type) in the Document SSO metabox.
+(2019/07/06) Added support for the WooCommerce Show Single Variations plugin. Added support for a WooCommerce "Volume" (in milliliters) product attribute.
 
