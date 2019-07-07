@@ -1458,7 +1458,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			/* Example config:
 			 *
-			 *	'cf_md_key' => array(
+			 * 	$cf_md_keys = array(
 			 *		'plugin_cf_addl_type_urls'        => 'schema_addl_type_url',
 			 *		'plugin_cf_howto_steps'           => 'schema_howto_step',
 			 *		'plugin_cf_howto_supplies'        => 'schema_howto_supply',
@@ -1480,7 +1480,10 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			 *		'plugin_cf_sameas_urls'           => 'schema_sameas_url',
 			 *		'plugin_cf_vid_embed'             => 'og_vid_embed',
 			 *		'plugin_cf_vid_url'               => 'og_vid_url',
-			 *	),
+			 *	);
+			 *
+			 * Hooked by the WpssoProRecipeWpRecipeMaker and WpssoProRecipeWpUltimateRecipe classes
+			 * to clear the 'plugin_cf_recipe_ingredients' and 'plugin_cf_recipe_instructions' values.
 			 */
 			$cf_md_keys = (array) apply_filters( $this->p->lca . '_cf_md_keys', $this->p->cf[ 'opt' ][ 'cf_md_key' ] );
 
@@ -1577,7 +1580,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					$md_opts = SucomUtil::preg_grep_keys( '/^' . $md_key . '_[0-9]+$/', $md_opts, $invert = true );
 
 					foreach ( $values as $num => $val ) {
+
 						$md_opts[ $md_key . '_' . $num ] = $val;
+
 						$md_opts[ $md_key . '_' . $num . ':is' ] = 'disabled';
 					}
 				}

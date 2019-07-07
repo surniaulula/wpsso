@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '5.1.0',	// Plugin version.
+					'version'     => '5.2.0-dev.2',	// Plugin version.
 					'opt_version' => '647',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -2897,9 +2897,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'thing' => 'https://schema.org/Thing',
 					),
 				),
-				'schema_url_fix' => array(	// Element of 'head' array.
-					//'https://schema.org/FAQPage' => 'https://pending.schema.org/FAQPage',
-				),
 				'schema_renamed' => array(	// Element of 'head' array.
 					'anesthesia'           => 'anesthesia.specialty',
 					'cardiovascular'       => 'cardiovascular.specialty',
@@ -2951,6 +2948,72 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'train.trip'           => 'trip.train',
 					'urologic'             => 'urologic.specialty',
 				),
+				'schema_unitcodes' => array(	// Element of 'head' array.
+					'depth' => array(	// Unitcode index value.
+						'depth' => array(	// Schema property name.
+							'@context' => 'https://schema.org',
+							'@type'    => 'QuantitativeValue',
+							'name'     => 'Depth',
+							'unitText' => 'cm',
+							'unitCode' => 'CMT',
+						),
+					),
+					'height' => array(	// Unitcode index value.
+						'height' => array(	// Schema property name.
+							'@context' => 'https://schema.org',
+							'@type'    => 'QuantitativeValue',
+							'name'     => 'Height',
+							'unitText' => 'cm',
+							'unitCode' => 'CMT',
+						),
+					),
+					'length' => array(	// Unitcode index value.
+						'additionalProperty' => array(	// Schema property name.
+							'@context'   => 'https://schema.org',
+							'@type'      => 'PropertyValue',
+							'propertyID' => 'length',
+							'name'       => 'Length',
+							'unitText'   => 'cm',
+							'unitCode'   => 'CMT',
+						),
+					),
+					'size' => array(	// Unitcode index value.
+						'additionalProperty' => array(	// Schema property name.
+							'@context'   => 'https://schema.org',
+							'@type'      => 'PropertyValue',
+							'propertyID' => 'size',
+							'name'       => 'Size',
+						),
+					),
+					'volume' => array(	// Unitcode index value.
+						'additionalProperty' => array(	// Schema property name.
+							'@context'   => 'https://schema.org',
+							'@type'      => 'PropertyValue',
+							'propertyID' => 'volume',
+							'name'       => 'Volume',
+							'unitText'   => 'ml',
+							'unitCode'   => 'MLT',
+						),
+					),
+					'weight' => array(	// Unitcode index value.
+						'weight' => array(	// Schema property name.
+							'@context' => 'https://schema.org',
+							'@type'    => 'QuantitativeValue',
+							'name'     => 'Weight',
+							'unitText' => 'kg',
+							'unitCode' => 'KGM',
+						),
+					),
+					'width' => array(	// Unitcode index value.
+						'width' => array(	// Schema property name.
+							'@context' => 'https://schema.org',
+							'@type'    => 'QuantitativeValue',
+							'name'     => 'Width',
+							'unitText' => 'cm',
+							'unitCode' => 'CMT',
+						),
+					),
+				),
 			),
 			'extend' => array(
 				'https://wpsso.com/extend/plugins/',
@@ -2966,7 +3029,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		/**
-		 * get_config() is called very early, so don't apply filters unless instructed.
+		 * WpccoConfig::get_config() is called very early, so don't
+		 * apply filters by default.
+		 *
+		 * WpccoConfig::get_config() is called with $apply_filters =
+		 * true at WordPress 'init' priority -10, after
+		 * WpssoConfig::set_constants() and WpssoConfig::require_libs()
+		 * have been called, but before any plugin / add-on class
+		 * objects have been defined.
+		 *
+		 * The following hook is standard in the main plugin class of
+		 * every add-on to merge their config with WpssoConfig::$cf.
+		 *
+		 * 	add_filter( 'wpsso_get_config',
+		 		array( $this, 'wpsso_get_config' ), 10, 2 );
 		 */
 		public static function get_config( $cf_key = false, $apply_filters = false ) {
 
@@ -2985,10 +3061,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 				if ( $apply_filters ) {
 
-					self::$cf[ 'config_filtered' ] = true;	// set before calling filter to prevent recursion
+					self::$cf[ 'config_filtered' ] = true;	// Set before calling filter to prevent recursion.
 
+					/**
+					 * Apply filters to have add-ons include their config.
+					 */
 					self::$cf = apply_filters( 'wpsso_get_config', self::$cf, self::get_version() );
 
+					/**
+					 * Parse the complete config and define some reference values.
+					 */
 					foreach ( self::$cf[ 'plugin' ] as $ext => $info ) {
 
 						if ( defined( strtoupper( $ext ) . '_PLUGINDIR' ) ) {

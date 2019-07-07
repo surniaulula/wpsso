@@ -1525,13 +1525,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$type_url = set_url_scheme( $type_url, 'https' );	// Just in case.
 
-			/**
-			 * Check for incorrect values provided by other plugin @context and @type combinations.
-			 */
-			if ( isset( WpssoConfig::$cf[ 'head' ][ 'schema_url_fix' ][ $type_url ] ) ) {
-				$type_url = WpssoConfig::$cf[ 'head' ][ 'schema_url_fix' ][ $type_url ];
-			}
-
 			return $type_url;
 		}
 
@@ -2142,7 +2135,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public static function add_data_quant_from_assoc( array &$json_data, array $assoc, array $names ) {
 
-			return $this->add_data_unitcode_from_assoc( $json_data, $assoc, $names );
+			return self::add_data_unitcode_from_assoc( $json_data, $assoc, $names );
 		}
 
 		/**
@@ -2164,78 +2157,56 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public static function add_data_unitcode_from_assoc( array &$json_data, array $assoc, array $names ) {
 
-			foreach ( $names as $prop_name => $key_name ) {
+			$wpsso =& Wpsso::get_instance();
 
-				if ( isset( $assoc[ $key_name ] ) && $assoc[ $key_name ] !== '' ) {	// Exclude empty strings.
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->mark();
+			}
 
-					switch ( $prop_name ) {
+			static $local_cache = null;
 
-						case 'length':
+			if ( null === $local_cache ) {
+				$local_cache = apply_filters( $wpsso->lca . '_schema_unitcodes', $wpsso->cf[ 'head' ][ 'schema_unitcodes' ] );
+			}
 
-							$json_data[ 'additionalProperty' ][] = array(
-								'@context'   => 'https://schema.org',
-								'@type'      => 'PropertyValue',
-								'propertyID' => 'length',
-								'name'       => 'Length',
-								'value'      => $assoc[ $key_name ],
-								'unitText'   => 'cm',
-								'unitCode'   => 'CMT',
-							);
+			if ( ! is_array( $local_cache ) ) {
+				return;
+			}
 
-							break;
+			foreach ( $names as $idx => $key_name ) {
 
-						case 'size':
+				/**
+				 * Make sure the property name we need (width, height, weight, etc.) is configured.
+				 */
+				if ( empty( $local_cache[ $idx ] ) || ! is_array( $local_cache[ $idx ] ) ) {
+					continue;
+				}
 
-							$json_data[ 'additionalProperty' ][] = array(
-								'@context'   => 'https://schema.org',
-								'@type'      => 'PropertyValue',
-								'propertyID' => 'size',
-								'name'       => 'Size',
-								'value'      => $assoc[ $key_name ],
-							);
+				/**
+				 * Exclude empty string values.
+				 */
+				if ( ! isset( $assoc[ $key_name ] ) || $assoc[ $key_name ] === '' ) {
+					continue;
+				}
 
-							break;
+				/**
+				 * Example unitcode array:
+				 *
+				 *	$local_cache[ 'depth' ] = array(
+				 *		'depth' => array(
+				 *			'@context' => 'https://schema.org',
+				 *			'@type'    => 'QuantitativeValue',
+				 *			'name'     => 'Depth',
+				 *			'unitText' => 'cm',
+				 *			'unitCode' => 'CMT',
+				 *		),
+				 *	),
+				 */
+				foreach ( $local_cache[ $idx ] as $prop_name => $prop_data ) {
 
-						case 'volume':
+					$prop_data[ 'value' ] = $assoc[ $key_name ];
 
-							$json_data[ 'additionalProperty' ][] = array(
-								'@context'   => 'https://schema.org',
-								'@type'      => 'PropertyValue',
-								'propertyID' => 'volume',
-								'name'       => 'Volume',
-								'value'      => $assoc[ $key_name ],
-								'unitText'   => 'ml',
-								'unitCode'   => 'MLT',
-							);
-
-							break;
-
-						case 'weight':
-
-							$json_data[ $prop_name ] = array(
-								'@context' => 'https://schema.org',
-								'@type'    => 'QuantitativeValue',
-								'value'    => $assoc[ $key_name ],
-								'unitText' => 'kg',
-								'unitCode' => 'KGM',
-							);
-
-							break;
-
-						case 'depth':
-						case 'height':
-						case 'width':
-
-							$json_data[ $prop_name ] = array(
-								'@context' => 'https://schema.org',
-								'@type'    => 'QuantitativeValue',
-								'value'    => $assoc[ $key_name ],
-								'unitText' => 'cm',
-								'unitCode' => 'CMT',
-							);
-
-							break;
-					}
+					$json_data[ $prop_name ][] = $prop_data;
 				}
 			}
 		}

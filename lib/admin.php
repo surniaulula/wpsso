@@ -3679,20 +3679,41 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			/**
-			 * Example:
+			 * Example config:
 			 *
-			 * $cf_md_keys = array(
-			 * 	'plugin_cf_vid_embed' => 'og_vid_embed',
-			 * 	'plugin_cf_vid_url'   => 'og_vid_url',
-			 * ),
+			 * 	$cf_md_keys = array(
+			 *		'plugin_cf_addl_type_urls'        => 'schema_addl_type_url',
+			 *		'plugin_cf_howto_steps'           => 'schema_howto_step',
+			 *		'plugin_cf_howto_supplies'        => 'schema_howto_supply',
+			 *		'plugin_cf_howto_tools'           => 'schema_howto_tool',
+			 *		'plugin_cf_img_url'               => 'og_img_url',
+			 *		'plugin_cf_product_avail'         => 'product_avail',
+			 *		'plugin_cf_product_brand'         => 'product_brand',
+			 *		'plugin_cf_product_color'         => 'product_color',
+			 *		'plugin_cf_product_condition'     => 'product_condition',
+			 *		'plugin_cf_product_material'      => 'product_material',
+			 *		'plugin_cf_product_mpn'           => 'product_mpn',
+			 *		'plugin_cf_product_sku'           => 'product_sku',
+			 *		'plugin_cf_product_price'         => 'product_price',
+			 *		'plugin_cf_product_currency'      => 'product_currency',
+			 *		'plugin_cf_product_size'          => 'product_size',
+			 *		'plugin_cf_product_target_gender' => 'product_target_gender',
+			 *		'plugin_cf_recipe_ingredients'    => 'schema_recipe_ingredient',
+			 *		'plugin_cf_recipe_instructions'   => 'schema_recipe_instruction',
+			 *		'plugin_cf_sameas_urls'           => 'schema_sameas_url',
+			 *		'plugin_cf_vid_embed'             => 'og_vid_embed',
+			 *		'plugin_cf_vid_url'               => 'og_vid_url',
+			 * 	);
+			 *
+			 * Hooked by the WpssoProRecipeWpRecipeMaker and WpssoProRecipeWpUltimateRecipe classes
+			 * to clear the 'plugin_cf_recipe_ingredients' and 'plugin_cf_recipe_instructions' values.
 			 */
 			$cf_md_keys = (array) apply_filters( $this->p->lca . '_cf_md_keys', $this->p->cf[ 'opt' ][ 'cf_md_key' ] );
 
 			foreach ( $cf_md_keys as $opt_key => $cf_md_key ) {
 
 				/**
-				 * Make sure we have a label for the custom
-				 * field option.
+				 * Make sure we have a label for the custom field option.
 				 */
 				if ( empty( $this->p->cf[ 'form' ][ 'cf_labels' ][ $opt_key ] ) ) {
 					continue;
@@ -3701,9 +3722,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 				/**
-				 * If we don't have a meta data key, then clear
-				 * the custom field name (just in case) and
-				 * disable the option.
+				 * If we don't have a meta data key, then clear the custom field name (just in case)
+				 * and disable the option.
 				 */
 				if ( empty( $cf_md_key ) ) {
 

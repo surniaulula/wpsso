@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 5.1.0\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 5.2.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -937,67 +937,67 @@ msgctxt "metabox title"
 msgid "Custom Field Names"
 msgstr ""
 
-#: lib/admin.php:3734
+#: lib/admin.php:3754
 msgctxt "metabox title"
 msgid "Product Attribute Names"
 msgstr ""
 
-#: lib/admin.php:3755
+#: lib/admin.php:3775
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:3936
+#: lib/admin.php:3956
 msgid "Return to %s"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:3967
+#: lib/admin.php:3987
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:3989
+#: lib/admin.php:4009
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:3996
+#: lib/admin.php:4016
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes, and translations)</a> to check if newer versions are "
 "available."
 msgstr ""
 
-#: lib/admin.php:4061
+#: lib/admin.php:4081
 msgctxt "option comment"
 msgid "%s required"
 msgstr ""
 
-#: lib/admin.php:4163
+#: lib/admin.php:4183
 msgid "Please select a %1$s settings file to import."
 msgstr ""
 
-#: lib/admin.php:4170
+#: lib/admin.php:4190
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr ""
 
-#: lib/admin.php:4177
+#: lib/admin.php:4197
 msgid ""
 "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr ""
 
-#: lib/admin.php:4191
+#: lib/admin.php:4211
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr ""
 
-#: lib/admin.php:4201
+#: lib/admin.php:4221
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr ""
 
-#: lib/admin.php:4211
+#: lib/admin.php:4231
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 
@@ -3309,12 +3309,12 @@ msgid "adding schema json-ld markup"
 msgstr ""
 
 #. translators: %1$s is the PHP library path, %2$s is the PHP library class name
-#: lib/loader.php:171
+#: lib/loader.php:173
 msgid "Error loading %1$s: Library class \"%2$s\" is missing."
 msgstr ""
 
 #. translators: %s is the PHP library class name
-#: lib/loader.php:176
+#: lib/loader.php:178
 msgid "Library class \"%s\" is missing."
 msgstr ""
 
@@ -3323,24 +3323,24 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
-#: lib/loader.php:180 lib/loader.php:206 lib/post.php:503 lib/register.php:312
+#: lib/loader.php:182 lib/loader.php:208 lib/post.php:503 lib/register.php:312
 #: lib/term.php:452 lib/user.php:414 lib/util.php:487 lib/util.php:3276
 msgid "%s warning:"
 msgstr ""
 
-#: lib/loader.php:191
+#: lib/loader.php:193
 msgid ""
 "The installed plugin is incomplete or the web server cannot access the "
 "library file."
 msgstr ""
 
 #. translators: %1$s is the short plugin name, %2$s is the PHP library path
-#: lib/loader.php:197
+#: lib/loader.php:199
 msgid "%1$s library class name for \"%2$s\" is not available."
 msgstr ""
 
 #. translators: %s is the PHP library path
-#: lib/loader.php:202
+#: lib/loader.php:204
 msgid "Library class name for \"%s\" is not available."
 msgstr ""
 

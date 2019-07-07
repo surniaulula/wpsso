@@ -72,7 +72,7 @@ if ( ! class_exists( 'WpssoSettingsSocialAccounts' ) && class_exists( 'WpssoAdmi
 
 				case 'social-accounts-general':
 
-					$social_accounts = apply_filters( $this->p->lca.'_social_accounts', $this->p->cf['form']['social_accounts'] );
+					$social_accounts = apply_filters( $this->p->lca.'_social_accounts', $this->p->cf[ 'form' ][ 'social_accounts' ] );
 
 					asort( $social_accounts );	// sort by label (after translation) and maintain key association
 
