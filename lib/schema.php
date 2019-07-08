@@ -1558,7 +1558,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$social_accounts = apply_filters( $wpsso->lca . '_social_accounts', $wpsso->cf[ 'form' ][ 'social_accounts' ] );
-			$org_sameas      = array();
+
+			$org_sameas = array();
 
 			foreach ( $social_accounts as $social_key => $social_label ) {
 

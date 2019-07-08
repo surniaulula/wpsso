@@ -345,9 +345,9 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 								continue 2;
 						}
 
-						$table_rows[$social_key] = '' . 
-						$this->form->get_th_html( _x( $label, 'option value', 'wpsso' ), 'nowrap', $social_key, 
-							array( 'is_locale' => true ) ) . 
+						$table_rows[ $social_key ] = '' . 
+						$this->form->get_th_html( _x( $label, 'option value', 'wpsso' ),
+							'nowrap', $social_key, array( 'is_locale' => true ) ) . 
 						'<td>' . $this->form->get_input( SucomUtil::get_key_locale( $social_key, $this->p->options ),
 							( strpos( $social_key, '_url' ) ? 'wide' : '' ) ) . '</td>';
 					}
