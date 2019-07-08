@@ -2321,13 +2321,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						_x( 'Product Currency', 'option label', 'wpsso' ),
 						_x( 'a product currency', 'tooltip fragment', 'wpsso' ),
 					),
-					'product_material' => array(
-						_x( 'Product Material', 'option label', 'wpsso' ),
-						_x( 'a product material', 'tooltip fragment', 'wpsso' ),
-					),
-					'product_mpn' => array(
-						_x( 'Product MPN', 'option label', 'wpsso' ),
-						_x( 'a Manufacturer Part Number (MPN)', 'tooltip fragment', 'wpsso' ),
+					'product_depth_value' => array(
+						_x( 'Product Depth', 'option label', 'wpsso' ),
+						_x( 'a product depth (in centimeters)', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_ean' => array(
 						_x( 'Product EAN', 'option label', 'wpsso' ),
@@ -2349,9 +2345,25 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						_x( 'Product GTIN-14', 'option label', 'wpsso' ),
 						_x( 'a product GTIN-14 code', 'tooltip fragment', 'wpsso' ),
 					),
+					'product_height_value' => array(
+						_x( 'Product Height', 'option label', 'wpsso' ),
+						_x( 'a product height (in centimeters)', 'tooltip fragment', 'wpsso' ),
+					),
 					'product_isbn' => array(
 						_x( 'Product ISBN', 'option label', 'wpsso' ),
 						_x( 'an ISBN code (aka International Standard Book Number)', 'tooltip fragment', 'wpsso' ),
+					),
+					'product_length_value' => array(
+						_x( 'Product Length', 'option label', 'wpsso' ),
+						_x( 'a product length (in centimeters)', 'tooltip fragment', 'wpsso' ),
+					),
+					'product_material' => array(
+						_x( 'Product Material', 'option label', 'wpsso' ),
+						_x( 'a product material', 'tooltip fragment', 'wpsso' ),
+					),
+					'product_mpn' => array(
+						_x( 'Product MPN', 'option label', 'wpsso' ),
+						_x( 'a Manufacturer Part Number (MPN)', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_price' => array(
 						_x( 'Product Price', 'option label', 'wpsso' ),
@@ -2372,6 +2384,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					'product_volume_value' => array(
 						_x( 'Product Volume', 'option label', 'wpsso' ),
 						_x( 'a product volume (in milliliters)', 'tooltip fragment', 'wpsso' ),
+					),
+					'product_weight_value' => array(
+						_x( 'Product Weight', 'option label', 'wpsso' ),
+						_x( 'a product weight (in kilograms)', 'tooltip fragment', 'wpsso' ),
+					),
+					'product_width_value' => array(
+						_x( 'Product Width', 'option label', 'wpsso' ),
+						_x( 'a product width (in centimeters)', 'tooltip fragment', 'wpsso' ),
 					),
 					'recipe_ingredients' => array(
 						_x( 'Recipe Ingredients', 'option label', 'wpsso' ),

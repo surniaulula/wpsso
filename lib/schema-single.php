@@ -668,11 +668,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'description'     => 'product:description',
 				'category'        => 'product:category',
 				'mpn'             => 'product:mfr_part_no',
-				'sku'             => 'product:sku',		// Non-standard / internal meta tag.
-				'gtin8'           => 'product:gtin8',		// Valid for products and offers.
-				'gtin12'          => 'product:gtin12',		// Valid for products and offers.
-				'gtin13'          => 'product:gtin13',		// Valid for products and offers.
-				'gtin14'          => 'product:gtin14',		// Valid for products and offers.
+				'sku'             => 'product:sku',
+				'gtin8'           => 'product:gtin8',		// Valid for both products and offers.
+				'gtin12'          => 'product:gtin12',		// Valid for both products and offers.
+				'gtin13'          => 'product:gtin13',		// Valid for both products and offers.
+				'gtin14'          => 'product:gtin14',		// Valid for both products and offers.
 				'itemCondition'   => 'product:condition',
 				'availability'    => 'product:availability',
 				'price'           => 'product:price:amount',

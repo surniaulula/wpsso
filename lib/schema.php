@@ -2287,11 +2287,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 *		'description'     => 'product:description',
 		 *		'category'        => 'product:category',
 		 *		'mpn'             => 'product:mfr_part_no',
-		 *		'sku'             => 'product:sku',	// Non-standard / internal meta tag.
-		 *		'gtin8'           => 'product:gtin8',
-		 *		'gtin12'          => 'product:gtin12',
-		 *		'gtin13'          => 'product:gtin13',
-		 *		'gtin14'          => 'product:gtin14',
 		 *		'itemCondition'   => 'product:condition',
 		 *		'availability'    => 'product:availability',
 		 *		'price'           => 'product:price:amount',

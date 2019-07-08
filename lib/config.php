@@ -1171,7 +1171,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_product_attr_size'          => 'Size',			// Product Size Attribute Name.
 					'plugin_product_attr_target_gender' => 'Gender',		// Product Target Gender Attr. Name.
 					'plugin_product_attr_volume_value'  => 'Volume',		// Product Volume (ml) Attribute Name.
-					
+
 					/**
 					 * Advanced settings - Custom Meta tab.
 					 */
@@ -1195,12 +1195,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_color'         => '',			// Product Color Custom Field.
 					'plugin_cf_product_condition'     => '',			// Product Condition Custom Field.
 					'plugin_cf_product_currency'      => '',			// Product Currency Custom Field.
+					'plugin_cf_product_depth_value'   => '',			// Product Depth (cm) Custom Field.
 					'plugin_cf_product_ean'           => '',			// Product EAN Custom Field.
 					'plugin_cf_product_gtin8'         => '',			// Product GTIN-8 Custom Field.
 					'plugin_cf_product_gtin12'        => '',			// Product GTIN-12 Custom Field.
 					'plugin_cf_product_gtin13'        => '',			// Product GTIN-13 Custom Field.
 					'plugin_cf_product_gtin14'        => '',			// Product GTIN-14 Custom Field.
+					'plugin_cf_product_height_value'  => '',			// Product Height (cm) Custom Field.
 					'plugin_cf_product_isbn'          => '',			// Product ISBN Custom Field.
+					'plugin_cf_product_length_value'  => '',			// Product Length (cm) Custom Field.
 					'plugin_cf_product_material'      => '',			// Product Material Custom Field.
 					'plugin_cf_product_mpn'           => '',			// Product MPN Custom Field.
 					'plugin_cf_product_price'         => '',			// Product Price Custom Field.
@@ -1208,6 +1211,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_sku'           => '',			// Product SKU Custom Field.
 					'plugin_cf_product_target_gender' => '',			// Product Target Gender Custom Field.
 					'plugin_cf_product_volume_value'  => '',			// Product Volume (ml) Custom Field.
+					'plugin_cf_product_weight_value'  => '',			// Product Weight (kg) Custom Field.
+					'plugin_cf_product_width_value'   => '',			// Product Width (cm) Custom Field.
 					'plugin_cf_recipe_ingredients'    => '',			// Recipe Ingredients Custom Field.
 					'plugin_cf_recipe_instructions'   => '',			// Recipe Instructions Custom Field.
 					'plugin_cf_sameas_urls'           => '',			// Same-As URLs Custom Field.
@@ -1432,19 +1437,24 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_color'         => 'product_color',
 					'plugin_cf_product_condition'     => 'product_condition',
 					'plugin_cf_product_currency'      => 'product_currency',
+					'plugin_cf_product_depth_value'   => 'product_depth_value',	// Product Depth (cm) Custom Field.
 					'plugin_cf_product_ean'           => 'product_ean',
 					'plugin_cf_product_gtin8'         => 'product_gtin8',
 					'plugin_cf_product_gtin12'        => 'product_gtin12',
 					'plugin_cf_product_gtin13'        => 'product_gtin13',
 					'plugin_cf_product_gtin14'        => 'product_gtin14',
+					'plugin_cf_product_height_value'  => 'product_height_value',	// Product Height (cm) Custom Field.
 					'plugin_cf_product_isbn'          => 'product_isbn',
+					'plugin_cf_product_length_value'  => 'product_length_value',	// Product Length (cm) Custom Field.
 					'plugin_cf_product_material'      => 'product_material',
 					'plugin_cf_product_mpn'           => 'product_mpn',
 					'plugin_cf_product_price'         => 'product_price',
 					'plugin_cf_product_size'          => 'product_size',
 					'plugin_cf_product_sku'           => 'product_sku',
 					'plugin_cf_product_target_gender' => 'product_target_gender',
-					'plugin_cf_product_volume_value'  => 'product_volume_value',
+					'plugin_cf_product_volume_value'  => 'product_volume_value',	// Product Volume (ml) Custom Field.
+					'plugin_cf_product_weight_value'  => 'product_weight_value',	// Product Weight (kg) Custom Field.
+					'plugin_cf_product_width_value'   => 'product_width_value',	// Product Width (cm) Custom Field.
 					'plugin_cf_recipe_ingredients'    => 'schema_recipe_ingredient',
 					'plugin_cf_recipe_instructions'   => 'schema_recipe_instruction',
 					'plugin_cf_sameas_urls'           => 'schema_sameas_url',
@@ -1924,12 +1934,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_color'         => 'Product Color Custom Field',
 					'plugin_cf_product_condition'     => 'Product Condition Custom Field',
 					'plugin_cf_product_currency'      => 'Product Currency Custom Field',
+					'plugin_cf_product_depth_value'   => 'Product Depth (cm) Custom Field',
 					'plugin_cf_product_ean'           => 'Product EAN Custom Field',
 					'plugin_cf_product_gtin8'         => 'Product GTIN-8 Custom Field',
 					'plugin_cf_product_gtin12'        => 'Product GTIN-12 Custom Field',
 					'plugin_cf_product_gtin13'        => 'Product GTIN-13 Custom Field',
 					'plugin_cf_product_gtin14'        => 'Product GTIN-14 Custom Field',
+					'plugin_cf_product_height_value'  => 'Product Height (cm) Custom Field',
 					'plugin_cf_product_isbn'          => 'Product ISBN Custom Field',
+					'plugin_cf_product_length_value'  => 'Product Length (cm) Custom Field',
 					'plugin_cf_product_material'      => 'Product Material Custom Field',
 					'plugin_cf_product_mpn'           => 'Product MPN Custom Field',
 					'plugin_cf_product_price'         => 'Product Price Custom Field',
@@ -1937,6 +1950,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_sku'           => 'Product SKU Custom Field',
 					'plugin_cf_product_target_gender' => 'Product Target Gender Custom Field',
 					'plugin_cf_product_volume_value'  => 'Product Volume (ml) Custom Field',
+					'plugin_cf_product_weight_value'  => 'Product Weight (kg) Custom Field',
+					'plugin_cf_product_width_value'   => 'Product Width (cm) Custom Field',
 					'plugin_cf_recipe_ingredients'    => 'Recipe Ingredients Custom Field',
 					'plugin_cf_recipe_instructions'   => 'Recipe Instructions Custom Field',
 					'plugin_cf_sameas_urls'           => 'Same-As URLs Custom Field',
@@ -2161,14 +2176,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:category'                => '',
 						'product:color'                   => 'product_color',
 						'product:condition'               => 'product_condition',
+						'product:depth:value'             => 'product_depth_value',	// Non-standard / internal meta tag.
+						'product:depth:units'             => '',			// Non-standard / internal meta tag.
 						'product:ean'                     => 'product_ean',
 						'product:expiration_time'         => '',
 						'product:gtin8'                   => 'product_gtin8',		// Non-standard / internal meta tag.
 						'product:gtin12'                  => 'product_gtin12',		// Non-standard / internal meta tag.
 						'product:gtin13'                  => 'product_gtin13',		// Non-standard / internal meta tag.
 						'product:gtin14'                  => 'product_gtin14',		// Non-standard / internal meta tag.
+						'product:height:value'            => 'product_height_value',	// Non-standard / internal meta tag.
+						'product:height:units'            => '',			// Non-standard / internal meta tag.
 						'product:is_product_shareable'    => '',
 						'product:isbn'                    => 'product_isbn',
+						'product:length:value'            => 'product_length_value',	// Non-standard / internal meta tag.
+						'product:length:units'            => '',			// Non-standard / internal meta tag.
 						'product:material'                => 'product_material',
 						'product:mfr_part_no'             => 'product_mpn',
 						'product:original_price:amount'   => '',			// Used by WooCommerce module.
@@ -2200,8 +2221,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:upc'                     => '',
 						'product:volume:value'            => 'product_volume_value',	// Non-standard / internal meta tag.
 						'product:volume:units'            => '',			// Non-standard / internal meta tag.
-						'product:weight:value'            => '',
+						'product:weight:value'            => 'product_weight_value',
 						'product:weight:units'            => '',
+						'product:width:value'             => 'product_width_value',	// Non-standard / internal meta tag.
+						'product:width:units'             => '',			// Non-standard / internal meta tag.
 					),
 					'profile' => array(
 						'profile:first_name' => '',

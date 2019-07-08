@@ -187,15 +187,15 @@ if ( ! class_exists( 'WpssoStdAdminPost' ) ) {
 					'header'   => 'h5',
 					'label'    => _x( 'Product Information', 'metabox title', 'wpsso' )
 				),
-				'product_brand' => array(
+				'product_brand' => array(		// Open Graph meta tag product:brand.
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Brand', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_brand',
-					'content'  => $form->get_no_input( 'product_brand', '', '', $placeholder = true ),
+					'content'  => $form->get_no_input( 'product_brand', '', '', 0, $placeholder = true ),
 				),
-				'product_avail' => array(
+				'product_avail' => array(		// Open Graph meta tag product:availability.
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
@@ -204,17 +204,17 @@ if ( ! class_exists( 'WpssoStdAdminPost' ) ) {
 					'content'  => $form->get_no_select( 'product_avail', $this->p->cf[ 'form' ][ 'item_availability' ],
 						$css_class = '', $css_id = '', $is_assoc = true, $selected = true ),
 				),
-				'product_price' => array(
+				'product_price' => array(		// Open Graph meta tags product:price:amount and product:price:currency.
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Price', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_price',
-					'content'  => $form->get_no_input( 'product_price', '', '', $placeholder = true ) . ' ' .
+					'content'  => $form->get_no_input( 'product_price', '', '', 0, $placeholder = true ) . ' ' .
 						$form->get_no_select( 'product_currency', SucomUtil::get_currency_abbrev(),
 							$css_class = 'currency', $css_id = '', $is_assoc = true ),
 				),
-				'product_condition' => array(
+				'product_condition' => array(		// Open Graph meta tag product:condition.
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
@@ -223,23 +223,23 @@ if ( ! class_exists( 'WpssoStdAdminPost' ) ) {
 					'content'  => $form->get_no_select( 'product_condition', $this->p->cf[ 'form' ][ 'item_condition' ],
 						$css_class = '', $css_id = '', $is_assoc = true ),
 				),
-				'product_material' => array(
+				'product_material' => array(		// Open Graph meta tag product:material.
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Material', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_material',
-					'content'  => $form->get_no_input( 'product_material', '', '', $placeholder = true ),
+					'content'  => $form->get_no_input( 'product_material', '', '', 0, $placeholder = true ),
 				),
-				'product_color' => array(
+				'product_color' => array(		// Open Graph meta tag product:color.
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Color', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_color',
-					'content'  => $form->get_no_input( 'product_color', '', '', $placeholder = true ),
+					'content'  => $form->get_no_input( 'product_color', '', '', 0, $placeholder = true ),
 				),
-				'product_target_gender' => array(
+				'product_target_gender' => array(	// Open Graph meta tag product:target_gender.
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
@@ -248,86 +248,58 @@ if ( ! class_exists( 'WpssoStdAdminPost' ) ) {
 					'content'  => $form->get_no_select( 'product_target_gender', $this->p->cf[ 'form' ][ 'audience_gender' ],
 						$css_class = 'gender', $css_id = '', $is_assoc = true ),
 				),
-				'product_size' => array(
+				'product_size' => array(		// Open Graph meta tag product:size.
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Size', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_size',
-					'content'  => $form->get_no_input( 'product_size', '', '', $placeholder = true ),
+					'content'  => $form->get_no_input( 'product_size', '', '', 0, $placeholder = true ),
 				),
-				'product_volume_value' => array(
+				'product_weight_value' => array(	// Open Graph meta tag product:weight:value.
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'Product Volume', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-product_volume_value',
-					'content'  => $form->get_no_input( 'product_volume_value', '', '', $placeholder = true ) . ' ' . __( 'ml', 'wpsso' ),
+					'label'    => _x( 'Product Weight', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_weight_value',
+					'content'  => $form->get_no_input( 'product_weight_value', '', '', 0, $placeholder = true ) . ' ' . __( 'kg', 'wpsso' ),
 				),
-				'product_sku' => array(
+				'product_sku' => array(			// Open Graph meta tag product:retailer_item_id.
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Product SKU', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_sku',
-					'content'  => $form->get_no_input( 'product_sku', '', '', $placeholder = true ),
+					'content'  => $form->get_no_input( 'product_sku', '', '', 0, $placeholder = true ),
 				),
-				'product_mpn' => array(
+				'product_mpn' => array(			// Open Graph meta tag product:mfr_part_no.
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Product MPN', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_mpn',
-					'content'  => $form->get_no_input( 'product_mpn', '', '', $placeholder = true ),
+					'content'  => $form->get_no_input( 'product_mpn', '', '', 0, $placeholder = true ),
 				),
-				'product_ean' => array(
+				'product_ean' => array(			// Open Graph meta tag product:ean.
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Product EAN', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_ean',
-					'content'  => $form->get_no_input( 'product_ean', '', '', $placeholder = true ),
+					'content'  => $form->get_no_input( 'product_ean', '', '', 0, $placeholder = true ),
 				),
-				'product_gtin8' => array(
-					'tr_class' => 'hide_og_type hide_og_type_product',
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Product GTIN-8', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-product_gtin8',
-					'content'  => $form->get_no_input( 'product_gtin8', '', '', $placeholder = true ),
-				),
-				'product_gtin12' => array(
-					'tr_class' => 'hide_og_type hide_og_type_product',
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Product GTIN-12', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-product_gtin12',
-					'content'  => $form->get_no_input( 'product_gtin12', '', '', $placeholder = true ),
-				),
-				'product_gtin13' => array(
-					'tr_class' => 'hide_og_type hide_og_type_product',
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Product GTIN-13', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-product_gtin13',
-					'content'  => $form->get_no_input( 'product_gtin13', '', '', $placeholder = true ),
-				),
-				'product_gtin14' => array(
-					'tr_class' => 'hide_og_type hide_og_type_product',
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Product GTIN-14', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-product_gtin14',
-					'content'  => $form->get_no_input( 'product_gtin14', '', '', $placeholder = true ),
-				),
-				'product_isbn' => array(
+				'product_isbn' => array(		// Open Graph meta tag product:isbn.
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Product ISBN', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_isbn',
-					'content'  => $form->get_no_input( 'product_isbn', '', '', $placeholder = true ),
+					'content'  => $form->get_no_input( 'product_isbn', '', '', 0, $placeholder = true ),
 				),
+
+				/**
+				 * All Schema Types
+				 */
 				'subsection_schema' => array(
 					'td_class' => 'subsection',
 					'header'   => 'h4',
