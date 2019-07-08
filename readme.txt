@@ -112,14 +112,10 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 			* Product Color
 			* Product Target Gender
 			* Product Size
-			* Product Volume (ml)
+			* Product Weight
 			* Product SKU
 			* Product MPN
 			* Product EAN
-			* Product GTIN-8
-			* Product GTIN-12
-			* Product GTIN-13
-			* Product GTIN-14
 			* Product ISBN
 	* Priority Media
 		* All Social WebSites / Open Graph
@@ -197,6 +193,16 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 		* Organization
 	* Person Information
 		* Person
+	* Product Information (Additional)
+		* Product Length (cm)
+		* Product Width (cm)
+		* Product Height (cm)
+		* Product Depth (cm)
+		* Product Volume (ml)
+		* Product GTIN-8
+		* Product GTIN-12
+		* Product GTIN-13
+		* Product GTIN-14
 	* QA Page Information
 		* QA Heading
 	* Recipe Information
@@ -431,12 +437,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.2.0-dev.2 (TBD)**
+**Version 5.2.0-dev.2 (2019/07/08)**
 
 * *New Features*
 	* None.
 * *Improvements*
-	* None.
+	* Moved product options without Open Graph meta tags to the WPSSO JSON add-on:
+		* Product Length
+		* Product Width
+		* Product Height
+		* Product Depth
+		* Product Volume
+		* Product GTIN-8
+		* Product GTIN-12
+		* Product GTIN-13
+		* Product GTIN-14
 * *Bugfixes*
 	* Fixed an incorrect variable use in the WpssoAdmin::get_option_site_use() static method.
 * *Developer Notes*
@@ -511,7 +526,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 5.2.0-dev.2 =
 
-(TBD) Fixed an incorrect variable use in the WpssoAdmin::get_option_site_use() static method.
+(2019/07/08) Fixed an incorrect variable use in the WpssoAdmin::get_option_site_use() static method. Moved product options without Open Graph meta tags to the WPSSO JSON add-on.
 
 = 5.1.0 =
 

@@ -115,14 +115,10 @@
 <li>Product Color</li>
 <li>Product Target Gender</li>
 <li>Product Size</li>
-<li>Product Volume (ml)</li>
+<li>Product Weight</li>
 <li>Product SKU</li>
 <li>Product MPN</li>
 <li>Product EAN</li>
-<li>Product GTIN-8</li>
-<li>Product GTIN-12</li>
-<li>Product GTIN-13</li>
-<li>Product GTIN-14</li>
 <li>Product ISBN</li>
 </ul></li>
 </ul></li>
@@ -241,6 +237,19 @@
 
 <ul>
 <li>Person</li>
+</ul></li>
+<li>Product Information (Additional)
+
+<ul>
+<li>Product Length (cm)</li>
+<li>Product Width (cm)</li>
+<li>Product Height (cm)</li>
+<li>Product Depth (cm)</li>
+<li>Product Volume (ml)</li>
+<li>Product GTIN-8</li>
+<li>Product GTIN-12</li>
+<li>Product GTIN-13</li>
+<li>Product GTIN-14</li>
 </ul></li>
 <li>QA Page Information
 
