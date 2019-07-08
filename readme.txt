@@ -438,9 +438,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Improvements*
 	* None.
 * *Bugfixes*
-	* None.
+	* Fixed an incorrect variable use in the WpssoAdmin::get_option_site_use() static method.
 * *Developer Notes*
-	* None.
+	* Added a new WpssoConfig::$cf[ 'head' ][ 'schema_unitcodes' ] array.
+	* Refactored the WpssoSchema::add_data_unitcode_from_assoc() method.
 
 **Version 5.1.0 (2019/07/06)**
 
@@ -510,7 +511,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 5.2.0-dev.2 =
 
-(TBD) None.
+(TBD) Fixed an incorrect variable use in the WpssoAdmin::get_option_site_use() static method.
 
 = 5.1.0 =
 
