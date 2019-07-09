@@ -1888,13 +1888,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 */
 			if ( ! class_exists( 'DOMDocument' ) ) {
 
-				$this->php_missing_error( 'class', 'DOMDocument' );
+				$this->php_class_missing( 'DOMDocument' );
 
 				return false;
 
 			} elseif ( ! function_exists( 'mb_convert_encoding' ) ) {
 
-				$this->php_missing_error( 'function', 'mb_convert_encoding()' );
+				$this->php_function_missing( 'mb_convert_encoding()' );
 
 				return false;
 			}
@@ -1909,7 +1909,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( ! function_exists( 'libxml_use_internal_errors' ) ) {	// Since PHP v5.1.
 
-					$this->php_missing_error( 'function', 'libxml_use_internal_errors()' );
+					$this->php_function_missing( 'libxml_use_internal_errors()' );
 
 					@$doc->loadHTML( $html );	// Load HTML and ignore errors.
 
@@ -2060,16 +2060,29 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $html;
 		}
 
-		public function php_missing_error( $type, $component ) {
+		public function php_class_missing( $class ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( $component . ' PHP ' . $type . ' is missing' );
+				$this->p->debug->log( $class . ' PHP class is missing' );
 			}
 
 			if ( is_admin() ) {
 
-				// translators: %1$s is the class or function name, %2$s is 'class' or 'function' translated.
-				$this->p->notice->err( sprintf( __( 'The PHP <code>%1$s</code> %2$s is missing &ndash; contact your hosting provider to have the missing %2$s installed.', 'wpsso' ), $component, $type ) );
+				// translators: %1$s is the class name.
+				$this->p->notice->err( sprintf( __( 'The PHP <code>%1$s</code> class is missing &ndash; contact your hosting provider to have the missing class installed.', 'wpsso' ), $class ) );
+			}
+		}
+
+		public function php_function_missing( $function ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( $function . ' PHP function is missing' );
+			}
+
+			if ( is_admin() ) {
+
+				// translators: %1$s is the function name.
+				$this->p->notice->err( sprintf( __( 'The PHP <code>%1$s</code> function is missing &ndash; contact your hosting provider to have the missing function installed.', 'wpsso' ), $function ) );
 			}
 		}
 

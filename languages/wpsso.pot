@@ -3320,7 +3320,7 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
 #: lib/loader.php:182 lib/loader.php:208 lib/post.php:503 lib/register.php:312
-#: lib/term.php:452 lib/user.php:414 lib/util.php:487 lib/util.php:3274
+#: lib/term.php:452 lib/user.php:414 lib/util.php:487 lib/util.php:3287
 msgid "%s warning:"
 msgstr ""
 
@@ -5742,7 +5742,7 @@ msgstr ""
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
 #: lib/post.php:489 lib/term.php:438 lib/user.php:400 lib/util.php:473
-#: lib/util.php:3246
+#: lib/util.php:3259
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -6578,21 +6578,28 @@ msgstr ""
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#. translators: %1$s is the class or function name, %2$s is 'class' or 'function' translated.
+#. translators: %1$s is the class name.
 #: lib/util.php:2072
 msgid ""
-"The PHP <code>%1$s</code> %2$s is missing &ndash; contact your hosting "
-"provider to have the missing %2$s installed."
+"The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
+"provider to have the missing class installed."
+msgstr ""
+
+#. translators: %1$s is the function name.
+#: lib/util.php:2085
+msgid ""
+"The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
+"provider to have the missing function installed."
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max.
-#: lib/util.php:3249
+#: lib/util.php:3262
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3266
+#: lib/util.php:3279
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -6601,33 +6608,33 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3266
+#: lib/util.php:3279
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3555
+#: lib/util.php:3568
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:3584
+#: lib/util.php:3597
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3587
+#: lib/util.php:3600
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:3592
+#: lib/util.php:3605
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3595
+#: lib/util.php:3608
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
