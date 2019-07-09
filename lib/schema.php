@@ -482,9 +482,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$graph_data = apply_filters( $filter_name, $graph_data, $mod, $mt_og, $page_type_id, $is_main );
 
-			$graph_data = WpssoSchemaGraph::optimize( $graph_data );
+			if ( ! empty( $graph_data[ '@graph' ] ) ) {	// Just in case.
 
-			if ( ! empty( $graph_data[ '@graph' ] ) ) {
+				$graph_data = WpssoSchemaGraph::optimize( $graph_data );
+
 				$json_scripts[][] = '<script type="application/ld+json">' .
 					$this->p->util->json_format( $graph_data ) . '</script>' . "\n";
 			}
