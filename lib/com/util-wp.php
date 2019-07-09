@@ -39,14 +39,16 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 				if ( preg_match_all( $regex, $content, $all_matches ) ) {
 
-					if ( ! empty( $all_matches[1] ) ) {
+					if ( ! empty( $all_matches[ 1 ] ) ) {
 
-						foreach ( $all_matches[1] as $emoji ) {
+						foreach ( $all_matches[ 1 ] as $emoji ) {
 
 							$unpacked = unpack( 'H*', mb_convert_encoding( $emoji, 'UTF-32', 'UTF-8' ) );
 
-							if ( isset( $unpacked[1] ) ) {
-								$entity = '&#x' . ltrim( $unpacked[1], '0' ) . ';';
+							if ( isset( $unpacked[ 1 ] ) ) {
+
+								$entity = '&#x' . ltrim( $unpacked[ 1 ], '0' ) . ';';
+
 								$content = str_replace( $emoji, $entity, $content );
 							}
 						}

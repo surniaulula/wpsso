@@ -3333,7 +3333,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		private static function replace_unicode_escape_callback( $match ) {
 
-			return mb_convert_encoding( pack( 'H*', $match[1] ), 'UTF-8', 'UCS-2' );
+			return mb_convert_encoding( pack( 'H*', $match[ 1 ] ), 'UTF-8', 'UCS-2' );
 		}
 
 		public static function json_encode_array( array $data, $options = 0, $depth = 32 ) {

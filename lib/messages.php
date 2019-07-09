@@ -2133,7 +2133,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '<b>' . sprintf( __( 'At least one Authentication ID has been entered in the %1$s settings page,<br/>but the %2$s add-on is not active.', 'wpsso' ), $settings_page_link, $um_info[ 'name' ] ) . '</b> ';
 
-						$text .= sprintf( __( 'This complementary add-on is required to update and enable the %1$s plugin and its %2$s add-ons.', 'wpsso' ), $info[ 'name_pro' ], $pro_transl );
+						$text .= sprintf( __( 'This complementary add-on is required to update and enable %1$s and its %2$s add-ons.', 'wpsso' ), $info[ 'name_pro' ], $pro_transl );
 
 						$text .= '</p><p>';
 

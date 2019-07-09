@@ -1651,16 +1651,28 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			foreach ( $form_rows as $key => $val ) {
 
+				if ( ! isset( $table_rows[ $key ] ) ) {
+					$table_rows[ $key ] = '';
+				}
+
+				/**
+				 * Placeholder.
+				 */
 				if ( empty( $val ) ) {
-
-					$table_rows[ $key ] = '';	// Placeholder.
-
 					continue;
 				}
 
-				if ( ! empty( $val[ 'table_row' ] ) ) {
+				/**
+				 * Table cell HTML.
+				 */
+				if ( isset( $val[ 'table_row' ] ) ) {
 
-					$table_rows[ $key ] = $val[ 'table_row' ];
+					if ( ! empty( $val[ 'table_row' ] ) ) {
+
+						$table_rows[ $key ] = empty( $val[ 'tr_class' ] ) ? '' : '<tr class="' . $val[ 'tr_class' ] . '">' . "\n";
+
+						$table_rows[ $key ] .= $val[ 'table_row' ] . "\n";
+					}
 
 					continue;
 				}
@@ -1703,9 +1715,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					$table_rows[ $key ] .= $this->get_th_html( $val[ 'label' ], 
 						( empty( $val[ 'th_class' ] ) ? '' : $val[ 'th_class' ] ),
-						( empty( $val[ 'tooltip' ] ) ? '' : $val[ 'tooltip' ] ) ) . "\n";
+						( empty( $val[ 'tooltip' ] ) ? '' : $val[ 'tooltip' ] )
+					) . "\n";
 
-					$table_rows[ $key ] .= '<td'.( empty( $val[ 'td_class' ] ) ? '' : ' class="' . $val[ 'td_class' ] . '"' ) . '>';
+					$table_rows[ $key ] .= '<td' . ( empty( $val[ 'td_class' ] ) ? '' : ' class="' . $val[ 'td_class' ] . '"' ) . '>';
 
 					$table_rows[ $key ] .= $is_auto_draft ? '<em>' . $auto_draft_msg . '</em>' : 
 						( empty( $val[ 'content' ] ) ? '' : $val[ 'content' ] );

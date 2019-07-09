@@ -119,7 +119,6 @@ _x( 'Product Color', 'option label', 'wpsso' );
 _x( 'Product Target Gender', 'option label', 'wpsso' );
 _x( 'Product Size', 'option label', 'wpsso' );
 _x( 'Product Weight', 'option label', 'wpsso' );
-__( 'kg', 'wpsso' );
 _x( 'Product SKU', 'option label', 'wpsso' );
 _x( 'Product MPN', 'option label', 'wpsso' );
 _x( 'Product EAN', 'option label', 'wpsso' );

@@ -29,6 +29,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		protected $types_cache = null;			// Schema types array cache.
 
+		protected static $unitcodes_cache = null;	// Schema unicodes array cache.
+
 		public function __construct( &$plugin ) {
 
 			$this->p =& $plugin;
@@ -482,7 +484,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$graph_data = WpssoSchemaGraph::optimize( $graph_data );
 
-			if ( ! empty( $graph_data ) ) {
+			if ( ! empty( $graph_data[ '@graph' ] ) ) {
 				$json_scripts[][] = '<script type="application/ld+json">' .
 					$this->p->util->json_format( $graph_data ) . '</script>' . "\n";
 			}
@@ -2164,13 +2166,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			static $local_cache = null;
-
-			if ( null === $local_cache ) {
-				$local_cache = apply_filters( $wpsso->lca . '_schema_unitcodes', $wpsso->cf[ 'head' ][ 'schema_unitcodes' ] );
+			if ( null === self::$unitcodes_cache ) {
+				self::$unitcodes_cache = apply_filters( $wpsso->lca . '_schema_unitcodes', $wpsso->cf[ 'head' ][ 'schema_unitcodes' ] );
 			}
 
-			if ( ! is_array( $local_cache ) ) {
+			if ( ! is_array( self::$unitcodes_cache ) ) {	// Just in case.
 				return;
 			}
 
@@ -2179,7 +2179,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/**
 				 * Make sure the property name we need (width, height, weight, etc.) is configured.
 				 */
-				if ( empty( $local_cache[ $idx ] ) || ! is_array( $local_cache[ $idx ] ) ) {
+				if ( empty( self::$unitcodes_cache[ $idx ] ) || ! is_array( self::$unitcodes_cache[ $idx ] ) ) {
 					continue;
 				}
 
@@ -2193,7 +2193,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/**
 				 * Example unitcode array:
 				 *
-				 *	$local_cache[ 'depth' ] = array(
+				 *	self::$unitcodes_cache[ 'depth' ] = array(
 				 *		'depth' => array(
 				 *			'@context' => 'https://schema.org',
 				 *			'@type'    => 'QuantitativeValue',
@@ -2203,13 +2203,58 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 *		),
 				 *	),
 				 */
-				foreach ( $local_cache[ $idx ] as $prop_name => $prop_data ) {
+				foreach ( self::$unitcodes_cache[ $idx ] as $prop_name => $prop_data ) {
 
 					$prop_data[ 'value' ] = $assoc[ $key_name ];
 
 					$json_data[ $prop_name ][] = $prop_data;
 				}
 			}
+		}
+
+		public static function get_data_unitcode_text( $idx ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->mark();
+			}
+
+			static $local_cache = array();
+
+			if ( isset( $local_cache[ $idx ] ) ) {
+				return $local_cache[ $idx ];
+			}
+
+			if ( null === self::$unitcodes_cache ) {
+				self::$unitcodes_cache = apply_filters( $wpsso->lca . '_schema_unitcodes', $wpsso->cf[ 'head' ][ 'schema_unitcodes' ] );
+			}
+
+			if ( empty( self::$unitcodes_cache[ $idx ] ) || ! is_array( self::$unitcodes_cache[ $idx ] ) ) {
+				return $local_cache[ $idx ] = '';
+			}
+
+			/**
+			 * Example unitcode array:
+			 *
+			 *	self::$unitcodes_cache[ 'depth' ] = array(
+			 *		'depth' => array(
+			 *			'@context' => 'https://schema.org',
+			 *			'@type'    => 'QuantitativeValue',
+			 *			'name'     => 'Depth',
+			 *			'unitText' => 'cm',
+			 *			'unitCode' => 'CMT',
+			 *		),
+			 *	),
+			 */
+			foreach ( self::$unitcodes_cache[ $idx ] as $prop_name => $prop_data ) {
+
+				if ( isset( $prop_data[ 'unitText' ] ) ) {	// Return the first match.
+					return $local_cache[ $idx ] = $prop_data[ 'unitText' ];
+				}
+			}
+
+			return $local_cache[ $idx ] = '';
 		}
 
 		/**

@@ -77,16 +77,14 @@ if ( ! class_exists( 'WpssoStdAdminPost' ) ) {
 			/**
 			 * Translated text strings.
 			 */
-			if ( empty( $this->p->cf[ 'plugin' ][ 'wpssojson' ][ 'version' ] ) ) {
+			$json_msg_transl = '';
 
+			if ( empty( $this->p->cf[ 'plugin' ][ 'wpssojson' ][ 'version' ] ) ) {
 				$json_info       = $this->p->cf[ 'plugin' ][ 'wpssojson' ];
 				$json_addon_link = $this->p->util->get_admin_url( 'addons#wpssojson', $json_info[ 'name' ] );
 				$json_msg_transl = '<p class="status-msg smaller">' . 
 					sprintf( __( 'Activate the %s add-on for additional Schema markup options.',
 						'wpsso' ), $json_addon_link ) . '</p>';
-
-			} else {
-				$json_msg_transl = '';
 			}
 
 			$seo_msg_transl = __( 'Option disabled ("%1$s" head tag disabled or SEO plugin detected).', 'wpsso' );
@@ -104,6 +102,9 @@ if ( ! class_exists( 'WpssoStdAdminPost' ) ) {
 					'tooltip'  => 'post-og_type',
 					'content'  => $form->get_select( 'og_type',
 						$og_types, '', '', true, false, true, 'on_change_unhide_rows' ),
+				),
+				'pro-feature-msg' => array(
+					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>',
 				),
 				'og_title' => array(
 					'no_auto_draft' => true,
@@ -262,7 +263,8 @@ if ( ! class_exists( 'WpssoStdAdminPost' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Weight', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_weight_value',
-					'content'  => $form->get_no_input( 'product_weight_value', '', '', 0, $placeholder = true ) . ' ' . __( 'kg', 'wpsso' ),
+					'content'  => $form->get_no_input( 'product_weight_value', '', '', 0, $placeholder = true ) . ' ' .
+						WpssoSchema::get_data_unitcode_text( 'weight' ),
 				),
 				'product_sku' => array(			// Open Graph meta tag product:retailer_item_id.
 					'tr_class' => 'hide_og_type hide_og_type_product',
@@ -311,19 +313,14 @@ if ( ! class_exists( 'WpssoStdAdminPost' ) ) {
 					'td_class'      => 'blank',
 					'label'         => _x( 'Description', 'option label', 'wpsso' ),
 					'tooltip'       => 'meta-schema_desc',
-					'content'       => $form->get_no_textarea_value( $def_schema_desc, '', '', $schema_desc_max_len ) . $json_msg_transl,
+					'content'       => $form->get_no_textarea_value( $def_schema_desc, '', '', $schema_desc_max_len ),
+				),
+				'wpssojson-addon-msg' => array(
+					'table_row' => $json_msg_transl ? '<td colspan="2">' . $json_msg_transl . '</td>' : '',
 				),
 			);
 
-			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head, $mod, $auto_draft_msg );
-
-			SucomUtil::add_before_key( $table_rows, 'og_art_section', 'wpsso-pro-feature-msg',
-				'<td colspan="2">' .
-				$this->p->msgs->get( 'pro-feature-msg' ) .
-				'</td>'
-			);
-
-			return $table_rows;
+			return $form->get_md_form_rows( $table_rows, $form_rows, $head, $mod, $auto_draft_msg );
 		}
 	}
 }

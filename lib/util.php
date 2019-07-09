@@ -1839,7 +1839,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$this->p->debug->log( 'using the html submitted as the request argument' );
 				}
 
-				$html    = $request;
+				$html = $request;
 				$request = false;	// Just in case.
 
 			} elseif ( filter_var( $request, FILTER_VALIDATE_URL ) === false ) {	// Request is an invalid url.
@@ -1881,9 +1881,20 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				return false;
 
-			} elseif ( ! class_exists( 'DOMDocument' ) ) {
+			}
+		
+			/**
+			 * Now that we have HTML to parse, make sure we have the required PHP classes and functions.
+			 */
+			if ( ! class_exists( 'DOMDocument' ) ) {
 
-				$this->missing_php_class_error( 'DOMDocument' );
+				$this->php_missing_error( 'class', 'DOMDocument' );
+
+				return false;
+
+			} elseif ( ! function_exists( 'mb_convert_encoding' ) ) {
+
+				$this->php_missing_error( 'function', 'mb_convert_encoding()' );
 
 				return false;
 			}
@@ -1896,11 +1907,17 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( $libxml_errors ) {
 
-				if ( function_exists( 'libxml_use_internal_errors' ) ) {		// Since PHP v5.1.
+				if ( ! function_exists( 'libxml_use_internal_errors' ) ) {	// Since PHP v5.1.
+
+					$this->php_missing_error( 'function', 'libxml_use_internal_errors()' );
+
+					@$doc->loadHTML( $html );	// Load HTML and ignore errors.
+
+				} else {
 
 					$libxml_prev_state = libxml_use_internal_errors( true );	// Enable user error handling.
 
-					if ( ! $doc->loadHTML( $html ) ) {				// loadXML() is too strict for most webpages.
+					if ( ! $doc->loadHTML( $html ) ) {	// loadXML() is too strict for most webpages.
 
 						$has_errors = true;
 
@@ -1929,37 +1946,17 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 							}
 						}
 
-						libxml_clear_errors();				// Clear any HTML parsing errors.
+						libxml_clear_errors();	// Clear any HTML parsing errors.
 
 					} elseif ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'loadHTML was successful' );
 					}
 
 					libxml_use_internal_errors( $libxml_prev_state );	// Restore previous error handling.
-
-				} else {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'libxml_use_internal_errors() function is missing' );
-					}
-
-					if ( is_admin() ) {
-
-						$func_name = 'simplexml_load_string()';
-						$func_url  = __( 'https://secure.php.net/manual/en/function.simplexml-load-string.php', 'wpsso' );
-
-						$error_msg = sprintf( __( 'The <a href="%1$s">PHP %2$s function</a> is not available.', 'wpsso' ),
-							$func_url, '<code>' . $func_name . '</code>' ) . ' ';
-
-						$error_msg .= __( 'Please contact your hosting provider to have the missing PHP function installed.', 'wpsso' );
-
-						$this->p->notice->err( $error_msg );
-					}
-
-					@$doc->loadHTML( $html );
 				}
+
 			} else {
-				@$doc->loadHTML( $html );
+				@$doc->loadHTML( $html );	// Load HTML and ignore errors.
 			}
 
 			$xpath = new DOMXPath( $doc );
@@ -2063,15 +2060,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $html;
 		}
 
-		public function missing_php_class_error( $classname ) {
+		public function php_missing_error( $type, $component ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( $classname . ' PHP class is missing' );
+				$this->p->debug->log( $component . ' PHP ' . $type . ' is missing' );
 			}
 
 			if ( is_admin() ) {
-				$this->p->notice->err( sprintf( __( 'The %1$s PHP class is missing - please contact your hosting provider to install the missing %1$s PHP class.',
-					'wpsso' ), $classname ) );
+
+				// translators: %1$s is the class or function name, %2$s is 'class' or 'function' translated.
+				$this->p->notice->err( sprintf( __( 'The PHP <code>%1$s</code> %2$s is missing &ndash; contact your hosting provider to have the missing %2$s installed.', 'wpsso' ), $component, $type ) );
 			}
 		}
 
