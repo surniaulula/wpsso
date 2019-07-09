@@ -437,7 +437,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.2.0-dev.2 (2019/07/08)**
+**Version 5.2.0-dev.3 (2019/07/08)**
 
 * *New Features*
 	* None.
@@ -457,6 +457,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Developer Notes*
 	* Added a new WpssoConfig::$cf[ 'head' ][ 'schema_unitcodes' ] array.
 	* Refactored the WpssoSchema::add_data_unitcode_from_assoc() method.
+	* Added a new WpssoSchema::get_data_unitcode_text() static method.
 
 **Version 5.1.0 (2019/07/06)**
 
@@ -524,7 +525,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 5.2.0-dev.2 =
+= 5.2.0-dev.3 =
 
 (2019/07/08) Fixed an incorrect variable use in the WpssoAdmin::get_option_site_use() static method. Moved product options without Open Graph meta tags to the WPSSO JSON add-on.
 
