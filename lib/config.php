@@ -133,7 +133,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 							'util' => array(
 								'checkimgdims'  => '(feature) Verify Image Dimensions',
-								'custom_fields' => '(feature) Read Custom Field Names',
+								'custom_fields' => '(feature) Read Custom Fields by Name',
 								'coauthors'     => '(plugin) Co-Authors Plus',
 								'shorten'       => '(api) URL Shortening APIs',
 								'wpseo_meta'    => '(feature) Yoast SEO Social Meta',

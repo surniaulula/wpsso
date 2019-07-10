@@ -313,9 +313,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				if ( $filter_opts ) {
 
 					/**
-					 * Allow certain 3rd-party custom field values to override those of our social settings.
+					 * Allow some custom field values to override our option values.
 					 */
-					$this->opts[ $post_id ] = $this->get_custom_fields( $this->opts[ $post_id ], get_post_meta( $post_id ) );
+					$this->opts[ $post_id ] = apply_filters( $this->p->lca . '_get_custom_fields',
+						$this->opts[ $post_id ], get_post_meta( $post_id ) );
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'applying get_post_options filters for post_id ' . $post_id . ' meta' );
