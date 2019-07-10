@@ -79,21 +79,6 @@ if ( ! class_exists( 'WpssoStdAdminMeta' ) ) {
 			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = false );
 
 			/**
-			 * Translated text strings.
-			 */
-			$json_msg_transl = '';
-
-			if ( empty( $this->p->cf[ 'plugin' ][ 'wpssojson' ][ 'version' ] ) ) {
-				$json_info       = $this->p->cf[ 'plugin' ][ 'wpssojson' ];
-				$json_addon_link = $this->p->util->get_admin_url( 'addons#wpssojson', $json_info[ 'name' ] );
-				$json_msg_transl = '<p class="status-msg smaller">' . 
-					sprintf( __( 'Activate the %s add-on for additional Schema markup options.',
-						'wpsso' ), $json_addon_link ) . '</p>';
-			}
-
-			$seo_msg_transl = __( 'Option disabled ("%1$s" head tag disabled or SEO plugin detected).', 'wpsso' );
-
-			/**
 			 * Metabox form rows.
 			 */
 			$form_rows = array(
@@ -121,8 +106,7 @@ if ( ! class_exists( 'WpssoStdAdminMeta' ) ) {
 					'label'    => _x( 'Search Description', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-seo_desc',
 					'content'  => $form->get_no_textarea_value( $def_seo_desc, '', '', $seo_desc_max_len ) .
-						( $add_meta_name_desc ? '' : '<p class="status-msg smaller">' . 
-							sprintf( $seo_msg_transl, 'meta name description' ) . '</p>' ),
+						( $add_meta_name_desc ? '' : $this->p->msgs->seo_option_disabled( 'meta name description' ) ),
 				),
 				'tc_desc' => array(
 					'th_class' => 'medium',
@@ -146,8 +130,7 @@ if ( ! class_exists( 'WpssoStdAdminMeta' ) ) {
 					'label'    => _x( 'Canonical URL', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-canonical_url',
 					'content'  => $form->get_no_input_value( $canonical_url, 'wide' ) .
-						( $add_link_rel_canon ? '' : '<p class="status-msg smaller">' . 
-							sprintf( $seo_msg_transl, 'link rel canonical' ) . '</p>' ),
+						( $add_link_rel_canon ? '' : $this->p->msgs->seo_option_disabled( 'link rel canonical' ) ),
 				),
 				'subsection_schema' => array(
 					'td_class' => 'subsection',
@@ -161,8 +144,9 @@ if ( ! class_exists( 'WpssoStdAdminMeta' ) ) {
 					'tooltip'  => 'meta-schema_desc',
 					'content'  => $form->get_no_textarea_value( $def_schema_desc, '', '', $schema_desc_max_len ),
 				),
-				'wpssojson-addon-msg' => array(
-					'table_row' => $json_msg_transl ? '<td colspan="2">' . $json_msg_transl . '</td>' : '',
+				'wpssojson_addon_msg' => array(
+					'table_row' => ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ?
+						'<td colspan="2">' . $this->p->msgs->more_schema_options() . '</td>' : '' ),
 				),
 			);
 

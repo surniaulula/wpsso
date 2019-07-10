@@ -201,14 +201,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$ext_pp      = $ext_auth_id && $this->p->check->pp( $ext, true, WPSSO_UNDEF ) === WPSSO_UNDEF ? true : false;
 				$ext_stat    = ( $ext_pp ? 'L' : ( $ext_pdir ? 'U' : 'F' ) ) . ( $ext_auth_id ? '*' : '' );
 
-				self::$pkg[ $ext ][ 'pdir' ]  = $ext_pdir;
-				self::$pkg[ $ext ][ 'pp' ]    = $ext_pp;
-				self::$pkg[ $ext ][ 'dist' ]  = $ext_pp ?
+				self::$pkg[ $ext ][ 'pdir' ] = $ext_pdir;
+				self::$pkg[ $ext ][ 'pp' ]   = $ext_pp;
+				self::$pkg[ $ext ][ 'dist' ] = $ext_pp ?
 					_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) :
 					_x( $this->p->cf[ 'dist' ][ 'std' ], 'distribution name', 'wpsso' );
-				self::$pkg[ $ext ][ 'short' ] = $info[ 'short' ] . ' ' . self::$pkg[ $ext ][ 'dist' ];
-				self::$pkg[ $ext ][ 'name' ]  = SucomUtil::get_dist_name( $info[ 'name' ], self::$pkg[ $ext ][ 'dist' ] );
-				self::$pkg[ $ext ][ 'gen' ]   = $info[ 'short' ] . ( isset( $info[ 'version' ] ) ? ' ' . $info[ 'version' ] . '/' . $ext_stat : '' );
+
+				self::$pkg[ $ext ][ 'short_pro' ] = $info[ 'short' ] . ' ' . _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' );
+				self::$pkg[ $ext ][ 'short' ]     = $info[ 'short' ] . ' ' . self::$pkg[ $ext ][ 'dist' ];
+				self::$pkg[ $ext ][ 'name' ]      = SucomUtil::get_dist_name( $info[ 'name' ], self::$pkg[ $ext ][ 'dist' ] );
+				self::$pkg[ $ext ][ 'gen' ]       = $info[ 'short' ] . ( isset( $info[ 'version' ] ) ? ' ' . $info[ 'version' ] . '/' . $ext_stat : '' );
 			}
 		}
 
@@ -1757,17 +1759,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$features = array(
 						'(feature) Use Filtered (SEO) Title' => array(
 							'td_class' => self::$pkg[ $ext ][ 'pp' ] ? '' : 'blank',
-							'status'   => $this->p->options[ 'plugin_filter_title' ] ? 'on' : 'off',
+							'status'   => $this->p->options[ 'plugin_filter_title' ] ?
+								( self::$pkg[ $ext ][ 'pp' ] ? 'on' : 'rec' ) : 'off',
 							'link'     => $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' ),
 						),
 						'(feature) Use WordPress Content Filters' => array(
 							'td_class' => self::$pkg[ $ext ][ 'pp' ] ? '' : 'blank',
-							'status'   => $this->p->options[ 'plugin_filter_content' ] ? 'on' : 'rec',
+							'status'   => $this->p->options[ 'plugin_filter_content' ] ?
+								( self::$pkg[ $ext ][ 'pp' ] ? 'on' : 'rec' ) : 'off',
 							'link'     => $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' ),
 						),
 						'(feature) Use WordPress Excerpt Filters' => array(
 							'td_class' => self::$pkg[ $ext ][ 'pp' ] ? '' : 'blank',
-							'status'   => $this->p->options[ 'plugin_filter_excerpt' ] ? 'on' : 'off',
+							'status'   => $this->p->options[ 'plugin_filter_excerpt' ] ?
+								( self::$pkg[ $ext ][ 'pp' ] ? 'on' : 'rec' ) : 'off',
 							'link'     => $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' ),
 						),
 					);
@@ -3738,7 +3743,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$table_rows[ $opt_key ] = ( $hide_in_basic ? $form->get_tr_hide( 'basic', $opt_key ) : '' ) .
 					$form->get_th_html( _x( $opt_label, 'option label', 'wpsso' ), '', $opt_key ) . 
 						( self::$pkg[ $this->p->lca ][ 'pp' ] ? '<td>' . $form->get_input( $opt_key,
-							$css_class = '', $css_id = '', $len = 0, $placeholder = '', $disabled ) . '</td>' :
+							$css_class = '', $css_id = '', $max_len = 0, $placeholder = '', $disabled ) . '</td>' :
 								'<td class="blank">' . $form->get_no_input( $opt_key ) . '</td>' );
 			}
 
@@ -4047,43 +4052,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
-		 * If an add-on is not available, return a short sentence that this add-on is required.
+		 * Deprecated on 2019/07/10.
 		 *
-		 * $mixed = wpssojson, json, etc.
+		 * Check that all add-ons are no longer using this method before removing it.
 		 */
 		public function get_ext_required_msg( $mixed ) {
 
-			$html = '';
-
-			if ( ! is_string( $mixed ) ) {						// Just in case.
-				return $html;
-			}
-
-			if ( strpos( $mixed, $this->p->lca ) === 0 ) {				// A complete lower case acronym was provided.
-				$p_ext = substr( $ext, 0, strlen( $this->p->lca ) );		// Change 'wpssojson' to 'json'.
-				$ext   = $mixed;
-			} else {
-				$p_ext = $mixed;
-				$ext   = $this->p->lca . $p_ext;				// Change 'json' to 'wpssojson'.
-			}
-
-			if ( $this->p->lca === $mixed ) {					// The main plugin is not considered an add-on.
-				return $html;
-			} elseif ( ! empty( $this->p->avail[ 'p_ext' ][ $p_ext ] ) ) {		// Add-on is already active.
-				return $html;
-			} elseif ( empty( $this->p->cf[ 'plugin' ][ $ext ][ 'short' ] ) ) {	// Unknown add-on.
-				return $html;
-			}
-
-			$html .= ' <span class="ext-req-msg">';
-
-			$html .= $this->p->util->get_admin_url( 'addons#' . $ext, 
-				sprintf( _x( '%s required', 'option comment', 'wpsso' ),
-					$this->p->cf[ 'plugin' ][ $ext ][ 'short' ] ) );
-
-			$html .= '</span>';
-
-			return $html;
+			return $this->p->msgs->maybe_ext_required( $mixed );
 		}
 
 		/**

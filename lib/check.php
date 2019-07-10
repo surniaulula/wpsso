@@ -294,15 +294,15 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							break;
 
-						/*
-						case 'places-google_places':
-							$chk[ 'opt_key' ] = 'plugin_google_places';
-							break;
-						 */
-
 						case 'util-checkimgdims':
 
 							$chk[ 'opt_key' ] = 'plugin_check_img_dims';
+
+							break;
+
+						case 'util-custom_fields':
+
+							$get_avail[ $sub ][ 'any' ] = $get_avail[ $sub ][ $id ] = true;
 
 							break;
 

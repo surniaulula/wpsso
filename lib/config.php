@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '5.2.0-dev.4',	// Plugin version.
+					'version'     => '5.2.0-dev.6',	// Plugin version.
 					'opt_version' => '647',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -132,10 +132,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'buddypress' => '(plugin) BuddyPress',
 							),
 							'util' => array(
-								'checkimgdims' => '(feature) Verify Image Dimensions',
-								'coauthors'    => '(plugin) Co-Authors Plus',
-								'shorten'      => '(api) URL Shortening APIs',
-								'wpseo_meta'   => '(feature) Yoast SEO Social Meta',
+								'checkimgdims'  => '(feature) Verify Image Dimensions',
+								'custom_fields' => '(feature) Read Custom Field Names',
+								'coauthors'     => '(plugin) Co-Authors Plus',
+								'shorten'       => '(api) URL Shortening APIs',
+								'wpseo_meta'    => '(feature) Yoast SEO Social Meta',
 							),
 						),
 						'profile' => array(

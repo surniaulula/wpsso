@@ -3752,7 +3752,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 * Check that all add-ons are no longer using this method before removing it.
 		 */
 		public function get_ext_req_msg( $mixed ) {
-			return $this->p->admin->get_ext_required_msg( $mixed );
+
+			return $this->p->msgs->maybe_ext_required( $mixed );
 		}
 
 		public function get_robots_content( array $mod ) {

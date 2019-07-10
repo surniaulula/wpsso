@@ -1509,9 +1509,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				}
 
 				if ( ! isset( $wp_meta[ $meta_key ][ 0 ] ) ) {	// If the array element is not set, then skip it.
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $meta_key . ' meta key element 0 not found in wp_meta' );
 					}
+
 					continue;
 				}
 

@@ -77,19 +77,7 @@ if ( ! class_exists( 'WpssoStdAdminPost' ) ) {
 			/**
 			 * Translated text strings.
 			 */
-			$json_msg_transl = '';
-
-			if ( empty( $this->p->cf[ 'plugin' ][ 'wpssojson' ][ 'version' ] ) ) {
-				$json_info       = $this->p->cf[ 'plugin' ][ 'wpssojson' ];
-				$json_addon_link = $this->p->util->get_admin_url( 'addons#wpssojson', $json_info[ 'name' ] );
-				$json_msg_transl = '<p class="status-msg smaller">' . 
-					sprintf( __( 'Activate the %s add-on for additional Schema markup options.',
-						'wpsso' ), $json_addon_link ) . '</p>';
-			}
-
-			$seo_msg_transl = __( 'Option disabled ("%1$s" head tag disabled or SEO plugin detected).', 'wpsso' );
-
-			$auto_draft_msg = sprintf( __( 'Save a draft version or publish the %s to update this value.', 'wpsso' ),
+			$auto_draft_msg  = sprintf( __( 'Save a draft version or publish the %s to update this value.', 'wpsso' ),
 				SucomUtil::titleize( $mod[ 'post_type' ] ) );
 
 			/**
@@ -130,8 +118,7 @@ if ( ! class_exists( 'WpssoStdAdminPost' ) ) {
 					'label'         => _x( 'Search Description', 'option label', 'wpsso' ),
 					'tooltip'       => 'meta-seo_desc',
 					'content'       => $form->get_no_textarea_value( $def_seo_desc, '', '', $seo_desc_max_len ) .
-						( $add_meta_name_desc ? '' : '<p class="status-msg smaller">' . 
-							sprintf( $seo_msg_transl, 'meta name description' ) . '</p>' ),
+						( $add_meta_name_desc ? '' : $this->p->msgs->seo_option_disabled( 'meta name description' ) ),
 				),
 				'tc_desc' => array(
 					'no_auto_draft' => true,
@@ -158,8 +145,7 @@ if ( ! class_exists( 'WpssoStdAdminPost' ) ) {
 					'label'         => _x( 'Canonical URL', 'option label', 'wpsso' ),
 					'tooltip'       => 'meta-canonical_url',
 					'content'       => $form->get_no_input_value( $canonical_url, 'wide' ) .
-						( $add_link_rel_canon ? '' : '<p class="status-msg smaller">' . 
-							sprintf( $seo_msg_transl, 'link rel canonical' ) . '</p>' ),
+						( $add_link_rel_canon ? '' : $this->p->msgs->seo_option_disabled( 'link rel canonical' ) ),
 				),
 
 				/**
@@ -188,15 +174,20 @@ if ( ! class_exists( 'WpssoStdAdminPost' ) ) {
 					'header'   => 'h5',
 					'label'    => _x( 'Product Information', 'metabox title', 'wpsso' )
 				),
-				'product_brand' => array(		// Open Graph meta tag product:brand.
+				'og_product_ecom_msg' => array(
+					'tr_class' => 'hide_og_type hide_og_type_product',
+					'table_row' => ( empty( $this->p->avail[ 'ecom' ][ 'any' ] ) ? '' :
+						'<td colspan="2">' . $this->p->msgs->get( 'pro-ecom-product-msg' ) . '</td>' ),
+				),
+				'og_product_brand' => array(		// Open Graph meta tag product:brand.
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Brand', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_brand',
-					'content'  => $form->get_no_input( 'product_brand', '', '', 0, $placeholder = true ),
+					'content'  => $form->get_no_input( 'product_brand', '', '', $placeholder = true ),
 				),
-				'product_avail' => array(		// Open Graph meta tag product:availability.
+				'og_product_avail' => array(		// Open Graph meta tag product:availability.
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
@@ -205,17 +196,17 @@ if ( ! class_exists( 'WpssoStdAdminPost' ) ) {
 					'content'  => $form->get_no_select( 'product_avail', $this->p->cf[ 'form' ][ 'item_availability' ],
 						$css_class = '', $css_id = '', $is_assoc = true, $selected = true ),
 				),
-				'product_price' => array(		// Open Graph meta tags product:price:amount and product:price:currency.
+				'og_product_price' => array(		// Open Graph meta tags product:price:amount and product:price:currency.
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Price', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_price',
-					'content'  => $form->get_no_input( 'product_price', '', '', 0, $placeholder = true ) . ' ' .
+					'content'  => $form->get_no_input( 'product_price', '', '', $placeholder = true ) . ' ' .
 						$form->get_no_select( 'product_currency', SucomUtil::get_currency_abbrev(),
 							$css_class = 'currency', $css_id = '', $is_assoc = true ),
 				),
-				'product_condition' => array(		// Open Graph meta tag product:condition.
+				'og_product_condition' => array(		// Open Graph meta tag product:condition.
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
@@ -224,23 +215,23 @@ if ( ! class_exists( 'WpssoStdAdminPost' ) ) {
 					'content'  => $form->get_no_select( 'product_condition', $this->p->cf[ 'form' ][ 'item_condition' ],
 						$css_class = '', $css_id = '', $is_assoc = true ),
 				),
-				'product_material' => array(		// Open Graph meta tag product:material.
+				'og_product_material' => array(		// Open Graph meta tag product:material.
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Material', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_material',
-					'content'  => $form->get_no_input( 'product_material', '', '', 0, $placeholder = true ),
+					'content'  => $form->get_no_input( 'product_material', '', '', $placeholder = true ),
 				),
-				'product_color' => array(		// Open Graph meta tag product:color.
+				'og_product_color' => array(		// Open Graph meta tag product:color.
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Color', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_color',
-					'content'  => $form->get_no_input( 'product_color', '', '', 0, $placeholder = true ),
+					'content'  => $form->get_no_input( 'product_color', '', '', $placeholder = true ),
 				),
-				'product_target_gender' => array(	// Open Graph meta tag product:target_gender.
+				'og_product_target_gender' => array(	// Open Graph meta tag product:target_gender.
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
@@ -249,54 +240,54 @@ if ( ! class_exists( 'WpssoStdAdminPost' ) ) {
 					'content'  => $form->get_no_select( 'product_target_gender', $this->p->cf[ 'form' ][ 'audience_gender' ],
 						$css_class = 'gender', $css_id = '', $is_assoc = true ),
 				),
-				'product_size' => array(		// Open Graph meta tag product:size.
+				'og_product_size' => array(		// Open Graph meta tag product:size.
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Size', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_size',
-					'content'  => $form->get_no_input( 'product_size', '', '', 0, $placeholder = true ),
+					'content'  => $form->get_no_input( 'product_size', '', '', $placeholder = true ),
 				),
-				'product_weight_value' => array(	// Open Graph meta tag product:weight:value.
+				'og_product_weight_value' => array(	// Open Graph meta tag product:weight:value.
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Weight', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_weight_value',
-					'content'  => $form->get_no_input( 'product_weight_value', '', '', 0, $placeholder = true ) . ' ' .
+					'content'  => $form->get_no_input( 'product_weight_value', '', '', $placeholder = true ) . ' ' .
 						WpssoSchema::get_data_unitcode_text( 'weight' ),
 				),
-				'product_sku' => array(			// Open Graph meta tag product:retailer_item_id.
+				'og_product_sku' => array(			// Open Graph meta tag product:retailer_item_id.
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Product SKU', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_sku',
-					'content'  => $form->get_no_input( 'product_sku', '', '', 0, $placeholder = true ),
+					'content'  => $form->get_no_input( 'product_sku', '', '', $placeholder = true ),
 				),
-				'product_mpn' => array(			// Open Graph meta tag product:mfr_part_no.
+				'og_product_mpn' => array(			// Open Graph meta tag product:mfr_part_no.
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Product MPN', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_mpn',
-					'content'  => $form->get_no_input( 'product_mpn', '', '', 0, $placeholder = true ),
+					'content'  => $form->get_no_input( 'product_mpn', '', '', $placeholder = true ),
 				),
-				'product_ean' => array(			// Open Graph meta tag product:ean.
+				'og_product_ean' => array(			// Open Graph meta tag product:ean.
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Product EAN', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_ean',
-					'content'  => $form->get_no_input( 'product_ean', '', '', 0, $placeholder = true ),
+					'content'  => $form->get_no_input( 'product_ean', '', '', $placeholder = true ),
 				),
-				'product_isbn' => array(		// Open Graph meta tag product:isbn.
+				'og_product_isbn' => array(		// Open Graph meta tag product:isbn.
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Product ISBN', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_isbn',
-					'content'  => $form->get_no_input( 'product_isbn', '', '', 0, $placeholder = true ),
+					'content'  => $form->get_no_input( 'product_isbn', '', '', $placeholder = true ),
 				),
 
 				/**
@@ -315,8 +306,9 @@ if ( ! class_exists( 'WpssoStdAdminPost' ) ) {
 					'tooltip'       => 'meta-schema_desc',
 					'content'       => $form->get_no_textarea_value( $def_schema_desc, '', '', $schema_desc_max_len ),
 				),
-				'wpssojson-addon-msg' => array(
-					'table_row' => $json_msg_transl ? '<td colspan="2">' . $json_msg_transl . '</td>' : '',
+				'wpssojson_addon_msg' => array(
+					'table_row' => ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ?
+						'<td colspan="2">' . $this->p->msgs->more_schema_options() . '</td>' : '' ),
 				),
 			);
 

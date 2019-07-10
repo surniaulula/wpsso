@@ -1922,15 +1922,38 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						if ( $lca === $this->p->lca ) {
 
-							$text .= sprintf( __( 'Purchase %1$s plugin to get the following features / options.',
+							$text .= sprintf( __( 'Purchase the %1$s plugin to upgrade and get the following features.',
 								'wpsso' ), $info[ 'short_pro' ] );
 
 						} else {
-							$text .= sprintf( __( 'Purchase the %1$s add-on to get the following features / options.',
+							$text .= sprintf( __( 'Purchase the %1$s add-on to upgrade and get the following features.',
 								'wpsso' ), $info[ 'short_pro' ] );
 						}
 
 						$text .= empty( $url[ 'purchase' ] ) ? '' : '</a>';
+						
+						$text .= '</p>';
+
+						break;
+
+					case 'pro-ecom-product-msg':
+
+						$text = '<p class="pro-feature-msg">';
+
+						if ( WpssoAdmin::$pkg[ $this->p->lca ][ 'pp' ] ) {
+
+							$text = __( 'An e-commerce plugin is active &ndash; some product details may be managed by the e-commerce plugin.',
+								'wpsso' );
+
+						} else {
+
+							$text .= empty( $url[ 'purchase' ] ) ? '' : '<a href="' . $url[ 'purchase' ] . '">';
+
+							$text .= sprintf( __( 'An e-commerce plugin is active &ndash; product details may be retrieved by the %s plugin.',
+								'wpsso' ), $info[ 'short_pro' ] );
+
+							$text .= empty( $url[ 'purchase' ] ) ? '' : '</a>';
+						}
 						
 						$text .= '</p>';
 
@@ -2425,6 +2448,80 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			} else {
 				return $local_cache;
 			}
+		}
+
+		public function pro_feature( $ext ) {
+
+			list( $ext, $p_ext ) = $this->get_ext_p_ext( $ext );
+
+			if ( empty( $ext ) ) {
+				return '';
+			}
+
+			return $this->get( 'pro-feature-msg', array( 'lca' => $ext ) );
+		}
+
+		/**
+		 * If an add-on is not active, return a short message that this add-on is required.
+		 */
+		public function maybe_ext_required( $ext ) {
+
+			list( $ext, $p_ext ) = $this->get_ext_p_ext( $ext );
+
+			if ( empty( $ext ) ) {							// Just in case.
+				return '';
+			} elseif ( $this->p->lca === $ext ) {					// The main plugin is not considered an add-on.
+				return '';
+			} elseif ( ! empty( $this->p->avail[ 'p_ext' ][ $p_ext ] ) ) {		// Add-on is already active.
+				return '';
+			} elseif ( empty( $this->p->cf[ 'plugin' ][ $ext ][ 'short' ] ) ) {	// Unknown add-on.
+				return '';
+			}
+
+			// translators: %s is is the short add-on name.
+			$req_msg_transl = sprintf( _x( '%s required', 'option comment', 'wpsso' ), $this->p->cf[ 'plugin' ][ $ext ][ 'short' ] );
+
+			$req_msg_link = $this->p->util->get_admin_url( 'addons#' . $ext, $req_msg_transl );
+
+			return ' <span class="ext-req-msg">' . $req_msg_link . '</span>';
+		}
+
+		public function seo_option_disabled( $mt_name ) {
+
+			// translators: %s is the meta tag name (ie. meta name canonical).
+			$seo_msg_transl = __( 'Option disabled (<code>%s</code> head tag disabled or SEO plugin detected).', 'wpsso' );
+
+			return '<p class="status-msg smaller">' . sprintf( $seo_msg_transl, $mt_name ) . '</p>';
+		}
+
+		public function more_schema_options() {
+
+			$json_addon_link = $this->p->util->get_admin_url( 'addons#wpssojson', $this->p->cf[ 'plugin' ][ 'wpssojson' ][ 'name' ] );
+		
+			// translators: %s is is the add-on name (and a link to the add-on page).
+			$json_msg_transl = sprintf( __( 'Activate the %s add-on for additional Schema markup options.', 'wpsso' ), $json_addon_link );
+
+			return '<p class="status-msg">' . $json_msg_transl . '</p>';
+		}
+
+		private function get_ext_p_ext( $ext ) {
+
+			if ( is_string( $ext ) ) {
+
+				if ( strpos( $ext, $this->p->lca ) !== 0 ) {
+					$ext = $this->p->lca . $p_ext;
+				}
+
+				$p_ext = substr( $ext, 0, strlen( $this->p->lca ) );
+
+			} else {
+
+				$ext = '';
+
+				$p_ext = '';
+			}
+
+			return array( $ext, $p_ext );
 		}
 	}
 }
