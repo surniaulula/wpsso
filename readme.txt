@@ -455,6 +455,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* Fixed an incorrect variable use in the WpssoAdmin::get_option_site_use() static method.
 * *Developer Notes*
+	* Moved the WpssoWpMeta::get_custom_fields() method to a 'wpsso_get_custom_fields' filter hook.
 	* Added a new WpssoConfig::$cf[ 'head' ][ 'schema_unitcodes' ] array.
 	* Refactored the WpssoSchema::add_data_unitcode_from_assoc() method.
 	* Added a new WpssoSchema::get_data_unitcode_text() static method.
