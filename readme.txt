@@ -469,7 +469,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Improvements*
 	* Added a fallback to the default attribute value when a WooCommerce variation attribute is empty (Premium version).
 	* WooCommerce attributes used for variations (ie. multiple values for a select option) are now excluded from the Facebook / Open Graph meta tags (Premium version).
-	* Facebook / Open Graph product customization fields in the Document SSO metabox are disabled when an e-commerce plugin provides those values (to avoid confusion about the source of product attribute values) (Premium version).
+	* *Facebook / Open Graph product customization fields in the Document SSO metabox are now disabled when an e-commerce plugin provides those values (to avoid confusion about the source of product detail) (Premium version).*
 * *Bugfixes*
 	* None.
 * *Developer Notes*
