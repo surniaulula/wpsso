@@ -72,7 +72,7 @@ if ( ! class_exists( 'WpssoSchemaCache' ) ) {
 			/**
 			 * Restore previous reference values for admin notices.
 			 */
-			$wpsso->notice->maybe_unset_ref( $sharing_url );
+			$wpsso->util->maybe_unset_ref( $sharing_url );
 
 			self::save_mod_data( $mod, $cache_data );
 

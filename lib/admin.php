@@ -4044,9 +4044,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
-		 * Returns a 128x128px image.
+		 * Returns a 128x128px image by default.
 		 */
-		public function get_ext_img_icon( $ext ) {
+		public function get_ext_img_icon( $ext, $px = 128 ) {
 
 			/**
 			 * The default image is a transparent 1px gif.
@@ -4066,7 +4066,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
-			return '<img ' . $img_src . ' width="128" height="128" style="width:128px; height:128px;"/>';
+			return '<img ' . $img_src . ' width="' . $px . '" height="' . $px . '" style="width:' . $px . 'px; height:' . $px . 'px;"/>';
 		}
 
 		/**
