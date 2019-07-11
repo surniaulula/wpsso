@@ -437,7 +437,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.2.0-dev.6 (2019/07/10)**
+**Version 5.2.0-b.1 (2019/07/10)**
 
 * **New Features**
 	* None.
@@ -526,7 +526,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 5.2.0-dev.6 =
+= 5.2.0-b.1 =
 
 (2019/07/10) Fixed an incorrect variable use in the WpssoAdmin::get_option_site_use() static method. Moved product options without Open Graph meta tags to the WPSSO JSON add-on.
 
