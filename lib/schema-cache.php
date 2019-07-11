@@ -61,23 +61,7 @@ if ( ! class_exists( 'WpssoSchemaCache' ) ) {
 			/**
 			 * Set the reference values for admin notices.
 			 */
-			if ( is_admin() ) {
-
-				$sharing_url = $wpsso->util->get_sharing_url( $mod );
-
-				if ( $mod[ 'post_type' ] && $mod[ 'id' ] ) {
-
-					$wpsso->notice->set_ref( $sharing_url, $mod,
-						sprintf( __( 'adding schema for %1$s ID %2$s', 'wpsso' ), $mod[ 'post_type' ], $mod[ 'id' ] ) );
-
-				} elseif ( $mod[ 'name' ] && $mod[ 'id' ] ) {
-
-					$wpsso->notice->set_ref( $sharing_url, $mod,
-						sprintf( __( 'adding schema for %1$s ID %2$s', 'wpsso' ), $mod[ 'name' ], $mod[ 'id' ] ) );
-				} else {
-					$wpsso->notice->set_ref( $sharing_url, $mod );
-				}
-			}
+			$sharing_url = $wpsso->util->maybe_set_ref( null, $mod, __( 'adding schema', 'wpsso' ) );
 
 			if ( ! is_array( $mt_og ) ) {
 				$mt_og = $wpsso->og->get_array( $mod, $mt_og = array() );
@@ -88,9 +72,7 @@ if ( ! class_exists( 'WpssoSchemaCache' ) ) {
 			/**
 			 * Restore previous reference values for admin notices.
 			 */
-			if ( is_admin() ) {
-				$wpsso->notice->unset_ref( $sharing_url );
-			}
+			$wpsso->notice->maybe_unset_ref( $sharing_url );
 
 			self::save_mod_data( $mod, $cache_data );
 

@@ -3834,5 +3834,55 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return $ret;
 			}
 		}
+
+		public function maybe_set_ref( $sharing_url = null, $mod = false, $msg_transl = '' ) {
+
+			static $is_admin = null;
+
+			if ( null === $is_admin ) {
+				$is_admin = is_admin();
+			}
+
+			if ( ! $is_admin ) {
+				return false;
+			}
+
+			if ( empty( $sharing_url ) ) {
+				$sharing_url = $this->get_sharing_url( $mod );
+			}
+
+			if ( empty( $msg_transl ) ) {
+				return $this->p->notice->set_ref( $sharing_url, $mod );
+			}
+			
+			if ( empty( $mod[ 'id' ] ) ) {
+				return $this->p->notice->set_ref( $sharing_url, $mod, $msg_transl );
+			}
+
+			if ( empty( $mod[ 'post_type' ] ) ) {
+				$name = $mod[ 'name' ];
+			} else {
+				$name = $mod[ 'post_type' ];
+			}
+
+			// translators: %1$s is an action message, %2$s is the module or post type name, and %3$s is the object ID.
+			return $this->p->notice->set_ref( $sharing_url, $mod, sprintf( __( '%1$s for %2$s ID %3$s', 'wpsso' ),
+				$msg_transl, $name, $mod[ 'id' ] ) );
+		}
+
+		public function maybe_unset_ref( $sharing_url ) {
+
+			static $is_admin = null;
+
+			if ( null === $is_admin ) {
+				$is_admin = is_admin();
+			}
+
+			if ( ! $is_admin ) {
+				return false;
+			}
+
+			return $this->p->notice->unset_ref( $sharing_url );
+		}
 	}
 }

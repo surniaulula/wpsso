@@ -294,15 +294,17 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		/**
-		 * Set reference values for admin notices
+		 * Set reference values for admin notices.
 		 */
-		public function set_ref( $url = null, $mod = null, $context_transl = null ) {
+		public function set_ref( $url = null, $mod = false, $context_transl = null ) {
 
 			$this->notice_info[] = array(
 				'url' => $url,
 				'mod' => $mod,
 				'context_transl' => $context_transl,
 			);
+
+			return $url;
 		}
 
 		/**
@@ -316,9 +318,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				return true;
 
-			} else {
-				return false;
 			}
+
+			return false;
 		}
 
 		public function get_ref( $ref_key = false, $text_prefix = '', $text_suffix = '' ) {

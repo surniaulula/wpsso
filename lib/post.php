@@ -733,9 +733,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( $mod[ 'post_status' ] === 'publish' ) {
 
-						$this->p->notice->set_ref( WpssoWpMeta::$head_meta_info[ 'og:url' ], $mod,
-							sprintf( __( 'checking meta tags for %1$s ID %2$s', 'wpsso' ),
-								$mod[ 'post_type' ], $mod[ 'id' ] ) );
+						$this->p->util->maybe_set_ref( WpssoWpMeta::$head_meta_info[ 'og:url' ], $mod,
+							__( 'checking meta tags', 'wpsso' ) );
 
 						/**
 						 * Check for missing open graph image and description values.
@@ -755,7 +754,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 							}
 						}
 
-						$this->p->notice->unset_ref( WpssoWpMeta::$head_meta_info[ 'og:url' ] );
+						$this->p->util->maybe_unset_ref( WpssoWpMeta::$head_meta_info[ 'og:url' ] );
 
 						/**
 						 * Check duplicates only when the post is available publicly and we have a valid permalink.
@@ -1286,9 +1285,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $mod[ 'post_status' ] === 'publish' ) {
 
-				$this->p->notice->set_ref( WpssoWpMeta::$head_meta_info[ 'og:url' ], $mod,
-					sprintf( __( 'checking meta tags for %1$s ID %2$s', 'wpsso' ),
-						$mod[ 'post_type' ], $mod[ 'id' ] ) );
+				$this->p->util->maybe_set_ref( WpssoWpMeta::$head_meta_info[ 'og:url' ], $mod,
+					__( 'checking meta tags', 'wpsso' ) );
 
 
 				/**
@@ -1305,7 +1303,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					}
 				}
 
-				$this->p->notice->unset_ref( WpssoWpMeta::$head_meta_info[ 'og:url' ] );
+				$this->p->util->maybe_unset_ref( WpssoWpMeta::$head_meta_info[ 'og:url' ] );
 			}
 
 			$metabox_html = $this->get_metabox_custom_meta( $post_obj );
@@ -1641,9 +1639,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			if ( ! $user_can_edit ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'insufficient privileges to save settings for ' . $post_type . ' ID ' . $post_id );
 				}
+
 				if ( $this->p->notice->is_admin_pre_notices() ) {
 					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for %1$s ID %2$s.',
 						'wpsso' ), $post_type, $post_id ) );

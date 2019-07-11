@@ -208,6 +208,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					_x( $this->p->cf[ 'dist' ][ 'std' ], 'distribution name', 'wpsso' );
 
 				self::$pkg[ $ext ][ 'short_pro' ] = $info[ 'short' ] . ' ' . _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' );
+				self::$pkg[ $ext ][ 'short_std' ] = $info[ 'short' ] . ' ' . _x( $this->p->cf[ 'dist' ][ 'std' ], 'distribution name', 'wpsso' );
 				self::$pkg[ $ext ][ 'short' ]     = $info[ 'short' ] . ' ' . self::$pkg[ $ext ][ 'dist' ];
 				self::$pkg[ $ext ][ 'name' ]      = SucomUtil::get_dist_name( $info[ 'name' ], self::$pkg[ $ext ][ 'dist' ] );
 				self::$pkg[ $ext ][ 'gen' ]       = $info[ 'short' ] . ( isset( $info[ 'version' ] ) ? ' ' . $info[ 'version' ] . '/' . $ext_stat : '' );

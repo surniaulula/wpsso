@@ -528,7 +528,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/**
 			 * Set a general reference value for admin notices.
 			 */
-			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod ) : false;
+			$this->p->util->maybe_set_ref( $sharing_url, $mod );
 
 			/**
 			 * Define the author_id (if one is available).
@@ -542,11 +542,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/**
 			 * Open Graph - define first to pass the mt_og array to other methods.
 			 */
-			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod, __( 'adding open graph meta tags', 'wpsso' ) ) : false;
+			$this->p->util->maybe_set_ref( $sharing_url, $mod, __( 'adding open graph meta tags', 'wpsso' ) );
 
 			$mt_og = $this->p->og->get_array( $mod, $mt_og, $crawler_name );
 
-			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
+			$this->p->util->maybe_unset_ref( $sharing_url );
 
 			/**
 			 * Weibo.
@@ -556,47 +556,47 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/**
 			 * Twitter Cards.
 			 */
-			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod, __( 'adding twitter card meta tags', 'wpsso' ) ) : false;
+			$this->p->util->maybe_set_ref( $sharing_url, $mod, __( 'adding twitter card meta tags', 'wpsso' ) );
 
 			$mt_tc = $this->p->tc->get_array( $mod, $mt_og, $crawler_name );
 
-			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
+			$this->p->util->maybe_unset_ref( $sharing_url );
 
 			/**
 			 * Name / SEO meta tags.
 			 */
-			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod, __( 'adding meta name meta tags', 'wpsso' ) ) : false;
+			$this->p->util->maybe_set_ref( $sharing_url, $mod, __( 'adding meta name meta tags', 'wpsso' ) );
 
 			$mt_name = $this->p->meta_name->get_array( $mod, $mt_og, $crawler_name, $author_id );
 
-			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
+			$this->p->util->maybe_unset_ref( $sharing_url );
 
 			/**
 			 * Link relation tags.
 			 */
-			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod, __( 'adding link relation tags', 'wpsso' ) ) : false;
+			$this->p->util->maybe_set_ref( $sharing_url, $mod, __( 'adding link relation tags', 'wpsso' ) );
 
 			$link_rel = $this->p->link_rel->get_array( $mod, $mt_og, $crawler_name, $author_id, $sharing_url );
 
-			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
+			$this->p->util->maybe_unset_ref( $sharing_url );
 
 			/**
 			 * Schema itemprop meta tags.
 			 */
-			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod, __( 'adding schema meta tags', 'wpsso' ) ) : false;
+			$this->p->util->maybe_set_ref( $sharing_url, $mod, __( 'adding schema meta tags', 'wpsso' ) );
 
 			$mt_item = $this->p->meta_item->get_array( $mod, $mt_og, $crawler_name );
 
-			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
+			$this->p->util->maybe_unset_ref( $sharing_url );
 
 			/**
 			 * Schema json scripts.
 			 */
-			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod, __( 'adding schema json-ld markup', 'wpsso' ) ) : false;
+			$this->p->util->maybe_set_ref( $sharing_url, $mod, __( 'adding schema json-ld markup', 'wpsso' ) );
 
 			$json_ld = $this->p->schema->get_array( $mod, $mt_og, $crawler_name );
 
-			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
+			$this->p->util->maybe_unset_ref( $sharing_url );
 
 			/**
 			 * Generator meta tags.
@@ -635,7 +635,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/**
 			 * Unset the general reference value for admin notices.
 			 */
-			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
+			$this->p->util->maybe_unset_ref( $sharing_url );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'build head array' );	// End timer.

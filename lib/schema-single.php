@@ -765,7 +765,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				 */
 				if ( is_admin() ) {
 					if ( ! empty( $offer[ 'url' ] ) ) {
-						$wpsso->notice->set_ref( $offer[ 'url' ], $mod, __( 'adding schema for offer', 'wpsso-schema-json-ld' ) );
+						$wpsso->notice->set_ref( $offer[ 'url' ], $mod, __( 'adding schema offer', 'wpsso-schema-json-ld' ) );
 					}
 				}
 
@@ -857,7 +857,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$sharing_url = $wpsso->util->get_sharing_url( $mod );
 
-				$wpsso->notice->set_ref( $sharing_url, $mod, __( 'adding schema for organization', 'wpsso' ) );
+				$wpsso->notice->set_ref( $sharing_url, $mod, __( 'adding schema organization', 'wpsso' ) );
 			}
 
 			/**
@@ -1202,7 +1202,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$sharing_url = $wpsso->util->get_sharing_url( $mod );
 
-				$wpsso->notice->set_ref( $sharing_url, $mod, __( 'adding schema for place', 'wpsso' ) );
+				$wpsso->notice->set_ref( $sharing_url, $mod, __( 'adding schema place', 'wpsso' ) );
 			}
 
 			/**
