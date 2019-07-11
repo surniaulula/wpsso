@@ -2646,8 +2646,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				if ( $mod[ 'is_home' ] ) {
 
 					if ( get_option( 'show_on_front' ) === 'page' ) {	// Show_on_front = posts | page.
+
 						$url = $this->check_url_string( get_permalink( get_option( 'page_for_posts' ) ), 'page for posts' );
+
 					} else {
+
 						$url = apply_filters( $this->p->lca . '_home_url', home_url( '/' ), $mod, $add_page, $src_id );
 
 						if ( $this->p->debug->enabled ) {

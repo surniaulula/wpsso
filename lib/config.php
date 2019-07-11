@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '5.2.0-b.1',	// Plugin version.
+					'version'     => '5.2.0-b.2',	// Plugin version.
 					'opt_version' => '647',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -1171,7 +1171,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_product_attr_mpn'           => 'MPN',			// Product MPN Attribute Name.
 					'plugin_product_attr_size'          => 'Size',			// Product Size Attribute Name.
 					'plugin_product_attr_target_gender' => 'Gender',		// Product Target Gender Attr. Name.
-					'plugin_product_attr_volume_value'  => 'Volume',		// Product Volume (ml) Attribute Name.
+					'plugin_product_attr_volume_value'  => 'Volume',		// Product Volume Attribute Name.
 
 					/**
 					 * Advanced settings - Custom Meta tab.
@@ -1196,24 +1196,24 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_color'         => '',			// Product Color Custom Field.
 					'plugin_cf_product_condition'     => '',			// Product Condition Custom Field.
 					'plugin_cf_product_currency'      => '',			// Product Currency Custom Field.
-					'plugin_cf_product_depth_value'   => '',			// Product Depth (cm) Custom Field.
+					'plugin_cf_product_depth_value'   => '',			// Product Depth Custom Field.
 					'plugin_cf_product_ean'           => '',			// Product EAN Custom Field.
 					'plugin_cf_product_gtin8'         => '',			// Product GTIN-8 Custom Field.
 					'plugin_cf_product_gtin12'        => '',			// Product GTIN-12 Custom Field.
 					'plugin_cf_product_gtin13'        => '',			// Product GTIN-13 Custom Field.
 					'plugin_cf_product_gtin14'        => '',			// Product GTIN-14 Custom Field.
-					'plugin_cf_product_height_value'  => '',			// Product Height (cm) Custom Field.
+					'plugin_cf_product_height_value'  => '',			// Product Height Custom Field.
 					'plugin_cf_product_isbn'          => '',			// Product ISBN Custom Field.
-					'plugin_cf_product_length_value'  => '',			// Product Length (cm) Custom Field.
+					'plugin_cf_product_length_value'  => '',			// Product Length Custom Field.
 					'plugin_cf_product_material'      => '',			// Product Material Custom Field.
 					'plugin_cf_product_mpn'           => '',			// Product MPN Custom Field.
 					'plugin_cf_product_price'         => '',			// Product Price Custom Field.
 					'plugin_cf_product_size'          => '',			// Product Size Custom Field.
 					'plugin_cf_product_sku'           => '',			// Product SKU Custom Field.
 					'plugin_cf_product_target_gender' => '',			// Product Target Gender Custom Field.
-					'plugin_cf_product_volume_value'  => '',			// Product Volume (ml) Custom Field.
-					'plugin_cf_product_weight_value'  => '',			// Product Weight (kg) Custom Field.
-					'plugin_cf_product_width_value'   => '',			// Product Width (cm) Custom Field.
+					'plugin_cf_product_volume_value'  => '',			// Product Volume Custom Field.
+					'plugin_cf_product_weight_value'  => '',			// Product Weight Custom Field.
+					'plugin_cf_product_width_value'   => '',			// Product Width Custom Field.
 					'plugin_cf_recipe_ingredients'    => '',			// Recipe Ingredients Custom Field.
 					'plugin_cf_recipe_instructions'   => '',			// Recipe Instructions Custom Field.
 					'plugin_cf_sameas_urls'           => '',			// Same-As URLs Custom Field.
@@ -1438,24 +1438,24 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_color'         => 'product_color',
 					'plugin_cf_product_condition'     => 'product_condition',
 					'plugin_cf_product_currency'      => 'product_currency',
-					'plugin_cf_product_depth_value'   => 'product_depth_value',	// Product Depth (cm) Custom Field.
+					'plugin_cf_product_depth_value'   => 'product_depth_value',	// Product Depth Custom Field.
 					'plugin_cf_product_ean'           => 'product_ean',
 					'plugin_cf_product_gtin8'         => 'product_gtin8',
 					'plugin_cf_product_gtin12'        => 'product_gtin12',
 					'plugin_cf_product_gtin13'        => 'product_gtin13',
 					'plugin_cf_product_gtin14'        => 'product_gtin14',
-					'plugin_cf_product_height_value'  => 'product_height_value',	// Product Height (cm) Custom Field.
+					'plugin_cf_product_height_value'  => 'product_height_value',	// Product Height Custom Field.
 					'plugin_cf_product_isbn'          => 'product_isbn',
-					'plugin_cf_product_length_value'  => 'product_length_value',	// Product Length (cm) Custom Field.
+					'plugin_cf_product_length_value'  => 'product_length_value',	// Product Length Custom Field.
 					'plugin_cf_product_material'      => 'product_material',
 					'plugin_cf_product_mpn'           => 'product_mpn',
 					'plugin_cf_product_price'         => 'product_price',
 					'plugin_cf_product_size'          => 'product_size',
 					'plugin_cf_product_sku'           => 'product_sku',
 					'plugin_cf_product_target_gender' => 'product_target_gender',
-					'plugin_cf_product_volume_value'  => 'product_volume_value',	// Product Volume (ml) Custom Field.
-					'plugin_cf_product_weight_value'  => 'product_weight_value',	// Product Weight (kg) Custom Field.
-					'plugin_cf_product_width_value'   => 'product_width_value',	// Product Width (cm) Custom Field.
+					'plugin_cf_product_volume_value'  => 'product_volume_value',	// Product Volume Custom Field.
+					'plugin_cf_product_weight_value'  => 'product_weight_value',	// Product Weight Custom Field.
+					'plugin_cf_product_width_value'   => 'product_width_value',	// Product Width Custom Field.
 					'plugin_cf_recipe_ingredients'    => 'schema_recipe_ingredient',
 					'plugin_cf_recipe_instructions'   => 'schema_recipe_instruction',
 					'plugin_cf_sameas_urls'           => 'schema_sameas_url',
@@ -1935,24 +1935,24 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_color'         => 'Product Color Custom Field',
 					'plugin_cf_product_condition'     => 'Product Condition Custom Field',
 					'plugin_cf_product_currency'      => 'Product Currency Custom Field',
-					'plugin_cf_product_depth_value'   => 'Product Depth (cm) Custom Field',
+					'plugin_cf_product_depth_value'   => 'Product Depth Custom Field',
 					'plugin_cf_product_ean'           => 'Product EAN Custom Field',
 					'plugin_cf_product_gtin8'         => 'Product GTIN-8 Custom Field',
 					'plugin_cf_product_gtin12'        => 'Product GTIN-12 Custom Field',
 					'plugin_cf_product_gtin13'        => 'Product GTIN-13 Custom Field',
 					'plugin_cf_product_gtin14'        => 'Product GTIN-14 Custom Field',
-					'plugin_cf_product_height_value'  => 'Product Height (cm) Custom Field',
+					'plugin_cf_product_height_value'  => 'Product Height Custom Field',
 					'plugin_cf_product_isbn'          => 'Product ISBN Custom Field',
-					'plugin_cf_product_length_value'  => 'Product Length (cm) Custom Field',
+					'plugin_cf_product_length_value'  => 'Product Length Custom Field',
 					'plugin_cf_product_material'      => 'Product Material Custom Field',
 					'plugin_cf_product_mpn'           => 'Product MPN Custom Field',
 					'plugin_cf_product_price'         => 'Product Price Custom Field',
 					'plugin_cf_product_size'          => 'Product Size Custom Field',
 					'plugin_cf_product_sku'           => 'Product SKU Custom Field',
 					'plugin_cf_product_target_gender' => 'Product Target Gender Custom Field',
-					'plugin_cf_product_volume_value'  => 'Product Volume (ml) Custom Field',
-					'plugin_cf_product_weight_value'  => 'Product Weight (kg) Custom Field',
-					'plugin_cf_product_width_value'   => 'Product Width (cm) Custom Field',
+					'plugin_cf_product_volume_value'  => 'Product Volume Custom Field',
+					'plugin_cf_product_weight_value'  => 'Product Weight Custom Field',
+					'plugin_cf_product_width_value'   => 'Product Width Custom Field',
 					'plugin_cf_recipe_ingredients'    => 'Recipe Ingredients Custom Field',
 					'plugin_cf_recipe_instructions'   => 'Recipe Instructions Custom Field',
 					'plugin_cf_sameas_urls'           => 'Same-As URLs Custom Field',
@@ -1973,7 +1973,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_product_attr_material'      => 'Product Material Attribute Name',
 					'plugin_product_attr_size'          => 'Product Size Attribute Name',
 					'plugin_product_attr_target_gender' => 'Product Target Gender Attr. Name',
-					'plugin_product_attr_volume_value'  => 'Product Volume (ml) Attribute Name',
+					'plugin_product_attr_volume_value'  => 'Product Volume Attribute Name',
 				),
 				
 				/**

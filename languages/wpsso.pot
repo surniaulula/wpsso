@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 5.2.0-b.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 5.2.0-b.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -937,62 +937,67 @@ msgctxt "metabox title"
 msgid "Custom Field Names"
 msgstr ""
 
-#: lib/admin.php:3760
+#: lib/admin.php:3762
 msgctxt "metabox title"
 msgid "Product Attribute Names"
 msgstr ""
 
-#: lib/admin.php:3781
+#: lib/admin.php:3787
+msgctxt "option comment"
+msgid "in %s"
+msgstr ""
+
+#: lib/admin.php:3798
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:3962
+#: lib/admin.php:3979
 msgid "Return to %s"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:3993
+#: lib/admin.php:4010
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:4015
+#: lib/admin.php:4032
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:4022
+#: lib/admin.php:4039
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes, and translations)</a> to check if newer versions are "
 "available."
 msgstr ""
 
-#: lib/admin.php:4159
+#: lib/admin.php:4176
 msgid "Please select a %1$s settings file to import."
 msgstr ""
 
-#: lib/admin.php:4166
+#: lib/admin.php:4183
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr ""
 
-#: lib/admin.php:4173
+#: lib/admin.php:4190
 msgid ""
 "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr ""
 
-#: lib/admin.php:4187
+#: lib/admin.php:4204
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr ""
 
-#: lib/admin.php:4197
+#: lib/admin.php:4214
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr ""
 
-#: lib/admin.php:4207
+#: lib/admin.php:4224
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 
@@ -1919,7 +1924,7 @@ msgstr ""
 
 #: lib/gettext-config.php:171
 msgctxt "option label"
-msgid "Product Depth (cm) Custom Field"
+msgid "Product Depth Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:172
@@ -1949,7 +1954,7 @@ msgstr ""
 
 #: lib/gettext-config.php:177
 msgctxt "option label"
-msgid "Product Height (cm) Custom Field"
+msgid "Product Height Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:178
@@ -1959,7 +1964,7 @@ msgstr ""
 
 #: lib/gettext-config.php:179
 msgctxt "option label"
-msgid "Product Length (cm) Custom Field"
+msgid "Product Length Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:180
@@ -1994,17 +1999,17 @@ msgstr ""
 
 #: lib/gettext-config.php:186
 msgctxt "option label"
-msgid "Product Volume (ml) Custom Field"
+msgid "Product Volume Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:187
 msgctxt "option label"
-msgid "Product Weight (kg) Custom Field"
+msgid "Product Weight Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:188
 msgctxt "option label"
-msgid "Product Width (cm) Custom Field"
+msgid "Product Width Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:189
@@ -2099,7 +2104,7 @@ msgstr ""
 
 #: lib/gettext-config.php:207
 msgctxt "option value"
-msgid "Product Volume (ml) Attribute Name"
+msgid "Product Volume Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:209
@@ -2854,7 +2859,7 @@ msgctxt "option label"
 msgid "Product Availability"
 msgstr ""
 
-#: lib/gettext-pro.php:113 lib/messages.php:2392 lib/pro/admin/post.php:202
+#: lib/gettext-pro.php:113 lib/messages.php:2395 lib/pro/admin/post.php:202
 #: lib/std/admin/post.php:203
 msgctxt "option label"
 msgid "Product Price"
@@ -2866,7 +2871,7 @@ msgctxt "option label"
 msgid "Product Condition"
 msgstr ""
 
-#: lib/gettext-pro.php:115 lib/messages.php:2384 lib/pro/admin/post.php:219
+#: lib/gettext-pro.php:115 lib/messages.php:2387 lib/pro/admin/post.php:219
 #: lib/std/admin/post.php:222
 msgctxt "option label"
 msgid "Product Material"
@@ -2878,43 +2883,43 @@ msgctxt "option label"
 msgid "Product Color"
 msgstr ""
 
-#: lib/gettext-pro.php:117 lib/messages.php:2404 lib/pro/admin/post.php:233
+#: lib/gettext-pro.php:117 lib/messages.php:2407 lib/pro/admin/post.php:233
 #: lib/std/admin/post.php:238
 msgctxt "option label"
 msgid "Product Target Gender"
 msgstr ""
 
-#: lib/gettext-pro.php:118 lib/messages.php:2396 lib/pro/admin/post.php:241
+#: lib/gettext-pro.php:118 lib/messages.php:2399 lib/pro/admin/post.php:241
 #: lib/std/admin/post.php:247
 msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gettext-pro.php:119 lib/messages.php:2412 lib/pro/admin/post.php:248
+#: lib/gettext-pro.php:119 lib/messages.php:2416 lib/pro/admin/post.php:248
 #: lib/std/admin/post.php:255
 msgctxt "option label"
 msgid "Product Weight"
 msgstr ""
 
-#: lib/gettext-pro.php:120 lib/messages.php:2400 lib/pro/admin/post.php:256
+#: lib/gettext-pro.php:120 lib/messages.php:2403 lib/pro/admin/post.php:256
 #: lib/std/admin/post.php:264
 msgctxt "option label"
 msgid "Product SKU"
 msgstr ""
 
-#: lib/gettext-pro.php:121 lib/messages.php:2388 lib/pro/admin/post.php:263
+#: lib/gettext-pro.php:121 lib/messages.php:2391 lib/pro/admin/post.php:263
 #: lib/std/admin/post.php:272
 msgctxt "option label"
 msgid "Product MPN"
 msgstr ""
 
-#: lib/gettext-pro.php:122 lib/messages.php:2352 lib/pro/admin/post.php:270
+#: lib/gettext-pro.php:122 lib/messages.php:2353 lib/pro/admin/post.php:270
 #: lib/std/admin/post.php:280
 msgctxt "option label"
 msgid "Product EAN"
 msgstr ""
 
-#: lib/gettext-pro.php:123 lib/messages.php:2376 lib/pro/admin/post.php:277
+#: lib/gettext-pro.php:123 lib/messages.php:2378 lib/pro/admin/post.php:277
 #: lib/std/admin/post.php:288
 msgctxt "option label"
 msgid "Product ISBN"
@@ -3006,7 +3011,7 @@ msgctxt "option label"
 msgid "Video Dimensions"
 msgstr ""
 
-#: lib/gettext-pro.php:145 lib/messages.php:2432 lib/pro/admin/meta.php:254
+#: lib/gettext-pro.php:145 lib/messages.php:2438 lib/pro/admin/meta.php:254
 #: lib/std/admin/meta.php:257
 msgctxt "option label"
 msgid "Video Embed HTML"
@@ -3036,67 +3041,67 @@ msgctxt "metabox title"
 msgid "Structured Data / Schema Markup / Pinterest"
 msgstr ""
 
-#: lib/gettext-pro.php:157 lib/pro/ecom/woocommerce.php:51
+#: lib/gettext-pro.php:157 lib/pro/ecom/woocommerce.php:50
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Advanced &gt; Page setup</a> section."
 msgstr ""
 
-#: lib/gettext-pro.php:158 lib/pro/ecom/woocommerce.php:54
+#: lib/gettext-pro.php:158 lib/pro/ecom/woocommerce.php:53
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Products &gt; General</a> section."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:160 lib/pro/ecom/woocommerce.php:58
+#: lib/gettext-pro.php:160 lib/pro/ecom/woocommerce.php:57
 msgid "My account page"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:162 lib/pro/ecom/woocommerce.php:59
+#: lib/gettext-pro.php:162 lib/pro/ecom/woocommerce.php:58
 msgid "Cart page"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:164 lib/pro/ecom/woocommerce.php:60
+#: lib/gettext-pro.php:164 lib/pro/ecom/woocommerce.php:59
 msgid "Checkout page"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:166 lib/pro/ecom/woocommerce.php:61
+#: lib/gettext-pro.php:166 lib/pro/ecom/woocommerce.php:60
 msgid "Shop page"
 msgstr ""
 
-#: lib/gettext-pro.php:167 lib/pro/ecom/woocommerce.php:66
+#: lib/gettext-pro.php:167 lib/pro/ecom/woocommerce.php:65
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: lib/gettext-pro.php:168 lib/pro/ecom/woocommerce.php:129
+#: lib/gettext-pro.php:168 lib/pro/ecom/woocommerce.php:128
 msgid ""
 "The WooCommerce %s method is not available - please update to a newer "
 "version of WooCommerce."
 msgstr ""
 
-#: lib/gettext-pro.php:169 lib/pro/ecom/woocommerce.php:913
+#: lib/gettext-pro.php:169 lib/pro/ecom/woocommerce.php:898
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
-#: lib/gettext-pro.php:170 lib/pro/ecom/woocommerce.php:916
+#: lib/gettext-pro.php:170 lib/pro/ecom/woocommerce.php:901
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/gettext-pro.php:171 lib/pro/ecom/woocommerce.php:1085
+#: lib/gettext-pro.php:171 lib/pro/ecom/woocommerce.php:1070
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/gettext-pro.php:172 lib/pro/ecom/woocommerce.php:1087
+#: lib/gettext-pro.php:172 lib/pro/ecom/woocommerce.php:1072
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:173 lib/pro/ecom/woocommerce.php:1090
+#: lib/gettext-pro.php:173 lib/pro/ecom/woocommerce.php:1075
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 
@@ -3302,7 +3307,7 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
 #: lib/loader.php:182 lib/loader.php:208 lib/post.php:504 lib/register.php:312
-#: lib/term.php:452 lib/user.php:414 lib/util.php:487 lib/util.php:3287
+#: lib/term.php:452 lib/user.php:414 lib/util.php:487 lib/util.php:3290
 msgid "%s warning:"
 msgstr ""
 
@@ -3465,19 +3470,19 @@ msgstr ""
 
 #: lib/messages.php:198
 msgid ""
-"The value for %1$s can be used in Open Graph meta tags and Schema Product "
-"markup."
+"The value of %1$s can be used in meta tags and Schema markup for simple "
+"products."
 msgstr ""
 
 #: lib/messages.php:200
 msgid ""
-"When product variations are available, the value retrieved from each "
+"When e-commerce product variations are available, the value from each "
 "variation will be used instead."
 msgstr ""
 
 #: lib/messages.php:202
 msgid ""
-"This option may be disabled when a supported e-commerce plugin provides the "
+"This option may be disabled when a supported e-commerce plugin manages the "
 "source value."
 msgstr ""
 
@@ -5351,195 +5356,195 @@ msgstr ""
 
 #: lib/messages.php:2349
 msgctxt "tooltip fragment"
-msgid "a product depth (in centimeters)"
+msgid "a product depth (in %s)"
 msgstr ""
 
-#: lib/messages.php:2353
+#: lib/messages.php:2354
 msgctxt "tooltip fragment"
 msgid "an International Article Number (aka European Article Number)"
 msgstr ""
 
-#: lib/messages.php:2356
+#: lib/messages.php:2357
 msgctxt "option label"
 msgid "Product GTIN-8"
 msgstr ""
 
-#: lib/messages.php:2357
+#: lib/messages.php:2358
 msgctxt "tooltip fragment"
 msgid "a product GTIN-8 code (aka EAN/UCC-8 or 8-digit EAN)"
 msgstr ""
 
-#: lib/messages.php:2360
+#: lib/messages.php:2361
 msgctxt "option label"
 msgid "Product GTIN-12"
 msgstr ""
 
-#: lib/messages.php:2361
+#: lib/messages.php:2362
 msgctxt "tooltip fragment"
 msgid ""
 "a product GTIN-12 code (12-digit GS1 identification key composed of a U.P.C. "
 "company prefix, item reference, and check digit)"
 msgstr ""
 
-#: lib/messages.php:2364
+#: lib/messages.php:2365
 msgctxt "option label"
 msgid "Product GTIN-13"
 msgstr ""
 
-#: lib/messages.php:2365
+#: lib/messages.php:2366
 msgctxt "tooltip fragment"
 msgid "a product GTIN-13 code (aka 13-digit ISBN codes or EAN/UCC-13)"
 msgstr ""
 
-#: lib/messages.php:2368
+#: lib/messages.php:2369
 msgctxt "option label"
 msgid "Product GTIN-14"
 msgstr ""
 
-#: lib/messages.php:2369
+#: lib/messages.php:2370
 msgctxt "tooltip fragment"
 msgid "a product GTIN-14 code"
 msgstr ""
 
-#: lib/messages.php:2372
+#: lib/messages.php:2373
 msgctxt "option label"
 msgid "Product Height"
 msgstr ""
 
-#: lib/messages.php:2373
+#: lib/messages.php:2374
 msgctxt "tooltip fragment"
-msgid "a product height (in centimeters)"
+msgid "a product height (in %s)"
 msgstr ""
 
-#: lib/messages.php:2377
+#: lib/messages.php:2379
 msgctxt "tooltip fragment"
 msgid "an ISBN code (aka International Standard Book Number)"
 msgstr ""
 
-#: lib/messages.php:2380
+#: lib/messages.php:2382
 msgctxt "option label"
 msgid "Product Length"
 msgstr ""
 
-#: lib/messages.php:2381
+#: lib/messages.php:2383
 msgctxt "tooltip fragment"
-msgid "a product length (in centimeters)"
+msgid "a product length (in %s)"
 msgstr ""
 
-#: lib/messages.php:2385
+#: lib/messages.php:2388
 msgctxt "tooltip fragment"
 msgid "a product material"
 msgstr ""
 
-#: lib/messages.php:2389
+#: lib/messages.php:2392
 msgctxt "tooltip fragment"
 msgid "a Manufacturer Part Number (MPN)"
 msgstr ""
 
-#: lib/messages.php:2393
+#: lib/messages.php:2396
 msgctxt "tooltip fragment"
 msgid "a product price"
 msgstr ""
 
-#: lib/messages.php:2397
+#: lib/messages.php:2400
 msgctxt "tooltip fragment"
 msgid "a product size"
 msgstr ""
 
-#: lib/messages.php:2401
+#: lib/messages.php:2404
 msgctxt "tooltip fragment"
 msgid "a Stock-Keeping Unit (aka unique product identifier)"
 msgstr ""
 
-#: lib/messages.php:2405
+#: lib/messages.php:2408
 msgctxt "tooltip fragment"
 msgid "a product target gender"
 msgstr ""
 
-#: lib/messages.php:2408
+#: lib/messages.php:2411
 msgctxt "option label"
 msgid "Product Volume"
 msgstr ""
 
-#: lib/messages.php:2409
+#: lib/messages.php:2412
 msgctxt "tooltip fragment"
-msgid "a product volume (in milliliters)"
-msgstr ""
-
-#: lib/messages.php:2413
-msgctxt "tooltip fragment"
-msgid "a product weight (in kilograms)"
-msgstr ""
-
-#: lib/messages.php:2416
-msgctxt "option label"
-msgid "Product Width"
+msgid "a product volume (in %s)"
 msgstr ""
 
 #: lib/messages.php:2417
 msgctxt "tooltip fragment"
-msgid "a product width (in centimeters)"
+msgid "a product weight (in %s)"
 msgstr ""
 
-#: lib/messages.php:2420
+#: lib/messages.php:2421
+msgctxt "option label"
+msgid "Product Width"
+msgstr ""
+
+#: lib/messages.php:2422
+msgctxt "tooltip fragment"
+msgid "a product width (in %s)"
+msgstr ""
+
+#: lib/messages.php:2426
 msgctxt "option label"
 msgid "Recipe Ingredients"
 msgstr ""
 
-#: lib/messages.php:2421
+#: lib/messages.php:2427
 msgctxt "tooltip fragment"
 msgid "recipe ingredients"
 msgstr ""
 
-#: lib/messages.php:2424
+#: lib/messages.php:2430
 msgctxt "option label"
 msgid "Recipe Instructions"
 msgstr ""
 
-#: lib/messages.php:2425
+#: lib/messages.php:2431
 msgctxt "tooltip fragment"
 msgid "recipe instructions"
 msgstr ""
 
-#: lib/messages.php:2428
+#: lib/messages.php:2434
 msgctxt "option label"
 msgid "Same-As URLs"
 msgstr ""
 
-#: lib/messages.php:2429
+#: lib/messages.php:2435
 msgctxt "tooltip fragment"
 msgid "additional Same-As URLs"
 msgstr ""
 
-#: lib/messages.php:2433
+#: lib/messages.php:2439
 msgctxt "tooltip fragment"
 msgid "video embed HTML code (not a URL)"
 msgstr ""
 
-#: lib/messages.php:2436
+#: lib/messages.php:2442
 msgctxt "option label"
 msgid "Video URL"
 msgstr ""
 
-#: lib/messages.php:2437
+#: lib/messages.php:2443
 msgctxt "tooltip fragment"
 msgid "a video URL (not HTML code)"
 msgstr ""
 
 #. translators: %s is is the short add-on name.
-#: lib/messages.php:2482
+#: lib/messages.php:2488
 msgctxt "option comment"
 msgid "%s required"
 msgstr ""
 
 #. translators: %s is the meta tag name (ie. meta name canonical).
-#: lib/messages.php:2492
+#: lib/messages.php:2498
 msgid ""
 "Option disabled (<code>%s</code> head tag disabled or SEO plugin detected)."
 msgstr ""
 
 #. translators: %s is is the add-on name (and a link to the add-on page).
-#: lib/messages.php:2502
+#: lib/messages.php:2508
 msgid "Activate the %s add-on for additional Schema markup options."
 msgstr ""
 
@@ -5753,7 +5758,7 @@ msgstr ""
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
 #: lib/post.php:490 lib/term.php:438 lib/user.php:400 lib/util.php:473
-#: lib/util.php:3259
+#: lib/util.php:3262
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -6604,13 +6609,13 @@ msgid ""
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max.
-#: lib/util.php:3262
+#: lib/util.php:3265
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3279
+#: lib/util.php:3282
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -6619,39 +6624,39 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3279
+#: lib/util.php:3282
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3568
+#: lib/util.php:3571
 msgid "No options available."
-msgstr ""
-
-#: lib/util.php:3597
-msgctxt "option comment"
-msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
 #: lib/util.php:3600
 msgctxt "option comment"
+msgid "%1$d additional options not shown in \"%2$s\" view"
+msgstr ""
+
+#: lib/util.php:3603
+msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:3605
+#: lib/util.php:3608
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3608
+#: lib/util.php:3611
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name, and %3$s is the object ID.
-#: lib/util.php:3869
+#: lib/util.php:3872
 msgid "%1$s for %2$s ID %3$s"
 msgstr ""
 

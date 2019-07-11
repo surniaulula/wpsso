@@ -254,8 +254,8 @@ if ( ! class_exists( 'WpssoStdAdminPost' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Weight', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_weight_value',
-					'content'  => $form->get_no_input( 'product_weight_value', '', '', $placeholder = true ) . ' ' .
-						WpssoSchema::get_data_unitcode_text( 'weight' ),
+					'content'  => $form->get_no_input( 'product_weight_value', '', '', $placeholder = true ) .
+						WpssoAdmin::get_option_unit_text( 'product_weight_value' ),
 				),
 				'og_product_sku' => array(			// Open Graph meta tag product:retailer_item_id.
 					'tr_class' => 'hide_og_type hide_og_type_product',

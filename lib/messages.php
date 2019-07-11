@@ -195,11 +195,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							if ( ! empty( $cf_info ) ) {	// Just in case.
 
-								$text = sprintf( __( 'The value for %1$s can be used in Open Graph meta tags and Schema Product markup.', 'wpsso' ), $cf_info[ 1 ] ) . ' ';
+								$text = sprintf( __( 'The value of %1$s can be used in meta tags and Schema markup for simple products.', 'wpsso' ), $cf_info[ 1 ] ) . ' ';
 
-								$text .= __( 'When product variations are available, the value retrieved from each variation will be used instead.', 'wpsso' ) . ' ';
+								$text .= __( 'When e-commerce product variations are available, the value from each variation will be used instead.', 'wpsso' ) . ' ';
 
-								$text .= __( 'This option may be disabled when a supported e-commerce plugin provides the source value.', 'wpsso' );
+								$text .= __( 'This option may be disabled when a supported e-commerce plugin manages the source value.', 'wpsso' );
 							}
 
 						 	break;
@@ -2346,7 +2346,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					),
 					'product_depth_value' => array(
 						_x( 'Product Depth', 'option label', 'wpsso' ),
-						_x( 'a product depth (in centimeters)', 'tooltip fragment', 'wpsso' ),
+						sprintf( _x( 'a product depth (in %s)', 'tooltip fragment', 'wpsso' ),
+							WpssoSchema::get_data_unitcode_text( 'depth' ) ),
 					),
 					'product_ean' => array(
 						_x( 'Product EAN', 'option label', 'wpsso' ),
@@ -2370,7 +2371,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					),
 					'product_height_value' => array(
 						_x( 'Product Height', 'option label', 'wpsso' ),
-						_x( 'a product height (in centimeters)', 'tooltip fragment', 'wpsso' ),
+						sprintf( _x( 'a product height (in %s)', 'tooltip fragment', 'wpsso' ),
+							WpssoSchema::get_data_unitcode_text( 'height' ) ),
 					),
 					'product_isbn' => array(
 						_x( 'Product ISBN', 'option label', 'wpsso' ),
@@ -2378,7 +2380,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					),
 					'product_length_value' => array(
 						_x( 'Product Length', 'option label', 'wpsso' ),
-						_x( 'a product length (in centimeters)', 'tooltip fragment', 'wpsso' ),
+						sprintf( _x( 'a product length (in %s)', 'tooltip fragment', 'wpsso' ),
+							WpssoSchema::get_data_unitcode_text( 'length' ) ),
 					),
 					'product_material' => array(
 						_x( 'Product Material', 'option label', 'wpsso' ),
@@ -2406,15 +2409,18 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					),
 					'product_volume_value' => array(
 						_x( 'Product Volume', 'option label', 'wpsso' ),
-						_x( 'a product volume (in milliliters)', 'tooltip fragment', 'wpsso' ),
+						sprintf( _x( 'a product volume (in %s)', 'tooltip fragment', 'wpsso' ),
+							WpssoSchema::get_data_unitcode_text( 'volume' ) ),
 					),
 					'product_weight_value' => array(
 						_x( 'Product Weight', 'option label', 'wpsso' ),
-						_x( 'a product weight (in kilograms)', 'tooltip fragment', 'wpsso' ),
+						sprintf( _x( 'a product weight (in %s)', 'tooltip fragment', 'wpsso' ),
+							WpssoSchema::get_data_unitcode_text( 'weight' ) ),
 					),
 					'product_width_value' => array(
 						_x( 'Product Width', 'option label', 'wpsso' ),
-						_x( 'a product width (in centimeters)', 'tooltip fragment', 'wpsso' ),
+						sprintf( _x( 'a product width (in %s)', 'tooltip fragment', 'wpsso' ),
+							WpssoSchema::get_data_unitcode_text( 'width' ) ),
 					),
 					'recipe_ingredients' => array(
 						_x( 'Recipe Ingredients', 'option label', 'wpsso' ),

@@ -3723,9 +3723,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 */
 				if ( empty( $this->p->cf[ 'form' ][ 'cf_labels' ][ $opt_key ] ) ) {
 					continue;
-				} else {
-					$opt_label = $this->p->cf[ 'form' ][ 'cf_labels' ][ $opt_key ];
 				}
+
+				$opt_label = $this->p->cf[ 'form' ][ 'cf_labels' ][ $opt_key ];
 
 				/**
 				 * If we don't have a meta data key, then clear the custom field name (just in case)
@@ -3741,11 +3741,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$disabled = false;
 				}
 
+				$cmt_transl = self::get_option_unit_text( $opt_key );
+
 				$table_rows[ $opt_key ] = ( $hide_in_basic ? $form->get_tr_hide( 'basic', $opt_key ) : '' ) .
 					$form->get_th_html( _x( $opt_label, 'option label', 'wpsso' ), '', $opt_key ) . 
 						( self::$pkg[ $this->p->lca ][ 'pp' ] ? '<td>' . $form->get_input( $opt_key,
-							$css_class = '', $css_id = '', $max_len = 0, $placeholder = '', $disabled ) . '</td>' :
-								'<td class="blank">' . $form->get_no_input( $opt_key ) . '</td>' );
+							$css_class = '', $css_id = '', $max_len = 0, $placeholder = '', $disabled ) . $cmt_transl . '</td>' :
+								'<td class="blank">' . $form->get_no_input( $opt_key ) . $cmt_transl . '</td>' );
 			}
 
 		}
@@ -3767,11 +3769,26 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $this->p->cf[ 'form' ][ 'product_attr_labels' ] as $opt_key => $opt_label ) {
 
+				$cmt_transl = self::get_option_unit_text( $opt_key );
+
 				$table_rows[ $opt_key ] = ( $hide_in_basic ? $form->get_tr_hide( 'basic', $opt_key ) : '' ) .
 					$form->get_th_html( _x( $opt_label, 'option label', 'wpsso' ), '', $opt_key ) . 
-						( self::$pkg[ $this->p->lca ][ 'pp' ] ? '<td>' . $form->get_input( $opt_key ) . '</td>' :
-							'<td class="blank">' . $form->get_no_input( $opt_key ) . '</td>' );
+						( self::$pkg[ $this->p->lca ][ 'pp' ] ? '<td>' . $form->get_input( $opt_key ) . $cmt_transl . '</td>' :
+							'<td class="blank">' . $form->get_no_input( $opt_key ) . $cmt_transl . '</td>' );
 			}
+		}
+
+		public static function get_option_unit_text( $opt_key ) {
+
+			$cmt_transl = '';
+
+			if ( preg_match( '/^(plugin_cf_product|plugin_product_attr|product)_([a-z]+)_value$/', $opt_key, $matches ) ) {
+				if ( $unit_text = WpssoSchema::get_data_unitcode_text( $matches[ 2 ] ) ) {
+					$cmt_transl = ' ' . sprintf( _x( 'in %s', 'option comment', 'wpsso' ), $unit_text );
+				}
+			}
+
+			return $cmt_transl;
 		}
 
 		public static function get_option_site_use( $name, $form, $network = false, $enabled = false ) {
@@ -3970,9 +3987,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								$url = add_query_arg( array(
 									$this->p->lca . '_pageref_url'   => urlencode( $this->pageref_url ),
 									$this->p->lca . '_pageref_title' => urlencode( $this->pageref_title ),
-								), $matches[2] );
+								), $matches[ 2 ] );
 
-								$html = $matches[1] . $url . $matches[3];
+								$html = $matches[ 1 ] . $url . $matches[ 3 ];
 							}
 
 							break;
