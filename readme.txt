@@ -437,7 +437,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.2.0-b.3 (2019/07/11)**
+**Version 5.2.0-rc.1 (2019/07/12)**
 
 * **New Features**
 	* None.
@@ -454,11 +454,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Product GTIN-14
 * **Bugfixes**
 	* Fixed an incorrect variable use in the WpssoAdmin::get_option_site_use() static method.
+	* Fixed missing "product:weight:units" meta tag when a Product Weight value is entered in the Document SSO metabox.
 * **Developer Notes**
 	* Moved the WpssoWpMeta::get_custom_fields() method to a 'wpsso_get_custom_fields' filter hook.
 	* Added a new WpssoConfig::$cf[ 'head' ][ 'schema_unitcodes' ] array.
 	* Refactored the WpssoSchema::add_data_unitcode_from_assoc() method.
 	* Added a new WpssoSchema::get_data_unitcode_text() static method.
+	* Added a new WpssoAdmin::get_option_unit_comment() static method.
 
 **Version 5.1.0 (2019/07/06)**
 
@@ -526,9 +528,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 5.2.0-b.3 =
+= 5.2.0-rc.1 =
 
-(2019/07/11) Fixed an incorrect variable use in the WpssoAdmin::get_option_site_use() static method. Moved product options without Open Graph meta tags to the WPSSO JSON add-on.
+(2019/07/12) Fixed an incorrect variable use in the WpssoAdmin::get_option_site_use() static method. Moved product options without Open Graph meta tags to the WPSSO JSON add-on.
 
 = 5.1.0 =
 
