@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 5.2.0-dev.6\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 5.2.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3036,67 +3036,67 @@ msgctxt "metabox title"
 msgid "Structured Data / Schema Markup / Pinterest"
 msgstr ""
 
-#: lib/gettext-pro.php:157 lib/pro/ecom/woocommerce.php:50
+#: lib/gettext-pro.php:157 lib/pro/ecom/woocommerce.php:51
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Advanced &gt; Page setup</a> section."
 msgstr ""
 
-#: lib/gettext-pro.php:158 lib/pro/ecom/woocommerce.php:53
+#: lib/gettext-pro.php:158 lib/pro/ecom/woocommerce.php:54
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Products &gt; General</a> section."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:160 lib/pro/ecom/woocommerce.php:57
+#: lib/gettext-pro.php:160 lib/pro/ecom/woocommerce.php:58
 msgid "My account page"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:162 lib/pro/ecom/woocommerce.php:58
+#: lib/gettext-pro.php:162 lib/pro/ecom/woocommerce.php:59
 msgid "Cart page"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:164 lib/pro/ecom/woocommerce.php:59
+#: lib/gettext-pro.php:164 lib/pro/ecom/woocommerce.php:60
 msgid "Checkout page"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:166 lib/pro/ecom/woocommerce.php:60
+#: lib/gettext-pro.php:166 lib/pro/ecom/woocommerce.php:61
 msgid "Shop page"
 msgstr ""
 
-#: lib/gettext-pro.php:167 lib/pro/ecom/woocommerce.php:65
+#: lib/gettext-pro.php:167 lib/pro/ecom/woocommerce.php:66
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: lib/gettext-pro.php:168 lib/pro/ecom/woocommerce.php:128
+#: lib/gettext-pro.php:168 lib/pro/ecom/woocommerce.php:129
 msgid ""
 "The WooCommerce %s method is not available - please update to a newer "
 "version of WooCommerce."
 msgstr ""
 
-#: lib/gettext-pro.php:169 lib/pro/ecom/woocommerce.php:898
+#: lib/gettext-pro.php:169 lib/pro/ecom/woocommerce.php:913
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
-#: lib/gettext-pro.php:170 lib/pro/ecom/woocommerce.php:901
+#: lib/gettext-pro.php:170 lib/pro/ecom/woocommerce.php:916
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/gettext-pro.php:171 lib/pro/ecom/woocommerce.php:1070
+#: lib/gettext-pro.php:171 lib/pro/ecom/woocommerce.php:1085
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/gettext-pro.php:172 lib/pro/ecom/woocommerce.php:1072
+#: lib/gettext-pro.php:172 lib/pro/ecom/woocommerce.php:1087
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:173 lib/pro/ecom/woocommerce.php:1075
+#: lib/gettext-pro.php:173 lib/pro/ecom/woocommerce.php:1090
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 
