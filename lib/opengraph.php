@@ -440,6 +440,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$crawler_name = SucomUtil::get_crawler_name();
 			}
 
+			/**
+			 * The 'wpsso_og_seed' filter is hooked by the Pro / Premium e-commerce modules, for example, to provide
+			 * product meta tags.
+			 */
 			$mt_og       = apply_filters( $this->p->lca . '_og_seed', $mt_og, $mod );
 			$has_pp      = $this->p->check->pp();
 			$max_nums    = $this->p->util->get_max_nums( $mod );
@@ -674,8 +678,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			/**
-			 * Pre-define some basic open graph meta tags for this og:type. If the meta tag
-			 * has an associated meta option name, then read it's value from the meta options.
+			 * Pre-define some basic open graph meta tags for this og:type. If the meta tag has an associated meta
+			 * option name, then read it's value from the meta options.
 			 */
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'checking og_type_mt array for known meta tags and md options' );
@@ -695,49 +699,77 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				foreach ( $og_type_mt_md as $mt_name => $md_key ) {
 
 					/**
-					 * Just in case - ignore product availability if an e-commerce plugin is active.
-					 */
-					if ( $md_key === 'product_avail' && ! empty( $this->p->avail[ 'ecom' ][ 'any' ] ) ) {
-
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $md_key . ' ignored - an e-commerce plugin is active' );
-						}
-
-					/**
 					 * Use a custom value if one is available - ignore empty strings and 'none'.
 					 */
-					} elseif ( ! empty( $md_key ) && isset( $md_opts[ $md_key ] ) && $md_opts[ $md_key ] !== '' ) {
+					if ( ! empty( $md_key ) && isset( $md_opts[ $md_key ] ) && $md_opts[ $md_key ] !== '' ) {
 
 						if ( $md_opts[ $md_key ] === 'none' ) {
 
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( $md_key . ' option is "none" - unsetting ' . $mt_name . ' meta tag' );
+								$this->p->debug->log( $md_key . ' option is "none"' .
+									' - unsetting ' . $mt_name . ' meta tag' );
 							}
 
 							unset( $mt_og[ $mt_name ] );
 
+						} elseif ( preg_match( '/^.*_([^_]+)_value$/', $md_key, $unit_match ) &&
+							preg_match( '/^(.*):value$/', $mt_name, $mt_match ) ) {
+
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( $md_key . ' option is a possible value with units' );
+							}
+
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( $type_id . ' meta tag ' . $mt_name .
+									' from option = ' . $md_opts[ $md_key ] );
+							}
+
+							$mt_og[ $mt_name ] = $md_opts[ $md_key ];
+
+							if ( $unit_text = WpssoSchema::get_data_unitcode_text( $unit_match[ 1 ] ) ) {
+
+								$mt_units = $mt_match[ 1 ] . ':units';
+
+								if ( isset( $og_type_mt_md[ $mt_units ] ) ) {
+							
+									if ( $this->p->debug->enabled ) {
+										$this->p->debug->log( $type_id . ' meta tag ' . $mt_units .
+											' from unitcode text = ' . $unit_text );
+									}
+
+									$mt_og[ $mt_units ] = $unit_text;
+								}
+							}
+
+						/**
+						 * Do not define units by themselves - define units when we define the value.
+						 */
+						} elseif ( preg_match( '/_units$/', $md_key ) ) {
+
+							continue;	// Get the next meta data key.
+
 						} else {
 
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( $type_id . ' meta tag ' . $mt_name . ' from option = ' . $md_opts[ $md_key ] );
+								$this->p->debug->log( $type_id . ' meta tag ' . $mt_name .
+									' from option = ' . $md_opts[ $md_key ] );
 							}
 
 							$mt_og[ $mt_name ] = $md_opts[ $md_key ];
 						}
 
-						continue;	// Get the next meta data key.
-					}
-					
-					if ( isset( $mt_og[ $mt_name ] ) ) {
+					} elseif ( isset( $mt_og[ $mt_name ] ) ) {
 
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $type_id . ' meta tag ' . $mt_name . ' value kept = ' . $mt_og[ $mt_name ] );
+							$this->p->debug->log( $type_id . ' meta tag ' . $mt_name .
+								' value kept = ' . $mt_og[ $mt_name ] );
 						}
 
 					} else {
 
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $type_id . ' meta tag ' . $mt_name . ' defined as null' );
+							$this->p->debug->log( $type_id . ' meta tag ' . $mt_name .
+								' defined as null' );
 						}
 
 						$mt_og[ $mt_name ] = null;	// Use null so isset() returns false.

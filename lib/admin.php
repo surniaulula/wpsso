@@ -3782,8 +3782,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$cmt_transl = '';
 
-			if ( preg_match( '/^(plugin_cf_product|plugin_product_attr|product)_([a-z]+)_value$/', $opt_key, $matches ) ) {
-				if ( $unit_text = WpssoSchema::get_data_unitcode_text( $matches[ 2 ] ) ) {
+			if ( preg_match( '/^.*_([^_]+)_value$/', $opt_key, $unit_match ) ) {
+				if ( $unit_text = WpssoSchema::get_data_unitcode_text( $unit_match[ 1 ] ) ) {
 					$cmt_transl = ' ' . sprintf( _x( 'in %s', 'option comment', 'wpsso' ), $unit_text );
 				}
 			}
