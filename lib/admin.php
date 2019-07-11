@@ -3741,7 +3741,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$disabled = false;
 				}
 
-				$cmt_transl = self::get_option_unit_text( $opt_key );
+				$cmt_transl = self::get_option_unit_comment( $opt_key );
 
 				$table_rows[ $opt_key ] = ( $hide_in_basic ? $form->get_tr_hide( 'basic', $opt_key ) : '' ) .
 					$form->get_th_html( _x( $opt_label, 'option label', 'wpsso' ), '', $opt_key ) . 
@@ -3769,7 +3769,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $this->p->cf[ 'form' ][ 'product_attr_labels' ] as $opt_key => $opt_label ) {
 
-				$cmt_transl = self::get_option_unit_text( $opt_key );
+				$cmt_transl = self::get_option_unit_comment( $opt_key );
 
 				$table_rows[ $opt_key ] = ( $hide_in_basic ? $form->get_tr_hide( 'basic', $opt_key ) : '' ) .
 					$form->get_th_html( _x( $opt_label, 'option label', 'wpsso' ), '', $opt_key ) . 
@@ -3778,7 +3778,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		public static function get_option_unit_text( $opt_key ) {
+		public static function get_option_unit_comment( $opt_key ) {
 
 			$cmt_transl = '';
 
