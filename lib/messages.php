@@ -2349,25 +2349,25 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						sprintf( _x( 'a product depth (in %s)', 'tooltip fragment', 'wpsso' ),
 							WpssoSchema::get_data_unitcode_text( 'depth' ) ),
 					),
-					'product_gtin' => array(
-						_x( 'Product GTIN', 'option label', 'wpsso' ),
-						_x( 'a product GTIN code (any 8, 12, 13, or 14 digit GTIN code)', 'tooltip fragment', 'wpsso' ),
-					),
-					'product_gtin8' => array(
-						_x( 'Product GTIN-8', 'option label', 'wpsso' ),
-						_x( 'a product GTIN-8 code (aka EAN/UCC-8 or 8-digit EAN)', 'tooltip fragment', 'wpsso' ),
-					),
-					'product_gtin12' => array(
-						_x( 'Product GTIN-12', 'option label', 'wpsso' ),
-						_x( 'a product GTIN-12 code (12-digit GS1 identification key composed of a U.P.C. company prefix, item reference, and check digit)', 'tooltip fragment', 'wpsso' ),
+					'product_gtin14' => array(
+						_x( 'Product GTIN-14', 'option label', 'wpsso' ),
+						_x( 'a product GTIN-14 code', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_gtin13' => array(
 						_x( 'Product GTIN-13', 'option label', 'wpsso' ),
 						_x( 'a product GTIN-13 code (aka 13-digit ISBN codes or EAN/UCC-13)', 'tooltip fragment', 'wpsso' ),
 					),
-					'product_gtin14' => array(
-						_x( 'Product GTIN-14', 'option label', 'wpsso' ),
-						_x( 'a product GTIN-14 code', 'tooltip fragment', 'wpsso' ),
+					'product_gtin12' => array(
+						_x( 'Product GTIN-12', 'option label', 'wpsso' ),
+						_x( 'a product GTIN-12 code (12-digit GS1 identification key composed of a U.P.C. company prefix, item reference, and check digit)', 'tooltip fragment', 'wpsso' ),
+					),
+					'product_gtin8' => array(
+						_x( 'Product GTIN-8', 'option label', 'wpsso' ),
+						_x( 'a product GTIN-8 code (aka EAN/UCC-8 or 8-digit EAN)', 'tooltip fragment', 'wpsso' ),
+					),
+					'product_gtin' => array(
+						_x( 'Product GTIN', 'option label', 'wpsso' ),
+						_x( 'a product GTIN code (GTIN-8, GTIN-12/UPC, GTIN-13/EAN, or GTIN-14 digit code)', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_height_value' => array(
 						_x( 'Product Height', 'option label', 'wpsso' ),

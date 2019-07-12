@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 5.2.0-rc.3\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 5.2.0-rc.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1929,12 +1929,12 @@ msgstr ""
 
 #: lib/gettext-config.php:172
 msgctxt "option label"
-msgid "Product GTIN Custom Field"
+msgid "Product GTIN-14 Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:173
 msgctxt "option label"
-msgid "Product GTIN-8 Custom Field"
+msgid "Product GTIN-13 Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:174
@@ -1944,12 +1944,12 @@ msgstr ""
 
 #: lib/gettext-config.php:175
 msgctxt "option label"
-msgid "Product GTIN-13 Custom Field"
+msgid "Product GTIN-8 Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:176
 msgctxt "option label"
-msgid "Product GTIN-14 Custom Field"
+msgid "Product GTIN Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:177
@@ -2059,12 +2059,12 @@ msgstr ""
 
 #: lib/gettext-config.php:198
 msgctxt "option value"
-msgid "Product GTIN Attribute Name"
+msgid "Product GTIN-14 Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:199
 msgctxt "option value"
-msgid "Product GTIN-8 Attribute Name"
+msgid "Product GTIN-13 Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:200
@@ -2074,12 +2074,12 @@ msgstr ""
 
 #: lib/gettext-config.php:201
 msgctxt "option value"
-msgid "Product GTIN-13 Attribute Name"
+msgid "Product GTIN-8 Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:202
 msgctxt "option value"
-msgid "Product GTIN-14 Attribute Name"
+msgid "Product GTIN Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:203
@@ -5355,22 +5355,22 @@ msgstr ""
 
 #: lib/messages.php:2353
 msgctxt "option label"
-msgid "Product GTIN"
+msgid "Product GTIN-14"
 msgstr ""
 
 #: lib/messages.php:2354
 msgctxt "tooltip fragment"
-msgid "a product GTIN code (any 8, 12, 13, or 14 digit GTIN code)"
+msgid "a product GTIN-14 code"
 msgstr ""
 
 #: lib/messages.php:2357
 msgctxt "option label"
-msgid "Product GTIN-8"
+msgid "Product GTIN-13"
 msgstr ""
 
 #: lib/messages.php:2358
 msgctxt "tooltip fragment"
-msgid "a product GTIN-8 code (aka EAN/UCC-8 or 8-digit EAN)"
+msgid "a product GTIN-13 code (aka 13-digit ISBN codes or EAN/UCC-13)"
 msgstr ""
 
 #: lib/messages.php:2361
@@ -5387,22 +5387,23 @@ msgstr ""
 
 #: lib/messages.php:2365
 msgctxt "option label"
-msgid "Product GTIN-13"
+msgid "Product GTIN-8"
 msgstr ""
 
 #: lib/messages.php:2366
 msgctxt "tooltip fragment"
-msgid "a product GTIN-13 code (aka 13-digit ISBN codes or EAN/UCC-13)"
+msgid "a product GTIN-8 code (aka EAN/UCC-8 or 8-digit EAN)"
 msgstr ""
 
 #: lib/messages.php:2369
 msgctxt "option label"
-msgid "Product GTIN-14"
+msgid "Product GTIN"
 msgstr ""
 
 #: lib/messages.php:2370
 msgctxt "tooltip fragment"
-msgid "a product GTIN-14 code"
+msgid ""
+"a product GTIN code (GTIN-8, GTIN-12/UPC, GTIN-13/EAN, or GTIN-14 digit code)"
 msgstr ""
 
 #: lib/messages.php:2373

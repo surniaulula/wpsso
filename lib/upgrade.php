@@ -428,11 +428,10 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					$opts[ 'plugin_product_attr_brand' ]     = 'Brand';
 					$opts[ 'plugin_product_attr_color' ]     = 'Color';
 					$opts[ 'plugin_product_attr_condition' ] = 'Condition';
-					$opts[ 'plugin_product_attr_ean' ]       = 'EAN';
-					$opts[ 'plugin_product_attr_gtin8' ]     = 'GTIN-8';
-					$opts[ 'plugin_product_attr_gtin12' ]    = 'GTIN-12';
-					$opts[ 'plugin_product_attr_gtin13' ]    = 'GTIN-13';
 					$opts[ 'plugin_product_attr_gtin14' ]    = 'GTIN-14';
+					$opts[ 'plugin_product_attr_gtin13' ]    = 'GTIN-13';
+					$opts[ 'plugin_product_attr_gtin12' ]    = 'GTIN-12';
+					$opts[ 'plugin_product_attr_gtin8' ]     = 'GTIN-8';
 					$opts[ 'plugin_product_attr_isbn' ]      = 'ISBN';
 					$opts[ 'plugin_product_attr_material' ]  = 'Material';
 					$opts[ 'plugin_product_attr_size' ]      = 'Size';
