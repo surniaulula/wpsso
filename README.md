@@ -176,6 +176,7 @@
 <li>Creative Work Information
 
 <ul>
+<li>Part of URL</li>
 <li>Headline</li>
 <li>Full Text</li>
 <li>Keywords</li>

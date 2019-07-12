@@ -150,6 +150,7 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 		* Microdata Type URLs
 		* Same-As URLs
 	* Creative Work Information
+		* Part of URL
 		* Headline
 		* Full Text
 		* Keywords
