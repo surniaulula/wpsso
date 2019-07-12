@@ -439,11 +439,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.2.0-rc.2 (2019/07/12)**
+**Version 5.2.0-rc.3 (2019/07/12)**
 
 * **New Features**
 	* None.
 * **Improvements**
+	* Updated the [WooCommerce Integration Guide](https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/) to include possible use of custom fields and manual entry in the Document SSO metabox for product information.
 	* Moved product options without Open Graph meta tags to the WPSSO JSON add-on:
 		* Product Length
 		* Product Width
@@ -530,7 +531,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 5.2.0-rc.2 =
+= 5.2.0-rc.3 =
 
 (2019/07/12) Fixed an incorrect variable use in the WpssoAdmin::get_option_site_use() static method. Moved product options without Open Graph meta tags to the WPSSO JSON add-on.
 
