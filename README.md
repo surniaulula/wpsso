@@ -246,11 +246,11 @@
 <li>Product Height (cm)</li>
 <li>Product Depth (cm)</li>
 <li>Product Volume (ml)</li>
-<li>Product GTIN</li>
-<li>Product GTIN-8</li>
-<li>Product GTIN-12/UPC</li>
-<li>Product GTIN-13/EAN</li>
 <li>Product GTIN-14</li>
+<li>Product GTIN-13/EAN</li>
+<li>Product GTIN-12/UPC</li>
+<li>Product GTIN-8</li>
+<li>Product GTIN</li>
 </ul></li>
 <li>QA Page Information
 

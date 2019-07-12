@@ -199,11 +199,11 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 		* Product Height (cm)
 		* Product Depth (cm)
 		* Product Volume (ml)
-		* Product GTIN
-		* Product GTIN-8
-		* Product GTIN-12/UPC
-		* Product GTIN-13/EAN
 		* Product GTIN-14
+		* Product GTIN-13/EAN
+		* Product GTIN-12/UPC
+		* Product GTIN-8
+		* Product GTIN
 	* QA Page Information
 		* QA Heading
 	* Recipe Information
@@ -438,7 +438,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.2.0-rc.3 (2019/07/12)**
+**Version 5.2.0-rc.4 (2019/07/12)**
 
 * **New Features**
 	* None.
@@ -450,10 +450,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Product Height
 		* Product Depth
 		* Product Volume
-		* Product GTIN-8
-		* Product GTIN-12/UPC
-		* Product GTIN-13/EAN
 		* Product GTIN-14
+		* Product GTIN-13/EAN
+		* Product GTIN-12/UPC
+		* Product GTIN-8
 	* Added a "Product GTIN Attribute Name" and "Product GTIN Custom Field" options in the SSO &gt; Advanced settings page.
 	* Removed the "Product EAN" option (replaced with "Product GTIN-13/EAN").
 	* Removed the "Product EAN Custom Field" option (replaced with "Product GTIN-13 Custom Field").
@@ -536,7 +536,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 5.2.0-rc.3 =
+= 5.2.0-rc.4 =
 
 (2019/07/12) Fixed an incorrect variable use in the WpssoAdmin::get_option_site_use() static method. Moved product options without Open Graph meta tags to the WPSSO JSON add-on.
 
