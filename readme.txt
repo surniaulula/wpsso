@@ -200,6 +200,7 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 		* Product Height (cm)
 		* Product Depth (cm)
 		* Product Volume (ml)
+		* Product GTIN
 		* Product GTIN-8
 		* Product GTIN-12
 		* Product GTIN-13

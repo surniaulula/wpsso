@@ -247,6 +247,7 @@
 <li>Product Height (cm)</li>
 <li>Product Depth (cm)</li>
 <li>Product Volume (ml)</li>
+<li>Product GTIN</li>
 <li>Product GTIN-8</li>
 <li>Product GTIN-12</li>
 <li>Product GTIN-13</li>
