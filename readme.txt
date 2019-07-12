@@ -115,7 +115,6 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 			* Product Weight
 			* Product SKU
 			* Product MPN
-			* Product EAN
 			* Product ISBN
 	* Priority Media
 		* All Social WebSites / Open Graph
@@ -202,8 +201,8 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 		* Product Volume (ml)
 		* Product GTIN
 		* Product GTIN-8
-		* Product GTIN-12
-		* Product GTIN-13
+		* Product GTIN-12/UPC
+		* Product GTIN-13/EAN
 		* Product GTIN-14
 	* QA Page Information
 		* QA Heading
@@ -452,10 +451,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Product Depth
 		* Product Volume
 		* Product GTIN-8
-		* Product GTIN-12
-		* Product GTIN-13
+		* Product GTIN-12/UPC
+		* Product GTIN-13/EAN
 		* Product GTIN-14
 	* Added a "Product GTIN Attribute Name" and "Product GTIN Custom Field" options in the SSO &gt; Advanced settings page.
+	* Removed the "Product EAN" option (replaced with "Product GTIN-13/EAN").
+	* Removed the "Product EAN Custom Field" option (replaced with "Product GTIN-13 Custom Field").
+	* Removed the "Product EAN Attribute Name" option.
+	* Mapped the `product:upc` meta tag to the 'product_gtin12' value.
+	* Mapped the `product:ean` meta tag to the 'product_gtin13' value.
 * **Bugfixes**
 	* Fixed an incorrect variable use in the WpssoAdmin::get_option_site_use() static method.
 	* Fixed missing "product:weight:units" meta tag when a Product Weight value is entered in the Document SSO metabox.
