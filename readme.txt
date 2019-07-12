@@ -455,6 +455,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Product GTIN-12
 		* Product GTIN-13
 		* Product GTIN-14
+	* Added a "Product GTIN Attribute Name" and "Product GTIN Custom Field" options in the SSO &gt; Advanced settings page.
 * **Bugfixes**
 	* Fixed an incorrect variable use in the WpssoAdmin::get_option_site_use() static method.
 	* Fixed missing "product:weight:units" meta tag when a Product Weight value is entered in the Document SSO metabox.
