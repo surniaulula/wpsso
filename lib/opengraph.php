@@ -814,7 +814,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						unset( $mt_og[ 'product:price:currency' ] );
 					}
 				}
-
 			}
 
 			/**

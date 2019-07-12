@@ -1322,6 +1322,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'product_depth_value':
 				case 'product_ean':
+				case 'product_gtin':
 				case 'product_gtin8':
 				case 'product_gtin12':
 				case 'product_gtin13':

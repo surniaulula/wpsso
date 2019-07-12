@@ -2353,6 +2353,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						_x( 'Product EAN', 'option label', 'wpsso' ),
 						_x( 'an International Article Number (aka European Article Number)', 'tooltip fragment', 'wpsso' ),
 					),
+					'product_gtin' => array(
+						_x( 'Product GTIN', 'option label', 'wpsso' ),
+						_x( 'a product GTIN code (any 8, 12, 13, or 14 digit GTIN code)', 'tooltip fragment', 'wpsso' ),
+					),
 					'product_gtin8' => array(
 						_x( 'Product GTIN-8', 'option label', 'wpsso' ),
 						_x( 'a product GTIN-8 code (aka EAN/UCC-8 or 8-digit EAN)', 'tooltip fragment', 'wpsso' ),

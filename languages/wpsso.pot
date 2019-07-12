@@ -1621,8 +1621,8 @@ msgstr ""
 #: lib/gettext-config.php:114 lib/gettext-config.php:117
 #: lib/gettext-config.php:120 lib/gettext-config.php:134
 #: lib/gettext-config.php:137 lib/gettext-config.php:139
-#: lib/gettext-config.php:208 lib/gettext-config.php:211
-#: lib/gettext-config.php:223 lib/gettext-config.php:232
+#: lib/gettext-config.php:210 lib/gettext-config.php:213
+#: lib/gettext-config.php:225 lib/gettext-config.php:234
 msgctxt "option value"
 msgid "[None]"
 msgstr ""
@@ -1934,360 +1934,370 @@ msgstr ""
 
 #: lib/gettext-config.php:173
 msgctxt "option label"
-msgid "Product GTIN-8 Custom Field"
+msgid "Product GTIN Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:174
 msgctxt "option label"
-msgid "Product GTIN-12 Custom Field"
+msgid "Product GTIN-8 Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:175
 msgctxt "option label"
-msgid "Product GTIN-13 Custom Field"
+msgid "Product GTIN-12 Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:176
 msgctxt "option label"
-msgid "Product GTIN-14 Custom Field"
+msgid "Product GTIN-13 Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:177
 msgctxt "option label"
-msgid "Product Height Custom Field"
+msgid "Product GTIN-14 Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:178
 msgctxt "option label"
-msgid "Product ISBN Custom Field"
+msgid "Product Height Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:179
 msgctxt "option label"
-msgid "Product Length Custom Field"
+msgid "Product ISBN Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:180
 msgctxt "option label"
-msgid "Product Material Custom Field"
+msgid "Product Length Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:181
 msgctxt "option label"
-msgid "Product MPN Custom Field"
+msgid "Product Material Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:182
 msgctxt "option label"
-msgid "Product Price Custom Field"
+msgid "Product MPN Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:183
 msgctxt "option label"
-msgid "Product Size Custom Field"
+msgid "Product Price Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:184
 msgctxt "option label"
-msgid "Product SKU Custom Field"
+msgid "Product Size Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:185
 msgctxt "option label"
-msgid "Product Target Gender Custom Field"
+msgid "Product SKU Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:186
 msgctxt "option label"
-msgid "Product Volume Custom Field"
+msgid "Product Target Gender Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:187
 msgctxt "option label"
-msgid "Product Weight Custom Field"
+msgid "Product Volume Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:188
 msgctxt "option label"
-msgid "Product Width Custom Field"
+msgid "Product Weight Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:189
 msgctxt "option label"
-msgid "Recipe Ingredients Custom Field"
+msgid "Product Width Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:190
 msgctxt "option label"
-msgid "Recipe Instructions Custom Field"
+msgid "Recipe Ingredients Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:191
 msgctxt "option label"
-msgid "Same-As URLs Custom Field"
+msgid "Recipe Instructions Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:192
 msgctxt "option label"
-msgid "Video URL Custom Field"
+msgid "Same-As URLs Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:193
 msgctxt "option label"
-msgid "Video Embed HTML Custom Field"
+msgid "Video URL Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:194
-msgctxt "option value"
-msgid "Product Brand Attribute Name"
+msgctxt "option label"
+msgid "Video Embed HTML Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:195
 msgctxt "option value"
-msgid "Product Color Attribute Name"
+msgid "Product Brand Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:196
 msgctxt "option value"
-msgid "Product Condition Attribute Name"
+msgid "Product Color Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:197
 msgctxt "option value"
-msgid "Product MPN Attribute Name"
+msgid "Product Condition Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:198
 msgctxt "option value"
-msgid "Product EAN Attribute Name"
+msgid "Product MPN Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:199
 msgctxt "option value"
-msgid "Product GTIN-8 Attribute Name"
+msgid "Product EAN Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:200
 msgctxt "option value"
-msgid "Product GTIN-12 Attribute Name"
+msgid "Product GTIN Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:201
 msgctxt "option value"
-msgid "Product GTIN-13 Attribute Name"
+msgid "Product GTIN-8 Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:202
 msgctxt "option value"
-msgid "Product GTIN-14 Attribute Name"
+msgid "Product GTIN-12 Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:203
 msgctxt "option value"
-msgid "Product ISBN Attribute Name"
+msgid "Product GTIN-13 Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:204
 msgctxt "option value"
-msgid "Product Material Attribute Name"
+msgid "Product GTIN-14 Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:205
 msgctxt "option value"
-msgid "Product Size Attribute Name"
+msgid "Product ISBN Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:206
 msgctxt "option value"
-msgid "Product Target Gender Attr. Name"
+msgid "Product Material Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:207
 msgctxt "option value"
-msgid "Product Volume Attribute Name"
+msgid "Product Size Attribute Name"
+msgstr ""
+
+#: lib/gettext-config.php:208
+msgctxt "option value"
+msgid "Product Target Gender Attr. Name"
 msgstr ""
 
 #: lib/gettext-config.php:209
 msgctxt "option value"
-msgid "Kids"
+msgid "Product Volume Attribute Name"
 msgstr ""
 
-#: lib/gettext-config.php:210
+#: lib/gettext-config.php:211
 msgctxt "option value"
-msgid "Adult"
+msgid "Kids"
 msgstr ""
 
 #: lib/gettext-config.php:212
 msgctxt "option value"
-msgid "Male"
-msgstr ""
-
-#: lib/gettext-config.php:213
-msgctxt "option value"
-msgid "Female"
+msgid "Adult"
 msgstr ""
 
 #: lib/gettext-config.php:214
 msgctxt "option value"
-msgid "Unisex"
+msgid "Male"
 msgstr ""
 
 #: lib/gettext-config.php:215
 msgctxt "option value"
-msgid "Full Time"
+msgid "Female"
 msgstr ""
 
 #: lib/gettext-config.php:216
 msgctxt "option value"
-msgid "Part Time"
+msgid "Unisex"
 msgstr ""
 
 #: lib/gettext-config.php:217
 msgctxt "option value"
-msgid "Contractor"
+msgid "Full Time"
 msgstr ""
 
 #: lib/gettext-config.php:218
 msgctxt "option value"
-msgid "Temporary"
+msgid "Part Time"
 msgstr ""
 
 #: lib/gettext-config.php:219
 msgctxt "option value"
-msgid "Intern"
+msgid "Contractor"
 msgstr ""
 
 #: lib/gettext-config.php:220
 msgctxt "option value"
-msgid "Volunteer"
+msgid "Temporary"
 msgstr ""
 
 #: lib/gettext-config.php:221
 msgctxt "option value"
-msgid "Per Diem"
+msgid "Intern"
 msgstr ""
 
 #: lib/gettext-config.php:222
 msgctxt "option value"
-msgid "Other"
+msgid "Volunteer"
+msgstr ""
+
+#: lib/gettext-config.php:223
+msgctxt "option value"
+msgid "Per Diem"
 msgstr ""
 
 #: lib/gettext-config.php:224
 msgctxt "option value"
-msgid "Discontinued"
-msgstr ""
-
-#: lib/gettext-config.php:225
-msgctxt "option value"
-msgid "In Stock"
+msgid "Other"
 msgstr ""
 
 #: lib/gettext-config.php:226
 msgctxt "option value"
-msgid "In Store Only"
+msgid "Discontinued"
 msgstr ""
 
 #: lib/gettext-config.php:227
 msgctxt "option value"
-msgid "Limited Availability"
+msgid "In Stock"
 msgstr ""
 
 #: lib/gettext-config.php:228
 msgctxt "option value"
-msgid "Online Only"
+msgid "In Store Only"
 msgstr ""
 
 #: lib/gettext-config.php:229
 msgctxt "option value"
-msgid "Out of Stock"
+msgid "Limited Availability"
 msgstr ""
 
 #: lib/gettext-config.php:230
 msgctxt "option value"
-msgid "Pre-Order"
+msgid "Online Only"
 msgstr ""
 
 #: lib/gettext-config.php:231
 msgctxt "option value"
-msgid "Sold Out"
+msgid "Out of Stock"
+msgstr ""
+
+#: lib/gettext-config.php:232
+msgctxt "option value"
+msgid "Pre-Order"
 msgstr ""
 
 #: lib/gettext-config.php:233
 msgctxt "option value"
-msgid "Damaged"
-msgstr ""
-
-#: lib/gettext-config.php:234
-msgctxt "option value"
-msgid "New"
+msgid "Sold Out"
 msgstr ""
 
 #: lib/gettext-config.php:235
 msgctxt "option value"
-msgid "Refurbished"
+msgid "Damaged"
 msgstr ""
 
 #: lib/gettext-config.php:236
 msgctxt "option value"
-msgid "Used"
+msgid "New"
 msgstr ""
 
 #: lib/gettext-config.php:237
 msgctxt "option value"
-msgid "Every day"
+msgid "Refurbished"
 msgstr ""
 
 #: lib/gettext-config.php:238
 msgctxt "option value"
-msgid "Every two days"
+msgid "Used"
 msgstr ""
 
 #: lib/gettext-config.php:239
 msgctxt "option value"
-msgid "Every three days"
+msgid "Every day"
 msgstr ""
 
 #: lib/gettext-config.php:240
 msgctxt "option value"
-msgid "Every four days"
+msgid "Every two days"
 msgstr ""
 
 #: lib/gettext-config.php:241
 msgctxt "option value"
-msgid "Every five days"
+msgid "Every three days"
 msgstr ""
 
 #: lib/gettext-config.php:242
 msgctxt "option value"
-msgid "Every six days"
+msgid "Every four days"
 msgstr ""
 
 #: lib/gettext-config.php:243
 msgctxt "option value"
-msgid "Every week"
+msgid "Every five days"
 msgstr ""
 
 #: lib/gettext-config.php:244
 msgctxt "option value"
-msgid "Development and Up"
+msgid "Every six days"
 msgstr ""
 
 #: lib/gettext-config.php:245
 msgctxt "option value"
-msgid "Alpha and Up"
+msgid "Every week"
 msgstr ""
 
 #: lib/gettext-config.php:246
 msgctxt "option value"
-msgid "Beta and Up"
+msgid "Development and Up"
 msgstr ""
 
 #: lib/gettext-config.php:247
 msgctxt "option value"
-msgid "Release Candidate and Up"
+msgid "Alpha and Up"
 msgstr ""
 
 #: lib/gettext-config.php:248
+msgctxt "option value"
+msgid "Beta and Up"
+msgstr ""
+
+#: lib/gettext-config.php:249
+msgctxt "option value"
+msgid "Release Candidate and Up"
+msgstr ""
+
+#: lib/gettext-config.php:250
 msgctxt "option value"
 msgid "Stable / Production"
 msgstr ""
@@ -2859,7 +2869,7 @@ msgctxt "option label"
 msgid "Product Availability"
 msgstr ""
 
-#: lib/gettext-pro.php:113 lib/messages.php:2395 lib/pro/admin/post.php:204
+#: lib/gettext-pro.php:113 lib/messages.php:2399 lib/pro/admin/post.php:204
 #: lib/std/admin/post.php:205
 msgctxt "option label"
 msgid "Product Price"
@@ -2871,7 +2881,7 @@ msgctxt "option label"
 msgid "Product Condition"
 msgstr ""
 
-#: lib/gettext-pro.php:115 lib/messages.php:2387 lib/pro/admin/post.php:221
+#: lib/gettext-pro.php:115 lib/messages.php:2391 lib/pro/admin/post.php:221
 #: lib/std/admin/post.php:224
 msgctxt "option label"
 msgid "Product Material"
@@ -2883,31 +2893,31 @@ msgctxt "option label"
 msgid "Product Color"
 msgstr ""
 
-#: lib/gettext-pro.php:117 lib/messages.php:2407 lib/pro/admin/post.php:235
+#: lib/gettext-pro.php:117 lib/messages.php:2411 lib/pro/admin/post.php:235
 #: lib/std/admin/post.php:240
 msgctxt "option label"
 msgid "Product Target Gender"
 msgstr ""
 
-#: lib/gettext-pro.php:118 lib/messages.php:2399 lib/pro/admin/post.php:243
+#: lib/gettext-pro.php:118 lib/messages.php:2403 lib/pro/admin/post.php:243
 #: lib/std/admin/post.php:249
 msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gettext-pro.php:119 lib/messages.php:2416 lib/pro/admin/post.php:250
+#: lib/gettext-pro.php:119 lib/messages.php:2420 lib/pro/admin/post.php:250
 #: lib/std/admin/post.php:257
 msgctxt "option label"
 msgid "Product Weight"
 msgstr ""
 
-#: lib/gettext-pro.php:120 lib/messages.php:2403 lib/pro/admin/post.php:258
+#: lib/gettext-pro.php:120 lib/messages.php:2407 lib/pro/admin/post.php:258
 #: lib/std/admin/post.php:266
 msgctxt "option label"
 msgid "Product SKU"
 msgstr ""
 
-#: lib/gettext-pro.php:121 lib/messages.php:2391 lib/pro/admin/post.php:265
+#: lib/gettext-pro.php:121 lib/messages.php:2395 lib/pro/admin/post.php:265
 #: lib/std/admin/post.php:274
 msgctxt "option label"
 msgid "Product MPN"
@@ -2919,7 +2929,7 @@ msgctxt "option label"
 msgid "Product EAN"
 msgstr ""
 
-#: lib/gettext-pro.php:123 lib/messages.php:2378 lib/pro/admin/post.php:279
+#: lib/gettext-pro.php:123 lib/messages.php:2382 lib/pro/admin/post.php:279
 #: lib/std/admin/post.php:290
 msgctxt "option label"
 msgid "Product ISBN"
@@ -3011,7 +3021,7 @@ msgctxt "option label"
 msgid "Video Dimensions"
 msgstr ""
 
-#: lib/gettext-pro.php:145 lib/messages.php:2438 lib/pro/admin/meta.php:256
+#: lib/gettext-pro.php:145 lib/messages.php:2442 lib/pro/admin/meta.php:256
 #: lib/std/admin/meta.php:259
 msgctxt "option label"
 msgid "Video Embed HTML"
@@ -5366,185 +5376,195 @@ msgstr ""
 
 #: lib/messages.php:2357
 msgctxt "option label"
-msgid "Product GTIN-8"
+msgid "Product GTIN"
 msgstr ""
 
 #: lib/messages.php:2358
 msgctxt "tooltip fragment"
-msgid "a product GTIN-8 code (aka EAN/UCC-8 or 8-digit EAN)"
+msgid "a product GTIN code (any 8, 12, 13, or 14 digit GTIN code)"
 msgstr ""
 
 #: lib/messages.php:2361
 msgctxt "option label"
-msgid "Product GTIN-12"
+msgid "Product GTIN-8"
 msgstr ""
 
 #: lib/messages.php:2362
+msgctxt "tooltip fragment"
+msgid "a product GTIN-8 code (aka EAN/UCC-8 or 8-digit EAN)"
+msgstr ""
+
+#: lib/messages.php:2365
+msgctxt "option label"
+msgid "Product GTIN-12"
+msgstr ""
+
+#: lib/messages.php:2366
 msgctxt "tooltip fragment"
 msgid ""
 "a product GTIN-12 code (12-digit GS1 identification key composed of a U.P.C. "
 "company prefix, item reference, and check digit)"
 msgstr ""
 
-#: lib/messages.php:2365
+#: lib/messages.php:2369
 msgctxt "option label"
 msgid "Product GTIN-13"
 msgstr ""
 
-#: lib/messages.php:2366
+#: lib/messages.php:2370
 msgctxt "tooltip fragment"
 msgid "a product GTIN-13 code (aka 13-digit ISBN codes or EAN/UCC-13)"
 msgstr ""
 
-#: lib/messages.php:2369
+#: lib/messages.php:2373
 msgctxt "option label"
 msgid "Product GTIN-14"
 msgstr ""
 
-#: lib/messages.php:2370
+#: lib/messages.php:2374
 msgctxt "tooltip fragment"
 msgid "a product GTIN-14 code"
 msgstr ""
 
-#: lib/messages.php:2373
+#: lib/messages.php:2377
 msgctxt "option label"
 msgid "Product Height"
 msgstr ""
 
-#: lib/messages.php:2374
+#: lib/messages.php:2378
 msgctxt "tooltip fragment"
 msgid "a product height (in %s)"
 msgstr ""
 
-#: lib/messages.php:2379
+#: lib/messages.php:2383
 msgctxt "tooltip fragment"
 msgid "an ISBN code (aka International Standard Book Number)"
 msgstr ""
 
-#: lib/messages.php:2382
+#: lib/messages.php:2386
 msgctxt "option label"
 msgid "Product Length"
 msgstr ""
 
-#: lib/messages.php:2383
+#: lib/messages.php:2387
 msgctxt "tooltip fragment"
 msgid "a product length (in %s)"
 msgstr ""
 
-#: lib/messages.php:2388
+#: lib/messages.php:2392
 msgctxt "tooltip fragment"
 msgid "a product material"
 msgstr ""
 
-#: lib/messages.php:2392
+#: lib/messages.php:2396
 msgctxt "tooltip fragment"
 msgid "a Manufacturer Part Number (MPN)"
 msgstr ""
 
-#: lib/messages.php:2396
+#: lib/messages.php:2400
 msgctxt "tooltip fragment"
 msgid "a product price"
 msgstr ""
 
-#: lib/messages.php:2400
+#: lib/messages.php:2404
 msgctxt "tooltip fragment"
 msgid "a product size"
 msgstr ""
 
-#: lib/messages.php:2404
+#: lib/messages.php:2408
 msgctxt "tooltip fragment"
 msgid "a Stock-Keeping Unit (aka unique product identifier)"
 msgstr ""
 
-#: lib/messages.php:2408
+#: lib/messages.php:2412
 msgctxt "tooltip fragment"
 msgid "a product target gender"
 msgstr ""
 
-#: lib/messages.php:2411
+#: lib/messages.php:2415
 msgctxt "option label"
 msgid "Product Volume"
 msgstr ""
 
-#: lib/messages.php:2412
+#: lib/messages.php:2416
 msgctxt "tooltip fragment"
 msgid "a product volume (in %s)"
 msgstr ""
 
-#: lib/messages.php:2417
+#: lib/messages.php:2421
 msgctxt "tooltip fragment"
 msgid "a product weight (in %s)"
 msgstr ""
 
-#: lib/messages.php:2421
+#: lib/messages.php:2425
 msgctxt "option label"
 msgid "Product Width"
 msgstr ""
 
-#: lib/messages.php:2422
+#: lib/messages.php:2426
 msgctxt "tooltip fragment"
 msgid "a product width (in %s)"
 msgstr ""
 
-#: lib/messages.php:2426
+#: lib/messages.php:2430
 msgctxt "option label"
 msgid "Recipe Ingredients"
 msgstr ""
 
-#: lib/messages.php:2427
+#: lib/messages.php:2431
 msgctxt "tooltip fragment"
 msgid "recipe ingredients"
 msgstr ""
 
-#: lib/messages.php:2430
+#: lib/messages.php:2434
 msgctxt "option label"
 msgid "Recipe Instructions"
 msgstr ""
 
-#: lib/messages.php:2431
+#: lib/messages.php:2435
 msgctxt "tooltip fragment"
 msgid "recipe instructions"
 msgstr ""
 
-#: lib/messages.php:2434
+#: lib/messages.php:2438
 msgctxt "option label"
 msgid "Same-As URLs"
 msgstr ""
 
-#: lib/messages.php:2435
+#: lib/messages.php:2439
 msgctxt "tooltip fragment"
 msgid "additional Same-As URLs"
 msgstr ""
 
-#: lib/messages.php:2439
+#: lib/messages.php:2443
 msgctxt "tooltip fragment"
 msgid "video embed HTML code (not a URL)"
 msgstr ""
 
-#: lib/messages.php:2442
+#: lib/messages.php:2446
 msgctxt "option label"
 msgid "Video URL"
 msgstr ""
 
-#: lib/messages.php:2443
+#: lib/messages.php:2447
 msgctxt "tooltip fragment"
 msgid "a video URL (not HTML code)"
 msgstr ""
 
 #. translators: %s is is the short add-on name.
-#: lib/messages.php:2488
+#: lib/messages.php:2492
 msgctxt "option comment"
 msgid "%s required"
 msgstr ""
 
 #. translators: %s is the meta tag name (ie. meta name canonical).
-#: lib/messages.php:2498
+#: lib/messages.php:2502
 msgid ""
 "Option disabled (<code>%s</code> head tag disabled or SEO plugin detected)."
 msgstr ""
 
 #. translators: %s is is the add-on name (and a link to the add-on page).
-#: lib/messages.php:2508
+#: lib/messages.php:2512
 msgid "Activate the %s add-on for additional Schema markup options."
 msgstr ""
 
@@ -5979,31 +5999,31 @@ msgstr ""
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema-single.php:768
+#: lib/schema-single.php:769
 msgid "adding schema offer"
 msgstr ""
 
-#: lib/schema-single.php:860
+#: lib/schema-single.php:861
 msgid "adding schema organization"
 msgstr ""
 
-#: lib/schema-single.php:902
+#: lib/schema-single.php:903
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema-single.php:909
+#: lib/schema-single.php:910
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema-single.php:1051
+#: lib/schema-single.php:1052
 msgid "adding schema for person user ID %1$s"
 msgstr ""
 
-#: lib/schema-single.php:1205
+#: lib/schema-single.php:1206
 msgid "adding schema place"
 msgstr ""
 

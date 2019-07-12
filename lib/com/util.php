@@ -2037,6 +2037,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':depth:units'                     => '',	// Non-standard / internal meta tag (units after value).
 				$mt_pre . ':ean'                             => '',
 				$mt_pre . ':expiration_time'                 => '',
+				$mt_pre . ':gtin'                            => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':gtin8'                           => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':gtin12'                          => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':gtin13'                          => '',	// Non-standard / internal meta tag.
