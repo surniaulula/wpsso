@@ -1442,6 +1442,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_currency'      => 'product_currency',
 					'plugin_cf_product_depth_value'   => 'product_depth_value',	// Product Depth Custom Field.
 					'plugin_cf_product_ean'           => 'product_ean',
+					'plugin_cf_product_gtin'          => 'product_gtin',
 					'plugin_cf_product_gtin8'         => 'product_gtin8',
 					'plugin_cf_product_gtin12'        => 'product_gtin12',
 					'plugin_cf_product_gtin13'        => 'product_gtin13',
