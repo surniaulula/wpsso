@@ -28,7 +28,7 @@ if ( ! class_exists( 'WpssoSettingsImageDimensions' ) && class_exists( 'WpssoAdm
 
 			$this->p->util->add_plugin_filters( $this, array(
 				'form_button_rows' => 2,
-			), -10000 );
+			), $prio = -10000 );
 		}
 
 		public function filter_form_button_rows( $form_button_rows, $menu_id ) {

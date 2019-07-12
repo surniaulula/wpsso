@@ -13,6 +13,8 @@ if ( ! class_exists( 'WpssoStdAdminMeta' ) ) {
 
 	class WpssoStdAdminMeta {
 
+		private $p;
+
 		public function __construct( &$plugin ) {
 
 			$this->p =& $plugin;

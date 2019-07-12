@@ -13,6 +13,8 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 	class WpssoStdAdminAdvanced {
 
+		private $p;
+
 		private $head_tags_opts = array();
 
 		public function __construct( &$plugin ) {
@@ -37,7 +39,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'head_tags_twitter_rows'     => 3,
 				'head_tags_schema_rows'      => 3,
 				'head_tags_seo_other_rows'   => 3,
-			), 20 );
+			), $prio = 20 );
 		}
 
 		public function filter_plugin_content_rows( $table_rows, $form ) {

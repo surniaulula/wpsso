@@ -26,8 +26,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$this->p->util->add_plugin_filters( $this, array( 'option_type' => 2 ), -100 );
-			$this->p->util->add_plugin_filters( $this, array( 'init_objects' => 0 ), 9000 );
+			$this->p->util->add_plugin_filters( $this, array( 'option_type' => 2 ), $prio = -100 );
+			$this->p->util->add_plugin_filters( $this, array( 'init_objects' => 0 ), $prio = 9000 );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'running init_options action' );

@@ -34,7 +34,7 @@ if ( ! class_exists( 'WpssoStdSocialBuddypress' ) ) {
 					'get_defaults'            => 1,
 					'plugin_integration_rows' => 2,
 					'messages_tooltip_plugin' => 2,
-				), 200 );
+				), $prio = 200 );
 			}
 		}
 

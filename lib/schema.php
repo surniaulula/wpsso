@@ -41,7 +41,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$this->p->util->add_plugin_filters( $this, array( 
 				'plugin_image_sizes' => 1,
-			), 5 );
+			), $prio = 5 );
 		}
 
 		public function filter_plugin_image_sizes( $sizes ) {
