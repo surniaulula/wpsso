@@ -324,7 +324,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$page_type_id  = $mt_og[ 'schema:type:id' ]  = $this->get_mod_schema_type( $mod, $get_schema_id = true );	// Example: article.tech.
-			$page_type_url = $mt_og[ 'schema:type:url' ] = $this->get_schema_type_url( $page_type_id );		// Example: https://schema.org/TechArticle.
+			$page_type_url = $mt_og[ 'schema:type:url' ] = $this->get_schema_type_url( $page_type_id );	// Example: https://schema.org/TechArticle.
 			$graph_context = 'https://schema.org';
 			$graph_type    = 'graph';
 			$json_scripts  = array();
@@ -1537,9 +1537,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$ext_data = array_reverse( $json_data );	// Read the array bottom-up.
 
 			foreach ( $ext_data as $val ) {
+
 				if ( is_array( $val ) ) {		// If it's an extension array, drill down and return that value.
+
 					return self::get_context_extension_url( $val );
+
 				} elseif ( is_string( $val ) ) {	// Set a backup value in case there is no extension array.
+
 					$type_url = $val;
 				}
 			}
