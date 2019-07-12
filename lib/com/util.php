@@ -2035,7 +2035,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':condition'                       => '',
 				$mt_pre . ':depth:value'                     => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':depth:units'                     => '',	// Non-standard / internal meta tag (units after value).
-				$mt_pre . ':ean'                             => '',
+				$mt_pre . ':ean'                             => '',	// aka EAN, EAN-13, GTIN-13.
 				$mt_pre . ':expiration_time'                 => '',
 				$mt_pre . ':gtin'                            => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':gtin8'                           => '',	// Non-standard / internal meta tag.
@@ -2094,7 +2094,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':size'                            => '',
 				$mt_pre . ':sku'                             => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':target_gender'                   => '',
-				$mt_pre . ':upc'                             => '',
+				$mt_pre . ':upc'                             => '',	// aka UPC, UPC-A, UPC, GTIN-12.
 				$mt_pre . ':volume:value'                    => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':volume:units'                    => '',	// Non-standard / internal meta tag (units after value).
 				$mt_pre . ':weight:value'                    => '',

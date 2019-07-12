@@ -222,6 +222,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				641 => array(
 					'plugin_hide_pro' => '',
 				),
+				649 => array(
+					'plugin_cf_product_ean' => 'plugin_cf_product_gtin13',
+				),
 			),
 		);
 
@@ -419,7 +422,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					$opts[ 'add_meta_property_product:shipping_cost:currency' ] = 0;
 					$opts[ 'add_meta_property_product:shipping_weight:value' ]  = 0;
 					$opts[ 'add_meta_property_product:shipping_weight:units' ]  = 0;
-					$opts[ 'add_meta_property_product:upc' ]                    = 0;
 				}
 
 				if ( $prev_version > 0 && $prev_version <= 625 ) {

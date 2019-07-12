@@ -119,7 +119,6 @@ _x( 'Product Size', 'option label', 'wpsso' );
 _x( 'Product Weight', 'option label', 'wpsso' );
 _x( 'Product SKU', 'option label', 'wpsso' );
 _x( 'Product MPN', 'option label', 'wpsso' );
-_x( 'Product EAN', 'option label', 'wpsso' );
 _x( 'Product ISBN', 'option label', 'wpsso' );
 _x( 'Structured Data / Schema Markup', 'metabox title', 'wpsso' );
 _x( 'Description', 'option label', 'wpsso' );

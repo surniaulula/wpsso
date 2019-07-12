@@ -275,14 +275,6 @@ if ( ! class_exists( 'WpssoStdAdminPost' ) ) {
 					'tooltip'  => 'meta-product_mpn',
 					'content'  => $form->get_no_input( 'product_mpn', '', '', $placeholder = true ),
 				),
-				'og_product_ean' => array(			// Open Graph meta tag product:ean.
-					'tr_class' => 'hide_og_type hide_og_type_product',
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Product EAN', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-product_ean',
-					'content'  => $form->get_no_input( 'product_ean', '', '', $placeholder = true ),
-				),
 				'og_product_isbn' => array(		// Open Graph meta tag product:isbn.
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',

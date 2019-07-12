@@ -66,6 +66,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				628 => array(
 					'product_gender' => 'product_target_gender',
 				),
+				649 => array(
+					'product_ean' => 'product_gtin13',
+				),
 			),
 		);
 
@@ -188,7 +191,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'product_color'         => '',
 					'product_condition'     => 'none',
 					'product_currency'      => empty( $opts[ 'plugin_def_currency' ] ) ? 'USD' : $opts[ 'plugin_def_currency' ],
-					'product_ean'           => '',
 					'product_isbn'          => '',
 					'product_material'      => '',
 					'product_mpn'           => '',

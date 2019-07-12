@@ -2349,10 +2349,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						sprintf( _x( 'a product depth (in %s)', 'tooltip fragment', 'wpsso' ),
 							WpssoSchema::get_data_unitcode_text( 'depth' ) ),
 					),
-					'product_ean' => array(
-						_x( 'Product EAN', 'option label', 'wpsso' ),
-						_x( 'an International Article Number (aka European Article Number)', 'tooltip fragment', 'wpsso' ),
-					),
 					'product_gtin' => array(
 						_x( 'Product GTIN', 'option label', 'wpsso' ),
 						_x( 'a product GTIN code (any 8, 12, 13, or 14 digit GTIN code)', 'tooltip fragment', 'wpsso' ),
