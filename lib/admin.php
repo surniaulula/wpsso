@@ -890,15 +890,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 */
 		public function registered_setting_sanitation( $opts ) {
 
+			/**
+			 * Just in case - make sure we do not return or save empty settings.
+			 */
 			if ( ! is_array( $opts ) ) {
-
-				add_settings_error( WPSSO_OPTIONS_NAME, 'notarray', '<b>' . strtoupper( $this->p->lca ) . ' Error</b> : ' .
-					__( 'Submitted options are not an array.', 'wpsso' ), 'error' );
-
-				return $opts;
+				$opts = $this->p->options;
 			}
 
-			$def_opts = $this->p->opt->get_defaults();	// Get default values, including css from default stylesheets.
+			/**
+			 * Get default values, including css for default stylesheets.
+			 */
+			$def_opts = $this->p->opt->get_defaults();
 
 			/**
 			 * Clear any old notices for the current user before sanitation checks.
@@ -910,7 +912,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network = false );	// Sanitation updates image width/height info.
 			$opts = apply_filters( $this->p->lca . '_save_options', $opts, WPSSO_OPTIONS_NAME, $network = false, $doing_upgrade = false );
 
-			$this->p->options = $opts;	// Update the options with any changes.
+			/**
+			 * Update the current options with any changes.
+			 */
+			$this->p->options = $opts;
 
 			if ( empty( $this->p->options[ 'plugin_clear_on_save' ] ) ) {
 
@@ -1305,6 +1310,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected function show_form_content() {
 
 			$menu_hookname = SucomUtil::sanitize_hookname( $this->menu_id );
+			$form_css_id   = $this->p->lca . '_setting_form_' . $menu_hookname;
 
 			switch ( $this->menu_lib ) {
 
@@ -1325,10 +1331,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$this->p->util->get_admin_url( $this->menu_id, null, 'users' ) :
 						$this->p->util->get_admin_url( $this->menu_id, null, $this->menu_lib );
 	
-					echo '<form name="' . $this->p->lca . '" ' .
-						'id="' . $this->p->lca . '_setting_form_' . $menu_hookname . '" ' .
-						'action="user-edit.php" method="post">' . "\n";
-	
+					echo '<form name="' . $this->p->lca . '" id="' . $form_css_id . '" action="user-edit.php" method="post">' . "\n";
 					echo '<input type="hidden" name="wp_http_referer" value="' . $referer_admin_url . '" />' . "\n";
 					echo '<input type="hidden" name="action" value="update" />' . "\n";
 					echo '<input type="hidden" name="user_id" value="' . $user_id . '" />' . "\n";
@@ -1349,9 +1352,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				case 'submenu':
 				case 'tools':
 
-					echo '<form name="' . $this->p->lca . '" ' .
-						'id="' . $this->p->lca . '_setting_form_' . $menu_hookname . '" ' .
-						'action="options.php" method="post">' . "\n";
+					echo '<form name="' . $this->p->lca . '" id="' . $form_css_id . '" action="options.php" method="post">' . "\n";
 	
 					settings_fields( $this->p->lca . '_setting' );
 
@@ -1359,9 +1360,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				case 'sitesubmenu':
 
-					echo '<form name="' . $this->p->lca . '" ' .
-						'id="' . $this->p->lca . '_setting_form_' . $menu_hookname . '" ' .
-						'action="edit.php?action=' . WPSSO_SITE_OPTIONS_NAME . '" method="post">' . "\n";
+					echo '<form name="' . $this->p->lca . '" id="' . $form_css_id . '" action="edit.php?action=' .
+						WPSSO_SITE_OPTIONS_NAME . '" method="post">' . "\n";
 	
 					echo '<input type="hidden" name="page" value="' . $this->menu_id . '" />' . "\n";
 
@@ -1393,17 +1393,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			do_action( $action_name, $this->pagehook );
 
 			if ( $this->menu_lib === 'profile' ) {
-				echo $this->get_form_buttons( _x( 'Save All Profile Settings', 'submit button', 'wpsso' ) );
+				$submit_label_transl = _x( 'Save All Profile Settings', 'submit button', 'wpsso' );
 			} else {
-				echo $this->get_form_buttons();
+				$submit_label_transl = _x( 'Save All Plugin Settings', 'submit button', 'wpsso' );
 			}
+
+			echo $this->get_form_buttons( $submit_label_transl, $form_css_id );
 
 			echo '</form>', "\n";
 		}
 
-		protected function get_form_buttons( $submit_label_transl = '' ) {
+		protected function get_form_buttons( $submit_label_transl = '', $form_css_id = '' ) {
 
-			if ( empty( $submit_label_transl ) ) {
+			if ( empty( $submit_label_transl ) ) {	// Just in case.
 				$submit_label_transl = _x( 'Save All Plugin Settings', 'submit button', 'wpsso' );
 			}
 
@@ -1452,7 +1454,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						if ( $action_value === 'submit' ) {
 
-							$buttons_html .= '<input type="submit" class="button-primary" value="' . $mixed . '" />' . "\n";
+							$buttons_html .= $this->form->get_submit( $mixed, 'button-primary', '', $form_css_id );
 
 						} else {
 

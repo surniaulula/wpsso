@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '5.2.0',	// Plugin version.
+					'version'     => '5.3.0-dev.1',	// Plugin version.
 					'opt_version' => '650',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -3273,14 +3273,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_META_NAME' ]         = '_wpsso_meta';		// Post meta.
 			$var_const[ 'WPSSO_PREF_NAME' ]         = '_wpsso_pref';		// User meta.
 			$var_const[ 'WPSSO_POST_CHECK_NAME' ]   = 'wpsso_post_head_count';	// Duplicate check counter.
-
-			/**
-			 * WPSSO option and meta array alternate names.
-			 */
-			$var_const[ 'WPSSO_OPTIONS_NAME_ALT' ]      = 'ngfb_options';		// Fallback name.
-			$var_const[ 'WPSSO_SITE_OPTIONS_NAME_ALT' ] = 'ngfb_site_options';	// Fallback name.
-			$var_const[ 'WPSSO_META_NAME_ALT' ]         = '_ngfb_meta';		// Fallback name.
-			$var_const[ 'WPSSO_PREF_NAME_ALT' ]         = '_ngfb_pref';		// Fallback name.
 
 			/**
 			 * WPSSO hook priorities.

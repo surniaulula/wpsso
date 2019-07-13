@@ -156,12 +156,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$input_id = empty( $css_id ) ? 'checkbox_' . $name : 'checkbox_' . $css_id;
 
-			$html = ( $disabled ? '' : $this->get_hidden( 'is_checkbox_' . $name, 1, false ) ) .
-				'<input type="checkbox"' .
-				( $disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '" value="1"' ) .
-				( empty( $group ) ? '' : ' data-group="' . esc_attr( $group ) . '"' ) .
-				( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' ) .
-				' id="' . esc_attr( $input_id ) . '"' . $input_checked . ' title="' . $title_transl . '" />';
+			$html = $disabled ? '' : $this->get_hidden( 'is_checkbox_' . $name, 1, false );
+			$html .= '<input type="checkbox"';
+			$html .= $disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '" value="1"';
+			$html .= empty( $group ) ? '' : ' data-group="' . esc_attr( $group ) . '"';
+			$html .= empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"';
+			$html .= ' id="' . esc_attr( $input_id ) . '"' . $input_checked . ' title="' . $title_transl . '" />';
 
 			return $html;
 		}
@@ -797,15 +797,18 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= $this->get_text_length_js( 'text_' . $css_id );
 			}
 
-			$html .= '<input type="text" name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"' .
-				( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' ) .
-				( empty( $css_id ) ? ' id="text_' . esc_attr( $name ) . '"' : ' id="text_' . esc_attr( $css_id ) . '"' ) .
-				( empty( $tabindex ) ? '' : ' tabindex="' . esc_attr( $tabindex ) . '"' ) .
-				( empty( $len[ 'max' ] ) ? '' : ' maxLength="' . esc_attr( $len[ 'max' ] ) . '"' ) .
-				( empty( $len[ 'warn' ] ) ? '' : ' warnLength="' . esc_attr( $len[ 'warn' ] ) . '"' ) .
-				( empty( $len[ 'min' ] ) ? '' : ' minLength="' . esc_attr( $len[ 'min' ] ) . '"' ) .
-				( $this->get_placeholder_events( 'input', $placeholder ) ) . ' value="' . esc_attr( $value ) . '" />' . "\n" .
-				( empty( $len[ 'max' ] ) ? '' : ' <div id="text_' . esc_attr( $css_id ) . '-lenMsg"></div>' ) . "\n";
+			$html .= '<input type="text" name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"';
+			$html .= empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"';
+			$html .= empty( $css_id ) ? ' id="text_' . esc_attr( $name ) . '"' : ' id="text_' . esc_attr( $css_id ) . '"';
+			$html .= empty( $tabindex ) ? '' : ' tabindex="' . esc_attr( $tabindex ) . '"';
+
+			foreach ( $len as $key => $val ) {
+				$html .= empty( $len[ $key ] ) ? '' : ' ' . $key . 'Length="' . esc_attr( $len[ $key ] ) . '"';
+			}
+
+			$html .= $this->get_placeholder_events( 'input', $placeholder );
+			$html .= ' value="' . esc_attr( $value ) . '" />' . "\n";
+			$html .= empty( $len ) ? '' : ' <div id="text_' . esc_attr( $css_id ) . '-lenMsg"></div>' . "\n";
 
 			return $html;
 		}
@@ -1510,6 +1513,51 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				( empty( $css_id ) ? '' : ' id="textarea_' . esc_attr( $css_id ) . '"' ) .
 				( empty( $len ) ? '' : ' rows="'.( round( $len / 100 ) + 1 ) . '"' ) .
 				'>' . esc_attr( $value ) . '</textarea>';
+		}
+
+		/**
+		 * If a $form_css_id is provided, then on submission all
+		 * unchanged options will be disabled, which causes the browser
+		 * to exclude them from the submission $_POST.
+		 */
+		public function get_submit( $value, $css_class = 'button-primary', $css_id = '', $form_css_id = '' ) {
+
+			$html = '<input type="submit"';
+			$html .= empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"';
+			$html .= empty( $css_id ) ? '' : ' id="submit_' . esc_attr( $css_id ) . '"';
+			$html .= empty( $form_css_id ) ? '' : ' onClick="sucomDisableUnchanged();"';
+			$html .= ' value="' . esc_attr( $value ) . '"/>';
+
+			if ( ! empty( $form_css_id ) ) {
+				$html .= '
+					<script type="text/javascript">
+
+						function sucomMarkChanged(){ jQuery( this ).addClass( "changed" ); }
+
+						function sucomDisableUnchanged() {
+
+							jQuery( "#' . $form_css_id . ' input[type=checkbox]:not( .changed )" ).each( function(){
+
+								hidden_checkbox_name = this.name.replace( /^(.*)\[(.*)\]$/, \'$1\\\\[is_checkbox_$2\\\\]\' );
+
+								jQuery( this ).attr( "disabled", "disabled" );
+								jQuery( "#' . $form_css_id . ' input[name=" + hidden_checkbox_name + "]" ).attr( "disabled", "disabled" );
+							} );
+
+							jQuery( "#' . $form_css_id . ' input[type=text]:not( .changed )" ).attr( "disabled", "disabled" );
+							jQuery( "#' . $form_css_id . ' textarea:not( .changed )" ).attr( "disabled", "disabled" );
+							jQuery( "#' . $form_css_id . ' select:not( .changed )" ).attr( "disabled", "disabled" );
+						}
+
+						jQuery( "#' . $form_css_id . ' input[type=checkbox]" ).blur( sucomMarkChanged ).change( sucomMarkChanged );
+						jQuery( "#' . $form_css_id . ' input[type=text]" ).blur( sucomMarkChanged ).change( sucomMarkChanged );
+						jQuery( "#' . $form_css_id . ' textarea" ).blur( sucomMarkChanged ).change( sucomMarkChanged );
+						jQuery( "#' . $form_css_id . ' select" ).blur( sucomMarkChanged ).change( sucomMarkChanged );
+
+					</script>' . "\n";
+			}
+
+			return $html;
 		}
 
 		public function get_button( $value, $css_class = '', $css_id = '', $url = '', $newtab = false, $disabled = false, $data = array() ) {

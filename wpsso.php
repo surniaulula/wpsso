@@ -14,7 +14,7 @@
  * Requires At Least: 3.8
  * Tested Up To: 5.2.2
  * WC Tested Up To: 3.6
- * Version: 5.2.0
+ * Version: 5.3.0-dev.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -171,27 +171,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				error_log( 'WPSSO_RESET_ON_ACTIVATE constant is true - reloading default settings for plugin activation' );
 
 			} else {
-
 				$this->options = get_option( WPSSO_OPTIONS_NAME );
-
-				/**
-				 * Look for alternate options name.
-				 */
-				if ( ! is_array( $this->options ) ) {
-
-					if ( defined( 'WPSSO_OPTIONS_NAME_ALT' ) && WPSSO_OPTIONS_NAME_ALT ) {
-
-						$this->options = get_option( WPSSO_OPTIONS_NAME_ALT );
-
-						if ( is_array( $this->options ) ) {
-
-							update_option( WPSSO_OPTIONS_NAME, $this->options );	// Auto-creates with autoload yes.
-							delete_option( WPSSO_OPTIONS_NAME_ALT );
-
-							$this->options[ 'options_from_name_alt' ] = WPSSO_OPTIONS_NAME_ALT;
-						}
-					}
-				}
 			}
 
 			if ( ! is_array( $this->options ) ) {
@@ -208,25 +188,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			if ( is_multisite() ) {
 
 				$this->site_options = get_site_option( WPSSO_SITE_OPTIONS_NAME );
-
-				/**
-				 * Look for alternate site options name.
-				 */
-				if ( ! is_array( $this->site_options ) ) {
-
-					if ( defined( 'WPSSO_SITE_OPTIONS_NAME_ALT' ) && WPSSO_SITE_OPTIONS_NAME_ALT ) {
-
-						$this->site_options = get_site_option( WPSSO_SITE_OPTIONS_NAME_ALT );
-
-						if ( is_array( $this->site_options ) ) {
-
-							update_site_option( WPSSO_SITE_OPTIONS_NAME, $this->site_options );
-							delete_site_option( WPSSO_SITE_OPTIONS_NAME_ALT );
-
-							$this->site_options[ 'options_from_name_alt' ] = WPSSO_SITE_OPTIONS_NAME_ALT;
-						}
-					}
-				}
 
 				if ( ! is_array( $this->site_options ) ) {
 

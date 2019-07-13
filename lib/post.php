@@ -252,26 +252,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$this->opts[ $post_id ] = get_post_meta( $post_id, WPSSO_META_NAME, $single = true );
 
-				/**
-				 * Look for an alternate meta options name.
-				 */
-				if ( ! is_array( $this->opts[ $post_id ] ) ) {
-
-					if ( SucomUtil::get_const( 'WPSSO_META_NAME_ALT' ) ) {
-
-						$this->opts[ $post_id ] = get_post_meta( $post_id, WPSSO_META_NAME_ALT, true );
-
-						if ( is_array( $this->opts[ $post_id ] ) ) {
-
-							update_post_meta( $post_id, WPSSO_META_NAME, $this->opts[ $post_id ] );
-							delete_post_meta( $post_id, WPSSO_META_NAME_ALT );
-
-							$this->p->notice->upd( sprintf( __( 'Database meta table row "%2$s" for post ID %1$d was found and converted to "%3$s".',
-								'wpsso' ), $post_id, WPSSO_META_NAME_ALT, WPSSO_META_NAME ) );
-						}
-					}
-				}
-
 				if ( ! is_array( $this->opts[ $post_id ] ) ) {
 					$this->opts[ $post_id ] = array();
 				}

@@ -146,6 +146,9 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 					wp_enqueue_script( 'sucom-tooltips' );
 					wp_enqueue_script( 'wp-color-picker' );
 
+					wp_localize_script( 'sucom-metabox', 'sucomMetaboxL10n',
+						$this->get_metabox_script_data() );
+
 					if ( function_exists( 'wp_enqueue_media' ) ) {
 
 						if ( $this->p->debug->enabled ) {
@@ -196,7 +199,21 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 		/**
 		 * Start localized variable names with an underscore.
 		 */
+		public function get_metabox_script_data() {
+
+			return array(
+				'_min_len_msg' => __( '{0} of {1} characters minimum', 'wpsso' ),
+				'_req_len_msg' => __( '{0} of {1} characters required', 'wpsso' ),
+				'_max_len_msg' => __( '{0} of {1} characters maximum', 'wpsso' ),
+				'_len_msg'     => __( '{0} characters', 'wpsso' ),
+			);
+		}
+
+		/**
+		 * Always start localized variable names with an underscore.
+		 */
 		public function get_admin_media_script_data() {
+
 			return array(
 				'_select_image' => __( 'Select Image', 'wpsso' ),
 			);

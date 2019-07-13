@@ -174,42 +174,23 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				$this->opts[ $term_id ] = self::get_term_meta( $term_id, WPSSO_META_NAME, true );
 
-				/**
-				 * Look for an alternate meta options name.
-				 */
-				if ( ! is_array( $this->opts[ $term_id ] ) ) {
-
-					if ( SucomUtil::get_const( 'WPSSO_META_NAME_ALT' ) ) {
-
-						$this->opts[ $term_id ] = self::get_term_meta( $term_id, WPSSO_META_NAME_ALT, true );
-
-						if ( is_array( $this->opts[ $term_id ] ) ) {
-
-							self::update_term_meta( $term_id, WPSSO_META_NAME, $this->opts[ $term_id ] );
-							self::delete_term_meta( $term_id, WPSSO_META_NAME_ALT );
-
-							$this->p->notice->upd( sprintf( __( 'Database meta table row "%2$s" for term ID %1$d was found and converted to "%3$s".',
-								'wpsso' ), $term_id, WPSSO_META_NAME_ALT, WPSSO_META_NAME ) );
-						}
-					}
-				}
-
 				if ( ! is_array( $this->opts[ $term_id ] ) ) {
 					$this->opts[ $term_id ] = array();
 				}
 
 				if ( ! empty( $this->opts[ $term_id ] ) && 
-					( empty( $this->opts[ $term_id ]['options_version'] ) || 
-						$this->opts[ $term_id ]['options_version'] !== $this->p->cf['opt'][ 'version' ] ) ) {
+					( empty( $this->opts[ $term_id ][ 'options_version' ] ) || 
+						$this->opts[ $term_id ][ 'options_version' ] !== $this->p->cf[ 'opt' ][ 'version' ] ) ) {
 
 					/**
 					 * Save the current opt_version number.
 					 */
-					$prev_version = empty( $this->opts[ $term_id ]['plugin_' . $this->p->lca . '_opt_version'] ) ?	
-						0 : $this->opts[ $term_id ]['plugin_' . $this->p->lca . '_opt_version'];
+					$prev_version = empty( $this->opts[ $term_id ][ 'plugin_' . $this->p->lca . '_opt_version' ] ) ?	
+						0 : $this->opts[ $term_id ][ 'plugin_' . $this->p->lca . '_opt_version' ];
 
 					$this->p->util->rename_opts_by_ext( $this->opts[ $term_id ],
-						apply_filters( $this->p->lca . '_rename_md_options_keys', self::$rename_md_options_keys ) );
+						apply_filters( $this->p->lca . '_rename_md_options_keys',
+							self::$rename_md_options_keys ) );
 
 					self::update_term_meta( $term_id, WPSSO_META_NAME, $this->opts[ $term_id ] );
 
@@ -224,7 +205,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 						$this->p->debug->log( 'applying get_term_options filters for term_id ' . $term_id . ' meta' );
 					}
 
-					$this->opts[ $term_id ]['options_filtered'] = true;	// Set before calling filter to prevent recursion.
+					$this->opts[ $term_id ][ 'options_filtered' ] = true;	// Set before calling filter to prevent recursion.
 
 					$mod = $this->get_mod( $term_id );
 
@@ -299,8 +280,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$opts = $this->get_submit_opts( $term_id );
 
-			if ( ! empty( $this->p->avail['seo'][ 'any' ] ) ) {
-				unset( $opts['seo_desc'] );
+			if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
+				unset( $opts[ 'seo_desc' ] );
 			}
 
 			$opts = apply_filters( $this->p->lca . '_save_term_options', $opts, $term_id, $term_tax_id, $mod );
@@ -473,8 +454,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				$col_key = str_replace( $this->p->lca . '_', '', $column_name );
 
 				if ( ( $col_info = self::get_sortable_columns( $col_key ) ) !== null ) {
-					if ( isset( $col_info['meta_key'] ) ) {	// just in case
-						$value = $this->get_meta_cache_value( $term_id, $col_info['meta_key'] );
+					if ( isset( $col_info[ 'meta_key' ] ) ) {	// just in case
+						$value = $this->get_meta_cache_value( $term_id, $col_info[ 'meta_key' ] );
 					}
 				}
 			}
@@ -507,8 +488,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( ! empty( $term_id ) ) {	// just in case
 				if ( ( $col_info = self::get_sortable_columns( $col_key ) ) !== null ) {
-					if ( isset( $col_info['meta_key'] ) ) {	// just in case
-						self::update_term_meta( $term_id, $col_info['meta_key'], $content );
+					if ( isset( $col_info[ 'meta_key' ] ) ) {	// just in case
+						self::update_term_meta( $term_id, $col_info[ 'meta_key' ], $content );
 					}
 				}
 			}
@@ -611,7 +592,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				 */
 				foreach ( array( 'image', 'description' ) as $mt_suffix ) {
 
-					if ( empty( WpssoWpMeta::$head_meta_info['og:' . $mt_suffix] ) ) {
+					if ( empty( WpssoWpMeta::$head_meta_info[ 'og:' . $mt_suffix] ) ) {
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'og:' . $mt_suffix . ' meta tag is value empty and required' );
@@ -651,7 +632,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				} else {
 
-					$_SERVER['REQUEST_URI'] = remove_query_arg( array( $action_query, WPSSO_NONCE_NAME ) );
+					$_SERVER[ 'REQUEST_URI' ] = remove_query_arg( array( $action_query, WPSSO_NONCE_NAME ) );
 
 					switch ( $action_name ) {
 
@@ -686,8 +667,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $add_metabox ) {
 
-				$metabox_id      = $this->p->cf['meta'][ 'id' ];
-				$metabox_title   = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
+				$metabox_id      = $this->p->cf[ 'meta' ][ 'id' ];
+				$metabox_title   = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 				$metabox_screen  = $this->p->lca . '-term';
 				$metabox_context = 'normal';
 				$metabox_prio    = 'default';
@@ -736,7 +717,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		public function get_metabox_custom_meta( $term_obj ) {
 
-			$metabox_id = $this->p->cf['meta'][ 'id' ];
+			$metabox_id = $this->p->cf[ 'meta' ][ 'id' ];
 			$mod        = $this->get_mod( $term_obj->term_id, $this->query_tax_slug );
 			$tabs       = $this->get_custom_meta_tabs( $metabox_id, $mod );
 			$opts       = $this->get_options( $term_obj->term_id );

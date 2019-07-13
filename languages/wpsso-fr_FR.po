@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 5.2.0\n"
+"Project-Id-Version: WPSSO Core 5.2.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-07-12 19:23-0700\n"
-"PO-Revision-Date: 2019-07-12 19:23-0700\n"
+"POT-Creation-Date: 2019-07-13 08:19-0700\n"
+"PO-Revision-Date: 2019-07-13 08:20-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -322,7 +322,7 @@ msgstr "%s adresses de sites enregistrées"
 msgid "%d of %d site addresses registered"
 msgstr "%d de %d adresses de sites enregistrées"
 
-#: lib/admin.php:2316 lib/script.php:234 lib/script.php:285
+#: lib/admin.php:2316 lib/script.php:251 lib/script.php:302
 msgid "No new %s notifications."
 msgstr "Aucune nouvelle notification %s."
 
@@ -5122,7 +5122,7 @@ msgstr "L'option de débogage est activée - cette vérification sera répétée
 msgid "Check %1$d of %2$d successful..."
 msgstr "Vérification %1$d de %2$d réussi..."
 
-#: lib/post.php:1549 lib/script.php:237
+#: lib/post.php:1549 lib/script.php:254
 msgctxt "option label"
 msgid "Robots"
 msgstr "Robots"
@@ -5235,7 +5235,23 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr "Image Google / Schéma"
 
-#: lib/script.php:201
+#: lib/script.php:205
+msgid "{0} of {1} characters minimum"
+msgstr "{0} de {1} caractères minimum"
+
+#: lib/script.php:206
+msgid "{0} of {1} characters required"
+msgstr "{0} de {1} caractères requis"
+
+#: lib/script.php:207
+msgid "{0} of {1} characters maximum"
+msgstr "{0} de {1} caractères maximum"
+
+#: lib/script.php:208
+msgid "{0} characters"
+msgstr "{0} caractères"
+
+#: lib/script.php:218
 msgid "Select Image"
 msgstr "Choisir l'image"
 

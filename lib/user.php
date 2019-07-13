@@ -179,28 +179,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$user_exists = SucomUtilWP::user_exists( $user_id );
 
 				if ( $user_exists ) {
-
 					$this->opts[ $user_id ] = get_user_meta( $user_id, WPSSO_META_NAME, true );
-
-					/**
-					 * Look for an alternate meta options name.
-					 */
-					if ( ! is_array( $this->opts[ $user_id ] ) ) {
-
-						if ( SucomUtil::get_const( 'WPSSO_META_NAME_ALT' ) ) {
-
-							$this->opts[ $user_id ] = get_user_meta( $user_id, WPSSO_META_NAME_ALT, true );
-
-							if ( is_array( $this->opts[ $user_id ] ) ) {
-
-								update_user_meta( $user_id, WPSSO_META_NAME, $this->opts[ $user_id ] );
-								delete_user_meta( $user_id, WPSSO_META_NAME_ALT );
-
-								$this->p->notice->upd( sprintf( __( 'Database meta table row "%2$s" for user ID %1$d was found and converted to "%3$s".',
-									'wpsso' ), $user_id, WPSSO_META_NAME_ALT, WPSSO_META_NAME ) );
-							}
-						}
-					}
 				} else {
 					$this->opts[ $user_id ] = apply_filters( $this->p->lca . '_get_other_user_meta', false, $user_id );
 				}
@@ -210,15 +189,18 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 
 				if ( ! empty( $this->opts[ $user_id ] ) && 
-					( empty( $this->opts[ $user_id ]['options_version'] ) || 
-						$this->opts[ $user_id ]['options_version'] !== $this->p->cf['opt'][ 'version' ] ) ) {
+					( empty( $this->opts[ $user_id ][ 'options_version' ] ) || 
+						$this->opts[ $user_id ][ 'options_version' ] !== $this->p->cf[ 'opt' ][ 'version' ] ) ) {
 
-					// save the current wpsso opt_version number
-					$prev_version = empty( $this->opts[ $user_id ]['plugin_' . $this->p->lca . '_opt_version'] ) ?	
-						0 : $this->opts[ $user_id ]['plugin_' . $this->p->lca . '_opt_version'];
+					/**
+					 * Save the current wpsso opt_version number.
+					 */
+					$prev_version = empty( $this->opts[ $user_id ][ 'plugin_' . $this->p->lca . '_opt_version' ] ) ?	
+						0 : $this->opts[ $user_id ][ 'plugin_' . $this->p->lca . '_opt_version' ];
 
 					$this->p->util->rename_opts_by_ext( $this->opts[ $user_id ],
-						apply_filters( $this->p->lca . '_rename_md_options_keys', self::$rename_md_options_keys ) );
+						apply_filters( $this->p->lca . '_rename_md_options_keys',
+							self::$rename_md_options_keys ) );
 
 					if ( $user_exists ) {
 						update_user_meta( $user_id, WPSSO_META_NAME, $this->opts[ $user_id ] );
@@ -237,7 +219,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						$this->p->debug->log( 'applying get_user_options filters for user_id ' . $user_id . ' meta' );
 					}
 
-					$this->opts[ $user_id ]['options_filtered'] = true;	// Set before calling filter to prevent recursion.
+					$this->opts[ $user_id ][ 'options_filtered' ] = true;	// Set before calling filter to prevent recursion.
 
 					$mod = $this->get_mod( $user_id );
 
@@ -303,8 +285,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$mod  = $this->get_mod( $user_id );
 			$opts = $this->get_submit_opts( $user_id );
 
-			if ( ! empty( $this->p->avail['seo'][ 'any' ] ) ) {
-				unset( $opts['seo_desc'] );
+			if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
+				unset( $opts[ 'seo_desc' ] );
 			}
 
 			$opts = apply_filters( $this->p->lca . '_save_user_options', $opts, $user_id, $rel_id, $mod );

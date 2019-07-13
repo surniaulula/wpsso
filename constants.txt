@@ -32,16 +32,13 @@ WPSSO_VERSION
  WPSSO_JSON_PRETTY_PRINT                 = false
  WPSSO_MENU_ORDER                        = 99.11
  WPSSO_META_CACHE_PRIORITY               = 8
- WPSSO_META_NAME_ALT                     = '_wpsso_meta'
  WPSSO_META_NAME                         = '_wpsso_meta'
  WPSSO_META_SAVE_PRIORITY                = 6
  WPSSO_NONCE_NAME                        = (variable value)      // Md5 string unique to each version.
- WPSSO_OPTIONS_NAME_ALT                  = 'wpsso_options'
  WPSSO_OPTIONS_NAME                      = 'wpsso_options'
  WPSSO_PHP_CURL_CAINFO                   = ABSPATH . WPINC . '/certificates/ca-bundle.crt'
  WPSSO_PHP_CURL_USERAGENT                = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0'
  WPSSO_PHP_GETIMGSIZE_MAX_TIME           = 1.50
- WPSSO_PREF_NAME_ALT                     = '_wpsso_pref'
  WPSSO_PREF_NAME                         = '_wpsso_pref'
  WPSSO_SCHEMA_ADDL_TYPE_URL_MAX          = 5
  WPSSO_SCHEMA_EVENT_OFFERS_MAX           = 10
@@ -57,7 +54,6 @@ WPSSO_VERSION
  WPSSO_SCHEMA_SAMEAS_URL_MAX             = 5
  WPSSO_SELECT_PERSON_NAMES_MAX           = 500
  WPSSO_SEO_FILTERS_PRIORITY              = 100
- WPSSO_SITE_OPTIONS_NAME_ALT             = 'wpsso_site_options'
  WPSSO_SITE_OPTIONS_NAME                 = 'wpsso_site_options'
  WPSSO_TOPICS_LIST                       = WPSSO_PLUGINDIR . 'share/topics.txt'
  WPSSO_TS_NAME                           = 'wpsso_timestamps'

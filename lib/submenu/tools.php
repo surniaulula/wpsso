@@ -84,7 +84,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			if ( is_multisite() ) {
 
-				$clear_label_transl = sprintf( _x( 'Clear All Caches for Site ID %d', 'submit button', 'wpsso' ), get_current_blog_id() );
+				$clear_label_transl  = sprintf( _x( 'Clear All Caches for Site ID %d', 'submit button', 'wpsso' ), get_current_blog_id() );
 				$export_label_transl = sprintf( _x( 'Export Settings for Site ID %d', 'submit button', 'wpsso' ), get_current_blog_id() );
 				$import_label_transl = sprintf( _x( 'Import Settings for Site ID %d', 'submit button', 'wpsso' ), get_current_blog_id() );
 
