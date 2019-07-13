@@ -438,7 +438,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.2.0-rc.4 (2019/07/12)**
+**Version 5.2.0-rc.5 (2019/07/13)**
 
 * **New Features**
 	* None.
@@ -460,6 +460,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Removed the "Product EAN Attribute Name" option.
 	* Mapped the `product:upc` meta tag to the 'product_gtin12' value.
 	* Mapped the `product:ean` meta tag to the 'product_gtin13' value.
+	* Added a min/max character counter to the Product ISBN input field.
 * **Bugfixes**
 	* Fixed an incorrect variable use in the WpssoAdmin::get_option_site_use() static method.
 	* Fixed missing "product:weight:units" meta tag when a Product Weight value is entered in the Document SSO metabox.
@@ -469,6 +470,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored the WpssoSchema::add_data_unitcode_from_assoc() method.
 	* Added a new WpssoSchema::get_data_unitcode_text() static method.
 	* Added a new WpssoAdmin::get_option_unit_comment() static method.
+	* Added minimum text length support to the SucomForm::get_input() method.
 
 **Version 5.1.0 (2019/07/06)**
 
@@ -536,9 +538,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 5.2.0-rc.4 =
+= 5.2.0-rc.5 =
 
-(2019/07/12) Fixed an incorrect variable use in the WpssoAdmin::get_option_site_use() static method. Moved product options without Open Graph meta tags to the WPSSO JSON add-on.
+(2019/07/13) Fixed an incorrect variable use in the WpssoAdmin::get_option_site_use() static method. Moved product options without Open Graph meta tags to the WPSSO JSON add-on.
 
 = 5.1.0 =
 
