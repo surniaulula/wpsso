@@ -438,7 +438,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.2.0-rc.5 (2019/07/13)**
+**Version 5.2.0 (2019/07/13)**
 
 * **New Features**
 	* None.
@@ -538,11 +538,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 5.2.0-rc.5 =
+= 5.2.0 =
 
 (2019/07/13) Fixed an incorrect variable use in the WpssoAdmin::get_option_site_use() static method. Moved product options without Open Graph meta tags to the WPSSO JSON add-on.
-
-= 5.1.0 =
-
-(2019/07/06) Added support for the WooCommerce Show Single Variations plugin. Added support for a WooCommerce "Volume" (in milliliters) product attribute.
 
