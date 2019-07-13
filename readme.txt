@@ -438,16 +438,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.3.0-dev.1 (2019/07/13)**
+**Version 5.3.0-dev.2 (2019/07/13)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Optimized saving of settings by excluding all unchanged options.
-	* Added new status messages for the option field character count (min, max, and required).
+	* Added new status messages (min, max, and required) for the option field character count.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Optimized the saving of settings by excluding unchanged options from the $_POST.
 	* Added a new String.prototype.formatUnicorn() javascript function.
 	* Added a new WpssoScript::get_metabox_script_data() method.
 
@@ -551,9 +551,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 5.3.0-dev.1 =
+= 5.3.0-dev.2 =
 
-(2019/07/13) Optimized saving of settings by excluding all unchanged options. Added new status messages for the option field character count (min, max, and required).
+(2019/07/13) Added new status messages for the option field character count. Optimized the saving of settings by excluding unchanged options from the $_POST.
 
 = 5.2.0 =
 
