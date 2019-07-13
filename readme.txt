@@ -438,12 +438,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.2.1-dev.1 (TBD)**
+**Version 5.3.0-dev.1 (2019/07/13)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added new status messages for the an option field character count (min, max, and required).
+	* Optimized saving of settings by excluding all unchanged options.
+	* Added new status messages for the option field character count (min, max, and required).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -550,9 +551,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 5.2.1-dev.1 =
+= 5.3.0-dev.1 =
 
-(TBD) Added new status messages for the an option field character count (min, max, and required).
+(2019/07/13) Optimized saving of settings by excluding all unchanged options. Added new status messages for the option field character count (min, max, and required).
 
 = 5.2.0 =
 
