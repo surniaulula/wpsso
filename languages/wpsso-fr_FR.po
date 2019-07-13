@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 5.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-07-12 17:23-0700\n"
-"PO-Revision-Date: 2019-07-12 17:23-0700\n"
+"POT-Creation-Date: 2019-07-12 19:23-0700\n"
+"PO-Revision-Date: 2019-07-12 19:23-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -306,8 +306,8 @@ msgstr "Informations de licence"
 
 #: lib/admin.php:2217
 msgctxt "option value"
-msgid "Information not available"
-msgstr "Information non disponible"
+msgid "Not available"
+msgstr "Non disponible"
 
 #: lib/admin.php:2222
 msgctxt "option value"
@@ -4835,7 +4835,7 @@ msgstr "%s requis"
 #. translators: %s is the meta tag name (ie. meta name canonical).
 #: lib/messages.php:2498
 msgid "Option disabled (<code>%s</code> head tag disabled or SEO plugin detected)."
-msgstr "Option désactivée (balise <code>%1$s</code> désactivée ou extension SEO détecté)."
+msgstr "Option désactivée (balise <code>%s</code> désactivée ou extension SEO détecté)."
 
 #. translators: %s is is the add-on name (and a link to the add-on page).
 #: lib/messages.php:2508
