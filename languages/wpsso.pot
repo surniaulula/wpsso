@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 5.2.0-rc.4\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 5.2.0-rc.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -312,7 +312,7 @@ msgstr ""
 
 #: lib/admin.php:2217
 msgctxt "option value"
-msgid "Information not available"
+msgid "Not available"
 msgstr ""
 
 #: lib/admin.php:2222
@@ -5402,8 +5402,7 @@ msgstr ""
 
 #: lib/messages.php:2370
 msgctxt "tooltip fragment"
-msgid ""
-"a product GTIN code (GTIN-8, GTIN-12/UPC, GTIN-13/EAN, or GTIN-14 digit code)"
+msgid "a product GTIN code (GTIN-8, GTIN-12/UPC, GTIN-13/EAN, or GTIN-14)"
 msgstr ""
 
 #: lib/messages.php:2373

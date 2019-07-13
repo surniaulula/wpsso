@@ -2367,7 +2367,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					),
 					'product_gtin' => array(
 						_x( 'Product GTIN', 'option label', 'wpsso' ),
-						_x( 'a product GTIN code (GTIN-8, GTIN-12/UPC, GTIN-13/EAN, or GTIN-14 digit code)', 'tooltip fragment', 'wpsso' ),
+						_x( 'a product GTIN code (GTIN-8, GTIN-12/UPC, GTIN-13/EAN, or GTIN-14)', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_height_value' => array(
 						_x( 'Product Height', 'option label', 'wpsso' ),

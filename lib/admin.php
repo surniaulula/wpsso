@@ -2214,7 +2214,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						if ( empty( $val ) ) {	// Add an empty row for empty values.
 							
-							$val = _x( 'Information not available', 'option value', 'wpsso' );
+							$val = _x( 'Not available', 'option value', 'wpsso' );
 
 						} elseif ( $key === 'exp_date' ) {
 
