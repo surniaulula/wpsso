@@ -438,6 +438,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 5.2.1-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added new status messages for the an option field character count (min, max, and required).
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new String.prototype.formatUnicorn() javascript function.
+	* Added a new WpssoScript::get_metabox_script_data() method.
+
 **Version 5.2.0 (2019/07/13)**
 
 * **New Features**
@@ -537,6 +549,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Improved WP_Query for a post type archive (see https://codex.wordpress.org/Function_Reference/is_post_type_archive) when running as background task.
 
 == Upgrade Notice ==
+
+= 5.2.1-dev.1 =
+
+(TBD) Added new status messages for the an option field character count (min, max, and required).
 
 = 5.2.0 =
 
