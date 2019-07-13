@@ -1515,47 +1515,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				'>' . esc_attr( $value ) . '</textarea>';
 		}
 
-		/**
-		 * If a $form_css_id is provided, then on submission all
-		 * unchanged options will be disabled, which causes the browser
-		 * to exclude them from the submission $_POST.
-		 */
-		public function get_submit( $value, $css_class = 'button-primary', $css_id = '', $form_css_id = '' ) {
+		public function get_submit( $value, $css_class = 'button-primary', $css_id = '' ) {
 
 			$html = '<input type="submit"';
 			$html .= empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"';
 			$html .= empty( $css_id ) ? '' : ' id="submit_' . esc_attr( $css_id ) . '"';
-			$html .= empty( $form_css_id ) ? '' : ' onClick="sucomDisableUnchanged();"';
 			$html .= ' value="' . esc_attr( $value ) . '"/>';
-
-			if ( ! empty( $form_css_id ) ) {
-				$html .= '
-					<script type="text/javascript">
-
-						function sucomMarkChanged(){ jQuery( this ).addClass( "changed" ); }
-
-						function sucomDisableUnchanged() {
-
-							jQuery( "#' . $form_css_id . ' input[type=checkbox]:not( .changed )" ).each( function(){
-
-								hidden_checkbox_name = this.name.replace( /^(.*)\[(.*)\]$/, \'$1\\\\[is_checkbox_$2\\\\]\' );
-
-								jQuery( this ).attr( "disabled", "disabled" );
-								jQuery( "#' . $form_css_id . ' input[name=" + hidden_checkbox_name + "]" ).attr( "disabled", "disabled" );
-							} );
-
-							jQuery( "#' . $form_css_id . ' input[type=text]:not( .changed )" ).attr( "disabled", "disabled" );
-							jQuery( "#' . $form_css_id . ' textarea:not( .changed )" ).attr( "disabled", "disabled" );
-							jQuery( "#' . $form_css_id . ' select:not( .changed )" ).attr( "disabled", "disabled" );
-						}
-
-						jQuery( "#' . $form_css_id . ' input[type=checkbox]" ).blur( sucomMarkChanged ).change( sucomMarkChanged );
-						jQuery( "#' . $form_css_id . ' input[type=text]" ).blur( sucomMarkChanged ).change( sucomMarkChanged );
-						jQuery( "#' . $form_css_id . ' textarea" ).blur( sucomMarkChanged ).change( sucomMarkChanged );
-						jQuery( "#' . $form_css_id . ' select" ).blur( sucomMarkChanged ).change( sucomMarkChanged );
-
-					</script>' . "\n";
-			}
 
 			return $html;
 		}

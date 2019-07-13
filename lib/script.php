@@ -110,7 +110,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 					wp_enqueue_script( 'plugin-install' );	// Required for the plugin details box.
 
-					// no break
+					// No break.
 
 				/**
 				 * Any settings page. Also matches the profile_page and users_page hooks.
@@ -123,18 +123,18 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 					wp_enqueue_script( 'sucom-settings-page' );
 
-					// no break
+					// No break.
 
 				/**
 				 * Editing page.
 				 */
-				case 'post.php':	// post edit
-				case 'post-new.php':	// post edit
-				case 'term.php':	// term edit
-				case 'edit-tags.php':	// term edit
-				case 'user-edit.php':	// user edit
-				case 'profile.php':	// user edit
-				case ( SucomUtil::is_toplevel_edit( $hook_name ) ):	// required for event espresso plugin
+				case 'post.php':	// Post edit.
+				case 'post-new.php':	// Post edit.
+				case 'term.php':	// Term edit.
+				case 'edit-tags.php':	// Term edit.
+				case 'user-edit.php':	// User edit.
+				case 'profile.php':	// User edit.
+				case ( SucomUtil::is_toplevel_edit( $hook_name ) ):	// Required for event espresso plugin.
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing scripts for editing page' );
