@@ -438,18 +438,19 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.3.0-dev.2 (2019/07/13)**
+**Version 5.3.0-dev.2 (2019/07/14)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added new status messages (min, max, and required) for the option field character count.
 * **Bugfixes**
-	* None.
+	* Fixed the metabox tab layout CSS for Safari (needed a vertical align to top).
 * **Developer Notes**
-	* Optimized the saving of settings by excluding unchanged options from the $_POST.
-	* Added a new String.prototype.formatUnicorn() javascript function.
-	* Added a new WpssoScript::get_metabox_script_data() method.
+	* Optimized the saving of settings by having the browser exclude unchanged options from the $_POST.
+	* Added a new String.prototype.formatUnicorn() javascript function (for min, max, and required status messages).
+	* Added a new WpssoScript::get_metabox_script_data() method (for min, max, and required status messages).
+	* Added a new 'on_focus_load_json' event name argument for SucomForm::get_select() .
 
 **Version 5.2.0 (2019/07/13)**
 
@@ -553,7 +554,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 5.3.0-dev.2 =
 
-(2019/07/13) Added new status messages for the option field character count. Optimized the saving of settings by excluding unchanged options from the $_POST.
+(2019/07/14) Added new status messages for the option field character count. Optimized the saving of settings by having the browser exclude unchanged options from the $_POST.
 
 = 5.2.0 =
 
