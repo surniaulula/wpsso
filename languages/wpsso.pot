@@ -810,23 +810,23 @@ msgctxt "option label"
 msgid "Type for Other Archive Page"
 msgstr ""
 
-#: lib/admin.php:3462 lib/admin.php:3468 lib/admin.php:3491 lib/admin.php:3609
-#: lib/admin.php:3615 lib/admin.php:3638
+#: lib/admin.php:3462 lib/admin.php:3468 lib/admin.php:3491 lib/admin.php:3611
+#: lib/admin.php:3617 lib/admin.php:3640
 msgctxt "option comment"
 msgid "for %s"
 msgstr ""
 
-#: lib/admin.php:3468 lib/admin.php:3615
+#: lib/admin.php:3468 lib/admin.php:3617
 msgctxt "option comment"
 msgid "(Post Type) Archive Page"
 msgstr ""
 
-#: lib/admin.php:3471 lib/admin.php:3618
+#: lib/admin.php:3471 lib/admin.php:3620
 msgctxt "option label"
 msgid "Type by Post Type"
 msgstr ""
 
-#: lib/admin.php:3496 lib/admin.php:3642
+#: lib/admin.php:3496 lib/admin.php:3644
 msgctxt "option label"
 msgid "Type by Term Taxonomy"
 msgstr ""
@@ -903,97 +903,97 @@ msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
-#: lib/admin.php:3658
+#: lib/admin.php:3660
 msgctxt "option label"
 msgid "Remove Settings on Uninstall"
 msgstr ""
 
-#: lib/admin.php:3661
+#: lib/admin.php:3663
 msgctxt "option comment"
 msgid "including custom meta for posts, terms, and users"
 msgstr ""
 
-#: lib/admin.php:3666
+#: lib/admin.php:3668
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
 
-#: lib/admin.php:3668
+#: lib/admin.php:3670
 msgctxt "option comment"
 msgid "WPSSO_HTML_DEBUG constant is true"
 msgstr ""
 
-#: lib/admin.php:3674
+#: lib/admin.php:3676
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr ""
 
-#: lib/admin.php:3686
+#: lib/admin.php:3688
 msgctxt "metabox title"
 msgid "Custom Field Names"
 msgstr ""
 
-#: lib/admin.php:3769
+#: lib/admin.php:3771
 msgctxt "metabox title"
 msgid "Product Attribute Names"
 msgstr ""
 
-#: lib/admin.php:3794
+#: lib/admin.php:3796
 msgctxt "option comment"
 msgid "in %s"
 msgstr ""
 
-#: lib/admin.php:3805
+#: lib/admin.php:3807
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:3986
+#: lib/admin.php:3988
 msgid "Return to %s"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:4017
+#: lib/admin.php:4019
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:4039
+#: lib/admin.php:4041
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:4046
+#: lib/admin.php:4048
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes, and translations)</a> to check if newer versions are "
 "available."
 msgstr ""
 
-#: lib/admin.php:4183
+#: lib/admin.php:4185
 msgid "Please select a %1$s settings file to import."
 msgstr ""
 
-#: lib/admin.php:4190
+#: lib/admin.php:4192
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr ""
 
-#: lib/admin.php:4197
+#: lib/admin.php:4199
 msgid ""
 "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr ""
 
-#: lib/admin.php:4211
+#: lib/admin.php:4213
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr ""
 
-#: lib/admin.php:4221
+#: lib/admin.php:4223
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr ""
 
-#: lib/admin.php:4231
+#: lib/admin.php:4233
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 

@@ -3592,7 +3592,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$table_rows[ $opt_key ] = $tr_html . 
 				$this->form->get_th_html( $th_label, '', $opt_key ) . 
-				'<td>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type' ) . '</td>';
+				'<td>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type',
+					$css_id = '', $is_assoc = true, $is_disabled = false, $selected = false,
+						$event_name = 'on_focus_load_json', $event_args = 'schema_item_types' ) . '</td>';
 			}
 
 			/**

@@ -3348,9 +3348,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$php_version = phpversion();
 
 				if ( version_compare( $php_version, '5.5.0', '>=' ) ) {
+
 					return json_encode( $data, $options, $depth );  // $depth since PHP v5.5.0.
+
 				} elseif ( version_compare( $php_version, '5.3.0', '>=' ) ) {
+
 					return json_encode( $data, $options );          // $options since PHP v5.3.0.
+
 				} else {
 					return json_encode( $data );
 				}
