@@ -143,7 +143,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$input_checked = checked( $force, 1, false );
 			} elseif ( $this->in_options( $name ) ) {
 				$input_checked = checked( $this->options[ $name ], 1, false );
-			} elseif ( $this->in_defaults( $name ) ) {
+			} elseif ( $this->in_defaults( $name ) ) {	// Returns true or false.
 				$input_checked = checked( $this->defaults[ $name ], 1, false );
 			} else {
 				$input_checked = '';
@@ -242,7 +242,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				if ( $this->in_options( $input_name ) ) {
 					$input_checked = checked( $this->options[ $input_name ], 1, false );
-				} elseif ( $this->in_defaults( $input_name ) ) {
+				} elseif ( $this->in_defaults( $input_name ) ) {	// Returns true or false.
 					$input_checked = checked( $this->defaults[ $input_name ], 1, false );
 				} else {
 					$input_checked = '';
@@ -397,13 +397,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html        = '';
 			$tr_id       = empty( $css_id ) ? 'tr_' . $name : 'tr_' . $css_id;
 			$input_id    = empty( $css_id ) ? 'select_' . $name : 'select_' . $css_id;
-			$in_options  = $this->in_options( $name );	// Optimize and call only once.
-			$in_defaults = $this->in_defaults( $name );	// Optimize and call only once.
+			$in_options  = $this->in_options( $name );	// Optimize and call only once - returns true or false.
+			$in_defaults = $this->in_defaults( $name );	// Optimize and call only once - returns true or false.
 
-			$select_opt_count = 0;
+			$select_opt_count = 0;	// Used to check for first option.
 			$select_opt_added = 0;
 			$select_opt_html  = '';
 			$select_opt_arr   = array();
+			$default_value    = '';
+			$default_text     = '';
 
 			foreach ( $values as $option_value => $label ) {
 
@@ -455,10 +457,30 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						break;
 				}
 
-				if ( $in_defaults && $option_value === (string) $this->defaults[ $name ] ) {
-					$label_transl .= ' ' . $this->get_value_transl( '(default)' );
+				/**
+				 * Save the option value and translated label for the JSON array before adding the
+				 * "(default)" suffix.
+				 */
+				if ( 'on_focus_load_json' === $event_name ) {
+					if ( empty( $do_once_json_array[ $json_key ] ) ) {
+						$select_opt_arr[ $option_value ] = $label_transl;
+					}
 				}
 
+				/**
+				 * Save the default value and its text so we can add them (as jquery data) to the select.
+				 */
+				if ( $in_defaults && $option_value === (string) $this->defaults[ $name ] ) {
+
+					$default_value = $option_value;
+					$default_text  = $this->get_value_transl( '(default)' );
+
+					$label_transl  .= ' ' . $default_text;
+				}
+
+				/**
+				 * Maybe get a selected="selected" string for this option.
+				 */
 				if ( ! is_bool( $selected ) ) {
 					$is_selected_html = selected( $selected, $option_value, false );
 				} elseif ( $in_options ) {
@@ -469,16 +491,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$is_selected_html = '';
 				}
 
-				$select_opt_count++;
-
-				/**
-				 * Save the value and translated label for the JSON array.
-				 */
-				if ( 'on_focus_load_json' === $event_name ) {
-					if ( empty( $do_once_json_array[ $json_key ] ) ) {
-						$select_opt_arr[ $option_value ] = $label_transl;
-					}
-				}
+				$select_opt_count++;	// Used to check for first option.
 
 				/**
 				 * For disabled selects or JSON selects, only include the first and selected option(s).
@@ -520,22 +533,27 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 						$input_id_esc = esc_js( $input_id );
 
+						/**
+						 * The hover event is also required for Firefox to
+						 * render the option list correctly.
+						 */
 						$html .= '<script type="text/javascript">';
-						$html .= 'jQuery( function(){ jQuery( \'#' . $input_id_esc . ':not( .json_loaded )\' ).on( \'focus\', function(){ ';
+						$html .= 'jQuery( function(){ jQuery( \'select#' . $input_id_esc . ':not( .json_loaded )\' ).on( \'hover focus\', function(){ ';
 						$html .= 'sucomSelectLoadJson( \'#' . $input_id_esc . '\', \'' . $json_key . '\' );';
 						$html .= '}); });';
 						$html .= '</script>' . "\n";
 
 						break;
 
-					case 'on_change_get_ajax':
+					case 'on_focus_get_ajax':
 
 						break;
 
 					case 'on_change_redirect':
 
 						/**
-						 * The sucomSelectChangeRedirect() javascript function replaces "%%${name}%%" by the value selected.
+						 * The sucomSelectChangeRedirect() javascript function
+						 * replaces "%%${name}%%" by the value selected.
 						 */
 						$redirect_url = add_query_arg( array( $name => '%%' . $name . '%%' ),
 							SucomUtil::get_prot() . '://' . $_SERVER[ 'SERVER_NAME' ] . $_SERVER[ 'REQUEST_URI' ] );
@@ -629,8 +647,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 			}
 
-			$html .= '<select' . ( $is_disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"' );
-			$html .= ( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' ) .' id="' . esc_attr( $input_id ) . '">' . "\n";
+			$html .= '<select id="' . esc_attr( $input_id ) . '"';
+			$html .= ( $is_disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"' );
+			$html .= ( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' );
+			$html .= ( empty( $default_value ) ? '' : ' data-default-value="' . esc_attr( $default_value ) . '"' );
+			$html .= ( empty( $default_text ) ? '' : ' data-default-text="' . esc_attr( $default_text ) . '"' );
+			$html .= '>' . "\n";
 			$html .= $select_opt_html;
 			$html .= '<!-- ' . $select_opt_added . ' select options added -->' . "\n";
 			$html .= '</select>' . "\n";
@@ -1344,9 +1366,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 									$input_name_value = ' name="' . esc_attr( $this->opts_name . '[' . $opt_key . ']' ) . '" ' .
 										'value="' . esc_attr( $input_value ) . '"';
 
-									$radio_inputs[] = '<input type="radio"' .
-										( $opt_disabled ? ' disabled="disabled"' : $input_name_value ) .
-										$input_checked . '/>';
+									$radio_inputs[] = '<input type="radio"' . ( $opt_disabled ?
+										' disabled="disabled"' : $input_name_value ) . $input_checked . '/>';
 								}
 
 								if ( ! empty( $radio_inputs ) ) {
@@ -1407,7 +1428,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 								$is_assoc = SucomUtil::is_assoc( $select_options );
 
-								$select_opt_count = 0;
+								$select_opt_count = 0;	// Used to check for first option.
 								$select_opt_added = 0;
 
 								foreach ( $select_options as $option_value => $label ) {
@@ -1444,7 +1465,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 										$is_selected_html = '';
 									}
 
-									$select_opt_count++; 
+									$select_opt_count++; 	// Used to check for first option.
 
 									/**
 									 * For disabled selects, only include the first and/or selected option.

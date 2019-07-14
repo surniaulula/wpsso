@@ -3573,7 +3573,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
-		 * Called from the WpssoSubmenuGeneral and WpssoJsonSubmenuSchemaJsonLd classes.
+		 * Called from the WpssoSubmenuGeneral and
+		 * WpssoJsonSubmenuSchemaJsonLd classes.
+		 *
+		 * The SucomForm::get_select() calls in this method use the
+		 * 'on_focus_load_json' event name to create a single JSON
+		 * array for the schema types.
 		 */
 		protected function add_schema_item_types_table_rows( array &$table_rows, $hide_in_basic = true ) {
 
@@ -3607,14 +3612,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$type_keys[] = $opt_key = 'schema_type_for_' . $pt->name;
 
-				$type_select .= '<p>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type' ) . ' ' .
+				$type_select .= '<p>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type',
+					$css_id = '', $is_assoc = true, $is_disabled = false, $selected = false,
+						$event_name = 'on_focus_load_json', $event_args = 'schema_item_types' ) . ' ' .
 					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $pt->label ) . '</p>' . "\n";
 			}
 
 			$type_keys[] = $opt_key = 'schema_type_for_post_archive';
 
-			$type_select .= '<p>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type' ) . ' ' .
-				sprintf( _x( 'for %s', 'option comment', 'wpsso' ), _x( '(Post Type) Archive Page', 'option comment', 'wpsso' ) ) . '</p>' . "\n";
+			$type_select .= '<p>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type',
+				$css_id = '', $is_assoc = true, $is_disabled = false, $selected = false,
+					$event_name = 'on_focus_load_json', $event_args = 'schema_item_types' ) . ' ' .
+				sprintf( _x( 'for %s', 'option comment', 'wpsso' ), _x( '(Post Type) Archive Page',
+					'option comment', 'wpsso' ) ) . '</p>' . "\n";
 
 			$tr_key   = 'schema_type_for_ptn';
 			$th_label = _x( 'Type by Post Type', 'option label', 'wpsso' );
@@ -3636,7 +3646,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$type_keys[] = $opt_key = 'schema_type_for_tax_' . $tax->name;
 
-				$type_select .= '<p>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type' ) . ' ' .
+				$type_select .= '<p>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type',
+					$css_id = '', $is_assoc = true, $is_disabled = false, $selected = false,
+						$event_name = 'on_focus_load_json', $event_args = 'schema_item_types' ) . ' ' .
 					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $tax->label ) . '</p>' . "\n";
 			}
 
