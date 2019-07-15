@@ -1029,7 +1029,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
+		/**
+		 * Checks for 'none' value in midday_close and midday_open.
+		 */
 		public static function is_valid_midday( $open, $midday_close, $midday_open, $close ) {
+
+			/**
+			 * Performa a quick sanitation before using strtotime().
+			 */
+			if ( empty( $midday_close ) || empty( $midday_open ) ||
+				$midday_close === 'none' || $midday_open === 'none' ) {
+
+				return false;
+			}
 
 			if ( strtotime( $midday_close ) < strtotime( $midday_open ) &&
 				strtotime( $open ) < strtotime( $midday_close ) &&
@@ -1623,6 +1635,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				if ( ! empty( $opts[ $key_midday_close ] ) && ! empty( $opts[ $key_midday_open ] ) ) {
 
+					/**
+					 * Checks for 'none' value in midday_close and midday_open.
+					 */
 					$has_midday = self::is_valid_midday(
 						$opts[ $key_open ],
 						$opts[ $key_midday_close ],

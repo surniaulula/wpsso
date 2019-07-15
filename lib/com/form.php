@@ -173,7 +173,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$is_disabled = true, $force, $group );
 		}
 
-		public function get_no_checkbox_options( $name, $opts, $css_class = '', $css_id = '', $group = null ) {
+		public function get_no_checkbox_options( $name, array $opts, $css_class = '', $css_id = '', $group = null ) {
 
 			$force = empty( $opts[ $name ] ) ? 0 : 1;
 
@@ -518,6 +518,16 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 			}
 
+			$html .= '<select id="' . esc_attr( $input_id ) . '"';
+			$html .= ( $is_disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"' );
+			$html .= ( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' );
+			$html .= ( empty( $default_value ) ? '' : ' data-default-value="' . esc_attr( $default_value ) . '"' );
+			$html .= ( empty( $default_text ) ? '' : ' data-default-text="' . esc_attr( $default_text ) . '"' );
+			$html .= '>' . "\n";
+			$html .= $select_opt_html;
+			$html .= '<!-- ' . $select_opt_added . ' select options added -->' . "\n";
+			$html .= '</select>' . "\n";
+
 			if ( is_string( $event_name ) ) {	// Ignore true, false, array, etc.
 
 				switch ( $event_name ) {
@@ -583,7 +593,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 							$html .= '
 								<script type="text/javascript">
-									jQuery.each( [ \'show\', \'hide\' ], function( i, ev ){
+									jQuery( function(){ jQuery.each( [ \'show\', \'hide\' ], function( i, ev ){
 										var el = jQuery.fn[ ev ];
 										jQuery.fn[ ev ] = function(){
 											if ( jQuery( this ).is( \'tr\' ) ) {
@@ -594,7 +604,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 											}
 											return el.apply( this, arguments );
 										};
-									});
+									}); });
 								</script>';
 						}
 
@@ -604,7 +614,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 						$html .= '<script type="text/javascript">';
 						$html .= 'jQuery( function(){ jQuery( \'select#' . esc_js( $input_id ) . '\' ).on( \'change\', function(){ ';
-						$html .= 'sucomSelectChangeUnhideRows( \'hide_' . esc_js( $name ) . '\',' . '\'hide_' . esc_js( $name ) . '_\' + this.value );';
+						$html .= 'sucomSelectChangeUnhideRows( \'hide_' . esc_js( $name ) . '\', ' .
+							'\'hide_' . esc_js( $name ) . '_\' + this.value );';
 						$html .= '}); });';
 						$html .= '</script>' . "\n";
 
@@ -632,10 +643,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 								if ( $event_name === 'on_show_unhide_rows' ) {
 
 									$html .= '<script type="text/javascript">';
-									$html .= 'jQuery( \'#' . esc_js( $tr_id ) . '\' ).on( \'show\', function(){ ';
+									$html .= 'jQuery( function(){ jQuery( \'#' . esc_js( $tr_id ) . '\' ).on( \'show\', function(){ ';
 									$html .= 'sucomSelectChangeUnhideRows( \'hide_' . esc_js( $name ) . '\', ' .
 										'\'hide_' . esc_js( $name . '_' . $unhide_value ) . '\' );';
-									$html .= '});';
+									$html .= '}); });';
 									$html .= '</script>' . "\n";
 
 								} else {
@@ -653,16 +664,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						break;
 				}
 			}
-
-			$html .= '<select id="' . esc_attr( $input_id ) . '"';
-			$html .= ( $is_disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"' );
-			$html .= ( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' );
-			$html .= ( empty( $default_value ) ? '' : ' data-default-value="' . esc_attr( $default_value ) . '"' );
-			$html .= ( empty( $default_text ) ? '' : ' data-default-text="' . esc_attr( $default_text ) . '"' );
-			$html .= '>' . "\n";
-			$html .= $select_opt_html;
-			$html .= '<!-- ' . $select_opt_added . ' select options added -->' . "\n";
-			$html .= '</select>' . "\n";
 
 			return $html;
 		}
@@ -708,13 +709,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$is_disabled, $selected, $event_name, $event_args );
 		}
 
-		public function get_no_select_none( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null,
-			$selected = false, $event_name = false ) {
-
-			return $this->get_select_none( $name, $values, $css_class, $css_id, $is_assoc,
-				$is_disabled = true, $selected, $event_name );
-		}
-
 		public function get_no_select( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null,
 			$selected = false, $event_name = false ) {
 		
@@ -722,8 +716,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$is_disabled = true, $selected, $event_name );
 		}
 
-		public function get_no_select_options( $name, $opts, $values = array(), $css_class = '', $css_id = '', $is_assoc = null,
-			$event_name = false, $event_args = null ) {
+		public function get_no_select_none( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null,
+			$selected = false, $event_name = false ) {
+
+			return $this->get_select_none( $name, $values, $css_class, $css_id, $is_assoc,
+				$is_disabled = true, $selected, $event_name );
+		}
+
+		public function get_no_select_options( $name, array $opts, $values = array(), $css_class = '', $css_id = '',
+			$is_assoc = null, $event_name = false, $event_args = null ) {
 		
 			$selected = isset( $opts[ $name ] ) ? $opts[ $name ] : true;
 
@@ -732,7 +733,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		/**
-		 * Note that the "hour_mins" class is always prefixed to the $css_class value.
+		 * The "hour_mins" class is always prefixed to the $css_class value.
+		 * By default, the 'none' array elements is not added.
 		 */
 		public function get_select_time( $name, $css_class = '', $css_id = '',
 			$is_disabled = false, $selected = false, $step_mins = 15, $add_none = false ) {
@@ -744,23 +746,27 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$step_secs = 60 * $step_mins, $label_format = 'H:i' );
 			}
 
-			$css_class = trim( 'hour_mins ' . $css_class );
+			$css_class  = trim( 'hour_mins ' . $css_class );
+			$event_name = 'on_focus_load_json';
+			$event_args = 'hour_mins_step_' . $step_mins;
 
 			/**
 			 * Set 'none' as the default value if no default is defined.
 			 */
 			if ( $add_none ) {
 
+				$event_args .= '_add_none';
+
 				if ( ! empty( $name ) && ! isset( $this->defaults[ $name ] ) ) {
 					$this->defaults[ $name ] = 'none';
 				}
 
 				return $this->get_select_none( $name, $local_cache[ $step_mins ], $css_class, $css_id, $is_assoc = true,
-					$is_disabled, $selected );
+					$is_disabled, $selected, $event_name, $event_args );
 			}
 
 			return $this->get_select( $name, $local_cache[ $step_mins ], $css_class, $css_id, $is_assoc = true,
-				$is_disabled, $selected );
+				$is_disabled, $selected, $event_name, $event_args );
 		}
 
 		public function get_no_select_time( $name, $css_class = '', $css_id = '',
@@ -770,8 +776,17 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$is_disabled = true, $selected, $step_mins, $add_none );
 		}
 
+		public function get_no_select_time_options( $name, array $opts, $css_class = '', $css_id = '',
+			$step_mins = 15, $add_none = false ) {
+		
+			$selected = isset( $opts[ $name ] ) ? $opts[ $name ] : true;
+
+			return $this->get_select_time( $name, $css_class, $css_id,
+				$is_disabled = true, $selected, $step_mins, $add_none );
+		}
+
 		/**
-		 * Note that the "timezone" class is always prefixed to the $css_class value.
+		 * The "timezone" class is always prefixed to the $css_class value.
 		 */
 		public function get_select_timezone( $name, $css_class = '', $css_id = '',
 			$is_disabled = false, $selected = false ) {
@@ -800,7 +815,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_no_select_timezone( $name, $css_class = '', $css_id = '', $selected = false ) {
 
 			/**
-			 * Note that the "timezone" class is always prefixed to the $css_class value.
+			 * The "timezone" class is always prefixed to the $css_class value.
 			 */
 			return $this->get_select_timezone( $name, $css_class, $css_id,
 				$is_disabled = true, $selected );
@@ -840,7 +855,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$is_disabled = true, $selected );
 		}
 
-		public function get_no_select_country_options( $name, $opts, $css_class = '', $css_id = '' ) {
+		public function get_no_select_country_options( $name, array $opts, $css_class = '', $css_id = '' ) {
 
 			$selected = isset( $opts[ $name ] ) ? $opts[ $name ] : false;
 
@@ -958,7 +973,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_no_input_options( $name, $opts, $css_class = '', $css_id = '', $placeholder = '' ) {
+		public function get_no_input_options( $name, array $opts, $css_class = '', $css_id = '', $placeholder = '' ) {
 
 			$value = isset( $opts[ $name ] ) ? $opts[ $name ] : '';
 
@@ -1324,10 +1339,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		 */
 		public function get_date_time_iso( $name_prefix = '', $is_disabled = false, $step_mins = 15, $add_none = true ) {
 
-			return $this->get_date_time_tz_options( $name_prefix, $is_disabled, $step_mins, $add_none );
+			return $this->get_date_time_tz( $name_prefix, $is_disabled, $step_mins, $add_none );
 		}
 
-		public function get_date_time_tz_options( $name_prefix = '', $is_disabled = false, $step_mins = 15, $add_none = true ) {
+		public function get_date_time_tz( $name_prefix = '', $is_disabled = false, $step_mins = 15, $add_none = true ) {
 
 			$html = $this->get_input_date( $name_prefix . '_date', $css_class = '', $css_id = '',
 				$min_date = '', $max_date = '', $is_disabled ) . ' ';
@@ -1335,7 +1350,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html .= $this->get_value_transl( 'at' ) . ' ';
 
 			/**
-			 * Note that the "hour_mins" class is always prefixed to the $css_class value.
+			 * The "hour_mins" class is always prefixed to the $css_class value.
 			 */
 			$html .= $this->get_select_time( $name_prefix . '_time', $css_class = '', $css_id = '',
 				$is_disabled, $selected = false, $step_mins, $add_none ) . ' ';
@@ -1343,7 +1358,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html .= $this->get_value_transl( 'tz' ) . ' ';
 
 			/**
-			 * Note that the "timezone" class is always prefixed to the $css_class value.
+			 * The "timezone" class is always prefixed to the $css_class value.
 			 */
 			$html .= $this->get_select_timezone( $name_prefix . '_timezone', $css_class = '', $css_id = '',
 				$is_disabled, $selected = false );
@@ -1356,12 +1371,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		 */
 		public function get_no_date_time_iso( $name_prefix = '' ) {
 
-			return $this->get_date_time_tz_options( $name_prefix, $is_disabled = true );
+			return $this->get_date_time_tz( $name_prefix, $is_disabled = true );
 		}
 
-		public function get_no_date_time_tz_options( $name_prefix = '' ) {
+		public function get_no_date_time_tz( $name_prefix = '' ) {
 
-			return $this->get_date_time_tz_options( $name_prefix, $is_disabled = true );
+			return $this->get_date_time_tz( $name_prefix, $is_disabled = true );
 		}
 
 		public function get_mixed_multi( $mixed, $css_class, $css_id,
@@ -1671,7 +1686,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_textarea( $name, $css_class, $css_id, $len, $placeholder, $is_disabled = true );
 		}
 
-		public function get_no_textarea_options( $name, $opts, $css_class = '', $css_id = '',
+		public function get_no_textarea_options( $name, array $opts, $css_class = '', $css_id = '',
 			$len = 0, $placeholder = '' ) {
 
 			$value = isset( $opts[ $name ] ) ? $opts[ $name ] : '';
@@ -1764,11 +1779,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		private function get_text_length_js( $css_id ) {
 
-			return empty( $css_id ) ? '' : '<script type="text/javascript">
-				jQuery( document ).ready( function() {
-					jQuery( \'#' . esc_js( $css_id ) . '\' ).focus( function() { sucomTextLen(\'' . esc_js( $css_id ) . '\'); } );
-					jQuery( \'#' . esc_js( $css_id ) . '\' ).keyup( function() { sucomTextLen(\'' . esc_js( $css_id ) . '\'); } );
-				} );</script>';
+			return empty( $css_id ) ? '' : '
+				<script type="text/javascript">
+					jQuery( document ).ready( function() {
+						jQuery( \'#' . esc_js( $css_id ) . '\' ).focus( function() { sucomTextLen(\'' . esc_js( $css_id ) . '\'); } );
+						jQuery( \'#' . esc_js( $css_id ) . '\' ).keyup( function() { sucomTextLen(\'' . esc_js( $css_id ) . '\'); } );
+					});
+				</script>';
 		}
 
 		private function get_placeholder_sanitized( $name, $placeholder = '' ) {
