@@ -478,7 +478,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Product GTIN-8
 	* Added a "Product GTIN Attribute Name" and "Product GTIN Custom Field" options in the SSO &gt; Advanced settings page.
 	* Removed the "Product EAN" option (replaced with "Product GTIN-13/EAN").
-	* Removed the "Product EAN Custom Field" option (replaced with "Product GTIN-13 Custom Field").
+	* Removed the "Product EAN Custom Field" option (replaced with "Product GTIN-13/EAN Custom Field").
 	* Removed the "Product EAN Attribute Name" option.
 	* Mapped the `product:upc` meta tag to the 'product_gtin12' value.
 	* Mapped the `product:ean` meta tag to the 'product_gtin13' value.
