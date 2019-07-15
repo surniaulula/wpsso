@@ -438,7 +438,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.3.0-dev.3 (2019/07/14)**
+**Version 5.3.0-dev.4 (2019/07/15)**
 
 * **New Features**
 	* None.
@@ -560,9 +560,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 5.3.0-dev.3 =
+= 5.3.0-dev.4 =
 
-(2019/07/14) Added new status messages for the option field character count. Optimized the saving of settings by having the browser exclude unchanged options from the $_POST.
+(2019/07/15) Added new status messages for the option field character count. Optimized the saving of settings by having the browser exclude unchanged options from the $_POST.
 
 = 5.2.0 =
 
