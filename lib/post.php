@@ -296,10 +296,18 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$mod = $this->get_mod( $post_id );
 
 					/**
-					 * Allow some custom field values to override our option values.
+					 * The 'get_custom_fields' filter is executed before the
+					 * 'wpsso_get_post_options' filter, so values retrieved from
+					 * custom fields may get* overwritten by later filters.
+					 *
+					 * For example, the WooCommerce integration module hooks the
+					 * 'wpsso_get_post_options' filter and provides information
+					 * about the main / simple product, including any product
+					 * attributes, and disables these options in the Document SSO
+					 * metabox.
 					 */
 					$this->opts[ $post_id ] = apply_filters( $this->p->lca . '_get_custom_fields',
-						$this->opts[ $post_id ], get_post_meta( $post_id ), $mod );
+						$this->opts[ $post_id ], get_post_meta( $post_id ) );
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'applying get_post_options filters for post_id ' . $post_id . ' meta' );
@@ -307,6 +315,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					$this->opts[ $post_id ][ 'options_filtered' ] = true;	// Set before calling filter to prevent recursion.
 
+					/**
+					 * Hooked by several integration modules to provide information about
+					 * the current content. E-commerce integration modules will provide
+					 * information on their product (price, condition, etc.) and disable these
+					 * options in the Document SSO metabox.
+					 */
 					$this->opts[ $post_id ] = apply_filters( $this->p->lca . '_get_post_options',
 						$this->opts[ $post_id ], $post_id, $mod );
 

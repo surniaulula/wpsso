@@ -689,13 +689,77 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			if ( isset( $this->p->cf[ 'head' ][ 'og_type_mt' ][ $type_id ] ) ) {	// Check if og:type is in config.
 
-				$og_type_mt_md = $this->p->cf[ 'head' ][ 'og_type_mt' ][ $type_id ];
-
 				/**
 				 * Optimize and call get_options() only once. Returns an empty string if no meta found.
 				 */
 				$md_opts = empty( $mod[ 'obj' ] ) ? array() : (array) $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
 
+				$og_type_mt_md = $this->p->cf[ 'head' ][ 'og_type_mt' ][ $type_id ];
+
+				/**
+				 * Convert post/term/user meta data into Open Graph meta tags.
+				 *
+				 * Example $og_type_mt_md array:
+				 *
+				 *	'product' => array(
+				 *		'product:age_group'               => '',
+				 *		'product:availability'            => 'product_avail',
+				 *		'product:brand'                   => 'product_brand',
+				 *		'product:category'                => '',
+				 *		'product:color'                   => 'product_color',
+				 *		'product:condition'               => 'product_condition',
+				 *		'product:depth:value'             => 'product_depth_value',
+				 *		'product:depth:units'             => '',
+				 *		'product:ean'                     => 'product_gtin13',
+				 *		'product:expiration_time'         => '',
+				 *		'product:gtin14'                  => 'product_gtin14',
+				 *		'product:gtin13'                  => 'product_gtin13',
+				 *		'product:gtin12'                  => 'product_gtin12',
+				 *		'product:gtin8'                   => 'product_gtin8',
+				 *		'product:gtin'                    => 'product_gtin',
+				 *		'product:height:value'            => 'product_height_value',
+				 *		'product:height:units'            => '',
+				 *		'product:is_product_shareable'    => '',
+				 *		'product:isbn'                    => 'product_isbn',
+				 *		'product:length:value'            => 'product_length_value',
+				 *		'product:length:units'            => '',
+				 *		'product:material'                => 'product_material',
+				 *		'product:mfr_part_no'             => 'product_mpn',
+				 *		'product:original_price:amount'   => '',
+				 *		'product:original_price:currency' => '',
+				 *		'product:pattern'                 => '',
+				 *		'product:plural_title'            => '',
+				 *		'product:pretax_price:amount'     => '',
+				 *		'product:pretax_price:currency'   => '',
+				 *		'product:price:amount'            => 'product_price',
+				 *		'product:price:currency'          => 'product_currency',
+				 *		'product:product_link'            => '',
+				 *		'product:purchase_limit'          => '',
+				 *		'product:retailer'                => '',
+				 *		'product:retailer_category'       => '',
+				 *		'product:retailer_item_id'        => 'product_sku',
+				 *		'product:retailer_part_no'        => '',
+				 *		'product:retailer_title'          => '',
+				 *		'product:sale_price:amount'       => '',
+				 *		'product:sale_price:currency'     => '',
+				 *		'product:sale_price_dates:start'  => '',
+				 *		'product:sale_price_dates:end'    => '',
+				 *		'product:shipping_cost:amount'    => '',
+				 *		'product:shipping_cost:currency'  => '',
+				 *		'product:shipping_weight:value'   => '',
+				 *		'product:shipping_weight:units'   => '',
+				 *		'product:size'                    => 'product_size',
+				 *		'product:sku'                     => 'product_sku',
+				 *		'product:target_gender'           => 'product_target_gender',
+				 *		'product:upc'                     => 'product_gtin12',
+				 *		'product:volume:value'            => 'product_volume_value',
+				 *		'product:volume:units'            => '',
+				 *		'product:weight:value'            => 'product_weight_value',
+				 *		'product:weight:units'            => '',
+				 *		'product:width:value'             => 'product_width_value',
+				 *		'product:width:units'             => '',
+				 *	),
+				 */
 				foreach ( $og_type_mt_md as $mt_name => $md_key ) {
 
 					/**

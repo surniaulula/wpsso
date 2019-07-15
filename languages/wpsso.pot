@@ -111,7 +111,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:1033 lib/post.php:774 lib/term.php:630 lib/user.php:651
+#: lib/admin.php:1033 lib/post.php:788 lib/term.php:630 lib/user.php:651
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -1114,7 +1114,7 @@ msgstr ""
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:390 lib/gettext-com.php:28 lib/post.php:1539
+#: lib/com/notice.php:390 lib/gettext-com.php:28 lib/post.php:1553
 msgid "Edit"
 msgstr ""
 
@@ -1930,12 +1930,12 @@ msgstr ""
 
 #: lib/gettext-config.php:173
 msgctxt "option label"
-msgid "Product GTIN-13 Custom Field"
+msgid "Product GTIN-13/EAN Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:174
 msgctxt "option label"
-msgid "Product GTIN-12 Custom Field"
+msgid "Product GTIN-12/UPC Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:175
@@ -2060,12 +2060,12 @@ msgstr ""
 
 #: lib/gettext-config.php:199
 msgctxt "option value"
-msgid "Product GTIN-13 Attribute Name"
+msgid "Product GTIN-13/EAN Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:200
 msgctxt "option value"
-msgid "Product GTIN-12 Attribute Name"
+msgid "Product GTIN-12/UPC Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:201
@@ -2929,7 +2929,7 @@ msgctxt "option label"
 msgid "Description"
 msgstr ""
 
-#: lib/gettext-pro.php:133 lib/post.php:1349 lib/pro/admin/meta.php:179
+#: lib/gettext-pro.php:133 lib/post.php:1363 lib/pro/admin/meta.php:179
 #: lib/std/admin/meta.php:169
 msgid "Save a draft version or publish the %s to display these options."
 msgstr ""
@@ -3073,25 +3073,25 @@ msgid ""
 "version of WooCommerce."
 msgstr ""
 
-#: lib/gettext-pro.php:168 lib/pro/ecom/woocommerce.php:898
+#: lib/gettext-pro.php:168 lib/pro/ecom/woocommerce.php:926
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
-#: lib/gettext-pro.php:169 lib/pro/ecom/woocommerce.php:901
+#: lib/gettext-pro.php:169 lib/pro/ecom/woocommerce.php:929
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/gettext-pro.php:170 lib/pro/ecom/woocommerce.php:1070
+#: lib/gettext-pro.php:170 lib/pro/ecom/woocommerce.php:1098
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/gettext-pro.php:171 lib/pro/ecom/woocommerce.php:1072
+#: lib/gettext-pro.php:171 lib/pro/ecom/woocommerce.php:1100
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:172 lib/pro/ecom/woocommerce.php:1075
+#: lib/gettext-pro.php:172 lib/pro/ecom/woocommerce.php:1103
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 
@@ -3296,7 +3296,7 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
-#: lib/loader.php:182 lib/loader.php:208 lib/post.php:486 lib/register.php:312
+#: lib/loader.php:182 lib/loader.php:208 lib/post.php:500 lib/register.php:312
 #: lib/term.php:433 lib/user.php:396 lib/util.php:487 lib/util.php:3304
 msgid "%s warning:"
 msgstr ""
@@ -5361,7 +5361,7 @@ msgstr ""
 
 #: lib/messages.php:2357
 msgctxt "option label"
-msgid "Product GTIN-13"
+msgid "Product GTIN-13/EAN"
 msgstr ""
 
 #: lib/messages.php:2358
@@ -5371,7 +5371,7 @@ msgstr ""
 
 #: lib/messages.php:2361
 msgctxt "option label"
-msgid "Product GTIN-12"
+msgid "Product GTIN-12/UPC"
 msgstr ""
 
 #: lib/messages.php:2362
@@ -5746,174 +5746,174 @@ msgstr ""
 
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
-#: lib/post.php:472 lib/term.php:419 lib/user.php:382 lib/util.php:473
+#: lib/post.php:486 lib/term.php:419 lib/user.php:382 lib/util.php:473
 #: lib/util.php:3276
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a recommended max
-#: lib/post.php:475
+#: lib/post.php:489
 msgid ""
 "Slow query detected - WordPress get_posts() took %1$0.3f secs to get the "
 "children of post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:719 lib/post.php:1271
+#: lib/post.php:733 lib/post.php:1285
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/post.php:909
+#: lib/post.php:923
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:947
+#: lib/post.php:961
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:949
+#: lib/post.php:963
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:951
+#: lib/post.php:965
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:952
+#: lib/post.php:966
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:964 lib/util.php:1879
+#: lib/post.php:978 lib/util.php:1879
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:977
+#: lib/post.php:991
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:990
+#: lib/post.php:1004
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1003
+#: lib/post.php:1017
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1025
+#: lib/post.php:1039
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:1063
+#: lib/post.php:1077
 msgid ""
 "The webpage at %1$s includes only basic (and incomplete) Schema JSON-LD "
 "product markup added by the WooCommerce plugin."
 msgstr ""
 
-#: lib/post.php:1065 lib/post.php:1089
+#: lib/post.php:1079 lib/post.php:1103
 msgid ""
 "Complete and accurate Schema JSON-LD markup is highly recommended for better "
 "ranking and click-through in Google search results."
 msgstr ""
 
-#: lib/post.php:1067
+#: lib/post.php:1081
 msgid ""
 "You should consider purchasing the %1$s %2$s add-on to include better Schema "
 "JSON-LD markup for WooCommerce products."
 msgstr ""
 
-#: lib/post.php:1087
+#: lib/post.php:1101
 msgid "The webpage at %1$s does not include any Schema JSON-LD script(s)."
 msgstr ""
 
-#: lib/post.php:1091
+#: lib/post.php:1105
 msgid ""
 "You should consider activating the %1$s add-on to include Schema JSON-LD "
 "markup in the webpage for Google."
 msgstr ""
 
-#: lib/post.php:1107
+#: lib/post.php:1121
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:1123
+#: lib/post.php:1137
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1123
+#: lib/post.php:1137
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML &mdash; review the <a href=\"%1$s\">W3C Markup Validation "
 "Service</a> results and correct any errors."
 msgstr ""
 
-#: lib/post.php:1123
+#: lib/post.php:1137
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:1155
+#: lib/post.php:1169
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1156
+#: lib/post.php:1170
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1162
+#: lib/post.php:1176
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1165
+#: lib/post.php:1179
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1167
+#: lib/post.php:1181
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1529 lib/script.php:254
+#: lib/post.php:1543 lib/script.php:254
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1540
+#: lib/post.php:1554
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1551
+#: lib/post.php:1565
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1552
+#: lib/post.php:1566
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1553
+#: lib/post.php:1567
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1554
+#: lib/post.php:1568
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1630
+#: lib/post.php:1644
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -6649,7 +6649,7 @@ msgid "unhide these rows"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name, and %3$s is the object ID.
-#: lib/util.php:3886
+#: lib/util.php:3924
 msgid "%1$s for %2$s ID %3$s"
 msgstr ""
 

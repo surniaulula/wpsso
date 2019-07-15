@@ -3803,6 +3803,44 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return apply_filters( $this->p->lca . '_get_robots_content', rtrim( $content, ', ' ), $mod );
 		}
 
+		/**
+		 * Returns an array of product attribute names, indexed by meta
+		 * tag name ($sep = ":") or option name ($sep = "_").
+		 *
+		 * Example $prefix = "product" and $sep = ":" for meta tag names:
+		 *
+		 * 	Array(
+		 *		[product:brand]         => Brand
+		 *		[product:color]         => Color
+		 *		[product:condition]     => Condition
+		 *		[product:gtin14]        => GTIN-14
+		 *		[product:gtin14]        => GTIN-13
+		 *		[product:gtin14]        => GTIN-12
+		 *		[product:gtin8]         => GTIN-8
+		 *		[product:material]      => Material
+		 *		[product:mpn]           => MPN
+		 *		[product:size]          => Size
+		 *		[product:target_gender] => Gender
+		 *		[product:volume:value]  => Volume
+		 *	)
+		 *
+		 * Example $prefix = "product" and $sep = "_" for option names:
+		 *
+		 * 	Array(
+		 *		[product_brand]         => Brand
+		 *		[product_color]         => Color
+		 *		[product_condition]     => Condition
+		 *		[product_gtin14]        => GTIN-14
+		 *		[product_gtin14]        => GTIN-13
+		 *		[product_gtin14]        => GTIN-12
+		 *		[product_gtin8]         => GTIN-8
+		 *		[product_material]      => Material
+		 *		[product_mpn]           => MPN
+		 *		[product_size]          => Size
+		 *		[product_target_gender] => Gender
+		 *		[product_volume_value]  => Volume
+		 *	)
+		 */
 		public function get_product_attr_names( $prefix = 'product', $sep = ':' ) {
 
 			static $local_cache = null;

@@ -225,6 +225,10 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				649 => array(
 					'plugin_cf_product_ean' => 'plugin_cf_product_gtin13',
 				),
+				650 => array(
+					'plugin_product_attr_volume' => 'plugin_product_attr_volume_value',
+					'plugin_cf_product_volume'   => 'plugin_cf_product_volume_value',
+				),
 			),
 		);
 

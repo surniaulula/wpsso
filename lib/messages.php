@@ -2354,11 +2354,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						_x( 'a product GTIN-14 code', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_gtin13' => array(
-						_x( 'Product GTIN-13', 'option label', 'wpsso' ),
+						_x( 'Product GTIN-13/EAN', 'option label', 'wpsso' ),
 						_x( 'a product GTIN-13 code (aka 13-digit ISBN codes or EAN/UCC-13)', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_gtin12' => array(
-						_x( 'Product GTIN-12', 'option label', 'wpsso' ),
+						_x( 'Product GTIN-12/UPC', 'option label', 'wpsso' ),
 						_x( 'a product GTIN-12 code (12-digit GS1 identification key composed of a U.P.C. company prefix, item reference, and check digit)', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_gtin8' => array(

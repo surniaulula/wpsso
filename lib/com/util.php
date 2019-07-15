@@ -2052,11 +2052,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':depth:units'                     => '',	// Non-standard / internal meta tag (units after value).
 				$mt_pre . ':ean'                             => '',	// aka EAN, EAN-13, GTIN-13.
 				$mt_pre . ':expiration_time'                 => '',
-				$mt_pre . ':gtin'                            => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':gtin8'                           => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':gtin12'                          => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':gtin13'                          => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':gtin14'                          => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':gtin13'                          => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':gtin12'                          => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':gtin8'                           => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':gtin'                            => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':height:value'                    => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':height:units'                    => '',	// Non-standard / internal meta tag (units after value).
 				$mt_pre . ':is_product_shareable'            => '',
