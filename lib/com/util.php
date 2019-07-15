@@ -3519,19 +3519,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		/**
 		 * Returns an associative array.
+		 *
+		 * Example time formats: 'H:i' (default), 'g:i a'.
 		 */
-		public static function get_hours_range( $start_secs = 0, $end_secs = 86400, $step_secs = 3600, $time_format = 'g:i a' ) {
+		public static function get_hours_range( $start_secs = 0, $end_secs = 86400, $step_secs = 3600, $label_format = 'H:i' ) {
 
 			$times = array();
 
 		        foreach ( range( $start_secs, $end_secs, $step_secs ) as $ts ) {
 
-				$hour_mins = gmdate( 'H:i', $ts );
+				$value = gmdate( 'H:i', $ts );
 
-				if ( ! empty( $time_format ) ) {
-					$times[ $hour_mins ] = gmdate( $time_format, $ts );
+				if ( 'H:i' !== $label_format ) {
+					$times[ $value ] = gmdate( $label_format, $ts );
 				} else {
-					$times[ $hour_mins ] = $hour_mins;
+					$times[ $value ] = $value;
 				}
 			}
 

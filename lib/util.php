@@ -1039,7 +1039,21 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					case 'half_hours':
 
-						self::$form_cache[ $key ] = self::get_hours_range( 0, DAY_IN_SECONDS, 60 * 30, '' );
+						/**
+						 * Returns an array of times without a 'none' value.
+						 */
+						self::$form_cache[ $key ] = self::get_hours_range( $start_secs = 0, $end_secs = DAY_IN_SECONDS,
+							$step_secs = 60 * 30, $label_format = 'H:i' );
+
+						break;
+
+					case 'quarter_hours':
+
+						/**
+						 * Returns an array of times without a 'none' value.
+						 */
+						self::$form_cache[ $key ] = self::get_hours_range( $start_secs = 0, $end_secs = DAY_IN_SECONDS,
+							$step_secs = 60 * 15, $label_format = 'H:i' );
 
 						break;
 
