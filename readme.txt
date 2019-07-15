@@ -450,7 +450,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Optimized the saving of settings by having the browser exclude unchanged options from the $_POST.
 	* Added a new String.prototype.formatUnicorn() javascript function (for min, max, and required status messages).
 	* Added a new WpssoScript::get_metabox_script_data() method (for min, max, and required status messages).
-	* Added a new 'on_focus_load_json' event name argument for SucomForm::get_select() .
+	* Added a new 'on_focus_load_json' event name argument for SucomForm::get_select().
+	* Documented the default Schema property maximums (used by the WPSSO JSON add-on) in constants.txt:
+		* WPSSO_SCHEMA_ITEMS_PER_LIST_MAX          = 200
+		* WPSSO_SCHEMA_MENTIONS_PER_COLLECTION_MAX = 30
+		* WPSSO_SCHEMA_MENTIONS_PER_PROFILE_MAX    = 30
+		* WPSSO_SCHEMA_MENTIONS_PER_SEARCH_MAX     = 10
+		* WPSSO_SCHEMA_POSTS_PER_BLOG_MAX          = 50
+		* WPSSO_SCHEMA_QUESTIONS_PER_FAQPAGE_MAX   = 50
+		* WPSSO_SCHEMA_REVIEWS_PER_PAGE_MAX        = 30
 
 **Version 5.2.0 (2019/07/13)**
 
