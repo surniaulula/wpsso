@@ -439,7 +439,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.3.0-dev.5 (2019/07/15)**
+**Version 5.3.0-b.1 (2019/07/16)**
 
 * **New Features**
 	* Added support for the Product GTIN (EAN, UPC, ISBN) for WooCommerce plugin (Premium version).
@@ -454,6 +454,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new String.prototype.formatUnicorn() javascript function (for min, max, and required status messages).
 	* Added a new WpssoScript::get_metabox_script_data() method (for min, max, and required status messages).
 	* Added a new 'on_focus_load_json' event name argument for SucomForm::get_select().
+	* Added an '@id' property to the Schema ImageObject and VideoObject markup.
 	* Documented the default Schema property maximums (used by the WPSSO JSON add-on) in constants.txt:
 		* WPSSO_SCHEMA_ITEMS_PER_LIST_MAX          = 200
 		* WPSSO_SCHEMA_MENTIONS_PER_COLLECTION_MAX = 30
@@ -563,9 +564,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 5.3.0-dev.5 =
+= 5.3.0-b.1 =
 
-(2019/07/15) Added support for the Product GTIN (EAN, UPC, ISBN) for WooCommerce plugin. Optimized the saving of settings by having the browser exclude unchanged options from the $_POST. The WooCommerce integration module now reads variation meta to handle variation custom fields.
+(2019/07/16) Added support for the Product GTIN (EAN, UPC, ISBN) for WooCommerce plugin. Optimized the saving of settings by having the browser exclude unchanged options from the $_POST. The WooCommerce integration module now reads variation meta to handle variation custom fields.
 
 = 5.2.0 =
 
