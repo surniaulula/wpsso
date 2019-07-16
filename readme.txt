@@ -262,22 +262,6 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 
 * The following integration modules are provided with the Premium plugin, and are automatically loaded when the supported services are required or 3rd party plugins detected.
 
-	* **Integration with Service APIs:**
-
-		* Bitly
-		* DLMY.App
-		* Facebook Embedded Videos
-		* Gravatar (Author Image)
-		* Ow.ly
-		* Slideshare Presentations
-		* Soundcloud Tracks (for the Twitter Player Card)
-		* TinyURL
-		* Vimeo Videos
-		* Wistia Videos
-		* WordPress Video Shortcode (and Self-Hosted Videos)
-		* Your Own URL Shortener (YOURLS)
-		* YouTube Videos and Playlists
-
 	* **Integration with 3rd Party Plugins:** 
 
 		* [All in One SEO Pack](https://wordpress.org/plugins/all-in-one-seo-pack/)
@@ -286,7 +270,6 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 		* [Co-Authors Plus](https://wordpress.org/plugins/co-authors-plus/) (including Guest Authors)
 		* [Easy Digital Downloads](https://wordpress.org/plugins/easy-digital-downloads/)
 		* Gravity Forms + GravityView
-		* MarketPress - WordPress eCommerce
 		* [NextCellent Gallery - NextGEN Legacy](https://wordpress.org/plugins/nextcellent-gallery-nextgen-legacy/)
 		* [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/)
 		* [Polylang](https://wordpress.org/plugins/polylang/)
@@ -305,6 +288,22 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 		* [WP Recipe Maker](https://wordpress.org/plugins/wp-recipe-maker/)
 		* [WP Ultimate Recipe](https://wordpress.org/plugins/wp-ultimate-recipe/)
 		* [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/) (aka WordPress SEO)
+
+	* **Integration with Service APIs:**
+
+		* Bitly
+		* DLMY.App
+		* Facebook Embedded Videos
+		* Gravatar (Author Image)
+		* Ow.ly
+		* Slideshare Presentations
+		* Soundcloud Tracks (for the Twitter Player Card)
+		* TinyURL
+		* Vimeo Videos
+		* Wistia Videos
+		* WordPress Video Shortcode (and Self-Hosted Videos)
+		* Your Own URL Shortener (YOURLS)
+		* YouTube Videos and Playlists
 
 <h3>Coded for Performance</h3>
 
@@ -444,6 +443,7 @@ This version includes several jQuery improvements to optimize both the size of s
 * **New Features**
 	* Added support for the Product GTIN (EAN, UPC, ISBN) for WooCommerce plugin (Premium version).
 * **Improvements**
+	* **Removed support for the MarketPress plugin (plugin closed).**
 	* **Removed support for the HeadSpace2 SEO plugin (plugin not updated in 7 years).**
 	* Added an '@id' property to the Schema ImageObject and VideoObject markup.
 	* Added new status messages (min, max, and required) for the option field character count.
