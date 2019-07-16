@@ -352,6 +352,7 @@
 <li>NextCellent Gallery - NextGEN Legacy</li>
 <li>NextGEN Gallery</li>
 <li>Polylang</li>
+<li>Product GTIN (EAN, UPC, ISBN) for WooCommerce</li>
 <li>rtMedia for WordPress, BuddyPress and bbPress</li>
 <li>Simple Job Board</li>
 <li>The Events Calendar</li>

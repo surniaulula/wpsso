@@ -291,6 +291,7 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 		* NextCellent Gallery - NextGEN Legacy
 		* NextGEN Gallery
 		* Polylang
+		* Product GTIN (EAN, UPC, ISBN) for WooCommerce
 		* rtMedia for WordPress, BuddyPress and bbPress
 		* Simple Job Board
 		* The Events Calendar
@@ -441,17 +442,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 5.3.0-dev.5 (2019/07/15)**
 
 * **New Features**
-	* None.
+	* Added support for the Product GTIN (EAN, UPC, ISBN) for WooCommerce plugin (Premium version).
 * **Improvements**
 	* Added new status messages (min, max, and required) for the option field character count.
+	* Optimized the saving of settings by having the browser exclude unchanged options from the $_POST.
 * **Bugfixes**
 	* Fixed the metabox tab layout CSS for Safari (needed a vertical align to top).
+	* Fixed the 'on_show_unhide_rows' event by changing the unhide function call from `$(document).ready()` to `$(window).load()`.
 * **Developer Notes**
-	* Optimized the saving of settings by having the browser exclude unchanged options from the $_POST.
 	* Added a new String.prototype.formatUnicorn() javascript function (for min, max, and required status messages).
 	* Added a new WpssoScript::get_metabox_script_data() method (for min, max, and required status messages).
 	* Added a new 'on_focus_load_json' event name argument for SucomForm::get_select().
-	* Fixed the 'on_show_unhide_rows' event by moving the initial unhide function call from `$(document).ready()` to `$(window).load()`.
 	* Documented the default Schema property maximums (used by the WPSSO JSON add-on) in constants.txt:
 		* WPSSO_SCHEMA_ITEMS_PER_LIST_MAX          = 200
 		* WPSSO_SCHEMA_MENTIONS_PER_COLLECTION_MAX = 30
