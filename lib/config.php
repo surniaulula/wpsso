@@ -125,7 +125,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'seo' => array(
 								'aioseop'         => '(plugin) All in One SEO Pack',
 								'autodescription' => '(plugin) The SEO Framework',
-								'headspace2'      => '(plugin) HeadSpace2 SEO',
 								'wpmetaseo'       => '(plugin) WP Meta SEO',
 								'wpseo'           => '(plugin) Yoast SEO',
 							),

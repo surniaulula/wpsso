@@ -194,12 +194,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							break;
 
-						case 'seo-headspace2':
-
-							$chk[ 'class' ] = 'HeadSpace_Plugin';
-
-							break;
-
 						case 'seo-jetpack-seo':
 
 							if ( ! empty( $jetpack_mods ) ) {
