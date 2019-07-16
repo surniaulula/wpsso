@@ -75,7 +75,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							break;
 
-						case 'ecom-jck-wssv':
+						case 'ecom-jck_wssv':
 
 							$chk[ 'class' ] = 'JCK_WSSV';
 
@@ -95,6 +95,12 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						case 'ecom-wpecommerce':
 
 							$chk[ 'class' ] = 'WP_eCommerce';
+
+							break;
+
+						case 'ecom-wpm_product_gtin_wc':
+
+							$chk[ 'class' ] = 'WPM_Product_GTIN_WC';
 
 							break;
 
