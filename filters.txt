@@ -177,8 +177,6 @@
 
 'wpsso_og_ecom_edd' ( $og_ecom, $mod )
 
-'wpsso_og_ecom_marketpress' ( $og_ecom, $mod )
-
 'wpsso_og_ecom_woocommerce' ( $og_ecom, $mod )
 
 'wpsso_og_ecom_wpecommerce' ( $og_ecom, $mod )

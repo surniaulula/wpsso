@@ -78,7 +78,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'ecom' => array(
 								'edd'                 => '(plugin) Easy Digital Downloads',
 								'jsk_wssv'            => '(plugin) WooCommerce Show Single Variations',
-								'marketpress'         => '(plugin) MarketPress',
 								'woocommerce'         => '(plugin) WooCommerce',
 								'wpecommerce'         => '(plugin) WP eCommerce',
 								'wpm_product_gtin_wc' => '(plugin) Product GTIN for WooCommerce',
