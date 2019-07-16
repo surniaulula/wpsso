@@ -450,6 +450,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed the metabox tab layout CSS for Safari (needed a vertical align to top).
 	* Fixed the 'on_show_unhide_rows' event by changing the unhide function call from `$(document).ready()` to `$(window).load()`.
+	* Fixed duplicated Schema VideoObject markup from the YouTube integration module (Premium version).
 * **Developer Notes**
 	* Added a new String.prototype.formatUnicorn() javascript function (for min, max, and required status messages).
 	* Added a new WpssoScript::get_metabox_script_data() method (for min, max, and required status messages).
