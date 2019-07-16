@@ -280,32 +280,31 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 
 	* **Integration with 3rd Party Plugins:** 
 
-		* All in One SEO Pack
-		* bbPress
-		* BuddyPress (including Group Forum Topics)
-		* Co-Authors Plus (including Guest Authors)
-		* Easy Digital Downloads
+		* [All in One SEO Pack](https://wordpress.org/plugins/all-in-one-seo-pack/)
+		* [bbPress](https://wordpress.org/plugins/bbpress/)
+		* [BuddyPress](https://wordpress.org/plugins/buddypress/) (including Group Forum Topics)
+		* [Co-Authors Plus](https://wordpress.org/plugins/co-authors-plus/) (including Guest Authors)
+		* [Easy Digital Downloads](https://wordpress.org/plugins/easy-digital-downloads/)
 		* Gravity Forms + GravityView
-		* HeadSpace2 SEO
 		* MarketPress - WordPress eCommerce
-		* NextCellent Gallery - NextGEN Legacy
-		* NextGEN Gallery
-		* Polylang
-		* Product GTIN (EAN, UPC, ISBN) for WooCommerce
-		* rtMedia for WordPress, BuddyPress and bbPress
-		* Simple Job Board
-		* The Events Calendar
-		* The SEO Framework
-		* WooCommerce (versions 1, 2, and 3)
+		* [NextCellent Gallery - NextGEN Legacy](https://wordpress.org/plugins/nextcellent-gallery-nextgen-legacy/)
+		* [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/)
+		* [Polylang](https://wordpress.org/plugins/polylang/)
+		* [Product GTIN (EAN, UPC, ISBN) for WooCommerce](https://wordpress.org/plugins/product-gtin-ean-upc-isbn-for-woocommerce/)
+		* [rtMedia for WordPress, BuddyPress and bbPress](https://wordpress.org/plugins/buddypress-media/)
+		* [Simple Job Board](https://wordpress.org/plugins/simple-job-board/)
+		* [The Events Calendar](https://wordpress.org/plugins/the-events-calendar/)
+		* [The SEO Framework](https://wordpress.org/plugins/autodescription/)
+		* [WooCommerce](https://wordpress.org/plugins/woocommerce/) (versions 1, 2, and 3)
 		* WooCommerce Show Single Variations
-		* WP eCommerce
-		* WP Job Manager
-		* WP Meta SEO
-		* WP-PostRatings
-		* WP Product Review
-		* WP Recipe Maker
-		* WP Ultimate Recipe
-		* Yoast SEO (aka WordPress SEO)
+		* [WP eCommerce](https://wordpress.org/plugins/wp-e-commerce/)
+		* [WP Job Manager](https://wordpress.org/plugins/wp-job-manager/)
+		* [WP Meta SEO](https://wordpress.org/plugins/wp-meta-seo/)
+		* [WP-PostRatings](https://wordpress.org/plugins/wp-postratings/)
+		* [WP Product Review](https://wordpress.org/plugins/wp-product-review/)
+		* [WP Recipe Maker](https://wordpress.org/plugins/wp-recipe-maker/)
+		* [WP Ultimate Recipe](https://wordpress.org/plugins/wp-ultimate-recipe/)
+		* [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/) (aka WordPress SEO)
 
 <h3>Coded for Performance</h3>
 
@@ -370,7 +369,6 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 	* [Co-Author Plus](https://wpsso.com/docs/plugins/wpsso/notes/modules/co-author-plus/)
 	* [Easy Digital Downloads](https://wpsso.com/docs/plugins/wpsso/notes/modules/easy-digital-downloads/)
 	* [Facebook, Slideshare, Vimeo, Wistia, Youtube Video APIs](https://wpsso.com/docs/plugins/wpsso/notes/modules/facebook-slideshare-vimeo-wistia-youtube-video-apis/)
-	* [HeadSpace2 SEO](https://wpsso.com/docs/plugins/wpsso/notes/modules/headspace2-seo/)
 	* [NextCellent Gallery and NextGEN Gallery](https://wpsso.com/docs/plugins/wpsso/notes/modules/nextcellent-gallery-and-nextgen-gallery/)
 	* [Polylang](https://wpsso.com/docs/plugins/wpsso/notes/modules/polylang/)
 	* [The Events Calendar](https://wpsso.com/docs/plugins/wpsso/notes/modules/the-events-calendar/)
@@ -441,9 +439,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 **Version 5.3.0-b.1 (2019/07/16)**
 
+This version includes several jQuery improvements to optimize both the size of settings pages and their submitted data.
+
 * **New Features**
 	* Added support for the Product GTIN (EAN, UPC, ISBN) for WooCommerce plugin (Premium version).
 * **Improvements**
+	* **Removed support for the HeadSpace2 SEO plugin (plugin not updated in 7 years).**
+	* Added an '@id' property to the Schema ImageObject and VideoObject markup.
 	* Added new status messages (min, max, and required) for the option field character count.
 	* Optimized the saving of settings by having the browser exclude unchanged options from the $_POST.
 	* The WooCommerce integration module now reads variation meta to handle variation custom fields (Premium version).
@@ -455,7 +457,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new String.prototype.formatUnicorn() javascript function (for min, max, and required status messages).
 	* Added a new WpssoScript::get_metabox_script_data() method (for min, max, and required status messages).
 	* Added a new 'on_focus_load_json' event name argument for SucomForm::get_select().
-	* Added an '@id' property to the Schema ImageObject and VideoObject markup.
 	* Documented the default Schema property maximums (used by the WPSSO JSON add-on) in constants.txt:
 		* WPSSO_SCHEMA_ITEMS_PER_LIST_MAX          = 200
 		* WPSSO_SCHEMA_MENTIONS_PER_COLLECTION_MAX = 30
@@ -538,9 +539,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Renamed "Pro" distribution to "Premium".
-	* Renamed "Free" distribution to "Standard".
-	* Removed support for the Yotpo Social Reviews for WooCommerce plugin (too many bad reviews and too few active installations).
+	* **Removed support for the Yotpo Social Reviews for WooCommerce plugin (too many bad reviews and too few active installations).**
 	* Added checks for missing WooCommerce "My account page", "Cart page", "Checkout page", and "Shop page" selections (Premium plugin).
 	* Added an action hook to remove duplicate JSON-LD markup in AMP pages from the Yoast SEO plugin.
 	* Added new Schema Article sub-types:
@@ -555,6 +554,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* https://schema.org/ReportageNewsArticle
 		* https://schema.org/ReviewNewsArticle
 		* https://schema.org/SatiricalArticle
+	* Renamed "Pro" distribution to "Premium".
+	* Renamed "Free" distribution to "Standard".
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -567,7 +568,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 5.3.0-b.1 =
 
-(2019/07/16) Added support for the Product GTIN (EAN, UPC, ISBN) for WooCommerce plugin. Optimized the saving of settings by having the browser exclude unchanged options from the $_POST. The WooCommerce integration module now reads variation meta to handle variation custom fields.
+(2019/07/16) This version includes several jQuery improvements to optimize both the size of settings pages and their submitted data. Added support for the Product GTIN (EAN, UPC, ISBN) for WooCommerce plugin.
 
 = 5.2.0 =
 

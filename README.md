@@ -341,32 +341,31 @@
 <li><p><strong>Integration with 3rd Party Plugins:</strong></p>
 
 <ul>
-<li>All in One SEO Pack</li>
-<li>bbPress</li>
-<li>BuddyPress (including Group Forum Topics)</li>
-<li>Co-Authors Plus (including Guest Authors)</li>
-<li>Easy Digital Downloads</li>
+<li><a href="https://wordpress.org/plugins/all-in-one-seo-pack/">All in One SEO Pack</a></li>
+<li><a href="https://wordpress.org/plugins/bbpress/">bbPress</a></li>
+<li><a href="https://wordpress.org/plugins/buddypress/">BuddyPress</a> (including Group Forum Topics)</li>
+<li><a href="https://wordpress.org/plugins/co-authors-plus/">Co-Authors Plus</a> (including Guest Authors)</li>
+<li><a href="https://wordpress.org/plugins/easy-digital-downloads/">Easy Digital Downloads</a></li>
 <li>Gravity Forms + GravityView</li>
-<li>HeadSpace2 SEO</li>
 <li>MarketPress - WordPress eCommerce</li>
-<li>NextCellent Gallery - NextGEN Legacy</li>
-<li>NextGEN Gallery</li>
-<li>Polylang</li>
-<li>Product GTIN (EAN, UPC, ISBN) for WooCommerce</li>
-<li>rtMedia for WordPress, BuddyPress and bbPress</li>
-<li>Simple Job Board</li>
-<li>The Events Calendar</li>
-<li>The SEO Framework</li>
-<li>WooCommerce (versions 1, 2, and 3)</li>
+<li><a href="https://wordpress.org/plugins/nextcellent-gallery-nextgen-legacy/">NextCellent Gallery - NextGEN Legacy</a></li>
+<li><a href="https://wordpress.org/plugins/nextgen-gallery/">NextGEN Gallery</a></li>
+<li><a href="https://wordpress.org/plugins/polylang/">Polylang</a></li>
+<li><a href="https://wordpress.org/plugins/product-gtin-ean-upc-isbn-for-woocommerce/">Product GTIN (EAN, UPC, ISBN) for WooCommerce</a></li>
+<li><a href="https://wordpress.org/plugins/buddypress-media/">rtMedia for WordPress, BuddyPress and bbPress</a></li>
+<li><a href="https://wordpress.org/plugins/simple-job-board/">Simple Job Board</a></li>
+<li><a href="https://wordpress.org/plugins/the-events-calendar/">The Events Calendar</a></li>
+<li><a href="https://wordpress.org/plugins/autodescription/">The SEO Framework</a></li>
+<li><a href="https://wordpress.org/plugins/woocommerce/">WooCommerce</a> (versions 1, 2, and 3)</li>
 <li>WooCommerce Show Single Variations</li>
-<li>WP eCommerce</li>
-<li>WP Job Manager</li>
-<li>WP Meta SEO</li>
-<li>WP-PostRatings</li>
-<li>WP Product Review</li>
-<li>WP Recipe Maker</li>
-<li>WP Ultimate Recipe</li>
-<li>Yoast SEO (aka WordPress SEO)</li>
+<li><a href="https://wordpress.org/plugins/wp-e-commerce/">WP eCommerce</a></li>
+<li><a href="https://wordpress.org/plugins/wp-job-manager/">WP Job Manager</a></li>
+<li><a href="https://wordpress.org/plugins/wp-meta-seo/">WP Meta SEO</a></li>
+<li><a href="https://wordpress.org/plugins/wp-postratings/">WP-PostRatings</a></li>
+<li><a href="https://wordpress.org/plugins/wp-product-review/">WP Product Review</a></li>
+<li><a href="https://wordpress.org/plugins/wp-recipe-maker/">WP Recipe Maker</a></li>
+<li><a href="https://wordpress.org/plugins/wp-ultimate-recipe/">WP Ultimate Recipe</a></li>
+<li><a href="https://wordpress.org/plugins/wordpress-seo/">Yoast SEO</a> (aka WordPress SEO)</li>
 </ul></li>
 </ul></li>
 </ul>
@@ -448,7 +447,6 @@
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/modules/co-author-plus/">Co-Author Plus</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/modules/easy-digital-downloads/">Easy Digital Downloads</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/modules/facebook-slideshare-vimeo-wistia-youtube-video-apis/">Facebook, Slideshare, Vimeo, Wistia, Youtube Video APIs</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/notes/modules/headspace2-seo/">HeadSpace2 SEO</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/modules/nextcellent-gallery-and-nextgen-gallery/">NextCellent Gallery and NextGEN Gallery</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/modules/polylang/">Polylang</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/modules/the-events-calendar/">The Events Calendar</a></li>
