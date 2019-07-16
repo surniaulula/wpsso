@@ -438,7 +438,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.3.0-dev.4 (2019/07/15)**
+**Version 5.3.0-dev.5 (2019/07/15)**
 
 * **New Features**
 	* None.
@@ -451,6 +451,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new String.prototype.formatUnicorn() javascript function (for min, max, and required status messages).
 	* Added a new WpssoScript::get_metabox_script_data() method (for min, max, and required status messages).
 	* Added a new 'on_focus_load_json' event name argument for SucomForm::get_select().
+	* Fixed the 'on_show_unhide_rows' event by moving the initial unhide function call from `$(document).ready()` to `$(window).load()`.
 	* Documented the default Schema property maximums (used by the WPSSO JSON add-on) in constants.txt:
 		* WPSSO_SCHEMA_ITEMS_PER_LIST_MAX          = 200
 		* WPSSO_SCHEMA_MENTIONS_PER_COLLECTION_MAX = 30
@@ -560,7 +561,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 5.3.0-dev.4 =
+= 5.3.0-dev.5 =
 
 (2019/07/15) Added new status messages for the option field character count. Optimized the saving of settings by having the browser exclude unchanged options from the $_POST.
 
