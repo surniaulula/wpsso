@@ -446,6 +446,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Added new status messages (min, max, and required) for the option field character count.
 	* Optimized the saving of settings by having the browser exclude unchanged options from the $_POST.
+	* The WooCommerce integration module now reads variation meta to handle variation custom fields (Premium version).
 * **Bugfixes**
 	* Fixed the metabox tab layout CSS for Safari (needed a vertical align to top).
 	* Fixed the 'on_show_unhide_rows' event by changing the unhide function call from `$(document).ready()` to `$(window).load()`.
@@ -564,7 +565,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 5.3.0-dev.5 =
 
-(2019/07/15) Added new status messages for the option field character count. Optimized the saving of settings by having the browser exclude unchanged options from the $_POST.
+(2019/07/15) Added support for the Product GTIN (EAN, UPC, ISBN) for WooCommerce plugin. Optimized the saving of settings by having the browser exclude unchanged options from the $_POST. The WooCommerce integration module now reads variation meta to handle variation custom fields.
 
 = 5.2.0 =
 
