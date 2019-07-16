@@ -114,7 +114,7 @@ if ( ! class_exists( 'WpssoStdAdminPost' ) ) {
 				),
 				'seo_desc' => array(
 					'no_auto_draft' => true,
-					'tr_class'      => ( $add_meta_name_desc ? '' : 'hide_in_basic' ), // Always hide if head tag is disabled.
+					'tr_class'      => ( $add_meta_name_desc ? '' : 'hide_in_basic' ),
 					'th_class'      => 'medium',
 					'td_class'      => 'blank',
 					'label'         => _x( 'Search Description', 'option label', 'wpsso' ),

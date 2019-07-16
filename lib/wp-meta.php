@@ -465,36 +465,56 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$table_rows  = array();
-			$prev_width  = 600;
-			$prev_height = 315;
-			$force_regen = $this->p->util->is_force_regen( $mod, 'og' ) ? '?force_regen=' . time() : '';
-			$media_url   = SucomUtil::get_mt_media_url( $head_info ) . $force_regen;
+			$table_rows       = array();
+			$force_regen_arg  = $this->p->util->is_force_regen( $mod, 'og' ) ? '?force_regen=' . time() : '';
+			$media_url        = SucomUtil::get_mt_media_url( $head_info ) . $force_regen_arg;
+			$og_prev_width    = 600;
+			$og_prev_height   = 315;
+			$og_prev_img_html = '';
 
 			$have_sizes = ( isset( $head_info[ 'og:image:width' ] ) && $head_info[ 'og:image:width' ] > 0 && 
 				isset( $head_info[ 'og:image:height' ] ) && $head_info[ 'og:image:height' ] > 0 ) ? true : false;
 
-			$is_sufficient = true === $have_sizes && $head_info[ 'og:image:width' ] >= $prev_width && 
-				$head_info[ 'og:image:height' ] >= $prev_height ? true : false;
+			$is_sufficient = true === $have_sizes && $head_info[ 'og:image:width' ] >= $og_prev_width && 
+				$head_info[ 'og:image:height' ] >= $og_prev_height ? true : false;
 
 			if ( ! empty( $media_url ) ) {
 
-				if ( true === $have_sizes ) {
+				if ( $have_sizes ) {
 
-					$image_preview_html = '<div class="preview_img" style=" background-size:' . 
-						( true === $is_sufficient ? 'cover' : $head_info[ 'og:image:width' ] . ' ' . $head_info[ 'og:image:height' ] ) . 
-							'; background-image:url(' . $media_url . ');" />' . 
-						( true === $is_sufficient ? '' : '<p>' . sprintf( _x( 'Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s',
-							'preview image error', 'wpsso' ), $prev_width . 'x' . $prev_height . 'px' ) . '</p>' ) . '</div>';
+					$og_prev_img_html .= '<div class="preview_img" style=" background-size:' ;
+
+					if ( $is_sufficient ) {
+						$og_prev_img_html .= 'cover';
+					} else {
+						$og_prev_img_html .= $head_info[ 'og:image:width' ] . 'px ' . $head_info[ 'og:image:height' ] . 'px';
+					}
+
+					$og_prev_img_html .= '; background-image:url(' . $media_url . ');" />';
+
+					if ( ! $is_sufficient ) {
+						$og_prev_img_html .= '<p>' . sprintf( _x( 'Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s',
+							'preview image error', 'wpsso' ), $og_prev_width . 'x' . $og_prev_height . 'px' ) . '</p>';
+					}
+
+					$og_prev_img_html .= '</div>';
+
 				} else {
 
-					$image_preview_html = '<div class="preview_img" style="background-image:url(' . $media_url . ');" /><p>' . 
-						_x( 'Image Dimensions Unknown<br/>or Not Available', 'preview image error', 'wpsso' ) . '</p></div>';
+					$og_prev_img_html .= '<div class="preview_img" style="background-image:url(' . $media_url . ');" />';
+
+					$og_prev_img_html .= '<p>' . _x( 'Image Dimensions Unknown<br/>or Not Available', 'preview image error', 'wpsso' ) . '</p>';
+
+					$og_prev_img_html .= '</div>';
 				}
 				
 			} else {
-				$image_preview_html = '<div class="preview_img"><p>' . 
-					_x( 'No Open Graph Image Found', 'preview image error', 'wpsso' ) . '</p></div>';
+
+				$og_prev_img_html .= '<div class="preview_img">';
+				
+				$og_prev_img_html .= '<p>' . _x( 'No Open Graph Image Found', 'preview image error', 'wpsso' ) . '</p>';
+
+				$og_prev_img_html .= '</div>';
 			}
 
 			if ( isset( $mod[ 'post_status' ] ) && $mod[ 'post_status' ] === 'auto-draft' ) {
@@ -547,7 +567,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$table_rows[] = '<td colspan="2" style="background-color:#e9eaed;border:1px dotted #e0e0e0;">
 				<div class="preview_box_border">
 					<div class="preview_box">
-						' . $image_preview_html . '
+						' . $og_prev_img_html . '
 						<div class="preview_txt">
 							<div class="preview_title">' . 
 								( empty( $head_info[ 'og:title' ] ) ? 'No Title' : $head_info[ 'og:title' ] ) . 

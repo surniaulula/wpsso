@@ -102,7 +102,7 @@ if ( ! class_exists( 'WpssoStdAdminMeta' ) ) {
 					'content'  => $form->get_no_textarea_value( $def_og_desc, '', '', $og_desc_max_len ),
 				),
 				'seo_desc' => array(
-					'tr_class' => ( $add_meta_name_desc ? '' : 'hide_in_basic' ), // Always hide if head tag is disabled.
+					'tr_class' => ( $add_meta_name_desc ? '' : 'hide_in_basic' ),
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Search Description', 'option label', 'wpsso' ),

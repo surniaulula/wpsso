@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 5.3.0-dev.5\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 5.3.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2774,7 +2774,7 @@ msgid "Force Autoplay when Possible"
 msgstr ""
 
 #: lib/gettext-pro.php:100 lib/pro/admin/post.php:91 lib/std/admin/post.php:82
-#: lib/wp-meta.php:502
+#: lib/wp-meta.php:522
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
@@ -2813,14 +2813,14 @@ msgstr ""
 
 #: lib/gettext-pro.php:106 lib/gettext-pro.php:129 lib/pro/admin/meta.php:132
 #: lib/pro/admin/post.php:142 lib/std/admin/meta.php:124
-#: lib/std/admin/post.php:138 lib/wp-meta.php:506 lib/wp-meta.php:530
+#: lib/std/admin/post.php:138 lib/wp-meta.php:526 lib/wp-meta.php:550
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
 #: lib/gettext-pro.php:107 lib/gettext-pro.php:130 lib/pro/admin/meta.php:139
 #: lib/pro/admin/post.php:150 lib/std/admin/meta.php:132
-#: lib/std/admin/post.php:147 lib/wp-meta.php:510 lib/wp-meta.php:534
+#: lib/std/admin/post.php:147 lib/wp-meta.php:530 lib/wp-meta.php:554
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
@@ -5968,31 +5968,31 @@ msgstr ""
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema-single.php:769
+#: lib/schema-single.php:785
 msgid "adding schema offer"
 msgstr ""
 
-#: lib/schema-single.php:861
+#: lib/schema-single.php:878
 msgid "adding schema organization"
 msgstr ""
 
-#: lib/schema-single.php:903
+#: lib/schema-single.php:920
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema-single.php:910
+#: lib/schema-single.php:927
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema-single.php:1052
+#: lib/schema-single.php:1069
 msgid "adding schema for person user ID %1$s"
 msgstr ""
 
-#: lib/schema-single.php:1206
+#: lib/schema-single.php:1225
 msgid "adding schema place"
 msgstr ""
 
@@ -6673,112 +6673,112 @@ msgctxt "metabox tab"
 msgid "Validate"
 msgstr ""
 
-#: lib/wp-meta.php:487
+#: lib/wp-meta.php:496
 msgctxt "preview image error"
 msgid "Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/wp-meta.php:492
+#: lib/wp-meta.php:506
 msgctxt "preview image error"
 msgid "Image Dimensions Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/wp-meta.php:497
+#: lib/wp-meta.php:515
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/wp-meta.php:514 lib/wp-meta.php:540
+#: lib/wp-meta.php:534 lib/wp-meta.php:560
 msgctxt "option label"
 msgid "Shortlink URL"
 msgstr ""
 
-#: lib/wp-meta.php:545
+#: lib/wp-meta.php:565
 msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/wp-meta.php:678
+#: lib/wp-meta.php:698
 msgctxt "option label"
 msgid "Facebook Open Graph Debugger"
 msgstr ""
 
-#: lib/wp-meta.php:679
+#: lib/wp-meta.php:699
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/wp-meta.php:683
+#: lib/wp-meta.php:703
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/wp-meta.php:684
+#: lib/wp-meta.php:704
 msgctxt "submit button"
 msgid "Validate Metadata"
 msgstr ""
 
-#: lib/wp-meta.php:688
+#: lib/wp-meta.php:708
 msgctxt "option label"
 msgid "Google Structured Data Test"
 msgstr ""
 
-#: lib/wp-meta.php:689
+#: lib/wp-meta.php:709
 msgctxt "submit button"
 msgid "Validate Structured Data"
 msgstr ""
 
-#: lib/wp-meta.php:693
+#: lib/wp-meta.php:713
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/wp-meta.php:694
+#: lib/wp-meta.php:714
 msgctxt "submit button"
 msgid "Validate Rich Results"
 msgstr ""
 
-#: lib/wp-meta.php:698
+#: lib/wp-meta.php:718
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/wp-meta.php:699
+#: lib/wp-meta.php:719
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/wp-meta.php:703
+#: lib/wp-meta.php:723
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/wp-meta.php:704
+#: lib/wp-meta.php:724
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/wp-meta.php:709
+#: lib/wp-meta.php:729
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr ""
 
-#: lib/wp-meta.php:710
+#: lib/wp-meta.php:730
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr ""
 
-#: lib/wp-meta.php:714
+#: lib/wp-meta.php:734
 msgctxt "option label"
 msgid "The AMP Validator"
 msgstr ""
 
-#: lib/wp-meta.php:715
+#: lib/wp-meta.php:735
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/wp-meta.php:955
+#: lib/wp-meta.php:975
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 

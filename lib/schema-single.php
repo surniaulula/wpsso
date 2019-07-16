@@ -51,7 +51,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
 			list( $image_type_id, $image_type_url ) = self::get_type_id_url( $json_data,
-				false, 'image_type', 'image.object', $list_element );
+				$type_opts = false, $opt_key = 'image_type', $def_type_id = 'image.object', $list_element );
 
 			$ret = WpssoSchema::get_schema_type_context( $image_type_url, array(
 				'url' => SucomUtil::esc_url_encode( $image_url ),
@@ -151,7 +151,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
+			/**
+			 * Update the @id string based on $ret[ 'url' ], $image_type_id, and the og:image:id values.
+			 */
 			if ( ! empty( $mt_single[ $mt_prefix . ':id' ] ) ) {
+				WpssoSchema::update_data_id( $ret, $image_type_id . '/' . $mt_single[ $mt_prefix . ':id' ] );
 			}
 
 			if ( empty( $list_element ) ) {		// Add a single item.
@@ -191,6 +195,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			$wpsso =& Wpsso::get_instance();
 
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->mark();
+			}
+
 			if ( empty( $mt_single ) || ! is_array( $mt_single ) ) {
 
 				if ( $wpsso->debug->enabled ) {
@@ -212,7 +220,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
-			list( $video_type_id, $video_type_url ) = self::get_type_id_url( $json_data, false, false, 'video.object', $list_element );
+			list( $video_type_id, $video_type_url ) = self::get_type_id_url( $json_data,
+				$type_opts = false, $opt_key = false, $def_type_id = 'video.object', $list_element );
 
 			$ret = WpssoSchema::get_schema_type_context( $video_type_url, array(
 				'url' => SucomUtil::esc_url_encode( $media_url ),
@@ -221,7 +230,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			WpssoSchema::add_data_itemprop_from_assoc( $ret, $mt_single, array(
 				'name'         => $mt_prefix . ':title',
 				'description'  => $mt_prefix . ':description',
-				'fileFormat'   => $mt_prefix . ':type',	// mime type
+				'fileFormat'   => $mt_prefix . ':type',	// Mime type.
 				'width'        => $mt_prefix . ':width',
 				'height'       => $mt_prefix . ':height',
 				'duration'     => $mt_prefix . ':duration',
@@ -243,6 +252,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					$ret[ 'keywords' ] = $mt_single[ $mt_prefix . ':tag' ];
 				}
 			}
+
+			/**
+			 * Update the @id string based on $ret[ 'url' ] and $video_type_id.
+			 */
+			WpssoSchema::update_data_id( $ret, $video_type_id . ( empty( $ret[ 'fileFormat' ] ) ? '' : '/' . $ret[ 'fileFormat' ] ) );
 
 			if ( empty( $list_element ) ) {		// Add a single item.
 				$json_data = $ret;
@@ -416,7 +430,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
-			list( $event_type_id, $event_type_url ) = self::get_type_id_url( $json_data, $event_opts, 'event_type', 'event', $list_element );
+			list( $event_type_id, $event_type_url ) = self::get_type_id_url( $json_data,
+				$event_opts, $opt_key = 'event_type', $def_type_id = 'event', $list_element );
 
 			$ret = WpssoSchema::get_schema_type_context( $event_type_url );
 
@@ -531,7 +546,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
-			list( $job_type_id, $job_type_url ) = self::get_type_id_url( $json_data, $job_opts, 'job_type', 'job.posting', $list_element );
+			list( $job_type_id, $job_type_url ) = self::get_type_id_url( $json_data,
+				$job_opts, $opt_key = 'job_type', $def_type_id = 'job.posting', $list_element );
 
 			$ret = WpssoSchema::get_schema_type_context( $job_type_url );
 
@@ -847,7 +863,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
-			list( $org_type_id, $org_type_url ) = self::get_type_id_url( $json_data, $org_opts, 'org_schema_type', 'organization', $list_element );
+			list( $org_type_id, $org_type_url ) = self::get_type_id_url( $json_data,
+				$org_opts, $opt_key = 'org_schema_type', $def_type_id = 'organization', $list_element );
 
 			$ret = WpssoSchema::get_schema_type_context( $org_type_url );
 
@@ -1105,7 +1122,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
-			list( $person_type_id, $person_type_url ) = self::get_type_id_url( $json_data, $person_opts, 'person_type', 'person', $list_element );
+			list( $person_type_id, $person_type_url ) = self::get_type_id_url( $json_data,
+				$person_opts, $opt_key = 'person_type', $def_type_id = 'person', $list_element );
 
 			$ret = WpssoSchema::get_schema_type_context( $person_type_url );
 
@@ -1192,7 +1210,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
-			list( $place_type_id, $place_type_url ) = self::get_type_id_url( $json_data, $place_opts, 'place_schema_type', 'place', $list_element );
+			list( $place_type_id, $place_type_url ) = self::get_type_id_url( $json_data,
+				$place_opts, $opt_key = 'place_schema_type', $def_type_id = 'place', $list_element );
 
 			$ret = WpssoSchema::get_schema_type_context( $place_type_url );
 
@@ -1377,7 +1396,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		 * If not adding a list element, then inherit the existing
 		 * schema type url (if one exists).
 		 */
-		public static function get_type_id_url( $json_data, $type_opts, $opt_key, $default_id, $list_element = false ) {
+		public static function get_type_id_url( $json_data, $type_opts, $opt_key, $def_type_id, $list_element = false ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -1400,20 +1419,20 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				 */
 				if ( empty( $type_opts[ $opt_key ] ) || $type_opts[ $opt_key ] === 'none' ) {
 
-					$single_type_id   = $default_id;
-					$single_type_url  = $wpsso->schema->get_schema_type_url( $default_id );
+					$single_type_id   = $def_type_id;
+					$single_type_url  = $wpsso->schema->get_schema_type_url( $def_type_id );
 					$single_type_from = 'default';
 
 				} else {
 
 					$single_type_id   = $type_opts[ $opt_key ];
-					$single_type_url  = $wpsso->schema->get_schema_type_url( $single_type_id, $default_id );
+					$single_type_url  = $wpsso->schema->get_schema_type_url( $single_type_id, $def_type_id );
 					$single_type_from = 'options';
 				}
 
 			} else {
 
-				$single_type_id = $wpsso->schema->get_schema_type_url_id( $single_type_url, $default_id );
+				$single_type_id = $wpsso->schema->get_schema_type_url_id( $single_type_url, $def_type_id );
 			}
 
 			if ( $wpsso->debug->enabled ) {

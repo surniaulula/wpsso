@@ -1841,7 +1841,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 								if ( ! empty( $a[ 'content' ] ) ) {
 									if ( preg_match( '/^twitter:app:([a-z]+):([a-z]+)$/', $meta_name, $matches ) ) {
-										$og_single_video[ 'og:video:' . $matches[2] . '_' . $matches[1]] = SucomUtil::decode_html( $a[ 'content' ] );
+										$og_single_video[ 'og:video:' . $matches[2] . '_' .
+											$matches[ 1 ] ] = SucomUtil::decode_html( $a[ 'content' ] );
 									}
 								}
 
