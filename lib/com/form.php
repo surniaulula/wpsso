@@ -364,8 +364,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				return;
 			}
 
-			static $do_once_json_array = array();
-			static $do_once_show_hide_js = null;
+			static $do_once_json_array   = array();	// Associative array by $json_key.
+			static $do_once_show_hide_js = null;	// Null or true.
 
 			$filter_name   = SucomUtil::sanitize_hookname( $this->lca . '_form_select_' . $name );
 
@@ -555,9 +555,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						 * render the option list correctly.
 						 */
 						$html .= '<script type="text/javascript">';
-						$html .= 'jQuery( function(){ jQuery( \'select#' . $input_id_esc . ':not( .json_loaded )\' ).on( \'hover focus\', function(){ ';
+						$html .= 'jQuery( \'select#' . $input_id_esc . ':not( .json_loaded )\' ).on( \'hover focus\', function(){';
 						$html .= 'sucomSelectLoadJson( \'select#' . $input_id_esc . '\', \'' . $json_key . '\' );';
-						$html .= '}); });';
+						$html .= '});';
 						$html .= '</script>' . "\n";
 
 						break;
@@ -578,9 +578,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						$redirect_url_encoded = SucomUtil::esc_url_encode( $redirect_url );
 
 						$html .= '<script type="text/javascript">';
-						$html .= 'jQuery( function(){ jQuery( \'select#' . esc_js( $input_id ) . '\' ).on( \'change\', function(){ ';
+						$html .= 'jQuery( \'select#' . esc_js( $input_id ) . '\' ).on( \'change\', function(){';
 						$html .= 'sucomSelectChangeRedirect( \'' . esc_js( $name ) . '\', this.value, \'' . $redirect_url_encoded . '\' );';
-						$html .= '}); });';
+						$html .= '});';
 						$html .= '</script>' . "\n";
 
 						break;
@@ -591,21 +591,22 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 							$do_once_show_hide_js = true;
 
-							$html .= '
-								<script type="text/javascript">
-									jQuery( function(){ jQuery.each( [ \'show\', \'hide\' ], function( i, ev ){
-										var el = jQuery.fn[ ev ];
-										jQuery.fn[ ev ] = function(){
-											if ( jQuery( this ).is( \'tr\' ) ) {
-												var css_class = jQuery( this ).attr( \'class\' );
-												if ( css_class && css_class.indexOf( \'hide_\' ) == 0 ) {
-													this.trigger( ev );
-												}
-											}
-											return el.apply( this, arguments );
-										};
-									}); });
-								</script>';
+							$html .= <<<EOF
+<script type="text/javascript">
+jQuery.each( [ 'show', 'hide' ], function( i, ev ){
+	var el = jQuery.fn[ ev ];
+	jQuery.fn[ ev ] = function(){
+		if ( jQuery( this ).is( 'tr' ) ) {
+			var css_class = jQuery( this ).attr( 'class' );
+			if ( css_class && css_class.indexOf( 'hide_' ) == 0 ) {
+				this.trigger( ev );
+			}
+		}
+		return el.apply( this, arguments );
+	};
+});
+</script>
+EOF;
 						}
 
 						// No break.
@@ -613,10 +614,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					case 'on_change_unhide_rows':
 
 						$html .= '<script type="text/javascript">';
-						$html .= 'jQuery( function(){ jQuery( \'select#' . esc_js( $input_id ) . '\' ).on( \'change\', function(){ ';
-						$html .= 'sucomSelectChangeUnhideRows( \'hide_' . esc_js( $name ) . '\', ' .
-							'\'hide_' . esc_js( $name ) . '_\' + this.value );';
-						$html .= '}); });';
+						$html .= 'jQuery( \'select#' . esc_js( $input_id ) . '\' ).on( \'change\', function(){';
+						$html .= 'sucomSelectChangeUnhideRows( \'hide_' . esc_js( $name ) . '\', \'hide_' . esc_js( $name ) . '_\' + this.value );';
+						$html .= '});';
 						$html .= '</script>' . "\n";
 
 						/**
@@ -640,22 +640,32 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 							if ( false !== $unhide_value ) {	// Just in case.
 
+								$hide_class   = 'hide_' . esc_js( $name );
+								$unhide_class = 'hide_' . esc_js( $name . '_' . $unhide_value );
+
 								if ( $event_name === 'on_show_unhide_rows' ) {
 
 									$html .= '<script type="text/javascript">';
-									$html .= 'jQuery( function(){ jQuery( \'#' . esc_js( $tr_id ) . '\' ).on( \'show\', function(){ ';
-									$html .= 'sucomSelectChangeUnhideRows( \'hide_' . esc_js( $name ) . '\', ' .
-										'\'hide_' . esc_js( $name . '_' . $unhide_value ) . '\' );';
-									$html .= '}); });';
+									$html .= 'jQuery( \'tr#' . esc_js( $tr_id ) . '\' ).on( \'show\', function(){';
+									$html .= 'sucomSelectChangeUnhideRows( \'' . $hide_class . '\', \'' . $unhide_class . '\' );';
+									$html .= '});';
 									$html .= '</script>' . "\n";
 
 								} else {
 
 									$html .= '<script type="text/javascript">';
-									$html .= 'jQuery( document ).ready( function(){ ';
-									$html .= 'sucomSelectChangeUnhideRows( \'hide_' . esc_js( $name ) . '\', ' .
-										'\'hide_' . esc_js( $name . '_' . $unhide_value ) . '\' );';
-									$html .= '});';
+
+									if ( SucomUtil::get_const( 'DOING_AJAX' ) ) {
+
+										$html .= 'sucomSelectChangeUnhideRows( \'' . $hide_class . '\', \'' . $unhide_class . '\' );';
+
+									} else {
+
+										$html .= 'jQuery( window ).load( function(){';
+										$html .= 'sucomSelectChangeUnhideRows( \'' . $hide_class . '\', \'' . $unhide_class . '\' );';
+										$html .= '});';
+									}
+
 									$html .= '</script>' . "\n";
 								}
 							}

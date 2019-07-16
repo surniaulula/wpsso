@@ -770,22 +770,32 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						if ( $md_opts[ $md_key ] === 'none' ) {
 
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( $md_key . ' option is "none"' .
-									' - unsetting ' . $mt_name . ' meta tag' );
+								$this->p->debug->log( $md_key . ' option is none - unsetting ' . $mt_name . ' meta tag' );
 							}
 
 							unset( $mt_og[ $mt_name ] );
 
+						/**
+						 * Check for meta data and meta tags that require a unit value.
+						 *
+						 * Example: 
+						 *
+						 *	'product:depth:value'  => 'product_depth_value',
+						 *	'product:height:value' => 'product_height_value',
+						 *	'product:length:value' => 'product_length_value',
+						 *	'product:volume:value' => 'product_volume_value',
+						 *	'product:weight:value' => 'product_weight_value',
+						 *	'product:width:value'  => 'product_width_value',
+						 */
 						} elseif ( preg_match( '/^.*_([^_]+)_value$/', $md_key, $unit_match ) &&
 							preg_match( '/^(.*):value$/', $mt_name, $mt_match ) ) {
 
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( $md_key . ' option is a possible value with units' );
+								$this->p->debug->log( $md_key . ' option is value with units' );
 							}
 
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( $type_id . ' meta tag ' . $mt_name .
-									' from option = ' . $md_opts[ $md_key ] );
+								$this->p->debug->log( $type_id . ' meta tag ' . $mt_name . ' from option = ' . $md_opts[ $md_key ] );
 							}
 
 							$mt_og[ $mt_name ] = $md_opts[ $md_key ];
@@ -815,8 +825,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						} else {
 
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( $type_id . ' meta tag ' . $mt_name .
-									' from option = ' . $md_opts[ $md_key ] );
+								$this->p->debug->log( $type_id . ' meta tag ' . $mt_name . ' from option = ' . $md_opts[ $md_key ] );
 							}
 
 							$mt_og[ $mt_name ] = $md_opts[ $md_key ];
@@ -825,15 +834,13 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					} elseif ( isset( $mt_og[ $mt_name ] ) ) {
 
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $type_id . ' meta tag ' . $mt_name .
-								' value kept = ' . $mt_og[ $mt_name ] );
+							$this->p->debug->log( $type_id . ' meta tag ' . $mt_name . ' value kept = ' . $mt_og[ $mt_name ] );
 						}
 
 					} else {
 
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $type_id . ' meta tag ' . $mt_name .
-								' defined as null' );
+							$this->p->debug->log( $type_id . ' meta tag ' . $mt_name . ' defined as null' );
 						}
 
 						$mt_og[ $mt_name ] = null;	// Use null so isset() returns false.
