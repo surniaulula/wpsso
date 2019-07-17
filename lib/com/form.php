@@ -624,30 +624,30 @@ EOF;
 						 */
 						if ( false !== $selected ) {
 
-							$unhide_value = false;
+							$show_value = false;
 
 							if ( true === $selected ) {
 
 								if ( $in_options ) {
-									$unhide_value = $this->options[ $name ];
+									$show_value = $this->options[ $name ];
 								} elseif ( $in_defaults ) {
-									$unhide_value = $this->defaults[ $name ];
+									$show_value = $this->defaults[ $name ];
 								}
 
 							} else {
-								$unhide_value = $selected;
+								$show_value = $selected;
 							}
 
-							if ( false !== $unhide_value ) {	// Just in case.
+							if ( false !== $show_value ) {	// Just in case.
 
-								$hide_class   = 'hide_' . esc_js( $name );
-								$unhide_class = 'hide_' . esc_js( $name . '_' . $unhide_value );
+								$hide_class = 'hide_' . esc_js( $name );
+								$show_class = 'hide_' . esc_js( $name . '_' . $show_value );
 
 								if ( $event_name === 'on_show_unhide_rows' ) {
 
 									$html .= '<script type="text/javascript">';
 									$html .= 'jQuery( \'tr#' . esc_js( $tr_id ) . '\' ).on( \'show\', function(){';
-									$html .= 'sucomSelectChangeUnhideRows( \'' . $hide_class . '\', \'' . $unhide_class . '\' );';
+									$html .= 'sucomSelectChangeUnhideRows( \'' . $hide_class . '\', \'' . $show_class . '\' );';
 									$html .= '});';
 									$html .= '</script>' . "\n";
 
@@ -657,12 +657,12 @@ EOF;
 
 									if ( SucomUtil::get_const( 'DOING_AJAX' ) ) {
 
-										$html .= 'sucomSelectChangeUnhideRows( \'' . $hide_class . '\', \'' . $unhide_class . '\' );';
+										$html .= 'sucomSelectChangeUnhideRows( \'' . $hide_class . '\', \'' . $show_class . '\' );';
 
 									} else {
 
 										$html .= 'jQuery( window ).load( function(){';
-										$html .= 'sucomSelectChangeUnhideRows( \'' . $hide_class . '\', \'' . $unhide_class . '\' );';
+										$html .= 'sucomSelectChangeUnhideRows( \'' . $hide_class . '\', \'' . $show_class . '\' );';
 										$html .= '});';
 									}
 

@@ -663,11 +663,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-							$text = sprintf( __( 'Select the set of options to display by default in %1$s settings pages and %2$s metabox.', 'wpsso' ), $info[ 'short' ], $metabox_title ) . ' ';
+							$text = sprintf( __( 'Select the set of options to display by default in settings pages and the %1$s metabox.', 'wpsso' ), $metabox_title ) . ' ';
 							
-							$text .= __( 'The basic view shows only the most commonly used options, and includes a link to temporarily unhide all options.', 'wpsso' ) . ' ';
+							$text .= __( 'The basic view shows only the most commonly used options, and includes a link to temporarily show all options when necessary.', 'wpsso' ) . ' ';
 							
-							$text .= __( 'Showing all available options by default could prove to be overwhelming for new users.', 'wpsso' );
+							$text .= __( 'Showing all options by default could be a bit overwhelming for new users.', 'wpsso' );
 
 							break;
 

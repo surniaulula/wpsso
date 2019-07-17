@@ -141,7 +141,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->form->get_th_html( _x( 'Default Article Topic', 'option label', 'wpsso' ), '', 'og_art_section' ) . 
 					'<td>' . $this->form->get_select( 'og_art_section', $this->p->util->get_article_topics() ) . '</td>';
 
-					$this->add_og_types_table_rows( $table_rows, $hide_in_basic = true );
+					$this->add_og_types_table_rows( $table_rows, $this->form, $hide_in_basic = true, $is_top_section = false );
 
 					break;
 
@@ -257,11 +257,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'<td>' . $this->form->get_checkbox( 'schema_add_noscript' ) . '</td>';
 					}
 
-					$this->add_schema_knowledge_graph_table_rows( $table_rows );
+					$this->add_schema_knowledge_graph_table_rows( $table_rows, $this->form );
 
-					$this->add_schema_item_props_table_rows( $table_rows );
+					$this->add_schema_item_props_table_rows( $table_rows, $this->form );
 
-					$this->add_schema_item_types_table_rows( $table_rows, $hide_in_basic = true );
+					$this->add_schema_item_types_table_rows( $table_rows, $this->form, $hide_in_basic = true, $is_top_section = false );
 
 					break;
 

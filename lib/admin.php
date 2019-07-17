@@ -3428,7 +3428,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		/**
 		 * Called from the WpssoSubmenuGeneral class.
 		 */
-		protected function add_og_types_table_rows( array &$table_rows, $hide_in_basic = true ) {
+		public function add_og_types_table_rows( array &$table_rows, $form, $hide_in_basic = true, $is_top_section = false ) {
+
+			$table_rows[ 'subsection_default_og_types' ] = ( $hide_in_basic ? $form->get_tr_hide( 'basic' ) : '' ) .
+				'<td colspan="2" class="subsection ' . ( $is_top_section ? ' top' : '' ) . '"><h4>' .
+					_x( 'Default Open Graph Types', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 			$og_types = $this->p->og->get_og_types_select( $add_none = true );
 
@@ -3441,11 +3445,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			) as $type_name => $th_label ) {
 
 				$opt_key = 'og_type_for_' . $type_name;
-				$tr_html = $hide_in_basic ? $this->form->get_tr_hide( 'basic', $opt_key ) : '';
+				$tr_html = $hide_in_basic ? $form->get_tr_hide( 'basic', $opt_key ) : '';
 
 				$table_rows[ $opt_key ] = $tr_html .
-				$this->form->get_th_html( $th_label, '', $opt_key ) . 
-				'<td>' . $this->form->get_select( $opt_key, $og_types, 'og_type' ) . '</td>';
+				$form->get_th_html( $th_label, '', $opt_key ) . 
+				'<td>' . $form->get_select( $opt_key, $og_types, 'og_type' ) . '</td>';
 			}
 
 			/**
@@ -3458,21 +3462,21 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$type_keys[] = $opt_key = 'og_type_for_' . $pt->name;
 
-				$type_select .= '<p>' . $this->form->get_select( $opt_key, $og_types, 'og_type' ) . ' ' .
+				$type_select .= '<p>' . $form->get_select( $opt_key, $og_types, 'og_type' ) . ' ' .
 					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $pt->label ) . '</p>' . "\n";
 			}
 
 			$type_keys[] = $opt_key = 'og_type_for_post_archive';
 
-			$type_select .= '<p>' . $this->form->get_select( $opt_key, $og_types, 'og_type' ) . ' ' .
+			$type_select .= '<p>' . $form->get_select( $opt_key, $og_types, 'og_type' ) . ' ' .
 				sprintf( _x( 'for %s', 'option comment', 'wpsso' ), _x( '(Post Type) Archive Page', 'option comment', 'wpsso' ) ) . '</p>' . "\n";
 
 			$tr_key   = 'og_type_for_ptn';
 			$th_label = _x( 'Type by Post Type', 'option label', 'wpsso' );
-			$tr_html  = $hide_in_basic ? $this->form->get_tr_hide( 'basic', $type_keys ) : '';
+			$tr_html  = $hide_in_basic ? $form->get_tr_hide( 'basic', $type_keys ) : '';
 
 			$table_rows[ $tr_key ] = $tr_html .
-			$this->form->get_th_html( $th_label, '', $tr_key ) .
+			$form->get_th_html( $th_label, '', $tr_key ) .
 			'<td>' . $type_select . '</td>';
 
 			unset( $type_select, $type_keys );	// Just in case.
@@ -3487,17 +3491,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$type_keys[] = $opt_key = 'og_type_for_tax_' . $tax->name;
 
-				$type_select .= '<p>' . $this->form->get_select( $opt_key, $og_types, 'og_type' ) . ' ' .
+				$type_select .= '<p>' . $form->get_select( $opt_key, $og_types, 'og_type' ) . ' ' .
 					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $tax->label ) . '</p>' . "\n";
 			}
 
 			$tr_html  = '';
 			$tr_key   = 'og_type_for_ttn';
 			$th_label = _x( 'Type by Term Taxonomy', 'option label', 'wpsso' );
-			$tr_html  = $hide_in_basic ? $this->form->get_tr_hide( 'basic', $type_keys ) : '';
+			$tr_html  = $hide_in_basic ? $form->get_tr_hide( 'basic', $type_keys ) : '';
 
 			$table_rows[ $tr_key ] = $tr_html . 
-			$this->form->get_th_html( $th_label, '', $tr_key ) . 
+			$form->get_th_html( $th_label, '', $tr_key ) . 
 			'<td>' . $type_select . '</td>';
 
 			unset( $type_select, $type_keys );	// Just in case.
@@ -3506,7 +3510,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		/**
 		 * Called from the WpssoSubmenuEssential, WpssoSubmenuGeneral, and WpssoJsonSubmenuSchemaJsonLd classes.
 		 */
-		protected function add_schema_knowledge_graph_table_rows( array &$table_rows ) {
+		public function add_schema_knowledge_graph_table_rows( array &$table_rows, $form ) {
 
 			$website_info = __( 'WebSite Information', 'wpsso' );
 
@@ -3516,20 +3520,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$person_social = __( 'Person Social Profile', 'wpsso' );
 
 			$table_rows[ 'schema_knowledge_graph' ] = '' . 
-			$this->form->get_th_html( _x( 'Knowledge Graph for Home Page', 'option label', 'wpsso' ), '', 'schema_knowledge_graph' ) . 
+			$form->get_th_html( _x( 'Knowledge Graph for Home Page', 'option label', 'wpsso' ), '', 'schema_knowledge_graph' ) . 
 			'<td>' .
 			'<p>' .
-				$this->form->get_checkbox( 'schema_add_home_website' ) . ' ' .
+				$form->get_checkbox( 'schema_add_home_website' ) . ' ' .
 				// translators: %s is "WebSite Information".
 				sprintf( __( 'Include %s for Google Search', 'wpsso' ), $website_info ) .
 			'</p>' .
 			'<p>' .
-				$this->form->get_checkbox( 'schema_add_home_organization' ) . ' ' .
+				$form->get_checkbox( 'schema_add_home_organization' ) . ' ' .
 				// translators: %s is "Organization Social Profile".
 				sprintf( __( 'Include %s for a Business Website', 'wpsso' ), $org_social ) .
 			'</p>' .
 			'<p>' .
-				$this->form->get_checkbox( 'schema_add_home_person' ) . ' ' .
+				$form->get_checkbox( 'schema_add_home_person' ) . ' ' .
 				// translators: %s is "Person Social Profile".
 				sprintf( __( 'Include %s for a Personal Website', 'wpsso' ), $person_social ) .
 			'</p>' .
@@ -3539,48 +3543,50 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$site_owners = SucomUtilWP::get_user_select_for_roles( $owner_roles );
 
 			$table_rows[ 'schema_home_person_id' ] = '' . 
-			$this->form->get_th_html( _x( 'User for Person Social Profile', 'option label', 'wpsso' ), '', 'schema_home_person_id' ) . 
-			'<td>' . $this->form->get_select( 'schema_home_person_id', $site_owners, '', '', true ) . '</td>';
+			$form->get_th_html( _x( 'User for Person Social Profile', 'option label', 'wpsso' ), '', 'schema_home_person_id' ) . 
+			'<td>' . $form->get_select( 'schema_home_person_id', $site_owners, '', '', true ) . '</td>';
 		}
 
 		/**
 		 * Called from the WpssoSubmenuGeneral and WpssoJsonSubmenuSchemaJsonLd classes.
 		 */
-		protected function add_schema_item_props_table_rows( array &$table_rows ) {
+		public function add_schema_item_props_table_rows( array &$table_rows, $form ) {
 
 			$table_rows[ 'schema_logo_url' ] = '' . 
-			$this->form->get_th_html( '<a href="https://developers.google.com/structured-data/customize/logos">' .
+			$form->get_th_html( '<a href="https://developers.google.com/structured-data/customize/logos">' .
 			_x( 'Organization Logo URL', 'option label', 'wpsso' ) . '</a>', '', 'schema_logo_url', array( 'is_locale' => true ) ) . 
-			'<td>' . $this->form->get_input( SucomUtil::get_key_locale( 'schema_logo_url', $this->p->options ), 'wide' ) . '</td>';
+			'<td>' . $form->get_input( SucomUtil::get_key_locale( 'schema_logo_url', $this->p->options ), 'wide' ) . '</td>';
 
 			$table_rows[ 'schema_banner_url' ] = '' . 
-			$this->form->get_th_html( _x( 'Organization Banner URL', 'option label', 'wpsso' ), '', 'schema_banner_url', array( 'is_locale' => true ) ) . 
-			'<td>' . $this->form->get_input( SucomUtil::get_key_locale( 'schema_banner_url', $this->p->options ), 'wide' ) . '</td>';
+			$form->get_th_html( _x( 'Organization Banner URL', 'option label', 'wpsso' ), '', 'schema_banner_url', array( 'is_locale' => true ) ) . 
+			'<td>' . $form->get_input( SucomUtil::get_key_locale( 'schema_banner_url', $this->p->options ), 'wide' ) . '</td>';
 
-			$table_rows[ 'schema_img_max' ] = $this->form->get_tr_hide( 'basic', 'schema_img_max' ) . 
-			$this->form->get_th_html( _x( 'Maximum Images to Include', 'option label', 'wpsso' ), '', 'schema_img_max' ) . 
-			'<td>' . $this->form->get_select( 'schema_img_max', range( 0, $this->p->cf[ 'form' ][ 'max_media_items' ] ), 'short', '', true ) . 
-			( empty( $this->form->options[ 'og_vid_prev_img' ] ) ? '' : ' <em>' . _x( 'video preview images are enabled (and included first)',
+			$table_rows[ 'schema_img_max' ] = $form->get_tr_hide( 'basic', 'schema_img_max' ) . 
+			$form->get_th_html( _x( 'Maximum Images to Include', 'option label', 'wpsso' ), '', 'schema_img_max' ) . 
+			'<td>' . $form->get_select( 'schema_img_max', range( 0, $this->p->cf[ 'form' ][ 'max_media_items' ] ), 'short', '', true ) . 
+			( empty( $form->options[ 'og_vid_prev_img' ] ) ? '' : ' <em>' . _x( 'video preview images are enabled (and included first)',
 				'option comment', 'wpsso' ) . '</em>' ) . '</td>';
 
 			$table_rows[ 'schema_img' ] = '' . 
-			$this->form->get_th_html( _x( 'Schema Image Dimensions', 'option label', 'wpsso' ), '', 'schema_img_dimensions' ) . 
-			'<td>' . $this->form->get_input_image_dimensions( 'schema_img' ) . '</td>';
+			$form->get_th_html( _x( 'Schema Image Dimensions', 'option label', 'wpsso' ), '', 'schema_img_dimensions' ) . 
+			'<td>' . $form->get_input_image_dimensions( 'schema_img' ) . '</td>';
 
-			$table_rows[ 'schema_desc_max_len' ] = $this->form->get_tr_hide( 'basic', 'schema_desc_max_len' ) . 
-			$this->form->get_th_html( _x( 'Maximum Description Length', 'option label', 'wpsso' ), '', 'schema_desc_max_len' ) . 
-			'<td>' . $this->form->get_input( 'schema_desc_max_len', 'short' ) . ' ' . _x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
+			$table_rows[ 'schema_desc_max_len' ] = $form->get_tr_hide( 'basic', 'schema_desc_max_len' ) . 
+			$form->get_th_html( _x( 'Maximum Description Length', 'option label', 'wpsso' ), '', 'schema_desc_max_len' ) . 
+			'<td>' . $form->get_input( 'schema_desc_max_len', 'short' ) . ' ' . _x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
 		}
 
 		/**
-		 * Called from the WpssoSubmenuGeneral and
-		 * WpssoJsonSubmenuSchemaJsonLd classes.
+		 * Called from the WpssoSubmenuGeneral and WpssoJsonSubmenuSchemaJsonLd classes.
 		 *
-		 * The SucomForm::get_select() calls in this method use the
-		 * 'on_focus_load_json' event name to create a single JSON
-		 * array for the schema types.
+		 * The SucomForm::get_select() calls in this method use the 'on_focus_load_json'
+		 * event name to create a single JSON array for the schema types.
 		 */
-		protected function add_schema_item_types_table_rows( array &$table_rows, $hide_in_basic = true ) {
+		public function add_schema_item_types_table_rows( array &$table_rows, $form, $hide_in_basic = true, $is_top_section = false ) {
+
+			$table_rows[ 'subsection_default_schema_types' ] = ( $hide_in_basic ? $form->get_tr_hide( 'basic' ) : '' ) .
+				'<td colspan="2" class="subsection ' . ( $is_top_section ? ' top' : '' ) . '"><h4>' .
+					_x( 'Default Schema Types', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 			$schema_types = $this->p->schema->get_schema_types_select( null, $add_none = true );
 
@@ -3593,11 +3599,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			) as $type_name => $th_label ) {
 
 				$opt_key = 'schema_type_for_' . $type_name;
-				$tr_html = $hide_in_basic ? $this->form->get_tr_hide( 'basic', $opt_key ) : '';
+				$tr_html = $hide_in_basic ? $form->get_tr_hide( 'basic', $opt_key ) : '';
 
 				$table_rows[ $opt_key ] = $tr_html . 
-				$this->form->get_th_html( $th_label, '', $opt_key ) . 
-				'<td>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type',
+				$form->get_th_html( $th_label, '', $opt_key ) . 
+				'<td>' . $form->get_select( $opt_key, $schema_types, 'schema_type',
 					$css_id = '', $is_assoc = true, $is_disabled = false, $selected = false,
 						$event_name = 'on_focus_load_json', $event_args = 'schema_item_types' ) . '</td>';
 			}
@@ -3612,7 +3618,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$type_keys[] = $opt_key = 'schema_type_for_' . $pt->name;
 
-				$type_select .= '<p>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type',
+				$type_select .= '<p>' . $form->get_select( $opt_key, $schema_types, 'schema_type',
 					$css_id = '', $is_assoc = true, $is_disabled = false, $selected = false,
 						$event_name = 'on_focus_load_json', $event_args = 'schema_item_types' ) . ' ' .
 					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $pt->label ) . '</p>' . "\n";
@@ -3620,7 +3626,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$type_keys[] = $opt_key = 'schema_type_for_post_archive';
 
-			$type_select .= '<p>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type',
+			$type_select .= '<p>' . $form->get_select( $opt_key, $schema_types, 'schema_type',
 				$css_id = '', $is_assoc = true, $is_disabled = false, $selected = false,
 					$event_name = 'on_focus_load_json', $event_args = 'schema_item_types' ) . ' ' .
 				sprintf( _x( 'for %s', 'option comment', 'wpsso' ), _x( '(Post Type) Archive Page',
@@ -3628,10 +3634,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$tr_key   = 'schema_type_for_ptn';
 			$th_label = _x( 'Type by Post Type', 'option label', 'wpsso' );
-			$tr_html  = $hide_in_basic ? $this->form->get_tr_hide( 'basic', $type_keys ) : '';
+			$tr_html  = $hide_in_basic ? $form->get_tr_hide( 'basic', $type_keys ) : '';
 
 			$table_rows[ $tr_key ] = $tr_html . 
-			$this->form->get_th_html( $th_label, '', $tr_key ) . 
+			$form->get_th_html( $th_label, '', $tr_key ) . 
 			'<td>' . $type_select . '</td>';
 
 			unset( $type_select, $type_keys );	// Just in case.
@@ -3646,7 +3652,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$type_keys[] = $opt_key = 'schema_type_for_tax_' . $tax->name;
 
-				$type_select .= '<p>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type',
+				$type_select .= '<p>' . $form->get_select( $opt_key, $schema_types, 'schema_type',
 					$css_id = '', $is_assoc = true, $is_disabled = false, $selected = false,
 						$event_name = 'on_focus_load_json', $event_args = 'schema_item_types' ) . ' ' .
 					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $tax->label ) . '</p>' . "\n";
@@ -3654,10 +3660,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$tr_key   = 'schema_type_for_ttn';
 			$th_label = _x( 'Type by Term Taxonomy', 'option label', 'wpsso' );
-			$tr_html  = $hide_in_basic ? $this->form->get_tr_hide( 'basic', $type_keys ) : '';
+			$tr_html  = $hide_in_basic ? $form->get_tr_hide( 'basic', $type_keys ) : '';
 
 			$table_rows[ $tr_key ] = $tr_html .
-			$this->form->get_th_html( $th_label, '', $tr_key ) . 
+			$form->get_th_html( $th_label, '', $tr_key ) . 
 			'<td>' . $type_select . '</td>';
 
 			unset( $type_select, $type_keys );	// Just in case.
@@ -3666,28 +3672,54 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		/**
 		 * Called from the WpssoSubmenuEssential, WpssoSubmenuAdvanced, and WpssoSitesubmenuSiteadvanced classes.
 		 */
-		protected function add_advanced_plugin_settings_table_rows( array &$table_rows, $network = false ) {
+		public function add_advanced_plugin_settings_table_rows( array &$table_rows, $form, $network = false ) {
 
 			$table_rows[ 'plugin_clean_on_uninstall' ] = '' .
-			$this->form->get_th_html( _x( 'Remove Settings on Uninstall', 'option label', 'wpsso' ), '', 'plugin_clean_on_uninstall' ) . 
+			$form->get_th_html( _x( 'Remove Settings on Uninstall', 'option label', 'wpsso' ), '', 'plugin_clean_on_uninstall' ) . 
 			'<td>' .
-				$this->form->get_checkbox( 'plugin_clean_on_uninstall' ) . ' ' .
+				$form->get_checkbox( 'plugin_clean_on_uninstall' ) . ' ' .
 				_x( 'including custom meta for posts, terms, and users', 'option comment', 'wpsso' ) . ' ' . 
 			'</td>' .
-			self::get_option_site_use( 'plugin_clean_on_uninstall', $this->form, $network, true );
+			self::get_option_site_use( 'plugin_clean_on_uninstall', $form, $network, true );
 
 			$table_rows[ 'plugin_debug' ] = '' .
-			$this->form->get_th_html( _x( 'Add Hidden Debug Messages', 'option label', 'wpsso' ), '', 'plugin_debug' ) . 
-			'<td>'  .  ( ! $network && SucomUtil::get_const( 'WPSSO_HTML_DEBUG' ) ? $this->form->get_no_checkbox( 'plugin_debug' ) .
+			$form->get_th_html( _x( 'Add Hidden Debug Messages', 'option label', 'wpsso' ), '', 'plugin_debug' ) . 
+			'<td>'  .  ( ! $network && SucomUtil::get_const( 'WPSSO_HTML_DEBUG' ) ? $form->get_no_checkbox( 'plugin_debug' ) .
 				' <em>' . _x( 'WPSSO_HTML_DEBUG constant is true', 'option comment', 'wpsso' ) . '</em>' :
-					$this->form->get_checkbox( 'plugin_debug' ) ) .
+					$form->get_checkbox( 'plugin_debug' ) ) .
 			'</td>' .
-			self::get_option_site_use( 'plugin_debug', $this->form, $network, true );
+			self::get_option_site_use( 'plugin_debug', $form, $network, true );
 
 			$table_rows[ 'plugin_show_opts' ] = '' .
-			$this->form->get_th_html( _x( 'Options to Show by Default', 'option label', 'wpsso' ), '', 'plugin_show_opts' ) .
-			'<td>' . $this->form->get_select( 'plugin_show_opts', $this->p->cf[ 'form' ][ 'show_options' ] ) . '</td>' .
-			self::get_option_site_use( 'plugin_show_opts', $this->form, $network, true );
+			$form->get_th_html( _x( 'Options to Show by Default', 'option label', 'wpsso' ), '', 'plugin_show_opts' ) .
+			'<td>' . $form->get_select( 'plugin_show_opts', $this->p->cf[ 'form' ][ 'show_options' ] ) . '</td>' .
+			self::get_option_site_use( 'plugin_show_opts', $form, $network, true );
+		}
+
+		/**
+		 * Called from the WpssoStdAdminAdvanced, WpssoProAdminAdvanced, and WpssoJsonSubmenuSchemaGeneral classes.
+		 */
+		public function add_advanced_product_attr_table_rows( array &$table_rows, $form, $hide_in_basic = true, $is_top_section = false ) {
+
+			$table_rows[ 'subsection_product_attr' ] = ( $hide_in_basic ? $form->get_tr_hide( 'basic' ) : '' ) .
+				'<td colspan="2" class="subsection ' . ( $is_top_section ? ' top' : '' ) . '"><h4>' .
+					_x( 'Product Attribute Names', 'metabox title', 'wpsso' ) . '</h4></td>';
+
+			if ( $is_top_section ) {
+				if ( ! self::$pkg[ $this->p->lca ][ 'pp' ] ) {
+					$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
+				}
+			}
+
+			foreach ( $this->p->cf[ 'form' ][ 'product_attr_labels' ] as $opt_key => $opt_label ) {
+
+				$cmt_transl = self::get_option_unit_comment( $opt_key );
+
+				$table_rows[ $opt_key ] = ( $hide_in_basic ? $form->get_tr_hide( 'basic', $opt_key ) : '' ) .
+					$form->get_th_html( _x( $opt_label, 'option label', 'wpsso' ), '', $opt_key ) . 
+						( self::$pkg[ $this->p->lca ][ 'pp' ] ? '<td>' . $form->get_input( $opt_key ) . $cmt_transl . '</td>' :
+							'<td class="blank">' . $form->get_no_input( $opt_key ) . $cmt_transl . '</td>' );
+			}
 		}
 
 		/**
@@ -3771,32 +3803,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								'<td class="blank">' . $form->get_no_input( $opt_key ) . $cmt_transl . '</td>' );
 			}
 
-		}
-
-		/**
-		 * Called from the WpssoStdAdminAdvanced, WpssoProAdminAdvanced, and WpssoJsonSubmenuSchemaGeneral classes.
-		 */
-		public function add_advanced_product_attr_table_rows( array &$table_rows, $form, $hide_in_basic = true, $is_top_section = false ) {
-
-			$table_rows[ 'subsection_product_attr' ] = ( $hide_in_basic ? $form->get_tr_hide( 'basic' ) : '' ) .
-				'<td colspan="2" class="subsection ' . ( $is_top_section ? ' top' : '' ) . '"><h4>' .
-					_x( 'Product Attribute Names', 'metabox title', 'wpsso' ) . '</h4></td>';
-
-			if ( $is_top_section ) {
-				if ( ! self::$pkg[ $this->p->lca ][ 'pp' ] ) {
-					$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
-				}
-			}
-
-			foreach ( $this->p->cf[ 'form' ][ 'product_attr_labels' ] as $opt_key => $opt_label ) {
-
-				$cmt_transl = self::get_option_unit_comment( $opt_key );
-
-				$table_rows[ $opt_key ] = ( $hide_in_basic ? $form->get_tr_hide( 'basic', $opt_key ) : '' ) .
-					$form->get_th_html( _x( $opt_label, 'option label', 'wpsso' ), '', $opt_key ) . 
-						( self::$pkg[ $this->p->lca ][ 'pp' ] ? '<td>' . $form->get_input( $opt_key ) . $cmt_transl . '</td>' :
-							'<td class="blank">' . $form->get_no_input( $opt_key ) . $cmt_transl . '</td>' );
-			}
 		}
 
 		public static function get_option_unit_comment( $opt_key ) {

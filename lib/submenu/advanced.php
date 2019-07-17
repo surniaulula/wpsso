@@ -163,7 +163,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 				case 'plugin-settings':
 
-					$this->add_advanced_plugin_settings_table_rows( $table_rows );
+					$this->add_advanced_plugin_settings_table_rows( $table_rows, $this->form );
 
 					break;
 			}

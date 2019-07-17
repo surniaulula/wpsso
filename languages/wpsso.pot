@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 5.3.0-b.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 5.3.0-b.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -785,215 +785,225 @@ msgid ""
 "template saved as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:3436 lib/admin.php:3588
+#: lib/admin.php:3435
+msgctxt "metabox title"
+msgid "Default Open Graph Types"
+msgstr ""
+
+#: lib/admin.php:3440 lib/admin.php:3594
 msgctxt "option label"
 msgid "Type for Blog Front Page"
 msgstr ""
 
-#: lib/admin.php:3437 lib/admin.php:3589
+#: lib/admin.php:3441 lib/admin.php:3595
 msgctxt "option label"
 msgid "Type for Static Front Page"
 msgstr ""
 
-#: lib/admin.php:3438 lib/admin.php:3590
+#: lib/admin.php:3442 lib/admin.php:3596
 msgctxt "option label"
 msgid "Type for User / Author Page"
 msgstr ""
 
-#: lib/admin.php:3439 lib/admin.php:3591
+#: lib/admin.php:3443 lib/admin.php:3597
 msgctxt "option label"
 msgid "Type for Search Results Page"
 msgstr ""
 
-#: lib/admin.php:3440 lib/admin.php:3592
+#: lib/admin.php:3444 lib/admin.php:3598
 msgctxt "option label"
 msgid "Type for Other Archive Page"
 msgstr ""
 
-#: lib/admin.php:3462 lib/admin.php:3468 lib/admin.php:3491 lib/admin.php:3618
-#: lib/admin.php:3626 lib/admin.php:3652
+#: lib/admin.php:3466 lib/admin.php:3472 lib/admin.php:3495 lib/admin.php:3624
+#: lib/admin.php:3632 lib/admin.php:3658
 msgctxt "option comment"
 msgid "for %s"
 msgstr ""
 
-#: lib/admin.php:3468 lib/admin.php:3626
+#: lib/admin.php:3472 lib/admin.php:3632
 msgctxt "option comment"
 msgid "(Post Type) Archive Page"
 msgstr ""
 
-#: lib/admin.php:3471 lib/admin.php:3630
+#: lib/admin.php:3475 lib/admin.php:3636
 msgctxt "option label"
 msgid "Type by Post Type"
 msgstr ""
 
-#: lib/admin.php:3496 lib/admin.php:3656
+#: lib/admin.php:3500 lib/admin.php:3662
 msgctxt "option label"
 msgid "Type by Term Taxonomy"
 msgstr ""
 
-#: lib/admin.php:3511
+#: lib/admin.php:3515
 msgid "WebSite Information"
 msgstr ""
 
-#: lib/admin.php:3514
+#: lib/admin.php:3518
 msgid "Organization Social Profile"
 msgstr ""
 
-#: lib/admin.php:3516
+#: lib/admin.php:3520
 msgid "Person Social Profile"
 msgstr ""
 
-#: lib/admin.php:3519
+#: lib/admin.php:3523
 msgctxt "option label"
 msgid "Knowledge Graph for Home Page"
 msgstr ""
 
 #. translators: %s is "WebSite Information".
-#: lib/admin.php:3524
+#: lib/admin.php:3528
 msgid "Include %s for Google Search"
 msgstr ""
 
 #. translators: %s is "Organization Social Profile".
-#: lib/admin.php:3529
+#: lib/admin.php:3533
 msgid "Include %s for a Business Website"
 msgstr ""
 
 #. translators: %s is "Person Social Profile".
-#: lib/admin.php:3534
+#: lib/admin.php:3538
 msgid "Include %s for a Personal Website"
 msgstr ""
 
-#: lib/admin.php:3542
+#: lib/admin.php:3546
 msgctxt "option label"
 msgid "User for Person Social Profile"
 msgstr ""
 
-#: lib/admin.php:3553 lib/submenu/essential.php:157
+#: lib/admin.php:3557 lib/submenu/essential.php:157
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:3557 lib/options.php:1175 lib/submenu/essential.php:162
+#: lib/admin.php:3561 lib/options.php:1175 lib/submenu/essential.php:162
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
 
-#: lib/admin.php:3561 lib/submenu/general.php:191
+#: lib/admin.php:3565 lib/submenu/general.php:191
 msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr ""
 
-#: lib/admin.php:3563 lib/submenu/general.php:194
+#: lib/admin.php:3567 lib/submenu/general.php:194
 msgctxt "option comment"
 msgid "video preview images are enabled (and included first)"
 msgstr ""
 
-#: lib/admin.php:3567
+#: lib/admin.php:3571
 msgctxt "option label"
 msgid "Schema Image Dimensions"
 msgstr ""
 
-#: lib/admin.php:3571 lib/submenu/general.php:165 lib/submenu/general.php:306
+#: lib/admin.php:3575 lib/submenu/general.php:165 lib/submenu/general.php:306
 msgctxt "option label"
 msgid "Maximum Description Length"
 msgstr ""
 
-#: lib/admin.php:3572 lib/submenu/general.php:244 lib/submenu/general.php:308
+#: lib/admin.php:3576 lib/submenu/general.php:244 lib/submenu/general.php:308
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
-#: lib/admin.php:3672
+#: lib/admin.php:3589
+msgctxt "metabox title"
+msgid "Default Schema Types"
+msgstr ""
+
+#: lib/admin.php:3678
 msgctxt "option label"
 msgid "Remove Settings on Uninstall"
 msgstr ""
 
-#: lib/admin.php:3675
+#: lib/admin.php:3681
 msgctxt "option comment"
 msgid "including custom meta for posts, terms, and users"
 msgstr ""
 
-#: lib/admin.php:3680
+#: lib/admin.php:3686
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
 
-#: lib/admin.php:3682
+#: lib/admin.php:3688
 msgctxt "option comment"
 msgid "WPSSO_HTML_DEBUG constant is true"
 msgstr ""
 
-#: lib/admin.php:3688
+#: lib/admin.php:3694
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr ""
 
-#: lib/admin.php:3700
-msgctxt "metabox title"
-msgid "Custom Field Names"
-msgstr ""
-
-#: lib/admin.php:3783
+#: lib/admin.php:3706
 msgctxt "metabox title"
 msgid "Product Attribute Names"
 msgstr ""
 
-#: lib/admin.php:3808
+#: lib/admin.php:3732
+msgctxt "metabox title"
+msgid "Custom Field Names"
+msgstr ""
+
+#: lib/admin.php:3814
 msgctxt "option comment"
 msgid "in %s"
 msgstr ""
 
-#: lib/admin.php:3819
+#: lib/admin.php:3825
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:4000
+#: lib/admin.php:4006
 msgid "Return to %s"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:4031
+#: lib/admin.php:4037
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:4053
+#: lib/admin.php:4059
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:4060
+#: lib/admin.php:4066
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes, and translations)</a> to check if newer versions are "
 "available."
 msgstr ""
 
-#: lib/admin.php:4197
+#: lib/admin.php:4203
 msgid "Please select a %1$s settings file to import."
 msgstr ""
 
-#: lib/admin.php:4204
+#: lib/admin.php:4210
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr ""
 
-#: lib/admin.php:4211
+#: lib/admin.php:4217
 msgid ""
 "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr ""
 
-#: lib/admin.php:4225
+#: lib/admin.php:4231
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr ""
 
-#: lib/admin.php:4235
+#: lib/admin.php:4241
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr ""
 
-#: lib/admin.php:4245
+#: lib/admin.php:4251
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 
@@ -3849,20 +3859,19 @@ msgstr ""
 
 #: lib/messages.php:666
 msgid ""
-"Select the set of options to display by default in %1$s settings pages and "
-"%2$s metabox."
+"Select the set of options to display by default in settings pages and the "
+"%1$s metabox."
 msgstr ""
 
 #: lib/messages.php:668
 msgid ""
 "The basic view shows only the most commonly used options, and includes a "
-"link to temporarily unhide all options."
+"link to temporarily show all options when necessary."
 msgstr ""
 
 #: lib/messages.php:670
 msgid ""
-"Showing all available options by default could prove to be overwhelming for "
-"new users."
+"Showing all options by default could be a bit overwhelming for new users."
 msgstr ""
 
 #: lib/messages.php:682
@@ -6635,7 +6644,7 @@ msgstr ""
 
 #: lib/util.php:3617
 msgctxt "option comment"
-msgid "unhide these options"
+msgid "show these options"
 msgstr ""
 
 #: lib/util.php:3622
@@ -6645,7 +6654,7 @@ msgstr ""
 
 #: lib/util.php:3625
 msgctxt "option comment"
-msgid "unhide these rows"
+msgid "show these rows"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name, and %3$s is the object ID.

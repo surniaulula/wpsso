@@ -94,7 +94,7 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAdvanced' ) && class_exists( 'WpssoAdm
 
 				case 'plugin-settings':
 
-					$this->add_advanced_plugin_settings_table_rows( $table_rows, $network = true );
+					$this->add_advanced_plugin_settings_table_rows( $table_rows, $this->form, $network = true );
 
 					break;
 			}

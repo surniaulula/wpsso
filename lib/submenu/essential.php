@@ -150,7 +150,7 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 				case 'essential-google':
 
-					$this->add_schema_knowledge_graph_table_rows( $table_rows );
+					$this->add_schema_knowledge_graph_table_rows( $table_rows, $this->form );
 
 					$table_rows[ 'schema_logo_url' ] = '' . 
 					$this->form->get_th_html( '<a href="https://developers.google.com/structured-data/customize/logos">' . 
@@ -185,7 +185,7 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 				case 'optional-advanced':
 
-					$this->add_advanced_plugin_settings_table_rows( $table_rows );
+					$this->add_advanced_plugin_settings_table_rows( $table_rows, $this->form );
 
 					/**
 					 * Don't show these options in the Essential settings page.
