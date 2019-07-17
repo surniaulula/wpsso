@@ -436,7 +436,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.3.0-b.1 (2019/07/16)**
+**Version 5.3.0-b.2 (2019/07/17)**
 
 This version includes several jQuery improvements to optimize both the size of settings pages and their submitted data.
 
@@ -448,6 +448,7 @@ This version includes several jQuery improvements to optimize both the size of s
 	* Added an '@id' property to the Schema ImageObject and VideoObject markup.
 	* Added new status messages (min, max, and required) for the option field character count.
 	* Optimized the saving of settings by having the browser exclude unchanged options from the $_POST.
+	* Optimized the SSO &gt; General &gt; Google &gt; Default Schema Types options with jQuery to load the selects as needed.
 	* The WooCommerce integration module now reads variation meta to handle variation custom fields (Premium version).
 * **Bugfixes**
 	* Fixed the metabox tab layout CSS for Safari (needed a vertical align to top).
@@ -566,9 +567,9 @@ This version includes several jQuery improvements to optimize both the size of s
 
 == Upgrade Notice ==
 
-= 5.3.0-b.1 =
+= 5.3.0-b.2 =
 
-(2019/07/16) This version includes several jQuery improvements to optimize both the size of settings pages and their submitted data. Added support for the Product GTIN (EAN, UPC, ISBN) for WooCommerce plugin.
+(2019/07/17) This version includes several jQuery improvements to optimize both the size of settings pages and their submitted data. Added support for the Product GTIN (EAN, UPC, ISBN) for WooCommerce plugin.
 
 = 5.2.0 =
 
