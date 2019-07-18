@@ -436,7 +436,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.3.0-b.2 (2019/07/17)**
+**Version 5.3.0-rc.1 (2019/07/18)**
 
 This version includes several jQuery improvements to optimize both the size of settings pages and their submitted data.
 
@@ -567,9 +567,9 @@ This version includes several jQuery improvements to optimize both the size of s
 
 == Upgrade Notice ==
 
-= 5.3.0-b.2 =
+= 5.3.0-rc.1 =
 
-(2019/07/17) This version includes several jQuery improvements to optimize both the size of settings pages and their submitted data. Added support for the Product GTIN (EAN, UPC, ISBN) for WooCommerce plugin.
+(2019/07/18) This version includes several jQuery improvements to optimize both the size of settings pages and their submitted data. Added support for the Product GTIN (EAN, UPC, ISBN) for WooCommerce plugin.
 
 = 5.2.0 =
 
