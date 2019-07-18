@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 5.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-07-17 11:04-0700\n"
-"PO-Revision-Date: 2019-07-17 11:10-0700\n"
+"PO-Revision-Date: 2019-07-18 07:54-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3573,7 +3573,7 @@ msgstr "Ajouter des messages de débogage en commentaires HTML cachés dans les 
 
 #: lib/messages.php:666
 msgid "Select the set of options to display by default in settings pages and the %1$s metabox."
-msgstr "Sélectionnez les options à afficher par défaut dans les pages de réglages et le métabox %2$s."
+msgstr "Sélectionnez les options à afficher par défaut dans les pages de réglages et le métabox %1$s."
 
 #: lib/messages.php:668
 msgid "The basic view shows only the most commonly used options, and includes a link to temporarily show all options when necessary."
