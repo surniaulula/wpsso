@@ -441,7 +441,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 This version includes several jQuery improvements to optimize both the size of settings pages and their submitted data.
 
 * **New Features**
-	* Added support for the Product GTIN (EAN, UPC, ISBN) for WooCommerce plugin (Premium version).
+	* Added support for the [Product GTIN (EAN, UPC, ISBN) for WooCommerce](https://wordpress.org/plugins/product-gtin-ean-upc-isbn-for-woocommerce/) plugin (Premium version).
 * **Improvements**
 	* **Removed support for the MarketPress plugin (plugin closed).**
 	* **Removed support for the HeadSpace2 SEO plugin (plugin not updated in 7 years).**
