@@ -487,7 +487,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-og_type_for_ttn':		// Type by Taxonomy.
 
-							$text = sprintf( __( 'Select the %1$s type for each WordPress term.', 'wpsso' ), 'Open Graph' );
+							$text = __( 'Select the Open Graph type for each WordPress taxonomy.', 'wpsso' );
 
 							break;
 
@@ -1408,7 +1408,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-schema_type_for_ttn':	// Type by Taxonomy.
 
-							$text = sprintf( __( 'Select the %1$s type for each WordPress term.', 'wpsso' ), 'Schema' );
+							$text = __( 'Select the Schema type for each WordPress taxonomy.', 'wpsso' );
 
 
 							break;

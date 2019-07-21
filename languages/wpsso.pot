@@ -3710,8 +3710,8 @@ msgid ""
 "section</code>, etc.)."
 msgstr ""
 
-#: lib/messages.php:490 lib/messages.php:1411
-msgid "Select the %1$s type for each WordPress term."
+#: lib/messages.php:490
+msgid "Select the Open Graph type for each WordPress taxonomy."
 msgstr ""
 
 #: lib/messages.php:499
@@ -4607,6 +4607,10 @@ msgstr ""
 
 #: lib/messages.php:1345
 msgid "The maximum length used for the Schema description property value."
+msgstr ""
+
+#: lib/messages.php:1411
+msgid "Select the Schema type for each WordPress taxonomy."
 msgstr ""
 
 #: lib/messages.php:1433
