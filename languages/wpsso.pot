@@ -833,7 +833,7 @@ msgstr ""
 
 #: lib/admin.php:3500 lib/admin.php:3662
 msgctxt "option label"
-msgid "Type by Term"
+msgid "Type by Taxonomy"
 msgstr ""
 
 #: lib/admin.php:3515

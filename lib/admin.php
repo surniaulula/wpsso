@@ -3482,7 +3482,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			unset( $type_select, $type_keys );	// Just in case.
 
 			/**
-			 * Type by Term
+			 * Type by Taxonomy
 			 */
 			$type_select = '';
 			$type_keys = array();
@@ -3497,7 +3497,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$tr_html  = '';
 			$tr_key   = 'og_type_for_ttn';
-			$th_label = _x( 'Type by Term', 'option label', 'wpsso' );
+			$th_label = _x( 'Type by Taxonomy', 'option label', 'wpsso' );
 			$tr_html  = $hide_in_basic ? $form->get_tr_hide( 'basic', $type_keys ) : '';
 
 			$table_rows[ $tr_key ] = $tr_html . 
@@ -3643,7 +3643,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			unset( $type_select, $type_keys );	// Just in case.
 
 			/**
-			 * Type by Term
+			 * Type by Taxonomy
 			 */
 			$type_select   = '';
 			$type_keys = array();
@@ -3659,7 +3659,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$tr_key   = 'schema_type_for_ttn';
-			$th_label = _x( 'Type by Term', 'option label', 'wpsso' );
+			$th_label = _x( 'Type by Taxonomy', 'option label', 'wpsso' );
 			$tr_html  = $hide_in_basic ? $form->get_tr_hide( 'basic', $type_keys ) : '';
 
 			$table_rows[ $tr_key ] = $tr_html .
