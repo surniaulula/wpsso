@@ -337,7 +337,6 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 
 * [Can I use the Premium plugin on multiple websites?](https://wpsso.com/docs/plugins/wpsso/faqs/can-i-use-the-pro-version-on-multiple-websites/)
 * [Does LinkedIn read the Open Graph meta tags?](https://wpsso.com/docs/plugins/wpsso/faqs/does-linkedin-read-the-open-graph-meta-tags/)
-* [Doesn't an SEO plugin cover that?](https://wpsso.com/docs/plugins/wpsso/faqs/doesnt-an-seo-plugin-cover-that/)
 * [How can I add Schema aggregateRating values?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-add-schema-aggregaterating-values/)
 * [How can I exclude / ignore certain parts of the content text?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-exclude-ignore-certain-parts-of-the-content-text/)
 * [How can I fix a ERR_TOO_MANY_REDIRECTS error?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-a-err_too_many_redirects-error/)
@@ -355,7 +354,6 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 * [How does WPSSO Core find / detect / select videos?](https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-videos/)
 * [W3C says "there is no attribute 'property'"](https://wpsso.com/docs/plugins/wpsso/faqs/w3c-says-there-is-no-attribute-property/)
 * [Why are some HTML elements missing / misaligned / different?](https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-elements-missing-misaligned-different/)
-* [Why does Facebook play videos instead of linking them?](https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-play-videos-instead-of-linking-them/)
 * [Why does Facebook show the wrong image / text?](https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/)
 * [Why does Google Structured Data Testing Tool show errors?](https://wpsso.com/docs/plugins/wpsso/faqs/why-does-google-structured-data-testing-tool-show-errors/)
 * [Why is the Open Graph title the same for every webpage?](https://wpsso.com/docs/plugins/wpsso/faqs/why-is-the-open-graph-title-the-same-for-every-webpage/)
@@ -456,7 +454,7 @@ This version includes several jQuery improvements to optimize both the size of s
 	* Fixed duplicated Schema VideoObject markup from the YouTube integration module (Premium version).
 * **Developer Notes**
 	* Added a new String.prototype.formatUnicorn() javascript function (for min, max, and required status messages).
-	* Added a new WpssoScript::get_metabox_script_data() method (for min, max, and required status messages).
+	* Added a new WpssoScript::get_metabox_script_data() method (for min, max, and required status message translations).
 	* Added a new 'on_focus_load_json' event name argument for SucomForm::get_select().
 	* Documented the default Schema property maximums (used by the WPSSO JSON add-on) in constants.txt:
 		* WPSSO_SCHEMA_ITEMS_PER_LIST_MAX          = 200
