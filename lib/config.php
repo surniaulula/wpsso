@@ -784,20 +784,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Standard WordPress types.
 					 */
-					'schema_type_for_tax_category' => 'item.list',
-					'schema_type_for_tax_post_tag' => 'item.list',
-					'schema_type_for_archive_page' => 'item.list',
-					'schema_type_for_attachment'   => 'webpage',
-					'schema_type_for_home_index'   => 'blog',
-					'schema_type_for_home_page'    => 'website',
-					'schema_type_for_page'         => 'article',
-					'schema_type_for_post'         => 'blog.posting',
-					'schema_type_for_post_archive' => 'item.list',
-					'schema_type_for_search_page'  => 'webpage.search.results',
-					'schema_type_for_user_page'    => 'webpage.profile',
+					'schema_type_for_tax_category'    => 'item.list',
+					'schema_type_for_tax_post_tag'    => 'item.list',
+					'schema_type_for_archive_page'    => 'item.list',
+					'schema_type_for_attachment'      => 'webpage',
+					'schema_type_for_home_index'      => 'blog',
+					'schema_type_for_home_page'       => 'website',
+					'schema_type_for_page'            => 'article',
+					'schema_type_for_post'            => 'blog.posting',
+					'schema_type_for_post_archive'    => 'item.list',
+					'schema_type_for_search_page'     => 'webpage.search.results',
+					'schema_type_for_user_page'       => 'webpage.profile',
 
 					/**
-					 * Custom post types.
+					 * Other term / post types.
 					 */
 					'schema_type_for_article'         => 'article',
 					'schema_type_for_book'            => 'book',
@@ -805,6 +805,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_business'        => 'local.business',
 					'schema_type_for_download'        => 'product',		// For Easy Digital Downloads.
 					'schema_type_for_event'           => 'event',
+					'schema_type_for_faq'             => 'webpage.faq',
 					'schema_type_for_howto'           => 'how.to',
 					'schema_type_for_job_listing'     => 'job.posting',	// For WP Job Manager.
 					'schema_type_for_jobpost'         => 'job.posting',	// For Simple Job Board.
@@ -813,10 +814,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_person'          => 'person',
 					'schema_type_for_place'           => 'place',
 					'schema_type_for_product'         => 'product',		// For WooCommerce and most e-commerce plugins.
-					'schema_type_for_tax_product_cat' => 'item.list',	// For WooCommerce.
-					'schema_type_for_tax_product_tag' => 'item.list',	// For WooCommerce.
+					'schema_type_for_qa'              => 'webpage.qa',
+					'schema_type_for_question'        => 'question',
 					'schema_type_for_recipe'          => 'recipe',		// For WP Ultimate Recipe.
 					'schema_type_for_review'          => 'review',		// For WP Product Review.
+					'schema_type_for_tax_product_cat' => 'item.list',	// For WooCommerce.
+					'schema_type_for_tax_product_tag' => 'item.list',	// For WooCommerce.
 					'schema_type_for_tribe_events'    => 'event',
 					'schema_type_for_webpage'         => 'webpage',
 					'schema_type_for_website'         => 'website',
@@ -847,13 +850,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_type_for_user_page'        => 'website',
 					
 					/**
-					 * Custom post types.
+					 * Other term / post types.
 					 */
 					'og_type_for_article'          => 'article',
 					'og_type_for_download'         => 'product',		// For Easy Digital Downloads.
 					'og_type_for_place'            => 'place',
 					'og_type_for_product'          => 'product',
 					'og_type_for_website'          => 'website',
+
 					'og_art_section'               => 'none',
 					'og_img_width'                 => 600,
 					'og_img_height'                => 315,
