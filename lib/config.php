@@ -899,7 +899,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tc_sum_img_crop'   => 1,
 					'tc_sum_img_crop_x' => 'center',
 					'tc_sum_img_crop_y' => 'center',
-					'tc_lrg_img_width'  => 600,			// Large Image Card Img Dimensions.
+					'tc_lrg_img_width'  => 800,			// Large Image Card Img Dimensions.
 					'tc_lrg_img_height' => 1600,
 					'tc_lrg_img_crop'   => 0,
 					'tc_lrg_img_crop_x' => 'center',
