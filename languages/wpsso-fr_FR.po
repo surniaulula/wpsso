@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 5.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-07-17 11:04-0700\n"
-"PO-Revision-Date: 2019-07-18 07:54-0700\n"
+"POT-Creation-Date: 2019-07-21 12:48-0700\n"
+"PO-Revision-Date: 2019-07-21 12:49-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -787,8 +787,8 @@ msgstr "Type par type d'article"
 
 #: lib/admin.php:3500 lib/admin.php:3662
 msgctxt "option label"
-msgid "Type by Term Taxonomy"
-msgstr "Type par taxonomie de termes"
+msgid "Type by Taxonomy"
+msgstr "Type par taxonomie"
 
 #: lib/admin.php:3515
 msgid "WebSite Information"
@@ -3470,9 +3470,9 @@ msgstr "Sélectionnez le type %1$s pour chaque type de d'article WordPress."
 msgid "Please note that each Open Graph type has a unique set of meta tags, so by selecting \"website\" here (for example), you would be excluding all \"article\" related meta tags (<code>article:author</code>, <code>article:section</code>, etc.)."
 msgstr "SVP notez que chaque type Open Graph a un ensemble unique de balises méta, donc en sélectionnant \"website\" ici (par exemple), vous excluez toutes les balises méta \"article\" (<code>article:author</code>, <code>article:section</code>, etc.)."
 
-#: lib/messages.php:490 lib/messages.php:1411
-msgid "Select the %1$s type for each WordPress term taxonomy."
-msgstr "Sélectionnez le type %1$s pour chaque taxonomie de termes WordPress."
+#: lib/messages.php:490
+msgid "Select the Open Graph type for each WordPress taxonomy."
+msgstr "Sélectionnez le type Open Graph pour chaque taxonomie WordPress."
 
 #: lib/messages.php:499
 msgid "One or more characters used to separate values (category parent names, page numbers, etc.) within the Facebook / Open Graph title string (the default is the hyphen \"%s\" character)."
@@ -4087,6 +4087,10 @@ msgstr "Si vous choisissez de ne pas recadrer cette taille d'image, assurez-vous
 #: lib/messages.php:1345
 msgid "The maximum length used for the Schema description property value."
 msgstr "La longueur maximale utilisée pour la valeur de la propriété Schéma description."
+
+#: lib/messages.php:1411
+msgid "Select the Schema type for each WordPress taxonomy."
+msgstr "Sélectionnez le type de Schéma pour chaque taxonomie WordPress."
 
 #: lib/messages.php:1433
 msgid "The <a href=\"%1$s\">Twitter @username for your website and/or business</a> (not your personal Twitter @username)."
