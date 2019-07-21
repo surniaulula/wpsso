@@ -833,7 +833,7 @@ msgstr ""
 
 #: lib/admin.php:3500 lib/admin.php:3662
 msgctxt "option label"
-msgid "Type by Term Taxonomy"
+msgid "Type by Term"
 msgstr ""
 
 #: lib/admin.php:3515
@@ -3711,7 +3711,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:490 lib/messages.php:1411
-msgid "Select the %1$s type for each WordPress term taxonomy."
+msgid "Select the %1$s type for each WordPress term."
 msgstr ""
 
 #: lib/messages.php:499

@@ -485,9 +485,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-og_type_for_ttn':		// Type by Term Taxonomy.
+						case 'tooltip-og_type_for_ttn':		// Type by Term.
 
-							$text = sprintf( __( 'Select the %1$s type for each WordPress term taxonomy.', 'wpsso' ), 'Open Graph' );
+							$text = sprintf( __( 'Select the %1$s type for each WordPress term.', 'wpsso' ), 'Open Graph' );
 
 							break;
 
@@ -1406,9 +1406,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-schema_type_for_ttn':	// Type by Term Taxonomy.
+						case 'tooltip-schema_type_for_ttn':	// Type by Term.
 
-							$text = sprintf( __( 'Select the %1$s type for each WordPress term taxonomy.', 'wpsso' ), 'Schema' );
+							$text = sprintf( __( 'Select the %1$s type for each WordPress term.', 'wpsso' ), 'Schema' );
 
 
 							break;

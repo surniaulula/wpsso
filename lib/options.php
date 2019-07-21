@@ -67,10 +67,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				) );
 
 				/**
-				 * Add defaults using a key prefix array and term taxonomy names.
+				 * Add defaults using a key prefix array and term names.
 				 */
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'adding defaults derived from term taxonomy names' );
+					$this->p->debug->log( 'adding defaults derived from term names' );
 				}
 
 				$defs = $this->p->util->add_ttns_to_opts( $defs, array(
@@ -412,10 +412,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				) );
 
 				/**
-				 * Add options using a key prefix array and term taxonomy names.
+				 * Add options using a key prefix array and term names.
 				 */
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'adding options derived from term taxonomy names' );
+					$this->p->debug->log( 'adding options derived from term names' );
 				}
 
 				$opts = $this->p->util->add_ttns_to_opts( $opts, array(

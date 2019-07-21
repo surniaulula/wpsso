@@ -860,7 +860,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Add options using a key prefix string / array and term taxonomy names.
+		 * Add options using a key prefix string / array and term names.
 		 */
 		public function add_ttns_to_opts( array &$opts, $mixed, $default = 1 ) {
 

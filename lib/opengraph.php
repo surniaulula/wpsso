@@ -343,7 +343,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$type_id = $this->get_og_type_id_for_name( 'tax_' . $mod[ 'tax_slug' ] );
 
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'using og type id "' . $type_id . '" from term taxonomy option value' );
+							$this->p->debug->log( 'using og type id "' . $type_id . '" from term option value' );
 						}
 					}
 

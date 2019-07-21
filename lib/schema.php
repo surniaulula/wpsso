@@ -829,7 +829,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$type_id = $this->get_schema_type_id_for_name( 'tax_' . $mod[ 'tax_slug' ] );
 
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'using schema type id "' . $type_id . '" from term taxonomy option value' );
+							$this->p->debug->log( 'using schema type id "' . $type_id . '" from term option value' );
 						}
 					}
 
