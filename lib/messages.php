@@ -2518,7 +2518,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					$ext = $this->p->lca . $ext;
 				}
 
-				$p_ext = substr( $ext, 0, strlen( $this->p->lca ) );
+				$p_ext = substr( $ext, strlen( $this->p->lca ) );
 
 			} else {
 

@@ -927,7 +927,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Fetch HTML using the Facebook user agent to get Open Graph meta tags.
 			 */
-			$curl_opts = array( 'CURLOPT_USERAGENT' => WPSSO_PHP_CURL_USERAGENT_FACEBOOK );
+			$curl_opts = array(
+				'CURLOPT_USERAGENT' => WPSSO_PHP_CURL_USERAGENT_FACEBOOK,
+			);
 
 			$this->p->cache->clear( $check_url );	// Clear the cached webpage, just in case.
 
