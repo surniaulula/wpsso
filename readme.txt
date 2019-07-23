@@ -434,6 +434,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 5.3.1-dev.1 (2019/07/23)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed incorrect substr() in WpssoMessages::get_ext_p_ext().
+* **Developer Notes**
+	* None.
+
 **Version 5.3.0 (2019/07/18)**
 
 This version includes several jQuery improvements to optimize both the size of settings pages and their submitted data.
@@ -564,6 +575,10 @@ This version includes several jQuery improvements to optimize both the size of s
 	* Improved WP_Query for a post type archive (see https://codex.wordpress.org/Function_Reference/is_post_type_archive) when running as background task.
 
 == Upgrade Notice ==
+
+= 5.3.1-dev.1 =
+
+(2019/07/23) Fixed incorrect substr() in WpssoMessages::get_ext_p_ext().
 
 = 5.3.0 =
 
