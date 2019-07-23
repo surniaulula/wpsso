@@ -434,7 +434,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.3.1-dev.1 (2019/07/23)**
+**Version 5.3.1 (2019/07/23)**
 
 * **New Features**
 	* None.
@@ -576,11 +576,7 @@ This version includes several jQuery improvements to optimize both the size of s
 
 == Upgrade Notice ==
 
-= 5.3.1-dev.1 =
+= 5.3.1 =
 
 (2019/07/23) Fixed incorrect substr() in WpssoMessages::get_ext_p_ext().
-
-= 5.3.0 =
-
-(2019/07/18) This version includes several jQuery improvements to optimize both the size of settings pages and their submitted data. Added support for the Product GTIN (EAN, UPC, ISBN) for WooCommerce plugin.
 
