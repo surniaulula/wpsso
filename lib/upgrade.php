@@ -454,7 +454,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				 * Increase the default SEO description length from 156 to 220 characters.
 				 */
 				if ( $prev_version > 0 && $prev_version <= 637 ) {
-					if ( $opts[ 'seo_desc_max_len' ] === 156 ) {
+					if ( isset( $opts[ 'seo_desc_max_len' ] ) && $opts[ 'seo_desc_max_len' ] === 156 ) {
 						$opts[ 'seo_desc_max_len' ] = 220;
 					}
 				}
