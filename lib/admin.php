@@ -1564,7 +1564,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( $have_filtered_exp ) {
 				echo '<tr><td></td></tr>' . "\n";
 				echo '<tr><td colspan="' . $table_cols . '"><p><small>[F] ' .
-					__( 'Transient expiration modified by filter.',
+					__( 'Cache expiration modified by filter.',
 						'wpsso' ) . '</small></p></td></tr>' . "\n";
 			}
 

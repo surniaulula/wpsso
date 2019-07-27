@@ -200,7 +200,7 @@ msgid "Hours"
 msgstr ""
 
 #: lib/admin.php:1567
-msgid "Transient expiration modified by filter."
+msgid "Cache expiration modified by filter."
 msgstr ""
 
 #: lib/admin.php:1597 lib/admin.php:1598
