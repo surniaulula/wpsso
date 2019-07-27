@@ -94,7 +94,6 @@ _x( 'Use HTTPS for Video API Requests', 'option label', 'wpsso' );
 _x( 'uses %s', 'option comment', 'wpsso' );
 _x( 'Include Video Preview Images', 'option label', 'wpsso' );
 _x( 'video preview images are included first', 'option comment', 'wpsso' );
-_x( 'Include text/html Type Meta Tags', 'option label', 'wpsso' );
 _x( 'Force Autoplay when Possible', 'option label', 'wpsso' );
 _x( 'Check for Embedded Media', 'option label', 'wpsso' );
 __( 'Save a draft version or publish the %s to update this value.', 'wpsso' );

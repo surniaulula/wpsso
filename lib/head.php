@@ -243,7 +243,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 							}
 
 							if ( ! empty( $mt[ 5 ] ) ) {
+
 								$head_info[ $mt_prefix ] = $mt[ 5 ];	// Save the media URL.
+
 								$is_first = true;
 							}
 
@@ -655,11 +657,15 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			if ( empty( $mt_array ) ) {
+
 				return array();
+
 			} elseif ( ! is_array( $mt_array ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: mt_array argument is not an array' );
 				}
+
 				return array();
 			}
 
@@ -695,21 +701,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 							if ( isset( $dd_val[ 'og:video:type' ] ) ) {
 
 								/**
-								 * og:video:has_image will be false if ithere is no preview 
+								 * og:video:has_image will be false if there is no preview 
 								 * image, or the preview image is a duplicate.
 								 */
 								if ( empty( $dd_val[ 'og:video:has_image' ] ) ) {
 									$use_video_image = false;
-								}
-
-								if ( $dd_val[ 'og:video:type' ] === 'text/html' ) {
-
-									/**
-									 * Skip if 'text/html' video markup is disabled.
-									 */
-									if ( empty( $this->p->options[ 'og_vid_html_type' ] ) ) {
-										continue;
-									}
 								}
 							}
 
@@ -756,6 +752,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
+error_log( print_r( $singles, true ) );
 			$merged = array();
 
 			foreach ( $singles as $num => $element ) {
@@ -855,7 +852,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				case 'og:image:secure_url':
 				case 'og:video:secure_url':
 
-					if ( ! empty( $value ) ) {
+					if ( $value ) {
 
 						if ( SucomUtil::is_https( $value ) ) {	// Only HTTPS.
 							$singles[] = array( '', $tag, $type, $name, $attr, $value, $cmt );
@@ -879,20 +876,18 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				case 'og:image:url':
 				case 'og:video:url':
 
-					if ( $secure_url !== $value ) {	// Just in case.
+					if ( $value ) {
+					
+						if ( $secure_url !== $value ) {	// Just in case.
 
-						/**
-						 * The 'add_meta_property_og:image:secure_url' and
-						 * 'add_meta_property_og:video:secure_url' options
-						 * are disabled by default.
-						 */
-						if ( ! empty( $this->p->options[ 'add_meta_property_og:image:secure_url' ] ) ) {
+							if ( SucomUtil::is_https( $value ) ) {	// Only HTTPS.
 
-							$name_secure_suffix = str_replace( ':url', ':secure_url', $name );
-							$value_secure_url   = set_url_scheme( $value, 'https' );	// Force https.
-							$value              = set_url_scheme( $value, 'http' );		// Force HTTP.
+								$name_secure_suffix = str_replace( ':url', ':secure_url', $name );
 
-							$singles[] = array( '', $tag, $type, $name_secure_suffix, $attr, $value_secure_url, $cmt );
+								$singles[] = array( '', $tag, $type, $name_secure_suffix, $attr, $value, $cmt );
+
+								$value = set_url_scheme( $value, 'http' );	// Force HTTP.
+							}
 						}
 
 						$name_no_suffix = str_replace( ':url', '', $name );
@@ -906,6 +901,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log_arr( 'singles', $singles );
 					}
+
+					break;
+
+				case 'og:image':
+				case 'og:video':
 
 					break;
 

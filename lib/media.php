@@ -1830,6 +1830,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 									if ( $this->p->debug->enabled ) {
 										$this->p->debug->log( 'adding ' . $og_key . ' = ' . $og_single_video[ $og_key ] );
 									}
+
+									if ( empty( $og_single_video[ 'og:image:alt' ] ) ) {
+										$og_single_video[ 'og:image:alt' ] = $og_single_video[ $og_key ];
+									}
 								}
 
 								break;

@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '5.3.2-dev.1',	// Plugin version.
+					'version'     => '5.3.2-dev.2',	// Plugin version.
 					'opt_version' => '651',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -869,7 +869,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_vid_https'                 => 1,
 					'og_vid_autoplay'              => 1,
 					'og_vid_prev_img'              => 1,
-					'og_vid_html_type'             => 1,
 					'og_def_img_id'                => '',			// Default / Fallback Image ID
 					'og_def_img_id_pre'            => 'wp',
 					'og_def_img_url'               => '',			// or Default / Fallback Image URL

@@ -236,7 +236,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 								'og:video:googleplay_url'  => 'twitter:app:url:googleplay',
 							) as $og_name => $tc_name ) {
 
-								if ( ! empty( $og_single_video[$og_name] ) ) {
+								if ( ! empty( $og_single_video[ $og_name ] ) ) {
 									$mt_tc[ $tc_name ] = $og_single_video[ $og_name ];
 								}
 							}
@@ -244,7 +244,11 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 							/**
 							 * Get the video preview image (if one is available).
 							 */
-							$mt_tc[ 'twitter:image' ] = SucomUtil::get_mt_media_url( $og_single_video );
+							$mt_tc[ 'twitter:image' ] = SucomUtil::get_mt_media_url( $og_single_video, $mt_media_pre = 'og:image' );
+
+							if ( ! empty( $og_single_video[ 'og:image:alt' ] ) ) {
+								$mt_tc[ 'twitter:image:alt' ] = $og_single_video[ 'og:image:alt' ];
+							}
 
 							/**
 							 * Fallback to the open graph image.
@@ -293,6 +297,10 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						$mt_tc[ 'twitter:card' ]  = $card_type;
 						$mt_tc[ 'twitter:image' ] = $og_single_image_url;
 
+						if ( ! empty( $og_single_image[ 'og:image:alt' ] ) ) {
+							$mt_tc[ 'twitter:image:alt' ] = $og_single_image[ 'og:image:alt' ];
+						}
+
 					} elseif ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'no post image found' );
 					}
@@ -321,6 +329,10 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 									$mt_tc[ 'twitter:card' ]  = $card_type;
 									$mt_tc[ 'twitter:image' ] = $og_single_image_url;
+
+									if ( ! empty( $og_single_image[ 'og:image:alt' ] ) ) {
+										$mt_tc[ 'twitter:image:alt' ] = $og_single_image[ 'og:image:alt' ];
+									}
 
 								} elseif ( $this->p->debug->enabled ) {
 									$this->p->debug->log( $card_type . ' card: ngg singlepic image not found' );
@@ -368,6 +380,10 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 					$og_single_image_url = SucomUtil::get_mt_media_url( $og_single_image );
 
 					$mt_tc[ 'twitter:image' ] = $og_single_image_url;
+
+					if ( ! empty( $og_single_image[ 'og:image:alt' ] ) ) {
+						$mt_tc[ 'twitter:image:alt' ] = $og_single_image[ 'og:image:alt' ];
+					}
 
 				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'no other images found' );

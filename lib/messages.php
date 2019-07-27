@@ -616,12 +616,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-og_vid_html_type':	// Include text/html Type Meta Tags.
-
-							$text = 'Include additional Open Graph meta tags for the embed video URL as a text/html video type (default is checked).';
-
-							break;
-
 						case 'tooltip-og_vid_autoplay':		// Force Autoplay when Possible.
 
 							$text = 'When possible, add or modify the "autoplay" argument of video URLs in webpage meta tags (default is checked).';

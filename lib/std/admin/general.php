@@ -93,10 +93,6 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 			'<td class="blank"><input type="checkbox" disabled="disabled" />  <em>' . _x( 'video preview images are included first',
 				'option comment', 'wpsso' ) . '</em></td>';
 
-			$table_rows[ 'og_vid_html_type' ] = '' . 
-			$form->get_th_html( _x( 'Include text/html Type Meta Tags', 'option label', 'wpsso' ), null, 'og_vid_html_type' ) . 
-			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
-
 			$table_rows[ 'og_vid_autoplay' ] = '' . 
 			$form->get_th_html( _x( 'Force Autoplay when Possible', 'option label', 'wpsso' ), null, 'og_vid_autoplay' ) . 
 			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';

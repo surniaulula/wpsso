@@ -207,12 +207,12 @@ if ( ! function_exists( 'wpsso_get_mod_og_image' ) ) {
  *
  * Array (
  * 	[og:image:secure_url] =>
- *	[og:image:url] => http://adm.surniaulula.com/wp-content/uploads/2013/03/captain-america-150x150.jpg
- *	[og:image:width] => 150
- *	[og:image:height] => 150
- *	[og:image:cropped] => 1
- *	[og:image:id] => 1261
- *	[og:image:alt] => Captain America
+ *	[og:image:url]        => http://adm.surniaulula.com/wp-content/uploads/2013/03/captain-america-150x150.jpg
+ *	[og:image:width]      => 150
+ *	[og:image:height]     => 150
+ *	[og:image:cropped]    => 1
+ *	[og:image:id]         => 1261
+ *	[og:image:alt]        => Captain America
  * )
  *
  * An image URL may be located in the :secure_url or :url meta tags (or both).
