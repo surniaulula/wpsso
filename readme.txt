@@ -434,16 +434,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.3.2-dev.1 (2019/07/27)**
+**Version 5.3.2-dev.2 (2019/07/27)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added an "MB" size column in the SSO &gt; Dashboard &gt; Cache Status metabox.
 * **Bugfixes**
-	* None.
+	* Fixed the Document SSO &gt; Head &gt; og:video and og:image tags showing as empty.
 * **Developer Notes**
-	* None.
+	* Refactored a few lines in the WpssoProEcomWoocommerce class to replace method_exists() with is_callable().
 
 **Version 5.3.1 (2019/07/23)**
 
@@ -587,9 +587,9 @@ This version includes several jQuery improvements to optimize both the size of s
 
 == Upgrade Notice ==
 
-= 5.3.2-dev.1 =
+= 5.3.2-dev.2 =
 
-(2019/07/27) Added an "MB" size column in the SSO &gt; Dashboard &gt; Cache Status metabox.
+(2019/07/27) Added an "MB" size column in the SSO &gt; Dashboard &gt; Cache Status metabox. Fixed the Document SSO &gt; Head &gt; og:video and og:image tags showing as empty.
 
 = 5.3.1 =
 
