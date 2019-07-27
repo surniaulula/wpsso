@@ -752,7 +752,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
-error_log( print_r( $singles, true ) );
 			$merged = array();
 
 			foreach ( $singles as $num => $element ) {
