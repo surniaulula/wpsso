@@ -1487,7 +1487,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_cache_status() {
 
-			$table_cols         = 3;
+			$table_cols         = 4;
 			$db_transient_keys  = $this->p->util->get_db_transient_keys();
 			$all_transients_pre = $this->p->lca . '_';
 			$have_filtered_exp  = false;
@@ -1501,7 +1501,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '<tr>';
 			echo '<th class="cache-label"></th>';
 			echo '<th class="cache-count">' . __( 'Count', 'wpsso' ) . '</th>';
-			echo '<th class="cache-expiration">' . __( 'Expiration', 'wpsso' ) . '</th>';
+			echo '<th class="cache-size">' . __( 'MB', 'wpsso' ) . '</th>';
+			echo '<th class="cache-expiration">' . __( 'Hours', 'wpsso' ) . '</th>';
 			echo '</tr>';
 
 			/**
@@ -1523,9 +1524,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$cache_text_dom     = empty( $cache_info[ 'text_domain' ] ) ? $this->p->lca : $cache_info[ 'text_domain' ];
 				$cache_label_transl = _x( $cache_info[ 'label' ], 'option label', $cache_text_dom );
 				$cache_count        = count( preg_grep( '/^' . $cache_md5_pre . '/', $db_transient_keys ) );
+				$cache_size         = $this->p->util->get_db_transient_size_mb( $decimals = 1, $dec_point = '.', $thousands_sep = '', $cache_md5_pre );
 				$cache_opt_key      = isset( $cache_info[ 'opt_key' ] ) ? $cache_info[ 'opt_key' ] : false;
 				$cache_exp_secs     = $cache_opt_key && isset( $this->p->options[ $cache_opt_key ] ) ? $this->p->options[ $cache_opt_key ] : 0;
-				$cache_exp_html     = $cache_opt_key ? $cache_exp_secs : '';
+				$cache_exp_suffix   = '';
 				
 				if ( ! empty( $cache_info[ 'filter' ] ) ) {
 
@@ -1533,22 +1535,25 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$cache_exp_filtered = (int) apply_filters( $filter_name, $cache_exp_secs );
 
 					if ( $cache_exp_secs !== $cache_exp_filtered ) {
-						$cache_exp_html    = $cache_exp_filtered . ' [F]';	// Show that value has changed.
+						$cache_exp_secs    = $cache_exp_filtered;
+						$cache_exp_suffix  = ' [F]';	// Show that value has changed.
 						$have_filtered_exp = true;
 					}
+				}
+
+				if ( is_numeric( $cache_exp_secs ) && $cache_exp_secs > 0 ) {
+					$cache_exp_hours = number_format( $cache_exp_secs / 60 / 60, $decimals = 1, $dec_point = '.', $thousands_sep = '' );
+				} else {
+					$cache_exp_hours = $cache_exp_secs;
 				}
 
 				echo '<tr>';
 				echo '<th class="cache-label">' . $cache_label_transl . ':</th>';
 				echo '<td class="cache-count">' . $cache_count . '</td>';
+				echo '<td class="cache-size">' . $cache_size . '</td>';
 
-				if ( $cache_md5_pre === $all_transients_pre ) {
-					echo '</tr>' . "\n" . '<tr>';
-					echo '<th class="cache-label"></th>';
-					echo '<td class="cache-count">' . $this->p->util->get_db_transient_size_mb( $decimals = 1 ) . '</td>';
-					echo '<td class="cache-expiration" style="text-align:left;">' . __( 'MB', 'wpsso' ) . '</td>';
-				} else {
-					echo '<td class="cache-expiration">' . $cache_exp_html . '</td>';
+				if ( $cache_md5_pre !== $all_transients_pre ) {
+					echo '<td class="cache-expiration">' . $cache_exp_hours . $cache_exp_suffix . '</td>';
 				}
 
 				echo '</tr>' . "\n";
@@ -1559,7 +1564,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( $have_filtered_exp ) {
 				echo '<tr><td></td></tr>' . "\n";
 				echo '<tr><td colspan="' . $table_cols . '"><p><small>[F] ' .
-					__( 'Expiration value modified by filter.',
+					__( 'Transient expiration modified by filter.',
 						'wpsso' ) . '</small></p></td></tr>' . "\n";
 			}
 

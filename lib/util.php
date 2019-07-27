@@ -1593,7 +1593,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $deleted_count;
 		}
 
-		public function delete_all_db_transients( $clear_short = false, $only_prefix = '' ) {
+		public function delete_all_db_transients( $clear_short = false, $transient_prefix = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -1624,8 +1624,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				/**
 				 * Maybe only clear a specific transient ID prefix.
 				 */
-				if ( $only_prefix ) {							// We're only clearing a specific prefix.
-					if ( strpos( $cache_id, $only_prefix ) !== 0 ) {		// The cache ID does not match that prefix.
+				if ( $transient_prefix ) {						// We're only clearing a specific prefix.
+					if ( strpos( $cache_id, $transient_prefix ) !== 0 ) {		// The cache ID does not match that prefix.
 						continue;						// Get the next transient.
 					}
 				}
@@ -1638,7 +1638,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $deleted_count;
 		}
 
-		public function get_db_transient_size_mb( $decimals = 2, $dec_point = '.', $thousands_sep = ',' ) {
+		public function get_db_transient_size_mb( $decimals = 2, $dec_point = '.', $thousands_sep = ',', $transient_prefix = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -1646,10 +1646,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			global $wpdb;
 
+			if ( empty( $transient_prefix ) ) {
+				$transient_prefix = $this->p->lca . '_';
+			}
+
 			$db_query = 'SELECT CHAR_LENGTH( option_value ) / 1024 / 1024';
 			$db_query .= ', CHAR_LENGTH( option_value )';
 			$db_query .= ' FROM ' . $wpdb->options;
-			$db_query .= ' WHERE option_name LIKE \'_transient_' . $this->p->lca . '_%\'';
+			$db_query .= ' WHERE option_name LIKE \'_transient_' . $transient_prefix . '%\'';
 			$db_query .= ';';	// End of query.
 
 			$result  = $wpdb->get_col( $db_query );
