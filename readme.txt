@@ -434,7 +434,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.3.2-rc.1 (2019/07/28)**
+**Version 5.3.2 (2019/07/28)**
 
 * **New Features**
 	* None.
@@ -587,11 +587,7 @@ This version includes several jQuery improvements to optimize both the size of s
 
 == Upgrade Notice ==
 
-= 5.3.2-rc.1 =
+= 5.3.2 =
 
 (2019/07/28) Added an "MB" size column in the SSO &gt; Dashboard &gt; Cache Status metabox. Fixed the Document SSO &gt; Head &gt; og:video and og:image tags showing as empty.
-
-= 5.3.1 =
-
-(2019/07/23) Fixed incorrect substr() in WpssoMessages::get_ext_p_ext().
 
