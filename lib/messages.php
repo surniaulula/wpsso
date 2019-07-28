@@ -1936,7 +1936,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						if ( WpssoAdmin::$pkg[ $this->p->lca ][ 'pp' ] ) {
 
-							$text .= __( 'An e-commerce plugin is active &ndash; some product details may be managed by the e-commerce plugin.',
+							$text .= __( 'An e-commerce plugin is active &ndash; some product details may be managed from the e-commerce plugin.',
 								'wpsso' );
 
 						} else {

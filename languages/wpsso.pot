@@ -4987,7 +4987,7 @@ msgstr ""
 #: lib/messages.php:1939
 msgid ""
 "An e-commerce plugin is active &ndash; some product details may be managed "
-"by the e-commerce plugin."
+"from the e-commerce plugin."
 msgstr ""
 
 #: lib/messages.php:1946
