@@ -1,4 +1,4 @@
-<h1>WPSSO Core</h1><h3>Facebook, Open Graph, Rich Pin, Twitter Card, Social Meta Tags, SEO Rich Results, Schema Markup</h3>
+<h1>WPSSO Core</h1><h3>Facebook / Open Graph, Rich Pin, Twitter Card, Social Meta, SEO Rich Results, Schema Markup</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core [Main Plugin]</td></tr>
