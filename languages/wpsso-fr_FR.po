@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 5.3.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-07-27 15:18-0700\n"
-"PO-Revision-Date: 2019-07-27 15:18-0700\n"
+"POT-Creation-Date: 2019-07-28 09:58-0700\n"
+"PO-Revision-Date: 2019-07-28 10:00-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4353,8 +4353,8 @@ msgid "Purchase the %1$s add-on to upgrade and get the following features."
 msgstr "Achetez l'ajout %1$s pour une mise à niveau et bénéficier des fonctionnalités suivantes."
 
 #: lib/messages.php:1939
-msgid "An e-commerce plugin is active &ndash; some product details may be managed by the e-commerce plugin."
-msgstr "Une extension de commerce électronique est active &ndash; certains détails du produit peuvent être gérés par cette extension."
+msgid "An e-commerce plugin is active &ndash; some product details may be managed from the e-commerce plugin."
+msgstr "Une extension de commerce électronique est active &ndash; certains détails du produit peuvent être gérés à partir de l'extension e-commerce."
 
 #: lib/messages.php:1946
 msgid "An e-commerce plugin is active &ndash; product details may be retrieved by the %s plugin."
