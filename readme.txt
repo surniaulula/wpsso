@@ -434,6 +434,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 5.4.0-dev.1 (TBD)**
+
+* **New Features**
+	* Added support for the WooCommerce Brands plugin (Premium version).
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+
 **Version 5.3.2 (2019/07/28)**
 
 * **New Features**
@@ -586,6 +597,10 @@ This version includes several jQuery improvements to optimize both the size of s
 	* Improved WP_Query for a post type archive (see https://codex.wordpress.org/Function_Reference/is_post_type_archive) when running as background task.
 
 == Upgrade Notice ==
+
+= 5.4.0-dev.1 =
+
+(TBD) Added support for the WooCommerce Brands plugin (Premium version).
 
 = 5.3.2 =
 
