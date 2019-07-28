@@ -852,25 +852,34 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				case 'og:image:secure_url':
 				case 'og:video:secure_url':
 
-					if ( $value ) {
+					/**
+					 * The secure url meta tag should always come first, but just in case
+					 * it doesn't, make sure the url value has not already been added.
+					 */
+					if ( $last_url !== $value ) {	// Just in case.
 
-						$name_secure_url = $name;
-						$name_url        = str_replace( ':secure_url', ':url', $name );
-						$name_no_url     = str_replace( ':secure_url', '', $name );
+						if ( $value ) {
 
-						if ( SucomUtil::is_https( $value ) ) {
-							$singles[] = array( '', $tag, $type, $name_secure_url, $attr, $value, $cmt );
-						}
+							$name_secure_url = $name;
+							$name_url        = str_replace( ':secure_url', ':url', $name );
+							$name_no_url     = str_replace( ':secure_url', '', $name );
 
-						$singles[] = array( '', $tag, $type, $name_url, $attr, $value, $cmt );
-						$singles[] = array( '', $tag, $type, $name_no_url, $attr, $value, $cmt );
+							if ( SucomUtil::is_https( $value ) ) {
+								$singles[] = array( '', $tag, $type, $name_secure_url, $attr, $value, $cmt );
+							}
 
-						$last_secure_url = $value;
+							$singles[] = array( '', $tag, $type, $name_url, $attr, $value, $cmt );
+							$singles[] = array( '', $tag, $type, $name_no_url, $attr, $value, $cmt );
 
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log_arr( 'singles', $singles );
+							$last_secure_url = $value;
+
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log_arr( 'singles', $singles );
+							}
 						}
 					}
+
+					$last_url = null;
 
 					break;
 
