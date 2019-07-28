@@ -87,6 +87,12 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							break;
 
+						case 'ecom-woocommerce_brands':
+
+							$chk[ 'class' ] = 'WC_Brands';
+
+							break;
+
 						case 'ecom-wpecommerce':
 
 							$chk[ 'class' ] = 'WP_eCommerce';

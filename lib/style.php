@@ -264,7 +264,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'create and minify admin page style' );	// begin timer
+				$this->p->debug->mark( 'create and minify admin page style' );	// Begin timer.
 			}
 
 			$sort_cols  = WpssoWpMeta::get_sortable_columns();
@@ -518,6 +518,10 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				table.wp-list-table > tbody > tr > td.column-term-id {
 					width:40px;
 				}
+				table.wp-list-table > thead > tr > th.column-thumb,	/* WooCommerce Brands */
+				table.wp-list-table > tbody > tr > td.column-thumb {
+					width:80px;
+				}
 				table.wp-list-table > thead > tr > th.column-wpseo-links,	/* Yoast SEO. */
 				table.wp-list-table > tbody > tr > td.column-wpseo-links,
 				table.wp-list-table > thead > tr > th.column-wpseo-linked,
@@ -609,7 +613,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			wp_add_inline_style( 'sucom-admin-page', $custom_style_css );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'create and minify admin page style' );	// end timer
+				$this->p->debug->mark( 'create and minify admin page style' );	// End timer.
 			}
 		}
 

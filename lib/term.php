@@ -696,12 +696,12 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$metabox_context = 'normal';
 
 			echo "\n" . '<!-- ' . $this->p->lca . ' term metabox section begin -->' . "\n";
-			echo '<h3 id="' . $this->p->lca . '-metaboxes">' . WpssoAdmin::$pkg[ $this->p->lca ][ 'short' ] . '</h3>' . "\n";
-			echo '<div id="poststuff">' . "\n";
+			echo '<h3>' . WpssoAdmin::$pkg[ $this->p->lca ][ 'short' ] . '</h3>' . "\n";
+			echo '<div id="poststuff" class="' . $this->p->lca . '-metaboxes metabox-holder">' . "\n";
 
 			do_meta_boxes( $metabox_screen, 'normal', $term_obj );
 
-			echo "\n" . '</div><!-- .poststuff -->' . "\n";
+			echo "\n" . '</div><!-- #poststuff -->' . "\n";
 			echo '<!-- ' . $this->p->lca . ' term metabox section end -->' . "\n";
 		}
 

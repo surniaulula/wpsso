@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '5.3.2',	// Plugin version.
+					'version'     => '5.4.0-dev.1',	// Plugin version.
 					'opt_version' => '651',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -79,6 +79,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'edd'                 => '(plugin) Easy Digital Downloads',
 								'jsk_wssv'            => '(plugin) WooCommerce Show Single Variations',
 								'woocommerce'         => '(plugin) WooCommerce',
+								'woocommerce_brands'  => '(plugin) WooCommerce Brands',
 								'wpecommerce'         => '(plugin) WP eCommerce',
 								'wpm_product_gtin_wc' => '(plugin) Product GTIN for WooCommerce',
 							),
@@ -799,40 +800,41 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Other term / post types.
 					 */
-					'schema_type_for_article'         => 'article',
-					'schema_type_for_book'            => 'book',
-					'schema_type_for_blog'            => 'blog',
-					'schema_type_for_business'        => 'local.business',
-					'schema_type_for_download'        => 'product',		// For Easy Digital Downloads.
-					'schema_type_for_event'           => 'event',
-					'schema_type_for_faq'             => 'webpage.faq',
-					'schema_type_for_howto'           => 'how.to',
-					'schema_type_for_job_listing'     => 'job.posting',	// For WP Job Manager.
-					'schema_type_for_jobpost'         => 'job.posting',	// For Simple Job Board.
-					'schema_type_for_organization'    => 'organization',
-					'schema_type_for_other'           => 'other',
-					'schema_type_for_person'          => 'person',
-					'schema_type_for_place'           => 'place',
-					'schema_type_for_product'         => 'product',		// For WooCommerce and most e-commerce plugins.
-					'schema_type_for_qa'              => 'webpage.qa',
-					'schema_type_for_question'        => 'question',
-					'schema_type_for_recipe'          => 'recipe',		// For WP Ultimate Recipe.
-					'schema_type_for_review'          => 'review',		// For WP Product Review.
-					'schema_type_for_tax_product_cat' => 'item.list',	// For WooCommerce.
-					'schema_type_for_tax_product_tag' => 'item.list',	// For WooCommerce.
-					'schema_type_for_tribe_events'    => 'event',
-					'schema_type_for_webpage'         => 'webpage',
-					'schema_type_for_website'         => 'website',
-					'fb_publisher_url'                => '',		// Facebook Business Page URL (localized).
-					'fb_app_id'                       => '',		// Facebook Application ID.
-					'fb_admins'                       => '',		// or Facebook Admin Username(s).
-					'fb_locale'                       => 'en_US',		// Custom Facebook Locale.
-					'instgram_publisher_url'          => '',		// Instagram Business Page URL (localized).
-					'linkedin_publisher_url'          => '',		// LinkedIn Company Page URL (localized).
-					'myspace_publisher_url'           => '',		// Myspace Business Page URL (localized).
-					'sc_publisher_url'                => '',		// Soundcloud Business Page URL (localized).
-					'tumblr_publisher_url'            => '',		// Tumblr Business Page URL (localized).
-					'yt_publisher_url'                => '',		// YouTube Business Channel URL (localized).
+					'schema_type_for_article'           => 'article',
+					'schema_type_for_book'              => 'book',
+					'schema_type_for_blog'              => 'blog',
+					'schema_type_for_business'          => 'local.business',
+					'schema_type_for_download'          => 'product',		// For Easy Digital Downloads.
+					'schema_type_for_event'             => 'event',
+					'schema_type_for_faq'               => 'webpage.faq',
+					'schema_type_for_howto'             => 'how.to',
+					'schema_type_for_job_listing'       => 'job.posting',	// For WP Job Manager.
+					'schema_type_for_jobpost'           => 'job.posting',	// For Simple Job Board.
+					'schema_type_for_organization'      => 'organization',
+					'schema_type_for_other'             => 'other',
+					'schema_type_for_person'            => 'person',
+					'schema_type_for_place'             => 'place',
+					'schema_type_for_product'           => 'product',	// For WooCommerce and most e-commerce plugins.
+					'schema_type_for_qa'                => 'webpage.qa',
+					'schema_type_for_question'          => 'question',
+					'schema_type_for_recipe'            => 'recipe',	// For WP Ultimate Recipe.
+					'schema_type_for_review'            => 'review',	// For WP Product Review.
+					'schema_type_for_tax_product_brand' => 'item.list',	// For WooCommerce Brands.
+					'schema_type_for_tax_product_cat'   => 'item.list',	// For WooCommerce.
+					'schema_type_for_tax_product_tag'   => 'item.list',	// For WooCommerce.
+					'schema_type_for_tribe_events'      => 'event',
+					'schema_type_for_webpage'           => 'webpage',
+					'schema_type_for_website'           => 'website',
+					'fb_publisher_url'                  => '',		// Facebook Business Page URL (localized).
+					'fb_app_id'                         => '',		// Facebook Application ID.
+					'fb_admins'                         => '',		// or Facebook Admin Username(s).
+					'fb_locale'                         => 'en_US',		// Custom Facebook Locale.
+					'instgram_publisher_url'            => '',		// Instagram Business Page URL (localized).
+					'linkedin_publisher_url'            => '',		// LinkedIn Company Page URL (localized).
+					'myspace_publisher_url'             => '',		// Myspace Business Page URL (localized).
+					'sc_publisher_url'                  => '',		// Soundcloud Business Page URL (localized).
+					'tumblr_publisher_url'              => '',		// Tumblr Business Page URL (localized).
+					'yt_publisher_url'                  => '',		// YouTube Business Channel URL (localized).
 					
 					/**
 					 * Standard WordPress types.
