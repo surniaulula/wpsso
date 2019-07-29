@@ -152,10 +152,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/**
-			 * Update the @id string based on $ret[ 'url' ], $image_type_id, and the og:image:id values.
+			 * Update the @id string based on $ret[ 'url' ] and $image_type_id.
 			 */
 			if ( ! empty( $mt_single[ $mt_prefix . ':id' ] ) ) {
-				WpssoSchema::update_data_id( $ret, $image_type_id . '/' . $mt_single[ $mt_prefix . ':id' ] );
+				WpssoSchema::update_data_id( $ret, $image_type_id );
 			}
 
 			if ( empty( $list_element ) ) {		// Add a single item.
@@ -256,7 +256,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Update the @id string based on $ret[ 'url' ] and $video_type_id.
 			 */
-			WpssoSchema::update_data_id( $ret, $video_type_id . ( empty( $ret[ 'fileFormat' ] ) ? '' : '/' . $ret[ 'fileFormat' ] ) );
+			WpssoSchema::update_data_id( $ret, $video_type_id );
 
 			if ( empty( $list_element ) ) {		// Add a single item.
 				$json_data = $ret;
