@@ -1306,8 +1306,8 @@ msgstr ""
 #: lib/gettext-config.php:42
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core add-on offers Schema BreadcrumbList markup using Google's "
-"preferred JSON-LD format for Rich Results SEO."
+"WPSSO Core add-on offers Schema BreadcrumbList markup using Google's JSON-LD "
+"standard for better SEO Rich Results."
 msgstr ""
 
 #: lib/gettext-config.php:43
@@ -1320,8 +1320,8 @@ msgstr ""
 #: lib/gettext-config.php:44
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core add-on offers Schema JSON-LD / Rich Results markup for Articles, "
-"Events, Local Business, Products, Recipes, Reviews and many more."
+"WPSSO Core add-on offers Schema JSON-LD / Google SEO Rich Results for "
+"Articles, Events, Local Business, Products, Recipes, Reviews and many more."
 msgstr ""
 
 #: lib/gettext-config.php:45
@@ -1341,8 +1341,8 @@ msgstr ""
 #: lib/gettext-config.php:47
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core add-on provides ratings and reviews for WordPress comments, with "
-"Aggregate Rating meta tags and optional Schema Review markup."
+"WPSSO Core add-on provides ratings and reviews for WordPress comments with "
+"Aggregate Rating meta tags and Schema Review markup."
 msgstr ""
 
 #: lib/gettext-config.php:48
@@ -1371,7 +1371,7 @@ msgstr ""
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to remove outdated / incomplete Schema Microdata to use "
-"Google's preferred Schema JSON-LD for Rich Results SEO."
+"Google's preferred Schema JSON-LD for SEO Rich Results."
 msgstr ""
 
 #: lib/gettext-config.php:52
@@ -1384,8 +1384,8 @@ msgstr ""
 #: lib/gettext-config.php:53
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core add-on offers tuning options for the WordPress image editors and "
-"PHP image extensions."
+"WPSSO Core add-on to sharpen and improve WordPress thumbnails and resized "
+"images for social sharing and SEO."
 msgstr ""
 
 #: lib/gettext-config.php:54

@@ -221,7 +221,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssobc' => array(			// Plugin acronym.
 					'short'       => 'WPSSO BC',		// Short plugin name.
 					'name'        => 'WPSSO Schema Breadcrumbs Markup',
-					'desc'        => 'WPSSO Core add-on offers Schema BreadcrumbList markup using Google\'s preferred JSON-LD format for Rich Results SEO.',
+					'desc'        => 'WPSSO Core add-on offers Schema BreadcrumbList markup using Google\'s JSON-LD standard for better SEO Rich Results.',
 					'slug'        => 'wpsso-breadcrumbs',
 					'base'        => 'wpsso-breadcrumbs/wpsso-breadcrumbs.php',
 					'update_auth' => '',
@@ -297,7 +297,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssojson' => array(			// Plugin acronym.
 					'short'       => 'WPSSO JSON',	// Short plugin name.
 					'name'        => 'WPSSO Schema JSON-LD Markup',
-					'desc'        => 'WPSSO Core add-on offers Schema JSON-LD / Rich Results markup for Articles, Events, Local Business, Products, Recipes, Reviews and many more.',
+					'desc'        => 'WPSSO Core add-on offers Schema JSON-LD / Google SEO Rich Results for Articles, Events, Local Business, Products, Recipes, Reviews and many more.',
 					'slug'        => 'wpsso-schema-json-ld',
 					'base'        => 'wpsso-schema-json-ld/wpsso-schema-json-ld.php',
 					'update_auth' => 'tid',
@@ -412,7 +412,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssorar' => array(			// Plugin acronym.
 					'short'       => 'WPSSO RAR',	// Short plugin name.
 					'name'        => 'WPSSO Ratings and Reviews',
-					'desc'        => 'WPSSO Core add-on provides ratings and reviews for WordPress comments, with Aggregate Rating meta tags and optional Schema Review markup.',
+					'desc'        => 'WPSSO Core add-on provides ratings and reviews for WordPress comments with Aggregate Rating meta tags and Schema Review markup.',
 					'slug'        => 'wpsso-ratings-and-reviews',
 					'base'        => 'wpsso-ratings-and-reviews/wpsso-ratings-and-reviews.php',
 					'update_auth' => '',
@@ -564,7 +564,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssossm' => array(			// Plugin acronym.
 					'short'       => 'WPSSO SSM',		// Short plugin name.
 					'name'        => 'WPSSO Strip Schema Microdata',
-					'desc'        => 'WPSSO Core add-on to remove outdated / incomplete Schema Microdata to use Google\'s preferred Schema JSON-LD for Rich Results SEO.',
+					'desc'        => 'WPSSO Core add-on to remove outdated / incomplete Schema Microdata to use Google\'s preferred Schema JSON-LD for SEO Rich Results.',
 					'slug'        => 'wpsso-strip-schema-microdata',
 					'base'        => 'wpsso-strip-schema-microdata/wpsso-strip-schema-microdata.php',
 					'update_auth' => '',
@@ -640,7 +640,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssotie' => array(			// Plugin acronym.
 					'short'       => 'WPSSO TIE',	// Short plugin name.
 					'name'        => 'WPSSO Tune WP Image Editors',
-					'desc'        => 'WPSSO Core add-on offers tuning options for the WordPress image editors and PHP image extensions.',
+					'desc'        => 'WPSSO Core add-on to sharpen and improve WordPress thumbnails and resized images for social sharing and SEO.',
 					'slug'        => 'wpsso-tune-image-editors',
 					'base'        => 'wpsso-tune-image-editors/wpsso-tune-image-editors.php',
 					'update_auth' => 'tid',
