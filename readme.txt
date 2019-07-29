@@ -278,7 +278,8 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 		* [Simple Job Board](https://wordpress.org/plugins/simple-job-board/)
 		* [The Events Calendar](https://wordpress.org/plugins/the-events-calendar/)
 		* [The SEO Framework](https://wordpress.org/plugins/autodescription/)
-		* [WooCommerce](https://wordpress.org/plugins/woocommerce/) (versions 1, 2, and 3)
+		* [WooCommerce](https://wordpress.org/plugins/woocommerce/)
+		* [WooCommerce Brands](https://woocommerce.com/products/brands/)
 		* WooCommerce Show Single Variations
 		* [WP eCommerce](https://wordpress.org/plugins/wp-e-commerce/)
 		* [WP Job Manager](https://wordpress.org/plugins/wp-job-manager/)
