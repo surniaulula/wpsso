@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '5.4.0-dev.1',	// Plugin version.
+					'version'     => '5.4.0-dev.2',	// Plugin version.
 					'opt_version' => '651',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -1438,7 +1438,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_howto_tools'           => 'schema_howto_tool',	// How-To Tools Custom Field.
 					'plugin_cf_img_url'               => 'og_img_url',
 					'plugin_cf_product_avail'         => 'product_avail',
-					'plugin_cf_product_brand'         => 'product_brand',
+					'plugin_cf_product_brand'         => 'product_brand',		// Product Brand Custom Field.
 					'plugin_cf_product_color'         => 'product_color',
 					'plugin_cf_product_condition'     => 'product_condition',
 					'plugin_cf_product_currency'      => 'product_currency',

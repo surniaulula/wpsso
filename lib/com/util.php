@@ -2044,7 +2044,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':id'                              => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':age_group'                       => '',
 				$mt_pre . ':availability'                    => '',
-				$mt_pre . ':brand'                           => '',
+				$mt_pre . ':brand'                           => '',	// There can only be one Open Graph brand meta tag, which must be a string, not an array.
 				$mt_pre . ':category'                        => '',
 				$mt_pre . ':color'                           => '',
 				$mt_pre . ':condition'                       => '',

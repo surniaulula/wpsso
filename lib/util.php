@@ -2571,6 +2571,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $this->get_page_url( 'canonical', $mod, $add_page, $src_id );
 		}
 
+		/**
+		 * $type value is "sharing" or "canonical".
+		 */
 		private function get_page_url( $type, $mod, $add_page, $src_id ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -2613,13 +2616,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					} elseif ( $mod[ 'post_status' ] !== 'publish' ) {
 
-						$post_obj = self::get_post_object( $mod[ 'id' ] );
+						$post_obj = self::get_post_object( $mod[ 'id' ], $output = 'object' );
 
-						$post_obj->post_status = 'publish';
-						$post_obj->post_name   = $post_obj->post_name ? 
-							$post_obj->post_name : sanitize_title( $post_obj->post_title );
+						if ( is_object( $post_obj ) ) {	// Just in case.
 
-						$url = get_permalink( $post_obj );
+							$post_obj->post_status = 'publish';
+							$post_obj->post_name   = $post_obj->post_name ? 
+								$post_obj->post_name : sanitize_title( $post_obj->post_title );
+
+							$url = get_permalink( $post_obj );
+						}
 
 						if ( empty( $url ) ) {	// Just in case.
 							$url = get_permalink( $mod[ 'id' ] );
