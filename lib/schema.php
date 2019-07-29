@@ -69,7 +69,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$ret = self::get_schema_type_context( 'https://schema.org/WebSite', array( 'url' => $mt_og[ 'og:url' ] ) );
+			$ret = self::get_schema_type_context( 'https://schema.org/WebSite',
+				array(
+					'url' => $mt_og[ 'og:url' ],
+				)
+			);
 
 			foreach ( array(
 				'name'          => SucomUtil::get_site_name( $this->p->options, $mod ),
@@ -1408,7 +1412,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		public static function get_schema_type_context( $type_url, array $json_data = array(), $type_id = '' ) {
+		public static function get_schema_type_context( $type_url, array $json_data = array() ) {
 
 			if ( preg_match( '/^(.+:\/\/.+)\/([^\/]+)$/', $type_url, $match ) ) {
 
@@ -1446,18 +1450,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					'@type'    => $type_value,
 				);
 
-				if ( ! empty( $type_id ) ) {
-
-					/**
-					 * A URL will be required if $type_id is not a URL.
-					 */
-					if ( ! empty( $json_data[ 'url' ] ) ) {
-						$json_values[ 'url' ] = $json_data[ 'url' ];
-					}
-
-					self::update_data_id( $json_values, $type_id );
-				}
-
 				$json_data = array_merge(
 					$json_head,	// Keep @id, @context, and @type top-most.
 					$json_data,
@@ -1475,6 +1467,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public static function get_data_context( $json_data ) {
 
 			if ( false !== ( $type_url = self::get_data_type_url( $json_data ) ) ) {
+
 				return self::get_schema_type_context( $type_url );
 			}
 

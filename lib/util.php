@@ -2621,7 +2621,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						if ( is_object( $post_obj ) ) {	// Just in case.
 
 							$post_obj->post_status = 'publish';
-							$post_obj->post_name   = $post_obj->post_name ? 
+
+							$post_obj->post_name = $post_obj->post_name ? 
 								$post_obj->post_name : sanitize_title( $post_obj->post_title );
 
 							$url = get_permalink( $post_obj );
