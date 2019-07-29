@@ -438,7 +438,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 5.4.0-dev.2 (2019/07/29)**
 
 * **New Features**
-	* Added support for the WooCommerce Brands plugin (Premium version).
+	* Added support for the [WooCommerce Brands](https://woocommerce.com/products/brands/) plugin (Premium version).
 * **Improvements**
 	* None.
 * **Bugfixes**
