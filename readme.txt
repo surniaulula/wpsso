@@ -434,7 +434,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.4.0-dev.1 (TBD)**
+**Version 5.4.0-dev.2 (2019/07/29)**
 
 * **New Features**
 	* Added support for the WooCommerce Brands plugin (Premium version).
@@ -443,7 +443,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added extra sanity checks in SucomUtil::get_page_url().
 
 **Version 5.3.2 (2019/07/28)**
 
@@ -598,9 +598,9 @@ This version includes several jQuery improvements to optimize both the size of s
 
 == Upgrade Notice ==
 
-= 5.4.0-dev.1 =
+= 5.4.0-dev.2 =
 
-(TBD) Added support for the WooCommerce Brands plugin (Premium version).
+(2019/07/29) Added support for the WooCommerce Brands plugin (Premium version).
 
 = 5.3.2 =
 
