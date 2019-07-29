@@ -444,7 +444,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added extra sanity checks in SucomUtil::get_page_url().
+	* Added extra sanity checks in SucomUtil::get_page_url() for edge cases when `get_post()` does not (or cannot) return a post object.
 
 **Version 5.3.2 (2019/07/28)**
 
