@@ -435,7 +435,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.4.0-dev.3 (2019/07/30)**
+**Version 5.4.0-dev.4 (2019/07/30)**
 
 * **New Features**
 	* Added support for the [WooCommerce Brands](https://woocommerce.com/products/brands/) plugin (Premium version).
@@ -599,7 +599,7 @@ This version includes several jQuery improvements to optimize both the size of s
 
 == Upgrade Notice ==
 
-= 5.4.0-dev.3 =
+= 5.4.0-dev.4 =
 
 (2019/07/30) Added support for the WooCommerce Brands plugin (Premium version). Added a webpage HTML maximum size check (2.5 MB) when checking for duplicate meta tags.
 
