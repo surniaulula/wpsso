@@ -2363,6 +2363,34 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
+		 * If we have a GTIN number, try to improve the assigned property name.
+		 */
+		public static function check_gtin_property_name( &$json_data ) {
+
+			if ( ! empty( $json_data[ 'gtin' ] ) ) {
+
+				$gtin_len = strlen( $json_data[ 'gtin' ] );
+
+				switch ( $gtin_len ) {
+
+					case 14:
+					case 13:
+					case 12:
+					case 8:
+
+						if ( empty( $json_data[ 'gtin' . $gtin_len ] ) ) {
+
+							$json_data[ 'gtin' . $gtin_len ] = $json_data[ 'gtin' ];
+
+							unset( $json_data[ 'gtin' ] );
+						}
+
+						break;
+				}
+			}
+		}
+
+		/**
 		 * Example usage:
 		 *
 		 *	WpssoSchema::check_itemprop_content_map( $offer, 'itemCondition', 'product:condition' );
