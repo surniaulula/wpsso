@@ -1803,6 +1803,20 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $msg_key ) {
 
+						case 'info-woocommerce-cf-attr':
+
+							$text = '<p class="status-msg top">';
+							
+							$text .= __( 'Note that product attribute values from WooCommerce have precedence over custom field values.', 'wpsso' );
+							
+							$text .= '<br/>';
+
+							$text .= sprintf( __( 'Refer to the <a href="%s">WooCommerce integration notes</a> for information on setting up product attributes and custom fields.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/' );
+
+							$text .= '</p>';
+
+							break;
+
 						case 'info-plugin-tid':	// Displayed in the Licenses settings page.
 
 							$um_info       = $this->p->cf[ 'plugin' ][ 'wpssoum' ];

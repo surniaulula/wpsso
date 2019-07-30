@@ -3738,8 +3738,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $is_top_section ) {
 				if ( ! self::$pkg[ $this->p->lca ][ 'pp' ] ) {
-					$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
+					$table_rows[] = ( $hide_in_basic ? $form->get_tr_hide( 'basic' ) : '' ) .
+						'<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
 				}
+			}
+
+			if ( ! empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {
+				$table_rows[] = ( $hide_in_basic ? $form->get_tr_hide( 'basic' ) : '' ) .
+					'<td colspan="2">' . $this->p->msgs->get( 'info-woocommerce-cf-attr' ) . '</td>';
 			}
 
 			/**
