@@ -952,10 +952,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->notice->err(
 						sprintf( __( 'The webpage HTML retrieved from %1$s is %2$s bytes.', 'wpsso' ),
 							'<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>', $html_size ) . ' ' . 
-						sprintf( __( 'This exceeds the maximum limit of %1$s bytes imposed by the Google crawler.',
-							'wpsso' ), $error_size ) . ' ' . 
-						__( 'Please review and optimize the webpage HTML or the Google crawler will reject this webpage.',
-							'wpsso' )
+						sprintf( __( 'This exceeds the maximum limit of %1$s bytes imposed by the Google crawler.', 'wpsso' ), $error_size ) . ' ' . 
+						__( 'If you do not reduce the webpage HTML size, Google will refuse to crawl this webpage.', 'wpsso' )
 					);
 				}
 			}
