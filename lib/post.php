@@ -937,8 +937,28 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$webpage_html = $this->p->cache->get( $check_url, 'raw', 'transient', $exp_secs, '', $curl_opts );
 			$url_mtime    = $this->p->cache->get_url_mtime( $check_url );
 
+			$webpage_size = strlen( $webpage_html );
+			$error_size   = (int) SucomUtil::get_const( 'WPSSO_DUPE_CHECK_ERROR_SIZE', 2500000 );
 			$warning_time = (int) SucomUtil::get_const( 'WPSSO_DUPE_CHECK_WARNING_TIME', 2.5 );
 			$timeout_time = (int) SucomUtil::get_const( 'WPSSO_DUPE_CHECK_TIMEOUT_TIME', 3.0 );
+
+			if ( $webpage_size > $error_size ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'size of ' . $check_url . ' is ' . $webpage_size . ' bytes' );
+				}
+
+				if ( $is_admin ) {
+					$this->p->notice->err(
+						sprintf( __( 'The webpage HTML retrieved from %1$s is %2$s bytes.', 'wpsso' ),
+							'<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>', $webpage_size ) . ' ' . 
+						sprintf( __( 'This exceeds the maximum limit of %1$s bytes imposed by the Google crawler.',
+							'wpsso' ), $error_size ) . ' ' . 
+						__( 'Please review and optimize the webpage HTML or the Google crawler will reject this webpage.',
+							'wpsso' )
+					);
+				}
+			}
 
 			if ( true === $url_mtime ) {
 
@@ -958,9 +978,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->debug->log( 'fetched ' . $check_url . ' in ' . $url_mtime . ' secs' );
 				}
 
-				if ( is_admin() && $url_mtime > $warning_time ) {
+				if ( $is_admin && $url_mtime > $warning_time ) {
 					$this->p->notice->warn(
-						sprintf( __( 'Retrieving the HTML document for %1$s took %2$s seconds.', 'wpsso' ),
+						sprintf( __( 'Retrieving the webpage HTML for %1$s took %2$s seconds.', 'wpsso' ),
 							'<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>', $url_mtime ) . ' ' . 
 						sprintf( __( 'This exceeds the recommended limit of %1$s seconds (crawlers often time-out after %2$s seconds).',
 							'wpsso' ), $warning_time, $timeout_time ) . ' ' . 
