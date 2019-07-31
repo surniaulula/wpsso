@@ -78,10 +78,8 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				/**
 				 * Honor the FORCE_SSL constant on the front-end with a 301 redirect.
 				 */
-				if ( ! empty( $this->p->options[ 'plugin_honor_force_ssl' ] ) ) {
-					if ( SucomUtil::get_const( 'FORCE_SSL' ) ) {
-						add_action( 'wp_loaded', array( __CLASS__, 'force_ssl_redirect' ), -1000 );
-					}
+				if ( SucomUtil::get_const( 'FORCE_SSL' ) ) {
+					add_action( 'wp_loaded', array( __CLASS__, 'force_ssl_redirect' ), -1000 );
 				}
 
 				/**

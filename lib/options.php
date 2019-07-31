@@ -802,17 +802,17 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'blank_num':
 
 					if ( '' === $opt_val ) {
+
 						$ret_int = false;
-					} else {
-						if ( ! is_numeric( $opt_val ) ) {
 
-							$this->p->notice->err( sprintf( $error_messages[ 'blank_num' ], $opt_key ) );
+					} elseif ( ! is_numeric( $opt_val ) ) {
 
-							$opt_val = $def_val;
+						$this->p->notice->err( sprintf( $error_messages[ 'blank_num' ], $opt_key ) );
 
-							if ( '' === $opt_val ) {
-								$ret_int = false;
-							}
+						$opt_val = $def_val;
+
+						if ( '' === $opt_val ) {
+							$ret_int = false;
 						}
 					}
 
@@ -978,15 +978,22 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$opt_val = trim( $opt_val );
 
 					if ( 'color' === $option_type ) {
+
 						$fmt = '/^#[a-fA-f0-9]{6,6}$/';				// Color as #000000.
+
 					} elseif ( 'date' === $option_type ) {
+
 						$fmt = '/^[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2}$/';		// Date as yyyy-mm-dd.
+
 					} elseif ( 'time' === $option_type ) {
+
 						$fmt = '/^[0-9]{2,2}:[0-9]{2,2}(:[0-9]{2,2})?$/';	// Time as hh:mm or hh:mm:ss.
 					}
 
 					if ( '' !== $opt_val && 'none' !== $opt_val && $fmt && ! preg_match( $fmt, $opt_val ) ) {
+
 						$this->p->notice->err( sprintf( $error_messages[ $option_type ], $opt_key ) );
+
 						$opt_val = $def_val;
 					}
 
@@ -1037,7 +1044,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$opt_val = SucomUtil::decode_html( $opt_val );	// Just in case.
 
 						if ( filter_var( $opt_val, FILTER_VALIDATE_URL ) === false ) {
+
 							$this->p->notice->err( sprintf( $error_messages[ 'url' ], $opt_key ) );
+
 							$opt_val = $def_val;
 						}
 					}

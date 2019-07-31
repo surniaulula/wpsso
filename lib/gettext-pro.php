@@ -14,7 +14,6 @@ _x( 'WP Caption Prefix', 'option label', 'wpsso' );
 _x( 'Check for Embedded Media', 'option label', 'wpsso' );
 _x( '&lt;html&gt; Attributes Filter Hook', 'option label', 'wpsso' );
 _x( '&lt;head&gt; Attributes Filter Hook', 'option label', 'wpsso' );
-_x( 'Honor the FORCE_SSL Constant', 'option label', 'wpsso' );
 _x( 'Add Person Role for New Users', 'option label', 'wpsso' );
 _x( 'Enable WP Excerpt for Pages', 'option label', 'wpsso' );
 _x( 'Enable WP Tags for Pages', 'option label', 'wpsso' );

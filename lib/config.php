@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '5.4.0-dev.4',	// Plugin version.
-					'opt_version' => '651',		// Increment when changing default option values.
+					'version'     => '5.4.0-b.1',	// Plugin version.
+					'opt_version' => '652',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
 					'desc'        => 'WPSSO Core makes sure your content looks great on all social and search sites - no matter how URLs are crawled, shared, re-shared, posted, or embedded!',
@@ -1154,7 +1154,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_html_attr_filter_prio'      => 1000,
 					'plugin_head_attr_filter_name'      => 'head_attributes',	// <head> Attributes Filter Hook.
 					'plugin_head_attr_filter_prio'      => 1000,
-					'plugin_honor_force_ssl'            => 1,			// Honor the FORCE_SSL Constant.
 					'plugin_new_user_is_person'         => 0,			// Add Person Role for New Users.
 					'plugin_page_excerpt'               => 0,			// Enable WP Excerpt for Pages.
 					'plugin_page_tags'                  => 0,			// Enable WP Tags for Pages.
@@ -1355,8 +1354,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_head_attr_filter_name:use' => 'default',
 					'plugin_head_attr_filter_prio'     => 1000,
 					'plugin_head_attr_filter_prio:use' => 'default',
-					'plugin_honor_force_ssl'           => 1,		// Honor the FORCE_SSL Constant.
-					'plugin_honor_force_ssl:use'       => 'default',
 					'plugin_new_user_is_person'        => 0,		// Add Person Role for New Users.
 					'plugin_new_user_is_person:use'    => 'default',
 					'plugin_page_excerpt'              => 0,		// Enable WP Excerpt for Pages.

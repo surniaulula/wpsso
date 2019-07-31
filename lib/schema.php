@@ -2369,6 +2369,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( ! empty( $json_data[ 'gtin' ] ) ) {
 
+				/**
+				 * The value may come from a custom field, so trim it, just in case.
+				 */
+				$json_data[ 'gtin' ] = trim( $json_data[ 'gtin' ] );
+
 				$gtin_len = strlen( $json_data[ 'gtin' ] );
 
 				switch ( $gtin_len ) {

@@ -111,10 +111,6 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			'<td class="blank">Name: ' . $form->options[ 'plugin_head_attr_filter_name' ] . ', '.
 			'Priority: ' . $form->options[ 'plugin_head_attr_filter_prio' ] . '</td>';
 
-			$table_rows[ 'plugin_honor_force_ssl' ] = '' .
-			$form->get_th_html( _x( 'Honor the FORCE_SSL Constant', 'option label', 'wpsso' ), '', 'plugin_honor_force_ssl' ) . 
-			$form->get_td_no_checkbox( 'plugin_honor_force_ssl' );
-
 			$table_rows[ 'plugin_new_user_is_person' ] = '' . 
 			$form->get_th_html( _x( 'Add Person Role for New Users', 'option label', 'wpsso' ), '', 'plugin_new_user_is_person' ) . 
 			$form->get_td_no_checkbox( 'plugin_new_user_is_person' );

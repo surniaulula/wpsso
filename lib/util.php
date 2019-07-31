@@ -2618,17 +2618,20 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						$post_obj = self::get_post_object( $mod[ 'id' ], $output = 'object' );
 
-						if ( is_object( $post_obj ) ) {	// Just in case.
+						if ( is_object( $post_obj ) ) {
 
-							$post_obj->post_status = 'publish';
+							if ( ! is_wp_error( $post_obj ) ) {
 
-							$post_obj->post_name = $post_obj->post_name ? 
-								$post_obj->post_name : sanitize_title( $post_obj->post_title );
+								$post_obj->post_status = 'publish';
 
-							$url = get_permalink( $post_obj );
+								$post_obj->post_name = $post_obj->post_name ? 
+									$post_obj->post_name : sanitize_title( $post_obj->post_title );
+
+								$url = get_permalink( $post_obj );
+							}
 						}
 
-						if ( empty( $url ) ) {	// Just in case.
+						if ( empty( $url ) ) {
 							$url = get_permalink( $mod[ 'id' ] );
 						}
 
@@ -2796,16 +2799,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			/**
 			 * Check and possibly enforce the FORCE_SSL constant.
 			 */
-			if ( ! empty( $this->p->options[ 'plugin_honor_force_ssl' ] ) ) {
+			if ( self::get_const( 'FORCE_SSL' ) && ! SucomUtil::is_https( $url ) ) {
 
-				if ( self::get_const( 'FORCE_SSL' ) && 0 === strpos( $url, 'http:' ) ) {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'force ssl is enabled - replacing http by https' );
-					}
-
-					$url = preg_replace( '/^http:/', 'https:', $url );
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'force ssl is enabled - replacing http by https' );
 				}
+
+				$url = set_url_scheme( $url, 'https' );
 			}
 
 			return apply_filters( $this->p->lca . '_' . $type . '_url', $url, $mod, $add_page, $src_id );

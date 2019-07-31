@@ -229,6 +229,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'plugin_product_attr_volume' => 'plugin_product_attr_volume_value',
 					'plugin_cf_product_volume'   => 'plugin_cf_product_volume_value',
 				),
+				651 => array(
+					'plugin_honor_force_ssl' => '',
+				),
 			),
 		);
 
@@ -251,6 +254,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				),
 				602 => array(
 					'plugin_preserve' => '',
+				),
+				651 => array(
+					'plugin_honor_force_ssl' => '',
 				),
 			),
 		);

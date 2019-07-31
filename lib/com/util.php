@@ -1100,12 +1100,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( ! empty( $url ) ) {
 
-				if ( strpos( $url, '://' ) && 
-
-					parse_url( $url, PHP_URL_SCHEME ) === 'https' ) {
-
+				if ( strpos( $url, '://' ) && parse_url( $url, PHP_URL_SCHEME ) === 'https' ) {
 					return $local_cache[ $url ] = true;
-
 				} else {
 					return $local_cache[ $url ] = false;
 				}

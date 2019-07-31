@@ -770,12 +770,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_honor_force_ssl':	// Honor the FORCE_SSL Constant.
-
-							$text = sprintf( __( 'If the FORCE_SSL constant is defined as true, %s can redirect front-end URLs from HTTP to HTTPS when required (default is checked).', 'wpsso' ), $info[ 'short' ] );
-
-							break;
-
 						case 'tooltip-plugin_new_user_is_person':	// Add Person Role for New Users.
 
 							$text = sprintf( __( 'Automatically add the "%s" role when a new user is created.', 'wpsso' ),
