@@ -477,12 +477,16 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					width:15%;
 				}
 				table.wp-list-table > thead > tr > th.column-categories,
-				table.wp-list-table > tbody > tr > td.column-categories {
-					width:15%;
+				table.wp-list-table > tbody > tr > td.column-categories,
+				table.wp-list-table > thead > tr > th.column-product_cat,
+				table.wp-list-table > tbody > tr > td.column-product_cat {
+					width:15% !important;
 				}
 				table.wp-list-table > thead > tr > th.column-tags,
-				table.wp-list-table > tbody > tr > td.column-tags {
-					width:15%;
+				table.wp-list-table > tbody > tr > td.column-tags,
+				table.wp-list-table > thead > tr > th.column-product_tag,
+				table.wp-list-table > tbody > tr > td.column-product_tag {
+					width:15% !important;
 				}
 				table.wp-list-table > thead > tr > th.column-description,
 				table.wp-list-table > tbody > tr > td.column-description {
@@ -500,7 +504,17 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				table.wp-list-table > tbody > tr > td.num,
 				table.wp-list-table > thead > tr > th.column-comments,
 				table.wp-list-table > tbody > tr > td.column-comments {
-					width:50px;	/* Leave room for sorting arrow. */
+					width:50px;
+				}
+				table.wp-list-table > thead > tr > th.column-featured,
+				table.wp-list-table > tbody > tr > td.column-featured {
+					width:20px;
+				}
+				table.wp-list-table > thead > tr > th.column-sku,
+				table.wp-list-table > tbody > tr > td.column-sku,
+				table.wp-list-table > thead > tr > th.column-wpm_pgw_code,
+				table.wp-list-table > tbody > tr > td.column-wpm_pgw_code {
+					width:80px;
 				}
 				table.wp-list-table > thead > tr > th.column-date,
 				table.wp-list-table > tbody > tr > td.column-date,
@@ -520,7 +534,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				}
 				table.wp-list-table > thead > tr > th.column-thumb,	/* WooCommerce Brands */
 				table.wp-list-table > tbody > tr > td.column-thumb {
-					width:80px;
+					width:60px;
 				}
 				table.wp-list-table > thead > tr > th.column-wpseo-links,	/* Yoast SEO. */
 				table.wp-list-table > tbody > tr > td.column-wpseo-links,

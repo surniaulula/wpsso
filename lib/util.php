@@ -942,7 +942,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				foreach ( $unsorted as $num => $obj ) {
 
-					$sort_key = ( empty( $obj->label ) ? '' : $obj->label . '-' ) . $obj->name . '-' . $num;
+					if ( ! empty( $obj->labels->name ) ) {
+						$sort_key = $obj->labels->name . '-' . $num;
+					} elseif ( ! empty( $obj->label ) ) {
+						$sort_key = $obj->label . '-' . $num;
+					} else {
+						$sort_key = $obj->name . '-' . $num;
+					}
 
 					$by_name[ $sort_key ] = $num;	// Make sure key is sortable and unique.
 				}
@@ -1005,7 +1011,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				foreach ( $unsorted as $num => $obj ) {
 
-					$sort_key = ( empty( $obj->label ) ? '' : $obj->label . '-' ) . $obj->name . '-' . $num;
+					if ( ! empty( $obj->labels->name ) ) {
+						$sort_key = $obj->labels->name . '-' . $num;
+					} elseif ( ! empty( $obj->label ) ) {
+						$sort_key = $obj->label . '-' . $num;
+					} else {
+						$sort_key = $obj->name . '-' . $num;
+					}
 
 					$by_name[ $sort_key ] = $num;	// Make sure key is sortable and unique.
 				}
