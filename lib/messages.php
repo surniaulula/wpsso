@@ -2323,7 +2323,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					'product_depth_value' => array(
 						_x( 'Product Depth', 'option label', 'wpsso' ),
 						sprintf( _x( 'a product depth (in %s)', 'tooltip fragment', 'wpsso' ),
-							WpssoSchema::get_data_unitcode_text( 'depth' ) ),
+							WpssoSchema::get_data_unit_text( 'depth' ) ),
 					),
 					'product_gtin14' => array(
 						_x( 'Product GTIN-14', 'option label', 'wpsso' ),
@@ -2348,7 +2348,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					'product_height_value' => array(
 						_x( 'Product Height', 'option label', 'wpsso' ),
 						sprintf( _x( 'a product height (in %s)', 'tooltip fragment', 'wpsso' ),
-							WpssoSchema::get_data_unitcode_text( 'height' ) ),
+							WpssoSchema::get_data_unit_text( 'height' ) ),
 					),
 					'product_isbn' => array(
 						_x( 'Product ISBN', 'option label', 'wpsso' ),
@@ -2357,7 +2357,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					'product_length_value' => array(
 						_x( 'Product Length', 'option label', 'wpsso' ),
 						sprintf( _x( 'a product length (in %s)', 'tooltip fragment', 'wpsso' ),
-							WpssoSchema::get_data_unitcode_text( 'length' ) ),
+							WpssoSchema::get_data_unit_text( 'length' ) ),
 					),
 					'product_material' => array(
 						_x( 'Product Material', 'option label', 'wpsso' ),
@@ -2386,17 +2386,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					'product_volume_value' => array(
 						_x( 'Product Volume', 'option label', 'wpsso' ),
 						sprintf( _x( 'a product volume (in %s)', 'tooltip fragment', 'wpsso' ),
-							WpssoSchema::get_data_unitcode_text( 'volume' ) ),
+							WpssoSchema::get_data_unit_text( 'volume' ) ),
 					),
 					'product_weight_value' => array(
 						_x( 'Product Weight', 'option label', 'wpsso' ),
 						sprintf( _x( 'a product weight (in %s)', 'tooltip fragment', 'wpsso' ),
-							WpssoSchema::get_data_unitcode_text( 'weight' ) ),
+							WpssoSchema::get_data_unit_text( 'weight' ) ),
 					),
 					'product_width_value' => array(
 						_x( 'Product Width', 'option label', 'wpsso' ),
 						sprintf( _x( 'a product width (in %s)', 'tooltip fragment', 'wpsso' ),
-							WpssoSchema::get_data_unitcode_text( 'width' ) ),
+							WpssoSchema::get_data_unit_text( 'width' ) ),
 					),
 					'recipe_ingredients' => array(
 						_x( 'Recipe Ingredients', 'option label', 'wpsso' ),

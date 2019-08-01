@@ -27,9 +27,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		protected $p;
 
-		protected $types_cache = null;			// Schema types array cache.
+		protected $types_cache = null;		// Schema types array cache.
 
-		protected static $unitcodes_cache = null;	// Schema unicodes array cache.
+		protected static $units_cache = null;	// Schema unicodes array cache.
 
 		public function __construct( &$plugin ) {
 
@@ -69,11 +69,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$ret = self::get_schema_type_context( 'https://schema.org/WebSite',
-				array(
-					'url' => $mt_og[ 'og:url' ],
-				)
-			);
+			$ret = self::get_schema_type_context( 'https://schema.org/WebSite', array(
+				'url' => $mt_og[ 'og:url' ],
+			) );
 
 			foreach ( array(
 				'name'          => SucomUtil::get_site_name( $this->p->options, $mod ),
@@ -2136,7 +2134,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public static function add_data_quant_from_assoc( array &$json_data, array $assoc, array $names ) {
 
-			return self::add_data_unitcode_from_assoc( $json_data, $assoc, $names );
+			return self::add_data_unit_from_assoc( $json_data, $assoc, $names );
+		}
+
+		/**
+		 * Deprecated on 2019/08/01.
+		 */
+		public static function add_data_unitcode_from_assoc( array &$json_data, array $assoc, array $names ) {
+
+			return self::add_data_unit_from_assoc( $json_data, $assoc, $names );
 		}
 
 		/**
@@ -2156,7 +2162,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * 	'width'  => 'product:width:value',
 		 * );
 		 */
-		public static function add_data_unitcode_from_assoc( array &$json_data, array $assoc, array $names ) {
+		public static function add_data_unit_from_assoc( array &$json_data, array $assoc, array $names ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -2164,11 +2170,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			if ( null === self::$unitcodes_cache ) {
-				self::$unitcodes_cache = apply_filters( $wpsso->lca . '_schema_unitcodes', $wpsso->cf[ 'head' ][ 'schema_unitcodes' ] );
+			if ( null === self::$units_cache ) {
+				self::$units_cache = apply_filters( $wpsso->lca . '_schema_units', $wpsso->cf[ 'head' ][ 'schema_units' ] );
 			}
 
-			if ( ! is_array( self::$unitcodes_cache ) ) {	// Just in case.
+			if ( ! is_array( self::$units_cache ) ) {	// Just in case.
 				return;
 			}
 
@@ -2177,7 +2183,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/**
 				 * Make sure the property name we need (width, height, weight, etc.) is configured.
 				 */
-				if ( empty( self::$unitcodes_cache[ $idx ] ) || ! is_array( self::$unitcodes_cache[ $idx ] ) ) {
+				if ( empty( self::$units_cache[ $idx ] ) || ! is_array( self::$units_cache[ $idx ] ) ) {
 					continue;
 				}
 
@@ -2189,9 +2195,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				/**
-				 * Example unitcode array:
+				 * Example array:
 				 *
-				 *	self::$unitcodes_cache[ 'depth' ] = array(
+				 *	self::$units_cache[ 'depth' ] = array(
 				 *		'depth' => array(
 				 *			'@context' => 'https://schema.org',
 				 *			'@type'    => 'QuantitativeValue',
@@ -2201,7 +2207,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 *		),
 				 *	),
 				 */
-				foreach ( self::$unitcodes_cache[ $idx ] as $prop_name => $prop_data ) {
+				foreach ( self::$units_cache[ $idx ] as $prop_name => $prop_data ) {
 
 					$prop_data[ 'value' ] = $assoc[ $key_name ];
 
@@ -2210,7 +2216,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
+		/**
+		 * Deprecated on 2019/08/01.
+		 */
 		public static function get_data_unitcode_text( $idx ) {
+
+			return self::get_data_unit_text( $idx );
+		}
+
+		public static function get_data_unit_text( $idx ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -2224,18 +2238,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $local_cache[ $idx ];
 			}
 
-			if ( null === self::$unitcodes_cache ) {
-				self::$unitcodes_cache = apply_filters( $wpsso->lca . '_schema_unitcodes', $wpsso->cf[ 'head' ][ 'schema_unitcodes' ] );
+			if ( null === self::$units_cache ) {
+				self::$units_cache = apply_filters( $wpsso->lca . '_schema_units', $wpsso->cf[ 'head' ][ 'schema_units' ] );
 			}
 
-			if ( empty( self::$unitcodes_cache[ $idx ] ) || ! is_array( self::$unitcodes_cache[ $idx ] ) ) {
+			if ( empty( self::$units_cache[ $idx ] ) || ! is_array( self::$units_cache[ $idx ] ) ) {
 				return $local_cache[ $idx ] = '';
 			}
 
 			/**
-			 * Example unitcode array:
+			 * Example array:
 			 *
-			 *	self::$unitcodes_cache[ 'depth' ] = array(
+			 *	self::$units_cache[ 'depth' ] = array(
 			 *		'depth' => array(
 			 *			'@context' => 'https://schema.org',
 			 *			'@type'    => 'QuantitativeValue',
@@ -2245,7 +2259,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 *		),
 			 *	),
 			 */
-			foreach ( self::$unitcodes_cache[ $idx ] as $prop_name => $prop_data ) {
+			foreach ( self::$units_cache[ $idx ] as $prop_name => $prop_data ) {
 
 				if ( isset( $prop_data[ 'unitText' ] ) ) {	// Return the first match.
 					return $local_cache[ $idx ] = $prop_data[ 'unitText' ];

@@ -743,7 +743,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			) );
 
 			if ( false !== $quantity ) {
-				$offer[ 'eligibleQuantity' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/QuantitativeValue ', $quantity );
+				$offer[ 'eligibleQuantity' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/QuantitativeValue', $quantity );
 			}
 
 			$price_spec = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array( 

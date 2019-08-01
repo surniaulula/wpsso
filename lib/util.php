@@ -3951,15 +3951,15 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						$mt_units = $mt_match[ 1 ] . ':units';
 
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'checking for ' . $mt_units . ' unitcode text' );
+							$this->p->debug->log( 'checking for ' . $mt_units . ' unit text' );
 						}
 
 						if ( isset( $og_type_mt_md[ $mt_units ] ) ) {
 
-							if ( $unit_text = WpssoSchema::get_data_unitcode_text( $unit_match[ 1 ] ) ) {
+							if ( $unit_text = WpssoSchema::get_data_unit_text( $unit_match[ 1 ] ) ) {
 						
 								if ( $this->p->debug->enabled ) {
-									$this->p->debug->log( $mt_units . ' from unitcode text = ' . $unit_text );
+									$this->p->debug->log( $mt_units . ' from unit text = ' . $unit_text );
 								}
 
 								$mt_og[ $mt_units ] = $unit_text;

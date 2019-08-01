@@ -2973,7 +2973,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'train.trip'           => 'trip.train',
 					'urologic'             => 'urologic.specialty',
 				),
-				'schema_unitcodes' => array(	// Element of 'head' array.
+				'schema_units' => array(	// Element of 'head' array.
 					'depth' => array(	// Unitcode index value.
 						'depth' => array(	// Schema property name.
 							'@context' => 'https://schema.org',

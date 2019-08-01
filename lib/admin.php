@@ -3832,7 +3832,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$cmt_transl = '';
 
 			if ( preg_match( '/^.*_([^_]+)_value$/', $opt_key, $unit_match ) ) {
-				if ( $unit_text = WpssoSchema::get_data_unitcode_text( $unit_match[ 1 ] ) ) {
+				if ( $unit_text = WpssoSchema::get_data_unit_text( $unit_match[ 1 ] ) ) {
 					$cmt_transl = ' ' . sprintf( _x( 'in %s', 'option comment', 'wpsso' ), $unit_text );
 				}
 			}
