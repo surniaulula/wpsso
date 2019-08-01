@@ -435,13 +435,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.4.0-b.1 (2019/07/30)**
+**Version 5.4.0-b.2 (2019/07/31)**
 
 * **New Features**
 	* Added support for the [WooCommerce Brands](https://woocommerce.com/products/brands/) plugin (Premium version).
 * **Improvements**
 	* Added a webpage HTML maximum size check (2.5 MB) when checking for duplicate meta tags.
 	* Removed the SSO &gt; Advanced &gt; Integration &gt; Honor the FORCE_SSL Constant option.
+	* Changed the single "Part of URL" option in the Document SSO metabox to a multiple input option.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -600,9 +601,9 @@ This version includes several jQuery improvements to optimize both the size of s
 
 == Upgrade Notice ==
 
-= 5.4.0-b.1 =
+= 5.4.0-b.2 =
 
-(2019/07/30) Added support for the WooCommerce Brands plugin (Premium version). Added a webpage HTML maximum size check (2.5 MB) when checking for duplicate meta tags.
+(2019/07/31) Added support for the WooCommerce Brands plugin (Premium version). Added a webpage HTML maximum size check (2.5 MB) when checking for duplicate meta tags.
 
 = 5.3.2 =
 
