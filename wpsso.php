@@ -330,6 +330,17 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->cache   = new SucomCache( $this );
 			$this->util    = new WpssoUtil( $this );		// Extends SucomUtil.
 			$this->opt     = new WpssoOptions( $this );
+
+			if ( $this->debug->enabled ) {
+				$this->debug->mark( 'do init options action' );	// Begin timer.
+			}
+
+			do_action( $this->lca . '_init_options' );
+
+			if ( $this->debug->enabled ) {
+				$this->debug->mark( 'do init options action' );	// End timer.
+			}
+
 			$this->script  = new WpssoScript( $this );
 			$this->style   = new WpssoStyle( $this );
 			$this->filters = new WpssoFilters( $this );

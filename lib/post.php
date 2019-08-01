@@ -1671,6 +1671,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function add_post_column_headings( $columns ) {
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
 			return $this->add_mod_column_headings( $columns, 'post' );
 		}
 

@@ -1160,6 +1160,10 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				$wpsso =& Wpsso::get_instance();
 
 				$sort_cols = (array) apply_filters( $wpsso->lca . '_get_sortable_columns', $wpsso->cf[ 'edit' ][ 'columns' ] );
+
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log_arr( '$sort_cols', $sort_cols );
+				}
 			}
 
 			if ( false !== $col_key ) {

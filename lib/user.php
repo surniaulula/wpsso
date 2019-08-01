@@ -451,6 +451,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function add_column_headings( $columns ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
 			return $this->add_mod_column_headings( $columns, 'user' );
 		}
 
