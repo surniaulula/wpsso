@@ -447,6 +447,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Added extra sanity checks in SucomUtil::get_page_url() for edge cases when `get_post()` does not (or cannot) return a post object.
+	* Unified the post.php, term.php, and user.php library files under lib/*/admin/ in a single meta-edit.php library file.
 
 **Version 5.3.2 (2019/07/28)**
 
@@ -529,9 +530,9 @@ This version includes several jQuery improvements to optimize both the size of s
 	* Fixed missing "product:weight:units" meta tag when a Product Weight value is entered in the Document SSO metabox.
 * **Developer Notes**
 	* Moved the WpssoWpMeta::get_custom_fields() method to a 'wpsso_get_custom_fields' filter hook.
-	* Added a new WpssoConfig::$cf[ 'head' ][ 'schema_unitcodes' ] array.
-	* Refactored the WpssoSchema::add_data_unitcode_from_assoc() method.
-	* Added a new WpssoSchema::get_data_unitcode_text() static method.
+	* Added a new WpssoConfig::$cf[ 'head' ][ 'schema_units' ] array.
+	* Refactored the WpssoSchema::add_data_unit_from_assoc() method.
+	* Added a new WpssoSchema::get_data_unit_text() static method.
 	* Added a new WpssoAdmin::get_option_unit_comment() static method.
 	* Added minimum text length support to the SucomForm::get_input() method.
 
