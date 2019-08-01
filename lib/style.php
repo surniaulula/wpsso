@@ -94,18 +94,18 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 					$this->add_settings_page_style( $hook_name, WPSSO_URLPATH, $css_file_ext, $plugin_version );
 
-					// no break
+					// No break.
 
 				/**
 				 * Editing page.
 				 */
-				case 'post.php':	// post edit
-				case 'post-new.php':	// post edit
-				case 'term.php':	// term edit
-				case 'edit-tags.php':	// term edit
-				case 'user-edit.php':	// user edit
-				case 'profile.php':	// user edit
-				case ( SucomUtil::is_toplevel_edit( $hook_name ) ):	// required for event espresso plugin
+				case 'post.php':	// Post edit.
+				case 'post-new.php':	// Post edit.
+				case 'term.php':	// Term edit.
+				case 'edit-tags.php':	// Term edit.
+				case 'user-edit.php':	// User edit.
+				case 'profile.php':	// User edit.
+				case ( SucomUtil::is_toplevel_edit( $hook_name ) ):	// Required for event espresso plugin.
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing styles for editing page' );
@@ -117,7 +117,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					wp_enqueue_style( 'sucom-metabox-tabs' );
 					wp_enqueue_style( 'wp-color-picker' );
 
-					break;	// stop here
+					break;	// Stop here.
 
 				case 'plugin-install.php':
 

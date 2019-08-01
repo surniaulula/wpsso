@@ -333,7 +333,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					if ( ! empty( $og_single_image[ 'og:image:url' ] ) ) {
 						if ( $this->p->util->push_max( $og_images, $og_single_image, $num ) ) {
-							break;	// stop here and apply the 'wpsso_attached_images' filter
+							break;	// Stop here and apply the 'wpsso_attached_images' filter.
 						}
 					}
 				}
@@ -953,7 +953,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 									$this->p->debug->log( 'silently ignoring ngg image for ' . $attr_name );
 								}
 
-								break;	// stop here
+								break;	// Stop here.
 							}
 
 							/**
@@ -969,7 +969,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 									$this->p->debug->log( 'gravatar image found: ' . $og_single_image[ 'og:image:url' ] );
 								}
 
-								break;	// stop here
+								break;	// Stop here.
 							}
 
 							/**
@@ -979,7 +979,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 								$this->add_mt_single_image_src( $og_single_image, $match[1], $size_name, false, $force_regen );
 
-								break;	// stop here
+								break;	// Stop here.
 
 							} else {
 
@@ -1001,7 +1001,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 									$this->p->debug->log( 'single image og:image value is empty' );
 								}
 
-								break;	// stop here
+								break;	// Stop here.
 							}
 
 							$check_size_limits      = true;

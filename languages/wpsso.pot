@@ -3118,7 +3118,7 @@ msgid ""
 msgstr ""
 
 #: lib/gettext-pro.php:182 lib/gettext-pro.php:186 lib/pro/media/ngg.php:131
-#: lib/pro/media/ngg.php:1279
+#: lib/pro/media/ngg.php:1283
 msgid "NextGEN Gallery"
 msgstr ""
 

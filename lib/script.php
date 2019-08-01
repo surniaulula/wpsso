@@ -172,7 +172,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 						$this->p->debug->log( 'wp_enqueue_media() function not found' );
 					}
 
-					break;	// stop here
+					break;	// Stop here.
 
 				case 'plugin-install.php':
 
@@ -193,7 +193,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 					break;
 			}
 
-			wp_enqueue_script( 'jquery' );	// required for dismissible notices
+			wp_enqueue_script( 'jquery' );	// Required for dismissible notices.
 		}
 
 		/**

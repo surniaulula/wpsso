@@ -483,7 +483,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 								$this->p->debug->mark( 'build head array' );	// end timer
 							}
 
-							return $cache_array[ $cache_index ];	// stop here
+							return $cache_array[ $cache_index ];	// Stop here.
 
 						} else {
 

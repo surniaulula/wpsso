@@ -717,12 +717,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				case 'ignore':
 
-					return $opt_val;	// stop here
+					return $opt_val;	// Stop here.
 
 					break;
 
-				case 'html':		// leave html, css, and javascript code blocks as-is
-				case 'code':		// code values cannot be blank
+				case 'html':		// Leave html, css, and javascript code blocks as-is.
+				case 'code':		// Code values cannot be blank.
 				case 'preg':
 
 					$opt_val = preg_replace( '/[\r]+/', '', $opt_val );
@@ -731,8 +731,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				default:
 
-					$opt_val = wp_filter_nohtml_kses( $opt_val );	// strips all the HTML in the content
-					$opt_val = stripslashes( $opt_val );	// strip slashes added by wp_filter_nohtml_kses()
+					$opt_val = wp_filter_nohtml_kses( $opt_val );	// Strips all the HTML in the content.
+					$opt_val = stripslashes( $opt_val );		// Strip slashes added by wp_filter_nohtml_kses().
 
 					break;
 			}

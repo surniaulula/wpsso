@@ -1712,8 +1712,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( count( $ret ) > $reviews_max ) {
 
-					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( count( $ret ) . ' reviews found (adjusted to ' . $reviews_max . ')' );
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( count( $ret ) . ' reviews found (adjusted to ' . $reviews_max . ')' );
 					}
 
 					$ret = array_slice( $ret, 0, $reviews_max );
