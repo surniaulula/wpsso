@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '5.4.0-b.2',	// Plugin version.
+					'version'     => '5.4.0-b.3',	// Plugin version.
 					'opt_version' => '653',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -70,18 +70,17 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 						'pro' => array(
 							'admin' => array(
-								'general'  => 'Extend General Settings',
-								'advanced' => 'Extend Advanced Settings',
-								'post'     => 'Extend Post Settings',
-								'meta'     => 'Extend Term and User Settings',
+								'advanced'  => 'Extend Advanced Settings',
+								'general'   => 'Extend General Settings',
+								'meta-edit' => 'Extend Meta Edit Settings',
 							),
 							'ecom' => array(
 								'edd'                 => '(plugin) Easy Digital Downloads',
-								'jsk_wssv'            => '(plugin) WooCommerce Show Single Variations',
+								'jck-wssv'            => '(plugin) WooCommerce Show Single Variations',
 								'woocommerce'         => '(plugin) WooCommerce',
-								'woocommerce_brands'  => '(plugin) WooCommerce Brands',
+								'woocommerce-brands'  => '(plugin) WooCommerce Brands',
 								'wpecommerce'         => '(plugin) WP eCommerce',
-								'wpm_product_gtin_wc' => '(plugin) Product GTIN for WooCommerce',
+								'wpm-product-gtin-wc' => '(plugin) Product GTIN for WooCommerce',
 							),
 							'event' => array(
 								'tribe_events' => '(plugin) The Events Calendar',
@@ -133,10 +132,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 							'util' => array(
 								'checkimgdims'  => '(feature) Verify Image Dimensions',
-								'custom_fields' => '(feature) Read Custom Fields by Name',
+								'custom-fields' => '(feature) Read Custom Fields by Name',
 								'coauthors'     => '(plugin) Co-Authors Plus',
 								'shorten'       => '(api) URL Shortening APIs',
-								'wpseo_meta'    => '(feature) Yoast SEO Social Meta',
+								'wpseo-meta'    => '(feature) Yoast SEO Social Meta',
 							),
 						),
 						'profile' => array(
@@ -156,10 +155,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 						'std' => array(
 							'admin' => array(
-								'general'  => 'Extend General Settings',
-								'advanced' => 'Extend Advanced Settings',
-								'post'     => 'Extend Post Settings',
-								'meta'     => 'Extend Term and User Settings',
+								'advanced'  => 'Extend Advanced Settings',
+								'general'   => 'Extend General Settings',
+								'meta-edit' => 'Extend Meta Edit Settings',
 							),
 							'social' => array(
 								'buddypress' => '(plugin) BuddyPress',

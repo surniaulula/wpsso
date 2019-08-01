@@ -1864,12 +1864,8 @@ EOF;
 			return $html;
 		}
 
-		public function get_md_form_rows( array $table_rows, array $form_rows, array $head = array(), array $mod = array(), $auto_draft_msg = null ) {
+		public function get_md_form_rows( array $table_rows, array $form_rows, array $head = array(), array $mod = array() ) {
 		
-			if ( null === $auto_draft_msg ) {
-				$auto_draft_msg = 'Save a draft version or publish to update this value.';
-			}
-
 			foreach ( $form_rows as $key => $val ) {
 
 				if ( ! isset( $table_rows[ $key ] ) ) {
@@ -1900,19 +1896,12 @@ EOF;
 
 				$is_auto_draft = false;
 
-				if ( isset( $mod[ 'post_status' ] ) ) {
-
-					/**
-					 * Do not show the option if the post status is empty or auto-draft.
-					 */
-					if ( ! empty( $val[ 'no_auto_draft' ] ) ) {
-
-						if ( empty( $mod[ 'post_status' ] ) || $mod[ 'post_status' ] === 'auto-draft' ) {
-
-							$is_auto_draft = true;
-
-							$val[ 'td_class' ] = empty( $val[ 'td_class' ] ) ? 'blank' : $val[ 'td_class' ] . ' blank';
-						}
+				/**
+				 * Do not show the option if the post status is empty or auto-draft.
+				 */
+				if ( ! empty( $val[ 'no_auto_draft' ] ) ) {
+					if ( $is_auto_draft = SucomUtil::is_auto_draft( $mod ) ) {
+						$val[ 'td_class' ] = empty( $val[ 'td_class' ] ) ? 'blank' : $val[ 'td_class' ] . ' blank';
 					}
 				}
 
@@ -1941,8 +1930,11 @@ EOF;
 
 					$table_rows[ $key ] .= '<td' . ( empty( $val[ 'td_class' ] ) ? '' : ' class="' . $val[ 'td_class' ] . '"' ) . '>';
 
-					$table_rows[ $key ] .= $is_auto_draft ? '<em>' . $auto_draft_msg . '</em>' : 
-						( empty( $val[ 'content' ] ) ? '' : $val[ 'content' ] );
+					if ( $is_auto_draft ) {
+						$table_rows[ $key ] .= '<em>' . __( 'Save a draft version or publish to update this value.', $this->text_domain ) . '</em>';
+					} else {
+						$table_rows[ $key ] .= empty( $val[ 'content' ] ) ? '' : $val[ 'content' ];
+					}
 							
 					$table_rows[ $key ] .= '</td>' . "\n";
 				}

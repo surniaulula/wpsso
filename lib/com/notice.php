@@ -299,8 +299,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		public function set_ref( $url = null, $mod = false, $context_transl = null ) {
 
 			$this->notice_info[] = array(
-				'url' => $url,
-				'mod' => $mod,
+				'url'            => $url,
+				'mod'            => $mod,
 				'context_transl' => $context_transl,
 			);
 

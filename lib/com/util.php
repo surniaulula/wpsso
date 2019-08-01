@@ -2693,6 +2693,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return apply_filters( 'sucom_is_home_index', $ret, $use_post );
 		}
 
+		public static function is_auto_draft( $mod ) {
+
+			if ( $mod[ 'is_post' ] && isset( $mod[ 'post_status' ] ) ) {
+
+				if ( empty( $mod[ 'post_status' ] ) || $mod[ 'post_status' ] === 'auto-draft' ) {
+					
+					return true;
+				}
+			}
+
+			return false;
+		}
+
 		public static function is_post_exists( $post_id ) {
 
 			  return is_string( get_post_status( $post_id ) );

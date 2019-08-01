@@ -1378,10 +1378,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		protected function get_table_rows( $metabox_id, $tab_key, $head, $mod ) {
 
-			$is_auto_draft  = empty( $mod[ 'post_status' ] ) || $mod[ 'post_status' ] === 'auto-draft' ? true : false;
+			$is_auto_draft = SucomUtil::is_auto_draft( $mod );
 
-			$auto_draft_msg = sprintf( __( 'Save a draft version or publish the %s to display these options.', 'wpsso' ),
-				SucomUtil::titleize( $mod[ 'post_type' ] ) );
+			$save_draft_msg = __( 'Save a draft version or publish to update this value.', 'wpsso' );
 
 			$table_rows = array();
 
@@ -1397,7 +1396,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( $is_auto_draft ) {
 						$table_rows[] = '<td><blockquote class="status-info"><p class="centered">' .
-							$auto_draft_msg . '</p></blockquote></td>';
+							$save_draft_msg . '</p></blockquote></td>';
 					} else {
 						$table_rows = $this->get_rows_head_tab( $this->form, $head, $mod );
 					}
@@ -1408,7 +1407,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( $is_auto_draft ) {
 						$table_rows[] = '<td><blockquote class="status-info"><p class="centered">' .
-							$auto_draft_msg . '</p></blockquote></td>';
+							$save_draft_msg . '</p></blockquote></td>';
 					} else {
 						$table_rows = $this->get_rows_validate_tab( $this->form, $head, $mod );
 					}

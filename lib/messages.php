@@ -133,29 +133,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $msg_key ) {
 
-						case 'tooltip-meta-sharing_url':
+						case 'tooltip-meta-og_type':	// Open Graph Type
 
-							$text = __( 'A customized sharing URL for Facebook / Open Graph and Pinterest Rich Pin meta tags, Schema markup, and social sharing add-ons.', 'wpsso' ) . ' ';
-							
-							$text .= __( 'Please make sure the custom URL you enter here is functional and redirects correctly.', 'wpsso' );
+							$text = __( 'A customized Facebook / Open Graph type for this content.', 'wpsso' ) . ' ';
 
-						 	break;
-
-						case 'tooltip-meta-canonical_url':
-
-							$text = sprintf( __( 'A customized URL used for the "%1$s" head tag.', 'wpsso' ), 'link rel canonical' ) . ' ';
-							
-							$text .= __( 'Please make sure the custom URL you enter here is functional and redirects correctly.', 'wpsso' );
+							$text .= __( 'Please note that for sharing purposes, the Open Graph Type must be "article", "place", "product", or "website".', 'wpsso' ) . ' ';
 
 						 	break;
 
-						case 'tooltip-meta-schema_desc':
-
-							$text = __( 'A customized description for the Schema "description" property.', 'wpsso' );
-
-						 	break;
-
-						case 'tooltip-meta-og_title':
+						case 'tooltip-meta-og_title':	// Default Title
 
 							$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content',
 								_x( 'Use Filtered (SEO) Title', 'option label', 'wpsso' ) );
@@ -167,25 +153,54 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-og_desc':
+						case 'tooltip-meta-og_desc':	// Default Description
 
 							$text = sprintf( __( 'A customized description for the Facebook / Open Graph %s meta tag, and the default value for all other description meta tags.', 'wpsso' ), '<code>og:description</code>' ) . ' ';
-							
-							$text .= __( 'The default description value is based on the category / tag description or biographical info for users.', 'wpsso' ) . ' ';
 							
 							$text .= __( 'Update and save the custom Facebook / Open Graph description to change the default value of all other description fields.', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-seo_desc':
+						case 'tooltip-meta-seo_desc':	// Search Description
 
 							$text = __( 'A customized description for the Google Search "description" meta tag.', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-tc_desc':
+						case 'tooltip-meta-tc_desc':	// Twitter Card Desc
 
 							$text = __( 'A customized description for the Twitter Card description meta tag (all Twitter Card formats).', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-sharing_url':	// Sharing URL
+
+							$text = __( 'A customized sharing URL for Facebook / Open Graph and Pinterest Rich Pin meta tags, Schema markup, and social sharing add-ons.', 'wpsso' ) . ' ';
+							
+							$text .= __( 'Please make sure the custom URL you enter here is functional and redirects correctly.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-canonical_url':	// Canonical URL
+
+							$text = sprintf( __( 'A customized URL used for the "%1$s" head tag.', 'wpsso' ), 'link rel canonical' ) . ' ';
+							
+							$text .= __( 'Please make sure the custom URL you enter here is functional and redirects correctly.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-og_art_section':	// Article Topic
+
+							$text = __( 'A customized topic for this article, which may be different from the default Article Topic selected in the General settings page.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag.', 'wpsso' ),
+								'<code>article:section</code>' );
+
+						 	break;
+
+						case 'tooltip-meta-schema_desc':
+
+							$text = __( 'A customized description for the Schema "description" property.', 'wpsso' );
 
 						 	break;
 
@@ -315,47 +330,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 					}	// End of tooltip-user switch.
-
-				/**
-				 * Post Meta settings
-				 */
-				} elseif ( strpos( $msg_key, 'tooltip-post-' ) === 0 ) {
-
-					switch ( $msg_key ) {
-
-						case 'tooltip-post-og_type':
-
-							$text = __( 'A customized Facebook / Open Graph type for this content.', 'wpsso' ) . ' ';
-
-							$text .= __( 'Please note that for sharing purposes, the Open Graph Type must be "article", "place", "product", or "website".', 'wpsso' ) . ' ';
-
-						 	break;
-
-						case 'tooltip-post-og_art_section':
-
-							$text = __( 'A customized topic for this article, which may be different from the default Article Topic selected in the General settings page.', 'wpsso' ) . ' ';
-
-							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag.', 'wpsso' ), '<code>article:section</code>' );
-
-						 	break;
-
-						case 'tooltip-post-og_desc':
-
-							$text = sprintf( __( 'A customized description for the Facebook / Open Graph %s meta tag, and the default value for all other description meta tags.', 'wpsso' ), '<code>og:description</code>' ) . ' ';
-
-							$text .= __( 'The default description value is based on the excerpt (if one is available) or content.', 'wpsso' ) . ' ';
-
-							$text .= __( 'Update and save the custom Facebook / Open Graph description to change the default value of all other description fields.', 'wpsso' );
-
-						 	break;
-
-						default:
-
-							$text = apply_filters( $lca . '_messages_tooltip_post', $text, $msg_key, $info );
-
-							break;
-
-					}	// End of tooltip-post switch.
 
 				/**
 				 * Site settings

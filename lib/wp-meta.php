@@ -478,6 +478,10 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$is_sufficient = true === $have_sizes && $head_info[ 'og:image:width' ] >= $og_prev_width && 
 				$head_info[ 'og:image:height' ] >= $og_prev_height ? true : false;
 
+			$is_auto_draft = SucomUtil::is_auto_draft( $mod );
+
+			$save_draft_msg = __( 'Save a draft version or publish to update this value.', 'wpsso' );
+
 			if ( ! empty( $media_url ) ) {
 
 				if ( $have_sizes ) {
@@ -517,27 +521,24 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				$og_prev_img_html .= '</div>';
 			}
 
-			if ( isset( $mod[ 'post_status' ] ) && $mod[ 'post_status' ] === 'auto-draft' ) {
-
-				$auto_draft_msg = sprintf( __( 'Save a draft version or publish the %s to update this value.', 'wpsso' ),
-					SucomUtil::titleize( $mod[ 'post_type' ] ) );
+			if ( $is_auto_draft ) {
 
 				$table_rows[] = '' . 
 				$form->get_th_html( _x( 'Sharing URL', 'option label', 'wpsso' ), 'medium' ) .
-				'<td class="blank"><em>' . $auto_draft_msg . '</em></td>';
+				'<td class="blank"><em>' . $save_draft_msg . '</em></td>';
 	
 				$table_rows[] = '<tr class="hide_in_basic">' .
 				$form->get_th_html( _x( 'Canonical URL', 'option label', 'wpsso' ), 'medium' ) .
-				'<td class="blank"><em>' . $auto_draft_msg . '</em></td>';
+				'<td class="blank"><em>' . $save_draft_msg . '</em></td>';
 	
 				$table_rows[] = '<tr class="hide_in_basic">' .
 				$form->get_th_html( _x( 'Shortlink URL', 'option label', 'wpsso' ), 'medium' ) .
-				'<td class="blank"><em>' . $auto_draft_msg . '</em></td>';
+				'<td class="blank"><em>' . $save_draft_msg . '</em></td>';
 	
 			} else {
 
-				$sharing_url   = $this->p->util->get_sharing_url( $mod, false );     // $add_page is false.
-				$canonical_url = $this->p->util->get_canonical_url( $mod, false ); // $add_page is false.
+				$sharing_url   = $this->p->util->get_sharing_url( $mod, $add_page = false );
+				$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = false );
 
 				if ( $mod[ 'is_post' ] ) {
 					$shortlink_url = SucomUtilWP::wp_get_shortlink( $mod[ 'id' ], 'post' );	// $context is post.
