@@ -907,6 +907,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$obj_filter = array( 'public' => 1, 'show_ui' => 1 );
+
 			$ret = array();
 
 			switch ( $output ) {
@@ -934,24 +935,26 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			if ( $output === 'objects' ) {
 
 				$unsorted = $ret;
-				$names = array();
+
+				$by_name = array();
+
 				$ret = array();
 
-				foreach ( $unsorted as $num => $pt ) {
+				foreach ( $unsorted as $num => $obj ) {
 
-					$ptn = empty( $pt->label ) ? $pt->name : $pt->label;
+					$sort_key = ( empty( $obj->label ) ? '' : $obj->label ) . '-' . $obj->name . '-' . $num;
 
-					$names[ $ptn ] = $num;
+					$by_name[ $sort_key ] = $num;	// Make sure key is sortable and unique.
 				}
 
-				ksort( $names );
+				ksort( $by_name );
 
-				foreach ( $names as $ptn => $num ) {
+				foreach ( $by_name as $sort_key => $num ) {
 
 					$ret[] = $unsorted[ $num ];
 				}
 
-				unset( $unsorted, $names );
+				unset( $unsorted, $by_name );
 			}
 
 			return apply_filters( $this->p->lca . '_get_post_types', $ret, $output );
@@ -967,6 +970,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$obj_filter = array( 'public' => 1, 'show_ui' => 1 );
+
 			$ret = array();
 
 			switch ( $output ) {
@@ -994,24 +998,26 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			if ( $output === 'objects' ) {
 
 				$unsorted = $ret;
-				$names = array();
+
+				$by_name = array();
+
 				$ret = array();
 
-				foreach ( $unsorted as $num => $tax ) {
+				foreach ( $unsorted as $num => $obj ) {
 
-					$ttn = empty( $tax->label ) ? $tax->name : $tax->label;
+					$sort_key = ( empty( $obj->label ) ? '' : $obj->label ) . '-' . $obj->name . '-' . $num;
 
-					$names[ $ttn ] = $num;
+					$by_name[ $sort_key ] = $num;	// Make sure key is sortable and unique.
 				}
 
-				ksort( $names );
+				ksort( $by_name );
 
-				foreach ( $names as $ttn => $num ) {
+				foreach ( $by_name as $sort_key => $num ) {
 
 					$ret[] = $unsorted[ $num ];
 				}
 
-				unset( $unsorted, $names );
+				unset( $unsorted, $by_name );
 			}
 
 			return apply_filters( $this->p->lca . '_get_taxonomies', $ret, $output );

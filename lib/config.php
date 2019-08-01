@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '5.4.0-b.1',	// Plugin version.
-					'opt_version' => '652',		// Increment when changing default option values.
+					'version'     => '5.4.0-b.2',	// Plugin version.
+					'opt_version' => '653',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
 					'desc'        => 'WPSSO Core makes sure your content looks great on all social and search sites - no matter how URLs are crawled, shared, re-shared, posted, or embedded!',
@@ -806,7 +806,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_business'          => 'local.business',
 					'schema_type_for_download'          => 'product',		// For Easy Digital Downloads.
 					'schema_type_for_event'             => 'event',
-					'schema_type_for_faq'               => 'webpage.faq',
 					'schema_type_for_howto'             => 'how.to',
 					'schema_type_for_job_listing'       => 'job.posting',	// For WP Job Manager.
 					'schema_type_for_jobpost'           => 'job.posting',	// For Simple Job Board.
@@ -819,6 +818,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_question'          => 'question',
 					'schema_type_for_recipe'            => 'recipe',	// For WP Ultimate Recipe.
 					'schema_type_for_review'            => 'review',	// For WP Product Review.
+					'schema_type_for_tax_faq_category'  => 'webpage.faq',	// For WPSSO FAQ Add-on.
+					'schema_type_for_tax_faq_tag'       => 'webpage.faq',	// For WPSSO FAQ Add-on.
 					'schema_type_for_tax_product_brand' => 'item.list',	// For WooCommerce Brands.
 					'schema_type_for_tax_product_cat'   => 'item.list',	// For WooCommerce.
 					'schema_type_for_tax_product_tag'   => 'item.list',	// For WooCommerce.

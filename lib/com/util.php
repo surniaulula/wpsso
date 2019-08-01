@@ -2060,7 +2060,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':length:value'                    => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':length:units'                    => '',	// Non-standard / internal meta tag (units after value).
 				$mt_pre . ':material'                        => '',
-				$mt_pre . ':mfr_part_no'                     => '',
+				$mt_pre . ':mfr_part_no'                     => '',	// aka product:mpn.
 				$mt_pre . ':original_price:amount'           => '',
 				$mt_pre . ':original_price:currency'         => '',
 				$mt_pre . ':pattern'                         => '',

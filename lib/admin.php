@@ -3461,20 +3461,23 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * Type by Post Type
 			 */
 			$type_select = '';
-			$type_keys = array();
+			$type_keys   = array();
+			$post_types  = $this->p->util->get_post_types( 'objects' );
 
-			foreach ( $this->p->util->get_post_types( 'objects' ) as $pt ) {
+			foreach ( $post_types as $obj ) {
 
-				$type_keys[] = $opt_key = 'og_type_for_' . $pt->name;
+				$type_keys[] = $opt_key = 'og_type_for_' . $obj->name;
+
+				$type_label = $obj->label . ' [' . $obj->name . ']';
 
 				$type_select .= '<p>' . $form->get_select( $opt_key, $og_types, 'og_type' ) . ' ' .
-					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $pt->label ) . '</p>' . "\n";
+					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $type_label ) . '</p>' . "\n";
 			}
 
 			$type_keys[] = $opt_key = 'og_type_for_post_archive';
 
 			$type_select .= '<p>' . $form->get_select( $opt_key, $og_types, 'og_type' ) . ' ' .
-				sprintf( _x( 'for %s', 'option comment', 'wpsso' ), _x( '(Post Type) Archive Page', 'option comment', 'wpsso' ) ) . '</p>' . "\n";
+				sprintf( _x( 'for %s', 'option comment', 'wpsso' ), _x( 'Post Type Archive Page', 'option comment', 'wpsso' ) ) . '</p>' . "\n";
 
 			$tr_key   = 'og_type_for_ptn';
 			$th_label = _x( 'Type by Post Type', 'option label', 'wpsso' );
@@ -3490,17 +3493,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * Type by Taxonomy
 			 */
 			$type_select = '';
-			$type_keys = array();
+			$type_keys   = array();
+			$taxonomies  = $this->p->util->get_taxonomies( 'objects' );
 
-			foreach ( $this->p->util->get_taxonomies( 'objects' ) as $tax ) {
+			foreach ( $taxonomies as $obj ) {
 
-				$type_keys[] = $opt_key = 'og_type_for_tax_' . $tax->name;
+				$type_keys[] = $opt_key = 'og_type_for_tax_' . $obj->name;
+
+				$type_label = $obj->label . ' [' . $obj->name . ']';
 
 				$type_select .= '<p>' . $form->get_select( $opt_key, $og_types, 'og_type' ) . ' ' .
-					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $tax->label ) . '</p>' . "\n";
+					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $type_label ) . '</p>' . "\n";
 			}
 
-			$tr_html  = '';
 			$tr_key   = 'og_type_for_ttn';
 			$th_label = _x( 'Type by Taxonomy', 'option label', 'wpsso' );
 			$tr_html  = $hide_in_basic ? $form->get_tr_hide( 'basic', $type_keys ) : '';
@@ -3617,16 +3622,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * Type by Post Type
 			 */
 			$type_select = '';
-			$type_keys = array();
+			$type_keys   = array();
+			$post_types  = $this->p->util->get_post_types( 'objects' );
 
-			foreach ( $this->p->util->get_post_types( 'objects' ) as $pt ) {
+			foreach ( $post_types as $obj ) {
 
-				$type_keys[] = $opt_key = 'schema_type_for_' . $pt->name;
+				$type_keys[] = $opt_key = 'schema_type_for_' . $obj->name;
+
+				$type_label = $obj->label . ' [' . $obj->name . ']';
 
 				$type_select .= '<p>' . $form->get_select( $opt_key, $schema_types,
 					$css_class = 'schema_type', $css_id = '', $is_assoc = true, $is_disabled = false,
 						$selected = false, $event_name = 'on_focus_load_json', $event_args = 'schema_item_types' ) . ' ' .
-					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $pt->label ) . '</p>' . "\n";
+					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $type_label ) . '</p>' . "\n";
 			}
 
 			$type_keys[] = $opt_key = 'schema_type_for_post_archive';
@@ -3634,7 +3642,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$type_select .= '<p>' . $form->get_select( $opt_key, $schema_types,
 				$css_class = 'schema_type', $css_id = '', $is_assoc = true, $is_disabled = false,
 					$selected = false, $event_name = 'on_focus_load_json', $event_args = 'schema_item_types' ) . ' ' .
-				sprintf( _x( 'for %s', 'option comment', 'wpsso' ), _x( '(Post Type) Archive Page',
+				sprintf( _x( 'for %s', 'option comment', 'wpsso' ), _x( 'Post Type Archive Page',
 					'option comment', 'wpsso' ) ) . '</p>' . "\n";
 
 			$tr_key   = 'schema_type_for_ptn';
@@ -3650,17 +3658,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			/**
 			 * Type by Taxonomy
 			 */
-			$type_select   = '';
-			$type_keys = array();
+			$type_select = '';
+			$type_keys   = array();
+			$taxonomies  = $this->p->util->get_taxonomies( 'objects' );
 
-			foreach ( $this->p->util->get_taxonomies( 'objects' ) as $tax ) {
+			foreach ( $taxonomies as $obj ) {
 
-				$type_keys[] = $opt_key = 'schema_type_for_tax_' . $tax->name;
+				$type_keys[] = $opt_key = 'schema_type_for_tax_' . $obj->name;
+
+				$type_label = $obj->label . ' [' . $obj->name . ']';
 
 				$type_select .= '<p>' . $form->get_select( $opt_key, $schema_types,
 					$css_class = 'schema_type', $css_id = '', $is_assoc = true, $is_disabled = false,
 						$selected = false, $event_name = 'on_focus_load_json', $event_args = 'schema_item_types' ) . ' ' .
-					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $tax->label ) . '</p>' . "\n";
+					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $type_label ) . '</p>' . "\n";
 			}
 
 			$tr_key   = 'schema_type_for_ttn';
