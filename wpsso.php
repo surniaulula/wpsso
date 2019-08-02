@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: WPSSO Core [Main Plugin]
+ * Plugin Name: WPSSO Core
  * Plugin Slug: wpsso
  * Text Domain: wpsso
  * Domain Path: /languages

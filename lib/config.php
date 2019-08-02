@@ -24,7 +24,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'version'     => '5.4.0',	// Plugin version.
 					'opt_version' => '653',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
-					'name'        => 'WPSSO Core [Main Plugin]',
+					'name'        => 'WPSSO Core',
 					'desc'        => 'WPSSO Core makes sure your content looks great on all social and search sites - no matter how URLs are crawled, shared, re-shared, posted, or embedded!',
 					'slug'        => 'wpsso',
 					'base'        => 'wpsso/wpsso.php',
