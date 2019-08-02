@@ -436,7 +436,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.4.0-rc.1 (2019/08/01)**
+**Version 5.4.0 (2019/08/02)**
 
 * **New Features**
 	* Added a new WPSSO FAQ Manager (aka WPSSO FAQ) add-on.
@@ -605,11 +605,7 @@ This version includes several jQuery improvements to optimize both the size of s
 
 == Upgrade Notice ==
 
-= 5.4.0-rc.1 =
+= 5.4.0 =
 
-(2019/08/01) Added support for the WooCommerce Brands plugin (Premium version). Added a webpage HTML maximum size check (2.5 MB) when checking for duplicate meta tags.
-
-= 5.3.2 =
-
-(2019/07/28) Added an "MB" size column in the SSO &gt; Dashboard &gt; Cache Status metabox. Fixed the Document SSO &gt; Head &gt; og:video and og:image tags showing as empty.
+(2019/08/02) Added support for the WooCommerce Brands plugin (Premium version). Added a webpage HTML maximum size check (2.5 MB) when checking for duplicate meta tags.
 
