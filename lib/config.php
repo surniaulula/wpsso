@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '5.4.0-b.3',	// Plugin version.
+					'version'     => '5.4.0-b.4',	// Plugin version.
 					'opt_version' => '653',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -251,6 +251,44 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-breadcrumbs/update/',
+						'latest'    => '',
+					),
+				),
+				'wpssofaq' => array(			// Plugin acronym.
+					'short'       => 'WPSSO FAQ',		// Short plugin name.
+					'name'        => 'WPSSO FAQ Manager',
+					'desc'        => 'WPSSO Core add-on to manage FAQ categories with Question and Answer pages.',
+					'slug'        => 'wpsso-faq',
+					'base'        => 'wpsso-faq/wpsso-faq.php',
+					'update_auth' => '',
+					'assets'      => array(
+						'banners' => array(
+							'low'  => 'https://surniaulula.github.io/wpsso-faq/assets/banner-772x250.jpg',
+							'high' => 'https://surniaulula.github.io/wpsso-faq/assets/banner-1544x500.jpg',
+						),
+						'icons' => array(
+							'low'  => 'https://surniaulula.github.io/wpsso-faq/assets/icon-128x128.png',
+							'high' => 'https://surniaulula.github.io/wpsso-faq/assets/icon-256x256.png',
+						),
+					),
+					'url' => array(
+						// WordPress
+						'home'   => 'https://wordpress.org/plugins/wpsso-faq/',
+						'forum'  => 'https://wordpress.org/support/plugin/wpsso-faq',
+						'review' => 'https://wordpress.org/support/plugin/wpsso-faq/reviews/?rate=5#new-post',
+						// GitHub
+						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-faq/master/readme.txt',
+						'setup_html' => '',
+						// WPSSO
+						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-faq/changelog/',
+						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-faq/',
+						'install'   => 'https://wpsso.com/docs/plugins/wpsso-faq/installation/',
+						'faqs'      => '',
+						'notes'     => '',
+						'support'   => '',	// Premium support ticket.
+						'purchase'  => '',	// Purchase page.
+						'info'      => '',	// License information.
+						'update'    => 'https://wpsso.com/extend/plugins/wpsso-faq/update/',
 						'latest'    => '',
 					),
 				),

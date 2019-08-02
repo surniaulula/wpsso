@@ -40,6 +40,7 @@ _x( 'SSO Tools', 'lib file description', 'wpsso' );
 _x( 'WPSSO Core makes sure your content looks great on all social and search sites - no matter how URLs are crawled, shared, re-shared, posted, or embedded!', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on provides Apple Store / iTunes and Google Play App meta tags for Apple\'s mobile Safari banner and Twitter\'s App Card.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on offers Schema BreadcrumbList markup using Google\'s JSON-LD standard for better SEO Rich Results.', 'plugin description', 'wpsso' );
+_x( 'WPSSO Core add-on to manage FAQ categories with Question and Answer pages.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on to inherit featured and custom images from parents for posts, pages, custom post types, categories, tags, and custom taxonomies.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on offers Schema JSON-LD / Google SEO Rich Results for Articles, Events, Local Business, Products, Recipes, Reviews and many more.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on to customize the home page Schema Organization markup and manage additional Organizations (publisher, organizer, performer, etc.).', 'plugin description', 'wpsso' );
