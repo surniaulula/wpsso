@@ -1,5 +1,5 @@
-=== WPSSO Core (Advanced Open Graph, Rich Pin, Twitter Card, Meta Tags, SEO Rich Results, and Schema Markup) ===
-Plugin Name: WPSSO Core [Main Plugin]
+=== WPSSO Core [Advanced Open Graph, Rich Pin, Twitter Card, Meta Tags, SEO Rich Results, and Schema Markup] ===
+Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
 Domain Path: /languages
