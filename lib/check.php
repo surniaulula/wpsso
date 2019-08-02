@@ -93,6 +93,12 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							break;
 
+						case 'ecom-woo-add-gtin':
+
+							$chk[ 'class' ] = 'Woo_GTIN';
+
+							break;
+
 						case 'ecom-wpecommerce':
 
 							$chk[ 'class' ] = 'WP_eCommerce';

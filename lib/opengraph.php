@@ -699,6 +699,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				 */
 				$this->p->util->add_og_type_mt_md( $type_id, $mt_og, $md_opts );
 
+				self::check_gtin_mt_value( $mt_og );
+
 				/**
 				 * Include variations (aka product offers) if available.
 				 */
@@ -717,6 +719,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 								}
 							}
 						}
+				
+						self::check_gtin_mt_value( $offer );
 					}
 				
 				} elseif ( isset( $mt_og[ 'product:price:amount' ] ) ) {
@@ -1557,6 +1561,38 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			return $mt_og;
+		}
+
+		public static function check_gtin_mt_value( &$mt_og, $prefix = 'product' ) {
+
+			if ( ! empty( $mt_og[ $prefix . ':gtin' ] ) ) {
+
+				/**
+				 * The value may come from a custom field, so trim it, just in case.
+				 */
+				$mt_og[ $prefix . ':gtin' ] = trim( $mt_og[ $prefix . ':gtin' ] );
+
+				$gtin_len = strlen( $mt_og[ $prefix . ':gtin' ] );
+
+				switch ( $gtin_len ) {
+
+					case 13:
+
+						if ( empty( $mt_og[ $prefix . ':ean' ] ) ) {
+							$mt_og[ $prefix . ':ean' ] = $mt_og[ $prefix . ':gtin' ];
+						}
+
+						break;
+
+					case 12:
+
+						if ( empty( $mt_og[ $prefix . ':upc' ] ) ) {
+							$mt_og[ $prefix . ':upc' ] = $mt_og[ $prefix . ':gtin' ];
+						}
+
+						break;
+				}
+			}
 		}
 	}
 }

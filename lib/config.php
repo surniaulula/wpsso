@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '5.4.0-b.4',	// Plugin version.
+					'version'     => '5.4.0-rc.1',	// Plugin version.
 					'opt_version' => '653',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -79,6 +79,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'jck-wssv'            => '(plugin) WooCommerce Show Single Variations',
 								'woocommerce'         => '(plugin) WooCommerce',
 								'woocommerce-brands'  => '(plugin) WooCommerce Brands',
+								'woo-add-gtin'        => '(plugin) WooCommerce UPC, EAN, and ISBN',
 								'wpecommerce'         => '(plugin) WP eCommerce',
 								'wpm-product-gtin-wc' => '(plugin) Product GTIN for WooCommerce',
 							),

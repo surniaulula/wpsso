@@ -706,7 +706,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				return false;
 			}
 
-			WpssoSchema::check_gtin_property_name( $offer );
+			WpssoSchema::check_gtin_prop_value( $offer );
 
 			WpssoSchema::check_itemprop_content_map( $offer, 'itemCondition', 'product:condition' );
 

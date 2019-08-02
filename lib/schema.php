@@ -2379,7 +2379,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/**
 		 * If we have a GTIN number, try to improve the assigned property name.
 		 */
-		public static function check_gtin_property_name( &$json_data ) {
+		public static function check_gtin_prop_value( &$json_data ) {
 
 			if ( ! empty( $json_data[ 'gtin' ] ) ) {
 
@@ -2398,10 +2398,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					case 8:
 
 						if ( empty( $json_data[ 'gtin' . $gtin_len ] ) ) {
-
 							$json_data[ 'gtin' . $gtin_len ] = $json_data[ 'gtin' ];
-
-							unset( $json_data[ 'gtin' ] );
 						}
 
 						break;
