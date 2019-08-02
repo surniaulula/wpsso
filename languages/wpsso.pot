@@ -1304,113 +1304,110 @@ msgstr ""
 #: lib/gettext-config.php:41
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core add-on provides Apple Store / iTunes and Google Play App meta "
-"tags for Apple's mobile Safari banner and Twitter's App Card."
+"Apple Store / iTunes and Google Play App meta tags for Apple's mobile Safari "
+"banner and Twitter's App Card."
 msgstr ""
 
 #: lib/gettext-config.php:42
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core add-on offers Schema BreadcrumbList markup using Google's JSON-LD "
-"standard for better SEO Rich Results."
+"Schema BreadcrumbList markup in JSON-LD for better Google SEO Rich Results."
 msgstr ""
 
 #: lib/gettext-config.php:43
 msgctxt "plugin description"
-msgid ""
-"WPSSO Core add-on to manage FAQ categories with Question and Answer pages."
+msgid "Manage FAQ categories with Question and Answer pages."
 msgstr ""
 
 #: lib/gettext-config.php:44
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core add-on to inherit featured and custom images from parents for "
-"posts, pages, custom post types, categories, tags, and custom taxonomies."
+"Inherit featured and custom images from parents for posts, pages, custom "
+"post types, categories, tags, and custom taxonomies."
 msgstr ""
 
 #: lib/gettext-config.php:45
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core add-on offers Schema JSON-LD / Google SEO Rich Results for "
-"Articles, Events, Local Business, Products, Recipes, Reviews and many more."
+"Schema JSON-LD markup and Google SEO Rich Results for Articles, Events, "
+"Local Business, Products, Recipes, Reviews and many more."
 msgstr ""
 
 #: lib/gettext-config.php:46
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core add-on to customize the home page Schema Organization markup and "
-"manage additional Organizations (publisher, organizer, performer, etc.)."
+"Customize home page Schema Organization markup and manage additional "
+"Organizations (publisher, organizer, etc.)."
 msgstr ""
 
 #: lib/gettext-config.php:47
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core add-on provides Pinterest Place, Facebook / Open Graph Location, "
-"Schema Local Business and Local SEO meta tags."
+"Facebook / Open Graph Location, Pinterest Place, Schema Local Business and "
+"Local SEO meta tags."
 msgstr ""
 
 #: lib/gettext-config.php:48
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core add-on provides ratings and reviews for WordPress comments with "
-"Aggregate Rating meta tags and Schema Review markup."
+"Ratings and reviews for WordPress comments with Aggregate Rating meta tags "
+"and Schema Review markup."
 msgstr ""
 
 #: lib/gettext-config.php:49
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core add-on offers an array of meta tags and Schema markup in the "
-"WordPress REST API post, term, and user queries."
+"Enhances the WordPress REST API post, term, and user queries with an array "
+"of meta tags and Schema markup."
 msgstr ""
 
 #: lib/gettext-config.php:50
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core add-on offers Ridiculously Responsive (SVG) Social Sharing "
-"Buttons in your content, excerpts, CSS sidebar, widget, shortcode, editor "
-"pages, etc."
+"Ridiculously Responsive (SVG) Social Sharing Buttons for your content, "
+"excerpts, CSS sidebar, widget, shortcode, editor pages, etc."
 msgstr ""
 
 #: lib/gettext-config.php:51
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core add-on offers social sharing buttons with support for hashtags, "
-"short URLs, bbPress, BuddyPress, WooCommerce, and much more."
+"Social sharing buttons with support for hashtags, short URLs, bbPress, "
+"BuddyPress, WooCommerce, and much more."
 msgstr ""
 
 #: lib/gettext-config.php:52
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core add-on to remove outdated / incomplete Schema Microdata to use "
-"Google's preferred Schema JSON-LD for SEO Rich Results."
+"Remove outdated Schema microdata from theme templates to use Schema JSON-LD "
+"for better Google SEO Rich Results."
 msgstr ""
 
 #: lib/gettext-config.php:53
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core add-on offers Twitter-style quoted text for your content, with a "
-"convenient Tweet share link and customizable CSS."
+"Twitter-style quoted text for your content with customizable CSS and "
+"convenient Tweet share link."
 msgstr ""
 
 #: lib/gettext-config.php:54
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core add-on to sharpen and improve WordPress thumbnails and resized "
-"images for social sharing and SEO."
+"Sharpen and improve WordPress thumbnails and resized images for social "
+"sharing and better SEO."
 msgstr ""
 
 #: lib/gettext-config.php:55
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core add-on provides a convenient locale / language / region selector "
-"in the WordPress admin toolbar."
+"Quick and easy locale / language / region selector for the WordPress admin "
+"toolbar."
 msgstr ""
 
 #: lib/gettext-config.php:56
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core add-on provides updates for the WPSSO Core Premium plugin and its "
-"complementary Premium add-ons."
+"Update manager for the WPSSO Core Premium plugin and its complementary "
+"Premium add-ons."
 msgstr ""
 
 #: lib/gettext-config.php:57
