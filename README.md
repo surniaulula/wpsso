@@ -1,4 +1,4 @@
-<h1>WPSSO Core</h1><h3>Advanced Open Graph, Rich Pin, Twitter Card, Meta Tags, SEO Rich Results, and Schema Markup</h3>
+<h1>WPSSO Core (Advanced Open Graph, Rich Pin, Twitter Card, Meta Tags, SEO Rich Results, and Schema Markup)</h1>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core [Main Plugin]</td></tr>
@@ -67,9 +67,10 @@
 <h3>Complementary Add-ons</h3>
 
 <ul>
+<li><a href="https://wordpress.org/plugins/wpsso-faq/">WPSSO FAQ Manager</a> to manage FAQ categories with Question and Answer pages.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a> to manage mobile App information.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-organization/">WPSSO Organization Markup</a> to manage multiple Organizations.</li>
-<li><a href="https://wordpress.org/plugins/wpsso-plm/">WPSSO Place / Location and Local Business Meta</a> to manage multiple Locations.</li>
+<li><a href="https://wordpress.org/plugins/wpsso-plm/">WPSSO Place / Location and Local Business Meta</a> to manage multiple locations.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-ratings-and-reviews/">WPSSO Ratings and Reviews</a> to add ratings in WordPress comments.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-rest-api/">WPSSO REST API</a> to add meta tags and Schema markup in REST API queries.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-rrssb/">WPSSO Ridiculously Responsive Social Sharing Buttons</a> to add responsive share buttons.</li>
@@ -387,14 +388,13 @@
 <ul>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/install-the-plugin/">Install the WPSSO Core Plugin</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/uninstall-the-plugin/">Uninstall the WPSSO Core Plugin</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/debugging-and-problem-solving/">Debugging and Problem Solving</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/">Developer Special - Buy one, Get one Free</a></li>
 </ul>
 
 <h3>Plugin Setup</h3>
 
 <ul>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/a-setup-guide/">A Setup Guide for WPSSO</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/">Developer Special - Buy one, Get one Free</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/better-schema-for-woocommerce-step-by-step-guide/">Better Schema for WooCommerce Step-by-step Guide</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/">Integration Notes</a>
 
@@ -402,6 +402,7 @@
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/">BuddyPress Integration</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/">WooCommerce Integration</a></li>
 </ul></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/debugging-and-problem-solving/">Debugging and Problem Solving</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/performance-tuning/">Performance Tuning</a></li>
 </ul>
 

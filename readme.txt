@@ -1,4 +1,4 @@
-=== WPSSO Core - Advanced Open Graph, Rich Pin, Twitter Card, Meta Tags, SEO Rich Results, and Schema Markup ===
+=== WPSSO Core (Advanced Open Graph, Rich Pin, Twitter Card, Meta Tags, SEO Rich Results, and Schema Markup) ===
 Plugin Name: WPSSO Core [Main Plugin]
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -74,9 +74,10 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 
 <h3>Complementary Add-ons</h3>
 
+* [WPSSO FAQ Manager](https://wordpress.org/plugins/wpsso-faq/) to manage FAQ categories with Question and Answer pages.
 * [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
 * [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/) to manage multiple Organizations.
-* [WPSSO Place / Location and Local Business Meta](https://wordpress.org/plugins/wpsso-plm/) to manage multiple Locations.
+* [WPSSO Place / Location and Local Business Meta](https://wordpress.org/plugins/wpsso-plm/) to manage multiple locations.
 * [WPSSO Ratings and Reviews](https://wordpress.org/plugins/wpsso-ratings-and-reviews/) to add ratings in WordPress comments.
 * [WPSSO REST API](https://wordpress.org/plugins/wpsso-rest-api/) to add meta tags and Schema markup in REST API queries.
 * [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) to add responsive share buttons.
@@ -321,16 +322,16 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 
 * [Install the WPSSO Core Plugin](https://wpsso.com/docs/plugins/wpsso/installation/install-the-plugin/)
 * [Uninstall the WPSSO Core Plugin](https://wpsso.com/docs/plugins/wpsso/installation/uninstall-the-plugin/)
-* [Debugging and Problem Solving](https://wpsso.com/docs/plugins/wpsso/installation/debugging-and-problem-solving/)
-* [Developer Special - Buy one, Get one Free](https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/)
 
 <h3>Plugin Setup</h3>
 
 * [A Setup Guide for WPSSO](https://wpsso.com/docs/plugins/wpsso/installation/a-setup-guide/)
+* [Developer Special - Buy one, Get one Free](https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/)
 * [Better Schema for WooCommerce Step-by-step Guide](https://wpsso.com/docs/plugins/wpsso/installation/better-schema-for-woocommerce-step-by-step-guide/)
 * [Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/)
 	* [BuddyPress Integration](https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/)
 	* [WooCommerce Integration](https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/)
+* [Debugging and Problem Solving](https://wpsso.com/docs/plugins/wpsso/installation/debugging-and-problem-solving/)
 * [Performance Tuning](https://wpsso.com/docs/plugins/wpsso/installation/performance-tuning/)
 
 == Frequently Asked Questions ==
@@ -439,7 +440,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 5.4.0 (2019/08/02)**
 
 * **New Features**
-	* Added a new WPSSO FAQ Manager (aka WPSSO FAQ) add-on.
+	* Added a new [WPSSO FAQ Manager (aka WPSSO FAQ) add-on](https://wordpress.org/plugins/wpsso-faq/).
 	* Added support for the [WooCommerce Brands](https://woocommerce.com/products/brands/) plugin (Premium version).
 	* Added support for the [WooCommerce UPC, EAN, and ISBN](https://wordpress.org/plugins/woo-add-gtin/) plugin (Premium version).
 * **Improvements**
