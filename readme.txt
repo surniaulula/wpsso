@@ -280,6 +280,7 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 		* [The SEO Framework](https://wordpress.org/plugins/autodescription/)
 		* [WooCommerce](https://wordpress.org/plugins/woocommerce/)
 		* [WooCommerce Brands](https://woocommerce.com/products/brands/)
+		* [WooCommerce UPC, EAN, and ISBN](https://wordpress.org/plugins/woo-add-gtin/)
 		* WooCommerce Show Single Variations
 		* [WP eCommerce](https://wordpress.org/plugins/wp-e-commerce/)
 		* [WP Job Manager](https://wordpress.org/plugins/wp-job-manager/)
