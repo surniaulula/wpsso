@@ -435,11 +435,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.4.0-b.4 (2019/08/01)**
+**Version 5.4.0-rc.1 (2019/08/01)**
 
 * **New Features**
 	* Added a new WPSSO FAQ Manager (aka WPSSO FAQ) add-on.
 	* Added support for the [WooCommerce Brands](https://woocommerce.com/products/brands/) plugin (Premium version).
+	* Added support for the [WooCommerce UPC, EAN, and ISBN](https://wordpress.org/plugins/woo-add-gtin/) plugin (Premium version).
 * **Improvements**
 	* Added a webpage HTML maximum size check (2.5 MB) when checking for duplicate meta tags.
 	* Removed the SSO &gt; Advanced &gt; Integration &gt; Honor the FORCE_SSL Constant option.
@@ -603,7 +604,7 @@ This version includes several jQuery improvements to optimize both the size of s
 
 == Upgrade Notice ==
 
-= 5.4.0-b.4 =
+= 5.4.0-rc.1 =
 
 (2019/08/01) Added support for the WooCommerce Brands plugin (Premium version). Added a webpage HTML maximum size check (2.5 MB) when checking for duplicate meta tags.
 
