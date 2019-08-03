@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 5.4.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-08-02 08:33-0700\n"
-"PO-Revision-Date: 2019-08-02 08:35-0700\n"
+"POT-Creation-Date: 2019-08-03 10:25-0700\n"
+"PO-Revision-Date: 2019-08-03 10:36-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1235,83 +1235,83 @@ msgstr "WPSSO Core veille à ce que votre contenu ait fière allure sur tous les
 
 #: lib/gettext-config.php:41
 msgctxt "plugin description"
-msgid "WPSSO Core add-on provides Apple Store / iTunes and Google Play App meta tags for Apple's mobile Safari banner and Twitter's App Card."
-msgstr "Ajout WPSSO Core pour fournir des balises méta Apple Store / iTunes et Google Play app pour mobile Safari de Apple et la carte app de Twitter."
+msgid "Apple Store / iTunes and Google Play App meta tags for Apple's mobile Safari banner and Twitter's App Card."
+msgstr "Balises méta Apple Store / iTunes et Google Play App pour la bannière mobile Safari de Apple et la carte app de Twitter."
 
 #: lib/gettext-config.php:42
 msgctxt "plugin description"
-msgid "WPSSO Core add-on offers Schema BreadcrumbList markup using Google's JSON-LD standard for better SEO Rich Results."
-msgstr "Ajout WPSSO Core pour fournir le balisage Schéma BreadcrumbList en format Google JSON-LD pour ces résultats riches SEO."
+msgid "Schema BreadcrumbList markup in JSON-LD for better Google SEO Rich Results."
+msgstr "Balisage Schéma BreadcrumbList en format JSON-LD pour de meilleurs résultats Google SEO riches."
 
 #: lib/gettext-config.php:43
 msgctxt "plugin description"
-msgid "WPSSO Core add-on to manage FAQ categories with Question and Answer pages."
-msgstr "Ajout WPSSO Core pour gérer les catégories de FAQ avec des pages de questions et réponses."
+msgid "Manage FAQ categories with Question and Answer pages."
+msgstr "Gérez les catégories de FAQ avec pages de questions et réponses."
 
 #: lib/gettext-config.php:44
 msgctxt "plugin description"
-msgid "WPSSO Core add-on to inherit featured and custom images from parents for posts, pages, custom post types, categories, tags, and custom taxonomies."
-msgstr "Ajout WPSSO Core pour hériter l'image \"mise en avant\" et personnalisées des parents pour les articles, pages, types d'articles personnalisés, catégories, étiquettes, et taxonomies personnalisées."
+msgid "Inherit featured and custom images from parents for posts, pages, custom post types, categories, tags, and custom taxonomies."
+msgstr "Hérite l'image \"mise en avant\" et personnalisées des parents pour articles, pages, types d'articles personnalisés, catégories, étiquettes, et taxonomies personnalisées."
 
 #: lib/gettext-config.php:45
 msgctxt "plugin description"
-msgid "WPSSO Core add-on offers Schema JSON-LD / Google SEO Rich Results for Articles, Events, Local Business, Products, Recipes, Reviews and many more."
-msgstr "Ajout WPSSO Core pour balisage Schéma JSON-LD / Google résultats riches d'articles, événements, entreprise locale, produits, recettes, critiques et bien plus."
+msgid "Schema JSON-LD markup and Google SEO Rich Results for Articles, Events, Local Business, Products, Recipes, Reviews and many more."
+msgstr "Balisage Schéma JSON-LD et résultats Google SEO riches d'articles, événements, entreprise locale, produits, recettes, critiques et bien plus."
 
 #: lib/gettext-config.php:46
 msgctxt "plugin description"
-msgid "WPSSO Core add-on to customize the home page Schema Organization markup and manage additional Organizations (publisher, organizer, performer, etc.)."
-msgstr "Ajout WPSSO Core pour personnaliser le balisage Schéma Organisation de la page d'accueil et de gérer des organisations supplémentaires (éditeur, organisateur, interprète, etc.)"
+msgid "Customize home page Schema Organization markup and manage additional Organizations (publisher, organizer, etc.)."
+msgstr "Personnaliser le balisage Schéma Organisation de la page d'accueil et de gérer des organisations supplémentaires (éditeur, organisateur, etc.)"
 
 #: lib/gettext-config.php:47
 msgctxt "plugin description"
-msgid "WPSSO Core add-on provides Pinterest Place, Facebook / Open Graph Location, Schema Local Business and Local SEO meta tags."
-msgstr "Ajout WPSSO Core pour fournir des balises méta Pinterest place, Facebook / Open Graph de position, et Schéma d'entreprise locale."
+msgid "Facebook / Open Graph Location, Pinterest Place, Schema Local Business and Local SEO meta tags."
+msgstr "Balises méta Facebook / Open Graph de position, Pinterest place, Schéma d'entreprise et locale SEO."
 
 #: lib/gettext-config.php:48
 msgctxt "plugin description"
-msgid "WPSSO Core add-on provides ratings and reviews for WordPress comments with Aggregate Rating meta tags and Schema Review markup."
-msgstr "Ajout WPSSO Core pour fournir des notes et critiques aux commentaires WordPress, avec balises méta Aggregate Rating et balisage Schéma Review."
+msgid "Ratings and reviews for WordPress comments with Aggregate Rating meta tags and Schema Review markup."
+msgstr "Notes et critiques pour commentaires WordPress avec balises méta Aggregate Rating et balisage Schéma Review."
 
 #: lib/gettext-config.php:49
 msgctxt "plugin description"
-msgid "WPSSO Core add-on offers an array of meta tags and Schema markup in the WordPress REST API post, term, and user queries."
-msgstr "Ajout WPSSO Core pour fournir un tableau de balises méta et balisage Schéma dans les requêtes WordPress REST API d'article, de terme et d'utilisateur."
+msgid "Enhances the WordPress REST API post, term, and user queries with an array of meta tags and Schema markup."
+msgstr "Améliore les requêtes d'articles, termes et utilisateurs de l'API REST de WordPress avec des balises méta et balisage Schéma."
 
 #: lib/gettext-config.php:50
 msgctxt "plugin description"
-msgid "WPSSO Core add-on offers Ridiculously Responsive (SVG) Social Sharing Buttons in your content, excerpts, CSS sidebar, widget, shortcode, editor pages, etc."
-msgstr "Ajout WPSSO Core pour fournir des boutons de partage sociaux ridiculement réactif (SVG) dans le contenu, extraits, barre flottante CSS, widget, pages d'édition, etc."
+msgid "Ridiculously Responsive (SVG) Social Sharing Buttons for your content, excerpts, CSS sidebar, widget, shortcode, editor pages, etc."
+msgstr "Boutons de partage sociaux ridiculement réactif (SVG) pour votre contenu, extraits, barre flottante CSS, widget, pages d'édition, etc."
 
 #: lib/gettext-config.php:51
 msgctxt "plugin description"
-msgid "WPSSO Core add-on offers social sharing buttons with support for hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more."
-msgstr "Ajout WPSSO Core pour fournir des boutons de partage social avec support pour hashtags, URLs raccourcis, bbPress, BuddyPress, WooCommerce et bien plus."
+msgid "Traditional social sharing buttons with support for hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more."
+msgstr "Boutons de partage social traditionnels avec support pour hashtags, URLs raccourcis, bbPress, BuddyPress, WooCommerce et bien plus."
 
 #: lib/gettext-config.php:52
 msgctxt "plugin description"
-msgid "WPSSO Core add-on to remove outdated / incomplete Schema Microdata to use Google's preferred Schema JSON-LD for SEO Rich Results."
-msgstr "Ajout WPSSO Core pour supprimer les microdonnées de Schéma obsolètes / incomplètes afin d'utiliser le balisage Schéma JSON-LD préféré par Google."
+msgid "Removes outdated Schema microdata from theme templates and leaves Schema JSON-LD untouched for better Google SEO Rich Results."
+msgstr "Supprime les microdonnées de Schéma obsolètes des modèles de thème et laisse le Schéma JSON-LD intact pour de meilleurs résultats Google SEO riches."
 
 #: lib/gettext-config.php:53
 msgctxt "plugin description"
-msgid "WPSSO Core add-on offers Twitter-style quoted text for your content, with a convenient Tweet share link and customizable CSS."
-msgstr "Ajout WPSSO Core pour fournir des citations de style Twitter pour votre contenu, avec un lien de partage Tweet et CSS personnalisables."
+msgid "Twitter-style quoted text for your content with customizable CSS and convenient Tweet share link."
+msgstr "Citations de style Twitter pour votre contenu avec CSS personnalisable et lien Tweet de partage pratique."
 
 #: lib/gettext-config.php:54
 msgctxt "plugin description"
-msgid "WPSSO Core add-on to sharpen and improve WordPress thumbnails and resized images for social sharing and SEO."
-msgstr "Ajout WPSSO Core pour affiner et améliorer les vignettes et images redimensionnées WordPress pour le partage social et SEO."
+msgid "Sharpen and improve WordPress thumbnails and resized images for social sharing and better SEO."
+msgstr "Affine et améliore les vignettes et images redimensionnées WordPress pour le partage social et SEO."
 
 #: lib/gettext-config.php:55
 msgctxt "plugin description"
-msgid "WPSSO Core add-on provides a convenient locale / language / region selector in the WordPress admin toolbar."
-msgstr "Ajout WPSSO Core pour fournir un sélecteur pratique de langue / région dans la barre d'outils admin de WordPress."
+msgid "Quick and easy locale / language / region selector for the WordPress admin toolbar."
+msgstr "Sélecteur de locale / langue / région rapide et facile pour la barre d’outils admin WordPress."
 
 #: lib/gettext-config.php:56
 msgctxt "plugin description"
-msgid "WPSSO Core add-on provides updates for the WPSSO Core Premium plugin and its complementary Premium add-ons."
-msgstr "Ajout WPSSO Core pour fournir des mises à jour pour l'extension WPSSO Core Premium et ses ajouts complémentaires Premium."
+msgid "Update manager for the WPSSO Core Premium plugin and its complementary Premium add-ons."
+msgstr "Gestionnaire de mise à jour pour l'extension WPSSO Core Premium et ses ajouts complémentaires Premium."
 
 #: lib/gettext-config.php:57
 msgctxt "menu title"
@@ -6015,16 +6015,16 @@ msgid "Please disable debug mode when debugging is complete."
 msgstr "SVP désactiver le mode de débogage lorsque le débogage est terminé."
 
 #. Plugin Name of the plugin/theme
-msgid "WPSSO Core [Main Plugin]"
-msgstr "WPSSO Core [Extension principale]"
+msgid "WPSSO Core"
+msgstr "WPSSO Core"
 
 #. Plugin URI of the plugin/theme
 msgid "https://wpsso.com/extend/plugins/wpsso/"
 msgstr "https://wpsso.com/extend/plugins/wpsso/"
 
 #. Description of the plugin/theme
-msgid "WPSSO Core makes sure your content looks great on all social and search sites - no matter how URLs are crawled, shared, re-shared, posted, or embedded!"
-msgstr "WPSSO Core veille à ce que votre contenu ait fière allure sur tous les sites de recherche et réseaux sociaux, quel que soit la façon qu'un URL est partagé, re-partagé, publié ou intégré!"
+msgid "WPSSO Core makes sure your content looks great on all social and search sites, no matter how URLs are crawled, shared, re-shared, posted or embedded!"
+msgstr "WPSSO Core veille à ce que votre contenu ait fière allure sur les sites de recherche et réseaux sociaux, quel que soit la façon qu'un URL est partagé, re-partagé, publié ou intégré!"
 
 #. Author of the plugin/theme
 msgid "JS Morisset"
@@ -6033,16 +6033,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
-
-#~ msgctxt "option label"
-#~ msgid "Honor the FORCE_SSL Constant"
-#~ msgstr "Honorer la constante FORCE_SSL"
-
-#~ msgid "The default description value is based on the category / tag description or biographical info for users."
-#~ msgstr "La valeur par défaut pour provient de la description pour une catégorie / tag ou l'information biographique pour un utilisateur."
-
-#~ msgid "The default description value is based on the excerpt (if one is available) or content."
-#~ msgstr "La valeur par défaut de la description est basée sur l'extrait (si disponible) ou le contenu."
-
-#~ msgid "If the FORCE_SSL constant is defined as true, %s can redirect front-end URLs from HTTP to HTTPS when required (default is checked)."
-#~ msgstr "Si la constante FORCE_SSL est définie comme <em>true</em>, %s peut rediriger les URLs d'avant de HTTP vers HTTPS lorsque requis (cochée par défaut)."

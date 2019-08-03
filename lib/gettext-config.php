@@ -49,7 +49,7 @@ _x( 'Ratings and reviews for WordPress comments with Aggregate Rating meta tags 
 _x( 'Enhances the WordPress REST API post, term, and user queries with an array of meta tags and Schema markup.', 'plugin description', 'wpsso' );
 _x( 'Ridiculously Responsive (SVG) Social Sharing Buttons for your content, excerpts, CSS sidebar, widget, shortcode, editor pages, etc.', 'plugin description', 'wpsso' );
 _x( 'Traditional social sharing buttons with support for hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more.', 'plugin description', 'wpsso' );
-_x( 'Remove outdated Schema microdata from theme templates to use Schema JSON-LD for better Google SEO Rich Results.', 'plugin description', 'wpsso' );
+_x( 'Removes outdated Schema microdata from theme templates and leaves Schema JSON-LD untouched for better Google SEO Rich Results.', 'plugin description', 'wpsso' );
 _x( 'Twitter-style quoted text for your content with customizable CSS and convenient Tweet share link.', 'plugin description', 'wpsso' );
 _x( 'Sharpen and improve WordPress thumbnails and resized images for social sharing and better SEO.', 'plugin description', 'wpsso' );
 _x( 'Quick and easy locale / language / region selector for the WordPress admin toolbar.', 'plugin description', 'wpsso' );
