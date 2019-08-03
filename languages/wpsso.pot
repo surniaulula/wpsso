@@ -4969,8 +4969,7 @@ msgstr ""
 #: lib/messages.php:1878
 msgid ""
 "%s adds the following Facebook, Open Graph, Twitter, Schema, Pinterest, and "
-"Google SEO meta tags to the <code>&lt;head&gt;</code> section of your "
-"webpages."
+"SEO meta tags to the <code>&lt;head&gt;</code> section of your webpages."
 msgstr ""
 
 #: lib/messages.php:1880
