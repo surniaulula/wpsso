@@ -113,11 +113,11 @@ if ( ! class_exists( 'WpssoSettingsImageDimensions' ) && class_exists( 'WpssoAdm
 					'<td>'.$this->form->get_input_image_dimensions( 'schema_img' ).'</td>';	// $use_opts = false
 
 					$table_rows[ 'tc_sum_img_dimensions' ] = '' .
-					$this->form->get_th_html( _x( 'Twitter <em>Summary</em> Card', 'option label', 'wpsso' ), null, 'tc_sum_img_dimensions' ).
+					$this->form->get_th_html( _x( 'Twitter Summary Card', 'option label', 'wpsso' ), null, 'tc_sum_img_dimensions' ).
 					'<td>'.$this->form->get_input_image_dimensions( 'tc_sum_img' ).'</td>';	// $use_opts = false
 
 					$table_rows[ 'tc_lrg_img_dimensions' ] = '' .
-					$this->form->get_th_html( _x( 'Twitter <em>Large Image Summary</em> Card', 'option label', 'wpsso' ), null, 'tc_lrg_img_dimensions' ).
+					$this->form->get_th_html( _x( 'Twitter Large Image Summary Card', 'option label', 'wpsso' ), null, 'tc_lrg_img_dimensions' ).
 					'<td>'.$this->form->get_input_image_dimensions( 'tc_lrg_img' ).'</td>';	// $use_opts = false
 
 					$table_rows[ 'thumb_img_dimensions' ] = '' .

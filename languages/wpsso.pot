@@ -6054,12 +6054,12 @@ msgstr ""
 
 #: lib/settings/image-dimensions.php:116
 msgctxt "option label"
-msgid "Twitter <em>Summary</em> Card"
+msgid "Twitter Summary Card"
 msgstr ""
 
 #: lib/settings/image-dimensions.php:120
 msgctxt "option label"
-msgid "Twitter <em>Large Image Summary</em> Card"
+msgid "Twitter Large Image Summary Card"
 msgstr ""
 
 #: lib/settings/image-dimensions.php:124
@@ -6407,12 +6407,12 @@ msgstr ""
 
 #: lib/submenu/general.php:319
 msgctxt "option label"
-msgid "<em>Summary</em> Card Image Dimensions"
+msgid "Summary Card Image Dimensions"
 msgstr ""
 
 #: lib/submenu/general.php:323
 msgctxt "option label"
-msgid "<em>Large Image</em> Card Img Dimensions"
+msgid "Large Image Card Img Dimensions"
 msgstr ""
 
 #: lib/submenu/setup.php:51

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 5.4.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-08-03 10:25-0700\n"
-"PO-Revision-Date: 2019-08-03 10:36-0700\n"
+"POT-Creation-Date: 2019-08-03 10:57-0700\n"
+"PO-Revision-Date: 2019-08-03 10:58-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -5282,13 +5282,13 @@ msgstr "Google / Schéma / Pinterest"
 
 #: lib/settings/image-dimensions.php:116
 msgctxt "option label"
-msgid "Twitter <em>Summary</em> Card"
-msgstr "Carte Twitter <em>sommaire</em>"
+msgid "Twitter Summary Card"
+msgstr "Carte Twitter sommaire"
 
 #: lib/settings/image-dimensions.php:120
 msgctxt "option label"
-msgid "Twitter <em>Large Image Summary</em> Card"
-msgstr "Carte Twitter <em>grande image</em>"
+msgid "Twitter Large Image Summary Card"
+msgstr "Carte Twitter sommaire grande image"
 
 #: lib/settings/image-dimensions.php:124
 msgctxt "option label"
@@ -5634,13 +5634,13 @@ msgstr "Type de carte Twitter par défaut"
 
 #: lib/submenu/general.php:319
 msgctxt "option label"
-msgid "<em>Summary</em> Card Image Dimensions"
-msgstr "Dimensions d'image carte <em>sommaire</em>"
+msgid "Summary Card Image Dimensions"
+msgstr "Dimensions d'image carte sommaire"
 
 #: lib/submenu/general.php:323
 msgctxt "option label"
-msgid "<em>Large Image</em> Card Img Dimensions"
-msgstr "Dimensions d'image carte <em>gr. image</em>"
+msgid "Large Image Card Img Dimensions"
+msgstr "Dimensions d'image carte gr. image"
 
 #: lib/submenu/setup.php:51
 msgctxt "metabox title"

@@ -316,11 +316,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>' . $this->form->get_select( 'tc_type_default', $tc_types ) . '</td>';
 
 					$table_rows[ 'tc_sum_img' ] = '' . 
-					$this->form->get_th_html( _x( '<em>Summary</em> Card Image Dimensions', 'option label', 'wpsso' ), '', 'tc_sum_img_dimensions' ) . 
+					$this->form->get_th_html( _x( 'Summary Card Image Dimensions', 'option label', 'wpsso' ), '', 'tc_sum_img_dimensions' ) . 
 					'<td>' . $this->form->get_input_image_dimensions( 'tc_sum_img' ) . '</td>';	// $use_opts = false
 
 					$table_rows[ 'tc_lrg_img' ] = '' . 
-					$this->form->get_th_html( _x( '<em>Large Image</em> Card Img Dimensions', 'option label', 'wpsso' ), '', 'tc_lrg_img_dimensions' ) . 
+					$this->form->get_th_html( _x( 'Large Image Card Img Dimensions', 'option label', 'wpsso' ), '', 'tc_lrg_img_dimensions' ) . 
 					'<td>' . $this->form->get_input_image_dimensions( 'tc_lrg_img' ) . '</td>';	// $use_opts = false
 
 					break;
