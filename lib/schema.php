@@ -48,13 +48,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$sizes[ 'schema_img' ] = array(		// Options prefix.
 				'name'  => 'schema',
-				'label' => _x( 'Google / Schema Image', 'image size label', 'wpsso' ),
+				'label' => _x( 'Schema Image', 'image size label', 'wpsso' ),
 			);
 
 			$sizes[ 'schema_article_img' ] = array(	// Options prefix.
 				'name'   => 'schema-article',
-				'label'  => _x( 'Google / Schema Image', 'image size label', 'wpsso' ),
-				'prefix' => 'schema_img',
+				'label'  => _x( 'Schema Article Image', 'image size label', 'wpsso' ),
 			);
 
 			return $sizes;

@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '5.4.0',	// Plugin version.
-					'opt_version' => '653',		// Increment when changing default option values.
+					'version'     => '5.4.1-dev.1',	// Plugin version.
+					'opt_version' => '654',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'WPSSO Core makes sure your content looks great on all social and search sites - no matter how URLs are crawled, shared, re-shared, posted, or embedded!',
@@ -811,7 +811,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_home_person_id'        => 'none',
 					'schema_logo_url'              => '',
 					'schema_banner_url'            => '',
-					'schema_img_width'             => 800,		// Must be at least 696px for Articles.
+					'schema_article_img_width'     => 800,		// Must be at least 696px for Articles.
+					'schema_article_img_height'    => 1600,
+					'schema_article_img_crop'      => 0,
+					'schema_article_img_crop_x'    => 'center',
+					'schema_article_img_crop_y'    => 'center',
+					'schema_img_width'             => 800,		// Must be at least 400px.
 					'schema_img_height'            => 1600,
 					'schema_img_crop'              => 0,
 					'schema_img_crop_x'            => 'center',

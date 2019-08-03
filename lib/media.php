@@ -1029,7 +1029,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								if ( $og_single_image[ 'og:image:width' ] === WPSSO_UNDEF &&
 									$og_single_image[ 'og:image:height' ] === WPSSO_UNDEF ) {
 
-									$check_size_limits = false;
+									$check_size_limits      = false;
 									$img_size_within_limits = false;
 								}
 
@@ -1546,11 +1546,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$img_ratio = 0;
 			$img_label = $img_mixed;
 
-			if ( strpos( $size_name, $this->p->lca . '-' ) !== 0 ) {	// only check our own sizes
+			if ( 0 !== strpos( $size_name, $this->p->lca . '-' ) ) {	// Only check our own sizes.
 				return true;
 			}
 
-			if ( $media_lib === null ) {
+			if ( null === $media_lib ) {	// Default to the WordPress Media Library.
 				$media_lib = __( 'Media Library', 'wpsso' );
 			}
 
@@ -1574,10 +1574,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 * Exit silently if the image width and/or height is not valid.
 			 */
 			if ( $img_width === WPSSO_UNDEF || $img_height === WPSSO_UNDEF ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: ' . strtolower( $media_lib ) . ' ' . $img_mixed . ' rejected - ' . 
 						'invalid width and/or height ' . $img_width . 'x' . $img_height );
 				}
+
 				return false;	// image rejected
 			}
 
@@ -1589,7 +1591,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				case $this->p->lca . '-opengraph':
 
-					$spec_name  = 'Facebook / Open Graph';
+					$spec_name  = _x( 'Open Graph (Facebook and Others)', 'option label', 'wpsso' );
 					$min_width  = $cf_min[ 'og_img_width' ];
 					$min_height = $cf_min[ 'og_img_height' ];
 					$max_ratio  = $cf_max[ 'og_img_ratio' ];
@@ -1598,7 +1600,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				case $this->p->lca . '-schema':
 
-					$spec_name  = 'Google / Schema';
+					$spec_name  = _x( 'Schema (Google and Pinterest)', 'option label', 'wpsso' );
 					$min_width  = $cf_min[ 'schema_img_width' ];
 					$min_height = $cf_min[ 'schema_img_height' ];
 					$max_ratio  = $cf_max[ 'schema_img_ratio' ];
@@ -1607,7 +1609,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				case $this->p->lca . '-schema-article':
 
-					$spec_name  = 'Google / Schema Article';
+					$spec_name  = _x( 'Schema Article (Google Rich Results)', 'option label', 'wpsso' );
 					$min_width  = $cf_min[ 'schema_article_img_width' ];
 					$min_height = $cf_min[ 'schema_article_img_height' ];
 					$max_ratio  = $cf_max[ 'schema_article_img_ratio' ];
@@ -1627,7 +1629,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			/**
 			 * Filter name example: 'wpsso_opengraph_img_size_limits'.
 			 */
-			list( $min_width, $min_height, $max_ratio ) = apply_filters( SucomUtil::sanitize_hookname( $size_name ) . '_img_size_limits',
+			list( $min_width, $min_height, $max_ratio ) = (array) apply_filters( SucomUtil::sanitize_hookname( $size_name ) . '_img_size_limits',
 				array( $min_width, $min_height, $max_ratio ) );
 
 			/**

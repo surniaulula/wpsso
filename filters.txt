@@ -255,6 +255,8 @@
 
 'wpsso_save_user_options' ( $opts, $term_id, false, $mod )
 
+'wpsso_schema_article_img_size_limits' ( array( $min_width, $min_height, $max_ratio ) )
+
 'wpsso_schema_img_size_limits' ( array( $min_width, $min_height, $max_ratio ) )
 
 'wpsso_schema_meta_itemprop' ( $mt_schema, $mod, $mt_og, $page_type_id )

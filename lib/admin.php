@@ -3581,6 +3581,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$form->get_th_html( _x( 'Schema Image Dimensions', 'option label', 'wpsso' ), '', 'schema_img_dimensions' ) . 
 			'<td>' . $form->get_input_image_dimensions( 'schema_img' ) . '</td>';
 
+			$table_rows[ 'schema_article_img' ] = '' . 
+			$form->get_th_html( _x( 'Schema Article Image Dimensions', 'option label', 'wpsso' ), '', 'schema_article_img_dimensions' ) . 
+			'<td>' . $form->get_input_image_dimensions( 'schema_article_img' ) . '</td>';
+
 			$table_rows[ 'schema_desc_max_len' ] = $form->get_tr_hide( 'basic', 'schema_desc_max_len' ) . 
 			$form->get_th_html( _x( 'Maximum Description Length', 'option label', 'wpsso' ), '', 'schema_desc_max_len' ) . 
 			'<td>' . $form->get_input( 'schema_desc_max_len', 'short' ) . ' ' . _x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';

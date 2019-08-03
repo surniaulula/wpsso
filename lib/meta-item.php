@@ -174,11 +174,11 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 				return array();	// Empty array.
 			}
 
-			$mt_item     = array();
+			$mt_item       = array();
+			$size_name     = $this->p->lca . '-schema';	// Default image size name.
 			$max_nums      = $this->p->util->get_max_nums( $mod, 'schema' );
 			$page_type_id  = $this->p->schema->get_mod_schema_type( $mod, $get_schema_id = true );
 			$page_type_url = $this->p->schema->get_schema_type_url( $page_type_id );
-			$size_name     = $this->p->lca . '-schema';
 
 			self::add_mt_item_from_assoc( $mt_item, $mt_og, array(
 				'url'  => 'og:url',
@@ -196,7 +196,7 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 
 				case 'https://schema.org/BlogPosting':
 
-					$size_name = $this->p->lca . '-schema-article';
+					$size_name = $this->p->lca . '-schema-article';	// BlogPosting is a sub-type of Article.
 
 					// No break - add date published and modified.
 

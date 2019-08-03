@@ -80,17 +80,17 @@ if ( ! class_exists( 'WpssoNoScript' ) ) {
 			}
 
 			$ret           = array();
+			$size_name     = $this->p->lca . '-schema';	// Default image size name.
 			$max_nums      = $this->p->util->get_max_nums( $mod, 'schema' );
 			$page_type_id  = $this->p->schema->get_mod_schema_type( $mod, $get_schema_id = true );
 			$page_type_url = $this->p->schema->get_schema_type_url( $page_type_id );
-			$size_name     = $this->p->lca . '-schema';
 			$og_type_id    = $mt_og[ 'og:type' ];
 
 			switch ( $page_type_url ) {
 
 				case 'https://schema.org/BlogPosting':
 
-					$size_name = $this->p->lca . '-schema-article';
+					$size_name = $this->p->lca . '-schema-article';	// BlogPosting is a sub-type of Article.
 
 					// No break - get the webpage author list as well.
 
