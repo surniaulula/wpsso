@@ -563,7 +563,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssossb' => array(			// Plugin acronym.
 					'short'       => 'WPSSO SSB',	// Short plugin name.
 					'name'        => 'WPSSO Social Sharing Buttons',
-					'desc'        => 'Social sharing buttons with support for hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more.',
+					'desc'        => 'Traditional social sharing buttons with support for hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more.',
 					'slug'        => 'wpsso-ssb',
 					'base'        => 'wpsso-ssb/wpsso-ssb.php',
 					'update_auth' => 'tid',

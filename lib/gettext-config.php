@@ -48,7 +48,7 @@ _x( 'Facebook / Open Graph Location, Pinterest Place, Schema Local Business and 
 _x( 'Ratings and reviews for WordPress comments with Aggregate Rating meta tags and Schema Review markup.', 'plugin description', 'wpsso' );
 _x( 'Enhances the WordPress REST API post, term, and user queries with an array of meta tags and Schema markup.', 'plugin description', 'wpsso' );
 _x( 'Ridiculously Responsive (SVG) Social Sharing Buttons for your content, excerpts, CSS sidebar, widget, shortcode, editor pages, etc.', 'plugin description', 'wpsso' );
-_x( 'Social sharing buttons with support for hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more.', 'plugin description', 'wpsso' );
+_x( 'Traditional social sharing buttons with support for hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more.', 'plugin description', 'wpsso' );
 _x( 'Remove outdated Schema microdata from theme templates to use Schema JSON-LD for better Google SEO Rich Results.', 'plugin description', 'wpsso' );
 _x( 'Twitter-style quoted text for your content with customizable CSS and convenient Tweet share link.', 'plugin description', 'wpsso' );
 _x( 'Sharpen and improve WordPress thumbnails and resized images for social sharing and better SEO.', 'plugin description', 'wpsso' );
