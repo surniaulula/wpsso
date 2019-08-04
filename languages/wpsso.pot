@@ -5991,7 +5991,7 @@ msgstr ""
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
-#: lib/schema-cache.php:28
+#: lib/schema-cache.php:31
 msgid "adding schema"
 msgstr ""
 

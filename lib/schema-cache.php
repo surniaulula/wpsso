@@ -16,13 +16,16 @@ if ( ! class_exists( 'WpssoSchemaCache' ) ) {
 
 	class WpssoSchemaCache {
 
+		/**
+		 * Maintain for WPSSO JSON add-on pre-v2.6.0.
+		 */
 		public static function get_mod_json_data( array $post_mod ) {
-
-			$wpsso =& Wpsso::get_instance();
 
 			if ( ! is_object( $post_mod[ 'obj' ] ) || ! $post_mod[ 'id' ] ) {
 				return false;
 			}
+
+			$wpsso =& Wpsso::get_instance();
 
 			$post_type_id     = $wpsso->schema->get_mod_schema_type( $post_mod, $get_schema_id = true );
 			$post_sharing_url = $wpsso->util->maybe_set_ref( null, $post_mod, __( 'adding schema', 'wpsso' ) );
