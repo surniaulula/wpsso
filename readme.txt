@@ -437,7 +437,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.4.1-dev.1 (2019/08/03)**
+**Version 5.4.1-dev.2 (2019/08/03)**
 
 * **New Features**
 	* None.
@@ -619,7 +619,7 @@ This version includes several jQuery improvements to optimize both the size of s
 
 == Upgrade Notice ==
 
-= 5.4.1-dev.1 =
+= 5.4.1-dev.2 =
 
 (2019/08/03) Split the single Google / Pinterest / Schema image size into two different image sizes.
 
