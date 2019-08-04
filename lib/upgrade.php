@@ -232,6 +232,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				651 => array(
 					'plugin_honor_force_ssl' => '',
 				),
+				654 => array(
+					'plugin_json_data_cache_exp' => '',
+				),
 			),
 		);
 

@@ -507,11 +507,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'read cache for head is disabled' );
 					}
-
-					/**
-					 * Force a refresh of the schema json data cache.
-					 */
-					WpssoSchemaCache::delete_mod_data( $mod );
 				}
 
 			} else {

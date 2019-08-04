@@ -865,12 +865,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				'salt' => 'WpssoHead::get_head_array(' . $mod_salt . ')',
 			);
 
-			$cache_types[ 'transient' ][] = array(
-				'id'   => $this->p->lca . '_j_' . md5( 'WpssoSchemaCache::mod_data(' . $mod_salt . ')' ),
-				'pre'  => $this->p->lca . '_j_',
-				'salt' => 'WpssoSchemaCache::mod_data(' . $mod_salt . ')',
-			);
-
 			$cache_types[ 'wp_cache' ][] = array(
 				'id'   => $this->p->lca . '_c_' . md5( 'WpssoPage::get_the_content(' . $mod_salt . ')' ),
 				'pre'  => $this->p->lca . '_c_',

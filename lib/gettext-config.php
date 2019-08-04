@@ -63,7 +63,6 @@ _x( 'SSO Desc', 'column header', 'wpsso' );
 _x( 'Article Topics', 'option label', 'wpsso' );
 _x( 'Head Markup', 'option label', 'wpsso' );
 _x( 'Image URL Info', 'option label', 'wpsso' );
-_x( 'Schema Data', 'option label', 'wpsso' );
 _x( 'Short URLs', 'option label', 'wpsso' );
 _x( 'Schema Types', 'option label', 'wpsso' );
 _x( 'All Transients', 'option label', 'wpsso' );

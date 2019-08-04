@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '5.4.1-dev.3',	// Plugin version.
-					'opt_version' => '654',		// Increment when changing default option values.
+					'version'     => '5.5.0-dev.4',	// Plugin version.
+					'opt_version' => '655',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'WPSSO Core makes sure your content looks great on all social and search sites - no matter how URLs are crawled, shared, re-shared, posted, or embedded!',
@@ -1295,7 +1295,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'plugin_head_cache_exp'      => WEEK_IN_SECONDS,	// Head Markup Array Cache Expiry (1 week).
 					'plugin_content_cache_exp'   => HOUR_IN_SECONDS,	// Filtered Content Text Cache Expiry (1 hour).
-					'plugin_json_data_cache_exp' => 1209600,		// Schema JSON Data Cache Expiry (2 weeks).
 					'plugin_imgsize_cache_exp'   => DAY_IN_SECONDS,		// Image URL Info Cache Expiry (1 day).
 					'plugin_short_url_cache_exp' => 7776000,		// Shortened URL Cache Expiry (90 days / 3 months).
 					'plugin_topics_cache_exp'    => MONTH_IN_SECONDS,	// Article Topics Array Cache Expiry (1 month).
@@ -1419,8 +1418,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_head_cache_exp:use'      => 'default',
 					'plugin_content_cache_exp'       => HOUR_IN_SECONDS,	// Filtered Content Text Cache Expiry (1 hour).
 					'plugin_content_cache_exp:use'   => 'default',
-					'plugin_json_data_cache_exp'     => 1209600,		// Schema JSON Data Cache Expiry (2 weeks).
-					'plugin_json_data_cache_exp:use' => 'default',
 					'plugin_imgsize_cache_exp'       => DAY_IN_SECONDS,	// Image URL Info Cache Expiry (1 day).
 					'plugin_imgsize_cache_exp:use'   => 'default',
 					'plugin_short_url_cache_exp'     => 7776000,		// Shortened URL Cache Expiry (90 days / 3 months).
@@ -1699,11 +1696,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'label'   => 'Image URL Info',
 						'opt_key' => 'plugin_imgsize_cache_exp',
 						'filter'  => 'wpsso_cache_expire_image_url_size',
-					),
-					'wpsso_j_' => array(
-						'label'   => 'Schema Data',
-						'opt_key' => 'plugin_json_data_cache_exp',
-						'filter'  => 'wpsso_cache_expire_schema_json_data',
 					),
 					'wpsso_p_' => array(	// Place details.
 					),
