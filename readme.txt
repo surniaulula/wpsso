@@ -437,7 +437,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.5.0-dev.4 (2019/08/04)**
+**Version 5.5.0 (2019/08/04)**
 
 * **New Features**
 	* None.
@@ -446,7 +446,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Schema (Google and Pinterest)
 		* Schema Article (Google Rich Results)
 * **Bugfixes**
-	* None.
+	* Fixed missing admin library loader definition for 'meta-edit'.
 * **Developer Notes**
 	* Added a call to WpssoUtil::replace_inline_vars() for title and description values.
 	* Removed the WpssoSchemaCache class.
@@ -620,9 +620,9 @@ This version includes several jQuery improvements to optimize both the size of s
 
 == Upgrade Notice ==
 
-= 5.5.0-dev.4 =
+= 5.5.0 =
 
-(2019/08/04) Split the single Google / Pinterest / Schema image size into two different image sizes.
+(2019/08/04) Fixed missing admin library loader definition for 'meta-edit'. Split the single Google / Pinterest / Schema image size into two different image sizes.
 
 = 5.4.0 =
 
