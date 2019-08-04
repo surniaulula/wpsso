@@ -16,31 +16,22 @@ if ( ! class_exists( 'WpssoSchemaCache' ) ) {
 
 	class WpssoSchemaCache {
 
-		public function __construct( &$plugin ) {
-		}
+		public static function get_mod_json_data( array $post_mod ) {
 
-		public static function get_single( array $mod, $mt_og, $page_type_id ) {
-			return array();
-		}
+			$wpsso =& Wpsso::get_instance();
 
-		public static function get_mod_json_data( array $mod, $mt_og, $page_type_id ) {
-			return array();
-		}
+			if ( ! is_object( $post_mod[ 'obj' ] ) || ! $post_mod[ 'id' ] ) {
+				return false;
+			}
 
-		public static function get_mod_index( $mixed, $page_type_id ) {
-			return false;
-		}
+			$post_type_id     = $wpsso->schema->get_mod_schema_type( $post_mod, $get_schema_id = true );
+			$post_sharing_url = $wpsso->util->maybe_set_ref( null, $post_mod, __( 'adding schema', 'wpsso' ) );
+			$post_mt_og       = $wpsso->og->get_array( $post_mod, array() );
+			$post_json_data   = $wpsso->schema->get_json_data( $post_mod, $post_mt_og, $post_type_id, $post_is_main = true );
 
-		public static function get_mod_data( $mod, $cache_index ) {
-			return false;
-		}
+			$wpsso->util->maybe_unset_ref( $post_sharing_url );
 
-		public static function save_mod_data( $mod, $cache_data ) {
-			return false;
-		}
-
-		public static function delete_mod_data( $mod ) {
-			return false;
+			return $post_json_data;
 		}
 	}
 }

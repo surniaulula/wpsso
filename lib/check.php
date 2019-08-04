@@ -273,8 +273,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							break;
 
-						case 'admin-post':
-						case 'admin-meta':
+						case 'admin-meta-edit':
 
 							if ( $is_admin ) {
 								$get_avail[ $sub ][ 'any' ] = $get_avail[ $sub ][ $id ] = true;

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 5.5.0-dev.4\n"
+"Project-Id-Version: WPSSO Core 5.5.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5989,6 +5989,10 @@ msgstr ""
 
 #: lib/register.php:326
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
+msgstr ""
+
+#: lib/schema-cache.php:28
+msgid "adding schema"
 msgstr ""
 
 #: lib/schema-single.php:787
