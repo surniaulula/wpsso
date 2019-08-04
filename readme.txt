@@ -448,7 +448,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a call to WpssoUtil::replace_inline_vars() for title and description values.
 
 **Version 5.4.0 (2019/08/02)**
 
