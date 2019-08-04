@@ -30,15 +30,15 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			/**
 			 * Hook the first available filter name (example: 'language_attributes').
 			 */
-			foreach ( array( 'plugin_html_attr_filter', 'plugin_head_attr_filter' ) as $opt_prefix ) {
+			foreach ( array( 'plugin_html_attr_filter', 'plugin_head_attr_filter' ) as $opt_pre ) {
 
-				if ( ! empty( $this->p->options[ $opt_prefix . '_name' ] ) && $this->p->options[ $opt_prefix . '_name' ] !== 'none' ) {
+				if ( ! empty( $this->p->options[ $opt_pre . '_name' ] ) && $this->p->options[ $opt_pre . '_name' ] !== 'none' ) {
 
-					$wp_filter_name = $this->p->options[ $opt_prefix . '_name' ];
+					$wp_filter_name = $this->p->options[ $opt_pre . '_name' ];
 
 					add_filter( $wp_filter_name, array( $this, 'add_ogpns_attributes' ),
-						 ( isset( $this->p->options[ $opt_prefix . '_prio' ] ) ?
-						 	(int) $this->p->options[ $opt_prefix . '_prio' ] : 100 ), 1 );
+						 ( isset( $this->p->options[ $opt_pre . '_prio' ] ) ?
+						 	(int) $this->p->options[ $opt_pre . '_prio' ] : 100 ), 1 );
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'added add_ogpns_attributes filter for ' . $wp_filter_name );
@@ -47,7 +47,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					break;	// Stop here.
 
 				} elseif ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'skipping add_ogpns_attributes for ' . $opt_prefix . ' - filter name is empty or disabled' );
+					$this->p->debug->log( 'skipping add_ogpns_attributes for ' . $opt_pre . ' - filter name is empty or disabled' );
 				}
 			}
 		}
@@ -56,7 +56,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$sizes[ 'og_img' ] = array( 		// Options prefix.
 				'name'  => 'opengraph',
-				'label' => _x( 'Facebook / Open Graph', 'image size label', 'wpsso' ),
+				'label' => _x( 'Open Graph', 'image size label', 'wpsso' ),
 			);
 
 			return $sizes;

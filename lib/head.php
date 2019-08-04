@@ -204,9 +204,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * SucomUtil::get_mt_image_seed() and
 			 * SucomUtil::get_mt_video_seed().
 			 */
-			foreach ( array( 'og:image', 'og:video', 'p:image' ) as $mt_prefix ) {
+			foreach ( array( 'og:image', 'og:video', 'p:image' ) as $mt_pre ) {
 
-				if ( empty( $has_media[ $mt_prefix ] ) ) {
+				if ( empty( $has_media[ $mt_pre ] ) ) {
 					continue;
 				}
 
@@ -218,14 +218,14 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						continue;
 					}
 
-					if ( strpos( $mt[ 3 ], $mt_prefix ) !== 0 ) {
+					if ( strpos( $mt[ 3 ], $mt_pre ) !== 0 ) {
 
 						$is_first = false;
 
 						/**
 						 * If we already found media, then skip to the next media prefix.
 						 */
-						if ( ! empty( $head_info[ $mt_prefix ] ) ) {
+						if ( ! empty( $head_info[ $mt_pre ] ) ) {
 							continue 2;
 						} else {
 							continue;	// Skip meta tags without matching prefix.
@@ -236,22 +236,22 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 					switch ( $mt_match ) {
 
-						case ( preg_match( '/^property-' . $mt_prefix . '(:secure_url|:url)?$/', $mt_match, $m ) ? true : false ):
+						case ( preg_match( '/^property-' . $mt_pre . '(:secure_url|:url)?$/', $mt_match, $m ) ? true : false ):
 
-							if ( ! empty( $head_info[ $mt_prefix ] ) ) {	// Only save the media URL once.
+							if ( ! empty( $head_info[ $mt_pre ] ) ) {	// Only save the media URL once.
 								continue 2;				// Get the next meta tag.
 							}
 
 							if ( ! empty( $mt[ 5 ] ) ) {
 
-								$head_info[ $mt_prefix ] = $mt[ 5 ];	// Save the media URL.
+								$head_info[ $mt_pre ] = $mt[ 5 ];	// Save the media URL.
 
 								$is_first = true;
 							}
 
 							break;
 
-						case ( preg_match( '/^property-' . $mt_prefix . ':(width|height|cropped|id|title|description)$/', $mt_match, $m ) ? true : false ):
+						case ( preg_match( '/^property-' . $mt_pre . ':(width|height|cropped|id|title|description)$/', $mt_match, $m ) ? true : false ):
 
 							if ( true !== $is_first ) {	// Only save for first media found.
 								continue 2;		// Get the next meta tag.

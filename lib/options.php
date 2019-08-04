@@ -927,7 +927,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'numeric':
 
 					if ( ! is_numeric( $opt_val ) ) {
+
 						$this->p->notice->err( sprintf( $error_messages[ 'numeric' ], $opt_key ) );
+
 						$opt_val = $def_val;
 					}
 

@@ -572,7 +572,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->log( 'DOING_AJAX is ' . $doing_ajax_is );
 			}
 
-			static $def_opts = null;	// Get defaults once if required.
+			/**
+			 * Get defaults once if required.
+			 */
+			static $def_opts = null;
 
 			$use_post = in_the_loop() ? true : false;				// Use the $post object inside the loop.
 			$use_post = apply_filters( $this->p->lca . '_use_post', $use_post );	// Used by woocommerce with is_shop().
@@ -593,7 +596,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$md_opts = array();
 
 			if ( true === $filter_sizes ) {
-				$image_sizes = apply_filters( $this->p->lca . '_plugin_image_sizes', $image_sizes, $mod, self::get_crawler_name() );
+				$image_sizes = apply_filters( $this->p->lca . '_plugin_image_sizes',
+					$image_sizes, $mod, self::get_crawler_name() );
 			}
 
 			if ( empty( $mod[ 'id' ] ) ) {
@@ -612,43 +616,66 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				/**
 			 	 * Custom filters may use image sizes, so don't filter/cache the meta options.
+				 *  Returns an empty string if no meta found.
 				 */
-				$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ], false, $filter_opts = false );	// Returns an empty string if no meta found.
+				$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ], false, $filter_opts = false );
 			}
 
-			foreach( $image_sizes as $opt_prefix => $size_info ) {
+			foreach( $image_sizes as $opt_pre => $size_info ) {
 
 				if ( ! is_array( $size_info ) ) {
+					$save_name = empty( $size_info ) ? $opt_pre : $size_info;
+					$size_info = array( 'name'  => $save_name, 'label' => $save_name );
+				}
+				
+				$md_pre = $opt_pre;
 
-					$save_name = empty( $size_info ) ? $opt_prefix : $size_info;
+				/**
+				 * Allow for alternate settings option prefix.
+				 */
+				if ( ! empty( $size_info[ 'opt_pre' ] ) ) {
+					$opt_pre = $md_pre = $size_info[ 'opt_pre' ];
+				}
 
-					$size_info = array(
-						'name'  => $save_name,
-						'label' => $save_name
-					);
-
-				} elseif ( ! empty( $size_info[ 'prefix' ] ) ) {	// Allow for alternate option prefix.
-
-					$opt_prefix = $size_info[ 'prefix' ];
+				/**
+				 * Allow for alternate metadata option prefix.
+				 */
+				if ( ! empty( $size_info[ 'md_pre' ] ) ) {
+					$md_pre = $size_info[ 'md_pre' ];
 				}
 
 				foreach ( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $key ) {
 
-					if ( isset( $size_info[ $key ] ) ) {					// Prefer existing info from filters.
+					/**
+					 * Prefer existing info from filters.
+					 */
+					if ( isset( $size_info[ $key ] ) ) {
 
 						continue;
 
-					} elseif ( isset( $md_opts[ $opt_prefix . '_' . $key ] ) ) {		// Use post meta if available.
+					/**
+					 * Use post/term/user metadata if available.
+					 */
+					} elseif ( isset( $md_opts[ $md_pre . '_' . $key ] ) ) {
 
-						$size_info[ $key ] = $md_opts[ $opt_prefix . '_' . $key ];
+						$size_info[ $key ] = $md_opts[ $md_pre . '_' . $key ];
 
-					} elseif ( isset( $this->p->options[ $opt_prefix . '_' . $key ] ) ) {	// Current plugin settings.
+					/**
+					 * Current plugin settings.
+					 */
+					} elseif ( isset( $this->p->options[ $opt_pre . '_' . $key ] ) ) {
 
-						$size_info[ $key ] = $this->p->options[ $opt_prefix . '_' . $key ];
+						$size_info[ $key ] = $this->p->options[ $opt_pre . '_' . $key ];
 
+					/**
+					 * Fallback to default settings.
+					 */
 					} else {
 
-						if ( ! isset( $def_opts ) ) {					// Only read once if necessary.
+						/**
+						 * Only read once if necessary.
+						 */
+						if ( ! isset( $def_opts ) ) {
 
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'getting default option values' );
@@ -657,10 +684,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 							$def_opts = $this->p->opt->get_defaults();
 						}
 
-						$size_info[ $key ] = $def_opts[ $opt_prefix . '_' . $key ];	// Fallback to default value.
+						$size_info[ $key ] = $def_opts[ $opt_pre . '_' . $key ];
 					}
 
-					if ( $key === 'crop' ) {						// Make sure crop is true or false.
+					/**
+					 * Make sure crop is true or false.
+					 */
+					if ( $key === 'crop' ) {
 						$size_info[ $key ] = empty( $size_info[ $key ] ) ? false : true;
 					}
 				}

@@ -1086,16 +1086,18 @@ EOF;
 			return $this->get_no_input_value( $value, 'datepicker', '', 'yyyy-mm-dd' );
 		}
 
-		public function get_input_image_upload( $opt_prefix, $placeholder = '', $is_disabled = false ) {
+		public function get_input_image_upload( $opt_pre, $placeholder = '', $is_disabled = false ) {
 
 			$opt_suffix  = '';
 			$default_lib = 'wp';
 			$media_libs  = array( 'wp' => 'Media Library' );
 			$data        = array();
 
-			if ( preg_match( '/^(.*)(_[0-9]+)$/', $opt_prefix, $matches ) ) {
-				$opt_prefix = $matches[1];
-				$opt_suffix = $matches[2];	// mutiple numbered option
+			if ( preg_match( '/^(.*)(_[0-9]+)$/', $opt_pre, $matches ) ) {
+
+				$opt_pre = $matches[1];
+
+				$opt_suffix = $matches[2];	// Mutiple numbered option.
 			}
 
 			if ( true === $this->p->avail[ 'media' ][ 'ngg' ] ) {
@@ -1107,23 +1109,23 @@ EOF;
 				$placeholder = preg_replace( '/^ngg-/', '', $placeholder );
 			}
 
-			$input_id = $this->get_input( $opt_prefix . '_id' . $opt_suffix, 'short', '', 0, $placeholder, $is_disabled );
+			$input_id = $this->get_input( $opt_pre . '_id' . $opt_suffix, 'short', '', 0, $placeholder, $is_disabled );
 
 			/**
 			 * Disable the select option if only 1 media lib.
 			 */
 			$select_disabled = count( $media_libs ) <= 1 ? true : $is_disabled;
 
-			$select_lib = $this->get_select( $opt_prefix . '_id_pre' . $opt_suffix, $media_libs, '', '', true, $select_disabled, $default_lib );
+			$select_lib = $this->get_select( $opt_pre . '_id_pre' . $opt_suffix, $media_libs, '', '', true, $select_disabled, $default_lib );
 
 			/**
 			 * The css id is used to set image values and disable the image url.
 			 */
-			if ( ( empty( $this->options[ $opt_prefix . '_id_pre' . $opt_suffix ] ) ||
-				$this->options[ $opt_prefix . '_id_pre' . $opt_suffix ] === 'wp' ) && 
-					! empty( $this->options[ $opt_prefix . '_id' . $opt_suffix ] ) ) {
+			if ( ( empty( $this->options[ $opt_pre . '_id_pre' . $opt_suffix ] ) ||
+				$this->options[ $opt_pre . '_id_pre' . $opt_suffix ] === 'wp' ) && 
+					! empty( $this->options[ $opt_pre . '_id' . $opt_suffix ] ) ) {
 
-				$data[ 'pid' ] = $this->options[ $opt_prefix . '_id' . $opt_suffix ];
+				$data[ 'pid' ] = $this->options[ $opt_pre . '_id' . $opt_suffix ];
 
 			} elseif ( $default_lib === 'wp' && ! empty( $placeholder ) ) {
 
@@ -1133,7 +1135,7 @@ EOF;
 			$button_upload = function_exists( 'wp_enqueue_media' ) ? $this->get_button(
 				'Select or Upload Image',		// $value
 				'sucom_image_upload_button button',	// $css_class
-				$opt_prefix . $opt_suffix,		// $css_id
+				$opt_pre . $opt_suffix,		// $css_id
 				'',					// $url
 				false,					// $newtab
 				$is_disabled,				// $is_disabled
@@ -1143,9 +1145,9 @@ EOF;
 			return '<div class="img_upload">' . $input_id . '&nbsp;in&nbsp;' . $select_lib . '&nbsp;' . $button_upload . '</div>';
 		}
 
-		public function get_no_input_image_upload( $opt_prefix, $placeholder = '' ) {
+		public function get_no_input_image_upload( $opt_pre, $placeholder = '' ) {
 
-			return $this->get_input_image_upload( $opt_prefix, $placeholder, $is_disabled = true );
+			return $this->get_input_image_upload( $opt_pre, $placeholder, $is_disabled = true );
 		}
 
 		public function get_input_image_dimensions( $name, $use_opts = false, $narrow = false, $is_disabled = false ) {
@@ -1198,16 +1200,16 @@ EOF;
 			return $this->get_input_image_dimensions( $name, $use_opts, $narrow, $is_disabled = true );
 		}
 
-		public function get_input_image_url( $opt_prefix, $url = '' ) {
+		public function get_input_image_url( $opt_pre, $url = '' ) {
 
 			$opt_suffix = '';
 
-			if ( preg_match( '/^(.*)(_[0-9]+)$/', $opt_prefix, $matches ) ) {
-				$opt_prefix = $matches[1];
+			if ( preg_match( '/^(.*)(_[0-9]+)$/', $opt_pre, $matches ) ) {
+				$opt_pre = $matches[1];
 				$opt_suffix = $matches[2];
 			}
 
-			if ( empty( $this->options[ $opt_prefix . '_id' . $opt_suffix ] ) ) {
+			if ( empty( $this->options[ $opt_pre . '_id' . $opt_suffix ] ) ) {
 				$placeholder = SucomUtil::esc_url_encode( $url );
 				$is_disabled = false;
 			} else {
@@ -1215,7 +1217,7 @@ EOF;
 				$is_disabled = true;
 			}
 
-			return $this->get_input( $opt_prefix . '_url' . $opt_suffix, 'wide', '', 0, $placeholder, $is_disabled );
+			return $this->get_input( $opt_pre . '_url' . $opt_suffix, 'wide', '', 0, $placeholder, $is_disabled );
 		}
 
 		public function get_input_video_dimensions( $name, $media_info = array(), $is_disabled = false ) {
@@ -1237,14 +1239,14 @@ EOF;
 			return $this->get_input_video_dimensions( $name, $media_info, $is_disabled = true );
 		}
 
-		public function get_input_video_url( $opt_prefix, $url = '' ) {
+		public function get_input_video_url( $opt_pre, $url = '' ) {
 
 			/**
 			 * Disable if we have a custom video embed.
 			 */
-			$is_disabled = empty( $this->options[ $opt_prefix . '_embed' ] ) ? false : true;
+			$is_disabled = empty( $this->options[ $opt_pre . '_embed' ] ) ? false : true;
 
-			return $this->get_input( $opt_prefix . '_url', 'wide', '', 0, SucomUtil::esc_url_encode( $url ), $is_disabled );
+			return $this->get_input( $opt_pre . '_url', 'wide', '', 0, SucomUtil::esc_url_encode( $url ), $is_disabled );
 		}
 
 		public function get_input_copy_clipboard( $value, $css_class = 'wide', $css_id = '' ) {
@@ -1975,27 +1977,27 @@ EOF;
 			return empty( $css_class ) ? '' : '<tr class="' . $css_class . '">';
 		}
 
-		public function get_css_class_hide_img_dim( $in_view = 'basic', $opt_prefix ) {
+		public function get_css_class_hide_img_dim( $in_view = 'basic', $opt_pre ) {
 
 			foreach ( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $opt_key ) {
-				$opt_keys[] = $opt_prefix . '_' . $opt_key;
+				$opt_keys[] = $opt_pre . '_' . $opt_key;
 			}
 
 			return self::get_css_class_hide( $in_view, $opt_keys );
 		}
 
-		public function get_css_class_hide_vid_dim( $in_view = 'basic', $opt_prefix ) {
+		public function get_css_class_hide_vid_dim( $in_view = 'basic', $opt_pre ) {
 
 			foreach ( array( 'width', 'height' ) as $opt_key ) {
-				$opt_keys[] = $opt_prefix . '_' . $opt_key;
+				$opt_keys[] = $opt_pre . '_' . $opt_key;
 			}
 
 			return self::get_css_class_hide( $in_view, $opt_keys );
 		}
 
-		public function get_css_class_hide_prefix( $in_view = 'basic', $opt_prefix ) {
+		public function get_css_class_hide_prefix( $in_view = 'basic', $opt_pre ) {
 
-			$opt_keys = SucomUtil::get_opts_begin( $opt_prefix, $this->options );
+			$opt_keys = SucomUtil::get_opts_begin( $opt_pre, $this->options );
 
 			return self::get_css_class_hide( $in_view, $opt_keys );
 		}

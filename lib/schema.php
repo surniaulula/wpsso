@@ -54,6 +54,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$sizes[ 'schema_article_img' ] = array(	// Options prefix.
 				'name'   => 'schema-article',
 				'label'  => _x( 'Schema Article Image', 'image size label', 'wpsso' ),
+				'md_pre' => 'schema_img',
 			);
 
 			return $sizes;
@@ -1648,7 +1649,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/**
 		 * Pass a single or two dimension image array in $mt_list.
 		 */
-		public static function add_images_data_mt( &$json_data, &$mt_list, $mt_prefix = 'og:image' ) {
+		public static function add_images_data_mt( &$json_data, &$mt_list, $mt_pre = 'og:image' ) {
 
 			$images_added = 0;
 
@@ -1657,13 +1658,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				foreach ( $mt_list as $og_single_image ) {
 
 					$images_added += WpssoSchemaSingle::add_image_data_mt( $json_data,
-						$og_single_image, $mt_prefix, $list_element = true );
+						$og_single_image, $mt_pre, $list_element = true );
 				}
 
 			} elseif ( is_array( $mt_list ) ) {
 
 				$images_added += WpssoSchemaSingle::add_image_data_mt( $json_data,
-					$mt_list, $mt_prefix, $list_element = true );
+					$mt_list, $mt_pre, $list_element = true );
 			}
 
 			return $images_added;	// Return count of images added.
@@ -1672,15 +1673,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/**
 		 * Deprecated on 2019/06/29.
 		 */
-		public static function add_og_single_image_data( &$json_data, $mt_single, $mt_prefix = 'og:image', $list_element = true ) {
+		public static function add_og_single_image_data( &$json_data, $mt_single, $mt_pre = 'og:image', $list_element = true ) {
 
-			return WpssoSchemaSingle::add_image_data_mt( $json_data, $mt_single, $mt_prefix, $list_element );
+			return WpssoSchemaSingle::add_image_data_mt( $json_data, $mt_single, $mt_pre, $list_element );
 		}
 
 		/**
 		 * Provide a single or two-dimension video array in $mt_list.
 		 */
-		public static function add_videos_data_mt( &$json_data, $mt_list, $mt_prefix = 'og:video' ) {
+		public static function add_videos_data_mt( &$json_data, $mt_list, $mt_pre = 'og:video' ) {
 
 			$videos_added = 0;
 
@@ -1689,13 +1690,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				foreach ( $mt_list as $og_single_video ) {
 
 					$videos_added += WpssoSchemaSingle::add_video_data_mt( $json_data,
-						$og_single_video, $mt_prefix, $list_element = true );
+						$og_single_video, $mt_pre, $list_element = true );
 				}
 
 			} elseif ( is_array( $mt_list ) ) {
 
 				$videos_added += WpssoSchemaSingle::add_video_data_mt( $json_data,
-					$mt_list, $mt_prefix, $list_element = true );
+					$mt_list, $mt_pre, $list_element = true );
 			}
 
 			return $videos_added;	// return count of videos added
