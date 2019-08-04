@@ -455,6 +455,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$title_text = apply_filters( $this->p->lca . '_title_pre_limit', $title_text );
 
 			/**
+			 * Replace any inline variables in the string.
+			 */
+			if ( false !== strpos( $title_text, '%%' ) ) {
+				$value = $this->p->util->replace_inline_vars( $title_text, $mod );
+			}
+
+			/**
 			 * Check title against string length limits.
 			 */
 			if ( $max_len > 0 ) {
@@ -808,6 +815,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 * Apply a description filter before adjusting it's length.
 			 */
 			$desc_text = apply_filters( $this->p->lca . '_description_pre_limit', $desc_text );
+
+			/**
+			 * Replace any inline variables in the string.
+			 */
+			if ( false !== strpos( $desc_text, '%%' ) ) {
+				$value = $this->p->util->replace_inline_vars( $desc_text, $mod );
+			}
 
 			/**
 			 * Check description against string length limits.

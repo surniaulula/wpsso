@@ -2277,7 +2277,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		/**
 		 * Allow the variables and values array to be extended.
-		 * $ext must be an associative array with key/value pairs to be replaced.
+		 *
+		 * $extra must be an associative array with key/value pairs to be replaced.
 		 */
 		public function replace_inline_vars( $content, $mod = false, $atts = array(), $extra = array() ) {
 

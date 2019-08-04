@@ -3296,7 +3296,7 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
 #: lib/loader.php:182 lib/loader.php:208 lib/post.php:494 lib/register.php:312
-#: lib/term.php:433 lib/user.php:396 lib/util.php:487 lib/util.php:3363
+#: lib/term.php:433 lib/user.php:396 lib/util.php:487 lib/util.php:3364
 msgid "%s warning:"
 msgstr ""
 
@@ -5716,47 +5716,47 @@ msgctxt "default title"
 msgid "No Title"
 msgstr ""
 
-#: lib/page.php:631 lib/page.php:633 lib/page.php:726
+#: lib/page.php:638 lib/page.php:640 lib/page.php:733
 msgctxt "default description"
 msgid "Archive for %s."
 msgstr ""
 
-#: lib/page.php:698
+#: lib/page.php:705
 msgctxt "default description"
 msgid "Tag archive for %s."
 msgstr ""
 
-#: lib/page.php:713
+#: lib/page.php:720
 msgctxt "default description"
 msgid "Category archive for %s."
 msgstr ""
 
-#: lib/page.php:742
+#: lib/page.php:749
 msgctxt "default description"
 msgid "Authored by %s."
 msgstr ""
 
-#: lib/page.php:749
+#: lib/page.php:756
 msgctxt "default description"
 msgid "Daily archive for %s."
 msgstr ""
 
-#: lib/page.php:754
+#: lib/page.php:761
 msgctxt "default description"
 msgid "Monthly archive for %s."
 msgstr ""
 
-#: lib/page.php:759
+#: lib/page.php:766
 msgctxt "default description"
 msgid "Yearly archive for %s."
 msgstr ""
 
-#: lib/page.php:764
+#: lib/page.php:771
 msgctxt "default description"
 msgid "Archive page."
 msgstr ""
 
-#: lib/page.php:803
+#: lib/page.php:810
 msgctxt "default description"
 msgid "No Description."
 msgstr ""
@@ -5764,7 +5764,7 @@ msgstr ""
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
 #: lib/post.php:480 lib/term.php:419 lib/user.php:382 lib/util.php:473
-#: lib/util.php:3335
+#: lib/util.php:3336
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -6629,13 +6629,13 @@ msgid ""
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max.
-#: lib/util.php:3338
+#: lib/util.php:3339
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3355
+#: lib/util.php:3356
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -6644,39 +6644,39 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3355
+#: lib/util.php:3356
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3644
+#: lib/util.php:3645
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:3673
+#: lib/util.php:3674
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3676
+#: lib/util.php:3677
 msgctxt "option comment"
 msgid "show these options"
 msgstr ""
 
-#: lib/util.php:3681
+#: lib/util.php:3682
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3684
+#: lib/util.php:3685
 msgctxt "option comment"
 msgid "show these rows"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name, and %3$s is the object ID.
-#: lib/util.php:4150
+#: lib/util.php:4151
 msgid "%1$s for %2$s ID %3$s"
 msgstr ""
 
