@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires At Least: 3.8
 Tested Up To: 5.2.2
 WC Tested Up To: 3.6
-Stable Tag: 5.4.0
+Stable Tag: 5.5.0
 
 WPSSO Core makes sure your content looks great on all social and search sites, no matter how URLs are crawled, shared, re-shared, posted or embedded!
 
@@ -623,8 +623,4 @@ This version includes several jQuery improvements to optimize both the size of s
 = 5.5.0 =
 
 (2019/08/04) Fixed missing admin library loader definition for 'meta-edit'. Split the single Google / Pinterest / Schema image size into two different image sizes.
-
-= 5.4.0 =
-
-(2019/08/02) Added support for the WooCommerce Brands plugin (Premium version). Added a webpage HTML maximum size check (2.5 MB) when checking for duplicate meta tags.
 
