@@ -369,14 +369,14 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$ref_html = '';
 
-			if ( $url = $this->get_ref( 'url' ) ) {
+			if ( $url = $this->get_ref( $ref_key = 'url' ) ) {
 
 				/**
 				 * Show a shorter relative URL, if possible.
 				 */
 				$pretty_url = strtolower( str_replace( home_url(), '', $url ) );
 
-				$context_transl = $this->get_ref( 'context_transl' );
+				$context_transl = $this->get_ref( $ref_key = 'context_transl' );
 
 				$context_transl = empty( $context_transl ) ?
 					'<a href="' . $url . '">' . $pretty_url . '</a>' :
@@ -385,9 +385,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				/**
 				 * Returns an empty string or a clickable (Edit) link.
 				 */
-				$edit_html = $this->get_ref( 'edit',
+				$edit_html = $this->get_ref(
+					$ref_key = 'edit',
 					$text_prefix = ' (<a href="',
-					$text_suffix = '">' . __( 'Edit', $this->text_domain ) . '</a>)' );
+					$text_suffix = '">' . __( 'Edit', $this->text_domain ) . '</a>)'
+				);
 
 				$ref_html .= '<p class="reference-message">' .
 					sprintf( __( 'Reference: %s', $this->text_domain ),
@@ -399,7 +401,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public function is_ref_url( $url = null ) {
 
-			if ( null === $url || $url === $this->get_ref( 'url' ) ) {
+			if ( null === $url || $url === $this->get_ref( $ref_key = 'url' ) ) {
 				return true;
 			} else {
 				return false;

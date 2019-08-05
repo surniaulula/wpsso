@@ -1134,11 +1134,11 @@ msgstr ""
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:390 lib/gettext-com.php:29 lib/post.php:1566
+#: lib/com/notice.php:391 lib/gettext-com.php:29 lib/post.php:1566
 msgid "Edit"
 msgstr ""
 
-#: lib/com/notice.php:393 lib/gettext-com.php:30
+#: lib/com/notice.php:395 lib/gettext-com.php:30
 msgid "Reference: %s"
 msgstr ""
 

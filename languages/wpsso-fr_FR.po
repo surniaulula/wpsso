@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 5.5.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-08-05 08:24-0700\n"
-"PO-Revision-Date: 2019-08-05 08:24-0700\n"
+"POT-Creation-Date: 2019-08-05 09:51-0700\n"
+"PO-Revision-Date: 2019-08-05 09:51-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1069,11 +1069,11 @@ msgstr "Cet avis peut être masqué définitivement."
 msgid "This notice can be dismissed for %s."
 msgstr "Cet avis peut être masqué pour %s."
 
-#: lib/com/notice.php:390 lib/gettext-com.php:29 lib/post.php:1566
+#: lib/com/notice.php:391 lib/gettext-com.php:29 lib/post.php:1566
 msgid "Edit"
 msgstr "Modifier"
 
-#: lib/com/notice.php:393 lib/gettext-com.php:30
+#: lib/com/notice.php:395 lib/gettext-com.php:30
 msgid "Reference: %s"
 msgstr "Référence: %s"
 
