@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 5.5.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-08-04 17:14-0700\n"
-"PO-Revision-Date: 2019-08-04 17:14-0700\n"
+"POT-Creation-Date: 2019-08-05 08:24-0700\n"
+"PO-Revision-Date: 2019-08-05 08:24-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3142,12 +3142,12 @@ msgid "adding schema json-ld markup"
 msgstr "ajout de balisage schéma json-ld"
 
 #. translators: %1$s is the PHP library path, %2$s is the PHP library class name
-#: lib/loader.php:169
+#: lib/loader.php:175
 msgid "Error loading %1$s: Library class \"%2$s\" is missing."
 msgstr "Erreur lors du chargement de %1$s: La classe de bibliothèque \"%2$s\" est manquante."
 
 #. translators: %s is the PHP library class name
-#: lib/loader.php:174
+#: lib/loader.php:180
 msgid "Library class \"%s\" is missing."
 msgstr "Classe de  bibliothèque \"%s\" manquante."
 
@@ -3156,22 +3156,22 @@ msgstr "Classe de  bibliothèque \"%s\" manquante."
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
-#: lib/loader.php:178 lib/loader.php:204 lib/post.php:494 lib/register.php:312
+#: lib/loader.php:184 lib/loader.php:210 lib/post.php:494 lib/register.php:312
 #: lib/term.php:433 lib/user.php:396 lib/util.php:487 lib/util.php:3364
 msgid "%s warning:"
 msgstr "Alerte %s:"
 
-#: lib/loader.php:189
+#: lib/loader.php:195
 msgid "The installed plugin is incomplete or the web server cannot access the library file."
 msgstr "Le plugin installé est incomplet ou le serveur Web ne peut pas accéder au fichier de bibliothèque."
 
 #. translators: %1$s is the short plugin name, %2$s is the PHP library path
-#: lib/loader.php:195
+#: lib/loader.php:201
 msgid "%1$s library class name for \"%2$s\" is not available."
 msgstr "Le nom de classe de bibliothèque %1$s pour \"%2$s\" n'est pas disponible."
 
 #. translators: %s is the PHP library path
-#: lib/loader.php:200
+#: lib/loader.php:206
 msgid "Library class name for \"%s\" is not available."
 msgstr "Le nom de classe de bibliothèque pour \"%s\" n'est pas disponible."
 
@@ -5208,10 +5208,6 @@ msgstr "%1$s nécessite %2$s version %3$s ou supérieure et a été désactivé.
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr "SVP mettre à jour %1$s avant d'essayer de réactiver l'extension %2$s."
 
-#: lib/schema-cache.php:31
-msgid "adding schema"
-msgstr "ajout de schéma"
-
 #: lib/schema-single.php:787
 msgid "adding schema offer"
 msgstr "ajout de schéma offre"
@@ -5245,6 +5241,10 @@ msgstr "Image Schéma"
 msgctxt "image size label"
 msgid "Schema Article Image"
 msgstr "Image Schéma d'article"
+
+#: lib/schema.php:583
+msgid "adding schema"
+msgstr "ajout de schéma"
 
 #: lib/script.php:205
 msgid "{0} of {1} characters minimum"
@@ -6034,18 +6034,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
-
-#~ msgctxt "option label"
-#~ msgid "Schema Data"
-#~ msgstr "Données Schéma"
-
-#~ msgctxt "option label"
-#~ msgid "Schema JSON Data Cache Expiry"
-#~ msgstr "Expiration cache données Schéma"
-
-#~ msgid "When %s creates Schema markup for the Blog, CollectionPage ProfilePage, and SearchResultsPage types, the JSON-LD of each individual post is saved to the WordPress transient cache to optimize performance."
-#~ msgstr "Lorsque %s crée le balisage Schéma pour les types Blog, CollectionPage, ProfilePage, et SearchResultsPage, le JSON-LD de chaque article individuel est enregistré dans le cache transitoire de WordPress pour optimiser la performance."
-
-#~ msgctxt "image size label"
-#~ msgid "Facebook / Open Graph"
-#~ msgstr "Facebook / Open Graph"
