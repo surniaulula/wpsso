@@ -572,6 +572,25 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $json_data;
 		}
 
+		public function get_mod_json_data( array $mod ) {
+
+			if ( ! is_object( $mod[ 'obj' ] ) || ! $mod[ 'id' ] ) {
+				return false;
+			}
+
+			$page_type_id = $this->get_mod_schema_type( $mod, $get_schema_id = true );
+
+			$sharing_url = $this->p->util->maybe_set_ref( null, $mod, __( 'adding schema', 'wpsso' ) );
+
+			$mt_og = $this->p->og->get_array( $mod, array() );
+
+			$json_data = $this->get_json_data( $mod, $mt_og, $page_type_id, $is_main = true );
+
+			$this->p->util->maybe_unset_ref( $sharing_url );
+
+			return $json_data;
+		}
+
 		/**
 		 * Return the schema type URL by default. Use $get_schema_id = true to return the schema type ID instead.
 		 */

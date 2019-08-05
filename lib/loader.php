@@ -91,6 +91,9 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 					$log_prefix = 'loading ' . $ext . ' ' . $type . '/' . $sub . ': ';
 
+					/**
+					 * Skip loading admin library modules if not in admin back-end.
+					 */
 					if ( 'admin' === $sub && ! $is_admin ) {
 						continue;
 					}
@@ -107,6 +110,9 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 						$log_prefix = 'loading ' . $ext . ' ' . $type . '/' . $sub . '/' . $id . ': ';
 
+						/**
+						 * Loading of admin library modules in back-end is always allowed.
+						 */
 						if ( 'admin' === $sub && $is_admin ) {
 							$this->p->avail[ $sub ][ $id ] = true;
 						}
