@@ -446,7 +446,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Optimized loading of admin library modules.
+	* Simplified and optimized loading of admin library modules.
 
 **Version 5.5.0 (2019/08/04)**
 
@@ -590,7 +590,7 @@ This version includes several jQuery improvements to optimize both the size of s
 
 = 5.5.1-dev.1 =
 
-(2019/08/05) Optimized loading of admin library modules.
+(2019/08/05) Simplified and optimized loading of admin library modules.
 
 = 5.5.0 =
 
