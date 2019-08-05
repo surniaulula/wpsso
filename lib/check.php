@@ -39,15 +39,15 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		 */
 		public function get_avail() {
 
-			$is_admin     = is_admin();
-			$jetpack_mods = method_exists( 'Jetpack', 'get_active_modules' ) ? Jetpack::get_active_modules() : array();
-			$get_avail    = array();	// Initialize the array to return.
+			$get_avail = array();	// Initialize the array to return.
 
 			foreach ( array( 'featured', 'amp', 'head_html', 'vary_ua' ) as $key ) {
 				$get_avail[ '*' ][ $key ] = $this->is_avail( $key );
 			}
 
 			$lib_checks = SucomUtil::array_merge_recursive_distinct( $this->p->cf[ '*' ][ 'lib' ][ 'pro' ], self::$extend_lib_checks );
+
+			$jetpack_mods = method_exists( 'Jetpack', 'get_active_modules' ) ? Jetpack::get_active_modules() : array();
 
 			foreach ( $lib_checks as $sub => $lib ) {
 
@@ -256,31 +256,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						/**
 						 * Premium version features / options.
 						 */
-						case 'admin-general':
-						case 'admin-advanced':
-
-							/**
-							 * Only load on the settings pages.
-							 */
-							if ( $is_admin ) {
-
-								$page = basename( $_SERVER[ 'PHP_SELF' ] );
-
-								if ( $page === 'admin.php' || $page === 'options-general.php' ) {
-									$get_avail[ $sub ][ 'any' ] = $get_avail[ $sub ][ $id ] = true;
-								}
-							}
-
-							break;
-
-						case 'admin-meta-edit':
-
-							if ( $is_admin ) {
-								$get_avail[ $sub ][ 'any' ] = $get_avail[ $sub ][ $id ] = true;
-							}
-
-							break;
-
 						case 'media-facebook':
 						case 'media-gravatar':
 						case 'media-slideshare':

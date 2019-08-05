@@ -91,16 +91,8 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 					$log_prefix = 'loading ' . $ext . ' ' . $type . '/' . $sub . ': ';
 
-					if ( $sub === 'admin' ) {
-
-						if ( ! $is_admin ) {	// Load the admin/ sub-folder in the back-end only.
-
-							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( $log_prefix . 'ignored - not in admin back-end' );
-							}
-
-							continue;
-						}
+					if ( 'admin' === $sub && ! $is_admin ) {
+						continue;
 					}
 
 					foreach ( $libs as $lib_name => $lib_label ) {
@@ -114,6 +106,10 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 						list( $id, $stub, $action ) = SucomUtil::get_lib_stub_action( $lib_name );
 
 						$log_prefix = 'loading ' . $ext . ' ' . $type . '/' . $sub . '/' . $id . ': ';
+
+						if ( 'admin' === $sub && $is_admin ) {
+							$this->p->avail[ $sub ][ $id ] = true;
+						}
 
 						if ( $this->p->avail[ $sub ][ $id ] ) {
 

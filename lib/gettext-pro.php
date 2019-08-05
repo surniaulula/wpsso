@@ -45,8 +45,6 @@ _x( 'Image URL Info Cache Expiry', 'option label', 'wpsso' );
 _x( 'seconds (0 to disable)', 'option comment', 'wpsso' );
 _x( 'Article Topics Array Cache Expiry', 'option label', 'wpsso' );
 _x( 'seconds (0 to disable)', 'option comment', 'wpsso' );
-_x( 'Schema JSON Data Cache Expiry', 'option label', 'wpsso' );
-_x( 'seconds (0 to disable)', 'option comment', 'wpsso' );
 _x( 'Schema Types Array Cache Expiry', 'option label', 'wpsso' );
 _x( 'seconds (0 to disable)', 'option comment', 'wpsso' );
 _x( 'Clear All Caches on Activate', 'option label', 'wpsso' );

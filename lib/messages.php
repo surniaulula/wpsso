@@ -964,19 +964,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_json_data_cache_exp':
-
-							$cache_exp_secs = WpssoConfig::$cf[ 'opt' ][ 'defaults' ][ 'plugin_json_data_cache_exp' ];
-
-							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
-								_x( 'disabled', 'option comment', 'wpsso' );
-
-							$text = sprintf( __( 'When %s creates Schema markup for the Blog, CollectionPage ProfilePage, and SearchResultsPage types, the JSON-LD of each individual post is saved to the WordPress transient cache to optimize performance.', 'wpsso' ), $info[ 'short' ] ) . ' ';
-							
-							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
-
-				 			break;
-
 						case 'tooltip-plugin_types_cache_exp':
 
 							$cache_exp_secs = WpssoConfig::$cf[ 'opt' ][ 'defaults' ][ 'plugin_types_cache_exp' ];

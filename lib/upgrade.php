@@ -145,7 +145,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'schema_person_id'         => 'schema_home_person_id',
 				),
 				574 => array(
-					'plugin_json_post_data_cache_exp' => 'plugin_json_data_cache_exp',
+					'plugin_json_post_data_cache_exp' => '',
 				),
 				575 => array(
 					'site_alt_name'   => 'site_name_alt',
