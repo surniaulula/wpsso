@@ -437,7 +437,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.5.1-dev.2 (2019/08/05)**
+**Version 5.5.1-dev.3 (2019/08/06)**
 
 * **New Features**
 	* None.
@@ -588,9 +588,9 @@ This version includes several jQuery improvements to optimize both the size of s
 
 == Upgrade Notice ==
 
-= 5.5.1-dev.2 =
+= 5.5.1-dev.3 =
 
-(2019/08/05) Simplified and optimized loading of admin library modules.
+(2019/08/06) Simplified and optimized loading of admin library modules.
 
 = 5.5.0 =
 
