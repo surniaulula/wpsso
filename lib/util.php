@@ -2675,17 +2675,17 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 								$post_obj->post_name = $post_obj->post_name ? 
 									$post_obj->post_name : sanitize_title( $post_obj->post_title );
 
-								$url = $this->get_type_permalink( $type, $post_obj );
+								$url = get_permalink( $post_obj );
 							}
 						}
 
 						if ( empty( $url ) ) {
-							$url = $this->get_type_permalink( $type, $mod[ 'id' ] );
+							$url = get_permalink( $mod[ 'id' ] );
 						}
 
 					} else {
 
-						$url = $this->get_type_permalink( $type, $mod[ 'id' ] );
+						$url = get_permalink( $mod[ 'id' ] );
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'get_permalink url = ' . $url );
@@ -2723,8 +2723,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					if ( get_option( 'show_on_front' ) === 'page' ) {	// Show_on_front = posts | page.
 
-						$url = $this->check_url_string( $this->get_type_permalink( $type,
-							get_option( 'page_for_posts' ) ), 'page for posts' );
+						$url = $this->check_url_string( get_permalink( get_option( 'page_for_posts' ) ), 'page for posts' );
 
 					} else {
 
@@ -2858,26 +2857,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			return apply_filters( $this->p->lca . '_' . $type . '_url', $url, $mod, $add_page, $src_id );
-		}
-
-		/**
-		 * Returns an AMP permalink or the standard WordPress permalink.
-		 */
-		private function get_type_permalink( $type = 'canonical', $post = 0, $leavename = false ) {
-
-			switch ( $type ) {
-
-				case 'canonical':
-
-					if ( self::is_amp() && function_exists( 'amp_get_permalink' ) ) {
-						return amp_get_permalink( $post );
-
-					}
-
-					break;
-			}
-
-			return get_permalink( $post, $leavename );
 		}
 
 		private function get_url_paged( $url, $mod, $add_page ) {

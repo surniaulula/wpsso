@@ -3283,7 +3283,7 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
 #: lib/loader.php:184 lib/loader.php:210 lib/post.php:494 lib/register.php:312
-#: lib/term.php:433 lib/user.php:396 lib/util.php:486 lib/util.php:3384
+#: lib/term.php:433 lib/user.php:396 lib/util.php:486 lib/util.php:3363
 msgid "%s warning:"
 msgstr ""
 
@@ -5743,7 +5743,7 @@ msgstr ""
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
 #: lib/post.php:480 lib/term.php:419 lib/user.php:382 lib/util.php:472
-#: lib/util.php:3356
+#: lib/util.php:3335
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -6608,13 +6608,13 @@ msgid ""
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max.
-#: lib/util.php:3359
+#: lib/util.php:3338
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3376
+#: lib/util.php:3355
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -6623,39 +6623,39 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3376
+#: lib/util.php:3355
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3665
+#: lib/util.php:3644
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:3694
+#: lib/util.php:3673
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3697
+#: lib/util.php:3676
 msgctxt "option comment"
 msgid "show these options"
 msgstr ""
 
-#: lib/util.php:3702
+#: lib/util.php:3681
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3705
+#: lib/util.php:3684
 msgctxt "option comment"
 msgid "show these rows"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name, and %3$s is the object ID.
-#: lib/util.php:4171
+#: lib/util.php:4150
 msgid "%1$s for %2$s ID %3$s"
 msgstr ""
 
