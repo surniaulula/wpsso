@@ -315,7 +315,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Schema json scripts.
+		 * Called by WpssoHead::get_head_array().
 		 *
 		 * $mt_og must be passed by reference to assign the schema:type internal meta tags.
 		 */
@@ -451,26 +451,28 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/**
 				 * Add the json data to the @graph array.
 				 */
-				foreach ( $scripts_data as $json_data ) {
+				foreach ( $scripts_data as $single_data ) {
 
-					if ( empty( $json_data ) || ! is_array( $json_data ) ) {	// Just in case.
+					if ( empty( $single_data ) || ! is_array( $single_data ) ) {	// Just in case.
 						continue;
 					}
 
-					if ( empty( $json_data[ '@type' ] ) ) {
+					if ( empty( $single_data[ '@type' ] ) ) {
 
-						$type_url  = $this->get_schema_type_url( $type_id );
-						$json_data = self::get_schema_type_context( $type_url, $json_data );
+						$type_url = $this->get_schema_type_url( $type_id );
+
+						$single_data = self::get_schema_type_context( $type_url, $single_data );
 
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'added @type property is ' . $json_data[ '@type' ] );
+							$this->p->debug->log( 'added @type property is ' . $single_data[ '@type' ] );
 						}
 
 					} elseif ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'existing @type property is ' . print_r( $json_data[ '@type' ], true ) );	// @type can be an array.
+						$this->p->debug->log( 'existing @type property is ' .
+							print_r( $single_data[ '@type' ], true ) );	// @type can be an array.
 					}
 
-					WpssoSchemaGraph::add( $json_data );
+					WpssoSchemaGraph::add( $single_data );
 				}
 
 				if ( $this->p->debug->enabled ) {

@@ -20,18 +20,15 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 		public static function add( $json_data ) {
 
-			$id = empty( $json_data[ '@id' ] ) ?
-				'' : $json_data[ '@id' ];
-
-			if ( empty( $id ) ) {
+			if ( empty( $json_data[ '@id' ] ) ) {
 
 				self::$graph_data[] = $json_data;
 
 				return true;
 
-			} elseif ( ! isset( self::$graph_data[ $id ] ) ) {
+			} elseif ( ! isset( self::$graph_data[ $json_data[ '@id' ] ] ) ) {
 
-				self::$graph_data[ $id ] = $json_data;
+				self::$graph_data[ $json_data[ '@id' ] ] = $json_data;
 
 				return true;
 			}
@@ -43,7 +40,7 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 			$graph_data = array(
 				'@context' => $graph_context,
-				'@graph'   => array_values( self::$graph_data ),
+				'@graph'   => array_values( self::$graph_data ),	// Exclude the associative array key values.
 			);
 
 			if ( $do_clear ) {
