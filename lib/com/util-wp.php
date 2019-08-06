@@ -402,9 +402,13 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			$hook_names = array();
 
 			if ( isset( $wp_filter[ $filter_name ]->callbacks ) ) {
+
 				foreach ( $wp_filter[ $filter_name ]->callbacks as $hook_prio => $hook_group ) {
+
 					foreach ( $hook_group as $hook_ref => $hook_info ) {
+
 						if ( ( $hook_name = self::get_hook_function_name( $hook_info ) ) !== '' ) {
+
 							$hook_names[] = $hook_name;
 						}
 					}

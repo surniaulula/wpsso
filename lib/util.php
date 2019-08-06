@@ -101,7 +101,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( is_string( $publisher ) ) {	// Example: 'facebook', 'google, 'twitter', etc.
 
-				$pub_lang = SucomUtil::get_pub_lang( $publisher );
+				$pub_lang = self::get_pub_lang( $publisher );
 
 			} elseif ( is_array( $publisher ) ) {
 
@@ -114,7 +114,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			/**
 			 * Returns the WP language as 'en' or 'en_US'.
 			 */
-			$locale = $fb_lang = SucomUtil::get_locale( $mixed );
+			$locale = $fb_lang = self::get_locale( $mixed );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'get_locale returned: ' . $locale );
@@ -214,7 +214,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$default_filters = array(
 				'cache_expire_head_array'       => '__return_zero',
-				'cache_expire_schema_json_data' => '__return_zero',
 				'cache_expire_setup_html'       => '__return_zero',
 				'cache_expire_shortcode_html'   => '__return_zero',
 				'cache_expire_sharing_buttons'  => '__return_zero',
@@ -2676,17 +2675,17 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 								$post_obj->post_name = $post_obj->post_name ? 
 									$post_obj->post_name : sanitize_title( $post_obj->post_title );
 
-								$url = get_permalink( $post_obj );
+								$url = $this->get_type_permalink( $type, $post_obj );
 							}
 						}
 
 						if ( empty( $url ) ) {
-							$url = get_permalink( $mod[ 'id' ] );
+							$url = $this->get_type_permalink( $type, $mod[ 'id' ] );
 						}
 
 					} else {
 
-						$url = get_permalink( $mod[ 'id' ] );
+						$url = $this->get_type_permalink( $type, $mod[ 'id' ] );
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'get_permalink url = ' . $url );
@@ -2724,7 +2723,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					if ( get_option( 'show_on_front' ) === 'page' ) {	// Show_on_front = posts | page.
 
-						$url = $this->check_url_string( get_permalink( get_option( 'page_for_posts' ) ), 'page for posts' );
+						$url = $this->check_url_string( $this->get_type_permalink( $type,
+							get_option( 'page_for_posts' ) ), 'page for posts' );
 
 					} else {
 
@@ -2848,7 +2848,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			/**
 			 * Check and possibly enforce the FORCE_SSL constant.
 			 */
-			if ( self::get_const( 'FORCE_SSL' ) && ! SucomUtil::is_https( $url ) ) {
+			if ( self::get_const( 'FORCE_SSL' ) && ! self::is_https( $url ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'force ssl is enabled - replacing http by https' );
@@ -2858,6 +2858,26 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			return apply_filters( $this->p->lca . '_' . $type . '_url', $url, $mod, $add_page, $src_id );
+		}
+
+		/**
+		 * Returns an AMP permalink or the standard WordPress permalink.
+		 */
+		private function get_type_permalink( $type = 'canonical', $post = 0, $leavename = false ) {
+
+			switch ( $type ) {
+
+				case 'canonical':
+
+					if ( self::is_amp() && function_exists( 'amp_get_permalink' ) ) {
+						return amp_get_permalink( $post );
+
+					}
+
+					break;
+			}
+
+			return get_permalink( $post, $leavename );
 		}
 
 		private function get_url_paged( $url, $mod, $add_page ) {
