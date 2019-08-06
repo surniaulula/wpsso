@@ -261,6 +261,9 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				}
 			}
 
+			/**
+			 * Disable Yoast SEO JSON-LD.
+			 */
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'disabling wpseo_json_ld_output filters' );
 			}

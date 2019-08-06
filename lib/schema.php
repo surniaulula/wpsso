@@ -480,7 +480,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$filter_name = $this->p->lca . '_json_prop_' . SucomUtil::sanitize_hookname( $graph_context . '/' . $graph_type );
 
-			$graph_data = WpssoSchemaGraph::get( $graph_context );
+			$graph_data = WpssoSchemaGraph::get( $graph_context, $do_clear = true );
 
 			$graph_data = apply_filters( $filter_name, $graph_data, $mod, $mt_og, $page_type_id, $is_main );
 
@@ -502,7 +502,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/**
 		 * Get the JSON-LD data array.
 		 */
-		public function get_json_data( array &$mod, array &$mt_og, $page_type_id = false, $is_main = false, $use_cache = true ) {
+		public function get_json_data( array &$mod, array &$mt_og, $page_type_id = false, $is_main = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();

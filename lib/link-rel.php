@@ -61,9 +61,11 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 			$add_link_rel_shortlink = empty( $this->p->options[ 'add_link_rel_shortlink' ] ) || is_404() || is_search() ? false : true;
 
 			if ( $add_link_rel_shortlink ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'pre-filter add_link_rel_shortlink is true' );
 				}
+
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'pre-filter add_link_rel_shortlink is false' );
 			}

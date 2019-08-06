@@ -28,9 +28,8 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 				self::$graph_data[] = $json_data;
 
 				return true;
-			}
 
-			if ( ! isset( self::$graph_data[ $id ] ) ) {
+			} elseif ( ! isset( self::$graph_data[ $id ] ) ) {
 
 				self::$graph_data[ $id ] = $json_data;
 
@@ -40,14 +39,23 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 			return false;
 		}
 
-		public static function get( $graph_context = 'https://schema.org' ) {
+		public static function get( $graph_context = 'https://schema.org', $do_clear = false ) {
 
 			$graph_data = array(
 				'@context' => $graph_context,
 				'@graph'   => array_values( self::$graph_data ),
 			);
 
+			if ( $do_clear ) {
+				self::clear();
+			}
+
 			return $graph_data;
+		}
+
+		public static function clear() {
+			
+			self::$graph_data = array();
 		}
 
 		public static function optimize( array &$data ) {
