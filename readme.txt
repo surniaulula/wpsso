@@ -437,7 +437,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.5.1-dev.1 (2019/08/05)**
+**Version 5.5.1-dev.2 (2019/08/05)**
 
 * **New Features**
 	* None.
@@ -447,6 +447,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Simplified and optimized loading of admin library modules.
+	* Added an SucomUtil::get_permalink() method to return an AMP permalink or the standard WordPress permalink.
 
 **Version 5.5.0 (2019/08/04)**
 
@@ -588,7 +589,7 @@ This version includes several jQuery improvements to optimize both the size of s
 
 == Upgrade Notice ==
 
-= 5.5.1-dev.1 =
+= 5.5.1-dev.2 =
 
 (2019/08/05) Simplified and optimized loading of admin library modules.
 
