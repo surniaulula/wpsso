@@ -447,7 +447,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Simplified and optimized loading of admin library modules.
-	* Added an SucomUtil::get_permalink() method to return an AMP permalink or the standard WordPress permalink.
 
 **Version 5.5.0 (2019/08/04)**
 
