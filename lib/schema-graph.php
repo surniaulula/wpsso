@@ -13,7 +13,7 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 	class WpssoSchemaGraph {
 
-		protected static $graph_data = array();
+		private static $graph_data = array();
 
 		public function __construct( &$plugin ) {
 		}

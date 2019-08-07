@@ -13,7 +13,7 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 
 	class WpssoMetaItem {
 
-		protected $p;
+		private $p;
 
 		public function __construct( &$plugin ) {
 

@@ -25,11 +25,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 	class WpssoSchema {
 
-		protected $p;
+		private $p;
 
-		protected $types_cache = null;		// Schema types array cache.
+		private $types_cache = null;		// Schema types array cache.
 
-		protected static $units_cache = null;	// Schema unicodes array cache.
+		private static $units_cache = null;	// Schema unicodes array cache.
 
 		public function __construct( &$plugin ) {
 
