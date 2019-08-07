@@ -437,16 +437,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.5.1-dev.3 (2019/08/06)**
+**Version 5.5.1-rc.1 (2019/08/07)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Minor update for "fr_FR" translations.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
 	* Simplified and optimized loading of admin library modules.
+	* Added a `$do_clear` argument to the WpssoSchemaGraph::get() method to clear cached data. 
 
 **Version 5.5.0 (2019/08/04)**
 
@@ -588,9 +589,9 @@ This version includes several jQuery improvements to optimize both the size of s
 
 == Upgrade Notice ==
 
-= 5.5.1-dev.3 =
+= 5.5.1-rc.1 =
 
-(2019/08/06) Simplified and optimized loading of admin library modules.
+(2019/08/07) Minor update for "fr_FR" translations. Simplified and optimized loading of admin library modules.
 
 = 5.5.0 =
 
