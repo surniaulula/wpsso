@@ -36,21 +36,26 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 			return false;
 		}
 
-		public static function get( $graph_context = 'https://schema.org', $do_clear = false ) {
+		public static function get_clean( $graph_context = 'https://schema.org' ) {
+
+			return self::get( $graph_context, $do_clean = true );
+		}
+
+		public static function get( $graph_context = 'https://schema.org', $do_clean = false ) {
 
 			$graph_data = array(
 				'@context' => $graph_context,
 				'@graph'   => array_values( self::$graph_data ),	// Exclude the associative array key values.
 			);
 
-			if ( $do_clear ) {
-				self::clear();
+			if ( $do_clean ) {
+				self::clean();
 			}
 
 			return $graph_data;
 		}
 
-		public static function clear() {
+		public static function clean() {
 			
 			self::$graph_data = array();
 		}

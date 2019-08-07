@@ -482,7 +482,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$filter_name = $this->p->lca . '_json_prop_' . SucomUtil::sanitize_hookname( $graph_context . '/' . $graph_type );
 
-			$graph_data = WpssoSchemaGraph::get( $graph_context, $do_clear = true );
+			$graph_data = WpssoSchemaGraph::get_clean( $graph_context );
 
 			$graph_data = apply_filters( $filter_name, $graph_data, $mod, $mt_og, $page_type_id, $is_main );
 
