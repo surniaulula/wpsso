@@ -436,7 +436,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$cache_md5_pre = $this->p->lca . '_h_';
 			$cache_salt    = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $sharing_url ) . ')';
 			$cache_id      = $cache_md5_pre . md5( $cache_salt );
-			$cache_index   = $this->get_head_cache_index( $mod, $sharing_url );	// Includes locale, url, $wp_query args, etc.
+			$cache_index   = $this->get_head_cache_index( $mod, $sharing_url );	// Includes locale, url, etc.
 			$cache_array   = array();
 
 			/**
@@ -516,6 +516,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 
 				if ( SucomUtil::delete_transient_array( $cache_id ) ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'deleted transient cache id ' . $cache_id );
 					}

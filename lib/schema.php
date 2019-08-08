@@ -1177,9 +1177,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$children   = get_transient( $cache_id );	// Returns false when not found.
 
 					if ( ! empty( $children ) ) {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'returning children from transient cache' );
 						}
+
 						return $children;
 					}
 				}
