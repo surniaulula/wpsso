@@ -437,6 +437,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 5.5.2-dev.1 (2019/08/07)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Refactored the WpssoSchemaGraph method and variable names.
+
 **Version 5.5.1 (2019/08/07)**
 
 * **New Features**
@@ -588,6 +599,10 @@ This version includes several jQuery improvements to optimize both the size of s
 		* Renamed WpssoSchema::update_json_data_id() to WpssoSchema::update_data_id().
 
 == Upgrade Notice ==
+
+= 5.5.2-dev.1 =
+
+(2019/08/07) Refactored the WpssoSchemaGraph method and variable names.
 
 = 5.5.1 =
 
