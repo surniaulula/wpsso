@@ -437,7 +437,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.5.2-dev.1 (2019/08/07)**
+**Version 5.5.2-dev.2 (2019/08/08)**
 
 * **New Features**
 	* None.
@@ -600,9 +600,9 @@ This version includes several jQuery improvements to optimize both the size of s
 
 == Upgrade Notice ==
 
-= 5.5.2-dev.1 =
+= 5.5.2-dev.2 =
 
-(2019/08/07) Refactored the WpssoSchemaGraph method and variable names.
+(2019/08/08) Refactored the WpssoSchemaGraph method and variable names.
 
 = 5.5.1 =
 
