@@ -13,22 +13,29 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 	class WpssoSchemaGraph {
 
-		private static $graph_data = array();
+		private static $graph_context = 'https://schema.org';
+		private static $graph_type    = 'graph';
+		private static $graph_data    = array();
 
 		public function __construct( &$plugin ) {
 		}
 
-		public static function add( $json_data ) {
+		public static function get_type_url() {
 
-			if ( empty( $json_data[ '@id' ] ) ) {
+			return self::$graph_context . '/' . self::$graph_type;
+		}
 
-				self::$graph_data[] = $json_data;
+		public static function add_data( $data ) {
+
+			if ( empty( $data[ '@id' ] ) ) {
+
+				self::$graph_data[] = $data;
 
 				return true;
 
-			} elseif ( ! isset( self::$graph_data[ $json_data[ '@id' ] ] ) ) {
+			} elseif ( ! isset( self::$graph_data[ $data[ '@id' ] ] ) ) {
 
-				self::$graph_data[ $json_data[ '@id' ] ] = $json_data;
+				self::$graph_data[ $data[ '@id' ] ] = $data;
 
 				return true;
 			}
@@ -36,23 +43,23 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 			return false;
 		}
 
-		public static function get_clean( $graph_context = 'https://schema.org' ) {
+		public static function get_json() {
 
-			return self::get( $graph_context, $do_clean = true );
-		}
-
-		public static function get( $graph_context = 'https://schema.org', $do_clean = false ) {
-
-			$graph_data = array(
-				'@context' => $graph_context,
+			$json_data = array(
+				'@context' => self::$graph_context,
 				'@graph'   => array_values( self::$graph_data ),	// Exclude the associative array key values.
 			);
 
-			if ( $do_clean ) {
-				self::clean();
-			}
+			return $json_data;
+		}
 
-			return $graph_data;
+		public static function get_json_clean() {
+
+			$json_data = self::get_json();
+			
+			self::clean();
+
+			return $json_data;
 		}
 
 		public static function clean() {
@@ -60,12 +67,12 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 			self::$graph_data = array();
 		}
 
-		public static function optimize( array &$data ) {
+		public static function optimize( array &$json_data ) {
 
 			static $new_data  = array();
 			static $recursion = null;
 
-			if ( isset( $data[ '@graph' ] ) ) {
+			if ( isset( $json_data[ '@graph' ] ) ) {
 				$recursion = 0;
 			} elseif ( null !== $recursion ) {
 				$recursion++;
@@ -75,7 +82,7 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 				return;
 			}
 
-			foreach ( $data as $key => &$val ) {
+			foreach ( $json_data as $key => &$val ) {
 
 				if ( is_array( $val ) ) {
 
@@ -88,7 +95,7 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 					if ( ! isset( $new_data[ $val ] ) ) {
 
-						$new_data[ $val ] = $data;
+						$new_data[ $val ] = $json_data;
 
 						foreach ( $new_data[ $val ] as $new_key => &$new_val ) {
 							if ( is_array( $new_val ) ) {
@@ -97,17 +104,17 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 						}
 					}
 
-					$data = array( $key => $val );
+					$json_data = array( $key => $val );
 
 					break;
 				}
 			}
 
-			if ( isset( $data[ '@graph' ] ) ) {
+			if ( isset( $json_data[ '@graph' ] ) ) {
 
-				$data[ '@graph' ] = array_merge( array_values( $new_data ), $data[ '@graph' ] );
+				$json_data[ '@graph' ] = array_merge( array_values( $new_data ), $json_data[ '@graph' ] );
 
-				return $data;
+				return $json_data;
 
 			} elseif ( null !== $recursion ) {
 				$recursion--;
