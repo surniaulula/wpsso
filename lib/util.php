@@ -549,7 +549,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 * The $mod variable can be false, and if so, it will be set using get_page_mod().
 		 * This method does not return a value, so do not use as a filter. ;-)
 		 */
-		public function add_plugin_image_sizes( $wp_obj = false, $image_sizes = array(), &$mod = false, $filter_sizes = true ) {
+		public function add_plugin_image_sizes( $wp_obj = false, $image_sizes = array(), $mod = false, $filter_sizes = true ) {
 
 			/**
 			 * Allow various plugin add-ons to provide their image names, labels, etc.
@@ -715,7 +715,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					 * Allow custom function hooks to make changes.
 					 */
 					if ( true === $filter_sizes ) {
-						$size_info = apply_filters( $this->p->lca . '_size_info_' . $size_info[ 'name' ], $size_info, $mod[ 'id' ], $mod[ 'name' ] );
+						$size_info = apply_filters( $this->p->lca . '_size_info_' . $size_info[ 'name' ],
+							$size_info, $mod[ 'id' ], $mod[ 'name' ] );
 					}
 
 					/**
@@ -723,7 +724,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					 */
 					$this->size_labels[ $this->p->lca . '-' . $size_info[ 'name' ] ] = $size_info[ 'label' ];
 
-					add_image_size( $this->p->lca . '-' . $size_info[ 'name' ], $size_info[ 'width' ], $size_info[ 'height' ], $size_info[ 'crop' ] );
+					add_image_size( $this->p->lca . '-' . $size_info[ 'name' ],
+						$size_info[ 'width' ], $size_info[ 'height' ], $size_info[ 'crop' ] );
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'image size ' . $this->p->lca . '-' . $size_info[ 'name' ] . ' ' . 
@@ -1524,8 +1526,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				 * use "wpssopost" here instead of "WpssoPost".
 				 */
 				$object_ids = call_user_func( array( $this->p->lca . $name, 'get_public_ids' ) );	// Call static method.
-				
-				foreach ( $object_ids as $object_id ) {
+
+				foreach ( $object_ids as $obj_id ) {
 
 					if ( get_transient( $cache_id ) !== $cache_status ) {	// Check that we are allowed to continue.
 						break 2;	// Stop here.
@@ -1533,9 +1535,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					$count++;
 
-					$object_mod = $this->p->$name->get_mod( $object_id );
+					$obj_mod = $this->p->$name->get_mod( $obj_id );
 
-					$this->refresh_mod_head_meta( $object_mod );
+					$this->refresh_mod_head_meta( $obj_mod );
 				}
 			}
 
@@ -1557,7 +1559,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$this->add_plugin_image_sizes( $wp_obj = false, $image_sizes = array(), $mod, $filter_sizes = true );
 
-			$head_meta_tags = $this->p->head->get_head_array( false, $mod, true );
+			$head_meta_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache = true );
 			$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
 
 			if ( $do_sleep ) {
@@ -3132,7 +3134,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/**
 		 * Get maximum media values from custom meta or plugin settings.
 		 */
-		public function get_max_nums( array &$mod, $opt_pre = 'og' ) {
+		public function get_max_nums( array $mod, $opt_pre = 'og' ) {
 
 			$max_nums = array();
 

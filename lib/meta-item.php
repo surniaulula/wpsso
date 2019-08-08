@@ -156,7 +156,7 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 			return true;
 		}
 
-		public function get_array( array &$mod, array &$mt_og, $crawler_name ) {
+		public function get_array( array $mod, array &$mt_og, $crawler_name ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -215,7 +215,8 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 
 					} else {
 
-						$mt_item[ 'thumbnailurl' ] = $this->p->og->get_thumbnail_url( $this->p->lca . '-thumbnail', $mod, $md_pre = 'schema' );
+						$mt_item[ 'thumbnailurl' ] = $this->p->og->get_thumbnail_url( $this->p->lca .
+							'-thumbnail', $mod, $md_pre = 'schema' );
 
 						if ( empty( $mt_item[ 'thumbnailurl' ] ) ) {
 							unset( $mt_item[ 'thumbnailurl' ] );
@@ -243,7 +244,8 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 					$this->p->debug->log( 'getting images for ' . $page_type_url );
 				}
 
-				$og_images = $this->p->og->get_all_images( $max_nums[ 'schema_img_max' ], $size_name, $mod, true, $md_pre = 'schema' );
+				$og_images = $this->p->og->get_all_images( $max_nums[ 'schema_img_max' ],
+					$size_name, $mod, true, $md_pre = 'schema' );
 
 				if ( empty( $og_images ) && $mod[ 'is_post' ] ) {
 					$og_images = $this->p->media->get_default_images( 1, $size_name, true );

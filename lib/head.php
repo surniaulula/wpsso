@@ -341,7 +341,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return $ret;
 		}
 
-		public function get_head_html( $use_post = false, &$mod = false, $read_cache = true, array &$mt_og ) {
+		public function get_head_html( $use_post = false, $mod = false, $read_cache = true, array &$mt_og ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -398,7 +398,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		/**
 		 * $read_cache is false when called by the post/term/user load_meta_page() method.
 		 */
-		public function get_head_array( $use_post = false, &$mod = false, $read_cache = true, &$mt_og = array() ) {
+		public function get_head_array( $use_post = false, $mod = false, $read_cache = true, &$mt_og = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'build head array' );	// Begin timer.
@@ -480,8 +480,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						if ( is_array( $cache_array[ $cache_index ] ) ) {	// Just in case.
 
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'exiting early: cache index found in transient cache' );
-								$this->p->debug->mark( 'build head array' );	// end timer
+								$this->p->debug->log( 'cache index found in transient cache' );
+								$this->p->debug->mark( 'build head array' );	// End timer.
 							}
 
 							return $cache_array[ $cache_index ];	// Stop here.
@@ -646,7 +646,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		/**
 		 * Loops through the arrays and calls get_single_mt() for each.
 		 */
-		private function get_mt_array( $tag, $type, array &$mt_array, array &$mod ) {
+		private function get_mt_array( $tag, $type, array $mt_array, array $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( count( $mt_array ) . ' ' . $tag . ' ' . $type . ' to process' );
@@ -763,7 +763,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return $merged;
 		}
 
-		public function get_single_mt( $tag, $type, $name, $value, $cmt, array &$mod ) {
+		public function get_single_mt( $tag, $type, $name, $value, $cmt, array $mod ) {
 
 			/**
 			 * Check for known exceptions for the "property" $type.
@@ -1100,7 +1100,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		 *
 		 * $parts = array( $html, $tag, $type, $name, $attr, $value, $cmt );
 		 */
-		private function apply_filters_single_mt( array &$parts, array &$mod ) {
+		private function apply_filters_single_mt( array $parts, array $mod ) {
 
 			$log_prefix  = $parts[ 1 ] . ' ' . $parts[ 2 ] . ' ' . $parts[ 3 ];
 			$filter_name = $this->p->lca . '_' . $parts[ 1 ] . '_' . $parts[ 2 ] . '_' . $parts[ 3 ] . '_' . $parts[ 4 ];

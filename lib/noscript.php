@@ -69,7 +69,7 @@ if ( ! class_exists( 'WpssoNoScript' ) ) {
 			}
 		}
 
-		public function get_array( array &$mod, array &$mt_og, $crawler_name ) {
+		public function get_array( array $mod, array &$mt_og, $crawler_name ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -122,7 +122,7 @@ if ( ! class_exists( 'WpssoNoScript' ) ) {
 			return (array) apply_filters( $this->p->lca . '_schema_noscript_array', $ret, $mod, $mt_og, $page_type_id );
 		}
 
-		public function get_single_image( array &$mod, &$mixed, $mt_pre = 'og:image' ) {
+		public function get_single_image( array $mod, &$mixed, $mt_pre = 'og:image' ) {
 
 			$mt_image = array();
 
@@ -188,7 +188,7 @@ if ( ! class_exists( 'WpssoNoScript' ) ) {
 			}
 		}
 
-		public function get_aggregate_rating( array &$mod, $og_type_id, array $mt_og ) {
+		public function get_aggregate_rating( array $mod, $og_type_id, array $mt_og ) {
 
 			/**
 			 * Aggregate rating needs at least one rating or review count.
@@ -224,7 +224,7 @@ if ( ! class_exists( 'WpssoNoScript' ) ) {
 			);
 		}
 
-		public function get_author_list( array &$mod ) {
+		public function get_author_list( array $mod ) {
 
 			if ( empty( $mod[ 'post_author' ] ) ) {
 
@@ -246,7 +246,7 @@ if ( ! class_exists( 'WpssoNoScript' ) ) {
 			return $ret;
 		}
 
-		public function get_single_author( array &$mod, $author_id = 0, $prop_name = 'author' ) {
+		public function get_single_author( array $mod, $author_id = 0, $prop_name = 'author' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 

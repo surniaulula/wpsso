@@ -404,7 +404,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return false;
 		}
 
-		protected function get_custom_meta_tabs( $metabox_id, array &$mod ) {
+		protected function get_custom_meta_tabs( $metabox_id, array $mod ) {
 
 			switch ( $metabox_id ) {
 
@@ -592,7 +592,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $table_rows;
 		}
 
-		public function get_rows_head_tab( &$form, &$head_info, &$mod ) {
+		public function get_rows_head_tab( &$form, &$head_info, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -684,7 +684,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $table_rows;
 		}
 
-		public function get_rows_validate_tab( &$form, &$head_info, &$mod ) {
+		public function get_rows_validate_tab( &$form, &$head_info, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();

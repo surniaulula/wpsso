@@ -2551,7 +2551,7 @@ msgid "Refresh Short URLs on Clear Cache"
 msgstr ""
 
 #: lib/gettext-pro.php:54 lib/pro/admin/advanced.php:317
-#: lib/std/admin/advanced.php:320 lib/util.php:1429
+#: lib/std/admin/advanced.php:320 lib/util.php:1431
 msgctxt "option label"
 msgid "Auto-Refresh Cache After Clearing"
 msgstr ""
@@ -3283,7 +3283,7 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
 #: lib/loader.php:184 lib/loader.php:210 lib/post.php:494 lib/register.php:312
-#: lib/term.php:433 lib/user.php:396 lib/util.php:489 lib/util.php:3369
+#: lib/term.php:433 lib/user.php:396 lib/util.php:489 lib/util.php:3371
 msgid "%s warning:"
 msgstr ""
 
@@ -5743,7 +5743,7 @@ msgstr ""
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
 #: lib/post.php:480 lib/term.php:419 lib/user.php:382 lib/util.php:475
-#: lib/util.php:3341
+#: lib/util.php:3343
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -5797,7 +5797,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:992 lib/util.php:1936
+#: lib/post.php:992 lib/util.php:1938
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -6543,78 +6543,78 @@ msgid ""
 "(%3$s)."
 msgstr ""
 
-#: lib/util.php:1357
+#: lib/util.php:1359
 msgid ""
 "%s cached files, transient cache, column meta, and the WordPress object "
 "cache have been cleared."
 msgstr ""
 
-#: lib/util.php:1362
+#: lib/util.php:1364
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:1414 lib/util.php:1548
+#: lib/util.php:1416 lib/util.php:1550
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/util.php:1420
+#: lib/util.php:1422
 msgid ""
 "A background task will begin shortly to refresh the post, term, and user "
 "cache objects."
 msgstr ""
 
-#: lib/util.php:1431
+#: lib/util.php:1433
 msgid "Cache objects will be re-created as they are needed (%s is disabled)."
 msgstr ""
 
-#: lib/util.php:1542
+#: lib/util.php:1544
 msgid ""
 "The meta tag and Schema markup caches for %1$d posts, %2$d terms, and %3$d "
 "users have been refreshed."
 msgstr ""
 
-#: lib/util.php:1764
+#: lib/util.php:1766
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util.php:1791
+#: lib/util.php:1793
 msgid "Failed to remove the cache file %s."
 msgstr ""
 
-#: lib/util.php:1853
+#: lib/util.php:1855
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:1923
+#: lib/util.php:1925
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1949
+#: lib/util.php:1951
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:2143
+#: lib/util.php:2145
 msgid ""
 "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
 "provider to have the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:2156
+#: lib/util.php:2158
 msgid ""
 "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
 "provider to have the missing function installed."
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max.
-#: lib/util.php:3344
+#: lib/util.php:3346
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3361
+#: lib/util.php:3363
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -6623,39 +6623,39 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3361
+#: lib/util.php:3363
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3650
+#: lib/util.php:3652
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:3679
+#: lib/util.php:3681
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3682
+#: lib/util.php:3684
 msgctxt "option comment"
 msgid "show these options"
 msgstr ""
 
-#: lib/util.php:3687
+#: lib/util.php:3689
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3690
+#: lib/util.php:3692
 msgctxt "option comment"
 msgid "show these rows"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name, and %3$s is the object ID.
-#: lib/util.php:4156
+#: lib/util.php:4158
 msgid "%1$s for %2$s ID %3$s"
 msgstr ""
 

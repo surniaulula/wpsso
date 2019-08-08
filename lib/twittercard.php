@@ -46,7 +46,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 		/**
 		 * Use reference for $mt_og argument to allow unset of existing twitter meta tags.
 		 */
-		public function get_array( array &$mod, array &$mt_og, $crawler_name = false ) {
+		public function get_array( array $mod, array &$mt_og, $crawler_name = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();

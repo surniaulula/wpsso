@@ -24,7 +24,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 			}
 		}
 
-		public function get_array( array &$mod, array &$mt_og, $crawler_name, $author_id ) {
+		public function get_array( array $mod, array &$mt_og, $crawler_name, $author_id ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -55,7 +55,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 
 			if ( $add_meta_name_description ) {
 				$mt_name[ 'description' ] = $this->p->page->get_description( $this->p->options[ 'seo_desc_max_len' ],
-					'...', $mod, true, false, true, 'seo_desc' );	// $add_hashtags is false.
+					$dots = '...', $mod, $read_cache = true, $add_hashtags = false, $do_encode = true, $md_key = 'seo_desc' );
 			}
 
 			/**

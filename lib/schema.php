@@ -302,14 +302,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return self::return_data_from_filter( $json_data, $ret, $is_main );
 		}
 
-		public function has_json_data_filter( array &$mod, $type_url = '' ) {
+		public function has_json_data_filter( array $mod, $type_url = '' ) {
 
 			$filter_name = $this->get_json_data_filter( $mod, $type_url );
 
 			return ! empty( $filter_name ) && has_filter( $filter_name ) ? true : false;
 		}
 
-		public function get_json_data_filter( array &$mod, $type_url = '' ) {
+		public function get_json_data_filter( array $mod, $type_url = '' ) {
 
 			if ( empty( $type_url ) ) {
 				$type_url = $this->get_mod_schema_type( $mod );
@@ -323,7 +323,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 *
 		 * $mt_og must be passed by reference to assign the schema:type internal meta tags.
 		 */
-		public function get_array( array &$mod, array &$mt_og, $crawler_name ) {
+		public function get_array( array $mod, array &$mt_og, $crawler_name ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'build json array' );	// Begin timer for json array.
@@ -511,7 +511,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/**
 		 * Get the JSON-LD data array.
 		 */
-		public function get_json_data( array &$mod, array &$mt_og, $page_type_id = false, $is_main = false ) {
+		public function get_json_data( array $mod, array &$mt_og, $page_type_id = false, $is_main = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
