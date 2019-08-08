@@ -391,6 +391,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log_arr( 'page_type_ids', $page_type_ids );
 			}
 
+			/**
+			 * TODO: CONVERT WpssoSchemaGraph STATIC METHODS TO DYNAMIC, TO HAVE A UNIQUE CACHE PER $graph OBJECT.
+			 *
+			 * $graph = new WpssoSchemaGraph( $this->p );
+			 */
+			WpssoSchemaGraph::clean();	// Just in case.
+
 			foreach ( $page_type_ids as $type_id => $is_enabled ) {
 
 				if ( ! $is_enabled ) {
