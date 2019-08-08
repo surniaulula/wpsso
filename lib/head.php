@@ -431,8 +431,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$is_admin     = is_admin();	// Call the function only once.
 			$crawler_name = SucomUtil::get_crawler_name();
 
-			static $cache_exp_secs = null;	// Set the cache expiration value once.
-
 			$cache_md5_pre = $this->p->lca . '_h_';
 			$cache_salt    = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $sharing_url ) . ')';
 			$cache_id      = $cache_md5_pre . md5( $cache_salt );
@@ -440,12 +438,15 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$cache_array   = array();
 
 			/**
-			 * Set and filter the static cache expiration value if not already set.
+			 * Set and filter the cache expiration value only once.
 			 */
-			if ( ! isset( $cache_exp_secs ) ) {
+			static $cache_exp_secs = null;
+
+			if ( null === $cache_exp_secs ) {
 
 				$cache_exp_filter = $this->p->cf[ 'wp' ][ 'transient' ][ $cache_md5_pre ][ 'filter' ];
 				$cache_opt_key    = $this->p->cf[ 'wp' ][ 'transient' ][ $cache_md5_pre ][ 'opt_key' ];
+				$cache_exp_secs   = $this->p->options[ $cache_opt_key ];
 
 				if ( is_404() || is_search() ) {
 
@@ -456,7 +457,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$cache_exp_secs = 0;
 				}
 
-				$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $this->p->options[ $cache_opt_key ] );
+				$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $cache_exp_secs );
 			}
 
 			if ( $this->p->debug->enabled ) {

@@ -963,11 +963,18 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$filter_content = empty( $this->p->options[ 'plugin_filter_content' ] ) ? false : true;
 			$filter_content = apply_filters( $this->p->lca . '_can_filter_the_content', $filter_content, $mod );
 
-			static $cache_exp_secs = null;	// Filter the cache expiration value only once.
-
 			$cache_md5_pre = $this->p->lca . '_c_';
+			$cache_salt  = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $sharing_url ) . ')';
+			$cache_id    = $cache_md5_pre . md5( $cache_salt );
+			$cache_index = 'locale:' . SucomUtil::get_locale( $mod ) . '_filter:' . ( $filter_content ? 'true' : 'false' );
+			$cache_array = array();
 
-			if ( ! isset( $cache_exp_secs ) ) {	// Filter cache expiration if not already set.
+			/**
+			 * Set and filter the cache expiration value only once.
+			 */
+			static $cache_exp_secs = null;
+
+			if ( null === $cache_exp_secs ) {
 				$cache_exp_filter = $this->p->cf[ 'wp' ][ 'wp_cache' ][ $cache_md5_pre ][ 'filter' ];
 				$cache_opt_key    = $this->p->cf[ 'wp' ][ 'wp_cache' ][ $cache_md5_pre ][ 'opt_key' ];
 				$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, $this->p->options[ $cache_opt_key ] );
@@ -976,11 +983,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/************************
 			 * Retrieve the Content *
 			 ************************/
-
-			$cache_salt  = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $sharing_url ) . ')';
-			$cache_id    = $cache_md5_pre . md5( $cache_salt );
-			$cache_index = 'locale:' . SucomUtil::get_locale( $mod ) . '_filter:' . ( $filter_content ? 'true' : 'false' );
-			$cache_array = array();
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'sharing url = ' . $sharing_url );

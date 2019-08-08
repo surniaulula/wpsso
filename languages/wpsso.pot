@@ -963,52 +963,52 @@ msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:4032
+#: lib/admin.php:4034
 msgid "Return to %s"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:4063
+#: lib/admin.php:4065
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:4085
+#: lib/admin.php:4087
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:4092
+#: lib/admin.php:4094
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes, and translations)</a> to check if newer versions are "
 "available."
 msgstr ""
 
-#: lib/admin.php:4229
+#: lib/admin.php:4231
 msgid "Please select a %1$s settings file to import."
 msgstr ""
 
-#: lib/admin.php:4236
+#: lib/admin.php:4238
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr ""
 
-#: lib/admin.php:4243
+#: lib/admin.php:4245
 msgid ""
 "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr ""
 
-#: lib/admin.php:4257
+#: lib/admin.php:4259
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr ""
 
-#: lib/admin.php:4267
+#: lib/admin.php:4269
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr ""
 
-#: lib/admin.php:4277
+#: lib/admin.php:4279
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 
@@ -2551,7 +2551,7 @@ msgid "Refresh Short URLs on Clear Cache"
 msgstr ""
 
 #: lib/gettext-pro.php:54 lib/pro/admin/advanced.php:317
-#: lib/std/admin/advanced.php:320 lib/util.php:1426
+#: lib/std/admin/advanced.php:320 lib/util.php:1429
 msgctxt "option label"
 msgid "Auto-Refresh Cache After Clearing"
 msgstr ""
@@ -2605,14 +2605,14 @@ msgid "Bitly URL Shortener"
 msgstr ""
 
 #: lib/gettext-pro.php:63 lib/gettext-pro.php:181
-#: lib/pro/admin/advanced.php:390 lib/pro/util/shorten.php:269
+#: lib/pro/admin/advanced.php:390 lib/pro/util/shorten.php:271
 #: lib/std/admin/advanced.php:396
 msgctxt "option label"
 msgid "Bitly Username"
 msgstr ""
 
 #: lib/gettext-pro.php:64 lib/gettext-pro.php:183
-#: lib/pro/admin/advanced.php:395 lib/pro/util/shorten.php:284
+#: lib/pro/admin/advanced.php:395 lib/pro/util/shorten.php:286
 #: lib/std/admin/advanced.php:401
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
@@ -2643,7 +2643,7 @@ msgid "DLMY.App URL Shortener"
 msgstr ""
 
 #: lib/gettext-pro.php:69 lib/gettext-pro.php:186
-#: lib/pro/admin/advanced.php:416 lib/pro/util/shorten.php:313
+#: lib/pro/admin/advanced.php:416 lib/pro/util/shorten.php:315
 #: lib/std/admin/advanced.php:422
 msgctxt "option label"
 msgid "DLMY.App API Key"
@@ -2656,7 +2656,7 @@ msgid "Ow.ly URL Shortener"
 msgstr ""
 
 #: lib/gettext-pro.php:71 lib/gettext-pro.php:188
-#: lib/pro/admin/advanced.php:426 lib/pro/util/shorten.php:336
+#: lib/pro/admin/advanced.php:426 lib/pro/util/shorten.php:338
 #: lib/std/admin/advanced.php:432
 msgctxt "option label"
 msgid "Ow.ly API Key"
@@ -2669,7 +2669,7 @@ msgid "Your Own URL Shortener (YOURLS)"
 msgstr ""
 
 #: lib/gettext-pro.php:73 lib/gettext-pro.php:190
-#: lib/pro/admin/advanced.php:436 lib/pro/util/shorten.php:384
+#: lib/pro/admin/advanced.php:436 lib/pro/util/shorten.php:386
 #: lib/std/admin/advanced.php:442
 msgctxt "option label"
 msgid "YOURLS API URL"
@@ -3147,29 +3147,29 @@ msgstr ""
 msgid "No Description"
 msgstr ""
 
-#: lib/gettext-pro.php:179 lib/pro/util/shorten.php:249
+#: lib/gettext-pro.php:179 lib/pro/util/shorten.php:251
 msgid "The URL shortening library file \"%s\" is missing and required."
 msgstr ""
 
 #: lib/gettext-pro.php:180 lib/gettext-pro.php:185 lib/gettext-pro.php:187
-#: lib/gettext-pro.php:189 lib/pro/util/shorten.php:268
-#: lib/pro/util/shorten.php:312 lib/pro/util/shorten.php:335
-#: lib/pro/util/shorten.php:383
+#: lib/gettext-pro.php:189 lib/pro/util/shorten.php:270
+#: lib/pro/util/shorten.php:314 lib/pro/util/shorten.php:337
+#: lib/pro/util/shorten.php:385
 msgid "The \"%s\" option value is empty and required."
 msgstr ""
 
-#: lib/gettext-pro.php:182 lib/pro/util/shorten.php:280
+#: lib/gettext-pro.php:182 lib/pro/util/shorten.php:282
 msgid ""
 "The \"%1$s\" and \"%2$s\" option values are empty &mdash; at least one "
 "option value is required."
 msgstr ""
 
-#: lib/gettext-pro.php:184 lib/pro/util/shorten.php:285
+#: lib/gettext-pro.php:184 lib/pro/util/shorten.php:287
 msgctxt "option label"
 msgid "Bitly API Key"
 msgstr ""
 
-#: lib/gettext-pro.php:191 lib/pro/util/shorten.php:427
+#: lib/gettext-pro.php:191 lib/pro/util/shorten.php:429
 msgid ""
 "Incomplete and/or missing API credentials for the \"%s\" URL shortening "
 "service."
@@ -3243,27 +3243,27 @@ msgctxt "option value"
 msgid "%s Location"
 msgstr ""
 
-#: lib/head.php:543
+#: lib/head.php:544
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:557
+#: lib/head.php:558
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:566
+#: lib/head.php:567
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:575
+#: lib/head.php:576
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:584
+#: lib/head.php:585
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:593
+#: lib/head.php:594
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -3283,7 +3283,7 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
 #: lib/loader.php:184 lib/loader.php:210 lib/post.php:494 lib/register.php:312
-#: lib/term.php:433 lib/user.php:396 lib/util.php:486 lib/util.php:3363
+#: lib/term.php:433 lib/user.php:396 lib/util.php:489 lib/util.php:3369
 msgid "%s warning:"
 msgstr ""
 
@@ -5742,8 +5742,8 @@ msgstr ""
 
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
-#: lib/post.php:480 lib/term.php:419 lib/user.php:382 lib/util.php:472
-#: lib/util.php:3335
+#: lib/post.php:480 lib/term.php:419 lib/user.php:382 lib/util.php:475
+#: lib/util.php:3341
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -5797,7 +5797,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:992 lib/util.php:1930
+#: lib/post.php:992 lib/util.php:1936
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -6537,84 +6537,84 @@ msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is an image URL, %3$s is a recommended max.
-#: lib/util.php:475
+#: lib/util.php:478
 msgid ""
 "Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s "
 "(%3$s)."
 msgstr ""
 
-#: lib/util.php:1354
+#: lib/util.php:1357
 msgid ""
 "%s cached files, transient cache, column meta, and the WordPress object "
 "cache have been cleared."
 msgstr ""
 
-#: lib/util.php:1359
+#: lib/util.php:1362
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:1411 lib/util.php:1545
+#: lib/util.php:1414 lib/util.php:1548
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/util.php:1417
+#: lib/util.php:1420
 msgid ""
 "A background task will begin shortly to refresh the post, term, and user "
 "cache objects."
 msgstr ""
 
-#: lib/util.php:1428
+#: lib/util.php:1431
 msgid "Cache objects will be re-created as they are needed (%s is disabled)."
 msgstr ""
 
-#: lib/util.php:1539
+#: lib/util.php:1542
 msgid ""
 "The meta tag and Schema markup caches for %1$d posts, %2$d terms, and %3$d "
 "users have been refreshed."
 msgstr ""
 
-#: lib/util.php:1761
+#: lib/util.php:1764
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util.php:1788
+#: lib/util.php:1791
 msgid "Failed to remove the cache file %s."
 msgstr ""
 
-#: lib/util.php:1847
+#: lib/util.php:1853
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:1917
+#: lib/util.php:1923
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1943
+#: lib/util.php:1949
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:2137
+#: lib/util.php:2143
 msgid ""
 "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
 "provider to have the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:2150
+#: lib/util.php:2156
 msgid ""
 "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
 "provider to have the missing function installed."
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max.
-#: lib/util.php:3338
+#: lib/util.php:3344
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3355
+#: lib/util.php:3361
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -6623,39 +6623,39 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3355
+#: lib/util.php:3361
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3644
+#: lib/util.php:3650
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:3673
+#: lib/util.php:3679
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3676
+#: lib/util.php:3682
 msgctxt "option comment"
 msgid "show these options"
 msgstr ""
 
-#: lib/util.php:3681
+#: lib/util.php:3687
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3684
+#: lib/util.php:3690
 msgctxt "option comment"
 msgid "show these rows"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name, and %3$s is the object ID.
-#: lib/util.php:4150
+#: lib/util.php:4156
 msgid "%1$s for %2$s ID %3$s"
 msgstr ""
 

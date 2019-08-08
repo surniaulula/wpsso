@@ -32,11 +32,11 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 		 */
 		public static function get_plugins() {
 
-			if ( self::$cache_plugins !== null ) {		// Common cache for get_plugins() and clear_plugins().
+			if ( null !== self::$cache_plugins ) {
 				return self::$cache_plugins;
 			}
 
-			self::$cache_plugins = array();
+			self::$cache_plugins = array();	// Default value.
 
 			if ( ! function_exists( 'get_plugins' ) ) {	// Load the WordPress library if necessary.
 
@@ -72,7 +72,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 
 		public static function clear_plugins_cache() {
 
-			self::$cache_plugins = null;	// Common cache for get_plugins() and clear_plugins().
+			self::$cache_plugins = null;
 		}
 
 		/**

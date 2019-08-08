@@ -1362,10 +1362,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function get_types_cache_exp() {
 
+			/**
+			 * Set and filter the cache expiration value only once.
+			 */
 			static $cache_exp_secs = null;
 
-			if ( ! isset( $cache_exp_secs ) ) {
-
+			if ( null === $cache_exp_secs ) {
 				$cache_md5_pre    = $this->p->lca . '_t_';
 				$cache_exp_filter = $this->p->cf[ 'wp' ][ 'transient' ][ $cache_md5_pre ][ 'filter' ];
 				$cache_opt_key    = $this->p->cf[ 'wp' ][ 'transient' ][ $cache_md5_pre ][ 'opt_key' ];
