@@ -538,7 +538,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			$this->p->util->maybe_set_ref( $sharing_url, $mod, __( 'adding open graph meta tags', 'wpsso' ) );
 
-			$mt_og = $this->p->og->get_array( $mod, $mt_og, $crawler_name );
+			$mt_og = $this->p->og->get_array( $mod, $mt_og = array(), $crawler_name );	// Pass an empty $mt_og array.
 
 			$this->p->util->maybe_unset_ref( $sharing_url );
 

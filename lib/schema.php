@@ -591,7 +591,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$sharing_url = $this->p->util->maybe_set_ref( null, $mod, __( 'adding schema', 'wpsso' ) );
 
-			$mt_og = $this->p->og->get_array( $mod, array() );
+			$mt_og = $this->p->og->get_array( $mod );
 
 			$json_data = $this->get_json_data( $mod, $mt_og, $page_type_id, $is_main = true );
 
