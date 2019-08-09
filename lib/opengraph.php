@@ -1563,7 +1563,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $mt_og;
 		}
 
-		public static function check_gtin_mt_value( &$mt_og, $prefix = 'product' ) {
+		/**
+		 * If we have a GTIN number, try to improve the assigned property name.
+		 * Pass $mt_og by reference to modify the array directly.
+		 * A similar method exists as WpssoSchema::check_gtin_prop_value().
+		 */
+		public static function check_gtin_mt_value( &$mt_og, $prefix = 'product' ) {	// Pass by reference is OK.
 
 			if ( ! empty( $mt_og[ $prefix . ':gtin' ] ) ) {
 

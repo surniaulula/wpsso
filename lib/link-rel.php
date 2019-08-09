@@ -38,7 +38,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 			}
 		}
 
-		public function get_array( array $mod, array &$mt_og, $crawler_name, $author_id, $sharing_url ) {
+		public function get_array( array $mod, array $mt_og, $crawler_name, $author_id, $sharing_url ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();

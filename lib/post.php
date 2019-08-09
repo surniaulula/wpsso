@@ -591,7 +591,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$mod = $this->get_mod( $post_id );
 
-				$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, true );	// $read_cache = true
+				$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, $read_cache = true );
 				$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
 			}
 
@@ -718,7 +718,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					/**
 					 * $read_cache is false to generate notices etc.
 					 */
-					WpssoWpMeta::$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, false );
+					WpssoWpMeta::$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, $read_cache = false );
 					WpssoWpMeta::$head_meta_info = $this->p->head->extract_head_info( $mod, WpssoWpMeta::$head_meta_tags );
 
 					if ( $mod[ 'post_status' ] === 'publish' ) {
@@ -1290,7 +1290,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * $read_cache is false to generate notices etc.
 			 */
-			WpssoWpMeta::$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, false );
+			WpssoWpMeta::$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, $read_cache = false );
 			WpssoWpMeta::$head_meta_info = $this->p->head->extract_head_info( $mod, WpssoWpMeta::$head_meta_tags );
 
 			if ( $mod[ 'post_status' ] === 'publish' ) {

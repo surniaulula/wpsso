@@ -69,7 +69,7 @@ if ( ! class_exists( 'WpssoNoScript' ) ) {
 			}
 		}
 
-		public function get_array( array $mod, array &$mt_og, $crawler_name ) {
+		public function get_array( array $mod, array $mt_og, $crawler_name ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();

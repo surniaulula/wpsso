@@ -320,10 +320,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		/**
 		 * Called by WpssoHead::get_head_array().
-		 *
-		 * $mt_og must be passed by reference to assign the schema:type internal meta tags.
+		 * Pass $mt_og by reference to assign values to the schema:type internal meta tags.
 		 */
-		public function get_array( array $mod, array &$mt_og, $crawler_name ) {
+		public function get_array( array $mod, array &$mt_og, $crawler_name ) {	// Pass by reference is OK.
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'build json array' );	// Begin timer for json array.
@@ -392,11 +391,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			/**
-			 * TODO: CONVERT WpssoSchemaGraph STATIC METHODS TO DYNAMIC, TO HAVE A UNIQUE CACHE PER $graph OBJECT.
-			 *
-			 * $graph = new WpssoSchemaGraph( $this->p );
+			 * Start a new @graph array.
 			 */
-			WpssoSchemaGraph::clean();	// Just in case.
+			WpssoSchemaGraph::clean_data();
 
 			foreach ( $page_type_ids as $type_id => $is_enabled ) {
 
@@ -487,6 +484,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
+			/**
+			 * Get the @graph json array and start a new @graph array.
+			 */
 			$graph_json     = WpssoSchemaGraph::get_json_clean();
 			$graph_type_url = WpssoSchemaGraph::get_type_url();
 			$filter_name    = $this->p->lca . '_json_prop_' . SucomUtil::sanitize_hookname( $graph_type_url );
@@ -1797,6 +1797,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Deprecated on 2019/04/18. 
 		 */
 		public static function add_single_event_data( &$json_data, array $mod, $event_id = false, $list_element = false ) {
+
 			return WpssoSchemaSingle::add_event_data( $json_data, $mod, $event_id, $list_element );
 		}
 
@@ -1804,6 +1805,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Deprecated on 2019/04/18. 
 		 */
 		public static function add_single_job_data( &$json_data, array $mod, $job_id = false, $list_element = false ) {
+
 			return WpssoSchemaSingle::add_job_data( $json_data, $mod, $job_id, $list_element );
 		}
 
@@ -1811,6 +1813,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Deprecated on 2019/04/18. 
 		 */
 		public static function get_single_offer_data( array $mod, array $mt_offer ) {
+
 			return WpssoSchemaSingle::get_offer_data( $mod, $mt_offer );
 		}
 
@@ -1818,6 +1821,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Deprecated on 2019/04/18. 
 		 */
 		public static function add_single_organization_data( &$json_data, $mod, $org_id = 'site', $logo_key = 'org_logo_url', $list_element = false ) {
+
 			return WpssoSchemaSingle::add_organization_data( $json_data, $mod, $org_id, $logo_key, $list_element );
 		}
 
@@ -1825,6 +1829,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Deprecated on 2019/04/18. 
 		 */
 		public static function add_single_person_data( &$json_data, $mod, $user_id, $list_element = true ) {
+
 			return WpssoSchemaSingle::add_person_data( $json_data, $mod, $user_id, $list_element );
 		}
 
@@ -1832,6 +1837,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Deprecated on 2019/04/18. 
 		 */
 		public static function add_single_place_data( &$json_data, $mod, $place_id = false, $list_element = false ) {
+
 			return WpssoSchemaSingle::add_place_data( $json_data, $mod, $place_id, $list_element );
 		}
 
@@ -2355,6 +2361,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		/**
 		 * If we have a GTIN number, try to improve the assigned property name.
+		 * Pass $json_data by reference to modify the array directly.
+		 * A similar method exists as WpssoOpenGraph::check_gtin_mt_value().
 		 */
 		public static function check_gtin_prop_value( &$json_data ) {
 

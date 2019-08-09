@@ -64,17 +64,17 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 			$json_data = self::get_json();
 			
-			self::clean();
+			self::clean_data();
 
 			return $json_data;
 		}
 
-		public static function clean() {
+		public static function clean_data() {
 			
 			self::$graph_data = array();
 		}
 
-		public static function optimize( array &$json_data ) {
+		public static function optimize( array &$json_data ) {	// Pass by reference is OK.
 
 			static $new_data  = array();
 			static $recursion = null;

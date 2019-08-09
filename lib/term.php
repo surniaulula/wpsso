@@ -517,7 +517,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				$mod = $this->get_mod( $term_id );
 
-				$head_meta_tags = $this->p->head->get_head_array( false, $mod, true );	// $read_cache = true
+				$head_meta_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache = true );
 				$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
 			}
 
@@ -588,7 +588,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				/**
 				 * $read_cache is false to generate notices etc.
 				 */
-				WpssoWpMeta::$head_meta_tags = $this->p->head->get_head_array( false, $mod, false );
+				WpssoWpMeta::$head_meta_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache = false );
 				WpssoWpMeta::$head_meta_info = $this->p->head->extract_head_info( $mod, WpssoWpMeta::$head_meta_tags );
 
 				/**

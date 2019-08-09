@@ -128,7 +128,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$mod        = $this->p->util->get_page_mod( $use_post );	// Get post/user/term id, module name, and module object reference.
 			$read_cache = true;
-			$mt_og      = array();
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'home url = ' . get_option( 'home' ) );
@@ -147,13 +146,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			if ( $add_head_html ) {
-				echo $this->get_head_html( $use_post, $mod, $read_cache, $mt_og );
+				echo $this->get_head_html( $use_post, $mod, $read_cache );
 			} else {
 				echo "\n" . '<!-- ' . $this->p->lca . ' head html is disabled -->' . "\n";
-			}
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'end of get_head_html' );
 			}
 		}
 
@@ -341,7 +336,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return $ret;
 		}
 
-		public function get_head_html( $use_post = false, $mod = false, $read_cache = true, array &$mt_og ) {
+		public function get_head_html( $use_post = false, $mod = false, $read_cache = true ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -368,7 +363,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$html = $this->get_mt_mark( 'begin' );
 
-			foreach ( $this->get_head_array( $use_post, $mod, $read_cache, $mt_og ) as $mt ) {
+			foreach ( $this->get_head_array( $use_post, $mod, $read_cache ) as $mt ) {
 
 				if ( ! empty( $mt[0] ) ) {
 
@@ -398,7 +393,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		/**
 		 * $read_cache is false when called by the post/term/user load_meta_page() method.
 		 */
-		public function get_head_array( $use_post = false, $mod = false, $read_cache = true, &$mt_og = array() ) {
+		public function get_head_array( $use_post = false, $mod = false, $read_cache = true ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'build head array' );	// Begin timer.

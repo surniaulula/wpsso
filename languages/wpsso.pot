@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 5.5.2-dev.2\n"
+"Project-Id-Version: WPSSO Core 5.5.2-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3059,25 +3059,25 @@ msgid ""
 "version of WooCommerce."
 msgstr ""
 
-#: lib/gettext-pro.php:155 lib/pro/ecom/woocommerce.php:941
+#: lib/gettext-pro.php:155 lib/pro/ecom/woocommerce.php:945
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
-#: lib/gettext-pro.php:156 lib/pro/ecom/woocommerce.php:944
+#: lib/gettext-pro.php:156 lib/pro/ecom/woocommerce.php:948
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/gettext-pro.php:157 lib/pro/ecom/woocommerce.php:1113
+#: lib/gettext-pro.php:157 lib/pro/ecom/woocommerce.php:1117
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/gettext-pro.php:158 lib/pro/ecom/woocommerce.php:1115
+#: lib/gettext-pro.php:158 lib/pro/ecom/woocommerce.php:1119
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:159 lib/pro/ecom/woocommerce.php:1118
+#: lib/gettext-pro.php:159 lib/pro/ecom/woocommerce.php:1122
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 
@@ -3243,27 +3243,27 @@ msgctxt "option value"
 msgid "%s Location"
 msgstr ""
 
-#: lib/head.php:544
+#: lib/head.php:539
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:558
+#: lib/head.php:553
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:567
+#: lib/head.php:562
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:576
+#: lib/head.php:571
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:585
+#: lib/head.php:580
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:594
+#: lib/head.php:589
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -4258,9 +4258,8 @@ msgstr ""
 
 #: lib/messages.php:1014
 msgid ""
-"After clearing all %1$s cache objects, %1$s can automatically re-create its "
-"post, term, and user cache objects from a background task (does not affect "
-"page load time)."
+"After clearing all caches, %1$s can automatically re-create the post, term, "
+"and user cache objects in a background task (does not affect page load time)."
 msgstr ""
 
 #: lib/messages.php:1020
@@ -5975,31 +5974,31 @@ msgstr ""
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
-#: lib/schema-single.php:787
+#: lib/schema-single.php:795
 msgid "adding schema offer"
 msgstr ""
 
-#: lib/schema-single.php:880
+#: lib/schema-single.php:888
 msgid "adding schema organization"
 msgstr ""
 
-#: lib/schema-single.php:922
+#: lib/schema-single.php:930
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema-single.php:929
+#: lib/schema-single.php:937
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema-single.php:1071
+#: lib/schema-single.php:1079
 msgid "adding schema for person user ID %1$s"
 msgstr ""
 
-#: lib/schema-single.php:1227
+#: lib/schema-single.php:1235
 msgid "adding schema place"
 msgstr ""
 
@@ -6655,7 +6654,7 @@ msgid "show these rows"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name, and %3$s is the object ID.
-#: lib/util.php:4158
+#: lib/util.php:4159
 msgid "%1$s for %2$s ID %3$s"
 msgstr ""
 

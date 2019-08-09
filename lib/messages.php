@@ -1011,7 +1011,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_clear_all_refresh':	// Auto-Refresh Cache After Clearing.
 
-							$text = sprintf( __( 'After clearing all %1$s cache objects, %1$s can automatically re-create its post, term, and user cache objects from a background task (does not affect page load time).', 'wpsso' ), $info[ 'short' ] );
+							$text = sprintf( __( 'After clearing all caches, %1$s can automatically re-create the post, term, and user cache objects in a background task (does not affect page load time).', 'wpsso' ), $info[ 'short' ] );
 
 							break;
 

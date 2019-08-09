@@ -24,7 +24,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 			}
 		}
 
-		public function get_array( array $mod, array &$mt_og, $crawler_name, $author_id ) {
+		public function get_array( array $mod, array $mt_og, $crawler_name, $author_id ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
