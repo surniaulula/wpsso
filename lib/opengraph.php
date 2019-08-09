@@ -441,7 +441,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 * Premium e-commerce modules, for example, to provide
 			 * product meta tags.
 			 */
-			$mt_og       = apply_filters( $this->p->lca . '_og_seed', $mt_og, $mod );
+			$mt_og       = apply_filters( $this->p->lca . '_og_seed', array(), $mod );
 			$has_pp      = $this->p->check->pp();
 			$max_nums    = $this->p->util->get_max_nums( $mod );
 			$post_id     = $mod[ 'is_post' ] ? $mod[ 'id' ] : false;
