@@ -24,7 +24,7 @@ if ( ! class_exists( 'WpssoWeibo' ) ) {
 			}
 		}
 
-		public function get_array( array $mod, array $mt_og, $crawler_name ) {
+		public function get_array( array $mod, array $mt_og = array(), $crawler_name = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();

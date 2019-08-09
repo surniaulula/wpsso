@@ -322,7 +322,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Called by WpssoHead::get_head_array().
 		 * Pass $mt_og by reference to assign values to the schema:type internal meta tags.
 		 */
-		public function get_array( array $mod, array &$mt_og, $crawler_name ) {	// Pass by reference is OK.
+		public function get_array( array $mod, array &$mt_og = array(), $crawler_name = false ) {	// Pass by reference is OK.
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'build json array' );	// Begin timer for json array.
