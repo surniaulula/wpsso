@@ -437,7 +437,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.5.2-dev.3 (2019/08/08)**
+**Version 5.5.2-dev.4 (2019/08/08)**
 
 * **New Features**
 	* None.
@@ -601,7 +601,7 @@ This version includes several jQuery improvements to optimize both the size of s
 
 == Upgrade Notice ==
 
-= 5.5.2-dev.3 =
+= 5.5.2-dev.4 =
 
 (2019/08/08) Fixed possible unrelated data in Schema @graph markup when the "Auto-Refresh Cache After Clearing" option is enabled.
 
