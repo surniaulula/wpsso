@@ -58,7 +58,8 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 			/**
 			 * Link rel shortlink.
 			 */
-			$add_link_rel_shortlink = empty( $this->p->options[ 'add_link_rel_shortlink' ] ) || is_404() || is_search() ? false : true;
+			$add_link_rel_shortlink = empty( $this->p->options[ 'add_link_rel_shortlink' ] ) ||
+				is_404() || is_search() ? false : true;
 
 			if ( $add_link_rel_shortlink ) {
 
@@ -76,14 +77,17 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 
 				if ( $mod[ 'is_post' ] ) {
 
-					$shortlink = SucomUtilWP::wp_get_shortlink( $mod[ 'id' ], 'post' );	// $context = post
+					$shortlink = SucomUtilWP::wp_get_shortlink( $mod[ 'id' ], $context = 'post' );
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'WordPress wp_get_shortlink() = ' . wp_get_shortlink( $mod[ 'id' ], 'post' ) );
 						$this->p->debug->log( 'SucomUtilWP::wp_get_shortlink() = ' . $shortlink );
 					}
 
-				} elseif ( ! empty( $mt_og[ 'og:url' ] ) ) {	// Just in case.
+				/**
+				 * Shortlinks are used by social sites, so use the sharing URL instead of the canonical URL.
+				 */
+				} elseif ( ! empty( $sharing_url ) ) {	// Just in case.
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'using ' . $this->p->lca . '_get_short_url filters to get shortlink' );
