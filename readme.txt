@@ -437,7 +437,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.5.2-dev.2 (2019/08/08)**
+**Version 5.5.2-dev.3 (2019/08/08)**
 
 * **New Features**
 	* None.
@@ -447,6 +447,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Refactored the WpssoSchemaGraph method and variable names.
+	* Changed most `$mod` and `$mt_og` pass-by-reference method argument variables to standard variables.
 
 **Version 5.5.1 (2019/08/07)**
 
@@ -600,7 +601,7 @@ This version includes several jQuery improvements to optimize both the size of s
 
 == Upgrade Notice ==
 
-= 5.5.2-dev.2 =
+= 5.5.2-dev.3 =
 
 (2019/08/08) Refactored the WpssoSchemaGraph method and variable names.
 
