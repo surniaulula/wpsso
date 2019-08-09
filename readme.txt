@@ -444,7 +444,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* Fixed possible unrelated data in Schema @graph markup when the "Auto-Refresh Cache After Clearing" option is enabled.
+	* Fixed unrelated post data in Schema @graph markup when the "Auto-Refresh Cache After Clearing" option is enabled.
 * **Developer Notes**
 	* Refactored the WpssoSchemaGraph method and variable names.
 	* Changed most `$mod` and `$mt_og` pass-by-reference method argument variables to standard variables.
@@ -603,7 +603,7 @@ This version includes several jQuery improvements to optimize both the size of s
 
 = 5.5.2-dev.4 =
 
-(2019/08/08) Fixed possible unrelated data in Schema @graph markup when the "Auto-Refresh Cache After Clearing" option is enabled.
+(2019/08/08) Fixed unrelated post data in Schema @graph markup when the "Auto-Refresh Cache After Clearing" option is enabled.
 
 = 5.5.1 =
 
