@@ -437,7 +437,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.5.2-b.1 (2019/08/09)**
+**Version 5.5.2-b.2 (2019/08/09)**
 
 * **New Features**
 	* None.
@@ -449,6 +449,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored the WpssoSchemaGraph method and variable names.
 	* Changed most `$mod` and `$mt_og` pass-by-reference method argument variables to standard variables.
 	* Removed the unnecessary `$mt_og` variable from the WpssoOpenGraph::get_array() method arguments.
+	* Changed the "required" input field CSS class name to "value_req".
 
 **Version 5.5.1 (2019/08/07)**
 
@@ -602,7 +603,7 @@ This version includes several jQuery improvements to optimize both the size of s
 
 == Upgrade Notice ==
 
-= 5.5.2-b.1 =
+= 5.5.2-b.2 =
 
 (2019/08/09) Fixed unrelated post data in Schema @graph markup when the "Auto-Refresh Cache After Clearing" option is enabled.
 
