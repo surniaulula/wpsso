@@ -6438,7 +6438,7 @@ msgstr ""
 
 #: lib/submenu/tools.php:87
 msgctxt "submit button"
-msgid "Delete Database Transients"
+msgid "Delete All Database Transients"
 msgstr ""
 
 #: lib/submenu/tools.php:88
