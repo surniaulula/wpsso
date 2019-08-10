@@ -442,7 +442,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added a new "Delete All Database Transients" button in the SSO &gt; Tools settings page.
 * **Bugfixes**
 	* Fixed unrelated post data in Schema @graph markup when the "Auto-Refresh Cache After Clearing" option is enabled.
 * **Developer Notes**
