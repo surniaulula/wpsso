@@ -152,7 +152,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'site-addons'   => 'Complementary Add-ons',
 							'site-licenses' => 'Licenses',
 							'site-setup'    => 'Setup Guide',
-							'site-tools'    => 'Tools',
 						),
 						'std' => array(
 							'admin' => array(
@@ -1747,7 +1746,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'setup'          => 'sos',
 					'site-setup'     => 'sos',
 					'tools'          => 'admin-tools',
-					'site-tools'     => 'admin-tools',
 				),
 			),
 			'notice' => array(

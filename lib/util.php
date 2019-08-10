@@ -17,8 +17,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 	class WpssoUtil extends SucomUtil {
 
-		protected $uniq_urls   = array();	// Array to detect duplicate images, etc.
-		protected $size_labels = array();	// Reference array for image size labels.
+		protected $event_buffer = 5;
+		protected $uniq_urls    = array();	// Array to detect duplicate images, etc.
+		protected $size_labels  = array();	// Reference array for image size labels.
 
 		protected $force_regen = array(
 			'cache'     => null,		// Cache for returned values.
@@ -1217,7 +1218,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$user_id = $this->maybe_change_user_id( $user_id );
 
-			wp_schedule_single_event( time(), $this->p->lca . '_add_user_roles', array( $user_id ) );
+			wp_schedule_single_event( time() + $this->event_buffer,
+				$this->p->lca . '_add_user_roles', array( $user_id ) );
 		}
 
 		public function add_user_roles( $user_id = null ) {
@@ -1288,7 +1290,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$user_id = $this->maybe_change_user_id( $user_id );
 
-			wp_schedule_single_event( time(), $this->p->lca . '_clear_all_cache', array( $user_id, $clear_other, $clear_short, $refresh_all ) );
+			wp_schedule_single_event( time() + $this->event_buffer,
+				$this->p->lca . '_clear_all_cache', array( $user_id, $clear_other, $clear_short, $refresh_all ) );
 		}
 
 		public function clear_all_cache( $user_id = null, $clear_other = false, $clear_short = null, $refresh_all = null ) {
@@ -1299,7 +1302,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			static $have_cleared = null;
 
-			if ( $have_cleared !== null ) {	// Already run once.
+			if ( null !== $have_cleared ) {	// Already run once.
 				return;
 			}
 
@@ -1348,7 +1351,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$this->stop_refresh_all_cache();	// Just in case.
 
-			$this->delete_all_db_transients( $clear_short );
+			$this->delete_all_db_transients( $clear_short, $transient_prefix = $this->p->lca . '_' );
 
 			$this->delete_all_cache_files();
 
@@ -1452,7 +1455,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$user_id = $this->maybe_change_user_id( $user_id );
 
-			wp_schedule_single_event( time(), $this->p->lca . '_refresh_all_cache', array( $user_id ) );
+			wp_schedule_single_event( time() + $this->event_buffer,
+				$this->p->lca . '_refresh_all_cache', array( $user_id ) );
 		}
 
 		public function stop_refresh_all_cache() {
@@ -1634,7 +1638,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$deleted_count = 0;
 
-			$transient_keys = $this->get_db_transient_keys( $only_expired = true );
+			$transient_keys = $this->get_db_transient_keys( $only_expired = true, $transient_prefix = $this->p->lca . '_' );
 
 			foreach( $transient_keys as $cache_id ) {
 				if ( delete_transient( $cache_id ) ) {
@@ -1651,34 +1655,36 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$deleted_count = 0;
-
-			$transient_keys = $this->get_db_transient_keys( $only_expired = false );
+			$deleted_count  = 0;
+			$transient_keys = $this->get_db_transient_keys( $only_expired = false, $transient_prefix );
 
 			foreach( $transient_keys as $cache_id ) {
 
-				/**
-				 * Preserve transients that begin with "wpsso_!_".
-				 */
-				if ( 0 === strpos( $cache_id, $this->p->lca . '_!_' ) ) {
-					continue;
-				}
+				if ( 0 === strpos( $transient_prefix, $this->p->lca ) ) {
 
-				/**
-				 * Maybe delete shortened urls.
-				 */
-				if ( ! $clear_short ) {							// If not clearing short URLs.
-					if ( 0 === strpos( $cache_id, $this->p->lca . '_s_' ) ) {	// This is a shortened URL.
-						continue;						// Get the next transient.
+					/**
+					 * Preserve transients that begin with "wpsso_!_".
+					 */
+					if ( 0 === strpos( $cache_id, $this->p->lca . '_!_' ) ) {
+						continue;
+					}
+
+					/**
+					 * Maybe delete shortened urls.
+					 */
+					if ( ! $clear_short ) {							// If not clearing short URLs.
+						if ( 0 === strpos( $cache_id, $this->p->lca . '_s_' ) ) {	// This is a shortened URL.
+							continue;						// Get the next transient.
+						}
 					}
 				}
 
 				/**
 				 * Maybe only clear a specific transient ID prefix.
 				 */
-				if ( $transient_prefix ) {						// We're only clearing a specific prefix.
-					if ( strpos( $cache_id, $transient_prefix ) !== 0 ) {		// The cache ID does not match that prefix.
-						continue;						// Get the next transient.
+				if ( $transient_prefix ) {					// We're only clearing a specific prefix.
+					if ( 0 !== strpos( $cache_id, $transient_prefix ) ) {	// The cache ID does not match that prefix.
+						continue;					// Get the next transient.
 					}
 				}
 
@@ -1698,22 +1704,18 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			global $wpdb;
 
-			if ( empty( $transient_prefix ) ) {
-				$transient_prefix = $this->p->lca . '_';
-			}
-
 			$db_query = 'SELECT CHAR_LENGTH( option_value ) / 1024 / 1024';
 			$db_query .= ', CHAR_LENGTH( option_value )';
 			$db_query .= ' FROM ' . $wpdb->options;
 			$db_query .= ' WHERE option_name LIKE \'_transient_' . $transient_prefix . '%\'';
 			$db_query .= ';';	// End of query.
 
-			$result  = $wpdb->get_col( $db_query );
+			$result = $wpdb->get_col( $db_query );
 
 			return number_format( array_sum( $result ), $decimals, $dec_point, $thousands_sep );
 		}
 
-		public function get_db_transient_keys( $only_expired = false ) {
+		public function get_db_transient_keys( $only_expired = false, $transient_prefix = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -1722,12 +1724,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			global $wpdb;
 
 			$transient_keys = array();
-			$transient_pre  = $only_expired ? '_transient_timeout_' : '_transient_';
-			$current_time   = isset ( $_SERVER[ 'REQUEST_TIME' ] ) ? (int) $_SERVER[ 'REQUEST_TIME' ] : time() ;
+			$row_prefix     = $only_expired ? '_transient_timeout_' : '_transient_';
+			$current_time   = isset( $_SERVER[ 'REQUEST_TIME' ] ) ? (int) $_SERVER[ 'REQUEST_TIME' ] : time() ;
 
 			$db_query = 'SELECT option_name';
 			$db_query .= ' FROM ' . $wpdb->options;
-			$db_query .= ' WHERE option_name LIKE \'' . $transient_pre . $this->p->lca . '_%\'';
+			$db_query .= ' WHERE option_name LIKE \'' . $row_prefix . $transient_prefix . '%\'';
 
 			if ( $only_expired ) {
 				$db_query .= ' AND option_value < ' . $current_time;	// Expiration time older than current time.
@@ -1741,7 +1743,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 * Remove '_transient_' or '_transient_timeout_' prefix from option name.
 			 */
 			foreach( $result as $option_name ) {
-				$transient_keys[] = str_replace( $transient_pre, '', $option_name );
+				$transient_keys[] = str_replace( $row_prefix, '', $option_name );
 			}
 
 			return $transient_keys;

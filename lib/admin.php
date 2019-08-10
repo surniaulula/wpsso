@@ -1053,6 +1053,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							break;
 
+						case 'delete_all_db_transients':
+
+							$deleted_count = $this->p->util->delete_all_db_transients( $clear_short = true, $transient_prefix = '' );
+
+							$this->p->notice->upd( sprintf( __( '%s database transients have been deleted.', 'wpsso' ), $deleted_count ) );
+
+							break;
+
 						case 'reset_user_metabox_layout':
 
 							$user_id   = get_current_user_id();

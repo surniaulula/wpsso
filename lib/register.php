@@ -252,7 +252,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			}
 
 			/**
-			 * Delete All Transients
+			 * Delete plugin transients.
 			 */
 			global $wpdb;
 
