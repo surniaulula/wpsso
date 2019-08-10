@@ -1724,12 +1724,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			global $wpdb;
 
 			$transient_keys = array();
-			$row_prefix     = $only_expired ? '_transient_timeout_' : '_transient_';
+			$opt_row_prefix = $only_expired ? '_transient_timeout_' : '_transient_';
 			$current_time   = isset( $_SERVER[ 'REQUEST_TIME' ] ) ? (int) $_SERVER[ 'REQUEST_TIME' ] : time() ;
 
 			$db_query = 'SELECT option_name';
 			$db_query .= ' FROM ' . $wpdb->options;
-			$db_query .= ' WHERE option_name LIKE \'' . $row_prefix . $transient_prefix . '%\'';
+			$db_query .= ' WHERE option_name LIKE \'' . $opt_row_prefix . $transient_prefix . '%\'';
 
 			if ( $only_expired ) {
 				$db_query .= ' AND option_value < ' . $current_time;	// Expiration time older than current time.
@@ -1743,7 +1743,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 * Remove '_transient_' or '_transient_timeout_' prefix from option name.
 			 */
 			foreach( $result as $option_name ) {
-				$transient_keys[] = str_replace( $row_prefix, '', $option_name );
+				$transient_keys[] = str_replace( $opt_row_prefix, '', $option_name );
 			}
 
 			return $transient_keys;
