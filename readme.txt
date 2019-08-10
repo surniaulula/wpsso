@@ -461,7 +461,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Simplified and optimized loading of admin library modules.
-	* Added a `$do_clean` argument to the WpssoSchemaGraph::get() method to clean cached data. 
 
 **Version 5.5.0 (2019/08/04)**
 
