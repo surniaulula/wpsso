@@ -14,37 +14,31 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 	class WpssoSchemaGraph {
 
 		private $p;
-		private $graph_context = 'https://schema.org';
-		private $graph_type    = 'graph';
-		private $graph_data    = array();
+		private static $graph_context = 'https://schema.org';
+		private static $graph_type    = 'graph';
+		private static $graph_data    = array();
 
-		public function __construct( &$plugin ) {
-
-			$this->p =& $plugin;
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
+		public function __construct() {
 		}
 
-		public function get_type_url() {
+		public static function get_type_url() {
 
-			return $this->graph_context . '/' . $this->graph_type;
+			return self::$graph_context . '/' . self::$graph_type;
 		}
 
-		public function add_data( $data ) {
+		public static function add_data( $data ) {
 
 			if ( empty( $data[ '@id' ] ) ) {
 
-				$this->graph_data[] = $data;
+				self::$graph_data[] = $data;
 
 				return true;
 
-			} elseif ( ! isset( $this->graph_data[ $data[ '@id' ] ] ) ) {
+			} elseif ( ! isset( self::$graph_data[ $data[ '@id' ] ] ) ) {
 
 				if ( count( $data ) > 1 ) {	// Ignore arrays with only an @id.
 
-					$this->graph_data[ $data[ '@id' ] ] = $data;
+					self::$graph_data[ $data[ '@id' ] ] = $data;
 
 					return true;
 				}
@@ -53,36 +47,37 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 			return false;
 		}
 
-		public function get_json() {
+		public static function get_json() {
 
 			$json_data = array(
-				'@context' => $this->graph_context,
-				'@graph'   => array_values( $this->graph_data ),	// Exclude the associative array key values.
+				'@context' => self::$graph_context,
+				'@graph'   => array_values( self::$graph_data ),	// Exclude the associative array key values.
 			);
 
 			return $json_data;
 		}
 
-		public function get_json_clean() {
+		public static function get_json_clean() {
 
-			$json_data = $this->get_json();
+			$json_data = self::get_json();
 			
-			$this->clean_data();
+			self::clean_data();
 
 			return $json_data;
 		}
 
-		public function clean_data() {
+		public static function clean_data() {
 			
-			$this->graph_data = array();
+			self::$graph_data = array();
 		}
 
-		public function optimize( array &$json_data ) {	// Pass by reference is OK.
+		public static function optimize( array &$json_data ) {	// Pass by reference is OK.
 
-			static $new_data  = array();
+			static $new_data = array();
+
 			static $recursion = null;
 
-			if ( isset( $json_data[ '@graph' ] ) ) {
+			if ( isset( $json_data[ '@graph' ] ) ) {	// Top level of json.
 				$recursion = 0;
 			} elseif ( null !== $recursion ) {
 				$recursion++;
@@ -96,14 +91,11 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 				if ( is_array( $val ) ) {
 
-					$this->optimize( $val );
+					self::optimize( $val );
 
-				/**
-				 * The first dimension is the @graph array, so only optimize the second dimension and up.
-				 */
 				} elseif ( $recursion > 2 && '@id' === $key && strpos( $val, '#id/' ) ) {
 
-					if ( count( $json_data ) > 1 ) {	// Ignore arrays with only an @id.
+					if ( count( $json_data ) > 1 ) {	// Ignore arrays with only an @id property.
 
 						if ( ! isset( $new_data[ $val ] ) ) {
 
@@ -111,7 +103,7 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 							foreach ( $new_data[ $val ] as $new_key => &$new_val ) {
 								if ( is_array( $new_val ) ) {
-									$this->optimize( $new_val );
+									self::optimize( $new_val );
 								}
 							}
 						}
@@ -123,7 +115,11 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 				}
 			}
 
-			if ( isset( $json_data[ '@graph' ] ) ) {
+			if ( isset( $json_data[ '@graph' ] ) ) {	// Top level of json.
+
+				$new_data = array();
+
+				$recursion = null;
 
 				$json_data[ '@graph' ] = array_merge( array_values( $new_data ), $json_data[ '@graph' ] );
 

@@ -1523,25 +1523,30 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				'user' => 0,
 			);
 
-			foreach ( $total_count as $name => &$count ) {
+			foreach ( $total_count as $obj_name => &$count ) {
 
 				/**
-				 * Note that PHP class names are not case sensitive, so we can 
-				 * use "wpssopost" here instead of "WpssoPost".
+				 * Note that PHP class names are not case
+				 * sensitive, so we can  use "wpssopost" here
+				 * instead of "WpssoPost".
 				 */
-				$object_ids = call_user_func( array( $this->p->lca . $name, 'get_public_ids' ) );	// Call static method.
+				$obj_ids = call_user_func( array( $this->p->lca . $obj_name, 'get_public_ids' ) );	// Call static method.
 
-				foreach ( $object_ids as $obj_id ) {
+				foreach ( $obj_ids as $obj_id ) {
 
-					if ( get_transient( $cache_id ) !== $cache_status ) {	// Check that we are allowed to continue.
-						break 2;	// Stop here.
+					/**
+					 * Check that we are allowed to continue.
+					 * Stop if cache status is not 'running'.
+					 */
+					if ( $cache_status !== get_transient( $cache_id ) ) {
+						break 2;
 					}
 
 					$count++;
 
-					$obj_mod = $this->p->$name->get_mod( $obj_id );
+					$mod = $this->p->$obj_name->get_mod( $obj_id );
 
-					$this->refresh_mod_head_meta( $obj_mod );
+					$this->refresh_mod_head_meta( $mod, $do_sleep = true );
 				}
 			}
 

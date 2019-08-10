@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoSchemaCache' ) ) {
 
 	class WpssoSchemaCache {
 
-		public function __construct( &$plugin ) {
+		public function __construct() {
 		}
 
 		public static function get_mod_json_data( array $mod ) {

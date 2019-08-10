@@ -393,7 +393,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Start a new @graph array.
 			 */
-			$graph = new WpssoSchemaGraph( $this->p );
+			WpssoSchemaGraph::clean_data();
 
 			foreach ( $page_type_ids as $type_id => $is_enabled ) {
 
@@ -476,7 +476,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							print_r( $single_json[ '@type' ], true ) );	// @type can be an array.
 					}
 
-					$graph->add_data( $single_json );
+					WpssoSchemaGraph::add_data( $single_json );
 				}
 
 				if ( $this->p->debug->enabled ) {
@@ -487,8 +487,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Get the @graph json array and start a new @graph array.
 			 */
-			$graph_json     = $graph->get_json_clean();
-			$graph_type_url = $graph->get_type_url();
+			$graph_json     = WpssoSchemaGraph::get_json_clean();
+			$graph_type_url = WpssoSchemaGraph::get_type_url();
 			$filter_name    = $this->p->lca . '_json_prop_' . SucomUtil::sanitize_hookname( $graph_type_url );
 
 			$graph_json = apply_filters( $filter_name, $graph_json, $mod, $mt_og, $page_type_id, $is_main );
@@ -496,7 +496,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! empty( $graph_json[ '@graph' ] ) ) {	// Just in case.
 
 				if ( ! SucomUtil::get_const( 'WPSSO_JSON_OPTIMIZE_DISABLE' ) ) {
-					$graph_json = $graph->optimize( $graph_json );
+					$graph_json = WpssoSchemaGraph::optimize( $graph_json );
 				}
 
 				$json_scripts[][] = '<script type="application/ld+json">' .
