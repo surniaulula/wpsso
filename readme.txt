@@ -437,7 +437,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.5.2-b.2 (2019/08/09)**
+**Version 5.5.2 (2019/08/10)**
 
 * **New Features**
 	* None.
@@ -603,11 +603,7 @@ This version includes several jQuery improvements to optimize both the size of s
 
 == Upgrade Notice ==
 
-= 5.5.2-b.2 =
+= 5.5.2 =
 
-(2019/08/09) Fixed unrelated post data in Schema @graph markup when the "Auto-Refresh Cache After Clearing" option is enabled.
-
-= 5.5.1 =
-
-(2019/08/07) Minor update for "fr_FR" translations. Simplified and optimized loading of admin library modules.
+(2019/08/10) Fixed unrelated post data in Schema @graph markup when the "Auto-Refresh Cache After Clearing" option is enabled.
 
