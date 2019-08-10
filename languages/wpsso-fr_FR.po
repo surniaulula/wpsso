@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 5.5.1\n"
+"Project-Id-Version: WPSSO Core 5.5.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-08-07 14:46-0700\n"
-"PO-Revision-Date: 2019-08-07 14:46-0700\n"
+"POT-Creation-Date: 2019-08-09 14:34-0700\n"
+"PO-Revision-Date: 2019-08-09 14:35-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -917,46 +917,46 @@ msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr "Util. par site"
 
-#: lib/admin.php:4032
+#: lib/admin.php:4034
 msgid "Return to %s"
 msgstr "Retour à %s"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:4063
+#: lib/admin.php:4065
 msgid "Plugin <strong>activated</strong>."
 msgstr "Extension <strong>activé</strong>."
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:4085
+#: lib/admin.php:4087
 msgid "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-ons</a> to check if newer versions are available."
 msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise à jour pour %2$s et ses ajouts</a> afin de vérifier si des versions plus récentes sont disponibles."
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:4092
+#: lib/admin.php:4094
 msgid "You may <a href=\"%1$s\">refresh the update information for WordPress (plugins, themes, and translations)</a> to check if newer versions are available."
 msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise à jour pour WordPress (extensions, thèmes et traductions)</a> afin de vérifier si des versions plus récentes sont disponibles."
 
-#: lib/admin.php:4229
+#: lib/admin.php:4231
 msgid "Please select a %1$s settings file to import."
 msgstr "Veuillez sélectionner un fichier de réglages %1$s à importer."
 
-#: lib/admin.php:4236
+#: lib/admin.php:4238
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr "Le fichier de réglages %1$s à importer doit être un type mime \"%2$s\"."
 
-#: lib/admin.php:4243
+#: lib/admin.php:4245
 msgid "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr "Le fichier de réglages %1$s dépasse le maximum autorisé de %2$d octets."
 
-#: lib/admin.php:4257
+#: lib/admin.php:4259
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr "Le fichier de réglages %1$s semble vide ou corrompu."
 
-#: lib/admin.php:4267
+#: lib/admin.php:4269
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr "Le fichier de réglages %1$s n'a pas pu être décodé dans un tableau de réglages."
 
-#: lib/admin.php:4277
+#: lib/admin.php:4279
 msgid "Import of plugin and add-on settings is complete."
 msgstr "L'importation des réglages d'extension et ajouts est terminée."
 
@@ -2454,7 +2454,7 @@ msgid "Refresh Short URLs on Clear Cache"
 msgstr "Rafraîchir URLs raccourcies lors du vidange de cache"
 
 #: lib/gettext-pro.php:54 lib/pro/admin/advanced.php:317
-#: lib/std/admin/advanced.php:320 lib/util.php:1426
+#: lib/std/admin/advanced.php:320 lib/util.php:1431
 msgctxt "option label"
 msgid "Auto-Refresh Cache After Clearing"
 msgstr "Auto-rafraîchir le cache après vider"
@@ -2508,14 +2508,14 @@ msgid "Bitly URL Shortener"
 msgstr "Raccourcisseur de lien Bitly"
 
 #: lib/gettext-pro.php:63 lib/gettext-pro.php:181
-#: lib/pro/admin/advanced.php:390 lib/pro/util/shorten.php:269
+#: lib/pro/admin/advanced.php:390 lib/pro/util/shorten.php:271
 #: lib/std/admin/advanced.php:396
 msgctxt "option label"
 msgid "Bitly Username"
 msgstr "Nom d'utilisateur Bitly"
 
 #: lib/gettext-pro.php:64 lib/gettext-pro.php:183
-#: lib/pro/admin/advanced.php:395 lib/pro/util/shorten.php:284
+#: lib/pro/admin/advanced.php:395 lib/pro/util/shorten.php:286
 #: lib/std/admin/advanced.php:401
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
@@ -2546,7 +2546,7 @@ msgid "DLMY.App URL Shortener"
 msgstr "Raccourcisseur de lien DLMY.App"
 
 #: lib/gettext-pro.php:69 lib/gettext-pro.php:186
-#: lib/pro/admin/advanced.php:416 lib/pro/util/shorten.php:313
+#: lib/pro/admin/advanced.php:416 lib/pro/util/shorten.php:315
 #: lib/std/admin/advanced.php:422
 msgctxt "option label"
 msgid "DLMY.App API Key"
@@ -2559,7 +2559,7 @@ msgid "Ow.ly URL Shortener"
 msgstr "Raccourcisseur de lien Ow.ly"
 
 #: lib/gettext-pro.php:71 lib/gettext-pro.php:188
-#: lib/pro/admin/advanced.php:426 lib/pro/util/shorten.php:336
+#: lib/pro/admin/advanced.php:426 lib/pro/util/shorten.php:338
 #: lib/std/admin/advanced.php:432
 msgctxt "option label"
 msgid "Ow.ly API Key"
@@ -2572,7 +2572,7 @@ msgid "Your Own URL Shortener (YOURLS)"
 msgstr "Your Own URL Shortener (YOURLS)"
 
 #: lib/gettext-pro.php:73 lib/gettext-pro.php:190
-#: lib/pro/admin/advanced.php:436 lib/pro/util/shorten.php:384
+#: lib/pro/admin/advanced.php:436 lib/pro/util/shorten.php:386
 #: lib/std/admin/advanced.php:442
 msgctxt "option label"
 msgid "YOURLS API URL"
@@ -2955,23 +2955,23 @@ msgstr "La valeur de l'option \"%1$s\" de WooCommerce est vide."
 msgid "The WooCommerce %s method is not available - please update to a newer version of WooCommerce."
 msgstr "La méthode WooCommerce %s n'est pas disponible - veuillez mettre à jour WooCommerce vers une version plus récente."
 
-#: lib/gettext-pro.php:155 lib/pro/ecom/woocommerce.php:941
+#: lib/gettext-pro.php:155 lib/pro/ecom/woocommerce.php:945
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr "\"%s\" est une condition de produit Schéma inconnue."
 
-#: lib/gettext-pro.php:156 lib/pro/ecom/woocommerce.php:944
+#: lib/gettext-pro.php:156 lib/pro/ecom/woocommerce.php:948
 msgid "Valid item condition values are (case is important): %s."
 msgstr "Les valeurs de condition d'élément valides sont (les majuscules et minuscules sont importants): %s."
 
-#: lib/gettext-pro.php:157 lib/pro/ecom/woocommerce.php:1113
+#: lib/gettext-pro.php:157 lib/pro/ecom/woocommerce.php:1117
 msgid "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax.html"
 msgstr "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax.html"
 
-#: lib/gettext-pro.php:158 lib/pro/ecom/woocommerce.php:1115
+#: lib/gettext-pro.php:158 lib/pro/ecom/woocommerce.php:1119
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr "La <a href=\"%1$s\">fonction WooCommerce %2$s</a> n'est pas disponible."
 
-#: lib/gettext-pro.php:159 lib/pro/ecom/woocommerce.php:1118
+#: lib/gettext-pro.php:159 lib/pro/ecom/woocommerce.php:1122
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr "SVP mettre à jour votre site à WooCommerce version %s ou mieux."
 
@@ -3030,27 +3030,27 @@ msgstr "La page de profil du membre BuddyPress n'inclut pas le texte <em>À prop
 msgid "No Description"
 msgstr "Aucune description"
 
-#: lib/gettext-pro.php:179 lib/pro/util/shorten.php:249
+#: lib/gettext-pro.php:179 lib/pro/util/shorten.php:251
 msgid "The URL shortening library file \"%s\" is missing and required."
 msgstr "Le fichier de bibliothèque \"%s\" pour le raccourcissement URL est manquant et requis."
 
 #: lib/gettext-pro.php:180 lib/gettext-pro.php:185 lib/gettext-pro.php:187
-#: lib/gettext-pro.php:189 lib/pro/util/shorten.php:268
-#: lib/pro/util/shorten.php:312 lib/pro/util/shorten.php:335
-#: lib/pro/util/shorten.php:383
+#: lib/gettext-pro.php:189 lib/pro/util/shorten.php:270
+#: lib/pro/util/shorten.php:314 lib/pro/util/shorten.php:337
+#: lib/pro/util/shorten.php:385
 msgid "The \"%s\" option value is empty and required."
 msgstr "La valeur de l'option \"%s\" est vide et requise."
 
-#: lib/gettext-pro.php:182 lib/pro/util/shorten.php:280
+#: lib/gettext-pro.php:182 lib/pro/util/shorten.php:282
 msgid "The \"%1$s\" and \"%2$s\" option values are empty &mdash; at least one option value is required."
 msgstr "Les valeurs d'options \"%1$s\" et \"%2$s\" sont vides &mdash; au moins une valeur d'option est nécessaire."
 
-#: lib/gettext-pro.php:184 lib/pro/util/shorten.php:285
+#: lib/gettext-pro.php:184 lib/pro/util/shorten.php:287
 msgctxt "option label"
 msgid "Bitly API Key"
 msgstr "Clé d'API pour Bitly"
 
-#: lib/gettext-pro.php:191 lib/pro/util/shorten.php:427
+#: lib/gettext-pro.php:191 lib/pro/util/shorten.php:429
 msgid "Incomplete and/or missing API credentials for the \"%s\" URL shortening service."
 msgstr "Identifiants d'API incomplet et/ou manquant pour le service de raccourcissement d'URL \"%s\"."
 
@@ -3117,27 +3117,27 @@ msgctxt "option value"
 msgid "%s Location"
 msgstr "Lieu de %s"
 
-#: lib/head.php:542
+#: lib/head.php:539
 msgid "adding open graph meta tags"
 msgstr "ajout de balises méta open graph"
 
-#: lib/head.php:556
+#: lib/head.php:553
 msgid "adding twitter card meta tags"
 msgstr "ajout de balises méta carte twitter"
 
-#: lib/head.php:565
+#: lib/head.php:562
 msgid "adding meta name meta tags"
 msgstr "ajout de balises nom de méta"
 
-#: lib/head.php:574
+#: lib/head.php:571
 msgid "adding link relation tags"
 msgstr "ajout de balises de relation de lien"
 
-#: lib/head.php:583
+#: lib/head.php:580
 msgid "adding schema meta tags"
 msgstr "ajout de balises méta de schéma"
 
-#: lib/head.php:592
+#: lib/head.php:589
 msgid "adding schema json-ld markup"
 msgstr "ajout de balisage schéma json-ld"
 
@@ -3157,7 +3157,7 @@ msgstr "Classe de  bibliothèque \"%s\" manquante."
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
 #: lib/loader.php:184 lib/loader.php:210 lib/post.php:494 lib/register.php:312
-#: lib/term.php:433 lib/user.php:396 lib/util.php:486 lib/util.php:3363
+#: lib/term.php:433 lib/user.php:396 lib/util.php:489 lib/util.php:3371
 msgid "%s warning:"
 msgstr "Alerte %s:"
 
@@ -3846,8 +3846,8 @@ msgid "Shortened URLs are cached for %1$s seconds (%2$s) to minimize external se
 msgstr "Les URL raccourcies sont mises en cache pendant %1$s secondes (%2$s) pour minimiser les appels d'API de services externes. La mise à jour immédiate de toutes les URL raccourcies peut dépasser les limites d'appel API imposées par votre fournisseur de service de raccourcissement."
 
 #: lib/messages.php:1014
-msgid "After clearing all %1$s cache objects, %1$s can automatically re-create its post, term, and user cache objects from a background task (does not affect page load time)."
-msgstr "Après avoir vidé tous les objets de cache, %1$s peut automatiquement recréer ces objets de cache d'article, de terme et d'utilisateur à partir d'une tâche en arrière-plan (n'affecte pas le temps de chargement de la page)."
+msgid "After clearing all caches, %1$s can automatically re-create the post, term, and user cache objects in a background task (does not affect page load time)."
+msgstr "Après avoir vidé tous les caches, %1$s peut automatiquement recréer ces objets de cache d'article, de terme et d'utilisateur à partir d'une tâche en arrière-plan (n'affecte pas le temps de chargement de la page)."
 
 #: lib/messages.php:1020
 msgid "When a published post, page, or custom post type is updated, automatically clear the cache of its selected terms (categories, tags, etc.)."
@@ -5006,8 +5006,8 @@ msgstr "Aucune description."
 
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
-#: lib/post.php:480 lib/term.php:419 lib/user.php:382 lib/util.php:472
-#: lib/util.php:3335
+#: lib/post.php:480 lib/term.php:419 lib/user.php:382 lib/util.php:475
+#: lib/util.php:3343
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr "supérieur au max recommandé de %1$0.3f secs"
 
@@ -5052,7 +5052,7 @@ msgstr "SVP envisager d'améliorer la vitesse de votre site."
 msgid "As an added benefit, a faster site will also improve ranking in search results."
 msgstr "Comme avantage supplémentaire, un site plus rapide améliore également le classement dans les résultats de recherche."
 
-#: lib/post.php:992 lib/util.php:1930
+#: lib/post.php:992 lib/util.php:1938
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr "Erreur en récupérant le la page Web <a href=\"%1$s\">%1$s</a>."
 
@@ -5208,41 +5208,41 @@ msgstr "%1$s nécessite %2$s version %3$s ou supérieure et a été désactivé.
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr "SVP mettre à jour %1$s avant d'essayer de réactiver l'extension %2$s."
 
-#: lib/schema-single.php:787
+#: lib/schema-single.php:795
 msgid "adding schema offer"
 msgstr "ajout de schéma offre"
 
-#: lib/schema-single.php:880
+#: lib/schema-single.php:888
 msgid "adding schema organization"
 msgstr "ajout de schéma organisation"
 
-#: lib/schema-single.php:922
+#: lib/schema-single.php:930
 msgid "The \"%1$s\" Organization Logo image is missing and required for the Schema %2$s markup."
 msgstr "L'image logo de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema-single.php:929
+#: lib/schema-single.php:937
 msgid "The \"%1$s\" Organization Banner (600x60px) image is missing and required for the Schema %2$s markup."
 msgstr "L'image bannière (600x60px) de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema-single.php:1071
+#: lib/schema-single.php:1079
 msgid "adding schema for person user ID %1$s"
 msgstr "ajout de schéma de personne pour l'ID d'utilisateur %1$s"
 
-#: lib/schema-single.php:1227
+#: lib/schema-single.php:1235
 msgid "adding schema place"
 msgstr "ajout de schéma place"
 
-#: lib/schema.php:51
+#: lib/schema.php:55
 msgctxt "image size label"
 msgid "Schema Image"
 msgstr "Image Schéma"
 
-#: lib/schema.php:56
+#: lib/schema.php:60
 msgctxt "image size label"
 msgid "Schema Article Image"
 msgstr "Image Schéma d'article"
 
-#: lib/schema.php:585
+#: lib/schema.php:591
 msgid "adding schema"
 msgstr "ajout de schéma"
 
@@ -5761,103 +5761,103 @@ msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages pour l'usager ID %1$s."
 
 #. translators: %1$0.3f is a number of seconds, %2$s is an image URL, %3$s is a recommended max.
-#: lib/util.php:475
+#: lib/util.php:478
 msgid "Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s (%3$s)."
 msgstr "Fonction PHP lente détectée - getimagesize() a pris %1$0.3f secs pour %2$s (%3$s)."
 
-#: lib/util.php:1354
+#: lib/util.php:1359
 msgid "%s cached files, transient cache, column meta, and the WordPress object cache have been cleared."
 msgstr "Les fichiers en cache, le cache transitoire, le méta de colonnes %s, et le cache d'objets WordPress ont été vidés."
 
-#: lib/util.php:1359
+#: lib/util.php:1364
 msgid "The cache for %s has also been cleared."
 msgstr "Le cache pour %s a été vidé aussi."
 
-#: lib/util.php:1411 lib/util.php:1545
+#: lib/util.php:1416 lib/util.php:1550
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr "Le temps d'exécution total pour cette tâche était %0.3f secondes."
 
-#: lib/util.php:1417
+#: lib/util.php:1422
 msgid "A background task will begin shortly to refresh the post, term, and user cache objects."
 msgstr "Une tâche d'arrière-plan commencera sous peu pour recréer les objets de cache d'articles, de termes et d'utilisateurs."
 
-#: lib/util.php:1428
+#: lib/util.php:1433
 msgid "Cache objects will be re-created as they are needed (%s is disabled)."
 msgstr "Les objets de cache seront recréés à mesure qu'ils sont requis (%s est désactivée)."
 
-#: lib/util.php:1539
+#: lib/util.php:1544
 msgid "The meta tag and Schema markup caches for %1$d posts, %2$d terms, and %3$d users have been refreshed."
 msgstr "Les caches de balisage méta et balisage de Schema pour %1$d articles, %2$d termes, et %3$d utilisateurs ont été rafraîchies."
 
-#: lib/util.php:1761
+#: lib/util.php:1766
 msgid "Failed to open the cache folder %s for reading."
 msgstr "Impossible d'ouvrir le dossier de cache %s pour lecture."
 
-#: lib/util.php:1788
+#: lib/util.php:1793
 msgid "Failed to remove the cache file %s."
 msgstr "Impossible de supprimer le dossier de cache %s."
 
-#: lib/util.php:1847
+#: lib/util.php:1855
 msgid "Error reading %s article topic list file."
 msgstr "Erreur de lecture du fichier de la liste des rubriques d'article %s."
 
-#: lib/util.php:1917
+#: lib/util.php:1925
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr "L'argument de demande à %1$s n'est pas du HTML ou un URL valide."
 
-#: lib/util.php:1943
+#: lib/util.php:1951
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr "La page Web récupéré de <a href=\"%1$s\">%1$s</a> est vide."
 
 #. translators: %1$s is the class name.
-#: lib/util.php:2137
+#: lib/util.php:2145
 msgid "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting provider to have the missing class installed."
 msgstr "La classe PHP <code>%1$s</code> est manquante &ndash; contactez votre fournisseur d’hébergement pour installer la classe manquante."
 
 #. translators: %1$s is the function name.
-#: lib/util.php:2150
+#: lib/util.php:2158
 msgid "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting provider to have the missing function installed."
 msgstr "La fonction PHP <code>%1$s</code> est manquante &ndash; contactez votre fournisseur d’hébergement pour installer la fonction manquante."
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max.
-#: lib/util.php:3338
+#: lib/util.php:3346
 msgid "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the \"%2$s\" filter (%3$s)."
 msgstr "Crochet(s) de filtre lent détecté - WordPress a pris %1$0.3f secs pour exécuter le filtre \"%2$s\" (%3$s)."
 
-#: lib/util.php:3355
+#: lib/util.php:3363
 msgid "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f seconds to execute. This is longer than the recommended maximum of %3$0.3f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr "Crochet(s) de filtre lent détecté &mdash le filtre WordPress %1$s a pris %2$0.3f secondes pour exécuter. Ceci est plus long que le maximum recommandé de %3$0.3f secondes et peut affecter le temps de chargement de la page. S'il vous plaît, envisagez d'examiner les fonctions d'extensions de tiers partie et de thème accrochées au filtre WordPress %1$s pour du code PHP lent et/ou sous-optimal."
 
-#: lib/util.php:3355
+#: lib/util.php:3363
 msgid "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance."
 msgstr "Si vous activez l'extension %1$s et effacez le cache de %2$s (pour ré-appliquer le filtre), vous obtiendrez peut-être plus d'informations sur les crochets spécifiques ou le code PHP affectant les performances."
 
-#: lib/util.php:3644
+#: lib/util.php:3652
 msgid "No options available."
 msgstr "Aucune options disponibles."
 
-#: lib/util.php:3673
+#: lib/util.php:3681
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr "%1$d options supplémentaires ne figurent pas dans la vue \"%2$s\""
 
-#: lib/util.php:3676
+#: lib/util.php:3684
 msgctxt "option comment"
 msgid "show these options"
 msgstr "afficher ces options"
 
-#: lib/util.php:3681
+#: lib/util.php:3689
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue \"%2$s\""
 
-#: lib/util.php:3684
+#: lib/util.php:3692
 msgctxt "option comment"
 msgid "show these rows"
 msgstr "afficher ces lignes"
 
 #. translators: %1$s is an action message, %2$s is the module or post type name, and %3$s is the object ID.
-#: lib/util.php:4150
+#: lib/util.php:4159
 msgid "%1$s for %2$s ID %3$s"
 msgstr "%1$s pour %2$s ID %3$s"
 
