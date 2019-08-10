@@ -40,6 +40,7 @@ WPSSO_HEAD_PRIORITY                      = 10
 WPSSO_IMAGE_UPSCALE_ALL                  = false
 WPSSO_IMAGE_UPSCALE_TEST                 = false
 WPSSO_INIT_PRIORITY                      = 12
+WPSSO_JSON_OPTIMIZE_DISABLE              = false
 WPSSO_JSON_PRETTY_PRINT                  = false
 WPSSO_MENU_ORDER                         = 99.11
 WPSSO_META_CACHE_PRIORITY                = 8

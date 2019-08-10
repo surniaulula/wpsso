@@ -393,7 +393,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Start a new @graph array.
 			 */
-			WpssoSchemaGraph::clean_data();
+			$graph = new WpssoSchemaGraph( $this->p );
 
 			foreach ( $page_type_ids as $type_id => $is_enabled ) {
 
@@ -431,13 +431,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$this->p->debug->log( 'schema main entity is ' . ( $is_main ? 'true' : 'false' ) . ' for ' . $type_id );
 				}
 
-				$graph_data = $this->get_json_data( $mod, $mt_og, $type_id, $is_main );
+				$json_data = $this->get_json_data( $mod, $mt_og, $type_id, $is_main );
 
 				/**
-				 * The $graph_data array will almost always be a single associative array,
+				 * The $json_data array will almost always be a single associative array,
 				 * but the breadcrumblist filter may return an array of associative arrays.
 				 */
-				if ( isset( $graph_data[ 0 ] ) && ! SucomUtil::is_assoc( $graph_data ) ) {	// Multiple json arrays returned.
+				if ( isset( $json_data[ 0 ] ) && ! SucomUtil::is_assoc( $json_data ) ) {	// Multiple json arrays returned.
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'multiple json data arrays returned' );
@@ -449,34 +449,34 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$this->p->debug->log( 'single json data array returned' );
 					}
 
-					$graph_data = array( $graph_data );	// Single json script returned.
+					$json_data = array( $json_data );	// Single json script returned.
 				}
 
 				/**
 				 * Add the json data to the @graph array.
 				 */
-				foreach ( $graph_data as $json_data ) {
+				foreach ( $json_data as $single_json ) {
 
-					if ( empty( $json_data ) || ! is_array( $json_data ) ) {	// Just in case.
+					if ( empty( $single_json ) || ! is_array( $single_json ) ) {	// Just in case.
 						continue;
 					}
 
-					if ( empty( $json_data[ '@type' ] ) ) {
+					if ( empty( $single_json[ '@type' ] ) ) {
 
 						$type_url = $this->get_schema_type_url( $type_id );
 
-						$json_data = self::get_schema_type_context( $type_url, $json_data );
+						$single_json = self::get_schema_type_context( $type_url, $single_json );
 
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'added @type property is ' . $json_data[ '@type' ] );
+							$this->p->debug->log( 'added @type property is ' . $single_json[ '@type' ] );
 						}
 
 					} elseif ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'existing @type property is ' .
-							print_r( $json_data[ '@type' ], true ) );	// @type can be an array.
+							print_r( $single_json[ '@type' ], true ) );	// @type can be an array.
 					}
 
-					WpssoSchemaGraph::add_data( $json_data );
+					$graph->add_data( $single_json );
 				}
 
 				if ( $this->p->debug->enabled ) {
@@ -487,19 +487,23 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Get the @graph json array and start a new @graph array.
 			 */
-			$graph_json     = WpssoSchemaGraph::get_json_clean();
-			$graph_type_url = WpssoSchemaGraph::get_type_url();
+			$graph_json     = $graph->get_json_clean();
+			$graph_type_url = $graph->get_type_url();
 			$filter_name    = $this->p->lca . '_json_prop_' . SucomUtil::sanitize_hookname( $graph_type_url );
 
 			$graph_json = apply_filters( $filter_name, $graph_json, $mod, $mt_og, $page_type_id, $is_main );
 
 			if ( ! empty( $graph_json[ '@graph' ] ) ) {	// Just in case.
 
-				$graph_json = WpssoSchemaGraph::optimize( $graph_json );
+				if ( ! SucomUtil::get_const( 'WPSSO_JSON_OPTIMIZE_DISABLE' ) ) {
+					$graph_json = $graph->optimize( $graph_json );
+				}
 
 				$json_scripts[][] = '<script type="application/ld+json">' .
 					$this->p->util->json_format( $graph_json ) . '</script>' . "\n";
 			}
+
+			unset( $graph );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'build json array' );	// End timer for json array.
