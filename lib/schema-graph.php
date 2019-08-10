@@ -42,9 +42,12 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 			} elseif ( ! isset( self::$graph_data[ $data[ '@id' ] ] ) ) {
 
-				self::$graph_data[ $data[ '@id' ] ] = $data;
+				if ( count( $data ) > 1 ) {	// Ignore arrays with only an @id.
 
-				return true;
+					self::$graph_data[ $data[ '@id' ] ] = $data;
+
+					return true;
+				}
 			}
 
 			return false;
