@@ -664,6 +664,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			return 1;	// Return count of jobs added.
 		}
 
+		/**
+		 * Note that $mt_offer could be the $mt_og array with minimal product meta tags.
+		 */
 		public static function get_offer_data( array $mod, array $mt_offer ) {
 
 			$wpsso =& Wpsso::get_instance();
@@ -675,6 +678,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$size_name = $wpsso->lca . '-schema';
 
 			/**
+			 * Note that 'og:url' may be provided instead of 'product:url'.
 			 * Note that there is no Schema 'ean' property for the 'product:ean' value.
 			 * Note that there is no Schema 'size' property for the 'product:size' value.
 			 */
@@ -696,6 +700,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'priceCurrency'   => 'product:price:currency',
 				'priceValidUntil' => 'product:sale_price_dates:end',
 			) );
+
+			/**
+			 * Fallback to the 'og:url' value, if one is available.
+			 */
+			if ( empty( $offer[ 'url' ] ) && ! empty( $mt_offer[ 'og:url' ] ) ) {
+				$offer[ 'url' ] = $mt_offer[ 'og:url' ];
+			}
 
 			if ( false === $offer ) {	// Just in case.
 

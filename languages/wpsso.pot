@@ -5978,31 +5978,31 @@ msgstr ""
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
-#: lib/schema-single.php:787
+#: lib/schema-single.php:798
 msgid "adding schema offer"
 msgstr ""
 
-#: lib/schema-single.php:880
+#: lib/schema-single.php:891
 msgid "adding schema organization"
 msgstr ""
 
-#: lib/schema-single.php:922
+#: lib/schema-single.php:933
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema-single.php:929
+#: lib/schema-single.php:940
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema-single.php:1071
+#: lib/schema-single.php:1082
 msgid "adding schema for person user ID %1$s"
 msgstr ""
 
-#: lib/schema-single.php:1227
+#: lib/schema-single.php:1238
 msgid "adding schema place"
 msgstr ""
 

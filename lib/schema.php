@@ -2347,7 +2347,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			foreach ( $names as $prop_name => $key_name ) {
 
-				if ( isset( $assoc[ $key_name ] ) && ! in_array( $assoc[ $key_name ], $exclude, true ) ) {	// $strict is true.
+				if ( isset( $assoc[ $key_name ] ) && ! in_array( $assoc[ $key_name ], $exclude, $strict = true ) ) {
 
 					$json_data[ $prop_name ] = $assoc[ $key_name ];
 
@@ -2357,6 +2357,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 				}
 			}
+
 			return empty( $json_data ) ? false : $json_data;
 		}
 
