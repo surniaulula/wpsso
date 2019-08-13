@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '5.5.2.1',	// Plugin version.
-					'opt_version' => '656',		// Increment when changing default option values.
+					'version'     => '5.5.3-dev.1',	// Plugin version.
+					'opt_version' => '657',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'WPSSO Core makes sure your content looks great on all social and search sites - no matter how URLs are crawled, shared, re-shared, posted, or embedded!',
@@ -911,7 +911,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_img_crop_y'                => 'center',
 					'og_img_max'                   => 1,
 					'og_vid_max'                   => 1,
-					'og_vid_https'                 => 1,
 					'og_vid_autoplay'              => 1,
 					'og_vid_prev_img'              => 1,
 					'og_def_img_id'                => '',			// Default / Fallback Image ID

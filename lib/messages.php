@@ -578,12 +578,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-og_vid_https':		// Use HTTPS for Video API Requests.
-
-							$text = 'Use an HTTPS connection whenever possible to retrieve information about videos from YouTube, Vimeo, Wistia, etc. (default is checked).';
-
-							break;
-
 						case 'tooltip-og_vid_prev_img':		// Include Video Preview Images.
 
 							$text = 'Include video preview images in the webpage meta tags (default is unchecked). When video preview images are enabled and available, they are included before any custom, featured, attached, etc. images.';

@@ -87,8 +87,6 @@ _x( 'recommended', 'option comment', 'wpsso' );
 _x( 'Allow Upscale of Media Library Images', 'option label', 'wpsso' );
 _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' );
 _x( 'Maximum Videos to Include', 'option label', 'wpsso' );
-_x( 'Use HTTPS for Video API Requests', 'option label', 'wpsso' );
-_x( 'uses %s', 'option comment', 'wpsso' );
 _x( 'Include Video Preview Images', 'option label', 'wpsso' );
 _x( 'video preview images are included first', 'option comment', 'wpsso' );
 _x( 'Force Autoplay when Possible', 'option label', 'wpsso' );

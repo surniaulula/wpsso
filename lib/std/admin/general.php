@@ -83,11 +83,6 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 			$form->get_th_html( _x( 'Maximum Videos to Include', 'option label', 'wpsso' ), null, 'og_vid_max' ) . 
 			'<td class="blank">' . $form->options[ 'og_vid_max' ] . '</td>';
 
-			$table_rows[ 'og_vid_https' ] = $form->get_tr_hide( 'basic', 'og_vid_https' ) . 
-			$form->get_th_html( _x( 'Use HTTPS for Video API Requests', 'option label', 'wpsso' ), null, 'og_vid_https' ) . 
-			'<td class="blank"><input type="checkbox" disabled="disabled" /> <em>' . sprintf( _x( 'uses %s', 'option comment', 'wpsso' ),
-				str_replace( WPSSO_PLUGINDIR, WPSSO_PLUGINSLUG . '/', WPSSO_PHP_CURL_CAINFO ) ) . '</em></td>';
-
 			$table_rows[ 'og_vid_prev_img' ] = '' . 
 			$form->get_th_html( _x( 'Include Video Preview Images', 'option label', 'wpsso' ), null, 'og_vid_prev_img' ) . 
 			'<td class="blank"><input type="checkbox" disabled="disabled" />  <em>' . _x( 'video preview images are included first',

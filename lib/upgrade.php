@@ -235,6 +235,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				654 => array(
 					'plugin_json_data_cache_exp' => '',
 				),
+				656 => array(
+					'og_vid_https' => '',
+				),
 			),
 		);
 
