@@ -73,8 +73,7 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 		public static function optimize( array &$json_data ) {	// Pass by reference is OK.
 
-			static $new_data = array();
-
+			static $new_data  = array();
 			static $recursion = null;
 
 			if ( isset( $json_data[ '@graph' ] ) ) {	// Top level of json.
@@ -117,11 +116,13 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 			if ( isset( $json_data[ '@graph' ] ) ) {	// Top level of json.
 
-				$new_data = array();
-
-				$recursion = null;
-
 				$json_data[ '@graph' ] = array_merge( array_values( $new_data ), $json_data[ '@graph' ] );
+
+				/**
+				 * Reset the static variables after saving/merging the new data.
+				 */
+				$new_data  = array();
+				$recursion = null;
 
 				return $json_data;
 
