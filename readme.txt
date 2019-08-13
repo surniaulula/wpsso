@@ -437,14 +437,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.5.3-dev.1 (TBD)**
+**Version 5.5.3 (2019/08/13)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Removed the "Use HTTPS for Video API Requests" option (HTTPS is now used for every API request).
 * **Bugfixes**
-	* None.
+	* Fixed a variable reset issue in WpssoSchemaGraph::optimize() that would remove optimized JSON blocks.
 * **Developer Notes**
 	* None.
 
@@ -613,9 +613,9 @@ This version includes several jQuery improvements to optimize both the size of s
 
 == Upgrade Notice ==
 
-= 5.5.3-dev.1 =
+= 5.5.3 =
 
-(TBD) Removed the "Use HTTPS for Video API Requests" option (HTTPS is now used for every API request).
+(2019/08/13) Removed the "Use HTTPS for Video API Requests" option (HTTPS is now used for every API request).
 
 = 5.5.2.1 =
 
