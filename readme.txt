@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires At Least: 3.8
 Tested Up To: 5.2.2
 WC Tested Up To: 3.7.0
-Stable Tag: 5.5.2.1
+Stable Tag: 5.5.3
 
 WPSSO Core makes sure your content looks great on all social and search sites, no matter how URLs are crawled, shared, re-shared, posted or embedded!
 
@@ -448,7 +448,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* None.
 
-**Version 5.5.2.1 (2019/08/10)**
+**Version 5.5.2 (2019/08/10)**
 
 * **New Features**
 	* None.
@@ -616,8 +616,4 @@ This version includes several jQuery improvements to optimize both the size of s
 = 5.5.3 =
 
 (2019/08/13) Removed the "Use HTTPS for Video API Requests" option (HTTPS is now used for every API request).
-
-= 5.5.2.1 =
-
-(2019/08/10) Fixed unrelated post data in Schema @graph markup when the "Auto-Refresh Cache After Clearing" option is enabled.
 
