@@ -811,7 +811,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_logo_url'                   => '',
 					'schema_banner_url'                 => '',
 					'schema_article_img_width'          => 1200,		// Must be at least 696px for Articles.
-					'schema_article_img_height'         => 1600,
+					'schema_article_img_height'         => 1800,
 					'schema_article_img_crop'           => 0,
 					'schema_article_img_crop_x'         => 'center',
 					'schema_article_img_crop_y'         => 'center',
@@ -833,7 +833,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_article_amp16x9_img_crop_y' => 'center',
 					*/
 					'schema_img_width'                  => 1200,		// Must be at least 400px.
-					'schema_img_height'                 => 1600,
+					'schema_img_height'                 => 1800,
 					'schema_img_crop'                   => 0,
 					'schema_img_crop_x'                 => 'center',
 					'schema_img_crop_y'                 => 'center',
@@ -964,7 +964,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tc_sum_img_crop_x' => 'center',
 					'tc_sum_img_crop_y' => 'center',
 					'tc_lrg_img_width'  => 1200,			// Large Image Card Img Dimensions.
-					'tc_lrg_img_height' => 1600,
+					'tc_lrg_img_height' => 1800,
 					'tc_lrg_img_crop'   => 0,
 					'tc_lrg_img_crop_x' => 'center',
 					'tc_lrg_img_crop_y' => 'center',
