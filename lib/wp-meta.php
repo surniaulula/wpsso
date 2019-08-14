@@ -1202,10 +1202,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		public function get_column_wp_cache( array $mod, $column_name ) {
 
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
-
 			$value = '';
 
 			if ( ! empty( $mod[ 'id' ] ) && strpos( $column_name, $this->p->lca . '_' ) === 0 ) {	// Just in case.
@@ -1217,10 +1213,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					if ( isset( $col_info[ 'meta_key' ] ) ) {	// Just in case.
 
 						$meta_cache = wp_cache_get( $mod[ 'id' ], $mod[ 'name' ] . '_meta' );
-
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $mod[ 'id' ] . ' ' . $mod[ 'name' ] . '_meta = ' . print_r( $meta_cache, true ) );
-						}
 
 						if ( ! $meta_cache ) {
 							$meta_cache = update_meta_cache( $mod[ 'name' ], array( $mod[ 'id' ] ) );
