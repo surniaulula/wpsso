@@ -543,10 +543,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 									( $this->p->opt->get_defaults( 'og_img_crop' ) == 0 ? 'uncropped' : 'cropped' );
 
 							$text = sprintf( __( 'The image dimensions used for the Facebook / Open Graph meta tags (the default dimensions are %s).', 'wpsso' ), $def_dimensions ) . ' ';
-							$text .= $fb_recs_transl . ' ';
+							$text .= $fb_recs_transl;
 							
-							$text .= __( 'Note that images in the WordPress Media Library and/or NextGEN Gallery must be larger than your chosen image dimensions.', 'wpsso' );
-
 							break;
 
 						case 'tooltip-og_def_img_id':		// Default / Fallback Image ID.
@@ -1287,9 +1285,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = sprintf( __( 'The image dimensions used for Schema Article meta tags and JSON-LD markup (the default dimensions are %s).', 'wpsso' ), $def_dimensions ) . ' ';
 
-							$text .= '<br/><br/><strong>';
+							$text .= '<strong>';
+
 							$text .= __( 'The minimum width required by Google for the resulting image is 696px.', 'wpsso' ) . ' ';
-							$text .= '</strong><br/><br/>';
+
+							$text .= '</strong>';
 
 							$text .= sprintf( __( 'If this image size is uncropped (default setting), the height value must be large enough to accommodate portrait / vertical images (default height is %s).', 'wpsso' ), $this->p->opt->get_defaults( 'schema_article_img_height' ) );
 

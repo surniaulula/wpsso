@@ -80,6 +80,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				 *
 				 * add_action( 'parse_query', array( $this, 'set_column_orderby' ), 10, 1 );
 				 */
+
 				add_action( 'get_user_metadata', array( $this, 'check_sortable_metadata' ), 10, 4 );
 
 				/**
@@ -508,11 +509,15 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function check_sortable_metadata( $value, $user_id, $meta_key, $single ) {
 
-			static $do_once = array();
-
 			if ( strpos( $meta_key, '_' . $this->p->lca . '_head_info_' ) !== 0 ) {	// example: _wpsso_head_info_og_img_thumb
 				return $value;	// return null
 			}
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'user ID ' . $post_id . ' for meta key ' . $meta_key );
+			}
+
+			static $do_once = array();
 
 			if ( isset( $do_once[ $user_id ][ $meta_key ] ) ) {
 				return $value;	// return null
@@ -524,7 +529,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				$mod = $this->get_mod( $user_id );
 
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log_arr( '$mod', $mod );
+				}
+
 				$head_meta_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache = true );
+
 				$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
 			}
 

@@ -73,9 +73,10 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				 *
 				 * add_action( 'parse_query', array( $this, 'set_column_orderby' ), 10, 1 );
 				 */
+
 				add_action( 'get_term_metadata', array( $this, 'check_sortable_metadata' ), 10, 4 );
 
-				if ( ( $this->query_term_id = SucomUtil::get_request_value( 'tag_ID' ) ) === '' ) {	// uses sanitize_text_field
+				if ( ( $this->query_term_id = SucomUtil::get_request_value( 'tag_ID' ) ) === '' ) {	// Uses sanitize_text_field.
 					return;
 				}
 
@@ -501,11 +502,15 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		public function check_sortable_metadata( $value, $term_id, $meta_key, $single ) {
 
-			static $do_once = array();
-
 			if ( strpos( $meta_key, '_' . $this->p->lca . '_head_info_' ) !== 0 ) {	// example: _wpsso_head_info_og_img_thumb
 				return $value;	// return null
 			}
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'term ID ' . $post_id . ' for meta key ' . $meta_key );
+			}
+
+			static $do_once = array();
 
 			if ( isset( $do_once[ $term_id ][ $meta_key ] ) ) {
 				return $value;	// return null
@@ -517,7 +522,12 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				$mod = $this->get_mod( $term_id );
 
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log_arr( '$mod', $mod );
+				}
+
 				$head_meta_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache = true );
+
 				$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
 			}
 

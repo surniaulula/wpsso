@@ -1607,14 +1607,43 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					break;
 
-				case $this->p->lca . '-schema-article':
+				case $this->p->lca . '-schema-article':	// Article Non-AMP.
 
-					$spec_name  = _x( 'Schema Article (Google Rich Results)', 'option label', 'wpsso' );
+					$spec_name  = _x( 'Schema Article Non-AMP (Google)', 'option label', 'wpsso' );
 					$min_width  = $cf_min[ 'schema_article_img_width' ];
 					$min_height = $cf_min[ 'schema_article_img_height' ];
 					$max_ratio  = $cf_max[ 'schema_article_img_ratio' ];
 
 					break;
+
+				/*
+				case $this->p->lca . '-schema-article-amp1x1':	// Article AMP 1x1.
+
+					$spec_name  = _x( 'Schema Article AMP 1x1 (Google)', 'option label', 'wpsso' );
+					$min_width  = $cf_min[ 'schema_article_amp1x1_img_width' ];
+					$min_height = $cf_min[ 'schema_article_amp1x1_img_height' ];
+					$max_ratio  = $cf_max[ 'schema_article_amp1x1_img_ratio' ];
+
+					break;
+
+				case $this->p->lca . '-schema-article-amp4x3':	// Article AMP 4x3.
+
+					$spec_name  = _x( 'Schema Article AMP 4x3 (Google)', 'option label', 'wpsso' );
+					$min_width  = $cf_min[ 'schema_article_amp4x3_img_width' ];
+					$min_height = $cf_min[ 'schema_article_amp4x3_img_height' ];
+					$max_ratio  = $cf_max[ 'schema_article_amp4x3_img_ratio' ];
+
+					break;
+
+				case $this->p->lca . '-schema-article-amp16x9':	// Article AMP 16x9.
+
+					$spec_name  = _x( 'Schema Article AMP 16x9 (Google)', 'option label', 'wpsso' );
+					$min_width  = $cf_min[ 'schema_article_amp16x9_img_width' ];
+					$min_height = $cf_min[ 'schema_article_amp16x9_img_height' ];
+					$max_ratio  = $cf_max[ 'schema_article_amp16x9_img_ratio' ];
+
+					break;
+				*/
 
 				default:
 

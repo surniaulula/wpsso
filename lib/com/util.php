@@ -2638,11 +2638,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$screen_base = self::get_screen_base();
 
 				if ( false !== $screen_base ) {
+
 					switch ( $screen_base ) {
+
 						case 'edit':		// Post/page list.
+
 						case 'edit-tags':	// Categories/tags list.
+
 						case 'users':		// Users list.
+
 							$ret = true;
+
 							break;
 					}
 				}
@@ -2760,6 +2766,31 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return apply_filters( 'sucom_is_post_page', $ret, $use_post );
+		}
+
+		public static function is_post_type_archive( $post_type, $post_slug ) {
+
+			$is_post_type_archive = false;
+
+			if ( ! empty( $post_type ) && ! empty( $post_slug ) ) {	// Just in case.
+
+				$post_type_obj = get_post_type_object( $post_type );
+
+				if ( ! empty( $post_type_obj->has_archive ) ) {
+			
+					$archive_slug = $post_type_obj->has_archive;
+
+					if ( true === $archive_slug ) {
+						$archive_slug = $post_type_obj->rewrite[ 'slug' ];
+					}
+
+					if ( $post_slug === $archive_slug ) {
+						$is_post_type_archive = true;
+					}
+				}
+			}
+
+			return $is_post_type_archive;
 		}
 
 		public static function get_post_object( $use_post = false, $output = 'object' ) {

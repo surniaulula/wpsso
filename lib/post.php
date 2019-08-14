@@ -136,6 +136,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 * to set the column orderby for post, term, and user edit tables.
 				 */
 				add_action( 'parse_query', array( $this, 'set_column_orderby' ), 10, 1 );
+
 				add_action( 'get_post_metadata', array( $this, 'check_sortable_metadata' ), 10, 4 );
 			}
 
@@ -207,15 +208,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $mod[ 'id' ] ) {
 
-				$post_type = get_post_type( $mod[ 'id' ] );
+				$mod[ 'post_slug' ]      = get_post_field( 'post_name', $mod[ 'id' ] );		// Post name (aka slug).
+				$mod[ 'post_type' ]      = get_post_type( $mod[ 'id' ] );			// Post type name.
+				$mod[ 'post_mime' ]      = get_post_mime_type( $mod[ 'id' ] );			// Post mime type (ie. image/jpg).
+				$mod[ 'post_status' ]    = get_post_status( $mod[ 'id' ] );			// Post status name.
+				$mod[ 'post_author' ]    = (int) get_post_field( 'post_author', $mod[ 'id' ] );	// Post author id.
+				$mod[ 'post_coauthors' ] = array();
 
-				$mod[ 'is_post_type_archive' ]	= is_post_type_archive( $post_type );			// Post is an archive page.
-				$mod[ 'post_slug' ]		= get_post_field( 'post_name', $mod[ 'id' ] );		// Post name (aka slug).
-				$mod[ 'post_type' ]		= $post_type;						// Post type name.
-				$mod[ 'post_mime' ]		= get_post_mime_type( $mod[ 'id' ] );			// Post mime type (ie. image/jpg).
-				$mod[ 'post_status' ]		= get_post_status( $mod[ 'id' ] );			// Post status name.
-				$mod[ 'post_author' ]		= (int) get_post_field( 'post_author', $mod[ 'id' ] );	// Post author id.
-				$mod[ 'post_coauthors' ]	= array();
+				$mod[ 'is_post_type_archive' ] = SucomUtil::is_post_type_archive( $mod[ 'post_type' ], $mod[ 'post_slug' ] );
 			}
 
 			/**
@@ -510,6 +510,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function show_column_content( $column_name, $post_id ) {
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( $column_name . ' for post ID ' . $post_id );
+			}
+
 			echo $this->get_column_content( '', $column_name, $post_id );
 		}
 
@@ -575,14 +579,18 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function check_sortable_metadata( $value, $post_id, $meta_key, $single ) {
 
-			static $do_once = array();
-
 			if ( strpos( $meta_key, '_' . $this->p->lca . '_head_info_' ) !== 0 ) {	// Example: _wpsso_head_info_og_img_thumb.
-				return $value;	// Return null.
+				return $value;
 			}
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'post ID ' . $post_id . ' for meta key ' . $meta_key );
+			}
+
+			static $do_once = array();
+
 			if ( isset( $do_once[ $post_id ][ $meta_key ] ) ) {
-				return $value;	// Return null.
+				return $value;
 			} else {
 				$do_once[ $post_id ][ $meta_key ] = true;	// Prevent recursion.
 			}
@@ -591,7 +599,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$mod = $this->get_mod( $post_id );
 
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log_arr( '$mod', $mod );
+				}
+
 				$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, $read_cache = true );
+
 				$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
 			}
 
