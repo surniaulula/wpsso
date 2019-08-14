@@ -437,6 +437,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 5.5.4-dev.1 (2019/08/14)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed "is_post_type_archive" detection by replacing `is_post_type_archive()` from WordPress by SucomUtil::is_post_type_archive().
+* **Developer Notes**
+	* None.
+
 **Version 5.5.3 (2019/08/13)**
 
 * **New Features**
@@ -612,6 +623,10 @@ This version includes several jQuery improvements to optimize both the size of s
 		* Renamed WpssoSchema::update_json_data_id() to WpssoSchema::update_data_id().
 
 == Upgrade Notice ==
+
+= 5.5.4-dev.1 =
+
+(2019/08/14) Fixed "is_post_type_archive" detection by replacing `is_post_type_archive()` from WordPress by SucomUtil::is_post_type_archive().
 
 = 5.5.3 =
 
