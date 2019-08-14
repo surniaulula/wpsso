@@ -444,7 +444,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* Fixed "is_post_type_archive" detection by replacing `is_post_type_archive()` from WordPress by SucomUtil::is_post_type_archive().
+	* Fixed "is_post_type_archive" detection by replacing `is_post_type_archive( $post_type )` from WordPress by `SucomUtil::is_post_type_archive( $post_type, $post_slug )`.
 * **Developer Notes**
 	* None.
 
