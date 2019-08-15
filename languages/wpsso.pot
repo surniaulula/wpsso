@@ -3369,43 +3369,43 @@ msgstr ""
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:1594
+#: lib/media.php:1595
 msgctxt "option label"
 msgid "Facebook Open Graph"
 msgstr ""
 
-#: lib/media.php:1603
+#: lib/media.php:1604
 msgctxt "option label"
 msgid "Google Schema"
 msgstr ""
 
-#: lib/media.php:1612
+#: lib/media.php:1613
 msgctxt "option label"
 msgid "Google Schema Article"
 msgstr ""
 
-#: lib/media.php:1621
+#: lib/media.php:1622
 msgctxt "option label"
 msgid "Google Schema Article AMP 1x1"
 msgstr ""
 
-#: lib/media.php:1630
+#: lib/media.php:1631
 msgctxt "option label"
 msgid "Google Schema Article AMP 4x3"
 msgstr ""
 
-#: lib/media.php:1639
+#: lib/media.php:1640
 msgctxt "option label"
 msgid "Google Schema Article AMP 16x9"
 msgstr ""
 
-#: lib/media.php:1677
+#: lib/media.php:1678
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:1705
+#: lib/media.php:1706
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
