@@ -121,7 +121,7 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 		* All Social WebSites / Open Graph
 			* Priority Image Information
 				* Maximum Images
-				* Image Dimensions
+				* Image Size
 				* Image ID
 				* or Image URL
 			* Priority Video Information
@@ -131,12 +131,12 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 				* Video Name / Title
 				* Video Description
 		* Twitter Card
-			* Image Dimensions
+			* Image Size
 			* Image ID
 			* or Image URL
 		 * Structured Data / Schema Markup / Pinterest
 			* Maximum Images
-			* Image Dimensions
+			* Image Size
 			* Image ID
 			* or Image URL
 
@@ -437,12 +437,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.5.4-dev.1 (2019/08/14)**
+**Version 5.6.0-dev.1 (2019/08/14)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added new image dimensions in the WordPress &gt; Settings &gt; SSO Image Sizes page:
+		* Schema Article AMP 1x1 (Google)
+		* Schema Article AMP 4x3 (Google)
+		* Schema Article AMP 16x9 (Google)
+	* Updated the default Facebook Open Graph image size from 600x315 to 1200x630.
 * **Bugfixes**
 	* Fixed "is_post_type_archive" detection by replacing `is_post_type_archive( $post_type )` from WordPress by `SucomUtil::is_post_type_archive( $post_type, $post_slug )`.
 * **Developer Notes**
@@ -491,7 +495,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Split the single Google / Pinterest / Schema image size into two different image sizes:
 		* Schema (Google and Pinterest)
-		* Schema Article (Google Rich Results)
+		* Schema Article (Google and Pinterest)
 * **Bugfixes**
 	* Fixed missing admin library loader definition for 'meta-edit'.
 * **Developer Notes**
@@ -624,9 +628,9 @@ This version includes several jQuery improvements to optimize both the size of s
 
 == Upgrade Notice ==
 
-= 5.5.4-dev.1 =
+= 5.6.0-dev.1 =
 
-(2019/08/14) Fixed "is_post_type_archive" detection by replacing `is_post_type_archive()` from WordPress by SucomUtil::is_post_type_archive().
+(2019/08/14) Added new image dimensions in the WordPress &gt; Settings &gt; SSO Image Sizes page. Fixed "is_post_type_archive" detection.
 
 = 5.5.3 =
 
