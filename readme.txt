@@ -437,7 +437,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.6.0-dev.1 (2019/08/14)**
+**Version 5.6.0-dev.1 (2019/08/15)**
 
 * **New Features**
 	* None.
@@ -630,7 +630,7 @@ This version includes several jQuery improvements to optimize both the size of s
 
 = 5.6.0-dev.1 =
 
-(2019/08/14) Added new image dimensions in the WordPress &gt; Settings &gt; SSO Image Sizes page. Fixed "is_post_type_archive" detection.
+(2019/08/15) Added new image dimensions in the WordPress &gt; Settings &gt; SSO Image Sizes page. Fixed "is_post_type_archive" detection.
 
 = 5.5.3 =
 
