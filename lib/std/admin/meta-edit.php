@@ -358,12 +358,12 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'content'  => $form->get_no_select( 'og_img_max',
 						range( 0, $this->p->cf[ 'form' ][ 'max_media_items' ] ), 'medium' ),
 				) : '',	// Placeholder if not a post module.
-				'og_img_dimensions' => array(
+				'og_img_size' => array(
 					'tr_class' => $form->get_css_class_hide_img_dim( 'basic', 'og_img' ),
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'Image Dimensions', 'option label', 'wpsso' ),
-					'tooltip'  => 'og_img_dimensions',
+					'label'    => _x( 'Image Size', 'option label', 'wpsso' ),
+					'tooltip'  => 'og_img_size',
 					'content'  => $form->get_no_input_image_dimensions( 'og_img', true ),	// $use_opts is true.
 				),
 				'og_img_id' => array(
@@ -461,12 +461,12 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'label'    => $card_label,
 				);
 
-				$form_rows[ $tc_pre . '_img_dimensions' ] = array(
+				$form_rows[ $tc_pre . '_img_size' ] = array(
 					'tr_class' => $form->get_css_class_hide_img_dim( 'basic', $tc_pre . '_img' ),
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'Image Dimensions', 'option label', 'wpsso' ),
-					'tooltip'  => $tc_pre . '_img_dimensions',
+					'label'    => _x( 'Image Size', 'option label', 'wpsso' ),
+					'tooltip'  => $tc_pre . '_img_size',
 					'content'  => $form->get_no_input_image_dimensions( $tc_pre . '_img', true ),	// $use_opts is true.
 				);
 
@@ -515,12 +515,12 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 				);
 			}
 
-			$form_rows[ 'schema_img_dimensions' ] = array(
+			$form_rows[ 'schema_img_size' ] = array(
 				'tr_class' => $form->get_css_class_hide_img_dim( 'basic', 'schema_img' ),
 				'th_class' => 'medium',
 				'td_class' => 'blank',
-				'label'    => _x( 'Image Dimensions', 'option label', 'wpsso' ),
-				'tooltip'  => 'schema_img_dimensions',
+				'label'    => _x( 'Image Size', 'option label', 'wpsso' ),
+				'tooltip'  => 'schema_img_size',
 				'content'  => $form->get_no_input_image_dimensions( 'schema_img', true ),	// $use_opts is true.
 			);
 

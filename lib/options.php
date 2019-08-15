@@ -523,28 +523,57 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 * isset() or array_key_exists() on all tests to make sure additional / 
 			 * unnecessary options are not created in post meta.
 			 */
-			foreach ( array( 'og', 'schema' ) as $md_pre ) {
+			foreach ( SucomUtil::preg_grep_keys( '/^(.*)_img_width$/', $opts, $invert = false, $replace = '$1' ) as $opt_pre => $img_width ) {
 
-				if ( ! isset( $this->p->cf[ 'head' ][ 'limit_max' ][ $md_pre . '_img_ratio' ] ) ) {
+				if ( ! isset( $opts[ $opt_pre . '_img_height' ] ) ) {	// Just in case;
 					continue;
 				}
 
-				if ( ! empty( $opts[ $md_pre . '_img_width' ] ) && 
-					! empty( $opts[ $md_pre . '_img_height' ] ) && 
-					! empty( $opts[ $md_pre . '_img_crop' ] ) ) {
+				$img_height = $opts[ $opt_pre . '_img_height' ];
+				$img_crop   = isset( $opts[ $opt_pre . '_img_crop' ] ) ? $opts[ $opt_pre . '_img_crop' ] : 0;
+				$img_ratio  = $img_width >= $img_height ? $img_width / $img_height : $img_height / $img_width;
+				$img_ratio  = number_format( $img_ratio, 3, '.', '' );
 
-					$img_width  = $opts[ $md_pre . '_img_width' ];
-					$img_height = $opts[ $md_pre . '_img_height' ];
-					$img_ratio  = $img_width >= $img_height ? $img_width / $img_height : $img_height / $img_width;
-					$max_ratio  = $this->p->cf[ 'head' ][ 'limit_max' ][ $md_pre . '_img_ratio' ];
+				foreach ( array( 'limit', 'limit_max' ) as $limit_type ) {
 
-					if ( $img_ratio >= $max_ratio ) {
+					if ( ! isset( $this->p->cf[ 'head' ][ $limit_type ][ $opt_pre . '_img_ratio' ] ) ) {
+						continue;
+					}
 
-						$this->p->notice->err( sprintf( __( 'The values for \'%1$s\' and  \'%2$s\' have an aspect ratio that is equal to / or greater than %3$s:1 &mdash; resetting these options to their default values.', 'wpsso' ), $md_pre . '_img_width', $md_pre . '_img_height', $max_ratio ) );
+					$error_msg   = false;
+					$limit_ratio = number_format( $this->p->cf[ 'head' ][ $limit_type ][ $opt_pre . '_img_ratio' ], 3, '.', '' );
 
-						$opts[ $md_pre . '_img_width' ]  = $def_opts[ $md_pre . '_img_width' ];
-						$opts[ $md_pre . '_img_height' ] = $def_opts[ $md_pre . '_img_height' ];
-						$opts[ $md_pre . '_img_crop' ]   = $def_opts[ $md_pre . '_img_crop' ];
+					switch ( $limit_type ) {
+
+						case 'limit':
+				
+							$opts[ $opt_pre . '_img_crop' ]    = 1;
+							$opts[ $opt_pre . '_img_crop:is' ] = 'disabled';
+
+							if ( $img_ratio !== $limit_ratio ) {
+								$error_msg = sprintf( __( 'Option keys "%1$s" (%2$d) and "%3$s" (%4$d) have an aspect ratio of %5$s:1, which not equal to the required image ratio of %6$s:1.', 'wpsso' ), $opt_pre . '_img_width', $img_width, $opt_pre . '_img_height', $img_height, $img_ratio, $limit_ratio );
+							}
+
+							break;
+
+						case 'limit_max':
+					
+							if ( $img_crop && $img_ratio >= $limit_ratio ) {
+								$error_msg = sprintf( __( 'Option keys "%1$s" (%2$d) and "%3$s" (%4$d) have an aspect ratio of %5$s:1, which is equal to / or greater than the maximum image ratio of %6$s:1.', 'wpsso' ), $opt_pre . '_img_width', $img_width, $opt_pre . '_img_height', $img_height, $img_ratio, $limit_ratio );
+							}
+
+							break;
+					}
+
+					if ( $error_msg ) {
+
+						$error_msg .= ' ' . __( 'These option keys have been reset to their default values.', 'wpsso' );
+
+						$this->p->notice->err( $error_msg );
+
+						$opts[ $opt_pre . '_img_width' ]  = $def_opts[ $opt_pre . '_img_width' ];
+						$opts[ $opt_pre . '_img_height' ] = $def_opts[ $opt_pre . '_img_height' ];
+						$opts[ $opt_pre . '_img_crop' ]   = $def_opts[ $opt_pre . '_img_crop' ];
 					}
 				}
 			}
@@ -554,17 +583,17 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 * If an image ID is used, then remove the image url (only one option can be defined).
 			 * Use isset() to check for array keys since this method is also called to sanitize meta options.
 			 */
-			foreach ( array( 'og_def' ) as $md_pre ) {
+			foreach ( array( 'og_def' ) as $opt_pre ) {
 
-				if ( empty( $opts[ $md_pre . '_img_id' ] ) ) {
+				if ( empty( $opts[ $opt_pre . '_img_id' ] ) ) {
 
-					if ( isset( $def_opts[ $md_pre . '_img_id_pre' ] ) ) {	// Just in case.
-						$opts[ $md_pre . '_img_id_pre' ] = $def_opts[ $md_pre . '_img_id_pre' ];
+					if ( isset( $def_opts[ $opt_pre . '_img_id_pre' ] ) ) {	// Just in case.
+						$opts[ $opt_pre . '_img_id_pre' ] = $def_opts[ $opt_pre . '_img_id_pre' ];
 					}
 
-				} elseif ( isset( $opts[ $md_pre . '_img_url' ] ) ) {
+				} elseif ( isset( $opts[ $opt_pre . '_img_url' ] ) ) {
 
-					$opts[ $md_pre . '_img_url' ] = '';
+					$opts[ $opt_pre . '_img_url' ] = '';
 				}
 			}
 
@@ -689,18 +718,18 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				$error_messages = array(
-					'api_key'   => __( 'The value of option \'%s\' must be alpha-numeric - resetting this option to its default value.', 'wpsso' ),
-					'blank_num' => __( 'The value of option \'%s\' must be blank or numeric - resetting this option to its default value.', 'wpsso' ),
-					'color'     => __( 'The value of option \'%s\' must be a CSS color code - resetting this option to its default value.', 'wpsso' ),
-					'csv_urls'  => __( 'The value of option \'%s\' must be a comma-delimited list of URL(s) - resetting this option to its default value.', 'wpsso' ),
-					'date'      => __( 'The value of option \'%s\' must be a yyyy-mm-dd date - resetting this option to its default value.', 'wpsso' ),
-					'html'      => __( 'The value of option \'%s\' must be HTML code - resetting this option to its default value.', 'wpsso' ),
-					'img_id'    => __( 'The value of option \'%s\' must be an image ID - resetting this option to its default value.', 'wpsso' ),
-					'not_blank' => __( 'The value of option \'%s\' cannot be an empty string - resetting this option to its default value.', 'wpsso' ),
-					'numeric'   => __( 'The value of option \'%s\' must be numeric - resetting this option to its default value.', 'wpsso' ),
-					'pos_num'   => __( 'The value of option \'%1$s\' must be equal to or greather than %2$s - resetting this option to its default value.', 'wpsso' ),
-					'time'      => __( 'The value of option \'%s\' must be a hh:mm time - resetting this option to its default value.', 'wpsso' ),
-					'url'       => __( 'The value of option \'%s\' must be a URL - resetting this option to its default value.', 'wpsso' ),
+					'api_key'   => __( 'The value of option "%s" must be alpha-numeric - resetting this option to its default value.', 'wpsso' ),
+					'blank_num' => __( 'The value of option "%s" must be blank or numeric - resetting this option to its default value.', 'wpsso' ),
+					'color'     => __( 'The value of option "%s" must be a CSS color code - resetting this option to its default value.', 'wpsso' ),
+					'csv_urls'  => __( 'The value of option "%s" must be a comma-delimited list of URL(s) - resetting this option to its default value.', 'wpsso' ),
+					'date'      => __( 'The value of option "%s" must be a yyyy-mm-dd date - resetting this option to its default value.', 'wpsso' ),
+					'html'      => __( 'The value of option "%s" must be HTML code - resetting this option to its default value.', 'wpsso' ),
+					'img_id'    => __( 'The value of option "%s" must be an image ID - resetting this option to its default value.', 'wpsso' ),
+					'not_blank' => __( 'The value of option "%s" cannot be an empty string - resetting this option to its default value.', 'wpsso' ),
+					'numeric'   => __( 'The value of option "%s" must be numeric - resetting this option to its default value.', 'wpsso' ),
+					'pos_num'   => __( 'The value of option "%1$s" must be equal to or greather than %2$s - resetting this option to its default value.', 'wpsso' ),
+					'time'      => __( 'The value of option "%s" must be a hh:mm time - resetting this option to its default value.', 'wpsso' ),
+					'url'       => __( 'The value of option "%s" must be a URL - resetting this option to its default value.', 'wpsso' ),
 				);
 			}
 
@@ -948,6 +977,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				case 'pos_num':
 
+					/**
+					 * Check for a hard-coded minimum value (for example, 200 for "og_img_width").
+					 */
 					if ( isset( $this->p->cf[ 'head' ][ 'limit_min' ][ $base_key ] ) ) {
 						$min_int = $this->p->cf[ 'head' ][ 'limit_min' ][ $base_key ];
 					} else {
@@ -1358,7 +1390,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 * Image width, subject to minimum value (typically, at least 200px).
 				 */
 				case ( preg_match( '/_img_width$/', $base_key ) ? true : false ):
-				case ( preg_match( '/^tc_[a-z]+_width$/', $base_key ) ? true : false ):
 
 					return 'img_width';
 
@@ -1368,7 +1399,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 * Image height, subject to minimum value (typically, at least 200px).
 				 */
 				case ( preg_match( '/_img_height$/', $base_key ) ? true : false ):
-				case ( preg_match( '/^tc_[a-z]+_height$/', $base_key ) ? true : false ):
 
 					return 'img_height';
 

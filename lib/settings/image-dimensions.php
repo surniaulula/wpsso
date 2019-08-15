@@ -87,10 +87,8 @@ if ( ! class_exists( 'WpssoSettingsImageDimensions' ) && class_exists( 'WpssoAdm
 				apply_filters( SucomUtil::sanitize_hookname( $this->p->lca . '_' . $metabox_id . '_general_rows' ),
 					array(), $this->form ) );
 
-			sort( $table_rows );
-
 			foreach ( $table_rows as $num => $row ) {
-				echo '<tr>'.$row.'</tr>' . "\n";
+				echo '<tr>' . $row . '</tr>' . "\n";
 			}
 
 			echo '</table>';
@@ -100,56 +98,54 @@ if ( ! class_exists( 'WpssoSettingsImageDimensions' ) && class_exists( 'WpssoAdm
 
 			$table_rows = array();
 
-			switch ( $metabox_id.'-'.$tab_key ) {
+			switch ( $metabox_id . '-' . $tab_key ) {
 
 				case 'image-dimensions-general':
 
-					$table_rows[ 'og_img_dimensions' ] = '' .
+					$table_rows[ 'og_img_size' ] = '' .
 					$this->form->get_th_html( _x( 'Open Graph (Facebook and Others)',
-						'option label', 'wpsso' ), null, 'og_img_dimensions' ).
-					'<td>'.$this->form->get_input_image_dimensions( 'og_img' ).'</td>';	// $use_opts = false
+						'option label', 'wpsso' ), null, 'og_img_size' ) . 
+					'<td>' . $this->form->get_input_image_dimensions( 'og_img' ) . '</td>';
 
-					$table_rows[ 'schema_img_dimensions' ] = '' .
+					$table_rows[ 'schema_img_size' ] = '' .
 					$this->form->get_th_html( _x( 'Schema (Google and Pinterest)',
-						'option label', 'wpsso' ), null, 'schema_img_dimensions' ).
-					'<td>'.$this->form->get_input_image_dimensions( 'schema_img' ).'</td>';	// $use_opts = false
+						'option label', 'wpsso' ), null, 'schema_img_size' ) . 
+					'<td>' . $this->form->get_input_image_dimensions( 'schema_img' ) . '</td>';
 
-					$table_rows[ 'schema_article_img_dimensions' ] = '' .
-					$this->form->get_th_html( _x( 'Schema Article Non-AMP (Google)',
-						'option label', 'wpsso' ), null, 'schema_article_img_dimensions' ).
-					'<td>'.$this->form->get_input_image_dimensions( 'schema_article_img' ).'</td>';	// $use_opts = false
+					$table_rows[ 'schema_article_img_size' ] = '' .
+					$this->form->get_th_html( _x( 'Schema Article (Google and Pinterest)',
+						'option label', 'wpsso' ), null, 'schema_article_img_size' ) . 
+					'<td>' . $this->form->get_input_image_dimensions( 'schema_article_img' ) . '</td>';
 
-					/*
-					$table_rows[ 'schema_article_amp1x1_img_dimensions' ] = '' .
+					$table_rows[ 'schema_article_amp1x1_img_size' ] = '' .
 					$this->form->get_th_html( _x( 'Schema Article AMP 1x1 (Google)',
-						'option label', 'wpsso' ), null, 'schema_article_amp_img_dimensions' ).
-					'<td>'.$this->form->get_input_image_dimensions( 'schema_article_amp1x1_img' ).'</td>';	// $use_opts = false
+						'option label', 'wpsso' ), null, 'schema_article_amp1x1_img_size' ) . 
+					'<td>' . $this->form->get_input_image_dimensions( 'schema_article_amp1x1_img' ) . '</td>';
 
-					$table_rows[ 'schema_article_amp4x3_img_dimensions' ] = '' .
+					$table_rows[ 'schema_article_amp4x3_img_size' ] = '' .
 					$this->form->get_th_html( _x( 'Schema Article AMP 4x3 (Google)',
-						'option label', 'wpsso' ), null, 'schema_article_amp_img_dimensions' ).
-					'<td>'.$this->form->get_input_image_dimensions( 'schema_article_amp4x3_img' ).'</td>';	// $use_opts = false
+						'option label', 'wpsso' ), null, 'schema_article_amp4x3_img_size' ) . 
+					'<td>' . $this->form->get_input_image_dimensions( 'schema_article_amp4x3_img' ) . '</td>';
 
-					$table_rows[ 'schema_article_amp16x9_img_dimensions' ] = '' .
+					$table_rows[ 'schema_article_amp16x9_img_size' ] = '' .
 					$this->form->get_th_html( _x( 'Schema Article AMP 16x9 (Google)',
-						'option label', 'wpsso' ), null, 'schema_article_amp_img_dimensions' ).
-					'<td>'.$this->form->get_input_image_dimensions( 'schema_article_amp16x9_img' ).'</td>';	// $use_opts = false
-					*/
+						'option label', 'wpsso' ), null, 'schema_article_amp16x9_img_size' ) . 
+					'<td>' . $this->form->get_input_image_dimensions( 'schema_article_amp16x9_img' ) . '</td>';
 
-					$table_rows[ 'tc_sum_img_dimensions' ] = '' .
+					$table_rows[ 'thumb_img_size' ] = '' .
+					$this->form->get_th_html( _x( 'Schema Thumbnail Image',
+						'option label', 'wpsso' ), null, 'thumb_img_size' ) . 
+					'<td>' . $this->form->get_input_image_dimensions( 'thumb_img' ) . '</td>';
+
+					$table_rows[ 'tc_sum_img_size' ] = '' .
 					$this->form->get_th_html( _x( 'Twitter Summary Card',
-						'option label', 'wpsso' ), null, 'tc_sum_img_dimensions' ).
-					'<td>'.$this->form->get_input_image_dimensions( 'tc_sum_img' ).'</td>';	// $use_opts = false
+						'option label', 'wpsso' ), null, 'tc_sum_img_size' ) . 
+					'<td>' . $this->form->get_input_image_dimensions( 'tc_sum_img' ) . '</td>';
 
-					$table_rows[ 'tc_lrg_img_dimensions' ] = '' .
+					$table_rows[ 'tc_lrg_img_size' ] = '' .
 					$this->form->get_th_html( _x( 'Twitter Large Image Summary Card',
-						'option label', 'wpsso' ), null, 'tc_lrg_img_dimensions' ).
-					'<td>'.$this->form->get_input_image_dimensions( 'tc_lrg_img' ).'</td>';	// $use_opts = false
-
-					$table_rows[ 'thumb_img_dimensions' ] = '' .
-					$this->form->get_th_html( _x( 'Thumbnail Images',
-						'option label', 'wpsso' ), null, 'thumb_img_dimensions' ).
-					'<td>'.$this->form->get_input_image_dimensions( 'thumb_img' ).'</td>';	// $use_opts = false
+						'option label', 'wpsso' ), null, 'tc_lrg_img_size' ) . 
+					'<td>' . $this->form->get_input_image_dimensions( 'tc_lrg_img' ) . '</td>';
 
 					break;
 			}

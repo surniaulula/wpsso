@@ -72,15 +72,15 @@ if ( ! class_exists( 'WpssoSettingsSocialAccounts' ) && class_exists( 'WpssoAdmi
 
 				case 'social-accounts-general':
 
-					$social_accounts = apply_filters( $this->p->lca.'_social_accounts', $this->p->cf[ 'form' ][ 'social_accounts' ] );
+					$social_accounts = apply_filters( $this->p->lca . '_social_accounts', $this->p->cf[ 'form' ][ 'social_accounts' ] );
 
 					asort( $social_accounts );	// sort by label (after translation) and maintain key association
 
 					foreach ( $social_accounts as $social_key => $label ) {
 
-						$table_rows[$social_key] = ''.
+						$table_rows[$social_key] = '' . 
 						$this->form->get_th_html( _x( $label, 'option value', 'wpsso' ),
-							'nowrap', $social_key, array( 'is_locale' => true ) ).
+							'nowrap', $social_key, array( 'is_locale' => true ) ) . 
 						'<td>' . $this->form->get_input( SucomUtil::get_key_locale( $social_key, $this->p->options ),
 							( strpos( $social_key, '_url' ) ? 'wide' : '' ) ) . '</td>';
 					}

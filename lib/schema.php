@@ -50,15 +50,33 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function filter_plugin_image_sizes( $sizes ) {
 
-			$sizes[ 'schema_img' ] = array(		// Options prefix.
+			$sizes[ 'schema_img' ] = array(			// Options prefix.
 				'name'  => 'schema',
 				'label' => _x( 'Schema Image', 'image size label', 'wpsso' ),
 			);
 
-			$sizes[ 'schema_article_img' ] = array(	// Options prefix.
+			$sizes[ 'schema_article_img' ] = array(		// Options prefix.
 				'name'   => 'schema-article',
 				'label'  => _x( 'Schema Article Image', 'image size label', 'wpsso' ),
-				'md_pre' => 'schema_img',
+				'md_pre' => 'schema_img',		// Meta data prefix.
+			);
+
+			$sizes[ 'schema_article_amp1x1_img' ] = array(	// Options prefix.
+				'name'   => 'schema-article',
+				'label'  => _x( 'Schema Article AMP 1x1 Image', 'image size label', 'wpsso' ),
+				'md_pre' => 'schema_img',		// Meta data prefix.
+			);
+
+			$sizes[ 'schema_article_amp4x3_img' ] = array(	// Options prefix.
+				'name'   => 'schema-article',
+				'label'  => _x( 'Schema Article AMP 4x3 Image', 'image size label', 'wpsso' ),
+				'md_pre' => 'schema_img',		// Meta data prefix.
+			);
+
+			$sizes[ 'schema_article_amp16x9_img' ] = array(	// Options prefix.
+				'name'   => 'schema-article',
+				'label'  => _x( 'Schema Article AMP 16x9 Image', 'image size label', 'wpsso' ),
+				'md_pre' => 'schema_img',		// Meta data prefix.
 			);
 
 			return $sizes;

@@ -560,7 +560,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 *	Array (
 			 *		[og_img] => Array (
 			 *			[name] => opengraph
-			 *			[label] => Open Graph Image Dimensions
+			 *			[label] => Open Graph Image
 			 *		)
 			 *	)
 			 */
@@ -598,7 +598,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$md_opts = array();
 
-			if ( true === $filter_sizes ) {
+			if ( $filter_sizes ) {
 				$image_sizes = apply_filters( $this->p->lca . '_plugin_image_sizes',
 					$image_sizes, $mod, self::get_crawler_name() );
 			}

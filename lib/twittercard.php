@@ -37,7 +37,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 			$sizes[ 'tc_lrg_img' ] = array(		// Options prefix.
 				'name'  => 'tc-lrgimg',
-				'label' => _x( 'Twitter Large Image Card', 'image size label', 'wpsso' ),
+				'label' => _x( 'Twitter Large Image Summary Card', 'image size label', 'wpsso' ),
 			);
 
 			return $sizes;
@@ -474,14 +474,6 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 					break;
 
-				case 'summary_large_image':
-
-					$card_label = _x( 'Twitter Summary Large Image Card', 'metabox title', 'wpsso' );
-					$size_name  = $this->p->lca . '-tc-lrgimg';
-					$md_pre     = 'tc_lrg';
-
-					break;
-
 				case 'summary':
 
 					$card_label = _x( 'Twitter Summary Card', 'metabox title', 'wpsso' );
@@ -489,12 +481,20 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 					$md_pre     = 'tc_sum';
 
 					break;
+
+				case 'summary_large_image':
+
+					$card_label = _x( 'Twitter Large Image Summary Card', 'metabox title', 'wpsso' );
+					$size_name  = $this->p->lca . '-tc-lrgimg';
+					$md_pre     = 'tc_lrg';
+
+					break;
 			}
 
 			/**
 			 * Example:
 			 *	array(
-			 *		'summary_large_image',	// twitter:card value.
+			 *		'summary_large_image',
 			 *		'wpsso-tc-lrgimg',
 			 *		'tc_lrg',
 			 *	)

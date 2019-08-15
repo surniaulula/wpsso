@@ -57,7 +57,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				$do_once        = true;
 				$pro_transl     = _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' );
 				$std_transl     = _x( $this->p->cf[ 'dist' ][ 'std' ], 'distribution name', 'wpsso' );
-				$fb_recs_transl = __( 'Facebook has published a preference for Open Graph image dimensions of 1200x630px cropped (for retina and high-PPI displays), 600x315px cropped as a minimum (the default settings value), and ignores images smaller than 200x200px.', 'wpsso' );
+				$fb_recs_transl = __( 'Facebook prefers images of 1200x630px cropped (for use on retina and high-PPI displays), 600x315px cropped as a recommended minimum, and ignores images smaller than 200x200px.', 'wpsso' );
 			}
 
 			/**
@@ -536,13 +536,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-og_img_dimensions':	// Open Graph Image Dimensions.
+						case 'tooltip-og_img_size':		// Open Graph.
 
-							$def_dimensions = $this->p->opt->get_defaults( 'og_img_width' ) . 'x' .
-								$this->p->opt->get_defaults( 'og_img_height' ) . ' ' .
-									( $this->p->opt->get_defaults( 'og_img_crop' ) == 0 ? 'uncropped' : 'cropped' );
-
-							$text = sprintf( __( 'The image dimensions used for the Facebook / Open Graph meta tags (the default dimensions are %s).', 'wpsso' ), $def_dimensions ) . ' ';
+							$text = sprintf( __( 'The image dimensions used for the Facebook / Open Graph meta tags (the default dimensions are %s).',
+								'wpsso' ), $this->get_def_img_dims( 'og' ) ) . ' ';
+								
 							$text .= $fb_recs_transl;
 							
 							break;
@@ -637,7 +635,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_filter_title':
 
 							$def_checked = $this->p->opt->get_defaults( 'plugin_filter_title' ) ?
-								_x( 'checked', 'option value', 'wpsso' ) : _x( 'unchecked', 'option value', 'wpsso' );
+								_x( 'checked', 'option value', 'wpsso' ) :
+								_x( 'unchecked', 'option value', 'wpsso' );
 
 							$text = __( 'The title values provided by WordPress may include modifications by themes and/or SEO plugins (appending the site name or expanding inline variables, for example, is a common practice).', 'wpsso' ) . ' ';
 
@@ -657,7 +656,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_filter_excerpt':
 
-							$text = __( 'Apply the WordPress \'get_the_excerpt\' filter to the excerpt text (default is unchecked). Enable this option if you use shortcodes in your excerpts, for example.', 'wpsso' ) . ' ';
+							$text = __( 'Apply the WordPress "get_the_excerpt" filter to the excerpt text (default is unchecked). Enable this option if you use shortcodes in your excerpts, for example.', 'wpsso' ) . ' ';
 							
 							break;
 
@@ -710,9 +709,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$tag_code    = '<code>&amp;lt;html&amp;gt;</code>';
 							$php_code    = '<pre><code>&amp;lt;html &amp;lt;?php language_attributes(); ?&amp;gt;&amp;gt;</code></pre>';
 
-							$text = sprintf( __( '%1$s hooks the \'%2$s\' filter (by default) to add / modify the %3$s HTML tag attributes for Open Graph namespace prefix values.', 'wpsso' ), $info[ 'short' ], $filter_name, $tag_code ) . ' ';
+							$text = sprintf( __( '%1$s hooks the "%2$s" filter (by default) to add / modify the %3$s HTML tag attributes for Open Graph namespace prefix values.', 'wpsso' ), $info[ 'short' ], $filter_name, $tag_code ) . ' ';
 
-							$text .= sprintf( __( 'The <a href="%1$s">WordPress %2$s function</a> and its \'%3$s\' filter are used by most themes &mdash; if the namespace prefix values are missing from your %4$s HTML tag attributes, make sure your header template(s) use the %2$s function.', 'wpsso' ), $func_url, '<code>' . $func_name . '</code>', $filter_name, $tag_code ) . ' ';
+							$text .= sprintf( __( 'The <a href="%1$s">WordPress %2$s function</a> and its "%3$s" filter are used by most themes &mdash; if the namespace prefix values are missing from your %4$s HTML tag attributes, make sure your header template(s) use the %2$s function.', 'wpsso' ), $func_url, '<code>' . $func_name . '</code>', $filter_name, $tag_code ) . ' ';
 
 							$text .= __( 'Leaving this option empty disables the addition of Open Graph namespace values.', 'wpsso' ) . ' ';
 
@@ -726,11 +725,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$tag_code    = '<code>&amp;lt;head&amp;gt;</code>';
 							$php_code    = '<pre><code>&amp;lt;head &amp;lt;?php do_action( &#39;add_head_attributes&#39; ); ?&amp;gt;&amp;gt;</code></pre>';
 
-							$text = sprintf( __( '%1$s hooks the \'%2$s\' filter (by default) to add / modify the %3$s HTML tag attributes for Schema itemscope / itemtype markup.', 'wpsso' ), $info[ 'short' ], $filter_name, $tag_code ) . ' ';
+							$text = sprintf( __( '%1$s hooks the "%2$s" filter (by default) to add / modify the %3$s HTML tag attributes for Schema itemscope / itemtype markup.', 'wpsso' ), $info[ 'short' ], $filter_name, $tag_code ) . ' ';
 
 							$text .= sprintf( __( 'If your theme already offers a filter for the %1$s HTML tag attributes, enter its name here (most themes do not offer this filter).', 'wpsso' ), $tag_code ) . ' ';
 
-							$text .= sprintf( __( 'Alternatively, you can edit your your theme header templates and add an action to call the \'%1$s\' filter.', 'wpsso' ), $filter_name ) . ' ';
+							$text .= sprintf( __( 'Alternatively, you can edit your your theme header templates and add an action to call the "%1$s" filter.', 'wpsso' ), $filter_name ) . ' ';
 
 							$text .= sprintf( __( 'Example code for header templates: %1$s', 'wpsso' ), $php_code );
 
@@ -769,7 +768,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_check_img_dims':	// Enforce Image Dimensions Check.
+						case 'tooltip-plugin_check_img_dims':	// Enforce Image Size Check.
 
 							$settings_page_link = $this->p->util->get_admin_url( 'image-dimensions',
 								_x( 'SSO Image Sizes', 'lib file description', 'wpsso' ) );
@@ -780,7 +779,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_upscale_images':	// Allow Upscale of Media Library Images.
+						case 'tooltip-plugin_upscale_images':	// Upscale Media Library Images.
 
 							$text = __( 'WordPress does not upscale / enlarge images &mdash; WordPress can only create smaller images from larger full size originals.', 'wpsso' ) . ' ';
 							
@@ -1229,7 +1228,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							
 							$text .= __( 'The WebSite markup includes the site name, alternate site name, site URL and search query URL.', 'wpsso' ) . ' ';
 							
-							$text .= sprintf( __( 'Developers can hook the \'%s\' filter to modify the site search URL (or disable its addition by returning false).', 'wpsso' ), $this->p->lca . '_json_ld_search_url' ) . '<br/><br/>';
+							$text .= sprintf( __( 'Developers can hook the "%s" filter to modify the site search URL (or disable its addition by returning false).', 'wpsso' ), $this->p->lca . '_json_ld_search_url' ) . '<br/><br/>';
 							
 							$text .= sprintf( __( 'The Organization markup includes all URLs entered in the %s settings page.', 'wpsso' ), $settings_page_link ) . '<br/><br/>';
 							
@@ -1243,7 +1242,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							
 							$text .= __( 'The Person markup includes all contact method URLs entered in the user\'s WordPress profile page.', 'wpsso' ) . ' ';
 							
-							$text .= sprintf( __( 'The available Person list includes users with \'%1$s\' and/or \'%2$s\' roles.', 'wpsso' ), _x( 'Administrator', 'user role', 'wpsso' ), _x( 'Editor', 'user role', 'wpsso' ) );
+							$text .= sprintf( __( 'The available Person list includes users with "%1$s" and/or "%2$s" roles.', 'wpsso' ),
+								_x( 'Administrator', 'user role', 'wpsso' ), _x( 'Editor', 'user role', 'wpsso' ) );
 
 							break;
 
@@ -1267,31 +1267,33 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-schema_img_dimensions':
+						case 'tooltip-schema_img_size':
 
-							$def_dimensions = $this->p->opt->get_defaults( 'schema_img_width' ) . 'x' .
-								$this->p->opt->get_defaults( 'schema_img_height' ) . ' ' .
-									( $this->p->opt->get_defaults( 'schema_img_crop' ) == 0 ? 'uncropped' : 'cropped' );
-
-							$text = sprintf( __( 'The image dimensions used for the Google / Pinterest / Schema meta tags and JSON-LD markup (the default dimensions are %s).', 'wpsso' ), $def_dimensions );
+							$text = sprintf( __( 'The image dimensions used for the Google / Pinterest / Schema meta tags and JSON-LD markup (the default dimensions are %s).', 'wpsso' ), $this->get_def_img_dims( 'schema' ) );
 
 							break;
 
-						case 'tooltip-schema_article_img_dimensions':
+						case 'tooltip-schema_article_img_size':
 
-							$def_dimensions = $this->p->opt->get_defaults( 'schema_article_img_width' ) . 'x' .
-								$this->p->opt->get_defaults( 'schema_article_img_height' ) . ' ' .
-									( $this->p->opt->get_defaults( 'schema_article_img_crop' ) == 0 ? 'uncropped' : 'cropped' );
+							$text = sprintf( __( 'The image dimensions used for Schema Article meta tags and JSON-LD markup (the default dimensions are %s).', 'wpsso' ), $this->get_def_img_dims( 'schema_article' ) ) . ' ';
 
-							$text = sprintf( __( 'The image dimensions used for Schema Article meta tags and JSON-LD markup (the default dimensions are %s).', 'wpsso' ), $def_dimensions ) . ' ';
+							$text .= sprintf( __( 'The minimum image width required by Google is %dpx.', 'wpsso' ),
+								$this->p->cf[ 'head' ][ 'limit_min' ][ 'schema_article_img_width' ] ). ' ';
 
-							$text .= '<strong>';
+							$text .= sprintf( __( 'If this image size is uncropped (default setting), the height value must be large enough to accommodate portrait / vertical images (default height is %dpx).', 'wpsso' ), $this->p->opt->get_defaults( 'schema_article_img_height' ) );
 
-							$text .= __( 'The minimum width required by Google for the resulting image is 696px.', 'wpsso' ) . ' ';
+							break;
 
-							$text .= '</strong>';
+						case 'tooltip-schema_article_amp1x1_img_size':
+						case 'tooltip-schema_article_amp4x3_img_size':
+						case 'tooltip-schema_article_amp16x9_img_size':
 
-							$text .= sprintf( __( 'If this image size is uncropped (default setting), the height value must be large enough to accommodate portrait / vertical images (default height is %s).', 'wpsso' ), $this->p->opt->get_defaults( 'schema_article_img_height' ) );
+							$ratio = preg_replace( '/^.*_amp([0-9x]+)_.*$/', '$1', $msg_key );
+
+							$text = sprintf( __( 'The image dimensions used for the Schema Article AMP %1$s image meta tags and JSON-LD markup (the default dimensions are %2$s).', 'wpsso' ), $ratio, $this->get_def_img_dims( 'schema_article_amp' . $ratio ) ) . ' ';
+
+							$text .= sprintf( __( 'The minimum image width required by Google is %dpx.', 'wpsso' ),
+								$this->p->cf[ 'head' ][ 'limit_min' ][ 'schema_article_amp' . $ratio . '_img_width' ] ). ' ';
 
 							break;
 
@@ -1417,27 +1419,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-tc_sum_img_dimensions':
-
-							$def_dimensions = $this->p->opt->get_defaults( 'tc_sum_img_width' ) . 'x' . 
-								$this->p->opt->get_defaults( 'tc_sum_img_height' ) . ' ' . 
-								( $this->p->opt->get_defaults( 'tc_sum_img_crop' ) == 0 ? 'uncropped' : 'cropped' );
+						case 'tooltip-tc_sum_img_size':
 
 							$text = sprintf( __( 'The image dimensions used for the <a href="%1$s">Summary Card</a> (should be at least %2$s and less than %3$s).', 'wpsso' ), 'https://dev.twitter.com/docs/cards/types/summary-card', '120x120px', __( '1MB', 'wpsso' ) ) . ' ';
 							
-							$text .= sprintf( __( 'The default image dimensions are %s.', 'wpsso' ), $def_dimensions );
+							$text .= sprintf( __( 'The default image dimensions are %s.', 'wpsso' ), $this->get_def_img_dims( 'tc_sum' ) );
 
 							break;
 
-						case 'tooltip-tc_lrg_img_dimensions':
-
-							$def_dimensions = $this->p->opt->get_defaults( 'tc_lrg_img_width' ) . 'x' . 
-								$this->p->opt->get_defaults( 'tc_lrg_img_height' ) . ' ' . 
-								( $this->p->opt->get_defaults( 'tc_lrg_img_crop' ) == 0 ? 'uncropped' : 'cropped' );
+						case 'tooltip-tc_lrg_img_size':
 
 							$text = sprintf( __( 'The image dimensions used for the <a href="%1$s">Large Image Summary Card</a> (must be larger than %2$s and less than %3$s).', 'wpsso' ), 'https://dev.twitter.com/docs/cards/large-image-summary-card', '280x150px', __( '1MB', 'wpsso' ) ) . ' ';
 
-							$text .= sprintf( __( 'The default image dimensions are %s.', 'wpsso' ), $def_dimensions );
+							$text .= sprintf( __( 'The default image dimensions are %s.', 'wpsso' ), $this->get_def_img_dims( 'tc_lrg' ) );
 
 							break;
 
@@ -1608,13 +1602,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-thumb_img_dimensions':
+						case 'tooltip-thumb_img_size':
 
-							$def_dimensions = $this->p->opt->get_defaults( 'thumb_img_width' ) . 'x' .
-								$this->p->opt->get_defaults( 'thumb_img_height' ) . ' ' .
-									( $this->p->opt->get_defaults( 'thumb_img_crop' ) == 0 ? 'uncropped' : 'cropped' );
-
-							$text = sprintf( __( 'The image dimensions used for the Schema "%1$s" property and the "%2$s" tag (the default dimensions are %3$s).', 'wpsso' ), 'thumbnailUrl', 'meta name thumbnail', $def_dimensions );
+							$text = sprintf( __( 'The image dimensions used for the Schema "%1$s" property and the "%2$s" tag (the default dimensions are %3$s).', 'wpsso' ), 'thumbnailUrl', 'meta name thumbnail', $this->get_def_img_dims( 'thumb' ) );
 
 							break;
 
@@ -1989,10 +1979,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								_x( 'SSO Image Sizes', 'lib file description', 'wpsso' ) );
 
 							$img_dim_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
-								_x( 'Enforce Image Dimensions Check', 'option label', 'wpsso' ) );
+								_x( 'Enforce Image Size Check', 'option label', 'wpsso' ) );
 
 							$upscale_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
-								_x( 'Allow Upscale of Media Library Images', 'option label', 'wpsso' ) );
+								_x( 'Upscale Media Library Images', 'option label', 'wpsso' ) );
 
 							$percent_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
 								_x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ) );
@@ -2497,6 +2487,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			}
 
 			return array( $ext, $p_ext );
+		}
+
+		private function get_def_img_dims( $opt_pre ) {
+
+			$def_opts = $this->p->opt->get_defaults();
+
+			$img_width   = empty( $def_opts[ $opt_pre . '_img_width' ] ) ? 0 : $def_opts[ $opt_pre . '_img_width' ];
+			$img_height  = empty( $def_opts[ $opt_pre . '_img_height' ] ) ? 0 : $def_opts[ $opt_pre . '_img_height' ];
+			$img_cropped = empty( $def_opts[ $opt_pre . '_img_crop' ] ) ?
+				_x( 'uncropped', 'option value', 'wpsso' ) :
+				_x( 'cropped', 'option value', 'wpsso' );
+
+			return $img_width . 'x' . $img_height . 'px ' . $img_cropped;
 		}
 	}
 }

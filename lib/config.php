@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '5.5.4-dev.1',	// Plugin version.
-					'opt_version' => '658',		// Increment when changing default option values.
+					'version'     => '5.6.0-dev.1',	// Plugin version.
+					'opt_version' => '659',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'WPSSO Core makes sure your content looks great on all social and search sites - no matter how URLs are crawled, shared, re-shared, posted, or embedded!',
@@ -106,7 +106,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'rtmedia'    => '(plugin) rtMedia for WordPress, BuddyPress and bbPress',
 								'slideshare' => '(api) Slideshare API',
 								'soundcloud' => '(api) Soundcloud API',
-								'upscale'    => '(feature) Media Library Image Upscaling',
+								'upscale'    => '(feature) Upscale Media Library Images',
 								'vimeo'      => '(api) Vimeo Video API',
 								'wistia'     => '(api) Wistia Video API',
 								'wpvideo'    => '(api) WP Video Shortcode API',
@@ -132,7 +132,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'buddypress' => '(plugin) BuddyPress',
 							),
 							'util' => array(
-								'checkimgdims'  => '(feature) Verify Image Dimensions',
+								'checkimgdims'  => '(feature) Enforce Image Size Check',
 								'custom-fields' => '(feature) Read Custom Fields by Name',
 								'coauthors'     => '(plugin) Co-Authors Plus',
 								'shorten'       => '(api) URL Shortening APIs',
@@ -798,8 +798,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'site_url'                          => '',
 					'site_org_schema_type'              => 'organization',
 					'site_place_id'                     => 'none',
-					'thumb_img_width'                   => 600,
-					'thumb_img_height'                  => 315,
+					'thumb_img_width'                   => 1200,
+					'thumb_img_height'                  => 630,
 					'thumb_img_crop'                    => 1,
 					'thumb_img_crop_x'                  => 'center',
 					'thumb_img_crop_y'                  => 'center',
@@ -815,23 +815,21 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_article_img_crop'           => 0,
 					'schema_article_img_crop_x'         => 'center',
 					'schema_article_img_crop_y'         => 'center',
-					/*
-					'schema_article_amp1x1_img_width'   => 1200,
+					'schema_article_amp1x1_img_width'   => 1200,		// Must be at least 1200px for Articles.
 					'schema_article_amp1x1_img_height'  => 1200,
 					'schema_article_amp1x1_img_crop'    => 1,
 					'schema_article_amp1x1_img_crop_x'  => 'center',
 					'schema_article_amp1x1_img_crop_y'  => 'center',
-					'schema_article_amp4x3_img_width'   => 1200,
+					'schema_article_amp4x3_img_width'   => 1200,		// Must be at least 1200px for Articles.
 					'schema_article_amp4x3_img_height'  => 900,
 					'schema_article_amp4x3_img_crop'    => 1,
 					'schema_article_amp4x3_img_crop_x'  => 'center',
 					'schema_article_amp4x3_img_crop_y'  => 'center',
-					'schema_article_amp16x9_img_width'  => 1200,
+					'schema_article_amp16x9_img_width'  => 1200,		// Must be at least 1200px for Articles.
 					'schema_article_amp16x9_img_height' => 675,
 					'schema_article_amp16x9_img_crop'   => 1,
 					'schema_article_amp16x9_img_crop_x' => 'center',
 					'schema_article_amp16x9_img_crop_y' => 'center',
-					*/
 					'schema_img_width'                  => 1200,		// Must be at least 400px.
 					'schema_img_height'                 => 1800,
 					'schema_img_crop'                   => 0,
@@ -921,8 +919,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_type_for_website'  => 'website',
 
 					'og_art_section'             => 'none',
-					'og_img_width'               => 600,
-					'og_img_height'              => 315,
+					'og_img_width'               => 1200,
+					'og_img_height'              => 630,
 					'og_img_crop'                => 1,
 					'og_img_crop_x'              => 'center',
 					'og_img_crop_y'              => 'center',
@@ -958,12 +956,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tc_desc_max_len'   => 200,			// Maximum Description Length (hard limit).
 					'tc_type_singular'  => 'summary_large_image',
 					'tc_type_default'   => 'summary',
-					'tc_sum_img_width'  => 600,			// Summary Card Image Dimensions.
-					'tc_sum_img_height' => 315,
+					'tc_sum_img_width'  => 1200,
+					'tc_sum_img_height' => 630,
 					'tc_sum_img_crop'   => 1,
 					'tc_sum_img_crop_x' => 'center',
 					'tc_sum_img_crop_y' => 'center',
-					'tc_lrg_img_width'  => 1200,			// Large Image Card Img Dimensions.
+					'tc_lrg_img_width'  => 1200,
 					'tc_lrg_img_height' => 1800,
 					'tc_lrg_img_crop'   => 0,
 					'tc_lrg_img_crop_x' => 'center',
@@ -1217,8 +1215,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_page_excerpt'               => 0,			// Enable WP Excerpt for Pages.
 					'plugin_page_tags'                  => 0,			// Enable WP Tags for Pages.
 					'plugin_check_head'                 => 1,			// Check for Duplicate Meta Tags.
-					'plugin_check_img_dims'             => 0,			// Enforce Image Dimensions Check.
-					'plugin_upscale_images'             => 0,			// Allow Upscale of Smaller Images.
+					'plugin_check_img_dims'             => 0,			// Enforce Image Size Check.
+					'plugin_upscale_images'             => 0,			// Upscale Media Library Images.
 					'plugin_upscale_img_max'            => 33,			// Maximum Image Upscale Percent.
 					'plugin_product_attr_brand'         => 'Brand',			// Product Brand Attribute Name.
 					'plugin_product_attr_color'         => 'Color',			// Product Color Attribute Name.
@@ -1420,9 +1418,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_page_tags:use'             => 'default',
 					'plugin_check_head'                => 1,		// Check for Duplicate Meta Tags.
 					'plugin_check_head:use'            => 'default',
-					'plugin_check_img_dims'            => 0,		// Enforce Image Dimensions Check.
+					'plugin_check_img_dims'            => 0,		// Enforce Image Size Check.
 					'plugin_check_img_dims:use'        => 'default',
-					'plugin_upscale_images'            => 0,		// Allow Upscale of Smaller Images.
+					'plugin_upscale_images'            => 0,		// Upscale Media Library Images.
 					'plugin_upscale_images:use'        => 'default',
 					'plugin_upscale_img_max'           => 33,		// Maximum Image Upscale Percent.
 					'plugin_upscale_img_max:use'       => 'default',
@@ -1975,7 +1973,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_wpvideo_api'    => 'WordPress Video Shortcode',
 					'plugin_youtube_api'    => 'YouTube Videos and Playlists',
 				),
-				'cf_labels' => array(		// Custom field option labels.
+
+				/**
+				 * Custom field option labels.
+				 */
+				'cf_labels' => array(
 					'plugin_cf_img_url'               => 'Image URL Custom Field',
 					'plugin_cf_addl_type_urls'        => 'Microdata Type URLs Custom Field',
 					'plugin_cf_howto_steps'           => 'How-To Steps Custom Field',
@@ -2010,7 +2012,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_vid_url'               => 'Video URL Custom Field',
 					'plugin_cf_vid_embed'             => 'Video Embed HTML Custom Field',
 				),
-				'product_attr_labels' => array(		// Product attribute option labels.
+
+				/**
+				 * Product attribute option labels.
+				 */
+				'product_attr_labels' => array(
 					'plugin_product_attr_brand'         => 'Product Brand Attribute Name',
 					'plugin_product_attr_color'         => 'Product Color Attribute Name',
 					'plugin_product_attr_condition'     => 'Product Condition Attribute Name',
@@ -2087,20 +2093,23 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'head' => array(
+				'limit' => array(
+					'schema_article_amp1x1_img_ratio'  => 1.000,
+					'schema_article_amp4x3_img_ratio'  => 1.333,
+					'schema_article_amp16x9_img_ratio' => 1.778,
+				),
 				'limit_min' => array(
 					'og_desc_len'                       => 160,
 					'og_img_width'                      => 200,	// See https://developers.facebook.com/docs/sharing/best-practices.
 					'og_img_height'                     => 200,
 					'schema_article_img_width'          => 696,	// See https://developers.google.com/search/docs/data-types/articles.
 					'schema_article_img_height'         => 279,	// Calculated from the Article minimum image width and maximum image ratio.
-					/*
 					'schema_article_amp1x1_img_width'   => 1200,
 					'schema_article_amp1x1_img_height'  => 1200,
 					'schema_article_amp4x3_img_width'   => 1200,
 					'schema_article_amp4x3_img_height'  => 900,
 					'schema_article_amp16x9_img_width'  => 1200,
 					'schema_article_amp16x9_img_height' => 675,
-					*/
 					'schema_desc_len'                   => 156,
 					'schema_img_width'                  => 400,	// See https://developers.google.com/+/web/snippet/article-rendering.
 					'schema_img_height'                 => 160,
@@ -2110,15 +2119,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'thumb_img_height'                  => 200,
 				),
 				'limit_max' => array(
-					'og_img_ratio'                     => 3,
-					'schema_article_img_ratio'         => 2.5,
-					/*
-					'schema_article_amp1x1_img_ratio'  => 1,
-					'schema_article_amp4x3_img_ratio'  => 1.33,
-					'schema_article_amp16x9_img_ratio' => 1.78,
-					*/
+					'og_img_ratio'                     => 3.000,
+					'schema_article_img_ratio'         => 2.500,
 					'schema_headline_len'              => 110,
-					'schema_img_ratio'                 => 2.5,	// See https://developers.google.com/+/web/snippet/article-rendering.
+					'schema_img_ratio'                 => 2.500,	// See https://developers.google.com/+/web/snippet/article-rendering.
 				),
 				'og_type_ns' => array(		// See http://ogp.me/#types.
 					'article'             => 'http://ogp.me/ns/article#',

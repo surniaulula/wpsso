@@ -194,7 +194,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						_x( 'video preview images are enabled (and included first)', 'option comment', 'wpsso' ) . '</em>' ) . '</td>';
 
 					$table_rows[ 'og_img' ] = '' . 
-					$this->form->get_th_html( _x( 'Open Graph Image Dimensions', 'option label', 'wpsso' ), '', 'og_img_dimensions' ) . 
+					$this->form->get_th_html( _x( 'Open Graph Image Size', 'option label', 'wpsso' ), '', 'og_img_size' ) . 
 					'<td>' . $this->form->get_input_image_dimensions( 'og_img' ) . '</td>';	// $use_opts = false
 
 					$table_rows[ 'og_def_img_id' ] = '' . 
@@ -316,11 +316,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>' . $this->form->get_select( 'tc_type_default', $tc_types ) . '</td>';
 
 					$table_rows[ 'tc_sum_img' ] = '' . 
-					$this->form->get_th_html( _x( 'Summary Card Image Dimensions', 'option label', 'wpsso' ), '', 'tc_sum_img_dimensions' ) . 
+					$this->form->get_th_html( _x( 'Summary Card Image Size', 'option label', 'wpsso' ), '', 'tc_sum_img_size' ) . 
 					'<td>' . $this->form->get_input_image_dimensions( 'tc_sum_img' ) . '</td>';	// $use_opts = false
 
 					$table_rows[ 'tc_lrg_img' ] = '' . 
-					$this->form->get_th_html( _x( 'Large Image Card Img Dimensions', 'option label', 'wpsso' ), '', 'tc_lrg_img_dimensions' ) . 
+					$this->form->get_th_html( _x( 'Large Image Summary Card Img Size', 'option label', 'wpsso' ), '', 'tc_lrg_img_size' ) . 
 					'<td>' . $this->form->get_input_image_dimensions( 'tc_lrg_img' ) . '</td>';	// $use_opts = false
 
 					break;

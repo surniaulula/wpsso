@@ -497,7 +497,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					$og_prev_img_html .= '; background-image:url(' . $media_url . ');" />';
 
 					if ( ! $is_sufficient ) {
-						$og_prev_img_html .= '<p>' . sprintf( _x( 'Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s',
+						$og_prev_img_html .= '<p>' . sprintf( _x( 'Image Size Smaller<br/>than Suggested Minimum<br/>of %s',
 							'preview image error', 'wpsso' ), $og_prev_width . 'x' . $og_prev_height . 'px' ) . '</p>';
 					}
 
@@ -507,7 +507,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 					$og_prev_img_html .= '<div class="preview_img" style="background-image:url(' . $media_url . ');" />';
 
-					$og_prev_img_html .= '<p>' . _x( 'Image Dimensions Unknown<br/>or Not Available', 'preview image error', 'wpsso' ) . '</p>';
+					$og_prev_img_html .= '<p>' . _x( 'Image Size Unknown<br/>or Not Available', 'preview image error', 'wpsso' ) . '</p>';
 
 					$og_prev_img_html .= '</div>';
 				}
