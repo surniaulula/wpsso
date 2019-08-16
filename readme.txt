@@ -437,7 +437,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.6.0-dev.1 (2019/08/15)**
+**Version 5.6.0-dev.2 (2019/08/16)**
 
 * **New Features**
 	* None.
@@ -450,7 +450,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed "is_post_type_archive" detection by replacing `is_post_type_archive( $post_type )` from WordPress by `SucomUtil::is_post_type_archive( $post_type, $post_slug )`.
 * **Developer Notes**
-	* None.
+	* Updated the SucomUtil::is_amp() method to call `is_amp_endpoint()` and `ampforwp_is_amp_endpoint()` if available.
 
 **Version 5.5.3 (2019/08/13)**
 
@@ -628,9 +628,9 @@ This version includes several jQuery improvements to optimize both the size of s
 
 == Upgrade Notice ==
 
-= 5.6.0-dev.1 =
+= 5.6.0-dev.2 =
 
-(2019/08/15) Added new image dimensions in the WordPress &gt; Settings &gt; SSO Image Sizes page. Fixed "is_post_type_archive" detection.
+(2019/08/16) Added new image dimensions in the WordPress &gt; Settings &gt; SSO Image Sizes page. Fixed "is_post_type_archive" detection.
 
 = 5.5.3 =
 
