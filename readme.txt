@@ -437,7 +437,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 5.6.0-dev.2 (2019/08/16)**
+**Version 6.0.0-dev.2 (2019/08/16)**
 
 * **New Features**
 	* None.
@@ -451,6 +451,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed "is_post_type_archive" detection by replacing `is_post_type_archive( $post_type )` from WordPress by `SucomUtil::is_post_type_archive( $post_type, $post_slug )`.
 * **Developer Notes**
 	* Updated the SucomUtil::is_amp() method to call `is_amp_endpoint()` and `ampforwp_is_amp_endpoint()` if available.
+	* Added a new WpssoMedia::get_cropped_image_filename() method to return better resized filenames. 
+	* Renamed the WpssoMedia::can_make_size() method to can_make_intermediate_size().
+	* Removed the $force_regen argument from the WpssoUser::get_og_images() method.
+	* Removed the $force_regen argument from the WpssoWpMeta::get_og_images() method.
+	* Removed the $force_regen argument from the WpssoWpMeta::get_md_images() method.
+	* Removed the $force_regen argument from the WpssoMedia::get_featured() method.
+	* Removed the $force_regen argument from the WpssoMedia::get_attached_images() method.
+	* Removed the $force_regen argument from the WpssoMedia::get_attachment_image_url() method.
+	* Removed the $force_regen argument from the WpssoMedia::get_attachment_image_src() method.
+	* Removed the $force_regen argument from the WpssoMedia::get_default_images() method.
+	* Removed the $force_regen argument from the WpssoMedia::get_content_images() method.
+	* Removed the $force_regen argument from the WpssoMedia::add_mt_single_image_src() method.
+	* Removed the WpssoUtil::is_force_regen() method.
+	* Removed the WpssoUtil::set_force_regen() method.
+	* Removed the WpssoUtil::get_force_regen_key() method.
 
 **Version 5.5.3 (2019/08/13)**
 
@@ -628,7 +643,7 @@ This version includes several jQuery improvements to optimize both the size of s
 
 == Upgrade Notice ==
 
-= 5.6.0-dev.2 =
+= 6.0.0-dev.2 =
 
 (2019/08/16) Added new image dimensions in the WordPress &gt; Settings &gt; SSO Image Sizes page. Fixed "is_post_type_archive" detection.
 
