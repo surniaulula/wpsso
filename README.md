@@ -125,14 +125,14 @@
 <li>Priority Media
 
 <ul>
-<li>All Social WebSites / Open Graph
+<li>Facebook / Open Graph / Default Media
 
 <ul>
 <li>Priority Image Information
 
 <ul>
 <li>Maximum Images</li>
-<li>Image Size</li>
+<li>Image Subject Area</li>
 <li>Image ID</li>
 <li>or Image URL</li>
 </ul></li>
@@ -140,7 +140,7 @@
 
 <ul>
 <li>Maximum Videos</li>
-<li>Video Dimensions</li>
+<li>Video Size</li>
 <li>or Video URL</li>
 <li>Video Name / Title</li>
 <li>Video Description</li>
@@ -149,12 +149,12 @@
 <li>Twitter Card
 
 <ul>
-<li>Image Size</li>
+<li>Image Subject Area</li>
 <li>Image ID</li>
 <li>or Image URL</li>
 <li>Structured Data / Schema Markup / Pinterest</li>
 <li>Maximum Images</li>
-<li>Image Size</li>
+<li>Image Subject Area</li>
 <li>Image ID</li>
 <li>or Image URL</li>
 </ul></li>

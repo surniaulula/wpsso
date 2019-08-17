@@ -118,25 +118,25 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 			* Product MPN
 			* Product ISBN
 	* Priority Media
-		* All Social WebSites / Open Graph
+		* Facebook / Open Graph / Default Media
 			* Priority Image Information
 				* Maximum Images
-				* Image Size
+				* Image Subject Area
 				* Image ID
 				* or Image URL
 			* Priority Video Information
 				* Maximum Videos
-				* Video Dimensions
+				* Video Size
 				* or Video URL
 				* Video Name / Title
 				* Video Description
 		* Twitter Card
-			* Image Size
+			* Image Subject Area
 			* Image ID
 			* or Image URL
 		 * Structured Data / Schema Markup / Pinterest
 			* Maximum Images
-			* Image Size
+			* Image Subject Area
 			* Image ID
 			* or Image URL
 
@@ -437,10 +437,22 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.0.0-dev.2 (2019/08/16)**
+**Version 6.0.0-dev.3 (2019/08/17)**
 
 * **New Features**
-	* None.
+	* Resized cropped image filenames are now saved with their cropping information, allowing the same image to be available with identical dimensions, but different main subject (ie. cropping) areas for different markup (Facebook / Open Graph, Google / Schema, etc.).
+		* Examples of default WordPress image filenames:
+			* Filename-1200x630.jpg (maybe a 1200x630px uncropped image).
+			* Filename-1200x630.jpg (maybe a 1200x630px cropped image).
+			* Filename-1200x630.jpg (maybe a 1200x630px cropped center-center image).
+			* Filename-1200x630.jpg (maybe a 1200x630px cropped center-top image).
+			* etc.
+		* Examples of the new WPSSO Core image filenames:
+			* Filename-1200x630.jpg (a 1200x630px uncropped image).
+			* Filename-1200x630-cropped.jpg (a 1200x630px cropped image).
+			* Filename-1200x630-cropped-center-center.jpg (a 1200x630px cropped center-center image).
+			* Filename-1200x630-cropped-center-top.jpg (a 1200x630px cropped center-top image).
+			* etc.
 * **Improvements**
 	* Added new image dimensions in the WordPress &gt; Settings &gt; SSO Image Sizes page:
 		* Schema Article AMP 1x1 (Google)
@@ -450,22 +462,22 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed "is_post_type_archive" detection by replacing `is_post_type_archive( $post_type )` from WordPress by `SucomUtil::is_post_type_archive( $post_type, $post_slug )`.
 * **Developer Notes**
-	* Updated the SucomUtil::is_amp() method to call `is_amp_endpoint()` and `ampforwp_is_amp_endpoint()` if available.
-	* Added a new WpssoMedia::get_cropped_image_filename() method to return better resized filenames. 
-	* Renamed the WpssoMedia::can_make_size() method to can_make_intermediate_size().
-	* Removed the $force_regen argument from the WpssoUser::get_og_images() method.
-	* Removed the $force_regen argument from the WpssoWpMeta::get_og_images() method.
-	* Removed the $force_regen argument from the WpssoWpMeta::get_md_images() method.
-	* Removed the $force_regen argument from the WpssoMedia::get_featured() method.
-	* Removed the $force_regen argument from the WpssoMedia::get_attached_images() method.
-	* Removed the $force_regen argument from the WpssoMedia::get_attachment_image_url() method.
-	* Removed the $force_regen argument from the WpssoMedia::get_attachment_image_src() method.
-	* Removed the $force_regen argument from the WpssoMedia::get_default_images() method.
-	* Removed the $force_regen argument from the WpssoMedia::get_content_images() method.
-	* Removed the $force_regen argument from the WpssoMedia::add_mt_single_image_src() method.
-	* Removed the WpssoUtil::is_force_regen() method.
-	* Removed the WpssoUtil::set_force_regen() method.
-	* Removed the WpssoUtil::get_force_regen_key() method.
+	* Updated the `SucomUtil::is_amp()` method to call `is_amp_endpoint()` and `ampforwp_is_amp_endpoint()` if available.
+	* Added a new `WpssoMedia::get_cropped_image_filename()` method to return better resized filenames. 
+	* Renamed the `WpssoMedia::can_make_size()` method to can_make_intermediate_size().
+	* Removed the `$force_regen` argument from the `WpssoUser::get_og_images()` method.
+	* Removed the `$force_regen` argument from the `WpssoWpMeta::get_og_images()` method.
+	* Removed the `$force_regen` argument from the `WpssoWpMeta::get_md_images()` method.
+	* Removed the `$force_regen` argument from the `WpssoMedia::get_featured()` method.
+	* Removed the `$force_regen` argument from the `WpssoMedia::get_attached_images()` method.
+	* Removed the `$force_regen` argument from the `WpssoMedia::get_attachment_image_url()` method.
+	* Removed the `$force_regen` argument from the `WpssoMedia::get_attachment_image_src()` method.
+	* Removed the `$force_regen` argument from the `WpssoMedia::get_default_images()` method.
+	* Removed the `$force_regen` argument from the `WpssoMedia::get_content_images()` method.
+	* Removed the `$force_regen` argument from the `WpssoMedia::add_mt_single_image_src()` method.
+	* Removed the `WpssoUtil::is_force_regen()` method.
+	* Removed the `WpssoUtil::set_force_regen()` method.
+	* Removed the `WpssoUtil::get_force_regen_key()` method.
 
 **Version 5.5.3 (2019/08/13)**
 
@@ -474,7 +486,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Removed the "Use HTTPS for Video API Requests" option (HTTPS is now used for every API request).
 * **Bugfixes**
-	* Fixed a variable reset issue in WpssoSchemaGraph::optimize() that would remove optimized JSON blocks.
+	* Fixed a variable reset issue in `WpssoSchemaGraph::optimize()` that would remove optimized JSON blocks.
 * **Developer Notes**
 	* None.
 
@@ -489,7 +501,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Refactored the WpssoSchemaGraph method and variable names.
 	* Changed most `$mod` and `$mt_og` pass-by-reference method argument variables to standard variables.
-	* Removed the unnecessary `$mt_og` variable from the WpssoOpenGraph::get_array() method arguments.
+	* Removed the unnecessary `$mt_og` variable from the `WpssoOpenGraph::get_array()` method arguments.
 	* Changed the "required" input field CSS class name to "value_req".
 
 **Version 5.5.1 (2019/08/07)**
@@ -514,7 +526,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed missing admin library loader definition for 'meta-edit'.
 * **Developer Notes**
-	* Added a call to WpssoUtil::replace_inline_vars() for title and description values.
+	* Added a call to `WpssoUtil::replace_inline_vars()` for title and description values.
 	* Removed the WpssoSchemaCache class.
 
 **Version 5.4.0 (2019/08/02)**
@@ -530,7 +542,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added extra sanity checks in SucomUtil::get_page_url() for edge cases when `get_post()` does not (or cannot) return a post object.
+	* Added extra sanity checks in `SucomUtil::get_page_url()` for edge cases when `get_post()` does not (or cannot) return a post object.
 	* Unified the post.php, term.php, and user.php library files under lib/*/admin/ in a single meta-edit.php library file.
 
 **Version 5.3.2 (2019/07/28)**
@@ -551,7 +563,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* Fixed incorrect substr() in WpssoMessages::get_ext_p_ext().
+	* Fixed incorrect substr() in `WpssoMessages::get_ext_p_ext()`.
 * **Developer Notes**
 	* None.
 
@@ -574,9 +586,9 @@ This version includes several jQuery improvements to optimize both the size of s
 	* Fixed the 'on_show_unhide_rows' event by changing the unhide function call from `$(document).ready()` to `$(window).load()`.
 	* Fixed duplicated Schema VideoObject markup from the YouTube integration module (Premium version).
 * **Developer Notes**
-	* Added a new String.prototype.formatUnicorn() javascript function (for min, max, and required status messages).
-	* Added a new WpssoScript::get_metabox_script_data() method (for min, max, and required status message translations).
-	* Added a new 'on_focus_load_json' event name argument for SucomForm::get_select().
+	* Added a new `String.prototype.formatUnicorn()` javascript function (for min, max, and required status messages).
+	* Added a new `WpssoScript::get_metabox_script_data()` method (for min, max, and required status message translations).
+	* Added a new 'on_focus_load_json' event name argument for `SucomForm::get_select()`.
 	* Documented the default Schema property maximums (used by the WPSSO JSON add-on) in constants.txt:
 		* WPSSO_SCHEMA_ITEMS_PER_LIST_MAX          = 200
 		* WPSSO_SCHEMA_MENTIONS_PER_COLLECTION_MAX = 30
@@ -610,15 +622,15 @@ This version includes several jQuery improvements to optimize both the size of s
 	* Mapped the `product:ean` meta tag to the 'product_gtin13' value.
 	* Added a min/max character counter to the Product ISBN input field.
 * **Bugfixes**
-	* Fixed an incorrect variable use in the WpssoAdmin::get_option_site_use() static method.
+	* Fixed an incorrect variable use in the `WpssoAdmin::get_option_site_use()` static method.
 	* Fixed missing "product:weight:units" meta tag when a Product Weight value is entered in the Document SSO metabox.
 * **Developer Notes**
-	* Moved the WpssoWpMeta::get_custom_fields() method to a 'wpsso_get_custom_fields' filter hook.
-	* Added a new WpssoConfig::$cf[ 'head' ][ 'schema_units' ] array.
-	* Refactored the WpssoSchema::add_data_unit_from_assoc() method.
-	* Added a new WpssoSchema::get_data_unit_text() static method.
-	* Added a new WpssoAdmin::get_option_unit_comment() static method.
-	* Added minimum text length support to the SucomForm::get_input() method.
+	* Moved the `WpssoWpMeta::get_custom_fields()` method to a 'wpsso_get_custom_fields' filter hook.
+	* Added a new `WpssoConfig::$cf[ 'head' ][ 'schema_units' ]` array.
+	* Refactored the `WpssoSchema::add_data_unit_from_assoc()` method.
+	* Added a new `WpssoSchema::get_data_unit_text()` static method.
+	* Added a new `WpssoAdmin::get_option_unit_comment()` static method.
+	* Added minimum text length support to the `SucomForm::get_input()` method.
 
 **Version 5.1.0 (2019/07/06)**
 
@@ -636,16 +648,16 @@ This version includes several jQuery improvements to optimize both the size of s
 	* Added a new 'wpsso_wc_variation_title' filter.
 	* Refactored several Schema methods for standardization and "@id" optimizations:
 		* Added WpssoSchemaGraph class with add(), get(), and optimize() methods.
-		* Added WpssoSchema::add_videos_data_mt().
-		* Moved WpssoSchema::add_og_single_image_data() to WpssoSchemaSingle::add_image_data_mt().
-		* Renamed WpssoSchema::add_og_image_list_data() to WpssoSchema::add_images_data_mt().
-		* Renamed WpssoSchema::update_json_data_id() to WpssoSchema::update_data_id().
+		* Added `WpssoSchema::add_videos_data_mt()`.
+		* Moved `WpssoSchema::add_og_single_image_data()` to `WpssoSchemaSingle::add_image_data_mt()`.
+		* Renamed `WpssoSchema::add_og_image_list_data()` to `WpssoSchema::add_images_data_mt()`.
+		* Renamed `WpssoSchema::update_json_data_id()` to `WpssoSchema::update_data_id()`.
 
 == Upgrade Notice ==
 
-= 6.0.0-dev.2 =
+= 6.0.0-dev.3 =
 
-(2019/08/16) Added new image dimensions in the WordPress &gt; Settings &gt; SSO Image Sizes page. Fixed "is_post_type_archive" detection.
+(2019/08/17) Added new image dimensions in the WordPress &gt; Settings &gt; SSO Image Sizes page. Fixed "is_post_type_archive" detection.
 
 = 5.5.3 =
 
