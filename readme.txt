@@ -459,6 +459,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Schema Article AMP 4x3 (Google)
 		* Schema Article AMP 16x9 (Google)
 	* Updated the default Facebook Open Graph image size from 600x315 to 1200x630.
+	* Replaced the "Image Size" options in the Document SSO metaboxes by new "Image Subject Area" options (to select a custom image cropping area).
 * **Bugfixes**
 	* Fixed "is_post_type_archive" detection by replacing `is_post_type_archive( $post_type )` from WordPress by `SucomUtil::is_post_type_archive( $post_type, $post_slug )`.
 * **Developer Notes**
