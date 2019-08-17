@@ -342,7 +342,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 				'subsection_opengraph' => array(
 					'td_class' => 'subsection top',
 					'header'   => 'h4',
-					'label'    => _x( 'All Social WebSites / Open Graph', 'metabox title', 'wpsso' ),
+					'label'    => _x( 'Facebook / Open Graph / Default Media', 'metabox title', 'wpsso' ),
 				),
 				'subsection_priority_image' => array(
 					'td_class' => 'subsection top',
@@ -358,13 +358,12 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'content'  => $form->get_no_select( 'og_img_max',
 						range( 0, $this->p->cf[ 'form' ][ 'max_media_items' ] ), 'medium' ),
 				) : '',	// Placeholder if not a post module.
-				'og_img_size' => array(
-					'tr_class' => $form->get_css_class_hide_img_dim( 'basic', 'og_img' ),
+				'og_img_crop_area' => array(
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'Image Size', 'option label', 'wpsso' ),
-					'tooltip'  => 'og_img_size',
-					'content'  => $form->get_no_input_image_dimensions( 'og_img', true ),	// $use_opts is true.
+					'label'    => _x( 'Image Subject Area', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-og_img_crop_area',
+					'content'  => $form->get_no_input_image_crop_area( 'og_img', $load_placeholders = true ),
 				),
 				'og_img_id' => array(
 					'th_class' => 'medium',
@@ -406,7 +405,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'tr_class' => $form->get_css_class_hide_vid_dim( 'basic', 'og_vid' ),
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'Video Dimensions', 'option label', 'wpsso' ),
+					'label'    => _x( 'Video Size', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_vid_dimensions',
 					'content'  => $form->get_no_input_video_dimensions( 'og_vid' ),
 				),
@@ -452,7 +451,10 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 				$media_info = $this->p->og->get_media_info( $size_name,
 					array( 'pid', 'img_url' ), $mod, $md_pre = 'og', $mt_pre = 'og' );
 	
-				$tc_tr_class = $form->in_options( '/^' . $tc_pre . '_img_/', true ) ? '' : 'hide_in_basic';	// Hide unless a custom twitter card image exists.
+				/**
+				 * Hide unless a custom twitter card image exists.
+				 */
+				$tc_tr_class = $form->in_options( '/^' . $tc_pre . '_img_/', true ) ? '' : 'hide_in_basic';
 
 				$form_rows[ 'subsection_tc' ] = array(
 					'tr_class' => $tc_tr_class,
@@ -461,13 +463,13 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'label'    => $card_label,
 				);
 
-				$form_rows[ $tc_pre . '_img_size' ] = array(
-					'tr_class' => $form->get_css_class_hide_img_dim( 'basic', $tc_pre . '_img' ),
+				$form_rows[ $tc_pre . '_img_crop_area' ] = array(
+					'tr_class' => $tc_tr_class,
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'Image Size', 'option label', 'wpsso' ),
-					'tooltip'  => $tc_pre . '_img_size',
-					'content'  => $form->get_no_input_image_dimensions( $tc_pre . '_img', true ),	// $use_opts is true.
+					'label'    => _x( 'Image Subject Area', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-' . $tc_pre . '_img_crop_area',
+					'content'  => $form->get_no_input_image_crop_area( $tc_pre . '_img', $load_placeholders = true ),
 				);
 
 				$form_rows[ $tc_pre . '_img_id' ] = array(
@@ -515,13 +517,13 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 				);
 			}
 
-			$form_rows[ 'schema_img_size' ] = array(
-				'tr_class' => $form->get_css_class_hide_img_dim( 'basic', 'schema_img' ),
+			$form_rows[ 'schema_img_crop_area' ] = array(
+				'tr_class' => $schema_tr_class,
 				'th_class' => 'medium',
 				'td_class' => 'blank',
-				'label'    => _x( 'Image Size', 'option label', 'wpsso' ),
-				'tooltip'  => 'schema_img_size',
-				'content'  => $form->get_no_input_image_dimensions( 'schema_img', true ),	// $use_opts is true.
+				'label'    => _x( 'Image Subject Area', 'option label', 'wpsso' ),
+				'tooltip'  => 'meta-schema_img_crop_area',
+				'content'  => $form->get_no_input_image_crop_area( 'schema_img', $load_placeholders = true ),
 			);
 
 			$form_rows[ 'schema_img_id' ] = array(

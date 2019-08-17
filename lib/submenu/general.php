@@ -35,7 +35,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 			$this->maybe_show_language_notice();
 
 			$metabox_id      = 'opengraph';
-			$metabox_title   = _x( 'All Social WebSites / Open Graph', 'metabox title', 'wpsso' );
+			$metabox_title   = _x( 'General Settings', 'metabox title', 'wpsso' );
 			$metabox_screen  = $this->pagehook;
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
@@ -47,7 +47,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$metabox_context, $metabox_prio, $callback_args );
 
 			$metabox_id      = 'publishers';
-			$metabox_title   = _x( 'Specific WebSites and Publishers', 'metabox title', 'wpsso' );
+			$metabox_title   = _x( 'Specific Sites and Publishers', 'metabox title', 'wpsso' );
 			$metabox_screen  = $this->pagehook;
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';

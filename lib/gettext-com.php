@@ -20,6 +20,8 @@ __( 'Failed to open the cache file %s for reading.', 'wpsso' );
 __( 'Failed to create the %s cache folder.', 'wpsso' );
 __( 'Cache folder %s is not writable.', 'wpsso' );
 __( 'Failed to open the cache file %s for writing.', 'wpsso' );
+_x( 'crop', 'option comment', 'wpsso' );
+_x( 'from', 'option comment', 'wpsso' );
 __( 'Save a draft version or publish to update this value.', 'wpsso' );
 __( '%s Notice', 'wpsso' );
 __( 'Notice', 'wpsso' );

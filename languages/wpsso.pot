@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.0.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 6.0.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1037,42 +1037,42 @@ msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 
 #: lib/com/bfo.php:253 lib/com/cache.php:77 lib/com/notice.php:76
-#: lib/gettext-com.php:6 lib/gettext-com.php:24 lib/gettext-com.php:31
+#: lib/gettext-com.php:6 lib/gettext-com.php:26 lib/gettext-com.php:33
 msgid "%s Notice"
 msgstr ""
 
 #: lib/com/bfo.php:256 lib/com/cache.php:80 lib/com/notice.php:79
-#: lib/gettext-com.php:7 lib/gettext-com.php:25 lib/gettext-com.php:32
+#: lib/gettext-com.php:7 lib/gettext-com.php:27 lib/gettext-com.php:34
 msgid "Notice"
 msgstr ""
 
-#: lib/com/bfo.php:273 lib/gettext-com.php:33
+#: lib/com/bfo.php:273 lib/gettext-com.php:35
 msgid ""
 "The \"%1$s\" hook with priority %2$d in the \"%3$s\" filter has incorrectly "
 "sent output to the webpage."
 msgstr ""
 
-#: lib/com/bfo.php:276 lib/gettext-com.php:34
+#: lib/com/bfo.php:276 lib/gettext-com.php:36
 msgid ""
 "All WordPress filter hooks must return their text, not send it to the "
 "webpage output."
 msgstr ""
 
-#: lib/com/bfo.php:279 lib/gettext-com.php:35
+#: lib/com/bfo.php:279 lib/gettext-com.php:37
 msgid ""
 "Please contact the author of that filter hook and report this issue as a "
 "coding error."
 msgstr ""
 
-#: lib/com/bfo.php:312 lib/gettext-com.php:36
+#: lib/com/bfo.php:312 lib/gettext-com.php:38
 msgid "Incorrect webpage output:"
 msgstr ""
 
-#: lib/com/bfo.php:313 lib/gettext-com.php:37
+#: lib/com/bfo.php:313 lib/gettext-com.php:39
 msgid "BEGIN OUTPUT"
 msgstr ""
 
-#: lib/com/bfo.php:314 lib/gettext-com.php:38
+#: lib/com/bfo.php:314 lib/gettext-com.php:40
 msgid "END OUTPUT"
 msgstr ""
 
@@ -1141,38 +1141,48 @@ msgstr ""
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: lib/com/form.php:1938 lib/gettext-com.php:23 lib/post.php:1390
+#: lib/com/form.php:1157 lib/gettext-com.php:23
+msgctxt "option comment"
+msgid "crop"
+msgstr ""
+
+#: lib/com/form.php:1162 lib/gettext-com.php:24
+msgctxt "option comment"
+msgid "from"
+msgstr ""
+
+#: lib/com/form.php:1933 lib/gettext-com.php:25 lib/post.php:1390
 #: lib/wp-meta.php:482
 msgid "Save a draft version or publish to update this value."
 msgstr ""
 
-#: lib/com/notice.php:169 lib/gettext-com.php:26
+#: lib/com/notice.php:169 lib/gettext-com.php:28
 msgid "Forever"
 msgstr ""
 
-#: lib/com/notice.php:171 lib/gettext-com.php:27
+#: lib/com/notice.php:171 lib/gettext-com.php:29
 msgid "This notice can be dismissed permanently."
 msgstr ""
 
-#: lib/com/notice.php:182 lib/gettext-com.php:28
+#: lib/com/notice.php:182 lib/gettext-com.php:30
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:391 lib/gettext-com.php:29 lib/post.php:1579
+#: lib/com/notice.php:391 lib/gettext-com.php:31 lib/post.php:1579
 msgid "Edit"
 msgstr ""
 
-#: lib/com/notice.php:395 lib/gettext-com.php:30
+#: lib/com/notice.php:395 lib/gettext-com.php:32
 msgid "Reference: %s"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/com/plugin.php:271 lib/gettext-com.php:40
+#: lib/com/plugin.php:271 lib/gettext-com.php:42
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/com/plugin.php:282 lib/gettext-com.php:42
+#: lib/com/plugin.php:282 lib/gettext-com.php:44
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
@@ -1261,7 +1271,7 @@ msgctxt "lib file description"
 msgid "Your SSO"
 msgstr ""
 
-#: lib/gettext-config.php:23 lib/messages.php:774 lib/messages.php:1979
+#: lib/gettext-config.php:23 lib/messages.php:793 lib/messages.php:2000
 msgctxt "lib file description"
 msgid "SSO Image Sizes"
 msgstr ""
@@ -1271,7 +1281,7 @@ msgctxt "lib file description"
 msgid "SSO Contact Fields"
 msgstr ""
 
-#: lib/gettext-config.php:25 lib/messages.php:1225
+#: lib/gettext-config.php:25 lib/messages.php:1244
 msgctxt "lib file description"
 msgid "SSO WebSite Pages"
 msgstr ""
@@ -1286,8 +1296,8 @@ msgctxt "lib file description"
 msgid "Complementary Add-ons"
 msgstr ""
 
-#: lib/gettext-config.php:28 lib/gettext-config.php:34 lib/messages.php:1794
-#: lib/messages.php:2088 lib/messages.php:2097 lib/messages.php:2109
+#: lib/gettext-config.php:28 lib/gettext-config.php:34 lib/messages.php:1815
+#: lib/messages.php:2109 lib/messages.php:2118 lib/messages.php:2130
 msgctxt "lib file description"
 msgid "Licenses"
 msgstr ""
@@ -1312,7 +1322,7 @@ msgctxt "lib file description"
 msgid "Dashboard"
 msgstr ""
 
-#: lib/gettext-config.php:37 lib/messages.php:2147
+#: lib/gettext-config.php:37 lib/messages.php:2168
 msgctxt "lib file description"
 msgid "Tools"
 msgstr ""
@@ -1634,12 +1644,12 @@ msgctxt "option value"
 msgid "default is %s"
 msgstr ""
 
-#: lib/gettext-config.php:95 lib/messages.php:638
+#: lib/gettext-config.php:95 lib/messages.php:657
 msgctxt "option value"
 msgid "checked"
 msgstr ""
 
-#: lib/gettext-config.php:96 lib/messages.php:639
+#: lib/gettext-config.php:96 lib/messages.php:658
 msgctxt "option value"
 msgid "unchecked"
 msgstr ""
@@ -2336,7 +2346,7 @@ msgctxt "option label"
 msgid "Use Filtered (SEO) Title"
 msgstr ""
 
-#: lib/gettext-pro.php:7 lib/messages.php:2039 lib/pro/admin/advanced.php:65
+#: lib/gettext-pro.php:7 lib/messages.php:2060 lib/pro/admin/advanced.php:65
 #: lib/std/admin/advanced.php:60
 msgctxt "option label"
 msgid "Use WordPress Content Filters"
@@ -2423,21 +2433,21 @@ msgctxt "option label"
 msgid "Check for Duplicate Meta Tags"
 msgstr ""
 
-#: lib/gettext-pro.php:21 lib/gettext-pro.php:85 lib/messages.php:1982
+#: lib/gettext-pro.php:21 lib/gettext-pro.php:85 lib/messages.php:2003
 #: lib/pro/admin/advanced.php:135 lib/pro/admin/general.php:62
 #: lib/std/admin/advanced.php:131 lib/std/admin/general.php:57
 msgctxt "option label"
 msgid "Enforce Image Size Check"
 msgstr ""
 
-#: lib/gettext-pro.php:23 lib/gettext-pro.php:87 lib/messages.php:1985
+#: lib/gettext-pro.php:23 lib/gettext-pro.php:87 lib/messages.php:2006
 #: lib/pro/admin/advanced.php:139 lib/pro/admin/general.php:66
 #: lib/std/admin/general.php:61
 msgctxt "option label"
 msgid "Upscale Media Library Images"
 msgstr ""
 
-#: lib/gettext-pro.php:24 lib/gettext-pro.php:88 lib/messages.php:1988
+#: lib/gettext-pro.php:24 lib/gettext-pro.php:88 lib/messages.php:2009
 #: lib/pro/admin/advanced.php:143 lib/pro/admin/general.php:70
 #: lib/std/admin/advanced.php:139 lib/std/admin/general.php:65
 msgctxt "option label"
@@ -2725,16 +2735,16 @@ msgctxt "column title"
 msgid "Show"
 msgstr ""
 
-#: lib/gettext-pro.php:78 lib/gettext-pro.php:81 lib/messages.php:1581
-#: lib/messages.php:1583 lib/messages.php:1595 lib/messages.php:1823
+#: lib/gettext-pro.php:78 lib/gettext-pro.php:81 lib/messages.php:1600
+#: lib/messages.php:1602 lib/messages.php:1616 lib/messages.php:1844
 #: lib/pro/admin/advanced.php:464 lib/pro/admin/advanced.php:528
 #: lib/std/admin/advanced.php:472 lib/std/admin/advanced.php:538
 msgctxt "column title"
 msgid "Contact Field ID"
 msgstr ""
 
-#: lib/gettext-pro.php:79 lib/gettext-pro.php:82 lib/messages.php:1589
-#: lib/messages.php:1825 lib/pro/admin/advanced.php:465
+#: lib/gettext-pro.php:79 lib/gettext-pro.php:82 lib/messages.php:1609
+#: lib/messages.php:1846 lib/pro/admin/advanced.php:465
 #: lib/pro/admin/advanced.php:529 lib/std/admin/advanced.php:473
 #: lib/std/admin/advanced.php:539
 msgctxt "column title"
@@ -2760,7 +2770,7 @@ msgctxt "option label"
 msgid "Maximum Videos to Include"
 msgstr ""
 
-#: lib/gettext-pro.php:90 lib/messages.php:249 lib/pro/admin/general.php:87
+#: lib/gettext-pro.php:90 lib/messages.php:255 lib/pro/admin/general.php:87
 #: lib/std/admin/general.php:87
 msgctxt "option label"
 msgid "Include Video Preview Images"
@@ -2838,73 +2848,73 @@ msgctxt "metabox title"
 msgid "Product Information"
 msgstr ""
 
-#: lib/gettext-pro.php:104 lib/messages.php:2291
+#: lib/gettext-pro.php:104 lib/messages.php:2312
 #: lib/pro/admin/meta-edit.php:192 lib/std/admin/meta-edit.php:191
 msgctxt "option label"
 msgid "Product Brand"
 msgstr ""
 
-#: lib/gettext-pro.php:105 lib/messages.php:2287
+#: lib/gettext-pro.php:105 lib/messages.php:2308
 #: lib/pro/admin/meta-edit.php:199 lib/std/admin/meta-edit.php:199
 msgctxt "option label"
 msgid "Product Availability"
 msgstr ""
 
-#: lib/gettext-pro.php:106 lib/messages.php:2354
+#: lib/gettext-pro.php:106 lib/messages.php:2375
 #: lib/pro/admin/meta-edit.php:207 lib/std/admin/meta-edit.php:208
 msgctxt "option label"
 msgid "Product Price"
 msgstr ""
 
-#: lib/gettext-pro.php:107 lib/messages.php:2299
+#: lib/gettext-pro.php:107 lib/messages.php:2320
 #: lib/pro/admin/meta-edit.php:216 lib/std/admin/meta-edit.php:218
 msgctxt "option label"
 msgid "Product Condition"
 msgstr ""
 
-#: lib/gettext-pro.php:108 lib/messages.php:2346
+#: lib/gettext-pro.php:108 lib/messages.php:2367
 #: lib/pro/admin/meta-edit.php:224 lib/std/admin/meta-edit.php:227
 msgctxt "option label"
 msgid "Product Material"
 msgstr ""
 
-#: lib/gettext-pro.php:109 lib/messages.php:2295
+#: lib/gettext-pro.php:109 lib/messages.php:2316
 #: lib/pro/admin/meta-edit.php:231 lib/std/admin/meta-edit.php:235
 msgctxt "option label"
 msgid "Product Color"
 msgstr ""
 
-#: lib/gettext-pro.php:110 lib/messages.php:2366
+#: lib/gettext-pro.php:110 lib/messages.php:2387
 #: lib/pro/admin/meta-edit.php:238 lib/std/admin/meta-edit.php:243
 msgctxt "option label"
 msgid "Product Target Gender"
 msgstr ""
 
-#: lib/gettext-pro.php:111 lib/messages.php:2358
+#: lib/gettext-pro.php:111 lib/messages.php:2379
 #: lib/pro/admin/meta-edit.php:246 lib/std/admin/meta-edit.php:252
 msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gettext-pro.php:112 lib/messages.php:2375
+#: lib/gettext-pro.php:112 lib/messages.php:2396
 #: lib/pro/admin/meta-edit.php:253 lib/std/admin/meta-edit.php:260
 msgctxt "option label"
 msgid "Product Weight"
 msgstr ""
 
-#: lib/gettext-pro.php:113 lib/messages.php:2362
+#: lib/gettext-pro.php:113 lib/messages.php:2383
 #: lib/pro/admin/meta-edit.php:261 lib/std/admin/meta-edit.php:269
 msgctxt "option label"
 msgid "Product SKU"
 msgstr ""
 
-#: lib/gettext-pro.php:114 lib/messages.php:2350
+#: lib/gettext-pro.php:114 lib/messages.php:2371
 #: lib/pro/admin/meta-edit.php:268 lib/std/admin/meta-edit.php:277
 msgctxt "option label"
 msgid "Product MPN"
 msgstr ""
 
-#: lib/gettext-pro.php:115 lib/messages.php:2337
+#: lib/gettext-pro.php:115 lib/messages.php:2358
 #: lib/pro/admin/meta-edit.php:275 lib/std/admin/meta-edit.php:285
 msgctxt "option label"
 msgid "Product ISBN"
@@ -2928,9 +2938,9 @@ msgid "Save a draft version or publish the %s to display these options."
 msgstr ""
 
 #: lib/gettext-pro.php:119 lib/pro/admin/meta-edit.php:332
-#: lib/std/admin/meta-edit.php:345 lib/submenu/general.php:38
+#: lib/std/admin/meta-edit.php:345
 msgctxt "metabox title"
-msgid "All Social WebSites / Open Graph"
+msgid "Facebook / Open Graph / Default Media"
 msgstr ""
 
 #: lib/gettext-pro.php:120 lib/pro/admin/meta-edit.php:337
@@ -2940,86 +2950,86 @@ msgid "Priority Image Information"
 msgstr ""
 
 #: lib/gettext-pro.php:121 lib/gettext-pro.php:137
-#: lib/pro/admin/meta-edit.php:342 lib/pro/admin/meta-edit.php:494
-#: lib/std/admin/meta-edit.php:356 lib/std/admin/meta-edit.php:511
+#: lib/pro/admin/meta-edit.php:342 lib/pro/admin/meta-edit.php:493
+#: lib/std/admin/meta-edit.php:356 lib/std/admin/meta-edit.php:513
 msgctxt "option label"
 msgid "Maximum Images"
 msgstr ""
 
 #: lib/gettext-pro.php:122 lib/gettext-pro.php:133 lib/gettext-pro.php:138
-#: lib/pro/admin/meta-edit.php:350 lib/pro/admin/meta-edit.php:450
-#: lib/pro/admin/meta-edit.php:504 lib/std/admin/meta-edit.php:365
-#: lib/std/admin/meta-edit.php:468 lib/std/admin/meta-edit.php:522
+#: lib/pro/admin/meta-edit.php:349 lib/pro/admin/meta-edit.php:449
+#: lib/pro/admin/meta-edit.php:503 lib/std/admin/meta-edit.php:364
+#: lib/std/admin/meta-edit.php:470 lib/std/admin/meta-edit.php:524
 msgctxt "option label"
-msgid "Image Size"
+msgid "Image Subject Area"
 msgstr ""
 
 #: lib/gettext-pro.php:123 lib/gettext-pro.php:134 lib/gettext-pro.php:139
-#: lib/pro/admin/meta-edit.php:356 lib/pro/admin/meta-edit.php:458
-#: lib/pro/admin/meta-edit.php:512 lib/std/admin/meta-edit.php:372
-#: lib/std/admin/meta-edit.php:477 lib/std/admin/meta-edit.php:531
+#: lib/pro/admin/meta-edit.php:355 lib/pro/admin/meta-edit.php:457
+#: lib/pro/admin/meta-edit.php:511 lib/std/admin/meta-edit.php:371
+#: lib/std/admin/meta-edit.php:479 lib/std/admin/meta-edit.php:533
 msgctxt "option label"
 msgid "Image ID"
 msgstr ""
 
 #: lib/gettext-pro.php:124 lib/gettext-pro.php:135 lib/gettext-pro.php:140
-#: lib/pro/admin/meta-edit.php:362 lib/pro/admin/meta-edit.php:466
-#: lib/pro/admin/meta-edit.php:520 lib/std/admin/meta-edit.php:379
-#: lib/std/admin/meta-edit.php:486 lib/std/admin/meta-edit.php:540
+#: lib/pro/admin/meta-edit.php:361 lib/pro/admin/meta-edit.php:465
+#: lib/pro/admin/meta-edit.php:519 lib/std/admin/meta-edit.php:378
+#: lib/std/admin/meta-edit.php:488 lib/std/admin/meta-edit.php:542
 msgctxt "option label"
 msgid "or an Image URL"
 msgstr ""
 
-#: lib/gettext-pro.php:125 lib/pro/admin/meta-edit.php:369
-#: lib/std/admin/meta-edit.php:386
+#: lib/gettext-pro.php:125 lib/pro/admin/meta-edit.php:368
+#: lib/std/admin/meta-edit.php:385
 msgctxt "metabox title"
 msgid "Priority Video Information"
 msgstr ""
 
-#: lib/gettext-pro.php:126 lib/pro/admin/meta-edit.php:374
-#: lib/std/admin/meta-edit.php:392
+#: lib/gettext-pro.php:126 lib/pro/admin/meta-edit.php:373
+#: lib/std/admin/meta-edit.php:391
 msgctxt "option label"
 msgid "Include Preview Images"
 msgstr ""
 
-#: lib/gettext-pro.php:127 lib/pro/admin/meta-edit.php:381
-#: lib/std/admin/meta-edit.php:400
+#: lib/gettext-pro.php:127 lib/pro/admin/meta-edit.php:380
+#: lib/std/admin/meta-edit.php:399
 msgctxt "option label"
 msgid "Maximum Videos"
 msgstr ""
 
-#: lib/gettext-pro.php:128 lib/pro/admin/meta-edit.php:389
-#: lib/std/admin/meta-edit.php:409
+#: lib/gettext-pro.php:128 lib/pro/admin/meta-edit.php:388
+#: lib/std/admin/meta-edit.php:408
 msgctxt "option label"
-msgid "Video Dimensions"
+msgid "Video Size"
 msgstr ""
 
-#: lib/gettext-pro.php:129 lib/messages.php:2397
-#: lib/pro/admin/meta-edit.php:395 lib/std/admin/meta-edit.php:416
+#: lib/gettext-pro.php:129 lib/messages.php:2418
+#: lib/pro/admin/meta-edit.php:394 lib/std/admin/meta-edit.php:415
 msgctxt "option label"
 msgid "Video Embed HTML"
 msgstr ""
 
-#: lib/gettext-pro.php:130 lib/pro/admin/meta-edit.php:401
-#: lib/std/admin/meta-edit.php:423
+#: lib/gettext-pro.php:130 lib/pro/admin/meta-edit.php:400
+#: lib/std/admin/meta-edit.php:422
 msgctxt "option label"
 msgid "or a Video URL"
 msgstr ""
 
-#: lib/gettext-pro.php:131 lib/pro/admin/meta-edit.php:408
-#: lib/std/admin/meta-edit.php:431
+#: lib/gettext-pro.php:131 lib/pro/admin/meta-edit.php:407
+#: lib/std/admin/meta-edit.php:430
 msgctxt "option label"
 msgid "Video Name / Title"
 msgstr ""
 
-#: lib/gettext-pro.php:132 lib/pro/admin/meta-edit.php:417
-#: lib/std/admin/meta-edit.php:439
+#: lib/gettext-pro.php:132 lib/pro/admin/meta-edit.php:416
+#: lib/std/admin/meta-edit.php:438
 msgctxt "option label"
 msgid "Video Description"
 msgstr ""
 
-#: lib/gettext-pro.php:136 lib/pro/admin/meta-edit.php:487
-#: lib/std/admin/meta-edit.php:503
+#: lib/gettext-pro.php:136 lib/pro/admin/meta-edit.php:486
+#: lib/std/admin/meta-edit.php:505
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup / Pinterest"
 msgstr ""
@@ -3486,7 +3496,7 @@ msgid ""
 "Article Topic selected in the General settings page."
 msgstr ""
 
-#: lib/messages.php:196 lib/messages.php:400
+#: lib/messages.php:196 lib/messages.php:419
 msgid "Select \"[None]\" if you prefer to exclude the %s meta tag."
 msgstr ""
 
@@ -3520,189 +3530,204 @@ msgstr ""
 
 #: lib/messages.php:230
 msgid ""
+"The main subject area of the image used for Facebook / Open Graph meta tags."
+msgstr ""
+
+#: lib/messages.php:236
+msgid ""
 "A customized image ID to include first, before any featured, attached, or "
 "content images."
 msgstr ""
 
-#: lib/messages.php:236
+#: lib/messages.php:242
 msgid ""
 "A customized image URL (instead of an image ID) to include first, before any "
 "featured, attached, or content images."
 msgstr ""
 
-#: lib/messages.php:238
+#: lib/messages.php:244
 msgid ""
 "Please make sure your custom image is large enough, or it may be ignored by "
 "social website(s)."
 msgstr ""
 
-#: lib/messages.php:242 lib/messages.php:308 lib/messages.php:322
+#: lib/messages.php:248 lib/messages.php:320 lib/messages.php:341
 msgid "This field is disabled if a custom image ID has been selected."
 msgstr ""
 
-#: lib/messages.php:251
+#: lib/messages.php:257
 msgid ""
 "When the %s option is enabled, and a preview image is available, it will be "
 "included in the Facebook / Open Graph meta tags before any other image "
 "(custom, featured, attached, etc.)."
 msgstr ""
 
-#: lib/messages.php:257
+#: lib/messages.php:263
 msgid ""
 "The maximum number of embedded videos to include in the Facebook / Open "
 "Graph meta tags and Schema markup."
 msgstr ""
 
-#: lib/messages.php:263
+#: lib/messages.php:269
 msgid ""
 "The %1$s video API modules can offer default video width and height values, "
 "provided that information is available from the API service."
 msgstr ""
 
-#: lib/messages.php:265
+#: lib/messages.php:271
 msgid ""
 "If the default video width and/or height values are incorrect, you may "
 "adjust their values here."
 msgstr ""
 
-#: lib/messages.php:271
+#: lib/messages.php:277
 msgid ""
 "Custom video embed HTML for the first video in the Facebook / Open Graph and "
 "Twitter Card meta tags, and in the Schema JSON-LD markup."
 msgstr ""
 
-#: lib/messages.php:273 lib/messages.php:281
+#: lib/messages.php:279 lib/messages.php:287
 msgid ""
 "If the video is from a recognized external video service, an API connection "
 "will be made to retrieve additional information about the video."
 msgstr ""
 
-#: lib/messages.php:279
+#: lib/messages.php:285
 msgid ""
 "A customized video URL for the first video in the Facebook / Open Graph and "
 "Twitter Card meta tags, and in the Schema JSON-LD markup."
 msgstr ""
 
-#: lib/messages.php:288
+#: lib/messages.php:294
 msgid ""
 "The %1$s video API modules can offer a default video name / title and "
 "description, provided that information is available from the API service."
 msgstr ""
 
-#: lib/messages.php:290
+#: lib/messages.php:296
 msgid ""
 "The video name / title and description will be used in the video Schema JSON-"
 "LD markup (add-on required)."
 msgstr ""
 
-#: lib/messages.php:296
+#: lib/messages.php:302
 msgid ""
 "The maximum number of images to include in the Schema meta tags and JSON-LD "
 "markup."
 msgstr ""
 
-#: lib/messages.php:302
+#: lib/messages.php:308
+msgid ""
+"The main subject area of the image used for Google / Pinterest / Schema meta "
+"tags and JSON-LD markup."
+msgstr ""
+
+#: lib/messages.php:314
 msgid ""
 "A customized image ID to include first in the Google / Schema meta tags and "
 "JSON-LD markup, before any featured, attached, or content images."
 msgstr ""
 
-#: lib/messages.php:308
+#: lib/messages.php:320
 msgid ""
 "A customized image URL (instead of an image ID) to include first in the "
 "Google / Schema meta tags and JSON-LD markup."
 msgstr ""
 
-#: lib/messages.php:315
+#: lib/messages.php:327
+msgid "The main subject area of the image used for the Twitter Card image."
+msgstr ""
+
+#: lib/messages.php:334
 msgid "A customized image ID for the Twitter Card image."
 msgstr ""
 
-#: lib/messages.php:322
+#: lib/messages.php:341
 msgid ""
 "A customized image URL (instead of an image ID) for the Twitter Card image."
 msgstr ""
 
-#: lib/messages.php:345
+#: lib/messages.php:364
 msgid ""
 "The WordPress Site Name is used for the Facebook / Open Graph and Pinterest "
 "Rich Pin %1$s meta tag. You may override <a href=\"%2$s\">the default "
 "WordPress Site Title value</a>."
 msgstr ""
 
-#: lib/messages.php:351
+#: lib/messages.php:370
 msgid ""
 "An optional alternate name for your WebSite that you want Google to consider."
 msgstr ""
 
-#: lib/messages.php:359
+#: lib/messages.php:378
 msgid ""
 "The WordPress tagline is used as a description for the blog (non-static) "
 "front page, and as a fallback for the Facebook / Open Graph and Pinterest "
 "Rich Pin %1$s meta tag."
 msgstr ""
 
-#: lib/messages.php:361
+#: lib/messages.php:380
 msgid ""
 "You may override <a href=\"%1$s\">the default WordPress Tagline value</a> "
 "here, to provide a longer and more complete description of your website."
 msgstr ""
 
-#: lib/messages.php:367
+#: lib/messages.php:386
 msgid ""
 "You may select a more descriptive Schema type from the Organization sub-"
 "types (default is Organization)."
 msgstr ""
 
-#: lib/messages.php:377
+#: lib/messages.php:396
 msgid ""
 "Select an optional Place / Location for this Organization (requires the %s "
 "add-on)."
 msgstr ""
 
-#: lib/messages.php:396
+#: lib/messages.php:415
 msgid "The topic that best describes the Posts and Pages on your website."
 msgstr ""
 
-#: lib/messages.php:398
+#: lib/messages.php:417
 msgid ""
 "This value will be used in the %s Facebook / Open Graph and Pinterest Rich "
 "Pin meta tags."
 msgstr ""
 
-#: lib/messages.php:408 lib/messages.php:1314
+#: lib/messages.php:427 lib/messages.php:1333
 msgid "Select the %1$s type for a blog (non-static) front page."
 msgstr ""
 
-#: lib/messages.php:410 lib/messages.php:420 lib/messages.php:430
-#: lib/messages.php:440 lib/messages.php:450 lib/messages.php:1316
-#: lib/messages.php:1326 lib/messages.php:1336 lib/messages.php:1346
-#: lib/messages.php:1356
+#: lib/messages.php:429 lib/messages.php:439 lib/messages.php:449
+#: lib/messages.php:459 lib/messages.php:469 lib/messages.php:1335
+#: lib/messages.php:1345 lib/messages.php:1355 lib/messages.php:1365
+#: lib/messages.php:1375
 msgid "The default %1$s type is \"%2$s\"."
 msgstr ""
 
-#: lib/messages.php:418 lib/messages.php:1324
+#: lib/messages.php:437 lib/messages.php:1343
 msgid "Select the %1$s type for a static front page."
 msgstr ""
 
-#: lib/messages.php:428 lib/messages.php:1334
+#: lib/messages.php:447 lib/messages.php:1353
 msgid "Select the %1$s type for user / author pages."
 msgstr ""
 
-#: lib/messages.php:438 lib/messages.php:1344
+#: lib/messages.php:457 lib/messages.php:1363
 msgid "Select the %1$s type for search results pages."
 msgstr ""
 
-#: lib/messages.php:448 lib/messages.php:1354
+#: lib/messages.php:467 lib/messages.php:1373
 msgid ""
 "Select the %1$s type for other archive pages (example: date-based archive "
 "pages)."
 msgstr ""
 
-#: lib/messages.php:456 lib/messages.php:1362
+#: lib/messages.php:475 lib/messages.php:1381
 msgid "Select the %1$s type for each WordPress post type."
 msgstr ""
 
-#: lib/messages.php:458
+#: lib/messages.php:477
 msgid ""
 "Please note that each Open Graph type has a unique set of meta tags, so by "
 "selecting \"website\" here (for example), you would be excluding all "
@@ -3710,191 +3735,191 @@ msgid ""
 "section</code>, etc.)."
 msgstr ""
 
-#: lib/messages.php:464
+#: lib/messages.php:483
 msgid "Select the Open Graph type for each WordPress taxonomy."
 msgstr ""
 
-#: lib/messages.php:473
+#: lib/messages.php:492
 msgid ""
 "One or more characters used to separate values (category parent names, page "
 "numbers, etc.) within the Facebook / Open Graph title string (the default is "
 "the hyphen \"%s\" character)."
 msgstr ""
 
-#: lib/messages.php:479
+#: lib/messages.php:498
 msgid ""
 "The maximum length used for the Facebook / Open Graph title value (the "
 "default is %d characters)."
 msgstr ""
 
-#: lib/messages.php:485
+#: lib/messages.php:504
 msgid ""
 "The maximum length used for the Facebook / Open Graph description value."
 msgstr ""
 
-#: lib/messages.php:487 lib/messages.php:1187 lib/messages.php:1304
-#: lib/messages.php:1404
+#: lib/messages.php:506 lib/messages.php:1206 lib/messages.php:1323
+#: lib/messages.php:1423
 msgid ""
 "The length should be at least %1$d characters or more (the default is %2$d "
 "characters)."
 msgstr ""
 
-#: lib/messages.php:495
+#: lib/messages.php:514
 msgid ""
 "The maximum number of tag names (converted to hashtags) to include in the "
 "Facebook / Open Graph description."
 msgstr ""
 
-#: lib/messages.php:497
+#: lib/messages.php:516
 msgid "Each tag name is converted to lowercase with whitespaces removed."
 msgstr ""
 
-#: lib/messages.php:499
+#: lib/messages.php:518
 msgid "Select \"0\" to disable the addition of hashtags."
 msgstr ""
 
-#: lib/messages.php:508
+#: lib/messages.php:527
 msgid ""
 "Select the contact field to use from the author's WordPress profile page for "
 "the Facebook / Open Graph %s meta tag value."
 msgstr ""
 
-#: lib/messages.php:510
+#: lib/messages.php:529
 msgid ""
 "The suggested setting is the \"Facebook URL\" user profile contact field "
 "(default value)."
 msgstr ""
 
-#: lib/messages.php:512
+#: lib/messages.php:531
 msgid ""
 "Select \"[None]\" if you prefer to exclude the %s meta tag and prevent "
 "Facebook from showing author attribution in shared links."
 msgstr ""
 
-#: lib/messages.php:520
+#: lib/messages.php:539
 msgid ""
 "If no custom image has been defined for an author, fallback to using their "
 "Gravatar image in author related meta tags and Schema markup."
 msgstr ""
 
-#: lib/messages.php:522
+#: lib/messages.php:541
 msgid ""
 "A customized image can be selected for / by each author in their WordPress "
 "user profile %s metabox."
 msgstr ""
 
-#: lib/messages.php:531
+#: lib/messages.php:550
 msgid ""
 "The maximum number of images to include in the Facebook / Open Graph meta "
 "tags &mdash; this includes the <em>featured</em> image, <em>attached</em> "
 "images, and any images found in the content."
 msgstr ""
 
-#: lib/messages.php:533
+#: lib/messages.php:552
 msgid ""
 "If you select \"0\", then no images will be included in the Facebook / Open "
 "Graph meta tags (<strong>not recommended</strong>)."
 msgstr ""
 
-#: lib/messages.php:535
+#: lib/messages.php:554
 msgid ""
 "If no images are available in your meta tags, social sites may choose any "
 "image from your webpage (including headers, sidebars, thumbnails, etc.)."
 msgstr ""
 
-#: lib/messages.php:541
+#: lib/messages.php:560
 msgid ""
-"The image dimensions used for the Facebook / Open Graph meta tags (the "
-"default dimensions are %s)."
+"The image dimensions used for Facebook / Open Graph meta tags (the default "
+"dimensions are %s)."
 msgstr ""
 
-#: lib/messages.php:550
+#: lib/messages.php:569
 msgid ""
 "An image ID and media library selection for your default / fallback website "
 "image."
 msgstr ""
 
-#: lib/messages.php:552 lib/messages.php:564
+#: lib/messages.php:571 lib/messages.php:583
 msgid ""
 "The default image is used for index / archive pages, and as a fallback for "
 "Posts and Pages that do not have a suitable image featured, attached, or in "
 "their content."
 msgstr ""
 
-#: lib/messages.php:558
+#: lib/messages.php:577
 msgid ""
 "You can enter a default image URL instead of choosing an image ID &mdash; if "
 "a default image ID is specified, it has precedence and the image URL option "
 "is disabled."
 msgstr ""
 
-#: lib/messages.php:560
+#: lib/messages.php:579
 msgid ""
 "The image URL option allows you to use an image outside of a managed "
 "collection (WordPress Media Library or NextGEN Gallery), and/or a smaller "
 "logo style image."
 msgstr ""
 
-#: lib/messages.php:562
+#: lib/messages.php:581
 msgid "The image should be at least %s or more in width and height."
 msgstr ""
 
-#: lib/messages.php:610
+#: lib/messages.php:629
 msgid ""
 "Check this option to remove all %s settings when you <em>uninstall</em> the "
 "plugin. This includes any custom post, term, and user meta."
 msgstr ""
 
-#: lib/messages.php:616
+#: lib/messages.php:635
 msgid ""
 "Add debugging messages as hidden HTML comments to back-end and front-end "
 "webpages (default is unchecked)."
 msgstr ""
 
-#: lib/messages.php:624
+#: lib/messages.php:643
 msgid ""
 "Select the set of options to display by default in settings pages and the "
 "%1$s metabox."
 msgstr ""
 
-#: lib/messages.php:626
+#: lib/messages.php:645
 msgid ""
 "The basic view shows only the most commonly used options, and includes a "
 "link to temporarily show all options when necessary."
 msgstr ""
 
-#: lib/messages.php:628
+#: lib/messages.php:647
 msgid ""
 "Showing all options by default could be a bit overwhelming for new users."
 msgstr ""
 
-#: lib/messages.php:641
+#: lib/messages.php:660
 msgid ""
 "The title values provided by WordPress may include modifications by themes "
 "and/or SEO plugins (appending the site name or expanding inline variables, "
 "for example, is a common practice)."
 msgstr ""
 
-#: lib/messages.php:643
+#: lib/messages.php:662
 msgid ""
 "Uncheck this option to always use the original unmodified title value from "
 "WordPress (default is %s)."
 msgstr ""
 
-#: lib/messages.php:649
+#: lib/messages.php:668
 msgid ""
 "The use of WordPress content filters allows the plugin to fully render your "
 "content text for meta tag descriptions and detect additional images and/or "
 "embedded videos provided by shortcodes."
 msgstr ""
 
-#: lib/messages.php:651 lib/messages.php:2049
+#: lib/messages.php:670 lib/messages.php:2070
 msgid ""
 "Many themes and plugins have badly coded content filters, so this option is "
 "disabled by default."
 msgstr ""
 
-#: lib/messages.php:653
+#: lib/messages.php:672
 msgid ""
 "If you use shortcodes in your content text, this option should be enabled "
 "&mdash; IF YOU EXPERIENCE WEBPAGE LAYOUT OR PERFORMANCE ISSUES AFTER "
@@ -3902,61 +3927,61 @@ msgid ""
 "content incorrectly and report the problem to its author(s)."
 msgstr ""
 
-#: lib/messages.php:659
+#: lib/messages.php:678
 msgid ""
 "Apply the WordPress \"get_the_excerpt\" filter to the excerpt text (default "
 "is unchecked). Enable this option if you use shortcodes in your excerpts, "
 "for example."
 msgstr ""
 
-#: lib/messages.php:665
+#: lib/messages.php:684
 msgid ""
 "If a post, page, or custom post type does not have an excerpt, %s will use "
 "the content text to create a description value."
 msgstr ""
 
-#: lib/messages.php:667
+#: lib/messages.php:686
 msgid ""
 "When this option is enabled, all text before the first paragraph tag in the "
 "content will be ignored."
 msgstr ""
 
-#: lib/messages.php:669
+#: lib/messages.php:688
 msgid ""
 "The option is enabled by default since WordPress should provide correct "
 "paragraph tags in the content."
 msgstr ""
 
-#: lib/messages.php:675
+#: lib/messages.php:694
 msgid ""
 "If the content text is comprised entirely of HTML tags (which must be "
 "removed to create text-only descriptions), %s can extract and use image "
 "<em>alt</em> attributes instead of returning an empty description."
 msgstr ""
 
-#: lib/messages.php:681
+#: lib/messages.php:700
 msgid ""
 "When use of image <em>alt</em> attributes is enabled, %s can prefix the "
 "attribute text with an optional string."
 msgstr ""
 
-#: lib/messages.php:683
+#: lib/messages.php:702
 msgid ""
 "Leave this option blank to prevent the image alt attribute text from being "
 "prefixed."
 msgstr ""
 
-#: lib/messages.php:689
+#: lib/messages.php:708
 msgid ""
 "%s can add a prefix to paragraphs found with the \"wp-caption-text\" class."
 msgstr ""
 
-#: lib/messages.php:691
+#: lib/messages.php:710
 msgid ""
 "Leave this option blank to prevent caption paragraphs from being prefixed."
 msgstr ""
 
-#: lib/messages.php:697
+#: lib/messages.php:716
 msgid ""
 "Check the content for embedded media URLs from supported media providers "
 "(Vimeo, Wistia, YouTube, etc.). If a supported media URL is found, an API "
@@ -3965,18 +3990,18 @@ msgid ""
 "width / height, etc.)."
 msgstr ""
 
-#: lib/messages.php:707
+#: lib/messages.php:726
 msgid ""
 "https://developer.wordpress.org/reference/functions/language_attributes/"
 msgstr ""
 
-#: lib/messages.php:712
+#: lib/messages.php:731
 msgid ""
 "%1$s hooks the \"%2$s\" filter (by default) to add / modify the %3$s HTML "
 "tag attributes for Open Graph namespace prefix values."
 msgstr ""
 
-#: lib/messages.php:714
+#: lib/messages.php:733
 msgid ""
 "The <a href=\"%1$s\">WordPress %2$s function</a> and its \"%3$s\" filter are "
 "used by most themes &mdash; if the namespace prefix values are missing from "
@@ -3984,68 +4009,68 @@ msgid ""
 "%2$s function."
 msgstr ""
 
-#: lib/messages.php:716
+#: lib/messages.php:735
 msgid ""
 "Leaving this option empty disables the addition of Open Graph namespace "
 "values."
 msgstr ""
 
-#: lib/messages.php:718 lib/messages.php:734
+#: lib/messages.php:737 lib/messages.php:753
 msgid "Example code for header templates: %1$s"
 msgstr ""
 
-#: lib/messages.php:728
+#: lib/messages.php:747
 msgid ""
 "%1$s hooks the \"%2$s\" filter (by default) to add / modify the %3$s HTML "
 "tag attributes for Schema itemscope / itemtype markup."
 msgstr ""
 
-#: lib/messages.php:730
+#: lib/messages.php:749
 msgid ""
 "If your theme already offers a filter for the %1$s HTML tag attributes, "
 "enter its name here (most themes do not offer this filter)."
 msgstr ""
 
-#: lib/messages.php:732
+#: lib/messages.php:751
 msgid ""
 "Alternatively, you can edit your your theme header templates and add an "
 "action to call the \"%1$s\" filter."
 msgstr ""
 
-#: lib/messages.php:740
+#: lib/messages.php:759
 msgid "Automatically add the \"%s\" role when a new user is created."
 msgstr ""
 
-#: lib/messages.php:741 lib/user.php:38 lib/user.php:440
+#: lib/messages.php:760 lib/user.php:38 lib/user.php:440
 msgctxt "user role"
 msgid "Person"
 msgstr ""
 
-#: lib/messages.php:747
+#: lib/messages.php:766
 msgid "Enable the WordPress excerpt metabox for Pages."
 msgstr ""
 
-#: lib/messages.php:749
+#: lib/messages.php:768
 msgid ""
 "An excerpt is an optional hand-crafted summary of your content, that %s can "
 "also use as a default description value for meta tags and Schema markup."
 msgstr ""
 
-#: lib/messages.php:755
+#: lib/messages.php:774
 msgid "Enable the WordPress tags metabox for Pages."
 msgstr ""
 
-#: lib/messages.php:757
+#: lib/messages.php:776
 msgid ""
 "WordPress tags are optional keywords about the content subject, often used "
 "for searches and \"tag clouds\"."
 msgstr ""
 
-#: lib/messages.php:759
+#: lib/messages.php:778
 msgid "%s can convert WordPress tags into hashtags for some social sites."
 msgstr ""
 
-#: lib/messages.php:767
+#: lib/messages.php:786
 msgid ""
 "When editing Posts and Pages, %1$s can check the head section of webpages "
 "for conflicting and/or duplicate HTML tags. After %2$d <em>successful</em> "
@@ -4053,7 +4078,7 @@ msgid ""
 "or any plugin is updated, when another %2$d checks are performed."
 msgstr ""
 
-#: lib/messages.php:776
+#: lib/messages.php:795
 msgid ""
 "When this option is enabled, full size images used for meta tags and Schema "
 "markup must be equal to (or larger) than the image dimensions you've defined "
@@ -4061,39 +4086,39 @@ msgid ""
 "requirements will be ignored."
 msgstr ""
 
-#: lib/messages.php:778
+#: lib/messages.php:797
 msgid ""
 "<strong>Enabling this option is highly recommended</strong> &mdash; the "
 "option is disabled by default to avoid excessive warnings on sites with "
 "small / thumbnail images in their media library."
 msgstr ""
 
-#: lib/messages.php:784
+#: lib/messages.php:803
 msgid ""
 "WordPress does not upscale / enlarge images &mdash; WordPress can only "
 "create smaller images from larger full size originals."
 msgstr ""
 
-#: lib/messages.php:786
+#: lib/messages.php:805
 msgid ""
 "Upscaled images do not look as sharp or clear, and if enlarged too much, "
 "will look fuzzy and unappealing &mdash; not something you want to promote on "
 "social and search sites."
 msgstr ""
 
-#: lib/messages.php:788
+#: lib/messages.php:807
 msgid ""
 "%1$s includes a feature that allows upscaling of WordPress Media Library "
 "images for %2$s image sizes (up to a maximum upscale percentage)."
 msgstr ""
 
-#: lib/messages.php:790
+#: lib/messages.php:809
 msgid ""
 "Do not enable this option unless you want to publish lower quality images on "
 "social and search sites."
 msgstr ""
 
-#: lib/messages.php:798
+#: lib/messages.php:817
 msgid ""
 "When upscaling of %1$s image sizes is allowed, %2$s can make sure smaller "
 "images are not upscaled beyond reason, which would publish very low "
@@ -4101,348 +4126,348 @@ msgid ""
 "%3$s%%)."
 msgstr ""
 
-#: lib/messages.php:800
+#: lib/messages.php:819
 msgid ""
 "If an image needs to be upscaled beyond this maximum, in either width or "
 "height, the image will not be upscaled."
 msgstr ""
 
-#: lib/messages.php:808
+#: lib/messages.php:827
 msgid ""
 "Enter the name of a product attribute you have created in your e-commerce "
 "plugin (ie. WooCommerce)."
 msgstr ""
 
-#: lib/messages.php:810
+#: lib/messages.php:829
 msgid "The default attribute name is \"%s\"."
 msgstr ""
 
-#: lib/messages.php:821
+#: lib/messages.php:840
 msgid ""
 "Add or remove the %s metabox from admin editing pages for posts, pages, "
 "custom post types, terms (categories and tags), and user profile pages."
 msgstr ""
 
-#: lib/messages.php:827
+#: lib/messages.php:846
 msgid "Read the Yoast SEO custom social meta text for Posts, Terms, and Users."
 msgstr ""
 
-#: lib/messages.php:829
+#: lib/messages.php:848
 msgid ""
 "This option is checked by default if the Yoast SEO plugin is active, or its "
 "settings are found in the database."
 msgstr ""
 
-#: lib/messages.php:835
+#: lib/messages.php:854
 msgid ""
 "The default currency used for money related options (product price, job "
 "salary, etc.)."
 msgstr ""
 
-#: lib/messages.php:850
+#: lib/messages.php:869
 msgid ""
 "If your theme or another plugin provides a custom field for %1$s, you may "
 "enter its custom field name here."
 msgstr ""
 
-#: lib/messages.php:852
+#: lib/messages.php:871
 msgid ""
 "If a custom field matching that name is found, its value may be used for the "
 "\"%1$s\" option in the %2$s metabox."
 msgstr ""
 
-#: lib/messages.php:855
+#: lib/messages.php:874
 msgid ""
 "The \"%1$s\" option offers multiple input fields &mdash; the custom field "
 "value will be split on newline characters, and each line used for an "
 "individual input field."
 msgstr ""
 
-#: lib/messages.php:866
+#: lib/messages.php:885
 msgid ""
 "Additional columns can be included in admin list tables to show the Schema "
 "type ID, Open Graph image, etc."
 msgstr ""
 
-#: lib/messages.php:868
+#: lib/messages.php:887
 msgid ""
 "When a column is enabled, <strong>each user can still hide that column</"
 "strong> by using the <em>Screen Options</em> tab on the list table page."
 msgstr ""
 
-#: lib/messages.php:874
+#: lib/messages.php:893
 msgid ""
 "WordPress does not define a column width for its Title column, which can "
 "create display issues when showing list tables with additional columns."
 msgstr ""
 
-#: lib/messages.php:876
+#: lib/messages.php:895
 msgid ""
 "This option allows you to define a custom width for the Title column, to "
 "prevent these kinds of issues."
 msgstr ""
 
-#: lib/messages.php:882
+#: lib/messages.php:901
 msgid "A default column width for the admin Posts and Pages list table."
 msgstr ""
 
-#: lib/messages.php:884
+#: lib/messages.php:903
 msgid ""
 "All columns should have a width defined, but some 3rd party plugins do not "
 "provide width information for their columns."
 msgstr ""
 
-#: lib/messages.php:886
+#: lib/messages.php:905
 msgid ""
 "This option offers a way to set a generic width for all Posts and Pages list "
 "table columns."
 msgstr ""
 
-#: lib/messages.php:898 lib/messages.php:911 lib/messages.php:924
-#: lib/messages.php:937 lib/messages.php:950 lib/messages.php:963
-#: lib/messages.php:995
+#: lib/messages.php:917 lib/messages.php:930 lib/messages.php:943
+#: lib/messages.php:956 lib/messages.php:969 lib/messages.php:982
+#: lib/messages.php:1014
 msgctxt "option comment"
 msgid "disabled"
 msgstr ""
 
-#: lib/messages.php:900
+#: lib/messages.php:919
 msgid ""
 "Head meta tags and Schema markup are saved to the WordPress transient cache "
 "to optimize performance."
 msgstr ""
 
-#: lib/messages.php:902 lib/messages.php:915 lib/messages.php:928
-#: lib/messages.php:941 lib/messages.php:954 lib/messages.php:967
+#: lib/messages.php:921 lib/messages.php:934 lib/messages.php:947
+#: lib/messages.php:960 lib/messages.php:973 lib/messages.php:986
 msgid "The suggested cache expiration value is %1$s seconds (%2$s)."
 msgstr ""
 
-#: lib/messages.php:913
+#: lib/messages.php:932
 msgid ""
 "Filtered post content is saved to the WordPress <em>non-persistent</em> "
 "object cache to optimize performance."
 msgstr ""
 
-#: lib/messages.php:926
+#: lib/messages.php:945
 msgid ""
 "Shortened URLs are saved to the WordPress transient cache to optimize "
 "performance and API connections."
 msgstr ""
 
-#: lib/messages.php:939
+#: lib/messages.php:958
 msgid ""
 "The size for image URLs (not image IDs) is retrieved and saved to the "
 "WordPress transient cache to optimize performance and network bandwidth."
 msgstr ""
 
-#: lib/messages.php:952
+#: lib/messages.php:971
 msgid ""
 "The filtered article topics array is saved to the WordPress transient cache "
 "to optimize performance and disk access."
 msgstr ""
 
-#: lib/messages.php:965
+#: lib/messages.php:984
 msgid ""
 "The filtered Schema types array is saved to the WordPress transient cache to "
 "optimize performance."
 msgstr ""
 
-#: lib/messages.php:973
+#: lib/messages.php:992
 msgid "Automatically clear all caches when the %s plugin is activated."
 msgstr ""
 
-#: lib/messages.php:979
+#: lib/messages.php:998
 msgid "Automatically clear all caches when the %s plugin is deactivated."
 msgstr ""
 
-#: lib/messages.php:985
+#: lib/messages.php:1004
 msgid "Automatically clear all caches when the %s plugin settings are saved."
 msgstr ""
 
-#: lib/messages.php:997
+#: lib/messages.php:1016
 msgid ""
 "Clear all shortened URLs when clearing all %s transients from the WordPress "
 "database (default is unchecked)."
 msgstr ""
 
-#: lib/messages.php:999
+#: lib/messages.php:1018
 msgid ""
 "Shortened URLs are cached for %1$s seconds (%2$s) to minimize external "
 "service API calls. Updating all shortened URLs at once may exceed API call "
 "limits imposed by your shortening service provider."
 msgstr ""
 
-#: lib/messages.php:1005
+#: lib/messages.php:1024
 msgid ""
 "After clearing all caches, %1$s can automatically re-create the post, term, "
 "and user cache objects in a background task (does not affect page load time)."
 msgstr ""
 
-#: lib/messages.php:1011
+#: lib/messages.php:1030
 msgid ""
 "When a published post, page, or custom post type is updated, automatically "
 "clear the cache of its selected terms (categories, tags, etc.)."
 msgstr ""
 
-#: lib/messages.php:1017
+#: lib/messages.php:1036
 msgid ""
 "Automatically clear the post cache when a new comment is added or the status "
 "of an existing comment is changed."
 msgstr ""
 
-#: lib/messages.php:1026
+#: lib/messages.php:1045
 msgid ""
 "A preferred URL shortening service for %s plugin filters and/or add-ons that "
 "may need to shorten URLs &mdash; don't forget to define the service API keys "
 "for the URL shortening service of your choice."
 msgstr ""
 
-#: lib/messages.php:1032
+#: lib/messages.php:1051
 msgid ""
 "URLs shorter than this length will not be shortened (the default suggested "
 "by Twitter is %d characters)."
 msgstr ""
 
-#: lib/messages.php:1038
+#: lib/messages.php:1057
 msgid ""
 "Use the shortened sharing URL for the <em>Get Shortlink</em> button in admin "
 "editing pages, along with the \"%s\" HTML tag value."
 msgstr ""
 
-#: lib/messages.php:1044
+#: lib/messages.php:1063
 msgid ""
 "Add a \"%s\" HTML tag for social sites and web browsers to the head section "
 "of webpages."
 msgstr ""
 
-#: lib/messages.php:1050
+#: lib/messages.php:1069
 msgid ""
 "The Bitly username to use with the Generic Access Token or API Key "
 "(deprecated)."
 msgstr ""
 
-#: lib/messages.php:1056
+#: lib/messages.php:1075
 msgid ""
 "The Bitly shortening service requires a <a href=\"%s\">Generic Access Token</"
 "a> or API Key (deprecated) to shorten URLs."
 msgstr ""
 
-#: lib/messages.php:1062
+#: lib/messages.php:1081
 msgid ""
 "The Bitly <a href=\"%s\">API Key</a> authentication method has been "
 "deprecated by Bitly."
 msgstr ""
 
-#: lib/messages.php:1068
+#: lib/messages.php:1087
 msgid ""
 "An optional Bitly short domain to use; either bit.ly, j.mp, bitly.com, or "
 "another custom short domain. If no value is entered here, the short domain "
 "selected in your Bitly account settings will be used."
 msgstr ""
 
-#: lib/messages.php:1074
+#: lib/messages.php:1093
 msgid ""
 "The DLMY.App secret API Key can be found in the DLMY.App user account &gt; "
 "Tools &gt; Developer API webpage."
 msgstr ""
 
-#: lib/messages.php:1080
+#: lib/messages.php:1099
 msgid ""
 "To use Ow.ly as your preferred shortening service, you must provide the Ow."
 "ly API Key for this website (complete this form to <a href=\"%s\">Request Ow."
 "ly API Access</a>)."
 msgstr ""
 
-#: lib/messages.php:1086
+#: lib/messages.php:1105
 msgid ""
 "The URL to <a href=\"%1$s\">Your Own URL Shortener</a> (YOURLS) shortening "
 "service."
 msgstr ""
 
-#: lib/messages.php:1091
+#: lib/messages.php:1110
 msgid ""
 "If <a href=\"%1$s\">Your Own URL Shortener</a> (YOURLS) shortening service "
 "is private, enter a configured username (see YOURLS Token for an alternative "
 "to the username / password options)."
 msgstr ""
 
-#: lib/messages.php:1097
+#: lib/messages.php:1116
 msgid ""
 "If <a href=\"%1$s\">Your Own URL Shortener</a> (YOURLS) shortening service "
 "is private, enter a configured user password (see YOURLS Token for an "
 "alternative to the username / password options)."
 msgstr ""
 
-#: lib/messages.php:1103
+#: lib/messages.php:1122
 msgid ""
 "If <a href=\"%1$s\">Your Own URL Shortener</a> (YOURLS) shortening service "
 "is private, you can use a token string for authentication instead of a "
 "username / password combination."
 msgstr ""
 
-#: lib/messages.php:1123
+#: lib/messages.php:1142
 msgid ""
 "If you have a <a href=\"%1$s\">Facebook Business Page for your website / "
 "business</a>, you may enter its URL here."
 msgstr ""
 
-#: lib/messages.php:1123
+#: lib/messages.php:1142
 msgid "https://www.facebook.com/business"
 msgstr ""
 
-#: lib/messages.php:1125
+#: lib/messages.php:1144
 msgid ""
 "As an example, the Facebook Business Page URL for %1$s is <a href=\"%2$s\">"
 "%2$s</a>."
 msgstr ""
 
-#: lib/messages.php:1125
+#: lib/messages.php:1144
 msgid "https://www.facebook.com/SurniaUlulaCom"
 msgstr ""
 
-#: lib/messages.php:1127
+#: lib/messages.php:1146
 msgid ""
 "The Facebook Business Page URL will be used in Open Graph <em>article</em> "
 "type webpages and the website's Schema Organization markup."
 msgstr ""
 
-#: lib/messages.php:1129 lib/messages.php:1396 lib/messages.php:1459
-#: lib/messages.php:1510 lib/messages.php:1535 lib/messages.php:1560
+#: lib/messages.php:1148 lib/messages.php:1415 lib/messages.php:1478
+#: lib/messages.php:1529 lib/messages.php:1554 lib/messages.php:1579
 msgid ""
 "Google Search may use this URL to display additional information about the "
 "website / business in its search results."
 msgstr ""
 
-#: lib/messages.php:1135
+#: lib/messages.php:1154
 msgid "https://developers.facebook.com/apps"
 msgstr ""
 
-#: lib/messages.php:1136
+#: lib/messages.php:1155
 msgid "https://developers.facebook.com/docs/apps/register"
 msgstr ""
 
-#: lib/messages.php:1137 lib/messages.php:1149
+#: lib/messages.php:1156 lib/messages.php:1168
 msgid "https://developers.facebook.com/docs/insights/"
 msgstr ""
 
-#: lib/messages.php:1139
+#: lib/messages.php:1158
 msgid ""
 "If you have a <a href=\"%1$s\">Facebook App ID for your website</a>, enter "
 "it here (see <a href=\"%2$s\">Register and Configure an App</a> for help on "
 "creating a Facebook App ID)."
 msgstr ""
 
-#: lib/messages.php:1143
+#: lib/messages.php:1162
 msgid ""
 "The Facebook App ID will appear in webpage meta tags and is used by Facebook "
 "to allow access to <a href=\"%1$s\">Facebook Insight</a> data for accounts "
 "associated with that App ID."
 msgstr ""
 
-#: lib/messages.php:1150
+#: lib/messages.php:1169
 msgid "https://www.facebook.com/settings?tab=account&section=username&view"
 msgstr ""
 
-#: lib/messages.php:1152
+#: lib/messages.php:1171
 msgid ""
 "The Facebook admin usernames are used by Facebook to allow access to <a href="
 "\"%1$s\">Facebook Insight</a> data for your website. Note that these are "
@@ -4450,469 +4475,469 @@ msgid ""
 "more Facebook usernames (comma delimited)."
 msgstr ""
 
-#: lib/messages.php:1156
+#: lib/messages.php:1175
 msgid ""
 "When viewing your own Facebook wall, your username is located in the URL "
 "(for example, https://www.facebook.com/<strong>username</strong>). Enter "
 "only the usernames, not the URLs."
 msgstr ""
 
-#: lib/messages.php:1158
+#: lib/messages.php:1177
 msgid ""
 "You may update your Facebook username in the <a href=\"%1$s\">Facebook "
 "General Account Settings</a>."
 msgstr ""
 
-#: lib/messages.php:1164
+#: lib/messages.php:1183
 msgid ""
 "Facebook does not support all WordPress locale values. If the Facebook "
 "debugger returns an error parsing the %1$s meta tag, you may have to choose "
 "an alternate Facebook language for that WordPress locale."
 msgstr ""
 
-#: lib/messages.php:1185
+#: lib/messages.php:1204
 msgid "The maximum length used for the Google Search / SEO description value."
 msgstr ""
 
-#: lib/messages.php:1195
+#: lib/messages.php:1214
 msgid "Select a name format for author meta tags and/or Schema Person markup."
 msgstr ""
 
-#: lib/messages.php:1216
+#: lib/messages.php:1235
 msgid ""
 "When additional Schema properties are available (product ratings, recipe "
 "ingredients, etc.), one or more %1$s containers may be included in the "
 "webpage head section."
 msgstr ""
 
-#: lib/messages.php:1218
+#: lib/messages.php:1237
 msgid ""
 "%1$s containers are read correctly by the Google and Pinterest crawlers, but "
 "the W3C Validator will show errors for the %1$s container markup (these "
 "errors can be safely ignored)."
 msgstr ""
 
-#: lib/messages.php:1227
+#: lib/messages.php:1246
 msgid ""
 "Include WebSite, Organization and/or Person Schema markup in the front page "
 "for Google's <em>Knowledge Graph</em>."
 msgstr ""
 
-#: lib/messages.php:1229
+#: lib/messages.php:1248
 msgid ""
 "The WebSite markup includes the site name, alternate site name, site URL and "
 "search query URL."
 msgstr ""
 
-#: lib/messages.php:1231
+#: lib/messages.php:1250
 msgid ""
 "Developers can hook the \"%s\" filter to modify the site search URL (or "
 "disable its addition by returning false)."
 msgstr ""
 
-#: lib/messages.php:1233
+#: lib/messages.php:1252
 msgid ""
 "The Organization markup includes all URLs entered in the %s settings page."
 msgstr ""
 
-#: lib/messages.php:1235 lib/messages.php:1243
+#: lib/messages.php:1254 lib/messages.php:1262
 msgid ""
 "The Person markup includes all contact method URLs entered in the user's "
 "WordPress profile page."
 msgstr ""
 
-#: lib/messages.php:1241
+#: lib/messages.php:1260
 msgid ""
 "Select an optional site owner for the <em>Knowledge Graph</em> Person markup "
 "included in the front page."
 msgstr ""
 
-#: lib/messages.php:1245
+#: lib/messages.php:1264
 msgid ""
 "The available Person list includes users with \"%1$s\" and/or \"%2$s\" roles."
 msgstr ""
 
-#: lib/messages.php:1246
+#: lib/messages.php:1265
 msgctxt "user role"
 msgid "Administrator"
 msgstr ""
 
-#: lib/messages.php:1246
+#: lib/messages.php:1265
 msgctxt "user role"
 msgid "Editor"
 msgstr ""
 
-#: lib/messages.php:1252
+#: lib/messages.php:1271
 msgid ""
 "A URL for this organization's logo image that Google can use in its search "
 "results and <em>Knowledge Graph</em>."
 msgstr ""
 
-#: lib/messages.php:1258
+#: lib/messages.php:1277
 msgid ""
 "A URL for this organization's banner image &mdash; <strong>measuring exactly "
 "600x60px</strong> &mdash; that Google News can use for Schema Article "
 "content from this publisher."
 msgstr ""
 
-#: lib/messages.php:1264
+#: lib/messages.php:1283
 msgid ""
 "The maximum number of images to include in the Schema markup &mdash; this "
 "includes the <em>featured</em> or <em>attached</em> images, and any images "
 "found in the Post or Page content."
 msgstr ""
 
-#: lib/messages.php:1266
+#: lib/messages.php:1285
 msgid ""
 "If you select \"0\", then no images will be included in the Schema markup "
 "(<strong>not recommended</strong>)."
 msgstr ""
 
-#: lib/messages.php:1272
+#: lib/messages.php:1291
 msgid ""
-"The image dimensions used for the Google / Pinterest / Schema meta tags and "
-"JSON-LD markup (the default dimensions are %s)."
+"The image dimensions used for Google / Pinterest / Schema meta tags and JSON-"
+"LD markup (the default dimensions are %s)."
 msgstr ""
 
-#: lib/messages.php:1278
+#: lib/messages.php:1297
 msgid ""
 "The image dimensions used for Schema Article meta tags and JSON-LD markup "
 "(the default dimensions are %s)."
 msgstr ""
 
-#: lib/messages.php:1280 lib/messages.php:1295
+#: lib/messages.php:1299 lib/messages.php:1314
 msgid "The minimum image width required by Google is %dpx."
 msgstr ""
 
-#: lib/messages.php:1283
+#: lib/messages.php:1302
 msgid ""
 "If this image size is uncropped (default setting), the height value must be "
 "large enough to accommodate portrait / vertical images (default height is "
 "%dpx)."
 msgstr ""
 
-#: lib/messages.php:1293
+#: lib/messages.php:1312
 msgid ""
-"The image dimensions used for the Schema Article AMP %1$s image meta tags "
-"and JSON-LD markup (the default dimensions are %2$s)."
+"The image dimensions used for Schema Article AMP %1$s image meta tags and "
+"JSON-LD markup (the default dimensions are %2$s)."
 msgstr ""
 
-#: lib/messages.php:1302
-msgid "The maximum length used for the Schema description property value."
+#: lib/messages.php:1321
+msgid "The maximum text length of the Schema description property value."
 msgstr ""
 
-#: lib/messages.php:1368
+#: lib/messages.php:1387
 msgid "Select the Schema type for each WordPress taxonomy."
 msgstr ""
 
-#: lib/messages.php:1390
+#: lib/messages.php:1409
 msgid ""
 "The <a href=\"%1$s\">Twitter @username for your website and/or business</a> "
 "(not your personal Twitter @username)."
 msgstr ""
 
-#: lib/messages.php:1390
+#: lib/messages.php:1409
 msgid "https://business.twitter.com/"
 msgstr ""
 
-#: lib/messages.php:1392
+#: lib/messages.php:1411
 msgid ""
 "As an example, the Twitter @username for %1$s is <a href=\"%2$s\">%3$s</a>."
 msgstr ""
 
-#: lib/messages.php:1392
+#: lib/messages.php:1411
 msgid "https://twitter.com/surniaululacom"
 msgstr ""
 
-#: lib/messages.php:1394
+#: lib/messages.php:1413
 msgid ""
 "The Twitter @username for your website and/or business will be used in the "
 "website's Schema Organization markup."
 msgstr ""
 
-#: lib/messages.php:1402
+#: lib/messages.php:1421
 msgid "The maximum length used for the Twitter Card description value."
 msgstr ""
 
-#: lib/messages.php:1424
+#: lib/messages.php:1443
 msgid ""
-"The image dimensions used for the <a href=\"%1$s\">Summary Card</a> (should "
-"be at least %2$s and less than %3$s)."
+"The image dimensions for the <a href=\"%1$s\">Summary Card</a> (should be at "
+"least %2$s and less than %3$s)."
 msgstr ""
 
-#: lib/messages.php:1424 lib/messages.php:1432
+#: lib/messages.php:1443 lib/messages.php:1451
 msgid "1MB"
 msgstr ""
 
-#: lib/messages.php:1426 lib/messages.php:1434
+#: lib/messages.php:1445 lib/messages.php:1453
 msgid "The default image dimensions are %s."
 msgstr ""
 
-#: lib/messages.php:1432
+#: lib/messages.php:1451
 msgid ""
-"The image dimensions used for the <a href=\"%1$s\">Large Image Summary Card</"
-"a> (must be larger than %2$s and less than %3$s)."
+"The image dimensions for the <a href=\"%1$s\">Large Image Summary Card</a> "
+"(must be larger than %2$s and less than %3$s)."
 msgstr ""
 
-#: lib/messages.php:1455
+#: lib/messages.php:1474
 msgid ""
 "If you have a <a href=\"%1$s\">Pinterest Company Page for your website / "
 "business</a>, you may enter its URL here."
 msgstr ""
 
-#: lib/messages.php:1455
+#: lib/messages.php:1474
 msgid "https://business.pinterest.com/"
 msgstr ""
 
-#: lib/messages.php:1457
+#: lib/messages.php:1476
 msgid ""
 "The Pinterest Company Page URL will be used in the website's Schema "
 "Organization markup."
 msgstr ""
 
-#: lib/messages.php:1465
+#: lib/messages.php:1484
 msgid ""
 "To <a href=\"%s\">verify your website</a> with Pinterest, edit your business "
 "account profile on Pinterest and click the \"Verify WebSite\" button."
 msgstr ""
 
-#: lib/messages.php:1467
+#: lib/messages.php:1486
 msgid ""
 "Enter the supplied \"p:domain_verify\" meta tag <em>content</em> value here."
 msgstr ""
 
-#: lib/messages.php:1473
+#: lib/messages.php:1492
 msgid ""
 "Add a \"nopin\" attribute to the header image (since WP v4.4) to prevent the "
 "Pin It button from suggesting that image."
 msgstr ""
 
-#: lib/messages.php:1479
+#: lib/messages.php:1498
 msgid ""
 "Add a \"nopin\" attribute to images from the WordPress Media Library to "
 "prevent the Pin It button from suggesting those images."
 msgstr ""
 
-#: lib/messages.php:1485
+#: lib/messages.php:1504
 msgid ""
 "Add the Google / Schema image to the content (in a hidden container) for the "
 "Pinterest Pin It browser button."
 msgstr ""
 
-#: lib/messages.php:1506
+#: lib/messages.php:1525
 msgid ""
 "If you have an <a href=\"%1$s\">Intagram account for your website / "
 "business</a>, you may enter its URL here."
 msgstr ""
 
-#: lib/messages.php:1506
+#: lib/messages.php:1525
 msgid "http://blog.business.instagram.com/"
 msgstr ""
 
-#: lib/messages.php:1508
+#: lib/messages.php:1527
 msgid ""
 "The Instagram Business Page URL will be used in the website's Schema "
 "Organization markup."
 msgstr ""
 
-#: lib/messages.php:1531
+#: lib/messages.php:1550
 msgid ""
 "If you have a <a href=\"%1$s\">LinkedIn Company Page for your website / "
 "business</a>, you may enter its URL here."
 msgstr ""
 
-#: lib/messages.php:1531
+#: lib/messages.php:1550
 msgid ""
 "https://business.linkedin.com/marketing-solutions/company-pages/get-started"
 msgstr ""
 
-#: lib/messages.php:1533
+#: lib/messages.php:1552
 msgid ""
 "The LinkedIn Company Page URL will be used in the website's Schema "
 "Organization markup."
 msgstr ""
 
-#: lib/messages.php:1556
+#: lib/messages.php:1575
 msgid ""
 "If you have a <a href=\"%1$s\">Myspace account for your website / business</"
 "a>, you may enter its URL here."
 msgstr ""
 
-#: lib/messages.php:1556
+#: lib/messages.php:1575
 msgid "http://myspace.com/"
 msgstr ""
 
-#: lib/messages.php:1558
+#: lib/messages.php:1577
 msgid ""
 "The Myspace Business Page URL will be used in the website's Schema "
 "Organization markup."
 msgstr ""
 
-#: lib/messages.php:1581 lib/messages.php:1823
+#: lib/messages.php:1600 lib/messages.php:1844
 msgid ""
 "You should not modify the <em>%1$s</em> column unless you have a <em>very</"
 "em> good reason to do so."
 msgstr ""
 
-#: lib/messages.php:1583
+#: lib/messages.php:1602
 msgid ""
 "As an example, to match the <em>%1$s</em> of a theme or other plugin, you "
 "might change \"%2$s\" to \"%3$s\" or some other value."
 msgstr ""
 
-#: lib/messages.php:1589
+#: lib/messages.php:1608
 msgid ""
 "The <em>%1$s</em> column is for display purposes only and can be changed as "
 "you wish."
 msgstr ""
 
-#: lib/messages.php:1595
+#: lib/messages.php:1615
 msgid "The built-in WordPress <em>%1$s</em> column cannot be modified."
 msgstr ""
 
-#: lib/messages.php:1601
+#: lib/messages.php:1622
 msgid ""
 "Individual sites/blogs may use this value as a default (when the plugin is "
 "first activated), if the current site/blog option value is blank, or force "
 "every site/blog to use this specific value."
 msgstr ""
 
-#: lib/messages.php:1607
+#: lib/messages.php:1628
 msgid ""
 "The image dimensions used for the Schema \"%1$s\" property and the \"%2$s\" "
 "tag (the default dimensions are %3$s)."
 msgstr ""
 
-#: lib/messages.php:1634
+#: lib/messages.php:1655
 msgid "All social websites read Open Graph meta tags."
 msgstr ""
 
-#: lib/messages.php:1636
+#: lib/messages.php:1657
 msgid ""
 "The Facebook debugger allows you to refresh Facebook's cache, while also "
 "validating Open Graph meta tag values."
 msgstr ""
 
-#: lib/messages.php:1638
+#: lib/messages.php:1659
 msgid ""
 "The Facebook debugger is the most stable and reliable method to verify Open "
 "Graph meta tags."
 msgstr ""
 
-#: lib/messages.php:1648
+#: lib/messages.php:1669
 msgid "Refresh LinkedIn's cache and validate meta tag values."
 msgstr ""
 
-#: lib/messages.php:1658
+#: lib/messages.php:1679
 msgid ""
 "Verify the webpage structured data markup (meta tags, Schema, Microdata, and "
 "JSON-LD)."
 msgstr ""
 
-#: lib/messages.php:1668
+#: lib/messages.php:1689
 msgid ""
 "Check the webpage known for Google rich result types (Job posting, Recipe, "
 "Course, etc.)."
 msgstr ""
 
-#: lib/messages.php:1678
+#: lib/messages.php:1699
 msgid ""
 "Validate Rich Pin meta tags and submit a request to show them in Pinterest "
 "zoomed pins."
 msgstr ""
 
-#: lib/messages.php:1688
+#: lib/messages.php:1709
 msgid ""
 "The Twitter Card validator does not currently accept query arguments &mdash; "
 "paste the following URL in the Twitter Card validator \"Card URL\" input "
 "field:"
 msgstr ""
 
-#: lib/messages.php:1697 lib/submenu/general.php:256
+#: lib/messages.php:1718 lib/submenu/general.php:256
 msgctxt "option label"
 msgid "Schema Property Meta Containers"
 msgstr ""
 
-#: lib/messages.php:1701
+#: lib/messages.php:1722
 msgid ""
 "Validate HTML syntax and HTML 5 conformance of your meta tags and theme "
 "templates."
 msgstr ""
 
-#: lib/messages.php:1703
+#: lib/messages.php:1724
 msgid ""
 "Templates with serious errors can prevent social and search crawlers from "
 "correctly parsing the webpage."
 msgstr ""
 
-#: lib/messages.php:1705
+#: lib/messages.php:1726
 msgid "Validating your theme templates is an important step."
 msgstr ""
 
-#: lib/messages.php:1713
+#: lib/messages.php:1734
 msgid ""
 "When the %1$s option is enabled, the W3C validator will show errors for "
 "itemprop attributes in meta elements &mdash; you may ignore these errors or "
 "disable the %1$s option."
 msgstr ""
 
-#: lib/messages.php:1724
+#: lib/messages.php:1745
 msgid ""
 "Validate the HTML syntax and HTML AMP conformance of your meta tags and the "
 "AMP markup of your templates."
 msgstr ""
 
-#: lib/messages.php:1732
+#: lib/messages.php:1753
 msgid ""
 "The <a href=\"%s\">AMP plugin by Automattic</a> is required to validate AMP "
 "formatted webpages."
 msgstr ""
 
-#: lib/messages.php:1745
+#: lib/messages.php:1766
 msgid ""
 "The example image container uses the minimum recommended Facebook image "
 "dimensions of %s."
 msgstr ""
 
-#: lib/messages.php:1761
+#: lib/messages.php:1782
 msgid ""
 "Note that product attribute values from WooCommerce have precedence over "
 "custom field values."
 msgstr ""
 
-#: lib/messages.php:1765
+#: lib/messages.php:1786
 msgid ""
 "Refer to the <a href=\"%s\">WooCommerce integration notes</a> for "
 "information on setting up product attributes and custom fields."
 msgstr ""
 
-#: lib/messages.php:1778 lib/messages.php:1798
+#: lib/messages.php:1799 lib/messages.php:1819
 msgid ""
 "After purchasing the %1$s plugin or any complementary %2$s add-on, you'll "
 "receive an email with a unique Authentication ID for the plugin or add-on "
 "you purchased."
 msgstr ""
 
-#: lib/messages.php:1780
+#: lib/messages.php:1801
 msgid ""
 "Enter the Authentication ID in the option field corresponding to the plugin "
 "or add-on you purchased."
 msgstr ""
 
-#: lib/messages.php:1782
+#: lib/messages.php:1803
 msgid ""
 "Don't forget that the %1$s add-on must be installed and active to check for "
 "%2$s version updates."
 msgstr ""
 
-#: lib/messages.php:1800
+#: lib/messages.php:1821
 msgid ""
 "You may enter each Authentication ID on this page <em>to define a value for "
 "all sites within the network</em> &mdash; or enter Authentication IDs "
 "individually on each site's %1$s settings page."
 msgstr ""
 
-#: lib/messages.php:1802
+#: lib/messages.php:1823
 msgid ""
 "If you enter Authentication IDs in this network settings page, <em>please "
 "make sure you have purchased enough licenses for all sites within the "
@@ -4921,7 +4946,7 @@ msgid ""
 "of that %1$s add-on."
 msgstr ""
 
-#: lib/messages.php:1804
+#: lib/messages.php:1825
 msgid ""
 "<strong>WordPress uses the default site / blog ID to install and/or update "
 "plugins from the Network Admin interface</strong> &mdash; to update the %1$s "
@@ -4930,54 +4955,54 @@ msgid ""
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/messages.php:1813
+#: lib/messages.php:1834
 msgid "Contact Info"
 msgstr ""
 
-#: lib/messages.php:1819
+#: lib/messages.php:1840
 msgid ""
 "The following options allow you to customize the list of contact fields "
 "shown in the <strong>%1$s</strong> section of <a href=\"%2$s\">the user "
 "profile page</a>."
 msgstr ""
 
-#: lib/messages.php:1821
+#: lib/messages.php:1842
 msgid ""
 "%1$s uses the Facebook and Twitter contact field values in its meta tags and "
 "Schema markup."
 msgstr ""
 
-#: lib/messages.php:1825
+#: lib/messages.php:1846
 msgid ""
 "The <em>%1$s</em> column on the other hand is for display purposes only and "
 "can be changed as you wish."
 msgstr ""
 
-#: lib/messages.php:1831
+#: lib/messages.php:1852
 msgid ""
 "DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE ARE CONTACT FIELD "
 "LABELS ONLY."
 msgstr ""
 
-#: lib/messages.php:1833
+#: lib/messages.php:1854
 msgid ""
 "Enter your personal contact information in <a href=\"%1$s\">the user profile "
 "page</a>."
 msgstr ""
 
-#: lib/messages.php:1849
+#: lib/messages.php:1870
 msgid ""
 "%s adds the following Facebook, Open Graph, Twitter, Schema, Pinterest, and "
 "SEO meta tags to the <code>&lt;head&gt;</code> section of your webpages."
 msgstr ""
 
-#: lib/messages.php:1851
+#: lib/messages.php:1872
 msgid ""
 "If your theme or another plugin already creates one or more of these meta "
 "tags, you can uncheck them here to prevent duplicates from being added."
 msgstr ""
 
-#: lib/messages.php:1853
+#: lib/messages.php:1874
 msgid ""
 "As an example, the \"%1$s\" SEO meta tag is automatically unchecked if a "
 "<em>known</em> SEO plugin is detected, and the \"%2$s\" meta tag is "
@@ -4985,106 +5010,106 @@ msgid ""
 "template)."
 msgstr ""
 
-#: lib/messages.php:1884
+#: lib/messages.php:1905
 msgid "Purchase the %1$s plugin to upgrade and get the following features."
 msgstr ""
 
-#: lib/messages.php:1888
+#: lib/messages.php:1909
 msgid "Purchase the %1$s add-on to upgrade and get the following features."
 msgstr ""
 
-#: lib/messages.php:1904
+#: lib/messages.php:1925
 msgid ""
 "An e-commerce plugin is active &ndash; some product details may be managed "
 "from the e-commerce plugin."
 msgstr ""
 
-#: lib/messages.php:1911
+#: lib/messages.php:1932
 msgid ""
 "An e-commerce plugin is active &ndash; product details may be retrieved by "
 "the %s plugin."
 msgstr ""
 
-#: lib/messages.php:1929
+#: lib/messages.php:1950
 msgctxt "plugin action link"
 msgid "Get More Licenses"
 msgstr ""
 
-#: lib/messages.php:1932
+#: lib/messages.php:1953
 msgctxt "plugin action link"
 msgid "Purchase %s Plugin"
 msgstr ""
 
-#: lib/messages.php:1934
+#: lib/messages.php:1955
 msgctxt "plugin action link"
 msgid "Purchase %s Add-on"
 msgstr ""
 
-#: lib/messages.php:1963 lib/wp-meta.php:415
+#: lib/messages.php:1984 lib/wp-meta.php:415
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr ""
 
-#: lib/messages.php:1965
+#: lib/messages.php:1986
 msgid ""
 "A larger and/or different custom image, specifically for meta tags and "
 "Schema markup, can be selected in the %1$s metabox under the %2$s tab."
 msgstr ""
 
-#: lib/messages.php:1991
+#: lib/messages.php:2012
 msgid ""
 "Additional information shown only to users with Administrative privileges:"
 msgstr ""
 
-#: lib/messages.php:1996
+#: lib/messages.php:2017
 msgid "You can adjust the <b>%1$s</b> option in the %2$s settings."
 msgstr ""
 
-#: lib/messages.php:2000
+#: lib/messages.php:2021
 msgid "Enable the %1$s option."
 msgstr ""
 
-#: lib/messages.php:2003
+#: lib/messages.php:2024
 msgid "Increase the %1$s option value."
 msgstr ""
 
-#: lib/messages.php:2005
+#: lib/messages.php:2026
 msgid "Disable the %1$s option (not recommended)."
 msgstr ""
 
-#: lib/messages.php:2016
+#: lib/messages.php:2037
 msgid ""
 "An Open Graph image meta tag could not be generated from this webpage "
 "content or its custom %s metabox settings. Facebook <em>requires at least "
 "one image meta tag</em> to render shared content correctly."
 msgstr ""
 
-#: lib/messages.php:2024
+#: lib/messages.php:2045
 msgid ""
 "An Open Graph description meta tag could not be generated from this webpage "
 "content or its custom %s metabox settings. Facebook <em>requires a "
 "description meta tag</em> to render shared content correctly."
 msgstr ""
 
-#: lib/messages.php:2032
+#: lib/messages.php:2053
 msgid ""
 "A Schema \"image\" property could not be generated from this webpage content "
 "or its custom %s metabox settings. Google <em>requires at least one \"image"
 "\" property</em> for this Schema type."
 msgstr ""
 
-#: lib/messages.php:2043
+#: lib/messages.php:2064
 msgid "The %1$s advanced option is currently disabled."
 msgstr ""
 
-#: lib/messages.php:2045
+#: lib/messages.php:2066
 msgid ""
 "The use of WordPress content filters allows %s to fully render your content "
 "text for meta tag descriptions and detect additional images and/or embedded "
 "videos provided by shortcodes."
 msgstr ""
 
-#: lib/messages.php:2051
+#: lib/messages.php:2072
 msgid ""
 "If you use shortcodes in your content text, this option should be enabled "
 "&mdash; IF YOU EXPERIENCE WEBPAGE LAYOUT OR PERFORMANCE ISSUES AFTER "
@@ -5092,45 +5117,45 @@ msgid ""
 "filtering the content incorrectly, and report the problem to its author(s)."
 msgstr ""
 
-#: lib/messages.php:2053
+#: lib/messages.php:2074
 msgid ""
 "Advanced users can also hook the \"%s\" filter and return true / false to "
 "enable or disable this feature dynamically."
 msgstr ""
 
-#: lib/messages.php:2069
+#: lib/messages.php:2090
 msgid ""
 "<b>At least one of your theme header templates does not support Schema "
 "markup of the webpage head section</b> &mdash; this is especially important "
 "for Pinterest (and Google if not using the JSON-LD add-on)."
 msgstr ""
 
-#: lib/messages.php:2073
+#: lib/messages.php:2094
 msgid ""
 "The %1$s HTML tag in your header template(s) should include a function, "
 "action, or filter for its attributes."
 msgstr ""
 
-#: lib/messages.php:2075
+#: lib/messages.php:2096
 msgid ""
 "%1$s can update your header template(s) automatically and change the "
 "existing %2$s HTML tag to:"
 msgstr ""
 
-#: lib/messages.php:2079
+#: lib/messages.php:2100
 msgid ""
 "<b><a href=\"%1$s\">Click here to update header template(s) automatically</"
 "a></b> (recommended) or update the template(s) manually."
 msgstr ""
 
-#: lib/messages.php:2090
+#: lib/messages.php:2111
 msgid ""
 "An Authentication ID has been entered for %1$s but the plugin is not "
 "installed &mdash; you can install and activate the %2$s version from the "
 "%3$s settings page."
 msgstr ""
 
-#: lib/messages.php:2099
+#: lib/messages.php:2120
 msgid ""
 "An Authentication ID has been entered for %1$s in the %2$s settings page but "
 "the %3$s version is not installed &mdash; don't forget to update the plugin "
@@ -5138,433 +5163,433 @@ msgid ""
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/messages.php:2112
+#: lib/messages.php:2133
 msgid "Plugins"
 msgstr ""
 
-#: lib/messages.php:2116
+#: lib/messages.php:2137
 msgid ""
 "At least one Authentication ID has been entered in the %1$s settings page,"
 "<br/>but the %2$s add-on is not active."
 msgstr ""
 
-#: lib/messages.php:2118
+#: lib/messages.php:2139
 msgid ""
 "This complementary add-on is required to update and enable %1$s and its %2$s "
 "add-ons."
 msgstr ""
 
-#: lib/messages.php:2124
+#: lib/messages.php:2145
 msgid "Install and activate the %1$s add-on from the %2$s settings page."
 msgstr ""
 
-#: lib/messages.php:2129
+#: lib/messages.php:2150
 msgid "The %1$s add-on can be activated from the WordPress %2$s page."
 msgstr ""
 
-#: lib/messages.php:2132
+#: lib/messages.php:2153
 msgid "Please activate this complementary add-on now."
 msgstr ""
 
-#: lib/messages.php:2135
+#: lib/messages.php:2156
 msgid ""
 "When the %1$s add-on is active, one or more %2$s version updates may be "
 "available for your licensed plugin and/or its add-on(s)."
 msgstr ""
 
-#: lib/messages.php:2146
+#: lib/messages.php:2167
 msgctxt "submit button"
 msgid "Check for Updates"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/messages.php:2151
+#: lib/messages.php:2172
 msgid "Dashboard"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/messages.php:2153
+#: lib/messages.php:2174
 msgid "Updates"
 msgstr ""
 
-#: lib/messages.php:2155
+#: lib/messages.php:2176
 msgid ""
 "%1$s version %2$s requires the use of %3$s version %4$s or newer (version "
 "%5$s is currently installed)."
 msgstr ""
 
-#: lib/messages.php:2157
+#: lib/messages.php:2178
 msgid ""
 "If an update for %1$s is not available under the WordPress %2$s page, use "
 "the <em>%3$s</em> button in the %4$s settings page to force an immediate "
 "refresh of the plugin update information."
 msgstr ""
 
-#: lib/messages.php:2163 lib/register.php:322
+#: lib/messages.php:2184 lib/register.php:322
 msgid ""
 "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version "
 "is outdated, unsupported, possibly insecure</a>, and may lack important "
 "updates and features."
 msgstr ""
 
-#: lib/messages.php:2165
+#: lib/messages.php:2186
 msgid ""
 "If possible, please update to the latest %1$s stable release (or at least "
 "version %2$s)."
 msgstr ""
 
-#: lib/messages.php:2186
+#: lib/messages.php:2207
 msgid "<strong>%s includes:</strong>"
 msgstr ""
 
-#: lib/messages.php:2190
+#: lib/messages.php:2211
 msgid ""
 "%s options for posts, pages, custom post types, terms (categories, tags, "
 "custom taxonomies), and user profiles."
 msgstr ""
 
-#: lib/messages.php:2192
+#: lib/messages.php:2213
 msgid "Integration with 3rd party plugins and service APIs."
 msgstr ""
 
-#: lib/messages.php:2194
+#: lib/messages.php:2215
 msgid "Advanced plugin settings."
 msgstr ""
 
-#: lib/messages.php:2196
+#: lib/messages.php:2217
 msgid "Access to development and release candidate updates."
 msgstr ""
 
-#: lib/messages.php:2200
+#: lib/messages.php:2221
 msgid ""
 "<strong>%1$s licenses never expire</strong> &mdash; you may receive "
 "unlimited / lifetime updates and support for each licensed WordPress Site "
 "Address."
 msgstr ""
 
-#: lib/messages.php:2202
+#: lib/messages.php:2223
 msgid "How great is that!?"
 msgstr ""
 
-#: lib/messages.php:2205
+#: lib/messages.php:2226
 msgid "Purchase %1$s quickly and easily with PayPal!"
 msgstr ""
 
-#: lib/messages.php:2213
+#: lib/messages.php:2234
 msgid ""
 "<strong>Development of %1$s is driven by user requests</strong> &mdash; we "
 "welcome all your comments and suggestions."
 msgstr ""
 
-#: lib/messages.php:2223
+#: lib/messages.php:2244
 msgid ""
 "<strong>Great ratings are a terrific way to encourage your plugin "
 "developers</strong> &mdash; and it only takes a minute."
 msgstr ""
 
-#: lib/messages.php:2227
+#: lib/messages.php:2248
 msgid ""
 "Please take a moment to %1$s thank your developers %1$s by rating the "
 "plugins you use."
 msgstr ""
 
 #. translators: %s is the wordpress.org URL for the WPSSO User Locale Selector add-on.
-#: lib/messages.php:2247
+#: lib/messages.php:2268
 msgid ""
 "This option is localized &mdash; <a href=\"%s\">you may change the WordPress "
 "locale</a> to define alternate values for different languages."
 msgstr ""
 
-#: lib/messages.php:2267
+#: lib/messages.php:2288
 msgctxt "option label"
 msgid "Microdata Type URLs"
 msgstr ""
 
-#: lib/messages.php:2268
+#: lib/messages.php:2289
 msgctxt "tooltip fragment"
 msgid "additional microdata type URLs"
 msgstr ""
 
-#: lib/messages.php:2271
+#: lib/messages.php:2292
 msgctxt "option label"
 msgid "How-To Steps"
 msgstr ""
 
-#: lib/messages.php:2272
+#: lib/messages.php:2293
 msgctxt "tooltip fragment"
 msgid "how-to steps"
 msgstr ""
 
-#: lib/messages.php:2275
+#: lib/messages.php:2296
 msgctxt "option label"
 msgid "How-To Supplies"
 msgstr ""
 
-#: lib/messages.php:2276
+#: lib/messages.php:2297
 msgctxt "tooltip fragment"
 msgid "how-to supplies"
 msgstr ""
 
-#: lib/messages.php:2279
+#: lib/messages.php:2300
 msgctxt "option label"
 msgid "How-To Tools"
 msgstr ""
 
-#: lib/messages.php:2280
+#: lib/messages.php:2301
 msgctxt "tooltip fragment"
 msgid "how-to tools"
 msgstr ""
 
-#: lib/messages.php:2283
+#: lib/messages.php:2304
 msgctxt "option label"
 msgid "Image URL"
 msgstr ""
 
-#: lib/messages.php:2284
+#: lib/messages.php:2305
 msgctxt "tooltip fragment"
 msgid "an image URL"
 msgstr ""
 
-#: lib/messages.php:2288
+#: lib/messages.php:2309
 msgctxt "tooltip fragment"
 msgid "a product availability"
 msgstr ""
 
-#: lib/messages.php:2292
+#: lib/messages.php:2313
 msgctxt "tooltip fragment"
 msgid "a product brand"
 msgstr ""
 
-#: lib/messages.php:2296
+#: lib/messages.php:2317
 msgctxt "tooltip fragment"
 msgid "a product color"
 msgstr ""
 
-#: lib/messages.php:2300
+#: lib/messages.php:2321
 msgctxt "tooltip fragment"
 msgid "a product condition"
 msgstr ""
 
-#: lib/messages.php:2303
+#: lib/messages.php:2324
 msgctxt "option label"
 msgid "Product Currency"
 msgstr ""
 
-#: lib/messages.php:2304
+#: lib/messages.php:2325
 msgctxt "tooltip fragment"
 msgid "a product currency"
 msgstr ""
 
-#: lib/messages.php:2307
+#: lib/messages.php:2328
 msgctxt "option label"
 msgid "Product Depth"
 msgstr ""
 
-#: lib/messages.php:2308
+#: lib/messages.php:2329
 msgctxt "tooltip fragment"
 msgid "a product depth (in %s)"
 msgstr ""
 
-#: lib/messages.php:2312
+#: lib/messages.php:2333
 msgctxt "option label"
 msgid "Product GTIN-14"
 msgstr ""
 
-#: lib/messages.php:2313
+#: lib/messages.php:2334
 msgctxt "tooltip fragment"
 msgid "a product GTIN-14 code"
 msgstr ""
 
-#: lib/messages.php:2316
+#: lib/messages.php:2337
 msgctxt "option label"
 msgid "Product GTIN-13/EAN"
 msgstr ""
 
-#: lib/messages.php:2317
+#: lib/messages.php:2338
 msgctxt "tooltip fragment"
 msgid "a product GTIN-13 code (aka 13-digit ISBN codes or EAN/UCC-13)"
 msgstr ""
 
-#: lib/messages.php:2320
+#: lib/messages.php:2341
 msgctxt "option label"
 msgid "Product GTIN-12/UPC"
 msgstr ""
 
-#: lib/messages.php:2321
+#: lib/messages.php:2342
 msgctxt "tooltip fragment"
 msgid ""
 "a product GTIN-12 code (12-digit GS1 identification key composed of a U.P.C. "
 "company prefix, item reference, and check digit)"
 msgstr ""
 
-#: lib/messages.php:2324
+#: lib/messages.php:2345
 msgctxt "option label"
 msgid "Product GTIN-8"
 msgstr ""
 
-#: lib/messages.php:2325
+#: lib/messages.php:2346
 msgctxt "tooltip fragment"
 msgid "a product GTIN-8 code (aka EAN/UCC-8 or 8-digit EAN)"
 msgstr ""
 
-#: lib/messages.php:2328
+#: lib/messages.php:2349
 msgctxt "option label"
 msgid "Product GTIN"
 msgstr ""
 
-#: lib/messages.php:2329
+#: lib/messages.php:2350
 msgctxt "tooltip fragment"
 msgid "a product GTIN code (GTIN-8, GTIN-12/UPC, GTIN-13/EAN, or GTIN-14)"
 msgstr ""
 
-#: lib/messages.php:2332
+#: lib/messages.php:2353
 msgctxt "option label"
 msgid "Product Height"
 msgstr ""
 
-#: lib/messages.php:2333
+#: lib/messages.php:2354
 msgctxt "tooltip fragment"
 msgid "a product height (in %s)"
 msgstr ""
 
-#: lib/messages.php:2338
+#: lib/messages.php:2359
 msgctxt "tooltip fragment"
 msgid "an ISBN code (aka International Standard Book Number)"
 msgstr ""
 
-#: lib/messages.php:2341
+#: lib/messages.php:2362
 msgctxt "option label"
 msgid "Product Length"
 msgstr ""
 
-#: lib/messages.php:2342
+#: lib/messages.php:2363
 msgctxt "tooltip fragment"
 msgid "a product length (in %s)"
 msgstr ""
 
-#: lib/messages.php:2347
+#: lib/messages.php:2368
 msgctxt "tooltip fragment"
 msgid "a product material"
 msgstr ""
 
-#: lib/messages.php:2351
+#: lib/messages.php:2372
 msgctxt "tooltip fragment"
 msgid "a Manufacturer Part Number (MPN)"
 msgstr ""
 
-#: lib/messages.php:2355
+#: lib/messages.php:2376
 msgctxt "tooltip fragment"
 msgid "a product price"
 msgstr ""
 
-#: lib/messages.php:2359
+#: lib/messages.php:2380
 msgctxt "tooltip fragment"
 msgid "a product size"
 msgstr ""
 
-#: lib/messages.php:2363
+#: lib/messages.php:2384
 msgctxt "tooltip fragment"
 msgid "a Stock-Keeping Unit (aka unique product identifier)"
 msgstr ""
 
-#: lib/messages.php:2367
+#: lib/messages.php:2388
 msgctxt "tooltip fragment"
 msgid "a product target gender"
 msgstr ""
 
-#: lib/messages.php:2370
+#: lib/messages.php:2391
 msgctxt "option label"
 msgid "Product Volume"
 msgstr ""
 
-#: lib/messages.php:2371
+#: lib/messages.php:2392
 msgctxt "tooltip fragment"
 msgid "a product volume (in %s)"
 msgstr ""
 
-#: lib/messages.php:2376
+#: lib/messages.php:2397
 msgctxt "tooltip fragment"
 msgid "a product weight (in %s)"
 msgstr ""
 
-#: lib/messages.php:2380
+#: lib/messages.php:2401
 msgctxt "option label"
 msgid "Product Width"
 msgstr ""
 
-#: lib/messages.php:2381
+#: lib/messages.php:2402
 msgctxt "tooltip fragment"
 msgid "a product width (in %s)"
 msgstr ""
 
-#: lib/messages.php:2385
+#: lib/messages.php:2406
 msgctxt "option label"
 msgid "Recipe Ingredients"
 msgstr ""
 
-#: lib/messages.php:2386
+#: lib/messages.php:2407
 msgctxt "tooltip fragment"
 msgid "recipe ingredients"
 msgstr ""
 
-#: lib/messages.php:2389
+#: lib/messages.php:2410
 msgctxt "option label"
 msgid "Recipe Instructions"
 msgstr ""
 
-#: lib/messages.php:2390
+#: lib/messages.php:2411
 msgctxt "tooltip fragment"
 msgid "recipe instructions"
 msgstr ""
 
-#: lib/messages.php:2393
+#: lib/messages.php:2414
 msgctxt "option label"
 msgid "Same-As URLs"
 msgstr ""
 
-#: lib/messages.php:2394
+#: lib/messages.php:2415
 msgctxt "tooltip fragment"
 msgid "additional Same-As URLs"
 msgstr ""
 
-#: lib/messages.php:2398
+#: lib/messages.php:2419
 msgctxt "tooltip fragment"
 msgid "video embed HTML code (not a URL)"
 msgstr ""
 
-#: lib/messages.php:2401
+#: lib/messages.php:2422
 msgctxt "option label"
 msgid "Video URL"
 msgstr ""
 
-#: lib/messages.php:2402
+#: lib/messages.php:2423
 msgctxt "tooltip fragment"
 msgid "a video URL (not HTML code)"
 msgstr ""
 
 #. translators: %s is is the short add-on name.
-#: lib/messages.php:2447
+#: lib/messages.php:2468
 msgctxt "option comment"
 msgid "%s required"
 msgstr ""
 
 #. translators: %s is the meta tag name (ie. meta name canonical).
-#: lib/messages.php:2457
+#: lib/messages.php:2478
 msgid ""
 "Option disabled (<code>%s</code> head tag disabled or SEO plugin detected)."
 msgstr ""
 
 #. translators: %s is is the add-on name (and a link to the add-on page).
-#: lib/messages.php:2467
+#: lib/messages.php:2488
 msgid "Activate the %s add-on for additional Schema markup options."
 msgstr ""
 
-#: lib/messages.php:2499
+#: lib/messages.php:2520
 msgctxt "option value"
 msgid "uncropped"
 msgstr ""
 
-#: lib/messages.php:2500
+#: lib/messages.php:2521
 msgctxt "option value"
 msgid "cropped"
 msgstr ""
@@ -6366,9 +6391,14 @@ msgctxt "option label"
 msgid "Twitter Business @username"
 msgstr ""
 
+#: lib/submenu/general.php:38
+msgctxt "metabox title"
+msgid "General Settings"
+msgstr ""
+
 #: lib/submenu/general.php:50
 msgctxt "metabox title"
-msgid "Specific WebSites and Publishers"
+msgid "Specific Sites and Publishers"
 msgstr ""
 
 #: lib/submenu/general.php:76

@@ -225,6 +225,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							
 						 	break;
 
+						case 'tooltip-meta-og_img_crop_area':
+
+							$text = __( 'The main subject area of the image used for Facebook / Open Graph meta tags.', 'wpsso' );
+
+						 	break;
+
 						case 'tooltip-meta-og_img_id':
 
 							$text = __( 'A customized image ID to include first, before any featured, attached, or content images.', 'wpsso' );
@@ -297,6 +303,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
+						case 'tooltip-meta-schema_img_crop_area':
+
+							$text = __( 'The main subject area of the image used for Google / Pinterest / Schema meta tags and JSON-LD markup.', 'wpsso' );
+
+							break;
+
 						case 'tooltip-meta-schema_img_id':
 
 							$text = __( 'A customized image ID to include first in the Google / Schema meta tags and JSON-LD markup, before any featured, attached, or content images.', 'wpsso' );
@@ -306,6 +318,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-meta-schema_img_url':
 
 							$text = __( 'A customized image URL (instead of an image ID) to include first in the Google / Schema meta tags and JSON-LD markup.', 'wpsso' ) . ' <em>' . __( 'This field is disabled if a custom image ID has been selected.', 'wpsso' ) . '</em>';
+
+						 	break;
+
+						case 'tooltip-meta-tc_lrg_img_crop_area':
+						case 'tooltip-meta-tc_sum_img_crop_area':
+
+							$text = __( 'The main subject area of the image used for the Twitter Card image.', 'wpsso' );
 
 						 	break;
 
@@ -538,7 +557,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-og_img_size':		// Open Graph.
 
-							$text = sprintf( __( 'The image dimensions used for the Facebook / Open Graph meta tags (the default dimensions are %s).',
+							$text = sprintf( __( 'The image dimensions used for Facebook / Open Graph meta tags (the default dimensions are %s).',
 								'wpsso' ), $this->get_def_img_dims( 'og' ) ) . ' ';
 								
 							$text .= $fb_recs_transl;
@@ -1269,7 +1288,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-schema_img_size':
 
-							$text = sprintf( __( 'The image dimensions used for the Google / Pinterest / Schema meta tags and JSON-LD markup (the default dimensions are %s).', 'wpsso' ), $this->get_def_img_dims( 'schema' ) );
+							$text = sprintf( __( 'The image dimensions used for Google / Pinterest / Schema meta tags and JSON-LD markup (the default dimensions are %s).', 'wpsso' ), $this->get_def_img_dims( 'schema' ) );
 
 							break;
 
@@ -1290,7 +1309,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$ratio = preg_replace( '/^.*_amp([0-9x]+)_.*$/', '$1', $msg_key );
 
-							$text = sprintf( __( 'The image dimensions used for the Schema Article AMP %1$s image meta tags and JSON-LD markup (the default dimensions are %2$s).', 'wpsso' ), $ratio, $this->get_def_img_dims( 'schema_article_amp' . $ratio ) ) . ' ';
+							$text = sprintf( __( 'The image dimensions used for Schema Article AMP %1$s image meta tags and JSON-LD markup (the default dimensions are %2$s).', 'wpsso' ), $ratio, $this->get_def_img_dims( 'schema_article_amp' . $ratio ) ) . ' ';
 
 							$text .= sprintf( __( 'The minimum image width required by Google is %dpx.', 'wpsso' ),
 								$this->p->cf[ 'head' ][ 'limit_min' ][ 'schema_article_amp' . $ratio . '_img_width' ] ). ' ';
@@ -1299,7 +1318,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-schema_desc_max_len':
 
-							$text = __( 'The maximum length used for the Schema description property value.', 'wpsso' ) . ' ';
+							$text = __( 'The maximum text length of the Schema description property value.', 'wpsso' ) . ' ';
 							
 							$text .= sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).',
 								'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ 'schema_desc_len' ],
@@ -1400,7 +1419,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-tc_desc_max_len':
 
 							$text = __( 'The maximum length used for the Twitter Card description value.', 'wpsso' ) . ' ';
-							
+
 							$text .= sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).',
 								'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ 'tc_desc_len' ],
 									$this->p->opt->get_defaults( 'tc_desc_max_len' ) );
@@ -1421,15 +1440,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-tc_sum_img_size':
 
-							$text = sprintf( __( 'The image dimensions used for the <a href="%1$s">Summary Card</a> (should be at least %2$s and less than %3$s).', 'wpsso' ), 'https://dev.twitter.com/docs/cards/types/summary-card', '120x120px', __( '1MB', 'wpsso' ) ) . ' ';
-							
+							$text = sprintf( __( 'The image dimensions for the <a href="%1$s">Summary Card</a> (should be at least %2$s and less than %3$s).', 'wpsso' ), 'https://dev.twitter.com/docs/cards/types/summary-card', '120x120px', __( '1MB', 'wpsso' ) ) . ' ';
+
 							$text .= sprintf( __( 'The default image dimensions are %s.', 'wpsso' ), $this->get_def_img_dims( 'tc_sum' ) );
 
 							break;
 
 						case 'tooltip-tc_lrg_img_size':
 
-							$text = sprintf( __( 'The image dimensions used for the <a href="%1$s">Large Image Summary Card</a> (must be larger than %2$s and less than %3$s).', 'wpsso' ), 'https://dev.twitter.com/docs/cards/large-image-summary-card', '280x150px', __( '1MB', 'wpsso' ) ) . ' ';
+							$text = sprintf( __( 'The image dimensions for the <a href="%1$s">Large Image Summary Card</a> (must be larger than %2$s and less than %3$s).', 'wpsso' ), 'https://dev.twitter.com/docs/cards/large-image-summary-card', '280x150px', __( '1MB', 'wpsso' ) ) . ' ';
 
 							$text .= sprintf( __( 'The default image dimensions are %s.', 'wpsso' ), $this->get_def_img_dims( 'tc_lrg' ) );
 
@@ -1586,13 +1605,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-custom-cm-field-label':
 
-							$text = sprintf( __( 'The <em>%1$s</em> column is for display purposes only and can be changed as you wish.', 'wpsso' ), _x( 'Contact Field Label', 'column title', 'wpsso' ) );
+							$text = sprintf( __( 'The <em>%1$s</em> column is for display purposes only and can be changed as you wish.', 'wpsso' ),
+								_x( 'Contact Field Label', 'column title', 'wpsso' ) );
 
 							break;
 
 						case 'tooltip-wp-cm-field-id':
 
-							$text = sprintf( __( 'The built-in WordPress <em>%1$s</em> column cannot be modified.', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ) );
+							$text = sprintf( __( 'The built-in WordPress <em>%1$s</em> column cannot be modified.', 'wpsso' ),
+								_x( 'Contact Field ID', 'column title', 'wpsso' ) );
 
 							break;
 

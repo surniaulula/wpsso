@@ -219,7 +219,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 				foreach ( WpssoWpMeta::get_column_headers() as $col_key => $col_header ) {
 					if ( $form->in_defaults( 'plugin_' . $col_key . '_col_' . $mod_name ) ) {	// Just in case.
-						$cols .= $form->get_td_no_checkbox( 'plugin_' . $col_key . '_col_' . $mod_name, '', $narrow = true );
+						$cols .= $form->get_td_no_checkbox( 'plugin_' . $col_key . '_col_' . $mod_name, '', $is_narrow = true );
 					} else {
 						$cols .= '<td class="checkbox"></td>';
 					}

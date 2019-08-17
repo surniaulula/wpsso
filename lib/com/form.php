@@ -129,8 +129,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		/**
 		 * Checkbox input field.
 		 */
-		public function get_checkbox( $name, $css_class = '', $css_id = '',
-			$is_disabled = false, $force = null, $group = null ) {
+		public function get_checkbox( $name, $css_class = '', $css_id = '', $is_disabled = false, $force = null, $group = null ) {
 
 			if ( empty( $name ) ) {
 				return;	// Just in case.
@@ -169,8 +168,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_no_checkbox( $name, $css_class = '', $css_id = '', $force = null, $group = null ) {
 
-			return $this->get_checkbox( $name, $css_class, $css_id,
-				$is_disabled = true, $force, $group );
+			return $this->get_checkbox( $name, $css_class, $css_id, $is_disabled = true, $force, $group );
 		}
 
 		public function get_no_checkbox_options( $name, array $opts, $css_class = '', $css_id = '', $group = null ) {
@@ -186,17 +184,17 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				( empty( $comment ) ? '' : ' ' . $comment );
 		}
 
-		public function get_td_no_checkbox( $name, $comment = '', $narrow = false ) {
+		public function get_td_no_checkbox( $name, $comment = '', $is_narrow = false ) {
 
-			return '<td class="'.( $narrow ? 'checkbox ' : '' ) . 'blank">' . $this->get_no_checkbox_comment( $name, $comment ) . '</td>';
+			return '<td class="'.( $is_narrow ? 'checkbox ' : '' ) . 'blank">' . 
+				$this->get_no_checkbox_comment( $name, $comment ) . '</td>';
 		}
 
 		/**
 		 * Creates a vertical list (by default) of checkboxes. The $name_prefix is 
 		 * combined with the $values array names to create the checbox option name.
 		 */
-		public function get_checklist( $name_prefix, $values = array(), $css_class = 'input_vertical_list', $css_id = '', $is_assoc = null,
-			$is_disabled = false ) {
+		public function get_checklist( $name_prefix, $values = array(), $css_class = 'input_vertical_list', $css_id = '', $is_assoc = null, $is_disabled = false ) {
 
 			if ( empty( $name_prefix ) || ! is_array( $values ) ) {
 				return;
@@ -215,7 +213,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			/**
 			 * Use the "input_vertical_list" class to align the checbox input vertically.
 			 */
-			$html = '<div '.( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' ) .
+			$html = '<div ' . ( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' ) .
 				' id="' . esc_attr( $input_id ) . '">' . "\n";
 
 			foreach ( $values as $name_suffix => $label ) {
@@ -270,12 +268,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_no_checklist( $name_prefix, $values = array(), $css_class = 'input_vertical_list', $css_id = '', $is_assoc = null ) {
 
-			return $this->get_checklist( $name_prefix, $values, $css_class, $css_id, $is_assoc,
-				$is_disabled = true );
+			return $this->get_checklist( $name_prefix, $values, $css_class, $css_id, $is_assoc, $is_disabled = true );
 		}
 
-		public function get_checklist_post_types( $name_prefix, $values = array(), $css_class = 'input_vertical_list', $css_id = '',
-			$is_disabled = false ) {
+		public function get_checklist_post_types( $name_prefix, $values = array(), $css_class = 'input_vertical_list', $css_id = '', $is_disabled = false ) {
 
 			foreach ( $this->p->util->get_post_types( 'objects' ) as $pt ) {
 				$values[ $pt->name ] = $pt->label.( empty( $pt->description ) ? '' : ' (' . $pt->description . ')' );
@@ -779,27 +775,22 @@ EOF;
 				$is_disabled, $selected, $event_name, $event_args );
 		}
 
-		public function get_no_select_time( $name, $css_class = '', $css_id = '',
-			$selected = false, $step_mins = 15, $add_none = false ) {
+		public function get_no_select_time( $name, $css_class = '', $css_id = '', $selected = false, $step_mins = 15, $add_none = false ) {
 		
-			return $this->get_select_time( $name, $css_class, $css_id,
-				$is_disabled = true, $selected, $step_mins, $add_none );
+			return $this->get_select_time( $name, $css_class, $css_id, $is_disabled = true, $selected, $step_mins, $add_none );
 		}
 
-		public function get_no_select_time_options( $name, array $opts, $css_class = '', $css_id = '',
-			$step_mins = 15, $add_none = false ) {
+		public function get_no_select_time_options( $name, array $opts, $css_class = '', $css_id = '', $step_mins = 15, $add_none = false ) {
 		
 			$selected = isset( $opts[ $name ] ) ? $opts[ $name ] : true;
 
-			return $this->get_select_time( $name, $css_class, $css_id,
-				$is_disabled = true, $selected, $step_mins, $add_none );
+			return $this->get_select_time( $name, $css_class, $css_id, $is_disabled = true, $selected, $step_mins, $add_none );
 		}
 
 		/**
 		 * The "timezone" class is always prefixed to the $css_class value.
 		 */
-		public function get_select_timezone( $name, $css_class = '', $css_id = '',
-			$is_disabled = false, $selected = false ) {
+		public function get_select_timezone( $name, $css_class = '', $css_id = '', $is_disabled = false, $selected = false ) {
 
 			$css_class = trim( 'timezone ' . $css_class );
 
@@ -818,8 +809,7 @@ EOF;
 				}
 			}
 
-			return $this->get_select( $name, $timezones, $css_class, $css_id, $is_assoc = false,
-				$is_disabled, $selected );
+			return $this->get_select( $name, $timezones, $css_class, $css_id, $is_assoc = false, $is_disabled, $selected );
 		}
 
 		public function get_no_select_timezone( $name, $css_class = '', $css_id = '', $selected = false ) {
@@ -827,12 +817,10 @@ EOF;
 			/**
 			 * The "timezone" class is always prefixed to the $css_class value.
 			 */
-			return $this->get_select_timezone( $name, $css_class, $css_id,
-				$is_disabled = true, $selected );
+			return $this->get_select_timezone( $name, $css_class, $css_id, $is_disabled = true, $selected );
 		}
 
-		public function get_select_country( $name, $css_class = '', $css_id = '',
-			$is_disabled = false, $selected = false ) {
+		public function get_select_country( $name, $css_class = '', $css_id = '', $is_disabled = false, $selected = false ) {
 
 			/**
 			 * Set 'none' as the default value is no default is defined.
@@ -855,22 +843,19 @@ EOF;
 
 			$values = array( 'none' => 'none' ) + SucomUtil::get_alpha2_countries();
 
-			return $this->get_select( $name, $values, $css_class, $css_id, $is_assoc = true,
-				$is_disabled, $selected );
+			return $this->get_select( $name, $values, $css_class, $css_id, $is_assoc = true, $is_disabled, $selected );
 		}
 
 		public function get_no_select_country( $name, $css_class = '', $css_id = '', $selected = false ) {
 
-			return $this->get_select_country( $name, $css_class, $css_id,
-				$is_disabled = true, $selected );
+			return $this->get_select_country( $name, $css_class, $css_id, $is_disabled = true, $selected );
 		}
 
 		public function get_no_select_country_options( $name, array $opts, $css_class = '', $css_id = '' ) {
 
 			$selected = isset( $opts[ $name ] ) ? $opts[ $name ] : false;
 
-			return $this->get_select_country( $name, $css_class, $css_id,
-				$is_disabled = true, $selected );
+			return $this->get_select_country( $name, $css_class, $css_id, $is_disabled = true, $selected );
 		}
 
 		public function get_select_img_size( $name, $name_preg = '//', $invert = false ) {
@@ -885,8 +870,8 @@ EOF;
 			natsort( $size_names );
 
 			$html        = '<select name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '">';
-			$in_options  = $this->in_options( $name );	// optimize and call only once
-			$in_defaults = $this->in_defaults( $name );	// optimize and call only once
+			$in_options  = $this->in_options( $name );	// Optimize and call only once.
+			$in_defaults = $this->in_defaults( $name );	// Optimize and call only once.
 
 			foreach ( $size_names as $size_name ) {
 
@@ -903,7 +888,8 @@ EOF;
 				}
 
 				$html .= '>';
-				$html .= esc_html( $size_name . ' [ ' . $size[ 'width' ] . 'x' . $size[ 'height' ] . ( $size[ 'crop' ] ? ' cropped' : '' ) . ' ]' );
+				$html .= esc_html( $size_name . ' [ ' . $size[ 'width' ] . 'x' . $size[ 'height' ] .
+					( $size[ 'crop' ] ? ' cropped' : '' ) . ' ]' );
 
 				if ( $in_defaults && $size_name === $this->defaults[ $name ] ) {
 					$html .= ' ' . $this->get_value_transl( '(default)' );
@@ -920,8 +906,7 @@ EOF;
 		/**
 		 * Text input field.
 		 */
-		public function get_input( $name, $css_class = '', $css_id = '', $len = 0, $placeholder = '',
-			$is_disabled = false, $tabindex = 0 ) {
+		public function get_input( $name, $css_class = '', $css_id = '', $len = 0, $placeholder = '', $is_disabled = false, $tabindex = 0 ) {
 
 			if ( empty( $name ) ) {
 				return;	// Just in case.
@@ -1046,8 +1031,7 @@ EOF;
 				' placeholder="#000000" value="' . esc_attr( $value ) . '" />';
 		}
 
-		public function get_input_date( $name = '', $css_class = '', $css_id = '',
-			$min_date = '', $max_date = '', $is_disabled = false ) {
+		public function get_input_date( $name = '', $css_class = '', $css_id = '', $min_date = '', $max_date = '', $is_disabled = false ) {
 
 			if ( empty( $name ) ) {
 
@@ -1075,8 +1059,7 @@ EOF;
 
 		public function get_no_input_date( $name = '' ) {
 
-			return $this->get_input_date( $name, $css_class = '', $css_id = '',
-				$min_date = '', $max_date = '', $is_disabled = true );
+			return $this->get_input_date( $name, $css_class = '', $css_id = '', $min_date = '', $max_date = '', $is_disabled = true );
 		}
 
 		public function get_no_input_date_options( $name, $opts ) {
@@ -1109,16 +1092,16 @@ EOF;
 				$placeholder = preg_replace( '/^ngg-/', '', $placeholder );
 			}
 
-			$input_id = $this->get_input( $opt_pre . '_id' . $opt_suffix,
-				'short', '', 0, $placeholder, $is_disabled );
+			$input_pid = $this->get_input( $opt_pre . '_id' . $opt_suffix,
+				$css_class = 'pid', $css_id = '', $len = 0, $placeholder, $is_disabled );
 
 			/**
 			 * Disable the select option if only 1 media lib.
 			 */
 			$select_disabled = count( $media_libs ) <= 1 ? true : $is_disabled;
 
-			$select_lib = $this->get_select( $opt_pre . '_id_pre' . $opt_suffix,
-				$media_libs, '', '', true, $select_disabled, $default_lib );
+			$select_lib = $this->get_select( $opt_pre . '_id_pre' . $opt_suffix, $media_libs,
+				$css_class = '', $css_id = '', true, $select_disabled, $default_lib );
 
 			/**
 			 * The css id is used to set image values and disable the image url.
@@ -1134,17 +1117,16 @@ EOF;
 				$data[ 'pid' ] = $placeholder;
 			}
 
-			$button_upload = function_exists( 'wp_enqueue_media' ) ? $this->get_button(
-				'Select or Upload Image',		// $value
-				'sucom_image_upload_button button',	// $css_class
-				$opt_pre . $opt_suffix,			// $css_id
-				'',					// $url
-				false,					// $newtab
-				$is_disabled,				// $is_disabled
-				$data					// $data
-			) : '';
+			if ( function_exists( 'wp_enqueue_media' ) ) {
 
-			return '<div class="img_upload">' . $input_id . '&nbsp;in&nbsp;' . $select_lib . '&nbsp;' . $button_upload . '</div>';
+				$upload_button = $this->get_button( $value = 'Select Image',
+					$css_class = 'sucom_image_upload_button button', $css_id = $opt_pre . $opt_suffix,
+						$url = '', $newtab = false, $is_disabled, $data );
+			} else {
+				$upload_button = '';
+			}
+
+			return '<div class="img_upload">' . $input_pid . 'in&nbsp;' . $select_lib . '&nbsp;' . $upload_button . '</div>';
 		}
 
 		public function get_no_input_image_upload( $opt_pre, $placeholder = '' ) {
@@ -1152,26 +1134,57 @@ EOF;
 			return $this->get_input_image_upload( $opt_pre, $placeholder, $is_disabled = true );
 		}
 
-		public function get_input_image_dimensions( $name, $use_opts = false, $narrow = false, $is_disabled = false ) {
+		public function get_input_image_dimensions( $name, $load_placeholders = false, $is_narrow = false, $is_disabled = false ) {
 
 			$placeholder_width  = '';
 			$placeholder_height = '';
-			$crop_area_select   = '';
 
-			/**
-			 * $use_opts is true when used for post / user meta forms (to show default values).
-			 */
-			if ( $use_opts ) {
+			if ( $load_placeholders ) {
 
 				$placeholder_width  = $this->get_placeholder_sanitized( $name . '_width', true );
 				$placeholder_height = $this->get_placeholder_sanitized( $name . '_height', true );
 
-				foreach ( array( 'crop', 'crop_x', 'crop_y' ) as $key ) {
+				foreach ( array( 'crop'  ) as $key ) {
 					if ( ! $this->in_options( $name . '_' . $key ) && $this->in_defaults( $name . '_' . $key ) ) {
 						$this->options[ $name . '_' . $key ] = $this->defaults[ $name . '_' . $key ];
 					}
 				}
 			}
+
+			$html = $this->get_input( $name . '_width', 'short width', '', 0, $placeholder_width, $is_disabled ) . 'x&nbsp;' .
+				$this->get_input( $name . '_height', 'short height', '', 0, $placeholder_height, $is_disabled ) . 'px' . ' ';
+
+			$html .= _x( 'crop', 'option comment', $this->text_domain ) . ' ' . $this->get_checkbox( $name . '_crop', '', '', $is_disabled );
+
+			if ( $is_narrow ) {
+				$html .= ' <div class="img_crop_from is_narrow">';
+			} else {
+				$html .= ' <div class="img_crop_from">' . _x( 'from', 'option comment', $this->text_domain ) . ' ';
+			}
+
+			$html .= $this->get_input_image_crop_area( $name, $load_placeholders, $is_disabled );
+
+			$html .= '</div>';
+
+			return $html;
+		}
+
+		public function get_no_input_image_dimensions( $name, $load_placeholders = false, $is_narrow = false ) {
+
+			return $this->get_input_image_dimensions( $name, $load_placeholders, $is_narrow, $is_disabled = true );
+		}
+
+		public function get_input_image_crop_area( $name, $load_placeholders = false, $is_disabled = false ) {
+
+			if ( $load_placeholders ) {
+				foreach ( array( 'crop_x', 'crop_y' ) as $key ) {
+					if ( ! $this->in_options( $name . '_' . $key ) && $this->in_defaults( $name . '_' . $key ) ) {
+						$this->options[ $name . '_' . $key ] = $this->defaults[ $name . '_' . $key ];
+					}
+				}
+			}
+
+			$html = '';
 
 			/**
 			 * Crop area selection is only available since WP v3.9.
@@ -1180,26 +1193,39 @@ EOF;
 
 			if ( version_compare( $wp_version, '3.9', '>=' ) ) {
 
-				$crop_area_select .= true === $narrow ?
-					' <div class="img_crop_from is_narrow">' :
-					' <div class="img_crop_from">from';
-
 				foreach ( array( 'crop_x', 'crop_y' ) as $key ) {
-					$crop_area_select .= ' ' . $this->get_select( $name . '_' . $key, $this->p->cf[ 'form' ][ 'position_' . $key ],
+					$html .= $this->get_select( $name . '_' . $key, $this->p->cf[ 'form' ][ 'position_' . $key ],
 						$css_class = 'crop_area', $css_id = '', $is_assoc = true, $is_disabled );
 				}
-
-				$crop_area_select .= '</div>';
 			}
 
-			return $this->get_input( $name . '_width', 'short width', '', 0, $placeholder_width, $is_disabled ) . 'x' .
-				$this->get_input( $name . '_height', 'short height', '', 0, $placeholder_height, $is_disabled ) .
-					'px crop ' . $this->get_checkbox( $name . '_crop', '', '', $is_disabled ) . $crop_area_select;
+			return $html;
 		}
 
-		public function get_no_input_image_dimensions( $name, $use_opts = false, $narrow = false ) {
+		public function get_no_input_image_crop_area( $name, $load_placeholders = false ) {
 
-			return $this->get_input_image_dimensions( $name, $use_opts, $narrow, $is_disabled = true );
+			return $this->get_no_input_image_crop_area( $name, $load_placeholders, $is_disabled = true );
+		}
+
+		public function get_image_dimensions_text( $name, $load_placeholders = false ) {
+
+			if ( ! empty( $this->options[ $name . '_width' ] ) && ! empty( $this->options[ $name . '_height' ] ) ) {
+
+				return $this->options[ $name . '_width' ] . 'x' . $this->options[ $name . '_height' ] . 'px' .
+					( $this->options[ $name . '_crop' ] ? ' cropped' : '' );
+
+			} elseif ( true === $load_placeholders ) {
+
+				$def_width  = empty( $this->p->options[ $name . '_width' ] ) ? '' : $this->p->options[ $name . '_width' ];
+				$def_height = empty( $this->p->options[ $name . '_height' ] ) ? '' : $this->p->options[ $name . '_height' ];
+				$def_crop   = empty( $this->p->options[ $name . '_crop' ] ) ? false : true;
+
+				if ( ! empty( $def_width ) && ! empty( $def_height ) ) {
+					return $def_width . 'x' . $def_height . 'px' . ( $def_crop ? ' cropped' : '' );
+				}
+			}
+
+			return;
 		}
 
 		public function get_input_image_url( $opt_pre, $url = '' ) {
@@ -1232,7 +1258,7 @@ EOF;
 				$placeholder_height = empty( $media_info[ 'vid_height' ] ) ? '' : $media_info[ 'vid_height' ];
 			}
 
-			return $this->get_input( $name . '_width', 'short width', '', 0, $placeholder_width, $is_disabled ) . 'x' .
+			return $this->get_input( $name . '_width', 'short width', '', 0, $placeholder_width, $is_disabled ) . 'x&nbsp;' .
 				$this->get_input( $name . '_height', 'short height', '', 0, $placeholder_height, $is_disabled ) . 'px';
 		}
 
@@ -1341,11 +1367,9 @@ EOF;
 			return $html;
 		}
 
-		public function get_no_input_multi( $name, $css_class = '', $css_id = '',
-			$start_num = 0, $max_input = 90, $show_first = 5 ) {
+		public function get_no_input_multi( $name, $css_class = '', $css_id = '', $start_num = 0, $max_input = 90, $show_first = 5 ) {
 
-			return $this->get_input_multi( $name, $css_class, $css_id,
-				$start_num, $max_input, $show_first, $is_disabled = true );
+			return $this->get_input_multi( $name, $css_class, $css_id, $start_num, $max_input, $show_first, $is_disabled = true );
 		}
 
 		/**
@@ -1393,8 +1417,7 @@ EOF;
 			return $this->get_date_time_tz( $name_prefix, $is_disabled = true );
 		}
 
-		public function get_mixed_multi( $mixed, $css_class, $css_id,
-			$start_num = 0, $max_input = 10, $show_first = 2, $is_disabled = false ) {
+		public function get_mixed_multi( $mixed, $css_class, $css_id, $start_num = 0, $max_input = 10, $show_first = 2, $is_disabled = false ) {
 
 			if ( empty( $mixed ) ) {
 				return;	// Just in case.
@@ -1605,39 +1628,16 @@ EOF;
 			return $html;
 		}
 
-		public function get_no_mixed_multi( $mixed, $css_class, $css_id,
-			$start_num = 0, $max_input = 10, $show_first = 2 ) {
+		public function get_no_mixed_multi( $mixed, $css_class, $css_id, $start_num = 0, $max_input = 10, $show_first = 2 ) {
 
-			return $this->get_mixed_multi( $mixed, $css_class, $css_id,
-				$start_num, $max_input, $show_first, $is_disabled = true );
-		}
-
-		public function get_image_dimensions_text( $name, $use_opts = false ) {
-
-			if ( ! empty( $this->options[ $name . '_width' ] ) && ! empty( $this->options[ $name . '_height' ] ) ) {
-
-				return $this->options[ $name . '_width' ] . 'x' . $this->options[ $name . '_height' ] . 'px' .
-					( $this->options[ $name . '_crop' ] ? ' cropped' : '' );
-
-			} elseif ( true === $use_opts ) {
-
-				$def_width  = empty( $this->p->options[ $name . '_width' ] ) ? '' : $this->p->options[ $name . '_width' ];
-				$def_height = empty( $this->p->options[ $name . '_height' ] ) ? '' : $this->p->options[ $name . '_height' ];
-				$def_crop   = empty( $this->p->options[ $name . '_crop' ] ) ? false : true;
-
-				if ( ! empty( $def_width ) && ! empty( $def_height ) ) {
-					return $def_width . 'x' . $def_height . 'px' . ( $def_crop ? ' cropped' : '' );
-				}
-			}
-
-			return;
+			return $this->get_mixed_multi( $mixed, $css_class, $css_id, $start_num, $max_input, $show_first, $is_disabled = true );
 		}
 
 		public function get_video_dimensions_text( $name, $media_info ) {
 
 			if ( ! empty( $this->options[ $name . '_width' ] ) && ! empty( $this->options[ $name . '_height' ] ) ) {
 
-				return $this->options[ $name . '_width' ] . 'x' . $this->options[ $name . '_height' ];
+				return $this->options[ $name . '_width' ] . 'x' . $this->options[ $name . '_height' ] . 'px';
 
 			} elseif ( ! empty( $media_info ) && is_array( $media_info ) ) {
 
@@ -1645,15 +1645,14 @@ EOF;
 				$def_height = empty( $media_info[ 'vid_height' ] ) ? '' : $media_info[ 'vid_height' ];
 
 				if ( ! empty( $def_width ) && ! empty( $def_height ) ) {
-					return $def_width . 'x' . $def_height;
+					return $def_width . 'x' . $def_height . 'px';
 				}
 			}
 
 			return '';
 		}
 
-		public function get_textarea( $name, $css_class = '', $css_id = '',
-			$len = 0, $placeholder = '', $is_disabled = false ) {
+		public function get_textarea( $name, $css_class = '', $css_id = '', $len = 0, $placeholder = '', $is_disabled = false ) {
 
 			if ( empty( $name ) ) {
 				return;	// Just in case.
@@ -1694,22 +1693,19 @@ EOF;
 			return $html;
 		}
 
-		public function get_no_textarea( $name, $css_class = '', $css_id = '',
-			$len = 0, $placeholder = '' ) {
+		public function get_no_textarea( $name, $css_class = '', $css_id = '', $len = 0, $placeholder = '' ) {
 
 			return $this->get_textarea( $name, $css_class, $css_id, $len, $placeholder, $is_disabled = true );
 		}
 
-		public function get_no_textarea_options( $name, array $opts, $css_class = '', $css_id = '',
-			$len = 0, $placeholder = '' ) {
+		public function get_no_textarea_options( $name, array $opts, $css_class = '', $css_id = '', $len = 0, $placeholder = '' ) {
 
 			$value = isset( $opts[ $name ] ) ? $opts[ $name ] : '';
 
 			return $this->get_no_textarea_value( $value, $css_class, $css_id, $len, $placeholder );
 		}
 
-		public function get_no_textarea_value( $value = '', $css_class = '', $css_id = '',
-			$len = 0, $placeholder = '' ) {
+		public function get_no_textarea_value( $value = '', $css_class = '', $css_id = '', $len = 0, $placeholder = '' ) {
 
 			return '<textarea disabled="disabled"' .
 				( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' ) .
@@ -1728,8 +1724,7 @@ EOF;
 			return $html;
 		}
 
-		public function get_button( $value, $css_class = '', $css_id = '', $url = '',
-			$newtab = false, $is_disabled = false, $data = array() ) {
+		public function get_button( $value, $css_class = '', $css_id = '', $url = '', $newtab = false, $is_disabled = false, $data = array() ) {
 
 			if ( true === $newtab ) {
 				$on_click = ' onClick="window.open(\'' . SucomUtil::esc_url_encode( $url ) . '\', \'_blank\');"';
