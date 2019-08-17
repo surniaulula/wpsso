@@ -62,19 +62,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			);
 
 			$sizes[ 'schema_article_amp1x1_img' ] = array(	// Options prefix.
-				'name'   => 'schema-article',
+				'name'   => 'schema-article-amp1x1',
 				'label'  => _x( 'Schema Article AMP 1x1 Image', 'image size label', 'wpsso' ),
 				'md_pre' => 'schema_img',		// Meta data prefix.
 			);
 
 			$sizes[ 'schema_article_amp4x3_img' ] = array(	// Options prefix.
-				'name'   => 'schema-article',
+				'name'   => 'schema-article-amp4x3',
 				'label'  => _x( 'Schema Article AMP 4x3 Image', 'image size label', 'wpsso' ),
 				'md_pre' => 'schema_img',		// Meta data prefix.
 			);
 
 			$sizes[ 'schema_article_amp16x9_img' ] = array(	// Options prefix.
-				'name'   => 'schema-article',
+				'name'   => 'schema-article-amp16x9',
 				'label'  => _x( 'Schema Article AMP 16x9 Image', 'image size label', 'wpsso' ),
 				'md_pre' => 'schema_img',		// Meta data prefix.
 			);
