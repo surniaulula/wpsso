@@ -8,7 +8,7 @@ License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
 Tags: open graph, meta tags, rich pins, twitter cards, social sharing, rich results, schema.org, structured data, snippet, seo, smo, social, facebook, twitter, linkedin, pinterest, google
 Contributors: jsmoriss
-Requires At Least: 3.8
+Requires At Least: 3.9
 Tested Up To: 5.2.2
 WC Tested Up To: 3.7.0
 Stable Tag: 5.5.3
@@ -442,24 +442,25 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* Resized cropped image filenames are now saved with their cropping information, allowing the same image to be available with identical dimensions, but different main subject (ie. cropping) areas for different markup (Facebook / Open Graph, Google / Schema, etc.).
 		* Examples of default WordPress image filenames:
-			* Filename-1200x630.jpg (maybe a 1200x630px uncropped image).
-			* Filename-1200x630.jpg (maybe a 1200x630px cropped image).
-			* Filename-1200x630.jpg (maybe a 1200x630px cropped center-center image).
-			* Filename-1200x630.jpg (maybe a 1200x630px cropped center-top image).
+			* image-1200x630.jpg (*maybe* a 1200x630px uncropped image).
+			* image-1200x630.jpg (*maybe* a 1200x630px cropped image).
+			* image-1200x630.jpg (*maybe* a 1200x630px cropped center-center image).
+			* image-1200x630.jpg (*maybe* a 1200x630px cropped center-top image).
 			* etc.
 		* Examples of the new WPSSO Core image filenames:
-			* Filename-1200x630.jpg (a 1200x630px uncropped image).
-			* Filename-1200x630-cropped.jpg (a 1200x630px cropped image).
-			* Filename-1200x630-cropped-center-center.jpg (a 1200x630px cropped center-center image).
-			* Filename-1200x630-cropped-center-top.jpg (a 1200x630px cropped center-top image).
+			* image-1200x630.jpg (a 1200x630px *uncropped* image).
+			* image-1200x630-cropped.jpg (a 1200x630px *cropped* image).
+			* image-1200x630-cropped-center-center.jpg (a 1200x630px *cropped center-center* image).
+			* image-1200x630-cropped-center-top.jpg (a 1200x630px *cropped center-top* image).
 			* etc.
 * **Improvements**
+	* Updated the minimum WordPress version from 3.8 to 3.9.
+	* Updated the default Facebook Open Graph image size from 600x315 to 1200x630.
+	* Replaced the "Image Size" options in the Document SSO metaboxes by new "Image Subject Area" options (to select a custom image cropping area).
 	* Added new image dimensions in the WordPress &gt; Settings &gt; SSO Image Sizes page:
 		* Schema Article AMP 1x1 (Google)
 		* Schema Article AMP 4x3 (Google)
 		* Schema Article AMP 16x9 (Google)
-	* Updated the default Facebook Open Graph image size from 600x315 to 1200x630.
-	* Replaced the "Image Size" options in the Document SSO metaboxes by new "Image Subject Area" options (to select a custom image cropping area).
 * **Bugfixes**
 	* Fixed "is_post_type_archive" detection by replacing `is_post_type_archive( $post_type )` from WordPress by `SucomUtil::is_post_type_archive( $post_type, $post_slug )`.
 * **Developer Notes**

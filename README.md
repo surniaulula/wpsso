@@ -4,7 +4,7 @@
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
 <tr><th align="right" valign="top" nowrap>Summary</th><td>WPSSO Core makes sure your content looks great on all social and search sites, no matter how URLs are crawled, shared, re-shared, posted or embedded!</td></tr>
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>5.5.3</td></tr>
-<tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.8</td></tr>
+<tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.9</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 5.2.2</td></tr>
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
 <tr><th align="right" valign="top" nowrap>License</th><td><a href="https://www.gnu.org/licenses/gpl.txt">GPLv3</a></td></tr>
