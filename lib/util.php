@@ -21,11 +21,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		protected $uniq_urls    = array();	// Array to detect duplicate images, etc.
 		protected $size_labels  = array();	// Reference array for image size labels.
 
-		protected $force_regen = array(
-			'cache'     => null,		// Cache for returned values.
-			'transient' => null,		// Transient array from/to database.
-		);
-
 		protected $is_functions = array(
 			'is_ajax',
 			'is_archive',
@@ -742,117 +737,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->mark( 'define image sizes' );	// End timer.
 
 				$this->p->debug->log_arr( 'get_all_image_sizes', SucomUtilWP::get_image_sizes() );
-			}
-		}
-
-		/**
-		 * $mod    = true | false | post_id | $mod array 
-		 * $md_pre = 'og' | 'og_img' | etc.
-		 */
-		public function set_force_regen( $mod, $md_pre = 'og', $value = true ) {
-
-			$regen_key = $this->get_force_regen_key( $mod, $md_pre );
-
-			if ( false !== $regen_key ) {
-
-				$cache_md5_pre  = $this->p->lca . '_';
-				$cache_exp_secs = 0;					// Never expire.
-				$cache_salt     = __CLASS__ . '::force_regen';		// Generic salt value for other methods.
-				$cache_id       = $cache_md5_pre . md5( $cache_salt );
-
-				if ( $this->force_regen[ 'transient' ] === null ) {
-					$this->force_regen[ 'transient' ] = get_transient( $cache_id );	// Load transient if required.
-				}
-
-				if ( $this->force_regen[ 'transient' ] === false ) {	// No transient in database.
-					$this->force_regen[ 'transient' ] = array();
-				}
-
-				$this->force_regen[ 'transient' ][ $regen_key ] = $value;
-
-				set_transient( $cache_id, $this->force_regen[ 'transient' ], $cache_exp_secs );
-			}
-		}
-
-		/**
-		 * $mod    = true | false | post_id | $mod array 
-		 * $md_pre = 'og' | 'og_img' | etc.
-		 */
-		public function is_force_regen( $mod, $md_pre = 'og' ) {
-
-			$regen_key = $this->get_force_regen_key( $mod, $md_pre );
-
-			if ( false !== $regen_key ) {
-
-				$cache_md5_pre  = $this->p->lca . '_';
-				$cache_exp_secs = 0;					// Never expire.
-				$cache_salt     = __CLASS__ . '::force_regen';		// Generic salt value for other methods.
-				$cache_id       = $cache_md5_pre . md5( $cache_salt );
-
-				if ( $this->force_regen[ 'transient' ] === null ) {
-					$this->force_regen[ 'transient' ] = get_transient( $cache_id );	// Load transient if required.
-				}
-
-				if ( $this->force_regen[ 'transient' ] === false ) {	// No transient in database.
-					return false;
-				}
-
-				if ( isset( $this->force_regen[ 'cache' ][ $regen_key ] ) )	{ // Previously returned value.
-					return $this->force_regen[ 'cache' ][ $regen_key ];
-				}
-
-				if ( isset( $this->force_regen[ 'transient' ][ $regen_key ] ) ) {
-
-					$this->force_regen[ 'cache' ][ $regen_key ] = $this->force_regen[ 'transient' ][ $regen_key ];	// Save value.
-
-					unset( $this->force_regen[ 'transient' ][ $regen_key ] );	// Unset the regen key and save transient.
-
-					if ( empty( $this->force_regen[ 'transient' ] ) ) {
-						delete_transient( $cache_id );
-					} else {
-						set_transient( $cache_id, $this->force_regen[ 'transient' ], $cache_exp_secs );
-					}
-
-					return $this->force_regen[ 'cache' ][ $regen_key ];	// Return the cached value.
-				}
-
-				return false;	// Not in the cache or transient array.
-			}
-
-			return false;
-		}
-
-		/**
-		 * Get the force regen transient id for set and get methods.
-		 *
-		 * $mod    = true | false | post_id | $mod array 
-		 * $md_pre = 'og' | 'og_img' | etc.
-		 */
-		public function get_force_regen_key( $mod, $md_pre ) {
-
-			$md_pre = preg_replace( '/_img$/', '', $md_pre );	// Just in case.
-
-			if ( is_numeric( $mod ) && $mod > 0 ) {			// Optimize by skipping get_page_mod().
-				return 'post_' . $mod . '_regen_' . $md_pre;
-			}
-
-			/**
-			 * The $mod array argument is preferred but not required.
-			 * $mod = true | false | post_id | $mod array
-			 */
-			if ( ! is_array( $mod ) ) {
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'optional call to get_page_mod()' );
-				}
-
-				$mod = $this->get_page_mod( $mod );
-			}
-
-			if ( ! empty( $mod[ 'name' ] ) && ! empty( $mod[ 'id' ] ) ) {
-				return $mod[ 'name' ] . '_' . $mod[ 'id' ] . '_regen_' . $md_pre;
-			} else {
-				return false;
 			}
 		}
 

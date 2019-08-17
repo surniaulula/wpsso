@@ -466,8 +466,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			}
 
 			$table_rows       = array();
-			$force_regen_arg  = $this->p->util->is_force_regen( $mod, 'og' ) ? '?force_regen=' . time() : '';
-			$media_url        = SucomUtil::get_mt_media_url( $head_info ) . $force_regen_arg;
+			$media_url        = SucomUtil::get_mt_media_url( $head_info );
 			$og_prev_width    = 600;
 			$og_prev_height   = 315;
 			$og_prev_img_html = '';
@@ -1021,35 +1020,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				} else {
 					unset( $md_opts[ $md_pre . '_img_url' ] );
 				}
-
-				$force_regen = false;
-
-				foreach ( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $md_suffix ) {
-
-					/**
-					 * If the option value is the same as the default value, then unset it.
-					 */
-					if ( isset( $md_opts[ $md_pre . '_img_' . $md_suffix ] ) &&
-						isset( $md_defs[ $md_pre . '_img_' . $md_suffix ] ) &&
-						$md_opts[ $md_pre . '_img_' . $md_suffix ] === $md_defs[ $md_pre . '_img_' . $md_suffix ] ) {
-
-						unset( $md_opts[ $md_pre . '_img_' . $md_suffix ] );
-					}
-
-					$check_current = isset( $md_opts[ $md_pre . '_img_' . $md_suffix ] ) ?
-						$md_opts[ $md_pre . '_img_' . $md_suffix ] : '';
-
-					$check_previous = isset( $md_prev[ $md_pre . '_img_' . $md_suffix ] ) ?
-						$md_prev[ $md_pre . '_img_' . $md_suffix ] : '';
-
-					if ( $check_current !== $check_previous ) {
-						$force_regen = true;
-					}
-				}
-
-				if ( false !== $force_regen ) {
-					$this->p->util->set_force_regen( $mod, $md_pre );
-				}
 			}
 
 			/**
@@ -1307,7 +1277,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			}
 
 			$media_html  = false;
-			$force_regen = $this->p->util->is_force_regen( $mod, $md_pre );	// False by default.
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'getting thumbnail for image id ' . $pid );
@@ -1315,13 +1284,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			$mt_single_image = array();
 
-			$this->p->media->add_mt_single_image_src( $mt_single_image, $pid, 'thumbnail', false, $force_regen );
+			$this->p->media->add_mt_single_image_src( $mt_single_image, $pid, $size_name = 'thumbnail', $check_dupes = false );
 
 			$media_url = SucomUtil::get_mt_media_url( $mt_single_image );
-
-			if ( $force_regen ) {
-				$media_url = add_query_arg( 'force_regen', time(), $media_url );
-			}
 
 			if ( ! empty( $media_url ) ) {
 				$media_html = '<img src="' . $media_url . '">';
@@ -1330,7 +1295,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $media_html;
 		}
 
-		public function get_md_images( $num, $size_name, array $mod, $check_dupes = true, $force_regen = false, $md_pre = 'og', $mt_pre = 'og' ) {
+		public function get_md_images( $num, $size_name, array $mod, $check_dupes = true, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
@@ -1338,7 +1303,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'size_name'   => $size_name,
 					'mod'         => $mod,
 					'check_dupes' => $check_dupes,
-					'force_regen' => $force_regen,
 					'md_pre'      => $md_pre,
 					'mt_pre'      => $mt_pre,
 				), get_class( $this ) );
@@ -1382,7 +1346,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 							get_class( $this ) );	// log extended class name
 					}
 
-					$this->p->media->add_mt_single_image_src( $mt_single_image, $pid, $size_name, $check_dupes, $force_regen, $mt_pre );
+					$this->p->media->add_mt_single_image_src( $mt_single_image, $pid, $size_name, $check_dupes, $mt_pre );
 				}
 
 				if ( empty( $mt_single_image[ $mt_pre . ':image:url' ] ) && ! empty( $url ) ) {
@@ -1417,7 +1381,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 					$mt_single_image = SucomUtil::get_mt_image_seed( $mt_pre );
 
-					$this->p->media->add_mt_single_image_src( $mt_single_image, $pid, $size_name, $check_dupes, $force_regen, $mt_pre );
+					$this->p->media->add_mt_single_image_src( $mt_single_image, $pid, $size_name, $check_dupes, $mt_pre );
 
 					if ( ! empty( $mt_single_image[ $mt_pre . ':image:url' ] ) ) {
 						if ( $this->p->util->push_max( $mt_ret, $mt_single_image, $num ) ) {
@@ -1467,7 +1431,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		/**
 		 * Methods that return an associative array of Open Graph meta tags.
 		 */
-		public function get_og_images( $num, $size_name, $mod_id, $check_dupes = true, $force_regen = false, $md_pre = 'og' ) {
+		public function get_og_images( $num, $size_name, $mod_id, $check_dupes = true, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -1475,7 +1439,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			$mod = $this->get_mod( $mod_id );
 
-			return $this->get_md_images( $num, $size_name, $mod, $check_dupes, $force_regen, $md_pre, 'og' );
+			return $this->get_md_images( $num, $size_name, $mod, $check_dupes, $md_pre, 'og' );
 		}
 
 		public function get_og_videos( $num = 0, $mod_id, $check_dupes = false, $md_pre = 'og', $mt_pre = 'og' ) {
@@ -1546,7 +1510,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		public function get_og_img_column_html( $head_info, $mod, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			$media_html  = false;
-			$force_regen = $this->p->util->is_force_regen( $mod, $md_pre );	// false by default
 
 			if ( ! empty( $head_info[ $mt_pre . ':image:id' ] ) ) {
 
@@ -1559,7 +1522,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				/**
 				 * Get the smaller thumbnail image as a preview image.
 				 */
-				$this->p->media->add_mt_single_image_src( $mt_single_image, $head_info[ $mt_pre . ':image:id' ], 'thumbnail', false, $force_regen );
+				$this->p->media->add_mt_single_image_src( $mt_single_image, $head_info[ $mt_pre . ':image:id' ],
+					$size_name = 'thumbnail', $check_dupes = false );
 
 				if ( ! empty( $mt_single_image[ $mt_pre . ':image:url' ] ) ) {	// Just in case.
 					$head_info =& $mt_single_image;
@@ -1568,10 +1532,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			$media_url = SucomUtil::get_mt_media_url( $head_info );
 			
-			if ( $force_regen ) {
-				$media_url = add_query_arg( 'force_regen', time(), $media_url );
-			}
-
 			if ( ! empty( $media_url ) ) {
 				$media_html = '<div class="preview_img" style="background-image:url(' . $media_url . ');"></div>';
 			}

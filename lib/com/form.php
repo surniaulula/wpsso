@@ -1109,14 +1109,16 @@ EOF;
 				$placeholder = preg_replace( '/^ngg-/', '', $placeholder );
 			}
 
-			$input_id = $this->get_input( $opt_pre . '_id' . $opt_suffix, 'short', '', 0, $placeholder, $is_disabled );
+			$input_id = $this->get_input( $opt_pre . '_id' . $opt_suffix,
+				'short', '', 0, $placeholder, $is_disabled );
 
 			/**
 			 * Disable the select option if only 1 media lib.
 			 */
 			$select_disabled = count( $media_libs ) <= 1 ? true : $is_disabled;
 
-			$select_lib = $this->get_select( $opt_pre . '_id_pre' . $opt_suffix, $media_libs, '', '', true, $select_disabled, $default_lib );
+			$select_lib = $this->get_select( $opt_pre . '_id_pre' . $opt_suffix,
+				$media_libs, '', '', true, $select_disabled, $default_lib );
 
 			/**
 			 * The css id is used to set image values and disable the image url.
@@ -1135,7 +1137,7 @@ EOF;
 			$button_upload = function_exists( 'wp_enqueue_media' ) ? $this->get_button(
 				'Select or Upload Image',		// $value
 				'sucom_image_upload_button button',	// $css_class
-				$opt_pre . $opt_suffix,		// $css_id
+				$opt_pre . $opt_suffix,			// $css_id
 				'',					// $url
 				false,					// $newtab
 				$is_disabled,				// $is_disabled

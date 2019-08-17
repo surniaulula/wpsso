@@ -27,7 +27,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			$this->p->util->add_plugin_filters( $this, array( 'option_type' => 2 ), $prio = -100 );
-			$this->p->util->add_plugin_filters( $this, array( 'init_objects' => 0 ), $prio = 9000 );
+			$this->p->util->add_plugin_filters( $this, array( 'init_objects' => 0 ), $prio = 10000 );
 		}
 
 		public function get_defaults( $opt_key = false, $force_filter = false ) {
@@ -531,6 +531,28 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				$img_height = $opts[ $opt_pre . '_img_height' ];
 				$img_crop   = isset( $opts[ $opt_pre . '_img_crop' ] ) ? $opts[ $opt_pre . '_img_crop' ] : 0;
+
+				/**
+				 * If sanitizing for a module, load any missing width / height values.
+				 */
+				if ( false !== $mod ) {
+
+					if ( empty( $img_width ) && isset( $this->p->options[ $opt_pre . '_img_width' ] ) ) {
+						$img_width = $this->p->options[ $opt_pre . '_img_width' ];
+					}
+
+					if ( empty( $img_height ) && isset( $this->p->options[ $opt_pre . '_img_height' ] ) ) {
+						$img_height = $this->p->options[ $opt_pre . '_img_height' ];
+					}
+				}
+
+				/**
+				 * Both width and height are required to calculate and check the aspect ratio.
+				 */
+				if ( empty( $img_width ) || empty( $img_height ) ) {
+					continue;
+				}
+
 				$img_ratio  = $img_width >= $img_height ? $img_width / $img_height : $img_height / $img_width;
 				$img_ratio  = number_format( $img_ratio, 3, '.', '' );
 

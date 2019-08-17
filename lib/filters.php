@@ -71,8 +71,8 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				 * action as well.
 				 */
 				if ( function_exists( 'wpseo_init' ) ) {
-					add_action( 'template_redirect', array( $this, 'cleanup_wpseo_filters' ), 9000 );
-					add_action( 'amp_post_template_head', array( $this, 'cleanup_wpseo_filters' ), -9000 );
+					add_action( 'template_redirect', array( $this, 'cleanup_wpseo_filters' ), 10000 );
+					add_action( 'amp_post_template_head', array( $this, 'cleanup_wpseo_filters' ), -10000 );
 				}
 
 				/**
@@ -268,7 +268,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				$this->p->debug->log( 'disabling wpseo_json_ld_output filters' );
 			}
 
-			add_filter( 'wpseo_json_ld_output', '__return_empty_array', 9000 );
+			add_filter( 'wpseo_json_ld_output', '__return_empty_array', 10000 );
 		}
 
 		/**

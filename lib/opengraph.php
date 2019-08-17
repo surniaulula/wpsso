@@ -1083,9 +1083,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$og_ret      = array();
 			$num_diff    = SucomUtil::count_diff( $og_ret, $num );
-			$force_regen = $this->p->util->is_force_regen( $mod, $md_pre );	// false by default
 
-			$this->p->util->clear_uniq_urls( $size_name );			// clear cache for $size_name context
+			$this->p->util->clear_uniq_urls( $size_name );	// Clear cache for $size_name context.
 
 			if ( $mod[ 'is_post' ] ) {
 
@@ -1100,7 +1099,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						}
 
 						return array_merge( $og_ret, $this->p->media->get_default_images( $num_diff,
-							$size_name, $check_dupes, $force_regen ) );
+							$size_name, $check_dupes ) );
 
 					} else {
 						return array_merge( $og_ret, $og_single_image );
@@ -1162,7 +1161,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					}
 
 					$num_diff       = SucomUtil::count_diff( $og_ret, $num );
-					$content_images = $this->p->media->get_content_images( $num_diff, $size_name, $mod, $check_dupes, $force_regen );
+					$content_images = $this->p->media->get_content_images( $num_diff, $size_name, $mod, $check_dupes );
 
 					if ( ! empty( $content_images ) ) {
 						$og_ret = array_merge( $og_ret, $content_images );
@@ -1176,7 +1175,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				 */
 				if ( ! empty( $mod[ 'obj' ] ) ) {	// Term or user.
 
-					$og_images = $mod[ 'obj' ]->get_og_images( $num_diff, $size_name, $mod[ 'id' ], $check_dupes, $force_regen, $md_pre );
+					$og_images = $mod[ 'obj' ]->get_og_images( $num_diff, $size_name, $mod[ 'id' ], $check_dupes, $md_pre );
 
 					if ( ! empty( $og_images ) ) {
 						$og_ret = array_merge( $og_ret, $og_images );
@@ -1185,7 +1184,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				if ( empty( $og_ret ) ) {
 					$og_ret = array_merge( $og_ret, $this->p->media->get_default_images( $num_diff,
-						$size_name, $check_dupes, $force_regen ) );
+						$size_name, $check_dupes ) );
 
 				}
 			}

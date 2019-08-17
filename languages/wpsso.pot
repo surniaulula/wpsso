@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 5.6.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 6.0.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -882,7 +882,7 @@ msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:3579 lib/options.php:1212 lib/submenu/essential.php:162
+#: lib/admin.php:3579 lib/options.php:1234 lib/submenu/essential.php:162
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
@@ -1141,8 +1141,8 @@ msgstr ""
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: lib/com/form.php:1936 lib/gettext-com.php:23 lib/post.php:1390
-#: lib/wp-meta.php:483
+#: lib/com/form.php:1938 lib/gettext-com.php:23 lib/post.php:1390
+#: lib/wp-meta.php:482
 msgid "Save a draft version or publish to update this value."
 msgstr ""
 
@@ -2467,8 +2467,8 @@ msgstr ""
 msgid "Posts, Pages, Custom Post Types"
 msgstr ""
 
-#: lib/gettext-pro.php:29 lib/gettext-pro.php:191 lib/media.php:497
-#: lib/media.php:661 lib/media.php:1554 lib/pro/admin/advanced.php:212
+#: lib/gettext-pro.php:29 lib/gettext-pro.php:191 lib/media.php:496
+#: lib/media.php:655 lib/media.php:1613 lib/pro/admin/advanced.php:212
 #: lib/pro/util/checkimgdims.php:98 lib/std/admin/advanced.php:212
 msgid "Media Library"
 msgstr ""
@@ -2576,7 +2576,7 @@ msgid "Refresh Short URLs on Clear Cache"
 msgstr ""
 
 #: lib/gettext-pro.php:54 lib/pro/admin/advanced.php:317
-#: lib/std/admin/advanced.php:320 lib/util.php:1434
+#: lib/std/admin/advanced.php:320 lib/util.php:1318
 msgctxt "option label"
 msgid "Auto-Refresh Cache After Clearing"
 msgstr ""
@@ -2809,13 +2809,13 @@ msgid "Twitter Card Desc"
 msgstr ""
 
 #: lib/gettext-pro.php:99 lib/pro/admin/meta-edit.php:145
-#: lib/std/admin/meta-edit.php:141 lib/wp-meta.php:527 lib/wp-meta.php:551
+#: lib/std/admin/meta-edit.php:141 lib/wp-meta.php:526 lib/wp-meta.php:550
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
 #: lib/gettext-pro.php:100 lib/pro/admin/meta-edit.php:153
-#: lib/std/admin/meta-edit.php:150 lib/wp-meta.php:531 lib/wp-meta.php:555
+#: lib/std/admin/meta-edit.php:150 lib/wp-meta.php:530 lib/wp-meta.php:554
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
@@ -3100,13 +3100,13 @@ msgstr ""
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:167 lib/pro/media/upscale.php:222
+#: lib/gettext-pro.php:167 lib/pro/media/upscale.php:220
 msgid ""
 "Failed to upscale image ID %1$s of %2$s by %3$s from %4$s to %5$s for the "
 "%6$s image size (exceeds %7$s maximum upscale setting)."
 msgstr ""
 
-#: lib/gettext-pro.php:168 lib/pro/media/upscale.php:230
+#: lib/gettext-pro.php:168 lib/pro/media/upscale.php:228
 msgid ""
 "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the "
 "%6$s image size."
@@ -3117,7 +3117,7 @@ msgstr ""
 msgid "NextGEN Gallery"
 msgstr ""
 
-#: lib/gettext-pro.php:170 lib/gettext-pro.php:192 lib/media.php:1560
+#: lib/gettext-pro.php:170 lib/gettext-pro.php:192 lib/media.php:1619
 #: lib/pro/media/ngg.php:132 lib/pro/util/checkimgdims.php:100
 msgid "image ID %s"
 msgstr ""
@@ -3290,7 +3290,7 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
 #: lib/loader.php:184 lib/loader.php:210 lib/post.php:494 lib/register.php:312
-#: lib/term.php:434 lib/user.php:397 lib/util.php:490 lib/util.php:3378
+#: lib/term.php:434 lib/user.php:397 lib/util.php:485 lib/util.php:3262
 msgid "%s warning:"
 msgstr ""
 
@@ -3310,102 +3310,102 @@ msgstr ""
 msgid "Library class name for \"%s\" is not available."
 msgstr ""
 
-#: lib/media.php:56
+#: lib/media.php:57
 msgctxt "image size label"
 msgid "Thumbnail Image"
 msgstr ""
 
-#: lib/media.php:459
+#: lib/media.php:458
 msgid ""
 "The NGG integration module provided by %1$s is required to read information "
 "for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:500
+#: lib/media.php:497
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:501 lib/media.php:664
+#: lib/media.php:499 lib/media.php:658
 msgid ""
 "You may consider regenerating the thumbnails of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:517
+#: lib/media.php:516
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image dimensions for "
 "<a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:541
+#: lib/media.php:540
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image file path for "
 "<a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:663
+#: lib/media.php:656
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:666
+#: lib/media.php:659
 msgid ""
 "Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress "
 "%3$s function</a> reported an error when trying to create an image size from "
 "%4$s."
 msgstr ""
 
-#: lib/media.php:1053
+#: lib/media.php:1114
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1570
+#: lib/media.php:1629
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:1595
+#: lib/media.php:1654
 msgctxt "option label"
 msgid "Facebook Open Graph"
 msgstr ""
 
-#: lib/media.php:1604
+#: lib/media.php:1663
 msgctxt "option label"
 msgid "Google Schema"
 msgstr ""
 
-#: lib/media.php:1613
+#: lib/media.php:1672
 msgctxt "option label"
 msgid "Google Schema Article"
 msgstr ""
 
-#: lib/media.php:1622
+#: lib/media.php:1681
 msgctxt "option label"
 msgid "Google Schema Article AMP 1x1"
 msgstr ""
 
-#: lib/media.php:1631
+#: lib/media.php:1690
 msgctxt "option label"
 msgid "Google Schema Article AMP 4x3"
 msgstr ""
 
-#: lib/media.php:1640
+#: lib/media.php:1699
 msgctxt "option label"
 msgid "Google Schema Article AMP 16x9"
 msgstr ""
 
-#: lib/media.php:1678
+#: lib/media.php:1737
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:1706
+#: lib/media.php:1765
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -5609,120 +5609,120 @@ msgid ""
 "href=\"%s\">please review and save the new settings</a>."
 msgstr ""
 
-#: lib/options.php:554
+#: lib/options.php:576
 msgid ""
 "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of "
 "%5$s:1, which not equal to the required image ratio of %6$s:1."
 msgstr ""
 
-#: lib/options.php:562
+#: lib/options.php:584
 msgid ""
 "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of "
 "%5$s:1, which is equal to / or greater than the maximum image ratio of "
 "%6$s:1."
 msgstr ""
 
-#: lib/options.php:570
+#: lib/options.php:592
 msgid "These option keys have been reset to their default values."
 msgstr ""
 
-#: lib/options.php:648
+#: lib/options.php:670
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length "
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:721
+#: lib/options.php:743
 msgid ""
 "The value of option \"%s\" must be alpha-numeric - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:722
+#: lib/options.php:744
 msgid ""
 "The value of option \"%s\" must be blank or numeric - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:723
+#: lib/options.php:745
 msgid ""
 "The value of option \"%s\" must be a CSS color code - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:724
+#: lib/options.php:746
 msgid ""
 "The value of option \"%s\" must be a comma-delimited list of URL(s) - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:725
+#: lib/options.php:747
 msgid ""
 "The value of option \"%s\" must be a yyyy-mm-dd date - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:726
+#: lib/options.php:748
 msgid ""
 "The value of option \"%s\" must be HTML code - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:727
+#: lib/options.php:749
 msgid ""
 "The value of option \"%s\" must be an image ID - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:728
+#: lib/options.php:750
 msgid ""
 "The value of option \"%s\" cannot be an empty string - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:729
+#: lib/options.php:751
 msgid ""
 "The value of option \"%s\" must be numeric - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:730
+#: lib/options.php:752
 msgid ""
 "The value of option \"%1$s\" must be equal to or greather than %2$s - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:731
+#: lib/options.php:753
 msgid ""
 "The value of option \"%s\" must be a hh:mm time - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:732
+#: lib/options.php:754
 msgid ""
 "The value of option \"%s\" must be a URL - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1182
+#: lib/options.php:1204
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/options.php:1245
+#: lib/options.php:1267
 msgid "The %1$s image dimensions cannot be determined."
 msgstr ""
 
-#: lib/options.php:1248
+#: lib/options.php:1270
 msgid ""
 "Please make sure this site can access the image URL at %1$s using the PHP "
 "getimagesize() function."
 msgstr ""
 
-#: lib/options.php:1253
+#: lib/options.php:1275
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr ""
 
-#: lib/options.php:1256
+#: lib/options.php:1278
 msgid "Please correct the banner image at %s."
 msgstr ""
 
@@ -5783,8 +5783,8 @@ msgstr ""
 
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
-#: lib/post.php:480 lib/term.php:420 lib/user.php:383 lib/util.php:476
-#: lib/util.php:3350
+#: lib/post.php:480 lib/term.php:420 lib/user.php:383 lib/util.php:471
+#: lib/util.php:3234
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -5838,7 +5838,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:1005 lib/util.php:1945
+#: lib/post.php:1005 lib/util.php:1829
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -6618,84 +6618,84 @@ msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is an image URL, %3$s is a recommended max.
-#: lib/util.php:479
+#: lib/util.php:474
 msgid ""
 "Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s "
 "(%3$s)."
 msgstr ""
 
-#: lib/util.php:1362
+#: lib/util.php:1246
 msgid ""
 "%s cached files, transient cache, column meta, and the WordPress object "
 "cache have been cleared."
 msgstr ""
 
-#: lib/util.php:1367
+#: lib/util.php:1251
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:1419 lib/util.php:1559
+#: lib/util.php:1303 lib/util.php:1443
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/util.php:1425
+#: lib/util.php:1309
 msgid ""
 "A background task will begin shortly to refresh the post, term, and user "
 "cache objects."
 msgstr ""
 
-#: lib/util.php:1436
+#: lib/util.php:1320
 msgid "Cache objects will be re-created as they are needed (%s is disabled)."
 msgstr ""
 
-#: lib/util.php:1553
+#: lib/util.php:1437
 msgid ""
 "The meta tag and Schema markup caches for %1$d posts, %2$d terms, and %3$d "
 "users have been refreshed."
 msgstr ""
 
-#: lib/util.php:1773
+#: lib/util.php:1657
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util.php:1800
+#: lib/util.php:1684
 msgid "Failed to remove the cache file %s."
 msgstr ""
 
-#: lib/util.php:1862
+#: lib/util.php:1746
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:1932
+#: lib/util.php:1816
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1958
+#: lib/util.php:1842
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:2152
+#: lib/util.php:2036
 msgid ""
 "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
 "provider to have the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:2165
+#: lib/util.php:2049
 msgid ""
 "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
 "provider to have the missing function installed."
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max.
-#: lib/util.php:3353
+#: lib/util.php:3237
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3370
+#: lib/util.php:3254
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -6704,39 +6704,39 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3370
+#: lib/util.php:3254
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3659
+#: lib/util.php:3543
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:3688
+#: lib/util.php:3572
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3691
+#: lib/util.php:3575
 msgctxt "option comment"
 msgid "show these options"
 msgstr ""
 
-#: lib/util.php:3696
+#: lib/util.php:3580
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3699
+#: lib/util.php:3583
 msgctxt "option comment"
 msgid "show these rows"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name, and %3$s is the object ID.
-#: lib/util.php:4166
+#: lib/util.php:4050
 msgid "%1$s for %2$s ID %3$s"
 msgstr ""
 
@@ -6760,112 +6760,112 @@ msgctxt "metabox tab"
 msgid "Validate"
 msgstr ""
 
-#: lib/wp-meta.php:500
+#: lib/wp-meta.php:499
 msgctxt "preview image error"
 msgid "Image Size Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/wp-meta.php:510
+#: lib/wp-meta.php:509
 msgctxt "preview image error"
 msgid "Image Size Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/wp-meta.php:519
+#: lib/wp-meta.php:518
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/wp-meta.php:535 lib/wp-meta.php:561
+#: lib/wp-meta.php:534 lib/wp-meta.php:560
 msgctxt "option label"
 msgid "Shortlink URL"
 msgstr ""
 
-#: lib/wp-meta.php:566
+#: lib/wp-meta.php:565
 msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/wp-meta.php:699
+#: lib/wp-meta.php:698
 msgctxt "option label"
 msgid "Facebook Open Graph Debugger"
 msgstr ""
 
-#: lib/wp-meta.php:700
+#: lib/wp-meta.php:699
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/wp-meta.php:704
+#: lib/wp-meta.php:703
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/wp-meta.php:705
+#: lib/wp-meta.php:704
 msgctxt "submit button"
 msgid "Validate Metadata"
 msgstr ""
 
-#: lib/wp-meta.php:709
+#: lib/wp-meta.php:708
 msgctxt "option label"
 msgid "Google Structured Data Test"
 msgstr ""
 
-#: lib/wp-meta.php:710
+#: lib/wp-meta.php:709
 msgctxt "submit button"
 msgid "Validate Structured Data"
 msgstr ""
 
-#: lib/wp-meta.php:714
+#: lib/wp-meta.php:713
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/wp-meta.php:715
+#: lib/wp-meta.php:714
 msgctxt "submit button"
 msgid "Validate Rich Results"
 msgstr ""
 
-#: lib/wp-meta.php:719
+#: lib/wp-meta.php:718
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/wp-meta.php:720
+#: lib/wp-meta.php:719
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/wp-meta.php:724
+#: lib/wp-meta.php:723
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/wp-meta.php:725
+#: lib/wp-meta.php:724
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/wp-meta.php:730
+#: lib/wp-meta.php:729
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr ""
 
-#: lib/wp-meta.php:731
+#: lib/wp-meta.php:730
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr ""
 
-#: lib/wp-meta.php:735
+#: lib/wp-meta.php:734
 msgctxt "option label"
 msgid "The AMP Validator"
 msgstr ""
 
-#: lib/wp-meta.php:736
+#: lib/wp-meta.php:735
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/wp-meta.php:970
+#: lib/wp-meta.php:969
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 

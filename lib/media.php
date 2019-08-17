@@ -44,6 +44,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				add_filter( 'editor_max_image_size', array( $this, 'editor_max_image_size' ), 10, 3 );
 			}
 
+			add_filter( 'image_make_intermediate_size', array( $this, 'maybe_update_image_filename' ), -5000, 1 );
 			add_filter( 'wp_get_attachment_image_attributes', array( $this, 'add_attachment_image_attributes' ), 10, 2 );
 			add_filter( 'get_image_tag', array( $this, 'get_image_tag' ), 10, 6 );
 			add_filter( 'get_header_image_tag', array( $this, 'get_header_image_tag' ), 10, 3 );
@@ -144,16 +145,15 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			$og_images   = array();
-			$force_regen = $this->p->util->is_force_regen( $post_id, $md_pre );	// False by default.
 
 			if ( ! empty( $post_id ) ) {
 
 				/**
-				 * get_og_images() also provides filter hooks for additional image ids and urls
-				 * unless $md_pre is 'none', get_og_images() will fallback to the 'og' custom meta.
+				 * get_og_images() also provides filter hooks for additional image ids and urls unless $md_pre is
+				 * 'none', get_og_images() will fallback to the 'og' custom meta.
 				 */
 				$og_images = array_merge( $og_images, $this->p->post->get_og_images( 1,
-					$size_name, $post_id, $check_dupes, $force_regen, $md_pre ) );
+					$size_name, $post_id, $check_dupes, $md_pre ) );
 			}
 
 			/**
@@ -164,7 +164,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$num_diff = SucomUtil::count_diff( $og_images, $num );
 
 				$og_images = array_merge( $og_images, $this->get_featured( $num_diff,
-					$size_name, $post_id, $check_dupes, $force_regen ) );
+					$size_name, $post_id, $check_dupes ) );
 			}
 
 			/**
@@ -175,13 +175,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$num_diff = SucomUtil::count_diff( $og_images, $num );
 
 				$og_images = array_merge( $og_images, $this->get_attached_images( $num_diff,
-					$size_name, $post_id, $check_dupes, $force_regen ) );
+					$size_name, $post_id, $check_dupes ) );
 			}
 
 			return $og_images;
 		}
 
-		public function get_featured( $num = 0, $size_name = 'thumbnail', $post_id, $check_dupes = true, $force_regen = false ) {
+		public function get_featured( $num = 0, $size_name = 'thumbnail', $post_id, $check_dupes = true ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
@@ -189,7 +189,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					'size_name'   => $size_name,
 					'post_id'     => $post_id,
 					'check_dupes' => $check_dupes,
-					'force_regen' => $force_regen,
 				) );
 			}
 
@@ -217,7 +216,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( ! empty( $pid ) ) {
 
-					$this->add_mt_single_image_src( $og_single_image, $pid, $size_name, $check_dupes, $force_regen );
+					$this->add_mt_single_image_src( $og_single_image, $pid, $size_name, $check_dupes );
 
 					if ( ! empty( $og_single_image[ 'og:image:url' ] ) ) {
 						$this->p->util->push_max( $og_images, $og_single_image, $num );
@@ -225,7 +224,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 			}
 
-			return apply_filters( $this->p->lca . '_og_featured', $og_images, $num, $size_name, $post_id, $check_dupes, $force_regen );
+			return apply_filters( $this->p->lca . '_og_featured', $og_images, $num, $size_name, $post_id, $check_dupes );
 		}
 
 		public function get_first_attached_image_id( $post_id ) {
@@ -253,7 +252,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return false;
 		}
 
-		public function get_attachment_image( $num = 0, $size_name = 'thumbnail', $attach_id, $check_dupes = true, $force_regen = false ) {
+		public function get_attachment_image( $num = 0, $size_name = 'thumbnail', $attach_id, $check_dupes = true ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
@@ -261,7 +260,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					'size_name'   => $size_name,
 					'attach_id'   => $attach_id,
 					'check_dupes' => $check_dupes,
-					'force_regen' => $force_regen,
 				) );
 			}
 
@@ -272,7 +270,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( wp_attachment_is_image( $attach_id ) ) {
 
-					$this->add_mt_single_image_src( $og_single_image, $attach_id, $size_name, $check_dupes, $force_regen );
+					$this->add_mt_single_image_src( $og_single_image, $attach_id, $size_name, $check_dupes );
 
 					if ( ! empty( $og_single_image[ 'og:image:url' ] ) ) {
 						if ( $this->p->util->push_max( $og_images, $og_single_image, $num ) ) {
@@ -288,7 +286,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $og_images;
 		}
 
-		public function get_attached_images( $num = 0, $size_name = 'thumbnail', $post_id, $check_dupes = true, $force_regen = false ) {
+		public function get_attached_images( $num = 0, $size_name = 'thumbnail', $post_id, $check_dupes = true ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
@@ -296,7 +294,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					'size_name'   => $size_name,
 					'post_id'     => $post_id,
 					'check_dupes' => $check_dupes,
-					'force_regen' => $force_regen,
 				) );
 			}
 
@@ -329,7 +326,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				foreach ( $attach_ids as $pid ) {
 
-					$this->add_mt_single_image_src( $og_single_image, $pid, $size_name, $check_dupes, $force_regen );
+					$this->add_mt_single_image_src( $og_single_image, $pid, $size_name, $check_dupes );
 
 					if ( ! empty( $og_single_image[ 'og:image:url' ] ) ) {
 						if ( $this->p->util->push_max( $og_images, $og_single_image, $num ) ) {
@@ -342,12 +339,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			/**
 			 * The 'wpsso_attached_images' filter is used by the buddypress module.
 			 */
-			return apply_filters( $this->p->lca . '_attached_images', $og_images, $num, $size_name, $post_id, $check_dupes, $force_regen );
+			return apply_filters( $this->p->lca . '_attached_images', $og_images, $num, $size_name, $post_id, $check_dupes );
 		}
 
 		/**
-		 * Use these static methods set / reset information about the image being processed
-		 * for down-stream filters / methods lacking this information.
+		 * Use these static methods set / reset information about the image being processed for down-stream filters /
+		 * methods lacking this information.
 		 */
 		public static function set_image_src_args( $image_src_args = null ) {
 
@@ -394,7 +391,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $ret_array;
 		}
 
-		public function add_mt_single_image_src( array &$og_single_image, $pid, $size_name = 'thumbnail', $check_dupes = true, $force_regen = false, $mt_pre = 'og' ) {
+		public function add_mt_single_image_src( array &$og_single_image, $pid, $size_name = 'thumbnail', $check_dupes = true, $mt_pre = 'og' ) {
 
 			list(
 				$og_single_image[ $mt_pre . ':image:url' ],
@@ -403,15 +400,15 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$og_single_image[ $mt_pre . ':image:cropped' ],
 				$og_single_image[ $mt_pre . ':image:id' ],
 				$og_single_image[ $mt_pre . ':image:alt' ]
-			) = $this->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
+			) = $this->get_attachment_image_src( $pid, $size_name, $check_dupes );
 		}
 
 		/**
 		 * Return only the image URL, which will be the first array element returned by get_attachment_image_src().
 		 */
-		public function get_attachment_image_url( $pid, $size_name = 'thumbnail', $check_dupes = true, $force_regen = false ) {
+		public function get_attachment_image_url( $pid, $size_name = 'thumbnail', $check_dupes = true ) {
 
-			$image_src = $this->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
+			$image_src = $this->get_attachment_image_src( $pid, $size_name, $check_dupes );
 
 			foreach ( $image_src as $num => $value ) {
 				return $value;
@@ -421,15 +418,17 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		}
 
 		/**
-		 * Note that every return must be wrapped with self::reset_image_src_args().
+		 * Note that that every return in this method must call self::reset_image_src_args().
 		 */
-		public function get_attachment_image_src( $pid, $size_name = 'thumbnail', $check_dupes = true, $force_regen = false ) {
+		public function get_attachment_image_src( $pid, $size_name = 'thumbnail', $check_dupes = true ) {
 
+			/**
+			 * Save arguments for the 'image_make_intermediate_size' and 'image_resize_dimensions' filters.
+			 */
 			self::set_image_src_args( $args = array(
 				'pid'         => $pid,
 				'size_name'   => $size_name,
 				'check_dupes' => $check_dupes,
-				'force_regen' => $force_regen,
 			) );
 
 			if ( $this->p->debug->enabled ) {
@@ -495,10 +494,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			} else {
 
 				$media_lib = __( 'Media Library', 'wpsso' );
-				$edit_url  = get_edit_post_link( $pid );
-				$func_name = 'wp_get_attachment_metadata()';
 				$func_url  = __( 'https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/', 'wpsso' );
+				$func_name = 'wp_get_attachment_metadata()';
 				$regen_msg = sprintf( __( 'You may consider regenerating the thumbnails of all WordPress Media Library images using one of <a href="%s">several available plugins from WordPress.org</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/regenerate+thumbnails/' );
+				$edit_url  = get_edit_post_link( $pid );
 
 				if ( isset( $img_meta[ 'file' ] ) ) {
 
@@ -559,32 +558,38 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			} elseif ( strpos( $size_name, $this->p->lca . '-' ) === 0 ) { // Only resize our own custom image sizes.
 
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'checking image metadata for inconsistencies' );
-
-					if ( $force_regen ) {
-						$this->p->debug->log( 'force regen is true' );
-					} elseif ( empty( $img_meta[ 'sizes' ][ $size_name ] ) ) {
-						$this->p->debug->log( $size_name . ' size missing from image metadata' );
-					}
-				}
-
 				/**
-				 * Does the image metadata contain our image sizes?
+				 * Make sure the metadata contains complete image information for the requested size.
 				 */
-				if ( $force_regen || empty( $img_meta[ 'sizes' ][ $size_name ] ) ) {
+				if ( empty( $img_meta[ 'sizes' ][ $size_name ] ) ||
+					empty( $img_meta[ 'sizes' ][ $size_name ][ 'file' ] ) ||
+					empty( $img_meta[ 'sizes' ][ $size_name ][ 'width' ] )  ||
+					empty( $img_meta[ 'sizes' ][ $size_name ][ 'height' ] ) ) {
 
-					$is_accurate_width = false;
+					$is_accurate_width  = false;
 					$is_accurate_height = false;
 
 				} else {
+
+					/**
+					 * By default, WordPress adds only the resolution of the resized image to the filename. If
+					 * the image size is ours, then add crop information to the filename as well. This allows
+					 * for different cropped versions for the same image resolution.
+					 */
+					$img_filename = $this->get_cropped_image_filename( $img_meta[ 'sizes' ][ $size_name ][ 'file' ], $size_info );
+
+					if ( $img_filename === $img_meta[ 'sizes' ][ $size_name ][ 'file' ] ) {
+						$is_accurate_filename = true;
+					} else {
+						$is_accurate_filename = false;
+					}
 
 					/**
 					 * Is the width and height in the image metadata accurate?
 					 */
 					$is_accurate_width = ! empty( $img_meta[ 'sizes' ][ $size_name ][ 'width' ] ) &&
 						$img_meta[ 'sizes' ][ $size_name ][ 'width' ] == $size_info[ 'width' ] ? true : false;
+
 					$is_accurate_height = ! empty( $img_meta[ 'sizes' ][ $size_name ][ 'height' ] ) &&
 						$img_meta[ 'sizes' ][ $size_name ][ 'height' ] == $size_info[ 'height' ] ? true : false;
 
@@ -601,6 +606,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							$ratio = $img_meta[ 'height' ] / $size_info[ 'height' ];
 							$check = 'width';
 						}
+
 						$should_be = (int) round( $img_meta[ $check ] / $ratio );
 
 						/**
@@ -620,29 +626,17 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 
 				/**
-				 * Depending on cropping, one or both sides of the image must be accurate.
-				 * If not, attempt to create a resized image by calling image_make_intermediate_size().
+				 * Depending on cropping, one or both sides of the image must be accurate. If not, attempt
+				 * to create a resized image by calling image_make_intermediate_size().
 				 */
-				if ( ( ! $img_cropped && ( ! $is_accurate_width && ! $is_accurate_height ) ) ||
+				if ( ! $is_accurate_filename ||
+					( ! $img_cropped && ( ! $is_accurate_width && ! $is_accurate_height ) ) ||
 					( $img_cropped && ( ! $is_accurate_width || ! $is_accurate_height ) ) ) {
 
-					if ( $this->p->debug->enabled ) {
-
-						if ( ! $force_regen && ! empty( $img_meta[ 'sizes' ][ $size_name ] ) ) {
-
-							$this->p->debug->log( 'image metadata (' . 
-								( empty( $img_meta[ 'sizes' ][ $size_name ][ 'width' ] ) ? 0 :
-									$img_meta[ 'sizes' ][ $size_name ][ 'width' ] ) . 'x' . 
-								( empty( $img_meta[ 'sizes' ][ $size_name ][ 'height' ] ) ? 0 :
-									$img_meta[ 'sizes' ][ $size_name ][ 'height' ] ) . ') does not match ' . 
-								$size_name . ' (' . $size_info[ 'width' ] . 'x' . $size_info[ 'height' ] . 
-									( $img_cropped ? ' cropped' : '' ) . ')' );
-						}
-					}
-
-					if ( $this->can_make_size( $img_meta, $size_info ) ) {
+					if ( $this->can_make_intermediate_size( $img_meta, $size_info ) ) {
 
 						$fullsizepath = get_attached_file( $pid );
+
 						$resized_meta = image_make_intermediate_size( $fullsizepath,
 							$size_info[ 'width' ], $size_info[ 'height' ], $size_info[ 'crop' ] );
 
@@ -659,17 +653,18 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							if ( $this->p->notice->is_admin_pre_notices() ) { // Skip if notices already shown.
 
 								$media_lib = __( 'Media Library', 'wpsso' );
-								$func_name = 'image_make_intermediate_size()';
 								$func_url  = __( 'https://developer.wordpress.org/reference/functions/image_make_intermediate_size/', 'wpsso' );
+								$func_name = 'image_make_intermediate_size()';
 								$regen_msg = sprintf( __( 'You may consider regenerating the thumbnails of all WordPress Media Library images using one of <a href="%s">several available plugins from WordPress.org</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/regenerate+thumbnails/' );
-
 								$error_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the <a href="%2$s">WordPress %3$s function</a> reported an error when trying to create an image size from %4$s.', 'wpsso' ), $media_lib, $func_url, '<code>' . $func_name . '</code>', $fullsizepath );
 
 								$this->p->notice->err( $error_msg . ' ' . $regen_msg, null, $notice_key, $dismiss_time );
 
 							} elseif ( $this->p->debug->enabled ) {
 
-								$this->p->debug->log( 'admin error notice for image_make_intermediate_size() from ' . $fullsizepath . ' is ' . ( $this->p->notice->is_dismissed( $notice_key ) ? 'dismissed' : 'shown (not dismissed)' ) );
+								$this->p->debug->log( 'admin error notice for image_make_intermediate_size() from ' .
+									$fullsizepath . ' is ' . ( $this->p->notice->is_dismissed( $notice_key ) ?
+										'dismissed' : 'shown (not dismissed)' ) );
 							}
 
 						} else {
@@ -729,14 +724,80 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return self::reset_image_src_args();
 		}
 
-		public function get_default_images( $num = 1, $size_name = 'thumbnail', $check_dupes = true, $force_regen = false ) {
+		/**
+		 * By default, WordPress adds only the resolution of the resized image to the filename. If the image size is ours,
+		 * then add crop information to the filename as well. This allows for different cropped versions for the same image
+		 * resolution.
+		 *
+		 * Example:
+		 *
+		 * 	unicorn-wallpaper-1200x630.jpg
+		 * 	unicorn-wallpaper-1200x630-cropped.jpg
+		 *	unicorn-wallpaper-1200x630-cropped-center-top.jpg
+		 */
+		public function maybe_update_image_filename( $filepath ) {
+
+			/**
+			 * get_attachment_image_src() in the WpssoMedia class saves / sets the image information (pid, size_name,
+			 * etc) before calling the image_make_intermediate_size() function (and others). Returns null if no image
+			 * information was set (presumably because we arrived here without passing through our own method).
+			 */
+			$img_info = (array) WpssoMedia::get_image_src_args();
+
+			if ( empty( $img_info[ 'size_name' ] ) || strpos( $img_info[ 'size_name' ], $this->p->lca . '-' ) !== 0 ) {
+				return $filepath;
+			}
+
+			$size_info = SucomUtilWP::get_size_info( $img_info[ 'size_name' ] );
+
+			/**
+			 * If the resized image is not cropped, then leave the file name as-is.
+			 */
+			if ( empty( $size_info[ 'crop' ] ) ) {
+				return $filepath;
+			}
+
+			$new_filepath = $this->get_cropped_image_filename( $filepath, $size_info );
+
+			if ( $filepath !== $new_filepath ) {	// Just in case
+				if ( rename( $filepath, $new_filepath ) ) {
+					return $new_filepath;	// Return the new filepath on success.
+				}
+			}
+
+			return $filepath;
+		}
+
+		public function get_cropped_image_filename( $filepath, $size_info ) {
+
+			$dir  = pathinfo( $filepath, PATHINFO_DIRNAME );	// Returns '.' for filenames without paths.
+			$ext  = pathinfo( $filepath, PATHINFO_EXTENSION ); 
+			$base = wp_basename( $filepath, '.' . $ext );
+
+			$new_dir    = '.' === $dir ? '' : trailingslashit( $dir );
+			$new_ext    = '.' . $ext;
+			$new_base   = preg_replace( '/-cropped(-[a-z]+-[a-z]+)?$/', '', $base );
+			$new_suffix = '';
+
+			if ( ! empty( $size_info[ 'crop' ] ) ) {
+
+				$new_suffix .= '-cropped';
+
+				if ( is_array( $size_info[ 'crop' ] ) ) {
+					$new_suffix .= '-' . implode( '-', $size_info[ 'crop' ] );
+				}
+			}
+
+			return $new_dir . $new_base . $new_suffix . $new_ext; 
+		}
+
+		public function get_default_images( $num = 1, $size_name = 'thumbnail', $check_dupes = true ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
 					'num'         => $num,
 					'size_name'   => $size_name,
 					'check_dupes' => $check_dupes,
-					'force_regen' => $force_regen,
 				) );
 			}
 
@@ -765,7 +826,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$this->p->debug->log( 'using default image pid: ' . $def_img[ 'id' ] );
 				}
 
-				$this->add_mt_single_image_src( $og_single_image, $def_img[ 'id' ], $size_name, $check_dupes, $force_regen );
+				$this->add_mt_single_image_src( $og_single_image, $def_img[ 'id' ], $size_name, $check_dupes );
 			}
 
 			if ( empty( $og_single_image[ 'og:image:url' ] ) && ! empty( $def_img[ 'url' ] ) ) {
@@ -790,7 +851,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $og_images;
 		}
 
-		public function get_content_images( $num = 0, $size_name = 'thumbnail', $mod = true, $check_dupes = true, $force_regen = false, $content = '' ) {
+		public function get_content_images( $num = 0, $size_name = 'thumbnail', $mod = true, $check_dupes = true, $content = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
@@ -910,7 +971,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								$this->p->debug->log( 'WP image attribute id found: ' . $attr_value );
 							}
 
-							$this->add_mt_single_image_src( $og_single_image, $attr_value, $size_name, false, $force_regen );
+							$this->add_mt_single_image_src( $og_single_image, $attr_value, $size_name, false );
 
 							break;
 
@@ -977,7 +1038,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							 */
 							if ( preg_match( '/class="[^"]+ wp-image-([0-9]+)/', $tag_value, $match ) ) {
 
-								$this->add_mt_single_image_src( $og_single_image, $match[1], $size_name, false, $force_regen );
+								$this->add_mt_single_image_src( $og_single_image, $match[ 1 ], $size_name, false );
 
 								break;	// Stop here.
 
@@ -1094,9 +1155,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 */
 		public function get_opts_single_image( $opts, $size_name = null, $opt_img_pre = 'og_img', $opt_num = null ) {
 
-			$check_dupes = false;
-			$force_regen = false;
-			$img_opts    = array();
+			$img_opts = array();
 
 			foreach ( array( 'id', 'id_pre', 'url', 'url:width', 'url:height' ) as $key ) {
 				$opt_suf          = $opt_num === null ? $key : $key . '_' . $opt_num;	// Use a numbered multi-option key.
@@ -1111,7 +1170,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$img_opts[ 'id' ] = $img_opts[ 'id_pre' ] === 'ngg' ? 'ngg-' . $img_opts[ 'id' ] : $img_opts[ 'id' ];
 
-				$this->add_mt_single_image_src( $og_single_image, $img_opts[ 'id' ], $size_name, $check_dupes, $force_regen );
+				$this->add_mt_single_image_src( $og_single_image, $img_opts[ 'id' ], $size_name, $check_dupes = false );
 
 			} elseif ( ! empty( $img_opts[ 'url' ] ) ) {
 
@@ -1719,7 +1778,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return true;	// image accepted
 		}
 
-		public function can_make_size( $img_meta, $size_info ) {
+		public function can_make_intermediate_size( $img_meta, $size_info ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -1728,24 +1787,29 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$full_width  = empty( $img_meta[ 'width' ] ) ? 0 : $img_meta[ 'width' ];
 			$full_height = empty( $img_meta[ 'height' ] ) ? 0 : $img_meta[ 'height' ];
 
-			$is_sufficient_w = $full_width >= $size_info[ 'width' ] ? true : false;
-			$is_sufficient_h = $full_height >= $size_info[ 'height' ] ? true : false;
+			$is_sufficient_width  = $full_width >= $size_info[ 'width' ] ? true : false;
+			$is_sufficient_height = $full_height >= $size_info[ 'height' ] ? true : false;
 
 			$img_cropped = empty( $size_info[ 'crop' ] ) ? 0 : 1;
+
 			$upscale_multiplier = 1;
 
 			if ( $this->p->options[ 'plugin_upscale_images' ] ) {
-				$img_info            = (array) self::get_image_src_args();
+
+				$img_info = (array) self::get_image_src_args();
+
 				$upscale_img_max     = apply_filters( $this->p->lca . '_image_upscale_max', $this->p->options[ 'plugin_upscale_img_max' ], $img_info );
 				$upscale_multiplier  = 1 + ( $upscale_img_max / 100 );
 				$upscale_full_width  = round( $full_width * $upscale_multiplier );
 				$upscale_full_height = round( $full_height * $upscale_multiplier );
-				$is_sufficient_w     = $upscale_full_width >= $size_info[ 'width' ] ? true : false;
-				$is_sufficient_h     = $upscale_full_height >= $size_info[ 'height' ] ? true : false;
+
+				$is_sufficient_width  = $upscale_full_width >= $size_info[ 'width' ] ? true : false;
+				$is_sufficient_height = $upscale_full_height >= $size_info[ 'height' ] ? true : false;
 			}
 
-			if ( ( ! $img_cropped && ( ! $is_sufficient_w && ! $is_sufficient_h ) ) ||
-				( $img_cropped && ( ! $is_sufficient_w || ! $is_sufficient_h ) ) ) {
+			if ( ( ! $img_cropped && ( ! $is_sufficient_width && ! $is_sufficient_height ) ) ||
+				( $img_cropped && ( ! $is_sufficient_width || ! $is_sufficient_height ) ) ) {
+
 				$ret = false;
 			} else {
 				$ret = true;

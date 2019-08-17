@@ -1359,7 +1359,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		/**
 		 * Methods that return an associative array of Open Graph meta tags.
 		 */
-		public function get_og_images( $num, $size_name, $user_id, $check_dupes = true, $force_regen = false, $md_pre = 'og' ) {
+		public function get_og_images( $num, $size_name, $user_id, $check_dupes = true, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -1373,10 +1373,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$user_exists = SucomUtilWP::user_exists( $user_id );
 
 			if ( $user_exists ) {
-				return $this->get_md_images( $num, $size_name, $mod, $check_dupes, $force_regen, $md_pre, 'og' );
+				return $this->get_md_images( $num, $size_name, $mod, $check_dupes, $md_pre, 'og' );
 			} else {
 				return apply_filters( $this->p->lca . '_get_other_user_images',
-					array(), $num, $size_name, $user_id, $check_dupes, $force_regen, $md_pre );
+					array(), $num, $size_name, $user_id, $check_dupes, $md_pre );
 			}
 		}
 

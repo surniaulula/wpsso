@@ -1055,10 +1055,26 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function is_amp() {
 
-			if ( ! defined( 'AMP_QUERY_VAR' ) ) {
-				$is_amp = false;
-			} else {
-				$is_amp = get_query_var( AMP_QUERY_VAR, false ) ? true : false;
+			static $is_amp = null;
+
+			if ( null === $is_amp ) {
+
+				if ( function_exists( 'is_amp_endpoint' ) ) {
+
+					$is_amp = is_amp_endpoint();
+
+				} elseif ( function_exists( 'ampforwp_is_amp_endpoint' ) ) {
+
+					$is_amp = ampforwp_is_amp_endpoint();
+
+				} elseif ( ! defined( 'AMP_QUERY_VAR' ) ) {
+
+					$is_amp = false;
+
+				} else {
+
+					$is_amp = get_query_var( AMP_QUERY_VAR, false ) ? true : false;
+				}
 			}
 
 			return $is_amp;

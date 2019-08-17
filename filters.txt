@@ -49,7 +49,7 @@
 
 'wpsso_attached_image_ids' ( $attach_ids, $post_id )
 
-'wpsso_attached_images' ( $og_ret, $num, $size_name, $post_id, $check_dupes, $force_regen )
+'wpsso_attached_images' ( $og_ret, $num, $size_name, $post_id, $check_dupes )
 
 'wpsso_cache_expire_article_topics' ( $secs )
 
@@ -179,7 +179,7 @@
 
 'wpsso_og_ecom_wpecommerce' ( $og_ecom, $mod )
 
-'wpsso_og_featured' ( $og_ret, $num, $size_name, $post_id, $check_dupes, $force_regen )
+'wpsso_og_featured' ( $og_ret, $num, $size_name, $post_id, $check_dupes )
 
 'wpsso_og_ns' ( $ns )
 

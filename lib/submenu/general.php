@@ -195,7 +195,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$table_rows[ 'og_img' ] = '' . 
 					$this->form->get_th_html( _x( 'Open Graph Image Size', 'option label', 'wpsso' ), '', 'og_img_size' ) . 
-					'<td>' . $this->form->get_input_image_dimensions( 'og_img' ) . '</td>';	// $use_opts = false
+					'<td>' . $this->form->get_input_image_dimensions( 'og_img' ) . '</td>';
 
 					$table_rows[ 'og_def_img_id' ] = '' . 
 					$this->form->get_th_html( _x( 'Default / Fallback Image ID', 'option label', 'wpsso' ), '', 'og_def_img_id' ) . 
@@ -317,11 +317,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$table_rows[ 'tc_sum_img' ] = '' . 
 					$this->form->get_th_html( _x( 'Summary Card Image Size', 'option label', 'wpsso' ), '', 'tc_sum_img_size' ) . 
-					'<td>' . $this->form->get_input_image_dimensions( 'tc_sum_img' ) . '</td>';	// $use_opts = false
+					'<td>' . $this->form->get_input_image_dimensions( 'tc_sum_img' ) . '</td>';
 
 					$table_rows[ 'tc_lrg_img' ] = '' . 
 					$this->form->get_th_html( _x( 'Large Image Summary Card Img Size', 'option label', 'wpsso' ), '', 'tc_lrg_img_size' ) . 
-					'<td>' . $this->form->get_input_image_dimensions( 'tc_lrg_img' ) . '</td>';	// $use_opts = false
+					'<td>' . $this->form->get_input_image_dimensions( 'tc_lrg_img' ) . '</td>';
 
 					break;
 
