@@ -437,7 +437,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.0.0-dev.4 (2019/08/18)**
+**Version 6.1.0-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added new image dimensions in the WordPress &gt; Settings &gt; SSO Image Sizes page:
+		* Schema Article AMP 1x1 (Google)
+		* Schema Article AMP 4x3 (Google)
+		* Schema Article AMP 16x9 (Google)
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+
+**Version 6.0.0-b.1 (2019/08/18)**
 
 * **New Features**
 	* Resized cropped image filenames are now saved with their cropping information, allowing the same image to be available with identical dimensions, but different main subject (ie. cropping) areas for different markup (Facebook / Open Graph, Google / Schema, etc.).
@@ -457,10 +471,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Updated the minimum WordPress version from 3.8 to 3.9.
 	* Updated the default Facebook Open Graph image size from 600x315 to 1200x630.
 	* Replaced the "Image Size" options in the Document SSO metaboxes by new "Image Subject Area" options (to select a custom image cropping area).
-	* Added new image dimensions in the WordPress &gt; Settings &gt; SSO Image Sizes page:
-		* Schema Article AMP 1x1 (Google)
-		* Schema Article AMP 4x3 (Google)
-		* Schema Article AMP 16x9 (Google)
 	* Moved the "Enforce Image Size Checks" Premium feature to the Standard version.
 * **Bugfixes**
 	* Fixed "is_post_type_archive" detection by replacing `is_post_type_archive( $post_type )` from WordPress by `SucomUtil::is_post_type_archive( $post_type, $post_slug )`.
@@ -658,9 +668,9 @@ This version includes several jQuery improvements to optimize both the size of s
 
 == Upgrade Notice ==
 
-= 6.0.0-dev.4 =
+= 6.0.0-b.1 =
 
-(2019/08/18) Added new image dimensions in the WordPress &gt; Settings &gt; SSO Image Sizes page. Fixed "is_post_type_archive" detection.
+(2019/08/18) Resized cropped image filenames are now saved with their cropping information. Replaced the "Image Size" options in the Document SSO metaboxes by new "Image Subject Area" options. Fixed "is_post_type_archive" detection.
 
 = 5.5.3 =
 
