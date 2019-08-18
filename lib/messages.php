@@ -57,7 +57,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				$do_once        = true;
 				$pro_transl     = _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' );
 				$std_transl     = _x( $this->p->cf[ 'dist' ][ 'std' ], 'distribution name', 'wpsso' );
-				$fb_recs_transl = __( 'Facebook prefers images of 1200x630px cropped (for use on retina and high-PPI displays), 600x315px cropped as a recommended minimum, and ignores images smaller than 200x200px.', 'wpsso' );
+				$fb_recs_transl = __( 'Facebook prefers images of 1200x630px cropped (for Retina and high-PPI displays), 600x315px cropped as a recommended minimum, and ignores images smaller than 200x200px.', 'wpsso' );
 			}
 
 			/**
@@ -227,7 +227,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-og_img_crop_area':
 
-							$text = __( 'The main subject area of the image used for Facebook / Open Graph meta tags.', 'wpsso' );
+							$text = __( 'The main subject area of the Facebook / Open Graph image.', 'wpsso' );
 
 						 	break;
 
@@ -305,7 +305,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-schema_img_crop_area':
 
-							$text = __( 'The main subject area of the image used for Google / Pinterest / Schema meta tags and JSON-LD markup.', 'wpsso' );
+							$text = __( 'The main subject area of the Google / Pinterest / Schema image.', 'wpsso' );
 
 							break;
 
@@ -324,7 +324,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-meta-tc_lrg_img_crop_area':
 						case 'tooltip-meta-tc_sum_img_crop_area':
 
-							$text = __( 'The main subject area of the image used for the Twitter Card image.', 'wpsso' );
+							$text = __( 'The main subject area of the Twitter Card image.', 'wpsso' );
 
 						 	break;
 

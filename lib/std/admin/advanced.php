@@ -132,7 +132,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$form->get_td_no_checkbox( 'plugin_check_img_dims', '<em>' . _x( 'recommended', 'option comment', 'wpsso' ) . '</em>' );
 
 			$table_rows[ 'plugin_upscale_images' ] = '' . 
-			$form->get_th_html( _x( 'Upscale Media Library Image', 'option label', 'wpsso' ), '', 'plugin_upscale_images' ) . 
+			$form->get_th_html( _x( 'Upscale Media Library Images', 'option label', 'wpsso' ), '', 'plugin_upscale_images' ) . 
 			$form->get_td_no_checkbox( 'plugin_upscale_images' );
 
 			$table_rows[ 'plugin_upscale_img_max' ] = '' .

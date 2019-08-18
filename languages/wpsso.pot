@@ -2425,7 +2425,7 @@ msgstr ""
 
 #: lib/gettext-pro.php:23 lib/gettext-pro.php:85 lib/messages.php:2007
 #: lib/pro/admin/advanced.php:139 lib/pro/admin/general.php:62
-#: lib/std/admin/general.php:57
+#: lib/std/admin/advanced.php:135 lib/std/admin/general.php:57
 msgctxt "option label"
 msgid "Upscale Media Library Images"
 msgstr ""
@@ -3404,9 +3404,9 @@ msgstr ""
 
 #: lib/messages.php:60
 msgid ""
-"Facebook prefers images of 1200x630px cropped (for use on retina and high-"
-"PPI displays), 600x315px cropped as a recommended minimum, and ignores "
-"images smaller than 200x200px."
+"Facebook prefers images of 1200x630px cropped (for Retina and high-PPI "
+"displays), 600x315px cropped as a recommended minimum, and ignores images "
+"smaller than 200x200px."
 msgstr ""
 
 #: lib/messages.php:138
@@ -3510,8 +3510,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:230
-msgid ""
-"The main subject area of the image used for Facebook / Open Graph meta tags."
+msgid "The main subject area of the Facebook / Open Graph image."
 msgstr ""
 
 #: lib/messages.php:236
@@ -3598,9 +3597,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:308
-msgid ""
-"The main subject area of the image used for Google / Pinterest / Schema meta "
-"tags and JSON-LD markup."
+msgid "The main subject area of the Google / Pinterest / Schema image."
 msgstr ""
 
 #: lib/messages.php:314
@@ -3616,7 +3613,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:327
-msgid "The main subject area of the image used for the Twitter Card image."
+msgid "The main subject area of the Twitter Card image."
 msgstr ""
 
 #: lib/messages.php:334
@@ -6149,11 +6146,6 @@ msgstr ""
 #: lib/sitesubmenu/site-licenses.php:52 lib/submenu/licenses.php:41
 msgctxt "metabox title"
 msgid "Plugin and Add-on Licenses"
-msgstr ""
-
-#: lib/std/admin/advanced.php:135
-msgctxt "option label"
-msgid "Upscale Media Library Image"
 msgstr ""
 
 #: lib/std/admin/general.php:74
