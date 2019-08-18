@@ -61,6 +61,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'md_pre' => 'schema_img',		// Meta data prefix.
 			);
 
+			/*
 			$sizes[ 'schema_article_amp1x1_img' ] = array(	// Options prefix.
 				'name'   => 'schema-article-amp1x1',
 				'label'  => _x( 'Schema Article AMP 1x1 Image', 'image size label', 'wpsso' ),
@@ -78,6 +79,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'label'  => _x( 'Schema Article AMP 16x9 Image', 'image size label', 'wpsso' ),
 				'md_pre' => 'schema_img',		// Meta data prefix.
 			);
+			*/
 
 			return $sizes;
 		}
