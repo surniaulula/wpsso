@@ -461,6 +461,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Schema Article AMP 1x1 (Google)
 		* Schema Article AMP 4x3 (Google)
 		* Schema Article AMP 16x9 (Google)
+	* Moved the "Enforce Image Size Checks" Premium feature to the Standard version.
 * **Bugfixes**
 	* Fixed "is_post_type_archive" detection by replacing `is_post_type_archive( $post_type )` from WordPress by `SucomUtil::is_post_type_archive( $post_type, $post_slug )`.
 * **Developer Notes**
