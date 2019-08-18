@@ -1983,49 +1983,55 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$metabox_tab = _x( 'Priority Media', 'metabox tab', 'wpsso' );
 
-							$text = sprintf( __( 'A larger and/or different custom image, specifically for meta tags and Schema markup, can be selected in the %1$s metabox under the %2$s tab.', 'wpsso' ), $metabox_title, $metabox_tab );
+							$text .= sprintf( __( 'A larger custom image can be selected in the %1$s metabox under the %2$s tab.',
+								'wpsso' ), $metabox_title, $metabox_tab );
 
-						} else {
-							$text = '';
+							$do_once_custom_notice = true;
 						}
 
-						static $do_once_upscale_notice = null;	// Show the upscale details only once.
+						static $do_once_upscale_notice = null;
 
-						if ( true !== $do_once_upscale_notice && current_user_can( 'manage_options' ) && 
-							( ! isset( $info[ 'allow_upscale' ] ) || ! empty( $info[ 'allow_upscale' ] ) ) ) {
+						if ( null === $do_once_upscale_notice ) {
+						
+							if ( current_user_can( 'manage_options' ) ) {
 
-							$do_once_upscale_notice = true;
+								if ( ! isset( $info[ 'allow_upscale' ] ) || ! empty( $info[ 'allow_upscale' ] ) ) {
 
-							$img_dim_page_link = $this->p->util->get_admin_url( 'image-dimensions', 
-								_x( 'SSO Image Sizes', 'lib file description', 'wpsso' ) );
+									$img_dim_page_link = $this->p->util->get_admin_url( 'image-dimensions', 
+										_x( 'SSO Image Sizes', 'lib file description', 'wpsso' ) );
 
-							$img_dim_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
-								_x( 'Enforce Image Size Check', 'option label', 'wpsso' ) );
+									$img_dim_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
+										_x( 'Enforce Image Size Check', 'option label', 'wpsso' ) );
 
-							$upscale_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
-								_x( 'Upscale Media Library Images', 'option label', 'wpsso' ) );
+									$upscale_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
+										_x( 'Upscale Media Library Images', 'option label', 'wpsso' ) );
 
-							$percent_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
-								_x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ) );
+									$percent_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
+										_x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ) );
 
-							$text .= '<p style="margin-left:0;"><em>' . 
-								__( 'Additional information shown only to users with Administrative privileges:',
-									'wpsso' ) . '</em></p>';
+									$text .= '<p style="margin-left:0;"><em>' . 
+										__( 'Additional information shown only to users with Administrative privileges:',
+											'wpsso' ) . '</em></p>';
 
-							$text .= '<ul>';
+									$text .= '<ul>';
 
-							$text .= '<li>' . sprintf( __( 'You can adjust the <b>%1$s</b> option in the %2$s settings.', 'wpsso' ),
-								$info[ 'size_label' ], $img_dim_page_link ) . '</li>';
+									$text .= '<li>' . sprintf( __( 'You can adjust the <b>%1$s</b> option in the %2$s settings.', 'wpsso' ),
+										$info[ 'size_label' ], $img_dim_page_link ) . '</li>';
 
-							if ( empty( $this->p->options[ 'plugin_upscale_images' ] ) ) {
-								$text .= '<li>' . sprintf( __( 'Enable the %1$s option.', 'wpsso' ), $upscale_option_link ) . '</li>';
+									if ( empty( $this->p->options[ 'plugin_upscale_images' ] ) ) {
+										$text .= '<li>' . sprintf( __( 'Enable the %1$s option.', 'wpsso' ), $upscale_option_link ) . '</li>';
+									}
+
+									$text .= '<li>' . sprintf( __( 'Increase the %1$s option value.', 'wpsso' ), $percent_option_link ) . '</li>';
+
+									$text .= '<li>' . sprintf( __( 'Disable the %1$s option (not recommended).', 'wpsso' ), $img_dim_option_link ) . '</li>';
+
+									$text .= '</ul>';
+
+									$do_once_upscale_notice = true;
+								}
 							}
 
-							$text .= '<li>' . sprintf( __( 'Increase the %1$s option value.', 'wpsso' ), $percent_option_link ) . '</li>';
-
-							$text .= '<li>' . sprintf( __( 'Disable the %1$s option (not recommended).', 'wpsso' ), $img_dim_option_link ) . '</li>';
-
-							$text .= '</ul>';
 						}
 
 						break;

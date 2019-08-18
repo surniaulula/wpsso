@@ -69,6 +69,31 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				649 => array(
 					'product_ean' => 'product_gtin13',
 				),
+
+				/**
+				 * WPSSO Core v6.0.0 removes image width, height, and crop/uncrop options from the Document SSO
+				 * metabox, and replaces them with a new "Image Subject Area" option to select a crop area.
+				 */
+				659 => array(
+					'thumb_img_width'           => '',
+					'thumb_img_height'          => '',
+					'thumb_img_crop'            => '',
+					'schema_article_img_width'  => '',
+					'schema_article_img_height' => '',
+					'schema_article_img_crop'   => '',
+					'schema_img_width'          => '',
+					'schema_img_height'         => '',
+					'schema_img_crop'           => '',
+					'og_img_width'              => '',
+					'og_img_height'             => '',
+					'og_img_crop'               => '',
+					'tc_sum_img_width'          => '',
+					'tc_sum_img_height'         => '',
+					'tc_sum_img_crop'           => '',
+					'tc_lrg_img_width'          => '',
+					'tc_lrg_img_height'         => '',
+					'tc_lrg_img_crop'           => '',
+				),
 			),
 		);
 

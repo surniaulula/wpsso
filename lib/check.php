@@ -275,12 +275,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							break;
 
-						case 'util-checkimgdims':
-
-							$chk[ 'opt_key' ] = 'plugin_check_img_dims';
-
-							break;
-
 						case 'util-custom-fields':
 
 							$get_avail[ $sub ][ 'any' ] = $get_avail[ $sub ][ $id ] = true;

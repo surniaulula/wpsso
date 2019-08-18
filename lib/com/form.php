@@ -1204,7 +1204,7 @@ EOF;
 
 		public function get_no_input_image_crop_area( $name, $use_placeholders = false ) {
 
-			return $this->get_no_input_image_crop_area( $name, $use_placeholders, $is_disabled = true );
+			return $this->get_input_image_crop_area( $name, $use_placeholders, $is_disabled = true );
 		}
 
 		public function get_image_dimensions_text( $name, $use_placeholders = false ) {

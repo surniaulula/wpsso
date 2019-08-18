@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.0.0-dev.3',	// Plugin version.
-					'opt_version' => '659',		// Increment when changing default option values.
+					'version'     => '6.0.0-dev.4',	// Plugin version.
+					'opt_version' => '660',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'WPSSO Core makes sure your content looks great on all social and search sites - no matter how URLs are crawled, shared, re-shared, posted, or embedded!',
@@ -132,8 +132,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'buddypress' => '(plugin) BuddyPress',
 							),
 							'util' => array(
-								'checkimgdims'  => '(feature) Enforce Image Size Check',
-								'custom-fields' => '(feature) Read Custom Fields by Name',
+								'custom-fields' => '(feature) Read Custom Fields',
 								'coauthors'     => '(plugin) Co-Authors Plus',
 								'shorten'       => '(api) URL Shortening APIs',
 								'wpseo-meta'    => '(feature) Yoast SEO Social Meta',
@@ -1215,7 +1214,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_page_excerpt'               => 0,			// Enable WP Excerpt for Pages.
 					'plugin_page_tags'                  => 0,			// Enable WP Tags for Pages.
 					'plugin_check_head'                 => 1,			// Check for Duplicate Meta Tags.
-					'plugin_check_img_dims'             => 0,			// Enforce Image Size Check.
+					'plugin_check_img_dims'             => 1,			// Enforce Image Size Check.
 					'plugin_upscale_images'             => 0,			// Upscale Media Library Images.
 					'plugin_upscale_img_max'            => 33,			// Maximum Image Upscale Percent.
 					'plugin_product_attr_brand'         => 'Brand',			// Product Brand Attribute Name.
@@ -1418,7 +1417,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_page_tags:use'             => 'default',
 					'plugin_check_head'                => 1,		// Check for Duplicate Meta Tags.
 					'plugin_check_head:use'            => 'default',
-					'plugin_check_img_dims'            => 0,		// Enforce Image Size Check.
+					'plugin_check_img_dims'            => 1,		// Enforce Image Size Check.
 					'plugin_check_img_dims:use'        => 'default',
 					'plugin_upscale_images'            => 0,		// Upscale Media Library Images.
 					'plugin_upscale_images:use'        => 'default',
