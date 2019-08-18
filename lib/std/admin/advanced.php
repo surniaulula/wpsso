@@ -128,7 +128,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$form->get_td_no_checkbox( 'plugin_check_head' );
 
 			$table_rows[ 'plugin_check_img_dims' ] = '' . 
-			$form->get_th_html( _x( 'Enforce Image Size Check', 'option label', 'wpsso' ), '', 'plugin_check_img_dims' ) . 
+			$form->get_th_html( _x( 'Enforce Image Size Checks', 'option label', 'wpsso' ), '', 'plugin_check_img_dims' ) . 
 			$form->get_td_no_checkbox( 'plugin_check_img_dims', '<em>' . _x( 'recommended', 'option comment', 'wpsso' ) . '</em>' );
 
 			$table_rows[ 'plugin_upscale_images' ] = '' . 

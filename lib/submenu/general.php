@@ -205,6 +205,10 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->form->get_th_html( _x( 'or Default / Fallback Image URL', 'option label', 'wpsso' ), '', 'og_def_img_url' ) . 
 					'<td>' . $this->form->get_input_image_url( 'og_def_img' ) . '</td>';
 
+					$table_rows[ 'plugin_check_img_dims' ] = '' .
+					$this->form->get_th_html( _x( 'Enforce Image Size Checks', 'option label', 'wpsso' ), '', 'plugin_check_img_dims' ) .
+					'<td>' . $this->form->get_checkbox( 'plugin_check_img_dims' ) . ' <em>' . _x( 'recommended', 'option comment', 'wpsso' ) . '</em></td>';
+
 					break;
 
 				case 'og-videos':
