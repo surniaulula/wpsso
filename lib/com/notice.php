@@ -216,10 +216,13 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$this->maybe_set_notice_cache( $user_id, $use_cache );
 
-			$this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] = $payload;
+			if ( empty( $this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] ) ) {
 
-			if ( ! $use_cache ) {
-				$this->update_notice_transient( $user_id );
+				$this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] = $payload;
+
+				if ( ! $use_cache ) {
+					$this->update_notice_transient( $user_id );
+				}
 			}
 		}
 

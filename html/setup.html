@@ -59,7 +59,7 @@ If your theme templates do not include RDFa or Microdata markup for Google Rich 
 <dt><h3>Interface and General Usage</h3></dt>
 
 <dd>
-<p>On most WordPress admin pages you'll find a <em>Screen Options</em> drop-down tab on the upper right-hand side of the page. You can use these options to include / exclude specific metaboxes and columns from the current page. For example, when viewing the Posts or Pages list you can use the <em>Screen Options</em> drop-down tab to hide / view the "Schema" and "SSO Image" columns. You can also enable / disable these columns globally under the <u>SSO &gt; Advanced &gt; Columns</u> settings tab.</p>
+<p>On most WordPress admin pages you'll find a <em>Screen Options</em> drop-down tab on the upper right-hand side of the page. You can use these options to include / exclude specific metaboxes and columns from the current page. For example, when viewing the Posts or Pages list you can use the <em>Screen Options</em> drop-down tab to hide / view the "Schema" and "SSO Image" columns. You can also enable / disable these columns globally under the <u>SSO &gt; Advanced &gt; Columns</u> tab.</p>
 
 <p>When editing a Post, Page, category, tag, etc., you'll find a <em>Document SSO (Social and Search Optimization)</em> metabox below the content area where you can edit various social texts and image values. The "Preview" tab shows how this webpage might look like when shared on Facebook, the "Head" tab shows a complete list of meta tags created by WPSSO Core, including additional Schema markup and LD+JSON for Google, and the "Validate" tab allows you to submit the current webpage URL to a number of test and validation tools.</p>
 </dd>
@@ -74,7 +74,7 @@ If your theme templates do not include RDFa or Microdata markup for Google Rich 
 
 <h4 class="top">Verify Dimensions?</h4>
 
-<p>WPSSO Core Premium can double-check that all images returned by WordPress match the dimensions it requested (as WordPress can return smaller and/or inaccurate images). This also insures that images which are too small and/or tall / wide for social sites are rejected in favour of other larger (and more suitable) images. You can enforce the image dimensions check by enabling the "Enforce Image Size Check" option under the <u>SSO &gt; Advanced &gt; Integration</u> settings tab.</p>
+<p>WPSSO Core can double-check that all images requested from WordPress match the desired dimensions. This insures that images (which are too small, tall, or wide) for social sites are rejected in favour of larger and more suitable images. You can enable / disable the image dimensions check using the "Enforce Image Size Checks" option under the <u>SSO &gt; General &gt; General Settings &gt; Images</u> tab.</p>
 
 <h4 class="top">Upscale / Enlarge Images?</h4>
 
@@ -159,10 +159,10 @@ If your theme templates do not include RDFa or Microdata markup for Google Rich 
 <li><p>If you know that your theme header templates do not include any social meta tags, and no other plugin is adding social meta tags to your webpages, then you could disable the "Check for Duplicate Meta Tags" option.</p></li>
 
 <!-- Custom Field Names -->
-<li><p>If your theme uses custom fields to manage additional image, video URLs, embed video HTML, product details, etc., you can enter their custom field names under the <u>SSO &gt; Advanced &gt; Custom Meta</u> settings tab.</p></li>
+<li><p>If your theme uses custom fields to manage additional image, video URLs, embed video HTML, product details, etc., you can enter their custom field names under the <u>SSO &gt; Advanced &gt; Custom Meta</u> tab.</p></li>
 
 <!-- SEO plugins and meta tags -->
-<li><p>WPSSO Core adds the "link rel canonical", "meta name description", and "meta name robots" meta tags to webpage headers by default (enabled / disabled under the <u>SSO &gt; Advanced &gt; Head Tags &gt; SEO / Other</u> settings tab). <em>All three of these meta tags are disabled automatically if an SEO plugin is detected.</em></p>
+<li><p>WPSSO Core adds the "link rel canonical", "meta name description", and "meta name robots" meta tags to webpage headers by default (enabled / disabled under the <u>SSO &gt; Advanced &gt; Head Tags &gt; SEO / Other</u> tab). <em>All three of these meta tags are disabled automatically if an SEO plugin is detected.</em></p>
 
 <p>The "meta name robots" checkbox also controls the addition of a Robots (noindex, nofollow, noarchive, nosnippet) option on post editing pages &mdash; disable this meta tag to prevent the Robots option from being shown on post editing pages.</p></li>
 

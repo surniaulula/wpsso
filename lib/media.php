@@ -1916,7 +1916,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 			/**
 					 * $media_lib can be 'Media Library', 'NextGEN Gallery', 'Content', etc.
 					 */
-					$this->p->notice->err( sprintf( $error_msg, $media_lib, $img_label, $img_width . 'x' . $img_height,
+					$this->p->notice->warn( sprintf( $error_msg, $media_lib, $img_label, $img_width . 'x' . $img_height,
 						$max_ratio, $markup_name ) . ' ' . $rejected_msg, null, $notice_key, $dismiss_time );
 				}
 
@@ -1944,7 +1944,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 			/**
 					 * $media_lib can be 'Media Library', 'NextGEN Gallery', 'Content', etc.
 					 */
-					$this->p->notice->err( sprintf( $error_msg, $media_lib, $img_label, $img_width . 'x' . $img_height,
+					$this->p->notice->warn( sprintf( $error_msg, $media_lib, $img_label, $img_width . 'x' . $img_height,
 						$min_width . 'x' . $min_height, $markup_name ) . ' ' . $rejected_msg, true, $notice_key, $dismiss_time );
 				}
 
