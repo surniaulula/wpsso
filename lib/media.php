@@ -558,18 +558,17 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			} elseif ( strpos( $size_name, $this->p->lca . '-' ) === 0 ) { // Only resize our own custom image sizes.
 
+				$is_accurate_filename = false;
+				$is_accurate_width    = false;
+				$is_accurate_height   = false;
+
 				/**
 				 * Make sure the metadata contains complete image information for the requested size.
 				 */
-				if ( empty( $img_meta[ 'sizes' ][ $size_name ] ) ||
-					empty( $img_meta[ 'sizes' ][ $size_name ][ 'file' ] ) ||
-					empty( $img_meta[ 'sizes' ][ $size_name ][ 'width' ] )  ||
-					empty( $img_meta[ 'sizes' ][ $size_name ][ 'height' ] ) ) {
-
-					$is_accurate_width  = false;
-					$is_accurate_height = false;
-
-				} else {
+				if ( ! empty( $img_meta[ 'sizes' ][ $size_name ] ) &&
+					! empty( $img_meta[ 'sizes' ][ $size_name ][ 'file' ] ) &&
+					! empty( $img_meta[ 'sizes' ][ $size_name ][ 'width' ] )  &&
+					! empty( $img_meta[ 'sizes' ][ $size_name ][ 'height' ] ) ) {
 
 					/**
 					 * By default, WordPress adds only the resolution of the resized image to the filename. If
@@ -578,20 +577,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					 */
 					$img_filename = $this->get_cropped_image_filename( $img_meta[ 'sizes' ][ $size_name ][ 'file' ], $size_info );
 
-					if ( $img_filename === $img_meta[ 'sizes' ][ $size_name ][ 'file' ] ) {
-						$is_accurate_filename = true;
-					} else {
-						$is_accurate_filename = false;
-					}
-
-					/**
-					 * Is the width and height in the image metadata accurate?
-					 */
-					$is_accurate_width = ! empty( $img_meta[ 'sizes' ][ $size_name ][ 'width' ] ) &&
-						$img_meta[ 'sizes' ][ $size_name ][ 'width' ] == $size_info[ 'width' ] ? true : false;
-
-					$is_accurate_height = ! empty( $img_meta[ 'sizes' ][ $size_name ][ 'height' ] ) &&
-						$img_meta[ 'sizes' ][ $size_name ][ 'height' ] == $size_info[ 'height' ] ? true : false;
+					$is_accurate_filename = $img_filename === $img_meta[ 'sizes' ][ $size_name ][ 'file' ] ? true : false;
+					$is_accurate_width    = $size_info[ 'width' ] === $img_meta[ 'sizes' ][ $size_name ][ 'width' ] ? true : false;
+					$is_accurate_height   = $size_info[ 'height' ] === $img_meta[ 'sizes' ][ $size_name ][ 'height' ] ? true : false;
+error_log( '$is_accurate_filename '.$is_accurate_filename);
+error_log( '$is_accurate_width '.$is_accurate_width);
+error_log( '$is_accurate_height '.$is_accurate_height);
 
 					/**
 					 * If not cropped, make sure the resized image respects the original aspect ratio.
