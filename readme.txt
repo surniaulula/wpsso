@@ -437,7 +437,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.0.0-dev.3 (2019/08/17)**
+**Version 6.0.0-dev.4 (2019/08/18)**
 
 * **New Features**
 	* Resized cropped image filenames are now saved with their cropping information, allowing the same image to be available with identical dimensions, but different main subject (ie. cropping) areas for different markup (Facebook / Open Graph, Google / Schema, etc.).
@@ -657,9 +657,9 @@ This version includes several jQuery improvements to optimize both the size of s
 
 == Upgrade Notice ==
 
-= 6.0.0-dev.3 =
+= 6.0.0-dev.4 =
 
-(2019/08/17) Added new image dimensions in the WordPress &gt; Settings &gt; SSO Image Sizes page. Fixed "is_post_type_archive" detection.
+(2019/08/18) Added new image dimensions in the WordPress &gt; Settings &gt; SSO Image Sizes page. Fixed "is_post_type_archive" detection.
 
 = 5.5.3 =
 
