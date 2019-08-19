@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 6.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-08-18 16:47-0700\n"
-"PO-Revision-Date: 2019-08-18 16:49-0700\n"
+"PO-Revision-Date: 2019-08-18 17:04-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4083,7 +4083,7 @@ msgstr "Si cette taille d'image n'est pas recadrée (réglage par défaut), la v
 
 #: lib/messages.php:1310
 msgid "The image dimensions used for Schema Article AMP %1$s image meta tags and JSON-LD markup (the default dimensions are %2$s)."
-msgstr "Les dimensions d'image utilisées pour les balises méta Schéma d'article AMP %1$s et le balisage JSON-LD (les dimensions par défaut sont %s)."
+msgstr "Les dimensions d'image utilisées pour les balises méta Schéma d'article AMP %1$s et le balisage JSON-LD (les dimensions par défaut sont %2$s)."
 
 #: lib/messages.php:1319
 msgid "The maximum text length of the Schema description property value."
