@@ -604,7 +604,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 
 				$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, $read_cache = true );
-
 				$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
 			}
 

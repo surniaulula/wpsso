@@ -358,13 +358,6 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'content'  => $form->get_no_select( 'og_img_max',
 						range( 0, $this->p->cf[ 'form' ][ 'max_media_items' ] ), 'medium' ),
 				) : '',	// Placeholder if not a post module.
-				'og_img_crop_area' => array(
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Image Subject Area', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-og_img_crop_area',
-					'content'  => $form->get_no_input_image_crop_area( 'og_img', $use_placeholders = true ),
-				),
 				'og_img_id' => array(
 					'th_class' => 'medium',
 					'td_class' => 'blank',
@@ -463,15 +456,6 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'label'    => $card_label,
 				);
 
-				$form_rows[ $tc_pre . '_img_crop_area' ] = array(
-					'tr_class' => $tc_tr_class,
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Image Subject Area', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-' . $tc_pre . '_img_crop_area',
-					'content'  => $form->get_no_input_image_crop_area( $tc_pre . '_img', $use_placeholders = true ),
-				);
-
 				$form_rows[ $tc_pre . '_img_id' ] = array(
 					'tr_class' => $tc_tr_class,
 					'th_class' => 'medium',
@@ -516,15 +500,6 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 						range( 0, $this->p->cf[ 'form' ][ 'max_media_items' ] ), 'medium' ),
 				);
 			}
-
-			$form_rows[ 'schema_img_crop_area' ] = array(
-				'tr_class' => $schema_tr_class,
-				'th_class' => 'medium',
-				'td_class' => 'blank',
-				'label'    => _x( 'Image Subject Area', 'option label', 'wpsso' ),
-				'tooltip'  => 'meta-schema_img_crop_area',
-				'content'  => $form->get_no_input_image_crop_area( 'schema_img', $use_placeholders = true ),
-			);
 
 			$form_rows[ 'schema_img_id' ] = array(
 				'tr_class' => $schema_tr_class,

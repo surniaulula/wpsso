@@ -514,7 +514,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'user ID ' . $post_id . ' for meta key ' . $meta_key );
+				$this->p->debug->log( 'user ID ' . $user_id . ' for meta key ' . $meta_key );
 			}
 
 			static $do_once = array();
