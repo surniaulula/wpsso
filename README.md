@@ -132,13 +132,13 @@
 
 <ul>
 <li>Maximum Images</li>
-<li>Image Subject Area</li>
 <li>Image ID</li>
 <li>or Image URL</li>
 </ul></li>
 <li>Priority Video Information
 
 <ul>
+<li>Include Preview Images</li>
 <li>Maximum Videos</li>
 <li>Video Size</li>
 <li>or Video URL</li>
@@ -149,12 +149,10 @@
 <li>Twitter Card
 
 <ul>
-<li>Image Subject Area</li>
 <li>Image ID</li>
 <li>or Image URL</li>
 <li>Structured Data / Schema Markup / Pinterest</li>
 <li>Maximum Images</li>
-<li>Image Subject Area</li>
 <li>Image ID</li>
 <li>or Image URL</li>
 </ul></li>

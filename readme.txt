@@ -121,22 +121,20 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 		* Facebook / Open Graph / Default Media
 			* Priority Image Information
 				* Maximum Images
-				* Image Subject Area
 				* Image ID
 				* or Image URL
 			* Priority Video Information
+				* Include Preview Images
 				* Maximum Videos
 				* Video Size
 				* or Video URL
 				* Video Name / Title
 				* Video Description
 		* Twitter Card
-			* Image Subject Area
 			* Image ID
 			* or Image URL
 		 * Structured Data / Schema Markup / Pinterest
 			* Maximum Images
-			* Image Subject Area
 			* Image ID
 			* or Image URL
 
@@ -437,7 +435,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.1.0-dev.1 (TBD)**
+**Version 6.2.0-dev.1 (TBD)**
 
 * **New Features**
 	* None.
@@ -446,6 +444,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Schema Article AMP 1x1 (Google)
 		* Schema Article AMP 4x3 (Google)
 		* Schema Article AMP 16x9 (Google)
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+
+**Version 6.1.0-dev.1 (2019/08/19)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Removed the "Image Subject Area" options in the Document SSO metabox.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -667,6 +676,10 @@ This version includes several jQuery improvements to optimize both the size of s
 		* Renamed `WpssoSchema::update_json_data_id()` to `WpssoSchema::update_data_id()`.
 
 == Upgrade Notice ==
+
+= 6.1.0-dev.1 =
+
+(2019/08/19) Removed the "Image Subject Area" options in the Document SSO metabox.
 
 = 6.0.0 =
 
