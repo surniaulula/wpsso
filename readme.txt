@@ -468,14 +468,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Examples of default WordPress image filenames:
 			* image-1200x630.jpg (*maybe* a 1200x630px uncropped image).
 			* image-1200x630.jpg (*maybe* a 1200x630px cropped image).
-			* image-1200x630.jpg (*maybe* a 1200x630px cropped center-center image).
 			* image-1200x630.jpg (*maybe* a 1200x630px cropped center-top image).
+			* image-1200x630.jpg (*maybe* a 1200x630px cropped left-bottom image).
 			* etc.
 		* Examples of the new WPSSO Core image filenames:
 			* image-1200x630.jpg (a 1200x630px *uncropped* image).
-			* image-1200x630-cropped.jpg (a 1200x630px *cropped* image).
-			* image-1200x630-cropped-center-center.jpg (a 1200x630px *cropped center-center* image).
+			* image-1200x630-cropped.jpg (a 1200x630px *cropped center-center* image).
 			* image-1200x630-cropped-center-top.jpg (a 1200x630px *cropped center-top* image).
+			* image-1200x630-cropped-left-bottom.jpg (a 1200x630px *cropped left-bottom* image).
 			* etc.
 * **Improvements**
 	* Updated the minimum WordPress version from 3.8 to 3.9.
