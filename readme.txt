@@ -454,7 +454,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Removed the "Image Subject Area" options in the Document SSO metabox.
+	* Removed "Image Subject Area" options under the Priority Media tab in the Document SSO metabox.
+	* Removed the Priority Media tab in the Document SSO metabox from attachment editing pages.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -679,7 +680,7 @@ This version includes several jQuery improvements to optimize both the size of s
 
 = 6.1.0-dev.1 =
 
-(2019/08/19) Removed the "Image Subject Area" options in the Document SSO metabox.
+(2019/08/19) Removed "Image Subject Area" options in the Document SSO metabox. Removed the Priority Media tab from attachment editing pages.
 
 = 6.0.0 =
 
