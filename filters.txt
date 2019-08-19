@@ -205,7 +205,7 @@
 
 'wpsso_option_type' ( false, $base_key, $network, $mod )
 
-'wpsso_plugin_image_sizes' ( $sizes, $mod, $crawler_name )
+'wpsso_plugin_image_sizes' ( $sizes )
 
 'wpsso_post_archive_description' ( $desc_text, $mod, $post_type_obj )
 

@@ -525,7 +525,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 * The $mod variable can be false, and if so, it will be set using get_page_mod().
 		 * This method does not return a value, so do not use as a filter. ;-)
 		 */
-		public function add_plugin_image_sizes( $wp_obj = false, $image_sizes = array(), $mod = false, $filter_sizes = true ) {
+		public function add_plugin_image_sizes( $wp_obj = false, $image_sizes = array(), $filter_sizes = true ) {
 
 			/**
 			 * Allow various plugin add-ons to provide their image names, labels, etc.
@@ -546,63 +546,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				$this->p->debug->log( '$wp_obj is ' . $wp_obj_type );
 				$this->p->debug->log( 'DOING_AJAX is ' . ( $doing_ajax ? 'true' : 'false' ) );
-
 				$this->p->debug->mark( 'define image sizes' );	// Begin timer.
 			}
 
 			/**
-			 * Get defaults once if required.
+			 * Get default options only once.
 			 */
 			static $def_opts = null;
 
-			$use_post = in_the_loop() ? true : false;				// Use the $post object inside the loop.
-			$use_post = apply_filters( $this->p->lca . '_use_post', $use_post );	// Used by woocommerce with is_shop().
-
-			/**
-			 * The $mod array argument is preferred but not required.
-			 * $mod = true | false | post_id | $mod array
-			 */
-			if ( ! is_array( $mod ) ) {
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'optional call to get_page_mod()' );
-				}
-
-				$mod = $this->get_page_mod( $use_post, $mod, $wp_obj );
-			}
-
-			$md_opts = array();
-
 			if ( $filter_sizes ) {
-				$image_sizes = apply_filters( $this->p->lca . '_plugin_image_sizes',
-					$image_sizes, $mod, self::get_crawler_name() );
-			}
-
-			if ( empty( $mod[ 'id' ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'module id is unknown' );
-				}
-
-			} elseif ( empty( $mod[ 'name' ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'module name is unknown' );
-				}
-
-			} elseif ( ! empty( $mod[ 'id' ] ) && ! empty( $mod[ 'obj' ] ) ) {
-
-				/**
-				 * Only load custom size information for Media Library images.
-				 */
-				if ( $mod[ 'post_type' ] === 'attachment' && wp_attachment_is_image( $mod[ 'id' ] ) ) {
-
-					/**
-				 	 * Custom filters may use image sizes, so don't filter/cache the meta options.
-					 *  Returns an empty string if no meta found.
-					 */
-					$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ], false, $filter_opts = false );
-				}
+				$image_sizes = apply_filters( $this->p->lca . '_plugin_image_sizes', $image_sizes );
 			}
 
 			foreach( $image_sizes as $opt_pre => $size_info ) {
@@ -649,10 +602,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					 */
 					} else {
 
-						/**
-						 * Only read once if necessary.
-						 */
-						if ( ! isset( $def_opts ) ) {
+						if ( null === $def_opts ) {
 
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'getting default option values' );
@@ -693,14 +643,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					}
 
 					/**
-					 * Allow custom function hooks to make changes.
-					 */
-					if ( $filter_sizes ) {
-						$size_info = apply_filters( $this->p->lca . '_size_info_' . $size_info[ 'name' ],
-							$size_info, $mod[ 'id' ], $mod[ 'name' ] );
-					}
-
-					/**
 					 * A lookup array for image size labels, used in image size error messages.
 					 */
 					$this->size_labels[ $this->p->lca . '-' . $size_info[ 'name' ] ] = $size_info[ 'label' ];
@@ -721,10 +663,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-
 				$this->p->debug->mark( 'define image sizes' );	// End timer.
-
-				$this->p->debug->log_arr( 'get_all_image_sizes', SucomUtilWP::get_image_sizes() );
+				$this->p->debug->log_arr( 'get_image_sizes', SucomUtilWP::get_image_sizes() );
 			}
 		}
 
@@ -1436,9 +1376,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			delete_transient( $cache_id );
 		}
 
+		/**
+		 * Called by refresh_all_cache().
+		 */
 		public function refresh_mod_head_meta( array $mod, $do_sleep = true ) {
 
-			$this->add_plugin_image_sizes( $wp_obj = false, $image_sizes = array(), $mod, $filter_sizes = true );
+			$this->add_plugin_image_sizes( $wp_obj = false, $image_sizes = array(), $filter_sizes = true );
 
 			$head_meta_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache = true );
 			$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );

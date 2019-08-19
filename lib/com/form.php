@@ -858,51 +858,6 @@ EOF;
 			return $this->get_select_country( $name, $css_class, $css_id, $is_disabled = true, $selected );
 		}
 
-		public function get_select_img_size( $name, $name_preg = '//', $invert = false ) {
-
-			if ( empty( $name ) ) {
-				return;	// Just in case.
-			}
-
-			$invert     = $invert == false ? null : PREG_GREP_INVERT;
-			$size_names = preg_grep( $name_preg, get_intermediate_image_sizes(), $invert );
-
-			natsort( $size_names );
-
-			$html        = '<select name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '">';
-			$in_options  = $this->in_options( $name );	// Optimize and call only once.
-			$in_defaults = $this->in_defaults( $name );	// Optimize and call only once.
-
-			foreach ( $size_names as $size_name ) {
-
-				if ( ! is_string( $size_name ) ) {
-					continue;
-				}
-
-				$size = SucomUtilWP::get_size_info( $size_name );
-
-				$html .= '<option value="' . esc_attr( $size_name ) . '" ';
-
-				if ( $in_options ) {
-					$html .= selected( $this->options[ $name ], $size_name, false );
-				}
-
-				$html .= '>';
-				$html .= esc_html( $size_name . ' [ ' . $size[ 'width' ] . 'x' . $size[ 'height' ] .
-					( $size[ 'crop' ] ? ' cropped' : '' ) . ' ]' );
-
-				if ( $in_defaults && $size_name === $this->defaults[ $name ] ) {
-					$html .= ' ' . $this->get_value_transl( '(default)' );
-				}
-
-				$html .= '</option>';
-			}
-
-			$html .= '</select>';
-
-			return $html;
-		}
-
 		/**
 		 * Text input field.
 		 */

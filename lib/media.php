@@ -53,8 +53,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			add_filter( 'image_make_intermediate_size', array( $this, 'maybe_update_image_filename' ), -5000, 1 );
 			add_filter( 'wp_get_attachment_image_attributes', array( $this, 'add_attachment_image_attributes' ), 10, 2 );
-			add_filter( 'get_image_tag', array( $this, 'get_image_tag' ), 10, 6 );
 			add_filter( 'get_header_image_tag', array( $this, 'get_header_image_tag' ), 10, 3 );
+			add_filter( 'get_image_tag', array( $this, 'get_image_tag' ), 10, 6 );
 		}
 
 		public function filter_plugin_image_sizes( $sizes ) {
@@ -85,10 +85,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return $bool;
 			}
 
-			$size_info       = SucomUtilWP::get_size_info( $size_name );
-			$is_cropped      = empty( $size_info[ 'crop' ] ) ? false : true;	// get_size_info() returns false, true, or an array.
+			$size_info       = SucomUtilWP::get_size_info( $size_name, $pid );
 			$is_sufficient_w = $img_width >= $size_info[ 'width' ] ? true : false;
 			$is_sufficient_h = $img_height >= $size_info[ 'height' ] ? true : false;
+			$is_cropped      = empty( $size_info[ 'crop' ] ) ? false : true;
 
 			if ( ( ! $is_cropped && ( ! $is_sufficient_w && ! $is_sufficient_h ) ) ||
 				( $is_cropped && ( ! $is_sufficient_w || ! $is_sufficient_h ) ) ) {
@@ -182,9 +182,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			$size_info       = SucomUtilWP::get_size_info( $size_name );
-			$is_cropped      = empty( $size_info[ 'crop' ] ) ? false : true;	// get_size_info() returns false, true, or an array.
 			$is_sufficient_w = $og_image[ 'og:image:width' ] >= $size_info[ 'width' ] ? true : false;
 			$is_sufficient_h = $og_image[ 'og:image:height' ] >= $size_info[ 'height' ] ? true : false;
+			$is_cropped      = empty( $size_info[ 'crop' ] ) ? false : true;
 			$og_image_url    = SucomUtil::get_mt_media_url( $og_image );
 
 			if ( ( $attr_name == 'src' && $is_cropped && ( $is_sufficient_w && $is_sufficient_h ) ) ||
@@ -246,6 +246,50 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		}
 
 		/**
+		 * By default, WordPress adds only the resolution of the resized image to the filename. If the image size is ours,
+		 * then add crop information to the filename as well. This allows for different cropped versions for the same image
+		 * resolution.
+		 *
+		 * Example:
+		 *
+		 * 	unicorn-wallpaper-1200x630.jpg
+		 * 	unicorn-wallpaper-1200x630-cropped.jpg
+		 *	unicorn-wallpaper-1200x630-cropped-center-top.jpg
+		 */
+		public function maybe_update_image_filename( $filepath ) {
+
+			/**
+			 * get_attachment_image_src() in the WpssoMedia class saves / sets the image information (pid, size_name,
+			 * etc) before calling the image_make_intermediate_size() function (and others). Returns null if no image
+			 * information was set (presumably because we arrived here without passing through our own method).
+			 */
+			$img_info = (array) self::get_image_src_args();
+
+			if ( empty( $img_info[ 'size_name' ] ) || strpos( $img_info[ 'size_name' ], $this->p->lca . '-' ) !== 0 ) {
+				return $filepath;
+			}
+
+			$size_info = SucomUtilWP::get_size_info( $img_info[ 'size_name' ], $img_info[ 'pid' ] );
+
+			/**
+			 * If the resized image is not cropped, then leave the file name as-is.
+			 */
+			if ( empty( $size_info[ 'crop' ] ) ) {
+				return $filepath;
+			}
+
+			$new_filepath = $this->get_cropped_image_filename( $filepath, $size_info );
+
+			if ( $filepath !== $new_filepath ) {	// Just in case
+				if ( rename( $filepath, $new_filepath ) ) {
+					return $new_filepath;	// Return the new filepath on success.
+				}
+			}
+
+			return $filepath;
+		}
+
+		/**
 		 * $attr = apply_filters( 'wp_get_attachment_image_attributes', $attr, $attachment );
 		 */
 		public function add_attachment_image_attributes( $attr, $attach ) {
@@ -260,6 +304,16 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		}
 
 		/**
+		 * $html = apply_filters( 'get_header_image_tag', $html, $header, $attr );
+		 */
+		public function get_header_image_tag( $html, $header, $attr ) {
+
+			return $this->add_header_image_tag( $html, array(
+				'nopin' => empty( $this->p->options[ 'p_add_nopin_header_img_tag' ] ) ? false : 'nopin'
+			) );
+		}
+
+		/**
 		 * $html = apply_filters( 'get_image_tag', $html, $id, $alt, $title, $align, $size );
 		 */
 		public function get_image_tag( $html, $id, $alt, $title, $align, $size ) {
@@ -267,16 +321,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $this->add_header_image_tag( $html, array(
 				'data-wp-pid' => $id,
 				'nopin'       => empty( $this->p->options[ 'p_add_nopin_media_img_tag' ] ) ? false : 'nopin'
-			) );
-		}
-
-		/**
-		 * $html = apply_filters( 'get_header_image_tag', $html, $header, $attr );
-		 */
-		public function get_header_image_tag( $html, $header, $attr ) {
-
-			return $this->add_header_image_tag( $html, array(
-				'nopin' => empty( $this->p->options[ 'p_add_nopin_header_img_tag' ] ) ? false : 'nopin'
 			) );
 		}
 
@@ -595,11 +639,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->log_args( $args );
 			}
 
-			$size_info   = SucomUtilWP::get_size_info( $size_name );
-			$img_url     = '';
-			$img_width   = WPSSO_UNDEF;
-			$img_height  = WPSSO_UNDEF;
-			$img_cropped = empty( $size_info[ 'crop' ] ) ? 0 : 1;	// get_size_info() returns false, true, or an array.
+			$size_info  = SucomUtilWP::get_size_info( $size_name, $pid );
+			$img_url    = '';
+			$img_width  = WPSSO_UNDEF;
+			$img_height = WPSSO_UNDEF;
+			$is_cropped = empty( $size_info[ 'crop' ] ) ? false : true;
 
 			if ( $this->p->avail[ 'media' ][ 'ngg' ] && strpos( $pid, 'ngg-' ) === 0 ) {
 
@@ -748,7 +792,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					/**
 					 * If not cropped, make sure the resized image respects the original aspect ratio.
 					 */
-					if ( $is_accurate_width && $is_accurate_height && empty( $img_cropped ) &&
+					if ( $is_accurate_width && $is_accurate_height && empty( $is_cropped ) &&
 						isset( $img_meta[ 'width' ] ) && isset( $img_meta[ 'height' ] ) ) {
 
 						if ( $img_meta[ 'width' ] > $img_meta[ 'height' ] ) {
@@ -782,8 +826,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				 * to create a resized image by calling image_make_intermediate_size().
 				 */
 				if ( ! $is_accurate_filename ||
-					( ! $img_cropped && ( ! $is_accurate_width && ! $is_accurate_height ) ) ||
-					( $img_cropped && ( ! $is_accurate_width || ! $is_accurate_height ) ) ) {
+					( ! $is_cropped && ( ! $is_accurate_width && ! $is_accurate_height ) ) ||
+					( $is_cropped && ( ! $is_accurate_width || ! $is_accurate_height ) ) ) {
 
 					if ( $this->can_make_intermediate_size( $img_meta, $size_info ) ) {
 
@@ -893,55 +937,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$img_url = apply_filters( $this->p->lca . '_rewrite_image_url', $img_url );
 
-					return self::reset_image_src_args( array( $img_url, $img_width, $img_height, $img_cropped, $pid, $img_alt ) );
+					return self::reset_image_src_args( array( $img_url, $img_width, $img_height, $is_cropped, $pid, $img_alt ) );
 				}
 			}
 
 			return self::reset_image_src_args();
-		}
-
-		/**
-		 * By default, WordPress adds only the resolution of the resized image to the filename. If the image size is ours,
-		 * then add crop information to the filename as well. This allows for different cropped versions for the same image
-		 * resolution.
-		 *
-		 * Example:
-		 *
-		 * 	unicorn-wallpaper-1200x630.jpg
-		 * 	unicorn-wallpaper-1200x630-cropped.jpg
-		 *	unicorn-wallpaper-1200x630-cropped-center-top.jpg
-		 */
-		public function maybe_update_image_filename( $filepath ) {
-
-			/**
-			 * get_attachment_image_src() in the WpssoMedia class saves / sets the image information (pid, size_name,
-			 * etc) before calling the image_make_intermediate_size() function (and others). Returns null if no image
-			 * information was set (presumably because we arrived here without passing through our own method).
-			 */
-			$img_info = (array) WpssoMedia::get_image_src_args();
-
-			if ( empty( $img_info[ 'size_name' ] ) || strpos( $img_info[ 'size_name' ], $this->p->lca . '-' ) !== 0 ) {
-				return $filepath;
-			}
-
-			$size_info = SucomUtilWP::get_size_info( $img_info[ 'size_name' ] );
-
-			/**
-			 * If the resized image is not cropped, then leave the file name as-is.
-			 */
-			if ( empty( $size_info[ 'crop' ] ) ) {
-				return $filepath;
-			}
-
-			$new_filepath = $this->get_cropped_image_filename( $filepath, $size_info );
-
-			if ( $filepath !== $new_filepath ) {	// Just in case
-				if ( rename( $filepath, $new_filepath ) ) {
-					return $new_filepath;	// Return the new filepath on success.
-				}
-			}
-
-			return $filepath;
 		}
 
 		public function get_cropped_image_filename( $filepath, $size_info ) {
@@ -1075,8 +1075,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return $og_images;
 			}
 
-			$og_single_image = SucomUtil::get_mt_image_seed();
 			$size_info       = SucomUtilWP::get_size_info( $size_name );
+			$og_single_image = SucomUtil::get_mt_image_seed();
 			$img_preg        = $this->def_img_preg;
 
 			/**
@@ -1198,9 +1198,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							 */
 							if ( preg_match( '/^(https?:)?(\/\/([^\.]+\.)?gravatar\.com\/avatar\/[a-zA-Z0-9]+)/', $attr_value, $match ) ) {
 
-								$og_single_image[ 'og:image:url' ]    = SucomUtil::get_prot() . ':' . $match[2] . '?s=' . $size_info[ 'width' ] . '&d=404&r=G';
+								$og_single_image[ 'og:image:url' ]    = SucomUtil::get_prot() . ':' . $match[2] .
+									'?s=' . $size_info[ 'width' ] . '&d=404&r=G';
+
 								$og_single_image[ 'og:image:width' ]  = $size_info[ 'width' ];
-								$og_single_image[ 'og:image:height' ] = $size_info[ 'width' ];	// square image
+
+								$og_single_image[ 'og:image:height' ] = $size_info[ 'width' ];	// Square image.
 
 								if ( $this->p->debug->enabled ) {
 									$this->p->debug->log( 'gravatar image found: ' . $og_single_image[ 'og:image:url' ] );
@@ -1960,13 +1963,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$full_width  = empty( $img_meta[ 'width' ] ) ? 0 : $img_meta[ 'width' ];
-			$full_height = empty( $img_meta[ 'height' ] ) ? 0 : $img_meta[ 'height' ];
-
-			$is_sufficient_width  = $full_width >= $size_info[ 'width' ] ? true : false;
-			$is_sufficient_height = $full_height >= $size_info[ 'height' ] ? true : false;
-
-			$img_cropped = empty( $size_info[ 'crop' ] ) ? 0 : 1;
+			$full_width      = empty( $img_meta[ 'width' ] ) ? 0 : $img_meta[ 'width' ];
+			$full_height     = empty( $img_meta[ 'height' ] ) ? 0 : $img_meta[ 'height' ];
+			$is_sufficient_w = $full_width >= $size_info[ 'width' ] ? true : false;
+			$is_sufficient_h = $full_height >= $size_info[ 'height' ] ? true : false;
+			$is_cropped      = empty( $size_info[ 'crop' ] ) ? false : true;
 
 			$upscale_multiplier = 1;
 
@@ -1979,12 +1980,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$upscale_full_width  = round( $full_width * $upscale_multiplier );
 				$upscale_full_height = round( $full_height * $upscale_multiplier );
 
-				$is_sufficient_width  = $upscale_full_width >= $size_info[ 'width' ] ? true : false;
-				$is_sufficient_height = $upscale_full_height >= $size_info[ 'height' ] ? true : false;
+				$is_sufficient_w = $upscale_full_width >= $size_info[ 'width' ] ? true : false;
+				$is_sufficient_h = $upscale_full_height >= $size_info[ 'height' ] ? true : false;
 			}
 
-			if ( ( ! $img_cropped && ( ! $is_sufficient_width && ! $is_sufficient_height ) ) ||
-				( $img_cropped && ( ! $is_sufficient_width || ! $is_sufficient_height ) ) ) {
+			if ( ( ! $is_cropped && ( ! $is_sufficient_w && ! $is_sufficient_h ) ) ||
+				( $is_cropped && ( ! $is_sufficient_w || ! $is_sufficient_h ) ) ) {
 
 				$ret = false;
 			} else {
@@ -1995,7 +1996,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->log( 'full size image of ' . $full_width . 'x' . $full_height . ( $upscale_multiplier !== 1 ?
 					' (' . $upscale_full_width . 'x' . $upscale_full_height . ' upscaled by ' . $upscale_multiplier . ')' : '' ) . 
 					( $ret ? ' sufficient' : ' too small' ) . ' to create size ' . $size_info[ 'width' ] . 'x' . $size_info[ 'height' ] . 
-					( $img_cropped ? ' cropped' : '' ) );
+					( $is_cropped ? ' cropped' : '' ) );
 			}
 
 			return $ret;

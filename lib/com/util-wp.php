@@ -346,12 +346,12 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		 * Get the width, height, and crop value for a all image sizes.
 		 * Returns an associative array with the image size name as the array key value.
 		 */
-		public static function get_image_sizes() {
+		public static function get_image_sizes( $attach_id = false ) {
 
 			$sizes = array();
 
 			foreach ( get_intermediate_image_sizes() as $size_name ) {
-				$sizes[ $size_name ] = self::get_size_info( $size_name );
+				$sizes[ $size_name ] = self::get_size_info( $size_name, $attach_id );
 			}
 
 			return $sizes;
@@ -360,11 +360,9 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		/**
 		 * Get the width, height, and crop value for a specific image size.
 		 */
-		public static function get_size_info( $size_name = 'thumbnail' ) {
+		public static function get_size_info( $size_name = 'thumbnail', $attach_id = false ) {
 
-			if ( is_integer( $size_name ) ) {
-				return;
-			} elseif ( is_array( $size_name ) ) {
+			if ( ! is_string( $size_name ) ) {	// Just in case.
 				return;
 			}
 
@@ -390,6 +388,10 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			if ( ! is_array( $crop ) ) {
 				$crop = empty( $crop ) ? false : true;
+			}
+			
+			if ( $crop && $attach_id ) {
+				// TODO get custom crop_x and crop_y values.
 			}
 
 			return array( 'width' => $width, 'height' => $height, 'crop' => $crop );
