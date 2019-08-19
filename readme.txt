@@ -451,7 +451,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* None.
 
-**Version 6.0.0-rc.1 (2019/08/18)**
+**Version 6.0.0 (2019/08/18)**
 
 * **New Features**
 	* Resized cropped image filenames are now saved with their cropping information, allowing the same image to be available with identical dimensions, but different main subject (ie. cropping) areas for different markup (Facebook / Open Graph, Google / Schema, etc.).
@@ -668,11 +668,7 @@ This version includes several jQuery improvements to optimize both the size of s
 
 == Upgrade Notice ==
 
-= 6.0.0-rc.1 =
+= 6.0.0 =
 
 (2019/08/18) Resized cropped image filenames are now saved with their cropping information. Replaced the "Image Size" options in the Document SSO metaboxes by new "Image Subject Area" options. Fixed "is_post_type_archive" detection.
-
-= 5.5.3 =
-
-(2019/08/13) Removed the "Use HTTPS for Video API Requests" option (HTTPS is now used for every API request).
 
