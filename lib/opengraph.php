@@ -1215,16 +1215,24 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					case 'pid':
 					case ( preg_match( '/^(image|img)/', $key ) ? true : false ):
 
-						if ( null === $og_images ) {	// Get images only once.
-							$og_images = $this->get_all_images( 1, $size_name, $mod, false, $md_pre );
+						/**
+						 * Get images only once.
+						 */
+						if ( null === $og_images ) {
+							$og_images = $this->get_all_images( $num = 1, $size_name, $mod, $check_dupes = false, $md_pre );
 						}
 
 						break;
 
 					case ( preg_match( '/^(vid|prev)/', $key ) ? true : false ):
 
-						if ( $has_pp && null === $og_videos ) {	// Get videos only once.
-							$og_videos = $this->get_all_videos( 1, $mod, false, $md_pre );	// $check_dupes is false.
+						/**
+						 * Get videos only once.
+						 */
+						if ( $has_pp ) {
+							if ( null === $og_videos ) {
+								$og_videos = $this->get_all_videos( $num = 1, $mod, $check_dupes = false, $md_pre );
+							}
 						}
 
 						break;
@@ -1266,7 +1274,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						 */
 						if ( empty( $ret[ $key ] ) && $mod[ 'is_post' ] ) {
 
-							$og_images = $this->p->media->get_default_images( 1, $size_name, $check_dupes = false );
+							$og_images = $this->p->media->get_default_images( $num = 1, $size_name, $check_dupes = false );
 
 							$ret[ $key ] = $this->get_media_value( $og_images, $get_mt_name );
 						}
