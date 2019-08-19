@@ -1134,27 +1134,16 @@ EOF;
 			return $this->get_input_image_upload( $opt_pre, $placeholder, $is_disabled = true );
 		}
 
-		public function get_input_image_dimensions( $name, $use_placeholders = false, $is_narrow = false, $is_disabled = false ) {
+		public function get_input_image_dimensions( $name, $is_narrow = false, $is_disabled = false ) {
 
-			$placeholder_width  = '';
-			$placeholder_height = '';
+			$html = $this->get_input( $name . '_width', $css_class = 'short width', $css_id = '',
+				$len = 0, $placeholder = '', $is_disabled ) . 'x&nbsp;';
 
-			if ( $use_placeholders ) {
+			$html .= $this->get_input( $name . '_height', $css_class = 'short height', $css_id = '',
+				$len = 0, $placeholder = '', $is_disabled ) . 'px' . ' ';
 
-				$placeholder_width  = $this->get_placeholder_sanitized( $name . '_width', true );
-				$placeholder_height = $this->get_placeholder_sanitized( $name . '_height', true );
-
-				foreach ( array( 'crop'  ) as $key ) {
-					if ( ! $this->in_options( $name . '_' . $key ) && $this->in_defaults( $name . '_' . $key ) ) {
-						$this->options[ $name . '_' . $key ] = $this->defaults[ $name . '_' . $key ];
-					}
-				}
-			}
-
-			$html = $this->get_input( $name . '_width', 'short width', '', 0, $placeholder_width, $is_disabled ) . 'x&nbsp;' .
-				$this->get_input( $name . '_height', 'short height', '', 0, $placeholder_height, $is_disabled ) . 'px' . ' ';
-
-			$html .= _x( 'crop', 'option comment', $this->text_domain ) . ' ' . $this->get_checkbox( $name . '_crop', '', '', $is_disabled );
+			$html .= _x( 'crop', 'option comment', $this->text_domain ) . ' ' .
+				$this->get_checkbox( $name . '_crop', '', '', $is_disabled );
 
 			if ( $is_narrow ) {
 				$html .= ' <div class="img_crop_from is_narrow">';
@@ -1162,70 +1151,41 @@ EOF;
 				$html .= ' <div class="img_crop_from">' . _x( 'from', 'option comment', $this->text_domain ) . ' ';
 			}
 
-			$html .= $this->get_input_image_crop_area( $name, $use_placeholders, $is_disabled );
+			$html .= $this->get_input_image_crop_area( $name, $add_none = false, $is_disabled );
 
 			$html .= '</div>';
 
 			return $html;
 		}
 
-		public function get_no_input_image_dimensions( $name, $use_placeholders = false, $is_narrow = false ) {
+		public function get_no_input_image_dimensions( $name, $is_narrow = false ) {
 
-			return $this->get_input_image_dimensions( $name, $use_placeholders, $is_narrow, $is_disabled = true );
+			return $this->get_input_image_dimensions( $name, $is_narrow, $is_disabled = true );
 		}
 
-		public function get_input_image_crop_area( $name, $use_placeholders = false, $is_disabled = false ) {
-
-			if ( $use_placeholders ) {
-				foreach ( array( 'crop_x', 'crop_y' ) as $key ) {
-					if ( ! $this->in_options( $name . '_' . $key ) && $this->in_defaults( $name . '_' . $key ) ) {
-						$this->options[ $name . '_' . $key ] = $this->defaults[ $name . '_' . $key ];
-					}
-				}
-			}
+		public function get_input_image_crop_area( $name, $add_none = false, $is_disabled = false ) {
 
 			$html = '';
 
-			/**
-			 * Crop area selection is only available since WP v3.9.
-			 */
-			global $wp_version;
+			foreach ( array( 'crop_x', 'crop_y' ) as $key ) {
 
-			if ( version_compare( $wp_version, '3.9', '>=' ) ) {
+				$values = $this->p->cf[ 'form' ][ 'position_' . $key ];
 
-				foreach ( array( 'crop_x', 'crop_y' ) as $key ) {
-					$html .= $this->get_select( $name . '_' . $key, $this->p->cf[ 'form' ][ 'position_' . $key ],
-						$css_class = 'crop_area', $css_id = '', $is_assoc = true, $is_disabled );
+				if ( $add_none ) {
+					$html .= $this->get_select_none( $name . '_' . $key, $values, $css_class = 'crop_area',
+						$css_id = '', $is_assoc = true, $is_disabled );
+				} else {
+					$html .= $this->get_select( $name . '_' . $key, $values, $css_class = 'crop_area',
+						$css_id = '', $is_assoc = true, $is_disabled );
 				}
 			}
 
 			return $html;
 		}
 
-		public function get_no_input_image_crop_area( $name, $use_placeholders = false ) {
+		public function get_no_input_image_crop_area( $name, $add_none = false ) {
 
-			return $this->get_input_image_crop_area( $name, $use_placeholders, $is_disabled = true );
-		}
-
-		public function get_image_dimensions_text( $name, $use_placeholders = false ) {
-
-			if ( ! empty( $this->options[ $name . '_width' ] ) && ! empty( $this->options[ $name . '_height' ] ) ) {
-
-				return $this->options[ $name . '_width' ] . 'x' . $this->options[ $name . '_height' ] . 'px' .
-					( $this->options[ $name . '_crop' ] ? ' cropped' : '' );
-
-			} elseif ( true === $use_placeholders ) {
-
-				$def_width  = empty( $this->p->options[ $name . '_width' ] ) ? '' : $this->p->options[ $name . '_width' ];
-				$def_height = empty( $this->p->options[ $name . '_height' ] ) ? '' : $this->p->options[ $name . '_height' ];
-				$def_crop   = empty( $this->p->options[ $name . '_crop' ] ) ? false : true;
-
-				if ( ! empty( $def_width ) && ! empty( $def_height ) ) {
-					return $def_width . 'x' . $def_height . 'px' . ( $def_crop ? ' cropped' : '' );
-				}
-			}
-
-			return;
+			return $this->get_input_image_crop_area( $name, $add_none = false, $is_disabled = true );
 		}
 
 		public function get_input_image_url( $opt_pre, $url = '' ) {

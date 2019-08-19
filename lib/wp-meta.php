@@ -201,8 +201,10 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				$og_type = $this->p->og->get_mod_og_type( $mod, false, false );	// $ret_og_ns is false, $use_mod_opts is false
 
 				$md_defs = array(
-					'options_filtered' => '',
-					'options_version'  => '',
+					'options_filtered'  => '',
+					'options_version'   => '',
+					'attach_img_crop_x' => 'none',
+					'attach_img_crop_y' => 'none',
 
 					/**
 					 * Customize Tab.

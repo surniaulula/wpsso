@@ -59,7 +59,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		public function filter_plugin_image_sizes( $sizes ) {
 
-			$sizes[ 'thumb_img' ] = array( 		// Options prefix.
+			$sizes[ 'thumb' ] = array(
 				'name'  => 'thumbnail',
 				'label' => _x( 'Thumbnail Image', 'image size label', 'wpsso' ),
 			);

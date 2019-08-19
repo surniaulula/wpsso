@@ -593,60 +593,59 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			} elseif ( ! empty( $mod[ 'id' ] ) && ! empty( $mod[ 'obj' ] ) ) {
 
 				/**
-			 	 * Custom filters may use image sizes, so don't filter/cache the meta options.
-				 *  Returns an empty string if no meta found.
+				 * Only load custom size information for Media Library images.
 				 */
-				$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ], false, $filter_opts = false );
+				if ( $mod[ 'post_type' ] === 'attachment' && wp_attachment_is_image( $mod[ 'id' ] ) ) {
+
+					/**
+				 	 * Custom filters may use image sizes, so don't filter/cache the meta options.
+					 *  Returns an empty string if no meta found.
+					 */
+					$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ], false, $filter_opts = false );
+				}
 			}
 
 			foreach( $image_sizes as $opt_pre => $size_info ) {
 
-				if ( ! is_array( $size_info ) ) {
-					$save_name = empty( $size_info ) ? $opt_pre : $size_info;
-					$size_info = array( 'name'  => $save_name, 'label' => $save_name );
-				}
-				
-				$md_pre = $opt_pre;
+				if ( ! is_array( $size_info ) ) {	// Just in case.
 
-				/**
-				 * Allow for alternate settings option prefix.
-				 */
-				if ( ! empty( $size_info[ 'opt_pre' ] ) ) {
-					$opt_pre = $md_pre = $size_info[ 'opt_pre' ];
+					$name_label = empty( $size_info ) ? $opt_pre : (string) $size_info;
+
+					$size_info = array(
+						'name'  => $name_label,
+						'label' => $name_label
+					);
 				}
 
-				/**
-				 * Allow for alternate metadata option prefix.
-				 */
-				if ( ! empty( $size_info[ 'md_pre' ] ) ) {
-					$md_pre = $size_info[ 'md_pre' ];
-				}
+				$opt_pre = preg_replace( '/_img$/', '', $opt_pre );	// Just in case.
 
 				foreach ( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $key ) {
 
 					/**
-					 * Prefer existing info from filters.
+					 * Prefer value provided by filters.
 					 */
 					if ( isset( $size_info[ $key ] ) ) {
 
 						continue;
 
 					/**
-					 * Use post/term/user metadata if available.
+					 * Prefer crop area value from metadata.
 					 */
-					} elseif ( isset( $md_opts[ $md_pre . '_' . $key ] ) ) {
+					} elseif ( ( $key === 'crop_x' || $key === 'crop_y' ) && 
+						! empty( $md_opts[ 'attach_img_' . $key ] ) && 
+							$md_opts[ 'attach_img_' . $key ] !== 'none' ) {
 
-						$size_info[ $key ] = $md_opts[ $md_pre . '_' . $key ];
+						$size_info[ $key ] = $md_opts[ 'attach_img_' . $key ];
 
 					/**
-					 * Current plugin settings.
+					 * Prefer plugin settings.
 					 */
-					} elseif ( isset( $this->p->options[ $opt_pre . '_' . $key ] ) ) {
+					} elseif ( isset( $this->p->options[ $opt_pre . '_img_' . $key ] ) ) {
 
-						$size_info[ $key ] = $this->p->options[ $opt_pre . '_' . $key ];
+						$size_info[ $key ] = $this->p->options[ $opt_pre . '_img_' . $key ];
 
 					/**
-					 * Fallback to default settings.
+					 * Prefer default settings.
 					 */
 					} else {
 
@@ -662,11 +661,15 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 							$def_opts = $this->p->opt->get_defaults();
 						}
 
-						$size_info[ $key ] = $def_opts[ $opt_pre . '_' . $key ];
+						if ( isset( $def_opts[ $opt_pre . '_img_' . $key ] ) ) {	// Just in case.
+							$size_info[ $key ] = $def_opts[ $opt_pre . '_img_' . $key ];
+						} else {
+							$size_info[ $key ] = null;
+						}
 					}
 
 					/**
-					 * Make sure crop is true or false.
+					 * Make sure crop is a boolean.
 					 */
 					if ( $key === 'crop' ) {
 						$size_info[ $key ] = empty( $size_info[ $key ] ) ? false : true;
@@ -676,21 +679,23 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				if ( $size_info[ 'width' ] > 0 && $size_info[ 'height' ] > 0 ) {
 
 					/**
-					 * Maintain compatibility with older WordPress versions, use true or false when possible.
+					 * If crop is true and not center-center, then provide an array for the preferred crop area.
 					 */
-					if ( true === $size_info[ 'crop' ] && ( $size_info[ 'crop_x' ] !== 'center' || $size_info[ 'crop_y' ] !== 'center' ) ) {
-
-						global $wp_version;
-
-						if ( version_compare( $wp_version, '3.9', '>=' ) ) {
-							$size_info[ 'crop' ] = array( $size_info[ 'crop_x' ], $size_info[ 'crop_y' ] );
+					if ( $size_info[ 'crop' ] ) {
+						if ( $size_info[ 'crop_x' ] !== 'none' && $size_info[ 'crop_y' ] !== 'none' ) {
+							if ( $size_info[ 'crop_x' ] !== 'center' || $size_info[ 'crop_y' ] !== 'center' ) {
+								$size_info[ 'crop' ] = array(
+									$size_info[ 'crop_x' ],
+									$size_info[ 'crop_y' ],
+								);
+							}
 						}
 					}
 
 					/**
 					 * Allow custom function hooks to make changes.
 					 */
-					if ( true === $filter_sizes ) {
+					if ( $filter_sizes ) {
 						$size_info = apply_filters( $this->p->lca . '_size_info_' . $size_info[ 'name' ],
 							$size_info, $mod[ 'id' ], $mod[ 'name' ] );
 					}
@@ -700,6 +705,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					 */
 					$this->size_labels[ $this->p->lca . '-' . $size_info[ 'name' ] ] = $size_info[ 'label' ];
 
+					/**
+					 * Add the image size.
+					 */
 					add_image_size( $this->p->lca . '-' . $size_info[ 'name' ],
 						$size_info[ 'width' ], $size_info[ 'height' ], $size_info[ 'crop' ] );
 

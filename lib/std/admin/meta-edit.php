@@ -89,6 +89,13 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 			 * Metabox form rows.
 			 */
 			$form_rows = array(
+				'attach_img_crop' => $mod[ 'post_type' ] === 'attachment' && wp_attachment_is_image( $mod[ 'id' ] ) ? array(
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Preferred Crop Area', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-og_img_crop_area',
+					'content'  => $form->get_no_input_image_crop_area( 'attach_img', $add_none = true ),
+				) : array(),
 				'og_type' => array(
 					'th_class' => 'medium',
 					'label'    => _x( 'Open Graph Type', 'option label', 'wpsso' ),
