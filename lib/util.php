@@ -84,13 +84,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			add_action( $this->p->lca . '_add_user_roles', array( $this, 'add_user_roles' ), 10, 1 );	// For single scheduled task.
 			add_action( $this->p->lca . '_clear_all_cache', array( $this, 'clear_all_cache' ), 10, 4 );	// For single scheduled task.
 			add_action( $this->p->lca . '_refresh_all_cache', array( $this, 'refresh_all_cache' ), 10, 1 );	// For single scheduled task.
-
-			/**
-			 * The "current_screen" action hook is not called when editing / saving an image.
-			 * Hook the "image_editor_save_pre" filter as to add image sizes for that attachment / post.
-			 */
-			add_filter( 'image_save_pre', array( $this, 'image_editor_save_pre_image_sizes' ), -100, 2 );	// Filter deprecated in wp 3.5.
-			add_filter( 'image_editor_save_pre', array( $this, 'image_editor_save_pre_image_sizes' ), -100, 2 );
 		}
 
 		public function filter_pub_lang( $current_lang, $publisher, $mixed = 'current' ) {
@@ -526,19 +519,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 		}
 
-		public function image_editor_save_pre_image_sizes( $image, $post_id = false ) {
-
-			if ( empty( $post_id ) ) {
-				return $image;
-			}
-
-			$mod = $this->p->post->get_mod( $post_id );
-
-			$this->add_plugin_image_sizes( $wp_obj = false, $image_sizes = array(), $mod, $filter_sizes = true );
-
-			return $image;
-		}
-
 		/**
 		 * Can be called directly and from the "wp", "rest_api_init", and "current_screen" actions.
 		 * The $wp_obj variable can be false or a WP object (WP_Post, WP_Term, WP_User, WP_REST_Server, etc.).
@@ -561,13 +541,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 */
 			if ( $this->p->debug->enabled ) {
 
-				$wp_obj_type   = gettype( $wp_obj ) === 'object' ? get_class( $wp_obj ) . ' object' : gettype( $wp_obj );
-				$doing_ajax_is = defined( 'DOING_AJAX' ) && DOING_AJAX ? 'true' : 'false';
-
-				$this->p->debug->mark( 'define image sizes' );	// Begin timer.
+				$wp_obj_type = gettype( $wp_obj ) === 'object' ? get_class( $wp_obj ) . ' object' : gettype( $wp_obj );
+				$doing_ajax  = defined( 'DOING_AJAX' ) && DOING_AJAX ? true : false;
 
 				$this->p->debug->log( '$wp_obj is ' . $wp_obj_type );
-				$this->p->debug->log( 'DOING_AJAX is ' . $doing_ajax_is );
+				$this->p->debug->log( 'DOING_AJAX is ' . ( $doing_ajax ? 'true' : 'false' ) );
+
+				$this->p->debug->mark( 'define image sizes' );	// Begin timer.
 			}
 
 			/**

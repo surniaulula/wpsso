@@ -37,21 +37,21 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				514 => array(
 					'rp_img_id'     => 'schema_img_id',
 					'rp_img_id_pre' => 'schema_img_id_pre',
-					'rp_img_width'  => 'schema_img_width',
-					'rp_img_height' => 'schema_img_height',
-					'rp_img_crop'   => 'schema_img_crop',
-					'rp_img_crop_x' => 'schema_img_crop_x',
-					'rp_img_crop_y' => 'schema_img_crop_y',
+					'rp_img_width'  => '',
+					'rp_img_height' => '',
+					'rp_img_crop'   => '',
+					'rp_img_crop_x' => '',
+					'rp_img_crop_y' => '',
 					'rp_img_url'    => 'schema_img_url',
 				),
 				520 => array(
 					'p_img_id'     => 'schema_img_id',
 					'p_img_id_pre' => 'schema_img_id_pre',
-					'p_img_width'  => 'schema_img_width',
-					'p_img_height' => 'schema_img_height',
-					'p_img_crop'   => 'schema_img_crop',
-					'p_img_crop_x' => 'schema_img_crop_x',
-					'p_img_crop_y' => 'schema_img_crop_y',
+					'p_img_width'  => '',
+					'p_img_height' => '',
+					'p_img_crop'   => '',
+					'p_img_crop_x' => '',
+					'p_img_crop_y' => '',
 					'p_img_url'    => 'schema_img_url',
 				),
 				537 => array(
@@ -236,12 +236,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					/**
 					 * Open Graph - Priority Image.
 					 */
-					'og_img_max'    => isset( $opts[ 'og_img_max' ] ) ? (int) $opts[ 'og_img_max' ] : 1,	// Cast as integer.
-					'og_img_width'  => isset( $opts[ 'og_img_width' ] ) ? $opts[ 'og_img_width' ] : '',
-					'og_img_height' => isset( $opts[ 'og_img_height' ] ) ? $opts[ 'og_img_height' ] : '',
-					'og_img_crop'   => empty( $opts[ 'og_img_crop' ] ) ? 0 : 1,
-					'og_img_crop_x' => empty( $opts[ 'og_img_crop_x' ] ) ? 'center' : $opts[ 'og_img_crop_x' ],
-					'og_img_crop_y' => empty( $opts[ 'og_img_crop_y' ] ) ? 'center' : $opts[ 'og_img_crop_y' ],
 					'og_img_id'     => '',
 					'og_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
 					'og_img_url'    => '',
@@ -261,30 +255,14 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					/**
 					 * Twitter Card.
 					 */
-					'tc_lrg_img_width'  => isset( $opts[ 'tc_lrg_img_width' ] ) ? $opts[ 'tc_lrg_img_width' ] : '',
-					'tc_lrg_img_height' => isset( $opts[ 'tc_lrg_img_height' ] ) ? $opts[ 'tc_lrg_img_height' ] : '',
-					'tc_lrg_img_crop'   => empty( $opts[ 'tc_lrg_img_crop' ] ) ? 0 : 1,
-					'tc_lrg_img_crop_x' => empty( $opts[ 'tc_lrg_img_crop_x' ] ) ? 'center' : $opts[ 'tc_lrg_img_crop_x' ],
-					'tc_lrg_img_crop_y' => empty( $opts[ 'tc_lrg_img_crop_y' ] ) ? 'center' : $opts[ 'tc_lrg_img_crop_y' ],
 					'tc_lrg_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
 					'tc_lrg_img_url'    => '',
-					'tc_sum_img_width'  => isset( $opts[ 'tc_sum_img_width' ] ) ? $opts[ 'tc_sum_img_width' ] : '',
-					'tc_sum_img_height' => isset( $opts[ 'tc_sum_img_height' ] ) ? $opts[ 'tc_sum_img_height' ] : '',
-					'tc_sum_img_crop'   => empty( $opts[ 'tc_sum_img_crop' ] ) ? 0 : 1,
-					'tc_sum_img_crop_x' => empty( $opts[ 'tc_sum_img_crop_x' ] ) ? 'center' : $opts[ 'tc_sum_img_crop_x' ],
-					'tc_sum_img_crop_y' => empty( $opts[ 'tc_sum_img_crop_y' ] ) ? 'center' : $opts[ 'tc_sum_img_crop_y' ],
 					'tc_sum_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
 					'tc_sum_img_url'    => '',
 
 					/**
 					 * Structured Data / Schema Markup / Pinterest.
 					 */
-					'schema_img_max'    => isset( $opts[ 'schema_img_max' ] ) ? (int) $opts[ 'schema_img_max' ] : 1,	// Cast as integer.
-					'schema_img_width'  => isset( $opts[ 'schema_img_width' ] ) ? $opts[ 'schema_img_width' ] : '',
-					'schema_img_height' => isset( $opts[ 'schema_img_height' ] ) ? $opts[ 'schema_img_height' ] : '',
-					'schema_img_crop'   => empty( $opts[ 'schema_img_crop' ] ) ? 0 : 1,
-					'schema_img_crop_x' => empty( $opts[ 'schema_img_crop_x' ] ) ? 'center' : $opts[ 'schema_img_crop_x' ],
-					'schema_img_crop_y' => empty( $opts[ 'schema_img_crop_y' ] ) ? 'center' : $opts[ 'schema_img_crop_y' ],
 					'schema_img_id'     => '',
 					'schema_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
 					'schema_img_url'    => '',
@@ -440,23 +418,24 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		protected function get_custom_meta_tabs( $metabox_id, array $mod ) {
 
+			$tabs = array();
+
 			switch ( $metabox_id ) {
 
 				case $this->p->cf[ 'meta' ][ 'id' ]:
 
-					$tabs = array(
-						'edit'     => _x( 'Customize', 'metabox tab', 'wpsso' ),
-						'media'    => _x( 'Priority Media', 'metabox tab', 'wpsso' ),
-						'preview'  => _x( 'Preview', 'metabox tab', 'wpsso' ),
-						'head'     => _x( 'Head', 'metabox tab', 'wpsso' ),
-						'validate' => _x( 'Validate', 'metabox tab', 'wpsso' ),
-					);
+					$tabs[ 'edit' ]     = _x( 'Customize', 'metabox tab', 'wpsso' );
 
-					break;
+					/**
+					 * Exclude the 'Priority Media' tab from attachment editing pages.
+					 */
+					if ( $mod[ 'post_type' ] !== 'attachment' ) {
+						$tabs[ 'media' ]    = _x( 'Priority Media', 'metabox tab', 'wpsso' );
+					}
 
-				default:
-
-					$tabs = array();	// Just in case.
+					$tabs[ 'preview' ]  = _x( 'Preview', 'metabox tab', 'wpsso' );
+					$tabs[ 'head' ]     = _x( 'Head', 'metabox tab', 'wpsso' );
+					$tabs[ 'validate' ] = _x( 'Validate', 'metabox tab', 'wpsso' );
 
 					break;
 			}

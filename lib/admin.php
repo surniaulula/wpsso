@@ -84,6 +84,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_action( 'admin_menu', array( $this, 'add_admin_submenus' ), WPSSO_ADD_SUBMENU_PRIORITY );
 				add_action( 'admin_init', array( $this, 'add_plugins_page_upgrade_notice' ) );
 				add_action( 'admin_init', array( $this, 'register_setting' ) );
+				add_action( 'admin_head', array( $this, 'show_admin_head' ), -5000 );
 
 				/**
 				 * Hook admin_head to allow for setting changes, plugin activation / loading, etc.
@@ -2352,6 +2353,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'group'  => false,
 				'meta'   => array(),
 			) );
+		}
+
+		/**
+		 * Called by admin_head action.
+		 */
+		public function show_admin_head() {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+				$this->p->util->log_is_functions();
+			}
 		}
 
 		public function conflict_warnings() {
