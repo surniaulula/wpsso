@@ -280,9 +280,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$new_filepath = $this->get_cropped_image_filename( $filepath, $size_info );
 
-			if ( $filepath !== $new_filepath ) {	// Just in case
-				if ( rename( $filepath, $new_filepath ) ) {
-					return $new_filepath;	// Return the new filepath on success.
+			if ( $filepath !== $new_filepath ) {		// Just in case
+				if ( file_exists( $filepath ) ) {	// Avoid race conditions.
+					if ( rename( $filepath, $new_filepath ) ) {
+						return $new_filepath;	// Return the new filepath on success.
+					}
+				} elseif ( file_exists( $new_filepath ) ) {
+					return $new_filepath;
 				}
 			}
 

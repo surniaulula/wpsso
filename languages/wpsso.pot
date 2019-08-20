@@ -2460,8 +2460,8 @@ msgstr ""
 msgid "Posts, Pages, Custom Post Types"
 msgstr ""
 
-#: lib/gettext-pro.php:29 lib/media.php:127 lib/media.php:708 lib/media.php:851
-#: lib/media.php:1796 lib/pro/admin/advanced.php:212
+#: lib/gettext-pro.php:29 lib/media.php:127 lib/media.php:712 lib/media.php:855
+#: lib/media.php:1800 lib/pro/admin/advanced.php:212
 #: lib/std/admin/advanced.php:212
 msgid "Media Library"
 msgstr ""
@@ -3108,7 +3108,7 @@ msgstr ""
 msgid "NextGEN Gallery"
 msgstr ""
 
-#: lib/gettext-pro.php:166 lib/media.php:129 lib/media.php:1802
+#: lib/gettext-pro.php:166 lib/media.php:129 lib/media.php:1806
 #: lib/pro/media/ngg.php:135
 msgid "image ID %s"
 msgstr ""
@@ -3304,97 +3304,97 @@ msgid ""
 "activated, try removing and adding the image back to your content."
 msgstr ""
 
-#: lib/media.php:661
+#: lib/media.php:665
 msgid ""
 "The NGG integration module provided by %1$s is required to read information "
 "for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:709
+#: lib/media.php:713
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:711 lib/media.php:854
+#: lib/media.php:715 lib/media.php:858
 msgid ""
 "You may consider regenerating the thumbnails of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:728
+#: lib/media.php:732
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image dimensions for "
 "<a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:752
+#: lib/media.php:756
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image file path for "
 "<a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:852
+#: lib/media.php:856
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:855
+#: lib/media.php:859
 msgid ""
 "Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress "
 "%3$s function</a> reported an error when trying to create an image size from "
 "%4$s."
 msgstr ""
 
-#: lib/media.php:1297
+#: lib/media.php:1301
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1812
+#: lib/media.php:1816
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:1837
+#: lib/media.php:1841
 msgctxt "option label"
 msgid "Facebook Open Graph"
 msgstr ""
 
-#: lib/media.php:1846
+#: lib/media.php:1850
 msgctxt "option label"
 msgid "Google Schema"
 msgstr ""
 
-#: lib/media.php:1855
+#: lib/media.php:1859
 msgctxt "option label"
 msgid "Google Schema Article"
 msgstr ""
 
-#: lib/media.php:1864
+#: lib/media.php:1868
 msgctxt "option label"
 msgid "Google Schema Article AMP 1x1"
 msgstr ""
 
-#: lib/media.php:1873
+#: lib/media.php:1877
 msgctxt "option label"
 msgid "Google Schema Article AMP 4x3"
 msgstr ""
 
-#: lib/media.php:1882
+#: lib/media.php:1886
 msgctxt "option label"
 msgid "Google Schema Article AMP 16x9"
 msgstr ""
 
-#: lib/media.php:1920
+#: lib/media.php:1924
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:1948
+#: lib/media.php:1952
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
