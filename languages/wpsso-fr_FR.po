@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 6.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-08-19 16:17-0700\n"
-"PO-Revision-Date: 2019-08-19 16:22-0700\n"
+"POT-Creation-Date: 2019-08-20 11:57-0700\n"
+"PO-Revision-Date: 2019-08-20 11:57-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2363,8 +2363,8 @@ msgstr "Devise par défaut"
 msgid "Posts, Pages, Custom Post Types"
 msgstr "Articles, pages, types d'articles personnalisés"
 
-#: lib/gettext-pro.php:29 lib/media.php:127 lib/media.php:708 lib/media.php:851
-#: lib/media.php:1792 lib/pro/admin/advanced.php:212
+#: lib/gettext-pro.php:29 lib/media.php:127 lib/media.php:715 lib/media.php:858
+#: lib/media.php:1803 lib/pro/admin/advanced.php:212
 #: lib/std/admin/advanced.php:212
 msgid "Media Library"
 msgstr "la bibliothèque de médias"
@@ -2472,7 +2472,7 @@ msgid "Refresh Short URLs on Clear Cache"
 msgstr "Rafraîchir URLs raccourcies lors du vidange de cache"
 
 #: lib/gettext-pro.php:54 lib/pro/admin/advanced.php:317
-#: lib/std/admin/advanced.php:320 lib/util.php:1246
+#: lib/std/admin/advanced.php:320 lib/util.php:1320
 msgctxt "option label"
 msgid "Auto-Refresh Cache After Clearing"
 msgstr "Auto-rafraîchir le cache après vider"
@@ -2675,7 +2675,7 @@ msgstr "Forcer a jouer lorsque possible"
 #: lib/gettext-pro.php:92 lib/pro/admin/meta-edit.php:103
 #: lib/std/admin/meta-edit.php:95
 msgctxt "option label"
-msgid "Preferred Crop Area"
+msgid "Preferred Cropping"
 msgstr "Recadrage préféré"
 
 #: lib/gettext-pro.php:93 lib/pro/admin/meta-edit.php:109
@@ -2993,21 +2993,21 @@ msgstr "L'image avec l'ID %1$s de %2$s ne peut pas être agrandie par %3$s de %4
 msgid "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the %6$s image size."
 msgstr "L'image avec l'ID %1$s de %2$s a été agrandie par %3$s de %4$s à %5$s pour les dimensions de %6$s."
 
-#: lib/gettext-pro.php:165 lib/gettext-pro.php:169 lib/pro/media/ngg.php:131
-#: lib/pro/media/ngg.php:1285
+#: lib/gettext-pro.php:165 lib/gettext-pro.php:169 lib/pro/media/ngg.php:134
+#: lib/pro/media/ngg.php:1288
 msgid "NextGEN Gallery"
 msgstr "NextGEN Gallery"
 
-#: lib/gettext-pro.php:166 lib/media.php:129 lib/media.php:1798
-#: lib/pro/media/ngg.php:132
+#: lib/gettext-pro.php:166 lib/media.php:129 lib/media.php:1809
+#: lib/pro/media/ngg.php:135
 msgid "image ID %s"
 msgstr "ID d'image %s"
 
-#: lib/gettext-pro.php:167 lib/media.php:134 lib/pro/media/ngg.php:136
+#: lib/gettext-pro.php:167 lib/media.php:134 lib/pro/media/ngg.php:139
 msgid "cropped"
 msgstr "recadrée"
 
-#: lib/gettext-pro.php:168 lib/media.php:136 lib/pro/media/ngg.php:138
+#: lib/gettext-pro.php:168 lib/media.php:136 lib/pro/media/ngg.php:141
 msgid "%1$s %2$s ignored &mdash; the resulting image of %3$s is too small for the required %4$s image dimensions."
 msgstr "L'%2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est trop petite pour les dimensions requis par %4$s."
 
@@ -3141,7 +3141,7 @@ msgstr "Classe de  bibliothèque \"%s\" manquante."
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
 #: lib/loader.php:184 lib/loader.php:210 lib/post.php:494 lib/register.php:312
-#: lib/term.php:434 lib/user.php:397 lib/util.php:478 lib/util.php:3193
+#: lib/term.php:434 lib/user.php:397 lib/util.php:478 lib/util.php:3267
 msgid "%s warning:"
 msgstr "Alerte %s:"
 
@@ -3176,77 +3176,77 @@ msgstr "L'image %1$s du contenu a été ignoré &mdash; la largeur / hauteur est
 msgid "%1$s includes an additional 'data-wp-pid' attribute for Media Library images &mdash; if this image was selected from the Media Library before %1$s was activated, try removing and adding the image back to your content."
 msgstr "%1$s inclut un attribut supplémentaire 'data-wp-pid' pour les images de la bibliothèque de médias &mdash; si cette image provient de la bibliothèque de médias, et quelle a été inséré au contenu avant que %1$s soit activé, essayez de supprimer et ré-ajouter à nouveau l'image au contenu."
 
-#: lib/media.php:661
+#: lib/media.php:668
 msgid "The NGG integration module provided by %1$s is required to read information for image ID %2$s."
 msgstr "Le module d'intégration NGG fourni par %1$s est requis pour lire les informations sur l'image d'ID %2$s."
 
-#: lib/media.php:709
+#: lib/media.php:716
 msgid "https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/"
 msgstr "https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/"
 
-#: lib/media.php:711 lib/media.php:854
+#: lib/media.php:718 lib/media.php:861
 msgid "You may consider regenerating the thumbnails of all WordPress Media Library images using one of <a href=\"%s\">several available plugins from WordPress.org</a>."
 msgstr "Vous pouvez régénérer les miniatures de toutes les images de la bibliothèque Médias WordPress en utilisant l'une <a href=\"%s\">des extensions disponibles sur WordPress.org</a>."
 
-#: lib/media.php:728
+#: lib/media.php:735
 msgid "Possible %1$s corruption detected &mdash; the full size image dimensions for <a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr "Corruption possible de %1$s détecté &mdash; les dimensions de l'image pleine grandeur pour <a href=\"%2$s\">l'ID d'image %3$s</a> sont manquantes dans les métadonnées d'image retourné par la <a href=\"%4$s\">fonction WordPress %5$s</a>."
 
-#: lib/media.php:752
+#: lib/media.php:759
 msgid "Possible %1$s corruption detected &mdash; the full size image file path for <a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr "Corruption possible de %1$s détecté &mdash; le chemin du fichier d'image pleine grandeur pour <a href=\"%2$s\">l'ID d'image %3$s</a> est manquant dans les métadonnées d'image retourné par la <a href=\"%4$s\">fonction WordPress %5$s</a>."
 
-#: lib/media.php:852
+#: lib/media.php:859
 msgid "https://developer.wordpress.org/reference/functions/image_make_intermediate_size/"
 msgstr "https://developer.wordpress.org/reference/functions/image_make_intermediate_size/"
 
-#: lib/media.php:855
+#: lib/media.php:862
 msgid "Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress %3$s function</a> reported an error when trying to create an image size from %4$s."
 msgstr "Corruption possible de %1$s détecté &mdash; la <a href=\"%2$s\">fonction WordPress %3$s</a> a signalé une erreur lors de la tentative de création d'une taille d'image à partir de %4$s."
 
-#: lib/media.php:1293
+#: lib/media.php:1304
 msgid "Content"
 msgstr "Contenu"
 
-#: lib/media.php:1808
+#: lib/media.php:1819
 msgid "image URL %s"
 msgstr "URL d'image %s"
 
-#: lib/media.php:1833
+#: lib/media.php:1844
 msgctxt "option label"
 msgid "Facebook Open Graph"
 msgstr "Open Graph Facebook"
 
-#: lib/media.php:1842
+#: lib/media.php:1853
 msgctxt "option label"
 msgid "Google Schema"
 msgstr "Schéma Google"
 
-#: lib/media.php:1851
+#: lib/media.php:1862
 msgctxt "option label"
 msgid "Google Schema Article"
 msgstr "Schéma d'article Google"
 
-#: lib/media.php:1860
+#: lib/media.php:1871
 msgctxt "option label"
 msgid "Google Schema Article AMP 1x1"
 msgstr "Schéma d'article Google AMP 1x1"
 
-#: lib/media.php:1869
+#: lib/media.php:1880
 msgctxt "option label"
 msgid "Google Schema Article AMP 4x3"
 msgstr "Schéma d'article Google AMP 4x3"
 
-#: lib/media.php:1878
+#: lib/media.php:1889
 msgctxt "option label"
 msgid "Google Schema Article AMP 16x9"
 msgstr "Schéma d'article Google AMP 16x9"
 
-#: lib/media.php:1916
+#: lib/media.php:1927
 msgid "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr "L'%2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s a une <strong>proportion égale ou supérieur a %4$d:1 permise par la norme %5$s</strong>."
 
-#: lib/media.php:1944
+#: lib/media.php:1955
 msgid "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>."
 msgstr "L'%2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est <strong>plus petite que le minimum %4$s permise par la norme %5$s</strong>."
 
@@ -5044,7 +5044,7 @@ msgstr "Aucune description."
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
 #: lib/post.php:480 lib/term.php:420 lib/user.php:383 lib/util.php:464
-#: lib/util.php:3165
+#: lib/util.php:3239
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr "supérieur au max recommandé de %1$0.3f secs"
 
@@ -5089,7 +5089,7 @@ msgstr "SVP envisager d'améliorer la vitesse de votre site."
 msgid "As an added benefit, a faster site will also improve ranking in search results."
 msgstr "Comme avantage supplémentaire, un site plus rapide améliore également le classement dans les résultats de recherche."
 
-#: lib/post.php:1004 lib/util.php:1760
+#: lib/post.php:1004 lib/util.php:1834
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr "Erreur en récupérant le la page Web <a href=\"%1$s\">%1$s</a>."
 
@@ -5812,99 +5812,99 @@ msgstr "Privilèges insuffisants pour enregistrer les réglages pour l'usager ID
 msgid "Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s (%3$s)."
 msgstr "Fonction PHP lente détectée - getimagesize() a pris %1$0.3f secs pour %2$s (%3$s)."
 
-#: lib/util.php:1174
+#: lib/util.php:1248
 msgid "%s cached files, transient cache, column meta, and the WordPress object cache have been cleared."
 msgstr "Les fichiers en cache, le cache transitoire, le méta de colonnes %s, et le cache d'objets WordPress ont été vidés."
 
-#: lib/util.php:1179
+#: lib/util.php:1253
 msgid "The cache for %s has also been cleared."
 msgstr "Le cache pour %s a été vidé aussi."
 
-#: lib/util.php:1231 lib/util.php:1371
+#: lib/util.php:1305 lib/util.php:1445
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr "Le temps d'exécution total pour cette tâche était %0.3f secondes."
 
-#: lib/util.php:1237
+#: lib/util.php:1311
 msgid "A background task will begin shortly to refresh the post, term, and user cache objects."
 msgstr "Une tâche d'arrière-plan commencera sous peu pour recréer les objets de cache d'articles, de termes et d'utilisateurs."
 
-#: lib/util.php:1248
+#: lib/util.php:1322
 msgid "Cache objects will be re-created as they are needed (%s is disabled)."
 msgstr "Les objets de cache seront recréés à mesure qu'ils sont requis (%s est désactivée)."
 
-#: lib/util.php:1365
+#: lib/util.php:1439
 msgid "The meta tag and Schema markup caches for %1$d posts, %2$d terms, and %3$d users have been refreshed."
 msgstr "Les caches de balisage méta et balisage de Schema pour %1$d articles, %2$d termes, et %3$d utilisateurs ont été rafraîchies."
 
-#: lib/util.php:1588
+#: lib/util.php:1662
 msgid "Failed to open the cache folder %s for reading."
 msgstr "Impossible d'ouvrir le dossier de cache %s pour lecture."
 
-#: lib/util.php:1615
+#: lib/util.php:1689
 msgid "Failed to remove the cache file %s."
 msgstr "Impossible de supprimer le dossier de cache %s."
 
-#: lib/util.php:1677
+#: lib/util.php:1751
 msgid "Error reading %s article topic list file."
 msgstr "Erreur de lecture du fichier de la liste des rubriques d'article %s."
 
-#: lib/util.php:1747
+#: lib/util.php:1821
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr "L'argument de demande à %1$s n'est pas du HTML ou un URL valide."
 
-#: lib/util.php:1773
+#: lib/util.php:1847
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr "La page Web récupéré de <a href=\"%1$s\">%1$s</a> est vide."
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1967
+#: lib/util.php:2041
 msgid "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting provider to have the missing class installed."
 msgstr "La classe PHP <code>%1$s</code> est manquante &ndash; contactez votre fournisseur d’hébergement pour installer la classe manquante."
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1980
+#: lib/util.php:2054
 msgid "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting provider to have the missing function installed."
 msgstr "La fonction PHP <code>%1$s</code> est manquante &ndash; contactez votre fournisseur d’hébergement pour installer la fonction manquante."
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max.
-#: lib/util.php:3168
+#: lib/util.php:3242
 msgid "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the \"%2$s\" filter (%3$s)."
 msgstr "Crochet(s) de filtre lent détecté - WordPress a pris %1$0.3f secs pour exécuter le filtre \"%2$s\" (%3$s)."
 
-#: lib/util.php:3185
+#: lib/util.php:3259
 msgid "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f seconds to execute. This is longer than the recommended maximum of %3$0.3f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr "Crochet(s) de filtre lent détecté &mdash le filtre WordPress %1$s a pris %2$0.3f secondes pour exécuter. Ceci est plus long que le maximum recommandé de %3$0.3f secondes et peut affecter le temps de chargement de la page. S'il vous plaît, envisagez d'examiner les fonctions d'extensions de tiers partie et de thème accrochées au filtre WordPress %1$s pour du code PHP lent et/ou sous-optimal."
 
-#: lib/util.php:3185
+#: lib/util.php:3259
 msgid "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance."
 msgstr "Si vous activez l'extension %1$s et effacez le cache de %2$s (pour ré-appliquer le filtre), vous obtiendrez peut-être plus d'informations sur les crochets spécifiques ou le code PHP affectant les performances."
 
-#: lib/util.php:3474
+#: lib/util.php:3548
 msgid "No options available."
 msgstr "Aucune options disponibles."
 
-#: lib/util.php:3503
+#: lib/util.php:3577
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr "%1$d options supplémentaires ne figurent pas dans la vue \"%2$s\""
 
-#: lib/util.php:3506
+#: lib/util.php:3580
 msgctxt "option comment"
 msgid "show these options"
 msgstr "afficher ces options"
 
-#: lib/util.php:3511
+#: lib/util.php:3585
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue \"%2$s\""
 
-#: lib/util.php:3514
+#: lib/util.php:3588
 msgctxt "option comment"
 msgid "show these rows"
 msgstr "afficher ces lignes"
 
 #. translators: %1$s is an action message, %2$s is the module or post type name, and %3$s is the object ID.
-#: lib/util.php:3981
+#: lib/util.php:4055
 msgid "%1$s for %2$s ID %3$s"
 msgstr "%1$s pour %2$s ID %3$s"
 
