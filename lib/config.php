@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.1.0-dev.2',	// Plugin version.
+					'version'     => '6.1.0-b.1',	// Plugin version.
 					'opt_version' => '661',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -132,7 +132,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'buddypress' => '(plugin) BuddyPress',
 							),
 							'util' => array(
-								'custom-fields' => '(feature) Read Custom Fields',
+								'custom-fields' => '(feature) Read Custom Field Names',
 								'coauthors'     => '(plugin) Co-Authors Plus',
 								'shorten'       => '(api) URL Shortening APIs',
 								'wpseo-meta'    => '(feature) Yoast SEO Social Meta',

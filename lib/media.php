@@ -281,11 +281,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$new_filepath = $this->get_cropped_image_filename( $filepath, $size_info );
 
 			if ( $filepath !== $new_filepath ) {		// Just in case
+
 				if ( file_exists( $filepath ) ) {	// Avoid race conditions.
 					if ( rename( $filepath, $new_filepath ) ) {
 						return $new_filepath;	// Return the new filepath on success.
 					}
-				} elseif ( file_exists( $new_filepath ) ) {
+				}
+
+				if ( file_exists( $new_filepath ) ) {
 					return $new_filepath;
 				}
 			}
@@ -1206,8 +1209,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 								$size_info = $this->p->util->get_size_info( $size_name );
 
-								$og_single_image[ 'og:image:url' ] = SucomUtil::get_prot() . ':' . $match[2] .
-									'?s=' . $size_info[ 'width' ] . '&d=404&r=G';
+								$og_single_image[ 'og:image:url' ] = SucomUtil::get_prot() . ':' .
+									$match[2] . '?s=' . $size_info[ 'width' ] . '&d=404&r=G';
 
 								$og_single_image[ 'og:image:width' ] = $size_info[ 'width' ] > 2400 ? 2400 : $size_info[ 'width' ];
 

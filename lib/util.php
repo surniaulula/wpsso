@@ -541,11 +541,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 */
 			if ( $this->p->debug->enabled ) {
 
-				$wp_obj_type = gettype( $wp_obj ) === 'object' ? get_class( $wp_obj ) . ' object' : gettype( $wp_obj );
 				$doing_ajax  = defined( 'DOING_AJAX' ) && DOING_AJAX ? true : false;
+				$wp_obj_type = gettype( $wp_obj ) === 'object' ? get_class( $wp_obj ) . ' object' : gettype( $wp_obj );
 
-				$this->p->debug->log( '$wp_obj is ' . $wp_obj_type );
 				$this->p->debug->log( 'DOING_AJAX is ' . ( $doing_ajax ? 'true' : 'false' ) );
+				$this->p->debug->log( '$wp_obj type is ' . $wp_obj_type );
 				$this->p->debug->mark( 'define image sizes' );	// Begin timer.
 			}
 
@@ -712,8 +712,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			if ( ! is_array( $crop ) ) {
 				$crop = empty( $crop ) ? false : true;
 			}
-			
-			if ( $crop && $attach_id ) {
+		
+			/**
+			 * Check the image metadata for a custom crop area.
+			 */
+			if ( $crop && $attach_id && is_numeric( $attach_id ) ) {
 
 				$new_crop = is_array( $crop ) ? $crop : array( 'center', 'center' );
 
@@ -733,9 +736,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			return $local_cache[ $size_name ][ $attach_id ] = array(
-				'width' => $width,
+				'width'  => $width,
 				'height' => $height,
-				'crop' => $crop,
+				'crop'   => $crop,
 			);
 		}
 
