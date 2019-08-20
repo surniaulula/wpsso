@@ -325,7 +325,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			 */
 			$roles = $wpsso->cf[ 'wp' ][ 'roles' ][ 'writer' ];
 
-			return SucomUtilWP::get_user_ids_for_roles( $roles );
+			return SucomUtilWP::get_roles_user_ids( $roles );
 		}
 
 		/**
@@ -413,7 +413,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$roles = $wpsso->cf[ 'wp' ][ 'roles' ][ 'person' ];
 			$limit = WPSSO_SELECT_PERSON_NAMES_MAX;	// Default is 200 user names.
 
-			return SucomUtilWP::get_user_select_for_roles( $roles, $blog_id = null, $add_none, $limit );
+			return SucomUtilWP::get_roles_user_select( $roles, $blog_id = null, $add_none, $limit );
 		}
 
 		public static function add_person_role( $user_id ) {

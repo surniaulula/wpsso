@@ -575,30 +575,21 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				foreach ( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $key ) {
 
 					/**
-					 * Prefer value provided by filters.
+					 * Value provided by filters.
 					 */
 					if ( isset( $size_info[ $key ] ) ) {
 
 						continue;
 
 					/**
-					 * Prefer crop area value from metadata.
-					 */
-					} elseif ( ( $key === 'crop_x' || $key === 'crop_y' ) && 
-						! empty( $md_opts[ 'attach_img_' . $key ] ) && 
-							$md_opts[ 'attach_img_' . $key ] !== 'none' ) {
-
-						$size_info[ $key ] = $md_opts[ 'attach_img_' . $key ];
-
-					/**
-					 * Prefer plugin settings.
+					 * Plugin settings.
 					 */
 					} elseif ( isset( $this->p->options[ $opt_pre . '_img_' . $key ] ) ) {
 
 						$size_info[ $key ] = $this->p->options[ $opt_pre . '_img_' . $key ];
 
 					/**
-					 * Prefer default settings.
+					 * Default settings.
 					 */
 					} else {
 
@@ -617,30 +608,30 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 							$size_info[ $key ] = null;
 						}
 					}
+				}
 
-					/**
-					 * Make sure crop is a boolean.
-					 */
-					if ( $key === 'crop' ) {
-						$size_info[ $key ] = empty( $size_info[ $key ] ) ? false : true;
+				if ( empty( $size_info[ 'crop' ] ) ) {
+
+					$size_info[ 'crop' ] = false;
+
+				} else {
+
+					$size_info[ 'crop' ] = true;
+
+					$new_crop = array( 'center', 'center' );
+
+					foreach ( array( 'crop_x', 'crop_y' ) as $crop_key => $key ) {
+						if ( ! empty( $size_info[ $key ] ) && $size_info[ $key ] !== 'none' ) {
+							$new_crop[ $crop_key ] = $size_info[ $key ];
+						}
+					}
+
+					if ( $new_crop !== array( 'center', 'center' ) ) {
+						$size_info[ 'crop' ] = $new_crop;
 					}
 				}
 
 				if ( $size_info[ 'width' ] > 0 && $size_info[ 'height' ] > 0 ) {
-
-					/**
-					 * If crop is true and not center-center, then provide an array for the preferred crop area.
-					 */
-					if ( $size_info[ 'crop' ] ) {
-						if ( $size_info[ 'crop_x' ] !== 'none' && $size_info[ 'crop_y' ] !== 'none' ) {
-							if ( $size_info[ 'crop_x' ] !== 'center' || $size_info[ 'crop_y' ] !== 'center' ) {
-								$size_info[ 'crop' ] = array(
-									$size_info[ 'crop_x' ],
-									$size_info[ 'crop_y' ],
-								);
-							}
-						}
-					}
 
 					/**
 					 * A lookup array for image size labels, used in image size error messages.
@@ -664,8 +655,88 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'define image sizes' );	// End timer.
-				$this->p->debug->log_arr( 'get_image_sizes', SucomUtilWP::get_image_sizes() );
+				$this->p->debug->log_arr( 'get_image_sizes', $this->get_image_sizes() );
 			}
+		}
+
+		/**
+		 * Get the width, height, and crop value for all image sizes. Returns an associative array with the image size name
+		 * as the array key value.
+		 */
+		public function get_image_sizes( $attach_id = false ) {
+
+			$sizes = array();
+
+			foreach ( get_intermediate_image_sizes() as $size_name ) {
+				$sizes[ $size_name ] = $this->get_size_info( $size_name, $attach_id );
+			}
+
+			return $sizes;
+		}
+
+		/**
+		 * Get the width, height, and crop value for a specific image size.
+		 */
+		public function get_size_info( $size_name = 'thumbnail', $attach_id = false ) {
+
+			if ( ! is_string( $size_name ) ) {	// Just in case.
+				return;
+			}
+
+			static $local_cache = array();
+
+			if ( isset( $local_cache[ $size_name ][ $attach_id ] ) ) {
+				return $local_cache[ $size_name ][ $attach_id ];
+			}
+
+			global $_wp_additional_image_sizes;
+
+			if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'width' ] ) ) {
+				$width = intval( $_wp_additional_image_sizes[ $size_name ][ 'width' ] );
+			} else {
+				$width = get_option( $size_name . '_size_w' );
+			}
+
+			if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'height' ] ) ) {
+				$height = intval( $_wp_additional_image_sizes[ $size_name ][ 'height' ] );
+			} else {
+				$height = get_option( $size_name . '_size_h' );
+			}
+
+			if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'crop' ] ) ) {
+				$crop = $_wp_additional_image_sizes[ $size_name ][ 'crop' ];
+			} else {
+				$crop = get_option( $size_name . '_crop' );
+			}
+
+			if ( ! is_array( $crop ) ) {
+				$crop = empty( $crop ) ? false : true;
+			}
+			
+			if ( $crop && $attach_id ) {
+
+				$new_crop = is_array( $crop ) ? $crop : array( 'center', 'center' );
+
+				foreach ( array( 'attach_img_crop_x', 'attach_img_crop_y' ) as $crop_key => $md_key ) {
+
+					$value = $this->p->post->get_options( $attach_id, $md_key );
+
+					if ( $value && $value !== 'none' ) {		// Custom crop value found.
+						$new_crop[ $crop_key ] = $value;	// Adjust the crop value.
+						$crop = $new_crop;			// Update the crop array.
+					}
+				}
+
+				if ( $crop === array( 'center', 'center' ) ) {
+					$crop = true;
+				}
+			}
+
+			return $local_cache[ $size_name ][ $attach_id ] = array(
+				'width' => $width,
+				'height' => $height,
+				'crop' => $crop,
+			);
 		}
 
 		/**

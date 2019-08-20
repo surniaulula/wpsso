@@ -15,7 +15,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		private $p;
 
-		private $def_img_preg = array(
+		private $default_content_img_preg = array(
 			'html_tag' => 'img',
 			'pid_attr' => 'data-[a-z]+-pid',
 			'ngg_src'  => '[^\'"]+\/cache\/([0-9]+)_(crop)?_[0-9]+x[0-9]+_[^\/\'"]+|[^\'"]+-nggid0[1-f]([0-9]+)-[^\'"]+',
@@ -85,7 +85,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return $bool;
 			}
 
-			$size_info       = SucomUtilWP::get_size_info( $size_name, $pid );
+			$size_info       = $this->p->util->get_size_info( $size_name, $pid );
 			$is_sufficient_w = $img_width >= $size_info[ 'width' ] ? true : false;
 			$is_sufficient_h = $img_height >= $size_info[ 'height' ] ? true : false;
 			$is_cropped      = empty( $size_info[ 'crop' ] ) ? false : true;
@@ -181,7 +181,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return $bool;
 			}
 
-			$size_info       = SucomUtilWP::get_size_info( $size_name );
+			$size_info       = $this->p->util->get_size_info( $size_name );
 			$is_sufficient_w = $og_image[ 'og:image:width' ] >= $size_info[ 'width' ] ? true : false;
 			$is_sufficient_h = $og_image[ 'og:image:height' ] >= $size_info[ 'height' ] ? true : false;
 			$is_cropped      = empty( $size_info[ 'crop' ] ) ? false : true;
@@ -269,7 +269,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return $filepath;
 			}
 
-			$size_info = SucomUtilWP::get_size_info( $img_info[ 'size_name' ], $img_info[ 'pid' ] );
+			$size_info = $this->p->util->get_size_info( $img_info[ 'size_name' ], $img_info[ 'pid' ] );
 
 			/**
 			 * If the resized image is not cropped, then leave the file name as-is.
@@ -639,7 +639,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->log_args( $args );
 			}
 
-			$size_info  = SucomUtilWP::get_size_info( $size_name, $pid );
+			$size_info  = $this->p->util->get_size_info( $size_name, $pid );
 			$img_url    = '';
 			$img_width  = WPSSO_UNDEF;
 			$img_height = WPSSO_UNDEF;
@@ -960,7 +960,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$new_suffix .= '-cropped';
 
 				if ( is_array( $size_info[ 'crop' ] ) ) {
-					$new_suffix .= '-' . implode( '-', $size_info[ 'crop' ] );
+					if ( $size_info[ 'crop' ] !== array( 'center', 'center' ) ) {
+						$new_suffix .= '-' . implode( '-', $size_info[ 'crop' ] );
+					}
 				}
 			}
 
@@ -1075,9 +1077,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return $og_images;
 			}
 
-			$size_info       = SucomUtilWP::get_size_info( $size_name );
-			$og_single_image = SucomUtil::get_mt_image_seed();
-			$img_preg        = $this->def_img_preg;
+			$content_img_preg = $this->default_content_img_preg;
+			$og_single_image  = SucomUtil::get_mt_image_seed();
 
 			/**
 			 * Allow the html_tag and pid_attr regex to be modified.
@@ -1088,10 +1089,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( has_filter( $filter_name ) ) {
 
-					$img_preg[ $type ] = apply_filters( $filter_name, $this->def_img_preg[ $type ] );
+					$content_img_preg[ $type ] = apply_filters( $filter_name, $this->default_content_img_preg[ $type ] );
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'filtered image preg ' . $type . ' = "' . $img_preg[ $type ] . '"' );
+						$this->p->debug->log( 'filtered image preg ' . $type . ' = "' . $content_img_preg[ $type ] . '"' );
 					}
 				}
 			}
@@ -1099,7 +1100,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			/**
 			 * <img/> attributes in order of preference.
 			 */
-			if ( preg_match_all( '/<((' . $img_preg[ 'html_tag' ] . ')[^>]*? (' . $img_preg[ 'pid_attr' ] . ')=[\'"]([0-9]+)[\'"]|' . 
+			if ( preg_match_all( '/<((' . $content_img_preg[ 'html_tag' ] . ')[^>]*? (' . $content_img_preg[ 'pid_attr' ] . ')=[\'"]([0-9]+)[\'"]|' . 
 				'(img)[^>]*? (data-share-src|data-lazy-src|data-src|src)=[\'"]([^\'"]+)[\'"])[^>]*>/s',
 					$content, $all_matches, PREG_SET_ORDER ) ) {
 
@@ -1115,7 +1116,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( count( $all_matches ) . ' x matching <' . $img_preg[ 'html_tag' ] . '/> html tag(s) found' );
+					$this->p->debug->log( count( $all_matches ) . ' x matching <' . $content_img_preg[ 'html_tag' ] . '/> html tag(s) found' );
 				}
 
 				foreach ( $all_matches as $img_num => $img_arr ) {
@@ -1154,7 +1155,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						/**
 						 * Check for other data attributes like 'data-ngg-pid'.
 						 */
-						case ( preg_match( '/^' . $img_preg[ 'pid_attr' ] . '$/', $attr_name ) ? true : false ):
+						case ( preg_match( '/^' . $content_img_preg[ 'pid_attr' ] . '$/', $attr_name ) ? true : false ):
 
 							// build a filter hook for 3rd party modules to return image information
 							$filter_name = $this->p->lca . '_get_content_' . $tag_name . '_' . ( preg_replace( '/-/', '_', $attr_name ) );
@@ -1182,9 +1183,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							/**
 							 * Prevent duplicates by silently ignoring ngg images (already processed by the ngg module).
 							 */
-							if ( true === $this->p->avail[ 'media' ][ 'ngg' ] && ! empty( $this->p->m[ 'media' ][ 'ngg' ] ) &&
-								( preg_match( '/ class=[\'"]ngg[_-]/', $tag_value ) ||
-									preg_match( '/^(' . $img_preg[ 'ngg_src' ] . ')$/', $attr_value ) ) ) {
+							if ( true === $this->p->avail[ 'media' ][ 'ngg' ] && 
+								! empty( $this->p->m[ 'media' ][ 'ngg' ] ) &&
+									( preg_match( '/ class=[\'"]ngg[_-]/', $tag_value ) || preg_match( '/^(' .
+										$content_img_preg[ 'ngg_src' ] . ')$/', $attr_value ) ) ) {
 
 								if ( $this->p->debug->enabled ) {
 									$this->p->debug->log( 'silently ignoring ngg image for ' . $attr_name );
@@ -1198,12 +1200,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							 */
 							if ( preg_match( '/^(https?:)?(\/\/([^\.]+\.)?gravatar\.com\/avatar\/[a-zA-Z0-9]+)/', $attr_value, $match ) ) {
 
-								$og_single_image[ 'og:image:url' ]    = SucomUtil::get_prot() . ':' . $match[2] .
+								$size_info = $this->p->util->get_size_info( $size_name );
+
+								$og_single_image[ 'og:image:url' ] = SucomUtil::get_prot() . ':' . $match[2] .
 									'?s=' . $size_info[ 'width' ] . '&d=404&r=G';
 
-								$og_single_image[ 'og:image:width' ]  = $size_info[ 'width' ];
+								$og_single_image[ 'og:image:width' ] = $size_info[ 'width' ] > 2400 ? 2400 : $size_info[ 'width' ];
 
-								$og_single_image[ 'og:image:height' ] = $size_info[ 'width' ];	// Square image.
+								$og_single_image[ 'og:image:height' ] = $og_single_image[ 'og:image:width' ];
 
 								if ( $this->p->debug->enabled ) {
 									$this->p->debug->log( 'gravatar image found: ' . $og_single_image[ 'og:image:url' ] );
@@ -1323,7 +1327,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'no matching <' . $img_preg[ 'html_tag' ] . '/> html tag(s) found' );
+				$this->p->debug->log( 'no matching <' . $content_img_preg[ 'html_tag' ] . '/> html tag(s) found' );
 			}
 
 			return $og_images;

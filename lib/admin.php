@@ -3444,7 +3444,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$notice_key  = 'notice-header-tmpl-no-head-attr-' . SucomUtilWP::get_theme_slug_version();
 				$admin_roles = $this->p->cf[ 'wp' ][ 'roles' ][ 'admin' ];
-				$user_ids    = SucomUtilWP::get_user_ids_for_roles( $admin_roles );
+				$user_ids    = SucomUtilWP::get_roles_user_ids( $admin_roles );
 
 				$this->p->notice->clear_key( $notice_key, $user_ids );	// Just in case.
 			}
@@ -3570,7 +3570,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			'</td>';
 
 			$owner_roles = $this->p->cf[ 'wp' ][ 'roles' ][ 'owner' ];
-			$site_owners = SucomUtilWP::get_user_select_for_roles( $owner_roles );
+			$site_owners = SucomUtilWP::get_roles_user_select( $owner_roles );
 
 			$table_rows[ 'schema_home_person_id' ] = '' . 
 			$form->get_th_html( _x( 'User for Person Social Profile', 'option label', 'wpsso' ), '', 'schema_home_person_id' ) . 

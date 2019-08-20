@@ -342,61 +342,6 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $ret;
 		}
 
-		/**
-		 * Get the width, height, and crop value for a all image sizes.
-		 * Returns an associative array with the image size name as the array key value.
-		 */
-		public static function get_image_sizes( $attach_id = false ) {
-
-			$sizes = array();
-
-			foreach ( get_intermediate_image_sizes() as $size_name ) {
-				$sizes[ $size_name ] = self::get_size_info( $size_name, $attach_id );
-			}
-
-			return $sizes;
-		}
-
-		/**
-		 * Get the width, height, and crop value for a specific image size.
-		 */
-		public static function get_size_info( $size_name = 'thumbnail', $attach_id = false ) {
-
-			if ( ! is_string( $size_name ) ) {	// Just in case.
-				return;
-			}
-
-			global $_wp_additional_image_sizes;
-
-			if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'width' ] ) ) {
-				$width = intval( $_wp_additional_image_sizes[ $size_name ][ 'width' ] );
-			} else {
-				$width = get_option( $size_name . '_size_w' );
-			}
-
-			if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'height' ] ) ) {
-				$height = intval( $_wp_additional_image_sizes[ $size_name ][ 'height' ] );
-			} else {
-				$height = get_option( $size_name . '_size_h' );
-			}
-
-			if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'crop' ] ) ) {
-				$crop = $_wp_additional_image_sizes[ $size_name ][ 'crop' ];
-			} else {
-				$crop = get_option( $size_name . '_crop' );
-			}
-
-			if ( ! is_array( $crop ) ) {
-				$crop = empty( $crop ) ? false : true;
-			}
-			
-			if ( $crop && $attach_id ) {
-				// TODO get custom crop_x and crop_y values.
-			}
-
-			return array( 'width' => $width, 'height' => $height, 'crop' => $crop );
-		}
-
 		public static function get_filter_hook_names( $filter_name ) {
 
 			global $wp_filter;
@@ -610,44 +555,21 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $ret;
 		}
 
-		public static function user_exists( $user_id ) {
-
-			if ( is_numeric( $user_id ) && $user_id > 0 ) { // true is not valid.
-
-				$user_id = (int) $user_id; // Cast as integer for array.
-
-				if ( isset( self::$cache_user_exists[ $user_id ] ) ) {
-
-					return self::$cache_user_exists[ $user_id ];
-
-				} else {
-
-					global $wpdb;
-
-					$select_sql = 'SELECT COUNT(ID) FROM ' . $wpdb->users . ' WHERE ID = %d';
-
-					return self::$cache_user_exists[ $user_id ] = $wpdb->get_var( $wpdb->prepare( $select_sql, $user_id ) ) ? true : false;
-				}
-			}
-
-			return false;
-		}
-
-		public static function get_user_ids_for_roles( array $roles, $blog_id = null, $limit = '' ) {
+		public static function get_roles_user_ids( array $roles, $blog_id = null, $limit = '' ) {
 
 			/**
 			 * Get the user ID => name associative array, and keep only the array keys.
 			 */
-			$user_ids = array_keys( self::get_user_names_for_roles( $roles, $blog_id, $limit ) );
+			$user_ids = array_keys( self::get_roles_user_names( $roles, $blog_id, $limit ) );
 
 			rsort( $user_ids );	// Newest user first.
 
 			return $user_ids;
 		}
 
-		public static function get_user_select_for_roles( array $roles, $blog_id = null, $add_none = true, $limit = '' ) {
+		public static function get_roles_user_select( array $roles, $blog_id = null, $add_none = true, $limit = '' ) {
 
-			$user_select = self::get_user_names_for_roles( $roles, $blog_id, $limit );
+			$user_select = self::get_roles_user_names( $roles, $blog_id, $limit );
 
 			if ( $add_none ) {
 				$user_select = array( 'none' => 'none' ) + $user_select;
@@ -656,7 +578,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $user_select;
 		}
 
-		public static function get_user_names_for_roles( array $roles, $blog_id = null, $limit = '' ) {
+		public static function get_roles_user_names( array $roles, $blog_id = null, $limit = '' ) {
 
 			if ( empty( $roles ) ) {
 				return array();
@@ -691,10 +613,32 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $user_names;
 		}
 
+		public static function user_exists( $user_id ) {
+
+			if ( is_numeric( $user_id ) && $user_id > 0 ) { // true is not valid.
+
+				$user_id = (int) $user_id; // Cast as integer for array.
+
+				if ( isset( self::$cache_user_exists[ $user_id ] ) ) {
+
+					return self::$cache_user_exists[ $user_id ];
+
+				} else {
+
+					global $wpdb;
+
+					$select_sql = 'SELECT COUNT(ID) FROM ' . $wpdb->users . ' WHERE ID = %d';
+
+					return self::$cache_user_exists[ $user_id ] = $wpdb->get_var( $wpdb->prepare( $select_sql, $user_id ) ) ? true : false;
+				}
+			}
+
+			return false;
+		}
+
 		/**
-		 * Keep in mind that the 'wp_capabilities' meta value is a
-		 * serialized array, so WordPress uses a LIKE query to match
-		 * any string within the serialized array.
+		 * Keep in mind that the 'wp_capabilities' meta value is a serialized array, so WordPress uses a LIKE query to
+		 * match any string within the serialized array.
 		 *
 		 * Example query:
 		 *
@@ -707,10 +651,8 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		 * 	AND wp_usermeta.meta_value LIKE '%\"person\"%' ) ) )
 		 * 	ORDER BY display_name ASC
 		 *
-		 * If using the $limit argument, you must keep calling
-		 * get_user_names() until it returns false - it may also return
-		 * false on the first query if there are no users in the
-		 * specified role.
+		 * If using the $limit argument, you must keep calling get_user_names() until it returns false - it may also return
+		 * false on the first query if there are no users in the specified role.
 		 */
 		public static function get_user_names( $role = '', $blog_id = null, $limit = '' ) {
 
