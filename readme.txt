@@ -454,7 +454,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a "Preferred Crop Area" option in the Document SSO metabox for attachment editing pages.
+	* Added a "Preferred Cropping" option in the Document SSO metabox for attachment editing pages.
 	* Removed all "Image Subject Area" options under the Priority Media tab in the Document SSO metabox.
 	* Removed the Priority Media tab in the Document SSO metabox from attachment editing pages.
 * **Bugfixes**
@@ -681,7 +681,7 @@ This version includes several jQuery improvements to optimize both the size of s
 
 = 6.1.0-b.1 =
 
-(2019/08/19) Added a "Preferred Crop Area" option in the Document SSO metabox for attachment editing pages.
+(2019/08/19) Added a "Preferred Cropping" option in the Document SSO metabox for attachment editing pages.
 
 = 6.0.0 =
 
