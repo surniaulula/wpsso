@@ -89,7 +89,7 @@ _x( 'Include Video Preview Images', 'option label', 'wpsso' );
 _x( 'video preview images are included first', 'option comment', 'wpsso' );
 _x( 'Force Autoplay when Possible', 'option label', 'wpsso' );
 _x( 'Check for Embedded Media', 'option label', 'wpsso' );
-_x( 'Preferred Crop Area', 'option label', 'wpsso' );
+_x( 'Preferred Cropping', 'option label', 'wpsso' );
 _x( 'Open Graph Type', 'option label', 'wpsso' );
 _x( 'Default Title', 'option label', 'wpsso' );
 _x( 'Default Description', 'option label', 'wpsso' );

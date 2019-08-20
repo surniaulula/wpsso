@@ -2774,7 +2774,7 @@ msgstr ""
 #: lib/gettext-pro.php:92 lib/pro/admin/meta-edit.php:103
 #: lib/std/admin/meta-edit.php:95
 msgctxt "option label"
-msgid "Preferred Crop Area"
+msgid "Preferred Cropping"
 msgstr ""
 
 #: lib/gettext-pro.php:93 lib/pro/admin/meta-edit.php:109
