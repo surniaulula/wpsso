@@ -238,6 +238,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					/**
 					 * Open Graph - Priority Image.
 					 */
+					'og_img_max'    => isset( $opts[ 'og_img_max' ] ) ? (int) $opts[ 'og_img_max' ] : 1,	// 1 by default.
 					'og_img_id'     => '',
 					'og_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
 					'og_img_url'    => '',
@@ -245,8 +246,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					/**
 					 * Open Graph - Priority Video.
 					 */
-					'og_vid_prev_img' => empty( $opts[ 'og_vid_prev_img' ] ) ? 0 : 1,
-					'og_vid_max'      => isset( $opts[ 'og_vid_max' ] ) ? (int) $opts[ 'og_vid_max' ] : 1,	// Cast as integer.
+					'og_vid_max'      => isset( $opts[ 'og_vid_max' ] ) ? (int) $opts[ 'og_vid_max' ] : 1,	// 1 by default.
+					'og_vid_autoplay' => empty( $opts[ 'og_vid_autoplay' ] ) ? 0 : 1,	// Enabled by default.
+					'og_vid_prev_img' => empty( $opts[ 'og_vid_prev_img' ] ) ? 0 : 1,	// Enabled by default.
 					'og_vid_width'    => '',	// Custom value for first video.
 					'og_vid_height'   => '',	// Custom value for first video.
 					'og_vid_embed'    => '',
@@ -257,14 +259,17 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					/**
 					 * Twitter Card.
 					 */
+					'tc_lrg_img_id'     => '',
 					'tc_lrg_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
 					'tc_lrg_img_url'    => '',
+					'tc_sum_img_id'     => '',
 					'tc_sum_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
 					'tc_sum_img_url'    => '',
 
 					/**
 					 * Structured Data / Schema Markup / Pinterest.
 					 */
+					'schema_img_max'    => isset( $opts[ 'og_img_max' ] ) ? (int) $opts[ 'og_img_max' ] : 1,	// 1 by default.
 					'schema_img_id'     => '',
 					'schema_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
 					'schema_img_url'    => '',

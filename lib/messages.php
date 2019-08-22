@@ -219,7 +219,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-og_img_max':
+						case 'tooltip-meta-og_img_max':	// Maximum Images.
 
 							$text = __( 'The maximum number of images to include in the Facebook / Open Graph meta tags.', 'wpsso' ) . ' ';
 							
@@ -297,7 +297,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-meta-schema_img_max':
+						case 'tooltip-meta-schema_img_max':	// Maximum Images.
 
 							$text = __( 'The maximum number of images to include in the Schema meta tags and JSON-LD markup.', 'wpsso' );
 
@@ -1276,7 +1276,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-schema_img_max':
+						case 'tooltip-schema_img_max':	// Maximum Images to Include.
 
 							$text = __( 'The maximum number of images to include in the Schema markup &mdash; this includes the <em>featured</em> or <em>attached</em> images, and any images found in the Post or Page content.', 'wpsso' ) . ' ';
 

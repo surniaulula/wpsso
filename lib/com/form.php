@@ -436,6 +436,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				switch ( $name ) {
 
 					case 'og_img_max':
+					case 'schema_img_max':
 
 						if ( $label === 0 ) {
 							$label_transl .= ' ' . $this->get_value_transl( '(no images)' );
@@ -444,6 +445,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						break;
 
 					case 'og_vid_max':
+					case 'schema_vid_max':
 
 						if ( $label === 0 ) {
 							$label_transl .= ' ' . $this->get_value_transl( '(no videos)' );

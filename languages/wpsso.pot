@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.1.0-b.1\n"
+"Project-Id-Version: WPSSO Core 6.1.0-rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1126,18 +1126,18 @@ msgstr ""
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: lib/com/form.php:1100 lib/gettext-com.php:23
+#: lib/com/form.php:1102 lib/gettext-com.php:23
 msgctxt "option comment"
 msgid "crop"
 msgstr ""
 
-#: lib/com/form.php:1106 lib/gettext-com.php:24
+#: lib/com/form.php:1108 lib/gettext-com.php:24
 msgctxt "option comment"
 msgid "from"
 msgstr ""
 
-#: lib/com/form.php:1848 lib/gettext-com.php:25 lib/post.php:1389
-#: lib/wp-meta.php:497
+#: lib/com/form.php:1850 lib/gettext-com.php:25 lib/post.php:1389
+#: lib/wp-meta.php:502
 msgid "Save a draft version or publish to update this value."
 msgstr ""
 
@@ -2808,13 +2808,13 @@ msgid "Twitter Card Desc"
 msgstr ""
 
 #: lib/gettext-pro.php:98 lib/pro/admin/meta-edit.php:151
-#: lib/std/admin/meta-edit.php:148 lib/wp-meta.php:541 lib/wp-meta.php:565
+#: lib/std/admin/meta-edit.php:148 lib/wp-meta.php:546 lib/wp-meta.php:570
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
 #: lib/gettext-pro.php:99 lib/pro/admin/meta-edit.php:159
-#: lib/std/admin/meta-edit.php:157 lib/wp-meta.php:545 lib/wp-meta.php:569
+#: lib/std/admin/meta-edit.php:157 lib/wp-meta.php:550 lib/wp-meta.php:574
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
@@ -2939,23 +2939,23 @@ msgid "Priority Image Information"
 msgstr ""
 
 #: lib/gettext-pro.php:120 lib/gettext-pro.php:134
-#: lib/pro/admin/meta-edit.php:348 lib/pro/admin/meta-edit.php:485
+#: lib/pro/admin/meta-edit.php:348 lib/pro/admin/meta-edit.php:489
 #: lib/std/admin/meta-edit.php:363 lib/std/admin/meta-edit.php:504
 msgctxt "option label"
 msgid "Maximum Images"
 msgstr ""
 
 #: lib/gettext-pro.php:121 lib/gettext-pro.php:131 lib/gettext-pro.php:135
-#: lib/pro/admin/meta-edit.php:355 lib/pro/admin/meta-edit.php:449
-#: lib/pro/admin/meta-edit.php:495 lib/std/admin/meta-edit.php:371
+#: lib/pro/admin/meta-edit.php:355 lib/pro/admin/meta-edit.php:453
+#: lib/pro/admin/meta-edit.php:499 lib/std/admin/meta-edit.php:371
 #: lib/std/admin/meta-edit.php:470 lib/std/admin/meta-edit.php:515
 msgctxt "option label"
 msgid "Image ID"
 msgstr ""
 
 #: lib/gettext-pro.php:122 lib/gettext-pro.php:132 lib/gettext-pro.php:136
-#: lib/pro/admin/meta-edit.php:361 lib/pro/admin/meta-edit.php:457
-#: lib/pro/admin/meta-edit.php:503 lib/std/admin/meta-edit.php:378
+#: lib/pro/admin/meta-edit.php:361 lib/pro/admin/meta-edit.php:461
+#: lib/pro/admin/meta-edit.php:507 lib/std/admin/meta-edit.php:378
 #: lib/std/admin/meta-edit.php:479 lib/std/admin/meta-edit.php:524
 msgctxt "option label"
 msgid "or an Image URL"
@@ -3009,7 +3009,7 @@ msgctxt "option label"
 msgid "Video Description"
 msgstr ""
 
-#: lib/gettext-pro.php:133 lib/pro/admin/meta-edit.php:478
+#: lib/gettext-pro.php:133 lib/pro/admin/meta-edit.php:482
 #: lib/std/admin/meta-edit.php:496
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup / Pinterest"
@@ -5014,7 +5014,7 @@ msgctxt "plugin action link"
 msgid "Purchase %s Add-on"
 msgstr ""
 
-#: lib/messages.php:1986 lib/wp-meta.php:435
+#: lib/messages.php:1986 lib/wp-meta.php:440
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr ""
@@ -6703,132 +6703,132 @@ msgstr ""
 msgid "%1$s for %2$s ID %3$s"
 msgstr ""
 
-#: lib/wp-meta.php:429
+#: lib/wp-meta.php:434
 msgctxt "metabox tab"
 msgid "Customize"
 msgstr ""
 
-#: lib/wp-meta.php:438
+#: lib/wp-meta.php:443
 msgctxt "metabox tab"
 msgid "Preview"
 msgstr ""
 
-#: lib/wp-meta.php:439
+#: lib/wp-meta.php:444
 msgctxt "metabox tab"
 msgid "Head"
 msgstr ""
 
-#: lib/wp-meta.php:440
+#: lib/wp-meta.php:445
 msgctxt "metabox tab"
 msgid "Validate"
 msgstr ""
 
-#: lib/wp-meta.php:514
+#: lib/wp-meta.php:519
 msgctxt "preview image error"
 msgid "Image Size Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/wp-meta.php:524
+#: lib/wp-meta.php:529
 msgctxt "preview image error"
 msgid "Image Size Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/wp-meta.php:533
+#: lib/wp-meta.php:538
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/wp-meta.php:549 lib/wp-meta.php:575
+#: lib/wp-meta.php:554 lib/wp-meta.php:580
 msgctxt "option label"
 msgid "Shortlink URL"
 msgstr ""
 
-#: lib/wp-meta.php:580
+#: lib/wp-meta.php:585
 msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/wp-meta.php:713
+#: lib/wp-meta.php:718
 msgctxt "option label"
 msgid "Facebook Open Graph Debugger"
 msgstr ""
 
-#: lib/wp-meta.php:714
+#: lib/wp-meta.php:719
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/wp-meta.php:718
+#: lib/wp-meta.php:723
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/wp-meta.php:719
+#: lib/wp-meta.php:724
 msgctxt "submit button"
 msgid "Validate Metadata"
 msgstr ""
 
-#: lib/wp-meta.php:723
+#: lib/wp-meta.php:728
 msgctxt "option label"
 msgid "Google Structured Data Test"
 msgstr ""
 
-#: lib/wp-meta.php:724
+#: lib/wp-meta.php:729
 msgctxt "submit button"
 msgid "Validate Structured Data"
 msgstr ""
 
-#: lib/wp-meta.php:728
+#: lib/wp-meta.php:733
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/wp-meta.php:729
+#: lib/wp-meta.php:734
 msgctxt "submit button"
 msgid "Validate Rich Results"
 msgstr ""
 
-#: lib/wp-meta.php:733
+#: lib/wp-meta.php:738
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/wp-meta.php:734
+#: lib/wp-meta.php:739
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/wp-meta.php:738
+#: lib/wp-meta.php:743
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/wp-meta.php:739
+#: lib/wp-meta.php:744
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/wp-meta.php:744
+#: lib/wp-meta.php:749
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr ""
 
-#: lib/wp-meta.php:745
+#: lib/wp-meta.php:750
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr ""
 
-#: lib/wp-meta.php:749
+#: lib/wp-meta.php:754
 msgctxt "option label"
 msgid "The AMP Validator"
 msgstr ""
 
-#: lib/wp-meta.php:750
+#: lib/wp-meta.php:755
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/wp-meta.php:984
+#: lib/wp-meta.php:989
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
