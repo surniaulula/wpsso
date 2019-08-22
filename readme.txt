@@ -449,7 +449,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* None.
 
-**Version 6.1.0-b.1 (2019/08/19)**
+**Version 6.1.0-rc.1 (2019/08/22)**
 
 * **New Features**
 	* None.
@@ -458,7 +458,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Removed all "Image Subject Area" options under the Priority Media tab in the Document SSO metabox.
 	* Removed the Priority Media tab in the Document SSO metabox from attachment editing pages.
 * **Bugfixes**
-	* None.
+	* Fixed the default value of Maximum Images options in the Document SSO metabox.
 * **Developer Notes**
 	* None.
 
@@ -679,9 +679,9 @@ This version includes several jQuery improvements to optimize both the size of s
 
 == Upgrade Notice ==
 
-= 6.1.0-b.1 =
+= 6.1.0-rc.1 =
 
-(2019/08/19) Added a "Preferred Cropping" option in the Document SSO metabox for attachment editing pages.
+(2019/08/22) Added a "Preferred Cropping" option in the Document SSO metabox for attachment editing pages.
 
 = 6.0.0 =
 
