@@ -460,7 +460,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added a 'wpsso_json_single_graph_data' filter for each Schema @graph property array element.
+	* Added a 'wpsso_json_data_graph_element' filter for each Schema @graph property array element.
 
 **Version 6.0.0 (2019/08/18)**
 
