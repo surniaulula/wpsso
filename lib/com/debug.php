@@ -151,7 +151,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			}
 
 			$first_col  = '%-38s:: ';
-			$second_col = '%-48s: ';
+			$second_col = '%-50s: ';
 			$stack      = debug_backtrace();
 			$log_msg    = '';
 

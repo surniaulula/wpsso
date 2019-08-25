@@ -471,28 +471,30 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/**
 				 * Add the json data to the @graph array.
 				 */
-				foreach ( $json_data as $single_json ) {
+				foreach ( $json_data as $single_graph ) {
 
-					if ( empty( $single_json ) || ! is_array( $single_json ) ) {	// Just in case.
+					if ( empty( $single_graph ) || ! is_array( $single_graph ) ) {	// Just in case.
 						continue;
 					}
 
-					if ( empty( $single_json[ '@type' ] ) ) {
+					if ( empty( $single_graph[ '@type' ] ) ) {
 
 						$type_url = $this->get_schema_type_url( $type_id );
 
-						$single_json = self::get_schema_type_context( $type_url, $single_json );
+						$single_graph = self::get_schema_type_context( $type_url, $single_graph );
 
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'added @type property is ' . $single_json[ '@type' ] );
+							$this->p->debug->log( 'added @type property is ' . $single_graph[ '@type' ] );
 						}
 
 					} elseif ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'existing @type property is ' .
-							print_r( $single_json[ '@type' ], true ) );	// @type can be an array.
+						$this->p->debug->log( 'existing @type property is ' . print_r( $single_graph[ '@type' ], true ) );
 					}
 
-					WpssoSchemaGraph::add_data( $single_json );
+					$single_graph = apply_filters( $this->p->lca . '_json_single_graph_data',
+						$single_graph, $mod, $mt_og, $page_type_id, $is_main );
+
+					WpssoSchemaGraph::add_data( $single_graph );
 				}
 
 				if ( $this->p->debug->enabled ) {
@@ -506,8 +508,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$graph_json     = WpssoSchemaGraph::get_json_clean();
 			$graph_type_url = WpssoSchemaGraph::get_type_url();
 			$filter_name    = $this->p->lca . '_json_prop_' . SucomUtil::sanitize_hookname( $graph_type_url );
-
-			$graph_json = apply_filters( $filter_name, $graph_json, $mod, $mt_og, $page_type_id, $is_main );
+			$graph_json     = apply_filters( $filter_name, $graph_json, $mod, $mt_og, $page_type_id, $is_main );
 
 			if ( ! empty( $graph_json[ '@graph' ] ) ) {	// Just in case.
 
