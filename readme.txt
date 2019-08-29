@@ -460,6 +460,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed `wp_add_inline_script()` call by adding a `function_exists()` test (for older WP versions).
 	* Fixed `wp_json_encode()` call by replacing it with `SucomUtil::json_encode_array()` (for older WP versions).
+	* Fixed saving of checkbox option groups ("changed" class added to all group members as required).
 * **Developer Notes**
 	* Added a 'wpsso_json_data_graph_element' filter for each Schema @graph property array element.
 
