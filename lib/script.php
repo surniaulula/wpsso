@@ -180,7 +180,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 						$plugin_slug = $_GET[ 'plugin' ];
 
-						if ( isset( $this->p->cf[ '*' ][ 'slug' ][$plugin_slug] ) ) {
+						if ( isset( $this->p->cf[ '*' ][ 'slug' ][ $plugin_slug ] ) ) {
 
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'enqueuing scripts for plugin install page' );
@@ -430,7 +430,12 @@ jQuery( document ).ready( function(){
 		}
 	});
 });';
-			wp_add_inline_script( 'plugin-install', $custom_script_js );
+
+			if ( function_exists( 'wp_add_inline_script' ) ) {	// Since WP v4.5.0.
+				wp_add_inline_script( 'plugin-install', $custom_script_js );
+			} else {
+				echo '<script type="text/javascript">' . $custom_script_js . '</script>';
+			}
 		}
 	}
 }

@@ -462,12 +462,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function get_column_content( $value, $column_name, $user_id ) {
 
-			if ( ! empty( $user_id ) && strpos( $column_name, $this->p->lca . '_' ) === 0 ) {	// just in case
+			if ( ! empty( $user_id ) && strpos( $column_name, $this->p->lca . '_' ) === 0 ) {	// Just in case.
 
 				$col_key = str_replace( $this->p->lca . '_', '', $column_name );
 
 				if ( ( $col_info = self::get_sortable_columns( $col_key ) ) !== null ) {
-					if ( isset( $col_info[ 'meta_key' ] ) ) {	// just in case
+					if ( isset( $col_info[ 'meta_key' ] ) ) {	// Just in case.
 						$value = $this->get_meta_cache_value( $user_id, $col_info[ 'meta_key' ] );
 					}
 				}
@@ -498,9 +498,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( ! empty( $user_id ) ) {	// just in case
+			if ( ! empty( $user_id ) ) {	// Just in case.
 				if ( ( $sort_cols = self::get_sortable_columns( $col_key ) ) !== null ) {
-					if ( isset( $sort_cols[ 'meta_key' ] ) ) {	// just in case
+					if ( isset( $sort_cols[ 'meta_key' ] ) ) {	// Just in case.
 						update_user_meta( $user_id, $sort_cols[ 'meta_key' ], $content );
 					}
 				}
@@ -839,7 +839,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 							$cm_label_value = SucomUtil::get_key_value( $cm_label_key, $this->p->options );
 
-							if ( ! empty( $cm_label_value ) ) {	// just in case
+							if ( ! empty( $cm_label_value ) ) {	// Just in case.
 								$fields[ $id ] = $cm_label_value;
 							}
 
@@ -1399,16 +1399,19 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$field_id = $this->p->options[ 'og_author_field' ];	// Provide a default value.
 			}
 
-			foreach ( $user_ids as $user_id ) {
+			if ( ! empty( $field_id ) && $field_id !== 'none' ) {	// Just in case.
 
-				if ( empty( $user_id ) ) {
-					continue;
-				}
+				foreach ( $user_ids as $user_id ) {
 
-				$value = $this->get_author_website( $user_id, $field_id );
+					if ( empty( $user_id ) ) {
+						continue;
+					}
 
-				if ( ! empty( $value ) ) {	// Make sure we don't add empty values.
-					$ret[] = $value;
+					$value = $this->get_author_website( $user_id, $field_id );
+
+					if ( ! empty( $value ) ) {	// Make sure we don't add empty values.
+						$ret[] = $value;
+					}
 				}
 			}
 
@@ -1457,7 +1460,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						break;
 				}
 
-				$website_url = trim( $website_url );	// just in case
+				$website_url = trim( $website_url );	// Just in case.
 
 			} else {
 			

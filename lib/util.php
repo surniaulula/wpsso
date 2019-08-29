@@ -2313,7 +2313,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 * Encode the json.
 			 */
 			if ( ! is_string( $json ) ) {
-				$json = self::json_encode_array( $json, $options, $depth );	// Prefers wp_json_encode() to json_encode().
+				$json = self::json_encode_array( $json, $options, $depth );
 			}
 
 			/**

@@ -719,7 +719,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( $have_changes ) {							// Only re-encode $data when necessary.
-				$req[ 'body' ][ 'plugins' ] = wp_json_encode( $data );
+				$req[ 'body' ][ 'plugins' ] = SucomUtil::json_encode_array( $data );
 			}
 
 			return $req;
