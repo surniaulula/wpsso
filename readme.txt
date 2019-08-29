@@ -449,7 +449,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* None.
 
-**Version 6.1.0-rc.3 (2019/08/27)**
+**Version 6.1.0-rc.4 (2019/08/29)**
 
 * **New Features**
 	* None.
@@ -458,7 +458,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Removed all "Image Subject Area" options under the Priority Media tab in the Document SSO metabox.
 	* Removed the Priority Media tab in the Document SSO metabox from attachment editing pages.
 * **Bugfixes**
-	* None.
+	* Fixed `wp_add_inline_script()` call by adding a `function_exists()` test (for older WP versions).
+	* Fixed `wp_json_encode()` call by replacing it with `SucomUtil::json_encode_array()` (for older WP versions).
 * **Developer Notes**
 	* Added a 'wpsso_json_data_graph_element' filter for each Schema @graph property array element.
 
@@ -679,9 +680,9 @@ This version includes several jQuery improvements to optimize both the size of s
 
 == Upgrade Notice ==
 
-= 6.1.0-rc.3 =
+= 6.1.0-rc.4 =
 
-(2019/08/27) Added a "Preferred Cropping" option in the Document SSO metabox for attachment editing pages.
+(2019/08/29) Added a "Preferred Cropping" option in the Document SSO metabox for attachment editing pages.
 
 = 6.0.0 =
 
