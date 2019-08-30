@@ -271,7 +271,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			/**
 			 * Get first term with matching 'term_taxonomy_id'.
 			 */
-			$term = get_term_by( 'term_taxonomy_id', $term_tax_id );
+			$term = get_term_by( 'term_taxonomy_id', $term_tax_id, $tax_slug = '' );
 
 			if ( is_object( $term ) ) {	// Just in case.
 				$mod = $this->get_mod( $term_id, $term->term_taxonomy_id );
@@ -783,7 +783,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		 */
 		public function clear_cache( $term_id, $term_tax_id = false ) {
 
-			$taxonomy = get_term_by( 'term_taxonomy_id', $term_tax_id );
+			$taxonomy = get_term_by( 'term_taxonomy_id', $term_tax_id, $tax_slug = '' );
 
 			if ( isset( $taxonomy->slug ) ) {	// Just in case.
 				$mod = $this->get_mod( $term_id, $taxonomy->slug );
