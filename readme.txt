@@ -449,7 +449,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* None.
 
-**Version 6.1.0-rc.4 (2019/08/29)**
+**Version 6.1.0-rc.5 (2019/08/30)**
 
 * **New Features**
 	* None.
@@ -681,9 +681,9 @@ This version includes several jQuery improvements to optimize both the size of s
 
 == Upgrade Notice ==
 
-= 6.1.0-rc.4 =
+= 6.1.0-rc.5 =
 
-(2019/08/29) Added a "Preferred Cropping" option in the Document SSO metabox for attachment editing pages.
+(2019/08/30) Added a "Preferred Cropping" option in the Document SSO metabox for attachment editing pages.
 
 = 6.0.0 =
 
