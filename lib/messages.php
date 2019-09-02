@@ -1773,17 +1773,37 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $msg_key ) {
 
+						case 'info-priority-media':
+
+							$upload_url = get_admin_url( 'upload.php' );
+
+							$text = '<blockquote class="top-info">';
+
+							$text .= '<p>';
+
+							$text .= sprintf( __( 'Edit images in the WordPress <a href="%s">Media Library</a> to select a preferred cropping area and manage image SEO.', 'wpsso' ), $upload_url );
+
+							$text .= '</p>';
+
+							$text .= '</blockquote>';
+
+							break;
+
 						case 'info-woocommerce-cf-attr':
 
-							$text = '<p class="status-msg top">';
+							$text = '<blockquote class="top-info">';
 							
+							$text .= '<p>';
+
 							$text .= __( 'Note that product attribute values from WooCommerce have precedence over custom field values.', 'wpsso' );
 							
-							$text .= '<br/>';
+							$text .= '</p><p>';
 
 							$text .= sprintf( __( 'Refer to the <a href="%s">WooCommerce integration notes</a> for information on setting up product attributes and custom fields.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/' );
 
 							$text .= '</p>';
+
+							$text .= '</blockquote>';
 
 							break;
 
@@ -1794,11 +1814,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = '<blockquote class="top-info">';
 
-							$text .= '<p>' . sprintf( __( 'After purchasing the %1$s plugin or any complementary %2$s add-on, you\'ll receive an email with a unique Authentication ID for the plugin or add-on you purchased.', 'wpsso' ), $info[ 'short_pro' ], $pro_transl ) . ' ';
+							$text .= '<p>';
+							
+							$text .= sprintf( __( 'After purchasing the %1$s plugin or any complementary %2$s add-on, you\'ll receive an email with a unique Authentication ID for the plugin or add-on you purchased.', 'wpsso' ), $info[ 'short_pro' ], $pro_transl ) . ' ';
 
 							$text .=  __( 'Enter the Authentication ID in the option field corresponding to the plugin or add-on you purchased.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'Don\'t forget that the %1$s add-on must be installed and active to check for %2$s version updates.', 'wpsso' ), $um_addon_link, $pro_transl ) . ' ;-)</p>';
+							$text .= sprintf( __( 'Don\'t forget that the %1$s add-on must be installed and active to check for %2$s version updates.', 'wpsso' ), $um_addon_link, $pro_transl ) . ' ;-)';
+							
+							$text .= '</p>';
 
 
 							$text .= '</blockquote>';

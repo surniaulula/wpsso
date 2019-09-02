@@ -343,6 +343,10 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 				array( 'pid', 'img_url' ), $mod, $md_pre = 'none', $mt_pre = 'og' );
 
 			$form_rows = array(
+				'info-priority-media' => array(
+					'table_row' => empty( $media_info[ 'pid' ] ) ?
+						'' : '<td colspan="2">' . $this->p->msgs->get( 'info-priority-media' ) . '</td>',
+				),
 				'pro-feature-msg' => array(
 					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>',
 				),
