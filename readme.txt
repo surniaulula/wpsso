@@ -435,7 +435,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.2.0-dev.1 (TBD)**
+**Version 6.3.0-dev.1 (TBD)**
 
 * **New Features**
 	* None.
@@ -444,6 +444,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Schema Article AMP 1x1 (Google)
 		* Schema Article AMP 4x3 (Google)
 		* Schema Article AMP 16x9 (Google)
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+
+**Version 6.2.0-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added support for product variations in the WP e-Commerce integration module (Pro version).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -458,9 +469,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Removed all "Image Subject Area" options under the Priority Media tab in the Document SSO metabox.
 	* Removed the Priority Media tab in the Document SSO metabox from attachment editing pages.
 * **Bugfixes**
+	* Fixed saving of checkbox option groups ("changed" class added to all group members as required).
 	* Fixed `wp_add_inline_script()` call by adding a `function_exists()` test (for older WP versions).
 	* Fixed `wp_json_encode()` call by replacing it with `SucomUtil::json_encode_array()` (for older WP versions).
-	* Fixed saving of checkbox option groups ("changed" class added to all group members as required).
+	* Fixed `get_term_by()` calls for 'term_taxonomy_id' by adding an empty taxonomy slug argument (for older WP versions).
 * **Developer Notes**
 	* Added a 'wpsso_json_data_graph_element' filter for each Schema @graph property array element.
 
