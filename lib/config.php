@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '6.2.0-dev.1',	// Plugin version.
-					'opt_version' => '661',		// Increment when changing default option values.
+					'opt_version' => '663',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'WPSSO Core makes sure your content looks great on all social and search sites - no matter how URLs are crawled, shared, re-shared, posted, or embedded!',
@@ -882,6 +882,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_tribe_events'      => 'event',
 					'schema_type_for_webpage'           => 'webpage',
 					'schema_type_for_website'           => 'website',
+					'schema_type_for_wpsc-product'      => 'product',	// For WP eCommerce.
 					'fb_publisher_url'                  => '',		// Facebook Business Page URL (localized).
 					'fb_app_id'                         => '',		// Facebook Application ID.
 					'fb_admins'                         => '',		// or Facebook Admin Username(s).
@@ -911,11 +912,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Other term / post types.
 					 */
-					'og_type_for_article'  => 'article',
-					'og_type_for_download' => 'product',		// For Easy Digital Downloads.
-					'og_type_for_place'    => 'place',
-					'og_type_for_product'  => 'product',
-					'og_type_for_website'  => 'website',
+					'og_type_for_article'      => 'article',
+					'og_type_for_download'     => 'product',		// For Easy Digital Downloads.
+					'og_type_for_place'        => 'place',
+					'og_type_for_product'      => 'product', 		// For WooCommerce and most e-commerce plugins.
+					'og_type_for_website'      => 'website',
+					'og_type_for_wpsc-product' => 'product',		// For WP eCommerce.
 
 					'og_art_section'             => 'none',
 					'og_img_width'               => 1200,

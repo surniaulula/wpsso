@@ -3051,31 +3051,31 @@ msgstr ""
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: lib/gettext-pro.php:148 lib/pro/ecom/woocommerce.php:128
+#: lib/gettext-pro.php:148 lib/pro/ecom/woocommerce.php:127
 msgid ""
 "The WooCommerce %s method is not available - please update to a newer "
 "version of WooCommerce."
 msgstr ""
 
-#: lib/gettext-pro.php:149 lib/pro/ecom/woocommerce.php:946
+#: lib/gettext-pro.php:149 lib/pro/ecom/woocommerce.php:944
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
-#: lib/gettext-pro.php:150 lib/pro/ecom/woocommerce.php:949
+#: lib/gettext-pro.php:150 lib/pro/ecom/woocommerce.php:947
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/gettext-pro.php:151 lib/pro/ecom/woocommerce.php:1118
+#: lib/gettext-pro.php:151 lib/pro/ecom/woocommerce.php:1116
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/gettext-pro.php:152 lib/pro/ecom/woocommerce.php:1120
+#: lib/gettext-pro.php:152 lib/pro/ecom/woocommerce.php:1118
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:153 lib/pro/ecom/woocommerce.php:1123
+#: lib/gettext-pro.php:153 lib/pro/ecom/woocommerce.php:1121
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 
