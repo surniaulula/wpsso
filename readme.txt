@@ -72,7 +72,7 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 
 * Includes advanced *quality assurance* features and options.
 
-<h3>Complementary Add-ons</h3>
+<h3>Free Complementary Add-ons</h3>
 
 * [WPSSO FAQ Manager](https://wordpress.org/plugins/wpsso-faq/) to manage FAQ categories with Question and Answer pages.
 * [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
@@ -454,11 +454,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Added support for product variations in the WP e-Commerce integration module (Pro version).
+	* Added support for product variations in the WP eCommerce integration module (Pro version).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Refactored the WP eCommerce integration module to support variable products (Pro version).
+	* Added support for the 'wpsc-product' custom post type for WP eCommerce (Pro version).
+	* Added `$prod_post_type` and `$page_id_checkout` private properties to the EDD integration module (Pro version).
+	* Added 'wpsso_use_post', 'wpsso_schema_type_id', and 'wpsso_the_content_seed' filters to handle the EDD checkout page (Pro version).
 
 **Version 6.1.0 (2019/09/01)**
 
