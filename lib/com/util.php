@@ -1103,6 +1103,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_desktop() {
+
 			return self::is_mobile() ? false : true;
 		}
 
@@ -2728,6 +2729,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
+		public static function is_mod_post_type( $mod, $post_type = 'product' ) {
+
+			if ( $mod[ 'is_post' ] && $mod[ 'id' ] && $mod[ 'post_type' ] === $post_type ) {
+
+				return true;
+			}
+
+			return false;
+		}
+
 		public static function is_post_exists( $post_id ) {
 
 			  return is_string( get_post_status( $post_id ) );
@@ -3094,30 +3105,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					break;
 			}
-		}
-
-		public static function is_product_page( $use_post = false, $product_obj = false ) {
-
-			$ret = false;
-
-			if ( function_exists( 'is_product' ) && is_product() ) {
-
-				$ret = true;
-
-			} elseif ( is_admin() || is_object( $product_obj ) ) {
-
-				if ( ! is_object( $product_obj ) ) {
-
-					$product_obj = self::get_post_object( $use_post );
-				}
-
-				if ( isset( $product_obj->post_type ) && $product_obj->post_type === 'product' ) {
-
-					$ret = true;
-				}
-			}
-
-			return apply_filters( 'sucom_is_product_page', $ret, $use_post, $product_obj );
 		}
 
 		public static function is_product_category() {

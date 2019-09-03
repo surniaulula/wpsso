@@ -2364,7 +2364,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 		'PreOrder'            => 'pending',
 				 		'SoldOut '            => 'oos',
 					),
-					'product:condition' => array(		// 'new', 'refurbished', or 'used'
+					'product:condition' => array(
 						'DamagedCondition'     => 'used',
 						'NewCondition'         => 'new',
 						'RefurbishedCondition' => 'refurbished',

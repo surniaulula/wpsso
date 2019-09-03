@@ -1940,24 +1940,29 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'pro-ecom-product-msg':
 
-						$text = '<p class="pro-feature-msg">';
+						if ( empty( $this->p->avail[ 'ecom' ][ 'any' ] ) ) {	// Just in case.
 
-						if ( WpssoAdmin::$pkg[ $this->p->lca ][ 'pp' ] ) {
-
-							$text .= __( 'An e-commerce plugin is active &ndash; some product details may be managed from the e-commerce plugin.',
-								'wpsso' );
+							$text = '';
 
 						} else {
 
-							$text .= empty( $url[ 'purchase' ] ) ? '' : '<a href="' . $url[ 'purchase' ] . '">';
+							$text = '<p class="pro-feature-msg">';
 
-							$text .= sprintf( __( 'An e-commerce plugin is active &ndash; product details may be retrieved by the %s plugin.',
-								'wpsso' ), $info[ 'short_pro' ] );
+							if ( WpssoAdmin::$pkg[ $this->p->lca ][ 'pp' ] ) {
 
-							$text .= empty( $url[ 'purchase' ] ) ? '' : '</a>';
+								$text .= __( 'An e-commerce plugin is active &ndash; some product details may be managed from the e-commerce plugin.', 'wpsso' );
+
+							} else {
+
+								$text .= empty( $url[ 'purchase' ] ) ? '' : '<a href="' . $url[ 'purchase' ] . '">';
+
+								$text .= sprintf( __( 'An e-commerce plugin is active &ndash; product details may be retrieved by the %s plugin.', 'wpsso' ), $info[ 'short_pro' ] );
+
+								$text .= empty( $url[ 'purchase' ] ) ? '' : '</a>';
+							}
+
+							$text .= '</p>';
 						}
-						
-						$text .= '</p>';
 
 						break;
 
