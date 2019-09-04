@@ -344,8 +344,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$mtime_start = microtime( true );
 
-			$crawler_name = SucomUtil::get_crawler_name();
-
 			/**
 			 * The $mod array argument is preferred but not required.
 			 * $mod = true | false | post_id | $mod array
@@ -383,9 +381,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$mtime_total = microtime( true ) - $mtime_start;
 
-			$html .= '<!-- added on ' . date( 'c' ) . ' in ' . sprintf( '%f secs', $mtime_total ) . 
-				( $crawler_name !== 'none' ? ' for ' . $crawler_name : '' ) . 
-					' from ' . SucomUtilWP::raw_home_url() . ' -->' . "\n\n";
+			$html .= '<!-- added on ' . date( 'c' ) .
+				' in ' . sprintf( '%f secs', $mtime_total ) . 
+				' from ' . SucomUtilWP::raw_home_url() . ' -->' . "\n\n";
 
 			return $html;
 		}
@@ -423,9 +421,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				return array();
 			}
 
-			$is_admin     = is_admin();	// Call the function only once.
-			$crawler_name = SucomUtil::get_crawler_name();
-
+			$is_admin      = is_admin();	// Call the function only once.
 			$cache_md5_pre = $this->p->lca . '_h_';
 			$cache_salt    = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $sharing_url ) . ')';
 			$cache_id      = $cache_md5_pre . md5( $cache_salt );
@@ -457,7 +453,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'sharing url = ' . $sharing_url );
-				$this->p->debug->log( 'crawler name = ' . $crawler_name );
 				$this->p->debug->log( 'cache expire = ' . $cache_exp_secs );
 				$this->p->debug->log( 'cache salt = ' . $cache_salt );
 				$this->p->debug->log( 'cache id = ' . $cache_id );
@@ -538,21 +533,21 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			$this->p->util->maybe_set_ref( $sharing_url, $mod, __( 'adding open graph meta tags', 'wpsso' ) );
 
-			$mt_og = $this->p->og->get_array( $mod, $crawler_name );
+			$mt_og = $this->p->og->get_array( $mod );
 
 			$this->p->util->maybe_unset_ref( $sharing_url );
 
 			/**
 			 * Weibo.
 			 */
-			$mt_weibo = $this->p->weibo->get_array( $mod, $mt_og, $crawler_name );
+			$mt_weibo = $this->p->weibo->get_array( $mod, $mt_og );
 
 			/**
 			 * Twitter Cards.
 			 */
 			$this->p->util->maybe_set_ref( $sharing_url, $mod, __( 'adding twitter card meta tags', 'wpsso' ) );
 
-			$mt_tc = $this->p->tc->get_array( $mod, $mt_og, $crawler_name );
+			$mt_tc = $this->p->tc->get_array( $mod, $mt_og );
 
 			$this->p->util->maybe_unset_ref( $sharing_url );
 
@@ -561,7 +556,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			$this->p->util->maybe_set_ref( $sharing_url, $mod, __( 'adding meta name meta tags', 'wpsso' ) );
 
-			$mt_name = $this->p->meta_name->get_array( $mod, $mt_og, $crawler_name, $author_id );
+			$mt_name = $this->p->meta_name->get_array( $mod, $mt_og, $author_id );
 
 			$this->p->util->maybe_unset_ref( $sharing_url );
 
@@ -570,7 +565,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			$this->p->util->maybe_set_ref( $sharing_url, $mod, __( 'adding link relation tags', 'wpsso' ) );
 
-			$link_rel = $this->p->link_rel->get_array( $mod, $mt_og, $crawler_name, $author_id, $sharing_url );
+			$link_rel = $this->p->link_rel->get_array( $mod, $mt_og, $author_id, $sharing_url );
 
 			$this->p->util->maybe_unset_ref( $sharing_url );
 
@@ -579,7 +574,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			$this->p->util->maybe_set_ref( $sharing_url, $mod, __( 'adding schema meta tags', 'wpsso' ) );
 
-			$mt_item = $this->p->meta_item->get_array( $mod, $mt_og, $crawler_name );
+			$mt_item = $this->p->meta_item->get_array( $mod, $mt_og );
 
 			$this->p->util->maybe_unset_ref( $sharing_url );
 
@@ -588,7 +583,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			$this->p->util->maybe_set_ref( $sharing_url, $mod, __( 'adding schema json-ld markup', 'wpsso' ) );
 
-			$json_ld = $this->p->schema->get_array( $mod, $mt_og, $crawler_name );
+			$json_ld = $this->p->schema->get_array( $mod, $mt_og );
 
 			$this->p->util->maybe_unset_ref( $sharing_url );
 
@@ -610,7 +605,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->get_mt_array( 'meta', 'name', $mt_tc, $mod ),
 				$this->get_mt_array( 'meta', 'itemprop', $mt_item, $mod ),
 				$this->get_mt_array( 'meta', 'name', $mt_name, $mod ),	// SEO description is last.
-				$this->p->noscript->get_array( $mod, $mt_og, $crawler_name ),
+				$this->p->noscript->get_array( $mod, $mt_og ),
 				$json_ld
 			);
 

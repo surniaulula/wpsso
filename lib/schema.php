@@ -338,7 +338,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Called by WpssoHead::get_head_array().
 		 * Pass $mt_og by reference to assign values to the schema:type internal meta tags.
 		 */
-		public function get_array( array $mod, array &$mt_og = array(), $crawler_name = false ) {	// Pass by reference is OK.
+		public function get_array( array $mod, array &$mt_og = array() ) {	// Pass by reference is OK.
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'build json array' );	// Begin timer for json array.
@@ -608,9 +608,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return false;
 			}
 
+			$size_name    = $this->p->lca . '-schema';
 			$page_type_id = $this->get_mod_schema_type( $mod, $get_schema_id = true );
 			$sharing_url  = $this->p->util->maybe_set_ref( null, $mod, __( 'adding schema', 'wpsso' ) );
-			$mt_og        = $this->p->og->get_array( $mod );
+			$mt_og        = $this->p->og->get_array( $mod, $size_name );
 			$json_data    = $this->get_json_data( $mod, $mt_og, $page_type_id, $is_main = true );
 
 			$this->p->util->maybe_unset_ref( $sharing_url );

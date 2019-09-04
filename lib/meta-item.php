@@ -156,7 +156,7 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 			return true;
 		}
 
-		public function get_array( array $mod, array $mt_og = array(), $crawler_name = false ) {
+		public function get_array( array $mod, array $mt_og = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -226,10 +226,10 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 					break;
 			}
 
-			if ( class_exists( 'WpssoNoScript' ) && WpssoNoScript::is_enabled( $crawler_name ) ) {
+			if ( class_exists( 'WpssoNoScript' ) && WpssoNoScript::is_enabled() ) {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'skipping images: noscript is enabled for ' . $crawler_name );
+					$this->p->debug->log( 'skipping images: noscript is enabled' );
 				}
 
 			} elseif ( empty( $this->p->options[ 'add_link_itemprop_image' ] ) ) {

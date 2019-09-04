@@ -482,13 +482,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 				if ( $this->debug->is_enabled( 'html' ) ) {
 
-					if ( SucomUtil::get_crawler_name() !== 'none' ) {
-						$this->debug->enable( 'html', false );	// Disable HTML debug messages for crawlers.
-					}
-				}
-
-				if ( $this->debug->is_enabled( 'html' ) ) {
-
 					$this->debug->log( 'HTML debug mode is active' );
 
 					if ( $is_admin ) {

@@ -15,7 +15,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		protected $p;
 
-		protected static $cache_crawler_name  = null;		// Saved crawler name from user-agent.
 		protected static $cache_locale_names  = array();	// Saved get_locale() values.
 		protected static $cache_filter_values = array();	// Saved filter return values.
 
@@ -1486,122 +1485,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			} else {
 				return true;
 			}
-		}
-
-		public static function is_crawler_name( $crawler_name ) {
-
-			return $crawler_name === self::get_crawler_name() ? true : false;
-		}
-
-		public static function get_crawler_name() {
-
-			if ( ! isset( self::$cache_crawler_name ) ) {
-
-				$ua = isset( $_SERVER[ 'HTTP_USER_AGENT' ] ) ?
-					strtolower( $_SERVER[ 'HTTP_USER_AGENT' ] ) : '';
-
-				switch ( true ) {
-
-					/**
-					 * "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)"
-					 */
-					case ( 0 === strpos( $ua, 'facebookexternalhit/' ) ):
-
-						self::$cache_crawler_name = 'facebook';
-
-						break;
-
-					/**
-					 * "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)"
-					 */
-					case ( false !== strpos( $ua, 'compatible; bingbot/' ) ):
-
-						self::$cache_crawler_name = 'bing';
-
-						break;
-
-					/**
-					 * "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
-					 */
-					case ( false !== strpos( $ua, 'compatible; googlebot/' ) ):
-
-						self::$cache_crawler_name = 'google';
-
-						break;
-
-					/**
-					 * Mozilla/5.0 (compatible; Google-Structured-Data-Testing-Tool +https://search.google.com/structured-data/testing-tool)"
-					 */
-					case ( false !== strpos( $ua, 'compatible; google-structured-data-testing-tool' ) ):
-
-						self::$cache_crawler_name = 'google';
-
-						break;
-
-					/**
-					 * "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MTC19V) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.81 Mobile Safari/537.36 (compatible; validator.ampproject.org) AppEngine-Google; (+http://code.google.com/appengine; appid: s~amp-validator)"
-					 */
-					case ( false !== strpos( $ua, 'validator.ampproject.org' ) ):
-
-						self::$cache_crawler_name = 'amp';
-
-						break;
-
-					/**
-					 * "Pinterest/0.2 (+http://www.pinterest.com/bot.html)"
-					 */
-					case ( 0 === strpos( $ua, 'pinterest/' ) ):
-					case ( 0 === strpos( $ua, 'pinterestbot/' ) ):
-
-						self::$cache_crawler_name = 'pinterest';
-
-						break;
-
-					/**
-					 * "Twitterbot/1.0"
-					 */
-					case ( 0 === strpos( $ua, 'twitterbot/' ) ):
-						self::$cache_crawler_name = 'twitter';
-						break;
-
-					/**
-					 * "Validator.nu/LV http://validator.w3.org/services"
-					 */
-					case ( 0 === strpos( $ua, 'validator.nu/' ) ):
-
-						self::$cache_crawler_name = 'w3c';
-
-						break;
-
-					/**
-					 * "W3C_Validator/1.3 http://validator.w3.org/services"
-					 */
-					case ( 0 === strpos( $ua, 'w3c_validator/' ) ):
-
-						self::$cache_crawler_name = 'w3c';
-
-						break;
-
-					/**
-					 * "WhatsApp/0.3.1850 N"
-					 */
-					case ( 0 === strpos( $ua, 'whatsapp/' ) ):
-
-						self::$cache_crawler_name = 'whatsapp';
-
-						break;
-
-					default:
-
-						self::$cache_crawler_name = 'none';
-
-						break;
-				}
-
-				self::$cache_crawler_name = apply_filters( 'sucom_crawler_name', self::$cache_crawler_name, $ua );
-			}
-
-			return self::$cache_crawler_name;
 		}
 
 		public static function is_assoc( $mixed ) {

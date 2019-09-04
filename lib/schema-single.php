@@ -782,38 +782,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/**
-			 * Add the product variation image.
+			 * Images.
 			 */
-			if ( ! empty( $mt_offer[ 'product:image:id' ] ) ) {
-
-				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'getting offer image ID ' . $mt_offer[ 'product:image:id' ] );
-				}
-
-				/**
-				 * Set reference values for admin notices.
-				 */
-				if ( is_admin() ) {
-					if ( ! empty( $offer[ 'url' ] ) ) {
-						$wpsso->notice->set_ref( $offer[ 'url' ], $mod, __( 'adding schema offer', 'wpsso-schema-json-ld' ) );
-					}
-				}
-
-				$og_image = $wpsso->media->get_attachment_image( 1, $size_name, $mt_offer[ 'product:image:id' ], $check_dupes = false );
-
-				if ( ! empty( $og_image ) ) {
-					if ( ! WpssoSchema::add_images_data_mt( $offer[ 'image' ], $og_image ) ) {
-						unset( $offer[ 'image' ] );	// Prevent null assignment.
-					}
-				}
-
-				/**
-				 * Restore previous reference values for admin notices.
-				 */
-				if ( is_admin() ) {
-					if ( ! empty( $offer[ 'url' ] ) ) {
-						$wpsso->notice->unset_ref( $offer[ 'url' ] );
-					}
+			if ( ! empty( $mt_offer[ 'og:image' ] ) ) {
+				if ( ! WpssoSchema::add_images_data_mt( $offer[ 'image' ], $mt_offer[ 'og:image' ] ) ) {
+					unset( $offer[ 'image' ] );	// Prevent null assignment.
 				}
 			}
 
@@ -1150,7 +1123,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			) );
 
 			/**
-			 * Images
+			 * Images.
 			 */
 			if ( ! empty( $person_opts[ 'person_og_image' ] ) ) {
 				if ( ! WpssoSchema::add_images_data_mt( $ret[ 'image' ], $person_opts[ 'person_og_image' ] ) ) {

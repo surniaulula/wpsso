@@ -3058,26 +3058,26 @@ msgid ""
 msgstr ""
 
 #: lib/gettext-pro.php:149 lib/gettext-pro.php:154
-#: lib/pro/ecom/woocommerce.php:843 lib/pro/ecom/wpecommerce.php:514
+#: lib/pro/ecom/woocommerce.php:851 lib/pro/ecom/wpecommerce.php:539
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
 #: lib/gettext-pro.php:150 lib/gettext-pro.php:155
-#: lib/pro/ecom/woocommerce.php:846 lib/pro/ecom/wpecommerce.php:517
+#: lib/pro/ecom/woocommerce.php:854 lib/pro/ecom/wpecommerce.php:542
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/gettext-pro.php:151 lib/pro/ecom/woocommerce.php:1150
+#: lib/gettext-pro.php:151 lib/pro/ecom/woocommerce.php:1158
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/gettext-pro.php:152 lib/pro/ecom/woocommerce.php:1152
+#: lib/gettext-pro.php:152 lib/pro/ecom/woocommerce.php:1160
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:153 lib/pro/ecom/woocommerce.php:1155
+#: lib/gettext-pro.php:153 lib/pro/ecom/woocommerce.php:1163
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 
@@ -3224,27 +3224,27 @@ msgctxt "option value"
 msgid "%s Location"
 msgstr ""
 
-#: lib/head.php:539
+#: lib/head.php:534
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:553
+#: lib/head.php:548
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:562
+#: lib/head.php:557
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:571
+#: lib/head.php:566
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:580
+#: lib/head.php:575
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:589
+#: lib/head.php:584
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -5570,7 +5570,7 @@ msgctxt "option value"
 msgid "cropped"
 msgstr ""
 
-#: lib/noscript.php:285
+#: lib/noscript.php:262
 msgid "adding schema noscript for author user ID %1$s"
 msgstr ""
 
@@ -6017,31 +6017,27 @@ msgstr ""
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
-#: lib/schema-single.php:798
-msgid "adding schema offer"
-msgstr ""
-
-#: lib/schema-single.php:891
+#: lib/schema-single.php:864
 msgid "adding schema organization"
 msgstr ""
 
-#: lib/schema-single.php:933
+#: lib/schema-single.php:906
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema-single.php:940
+#: lib/schema-single.php:913
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema-single.php:1082
+#: lib/schema-single.php:1055
 msgid "adding schema for person user ID %1$s"
 msgstr ""
 
-#: lib/schema-single.php:1238
+#: lib/schema-single.php:1211
 msgid "adding schema place"
 msgstr ""
 
@@ -6055,7 +6051,7 @@ msgctxt "image size label"
 msgid "Schema Article Image"
 msgstr ""
 
-#: lib/schema.php:612
+#: lib/schema.php:613
 msgid "adding schema"
 msgstr ""
 
@@ -6858,20 +6854,20 @@ msgid ""
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:496
+#: wpsso.php:489
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."
 msgstr ""
 
 #. translators: %s is the short plugin name.
-#: wpsso.php:506
+#: wpsso.php:499
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:507
+#: wpsso.php:500
 msgid "Please disable debug mode when debugging is complete."
 msgstr ""
 

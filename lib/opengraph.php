@@ -430,7 +430,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $get_value;
 		}
 
-		public function get_array( array $mod, $crawler_name = false ) {
+		public function get_array( array $mod, $size_name = null ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -443,10 +443,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 */
 			$mt_og       = apply_filters( $this->p->lca . '_og_seed', array(), $mod );
 			$has_pp      = $this->p->check->pp();
-			$max_nums    = $this->p->util->get_max_nums( $mod );
 			$post_id     = $mod[ 'is_post' ] ? $mod[ 'id' ] : false;
+			$max_nums    = $this->p->util->get_max_nums( $mod );
 			$check_dupes = true;
 			$prev_count  = 0;
+
+			if ( empty( $size_name ) ) {
+				$size_name = $this->p->lca . '-opengraph';
+			}
 
 			if ( ! empty( $mt_og ) ) {
 				if ( $this->p->debug->enabled ) {
@@ -646,30 +650,17 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				} else {
 
-					$img_sizes = array( 'og' => $this->p->lca . '-opengraph' );
+					/**
+					 * The size_name is used as a context for duplicate checks.
+					 */
+					$mt_og[ 'og:image' ] = $this->get_all_images( $max_nums[ 'og_img_max' ], $size_name, $mod, $check_dupes );
 
-					foreach ( $img_sizes as $md_pre => $size_name ) {
+					/**
+					 * If there's no image, and no video preview, then add the default image for singular (aka post) webpages.
+					 */
+					if ( empty( $mt_og[ 'og:image' ] ) && ! $prev_count && $mod[ 'is_post' ] ) {
 
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'getting images for ' . $md_pre . ' (' . $size_name . ')' );
-						}
-
-						/**
-						 * The size_name is used as a context for duplicate checks.
-						 */
-						$mt_og[ $md_pre . ':image' ] = $this->get_all_images( $max_nums[ 'og_img_max' ], $size_name, $mod, $check_dupes, $md_pre );
-
-						/**
-						 * If there's no image, and no video preview, then add the default image for singular (aka post) webpages.
-						 */
-						if ( empty( $mt_og[ $md_pre . ':image' ] ) && ! $prev_count && $mod[ 'is_post' ] ) {
-
-							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'getting default image for ' . $md_pre . ' (' . $size_name . ')' );
-							}
-
-							$mt_og[ $md_pre . ':image' ] = $this->p->media->get_default_images( $max_nums[ 'og_img_max' ], $size_name, $check_dupes );
-						}
+						$mt_og[ 'og:image' ] = $this->p->media->get_default_images( $max_nums[ 'og_img_max' ], $size_name, $check_dupes );
 					}
 				}
 			}

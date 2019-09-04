@@ -24,7 +24,7 @@ if ( ! class_exists( 'WpssoNoScript' ) ) {
 			}
 		}
 
-		public static function is_enabled( $crawler_name = false ) {
+		public static function is_enabled() {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -41,42 +41,19 @@ if ( ! class_exists( 'WpssoNoScript' ) ) {
 				return false;
 			}
 
-			if ( false === $crawler_name ) {
-
-				if ( is_admin() ) {
-					$crawler_name = 'none';
-				} else {
-					$crawler_name = SucomUtil::get_crawler_name();
-				}
-			}
-
 			$is_enabled = empty( $wpsso->options[ 'schema_add_noscript' ] ) ? false : true;
 
-			/**
-			 * Always returns false when the WPSSO JSON add-on is active.
-			 */
-			if ( apply_filters( $wpsso->lca . '_add_schema_noscript_array', $is_enabled, $crawler_name ) ) {
-
-				return true;
-
-			} else {
-
-				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'noscript is disabled for crawler "' . $crawler_name . '"' );
-				}
-
-				return false;
-			}
+			return apply_filters( $wpsso->lca . '_add_schema_noscript_array', $is_enabled );
 		}
 
-		public function get_array( array $mod, array $mt_og = array(), $crawler_name = false ) {
+		public function get_array( array $mod, array $mt_og = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			if ( ! self::is_enabled( $crawler_name ) ) {
-				return array();	// Empty array.
+			if ( ! self::is_enabled() ) {
+				return array();
 			}
 
 			$ret           = array();

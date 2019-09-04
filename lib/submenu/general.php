@@ -254,7 +254,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					/**
 					 * Always returns false when the WPSSO JSON add-on is active.
 					 */
-					if ( apply_filters( $this->p->lca . '_add_schema_noscript_array', true, $crawler_name = 'none' ) ) {
+					if ( apply_filters( $this->p->lca . '_add_schema_noscript_array', true ) ) {
 
 						$table_rows[ 'schema_add_noscript' ] = $this->form->get_tr_hide( 'basic', 'schema_add_noscript' ) . 
 						$this->form->get_th_html( _x( 'Schema Property Meta Containers', 'option label', 'wpsso' ), '', 'schema_add_noscript' ) . 
