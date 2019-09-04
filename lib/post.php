@@ -300,8 +300,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 * 'wpsso_get_post_options' filter, so values retrieved from
 					 * custom fields may get* overwritten by later filters.
 					 */
-					$this->opts[ $post_id ] = apply_filters( $this->p->lca . '_get_custom_fields',
-						$this->opts[ $post_id ], get_post_meta( $post_id ) );
+					$this->opts[ $post_id ] = apply_filters( $this->p->lca . '_get_custom_fields', $this->opts[ $post_id ], get_post_meta( $post_id ) );
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'applying get_post_options filters for post_id ' . $post_id . ' meta' );
@@ -315,8 +314,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 * information on their product (price, condition, etc.) and disable these
 					 * options in the Document SSO metabox.
 					 */
-					$this->opts[ $post_id ] = apply_filters( $this->p->lca . '_get_post_options',
-						$this->opts[ $post_id ], $post_id, $mod );
+					$this->opts[ $post_id ] = apply_filters( $this->p->lca . '_get_post_options', $this->opts[ $post_id ], $post_id, $mod );
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log_arr( 'post meta options', $this->opts[ $post_id ] );
@@ -1908,8 +1906,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$sharing_url = $this->p->util->get_sharing_url( $mod, $add_page = false );
 
-			$short_url = apply_filters( $this->p->lca . '_get_short_url', $sharing_url,
-				$this->p->options[ 'plugin_shortener' ], $mod );
+			$short_url = apply_filters( $this->p->lca . '_get_short_url', $sharing_url, $this->p->options[ 'plugin_shortener' ], $mod );
 
 			if ( filter_var( $short_url, FILTER_VALIDATE_URL ) === false ) {	// Invalid url.
 

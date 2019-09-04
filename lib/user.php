@@ -1375,8 +1375,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			if ( $user_exists ) {
 				return $this->get_md_images( $num, $size_name, $mod, $check_dupes, $md_pre, 'og' );
 			} else {
-				return apply_filters( $this->p->lca . '_get_other_user_images',
-					array(), $num, $size_name, $user_id, $check_dupes, $md_pre );
+				return apply_filters( $this->p->lca . '_get_other_user_images', array(), $num, $size_name, $user_id, $check_dupes, $md_pre );
 			}
 		}
 

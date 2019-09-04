@@ -272,6 +272,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$md_key = array( $md_key, 'og_title' );
 			}
 
+			$md_key       = array_unique( $md_key );	// Just in case.
 			$title_text   = false;
 			$paged_suffix = '';
 			$filter_title = empty( $this->p->options[ 'plugin_filter_title' ] ) ? false : true;
@@ -302,7 +303,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					if ( empty( $title_text ) ) {
-						$this->p->debug->log( 'no custom title found for md_key' );
+						$this->p->debug->log( 'no custom title found for md_key = ' . print_r( $md_key, true ) );
 					} else {
 						$this->p->debug->log( 'custom title = "' . $title_text . '"' );
 					}
@@ -569,6 +570,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$md_key = array( $md_key, 'og_desc' );
 			}
 
+			$md_key    = array_unique( $md_key );	// Just in case.
 			$desc_text = false;
 
 			/**
