@@ -327,8 +327,9 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 * [Developer Special - Buy one, Get one Free](https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/)
 * [Better Schema for WooCommerce Step-by-step Guide](https://wpsso.com/docs/plugins/wpsso/installation/better-schema-for-woocommerce-step-by-step-guide/)
 * [Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/)
-	* [BuddyPress Integration](https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/)
-	* [WooCommerce Integration](https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/)
+	* [BuddyPress Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/)
+	* [WooCommerce Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/)
+	* [WP eCommerce Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/wp-ecommerce-integration/)
 * [Debugging and Problem Solving](https://wpsso.com/docs/plugins/wpsso/installation/debugging-and-problem-solving/)
 * [Performance Tuning](https://wpsso.com/docs/plugins/wpsso/installation/performance-tuning/)
 
@@ -449,7 +450,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* None.
 
-**Version 6.2.0-dev.2 (2019/09/04)**
+**Version 6.2.0-dev.3 (2019/09/04)**
 
 * **New Features**
 	* None.
@@ -523,7 +524,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.2.0-dev.2 =
+= 6.2.0-dev.3 =
 
 (2019/09/04) Added support for sale prices, product variations, and product attributes in the WP eCommerce integration module (Premium version).
 
