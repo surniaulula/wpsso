@@ -2729,7 +2729,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
-		public static function is_mod_post_type( $mod, $post_type = 'product' ) {
+		public static function is_mod_post_type( $mod, $post_type ) {
 
 			if ( $mod[ 'is_post' ] && $mod[ 'id' ] && $mod[ 'post_type' ] === $post_type ) {
 
