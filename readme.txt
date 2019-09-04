@@ -452,9 +452,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 **Version 6.2.0-dev.3 (2019/09/04)**
 
-> **Release Highlight**
-> 
-> Complete re-write of the WP eCommerce integration module in the Premium version.
+**Release Highlight:** Complete re-write of the WP eCommerce integration module in the Premium version.
 
 * **New Features**
 	* None.
@@ -471,9 +469,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 **Version 6.1.0 (2019/09/01)**
 
-> **Release Highlight**
-> 
-> Moved custom cropping selections to the Document SSO metabox in attachment editing pages.
+**Release Highlight:** Moved custom cropping selections to the Document SSO metabox in attachment editing pages.
 
 * **New Features**
 	* None.
