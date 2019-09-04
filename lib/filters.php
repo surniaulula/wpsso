@@ -171,7 +171,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 					}
 
 					/**
-					 * Not that Yoast_Notification::render() wraps the notification message with
+					 * Note that Yoast_Notification::render() wraps the notification message with
 					 * '<div class="yoast-alert"></div>'.
 					 */
 					if ( method_exists( 'Yoast_Notification', 'render' ) ) {
@@ -268,7 +268,8 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				$this->p->debug->log( 'disabling wpseo_json_ld_output filters' );
 			}
 
-			add_filter( 'wpseo_json_ld_output', '__return_empty_array', 10000 );
+			add_filter( 'wpseo_json_ld_output', '__return_false', PHP_INT_MAX );
+			add_filter( 'wpseo_schema_graph_pieces', '__return_empty_array', PHP_INT_MAX );
 		}
 
 		/**
