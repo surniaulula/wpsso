@@ -449,19 +449,22 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* None.
 
-**Version 6.2.0-dev.1 (TBD)**
+**Version 6.2.0-dev.1 (2019/09/03)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added support for product variations in the WP eCommerce integration module (Pro version).
+	* Added support for sale prices, product variations, and product attributes in the WP eCommerce integration module (Premium version).
 * **Bugfixes**
-	* None.
+	* Fixed the disabled 'Product Condition' select option in the Document SSO metabox when the product attribute name is empty (Premium version).
 * **Developer Notes**
-	* Refactored the WP eCommerce integration module to support variable products (Pro version).
-	* Added support for the 'wpsc-product' custom post type for WP eCommerce (Pro version).
-	* Added `$prod_post_type` and `$page_id_checkout` private properties to the EDD integration module (Pro version).
-	* Added 'wpsso_use_post', 'wpsso_schema_type_id', and 'wpsso_the_content_seed' filters to handle the EDD checkout page (Pro version).
+	* Refactored the WP eCommerce integration module (Premium version).
+	* Added support for the 'wpsc-product' custom post type for WP eCommerce (Premium version).
+	* Added `$prod_post_type` and `$page_id_checkout` private properties to the EDD integration module (Premium version).
+	* Added 'wpsso_use_post', 'wpsso_schema_type_id', and 'wpsso_the_content_seed' filters to handle the EDD checkout page (Premium version).
+	* Added new `$prod_post_type`, `$taxonomy_cat`, and `$taxonomy_tag` in the WPSSO Core Premium e-commerce modules.
+	* Added a new `SucomUtil::is_mod_post_type()` method for the WPSSO Core Premium e-commerce modules. 
+	* Removed the `SucomUtil::is_product_page()` method.
 
 **Version 6.1.0 (2019/09/01)**
 
@@ -521,6 +524,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Removed the `WpssoUtil::get_force_regen_key()` method.
 
 == Upgrade Notice ==
+
+= 6.2.0-dev.1 =
+
+(2019/09/03) Added support for sale prices, product variations, and product attributes in the WP eCommerce integration module (Premium version).
 
 = 6.1.0 =
 
