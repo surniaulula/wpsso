@@ -452,6 +452,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 **Version 6.2.0-dev.3 (2019/09/04)**
 
+> **Release Highlight:** Complete re-write of the WP eCommerce integration module in the Premium version.
+
 * **New Features**
 	* None.
 * **Improvements**
