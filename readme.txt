@@ -452,7 +452,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 **Version 6.2.0-dev.3 (2019/09/04)**
 
-**Release Highlight:** Complete re-write of the WP eCommerce integration module in the Premium version.
+Complete re-write of the WP eCommerce integration module in the Premium version.
 
 * **New Features**
 	* None.
@@ -469,7 +469,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 **Version 6.1.0 (2019/09/01)**
 
-**Release Highlight:** Moved custom cropping selections to the Document SSO metabox in attachment editing pages.
+Moved custom image cropping selections to the Document SSO metabox in attachment editing pages.
 
 * **New Features**
 	* None.
@@ -486,6 +486,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a 'wpsso_json_data_graph_element' filter for each Schema @graph property array element.
 
 **Version 6.0.0 (2019/08/18)**
+
+New resized image file names now include custom crop locations (top, botton, left, right).
 
 * **New Features**
 	* Resized cropped image filenames are now saved with their cropping information, allowing the same image to be available with identical dimensions, but different main subject (ie. cropping) areas for different markup (Facebook / Open Graph, Google / Schema, etc.).
