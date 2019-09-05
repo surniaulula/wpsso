@@ -38,12 +38,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			/**
-			 * The WpssoScript add_iframe_inline_script() method includes jQuery in the thickbox iframe 
-			 * to add the iframe_parent arguments when the Install or Update button is clicked.
+			 * The WpssoScript add_iframe_inline_script() method includes jQuery in the thickbox iframe to add the
+			 * iframe_parent arguments when the Install or Update button is clicked.
 			 *
-			 * These class properties are used by both the WpssoAdmin plugin_complete_actions() and 
-			 * plugin_complete_redirect() methods to direct the user back to the thickbox iframe parent
-			 * (aka the plugin licenses settings page) after plugin installation / activation / update.
+			 * These class properties are used by both the WpssoAdmin plugin_complete_actions() and
+			 * plugin_complete_redirect() methods to direct the user back to the thickbox iframe parent (aka the plugin
+			 * licenses settings page) after plugin installation / activation / update.
 			 */
 			if ( ! empty( $_GET[ $this->p->lca . '_pageref_title' ] ) ) {
 				$this->pageref_title = esc_html( urldecode( $_GET[ $this->p->lca . '_pageref_title' ] ) );
@@ -119,9 +119,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 		 		/**
-				 * Provide plugin data / information from the readme.txt for additional add-ons.
-				 * Don't hook the 'plugins_api_result' filter if the update manager is active as it
-				 * provides more complete plugin data than what's available from the readme.txt.
+				 * Provide plugin data / information from the readme.txt for additional add-ons. Don't hook the
+				 * 'plugins_api_result' filter if the update manager is active as it provides more complete plugin
+				 * data than what's available from the readme.txt.
 				 */
 				if ( empty( $this->p->avail[ 'p_ext' ][ 'um' ] ) ) {	// Since WPSSO UM v1.6.0.
 					add_filter( 'plugins_api_result', array( $this, 'external_plugin_data' ), 1000, 3 );	// Since WP v2.7.
@@ -726,8 +726,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
-		 * Define and disable the "Expect: 100-continue" header. $req should be an array,
-		 * so make sure other filters aren't giving us a string or boolean.
+		 * Define and disable the "Expect: 100-continue" header. $req should be an array, so make sure other filters aren't
+		 * giving us a string or boolean.
 		 */
 		public function add_expect_header( $req, $url ) {
 
@@ -886,8 +886,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
-		 * This method receives only a partial options array, so re-create a full one.
-		 * WordPress handles the actual saving of the options to the database table.
+		 * This method receives only a partial options array, so re-create a full one. WordPress handles the actual saving
+		 * of the options to the database table.
 		 */
 		public function registered_setting_sanitation( $opts ) {
 
@@ -1428,9 +1428,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$view_label_transl = sprintf( _x( 'View "%s" by Default', 'submit button', 'wpsso' ), $view_name_transl );
 
 			/**
-			 * A two dimentional array of button rows. The 'submit' button will be assigned a class of 'button-primary',
-			 * while all other 1st row buttons will be 'button-secondary button-highlight'. The 2nd+ row buttons will be
-			 * assigned a class of 'button-secondary'.
+			 * A two dimentional array of button rows. The 'submit' button will be assigned a class of
+			 * 'button-primary', while all other 1st row buttons will be 'button-secondary button-highlight'. The 2nd+
+			 * row buttons will be assigned a class of 'button-secondary'.
 			 */
 			$form_button_rows = array(
 				array(
@@ -1515,8 +1515,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '</tr>';
 
 			/**
-			 * The $this->p->cf is filtered and may have been modified by add-ons,
-			 * so make sure the "All Transients" count is last.
+			 * The $this->p->cf is filtered and may have been modified by add-ons, so make sure the "All Transients"
+			 * count is last.
 			 */
 			if ( isset( $this->p->cf[ 'wp' ][ 'transient' ][ $all_transients_pre ] ) ) {	
 				SucomUtil::move_to_end( $this->p->cf[ 'wp' ][ 'transient' ], $all_transients_pre );
@@ -1631,8 +1631,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					}
 
 					/**
-					 * Hooked by the update manager to check installed version against the latest version, 
-					 * if a non-stable filter is selected for that plugin / add-on.
+					 * Hooked by the update manager to check installed version against the latest version, if a
+					 * non-stable filter is selected for that plugin / add-on.
 					 */
 					if ( apply_filters( $this->p->lca . '_newer_version_available',
 						$newer_avail, $ext, $installed_version, $stable_version, $latest_version ) ) {
@@ -2421,8 +2421,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		private function conflict_check_php() {
 
 			/**
-			 * Load the WP class libraries to avoid triggering a known bug in EWWW
-			 * when applying the 'wp_image_editors' filter.
+			 * Load the WP class libraries to avoid triggering a known bug in EWWW when applying the 'wp_image_editors'
+			 * filter.
 			 */
 			require_once ABSPATH . WPINC . '/class-wp-image-editor.php';
 			require_once ABSPATH . WPINC . '/class-wp-image-editor-gd.php';
@@ -2454,12 +2454,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					}
 
 					/**
-					 * If this is a WordPress image editing extension, add information about the WordPress image editing class.
+					 * If this is a WordPress image editing extension, add information about the WordPress
+					 * image editing class.
 					 */
 					if ( ! empty( $php_info[ 'wp_image_editor' ][ 'class' ] ) ) {
 
 						/**
-						 * If we have a WordPress reference URL for this image editing class, link the image editor class name.
+						 * If we have a WordPress reference URL for this image editing class, link the
+						 * image editor class name.
 						 */
 						if ( ! empty( $php_info[ 'wp_image_editor' ][ 'url' ] ) ) {
 							$editor_class = '<a href="' . $php_info[ 'wp_image_editor' ][ 'url' ] . '">' .
@@ -2983,16 +2985,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
-		 * Only show notices on the dashboard and the settings pages.
-		 * Hooked to 'current_screen' filter, so return the $screen object.
+		 * Only show notices on the dashboard and the settings pages. Hooked to 'current_screen' filter, so return the
+		 * $screen object.
 		 */
 		public function maybe_show_screen_notices( $screen ) {
 
 			$screen_id = SucomUtil::get_screen_id( $screen );
 
 			/**
-			 * If adding notices in the toolbar, show the notice on
-			 * all pages, otherwise only show on the dashboard and
+			 * If adding notices in the toolbar, show the notice on all pages, otherwise only show on the dashboard and
 			 * settings pages.
 			 */
 			if ( SucomUtil::get_const( 'WPSSO_TOOLBAR_NOTICES' ) ) {
@@ -3221,8 +3222,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$have_tid = true;	// Found at least one plugin with an auth id.
 
 					/**
-					 * If the update manager is active, the version should be available.
-					 * Skip individual warnings and show nag to install the update manager.
+					 * If the update manager is active, the version should be available. Skip individual
+					 * warnings and show nag to install the update manager.
 					 */
 					if ( empty( $um_info[ 'version' ] ) ) {
 
@@ -3631,8 +3632,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		/**
 		 * Called from the WpssoSubmenuGeneral and WpssoJsonSubmenuSchemaJsonLd classes.
 		 *
-		 * The SucomForm::get_select() calls in this method use the 'on_focus_load_json'
-		 * event name to create a single JSON array for the schema types.
+		 * The SucomForm::get_select() calls in this method use the 'on_focus_load_json' event name to create a single JSON
+		 * array for the schema types.
 		 */
 		public function add_schema_item_types_table_rows( array &$table_rows, $form, $hide_in_basic = true, $is_top_section = false ) {
 
