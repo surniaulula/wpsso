@@ -469,7 +469,7 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 
 **Version 6.1.0 (2019/09/01)**
 
-Moved custom image cropping selections to the Document SSO metabox in attachment editing pages.
+Moved custom image cropping selections to the Media Library attachment editing pages.
 
 * **New Features**
 	* None.
