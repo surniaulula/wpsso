@@ -464,8 +464,12 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 	* Refactored the WP eCommerce integration module (Premium version).
 	* Added 'wpsso_schema_type_id', and 'wpsso_the_content_seed' filters to handle the EDD checkout page (Premium version).
 	* Added new `$prod_post_type`, `$taxonomy_cat`, and `$taxonomy_tag` properties in the e-commerce integration modules (Premium version).
-	* Added a new `SucomUtil::is_mod_post_type()` method for the e-commerce integration modules. 
+	* Added a new `SucomUtil::is_mod_post_type()` method.
+	* Added a new `SucomUtil::is_mod_tax_slug()` method.
+	* Added a new `SucomUtil::is_term_tax_slug()` method.
 	* Removed the `SucomUtil::is_product_page()` method.
+	* Removed the `SucomUtil::is_product_category()` method.
+	* Removed the `SucomUtil::is_product_tag()` method.
 
 **Version 6.1.0 (2019/09/01)**
 
