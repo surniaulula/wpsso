@@ -507,7 +507,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'term ID ' . $post_id . ' for meta key ' . $meta_key );
+				$this->p->debug->log( 'term ID ' . $term_id . ' for meta key ' . $meta_key );
 			}
 
 			static $do_once = array();

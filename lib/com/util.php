@@ -2622,6 +2622,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
+		public static function is_mod_tax_slug( $mod, $tax_slug ) {
+
+			if ( $mod[ 'is_term' ] && $mod[ 'id' ] && $mod[ 'tax_slug' ] === $tax_slug ) {
+
+				return true;
+			}
+
+			return false;
+		}
+
 		public static function is_post_exists( $post_id ) {
 
 			  return is_string( get_post_status( $post_id ) );
