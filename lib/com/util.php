@@ -2632,6 +2632,24 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
+		public static function is_term_tax_slug( $term_id, $tax_slug ) {
+
+			static $local_cache = array();
+
+			if ( isset( $local_cache[ $term_id ] ) ) {
+
+				return $local_cache[ $term_id ];
+			}
+
+			$term = get_term_by( 'id', $term_id, $tax_slug, OBJECT, 'raw' );
+
+			if ( ! empty( $term->term_id ) && ! empty( $term->taxonomy ) && $term->taxonomy === $tax_slug ) {
+				return $local_cache[ $term_id ] = true;
+			}
+
+			return $local_cache[ $term_id ] = false;
+		}
+
 		public static function is_post_exists( $post_id ) {
 
 			  return is_string( get_post_status( $post_id ) );
@@ -2998,46 +3016,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					break;
 			}
-		}
-
-		public static function is_product_category() {
-
-			$ret = false;
-
-			if ( function_exists( 'is_product_category' ) && is_product_category() ) {
-
-				$ret = true;
-
-			} elseif ( is_admin() ) {
-
-				if ( self::get_request_value( 'taxonomy' ) === 'product_cat' && // Uses sanitize_text_field().
-					self::get_request_value( 'post_type' ) === 'product' ) {
-
-					$ret = true;
-				}
-			}
-
-			return apply_filters( 'sucom_is_product_category', $ret );
-		}
-
-		public static function is_product_tag() {
-
-			$ret = false;
-
-			if ( function_exists( 'is_product_tag' ) && is_product_tag() ) {
-
-				$ret = true;
-
-			} elseif ( is_admin() ) {
-
-				if ( self::get_request_value( 'taxonomy' ) === 'product_tag' && // Uses sanitize_text_field().
-					self::get_request_value( 'post_type' ) === 'product' ) {
-
-					$ret = true;
-				}
-			}
-
-			return apply_filters( 'sucom_is_product_tag', $ret );
 		}
 
 		public static function get_request_value( $key, $method = 'ANY', $default = '' ) {
