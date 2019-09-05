@@ -2634,20 +2634,23 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function is_term_tax_slug( $term_id, $tax_slug ) {
 
+			/**
+			 * Optimize and get the term only once so this method can be called several times for different $tax_slugs.
+			 */
 			static $local_cache = array();
 
-			if ( isset( $local_cache[ $term_id ] ) ) {
-
-				return $local_cache[ $term_id ];
+			if ( ! isset( $local_cache[ $term_id ] ) ) {
+				$local_cache[ $term_id ] = get_term_by( 'id', $term_id, $tax_slug, OBJECT, 'raw' );
 			}
 
-			$term = get_term_by( 'id', $term_id, $tax_slug, OBJECT, 'raw' );
+			if ( ! empty( $local_cache[ $term_id ]->term_id ) &&
+				! empty( $local_cache[ $term_id ]->taxonomy ) &&
+					$local_cache[ $term_id ]->taxonomy === $tax_slug ) {
 
-			if ( ! empty( $term->term_id ) && ! empty( $term->taxonomy ) && $term->taxonomy === $tax_slug ) {
-				return $local_cache[ $term_id ] = true;
+				return true;
 			}
 
-			return $local_cache[ $term_id ] = false;
+			return false;
 		}
 
 		public static function is_post_exists( $post_id ) {
