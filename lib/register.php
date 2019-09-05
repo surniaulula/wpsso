@@ -304,7 +304,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 					require_once trailingslashit( ABSPATH ) . 'wp-admin/includes/plugin.php';
 				}
 
-				deactivate_plugins( WPSSO_PLUGINBASE, true );	// $silent is true.
+				deactivate_plugins( WPSSO_PLUGINBASE, $silent = true );
 
 				if ( method_exists( 'SucomUtil', 'safe_error_log' ) ) {
 
