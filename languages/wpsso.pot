@@ -3058,26 +3058,26 @@ msgid ""
 msgstr ""
 
 #: lib/gettext-pro.php:149 lib/gettext-pro.php:154
-#: lib/pro/ecom/woocommerce.php:860 lib/pro/ecom/wpecommerce.php:547
+#: lib/pro/ecom/woocommerce.php:841 lib/pro/ecom/wpecommerce.php:528
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
 #: lib/gettext-pro.php:150 lib/gettext-pro.php:155
-#: lib/pro/ecom/woocommerce.php:863 lib/pro/ecom/wpecommerce.php:550
+#: lib/pro/ecom/woocommerce.php:844 lib/pro/ecom/wpecommerce.php:531
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/gettext-pro.php:151 lib/pro/ecom/woocommerce.php:1167
+#: lib/gettext-pro.php:151 lib/pro/ecom/woocommerce.php:1148
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/gettext-pro.php:152 lib/pro/ecom/woocommerce.php:1169
+#: lib/gettext-pro.php:152 lib/pro/ecom/woocommerce.php:1150
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:153 lib/pro/ecom/woocommerce.php:1172
+#: lib/gettext-pro.php:153 lib/pro/ecom/woocommerce.php:1153
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 
