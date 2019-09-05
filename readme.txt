@@ -9,7 +9,7 @@ Assets URI: https://surniaulula.github.io/wpsso/assets/
 Tags: open graph, meta tags, rich pins, twitter cards, social sharing, rich results, schema.org, structured data, snippet, seo, smo, social, facebook, twitter, linkedin, pinterest, google
 Contributors: jsmoriss
 Requires At Least: 3.9
-Tested Up To: 5.2.2
+Tested Up To: 5.2.3
 WC Tested Up To: 3.7.0
 Stable Tag: 6.1.0
 
