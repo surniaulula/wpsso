@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires At Least: 3.9
 Tested Up To: 5.2.3
 WC Tested Up To: 3.7.0
-Stable Tag: 6.1.0
+Stable Tag: 6.2.0
 
 WPSSO Core makes sure your content looks great on all social and search sites, no matter how URLs are crawled, shared, re-shared, posted or embedded!
 
@@ -537,8 +537,4 @@ New resized image file names now include custom crop locations (top, botton, lef
 = 6.2.0 =
 
 (2019/09/07) Added support for sale prices, product variations, and product attributes in the WP eCommerce integration module (Premium version).
-
-= 6.1.0 =
-
-(2019/09/01) Added a "Preferred Cropping" option in the Document SSO metabox for attachment editing pages.
 
