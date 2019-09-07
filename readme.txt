@@ -450,7 +450,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* None.
 
-**Version 6.2.0-rc.2 (2019/09/07)**
+**Version 6.2.0 (2019/09/07)**
 
 Complete re-write of the WP eCommerce integration module in the Premium version.
 
@@ -534,7 +534,7 @@ New resized image file names now include custom crop locations (top, botton, lef
 
 == Upgrade Notice ==
 
-= 6.2.0-rc.2 =
+= 6.2.0 =
 
 (2019/09/07) Added support for sale prices, product variations, and product attributes in the WP eCommerce integration module (Premium version).
 
