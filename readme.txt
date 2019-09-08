@@ -534,6 +534,10 @@ New resized image file names now include custom crop locations (top, botton, lef
 
 == Upgrade Notice ==
 
+= 6.3.0-dev.1 =
+
+(TBD) Added new image dimensions in the WordPress &gt; Settings &gt; SSO Image Sizes page.
+
 = 6.2.0 =
 
 (2019/09/07) Added support for sale prices, product variations, and product attributes in the WP eCommerce integration module (Premium version).
