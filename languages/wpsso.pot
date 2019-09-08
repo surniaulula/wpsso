@@ -3066,33 +3066,33 @@ msgstr ""
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: lib/gettext-pro.php:148 lib/pro/ecom/woocommerce.php:136
+#: lib/gettext-pro.php:148 lib/pro/ecom/woocommerce.php:134
 msgid ""
 "The WooCommerce %s method is not available - please update to a newer "
 "version of WooCommerce."
 msgstr ""
 
 #: lib/gettext-pro.php:149 lib/gettext-pro.php:154
-#: lib/pro/ecom/woocommerce.php:841 lib/pro/ecom/wpecommerce.php:528
+#: lib/pro/ecom/woocommerce.php:839 lib/pro/ecom/wpecommerce.php:528
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
 #: lib/gettext-pro.php:150 lib/gettext-pro.php:155
-#: lib/pro/ecom/woocommerce.php:844 lib/pro/ecom/wpecommerce.php:531
+#: lib/pro/ecom/woocommerce.php:842 lib/pro/ecom/wpecommerce.php:531
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/gettext-pro.php:151 lib/pro/ecom/woocommerce.php:1148
+#: lib/gettext-pro.php:151 lib/pro/ecom/woocommerce.php:1146
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/gettext-pro.php:152 lib/pro/ecom/woocommerce.php:1150
+#: lib/gettext-pro.php:152 lib/pro/ecom/woocommerce.php:1148
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:153 lib/pro/ecom/woocommerce.php:1153
+#: lib/gettext-pro.php:153 lib/pro/ecom/woocommerce.php:1151
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 
@@ -4694,20 +4694,19 @@ msgstr ""
 
 #: lib/messages.php:1490
 msgid ""
-"Add a \"nopin\" attribute to the header image (since WP v4.4) to prevent the "
-"Pin It button from suggesting that image."
+"Add a \"nopin\" attribute to the WordPress site header image to prevent the "
+"Pin It browser button from suggesting that image."
 msgstr ""
 
 #: lib/messages.php:1496
 msgid ""
 "Add a \"nopin\" attribute to images from the WordPress Media Library to "
-"prevent the Pin It button from suggesting those images."
+"prevent the Pin It browser button from suggesting those images."
 msgstr ""
 
 #: lib/messages.php:1502
 msgid ""
-"Add the Google / Schema image to the content (in a hidden container) for the "
-"Pinterest Pin It browser button."
+"Add a hidden image to the content for the Pinterest Pin It browser button."
 msgstr ""
 
 #: lib/messages.php:1523
