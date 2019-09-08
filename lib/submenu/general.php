@@ -294,7 +294,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$table_rows[ 'p_add_img_html' ] = '' . 
 					$this->form->get_th_html( _x( 'Add Hidden Image for Pin It Button', 'option label', 'wpsso' ), '', 'p_add_img_html' ) . 
 					'<td>' . $this->form->get_checkbox( 'p_add_img_html' ) .
-					' <em>' . _x( 'recommended (adds hidden image in content)', 'option comment', 'wpsso' ) . '</em></td>';
+					' <em>' . _x( 'recommended (adds a hidden image in the content)', 'option comment', 'wpsso' ) . '</em></td>';
 
 					break;
 
