@@ -207,7 +207,8 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$table_rows[ 'plugin_check_img_dims' ] = '' .
 					$this->form->get_th_html( _x( 'Enforce Image Size Checks', 'option label', 'wpsso' ), '', 'plugin_check_img_dims' ) .
-					'<td>' . $this->form->get_checkbox( 'plugin_check_img_dims' ) . ' <em>' . _x( 'recommended', 'option comment', 'wpsso' ) . '</em></td>';
+					'<td>' . $this->form->get_checkbox( 'plugin_check_img_dims' ) .
+					' <em>' . _x( 'recommended', 'option comment', 'wpsso' ) . '</em></td>';
 
 					break;
 
@@ -282,15 +283,18 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$table_rows[ 'p_add_nopin_header_img_tag' ] = '' . 
 					$this->form->get_th_html( _x( 'Add "nopin" to Site Header Image', 'option label', 'wpsso' ), '', 'p_add_nopin_header_img_tag' ) . 
-					'<td>' . $this->form->get_checkbox( 'p_add_nopin_header_img_tag' ) . '</td>';
+					'<td>' . $this->form->get_checkbox( 'p_add_nopin_header_img_tag' ) .
+					' <em>' . _x( 'recommended', 'option comment', 'wpsso' ) . '</em></td>';
 
 					$table_rows[ 'p_add_nopin_media_img_tag' ] = '' . 
 					$this->form->get_th_html( _x( 'Add "nopin" to WordPress Media', 'option label', 'wpsso' ), '', 'p_add_nopin_media_img_tag' ) . 
-					'<td>' . $this->form->get_checkbox( 'p_add_nopin_media_img_tag' ) . '</td>';
+					'<td>' . $this->form->get_checkbox( 'p_add_nopin_media_img_tag' ) .
+					' <em>' . _x( 'recommended', 'option comment', 'wpsso' ) . '</em></td>';
 
 					$table_rows[ 'p_add_img_html' ] = '' . 
 					$this->form->get_th_html( _x( 'Add Hidden Image for Pin It Button', 'option label', 'wpsso' ), '', 'p_add_img_html' ) . 
-					'<td>' . $this->form->get_checkbox( 'p_add_img_html' ) . '</td>';
+					'<td>' . $this->form->get_checkbox( 'p_add_img_html' ) .
+					' <em>' . _x( 'recommended (adds hidden image in content)', 'option comment', 'wpsso' ) . '</em></td>';
 
 					break;
 

@@ -1493,13 +1493,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-p_add_nopin_media_img_tag':	// Add "nopin" to WordPress Media.
 
-							$text = __( 'Add a "nopin" attribute to images from the WordPress Media Library to prevent the Pin It browser button from suggesting those images.', 'wpsso' );
+							$add_img_html_label = _x( 'Add Hidden Image for Pin It Button', 'option label', 'wpsso' );
+
+							$text = __( 'Add a "nopin" attribute to images from the WordPress Media Library to prevent the Pin It browser button from suggesting those images.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'If this option is enabled, you should also enable the "%s" option to provide an image for the Pin It browser button.', 'wpsso' ), $add_img_html_label );
 
 							break;
 
 						case 'tooltip-p_add_img_html':			// Add Hidden Image for Pin It Button.
 
-							$text = __( 'Add a hidden image to the content for the Pinterest Pin It browser button.', 'wpsso' );
+							$text = __( 'Add an extra hidden image in the WordPress post / page content for the Pinterest Pin It browser button.', 'wpsso' );
 
 							break;
 
