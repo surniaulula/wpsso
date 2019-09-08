@@ -945,10 +945,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( empty( $opts[ 'plugin_filter_content' ] ) ) {
 
-				$get_msg_key = 'notice-content-filters-disabled';
-				$notice_key  = $get_msg_key . '-reminder';
+				$get_msg_key  = 'notice-content-filters-disabled';
+				$notice_key   = $get_msg_key . '-warning';
+				$dismiss_time = true;	// Can be dismissed permanently.
 
-				$this->p->notice->warn( $this->p->msgs->get( $get_msg_key ), null, $notice_key, true );	// Can be dismissed.
+				$this->p->notice->warn( $this->p->msgs->get( $get_msg_key ), null, $notice_key, $dismiss_time );
 			}
 
 			$this->check_tmpl_head_attributes();
@@ -3606,7 +3607,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$form->get_th_html( _x( 'Schema Article Image Size', 'option label', 'wpsso' ), '', 'schema_article_img_size' ) . 
 			'<td>' . $form->get_input_image_dimensions( 'schema_article_img' ) . '</td>';
 
-			/*
 			$table_rows[ 'schema_article_amp1x1_img_size' ] = '' .
 			$form->get_th_html( _x( 'Schema Article AMP 1x1 Img Size', 'option label', 'wpsso' ), null, 'schema_article_amp1x1_img_size' ) . 
 			'<td>' . $form->get_input_image_dimensions( 'schema_article_amp1x1_img' ) . '</td>';
@@ -3618,7 +3618,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$table_rows[ 'schema_article_amp16x9_img_size' ] = '' .
 			$form->get_th_html( _x( 'Schema Article AMP 16x9 Img Size', 'option label', 'wpsso' ), null, 'schema_article_amp16x9_img_size' ) . 
 			'<td>' . $form->get_input_image_dimensions( 'schema_article_amp16x9_img' ) . '</td>';
-			*/
 
 			$table_rows[ 'thumb_img_size' ] = '' .
 			$form->get_th_html( _x( 'Schema Thumbnail Image Size', 'option label', 'wpsso' ), null, 'thumb_img_size' ).

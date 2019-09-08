@@ -589,7 +589,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					if ( $error_msg ) {
 
-						$error_msg .= ' ' . __( 'These option keys have been reset to their default values.', 'wpsso' );
+						$error_msg .= ' ' . __( 'These options have been reset to their default values.', 'wpsso' );
 
 						$this->p->notice->err( $error_msg );
 

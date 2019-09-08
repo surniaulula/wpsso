@@ -776,10 +776,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		}
 
 		/**
-		 * Return a specific option from the custom social settings meta with fallback for 
-		 * multiple option keys. If $md_key is an array, then get the first non-empty option 
-		 * from the options array. This is an easy way to provide a fallback value for the 
-		 * first array key. Use 'none' as a key name to skip this fallback behavior.
+		 * Return a specific option from the custom social settings meta with fallback for multiple option keys. If $md_key
+		 * is an array, then get the first non-empty option from the options array. This is an easy way to provide a
+		 * fallback value for the first array key. Use 'none' as a key name to skip this fallback behavior.
 		 *
 		 * Example: get_options_multi( $id, array( 'p_desc', 'og_desc' ) );
 		 */
