@@ -79,8 +79,13 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 				$img_html = "\n" . '<!-- ' . $this->p->lca . ' schema image for pinterest pin it button -->' . "\n";
 				$img_html .= '<div class="' . $this->p->lca . '-schema-image-for-pinterest" style="display:none;">' . "\n";
+
+				/**
+				 * Note that an empty alt attribute is required for W3C validation.
+				 */
 				$img_html .= '<img src="' . SucomUtil::esc_url_encode( $image_url ) . '" width="0" height="0" style="width:0;height:0;" ' . 
-					'data-pin-description="' . esc_attr( $data_pin_desc ) . '" alt=""/>' . "\n"; 	// Empty alt required for w3c validation.
+					'data-pin-description="' . esc_attr( $data_pin_desc ) . '" alt="" loading="lazy" />' . "\n";
+
 				$img_html .= '</div><!-- .' . $this->p->lca . '-schema-image-for-pinterest -->' . "\n\n";
 
 				$content = $img_html . $content;
