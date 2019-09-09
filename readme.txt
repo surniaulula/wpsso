@@ -436,7 +436,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.3.0-dev.1 (TBD)**
+**Version 6.3.0-dev.1 (2019/09/09)**
 
 * **New Features**
 	* None.
@@ -536,7 +536,7 @@ New resized image file names now include custom crop locations (top, botton, lef
 
 = 6.3.0-dev.1 =
 
-(TBD) Added new image dimensions in the WordPress &gt; Settings &gt; SSO Image Sizes page.
+(2019/09/09) Added new image dimensions in the WordPress &gt; Settings &gt; SSO Image Sizes page.
 
 = 6.2.0 =
 
