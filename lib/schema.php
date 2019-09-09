@@ -60,7 +60,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'label'  => _x( 'Schema Article Image', 'image size label', 'wpsso' ),
 			);
 
-			/*
 			$sizes[ 'schema_article_amp1x1' ] = array(
 				'name'   => 'schema-article-amp1x1',
 				'label'  => _x( 'Schema Article AMP 1x1 Image', 'image size label', 'wpsso' ),
@@ -75,7 +74,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'name'   => 'schema-article-amp16x9',
 				'label'  => _x( 'Schema Article AMP 16x9 Image', 'image size label', 'wpsso' ),
 			);
-			*/
 
 			return $sizes;
 		}

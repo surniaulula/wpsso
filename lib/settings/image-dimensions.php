@@ -117,7 +117,6 @@ if ( ! class_exists( 'WpssoSettingsImageDimensions' ) && class_exists( 'WpssoAdm
 						'option label', 'wpsso' ), null, 'schema_article_img_size' ) . 
 					'<td>' . $this->form->get_input_image_dimensions( 'schema_article_img' ) . '</td>';
 
-					/*
 					$table_rows[ 'schema_article_amp1x1_img_size' ] = '' .
 					$this->form->get_th_html( _x( 'Schema Article AMP 1x1 (Google)',
 						'option label', 'wpsso' ), null, 'schema_article_amp1x1_img_size' ) . 
@@ -132,7 +131,6 @@ if ( ! class_exists( 'WpssoSettingsImageDimensions' ) && class_exists( 'WpssoAdm
 					$this->form->get_th_html( _x( 'Schema Article AMP 16x9 (Google)',
 						'option label', 'wpsso' ), null, 'schema_article_amp16x9_img_size' ) . 
 					'<td>' . $this->form->get_input_image_dimensions( 'schema_article_amp16x9_img' ) . '</td>';
-					*/
 
 					$table_rows[ 'thumb_img_size' ] = '' .
 					$this->form->get_th_html( _x( 'Schema Thumbnail Image',
