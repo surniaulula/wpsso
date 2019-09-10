@@ -156,7 +156,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-meta-og_desc':	// Default Description
 
 							$text = sprintf( __( 'A customized description for the Facebook / Open Graph %s meta tag, and the default value for all other description meta tags.', 'wpsso' ), '<code>og:description</code>' ) . ' ';
-							
+
 							$text .= __( 'Update and save the custom Facebook / Open Graph description to change the default value of all other description fields.', 'wpsso' );
 
 						 	break;
@@ -176,7 +176,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-meta-sharing_url':	// Sharing URL
 
 							$text = __( 'A customized sharing URL for Facebook / Open Graph and Pinterest Rich Pin meta tags, Schema markup, and social sharing add-ons.', 'wpsso' ) . ' ';
-							
+
 							$text .= __( 'Please make sure the custom URL you enter here is functional and redirects correctly.', 'wpsso' );
 
 						 	break;
@@ -184,7 +184,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-meta-canonical_url':	// Canonical URL
 
 							$text = sprintf( __( 'A customized URL used for the "%1$s" head tag.', 'wpsso' ), 'link rel canonical' ) . ' ';
-							
+
 							$text .= __( 'Please make sure the custom URL you enter here is functional and redirects correctly.', 'wpsso' );
 
 						 	break;
@@ -222,7 +222,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-meta-og_img_max':	// Maximum Images.
 
 							$text = __( 'The maximum number of images to include in the Facebook / Open Graph meta tags.', 'wpsso' ) . ' ';
-							
+
 						 	break;
 
 						case 'tooltip-meta-og_img_crop_area':
@@ -240,11 +240,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-meta-og_img_url':
 
 							$text = __( 'A customized image URL (instead of an image ID) to include first, before any featured, attached, or content images.', 'wpsso' ) . ' ';
-							
+
 							$text .= __( 'Please make sure your custom image is large enough, or it may be ignored by social website(s).', 'wpsso' ) . ' ';
-							
+
 							$text .= $fb_recs_transl . ' ';
-							
+
 							$text .= '<em>' . __( 'This field is disabled if a custom image ID has been selected.', 'wpsso' ) . '</em>';
 
 							break;
@@ -275,7 +275,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-meta-og_vid_embed':
 
 							$text = __( 'Custom video embed HTML for the first video in the Facebook / Open Graph and Twitter Card meta tags, and in the Schema JSON-LD markup.', 'wpsso' ) . ' ';
-							
+
 							$text .= __( 'If the video is from a recognized external video service, an API connection will be made to retrieve additional information about the video.', 'wpsso' );
 
 						 	break;
@@ -283,7 +283,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-meta-og_vid_url':
 
 							$text = __( 'A customized video URL for the first video in the Facebook / Open Graph and Twitter Card meta tags, and in the Schema JSON-LD markup.', 'wpsso' ) . ' ';
-							
+
 							$text .= __( 'If the video is from a recognized external video service, an API connection will be made to retrieve additional information about the video.', 'wpsso' );
 
 						 	break;
@@ -376,7 +376,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$settings_page_url = get_admin_url( null, 'options-general.php' );
 
 							$text = sprintf( __( 'The WordPress tagline is used as a description for the blog (non-static) front page, and as a fallback for the Facebook / Open Graph and Pinterest Rich Pin %1$s meta tag.', 'wpsso' ), '<code>og:description</code>' ) . ' ';
-							
+
 							$text .= sprintf( __( 'You may override <a href="%1$s">the default WordPress Tagline value</a> here, to provide a longer and more complete description of your website.', 'wpsso' ), $settings_page_url );
 
 							break;
@@ -413,9 +413,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-og_art_section':		// Default Article Topic.
 
 							$text = __( 'The topic that best describes the Posts and Pages on your website.', 'wpsso' ) . ' ';
-							
+
 							$text .= sprintf( __( 'This value will be used in the %s Facebook / Open Graph and Pinterest Rich Pin meta tags.', 'wpsso' ), '<code>article:section</code>' ) . ' ';
-							
+
 							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag.', 'wpsso' ), '<code>article:section</code>' );
 
 							break;
@@ -502,7 +502,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-og_desc_max_len':		// Maximum Description Length.
 
 							$text = __( 'The maximum length used for the Facebook / Open Graph description value.', 'wpsso' ) . ' ';
-							
+
 							$text .= sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).',
 								'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ 'og_desc_len' ],
 									$this->p->opt->get_defaults( 'og_desc_max_len' ) );
@@ -512,9 +512,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-og_desc_hashtags':	// Add Hashtags to Descriptions.
 
 							$text = __( 'The maximum number of tag names (converted to hashtags) to include in the Facebook / Open Graph description.', 'wpsso' ) . ' ';
-							
+
 							$text .= __( 'Each tag name is converted to lowercase with whitespaces removed.', 'wpsso' ) . ' ';
-							
+
 							$text .= __( 'Select "0" to disable the addition of hashtags.', 'wpsso' );
 
 							break;
@@ -525,9 +525,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-og_author_field':		// Author Profile URL Field.
 
 							$text = sprintf( __( 'Select the contact field to use from the author\'s WordPress profile page for the Facebook / Open Graph %s meta tag value.', 'wpsso' ), '<code>article:author</code>' ) . ' ';
-							
+
 							$text .= __( 'The suggested setting is the "Facebook URL" user profile contact field (default value).', 'wpsso' ) . ' ';
-							
+
 							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag and prevent Facebook from showing author attribution in shared links.', 'wpsso' ), '<code>article:author</code>' );
 
 							break;
@@ -548,9 +548,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-og_img_max':		// Maximum Images to Include.
 
 							$text = __( 'The maximum number of images to include in the Facebook / Open Graph meta tags &mdash; this includes the <em>featured</em> image, <em>attached</em> images, and any images found in the content.', 'wpsso' ) . ' ';
-							
+
 							$text .= __( 'If you select "0", then no images will be included in the Facebook / Open Graph meta tags (<strong>not recommended</strong>).', 'wpsso' ) . ' ';
-							
+
 							$text .= __( 'If no images are available in your meta tags, social sites may choose any image from your webpage (including headers, sidebars, thumbnails, etc.).', 'wpsso' );
 
 							break;
@@ -559,15 +559,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = sprintf( __( 'The image dimensions used for Facebook / Open Graph meta tags (the default dimensions are %s).',
 								'wpsso' ), $this->get_def_img_dims( 'og' ) ) . ' ';
-								
+
 							$text .= $fb_recs_transl;
-							
+
 							break;
 
 						case 'tooltip-og_def_img_id':		// Default / Fallback Image ID.
 
 							$text = __( 'An image ID and media library selection for your default / fallback website image.', 'wpsso' ) . ' ';
-							
+
 							$text .= __( 'The default image is used for index / archive pages, and as a fallback for Posts and Pages that do not have a suitable image featured, attached, or in their content.', 'wpsso' );
 
 							break;
@@ -575,11 +575,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-og_def_img_url':		// or Default / Fallback Image URL.
 
 							$text = __( 'You can enter a default image URL instead of choosing an image ID &mdash; if a default image ID is specified, it has precedence and the image URL option is disabled.', 'wpsso' ) . ' ';
-							
+
 							$text .= __( 'The image URL option allows you to use an image outside of a managed collection (WordPress Media Library or NextGEN Gallery), and/or a smaller logo style image.', 'wpsso' ) . ' ';
-							
-							$text .= sprintf( __( 'The image should be at least %s or more in width and height.', 'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ 'og_img_width' ] . 'x' . $this->p->cf[ 'head' ][ 'limit_min' ][ 'og_img_height' ] . 'px' ) . ' ';
-							
+
+							$text .= sprintf( __( 'The image should be at least %s or more in width and height.', 'wpsso' ),
+								$this->p->cf[ 'head' ][ 'limit_min' ][ 'og_img_width' ] . 'x' .
+									$this->p->cf[ 'head' ][ 'limit_min' ][ 'og_img_height' ] . 'px' ) . ' ';
+
 							$text .= __( 'The default image is used for index / archive pages, and as a fallback for Posts and Pages that do not have a suitable image featured, attached, or in their content.', 'wpsso' );
 
 							break;
@@ -640,11 +642,22 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-							$text = sprintf( __( 'Select the set of options to display by default in settings pages and the %1$s metabox.', 'wpsso' ), $metabox_title ) . ' ';
-							
-							$text .= __( 'The basic view shows only the most commonly used options, and includes a link to temporarily show all options when necessary.', 'wpsso' ) . ' ';
-							
-							$text .= __( 'Showing all options by default could be a bit overwhelming for new users.', 'wpsso' );
+							$text = sprintf( __( 'You can select the default set of options to display in settings pages and the %1$s metabox.',
+								'wpsso' ), $metabox_title ) . ' ';
+
+							$text .= __( 'The basic view shows the most commonly used options, and includes a link to temporarily show all options when desired.', 'wpsso' ) . ' ';
+
+							$text .= __( 'Note that showing all options by default could be a bit overwhelming for new users.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-plugin_notice_system': 	// Notification System.
+
+							$text .= __( 'Select the notification system for SSO notices.', 'wpsso' ) . ' ';
+
+							$text .= __( 'Toolbar notices are available under a single toolbar menu item, which changes color based on the notice types it contains.', 'wpsso' ) . ' ';
+
+							$text .= __( 'Alternatively, you can select to use the standard WordPress admin notification system.', 'wpsso' );
 
 							break;
 
@@ -666,25 +679,25 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_filter_content':
 
 							$text .= __( 'The use of WordPress content filters allows the plugin to fully render your content text for meta tag descriptions and detect additional images and/or embedded videos provided by shortcodes.', 'wpsso' ) . ' ';
-							
+
 							$text .= __( 'Many themes and plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ) . ' ';
-							
+
 							$text .= __( 'If you use shortcodes in your content text, this option should be enabled &mdash; IF YOU EXPERIENCE WEBPAGE LAYOUT OR PERFORMANCE ISSUES AFTER ENABLING THIS OPTION, determine which theme or plugin is filtering the content incorrectly and report the problem to its author(s).', 'wpsso' ) . ' ';
-							
+
 							break;
 
 						case 'tooltip-plugin_filter_excerpt':
 
 							$text = __( 'Apply the WordPress "get_the_excerpt" filter to the excerpt text (default is unchecked). Enable this option if you use shortcodes in your excerpts, for example.', 'wpsso' ) . ' ';
-							
+
 							break;
 
 						case 'tooltip-plugin_p_strip':
 
 							$text = sprintf( __( 'If a post, page, or custom post type does not have an excerpt, %s will use the content text to create a description value.', 'wpsso' ), $info[ 'short' ] ) . ' ';
-							
+
 							$text .= __( 'When this option is enabled, all text before the first paragraph tag in the content will be ignored.', 'wpsso' ) . ' ';
-							
+
 							$text .= __( 'The option is enabled by default since WordPress should provide correct paragraph tags in the content.', 'wpsso' );
 
 							break;
@@ -698,7 +711,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_img_alt_prefix':
 
 							$text = sprintf( __( 'When use of image <em>alt</em> attributes is enabled, %s can prefix the attribute text with an optional string.', 'wpsso' ), $info[ 'short' ] ) . ' ';
-							
+
 							$text .= __( 'Leave this option blank to prevent the image alt attribute text from being prefixed.', 'wpsso' );
 
 							break;
@@ -706,7 +719,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_p_cap_prefix':
 
 							$text = sprintf( __( '%s can add a prefix to paragraphs found with the "wp-caption-text" class.', 'wpsso' ), $info[ 'short' ] ) . ' ';
-							
+
 							$text .= __( 'Leave this option blank to prevent caption paragraphs from being prefixed.', 'wpsso' );
 
 							break;
@@ -764,7 +777,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_page_excerpt':	// Enable WP Excerpt for Pages.
 
 							$text = __( 'Enable the WordPress excerpt metabox for Pages.', 'wpsso' ) . ' ';
-							
+
 							$text .= sprintf( __( 'An excerpt is an optional hand-crafted summary of your content, that %s can also use as a default description value for meta tags and Schema markup.', 'wpsso' ), $info[ 'short' ] );
 
 							break;
@@ -772,9 +785,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_page_tags':	// Enable WP Tags for Pages.
 
 							$text = __( 'Enable the WordPress tags metabox for Pages.', 'wpsso' ) . ' ';
-							
+
 							$text .= __( 'WordPress tags are optional keywords about the content subject, often used for searches and "tag clouds".', 'wpsso' ) . ' ';
-							
+
 							$text .= sprintf( __( '%s can convert WordPress tags into hashtags for some social sites.', 'wpsso' ), $info[ 'short' ] );
 
 							break;
@@ -793,17 +806,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								_x( 'SSO Image Sizes', 'lib file description', 'wpsso' ) );
 
 							$text = sprintf( __( 'When this option is enabled (recommended), full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you\'ve defined in the %s settings &mdash; images that do not meet or exceed the minimum requirements will be ignored.', 'wpsso' ), $settings_page_link );
-							
+
 							break;
 
 						case 'tooltip-plugin_upscale_images':	// Upscale Media Library Images.
 
 							$text = __( 'WordPress does not upscale / enlarge images &mdash; WordPress can only create smaller images from larger full size originals.', 'wpsso' ) . ' ';
-							
+
 							$text .= __( 'Upscaled images do not look as sharp or clear, and if enlarged too much, will look fuzzy and unappealing &mdash; not something you want to promote on social and search sites.', 'wpsso' ) . ' ';
-							
+
 							$text .= sprintf( __( '%1$s includes a feature that allows upscaling of WordPress Media Library images for %2$s image sizes (up to a maximum upscale percentage).', 'wpsso' ), $info[ 'name_pro' ], $info[ 'short' ] ) . ' ';
-							
+
 							$text .= '<strong>' . __( 'Do not enable this option unless you want to publish lower quality images on social and search sites.', 'wpsso' ) . '</strong>';
 
 							break;
@@ -813,7 +826,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$upscale_max = WpssoConfig::$cf[ 'opt' ][ 'defaults' ][ 'plugin_upscale_img_max' ];
 
 							$text = sprintf( __( 'When upscaling of %1$s image sizes is allowed, %2$s can make sure smaller images are not upscaled beyond reason, which would publish very low quality / fuzzy images on social and search sites (the default maximum is %3$s%%).', 'wpsso' ), $info[ 'short' ], $info[ 'name_pro' ], $upscale_max ) . ' ';
-							
+
 							$text .= __( 'If an image needs to be upscaled beyond this maximum, in either width or height, the image will not be upscaled.', 'wpsso' );
 
 							break;
@@ -823,7 +836,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$attr_key = substr( $msg_key, 8 );	// Remove the 'tooltip-' prefix.
 
 							$text .= __( 'Enter the name of a product attribute you have created in your e-commerce plugin (ie. WooCommerce).', 'wpsso' ) . ' ';
-							
+
 							$text .= sprintf( __( 'The default attribute name is "%s".', 'wpsso' ), $this->p->opt->get_defaults( $attr_key ) );
 
 							break;
@@ -842,7 +855,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_wpseo_social_meta':
 
 							$text = __( 'Read the Yoast SEO custom social meta text for Posts, Terms, and Users.', 'wpsso' ) . ' ';
-							
+
 							$text .= __( 'This option is checked by default if the Yoast SEO plugin is active, or its settings are found in the database.', 'wpsso' );
 
 							break;
@@ -865,7 +878,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							if ( ! empty( $cf_info ) ) {	// Just in case.
 
 								$text = sprintf( __( 'If your theme or another plugin provides a custom field for %1$s, you may enter its custom field name here.', 'wpsso' ), $cf_info[ 1 ] ) . ' ';
-							
+
 								$text .= sprintf( __( 'If a custom field matching that name is found, its value may be used for the "%1$s" option in the %2$s metabox.', 'wpsso' ), $cf_info[ 0 ], $metabox_title ) . ' ';
 
 								if ( $cf_is_multi ) {
@@ -881,7 +894,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_show_columns':	// Additional List Table Columns.
 
 							$text = __( 'Additional columns can be included in admin list tables to show the Schema type ID, Open Graph image, etc.', 'wpsso' ) . ' ';
-							
+
 							$text .= __( 'When a column is enabled, <strong>each user can still hide that column</strong> by using the <em>Screen Options</em> tab on the list table page.', 'wpsso' );
 
 							break;
@@ -915,7 +928,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								_x( 'disabled', 'option comment', 'wpsso' );
 
 							$text = __( 'Head meta tags and Schema markup are saved to the WordPress transient cache to optimize performance.', 'wpsso' ) . ' ';
-							
+
 							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
 
 							break;
@@ -928,7 +941,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								_x( 'disabled', 'option comment', 'wpsso' );
 
 							$text = __( 'Filtered post content is saved to the WordPress <em>non-persistent</em> object cache to optimize performance.', 'wpsso' ) . ' ';
-							
+
 							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
 
 							break;
@@ -941,7 +954,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								_x( 'disabled', 'option comment', 'wpsso' );
 
 							$text = __( 'Shortened URLs are saved to the WordPress transient cache to optimize performance and API connections.', 'wpsso' ) . ' ';
-							
+
 							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
 
 							break;
@@ -954,7 +967,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								_x( 'disabled', 'option comment', 'wpsso' );
 
 							$text = __( 'The size for image URLs (not image IDs) is retrieved and saved to the WordPress transient cache to optimize performance and network bandwidth.', 'wpsso' ) . ' ';
-							
+
 							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
 
 							break;
@@ -967,7 +980,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								_x( 'disabled', 'option comment', 'wpsso' );
 
 							$text = __( 'The filtered article topics array is saved to the WordPress transient cache to optimize performance and disk access.', 'wpsso' ) . ' ';
-							
+
 							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
 
 							break;
@@ -980,7 +993,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								_x( 'disabled', 'option comment', 'wpsso' );
 
 							$text = __( 'The filtered Schema types array is saved to the WordPress transient cache to optimize performance.', 'wpsso' ) . ' ';
-							
+
 							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
 
 							break;
@@ -1012,7 +1025,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								_x( 'disabled', 'option comment', 'wpsso' );
 
 							$text = sprintf( __( 'Clear all shortened URLs when clearing all %s transients from the WordPress database (default is unchecked).', 'wpsso' ), $info[ 'short' ] ) . ' ';
-							
+
 							$text .= sprintf( __( 'Shortened URLs are cached for %1$s seconds (%2$s) to minimize external service API calls. Updating all shortened URLs at once may exceed API call limits imposed by your shortening service provider.', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
 
 							break;
@@ -1142,7 +1155,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= sprintf( __( 'As an example, the Facebook Business Page URL for %1$s is <a href="%2$s">%2$s</a>.', 'wpsso' ), 'Surnia Ulula', __( 'https://www.facebook.com/SurniaUlulaCom', 'wpsso' ) ) . ' ';
 
 							$text .= __( 'The Facebook Business Page URL will be used in Open Graph <em>article</em> type webpages and the website\'s Schema Organization markup.', 'wpsso' ) . ' ';
-							
+
 							$text .= __( 'Google Search may use this URL to display additional information about the website / business in its search results.', 'wpsso' );
 
 							break;
@@ -1171,7 +1184,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= '<br/><br/>';
 
 							$text .= __( 'When viewing your own Facebook wall, your username is located in the URL (for example, https://www.facebook.com/<strong>username</strong>). Enter only the usernames, not the URLs.', 'wpsso' ) . ' ';
-							
+
 							$text .= sprintf( __( 'You may update your Facebook username in the <a href="%1$s">Facebook General Account Settings</a>.', 'wpsso' ), $fb_username_url );
 
 							break;
@@ -1200,7 +1213,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-seo_desc_max_len':	// Search / SEO Description Length.
 
 							$text = __( 'The maximum length used for the Google Search / SEO description value.', 'wpsso' ) . ' ';
-							
+
 							$text .= sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).',
 								'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ 'seo_desc_len' ],
 									$this->p->opt->get_defaults( 'seo_desc_max_len' ) );
@@ -1242,13 +1255,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								_x( 'SSO WebSite Pages', 'lib file description', 'wpsso' ) );
 
 							$text = __( 'Include WebSite, Organization and/or Person Schema markup in the front page for Google\'s <em>Knowledge Graph</em>.', 'wpsso' ) . '<br/><br/>';
-							
+
 							$text .= __( 'The WebSite markup includes the site name, alternate site name, site URL and search query URL.', 'wpsso' ) . ' ';
-							
+
 							$text .= sprintf( __( 'Developers can hook the "%s" filter to modify the site search URL (or disable its addition by returning false).', 'wpsso' ), $this->p->lca . '_json_ld_search_url' ) . '<br/><br/>';
-							
+
 							$text .= sprintf( __( 'The Organization markup includes all URLs entered in the %s settings page.', 'wpsso' ), $settings_page_link ) . '<br/><br/>';
-							
+
 							$text .= __( 'The Person markup includes all contact method URLs entered in the user\'s WordPress profile page.', 'wpsso' );
 
 							break;
@@ -1256,9 +1269,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-schema_home_person_id':
 
 							$text = __( 'Select an optional site owner for the <em>Knowledge Graph</em> Person markup included in the front page.', 'wpsso' ) . ' ';
-							
+
 							$text .= __( 'The Person markup includes all contact method URLs entered in the user\'s WordPress profile page.', 'wpsso' ) . ' ';
-							
+
 							$text .= sprintf( __( 'The available Person list includes users with "%1$s" and/or "%2$s" roles.', 'wpsso' ),
 								_x( 'Administrator', 'user role', 'wpsso' ), _x( 'Editor', 'user role', 'wpsso' ) );
 
@@ -1317,7 +1330,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-schema_desc_max_len':
 
 							$text = __( 'The maximum text length of the Schema description property value.', 'wpsso' ) . ' ';
-							
+
 							$text .= sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).',
 								'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ 'schema_desc_len' ],
 									$this->p->opt->get_defaults( 'schema_desc_max_len' ) );
@@ -1405,9 +1418,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-tc_site':
 
 							$text = sprintf( __( 'The <a href="%1$s">Twitter @username for your website and/or business</a> (not your personal Twitter @username).', 'wpsso' ), __( 'https://business.twitter.com/', 'wpsso' ) ) . ' ';
-							
+
 							$text .= sprintf( __( 'As an example, the Twitter @username for %1$s is <a href="%2$s">%3$s</a>.', 'wpsso' ), 'Surnia Ulula', __( 'https://twitter.com/surniaululacom', 'wpsso' ), '@surniaululacom' ) . ' ';
-							
+
 							$text .= __( 'The Twitter @username for your website and/or business will be used in the website\'s Schema Organization markup.', 'wpsso' ) . ' ';
 
 							$text .= __( 'Google Search may use this URL to display additional information about the website / business in its search results.', 'wpsso' );
@@ -1480,7 +1493,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-p_dom_verify':
 
 							$text = sprintf( __( 'To <a href="%s">verify your website</a> with Pinterest, edit your business account profile on Pinterest and click the "Verify WebSite" button.', 'wpsso' ), 'https://help.pinterest.com/en/articles/verify-your-website#meta_tag' ) . ' ';
-							
+
 							$text .= __( 'Enter the supplied "p:domain_verify" meta tag <em>content</em> value here.', 'wpsso' );
 
 							break;
@@ -1575,7 +1588,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-myspace_publisher_url':
 
 							$text = sprintf( __( 'If you have a <a href="%1$s">Myspace account for your website / business</a>, you may enter its URL here.', 'wpsso' ), __( 'http://myspace.com/', 'wpsso' ) ) . ' ';
-							
+
 							$text .= __( 'The Myspace Business Page URL will be used in the website\'s Schema Organization markup.', 'wpsso' ) . ' ';
 
 							$text .= __( 'Google Search may use this URL to display additional information about the website / business in its search results.', 'wpsso' );
@@ -1724,7 +1737,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= __( 'Validate HTML syntax and HTML 5 conformance of your meta tags and theme templates.', 'wpsso' ) . ' ';
 
 							$text .= __( 'Templates with serious errors can prevent social and search crawlers from correctly parsing the webpage.', 'wpsso' ) . ' ';
-							
+
 							$text .= __( 'Validating your theme templates is an important step.', 'wpsso' );
 
 							$text .= '</p>';
@@ -1743,7 +1756,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'info-meta-validate-amp':
 
 							$text = '<p class="top">';
-							
+
 							$text .= __( 'Validate the HTML syntax and HTML AMP conformance of your meta tags and the AMP markup of your templates.', 'wpsso' ) . ' ';
 
 							$text .= '</p>';
@@ -1796,11 +1809,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'info-woocommerce-cf-attr':
 
 							$text = '<blockquote class="top-info">';
-							
+
 							$text .= '<p>';
 
 							$text .= __( 'Note that product attribute values from WooCommerce have precedence over custom field values.', 'wpsso' );
-							
+
 							$text .= '</p><p>';
 
 							$text .= sprintf( __( 'Refer to the <a href="%s">WooCommerce integration notes</a> for information on setting up product attributes and custom fields.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/' );
@@ -1819,13 +1832,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = '<blockquote class="top-info">';
 
 							$text .= '<p>';
-							
+
 							$text .= sprintf( __( 'After purchasing the %1$s plugin or any complementary %2$s add-on, you\'ll receive an email with a unique Authentication ID for the plugin or add-on you purchased.', 'wpsso' ), $info[ 'short_pro' ], $pro_transl ) . ' ';
 
 							$text .=  __( 'Enter the Authentication ID in the option field corresponding to the plugin or add-on you purchased.', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( 'Don\'t forget that the %1$s add-on must be installed and active to check for %2$s version updates.', 'wpsso' ), $um_addon_link, $pro_transl ) . ' ;-)';
-							
+
 							$text .= '</p>';
 
 
@@ -1860,23 +1873,23 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$contact_info_transl = __( 'Contact Info' );
 
 							$text = '<blockquote class="top-info">';
-							
+
 							$text .= '<p>';
-							
+
 							$text .= sprintf( __( 'The following options allow you to customize the list of contact fields shown in the <strong>%1$s</strong> section of <a href="%2$s">the user profile page</a>.', 'wpsso' ), $contact_info_transl, get_admin_url( null, 'profile.php' ) ) . ' ';
-							
+
 							$text .= sprintf( __( '%1$s uses the Facebook and Twitter contact field values in its meta tags and Schema markup.', 'wpsso' ), $info[ 'short' ] ) . ' ';
-							
+
 							$text .= '<strong>' . sprintf( __( 'You should not modify the <em>%1$s</em> column unless you have a <em>very</em> good reason to do so.', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ) ) . '</strong> ';
-							
+
 							$text .= sprintf( __( 'The <em>%1$s</em> column on the other hand is for display purposes only and can be changed as you wish.', 'wpsso' ), _x( 'Contact Field Label', 'column title', 'wpsso' ) ) . ' ';
-							
+
 							$text .= '</p><p>';
-							
+
 							$text .= '<center>';
-							
+
 							$text .= '<strong>' . __( 'DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE ARE CONTACT FIELD LABELS ONLY.', 'wpsso' ) . '</strong><br/>';
-							
+
 							$text .= sprintf( __( 'Enter your personal contact information in <a href="%1$s">the user profile page</a>.', 'wpsso' ), get_admin_url( null, 'profile.php' ) );
 
 							$text .= '</center>';
@@ -1890,7 +1903,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'info-head_tags':
 
 							$text = '<blockquote class="top-info">';
-							
+
 							$text .= '<p>';
 
 							$text .= sprintf( __( '%s adds the following Facebook, Open Graph, Twitter, Schema, Pinterest, and SEO meta tags to the <code>&lt;head&gt;</code> section of your webpages.', 'wpsso' ), $info[ 'short' ] ) . ' ';
@@ -1937,7 +1950,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						}
 
 						$text .= empty( $url[ 'purchase' ] ) ? '' : '</a>';
-						
+
 						$text .= '</p>';
 
 						break;
@@ -1975,7 +1988,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						if ( empty( $info[ 'ext' ] ) ) {	// Nothing to do.
 							break;
 						}
-						
+
 						if ( WpssoAdmin::$pkg[ $info[ 'ext' ] ][ 'pp' ] ) {
 
 							$text = _x( 'Get More Licenses', 'plugin action link', 'wpsso' );
@@ -2020,7 +2033,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								$text .= sprintf( __( 'A larger custom image can be selected in the %1$s metabox under the %2$s tab.',
 									'wpsso' ), $metabox_title, $metabox_tab );
-							
+
 								$do_once_custom_notice = true;
 							}
 						}
@@ -2028,7 +2041,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						static $do_once_upscale_notice = null;
 
 						if ( null === $do_once_upscale_notice ) {
-						
+
 							if ( ! isset( $info[ 'allow_upscale' ] ) || ! empty( $info[ 'allow_upscale' ] ) ) {
 
 								if ( current_user_can( 'manage_options' ) ) {
@@ -2228,7 +2241,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'notice-recommend-version':
 
 						$text = sprintf( __( 'You are using %1$s version %2$s &mdash; <a href="%3$s">this %1$s version is outdated, unsupported, possibly insecure</a>, and may lack important updates and features.', 'wpsso' ), $info[ 'app_label' ], $info[ 'app_version' ], $info[ 'version_url' ] ) . ' ';
-						
+
 						$text .= sprintf( __( 'If possible, please update to the latest %1$s stable release (or at least version %2$s).', 'wpsso' ), $info[ 'app_label' ], $info[ 'rec_version' ] );
 
 						break;
@@ -2265,7 +2278,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text .= '</ul>';
 
 						$text .= '<p>' . sprintf( __( '<strong>%1$s licenses never expire</strong> &mdash; you may receive unlimited / lifetime updates and support for each licensed WordPress Site Address.', 'wpsso' ), $pro_transl ) . ' ';
-						
+
 						$text .= __( 'How great is that!?', 'wpsso' ) . ' :-)</p>';
 
 
@@ -2276,9 +2289,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'column-help-support':
 
 						$text = '<p>';
-						
+
 						$text .= sprintf( __( '<strong>Development of %1$s is driven by user requests</strong> &mdash; we welcome all your comments and suggestions.', 'wpsso' ), $info[ 'short' ] ) . ' ;-)';
-						
+
 						$text .= '</p>';
 
 						break;
@@ -2286,7 +2299,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'column-rate-review':
 
 						$text = '<p>';
-						
+
 						$text .= __( '<strong>Great ratings are a terrific way to encourage your plugin developers</strong> &mdash; and it only takes a minute.', 'wpsso' ) . ' :-) ';
 
 						$text .= '</p><p>';
@@ -2529,7 +2542,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		public function more_schema_options() {
 
 			$json_addon_link = $this->p->util->get_admin_url( 'addons#wpssojson', $this->p->cf[ 'plugin' ][ 'wpssojson' ][ 'name' ] );
-		
+
 			// translators: %s is is the add-on name (and a link to the add-on page).
 			$json_msg_transl = sprintf( __( 'Activate the %s add-on for additional Schema markup options.', 'wpsso' ), $json_addon_link );
 
