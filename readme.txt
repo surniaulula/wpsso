@@ -445,6 +445,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Schema Article AMP 1x1 (Google)
 		* Schema Article AMP 4x3 (Google)
 		* Schema Article AMP 16x9 (Google)
+	* Added a "Notification System" option to the Essential and Advanced settings pages to select a preferred notification system.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
