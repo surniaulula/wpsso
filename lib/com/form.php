@@ -943,21 +943,41 @@ EOF;
 
 				if ( $max_input > 1 ) {
 
-					$input_class = empty( $css_class ) ? 'input_numbered' : $css_class . ' input_numbered';
+					$input_class = empty( $css_class ) ? 'multi_numbered' : $css_class . ' multi_numbered';
 					$input_id    = empty( $css_id ) ? '' : $css_id . '_' . $key_num;
 
-					$html .= '<div class="wrap_multi">' . "\n";
-					$html .= '<p class="input_numbered">' . ( $key_num + 1 ) . '.</p>';
+					$html .= '<div class="multi_container">' . "\n";
+
+					$html .= '<div class="multi_number"><p>' . ( $key_num + 1 ) . '.</p></div>' . "\n";
+
+					$html .= '<div class="multi_input">' . "\n";
 				}
 
-				$html .= '<input type="text" disabled="disabled"' .
-					( empty( $input_class ) ? '' : ' class="' . esc_attr( $input_class ) . '"' ) .
-					( empty( $input_id ) ? '' : ' id="text_' . esc_attr( $input_id ) . '"' ) .
-					( $placeholder === '' || $key_num > 0 ? '' : ' placeholder="' . esc_attr( $placeholder ) . '"' ) .
-					' value="' . esc_attr( $value ) . '" />' . "\n";
+				$html .= '<input type="text" disabled="disabled"';
+
+				$html .= empty( $input_class ) ? '' : ' class="' . esc_attr( $input_class ) . '"';
+
+				$html .= empty( $input_id ) ? '' : ' id="text_' . esc_attr( $input_id ) . '"';
+
+				/**
+				 * Only show a placeholder and value for the first input field.
+				 */
+				if ( $key_num > 0 ) {
+
+					if ( $placeholder ) {
+						$html .= ' placeholder="' . esc_attr( $placeholder ) . '"';
+					}
+
+					$html .= ' value="' . esc_attr( $value ) . '"';
+				}
+
+				$html .= '/>' . "\n";
 
 				if ( $max_input > 1 ) {
-					$html .= '</div>' . "\n";
+
+					$html .= '</div><!-- .multi_input -->' . "\n";
+
+					$html .= '</div><!-- .multi_container -->' . "\n";
 				}
 			}
 
@@ -1249,7 +1269,7 @@ EOF;
 				$opt_key      = $name . '_' . $key_num;
 				$opt_disabled = $is_disabled || $this->get_options( $opt_key . ':is' ) === 'disabled' ? true : false;
 
-				$input_class   = empty( $css_class ) ? 'multi input_numbered' : 'multi ' . $css_class . ' input_numbered';
+				$input_class   = empty( $css_class ) ? 'multi_numbered' : $css_class . ' multi_numbered';
 				$input_id      = empty( $css_id ) ? $opt_key : $css_id . '_' . $key_num;
 				$input_id_prev = empty( $css_id ) ? $name . '_' . $prev_num : $css_id . '_' . $prev_num;
 				$input_id_next = empty( $css_id ) ? $name . '_' . $next_num : $css_id . '_' . $next_num;
@@ -1261,11 +1281,13 @@ EOF;
 					continue;
 				}
 				
-				$html .= '<div class="wrap_multi" id="wrap_' . esc_attr( $input_id ) . '"';
+				$html .= '<div class="multi_container" id="multi_' . esc_attr( $input_id ) . '"';
 				$html .= $display ? '' : ' style="display:none;"';
 				$html .= '>' . "\n";
 
-				$html .= '<p class="input_numbered">' . ( $key_num + 1 ) . '.</p>';
+				$html .= '<div class="multi_number"><p>' . ( $key_num + 1 ) . '.</p></div>' . "\n";
+
+				$html .= '<div class="multi_input">' . "\n";
 
 				$html .= '<input type="text"' . ( $opt_disabled ? ' disabled="disabled"' : '' ) .
 					' name="' . esc_attr( $this->opts_name . '[' . $opt_key . ']' ) . '"' .
@@ -1273,9 +1295,11 @@ EOF;
 					' id="text_' . esc_attr( $input_id ) . '"' .
 					' value="' . esc_attr( $input_value ) . '"' .
 					' onFocus="if ( jQuery(\'input#text_' . $input_id_prev . '\').val().length ) { '.
-						'jQuery(\'div#wrap_' . esc_attr( $input_id_next ) . '\').show(); }" />';
+						'jQuery(\'div#multi_' . esc_attr( $input_id_next ) . '\').show(); }" />';
 
-				$html .= '</div>' . "\n";
+				$html .= '</div><!-- .multi_input -->' . "\n";
+
+				$html .= '</div><!-- .multi_container -->' . "\n";
 
 				$one_more = empty( $input_value ) ? false : true;
 
@@ -1351,17 +1375,19 @@ EOF;
 				$prev_num = $key_num > 0 ? $key_num - 1 : 0;
 				$next_num = $key_num + 1;
 
-				$wrap_id      = $css_id . '_' . $key_num;
-				$wrap_id_prev = $css_id . '_' . $prev_num;
-				$wrap_id_next = $css_id . '_' . $next_num;
+				$multi_id      = $css_id . '_' . $key_num;
+				$multi_id_prev = $css_id . '_' . $prev_num;
+				$multi_id_next = $css_id . '_' . $next_num;
 
 				$display = empty( $one_more ) && $key_num >= $show_first ? false : true;
 
-				$html .= '<div class="wrap_multi" id="wrap_' . esc_attr( $wrap_id ) . '"';
+				$html .= '<div class="multi_container" id="multi_' . esc_attr( $multi_id ) . '"';
 				$html .= $display ? '' : ' style="display:none;"';
 				$html .= '>' . "\n";
 
-				$html .= '<p class="input_numbered">' . ( $key_num + 1 ) . '.</p>';
+				$html .= '<div class="multi_number"><p>' . ( $key_num + 1 ) . '.</p></div>' . "\n";
+
+				$html .= '<div class="multi_input">' . "\n";
 
 				foreach ( $mixed as $name => $atts ) {
 
@@ -1372,7 +1398,7 @@ EOF;
 					$in_defaults = $this->in_defaults( $opt_key );	// Optimize and call only once.
 
 					$input_title   = empty( $atts[ 'input_title' ] ) ? '' : $atts[ 'input_title' ];
-					$input_class   = empty( $atts[ 'input_class' ] ) ? 'multi input_numbered' : 'multi ' . $atts[ 'input_class' ] . ' input_numbered';
+					$input_class   = empty( $atts[ 'input_class' ] ) ? 'multi_numbered' : $atts[ 'input_class' ] . ' multi_numbered';
 					$input_id      = empty( $atts[ 'input_id' ] ) ? $opt_key : $atts[ 'input_id' ] . '_' . $key_num;
 					$input_content = empty( $atts[ 'input_content' ] ) ? '' : $atts[ 'input_content' ];
 					$input_values  = empty( $atts[ 'input_values' ] ) ? array() : $atts[ 'input_values' ];
@@ -1441,7 +1467,7 @@ EOF;
 									' class="' . esc_attr( $input_class ) . '"' .
 									' id="text_' . esc_attr( $input_id ) . '"' .
 									' value="' . esc_attr( $input_value ) . '"' .
-									' onFocus="jQuery(\'div#wrap_' . esc_attr( $wrap_id_next ) . '\').show();" />' . "\n";
+									' onFocus="jQuery(\'div#multi_' . esc_attr( $multi_id_next ) . '\').show();" />' . "\n";
 
 								$one_more = empty( $input_value ) ? false : true;
 
@@ -1468,7 +1494,7 @@ EOF;
 									' title="' . esc_attr( $input_title ) . '"' .
 									' class="' . esc_attr( $input_class ) . '"' .
 									' id="select_' . esc_attr( $input_id ) . '"' .
-									' onFocus="jQuery(\'div#wrap_' . esc_attr( $wrap_id_next ) . '\').show();">' . "\n";
+									' onFocus="jQuery(\'div#multi_' . esc_attr( $multi_id_next ) . '\').show();">' . "\n";
 
 								$select_options = empty( $atts[ 'select_options' ] ) || 
 									! is_array( $atts[ 'select_options' ] ) ?
@@ -1539,7 +1565,9 @@ EOF;
 					}
 				}
 
-				$html .= '</div>' . "\n";
+				$html .= '</div><!-- .multi_input -->' . "\n";
+
+				$html .= '</div><!-- .multi_container -->' . "\n";
 			}
 
 			return $html;
