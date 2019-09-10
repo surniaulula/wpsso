@@ -292,6 +292,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			$this->avail = $this->check->get_avail();		// Uses $this->options for availability checks.
 
+			/**
+			 * Make sure a debug object is always available.
+			 */
 			if ( $debug_log || $debug_html || ( defined( 'WPSSO_LOAD_DEBUG' ) && WPSSO_LOAD_DEBUG ) ) {
 
 				require_once WPSSO_PLUGINDIR . 'lib/com/debug.php';
@@ -312,11 +315,14 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				}
 
 			} else {
-				$this->debug = new SucomNoDebug();		// Make sure a debug object is always available.
+				$this->debug = new SucomNoDebug();
 			}
 
 			do_action( 'wpsso_init_textdomain', $this->debug->enabled );
 
+			/**
+			 * Make sure a notice object is always available.
+			 */
 			if ( $is_admin || $doing_cron ) {
 
 				require_once WPSSO_PLUGINDIR . 'lib/com/notice.php';
@@ -324,12 +330,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->notice = new SucomNotice( $this );
 
 			} else {
-				$this->notice = new SucomNoNotice();		// Make sure the a notice object is always available.
+				$this->notice = new SucomNoNotice();
 			}
 
-			$this->cache   = new SucomCache( $this );
-			$this->util    = new WpssoUtil( $this );		// Extends SucomUtil.
-			$this->opt     = new WpssoOptions( $this );
+			$this->cache = new SucomCache( $this );
+			$this->util  = new WpssoUtil( $this );		// Extends SucomUtil.
+			$this->opt   = new WpssoOptions( $this );
 
 			if ( $this->debug->enabled ) {
 				$this->debug->mark( 'do init options action' );	// Begin timer.

@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '6.3.0-dev.1',	// Plugin version.
-					'opt_version' => '663',		// Increment when changing default option values.
+					'opt_version' => '665',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'WPSSO Core makes sure your content looks great on all social and search sites - no matter how URLs are crawled, shared, re-shared, posted, or embedded!',
@@ -1182,28 +1182,29 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced settings - Plugin Behavior tab.
 					 */
-					'plugin_clean_on_uninstall' => 0,	// Remove Settings on Uninstall.
-					'plugin_debug'              => 0,	// Add Hidden Debug Messages.
-					'plugin_show_opts'          => 'basic',	// Options to Show by Default.
+					'plugin_clean_on_uninstall' => 0,			// Remove Settings on Uninstall.
+					'plugin_debug'              => 0,			// Add Hidden Debug Messages.
+					'plugin_show_opts'          => 'basic',			// Options to Show by Default.
+					'plugin_notice_system'      => 'toolbar_notices',	// Notification System.
 					
 					/**
 					 * Advanced settings - Content Text tab.
 					 */
-					'plugin_filter_title'   => 0,		// Use Filtered (SEO) Title.
-					'plugin_filter_content' => 0,		// Use WordPress Content Filters.
-					'plugin_filter_excerpt' => 0,		// Use WordPress Excerpt Filters.
-					'plugin_p_strip'        => 1,		// Content Starts at 1st Paragraph.
-					'plugin_use_img_alt'    => 1,		// Use Image Alt if No Content.
-					'plugin_img_alt_prefix' => 'Image:',	// Image Alt Text Prefix.
-					'plugin_p_cap_prefix'   => 'Caption:',	// WP Caption Prefix.
-					'plugin_gravatar_api'   => 1,		// Gravatar is Author Default Image
-					'plugin_facebook_api'   => 1,		// Check for Embedded Media: Facebook Videos.
-					'plugin_slideshare_api' => 1,		// Check for Embedded Media: Slideshare Presentations.
-					'plugin_soundcloud_api' => 1,		// Check for Embedded Media: Soundcloud Tracks.
-					'plugin_vimeo_api'      => 1,		// Check for Embedded Media: Vimeo Videos.
-					'plugin_wistia_api'     => 1,		// Check for Embedded Media: Wistia Videos.
-					'plugin_wpvideo_api'    => 1,		// Check for Embedded Media: WordPress Video Shortcode.
-					'plugin_youtube_api'    => 1,		// Check for Embedded Media: Youtube Videos and Playlists.
+					'plugin_filter_title'   => 0,				// Use Filtered (SEO) Title.
+					'plugin_filter_content' => 0,				// Use WordPress Content Filters.
+					'plugin_filter_excerpt' => 0,				// Use WordPress Excerpt Filters.
+					'plugin_p_strip'        => 1,				// Content Starts at 1st Paragraph.
+					'plugin_use_img_alt'    => 1,				// Use Image Alt if No Content.
+					'plugin_img_alt_prefix' => 'Image:',			// Image Alt Text Prefix.
+					'plugin_p_cap_prefix'   => 'Caption:',			// WP Caption Prefix.
+					'plugin_gravatar_api'   => 1,				// Gravatar is Author Default Image
+					'plugin_facebook_api'   => 1,				// Check for Embedded Media: Facebook Videos.
+					'plugin_slideshare_api' => 1,				// Check for Embedded Media: Slideshare Presentations.
+					'plugin_soundcloud_api' => 1,				// Check for Embedded Media: Soundcloud Tracks.
+					'plugin_vimeo_api'      => 1,				// Check for Embedded Media: Vimeo Videos.
+					'plugin_wistia_api'     => 1,				// Check for Embedded Media: Wistia Videos.
+					'plugin_wpvideo_api'    => 1,				// Check for Embedded Media: WordPress Video Shortcode.
+					'plugin_youtube_api'    => 1,				// Check for Embedded Media: Youtube Videos and Playlists.
 					
 					/**
 					 * Advanced settings - Integration tab.
@@ -1913,6 +1914,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'show_options' => array(
 					'basic' => 'Basic Options',
 					'all'   => 'All Options',
+				),
+				'notice_systems' => array(
+					'toolbar_notices' => 'SSO Toolbar Notices',
+					'admin_notices'   => 'WP Admin Notices',
 				),
 				'site_option_use' => array(
 					'default' => 'New activation',
@@ -3302,7 +3307,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_MENU_ORDER' ]                  = '99.10';	// Position of the SSO menu item.
 			$var_const[ 'WPSSO_TB_NOTICE_MENU_ORDER' ]        = '55';	// Position of the SSO notices toolbar menu item.
 			$var_const[ 'WPSSO_TB_LOCALE_MENU_ORDER' ]        = '60';	// Position of the user locale toolbar menu item.
-			$var_const[ 'WPSSO_TOOLBAR_NOTICES' ]             = true;	// Show error, warning, and info notices in the toolbar menu.
 			$var_const[ 'WPSSO_JSON_PRETTY_PRINT' ]           = false;	// Output pretty / human readable json.
 			$var_const[ 'WPSSO_CONTENT_BLOCK_FILTER_OUTPUT' ] = true;	// Monitor and fix incorrectly coded filter hooks.
 			$var_const[ 'WPSSO_CONTENT_FILTERS_MAX_TIME' ]    = 1.50;	// Issue a warning if the content filter takes longer than 1.5 seconds.

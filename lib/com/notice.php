@@ -15,6 +15,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		private $p;
 		private $lca          = 'sucom';
+		private $uca          = 'SUCOM';
 		private $text_domain  = 'sucom';
 		private $label_transl = false;
 		private $dis_name     = 'sucom_dismissed';
@@ -58,20 +59,31 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 			}
 
+			/**
+			 * Set the lower and upper case acronym.
+			 */
 			if ( $lca !== null ) {
 				$this->lca = $lca;
 			} elseif ( ! empty( $this->p->lca ) ) {
 				$this->lca = $this->p->lca;
 			}
 
+			$this->uca = strtoupper( $this->lca );
+
+			/**
+			 * Set the text domain.
+			 */
 			if ( $text_domain !== null ) {
 				$this->text_domain = $text_domain;
 			} elseif ( ! empty( $this->p->cf[ 'plugin' ][ $this->lca ][ 'text_domain' ] ) ) {
 				$this->text_domain = $this->p->cf[ 'plugin' ][ $this->lca ][ 'text_domain' ];
 			}
 
+			/**
+			 * Set the notice label.
+			 */
 			if ( false !== $label_transl ) {
-				$this->label_transl = $label_transl;	// Argument is already translated.
+				$this->label_transl = $label_transl;
 			} elseif ( ! empty( $this->p->cf[ 'menu' ][ 'title' ] ) ) {
 				$this->label_transl = sprintf( __( '%s Notice', $this->text_domain ),
 					_x( $this->p->cf[ 'menu' ][ 'title' ], 'menu title', $this->text_domain ) );
@@ -79,17 +91,36 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$this->label_transl = __( 'Notice', $this->text_domain );
 			}
 
-			$uca = strtoupper( $this->lca );
+			/**
+			 * Set the notification system.
+			 */
+			if ( ! empty( $this->p->options[ 'plugin_notice_system' ] ) ) {
+				if ( 'toolbar_notices' === $this->p->options[ 'plugin_notice_system' ] ) {
+					$this->tb_notices = true;
+				} else {
+					$this->tb_notices = false;
+				}
+			}
 
-			$this->dis_name   = defined( $uca . '_DISMISS_NAME' ) ? constant( $uca . '_DISMISS_NAME' ) : $this->lca . '_dismissed';
-			$this->tb_notices = defined( $uca . '_TOOLBAR_NOTICES' ) ? constant( $uca . '_TOOLBAR_NOTICES' ) : false;
+			if ( defined( $this->uca . '_TOOLBAR_NOTICES' ) ) {
+				$this->tb_notices = constant( $this->uca . '_TOOLBAR_NOTICES' );
+			}
 
 			if ( true === $this->tb_notices ) {
 				$this->tb_notices = array( 'err', 'warn', 'inf' );
 			}
 
-			if ( empty( $this->tb_notices ) || ! is_array( $this->tb_notices ) ) {	// Quick sanity check.
+			if ( empty( $this->tb_notices ) || ! is_array( $this->tb_notices ) ) {
 				$this->tb_notices = false;
+			}
+
+			/**
+			 * Set the dismiss key name.
+			 */
+			if ( defined( $this->uca . '_DISMISS_NAME' ) ) {
+				$this->dis_name = constant( $this->uca . '_DISMISS_NAME' );
+			} else {
+				$this->dis_name = $this->lca . '_dismissed';
 			}
 		}
 
@@ -503,9 +534,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			if ( version_compare( $wp_version, '4.2', '>=' ) ) {
 				return true;
-			} else {
-				return false;
 			}
+
+			return false;
 		}
 
 		public function admin_header_notices() {
@@ -522,8 +553,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$notice_types = $this->all_types;
 
 			/**
-			 * If toolbar notices are being used, exclude these from being shown.
-			 * The default toolbar notices array is err, warn, and inf.
+			 * If toolbar notices are being used, exclude these from being shown. The default toolbar notices array is
+			 * err, warn, and inf.
 			 */
 			if ( is_array( $this->tb_notices ) ) {
 
@@ -548,8 +579,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			echo $this->get_notice_style();
 
 			/**
-			 * Exit early if this is a block editor page.
-			 * The notices will be retrieved using an ajax call on page load and post save.
+			 * Exit early if this is a block editor page. The notices will be retrieved using an ajax call on page load
+			 * and post save.
 			 */
 			if ( SucomUtilWP::doing_block_editor() ) {
 
@@ -837,35 +868,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			die( $json_encoded );
 		}
 
-		private function maybe_add_update_errors( $user_id ) {
-
-			if ( isset( $this->p->cf[ 'plugin' ] ) && class_exists( 'SucomUpdate' ) ) {
-
-				foreach ( array_keys( $this->p->cf[ 'plugin' ] ) as $ext ) {
-
-					if ( ! empty( $this->p->options[ 'plugin_' . $ext . '_tid' ] ) ) {
-
-						$uerr = SucomUpdate::get_umsg( $ext );
-
-						if ( ! empty( $uerr ) ) {
-
-							$msg_text   = preg_replace( '/<!--spoken-->(.*?)<!--\/spoken-->/Us', ' ', $uerr );
-							$msg_spoken = preg_replace( '/<!--not-spoken-->(.*?)<!--\/not-spoken-->/Us', ' ', $uerr );
-							$msg_spoken = SucomUtil::decode_html( SucomUtil::strip_html( $msg_spoken ) );
-							$msg_key    = sanitize_key( $msg_spoken );
-
-							if ( ! isset( $this->notice_cache[ $user_id ][ 'err' ] ) ) {	// Just in case.
-								$this->maybe_set_notice_cache( $user_id );
-							}
-
-							$this->notice_cache[ $user_id ][ 'err' ][ $msg_key ] = array(
-								'msg_text'   => $msg_text,
-								'msg_spoken' => $msg_spoken,
-							);
-						}
-					}
-				}
-			}
+		public function get_notice_system() {
+			return $this->tb_notices;
 		}
 
 		private function get_notice_html( $msg_type, array $payload, $notice_alt = false ) {
@@ -976,8 +980,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		/**
-		 * Called by the WordPress 'shutdown' action.
-		 * Save notices for all user IDs in the notice cache.
+		 * Called by the WordPress 'shutdown' action. Save notices for all user IDs in the notice cache.
 		 */
 		public function shutdown_notice_cache() {
 
@@ -989,9 +992,39 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 		}
 
+		private function maybe_add_update_errors( $user_id ) {
+
+			if ( isset( $this->p->cf[ 'plugin' ] ) && class_exists( 'SucomUpdate' ) ) {
+
+				foreach ( array_keys( $this->p->cf[ 'plugin' ] ) as $ext ) {
+
+					if ( ! empty( $this->p->options[ 'plugin_' . $ext . '_tid' ] ) ) {
+
+						$uerr = SucomUpdate::get_umsg( $ext );
+
+						if ( ! empty( $uerr ) ) {
+
+							$msg_text   = preg_replace( '/<!--spoken-->(.*?)<!--\/spoken-->/Us', ' ', $uerr );
+							$msg_spoken = preg_replace( '/<!--not-spoken-->(.*?)<!--\/not-spoken-->/Us', ' ', $uerr );
+							$msg_spoken = SucomUtil::decode_html( SucomUtil::strip_html( $msg_spoken ) );
+							$msg_key    = sanitize_key( $msg_spoken );
+
+							if ( ! isset( $this->notice_cache[ $user_id ][ 'err' ] ) ) {	// Just in case.
+								$this->maybe_set_notice_cache( $user_id );
+							}
+
+							$this->notice_cache[ $user_id ][ 'err' ][ $msg_key ] = array(
+								'msg_text'   => $msg_text,
+								'msg_spoken' => $msg_spoken,
+							);
+						}
+					}
+				}
+			}
+		}
+
 		/**
-		 * Returns a reference to the cache array.
-		 * This method can handle a user ID of 0.
+		 * Returns a reference to the cache array. This method can handle a user ID of 0.
 		 */
 		private function maybe_set_notice_cache( $user_id = null, $use_cache = true ) {
 
@@ -1407,8 +1440,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			if ( $custom_style_css = get_transient( $cache_id ) ) {	// Not empty.
 				return '<style type="text/css">' . $custom_style_css . '</style>';
 			}
-
-			$uca = strtoupper( $this->lca );
 
 			$custom_style_css = '';
 

@@ -101,9 +101,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 				/**
-				 * WPSSO_TOOLBAR_NOTICES can be true, false, or an array of notice types to include in the menu.
+				 * get_notice_system() can return true, false, or an array of notice types to include in the menu.
 				 */
-				if ( SucomUtil::get_const( 'WPSSO_TOOLBAR_NOTICES' ) ) {
+				if ( $this->p->notice->get_notice_system() ) {
 					add_action( 'admin_bar_menu', array( $this, 'add_admin_tb_notices_menu_item' ), WPSSO_TB_NOTICE_MENU_ORDER );
 				}
 
@@ -2997,7 +2997,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * If adding notices in the toolbar, show the notice on all pages, otherwise only show on the dashboard and
 			 * settings pages.
 			 */
-			if ( SucomUtil::get_const( 'WPSSO_TOOLBAR_NOTICES' ) ) {
+			if ( $this->p->notice->get_notice_system() ) {
 
 				$this->maybe_show_timed_notices();
 
@@ -3752,6 +3752,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$form->get_th_html( _x( 'Options to Show by Default', 'option label', 'wpsso' ), '', 'plugin_show_opts' ) .
 			'<td>' . $form->get_select( 'plugin_show_opts', $this->p->cf[ 'form' ][ 'show_options' ] ) . '</td>' .
 			self::get_option_site_use( 'plugin_show_opts', $form, $network, true );
+
+			$table_rows[ 'plugin_notice_system' ] = '' .
+			$form->get_th_html( _x( 'Notification System', 'option label', 'wpsso' ), '', 'plugin_notice_system' ) .
+			'<td>' . $form->get_select( 'plugin_notice_system', $this->p->cf[ 'form' ][ 'notice_systems' ] ) . '</td>' .
+			self::get_option_site_use( 'plugin_notice_system', $form, $network, true );
 		}
 
 		/**

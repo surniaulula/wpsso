@@ -121,6 +121,8 @@ _x( '[Custom Place]', 'option value', 'wpsso' );
 _x( '[New Place]', 'option value', 'wpsso' );
 _x( 'Basic Options', 'option value', 'wpsso' );
 _x( 'All Options', 'option value', 'wpsso' );
+_x( 'SSO Toolbar Notices', 'option value', 'wpsso' );
+_x( 'WP Admin Notices', 'option value', 'wpsso' );
 _x( 'New activation', 'option value', 'wpsso' );
 _x( 'If value is empty', 'option value', 'wpsso' );
 _x( 'Force this value', 'option value', 'wpsso' );

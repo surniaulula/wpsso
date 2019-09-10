@@ -28,22 +28,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 				if ( is_admin() ) {
 
-					/**
-					 * Define which notice types, if any, will be shown in the toolbar menu.
-					 * WPSSO_TOOLBAR_NOTICES can be true, false, or an array of notice types to include in the menu.
-					 */
-					$this->tb_notices = SucomUtil::get_const( 'WPSSO_TOOLBAR_NOTICES', false );
-
-					if ( $this->tb_notices === true ) {
-						$this->tb_notices = array( 'err', 'warn', 'inf' );
-					}
-
-					if ( empty( $this->tb_notices ) || ! is_array( $this->tb_notices ) ) {	// Quick sanity check.
-						$this->tb_notices = false;
-					}
-
-					add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_editor_assets' ), -1000 );
-					add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), -1000 );
+					$this->tb_notices = $this->p->notice->get_notice_system();
 
 					/**
 					 * Add jQuery to update the toolbar menu item counter and container on page load.
@@ -51,6 +36,9 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 					if ( ! empty( $this->tb_notices ) ) {
 						add_action( 'admin_footer', array( $this, 'add_update_tb_notices_script' ), 1000 );
 					}
+
+					add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_editor_assets' ), -1000 );
+					add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), -1000 );
 				}
 			}
 		}
