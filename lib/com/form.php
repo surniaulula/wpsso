@@ -1417,7 +1417,7 @@ EOF;
 					 * Default paragraph display is an inline-block.
 					 */
 					if ( ! empty( $atts[ 'input_label' ] ) ) {
-						$html .= '<p class="' . esc_attr( $input_class ) . '">' . $atts[ 'input_label' ] . '</p> ';
+						$html .= '<p class="multi_label">' . $atts[ 'input_label' ] . ':</p> ';
 					}
 
 					if ( isset( $atts[ 'input_type' ] ) ) {
