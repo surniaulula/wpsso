@@ -436,20 +436,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.3.0-dev.2 (2019/09/10)**
+**Version 6.3.0-dev.3 (2019/09/11)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added new image dimensions in the WordPress &gt; Settings &gt; SSO Image Sizes page:
+	* Added new Schema Article AMP image dimensions for Google:
 		* Schema Article AMP 1x1 (Google)
 		* Schema Article AMP 4x3 (Google)
 		* Schema Article AMP 16x9 (Google)
-	* Added a "Notification System" option to the Essential and Advanced settings pages to select a preferred notification system.
+	* Added a new "Notification System" option to the Essential and Advanced settings page.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a new 'image' input type in the SucomForm::get_mixed_multi() method for WPSSO JSON v2.9.0.
 
 **Version 6.2.0 (2019/09/07)**
 
@@ -535,9 +535,9 @@ New resized image file names now include custom crop locations (top, botton, lef
 
 == Upgrade Notice ==
 
-= 6.3.0-dev.2 =
+= 6.3.0-dev.3 =
 
-(2019/09/10) Added new image dimensions in the WordPress &gt; Settings &gt; SSO Image Sizes page.
+(2019/09/11) Added new Schema Article AMP image dimensions for Google. Added a new "Notification System" option to the Essential and Advanced settings page.
 
 = 6.2.0 =
 
