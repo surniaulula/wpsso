@@ -863,7 +863,8 @@ EOF;
 		/**
 		 * Text input field.
 		 */
-		public function get_input( $name, $css_class = '', $css_id = '', $len = 0, $placeholder = '', $is_disabled = false, $tabindex = 0 ) {
+		public function get_input( $name, $css_class = '', $css_id = '', $len = 0, $placeholder = '',
+			$is_disabled = false, $tabindex = null, $el_attr = '' ) {
 
 			if ( empty( $name ) ) {
 				return;	// Just in case.
@@ -897,7 +898,8 @@ EOF;
 			$html .= '<input type="text" name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"';
 			$html .= empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"';
 			$html .= empty( $css_id ) ? ' id="text_' . esc_attr( $name ) . '"' : ' id="text_' . esc_attr( $css_id ) . '"';
-			$html .= empty( $tabindex ) ? '' : ' tabindex="' . esc_attr( $tabindex ) . '"';
+			$html .= is_numeric( $tabindex ) ? '' : ' tabindex="' . esc_attr( $tabindex ) . '"';
+			$html .= empty( $el_attr ) ? '' : ' ' . $el_attr;
 
 			foreach ( $len as $key => $val ) {
 				$html .= empty( $len[ $key ] ) ? '' : ' ' . $key . 'Length="' . esc_attr( $len[ $key ] ) . '"';
@@ -943,7 +945,7 @@ EOF;
 
 				if ( $max_input > 1 ) {
 
-					$input_class = empty( $css_class ) ? 'multi_numbered' : $css_class . ' multi_numbered';
+					$input_class = empty( $css_class ) ? '' : $css_class;
 					$input_id    = empty( $css_id ) ? '' : $css_id . '_' . $key_num;
 
 					$html .= '<div class="multi_container">' . "\n";
@@ -1046,48 +1048,42 @@ EOF;
 			return $this->get_no_input_value( $value, 'datepicker', '', 'yyyy-mm-dd' );
 		}
 
-		public function get_input_image_upload( $opt_pre, $placeholder = '', $is_disabled = false ) {
+		public function get_input_image_upload( $name, $placeholder = '', $is_disabled = false, $el_attr = '' ) {
 
-			$opt_suffix  = '';
+			$num_suffix  = '';
 			$default_lib = 'wp';
 			$media_libs  = array( 'wp' => 'Media Library' );
 			$data        = array();
 
-			if ( preg_match( '/^(.*)(_[0-9]+)$/', $opt_pre, $matches ) ) {
-
-				$opt_pre = $matches[1];
-
-				$opt_suffix = $matches[2];	// Mutiple numbered option.
+			if ( preg_match( '/^(.*)(_[0-9]+)$/', $name, $matches ) ) {
+				$name = $matches[1];
+				$num_suffix = $matches[2];	// Mutiple numbered option.
 			}
+
+			$opt_key        = $name . $num_suffix;
+			$opt_key_id     = $name . '_id' . $num_suffix;
+			$opt_key_id_pre = $name . '_id_pre' . $num_suffix;
 
 			if ( true === $this->p->avail[ 'media' ][ 'ngg' ] ) {
 				$media_libs[ 'ngg' ] = 'NextGEN Gallery';
 			}
+
+			$lib_disabled = count( $media_libs ) <= 1 ? true : $is_disabled;
 
 			if ( strpos( $placeholder, 'ngg-' ) === 0 ) {
 				$default_lib = 'ngg';
 				$placeholder = preg_replace( '/^ngg-/', '', $placeholder );
 			}
 
-			$input_pid = $this->get_input( $opt_pre . '_id' . $opt_suffix,
-				$css_class = 'pid', $css_id = '', $len = 0, $placeholder, $is_disabled );
+			$input_pid = $this->get_input( $opt_key_id, 'pid', '', 0, $placeholder, $is_disabled, $tabindex = null, $el_attr );
 
-			/**
-			 * Disable the select option if only 1 media lib.
-			 */
-			$select_disabled = count( $media_libs ) <= 1 ? true : $is_disabled;
+			$select_lib = $this->get_select( $opt_key_id_pre, $media_libs, '', '', true, $lib_disabled, $default_lib );
 
-			$select_lib = $this->get_select( $opt_pre . '_id_pre' . $opt_suffix, $media_libs,
-				$css_class = '', $css_id = '', true, $select_disabled, $default_lib );
+			if ( ! empty( $this->options[ $opt_key_id ] ) &&
+				( empty( $this->options[ $opt_key_id_pre ] ) ||
+					$this->options[ $opt_key_id_pre ] === 'wp' ) ) {
 
-			/**
-			 * The css id is used to set image values and disable the image url.
-			 */
-			if ( ( empty( $this->options[ $opt_pre . '_id_pre' . $opt_suffix ] ) ||
-				$this->options[ $opt_pre . '_id_pre' . $opt_suffix ] === 'wp' ) && 
-					! empty( $this->options[ $opt_pre . '_id' . $opt_suffix ] ) ) {
-
-				$data[ 'pid' ] = $this->options[ $opt_pre . '_id' . $opt_suffix ];
+				$data[ 'pid' ] = $this->options[ $opt_key_id ];
 
 			} elseif ( $default_lib === 'wp' && ! empty( $placeholder ) ) {
 
@@ -1095,10 +1091,9 @@ EOF;
 			}
 
 			if ( function_exists( 'wp_enqueue_media' ) ) {
-
-				$upload_button = $this->get_button( $value = 'Select Image',
-					$css_class = 'sucom_image_upload_button button', $css_id = $opt_pre . $opt_suffix,
-						$url = '', $newtab = false, $is_disabled, $data );
+				$upload_button = $this->get_button( 'Select Image',
+					'sucom_image_upload_button button', $opt_key,
+						'', false, $is_disabled, $data );
 			} else {
 				$upload_button = '';
 			}
@@ -1106,9 +1101,9 @@ EOF;
 			return '<div class="img_upload">' . $input_pid . 'in&nbsp;' . $select_lib . '&nbsp;' . $upload_button . '</div>';
 		}
 
-		public function get_no_input_image_upload( $opt_pre, $placeholder = '' ) {
+		public function get_no_input_image_upload( $name, $placeholder = '' ) {
 
-			return $this->get_input_image_upload( $opt_pre, $placeholder, $is_disabled = true );
+			return $this->get_input_image_upload( $name, $placeholder, $is_disabled = true );
 		}
 
 		public function get_input_image_dimensions( $name, $is_narrow = false, $is_disabled = false ) {
@@ -1165,24 +1160,29 @@ EOF;
 			return $this->get_input_image_crop_area( $name, $add_none = false, $is_disabled = true );
 		}
 
-		public function get_input_image_url( $opt_pre, $url = '' ) {
+		public function get_input_image_url( $name, $url = '' ) {
 
-			$opt_suffix = '';
+			$num_suffix = '';
 
-			if ( preg_match( '/^(.*)(_[0-9]+)$/', $opt_pre, $matches ) ) {
-				$opt_pre = $matches[1];
-				$opt_suffix = $matches[2];
+			if ( preg_match( '/^(.*)(_[0-9]+)$/', $name, $matches ) ) {
+				$name       = $matches[1];
+				$num_suffix = $matches[2];
 			}
 
-			if ( empty( $this->options[ $opt_pre . '_id' . $opt_suffix ] ) ) {
+			$opt_key_id  = $name . '_id' . $num_suffix;
+			$opt_key_url = $name . '_url' . $num_suffix;
+
+			if ( empty( $this->options[ $opt_key_id ] ) ) {
+
 				$placeholder = SucomUtil::esc_url_encode( $url );
 				$is_disabled = false;
+
 			} else {
 				$placeholder = '';
 				$is_disabled = true;
 			}
 
-			return $this->get_input( $opt_pre . '_url' . $opt_suffix, 'wide', '', 0, $placeholder, $is_disabled );
+			return $this->get_input( $opt_key_url, 'wide', '', 0, $placeholder, $is_disabled );
 		}
 
 		public function get_input_video_dimensions( $name, $media_info = array(), $is_disabled = false ) {
@@ -1204,14 +1204,14 @@ EOF;
 			return $this->get_input_video_dimensions( $name, $media_info, $is_disabled = true );
 		}
 
-		public function get_input_video_url( $opt_pre, $url = '' ) {
+		public function get_input_video_url( $name, $url = '' ) {
 
 			/**
 			 * Disable if we have a custom video embed.
 			 */
-			$is_disabled = empty( $this->options[ $opt_pre . '_embed' ] ) ? false : true;
+			$is_disabled = empty( $this->options[ $name . '_embed' ] ) ? false : true;
 
-			return $this->get_input( $opt_pre . '_url', 'wide', '', 0, SucomUtil::esc_url_encode( $url ), $is_disabled );
+			return $this->get_input( $name . '_url', 'wide', '', 0, SucomUtil::esc_url_encode( $url ), $is_disabled );
 		}
 
 		public function get_input_copy_clipboard( $value, $css_class = 'wide', $css_id = '' ) {
@@ -1269,7 +1269,7 @@ EOF;
 				$opt_key      = $name . '_' . $key_num;
 				$opt_disabled = $is_disabled || $this->get_options( $opt_key . ':is' ) === 'disabled' ? true : false;
 
-				$input_class   = empty( $css_class ) ? 'multi_numbered' : $css_class . ' multi_numbered';
+				$input_class   = empty( $css_class ) ? '' : $css_class;
 				$input_id      = empty( $css_id ) ? $opt_key : $css_id . '_' . $key_num;
 				$input_id_prev = empty( $css_id ) ? $name . '_' . $prev_num : $css_id . '_' . $prev_num;
 				$input_id_next = empty( $css_id ) ? $name . '_' . $next_num : $css_id . '_' . $next_num;
@@ -1372,6 +1372,8 @@ EOF;
 
 			foreach ( range( $start_num, $end_num, 1 ) as $key_num ) {
 
+				$display = empty( $one_more ) && $key_num >= $show_first ? false : true;
+
 				$prev_num = $key_num > 0 ? $key_num - 1 : 0;
 				$next_num = $key_num + 1;
 
@@ -1379,7 +1381,7 @@ EOF;
 				$multi_id_prev = $css_id . '_' . $prev_num;
 				$multi_id_next = $css_id . '_' . $next_num;
 
-				$display = empty( $one_more ) && $key_num >= $show_first ? false : true;
+				$el_attr = 'onFocus="jQuery(\'div#multi_' . esc_attr( $multi_id_next ) . '\').show();"';
 
 				$html .= '<div class="multi_container" id="multi_' . esc_attr( $multi_id ) . '"';
 				$html .= $display ? '' : ' style="display:none;"';
@@ -1398,7 +1400,7 @@ EOF;
 					$in_defaults = $this->in_defaults( $opt_key );	// Optimize and call only once.
 
 					$input_title   = empty( $atts[ 'input_title' ] ) ? '' : $atts[ 'input_title' ];
-					$input_class   = empty( $atts[ 'input_class' ] ) ? 'multi_numbered' : $atts[ 'input_class' ] . ' multi_numbered';
+					$input_class   = empty( $atts[ 'input_class' ] ) ? '' : $atts[ 'input_class' ];
 					$input_id      = empty( $atts[ 'input_id' ] ) ? $opt_key : $atts[ 'input_id' ] . '_' . $key_num;
 					$input_content = empty( $atts[ 'input_content' ] ) ? '' : $atts[ 'input_content' ];
 					$input_values  = empty( $atts[ 'input_values' ] ) ? array() : $atts[ 'input_values' ];
@@ -1448,11 +1450,12 @@ EOF;
 								}
 
 								if ( ! empty( $radio_inputs ) ) {
-									$html .= '<p' .
-										' class="' . esc_attr( $input_class ) . '"' .
-										' id="' . esc_attr( $input_id ) . '">' .
-										vsprintf( $atts[ 'input_content' ], $radio_inputs ) .
-										'</p>';
+									$html .= '<p';
+									$html .= ' class="' . esc_attr( $input_class ) . '"';
+									$html .= ' id="' . esc_attr( $input_id ) . '"';
+									$html .= ' ' . $el_attr . '>';
+									$html .= vsprintf( $atts[ 'input_content' ], $radio_inputs );
+									$html .= '</p>' . "\n";
 								}
 
 								break;
@@ -1467,7 +1470,7 @@ EOF;
 									' class="' . esc_attr( $input_class ) . '"' .
 									' id="text_' . esc_attr( $input_id ) . '"' .
 									' value="' . esc_attr( $input_value ) . '"' .
-									' onFocus="jQuery(\'div#multi_' . esc_attr( $multi_id_next ) . '\').show();" />' . "\n";
+									' ' . $el_attr . '/>' . "\n";
 
 								$one_more = empty( $input_value ) ? false : true;
 
@@ -1483,7 +1486,7 @@ EOF;
 									' class="' . esc_attr( $input_class ) . '"' .
 									' id="textarea_' . esc_attr( $input_id ) . '"' .
 									( $this->get_placeholder_events( 'textarea', $placeholder ) ) .
-									'>' . esc_attr( $input_value ) . '</textarea>';
+									'>' . esc_attr( $input_value ) . '</textarea>' . "\n";
 
 								break;
 
@@ -1494,7 +1497,7 @@ EOF;
 									' title="' . esc_attr( $input_title ) . '"' .
 									' class="' . esc_attr( $input_class ) . '"' .
 									' id="select_' . esc_attr( $input_id ) . '"' .
-									' onFocus="jQuery(\'div#multi_' . esc_attr( $multi_id_next ) . '\').show();">' . "\n";
+									' ' . $el_attr . '>' . "\n";
 
 								$select_options = empty( $atts[ 'select_options' ] ) || 
 									! is_array( $atts[ 'select_options' ] ) ?
@@ -1559,6 +1562,14 @@ EOF;
 								
 								$html .= '<!-- ' . $select_opt_added . ' select options added -->' . "\n";
 								$html .= '</select>' . "\n";
+
+								break;
+
+							case 'image':
+
+								$html .= '<div tabindex="-1" ' . $el_attr . '>' . "\n";
+								$html .= $this->get_input_image_upload( $opt_key, $placeholder, $is_disabled, $el_attr );
+								$html .= '</div>' . "\n";
 
 								break;
 						}
@@ -1919,27 +1930,27 @@ EOF;
 			return empty( $css_class ) ? '' : '<tr class="' . $css_class . '">';
 		}
 
-		public function get_css_class_hide_img_dim( $in_view = 'basic', $opt_pre ) {
+		public function get_css_class_hide_img_dim( $in_view = 'basic', $name ) {
 
 			foreach ( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $opt_key ) {
-				$opt_keys[] = $opt_pre . '_' . $opt_key;
+				$opt_keys[] = $name . '_' . $opt_key;
 			}
 
 			return self::get_css_class_hide( $in_view, $opt_keys );
 		}
 
-		public function get_css_class_hide_vid_dim( $in_view = 'basic', $opt_pre ) {
+		public function get_css_class_hide_vid_dim( $in_view = 'basic', $name ) {
 
 			foreach ( array( 'width', 'height' ) as $opt_key ) {
-				$opt_keys[] = $opt_pre . '_' . $opt_key;
+				$opt_keys[] = $name . '_' . $opt_key;
 			}
 
 			return self::get_css_class_hide( $in_view, $opt_keys );
 		}
 
-		public function get_css_class_hide_prefix( $in_view = 'basic', $opt_pre ) {
+		public function get_css_class_hide_prefix( $in_view = 'basic', $name ) {
 
-			$opt_keys = SucomUtil::get_opts_begin( $opt_pre, $this->options );
+			$opt_keys = SucomUtil::get_opts_begin( $name, $this->options );
 
 			return self::get_css_class_hide( $in_view, $opt_keys );
 		}

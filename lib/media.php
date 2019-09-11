@@ -829,8 +829,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 
 				/**
-				 * Depending on cropping, one or both sides of the image must be accurate. If not, attempt
-				 * to create a resized image by calling image_make_intermediate_size().
+				 * Depending on cropping, one or both sides of the image must be accurate. If not, attempt to
+				 * create a resized image by calling image_make_intermediate_size().
 				 */
 				if ( ! $is_accurate_filename ||
 					( ! $is_cropped && ( ! $is_accurate_width && ! $is_accurate_height ) ) ||
@@ -840,8 +840,26 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						$fullsizepath = get_attached_file( $pid );
 
+						$mtime_start = microtime( true );
+
 						$resized_meta = image_make_intermediate_size( $fullsizepath,
 							$size_info[ 'width' ], $size_info[ 'height' ], $size_info[ 'crop' ] );
+
+						$mtime_total = microtime( true ) - $mtime_start;
+
+						$mtime_max = SucomUtil::get_const( 'WPSSO_IMAGE_MAKE_SIZE_MAX_TIME', 1.00 );
+
+						/**
+						 * Issue warning for slow getimagesize() request.
+						 */
+						if ( $mtime_max > 0 && $mtime_total > $mtime_max ) {
+
+							$info = $this->p->cf[ 'plugin' ][ $this->p->lca ];
+
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( sprintf( 'slow WordPress function detected - image_make_intermediate_size() took %1$0.3f secs to make size "%2$s" from %3$s', $mtime_total, $size_name, $fullsizepath ) );
+							}
+						}
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'WordPress image_make_intermediate_size() reported ' . 

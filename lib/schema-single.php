@@ -562,8 +562,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->debug->log( 'checking for custom job expire date and time' );
 			}
 
-			WpssoSchema::add_mod_opts_date_iso( $mod, $job_opts, array(
-				'job_expire' => 'schema_job_expire',	// Prefix for date, time, timezone, iso.
+			WpssoSchema::add_mod_opts_date_iso( $mod, $job_opts, $opts_md_pre = array(
+				'job_expire' => 'schema_job_expire',	// Format: 'opt_prefix' => 'md_prefix'.
 			) );
 
 			/**

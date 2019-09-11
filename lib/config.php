@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.3.0-dev.2',	// Plugin version.
+					'version'     => '6.3.0-dev.3',	// Plugin version.
 					'opt_version' => '665',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1319,7 +1319,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_clear_on_deactivate' => 0,			// Clear All Caches on Deactivate.
 					'plugin_clear_on_save'       => 0,			// Clear All Caches on Save Settings.
 					'plugin_clear_short_urls'    => 0,			// Refresh Short URLs on Clear Cache.
-					'plugin_clear_all_refresh'   => 0,			// Auto-Refresh Cache After Clearing.
+					'plugin_clear_all_refresh'   => 1,			// Auto-Refresh Cache After Clearing.
 					'plugin_clear_post_terms'    => 1,			// Clear Term Cache for Published Post.
 					'plugin_clear_for_comment'   => 1,			// Clear Post Cache for New Comment.
 					
@@ -3316,6 +3316,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_DUPE_CHECK_TIMEOUT_TIME' ]     = 3.00;	// Hard-limit - most crawlers time-out after 3 seconds.
 			$var_const[ 'WPSSO_DUPE_CHECK_WARNING_TIME' ]     = 2.50;	// Issue a warning if getting shortlink took more than 2.5 seconds.
 			$var_const[ 'WPSSO_GET_POSTS_MAX_TIME' ]          = 0.10;	// Send an error to trigger_error() if get_posts() takes longer.
+			$var_const[ 'WPSSO_IMAGE_MAKE_SIZE_MAX_TIME' ]    = 1.00;	// Send an error to trigger_error() if get_posts() takes longer.
 			$var_const[ 'WPSSO_PHP_GETIMGSIZE_MAX_TIME' ]     = 1.50;	// Send an error to trigger_error() if getimagesize() takes longer.
 			$var_const[ 'WPSSO_REFRESH_CACHE_SLEEP_TIME' ]    = 0.25;	// Seconds to sleep between requests when refreshing the cache.
 			$var_const[ 'WPSSO_SELECT_PERSON_NAMES_MAX' ]     = 200;	// Maximum number of persons to include in a form select.
