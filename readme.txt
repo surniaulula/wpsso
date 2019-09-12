@@ -339,7 +339,6 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 
 * [Can I use the Premium plugin on multiple websites?](https://wpsso.com/docs/plugins/wpsso/faqs/can-i-use-the-pro-version-on-multiple-websites/)
 * [Does LinkedIn read the Open Graph meta tags?](https://wpsso.com/docs/plugins/wpsso/faqs/does-linkedin-read-the-open-graph-meta-tags/)
-* [How can I add Schema aggregateRating values?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-add-schema-aggregaterating-values/)
 * [How can I exclude / ignore certain parts of the content text?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-exclude-ignore-certain-parts-of-the-content-text/)
 * [How can I fix a ERR_TOO_MANY_REDIRECTS error?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-a-err_too_many_redirects-error/)
 * [How can I fix a PHP fatal "out of memory" error?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-a-php-fatal-out-of-memory-error/)
@@ -379,7 +378,6 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 	* [Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/)
 		* [All Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/all/)
 		* [Filter Examples](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/)
-			* [Add Schema aggregateRating Meta Tags](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/add-schema-aggregaterating-meta-tags/)
 			* [Define a Custom Post Type (CPT) as a Product](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/define-a-custom-post-type-cpt-as-a-product/)
 			* [Detect YouTube URL Links as Videos](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/detect-youtube-url-links-as-videos/)
 			* [Modify the "article:tag" Keywords / Names](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-articletag-keywords-names/)
@@ -436,7 +434,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.3.0-dev.4 (2019/09/12)**
+**Version 6.3.0-dev.5 (2019/09/12)**
 
 * **New Features**
 	* None.
@@ -446,10 +444,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Schema Article AMP 4x3 (Google)
 		* Schema Article AMP 16x9 (Google)
 	* Added a new "Notification System" option to the Essential and Advanced settings page.
+	* Removed the "Meta Property Container" option and features (the WPSSO JSON add-on is recommended instead).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
 	* Added a new 'image' input type in the SucomForm::get_mixed_multi() method for WPSSO JSON v2.9.0.
+	* Removed support for `<noscript></noscript>` containers for Schema markup (the WPSSO JSON add-on is recommended instead).
+	* Removed the lib/noscript.php library file.
+	* Removed the lib/schema-cache.php library file (Deprecated).
 
 **Version 6.2.0 (2019/09/07)**
 
@@ -535,7 +537,7 @@ New resized image file names now include custom crop locations (top, botton, lef
 
 == Upgrade Notice ==
 
-= 6.3.0-dev.4 =
+= 6.3.0-dev.5 =
 
 (2019/09/12) Added new Schema Article AMP image dimensions for Google. Added a new "Notification System" option to the Essential and Advanced settings page.
 
