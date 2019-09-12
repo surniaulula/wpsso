@@ -753,7 +753,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				'amp' => array(
 					'title' => $mod[ 'is_post' ] ? _x( 'The AMP Validator', 'option label', 'wpsso' ) : '',
 					'label' => $mod[ 'is_post' ] ? _x( 'Validate AMP Markup', 'submit button', 'wpsso' ) : '',
-					'url'   => $mod[ 'is_post' ] && function_exists( 'amp_get_permalink' ) ?
+					'url'   => $mod[ 'is_post' ] && function_exists( amp_get_permalink ) ?
 						'https://validator.ampproject.org/#url=' . urlencode( amp_get_permalink( $mod[ 'id' ] ) ) : '',
 				),
 			);

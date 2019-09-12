@@ -259,6 +259,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$mod = $this->p->util->get_page_mod( $mod );
 			}
 
+			$filter_title = empty( $this->p->options[ 'plugin_filter_title' ] ) || $this->p->check->pp() ? false : true;
+			$filter_title = apply_filters( $this->p->lca . '_can_filter_title', $filter_title, $mod );
+
 			if ( false === $md_key ) {		// False would return the complete meta array.
 
 				$md_key = '';
@@ -275,8 +278,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$md_key       = array_unique( $md_key );	// Just in case.
 			$title_text   = false;
 			$paged_suffix = '';
-			$filter_title = empty( $this->p->options[ 'plugin_filter_title' ] ) ? false : true;
-			$filter_title = apply_filters( $this->p->lca . '_can_filter_title', $filter_title, $mod );
 
 			if ( null === $sep ) {
 				$sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
@@ -921,25 +922,21 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 		public function get_the_excerpt( array $mod ) {
 
-			$excerpt_text = '';
+			$excerpt_text = false;
 
 			/**
 			 * Use the excerpt, if we have one.
 			 */
 			if ( $mod[ 'is_post' ] && has_excerpt( $mod[ 'id' ] ) ) {
 
+				$filter_excerpt = empty( $this->p->options[ 'plugin_filter_excerpt' ] ) || $this->p->check->pp() ? false : true;
+				$filter_excerpt = apply_filters( $this->p->lca . '_can_filter_the_excerpt', $filter_excerpt, $mod );
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'getting the excerpt for post id ' . $mod[ 'id' ] );
 				}
 
 				$excerpt_text = get_post_field( 'post_excerpt', $mod[ 'id' ] );
-
-				static $filter_excerpt = null;
-
-				if ( null === $filter_excerpt ) {
-					$filter_excerpt = empty( $this->p->options[ 'plugin_filter_excerpt' ] ) ? false : true;
-					$filter_excerpt = apply_filters( $this->p->lca . '_can_filter_the_excerpt', $filter_excerpt, $mod );
-				}
 
 				if ( $filter_excerpt ) {
 					$excerpt_text = $this->p->util->safe_apply_filters( array( 'get_the_excerpt', $excerpt_text ), $mod );
@@ -961,15 +958,15 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				) );
 			}
 
-			$sharing_url    = $this->p->util->get_sharing_url( $mod );
-			$filter_content = empty( $this->p->options[ 'plugin_filter_content' ] ) ? false : true;
+			$filter_content = empty( $this->p->options[ 'plugin_filter_content' ] ) || $this->p->check->pp() ? false : true;
 			$filter_content = apply_filters( $this->p->lca . '_can_filter_the_content', $filter_content, $mod );
 
+			$sharing_url   = $this->p->util->get_sharing_url( $mod );
 			$cache_md5_pre = $this->p->lca . '_c_';
-			$cache_salt  = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $sharing_url ) . ')';
-			$cache_id    = $cache_md5_pre . md5( $cache_salt );
-			$cache_index = 'locale:' . SucomUtil::get_locale( $mod ) . '_filter:' . ( $filter_content ? 'true' : 'false' );
-			$cache_array = array();
+			$cache_salt    = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $sharing_url ) . ')';
+			$cache_id      = $cache_md5_pre . md5( $cache_salt );
+			$cache_index   = 'locale:' . SucomUtil::get_locale( $mod ) . '_filter:' . ( $filter_content ? 'true' : 'false' );
+			$cache_array   = array();
 
 			/**
 			 * Set and filter the cache expiration value only once.
@@ -1026,9 +1023,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'initializing new wp cache element' );
 			}
 
-			$cache_array[ $cache_index ] = false;	// Initialize the cache element.
+			$cache_array[ $cache_index ] = false;		// Initialize the cache element.
 
 			$content =& $cache_array[ $cache_index ];	// Reference the cache element.
+
 			$content = apply_filters( $this->p->lca . '_the_content_seed', '', $mod, $read_cache, $md_key );
 
 			if ( $content === false ) {

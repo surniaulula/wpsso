@@ -26,8 +26,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			add_action( 'wp_head', array( $this, 'maybe_disable_rel_canonical' ), -1000 );
 			add_action( 'wp_head', array( $this, 'show_head' ), WPSSO_HEAD_PRIORITY );
 
-			if ( ! empty( $this->p->avail[ '*' ][ 'amp' ] ) ) {	// An is_amp_endpoint() function exists.
-
+			if ( ! empty( $this->p->avail[ '*' ][ 'amp' ] ) ) {
 				add_action( 'amp_post_template_head', array( $this, 'maybe_disable_rel_canonical' ), -1000 );
 				add_action( 'amp_post_template_head', array( $this, 'show_head' ), WPSSO_HEAD_PRIORITY );
 			}

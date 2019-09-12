@@ -1757,7 +1757,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = '<p class="top">';
 
-							$text .= __( 'Validate the HTML syntax and HTML AMP conformance of your meta tags and the AMP markup of your templates.', 'wpsso' ) . ' ';
+							$text .= __( 'Validate the HTML syntax and conformance of your AMP formatted webpage.', 'wpsso' );
 
 							$text .= '</p>';
 
@@ -1765,7 +1765,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								$text .= '<p><i>';
 
-								$text .= sprintf( __( 'The <a href="%s">AMP plugin by Automattic</a> is required to validate AMP formatted webpages.', 'wpsso' ), 'https://wordpress.org/plugins/amp/' );
+								$text .= __( 'Note that an active AMP plugin is required to validate AMP formatted webpages.', 'wpsso' );
 
 								$text .= '</i></p>';
 							}

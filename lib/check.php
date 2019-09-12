@@ -16,6 +16,10 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		private $p;
 		private static $pp_c = array();
 		private static $extend_lib_checks = array(
+			'amp' => array(
+				'amp'                      => 'AMP',	// AMP, Better AMP, etc.
+				'accelerated-mobile-pages' => 'Accelerated Mobile Pages',
+			),
 			'seo' => array(
 				'jetpack-seo' => 'Jetpack SEO Tools',
 				'rankmath'    => 'SEO by Rank Math',
@@ -41,7 +45,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 			$get_avail = array();	// Initialize the array to return.
 
-			foreach ( array( 'featured', 'amp', 'head_html', 'vary_ua' ) as $key ) {
+			foreach ( array( 'featured', 'head_html', 'vary_ua' ) as $key ) {
 				$get_avail[ '*' ][ $key ] = $this->is_avail( $key );
 			}
 
@@ -69,6 +73,18 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						 * Prefer to check for class names than plugin slugs for 
 						 * compatibility with free / premium / pro versions.
 						 */
+						case 'amp-amp':		// AMP, Better AMP, etc.
+
+							$chk[ 'function' ] = 'is_amp_endpoint';
+
+							break;
+
+						case 'amp-accelerated-mobile-pages':	// Accelerated Mobile Pages.
+
+							$chk[ 'function' ] = 'ampforwp_is_amp_endpoint';
+
+							break;
+
 						case 'ecom-edd':
 
 							$chk[ 'class' ] = 'Easy_Digital_Downloads';
@@ -165,7 +181,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							break;
 
-						case 'rating-wppostratings':			// wp-postratings
+						case 'rating-wppostratings':
 
 							$chk[ 'constant' ] = 'WP_POSTRATINGS_VERSION';
 
@@ -372,12 +388,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				case 'featured':
 
 					$is_avail = function_exists( 'has_post_thumbnail' ) ? true : false;
-
-					break;
-
-				case 'amp':
-
-					$is_avail = function_exists( 'is_amp_endpoint' ) ? true : false;
 
 					break;
 

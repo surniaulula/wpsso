@@ -1058,21 +1058,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( null === $is_amp ) {
 
-				if ( function_exists( 'is_amp_endpoint' ) ) {
+				if ( function_exists( 'is_amp_endpoint' ) ) {	// AMP, Better AMP, etc.
 
 					$is_amp = is_amp_endpoint();
 
-				} elseif ( function_exists( 'ampforwp_is_amp_endpoint' ) ) {
+				} elseif ( function_exists( 'ampforwp_is_amp_endpoint' ) ) {	// Accelerated Mobile Pages.
 
 					$is_amp = ampforwp_is_amp_endpoint();
 
-				} elseif ( ! defined( 'AMP_QUERY_VAR' ) ) {
+				} elseif ( defined( 'AMP_QUERY_VAR' ) ) {
 
-					$is_amp = false;
+					$is_amp = get_query_var( AMP_QUERY_VAR, false ) ? true : false;
 
 				} else {
 
-					$is_amp = get_query_var( AMP_QUERY_VAR, false ) ? true : false;
+					$is_amp = false;
 				}
 			}
 

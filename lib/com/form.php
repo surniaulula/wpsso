@@ -1050,19 +1050,19 @@ EOF;
 
 		public function get_input_image_upload( $name, $placeholder = '', $is_disabled = false, $el_attr = '' ) {
 
-			$num_suffix  = '';
+			$key_suffix  = '';
 			$default_lib = 'wp';
 			$media_libs  = array( 'wp' => 'Media Library' );
 			$data        = array();
 
 			if ( preg_match( '/^(.*)(_[0-9]+)$/', $name, $matches ) ) {
 				$name = $matches[1];
-				$num_suffix = $matches[2];	// Mutiple numbered option.
+				$key_suffix = $matches[2];	// Mutiple numbered option.
 			}
 
-			$opt_key        = $name . $num_suffix;
-			$opt_key_id     = $name . '_id' . $num_suffix;
-			$opt_key_id_pre = $name . '_id_pre' . $num_suffix;
+			$opt_key        = $name . $key_suffix;
+			$opt_key_id     = $name . '_id' . $key_suffix;
+			$opt_key_id_pre = $name . '_id_pre' . $key_suffix;
 
 			if ( true === $this->p->avail[ 'media' ][ 'ngg' ] ) {
 				$media_libs[ 'ngg' ] = 'NextGEN Gallery';
@@ -1162,15 +1162,15 @@ EOF;
 
 		public function get_input_image_url( $name, $url = '' ) {
 
-			$num_suffix = '';
+			$key_suffix = '';
 
 			if ( preg_match( '/^(.*)(_[0-9]+)$/', $name, $matches ) ) {
 				$name       = $matches[1];
-				$num_suffix = $matches[2];
+				$key_suffix = $matches[2];
 			}
 
-			$opt_key_id  = $name . '_id' . $num_suffix;
-			$opt_key_url = $name . '_url' . $num_suffix;
+			$opt_key_id  = $name . '_id' . $key_suffix;
+			$opt_key_url = $name . '_url' . $key_suffix;
 
 			if ( empty( $this->options[ $opt_key_id ] ) ) {
 
