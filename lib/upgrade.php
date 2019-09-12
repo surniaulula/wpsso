@@ -238,6 +238,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				656 => array(
 					'og_vid_https' => '',
 				),
+				666 => array(
+					'schema_add_noscript' => '',
+				),
 			),
 		);
 

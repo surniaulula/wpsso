@@ -192,15 +192,18 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 						$md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
 			}
 
-			switch ( $page_type_url ) {
+			switch ( $page_type_id ) {
 
-				case 'https://schema.org/BlogPosting':
+				case 'blog.posting':
 
-					$size_name = $this->p->lca . '-schema-article';	// BlogPosting is a sub-type of Article.
+					/**
+					 * BlogPosting is a sub-type of Article.
+					 */
+					$size_name = $this->p->lca . '-schema-article';
 
-					// No break - add date published and modified.
+					// No break - continue to add dates and thumbnail.
 
-				case 'https://schema.org/WebPage':
+				case 'webpage':
 
 					self::add_mt_item_from_assoc( $mt_item, $mt_og, array(
 						'datePublished' => 'article:published_time',
@@ -215,8 +218,7 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 
 					} else {
 
-						$mt_item[ 'thumbnailurl' ] = $this->p->og->get_thumbnail_url( $this->p->lca .
-							'-thumbnail', $mod, $md_pre = 'schema' );
+						$mt_item[ 'thumbnailurl' ] = $this->p->og->get_thumbnail_url( $this->p->lca . '-thumbnail', $mod, $md_pre = 'schema' );
 
 						if ( empty( $mt_item[ 'thumbnailurl' ] ) ) {
 							unset( $mt_item[ 'thumbnailurl' ] );
@@ -226,35 +228,30 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 					break;
 			}
 
-			if ( class_exists( 'WpssoNoScript' ) && WpssoNoScript::is_enabled() ) {
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'skipping images: noscript is enabled' );
-				}
-
-			} elseif ( empty( $this->p->options[ 'add_link_itemprop_image' ] ) ) {
+			/**
+			 * Add single image meta tags (no width or height).
+			 */
+			if ( empty( $this->p->options[ 'add_link_itemprop_image' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'skipping images: meta itemprop image is disabled' );
 				}
 
-			} else {	// Add single image meta tags (no width or height).
+			} else {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'getting images for ' . $page_type_url );
 				}
 
-				$og_images = $this->p->og->get_all_images( $max_nums[ 'schema_img_max' ],
-					$size_name, $mod, true, $md_pre = 'schema' );
+				$og_images = $this->p->og->get_all_images( $max_nums[ 'schema_img_max' ], $size_name, $mod, true, $md_pre = 'schema' );
 
 				if ( empty( $og_images ) && $mod[ 'is_post' ] ) {
 					$og_images = $this->p->media->get_default_images( 1, $size_name, true );
 				}
 
 				/**
-				 * WpssoHead::get_single_mt() will make sure
-				 * this URL is added as a link itemprop tag and
-				 * not a meta itemprop tag.
+				 * WpssoHead::get_single_mt() will make sure this URL is added as a link itemprop tag and not a
+				 * meta itemprop tag.
 				 */
 				foreach ( $og_images as $og_single_image ) {
 					$mt_item[ 'image' ][] = SucomUtil::get_mt_media_url( $og_single_image );

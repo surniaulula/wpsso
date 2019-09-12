@@ -1728,16 +1728,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						),
 					);
 
-					/**
-					 * Always returns false when the WPSSO JSON add-on is active.
-					 */
-					if ( apply_filters( $this->p->lca . '_add_schema_noscript_array', true ) ) {
-
-						$features[ '(code) Schema Property Meta Containers' ] = array(
-							'status' => WpssoNoScript::is_enabled() ? 'on' : 'off',
-						);
-					}
-
 				} else {
 					$features = array();
 				}

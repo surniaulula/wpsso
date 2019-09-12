@@ -259,8 +259,6 @@
 
 'wpsso_schema_meta_itemprop' ( $mt_schema, $mod, $mt_og, $page_type_id )
 
-'wpsso_schema_noscript_array' ( $ret, $mod, $mt_og, $page_type_id )
-
 'wpsso_schema_type_for_default' ( 'webpage', $mod )
 
 'wpsso_schema_type_for_home_index' ( $type_id, $mod )

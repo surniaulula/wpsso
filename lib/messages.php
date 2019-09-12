@@ -1241,14 +1241,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $msg_key ) {
 
-						case 'tooltip-schema_add_noscript':	// Schema Property Meta Containers.
-
-							$text = sprintf( __( 'When additional Schema properties are available (product ratings, recipe ingredients, etc.), one or more %1$s containers may be included in the webpage head section.', 'wpsso' ), '<code>noscript</code>' ) . ' ';
-
-							$text .= sprintf( __( '%1$s containers are read correctly by the Google and Pinterest crawlers, but the W3C Validator will show errors for the %1$s container markup (these errors can be safely ignored).', 'wpsso' ), '<code>noscript</code>' ) . ' ';
-
-							break;
-
 						case 'tooltip-schema_knowledge_graph':
 
 							$settings_page_link = $this->p->util->get_admin_url( 'social-accounts',
@@ -1741,15 +1733,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= __( 'Validating your theme templates is an important step.', 'wpsso' );
 
 							$text .= '</p>';
-
-							if ( WpssoNoScript::is_enabled() ) {
-
-								$text .= '<p><i>';
-
-								$text .= sprintf( __( 'When the %1$s option is enabled, the W3C validator will show errors for itemprop attributes in meta elements &mdash; you may ignore these errors or disable the %1$s option.', 'wpsso' ), $settings_page_link );
-
-								$text .= '</i></p>';
-							}
 
 						 	break;
 

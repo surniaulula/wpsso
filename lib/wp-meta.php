@@ -626,18 +626,17 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			foreach ( WpssoWpMeta::$head_meta_tags as $parts ) {
 
-				if ( count( $parts ) === 1 ) {
+				if ( 1 === count( $parts ) ) {
 
-					if ( strpos( $parts[0], '<script ' ) === 0 ) {
+					if ( 0 === strpos( $parts[0], '<script ' ) ) {
 						$script_class = 'script';
-					} elseif ( strpos( $parts[0], '<noscript ' ) === 0 ) {
+					} elseif ( 0 === strpos( $parts[0], '<noscript ' ) ) {
 						$script_class = 'noscript';
 					}
 
-					$table_rows[] = '<td colspan="5" class="html ' . 
-						$script_class . '"><pre>' . esc_html( $parts[0] ) . '</pre></td>';
+					$table_rows[] = '<td colspan="5" class="html ' . $script_class . '"><pre>' . esc_html( $parts[0] ) . '</pre></td>';
 
-					if ( $script_class === 'script' || strpos( $parts[0], '</noscript>' ) === 0 ) {
+					if ( 'script' === $script_class || 0 === strpos( $parts[0], '</noscript>' ) ) {
 						$script_class = '';
 					}
 
@@ -753,7 +752,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				'amp' => array(
 					'title' => $mod[ 'is_post' ] ? _x( 'The AMP Validator', 'option label', 'wpsso' ) : '',
 					'label' => $mod[ 'is_post' ] ? _x( 'Validate AMP Markup', 'submit button', 'wpsso' ) : '',
-					'url'   => $mod[ 'is_post' ] && function_exists( amp_get_permalink ) ?
+					'url'   => $mod[ 'is_post' ] && function_exists( 'amp_get_permalink' ) ?
 						'https://validator.ampproject.org/#url=' . urlencode( amp_get_permalink( $mod[ 'id' ] ) ) : '',
 				),
 			);

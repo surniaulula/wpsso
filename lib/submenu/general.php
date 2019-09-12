@@ -252,16 +252,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->form->get_th_html( _x( 'Author / Person Name Format', 'option label', 'wpsso' ), '', 'seo_author_name' ) . 
 					'<td>' . $this->form->get_select( 'seo_author_name', $this->p->cf[ 'form' ][ 'user_name_fields' ] ) . '</td>';
 
-					/**
-					 * Always returns false when the WPSSO JSON add-on is active.
-					 */
-					if ( apply_filters( $this->p->lca . '_add_schema_noscript_array', true ) ) {
-
-						$table_rows[ 'schema_add_noscript' ] = $this->form->get_tr_hide( 'basic', 'schema_add_noscript' ) . 
-						$this->form->get_th_html( _x( 'Schema Property Meta Containers', 'option label', 'wpsso' ), '', 'schema_add_noscript' ) . 
-						'<td>' . $this->form->get_checkbox( 'schema_add_noscript' ) . '</td>';
-					}
-
 					$this->add_schema_knowledge_graph_table_rows( $table_rows, $this->form );
 
 					$this->add_schema_item_props_table_rows( $table_rows, $this->form );

@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.3.0-dev.4',	// Plugin version.
-					'opt_version' => '665',		// Increment when changing default option values.
+					'version'     => '6.3.0-dev.5',	// Plugin version.
+					'opt_version' => '666',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'WPSSO Core makes sure your content looks great on all social and search sites - no matter how URLs are crawled, shared, re-shared, posted, or embedded!',
@@ -802,7 +802,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'thumb_img_crop'                    => 1,
 					'thumb_img_crop_x'                  => 'center',
 					'thumb_img_crop_y'                  => 'center',
-					'schema_add_noscript'               => 1,
 					'schema_add_home_organization'      => 1,
 					'schema_add_home_person'            => 0,
 					'schema_add_home_website'           => 1,
@@ -3508,7 +3507,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			require_once WPSSO_PLUGINDIR . 'lib/link-rel.php';
 			require_once WPSSO_PLUGINDIR . 'lib/meta-item.php';
 			require_once WPSSO_PLUGINDIR . 'lib/meta-name.php';
-			require_once WPSSO_PLUGINDIR . 'lib/noscript.php';
 			require_once WPSSO_PLUGINDIR . 'lib/opengraph.php';
 			require_once WPSSO_PLUGINDIR . 'lib/pinterest.php';
 			require_once WPSSO_PLUGINDIR . 'lib/schema.php';

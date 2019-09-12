@@ -345,7 +345,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			/**
 			 * The $mod array argument is preferred but not required.
-			 * $mod = true | false | post_id | $mod array
 			 */
 			if ( ! is_array( $mod ) ) {
 
@@ -370,6 +369,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 					$html .= str_repeat( "\t", (int) $indent ) . $mt[0];
 
+					/**
+					 * Indent meta tags within a noscript container.
+					 */
 					if ( strpos( $mt[0], '<noscript' ) === 0 ) {
 						$indent = 1;
 					}
@@ -398,7 +400,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			/**
 			 * The $mod array argument is preferred but not required.
-			 * $mod = true | false | post_id | $mod array
 			 */
 			if ( ! is_array( $mod ) ) {
 
@@ -582,7 +583,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			$this->p->util->maybe_set_ref( $sharing_url, $mod, __( 'adding schema json-ld markup', 'wpsso' ) );
 
-			$json_ld = $this->p->schema->get_array( $mod, $mt_og );
+			$schema_scripts = $this->p->schema->get_array( $mod, $mt_og );
 
 			$this->p->util->maybe_unset_ref( $sharing_url );
 
@@ -604,8 +605,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->get_mt_array( 'meta', 'name', $mt_tc, $mod ),
 				$this->get_mt_array( 'meta', 'itemprop', $mt_item, $mod ),
 				$this->get_mt_array( 'meta', 'name', $mt_name, $mod ),	// SEO description is last.
-				$this->p->noscript->get_array( $mod, $mt_og ),
-				$json_ld
+				$schema_scripts
 			);
 
 			if ( $cache_exp_secs > 0 ) {

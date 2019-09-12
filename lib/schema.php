@@ -9,14 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
-/**
- * Deprecated on 2019/08/04.
- * Maintain for WPSSO JSON add-on pre-v2.6.0.
- */
-if ( ! class_exists( 'WpssoSchemaCache' ) ) {
-	require_once WPSSO_PLUGINDIR . 'lib/schema-cache.php';
-}
-
 if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 	require_once WPSSO_PLUGINDIR . 'lib/schema-graph.php';
 }
@@ -526,6 +518,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'build json array' );	// End timer for json array.
 			}
+
+			$json_scripts = apply_filters( $this->p->lca . '_json_scripts', $json_scripts, $mod, $mt_og );
 
 			return $json_scripts;
 		}
