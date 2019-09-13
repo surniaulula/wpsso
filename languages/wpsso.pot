@@ -4891,13 +4891,11 @@ msgid "Validating your theme templates is an important step."
 msgstr ""
 
 #: lib/messages.php:1743
-msgid "Validate the HTML syntax and conformance of your AMP formatted webpage."
+msgid "Validate the HTML syntax and conformance of the AMP webpage."
 msgstr ""
 
 #: lib/messages.php:1751
-msgid ""
-"Note that an active AMP plugin is required to validate AMP formatted "
-"webpages."
+msgid "Note that an active AMP plugin is required to validate AMP webpages."
 msgstr ""
 
 #: lib/messages.php:1764

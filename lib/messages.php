@@ -1740,7 +1740,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = '<p class="top">';
 
-							$text .= __( 'Validate the HTML syntax and conformance of your AMP formatted webpage.', 'wpsso' );
+							$text .= __( 'Validate the HTML syntax and conformance of the AMP webpage.', 'wpsso' );
 
 							$text .= '</p>';
 
@@ -1748,7 +1748,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								$text .= '<p><i>';
 
-								$text .= __( 'Note that an active AMP plugin is required to validate AMP formatted webpages.', 'wpsso' );
+								$text .= __( 'Note that an active AMP plugin is required to validate AMP webpages.', 'wpsso' );
 
 								$text .= '</i></p>';
 							}
