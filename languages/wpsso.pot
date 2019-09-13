@@ -3082,33 +3082,33 @@ msgstr ""
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: lib/gettext-pro.php:148 lib/pro/ecom/woocommerce.php:137
+#: lib/gettext-pro.php:148 lib/pro/ecom/woocommerce.php:140
 msgid ""
 "The WooCommerce %s method is not available - please update to a newer "
 "version of WooCommerce."
 msgstr ""
 
 #: lib/gettext-pro.php:149 lib/gettext-pro.php:154
-#: lib/pro/ecom/woocommerce.php:842 lib/pro/ecom/wpecommerce.php:528
+#: lib/pro/ecom/woocommerce.php:845 lib/pro/ecom/wpecommerce.php:528
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
 #: lib/gettext-pro.php:150 lib/gettext-pro.php:155
-#: lib/pro/ecom/woocommerce.php:845 lib/pro/ecom/wpecommerce.php:531
+#: lib/pro/ecom/woocommerce.php:848 lib/pro/ecom/wpecommerce.php:531
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/gettext-pro.php:151 lib/pro/ecom/woocommerce.php:1149
+#: lib/gettext-pro.php:151 lib/pro/ecom/woocommerce.php:1152
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/gettext-pro.php:152 lib/pro/ecom/woocommerce.php:1151
+#: lib/gettext-pro.php:152 lib/pro/ecom/woocommerce.php:1154
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:153 lib/pro/ecom/woocommerce.php:1154
+#: lib/gettext-pro.php:153 lib/pro/ecom/woocommerce.php:1157
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 
@@ -3255,27 +3255,27 @@ msgctxt "option value"
 msgid "%s Location"
 msgstr ""
 
-#: lib/head.php:534
+#: lib/head.php:535
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:548
+#: lib/head.php:549
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:557
+#: lib/head.php:558
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:566
+#: lib/head.php:567
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:575
+#: lib/head.php:576
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:584
+#: lib/head.php:585
 msgid "adding schema json-ld markup"
 msgstr ""
 

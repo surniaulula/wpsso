@@ -1029,6 +1029,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
+		 * Deprecated on 2019/08/18.
+		 */
+		public static function is_force_regen() {
+			return false;
+		}
+
+		/**
 		 * Checks for 'none' value in midday_close and midday_open.
 		 */
 		public static function is_valid_midday( $open, $midday_close, $midday_open, $close ) {
