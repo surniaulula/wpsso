@@ -52,7 +52,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'label'  => _x( 'Schema Article Image', 'image size label', 'wpsso' ),
 			);
 
-			if ( ! empty( $this->p->avail[ '*' ][ 'amp' ] ) ) {
+			if ( ! empty( $this->p->avail[ 'amp' ][ 'any' ] ) ) {
 
 				$sizes[ 'schema_article_amp1x1' ] = array(
 					'name'   => 'schema-article-amp1x1',

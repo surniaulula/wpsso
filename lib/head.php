@@ -26,7 +26,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			add_action( 'wp_head', array( $this, 'maybe_disable_rel_canonical' ), -1000 );
 			add_action( 'wp_head', array( $this, 'show_head' ), WPSSO_HEAD_PRIORITY );
 
-			if ( ! empty( $this->p->avail[ '*' ][ 'amp' ] ) ) {
+			if ( ! empty( $this->p->avail[ 'amp' ][ 'any' ] ) ) {
 				add_action( 'amp_post_template_head', array( $this, 'maybe_disable_rel_canonical' ), -1000 );
 				add_action( 'amp_post_template_head', array( $this, 'show_head' ), WPSSO_HEAD_PRIORITY );
 			}
@@ -111,7 +111,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		}
 
 		/**
-		 * Called by wp_head action.
+		 * Called by 'wp_head' and 'amp_post_template_head' actions.
 		 */
 		public function show_head() {
 

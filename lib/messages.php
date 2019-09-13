@@ -1744,7 +1744,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '</p>';
 
-							if ( empty( $this->p->avail[ '*' ][ 'amp' ] ) ) {
+							if ( empty( $this->p->avail[ 'amp' ][ 'any' ] ) ) {
 
 								$text .= '<p><i>';
 
