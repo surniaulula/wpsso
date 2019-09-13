@@ -434,7 +434,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.3.0-dev.5 (2019/09/12)**
+**Version 6.3.0-dev.6 (2019/09/13)**
 
 * **New Features**
 	* None.
@@ -537,9 +537,9 @@ New resized image file names now include custom crop locations (top, botton, lef
 
 == Upgrade Notice ==
 
-= 6.3.0-dev.5 =
+= 6.3.0-dev.6 =
 
-(2019/09/12) Added new Schema Article AMP image dimensions for Google. Added a new "Notification System" option to the Essential and Advanced settings page.
+(2019/09/13) Added new Schema Article AMP image dimensions for Google. Added a new "Notification System" option to the Essential and Advanced settings page.
 
 = 6.2.0 =
 
