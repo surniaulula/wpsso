@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'SuextMobileDetect' ) ) {
 
-	class Mobile_Detect {
+	class SuextMobileDetect {
 	
 	    /**
 	     * Mobile detection type.

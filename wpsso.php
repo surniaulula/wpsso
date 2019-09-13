@@ -14,7 +14,7 @@
  * Requires At Least: 3.9
  * Tested Up To: 5.2.3
  * WC Tested Up To: 3.7.0
- * Version: 6.3.0-dev.5
+ * Version: 6.3.0-dev.6
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -67,6 +67,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $link_rel;	// WpssoLinkRel.
 		public $meta_item;	// WpssoMetaItem.
 		public $meta_name;	// WpssoMetaName.
+		public $oembed;		// WpssoOembed.
 		public $og;		// WpssoOpenGraph.
 		public $pinterest;	// WpssoPinterest.
 		public $schema;		// WpssoSchema.
@@ -397,6 +398,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->link_rel  = new WpssoLinkRel( $this );		// Link relation tags.
 			$this->meta_item = new WpssoMetaItem( $this );		// Meta itemprop tags.
 			$this->meta_name = new WpssoMetaName( $this );		// Meta name tags.
+			$this->oembed    = new WpssoOembed( $this );		// Oembed response data.
 			$this->og        = new WpssoOpenGraph( $this );		// Open Graph meta tags.
 			$this->pinterest = new WpssoPinterest( $this );		// Pinterest image markup.
 			$this->schema    = new WpssoSchema( $this );		// Schema json scripts.

@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.3.0-dev.5',	// Plugin version.
+					'version'     => '6.3.0-dev.6',	// Plugin version.
 					'opt_version' => '666',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -3507,6 +3507,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			require_once WPSSO_PLUGINDIR . 'lib/link-rel.php';
 			require_once WPSSO_PLUGINDIR . 'lib/meta-item.php';
 			require_once WPSSO_PLUGINDIR . 'lib/meta-name.php';
+			require_once WPSSO_PLUGINDIR . 'lib/oembed.php';
 			require_once WPSSO_PLUGINDIR . 'lib/opengraph.php';
 			require_once WPSSO_PLUGINDIR . 'lib/pinterest.php';
 			require_once WPSSO_PLUGINDIR . 'lib/schema.php';
