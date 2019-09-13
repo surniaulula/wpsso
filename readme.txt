@@ -448,6 +448,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Added checks for AMP, Better AMP, and Accelerated Mobile Pages plugins in WpssoCheck::get_avail().
 	* Added a new 'image' input type in the SucomForm::get_mixed_multi() method for WPSSO JSON v2.9.0.
 	* Removed support for `<noscript></noscript>` containers for Schema markup (the WPSSO JSON add-on is recommended instead).
 	* Removed the lib/noscript.php library file.
