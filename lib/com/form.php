@@ -1383,7 +1383,7 @@ EOF;
 
 				$el_attr = 'onFocus="jQuery(\'div#multi_' . esc_attr( $multi_id_next ) . '\').show();"';
 
-				$html .= '<div class="multi_container" id="multi_' . esc_attr( $multi_id ) . '"';
+				$html .= '<div class="multi_container mixed_multi" id="multi_' . esc_attr( $multi_id ) . '"';
 				$html .= $display ? '' : ' style="display:none;"';
 				$html .= '>' . "\n";
 
@@ -1578,7 +1578,7 @@ EOF;
 
 				$html .= '</div><!-- .multi_input -->' . "\n";
 
-				$html .= '</div><!-- .multi_container -->' . "\n";
+				$html .= '</div><!-- .multi_container.mixed_multi -->' . "\n";
 			}
 
 			return $html;

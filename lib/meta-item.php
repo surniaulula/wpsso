@@ -135,15 +135,6 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 				return false;
 			}
 
-			if ( SucomUtil::is_amp() ) {
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'head attributes disabled for amp endpoint' );
-				}
-
-				return false;
-			}
-
 			if ( ! apply_filters( $this->p->lca . '_add_schema_head_attributes', true ) ) {
 
 				if ( $this->p->debug->enabled ) {
