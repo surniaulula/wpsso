@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 6.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-09-12 17:57-0700\n"
-"PO-Revision-Date: 2019-09-12 17:57-0700\n"
+"POT-Creation-Date: 2019-09-12 17:58-0700\n"
+"PO-Revision-Date: 2019-09-12 17:59-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4319,12 +4319,12 @@ msgid "Validating your theme templates is an important step."
 msgstr "La validation de vos modèles de thème est une étape importante."
 
 #: lib/messages.php:1743
-msgid "Validate the HTML syntax and conformance of your AMP formatted webpage."
-msgstr "Validez la syntaxe et conformité HTML de vos pages Web de format AMP."
+msgid "Validate the HTML syntax and conformance of the AMP webpage."
+msgstr "Validez la syntaxe HTML et la conformité de la page Web AMP."
 
 #: lib/messages.php:1751
-msgid "Note that an active AMP plugin is required to validate AMP formatted webpages."
-msgstr "Notez qu'une extension AMP active est requise pour valider les pages Web de format AMP."
+msgid "Note that an active AMP plugin is required to validate AMP webpages."
+msgstr "Notez qu'une extension AMP active est requise pour valider les pages Web AMP."
 
 #: lib/messages.php:1764
 msgid "The example image container uses the minimum recommended Facebook image dimensions of %s."
