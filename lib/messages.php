@@ -1306,19 +1306,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-schema_article_amp1x1_img_size':
-						case 'tooltip-schema_article_amp4x3_img_size':
-						case 'tooltip-schema_article_amp16x9_img_size':
-
-							$ratio = preg_replace( '/^.*_amp([0-9x]+)_.*$/', '$1', $msg_key );
-
-							$text = sprintf( __( 'The image dimensions used for Schema Article AMP %1$s image meta tags and JSON-LD markup (the default dimensions are %2$s).', 'wpsso' ), $ratio, $this->get_def_img_dims( 'schema_article_amp' . $ratio ) ) . ' ';
-
-							$text .= sprintf( __( 'The minimum image width required by Google is %dpx.', 'wpsso' ),
-								$this->p->cf[ 'head' ][ 'limit_min' ][ 'schema_article_amp' . $ratio . '_img_width' ] ). ' ';
-
-							break;
-
 						case 'tooltip-schema_desc_max_len':
 
 							$text = __( 'The maximum text length of the Schema description property value.', 'wpsso' ) . ' ';
@@ -2552,7 +2539,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			return array( $ext, $p_ext );
 		}
 
-		private function get_def_img_dims( $opt_pre ) {
+		public function get_def_img_dims( $opt_pre ) {
 
 			$def_opts = $this->p->opt->get_defaults();
 
