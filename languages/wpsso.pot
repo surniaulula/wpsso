@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.3.0-dev.6\n"
+"Project-Id-Version: WPSSO Core 6.3.0-dev.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -794,48 +794,48 @@ msgctxt "metabox title"
 msgid "Default Open Graph Types"
 msgstr ""
 
-#: lib/admin.php:3457 lib/admin.php:3636
+#: lib/admin.php:3457 lib/admin.php:3587
 msgctxt "option label"
 msgid "Type for Blog Front Page"
 msgstr ""
 
-#: lib/admin.php:3458 lib/admin.php:3637
+#: lib/admin.php:3458 lib/admin.php:3588
 msgctxt "option label"
 msgid "Type for Static Front Page"
 msgstr ""
 
-#: lib/admin.php:3459 lib/admin.php:3638
+#: lib/admin.php:3459 lib/admin.php:3589
 msgctxt "option label"
 msgid "Type for User / Author Page"
 msgstr ""
 
-#: lib/admin.php:3460 lib/admin.php:3639
+#: lib/admin.php:3460 lib/admin.php:3590
 msgctxt "option label"
 msgid "Type for Search Results Page"
 msgstr ""
 
-#: lib/admin.php:3461 lib/admin.php:3640
+#: lib/admin.php:3461 lib/admin.php:3591
 msgctxt "option label"
 msgid "Type for Other Archive Page"
 msgstr ""
 
-#: lib/admin.php:3486 lib/admin.php:3492 lib/admin.php:3518 lib/admin.php:3669
-#: lib/admin.php:3677 lib/admin.php:3706
+#: lib/admin.php:3486 lib/admin.php:3492 lib/admin.php:3518 lib/admin.php:3620
+#: lib/admin.php:3628 lib/admin.php:3657
 msgctxt "option comment"
 msgid "for %s"
 msgstr ""
 
-#: lib/admin.php:3492 lib/admin.php:3677
+#: lib/admin.php:3492 lib/admin.php:3628
 msgctxt "option comment"
 msgid "Post Type Archive Page"
 msgstr ""
 
-#: lib/admin.php:3495 lib/admin.php:3681
+#: lib/admin.php:3495 lib/admin.php:3632
 msgctxt "option label"
 msgid "Type by Post Type"
 msgstr ""
 
-#: lib/admin.php:3522 lib/admin.php:3710
+#: lib/admin.php:3522 lib/admin.php:3661
 msgctxt "option label"
 msgid "Type by Taxonomy"
 msgstr ""
@@ -877,167 +877,107 @@ msgctxt "option label"
 msgid "User for Person Social Profile"
 msgstr ""
 
-#: lib/admin.php:3579 lib/submenu/essential.php:157
-msgctxt "option label"
-msgid "Organization Logo URL"
-msgstr ""
-
-#: lib/admin.php:3583 lib/options.php:1234 lib/submenu/essential.php:162
-msgctxt "option label"
-msgid "Organization Banner URL"
-msgstr ""
-
-#: lib/admin.php:3587 lib/submenu/general.php:191
-msgctxt "option label"
-msgid "Maximum Images to Include"
-msgstr ""
-
-#: lib/admin.php:3589 lib/submenu/general.php:194
-msgctxt "option comment"
-msgid "video preview images are enabled (and included first)"
-msgstr ""
-
-#: lib/admin.php:3593
-msgctxt "option label"
-msgid "Schema Image Size"
-msgstr ""
-
-#: lib/admin.php:3597
-msgctxt "option label"
-msgid "Schema Article Image Size"
-msgstr ""
-
-#: lib/admin.php:3601
-msgctxt "option label"
-msgid "Schema Article AMP 1x1 Img Size"
-msgstr ""
-
-#: lib/admin.php:3605
-msgctxt "option label"
-msgid "Schema Article AMP 4x3 Img Size"
-msgstr ""
-
-#: lib/admin.php:3609
-msgctxt "option label"
-msgid "Schema Article AMP 16x9 Img Size"
-msgstr ""
-
-#: lib/admin.php:3613
-msgctxt "option label"
-msgid "Schema Thumbnail Image Size"
-msgstr ""
-
-#: lib/admin.php:3617 lib/submenu/general.php:165 lib/submenu/general.php:304
-msgctxt "option label"
-msgid "Maximum Description Length"
-msgstr ""
-
-#: lib/admin.php:3618 lib/submenu/general.php:249 lib/submenu/general.php:306
-msgctxt "option comment"
-msgid "characters or less"
-msgstr ""
-
-#: lib/admin.php:3631
+#: lib/admin.php:3582
 msgctxt "metabox title"
 msgid "Default Schema Types"
 msgstr ""
 
-#: lib/admin.php:3726
+#: lib/admin.php:3677
 msgctxt "option label"
 msgid "Remove Settings on Uninstall"
 msgstr ""
 
-#: lib/admin.php:3729
+#: lib/admin.php:3680
 msgctxt "option comment"
 msgid "including custom meta for posts, terms, and users"
 msgstr ""
 
-#: lib/admin.php:3734
+#: lib/admin.php:3685
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
 
-#: lib/admin.php:3736
+#: lib/admin.php:3687
 msgctxt "option comment"
 msgid "WPSSO_HTML_DEBUG constant is true"
 msgstr ""
 
-#: lib/admin.php:3742
+#: lib/admin.php:3693
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr ""
 
-#: lib/admin.php:3747
+#: lib/admin.php:3698
 msgctxt "option label"
 msgid "Notification System"
 msgstr ""
 
-#: lib/admin.php:3759
+#: lib/admin.php:3710
 msgctxt "metabox title"
 msgid "Product Attribute Names"
 msgstr ""
 
-#: lib/admin.php:3785
+#: lib/admin.php:3736
 msgctxt "metabox title"
 msgid "Custom Field Names"
 msgstr ""
 
-#: lib/admin.php:3873
+#: lib/admin.php:3824
 msgctxt "option comment"
 msgid "in %s"
 msgstr ""
 
-#: lib/admin.php:3884
+#: lib/admin.php:3835
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:4067
+#: lib/admin.php:4018
 msgid "Return to %s"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:4098
+#: lib/admin.php:4049
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:4120
+#: lib/admin.php:4071
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:4127
+#: lib/admin.php:4078
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes, and translations)</a> to check if newer versions are "
 "available."
 msgstr ""
 
-#: lib/admin.php:4264
+#: lib/admin.php:4215
 msgid "Please select a %1$s settings file to import."
 msgstr ""
 
-#: lib/admin.php:4271
+#: lib/admin.php:4222
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr ""
 
-#: lib/admin.php:4278
+#: lib/admin.php:4229
 msgid ""
 "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr ""
 
-#: lib/admin.php:4292
+#: lib/admin.php:4243
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr ""
 
-#: lib/admin.php:4302
+#: lib/admin.php:4253
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr ""
 
-#: lib/admin.php:4312
+#: lib/admin.php:4263
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 
@@ -2370,7 +2310,7 @@ msgstr ""
 #: lib/gettext-pro.php:8 lib/gettext-pro.php:22 lib/pro/admin/advanced.php:67
 #: lib/pro/admin/advanced.php:136 lib/std/admin/advanced.php:61
 #: lib/std/admin/advanced.php:132 lib/submenu/general.php:211
-#: lib/submenu/general.php:277 lib/submenu/general.php:282
+#: lib/submenu/general.php:307 lib/submenu/general.php:312
 msgctxt "option comment"
 msgid "recommended"
 msgstr ""
@@ -4717,7 +4657,7 @@ msgid ""
 "Pin It browser button from suggesting that image."
 msgstr ""
 
-#: lib/messages.php:1501 lib/submenu/general.php:285
+#: lib/messages.php:1501 lib/submenu/general.php:315
 msgctxt "option label"
 msgid "Add Hidden Image for Pin It Button"
 msgstr ""
@@ -5739,6 +5679,12 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
+#: lib/options.php:1234 lib/submenu/essential.php:162
+#: lib/submenu/general.php:263
+msgctxt "option label"
+msgid "Organization Banner URL"
+msgstr ""
+
 #: lib/options.php:1267
 msgid "The %1$s image dimensions cannot be determined."
 msgstr ""
@@ -6152,30 +6098,15 @@ msgstr ""
 
 #: lib/settings/image-dimensions.php:121
 msgctxt "option label"
-msgid "Schema Article AMP 1x1 (Google)"
+msgid "Schema Thumbnail Image"
 msgstr ""
 
 #: lib/settings/image-dimensions.php:126
 msgctxt "option label"
-msgid "Schema Article AMP 4x3 (Google)"
-msgstr ""
-
-#: lib/settings/image-dimensions.php:131
-msgctxt "option label"
-msgid "Schema Article AMP 16x9 (Google)"
-msgstr ""
-
-#: lib/settings/image-dimensions.php:136
-msgctxt "option label"
-msgid "Schema Thumbnail Image"
-msgstr ""
-
-#: lib/settings/image-dimensions.php:141
-msgctxt "option label"
 msgid "Twitter Summary Card"
 msgstr ""
 
-#: lib/settings/image-dimensions.php:146
+#: lib/settings/image-dimensions.php:131
 msgctxt "option label"
 msgid "Twitter Large Image Summary Card"
 msgstr ""
@@ -6378,12 +6309,17 @@ msgctxt "option label"
 msgid "or Default / Fallback Image URL"
 msgstr ""
 
-#: lib/submenu/essential.php:171 lib/submenu/general.php:266
+#: lib/submenu/essential.php:157 lib/submenu/general.php:259
+msgctxt "option label"
+msgid "Organization Logo URL"
+msgstr ""
+
+#: lib/submenu/essential.php:171 lib/submenu/general.php:296
 msgctxt "option label"
 msgid "Pinterest Company Page URL"
 msgstr ""
 
-#: lib/submenu/essential.php:180 lib/submenu/general.php:299
+#: lib/submenu/essential.php:180 lib/submenu/general.php:329
 msgctxt "option label"
 msgid "Twitter Business @username"
 msgstr ""
@@ -6443,6 +6379,12 @@ msgctxt "option comment"
 msgid "characters (soft limit)"
 msgstr ""
 
+#: lib/submenu/general.php:165 lib/submenu/general.php:286
+#: lib/submenu/general.php:334
+msgctxt "option label"
+msgid "Maximum Description Length"
+msgstr ""
+
 #: lib/submenu/general.php:174
 msgctxt "option label"
 msgid "Add Hashtags to Descriptions"
@@ -6456,6 +6398,16 @@ msgstr ""
 #: lib/submenu/general.php:183
 msgctxt "option label"
 msgid "Author Profile URL Field"
+msgstr ""
+
+#: lib/submenu/general.php:191 lib/submenu/general.php:268
+msgctxt "option label"
+msgid "Maximum Images to Include"
+msgstr ""
+
+#: lib/submenu/general.php:194 lib/submenu/general.php:270
+msgctxt "option comment"
+msgid "video preview images are enabled (and included first)"
 msgstr ""
 
 #: lib/submenu/general.php:197
@@ -6478,57 +6430,78 @@ msgctxt "option label"
 msgid "Search / SEO Description Length"
 msgstr ""
 
+#: lib/submenu/general.php:249 lib/submenu/general.php:287
+#: lib/submenu/general.php:336
+msgctxt "option comment"
+msgid "characters or less"
+msgstr ""
+
 #: lib/submenu/general.php:252
 msgctxt "option label"
 msgid "Author / Person Name Format"
 msgstr ""
 
-#: lib/submenu/general.php:271
+#: lib/submenu/general.php:274
+msgctxt "option label"
+msgid "Schema Image Size"
+msgstr ""
+
+#: lib/submenu/general.php:278
+msgctxt "option label"
+msgid "Schema Article Image Size"
+msgstr ""
+
+#: lib/submenu/general.php:282
+msgctxt "option label"
+msgid "Schema Thumbnail Image Size"
+msgstr ""
+
+#: lib/submenu/general.php:301
 msgctxt "option label"
 msgid "Pinterest Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:275
+#: lib/submenu/general.php:305
 msgctxt "option label"
 msgid "Add \"nopin\" to Site Header Image"
 msgstr ""
 
-#: lib/submenu/general.php:280
+#: lib/submenu/general.php:310
 msgctxt "option label"
 msgid "Add \"nopin\" to WordPress Media"
 msgstr ""
 
-#: lib/submenu/general.php:287
+#: lib/submenu/general.php:317
 msgctxt "option comment"
 msgid "recommended (adds a hidden image in the content)"
 msgstr ""
 
-#: lib/submenu/general.php:294
+#: lib/submenu/general.php:324
 msgctxt "option value"
 msgid "Summary"
 msgstr ""
 
-#: lib/submenu/general.php:295
+#: lib/submenu/general.php:325
 msgctxt "option value"
 msgid "Summary Large Image"
 msgstr ""
 
-#: lib/submenu/general.php:309
+#: lib/submenu/general.php:339
 msgctxt "option label"
 msgid "Twitter Card for Post / Page Image"
 msgstr ""
 
-#: lib/submenu/general.php:313
+#: lib/submenu/general.php:343
 msgctxt "option label"
 msgid "Twitter Card Type by Default"
 msgstr ""
 
-#: lib/submenu/general.php:317
+#: lib/submenu/general.php:347
 msgctxt "option label"
 msgid "Summary Card Image Size"
 msgstr ""
 
-#: lib/submenu/general.php:321
+#: lib/submenu/general.php:351
 msgctxt "option label"
 msgid "Large Image Summary Card Img Size"
 msgstr ""

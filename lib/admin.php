@@ -3571,55 +3571,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		/**
 		 * Called from the WpssoSubmenuGeneral and WpssoJsonSubmenuSchemaJsonLd classes.
-		 */
-		public function add_schema_item_props_table_rows( array &$table_rows, $form ) {
-
-			$table_rows[ 'schema_logo_url' ] = '' . 
-			$form->get_th_html( '<a href="https://developers.google.com/structured-data/customize/logos">' .
-			_x( 'Organization Logo URL', 'option label', 'wpsso' ) . '</a>', '', 'schema_logo_url', array( 'is_locale' => true ) ) . 
-			'<td>' . $form->get_input( SucomUtil::get_key_locale( 'schema_logo_url', $this->p->options ), 'wide' ) . '</td>';
-
-			$table_rows[ 'schema_banner_url' ] = '' . 
-			$form->get_th_html( _x( 'Organization Banner URL', 'option label', 'wpsso' ), '', 'schema_banner_url', array( 'is_locale' => true ) ) . 
-			'<td>' . $form->get_input( SucomUtil::get_key_locale( 'schema_banner_url', $this->p->options ), 'wide' ) . '</td>';
-
-			$table_rows[ 'schema_img_max' ] = $form->get_tr_hide( 'basic', 'schema_img_max' ) . 
-			$form->get_th_html( _x( 'Maximum Images to Include', 'option label', 'wpsso' ), '', 'schema_img_max' ) . 
-			'<td>' . $form->get_select( 'schema_img_max', range( 0, $this->p->cf[ 'form' ][ 'max_media_items' ] ), 'short', '', true ) . 
-			( empty( $form->options[ 'og_vid_prev_img' ] ) ? '' : ' <em>' . _x( 'video preview images are enabled (and included first)',
-				'option comment', 'wpsso' ) . '</em>' ) . '</td>';
-
-			$table_rows[ 'schema_img' ] = '' . 
-			$form->get_th_html( _x( 'Schema Image Size', 'option label', 'wpsso' ), '', 'schema_img_size' ) . 
-			'<td>' . $form->get_input_image_dimensions( 'schema_img' ) . '</td>';
-
-			$table_rows[ 'schema_article_img' ] = '' . 
-			$form->get_th_html( _x( 'Schema Article Image Size', 'option label', 'wpsso' ), '', 'schema_article_img_size' ) . 
-			'<td>' . $form->get_input_image_dimensions( 'schema_article_img' ) . '</td>';
-
-			$table_rows[ 'schema_article_amp1x1_img_size' ] = '' .
-			$form->get_th_html( _x( 'Schema Article AMP 1x1 Img Size', 'option label', 'wpsso' ), null, 'schema_article_amp1x1_img_size' ) . 
-			'<td>' . $form->get_input_image_dimensions( 'schema_article_amp1x1_img' ) . '</td>';
-
-			$table_rows[ 'schema_article_amp4x3_img_size' ] = '' .
-			$form->get_th_html( _x( 'Schema Article AMP 4x3 Img Size', 'option label', 'wpsso' ), null, 'schema_article_amp4x3_img_size' ) . 
-			'<td>' . $form->get_input_image_dimensions( 'schema_article_amp4x3_img' ) . '</td>';
-
-			$table_rows[ 'schema_article_amp16x9_img_size' ] = '' .
-			$form->get_th_html( _x( 'Schema Article AMP 16x9 Img Size', 'option label', 'wpsso' ), null, 'schema_article_amp16x9_img_size' ) . 
-			'<td>' . $form->get_input_image_dimensions( 'schema_article_amp16x9_img' ) . '</td>';
-
-			$table_rows[ 'thumb_img_size' ] = '' .
-			$form->get_th_html( _x( 'Schema Thumbnail Image Size', 'option label', 'wpsso' ), null, 'thumb_img_size' ).
-			'<td>' . $form->get_input_image_dimensions( 'thumb_img' ) . '</td>';
-
-			$table_rows[ 'schema_desc_max_len' ] = $form->get_tr_hide( 'basic', 'schema_desc_max_len' ) . 
-			$form->get_th_html( _x( 'Maximum Description Length', 'option label', 'wpsso' ), '', 'schema_desc_max_len' ) . 
-			'<td>' . $form->get_input( 'schema_desc_max_len', 'short' ) . ' ' . _x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
-		}
-
-		/**
-		 * Called from the WpssoSubmenuGeneral and WpssoJsonSubmenuSchemaJsonLd classes.
 		 *
 		 * The SucomForm::get_select() calls in this method use the 'on_focus_load_json' event name to create a single JSON
 		 * array for the schema types.
