@@ -1265,7 +1265,6 @@ if ( ! class_exists( 'SucomCountryCodes' ) ) {
 		private static $codes = array();
 
 		public function __construct() {
-			// nothing to do
 		}
 
 		public static function get( $key = '' ) {
@@ -1274,13 +1273,15 @@ if ( ! class_exists( 'SucomCountryCodes' ) ) {
 				return self::$codes;
 			}
 
-			// only create the code -> name array map once
 			if ( ! isset( self::$codes[ $key ] ) ) {
+
 				foreach ( self::$countries as $name => $arr ) {
+
 					if ( isset( $arr[ $key ] ) ) {
 						self::$codes[ $key ][ $arr[ $key ] ] = $name;
 					}
 				}
+
 				if ( ! isset( self::$codes[ $key ] ) ) {	// Just in case.
 					self::$codes[ $key ] = false;
 				}

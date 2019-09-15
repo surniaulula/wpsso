@@ -13,6 +13,10 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 	require_once WPSSO_PLUGINDIR . 'lib/schema-graph.php';
 }
 
+if ( ! class_exists( 'WpssoSchemaNoScript' ) ) {
+	require_once WPSSO_PLUGINDIR . 'lib/schema-noscript.php';
+}
+
 if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 	require_once WPSSO_PLUGINDIR . 'lib/schema-single.php';
 }
@@ -22,6 +26,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 	class WpssoSchema {
 
 		private $p;
+
+		private $noscript;
 
 		private $types_cache = null;		// Schema types array cache.
 
@@ -34,6 +40,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
+
+			$this->noscript = new WpssoSchemaNoScript( $plugin );
 
 			$this->p->util->add_plugin_filters( $this, array( 
 				'plugin_image_sizes' => 1,
