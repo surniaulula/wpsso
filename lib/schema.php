@@ -342,12 +342,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public function get_array( array $mod, array &$mt_og = array() ) {	// Pass by reference is OK.
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'build json array' );	// Begin timer for json array.
+				$this->p->debug->mark( 'build schema array' );	// Begin timer for json array.
 			}
 
 			$page_type_id  = $mt_og[ 'schema:type:id' ]  = $this->get_mod_schema_type( $mod, $get_schema_id = true );	// Example: article.tech.
 			$page_type_url = $mt_og[ 'schema:type:url' ] = $this->get_schema_type_url( $page_type_id );	// Example: https://schema.org/TechArticle.
-			$json_scripts  = array();
 
 			list(
 				$mt_og[ 'schema:type:context' ],
@@ -511,25 +510,27 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$filter_name    = $this->p->lca . '_json_prop_' . SucomUtil::sanitize_hookname( $graph_type_url );
 			$graph_json     = apply_filters( $filter_name, $graph_json, $mod, $mt_og, $page_type_id, $is_main );
 
+			$schema_scripts  = array();
+
 			if ( ! empty( $graph_json[ '@graph' ] ) ) {	// Just in case.
 
 				if ( ! SucomUtil::get_const( 'WPSSO_JSON_OPTIMIZE_DISABLE' ) ) {
 					$graph_json = WpssoSchemaGraph::optimize( $graph_json );
 				}
 
-				$json_scripts[][] = '<script type="application/ld+json">' .
+				$schema_scripts[][] = '<script type="application/ld+json">' .
 					$this->p->util->json_format( $graph_json ) . '</script>' . "\n";
 			}
 
 			unset( $graph );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'build json array' );	// End timer for json array.
+				$this->p->debug->mark( 'build schema array' );	// End timer for json array.
 			}
 
-			$json_scripts = apply_filters( $this->p->lca . '_json_scripts', $json_scripts, $mod, $mt_og );
+			$schema_scripts = apply_filters( $this->p->lca . '_schema_scripts', $schema_scripts, $mod, $mt_og );
 
-			return $json_scripts;
+			return $schema_scripts;
 		}
 
 		/**
