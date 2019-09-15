@@ -1930,6 +1930,20 @@ EOF;
 			return empty( $css_class ) ? '' : '<tr class="' . $css_class . '">';
 		}
 
+		public function get_tr_hide_img_dim( $in_view = 'basic', $name ) {
+
+			$css_class = self::get_css_class_hide_img_dim( $in_view, $name );
+
+			return empty( $css_class ) ? '' : '<tr class="' . $css_class . '">';
+		}
+
+		public function get_tr_hide_vid_dim( $in_view = 'basic', $name ) {
+
+			$css_class = self::get_css_class_hide_vid_dim( $in_view, $name );
+
+			return empty( $css_class ) ? '' : '<tr class="' . $css_class . '">';
+		}
+
 		public function get_css_class_hide_img_dim( $in_view = 'basic', $name ) {
 
 			foreach ( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $opt_key ) {

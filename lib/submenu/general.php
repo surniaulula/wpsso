@@ -193,7 +193,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					( empty( $this->form->options[ 'og_vid_prev_img' ] ) ? '' : ' <em>' .
 						_x( 'video preview images are enabled (and included first)', 'option comment', 'wpsso' ) . '</em>' ) . '</td>';
 
-					$table_rows[ 'og_img' ] = '' . 
+					$table_rows[ 'og_img' ] = $this->form->get_tr_hide_img_dim( 'basic', 'og_img' ). 
 					$this->form->get_th_html( _x( 'Open Graph Image Size', 'option label', 'wpsso' ), '', 'og_img_size' ) . 
 					'<td>' . $this->form->get_input_image_dimensions( 'og_img' ) . '</td>';
 
@@ -313,11 +313,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->form->get_th_html( _x( 'Twitter Card Type by Default', 'option label', 'wpsso' ), '', 'tc_type_default' ) . 
 					'<td>' . $this->form->get_select( 'tc_type_default', $tc_types ) . '</td>';
 
-					$table_rows[ 'tc_sum_img' ] = '' . 
+					$table_rows[ 'tc_sum_img' ] = $this->form->get_tr_hide_img_dim( 'basic', 'tc_sum_img' ) . 
 					$this->form->get_th_html( _x( 'Summary Card Image Size', 'option label', 'wpsso' ), '', 'tc_sum_img_size' ) . 
 					'<td>' . $this->form->get_input_image_dimensions( 'tc_sum_img' ) . '</td>';
 
-					$table_rows[ 'tc_lrg_img' ] = '' . 
+					$table_rows[ 'tc_lrg_img' ] = $this->form->get_tr_hide_img_dim( 'basic', 'tc_lrg_img' ) . 
 					$this->form->get_th_html( _x( 'Large Image Summary Card Img Size', 'option label', 'wpsso' ), '', 'tc_lrg_img_size' ) . 
 					'<td>' . $this->form->get_input_image_dimensions( 'tc_lrg_img' ) . '</td>';
 

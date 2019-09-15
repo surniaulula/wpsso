@@ -4106,10 +4106,10 @@ msgstr ""
 
 #: lib/messages.php:808
 msgid ""
-"When this option is enabled (recommended), full size images used for meta "
-"tags and Schema markup must be equal to (or larger) than the image "
-"dimensions you've defined in the %s settings &mdash; images that do not meet "
-"or exceed the minimum requirements will be ignored."
+"When this option is enabled, full size images used for meta tags and Schema "
+"markup must be equal to (or larger) than the image dimensions you've defined "
+"in the %s settings &mdash; images that do not meet or exceed the minimum "
+"requirements will be ignored."
 msgstr ""
 
 #: lib/messages.php:814
