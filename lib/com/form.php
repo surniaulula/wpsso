@@ -741,7 +741,7 @@ EOF;
 		}
 
 		/**
-		 * The "hour_mins" class is always prefixed to the $css_class value.
+		 * The "hour-mins" class is always prefixed to the $css_class value.
 		 * By default, the 'none' array elements is not added.
 		 */
 		public function get_select_time( $name, $css_class = '', $css_id = '',
@@ -754,7 +754,7 @@ EOF;
 					$step_secs = 60 * $step_mins, $label_format = 'H:i' );
 			}
 
-			$css_class  = trim( 'hour_mins ' . $css_class );
+			$css_class  = trim( 'hour-mins ' . $css_class );
 			$event_name = 'on_focus_load_json';
 			$event_args = 'hour_mins_step_' . $step_mins;
 
@@ -1144,10 +1144,10 @@ EOF;
 				$values = $this->p->cf[ 'form' ][ 'position_' . $key ];
 
 				if ( $add_none ) {
-					$html .= $this->get_select_none( $name . '_' . $key, $values, $css_class = 'crop_area',
+					$html .= $this->get_select_none( $name . '_' . $key, $values, $css_class = 'crop-area',
 						$css_id = '', $is_assoc = true, $is_disabled );
 				} else {
-					$html .= $this->get_select( $name . '_' . $key, $values, $css_class = 'crop_area',
+					$html .= $this->get_select( $name . '_' . $key, $values, $css_class = 'crop-area',
 						$css_id = '', $is_assoc = true, $is_disabled );
 				}
 			}
@@ -1329,7 +1329,7 @@ EOF;
 			$html .= $this->get_value_transl( 'at' ) . ' ';
 
 			/**
-			 * The "hour_mins" class is always prefixed to the $css_class value.
+			 * The "hour-mins" class is always prefixed to the $css_class value.
 			 */
 			$html .= $this->get_select_time( $name_prefix . '_time', $css_class = '', $css_id = '',
 				$is_disabled, $selected = false, $step_mins, $add_none ) . ' ';

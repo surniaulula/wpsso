@@ -3888,11 +3888,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $network ) {
 
-				return $form->get_th_html( _x( 'Site Use', 'option label (very short)', 'wpsso' ), 'site_use' ) . 
-					( $enabled || self::$pkg[ 'wpsso' ][ 'pp' ] ? '<td class="site_use">' . $form->get_select( $name . ':use',
-						WpssoConfig::$cf[ 'form' ][ 'site_option_use' ], 'site_use' ) . '</td>' :
-					'<td class="blank site_use">' . $form->get_select( $name . ':use',
-						WpssoConfig::$cf[ 'form' ][ 'site_option_use' ], 'site_use', '', true, true ) . '</td>' );
+				return $form->get_th_html( _x( 'Site Use', 'option label (very short)', 'wpsso' ), 'site-use' ) . 
+					( $enabled || self::$pkg[ 'wpsso' ][ 'pp' ] ? '<td class="site-use">' . $form->get_select( $name . ':use',
+						WpssoConfig::$cf[ 'form' ][ 'site_option_use' ], 'site-use' ) . '</td>' :
+					'<td class="blank site-use">' . $form->get_select( $name . ':use',
+						WpssoConfig::$cf[ 'form' ][ 'site_option_use' ], 'site-use', '', true, true ) . '</td>' );
 			} else {
 				return '';
 			}

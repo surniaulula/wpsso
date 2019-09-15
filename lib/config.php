@@ -1393,12 +1393,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced settings - Plugin Behavior tab.
 					 */
-					'plugin_clean_on_uninstall'     => 0,		// Remove Settings on Uninstall
+					'plugin_clean_on_uninstall'     => 0,			// Remove Settings on Uninstall
 					'plugin_clean_on_uninstall:use' => 'default',
-					'plugin_debug'                  => 0,		// Add Hidden Debug Messages
+					'plugin_debug'                  => 0,			// Add Hidden Debug Messages
 					'plugin_debug:use'              => 'default',
-					'plugin_show_opts'              => 'basic',	// Options to Show by Default
+					'plugin_show_opts'              => 'basic',		// Options to Show by Default
 					'plugin_show_opts:use'          => 'default',
+					'plugin_notice_system'          => 'toolbar_notices',	// Notification System.
+					'plugin_notice_system:use'      => 'default',
 					
 					/**
 					 * Advanced settings - Integration tab.
