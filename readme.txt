@@ -434,19 +434,23 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.3.0-dev.7 (2019/09/13)**
+**Version 6.3.0-dev.8 (2019/09/15)**
 
 * **New Features**
 	* None.
 * **Improvements**
+	* Added new Schema Article AMP image dimensions for Google (WPSSO JSON add-on required):
+		* Schema Article AMP 1x1 (Google).
+		* Schema Article AMP 4x3 (Google).
+		* Schema Article AMP 16x9 (Google).
 	* Added a new "Notification System" option to the Essential and Advanced settings page.
-	* Removed the "Meta Property Container" option and features (the WPSSO JSON add-on is recommended instead).
+	* Removed the "Meta Property Container" option.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
 	* Added checks for AMP, Better AMP, and Accelerated Mobile Pages plugins in WpssoCheck::get_avail().
-	* Added a new 'image' input type in the SucomForm::get_mixed_multi() method for WPSSO JSON v2.9.0.
-	* Removed support for `<noscript></noscript>` containers for Schema markup (the WPSSO JSON add-on is recommended instead).
+	* Added an 'image' input type in the SucomForm::get_mixed_multi() method for WPSSO JSON v2.9.0.
+	* Added a lib/schema-noscript.php library file with a single filter for aggregate rating markup.
 	* Removed the lib/noscript.php library file.
 	* Removed the lib/schema-cache.php library file (Deprecated).
 
@@ -534,9 +538,9 @@ New resized image file names now include custom crop locations (top, botton, lef
 
 == Upgrade Notice ==
 
-= 6.3.0-dev.7 =
+= 6.3.0-dev.8 =
 
-(2019/09/13) Added a new "Notification System" option to the Essential and Advanced settings page. Removed the "Meta Property Container" option and features (the WPSSO JSON add-on is recommended instead).
+(2019/09/15) Added new Schema Article AMP image dimensions for Google (WPSSO JSON add-on required). Added a new "Notification System" option. Removed the "Meta Property Container" option.
 
 = 6.2.0 =
 
