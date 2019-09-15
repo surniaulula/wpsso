@@ -254,37 +254,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$this->add_schema_knowledge_graph_table_rows( $table_rows, $this->form );
 
-					$table_rows[ 'schema_logo_url' ] = '' . 
-					$this->form->get_th_html( '<a href="https://developers.google.com/structured-data/customize/logos">' .
-					_x( 'Organization Logo URL', 'option label', 'wpsso' ) . '</a>', '', 'schema_logo_url', array( 'is_locale' => true ) ) . 
-					'<td>' . $this->form->get_input( SucomUtil::get_key_locale( 'schema_logo_url', $this->p->options ), 'wide' ) . '</td>';
-
-					$table_rows[ 'schema_banner_url' ] = '' . 
-					$this->form->get_th_html( _x( 'Organization Banner URL', 'option label', 'wpsso' ),
-						'', 'schema_banner_url', array( 'is_locale' => true ) ) . 
-					'<td>' . $this->form->get_input( SucomUtil::get_key_locale( 'schema_banner_url', $this->p->options ), 'wide' ) . '</td>';
-
-					$table_rows[ 'schema_img_max' ] = $this->form->get_tr_hide( 'basic', 'schema_img_max' ) . 
-					$this->form->get_th_html( _x( 'Maximum Images to Include', 'option label', 'wpsso' ), '', 'schema_img_max' ) . 
-					'<td>' . $this->form->get_select( 'schema_img_max', range( 0, $this->p->cf[ 'form' ][ 'max_media_items' ] ), 'short', '', true ) . 
-					( empty( $this->form->options[ 'og_vid_prev_img' ] ) ? '' : ' <em>' . _x( 'video preview images are enabled (and included first)',
-						'option comment', 'wpsso' ) . '</em>' ) . '</td>';
-
-					$table_rows[ 'schema_img' ] = '' . 
-					$this->form->get_th_html( _x( 'Schema Image Size', 'option label', 'wpsso' ), '', 'schema_img_size' ) . 
-					'<td>' . $this->form->get_input_image_dimensions( 'schema_img' ) . '</td>';
-
-					$table_rows[ 'schema_article_img' ] = '' . 
-					$this->form->get_th_html( _x( 'Schema Article Image Size', 'option label', 'wpsso' ), '', 'schema_article_img_size' ) . 
-					'<td>' . $this->form->get_input_image_dimensions( 'schema_article_img' ) . '</td>';
-
-					$table_rows[ 'thumb_img_size' ] = '' .
-					$this->form->get_th_html( _x( 'Schema Thumbnail Image Size', 'option label', 'wpsso' ), null, 'thumb_img_size' ).
-					'<td>' . $this->form->get_input_image_dimensions( 'thumb_img' ) . '</td>';
-
-					$table_rows[ 'schema_desc_max_len' ] = $this->form->get_tr_hide( 'basic', 'schema_desc_max_len' ) . 
-					$this->form->get_th_html( _x( 'Maximum Description Length', 'option label', 'wpsso' ), '', 'schema_desc_max_len' ) . 
-					'<td>' . $this->form->get_input( 'schema_desc_max_len', 'short' ) . ' ' . _x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
+					$this->add_schema_item_props_table_rows( $table_rows, $this->form );
 
 					$this->add_schema_item_types_table_rows( $table_rows, $this->form, $hide_in_basic = true, $is_top_section = false );
 

@@ -1112,7 +1112,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$filter_name = $this->p->lca . '_content_image_preg_' . $type;
 
-				if ( has_filter( $filter_name ) ) {
+				if ( has_filter( $filter_name ) ) {	// Skip if no filters.
 
 					$content_img_preg[ $type ] = apply_filters( $filter_name, $this->default_content_img_preg[ $type ] );
 
@@ -1511,7 +1511,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 */
 			$filter_name = $this->p->lca . '_content_videos';
 
-			if ( has_filter( $filter_name ) ) {
+			if ( has_filter( $filter_name ) ) {	// Skip if no filters.
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'applying ' . $filter_name . ' filters' );

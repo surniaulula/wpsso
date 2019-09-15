@@ -104,34 +104,51 @@ if ( ! class_exists( 'WpssoSettingsImageDimensions' ) && class_exists( 'WpssoAdm
 
 				case 'image-dimensions-general':
 
+					$json_req_msg = $this->p->msgs->maybe_ext_required( 'wpssojson' );
+
 					$table_rows[ 'og_img_size' ] = '' .
 					$this->form->get_th_html( _x( 'Open Graph (Facebook and Others)',
-						'option label', 'wpsso' ), null, 'og_img_size' ) . 
+						'option label', 'wpsso' ), '', 'og_img_size' ) . 
 					'<td>' . $this->form->get_input_image_dimensions( 'og_img' ) . '</td>';
 
 					$table_rows[ 'schema_0_img_size' ] = '' .		// Use a key name that sorts first.
 					$this->form->get_th_html( _x( 'Schema (Google and Pinterest)',
-						'option label', 'wpsso' ), null, 'schema_img_size' ) . 
+						'option label', 'wpsso' ), '', 'schema_img_size' ) . 
 					'<td>' . $this->form->get_input_image_dimensions( 'schema_img' ) . '</td>';
 
-					$table_rows[ 'schema_1_article_img_size' ] = '' .	// Use a key name that sorts second.
+					$table_rows[ 'schema_article_0_img_size' ] = '' .
 					$this->form->get_th_html( _x( 'Schema Article (Google and Pinterest)',
-						'option label', 'wpsso' ), null, 'schema_article_img_size' ) . 
+						'option label', 'wpsso' ), '', 'schema_article_img_size' ) . 
 					'<td>' . $this->form->get_input_image_dimensions( 'schema_article_img' ) . '</td>';
+
+					$table_rows[ 'schema_article_1_amp1x1_img_size' ] = '' .
+					$this->form->get_th_html( _x( 'Schema Article AMP 1x1 (Google)',
+						'option label', 'wpsso' ), '', 'schema_article_amp1x1_img_size' ) . 
+					'<td>' . $this->form->get_input_image_dimensions( 'schema_article_amp1x1_img' ) . $json_req_msg . '</td>';
+
+					$table_rows[ 'schema_article_2_amp4x3_img_size' ] = '' .
+					$this->form->get_th_html( _x( 'Schema Article AMP 4x3 (Google)',
+						'option label', 'wpsso' ), '', 'schema_article_amp4x3_img_size' ) . 
+					'<td>' . $this->form->get_input_image_dimensions( 'schema_article_amp4x3_img' ) . $json_req_msg . '</td>';
+
+					$table_rows[ 'schema_article_3_amp16x9_img_size' ] = '' .
+					$this->form->get_th_html( _x( 'Schema Article AMP 16x9 (Google)',
+						'option label', 'wpsso' ), '', 'schema_article_amp16x9_img_size' ) . 
+					'<td>' . $this->form->get_input_image_dimensions( 'schema_article_amp16x9_img' ) . $json_req_msg . '</td>';
 
 					$table_rows[ 'schema_thumb_img_size' ] = '' .
 					$this->form->get_th_html( _x( 'Schema Thumbnail Image',
-						'option label', 'wpsso' ), null, 'thumb_img_size' ) . 
+						'option label', 'wpsso' ), '', 'thumb_img_size' ) . 
 					'<td>' . $this->form->get_input_image_dimensions( 'thumb_img' ) . '</td>';
 
 					$table_rows[ 'tc_0_sum_img_size' ] = '' .	// Use a key name that sorts first.
 					$this->form->get_th_html( _x( 'Twitter Summary Card',
-						'option label', 'wpsso' ), null, 'tc_sum_img_size' ) . 
+						'option label', 'wpsso' ), '', 'tc_sum_img_size' ) . 
 					'<td>' . $this->form->get_input_image_dimensions( 'tc_sum_img' ) . '</td>';
 
 					$table_rows[ 'tc_1_lrg_img_size' ] = '' .	// Use a key name that sorts second.
 					$this->form->get_th_html( _x( 'Twitter Large Image Summary Card',
-						'option label', 'wpsso' ), null, 'tc_lrg_img_size' ) . 
+						'option label', 'wpsso' ), '', 'tc_lrg_img_size' ) . 
 					'<td>' . $this->form->get_input_image_dimensions( 'tc_lrg_img' ) . '</td>';
 
 					break;

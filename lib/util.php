@@ -255,7 +255,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 
 				/**
-				 * example:
+				 * Example:
 				 * 	'json_data_https_schema_org_website' => 5
 				 */
 				if ( is_int( $val ) ) {
@@ -269,8 +269,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'added ' . $method_name . ' (method) ' . $type, 3 );
 					}
+
 				/**
-				 * example:
+				 * Example:
 				 * 	'add_schema_meta_array' => '__return_false'
 				 */
 				} elseif ( is_string( $val ) ) {
@@ -284,8 +285,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'added ' . $function_name . ' (function) ' . $type . ' for ' . $hook_name, 3 );
 					}
+
 				/**
-				 * example:
+				 * Example:
 				 * 	'json_data_https_schema_org_article' => array(
 				 *		'json_data_https_schema_org_article' => 5,
 				 *		'json_data_https_schema_org_newsarticle' => 5,
@@ -3096,7 +3098,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$filter_name  = $args[0];
 			$filter_value = $args[1];
 
-			if ( ! has_filter( $filter_name ) ) {
+			if ( ! has_filter( $filter_name ) ) {	// Skip if no filters.
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: ' . $filter_name . ' has no filter hooks' );

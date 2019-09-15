@@ -1962,7 +1962,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$md_opts[ $md_type . '_place_id' ] = apply_filters( $wpsso->lca . '_get_' . $md_type . '_place_id',
 					$md_opts[ $md_type . '_place_id' ], $mod, $type_id );
 
-				if ( $md_opts[ $md_type . '_place_id' ] === null ) {	// Unset if still null.
+				if ( $md_opts[ $md_type . '_place_id' ] === null ) {		// Unset if still null.
 					unset( $md_opts[ $md_type . '_place_id' ] );
 				}
 			}

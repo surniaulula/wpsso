@@ -1901,20 +1901,24 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$action_links = array();
 
 				if ( ! empty( $info[ 'url' ][ 'faqs' ] ) ) {
-					$action_links[] = sprintf( __( '<a href="%s">Frequently Asked Questions</a>', 'wpsso' ), $info[ 'url' ][ 'faqs' ] );
+					$action_links[] = sprintf( __( '<a href="%s">Frequently Asked Questions</a>',
+						'wpsso' ), $info[ 'url' ][ 'faqs' ] );
 				}
 						
 				if ( ! empty( $info[ 'url' ][ 'notes' ] ) ) {
-					$action_links[] = sprintf( __( '<a href="%s">Advanced Documentation and Notes</a>', 'wpsso' ), $info[ 'url' ][ 'notes' ] );
+					$action_links[] = sprintf( __( '<a href="%s">Advanced Documentation and Notes</a>',
+						'wpsso' ), $info[ 'url' ][ 'notes' ] );
 				}
 
 				if ( ! empty( $info[ 'url' ][ 'support' ] ) && self::$pkg[ $ext ][ 'pp' ] ) {
 
-					$action_links[] = sprintf( __( '<a href="%s">Priority Support Ticket</a>', 'wpsso' ), $info[ 'url' ][ 'support' ] );
+					$action_links[] = sprintf( __( '<a href="%s">Priority Support Ticket</a>',
+						'wpsso' ), $info[ 'url' ][ 'support' ] );
 
 				} elseif ( ! empty( $info[ 'url' ][ 'forum' ] ) ) {
 
-					$action_links[] = sprintf( __( '<a href="%s">Community Support Forum</a>', 'wpsso' ), $info[ 'url' ][ 'forum' ] );
+					$action_links[] = sprintf( __( '<a href="%s">Community Support Forum</a>',
+						'wpsso' ), $info[ 'url' ][ 'forum' ] );
 				}
 
 				if ( ! empty( $action_links ) ) {
@@ -3567,6 +3571,58 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$table_rows[ 'schema_home_person_id' ] = '' . 
 			$form->get_th_html( _x( 'User for Person Social Profile', 'option label', 'wpsso' ), '', 'schema_home_person_id' ) . 
 			'<td>' . $form->get_select( 'schema_home_person_id', $site_owners, '', '', true ) . '</td>';
+		}
+
+		/**
+		 * Called from the WpssoSubmenuGeneral and WpssoJsonSubmenuSchemaJsonLd classes.
+		 */
+		public function add_schema_item_props_table_rows( array &$table_rows, $form ) {
+
+			$json_req_msg = $this->p->msgs->maybe_ext_required( 'wpssojson' );
+			$atts_locale  = array( 'is_locale' => true );
+
+			$table_rows[ 'schema_logo_url' ] = '' . 
+			$form->get_th_html( '<a href="https://developers.google.com/structured-data/customize/logos"' .
+			_x( 'Organization Logo URL', 'option label', 'wpsso' ) . '</a>', '', 'schema_logo_url', $atts_locale ) . 
+			'<td>' . $form->get_input( SucomUtil::get_key_locale( 'schema_logo_url', $this->p->options ), 'wide' ) . '</td>';
+
+			$table_rows[ 'schema_banner_url' ] = '' . 
+			$form->get_th_html( _x( 'Organization Banner URL', 'option label', 'wpsso' ), '', 'schema_banner_url', $atts_locale ) . 
+			'<td>' . $form->get_input( SucomUtil::get_key_locale( 'schema_banner_url', $this->p->options ), 'wide' ) . '</td>';
+
+			$table_rows[ 'schema_img_max' ] = $form->get_tr_hide( 'basic', 'schema_img_max' ) . 
+			$form->get_th_html( _x( 'Maximum Images to Include', 'option label', 'wpsso' ), '', 'schema_img_max' ) . 
+			'<td>' . $form->get_select( 'schema_img_max', range( 0, $this->p->cf[ 'form' ][ 'max_media_items' ] ), 'short', '', true ) . 
+			( empty( $form->options[ 'og_vid_prev_img' ] ) ? '' : ' <em>' . _x( 'video preview images are enabled (and included first)',
+				'option comment', 'wpsso' ) . '</em>' ) . '</td>';
+
+			$table_rows[ 'schema_img' ] = '' . 
+			$form->get_th_html( _x( 'Schema Image Size', 'option label', 'wpsso' ), '', 'schema_img_size' ) . 
+			'<td>' . $form->get_input_image_dimensions( 'schema_img' ) . '</td>';
+
+			$table_rows[ 'schema_article_img' ] = '' . 
+			$form->get_th_html( _x( 'Schema Article Image Size', 'option label', 'wpsso' ), '', 'schema_article_img_size' ) . 
+			'<td>' . $form->get_input_image_dimensions( 'schema_article_img' ) . '</td>';
+
+			$table_rows[ 'schema_article_amp1x1_img_size' ] = '' .
+			$form->get_th_html( _x( 'Schema Article AMP 1x1 Img Size', 'option label', 'wpsso' ), '', 'schema_article_amp1x1_img_size' ) . 
+			'<td>' . $form->get_input_image_dimensions( 'schema_article_amp1x1_img' ) . $json_req_msg . '</td>';
+
+			$table_rows[ 'schema_article_amp4x3_img_size' ] = '' .
+			$form->get_th_html( _x( 'Schema Article AMP 4x3 Img Size', 'option label', 'wpsso' ), '', 'schema_article_amp4x3_img_size' ) . 
+			'<td>' . $form->get_input_image_dimensions( 'schema_article_amp4x3_img' ) . $json_req_msg . '</td>';
+
+			$table_rows[ 'schema_article_amp16x9_img_size' ] = '' .
+			$form->get_th_html( _x( 'Schema Article AMP 16x9 Img Size', 'option label', 'wpsso' ), '', 'schema_article_amp16x9_img_size' ) . 
+			'<td>' . $form->get_input_image_dimensions( 'schema_article_amp16x9_img' ) . $json_req_msg . '</td>';
+
+			$table_rows[ 'thumb_img_size' ] = '' .
+			$form->get_th_html( _x( 'Schema Thumbnail Image Size', 'option label', 'wpsso' ), '', 'thumb_img_size' ).
+			'<td>' . $form->get_input_image_dimensions( 'thumb_img' ) . '</td>';
+
+			$table_rows[ 'schema_desc_max_len' ] = $form->get_tr_hide( 'basic', 'schema_desc_max_len' ) . 
+			$form->get_th_html( _x( 'Maximum Description Length', 'option label', 'wpsso' ), '', 'schema_desc_max_len' ) . 
+			'<td>' . $form->get_input( 'schema_desc_max_len', 'short' ) . ' ' . _x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
 		}
 
 		/**
