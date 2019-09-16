@@ -441,19 +441,19 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 * **New Features**
 	* None.
 * **Improvements**
+	* Added a new "Notification System" option to the Essential and Advanced settings page.
 	* Added new Schema Article AMP image dimensions for Google (WPSSO JSON add-on required):
 		* Schema Article AMP 1:1 (Google).
 		* Schema Article AMP 4:3 (Google).
 		* Schema Article AMP 16:9 (Google).
 	* Added the 'uploadDate' and 'identifier' properties to Schema ImageObject markup.
-	* Added a new "Notification System" option to the Essential and Advanced settings page.
-	* Removed the "Meta Property Container" option.
+	* Removed the "Meta Property Container" option (the WPSSO JSON add-on is a better alternative).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added checks for AMP, Better AMP, and Accelerated Mobile Pages plugins in WpssoCheck::get_avail().
+	* Added checks for [AMP](https://wordpress.org/plugins/amp/), [Better AMP](https://wordpress.org/plugins/better-amp/), and [Accelerated Mobile Pages](https://wordpress.org/plugins/accelerated-mobile-pages/) plugins in WpssoCheck::get_avail().
 	* Added an 'image' input type in the SucomForm::get_mixed_multi() method for WPSSO JSON v2.9.0.
-	* Added a lib/schema-noscript.php library file with a single filter for aggregate rating markup.
+	* Added a lib/schema-noscript.php library file with a single filter for aggregate rating markup (replaces the lib/noscript.php library file).
 	* Removed the lib/noscript.php library file.
 	* Removed the lib/schema-cache.php library file (Deprecated).
 
