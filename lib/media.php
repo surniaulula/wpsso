@@ -1891,7 +1891,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				case $this->p->lca . '-schema-article-amp1x1':
 
-					$markup_name = _x( 'Google Schema Article AMP 1x1', 'option label', 'wpsso' );
+					$markup_name = _x( 'Google Schema Article AMP 1:1', 'option label', 'wpsso' );
 					$min_width   = $cf_min[ 'schema_article_amp1x1_img_width' ];	// Default is 1200.
 					$min_height  = $cf_min[ 'schema_article_amp1x1_img_height' ];	// Default is 1200.
 					$max_ratio   = 0;
@@ -1900,7 +1900,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				case $this->p->lca . '-schema-article-amp4x3':
 
-					$markup_name = _x( 'Google Schema Article AMP 4x3', 'option label', 'wpsso' );
+					$markup_name = _x( 'Google Schema Article AMP 4:3', 'option label', 'wpsso' );
 					$min_width   = $cf_min[ 'schema_article_amp4x3_img_width' ];	// Default is 1200.
 					$min_height  = $cf_min[ 'schema_article_amp4x3_img_height' ];	// Default is 900.
 					$max_ratio   = 0;
@@ -1909,7 +1909,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				case $this->p->lca . '-schema-article-amp16x9':
 
-					$markup_name = _x( 'Google Schema Article AMP 16x9', 'option label', 'wpsso' );
+					$markup_name = _x( 'Google Schema Article AMP 16:9', 'option label', 'wpsso' );
 					$min_width   = $cf_min[ 'schema_article_amp16x9_img_width' ];	// Default is 1200.
 					$min_height  = $cf_min[ 'schema_article_amp16x9_img_height' ];	// Default is 675.
 					$max_ratio   = 0;

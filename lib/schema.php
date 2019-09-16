@@ -64,17 +64,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$sizes[ 'schema_article_amp1x1' ] = array(
 					'name'   => 'schema-article-amp1x1',
-					'label'  => _x( 'Schema Article AMP 1x1 Image', 'image size label', 'wpsso' ),
+					'label'  => _x( 'Schema Article AMP 1:1 Image', 'image size label', 'wpsso' ),
 				);
 
 				$sizes[ 'schema_article_amp4x3' ] = array(
 					'name'   => 'schema-article-amp4x3',
-					'label'  => _x( 'Schema Article AMP 4x3 Image', 'image size label', 'wpsso' ),
+					'label'  => _x( 'Schema Article AMP 4:3 Image', 'image size label', 'wpsso' ),
 				);
 
 				$sizes[ 'schema_article_amp16x9' ] = array(
 					'name'   => 'schema-article-amp16x9',
-					'label'  => _x( 'Schema Article AMP 16x9 Image', 'image size label', 'wpsso' ),
+					'label'  => _x( 'Schema Article AMP 16:9 Image', 'image size label', 'wpsso' ),
 				);
 			}
 

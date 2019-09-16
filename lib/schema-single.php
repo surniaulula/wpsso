@@ -60,12 +60,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Maybe add an 'identifier' value based on the size name and image ID.
 			 */
-			if ( ! empty( $mt_single[ $mt_pre . ':size_name' ] ) ) {
+			if ( ! empty( $mt_single[ $mt_pre . ':id' ] ) ) {
 
-				$ret[ 'identifier' ] = $mt_single[ $mt_pre . ':size_name' ];
+				$ret[ 'identifier' ] = $mt_single[ $mt_pre . ':id' ];
 
-				if ( ! empty( $mt_single[ $mt_pre . ':id' ] ) ) {
-					$ret[ 'identifier' ] .= '-' . $mt_single[ $mt_pre . ':id' ];
+				if ( ! empty( $mt_single[ $mt_pre . ':size_name' ] ) ) {
+					$ret[ 'identifier' ] .= '-' . $mt_single[ $mt_pre . ':size_name' ];
 				}
 			}
 

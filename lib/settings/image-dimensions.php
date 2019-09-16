@@ -122,17 +122,17 @@ if ( ! class_exists( 'WpssoSettingsImageDimensions' ) && class_exists( 'WpssoAdm
 					'<td>' . $this->form->get_input_image_dimensions( 'schema_article_img' ) . '</td>';
 
 					$table_rows[ 'schema_article_1_amp1x1_img_size' ] = '' .
-					$this->form->get_th_html( _x( 'Schema Article AMP 1x1 (Google)',
+					$this->form->get_th_html( _x( 'Schema Article AMP 1:1 (Google)',
 						'option label', 'wpsso' ), '', 'schema_article_amp1x1_img_size' ) . 
 					'<td>' . $this->form->get_input_image_dimensions( 'schema_article_amp1x1_img' ) . $json_req_msg . '</td>';
 
 					$table_rows[ 'schema_article_2_amp4x3_img_size' ] = '' .
-					$this->form->get_th_html( _x( 'Schema Article AMP 4x3 (Google)',
+					$this->form->get_th_html( _x( 'Schema Article AMP 4:3 (Google)',
 						'option label', 'wpsso' ), '', 'schema_article_amp4x3_img_size' ) . 
 					'<td>' . $this->form->get_input_image_dimensions( 'schema_article_amp4x3_img' ) . $json_req_msg . '</td>';
 
 					$table_rows[ 'schema_article_3_amp16x9_img_size' ] = '' .
-					$this->form->get_th_html( _x( 'Schema Article AMP 16x9 (Google)',
+					$this->form->get_th_html( _x( 'Schema Article AMP 16:9 (Google)',
 						'option label', 'wpsso' ), '', 'schema_article_amp16x9_img_size' ) . 
 					'<td>' . $this->form->get_input_image_dimensions( 'schema_article_amp16x9_img' ) . $json_req_msg . '</td>';
 
