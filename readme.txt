@@ -445,6 +445,7 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 		* Schema Article AMP 1x1 (Google).
 		* Schema Article AMP 4x3 (Google).
 		* Schema Article AMP 16x9 (Google).
+	* Added the 'uploadDate' and 'identifier' properties to Schema ImageObject markup.
 	* Added a new "Notification System" option to the Essential and Advanced settings page.
 	* Removed the "Meta Property Container" option.
 * **Bugfixes**
