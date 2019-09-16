@@ -434,7 +434,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.3.0-dev.8 (2019/09/15)**
+**Version 6.3.0-b.1 (2019/09/16)**
+
+New Schema Article AMP image sizes for the WPSSO JSON add-on.
 
 * **New Features**
 	* None.
@@ -538,9 +540,9 @@ New resized image file names now include custom crop locations (top, botton, lef
 
 == Upgrade Notice ==
 
-= 6.3.0-dev.8 =
+= 6.3.0-b.1 =
 
-(2019/09/15) Added new Schema Article AMP image dimensions for Google (WPSSO JSON add-on required). Added a new "Notification System" option. Removed the "Meta Property Container" option.
+(2019/09/16) Added new Schema Article AMP image dimensions for Google (WPSSO JSON add-on required). Added a new "Notification System" option. Removed the "Meta Property Container" option.
 
 = 6.2.0 =
 
