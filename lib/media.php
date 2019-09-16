@@ -574,24 +574,21 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 		}
 
-		/**
-		 * Return an empty image array by default.
-		 *
-		 * array(
-		 *	'og:image:url'       => null,
-		 *	'og:image:width'     => null,
-		 *	'og:image:height'    => null,
-		 *	'og:image:cropped'   => null,
-		 *	'og:image:id'        => null,
-		 *	'og:image:alt'       => null,
-		 *	'og:image:size_name' => null,
-		 * );
-		 */
-		public static function reset_image_src_args( array $ret_array = array(), $ret_count = 7 ) {
+		public static function reset_image_src_args( array $ret_array = array() ) {
 
 			self::$image_src_args = null;
 
 			$have_count = count( $ret_array );
+
+		 	$ret_count = count( array(
+				'og:image:url'       => null,
+				'og:image:width'     => null,
+				'og:image:height'    => null,
+				'og:image:cropped'   => null,
+				'og:image:id'        => null,
+				'og:image:alt'       => null,
+				'og:image:size_name' => null,
+			) );
 
 			if ( $have_count < $ret_count ) {
 				$ret_array = array_pad( $ret_array, $ret_count, null );
