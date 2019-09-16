@@ -1657,14 +1657,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				foreach ( $mt_list as $og_single_image ) {
 
-					$images_added += WpssoSchemaSingle::add_image_data_mt( $json_data,
-						$og_single_image, $mt_pre, $list_element = true );
+					$images_added += WpssoSchemaSingle::add_image_data_mt( $json_data, $og_single_image, $mt_pre, $list_element = true );
 				}
 
 			} elseif ( is_array( $mt_list ) ) {
 
-				$images_added += WpssoSchemaSingle::add_image_data_mt( $json_data,
-					$mt_list, $mt_pre, $list_element = true );
+				$images_added += WpssoSchemaSingle::add_image_data_mt( $json_data, $mt_list, $mt_pre, $list_element = true );
 			}
 
 			return $images_added;	// Return count of images added.

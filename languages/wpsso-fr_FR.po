@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 6.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-09-15 09:19-0700\n"
-"PO-Revision-Date: 2019-09-15 09:20-0700\n"
+"POT-Creation-Date: 2019-09-16 06:39-0700\n"
+"PO-Revision-Date: 2019-09-16 06:39-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3758,8 +3758,8 @@ msgid "When editing Posts and Pages, %1$s can check the head section of webpages
 msgstr "Lorsque vous modifiez des articles et pages, %1$s peut vérifier la section head des pages Web pour des balises HTML en conflit et/ou en double. Après %2$d vérifications <em>réussie</em>, aucune autre vérification sera effectuée &mdash; jusqu'à ce que le thème et/ou un plugin est mis à jour, lorsqu'un autre %2$d vérifications seront effectuées."
 
 #: lib/messages.php:808
-msgid "When this option is enabled (recommended), full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you've defined in the %s settings &mdash; images that do not meet or exceed the minimum requirements will be ignored."
-msgstr "Lorsque cette option est activée (recommandée), les images de pleine grandeur, utilisées pour les balises méta et balisage Schéma, doivent être égales (ou supérieur) aux dimensions d'image que vous avez définies dans les réglages %s &mdash; les images qui ne respectent pas, ou ne dépassent pas, les exigences minimales seront ignorées."
+msgid "When this option is enabled, full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you've defined in the %s settings &mdash; images that do not meet or exceed the minimum requirements will be ignored."
+msgstr "Lorsque cette option est activée, les images de pleine grandeur, utilisées pour les balises méta et balisage Schéma, doivent être égales (ou supérieur) aux dimensions d'image que vous avez définies dans les réglages %s &mdash; les images qui ne respectent pas, ou ne dépassent pas, les exigences minimales seront ignorées."
 
 #: lib/messages.php:814
 msgid "WordPress does not upscale / enlarge images &mdash; WordPress can only create smaller images from larger full size originals."

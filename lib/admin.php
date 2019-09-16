@@ -3582,7 +3582,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$atts_locale  = array( 'is_locale' => true );
 
 			$table_rows[ 'schema_logo_url' ] = '' . 
-			$form->get_th_html( '<a href="https://developers.google.com/structured-data/customize/logos"' .
+			$form->get_th_html( '<a href="https://developers.google.com/structured-data/customize/logos">' .
 			_x( 'Organization Logo URL', 'option label', 'wpsso' ) . '</a>', '', 'schema_logo_url', $atts_locale ) . 
 			'<td>' . $form->get_input( SucomUtil::get_key_locale( 'schema_logo_url', $this->p->options ), 'wide' ) . '</td>';
 

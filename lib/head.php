@@ -194,10 +194,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			/**
-			 * Save the first image and video information found.
-			 * Assumes array key order defined by
-			 * SucomUtil::get_mt_image_seed() and
-			 * SucomUtil::get_mt_video_seed().
+			 * Save the first image and video information found. Assumes array key order defined by
+			 * SucomUtil::get_mt_image_seed() and SucomUtil::get_mt_video_seed().
 			 */
 			foreach ( array( 'og:image', 'og:video', 'p:image' ) as $mt_pre ) {
 

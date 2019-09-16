@@ -58,8 +58,20 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			) );
 
 			/**
-			 * If we have an ID, and it's numeric (so exclude NGG v1 image IDs), 
-			 * check the WordPress Media Library for a title and description.
+			 * Maybe add an 'identifier' value based on the size name and image ID.
+			 */
+			if ( ! empty( $mt_single[ $mt_pre . ':size_name' ] ) ) {
+
+				$ret[ 'identifier' ] = $mt_single[ $mt_pre . ':size_name' ];
+
+				if ( ! empty( $mt_single[ $mt_pre . ':id' ] ) ) {
+					$ret[ 'identifier' ] .= '-' . $mt_single[ $mt_pre . ':id' ];
+				}
+			}
+
+			/**
+			 * If we have an ID, and it's numeric (so exclude NGG v1 image IDs), check the WordPress Media Library for
+			 * a title and description.
 			 */
 			if ( ! empty( $mt_single[ $mt_pre . ':id' ] ) && is_numeric( $mt_single[ $mt_pre . ':id' ] ) ) {
 
@@ -134,6 +146,15 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				if ( empty( $ret[ 'fileFormat' ] ) ) {
 					unset( $ret[ 'fileFormat' ] );
+				}
+
+				/**
+				 * Set the 'uploadDate' property to the image attachment publish time.
+				 */
+				$ret[ 'uploadDate' ] = trim( get_post_time( 'c', $gmt = true, $mod[ 'id' ] ) );
+
+				if ( empty( $ret[ 'uploadDate' ] ) ) {
+					unset( $ret[ 'uploadDate' ] );
 				}
 			}
 

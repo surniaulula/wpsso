@@ -578,15 +578,16 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 * Return an empty image array by default.
 		 *
 		 * array(
-		 *	'og:image:url'     => null,
-		 *	'og:image:width'   => null,
-		 *	'og:image:height'  => null,
-		 *	'og:image:cropped' => null,
-		 *	'og:image:id'      => null,
-		 *	'og:image:alt'     => null,
+		 *	'og:image:url'       => null,
+		 *	'og:image:width'     => null,
+		 *	'og:image:height'    => null,
+		 *	'og:image:cropped'   => null,
+		 *	'og:image:id'        => null,
+		 *	'og:image:alt'       => null,
+		 *	'og:image:size_name' => null,
 		 * );
 		 */
-		public static function reset_image_src_args( array $ret_array = array(), $ret_count = 6 ) {
+		public static function reset_image_src_args( array $ret_array = array(), $ret_count = 7 ) {
 
 			self::$image_src_args = null;
 
@@ -609,7 +610,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$og_single_image[ $mt_pre . ':image:height' ],
 				$og_single_image[ $mt_pre . ':image:cropped' ],
 				$og_single_image[ $mt_pre . ':image:id' ],
-				$og_single_image[ $mt_pre . ':image:alt' ]
+				$og_single_image[ $mt_pre . ':image:alt' ],
+				$og_single_image[ $mt_pre . ':image:size_name' ],
 			) = $this->get_attachment_image_src( $pid, $size_name, $check_dupes );
 		}
 
@@ -664,8 +666,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$this->p->debug->log( 'ngg module is not available: image id ' . $attr_value . ' ignored' );
 					}
 
-					if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
+					if ( $this->p->notice->is_admin_pre_notices() ) {	// Skip if notices already shown.
+
 						$error_msg = __( 'The NGG integration module provided by %1$s is required to read information for image ID %2$s.', 'wpsso' );
+
 						$this->p->notice->err( sprintf( $error_msg, $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'short' ] . ' Pro', $pid ) );
 					}
 
@@ -962,7 +966,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$img_url = apply_filters( $this->p->lca . '_rewrite_image_url', $img_url );
 
-					return self::reset_image_src_args( array( $img_url, $img_width, $img_height, $is_cropped, $pid, $img_alt ) );
+					return self::reset_image_src_args( array( $img_url, $img_width, $img_height, $is_cropped, $pid, $img_alt, $size_name ) );
 				}
 			}
 
@@ -1195,7 +1199,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								$og_single_image[ 'og:image:height' ],
 								$og_single_image[ 'og:image:cropped' ],
 								$og_single_image[ 'og:image:id' ],
-								$og_single_image[ 'og:image:alt' ]
+								$og_single_image[ 'og:image:alt' ],
+								$og_single_image[ 'og:image:size_name' ],
 							) = apply_filters( $filter_name, self::reset_image_src_args(), $attr_value, $size_name, false );
 
 							break;
@@ -1366,9 +1371,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$img_opts = array();
 
 			foreach ( array( 'id', 'id_pre', 'url', 'url:width', 'url:height' ) as $key ) {
+
 				$key_suffix       = $key_num === null ? $key : $key . '_' . $key_num;	// Use a numbered multi-option key.
 				$opt_key          = $opt_img_pre . '_' . $key_suffix;
 				$opt_key_locale   = SucomUtil::get_key_locale( $opt_img_pre . '_' . $key_suffix, $opts );
+
 				$img_opts[ $key ] = empty( $opts[ $opt_key_locale ] ) ? '' : $opts[ $opt_key_locale ];
 			}
 
@@ -1383,12 +1390,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			} elseif ( ! empty( $img_opts[ 'url' ] ) ) {
 
 				$og_single_image = array(
-					'og:image:url'     => $img_opts[ 'url' ],
-					'og:image:width'   => $img_opts[ 'url:width' ] > 0 ? $img_opts[ 'url:width' ] : WPSSO_UNDEF,
-					'og:image:height'  => $img_opts[ 'url:height' ] > 0 ? $img_opts[ 'url:height' ] : WPSSO_UNDEF,
-					'og:image:cropped' => null,
-					'og:image:id'      => null,
-					'og:image:alt'     => null,
+					'og:image:url'       => $img_opts[ 'url' ],
+					'og:image:width'     => $img_opts[ 'url:width' ] > 0 ? $img_opts[ 'url:width' ] : WPSSO_UNDEF,
+					'og:image:height'    => $img_opts[ 'url:height' ] > 0 ? $img_opts[ 'url:height' ] : WPSSO_UNDEF,
+					'og:image:cropped'   => null,
+					'og:image:id'        => null,
+					'og:image:alt'       => null,
+					'og:image:size_name' => $size_name,
 				);
 			}
 

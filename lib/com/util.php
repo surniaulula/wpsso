@@ -1933,6 +1933,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':image:cropped'    => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':image:id'         => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':image:alt'        => '',
+				$mt_pre . ':image:size_name'  => '',	// Non-standard / internal meta tag.
 			);
 
 			return self::maybe_merge_mt_og( $og_ret, $mt_og );

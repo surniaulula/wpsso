@@ -213,11 +213,11 @@ if ( ! function_exists( 'wpsso_get_mod_og_image' ) ) {
  *	[og:image:cropped]    => 1
  *	[og:image:id]         => 1261
  *	[og:image:alt]        => Captain America
+ *	[og:image:size_name]  => wpsso-schema
  * )
  *
- * An image URL may be located in the :secure_url or :url meta tags (or both).
- * An easy way to get the image URL would be to use the get_mt_media_url()
- * method. Example:
+ * An image URL may be located in the :secure_url or :url meta tags (or both). An easy way to get the image URL would be to use the
+ * get_mt_media_url() method. Example:
  *
  * if ( $og_image = wpsso_get_post_og_image( $post_id ) ) {	// Returns false or array.
  * 	$image_url = SucomUtil::get_mt_media_url( $og_image );	// Returns a string.

@@ -1238,12 +1238,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 * Returns an image array:
 			 *
 			 * array(
-			 *	'og:image:url'     => null,
-			 *	'og:image:width'   => null,
-			 *	'og:image:height'  => null,
-			 *	'og:image:cropped' => null,
-			 *	'og:image:id'      => null,
-			 *	'og:image:alt'     => null,
+			 *	'og:image:url'       => null,
+			 *	'og:image:width'     => null,
+			 *	'og:image:height'    => null,
+			 *	'og:image:cropped'   => null,
+			 *	'og:image:id'        => null,
+			 *	'og:image:alt'       => null,
+			 *	'og:image:size_name' => null,
 			 * );
 			 */
 			$og_single_image = $this->p->media->get_opts_single_image( $opts, $size_name, $opt_img_pre );

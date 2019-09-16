@@ -1072,8 +1072,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				) );
 			}
 
-			$og_ret      = array();
-			$num_diff    = SucomUtil::count_diff( $og_ret, $num );
+			$og_ret = array();
+
+			$num_diff = SucomUtil::count_diff( $og_ret, $num );
 
 			$this->p->util->clear_uniq_urls( $size_name );	// Clear cache for $size_name context.
 
@@ -1089,8 +1090,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							$this->p->debug->log( 'exiting early: no attachment image - returning default image' );
 						}
 
-						return array_merge( $og_ret, $this->p->media->get_default_images( $num_diff,
-							$size_name, $check_dupes ) );
+						return array_merge( $og_ret, $this->p->media->get_default_images( $num_diff, $size_name, $check_dupes ) );
 
 					} else {
 						return array_merge( $og_ret, $og_single_image );
@@ -1102,8 +1102,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				 * Allow for empty post id in order to execute featured / attached image filters for modules.
 				 */
 				if ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
-					$og_ret = array_merge( $og_ret, $this->p->media->get_post_images( $num_diff,
-						$size_name, $mod[ 'id' ], $check_dupes, $md_pre ) );
+					$og_ret = array_merge( $og_ret, $this->p->media->get_post_images( $num_diff, $size_name, $mod[ 'id' ], $check_dupes, $md_pre ) );
 				}
 
 				/**
@@ -1151,7 +1150,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$this->p->debug->log( 'checking the content text for images' );
 					}
 
-					$num_diff       = SucomUtil::count_diff( $og_ret, $num );
+					$num_diff = SucomUtil::count_diff( $og_ret, $num );
+
 					$content_images = $this->p->media->get_content_images( $num_diff, $size_name, $mod, $check_dupes );
 
 					if ( ! empty( $content_images ) ) {
@@ -1174,8 +1174,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 
 				if ( empty( $og_ret ) ) {
-					$og_ret = array_merge( $og_ret, $this->p->media->get_default_images( $num_diff,
-						$size_name, $check_dupes ) );
+					$og_ret = array_merge( $og_ret, $this->p->media->get_default_images( $num_diff, $size_name, $check_dupes ) );
 
 				}
 			}
@@ -1194,10 +1193,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$ret       = array();
-			$has_pp    = $this->p->check->pp();
-			$og_images = null;
-			$og_videos = null;
+			$media_info = array();
+			$og_images  = null;
+			$og_videos  = null;
+			$has_pp     = $this->p->check->pp();
 
 			foreach ( $request as $key ) {
 
@@ -1252,79 +1251,79 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						// no break - fall through
 
 						if ( $og_videos !== null ) {
-							$ret[ $key ] = $this->get_media_value( $og_videos, $get_mt_name );
+							$media_info[ $key ] = $this->get_media_value( $og_videos, $get_mt_name );
 						}
 
-						if ( empty( $ret[ $key ] ) ) {
-							$ret[ $key ] = $this->get_media_value( $og_images, $get_mt_name );
+						if ( empty( $media_info[ $key ] ) ) {
+							$media_info[ $key ] = $this->get_media_value( $og_images, $get_mt_name );
 						}
 
 						/**
 						 * If there's no image, and no video preview image, then add
 						 * the default image for singular (aka post) webpages.
 						 */
-						if ( empty( $ret[ $key ] ) && $mod[ 'is_post' ] ) {
+						if ( empty( $media_info[ $key ] ) && $mod[ 'is_post' ] ) {
 
 							$og_images = $this->p->media->get_default_images( $num = 1, $size_name, $check_dupes = false );
 
-							$ret[ $key ] = $this->get_media_value( $og_images, $get_mt_name );
+							$media_info[ $key ] = $this->get_media_value( $og_images, $get_mt_name );
 						}
 
 						break;
 
 					case 'img_alt':
 
-						$ret[ $key ] = $this->get_media_value( $og_images, $mt_pre . ':image:alt' );
+						$media_info[ $key ] = $this->get_media_value( $og_images, $mt_pre . ':image:alt' );
 
 						break;
 
 					case 'video':
 					case 'vid_url':
 
-						$ret[ $key ] = $this->get_media_value( $og_videos, $mt_pre . ':video' );
+						$media_info[ $key ] = $this->get_media_value( $og_videos, $mt_pre . ':video' );
 
 						break;
 
 					case 'vid_type':
 
-						$ret[ $key ] = $this->get_media_value( $og_videos, $mt_pre . ':video:type' );
+						$media_info[ $key ] = $this->get_media_value( $og_videos, $mt_pre . ':video:type' );
 
 						break;
 
 					case 'vid_title':
 
-						$ret[ $key ] = $this->get_media_value( $og_videos, $mt_pre . ':video:title' );
+						$media_info[ $key ] = $this->get_media_value( $og_videos, $mt_pre . ':video:title' );
 
 						break;
 
 					case 'vid_desc':
 
-						$ret[ $key ] = $this->get_media_value( $og_videos, $mt_pre . ':video:description' );
+						$media_info[ $key ] = $this->get_media_value( $og_videos, $mt_pre . ':video:description' );
 
 						break;
 
 					case 'vid_width':
 
-						$ret[ $key ] = $this->get_media_value( $og_videos, $mt_pre . ':video:width' );
+						$media_info[ $key ] = $this->get_media_value( $og_videos, $mt_pre . ':video:width' );
 
 						break;
 
 					case 'vid_height':
 
-						$ret[ $key ] = $this->get_media_value( $og_videos, $mt_pre . ':video:height' );
+						$media_info[ $key ] = $this->get_media_value( $og_videos, $mt_pre . ':video:height' );
 
 						break;
 
 					case 'prev_url':
 					case 'preview':
 
-						$ret[ $key ] = $this->get_media_value( $og_videos, $mt_pre . ':video:thumbnail_url' );
+						$media_info[ $key ] = $this->get_media_value( $og_videos, $mt_pre . ':video:thumbnail_url' );
 
 						break;
 
 					default:
 
-						$ret[ $key ] = '';
+						$media_info[ $key ] = '';
 
 						break;
 				}
@@ -1333,10 +1332,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( $ret );
+				$this->p->debug->log( $media_info );
 			}
 
-			return $ret;
+			return $media_info;
 		}
 
 		public function get_media_value( $mt_og, $mt_media_pre ) {
