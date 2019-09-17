@@ -468,6 +468,7 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 	* Added a lib/oembed.php library file (methods to be added in v6.4.0).
 	* Removed the lib/noscript.php library file.
 	* Removed the lib/schema-cache.php library file (Deprecated).
+	* Updated the SuextMobileDetect class from https://github.com/serbanghita/Mobile-Detect v2.8.28 to v2.8.33.
 
 **Version 6.2.0 (2019/09/07)**
 
