@@ -16,9 +16,9 @@
 <p style="margin:0;"><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
 
 <blockquote>
-  <p>**<a href="https://wordpress.org/plugins/wpsso-schema-json-ld/#developers">Coming in WPSSO JSON v2.9.0</a>:</p>
+  <p><a href="https://wordpress.org/plugins/wpsso-schema-json-ld/#developers">Coming soon in the WPSSO JSON v2.9.0 add-on</a>:</p>
   
-  <p>Automatically includes Schema Article AMP 1:1, 4:3, and 16:9 image sizes for Google (see <a href="https://developers.google.com/search/docs/data-types/article#amp-sd">Google's Article AMP with structured data guidelines</a> for details).**</p>
+  <p>Automatically includes Schema Article AMP 1:1, 4:3, and 16:9 image sizes for Google (see <a href="https://developers.google.com/search/docs/data-types/article#amp-sd">Google's Article AMP with structured data guidelines</a> for details).</p>
 </blockquote>
 
 <p><strong>WPSSO Core makes sure your content looks great on <em>social and search sites</em> -- no matter how URLs are crawled, shared, re-shared, posted, or embedded:</strong></p>

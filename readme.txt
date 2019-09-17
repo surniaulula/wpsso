@@ -19,9 +19,9 @@ WPSSO Core makes sure your content looks great on all social and search sites, n
 
 <p style="margin:0;"><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
 
-> **[Coming in WPSSO JSON v2.9.0](https://wordpress.org/plugins/wpsso-schema-json-ld/#developers):
+> [Coming soon in the WPSSO JSON v2.9.0 add-on](https://wordpress.org/plugins/wpsso-schema-json-ld/#developers):
 > 
-> Automatically includes Schema Article AMP 1:1, 4:3, and 16:9 image sizes for Google (see [Google's Article AMP with structured data guidelines](https://developers.google.com/search/docs/data-types/article#amp-sd) for details).**
+> Automatically includes Schema Article AMP 1:1, 4:3, and 16:9 image sizes for Google (see [Google's Article AMP with structured data guidelines](https://developers.google.com/search/docs/data-types/article#amp-sd) for details).
 
 **WPSSO Core makes sure your content looks great on *social and search sites* -- no matter how URLs are crawled, shared, re-shared, posted, or embedded:**
 
