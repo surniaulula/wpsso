@@ -58,7 +58,7 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 
 * Provides meta tags and markup for posts, pages, custom post types, tags, categories, custom taxonomy / terms, user profile pages, search pages, and attachment pages.
 
-* Optinally customize the Open Graph type "article", "place", "product", or "website" for each individual posts, pages, custom post types, etc.
+* Customize the Open Graph type "article", "place", "product", or "website" for each individual posts, pages, custom post types, etc.
 
 * Uses images from numerous sources, including featured, attached, gallery shortcode, images from HTML tags, or a custom fallback image.
 
@@ -66,7 +66,7 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 
 * Contextual help for *every* plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/).
 
-* Built-in support for [Accelerated Mobile Pages (AMP)](https://wordpress.org/plugins/amp/) and [AMP for WP - Accelerated Mobile Pages](https://wordpress.org/plugins/accelerated-mobile-pages/) plugins.
+* Built-in support for [AMP](https://wordpress.org/plugins/amp/), [Better AMP](https://wordpress.org/plugins/better-amp/), and [AMP for WP](https://wordpress.org/plugins/accelerated-mobile-pages/) plugins.
 
 * Supports advanced WordPress configurations, including [WordPress Network / Multisite installations](https://wpsso.com/docs/plugins/wpsso/notes/multisite-network-support/) and WordPress MU Domain Mapping.
 
@@ -462,7 +462,7 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added checks for [AMP](https://wordpress.org/plugins/amp/), [Better AMP](https://wordpress.org/plugins/better-amp/), and [Accelerated Mobile Pages](https://wordpress.org/plugins/accelerated-mobile-pages/) plugins in WpssoCheck::get_avail().
+	* Added checks for [AMP](https://wordpress.org/plugins/amp/), [Better AMP](https://wordpress.org/plugins/better-amp/), and [AMP for WP](https://wordpress.org/plugins/accelerated-mobile-pages/) plugins in WpssoCheck::get_avail().
 	* Added an 'image' input type in the SucomForm::get_mixed_multi() method for WPSSO JSON v2.9.0.
 	* Added a lib/schema-noscript.php library file with a single filter for aggregate rating markup (replaces the lib/noscript.php library file).
 	* Added a lib/oembed.php library file (methods to be added in v6.4.0).
