@@ -434,7 +434,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.3.0-b.2 (2019/09/16)**
+**Version 6.4.0-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Updated the WordPress oEmbed markup image and title with the custom Open Graph image and title.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+
+**Version 6.3.0-rc.1 (2019/09/17)**
 
 New Schema Article AMP image sizes for the WPSSO JSON add-on.
 
@@ -454,6 +465,7 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 	* Added checks for [AMP](https://wordpress.org/plugins/amp/), [Better AMP](https://wordpress.org/plugins/better-amp/), and [Accelerated Mobile Pages](https://wordpress.org/plugins/accelerated-mobile-pages/) plugins in WpssoCheck::get_avail().
 	* Added an 'image' input type in the SucomForm::get_mixed_multi() method for WPSSO JSON v2.9.0.
 	* Added a lib/schema-noscript.php library file with a single filter for aggregate rating markup (replaces the lib/noscript.php library file).
+	* Added a lib/oembed.php library file (methods to be added in v6.4.0).
 	* Removed the lib/noscript.php library file.
 	* Removed the lib/schema-cache.php library file (Deprecated).
 
@@ -541,9 +553,9 @@ New resized image file names now include custom crop locations (top, botton, lef
 
 == Upgrade Notice ==
 
-= 6.3.0-b.2 =
+= 6.3.0-rc.1 =
 
-(2019/09/16) Added new Schema Article AMP image dimensions for Google (WPSSO JSON add-on required). Added a new "Notification System" option. Removed the "Meta Property Container" option.
+(2019/09/17) Added new Schema Article AMP image dimensions for Google (WPSSO JSON add-on required). Added a new "Notification System" option. Removed the "Meta Property Container" option.
 
 = 6.2.0 =
 
