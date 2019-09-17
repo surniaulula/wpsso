@@ -238,8 +238,23 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				656 => array(
 					'og_vid_https' => '',
 				),
-				666 => array(
+				667 => array(
 					'schema_add_noscript' => '',
+					'schema_article_amp1x1_img_width'   => 'schema_article_1_1_img_width',
+					'schema_article_amp1x1_img_height'  => 'schema_article_1_1_img_height',
+					'schema_article_amp1x1_img_crop'    => 'schema_article_1_1_img_crop',
+					'schema_article_amp1x1_img_crop_x'  => 'schema_article_1_1_img_crop_x',
+					'schema_article_amp1x1_img_crop_y'  => 'schema_article_1_1_img_crop_y',
+					'schema_article_amp4x3_img_width'   => 'schema_article_4_3_img_width',
+					'schema_article_amp4x3_img_height'  => 'schema_article_4_3_img_height',
+					'schema_article_amp4x3_img_crop'    => 'schema_article_4_3_img_crop',
+					'schema_article_amp4x3_img_crop_x'  => 'schema_article_4_3_img_crop_x',
+					'schema_article_amp4x3_img_crop_y'  => 'schema_article_4_3_img_crop_y',
+					'schema_article_amp16x9_img_width'  => 'schema_article_16_9_img_width',
+					'schema_article_amp16x9_img_height' => 'schema_article_16_9_img_height',
+					'schema_article_amp16x9_img_crop'   => 'schema_article_16_9_img_crop',
+					'schema_article_amp16x9_img_crop_x' => 'schema_article_16_9_img_crop_x',
+					'schema_article_amp16x9_img_crop_y' => 'schema_article_16_9_img_crop_y',
 				),
 			),
 		);

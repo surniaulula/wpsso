@@ -1310,12 +1310,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-					case 'tooltip-schema_article_amp1x1_img_size':		// Schema Article AMP 1:1 Img Size.
-					case 'tooltip-schema_article_amp4x3_img_size':		// Schema Article AMP 4:3 Img Size.
-					case 'tooltip-schema_article_amp16x9_img_size':		// Schema Article AMP 16:9 Img Size.
+					case 'tooltip-schema_article_1_1_img_size':		// Schema Article AMP 1:1 Img Size.
+					case 'tooltip-schema_article_4_3_img_size':		// Schema Article AMP 4:3 Img Size.
+					case 'tooltip-schema_article_16_9_img_size':		// Schema Article AMP 16:9 Img Size.
 	
-						$opt_pre      = preg_replace( '/^tooltip-(.*_img)_size$/', '$1', $msg_key );
-						$opt_ratio    = preg_replace( '/^.*_amp([0-9]+)x([0-9]+)_.*$/', '$1:$2', $msg_key );
+						$opt_pre      = preg_replace( '/^tooltip-(schema_article_.*_img)_size$/', '$1', $msg_key );
+						$opt_ratio    = preg_replace( '/^schema_article_([0-9]+)_([0-9]+)_img$/', '$1:$2', $opt_pre );
 						$def_img_dims = $this->get_def_img_dims( $opt_pre );
 
 						$text = sprintf( __( 'The AMP %1$s image dimensions for Schema Article JSON-LD markup (the default dimensions are %2$s).', 'wpsso' ), $opt_ratio, $def_img_dims ) . ' ';
