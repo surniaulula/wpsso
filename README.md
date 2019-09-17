@@ -16,18 +16,18 @@
 <p style="margin:0;"><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
 
 <blockquote>
-  <p><a href="https://wordpress.org/plugins/wpsso-schema-json-ld/#developers">Coming soon in the WPSSO JSON v2.9.0 add-on</a>:</p>
+  <p><a href="https://wordpress.org/plugins/wpsso-schema-json-ld/#developers">Coming soon in the Schema JSON-LD Markup v2.9.0 add-on</a>:</p>
   
-  <p>Automatically includes Schema Article AMP 1:1, 4:3, and 16:9 image sizes for Google (see <a href="https://developers.google.com/search/docs/data-types/article#amp-sd">Google's Article AMP with structured data guidelines</a> for details).</p>
+  <p>Automatically provides Schema Article AMP 1:1, 4:3, and 16:9 image sizes for Google (see <a href="https://developers.google.com/search/docs/data-types/article#amp-sd">Google's Article AMP with structured data guidelines</a> for details).</p>
 </blockquote>
 
-<p><strong>WPSSO Core makes sure your content looks great on <em>social and search sites</em> -- no matter how URLs are crawled, shared, re-shared, posted, or embedded:</strong></p>
+<p><strong>WPSSO Core is fast, simple and makes sure your content looks great on <em>social and search sites</em> -- no matter how URLs are crawled, shared, re-shared, posted, or embedded:</strong></p>
 
-<p>WPSSO Core for WordPress is fast, simple, and provides complete information about your webpage content to social sites (Facebook, Pinterest, Twitter, LinkedIn, etc.), search crawlers (Google, Bing, etc.), mail and messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), and embedded objects / iframes.</p>
+<p>WPSSO Core provides complete information about your webpage content to social sites (Facebook, Pinterest, Twitter, LinkedIn, etc.), search crawlers (Google, Bing, etc.), mail and messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), and embedded objects / iframes.</p>
 
 <p><strong>Uses your <em>existing WordPress content</em> for meta tags and Schema markup:</strong></p>
 
-<p>There's no need to manually select meta tag names, re-enter descriptions, titles, product information, select images / videos, etc. &mdash; WPSSO Core reads your existing post, page, product, media, recipe, event, forum, and SEO content automatically, and offers fine-tuning and customization options for just about anything and everything. ;-)</p>
+<p>There's no need to manually enter descriptions, titles, product information, select images / videos, etc. &mdash; WPSSO Core reads your existing post, page, product, media, recipe, event, forum, and SEO content automatically, and offers fine-tuning and customization options for just about anything and everything. ;-)</p>
 
 <p>WPSSO Core is also language / locale aware, which means you can customize your site information, social page URLs and Knowledge Graph for different languages.</p>
 
