@@ -449,7 +449,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* None.
 
-**Version 6.3.0-rc.1 (2019/09/17)**
+**Version 6.3.0 (2019/09/17)**
 
 New Schema Article AMP image sizes for the WPSSO JSON add-on.
 
@@ -558,11 +558,7 @@ New resized image file names now include custom crop locations (top, botton, lef
 
 == Upgrade Notice ==
 
-= 6.3.0-rc.1 =
+= 6.3.0 =
 
 (2019/09/17) Added new Schema Article AMP image dimensions for Google (WPSSO JSON add-on required). Added a new "Notification System" option. Removed the "Meta Property Container" option.
-
-= 6.2.0 =
-
-(2019/09/07) Added support for sale prices, product variations, and product attributes in the WP eCommerce integration module (Premium version).
 
