@@ -1621,8 +1621,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-custom-cm-field-label':
 
-							$text = sprintf( __( 'The <em>%1$s</em> column is for display purposes only and can be changed as you wish.', 'wpsso' ),
-								_x( 'Contact Field Label', 'column title', 'wpsso' ) );
+							$text = sprintf( __( 'The <em>%1$s</em> column is for display purposes only and can be changed as you wish.', 'wpsso' ), _x( 'Contact Field Label', 'column title', 'wpsso' ) );
 
 							break;
 

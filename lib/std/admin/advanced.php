@@ -480,7 +480,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 				$cm_enabled_key = 'plugin_cm_' . $opt_pre . '_enabled';
 				$cm_name_key    = 'plugin_cm_' . $opt_pre . '_name';
-				$cm_label_key   = SucomUtil::get_key_value( 'plugin_cm_' . $opt_pre . '_label', $form->options );
+				$cm_label_key   = SucomUtil::get_key_locale( 'plugin_cm_' . $opt_pre . '_label', $form->options );
 
 				/**
 				 * Not all social sites have a contact method field.
@@ -517,7 +517,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$table_rows[] = $tr_html . $form->get_th_html( $opt_label, 'medium' ) . 
 				$form->get_td_no_checkbox( $cm_enabled_key, '', true ) . 
 				'<td class="blank medium">' . $form->get_no_input( $cm_name_key, 'medium' ) . '</td>' . 
-				'<td class="blank wide">' . $form->get_no_input_value( $cm_label_key ) . '</td>';
+				'<td class="blank wide">' . $form->get_no_input( $cm_label_key ) . '</td>';
 			}
 
 			return $table_rows;
@@ -546,8 +546,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 				$cm_enabled_key = 'wp_cm_' . $cm_id . '_enabled';
 				$cm_name_key = 'wp_cm_' . $cm_id . '_name';
-				$cm_label_key = SucomUtil::get_key_value( 'wp_cm_' . $cm_id . '_label', $form->options );
-
+				$cm_label_key = SucomUtil::get_key_locale( 'wp_cm_' . $cm_id . '_label', $form->options );
 				/**
 				 * Not all social websites have a contact method field.
 				 */
