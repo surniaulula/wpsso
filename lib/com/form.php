@@ -962,9 +962,9 @@ EOF;
 				$html .= empty( $input_id ) ? '' : ' id="text_' . esc_attr( $input_id ) . '"';
 
 				/**
-				 * Only show a placeholder and value for the first input field.
+				 * Only show a placeholder and value for input field 0.
 				 */
-				if ( $key_num > 0 ) {
+				if ( ! $key_num ) {
 
 					if ( $placeholder ) {
 						$html .= ' placeholder="' . esc_attr( $placeholder ) . '"';

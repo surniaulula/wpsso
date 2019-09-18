@@ -1628,8 +1628,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-wp-cm-field-id':
 
-							$text = sprintf( __( 'The built-in WordPress <em>%1$s</em> column cannot be modified.', 'wpsso' ),
-								_x( 'Contact Field ID', 'column title', 'wpsso' ) );
+							$text = sprintf( __( 'The built-in WordPress <em>%1$s</em> column cannot be modified.', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ) );
 
 							break;
 
