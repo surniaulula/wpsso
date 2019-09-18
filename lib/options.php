@@ -300,6 +300,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 								'plugin_clean_on_uninstall',
 								'plugin_debug',
 								'plugin_show_opts',
+								'plugin_check_img_dims',
 							) as $opt_key ) {
 								unset( $advanced_opts[ $opt_key ] );
 							}
