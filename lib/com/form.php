@@ -143,7 +143,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$input_checked = checked( $force, 1, false );
 			} elseif ( $this->in_options( $name ) ) {
 				$input_checked = checked( $this->options[ $name ], 1, false );
-			} elseif ( $this->in_defaults( $name ) ) {	// Returns true or false.
+			} elseif ( $this->in_defaults( $name ) ) {
 				$input_checked = checked( $this->defaults[ $name ], 1, false );
 			} else {
 				$input_checked = '';
