@@ -19,7 +19,7 @@ WPSSO Core makes sure your content looks great on all social and search sites, n
 
 <p style="margin:0;"><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
 
-> [Coming soon in the Schema JSON-LD Markup v2.9.0 add-on](https://wordpress.org/plugins/wpsso-schema-json-ld/#developers):
+> [NEW in the Schema JSON-LD Markup v2.9.0 add-on](https://wordpress.org/plugins/wpsso-schema-json-ld/#developers):
 > 
 > Automatically provides Schema Article AMP 1:1, 4:3, and 16:9 image sizes for Google (see [Google's Article AMP with structured data guidelines](https://developers.google.com/search/docs/data-types/article#amp-sd) for details).
 
