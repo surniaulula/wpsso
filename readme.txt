@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires At Least: 3.9
 Tested Up To: 5.2.3
 WC Tested Up To: 3.7.0
-Stable Tag: 6.3.0
+Stable Tag: 6.3.1
 
 WPSSO Core makes sure your content looks great on all social and search sites, no matter how URLs are crawled, shared, re-shared, posted or embedded!
 
@@ -449,7 +449,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* None.
 
-**Version 6.3.0 (2019/09/17)**
+**Version 6.3.1 (2019/09/17)**
 
 New Schema Article AMP image sizes for the WPSSO JSON add-on.
 
@@ -558,7 +558,7 @@ New resized image file names now include custom crop locations (top, botton, lef
 
 == Upgrade Notice ==
 
-= 6.3.0 =
+= 6.3.1 =
 
 (2019/09/17) Added new Schema Article AMP image dimensions for Google (WPSSO JSON add-on required). Added a new "Notification System" option. Removed the "Meta Property Container" option.
 
