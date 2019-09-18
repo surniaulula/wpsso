@@ -18,7 +18,7 @@
 <blockquote>
   <p><a href="https://wordpress.org/plugins/wpsso-schema-json-ld/#developers">NEW in the Schema JSON-LD Markup v2.9.0 add-on</a>:</p>
   
-  <p>Automatically provides Schema Article AMP 1:1, 4:3, and 16:9 image sizes for Google (see <a href="https://developers.google.com/search/docs/data-types/article#amp-sd">Google's Article AMP with structured data guidelines</a> for details).</p>
+  <p>Automatically provides Schema Article AMP 1:1, 4:3, and 16:9 image sizes for Google (see <a href="https://developers.google.com/search/docs/data-types/article#amp-sd">Google's Article AMP structured data guidelines</a> for details).</p>
 </blockquote>
 
 <p><strong>WPSSO Core is fast, simple and makes sure your content looks great on <em>social and search sites</em> -- no matter how URLs are crawled, shared, re-shared, posted, or embedded:</strong></p>
