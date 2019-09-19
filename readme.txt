@@ -449,6 +449,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* None.
 
+**Version 6.3.2-dev.1 (2019/09/19)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed the "Select Image" button to trigger a jQuery `change()` event on the image ID input field.
+* **Developer Notes**
+	* None.
+
 **Version 6.3.1 (2019/09/17)**
 
 New Schema Article AMP image sizes for the WPSSO JSON add-on.
@@ -557,6 +568,10 @@ New resized image file names now include custom crop locations (top, botton, lef
 	* Removed the `WpssoUtil::get_force_regen_key()` method.
 
 == Upgrade Notice ==
+
+= 6.3.2-dev.1 =
+
+(2019/09/19) Fixed the "Select Image" button to trigger a jQuery `change()` event on the image ID input field.
 
 = 6.3.1 =
 
