@@ -449,7 +449,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* None.
 
-**Version 6.3.2-dev.1 (2019/09/19)**
+**Version 6.3.2-dev.2 (2019/09/19)**
 
 * **New Features**
 	* None.
@@ -569,7 +569,7 @@ New resized image file names now include custom crop locations (top, botton, lef
 
 == Upgrade Notice ==
 
-= 6.3.2-dev.1 =
+= 6.3.2-dev.2 =
 
 (2019/09/19) Fixed the "Select Image" button to trigger a jQuery `change()` event on the image ID input field.
 
