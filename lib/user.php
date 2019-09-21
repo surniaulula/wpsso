@@ -529,12 +529,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				$mod = $this->get_mod( $user_id );
 
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log_arr( '$mod', $mod );
-				}
-
 				$head_meta_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache = true );
-
 				$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
 			}
 
@@ -574,20 +569,27 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			switch ( $screen->id ) {
+
 				case 'profile':		// User profile page.
 				case 'user-edit':	// User editing page.
 				case ( strpos( $screen->id, 'profile_page_' ) === 0 ? true : false ):		// Your profile page.
 				case ( strpos( $screen->id, 'users_page_' . $this->p->lca ) === 0 ? true : false ):	// Custom social settings page.
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'screen id can show metabox' );
 					}
+
 					break;
+
 				default:
+
 					return;
+
 					break;
 			}
 
 			$user_id = SucomUtil::get_user_object( false, 'id' );
+
 			$mod = $this->get_mod( $user_id );
 
 			if ( $this->p->debug->enabled ) {

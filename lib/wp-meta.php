@@ -431,13 +431,13 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				case $this->p->cf[ 'meta' ][ 'id' ]:
 
-					$tabs[ 'edit' ]     = _x( 'Customize', 'metabox tab', 'wpsso' );
+					$tabs[ 'edit' ] = _x( 'Customize', 'metabox tab', 'wpsso' );
 
 					/**
 					 * Exclude the 'Priority Media' tab from attachment editing pages.
 					 */
 					if ( $mod[ 'post_type' ] !== 'attachment' ) {
-						$tabs[ 'media' ]    = _x( 'Priority Media', 'metabox tab', 'wpsso' );
+						$tabs[ 'media' ] = _x( 'Priority Media', 'metabox tab', 'wpsso' );
 					}
 
 					$tabs[ 'preview' ]  = _x( 'Preview', 'metabox tab', 'wpsso' );
@@ -611,7 +611,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $table_rows;
 		}
 
-		public function get_rows_head_tab( &$form, &$head_info, $mod ) {
+		public function get_rows_head_tab( $form, $head_info, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -702,7 +702,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $table_rows;
 		}
 
-		public function get_rows_validate_tab( &$form, &$head_info, $mod ) {
+		public function get_rows_validate_tab( $form, $head_info, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -772,6 +772,37 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			}
 
 			return $table_rows;
+		}
+
+		public function get_head_info( $obj_id, $read_cache = true ) {
+
+			static $local_cache = array();
+
+			$class = get_called_class();
+
+			/**
+			 * Must be called from a class that extends WpssoWpMeta.
+			 */
+			if ( __CLASS__ === $class ) {
+				return array();
+			}
+
+			/**
+			 * The cache index is unique per extended class.
+			 */
+			if ( isset( $local_cache[ $class ][ $obj_id ] ) ) {
+				return $local_cache[ $class ][ $obj_id ];
+			}
+		
+			/**
+			 * Get the post, term, or user $mod array.
+			 */
+			$mod = $this->get_mod( $obj_id );
+
+			$head_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache );
+			$head_info = $this->p->head->extract_head_info( $mod, $head_tags );
+
+			return $local_cache[ $class ][ $obj_id ] = $head_info;
 		}
 
 		/**

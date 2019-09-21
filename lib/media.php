@@ -772,7 +772,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			/**
 			 * Only resize our own custom image sizes.
 			 */
-			if ( ! $use_full && strpos( $size_name, $this->p->lca . '-' ) === 0 ) {
+			if ( ! $use_full && 0 === strpos( $size_name, $this->p->lca . '-' ) ) {
 
 				$is_accurate_filename = false;
 				$is_accurate_width    = false;

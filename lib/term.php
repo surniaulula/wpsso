@@ -522,12 +522,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				$mod = $this->get_mod( $term_id );
 
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log_arr( '$mod', $mod );
-				}
-
 				$head_meta_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache = true );
-
 				$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
 			}
 
@@ -560,10 +555,15 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			switch ( $screen->id ) {
+
 				case 'edit-' . $this->query_tax_slug:
+
 					break;
+
 				default:
+
 					return;
+
 					break;
 			}
 
