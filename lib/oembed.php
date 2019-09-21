@@ -31,7 +31,7 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 			//add_filter( 'embed_html', array( $this, 'post_embed_html' ), PHP_INT_MAX, 4 );
 
 			/**
-			 * Filters called in the loop.
+			 * Filters that are called in the loop.
 			 */
 			add_filter( 'embed_thumbnail_id', array( $this, 'the_embed_thumbnail_id' ), PHP_INT_MAX, 1 );
 			add_filter( 'embed_thumbnail_image_size', array( $this, 'the_embed_thumbnail_image_size' ), PHP_INT_MAX, 2 );
@@ -40,7 +40,7 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 		}
 
 		/**
-		 * Default $data array created by WordPress: 
+		 * Filters the oEmbed response data. 
 		 *
 		 * $data = array(
 		 *	'version'       => '1.0',
@@ -109,9 +109,7 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 		/**
 		 * Filters the embed HTML output for a given post.
 		 */
-		public function post_embed_html( $html, $post = null, $width, $height ) {
-
-			//$post = get_post( $post );
+		public function post_embed_html( $html, $post, $width, $height ) {
 
 			return $html;
 		}
