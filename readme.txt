@@ -438,23 +438,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.4.0-dev.1 (TBD)**
+**Version 6.4.0-dev.1 (2019/09/21)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Updated the WordPress oEmbed markup image and title with the custom Open Graph image and title.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* None.
-
-**Version 6.3.2-dev.2 (2019/09/19)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
+	* Updated WordPress oEmbed data and HTML markup with the Open Graph image, title, and description.
 * **Bugfixes**
 	* Fixed the "Select Image" button to trigger a jQuery `change()` event on the image ID input field.
 * **Developer Notes**
@@ -569,9 +558,9 @@ New resized image file names now include custom crop locations (top, botton, lef
 
 == Upgrade Notice ==
 
-= 6.3.2-dev.2 =
+= 6.4.0-dev.3 =
 
-(2019/09/19) Fixed the "Select Image" button to trigger a jQuery `change()` event on the image ID input field.
+(2019/09/21) Updated WordPress oEmbed data and HTML markup with the Open Graph image, title, and description.
 
 = 6.3.1 =
 
