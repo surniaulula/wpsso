@@ -60,9 +60,9 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 
 * *Complete and accurate* meta tags for all social sites, search engines, web browser extensions, mail and messaging apps, and embedded object / iframe content.
 
-* Provides meta tags and markup for posts, pages, custom post types, tags, categories, custom taxonomy / terms, user profile pages, search pages, and attachment pages.
+* Updates the WordPress oEmbed response data and HTML markup with the Open Graph title, description, and image.
 
-* Customize the Open Graph type "article", "place", "product", or "website" for each individual posts, pages, custom post types, etc.
+* Provides meta tags and markup for posts, pages, custom post types, tags, categories, custom taxonomy / terms, user profile pages, search pages, and attachment pages.
 
 * Uses images from numerous sources, including featured, attached, gallery shortcode, images from HTML tags, or a custom fallback image.
 
