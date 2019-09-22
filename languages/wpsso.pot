@@ -111,7 +111,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:1035 lib/post.php:787 lib/term.php:643 lib/user.php:667
+#: lib/admin.php:1035 lib/post.php:786 lib/term.php:643 lib/user.php:667
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -1156,7 +1156,7 @@ msgctxt "option comment"
 msgid "from"
 msgstr ""
 
-#: lib/com/form.php:1889 lib/gettext-com.php:25 lib/post.php:1382
+#: lib/com/form.php:1889 lib/gettext-com.php:25 lib/post.php:1379
 #: lib/wp-meta.php:504 lib/wp-meta.php:634
 msgid "Save a draft version or publish to update this value."
 msgstr ""
@@ -1173,7 +1173,7 @@ msgstr ""
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:425 lib/gettext-com.php:31 lib/post.php:1577
+#: lib/com/notice.php:425 lib/gettext-com.php:31 lib/post.php:1574
 msgid "Edit"
 msgstr ""
 
@@ -5832,177 +5832,177 @@ msgid ""
 "children of post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:732 lib/post.php:1304
+#: lib/post.php:731 lib/post.php:1302
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/post.php:922
+#: lib/post.php:921
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:952
+#: lib/post.php:951
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:954
+#: lib/post.php:953
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:955
+#: lib/post.php:954
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:980
+#: lib/post.php:979
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:982
+#: lib/post.php:981
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:984
+#: lib/post.php:983
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:985
+#: lib/post.php:984
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:997 lib/util.php:1839
+#: lib/post.php:996 lib/util.php:1839
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1010
+#: lib/post.php:1009
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1023
+#: lib/post.php:1022
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1036
+#: lib/post.php:1035
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1058
+#: lib/post.php:1057
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:1096
+#: lib/post.php:1095
 msgid ""
 "The webpage at %1$s includes only basic (and incomplete) Schema JSON-LD "
 "product markup added by the WooCommerce plugin."
 msgstr ""
 
-#: lib/post.php:1098 lib/post.php:1122
+#: lib/post.php:1097 lib/post.php:1121
 msgid ""
 "Complete and accurate Schema JSON-LD markup is highly recommended for better "
 "ranking and click-through in Google search results."
 msgstr ""
 
-#: lib/post.php:1100
+#: lib/post.php:1099
 msgid ""
 "You should consider purchasing the %1$s %2$s add-on to include better Schema "
 "JSON-LD markup for WooCommerce products."
 msgstr ""
 
-#: lib/post.php:1120
+#: lib/post.php:1119
 msgid "The webpage at %1$s does not include any Schema JSON-LD script(s)."
 msgstr ""
 
-#: lib/post.php:1124
+#: lib/post.php:1123
 msgid ""
 "You should consider activating the %1$s add-on to include Schema JSON-LD "
 "markup in the webpage for Google."
 msgstr ""
 
-#: lib/post.php:1140
+#: lib/post.php:1139
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:1156
+#: lib/post.php:1155
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1156
+#: lib/post.php:1155
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML &mdash; review the <a href=\"%1$s\">W3C Markup Validation "
 "Service</a> results and correct any errors."
 msgstr ""
 
-#: lib/post.php:1156
+#: lib/post.php:1155
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:1188
+#: lib/post.php:1187
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1189
+#: lib/post.php:1188
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1195
+#: lib/post.php:1194
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1198
+#: lib/post.php:1197
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1200
+#: lib/post.php:1199
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1567 lib/script.php:242
+#: lib/post.php:1564 lib/script.php:242
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1578
+#: lib/post.php:1575
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1589
+#: lib/post.php:1586
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1590
+#: lib/post.php:1587
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1591
+#: lib/post.php:1588
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1592
+#: lib/post.php:1589
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1668
+#: lib/post.php:1665
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 

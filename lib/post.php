@@ -728,8 +728,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( $mod[ 'post_status' ] === 'publish' ) {
 
-						$this->p->util->maybe_set_ref( WpssoWpMeta::$head_info[ 'og:url' ], $mod,
-							__( 'checking meta tags', 'wpsso' ) );
+						$this->p->util->maybe_set_ref( WpssoWpMeta::$head_info[ 'og:url' ], $mod, __( 'checking meta tags', 'wpsso' ) );
 
 						/**
 						 * Check for missing open graph image and description values.
@@ -1300,9 +1299,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $mod[ 'post_status' ] === 'publish' ) {
 
-				$this->p->util->maybe_set_ref( WpssoWpMeta::$head_info[ 'og:url' ], $mod,
-					__( 'checking meta tags', 'wpsso' ) );
-
+				$this->p->util->maybe_set_ref( WpssoWpMeta::$head_info[ 'og:url' ], $mod, __( 'checking meta tags', 'wpsso' ) );
 
 				/**
 				 * Check for missing open graph image and description values.
