@@ -434,7 +434,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.4.0-b.1 (2019/09/22)**
+**Version 6.4.0-rc.1 (2019/09/22)**
 
 * **New Features**
 	* None.
@@ -555,7 +555,7 @@ New resized image file names now include custom crop locations (top, botton, lef
 
 == Upgrade Notice ==
 
-= 6.4.0-b.1 =
+= 6.4.0-rc.1 =
 
 (2019/09/22) Added a 'oEmbed' tab in the Document SSO metabox to show the oEmbed data and oEmbed HTML. Improved WordPress oEmbed data and HTML markup with the Open Graph image, title, and description.
 
