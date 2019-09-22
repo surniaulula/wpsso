@@ -26,17 +26,16 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 			/**
 			 * Filters that receive a $post object.
 			 */
-			add_filter( 'oembed_response_data', array( $this, 'post_oembed_response_data' ), PHP_INT_MAX - 1, 4 );
-			add_filter( 'oembed_response_data', array( $this, 'post_oembed_response_data_rich' ), PHP_INT_MAX, 4 );
-			//add_filter( 'embed_html', array( $this, 'post_embed_html' ), PHP_INT_MAX, 4 );
+			add_filter( 'oembed_response_data', array( $this, 'post_oembed_response_data' ), 10000, 4 );
+			add_filter( 'oembed_response_data', array( $this, 'post_oembed_response_data_rich' ), 11000, 4 );
 
 			/**
 			 * Filters that are called in the loop.
 			 */
-			add_filter( 'embed_thumbnail_id', array( $this, 'the_embed_thumbnail_id' ), PHP_INT_MAX, 1 );
-			add_filter( 'embed_thumbnail_image_size', array( $this, 'the_embed_thumbnail_image_size' ), PHP_INT_MAX, 2 );
-			add_filter( 'embed_thumbnail_image_shape', array( $this, 'the_embed_thumbnail_image_shape' ), PHP_INT_MAX, 2 );
-			add_filter( 'the_excerpt_embed', array( $this, 'the_embed_excerpt' ), PHP_INT_MAX, 1 );
+			add_filter( 'embed_thumbnail_id', array( $this, 'the_embed_thumbnail_id' ), 10000, 1 );
+			add_filter( 'embed_thumbnail_image_size', array( $this, 'the_embed_thumbnail_image_size' ), 10000, 2 );
+			add_filter( 'embed_thumbnail_image_shape', array( $this, 'the_embed_thumbnail_image_shape' ), 10000, 2 );
+			add_filter( 'the_excerpt_embed', array( $this, 'the_embed_excerpt' ), 10000, 1 );
 		}
 
 		/**
@@ -104,14 +103,6 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 			}
 
 			return $data;
-		}
-
-		/**
-		 * Filters the embed HTML output for a given post.
-		 */
-		public function post_embed_html( $html, $post, $width, $height ) {
-
-			return $html;
 		}
 
 		/**

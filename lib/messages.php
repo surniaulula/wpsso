@@ -1774,6 +1774,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
+						case 'info-meta-oembed-html':
+
+						 	$text = '<p class="status-msg">';
+
+							$text .= sprintf( __( 'oEmbed HTML is provided a WordPress or theme <code>%s</code> template, which may not use all available oEmbed data.', 'wpsso' ), 'embed-content' );
+
+							$text .= '</p>';
+
+						 	break;
+
 					}	// End of info-meta switch.
 
 				} else {

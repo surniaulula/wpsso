@@ -259,6 +259,20 @@ if ( ! function_exists( 'wpsso_get_user_og_image' ) ) {
 	}
 }
 
+if ( ! function_exists( 'wpsso_get_canonical_url' ) ) {
+
+	function wpsso_get_canonical_url( $mod = false, $add_page = true ) {
+
+		$wpsso =& Wpsso::get_instance();
+
+		if ( ! empty( $wpsso->util ) ) {	// Just in case.
+			return $wpsso->util->get_canonical_url( $mod, $add_page );
+		}
+
+		return false;
+	}
+}
+
 if ( ! function_exists( 'wpsso_get_sharing_url' ) ) {
 
 	function wpsso_get_sharing_url( $mod = false, $add_page = true ) {

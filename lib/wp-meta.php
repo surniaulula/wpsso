@@ -18,8 +18,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		protected $opts = array();	// Cache for options.
 		protected $defs = array();	// Cache for default values.
 
-		protected static $head_meta_tags    = false;
-		protected static $head_meta_info    = array();
+		protected static $head_tags         = false;	// Must be false by default.
+		protected static $head_info         = array();
 		protected static $last_column_id    = null;	// Cache id of the last column request in list table.
 		protected static $last_column_array = array();	// Array of column values for last column requested.
 		protected static $cache_short_url   = null;
@@ -411,12 +411,12 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 * Does this page have a post/term/user SSO metabox?
 		 *
 		 * If this is a post/term/user editing page, and the SSO metabox is shown, then the 
-		 * WpssoWpMeta::$head_meta_tags variable will be an array *and* include the head meta
+		 * WpssoWpMeta::$head_tags variable will be an array *and* include the head meta
 		 * tags array.
 		 */
 		public static function is_meta_page() {
 
-			if ( ! empty( WpssoWpMeta::$head_meta_tags ) ) {
+			if ( ! empty( WpssoWpMeta::$head_tags ) ) {
 				return true;
 			}
 
@@ -431,20 +431,30 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				case $this->p->cf[ 'meta' ][ 'id' ]:
 
-					$tabs[ 'edit' ] = _x( 'Customize', 'metabox tab', 'wpsso' );
-
-					/**
-					 * Exclude the 'Priority Media' tab from attachment editing pages.
-					 */
-					if ( $mod[ 'post_type' ] !== 'attachment' ) {
-						$tabs[ 'media' ] = _x( 'Priority Media', 'metabox tab', 'wpsso' );
-					}
-
+					$tabs[ 'edit' ]     = _x( 'Customize', 'metabox tab', 'wpsso' );
+					$tabs[ 'media' ]    = _x( 'Priority Media', 'metabox tab', 'wpsso' );
 					$tabs[ 'preview' ]  = _x( 'Preview', 'metabox tab', 'wpsso' );
+					$tabs[ 'oembed' ]   = _x( 'oEmbed', 'metabox tab', 'wpsso' );
 					$tabs[ 'head' ]     = _x( 'Head', 'metabox tab', 'wpsso' );
 					$tabs[ 'validate' ] = _x( 'Validate', 'metabox tab', 'wpsso' );
 
 					break;
+			}
+
+			/**
+			 * Exclude the 'Priority Media' tab from attachment editing pages.
+			 */
+			if ( $mod[ 'post_type' ] === 'attachment' ) {
+				unset( $tabs[ 'media' ] );
+			}
+
+			/**
+			 * Exclude the 'oEmbed' tab from non-post editing pages.
+			 */
+			if ( ! function_exists( 'get_oembed_response_data' ) ||	// Since WP v4.4.
+				! $mod[ 'is_post' ] || ! $mod[ 'id' ] ) {
+
+				unset( $tabs[ 'oembed' ] );
 			}
 
 			return apply_filters( $this->p->lca . '_' . $mod[ 'name' ] . '_custom_meta_tabs', $tabs, $mod, $metabox_id );
@@ -490,16 +500,14 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$og_prev_width    = 600;
 			$og_prev_height   = 315;
 			$og_prev_img_html = '';
+			$is_auto_draft    = SucomUtil::is_auto_draft( $mod );
+			$save_draft_msg   = __( 'Save a draft version or publish to update this value.', 'wpsso' );
 
 			$have_sizes = ( isset( $head_info[ 'og:image:width' ] ) && $head_info[ 'og:image:width' ] > 0 && 
 				isset( $head_info[ 'og:image:height' ] ) && $head_info[ 'og:image:height' ] > 0 ) ? true : false;
 
 			$is_sufficient = true === $have_sizes && $head_info[ 'og:image:width' ] >= $og_prev_width && 
 				$head_info[ 'og:image:height' ] >= $og_prev_height ? true : false;
-
-			$is_auto_draft = SucomUtil::is_auto_draft( $mod );
-
-			$save_draft_msg = __( 'Save a draft version or publish to update this value.', 'wpsso' );
 
 			if ( ! empty( $media_url ) ) {
 
@@ -584,7 +592,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$table_rows[ 'subsection_og_example' ] = '<td colspan="2" class="subsection"><h4>' . 
 				_x( 'Facebook / Open Graph Example', 'option label', 'wpsso' ) . '</h4></td>';
 
-			$table_rows[] = '<td colspan="2" style="background-color:#e9eaed;border:1px dotted #e0e0e0;">
+			$table_rows[] = '' .
+			'<td colspan="2" class="preview_container">
 				<div class="preview_box_border">
 					<div class="preview_box">
 						' . $og_prev_img_html . '
@@ -604,9 +613,76 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 						</div><!-- .preview_txt -->
 					</div><!-- .preview_box -->
 				</div><!-- .preview_box_border -->
-			</td>';
+			</td><!-- .preview_container -->';
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-meta-social-preview' ) . '</td>';
+
+			return $table_rows;
+		}
+
+		public function get_rows_oembed_tab( $form, $head_info, $mod ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			$table_rows     = array();
+			$oembed_data    = false;
+			$oembed_html    = '';
+			$oembed_width   = 600;
+			$is_auto_draft  = SucomUtil::is_auto_draft( $mod );
+			$save_draft_msg = __( 'Save a draft version or publish to update this value.', 'wpsso' );
+
+			if ( $is_auto_draft ) {
+
+				$table_rows[] = '' . 
+				$form->get_th_html( _x( 'oEmbed JSON URL', 'option label', 'wpsso' ), 'medium' ) .
+				'<td class="blank"><em>' . $save_draft_msg . '</em></td>';
+
+				$table_rows[] = '' . 
+				$form->get_th_html( _x( 'oEmbed XML URL', 'option label', 'wpsso' ), 'medium' ) .
+				'<td class="blank"><em>' . $save_draft_msg . '</em></td>';
+
+			} else {
+
+				$json_url = $this->p->util->get_oembed_url( $mod, 'json' );
+				$xml_url  = $this->p->util->get_oembed_url( $mod, 'xml' );
+				$oembed_data     = $this->p->util->get_oembed_data( $mod, $oembed_width );
+
+				$table_rows[] = '' . 
+				$form->get_th_html( _x( 'oEmbed JSON URL', 'option label', 'wpsso' ), 'medium' ) . 
+				'<td>' . $form->get_input_copy_clipboard( $json_url ) . '</td>';
+
+				$table_rows[] = '' . 
+				$form->get_th_html( _x( 'oEmbed XML URL', 'option label', 'wpsso' ), 'medium' ) . 
+				'<td>' . $form->get_input_copy_clipboard( $xml_url ) . '</td>';
+
+			}
+
+			$table_rows[ 'subsection_oembed_data' ] = '<td colspan="2" class="subsection"><h4>' . 
+				_x( 'oEmbed Data', 'option label', 'wpsso' ) . '</h4></td>';
+
+			foreach( $oembed_data as $key => $val ) {
+
+				if ( 'html' === $key ) {
+					$oembed_html = $val;
+					$val = __( '(see bellow)', 'wpsso' );
+				}
+
+				$table_rows[] = '' . 
+				'<th class="short">' . esc_html( $key ) . '</th>' .
+				'<td class="wide">' . SucomUtil::maybe_link_url( esc_html( $val ) ) . '</td>';
+			}
+
+			$table_rows[ 'subsection_oembed_html' ] = '<td colspan="2" class="subsection"><h4>' . 
+				_x( 'oEmbed HTML', 'option label', 'wpsso' ) . '</h4></td>';
+
+			$table_rows[ 'oembed_html' ] = '' .
+			'<td colspan="2" class="oembed_container">
+				' . $oembed_html . '
+			</td><!-- .oembed_container -->';
+
+			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-meta-oembed-html' ) . '</td>';
 
 			return $table_rows;
 		}
@@ -620,11 +696,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$table_rows   = array();
 			$script_class = '';
 
-			if ( ! is_array( WpssoWpMeta::$head_meta_tags ) ) {	// Just in case.
+			if ( ! is_array( WpssoWpMeta::$head_tags ) ) {	// Just in case.
 				return $table_rows;
 			}
 
-			foreach ( WpssoWpMeta::$head_meta_tags as $parts ) {
+			foreach ( WpssoWpMeta::$head_tags as $parts ) {
 
 				if ( 1 === count( $parts ) ) {
 
@@ -694,8 +770,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 						'<th class="xshort">' . $parts[2] . '</th>' . 
 						'<td class="">' . ( empty( $parts[6] ) ? '' : '<!-- ' . $parts[6] . ' -->' ) . $match_name . '</td>' . 
 						'<th class="xshort">' . $parts[4] . '</th>' . 
-						'<td class="wide">' . ( strpos( $parts[5], 'http' ) === 0 ? 
-							'<a href="' . $parts[5] . '">' . $parts[5] . '</a>' : $parts[5] ) . '</td>';
+						'<td class="wide">' . SucomUtil::maybe_link_url( $parts[5] ) . '</td>';
 				}
 			}
 
@@ -799,10 +874,10 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			 */
 			$mod = $this->get_mod( $obj_id );
 
-			$head_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache );
-			$head_info = $this->p->head->extract_head_info( $mod, $head_tags );
+			$local_head_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache );
+			$local_head_info = $this->p->head->extract_head_info( $mod, $local_head_tags );
 
-			return $local_cache[ $class ][ $obj_id ] = $head_info;
+			return $local_cache[ $class ][ $obj_id ] = $local_head_info;
 		}
 
 		/**

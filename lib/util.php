@@ -1462,8 +1462,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$this->add_plugin_image_sizes( $wp_obj = false, $image_sizes = array(), $filter_sizes = true );
 
-			$head_meta_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache = true );
-			$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
+			$head_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache = true );
+			$head_info = $this->p->head->extract_head_info( $mod, $head_tags );
 
 			if ( $do_sleep ) {
 
@@ -2506,17 +2506,139 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $mod;
 		}
 
-		/**
-		 * $mod is false when used for open graph meta tags and buttons in widget.
-		 * $mod is true when buttons are added to individual posts on an index webpage.
-		 */
-		public function get_sharing_url( $mod = false, $add_page = true, $src_id = '' ) {
+		public function get_oembed_url( $mod = false, $format = 'json' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			return $this->get_page_url( 'sharing', $mod, $add_page, $src_id );
+			$url = '';
+
+			if ( ! function_exists( 'get_oembed_endpoint_url' ) ) {	// Since WP v4.4.
+				return $url;
+			}
+
+			/**
+			 * The $mod array argument is preferred but not required.
+			 * $mod = true | false | post_id | $mod array
+			 */
+			if ( ! is_array( $mod ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'optional call to get_page_mod()' );
+				}
+
+				$mod = $this->get_page_mod( $mod );
+			}
+
+			if ( $mod[ 'is_post' ] ) {
+
+				if ( ! empty( $mod[ 'id' ] ) ) {
+
+					if ( $mod[ 'post_status' ] !== 'publish' ) {
+
+						$post_obj = self::get_post_object( $mod[ 'id' ], $output = 'object' );
+
+						if ( is_object( $post_obj ) ) {
+
+							if ( ! is_wp_error( $post_obj ) ) {
+
+								$post_obj->post_status = 'publish';
+
+								$post_obj->post_name = $post_obj->post_name ? 
+									$post_obj->post_name : sanitize_title( $post_obj->post_title );
+
+								$url = get_permalink( $post_obj );
+							}
+						}
+
+						if ( empty( $url ) ) {
+							$url = get_permalink( $mod[ 'id' ] );
+						}
+
+					} else {
+						$url = get_permalink( $mod[ 'id' ] );
+					}
+				}
+			}
+
+			if ( ! empty( $url ) ) {
+
+				/**
+			 	* Maybe enforce the FORCE_SSL constant.
+			 	*/
+				if ( self::get_const( 'FORCE_SSL' ) && ! self::is_https( $url ) ) {
+	
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'force ssl is enabled - replacing http by https' );
+					}
+
+					$url = set_url_scheme( $url, 'https' );
+				}
+
+				$url = get_oembed_endpoint_url( $url, $format );	// Since WP v4.4.
+			}
+
+			return apply_filters( $this->p->lca . '_oembed_url', $url, $mod, $format );
+		}
+
+		public function get_oembed_data( $mod = false, $width = '600' ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			$data = false;	// Returns false on error.
+
+			if ( ! function_exists( 'get_oembed_response_data' ) ) {	// Since WP v4.4.
+				return $data;
+			}
+
+			/**
+			 * The $mod array argument is preferred but not required.
+			 * $mod = true | false | post_id | $mod array
+			 */
+			if ( ! is_array( $mod ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'optional call to get_page_mod()' );
+				}
+
+				$mod = $this->get_page_mod( $mod );
+			}
+
+			if ( $mod[ 'is_post' ] ) {
+
+				if ( ! empty( $mod[ 'id' ] ) ) {
+
+					if ( $mod[ 'post_status' ] !== 'publish' ) {
+
+						$post_obj = self::get_post_object( $mod[ 'id' ], $output = 'object' );
+
+						if ( is_object( $post_obj ) ) {
+
+							if ( ! is_wp_error( $post_obj ) ) {
+
+								$post_obj->post_status = 'publish';
+
+								$post_obj->post_name = $post_obj->post_name ? 
+									$post_obj->post_name : sanitize_title( $post_obj->post_title );
+
+								$data = get_oembed_response_data( $post_obj, $width );	// Returns false on error.
+							}
+						}
+
+						if ( empty( $data ) ) {
+							$data = get_oembed_response_data( $mod[ 'id' ], $width );	// Returns false on error.
+						}
+
+					} else {
+						$data = get_oembed_response_data( $mod[ 'id' ], $width );		// Returns false on error.
+					}
+				}
+			}
+
+			return apply_filters( $this->p->lca . '_oembed_data', $data, $mod, $width );
 		}
 
 		public function get_canonical_url( $mod = false, $add_page = true, $src_id = '' ) {
@@ -2528,9 +2650,15 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $this->get_page_url( 'canonical', $mod, $add_page, $src_id );
 		}
 
-		/**
-		 * $type value is "sharing" or "canonical".
-		 */
+		public function get_sharing_url( $mod = false, $add_page = true, $src_id = '' ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			return $this->get_page_url( 'sharing', $mod, $add_page, $src_id );
+		}
+
 		private function get_page_url( $type, $mod, $add_page, $src_id ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -2754,7 +2882,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			/**
-			 * Check and possibly enforce the FORCE_SSL constant.
+			 * Maybe enforce the FORCE_SSL constant.
 			 */
 			if ( self::get_const( 'FORCE_SSL' ) && ! self::is_https( $url ) ) {
 

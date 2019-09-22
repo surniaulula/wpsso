@@ -17,6 +17,8 @@ wpsso_get_post_og_image( $post_id, $size_name = 'thumbnail' );	// Returns false 
 
 wpsso_get_post_place_options( $post_id, $type_id = 'custom' );
 
+wpsso_get_canonical_url( $mod = false, $add_page = true );
+
 wpsso_get_sharing_url( $mod = false, $add_page = true );
 
 wpsso_get_short_url( $mod = false, $add_page = true );

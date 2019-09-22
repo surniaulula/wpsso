@@ -56,7 +56,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					/**
 					 * load_meta_page() priorities: 100 post, 200 user, 300 term.
-					 * Sets the WpssoWpMeta::$head_meta_tags and WpssoWpMeta::$head_meta_info class properties.
+					 * Sets the WpssoWpMeta::$head_tags and WpssoWpMeta::$head_info class properties.
 					 */
 					add_action( 'current_screen', array( $this, 'load_meta_page' ), 100, 1 );
 					add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
@@ -577,8 +577,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function check_sortable_metadata( $value, $post_id, $meta_key, $single ) {
 
-			if ( strpos( $meta_key, '_' . $this->p->lca . '_head_info_' ) !== 0 ) {	// Example: _wpsso_head_info_og_img_thumb.
-				return $value;
+			/**
+			 * Example $meta_key value: '_wpsso_head_info_og_img_thumb'.
+			 */
+			if ( 0 !== strpos( $meta_key, '_' . $this->p->lca . '_head_info_' ) ) {
+				return $value;	// Return null.
 			}
 
 			if ( $this->p->debug->enabled ) {
@@ -588,17 +591,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			static $do_once = array();
 
 			if ( isset( $do_once[ $post_id ][ $meta_key ] ) ) {
-				return $value;
+				return $value;	// Return null.
 			} else {
-				$do_once[ $post_id ][ $meta_key ] = true;	// Prevent recursion.
+				$do_once[ $post_id ][ $meta_key ] = true;		// Prevent recursion.
 			}
 
 			if ( get_post_meta( $post_id, $meta_key, true ) === '' ) {	// Returns empty string if meta not found.
-
-				$mod = $this->get_mod( $post_id );
-
-				$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, $read_cache = true );
-				$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
+				$this->get_head_info( $post_id, $read_cache = true );
 			}
 
 			return $value;	// Return null.
@@ -606,7 +605,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		/**
 		 * Hooked into the current_screen action.
-		 * Sets the WpssoWpMeta::$head_meta_tags and WpssoWpMeta::$head_meta_info class properties.
+		 * Sets the WpssoWpMeta::$head_tags and WpssoWpMeta::$head_info class properties.
 		 */
 		public function load_meta_page( $screen = false ) {
 
@@ -617,7 +616,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * All meta modules set this property, so use it to optimize code execution.
 			 */
-			if ( false !== WpssoWpMeta::$head_meta_tags || ! isset( $screen->id ) ) {
+			if ( false !== WpssoWpMeta::$head_tags || ! isset( $screen->id ) ) {
 				return;
 			}
 
@@ -674,7 +673,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->log( SucomUtil::pretty_array( $mod ) );
 			}
 
-			WpssoWpMeta::$head_meta_tags = array();
+			WpssoWpMeta::$head_tags = array();
 
 			if ( $post_obj->post_status === 'auto-draft' ) {
 
@@ -724,12 +723,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					/**
 					 * $read_cache is false to generate notices etc.
 					 */
-					WpssoWpMeta::$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, $read_cache = false );
-					WpssoWpMeta::$head_meta_info = $this->p->head->extract_head_info( $mod, WpssoWpMeta::$head_meta_tags );
+					WpssoWpMeta::$head_tags = $this->p->head->get_head_array( $post_id, $mod, $read_cache = false );
+					WpssoWpMeta::$head_info = $this->p->head->extract_head_info( $mod, WpssoWpMeta::$head_tags );
 
 					if ( $mod[ 'post_status' ] === 'publish' ) {
 
-						$this->p->util->maybe_set_ref( WpssoWpMeta::$head_meta_info[ 'og:url' ], $mod,
+						$this->p->util->maybe_set_ref( WpssoWpMeta::$head_info[ 'og:url' ], $mod,
 							__( 'checking meta tags', 'wpsso' ) );
 
 						/**
@@ -737,7 +736,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						 */
 						foreach ( array( 'image', 'description' ) as $mt_suffix ) {
 
-							if ( empty( WpssoWpMeta::$head_meta_info[ 'og:' . $mt_suffix ] ) ) {
+							if ( empty( WpssoWpMeta::$head_info[ 'og:' . $mt_suffix ] ) ) {
 
 								if ( $this->p->debug->enabled ) {
 									$this->p->debug->log( 'og:' . $mt_suffix . ' meta tag is value empty and required' );
@@ -750,7 +749,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 							}
 						}
 
-						$this->p->util->maybe_unset_ref( WpssoWpMeta::$head_meta_info[ 'og:url' ] );
+						$this->p->util->maybe_unset_ref( WpssoWpMeta::$head_info[ 'og:url' ] );
 
 						/**
 						 * Check duplicates only when the post is available publicly and we have a valid permalink.
@@ -1296,12 +1295,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * $read_cache is false to generate notices etc.
 			 */
-			WpssoWpMeta::$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, $read_cache = false );
-			WpssoWpMeta::$head_meta_info = $this->p->head->extract_head_info( $mod, WpssoWpMeta::$head_meta_tags );
+			WpssoWpMeta::$head_tags = $this->p->head->get_head_array( $post_id, $mod, $read_cache = false );
+			WpssoWpMeta::$head_info = $this->p->head->extract_head_info( $mod, WpssoWpMeta::$head_tags );
 
 			if ( $mod[ 'post_status' ] === 'publish' ) {
 
-				$this->p->util->maybe_set_ref( WpssoWpMeta::$head_meta_info[ 'og:url' ], $mod,
+				$this->p->util->maybe_set_ref( WpssoWpMeta::$head_info[ 'og:url' ], $mod,
 					__( 'checking meta tags', 'wpsso' ) );
 
 
@@ -1310,7 +1309,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 */
 				foreach ( array( 'image', 'description' ) as $mt_suffix ) {
 
-					if ( empty( WpssoWpMeta::$head_meta_info[ 'og:' . $mt_suffix ] ) ) {
+					if ( empty( WpssoWpMeta::$head_info[ 'og:' . $mt_suffix ] ) ) {
 
 						$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-og-' . $mt_suffix;
 						$error_msg  = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
@@ -1319,7 +1318,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					}
 				}
 
-				$this->p->util->maybe_unset_ref( WpssoWpMeta::$head_meta_info[ 'og:url' ] );
+				$this->p->util->maybe_unset_ref( WpssoWpMeta::$head_info[ 'og:url' ] );
 			}
 
 			$metabox_html = $this->get_metabox_custom_meta( $post_obj );
@@ -1355,8 +1354,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$filter_name = $this->p->lca . '_' . $mod[ 'name' ] . '_' . $tab_key . '_rows';
 
 				$table_rows[ $tab_key ] = array_merge(
-					$this->get_table_rows( $metabox_id, $tab_key, WpssoWpMeta::$head_meta_info, $mod ),
-					(array) apply_filters( $filter_name, array(), $this->form, WpssoWpMeta::$head_meta_info, $mod )
+					$this->get_table_rows( $metabox_id, $tab_key, WpssoWpMeta::$head_info, $mod ),
+					(array) apply_filters( $filter_name, array(), $this->form, WpssoWpMeta::$head_info, $mod )
 				);
 			}
 
@@ -1376,7 +1375,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $metabox_html;
 		}
 
-		protected function get_table_rows( $metabox_id, $tab_key, $head, $mod ) {
+		protected function get_table_rows( $metabox_id, $tab_key, $head_info, $mod ) {
 
 			$is_auto_draft = SucomUtil::is_auto_draft( $mod );
 
@@ -1388,7 +1387,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				case 'preview':
 
-					$table_rows = $this->get_rows_preview_tab( $this->form, $head, $mod );
+					$table_rows = $this->get_rows_preview_tab( $this->form, $head_info, $mod );
+
+					break;
+
+				case 'oembed':
+
+					$table_rows = $this->get_rows_oembed_tab( $this->form, $head_info, $mod );
 
 					break;
 
@@ -1398,7 +1403,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$table_rows[] = '<td><blockquote class="status-info"><p class="centered">' .
 							$save_draft_msg . '</p></blockquote></td>';
 					} else {
-						$table_rows = $this->get_rows_head_tab( $this->form, $head, $mod );
+						$table_rows = $this->get_rows_head_tab( $this->form, $head_info, $mod );
 					}
 
 					break;
@@ -1409,7 +1414,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$table_rows[] = '<td><blockquote class="status-info"><p class="centered">' .
 							$save_draft_msg . '</p></blockquote></td>';
 					} else {
-						$table_rows = $this->get_rows_validate_tab( $this->form, $head, $mod );
+						$table_rows = $this->get_rows_validate_tab( $this->form, $head_info, $mod );
 					}
 
 					break;

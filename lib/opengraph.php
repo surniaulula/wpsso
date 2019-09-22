@@ -749,7 +749,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						if ( $mod[ 'post_author' ] ) {
 
-							$mt_og[ 'article:author' ] = $this->p->user->get_authors_websites( $mod[ 'post_author' ],
+							$mt_og[ 'article:author' ] = $this->p->user->get_author_website( $mod[ 'post_author' ],
 								$this->p->options[ 'og_author_field' ] );
 
 							$mt_og[ 'article:author:name' ] = $this->p->user->get_author_meta( $mod[ 'post_author' ],

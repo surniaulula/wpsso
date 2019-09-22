@@ -1028,6 +1028,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
+		public static function maybe_link_url( $mixed ) {
+
+			if ( is_string( $mixed ) && 0 === strpos( $mixed, 'http' ) ) {
+				$mixed = '<a href="' . $mixed . '">' . $mixed . '</a>';
+			}
+
+			return $mixed;
+		}
+
 		/**
 		 * Deprecated on 2019/08/18.
 		 */
