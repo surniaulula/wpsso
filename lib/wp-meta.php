@@ -645,9 +645,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			} else {
 
-				$json_url = $this->p->util->get_oembed_url( $mod, 'json' );
-				$xml_url  = $this->p->util->get_oembed_url( $mod, 'xml' );
-				$oembed_data     = $this->p->util->get_oembed_data( $mod, $oembed_width );
+				$json_url    = $this->p->util->get_oembed_url( $mod, 'json' );
+				$xml_url     = $this->p->util->get_oembed_url( $mod, 'xml' );
+				$oembed_data = $this->p->util->get_oembed_data( $mod, $oembed_width );
 
 				$table_rows[] = '' . 
 				$form->get_th_html( _x( 'oEmbed JSON URL', 'option label', 'wpsso' ), 'medium' ) . 
@@ -662,27 +662,39 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$table_rows[ 'subsection_oembed_data' ] = '<td colspan="2" class="subsection"><h4>' . 
 				_x( 'oEmbed Data', 'option label', 'wpsso' ) . '</h4></td>';
 
-			foreach( $oembed_data as $key => $val ) {
+			if ( ! empty( $oembed_data ) && is_array( $oembed_data ) ) {
 
-				if ( 'html' === $key ) {
-					$oembed_html = $val;
-					$val = __( '(see bellow)', 'wpsso' );
+				foreach( $oembed_data as $key => $val ) {
+
+					if ( 'html' === $key ) {
+						$oembed_html = $val;
+						$val = __( '(see bellow)', 'wpsso' );
+					}
+
+					$table_rows[] = '' . 
+					'<th class="short">' . esc_html( $key ) . '</th>' .
+					'<td class="wide">' . SucomUtil::maybe_link_url( esc_html( $val ) ) . '</td>';
 				}
 
-				$table_rows[] = '' . 
-				'<th class="short">' . esc_html( $key ) . '</th>' .
-				'<td class="wide">' . SucomUtil::maybe_link_url( esc_html( $val ) ) . '</td>';
+			} else {
+				$table_rows[] = '<td colspan="2"><p class="status-msg">' . __( 'No oEmbed data found.', 'wpsso' ) . '</p></td>';
 			}
 
 			$table_rows[ 'subsection_oembed_html' ] = '<td colspan="2" class="subsection"><h4>' . 
 				_x( 'oEmbed HTML', 'option label', 'wpsso' ) . '</h4></td>';
 
-			$table_rows[ 'oembed_html' ] = '' .
-			'<td colspan="2" class="oembed_container">
-				' . $oembed_html . '
-			</td><!-- .oembed_container -->';
+			if ( ! empty( $oembed_html ) ) {
 
-			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-meta-oembed-html' ) . '</td>';
+				$table_rows[] = '' .
+				'<td colspan="2" class="oembed_container">
+					' . $oembed_html . '
+				</td><!-- .oembed_container -->';
+
+				$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-meta-oembed-html' ) . '</td>';
+
+			} else {
+				$table_rows[] = '<td colspan="2"><p class="status-msg">' . __( 'No oEmbed HTML found.', 'wpsso' ) . '</p></td>';
+			}
 
 			return $table_rows;
 		}

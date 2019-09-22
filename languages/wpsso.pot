@@ -6838,96 +6838,104 @@ msgctxt "option label"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/wp-meta.php:669
+#: lib/wp-meta.php:671
 msgid "(see bellow)"
 msgstr ""
 
-#: lib/wp-meta.php:678
+#: lib/wp-meta.php:680
+msgid "No oEmbed data found."
+msgstr ""
+
+#: lib/wp-meta.php:684
 msgctxt "option label"
 msgid "oEmbed HTML"
 msgstr ""
 
-#: lib/wp-meta.php:792
+#: lib/wp-meta.php:696
+msgid "No oEmbed HTML found."
+msgstr ""
+
+#: lib/wp-meta.php:804
 msgctxt "option label"
 msgid "Facebook Open Graph Debugger"
 msgstr ""
 
-#: lib/wp-meta.php:793
+#: lib/wp-meta.php:805
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/wp-meta.php:797
+#: lib/wp-meta.php:809
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/wp-meta.php:798
+#: lib/wp-meta.php:810
 msgctxt "submit button"
 msgid "Validate Metadata"
 msgstr ""
 
-#: lib/wp-meta.php:802
+#: lib/wp-meta.php:814
 msgctxt "option label"
 msgid "Google Structured Data Test"
 msgstr ""
 
-#: lib/wp-meta.php:803
+#: lib/wp-meta.php:815
 msgctxt "submit button"
 msgid "Validate Structured Data"
 msgstr ""
 
-#: lib/wp-meta.php:807
+#: lib/wp-meta.php:819
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/wp-meta.php:808
+#: lib/wp-meta.php:820
 msgctxt "submit button"
 msgid "Validate Rich Results"
 msgstr ""
 
-#: lib/wp-meta.php:812
+#: lib/wp-meta.php:824
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/wp-meta.php:813
+#: lib/wp-meta.php:825
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/wp-meta.php:817
+#: lib/wp-meta.php:829
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/wp-meta.php:818
+#: lib/wp-meta.php:830
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/wp-meta.php:823
+#: lib/wp-meta.php:835
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr ""
 
-#: lib/wp-meta.php:824
+#: lib/wp-meta.php:836
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr ""
 
-#: lib/wp-meta.php:828
+#: lib/wp-meta.php:840
 msgctxt "option label"
 msgid "The AMP Validator"
 msgstr ""
 
-#: lib/wp-meta.php:829
+#: lib/wp-meta.php:841
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/wp-meta.php:1093
+#: lib/wp-meta.php:1105
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
