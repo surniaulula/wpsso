@@ -21,7 +21,7 @@ WPSSO Core makes sure your content looks great on all social and search sites, n
 
 **WPSSO Core is fast, simple and makes sure your content looks great on *social and search sites* -- no matter how URLs are crawled, shared, re-shared, posted, or embedded:**
 
-WPSSO Core provides complete information about your webpage content to social sites (Facebook, Pinterest, Twitter, LinkedIn, etc.), search crawlers (Google, Bing, etc.), mail and messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), and embedded objects / iframes (aka oEmbed).
+WPSSO Core provides complete information about your webpage content to social sites (Facebook, Pinterest, Twitter, LinkedIn, etc.), search crawlers (Google, Bing, etc.), mail and messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), and embedded objects / iframes (aka oEmbed data and HTML).
 
 **Uses your *existing WordPress content* for meta tags and Schema markup:**
 
@@ -31,7 +31,7 @@ WPSSO Core is also language / locale aware, which means you can customize your s
 
 **Creates *complete and accurate* meta tags and Schema markup:**
 
-WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph, Google SEO Rich Results (see the [WPSSO JSON add-on](https://wordpress.org/plugins/wpsso-schema-json-ld/)), Google Merchant, Mobile Web Browsers, Pinterest Rich Pins, Twitter Cards, Weibo and many more &mdash; including complete markup for image SEO, video SEO, extensive e-Commerce product markup (for WooCommerce and others), mobile apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content!
+WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph, Google SEO Rich Results (see the [WPSSO JSON add-on](https://wordpress.org/plugins/wpsso-schema-json-ld/)), Google Merchant, Mobile Web Browsers, oEmbed for LinkedIn, Pinterest Rich Pins, Twitter Cards, Weibo and many more &mdash; including complete markup for image SEO, video SEO, extensive e-Commerce product markup (for WooCommerce and others), mobile apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content!
 
 **Includes advanced *quality assurance* features and options:**
 
