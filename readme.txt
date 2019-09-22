@@ -434,7 +434,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.4.0-rc.1 (2019/09/22)**
+**Version 6.4.0 (2019/09/22)**
+
+Added a new 'oEmbed' tab in the Document SSO metabox.
 
 * **New Features**
 	* None.
@@ -555,11 +557,7 @@ New resized image file names now include custom crop locations (top, botton, lef
 
 == Upgrade Notice ==
 
-= 6.4.0-rc.1 =
+= 6.4.0 =
 
 (2019/09/22) Added a 'oEmbed' tab in the Document SSO metabox to show the oEmbed data and oEmbed HTML. Improved WordPress oEmbed data and HTML markup with the Open Graph image, title, and description.
-
-= 6.3.1 =
-
-(2019/09/17) Added new Schema Article AMP image dimensions for Google (WPSSO JSON add-on required). Added a new "Notification System" option. Removed the "Meta Property Container" option.
 
