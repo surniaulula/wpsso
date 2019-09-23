@@ -1,4 +1,4 @@
-=== WPSSO Core | Open Graph, Rich Pin, Twitter Card, Meta Tags, SEO Rich Results, oEmbed Data and Schema Markup ===
+=== WPSSO Core | Advanced Open Graph, Rich Pins, Twitter Cards, SEO Rich Results, oEmbed Data, and Schema Markup ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
