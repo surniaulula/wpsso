@@ -21,7 +21,7 @@ WPSSO Core makes sure your content looks great on all social and search sites, n
 
 **WPSSO Core is fast, simple and makes sure your content looks great on *social and search sites* -- no matter how URLs are crawled, shared, re-shared, posted, or embedded:**
 
-WPSSO Core provides complete information about your webpage content to social sites (Facebook, Pinterest, Twitter, LinkedIn, etc.), search crawlers (Google, Bing, etc.), mail and messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), and embedded objects / iframes (aka oEmbed data and HTML).
+WPSSO Core provides complete information about your webpage content to social sites (Facebook, Pinterest, Twitter, LinkedIn, etc.), search crawlers (Google, Bing, etc.), mail and messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), and oEmbed data for embedded objects / iframes.
 
 **Uses your *existing WordPress content* for meta tags and Schema markup:**
 
@@ -56,7 +56,7 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 
 * *Complete and accurate* meta tags for all social sites, search engines, web browser extensions, mail and messaging apps, and embedded object / iframe content.
 
-* Updates the WordPress oEmbed response data and HTML markup with the Open Graph title, description, and image for posts, pages, and custom post types.
+* Updates the WordPress oEmbed data and HTML markup with the Open Graph title, description, and image for posts, pages, and custom post types.
 
 * Provides meta tags and markup for posts, pages, custom post types, tags, categories, custom taxonomy / terms, user profile pages, search pages, and attachment pages.
 

@@ -17,7 +17,7 @@
 
 <p><strong>WPSSO Core is fast, simple and makes sure your content looks great on <em>social and search sites</em> -- no matter how URLs are crawled, shared, re-shared, posted, or embedded:</strong></p>
 
-<p>WPSSO Core provides complete information about your webpage content to social sites (Facebook, Pinterest, Twitter, LinkedIn, etc.), search crawlers (Google, Bing, etc.), mail and messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), and embedded objects / iframes (aka oEmbed data and HTML).</p>
+<p>WPSSO Core provides complete information about your webpage content to social sites (Facebook, Pinterest, Twitter, LinkedIn, etc.), search crawlers (Google, Bing, etc.), mail and messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), and oEmbed data for embedded objects / iframes.</p>
 
 <p><strong>Uses your <em>existing WordPress content</em> for meta tags and Schema markup:</strong></p>
 
@@ -54,7 +54,7 @@
 
 <ul>
 <li><p><em>Complete and accurate</em> meta tags for all social sites, search engines, web browser extensions, mail and messaging apps, and embedded object / iframe content.</p></li>
-<li><p>Updates the WordPress oEmbed response data and HTML markup with the Open Graph title, description, and image for posts, pages, and custom post types.</p></li>
+<li><p>Updates the WordPress oEmbed data and HTML markup with the Open Graph title, description, and image for posts, pages, and custom post types.</p></li>
 <li><p>Provides meta tags and markup for posts, pages, custom post types, tags, categories, custom taxonomy / terms, user profile pages, search pages, and attachment pages.</p></li>
 <li><p>Uses images from numerous sources, including featured, attached, gallery shortcode, images from HTML tags, or a custom fallback image.</p></li>
 <li><p>Image dimension settings for Facebook / Open Graph, Schema markup, Google SEO Rich Results, Pinterest Rich Pins, and Twitter Cards.</p></li>
