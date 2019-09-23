@@ -185,12 +185,10 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 				case 'optional-advanced':
 
-					$this->add_advanced_plugin_settings_table_rows( $table_rows, $this->form );
-
-					/**
-					 * Don't show these options in the Essential settings page.
-					 */
-					unset ( $table_rows[ 'plugin_debug' ] );
+					$table_rows[ 'plugin_clean_on_uninstall' ] = '' .
+					$this->form->get_th_html( _x( 'Remove Settings on Uninstall', 'option label', 'wpsso' ), '', 'plugin_clean_on_uninstall' ) . 
+					'<td>' . $this->form->get_checkbox( 'plugin_clean_on_uninstall' ) . ' ' .
+					_x( 'including custom meta for posts, terms, and users', 'option comment', 'wpsso' ) . '</td>';
 
 					break;
 			}

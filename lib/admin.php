@@ -3725,24 +3725,21 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
-		 * Called from the WpssoSubmenuEssential, WpssoSubmenuAdvanced, and WpssoSitesubmenuSiteadvanced classes.
+		 * Called from the WpssoSubmenuAdvanced, and WpssoSitesubmenuSiteadvanced classes.
 		 */
 		public function add_advanced_plugin_settings_table_rows( array &$table_rows, $form, $network = false ) {
 
 			$table_rows[ 'plugin_clean_on_uninstall' ] = '' .
 			$form->get_th_html( _x( 'Remove Settings on Uninstall', 'option label', 'wpsso' ), '', 'plugin_clean_on_uninstall' ) . 
-			'<td>' .
-				$form->get_checkbox( 'plugin_clean_on_uninstall' ) . ' ' .
-				_x( 'including custom meta for posts, terms, and users', 'option comment', 'wpsso' ) . ' ' . 
-			'</td>' .
+			'<td>' . $form->get_checkbox( 'plugin_clean_on_uninstall' ) . ' ' .
+			_x( 'including custom meta for posts, terms, and users', 'option comment', 'wpsso' ) . '</td>' .
 			self::get_option_site_use( 'plugin_clean_on_uninstall', $form, $network, true );
 
 			$table_rows[ 'plugin_debug' ] = '' .
 			$form->get_th_html( _x( 'Add Hidden Debug Messages', 'option label', 'wpsso' ), '', 'plugin_debug' ) . 
-			'<td>'  .  ( ! $network && SucomUtil::get_const( 'WPSSO_HTML_DEBUG' ) ? $form->get_no_checkbox( 'plugin_debug' ) .
-				' <em>' . _x( 'WPSSO_HTML_DEBUG constant is true', 'option comment', 'wpsso' ) . '</em>' :
-					$form->get_checkbox( 'plugin_debug' ) ) .
-			'</td>' .
+			'<td>'  .  ( ! $network && SucomUtil::get_const( 'WPSSO_HTML_DEBUG' ) ?
+				$form->get_no_checkbox( 'plugin_debug' ) . ' <em>' . _x( 'WPSSO_HTML_DEBUG constant is true', 'option comment', 'wpsso' ) . '</em>' :
+				$form->get_checkbox( 'plugin_debug' ) ) . '</td>' .
 			self::get_option_site_use( 'plugin_debug', $form, $network, true );
 
 			$table_rows[ 'plugin_show_opts' ] = '' .
