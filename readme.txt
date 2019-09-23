@@ -6,7 +6,7 @@ Domain Path: /languages
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
-Tags: open graph, meta tags, rich pins, twitter cards, embed, social sharing, rich results, schema.org, structured data, snippet, seo, facebook, twitter, linkedin, pinterest, google
+Tags: open graph, meta tags, rich pins, twitter cards, schema, rich results, embed, social sharing, structured data, snippet, seo, facebook, twitter, linkedin, pinterest, google, schema.org
 Contributors: jsmoriss
 Requires At Least: 3.9
 Tested Up To: 5.2.3
@@ -441,7 +441,7 @@ Added a new 'oEmbed' tab in the Document SSO metabox.
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a 'oEmbed' tab in the Document SSO metabox to show the oEmbed data and oEmbed HTML.
+	* Added a new 'oEmbed' tab in the Document SSO metabox to show the oEmbed data and oEmbed HTML.
 	* Improved WordPress oEmbed data and HTML markup with the Open Graph image, title, and description.
 * **Bugfixes**
 	* Fixed the "Select Image" button to trigger a jQuery `change()` event on the image ID input field.
@@ -559,5 +559,5 @@ New resized image file names now include custom crop locations (top, botton, lef
 
 = 6.4.0 =
 
-(2019/09/22) Added a 'oEmbed' tab in the Document SSO metabox to show the oEmbed data and oEmbed HTML. Improved WordPress oEmbed data and HTML markup with the Open Graph image, title, and description.
+(2019/09/22) Added a new 'oEmbed' tab in the Document SSO metabox to show the oEmbed data and oEmbed HTML. Improved WordPress oEmbed data and HTML markup with the Open Graph image, title, and description.
 
