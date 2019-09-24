@@ -3845,5 +3845,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			return $ret;
 		}
+
+		public static function insert_html_tag_attributes( $html, array $attr_names_values ) {
+
+			foreach ( $attr_names_values as $attr_name => $attr_value ) {
+
+				if ( false !== $attr_value && strpos( $html, ' ' . $attr_name . '=' ) === false ) {
+					$html = preg_replace( '/ *\/?' . '>/', ' ' . $attr_name . '="' . $attr_value . '"$0', $html );
+				}
+			}
+
+			return $html;
+		}
 	}
 }

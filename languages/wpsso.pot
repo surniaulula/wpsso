@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.4.0\n"
+"Project-Id-Version: WPSSO Core 6.4.1-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2491,8 +2491,8 @@ msgstr ""
 msgid "Posts, Pages, Custom Post Types"
 msgstr ""
 
-#: lib/gettext-pro.php:29 lib/media.php:127 lib/media.php:716 lib/media.php:877
-#: lib/media.php:1826 lib/pro/admin/advanced.php:212
+#: lib/gettext-pro.php:29 lib/media.php:126 lib/media.php:688 lib/media.php:849
+#: lib/media.php:1798 lib/pro/admin/advanced.php:212
 #: lib/std/admin/advanced.php:212
 msgid "Media Library"
 msgstr ""
@@ -3141,16 +3141,16 @@ msgstr ""
 msgid "NextGEN Gallery"
 msgstr ""
 
-#: lib/gettext-pro.php:168 lib/media.php:129 lib/media.php:1832
+#: lib/gettext-pro.php:168 lib/media.php:128 lib/media.php:1804
 #: lib/pro/media/ngg.php:135
 msgid "image ID %s"
 msgstr ""
 
-#: lib/gettext-pro.php:169 lib/media.php:134 lib/pro/media/ngg.php:139
+#: lib/gettext-pro.php:169 lib/media.php:133 lib/pro/media/ngg.php:139
 msgid "cropped"
 msgstr ""
 
-#: lib/gettext-pro.php:170 lib/media.php:136 lib/pro/media/ngg.php:141
+#: lib/gettext-pro.php:170 lib/media.php:135 lib/pro/media/ngg.php:141
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is too small for the "
 "required %4$s image dimensions."
@@ -3315,119 +3315,119 @@ msgstr ""
 msgid "Library class name for \"%s\" is not available."
 msgstr ""
 
-#: lib/media.php:64
+#: lib/media.php:63
 msgctxt "image size label"
 msgid "Thumbnail Image"
 msgstr ""
 
-#: lib/media.php:105
+#: lib/media.php:104
 msgid "full size original"
 msgstr ""
 
-#: lib/media.php:214
+#: lib/media.php:213
 msgid ""
 "Image %1$s in content ignored &mdash; the image width / height is too small "
 "for the required %2$s image dimensions."
 msgstr ""
 
-#: lib/media.php:215
+#: lib/media.php:214
 msgid ""
 "%1$s includes an additional 'data-wp-pid' attribute for Media Library images "
 "&mdash; if this image was selected from the Media Library before %1$s was "
 "activated, try removing and adding the image back to your content."
 msgstr ""
 
-#: lib/media.php:668
+#: lib/media.php:640
 msgid ""
 "The NGG integration module provided by %1$s is required to read information "
 "for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:717
+#: lib/media.php:689
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:719 lib/media.php:880
+#: lib/media.php:691 lib/media.php:852
 msgid ""
 "You may consider regenerating the thumbnails of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:736
+#: lib/media.php:708
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image dimensions for "
 "<a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:760
+#: lib/media.php:732
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image file path for "
 "<a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:878
+#: lib/media.php:850
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:881
+#: lib/media.php:853
 msgid ""
 "Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress "
 "%3$s function</a> reported an error when trying to create an image size from "
 "%4$s."
 msgstr ""
 
-#: lib/media.php:1324
+#: lib/media.php:1296
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1842
+#: lib/media.php:1814
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:1867
+#: lib/media.php:1839
 msgctxt "option label"
 msgid "Facebook Open Graph"
 msgstr ""
 
-#: lib/media.php:1876
+#: lib/media.php:1848
 msgctxt "option label"
 msgid "Google Schema"
 msgstr ""
 
-#: lib/media.php:1885
+#: lib/media.php:1857
 msgctxt "option label"
 msgid "Google Schema Article"
 msgstr ""
 
-#: lib/media.php:1894
+#: lib/media.php:1866
 msgctxt "option label"
 msgid "Google Schema Article AMP 1:1"
 msgstr ""
 
-#: lib/media.php:1903
+#: lib/media.php:1875
 msgctxt "option label"
 msgid "Google Schema Article AMP 4:3"
 msgstr ""
 
-#: lib/media.php:1912
+#: lib/media.php:1884
 msgctxt "option label"
 msgid "Google Schema Article AMP 16:9"
 msgstr ""
 
-#: lib/media.php:1950
+#: lib/media.php:1922
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:1978
+#: lib/media.php:1950
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."

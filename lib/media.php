@@ -53,7 +53,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			add_filter( 'image_make_intermediate_size', array( $this, 'maybe_update_image_filename' ), -5000, 1 );
 			add_filter( 'wp_get_attachment_image_attributes', array( $this, 'add_attachment_image_attributes' ), 10, 2 );
-			add_filter( 'get_header_image_tag', array( $this, 'get_header_image_tag' ), 10, 3 );
 			add_filter( 'get_image_tag', array( $this, 'get_image_tag' ), 10, 6 );
 		}
 
@@ -219,15 +218,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			return false;
 		}
+
 		public function allow_img_data_attributes() {
 
 			global $allowedposttags;
 
 			$allowedposttags[ 'img' ][ 'data-wp-pid' ] = true;
-
-			if ( ! empty( $this->p->options[ 'p_add_nopin_media_img_tag' ] ) ) {
-				$allowedposttags[ 'img' ][ 'nopin' ] = true;
-			}
 		}
 
 		/**
@@ -303,21 +299,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$attr[ 'data-wp-pid' ] = $attach->ID;
 
-			if ( ! empty( $this->p->options[ 'p_add_nopin_media_img_tag' ] ) ) {
-				$attr[ 'nopin' ] = 'nopin';
-			}
-
 			return $attr;
-		}
-
-		/**
-		 * $html = apply_filters( 'get_header_image_tag', $html, $header, $attr );
-		 */
-		public function get_header_image_tag( $html, $header, $attr ) {
-
-			return $this->add_header_image_tag( $html, array(
-				'nopin' => empty( $this->p->options[ 'p_add_nopin_header_img_tag' ] ) ? false : 'nopin'
-			) );
 		}
 
 		/**
@@ -325,19 +307,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 */
 		public function get_image_tag( $html, $id, $alt, $title, $align, $size ) {
 
-			return $this->add_header_image_tag( $html, array(
+			$html = SucomUtil::insert_html_tag_attributes( $html, array(
 				'data-wp-pid' => $id,
-				'nopin'       => empty( $this->p->options[ 'p_add_nopin_media_img_tag' ] ) ? false : 'nopin'
 			) );
-		}
-
-		private function add_header_image_tag( $html, $add_attr ) {
-
-			foreach ( $add_attr as $attr_name => $attr_value ) {
-				if ( false !== $attr_value && strpos( $html, ' ' . $attr_name . '=' ) === false ) {
-					$html = preg_replace( '/ *\/?'.'>/', ' ' . $attr_name . '="' . $attr_value . '"$0', $html );
-				}
-			}
 
 			return $html;
 		}
