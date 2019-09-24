@@ -945,7 +945,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'p_add_img_html'             => 0,			// Add Hidden Image for Pin It Button
 					'sc_publisher_url'           => '',
 					'seo_desc_max_len'           => 220,			// Search / SEO Description Length (hard limit).
-					'seo_author_name'            => 'display_name',	// Author / Person Name Format
+					'seo_author_name'            => 'display_name',		// Author / Person Name Format
 					'tumblr_publisher_url'       => '',
 					'yt_publisher_url'           => '',
 					

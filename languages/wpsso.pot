@@ -3244,13 +3244,13 @@ msgid "please disable the %1$s option in the %2$s settings page."
 msgstr ""
 
 #. translators: %s is the WP Job Manager plugin name
-#: lib/gettext-pro.php:200 lib/pro/job/wpjobmanager.php:333
+#: lib/gettext-pro.php:200 lib/pro/job/wpjobmanager.php:340
 msgctxt "option value"
 msgid "%s Organization"
 msgstr ""
 
 #. translators: %s is the WP Job Manager plugin name
-#: lib/gettext-pro.php:201 lib/pro/job/wpjobmanager.php:341
+#: lib/gettext-pro.php:201 lib/pro/job/wpjobmanager.php:348
 msgctxt "option value"
 msgid "%s Location"
 msgstr ""
@@ -6053,27 +6053,27 @@ msgstr ""
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
-#: lib/schema-single.php:885
+#: lib/schema-single.php:884
 msgid "adding schema organization"
 msgstr ""
 
-#: lib/schema-single.php:927
+#: lib/schema-single.php:926
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema-single.php:934
+#: lib/schema-single.php:933
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema-single.php:1076
+#: lib/schema-single.php:1075
 msgid "adding schema for person user ID %1$s"
 msgstr ""
 
-#: lib/schema-single.php:1232
+#: lib/schema-single.php:1231
 msgid "adding schema place"
 msgstr ""
 

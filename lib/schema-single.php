@@ -649,17 +649,16 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Job location.
 			 *
-			 * Use is_valid_option_id() to check that the id value is not true, false, null, or 'none'.
+			 * Use is_valid_option_id() to check that the id value is NOT true, false, null, or 'none'.
 			 */
-			if ( isset( $job_opts[ 'job_location_id' ] ) && SucomUtil::is_valid_option_id( $job_opts[ 'job_location_id' ] ) ) {	// Allow for 0.
+			if ( isset( $job_opts[ 'job_location_id' ] ) &&	// Allow for 0.
+				SucomUtil::is_valid_option_id( $job_opts[ 'job_location_id' ] ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'adding place data for job_location_id ' . $job_opts[ 'job_location_id' ] );
 				}
 
-				if ( ! self::add_place_data( $ret[ 'jobLocation' ],
-					$mod, $job_opts[ 'job_location_id' ], $list_element = false ) ) {
-
+				if ( ! self::add_place_data( $ret[ 'jobLocation' ], $mod, $job_opts[ 'job_location_id' ], $list_element = false ) ) {
 					unset( $ret[ 'jobLocation' ] );
 				}
 
