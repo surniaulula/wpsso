@@ -1501,7 +1501,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-p_add_nopin_header_img_tag':	// Add "nopin" to Site Header Image.
 
-							$text = __( 'Add a "nopin" attribute to the WordPress site header image to prevent the Pin It browser button from suggesting that image.', 'wpsso' );
+							$text = __( 'Add a "nopin" attribute to the site header and Gravatar images to prevent the Pin It browser button from suggesting those images.', 'wpsso' );
 
 							break;
 

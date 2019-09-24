@@ -4713,8 +4713,8 @@ msgstr ""
 
 #: lib/messages.php:1504
 msgid ""
-"Add a \"nopin\" attribute to the WordPress site header image to prevent the "
-"Pin It browser button from suggesting that image."
+"Add a \"nopin\" attribute to the site header and Gravatar images to prevent "
+"the Pin It browser button from suggesting those images."
 msgstr ""
 
 #: lib/messages.php:1510 lib/submenu/general.php:285
