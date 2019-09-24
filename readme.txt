@@ -446,6 +446,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Removed 'loading="lazy"' from the hidden Pinterest Pin It button image.
 	* Moved the 'nopin' image attribute filters from the WpssoMedia to the WpssoPinterest class.
 	* Added a 'nopin' attribute to Gravatar images when the Add "nopin" to Site Header Image option is enabled.
+	* Updated the WP Job Manager integration module to allow for a default Hiring Organization and Job Location.
 
 **Version 6.4.0 (2019/09/22)**
 
