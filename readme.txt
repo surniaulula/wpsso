@@ -445,6 +445,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Removed 'loading="lazy"' from the hidden Pinterest Pin It button image.
 	* Moved the 'nopin' image attribute filters from the WpssoMedia to the WpssoPinterest class.
+	* Added a 'nopin' attribute to Gravatar images when the Add "nopin" to Site Header Image option is enabled.
 
 **Version 6.4.0 (2019/09/22)**
 
@@ -473,6 +474,7 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 		* Schema Article AMP 4:3 (Google).
 		* Schema Article AMP 16:9 (Google).
 	* Added the 'uploadDate' and 'identifier' properties to Schema ImageObject markup.
+	* Added 'loading="lazy"' to the hidden Pinterest Pin It button image.
 	* Removed the "Meta Property Container" option (the WPSSO JSON add-on is a better alternative).
 * **Bugfixes**
 	* None.
