@@ -434,7 +434,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.4.1-dev.1 (2019/09/24)**
+**Version 6.4.1-dev.2 (2019/09/24)**
 
 * **New Features**
 	* None.
@@ -571,7 +571,7 @@ New resized image file names now include custom crop locations (top, botton, lef
 
 == Upgrade Notice ==
 
-= 6.4.1-dev.1 =
+= 6.4.1-dev.2 =
 
 (2019/09/24) Removed 'loading="lazy"' from the hidden Pinterest Pin It button image.
 
