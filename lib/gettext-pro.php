@@ -197,5 +197,5 @@ __( 'Ratings', 'wp-postratings' );
 // translators: Please ignore - translation uses a different text domain.
 __( 'Ratings Options', 'wp-postratings' );
 __( 'please disable the %1$s option in the %2$s settings page.', 'wpsso' );
-_x( '%s Organization', 'option value', 'wpsso' );
-_x( '%s Location', 'option value', 'wpsso' );
+_x( '%s Company Value', 'option value', 'wpsso' );
+_x( '%s Location Value', 'option value', 'wpsso' );

@@ -827,7 +827,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/**
-			 * Check that the id value is not true, false, null, or 'none'.
+			 * Check that the id is not true, false, null, or 'none'.
 			 */
 			if ( ! SucomUtil::is_valid_option_id( $org_id ) ) {
 				return 0;
@@ -1189,6 +1189,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->mark();
+			}
+
+			/**
+			 * Check that the id is not true, false, null, or 'none'.
+			 */
+			if ( ! SucomUtil::is_valid_option_id( $place_id ) ) {
+				return 0;
 			}
 
 			$size_name = $wpsso->lca . '-schema';

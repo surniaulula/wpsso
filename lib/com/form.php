@@ -363,9 +363,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			static $do_once_json_array   = array();	// Associative array by $json_key.
 			static $do_once_show_hide_js = null;	// Null or true.
 
-			$filter_name   = SucomUtil::sanitize_hookname( $this->lca . '_form_select_' . $name );
+			$filter_name = SucomUtil::sanitize_hookname( $this->lca . '_form_select_' . $name );
 
-			$values = apply_filters( $this->lca . '_form_select_' . $filter_name, $values );
+			$values = apply_filters( $filter_name, $values );
 
 			if ( ! is_array( $values ) ) {
 				return;

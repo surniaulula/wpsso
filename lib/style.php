@@ -424,27 +424,27 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				''              => 'plugin_col_def_width',
 			) as $css_class => $opt_key ) {
 
-				$custom_style_css .= "@media ( min-width:783px ) {\n";
+				$custom_style_css .= "\n@media ( min-width:783px ) {\n";
 
 				switch ( $css_class ) {
 
 					case '':	// Only apply to posts and pages.
 
-						$custom_style_css .= "table.wp-list-table.posts > thead > tr > th,\n";
-						$custom_style_css .= "table.wp-list-table.posts > tbody > tr > td,\n";
-						$custom_style_css .= "table.wp-list-table.pages > thead > tr > th,\n";
-						$custom_style_css .= "table.wp-list-table.pages > tbody > tr > td {\n";
+						$custom_style_css .= "\ttable.wp-list-table.posts > thead > tr > th,\n";
+						$custom_style_css .= "\ttable.wp-list-table.posts > tbody > tr > td,\n";
+						$custom_style_css .= "\ttable.wp-list-table.pages > thead > tr > th,\n";
+						$custom_style_css .= "\ttable.wp-list-table.pages > tbody > tr > td {\n";
 
 						break;
 
 					default:	// Apply to every WP List Table.
 
-						$custom_style_css .= 'table.wp-list-table.posts > thead > tr > th' . $css_class . ",\n";
-						$custom_style_css .= 'table.wp-list-table.posts > tbody > tr > td' . $css_class . ",\n";
-						$custom_style_css .= 'table.wp-list-table.pages > thead > tr > th' . $css_class . ",\n";
-						$custom_style_css .= 'table.wp-list-table.pages > tbody > tr > td' . $css_class . ",\n";
-						$custom_style_css .= 'table.wp-list-table > thead > tr > th' . $css_class . ",\n";
-						$custom_style_css .= 'table.wp-list-table > tbody > tr > td' . $css_class . " {\n";
+						$custom_style_css .= "\t" . 'table.wp-list-table.posts > thead > tr > th' . $css_class . ",\n";
+						$custom_style_css .= "\t" . 'table.wp-list-table.posts > tbody > tr > td' . $css_class . ",\n";
+						$custom_style_css .= "\t" . 'table.wp-list-table.pages > thead > tr > th' . $css_class . ",\n";
+						$custom_style_css .= "\t" . 'table.wp-list-table.pages > tbody > tr > td' . $css_class . ",\n";
+						$custom_style_css .= "\t" . 'table.wp-list-table > thead > tr > th' . $css_class . ",\n";
+						$custom_style_css .= "\t" . 'table.wp-list-table > tbody > tr > td' . $css_class . " {\n";
 
 						break;
 				}
@@ -456,11 +456,11 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				) as $css_name => $opt_suffix ) {
 
 					if ( ! empty( $this->p->options[ $opt_key . $opt_suffix ] ) ) {
-						$custom_style_css .= $css_name . ':' . $this->p->options[ $opt_key . $opt_suffix ] . ";\n";
+						$custom_style_css .= "\t\t" . $css_name . ':' . $this->p->options[ $opt_key . $opt_suffix ] . ";\n";
 					}
 				}
 
-				$custom_style_css .= "}\n";
+				$custom_style_css .= "\t}\n";
 				$custom_style_css .= "}\n";
 			}
 
@@ -522,7 +522,37 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				table.wp-list-table > tbody > tr > td.column-expirationdate {
 					width:7em;
 				}
-				table.wp-list-table > thead > tr > th.column-seotitle,	/* All In One SEO. */
+				table.wp-list-table > thead > tr > th.column-job_position,	/* WP Job Manager. */
+				table.wp-list-table > tbody > tr > td.column-job_position {
+					width:20%;
+				}
+				table.wp-list-table > thead > tr > th.column-job_listing_type,
+				table.wp-list-table > tbody > tr > td.column-job_listing_type {
+					width:5em;
+				}
+				table.wp-list-table > thead > tr > th.column-job_location,
+				table.wp-list-table > tbody > tr > td.column-job_location {
+					width:10em;
+				}
+				table.wp-list-table > thead > tr > th.column-job_status,
+				table.wp-list-table > tbody > tr > td.column-job_status,
+				table.wp-list-table > thead > tr > th.column-featured_job,
+				table.wp-list-table > tbody > tr > td.column-featured_job,
+				table.wp-list-table > thead > tr > th.column-filled,
+				table.wp-list-table > tbody > tr > td.column-filled {
+					width:1em;
+				}
+				table.wp-list-table > thead > tr > th.column-job_posted,
+				table.wp-list-table > tbody > tr > td.column-job_posted,
+				table.wp-list-table > thead > tr > th.column-job_expires,
+				table.wp-list-table > tbody > tr > td.column-job_expires {
+					width:7em;
+				}
+				table.wp-list-table > thead > tr > th.column-job_actions,
+				table.wp-list-table > tbody > tr > td.column-job_actions {
+					width:7em;
+				}
+				table.wp-list-table > thead > tr > th.column-seotitle,		/* All In One SEO. */
 				table.wp-list-table > tbody > tr > td.column-seotitle,
 				table.wp-list-table > thead > tr > th.column-seodesc,
 				table.wp-list-table > tbody > tr > td.column-seodesc {
@@ -532,7 +562,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				table.wp-list-table > tbody > tr > td.column-term-id {
 					width:40px;
 				}
-				table.wp-list-table > thead > tr > th.column-thumb,	/* WooCommerce Brands */
+				table.wp-list-table > thead > tr > th.column-thumb,		/* WooCommerce Brands */
 				table.wp-list-table > tbody > tr > td.column-thumb {
 					width:60px;
 				}
@@ -554,23 +584,26 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				}
 				table.wp-list-table > thead > tr > th.column-wpseo-focuskw,	/* Yoast SEO. */
 				table.wp-list-table > tbody > tr > td.column-wpseo-focuskw {
-					width:10%;
+					width:8em;
 				}
 				table.wp-list-table > thead > tr > th.column-template,
 				table.wp-list-table > tbody > tr > td.column-template {
 				        width:10%;
 				}
 				.column-' . $this->p->lca . '_schema_type {
+					width:' . $sort_cols[ 'schema_type' ][ 'width' ] . ' !important;
 					max-width:' . $sort_cols[ 'schema_type' ][ 'width' ] . ' !important;
 					white-space:nowrap;
 					overflow:hidden;
 				}
 				.column-' . $this->p->lca . '_og_type {
+					width:' . $sort_cols[ 'og_type' ][ 'width' ] . ' !important;
 					max-width:' . $sort_cols[ 'og_type' ][ 'width' ] . ' !important;
 					white-space:nowrap;
 					overflow:hidden;
 				}
 				.column-' . $this->p->lca . '_og_img { 
+					width:' . $sort_cols[ 'og_img' ][ 'width' ] . ' !important;
 					max-width:' . $sort_cols[ 'og_img' ][ 'width' ] . ' !important;
 				}
 				.column-' . $this->p->lca . '_og_img .preview_img { 

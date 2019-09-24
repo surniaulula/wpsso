@@ -309,10 +309,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->opts[ $post_id ][ 'options_filtered' ] = true;	// Set before calling filter to prevent recursion.
 
 					/**
-					 * Hooked by several integration modules to provide information about
-					 * the current content. E-commerce integration modules will provide
-					 * information on their product (price, condition, etc.) and disable these
-					 * options in the Document SSO metabox.
+					 * Hooked by several integration modules to provide information about the current content.
+					 * E-commerce integration modules will provide information on their product (price,
+					 * condition, etc.) and disable these options in the Document SSO metabox.
 					 */
 					$this->opts[ $post_id ] = apply_filters( $this->p->lca . '_get_post_options', $this->opts[ $post_id ], $post_id, $mod );
 
