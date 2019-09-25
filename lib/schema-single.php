@@ -301,6 +301,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/**
+			 * Begin creation of $event_opts array.
+			 *
 			 * Maybe get options from Premium version integration modules.
 			 */
 			$event_opts = apply_filters( $wpsso->lca . '_get_event_options', false, $mod, $event_id );
@@ -317,7 +319,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/**
-			 * Add ISO date options.
+			 * Add ISO formatted date options.
 			 */
 			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'checking for custom event start/end date and time' );
@@ -426,52 +428,21 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			if ( empty( $event_opts ) ) {	// $event_opts could be false or empty array.
-
-				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'exiting early: empty event options' );
-				}
-
-				return 0;
-			}
-
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
 			list( $event_type_id, $event_type_url ) = self::get_type_id_url( $json_data,
 				$event_opts, $opt_key = 'event_type', $def_type_id = 'event', $list_element );
 
+			/**
+			 * Begin Schema event markup creation.
+			 */
 			$ret = WpssoSchema::get_schema_type_context( $event_type_url );
 
-			/**
-			 * Event organizer person.
-			 *
-			 * Use is_valid_option_id() to check that the id value is not true, false, null, or 'none'.
-			 */
-			if ( isset( $event_opts[ 'event_organizer_person_id' ] ) ) {
-				if ( SucomUtil::is_valid_option_id( $event_opts[ 'event_organizer_person_id' ] ) ) {
-					if ( ! self::add_person_data( $ret[ 'organizer' ], $mod, $event_opts[ 'event_organizer_person_id' ], $list_element = true ) ) {
-						unset( $ret[ 'organizer' ] );
-					}
-				}
-			}
-
-			/**
-			 * Event venue.
-			 *
-			 * Use is_valid_option_id() to check that the id value is not true, false, null, or 'none'.
-			 */
-			if ( isset( $event_opts[ 'event_location_id' ] ) ) {
-				if ( SucomUtil::is_valid_option_id( $event_opts[ 'event_location_id' ] ) ) {
-					if ( ! self::add_place_data( $ret[ 'location' ], $mod, $event_opts[ 'event_location_id' ], $list_element = false ) ) {
-						unset( $ret[ 'location' ] );
-					}
-				}
-			}
-
 			WpssoSchema::add_data_itemprop_from_assoc( $ret, $event_opts, array(
-				'startDate' => 'event_start_date_iso',
-				'endDate'   => 'event_end_date_iso',
+				'inLanguage' => 'event_lang',
+				'startDate'  => 'event_start_date_iso',
+				'endDate'    => 'event_end_date_iso',
 			) );
 
 			if ( ! empty( $event_opts[ 'event_offers' ] ) && is_array( $event_opts[ 'event_offers' ] ) ) {
@@ -496,6 +467,55 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						 */
 						$ret[ 'offers' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/Offer', $offer );
 					}
+				}
+			}
+
+			/**
+			 * Add place, organization, and person data.
+			 */
+			foreach ( array( 
+				'event_location_id'         => 'location',
+				'event_organizer_org_id'    => 'organizer',
+				'event_organizer_person_id' => 'organizer',
+				'event_performer_org_id'    => 'performer',
+				'event_performer_person_id' => 'performer',
+			) as $opt_key => $prop_name ) {
+
+				/**
+				 * Check that the id is not true, false, null, or 'none'.
+				 */
+				if ( ! isset( $event_opts[ $opt_key ] ) || ! SucomUtil::is_valid_option_id( $event_opts[ $opt_key ] ) ) {
+					continue;
+				}
+
+				switch ( $opt_key ) {
+
+					case 'event_location_id':
+
+						WpssoSchemaSingle::add_place_data( $ret[ $prop_name ],
+							$mod, $event_opts[ $opt_key ], false );
+
+						break;
+
+					case 'event_organizer_org_id':
+					case 'event_performer_org_id':
+
+						WpssoSchemaSingle::add_organization_data( $ret[ $prop_name ],
+							$mod, $event_opts[ $opt_key ], 'org_logo_url', true );
+
+						break;
+
+					case 'event_organizer_person_id':
+					case 'event_performer_person_id':
+
+						WpssoSchemaSingle::add_person_data( $ret[ $prop_name ],
+							$mod, $event_opts[ $opt_key ], true );
+
+						break;
+				}
+
+				if ( empty( $ret[ $prop_name ] ) ) {	// Just in case.
+					unset( $ret[ $prop_name ] );
 				}
 			}
 
@@ -526,6 +546,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/**
+			 * Begin creation of $job_opts array.
+			 *
 			 * Maybe get options from Premium version integration modules.
 			 */
 			$job_opts = apply_filters( $wpsso->lca . '_get_job_options', false, $mod, $job_id );
@@ -541,32 +563,32 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				return 0;
 			}
 
-			/**
-			 * If not adding a list element, inherit the existing schema type url (if one exists).
-			 */
-			list( $job_type_id, $job_type_url ) = self::get_type_id_url( $json_data,
-				$job_opts, $opt_key = 'job_type', $def_type_id = 'job.posting', $list_element );
-
-			$ret = WpssoSchema::get_schema_type_context( $job_type_url );
-
 			if ( empty( $job_opts[ 'job_title' ] ) ) {
 				$job_opts[ 'job_title' ] = $wpsso->page->get_title( 0, '', $mod, true, false, true, 'schema_title', false );
 			}
 
 			/**
-			 * Create and add ISO formatted date options.
+			 * Add ISO formatted date options.
 			 */
 			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'checking for custom job expire date and time' );
 			}
 
 			WpssoSchema::add_mod_opts_date_iso( $mod, $job_opts, $opts_md_pre = array(
-				'job_expire' => 'schema_job_expire',	// Format: 'opt_prefix' => 'md_prefix'.
+				'job_expire' => 'schema_job_expire',	// Prefix for date, time, timezone, iso.
 			) );
 
 			/**
-			 * Add schema properties from the job options.
+			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
+			list( $job_type_id, $job_type_url ) = self::get_type_id_url( $json_data,
+				$job_opts, $opt_key = 'job_type', $def_type_id = 'job.posting', $list_element );
+
+			/**
+			 * Begin Schema job markup creation.
+			 */
+			$ret = WpssoSchema::get_schema_type_context( $job_type_url );
+
 			WpssoSchema::add_data_itemprop_from_assoc( $ret, $job_opts, array(
 				'title'        => 'job_title',
 				'validThrough' => 'job_expire_iso',
@@ -605,28 +627,39 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/**
-			 * Job hiring organization.
-			 *
-			 * Use is_valid_option_id() to check that the id value is not true, false, null, or 'none'.
+			 * Add place, organization, and person data.
 			 */
-			if ( isset( $job_opts[ 'job_hiring_org_id' ] ) ) {
-				if ( SucomUtil::is_valid_option_id( $job_opts[ 'job_hiring_org_id' ] ) ) {
-					if ( ! self::add_organization_data( $ret[ 'hiringOrganization' ], $mod, $job_opts[ 'job_hiring_org_id' ], 'org_logo_url', false ) ) {
-						unset( $ret[ 'hiringOrganization' ] );
-					}
-				}
-			}
+			foreach ( array( 
+				'job_hiring_org_id' => 'hiringOrganization',
+				'job_location_id'   => 'jobLocation',
+			) as $opt_key => $prop_name ) {
 
-			/**
-			 * Job location.
-			 *
-			 * Use is_valid_option_id() to check that the id value is NOT true, false, null, or 'none'.
-			 */
-			if ( isset( $job_opts[ 'job_location_id' ] ) ) {
-				if ( SucomUtil::is_valid_option_id( $job_opts[ 'job_location_id' ] ) ) {
-					if ( ! self::add_place_data( $ret[ 'jobLocation' ], $mod, $job_opts[ 'job_location_id' ], $list_element = false ) ) {
-						unset( $ret[ 'jobLocation' ] );
-					}
+				/**
+				 * Check that the id is not true, false, null, or 'none'.
+				 */
+				if ( ! isset( $job_opts[ $opt_key ] ) || ! SucomUtil::is_valid_option_id( $job_opts[ $opt_key ] ) ) {
+					continue;
+				}
+
+				switch ( $opt_key ) {
+
+					case 'job_hiring_org_id':
+
+						WpssoSchemaSingle::add_organization_data( $ret[ $prop_name ],
+							$mod, $job_opts[ $opt_key ], 'org_logo_url', true );
+
+						break;
+
+					case 'job_location_id':
+
+						WpssoSchemaSingle::add_place_data( $ret[ $prop_name ],
+							$mod, $job_opts[ $opt_key ], false );
+
+						break;
+				}
+
+				if ( empty( $ret[ $prop_name ] ) ) {	// Just in case.
+					unset( $ret[ $prop_name ] );
 				}
 			}
 
@@ -899,10 +932,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			/**
 			 * Place / location properties.
-			 *
-			 * Use is_valid_option_id() to check that the id value is not true, false, null, or 'none'.
 			 */
 			if ( isset( $org_opts[ 'org_place_id' ] ) ) {
+
+				/**
+				 * Check that the id is not true, false, null, or 'none'.
+				 */
 				if ( SucomUtil::is_valid_option_id( $org_opts[ 'org_place_id' ] ) ) {
 
 					/**

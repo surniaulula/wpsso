@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.5.0-dev.3\n"
+"Project-Id-Version: WPSSO Core 6.5.0-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6065,27 +6065,27 @@ msgstr ""
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
-#: lib/schema-single.php:842
+#: lib/schema-single.php:875
 msgid "adding schema organization"
 msgstr ""
 
-#: lib/schema-single.php:884
+#: lib/schema-single.php:917
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema-single.php:891
+#: lib/schema-single.php:924
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema-single.php:1021
+#: lib/schema-single.php:1056
 msgid "adding schema for person user ID %1$s"
 msgstr ""
 
-#: lib/schema-single.php:1180
+#: lib/schema-single.php:1215
 msgid "adding schema place"
 msgstr ""
 
