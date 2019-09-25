@@ -3243,16 +3243,11 @@ msgstr ""
 msgid "please disable the %1$s option in the %2$s settings page."
 msgstr ""
 
-#. translators: %s is the WP Job Manager plugin name
-#: lib/gettext-pro.php:200 lib/pro/job/wpjobmanager.php:349
+#. translators: %s is the WPJM plugin name
+#: lib/gettext-pro.php:200 lib/gettext-pro.php:201
+#: lib/pro/job/wpjobmanager.php:349 lib/pro/job/wpjobmanager.php:357
 msgctxt "option value"
-msgid "%s Company Value"
-msgstr ""
-
-#. translators: %s is the WP Job Manager plugin name
-#: lib/gettext-pro.php:201 lib/pro/job/wpjobmanager.php:357
-msgctxt "option value"
-msgid "%s Location Value"
+msgid "%s Job Data"
 msgstr ""
 
 #: lib/head.php:533
