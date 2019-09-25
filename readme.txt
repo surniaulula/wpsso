@@ -434,12 +434,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.4.1-dev.2 (2019/09/24)**
+**Version 6.5.0-dev.3 (2019/09/25)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Updated the WP Job Manager integration module to allow for a default Hiring Organization and Job Location from the WPSSO ORG and WPSSO PLM add-ons.
+	* Rewrite of the post, term, and user `get_options()` methods to better handle fallback to default values.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -571,9 +571,9 @@ New resized image file names now include custom crop locations (top, botton, lef
 
 == Upgrade Notice ==
 
-= 6.4.1-dev.2 =
+= 6.5.0-dev.3 =
 
-(2019/09/24) Updated the WP Job Manager integration module. Removed 'loading="lazy"' from the hidden Pinterest Pin It button image.
+(2019/09/25) Rewrite of the post, term, and user `get_options()` methods to better handle fallback to default values.
 
 = 6.4.0 =
 
