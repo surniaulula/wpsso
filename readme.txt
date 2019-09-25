@@ -439,13 +439,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Rewrite of the post, term, and user `get_options()` methods to better handle fallback to default values.
+	* Refactored of the post, term, and user `get_options()` methods to better handle fallback to default values.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Removed 'loading="lazy"' from the hidden Pinterest Pin It button image.
-	* Moved the 'nopin' image attribute filters from the WpssoMedia to the WpssoPinterest class.
 	* Added a 'nopin' attribute to Gravatar images when the Add "nopin" to Site Header Image option is enabled.
+	* Moved the 'nopin' image attribute filters from the WpssoMedia to the WpssoPinterest class.
+	* Removed 'loading="lazy"' from the hidden Pinterest Pin It button image.
+	* Removed the deprecated 'wpsso_get_event_location_id' filter since selecting a Schema Place for the post / page forces the Schema type to a place.
 
 **Version 6.4.0 (2019/09/22)**
 
@@ -573,7 +574,7 @@ New resized image file names now include custom crop locations (top, botton, lef
 
 = 6.5.0-dev.4 =
 
-(2019/09/25) Rewrite of the post, term, and user `get_options()` methods to better handle fallback to default values.
+(2019/09/25) Refactored of the post, term, and user `get_options()` methods to better handle fallback to default values.
 
 = 6.4.0 =
 
