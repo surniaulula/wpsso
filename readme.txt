@@ -439,14 +439,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Updated the WP Job Manager integration module to allow for a default Hiring Organization and Job Location from the WPSSO ORG and WPSSO PLM add-ons.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
 	* Removed 'loading="lazy"' from the hidden Pinterest Pin It button image.
 	* Moved the 'nopin' image attribute filters from the WpssoMedia to the WpssoPinterest class.
 	* Added a 'nopin' attribute to Gravatar images when the Add "nopin" to Site Header Image option is enabled.
-	* Updated the WP Job Manager integration module to allow for a default Hiring Organization and Job Location.
 
 **Version 6.4.0 (2019/09/22)**
 
@@ -574,7 +573,7 @@ New resized image file names now include custom crop locations (top, botton, lef
 
 = 6.4.1-dev.2 =
 
-(2019/09/24) Removed 'loading="lazy"' from the hidden Pinterest Pin It button image.
+(2019/09/24) Updated the WP Job Manager integration module. Removed 'loading="lazy"' from the hidden Pinterest Pin It button image.
 
 = 6.4.0 =
 
