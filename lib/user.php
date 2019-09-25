@@ -146,14 +146,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 *	save_options()
 		 *	delete_options()
 		 */
-		public function get_options( $user_id, $md_key = false, $filter_opts = true, $complete_opts = false ) {
+		public function get_options( $user_id, $md_key = false, $filter_opts = true, $pad_opts = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
-					'user_id'       => $user_id, 
-					'md_key'        => $md_key, 
-					'filter_opts'   => $filter_opts, 
-					'complete_opts' => $complete_opts,	// Fallback to value in meta defaults.
+					'user_id'     => $user_id, 
+					'md_key'      => $md_key, 
+					'filter_opts' => $filter_opts, 
+					'pad_opts'    => $pad_opts,	// Fallback to value in meta defaults.
 				) );
 			}
 
@@ -170,9 +170,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			static $local_cache = array();
 
 			$cache_id = SucomUtil::get_assoc_salt( array(
-				'id'       => $user_id,
-				'filter'   => $filter_opts,
-				'complete' => $complete_opts,
+				'id'     => $user_id,
+				'filter' => $filter_opts,
+				'pad'    => $pad_opts,
 			) );
 
 			/**
@@ -242,7 +242,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 			}
 
-			return $this->return_options( $user_id, $md_opts, $md_key, $complete_opts );
+			return $this->return_options( $user_id, $md_opts, $md_key, $pad_opts );
 		}
 
 		public function save_options( $user_id, $rel_id = false ) {

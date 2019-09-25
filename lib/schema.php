@@ -151,7 +151,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
-				$org_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_organization_org_id', $filter_opts = true, $complete_opts = true );
+				$org_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_organization_org_id', $filter_opts = true, $pad_opts = true );
 			} else {
 				$org_id = null;
 			}
@@ -230,7 +230,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
-				$user_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_person_id', $filter_opts = true, $complete_opts = true );
+				$user_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_person_id', $filter_opts = true, $pad_opts = true );
 			} else {
 				$user_id = null;
 			}

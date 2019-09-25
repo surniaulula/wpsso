@@ -155,23 +155,23 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		 *	save_options()
 		 *	delete_options()
 		 */
-		public function get_options( $term_id, $md_key = false, $filter_opts = true, $complete_opts = false ) {
+		public function get_options( $term_id, $md_key = false, $filter_opts = true, $pad_opts = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
-					'term_id'       => $term_id, 
-					'md_key'        => $md_key, 
-					'filter_opts'   => $filter_opts, 
-					'complete_opts' => $complete_opts,	// Fallback to value in meta defaults.
+					'term_id'     => $term_id, 
+					'md_key'      => $md_key, 
+					'filter_opts' => $filter_opts, 
+					'pad_opts'    => $pad_opts,	// Fallback to value in meta defaults.
 				) );
 			}
 
 			static $local_cache = array();
 
 			$cache_id = SucomUtil::get_assoc_salt( array(
-				'id'       => $term_id,
-				'filter'   => $filter_opts,
-				'complete' => $complete_opts,
+				'id'     => $term_id,
+				'filter' => $filter_opts,
+				'pad'    => $pad_opts,
 			) );
 
 			/**
@@ -231,7 +231,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				}
 			}
 
-			return $this->return_options( $term_id, $md_opts, $md_key, $complete_opts );
+			return $this->return_options( $term_id, $md_opts, $md_key, $pad_opts );
 		}
 
 		public function save_options( $term_id, $term_tax_id = false ) {

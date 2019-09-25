@@ -232,23 +232,23 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 *	save_options()
 		 *	delete_options()
 		 */
-		public function get_options( $post_id, $md_key = false, $filter_opts = true, $complete_opts = false ) {
+		public function get_options( $post_id, $md_key = false, $filter_opts = true, $pad_opts = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
-					'post_id'       => $post_id, 
-					'md_key'        => $md_key, 
-					'filter_opts'   => $filter_opts, 
-					'complete_opts' => $complete_opts,
+					'post_id'     => $post_id, 
+					'md_key'      => $md_key, 
+					'filter_opts' => $filter_opts, 
+					'pad_opts'    => $pad_opts,
 				) );
 			}
 
 			static $local_cache = array();
 
 			$cache_id = SucomUtil::get_assoc_salt( array(
-				'id'       => $post_id,
-				'filter'   => $filter_opts,
-				'complete' => $complete_opts,
+				'id'     => $post_id,
+				'filter' => $filter_opts,
+				'pad'    => $pad_opts,
 			) );
 
 			/**
@@ -319,7 +319,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 			}
 
-			return $this->return_options( $post_id, $md_opts, $md_key, $complete_opts );
+			return $this->return_options( $post_id, $md_opts, $md_key, $pad_opts );
 		}
 
 		public function save_options( $post_id, $rel_id = false ) {

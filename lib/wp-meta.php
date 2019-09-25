@@ -323,7 +323,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			}
 		}
 
-		public function get_options( $mod_id, $md_key = false, $filter_opts = true, $complete_opts = false ) {
+		public function get_options( $mod_id, $md_key = false, $filter_opts = true, $pad_opts = false ) {
 
 			if ( false === $md_key ) {
 				$ret_val = array();
@@ -361,11 +361,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return false;
 		}
 
-		protected function return_options( $mod_id, array $md_opts, $md_key = false, $complete_opts = false ) {
+		protected function return_options( $mod_id, array $md_opts, $md_key = false, $pad_opts = false ) {
 
-			if ( $complete_opts ) {
+			if ( $pad_opts ) {
 
-				if ( empty( $md_opts[ 'options_completed' ] ) ) {
+				if ( empty( $md_opts[ 'options_padded' ] ) ) {
 
 					$def_opts = $this->get_defaults( $mod_id );
 
@@ -378,7 +378,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 						}
 					}
 
-					$md_opts[ 'options_completed' ] = true;
+					$md_opts[ 'options_padded' ] = true;
 				}
 			}
 
