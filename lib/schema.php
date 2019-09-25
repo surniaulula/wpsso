@@ -151,13 +151,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
-
-				/**
-				 * Fallback to default organization ID of 'none'.
-				 */
-				$org_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_organization_org_id',
-					$filter_opts = true, $def_fallback = true );
-
+				$org_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_organization_org_id', $filter_opts = true, $complete_opts = true );
 			} else {
 				$org_id = null;
 			}
@@ -236,13 +230,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
-
-				/**
-				 * Fallback to default person ID of 'none'.
-				 */
-				$user_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_person_id',
-					$filter_opts = true, $def_fallback = true );
-
+				$user_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_person_id', $filter_opts = true, $complete_opts = true );
 			} else {
 				$user_id = null;
 			}
@@ -1925,10 +1913,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Return any 3rd party and custom post options for a given option type.
 		 * 
 		 * function wpsso_get_post_event_options( $post_id, $event_id = false ) {
-		 * 	WpssoSchema::get_post_md_type_opts( $post_id, 'event', $event_id );
+		 * 	WpssoSchema::get_post_type_options( $post_id, 'event', $event_id );
 		 * }
 		 */
-		public static function get_post_md_type_opts( $post_id, $md_type, $type_id = false ) {
+		public static function get_post_type_options( $post_id, $type, $type_id = false ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -1938,7 +1926,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( empty( $post_id ) ) {		// Just in case.
 				return false;
-			} elseif ( empty( $md_type ) ) {	// Just in case.
+			} elseif ( empty( $type ) ) {	// Just in case.
 				return false;
 			} elseif ( ! empty( $wpsso->post ) ) {	// Just in case.
 				$mod = $wpsso->post->get_mod( $post_id );
@@ -1946,61 +1934,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return false;
 			}
 
-			$md_opts = apply_filters( $wpsso->lca . '_get_' . $md_type . '_options', false, $mod, $type_id );
+			$type_opts = apply_filters( $wpsso->lca . '_get_' . $type . '_options', false, $mod, $type_id );
 
-			if ( ! empty( $md_opts ) ) {
+			if ( ! empty( $type_opts ) ) {
 				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log_arr( 'get_' . $md_type . '_options filters returned', $md_opts );
+					$wpsso->debug->log_arr( 'get_' . $type . '_options filters returned', $type_opts );
 				}
 			}
 
-			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->log( 'merging default, filter, and custom option values' );
-			}
+			$type_opts = WpssoUtil::complete_type_options( $type_opts, $mod, array( $type => 'schema_' . $type ) );
 
-			self::merge_custom_mod_opts( $mod, $md_opts, array( $md_type => 'schema_' . $md_type ) );
-
-			if ( has_filter( $wpsso->lca . '_get_' . $md_type . '_place_id' ) ) {	// Skip if no filters.
-
-				if ( ! isset( $md_opts[ $md_type . '_place_id' ] ) ) {
-					$md_opts[ $md_type . '_place_id' ] = null;		// Return null by default.
-				}
-
-				$md_opts[ $md_type . '_place_id' ] = apply_filters( $wpsso->lca . '_get_' . $md_type . '_place_id',
-					$md_opts[ $md_type . '_place_id' ], $mod, $type_id );
-
-				if ( $md_opts[ $md_type . '_place_id' ] === null ) {		// Unset if still null.
-					unset( $md_opts[ $md_type . '_place_id' ] );
-				}
-			}
-
-			return $md_opts;
-		}
-
-		public static function merge_custom_mod_opts( array $mod, &$opts, array $opts_md_pre ) {
-
-			if ( is_object( $mod[ 'obj' ] ) ) {	// Just in case.
-
-				$md_defs = (array) $mod[ 'obj' ]->get_defaults( $mod[ 'id' ] );
-
-				$md_opts = (array) $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
-
-				foreach ( $opts_md_pre as $opt_key => $md_pre ) {
-
-					$md_defs = SucomUtil::preg_grep_keys( '/^' . $md_pre . '_/', $md_defs, false, $opt_key . '_' );
-
-					$md_opts = SucomUtil::preg_grep_keys( '/^' . $md_pre . '_/', $md_opts, false, $opt_key . '_' );
-	
-					/**
-					 * Merge defaults, values from filters, and custom values (in that order).
-					 */
-					if ( is_array( $opts ) ) {
-						$opts = array_merge( $md_defs, $opts, $md_opts );
-					} else {
-						$opts = array_merge( $md_defs, $md_opts );
-					}
-				}
-			}
+			return $type_opts;
 		}
 
 		/**

@@ -155,107 +155,83 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		 *	save_options()
 		 *	delete_options()
 		 */
-		public function get_options( $term_id, $md_key = false, $filter_opts = true, $def_fallback = false ) {
+		public function get_options( $term_id, $md_key = false, $filter_opts = true, $complete_opts = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
-					'term_id'      => $term_id, 
-					'md_key'       => $md_key, 
-					'filter_opts'  => $filter_opts, 
-					'def_fallback' => $def_fallback,	// Fallback to value in meta defaults.
+					'term_id'       => $term_id, 
+					'md_key'        => $md_key, 
+					'filter_opts'   => $filter_opts, 
+					'complete_opts' => $complete_opts,	// Fallback to value in meta defaults.
 				) );
 			}
 
-			if ( empty( $this->opts[ $term_id ][ 'options_filtered' ] ) ) {
+			static $local_cache = array();
 
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'options_filtered key is empty' );
-					$this->p->debug->log( 'retrieving term_id ' . $term_id . ' meta' );
+			$cache_id = SucomUtil::get_assoc_salt( array(
+				'id'       => $term_id,
+				'filter'   => $filter_opts,
+				'complete' => $complete_opts,
+			) );
+
+			/**
+			 * Maybe initialize the cache.
+			 */
+			if ( ! isset( $local_cache[ $cache_id ] ) ) {
+				$local_cache[ $cache_id ] = false;
+			}
+
+			$md_opts =& $local_cache[ $cache_id ];	// Shortcut variable name.
+
+			if ( false === $md_opts ) {
+
+				$md_opts = self::get_term_meta( $term_id, WPSSO_META_NAME, true );
+
+				if ( ! is_array( $md_opts ) ) {
+					$md_opts = array();
 				}
 
-				$this->opts[ $term_id ] = self::get_term_meta( $term_id, WPSSO_META_NAME, true );
-
-				if ( ! is_array( $this->opts[ $term_id ] ) ) {
-					$this->opts[ $term_id ] = array();
-				}
-
-				if ( ! empty( $this->opts[ $term_id ] ) && 
-					( empty( $this->opts[ $term_id ][ 'options_version' ] ) || 
-						$this->opts[ $term_id ][ 'options_version' ] !== $this->p->cf[ 'opt' ][ 'version' ] ) ) {
+				/**
+				 * Check if options need to be upgraded.
+				 */
+				if ( $this->upgrade_options( $md_opts ) ) {
 
 					/**
-					 * Save the current opt_version number.
+					 * Save the upgraded options.
 					 */
-					$prev_version = empty( $this->opts[ $term_id ][ 'plugin_' . $this->p->lca . '_opt_version' ] ) ?	
-						0 : $this->opts[ $term_id ][ 'plugin_' . $this->p->lca . '_opt_version' ];
-
-					$this->p->util->rename_opts_by_ext( $this->opts[ $term_id ],
-						apply_filters( $this->p->lca . '_rename_md_options_keys',
-							self::$rename_md_options_keys ) );
-
-					self::update_term_meta( $term_id, WPSSO_META_NAME, $this->opts[ $term_id ] );
+					self::update_term_meta( $term_id, WPSSO_META_NAME, $md_opts );
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'term_id ' . $term_id . ' settings upgraded' );
 					}
 				}
 
-				if ( $filter_opts ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log_arr( 'term_id ' . $user_id . ' meta options read', $md_opts );
+				}
+			}
+
+			if ( $filter_opts ) {
+
+				if ( empty( $md_opts[ 'options_filtered' ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'applying get_term_options filters for term_id ' . $term_id . ' meta' );
 					}
 
-					$this->opts[ $term_id ][ 'options_filtered' ] = true;	// Set before calling filter to prevent recursion.
+					$md_opts[ 'options_filtered' ] = true;	// Set before calling filter to prevent recursion.
 
 					$mod = $this->get_mod( $term_id );
 
-					$this->opts[ $term_id ] = apply_filters( $this->p->lca . '_get_term_options', $this->opts[ $term_id ], $term_id, $mod );
+					$md_opts = apply_filters( $this->p->lca . '_get_term_options', $md_opts, $term_id, $mod );
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log_arr( 'term meta options', $this->opts[ $term_id ] );
+						$this->p->debug->log_arr( 'term_id ' . $user_id . ' meta options filtered', $md_opts );
 					}
-
-				} elseif ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'get_term_options filter skipped' );
 				}
-
-			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'options from local cache for term_id ' . $term_id );
 			}
 
-			if ( false !== $md_key ) {
-
-				if ( isset( $this->opts[ $term_id ][ $md_key ] ) && $this->opts[ $term_id ][ $md_key ] !== '' ) {	// just in case
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'returning meta options key: ' . $md_key . ' = ' . $this->opts[ $term_id ][ $md_key ] );
-					}
-
-					return $this->opts[ $term_id ][ $md_key ];
-
-				} elseif ( $def_fallback ) {
-
-					$def_val = $this->get_defaults( $term_id, $md_key );
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'returning default value: ' . $md_key . ' = ' . $def_val );
-					}
-
-					return $def_val;
-
-				} else {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'returning null: ' . $md_key . ' options key not found' );
-					}
-
-					return null;
-				}
-
-			} else {
-				return $this->opts[ $term_id ];
-			}
+			return $this->return_options( $term_id, $md_opts, $md_key, $complete_opts );
 		}
 
 		public function save_options( $term_id, $term_tax_id = false ) {

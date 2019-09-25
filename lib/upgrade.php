@@ -321,8 +321,10 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 
 			if ( $options_name === constant( 'WPSSO_OPTIONS_NAME' ) ) {
 
-				$this->p->util->rename_opts_by_ext( $opts, apply_filters( $this->p->lca . '_rename_options_keys',
-					self::$rename_options_keys ) );
+				$rename_filter_name  = $this->p->lca . '_rename_options_keys';
+				$rename_options_keys = apply_filters( $rename_filter_name, self::$rename_options_keys );
+
+				$this->p->util->rename_opts_by_ext( $opts, $rename_options_keys );
 
 				/**
 				 * Check for schema type IDs to be renamed.

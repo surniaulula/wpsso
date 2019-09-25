@@ -232,133 +232,94 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 *	save_options()
 		 *	delete_options()
 		 */
-		public function get_options( $post_id, $md_key = false, $filter_opts = true, $def_fallback = false ) {
+		public function get_options( $post_id, $md_key = false, $filter_opts = true, $complete_opts = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
-					'post_id'      => $post_id, 
-					'md_key'       => $md_key, 
-					'filter_opts'  => $filter_opts, 
-					'def_fallback' => $def_fallback,	// Fallback to value in meta defaults.
+					'post_id'       => $post_id, 
+					'md_key'        => $md_key, 
+					'filter_opts'   => $filter_opts, 
+					'complete_opts' => $complete_opts,
 				) );
 			}
 
-			if ( empty( $this->opts[ $post_id ][ 'options_filtered' ] ) ) {
+			static $local_cache = array();
 
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'options_filtered key is empty' );
-					$this->p->debug->log( 'retrieving post_id ' . $post_id . ' meta' );
-				}
+			$cache_id = SucomUtil::get_assoc_salt( array(
+				'id'       => $post_id,
+				'filter'   => $filter_opts,
+				'complete' => $complete_opts,
+			) );
 
-				$this->opts[ $post_id ] = get_post_meta( $post_id, WPSSO_META_NAME, $single = true );
+			/**
+			 * Maybe initialize the cache.
+			 */
+			if ( ! isset( $local_cache[ $cache_id ] ) ) {
+				$local_cache[ $cache_id ] = false;
+			}
 
-				if ( ! is_array( $this->opts[ $post_id ] ) ) {
-					$this->opts[ $post_id ] = array();
+			$md_opts =& $local_cache[ $cache_id ];	// Shortcut variable name.
+
+			if ( false === $md_opts ) {
+
+				$md_opts = get_post_meta( $post_id, WPSSO_META_NAME, $single = true );
+
+				if ( ! is_array( $md_opts ) ) {
+					$md_opts = array();
 				}
 
 				/**
-				 * Check if the options version string is current (example: -wpsso566pro-wpssojson9pro ).
-				*/
-				if ( ! empty( $this->opts[ $post_id ] ) && 
-					( empty( $this->opts[ $post_id ][ 'options_version' ] ) || 
-						$this->opts[ $post_id ][ 'options_version' ] !== $this->p->cf[ 'opt' ][ 'version' ] ) ) {
+				 * Check if options need to be upgraded.
+				 */
+				if ( $this->upgrade_options( $md_opts ) ) {
 
 					/**
-					 * Save the current wpsso opt_version number.
+					 * Save the upgraded options.
 					 */
-					$prev_version = empty( $this->opts[ $post_id ][ 'plugin_' . $this->p->lca . '_opt_version' ] ) ?	
-						0 : $this->opts[ $post_id ][ 'plugin_' . $this->p->lca . '_opt_version' ];
-
-					$this->p->util->rename_opts_by_ext( $this->opts[ $post_id ],
-						apply_filters( $this->p->lca . '_rename_md_options_keys',
-							self::$rename_md_options_keys ) );
-
-					/**
-					 * Check for schema type IDs to be renamed.
-					 */
-					$keys_preg = 'schema_type|plm_place_schema_type';
-
-					foreach ( SucomUtil::preg_grep_keys( '/^(' . $keys_preg . ')(_[0-9]+)?$/', $this->opts[ $post_id ] ) as $key => $val ) {
-						if ( ! empty( $this->p->cf[ 'head' ][ 'schema_renamed' ][ $val ] ) ) {
-							$this->opts[ $post_id ][ $key ] = $this->p->cf[ 'head' ][ 'schema_renamed' ][ $val ];
-						}
-					}
-
-					update_post_meta( $post_id, WPSSO_META_NAME, $this->opts[ $post_id ] );
+					update_post_meta( $post_id, WPSSO_META_NAME, $md_opts );
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'post_id ' . $post_id . ' settings upgraded' );
 					}
 				}
 
-				if ( $filter_opts ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log_arr( 'post_id ' . $post_id . ' meta options read', $md_opts );
+				}
+			}
+
+			if ( $filter_opts ) {
+
+				if ( empty( $md_opts[ 'options_filtered' ] ) ) {
 
 					$mod = $this->get_mod( $post_id );
 
 					/**
-					 * The 'get_custom_fields' filter is executed BEFORE the
-					 * 'wpsso_get_post_options' filter, so values retrieved from
-					 * custom fields may get* overwritten by later filters.
+					 * The 'get_custom_fields' filter is executed BEFORE the 'wpsso_get_post_options' filter,
+					 * so values retrieved from custom fields may get overwritten by later filters.
 					 */
-					$this->opts[ $post_id ] = apply_filters( $this->p->lca . '_get_custom_fields', $this->opts[ $post_id ], get_post_meta( $post_id ) );
+					$md_opts = apply_filters( $this->p->lca . '_get_custom_fields', $md_opts, get_post_meta( $post_id ) );
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'applying get_post_options filters for post_id ' . $post_id . ' meta' );
 					}
 
-					$this->opts[ $post_id ][ 'options_filtered' ] = true;	// Set before calling filter to prevent recursion.
+					$md_opts[ 'options_filtered' ] = true;	// Set before calling filter to prevent recursion.
 
 					/**
 					 * Hooked by several integration modules to provide information about the current content.
 					 * E-commerce integration modules will provide information on their product (price,
 					 * condition, etc.) and disable these options in the Document SSO metabox.
 					 */
-					$this->opts[ $post_id ] = apply_filters( $this->p->lca . '_get_post_options', $this->opts[ $post_id ], $post_id, $mod );
+					$md_opts = apply_filters( $this->p->lca . '_get_post_options', $md_opts, $post_id, $mod );
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log_arr( 'post meta options', $this->opts[ $post_id ] );
+						$this->p->debug->log_arr( 'post_id ' . $post_id . ' meta options filtered', $md_opts );
 					}
-
-				} elseif ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'get_post_options filter skipped' );
 				}
-
-			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'options from local cache for post_id ' . $post_id );
 			}
 
-			if ( false !== $md_key ) {
-
-				if ( isset( $this->opts[ $post_id ][ $md_key ] ) && $this->opts[ $post_id ][ $md_key ] !== '' ) {	// just in case
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'returning meta value: ' . $md_key . ' = ' . $this->opts[ $post_id ][ $md_key ] );
-					}
-
-					return $this->opts[ $post_id ][ $md_key ];
-
-				} elseif ( $def_fallback ) {
-
-					$def_val = $this->get_defaults( $post_id, $md_key );
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'returning default value: ' . $md_key . ' = ' . $def_val );
-					}
-
-					return $def_val;
-
-				} else {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'returning null value: ' . $md_key . ' options key not found' );
-					}
-
-					return null;
-				}
-
-			} else {
-				return $this->opts[ $post_id ];
-			}
+			return $this->return_options( $post_id, $md_opts, $md_key, $complete_opts );
 		}
 
 		public function save_options( $post_id, $rel_id = false ) {

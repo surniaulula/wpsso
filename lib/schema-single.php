@@ -232,9 +232,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$media_url = SucomUtil::get_mt_media_url( $mt_single, $mt_pre );
 
 			if ( empty( $media_url ) ) {
+
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'exiting early: ' . $mt_pre . ' URL values are empty' );
 				}
+
 				return 0;	// Return count of videos added.
 			}
 
@@ -303,30 +305,16 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			$event_opts = apply_filters( $wpsso->lca . '_get_event_options', false, $mod, $event_id );
 
-			if ( ! empty( $event_opts ) ) {
+			$event_opts = WpssoUtil::complete_type_options( $event_opts, $mod, array( 'event' => 'schema_event' ) );
+
+			if ( empty( $event_opts ) ) {
 
 				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log_arr( 'get_event_options filters returned', $event_opts );
+					$wpsso->debug->log( 'exiting early: no event options' );
 				}
-			}
 
-			/**
-			 * Add optional place ID.
-			 */
-			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->log( 'checking for custom event place id (null by default)' );
+				return 0;
 			}
-
-			if ( ! isset( $event_opts[ 'event_location_id' ] ) ) {	// Make sure the array index exists.
-				$event_opts[ 'event_location_id' ] = null;
-			}
-
-			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->log( 'applying the "get_event_location_id" filter to event place id ' . 
-					( $event_opts[ 'event_location_id' ] === null ? 'null' : $event_opts[ 'event_location_id' ] ) );
-			}
-
-			$event_opts[ 'event_location_id' ] = apply_filters( $wpsso->lca . '_get_event_location_id', $event_opts[ 'event_location_id' ], $mod, $event_id );
 
 			/**
 			 * Add ISO date options.
@@ -352,7 +340,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$have_event_offers = false;
 			$event_offers_max  = SucomUtil::get_const( 'WPSSO_SCHEMA_EVENT_OFFERS_MAX', 10 );
 			$def_sharing_url   = $wpsso->util->get_sharing_url( $mod );
-
 
 			foreach ( range( 0, $event_offers_max - 1, 1 ) as $key_num ) {
 
@@ -461,10 +448,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 *
 			 * Use is_valid_option_id() to check that the id value is not true, false, null, or 'none'.
 			 */
-			if ( isset( $event_opts[ 'event_organizer_person_id' ] ) && SucomUtil::is_valid_option_id( $event_opts[ 'event_organizer_person_id' ] ) ) {
-
-				if ( ! self::add_person_data( $ret[ 'organizer' ], $mod, $event_opts[ 'event_organizer_person_id' ], $list_element = true ) ) {
-					unset( $ret[ 'organizer' ] );
+			if ( isset( $event_opts[ 'event_organizer_person_id' ] ) ) {
+				if ( SucomUtil::is_valid_option_id( $event_opts[ 'event_organizer_person_id' ] ) ) {
+					if ( ! self::add_person_data( $ret[ 'organizer' ], $mod, $event_opts[ 'event_organizer_person_id' ], $list_element = true ) ) {
+						unset( $ret[ 'organizer' ] );
+					}
 				}
 			}
 
@@ -473,18 +461,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 *
 			 * Use is_valid_option_id() to check that the id value is not true, false, null, or 'none'.
 			 */
-			if ( isset( $event_opts[ 'event_location_id' ] ) && SucomUtil::is_valid_option_id( $event_opts[ 'event_location_id' ] ) ) {
-
-				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'adding place data for event_location_id ' . $event_opts[ 'event_location_id' ] );
+			if ( isset( $event_opts[ 'event_location_id' ] ) ) {
+				if ( SucomUtil::is_valid_option_id( $event_opts[ 'event_location_id' ] ) ) {
+					if ( ! self::add_place_data( $ret[ 'location' ], $mod, $event_opts[ 'event_location_id' ], $list_element = false ) ) {
+						unset( $ret[ 'location' ] );
+					}
 				}
-
-				if ( ! self::add_place_data( $ret[ 'location' ], $mod, $event_opts[ 'event_location_id' ], $list_element = false ) ) {
-					unset( $ret[ 'location' ] );
-				}
-
-			} elseif ( $wpsso->debug->enabled ) {
-				$wpsso->debug->log( 'event_location_id is empty or none' );
 			}
 
 			WpssoSchema::add_data_itemprop_from_assoc( $ret, $event_opts, array(
@@ -548,21 +530,16 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			$job_opts = apply_filters( $wpsso->lca . '_get_job_options', false, $mod, $job_id );
 
-			if ( ! empty( $job_opts ) ) {
+			$job_opts = WpssoUtil::complete_type_options( $job_opts, $mod, array( 'job' => 'schema_job' ) );
+
+			if ( empty( $job_opts ) ) {
 
 				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log_arr( 'get_job_options filters returned', $job_opts );
+					$wpsso->debug->log( 'exiting early: no job options' );
 				}
-			}
 
-			/**
-			 * Override job options from filters with custom meta values (if any).
-			 */
-			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->log( 'merging default, filter, and custom option values' );
+				return 0;
 			}
-
-			WpssoSchema::merge_custom_mod_opts( $mod, $job_opts, array( 'job' => 'schema_job' ) );
 
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
@@ -621,7 +598,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Add single employment type options (value must be non-empty).
 			 */
-			foreach ( SucomUtil::preg_grep_keys( '/^job_empl_type_/', $job_opts, false, '' ) as $empl_type => $checked ) {
+			foreach ( SucomUtil::preg_grep_keys( '/^job_empl_type_(.*)(:is)?$/U', $job_opts, false, '$1' ) as $empl_type => $checked ) {
 				if ( ! empty( $checked ) ) {
 					$ret[ 'employmentType' ][] = $empl_type;
 				}
@@ -632,18 +609,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 *
 			 * Use is_valid_option_id() to check that the id value is not true, false, null, or 'none'.
 			 */
-			if ( isset( $job_opts[ 'job_hiring_org_id' ] ) && SucomUtil::is_valid_option_id( $job_opts[ 'job_hiring_org_id' ] ) ) {	// Allow for 0.
-
-				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'adding organization data for job_hiring_org_id ' . $job_opts[ 'job_hiring_org_id' ] );
+			if ( isset( $job_opts[ 'job_hiring_org_id' ] ) ) {
+				if ( SucomUtil::is_valid_option_id( $job_opts[ 'job_hiring_org_id' ] ) ) {
+					if ( ! self::add_organization_data( $ret[ 'hiringOrganization' ], $mod, $job_opts[ 'job_hiring_org_id' ], 'org_logo_url', false ) ) {
+						unset( $ret[ 'hiringOrganization' ] );
+					}
 				}
-
-				if ( ! self::add_organization_data( $ret[ 'hiringOrganization' ], $mod, $job_opts[ 'job_hiring_org_id' ], 'org_logo_url', false ) ) {
-					unset( $ret[ 'hiringOrganization' ] );
-				}
-
-			} elseif ( $wpsso->debug->enabled ) {
-				$wpsso->debug->log( 'job_hiring_org_id is empty or none' );
 			}
 
 			/**
@@ -651,19 +622,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 *
 			 * Use is_valid_option_id() to check that the id value is NOT true, false, null, or 'none'.
 			 */
-			if ( isset( $job_opts[ 'job_location_id' ] ) &&	// Allow for 0.
-				SucomUtil::is_valid_option_id( $job_opts[ 'job_location_id' ] ) ) {
-
-				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'adding place data for job_location_id ' . $job_opts[ 'job_location_id' ] );
+			if ( isset( $job_opts[ 'job_location_id' ] ) ) {
+				if ( SucomUtil::is_valid_option_id( $job_opts[ 'job_location_id' ] ) ) {
+					if ( ! self::add_place_data( $ret[ 'jobLocation' ], $mod, $job_opts[ 'job_location_id' ], $list_element = false ) ) {
+						unset( $ret[ 'jobLocation' ] );
+					}
 				}
-
-				if ( ! self::add_place_data( $ret[ 'jobLocation' ], $mod, $job_opts[ 'job_location_id' ], $list_element = false ) ) {
-					unset( $ret[ 'jobLocation' ] );
-				}
-
-			} elseif ( $wpsso->debug->enabled ) {
-				$wpsso->debug->log( 'job_location_id is empty or none' );
 			}
 
 			$ret = apply_filters( $wpsso->lca . '_json_data_single_job', $ret, $mod, $job_id );
@@ -840,13 +804,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			$org_opts = apply_filters( $wpsso->lca . '_get_organization_options', false, $mod, $org_id );
 
-			if ( ! empty( $org_opts ) ) {
-
-				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log_arr( 'get_organization_options filters returned', $org_opts );
-				}
-
-			} else {
+			if ( empty( $org_opts ) ) {
 
 				if ( $org_id === 'site' ) {
 
@@ -944,38 +902,31 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 *
 			 * Use is_valid_option_id() to check that the id value is not true, false, null, or 'none'.
 			 */
-			if ( isset( $org_opts[ 'org_place_id' ] ) && SucomUtil::is_valid_option_id( $org_opts[ 'org_place_id' ] ) ) {
-
-				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'adding place / location properties' );
-				}
-
-				/**
-				 * Check for a custom place id that might have precedence.
-				 *
-				 * 'plm_place_id' can be 'none', 'custom', or numeric (including 0).
-				 */
-				if ( ! empty( $mod[ 'obj' ] ) ) {
+			if ( isset( $org_opts[ 'org_place_id' ] ) ) {
+				if ( SucomUtil::is_valid_option_id( $org_opts[ 'org_place_id' ] ) ) {
 
 					/**
-					 * Fallback to default place ID of 'none'.
+					 * Check for a custom place id that might have precedence.
+					 *
+					 * 'plm_place_id' can be 'none', 'custom', or numeric (including 0).
 					 */
-					$place_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'plm_place_id' );
-
-				} else {
-					$place_id = null;
-				}
-
-				if ( null === $place_id ) {
-					$place_id = $org_opts[ 'org_place_id' ];
-				} else {
-					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( 'overriding org_place_id ' . $org_opts[ 'org_place_id' ] . ' with plm_place_id ' . $place_id );
+					if ( ! empty( $mod[ 'obj' ] ) ) {
+						$place_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'plm_place_id' );
+					} else {
+						$place_id = null;
 					}
-				}
 
-				if ( ! self::add_place_data( $ret[ 'location' ], $mod, $place_id, $list_element = false ) ) {
-					unset( $ret[ 'location' ] );	// Prevent null assignment.
+					if ( null === $place_id ) {
+						$place_id = $org_opts[ 'org_place_id' ];
+					} else {
+						if ( $wpsso->debug->enabled ) {
+							$wpsso->debug->log( 'overriding org_place_id ' . $org_opts[ 'org_place_id' ] . ' with plm_place_id ' . $place_id );
+						}
+					}
+
+					if ( ! self::add_place_data( $ret[ 'location' ], $mod, $place_id, $list_element = false ) ) {
+						unset( $ret[ 'location' ] );	// Prevent null assignment.
+					}
 				}
 			}
 
@@ -1035,25 +986,20 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			$size_name = $wpsso->lca . '-schema';
+			$size_name   = $wpsso->lca . '-schema';
+			$sharing_url = '';
 
 			/**
 			 * Maybe get options from Premium version integration modules.
 			 */
 			$person_opts = apply_filters( $wpsso->lca . '_get_person_options', false, $mod, $person_id );
 
-			if ( ! empty( $person_opts ) ) {
-
-				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log_arr( 'get_person_options filters returned', $person_opts );
-				}
-
-			} else {
+			if ( empty( $person_opts ) ) {
 
 				if ( empty( $person_id ) || $person_id === 'none' ) {
 
 					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( 'exiting early: empty person_id' );
+						$wpsso->debug->log( 'exiting early: no person_id' );
 					}
 
 					return 0;
@@ -1168,7 +1114,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$ret = apply_filters( $wpsso->lca . '_json_data_single_person', $ret, $mod, $person_id );
 
 			/**
-			 * Update the @id string based on $sharing_url and $person_type_id.
+			 * Update the @id string based on $sharing_url (can be false) and $person_type_id.
 			 */
 			WpssoSchema::update_data_id( $ret, $person_type_id, $sharing_url );
 
@@ -1205,16 +1151,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			$place_opts = apply_filters( $wpsso->lca . '_get_place_options', false, $mod, $place_id );
 
-			if ( ! empty( $place_opts ) ) {
+			$place_opts = WpssoUtil::complete_type_options( $place_opts, $mod, array( 'place' => 'schema_place' ) );
+
+			if ( empty( $place_opts ) ) {
 
 				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log_arr( 'get_place_options filters returned', $place_opts );
-				}
-
-			} else {
-
-				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'exiting early: empty place options' );
+					$wpsso->debug->log( 'exiting early: no place options' );
 				}
 
 				return 0;

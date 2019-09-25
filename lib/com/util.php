@@ -1774,13 +1774,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * PHP's array_merge_recursive() merges arrays, but it converts
-		 * values with duplicate keys to arrays rather than overwriting
-		 * the value in the first array with the duplicate value in the
-		 * second array, as array_merge does. The following method does
-		 * not change the datatypes of the values in the arrays.
-		 * Matching key values in the second array overwrite those in
-		 * the first array, as is the case with array_merge().
+		 * PHP's array_merge_recursive() merges arrays, but it converts values with duplicate keys to arrays rather than
+		 * overwriting the value in the first array with the duplicate value in the second array, as array_merge does. The
+		 * following method does not change the datatypes of the values in the arrays. Matching key values in the second
+		 * array overwrite those in the first array, as is the case with array_merge().
 		 */
 		public static function array_merge_recursive_distinct( array &$arr1, array &$arr2 ) {
 
@@ -2354,6 +2351,29 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return apply_filters( 'sucom_available_locales', $available_locales );
 		}
 
+		public static function complete_type_options( $type_opts, array $mod, array $opts_md_pre ) {
+
+			if ( is_object( $mod[ 'obj' ] ) ) {	// Just in case.
+
+				$md_defs = (array) $mod[ 'obj' ]->get_defaults( $mod[ 'id' ] );
+				$md_opts = (array) $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
+
+				foreach ( $opts_md_pre as $opt_key => $md_pre ) {
+
+					$md_defs = SucomUtil::preg_grep_keys( '/^' . $md_pre . '_/', $md_defs, false, $opt_key . '_' );
+					$md_opts = SucomUtil::preg_grep_keys( '/^' . $md_pre . '_/', $md_opts, false, $opt_key . '_' );
+	
+					if ( is_array( $type_opts ) ) {
+						$type_opts = array_merge( $md_defs, $type_opts, $md_opts );
+					} else {
+						$type_opts = array_merge( $md_defs, $md_opts );
+					}
+				}
+			}
+
+			return $type_opts;
+		}
+
 		/**
 		 * Results a salt string based on $mod values.
 		 *
@@ -2397,7 +2417,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			$mod_salt = ltrim( $mod_salt, '_' ); // Remove leading underscore.
+			$mod_salt = ltrim( $mod_salt, '_' );	// Remove leading underscore.
 
 			return apply_filters( 'sucom_mod_salt', $mod_salt, $sharing_url );
 		}
@@ -2411,6 +2431,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return apply_filters( 'sucom_query_salt', $query_salt );
+		}
+
+		public static function get_assoc_salt( array $assoc ) {
+		
+			$assoc_salt = '';
+
+			foreach ( $assoc as $key => $val ) {
+				$assoc_salt .= '_' . $key . ':' . (string) $val;
+			}
+
+			$assoc_salt = ltrim( $assoc_salt, '_' );	// Remove leading underscore.
+
+			return $assoc_salt;
 		}
 
 		public static function get_implode_assoc( $val_glue, $key_glue, array $arr, $salt_str = '' ) {
@@ -3610,6 +3643,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * Site Title.
 		 *
 		 * Returns a custom site name or the default WordPress site name.
+		 *
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
 		public static function get_site_name( array $opts, $mixed = 'current' ) {
@@ -3632,6 +3666,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * Tagline.
 		 * 
 		 * Returns a custom site description or the default WordPress site description / tagline.
+		 *
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
 		public static function get_site_description( array $opts, $mixed = 'current' ) {
@@ -3649,6 +3684,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * Site Address (URL).
 		 *
 		 * Returns a custom site address URL or the default WordPress site address URL (aka home URL).
+		 *
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
 		public static function get_site_url( array $opts, $mixed = 'current' ) {

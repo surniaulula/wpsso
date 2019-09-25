@@ -15,8 +15,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		protected $p;
 		protected $form;
-		protected $opts = array();	// Cache for options.
-		protected $defs = array();	// Cache for default values.
 
 		protected static $head_tags         = false;	// Must be false by default.
 		protected static $head_info         = array();
@@ -175,22 +173,30 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		public function get_defaults( $mod_id, $md_key = false ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
+				$this->p->debug->log_args( array( 
+					'mod_id'      => $mod_id, 
+					'md_key'       => $md_key, 
+				) );
 			}
+
+			static $local_cache = array();
+
+			$class = get_called_class();
+
+			if ( __CLASS__ === $class ) {	// Just in case.
+				return $this->must_be_extended( __METHOD__, array() );
+			}
+
+			$cache_id = 'id:' . $mod_id;
 
 			/**
 			 * Maybe initialize the cache.
 			 */
-			if ( ! isset( $this->defs[ $mod_id ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'initializing the default options cache array' );
-				}
-
-				$this->defs[ $mod_id ] = array();
+			if ( ! isset( $local_cache[ $cache_id ] ) ) {
+				$local_cache[ $cache_id ] = array();
 			}
 
-			$md_defs =& $this->defs[ $mod_id ];	// Shortcut variable name.
+			$md_defs =& $local_cache[ $cache_id ];	// Shortcut variable name.
 
 			if ( ! WpssoOptions::can_cache() || empty( $md_defs[ 'options_filtered' ] ) ) {
 
@@ -317,19 +323,84 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			}
 		}
 
-		public function get_options( $mod_id, $md_key = false, $filter_opts = true, $def_fallback = false ) {
+		public function get_options( $mod_id, $md_key = false, $filter_opts = true, $complete_opts = false ) {
 
-			$ret_val = array();
-
-			if ( false !== $md_key ) {
-				if ( $def_fallback ) {
-					$ret_val = $this->get_defaults( $mod_id, $md_key );
-				} else {
-					$ret_val = null;
-				}
+			if ( false === $md_key ) {
+				$ret_val = array();
+			} else {
+				$ret_val = null;
 			}
 
 			return $this->must_be_extended( __METHOD__, $ret_val );
+		}
+
+		protected function upgrade_options( array &$md_opts ) {
+
+			if ( ! empty( $md_opts ) && ( empty( $md_opts[ 'options_version' ] ) || 
+				$md_opts[ 'options_version' ] !== $this->p->cf[ 'opt' ][ 'version' ] ) ) {
+
+				$rename_filter_name  = $this->p->lca . '_rename_md_options_keys';
+				$rename_options_keys = apply_filters( $rename_filter_name, self::$rename_md_options_keys );
+
+				$this->p->util->rename_opts_by_ext( $md_opts, $rename_options_keys );
+
+				/**
+				 * Check for schema type IDs that need to be renamed.
+				 */
+				$keys_preg = 'schema_type|plm_place_schema_type';
+
+				foreach ( SucomUtil::preg_grep_keys( '/^(' . $keys_preg . ')(_[0-9]+)?$/', $md_opts ) as $key => $val ) {
+					if ( ! empty( $this->p->cf[ 'head' ][ 'schema_renamed' ][ $val ] ) ) {
+						$md_opts[ $key ] = $this->p->cf[ 'head' ][ 'schema_renamed' ][ $val ];
+					}
+				}
+
+				return true;
+			}
+
+			return false;
+		}
+
+		protected function return_options( $mod_id, array $md_opts, $md_key = false, $complete_opts = false ) {
+
+			if ( $complete_opts ) {
+
+				if ( empty( $md_opts[ 'options_completed' ] ) ) {
+
+					$def_opts = $this->get_defaults( $mod_id );
+
+					if ( is_array( $def_opts ) ) {	// Just in case.
+
+						foreach ( $def_opts as $key => $val ) {
+							if ( ! isset( $md_opts[ $key ] ) && $val !== '' ) {
+								$md_opts[ $key ] = $def_opts[ $key ];
+							}
+						}
+					}
+
+					$md_opts[ 'options_completed' ] = true;
+				}
+			}
+
+			if ( false !== $md_key ) {
+
+				if ( ! isset( $md_opts[ $md_key ] ) || $md_opts[ $md_key ] === '' ) {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'returning null value: ' . $md_key . ' not set or empty string' );
+					}
+
+					return null;
+				}
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'returning meta value: ' . $md_key . ' = ' . $md_opts[ $md_key ] );
+				}
+
+				return $md_opts[ $md_key ];
+			}
+
+			return $md_opts;
 		}
 
 		public function save_options( $mod_id, $rel_id = false ) {
@@ -867,29 +938,22 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			$class = get_called_class();
 
-			/**
-			 * Must be called from a class that extends WpssoWpMeta.
-			 */
-			if ( __CLASS__ === $class ) {
-				return array();
+			if ( __CLASS__ === $class ) {	// Just in case.
+				return $this->must_be_extended( __METHOD__, array() );
 			}
 
-			/**
-			 * The cache index is unique per extended class.
-			 */
-			if ( isset( $local_cache[ $class ][ $obj_id ] ) ) {
-				return $local_cache[ $class ][ $obj_id ];
+			$cache_id = 'id:' . $obj_id;
+
+			if ( isset( $local_cache[ $cache_id ] ) ) {
+				return $local_cache[ $cache_id ];
 			}
 		
-			/**
-			 * Get the post, term, or user $mod array.
-			 */
 			$mod = $this->get_mod( $obj_id );
 
 			$local_head_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache );
 			$local_head_info = $this->p->head->extract_head_info( $mod, $local_head_tags );
 
-			return $local_cache[ $class ][ $obj_id ] = $local_head_info;
+			return $local_cache[ $cache_id ] = $local_head_info;
 		}
 
 		/**
@@ -978,7 +1042,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		public function user_can_edit( $mod_id, $rel_id = false ) {
 
-			return $this->must_be_extended( __METHOD__, false );	// return false by default
+			return $this->must_be_extended( __METHOD__, false );	// Return false by default.
 		}
 
 		public function clear_cache( $mod_id, $rel_id = false ) {

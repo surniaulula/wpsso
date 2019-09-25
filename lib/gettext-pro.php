@@ -185,6 +185,8 @@ _x( 'Ow.ly API Key', 'option label', 'wpsso' );
 __( 'The "%s" option value is empty and required.', 'wpsso' );
 _x( 'YOURLS API URL', 'option label', 'wpsso' );
 __( 'Incomplete and/or missing API credentials for the "%s" URL shortening service.', 'wpsso' );
+_x( '[%s Organizer]', 'option value', 'wpsso' );
+_x( '[%s Venue]', 'option value', 'wpsso' );
 _x( 'Single Entry Integration', 'metabox title', 'wpsso' );
 _x( 'Title Field ID', 'option label', 'wpsso' );
 _x( 'Description Field ID', 'option label', 'wpsso' );
@@ -197,5 +199,5 @@ __( 'Ratings', 'wp-postratings' );
 // translators: Please ignore - translation uses a different text domain.
 __( 'Ratings Options', 'wp-postratings' );
 __( 'please disable the %1$s option in the %2$s settings page.', 'wpsso' );
-_x( '%s Job Data', 'option value', 'wpsso' );
-_x( '%s Job Data', 'option value', 'wpsso' );
+_x( '[%s Company]', 'option value', 'wpsso' );
+_x( '[%s Location]', 'option value', 'wpsso' );

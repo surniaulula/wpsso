@@ -146,14 +146,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 *	save_options()
 		 *	delete_options()
 		 */
-		public function get_options( $user_id, $md_key = false, $filter_opts = true, $def_fallback = false ) {
+		public function get_options( $user_id, $md_key = false, $filter_opts = true, $complete_opts = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
-					'user_id'      => $user_id, 
-					'md_key'       => $md_key, 
-					'filter_opts'  => $filter_opts, 
-					'def_fallback' => $def_fallback,	// Fallback to value in meta defaults.
+					'user_id'       => $user_id, 
+					'md_key'        => $md_key, 
+					'filter_opts'   => $filter_opts, 
+					'complete_opts' => $complete_opts,	// Fallback to value in meta defaults.
 				) );
 			}
 
@@ -167,46 +167,49 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 			}
 
-			if ( empty( $this->opts[ $user_id ][ 'options_filtered' ] ) ) {
+			static $local_cache = array();
 
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'options_filtered key is empty' );
-					$this->p->debug->log( 'retrieving user_id ' . $user_id . ' meta' );
-				}
+			$cache_id = SucomUtil::get_assoc_salt( array(
+				'id'       => $user_id,
+				'filter'   => $filter_opts,
+				'complete' => $complete_opts,
+			) );
 
-				/**
-				 * Check if this is a valid WordPress user.
-				 */
+			/**
+			 * Maybe initialize the cache.
+			 */
+			if ( ! isset( $local_cache[ $cache_id ] ) ) {
+				$local_cache[ $cache_id ] = false;
+			}
+
+			$md_opts =& $local_cache[ $cache_id ];	// Shortcut variable name.
+
+			if ( false === $md_opts ) {
+
 				$user_exists = SucomUtilWP::user_exists( $user_id );
 
 				if ( $user_exists ) {
-					$this->opts[ $user_id ] = get_user_meta( $user_id, WPSSO_META_NAME, true );
+					$md_opts = get_user_meta( $user_id, WPSSO_META_NAME, true );
 				} else {
-					$this->opts[ $user_id ] = apply_filters( $this->p->lca . '_get_other_user_meta', false, $user_id );
+					$md_opts = apply_filters( $this->p->lca . '_get_other_user_meta', false, $user_id );
 				}
 
-				if ( ! is_array( $this->opts[ $user_id ] ) ) {
-					$this->opts[ $user_id ] = array();
+				if ( ! is_array( $md_opts ) ) {
+					$md_opts = array();
 				}
 
-				if ( ! empty( $this->opts[ $user_id ] ) && 
-					( empty( $this->opts[ $user_id ][ 'options_version' ] ) || 
-						$this->opts[ $user_id ][ 'options_version' ] !== $this->p->cf[ 'opt' ][ 'version' ] ) ) {
+				/**
+				 * Check if options need to be upgraded.
+				 */
+				if ( $this->upgrade_options( $md_opts ) ) {
 
 					/**
-					 * Save the current wpsso opt_version number.
+					 * Save the upgraded options.
 					 */
-					$prev_version = empty( $this->opts[ $user_id ][ 'plugin_' . $this->p->lca . '_opt_version' ] ) ?	
-						0 : $this->opts[ $user_id ][ 'plugin_' . $this->p->lca . '_opt_version' ];
-
-					$this->p->util->rename_opts_by_ext( $this->opts[ $user_id ],
-						apply_filters( $this->p->lca . '_rename_md_options_keys',
-							self::$rename_md_options_keys ) );
-
 					if ( $user_exists ) {
-						update_user_meta( $user_id, WPSSO_META_NAME, $this->opts[ $user_id ] );
+						update_user_meta( $user_id, WPSSO_META_NAME, $md_opts );
 					} else {
-						apply_filters( $this->p->lca . '_update_other_user_meta', $this->opts[ $user_id ], $user_id );
+						apply_filters( $this->p->lca . '_update_other_user_meta', $md_opts, $user_id );
 					}
 
 					if ( $this->p->debug->enabled ) {
@@ -214,63 +217,32 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					}
 				}
 
-				if ( $filter_opts ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log_arr( 'user_id ' . $user_id . ' meta options read', $md_opts );
+				}
+			}
+
+			if ( $filter_opts ) {
+
+				if ( empty( $md_opts[ 'options_filtered' ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'applying get_user_options filters for user_id ' . $user_id . ' meta' );
 					}
 
-					$this->opts[ $user_id ][ 'options_filtered' ] = true;	// Set before calling filter to prevent recursion.
+					$md_opts[ 'options_filtered' ] = true;	// Set before calling filter to prevent recursion.
 
 					$mod = $this->get_mod( $user_id );
 
-					$this->opts[ $user_id ] = apply_filters( $this->p->lca . '_get_user_options', $this->opts[ $user_id ], $user_id, $mod );
+					$md_opts = apply_filters( $this->p->lca . '_get_user_options', $md_opts, $user_id, $mod );
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log_arr( 'user meta options', $this->opts[ $user_id ] );
+						$this->p->debug->log_arr( 'user_id ' . $user_id . ' meta options filtered', $md_opts );
 					}
-
-				} elseif ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'get_user_options filter skipped' );
 				}
-
-			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'options from local cache for user_id ' . $user_id );
 			}
 
-			if ( false !== $md_key ) {
-
-
-				if ( isset( $this->opts[ $user_id ][ $md_key ] ) && $this->opts[ $user_id ][ $md_key ] !== '' ) {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'returning meta options key: ' . $md_key . ' = ' . $this->opts[ $user_id ][ $md_key ] );
-					}
-
-					return $this->opts[ $user_id ][ $md_key ];
-
-				} elseif ( $def_fallback ) {
-
-					$def_val = $this->get_defaults( $user_id, $md_key );
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'returning default value: ' . $md_key . ' = ' . $def_val );
-					}
-
-					return $def_val;
-
-				} else {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'returning null: ' . $md_key . ' options key not found' );
-					}
-
-					return null;
-				}
-
-			} else {
-				return $this->opts[ $user_id ];
-			}
+			return $this->return_options( $user_id, $md_opts, $md_key, $complete_opts );
 		}
 
 		public function save_options( $user_id, $rel_id = false ) {
