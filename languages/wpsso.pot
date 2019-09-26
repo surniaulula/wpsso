@@ -1296,13 +1296,13 @@ msgctxt "lib file description"
 msgid "Advanced"
 msgstr ""
 
-#: lib/gettext-config.php:27 lib/gettext-config.php:33
+#: lib/gettext-config.php:27 lib/gettext-config.php:33 lib/messages.php:2189
 msgctxt "lib file description"
 msgid "Complementary Add-ons"
 msgstr ""
 
 #: lib/gettext-config.php:28 lib/gettext-config.php:34 lib/messages.php:1854
-#: lib/messages.php:2168 lib/messages.php:2177 lib/messages.php:2189
+#: lib/messages.php:2168 lib/messages.php:2177
 msgctxt "lib file description"
 msgid "Licenses"
 msgstr ""

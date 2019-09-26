@@ -2185,8 +2185,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$um_info = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
 
-						$settings_page_link = $this->p->util->get_admin_url( 'licenses',
-							_x( 'Licenses', 'lib file description', 'wpsso' ) );
+						$settings_page_link = $this->p->util->get_admin_url( 'addons',
+							_x( 'Complementary Add-ons', 'lib file description', 'wpsso' ) );
 
 						// translators: Please ignore - translation uses a different text domain.
 						$plugins_page_link = '<a href="' . get_admin_url( null, 'plugins.php' ) . '">' . __( 'Plugins' ) . '</a>';

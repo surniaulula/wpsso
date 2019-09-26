@@ -2009,6 +2009,10 @@ EOF;
 
 				} elseif ( ! isset( $this->defaults[ $def_key ] ) ) {
 
+					if ( $this->options[ $opt_key ] !== '' ) {
+						return '';
+					}
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'missing defaults key for ' . $def_key );
 					}

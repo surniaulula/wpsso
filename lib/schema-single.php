@@ -493,7 +493,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					case 'event_location_id':
 
 						WpssoSchemaSingle::add_place_data( $ret[ $prop_name ],
-							$mod, $event_opts[ $opt_key ], false );
+							$mod, $event_opts[ $opt_key ], true );
 
 						break;
 
@@ -653,7 +653,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					case 'job_location_id':
 
 						WpssoSchemaSingle::add_place_data( $ret[ $prop_name ],
-							$mod, $job_opts[ $opt_key ], false );
+							$mod, $job_opts[ $opt_key ], true );
 
 						break;
 				}
