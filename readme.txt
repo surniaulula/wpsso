@@ -439,7 +439,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Refactored of the post, term, and user `get_options()` methods to better handle fallback to default values.
+	* Refactored the post, term, and user `get_options()` methods to better handle fallback to default values.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -453,9 +453,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 Added a new 'oEmbed' tab in the Document SSO metabox.
 
 * **New Features**
-	* None.
-* **Improvements**
 	* Added a new 'oEmbed' tab in the Document SSO metabox to show the oEmbed data and oEmbed HTML.
+* **Improvements**
 	* Improved WordPress oEmbed data and HTML markup with the Open Graph image, title, and description.
 * **Bugfixes**
 	* Fixed the "Select Image" button to trigger a jQuery `change()` event on the image ID input field.
@@ -574,7 +573,7 @@ New resized image file names now include custom crop locations (top, botton, lef
 
 = 6.5.0-dev.4 =
 
-(2019/09/25) Refactored of the post, term, and user `get_options()` methods to better handle fallback to default values.
+(2019/09/25) Refactored the post, term, and user `get_options()` methods to better handle fallback to default values.
 
 = 6.4.0 =
 
