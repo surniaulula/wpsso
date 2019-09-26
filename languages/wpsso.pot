@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.5.0\n"
+"Project-Id-Version: WPSSO Core 6.5.1-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1146,17 +1146,17 @@ msgstr ""
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: lib/com/form.php:1117 lib/gettext-com.php:23
+#: lib/com/form.php:1171 lib/gettext-com.php:23
 msgctxt "option comment"
 msgid "crop"
 msgstr ""
 
-#: lib/com/form.php:1123 lib/gettext-com.php:24
+#: lib/com/form.php:1177 lib/gettext-com.php:24
 msgctxt "option comment"
 msgid "from"
 msgstr ""
 
-#: lib/com/form.php:1889 lib/gettext-com.php:25 lib/post.php:1339
+#: lib/com/form.php:1942 lib/gettext-com.php:25 lib/post.php:1339
 #: lib/wp-meta.php:575 lib/wp-meta.php:705
 msgid "Save a draft version or publish to update this value."
 msgstr ""
@@ -6065,27 +6065,27 @@ msgstr ""
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
-#: lib/schema-single.php:875
+#: lib/schema-single.php:870
 msgid "adding schema organization"
 msgstr ""
 
-#: lib/schema-single.php:917
+#: lib/schema-single.php:912
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema-single.php:924
+#: lib/schema-single.php:919
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema-single.php:1056
+#: lib/schema-single.php:1051
 msgid "adding schema for person user ID %1$s"
 msgstr ""
 
-#: lib/schema-single.php:1215
+#: lib/schema-single.php:1210
 msgid "adding schema place"
 msgstr ""
 

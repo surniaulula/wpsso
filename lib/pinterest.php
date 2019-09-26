@@ -71,7 +71,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 		/**
 		 * $html = apply_filters( 'get_avatar', $html, $id_or_email, $size_px, $default_type, $alt_text, $data_args );
 		 */
-		public function get_avatar_image_tag( $html, $id_or_email, $size_px, $default_type, $alt, $data_args ) {
+		public function get_avatar_image_tag( $html, $id_or_email, $size_px, $default_type, $alt, $data_args = null ) {
 
 			$html = SucomUtil::insert_html_tag_attributes( $html, array(
 				'nopin' => empty( $this->p->options[ 'p_add_nopin_header_img_tag' ] ) ? false : 'nopin'

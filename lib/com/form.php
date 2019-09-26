@@ -676,6 +676,60 @@ EOF;
 			return $html;
 		}
 
+		public function get_select_multi( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null,
+			$start_num = 0, $max_input = 10, $show_first = 3, $is_disabled = false ) {
+
+			if ( empty( $name ) ) {
+				return;	// Just in case.
+			}
+
+			$html       = '';
+			$display    = true;
+			$one_more   = false;
+			$show_first = $show_first > $max_input ? $max_input : $show_first;
+			$end_num    = $max_input > 0 ? $max_input - 1 : 0;
+
+			foreach ( range( $start_num, $end_num, 1 ) as $key_num ) {
+
+				$prev_num = $key_num > 0 ? $key_num - 1 : 0;
+				$next_num = $key_num + 1;
+
+				$opt_key      = $name . '_' . $key_num;
+				$opt_disabled = $is_disabled || $this->get_options( $opt_key . ':is' ) === 'disabled' ? true : false;
+
+				$input_class   = empty( $css_class ) ? '' : $css_class;
+				$input_id      = empty( $css_id ) ? $opt_key : $css_id . '_' . $key_num;
+				$input_id_prev = empty( $css_id ) ? $name . '_' . $prev_num : $css_id . '_' . $prev_num;
+				$input_id_next = empty( $css_id ) ? $name . '_' . $next_num : $css_id . '_' . $next_num;
+				$input_value   = $this->in_options( $opt_key ) ? $this->options[ $opt_key ] : '';
+
+				$display = empty( $one_more ) && $key_num >= $show_first ? false : true;
+
+				if ( $is_disabled && $key_num >= $show_first && empty( $display ) ) {
+					continue;
+				}
+				
+				$html .= '<div class="multi_container" id="multi_' . esc_attr( $input_id ) . '"';
+				$html .= $display ? '' : ' style="display:none;"';
+				$html .= '>' . "\n";
+
+				$html .= '<div class="multi_number"><p>' . ( $key_num + 1 ) . '.</p></div>' . "\n";
+
+				$html .= '<div class="multi_input">' . "\n";
+
+				$html .= $this->get_select( $opt_key, $values, $input_class, $input_id, $is_assoc, $opt_disabled, $input_value );
+
+				$html .= '</div><!-- .multi_input -->' . "\n";
+
+				$html .= '</div><!-- .multi_container -->' . "\n";
+
+				$one_more = empty( $input_value ) ? false : true;
+
+			}
+
+			return $html;
+		}
+
 		/**
 		 * Add 'none' as the first array element. Always converts the array to associative.
 		 */
@@ -1248,8 +1302,7 @@ EOF;
 			return $html;
 		}
 
-		public function get_input_multi( $name, $css_class = '', $css_id = '',
-			$start_num = 0, $max_input = 90, $show_first = 5, $is_disabled = false ) {
+		public function get_input_multi( $name, $css_class = '', $css_id = '', $start_num = 0, $max_input = 20, $show_first = 5, $is_disabled = false ) {
 
 			if ( empty( $name ) ) {
 				return;	// Just in case.

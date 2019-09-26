@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.5.0',	// Plugin version.
+					'version'     => '6.5.1-dev.1',	// Plugin version.
 					'opt_version' => '668',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1532,9 +1532,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'schema_howto_supply'       => true,	// How-To Supplies.
 					'schema_howto_tool'         => true,	// How-To Tools.
-					'schema_recipe_ingredient'  => true,
-					'schema_recipe_instruction' => true,
-					'schema_sameas_url'         => true,
+					'schema_recipe_ingredient'  => true,	// Recipe Ingredients.
+					'schema_recipe_instruction' => true,	// Recipe Instructions.
+					'schema_sameas_url'         => true,	// Same-As URLs.
 				),
 			),
 			
@@ -3330,7 +3330,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_SCHEMA_HOWTO_STEPS_MAX' ]           = 40;
 			$var_const[ 'WPSSO_SCHEMA_HOWTO_SUPPLIES_MAX' ]        = 30;
 			$var_const[ 'WPSSO_SCHEMA_HOWTO_TOOLS_MAX' ]           = 20;
-			$var_const[ 'WPSSO_SCHEMA_JOB_LOCATION_IDS_MAX' ]      = 5;
+			$var_const[ 'WPSSO_SCHEMA_ISPARTOF_URL_MAX' ]          = 20;
+			$var_const[ 'WPSSO_SCHEMA_JOB_LOCATIONS_MAX' ]         = 5;
 			$var_const[ 'WPSSO_SCHEMA_MOVIE_ACTORS_MAX' ]          = 20;
 			$var_const[ 'WPSSO_SCHEMA_MOVIE_DIRECTORS_MAX' ]       = 5;
 			$var_const[ 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' ]    = YEAR_IN_SECONDS;	// Used for Schema 'priceValidUntil' property default.

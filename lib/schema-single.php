@@ -479,39 +479,36 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'event_organizer_person_id' => 'organizer',
 				'event_performer_org_id'    => 'performer',
 				'event_performer_person_id' => 'performer',
-			) as $opt_key => $prop_name ) {
+			) as $opt_prefix => $prop_name ) {
 
-				/**
-				 * Check that the id is not true, false, null, or 'none'.
-				 */
-				if ( ! isset( $event_opts[ $opt_key ] ) || ! SucomUtil::is_valid_option_id( $event_opts[ $opt_key ] ) ) {
-					continue;
-				}
+				foreach ( SucomUtil::preg_grep_keys( '/^' . $opt_prefix . '(_[0-9]+)?$/', $event_opts ) as $opt_key => $id ) {
 
-				switch ( $opt_key ) {
+					if ( ! SucomUtil::is_valid_option_id( $event_opts[ $id ] ) ) {
+						continue;
+					}
 
-					case 'event_location_id':
+					switch ( $opt_prefix ) {
 
-						WpssoSchemaSingle::add_place_data( $ret[ $prop_name ],
-							$mod, $event_opts[ $opt_key ], true );
+						case 'event_location_id':
 
-						break;
+							WpssoSchemaSingle::add_place_data( $ret[ $prop_name ], $mod, $id, true );
 
-					case 'event_organizer_org_id':
-					case 'event_performer_org_id':
+							break;
 
-						WpssoSchemaSingle::add_organization_data( $ret[ $prop_name ],
-							$mod, $event_opts[ $opt_key ], 'org_logo_url', true );
+						case 'event_organizer_org_id':
+						case 'event_performer_org_id':
 
-						break;
+							WpssoSchemaSingle::add_organization_data( $ret[ $prop_name ], $mod, $id, 'org_logo_url', true );
 
-					case 'event_organizer_person_id':
-					case 'event_performer_person_id':
+							break;
 
-						WpssoSchemaSingle::add_person_data( $ret[ $prop_name ],
-							$mod, $event_opts[ $opt_key ], true );
+						case 'event_organizer_person_id':
+						case 'event_performer_person_id':
 
-						break;
+							WpssoSchemaSingle::add_person_data( $ret[ $prop_name ], $mod, $id, true );
+
+							break;
+					}
 				}
 
 				if ( empty( $ret[ $prop_name ] ) ) {	// Just in case.
@@ -632,30 +629,28 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			foreach ( array( 
 				'job_hiring_org_id' => 'hiringOrganization',
 				'job_location_id'   => 'jobLocation',
-			) as $opt_key => $prop_name ) {
+			) as $opt_prefix => $prop_name ) {
 
-				/**
-				 * Check that the id is not true, false, null, or 'none'.
-				 */
-				if ( ! isset( $job_opts[ $opt_key ] ) || ! SucomUtil::is_valid_option_id( $job_opts[ $opt_key ] ) ) {
-					continue;
-				}
+				foreach ( SucomUtil::preg_grep_keys( '/^' . $opt_prefix . '(_[0-9]+)?$/', $job_opts ) as $opt_key => $id ) {
 
-				switch ( $opt_key ) {
+					if ( ! SucomUtil::is_valid_option_id( $id ) ) {
+						continue;
+					}
 
-					case 'job_hiring_org_id':
+					switch ( $opt_prefix ) {
 
-						WpssoSchemaSingle::add_organization_data( $ret[ $prop_name ],
-							$mod, $job_opts[ $opt_key ], 'org_logo_url', true );
+						case 'job_hiring_org_id':
 
-						break;
+							WpssoSchemaSingle::add_organization_data( $ret[ $prop_name ], $mod, $id, 'org_logo_url', true );
 
-					case 'job_location_id':
+							break;
 
-						WpssoSchemaSingle::add_place_data( $ret[ $prop_name ],
-							$mod, $job_opts[ $opt_key ], true );
+						case 'job_location_id':
 
-						break;
+							WpssoSchemaSingle::add_place_data( $ret[ $prop_name ], $mod, $id, true );
+
+							break;
+					}
 				}
 
 				if ( empty( $ret[ $prop_name ] ) ) {	// Just in case.
