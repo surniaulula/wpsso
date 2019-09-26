@@ -434,7 +434,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.5.1-dev.1 (TBD)**
+**Version 6.6.0-dev.2 (TBD)**
 
 * **New Features**
 	* None.
@@ -445,6 +445,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Updated the `WpssoSchemaSingle::add_job_data() method` to allow handling of multiple hiring organization and location IDs.
 	* Updated the `WpssoSchemaSingle::add_event_data() method` to allow handling of multiple location, organizer, and performer IDs.
+	* Added a new `get_select_multi()` and `get_no_select_multi()` methods in the WpssoForm class.
 
 **Version 6.5.0 (2019/09/26)**
 
