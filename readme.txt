@@ -434,7 +434,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.5.0-rc.1 (2019/09/26)**
+**Version 6.5.0 (2019/09/26)**
 
 * **New Features**
 	* None.
@@ -526,56 +526,9 @@ Moved custom image cropping selections to the Media Library attachment editing p
 * **Developer Notes**
 	* Added a 'wpsso_json_data_graph_element' filter for each Schema @graph property array element.
 
-**Version 6.0.0 (2019/08/18)**
-
-New resized image file names now include custom crop locations (top, botton, left, right).
-
-* **New Features**
-	* Resized cropped image filenames are now saved with their cropping information, allowing the same image to be available with identical dimensions, but different main subject (ie. cropping) areas for different markup (Facebook / Open Graph, Google / Schema, etc.).
-		* Examples of default WordPress image filenames:
-			* image-1200x630.jpg (*maybe* a 1200x630px uncropped image).
-			* image-1200x630.jpg (*maybe* a 1200x630px cropped image).
-			* image-1200x630.jpg (*maybe* a 1200x630px cropped center-top image).
-			* image-1200x630.jpg (*maybe* a 1200x630px cropped left-bottom image).
-			* etc.
-		* Examples of the new WPSSO Core image filenames:
-			* image-1200x630.jpg (a 1200x630px *uncropped* image).
-			* image-1200x630-cropped.jpg (a 1200x630px *cropped center-center* image).
-			* image-1200x630-cropped-center-top.jpg (a 1200x630px *cropped center-top* image).
-			* image-1200x630-cropped-left-bottom.jpg (a 1200x630px *cropped left-bottom* image).
-			* etc.
-* **Improvements**
-	* Updated the minimum WordPress version from 3.8 to 3.9.
-	* Updated the default Facebook Open Graph image size from 600x315 to 1200x630.
-	* Replaced the "Image Size" options in the Document SSO metaboxes by new "Image Subject Area" options (to select a custom image cropping area).
-	* Moved the "Enforce Image Size Checks" Premium feature to the Standard version.
-* **Bugfixes**
-	* Fixed "is_post_type_archive" detection by replacing `is_post_type_archive( $post_type )` from WordPress by `SucomUtil::is_post_type_archive( $post_type, $post_slug )`.
-* **Developer Notes**
-	* Updated the `SucomUtil::is_amp()` method to call `is_amp_endpoint()` and `ampforwp_is_amp_endpoint()` if available.
-	* Added a new `WpssoMedia::get_cropped_image_filename()` method to return better resized filenames. 
-	* Renamed the `WpssoMedia::can_make_size()` method to can_make_intermediate_size().
-	* Removed the `$force_regen` argument from the `WpssoUser::get_og_images()` method.
-	* Removed the `$force_regen` argument from the `WpssoWpMeta::get_og_images()` method.
-	* Removed the `$force_regen` argument from the `WpssoWpMeta::get_md_images()` method.
-	* Removed the `$force_regen` argument from the `WpssoMedia::get_featured()` method.
-	* Removed the `$force_regen` argument from the `WpssoMedia::get_attached_images()` method.
-	* Removed the `$force_regen` argument from the `WpssoMedia::get_attachment_image_url()` method.
-	* Removed the `$force_regen` argument from the `WpssoMedia::get_attachment_image_src()` method.
-	* Removed the `$force_regen` argument from the `WpssoMedia::get_default_images()` method.
-	* Removed the `$force_regen` argument from the `WpssoMedia::get_content_images()` method.
-	* Removed the `$force_regen` argument from the `WpssoMedia::add_mt_single_image_src()` method.
-	* Removed the `WpssoUtil::is_force_regen()` method.
-	* Removed the `WpssoUtil::set_force_regen()` method.
-	* Removed the `WpssoUtil::get_force_regen_key()` method.
-
 == Upgrade Notice ==
 
-= 6.5.0-rc.1 =
+= 6.5.0 =
 
 (2019/09/26) Refactored the post, term, and user get_options() methods to better handle fallback to default values.
-
-= 6.4.0 =
-
-(2019/09/22) Added a new 'oEmbed' tab in the Document SSO metabox to show the oEmbed data and oEmbed HTML. Improved WordPress oEmbed data and HTML markup with the Open Graph image, title, and description.
 
