@@ -352,6 +352,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		/**
 		 * Select drop-down field.
+		 *
+		 * $is_disabled can be true, false, or an option value for the disabled select.
 		 */
 		public function get_select( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null,
 			$is_disabled = false, $selected = false, $event_name = false, $event_args = null ) {
@@ -676,6 +678,9 @@ EOF;
 			return $html;
 		}
 
+		/**
+		 * $is_disabled can be true, false, or a text string (ie. "WPSSO PLM required").
+		 */
 		public function get_select_multi( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null,
 			$start_num = 0, $max_input = 10, $show_first = 3, $is_disabled = false ) {
 
@@ -717,17 +722,33 @@ EOF;
 
 				$html .= '<div class="multi_input">' . "\n";
 
+				/**
+				 * $opt_disabled can be true, false, or an option value for the disabled select.
+				 */
 				$html .= $this->get_select( $opt_key, $values, $input_class, $input_id, $is_assoc, $opt_disabled, $input_value );
+
+				$html .= is_string( $is_disabled ) ? $is_disabled : '';	// Allow for requirement comment.
 
 				$html .= '</div><!-- .multi_input -->' . "\n";
 
 				$html .= '</div><!-- .multi_container -->' . "\n";
 
 				$one_more = empty( $input_value ) ? false : true;
-
 			}
 
 			return $html;
+		}
+
+		/**
+		 * $is_disabled can be true or a text string (ie. "WPSSO PLM required").
+		 */
+		public function get_no_select_multi( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null,
+			$repeat = 3, $is_disabled = true ) {
+
+			$is_disabled = empty( $is_disabled ) ? true : $is_disabled;	// Allow for requirement comment.
+
+			return $this->get_select_multi( $name, $values, $css_class, $css_id, $is_assoc,
+				$start_num = 0, $repeat, $repeat, $is_disabled );
 		}
 
 		/**
