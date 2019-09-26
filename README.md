@@ -214,7 +214,7 @@
 <ul>
 <li>Job Posting Job Title</li>
 <li>Job Posting Hiring Organization</li>
-<li>Job Posting Job Location</li>
+<li>Job Posting Job Locations</li>
 <li>Job Posting Base Salary</li>
 <li>Job Posting Employment Type</li>
 <li>Job Posting Expires</li>
