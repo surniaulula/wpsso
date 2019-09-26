@@ -434,7 +434,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.5.0-b.1 (2019/09/26)**
+**Version 6.5.0-rc.1 (2019/09/26)**
 
 * **New Features**
 	* None.
@@ -571,7 +571,7 @@ New resized image file names now include custom crop locations (top, botton, lef
 
 == Upgrade Notice ==
 
-= 6.5.0-b.1 =
+= 6.5.0-rc.1 =
 
 (2019/09/26) Refactored the post, term, and user get_options() methods to better handle fallback to default values.
 
