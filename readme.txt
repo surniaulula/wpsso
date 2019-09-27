@@ -434,7 +434,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.6.0-dev.3 (TBD)**
+**Version 6.6.0-dev.3 (2019/09/27)**
 
 * **New Features**
 	* None.
@@ -442,6 +442,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Bugfixes**
 	* Fixed fallback to default image for non-singular pages.
+	* Fixed 'get_avatar' filter hook for older WP pre-v4.2 sites by removing 6th argument (added in WP v4.2).
 * **Developer Notes**
 	* Updated the `WpssoSchemaSingle::add_job_data() method` to allow handling of multiple hiring organization and location IDs.
 	* Updated the `WpssoSchemaSingle::add_event_data() method` to allow handling of multiple location, organizer, and performer IDs.
@@ -540,6 +541,10 @@ Moved custom image cropping selections to the Media Library attachment editing p
 	* Added a 'wpsso_json_data_graph_element' filter for each Schema @graph property array element.
 
 == Upgrade Notice ==
+
+= 6.6.0-dev.3 =
+
+(2019/09/27) Fixed fallback to default image for non-singular pages.
 
 = 6.5.0 =
 
