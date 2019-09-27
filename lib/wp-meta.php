@@ -1642,6 +1642,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $this->get_md_images( $num, $size_name, $mod, $check_dupes, $md_pre, 'og' );
 		}
 
+		/**
+		 * get_og_videos() converts the $md_pre value to an array and always checks for 'og' metadata as a fallback.
+		 */
 		public function get_og_videos( $num = 0, $mod_id, $check_dupes = false, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {

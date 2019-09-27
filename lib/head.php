@@ -686,8 +686,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 							if ( isset( $dd_val[ 'og:video:type' ] ) ) {
 
 								/**
-								 * og:video:has_image will be false if there is no preview 
-								 * image, or the preview image is a duplicate.
+								 * og:video:has_image will be false if there is no preview image,
+								 * or the preview image is a duplicate.
 								 */
 								if ( empty( $dd_val[ 'og:video:has_image' ] ) ) {
 									$use_video_image = false;

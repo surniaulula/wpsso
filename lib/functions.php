@@ -176,22 +176,6 @@ if ( ! function_exists( 'wpsso_get_mod_og_image' ) ) {
 
 		$wpsso =& Wpsso::get_instance();
 
-		$og_image = array();
-		$og_video = $wpsso->og->get_all_videos( $num = 1, $mod, $check_dupes = false, $md_pre = 'og' );
-
-		/**
-		 * If there are videos, check for a preview image, and return the first one.
-		 */
-		if ( is_array( $og_video ) ) {	// Just in case.
-
-			foreach ( $og_video as $num => $og_single_video ) {
-
-				if ( SucomUtil::get_mt_media_url( $og_single_video, $mt_media_pre = 'og:image' ) ) {
-					return SucomUtil::preg_grep_keys( '/^og:image/', $og_single_video );	// Return one dimension array.
-				}
-			}
-		}
-
 		$og_image = $wpsso->og->get_all_images( $num = 1, $size_name, $mod, $check_dupes = false, $md_pre = 'og' );
 
 		if ( ! empty( $og_image[ 0 ] ) ) {

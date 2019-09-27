@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.6.0-dev.3\n"
+"Project-Id-Version: WPSSO Core 6.6.0-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -390,7 +390,7 @@ msgstr ""
 
 #: lib/admin.php:2509 lib/gettext-pro.php:158 lib/gettext-pro.php:161
 #: lib/gettext-pro.php:164 lib/pro/media/slideshare.php:191
-#: lib/pro/media/vimeo.php:156 lib/pro/media/wistia.php:313
+#: lib/pro/media/vimeo.php:156 lib/pro/media/wistia.php:312
 msgid ""
 "Please contact your hosting provider to have the missing PHP function "
 "installed."
@@ -2491,8 +2491,8 @@ msgstr ""
 msgid "Posts, Pages, Custom Post Types"
 msgstr ""
 
-#: lib/gettext-pro.php:29 lib/media.php:126 lib/media.php:688 lib/media.php:849
-#: lib/media.php:1799 lib/pro/admin/advanced.php:212
+#: lib/gettext-pro.php:29 lib/media.php:126 lib/media.php:692 lib/media.php:853
+#: lib/media.php:1834 lib/pro/admin/advanced.php:212
 #: lib/std/admin/advanced.php:212
 msgid "Media Library"
 msgstr ""
@@ -3114,13 +3114,13 @@ msgstr ""
 
 #: lib/gettext-pro.php:156 lib/gettext-pro.php:159 lib/gettext-pro.php:162
 #: lib/pro/media/slideshare.php:186 lib/pro/media/vimeo.php:151
-#: lib/pro/media/wistia.php:308
+#: lib/pro/media/wistia.php:307
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
 #: lib/gettext-pro.php:157 lib/gettext-pro.php:160 lib/gettext-pro.php:163
 #: lib/pro/media/slideshare.php:188 lib/pro/media/vimeo.php:153
-#: lib/pro/media/wistia.php:310
+#: lib/pro/media/wistia.php:309
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
@@ -3141,7 +3141,7 @@ msgstr ""
 msgid "NextGEN Gallery"
 msgstr ""
 
-#: lib/gettext-pro.php:168 lib/media.php:128 lib/media.php:1805
+#: lib/gettext-pro.php:168 lib/media.php:128 lib/media.php:1840
 #: lib/pro/media/ngg.php:135
 msgid "image ID %s"
 msgstr ""
@@ -3349,97 +3349,97 @@ msgid ""
 "activated, try removing and adding the image back to your content."
 msgstr ""
 
-#: lib/media.php:640
+#: lib/media.php:644
 msgid ""
 "The NGG integration module provided by %1$s is required to read information "
 "for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:689
+#: lib/media.php:693
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:691 lib/media.php:852
+#: lib/media.php:695 lib/media.php:856
 msgid ""
 "You may consider regenerating the thumbnails of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:708
+#: lib/media.php:712
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image dimensions for "
 "<a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:732
+#: lib/media.php:736
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image file path for "
 "<a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:850
+#: lib/media.php:854
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:853
+#: lib/media.php:857
 msgid ""
 "Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress "
 "%3$s function</a> reported an error when trying to create an image size from "
 "%4$s."
 msgstr ""
 
-#: lib/media.php:1297
+#: lib/media.php:1301
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1815
+#: lib/media.php:1850
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:1840
+#: lib/media.php:1875
 msgctxt "option label"
 msgid "Facebook Open Graph"
 msgstr ""
 
-#: lib/media.php:1849
+#: lib/media.php:1884
 msgctxt "option label"
 msgid "Google Schema"
 msgstr ""
 
-#: lib/media.php:1858
+#: lib/media.php:1893
 msgctxt "option label"
 msgid "Google Schema Article"
 msgstr ""
 
-#: lib/media.php:1867
+#: lib/media.php:1902
 msgctxt "option label"
 msgid "Google Schema Article AMP 1:1"
 msgstr ""
 
-#: lib/media.php:1876
+#: lib/media.php:1911
 msgctxt "option label"
 msgid "Google Schema Article AMP 4:3"
 msgstr ""
 
-#: lib/media.php:1885
+#: lib/media.php:1920
 msgctxt "option label"
 msgid "Google Schema Article AMP 16:9"
 msgstr ""
 
-#: lib/media.php:1923
+#: lib/media.php:1958
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:1951
+#: lib/media.php:1986
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."

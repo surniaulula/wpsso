@@ -401,6 +401,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$this->add_mt_single_image_src( $og_single_image, $pid, $size_name, $check_dupes );
 
 					if ( ! empty( $og_single_image[ 'og:image:url' ] ) ) {
+
+						/**
+						 * Add the image but do not return yet, so we can apply the 'wpsso_og_featured' filter.
+						 */
 						$this->p->util->push_max( $og_images, $og_single_image, $num );
 					}
 				}
@@ -1100,7 +1104,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 * <img/> attributes in order of preference.
 			 */
 			if ( preg_match_all( '/<((' . $content_img_preg[ 'html_tag' ] . ')[^>]*? (' . $content_img_preg[ 'pid_attr' ] . ')=[\'"]([0-9]+)[\'"]|' . 
-				'(img)[^>]*? (data-share-src|data-lazy-src|data-src|src)=[\'"]([^\'"]+)[\'"])[^>]*>/s',
+				'(img)[^>]*? (data-lazy-src|data-share-src|data-src|src)=[\'"]([^\'"]+)[\'"])[^>]*>/s',
 					$content, $all_matches, PREG_SET_ORDER ) ) {
 
 				$content_img_max = SucomUtil::get_const( 'WPSSO_CONTENT_IMAGES_MAX_LIMIT', 5 );
@@ -1115,7 +1119,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( count( $all_matches ) . ' x matching <' . $content_img_preg[ 'html_tag' ] . '/> html tag(s) found' );
+					$this->p->debug->log( count( $all_matches ) . ' matching <' . $content_img_preg[ 'html_tag' ] . '/> html tag(s) found' );
 				}
 
 				foreach ( $all_matches as $img_num => $img_arr ) {
@@ -1421,12 +1425,44 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			/**
-			 * Detect standard iframe / embed tags - use the 'wpsso_content_videos' filter
-			 * for additional html5 / javascript embed methods.
+			 * Detect standard video tags.
+			 *
+			 * Hook the 'wpsso_content_videos' filter for additional html5 / javascript embed methods.
 			 */
-			if ( preg_match_all( '/<(iframe|embed)[^<>]*? (data-share-src|data-lazy-src|data-src|src)=[\'"]' . 
-				'([^\'"<>]+\/(embed\/|embed_code\/|player\/|swf\/|v\/|video\/|video\.php\?)[^\'"<>]+)[\'"][^<>]*>/i',
-					$content, $all_matches, PREG_SET_ORDER ) ) {
+			$figure_block_matches = array();
+			$iframe_embed_matches = array();
+
+			if ( preg_match_all( '/<(figure) class="(wp-block-embed-[^ ]+) [^"]+ is-type-video [^"]+"><div class="wp-block-embed__wrapper">' . 
+				' *([^ \'"<>]+\/(embed\/|embed_code\/|player\/|swf\/|v\/|videos?\/|video\.php\?)[^ \'"<>]+) *<\/div><\/figure>/i',
+					$content, $figure_block_matches, PREG_SET_ORDER ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( count( $figure_block_matches ) . ' <figure/> video html tag(s) found' );
+				}
+
+			} else {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'no <figure/> video html tag(s) found' );
+				}
+			}
+
+			if ( preg_match_all( '/<(iframe|embed)[^<>]*? (data-lazy-src|data-share-src|data-src|src)=[\'"]' . 
+				'([^ \'"<>]+\/(embed\/|embed_code\/|player\/|swf\/|v\/|videos?\/|video\.php\?)[^ \'"<>]+)[\'"][^<>]*>/i',
+					$content, $iframe_embed_matches, PREG_SET_ORDER ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( count( $iframe_embed_matches ) . ' <iframe|embed/> video html tag(s) found' );
+				}
+
+			} else {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'no <iframe|embed/> video html tag(s) found' );
+				}
+			}
+
+			$all_matches = array_merge( $iframe_embed_matches, $figure_block_matches );
+
+			if ( ! empty( $all_matches ) ) {
 
 				$content_vid_max = SucomUtil::get_const( 'WPSSO_CONTENT_VIDEOS_MAX_LIMIT', 5 );
 
@@ -1439,24 +1475,20 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$all_matches = array_splice( $all_matches, 0, $content_vid_max );
 				}
 
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( count( $all_matches ) . ' x video <iframe|embed/> html tag(s) found' );
-				}
-
 				foreach ( $all_matches as $media ) {
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( '<' . $media[1] . '/> html tag found ' . $media[2] . ' = ' . $media[3] );
+						$this->p->debug->log( '<' . $media[ 1 ] . '/> video html tag found ' . $media[ 2 ] . ' = ' . $media[ 3 ] );
 					}
 
-					if ( ! empty( $media[3] ) ) {
+					if ( ! empty( $media[ 3 ] ) ) {
 
-						if ( ! $check_dupes || $this->p->util->is_uniq_url( $media[3], 'content_video' ) ) {
+						if ( ! $check_dupes || $this->p->util->is_uniq_url( $media[ 3 ], 'content_video' ) ) {
 
 							$args = array(
-								'url'    => $media[3],
-								'width'  => preg_match( '/ width=[\'"]?([0-9]+)[\'"]?/i', $media[0], $match ) ? $match[1] : WPSSO_UNDEF,
-								'height' => preg_match( '/ height=[\'"]?([0-9]+)[\'"]?/i', $media[0], $match ) ? $match[1] : WPSSO_UNDEF,
+								'url'    => $media[ 3 ],
+								'width'  => preg_match( '/ width=[\'"]?([0-9]+)[\'"]?/i', $media[ 0 ], $match ) ? $match[ 1 ] : WPSSO_UNDEF,
+								'height' => preg_match( '/ height=[\'"]?([0-9]+)[\'"]?/i', $media[ 0 ], $match ) ? $match[ 1 ] : WPSSO_UNDEF,
 							);
 
 							$og_single_video  = $this->get_video_details( $args, $check_dupes );
@@ -1466,7 +1498,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								if ( $this->p->util->push_max( $og_videos, $og_single_video, $num ) ) {
 
 									if ( $this->p->debug->enabled ) {
-										$this->p->debug->log( 'returning ' . count( $og_videos ) . ' standard iframe / embed videos' );
+										$this->p->debug->log( 'returning ' . count( $og_videos ) . ' videos' );
 									}
 
 									return $og_videos;
@@ -1475,15 +1507,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						}
 					}
 				}
-
-			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'no <iframe|embed/> html tag(s) found' );
 			}
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( count( $og_videos ) . ' standard iframe / embed videos found' );
-			}
-
+		
 			/**
 			 * Additional filters / modules may detect other embedded video markup.
 			 */
@@ -1503,7 +1528,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					if ( is_array( $all_matches ) ) {
 
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( count( $all_matches ) . ' x videos returned by ' . $filter_name . ' filters' );
+							$this->p->debug->log( count( $all_matches ) . ' videos returned by ' . $filter_name . ' filters' );
 						}
 
 						foreach ( $all_matches as $match_num => $args ) {
@@ -1517,7 +1542,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 										$og_single_video = $this->get_video_details( $args, $check_dupes );
 
 										if ( ! empty( $og_single_video ) ) {
+
 											if ( $this->p->util->push_max( $og_videos, $og_single_video, $num ) ) {
+
+												if ( $this->p->debug->enabled ) {
+													$this->p->debug->log( 'returning ' . count( $og_videos ) . ' videos' );
+												}
+
 												return $og_videos;
 											}
 										}
@@ -1549,6 +1580,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		}
 
 		public function get_video_details( array $args, $check_dupes = true, $fallback = false ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
 
 			/**
 			 * Make sure we have all array keys defined.
@@ -2088,7 +2123,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 										}
 									}
 
-									$og_single_video[ 'og:video:has_image' ]     = true;
+									$og_single_video[ 'og:video:has_image' ] = true;
 								}
 
 								break;

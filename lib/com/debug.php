@@ -110,7 +110,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				$func_seq = 2;
 			}
 
-			$this->log( 'args ' . SucomUtil::pretty_array( $arr, true ), $class_seq, $func_seq );
+			$this->log( 'args ' . SucomUtil::pretty_array( $arr, $flatten = true ), $class_seq, $func_seq );
 		}
 
 		public function log_arr( $prefix, $mixed, $class_seq = 1, $func_seq = false ) {
