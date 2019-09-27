@@ -94,23 +94,38 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			/**
 			 * Set the notification system.
 			 */
-			if ( ! empty( $this->p->options[ 'plugin_notice_system' ] ) ) {
-				if ( 'toolbar_notices' === $this->p->options[ 'plugin_notice_system' ] ) {
-					$this->tb_notices = true;
-				} else {
-					$this->tb_notices = false;
-				}
+			if ( empty( $this->p->options[ 'plugin_notice_system' ] ) ) {	// Just in case.
+				$this->tb_notices = true;
+			} elseif ( 'toolbar_notices' === $this->p->options[ 'plugin_notice_system' ] ) {
+				$this->tb_notices = true;
+			} else {
+				$this->tb_notices = false;
 			}
 
 			if ( defined( $this->uca . '_TOOLBAR_NOTICES' ) ) {
+
+				if ( ! empty( $this->p->debug->enabled ) ) {
+					$this->p->debug->log( $this->uca . '_TOOLBAR_NOTICES is defined' );
+				}
+
 				$this->tb_notices = constant( $this->uca . '_TOOLBAR_NOTICES' );
 			}
 
 			if ( true === $this->tb_notices ) {
+
+				if ( ! empty( $this->p->debug->enabled ) ) {
+					$this->p->debug->log( 'tb_notices is true' );
+				}
+
 				$this->tb_notices = array( 'err', 'warn', 'inf' );
 			}
 
 			if ( empty( $this->tb_notices ) || ! is_array( $this->tb_notices ) ) {
+
+				if ( ! empty( $this->p->debug->enabled ) ) {
+					$this->p->debug->log( 'tb_notices is empty or not an array' );
+				}
+
 				$this->tb_notices = false;
 			}
 
@@ -556,13 +571,19 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 * If toolbar notices are being used, exclude these from being shown. The default toolbar notices array is
 			 * err, warn, and inf.
 			 */
-			if ( is_array( $this->tb_notices ) ) {
+			if ( ! empty( $this->tb_notices ) && is_array( $this->tb_notices ) ) {
 
 				if ( ! empty( $this->p->debug->enabled ) ) {
 					$this->p->debug->log_arr( 'tb_notices', $this->tb_notices );
 				}
 
 				$notice_types = array_diff( $notice_types, $this->tb_notices );
+
+			} else {
+
+				if ( ! empty( $this->p->debug->enabled ) ) {
+					$this->p->debug->log( 'toolbar notices are disabled' );
+				}
 			}
 
 			if ( ! empty( $this->p->debug->enabled ) ) {

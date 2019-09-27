@@ -417,6 +417,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					'schema_type_for_tax' => 'item.list',
 				) );
 
+				/**
+				 * Enable or disable the toolbar notification system dynamically.
+				 */
+				if ( SucomUtil::get_const( 'WPSSO_TOOLBAR_NOTICES' ) ) {
+					$opts[ 'plugin_notice_system' ]    = 'toolbar_notices';
+					$opts[ 'plugin_notice_system:is' ] = 'disabled';
+				}
+
 			} else {	// $opts is empty or not an array.
 
 				if ( false === $opts ) {

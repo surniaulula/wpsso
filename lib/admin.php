@@ -3470,7 +3470,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$table_rows[ $opt_key ] = $tr_html .
 				$form->get_th_html( $th_label, '', $opt_key ) . 
-				'<td>' . $form->get_select( $opt_key, $og_types, 'og_type' ) . '</td>';
+				'<td>' . $form->get_select( $opt_key, $og_types, $css_class = 'og_type' ) . '</td>';
 			}
 
 			/**
@@ -3486,13 +3486,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$type_label = $obj->label . ' [' . $obj->name . ']';
 
-				$type_select .= '<p>' . $form->get_select( $opt_key, $og_types, 'og_type' ) . ' ' .
+				$type_select .= '<p>' . $form->get_select( $opt_key, $og_types, $css_class = 'og_type' ) . ' ' .
 					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $type_label ) . '</p>' . "\n";
 			}
 
 			$type_keys[] = $opt_key = 'og_type_for_post_archive';
 
-			$type_select .= '<p>' . $form->get_select( $opt_key, $og_types, 'og_type' ) . ' ' .
+			$type_select .= '<p>' . $form->get_select( $opt_key, $og_types, $css_class = 'og_type' ) . ' ' .
 				sprintf( _x( 'for %s', 'option comment', 'wpsso' ), _x( 'Post Type Archive Page', 'option comment', 'wpsso' ) ) . '</p>' . "\n";
 
 			$tr_key   = 'og_type_for_ptn';
@@ -3518,7 +3518,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$type_label = $obj->label . ' [' . $obj->name . ']';
 
-				$type_select .= '<p>' . $form->get_select( $opt_key, $og_types, 'og_type' ) . ' ' .
+				$type_select .= '<p>' . $form->get_select( $opt_key, $og_types, $css_class = 'og_type' ) . ' ' .
 					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $type_label ) . '</p>' . "\n";
 			}
 
@@ -3570,7 +3570,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$table_rows[ 'schema_home_person_id' ] = '' . 
 			$form->get_th_html( _x( 'User for Person Social Profile', 'option label', 'wpsso' ), '', 'schema_home_person_id' ) . 
-			'<td>' . $form->get_select( 'schema_home_person_id', $site_owners, '', '', true ) . '</td>';
+			'<td>' . $form->get_select( 'schema_home_person_id', $site_owners,
+				$css_class = '', $css_id = '', $is_assoc = true ) . '</td>';
 		}
 
 		/**
@@ -3592,9 +3593,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$table_rows[ 'schema_img_max' ] = $form->get_tr_hide( 'basic', 'schema_img_max' ) . 
 			$form->get_th_html( _x( 'Maximum Images to Include', 'option label', 'wpsso' ), '', 'schema_img_max' ) . 
-			'<td>' . $form->get_select( 'schema_img_max', range( 0, $this->p->cf[ 'form' ][ 'max_media_items' ] ), 'short', '', true ) . 
-			( empty( $form->options[ 'og_vid_prev_img' ] ) ? '' : ' <em>' . _x( 'video preview images are enabled (and included first)',
-				'option comment', 'wpsso' ) . '</em>' ) . '</td>';
+			'<td>' . $form->get_select( 'schema_img_max', range( 0, $this->p->cf[ 'form' ][ 'max_media_items' ] ),
+				$css_class = 'short', $css_id = '', $is_assoc = true ) . ( empty( $form->options[ 'og_vid_prev_img' ] ) ?
+					'' : ' <em>' . _x( 'video preview images are enabled (and included first)',
+						'option comment', 'wpsso' ) . '</em>' ) . '</td>';
 
 			$table_rows[ 'schema_img' ] = $form->get_tr_hide_img_dim( 'basic', 'schema_img' ) . 
 			$form->get_th_html( _x( 'Schema Image Size', 'option label', 'wpsso' ), '', 'schema_img_size' ) . 
@@ -3887,9 +3889,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				return $form->get_th_html( _x( 'Site Use', 'option label (very short)', 'wpsso' ), 'site-use' ) . 
 					( $enabled || self::$pkg[ 'wpsso' ][ 'pp' ] ? '<td class="site-use">' . $form->get_select( $name . ':use',
-						WpssoConfig::$cf[ 'form' ][ 'site_option_use' ], 'site-use' ) . '</td>' :
-					'<td class="blank site-use">' . $form->get_select( $name . ':use',
-						WpssoConfig::$cf[ 'form' ][ 'site_option_use' ], 'site-use', '', true, true ) . '</td>' );
+						WpssoConfig::$cf[ 'form' ][ 'site_option_use' ], $css_class = 'site-use' ) . '</td>' :
+					'<td class="blank site-use">' . $form->get_no_select( $name . ':use',
+						WpssoConfig::$cf[ 'form' ][ 'site_option_use' ], $css_class = 'site-use' ) . '</td>' );
 			} else {
 				return '';
 			}

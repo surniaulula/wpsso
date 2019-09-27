@@ -377,13 +377,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$is_assoc  = SucomUtil::is_assoc( $values );
 			}
 
-			if ( is_string( $is_disabled ) ) {
-				$disabled_value = $is_disabled;
-				$is_disabled    = false;
-			} else {
-				$disabled_value = false;
-			}
-
 			if ( $this->get_options( $name . ':is' ) === 'disabled' ) {
 				$is_disabled = true;
 			}
@@ -505,10 +498,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				 */
 				if ( $select_opt_count === 1 || $is_selected_html ||
 					( ! $is_disabled && 'on_focus_load_json' !== $event_name ) ) {
-
-					if ( false !== $disabled_value ) {
-						$option_value = $disabled_value;
-					}
 
 					$select_opt_html .= '<option value="' . esc_attr( $option_value ) . '"' . $is_selected_html . '>';
 					$select_opt_html .= $label_transl;
