@@ -441,7 +441,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* None.
+	* Fixed fallback to default image for non-singular pages.
 * **Developer Notes**
 	* Updated the `WpssoSchemaSingle::add_job_data() method` to allow handling of multiple hiring organization and location IDs.
 	* Updated the `WpssoSchemaSingle::add_event_data() method` to allow handling of multiple location, organizer, and performer IDs.
