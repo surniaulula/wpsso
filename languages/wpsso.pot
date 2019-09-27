@@ -2492,7 +2492,7 @@ msgid "Posts, Pages, Custom Post Types"
 msgstr ""
 
 #: lib/gettext-pro.php:29 lib/media.php:126 lib/media.php:688 lib/media.php:849
-#: lib/media.php:1798 lib/pro/admin/advanced.php:212
+#: lib/media.php:1799 lib/pro/admin/advanced.php:212
 #: lib/std/admin/advanced.php:212
 msgid "Media Library"
 msgstr ""
@@ -3137,11 +3137,11 @@ msgid ""
 msgstr ""
 
 #: lib/gettext-pro.php:167 lib/gettext-pro.php:171 lib/pro/media/ngg.php:134
-#: lib/pro/media/ngg.php:1299
+#: lib/pro/media/ngg.php:1301
 msgid "NextGEN Gallery"
 msgstr ""
 
-#: lib/gettext-pro.php:168 lib/media.php:128 lib/media.php:1804
+#: lib/gettext-pro.php:168 lib/media.php:128 lib/media.php:1805
 #: lib/pro/media/ngg.php:135
 msgid "image ID %s"
 msgstr ""
@@ -3395,51 +3395,51 @@ msgid ""
 "%4$s."
 msgstr ""
 
-#: lib/media.php:1296
+#: lib/media.php:1297
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1814
+#: lib/media.php:1815
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:1839
+#: lib/media.php:1840
 msgctxt "option label"
 msgid "Facebook Open Graph"
 msgstr ""
 
-#: lib/media.php:1848
+#: lib/media.php:1849
 msgctxt "option label"
 msgid "Google Schema"
 msgstr ""
 
-#: lib/media.php:1857
+#: lib/media.php:1858
 msgctxt "option label"
 msgid "Google Schema Article"
 msgstr ""
 
-#: lib/media.php:1866
+#: lib/media.php:1867
 msgctxt "option label"
 msgid "Google Schema Article AMP 1:1"
 msgstr ""
 
-#: lib/media.php:1875
+#: lib/media.php:1876
 msgctxt "option label"
 msgid "Google Schema Article AMP 4:3"
 msgstr ""
 
-#: lib/media.php:1884
+#: lib/media.php:1885
 msgctxt "option label"
 msgid "Google Schema Article AMP 16:9"
 msgstr ""
 
-#: lib/media.php:1922
+#: lib/media.php:1923
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:1950
+#: lib/media.php:1951
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -6615,22 +6615,22 @@ msgctxt "image size label"
 msgid "Twitter Large Image Summary Card"
 msgstr ""
 
-#: lib/twittercard.php:463
+#: lib/twittercard.php:464
 msgctxt "metabox title"
 msgid "Twitter App Card"
 msgstr ""
 
-#: lib/twittercard.php:471
+#: lib/twittercard.php:472
 msgctxt "metabox title"
 msgid "Twitter Player Card"
 msgstr ""
 
-#: lib/twittercard.php:479
+#: lib/twittercard.php:480
 msgctxt "metabox title"
 msgid "Twitter Summary Card"
 msgstr ""
 
-#: lib/twittercard.php:487
+#: lib/twittercard.php:488
 msgctxt "metabox title"
 msgid "Twitter Large Image Summary Card"
 msgstr ""

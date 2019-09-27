@@ -977,7 +977,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				) );
 			}
 
-			$og_images       = array();
+			$og_images = array();
+
 			$og_single_image = SucomUtil::get_mt_image_seed();
 
 			foreach ( array( 'id', 'id_pre', 'url', 'url:width', 'url:height' ) as $key ) {

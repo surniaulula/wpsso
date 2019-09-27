@@ -645,23 +645,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				if ( empty( $max_nums[ 'og_img_max' ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'images disabled: maximum images = 0' );
+						$this->p->debug->log( 'skipped getting images: maximum images = 0' );
 					}
 
 				} else {
-
-					/**
-					 * The size_name is used as a context for duplicate checks.
-					 */
 					$mt_og[ 'og:image' ] = $this->get_all_images( $max_nums[ 'og_img_max' ], $size_name, $mod, $check_dupes );
-
-					/**
-					 * If there's no image, and no video preview, then add the default image for singular (aka post) webpages.
-					 */
-					if ( empty( $mt_og[ 'og:image' ] ) && ! $prev_count && $mod[ 'is_post' ] ) {
-
-						$mt_og[ 'og:image' ] = $this->p->media->get_default_images( $max_nums[ 'og_img_max' ], $size_name, $check_dupes );
-					}
 				}
 			}
 
@@ -884,6 +872,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		public function get_all_videos( $num = 0, array $mod, $check_dupes = true, $md_pre = 'og', $force_prev = false ) {
 
 			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark( 'get all open graph videos' );
+
 				$this->p->debug->log_args( array(
 					'num'         => $num,
 					'mod'         => $mod,
@@ -895,7 +886,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$og_ret   = array();
 			$has_pp   = $this->p->check->pp();
-			$use_prev = $this->p->options[ 'og_vid_prev_img' ];		// default option value is true/false
+			$use_prev = $this->p->options[ 'og_vid_prev_img' ];
 			$num_diff = SucomUtil::count_diff( $og_ret, $num );
 
 			$this->p->util->clear_uniq_urls( array( 'video', 'content_video', 'video_details' ) );
@@ -910,7 +901,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				 */
 				if ( ( $mod_prev = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'og_vid_prev_img' ) ) !== null ) {
 
-					$use_prev = $mod_prev;	// use true/false/1/0 value from the custom option
+					$use_prev = $mod_prev;	// Use true/false/1/0 value from the custom option.
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'setting use_prev to ' . ( empty( $use_prev ) ? 'false' : 'true' ) . ' from meta data' );
@@ -966,9 +957,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			/**
 			 * Get custom video information from post/term/user meta data for FIRST video.
 			 *
-			 * If $md_pre is 'none' (special index keyword), then don't load any custom video information.
-			 * The og:video:title and og:video:description meta tags are not standard and their values will
-			 * only appear in Schema markup.
+			 * If $md_pre is 'none' (special index keyword), then don't load any custom video information. The
+			 * og:video:title and og:video:description meta tags are not standard and their values will only appear in
+			 * Schema markup.
 			 */
 			if ( $has_pp && ! empty( $mod[ 'obj' ] ) && $md_pre !== 'none' ) {
 
@@ -1043,6 +1034,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'returning ' . count( $og_extend ) . ' videos' );
+				$this->p->debug->mark( 'get all open graph videos' );
 			}
 
 			return $og_extend;
@@ -1059,9 +1051,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return SucomUtil::get_mt_media_url( $og_images );
 		}
 
+		/**
+		 * Note that the size_name is used to check for duplicates.
+		 */
 		public function get_all_images( $num = 0, $size_name = 'thumbnail', array $mod, $check_dupes = true, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark( 'get all open graph images' );
 
 				$this->p->debug->log_args( array(
 					'num'         => $num,
@@ -1087,10 +1084,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					if ( empty( $og_single_image ) ) {
 
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'exiting early: no attachment image - returning default image' );
+							$this->p->debug->log( 'exiting early: no attachment image' );
 						}
 
-						return array_merge( $og_ret, $this->p->media->get_default_images( $num_diff, $size_name, $check_dupes ) );
+						return $og_ret;
 
 					} else {
 						return array_merge( $og_ret, $og_single_image );
@@ -1099,9 +1096,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				/**
 				 * Check for custom meta, featured, or attached image(s).
+				 *
 				 * Allow for empty post id in order to execute featured / attached image filters for modules.
 				 */
 				if ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
+
 					$og_ret = array_merge( $og_ret, $this->p->media->get_post_images( $num_diff, $size_name, $mod[ 'id' ], $check_dupes, $md_pre ) );
 				}
 
@@ -1172,14 +1171,27 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$og_ret = array_merge( $og_ret, $og_images );
 					}
 				}
+			}
 
-				if ( empty( $og_ret ) ) {
-					$og_ret = array_merge( $og_ret, $this->p->media->get_default_images( $num_diff, $size_name, $check_dupes ) );
+			if ( empty( $og_ret ) ) {
 
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'no image(s) found - getting the default image' );
+				}
+
+				$og_images = $this->p->media->get_default_images( 1, $size_name, $check_dupes );
+
+				if ( ! empty( $og_images ) ) {
+					$og_ret = array_merge( $og_ret, $og_images );
 				}
 			}
 
 			$this->p->util->slice_max( $og_ret, $num );
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'returning ' . count( $og_ret ) . ' images' );
+				$this->p->debug->mark( 'get all open graph images' );
+			}
 
 			return $og_ret;
 		}
@@ -1255,17 +1267,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						}
 
 						if ( empty( $media_info[ $key ] ) ) {
-							$media_info[ $key ] = $this->get_media_value( $og_images, $get_mt_name );
-						}
-
-						/**
-						 * If there's no image, and no video preview image, then add
-						 * the default image for singular (aka post) webpages.
-						 */
-						if ( empty( $media_info[ $key ] ) && $mod[ 'is_post' ] ) {
-
-							$og_images = $this->p->media->get_default_images( $num = 1, $size_name, $check_dupes = false );
-
 							$media_info[ $key ] = $this->get_media_value( $og_images, $get_mt_name );
 						}
 

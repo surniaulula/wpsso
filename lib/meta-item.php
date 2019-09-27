@@ -236,10 +236,6 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 
 				$og_images = $this->p->og->get_all_images( $max_nums[ 'schema_img_max' ], $size_name, $mod, true, $md_pre = 'schema' );
 
-				if ( empty( $og_images ) && $mod[ 'is_post' ] ) {
-					$og_images = $this->p->media->get_default_images( 1, $size_name, true );
-				}
-
 				/**
 				 * WpssoHead::get_single_mt() will make sure this URL is added as a link itemprop tag and not a
 				 * meta itemprop tag.

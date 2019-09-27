@@ -376,7 +376,8 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 				if ( count( $og_images ) > 0 ) {
 
-					$og_single_image     = reset( $og_images );
+					$og_single_image = reset( $og_images );
+
 					$og_single_image_url = SucomUtil::get_mt_media_url( $og_single_image );
 
 					$mt_tc[ 'twitter:image' ] = $og_single_image_url;
