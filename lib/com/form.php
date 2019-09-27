@@ -899,9 +899,9 @@ EOF;
 			 * Sanity check for possibly older input field values.
 			 */
 			if ( false === $selected ) {
+
 				if ( empty( $this->options[ $name ] ) || 
-					( $this->options[ $name ] !== 'none' &&
-						strlen( $this->options[ $name ] ) !== 2 ) ) {
+					( $this->options[ $name ] !== 'none' && strlen( $this->options[ $name ] ) !== 2 ) ) {
 
 					$selected = $this->defaults[ $name ];
 				}
