@@ -434,19 +434,23 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.6.0-dev.3 (2019/09/27)**
+**Version 6.6.0-dev.4 (2019/09/27)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Updated the content video detection patterns to include the new block editor embed tags.
+	* Optimized the handling of video preview images to improve selection and avoid duplicates.
 * **Bugfixes**
-	* Fixed fallback to default image for non-singular pages.
+	* Fixed fallback to default image for non-singular and non-term pages.
 	* Fixed 'get_avatar' filter hook for older WP pre-v4.2 sites by removing 6th argument (added in WP v4.2).
 * **Developer Notes**
+	* Moved video preview image selection from `WpssoOpenGraph::get_array()` to `WpssoOpenGraph::get_all_images()`
 	* Updated the `WpssoSchemaSingle::add_job_data() method` to allow handling of multiple hiring organization and location IDs.
 	* Updated the `WpssoSchemaSingle::add_event_data() method` to allow handling of multiple location, organizer, and performer IDs.
 	* Added a new `get_select_multi()` and `get_no_select_multi()` methods in the WpssoForm class.
+	* Added local caching to the `WpssoOpenGraph::get_all_videos()` method.
+	* Added a new `WpssoOpenGraph::get_all_previews()` method.
 
 **Version 6.5.0 (2019/09/26)**
 
@@ -542,9 +546,9 @@ Moved custom image cropping selections to the Media Library attachment editing p
 
 == Upgrade Notice ==
 
-= 6.6.0-dev.3 =
+= 6.6.0-dev.4 =
 
-(2019/09/27) Fixed fallback to default image for non-singular pages.
+(2019/09/27) Fixed fallback to default image for non-singular and non-term pages. Updated the content video detection patterns. Optimized the handling of video preview images.
 
 = 6.5.0 =
 
