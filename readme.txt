@@ -434,7 +434,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.6.0-rc.1 (2019/09/27)**
+**Version 6.6.0 (2019/09/28)**
 
 * **New Features**
 	* None.
@@ -526,31 +526,9 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 	* Removed the `SucomUtil::is_product_category()` method.
 	* Removed the `SucomUtil::is_product_tag()` method.
 
-**Version 6.1.0 (2019/09/01)**
-
-Moved custom image cropping selections to the Media Library attachment editing pages.
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added a "Preferred Cropping" option in the Document SSO metabox for attachment editing pages.
-	* Removed all "Image Subject Area" options under the Priority Media tab in the Document SSO metabox.
-	* Removed the Priority Media tab in the Document SSO metabox from attachment editing pages.
-* **Bugfixes**
-	* Fixed saving of checkbox option groups ("changed" class added to all group members as required).
-	* Fixed `wp_add_inline_script()` call by adding a `function_exists()` test (for older WP versions).
-	* Fixed `wp_json_encode()` call by replacing it with `SucomUtil::json_encode_array()` (for older WP versions).
-	* Fixed `get_term_by()` calls for 'term_taxonomy_id' by adding an empty taxonomy slug argument (for older WP versions).
-* **Developer Notes**
-	* Added a 'wpsso_json_data_graph_element' filter for each Schema @graph property array element.
-
 == Upgrade Notice ==
 
-= 6.6.0-rc.1 =
+= 6.6.0 =
 
-(2019/09/27) Fixed fallback to default image for non-singular and non-term pages. Updated the content video detection patterns. Optimized the handling of video preview images.
-
-= 6.5.0 =
-
-(2019/09/26) Refactored the post, term, and user get_options() methods to better handle fallback to default values.
+(2019/09/28) Fixed fallback to default image for non-singular and non-term pages. Updated the content video detection patterns. Optimized the handling of video preview images.
 
