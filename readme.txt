@@ -434,7 +434,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.6.0-dev.4 (2019/09/27)**
+**Version 6.6.0-b.1 (2019/09/27)**
 
 * **New Features**
 	* None.
@@ -546,7 +546,7 @@ Moved custom image cropping selections to the Media Library attachment editing p
 
 == Upgrade Notice ==
 
-= 6.6.0-dev.4 =
+= 6.6.0-b.1 =
 
 (2019/09/27) Fixed fallback to default image for non-singular and non-term pages. Updated the content video detection patterns. Optimized the handling of video preview images.
 
