@@ -207,7 +207,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				}
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log_arr( 'term_id ' . $user_id . ' meta options read', $md_opts );
+					$this->p->debug->log_arr( 'term_id ' . $term_id . ' meta options read', $md_opts );
 				}
 			}
 
@@ -226,7 +226,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					$md_opts = apply_filters( $this->p->lca . '_get_term_options', $md_opts, $term_id, $mod );
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log_arr( 'term_id ' . $user_id . ' meta options filtered', $md_opts );
+						$this->p->debug->log_arr( 'term_id ' . $term_id . ' meta options filtered', $md_opts );
 					}
 				}
 			}

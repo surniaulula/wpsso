@@ -1042,7 +1042,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) {
 
-						$id_marker = WpssoFilters::get_wc_product_id_marker();
+						$id_marker = WpssoFilters::get_wc_product_data_anchor();
 
 						foreach ( $scripts_json as $script_md5 => $single_json ) {
 

@@ -1286,7 +1286,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 								 * $md_pre may be 'none' when getting Open Graph option defaults
 								 * (and not their custom values).
 								 */
-								$og_videos = $this->get_all_videos( $max_nums[ 'og_vid_max' ], $mod, $check_dupes = true, $md_pre );
+								$og_videos = $this->get_all_videos( 1, $mod, $check_dupes = true, $md_pre );
 							}
 						}
 

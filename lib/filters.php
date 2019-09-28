@@ -95,7 +95,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 
 			if ( ! empty( $json_data[ '@id' ] ) ) {
 
-				$id_marker = self::get_wc_product_id_marker();
+				$id_marker = self::get_wc_product_data_anchor();
 
 				if ( false === strpos( $json_data[ '@id' ], $id_marker ) ) {
 					$json_data[ '@id' ] .= $id_marker;
@@ -105,8 +105,8 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			return $json_data;
 		}
 
-		public static function get_wc_product_id_marker() {
-			return '#id-wc-product-data';
+		public static function get_wc_product_data_anchor() {
+			return '#wc-product-data';
 		}
 
 		public function update_gform_noconflict_styles( $styles ) {

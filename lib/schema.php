@@ -26,9 +26,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 	class WpssoSchema {
 
 		private $p;
-
 		private $noscript;
-
 		private $types_cache = null;		// Schema types array cache.
 
 		private static $units_cache = null;	// Schema unicodes array cache.
@@ -1282,7 +1280,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public function get_schema_type_id_for_name( $type_name, $default_id = null ) {
 
 			if ( $this->p->debug->enabled ) {
-
 				$this->p->debug->log_args( array( 
 					'type_name'  => $type_name,
 					'default_id' => $default_id,
@@ -2416,7 +2413,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$wpsso =& Wpsso::get_instance();
 
 			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->mark();
+				$wpsso->debug->log_args( array( 
+					'type_id'  => $type_id,
+					'type_url' => $type_url,
+				) );
 			}
 
 			if ( empty( $type_id ) ) {
@@ -2428,17 +2428,27 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return;
 			}
 
+			static $id_anchor = null;
+
+			if ( null === $id_anchor ) {	// Optimize and call just once.
+				$id_anchor = self::get_id_anchor();
+			}
+
+			if ( $wpsso->debug->enabled ) {
+				if ( empty( $json_data[ '@id' ] ) ) {
+					$wpsso->debug->log( '@id property is empty' );
+				} else {
+					$wpsso->debug->log( '@id property is ' . $json_data[ '@id' ] );
+				}
+			}
+
+			/**
+			 * Check if $type_id is a URL, just in case. If $type_id is a URL, then use it as-is.
+			 */
 			if ( false !== filter_var( $type_id, FILTER_VALIDATE_URL ) ) {
 
 				if ( $wpsso->debug->enabled ) {
-
 					$wpsso->debug->log( 'provided type_id is a valid url' );
-
-					if ( empty( $json_data[ '@id' ] ) ) {
-						$wpsso->debug->log( 'previous @id property is empty' );
-					} else {
-						$wpsso->debug->log( 'previous @id property is ' . $json_data[ '@id' ] );
-					}
 				}
 
 				unset( $json_data[ '@id' ] );	// Just in case.
@@ -2452,9 +2462,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return;	// Stop here.
 			}
 
-			$id_separator = '/';
-			$id_anchor    = '#id' . $id_separator;
-			$type_id      = preg_replace( '/^#id\//', '', $type_id );	// Just in case.
+			/**
+			 * Remove any id anchor from the begining of the type id string.
+			 */
+			$type_id = preg_replace( '/^' . preg_quote( $id_anchor, '/' ) . '/', '', $type_id );
 
 			if ( ! empty( $type_url ) ) {
 
@@ -2465,6 +2476,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$default_id = $json_data[ 'url' ] . $id_anchor . $type_id;
 
 			} else {
+
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'exiting early: json_data url is empty and required' );
 				}
@@ -2472,61 +2484,24 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return;
 			}
 
-
 			/**
 			 * The combined url and schema type create a unique @id string.
 			 */
-			if ( empty( $json_data[ '@id' ] ) ) {
+			unset( $json_data[ '@id' ] );	// Just in case.
 
-				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'previous @id property is empty' );
-				}
+			$json_data = array( '@id' => $default_id ) + $json_data;
 
-				unset( $json_data[ '@id' ] );	// Just in case.
-
-				$json_data = array( '@id' => $default_id ) + $json_data;
-
-				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'new @id property is ' . $json_data[ '@id' ] );
-				}
-
-			/**
-			 * Filters may return an @id as a way to signal a change to the schema type.
-			 */
-			} elseif ( $json_data[ '@id' ] !== $default_id ) {
-
-				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'previous @id property is ' . $json_data[ '@id' ] );
-				}
-
-				if ( false !== ( $id_pos = strpos( $json_data[ '@id' ], $id_anchor ) ) ) {
-
-					$id_str = substr( $json_data[ '@id' ], $id_pos + strlen( $id_anchor ) );
-
-					if ( preg_match_all( '/([^\/]+)/', $id_str, $all_matches, PREG_SET_ORDER ) ) {
-
-						$has_type_id = false;
-
-						foreach ( $all_matches as $match ) {
-
-							if ( $match[1] === $type_id ) {
-								$has_type_id = true;		// Found the original type id.
-							}
-
-							$page_type_added[ $match[ 1 ] ] = true;	// Prevent duplicate schema types.
-						}
-
-						if ( ! $has_type_id ) {
-
-							$json_data[ '@id' ] .= $id_separator . $type_id;	// Append the original type id.
-
-							if ( $wpsso->debug->enabled ) {
-								$wpsso->debug->log( 'modified @id is ' . $json_data[ '@id' ] );
-							}
-						}
-					}
-				}
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->log( 'new @id property is ' . $json_data[ '@id' ] );
 			}
+		}
+
+		public static function get_id_anchor() {
+			return '#id/';
+		}
+
+		public static function get_id_delim() {
+			return '/';
 		}
 
 		/**

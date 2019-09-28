@@ -94,10 +94,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$img_meta = wp_get_attachment_metadata( $pid );
 
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log_arr( 'wp_get_attachment_metadata', $img_meta );
-				}
-
 				if ( isset( $img_meta[ 'width' ] ) && isset( $img_meta[ 'height' ] ) &&
 					$img_meta[ 'width' ] < $size_info[ 'width' ] && $img_meta[ 'height' ] < $size_info[ 'height' ] ) {
 
@@ -661,10 +657,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$use_full = false;
 			$img_meta = wp_get_attachment_metadata( $pid );
 			$img_alt  = get_post_meta( $pid, '_wp_attachment_image_alt', true );
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log_arr( 'wp_get_attachment_metadata', $img_meta );
-			}
 
 			/**
 			 * Check to see if the full size image width/height matches the resize width/height we require. If so, then

@@ -483,7 +483,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				foreach ( SucomUtil::preg_grep_keys( '/^' . $opt_prefix . '(_[0-9]+)?$/', $event_opts ) as $opt_key => $id ) {
 
-					if ( ! SucomUtil::is_valid_option_id( $event_opts[ $id ] ) ) {
+					if ( ! SucomUtil::is_valid_option_id( $id ) ) {
 						continue;
 					}
 

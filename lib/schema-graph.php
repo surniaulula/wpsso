@@ -75,6 +75,11 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 			static $new_data  = array();
 			static $recursion = null;
+			static $id_anchor = null;
+			
+			if ( null === $id_anchor ) {	// Optimize and call just once.
+				$id_anchor = WpssoSchema::get_id_anchor();
+			}
 
 			if ( isset( $json_data[ '@graph' ] ) ) {	// Top level of json.
 				$recursion = 0;
@@ -92,7 +97,7 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 					self::optimize( $val );
 
-				} elseif ( $recursion > 2 && '@id' === $key && strpos( $val, '#id/' ) ) {
+				} elseif ( $recursion > 2 && '@id' === $key && strpos( $val, $id_anchor ) ) {
 
 					if ( count( $json_data ) > 1 ) {	// Ignore arrays with only an @id property.
 
