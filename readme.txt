@@ -1,4 +1,4 @@
-=== WPSSO Core | Complete Social and Search Optimization Meta Tags and Markup ===
+=== WPSSO Core | Social and Search Optimization Meta Tags and Schema Markup ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -13,27 +13,27 @@ Tested Up To: 5.2.3
 WC Tested Up To: 3.7.0
 Stable Tag: 6.6.0
 
-Makes sure your content looks great on all social and search sites - no matter how your webpage URLs are crawled, shared, re-shared, posted, or embedded.
+Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.
 
 == Description ==
 
 <p style="margin:0;"><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
 
-**WPSSO Core is fast, simple, and makes sure your content looks great on *all social and search sites* - no matter how your webpage URLs are crawled, shared, re-shared, posted, or embedded:**
+**WPSSO Core is fast, simple, and makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded:**
 
 WPSSO Core for WordPress provides complete information about your content to social sites (Facebook, Pinterest, Twitter, LinkedIn, etc.), search crawlers (Google, Bing, etc.), mail and messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), REST API clients, and oEmbed data for embedded objects / iframes.
 
-**Uses your *existing WordPress content* for meta tags and Schema markup:**
+**Uses your existing WordPress content for meta tags and Schema markup:**
 
 There's no need to manually enter descriptions, titles, product information, select images / videos, etc. &mdash; WPSSO Core reads your existing post, page, product, media, recipe, event, forum, and SEO content automatically, and offers fine-tuning and customization options for just about anything and everything. ;-)
 
 WPSSO Core is also language / locale aware, which means you can customize your site information, social page URLs and Knowledge Graph for different languages.
 
-**Creates *complete and accurate* meta tags and Schema markup:**
+**Creates complete and accurate meta tags and Schema markup:**
 
 WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph, Google Rich Results / Structured Data (see the [WPSSO JSON add-on](https://wordpress.org/plugins/wpsso-schema-json-ld/)), Google Merchant, Mobile Web Browsers, oEmbed for LinkedIn, Pinterest Rich Pins, Twitter Cards, Weibo and many more &mdash; including complete markup for image SEO, video SEO, extensive e-Commerce product markup (for WooCommerce and others), mobile apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content!
 
-**Includes advanced *quality assurance* features and options:**
+**Includes advanced quality assurance features and options:**
 
 * Checks for minimum / maximum image dimensions and aspect ratios.
 * Shows notices for missing and required images.
@@ -54,7 +54,7 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 
 <h3>WPSSO Core Free / Standard Features</h3>
 
-* *Complete and accurate* meta tags for all social sites, search engines, web browser extensions, mail and messaging apps, and embedded object / iframe content.
+* *Complete and accurate meta tags for all social sites, search engines, web browser extensions, mail and messaging apps, and embedded object / iframe content.
 
 * Updates the WordPress oEmbed data and HTML markup with the Open Graph title, description, and image for posts, pages, and custom post types.
 
@@ -64,13 +64,13 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 
 * Image dimension settings for Facebook / Open Graph, Schema markup, Google Rich Results / Structured Data, Pinterest Rich Pins, and Twitter Cards.
 
-* Contextual help for *every* plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/).
+* Contextual help for every plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/).
 
 * Built-in support for [AMP](https://wordpress.org/plugins/amp/), [Better AMP](https://wordpress.org/plugins/better-amp/), and [AMP for WP](https://wordpress.org/plugins/accelerated-mobile-pages/) plugins.
 
 * Supports advanced WordPress configurations, including [WordPress Network / Multisite installations](https://wpsso.com/docs/plugins/wpsso/notes/multisite-network-support/) and WordPress MU Domain Mapping.
 
-* Includes advanced *quality assurance* features and options.
+* Includes advanced quality assurance features and options.
 
 <h3>Free Complementary Add-ons</h3>
 
