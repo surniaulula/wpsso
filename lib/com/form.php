@@ -521,6 +521,16 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				switch ( $event_name ) {
 
+					case 'on_focus_show':
+
+						$html .= '<script type="text/javascript">';
+						$html .= 'jQuery( \'select#' . esc_js( $input_id ) . '\' ).on( \'focus\', function(){';
+						$html .= 'jQuery(\'' . $event_args . '\').show();';
+						$html .= '});';
+						$html .= '</script>' . "\n";
+
+						break;
+
 					case 'on_focus_load_json':
 
 						/**
@@ -685,6 +695,8 @@ EOF;
 
 			foreach ( range( $start_num, $end_num, 1 ) as $key_num ) {
 
+				$display = empty( $one_more ) && $key_num >= $show_first ? false : true;
+
 				$prev_num = $key_num > 0 ? $key_num - 1 : 0;
 				$next_num = $key_num + 1;
 
@@ -697,13 +709,11 @@ EOF;
 				$input_id_next = empty( $css_id ) ? $name . '_' . $next_num : $css_id . '_' . $next_num;
 				$input_value   = $this->in_options( $opt_key ) ? $this->options[ $opt_key ] : '';
 
-				$display = empty( $one_more ) && $key_num >= $show_first ? false : true;
-
 				if ( $is_disabled && $key_num >= $show_first && empty( $display ) ) {
 					continue;
 				}
 				
-				$html .= '<div class="multi_container" id="multi_' . esc_attr( $input_id ) . '"';
+				$html .= '<div class="multi_container select_multi" id="multi_' . esc_attr( $input_id ) . '"';
 				$html .= $display ? '' : ' style="display:none;"';
 				$html .= '>' . "\n";
 
@@ -714,7 +724,8 @@ EOF;
 				/**
 				 * $opt_disabled can be true, false, or an option value for the disabled select.
 				 */
-				$html .= $this->get_select( $opt_key, $values, $input_class, $input_id, $is_assoc, $opt_disabled, $input_value );
+				$html .= $this->get_select( $opt_key, $values, $input_class, $input_id, $is_assoc,
+					$opt_disabled, $input_value, 'on_focus_show', 'div#multi_' . esc_attr( $input_id_next ) );
 
 				$html .= is_string( $is_disabled ) ? $is_disabled : '';	// Allow for requirement comment.
 
@@ -722,7 +733,7 @@ EOF;
 
 				$html .= '</div><!-- .multi_container -->' . "\n";
 
-				$one_more = empty( $input_value ) ? false : true;
+				$one_more = $input_value === 'none' || ( empty( $input_value ) && ! is_numeric( $input_value ) ) ? false : true;
 			}
 
 			return $html;
@@ -1326,6 +1337,8 @@ EOF;
 
 			foreach ( range( $start_num, $end_num, 1 ) as $key_num ) {
 
+				$display = empty( $one_more ) && $key_num >= $show_first ? false : true;
+
 				$prev_num = $key_num > 0 ? $key_num - 1 : 0;
 				$next_num = $key_num + 1;
 
@@ -1338,13 +1351,14 @@ EOF;
 				$input_id_next = empty( $css_id ) ? $name . '_' . $next_num : $css_id . '_' . $next_num;
 				$input_value   = $this->in_options( $opt_key ) ? $this->options[ $opt_key ] : '';
 
-				$display = empty( $one_more ) && $key_num >= $show_first ? false : true;
-
 				if ( $is_disabled && $key_num >= $show_first && empty( $display ) ) {
 					continue;
 				}
 				
-				$html .= '<div class="multi_container" id="multi_' . esc_attr( $input_id ) . '"';
+				$el_attr = 'onFocus="if ( jQuery(\'input#text_' . $input_id_prev . '\').val().length ) { '.
+					'jQuery(\'div#multi_' . esc_attr( $input_id_next ) . '\').show(); }" />';
+
+				$html .= '<div class="multi_container input_multi" id="multi_' . esc_attr( $input_id ) . '"';
 				$html .= $display ? '' : ' style="display:none;"';
 				$html .= '>' . "\n";
 
@@ -1357,14 +1371,13 @@ EOF;
 					' class="' . esc_attr( $input_class ) . '"' .
 					' id="text_' . esc_attr( $input_id ) . '"' .
 					' value="' . esc_attr( $input_value ) . '"' .
-					' onFocus="if ( jQuery(\'input#text_' . $input_id_prev . '\').val().length ) { '.
-						'jQuery(\'div#multi_' . esc_attr( $input_id_next ) . '\').show(); }" />';
+					' ' . $el_attr . '/>';
 
 				$html .= '</div><!-- .multi_input -->' . "\n";
 
 				$html .= '</div><!-- .multi_container -->' . "\n";
 
-				$one_more = empty( $input_value ) ? false : true;
+				$one_more = empty( $input_value ) && ! is_numeric( $input_value ) ? false : true;
 
 			}
 
@@ -1535,7 +1548,7 @@ EOF;
 									' value="' . esc_attr( $input_value ) . '"' .
 									' ' . $el_attr . '/>' . "\n";
 
-								$one_more = empty( $input_value ) ? false : true;
+								$one_more = empty( $input_value ) && ! is_numeric( $input_value ) ? false : true;
 
 								break;
 
@@ -1550,6 +1563,8 @@ EOF;
 									' id="textarea_' . esc_attr( $input_id ) . '"' .
 									( $this->get_placeholder_events( 'textarea', $placeholder ) ) .
 									'>' . esc_attr( $input_value ) . '</textarea>' . "\n";
+
+								$one_more = empty( $input_value ) && ! is_numeric( $input_value ) ? false : true;
 
 								break;
 
@@ -1567,7 +1582,7 @@ EOF;
 										array() : $atts[ 'select_options' ];
 
 								$select_selected = empty( $atts[ 'select_selected' ] ) ? null : $atts[ 'select_selected' ];
-								$select_default   = empty( $atts[ 'select_default' ] ) ? null : $atts[ 'select_default' ];
+								$select_default  = empty( $atts[ 'select_default' ] ) ? null : $atts[ 'select_default' ];
 
 								$is_assoc = SucomUtil::is_assoc( $select_options );
 
