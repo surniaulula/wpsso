@@ -13,7 +13,7 @@ Tested Up To: 5.2.3
 WC Tested Up To: 3.7.0
 Stable Tag: 6.6.0
 
-WPSSO Core makes sure your content looks great on all social and search sites - no matter how your URLs are crawled, shared, re-shared, posted or embedded!
+Makes sure your content looks great on all social and search sites - no matter how your URLs are crawled, shared, re-shared, posted or embedded!
 
 == Description ==
 
@@ -433,6 +433,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 <p>Under the SSO &gt; Update Manager settings page, select the "Development and Up" version filter for WPSSO Core and all its extensions (to satisfy any version dependencies). Save the plugin settings, and click the "Check for Updates" button to fetch the latest / current WPSSO version information. When new Development versions are available, they will automatically appear under your WordPress Dashboard &gt; Updates page. You can always re-select the "Stable / Production" version filter at any time to re-install the last stable / production version of a plugin.</p>
 
 <h3>Changelog / Release Notes</h3>
+
+**Version 6.6.1-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
 
 **Version 6.6.0 (2019/09/28)**
 
