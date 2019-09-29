@@ -1,4 +1,4 @@
-=== WPSSO Core | Advanced Meta Tags and Schema Markup ===
+=== WPSSO Core | Social and Search Optimization Meta Tags and Markup ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -13,13 +13,13 @@ Tested Up To: 5.2.3
 WC Tested Up To: 3.7.0
 Stable Tag: 6.6.0
 
-Makes sure your content looks great on all social and search sites - no matter how your URLs are crawled, shared, re-shared, posted or embedded!
+Makes sure your content looks great on all social and search sites - no matter how your webpage URLs are crawled, shared, re-shared, posted, or embedded.
 
 == Description ==
 
 <p style="margin:0;"><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
 
-**WPSSO Core is fast, simple, and makes sure your content looks great on *social and search sites* - no matter how your URLs are crawled, shared, re-shared, posted, or embedded:**
+**WPSSO Core is fast, simple, and makes sure your content looks great on *all social and search sites* - no matter how your webpage URLs are crawled, shared, re-shared, posted, or embedded:**
 
 WPSSO Core for WordPress provides complete information about your content to social sites (Facebook, Pinterest, Twitter, LinkedIn, etc.), search crawlers (Google, Bing, etc.), mail and messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), REST API clients, and oEmbed data for embedded objects / iframes.
 
