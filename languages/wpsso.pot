@@ -1341,8 +1341,8 @@ msgstr ""
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core is fast, simple, and makes sure your content looks great on all "
-"social and search sites - no matter how your webpage URLs are crawled, "
-"shared, re-shared, posted, or embedded."
+"social and search sites - no matter how webpage URLs are crawled, shared, re-"
+"shared, posted, or embedded."
 msgstr ""
 
 #: lib/gettext-config.php:40
@@ -6997,8 +6997,8 @@ msgstr ""
 #. Description of the plugin/theme
 msgid ""
 "WPSSO Core is fast, simple, and makes sure your content looks great on all "
-"social and search sites - no matter how your webpage URLs are crawled, "
-"shared, re-shared, posted or embedded."
+"social and search sites - no matter how webpage URLs are crawled, shared, re-"
+"shared, posted or embedded."
 msgstr ""
 
 #. Author of the plugin/theme

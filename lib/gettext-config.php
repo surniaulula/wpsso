@@ -36,7 +36,7 @@ _x( 'Dashboard', 'lib file description', 'wpsso' );
 _x( 'Setup Guide', 'lib file description', 'wpsso' );
 _x( 'Tools', 'lib file description', 'wpsso' );
 _x( 'SSO Tools', 'lib file description', 'wpsso' );
-_x( 'WPSSO Core is fast, simple, and makes sure your content looks great on all social and search sites - no matter how your webpage URLs are crawled, shared, re-shared, posted, or embedded.', 'plugin description', 'wpsso' );
+_x( 'WPSSO Core is fast, simple, and makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.', 'plugin description', 'wpsso' );
 _x( 'Apple Store / iTunes and Google Play App meta tags for Apple\'s mobile Safari banner and Twitter\'s App Card.', 'plugin description', 'wpsso' );
 _x( 'Schema BreadcrumbList markup in JSON-LD for better Google SEO Rich Results.', 'plugin description', 'wpsso' );
 _x( 'Manage FAQ categories with Question and Answer pages.', 'plugin description', 'wpsso' );
