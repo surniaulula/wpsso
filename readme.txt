@@ -1,4 +1,4 @@
-=== WPSSO Core | Social and Search Optimization Meta Tags and Schema Markup ===
+=== WPSSO Core - Social and Search Optimization Meta Tags and Schema Markup ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
