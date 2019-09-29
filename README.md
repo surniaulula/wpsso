@@ -1,4 +1,4 @@
-<h1>WPSSO Core | Advanced Open Graph, Rich Pins, Twitter Cards, SEO Rich Results, oEmbed Data, and Schema Markup</h1>
+<h1>WPSSO Core | Advanced Open Graph, Rich Pins, Twitter Cards, Structured Data, oEmbed and Schema Markup</h1>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
@@ -27,7 +27,7 @@
 
 <p><strong>Creates <em>complete and accurate</em> meta tags and Schema markup:</strong></p>
 
-<p>WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph, Google SEO Rich Results (see the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO JSON add-on</a>), Google Merchant, Mobile Web Browsers, oEmbed for LinkedIn, Pinterest Rich Pins, Twitter Cards, Weibo and many more &mdash; including complete markup for image SEO, video SEO, extensive e-Commerce product markup (for WooCommerce and others), mobile apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content!</p>
+<p>WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph, Google Rich Results / Structured Data (see the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO JSON add-on</a>), Google Merchant, Mobile Web Browsers, oEmbed for LinkedIn, Pinterest Rich Pins, Twitter Cards, Weibo and many more &mdash; including complete markup for image SEO, video SEO, extensive e-Commerce product markup (for WooCommerce and others), mobile apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content!</p>
 
 <p><strong>Includes advanced <em>quality assurance</em> features and options:</strong></p>
 
@@ -57,7 +57,7 @@
 <li><p>Updates the WordPress oEmbed data and HTML markup with the Open Graph title, description, and image for posts, pages, and custom post types.</p></li>
 <li><p>Provides meta tags and markup for posts, pages, custom post types, tags, categories, custom taxonomy / terms, user profile pages, search pages, and attachment pages.</p></li>
 <li><p>Uses images from numerous sources, including featured, attached, gallery shortcode, images from HTML tags, or a custom fallback image.</p></li>
-<li><p>Image dimension settings for Facebook / Open Graph, Schema markup, Google SEO Rich Results, Pinterest Rich Pins, and Twitter Cards.</p></li>
+<li><p>Image dimension settings for Facebook / Open Graph, Schema markup, Google Rich Results / Structured Data, Pinterest Rich Pins, and Twitter Cards.</p></li>
 <li><p>Contextual help for <em>every</em> plugin option and <a href="https://wpsso.com/docs/plugins/wpsso/">comprehensive online documentation</a>.</p></li>
 <li><p>Built-in support for <a href="https://wordpress.org/plugins/amp/">AMP</a>, <a href="https://wordpress.org/plugins/better-amp/">Better AMP</a>, and <a href="https://wordpress.org/plugins/accelerated-mobile-pages/">AMP for WP</a> plugins.</p></li>
 <li><p>Supports advanced WordPress configurations, including <a href="https://wpsso.com/docs/plugins/wpsso/notes/multisite-network-support/">WordPress Network / Multisite installations</a> and WordPress MU Domain Mapping.</p></li>
