@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.6.1-dev.1\n"
+"Project-Id-Version: WPSSO Core 6.6.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3205,13 +3205,13 @@ msgid ""
 msgstr ""
 
 #. translators: %s is the Events Calendar plugin name
-#: lib/gettext-pro.php:188 lib/pro/event/tribe_events.php:54
+#: lib/gettext-pro.php:188 lib/pro/event/tribe_events.php:55
 msgctxt "option value"
 msgid "[%s Organizer]"
 msgstr ""
 
 #. translators: %s is the Events Calendar plugin name
-#: lib/gettext-pro.php:189 lib/pro/event/tribe_events.php:61
+#: lib/gettext-pro.php:189 lib/pro/event/tribe_events.php:62
 msgctxt "option value"
 msgid "[%s Venue]"
 msgstr ""

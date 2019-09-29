@@ -1356,7 +1356,7 @@ EOF;
 				}
 				
 				$el_attr = 'onFocus="if ( jQuery(\'input#text_' . $input_id_prev . '\').val().length ) { '.
-					'jQuery(\'div#multi_' . esc_attr( $input_id_next ) . '\').show(); }" />';
+					'jQuery(\'div#multi_' . esc_attr( $input_id_next ) . '\').show(); }"';
 
 				$html .= '<div class="multi_container input_multi" id="multi_' . esc_attr( $input_id ) . '"';
 				$html .= $display ? '' : ' style="display:none;"';
@@ -1371,7 +1371,7 @@ EOF;
 					' class="' . esc_attr( $input_class ) . '"' .
 					' id="text_' . esc_attr( $input_id ) . '"' .
 					' value="' . esc_attr( $input_value ) . '"' .
-					' ' . $el_attr . '/>';
+					' ' . $el_attr . '/>' . "\n";
 
 				$html .= '</div><!-- .multi_input -->' . "\n";
 
