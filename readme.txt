@@ -1,4 +1,4 @@
-=== WPSSO Core - Makes sure your content looks great on all social and search sites ===
+=== WPSSO Core - The Complete Social and Search Meta Tag and Markup Solution ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
