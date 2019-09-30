@@ -25,7 +25,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'opt_version' => '668',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
-					'desc'        => 'WPSSO Core is fast, simple, and makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.',
+					'desc'        => 'Make sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.',
 					'slug'        => 'wpsso',
 					'base'        => 'wpsso/wpsso.php',
 					'update_auth' => 'tid',
@@ -485,7 +485,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssorest' => array(			// Plugin acronym.
 					'short'       => 'WPSSO REST',	// Short plugin name.
 					'name'        => 'WPSSO REST API',
-					'desc'        => 'Enhances the WordPress REST API post, term, and user queries with an array of meta tags and Schema markup.',
+					'desc'        => 'Enhances the WordPress REST API post, term, and user queries with an array of Social and Search Engine Optimization meta tags and Schema markup.',
 					'slug'        => 'wpsso-rest-api',
 					'base'        => 'wpsso-rest-api/wpsso-rest-api.php',
 					'update_auth' => '',

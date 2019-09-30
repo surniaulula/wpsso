@@ -36,7 +36,7 @@ _x( 'Dashboard', 'lib file description', 'wpsso' );
 _x( 'Setup Guide', 'lib file description', 'wpsso' );
 _x( 'Tools', 'lib file description', 'wpsso' );
 _x( 'SSO Tools', 'lib file description', 'wpsso' );
-_x( 'WPSSO Core is fast, simple, and makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.', 'plugin description', 'wpsso' );
+_x( 'Make sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.', 'plugin description', 'wpsso' );
 _x( 'Apple Store / iTunes and Google Play App meta tags for Apple\'s mobile Safari banner and Twitter\'s App Card.', 'plugin description', 'wpsso' );
 _x( 'Schema BreadcrumbList markup in JSON-LD for better Google SEO Rich Results.', 'plugin description', 'wpsso' );
 _x( 'Manage FAQ categories with Question and Answer pages.', 'plugin description', 'wpsso' );
@@ -45,7 +45,7 @@ _x( 'Schema JSON-LD markup and Google SEO Rich Results for Articles, Events, Loc
 _x( 'Customize home page Schema Organization markup and manage additional Organizations (publisher, organizer, etc.).', 'plugin description', 'wpsso' );
 _x( 'Facebook / Open Graph Location, Pinterest Place, Schema Local Business and Local SEO meta tags.', 'plugin description', 'wpsso' );
 _x( 'Ratings and reviews for WordPress comments with Aggregate Rating meta tags and Schema Review markup.', 'plugin description', 'wpsso' );
-_x( 'Enhances the WordPress REST API post, term, and user queries with an array of meta tags and Schema markup.', 'plugin description', 'wpsso' );
+_x( 'Enhances the WordPress REST API post, term, and user queries with an array of Social and Search Engine Optimization meta tags and Schema markup.', 'plugin description', 'wpsso' );
 _x( 'Ridiculously Responsive (SVG) Social Sharing Buttons for your content, excerpts, CSS sidebar, widget, shortcode, editor pages, etc.', 'plugin description', 'wpsso' );
 _x( 'Traditional social sharing buttons with support for hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more.', 'plugin description', 'wpsso' );
 _x( 'Removes outdated Schema microdata from theme templates and leaves Schema JSON-LD untouched for better Google SEO Rich Results.', 'plugin description', 'wpsso' );

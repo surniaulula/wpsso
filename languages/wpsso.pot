@@ -1340,9 +1340,8 @@ msgstr ""
 #: lib/gettext-config.php:39
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core is fast, simple, and makes sure your content looks great on all "
-"social and search sites - no matter how webpage URLs are crawled, shared, re-"
-"shared, posted, or embedded."
+"Make sure your content looks great on all social and search sites - no "
+"matter how webpage URLs are crawled, shared, re-shared, posted, or embedded."
 msgstr ""
 
 #: lib/gettext-config.php:40
@@ -1402,7 +1401,7 @@ msgstr ""
 msgctxt "plugin description"
 msgid ""
 "Enhances the WordPress REST API post, term, and user queries with an array "
-"of meta tags and Schema markup."
+"of Social and Search Engine Optimization meta tags and Schema markup."
 msgstr ""
 
 #: lib/gettext-config.php:49
@@ -6996,9 +6995,8 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"WPSSO Core is fast, simple, and makes sure your content looks great on all "
-"social and search sites - no matter how webpage URLs are crawled, shared, re-"
-"shared, posted or embedded."
+"Make sure your content looks great on all social and search sites - no "
+"matter how webpage URLs are crawled, shared, re-shared, posted or embedded."
 msgstr ""
 
 #. Author of the plugin/theme
