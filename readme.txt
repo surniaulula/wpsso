@@ -325,7 +325,7 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 
 * [A Setup Guide for WPSSO](https://wpsso.com/docs/plugins/wpsso/installation/a-setup-guide/)
 * [Developer Special - Buy one, Get one Free](https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/)
-* [Better Schema for WooCommerce Step-by-step Guide](https://wpsso.com/docs/plugins/wpsso/installation/better-schema-for-woocommerce-step-by-step-guide/)
+* [Better Schema.org Markup for WooCommerce](https://wpsso.com/docs/plugins/wpsso/installation/better-schema-for-woocommerce-step-by-step-guide/)
 * [Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/)
 	* [BuddyPress Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/)
 	* [WooCommerce Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/)
