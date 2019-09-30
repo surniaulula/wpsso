@@ -6995,7 +6995,7 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Make sure your content looks great on all social and search sites - no "
+"Makes sure your content looks great on all social and search sites - no "
 "matter how webpage URLs are crawled, shared, re-shared, posted or embedded."
 msgstr ""
 
