@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 6.6.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-09-30 06:51-0700\n"
-"PO-Revision-Date: 2019-09-30 07:01-0700\n"
+"PO-Revision-Date: 2019-09-30 07:35-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1275,7 +1275,7 @@ msgstr "Outils SSO"
 #: lib/gettext-config.php:39
 msgctxt "plugin description"
 msgid "Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded."
-msgstr "Assurez-vous que votre contenu a une belle apparence sur tous les sites de réseaux sociaux et de recherche, quelle que soit la manière dont vos pages Web sont explorées, partagées, re-partagées, publiées ou incorporées."
+msgstr "Assure que votre contenu a une belle apparence sur tous les sites, quelle que soit la manière dont vos pages Web sont explorées, partagées, re-partagées, publiées ou incorporées."
 
 #: lib/gettext-config.php:40
 msgctxt "plugin description"
@@ -6193,7 +6193,7 @@ msgstr "https://wpsso.com/extend/plugins/wpsso/"
 
 #. Description of the plugin/theme
 msgid "Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted or embedded."
-msgstr "Assurez-vous que votre contenu a une belle apparence sur tous les sites de réseaux sociaux et de recherche, quelle que soit la manière dont vos pages Web sont explorées, partagées, re-partagées, publiées ou incorporées."
+msgstr "Assure que votre contenu a une belle apparence sur tous les sites, quelle que soit la manière dont vos pages Web sont explorées, partagées, re-partagées, publiées ou incorporées."
 
 #. Author of the plugin/theme
 msgid "JS Morisset"
