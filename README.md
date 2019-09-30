@@ -1,8 +1,8 @@
-<h1>WPSSO Core</h1><h3>Make sure your content looks great on all social and search sites!</h3>
+<h1>WPSSO Core</h1><h3>Makes sure your content looks great on all social and search sites</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
-<tr><th align="right" valign="top" nowrap>Summary</th><td>Make sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.</td></tr>
+<tr><th align="right" valign="top" nowrap>Summary</th><td>Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.</td></tr>
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>6.6.0</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.9</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 5.2.3</td></tr>
@@ -15,9 +15,9 @@
 
 <p style="margin:0;"><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
 
-<p><strong>Make sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded:</strong></p>
+<p><strong>Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded:</strong></p>
 
-<p>WPSSO Core for WordPress provides complete information about your content to social sites (Facebook, Pinterest, Twitter, LinkedIn, etc.), search crawlers (Google, Bing, etc.), mail and messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), REST API clients, and oEmbed data for embedded objects / iframes.</p>
+<p>WPSSO Core for WordPress provides complete and customized information about your content to social sites (Facebook, Pinterest, Twitter, LinkedIn, etc.), search crawlers (Google, Bing, etc.), mail and messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), REST API clients, and oEmbed data for embedded objects / iframes.</p>
 
 <p><strong>Uses your existing WordPress content for meta tags and Schema markup:</strong></p>
 
