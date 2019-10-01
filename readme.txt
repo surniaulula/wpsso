@@ -443,7 +443,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Updated the WpssoOptions `check_options()` and `save_options()` methods to clear the cache after upgrading the options array.
 
 **Version 6.6.0 (2019/09/28)**
 
