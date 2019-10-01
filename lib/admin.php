@@ -911,7 +911,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$opts = SucomUtil::restore_checkboxes( $opts );
 			$opts = array_merge( $this->p->options, $opts );
 			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network = false );	// Sanitation updates image width/height info.
-			$opts = apply_filters( $this->p->lca . '_save_options', $opts, WPSSO_OPTIONS_NAME, $network = false, $doing_upgrade = false );
+			$opts = apply_filters( $this->p->lca . '_save_options', $opts, WPSSO_OPTIONS_NAME, $network = false );
 
 			/**
 			 * Update the current options with any changes.
@@ -920,9 +920,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( empty( $this->p->options[ 'plugin_clear_on_save' ] ) ) {
 
-				/**
-				 * Note that get_admin_url() will use the essential settings URL if we're not on a settings page.
-				 */
 				$clear_cache_link = $this->p->util->get_admin_url( wp_nonce_url( '?' . $this->p->lca . '-action=clear_all_cache',
 					WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME ), _x( 'Clear All Caches', 'submit button', 'wpsso' ) );
 	
@@ -940,7 +937,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						'wpsso' ), $settings_page_link ) );
 
 				$this->p->util->schedule_clear_all_cache( $user_id = get_current_user_id(), $clear_other = true );
-
 			}
 
 			if ( empty( $opts[ 'plugin_filter_content' ] ) ) {
@@ -1096,10 +1092,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							if ( isset( $this->p->cf[ 'form' ][ 'show_options' ][ $_GET[ 'show-opts' ] ] ) ) {
 
+								WpssoUser::save_pref( array( 'show_opts' => $_GET[ 'show-opts' ] ) );
+
 								$this->p->notice->upd( sprintf( __( 'Option preference saved &mdash; viewing "%s" by default.',
 									'wpsso' ), $this->p->cf[ 'form' ][ 'show_options' ][ $_GET[ 'show-opts' ] ] ) );
-
-								WpssoUser::save_pref( array( 'show_opts' => $_GET[ 'show-opts' ] ) );
 							}
 
 							break;
@@ -1117,7 +1113,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							$img_opts = SucomUtil::preg_grep_keys( '/_img_(width|height|crop|crop_x|crop_y)$/', $def_opts );
 							$opts     = array_merge( $this->p->options, $img_opts );
 
-							$this->p->opt->save_options( WPSSO_OPTIONS_NAME, $opts );
+							$this->p->opt->save_options( WPSSO_OPTIONS_NAME, $opts, $network = false );
 
 							$this->p->notice->upd( __( 'Image size settings have been reloaded with their default values and saved.',
 								'wpsso' ) );
@@ -1326,9 +1322,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				case 'profile':
 	
-					$user_id       = get_current_user_id();
-					$user_obj      = get_user_to_edit( $user_id );
-					$admin_color   = get_user_option( 'admin_color', $user_id );
+					$user_id     = get_current_user_id();
+					$user_obj    = get_user_to_edit( $user_id );
+					$admin_color = get_user_option( 'admin_color', $user_id );
 	
 					if ( empty( $admin_color ) ) {
 						$admin_color = 'fresh';
@@ -4313,7 +4309,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$this->p->options = $this->p->opt->check_options( WPSSO_OPTIONS_NAME, $opts );
 
-			$this->p->opt->save_options( WPSSO_OPTIONS_NAME, $opts );
+			$this->p->opt->save_options( WPSSO_OPTIONS_NAME, $opts, $network = false );
 
 			$this->p->notice->upd( __( 'Import of plugin and add-on settings is complete.', 'wpsso' ) );
 

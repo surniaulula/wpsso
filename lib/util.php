@@ -659,8 +659,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
+
+				if ( ! $doing_ajax ) {
+					$this->p->debug->log_arr( 'get_image_sizes', $this->get_image_sizes() );
+				}
+
 				$this->p->debug->mark( 'define image sizes' );	// End timer.
-				$this->p->debug->log_arr( 'get_image_sizes', $this->get_image_sizes() );
 			}
 		}
 

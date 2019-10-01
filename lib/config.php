@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.6.1-dev.1',	// Plugin version.
+					'version'     => '6.6.1-dev.2',	// Plugin version.
 					'opt_version' => '668',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -3176,7 +3176,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					foreach ( self::$cf[ 'plugin' ] as $ext => $info ) {
 
 						if ( defined( strtoupper( $ext ) . '_PLUGINDIR' ) ) {
-							$pkg_lctype = is_dir( constant( strtoupper( $ext ) . '_PLUGINDIR' ) . 'lib/pro/' ) ? 'pro' : 'std';
+							if ( defined( 'WPSSO_PRO_DISABLE' ) && WPSSO_PRO_DISABLE ) {
+								$pkg_lctype = 'std';
+							} else {
+								$plugin_dir = constant( strtoupper( $ext ) . '_PLUGINDIR' );
+								$pkg_lctype = is_dir( $plugin_dir .  'lib/pro/' ) ? 'pro' : 'std';
+							}
 						} else {
 							$pkg_lctype = '';
 						}
