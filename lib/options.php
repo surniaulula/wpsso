@@ -681,6 +681,91 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		}
 
 		/**
+		 * Save both options and site options.
+		 */
+		public function save_options( $options_name, &$opts, $network = false, $options_changed = false ) {
+
+			/**
+			 * Make sure we have something to work with.
+			 */
+			if ( empty( $opts ) || ! is_array( $opts ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: options variable is empty and/or not array' );
+				}
+
+				return false;
+			}
+
+			$is_new_options  = empty( $opts[ 'options_version' ] ) ? true : false;
+			$current_version = $is_new_options ? 0 : $opts[ 'options_version' ];
+			$latest_version  = $this->p->cf[ 'opt' ][ 'version' ];
+
+			/**
+			 * Save the plugin version and options version.
+			 */
+			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
+
+				if ( isset( $info[ 'version' ] ) ) {
+					$opts[ 'plugin_' . $ext . '_version' ] = $info[ 'version' ];
+				}
+
+				if ( isset( $info[ 'opt_version' ] ) ) {
+					$opts[ 'plugin_' . $ext . '_opt_version' ] = $info[ 'opt_version' ];
+				}
+			}
+
+			$opts[ 'options_version' ] = $latest_version;	// Mark the new options array as current.
+
+			$doing_upgrade = ! $is_new_options && ! $options_changed && $current_version === $latest_version ? false : true;
+
+			$opts = apply_filters( $this->p->lca . '_save_options', $opts, $options_name, $network, $doing_upgrade );
+
+			if ( $network ) {
+
+				if ( $saved = update_site_option( $options_name, $opts ) ) {	// Auto-creates options with autoload no.
+					$this->p->site_options = $opts;
+				}
+
+			} else {
+
+				if ( $saved = update_option( $options_name, $opts ) ) {		// Auto-creates options with autoload yes.
+					$this->p->options = $opts;
+				}
+			}
+
+			if ( true === $saved ) {
+
+				if ( $doing_upgrade ) {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( $options_name . ' settings have been upgraded and saved' );
+					}
+
+					if ( is_admin() ) {
+						$this->p->notice->inf( '<strong>' . __( 'Plugin settings have been upgraded and saved.', 'wpsso' ) . '</strong> ' .
+							__( 'A background task will begin shortly to clear the cache.', 'wpsso' ) );
+
+						$this->p->util->schedule_clear_all_cache( $user_id = get_current_user_id(), $clear_other = true );
+					}
+
+				} elseif ( $this->p->debug->enabled ) {
+					$this->p->debug->log( $options_name . ' settings have been saved silently' );
+				}
+
+			} else {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'wordpress failed to save the ' . $options_name . ' settings' );
+				}
+
+				return false;
+			}
+
+			return true;
+		}
+
+		/**
 		 * Update the width / height of remote image urls.
 		 */
 		private function refresh_image_url_sizes( array &$opts ) {
@@ -705,6 +790,70 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			$this->p->util->add_image_url_size( $opts, $img_url_keys );	// $opts passed by reference.
 
 			$this->check_banner_image_size( $opts );
+		}
+
+		private function check_banner_image_size( $opts ) {
+
+			if ( ! $this->p->notice->is_admin_pre_notices() ) {
+				return;
+			}
+
+			$size_name          = false;	// Only check banner urls - skip any banner image id options.
+			$opt_img_pre        = 'schema_banner';
+			$settings_page_link = $this->p->util->get_admin_url(
+				'essential#sucom-tabset_essential-tab_google',
+				_x( 'Organization Banner URL', 'option label', 'wpsso' )
+			);
+
+			/**
+			 * Returns an image array:
+			 *
+			 * array(
+			 *	'og:image:url'       => null,
+			 *	'og:image:width'     => null,
+			 *	'og:image:height'    => null,
+			 *	'og:image:cropped'   => null,
+			 *	'og:image:id'        => null,
+			 *	'og:image:alt'       => null,
+			 *	'og:image:size_name' => null,
+			 * );
+			 */
+			$og_single_image = $this->p->media->get_opts_single_image( $opts, $size_name, $opt_img_pre );
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log_arr( '$og_single_image', $og_single_image );
+			}
+
+			$og_single_image_url = SucomUtil::get_mt_media_url( $og_single_image );
+
+			if ( ! empty( $og_single_image_url ) ) {
+
+				$image_href    = '<a href="' . $og_single_image_url . '">' . $og_single_image_url . '</a>';
+				$image_dims    = $og_single_image[ 'og:image:width' ] . 'x' . $og_single_image[ 'og:image:height' ] . 'px';
+				$required_dims = '600x60px';
+
+				if ( $image_dims !== $required_dims ) {
+
+					if ( $image_dims === '-1x-1px' ) {
+
+						$error_msg = sprintf( __( 'The %1$s image dimensions cannot be determined.',
+							'wpsso' ), $settings_page_link ) . ' ';
+
+						$error_msg .= sprintf( __( 'Please make sure this site can access the image URL at %1$s using the PHP getimagesize() function.',
+							'wpsso' ), $image_href );
+
+					} else {
+
+						$error_msg = sprintf( __( 'The %1$s image dimensions are %2$s and must be exactly %3$s.',
+							'wpsso' ), $settings_page_link, $image_dims, $required_dims ) . ' ';
+
+						$error_msg .= sprintf( __( 'Please correct the banner image at %s.',
+							'wpsso' ), $image_href );
+					}
+
+					$this->p->notice->err( $error_msg );
+				}
+			}
 		}
 
 		private function check_value( $opt_key, $base_key, $opt_val, $def_val, $network, $mod ) {
@@ -1124,155 +1273,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			return $opt_val;
-		}
-
-		/**
-		 * Save both options and site options.
-		 */
-		public function save_options( $options_name, &$opts, $network = false, $options_changed = false ) {
-
-			/**
-			 * Make sure we have something to work with.
-			 */
-			if ( empty( $opts ) || ! is_array( $opts ) ) {
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: options variable is empty and/or not array' );
-				}
-
-				return false;
-			}
-
-			$is_new_options  = empty( $opts[ 'options_version' ] ) ? true : false;
-			$current_version = $is_new_options ? 0 : $opts[ 'options_version' ];
-			$latest_version  = $this->p->cf[ 'opt' ][ 'version' ];
-
-			/**
-			 * Save the plugin version and options version.
-			 */
-			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
-
-				if ( isset( $info[ 'version' ] ) ) {
-					$opts[ 'plugin_' . $ext . '_version' ] = $info[ 'version' ];
-				}
-
-				if ( isset( $info[ 'opt_version' ] ) ) {
-					$opts[ 'plugin_' . $ext . '_opt_version' ] = $info[ 'opt_version' ];
-				}
-			}
-
-			$opts[ 'options_version' ] = $latest_version;	// Mark the new options array as current.
-
-			$doing_upgrade = ! $is_new_options && ! $options_changed && $current_version === $latest_version ? false : true;
-
-			$opts = apply_filters( $this->p->lca . '_save_options', $opts, $options_name, $network, $doing_upgrade );
-
-			if ( $network ) {
-
-				if ( $saved = update_site_option( $options_name, $opts ) ) {	// Auto-creates options with autoload no.
-					$this->p->site_options = $opts;
-				}
-
-			} else {
-
-				if ( $saved = update_option( $options_name, $opts ) ) {		// Auto-creates options with autoload yes.
-					$this->p->options = $opts;
-				}
-			}
-
-			if ( true === $saved ) {
-
-				if ( $doing_upgrade ) {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $options_name . ' settings have been upgraded and saved' );
-					}
-
-					if ( is_admin() ) {
-						$this->p->notice->inf( '<strong>' . __( 'Plugin settings have been upgraded and saved.', 'wpsso' ) . '</strong> ' .
-							__( 'A background task will begin shortly to clear the cache.', 'wpsso' ) );
-
-						$this->p->util->schedule_clear_all_cache( $user_id = get_current_user_id(), $clear_other = true );
-					}
-
-				} elseif ( $this->p->debug->enabled ) {
-					$this->p->debug->log( $options_name . ' settings have been saved silently' );
-				}
-
-			} else {
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'wordpress failed to save the ' . $options_name . ' settings' );
-				}
-
-				return false;
-			}
-
-			return true;
-		}
-
-		private function check_banner_image_size( $opts ) {
-
-			if ( ! $this->p->notice->is_admin_pre_notices() ) {
-				return;
-			}
-
-			$size_name          = false;	// Only check banner urls - skip any banner image id options.
-			$opt_img_pre        = 'schema_banner';
-			$settings_page_link = $this->p->util->get_admin_url(
-				'essential#sucom-tabset_essential-tab_google',
-				_x( 'Organization Banner URL', 'option label', 'wpsso' )
-			);
-
-			/**
-			 * Returns an image array:
-			 *
-			 * array(
-			 *	'og:image:url'       => null,
-			 *	'og:image:width'     => null,
-			 *	'og:image:height'    => null,
-			 *	'og:image:cropped'   => null,
-			 *	'og:image:id'        => null,
-			 *	'og:image:alt'       => null,
-			 *	'og:image:size_name' => null,
-			 * );
-			 */
-			$og_single_image = $this->p->media->get_opts_single_image( $opts, $size_name, $opt_img_pre );
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log_arr( '$og_single_image', $og_single_image );
-			}
-
-			$og_single_image_url = SucomUtil::get_mt_media_url( $og_single_image );
-
-			if ( ! empty( $og_single_image_url ) ) {
-
-				$image_href    = '<a href="' . $og_single_image_url . '">' . $og_single_image_url . '</a>';
-				$image_dims    = $og_single_image[ 'og:image:width' ] . 'x' . $og_single_image[ 'og:image:height' ] . 'px';
-				$required_dims = '600x60px';
-
-				if ( $image_dims !== $required_dims ) {
-
-					if ( $image_dims === '-1x-1px' ) {
-
-						$error_msg = sprintf( __( 'The %1$s image dimensions cannot be determined.',
-							'wpsso' ), $settings_page_link ) . ' ';
-
-						$error_msg .= sprintf( __( 'Please make sure this site can access the image URL at %1$s using the PHP getimagesize() function.',
-							'wpsso' ), $image_href );
-
-					} else {
-
-						$error_msg = sprintf( __( 'The %1$s image dimensions are %2$s and must be exactly %3$s.',
-							'wpsso' ), $settings_page_link, $image_dims, $required_dims ) . ' ';
-
-						$error_msg .= sprintf( __( 'Please correct the banner image at %s.',
-							'wpsso' ), $image_href );
-					}
-
-					$this->p->notice->err( $error_msg );
-				}
-			}
 		}
 
 		public function filter_option_type( $type, $base_key ) {
