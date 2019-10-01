@@ -1245,6 +1245,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				#wpadminbar .' . $this->lca . '-notice.error,
 				#wpadminbar .' . $this->lca . '-notice.updated {
 					background:inherit;
+					border-bottom:none;
+					border-right:none;
 				}
 				#wpadminbar .' . $this->lca . '-notice > div,
 				#wpadminbar .' . $this->lca . '-notice.error > div,
