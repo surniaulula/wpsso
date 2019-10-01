@@ -434,6 +434,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 6.6.1-dev.1 (2019/10/01)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Updated translation strings and stylesheet CSS.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+
 **Version 6.6.0 (2019/09/28)**
 
 * **New Features**
@@ -527,6 +538,10 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 	* Removed the `SucomUtil::is_product_tag()` method.
 
 == Upgrade Notice ==
+
+= 6.6.1-dev.1 =
+
+(2019/10/01) Updated translation strings and stylesheet CSS.
 
 = 6.6.0 =
 
