@@ -228,33 +228,29 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/**
 				 * Upgrade the options array if necessary (renamed or remove keys).
 				 */
-				if ( ! $is_new_options ) {
-				
-					if ( $current_version !== $latest_version ) {
+				if ( ! $is_new_options && $options_changed ) {
 
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $options_name . ' current v' . $current_version . ' different than latest v' . $latest_version );
-						}
-
-						if ( ! is_object( $this->upg ) ) {
-
-							require_once WPSSO_PLUGINDIR . 'lib/upgrade.php';
-
-							$this->upg = new WpssoOptionsUpgrade( $this->p );
-						}
-
-						if ( null === $def_opts ) {	// Only get default options once.
-							if ( $network ) {
-								$def_opts = $this->get_site_defaults();
-							} else {
-								$def_opts = $this->get_defaults();
-							}
-						}
-
-						$opts = $this->upg->options( $options_name, $opts, $def_opts, $network );
-
-						$options_changed = true;
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( $options_name . ' current v' . $current_version .
+							' different than latest v' . $latest_version );
 					}
+
+					if ( ! is_object( $this->upg ) ) {
+
+						require_once WPSSO_PLUGINDIR . 'lib/upgrade.php';
+
+						$this->upg = new WpssoOptionsUpgrade( $this->p );
+					}
+
+					if ( null === $def_opts ) {	// Only get default options once.
+						if ( $network ) {
+							$def_opts = $this->get_site_defaults();
+						} else {
+							$def_opts = $this->get_defaults();
+						}
+					}
+
+					$opts = $this->upg->options( $options_name, $opts, $def_opts, $network );
 				}
 
 				/**
@@ -262,9 +258,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				if ( ! $network ) {
 
-					if ( ! $is_new_options && $options_changed && empty( $opts[ 'plugin_' . $this->p->lca . '_tid' ] ) ) {
-
-						if ( ! $this->p->check->pp( $this->p->lca, false ) ) {
+					if ( ! $is_new_options && $options_changed ) {
+					
+						if ( empty( $opts[ 'plugin_' . $this->p->lca . '_tid' ] ) &&
+							! $this->p->check->pp( $this->p->lca, false ) ) {
 
 							if ( null === $def_opts ) {	// Only get default options once.
 								$def_opts = $this->get_defaults();
@@ -297,15 +294,16 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 								}
 
 								$opts[ $opt_key ] = $def_val;
-
-								$options_changed = true;	// Save the options.
 							}
 						}
 					}
+				}
 
-					/**
-					 * If an SEO plugin is detected, adjust some related SEO options.
-					 */
+				/**
+				 * If an SEO plugin is detected, adjust some related SEO options.
+				 */
+				if ( ! $network ) {
+
 					if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
 
 						if ( $this->p->debug->enabled ) {
@@ -340,12 +338,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$options_changed = true;	// Save the options.
 						}
 					}
-
-					/**
-					 * Please note that generator meta tags are required for plugin support. If you disable the
-					 * generator meta tags, requests for plugin support will be denied.
-					 */
-					$opts[ 'add_meta_name_generator' ] = SucomUtil::get_const( 'WPSSO_META_GENERATOR_DISABLE' ) ? 0 : 1;
 				}
 
 				/**
@@ -378,6 +370,15 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				if ( SucomUtil::get_const( 'WPSSO_TOOLBAR_NOTICES' ) ) {
 					$opts[ 'plugin_notice_system' ]    = 'toolbar_notices';
 					$opts[ 'plugin_notice_system:is' ] = 'disabled';
+				}
+
+				/**
+				 * Note that generator meta tags are required for plugin support. If you disable the generator meta
+				 * tags, requests for plugin support will be denied.
+				 */
+				if ( ! $network ) {
+					$opts[ 'add_meta_name_generator' ]    = SucomUtil::get_const( 'WPSSO_META_GENERATOR_DISABLE' ) ? 0 : 1;
+					$opts[ 'add_meta_name_generator:is' ] = 'disabled';
 				}
 
 				/**
