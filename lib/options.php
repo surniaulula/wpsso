@@ -263,6 +263,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				if ( ! $network ) {
 
 					if ( ! $is_new_options && $options_changed && empty( $opts[ 'plugin_' . $this->p->lca . '_tid' ] ) ) {
+
 						if ( ! $this->p->check->pp( $this->p->lca, false ) ) {
 
 							if ( null === $def_opts ) {	// Only get default options once.
@@ -395,7 +396,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						}
 
 						/**
-						 * Sanitation updates image width/height info.
+						 * Sanitation also updates image width/height info.
 						 */
 						$opts = $this->sanitize( $opts, $def_opts, $network );
 					}

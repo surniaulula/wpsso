@@ -538,7 +538,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'If no custom image has been defined for an author, fallback to using their Gravatar image in author related meta tags and Schema markup.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'A customized image can be selected for / by each author in their WordPress user profile %s metabox.', 'wpsso' ), $metabox_title );
+							$text .= sprintf( __( 'A customized image can be selected for/by each author in the WordPress user profile %s metabox.', 'wpsso' ), $metabox_title );
 
 							break;
 
