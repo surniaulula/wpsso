@@ -269,13 +269,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					if ( ! $is_new_options && $version_changed ) {
 					
-						if ( empty( $opts[ 'plugin_' . $this->p->lca . '_tid' ] ) ) {
+						if ( empty( $opts[ 'plugin_' . $this->p->lca . '_tid' ] ) && ! $this->p->check->pp( $ext, false ) ) {
 
 							if ( null === $def_opts ) {	// Only get default options once.
 								$def_opts = $this->get_defaults();
 							}
 
 							$advanced_opts = SucomUtil::preg_grep_keys( '/^plugin_/', $def_opts );
+							$advanced_opts = SucomUtil::preg_grep_keys( '/^plugin_.*_tid$/', $advanced_opts, $invert = true );
 
 							foreach ( array(
 								'plugin_clean_on_uninstall',

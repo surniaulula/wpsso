@@ -156,7 +156,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public function nag( $msg_text, $user_id = null, $notice_key = false ) {
 
-			$this->log( 'nag', $msg_text, $user_id, $notice_key, false );	// $dismiss_time is false.
+			$this->log( 'nag', $msg_text, $user_id, $notice_key, $dismiss_time = false );
 		}
 
 		public function err( $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false ) {
@@ -196,6 +196,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$use_cache = get_current_user_id() === $user_id ? true : false;
 
 			$payload[ 'notice_key' ]   = empty( $notice_key ) ? false : sanitize_key( $notice_key );
+			$payload[ 'notice_time' ]  = time();
+			$payload[ 'notice_ttl' ]   = isset( $payload[ 'notice_ttl' ] ) ? (int) $payload[ 'notice_ttl' ] : 300;	// 0 to disable notice epiration.
+
 			$payload[ 'dismiss_time' ] = false;
 			$payload[ 'dismiss_diff' ] = isset( $payload[ 'dismiss_diff' ] ) ? $payload[ 'dismiss_diff' ] : null;
 
@@ -644,6 +647,16 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						continue;
 					}
 
+					/**
+					 * Make sure the notice has not exceeded its TTL. A 'notice_ttl' value of 0 disables the
+					 * notice message expiration.
+					 */
+					if ( ! empty( $payload[ 'notice_time' ] ) && ! empty( $payload[ 'notice_ttl' ] ) ) {
+						if ( time() > $payload[ 'notice_time' ] + $payload[ 'notice_ttl' ] ) {
+							continue;
+						}
+					}
+
 					if ( 'nag' === $msg_type ) {
 
 						$nag_text .= $payload[ 'msg_text' ];	// Append to echo a single msg block.
@@ -825,6 +838,16 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 					if ( empty( $payload[ 'msg_text' ] ) ) {	// Nothing to show.
 						continue;
+					}
+
+					/**
+					 * Make sure the notice has not exceeded its TTL. A 'notice_ttl' value of 0 disables the
+					 * notice message expiration.
+					 */
+					if ( ! empty( $payload[ 'notice_time' ] ) && ! empty( $payload[ 'notice_ttl' ] ) ) {
+						if ( time() > $payload[ 'notice_time' ] + $payload[ 'notice_ttl' ] ) {
+							continue;
+						}
 					}
 
 					if ( ! empty( $payload[ 'dismiss_time' ] ) ) {	// True or seconds greater than 0.
