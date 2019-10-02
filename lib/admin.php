@@ -911,7 +911,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$opts = SucomUtil::restore_checkboxes( $opts );
 			$opts = array_merge( $this->p->options, $opts );
 			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network = false );	// Sanitation updates image width/height info.
-			$opts = apply_filters( $this->p->lca . '_save_options', $opts, WPSSO_OPTIONS_NAME, $network = false );
+			$opts = apply_filters( $this->p->lca . '_save_options', $opts, WPSSO_OPTIONS_NAME, $network = false, $doing_upgrade = false );
 
 			/**
 			 * Update the current options with any changes.

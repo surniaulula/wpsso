@@ -355,6 +355,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					}
 				}
 
+				/**
+				 * Mark options as current.
+				 */
+				$md_opts[ 'options_version' ] = $this->p->cf[ 'opt' ][ 'version' ];
+
 				return true;
 			}
 

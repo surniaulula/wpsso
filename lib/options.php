@@ -207,7 +207,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 		}
 
-		public function check_options( $options_name, &$opts = array(), $network = false, $activate = false ) {
+		public function check_options( $options_name, &$opts = array(), $network = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'checking options' );	// Begin timer.
@@ -215,15 +215,24 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			if ( is_array( $opts ) && ! empty( $opts ) ) {	// Just in case.
 
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'options are a valid array' );
-				}
-
-				$is_new_options  = empty( $opts[ 'options_version' ] ) ? true : false;
-				$current_version = $is_new_options ? 0 : $opts[ 'options_version' ];
+				$is_new_options  = empty( $opts[ 'options_version' ] ) ? true : false;	// Example: -wpsso512pro-wpssoum3gpl
+				$current_version = $is_new_options ? 0 : $opts[ 'options_version' ];	// Example: -wpsso512pro-wpssoum3gpl
 				$latest_version  = $this->p->cf[ 'opt' ][ 'version' ];
 				$options_changed = $current_version === $latest_version ? false : true;
+				$version_changed = false;
 				$def_opts        = null;	// Optimize and only get array when needed.
+
+				if ( ! $is_new_options ) {
+					foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
+						if ( isset( $info[ 'version' ] ) ) {
+							if ( ! isset( $opts[ 'plugin_' . $ext . '_version' ] ) ||
+								$opts[ 'plugin_' . $ext . '_version' ] !== $info[ 'version' ] ) {
+
+								$version_changed = true;
+							}
+						}
+					}
+				}
 
 				/**
 				 * Upgrade the options array if necessary (renamed or remove keys).
@@ -258,10 +267,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				if ( ! $network ) {
 
-					if ( ! $is_new_options && $options_changed ) {
+					if ( ! $is_new_options && $version_changed ) {
 					
-						if ( empty( $opts[ 'plugin_' . $this->p->lca . '_tid' ] ) &&
-							! $this->p->check->pp( $this->p->lca, false ) ) {
+						if ( empty( $opts[ 'plugin_' . $this->p->lca . '_tid' ] ) ) {
 
 							if ( null === $def_opts ) {	// Only get default options once.
 								$def_opts = $this->get_defaults();
@@ -273,6 +281,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 								'plugin_clean_on_uninstall',
 								'plugin_debug',
 								'plugin_show_opts',
+								'plugin_notice_system',
 								'plugin_check_img_dims',
 							) as $opt_key ) {
 								unset( $advanced_opts[ $opt_key ] );
@@ -294,6 +303,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 								}
 
 								$opts[ $opt_key ] = $def_val;
+
+								$options_changed = true;	// Save the options.
 							}
 						}
 					}
@@ -321,11 +332,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$opts[ $opt_key . ':is' ] = 'disabled';
 
 							if ( $opts[ $opt_key ] === $def_val ) {
-
-								if ( $this->p->debug->enabled ) {
-									$this->p->debug->log( $opt_key . ' already set to ' . $def_val );
-								}
-
 								continue;
 							}
 
@@ -368,6 +374,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 * Enable or disable the toolbar notification system dynamically.
 				 */
 				if ( SucomUtil::get_const( 'WPSSO_TOOLBAR_NOTICES' ) ) {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'WPSSO_TOOLBAR_NOTICES constant is defined' );
+					}
+
 					$opts[ 'plugin_notice_system' ]    = 'toolbar_notices';
 					$opts[ 'plugin_notice_system:is' ] = 'disabled';
 				}
@@ -377,8 +388,16 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 * tags, requests for plugin support will be denied.
 				 */
 				if ( ! $network ) {
-					$opts[ 'add_meta_name_generator' ]    = SucomUtil::get_const( 'WPSSO_META_GENERATOR_DISABLE' ) ? 0 : 1;
-					$opts[ 'add_meta_name_generator:is' ] = 'disabled';
+
+					if ( SucomUtil::get_const( 'WPSSO_META_GENERATOR_DISABLE' ) ) {
+
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'WPSSO_META_GENERATOR_DISABLE constant is defined' );
+						}
+
+						$opts[ 'add_meta_name_generator' ]    = SucomUtil::get_const( 'WPSSO_META_GENERATOR_DISABLE' ) ? 0 : 1;
+						$opts[ 'add_meta_name_generator:is' ] = 'disabled';
+					}
 				}
 
 				/**
@@ -434,10 +453,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				$opts = $network ? $this->get_site_defaults() : $this->get_defaults();
 			}
-
-			$doing_upgrade = ! $is_new_options && ! $options_changed && $current_version === $latest_version ? false : true;
-
-			do_action( $this->p->lca . '_check_options', $opts, $options_name, $network, $doing_upgrade );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'checking options' );	// End timer.
@@ -698,8 +713,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				return false;
 			}
 
-			$is_new_options  = empty( $opts[ 'options_version' ] ) ? true : false;
-			$current_version = $is_new_options ? 0 : $opts[ 'options_version' ];
+			$is_new_options  = empty( $opts[ 'options_version' ] ) ? true : false;	// Example: -wpsso512pro-wpssoum3gpl
+			$current_version = $is_new_options ? 0 : $opts[ 'options_version' ];	// Example: -wpsso512pro-wpssoum3gpl
 			$latest_version  = $this->p->cf[ 'opt' ][ 'version' ];
 
 			/**

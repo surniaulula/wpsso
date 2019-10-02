@@ -3751,8 +3751,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					}
 				}
 			}
-
-			$opts[ 'options_version' ] = $this->p->cf[ 'opt' ][ 'version' ];	// Mark as current.
 		}
 
 		/**
