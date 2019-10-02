@@ -434,14 +434,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.6.1-dev.3 (2019/10/01)**
+**Version 6.6.1-dev.3 (2019/10/02)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Updated translation strings and stylesheet CSS.
 * **Bugfixes**
-	* None.
+	* Fixed missing argument in the WpssoAdmin `registered_setting_sanitation()` method 'wpsso_save_options' filter.
 * **Developer Notes**
 	* Updated the WpssoOptions `check_options()` and `save_options()` methods to clear the cache after upgrading the options array.
 
@@ -541,7 +541,7 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 
 = 6.6.1-dev.3 =
 
-(2019/10/01) Updated translation strings and stylesheet CSS.
+(2019/10/02) Fixed missing argument in a 'wpsso_save_options' filter. Updated translation strings and stylesheet CSS.
 
 = 6.6.0 =
 
