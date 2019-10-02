@@ -155,6 +155,7 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 		* Language
 		* Family Friendly
 		* Copyright Year
+		* License URL
 		* Publisher
 		* Service Provider
 	* Event Information
@@ -434,7 +435,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.6.1-dev.3 (2019/10/02)**
+**Version 6.6.1-b.1 (2019/10/03)**
 
 * **New Features**
 	* None.
@@ -443,7 +444,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed missing argument in the WpssoAdmin `registered_setting_sanitation()` method 'wpsso_save_options' filter.
 * **Developer Notes**
-	* Updated the WpssoOptions `check_options()` and `save_options()` methods to clear the cache after upgrading the options array.
+	* Updated the WpssoOptions `check_options()` and `save_options()` methods to clear all caches after upgrading (not just saving) the options array.
 
 **Version 6.6.0 (2019/09/28)**
 
@@ -539,9 +540,9 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 
 == Upgrade Notice ==
 
-= 6.6.1-dev.3 =
+= 6.6.1-b.1 =
 
-(2019/10/02) Fixed missing argument in a 'wpsso_save_options' filter. Updated translation strings and stylesheet CSS.
+(2019/10/03) Fixed missing argument in a 'wpsso_save_options' filter. Updated translation strings and stylesheet CSS.
 
 = 6.6.0 =
 
