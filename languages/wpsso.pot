@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.6.1-dev.3\n"
+"Project-Id-Version: WPSSO Core 6.6.1-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -100,7 +100,7 @@ msgstr ""
 
 #: lib/admin.php:936 lib/register.php:150
 msgid ""
-"A background task will begin shortly to clear the cache (%s is enabled)."
+"A background task will begin shortly to clear all caches (%s is enabled)."
 msgstr ""
 
 #: lib/admin.php:974
@@ -115,7 +115,7 @@ msgstr ""
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
-#: lib/admin.php:1040
+#: lib/admin.php:1040 lib/options.php:763
 msgid "A background task will begin shortly to clear all caches."
 msgstr ""
 
@@ -5682,10 +5682,6 @@ msgstr ""
 
 #: lib/options.php:762
 msgid "Plugin settings have been upgraded and saved."
-msgstr ""
-
-#: lib/options.php:763
-msgid "A background task will begin shortly to clear the cache."
 msgstr ""
 
 #: lib/options.php:855

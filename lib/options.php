@@ -760,7 +760,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					if ( is_admin() ) {
 						$this->p->notice->inf( '<strong>' . __( 'Plugin settings have been upgraded and saved.', 'wpsso' ) . '</strong> ' .
-							__( 'A background task will begin shortly to clear the cache.', 'wpsso' ) );
+							__( 'A background task will begin shortly to clear all caches.', 'wpsso' ) );
 
 						$this->p->util->schedule_clear_all_cache( $user_id = get_current_user_id(), $clear_other = true );
 					}
