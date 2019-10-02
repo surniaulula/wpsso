@@ -444,6 +444,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed missing argument in the WpssoAdmin `registered_setting_sanitation()` method 'wpsso_save_options' filter.
 * **Developer Notes**
+	* Added a default time-to-live of 300 seconds to all notice messages to prevent showing old / expired notices.
 	* Updated the WpssoOptions `check_options()` and `save_options()` methods to clear all caches after upgrading (not just saving) the options array.
 
 **Version 6.6.0 (2019/09/28)**
