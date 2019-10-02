@@ -168,8 +168,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 				$this->options = false;
 
-				error_log( 'WPSSO_RESET_ON_ACTIVATE constant is true - reloading default settings for plugin activation' );
-
 			} else {
 				$this->options = get_option( WPSSO_OPTIONS_NAME );
 			}
@@ -182,7 +180,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					$this->options = array();
 				}
 
-				$this->options[ 'options_from_defaults' ] = true;
+				$this->options[ '__reload_defaults' ] = true;
 			}
 
 			if ( is_multisite() ) {
@@ -197,7 +195,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 						$this->site_options = array();
 					}
 
-					$this->site_options[ 'options_from_defaults' ] = true;
+					$this->site_options[ '__reload_defaults' ] = true;
 				}
 
 				/**
@@ -425,14 +423,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 * After all objects have been loaded, and all filter / action hooks registered,
 			 * check to see if the options need to be reloaded from the filtered defaults.
 			 */
-			if ( ! empty( $this->options[ 'options_from_name_alt' ] ) ) {
-
-				$this->notice->upd( sprintf( __( 'Database option table row "%1$s" for plugin settings was found and converted to "%2$s".',
-					'wpsso' ), $this->options[ 'options_from_name_alt' ], WPSSO_OPTIONS_NAME ) );
-
-				unset( $this->options[ 'options_from_name_alt' ] );
-
-			} elseif ( ! empty( $this->options[ 'options_from_defaults' ] ) ) {
+			if ( ! empty( $this->options[ '__reload_defaults' ] ) ) {
 
 				$this->options = $this->opt->get_defaults();
 			}
@@ -445,14 +436,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			if ( $network ) {
 
-				if ( ! empty( $this->options[ 'options_from_name_alt' ] ) ) {
-
-					$this->notice->upd( sprintf( __( 'Database site option table row "%1$s" for plugin settings was found and converted to "%2$s".',
-						'wpsso' ), $this->site_options[ 'options_from_name_alt' ], WPSSO_SITE_OPTIONS_NAME ) );
-
-					unset( $this->options[ 'options_from_name_alt' ] );
-
-				} elseif ( ! empty( $this->site_options[ 'options_from_defaults' ] ) ) {
+				if ( ! empty( $this->site_options[ '__reload_defaults' ] ) ) {
 
 					$this->site_options = $this->opt->get_site_defaults();
 				}
