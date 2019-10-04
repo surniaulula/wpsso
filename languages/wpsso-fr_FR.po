@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.6.1\n"
+"Project-Id-Version: WPSSO Core 6.7.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-10-02 10:01-0700\n"
-"PO-Revision-Date: 2019-10-02 10:03-0700\n"
+"POT-Creation-Date: 2019-10-04 07:52-0700\n"
+"PO-Revision-Date: 2019-10-04 07:52-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -115,7 +115,7 @@ msgstr "Privilèges insuffisants pour modifier les options de réseau."
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr "La validation du jeton nonce pour l'action %1$s \"%2$s\" a échoué."
 
-#: lib/admin.php:1040 lib/options.php:763
+#: lib/admin.php:1040 lib/options.php:764
 msgid "A background task will begin shortly to clear all caches."
 msgstr "Une tâche en arrière-plan commencera sous peu pour vider tous les caches."
 
@@ -836,7 +836,7 @@ msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr "URL logo de organisation"
 
-#: lib/admin.php:3587 lib/options.php:821 lib/submenu/essential.php:162
+#: lib/admin.php:3587 lib/options.php:822 lib/submenu/essential.php:162
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr "URL bannière d'organisation"
@@ -1096,23 +1096,23 @@ msgstr "de"
 msgid "Save a draft version or publish to update this value."
 msgstr "Sauvegardez une version préliminaire ou publiez pour mettre à jour cette valeur."
 
-#: lib/com/notice.php:215 lib/gettext-com.php:28
+#: lib/com/notice.php:218 lib/gettext-com.php:28
 msgid "Forever"
 msgstr "Toujours"
 
-#: lib/com/notice.php:217 lib/gettext-com.php:29
+#: lib/com/notice.php:220 lib/gettext-com.php:29
 msgid "This notice can be dismissed permanently."
 msgstr "Cet avis peut être masqué définitivement."
 
-#: lib/com/notice.php:228 lib/gettext-com.php:30
+#: lib/com/notice.php:231 lib/gettext-com.php:30
 msgid "This notice can be dismissed for %s."
 msgstr "Cet avis peut être masqué pour %s."
 
-#: lib/com/notice.php:440 lib/gettext-com.php:31 lib/post.php:1534
+#: lib/com/notice.php:443 lib/gettext-com.php:31 lib/post.php:1534
 msgid "Edit"
 msgstr "Modifier"
 
-#: lib/com/notice.php:444 lib/gettext-com.php:32
+#: lib/com/notice.php:447 lib/gettext-com.php:32
 msgid "Reference: %s"
 msgstr "Référence: %s"
 
@@ -4936,111 +4936,111 @@ msgctxt "image size label"
 msgid "Open Graph Image"
 msgstr "Image Open Graph"
 
-#: lib/options.php:290
+#: lib/options.php:291
 msgid "Non-standard value found for \"%s\" option - resetting to default value."
 msgstr "Valeur non-standard trouvé pour l'option '%s' - remise à la valeur par défaut."
 
-#: lib/options.php:430
+#: lib/options.php:431
 msgid "WordPress could not find an entry for %s in the options table."
 msgstr "WordPress n'a pas pu trouver une entrée pour %s dans sa table d'options."
 
-#: lib/options.php:432
+#: lib/options.php:433
 msgid "WordPress returned a non-array value when reading %s from the options table."
 msgstr "WordPress a retourné une valeur non-tableau lors de la lecture de %s dans sa table d'options."
 
-#: lib/options.php:434
+#: lib/options.php:435
 msgid "WordPress returned an empty array when reading %s from the options table."
 msgstr "WordPress a retourné un tableau vide lors de la lecture de %s dans sa table d'options."
 
-#: lib/options.php:436
+#: lib/options.php:437
 msgid "WordPress returned an unknown condition when reading %s from the options table."
 msgstr "WordPress a retourné un état inconnu lors de la lecture de %s dans sa table options."
 
-#: lib/options.php:451
+#: lib/options.php:452
 msgid "The plugin settings have been returned to their default values &mdash; <a href=\"%s\">please review and save the new settings</a>."
 msgstr "Les réglages de l'extension ont été retournée à leurs valeurs par défaut, <a href=\"%s\">s'il vous plaît examiner et sauvegarder les nouveaux réglages</a>."
 
-#: lib/options.php:582
+#: lib/options.php:583
 msgid "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of %5$s:1, which not equal to the required image ratio of %6$s:1."
 msgstr "Les clefs d'option \"%1$s\" (%2$d) et \"%3$s\" (%4$d) ont un format d'image égal à %5$s:1, qui n'est pas égal ratio d'image requis de %6$s:1."
 
-#: lib/options.php:590
+#: lib/options.php:591
 msgid "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of %5$s:1, which is equal to / or greater than the maximum image ratio of %6$s:1."
 msgstr "Les clefs d'option \"%1$s\" (%2$d) et \"%3$s\" (%4$d) ont un format d'image égal à %5$s:1, qui est égal ou supérieur au maximum ratio d'image de %6$s:1."
 
-#: lib/options.php:598
+#: lib/options.php:599
 msgid "These options have been reset to their default values."
 msgstr "Ces options ont été réinitialisées à leurs valeurs par défaut."
 
-#: lib/options.php:676
+#: lib/options.php:677
 msgid "The Facebook App ID must be numeric and 32 characters or less in length &mdash; the value of \"%s\" is not valid."
 msgstr "L'ID d'application Facebook doit être numérique et 32 ​​caractères ou moins de longueur - la valeur \"%s\" n'est pas valide."
 
-#: lib/options.php:762
+#: lib/options.php:763
 msgid "Plugin settings have been upgraded and saved."
 msgstr "Les réglages ont été mis à jour et sauvegardés."
 
-#: lib/options.php:855
+#: lib/options.php:856
 msgid "The %1$s image dimensions cannot be determined."
 msgstr "Les dimensions de l'image %1$s ne peuvent pas être déterminées."
 
-#: lib/options.php:858
+#: lib/options.php:859
 msgid "Please make sure this site can access the image URL at %1$s using the PHP getimagesize() function."
 msgstr "Assurez-vous que ce site peut accéder à l'URL d'image %1$s en utilisant la fonction PHP getimagesize()."
 
-#: lib/options.php:863
+#: lib/options.php:864
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr "Les dimensions de l'image %1$s sont %2$s et doivent être exactement %3$s."
 
-#: lib/options.php:866
+#: lib/options.php:867
 msgid "Please correct the banner image at %s."
 msgstr "Veuillez corriger l'image bannière à %s."
 
-#: lib/options.php:898
+#: lib/options.php:899
 msgid "The value of option \"%s\" must be alpha-numeric - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être alphanumérique - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:899
+#: lib/options.php:900
 msgid "The value of option \"%s\" must be blank or numeric - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être vide ou numérique - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:900
+#: lib/options.php:901
 msgid "The value of option \"%s\" must be a CSS color code - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être un code de couleur CSS - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:901
+#: lib/options.php:902
 msgid "The value of option \"%s\" must be a comma-delimited list of URL(s) - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être une liste d'URLs délimitée par des virgules - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:902
+#: lib/options.php:903
 msgid "The value of option \"%s\" must be a yyyy-mm-dd date - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être une date yyyy-mm-dd - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:903
+#: lib/options.php:904
 msgid "The value of option \"%s\" must be HTML code - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être du code HTML - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:904
+#: lib/options.php:905
 msgid "The value of option \"%s\" must be an image ID - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être un ID d'image - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:905
+#: lib/options.php:906
 msgid "The value of option \"%s\" cannot be an empty string - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" ne peut pas être un chaine de caractère vide - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:906
+#: lib/options.php:907
 msgid "The value of option \"%s\" must be numeric - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être numérique - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:907
+#: lib/options.php:908
 msgid "The value of option \"%1$s\" must be equal to or greather than %2$s - resetting this option to its default value."
 msgstr "La valeur de l'option \"%1$s\" doit être égal ou supérieur à %2$s - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:908
+#: lib/options.php:909
 msgid "The value of option \"%s\" must be a hh:mm time - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être une heure hh:mm - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:909
+#: lib/options.php:910
 msgid "The value of option \"%s\" must be a URL - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être un URL - l'option est remise à sa valeur par défaut."
 
