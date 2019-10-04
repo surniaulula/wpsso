@@ -435,17 +435,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.7.0-rc.1 (2019/10/03)**
+**Version 6.7.0 (2019/10/04)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Updated translation strings and stylesheet CSS.
 	* Added a default time-to-live of 300 seconds to all notice messages to prevent showing old / expired notices.
 * **Bugfixes**
 	* Fixed missing argument in the WpssoAdmin `registered_setting_sanitation()` method 'wpsso_save_options' filter.
 * **Developer Notes**
-	* Updated the WpssoOptions `check_options()` and `save_options()` methods to clear all caches after upgrading (not just saving) the options array.
+	* Updated the WpssoOptions `check_options()` and `save_options()` methods to clear all caches after upgrading the options array.
 
 **Version 6.6.0 (2019/09/28)**
 
@@ -541,9 +540,9 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 
 == Upgrade Notice ==
 
-= 6.7.0-rc.1 =
+= 6.7.0 =
 
-(2019/10/03) Fixed missing argument in a 'wpsso_save_options' filter. Updated translation strings and stylesheet CSS. Added a default time-to-live of 300 seconds to all notice messages.
+(2019/10/04) Fixed missing argument in a 'wpsso_save_options' filter. Added a default time-to-live of 300 seconds to all notice messages.
 
 = 6.6.0 =
 
