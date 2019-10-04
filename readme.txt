@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires At Least: 3.9
 Tested Up To: 5.2.3
 WC Tested Up To: 3.7.0
-Stable Tag: 6.6.0
+Stable Tag: 6.7.0
 
 Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.
 
@@ -543,8 +543,4 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 = 6.7.0 =
 
 (2019/10/04) Fixed missing argument in a 'wpsso_save_options' filter. Added a default time-to-live of 300 seconds to all notice messages.
-
-= 6.6.0 =
-
-(2019/09/28) Fixed fallback to default image for non-singular and non-term pages. Updated the content video detection patterns. Optimized the handling of video preview images.
 
