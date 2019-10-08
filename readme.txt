@@ -435,6 +435,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 6.7.1 (2019/10/08)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed possible non-unique image filename conflicts by copying instead or renaming cropped images.
+* **Developer Notes**
+	* None.
+
 **Version 6.7.0 (2019/10/04)**
 
 * **New Features**
@@ -540,7 +551,7 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 
 == Upgrade Notice ==
 
-= 6.7.0 =
+= 6.7.1 =
 
-(2019/10/04) Fixed missing argument in a 'wpsso_save_options' filter. Added a default time-to-live of 300 seconds to all notice messages.
+(2019/10/08) Fixed possible non-unique image filename conflicts by copying instead or renaming cropped images.
 
