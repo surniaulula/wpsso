@@ -2379,18 +2379,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'UsedCondition'        => 'used',
 					),
 				),
-				
-				/**
-				 * WpssoSchema::get_schema_types_array() flattens the array, so AVOID DUPLICATE KEY NAMES.
-				 *
-				 * https URLs are preferred - for more info, see https://schema.org/docs/faq.html#19:
-				 *
-				 * Q: Should we write 'https://schema.org' or 'http://schema.org' in our markup?
-				 * A: There is a general trend towards using 'https' more widely, and you can
-				 *    already write 'https://schema.org' in your structured data. Over time we will
-				 *    migrate the schema.org site itself towards using https: as the default
-				 *    version of the site and our preferred form in examples.
-				 */
 				'schema_type' => array(				// Element of 'head' array.
 					'thing' => array(			// Most generic type.
 						'creative.work' => array(	// Creative work, including books, movies, photographs, software programs, etc.
@@ -2651,9 +2639,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'intangible'  => 'https://schema.org/Intangible',
 							'invoice'     => 'https://schema.org/Invoice',
 							'item.list'   => array(
-								'breadcrumb.list' => 'https://schema.org/BreadcrumbList',
-								'item.list'       => 'https://schema.org/ItemList',
-								'offer.catalog'   => 'https://schema.org/OfferCatalog',
+								'breadcrumb.list'        => 'https://schema.org/BreadcrumbList',
+								// XREF 'how.to.section' => 'https://schema.org/HowToSection',
+								// XREF 'how.to.step'    => 'https://schema.org/HowToStep',
+								'item.list'              => 'https://schema.org/ItemList',
+								'offer.catalog'          => 'https://schema.org/OfferCatalog',
 							),
 							'job.posting'                  => 'https://schema.org/JobPosting',
 							'language'                     => 'https://schema.org/Language',
@@ -2765,6 +2755,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'school'                   => 'https://schema.org/School',
 							),
 							'government.organization' => 'https://schema.org/GovernmentOrganization',
+							// XREF 'local.business'  => 'https://schema.org/LocalBusiness',
 							'medical.organization'    => array(
 								'dentist.organization'   => 'https://schema.org/Dentist',
 								// XREF 'hospital'       => 'https://schema.org/Hospital'
@@ -2792,8 +2783,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'apartment'     => 'https://schema.org/Apartment',
 								'camping.pitch' => 'https://schema.org/CampingPitch',
 								'house'         => array(
-									'house'                   => 'https://schema.org/House',
-									'residence.single.family' => 'https://schema.org/SingleFamilyResidence',
+									'house'               => 'https://schema.org/House',
+									'house.single.family' => 'https://schema.org/SingleFamilyResidence',
 								),
 								'room' => array(
 									'room'         => 'https://schema.org/Room',
@@ -2855,9 +2846,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 									'motorcycle.dealer'   => 'https://schema.org/MotorcycleDealer',
 									'motorcycle.repair'   => 'https://schema.org/MotorcycleRepair',
 								),
-								'child.care'              => 'https://schema.org/ChildCare',
-								'dry.cleaning.or.laundry' => 'https://schema.org/DryCleaningOrLaundry',
-								'emergency.service'       => array(
+								'child.care'                   => 'https://schema.org/ChildCare',
+								// XREF 'dentist.organization' => 'https://schema.org/Dentist',
+								'dry.cleaning.or.laundry'      => 'https://schema.org/DryCleaningOrLaundry',
+								'emergency.service'            => array(
 									'emergency.service' => 'https://schema.org/EmergencyService',
 									'fire.station'      => 'https://schema.org/FireStation',
 									'hospital'          => 'https://schema.org/Hospital',
@@ -2962,37 +2954,38 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 									'stadium.or.arena'         => 'https://schema.org/StadiumOrArena',
 								),
 								'store' => array(
-									'bike.store'             => 'https://schema.org/BikeStore',
-									'book.store'             => 'https://schema.org/BookStore',
-									'clothing.store'         => 'https://schema.org/ClothingStore',
-									'computer.store'         => 'https://schema.org/ComputerStore',
-									'convenience.store'      => 'https://schema.org/ConvenienceStore',
-									'department.store'       => 'https://schema.org/DepartmentStore',
-									'electronics.store'      => 'https://schema.org/ElectronicsStore',
-									'florist'                => 'https://schema.org/Florist',
-									'flower.shop'            => 'https://schema.org/Florist',
-									'furniture.store'        => 'https://schema.org/FurnitureStore',
-									'garden.store'           => 'https://schema.org/GardenStore',
-									'grocery.store'          => 'https://schema.org/GroceryStore',
-									'hardware.store'         => 'https://schema.org/HardwareStore',
-									'hobby.shop'             => 'https://schema.org/HobbyShop',
-									'home.goods.store'       => 'https://schema.org/HomeGoodsStore',
-									'jewelry.store'          => 'https://schema.org/JewelryStore',
-									'liquor.store'           => 'https://schema.org/LiquorStore',
-									'mens.clothing.store'    => 'https://schema.org/MensClothingStore',
-									'mobile.phone.store'     => 'https://schema.org/MobilePhoneStore',
-									'movie.rental.store'     => 'https://schema.org/MovieRentalStore',
-									'music.store'            => 'https://schema.org/MusicStore',
-									'office.equipment.store' => 'https://schema.org/OfficeEquipmentStore',
-									'outlet.store'           => 'https://schema.org/OutletStore',
-									'pawn.shop'              => 'https://schema.org/PawnShop',
-									'pet.store'              => 'https://schema.org/PetStore',
-									'shoe.store'             => 'https://schema.org/ShoeStore',
-									'sporting.goods.store'   => 'https://schema.org/SportingGoodsStore',
-									'store'                  => 'https://schema.org/Store',
-									'tire.shop'              => 'https://schema.org/TireShop',
-									'toy.store'              => 'https://schema.org/ToyStore',
-									'wholesale.store'        => 'https://schema.org/WholesaleStore',
+									// XREF 'auto.parts.store' => 'https://schema.org/AutoPartsStore',
+									'bike.store'               => 'https://schema.org/BikeStore',
+									'book.store'               => 'https://schema.org/BookStore',
+									'clothing.store'           => 'https://schema.org/ClothingStore',
+									'computer.store'           => 'https://schema.org/ComputerStore',
+									'convenience.store'        => 'https://schema.org/ConvenienceStore',
+									'department.store'         => 'https://schema.org/DepartmentStore',
+									'electronics.store'        => 'https://schema.org/ElectronicsStore',
+									'florist'                  => 'https://schema.org/Florist',
+									'flower.shop'              => 'https://schema.org/Florist',
+									'furniture.store'          => 'https://schema.org/FurnitureStore',
+									'garden.store'             => 'https://schema.org/GardenStore',
+									'grocery.store'            => 'https://schema.org/GroceryStore',
+									'hardware.store'           => 'https://schema.org/HardwareStore',
+									'hobby.shop'               => 'https://schema.org/HobbyShop',
+									'home.goods.store'         => 'https://schema.org/HomeGoodsStore',
+									'jewelry.store'            => 'https://schema.org/JewelryStore',
+									'liquor.store'             => 'https://schema.org/LiquorStore',
+									'mens.clothing.store'      => 'https://schema.org/MensClothingStore',
+									'mobile.phone.store'       => 'https://schema.org/MobilePhoneStore',
+									'movie.rental.store'       => 'https://schema.org/MovieRentalStore',
+									'music.store'              => 'https://schema.org/MusicStore',
+									'office.equipment.store'   => 'https://schema.org/OfficeEquipmentStore',
+									'outlet.store'             => 'https://schema.org/OutletStore',
+									'pawn.shop'                => 'https://schema.org/PawnShop',
+									'pet.store'                => 'https://schema.org/PetStore',
+									'shoe.store'               => 'https://schema.org/ShoeStore',
+									'sporting.goods.store'     => 'https://schema.org/SportingGoodsStore',
+									'store'                    => 'https://schema.org/Store',
+									'tire.shop'                => 'https://schema.org/TireShop',
+									'toy.store'                => 'https://schema.org/ToyStore',
+									'wholesale.store'          => 'https://schema.org/WholesaleStore',
 								),
 								'television.station'         => 'https://schema.org/TelevisionStation',
 								'tourist.information.center' => 'https://schema.org/TouristInformationCenter',
@@ -3071,6 +3064,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'service.bank.account'    => 'bank.account',
 					'service.credit.card'     => 'credit.card',
 					'service.deposit.account' => 'deposit.account',
+					'residence.single.family' => 'house.single.family',
 					'speech.pathology'        => 'speech.pathology.specialty',
 					'surgical'                => 'surgical.specialty',
 					'toxicologic'             => 'toxicologic.specialty',

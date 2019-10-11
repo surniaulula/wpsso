@@ -1047,20 +1047,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 *
 			 * https://schema.org/LocalBusiness is both an Organization and a Place.
 			 */
-			$thing[ 'organization' ][ 'local.business' ] =& 
-				$thing[ 'place' ][ 'local.business' ];
+			$thing[ 'organization' ][ 'local.business' ] =& $thing[ 'place' ][ 'local.business' ];
 
 			/**
 			 * Organization > Medical Organization
 			 */
 			$thing[ 'organization' ][ 'medical.organization' ][ 'hospital' ] =& 
 				$thing[ 'place' ][ 'local.business' ][ 'emergency.service' ][ 'hospital' ];
-
-			/**
-			 * Place > Accommodation
-			 */
-			$thing[ 'place' ][ 'accommodation' ][ 'house' ][ 'house.single.family' ] =&
-				$thing[ 'place' ][ 'accommodation' ][ 'house' ][ 'residence.single.family' ];
 
 			/**
 			 * Place > Civic Structure
