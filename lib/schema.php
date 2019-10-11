@@ -1001,7 +1001,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Add array cross-references for schema sub-types that exist under more than one type.
+		 * Add cross-references for schema sub-type arrays that exist under more than one type.
 		 *
 		 * For example, Thing > Place > LocalBusiness also exists under Thing > Organization > LocalBusiness.
 		 */
@@ -1010,81 +1010,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$thing =& $schema_types[ 'thing' ];	// Quick ref variable for the 'thing' array.
 
 			/**
-			 * Intangible > Audience
-			 */
-			$thing[ 'intangible' ][ 'audience' ][ 'audience.medical' ] =&
-				$thing[ 'intangible' ][ 'enumeration' ][ 'medical.enumeration' ][ 'medical.audience' ];
-
-			/**
-			 * Intangible > ItemList
-			 */
-			$thing[ 'intangible' ][ 'item.list' ][ 'how.to.section' ] =&
-				$thing[ 'intangible' ][ 'list.item' ][ 'how.to.section' ];
-
-			$thing[ 'intangible' ][ 'item.list' ][ 'how.to.step' ] =&
-				$thing[ 'intangible' ][ 'list.item' ][ 'how.to.step' ];
-
-			/**
-			 * Intangible > Enumeration
+			 * Thing > Intangible > Enumeration
 			 */
 			$thing[ 'intangible' ][ 'enumeration' ][ 'specialty' ][ 'medical.specialty' ] =&
 				$thing[ 'intangible' ][ 'enumeration' ][ 'medical.enumeration' ][ 'medical.specialty' ];
-
-			/**
-			 * Intangible > Service
-			 */
-			$thing[ 'intangible' ][ 'service' ][ 'service.financial.product' ][ 'service.investment.or.deposit' ][ 'deposit.account' ] =&
-				$thing[ 'intangible' ][ 'service' ][ 'service.financial.product' ][ 'bank.account' ][ 'deposit.account' ];
-
-			$thing[ 'intangible' ][ 'service' ][ 'service.financial.product' ][ 'service.loan.or.credit' ][ 'credit.card' ] =&
-				$thing[ 'intangible' ][ 'enumeration' ][ 'payment.method' ][ 'payment.card' ][ 'credit.card' ];
 
 			$thing[ 'intangible' ][ 'service' ][ 'service.financial.product' ][ 'payment.card' ] =&
 				$thing[ 'intangible' ][ 'enumeration' ][ 'payment.method' ][ 'payment.card' ];
 
 			/**
-			 * Organization > Local Business
-			 *
-			 * https://schema.org/LocalBusiness is both an Organization and a Place.
+			 * Thing > Organization > Local Business
 			 */
 			$thing[ 'organization' ][ 'local.business' ] =& $thing[ 'place' ][ 'local.business' ];
-
-			/**
-			 * Organization > Medical Organization
-			 */
-			$thing[ 'organization' ][ 'medical.organization' ][ 'hospital' ] =& 
-				$thing[ 'place' ][ 'local.business' ][ 'emergency.service' ][ 'hospital' ];
-
-			/**
-			 * Place > Civic Structure
-			 */
-			$thing[ 'place' ][ 'civic.structure' ][ 'campground' ] =&
-				$thing[ 'place' ][ 'local.business' ][ 'lodging.business' ][ 'campground' ];
-
-			$thing[ 'place' ][ 'civic.structure' ][ 'fire.station' ] =&
-				$thing[ 'place' ][ 'local.business' ][ 'emergency.service' ][ 'fire.station' ];
-
-			$thing[ 'place' ][ 'civic.structure' ][ 'hospital' ] =&
-				$thing[ 'place' ][ 'local.business' ][ 'emergency.service' ][ 'hospital' ];
-
-			$thing[ 'place' ][ 'civic.structure' ][ 'movie.theatre' ] =&
-				$thing[ 'place' ][ 'local.business' ][ 'entertainment.business' ][ 'movie.theatre' ];
-
-			$thing[ 'place' ][ 'civic.structure' ][ 'police.station' ] =&
-				$thing[ 'place' ][ 'local.business' ][ 'emergency.service' ][ 'police.station' ];
-
-			$thing[ 'place' ][ 'civic.structure' ][ 'stadium.or.arena' ] =&
-				$thing[ 'place' ][ 'local.business' ][ 'sports.activity.location' ][ 'stadium.or.arena' ];
-
-			/**
-			 * Place > Local Business
-			 */
-			$thing[ 'place' ][ 'local.business' ][ 'dentist.organization' ] =&
-				$thing[ 'organization' ][ 'medical.organization' ][ 'dentist.organization' ];
-
-			$thing[ 'place' ][ 'local.business' ][ 'store' ][ 'auto.parts.store' ] =& 
-				$thing[ 'place' ][ 'local.business' ][ 'automotive.business' ][ 'auto.parts.store' ];
-
 		}
 
 		/**
