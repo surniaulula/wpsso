@@ -974,6 +974,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
+			/**
+			 * If the organization is a local business, then convert the organization markup to local business.
+			 */
 			if ( ! empty( $org_type_id ) && $org_type_id !== 'organization' && 
 				$wpsso->schema->is_schema_type_child( $org_type_id, 'local.business' ) ) {
 

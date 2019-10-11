@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.7.1\n"
+"Project-Id-Version: WPSSO Core 6.8.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6080,11 +6080,11 @@ msgid ""
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema-single.php:1051
+#: lib/schema-single.php:1054
 msgid "adding schema for person user ID %1$s"
 msgstr ""
 
-#: lib/schema-single.php:1210
+#: lib/schema-single.php:1213
 msgid "adding schema place"
 msgstr ""
 
@@ -6113,7 +6113,7 @@ msgctxt "image size label"
 msgid "Schema Article AMP 16:9 Image"
 msgstr ""
 
-#: lib/schema.php:603
+#: lib/schema.php:581
 msgid "adding schema"
 msgstr ""
 

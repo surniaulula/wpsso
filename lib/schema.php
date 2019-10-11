@@ -196,29 +196,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * https://schema.org/LocalBusiness social markup for Google
-		 */
-		public function filter_json_data_https_schema_org_localbusiness( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'organization filter for local business' );	// Begin timer.
-			}
-
-			/**
-			 * All local businesses are also organizations.
-			 */
-			$ret = $this->filter_json_data_https_schema_org_organization( $json_data, $mod, $mt_og, $page_type_id, $is_main );
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'organization filter for local business' );	// End timer.
-			}
-
-			self::organization_to_localbusiness( $ret );
-
-			return self::return_data_from_filter( $json_data, $ret, $is_main );
-		}
-
-		/**
 		 * https://schema.org/Person social markup for Google
 		 */
 		public function filter_json_data_https_schema_org_person( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
@@ -323,6 +300,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		/**
 		 * Called by WpssoHead::get_head_array().
+		 *
 		 * Pass $mt_og by reference to assign values to the schema:type internal meta tags.
 		 */
 		public function get_array( array $mod, array &$mt_og = array() ) {	// Pass by reference is OK.
@@ -380,16 +358,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			/**
 			 * Array (
-			 *	[product] => true
-			 *	[website] => true
+			 *	[product]      => true
+			 *	[website]      => true
 			 *	[organization] => true
-			 *	[person] => false
+			 *	[person]       => false
 			 * )
 			 */
 			$page_type_ids = apply_filters( $this->p->lca . '_json_array_schema_page_type_ids', $page_type_ids, $mod );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log_arr( 'page_type_ids', $page_type_ids );
+				$this->p->debug->log_arr( '$page_type_ids', $page_type_ids );
 			}
 
 			/**
@@ -545,7 +523,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log_arr( 'page_type_id ' . $page_type_id . ' child_family_urls', $child_family_urls );
+				$this->p->debug->log_arr( '$child_family_urls', $child_family_urls );
 			}
 
 			foreach ( $child_family_urls as $type_url ) {
@@ -946,6 +924,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( false === $read_cache ) {
 				$this->types_cache[ 'filtered' ]  = null;
 				$this->types_cache[ 'flattened' ] = null;
+				$this->types_cache[ 'parents' ]   = null;
 			}
 
 			if ( ! isset( $this->types_cache[ 'filtered' ] ) ) {
@@ -976,37 +955,25 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$this->p->debug->mark( 'create schema types array' );	// Begin timer.
 					}
 
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->mark( 'filtering schema type array' );
-					}
-
-					$this->types_cache[ 'filtered' ] = (array) apply_filters( $this->p->lca . '_schema_types',
-						$this->p->cf[ 'head' ][ 'schema_type' ] );
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->mark( 'creating tangible flat array' );
-					}
-
-					$this->types_cache[ 'flattened' ] = SucomUtil::array_flatten( $this->types_cache[ 'filtered' ] );
-
-					ksort( $this->types_cache[ 'flattened' ] );
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->mark( 'creating parent index array' );
-					}
-
-					$this->types_cache[ 'parents' ] = SucomUtil::array_parent_index( $this->types_cache[ 'filtered' ] );
-
-					ksort( $this->types_cache[ 'parents' ] );
+					/**
+					 * Filtered array.
+					 */
+					$this->types_cache[ 'filtered' ] = (array) apply_filters( $this->p->lca . '_schema_types', $this->p->cf[ 'head' ][ 'schema_type' ] );
 
 					/**
-					 * Add cross-references at the end to avoid duplicate parent index key errors.
+					 * Flattened array (before adding cross-references).
 					 */
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->mark( 'adding cross-references' );
-					}
+					$this->types_cache[ 'flattened' ] = SucomUtil::array_flatten( $this->types_cache[ 'filtered' ] );
 
+					/**
+					 * Adding cross-references to filtered array.
+					 */
 					$this->add_schema_type_xrefs( $this->types_cache[ 'filtered' ] );
+
+					/**
+					 * Parents array.
+					 */
+					$this->types_cache[ 'parents' ] = SucomUtil::get_array_parents( $this->types_cache[ 'filtered' ] );
 
 					if ( $cache_exp_secs > 0 ) {
 
@@ -1028,9 +995,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $flatten ) {
 				return $this->types_cache[ 'flattened' ];
-			} else {
-				return $this->types_cache[ 'filtered' ];
 			}
+
+			return $this->types_cache[ 'filtered' ];
 		}
 
 		/**
@@ -1062,6 +1029,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			$thing[ 'intangible' ][ 'enumeration' ][ 'specialty' ][ 'medical.specialty' ] =&
 				$thing[ 'intangible' ][ 'enumeration' ][ 'medical.enumeration' ][ 'medical.specialty' ];
+
+			/**
+			 * Intangible > Service
+			 */
+			$thing[ 'intangible' ][ 'service' ][ 'service.financial.product' ][ 'service.investment.or.deposit' ][ 'deposit.account' ] =&
+				$thing[ 'intangible' ][ 'service' ][ 'service.financial.product' ][ 'bank.account' ][ 'deposit.account' ];
+
+			$thing[ 'intangible' ][ 'service' ][ 'service.financial.product' ][ 'service.loan.or.credit' ][ 'credit.card' ] =&
+				$thing[ 'intangible' ][ 'enumeration' ][ 'payment.method' ][ 'payment.card' ][ 'credit.card' ];
+
+			$thing[ 'intangible' ][ 'service' ][ 'service.financial.product' ][ 'payment.card' ] =&
+				$thing[ 'intangible' ][ 'enumeration' ][ 'payment.method' ][ 'payment.card' ];
 
 			/**
 			 * Organization > Local Business
@@ -1118,7 +1097,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/**
 		 * Returns an array of schema type ids with gparent, parent, child (in that order).
 		 */
-		public function get_schema_type_child_family( $child_id, &$child_family = array(), $use_cache = true ) {
+		public function get_schema_type_child_family( $child_id, $use_cache = true, &$child_family = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -1135,26 +1114,25 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$cache_id     = $cache_md5_pre . md5( $cache_salt );
 					$child_family = get_transient( $cache_id );	// Returns false when not found.
 
-					if ( ! empty( $child_family ) ) {
+					if ( is_array( $child_family ) ) {
 						return $child_family;
 					}
 				}
 			}
 
-			$schema_types = $this->get_schema_types_array( $flatten = true );
+			$schema_types = $this->get_schema_types_array( $flatten = true );	// Defines the 'parents' array.
 
 			if ( isset( $this->types_cache[ 'parents' ][ $child_id ] ) ) {
-
-				$parent_id = $this->types_cache[ 'parents' ][ $child_id ];
-
-				if ( isset( $schema_types[ $parent_id ] ) ) {
-					if ( $parent_id !== $child_id )	{	// Prevent infinite loops.
-						$this->get_schema_type_child_family( $parent_id, $child_family, false );
+				foreach( $this->types_cache[ 'parents' ][ $child_id ] as $parent_id ) {
+					if ( $parent_id !== $child_id )	{		// Prevent infinite loops.
+						$this->get_schema_type_child_family( $parent_id, $child_use_cache = false, $child_family );
 					}
 				}
 			}
 
 			$child_family[] = $child_id;	// Add child after parents.
+
+			$child_family = array_unique( $child_family );
 
 			if ( $use_cache ) {
 				if ( $cache_exp_secs > 0 ) {
@@ -1168,7 +1146,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/**
 		 * Returns an array of schema type ids with child, parent, gparent (in that order).
 		 */
-		public function get_schema_type_children( $type_id, &$children = array(), $use_cache = true ) {
+		public function get_schema_type_children( $type_id, $use_cache = true, &$children = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'getting children for type id ' . $type_id );
@@ -1185,35 +1163,27 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$cache_id   = $cache_md5_pre . md5( $cache_salt );
 					$children   = get_transient( $cache_id );	// Returns false when not found.
 
-					if ( ! empty( $children ) ) {
-
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'returning children from transient cache' );
-						}
-
+					if ( is_array( $children ) ) {
 						return $children;
 					}
 				}
 			}
 
-			$children[]   = $type_id;	// Add children before parents.
-			$schema_types = $this->get_schema_types_array( $flatten = true );
+			$children[] = $type_id;	// Add children before parents.
 
-			foreach ( $this->types_cache[ 'parents' ] as $child_id => $parent_id ) {
-				if ( $parent_id === $type_id ) {
-					$this->get_schema_type_children( $child_id, $children, false );
+			$schema_types = $this->get_schema_types_array( $flatten = true );	// Defines the 'parents' array.
+
+			foreach ( $this->types_cache[ 'parents' ] as $child_id => $parent_ids ) {
+				foreach( $parent_ids as $parent_id ) {
+					if ( $parent_id === $type_id ) {
+						$this->get_schema_type_children( $child_id, $child_use_cache = false, $children );
+					}
 				}
 			}
 
 			if ( $use_cache ) {
-
 				if ( $cache_exp_secs > 0 ) {
-
 					set_transient( $cache_id, $children, $cache_exp_secs );
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'children saved to transient cache for ' . $cache_exp_secs . ' seconds' );
-					}
 				}
 			}
 
@@ -1342,7 +1312,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$class_names .= ' ' . $class_prefix . SucomUtil::sanitize_hookname( $child );
 			}
 
-			return trim( $class_names );
+			$class_names = trim( $class_names );
+
+			return $class_names;
 		}
 
 		public function is_schema_type_child( $child_id, $member_id ) {
@@ -1849,6 +1821,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		/**
 		 * Modifies the $json_data directly (by reference) and does not return a value.
+		 *
 		 * Do not type-cast the $json_data argument as it may be false or an array.
 		 */
 		public static function organization_to_localbusiness( &$json_data ) {
