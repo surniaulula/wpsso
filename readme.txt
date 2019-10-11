@@ -435,6 +435,26 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 6.8.0-dev.1 (2019/10/11)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added more financial service Schema types to the Schema select list:
+		* https://schema.org/BankAccount
+		* https://schema.org/BrokerageAccount
+		* https://schema.org/CreditCard
+		* https://schema.org/DepositAccount
+		* https://schema.org/InvestmentFund
+		* https://schema.org/MortgageLoan
+		* https://schema.org/PaymentCard
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Renamed the SucomUtil `array_parent_index()` method to `get_array_parents()`, which now returns an array of (one or more) parents per child instead of a single parent string per child.
+	* Removed the WpssoSchema `filter_json_data_https_schema_org_localbusiness()` method.
+	* Updated the WpssoSchema `get_schema_type_child_family()` and `get_schema_type_children()` methods to handle an array of parents instead of a single parent.
+
 **Version 6.7.1 (2019/10/08)**
 
 * **New Features**
@@ -550,6 +570,10 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 	* Removed the `SucomUtil::is_product_tag()` method.
 
 == Upgrade Notice ==
+
+= 6.8.0-dev.1 =
+
+(2019/10/11) Added more financial service Schema types to the Schema select list.
 
 = 6.7.1 =
 
