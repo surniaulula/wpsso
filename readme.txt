@@ -435,7 +435,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.8.0-b.1 (2019/10/14)**
+**Version 6.8.0-rc.1 (2019/10/14)**
 
 * **New Features**
 	* None.
@@ -453,7 +453,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Renamed the SucomUtil `array_parent_index()` method to `get_array_parents()`, which now returns an array of (one or more) parents per child instead of a single parent string per child.
 	* Updated the WpssoSchema `get_schema_type_child_family()` and `get_schema_type_children()` methods to handle an array of parents instead of a single parent string.
-	* Removed the WpssoSchema `filter_json_data_https_schema_org_localbusiness()` method.
+	* Removed the WpssoSchema `filter_json_data_https_schema_org_localbusiness()` method since it is no longer required - local businesses are now automatically filtered through the organization filter as well.
 
 **Version 6.7.1 (2019/10/08)**
 
@@ -571,7 +571,7 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 
 == Upgrade Notice ==
 
-= 6.8.0-b.1 =
+= 6.8.0-rc.1 =
 
 (2019/10/14) Added more financial service Schema types to the Schema select list.
 
