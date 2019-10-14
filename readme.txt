@@ -9,7 +9,7 @@ Assets URI: https://surniaulula.github.io/wpsso/assets/
 Tags: open graph, meta tags, rich pins, twitter cards, schema, rich results, embed, social sharing, structured data, snippet, seo, facebook, twitter, linkedin, pinterest, google, schema.org
 Contributors: jsmoriss
 Requires At Least: 3.9
-Tested Up To: 5.2.3
+Tested Up To: 5.2.4
 WC Tested Up To: 3.7.1
 Stable Tag: 6.7.1
 
@@ -435,7 +435,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.8.0-dev.2 (2019/10/14)**
+**Version 6.8.0-b.1 (2019/10/14)**
 
 * **New Features**
 	* None.
@@ -452,8 +452,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Renamed the SucomUtil `array_parent_index()` method to `get_array_parents()`, which now returns an array of (one or more) parents per child instead of a single parent string per child.
+	* Updated the WpssoSchema `get_schema_type_child_family()` and `get_schema_type_children()` methods to handle an array of parents instead of a single parent string.
 	* Removed the WpssoSchema `filter_json_data_https_schema_org_localbusiness()` method.
-	* Updated the WpssoSchema `get_schema_type_child_family()` and `get_schema_type_children()` methods to handle an array of parents instead of a single parent.
 
 **Version 6.7.1 (2019/10/08)**
 
@@ -571,7 +571,7 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 
 == Upgrade Notice ==
 
-= 6.8.0-dev.2 =
+= 6.8.0-b.1 =
 
 (2019/10/14) Added more financial service Schema types to the Schema select list.
 
