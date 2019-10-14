@@ -15,7 +15,7 @@ if ( ! class_exists( 'WpssoErrorException' ) ) {
 
 		protected $p;
 
-		protected $httpResultCodes = array(
+		protected $http_result_codes = array(
 			100 => 'Continue',
 			101 => 'Switching Protocols',
 			200 => 'OK',
@@ -66,8 +66,8 @@ if ( ! class_exists( 'WpssoErrorException' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( isset( $this->httpResultCodes[ (int) $errno ] ) ) {
-				$errstr .= ' HTTP ' . $errno . ' ' . $this->httpResultCodes[ (int) $errno ] . '.';
+			if ( isset( $this->http_result_codes[ (int) $errno ] ) ) {
+				$errstr .= ' HTTP ' . $errno . ' ' . $this->http_result_codes[ (int) $errno ] . '.';
 			}
 
 			parent::__construct( trim( $errstr ), $errno, $severity, $filename, $lineno, $previous );
