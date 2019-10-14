@@ -435,7 +435,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.8.0-rc.1 (2019/10/14)**
+**Version 6.8.0 (2019/10/14)**
 
 * **New Features**
 	* None.
@@ -571,7 +571,7 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 
 == Upgrade Notice ==
 
-= 6.8.0-rc.1 =
+= 6.8.0 =
 
 (2019/10/14) Added more financial service Schema types to the Schema select list.
 
