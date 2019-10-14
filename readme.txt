@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires At Least: 3.9
 Tested Up To: 5.2.4
 WC Tested Up To: 3.7.1
-Stable Tag: 6.7.1
+Stable Tag: 6.8.0
 
 Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.
 
@@ -574,8 +574,4 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 = 6.8.0 =
 
 (2019/10/14) Added more financial service Schema types to the Schema select list.
-
-= 6.7.1 =
-
-(2019/10/08) Fixed possible non-unique image filename conflicts by copying instead or renaming cropped images.
 
