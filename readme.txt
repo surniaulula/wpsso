@@ -453,7 +453,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Renamed the SucomUtil `array_parent_index()` method to `get_array_parents()`, which now returns an array of (one or more) parents per child instead of a single parent string per child.
 	* Updated the WpssoSchema `get_schema_type_child_family()` and `get_schema_type_children()` methods to handle an array of parents instead of a single parent string.
-	* Removed the WpssoSchema `filter_json_data_https_schema_org_localbusiness()` method since it is no longer required - local businesses are now automatically filtered through the organization filter as well.
+	* Removed the WpssoSchema `filter_json_data_https_schema_org_localbusiness()` method since it is no longer required - local businesses are now automatically filtered through the organization filter.
 
 **Version 6.7.1 (2019/10/08)**
 
