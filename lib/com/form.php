@@ -1320,6 +1320,7 @@ EOF;
 			} else {
 				$html = $input;
 			}
+
 			return $html;
 		}
 

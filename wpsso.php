@@ -203,7 +203,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				 */
 				if ( is_array( $this->options ) && is_array( $this->site_options ) ) {
 
-					$blog_id = get_current_blog_id();	// Since WP v3.1.
+					$blog_id = get_current_blog_id();
 
 					$defined_constants = get_defined_constants( true );	// $categorize is true.
 

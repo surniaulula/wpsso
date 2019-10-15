@@ -3407,7 +3407,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			static $offset = '';
 
 			if ( empty( $blog_id ) ) {
-				$blog_id = get_current_blog_id();	// Since WP v3.1.
+				$blog_id = get_current_blog_id();
 			}
 
 			if ( is_numeric( $limit ) ) {
