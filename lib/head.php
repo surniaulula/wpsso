@@ -309,7 +309,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						'content="' . $this->p->lca . ' meta tags ' . $type . '"/>' . "\n" : '';
 
 					if ( $type === 'begin' ) {
-						$ret = "\n\n" . $comment . "\n" . $mt_name;
+						$ret = $comment . "\n" . $mt_name;
 					} else {
 						$ret = $mt_name . $comment . "\n";
 					}
@@ -340,7 +340,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$mtime_start = microtime( true );
+			$mtime_start   = microtime( true );
+			$indent_num    = 0;
+			$home_url      = SucomUtilWP::raw_home_url();
+			$info          = $this->p->cf[ 'plugin' ][ $this->p->lca ];
+			$short_version = $info[ 'short' ] . ' v' . $info[ 'version' ];
 
 			/**
 			 * The $mod array argument is preferred but not required.
@@ -354,25 +358,25 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$mod = $this->p->util->get_page_mod( $use_post );
 			}
 
-			$indent = 0;
+			$html = "\n\n" . '<!-- social and search optimization by ' . $short_version . ' - https://wpsso.com/ -->' . "\n";
 
-			$html = $this->get_mt_mark( 'begin' );
+			$html .= $this->get_mt_mark( 'begin' );
 
 			foreach ( $this->get_head_array( $use_post, $mod, $read_cache ) as $mt ) {
 
 				if ( ! empty( $mt[0] ) ) {
 
-					if ( $indent && strpos( $mt[0], '</noscript' ) === 0 ) {
-						$indent = 0;
+					if ( $indent_num && strpos( $mt[0], '</noscript' ) === 0 ) {
+						$indent_num = 0;
 					}
 
-					$html .= str_repeat( "\t", (int) $indent ) . $mt[0];
+					$html .= str_repeat( "\t", (int) $indent_num ) . $mt[0];
 
 					/**
 					 * Indent meta tags within a noscript container.
 					 */
 					if ( strpos( $mt[0], '<noscript' ) === 0 ) {
-						$indent = 1;
+						$indent_num = 1;
 					}
 				}
 			}
@@ -380,10 +384,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$html .= $this->get_mt_mark( 'end' );
 
 			$mtime_total = microtime( true ) - $mtime_start;
+			$total_secs  = sprintf( '%f secs', $mtime_total );
 
-			$html .= '<!-- added on ' . date( 'c' ) .
-				' in ' . sprintf( '%f secs', $mtime_total ) . 
-				' from ' . SucomUtilWP::raw_home_url() . ' -->' . "\n\n";
+			$html .= '<!-- added on ' . date( 'c' ) . ' in ' . $total_secs . ' from ' . $home_url . ' -->' . "\n\n";
 
 			return $html;
 		}
