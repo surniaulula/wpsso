@@ -174,7 +174,7 @@
 <li>Creative Work Information
 
 <ul>
-<li>Part of URL</li>
+<li>Is Part of URL</li>
 <li>Headline</li>
 <li>Full Text</li>
 <li>Keywords</li>
@@ -183,7 +183,7 @@
 <li>Copyright Year</li>
 <li>License URL</li>
 <li>Publisher</li>
-<li>Service Provider</li>
+<li>Provider</li>
 </ul></li>
 <li>Event Information
 
