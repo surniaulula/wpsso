@@ -12,7 +12,7 @@
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Description: Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted or embedded.
  * Requires At Least: 3.9
- * Tested Up To: 5.2.4
+ * Tested Up To: 5.3
  * WC Tested Up To: 3.7.1
  * Version: 6.8.0
  *

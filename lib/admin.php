@@ -1580,7 +1580,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function show_metabox_version_info() {
 
 			$table_cols  = 2;
-			$label_width = '25%';
+			$label_width = '30%';
 
 			echo '<table class="sucom-settings ' . $this->p->lca . ' column-metabox version-info" style="table-layout:fixed;">';
 
