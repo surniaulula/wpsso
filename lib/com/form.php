@@ -1454,13 +1454,14 @@ EOF;
 				$prev_num = $key_num > 0 ? $key_num - 1 : 0;
 				$next_num = $key_num + 1;
 
+				$multi_class   = trim( 'multi_container mixed_multi ' . $css_class );
 				$multi_id      = $css_id . '_' . $key_num;
 				$multi_id_prev = $css_id . '_' . $prev_num;
 				$multi_id_next = $css_id . '_' . $next_num;
 
 				$el_attr = 'onFocus="jQuery(\'div#multi_' . esc_attr( $multi_id_next ) . '\').show();"';
 
-				$html .= '<div class="multi_container mixed_multi" id="multi_' . esc_attr( $multi_id ) . '"';
+				$html .= '<div class="' . $multi_class . '" id="multi_' . esc_attr( $multi_id ) . '"';
 				$html .= $display ? '' : ' style="display:none;"';
 				$html .= '>' . "\n";
 
