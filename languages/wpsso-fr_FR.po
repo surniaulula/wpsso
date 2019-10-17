@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 6.8.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-10-14 15:30-0700\n"
-"PO-Revision-Date: 2019-10-14 15:30-0700\n"
+"POT-Creation-Date: 2019-10-17 08:24-0700\n"
+"PO-Revision-Date: 2019-10-17 08:24-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1091,7 +1091,7 @@ msgid "from"
 msgstr "de"
 
 # Ignore the post type to avoid gender issues in the French translation.
-#: lib/com/form.php:1967 lib/gettext-com.php:25 lib/post.php:1339
+#: lib/com/form.php:1968 lib/gettext-com.php:25 lib/post.php:1339
 #: lib/wp-meta.php:580 lib/wp-meta.php:710
 msgid "Save a draft version or publish to update this value."
 msgstr "Sauvegardez une version préliminaire ou publiez pour mettre à jour cette valeur."
