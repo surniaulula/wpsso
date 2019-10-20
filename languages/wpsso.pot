@@ -5043,7 +5043,7 @@ msgstr ""
 #: lib/messages.php:1927
 msgid ""
 "These options allow you to customize the list of contact fields shown in the "
-"<strong>%1$s</strong> section of <a href=\"%2$s\">the user profile page</a>."
+"%1$s section of <a href=\"%2$s\">the user profile page</a>."
 msgstr ""
 
 #: lib/messages.php:1929
