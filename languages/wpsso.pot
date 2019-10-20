@@ -5019,8 +5019,8 @@ msgstr ""
 
 #: lib/messages.php:1900
 msgid ""
-"These are the product attribute names that you can (optionally) create in "
-"your e-commerce plugin, not their values."
+"These are product attribute names that you can (optionally) create in your e-"
+"commerce plugin, and not their values."
 msgstr ""
 
 #: lib/messages.php:1906
@@ -5031,8 +5031,8 @@ msgstr ""
 
 #: lib/messages.php:1908
 msgid ""
-"You can (optionally) create the following product attribute names and choose "
-"their corresponding values in your e-commerce plugin."
+"You can create the following product attribute names and choose their "
+"corresponding values in your e-commerce plugin."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
