@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 6.8.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-10-20 11:45-0700\n"
-"PO-Revision-Date: 2019-10-20 11:46-0700\n"
+"POT-Creation-Date: 2019-10-20 12:53-0700\n"
+"PO-Revision-Date: 2019-10-20 12:57-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3798,8 +3798,8 @@ msgid "If an image needs to be upscaled beyond this maximum, in either width or 
 msgstr "Si une image doit être agrandie au-delà de ce maximum, en largeur ou en hauteur, l'image ne sera pas agrandie."
 
 #: lib/messages.php:839
-msgid "Enter the name (ie. label or header) of a product attribute that you have created in your e-commerce plugin (in WooCommerce, for example)."
-msgstr "Entrez le nom (étiquette ou en-tête) d'un attribut de produit que vous avez créé dans votre extension de commerce électronique (WooCommerce, par exemple)."
+msgid "Enter the name (aka label) of a product attribute that you have created in your e-commerce plugin (in WooCommerce, for example)."
+msgstr "Entrez le nom (c'est-à-dire l'étiquette) d'un attribut de produit que vous avez créé dans votre extension de commerce électronique (WooCommerce, par exemple)."
 
 #: lib/messages.php:841
 msgid "The product attribute name allows %s to request the attribute value from your e-commerce plugin."
@@ -4379,12 +4379,12 @@ msgid "<strong>WordPress uses the default site / blog ID to install and/or updat
 msgstr "<strong>WordPress utilise l'ID du site / blog par défaut pour installer et/ou mettre à jour les extensions de l'interface Admin du réseau</strong> &mdash; pour mettre à jour %1$s et ses ajouts %2$s, assurez-vous que l'ajout %3$s est actif sur le site par défaut, et que le site par défaut est sous licence."
 
 #: lib/messages.php:1860
-msgid "These options allow you to customize the custom field names (ie. metadata name) that %s can use to get additional information about your content."
+msgid "These options allow you to customize the custom field names (aka metadata names) that %s can use to get additional information about your content."
 msgstr "Ces options vous permettent de personnaliser les noms de champs personnalisés (c'est-à-dire les noms de métadonnées) que %s peut utiliser pour obtenir des informations supplémentaires sur votre contenu."
 
 #: lib/messages.php:1866
-msgid "DO NOT ENTER CUSTOM FIELD VALUES HERE &ndash; THESE OPTIONS ARE FOR CUSTOM FIELD NAMES ONLY."
-msgstr "N'ENTREZ PAS LES VALEURS DE CHAMP PERSONNALISÉES ICI &ndash; CES OPTIONS SONT UNIQUEMENT POUR LES NOMS DE CHAMPS PERSONNALISÉS."
+msgid "Do not enter custom field values here &ndash; these options are for custom field names only."
+msgstr "N'entrez pas les valeurs de champ personnalisées ici &ndash; ces options sont uniquement pour les noms de champs personnalisés."
 
 #: lib/messages.php:1868
 msgid "Use the following custom field names when creating custom fields for your posts, pages, and custom post types."
@@ -4403,16 +4403,16 @@ msgid "Refer to the <a href=\"%s\">WooCommerce integration notes</a> for informa
 msgstr "Lisez les <a href=\"%s\">notes d'intégration WooCommerce</a> pour plus d'informations sur la configuration d'attributs de produit et champs personnalisés."
 
 #: lib/messages.php:1898
-msgid "These options allow you to customize the product attribute names (ie. IDs or labels) that %s uses to request additional product information from your e-commerce plugin."
-msgstr "Ces options vous permettent de personnaliser les noms d'attribut de produit (c'est-à-dire les identifiants ou étiquettes) utilisés par %s pour demander des informations supplémentaires du produit à votre extension de commerce électronique."
+msgid "These options allow you to customize the product attribute names (aka attribute labels) that %s uses to request additional product information from your e-commerce plugin."
+msgstr "Ces options vous permettent de personnaliser les noms d'attribut de produit (c'est-à-dire les étiquettes d'attribut) utilisés par %s pour demander des informations supplémentaires du produit à votre extension de commerce électronique."
 
 #: lib/messages.php:1900
 msgid "These are product attribute names that you can optionally create in your e-commerce plugin, and not their values."
 msgstr "Ce sont les noms d'attributs de produit que vous pouvez éventuellement créer dans votre extension e-commerce, et non leurs valeurs."
 
 #: lib/messages.php:1906
-msgid "DO NOT ENTER PRODUCT ATTRIBUTE VALUES HERE &ndash; THESE OPTIONS ARE FOR PRODUCT ATTRIBUTE NAMES ONLY."
-msgstr "N'ENTREZ PAS LES VALEURS D'ATTRIBUT DE PRODUIT ICI &ndash; CES OPTIONS SONT UNIQUEMENT POUR LES NOMS D'ATTRIBUT DE PRODUIT."
+msgid "Do not enter product attribute values here &ndash; these options are for product attribute names only."
+msgstr "N'entrez pas les valeurs d'attribut de produit ici &ndash; ces options sont uniquement pour les noms d'attribut de produit."
 
 #: lib/messages.php:1908
 msgid "You can create the following product attribute names and choose their corresponding values in your e-commerce plugin."
@@ -4436,8 +4436,8 @@ msgid "The <em>%1$s</em> column on the other hand is for display purposes only a
 msgstr "En revanche, la colonne <em>%1$s</em> est utilisé uniquement à des fins d'affichage et peut être modifié à votre guise."
 
 #: lib/messages.php:1939
-msgid "DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE OPTIONS ARE FOR CONTACT FIELD IDS AND LABELS ONLY."
-msgstr "N'ENTREZ PAS VOS COORDONNÉES ICI &ndash; CES OPTIONS SONT UNIQUEMENT POUR LES IDS ET ÉTIQUETTES DE CHAMP DE CONTACT."
+msgid "Do not enter your contact information here &ndash; these options are for contact field ids and labels only."
+msgstr "N'entrez pas vos coordonnées ici &ndash; ces options sont uniquement pour les ids et étiquettes de champ de contact."
 
 #: lib/messages.php:1941
 msgid "Enter your personal contact information in <a href=\"%1$s\">the user profile page</a>."
@@ -4947,7 +4947,7 @@ msgctxt "option comment"
 msgid "%s required"
 msgstr "%s requis"
 
-#. translators: %s is the meta tag name (ie. meta name canonical).
+#. translators: %s is the meta tag name (aka meta name canonical).
 #: lib/messages.php:2585
 msgid "Option disabled (<code>%s</code> head tag disabled or SEO plugin detected)."
 msgstr "Option désactivée (balise <code>%s</code> désactivée ou extension SEO détecté)."

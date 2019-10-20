@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.8.1-b.1\n"
+"Project-Id-Version: WPSSO Core 6.8.1-rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4164,8 +4164,8 @@ msgstr ""
 
 #: lib/messages.php:839
 msgid ""
-"Enter the name (ie. label or header) of a product attribute that you have "
-"created in your e-commerce plugin (in WooCommerce, for example)."
+"Enter the name (aka label) of a product attribute that you have created in "
+"your e-commerce plugin (in WooCommerce, for example)."
 msgstr ""
 
 #: lib/messages.php:841
@@ -4978,14 +4978,14 @@ msgstr ""
 
 #: lib/messages.php:1860
 msgid ""
-"These options allow you to customize the custom field names (ie. metadata "
-"name) that %s can use to get additional information about your content."
+"These options allow you to customize the custom field names (aka metadata "
+"names) that %s can use to get additional information about your content."
 msgstr ""
 
 #: lib/messages.php:1866
 msgid ""
-"DO NOT ENTER CUSTOM FIELD VALUES HERE &ndash; THESE OPTIONS ARE FOR CUSTOM "
-"FIELD NAMES ONLY."
+"Do not enter custom field values here &ndash; these options are for custom "
+"field names only."
 msgstr ""
 
 #: lib/messages.php:1868
@@ -5012,9 +5012,9 @@ msgstr ""
 
 #: lib/messages.php:1898
 msgid ""
-"These options allow you to customize the product attribute names (ie. IDs or "
-"labels) that %s uses to request additional product information from your e-"
-"commerce plugin."
+"These options allow you to customize the product attribute names (aka "
+"attribute labels) that %s uses to request additional product information "
+"from your e-commerce plugin."
 msgstr ""
 
 #: lib/messages.php:1900
@@ -5025,8 +5025,8 @@ msgstr ""
 
 #: lib/messages.php:1906
 msgid ""
-"DO NOT ENTER PRODUCT ATTRIBUTE VALUES HERE &ndash; THESE OPTIONS ARE FOR "
-"PRODUCT ATTRIBUTE NAMES ONLY."
+"Do not enter product attribute values here &ndash; these options are for "
+"product attribute names only."
 msgstr ""
 
 #: lib/messages.php:1908
@@ -5060,8 +5060,8 @@ msgstr ""
 
 #: lib/messages.php:1939
 msgid ""
-"DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE OPTIONS ARE FOR "
-"CONTACT FIELD IDS AND LABELS ONLY."
+"Do not enter your contact information here &ndash; these options are for "
+"contact field ids and labels only."
 msgstr ""
 
 #: lib/messages.php:1941
@@ -5652,7 +5652,7 @@ msgctxt "option comment"
 msgid "%s required"
 msgstr ""
 
-#. translators: %s is the meta tag name (ie. meta name canonical).
+#. translators: %s is the meta tag name (aka meta name canonical).
 #: lib/messages.php:2585
 msgid ""
 "Option disabled (<code>%s</code> head tag disabled or SEO plugin detected)."
