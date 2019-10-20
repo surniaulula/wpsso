@@ -838,7 +838,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= __( 'Enter the name (ie. label or header) of a product attribute that you have created in your e-commerce plugin (in WooCommerce, for example).', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'The product attribute name allows %s to get the attribute value from your e-commerce plugin.', 'wpsso' ), $info[ 'short_pro' ] ) . ' ';
+							$text .= sprintf( __( 'The product attribute name allows %s to request the attribute value from your e-commerce plugin.', 'wpsso' ), $info[ 'short_pro' ] ) . ' ';
 
 							$text .= sprintf( __( 'The default attribute name is "%s".', 'wpsso' ), $this->p->opt->get_defaults( $attr_key ) );
 
@@ -1863,7 +1863,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<center>';
 
-							$text .= '<strong>' . __( 'DO NOT ENTER CUSTOM FIELD VALUES HERE &ndash; THESE ARE CUSTOM FIELD NAMES ONLY.', 'wpsso' ) . '</strong><br/>';
+							$text .= '<strong>' . __( 'DO NOT ENTER CUSTOM FIELD VALUES HERE &ndash; THESE OPTIONS ARE FOR CUSTOM FIELD NAMES ONLY.', 'wpsso' ) . '</strong><br/>';
 
 							$text .= __( 'Use the following custom field names when creating custom fields for your posts, pages, and custom post types.', 'wpsso' );
 
@@ -1895,15 +1895,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<p>';
 
-							$text .= sprintf( __( 'These options allow you to customize the product attribute names (ie. IDs or labels) that %s uses to get additional product information from your e-commerce plugin.', 'wpsso' ), $info[ 'short' ] ) . ' ';
+							$text .= sprintf( __( 'These options allow you to customize the product attribute names (ie. IDs or labels) that %s uses to request additional product information from your e-commerce plugin.', 'wpsso' ), $info[ 'short' ] ) . ' ';
 
-							$text .= __( 'These are product attribute names that you can (optionally) create in your e-commerce plugin, and not their values.', 'wpsso' ) . ' ';
+							$text .= __( 'These are product attribute names that you can optionally create in your e-commerce plugin, and not their values.', 'wpsso' ) . ' ';
 
 							$text .= '</p><p>';
 
 							$text .= '<center>';
 
-							$text .= '<strong>' . __( 'DO NOT ENTER PRODUCT ATTRIBUTE VALUES HERE &ndash; THESE ARE PRODUCT ATTRIBUTE NAMES ONLY.', 'wpsso' ) . '</strong><br/>';
+							$text .= '<strong>' . __( 'DO NOT ENTER PRODUCT ATTRIBUTE VALUES HERE &ndash; THESE OPTIONS ARE FOR PRODUCT ATTRIBUTE NAMES ONLY.', 'wpsso' ) . '</strong><br/>';
 
 							$text .= __( 'You can create the following product attribute names and choose their corresponding values in your e-commerce plugin.', 'wpsso' );
 
@@ -1936,7 +1936,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<center>';
 
-							$text .= '<strong>' . __( 'DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE ARE CONTACT FIELD IDS AND LABELS ONLY.', 'wpsso' ) . '</strong><br/>';
+							$text .= '<strong>' . __( 'DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE OPTIONS ARE FOR CONTACT FIELD IDS AND LABELS ONLY.', 'wpsso' ) . '</strong><br/>';
 
 							$text .= sprintf( __( 'Enter your personal contact information in <a href="%1$s">the user profile page</a>.', 'wpsso' ), get_admin_url( null, 'profile.php' ) );
 

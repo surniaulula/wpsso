@@ -4170,8 +4170,8 @@ msgstr ""
 
 #: lib/messages.php:841
 msgid ""
-"The product attribute name allows %s to get the attribute value from your e-"
-"commerce plugin."
+"The product attribute name allows %s to request the attribute value from "
+"your e-commerce plugin."
 msgstr ""
 
 #: lib/messages.php:843
@@ -4984,8 +4984,8 @@ msgstr ""
 
 #: lib/messages.php:1866
 msgid ""
-"DO NOT ENTER CUSTOM FIELD VALUES HERE &ndash; THESE ARE CUSTOM FIELD NAMES "
-"ONLY."
+"DO NOT ENTER CUSTOM FIELD VALUES HERE &ndash; THESE OPTIONS ARE FOR CUSTOM "
+"FIELD NAMES ONLY."
 msgstr ""
 
 #: lib/messages.php:1868
@@ -5013,20 +5013,20 @@ msgstr ""
 #: lib/messages.php:1898
 msgid ""
 "These options allow you to customize the product attribute names (ie. IDs or "
-"labels) that %s uses to get additional product information from your e-"
+"labels) that %s uses to request additional product information from your e-"
 "commerce plugin."
 msgstr ""
 
 #: lib/messages.php:1900
 msgid ""
-"These are product attribute names that you can (optionally) create in your e-"
+"These are product attribute names that you can optionally create in your e-"
 "commerce plugin, and not their values."
 msgstr ""
 
 #: lib/messages.php:1906
 msgid ""
-"DO NOT ENTER PRODUCT ATTRIBUTE VALUES HERE &ndash; THESE ARE PRODUCT "
-"ATTRIBUTE NAMES ONLY."
+"DO NOT ENTER PRODUCT ATTRIBUTE VALUES HERE &ndash; THESE OPTIONS ARE FOR "
+"PRODUCT ATTRIBUTE NAMES ONLY."
 msgstr ""
 
 #: lib/messages.php:1908
@@ -5060,8 +5060,8 @@ msgstr ""
 
 #: lib/messages.php:1939
 msgid ""
-"DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE ARE CONTACT FIELD "
-"IDS AND LABELS ONLY."
+"DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE OPTIONS ARE FOR "
+"CONTACT FIELD IDS AND LABELS ONLY."
 msgstr ""
 
 #: lib/messages.php:1941
