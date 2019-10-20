@@ -693,9 +693,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			/**
-			 * If the module is a post object, define the author, publishing date, etc.
-			 * These values may still be used by other filters, and if the og:type is
-			 * not an article, the meta tags will be sanitized at the end of
+			 * If the module is a post object, define the author, publishing date, etc. These values may still be used
+			 * by other filters, and if the og:type is not an article, the meta tags will be sanitized at the end of
 			 * WpssoHead::get_head_array().
 			 */
 			if ( $mod[ 'is_post' ] && $post_id ) {
@@ -710,16 +709,25 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						if ( $mod[ 'post_author' ] ) {
 
-							$mt_og[ 'article:author' ] = $this->p->user->get_author_website( $mod[ 'post_author' ],
-								$this->p->options[ 'og_author_field' ] );
-
+							/**
+							 * Non-standard / internal meta tag used for display purposes.
+							 */
 							$mt_og[ 'article:author:name' ] = $this->p->user->get_author_meta( $mod[ 'post_author' ],
 								$this->p->options[ 'seo_author_name' ] );
+
+							/**
+							 * An array of author URLs.
+							 */
+							$mt_og[ 'article:author' ] = $this->p->user->get_authors_websites( $mod[ 'post_author' ],
+								$this->p->options[ 'og_author_field' ] );
 
 						} else {
 							$mt_og[ 'article:author' ] = array();
 						}
 
+						/**
+						 * Add co-author URLs if available.
+						 */
 						if ( ! empty( $mod[ 'post_coauthors' ] ) ) {
 
 							$og_profile_urls = $this->p->user->get_authors_websites( $mod[ 'post_coauthors' ],

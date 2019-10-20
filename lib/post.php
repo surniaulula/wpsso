@@ -1703,7 +1703,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Review author.
 			 */
-			$ret[ $og_type . ':review:author:id' ]    = $comment_obj->user_id;	// Author ID if registered (0 otherwise).
+			$ret[ $og_type . ':review:author:id' ]    = $comment_obj->user_id;		// Author ID if registered (0 otherwise).
 			$ret[ $og_type . ':review:author:name' ]  = $comment_obj->comment_author;	// Author display name.
 
 			/**

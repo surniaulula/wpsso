@@ -1084,7 +1084,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$person_opts = array(
 					'person_type'      => 'person',
-					'person_url'       => $user_mod[ 'obj' ]->get_author_website( $person_id, 'url' ),
+					'person_url'       => $user_mod[ 'obj' ]->get_author_website( $person_id, 'url' ),	// Returns a single URL string.
 					'person_name'      => $user_mod[ 'obj' ]->get_author_meta( $person_id, $wpsso->options[ 'seo_author_name' ] ),
 					'person_desc'      => $user_desc,
 					'person_job_title' => $user_mod[ 'obj' ]->get_options( $person_id, 'schema_person_job_title' ),

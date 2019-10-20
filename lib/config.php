@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.8.1-dev.1',	// Plugin version.
+					'version'     => '6.8.1-dev.2',	// Plugin version.
 					'opt_version' => '671',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2159,15 +2159,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'product'             => 'http://ogp.me/ns/product#',	// Supported by facebook and pinterest.
 					'website'             => 'http://ogp.me/ns/website#',
 				),
-				'og_type_mt' => array(				// See https://developers.facebook.com/docs/reference/opengraph/.
-					'article' => array(			// See https://developers.facebook.com/docs/reference/opengraph/object-type/article/.
-						'article:author'          => '', // An array of Facebook profile URLs or IDs of the authors for this article.
-						'article:publisher'       => '', // A Facebook page URL or ID of the publishing entity.
+				'og_type_mt' => array(					// See https://developers.facebook.com/docs/reference/opengraph/.
+					'article' => array(				// See https://developers.facebook.com/docs/reference/opengraph/object-type/article/.
+						'article:author'          => '',	// An array of Facebook profile URLs or IDs of the authors for this article.
+						'article:publisher'       => '',	// A Facebook page URL or ID of the publishing entity.
 						'article:published_time'  => '',
 						'article:modified_time'   => '',
 						'article:expiration_time' => '',
-						'article:section'         => '', // The section of your website to which the article belongs, such as 'Lifestyle' or 'Sports'
-						'article:tag'             => '', // An array of keywords relevant to the article.
+						'article:section'         => '',
+						'article:tag'             => '',	// An array of keywords relevant to the article.
 					),
 					'book' => array(
 						'book:author'       => '',

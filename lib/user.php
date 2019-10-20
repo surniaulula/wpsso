@@ -1355,7 +1355,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		/**
 		 * WpssoUser class specific methods.
 		 */
-		public function get_authors_websites( $user_ids, $field_id = null ) {
+		public function get_authors_websites( $user_ids, $field_id = 'url' ) {
 
 			$ret = array();
 
@@ -1379,7 +1379,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						continue;
 					}
 
-					$value = $this->get_author_website( $user_id, $field_id );
+					$value = $this->get_author_website( $user_id, $field_id );	// Returns a single URL string.
 
 					if ( ! empty( $value ) ) {	// Make sure we don't add empty values.
 						$ret[] = $value;

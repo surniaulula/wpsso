@@ -1773,7 +1773,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		/**
 		 * WpssoUser class specific methods.
 		 */
-		public function get_authors_websites( $user_ids, $field_id = null ) {
+		public function get_authors_websites( $user_ids, $field_id = 'url' ) {
 
 			return $this->must_be_extended( __METHOD__, array() );
 		}
