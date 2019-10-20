@@ -1857,7 +1857,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<p>';
 
-							$text .= sprintf( __( 'These options allow you to customize the custom field names (ie. metadata name) that %s can use to get additional information about your content.', 'wpsso' ), $info[ 'short' ] ) . ' ';
+							$text .= sprintf( __( 'These options allow you to customize the custom field names (ie. metadata name) that %s can use to get additional information about your content.', 'wpsso' ), $info[ 'short_pro' ] ) . ' ';
 
 							$text .= '</p><p>';
 
@@ -1895,7 +1895,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<p>';
 
-							$text .= sprintf( __( 'These options allow you to customize the product attribute names (ie. IDs or labels) that %s uses to request additional product information from your e-commerce plugin.', 'wpsso' ), $info[ 'short' ] ) . ' ';
+							$text .= sprintf( __( 'These options allow you to customize the product attribute names (ie. IDs or labels) that %s uses to request additional product information from your e-commerce plugin.', 'wpsso' ), $info[ 'short_pro' ] ) . ' ';
 
 							$text .= __( 'These are product attribute names that you can optionally create in your e-commerce plugin, and not their values.', 'wpsso' ) . ' ';
 
