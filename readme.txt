@@ -441,6 +441,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* Minor CSS adjustments for the new WordPress v5.3 form styles.
+	* Added information text for the "Product Attribute Names" and "Custom Field Names" options.
 * **Bugfixes**
 	* Fixed an array merge warning when adding co-author URLs to Open Graph meta tags.
 * **Developer Notes**
