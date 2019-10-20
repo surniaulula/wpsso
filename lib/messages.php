@@ -836,7 +836,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$attr_key = substr( $msg_key, 8 );	// Remove the 'tooltip-' prefix.
 
-							$text .= __( 'Enter the name of a product attribute you have created in your e-commerce plugin (ie. WooCommerce).', 'wpsso' ) . ' ';
+							$text .= __( 'Enter the name (ie. label or header) of a product attribute that you have created in your e-commerce plugin (in WooCommerce, for example).', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'The product attribute name allows %s to get the attribute value from your e-commerce plugin.', 'wpsso' ), $info[ 'short_pro' ] ) . ' ';
 
 							$text .= sprintf( __( 'The default attribute name is "%s".', 'wpsso' ), $this->p->opt->get_defaults( $attr_key ) );
 
@@ -1806,24 +1808,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'info-woocommerce-cf-attr':
-
-							$text = '<blockquote class="top-info">';
-
-							$text .= '<p>';
-
-							$text .= __( 'Note that product attribute values from WooCommerce have precedence over custom field values.', 'wpsso' );
-
-							$text .= '</p><p>';
-
-							$text .= sprintf( __( 'Refer to the <a href="%s">WooCommerce integration notes</a> for information on setting up product attributes and custom fields.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/' );
-
-							$text .= '</p>';
-
-							$text .= '</blockquote>';
-
-							break;
-
 						case 'info-plugin-tid':	// Displayed in the Licenses settings page.
 
 							$um_info       = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
@@ -1867,6 +1851,70 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
+						case 'info-cf-attr':
+
+							$text .= '<blockquote class="top-info">';
+
+							$text .= '<p>';
+
+							$text .= sprintf( __( 'These options allow you to customize the custom field names (ie. metadata name) that %s can use to get additional information about your content.', 'wpsso' ), $info[ 'short' ] ) . ' ';
+
+							$text .= '</p><p>';
+
+							$text .= '<center>';
+
+							$text .= '<strong>' . __( 'DO NOT ENTER CUSTOM FIELD VALUES HERE &ndash; THESE ARE CUSTOM FIELD NAMES ONLY.', 'wpsso' ) . '</strong><br/>';
+
+							$text .= __( 'Use the following custom field names when creating custom fields for your posts, pages, and custom post types.', 'wpsso' );
+
+							$text .= '</center>';
+
+							$text .= '</p>';
+
+							if ( ! empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {
+
+
+								$text .= '<p>';
+
+								$text .= __( 'An active WooCommerce plugin has been detected.', 'wpsso' ) . ' ';
+
+								$text .= __( 'Please note that custom product attributes from WooCommerce have precedence over custom field values.', 'wpsso' ) . ' ';
+
+								$text .= sprintf( __( 'Refer to the <a href="%s">WooCommerce integration notes</a> for information on setting up product attributes and custom fields.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/' );
+
+								$text .= '</p>';
+							}
+
+							$text .= '</blockquote>';
+
+							break;
+
+						case 'info-product-attr':
+
+							$text = '<blockquote class="top-info">';
+
+							$text .= '<p>';
+
+							$text .= sprintf( __( 'These options allow you to customize the product attribute names (ie. IDs or labels) that %s uses to get additional product information from your e-commerce plugin.', 'wpsso' ), $info[ 'short' ] ) . ' ';
+
+							$text .= __( 'These are the product attribute names that you can (optionally) create in your e-commerce plugin, not their values.', 'wpsso' ) . ' ';
+
+							$text .= '</p><p>';
+
+							$text .= '<center>';
+
+							$text .= '<strong>' . __( 'DO NOT ENTER PRODUCT ATTRIBUTE VALUES HERE &ndash; THESE ARE PRODUCT ATTRIBUTE NAMES ONLY.', 'wpsso' ) . '</strong><br/>';
+
+							$text .= __( 'You can (optionally) create the following product attribute names and choose their corresponding values in your e-commerce plugin.', 'wpsso' );
+
+							$text .= '</center>';
+
+							$text .= '</p>';
+
+							$text .= '</blockquote>';
+
+							break;
+
 						case 'info-cm':
 
 							// translators: Please ignore - translation uses a different text domain.
@@ -1876,7 +1924,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<p>';
 
-							$text .= sprintf( __( 'The following options allow you to customize the list of contact fields shown in the <strong>%1$s</strong> section of <a href="%2$s">the user profile page</a>.', 'wpsso' ), $contact_info_transl, get_admin_url( null, 'profile.php' ) ) . ' ';
+							$text .= sprintf( __( 'These options allow you to customize the list of contact fields shown in the <strong>%1$s</strong> section of <a href="%2$s">the user profile page</a>.', 'wpsso' ), $contact_info_transl, get_admin_url( null, 'profile.php' ) ) . ' ';
 
 							$text .= sprintf( __( '%1$s uses the Facebook and Twitter contact field values in its meta tags and Schema markup.', 'wpsso' ), $info[ 'short' ] ) . ' ';
 
@@ -1888,7 +1936,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<center>';
 
-							$text .= '<strong>' . __( 'DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE ARE CONTACT FIELD LABELS ONLY.', 'wpsso' ) . '</strong><br/>';
+							$text .= '<strong>' . __( 'DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE ARE CONTACT FIELD IDS AND LABELS ONLY.', 'wpsso' ) . '</strong><br/>';
 
 							$text .= sprintf( __( 'Enter your personal contact information in <a href="%1$s">the user profile page</a>.', 'wpsso' ), get_admin_url( null, 'profile.php' ) );
 

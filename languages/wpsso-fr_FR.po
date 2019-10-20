@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.8.0\n"
+"Project-Id-Version: WPSSO Core 6.8.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-10-17 08:24-0700\n"
-"PO-Revision-Date: 2019-10-17 08:24-0700\n"
+"POT-Creation-Date: 2019-10-18 10:53-0700\n"
+"PO-Revision-Date: 2019-10-18 10:53-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1091,7 +1091,7 @@ msgid "from"
 msgstr "de"
 
 # Ignore the post type to avoid gender issues in the French translation.
-#: lib/com/form.php:1968 lib/gettext-com.php:25 lib/post.php:1339
+#: lib/com/form.php:1969 lib/gettext-com.php:25 lib/post.php:1339
 #: lib/wp-meta.php:580 lib/wp-meta.php:710
 msgid "Save a draft version or publish to update this value."
 msgstr "Sauvegardez une version préliminaire ou publiez pour mettre à jour cette valeur."
@@ -3146,27 +3146,27 @@ msgctxt "option value"
 msgid "[%s Location]"
 msgstr "[Lieu de %s]"
 
-#: lib/head.php:533
+#: lib/head.php:536
 msgid "adding open graph meta tags"
 msgstr "ajout de balises méta open graph"
 
-#: lib/head.php:547
+#: lib/head.php:550
 msgid "adding twitter card meta tags"
 msgstr "ajout de balises méta carte twitter"
 
-#: lib/head.php:556
+#: lib/head.php:559
 msgid "adding meta name meta tags"
 msgstr "ajout de balises nom de méta"
 
-#: lib/head.php:565
+#: lib/head.php:568
 msgid "adding link relation tags"
 msgstr "ajout de balises de relation de lien"
 
-#: lib/head.php:574
+#: lib/head.php:577
 msgid "adding schema meta tags"
 msgstr "ajout de balises méta de schéma"
 
-#: lib/head.php:583
+#: lib/head.php:586
 msgid "adding schema json-ld markup"
 msgstr "ajout de balisage schéma json-ld"
 
