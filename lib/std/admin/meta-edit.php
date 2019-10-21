@@ -48,8 +48,13 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 			$no_hashtags    = false;
 			$maybe_hashtags = true;
 			$do_encode      = true;
-			$og_types       = $this->p->og->get_og_types_select( $add_none = true );
-			$art_topics     = $this->p->util->get_article_topics();
+
+			/**
+			 * Select option arrays.
+			 */
+			$og_types   = $this->p->og->get_og_types_select( $add_none = true );
+			$art_topics = $this->p->util->get_article_topics();
+			$currencies = SucomUtil::get_currency_abbrev();
 
 			/**
 			 * The 'add_link_rel_canonical' and 'add_meta_name_description' options will be empty if an SEO plugin is detected.
@@ -102,7 +107,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'tooltip'  => 'meta-og_type',
 					'content'  => $form->get_select( 'og_type', $og_types,
 						$css_class = '', $css_id = '', $is_assoc = true, $is_disabled = false,
-							$selected = true, $event_name = 'on_change_unhide_rows' ),
+							$selected = true, $event_names = array( 'on_change_unhide_rows' ) ),
 				),
 				'pro-feature-msg' => array(
 					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>',
@@ -216,8 +221,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'label'    => _x( 'Product Price', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_price',
 					'content'  => $form->get_no_input( 'product_price', '', '', $placeholder = true ) . ' ' .
-						$form->get_no_select( 'product_currency', SucomUtil::get_currency_abbrev(),
-							$css_class = 'currency', $css_id = '', $is_assoc = true ),
+						$form->get_no_select( 'product_currency', $currencies, $css_class = 'currency' ),
 				),
 				'og_product_condition' => array(		// Open Graph meta tag product:condition.
 					'tr_class' => 'hide_og_type hide_og_type_product',

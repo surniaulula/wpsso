@@ -15,10 +15,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		private $p;
 		private $lca;
-		private $opts_name       = null;
-		private $menu_ext        = null;	// Lca or ext lowercase acronym.
-		private $text_domain     = false;	// Lca or ext text domain.
-		private $def_text_domain = false;	// Lca text domain (fallback).
+		private $opts_name          = null;
+		private $menu_ext           = null;	// Lca or ext lowercase acronym.
+		private $text_domain        = false;	// Lca or ext text domain.
+		private $def_text_domain    = false;	// Lca text domain (fallback).
+		private $show_hide_js_added = false;
+		private $json_array_added   = array();
 
 		public $options  = array();
 		public $defaults = array();
@@ -362,9 +364,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				return;
 			}
 
-			static $do_once_json_array   = array();
-			static $do_once_show_hide_js = null;
-
 			$filter_name = SucomUtil::sanitize_hookname( $this->lca . '_form_select_' . $name );
 			$values      = apply_filters( $filter_name, $values );
 
@@ -386,7 +385,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$event_names = array();
 			}
 
-			$event_json = false;
+			$event_json = false;	// JSON array variable name.
 
 			if ( in_array( 'on_focus_load_json', $event_names ) ) {
 				if ( ! empty( $event_args ) && is_string( $event_args ) ) {
@@ -414,8 +413,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 
 				/**
-				 * If the array is not associative (so a regular numbered array), 
-				 * then the label / description is used as the saved value.
+				 * If the array is not associative (so a regular numbered array), then the label / description is
+				 * used as the saved value.
 				 *
 				 * Make sure option values are cast as strings for comparison.
 				 */
@@ -424,7 +423,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				} else {
 					$option_value = (string) $label;
 				}
-
 
 				if ( $this->text_domain ) {
 					$label_transl = $this->get_value_transl( $label );
@@ -464,7 +462,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				 * suffix.
 				 */
 				if ( $event_json ) {
-					if ( empty( $do_once_json_array[ $event_json ] ) ) {
+					if ( empty( $this->json_array_added[ $event_json ] ) ) {
 						$select_opt_arr[ $option_value ] = $label_transl;
 					}
 				}
@@ -509,10 +507,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			$html .= "\n" . '<select id="' . esc_attr( $input_id ) . '"';
-			$html .= ( $is_disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"' );
-			$html .= ( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' );
-			$html .= ( empty( $default_value ) ? '' : ' data-default-value="' . esc_attr( $default_value ) . '"' );
-			$html .= ( empty( $default_text ) ? '' : ' data-default-text="' . esc_attr( $default_text ) . '"' );
+			$html .= $is_disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"';
+			$html .= empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"';
+			$html .= empty( $default_value ) ? '' : ' data-default-value="' . esc_attr( $default_value ) . '"';
+			$html .= empty( $default_text ) ? '' : ' data-default-text="' . esc_attr( $default_text ) . '"';
 			$html .= '>' . "\n";
 			$html .= $select_opt_html;
 			$html .= '<!-- ' . $select_opt_added . ' select options added -->' . "\n";
@@ -534,33 +532,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					case 'on_focus_load_json':
 
-						if ( $event_json ) {	// Just in case.
-
-							/**
-							 * Encode the PHP array to JSON only once per page load.
-							 */
-							if ( empty( $do_once_json_array[ $event_json ] ) ) {
-	
-								$do_once_json_array[ $event_json ] = true;
-	
-								$select_opt_json = SucomUtil::json_encode_array( $select_opt_arr );
-	
-								$html .= '<script type="text/javascript">' . "\n";
-								$html .= 'var ' . $event_json . ' = ' . $select_opt_json . ';' . "\n";
-								$html .= '</script>' . "\n";
-							}
-	
-							$input_id_esc = esc_js( $input_id );
-	
-							/**
-							 * The hover event is also required for Firefox to render the option list correctly.
-							 */
-							$html .= '<script type="text/javascript">';
-							$html .= 'jQuery( \'select#' . $input_id_esc . ':not( .json_loaded )\' ).on( \'hover focus\', function(){';
-							$html .= 'sucomSelectLoadJson( \'select#' . $input_id_esc . '\', \'' . $event_json . '\' );';
-							$html .= '});';
-							$html .= '</script>' . "\n";
-						}
+						$html .= $this->get_event_json_script( $event_json, $select_opt_arr, $input_id );
 
 						break;
 
@@ -588,27 +560,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					case 'on_show_unhide_rows':
 
-						if ( null === $do_once_show_hide_js ) {
-
-							$do_once_show_hide_js = true;
-
-							$html .= <<<EOF
-<script type="text/javascript">
-jQuery.each( [ 'show', 'hide' ], function( i, ev ){
-	var el = jQuery.fn[ ev ];
-	jQuery.fn[ ev ] = function(){
-		if ( jQuery( this ).is( 'tr' ) ) {
-			var css_class = jQuery( this ).attr( 'class' );
-			if ( css_class && css_class.indexOf( 'hide_' ) == 0 ) {
-				this.trigger( ev );
-			}
-		}
-		return el.apply( this, arguments );
-	};
-});
-</script>
-EOF;
-						}
+						$html .= $this->get_show_hide_script();
 
 						// No break.
 
@@ -644,7 +596,7 @@ EOF;
 								$hide_class = 'hide_' . esc_js( $name );
 								$show_class = 'hide_' . esc_js( $name . '_' . $show_value );
 
-								if ( $event_name === 'on_show_unhide_rows' ) {
+								if ( 'on_show_unhide_rows' === $event_name ) {
 
 									$html .= '<script type="text/javascript">';
 									$html .= 'jQuery( \'tr#' . esc_js( $tr_id ) . '\' ).on( \'show\', function(){';
@@ -819,6 +771,7 @@ EOF;
 
 		/**
 		 * The "hour-mins" class is always prefixed to the $css_class value.
+		 *
 		 * By default, the 'none' array elements is not added.
 		 */
 		public function get_select_time( $name, $css_class = '', $css_id = '',
@@ -833,14 +786,14 @@ EOF;
 
 			$css_class   = trim( 'hour-mins ' . $css_class );
 			$event_names = array( 'on_focus_load_json' );
-			$event_args = 'hour_mins_step_' . $step_mins;
+			$event_args = 'hour_mins_step_' . $step_mins;	// JSON array variable name.
 
 			/**
 			 * Set 'none' as the default value if no default is defined.
 			 */
 			if ( $add_none ) {
 
-				$event_args .= '_add_none';
+				$event_args .= '_add_none';	// JSON array variable name.
 
 				if ( ! empty( $name ) && ! isset( $this->defaults[ $name ] ) ) {
 					$this->defaults[ $name ] = 'none';
@@ -873,13 +826,15 @@ EOF;
 
 			$css_class = trim( 'timezone ' . $css_class );
 
-			$timezones = timezone_identifiers_list();
+			$timezones   = timezone_identifiers_list();
+			$event_names = array( 'on_focus_load_json' );
+			$event_args  = 'timezones';	// JSON array variable name.
 
 			if ( empty( $this->defaults[ $name ] ) ) {
 
 				/**
-				 * The timezone string will be empty if a UTC offset, instead
-				 * of a city, has selected in the WordPress settings.
+				 * The timezone string will be empty if a UTC offset, instead of a city, has selected in the
+				 * WordPress settings.
 				 */
 				$this->defaults[ $name ] = get_option( 'timezone_string' );
 
@@ -889,7 +844,7 @@ EOF;
 			}
 
 			return $this->get_select( $name, $timezones, $css_class, $css_id, $is_assoc = false, $is_disabled, $selected,
-				$event_names = array( 'on_focus_load_json' ), $event_args = 'timezones' );
+				$event_names, $event_args );
 		}
 
 		public function get_no_select_timezone( $name, $css_class = '', $css_id = '', $selected = false ) {
@@ -970,7 +925,7 @@ EOF;
 					$css_id = $name;
 				}
 
-				$html .= $this->get_text_length_js( 'text_' . $css_id );
+				$html .= $this->get_textlen_script( 'text_' . $css_id );
 			}
 
 			$html .= '<input type="text" name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"';
@@ -983,7 +938,7 @@ EOF;
 				$html .= empty( $len[ $key ] ) ? '' : ' ' . $key . 'Length="' . esc_attr( $len[ $key ] ) . '"';
 			}
 
-			$html .= $this->get_placeholder_events( 'input', $placeholder );
+			$html .= $this->get_placeholder_attrs( 'input', $placeholder );
 			$html .= ' value="' . esc_attr( $value ) . '" />' . "\n";
 			$html .= empty( $len ) ? '' : '<div id="text_' . esc_attr( $css_id ) . '-lenMsg"></div>' . "\n";
 
@@ -1499,7 +1454,7 @@ EOF;
 					}
 
 					$event_args = empty( $atts[ 'event_args' ] ) ? null : $atts[ 'event_args' ];
-					$event_json = false;
+					$event_json = false;	// JSON array variable name.
 
 					if ( in_array( 'on_focus_load_json', $event_names ) ) {
 						if ( ! empty( $event_args ) && is_string( $event_args ) ) {
@@ -1587,7 +1542,7 @@ EOF;
 									' title="' . esc_attr( $input_title ) . '"' .
 									' class="' . esc_attr( $input_class ) . '"' .
 									' id="textarea_' . esc_attr( $input_id ) . '"' .
-									( $this->get_placeholder_events( 'textarea', $placeholder ) ) .
+									( $this->get_placeholder_attrs( 'textarea', $placeholder ) ) .
 									'>' . esc_attr( $input_value ) . '</textarea>' . "\n";
 
 								$one_more = empty( $input_value ) && ! is_numeric( $input_value ) ? false : true;
@@ -1595,13 +1550,6 @@ EOF;
 								break;
 
 							case 'select':
-
-								$html .= '<select ' . ( $opt_disabled ? ' disabled="disabled"' : '' ) .
-									' name="' . esc_attr( $this->opts_name . '[' . $opt_key . ']' ) . '"' .
-									' title="' . esc_attr( $input_title ) . '"' .
-									' class="' . esc_attr( $input_class ) . '"' .
-									' id="select_' . esc_attr( $input_id ) . '"' .
-									' ' . $el_attr . '>' . "\n";
 
 								$select_options = empty( $atts[ 'select_options' ] ) || 
 									! is_array( $atts[ 'select_options' ] ) ?
@@ -1614,6 +1562,10 @@ EOF;
 
 								$select_opt_count = 0;	// Used to check for first option.
 								$select_opt_added = 0;
+								$select_opt_html  = '';
+								$select_opt_arr   = array();
+								$default_value    = '';
+								$default_text     = '';
 
 								foreach ( $select_options as $option_value => $label ) {
 
@@ -1622,19 +1574,43 @@ EOF;
 									}
 
 									/**
-									 * If the array is not associative (so a regular numbered array), 
-									 * then the label / description is used as the saved value.
+									 * If the array is not associative (so a regular numbered
+									 * array), then the label / description is used as the
+									 * saved value.
+									 *
+									 * Make sure option values are cast as strings for
+									 * comparison.
 									 */
-									if ( ! $is_assoc ) {
-										$option_value = $label;
+									if ( $is_assoc ) {
+										$option_value = (string) $option_value;
+									} else {
+										$option_value = (string) $label;
 									}
 
-									$label_transl = $this->get_value_transl( $label );
+									if ( $this->text_domain ) {
+										$label_transl = $this->get_value_transl( $label );
+									}
 
-									if ( ( $in_defaults && $option_value === $this->defaults[ $opt_key ] ) ||
+									/**
+									 * Save the option value and translated label for the JSON
+									 * array before adding the "(default)" suffix.
+									 */
+									if ( $event_json ) {
+										if ( empty( $this->json_array_added[ $event_json ] ) ) {
+											$select_opt_arr[ $option_value ] = $label_transl;
+										}
+									}
+
+									/**
+									 * Save the default value and its text so we can add them (as jquery data) to the select.
+									 */
+									if ( ( $in_defaults && $option_value === (string) $this->defaults[ $opt_key ] ) ||
 										( $select_default !== null && $option_value === $select_default ) ) {
 
-										$label_transl .= ' ' . $this->get_value_transl( '(default)' );
+										$default_value = $option_value;
+										$default_text  = $this->get_value_transl( '(default)' );
+
+										$label_transl .= ' ' . $default_text;
 									}
 
 									if ( $select_selected !== null ) {
@@ -1654,18 +1630,41 @@ EOF;
 									/**
 									 * For disabled selects, only include the first and/or selected option.
 									 */
-									if ( ! $opt_disabled || $is_selected_html || $select_opt_count === 1 ) {
+									if ( ( ! $opt_disabled && ! $event_json ) || $is_selected_html || $select_opt_count === 1 ) {
 
-										$html .= '<option value="' . esc_attr( $option_value ) . '"' . $is_selected_html . '>';
-										$html .= $label_transl;
-										$html .= '</option>' . "\n";
+										$select_opt_html .= '<option value="' . esc_attr( $option_value ) . '"' . $is_selected_html . '>';
+										$select_opt_html .= $label_transl;
+										$select_opt_html .= '</option>' . "\n";
 
 										$select_opt_added++; 
 									}
 								}
 								
+								$html .= "\n" . '<select ';
+								$html .= $opt_disabled ? ' disabled="disabled"' : '';
+								$html .= ' name="' . esc_attr( $this->opts_name . '[' . $opt_key . ']' ) . '"';
+								$html .= ' title="' . esc_attr( $input_title ) . '"';
+								$html .= empty( $input_class ) ? '' : ' class="' . esc_attr( $input_class ) . '"';
+								$html .= empty( $input_id ) ? '' : ' id="select_' . esc_attr( $input_id ) . '"';
+								$html .= empty( $default_value ) ? '' : ' data-default-value="' . esc_attr( $default_value ) . '"';
+								$html .= empty( $default_text ) ? '' : ' data-default-text="' . esc_attr( $default_text ) . '"';
+								$html .= ' ' . $el_attr . '>' . "\n";
+								$html .= $select_opt_html;
 								$html .= '<!-- ' . $select_opt_added . ' select options added -->' . "\n";
 								$html .= '</select>' . "\n";
+
+								foreach ( $event_names as $event_name ) { 
+
+									switch ( $event_name ) {
+
+										case 'on_focus_load_json':
+
+											$html .= $this->get_event_json_script( $event_json,
+												$select_opt_arr, 'select_' . $input_id );
+
+											break;
+									}
+								}
 
 								break;
 
@@ -1736,7 +1735,7 @@ EOF;
 					$css_id = $name;
 				}
 
-				$html .= $this->get_text_length_js( 'textarea_' . $css_id );
+				$html .= $this->get_textlen_script( 'textarea_' . $css_id );
 			}
 
 			$html .= '<textarea ' .
@@ -1747,7 +1746,7 @@ EOF;
 				( empty( $len[ 'warn' ] ) || $is_disabled ? '' : ' warnLength="' . esc_attr( $len[ 'warn' ] ) . '"' ) .
 				( empty( $len[ 'max' ] ) && empty( $len[ 'rows' ] ) ? '' : ( empty( $len[ 'rows' ] ) ?
 					' rows="'.( round( $len[ 'max' ] / 100 ) + 1 ) . '"' : ' rows="' . $len[ 'rows' ] . '"' ) ) .
-				( $this->get_placeholder_events( 'textarea', $placeholder ) ) . '>' . esc_attr( $value ) . '</textarea>' .
+				( $this->get_placeholder_attrs( 'textarea', $placeholder ) ) . '>' . esc_attr( $value ) . '</textarea>' .
 				( empty( $len[ 'max' ] ) || $is_disabled ? '' : ' <div id="textarea_' . esc_attr( $css_id ) . '-lenMsg"></div>' );
 
 			return $html;
@@ -1844,84 +1843,6 @@ EOF;
 		public function in_defaults( $opt_key ) {
 
 			return isset( $this->defaults[ $opt_key ] ) ? true : false;
-		}
-
-		private function get_text_length_js( $css_id ) {
-
-			return empty( $css_id ) ? '' : '
-<script type="text/javascript">
-	jQuery( document ).ready( function() {
-		jQuery( \'#' . esc_js( $css_id ) . '\' ).focus( function() { sucomTextLen(\'' . esc_js( $css_id ) . '\'); } );
-		jQuery( \'#' . esc_js( $css_id ) . '\' ).keyup( function() { sucomTextLen(\'' . esc_js( $css_id ) . '\'); } );
-	});
-</script>
-';
-		}
-
-		private function get_placeholder_sanitized( $name, $placeholder = '' ) {
-
-			if ( empty( $name ) ) {	// Just in case.
-				return $placeholder;
-			}
-
-			if ( true === $placeholder ) {	// Use default value.
-
-				if ( isset( $this->defaults[ $name ] ) ) {
-					$placeholder = $this->defaults[ $name ];
-				}
-			}
-
-			if ( true === $placeholder || '' === $placeholder ) {
-
-				if ( ( $pos = strpos( $name, '#' ) ) > 0 ) {
-
-					$key_default = SucomUtil::get_key_locale( substr( $name, 0, $pos ), $this->options, 'default' );
-
-					if ( $name !== $key_default ) {
-
-						if ( isset( $this->options[ $key_default ] ) ) {
-
-							$placeholder = $this->options[ $key_default ];
-
-						} elseif ( true === $placeholder ) {
-
-							if ( isset( $this->defaults[ $key_default ] ) ) {
-								$placeholder = $this->defaults[ $key_default ];
-							}
-						}
-					}
-				}
-			}
-
-			if ( true === $placeholder ) {
-				$placeholder = '';	// Must be a string.
-			}
-
-			return $placeholder;
-		}
-
-		private function get_placeholder_events( $type = 'input', $placeholder = '' ) {
-
-			if ( $placeholder === '' ) {
-				return '';
-			}
-
-			$js_if_empty = 'if ( this.value == \'\' ) this.value = \'' . esc_js( $placeholder ) . '\';';
-			$js_if_same  = 'if ( this.value == \'' . esc_js( $placeholder ) . '\' ) this.value = \'\';';
-
-			$html = ' placeholder="' . esc_attr( $placeholder ) . '"' .
-				' onClick="' . $js_if_empty . '"' .
-				' onFocus="' . $js_if_empty . '"' .
-				' onBlur="' . $js_if_same . '"';
-
-			if ( $type === 'input' ) {
-				$html .= ' onKeyPress="if ( event.keyCode === 13 ) { ' . $js_if_same . ' }"';
-			}
-
-			$html .= ' onMouseEnter="' . $js_if_empty . '"';
-			$html .= ' onMouseLeave="' . $js_if_same . '"';
-
-			return $html;
 		}
 
 		public function get_md_form_rows( array $table_rows, array $form_rows, array $head = array(), array $mod = array() ) {
@@ -2131,6 +2052,152 @@ EOF;
 			}
 
 			return $css_class;
+		}
+
+		private function get_placeholder_sanitized( $name, $placeholder = '' ) {
+
+			if ( empty( $name ) ) {	// Just in case.
+				return $placeholder;
+			}
+
+			if ( true === $placeholder ) {	// Use default value.
+
+				if ( isset( $this->defaults[ $name ] ) ) {
+					$placeholder = $this->defaults[ $name ];
+				}
+			}
+
+			if ( true === $placeholder || '' === $placeholder ) {
+
+				if ( ( $pos = strpos( $name, '#' ) ) > 0 ) {
+
+					$key_default = SucomUtil::get_key_locale( substr( $name, 0, $pos ), $this->options, 'default' );
+
+					if ( $name !== $key_default ) {
+
+						if ( isset( $this->options[ $key_default ] ) ) {
+
+							$placeholder = $this->options[ $key_default ];
+
+						} elseif ( true === $placeholder ) {
+
+							if ( isset( $this->defaults[ $key_default ] ) ) {
+								$placeholder = $this->defaults[ $key_default ];
+							}
+						}
+					}
+				}
+			}
+
+			if ( true === $placeholder ) {
+				$placeholder = '';	// Must be a string.
+			}
+
+			return $placeholder;
+		}
+
+		private function get_placeholder_attrs( $type = 'input', $placeholder = '' ) {
+
+			if ( $placeholder === '' ) {
+				return '';
+			}
+
+			$js_if_empty = 'if ( this.value == \'\' ) this.value = \'' . esc_js( $placeholder ) . '\';';
+			$js_if_same  = 'if ( this.value == \'' . esc_js( $placeholder ) . '\' ) this.value = \'\';';
+
+			$html = ' placeholder="' . esc_attr( $placeholder ) . '"' .
+				' onClick="' . $js_if_empty . '"' .
+				' onFocus="' . $js_if_empty . '"' .
+				' onBlur="' . $js_if_same . '"';
+
+			if ( $type === 'input' ) {
+				$html .= ' onKeyPress="if ( event.keyCode === 13 ) { ' . $js_if_same . ' }"';
+			}
+
+			$html .= ' onMouseEnter="' . $js_if_empty . '"';
+			$html .= ' onMouseLeave="' . $js_if_same . '"';
+
+			return $html;
+		}
+
+		private function get_textlen_script( $css_id ) {
+
+			return empty( $css_id ) ? '' : '
+<script type="text/javascript">
+	jQuery( document ).ready( function() {
+		jQuery( \'#' . esc_js( $css_id ) . '\' ).focus( function() { sucomTextLen(\'' . esc_js( $css_id ) . '\'); } );
+		jQuery( \'#' . esc_js( $css_id ) . '\' ).keyup( function() { sucomTextLen(\'' . esc_js( $css_id ) . '\'); } );
+	});
+</script>
+';
+		}
+
+		private function get_event_json_script( $event_json, $select_opt_arr, $input_id ) {
+
+			$html = '';
+
+			if ( empty( $event_json ) || ! is_string( $event_json ) ) {	// Just in case.
+				return $html;
+			}
+
+			/**
+			 * Encode the PHP array to JSON only once per page load.
+			 */
+			if ( empty( $this->json_array_added[ $event_json ] ) ) {
+
+				$this->json_array_added[ $event_json ] = true;
+
+				$select_opt_json = SucomUtil::json_encode_array( $select_opt_arr );
+
+				$html .= '<script type="text/javascript">' . "\n";
+				$html .= 'var ' . $event_json . ' = ' . $select_opt_json . ';' . "\n";
+				$html .= '</script>' . "\n";
+			}
+
+			$input_id_esc = esc_js( $input_id );
+
+			/**
+			 * The hover event is also required for Firefox to render the option list correctly.
+			 */
+			$html .= '<script type="text/javascript">';
+			$html .= 'jQuery( \'select#' . $input_id_esc . ':not( .json_loaded )\' ).on( \'hover focus\', function(){';
+			$html .= 'sucomSelectLoadJson( \'select#' . $input_id_esc . '\', \'' . $event_json . '\' );';
+			$html .= '});';
+			$html .= '</script>' . "\n";
+
+			return $html;
+		}
+
+		private function get_show_hide_script() {
+
+			$html = '';
+
+			if ( $this->show_hide_js_added ) {
+				return $html;
+			}
+
+			$this->show_hide_js_added = true;
+
+			$html .= <<<EOF
+<!-- create jQuery on show / hide events for table rows -->
+<script type="text/javascript">
+	jQuery.each( [ 'show', 'hide' ], function( i, ev ){
+		var el = jQuery.fn[ ev ];
+		jQuery.fn[ ev ] = function(){
+			if ( jQuery( this ).is( 'tr' ) ) {
+				var css_class = jQuery( this ).attr( 'class' );
+				if ( css_class && css_class.indexOf( 'hide_' ) == 0 ) {
+					this.trigger( ev );
+				}
+			}
+			return el.apply( this, arguments );
+		};
+	});
+</script>
+
+EOF;
+
+			return $html;
 		}
 	}
 }
