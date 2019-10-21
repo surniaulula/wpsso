@@ -326,9 +326,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			/**
-			 * Include WebSite, Organization and/or Person markup on the home page.
-			 * Note that the custom 'site_org_schema_type' may be a sub-type of
-			 * organization, and may be filtered as a local.business.
+			 * Include WebSite, Organization and/or Person markup on the home page. Note that the custom
+			 * 'site_org_schema_type' may be a sub-type of organization, and may be filtered as a local.business.
 			 */
 			if ( $mod[ 'is_home' ] ) {	// Static or index home page.
 
@@ -349,8 +348,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			/**
-			 * Could be an organization, website, or person, so include last to 
-			 * re-enable (if disabled by default).
+			 * Could be an organization, website, or person, so include last to re-enable (if disabled by default).
 			 */
 			if ( ! empty( $page_type_url ) ) {
 				$page_type_ids[ $page_type_id ] = true;

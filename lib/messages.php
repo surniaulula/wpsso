@@ -1213,19 +1213,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $msg_key ) {
 
-						case 'tooltip-seo_desc_max_len':	// Search / SEO Description Length.
+						case 'tooltip-seo_author_name':		// Author / Person Name Format.
+
+							$text =  __( 'Select a name format for author meta tags and/or Schema Person markup.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-seo_desc_max_len':	// Max. Description Meta Tag Length.
 
 							$text = __( 'The maximum length used for the Google Search / SEO description value.', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).',
 								'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ 'seo_desc_len' ],
 									$this->p->opt->get_defaults( 'seo_desc_max_len' ) );
-
-							break;
-
-						case 'tooltip-seo_author_name':		// Author / Person Name Format.
-
-							$text =  __( 'Select a name format for author meta tags and/or Schema Person markup.', 'wpsso' );
 
 							break;
 
@@ -1312,21 +1312,21 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-					case 'tooltip-schema_article_1_1_img_size':		// Schema Article AMP 1:1 Img Size.
-					case 'tooltip-schema_article_4_3_img_size':		// Schema Article AMP 4:3 Img Size.
-					case 'tooltip-schema_article_16_9_img_size':		// Schema Article AMP 16:9 Img Size.
-	
-						$opt_pre      = preg_replace( '/^tooltip-(schema_article_.*_img)_size$/', '$1', $msg_key );
-						$opt_ratio    = preg_replace( '/^schema_article_([0-9]+)_([0-9]+)_img$/', '$1:$2', $opt_pre );
-						$def_img_dims = $this->get_def_img_dims( $opt_pre );
+						case 'tooltip-schema_article_1_1_img_size':	// Schema Article AMP 1:1 Img Size.
+						case 'tooltip-schema_article_4_3_img_size':	// Schema Article AMP 4:3 Img Size.
+						case 'tooltip-schema_article_16_9_img_size':	// Schema Article AMP 16:9 Img Size.
+		
+							$opt_pre      = preg_replace( '/^tooltip-(schema_article_.*_img)_size$/', '$1', $msg_key );
+							$opt_ratio    = preg_replace( '/^schema_article_([0-9]+)_([0-9]+)_img$/', '$1:$2', $opt_pre );
+							$def_img_dims = $this->get_def_img_dims( $opt_pre );
 
-						$text = sprintf( __( 'The AMP %1$s image dimensions for Schema Article JSON-LD markup (the default dimensions are %2$s).', 'wpsso' ), $opt_ratio, $def_img_dims ) . ' ';
+							$text = sprintf( __( 'The AMP %1$s image dimensions for Schema Article JSON-LD markup (the default dimensions are %2$s).', 'wpsso' ), $opt_ratio, $def_img_dims ) . ' ';
 
-						$text .= sprintf( __( 'The minimum image width required by Google is %dpx.', 'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ $opt_pre . '_width' ] ). ' ';
+							$text .= sprintf( __( 'The minimum image width required by Google is %dpx.', 'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ $opt_pre . '_width' ] ). ' ';
 
-					break;
+							break;
 
-						case 'tooltip-schema_desc_max_len':
+						case 'tooltip-schema_desc_max_len':		// Max. Schema Description Length.
 
 							$text = __( 'The maximum text length of the Schema description property value.', 'wpsso' ) . ' ';
 

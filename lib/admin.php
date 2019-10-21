@@ -3587,6 +3587,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$form->get_th_html( _x( 'Organization Banner URL', 'option label', 'wpsso' ), '', 'schema_banner_url', $atts_locale ) . 
 			'<td>' . $form->get_input( SucomUtil::get_key_locale( 'schema_banner_url', $this->p->options ), 'wide' ) . '</td>';
 
+			$table_rows[ 'seo_author_name' ] = $form->get_tr_hide( 'basic', 'seo_author_name' ) . 
+			$form->get_th_html( _x( 'Author / Person Name Format', 'option label', 'wpsso' ), '', 'seo_author_name' ) . 
+			'<td>' . $form->get_select( 'seo_author_name', $this->p->cf[ 'form' ][ 'user_name_fields' ] ) . '</td>';
+
 			$table_rows[ 'schema_img_max' ] = $form->get_tr_hide( 'basic', 'schema_img_max' ) . 
 			$form->get_th_html( _x( 'Maximum Images to Include', 'option label', 'wpsso' ), '', 'schema_img_max' ) . 
 			'<td>' . $form->get_select( 'schema_img_max', range( 0, $this->p->cf[ 'form' ][ 'max_media_items' ] ),
@@ -3619,7 +3623,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			'<td>' . $form->get_input_image_dimensions( 'thumb_img' ) . '</td>';
 
 			$table_rows[ 'schema_desc_max_len' ] = $form->get_tr_hide( 'basic', 'schema_desc_max_len' ) . 
-			$form->get_th_html( _x( 'Maximum Description Length', 'option label', 'wpsso' ), '', 'schema_desc_max_len' ) . 
+			$form->get_th_html( _x( 'Max. Schema Description Length', 'option label', 'wpsso' ), '', 'schema_desc_max_len' ) . 
 			'<td>' . $form->get_input( 'schema_desc_max_len', 'short' ) . ' ' . _x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
 		}
 

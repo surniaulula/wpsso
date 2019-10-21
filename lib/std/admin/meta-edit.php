@@ -68,9 +68,9 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 			 */
 			$og_title_max_len    = $this->p->options[ 'og_title_max_len' ];
 			$og_desc_max_len     = $this->p->options[ 'og_desc_max_len' ];
-			$seo_desc_max_len    = $this->p->options[ 'seo_desc_max_len' ];
+			$seo_desc_max_len    = $this->p->options[ 'seo_desc_max_len' ];		// Max. Description Meta Tag Length.
 			$tc_desc_max_len     = $this->p->options[ 'tc_desc_max_len' ];
-			$schema_desc_max_len = $this->p->options[ 'schema_desc_max_len' ];
+			$schema_desc_max_len = $this->p->options[ 'schema_desc_max_len' ];	// Max. Schema Description Length.
 			$schema_desc_md_key  = array( 'seo_desc', 'og_desc' );
 
 			/**

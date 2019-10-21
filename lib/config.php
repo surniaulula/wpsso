@@ -834,7 +834,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_img_crop_x'                 => 'center',
 					'schema_img_crop_y'                 => 'center',
 					'schema_img_max'                    => 1,
-					'schema_desc_max_len'               => 250,		// Meta itemprop="description" maximum text length (hard limit).
+					'schema_desc_max_len'               => 250,		// Max. Schema Description Length (hard limit).
 
 					/**
 					 * Standard WordPress types.
@@ -928,32 +928,32 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_vid_max'                 => 1,
 					'og_vid_autoplay'            => 1,
 					'og_vid_prev_img'            => 1,
-					'og_def_img_id'              => '',			// Default / Fallback Image ID
+					'og_def_img_id'              => '',			// Default / Fallback Image ID.
 					'og_def_img_id_pre'          => 'wp',
-					'og_def_img_url'             => '',			// or Default / Fallback Image URL
-					'og_author_field'            => 'facebook',		// Author Profile URL Field
+					'og_def_img_url'             => '',			// or Default / Fallback Image URL.
+					'og_author_field'            => 'facebook',		// Author Profile URL Field.
 					'og_title_sep'               => '-',
 					'og_title_max_len'           => 70,
 					'og_title_warn_len'          => 40,
-					'og_desc_max_len'            => 300,			// Maximum length in characters (hard limit).
-					'og_desc_warn_len'           => 200,			// Recommended maximum length in characters for Facebook (soft limit).
+					'og_desc_max_len'            => 300,
+					'og_desc_warn_len'           => 200,
 					'og_desc_hashtags'           => 0,
-					'p_publisher_url'            => '',			// (localized)
+					'p_publisher_url'            => '',
 					'p_dom_verify'               => '',
-					'p_add_nopin_header_img_tag' => 1,			// Add "nopin" to Site Header Image
-					'p_add_nopin_media_img_tag'  => 0,			// Add "nopin" to WordPress Media
-					'p_add_img_html'             => 0,			// Add Hidden Image for Pin It Button
+					'p_add_nopin_header_img_tag' => 1,			// Add "nopin" to Site Header Image.
+					'p_add_nopin_media_img_tag'  => 0,			// Add "nopin" to WordPress Media.
+					'p_add_img_html'             => 0,			// Add Hidden Image for Pin It Button.
 					'sc_publisher_url'           => '',
-					'seo_desc_max_len'           => 220,			// Search / SEO Description Length (hard limit).
-					'seo_author_name'            => 'display_name',		// Author / Person Name Format
+					'seo_desc_max_len'           => 220,			// Max. Description Meta Tag Length (hard limit).
+					'seo_author_name'            => 'display_name',		// Author / Person Name Format.
 					'tumblr_publisher_url'       => '',
 					'yt_publisher_url'           => '',
 					
 					/**
 					 * Twitter Card options.
 					 */
-					'tc_site'           => '',			// Twitter Business @username (localized).
-					'tc_desc_max_len'   => 200,			// Maximum Description Length (hard limit).
+					'tc_site'           => '',				// Twitter Business @username (localized).
+					'tc_desc_max_len'   => 200,				// Maximum Description Length (hard limit).
 					'tc_type_singular'  => 'summary_large_image',
 					'tc_type_default'   => 'summary',
 					'tc_sum_img_width'  => 1200,

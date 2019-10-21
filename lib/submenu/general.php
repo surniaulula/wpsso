@@ -243,18 +243,14 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'pub-google':
 
-					$table_rows[ 'seo_desc_max_len' ] = $this->form->get_tr_hide( 'basic', 'seo_desc_max_len' ) . 
-					$this->form->get_th_html( _x( 'Search / SEO Description Length', 'option label', 'wpsso' ), '', 'seo_desc_max_len' ) . 
-					'<td>' . $this->form->get_input( 'seo_desc_max_len', 'short' ) . ' ' .
-					_x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
-
-					$table_rows[ 'seo_author_name' ] = $this->form->get_tr_hide( 'basic', 'seo_author_name' ) . 
-					$this->form->get_th_html( _x( 'Author / Person Name Format', 'option label', 'wpsso' ), '', 'seo_author_name' ) . 
-					'<td>' . $this->form->get_select( 'seo_author_name', $this->p->cf[ 'form' ][ 'user_name_fields' ] ) . '</td>';
-
 					$this->add_schema_knowledge_graph_table_rows( $table_rows, $this->form );
 
 					$this->add_schema_item_props_table_rows( $table_rows, $this->form );
+
+					$table_rows[ 'seo_desc_max_len' ] = $this->form->get_tr_hide( 'basic', 'seo_desc_max_len' ) . 
+					$this->form->get_th_html( _x( 'Max. Description Meta Tag Length', 'option label', 'wpsso' ), '', 'seo_desc_max_len' ) . 
+					'<td>' . $this->form->get_input( 'seo_desc_max_len', 'short' ) . ' ' .
+					_x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
 
 					$this->add_schema_item_types_table_rows( $table_rows, $this->form, $hide_in_basic = true, $is_top_section = false );
 
