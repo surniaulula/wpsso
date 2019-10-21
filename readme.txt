@@ -435,7 +435,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.9.0-dev.2 (2019/10/21)**
+**Version 6.9.0-b.1 (2019/10/21)**
 
 * **New Features**
 	* None.
@@ -584,7 +584,7 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 
 == Upgrade Notice ==
 
-= 6.9.0-dev.1 =
+= 6.9.0-b.1 =
 
 (2019/10/21) Minor CSS adjustments for the new WordPress v5.3 form styles. Fixed an array merge warning when adding co-author URLs to Open Graph meta tags.
 
