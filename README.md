@@ -231,12 +231,12 @@
 <li>Organization Information
 
 <ul>
-<li>Organization</li>
+<li>Alternate Organization</li>
 </ul></li>
 <li>Person Information
 
 <ul>
-<li>Person</li>
+<li>Alternate Person</li>
 </ul></li>
 <li>Product Information (Additional)
 

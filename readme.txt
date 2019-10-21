@@ -190,9 +190,9 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 		* Production Company
 		* Movie Runtime
 	* Organization Information
-		* Organization
+		* Alternate Organization
 	* Person Information
-		* Person
+		* Alternate Person
 	* Product Information (Additional)
 		* Product Length (cm)
 		* Product Width (cm)
