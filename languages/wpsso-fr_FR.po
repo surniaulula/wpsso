@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 6.9.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-10-21 12:01-0700\n"
-"PO-Revision-Date: 2019-10-21 12:01-0700\n"
+"POT-Creation-Date: 2019-10-21 15:37-0700\n"
+"PO-Revision-Date: 2019-10-21 15:49-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -748,48 +748,48 @@ msgctxt "metabox title"
 msgid "Default Open Graph Types"
 msgstr "Types de Open Graph par défaut"
 
-#: lib/admin.php:3457 lib/admin.php:3641
+#: lib/admin.php:3457 lib/admin.php:3645
 msgctxt "option label"
 msgid "Type for Blog Front Page"
 msgstr "Type pour page blog d'avant"
 
-#: lib/admin.php:3458 lib/admin.php:3642
+#: lib/admin.php:3458 lib/admin.php:3646
 msgctxt "option label"
 msgid "Type for Static Front Page"
 msgstr "Type page statique d'avant"
 
-#: lib/admin.php:3459 lib/admin.php:3643
+#: lib/admin.php:3459 lib/admin.php:3647
 msgctxt "option label"
 msgid "Type for User / Author Page"
 msgstr "Type pour page utilisateur / auteur"
 
-#: lib/admin.php:3460 lib/admin.php:3644
+#: lib/admin.php:3460 lib/admin.php:3648
 msgctxt "option label"
 msgid "Type for Search Results Page"
 msgstr "Type pour résultats de recherche"
 
-#: lib/admin.php:3461 lib/admin.php:3645
+#: lib/admin.php:3461 lib/admin.php:3649
 msgctxt "option label"
 msgid "Type for Other Archive Page"
 msgstr "Type pour autre page d'archive"
 
-#: lib/admin.php:3486 lib/admin.php:3492 lib/admin.php:3518 lib/admin.php:3679
-#: lib/admin.php:3690 lib/admin.php:3722
+#: lib/admin.php:3486 lib/admin.php:3492 lib/admin.php:3518 lib/admin.php:3683
+#: lib/admin.php:3694 lib/admin.php:3726
 msgctxt "option comment"
 msgid "for %s"
 msgstr "pour %s"
 
-#: lib/admin.php:3492 lib/admin.php:3691
+#: lib/admin.php:3492 lib/admin.php:3695
 msgctxt "option comment"
 msgid "Post Type Archive Page"
 msgstr "Page d'archive pour type d'article"
 
-#: lib/admin.php:3495 lib/admin.php:3695
+#: lib/admin.php:3495 lib/admin.php:3699
 msgctxt "option label"
 msgid "Type by Post Type"
 msgstr "Type par type d'article"
 
-#: lib/admin.php:3522 lib/admin.php:3727
+#: lib/admin.php:3522 lib/admin.php:3731
 msgctxt "option label"
 msgid "Type by Taxonomy"
 msgstr "Type par taxonomie"
@@ -841,151 +841,156 @@ msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr "URL bannière d'organisation"
 
-#: lib/admin.php:3591 lib/submenu/general.php:191
+#: lib/admin.php:3591
+msgctxt "option label"
+msgid "Author / Person Name Format"
+msgstr "Format du nom d'auteur"
+
+#: lib/admin.php:3595 lib/submenu/general.php:191
 msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr "Images maximum a inclure"
 
-#: lib/admin.php:3594 lib/submenu/general.php:194
+#: lib/admin.php:3598 lib/submenu/general.php:194
 msgctxt "option comment"
 msgid "video preview images are enabled (and included first)"
 msgstr "images d'aperçu vidéo sont activés (et inclus en premier)"
 
-#: lib/admin.php:3598
+#: lib/admin.php:3602
 msgctxt "option label"
 msgid "Schema Image Size"
 msgstr "Taille d'image Schéma"
 
-#: lib/admin.php:3602
+#: lib/admin.php:3606
 msgctxt "option label"
 msgid "Schema Article Image Size"
 msgstr "Taille d'image d'article Schéma"
 
-#: lib/admin.php:3606
+#: lib/admin.php:3610
 msgctxt "option label"
 msgid "Schema Article AMP 1:1 Img Size"
 msgstr "Taille d'image Schéma d'article AMP 1:1"
 
-#: lib/admin.php:3610
+#: lib/admin.php:3614
 msgctxt "option label"
 msgid "Schema Article AMP 4:3 Img Size"
 msgstr "Taille d'image Schéma d'article AMP 4:3"
 
-#: lib/admin.php:3614
+#: lib/admin.php:3618
 msgctxt "option label"
 msgid "Schema Article AMP 16:9 Img Size"
 msgstr "Taille d'image Schéma d'article AMP 16:9"
 
-#: lib/admin.php:3618
+#: lib/admin.php:3622
 msgctxt "option label"
 msgid "Schema Thumbnail Image Size"
 msgstr "Taille d'image miniature Schéma"
 
-#: lib/admin.php:3622 lib/submenu/general.php:165 lib/submenu/general.php:304
+#: lib/admin.php:3626
 msgctxt "option label"
-msgid "Maximum Description Length"
-msgstr "Longueur de description maximale"
+msgid "Max. Schema Description Length"
+msgstr "Longueur max. de description pour Schéma"
 
-#: lib/admin.php:3623 lib/submenu/general.php:249 lib/submenu/general.php:306
+#: lib/admin.php:3627 lib/submenu/general.php:253 lib/submenu/general.php:302
 msgctxt "option comment"
 msgid "characters or less"
 msgstr "caractères ou moins"
 
-#: lib/admin.php:3636
+#: lib/admin.php:3640
 msgctxt "metabox title"
 msgid "Default Schema Types"
 msgstr "Types de Schéma par défaut"
 
-#: lib/admin.php:3743 lib/submenu/essential.php:189
+#: lib/admin.php:3747 lib/submenu/essential.php:189
 msgctxt "option label"
 msgid "Remove Settings on Uninstall"
 msgstr "Supprimer les réglages lors de la désinstallation"
 
-#: lib/admin.php:3745 lib/submenu/essential.php:191
+#: lib/admin.php:3749 lib/submenu/essential.php:191
 msgctxt "option comment"
 msgid "including custom meta for posts, terms, and users"
 msgstr "y compris méta personnalisée d'articles, termes et utilisateurs"
 
-#: lib/admin.php:3749
+#: lib/admin.php:3753
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr "Ajout messages de débogage caché"
 
-#: lib/admin.php:3751
+#: lib/admin.php:3755
 msgctxt "option comment"
 msgid "WPSSO_HTML_DEBUG constant is true"
 msgstr "la constante WPSSO_HTML_DEBUG est vraie"
 
-#: lib/admin.php:3756
+#: lib/admin.php:3760
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr "Options a montrer par défaut"
 
-#: lib/admin.php:3761
+#: lib/admin.php:3765
 msgctxt "option label"
 msgid "Notification System"
 msgstr "Système de notification"
 
-#: lib/admin.php:3773
+#: lib/admin.php:3777
 msgctxt "metabox title"
 msgid "Product Attribute Names"
 msgstr "Noms d'attributs de produit"
 
-#: lib/admin.php:3802
+#: lib/admin.php:3806
 msgctxt "metabox title"
 msgid "Custom Field Names"
 msgstr "Noms de champs personnalisés"
 
-#: lib/admin.php:3888
+#: lib/admin.php:3892
 msgctxt "option comment"
 msgid "in %s"
 msgstr "en %s"
 
-#: lib/admin.php:3899
+#: lib/admin.php:3903
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr "Util. par site"
 
-#: lib/admin.php:4082
+#: lib/admin.php:4086
 msgid "Return to %s"
 msgstr "Retour à %s"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:4113
+#: lib/admin.php:4117
 msgid "Plugin <strong>activated</strong>."
 msgstr "Extension <strong>activé</strong>."
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:4135
+#: lib/admin.php:4139
 msgid "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-ons</a> to check if newer versions are available."
 msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise à jour pour %2$s et ses ajouts</a> afin de vérifier si des versions plus récentes sont disponibles."
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:4142
+#: lib/admin.php:4146
 msgid "You may <a href=\"%1$s\">refresh the update information for WordPress (plugins, themes, and translations)</a> to check if newer versions are available."
 msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise à jour pour WordPress (extensions, thèmes et traductions)</a> afin de vérifier si des versions plus récentes sont disponibles."
 
-#: lib/admin.php:4279
+#: lib/admin.php:4283
 msgid "Please select a %1$s settings file to import."
 msgstr "Veuillez sélectionner un fichier de réglages %1$s à importer."
 
-#: lib/admin.php:4286
+#: lib/admin.php:4290
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr "Le fichier de réglages %1$s à importer doit être un type mime \"%2$s\"."
 
-#: lib/admin.php:4293
+#: lib/admin.php:4297
 msgid "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr "Le fichier de réglages %1$s dépasse le maximum autorisé de %2$d octets."
 
-#: lib/admin.php:4307
+#: lib/admin.php:4311
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr "Le fichier de réglages %1$s semble vide ou corrompu."
 
-#: lib/admin.php:4317
+#: lib/admin.php:4321
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr "Le fichier de réglages %1$s n'a pas pu être décodé dans un tableau de réglages."
 
-#: lib/admin.php:4327
+#: lib/admin.php:4331
 msgid "Import of plugin and add-on settings is complete."
 msgstr "L'importation des réglages d'extension et ajouts est terminée."
 
@@ -2273,7 +2278,7 @@ msgstr "Utiliser les filtres de contenu WP"
 #: lib/gettext-pro.php:8 lib/gettext-pro.php:22 lib/pro/admin/advanced.php:67
 #: lib/pro/admin/advanced.php:136 lib/std/admin/advanced.php:61
 #: lib/std/admin/advanced.php:132 lib/submenu/general.php:211
-#: lib/submenu/general.php:277 lib/submenu/general.php:282
+#: lib/submenu/general.php:273 lib/submenu/general.php:278
 msgctxt "option comment"
 msgid "recommended"
 msgstr "recommandé"
@@ -2369,7 +2374,7 @@ msgstr "Agrandir les images de la bibliothèque de médias"
 #: lib/std/admin/advanced.php:139 lib/std/admin/general.php:61
 msgctxt "option label"
 msgid "Maximum Image Upscale Percent"
-msgstr "Pourcentage d'agrandissement max"
+msgstr "Pourcentage max. d'agrandissement"
 
 #: lib/gettext-pro.php:25 lib/pro/admin/advanced.php:171
 #: lib/std/admin/advanced.php:169
@@ -2530,7 +2535,7 @@ msgstr "Service de raccourcissement d'URL"
 #: lib/std/admin/advanced.php:375
 msgctxt "option label"
 msgid "Minimum URL Length to Shorten"
-msgstr "Longueur d'URL min. à raccourcir"
+msgstr "Longueur min. d'URL à raccourcir"
 
 #: lib/gettext-pro.php:59 lib/pro/admin/advanced.php:371
 #: lib/std/admin/advanced.php:377
@@ -3539,7 +3544,7 @@ msgstr "La longueur maximale utilisée pour la valeur du titre Facebook / Open G
 msgid "The maximum length used for the Facebook / Open Graph description value."
 msgstr "La longueur maximale utilisée pour la valeur de description Facebook / Open Graph."
 
-#: lib/messages.php:506 lib/messages.php:1220 lib/messages.php:1333
+#: lib/messages.php:506 lib/messages.php:1226 lib/messages.php:1333
 #: lib/messages.php:1433
 msgid "The length should be at least %1$d characters or more (the default is %2$d characters)."
 msgstr "La longueur doit être au moins %1$d caractères ou plus (la valeur par défaut est %2$d caractères)."
@@ -4055,12 +4060,12 @@ msgid "Facebook does not support all WordPress locale values. If the Facebook de
 msgstr "Facebook ne supporte pas toutes les valeurs de langues WordPress. Si le débogueur Facebook donne une erreur pour la la balise méta %1$s, vous pouvez choisir une langue Facebook différente pour cette langue WordPress."
 
 #: lib/messages.php:1218
-msgid "The maximum length used for the Google Search / SEO description value."
-msgstr "La longueur maximale utilisée pour la valeur de description de Google Search / SEO."
-
-#: lib/messages.php:1228
 msgid "Select a name format for author meta tags and/or Schema Person markup."
 msgstr "Sélectionnez un format de nom pour les balises méta d'auteur et/ou le balisage Schema Person."
+
+#: lib/messages.php:1224
+msgid "The maximum length used for the Google Search / SEO description value."
+msgstr "La longueur maximale utilisée pour la valeur de description de Google Search / SEO."
 
 #: lib/messages.php:1252
 msgid "Include WebSite, Organization and/or Person Schema markup in the front page for Google's <em>Knowledge Graph</em>."
@@ -4208,7 +4213,7 @@ msgstr "Entrez la valeur du <em>contenu</em> de la balise méta \"p:domain_verif
 msgid "Add a \"nopin\" attribute to the site header and Gravatar images to prevent the Pin It browser button from suggesting those images."
 msgstr "Ajoutez un attribut \"nopin\" à l'en-tête du site et aux images Gravatar pour empêcher le bouton Pin It du navigateur de suggérer ces images."
 
-#: lib/messages.php:1512 lib/submenu/general.php:285
+#: lib/messages.php:1512 lib/submenu/general.php:281
 msgctxt "option label"
 msgid "Add Hidden Image for Pin It Button"
 msgstr "Ajouter une image masquée pour le bouton Pin It"
@@ -5384,7 +5389,7 @@ msgctxt "image size label"
 msgid "Schema Article AMP 16:9 Image"
 msgstr "Image Schéma d'article AMP 16:9"
 
-#: lib/schema.php:581
+#: lib/schema.php:579
 msgid "adding schema"
 msgstr "ajout de schéma"
 
@@ -5665,12 +5670,12 @@ msgctxt "option label"
 msgid "or Default / Fallback Image URL"
 msgstr "ou URL d'une image par défaut"
 
-#: lib/submenu/essential.php:171 lib/submenu/general.php:266
+#: lib/submenu/essential.php:171 lib/submenu/general.php:262
 msgctxt "option label"
 msgid "Pinterest Company Page URL"
 msgstr "URL page d'entreprise Pinterest"
 
-#: lib/submenu/essential.php:180 lib/submenu/general.php:299
+#: lib/submenu/essential.php:180 lib/submenu/general.php:295
 msgctxt "option label"
 msgid "Twitter Business @username"
 msgstr "@usager d'affaires Twitter"
@@ -5718,7 +5723,7 @@ msgstr "Séparateur de titre"
 #: lib/submenu/general.php:155
 msgctxt "option label"
 msgid "Maximum Title Length"
-msgstr "Longueur de titre maximale"
+msgstr "Longueur maximale de titre"
 
 #: lib/submenu/general.php:158 lib/submenu/general.php:168
 msgctxt "option comment"
@@ -5729,6 +5734,11 @@ msgstr "caractères ou moins (limite stricte) et avertir à"
 msgctxt "option comment"
 msgid "characters (soft limit)"
 msgstr "caractères (limite flexible)"
+
+#: lib/submenu/general.php:165 lib/submenu/general.php:300
+msgctxt "option label"
+msgid "Maximum Description Length"
+msgstr "Longueur maximale de description"
 
 #: lib/submenu/general.php:174
 msgctxt "option label"
@@ -5760,62 +5770,57 @@ msgctxt "option label"
 msgid "Custom Facebook Locale"
 msgstr "Langue FB personnalisée"
 
-#: lib/submenu/general.php:247
+#: lib/submenu/general.php:251
 msgctxt "option label"
-msgid "Search / SEO Description Length"
-msgstr "Longueur max. de description SEO"
+msgid "Max. Description Meta Tag Length"
+msgstr "Longueur max. pour balise méta description"
 
-#: lib/submenu/general.php:252
-msgctxt "option label"
-msgid "Author / Person Name Format"
-msgstr "Format du nom d'auteur"
-
-#: lib/submenu/general.php:271
+#: lib/submenu/general.php:267
 msgctxt "option label"
 msgid "Pinterest Verification ID"
 msgstr "ID de vérification Pinterest"
 
-#: lib/submenu/general.php:275
+#: lib/submenu/general.php:271
 msgctxt "option label"
 msgid "Add \"nopin\" to Site Header Image"
 msgstr "Ajouter \"nopin\" à l'image d'en-tête"
 
-#: lib/submenu/general.php:280
+#: lib/submenu/general.php:276
 msgctxt "option label"
 msgid "Add \"nopin\" to WordPress Media"
 msgstr "Ajouter \"nopin\" aux médias WordPress"
 
-#: lib/submenu/general.php:287
+#: lib/submenu/general.php:283
 msgctxt "option comment"
 msgid "recommended (adds a hidden image in the content)"
 msgstr "recommandé (ajoute une image cachée dans le contenu)"
 
-#: lib/submenu/general.php:294
+#: lib/submenu/general.php:290
 msgctxt "option value"
 msgid "Summary"
 msgstr "Sommaire"
 
-#: lib/submenu/general.php:295
+#: lib/submenu/general.php:291
 msgctxt "option value"
 msgid "Summary Large Image"
 msgstr "Sommaire grande image"
 
-#: lib/submenu/general.php:309
+#: lib/submenu/general.php:305
 msgctxt "option label"
 msgid "Twitter Card for Post / Page Image"
 msgstr "Carte Twitter image d'article / page"
 
-#: lib/submenu/general.php:313
+#: lib/submenu/general.php:309
 msgctxt "option label"
 msgid "Twitter Card Type by Default"
 msgstr "Type de carte Twitter par défaut"
 
-#: lib/submenu/general.php:317
+#: lib/submenu/general.php:313
 msgctxt "option label"
 msgid "Summary Card Image Size"
 msgstr "Taille d'image carte Twitter sommaire"
 
-#: lib/submenu/general.php:321
+#: lib/submenu/general.php:317
 msgctxt "option label"
 msgid "Large Image Summary Card Img Size"
 msgstr "Taille d'image carte Twitter sommaire grande image"
@@ -6230,3 +6235,7 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
+
+#~ msgctxt "option label"
+#~ msgid "Search / SEO Description Length"
+#~ msgstr "Longueur max. de description SEO"
