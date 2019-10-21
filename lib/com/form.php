@@ -356,18 +356,17 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		 * $is_disabled can be true, false, or an option value for the disabled select.
 		 */
 		public function get_select( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null,
-			$is_disabled = false, $selected = false, $event_name = false, $event_args = null ) {
+			$is_disabled = false, $selected = false, $event_names = array(), $event_args = null ) {
 
 			if ( empty( $name ) ) {
 				return;
 			}
 
-			static $do_once_json_array   = array();	// Associative array by $json_key.
-			static $do_once_show_hide_js = null;	// Null or true.
+			static $do_once_json_array   = array();
+			static $do_once_show_hide_js = null;
 
 			$filter_name = SucomUtil::sanitize_hookname( $this->lca . '_form_select_' . $name );
-
-			$values = apply_filters( $filter_name, $values );
+			$values      = apply_filters( $filter_name, $values );
 
 			if ( ! is_array( $values ) ) {
 				return;
@@ -381,14 +380,17 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$is_disabled = true;
 			}
 
-			/**
-			 * We must have an $event_arg string to create the JSON array variable.
-			 */
-			if ( 'on_focus_load_json' === $event_name ) {
+			if ( is_string( $event_names ) ) {
+				$event_names = array( $event_names );
+			} elseif ( ! is_array( $event_names ) ) {	// Ignore true, false, null, etc.
+				$event_names = array();
+			}
+
+			$event_json = false;
+
+			if ( in_array( 'on_focus_load_json', $event_names ) ) {
 				if ( ! empty( $event_args ) && is_string( $event_args ) ) {
-					$json_key = SucomUtil::sanitize_hookname( $this->lca . '_form_select_' . $event_args . '_json' );
-				} else {
-					$event_name = false;
+					$event_json = SucomUtil::sanitize_hookname( $this->lca . '_form_select_' . $event_args . '_json' );
 				}
 			}
 
@@ -458,11 +460,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 
 				/**
-				 * Save the option value and translated label for the JSON array before adding the
-				 * "(default)" suffix.
+				 * Save the option value and translated label for the JSON array before adding the "(default)"
+				 * suffix.
 				 */
-				if ( 'on_focus_load_json' === $event_name ) {
-					if ( empty( $do_once_json_array[ $json_key ] ) ) {
+				if ( $event_json ) {
+					if ( empty( $do_once_json_array[ $event_json ] ) ) {
 						$select_opt_arr[ $option_value ] = $label_transl;
 					}
 				}
@@ -496,8 +498,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				/**
 				 * For disabled selects or JSON selects, only include the first and selected option(s).
 				 */
-				if ( $select_opt_count === 1 || $is_selected_html ||
-					( ! $is_disabled && 'on_focus_load_json' !== $event_name ) ) {
+				if ( ( ! $is_disabled && ! $event_json ) || $is_selected_html || $select_opt_count === 1 ) {
 
 					$select_opt_html .= '<option value="' . esc_attr( $option_value ) . '"' . $is_selected_html . '>';
 					$select_opt_html .= $label_transl;
@@ -507,7 +508,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 			}
 
-			$html .= '<select id="' . esc_attr( $input_id ) . '"';
+			$html .= "\n" . '<select id="' . esc_attr( $input_id ) . '"';
 			$html .= ( $is_disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"' );
 			$html .= ( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' );
 			$html .= ( empty( $default_value ) ? '' : ' data-default-value="' . esc_attr( $default_value ) . '"' );
@@ -517,7 +518,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html .= '<!-- ' . $select_opt_added . ' select options added -->' . "\n";
 			$html .= '</select>' . "\n";
 
-			if ( is_string( $event_name ) ) {	// Ignore true, false, array, etc.
+			foreach ( $event_names as $event_name ) {
 
 				switch ( $event_name ) {
 
@@ -533,31 +534,33 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					case 'on_focus_load_json':
 
-						/**
-						 * Encode the PHP array to JSON only once per page load.
-						 */
-						if ( empty( $do_once_json_array[ $json_key ] ) ) {
+						if ( $event_json ) {	// Just in case.
 
-							$do_once_json_array[ $json_key ] = true;
-
-							$select_opt_json = SucomUtil::json_encode_array( $select_opt_arr );
-
-							$html .= '<script type="text/javascript">' . "\n";
-							$html .= 'var ' . $json_key . ' = ' . $select_opt_json . ';' . "\n";
+							/**
+							 * Encode the PHP array to JSON only once per page load.
+							 */
+							if ( empty( $do_once_json_array[ $event_json ] ) ) {
+	
+								$do_once_json_array[ $event_json ] = true;
+	
+								$select_opt_json = SucomUtil::json_encode_array( $select_opt_arr );
+	
+								$html .= '<script type="text/javascript">' . "\n";
+								$html .= 'var ' . $event_json . ' = ' . $select_opt_json . ';' . "\n";
+								$html .= '</script>' . "\n";
+							}
+	
+							$input_id_esc = esc_js( $input_id );
+	
+							/**
+							 * The hover event is also required for Firefox to render the option list correctly.
+							 */
+							$html .= '<script type="text/javascript">';
+							$html .= 'jQuery( \'select#' . $input_id_esc . ':not( .json_loaded )\' ).on( \'hover focus\', function(){';
+							$html .= 'sucomSelectLoadJson( \'select#' . $input_id_esc . '\', \'' . $event_json . '\' );';
+							$html .= '});';
 							$html .= '</script>' . "\n";
 						}
-
-						$input_id_esc = esc_js( $input_id );
-
-						/**
-						 * The hover event is also required for Firefox to
-						 * render the option list correctly.
-						 */
-						$html .= '<script type="text/javascript">';
-						$html .= 'jQuery( \'select#' . $input_id_esc . ':not( .json_loaded )\' ).on( \'hover focus\', function(){';
-						$html .= 'sucomSelectLoadJson( \'select#' . $input_id_esc . '\', \'' . $json_key . '\' );';
-						$html .= '});';
-						$html .= '</script>' . "\n";
 
 						break;
 
@@ -568,8 +571,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					case 'on_change_redirect':
 
 						/**
-						 * The sucomSelectChangeRedirect() javascript function
-						 * replaces "%%${name}%%" by the value selected.
+						 * The sucomSelectChangeRedirect() javascript function replaces "%%${name}%%" by the value selected.
 						 */
 						$redirect_url = add_query_arg( array( $name => '%%' . $name . '%%' ),
 							SucomUtil::get_prot() . '://' . $_SERVER[ 'SERVER_NAME' ] . $_SERVER[ 'REQUEST_URI' ] );
@@ -755,7 +757,7 @@ EOF;
 		 * Add 'none' as the first array element. Always converts the array to associative.
 		 */
 		public function get_select_none( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null,
-			$is_disabled = false, $selected = false, $event_name = false, $event_args = null ) {
+			$is_disabled = false, $selected = false, $event_names = array(), $event_args = null ) {
 
 			/**
 			 * Set 'none' as the default value is no default is defined.
@@ -789,30 +791,30 @@ EOF;
 			$values = array( 'none' => 'none' ) + $values;
 
 			return $this->get_select( $name, $values, $css_class, $css_id, $is_assoc = true,
-				$is_disabled, $selected, $event_name, $event_args );
+				$is_disabled, $selected, $event_names, $event_args );
 		}
 
 		public function get_no_select( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null,
-			$selected = false, $event_name = false ) {
+			$selected = false, $event_names = array() ) {
 		
 			return $this->get_select( $name, $values, $css_class, $css_id, $is_assoc,
-				$is_disabled = true, $selected, $event_name );
+				$is_disabled = true, $selected, $event_names );
 		}
 
 		public function get_no_select_none( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null,
-			$selected = false, $event_name = false ) {
+			$selected = false, $event_names = array() ) {
 
 			return $this->get_select_none( $name, $values, $css_class, $css_id, $is_assoc,
-				$is_disabled = true, $selected, $event_name );
+				$is_disabled = true, $selected, $event_names );
 		}
 
 		public function get_no_select_options( $name, array $opts, $values = array(), $css_class = '', $css_id = '',
-			$is_assoc = null, $event_name = false, $event_args = null ) {
+			$is_assoc = null, $event_names = array(), $event_args = null ) {
 		
 			$selected = isset( $opts[ $name ] ) ? $opts[ $name ] : true;
 
 			return $this->get_select( $name, $values, $css_class, $css_id, $is_assoc,
-				$is_disabled = true, $selected, $event_name, $event_args );
+				$is_disabled = true, $selected, $event_names, $event_args );
 		}
 
 		/**
@@ -829,8 +831,8 @@ EOF;
 					$step_secs = 60 * $step_mins, $label_format = 'H:i' );
 			}
 
-			$css_class  = trim( 'hour-mins ' . $css_class );
-			$event_name = 'on_focus_load_json';
+			$css_class   = trim( 'hour-mins ' . $css_class );
+			$event_names = array( 'on_focus_load_json' );
 			$event_args = 'hour_mins_step_' . $step_mins;
 
 			/**
@@ -845,11 +847,11 @@ EOF;
 				}
 
 				return $this->get_select_none( $name, $local_cache[ $step_mins ], $css_class, $css_id, $is_assoc = true,
-					$is_disabled, $selected, $event_name, $event_args );
+					$is_disabled, $selected, $event_names, $event_args );
 			}
 
 			return $this->get_select( $name, $local_cache[ $step_mins ], $css_class, $css_id, $is_assoc = true,
-				$is_disabled, $selected, $event_name, $event_args );
+				$is_disabled, $selected, $event_names, $event_args );
 		}
 
 		public function get_no_select_time( $name, $css_class = '', $css_id = '', $selected = false, $step_mins = 15, $add_none = false ) {
@@ -886,7 +888,8 @@ EOF;
 				}
 			}
 
-			return $this->get_select( $name, $timezones, $css_class, $css_id, $is_assoc = false, $is_disabled, $selected );
+			return $this->get_select( $name, $timezones, $css_class, $css_id, $is_assoc = false, $is_disabled, $selected,
+				$event_names = array( 'on_focus_load_json' ), $event_args = 'timezones' );
 		}
 
 		public function get_no_select_timezone( $name, $css_class = '', $css_id = '', $selected = false ) {
@@ -982,7 +985,7 @@ EOF;
 
 			$html .= $this->get_placeholder_events( 'input', $placeholder );
 			$html .= ' value="' . esc_attr( $value ) . '" />' . "\n";
-			$html .= empty( $len ) ? '' : ' <div id="text_' . esc_attr( $css_id ) . '-lenMsg"></div>' . "\n";
+			$html .= empty( $len ) ? '' : '<div id="text_' . esc_attr( $css_id ) . '-lenMsg"></div>' . "\n";
 
 			return $html;
 		}
@@ -1483,6 +1486,27 @@ EOF;
 					$input_content = empty( $atts[ 'input_content' ] ) ? '' : $atts[ 'input_content' ];
 					$input_values  = empty( $atts[ 'input_values' ] ) ? array() : $atts[ 'input_values' ];
 
+					if ( ! empty( $atts[ 'event_names' ] ) ) {
+						if ( is_array( $atts[ 'event_names' ] ) ) {
+							$event_names = $atts[ 'event_names' ];
+						} elseif ( is_string( $atts[ 'event_names' ] ) ) {
+							$event_names = array( $atts[ 'event_names' ] );
+						} elseif ( ! is_array( $event_names ) ) {	// Ignore true, false, null, etc.
+							$event_names = array();
+						}
+					} else {
+						$event_names = array();
+					}
+
+					$event_args = empty( $atts[ 'event_args' ] ) ? null : $atts[ 'event_args' ];
+					$event_json = false;
+
+					if ( in_array( 'on_focus_load_json', $event_names ) ) {
+						if ( ! empty( $event_args ) && is_string( $event_args ) ) {
+							$event_json = SucomUtil::sanitize_hookname( $this->lca . '_form_select_' . $event_args . '_json' );
+						}
+					}
+
 					if ( isset( $atts[ 'placeholder' ] ) ) {
 						$placeholder = $this->get_placeholder_sanitized( $opt_key, $atts[ 'placeholder' ] );
 					} else {
@@ -1630,7 +1654,7 @@ EOF;
 									/**
 									 * For disabled selects, only include the first and/or selected option.
 									 */
-									if ( ! $opt_disabled || $select_opt_count === 1 || $is_selected_html ) {
+									if ( ! $opt_disabled || $is_selected_html || $select_opt_count === 1 ) {
 
 										$html .= '<option value="' . esc_attr( $option_value ) . '"' . $is_selected_html . '>';
 										$html .= $label_transl;
@@ -1825,12 +1849,13 @@ EOF;
 		private function get_text_length_js( $css_id ) {
 
 			return empty( $css_id ) ? '' : '
-				<script type="text/javascript">
-					jQuery( document ).ready( function() {
-						jQuery( \'#' . esc_js( $css_id ) . '\' ).focus( function() { sucomTextLen(\'' . esc_js( $css_id ) . '\'); } );
-						jQuery( \'#' . esc_js( $css_id ) . '\' ).keyup( function() { sucomTextLen(\'' . esc_js( $css_id ) . '\'); } );
-					});
-				</script>';
+<script type="text/javascript">
+	jQuery( document ).ready( function() {
+		jQuery( \'#' . esc_js( $css_id ) . '\' ).focus( function() { sucomTextLen(\'' . esc_js( $css_id ) . '\'); } );
+		jQuery( \'#' . esc_js( $css_id ) . '\' ).keyup( function() { sucomTextLen(\'' . esc_js( $css_id ) . '\'); } );
+	});
+</script>
+';
 		}
 
 		private function get_placeholder_sanitized( $name, $placeholder = '' ) {
