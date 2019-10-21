@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 6.8.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-10-20 12:53-0700\n"
-"PO-Revision-Date: 2019-10-20 12:57-0700\n"
+"POT-Creation-Date: 2019-10-20 13:21-0700\n"
+"PO-Revision-Date: 2019-10-20 13:21-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4424,8 +4424,8 @@ msgid "Contact Info"
 msgstr "Informations de contacts"
 
 #: lib/messages.php:1927
-msgid "These options allow you to customize the list of contact fields shown in the <strong>%1$s</strong> section of <a href=\"%2$s\">the user profile page</a>."
-msgstr "Ces options vous permettent de personnaliser les champs de contacts affichées sous l'entête <strong>%1$s</strong> dans <a href=\"%2$s\">la page de profil utilisateur</a>."
+msgid "These options allow you to customize the list of contact fields shown in the %1$s section of <a href=\"%2$s\">the user profile page</a>."
+msgstr "Ces options vous permettent de personnaliser les champs de contacts affichées sous l'entête %1$s dans <a href=\"%2$s\">la page de profil utilisateur</a>."
 
 #: lib/messages.php:1929
 msgid "%1$s uses the Facebook and Twitter contact field values in its meta tags and Schema markup."

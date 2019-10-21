@@ -1131,7 +1131,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$schema_types = $this->get_schema_types_array( $flatten = true );
 
-			if ( isset( $schema_types[ $type_id ] ) ) {
+			if ( 'none' !== $type_id && isset( $schema_types[ $type_id ] ) ) {
 
 				return $schema_types[ $type_id ];
 
