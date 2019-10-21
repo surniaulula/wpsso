@@ -435,7 +435,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.9.0-dev.1 (2019/10/20)**
+**Version 6.9.0-dev.2 (2019/10/21)**
 
 * **New Features**
 	* None.
@@ -445,7 +445,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed an array merge warning when adding co-author URLs to Open Graph meta tags.
 * **Developer Notes**
-	* None.
+	* Updated the SucomForm::get_select() method arguments to allow for an `$event_names` array.
+	* Added support for an 'event_names' array value in the SucomForm::get_mixed_multi() method.
 
 **Version 6.8.0 (2019/10/14)**
 
@@ -585,7 +586,7 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 
 = 6.9.0-dev.1 =
 
-(2019/10/20) Minor CSS adjustments for the new WordPress v5.3 form styles. Fixed an array merge warning when adding co-author URLs to Open Graph meta tags.
+(2019/10/21) Minor CSS adjustments for the new WordPress v5.3 form styles. Fixed an array merge warning when adding co-author URLs to Open Graph meta tags.
 
 = 6.8.0 =
 
