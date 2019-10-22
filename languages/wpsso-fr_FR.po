@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 6.9.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-10-22 07:30-0700\n"
-"PO-Revision-Date: 2019-10-22 07:30-0700\n"
+"POT-Creation-Date: 2019-10-22 09:28-0700\n"
+"PO-Revision-Date: 2019-10-22 09:28-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1289,8 +1289,8 @@ msgstr "Balises méta Apple Store / iTunes et Google Play App pour la bannière 
 
 #: lib/gettext-config.php:41
 msgctxt "plugin description"
-msgid "Schema BreadcrumbList markup in JSON-LD for better Google SEO Rich Results."
-msgstr "Balisage Schéma BreadcrumbList en format JSON-LD pour de meilleurs résultats Google SEO riches."
+msgid "Schema BreadcrumbList markup in JSON-LD for better Google Rich Results with Structured Data."
+msgstr "Balisage Schéma BreadcrumbList en format JSON-LD pour de meilleurs résultats riche de Google avec données structurées."
 
 #: lib/gettext-config.php:42
 msgctxt "plugin description"
@@ -1304,8 +1304,8 @@ msgstr "Hérite l'image \"mise en avant\" et personnalisées des parents pour ar
 
 #: lib/gettext-config.php:44
 msgctxt "plugin description"
-msgid "Schema JSON-LD markup and Google SEO Rich Results for Articles, Events, Local Business, Products, Recipes, Reviews and many more."
-msgstr "Balisage Schéma JSON-LD et résultats Google SEO riches d'articles, événements, entreprise locale, produits, recettes, critiques et bien plus."
+msgid "Google Rich Results with Structured Data for Articles, Carousels, Events, FAQPages, HowTos, Images, Local Business, Products, Recipes, Reviews, Videos, and more."
+msgstr "Résultats riche de Google avec données structurées d'articles, carrousels, événements, pages FAQ, images, entreprise locale, produits, recettes, critiques, videos, et plus."
 
 #: lib/gettext-config.php:45
 msgctxt "plugin description"
@@ -1339,8 +1339,8 @@ msgstr "Boutons de partage social traditionnels avec support pour hashtags, URLs
 
 #: lib/gettext-config.php:51
 msgctxt "plugin description"
-msgid "Removes outdated Schema microdata from theme templates and leaves Schema JSON-LD untouched for better Google SEO Rich Results."
-msgstr "Supprime les microdonnées de Schéma obsolètes des modèles de thème et laisse le Schéma JSON-LD intact pour de meilleurs résultats Google SEO riches."
+msgid "Removes outdated Schema microdata from theme templates and leaves Schema JSON-LD untouched for better Google Rich Results."
+msgstr "Supprime les microdonnées de Schéma obsolètes des modèles de thème et laisse le Schéma JSON-LD intact pour de meilleurs résultats riche de Google."
 
 #: lib/gettext-config.php:52
 msgctxt "plugin description"

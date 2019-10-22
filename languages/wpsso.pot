@@ -1378,8 +1378,9 @@ msgstr ""
 #: lib/gettext-config.php:44
 msgctxt "plugin description"
 msgid ""
-"Schema JSON-LD and Google Rich Results with Structured Data for Articles, "
-"Events, Images, Local Business, Products, Recipes, Reviews Videos, and more."
+"Google Rich Results with Structured Data for Articles, Carousels, Events, "
+"FAQPages, HowTos, Images, Local Business, Products, Recipes, Reviews, "
+"Videos, and more."
 msgstr ""
 
 #: lib/gettext-config.php:45

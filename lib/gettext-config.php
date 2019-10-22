@@ -41,7 +41,7 @@ _x( 'Apple Store / iTunes and Google Play App meta tags for Apple\'s mobile Safa
 _x( 'Schema BreadcrumbList markup in JSON-LD for better Google Rich Results with Structured Data.', 'plugin description', 'wpsso' );
 _x( 'Manage FAQ categories with Question and Answer pages.', 'plugin description', 'wpsso' );
 _x( 'Inherit featured and custom images from parents for posts, pages, custom post types, categories, tags, and custom taxonomies.', 'plugin description', 'wpsso' );
-_x( 'Schema JSON-LD and Google Rich Results with Structured Data for Articles, Events, Images, Local Business, Products, Recipes, Reviews Videos, and more.', 'plugin description', 'wpsso' );
+_x( 'Google Rich Results with Structured Data for Articles, Carousels, Events, FAQPages, HowTos, Images, Local Business, Products, Recipes, Reviews, Videos, and more.', 'plugin description', 'wpsso' );
 _x( 'Customize home page Schema Organization markup and manage additional Organizations (publisher, organizer, etc.).', 'plugin description', 'wpsso' );
 _x( 'Facebook / Open Graph Location, Pinterest Place, Schema Local Business and Local SEO meta tags.', 'plugin description', 'wpsso' );
 _x( 'Ratings and reviews for WordPress comments with Aggregate Rating meta tags and Schema Review markup.', 'plugin description', 'wpsso' );
