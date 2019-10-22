@@ -6368,7 +6368,7 @@ msgstr ""
 
 #: lib/submenu/dashboard.php:91 lib/submenu/dashboard.php:112
 msgctxt "metabox title"
-msgid "Your Rating is Valued!"
+msgid "Your Rating is Important"
 msgstr ""
 
 #: lib/submenu/dashboard.php:92 lib/submenu/dashboard.php:113
