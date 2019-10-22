@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 6.9.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-10-21 15:37-0700\n"
-"PO-Revision-Date: 2019-10-21 15:49-0700\n"
+"POT-Creation-Date: 2019-10-22 07:30-0700\n"
+"PO-Revision-Date: 2019-10-22 07:30-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -5586,8 +5586,8 @@ msgstr "SEO / autre"
 
 #: lib/submenu/dashboard.php:91 lib/submenu/dashboard.php:112
 msgctxt "metabox title"
-msgid "Your Rating is Valued!"
-msgstr "Votre note est appréciée!"
+msgid "Your Rating is Important"
+msgstr "Votre note est importante"
 
 #: lib/submenu/dashboard.php:92 lib/submenu/dashboard.php:113
 msgctxt "metabox title"
@@ -6235,7 +6235,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
-
-#~ msgctxt "option label"
-#~ msgid "Search / SEO Description Length"
-#~ msgstr "Longueur max. de description SEO"
