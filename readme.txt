@@ -435,7 +435,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.9.0-rc.1 (2019/10/21)**
+**Version 6.9.0 (2019/10/22)**
 
 * **New Features**
 	* None.
@@ -584,11 +584,7 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 
 == Upgrade Notice ==
 
-= 6.9.0-rc.1 =
+= 6.9.0 =
 
-(2019/10/21) Minor CSS adjustments for the new WordPress v5.3 form styles. Fixed an array merge warning when adding co-author URLs to Open Graph meta tags.
-
-= 6.8.0 =
-
-(2019/10/14) Added more financial service Schema types to the Schema select list.
+(2019/10/22) Minor CSS adjustments for the new WordPress v5.3 form styles. Fixed an array merge warning when adding co-author URLs to Open Graph meta tags.
 
