@@ -1359,7 +1359,8 @@ msgstr ""
 #: lib/gettext-config.php:41
 msgctxt "plugin description"
 msgid ""
-"Schema BreadcrumbList markup in JSON-LD for better Google SEO Rich Results."
+"Schema BreadcrumbList markup in JSON-LD for better Google Rich Results with "
+"Structured Data."
 msgstr ""
 
 #: lib/gettext-config.php:42
@@ -1377,8 +1378,8 @@ msgstr ""
 #: lib/gettext-config.php:44
 msgctxt "plugin description"
 msgid ""
-"Schema JSON-LD markup and Google SEO Rich Results for Articles, Events, "
-"Local Business, Products, Recipes, Reviews and many more."
+"Schema JSON-LD and Google Rich Results with Structured Data for Articles, "
+"Events, Images, Local Business, Products, Recipes, Reviews Videos, and more."
 msgstr ""
 
 #: lib/gettext-config.php:45
@@ -1427,7 +1428,7 @@ msgstr ""
 msgctxt "plugin description"
 msgid ""
 "Removes outdated Schema microdata from theme templates and leaves Schema "
-"JSON-LD untouched for better Google SEO Rich Results."
+"JSON-LD untouched for better Google Rich Results."
 msgstr ""
 
 #: lib/gettext-config.php:52
