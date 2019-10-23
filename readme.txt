@@ -435,6 +435,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 6.9.1-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Updated the WpssoSchemaSingle::add_person_data() method to encode the '@id' string URL.
+	* Added an `$encode_url` argument to the WpssoSchema::update_data_id() method.
+
 **Version 6.9.0 (2019/10/22)**
 
 * **New Features**
