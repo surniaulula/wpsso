@@ -444,7 +444,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Updated the WpssoSchemaSingle::add_person_data() method to encode the '@id' string URL.
 	* Added an `$encode_url` argument to the WpssoSchema::update_data_id() method.
 
 **Version 6.9.0 (2019/10/22)**
