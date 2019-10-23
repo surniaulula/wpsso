@@ -1149,7 +1149,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Update the @id string based on $sharing_url (can be false) and $person_type_id.
 			 */
-			WpssoSchema::update_data_id( $ret, $person_type_id, $sharing_url, $encode_url = true );
+			WpssoSchema::update_data_id( $ret, $person_type_id, $sharing_url );
 
 			if ( empty( $list_element ) ) {		// Add a single item.
 				$json_data = $ret;
