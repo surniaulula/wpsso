@@ -2309,7 +2309,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		public static function update_data_id( &$json_data, $type_id, $type_url = false ) {
+		/**
+		 * Returns false on error.
+		 */
+		public static function update_data_id( &$json_data, $type_id, $type_url = false, $encode_url = false ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -2326,7 +2329,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$wpsso->debug->log( 'exiting early: type_id value is empty and required' );
 				}
 
-				return;
+				return false;
 			}
 
 			static $id_anchor = null;
@@ -2354,47 +2357,42 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				unset( $json_data[ '@id' ] );	// Just in case.
 
-				$json_data = array( '@id' => $type_id ) + $json_data;	// Make @id the first value in the array.
+				$json_data = array( '@id' => $type_id ) + $json_data;		// Make @id the first value in the array.
+
+			} elseif ( empty( $type_url ) && empty( $json_data[ 'url' ] ) ) {
 
 				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'new @id property is ' . $json_data[ '@id' ] );
+					$wpsso->debug->log( 'exiting early: type_url and json_data url are empty' );
 				}
 
-				return;	// Stop here.
-			}
-
-			/**
-			 * Remove any id anchor from the begining of the type id string.
-			 */
-			$type_id = preg_replace( '/^' . preg_quote( $id_anchor, '/' ) . '/', '', $type_id );
-
-			if ( ! empty( $type_url ) ) {
-
-				$default_id = $type_url . $id_anchor . $type_id;
-
-			} elseif ( ! empty( $json_data[ 'url' ] ) ) {
-
-				$default_id = $json_data[ 'url' ] . $id_anchor . $type_id;
+				return false;
 
 			} else {
 
-				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'exiting early: json_data url is empty and required' );
-				}
+				$id_url = empty( $type_url ) ? $json_data[ 'url' ] : $type_url;
 
-				return;
+				/**
+				 * Just in case - remove any id anchor from the begining of the $type_id string.
+				 */
+				$type_id = preg_replace( '/^' . preg_quote( $id_anchor, '/' ) . '/', '', $type_id );
+
+				$new_id = $id_url . $id_anchor . $type_id;
+	
+				unset( $json_data[ '@id' ] );	// Just in case.
+
+				$json_data = array( '@id' => $new_id ) + $json_data;	// Make @id the first value in the array.
 			}
 
-			/**
-			 * The combined url and schema type create a unique @id string.
-			 */
-			unset( $json_data[ '@id' ] );	// Just in case.
-
-			$json_data = array( '@id' => $default_id ) + $json_data;
+			if ( $encode_url ) {
+				$json_data[ '@id' ] = preg_replace( '/^(.*:\/\/.*)(' . preg_quote( $id_anchor, '/' ) . '.*)?$/U',
+					md5( '$1' ) . '$2', $json_data[ '@id' ] );
+			}
 
 			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'new @id property is ' . $json_data[ '@id' ] );
 			}
+
+			return true;
 		}
 
 		public static function get_id_anchor() {
