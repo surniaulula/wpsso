@@ -2333,9 +2333,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			static $id_anchor = null;
+			static $id_delim  = null;
 
 			if ( null === $id_anchor ) {	// Optimize and call just once.
 				$id_anchor = self::get_id_anchor();
+				$id_delim  = self::get_id_delim();
 			}
 
 			if ( $wpsso->debug->enabled ) {
@@ -2376,7 +2378,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 */
 				$type_id = preg_replace( '/^' . preg_quote( $id_anchor, '/' ) . '/', '', $type_id );
 
-				$new_id = $id_url . $id_anchor . $type_id;
+				if ( false !== strpos( $id_url, $id_anchor ) ) {	// Just in case.
+					$new_id = trim( $id_url, $id_delim ) . $id_delim . $type_id;
+				} else {
+					$new_id = $id_url . $id_anchor . $type_id;
+				}
 	
 				unset( $json_data[ '@id' ] );	// Just in case.
 
