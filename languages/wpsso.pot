@@ -4549,7 +4549,7 @@ msgstr ""
 #: lib/messages.php:1221
 msgid ""
 "Enter the \"google-site-verification\" meta tag <code>content</code> value "
-"here (ie. enter only the verification ID string, not the meta tag HTML)."
+"here (enter only the verification ID string, not the meta tag HTML)."
 msgstr ""
 
 #: lib/messages.php:1235
@@ -4683,8 +4683,8 @@ msgstr ""
 #: lib/messages.php:1438
 msgid ""
 "Choose \"Add HTML tag\" and enter the \"p:domain_verify\" meta tag "
-"<code>content</code> value here (ie. enter only the verification ID string, "
-"not the meta tag HTML)."
+"<code>content</code> value here (enter only the verification ID string, not "
+"the meta tag HTML)."
 msgstr ""
 
 #: lib/messages.php:1444

@@ -1218,7 +1218,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= sprintf( __( 'To verify your website ownership with <a href="%1$s">Google\'s Search Console</a>, select the "Settings" left-side menu option in the Search Console, then "Ownership and verification", and choose the "HTML tag" method.', 'wpsso' ), 'https://search.google.com/search-console' ) . ' ';
 
-							$text .= __( 'Enter the "google-site-verification" meta tag <code>content</code> value here (ie. enter only the verification ID string, not the meta tag HTML).', 'wpsso' );
+							$text .= __( 'Enter the "google-site-verification" meta tag <code>content</code> value here (enter only the verification ID string, not the meta tag HTML).', 'wpsso' );
 
 							break;
 					}
@@ -1435,7 +1435,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = sprintf( __( 'To <a href="%s">claim your website with Pinterest</a>, edit your account settings on Pinterest, select the "Claim" section, enter your website URL, and click the "Claim" button.', 'wpsso' ), 'https://help.pinterest.com/en/business/article/claim-your-website' ) . ' ';
 
-							$text .= __( 'Choose "Add HTML tag" and enter the "p:domain_verify" meta tag <code>content</code> value here (ie. enter only the verification ID string, not the meta tag HTML).', 'wpsso' );
+							$text .= __( 'Choose "Add HTML tag" and enter the "p:domain_verify" meta tag <code>content</code> value here (enter only the verification ID string, not the meta tag HTML).', 'wpsso' );
 
 							break;
 
