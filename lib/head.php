@@ -841,8 +841,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				case 'og:video:secure_url':
 
 					/**
-					 * The secure url meta tag should always come first, but just in case
-					 * it doesn't, make sure the url value has not already been added.
+					 * The secure url meta tag should always come first, but just in case it doesn't, make sure
+					 * the url value has not already been added.
 					 */
 					if ( $last_url !== $value ) {	// Just in case.
 
@@ -875,9 +875,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				case 'og:video:url':
 
 					/**
-					 * The previous switch block would have set all three meta tags already, so
-					 * only proceed if the last secure url (empty or not) is not equal to the
-					 * current url value (empty or not).
+					 * The previous switch block would have set all three meta tags already, so only proceed if
+					 * the last secure url (empty or not) is not equal to the current url value (empty or not).
 					 */
 					if ( $last_secure_url !== $value ) {	// Just in case.
 
@@ -910,9 +909,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				case 'og:video':
 
 					/**
-					 * The previous two switch blocks would have set all three meta tags aready,
-					 * so only proceed if we have a value, and it does not match the last
-					 * secure url (empty or not) or the last insecure url (empty or not).
+					 * The previous two switch blocks would have set all three meta tags aready, so only
+					 * proceed if we have a value, and it does not match the last secure url (empty or not) or
+					 * the last insecure url (empty or not).
 					 */
 					if ( empty( $value ) || $value === $last_secure_url || $value === $last_url ) {
 						break;
