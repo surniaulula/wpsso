@@ -243,6 +243,10 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'pub-google':
 
+					$table_rows[ 'g_site_verify' ] = '' .
+					$this->form->get_th_html( _x( 'Google Website Verification ID', 'option label', 'wpsso' ), '', 'g_site_verify' ) . 
+					'<td>' . $this->form->get_input( 'g_site_verify', 'api_key' ) . '</td>';
+
 					$this->add_schema_knowledge_graph_table_rows( $table_rows, $this->form );
 
 					$this->add_schema_item_props_table_rows( $table_rows, $this->form );
@@ -258,14 +262,14 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'pub-pinterest':
 
+					$table_rows[ 'p_site_verify' ] = '' .
+					$this->form->get_th_html( _x( 'Pinterest Website Verification ID', 'option label', 'wpsso' ), '', 'p_site_verify' ) . 
+					'<td>' . $this->form->get_input( 'p_site_verify', 'api_key' ) . '</td>';
+
 					$table_rows[ 'p_publisher_url' ] = '' . 
 					$this->form->get_th_html( _x( 'Pinterest Company Page URL', 'option label', 'wpsso' ), '', 'p_publisher_url', 
 						array( 'is_locale' => true ) ) . 
 					'<td>' . $this->form->get_input( SucomUtil::get_key_locale( 'p_publisher_url', $this->p->options ), 'wide' ) . '</td>';
-
-					$table_rows[ 'p_dom_verify' ] = $this->form->get_tr_hide( 'basic', 'p_dom_verify' ) . 
-					$this->form->get_th_html( _x( 'Pinterest Verification ID', 'option label', 'wpsso' ), '', 'p_dom_verify' ) . 
-					'<td>' . $this->form->get_input( 'p_dom_verify', 'api_key' ) . '</td>';
 
 					$table_rows[ 'p_add_nopin_header_img_tag' ] = '' . 
 					$this->form->get_th_html( _x( 'Add "nopin" to Site Header Image', 'option label', 'wpsso' ), '', 'p_add_nopin_header_img_tag' ) . 

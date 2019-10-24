@@ -1078,19 +1078,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_bitly_login':
+						case 'tooltip-plugin_bitly_login':	// Bitly Username.
 
 							$text = __( 'The Bitly username to use with the Generic Access Token or API Key (deprecated).', 'wpsso' );
 
 							break;
 
-						case 'tooltip-plugin_bitly_access_token':
+						case 'tooltip-plugin_bitly_access_token':	// Bitly Generic Access Token.
 
 							$text = sprintf( __( 'The Bitly shortening service requires a <a href="%s">Generic Access Token</a> or API Key (deprecated) to shorten URLs.', 'wpsso' ), 'https://bitly.com/a/oauth_apps' );
 
 							break;
 
-						case 'tooltip-plugin_bitly_api_key':
+						case 'tooltip-plugin_bitly_api_key':	// or Bitly API Key (deprecated).
 
 							$text = sprintf( __( 'The Bitly <a href="%s">API Key</a> authentication method has been deprecated by Bitly.', 'wpsso' ), 'https://bitly.com/a/your_api_key' );
 
@@ -1144,8 +1144,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 					}	// End of tooltip-plugin switch.
+
 				/**
-				 * Publisher 'Facebook' settings
+				 * Publisher 'Facebook' settings.
 				 */
 				} elseif ( strpos( $msg_key, 'tooltip-fb_' ) === 0 ) {
 
@@ -1207,7 +1208,23 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					}	// End of tooltip-fb switch.
 
 				/**
-				 * Publisher 'Google' / SEO settings
+				 * Publisher 'Google' settings.
+				 */
+				} elseif ( strpos( $msg_key, 'tooltip-g_' ) === 0 ) {
+
+					switch ( $msg_key ) {
+
+						case 'tooltip-g_site_verify':	// Google Website Verification ID.
+
+							$text .= sprintf( __( 'To verify your website ownership with <a href="%1$s">Google\'s Search Console</a>, select the "Settings" left-side menu option in the Search Console, then "Ownership and verification", and choose the "HTML tag" method.', 'wpsso' ), 'https://search.google.com/search-console' ) . ' ';
+
+							$text .= __( 'Enter the "google-site-verification" meta tag <code>content</code> value here (ie. enter only the verification ID string, not the meta tag HTML).', 'wpsso' );
+
+							break;
+					}
+				
+				/**
+				 * Publisher 'SEO' settings.
 				 */
 				} elseif ( strpos( $msg_key, 'tooltip-seo_' ) === 0 ) {
 
@@ -1238,7 +1255,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					}	// End of tooltip-google switch.
 
 				/**
-				 * Publisher 'Schema' settings
+				 * Publisher 'Schema' settings.
 				 */
 				} elseif ( strpos( $msg_key, 'tooltip-schema_' ) === 0 ) {
 
@@ -1408,7 +1425,62 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					}	// End of tooltip-google switch.
 
 				/**
-				 * Publisher 'Twitter Card' settings
+				 * Publisher 'Pinterest' settings.
+				 */
+				} elseif ( strpos( $msg_key, 'tooltip-p_' ) === 0 ) {
+
+					switch ( $msg_key ) {
+
+						case 'tooltip-p_site_verify':	// Pinterest Website Verification ID.
+
+							$text = sprintf( __( 'To <a href="%s">claim your website with Pinterest</a>, edit your account settings on Pinterest, select the "Claim" section, enter your website URL, and click the "Claim" button.', 'wpsso' ), 'https://help.pinterest.com/en/business/article/claim-your-website' ) . ' ';
+
+							$text .= __( 'Choose "Add HTML tag" and enter the "p:domain_verify" meta tag <code>content</code> value here (ie. enter only the verification ID string, not the meta tag HTML).', 'wpsso' );
+
+							break;
+
+						case 'tooltip-p_publisher_url':
+
+							$text = sprintf( __( 'If you have a <a href="%1$s">Pinterest Company Page for your website / business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://business.pinterest.com/', 'wpsso' ) ) . ' ';
+
+							$text .= __( 'The Pinterest Company Page URL will be used in the website\'s Schema Organization markup.', 'wpsso' ) . ' ';
+
+							$text .= __( 'Google Search may use this URL to display additional information about the website / business in its search results.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-p_add_nopin_header_img_tag':	// Add "nopin" to Site Header Image.
+
+							$text = __( 'Add a "nopin" attribute to the site header and Gravatar images to prevent the Pin It browser button from suggesting those images.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-p_add_nopin_media_img_tag':	// Add "nopin" to WordPress Media.
+
+							$add_img_html_label = _x( 'Add Hidden Image for Pin It Button', 'option label', 'wpsso' );
+
+							$text = __( 'Add a "nopin" attribute to images from the WordPress Media Library to prevent the Pin It browser button from suggesting those images.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'If this option is enabled, you should also enable the "%s" option to provide an image for the Pin It browser button.', 'wpsso' ), $add_img_html_label );
+
+							break;
+
+						case 'tooltip-p_add_img_html':			// Add Hidden Image for Pin It Button.
+
+							$text = __( 'Add an extra hidden image in the WordPress post / page content for the Pinterest Pin It browser button.', 'wpsso' );
+
+							break;
+
+						default:
+
+							$text = apply_filters( $lca . '_messages_tooltip_p', $text, $msg_key, $info );
+
+							break;
+
+					}	// End of tooltip-p switch.
+
+				/**
+				 * Publisher 'Twitter' settings.
 				 */
 				} elseif ( strpos( $msg_key, 'tooltip-tc_' ) === 0 ) {
 
@@ -1477,62 +1549,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					}	// End of tooltip-tc switch.
 
 				/**
-				 * Publisher 'Pinterest' (Rich Pin) settings
-				 */
-				} elseif ( strpos( $msg_key, 'tooltip-p_' ) === 0 ) {
-
-					switch ( $msg_key ) {
-
-						case 'tooltip-p_publisher_url':
-
-							$text = sprintf( __( 'If you have a <a href="%1$s">Pinterest Company Page for your website / business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://business.pinterest.com/', 'wpsso' ) ) . ' ';
-
-							$text .= __( 'The Pinterest Company Page URL will be used in the website\'s Schema Organization markup.', 'wpsso' ) . ' ';
-
-							$text .= __( 'Google Search may use this URL to display additional information about the website / business in its search results.', 'wpsso' );
-
-							break;
-
-						case 'tooltip-p_dom_verify':
-
-							$text = sprintf( __( 'To <a href="%s">verify your website</a> with Pinterest, edit your business account profile on Pinterest and click the "Verify WebSite" button.', 'wpsso' ), 'https://help.pinterest.com/en/articles/verify-your-website#meta_tag' ) . ' ';
-
-							$text .= __( 'Enter the supplied "p:domain_verify" meta tag <em>content</em> value here.', 'wpsso' );
-
-							break;
-
-						case 'tooltip-p_add_nopin_header_img_tag':	// Add "nopin" to Site Header Image.
-
-							$text = __( 'Add a "nopin" attribute to the site header and Gravatar images to prevent the Pin It browser button from suggesting those images.', 'wpsso' );
-
-							break;
-
-						case 'tooltip-p_add_nopin_media_img_tag':	// Add "nopin" to WordPress Media.
-
-							$add_img_html_label = _x( 'Add Hidden Image for Pin It Button', 'option label', 'wpsso' );
-
-							$text = __( 'Add a "nopin" attribute to images from the WordPress Media Library to prevent the Pin It browser button from suggesting those images.', 'wpsso' ) . ' ';
-
-							$text .= sprintf( __( 'If this option is enabled, you should also enable the "%s" option to provide an image for the Pin It browser button.', 'wpsso' ), $add_img_html_label );
-
-							break;
-
-						case 'tooltip-p_add_img_html':			// Add Hidden Image for Pin It Button.
-
-							$text = __( 'Add an extra hidden image in the WordPress post / page content for the Pinterest Pin It browser button.', 'wpsso' );
-
-							break;
-
-						default:
-
-							$text = apply_filters( $lca . '_messages_tooltip_p', $text, $msg_key, $info );
-
-							break;
-
-					}	// End of tooltip-p switch.
-
-				/**
-				 * Publisher 'Instagram' settings
+				 * Publisher 'Instagram' settings.
 				 */
 				} elseif ( strpos( $msg_key, 'tooltip-instgram_' ) === 0 ) {
 
@@ -1557,7 +1574,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					}	// End of tooltip-instgram switch.
 
 				/**
-				 * Publisher 'LinkedIn' settings
+				 * Publisher 'LinkedIn' settings.
 				 */
 				} elseif ( strpos( $msg_key, 'tooltip-linkedin_' ) === 0 ) {
 
@@ -1582,7 +1599,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					}	// End of tooltip-linkedin switch.
 
 				/**
-				 * Publisher 'Myspace' settings
+				 * Publisher 'Myspace' settings.
 				 */
 				} elseif ( strpos( $msg_key, 'tooltip-myspace_' ) === 0 ) {
 
@@ -1607,7 +1624,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						}	// End of tooltip-myspace switch.
 
 				/**
-				 * All other settings
+				 * All other settings.
 				 */
 				} else {
 

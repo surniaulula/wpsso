@@ -106,7 +106,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'rp_img_crop'      => 'p_img_crop',
 					'rp_img_crop_x'    => 'p_img_crop_x',
 					'rp_img_crop_y'    => 'p_img_crop_y',
-					'rp_dom_verify'    => 'p_dom_verify',
+					'rp_dom_verify'    => 'p_site_verify',
 				),
 				525 => array(
 					'add_meta_itemprop_url'               => 'add_link_itemprop_url',
@@ -255,6 +255,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'schema_article_amp16x9_img_crop'   => 'schema_article_16_9_img_crop',
 					'schema_article_amp16x9_img_crop_x' => 'schema_article_16_9_img_crop_x',
 					'schema_article_amp16x9_img_crop_y' => 'schema_article_16_9_img_crop_y',
+				),
+				671 => array(
+					'p_dom_verify' => 'p_site_verify',
 				),
 			),
 		);

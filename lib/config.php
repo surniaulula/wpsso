@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.9.1-dev.1',	// Plugin version.
-					'opt_version' => '671',		// Increment when changing default option values.
+					'version'     => '6.9.1-dev.2',	// Plugin version.
+					'opt_version' => '672',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -938,8 +938,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_desc_max_len'            => 300,
 					'og_desc_warn_len'           => 200,
 					'og_desc_hashtags'           => 0,
+					'g_site_verify'              => '',			// Google Website Verification ID.
+					'p_site_verify'              => '',			// Pinterest Website Verification ID.
 					'p_publisher_url'            => '',
-					'p_dom_verify'               => '',
 					'p_add_nopin_header_img_tag' => 1,			// Add "nopin" to Site Header Image.
 					'p_add_nopin_media_img_tag'  => 0,			// Add "nopin" to WordPress Media.
 					'p_add_img_html'             => 0,			// Add Hidden Image for Pin It Button.
@@ -1328,16 +1329,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_shortener'          => 'none',			// Preferred URL Shortening Service.
 					'plugin_wp_shortlink'       => 1,			// Use Shortnened URL for WP Shortlink.
 					'plugin_min_shorten'        => 23,
-					'plugin_bitly_login'        => '',
-					'plugin_bitly_access_token' => '',
-					'plugin_bitly_api_key'      => '',
-					'plugin_bitly_domain'       => '',
-					'plugin_dlmyapp_api_key'    => '',
-					'plugin_owly_api_key'       => '',
-					'plugin_yourls_api_url'     => '',
-					'plugin_yourls_username'    => '',
-					'plugin_yourls_password'    => '',
-					'plugin_yourls_token'       => '',
+					'plugin_bitly_login'        => '',			// Bitly Username.
+					'plugin_bitly_access_token' => '',			// Bitly Generic Access Token.
+					'plugin_bitly_api_key'      => '',			// or Bitly API Key (deprecated)
+					'plugin_bitly_domain'       => '',			// Bitly Custom Short Domain.
+					'plugin_dlmyapp_api_key'    => '',			// DLMY.App API Key.
+					'plugin_owly_api_key'       => '',			// Ow.ly API Key.
+					'plugin_yourls_api_url'     => '',			// YOURLS API URL.
+					'plugin_yourls_username'    => '',			// YOURLS Username.
+					'plugin_yourls_password'    => '',			// YOURLS Password.
+					'plugin_yourls_token'       => '',			// YOURLS Token.
 					
 					/**
 					 * Advanced settings - Contact Fields.

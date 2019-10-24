@@ -70,12 +70,20 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 			}
 
 			/**
+			 * Meta name google-site-verification.
+			 */
+			if ( ! empty( $this->p->options[ 'add_meta_name_p:domain_verify' ] ) ) {
+				if ( ! empty( $this->p->options[ 'g_site_verify' ] ) ) {	// Google Website Verification ID.
+					$mt_name[ 'google-site-verification' ] = $this->p->options[ 'g_site_verify' ];
+				}
+			}
+
+			/**
 			 * Meta name p:domain_verify.
 			 */
 			if ( ! empty( $this->p->options[ 'add_meta_name_p:domain_verify' ] ) ) {
-
-				if ( ! empty( $this->p->options[ 'p_dom_verify' ] ) ) {
-					$mt_name[ 'p:domain_verify' ] = $this->p->options[ 'p_dom_verify' ];
+				if ( ! empty( $this->p->options[ 'p_site_verify' ] ) ) {	// Pinterest Website Verification ID.
+					$mt_name[ 'p:domain_verify' ] = $this->p->options[ 'p_site_verify' ];
 				}
 			}
 

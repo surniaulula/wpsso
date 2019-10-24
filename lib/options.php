@@ -1458,7 +1458,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'fb_app_id':
 				case 'fb_app_secret':
-				case 'p_dom_verify':
+				case 'g_site_verify':	// Google Website Verification ID.
+				case 'p_site_verify':	// Pinterest Website Verification ID.
 				case ( preg_match( '/_api_key$/', $base_key ) ? true : false ):
 
 					return 'api_key';
