@@ -2807,7 +2807,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 								$this->p->debug->log( 'custom user ' . $type . '_url = ' . $url );
 							}
 						} else {
-							$url = $this->check_url_string( get_author_posts_url( $mod[ 'id' ] ), 'author posts' );
+							$url = get_author_posts_url( $mod[ 'id' ] );
+							$url = $this->check_url_string( $url, 'author posts' );
 						}
 					}
 
