@@ -1,4 +1,4 @@
-=== WPSSO Core | The Complete Meta Tag and Schema Markup Solution ===
+=== WPSSO Core | The Complete Solution for Meta Tags and Schema Markup ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
