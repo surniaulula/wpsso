@@ -44,7 +44,7 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 
 <h3>Users Love the WPSSO Core Plugin</h3>
 
-&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; &mdash; "The plugin is indispensable to me when it comes to posting on social media... it makes it so that your posts look the best that they possible can every time when posting on Facebook, Twitter, or any other site." - [monsuirette](https://wordpress.org/support/topic/this-is-probably-the-best-plugin-of-its-kind/)
+&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; &mdash; "This plugin has been a lifesaver in terms of making our images and links and descriptions look beautiful everywhere we post them! It’s so easy to use and the preview functions are incredibly helpful." - [lotusblooms](https://wordpress.org/support/topic/love-this-plugin-789/)
 
 &#x2605;&#x2605;&#x2605;&#x2605;&#x2605; &mdash; "What a fantastic plugin. If you want to fix all the errors in search console for structured data, this is the plugin to use. Love it." - [goviral](https://wordpress.org/support/topic/makes-schema-so-easy/)
 
@@ -541,7 +541,7 @@ Added a new 'oEmbed' tab in the Document SSO metabox.
 * **New Features**
 	* Added a new 'oEmbed' tab in the Document SSO metabox to show the oEmbed data and oEmbed HTML.
 * **Improvements**
-	* Improved WordPress oEmbed data and HTML markup with the Open Graph image, title, and description.
+	* Improved WordPress oEmbed data and its HTML markup with the Open Graph image, title, and description.
 * **Bugfixes**
 	* Fixed the "Select Image" button to trigger a jQuery `change()` event on the image ID input field.
 * **Developer Notes**
