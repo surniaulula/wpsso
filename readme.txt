@@ -19,19 +19,19 @@ Makes sure your content looks great on all social and search sites - no matter h
 
 <p style="margin:0;"><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
 
-**Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded:**
+**WPSSO makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded:**
 
-The WPSSO Core plugin for WordPress offers comprehensive and accurate information about your content to social sites (Facebook, Pinterest, Twitter, LinkedIn, etc.), search engines and crawlers (Google, Bing, etc.), mail and text messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), REST API clients, and oEmbed data for embedded objects / iframes.
+WPSSO Core and its complementary add-ons are FAST and provide comprehensive information about your webpage content to social sites (Facebook, Pinterest, Twitter, LinkedIn, etc.), search engines and crawlers (Google, Bing, etc.), mail and text messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), REST API clients, and oEmbed data for embedded objects / iframes.
 
 **Uses your existing WordPress content for meta tags and Schema markup:**
 
-There's no need to manually enter descriptions, titles, product information, select images / videos, etc. &mdash; WPSSO Core reads your existing post, page, product, media, recipe, event, forum, and SEO content automatically, and offers fine-tuning and customization options for just about anything and everything. ;-)
+There's no need to manually enter descriptions, titles, product information, select images / videos, etc. &mdash; WPSSO reads your existing post, page, product, media, recipe, event, forum, and SEO content automatically, and offers fine-tuning and customization options for just about anything and everything. ;-)
 
 WPSSO Core is also language / locale aware, which means you can customize your site information, social page URLs and Knowledge Graph for different languages.
 
 **Creates complete and accurate meta tags and Schema markup:**
 
-WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph, Google Rich Results with Structured Data, Mobile Web Browsers, oEmbed data for LinkedIn, Pinterest Rich Pins, Twitter Cards, Weibo and many more &mdash; including complete markup for image SEO, video SEO, extensive e-Commerce product markup (for WooCommerce and others), mobile apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content!
+WPSSO Core and its complementary add-ons offer meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph, Google Rich Results with Structured Data, Mobile Web Browsers, oEmbed data for LinkedIn, Pinterest Rich Pins, Twitter Cards, Weibo and many more &mdash; including complete markup for image SEO, video SEO, extensive e-Commerce product markup (for WooCommerce and others), mobile apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content!
 
 **Includes advanced quality assurance features and options:**
 
