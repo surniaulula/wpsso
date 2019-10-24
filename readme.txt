@@ -435,16 +435,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.9.1-dev.1 (TBD)**
+**Version 6.9.1-dev.1 (2019/10/24)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Updated the Schema Person markup to encode the '@id' string.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added an `$encode_url` argument to the WpssoSchema::update_data_id() method.
+	* Updated the WpssoSchemaSingle::add_person_data() method to encode the '@id' string.
+	* Added an `$encode_url` argument in WpssoSchema::update_data_id().
 
 **Version 6.9.0 (2019/10/22)**
 
@@ -594,6 +595,10 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 	* Removed the `SucomUtil::is_product_tag()` method.
 
 == Upgrade Notice ==
+
+= 6.9.1-dev.1 =
+
+(2019/10/24) Updated the Schema Person markup to encode the '@id' string.
 
 = 6.9.0 =
 
