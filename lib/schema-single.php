@@ -1150,7 +1150,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Update the @id string based on the $sharing_url and the $person_type_id. Encode the URL part of the @id
 			 * string to hide the WordPress login username.
 			 */
-			WpssoSchema::update_data_id( $ret, $person_type_id, $sharing_url, $encode_url = true );
+			WpssoSchema::update_data_id( $ret, $person_type_id, $sharing_url, $hash_url = true );
 
 			if ( empty( $list_element ) ) {		// Add a single item.
 				$json_data = $ret;

@@ -2312,7 +2312,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/**
 		 * Returns false on error.
 		 */
-		public static function update_data_id( &$json_data, $type_id, $type_url = false, $encode_url = false ) {
+		public static function update_data_id( &$json_data, $type_id, $type_url = false, $hash_url = false ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -2389,7 +2389,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$json_data = array( '@id' => $new_id ) + $json_data;	// Make @id the first value in the array.
 			}
 
-			if ( $encode_url ) {
+			if ( $hash_url ) {
 				$json_data[ '@id' ] = preg_replace( '/^(.*:\/\/.*)(' . preg_quote( $id_anchor, '/' ) . '.*)?$/U',
 					md5( '$1' ) . '$2', $json_data[ '@id' ] );
 			}
