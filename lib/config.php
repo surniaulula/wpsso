@@ -408,7 +408,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'wpssoplm' => array(			// Plugin acronym.
 					'short'       => 'WPSSO PLM',		// Short plugin name.
-					'name'        => 'WPSSO Place / Location and Local Business Meta',
+					'name'        => 'WPSSO Place / Location and Local SEO Meta',
 					'desc'        => 'Facebook / Open Graph Location, Pinterest Place, Schema Local Business and Local SEO meta tags.',
 					'slug'        => 'wpsso-plm',
 					'base'        => 'wpsso-plm/wpsso-plm.php',
