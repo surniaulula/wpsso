@@ -435,7 +435,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.10.0-b.1 (2019/10/25)**
+**Version 6.10.0-b.2 (2019/10/25)**
 
 * **New Features**
 	* None.
@@ -443,6 +443,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new "Google Website Verification ID" option.
 	* Updated the "Pinterest Website Verification ID" option help text.
 	* Updated the Schema Person markup to hash the '@id' string URL.
+	* Updated the SSO toolbar notifications text to "Getting SSO notifications..." .
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -635,7 +636,7 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 
 == Upgrade Notice ==
 
-= 6.10.0-b.1 =
+= 6.10.0-b.2 =
 
 (2019/10/25) Added a new "Google Website Verification ID" option. Updated the Schema Person markup to hash the '@id' string URL.
 
