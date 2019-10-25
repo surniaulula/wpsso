@@ -520,11 +520,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 */
 						case 'tooltip-og_img_max':		// Maximum Images to Include.
 
-							$text = __( 'The maximum number of images to include in meta tags &mdash; this includes the <em>featured</em> image, <em>attached</em> images, and any images found in the content.', 'wpsso' ) . ' ';
+							$text = __( 'The maximum number of images to include in Open Graph meta tags, including custom, featured, attached, and content images.', 'wpsso' ) . ' ';
 
-							$text .= __( 'If you select "0", then no images will be included in the Facebook / Open Graph meta tags (<strong>not recommended</strong>).', 'wpsso' ) . ' ';
+							$text .= __( 'If you select "0", then no images will be included in Open Graph meta tags (<strong>not recommended</strong>).', 'wpsso' ) . ' ';
 
-							$text .= __( 'If no images are available in your meta tags, social sites may choose any image from your webpage (including headers, sidebars, thumbnails, etc.).', 'wpsso' );
+							$text .= __( 'If no images are included in your Open Graph meta tags, then social sites may select any image from the webpage (including headers, sidebars, thumbnails, etc.).', 'wpsso' );
 
 							break;
 
@@ -579,7 +579,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-og_vid_autoplay':		// Force Autoplay when Possible.
 
-							$text = __( 'When possible, add or modify the "autoplay" argument of video URLs in webpage meta tags (default is checked).', 'wpsso' );
+							$text = __( 'If possible, add or modify the video URL "autoplay" argument for videos in meta tags and Schema markup.', 'wpsso' );
 
 							break;
 
@@ -1278,7 +1278,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-schema_img_max':	// Maximum Images to Include.
 
-							$text = __( 'The maximum number of images to include in the Schema markup &mdash; this includes the <em>featured</em> or <em>attached</em> images, and any images found in the Post or Page content.', 'wpsso' ) . ' ';
+							$text = __( 'The maximum number of images to include in Schema markup, including custom, featured, attached, and content images.', 'wpsso' ) . ' ';
 
 							$text .= __( 'If you select "0", then no images will be included in the Schema markup (<strong>not recommended</strong>).', 'wpsso' );
 

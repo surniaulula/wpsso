@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.10.0-b.2\n"
+"Project-Id-Version: WPSSO Core 6.10.0-b.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -329,7 +329,7 @@ msgid "%d of %d site addresses registered"
 msgstr ""
 
 #: lib/admin.php:2328
-msgid "Getting %s notification..."
+msgid "Fetching %s notifications..."
 msgstr ""
 
 #: lib/admin.php:2401
@@ -3813,21 +3813,21 @@ msgstr ""
 
 #: lib/messages.php:523
 msgid ""
-"The maximum number of images to include in meta tags &mdash; this includes "
-"the <em>featured</em> image, <em>attached</em> images, and any images found "
-"in the content."
+"The maximum number of images to include in Open Graph meta tags, including "
+"custom, featured, attached, and content images."
 msgstr ""
 
 #: lib/messages.php:525
 msgid ""
-"If you select \"0\", then no images will be included in the Facebook / Open "
-"Graph meta tags (<strong>not recommended</strong>)."
+"If you select \"0\", then no images will be included in Open Graph meta tags "
+"(<strong>not recommended</strong>)."
 msgstr ""
 
 #: lib/messages.php:527
 msgid ""
-"If no images are available in your meta tags, social sites may choose any "
-"image from your webpage (including headers, sidebars, thumbnails, etc.)."
+"If no images are included in your Open Graph meta tags, then social sites "
+"may select any image from the webpage (including headers, sidebars, "
+"thumbnails, etc.)."
 msgstr ""
 
 #: lib/messages.php:535
@@ -3886,8 +3886,8 @@ msgstr ""
 
 #: lib/messages.php:582
 msgid ""
-"When possible, add or modify the \"autoplay\" argument of video URLs in "
-"webpage meta tags (default is checked)."
+"If possible, add or modify the video URL \"autoplay\" argument for videos in "
+"meta tags and Schema markup."
 msgstr ""
 
 #: lib/messages.php:607
@@ -4624,9 +4624,8 @@ msgstr ""
 
 #: lib/messages.php:1281
 msgid ""
-"The maximum number of images to include in the Schema markup &mdash; this "
-"includes the <em>featured</em> or <em>attached</em> images, and any images "
-"found in the Post or Page content."
+"The maximum number of images to include in Schema markup, including custom, "
+"featured, attached, and content images."
 msgstr ""
 
 #: lib/messages.php:1283
