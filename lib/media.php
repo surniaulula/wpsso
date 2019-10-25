@@ -675,12 +675,17 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			} else {
 
-				$media_lib    = __( 'Media Library', 'wpsso' );
-				$func_url     = __( 'https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/', 'wpsso' );
-				$func_name    = 'wp_get_attachment_metadata()';
-				$regen_msg    = sprintf( __( 'You may consider regenerating the thumbnails of all WordPress Media Library images using one of <a href="%s">several available plugins from WordPress.org</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/regenerate+thumbnails/' );
+				$media_lib = __( 'Media Library', 'wpsso' );
+
+				$wp_func_url = __( 'https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/', 'wpsso' );
+
+				$wp_func_name = 'wp_get_attachment_metadata()';
+
+				$regen_msg = sprintf( __( 'You may consider regenerating the thumbnails of all WordPress Media Library images using one of <a href="%s">several available plugins from WordPress.org</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/regenerate+thumbnails/' );
+
 				$img_edit_url = get_edit_post_link( $pid );
-				$img_title    = get_the_title( $pid );
+
+				$img_title = get_the_title( $pid );
 
 				if ( isset( $img_meta[ 'file' ] ) ) {
 
@@ -691,14 +696,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$this->p->debug->log( 'full size image ' . $img_meta[ 'file' ] . ' dimensions missing from image metadata' );
 					}
 
-					$notice_key   = 'full-size-image-' . $pid . '-dimensions-missing';
-					$dismiss_time = WEEK_IN_SECONDS;
+					$notice_key = 'full-size-image-' . $pid . '-dimensions-missing';
 
 					if ( $this->p->notice->is_admin_pre_notices() ) { // Skip if notices already shown.
 
-						$error_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the full size image dimensions for <a href="%2$s">image ID %3$s</a> are missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' ), $media_lib, $img_edit_url, $pid, $func_url, '<code>' . $func_name . '</code>' );
+						$error_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the full size image dimensions for <a href="%2$s">image ID %3$s</a> are missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' ), $media_lib, $img_edit_url, $pid, $wp_func_url, '<code>' . $wp_func_name . '</code>' );
 
-						$this->p->notice->err( $error_msg . ' ' . $regen_msg, null, $notice_key, $dismiss_time );
+						$this->p->notice->err( $error_msg . ' ' . $regen_msg, null, $notice_key, $dismiss_time = WEEK_IN_SECONDS );
 
 					} elseif ( $this->p->debug->enabled ) {
 
@@ -715,14 +719,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$this->p->debug->log( 'full size image file path for ' . $pid . ' missing from image metadata' );
 					}
 
-					$notice_key   = 'full-size-image-' . $pid . '-file-path-missing';
-					$dismiss_time = WEEK_IN_SECONDS;
+					$notice_key = 'full-size-image-' . $pid . '-file-path-missing';
 
 					if ( $this->p->notice->is_admin_pre_notices() ) { // Skip if notices already shown.
 
-						$error_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the full size image file path for <a href="%2$s">image ID %3$s</a> is missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' ), $media_lib, $img_edit_url, $pid, $func_url, '<code>' . $func_name . '</code>' );
+						$error_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the full size image file path for <a href="%2$s">image ID %3$s</a> is missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' ), $media_lib, $img_edit_url, $pid, $wp_func_url, '<code>' . $wp_func_name . '</code>' );
 
-						$this->p->notice->err( $error_msg . ' ' . $regen_msg, null, $notice_key, $dismiss_time );
+						$this->p->notice->err( $error_msg . ' ' . $regen_msg, null, $notice_key, $dismiss_time = WEEK_IN_SECONDS );
 
 					} elseif ( $this->p->debug->enabled ) {
 
@@ -832,18 +835,21 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						if ( $resized_meta == false ) {
 
-							$notice_key   = 'image-make-intermediate-size-' . $fullsizepath . '-failure';
-							$dismiss_time = WEEK_IN_SECONDS;
+							$notice_key = 'image-make-intermediate-size-' . $fullsizepath . '-failure';
 
 							if ( $this->p->notice->is_admin_pre_notices() ) { // Skip if notices already shown.
 
 								$media_lib = __( 'Media Library', 'wpsso' );
-								$func_url  = __( 'https://developer.wordpress.org/reference/functions/image_make_intermediate_size/', 'wpsso' );
-								$func_name = 'image_make_intermediate_size()';
-								$regen_msg = sprintf( __( 'You may consider regenerating the thumbnails of all WordPress Media Library images using one of <a href="%s">several available plugins from WordPress.org</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/regenerate+thumbnails/' );
-								$error_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the <a href="%2$s">WordPress %3$s function</a> reported an error when trying to create an image size from %4$s.', 'wpsso' ), $media_lib, $func_url, '<code>' . $func_name . '</code>', $fullsizepath );
 
-								$this->p->notice->err( $error_msg . ' ' . $regen_msg, null, $notice_key, $dismiss_time );
+								$wp_func_url = __( 'https://developer.wordpress.org/reference/functions/image_make_intermediate_size/', 'wpsso' );
+
+								$wp_func_name = 'image_make_intermediate_size()';
+
+								$regen_msg = sprintf( __( 'You may consider regenerating the thumbnails of all WordPress Media Library images using one of <a href="%s">several available plugins from WordPress.org</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/regenerate+thumbnails/' );
+
+								$error_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the <a href="%2$s">WordPress %3$s function</a> reported an error when trying to create an image size from %4$s.', 'wpsso' ), $media_lib, $wp_func_url, '<code>' . $wp_func_name . '</code>', $fullsizepath );
+
+								$this->p->notice->err( $error_msg . ' ' . $regen_msg, null, $notice_key, $dismiss_time = WEEK_IN_SECONDS );
 
 							} elseif ( $this->p->debug->enabled ) {
 
@@ -1825,7 +1831,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			if ( is_numeric( $img_mixed ) ) {
 
 				$img_edit_url = get_edit_post_link( $img_mixed );
-				$img_title    = get_the_title( $pid );
+				$img_title    = get_the_title( $img_mixed );
 				$img_label    = sprintf( __( 'image ID %1$s (%2$s)', 'wpsso' ), $img_mixed, $img_title );
 				$img_label    = empty( $img_edit_url ) ? $img_label : '<a href="' . $img_edit_url . '">' . $img_label . '</a>';
 
@@ -1849,7 +1855,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						'invalid width and/or height ' . $img_width . 'x' . $img_height );
 				}
 
-				return false;	// image rejected
+				return false;	// Image rejected.
 			}
 
 			if ( $img_width > 0 && $img_height > 0 ) {
@@ -1954,7 +1960,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$max_ratio, $markup_name ) . ' ' . $rejected_msg, null, $notice_key, $dismiss_time = true );
 				}
 
-				return false;	// image rejected
+				return false;	// Image rejected.
 			}
 
 			/**
@@ -1982,10 +1988,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$min_width . 'x' . $min_height, $markup_name ) . ' ' . $rejected_msg, true, $notice_key, $dismiss_time = true );
 				}
 
-				return false;	// image rejected
+				return false;	// Image rejected.
 			}
 
-			return true;	// image accepted
+			return true;	// Image accepted.
 		}
 
 		public function can_make_intermediate_size( $img_meta, $size_info ) {

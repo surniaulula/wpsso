@@ -2497,8 +2497,8 @@ msgstr ""
 msgid "Posts, Pages, Custom Post Types"
 msgstr ""
 
-#: lib/gettext-pro.php:29 lib/media.php:122 lib/media.php:678 lib/media.php:840
-#: lib/media.php:1822 lib/pro/admin/advanced.php:212
+#: lib/gettext-pro.php:29 lib/media.php:122 lib/media.php:678 lib/media.php:842
+#: lib/media.php:1828 lib/pro/admin/advanced.php:212
 #: lib/std/admin/advanced.php:212
 msgid "Media Library"
 msgstr ""
@@ -3342,7 +3342,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: lib/media.php:125 lib/media.php:1829
+#: lib/media.php:125 lib/media.php:1835
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
@@ -3365,91 +3365,91 @@ msgid ""
 "for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:679
+#: lib/media.php:680
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:681 lib/media.php:843
+#: lib/media.php:684 lib/media.php:848
 msgid ""
 "You may consider regenerating the thumbnails of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:699
+#: lib/media.php:703
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image dimensions for "
 "<a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:723
+#: lib/media.php:726
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image file path for "
 "<a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:841
+#: lib/media.php:844
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:844
+#: lib/media.php:850
 msgid ""
 "Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress "
 "%3$s function</a> reported an error when trying to create an image size from "
 "%4$s."
 msgstr ""
 
-#: lib/media.php:1288
+#: lib/media.php:1294
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1839
+#: lib/media.php:1845
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:1864
+#: lib/media.php:1870
 msgctxt "option label"
 msgid "Facebook Open Graph"
 msgstr ""
 
-#: lib/media.php:1873
+#: lib/media.php:1879
 msgctxt "option label"
 msgid "Google Schema"
 msgstr ""
 
-#: lib/media.php:1882
+#: lib/media.php:1888
 msgctxt "option label"
 msgid "Google Schema Article"
 msgstr ""
 
-#: lib/media.php:1891
+#: lib/media.php:1897
 msgctxt "option label"
 msgid "Google Schema Article AMP 1:1"
 msgstr ""
 
-#: lib/media.php:1900
+#: lib/media.php:1906
 msgctxt "option label"
 msgid "Google Schema Article AMP 4:3"
 msgstr ""
 
-#: lib/media.php:1909
+#: lib/media.php:1915
 msgctxt "option label"
 msgid "Google Schema Article AMP 16:9"
 msgstr ""
 
-#: lib/media.php:1946
+#: lib/media.php:1952
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:1974
+#: lib/media.php:1980
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
