@@ -435,7 +435,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.9.1-dev.2 (2019/10/24)**
+**Version 6.9.1-b.1 (2019/10/25)**
 
 * **New Features**
 	* None.
@@ -598,9 +598,9 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 
 == Upgrade Notice ==
 
-= 6.9.1-dev.2 =
+= 6.9.1-b.1 =
 
-(2019/10/24) Added a new "Google Website Verification ID" option. Updated the Schema Person markup to hash the '@id' string.
+(2019/10/25) Added a new "Google Website Verification ID" option. Updated the Schema Person markup to hash the '@id' string.
 
 = 6.9.0 =
 
