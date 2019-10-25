@@ -1549,7 +1549,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/**
 				 * Empty string or a URL.
 				 *
-				 * Exceptions:
+				 * Option key exceptions:
 				 *
 				 *	'add_meta_property_og:image:secure_url' = 1
 				 *	'add_meta_property_og:video:secure_url' = 1

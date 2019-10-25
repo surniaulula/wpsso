@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.9.1-b.1',	// Plugin version.
-					'opt_version' => '673',		// Increment when changing default option values.
+					'version'     => '6.10.0-b.1',	// Plugin version.
+					'opt_version' => '674',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -1127,59 +1127,25 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Link itemprop.
 					 */
 					'add_link_itemprop_url'                                    => 1,
-					'add_link_itemprop_author.url'                             => 1,
-					'add_link_itemprop_author.image'                           => 1,
-					'add_link_itemprop_contributor.url'                        => 1,
-					'add_link_itemprop_contributor.image'                      => 1,
 					'add_link_itemprop_image'                                  => 1,
-					'add_link_itemprop_image.url'                              => 1,
-					'add_link_itemprop_menu'                                   => 1,
 					'add_link_itemprop_thumbnailurl'                           => 1,
 
 					/**
 					 * Meta itemprop.
 					 *
-					 * Note that meta itemprop values should not be URLs. Use link itemprop for URLs.
+					 * Note that meta itemprop values should not be URLs - use link itemprop for URLs.
 					 */
 					'add_meta_itemprop_name'                                   => 1,
 					'add_meta_itemprop_alternatename'                          => 1,
 					'add_meta_itemprop_description'                            => 1,
-					'add_meta_itemprop_email'                                  => 1,
-					'add_meta_itemprop_telephone'                              => 1,
-					'add_meta_itemprop_address'                                => 1,
 					'add_meta_itemprop_datepublished'                          => 1,
 					'add_meta_itemprop_datemodified'                           => 1,
-					'add_meta_itemprop_image.width'                            => 1,
-					'add_meta_itemprop_image.height'                           => 1,
-					'add_meta_itemprop_publisher.name'                         => 1,
-					'add_meta_itemprop_author.name'                            => 1,
-					'add_meta_itemprop_author.description'                     => 1,
-					'add_meta_itemprop_contributor.name'                       => 1,
-					'add_meta_itemprop_contributor.description'                => 1,
-					'add_meta_itemprop_openinghoursspecification.dayofweek'    => 1,
-					'add_meta_itemprop_openinghoursspecification.opens'        => 1,
-					'add_meta_itemprop_openinghoursspecification.closes'       => 1,
-					'add_meta_itemprop_openinghoursspecification.validfrom'    => 1,
-					'add_meta_itemprop_openinghoursspecification.validthrough' => 1,
-					'add_meta_itemprop_currenciesaccepted'                     => 1,
-					'add_meta_itemprop_paymentaccepted'                        => 1,
-					'add_meta_itemprop_pricerange'                             => 1,
-					'add_meta_itemprop_acceptsreservations'                    => 1,
 					'add_meta_itemprop_aggregaterating.ratingvalue'            => 1,
 					'add_meta_itemprop_aggregaterating.ratingcount'            => 1,
 					'add_meta_itemprop_aggregaterating.worstrating'            => 1,
 					'add_meta_itemprop_aggregaterating.bestrating'             => 1,
 					'add_meta_itemprop_aggregaterating.reviewcount'            => 1,
-					'add_meta_itemprop_startdate'                              => 1,	// Schema Event.
-					'add_meta_itemprop_enddate'                                => 1,	// Schema Event.
-					'add_meta_itemprop_location'                               => 1,	// Schema Event.
-					'add_meta_itemprop_preptime'                               => 1,	// Schema Recipe.
-					'add_meta_itemprop_cooktime'                               => 1,	// Schema Recipe.
-					'add_meta_itemprop_totaltime'                              => 1,	// Schema Recipe.
-					'add_meta_itemprop_recipeyield'                            => 1,	// Schema Recipe.
-					'add_meta_itemprop_recipeingredient'                       => 1,	// Schema Recipe (supersedes ingredients).
-					'add_meta_itemprop_recipeinstructions'                     => 1,	// Schema Recipe.
-					
+
 					/**
 					 * Advanced settings - Plugin Behavior tab.
 					 */
