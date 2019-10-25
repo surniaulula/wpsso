@@ -119,11 +119,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$this->p->debug->log( 'showing admin notice for rejected Media Library image id ' . $pid );
 					}
 
-					$media_lib     = __( 'Media Library', 'wpsso' );
-					$edit_url      = get_edit_post_link( $pid );
-					$img_label     = sprintf( __( 'image ID %s', 'wpsso' ), $pid );
-					$img_label     = empty( $edit_url ) ? $img_label : '<a href="' . $edit_url . '">' . $img_label . '</a>';
-					$size_label    = $this->p->util->get_image_size_label( $size_name );
+					$media_lib    = __( 'Media Library', 'wpsso' );
+					$img_edit_url = get_edit_post_link( $pid );
+					$img_title    = get_the_title( $pid );
+					$img_label    = sprintf( __( 'image ID %1$s (%2$s)', 'wpsso' ), $pid, $img_title );
+					$img_label    = empty( $img_edit_url ) ? $img_label : '<a href="' . $img_edit_url . '">' . $img_label . '</a>';
+					$size_label   = $this->p->util->get_image_size_label( $size_name );
 
 					$required_text = '<b>' . $size_label . '</b> (' . $size_info[ 'width' ] . 'x' . $size_info[ 'height' ] .
 						( $is_cropped ? ' <i>' . __( 'cropped', 'wpsso' ) . '</i>' : '' ) . ')';
@@ -674,11 +675,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			} else {
 
-				$media_lib = __( 'Media Library', 'wpsso' );
-				$func_url  = __( 'https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/', 'wpsso' );
-				$func_name = 'wp_get_attachment_metadata()';
-				$regen_msg = sprintf( __( 'You may consider regenerating the thumbnails of all WordPress Media Library images using one of <a href="%s">several available plugins from WordPress.org</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/regenerate+thumbnails/' );
-				$edit_url  = get_edit_post_link( $pid );
+				$media_lib    = __( 'Media Library', 'wpsso' );
+				$func_url     = __( 'https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/', 'wpsso' );
+				$func_name    = 'wp_get_attachment_metadata()';
+				$regen_msg    = sprintf( __( 'You may consider regenerating the thumbnails of all WordPress Media Library images using one of <a href="%s">several available plugins from WordPress.org</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/regenerate+thumbnails/' );
+				$img_edit_url = get_edit_post_link( $pid );
+				$img_title    = get_the_title( $pid );
 
 				if ( isset( $img_meta[ 'file' ] ) ) {
 
@@ -694,7 +696,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					if ( $this->p->notice->is_admin_pre_notices() ) { // Skip if notices already shown.
 
-						$error_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the full size image dimensions for <a href="%2$s">image ID %3$s</a> are missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' ), $media_lib, $edit_url, $pid, $func_url, '<code>' . $func_name . '</code>' );
+						$error_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the full size image dimensions for <a href="%2$s">image ID %3$s</a> are missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' ), $media_lib, $img_edit_url, $pid, $func_url, '<code>' . $func_name . '</code>' );
 
 						$this->p->notice->err( $error_msg . ' ' . $regen_msg, null, $notice_key, $dismiss_time );
 
@@ -718,7 +720,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					if ( $this->p->notice->is_admin_pre_notices() ) { // Skip if notices already shown.
 
-						$error_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the full size image file path for <a href="%2$s">image ID %3$s</a> is missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' ), $media_lib, $edit_url, $pid, $func_url, '<code>' . $func_name . '</code>' );
+						$error_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the full size image file path for <a href="%2$s">image ID %3$s</a> is missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' ), $media_lib, $img_edit_url, $pid, $func_url, '<code>' . $func_name . '</code>' );
 
 						$this->p->notice->err( $error_msg . ' ' . $regen_msg, null, $notice_key, $dismiss_time );
 
@@ -1806,10 +1808,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 */
 		public function img_size_within_limits( $img_mixed, $size_name, $img_width, $img_height, $media_lib = null ) {
 
-			$cf_min    = $this->p->cf[ 'head' ][ 'limit_min' ];
-			$cf_max    = $this->p->cf[ 'head' ][ 'limit_max' ];
-			$img_ratio = 0;
-			$img_label = $img_mixed;
+			$cf_min     = $this->p->cf[ 'head' ][ 'limit_min' ];
+			$cf_max     = $this->p->cf[ 'head' ][ 'limit_max' ];
+			$img_ratio  = 0;
+			$img_label  = $img_mixed;
+			$size_label = $this->p->util->get_image_size_label( $size_name );
 
 			if ( 0 !== strpos( $size_name, $this->p->lca . '-' ) ) {	// Only check our own sizes.
 				return true;
@@ -1821,9 +1824,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( is_numeric( $img_mixed ) ) {
 
-				$edit_url  = get_edit_post_link( $img_mixed );
-				$img_label = sprintf( __( 'image ID %s', 'wpsso' ), $img_mixed );
-				$img_label = empty( $edit_url ) ? $img_label : '<a href="' . $edit_url . '">' . $img_label . '</a>';
+				$img_edit_url = get_edit_post_link( $img_mixed );
+				$img_title    = get_the_title( $pid );
+				$img_label    = sprintf( __( 'image ID %1$s (%2$s)', 'wpsso' ), $img_mixed, $img_title );
+				$img_label    = empty( $img_edit_url ) ? $img_label : '<a href="' . $img_edit_url . '">' . $img_label . '</a>';
 
 			} elseif ( false !== strpos( $img_mixed, '://' ) ) {
 
@@ -1937,17 +1941,17 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
 
-					$notice_key   = 'image_' . $img_mixed . '_' . $img_width . 'x' . $img_height . '_' . $size_name . '_ratio_greater_than_allowed';
-					$dismiss_time = true;
-					$size_label   = $this->p->util->get_image_size_label( $size_name );
-					$error_msg    = __( '%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>.', 'wpsso' );
+					$notice_key = 'image_' . $img_mixed . '_' . $img_width . 'x' . $img_height . '_' . $size_name . '_ratio_greater_than_allowed';
+
+					$error_msg = __( '%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>.', 'wpsso' );
+
 					$rejected_msg = $this->p->msgs->get( 'notice-image-rejected', array( 'size_label' => $size_label, 'allow_upscale' => false ) );
 
 		 			/**
 					 * $media_lib can be 'Media Library', 'NextGEN Gallery', 'Content', etc.
 					 */
 					$this->p->notice->warn( sprintf( $error_msg, $media_lib, $img_label, $img_width . 'x' . $img_height,
-						$max_ratio, $markup_name ) . ' ' . $rejected_msg, null, $notice_key, $dismiss_time );
+						$max_ratio, $markup_name ) . ' ' . $rejected_msg, null, $notice_key, $dismiss_time = true );
 				}
 
 				return false;	// image rejected
@@ -1965,17 +1969,17 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( $this->p->notice->is_admin_pre_notices() ) {	// Skip if notices already shown.
 
-					$notice_key  = 'image_' . $img_mixed . '_' . $img_width . 'x' . $img_height . '_' . $size_name . '_smaller_than_minimum_allowed';
-					$dismiss_time = true;
-					$size_label   = $this->p->util->get_image_size_label( $size_name );
-					$error_msg    = __( '%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>.', 'wpsso' );
+					$notice_key = 'image_' . $img_mixed . '_' . $img_width . 'x' . $img_height . '_' . $size_name . '_smaller_than_minimum_allowed';
+
+					$error_msg = __( '%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>.', 'wpsso' );
+
 					$rejected_msg = $this->p->msgs->get( 'notice-image-rejected', array( 'size_label' => $size_label, 'allow_upscale' => true ) );
 
 		 			/**
 					 * $media_lib can be 'Media Library', 'NextGEN Gallery', 'Content', etc.
 					 */
 					$this->p->notice->warn( sprintf( $error_msg, $media_lib, $img_label, $img_width . 'x' . $img_height,
-						$min_width . 'x' . $min_height, $markup_name ) . ' ' . $rejected_msg, true, $notice_key, $dismiss_time );
+						$min_width . 'x' . $min_height, $markup_name ) . ' ' . $rejected_msg, true, $notice_key, $dismiss_time = true );
 				}
 
 				return false;	// image rejected
