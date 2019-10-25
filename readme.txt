@@ -440,10 +440,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
+	* Added the Media Library image title after the image ID in notice messages.
 	* Added a new "Google Website Verification ID" option.
 	* Updated the "Pinterest Website Verification ID" option help text.
 	* Updated the Schema Person markup to hash the '@id' string URL.
-	* Updated the SSO toolbar notifications text to "Fetching SSO notifications..." .
+	* Updated the preload SSO toolbar notifications text to "Fetching SSO notifications..." .
 * **Bugfixes**
 	* None.
 * **Developer Notes**
