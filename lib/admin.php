@@ -2325,7 +2325,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$menu_icon  = '<span class="ab-icon" id="' . $this->p->lca . '-toolbar-notices-icon"></span>';
 			$menu_count = '<span id="' . $this->p->lca . '-toolbar-notices-count">0</span>';
 
-			$no_notices_text = sprintf( __( 'No new %s notifications.', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
+			$no_notices_text = sprintf( __( 'Getting %s notification...', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
 
 			$wp_admin_bar->add_node( array(
 				'id'     => $this->p->lca . '-toolbar-notices',

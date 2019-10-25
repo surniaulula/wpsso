@@ -300,15 +300,10 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				/**
 				 * Admin toolbar notices.
 				 */
-				#wpadminbar #wp-toolbar #' . $this->p->lca . '-toolbar-notices-count {
-					display:none;
-				}
-
 				#wpadminbar #wp-toolbar #' . $this->p->lca . '-toolbar-notices-icon.ab-icon::before { 
-					font-size:26px;
+					font-size:28px;
 					font-style:normal;
 					content:"' . $this->p->cf[ 'menu' ][ 'before' ] . '";
-					top:1px;
 				}
 
 				/**

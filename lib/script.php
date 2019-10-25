@@ -268,8 +268,8 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			}
 
 			/**
-			 * Exit early if this is a block editor page.
-			 * The notices will be retrieved using an ajax call on page load and post save.
+			 * Exit early if this is a block editor page - the notices will be retrieved using an ajax call on page
+			 * load and post save.
 			 */
 			if ( SucomUtilWP::doing_block_editor() ) {
 
@@ -291,11 +291,9 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			$no_notices_html = '<div class="ab-item ab-empty-item">' . $no_notices_text . '</div>';
 
 			/**
-			 * A wpssoUpdateToolbar() function will exist in block editor pages
-			 * (see js/block-editor-admin.js), but not in other admin pages, like
-			 * settings pages for example. If the function does not exist, then
-			 * create the wpssoUpdateToolbar() function and call it when the
-			 * document is loaded (aka ready).
+			 * A wpssoUpdateToolbar() function will exist in block editor pages (see js/block-editor-admin.js), but not
+			 * in other admin pages, like settings pages for example. If the function does not exist, then create the
+			 * wpssoUpdateToolbar() function and call it when the document is loaded (aka ready).
 			 */
 			?>
 			<script type="text/javascript">
@@ -387,10 +385,9 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 		}
 
 		/**
-		 * Add jQuery to correctly follow the Install / Update link when clicked (WordPress bug).
-		 * Also adds the parent URL and settings page title as query arguments, which are then
-		 * used by WpssoAdmin class filters to return the user back to the settings page after
-		 * installing / activating / updating the plugin.
+		 * Add jQuery to correctly follow the Install / Update link when clicked (WordPress bug). Also adds the parent URL
+		 * and settings page title as query arguments, which are then used by WpssoAdmin class filters to return the user
+		 * back to the settings page after installing / activating / updating the plugin.
 		 */
 		private function add_plugin_install_iframe_script( $hook_name ) {	// $hook_name = plugin-install.php
 
