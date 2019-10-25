@@ -435,19 +435,56 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.9.1-b.1 (2019/10/25)**
+**Version 6.10.0-b.1 (2019/10/25)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added a new "Google Website Verification ID" option.
 	* Updated the "Pinterest Website Verification ID" option help text.
-	* Updated the Schema Person markup to hash the '@id' string.
+	* Updated the Schema Person markup to hash the '@id' string URL.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Updated the WpssoSchemaSingle::add_person_data() method to hash the '@id' string.
-	* Added an `$hash_url` argument in WpssoSchema::update_data_id().
+	* Added a new `$hash_url` argument in the WpssoSchema::update_data_id() method.
+	* Updated the WpssoSchemaSingle::add_person_data() method to hash the '@id' string URL.
+	* Moved place / location specific "Head Tags" option keys from WPSSO Core to WPSSO PLM:
+		* 'add_link_itemprop_hasmenu'
+		* 'add_link_itemprop_servescuisine'
+		* 'add_meta_itemprop_address'
+		* 'add_meta_itemprop_telephone'
+		* 'add_meta_itemprop_currenciesaccepted'
+		* 'add_meta_itemprop_paymentaccepted'
+		* 'add_meta_itemprop_pricerange'
+		* 'add_meta_itemprop_acceptsreservations'
+	* Removed deprecated "Head Tags" option keys (these values are available in JSON-LD markup, not meta tags).
+		* 'add_link_itemprop_author.url'
+		* 'add_link_itemprop_author.image'
+		* 'add_link_itemprop_contributor.url'
+		* 'add_link_itemprop_contributor.image'
+		* 'add_link_itemprop_image.url'
+		* 'add_meta_itemprop_email'
+		* 'add_meta_itemprop_image.width'
+		* 'add_meta_itemprop_image.height'
+		* 'add_meta_itemprop_publisher.name'
+		* 'add_meta_itemprop_author.name'
+		* 'add_meta_itemprop_author.description'
+		* 'add_meta_itemprop_contributor.name'
+		* 'add_meta_itemprop_contributor.description'
+		* 'add_meta_itemprop_openinghoursspecification.dayofweek'
+		* 'add_meta_itemprop_openinghoursspecification.opens'
+		* 'add_meta_itemprop_openinghoursspecification.closes'
+		* 'add_meta_itemprop_openinghoursspecification.validfrom'
+		* 'add_meta_itemprop_openinghoursspecification.validthrough'
+		* 'add_meta_itemprop_startdate'
+		* 'add_meta_itemprop_enddate'
+		* 'add_meta_itemprop_location'
+		* 'add_meta_itemprop_preptime'
+		* 'add_meta_itemprop_cooktime'
+		* 'add_meta_itemprop_totaltime'
+		* 'add_meta_itemprop_recipeyield'
+		* 'add_meta_itemprop_recipeingredient'
+		* 'add_meta_itemprop_recipeinstructions'
 
 **Version 6.9.0 (2019/10/22)**
 
@@ -598,9 +635,9 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 
 == Upgrade Notice ==
 
-= 6.9.1-b.1 =
+= 6.10.0-b.1 =
 
-(2019/10/25) Added a new "Google Website Verification ID" option. Updated the Schema Person markup to hash the '@id' string.
+(2019/10/25) Added a new "Google Website Verification ID" option. Updated the Schema Person markup to hash the '@id' string URL.
 
 = 6.9.0 =
 
