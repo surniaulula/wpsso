@@ -3594,9 +3594,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$table_rows[ 'schema_img_max' ] = $form->get_tr_hide( 'basic', 'schema_img_max' ) . 
 			$form->get_th_html( _x( 'Maximum Images to Include', 'option label', 'wpsso' ), '', 'schema_img_max' ) . 
 			'<td>' . $form->get_select( 'schema_img_max', range( 0, $this->p->cf[ 'form' ][ 'max_media_items' ] ),
-				$css_class = 'short', $css_id = '', $is_assoc = true ) . ( empty( $form->options[ 'og_vid_prev_img' ] ) ?
-					'' : ' <em>' . _x( 'video preview images are enabled (and included first)',
-						'option comment', 'wpsso' ) . '</em>' ) . '</td>';
+				$css_class = 'short', $css_id = '', $is_assoc = true ) .
+			( empty( $form->options[ 'og_vid_prev_img' ] ) ? '' : ' <em>' .
+				_x( 'note that video preview images are enabled (and included first)', 
+					'option comment', 'wpsso' ) . '</em>' ) . '</td>';
 
 			$table_rows[ 'schema_img' ] = $form->get_tr_hide_img_dim( 'basic', 'schema_img' ) . 
 			$form->get_th_html( _x( 'Schema Image Size', 'option label', 'wpsso' ), '', 'schema_img_size' ) . 
@@ -3624,7 +3625,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$table_rows[ 'schema_desc_max_len' ] = $form->get_tr_hide( 'basic', 'schema_desc_max_len' ) . 
 			$form->get_th_html( _x( 'Max. Schema Description Length', 'option label', 'wpsso' ), '', 'schema_desc_max_len' ) . 
-			'<td>' . $form->get_input( 'schema_desc_max_len', 'short' ) . ' ' . _x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
+			'<td>' . $form->get_input( 'schema_desc_max_len', 'short' ) . ' ' .
+			_x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
 		}
 
 		/**

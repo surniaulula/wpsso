@@ -219,12 +219,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-og_img_max':	// Maximum Images.
-
-							$text = __( 'The maximum number of images to include in the Facebook / Open Graph meta tags.', 'wpsso' ) . ' ';
-
-						 	break;
-
 						case 'tooltip-meta-og_img_crop_area':
 
 							$text = __( 'The main subject area of the Facebook / Open Graph image.', 'wpsso' );
@@ -248,21 +242,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= '<em>' . __( 'This field is disabled if a custom image ID has been selected.', 'wpsso' ) . '</em>';
 
 							break;
-
-						case 'tooltip-meta-og_vid_prev_img':
-
-							$prev_option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_videos',
-								_x( 'Include Video Preview Images', 'option label', 'wpsso' ) );
-
-							$text = sprintf( __( 'When the %s option is enabled, and a preview image is available, it will be included in the Facebook / Open Graph meta tags before any other image (custom, featured, attached, etc.).', 'wpsso' ), $prev_option_link );
-
-						 	break;
-
-						case 'tooltip-meta-og_vid_max':
-
-							$text = __( 'The maximum number of embedded videos to include in the Facebook / Open Graph meta tags and Schema markup.', 'wpsso' );
-
-						 	break;
 
 						case 'tooltip-meta-og_vid_dimensions':
 
@@ -296,12 +275,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= __( 'The video name / title and description will be used in the video Schema JSON-LD markup (add-on required).', 'wpsso' );
 
 							break;
-
-						case 'tooltip-meta-schema_img_max':	// Maximum Images.
-
-							$text = __( 'The maximum number of images to include in the Schema meta tags and JSON-LD markup.', 'wpsso' );
-
-						 	break;
 
 						case 'tooltip-meta-schema_img_crop_area':
 
@@ -547,7 +520,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 */
 						case 'tooltip-og_img_max':		// Maximum Images to Include.
 
-							$text = __( 'The maximum number of images to include in the Facebook / Open Graph meta tags &mdash; this includes the <em>featured</em> image, <em>attached</em> images, and any images found in the content.', 'wpsso' ) . ' ';
+							$text = __( 'The maximum number of images to include in meta tags &mdash; this includes the <em>featured</em> image, <em>attached</em> images, and any images found in the content.', 'wpsso' ) . ' ';
 
 							$text .= __( 'If you select "0", then no images will be included in the Facebook / Open Graph meta tags (<strong>not recommended</strong>).', 'wpsso' ) . ' ';
 
@@ -592,19 +565,21 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 */
 						case 'tooltip-og_vid_max':		// Maximum Videos to Include.
 
-							$text = 'The maximum number of videos, found in the Post or Page content, to include in the Facebook / Open Graph and Pinterest Rich Pin meta tags. If you select "0", then no videos will be listed in the Facebook / Open Graph and Pinterest Rich Pin meta tags. There is no advantage in selecting a maximum value greater than 1.';
+							$text = __( 'The maximum number of embedded videos to include in meta tags and Schema markup.', 'wpsso' );
 
 							break;
 
 						case 'tooltip-og_vid_prev_img':		// Include Video Preview Images.
 
-							$text = 'Include video preview images in the webpage meta tags (default is unchecked). When video preview images are enabled and available, they are included before any custom, featured, attached, etc. images.';
+							$text = __( 'Include video preview images in meta tags and Schema markup.', 'wpsso' ) . ' ';
+
+							$text .= __( 'When video preview images are enabled and a preview image is available, it will be included in meta tags and Schema markup before any other image (custom, featured, attached, or content image).', 'wpsso' );
 
 							break;
 
 						case 'tooltip-og_vid_autoplay':		// Force Autoplay when Possible.
 
-							$text = 'When possible, add or modify the "autoplay" argument of video URLs in webpage meta tags (default is checked).';
+							$text = __( 'When possible, add or modify the "autoplay" argument of video URLs in webpage meta tags (default is checked).', 'wpsso' );
 
 							break;
 

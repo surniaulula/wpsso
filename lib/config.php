@@ -927,7 +927,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_img_max'                 => 1,
 					'og_vid_max'                 => 1,
 					'og_vid_autoplay'            => 1,
-					'og_vid_prev_img'            => 1,
+					'og_vid_prev_img'            => 1,			// Include Video Preview Images.
 					'og_def_img_id'              => '',			// Default / Fallback Image ID.
 					'og_def_img_id_pre'          => 'wp',
 					'og_def_img_url'             => '',			// or Default / Fallback Image URL.

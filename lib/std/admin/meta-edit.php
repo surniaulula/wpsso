@@ -370,7 +370,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Maximum Images', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-og_img_max',
+					'tooltip'  => 'og_img_max',	// Use tooltip message from settings.
 					'content'  => $form->get_no_select( 'og_img_max',
 						range( 0, $this->p->cf[ 'form' ][ 'max_media_items' ] ), 'medium' ),
 				) : '',	// Placeholder if not a post module.
@@ -398,15 +398,17 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Include Preview Images', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-og_vid_prev_img',
-					'content'  => $form->get_no_checkbox( 'og_vid_prev_img' ),
+					'tooltip'  => 'og_vid_prev_img',	// Use tooltip message from settings.
+					'content'  => $form->get_no_checkbox( 'og_vid_prev_img' ) . ' <em>' .
+						_x( 'note that video preview images are included first',
+							'option comment', 'wpsso' ) . '</em>',
 				),
 				'og_vid_max' => $mod[ 'is_post' ] ? array(
 					'tr_class' => $form->get_css_class_hide( 'basic', 'og_vid_max' ),
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Maximum Videos', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-og_vid_max',
+					'tooltip'  => 'og_vid_max',	// Use tooltip message from settings.
 					'content'  => $form->get_no_select( 'og_vid_max',
 						range( 0, $this->p->cf[ 'form' ][ 'max_media_items' ] ), 'medium' ),
 				) : '',	// Placeholder if not a post module.
@@ -511,7 +513,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Maximum Images', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-schema_img_max',
+					'tooltip'  => 'schema_img_max',	// Use tooltip message from settings.
 					'content'  => $form->get_no_select( 'schema_img_max',
 						range( 0, $this->p->cf[ 'form' ][ 'max_media_items' ] ), 'medium' ),
 				);
