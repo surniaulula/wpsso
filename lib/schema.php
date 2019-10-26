@@ -2390,9 +2390,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			/**
-			 * Maybe hash the '@id' URL to hide WordPress login usernames. Use a leading slash to create the same path
-			 * for the same URLs between different Schema JSON-LD scripts (ie. not relative to the current path). For
-			 * example:
+			 * Possibly hash the '@id' URL to hide a WordPress login username (as one example). Since Google reads the
+			 * '@id' value as a URL, use a leading slash to create the same path for the same '@id' URLs between
+			 * different Schema JSON-LD scripts (ie. not relative to the current webpage). For example:
 			 *
 			 *	"@id": "http://adm.surniaulula.com/author/manovotny/#id/person"
 			 *	"@id": "/06d3730efc83058f497d3d44f2f364e3#id/person"
