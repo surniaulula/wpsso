@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires At Least: 3.9
 Tested Up To: 5.3
 WC Tested Up To: 3.7.1
-Stable Tag: 6.9.0
+Stable Tag: 6.10.0
 
 Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.
 
@@ -640,8 +640,4 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 = 6.10.0 =
 
 (2019/10/26) Added a new "Google Website Verification ID" option. Updated the Schema Person markup to hash the '@id' string URL.
-
-= 6.9.0 =
-
-(2019/10/22) Minor CSS adjustments for the new WordPress v5.3 form styles. Fixed an array merge warning when adding co-author URLs to Open Graph meta tags.
 
