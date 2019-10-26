@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 6.10.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-10-25 16:17-0700\n"
-"PO-Revision-Date: 2019-10-25 16:18-0700\n"
+"POT-Creation-Date: 2019-10-26 10:11-0700\n"
+"PO-Revision-Date: 2019-10-26 10:11-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1085,18 +1085,18 @@ msgstr "Le dossier de cache %s n'est pas accessible en écriture."
 msgid "Failed to open the cache file %s for writing."
 msgstr "Impossible d'ouvrir le fichier de cache %s pour écriture."
 
-#: lib/com/form.php:1150 lib/gettext-com.php:23
+#: lib/com/form.php:1146 lib/gettext-com.php:23
 msgctxt "option comment"
 msgid "crop"
 msgstr "recadrer"
 
-#: lib/com/form.php:1156 lib/gettext-com.php:24
+#: lib/com/form.php:1152 lib/gettext-com.php:24
 msgctxt "option comment"
 msgid "from"
 msgstr "de"
 
 # Ignore the post type to avoid gender issues in the French translation.
-#: lib/com/form.php:1915 lib/gettext-com.php:25 lib/post.php:1339
+#: lib/com/form.php:1911 lib/gettext-com.php:25 lib/post.php:1339
 #: lib/wp-meta.php:580 lib/wp-meta.php:710
 msgid "Save a draft version or publish to update this value."
 msgstr "Sauvegardez une version préliminaire ou publiez pour mettre à jour cette valeur."
