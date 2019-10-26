@@ -435,7 +435,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.10.0-rc.1 (2019/10/26)**
+**Version 6.10.0 (2019/10/26)**
 
 * **New Features**
 	* None.
@@ -452,13 +452,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Updated the WpssoSchemaSingle::add_person_data() method to hash the '@id' string URL.
 	* Moved place / location specific "Head Tags" option keys from WPSSO Core to WPSSO PLM:
 		* 'add_link_itemprop_hasmenu'
-		* 'add_link_itemprop_servescuisine'
 		* 'add_meta_itemprop_address'
 		* 'add_meta_itemprop_telephone'
 		* 'add_meta_itemprop_currenciesaccepted'
 		* 'add_meta_itemprop_paymentaccepted'
 		* 'add_meta_itemprop_pricerange'
 		* 'add_meta_itemprop_acceptsreservations'
+		* 'add_meta_itemprop_servescuisine'
 	* Removed deprecated "Head Tags" option keys (these values are available in JSON-LD markup, not meta tags).
 		* 'add_link_itemprop_author.url'
 		* 'add_link_itemprop_author.image'
@@ -637,7 +637,7 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 
 == Upgrade Notice ==
 
-= 6.10.0-rc.1 =
+= 6.10.0 =
 
 (2019/10/26) Added a new "Google Website Verification ID" option. Updated the Schema Person markup to hash the '@id' string URL.
 
