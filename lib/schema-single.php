@@ -1147,8 +1147,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$ret = apply_filters( $wpsso->lca . '_json_data_single_person', $ret, $mod, $person_id );
 
 			/**
-			 * Update the @id string based on the $sharing_url and the $person_type_id. Encode the URL part of the @id
-			 * string to hide the WordPress login username.
+			 * Update the '@id' string based on the $sharing_url and the $person_type_id. Encode the URL part of the
+			 * '@id' string to hide the WordPress login username.
 			 */
 			WpssoSchema::update_data_id( $ret, $person_type_id, $sharing_url, $hash_url = true );
 

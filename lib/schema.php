@@ -2389,9 +2389,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$json_data = array( '@id' => $new_id ) + $json_data;	// Make @id the first value in the array.
 			}
 
+			/**
+			 * Maybe hash the '@id' URL to hide WordPress login usernames. Use a leading slash to create the same path
+			 * for the same URLs between different Schema JSON-LD scripts (ie. not relative to the current path). For
+			 * example:
+			 *
+			 *	"@id": "http://adm.surniaulula.com/author/manovotny/#id/person"
+			 *	"@id": "/06d3730efc83058f497d3d44f2f364e3#id/person"
+			 */
 			if ( $hash_url ) {
 				$json_data[ '@id' ] = preg_replace( '/^(.*:\/\/.*)(' . preg_quote( $id_anchor, '/' ) . '.*)?$/U',
-					md5( '$1' ) . '$2', $json_data[ '@id' ] );
+					'/' . md5( '$1' ) . '$2', $json_data[ '@id' ] );
 			}
 
 			if ( $wpsso->debug->enabled ) {

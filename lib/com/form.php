@@ -506,8 +506,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 			}
 
-			$html .= "\n" . '<select id="' . esc_attr( $input_id ) . '"';
+			$html .= "\n" . '<select ';
 			$html .= $is_disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"';
+			$html .= ' id="' . esc_attr( $input_id ) . '"';	// Always has a value.
 			$html .= empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"';
 			$html .= empty( $default_value ) ? '' : ' data-default-value="' . esc_attr( $default_value ) . '"';
 			$html .= empty( $default_text ) ? '' : ' data-default-text="' . esc_attr( $default_text ) . '"';
@@ -596,31 +597,26 @@ if ( ! class_exists( 'SucomForm' ) ) {
 								$hide_class = 'hide_' . esc_js( $name );
 								$show_class = 'hide_' . esc_js( $name . '_' . $show_value );
 
+								$html .= '<script type="text/javascript">';
+
 								if ( 'on_show_unhide_rows' === $event_name ) {
 
-									$html .= '<script type="text/javascript">';
 									$html .= 'jQuery( \'tr#' . esc_js( $tr_id ) . '\' ).on( \'show\', function(){';
 									$html .= 'sucomSelectChangeUnhideRows( \'' . $hide_class . '\', \'' . $show_class . '\' );';
 									$html .= '});';
-									$html .= '</script>' . "\n";
 
 								} else {
 
-									$html .= '<script type="text/javascript">';
-
 									if ( SucomUtil::get_const( 'DOING_AJAX' ) ) {
-
 										$html .= 'sucomSelectChangeUnhideRows( \'' . $hide_class . '\', \'' . $show_class . '\' );';
-
-									} else {
-
-										$html .= 'jQuery( window ).load( function(){';
-										$html .= 'sucomSelectChangeUnhideRows( \'' . $hide_class . '\', \'' . $show_class . '\' );';
-										$html .= '});';
 									}
 
-									$html .= '</script>' . "\n";
+									$html .= 'jQuery( window ).load( function(){';
+									$html .= 'sucomSelectChangeUnhideRows( \'' . $hide_class . '\', \'' . $show_class . '\' );';
+									$html .= '});';
 								}
+
+								$html .= '</script>' . "\n";
 							}
 						}
 
@@ -786,7 +782,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$css_class   = trim( 'hour-mins ' . $css_class );
 			$event_names = array( 'on_focus_load_json' );
-			$event_args = 'hour_mins_step_' . $step_mins;	// JSON array variable name.
+			$event_args  = 'hour_mins_step_' . $step_mins;	// JSON array variable name.
 
 			/**
 			 * Set 'none' as the default value if no default is defined.
@@ -2172,7 +2168,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$html = '';
 
-			if ( $this->show_hide_js_added ) {
+			if ( $this->show_hide_js_added ) {	// Only add the event script once.
 				return $html;
 			}
 
