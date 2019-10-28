@@ -1,14 +1,14 @@
 
-WPSSO CORE PREMIUM LICENSE AGREEMENT
+WPSSO CORE PREMIUM LIFETIME NONTRANSFERABLE LICENSE AGREEMENT
 
 IMPORTANT: READ THIS AGREEMENT CAREFULLY. BY INSTALLING, COPYING, RUNNING, OR
-OTHERWISE USING THE WPSSO CORE PREMIUM APPLICATION, YOU AGREE TO BE BOUND BY THE
-TERMS OF THIS LICENSE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF THIS
-LICENSE AGREEMENT, PLEASE DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO
-CORE PREMIUM APPLICATION.
+OTHERWISE USING THE WPSSO CORE PREMIUM APPLICATION, YOU AGREE TO BE BOUND BY
+THE TERMS OF THIS LICENSE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF THIS
+LICENSE AGREEMENT, DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO CORE
+PREMIUM APPLICATION.
 
 This License Agreement ("License") is a legal agreement between you and
-Jean-Sebastien Morisset ("The Author") concerning your use of the WPSSO Core
+Jean-Sebastien Morisset ("the Author") concerning your use of the WPSSO Core
 Premium application, together with any electronic documentation that may be
 provided therewith (collectively, "the Application") through the Application.
 YOU HEREBY AGREE, BOTH ON YOUR OWN BEHALF AND AS AN AUTHORIZED REPRESENTATIVE
@@ -59,18 +59,19 @@ INDIRECT DAMAGES, SO THE ABOVE LIMITATION MAY NOT APPLY TO YOU.
 3. License Grant. Subject to the terms and conditions of this Agreement and
 upon Licensee's full payment of the applicable fees the Author grants to you,
 and you accept, a personal, nonexclusive, nontransferable license to install
-and use the Application at a single site address per license purchased. For
-the purposes of this License the single site address shall mean a website,
-accessible by one fully qualified domain name and path to its document root as
-defined in the WordPress Site Address option. This License is effective until
-terminated as provided below. You may terminate this License by destroying the
-Application and any copies of the Application in your possession. This License
-will terminate automatically upon any violation of its terms by you or the
-Employer.
+and use the Application at a single Site Address per License purchased. For the
+purposes of this License a single Site Address shall mean a website, accessible
+by one fully qualified domain name and path to its document root as defined in
+the WordPress Site Address option ("Site Address"). This License is effective
+until terminated as provided below. You may terminate this License by
+destroying the Application and any copies of the Application in your
+possession. This License will terminate automatically upon any violation of its
+terms by you or the Employer.
 
 4. Support and upgrading. Licensee is entitled to receive upgrades of the
-Application at no additional fees for a minimum of one year. There is no
-support included or implied with the Application license.
+Application, using the WordPress Upgrade system, at no additional fees for each
+licensed single Site Address. There is no support included or implied with the
+Application license.
 
 5. License Restrictions. You may not do any of the following yourself, or
 through any third party, and you may not permit any third party with whom you
