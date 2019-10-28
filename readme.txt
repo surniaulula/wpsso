@@ -439,7 +439,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.10.1-dev.1 (2019/10/28)**
+**Version 6.10.1-dev.2 (2019/10/28)**
 
 * **New Features**
 	* None.
@@ -652,7 +652,7 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 
 == Upgrade Notice ==
 
-= 6.10.1-dev.1 =
+= 6.10.1-dev.2 =
 
 (2019/10/28) Fixed non-working table row show / hide jQuery event triggers after refreshing the metabox in the block editor.
 
