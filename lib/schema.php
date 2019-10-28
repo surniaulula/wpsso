@@ -1221,13 +1221,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $type_id;
 		}
 
-		public function get_children_css_class( $type_id, $class_names = 'hide_schema_type', $exclude_match = '' ) {
+		public function get_children_css_class( $type_id, $class_prefix = 'hide_schema_type', $exclude_match = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			$class_prefix = empty( $class_names ) ? '' : SucomUtil::sanitize_hookname( $class_names ) . '_';
+			if ( empty( $class_prefix ) ) {
+				$css_classes  = '';
+				$class_prefix = '';
+			} else {
+				$css_classes  = $class_prefix;
+				$class_prefix = SucomUtil::sanitize_hookname( $class_prefix ) . '_';
+			}
 
 			foreach ( $this->get_schema_type_children( $type_id ) as $child ) {
 
@@ -1237,12 +1243,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 				}
 
-				$class_names .= ' ' . $class_prefix . SucomUtil::sanitize_hookname( $child );
+				$css_classes .= ' ' . $class_prefix . SucomUtil::sanitize_hookname( $child );
 			}
 
-			$class_names = trim( $class_names );
+			$css_classes = trim( $css_classes );
 
-			return $class_names;
+			return $css_classes;
 		}
 
 		public function is_schema_type_child( $child_id, $member_id ) {

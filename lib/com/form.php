@@ -393,11 +393,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 			}
 
-			$html        = '';
-			$tr_id       = empty( $css_id ) ? 'tr_' . $name : 'tr_' . $css_id;
-			$input_id    = empty( $css_id ) ? 'select_' . $name : 'select_' . $css_id;
-			$in_options  = $this->in_options( $name );	// Optimize and call only once - returns true or false.
-			$in_defaults = $this->in_defaults( $name );	// Optimize and call only once - returns true or false.
+			$html           = '';
+			$row_id         = empty( $css_id ) ? 'tr_' . $name : 'tr_' . $css_id;
+			$input_id       = empty( $css_id ) ? 'select_' . $name : 'select_' . $css_id;
+			$in_options     = $this->in_options( $name );	// Optimize and call only once - returns true or false.
+			$in_defaults    = $this->in_defaults( $name );	// Optimize and call only once - returns true or false.
+			$selected_value = '';
 
 			$select_opt_count = 0;	// Used to check for first option.
 			$select_opt_added = 0;
@@ -491,6 +492,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$is_selected_html = '';
 				}
 
+				if ( $is_selected_html ) {
+					$selected_value = $option_value;
+				}
+
 				$select_opt_count++;	// Used to check for first option.
 
 				/**
@@ -519,6 +524,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			foreach ( $event_names as $event_name ) {
 
+				$html .= '<!-- event name: ' . $event_name . ' -->' . "\n";
+
 				switch ( $event_name ) {
 
 					case 'on_focus_show':
@@ -533,7 +540,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					case 'on_focus_load_json':
 
-						$html .= $this->get_event_json_script( $event_json, $select_opt_arr, $input_id );
+						$html .= $this->get_event_load_json_script( $event_json, $select_opt_arr, $input_id );
 
 						break;
 
@@ -561,7 +568,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					case 'on_show_unhide_rows':
 
-						$html .= $this->get_show_hide_script();
+						$html .= $this->get_show_hide_trigger_script();
 
 						// No break.
 
@@ -573,51 +580,36 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						$html .= '});';
 						$html .= '</script>' . "\n";
 
+						$html .= '<!-- selected value: ' . $selected_value . ' -->' . "\n";
+
 						/**
 						 * If we have an option selected, unhide those rows.
 						 */
-						if ( false !== $selected ) {
+						if ( $selected_value ) {
 
-							$show_value = false;
+							$hide_class = 'hide_' . esc_js( $name );
+							$show_class = 'hide_' . esc_js( $name . '_' . $selected_value );
 
-							if ( true === $selected ) {
+							$html .= '<script type="text/javascript">';
 
-								if ( $in_options ) {
-									$show_value = $this->options[ $name ];
-								} elseif ( $in_defaults ) {
-									$show_value = $this->defaults[ $name ];
-								}
+							if ( 'on_show_unhide_rows' === $event_name ) {
+
+								$html .= 'jQuery( \'tr#' . esc_js( $row_id ) . '\' ).on( \'show\', function(){';
+								$html .= 'sucomSelectChangeUnhideRows( \'' . $hide_class . '\', \'' . $show_class . '\' );';
+								$html .= '});';
 
 							} else {
-								$show_value = $selected;
-							}
 
-							if ( false !== $show_value ) {	// Just in case.
-
-								$hide_class = 'hide_' . esc_js( $name );
-								$show_class = 'hide_' . esc_js( $name . '_' . $show_value );
-
-								$html .= '<script type="text/javascript">';
-
-								if ( 'on_show_unhide_rows' === $event_name ) {
-
-									$html .= 'jQuery( \'tr#' . esc_js( $tr_id ) . '\' ).on( \'show\', function(){';
+								if ( SucomUtil::get_const( 'DOING_AJAX' ) ) {
 									$html .= 'sucomSelectChangeUnhideRows( \'' . $hide_class . '\', \'' . $show_class . '\' );';
-									$html .= '});';
-
 								} else {
-
-									if ( SucomUtil::get_const( 'DOING_AJAX' ) ) {
-										$html .= 'sucomSelectChangeUnhideRows( \'' . $hide_class . '\', \'' . $show_class . '\' );';
-									}
-
 									$html .= 'jQuery( window ).load( function(){';
 									$html .= 'sucomSelectChangeUnhideRows( \'' . $hide_class . '\', \'' . $show_class . '\' );';
 									$html .= '});';
 								}
-
-								$html .= '</script>' . "\n";
 							}
+
+							$html .= '</script>' . "\n";
 						}
 
 						break;
@@ -820,8 +812,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		 */
 		public function get_select_timezone( $name, $css_class = '', $css_id = '', $is_disabled = false, $selected = false ) {
 
-			$css_class = trim( 'timezone ' . $css_class );
-
+			$css_class   = trim( 'timezone ' . $css_class );
 			$timezones   = timezone_identifiers_list();
 			$event_names = array( 'on_focus_load_json' );
 			$event_args  = 'timezones';	// JSON array variable name.
@@ -1635,7 +1626,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 										$select_opt_added++; 
 									}
 								}
-								
+
 								$html .= "\n" . '<select ';
 								$html .= $opt_disabled ? ' disabled="disabled"' : '';
 								$html .= ' name="' . esc_attr( $this->opts_name . '[' . $opt_key . ']' ) . '"';
@@ -1651,11 +1642,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 								foreach ( $event_names as $event_name ) { 
 
+									$html .= '<!-- event name: ' . $event_name . ' -->' . "\n";
+
 									switch ( $event_name ) {
 
 										case 'on_focus_load_json':
 
-											$html .= $this->get_event_json_script( $event_json,
+											$html .= $this->get_event_load_json_script( $event_json,
 												$select_opt_arr, 'select_' . $input_id );
 
 											break;
@@ -1842,7 +1835,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_md_form_rows( array $table_rows, array $form_rows, array $head = array(), array $mod = array() ) {
-		
+
 			foreach ( $form_rows as $key => $val ) {
 
 				if ( ! isset( $table_rows[ $key ] ) ) {
@@ -1856,6 +1849,20 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					continue;
 				}
 
+				if ( isset( $val[ 'tr_class' ] ) ) {
+
+					$tr = '<tr class="' . $val[ 'tr_class' ] . '"';
+
+					if ( strpos( $val[ 'tr_class' ], 'hide_' ) === 0 ) {
+						$tr .= ' style="display:none;"';
+					}
+
+					$tr .= '>' . "\n";
+
+				} else {
+					$tr = '';
+				}
+
 				/**
 				 * Table cell HTML.
 				 */
@@ -1863,9 +1870,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					if ( ! empty( $val[ 'table_row' ] ) ) {
 
-						$table_rows[ $key ] = empty( $val[ 'tr_class' ] ) ? '' : '<tr class="' . $val[ 'tr_class' ] . '">' . "\n";
-
-						$table_rows[ $key ] .= $val[ 'table_row' ] . "\n";
+						$table_rows[ $key ] .= $tr . $val[ 'table_row' ] . "\n";
 					}
 
 					continue;
@@ -1888,9 +1893,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				if ( ! empty( $val[ 'header' ] ) ) {
 
-					$table_rows[ $key ] = empty( $val[ 'tr_class' ] ) ? '' : '<tr class="' . $val[ 'tr_class' ] . '">' . "\n";
-
-					$table_rows[ $key ] .= '<td colspan="2"' . ( ! empty( $val[ 'td_class' ] ) ? ' class="' . $val[ 'td_class' ] . '"' : '' ) . '>';
+					$table_rows[ $key ] .= $tr . '<td colspan="2"' . ( empty( $val[ 'td_class' ] ) ? '' : ' class="' . $val[ 'td_class' ] . '"' ) . '>';
 					
 					$table_rows[ $key ] .= '<' . $val[ 'header' ] . '>' . $val[ 'label' ] . '</' . $val[ 'header' ] . '>';
 					
@@ -1898,9 +1901,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				} else {
 
-					$table_rows[ $key ] = empty( $val[ 'tr_class' ] ) ? '' : '<tr class="' . $val[ 'tr_class' ] . '">' . "\n";
-
-					$table_rows[ $key ] .= $this->get_th_html( $val[ 'label' ], 
+					$table_rows[ $key ] .= $tr . $this->get_th_html( $val[ 'label' ], 
 						( empty( $val[ 'th_class' ] ) ? '' : $val[ 'th_class' ] ),
 						( empty( $val[ 'tooltip' ] ) ? '' : $val[ 'tooltip' ] )
 					) . "\n";
@@ -2128,7 +2129,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 ';
 		}
 
-		private function get_event_json_script( $event_json, $select_opt_arr, $input_id ) {
+		private function get_event_load_json_script( $event_json, $select_opt_arr, $input_id ) {
 
 			$html = '';
 
@@ -2164,7 +2165,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		private function get_show_hide_script() {
+		private function get_show_hide_trigger_script() {
 
 			$html = '';
 
@@ -2175,22 +2176,28 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$this->show_hide_js_added = true;
 
 			$html .= <<<EOF
-<!-- create jQuery on show / hide events for table rows -->
 <script type="text/javascript">
-	jQuery.each( [ 'show', 'hide' ], function( i, ev ){
-		var el = jQuery.fn[ ev ];
-		jQuery.fn[ ev ] = function(){
-			if ( jQuery( this ).is( 'tr' ) ) {
-				var css_class = jQuery( this ).attr( 'class' );
-				if ( css_class && css_class.indexOf( 'hide_' ) == 0 ) {
-					this.trigger( ev );
-				}
-			}
-			return el.apply( this, arguments );
-		};
-	});
-</script>
 
+jQuery.each( [ 'show', 'hide' ], function( i, ev ){
+
+	var el = jQuery.fn[ ev ];
+
+	jQuery.fn[ ev ] = function(){
+
+		if ( jQuery( this ).is( 'tr' ) ) {
+
+			var css_class = jQuery( this ).attr( 'class' );
+
+			if ( css_class && css_class.indexOf( 'hide_' ) == 0 ) {
+				this.trigger( ev );
+			}
+		}
+
+		return el.apply( this, arguments );
+	};
+});
+
+</script>
 EOF;
 
 			return $html;

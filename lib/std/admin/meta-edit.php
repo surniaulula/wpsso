@@ -465,17 +465,17 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 				/**
 				 * Hide unless a custom twitter card image exists.
 				 */
-				$tc_tr_class = $form->in_options( '/^' . $tc_pre . '_img_/', true ) ? '' : 'hide_in_basic';
+				$tc_row_class = $form->in_options( '/^' . $tc_pre . '_img_/', true ) ? '' : 'hide_in_basic';
 
 				$form_rows[ 'subsection_tc' ] = array(
-					'tr_class' => $tc_tr_class,
+					'tr_class' => $tc_row_class,
 					'td_class' => 'subsection',
 					'header'   => 'h4',
 					'label'    => $card_label,
 				);
 
 				$form_rows[ $tc_pre . '_img_id' ] = array(
-					'tr_class' => $tc_tr_class,
+					'tr_class' => $tc_row_class,
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
@@ -484,7 +484,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 				);
 
 				$form_rows[ $tc_pre . '_img_url' ] = array(
-					'tr_class' => $tc_tr_class,
+					'tr_class' => $tc_row_class,
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
@@ -499,10 +499,10 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 			$media_info = $this->p->og->get_media_info( $this->p->lca . '-schema',
 				array( 'pid', 'img_url' ), $mod, $md_pre = 'og', $mt_pre = 'og' );
 	
-			$schema_tr_class = $form->in_options( '/^schema_img_/', true ) ? '' : 'hide_in_basic';	// Hide unless a custom schema image exists.
+			$schema_row_class = $form->in_options( '/^schema_img_/', true ) ? '' : 'hide_in_basic';	// Hide unless a custom schema image exists.
 
 			$form_rows[ 'subsection_schema' ] = array(
-				'tr_class' => $schema_tr_class,
+				'tr_class' => $schema_row_class,
 				'td_class' => 'subsection', 'header' => 'h4',
 				'label'    => _x( 'Structured Data / Schema Markup / Pinterest', 'metabox title', 'wpsso' )
 			);
@@ -520,7 +520,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 			}
 
 			$form_rows[ 'schema_img_id' ] = array(
-				'tr_class' => $schema_tr_class,
+				'tr_class' => $schema_row_class,
 				'th_class' => 'medium',
 				'td_class' => 'blank',
 				'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
@@ -529,7 +529,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 			);
 
 			$form_rows[ 'schema_img_url' ] = array(
-				'tr_class' => $schema_tr_class,
+				'tr_class' => $schema_row_class,
 				'th_class' => 'medium',
 				'td_class' => 'blank',
 				'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),

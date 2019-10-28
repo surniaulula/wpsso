@@ -1200,7 +1200,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$user_id = empty( $user_id ) ? get_current_user_id() : $user_id;
 
-			if ( ! isset( self::$cache_pref[ $user_id ][ 'prefs_filtered' ] ) || true !== self::$cache_pref[ $user_id ][ 'prefs_filtered' ] ) {
+			if ( ! isset( self::$cache_pref[ $user_id ][ 'prefs_filtered' ] ) || ! self::$cache_pref[ $user_id ][ 'prefs_filtered' ] ) {
 
 				$wpsso =& Wpsso::get_instance();
 
@@ -1210,12 +1210,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					self::$cache_pref[ $user_id ] = array();
 				}
 
-				self::$cache_pref[ $user_id ][ 'prefs_filtered' ] = true;	// set before calling filter to prevent recursion
+				self::$cache_pref[ $user_id ][ 'prefs_filtered' ] = true;	// Set before calling filter to prevent recursion.
 
 				self::$cache_pref[ $user_id ] = apply_filters( $wpsso->lca . '_get_user_pref', self::$cache_pref[ $user_id ], $user_id );
 
 				if ( ! isset( self::$cache_pref[ $user_id ][ 'show_opts' ] ) ) {
 					self::$cache_pref[ $user_id ][ 'show_opts' ] = $wpsso->options[ 'plugin_show_opts' ];
+				}
+
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log_arr( '$cache_pref', self::$cache_pref[ $user_id ] );
 				}
 			}
 

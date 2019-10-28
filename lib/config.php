@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.10.0',	// Plugin version.
+					'version'     => '6.10.1-dev.1',	// Plugin version.
 					'opt_version' => '674',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2382,8 +2382,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 									'social.media.posting'     => 'https://schema.org/SocialMediaPosting',
 								),
 							),
-							'blog'                 => 'https://schema.org/Blog',
-							'book'                 => 'https://schema.org/Book',
+							'blog' => 'https://schema.org/Blog',
+							'book' => array(
+								'book'       => 'https://schema.org/Book',
+								'book.audio' => 'https://schema.org/Audiobook',
+							),
 							'claim'                => 'https://schema.org/Claim',
 							'clip'                 => 'https://schema.org/Clip',
 							'comment'              => 'https://schema.org/Comment',
@@ -2406,7 +2409,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 							'map'          => 'https://schema.org/Map',
 							'media.object' => array(
-								'audio.object'       => 'https://schema.org/AudioObject',
+								'audio.object'       => array(
+									'audio.object' => 'https://schema.org/AudioObject',
+									'book.audio'   => 'https://schema.org/Audiobook',
+								),
 								'data.download'      => 'https://schema.org/DataDownload',
 								'image.object'       => 'https://schema.org/ImageObject',
 								'media.object'       => 'https://schema.org/MediaObject',

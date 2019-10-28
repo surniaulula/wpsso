@@ -473,11 +473,20 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$metabox_html = '';
 
 			if ( SucomUtil::get_const( 'DOING_AJAX' ) ) {
-				$metabox_html .= '<script type="text/javascript">
-					sucomInitAdminMedia( "' . $container_id . '" );
-					sucomInitMetabox( "' . $container_id . '" );
-					sucomInitToolTips( "' . $container_id . '" );
-				</script>' . "\n";
+
+				$doing_ajax_js = 'true';
+
+				$metabox_html .= '
+<!-- metabox javascript for ajax call -->
+<script type="text/javascript">
+
+	sucomInitAdminMedia( "' . $container_id . '", ' . $doing_ajax_js . ' );
+
+	sucomInitMetabox( "' . $container_id . '", ' . $doing_ajax_js . ' );
+
+	sucomInitToolTips( "' . $container_id . '", ' . $doing_ajax_js . ' );
+
+</script>' . "\n";
 			}
 
 			return $metabox_html;
