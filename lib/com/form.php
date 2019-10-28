@@ -1838,15 +1838,17 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			foreach ( $form_rows as $key => $val ) {
 
-				if ( ! isset( $table_rows[ $key ] ) ) {
-					$table_rows[ $key ] = '';
-				}
+				$table_rows[ $key ] = '';
 
 				/**
 				 * Placeholder.
 				 */
 				if ( empty( $val ) ) {
 					continue;
+				}
+
+				if ( empty( $val[ 'label' ] ) ) {	// Just in case.
+					$val[ 'label' ] = '';
 				}
 
 				if ( isset( $val[ 'tr_class' ] ) ) {
@@ -1876,27 +1878,27 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					continue;
 				}
 
-				$is_auto_draft = false;
-
 				/**
 				 * Do not show the option if the post status is empty or auto-draft.
 				 */
+				$is_auto_draft = false;
+
 				if ( ! empty( $val[ 'no_auto_draft' ] ) ) {
 					if ( $is_auto_draft = SucomUtil::is_auto_draft( $mod ) ) {
 						$val[ 'td_class' ] = empty( $val[ 'td_class' ] ) ? 'blank' : $val[ 'td_class' ] . ' blank';
 					}
 				}
 
-				if ( empty( $val[ 'label' ] ) ) {	// Just in case.
-					$val[ 'label' ] = '';
-				}
+				$td_class = empty( $val[ 'td_class' ] ) ? '' : ' class="' . $val[ 'td_class' ] . '"';
+
+				$col_span = ' colspan="' . ( isset( $val[ 'col_span' ] ) ? $val[ 'col_span' ] : 2 ) . '"';
 
 				if ( ! empty( $val[ 'header' ] ) ) {
 
-					$table_rows[ $key ] .= $tr . '<td colspan="2"' . ( empty( $val[ 'td_class' ] ) ? '' : ' class="' . $val[ 'td_class' ] . '"' ) . '>';
-					
+					$table_rows[ $key ] .= $tr . '<td' . $col_span . $td_class . '>';
+
 					$table_rows[ $key ] .= '<' . $val[ 'header' ] . '>' . $val[ 'label' ] . '</' . $val[ 'header' ] . '>';
-					
+
 					$table_rows[ $key ] .= '</td>' . "\n";
 
 				} else {
@@ -1906,7 +1908,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						( empty( $val[ 'tooltip' ] ) ? '' : $val[ 'tooltip' ] )
 					) . "\n";
 
-					$table_rows[ $key ] .= '<td' . ( empty( $val[ 'td_class' ] ) ? '' : ' class="' . $val[ 'td_class' ] . '"' ) . '>';
+					$table_rows[ $key ] .= '<td' . $col_span . $td_class . '>';
 
 					if ( $is_auto_draft ) {
 						$table_rows[ $key ] .= '<em>' . __( 'Save a draft version or publish to update this value.', $this->text_domain ) . '</em>';

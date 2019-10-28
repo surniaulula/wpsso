@@ -1161,7 +1161,7 @@ msgctxt "option comment"
 msgid "from"
 msgstr ""
 
-#: lib/com/form.php:1912 lib/gettext-com.php:25 lib/post.php:1339
+#: lib/com/form.php:1914 lib/gettext-com.php:25 lib/post.php:1339
 #: lib/wp-meta.php:589 lib/wp-meta.php:719
 msgid "Save a draft version or publish to update this value."
 msgstr ""
@@ -2660,14 +2660,14 @@ msgid "Bitly URL Shortener"
 msgstr ""
 
 #: lib/gettext-pro.php:63 lib/gettext-pro.php:178
-#: lib/pro/admin/advanced.php:385 lib/pro/util/shorten.php:266
+#: lib/pro/admin/advanced.php:385 lib/pro/util/shorten.php:270
 #: lib/std/admin/advanced.php:396
 msgctxt "option label"
 msgid "Bitly Username"
 msgstr ""
 
 #: lib/gettext-pro.php:64 lib/gettext-pro.php:180
-#: lib/pro/admin/advanced.php:390 lib/pro/util/shorten.php:281
+#: lib/pro/admin/advanced.php:390 lib/pro/util/shorten.php:285
 #: lib/std/admin/advanced.php:401
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
@@ -2698,7 +2698,7 @@ msgid "DLMY.App URL Shortener"
 msgstr ""
 
 #: lib/gettext-pro.php:69 lib/gettext-pro.php:183
-#: lib/pro/admin/advanced.php:411 lib/pro/util/shorten.php:310
+#: lib/pro/admin/advanced.php:411 lib/pro/util/shorten.php:314
 #: lib/std/admin/advanced.php:422
 msgctxt "option label"
 msgid "DLMY.App API Key"
@@ -2711,7 +2711,7 @@ msgid "Ow.ly URL Shortener"
 msgstr ""
 
 #: lib/gettext-pro.php:71 lib/gettext-pro.php:185
-#: lib/pro/admin/advanced.php:421 lib/pro/util/shorten.php:333
+#: lib/pro/admin/advanced.php:421 lib/pro/util/shorten.php:337
 #: lib/std/admin/advanced.php:432
 msgctxt "option label"
 msgid "Ow.ly API Key"
@@ -2724,7 +2724,7 @@ msgid "Your Own URL Shortener (YOURLS)"
 msgstr ""
 
 #: lib/gettext-pro.php:73 lib/gettext-pro.php:187
-#: lib/pro/admin/advanced.php:431 lib/pro/util/shorten.php:381
+#: lib/pro/admin/advanced.php:431 lib/pro/util/shorten.php:385
 #: lib/std/admin/advanced.php:442
 msgctxt "option label"
 msgid "YOURLS API URL"
@@ -3182,29 +3182,29 @@ msgstr ""
 msgid "No Description"
 msgstr ""
 
-#: lib/gettext-pro.php:176 lib/pro/util/shorten.php:246
+#: lib/gettext-pro.php:176 lib/pro/util/shorten.php:250
 msgid "The URL shortening library file \"%s\" is missing and required."
 msgstr ""
 
 #: lib/gettext-pro.php:177 lib/gettext-pro.php:182 lib/gettext-pro.php:184
-#: lib/gettext-pro.php:186 lib/pro/util/shorten.php:265
-#: lib/pro/util/shorten.php:309 lib/pro/util/shorten.php:332
-#: lib/pro/util/shorten.php:380
+#: lib/gettext-pro.php:186 lib/pro/util/shorten.php:269
+#: lib/pro/util/shorten.php:313 lib/pro/util/shorten.php:336
+#: lib/pro/util/shorten.php:384
 msgid "The \"%s\" option value is empty and required."
 msgstr ""
 
-#: lib/gettext-pro.php:179 lib/pro/util/shorten.php:277
+#: lib/gettext-pro.php:179 lib/pro/util/shorten.php:281
 msgid ""
 "The \"%1$s\" and \"%2$s\" option values are empty &mdash; at least one "
 "option value is required."
 msgstr ""
 
-#: lib/gettext-pro.php:181 lib/pro/util/shorten.php:282
+#: lib/gettext-pro.php:181 lib/pro/util/shorten.php:286
 msgctxt "option label"
 msgid "Bitly API Key"
 msgstr ""
 
-#: lib/gettext-pro.php:188 lib/pro/util/shorten.php:424
+#: lib/gettext-pro.php:188 lib/pro/util/shorten.php:428
 msgid ""
 "Incomplete and/or missing API credentials for the \"%s\" URL shortening "
 "service."
@@ -5901,7 +5901,7 @@ msgctxt "default description"
 msgid "Archive page."
 msgstr ""
 
-#: lib/page.php:813
+#: lib/page.php:819
 msgctxt "default description"
 msgid "No Description."
 msgstr ""
