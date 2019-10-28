@@ -653,7 +653,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = false );
 
 				if ( $mod[ 'is_post' ] ) {
-					$shortlink_url = SucomUtilWP::wp_get_shortlink( $mod[ 'id' ], 'post' );	// $context is post.
+					$shortlink_url = SucomUtilWP::wp_get_shortlink( $mod[ 'id' ], $context = 'post' );
 				} else {
 					$shortlink_url = apply_filters( $this->p->lca . '_get_short_url', $sharing_url,
 						$this->p->options[ 'plugin_shortener' ], $mod );

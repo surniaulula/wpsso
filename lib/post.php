@@ -857,9 +857,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			if ( ini_get( 'open_basedir' ) ) {	// Cannot follow redirects.
-				$check_url = $this->p->util->get_sharing_url( $post_id, false );	// $add_page is false.
+				$check_url = $this->p->util->get_sharing_url( $post_id, $add_page = false );
 			} else {
-				$check_url = SucomUtilWP::wp_get_shortlink( $post_id, 'post' );	// $context is post.
+				$check_url = SucomUtilWP::wp_get_shortlink( $post_id, $context = 'post' );
 			}
 
 			$check_url_htmlenc = SucomUtil::encode_html_emoji( urldecode( $check_url ) );
@@ -1458,9 +1458,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			if ( ini_get( 'open_basedir' ) ) {
-				$check_url = $this->p->util->get_sharing_url( $post_id, false );	// $add_page = false
+				$check_url = $this->p->util->get_sharing_url( $post_id, $add_page = false );
 			} else {
-				$check_url = SucomUtilWP::wp_get_shortlink( $post_id, 'post' );	// $context = post
+				$check_url = SucomUtilWP::wp_get_shortlink( $post_id, $context = 'post' );
 			}
 
 			$cache_types[ 'transient' ][] = array(
@@ -1864,7 +1864,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$sharing_url = $this->p->util->get_sharing_url( $mod, $add_page = false );
 
-			$short_url = apply_filters( $this->p->lca . '_get_short_url', $sharing_url, $this->p->options[ 'plugin_shortener' ], $mod );
+			$short_url = apply_filters( $this->p->lca . '_get_short_url', $sharing_url,
+				$this->p->options[ 'plugin_shortener' ], $mod );
 
 			if ( filter_var( $short_url, FILTER_VALIDATE_URL ) === false ) {	// Invalid url.
 

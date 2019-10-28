@@ -1264,7 +1264,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			} else {
 				$use_post = $mixed;
 			}
-				
+
 			if ( empty( $use_post ) || $use_post === 'false' ) { // 0, false, or 'false'
 				return false;
 			} elseif ( is_numeric( $use_post ) ) {
@@ -2083,7 +2083,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( empty( $mt_og ) ) {	// Nothing to merge.
 				return $og_ret;
 			} 
-		
+
 			/**
 			 * Always keep the 'og:type' meta tag top-most.
 			 *
@@ -2352,7 +2352,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					$md_defs = SucomUtil::preg_grep_keys( '/^' . $md_pre . '_/', $md_defs, false, $opt_key . '_' );
 					$md_opts = SucomUtil::preg_grep_keys( '/^' . $md_pre . '_/', $md_opts, false, $opt_key . '_' );
-	
+
 					if ( is_array( $type_opts ) ) {
 						$type_opts = array_merge( $md_defs, $type_opts, $md_opts );
 					} else {
@@ -2424,7 +2424,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_assoc_salt( array $assoc ) {
-		
+
 			$assoc_salt = '';
 
 			foreach ( $assoc as $key => $val ) {
@@ -2644,7 +2644,20 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( $mod[ 'is_post' ] && isset( $mod[ 'post_status' ] ) ) {
 
 				if ( empty( $mod[ 'post_status' ] ) || $mod[ 'post_status' ] === 'auto-draft' ) {
-					
+
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		public static function is_trashed( $mod ) {
+
+			if ( $mod[ 'is_post' ] && isset( $mod[ 'post_status' ] ) ) {
+
+				if ( $mod[ 'post_status' ] === 'trash' ) {
+
 					return true;
 				}
 			}
@@ -2758,7 +2771,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$post_type_obj = get_post_type_object( $post_type );
 
 				if ( ! empty( $post_type_obj->has_archive ) ) {
-			
+
 					$archive_slug = $post_type_obj->has_archive;
 
 					if ( true === $archive_slug ) {
@@ -3355,7 +3368,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					foreach ( $all_matches as $num => $matches ) {
 
 						$json_md5 = md5( $matches[ 1 ] );	// md5() input must be a string.
-					
+
 						if ( $do_decode ) {	// Return only the decoded json data.
 
 							$json_decoded = json_decode( $matches[ 1 ], $assoc = true );
