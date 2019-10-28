@@ -290,9 +290,16 @@
 <li>Review Information
 
 <ul>
-<li>Review Subject URL </li>
 <li>Review Rating </li>
 <li>Review Rating Name</li>
+<li>Reviewed Subject Type </li>
+<li>Reviewed Subject URL </li>
+<li>Reviewed Subject Name </li>
+<li>Reviewed Book Information
+
+<ul>
+<li>Reviewed Book ISBN</li>
+</ul></li>
 </ul></li>
 <li>Claim Review Information
 

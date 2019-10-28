@@ -231,9 +231,13 @@ WPSSO Core and its complementary add-ons offer meta tags and Schema markup for F
 			* Trans Fat
 			* Cholesterol
 	* Review Information
-		* Review Subject URL 
 		* Review Rating 
 		* Review Rating Name
+		* Reviewed Subject Type 
+		* Reviewed Subject URL 
+		* Reviewed Subject Name 
+		* Reviewed Book Information
+			* Reviewed Book ISBN
 	* Claim Review Information
 		* Claim Short Summary
 		* Claim Made on Date
@@ -434,6 +438,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 <p>Under the SSO &gt; Update Manager settings page, select the "Development and Up" version filter for WPSSO Core and all its extensions (to satisfy any version dependencies). Save the plugin settings, and click the "Check for Updates" button to fetch the latest / current WPSSO version information. When new Development versions are available, they will automatically appear under your WordPress Dashboard &gt; Updates page. You can always re-select the "Stable / Production" version filter at any time to re-install the last stable / production version of a plugin.</p>
 
 <h3>Changelog / Release Notes</h3>
+
+**Version 6.10.1-dev.1 (2019/10/28)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed non-working table row show / hide jQuery event triggers after refreshing the metabox in the block editor.
+* **Developer Notes**
+	* Updated the sucomInitMetabox() javascript to trigger a show() event for displayed table rows after refreshing the metabox with ajax.
 
 **Version 6.10.0 (2019/10/26)**
 
@@ -636,6 +651,10 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 	* Removed the `SucomUtil::is_product_tag()` method.
 
 == Upgrade Notice ==
+
+= 6.10.1-dev.1 =
+
+(2019/10/28) Fixed non-working table row show / hide jQuery event triggers after refreshing the metabox in the block editor.
 
 = 6.10.0 =
 
