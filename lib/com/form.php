@@ -1891,9 +1891,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				$td_class = empty( $val[ 'td_class' ] ) ? '' : ' class="' . $val[ 'td_class' ] . '"';
 
-				$col_span = ' colspan="' . ( isset( $val[ 'col_span' ] ) ? $val[ 'col_span' ] : 2 ) . '"';
-
 				if ( ! empty( $val[ 'header' ] ) ) {
+
+					$col_span = ' colspan="' . ( isset( $val[ 'col_span' ] ) ? $val[ 'col_span' ] : 2 ) . '"';
 
 					$table_rows[ $key ] .= $tr . '<td' . $col_span . $td_class . '>';
 
@@ -1902,6 +1902,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$table_rows[ $key ] .= '</td>' . "\n";
 
 				} else {
+
+					$col_span = empty( $val[ 'col_span' ] ) ? '' : ' colspan="' . $val[ 'col_span' ] .'"';
 
 					$table_rows[ $key ] .= $tr . $this->get_th_html( $val[ 'label' ], 
 						( empty( $val[ 'th_class' ] ) ? '' : $val[ 'th_class' ] ),
