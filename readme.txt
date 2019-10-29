@@ -293,6 +293,7 @@ WPSSO Core and its complementary add-ons offer meta tags and Schema markup for F
 		* [WP Product Review](https://wordpress.org/plugins/wp-product-review/)
 		* [WP Recipe Maker](https://wordpress.org/plugins/wp-recipe-maker/)
 		* [WP Ultimate Recipe](https://wordpress.org/plugins/wp-ultimate-recipe/)
+		* [YITH WooCommerce Brands Add-on](https://wordpress.org/plugins/search/yith-woocommerce-brands-add-on/)
 		* [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/) (aka WordPress SEO)
 
 	* **Integration with Service APIs:**
@@ -439,11 +440,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.10.1-b.1 (2019/10/29)**
+**Version 6.11.0-b.2 (2019/10/29)**
 
 * **New Features**
 	* None.
 * **Improvements**
+	* Added support for the "YITH WooCommerce Brands Add-On" plugin (Premium version).
 	* Added a "Wikipedia Page URL" option in the user profile page.
 	* Added a "Wikipedia Organization Page URL" option in the SSO &gt; General settings page.
 * **Bugfixes**
@@ -653,9 +655,9 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 
 == Upgrade Notice ==
 
-= 6.10.1-b.1 =
+= 6.11.0-b.2 =
 
-(2019/10/29) Added "Wikipedia Page URL" user option and "Wikipedia Organization Page URL" settings option. Fixed non-working table row show / hide jQuery event triggers after refreshing the metabox in the block editor.
+(2019/10/29) Added support for the "YITH WooCommerce Brands Add-On" plugin (Premium version). Added "Wikipedia Page URL" user option and "Wikipedia Organization Page URL" settings option.
 
 = 6.10.0 =
 
