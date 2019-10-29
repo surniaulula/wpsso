@@ -127,6 +127,12 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							break;
 
+						case 'ecom-yith-woocommerce-brands':
+
+							$chk[ 'class' ] = 'YITH_WCBR';
+
+							break;
+
 						case 'event-tribe_events':
 
 							$chk[ 'class' ] = 'Tribe__Events__Main';
