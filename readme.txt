@@ -232,7 +232,7 @@ WPSSO Core and its complementary add-ons offer meta tags and Schema markup for F
 			* Cholesterol
 	* Review Information
 		* Review Rating 
-		* Review Rating Name
+		* Rating Value Name
 		* Reviewed Subject Information
 			* Subject Type 
 			* Subject URL 
@@ -439,7 +439,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.10.1-dev.4 (2019/10/28)**
+**Version 6.10.1-b.1 (2019/10/29)**
 
 * **New Features**
 	* None.
@@ -653,9 +653,9 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 
 == Upgrade Notice ==
 
-= 6.10.1-dev.4 =
+= 6.10.1-b.1 =
 
-(2019/10/28) Added "Wikipedia Page URL" user option and "Wikipedia Organization Page URL" settings option. Fixed non-working table row show / hide jQuery event triggers after refreshing the metabox in the block editor.
+(2019/10/29) Added "Wikipedia Page URL" user option and "Wikipedia Organization Page URL" settings option. Fixed non-working table row show / hide jQuery event triggers after refreshing the metabox in the block editor.
 
 = 6.10.0 =
 
