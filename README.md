@@ -292,21 +292,17 @@
 <ul>
 <li>Review Rating </li>
 <li>Review Rating Name</li>
-<li>Reviewed Subject Type </li>
-<li>Reviewed Subject URL </li>
-<li>Reviewed Subject Name </li>
-<li>Reviewed Creative Work Information
+<li>Reviewed Subject Information
 
 <ul>
-<li>Reviewed CW Author Type</li>
-<li>Reviewed CW Author Name</li>
-<li>Reviewed CW Author URL</li>
-<li>Reviewed CW Publish Date</li>
-</ul></li>
-<li>Reviewed Book Information
-
-<ul>
-<li>Reviewed Book ISBN</li>
+<li>Subject Type </li>
+<li>Subject URL </li>
+<li>Subject Name </li>
+<li>Subject Author Type</li>
+<li>Subject Author Name</li>
+<li>Subject Author URL</li>
+<li>Subject Publish Date</li>
+<li>Subject ISBN</li>
 </ul></li>
 </ul></li>
 <li>Claim Review Information

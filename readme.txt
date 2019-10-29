@@ -233,16 +233,15 @@ WPSSO Core and its complementary add-ons offer meta tags and Schema markup for F
 	* Review Information
 		* Review Rating 
 		* Review Rating Name
-		* Reviewed Subject Type 
-		* Reviewed Subject URL 
-		* Reviewed Subject Name 
-		* Reviewed Creative Work Information
-			* Reviewed CW Author Type
-			* Reviewed CW Author Name
-			* Reviewed CW Author URL
-			* Reviewed CW Publish Date
-		* Reviewed Book Information
-			* Reviewed Book ISBN
+		* Reviewed Subject Information
+			* Subject Type 
+			* Subject URL 
+			* Subject Name 
+			* Subject Author Type
+			* Subject Author Name
+			* Subject Author URL
+			* Subject Publish Date
+			* Subject ISBN
 	* Claim Review Information
 		* Short Summary of Claim
 		* First Appearance URL
@@ -440,12 +439,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.10.1-dev.3 (2019/10/28)**
+**Version 6.10.1-dev.4 (2019/10/28)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added a "Wikipedia Page URL" option in the user profile page.
+	* Added a "Wikipedia Organization Page URL" option in the SSO &gt; General settings page.
 * **Bugfixes**
 	* Fixed non-working table row show / hide jQuery event triggers after refreshing the metabox in the block editor.
 * **Developer Notes**
@@ -653,9 +653,9 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 
 == Upgrade Notice ==
 
-= 6.10.1-dev.3 =
+= 6.10.1-dev.4 =
 
-(2019/10/28) Fixed non-working table row show / hide jQuery event triggers after refreshing the metabox in the block editor.
+(2019/10/28) Added "Wikipedia Page URL" user option and "Wikipedia Organization Page URL" settings option. Fixed non-working table row show / hide jQuery event triggers after refreshing the metabox in the block editor.
 
 = 6.10.0 =
 
