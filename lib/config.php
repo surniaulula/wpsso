@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.10.1-dev.3',	// Plugin version.
-					'opt_version' => '674',		// Increment when changing default option values.
+					'version'     => '6.10.1-dev.4',	// Plugin version.
+					'opt_version' => '675',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -886,11 +886,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'fb_app_id'                         => '',		// Facebook Application ID.
 					'fb_admins'                         => '',		// or Facebook Admin Username(s).
 					'fb_locale'                         => 'en_US',		// Custom Facebook Locale.
-					'instgram_publisher_url'            => '',		// Instagram Business Page URL (localized).
+					'instagram_publisher_url'           => '',		// Instagram Business Page URL (localized).
 					'linkedin_publisher_url'            => '',		// LinkedIn Company Page URL (localized).
 					'myspace_publisher_url'             => '',		// Myspace Business Page URL (localized).
 					'sc_publisher_url'                  => '',		// Soundcloud Business Page URL (localized).
 					'tumblr_publisher_url'              => '',		// Tumblr Business Page URL (localized).
+					'wikipedia_publisher_url'           => '',		// Wikipedia Organization Page URL (localized).
 					'yt_publisher_url'                  => '',		// YouTube Business Channel URL (localized).
 					
 					/**
@@ -1310,45 +1311,48 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced settings - Contact Fields.
 					 */
-					'plugin_cm_fb_name'          => 'facebook',
-					'plugin_cm_fb_label'         => 'Facebook User URL',
-					'plugin_cm_fb_enabled'       => 1,
-					'plugin_cm_instgram_name'    => 'instagram',
-					'plugin_cm_instgram_label'   => 'Instagram URL',
-					'plugin_cm_instgram_enabled' => 1,
-					'plugin_cm_linkedin_name'    => 'linkedin',
-					'plugin_cm_linkedin_label'   => 'LinkedIn URL',
-					'plugin_cm_linkedin_enabled' => 1,
-					'plugin_cm_myspace_name'     => 'myspace',
-					'plugin_cm_myspace_label'    => 'Myspace URL',
-					'plugin_cm_myspace_enabled'  => 1,
-					'plugin_cm_pin_name'         => 'pinterest',
-					'plugin_cm_pin_label'        => 'Pinterest URL',
-					'plugin_cm_pin_enabled'      => 1,
-					'plugin_cm_sc_name'          => 'soundcloud',
-					'plugin_cm_sc_label'         => 'Soundcloud URL',
-					'plugin_cm_sc_enabled'       => 1,
-					'plugin_cm_tumblr_name'      => 'tumblr',
-					'plugin_cm_tumblr_label'     => 'Tumblr URL',
-					'plugin_cm_tumblr_enabled'   => 1,
-					'plugin_cm_twitter_name'     => 'twitter',
-					'plugin_cm_twitter_label'    => 'Twitter @username',
-					'plugin_cm_twitter_enabled'  => 1,
-					'plugin_cm_yt_name'          => 'youtube',
-					'plugin_cm_yt_label'         => 'YouTube Channel URL',
-					'plugin_cm_yt_enabled'       => 1,
-					'plugin_cm_skype_name'       => 'skype',
-					'plugin_cm_skype_label'      => 'Skype Username',
-					'plugin_cm_skype_enabled'    => 1,
-					'wp_cm_aim_name'             => 'aim',
-					'wp_cm_aim_label'            => 'AIM',
-					'wp_cm_aim_enabled'          => 1,
-					'wp_cm_jabber_name'          => 'jabber',
-					'wp_cm_jabber_label'         => 'Google Talk',
-					'wp_cm_jabber_enabled'       => 1,
-					'wp_cm_yim_name'             => 'yim',
-					'wp_cm_yim_label'            => 'Yahoo Messenger',
-					'wp_cm_yim_enabled'          => 1,
+					'plugin_cm_fb_name'           => 'facebook',
+					'plugin_cm_fb_label'          => 'Facebook User URL',
+					'plugin_cm_fb_enabled'        => 1,
+					'plugin_cm_instagram_name'    => 'instagram',
+					'plugin_cm_instagram_label'   => 'Instagram URL',
+					'plugin_cm_instagram_enabled' => 1,
+					'plugin_cm_linkedin_name'     => 'linkedin',
+					'plugin_cm_linkedin_label'    => 'LinkedIn URL',
+					'plugin_cm_linkedin_enabled'  => 1,
+					'plugin_cm_myspace_name'      => 'myspace',
+					'plugin_cm_myspace_label'     => 'Myspace URL',
+					'plugin_cm_myspace_enabled'   => 1,
+					'plugin_cm_pin_name'          => 'pinterest',
+					'plugin_cm_pin_label'         => 'Pinterest URL',
+					'plugin_cm_pin_enabled'       => 1,
+					'plugin_cm_sc_name'           => 'soundcloud',
+					'plugin_cm_sc_label'          => 'Soundcloud URL',
+					'plugin_cm_sc_enabled'        => 1,
+					'plugin_cm_skype_name'        => 'skype',
+					'plugin_cm_skype_label'       => 'Skype Username',
+					'plugin_cm_skype_enabled'     => 1,
+					'plugin_cm_tumblr_name'       => 'tumblr',
+					'plugin_cm_tumblr_label'      => 'Tumblr URL',
+					'plugin_cm_tumblr_enabled'    => 1,
+					'plugin_cm_twitter_name'      => 'twitter',
+					'plugin_cm_twitter_label'     => 'Twitter @username',
+					'plugin_cm_twitter_enabled'   => 1,
+					'plugin_cm_wikipedia_name'    => 'wikipedia',
+					'plugin_cm_wikipedia_label'   => 'Wikipedia Page URL',
+					'plugin_cm_wikipedia_enabled' => 1,
+					'plugin_cm_yt_name'           => 'youtube',
+					'plugin_cm_yt_label'          => 'YouTube Channel URL',
+					'plugin_cm_yt_enabled'        => 1,
+					'wp_cm_aim_name'              => 'aim',
+					'wp_cm_aim_label'             => 'AIM',
+					'wp_cm_aim_enabled'           => 1,
+					'wp_cm_jabber_name'           => 'jabber',
+					'wp_cm_jabber_label'          => 'Google Talk',
+					'wp_cm_jabber_enabled'        => 1,
+					'wp_cm_yim_name'              => 'yim',
+					'wp_cm_yim_label'             => 'Yahoo Messenger',
+					'wp_cm_yim_enabled'           => 1,
 				),
 				
 				/**
@@ -1434,7 +1438,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'email'       => 'email',
 					'facebook'    => 'fb',
 					'twitter'     => 'twitter',
-					'instagram'   => 'instgram',
+					'instagram'   => 'instagram',
 					'linkedin'    => 'linkedin',
 					'myspace'     => 'myspace',
 					'pinterest'   => 'pin',
@@ -1444,10 +1448,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'managewp'    => 'managewp',
 					'soundcloud'  => 'sc',
 					'tumblr'      => 'tumblr',
-					'youtube'     => 'yt',
 					'skype'       => 'skype',
 					'vk'          => 'vk',
 					'whatsapp'    => 'wa',
+					'wikipedia'   => 'wikipedia',
+					'youtube'     => 'yt',
 				),
 				
 				/**
@@ -1931,15 +1936,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * Social account keys and labels for Organization SameAs.
 				 */
 				'social_accounts' => array(
-					'fb_publisher_url'       => 'Facebook Business Page URL',
-					'instgram_publisher_url' => 'Instagram Business Page URL',
-					'linkedin_publisher_url' => 'LinkedIn Company Page URL',
-					'myspace_publisher_url'  => 'Myspace Business Page URL',
-					'p_publisher_url'        => 'Pinterest Company Page URL',
-					'sc_publisher_url'       => 'Soundcloud Business Page URL',
-					'tc_site'                => 'Twitter Business @username',
-					'tumblr_publisher_url'   => 'Tumblr Business Page URL',
-					'yt_publisher_url'       => 'YouTube Business Channel URL',
+					'fb_publisher_url'        => 'Facebook Business Page URL',
+					'instagram_publisher_url' => 'Instagram Business Profile URL',
+					'linkedin_publisher_url'  => 'LinkedIn Business Page URL',
+					'myspace_publisher_url'   => 'Myspace Business Page URL',
+					'p_publisher_url'         => 'Pinterest Business Page URL',
+					'sc_publisher_url'        => 'Soundcloud Business Page URL',
+					'tc_site'                 => 'Twitter Business @username',
+					'tumblr_publisher_url'    => 'Tumblr Business Page URL',
+					'wikipedia_publisher_url' => 'Wikipedia Organization Page URL',
+					'yt_publisher_url'        => 'YouTube Business Channel URL',
 				),
 				'embed_media_apis' => array(
 					'plugin_facebook_api'   => 'Facebook Videos',

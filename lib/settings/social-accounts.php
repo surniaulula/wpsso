@@ -74,7 +74,7 @@ if ( ! class_exists( 'WpssoSettingsSocialAccounts' ) && class_exists( 'WpssoAdmi
 
 					$social_accounts = apply_filters( $this->p->lca . '_social_accounts', $this->p->cf[ 'form' ][ 'social_accounts' ] );
 
-					asort( $social_accounts );	// sort by label (after translation) and maintain key association
+					asort( $social_accounts );	// Sort by label (after translation) and maintain key association.
 
 					foreach ( $social_accounts as $social_key => $label ) {
 

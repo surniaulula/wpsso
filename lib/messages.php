@@ -1128,13 +1128,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-fb_publisher_url':
 
-							$text = sprintf( __( 'If you have a <a href="%1$s">Facebook Business Page for your website / business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://www.facebook.com/business', 'wpsso' ) ) . ' ';
+							$publisher_url_label = _x( $this->p->cf[ 'form' ][ 'social_accounts' ][ 'fb_publisher_url' ], 'option value', 'wpsso' );
+
+							$text = sprintf( __( 'If you have a <a href="%1$s">Facebook page for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://www.facebook.com/business', 'wpsso' ) ) . ' ';
 
 							$text .= sprintf( __( 'As an example, the Facebook Business Page URL for %1$s is <a href="%2$s">%2$s</a>.', 'wpsso' ), 'Surnia Ulula', __( 'https://www.facebook.com/SurniaUlulaCom', 'wpsso' ) ) . ' ';
 
-							$text .= __( 'The Facebook Business Page URL will be used in Open Graph <em>article</em> type webpages and the website\'s Schema Organization markup.', 'wpsso' ) . ' ';
+							$text .= sprintf( __( 'The %s will be included in Open Graph <em>article</em> meta tags and the website\'s Schema Organization markup.', 'wpsso' ), $publisher_url_label ) . ' ';
 
-							$text .= __( 'Google Search may use this URL to display additional information about the website / business in its search results.', 'wpsso' );
+							$text .= __( 'Google Search may use this URL to display additional information about the website, business, or company in its search results.', 'wpsso' );
 
 							break;
 
@@ -1415,11 +1417,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-p_publisher_url':
 
-							$text = sprintf( __( 'If you have a <a href="%1$s">Pinterest Company Page for your website / business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://business.pinterest.com/', 'wpsso' ) ) . ' ';
+							$publisher_url_label = _x( $this->p->cf[ 'form' ][ 'social_accounts' ][ 'p_publisher_url' ], 'option value', 'wpsso' );
 
-							$text .= __( 'The Pinterest Company Page URL will be used in the website\'s Schema Organization markup.', 'wpsso' ) . ' ';
+							$text = sprintf( __( 'If you have a <a href="%1$s">Pinterest page for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://business.pinterest.com/', 'wpsso' ) ) . ' ';
 
-							$text .= __( 'Google Search may use this URL to display additional information about the website / business in its search results.', 'wpsso' );
+							$text .= sprintf( __( 'The %s will be included in the website\'s Schema Organization markup.', 'wpsso' ), $publisher_url_label ) . ' ';
+
+							$text .= __( 'Google Search may use this URL to display additional information about the website, business, or company in its search results.', 'wpsso' );
 
 							break;
 
@@ -1462,13 +1466,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-tc_site':
 
-							$text = sprintf( __( 'The <a href="%1$s">Twitter @username for your website and/or business</a> (not your personal Twitter @username).', 'wpsso' ), __( 'https://business.twitter.com/', 'wpsso' ) ) . ' ';
+							$publisher_url_label = _x( $this->p->cf[ 'form' ][ 'social_accounts' ][ 'tc_site' ], 'option value', 'wpsso' );
 
-							$text .= sprintf( __( 'As an example, the Twitter @username for %1$s is <a href="%2$s">%3$s</a>.', 'wpsso' ), 'Surnia Ulula', __( 'https://twitter.com/surniaululacom', 'wpsso' ), '@surniaululacom' ) . ' ';
+							$text = sprintf( __( 'If you have a <a href="%1$s">Twitter @username for your business</a> (not your personal Twitter @username), you may enter its name here.', 'wpsso' ), __( 'https://business.twitter.com/', 'wpsso' ) ) . ' ';
 
-							$text .= __( 'The Twitter @username for your website and/or business will be used in the website\'s Schema Organization markup.', 'wpsso' ) . ' ';
+							$text .= sprintf( __( 'The %s will be included in in Twitter Card meta tags the website\'s Schema Organization markup.', 'wpsso' ), $publisher_url_label ) . ' ';
 
-							$text .= __( 'Google Search may use this URL to display additional information about the website / business in its search results.', 'wpsso' );
+							$text .= __( 'Google Search may use this URL to display additional information about the website, business, or company in its search results.', 'wpsso' );
 
 							break;
 
@@ -1525,27 +1529,29 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * Publisher 'Instagram' settings.
 				 */
-				} elseif ( strpos( $msg_key, 'tooltip-instgram_' ) === 0 ) {
+				} elseif ( strpos( $msg_key, 'tooltip-instagram_' ) === 0 ) {
 
 					switch ( $msg_key ) {
 
-						case 'tooltip-instgram_publisher_url':
+						case 'tooltip-instagram_publisher_url':
 
-							$text = sprintf( __( 'If you have an <a href="%1$s">Intagram account for your website / business</a>, you may enter its URL here.', 'wpsso' ), __( 'http://blog.business.instagram.com/', 'wpsso' ) ) . ' ';
+							$publisher_url_label = _x( $this->p->cf[ 'form' ][ 'social_accounts' ][ 'instagram_publisher_url' ], 'option value', 'wpsso' );
 
-							$text .= __( 'The Instagram Business Page URL will be used in the website\'s Schema Organization markup.', 'wpsso' ) . ' ';
+							$text = sprintf( __( 'If you have an <a href="%1$s">Intagram profile for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://business.instagram.com/getting-started', 'wpsso' ) ) . ' ';
 
-							$text .= __( 'Google Search may use this URL to display additional information about the website / business in its search results.', 'wpsso' );
+							$text .= sprintf( __( 'The %s will be included in the website\'s Schema Organization markup.', 'wpsso' ), $publisher_url_label ) . ' ';
+
+							$text .= __( 'Google Search may use this URL to display additional information about the website, business, or company in its search results.', 'wpsso' );
 
 							break;
 
 						default:
 
-							$text = apply_filters( $lca . '_messages_tooltip_instgram', $text, $msg_key, $info );
+							$text = apply_filters( $lca . '_messages_tooltip_instagram', $text, $msg_key, $info );
 
 							break;
 
-					}	// End of tooltip-instgram switch.
+					}	// End of tooltip-instagram switch.
 
 				/**
 				 * Publisher 'LinkedIn' settings.
@@ -1556,11 +1562,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-linkedin_publisher_url':
 
-							$text = sprintf( __( 'If you have a <a href="%1$s">LinkedIn Company Page for your website / business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://business.linkedin.com/marketing-solutions/company-pages/get-started', 'wpsso' ) ) . ' ';
+							$publisher_url_label = _x( $this->p->cf[ 'form' ][ 'social_accounts' ][ 'linkedin_publisher_url' ], 'option value', 'wpsso' );
 
-							$text .= __( 'The LinkedIn Company Page URL will be used in the website\'s Schema Organization markup.', 'wpsso' ) . ' ';
+							$text = sprintf( __( 'If you have a <a href="%1$s">LinkedIn page for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://business.linkedin.com/marketing-solutions/linkedin-pages', 'wpsso' ) ) . ' ';
 
-							$text .= __( 'Google Search may use this URL to display additional information about the website / business in its search results.', 'wpsso' );
+							$text .= sprintf( __( 'The %s will be included in the website\'s Schema Organization markup.', 'wpsso' ), $publisher_url_label ) . ' ';
+
+							$text .= __( 'Google Search may use this URL to display additional information about the website, business, or company in its search results.', 'wpsso' );
 
 							break;
 
@@ -1581,11 +1589,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-myspace_publisher_url':
 
-							$text = sprintf( __( 'If you have a <a href="%1$s">Myspace account for your website / business</a>, you may enter its URL here.', 'wpsso' ), __( 'http://myspace.com/', 'wpsso' ) ) . ' ';
+							$publisher_url_label = _x( $this->p->cf[ 'form' ][ 'social_accounts' ][ 'myspace_publisher_url' ], 'option value', 'wpsso' );
 
-							$text .= __( 'The Myspace Business Page URL will be used in the website\'s Schema Organization markup.', 'wpsso' ) . ' ';
+							$text = sprintf( __( 'If you have a <a href="%1$s">Myspace page for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'http://myspace.com/', 'wpsso' ) ) . ' ';
 
-							$text .= __( 'Google Search may use this URL to display additional information about the website / business in its search results.', 'wpsso' );
+							$text .= sprintf( __( 'The %s will be included in the website\'s Schema Organization markup.', 'wpsso' ), $publisher_url_label ) . ' ';
+
+							$text .= __( 'Google Search may use this URL to display additional information about the website, business, or company in its search results.', 'wpsso' );
 
 							break;
 
@@ -1596,6 +1606,33 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						}	// End of tooltip-myspace switch.
+
+				/**
+				 * Publisher 'Wikipedia' settings.
+				 */
+				} elseif ( strpos( $msg_key, 'tooltip-wikipedia_' ) === 0 ) {
+
+					switch ( $msg_key ) {
+
+						case 'tooltip-wikipedia_publisher_url':
+
+							$publisher_url_label = _x( $this->p->cf[ 'form' ][ 'social_accounts' ][ 'wikipedia_publisher_url' ], 'option value', 'wpsso' );
+
+							$text = sprintf( __( 'If you have a <a href="%1$s">Wikipedia page for your organization</a>, you may enter its URL here.', 'wpsso' ), __( 'https://en.wikipedia.org/wiki/Wikipedia:FAQ/Organizations', 'wpsso' ) ) . ' ';
+
+							$text .= sprintf( __( 'The %s will be included in the website\'s Schema Organization markup.', 'wpsso' ), $publisher_url_label ) . ' ';
+
+							$text .= __( 'Google Search may use this URL to display additional information about the website, business, or company in its search results.', 'wpsso' );
+
+							break;
+
+						default:
+
+							$text = apply_filters( $lca . '_messages_tooltip_wikipedia', $text, $msg_key, $info );
+
+							break;
+
+					}	// End of tooltip-wikipedia switch.
 
 				/**
 				 * All other settings.

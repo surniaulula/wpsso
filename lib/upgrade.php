@@ -288,6 +288,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'add_meta_itemprop_recipeingredient'                       => '',
 					'add_meta_itemprop_recipeinstructions'                     => '',
 				),
+				674 => array(
+					'instgram_publisher_url' => 'instagram_publisher_url',
+				),
 			),
 		);
 
