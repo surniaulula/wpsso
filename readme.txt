@@ -236,14 +236,15 @@ WPSSO Core and its complementary add-ons offer meta tags and Schema markup for F
 		* Reviewed Subject Type 
 		* Reviewed Subject URL 
 		* Reviewed Subject Name 
+		* Reviewed Creative Work Information
+			* Reviewed CW Author Type
+			* Reviewed CW Author Name
+			* Reviewed CW Author URL
+			* Reviewed CW Publish Date
 		* Reviewed Book Information
 			* Reviewed Book ISBN
 	* Claim Review Information
-		* Claim Short Summary
-		* Claim Made on Date
-		* Claim Author Type
-		* Claim Author Name
-		* Claim Author URL
+		* Short Summary of Claim
 		* First Appearance URL
 	* Software Application Information
 		* Operating System
@@ -439,7 +440,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.10.1-dev.2 (2019/10/28)**
+**Version 6.10.1-dev.3 (2019/10/28)**
 
 * **New Features**
 	* None.
@@ -652,7 +653,7 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 
 == Upgrade Notice ==
 
-= 6.10.1-dev.2 =
+= 6.10.1-dev.3 =
 
 (2019/10/28) Fixed non-working table row show / hide jQuery event triggers after refreshing the metabox in the block editor.
 

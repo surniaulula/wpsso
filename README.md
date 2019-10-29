@@ -295,6 +295,14 @@
 <li>Reviewed Subject Type </li>
 <li>Reviewed Subject URL </li>
 <li>Reviewed Subject Name </li>
+<li>Reviewed Creative Work Information
+
+<ul>
+<li>Reviewed CW Author Type</li>
+<li>Reviewed CW Author Name</li>
+<li>Reviewed CW Author URL</li>
+<li>Reviewed CW Publish Date</li>
+</ul></li>
 <li>Reviewed Book Information
 
 <ul>
@@ -304,11 +312,7 @@
 <li>Claim Review Information
 
 <ul>
-<li>Claim Short Summary</li>
-<li>Claim Made on Date</li>
-<li>Claim Author Type</li>
-<li>Claim Author Name</li>
-<li>Claim Author URL</li>
+<li>Short Summary of Claim</li>
 <li>First Appearance URL</li>
 </ul></li>
 <li>Software Application Information
