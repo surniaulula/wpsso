@@ -330,7 +330,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( $mod[ 'is_post' ] && ( empty( $mod[ 'post_status' ] ) || $mod[ 'post_status' ] === 'auto-draft' ) ) {
+			if ( SucomUtil::is_auto_draft( $mod ) ) {
 
 				$table_rows[] = '<td>' .
 					'<blockquote class="status-info">' .
@@ -341,7 +341,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'<blockquote>' .
 				'</td>';
 
-				return $table_rows;	// abort
+				return $table_rows;	// Stop here.
 			}
 
 			$media_info = $this->p->og->get_media_info( $this->p->lca . '-opengraph',

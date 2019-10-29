@@ -2639,7 +2639,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return apply_filters( 'sucom_is_home_index', $ret, $use_post );
 		}
 
-		public static function is_auto_draft( $mod ) {
+		public static function is_auto_draft( array $mod ) {
 
 			if ( $mod[ 'is_post' ] && isset( $mod[ 'post_status' ] ) ) {
 
@@ -2652,7 +2652,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
-		public static function is_trashed( $mod ) {
+		public static function is_trashed( array $mod ) {
 
 			if ( $mod[ 'is_post' ] && isset( $mod[ 'post_status' ] ) ) {
 
@@ -2665,7 +2665,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
-		public static function is_mod_post_type( $mod, $post_type ) {
+		public static function is_mod_post_type( array $mod, $post_type ) {
 
 			if ( $mod[ 'is_post' ] && $mod[ 'id' ] && $mod[ 'post_type' ] === $post_type ) {
 
@@ -2675,7 +2675,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
-		public static function is_mod_tax_slug( $mod, $tax_slug ) {
+		public static function is_mod_tax_slug( array $mod, $tax_slug ) {
 
 			if ( $mod[ 'is_term' ] && $mod[ 'id' ] && $mod[ 'tax_slug' ] === $tax_slug ) {
 
