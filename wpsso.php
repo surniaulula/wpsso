@@ -104,12 +104,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			$this->reg = new WpssoRegister( $this );		// Activate, deactivate, uninstall hooks.
 
-			add_action( 'init', array( $this, 'set_config' ), -10 );				// Runs at init -10 (before widgets_init).
-			add_action( 'widgets_init', array( $this, 'init_widgets' ), 10 );			// Runs at init 1.
-			add_action( 'init', array( $this, 'set_options' ), WPSSO_INIT_PRIORITY - 3 );		// Runs at init 9 by default.
-			add_action( 'init', array( $this, 'set_objects' ), WPSSO_INIT_PRIORITY - 2 );		// Runs at init 10 by default.
-			add_action( 'init', array( $this, 'init_shortcodes' ), WPSSO_INIT_PRIORITY - 1 );	// Runs at init 11 by default.
-			add_action( 'init', array( $this, 'init_plugin' ), WPSSO_INIT_PRIORITY );		// Runs at init 12 by default.
+			add_action( 'init', array( $this, 'set_config' ), -10 );					// Runs at init -10 (before widgets_init).
+			add_action( 'widgets_init', array( $this, 'init_widgets' ), 10 );				// Runs at init 1.
+			add_action( 'init', array( $this, 'set_options' ), WPSSO_INIT_OPTIONS_PRIORITY );		// Runs at init 9 by default.
+			add_action( 'init', array( $this, 'set_objects' ), WPSSO_INIT_OBJECTS_PRIORITY );		// Runs at init 10 by default.
+			add_action( 'init', array( $this, 'init_shortcodes' ), WPSSO_INIT_SHORTCODES_PRIORITY );	// Runs at init 11 by default.
+			add_action( 'init', array( $this, 'init_plugin' ), WPSSO_INIT_PLUGIN_PRIORITY );		// Runs at init 12 by default.
 
 			/**
 			 * The 'wpsso_init_textdomain' action is run after the debug property is defined.

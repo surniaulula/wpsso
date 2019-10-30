@@ -3374,15 +3374,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/**
 			 * WPSSO hook priorities.
 			 */
-			$var_const[ 'WPSSO_ADD_MENU_PRIORITY' ]    = -20;
-			$var_const[ 'WPSSO_ADD_SUBMENU_PRIORITY' ] = -10;
-			$var_const[ 'WPSSO_ADD_COLUMN_PRIORITY' ]  = 100;
-			$var_const[ 'WPSSO_META_SAVE_PRIORITY' ]   = -10;	// Save our custom post/term/user meta before clearing the cache.
-			$var_const[ 'WPSSO_META_CACHE_PRIORITY' ]  = 0;		// Clear our cache before priority 10 (where most caching plugins are hooked).
-			$var_const[ 'WPSSO_INIT_PRIORITY' ]        = 12;
-			$var_const[ 'WPSSO_HEAD_PRIORITY' ]        = 10;
-			$var_const[ 'WPSSO_FOOTER_PRIORITY' ]      = 100;
-			$var_const[ 'WPSSO_SEO_FILTERS_PRIORITY' ] = 100;
+			$var_const[ 'WPSSO_ADD_MENU_PRIORITY' ]         = -20;
+			$var_const[ 'WPSSO_ADD_SUBMENU_PRIORITY' ]      = -10;
+			$var_const[ 'WPSSO_ADD_COLUMN_PRIORITY' ]       = 100;
+			$var_const[ 'WPSSO_FOOTER_PRIORITY' ]           = 100;
+			$var_const[ 'WPSSO_HEAD_PRIORITY' ]             = 10;
+			$var_const[ 'WPSSO_INIT_OPTIONS_PRIORITY' ]     = 9;
+			$var_const[ 'WPSSO_INIT_OBJECTS_PRIORITY' ]     = 10;
+			$var_const[ 'WPSSO_INIT_SHORTCODES_PRIORITY' ]  = 11;
+			$var_const[ 'WPSSO_INIT_PLUGIN_PRIORITY' ]      = 12;
+			$var_const[ 'WPSSO_META_SAVE_PRIORITY' ]        = -10;	// Save our custom post/term/user meta before clearing the cache.
+			$var_const[ 'WPSSO_META_CACHE_PRIORITY' ]       = 0;	// Clear our cache before priority 10 (where most caching plugins are hooked).
+			$var_const[ 'WPSSO_SEO_SEED_FILTERS_PRIORITY' ] = 100;
 
 			/**
 			 * WPSSO PHP cURL library settings.
