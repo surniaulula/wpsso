@@ -144,11 +144,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-meta-og_title':	// Default Title
 
 							$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content',
-								_x( 'Use Filtered (SEO) Title', 'option label', 'wpsso' ) );
+								_x( 'Use Filtered (aka SEO) Title', 'option label', 'wpsso' ) );
 
 							$text = __( 'A customized title for the Facebook / Open Graph, Pinterest Rich Pin, and Twitter Card meta tags (all Twitter Card formats).', 'wpsso' ) . ' ';
 
-							// translators: %s is a link to the (translated) "Use Filtered (SEO) Title" option settings page.
+							// translators: %s is a link to the (translated) "Use Filtered (aka SEO) Title" option settings page.
 							$text .= sprintf( __( 'If the %s option is enabled, the default title value may be provided by your theme or another SEO plugin.', 'wpsso' ), $settings_page_link );
 
 						 	break;

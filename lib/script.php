@@ -236,7 +236,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			$metabox_id   = $this->p->cf[ 'meta' ][ 'id' ];
 			$container_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
 
-			$no_notices_text = sprintf( __( 'No %s notifications for current page.', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
+			$no_notices_text = sprintf( __( 'No %s notifications.', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
 			$no_notices_html = '<div class="ab-item ab-empty-item">' . $no_notices_text . '</div>';
 
 			$option_labels = array( 'robots'   => _x( 'Robots', 'option label', 'wpsso' ) );
@@ -287,7 +287,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				return;
 			}
 
-			$no_notices_text = sprintf( __( 'No %s notifications for current page.', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
+			$no_notices_text = sprintf( __( 'No %s notifications.', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
 			$no_notices_html = '<div class="ab-item ab-empty-item">' . $no_notices_text . '</div>';
 
 			/**

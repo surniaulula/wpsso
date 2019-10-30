@@ -329,7 +329,7 @@ msgid "%d of %d site addresses registered"
 msgstr ""
 
 #: lib/admin.php:2328
-msgid "Fetching %s notifications for current page..."
+msgid "Fetching %s notifications..."
 msgstr ""
 
 #: lib/admin.php:2401
@@ -2371,7 +2371,7 @@ msgctxt "option value"
 msgid "Stable / Production"
 msgstr ""
 
-#: lib/gettext-pro.php:6 lib/pro/admin/advanced.php:56
+#: lib/gettext-pro.php:6 lib/messages.php:147 lib/pro/admin/advanced.php:56
 #: lib/std/admin/advanced.php:56
 msgctxt "option label"
 msgid "Use Filtered (aka SEO) Title"
@@ -3482,18 +3482,13 @@ msgid ""
 "\", \"place\", \"product\", or \"website\"."
 msgstr ""
 
-#: lib/messages.php:147
-msgctxt "option label"
-msgid "Use Filtered (SEO) Title"
-msgstr ""
-
 #: lib/messages.php:149
 msgid ""
 "A customized title for the Facebook / Open Graph, Pinterest Rich Pin, and "
 "Twitter Card meta tags (all Twitter Card formats)."
 msgstr ""
 
-#. translators: %s is a link to the (translated) "Use Filtered (SEO) Title" option settings page.
+#. translators: %s is a link to the (translated) "Use Filtered (aka SEO) Title" option settings page.
 #: lib/messages.php:152
 msgid ""
 "If the %s option is enabled, the default title value may be provided by your "
@@ -6202,7 +6197,7 @@ msgid "Select Image"
 msgstr ""
 
 #: lib/script.php:239 lib/script.php:290
-msgid "No %s notifications for current page."
+msgid "No %s notifications."
 msgstr ""
 
 #: lib/settings/contact-fields.php:40
