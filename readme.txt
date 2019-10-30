@@ -452,6 +452,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed non-working table row show / hide jQuery event triggers after refreshing the metabox in the block editor.
 * **Developer Notes**
 	* Updated the sucomInitMetabox() javascript to trigger a show() event for displayed table rows after refreshing the metabox with ajax.
+	* Moved the WpssoPost, WpssoTerm, and WpssoUser 'add_wp_hooks' method execution from 'init' 10 to 'wp_loaded' 10.
 
 **Version 6.10.0 (2019/10/26)**
 
