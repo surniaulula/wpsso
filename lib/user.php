@@ -23,13 +23,17 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$this->add_wp_hooks();	// Method from extended WpssoUser.
+			add_action( 'wp_loaded', array( $this, 'add_wp_hooks' ) );
 		}
 
 		/**
 		 * Add WordPress action and filters hooks.
 		 */
-		protected function add_wp_hooks() {
+		public function add_wp_hooks() {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
 
 			$is_admin   = is_admin();	// Only check once.
 			$cm_fb_name = $this->p->options[ 'plugin_cm_fb_name' ];
@@ -536,7 +540,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'screen id is ' . $screen->id );
+				$this->p->debug->log( 'screen id = ' . $screen->id );
 			}
 
 			switch ( $screen->id ) {
@@ -546,20 +550,22 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				case ( strpos( $screen->id, 'profile_page_' ) === 0 ? true : false ):		// Your profile page.
 				case ( strpos( $screen->id, 'users_page_' . $this->p->lca ) === 0 ? true : false ):	// Custom social settings page.
 
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'screen id can show metabox' );
-					}
-
 					break;
 
 				default:
 
-					return;
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'exiting early: not a recognized user page' );
+					}
 
-					break;
+					return;
 			}
 
 			$user_id = SucomUtil::get_user_object( false, 'id' );
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'showing user metabox for user ID ' . $user_id );
+			}
 
 			$mod = $this->get_mod( $user_id );
 

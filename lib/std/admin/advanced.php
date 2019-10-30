@@ -53,7 +53,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
 
 			$table_rows[ 'plugin_filter_title' ] = '' . 
-			$form->get_th_html( _x( 'Use Filtered (SEO) Title', 'option label', 'wpsso' ), '', 'plugin_filter_title' ) . 
+			$form->get_th_html( _x( 'Use Filtered (aka SEO) Title', 'option label', 'wpsso' ), '', 'plugin_filter_title' ) . 
 			$form->get_td_no_checkbox( 'plugin_filter_title' );
 
 			$table_rows[ 'plugin_filter_content' ] = '' . 

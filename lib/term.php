@@ -25,31 +25,48 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$this->add_wp_hooks();
+			add_action( 'wp_loaded', array( $this, 'add_wp_hooks' ) );
 		}
 
 		/**
 		 * Add WordPress action and filters hooks.
 		 */
-		protected function add_wp_hooks() {
+		public function add_wp_hooks() {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
 
 			$is_admin = is_admin();	// Only check once.
 
 			if ( $is_admin ) {
 
 				/**
-				 * Hook a minimum number of admin actions to maximize performance.
-				 * The taxonomy and tag_ID arguments are always present when we're
-				 * editing a category and/or tag page, so return immediately if
-				 * they're not present.
+				 * Hook a minimum number of admin actions to maximize performance. The taxonomy and tag_ID
+				 * arguments are always present when we're editing a category and/or tag page, so return
+				 * immediately if they're not present.
 				 */
-				if ( ( $this->query_tax_slug = SucomUtil::get_request_value( 'taxonomy' ) ) === '' ) {	// uses sanitize_text_field
+				if ( ( $this->query_tax_slug = SucomUtil::get_request_value( 'taxonomy' ) ) === '' ) {	// Uses sanitize_text_field.
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'exiting early: no taxonomy query argument' );
+					}
+
 					return;
+				}
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'query tax slug = ' . $this->query_tax_slug );
 				}
 
 				$this->query_tax_obj = get_taxonomy( $this->query_tax_slug );
 
 				if ( empty( $this->query_tax_obj->public ) ) {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'exiting early: taxonomy is not public' );
+					}
+
 					return;
 				}
 
@@ -68,8 +85,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					array( $this, 'get_column_content' ), 10, 3 );
 
 				/**
-				 * The 'parse_query' action is hooked ONCE in the WpssoPost class
-				 * to set the column orderby for post, term, and user edit tables.
+				 * The 'parse_query' action is hooked ONCE in the WpssoPost class to set the column orderby for
+				 * post, term, and user edit tables.
 				 *
 				 * add_action( 'parse_query', array( $this, 'set_column_orderby' ), 10, 1 );
 				 */
@@ -81,7 +98,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				}
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'tax_slug / term_id = ' . $this->query_tax_slug . ' / ' . $this->query_term_id );
+					$this->p->debug->log( 'query term_id = ' . $this->query_term_id );
 				}
 
 				/**
@@ -526,7 +543,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'screen id: ' . $screen->id );
+				$this->p->debug->log( 'screen id = ' . $screen->id );
+				$this->p->debug->log( 'query tax slug = ' . $this->query_tax_slug );
 			}
 
 			switch ( $screen->id ) {
@@ -537,9 +555,15 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				default:
 
-					return;
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'exiting early: not a recognized term page' );
+					}
 
-					break;
+					return;
+			}
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'showing user metabox for term ID ' . $this->query_term_id );
 			}
 
 			$mod = $this->get_mod( $this->query_term_id, $this->query_tax_slug );
@@ -555,6 +579,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			WpssoWpMeta::$head_tags = array();
 
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_term' ] ) ? false : true;
+
 			$add_metabox = apply_filters( $this->p->lca . '_add_metabox_term', $add_metabox, $this->query_term_id );
 
 			if ( $this->p->debug->enabled ) {

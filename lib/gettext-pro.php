@@ -3,7 +3,7 @@
 /**
  * Extract of translatable text strings from the lib/pro classes.
  */
-_x( 'Use Filtered (SEO) Title', 'option label', 'wpsso' );
+_x( 'Use Filtered (aka SEO) Title', 'option label', 'wpsso' );
 _x( 'Use WordPress Content Filters', 'option label', 'wpsso' );
 _x( 'recommended', 'option comment', 'wpsso' );
 _x( 'Use WordPress Excerpt Filters', 'option label', 'wpsso' );

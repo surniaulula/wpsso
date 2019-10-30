@@ -260,6 +260,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			$filter_title = empty( $this->p->options[ 'plugin_filter_title' ] ) || $this->p->check->pp() ? false : true;
+
 			$filter_title = apply_filters( $this->p->lca . '_can_filter_title', $filter_title, $mod );
 
 			if ( false === $md_key ) {		// False would return the complete meta array.
@@ -391,6 +392,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					} elseif ( isset( $term_obj->name ) ) {
 
 						$title_text = $term_obj->name . ' ' . $sep . ' ';
+
 						$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $sep, 'right' ), $mod );
 
 					} elseif ( $this->p->debug->enabled ) {
@@ -401,9 +403,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				} elseif ( $mod[ 'is_user' ] ) {
 
-					$user_obj   = SucomUtil::get_user_object( $mod[ 'id' ] );
+					$user_obj = SucomUtil::get_user_object( $mod[ 'id' ] );
+
 					$title_text = $user_obj->display_name . ' ' . $sep . ' ';
+
 					$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $sep, 'right' ), $mod );
+
 					$title_text = apply_filters( $this->p->lca . '_user_archive_title', $title_text, $mod, $user_obj );
 
 				} else {

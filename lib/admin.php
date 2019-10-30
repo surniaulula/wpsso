@@ -1766,7 +1766,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( $ext === $this->p->lca ) {	// Features for WPSSO Core plugin.
 
 					$features = array(
-						'(feature) Use Filtered (SEO) Title' => array(
+						'(feature) Use Filtered (aka SEO) Title' => array(
 							'td_class' => self::$pkg[ $ext ][ 'pp' ] ? '' : 'blank',
 							'status'   => $this->p->options[ 'plugin_filter_title' ] ?
 								( self::$pkg[ $ext ][ 'pp' ] ? 'on' : 'rec' ) : 'off',
@@ -2325,7 +2325,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$menu_icon  = '<span class="ab-icon" id="' . $this->p->lca . '-toolbar-notices-icon"></span>';
 			$menu_count = '<span class="ab-label" id="' . $this->p->lca . '-toolbar-notices-count">0</span>';
 
-			$no_notices_text = sprintf( __( 'Fetching %s notifications...', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
+			$no_notices_text = sprintf( __( 'Fetching %s notifications for current page...', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
 
 			$wp_admin_bar->add_node( array(
 				'id'     => $this->p->lca . '-toolbar-notices',

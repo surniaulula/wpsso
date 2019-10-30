@@ -1798,6 +1798,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			/**
 			 * Google requires a local business to have an image.
+			 *
 			 * Check last as the location may have had an image that was promoted.
 			 */
 			if ( isset( $json_data[ 'logo' ] ) && empty( $json_data[ 'image' ] ) ) {

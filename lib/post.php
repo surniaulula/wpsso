@@ -35,13 +35,17 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				register_taxonomy_for_object_type( 'post_tag', 'page' );
 			}
 
-			$this->add_wp_hooks();
+			add_action( 'wp_loaded', array( $this, 'add_wp_hooks' ) );
 		}
 
 		/**
 		 * Add WordPress action and filters hooks.
 		 */
-		protected function add_wp_hooks() {
+		public function add_wp_hooks() {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
 
 			$is_admin = is_admin();	// Only check once.
 
@@ -581,7 +585,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'screen id: ' . $screen->id );
+				$this->p->debug->log( 'screen id = ' . $screen->id );
 			}
 
 			switch ( $screen->id ) {
@@ -589,11 +593,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				case 'upload':
 				case ( strpos( $screen->id, 'edit-' ) === 0 ? true : false ):	// Posts list table.
 
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'exiting early: not a recognized post page' );
+					}
+
 					return;
 			}
 
 			$post_obj = SucomUtil::get_post_object( true );
 			$post_id  = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'showing user metabox for post ID ' . $post_id );
+			}
 
 			/**
 			 * Make sure we have at least a post type and status.

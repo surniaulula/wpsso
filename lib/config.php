@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.11.0-b.2',	// Plugin version.
+					'version'     => '6.11.0-b.3',	// Plugin version.
 					'opt_version' => '676',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1168,7 +1168,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced settings - Content Text tab.
 					 */
-					'plugin_filter_title'   => 0,				// Use Filtered (SEO) Title.
+					'plugin_filter_title'   => 0,				// Use Filtered (aka SEO) Title.
 					'plugin_filter_content' => 0,				// Use WordPress Content Filters.
 					'plugin_filter_excerpt' => 0,				// Use WordPress Excerpt Filters.
 					'plugin_p_strip'        => 1,				// Content Starts at 1st Paragraph.

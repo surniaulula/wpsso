@@ -149,7 +149,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		/**
 		 * Add WordPress action and filters hooks.
 		 */
-		protected function add_wp_hooks() {
+		public function add_wp_hooks() {
 
 			return $this->must_be_extended( __METHOD__ );
 		}
