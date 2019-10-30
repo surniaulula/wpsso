@@ -440,7 +440,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.11.0-b.2 (2019/10/29)**
+**Version 6.11.0-b.3 (2019/10/30)**
 
 * **New Features**
 	* None.
@@ -462,7 +462,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new "Google Website Verification ID" option.
 	* Updated the "Pinterest Website Verification ID" option help text.
 	* Updated the Schema Person markup to hash the '@id' string URL.
-	* Updated the preload SSO toolbar notifications text to "Fetching SSO notifications..." .
+	* Updated the preload SSO toolbar notifications text to "Fetching SSO notifications for the current page..." .
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -655,9 +655,9 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 
 == Upgrade Notice ==
 
-= 6.11.0-b.2 =
+= 6.11.0-b.3 =
 
-(2019/10/29) Added support for the "YITH WooCommerce Brands Add-On" plugin (Premium version). Added "Wikipedia Page URL" user option and "Wikipedia Organization Page URL" settings option.
+(2019/10/30) Added support for the "YITH WooCommerce Brands Add-On" plugin (Premium version). Added "Wikipedia Page URL" user option and "Wikipedia Organization Page URL" settings option.
 
 = 6.10.0 =
 
