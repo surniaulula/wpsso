@@ -463,7 +463,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new "Google Website Verification ID" option.
 	* Updated the "Pinterest Website Verification ID" option help text.
 	* Updated the Schema Person markup to hash the '@id' string URL.
-	* Updated the preload SSO toolbar notifications text to "Fetching SSO notifications for the current page..." .
+	* Updated the preload SSO toolbar notifications text to "Fetching SSO notifications..." .
 * **Bugfixes**
 	* None.
 * **Developer Notes**
