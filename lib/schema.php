@@ -1638,11 +1638,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( ! isset( $aggregate_prices[ $price_currency ][ 'low' ] )
 						|| $aggregate_prices[ $price_currency ][ 'low' ] > $single_offer[ 'price' ] ) {		// Save lower price.
+
 						$aggregate_prices[ $price_currency ][ 'low' ] = $single_offer[ 'price' ];
 					}
 
 					if ( ! isset( $aggregate_prices[ $price_currency ][ 'high' ] )
 						|| $aggregate_prices[ $price_currency ][ 'high' ] < $single_offer[ 'price' ] ) {	// Save higher price.
+
 						$aggregate_prices[ $price_currency ][ 'high' ] = $single_offer[ 'price' ];
 					}
 				}
@@ -1651,11 +1653,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 * Save common properties (by currency) to include in the AggregateOffer markup.
 				 */
 				if ( $offer_num === 0 ) {
+
 					foreach ( preg_grep( '/^[^@]/', array_keys( $single_offer ) ) as $key ) {
 						$aggregate_common[ $price_currency ][ $key ] = $single_offer[ $key ];
 					}
+
 				} elseif ( ! empty( $aggregate_common[ $price_currency ] ) ) {
+
 					foreach ( $aggregate_common[ $price_currency ] as $key => $val ) {
+
 						if ( ! isset( $single_offer[ $key ] ) ) {
 							unset( $aggregate_common[ $price_currency ][ $key ] );
 						} elseif ( $val !== $single_offer[ $key ] ) {
@@ -1679,6 +1685,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					$offer_group = array();
 
+					/**
+					 * Maybe set the 'lowPrice' and 'highPrice' properties.
+					 */
 					foreach ( array( 'low', 'high' ) as $mark ) {
 						if ( isset( $aggregate_prices[ $price_currency ][ $mark ] ) ) {
 							$offer_group[ $mark . 'Price' ] = $aggregate_prices[ $price_currency ][ $mark ];
