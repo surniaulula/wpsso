@@ -3082,7 +3082,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						true, false, array( 'dismiss-msg' => $rate_plugin_clicked ) ) . '</div>';
 
 				$already_rated_label   = sprintf( __( 'I\'ve already rated %s.', 'wpsso' ), $info[ 'short' ] );
-				$already_rated_clicked = sprintf( __( 'Thank you for that earlier rating of %s!', 'wpsso' ), $info[ 'short' ] );
+				$already_rated_clicked = sprintf( __( 'Thank you for your earlier rating of %s!', 'wpsso' ), $info[ 'short' ] );
 				$already_rated_button  = '<div style="display:inline-block;vertical-align:top;margin:1.2em 0 0.8em 0;">' .
 					$this->form->get_button( $already_rated_label, 'button-secondary dismiss-on-click', '', '',
 						false, false, array( 'dismiss-msg' => $already_rated_clicked ) ) . '</div>';

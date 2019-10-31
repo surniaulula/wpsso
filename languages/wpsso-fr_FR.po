@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 6.11.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-10-30 09:01-0700\n"
-"PO-Revision-Date: 2019-10-30 09:01-0700\n"
+"POT-Creation-Date: 2019-10-31 11:10-0700\n"
+"PO-Revision-Date: 2019-10-31 11:11-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -636,16 +636,16 @@ msgid "Yes! Rate %s 5 stars!"
 msgstr "Oui! Noter %s 5 étoiles!"
 
 #: lib/admin.php:3079
-msgid "Thank you for rating the %s plugin! You're awesome!"
-msgstr "Merci d'avoir noté l'extension %s! Vous êtes génial!"
+msgid "Thank you for rating the %s plugin!"
+msgstr "Merci d'avoir noté l'extension %s!"
 
 #: lib/admin.php:3084
 msgid "I've already rated %s."
 msgstr "J'ai déjà noté %s."
 
 #: lib/admin.php:3085
-msgid "Thanks again for that earlier rating of %s! You're awesome!"
-msgstr "Merci encore d'avoir noté l'extension %s plus tôt! Vous êtes génial!"
+msgid "Thank you for your earlier rating of %s!"
+msgstr "Merci pour votre note antérieure de %s!"
 
 #: lib/admin.php:3103 lib/admin.php:3172
 msgid "Fantastic!"
@@ -676,8 +676,8 @@ msgid "Yes! Get the %s update in just moments!"
 msgstr "Oui! Obtenir la mise à jour %s en quelques instants!"
 
 #: lib/admin.php:3155
-msgid "Thank you for your support! You're awesome!"
-msgstr "Merci pour votre soutien! Vous êtes génial!"
+msgid "Thank you for your support!"
+msgstr "Merci pour votre soutien!"
 
 #: lib/admin.php:3161
 msgid "No thanks, I'll stay with the %s version for now."

@@ -674,7 +674,7 @@ msgid "I've already rated %s."
 msgstr ""
 
 #: lib/admin.php:3085
-msgid "Thank you for that earlier rating of %s!"
+msgid "Thank you for your earlier rating of %s!"
 msgstr ""
 
 #: lib/admin.php:3103 lib/admin.php:3172
