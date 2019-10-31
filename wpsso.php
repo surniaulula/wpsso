@@ -14,7 +14,7 @@
  * Requires At Least: 3.9
  * Tested Up To: 5.3
  * WC Tested Up To: 3.7.1
- * Version: 6.11.0-b.3
+ * Version: 6.11.0-rc.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -99,10 +99,10 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			$this->cf = WpssoConfig::get_config( $opt_key = false, $apply_filters = false );
 
-			WpssoConfig::set_constants( __FILE__ );
-			WpssoConfig::require_libs( __FILE__ );			// Includes the register.php class library.
+			WpssoConfig::set_constants( __FILE__ );	
+			WpssoConfig::require_libs( __FILE__ );		// Includes the register.php class library.
 
-			$this->reg = new WpssoRegister( $this );		// Activate, deactivate, uninstall hooks.
+			$this->reg = new WpssoRegister( $this );	// Activate, deactivate, uninstall hooks.
 
 			add_action( 'init', array( $this, 'set_config' ), -10 );					// Runs at init -10 (before widgets_init).
 			add_action( 'widgets_init', array( $this, 'init_widgets' ), 10 );				// Runs at init 1.

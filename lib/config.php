@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.11.0-b.3',	// Plugin version.
+					'version'     => '6.11.0-rc.1',	// Plugin version.
 					'opt_version' => '676',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -3136,27 +3136,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 		public static function get_version( $add_slug = false ) {
 
-			$ext  = 'wpsso';
-			$info =& self::$cf[ 'plugin' ][ $ext ];
+			$info =& self::$cf[ 'plugin' ][ 'wpsso' ];
 
 			return $add_slug ? $info[ 'slug' ] . '-' . $info[ 'version' ] : $info[ 'version' ];
 		}
 
 		/**
-		 * WpccoConfig::get_config() is called very early, so don't
-		 * apply filters by default.
+		 * WpccoConfig::get_config() is called very early, so don't apply filters by default.
 		 *
-		 * WpccoConfig::get_config() is called with $apply_filters =
-		 * true at WordPress 'init' priority -10, after
-		 * WpssoConfig::set_constants() and WpssoConfig::require_libs()
-		 * have been called, but before any plugin / add-on class
-		 * objects have been defined.
+		 * WpccoConfig::get_config() is called with $apply_filters = true at WordPress 'init' priority -10, after
+		 * WpssoConfig::set_constants() and WpssoConfig::require_libs() have been called, but before any plugin / add-on
+		 * class objects have been defined.
 		 *
-		 * The following hook is standard in the main plugin class of
-		 * every add-on to merge their config with WpssoConfig::$cf.
+		 * The following hook is standard in the main plugin class of every add-on to merge their config with
+		 * WpssoConfig::$cf.
 		 *
-		 * 	add_filter( 'wpsso_get_config',
-		 		array( $this, 'wpsso_get_config' ), 10, 2 );
+		 * 	add_filter( 'wpsso_get_config', array( $this, 'wpsso_get_config' ), 10, 2 );
 		 */
 		public static function get_config( $cf_key = false, $apply_filters = false ) {
 
@@ -3263,33 +3258,39 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 		private static function sort_ext_by_name( $a, $b ) {
 
-			if ( isset( $a[ 'name' ] ) && isset( $b[ 'name' ] ) ) {	// Just in case.
+			if ( isset( $a[ 'name' ] ) && isset( $b[ 'name' ] ) ) {		// Just in case.
 				return strcasecmp( $a[ 'name' ], $b[ 'name' ] );	// Case-insensitive string comparison.
 			} else {
-				return 0;					// No change.
+				return 0;						// No change.
 			}
 		}
 
 		public static function set_constants( $plugin_filepath ) {
 
-			if ( defined( 'WPSSO_VERSION' ) ) {			// Execute and define constants only once.
+			if ( defined( 'WPSSO_VERSION' ) ) {	// Define constants only once.
 				return;
 			}
+
+			$info =& self::$cf[ 'plugin' ][ 'wpsso' ];
 
 			/**
 			 * Define fixed constants.
 			 */
 			define( 'WPSSO_FILEPATH', $plugin_filepath );						
-			define( 'WPSSO_PLUGINBASE', self::$cf[ 'plugin' ][ 'wpsso' ][ 'base' ] );		// Example: wpsso/wpsso.php.
+			define( 'WPSSO_PLUGINBASE', $info[ 'base' ] );	// Example: wpsso/wpsso.php.
 			define( 'WPSSO_PLUGINDIR', trailingslashit( realpath( dirname( $plugin_filepath ) ) ) );
-			define( 'WPSSO_PLUGINSLUG', self::$cf[ 'plugin' ][ 'wpsso' ][ 'slug' ] );		// Example: wpsso.
-			define( 'WPSSO_UNDEF', -1 );								// Default undefined image width / height value.
+			define( 'WPSSO_PLUGINSLUG', $info[ 'slug' ] );	// Example: wpsso.
 			define( 'WPSSO_URLPATH', trailingslashit( plugins_url( '', $plugin_filepath ) ) );
-			define( 'WPSSO_VERSION', self::$cf[ 'plugin' ][ 'wpsso' ][ 'version' ] );						
+			define( 'WPSSO_VERSION', $info[ 'version' ] );						
+			define( 'WPSSO_UNDEF', -1 );			// Default undefined image width / height value.
+
+			define( 'WPSSO_INIT_OPTIONS_PRIORITY', 9 );
+			define( 'WPSSO_INIT_OBJECTS_PRIORITY', 10 );
+			define( 'WPSSO_INIT_SHORTCODES_PRIORITY', 11 );
+			define( 'WPSSO_INIT_PLUGIN_PRIORITY', 12 );
 
 			/**
-			 * Define variable constants. Default values can be changed by defining 
-			 * constants in the wp-config.php file.
+			 * Define variable constants.
 			 */
 			self::set_variable_constants();
 		}
@@ -3300,6 +3301,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				$var_const = self::get_variable_constants();
 			}
 
+			/**
+			 * Define the variable constants, if not already defined.
+			 */
 			foreach ( $var_const as $name => $value ) {
 				if ( ! defined( $name ) ) {
 					define( $name, $value );
@@ -3363,13 +3367,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/**
 			 * WPSSO option and meta array names.
 			 */
-			$var_const[ 'WPSSO_TS_NAME' ]           = 'wpsso_timestamps';
-			$var_const[ 'WPSSO_OPTIONS_NAME' ]      = 'wpsso_options';
-			$var_const[ 'WPSSO_SITE_OPTIONS_NAME' ] = 'wpsso_site_options';
 			$var_const[ 'WPSSO_DISMISS_NAME' ]      = 'wpsso_dismissed';		// Dismissed notices.
 			$var_const[ 'WPSSO_META_NAME' ]         = '_wpsso_meta';		// Post meta.
-			$var_const[ 'WPSSO_PREF_NAME' ]         = '_wpsso_pref';		// User meta.
+			$var_const[ 'WPSSO_OPTIONS_NAME' ]      = 'wpsso_options';
 			$var_const[ 'WPSSO_POST_CHECK_NAME' ]   = 'wpsso_post_head_count';	// Duplicate check counter.
+			$var_const[ 'WPSSO_PREF_NAME' ]         = '_wpsso_pref';		// User meta.
+			$var_const[ 'WPSSO_SITE_OPTIONS_NAME' ] = 'wpsso_site_options';
+			$var_const[ 'WPSSO_TS_NAME' ]           = 'wpsso_timestamps';
 
 			/**
 			 * WPSSO hook priorities.
@@ -3377,12 +3381,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_ADD_MENU_PRIORITY' ]         = -20;
 			$var_const[ 'WPSSO_ADD_SUBMENU_PRIORITY' ]      = -10;
 			$var_const[ 'WPSSO_ADD_COLUMN_PRIORITY' ]       = 100;
-			$var_const[ 'WPSSO_FOOTER_PRIORITY' ]           = 100;
 			$var_const[ 'WPSSO_HEAD_PRIORITY' ]             = 10;
-			$var_const[ 'WPSSO_INIT_OPTIONS_PRIORITY' ]     = 9;
-			$var_const[ 'WPSSO_INIT_OBJECTS_PRIORITY' ]     = 10;
-			$var_const[ 'WPSSO_INIT_SHORTCODES_PRIORITY' ]  = 11;
-			$var_const[ 'WPSSO_INIT_PLUGIN_PRIORITY' ]      = 12;
+			$var_const[ 'WPSSO_FOOTER_PRIORITY' ]           = 100;
 			$var_const[ 'WPSSO_META_SAVE_PRIORITY' ]        = -10;	// Save our custom post/term/user meta before clearing the cache.
 			$var_const[ 'WPSSO_META_CACHE_PRIORITY' ]       = 0;	// Clear our cache before priority 10 (where most caching plugins are hooked).
 			$var_const[ 'WPSSO_SEO_SEED_FILTERS_PRIORITY' ] = 100;
@@ -3391,12 +3391,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * WPSSO PHP cURL library settings.
 			 */
 			$var_const[ 'WPSSO_PHP_CURL_CAINFO' ]             = ABSPATH . WPINC . '/certificates/ca-bundle.crt';
-			$var_const[ 'WPSSO_PHP_CURL_USERAGENT' ]          = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:69.0) Gecko/20100101 Firefox/69.0';
+			$var_const[ 'WPSSO_PHP_CURL_USERAGENT' ]          = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:70.0) Gecko/20100101 Firefox/70.0';
 			$var_const[ 'WPSSO_PHP_CURL_USERAGENT_FACEBOOK' ] = 'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)';
 
+			/**
+			 * Maybe override the default constant value with a pre-defined constant value.
+			 */
 			foreach ( $var_const as $name => $value ) {
 				if ( defined( $name ) ) {
-					$var_const[ $name ] = constant( $name );	// Inherit existing values.
+					$var_const[ $name ] = constant( $name );
 				}
 			}
 

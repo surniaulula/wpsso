@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.11.0-b.3\n"
+"Project-Id-Version: WPSSO Core 6.11.0-rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -666,7 +666,7 @@ msgid "Yes! Rate %s 5 stars!"
 msgstr ""
 
 #: lib/admin.php:3079
-msgid "Thank you for rating the %s plugin! You're awesome!"
+msgid "Thank you for rating the %s plugin!"
 msgstr ""
 
 #: lib/admin.php:3084
@@ -674,7 +674,7 @@ msgid "I've already rated %s."
 msgstr ""
 
 #: lib/admin.php:3085
-msgid "Thanks again for that earlier rating of %s! You're awesome!"
+msgid "Thank you for that earlier rating of %s!"
 msgstr ""
 
 #: lib/admin.php:3103 lib/admin.php:3172
@@ -710,7 +710,7 @@ msgid "Yes! Get the %s update in just moments!"
 msgstr ""
 
 #: lib/admin.php:3155
-msgid "Thank you for your support! You're awesome!"
+msgid "Thank you for your support!"
 msgstr ""
 
 #: lib/admin.php:3161

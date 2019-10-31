@@ -3076,13 +3076,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * The action buttons.
 				 */
 				$rate_plugin_label   = sprintf( __( 'Yes! Rate %s 5 stars!', 'wpsso' ), $info[ 'short' ] );
-				$rate_plugin_clicked = sprintf( __( 'Thank you for rating the %s plugin! You\'re awesome!', 'wpsso' ), $info[ 'short' ] );
+				$rate_plugin_clicked = sprintf( __( 'Thank you for rating the %s plugin!', 'wpsso' ), $info[ 'short' ] );
 				$rate_plugin_button  = '<div style="display:inline-block;vertical-align:top;margin:1.2em 0.8em 0.8em 0;">' .
 					$this->form->get_button( $rate_plugin_label, 'button-primary dismiss-on-click', '', $info[ 'url' ][ 'review' ],
 						true, false, array( 'dismiss-msg' => $rate_plugin_clicked ) ) . '</div>';
 
 				$already_rated_label   = sprintf( __( 'I\'ve already rated %s.', 'wpsso' ), $info[ 'short' ] );
-				$already_rated_clicked = sprintf( __( 'Thanks again for that earlier rating of %s! You\'re awesome!', 'wpsso' ), $info[ 'short' ] );
+				$already_rated_clicked = sprintf( __( 'Thank you for that earlier rating of %s!', 'wpsso' ), $info[ 'short' ] );
 				$already_rated_button  = '<div style="display:inline-block;vertical-align:top;margin:1.2em 0 0.8em 0;">' .
 					$this->form->get_button( $already_rated_label, 'button-secondary dismiss-on-click', '', '',
 						false, false, array( 'dismiss-msg' => $already_rated_clicked ) ) . '</div>';
@@ -3152,7 +3152,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$purchase_label   = sprintf( __( 'Yes! Get the %s update in just moments!', 'wpsso' ),
 						_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) );
 
-					$purchase_clicked = __( 'Thank you for your support! You\'re awesome!', 'wpsso' );
+					$purchase_clicked = __( 'Thank you for your support!', 'wpsso' );
 
 					$purchase_button  = '<div style="display:inline-block;vertical-align:top;margin:1.2em 0.8em 0.8em 0;">' .
 						$this->form->get_button( $purchase_label, 'button-primary dismiss-on-click', '', $purchase_url,
