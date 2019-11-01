@@ -2087,8 +2087,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			/**
 			 * Always keep the 'og:type' meta tag top-most.
 			 *
-			 * Note that isset() does not return true for array keys that correspond to a null value,
-			 * while array_key_exists() does, so use array_key_exists() here.
+			 * Note that isset() does not return true for array keys that correspond to a null value, while
+			 * array_key_exists() does, so use array_key_exists() here.
 			 */
 			if ( array_key_exists( 'og:type', $mt_og ) ) {
 				return array_merge( array( 'og:type' => $mt_og[ 'og:type' ] ), $og_ret, $mt_og );
@@ -2107,8 +2107,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			/**
-			 * Check for two dimensional arrays and keep following the first array element.
-			 * Prefer the $mt_media_pre array key (if it's available).
+			 * Check for two dimensional arrays and keep following the first array element. Prefer the $mt_media_pre
+			 * array key (if it's available).
 			 */
 			if ( isset( $assoc[ $mt_media_pre ] ) && is_array( $assoc[ $mt_media_pre ] ) ) {
 				$first_media = reset( $assoc[ $mt_media_pre ] );
@@ -2212,8 +2212,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$key_locale = $key . '#' . $locale;
 
 			/**
-			 * The default language may have changed, so if we're using the default,
-			 * check for a locale version for the default language.
+			 * The default language may have changed, so if we're using the default, check for a locale version for the
+			 * default language.
 			 */
 			if ( $locale === $default ) {
 				return isset( $opts[ $key_locale ] ) ? $key_locale : $key;
@@ -2483,25 +2483,20 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$reset_at_secs = 300;
 
 			/**
-			 * If the $cache_array already has a '__created_at'
-			 * value, calculate how long until the transient object
-			 * expires, and then set the transient with that new
-			 * expiration seconds.
+			 * If the $cache_array already has a '__created_at' value, calculate how long until the transient object
+			 * expires, and then set the transient with that new expiration seconds.
 			 */
 			if ( isset( $cache_array[ '__created_at' ] ) ) {
 
 				/**
-				 * Adjust the expiration time by removing the
-				 * difference (current time less creation time)
-				 * from the desired transient expiration
-				 * seconds.
+				 * Adjust the expiration time by removing the difference (current time less creation time) from the
+				 * desired transient expiration seconds.
 				 */
 				$transient_exp_secs = $cache_exp_secs - ( $current_time - $cache_array[ '__created_at' ] );
 
 				/**
-				 * If we're 300 seconds (5 minutes) or less
-				 * from the transient expiring, then renew the
-				 * transient creation / expiration times.
+				 * If we're 300 seconds (5 minutes) or less from the transient expiring, then renew the transient
+				 * creation / expiration times.
 				 */
 				if ( $transient_exp_secs < $reset_at_secs ) {
 
@@ -3222,9 +3217,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Strip / remove all registered shortcodes, along with some unregistered shortcodes.
-		 * Hook the 'sucom_strip_shortcodes_preg' filter to modify the unregistered shortcode
-		 * regular expression.
+		 * Strip / remove all registered shortcodes, along with some unregistered shortcodes. Hook the
+		 * 'sucom_strip_shortcodes_preg' filter to modify the unregistered shortcode regular expression.
 		 */
 		public static function strip_shortcodes( $text ) {
 
@@ -3239,7 +3233,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			$shortcodes_preg = apply_filters( 'sucom_strip_shortcodes_preg', array(
-				'/\[\/?(cs_element_|et_|mk_|rev_slider_|vc_)[^\]]+\]/',
+				'/\[\/?(cs_element_|et_|fusion_|mk_|rev_slider_|vc_)[^\]]+\]/',
 			) );
 
 			$text = preg_replace( $shortcodes_preg, ' ', $text );
