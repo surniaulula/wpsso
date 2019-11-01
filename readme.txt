@@ -448,7 +448,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added support for the "YITH WooCommerce Brands Add-On" plugin (Premium version).
 	* Added a "Wikipedia Page URL" option in the user profile page.
 	* Added a "Wikipedia Organization Page URL" option in the SSO &gt; General settings page.
-	* Added a new "Minimum image dimensions (to satisfy all XX image sizes): XXXX by XXXX pixels." message to the Media Library upload page.
+	* Added a new "Suggested minimum dimension for uploaded images (to satisfy all XX image sizes): XXXX by XXXX pixels." message to the Media Library upload page.
 * **Bugfixes**
 	* Fixed non-working table row show / hide jQuery event triggers after refreshing the metabox in the block editor.
 * **Developer Notes**
