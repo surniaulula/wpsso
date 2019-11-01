@@ -2170,7 +2170,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( isset( $assoc[ $key_name ] ) && $assoc[ $key_name ] !== '' ) {	// Exclude empty strings.
 
-					if ( isset( $json_data[ $prop_name ] ) && empty( $overwrite ) ) {
+					if ( ( 'width' === $prop_name || 'height' === $prop_name ) && 
+						WPSSO_UNDEF === $assoc[ $key_name ] ) {
+
+						continue;
+
+					} elseif ( isset( $json_data[ $prop_name ] ) && empty( $overwrite ) ) {
 
 						if ( $wpsso->debug->enabled ) {
 							$wpsso->debug->log( 'skipping ' . $prop_name . ': itemprop exists and overwrite is false' );

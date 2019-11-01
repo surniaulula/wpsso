@@ -394,7 +394,6 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'label'    => _x( 'Priority Video Information', 'metabox title', 'wpsso' )
 				),
 				'og_vid_prev_img' => array(
-					'tr_class' => $form->get_css_class_hide( 'basic', 'og_vid_prev_img' ),
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Include Preview Images', 'option label', 'wpsso' ),
