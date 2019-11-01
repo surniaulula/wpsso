@@ -94,7 +94,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			/**
 			 * Set the notification system.
 			 */
-			if ( empty( $this->p->options[ 'plugin_notice_system' ] ) ) {	// Just in case.
+			if ( ! is_admin_bar_showing() ) {	// Just in case.
+				$this->tb_notices = false;
+			} if ( empty( $this->p->options[ 'plugin_notice_system' ] ) ) {	// Just in case.
 				$this->tb_notices = true;
 			} elseif ( 'toolbar_notices' === $this->p->options[ 'plugin_notice_system' ] ) {
 				$this->tb_notices = true;
@@ -913,6 +915,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		public function get_notice_system() {
+
 			return $this->tb_notices;
 		}
 

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.11.0-rc.1\n"
+"Project-Id-Version: WPSSO Core 6.11.0-rc.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1166,23 +1166,23 @@ msgstr ""
 msgid "Save a draft version or publish to update this value."
 msgstr ""
 
-#: lib/com/notice.php:218 lib/gettext-com.php:28
+#: lib/com/notice.php:220 lib/gettext-com.php:28
 msgid "Forever"
 msgstr ""
 
-#: lib/com/notice.php:220 lib/gettext-com.php:29
+#: lib/com/notice.php:222 lib/gettext-com.php:29
 msgid "This notice can be dismissed permanently."
 msgstr ""
 
-#: lib/com/notice.php:231 lib/gettext-com.php:30
+#: lib/com/notice.php:233 lib/gettext-com.php:30
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:443 lib/gettext-com.php:31 lib/post.php:1546
+#: lib/com/notice.php:445 lib/gettext-com.php:31 lib/post.php:1546
 msgid "Edit"
 msgstr ""
 
-#: lib/com/notice.php:447 lib/gettext-com.php:32
+#: lib/com/notice.php:449 lib/gettext-com.php:32
 msgid "Reference: %s"
 msgstr ""
 
