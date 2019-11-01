@@ -440,7 +440,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.11.0-rc.3 (2019/11/01)**
+**Version 6.11.0 (2019/11/01)**
 
 * **New Features**
 	* None.
@@ -657,11 +657,7 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 
 == Upgrade Notice ==
 
-= 6.11.0-rc.3 =
+= 6.11.0 =
 
 (2019/11/01) Added support for the "YITH WooCommerce Brands Add-On" plugin (Premium version). Added "Wikipedia Page URL" user option and "Wikipedia Organization Page URL" settings option.
-
-= 6.10.0 =
-
-(2019/10/26) Added a new "Google Website Verification ID" option. Updated the Schema Person markup to hash the '@id' string URL.
 
