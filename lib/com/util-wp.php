@@ -696,5 +696,66 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			return $user_names;
 		}
+
+		public static function get_minimum_image_wh() {
+
+			static $local_cache = null;
+
+			if ( null !== $local_cache ) {
+				return $local_cache;
+			}
+
+			global $_wp_additional_image_sizes;
+
+			$min_width  = 0;
+			$min_height = 0;
+			$size_count = 0;
+
+			foreach ( $_wp_additional_image_sizes as $size_name => $size_info ) {
+
+				$size_count++;
+
+				if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'width' ] ) ) {
+					$width = intval( $_wp_additional_image_sizes[ $size_name ][ 'width' ] );
+				} else {
+					$width = get_option( $size_name . '_size_w' );
+				}
+
+				if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'height' ] ) ) {
+					$height = intval( $_wp_additional_image_sizes[ $size_name ][ 'height' ] );
+				} else {
+					$height = get_option( $size_name . '_size_h' );
+				}
+
+				if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'crop' ] ) ) {
+					$crop = $_wp_additional_image_sizes[ $size_name ][ 'crop' ];
+				} else {
+					$crop = get_option( $size_name . '_crop' );
+				}
+
+				if ( ! is_array( $crop ) ) {
+					$crop = empty( $crop ) ? false : true;
+				}
+
+				if ( $crop ) {
+					if ( $width > $min_width ) {
+						$min_width = $width;
+					}
+					if ( $height > $min_height ) {
+						$min_height = $height;
+					}
+				} elseif ( $width < $height ) {
+					if ( $width > $min_width ) {
+						$min_width = $width;
+					}
+				} else {
+					if ( $height > $min_height ) {
+						$min_height = $height;
+					}
+				}
+			}
+
+			return $local_cache = array( $min_width, $min_height, $size_count );
+		}
 	}
 }

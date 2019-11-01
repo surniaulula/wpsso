@@ -1076,7 +1076,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$data        = array();
 
 			if ( preg_match( '/^(.*)(_[0-9]+)$/', $name, $matches ) ) {
-				$name = $matches[1];
+				$name       = $matches[1];
 				$key_suffix = $matches[2];	// Mutiple numbered option.
 			}
 

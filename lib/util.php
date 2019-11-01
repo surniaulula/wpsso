@@ -689,7 +689,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		public function get_size_info( $size_name = 'thumbnail', $attach_id = false ) {
 
 			if ( ! is_string( $size_name ) ) {	// Just in case.
-				return;
+				return false;
 			}
 
 			static $local_cache = array();

@@ -43,6 +43,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			add_action( 'init', array( $this, 'allow_img_data_attributes' ) );
+			add_action( 'post-upload-ui', array( $this, 'show_post_upload_ui_message' ) );
 
 			/**
 			 * Prevent image_downsize() from lying about image width and height.
@@ -221,6 +222,23 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			global $allowedposttags;
 
 			$allowedposttags[ 'img' ][ 'data-wp-pid' ] = true;
+		}
+
+		public function show_post_upload_ui_message() {
+
+			list( $min_width, $min_height, $size_count ) = SucomUtilWP::get_minimum_image_wh();
+
+			echo '<p class="minimum-dimensions">';
+
+			echo sprintf( __( '<strong>Minimum image dimensions</strong> (to satisfy all %1$d image sizes): %2$d by %3$s pixels.',
+				'wpsso' ), $size_count, $min_width, $min_height );
+
+			echo '</p>' . "\n";
+
+			/**
+			 * Hide the "suggested image dimensions" as they are less than the minimum we suggest here.
+			 */
+			echo '<style type="text/css">p.suggested-dimensions{ display:none; }</style>' . "\n";
 		}
 
 		/**

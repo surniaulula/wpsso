@@ -121,20 +121,23 @@ if ( ! class_exists( 'WpssoSettingsImageDimensions' ) && class_exists( 'WpssoAdm
 						'option label', 'wpsso' ), '', 'schema_article_img_size' ) . 
 					'<td>' . $this->form->get_input_image_dimensions( 'schema_article_img' ) . '</td>';
 
-					$table_rows[ 'schema_article_01_01_img_size' ] = '' .
-					$this->form->get_th_html( _x( 'Schema Article AMP 1:1 (Google)',
-						'option label', 'wpsso' ), '', 'schema_article_1_1_img_size' ) . 
-					'<td>' . $this->form->get_input_image_dimensions( 'schema_article_1_1_img' ) . $json_req_msg . '</td>';
+					if ( ! empty( $this->p->avail[ 'amp' ][ 'any' ] ) ) {
 
-					$table_rows[ 'schema_article_04_03_img_size' ] = '' .
-					$this->form->get_th_html( _x( 'Schema Article AMP 4:3 (Google)',
-						'option label', 'wpsso' ), '', 'schema_article_4_3_img_size' ) . 
-					'<td>' . $this->form->get_input_image_dimensions( 'schema_article_4_3_img' ) . $json_req_msg . '</td>';
+						$table_rows[ 'schema_article_01_01_img_size' ] = '' .
+						$this->form->get_th_html( _x( 'Schema Article AMP 1:1 (Google)',
+							'option label', 'wpsso' ), '', 'schema_article_1_1_img_size' ) . 
+						'<td>' . $this->form->get_input_image_dimensions( 'schema_article_1_1_img' ) . $json_req_msg . '</td>';
 
-					$table_rows[ 'schema_article_16_09_img_size' ] = '' .
-					$this->form->get_th_html( _x( 'Schema Article AMP 16:9 (Google)',
-						'option label', 'wpsso' ), '', 'schema_article_16_9_img_size' ) . 
-					'<td>' . $this->form->get_input_image_dimensions( 'schema_article_16_9_img' ) . $json_req_msg . '</td>';
+						$table_rows[ 'schema_article_04_03_img_size' ] = '' .
+						$this->form->get_th_html( _x( 'Schema Article AMP 4:3 (Google)',
+							'option label', 'wpsso' ), '', 'schema_article_4_3_img_size' ) . 
+						'<td>' . $this->form->get_input_image_dimensions( 'schema_article_4_3_img' ) . $json_req_msg . '</td>';
+
+						$table_rows[ 'schema_article_16_09_img_size' ] = '' .
+						$this->form->get_th_html( _x( 'Schema Article AMP 16:9 (Google)',
+							'option label', 'wpsso' ), '', 'schema_article_16_9_img_size' ) . 
+						'<td>' . $this->form->get_input_image_dimensions( 'schema_article_16_9_img' ) . $json_req_msg . '</td>';
+					}
 
 					$table_rows[ 'schema_thumb_img_size' ] = '' .
 					$this->form->get_th_html( _x( 'Schema Thumbnail Image',

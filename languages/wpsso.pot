@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.11.0-rc.2\n"
+"Project-Id-Version: WPSSO Core 6.11.0-rc.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -794,48 +794,48 @@ msgctxt "metabox title"
 msgid "Default Open Graph Types"
 msgstr ""
 
-#: lib/admin.php:3457 lib/admin.php:3647
+#: lib/admin.php:3457 lib/admin.php:3650
 msgctxt "option label"
 msgid "Type for Blog Front Page"
 msgstr ""
 
-#: lib/admin.php:3458 lib/admin.php:3648
+#: lib/admin.php:3458 lib/admin.php:3651
 msgctxt "option label"
 msgid "Type for Static Front Page"
 msgstr ""
 
-#: lib/admin.php:3459 lib/admin.php:3649
+#: lib/admin.php:3459 lib/admin.php:3652
 msgctxt "option label"
 msgid "Type for User / Author Page"
 msgstr ""
 
-#: lib/admin.php:3460 lib/admin.php:3650
+#: lib/admin.php:3460 lib/admin.php:3653
 msgctxt "option label"
 msgid "Type for Search Results Page"
 msgstr ""
 
-#: lib/admin.php:3461 lib/admin.php:3651
+#: lib/admin.php:3461 lib/admin.php:3654
 msgctxt "option label"
 msgid "Type for Other Archive Page"
 msgstr ""
 
-#: lib/admin.php:3486 lib/admin.php:3492 lib/admin.php:3518 lib/admin.php:3685
-#: lib/admin.php:3696 lib/admin.php:3728
+#: lib/admin.php:3486 lib/admin.php:3492 lib/admin.php:3518 lib/admin.php:3688
+#: lib/admin.php:3699 lib/admin.php:3731
 msgctxt "option comment"
 msgid "for %s"
 msgstr ""
 
-#: lib/admin.php:3492 lib/admin.php:3697
+#: lib/admin.php:3492 lib/admin.php:3700
 msgctxt "option comment"
 msgid "Post Type Archive Page"
 msgstr ""
 
-#: lib/admin.php:3495 lib/admin.php:3701
+#: lib/admin.php:3495 lib/admin.php:3704
 msgctxt "option label"
 msgid "Type by Post Type"
 msgstr ""
 
-#: lib/admin.php:3522 lib/admin.php:3733
+#: lib/admin.php:3522 lib/admin.php:3736
 msgctxt "option label"
 msgid "Type by Taxonomy"
 msgstr ""
@@ -912,137 +912,137 @@ msgctxt "option label"
 msgid "Schema Article Image Size"
 msgstr ""
 
-#: lib/admin.php:3611
+#: lib/admin.php:3613
 msgctxt "option label"
 msgid "Schema Article AMP 1:1 Img Size"
 msgstr ""
 
-#: lib/admin.php:3615
+#: lib/admin.php:3617
 msgctxt "option label"
 msgid "Schema Article AMP 4:3 Img Size"
 msgstr ""
 
-#: lib/admin.php:3619
+#: lib/admin.php:3621
 msgctxt "option label"
 msgid "Schema Article AMP 16:9 Img Size"
 msgstr ""
 
-#: lib/admin.php:3623
+#: lib/admin.php:3626
 msgctxt "option label"
 msgid "Schema Thumbnail Image Size"
 msgstr ""
 
-#: lib/admin.php:3627
+#: lib/admin.php:3630
 msgctxt "option label"
 msgid "Max. Schema Description Length"
 msgstr ""
 
-#: lib/admin.php:3629 lib/submenu/general.php:258 lib/submenu/general.php:307
+#: lib/admin.php:3632 lib/submenu/general.php:258 lib/submenu/general.php:307
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
-#: lib/admin.php:3642
+#: lib/admin.php:3645
 msgctxt "metabox title"
 msgid "Default Schema Types"
 msgstr ""
 
-#: lib/admin.php:3749 lib/submenu/essential.php:189
+#: lib/admin.php:3752 lib/submenu/essential.php:189
 msgctxt "option label"
 msgid "Remove Settings on Uninstall"
 msgstr ""
 
-#: lib/admin.php:3751 lib/submenu/essential.php:191
+#: lib/admin.php:3754 lib/submenu/essential.php:191
 msgctxt "option comment"
 msgid "including custom meta for posts, terms, and users"
 msgstr ""
 
-#: lib/admin.php:3755
+#: lib/admin.php:3758
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
 
-#: lib/admin.php:3757
+#: lib/admin.php:3760
 msgctxt "option comment"
 msgid "WPSSO_HTML_DEBUG constant is true"
 msgstr ""
 
-#: lib/admin.php:3762
+#: lib/admin.php:3765
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr ""
 
-#: lib/admin.php:3767
+#: lib/admin.php:3770
 msgctxt "option label"
 msgid "Notification System"
 msgstr ""
 
-#: lib/admin.php:3779
+#: lib/admin.php:3782
 msgctxt "metabox title"
 msgid "Product Attribute Names"
 msgstr ""
 
-#: lib/admin.php:3808
+#: lib/admin.php:3811
 msgctxt "metabox title"
 msgid "Custom Field Names"
 msgstr ""
 
-#: lib/admin.php:3894
+#: lib/admin.php:3897
 msgctxt "option comment"
 msgid "in %s"
 msgstr ""
 
-#: lib/admin.php:3905
+#: lib/admin.php:3908
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:4088
+#: lib/admin.php:4091
 msgid "Return to %s"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:4119
+#: lib/admin.php:4122
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:4141
+#: lib/admin.php:4144
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:4148
+#: lib/admin.php:4151
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes, and translations)</a> to check if newer versions are "
 "available."
 msgstr ""
 
-#: lib/admin.php:4285
+#: lib/admin.php:4288
 msgid "Please select a %1$s settings file to import."
 msgstr ""
 
-#: lib/admin.php:4292
+#: lib/admin.php:4295
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr ""
 
-#: lib/admin.php:4299
+#: lib/admin.php:4302
 msgid ""
 "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr ""
 
-#: lib/admin.php:4313
+#: lib/admin.php:4316
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr ""
 
-#: lib/admin.php:4323
+#: lib/admin.php:4326
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr ""
 
-#: lib/admin.php:4333
+#: lib/admin.php:4336
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 
@@ -2507,8 +2507,8 @@ msgstr ""
 msgid "Posts, Pages, Custom Post Types"
 msgstr ""
 
-#: lib/gettext-pro.php:29 lib/media.php:122 lib/media.php:678 lib/media.php:842
-#: lib/media.php:1828 lib/pro/admin/advanced.php:207
+#: lib/gettext-pro.php:29 lib/media.php:123 lib/media.php:696 lib/media.php:860
+#: lib/media.php:1846 lib/pro/admin/advanced.php:207
 #: lib/std/admin/advanced.php:212
 msgid "Media Library"
 msgstr ""
@@ -3162,11 +3162,11 @@ msgstr ""
 msgid "image ID %s"
 msgstr ""
 
-#: lib/gettext-pro.php:170 lib/media.php:130 lib/pro/media/ngg.php:132
+#: lib/gettext-pro.php:170 lib/media.php:131 lib/pro/media/ngg.php:132
 msgid "cropped"
 msgstr ""
 
-#: lib/gettext-pro.php:171 lib/media.php:132 lib/pro/media/ngg.php:134
+#: lib/gettext-pro.php:171 lib/media.php:133 lib/pro/media/ngg.php:134
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is too small for the "
 "required %4$s image dimensions."
@@ -3343,123 +3343,129 @@ msgstr ""
 msgid "Library class name for \"%s\" is not available."
 msgstr ""
 
-#: lib/media.php:63
+#: lib/media.php:64
 msgctxt "image size label"
 msgid "Thumbnail Image"
 msgstr ""
 
-#: lib/media.php:100
+#: lib/media.php:101
 msgid "full size original"
 msgstr ""
 
-#: lib/media.php:125 lib/media.php:1835
+#: lib/media.php:126 lib/media.php:1853
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
-#: lib/media.php:210
+#: lib/media.php:211
 msgid ""
 "Image %1$s in content ignored &mdash; the image width / height is too small "
 "for the required %2$s image dimensions."
 msgstr ""
 
-#: lib/media.php:211
+#: lib/media.php:212
 msgid ""
 "%1$s includes an additional 'data-wp-pid' attribute for Media Library images "
 "&mdash; if this image was selected from the Media Library before %1$s was "
 "activated, try removing and adding the image back to your content."
 msgstr ""
 
-#: lib/media.php:634
+#: lib/media.php:233
+msgid ""
+"<strong>Minimum image dimensions</strong> (to satisfy all %1$d image sizes): "
+"%2$d by %3$s pixels."
+msgstr ""
+
+#: lib/media.php:652
 msgid ""
 "The NGG integration module provided by %1$s is required to read information "
 "for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:680
+#: lib/media.php:698
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:684 lib/media.php:848
+#: lib/media.php:702 lib/media.php:866
 msgid ""
 "You may consider regenerating the thumbnails of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:703
+#: lib/media.php:721
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image dimensions for "
 "<a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:726
+#: lib/media.php:744
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image file path for "
 "<a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:844
+#: lib/media.php:862
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:850
+#: lib/media.php:868
 msgid ""
 "Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress "
 "%3$s function</a> reported an error when trying to create an image size from "
 "%4$s."
 msgstr ""
 
-#: lib/media.php:1294
+#: lib/media.php:1312
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1845
+#: lib/media.php:1863
 msgid "image URL %s"
-msgstr ""
-
-#: lib/media.php:1870
-msgctxt "option label"
-msgid "Facebook Open Graph"
-msgstr ""
-
-#: lib/media.php:1879
-msgctxt "option label"
-msgid "Google Schema"
 msgstr ""
 
 #: lib/media.php:1888
 msgctxt "option label"
-msgid "Google Schema Article"
+msgid "Facebook Open Graph"
 msgstr ""
 
 #: lib/media.php:1897
 msgctxt "option label"
-msgid "Google Schema Article AMP 1:1"
+msgid "Google Schema"
 msgstr ""
 
 #: lib/media.php:1906
 msgctxt "option label"
-msgid "Google Schema Article AMP 4:3"
+msgid "Google Schema Article"
 msgstr ""
 
 #: lib/media.php:1915
 msgctxt "option label"
+msgid "Google Schema Article AMP 1:1"
+msgstr ""
+
+#: lib/media.php:1924
+msgctxt "option label"
+msgid "Google Schema Article AMP 4:3"
+msgstr ""
+
+#: lib/media.php:1933
+msgctxt "option label"
 msgid "Google Schema Article AMP 16:9"
 msgstr ""
 
-#: lib/media.php:1952
+#: lib/media.php:1970
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:1980
+#: lib/media.php:1998
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -6230,32 +6236,32 @@ msgctxt "option label"
 msgid "Schema Article (Google and Pinterest)"
 msgstr ""
 
-#: lib/settings/image-dimensions.php:125
+#: lib/settings/image-dimensions.php:127
 msgctxt "option label"
 msgid "Schema Article AMP 1:1 (Google)"
 msgstr ""
 
-#: lib/settings/image-dimensions.php:130
+#: lib/settings/image-dimensions.php:132
 msgctxt "option label"
 msgid "Schema Article AMP 4:3 (Google)"
 msgstr ""
 
-#: lib/settings/image-dimensions.php:135
+#: lib/settings/image-dimensions.php:137
 msgctxt "option label"
 msgid "Schema Article AMP 16:9 (Google)"
 msgstr ""
 
-#: lib/settings/image-dimensions.php:140
+#: lib/settings/image-dimensions.php:143
 msgctxt "option label"
 msgid "Schema Thumbnail Image"
 msgstr ""
 
-#: lib/settings/image-dimensions.php:145
+#: lib/settings/image-dimensions.php:148
 msgctxt "option label"
 msgid "Twitter Summary Card"
 msgstr ""
 
-#: lib/settings/image-dimensions.php:150
+#: lib/settings/image-dimensions.php:153
 msgctxt "option label"
 msgid "Twitter Large Image Summary Card"
 msgstr ""
