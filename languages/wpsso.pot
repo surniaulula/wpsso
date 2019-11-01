@@ -3371,8 +3371,8 @@ msgstr ""
 
 #: lib/media.php:233
 msgid ""
-"<strong>Minimum image dimensions</strong> (to satisfy all %1$d image sizes): "
-"%2$d by %3$s pixels."
+"<strong>Suggested minimum dimension for uploaded images</strong> (to satisfy "
+"all %1$d image sizes): %2$d by %3$d pixels."
 msgstr ""
 
 #: lib/media.php:652

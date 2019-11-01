@@ -230,7 +230,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			echo '<p class="minimum-dimensions">';
 
-			echo sprintf( __( '<strong>Minimum image dimensions</strong> (to satisfy all %1$d image sizes): %2$d by %3$s pixels.',
+			echo sprintf( __( '<strong>Suggested minimum dimension for uploaded images</strong> (to satisfy all %1$d image sizes): %2$d by %3$d pixels.',
 				'wpsso' ), $size_count, $min_width, $min_height );
 
 			echo '</p>' . "\n";
