@@ -440,7 +440,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.11.0-rc.1 (2019/10/31)**
+**Version 6.11.0-rc.2 (2019/11/01)**
 
 * **New Features**
 	* None.
@@ -656,9 +656,9 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 
 == Upgrade Notice ==
 
-= 6.11.0-rc.1 =
+= 6.11.0-rc.2 =
 
-(2019/10/31) Added support for the "YITH WooCommerce Brands Add-On" plugin (Premium version). Added "Wikipedia Page URL" user option and "Wikipedia Organization Page URL" settings option.
+(2019/11/01) Added support for the "YITH WooCommerce Brands Add-On" plugin (Premium version). Added "Wikipedia Page URL" user option and "Wikipedia Organization Page URL" settings option.
 
 = 6.10.0 =
 
