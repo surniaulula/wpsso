@@ -4128,7 +4128,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $url;
 		}
 
-		public function get_check_for_updates_link( $only_url = false ) {
+		public function get_check_for_updates_link( $get_notice = true ) {
 
 			$link_url  = '';
 			$link_html = '';
@@ -4152,7 +4152,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			}
 
-			return $only_url ? $link_url : $link_html;
+			return $get_notice ? $link_html : $link_url;
 		}
 
 		/**
