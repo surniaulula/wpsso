@@ -565,7 +565,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'desc'        => 'Traditional social sharing buttons with support for hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more.',
 					'slug'        => 'wpsso-ssb',
 					'base'        => 'wpsso-ssb/wpsso-ssb.php',
-					'update_auth' => 'tid',
+					'update_auth' => '',
 					'assets'      => array(
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-ssb/assets/banner-772x250.jpg',
@@ -590,9 +590,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'install'   => 'https://wpsso.com/docs/plugins/wpsso-ssb/installation/',
 						'faqs'      => 'https://wpsso.com/docs/plugins/wpsso-ssb/faqs/',
 						'notes'     => 'https://wpsso.com/docs/plugins/wpsso-ssb/notes/',
-						'support'   => 'https://surniaulula.com/support/create_ticket/',	// Premium support ticket.
-						'purchase'  => 'https://wpsso.com/extend/plugins/wpsso-ssb/',		// Purchase page.
-						'info'      => 'https://wpsso.com/extend/plugins/wpsso-ssb/info/',	// License information.
+						'support'   => '',	// Premium support ticket.
+						'purchase'  => '',	// Purchase page.
+						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-ssb/update/',
 						'latest'    => '',
 					),
