@@ -518,8 +518,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed an array merge warning when adding co-author URLs to Open Graph meta tags.
 * **Developer Notes**
-	* Updated the SucomForm::get_select() method arguments to allow for an `$event_names` array.
-	* Added support for an 'event_names' array value in the SucomForm::get_mixed_multi() method.
+	* Updated the SucomForm->get_select() method arguments to allow for an `$event_names` array.
+	* Added support for an 'event_names' array value in the SucomForm->get_mixed_multi() method.
 
 **Version 6.8.0 (2019/10/14)**
 
@@ -574,12 +574,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed fallback to default image for non-singular and non-term pages.
 	* Fixed 'get_avatar' filter hook for older WP pre-v4.2 sites by removing 6th argument (added in WP v4.2).
 * **Developer Notes**
-	* Moved video preview image selection from `WpssoOpenGraph::get_array()` to `WpssoOpenGraph::get_all_images()`
+	* Moved video preview image selection from `WpssoOpenGraph->get_array()` to `WpssoOpenGraph->get_all_images()`
 	* Updated the `WpssoSchemaSingle::add_job_data() method` to allow handling of multiple hiring organization and location IDs.
 	* Updated the `WpssoSchemaSingle::add_event_data() method` to allow handling of multiple location, organizer, and performer IDs.
 	* Added a new `get_select_multi()` and `get_no_select_multi()` methods in the WpssoForm class.
-	* Added local caching to the `WpssoOpenGraph::get_all_videos()` method.
-	* Added a new `WpssoOpenGraph::get_all_previews()` method.
+	* Added local caching to the `WpssoOpenGraph->get_all_videos()` method.
+	* Added a new `WpssoOpenGraph->get_all_previews()` method.
 
 **Version 6.5.0 (2019/09/26)**
 
@@ -626,8 +626,8 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added checks for [AMP](https://wordpress.org/plugins/amp/), [Better AMP](https://wordpress.org/plugins/better-amp/), and [AMP for WP](https://wordpress.org/plugins/accelerated-mobile-pages/) plugins in WpssoCheck::get_avail().
-	* Added an 'image' input type in the SucomForm::get_mixed_multi() method for WPSSO JSON v2.9.0.
+	* Added checks for [AMP](https://wordpress.org/plugins/amp/), [Better AMP](https://wordpress.org/plugins/better-amp/), and [AMP for WP](https://wordpress.org/plugins/accelerated-mobile-pages/) plugins in WpssoCheck->get_avail().
+	* Added an 'image' input type in the SucomForm->get_mixed_multi() method for WPSSO JSON v2.9.0.
 	* Added a lib/schema-noscript.php library file with a single filter for aggregate rating markup (replaces the lib/noscript.php library file).
 	* Added a lib/oembed.php library file (methods to be added in v6.4.0).
 	* Removed the lib/noscript.php library file.
