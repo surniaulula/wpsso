@@ -6153,32 +6153,32 @@ msgstr ""
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema.php:53
+#: lib/schema.php:57
 msgctxt "image size label"
 msgid "Schema Image"
 msgstr ""
 
-#: lib/schema.php:58
+#: lib/schema.php:62
 msgctxt "image size label"
 msgid "Schema Article Image"
 msgstr ""
 
-#: lib/schema.php:65
+#: lib/schema.php:69
 msgctxt "image size label"
 msgid "Schema Article AMP 1:1 Image"
 msgstr ""
 
-#: lib/schema.php:70
+#: lib/schema.php:74
 msgctxt "image size label"
 msgid "Schema Article AMP 4:3 Image"
 msgstr ""
 
-#: lib/schema.php:75
+#: lib/schema.php:79
 msgctxt "image size label"
 msgid "Schema Article AMP 16:9 Image"
 msgstr ""
 
-#: lib/schema.php:579
+#: lib/schema.php:583
 msgid "adding schema"
 msgstr ""
 
@@ -6206,7 +6206,7 @@ msgstr ""
 msgid "No %s notifications."
 msgstr ""
 
-#: lib/settings/contact-fields.php:40
+#: lib/settings/contact-fields.php:44
 msgctxt "metabox title"
 msgid "User Profile Contact Fields"
 msgstr ""

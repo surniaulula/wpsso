@@ -9,6 +9,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
+if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {	// Just in case.
+	die( 'Plugin initialization is incomplete...' );
+}
+
 if ( ! class_exists( 'WpssoSubmenuSetup' ) ) {
 	require_once WPSSO_PLUGINDIR . 'lib/submenu/setup.php';
 }
