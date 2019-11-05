@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.11.0\n"
+"Project-Id-Version: WPSSO Core 6.11.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-11-01 09:56-0700\n"
-"PO-Revision-Date: 2019-11-01 09:58-0700\n"
+"POT-Creation-Date: 2019-11-05 11:16-0800\n"
+"PO-Revision-Date: 2019-11-05 11:16-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1085,18 +1085,18 @@ msgstr "Le dossier de cache %s n'est pas accessible en écriture."
 msgid "Failed to open the cache file %s for writing."
 msgstr "Impossible d'ouvrir le fichier de cache %s pour écriture."
 
-#: lib/com/form.php:1137 lib/gettext-com.php:23
+#: lib/com/form.php:1138 lib/gettext-com.php:23
 msgctxt "option comment"
 msgid "crop"
 msgstr "recadrer"
 
-#: lib/com/form.php:1143 lib/gettext-com.php:24
+#: lib/com/form.php:1144 lib/gettext-com.php:24
 msgctxt "option comment"
 msgid "from"
 msgstr "de"
 
 # Ignore the post type to avoid gender issues in the French translation.
-#: lib/com/form.php:1916 lib/gettext-com.php:25 lib/post.php:1351
+#: lib/com/form.php:1917 lib/gettext-com.php:25 lib/post.php:1351
 #: lib/wp-meta.php:589 lib/wp-meta.php:719
 msgid "Save a draft version or publish to update this value."
 msgstr "Sauvegardez une version préliminaire ou publiez pour mettre à jour cette valeur."
@@ -5372,32 +5372,32 @@ msgstr "ajout de schéma de personne pour l'ID d'utilisateur %1$s"
 msgid "adding schema place"
 msgstr "ajout de schéma place"
 
-#: lib/schema.php:53
+#: lib/schema.php:57
 msgctxt "image size label"
 msgid "Schema Image"
 msgstr "Image Schéma"
 
-#: lib/schema.php:58
+#: lib/schema.php:62
 msgctxt "image size label"
 msgid "Schema Article Image"
 msgstr "Image Schéma d'article"
 
-#: lib/schema.php:65
+#: lib/schema.php:69
 msgctxt "image size label"
 msgid "Schema Article AMP 1:1 Image"
 msgstr "Image Schéma d'article AMP 1:1"
 
-#: lib/schema.php:70
+#: lib/schema.php:74
 msgctxt "image size label"
 msgid "Schema Article AMP 4:3 Image"
 msgstr "Image Schéma d'article AMP 4:3"
 
-#: lib/schema.php:75
+#: lib/schema.php:79
 msgctxt "image size label"
 msgid "Schema Article AMP 16:9 Image"
 msgstr "Image Schéma d'article AMP 16:9"
 
-#: lib/schema.php:579
+#: lib/schema.php:583
 msgid "adding schema"
 msgstr "ajout de schéma"
 
@@ -5425,7 +5425,7 @@ msgstr "Choisir l'image"
 msgid "No %s notifications."
 msgstr "Aucune notification %s."
 
-#: lib/settings/contact-fields.php:40
+#: lib/settings/contact-fields.php:44
 msgctxt "metabox title"
 msgid "User Profile Contact Fields"
 msgstr "Champs de contact du profil utilisateur"
