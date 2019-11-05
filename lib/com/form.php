@@ -583,9 +583,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						$html .= '<!-- selected value: ' . $selected_value . ' -->' . "\n";
 
 						/**
-						 * If we have an option selected, unhide those rows.
+						 * If we have an option selected, unhide those rows. Test for a non-empty string to
+						 * allow for a value of 0.
 						 */
-						if ( $selected_value ) {
+						if ( '' !== $selected_value ) {
 
 							$hide_class = 'hide_' . esc_js( $name );
 							$show_class = 'hide_' . esc_js( $name . '_' . $selected_value );
