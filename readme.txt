@@ -440,6 +440,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 6.11.1-dev.1 (2019/11/05)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed the on_change show event for form selects without a default selected option.
+* **Developer Notes**
+	* None.
+
 **Version 6.11.0 (2019/11/01)**
 
 * **New Features**
@@ -656,6 +667,10 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 	* Removed the `SucomUtil::is_product_tag()` method.
 
 == Upgrade Notice ==
+
+= 6.11.1-dev.1 =
+
+(2019/11/05) Fixed the on_change show event for form selects without a default selected option.
 
 = 6.11.0 =
 
