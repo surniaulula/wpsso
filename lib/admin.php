@@ -2365,8 +2365,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$this->conflict_check_db();
 			$this->conflict_check_php();
-			$this->conflict_check_wp();
 			$this->conflict_check_seo();
+			$this->conflict_check_vc();
+			$this->conflict_check_wp();
 		}
 
 		private function conflict_check_db() {
@@ -2509,23 +2510,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $error_msg ) ) {
 					$this->p->notice->err( $error_msg );
-				}
-			}
-		}
-
-		private function conflict_check_wp() {
-
-			if ( ! get_option( 'blog_public' ) ) {
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'wp blog_public option is disabled' );
-				}
-
-				$notice_key = 'wordpress-search-engine-visibility-disabled';
-
-				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) { // Don't bother if already dismissed.
-
-					$this->p->notice->warn( sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engine and social sites from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck the option to allow search engines and social sites to access your content.', 'wpsso' ), get_admin_url( null, 'options-reading.php' ) ), null, $notice_key, MONTH_IN_SECONDS * 3 );
 				}
 			}
 		}
@@ -2934,6 +2918,47 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					$this->p->notice->err( $err_pre . sprintf( __( 'please disable the %1$s option in the %2$s settings.',
 						'wpsso' ), $label_transl, $settings_link ) );
+				}
+			}
+		}
+
+		private function conflict_check_vc() {
+
+			if ( defined( 'WPB_VC_VERSION' ) ) {
+
+				$vc_version_event_bug = '6.0.5';
+
+				if ( version_compare( WPB_VC_VERSION, $vc_version_event_bug, '<=' ) ) {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'visual composer version with event bug detected' );
+					}
+
+					$notice_key   = 'vc-version-event-bug';
+					$dismiss_time = MONTH_IN_SECONDS;
+
+					if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) { // Don't bother if already dismissed.
+					
+						$this->p->notice->warn( __( 'An issue with WPBakery Visual Composer has been detected.', 'wpsso' ) . ' ' . sprintf( __( 'WPBakery Visual Composer version %s (and older) are known to have a bug in their jQuery event handling code.', 'wpsso' ), WPB_VC_VERSION ) . ' ' . sprintf( __( 'To avoid jQuery crashing on show / hide events, please contact WPBakery plugin support and <a href="%s">report the WPBakery Visual Composer change handler bug described here</a>.', 'wpsso' ), 'https://surniaulula.com/2018/apps/wordpress/plugins/wpbakery/wpbakery-visual-composer-bug-in-change-handler/' ), null, $notice_key, $dismiss_time );
+					}
+				}
+			}
+		}
+
+		private function conflict_check_wp() {
+
+			if ( ! get_option( 'blog_public' ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'wp blog_public option is disabled' );
+				}
+
+				$notice_key   = 'wp-search-engine-visibility-disabled';
+				$dismiss_time = MONTH_IN_SECONDS * 3;
+
+				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) { // Don't bother if already dismissed.
+
+					$this->p->notice->warn( sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engine and social sites from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck the option to allow search engines and social sites to access your content.', 'wpsso' ), get_admin_url( null, 'options-reading.php' ) ), null, $notice_key, $dismiss_time );
 				}
 			}
 		}

@@ -514,7 +514,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( isset( $meta_cache[ $meta_key ][ 0 ] ) ) {
 				$value = (string) maybe_unserialize( $meta_cache[ $meta_key ][ 0 ] );
 			} else {
-				$value = (string) get_post_meta( $post_id, $meta_key, true );	// $single is true.
+				$value = (string) get_post_meta( $post_id, $meta_key, $single = true );
 			}
 
 			if ( $value === 'none' ) {
@@ -560,7 +560,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$do_once[ $post_id ][ $meta_key ] = true;		// Prevent recursion.
 			}
 
-			if ( get_post_meta( $post_id, $meta_key, true ) === '' ) {	// Returns empty string if meta not found.
+			if ( get_post_meta( $post_id, $meta_key, $single = true ) === '' ) {	// Returns empty string if meta not found.
 				$this->get_head_info( $post_id, $read_cache = true );
 			}
 
