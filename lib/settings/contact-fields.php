@@ -10,10 +10,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {	// Just in case.
-	die( 'Plugin initialization is incomplete...' );
+	die( 'Incomplete plugin initialization...' );
 }
 
-if ( ! class_exists( 'WpssoSubmenuAdvanced' ) ) {	// Just in case.
+if ( ! class_exists( 'WpssoSubmenuAdvanced' ) ) {
 	require_once WPSSO_PLUGINDIR . 'lib/submenu/advanced.php';
 }
 

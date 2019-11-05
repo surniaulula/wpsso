@@ -409,6 +409,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			foreach ( $values as $option_value => $label ) {
 
+				$select_opt_count++;	// Used to check for first option.
+
 				if ( is_array( $label ) ) {	// Just in case.
 					$label = implode( ', ', $label );
 				}
@@ -492,11 +494,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$is_selected_html = '';
 				}
 
-				if ( $is_selected_html ) {
+				if ( $is_selected_html || $select_opt_count === 1 ) {
 					$selected_value = $option_value;
 				}
-
-				$select_opt_count++;	// Used to check for first option.
 
 				/**
 				 * For disabled selects or JSON selects, only include the first and selected option(s).
