@@ -1391,9 +1391,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				set_transient( $cache_id, 'stop', $cache_exp_secs );	// Signal the other process to stop.
 
-				$sleep_secs = WPSSO_REFRESH_CACHE_SLEEP_TIME + 5;
-
-				usleep( $sleep_secs * 1000000 );			// Sleeps for 5.25 seconds by default.
+				usleep( 10000000 );					// Sleep for 10 seconds.
 
 				if ( false !== get_transient( $cache_id ) ) {		// Stop here if the other process is still running.
 					return;
@@ -1423,17 +1421,15 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			foreach ( $total_count as $obj_name => &$count ) {
 
 				/**
-				 * Note that PHP class names are not case
-				 * sensitive, so we can  use "wpssopost" here
-				 * instead of "WpssoPost".
+				 * Note that PHP class names are not case sensitive, so we can  use "wpssopost" here instead of
+				 * "WpssoPost".
 				 */
 				$obj_ids = call_user_func( array( $this->p->lca . $obj_name, 'get_public_ids' ) );	// Call static method.
 
 				foreach ( $obj_ids as $obj_id ) {
 
 					/**
-					 * Check that we are allowed to continue.
-					 * Stop if cache status is not 'running'.
+					 * Check that we are allowed to continue. Stop if cache status is not 'running'.
 					 */
 					if ( $cache_status !== get_transient( $cache_id ) ) {
 						break 2;
@@ -1473,9 +1469,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( $do_sleep ) {
 
-				$sleep_secs = WPSSO_REFRESH_CACHE_SLEEP_TIME;
+				$sleep_secs = self::get_const( 'WPSSO_REFRESH_CACHE_SLEEP_TIME', 0.50 );
 
-				usleep( $sleep_secs * 1000000 );	// Sleeps for 0.25 seconds by default.
+				usleep( $sleep_secs * 1000000 );	// Sleeps for 0.50 seconds by default.
 			}
 		}
 

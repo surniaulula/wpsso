@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.11.2-dev.1\n"
+"Project-Id-Version: WPSSO Core 6.11.2-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3342,7 +3342,7 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
 #: lib/loader.php:184 lib/loader.php:210 lib/post.php:456 lib/register.php:312
-#: lib/term.php:427 lib/user.php:373 lib/util.php:485 lib/util.php:3407
+#: lib/term.php:427 lib/user.php:373 lib/util.php:485 lib/util.php:3403
 msgid "%s warning:"
 msgstr ""
 
@@ -5916,7 +5916,7 @@ msgstr ""
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
 #: lib/post.php:442 lib/term.php:413 lib/user.php:359 lib/util.php:471
-#: lib/util.php:3379
+#: lib/util.php:3375
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -5970,7 +5970,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:968 lib/util.php:1845
+#: lib/post.php:968 lib/util.php:1841
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -6771,7 +6771,7 @@ msgstr ""
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:1316 lib/util.php:1456
+#: lib/util.php:1316 lib/util.php:1452
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
@@ -6785,54 +6785,54 @@ msgstr ""
 msgid "Cache objects will be re-created as they are needed (%s is disabled)."
 msgstr ""
 
-#: lib/util.php:1450
+#: lib/util.php:1446
 msgid ""
 "The meta tag and Schema markup caches for %1$d posts, %2$d terms, and %3$d "
 "users have been refreshed."
 msgstr ""
 
-#: lib/util.php:1673
+#: lib/util.php:1669
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util.php:1700
+#: lib/util.php:1696
 msgid "Failed to remove the cache file %s."
 msgstr ""
 
-#: lib/util.php:1762
+#: lib/util.php:1758
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:1832
+#: lib/util.php:1828
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1858
+#: lib/util.php:1854
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:2052
+#: lib/util.php:2048
 msgid ""
 "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
 "provider to have the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:2065
+#: lib/util.php:2061
 msgid ""
 "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
 "provider to have the missing function installed."
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max.
-#: lib/util.php:3382
+#: lib/util.php:3378
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3399
+#: lib/util.php:3395
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -6841,39 +6841,39 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3399
+#: lib/util.php:3395
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3688
+#: lib/util.php:3684
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:3717
+#: lib/util.php:3713
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3720
+#: lib/util.php:3716
 msgctxt "option comment"
 msgid "show these options now"
 msgstr ""
 
-#: lib/util.php:3725
+#: lib/util.php:3721
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3728
+#: lib/util.php:3724
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name, and %3$s is the object ID.
-#: lib/util.php:4193
+#: lib/util.php:4189
 msgid "%1$s for %2$s ID %3$s"
 msgstr ""
 

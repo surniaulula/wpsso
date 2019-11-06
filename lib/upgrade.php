@@ -291,6 +291,10 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				674 => array(
 					'instgram_publisher_url' => 'instagram_publisher_url',
 				),
+				676 => array(
+					'plugin_wpssorrssb_tid' => '',	// WPSSO RRSSB Premium add-on deprecated on 2019/11/06.
+					'plugin_wpssossb_tid'   => '',	// WPSSO SSB Premium add-on deprecated on 2019/11/05.
+				),
 			),
 		);
 
