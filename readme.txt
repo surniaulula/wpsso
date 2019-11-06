@@ -440,16 +440,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.11.2-dev.1 (TBD)**
+**Version 6.11.2-dev.1 (2019/11/06)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added a warning notice for a known WPBakery Visual Composer bug.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Moved conflict checks from WpssoAdmin to WpssoConflicts in lib/conflicts.php.
+	* Moved conflict checks from WpssoAdmin to WpssoConflict in lib/conflict.php.
 
 **Version 6.11.1 (2019/11/05)**
 
@@ -678,6 +678,10 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 	* Removed the `SucomUtil::is_product_tag()` method.
 
 == Upgrade Notice ==
+
+= 6.11.2-dev.1 =
+
+(2019/11/06) Added a warning notice for a known WPBakery Visual Composer bug. Moved conflict checks from WpssoAdmin to WpssoConflict in lib/conflict.php.
 
 = 6.11.1 =
 
