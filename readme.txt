@@ -440,6 +440,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 6.11.2-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Moved conflict checks from WpssoAdmin to WpssoConflicts in lib/conflicts.php.
+
 **Version 6.11.1 (2019/11/05)**
 
 * **New Features**
