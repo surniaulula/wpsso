@@ -14,7 +14,7 @@
  * Requires At Least: 3.9
  * Tested Up To: 5.3
  * WC Tested Up To: 3.7.1
- * Version: 6.11.1
+ * Version: 6.11.2-dev.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -42,9 +42,10 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		/**
 		 * Library class object variables.
 		 */
-		public $admin;		// WpssoAdmin (admin menus and page loader).
+		public $admin;		// WpssoAdmin (admin menus and settings page loader).
 		public $cache;		// SucomCache (object and file caching).
 		public $check;		// WpssoCheck.
+		public $conflict;	// WpssoConflict (admin plugin conflict checks).
 		public $debug;		// SucomDebug or SucomNoDebug.
 		public $head;		// WpssoHead.
 		public $loader;		// WpssoLoader.
@@ -350,8 +351,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->filters = new WpssoFilters( $this );
 
 			if ( $is_admin ) {
-				$this->msgs  = new WpssoMessages( $this );	// Admin tooltip messages.
-				$this->admin = new WpssoAdmin( $this );		// Admin menus and settings page loader.
+				$this->admin    = new WpssoAdmin( $this );	// Admin menus and settings page loader.
+				$this->conflict = new WpssoConflict( $this );	// Admin plugin conflict checks.
+				$this->msgs     = new WpssoMessages( $this );	// Admin tooltip messages.
 			}
 
 			/**

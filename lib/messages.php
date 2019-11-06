@@ -13,8 +13,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 	class WpssoMessages {
 
-		protected $p;
+		private $p;
 
+		/**
+		 * Instantiated by Wpsso->set_objects() when is_admin() is true.
+		 */
 		public function __construct( &$plugin ) {
 
 			$this->p =& $plugin;

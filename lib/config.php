@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.11.1',	// Plugin version.
+					'version'     => '6.11.2-dev.1',	// Plugin version.
 					'opt_version' => '676',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -3545,8 +3545,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			require_once WPSSO_PLUGINDIR . 'lib/weibo.php';
 
 			if ( is_admin() ) {
-				require_once WPSSO_PLUGINDIR . 'lib/messages.php';
 				require_once WPSSO_PLUGINDIR . 'lib/admin.php';
+				require_once WPSSO_PLUGINDIR . 'lib/conflict.php';
+				require_once WPSSO_PLUGINDIR . 'lib/messages.php';
 				require_once WPSSO_PLUGINDIR . 'lib/com/form.php';
 				require_once WPSSO_PLUGINDIR . 'lib/ext/parse-readme.php';
 			}

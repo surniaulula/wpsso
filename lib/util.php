@@ -72,8 +72,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			) );
 
 			/**
-			 * Several actions must be hooked to define our image sizes on the front-end,
-			 * back-end, AJAX calls, REST API calls, etc.
+			 * Several actions must be hooked to define our image sizes on the front-end, back-end, AJAX calls, REST
+			 * API calls, etc.
 			 */
 			add_action( 'wp', array( $this, 'add_plugin_image_sizes' ), -100 );		// For front-end.
 			add_action( 'admin_init', array( $this, 'add_plugin_image_sizes' ), -100 );	// For back-end + AJAX compatibility.
@@ -248,9 +248,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			foreach ( $hook_list as $name => $val ) {
 
 				if ( ! is_string( $name ) ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $name . ' => ' . $val . ' ' . $type . ' skipped: filter name must be a string' );
 					}
+
 					continue;
 				}
 
@@ -313,8 +315,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * $opt_prefixes can be a single key name or an array of key names.
-		 * Uses a reference variable to modify the $opts array directly.
+		 * $opt_prefixes can be a single key name or an array of key names. Uses a reference variable to modify the $opts
+		 * array directly.
 		 */
 		public function add_image_url_size( array &$opts, $opt_prefixes = 'og:image' ) {
 
