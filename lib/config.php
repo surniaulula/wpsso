@@ -217,12 +217,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 				),
 				'wpssobc' => array(			// Plugin acronym.
-					'short'       => 'WPSSO BC',		// Short plugin name.
+					'short'       => 'WPSSO BC',	// Short plugin name.
 					'name'        => 'WPSSO Schema Breadcrumbs Markup',
 					'desc'        => 'Schema BreadcrumbList markup in JSON-LD for better Google Rich Results with Structured Data.',
 					'slug'        => 'wpsso-breadcrumbs',
 					'base'        => 'wpsso-breadcrumbs/wpsso-breadcrumbs.php',
-					'update_auth' => '',
+					'update_auth' => '',		// No premium version.
 					'assets'      => array(
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-breadcrumbs/assets/banner-772x250.jpg',
@@ -255,12 +255,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 				),
 				'wpssofaq' => array(			// Plugin acronym.
-					'short'       => 'WPSSO FAQ',		// Short plugin name.
+					'short'       => 'WPSSO FAQ',	// Short plugin name.
 					'name'        => 'WPSSO FAQ Manager',
 					'desc'        => 'Manage FAQ categories with Question and Answer pages.',
 					'slug'        => 'wpsso-faq',
 					'base'        => 'wpsso-faq/wpsso-faq.php',
-					'update_auth' => '',
+					'update_auth' => '',		// No premium version.
 					'assets'      => array(
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-faq/assets/banner-772x250.jpg',
@@ -298,7 +298,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'desc'        => 'Inherit featured and custom images from parents for posts, pages, custom post types, categories, tags, and custom taxonomies.',
 					'slug'        => 'wpsso-inherit-parent-meta',
 					'base'        => 'wpsso-inherit-parent-meta/wpsso-inherit-parent-meta.php',
-					'update_auth' => '',
+					'update_auth' => '',		// No premium version.
 					'assets'      => array(
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-inherit-parent-meta/assets/banner-772x250.jpg',
@@ -451,7 +451,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'desc'        => 'Ratings and reviews for WordPress comments with Aggregate Rating meta tags and Schema Review markup.',
 					'slug'        => 'wpsso-ratings-and-reviews',
 					'base'        => 'wpsso-ratings-and-reviews/wpsso-ratings-and-reviews.php',
-					'update_auth' => '',
+					'update_auth' => '',		// No premium version.
 					'assets'      => array(
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-ratings-and-reviews/assets/banner-772x250.jpg',
@@ -489,7 +489,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'desc'        => 'Enhances the WordPress REST API post, term, and user queries with an array of Social and Search Engine Optimization meta tags and Schema markup.',
 					'slug'        => 'wpsso-rest-api',
 					'base'        => 'wpsso-rest-api/wpsso-rest-api.php',
-					'update_auth' => '',
+					'update_auth' => '',		// No premium version.
 					'assets'      => array(
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-rest-api/assets/banner-772x250.jpg',
@@ -527,7 +527,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'desc'        => 'Ridiculously Responsive (SVG) Social Sharing Buttons for your content, excerpts, CSS sidebar, widget, shortcode, editor pages, etc.',
 					'slug'        => 'wpsso-rrssb',
 					'base'        => 'wpsso-rrssb/wpsso-rrssb.php',
-					'update_auth' => 'tid',
+					'update_auth' => '',		// No premium version.
 					'assets'      => array(
 						'banners' => array(
 							'low' => 'https://surniaulula.github.io/wpsso-rrssb/assets/banner-772x250.jpg',
@@ -552,9 +552,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'install'   => 'https://wpsso.com/docs/plugins/wpsso-rrssb/installation/',
 						'faqs'      => '',
 						'notes'     => 'https://wpsso.com/docs/plugins/wpsso-rrssb/notes/',
-						'support'   => 'https://surniaulula.com/support/create_ticket/',	// Premium support ticket.
-						'purchase'  => 'https://wpsso.com/extend/plugins/wpsso-rrssb/',		// Purchase page.
-						'info'      => 'https://wpsso.com/extend/plugins/wpsso-rrssb/info/',	// License information.
+						'support'   => '',	// Premium support ticket.
+						'purchase'  => '',	// Purchase page.
+						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-rrssb/update/',
 						'latest'    => '',
 					),
@@ -565,7 +565,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'desc'        => 'Traditional social sharing buttons with support for hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more.',
 					'slug'        => 'wpsso-ssb',
 					'base'        => 'wpsso-ssb/wpsso-ssb.php',
-					'update_auth' => '',
+					'update_auth' => '',		// No premium version.
 					'assets'      => array(
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-ssb/assets/banner-772x250.jpg',
@@ -598,12 +598,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 				),
 				'wpssossm' => array(			// Plugin acronym.
-					'short'       => 'WPSSO SSM',		// Short plugin name.
+					'short'       => 'WPSSO SSM',	// Short plugin name.
 					'name'        => 'WPSSO Strip Schema Microdata',
 					'desc'        => 'Removes outdated Schema microdata from theme templates and leaves Schema JSON-LD untouched for better Google Rich Results.',
 					'slug'        => 'wpsso-strip-schema-microdata',
 					'base'        => 'wpsso-strip-schema-microdata/wpsso-strip-schema-microdata.php',
-					'update_auth' => '',
+					'update_auth' => '',		// No premium version.
 					'assets'      => array(
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-strip-schema-microdata/assets/banner-772x250.jpg',
@@ -641,7 +641,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'desc'        => 'Twitter-style quoted text for your content with customizable CSS and convenient Tweet share link.',
 					'slug'        => 'wpsso-tweet-a-quote',
 					'base'        => 'wpsso-tweet-a-quote/wpsso-tweet-a-quote.php',
-					'update_auth' => '',
+					'update_auth' => '',		// No premium version.
 					'assets'      => array(
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-tweet-a-quote/assets/banner-772x250.jpg',
@@ -717,7 +717,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'desc'        => 'Quick and easy locale / language / region selector for the WordPress admin toolbar.',
 					'slug'        => 'wpsso-user-locale',
 					'base'        => 'wpsso-user-locale/wpsso-user-locale.php',
-					'update_auth' => '',
+					'update_auth' => '',		// No premium version.
 					'assets'      => array(
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-user-locale/assets/banner-772x250.jpg',
@@ -755,7 +755,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'desc'        => 'Update manager for the WPSSO Core Premium plugin and its complementary Premium add-ons.',
 					'slug'        => 'wpsso-um',
 					'base'        => 'wpsso-um/wpsso-um.php',
-					'update_auth' => '',
+					'update_auth' => '',		// No premium version.
 					'assets'      => array(
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-um/assets/banner-772x250.jpg',

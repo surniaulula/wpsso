@@ -117,7 +117,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 							$this->p->avail[ $sub ][ $id ] = true;
 						}
 
-						if ( $this->p->avail[ $sub ][ $id ] ) {
+						if ( ! empty( $this->p->avail[ $sub ][ $id ] ) ) {
 
 							/**
 							 * Compare $action from library id with $has_action method argument.

@@ -602,8 +602,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 							} else {
 
 								if ( SucomUtil::get_const( 'DOING_AJAX' ) ) {
+
 									$html .= 'sucomSelectChangeUnhideRows( \'' . $hide_class . '\', \'' . $show_class . '\' );';
+
 								} else {
+
+									/**
+									 * Use $(window).load() instead of $(document).ready() for the WordPress block editor.
+									 */
 									$html .= 'jQuery( window ).load( function(){';
 									$html .= 'sucomSelectChangeUnhideRows( \'' . $hide_class . '\', \'' . $show_class . '\' );';
 									$html .= '});';
