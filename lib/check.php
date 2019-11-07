@@ -331,8 +331,8 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 					}
 
 					/**
-					 * Check classes / functions first to include both free and pro / premium plugins,
-					 * which have different plugin slugs, but use the same class / function names.
+					 * Check classes / functions first to include both free and pro / premium plugins, which
+					 * have different plugin slugs, but use the same class / function names.
 					 */
 					if ( ! empty( $chk ) ) {
 
