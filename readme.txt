@@ -440,7 +440,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.11.2-dev.2 (2019/11/07)**
+**Version 6.11.2-b.1 (2019/11/07)**
 
 * **New Features**
 	* None.
@@ -679,7 +679,7 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 
 == Upgrade Notice ==
 
-= 6.11.2-dev.2 =
+= 6.11.2-b.1 =
 
 (2019/11/07) Added a warning notice for a known WPBakery Visual Composer bug. Moved conflict checks from WpssoAdmin to WpssoConflict in lib/conflict.php.
 
