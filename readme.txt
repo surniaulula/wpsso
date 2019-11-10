@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires At Least: 3.9
 Tested Up To: 5.3
 WC Tested Up To: 3.7.1
-Stable Tag: 6.11.1
+Stable Tag: 6.11.2
 
 Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.
 
