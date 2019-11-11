@@ -440,7 +440,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.11.1-dev.1 (TBD)**
+**Version 6.11.3-dev.1 (TBD)**
 
 * **New Features**
 	* None.
