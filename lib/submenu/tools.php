@@ -29,9 +29,11 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 		protected function add_plugin_hooks() {
 
+			$min_int = SucomUtil::get_min_int();
+
 			$this->p->util->add_plugin_filters( $this, array(
 				'form_button_rows'  => 1,
-			), SucomUtil::get_min_int() );
+			), $min_int );
 		}
 
 		protected function show_form_content() {

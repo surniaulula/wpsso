@@ -152,8 +152,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$this->p->debug->log( 'adding pre_get_shortlink filters to shorten the sharing url' );
 					}
 
-					add_filter( 'pre_get_shortlink', array( $this, 'get_sharing_shortlink' ), SucomUtil::get_min_int(), 4 );
-					add_filter( 'pre_get_shortlink', array( $this, 'maybe_restore_shortlink' ), SucomUtil::get_max_int(), 4 );
+					$min_int = SucomUtil::get_min_int();
+					$max_int = SucomUtil::get_max_int();
+
+					add_filter( 'pre_get_shortlink', array( $this, 'get_sharing_shortlink' ), $min_int, 4 );
+					add_filter( 'pre_get_shortlink', array( $this, 'maybe_restore_shortlink' ), $max_int, 4 );
 
 					if ( function_exists( 'wpme_get_shortlink_handler' ) ) {
 
@@ -730,7 +733,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 							if ( apply_filters( $this->p->lca . '_check_post_head',
 								$this->p->options[ 'plugin_check_head' ], $post_id, $post_obj ) ) {
 
-								$this->check_post_head_duplicates( $post_id, $post_obj );
+								$this->check_post_head( $post_id, $post_obj );
 							}
 						}
 					}
@@ -774,7 +777,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 		}
 
-		public function check_post_head_duplicates( $post_id = true, $post_obj = false ) {
+		public function check_post_head( $post_id = true, $post_obj = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -857,7 +860,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			$exec_count = $this->p->debug->enabled ? 0 : (int) get_option( WPSSO_POST_CHECK_NAME );		// Cast to change false to 0.
-			$max_count  = SucomUtil::get_const( 'WPSSO_DUPE_CHECK_HEADER_COUNT' );
+			$max_count  = SucomUtil::get_const( 'WPSSO_DUPE_CHECK_HEADER_COUNT', 10 );
 
 			if ( $exec_count >= $max_count ) {
 
@@ -1035,10 +1038,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Check the stripped webpage HTML for ld+json script(s) and if not found, then suggest enabling the WPSSO JSON add-on.
 			 */
+			$json_pp         = $this->p->check->pp( 'wpssojson' );
 			$json_info       = $this->p->cf[ 'plugin' ][ 'wpssojson' ];
 			$json_addon_link = $this->p->util->get_admin_url( 'addons#wpssojson', $json_info[ 'name' ] );
 
-			if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) || ! $this->p->check->pp( 'wpssojson' ) ) {
+			if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) || ! $json_pp ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'checking the stripped webpage html for ld+json script(s)' );
@@ -1053,6 +1057,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					}
 
 					if ( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) {
+
+						$this->p->debug->log( 'checking for woocommerce scripts with id marker' );
 
 						$id_marker = WpssoFilters::get_wc_product_data_anchor();
 

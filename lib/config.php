@@ -3336,7 +3336,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_CONTENT_FILTERS_MAX_TIME' ]    = 1.50;	// Issue a warning if the content filter takes longer than 1.5 seconds.
 			$var_const[ 'WPSSO_CONTENT_IMAGES_MAX_LIMIT' ]    = 5;		// Maximum number of images extracted from the content.
 			$var_const[ 'WPSSO_CONTENT_VIDEOS_MAX_LIMIT' ]    = 5;		// Maximum number of videos extracted from the content.
-			$var_const[ 'WPSSO_DUPE_CHECK_HEADER_COUNT' ]     = 5;		// Maximum number of times to check for duplicates.
+			$var_const[ 'WPSSO_DUPE_CHECK_HEADER_COUNT' ]     = 10;		// Maximum number of times to check for duplicates.
 			$var_const[ 'WPSSO_DUPE_CHECK_TIMEOUT_TIME' ]     = 3.00;	// Hard-limit - most crawlers time-out after 3 seconds.
 			$var_const[ 'WPSSO_DUPE_CHECK_WARNING_TIME' ]     = 2.50;	// Issue a warning if getting shortlink took more than 2.5 seconds.
 			$var_const[ 'WPSSO_GET_POSTS_MAX_TIME' ]          = 0.10;	// Send an error to trigger_error() if get_posts() takes longer.

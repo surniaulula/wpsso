@@ -20,12 +20,10 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		private $bfo_check_id = 'check_output_buffer';	// String id to detect our check callback using __call().
 
 		/**
-		 * The SucomBFO common library class may be called by more than
-		 * one plugin, so track which filters have been hooked using
-		 * the $filter_hooked static property, and only hook a filter
-		 * once. This allows different plugins to hook different
-		 * filters, but not the same filter - which would be redundant
-		 * - we only need to warn about filter output once. ;-)
+		 * The SucomBFO common library class may be called by more than one plugin, so track which filters have been hooked
+		 * using the $filter_hooked static property, and only hook a filter once. This allows different plugins to hook
+		 * different filters, but not the same filter - which would be redundant - we only need to warn about filter output
+		 * once. ;-)
 		 */
 		private static $filter_hooked = array();
 
@@ -35,11 +33,9 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		}
 
 		/**
-		 * Wildcard method callbacks are added after each filter hook
-		 * to check the output buffer for a non-empty string.
+		 * Wildcard method callbacks are added after each filter hook to check the output buffer for a non-empty string.
 		 *
-		 * The urlencoded wildcard suffix is used to extract the
-		 * previous / reference hook prority and name.
+		 * The urlencoded wildcard suffix is used to extract the previous / reference hook prority and name.
 		 */
 		public function __call( $method_name, $args ) {
 
@@ -52,10 +48,8 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		}
 
 		/**
-		 * Loop through each filter name in the $filter_names argument
-		 * and add a start hook (which starts the output buffer, adds a
-		 * check hook after each callback, and adds a stop output
-		 * buffer hook at the end).
+		 * Loop through each filter name in the $filter_names argument and add a start hook (which starts the output
+		 * buffer, adds a check hook after each callback, and adds a stop output buffer hook at the end).
 		 */
 		public function add_start_hooks( array $filter_names = array( 'the_content' ) ) {
 
@@ -78,8 +72,8 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		}
 
 		/**
-		 * Loop through each filter name in the $filter_names argument
-		 * and add remove the start, check, and stop output hooks.
+		 * Loop through each filter name in the $filter_names argument and add remove the start, check, and stop output
+		 * hooks.
 		 */
 		public function remove_all_hooks( array $filter_names = array( 'the_content' ) ) {
 
@@ -107,11 +101,9 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		}
 
 		/**
-		 * Runs at the beginning of a filter to start the PHP output
-		 * buffer, add a check hook after each callback, and add a stop
-		 * hook at the end. When the special 'all' filter is hooked,
-		 * this method will be called for actions as well, so check
-		 * $wp_actions to exclude actions.
+		 * Runs at the beginning of a filter to start the PHP output buffer, add a check hook after each callback, and add
+		 * a stop hook at the end. When the special 'all' filter is hooked, this method will be called for actions as well,
+		 * so check $wp_actions to exclude actions.
 		 */
 		public function start_output_buffer( $value ) {
 
@@ -142,8 +134,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		}
 
 		/**
-		 * Runs at the end of a filter to clean (truncate) and end
-		 * (terminate) the output buffer.
+		 * Runs at the end of a filter to clean (truncate) and end (terminate) the output buffer.
 		 */
 		public function stop_output_buffer( $value ) {
 
@@ -153,8 +144,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		}
 
 		/**
-		 * Called once by start_output_buffer() at the beginning of a
-		 * filter to add a check hook after each callback.
+		 * Called once by start_output_buffer() at the beginning of a filter to add a check hook after each callback.
 		 */
 		private function add_check_output_hooks( $filter_name ) {
 
@@ -200,8 +190,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		}
 
 		/**
-		 * Remove the output check hooks if/when a filter is applied a
-		 * second time.
+		 * Remove the output check hooks if/when a filter is applied a second time.
 		 */
 		private function remove_check_output_hooks( $filter_name ) {
 
@@ -258,8 +247,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		}
 
 		/**
-		 * Called by the __call() method after each filter hook.
-		 * Checks the output buffer for any non-empty string.
+		 * Called by the __call() method after each filter hook. Checks the output buffer for any non-empty string.
 		 */
 		private function __check_output_buffer( $method_name, $value ) {
 
@@ -284,8 +272,8 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 					$error_msg = sprintf( $error_text, $matches[2], $matches[1], current_filter() );
 
 					/**
-					 * Filters are rarely applied on the admin / back-end side, but if they are,
-					 * then take advantage of this and show a notice. :)
+					 * Filters are rarely applied on the admin / back-end side, but if they are, then take
+					 * advantage of this and show a notice. :)
 					 */
 					if ( is_admin() ) {
 
@@ -314,8 +302,8 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 						'-----' . __( 'END OUTPUT', $this->text_domain ) . '-----' . "\n";
 
 					/**
-					 * Use SucomUtil::safe_error_log() if available to define the debug.log path and
-					 * prevent the error message from being displayed in the webpage.
+					 * Use SucomUtil::safe_error_log() if available to define the debug.log path and prevent
+					 * the error message from being displayed in the webpage.
 					 */
 					if ( method_exists( 'SucomUtil', 'safe_error_log' ) ) {
 
@@ -333,8 +321,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		}
 
 		/**
-		 * Get a human readable class/method/function name from the
-		 * callback array. 
+		 * Get a human readable class/method/function name from the callback array. 
 		 */
 		private static function get_hook_function_name( array $hook_info ) {
 
@@ -372,12 +359,12 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		
 		private static function get_min_int() {
 
-			return defined( 'PHP_INT_MIN' ) ? PHP_INT_MIN : -2147483648;	// Available since PHP 7.0.0.
+			return defined( 'PHP_INT_MIN' ) ? PHP_INT_MIN : -2147483648;	// Since PHP 7.0.0.
 		}
 
 		private static function get_max_int() {
 
-			return defined( 'PHP_INT_MAX' ) ? PHP_INT_MAX : 2147483647;	// Available since PHP 5.0.2.
+			return defined( 'PHP_INT_MAX' ) ? PHP_INT_MAX : 2147483647;	// Since PHP 5.0.2.
 		}
 	}
 }

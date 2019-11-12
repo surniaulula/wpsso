@@ -24,8 +24,8 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			}
 
 			/**
-			 * Add a marker to the WooCommerce product @id property value. The marker is checked in 
-			 * WpssoPost::check_post_head_duplicates() to suggest a better JSON-LD markup solution.
+			 * Add a marker to the WooCommerce product @id property value. The marker is checked in
+			 * WpssoPost::check_post_head() to suggest a better JSON-LD markup solution.
 			 */
 			if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) || ! $this->p->check->pp( 'wpssojson' ) ) {
 				if ( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) {

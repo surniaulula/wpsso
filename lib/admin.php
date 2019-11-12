@@ -71,15 +71,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_action( 'admin_menu', array( $this, 'load_menu_objects' ), -1000 );
 				add_action( 'admin_menu', array( $this, 'add_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
 				add_action( 'admin_menu', array( $this, 'add_admin_submenus' ), WPSSO_ADD_SUBMENU_PRIORITY );
+
 				add_action( 'admin_init', array( $this, 'add_plugins_page_upgrade_notice' ) );
 				add_action( 'admin_init', array( $this, 'register_setting' ) );
-				add_action( 'admin_head', array( $this, 'show_admin_head' ), -5000 );
 
-				if ( ! SucomUtilWP::doing_block_editor() ) {
-
-					add_action( 'admin_head', array( $this, 'required_notices' ), -500 );
-					add_action( 'admin_head', array( $this, 'update_count_notice' ), 0 );
-				}
+				add_action( 'admin_head', array( $this, 'update_count_notice' ), -1000 );
+				add_action( 'admin_head', array( $this, 'requires_notices' ), -500 );
+				add_action( 'admin_head', array( $this, 'suggest_addons' ), 500 );
+				add_action( 'admin_head', array( $this, 'timed_notices' ), 1000 );
 
 				/**
 				 * get_notice_system() can return true, false, or an array of notice types to include in the menu.
@@ -88,7 +87,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					add_action( 'admin_bar_menu', array( $this, 'add_admin_tb_notices_menu_item' ), WPSSO_TB_NOTICE_MENU_ORDER );
 				}
 
-				add_filter( 'current_screen', array( $this, 'maybe_show_screen_notices' ) );
 				add_filter( 'plugin_action_links', array( $this, 'append_wp_plugin_action_links' ), 10, 2 );
 				add_filter( 'wp_redirect', array( $this, 'profile_updated_redirect' ), -100, 2 );
 
@@ -2332,17 +2330,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			) );
 		}
 
-		/**
-		 * Called by admin_head action.
-		 */
-		public function show_admin_head() {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-				$this->p->util->log_is_functions();
-			}
-		}
-
 		public function admin_footer_ext( $footer_html ) {
 
 			$footer_html = '<div class="admin-footer-ext">';
@@ -2380,40 +2367,144 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $footer_html;
 		}
 
-		/**
-		 * Only show notices on the dashboard and the settings pages. Hooked to 'current_screen' filter, so return the
-		 * $screen object.
-		 */
-		public function maybe_show_screen_notices( $screen ) {
+		public function update_count_notice() {
 
-			$screen_id = SucomUtil::get_screen_id( $screen );
+			if ( ! current_user_can( 'update_plugins' ) ) {
+				return;
+			}
 
-			/**
-			 * If adding notices in the toolbar, show the notice on all pages, otherwise only show on the dashboard and
-			 * settings pages.
-			 */
-			if ( $this->p->notice->get_notice_system() ) {
+			$update_count = SucomPlugin::get_updates_count( $plugin_prefix = $this->p->lca );
 
-				$this->maybe_show_timed_notices();
+			if ( $update_count > 0 ) {
 
-			} else {
+				$info       = $this->p->cf[ 'plugin' ][ $this->p->lca ];
+				$link_url   = self_admin_url( 'update-core.php' );
+				$notice_key = 'have-updates-for-' . $this->p->lca;
 
-				switch ( $screen_id ) {
+				$this->p->notice->inf( sprintf( _n( 'There is <a href="%1$s">%2$d pending update for the %3$s plugin and/or its add-on(s)</a>.', 'There are <a href="%1$s">%2$d pending updates for the %3$s plugin and/or its add-on(s)</a>.', $update_count, 'wpsso' ), $link_url, $update_count, $info[ 'short' ] ) . ' ' . _n( 'Please install this update at your earliest convenience.', 'Please install these updates at your earliest convenience.', $update_count, 'wpsso' ), null, $notice_key, DAY_IN_SECONDS * 3 );
+			}
+		}
 
-					case 'dashboard':
+		public function requires_notices() {
 
-					case ( false !== strpos( $screen_id, '_page_' . $this->p->lca . '-' ) ? true : false ):
+			$version  = $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'version' ];
+			$um_info  = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
+			$have_tid = false;
 
-						$this->maybe_show_timed_notices();
+			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
+
+				if ( ! empty( $this->p->options[ 'plugin_' . $ext . '_tid' ] ) ) {
+
+					$have_tid = true;	// Found at least one plugin with an auth id.
+
+					/**
+					 * If the update manager is active, the version should be available. Skip individual
+					 * warnings and show nag to install the update manager.
+					 */
+					if ( empty( $um_info[ 'version' ] ) ) {
 
 						break;
+
+					} else {
+
+						if ( ! self::$pkg[ $ext ][ 'pdir' ] ) {
+
+							if ( ! empty( $info[ 'base' ] ) && ! SucomPlugin::is_plugin_installed( $info[ 'base' ], $use_cache = true ) ) {
+
+								$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-installed', array( 'lca' => $ext ) ) );
+							} else {
+								$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-updated', array( 'lca' => $ext ) ) );
+							}
+						}
+					}
 				}
 			}
 
-			return $screen;
+			if ( true === $have_tid ) {
+
+				if ( ! empty( $um_info[ 'version' ] ) ) {	// If update manager is active, its version should be available.
+
+					$rec_version = WpssoConfig::$cf[ 'um' ][ 'rec_version' ];
+
+					if ( version_compare( $um_info[ 'version' ], $rec_version, '<' ) ) {
+
+						$this->p->notice->warn( $this->p->msgs->get( 'notice-um-version-recommended' ) );
+					}
+
+				} elseif ( SucomPlugin::is_plugin_installed( $um_info[ 'base' ], $use_cache = true ) ) {	// Check if update manager is installed.
+
+					$this->p->notice->nag( $this->p->msgs->get( 'notice-um-activate-add-on' ) );
+
+				} else {	// The update manager is not active or installed.
+
+					$this->p->notice->nag( $this->p->msgs->get( 'notice-um-add-on-required' ) );
+				}
+			}
+
+			if ( current_user_can( 'manage_options' ) ) {
+
+				foreach ( array( 'wp', 'php' ) as $key ) {
+
+					if ( isset( WpssoConfig::$cf[ $key ][ 'rec_version' ] ) ) {
+
+						switch ( $key ) {
+
+							case 'wp':
+
+								global $wp_version;
+
+								$app_version  = $wp_version;
+								$dismiss_time = MONTH_IN_SECONDS;
+
+								break;
+
+							case 'php':
+
+								$app_version  = phpversion();
+								$dismiss_time = 3 * MONTH_IN_SECONDS;
+
+								break;
+
+							default:
+
+								continue 2;
+						}
+
+						$app_label   = WpssoConfig::$cf[ $key ][ 'label' ];
+						$rec_version = WpssoConfig::$cf[ $key ][ 'rec_version' ];
+
+						if ( version_compare( $app_version, $rec_version, '<' ) ) {
+
+							$warn_msg = $this->p->msgs->get( 'notice-recommend-version', array(
+								'app_label'   => $app_label,
+								'app_version' => $app_version,
+								'rec_version' => WpssoConfig::$cf[ $key ][ 'rec_version' ],
+								'version_url' => WpssoConfig::$cf[ $key ][ 'version_url' ],
+							) );
+
+							$notice_key   = 'notice-recommend-version-' . $this->p->lca . '-' . $version . '-' . $app_label . '-' . $app_version;
+
+							$this->p->notice->warn( $warn_msg, null, $notice_key, $dismiss_time );
+						}
+					}
+				}
+			}
 		}
 
-		public function maybe_show_timed_notices() {
+		public function suggest_addons() {
+
+			if ( ! $this->p->notice->can_dismiss() || ! current_user_can( 'manage_options' ) ) {
+				return;	// Stop here.
+			}
+
+			if ( ! empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {
+
+				if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) || ! $this->p->check->pp( 'wpssojson' ) ) {
+				}
+			}
+		}
+
+		public function timed_notices() {
 
 			if ( ! $this->p->notice->can_dismiss() || ! current_user_can( 'manage_options' ) ) {
 				return;	// Stop here.
@@ -2602,130 +2693,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					return;	// Show only one notice at a time.
 				}
-			}
-		}
-
-		public function required_notices() {
-
-			$version  = $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'version' ];
-			$um_info  = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
-			$have_tid = false;
-
-			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
-
-				if ( ! empty( $this->p->options[ 'plugin_' . $ext . '_tid' ] ) ) {
-
-					$have_tid = true;	// Found at least one plugin with an auth id.
-
-					/**
-					 * If the update manager is active, the version should be available. Skip individual
-					 * warnings and show nag to install the update manager.
-					 */
-					if ( empty( $um_info[ 'version' ] ) ) {
-
-						break;
-
-					} else {
-
-						if ( ! self::$pkg[ $ext ][ 'pdir' ] ) {
-
-							if ( ! empty( $info[ 'base' ] ) && ! SucomPlugin::is_plugin_installed( $info[ 'base' ], $use_cache = true ) ) {
-
-								$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-installed', array( 'lca' => $ext ) ) );
-							} else {
-								$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-updated', array( 'lca' => $ext ) ) );
-							}
-						}
-					}
-				}
-			}
-
-			if ( true === $have_tid ) {
-
-				if ( ! empty( $um_info[ 'version' ] ) ) {	// If update manager is active, its version should be available.
-
-					$rec_version = WpssoConfig::$cf[ 'um' ][ 'rec_version' ];
-
-					if ( version_compare( $um_info[ 'version' ], $rec_version, '<' ) ) {
-
-						$this->p->notice->warn( $this->p->msgs->get( 'notice-um-version-recommended' ) );
-					}
-
-				} elseif ( SucomPlugin::is_plugin_installed( $um_info[ 'base' ], $use_cache = true ) ) {	// Check if update manager is installed.
-
-					$this->p->notice->nag( $this->p->msgs->get( 'notice-um-activate-add-on' ) );
-
-				} else {	// The update manager is not active or installed.
-
-					$this->p->notice->nag( $this->p->msgs->get( 'notice-um-add-on-required' ) );
-				}
-			}
-
-			if ( current_user_can( 'manage_options' ) ) {
-
-				foreach ( array( 'wp', 'php' ) as $key ) {
-
-					if ( isset( WpssoConfig::$cf[ $key ][ 'rec_version' ] ) ) {
-
-						switch ( $key ) {
-
-							case 'wp':
-
-								global $wp_version;
-
-								$app_version  = $wp_version;
-								$dismiss_time = MONTH_IN_SECONDS;
-
-								break;
-
-							case 'php':
-
-								$app_version  = phpversion();
-								$dismiss_time = 3 * MONTH_IN_SECONDS;
-
-								break;
-
-							default:
-
-								continue 2;
-						}
-
-						$app_label   = WpssoConfig::$cf[ $key ][ 'label' ];
-						$rec_version = WpssoConfig::$cf[ $key ][ 'rec_version' ];
-
-						if ( version_compare( $app_version, $rec_version, '<' ) ) {
-
-							$warn_msg = $this->p->msgs->get( 'notice-recommend-version', array(
-								'app_label'   => $app_label,
-								'app_version' => $app_version,
-								'rec_version' => WpssoConfig::$cf[ $key ][ 'rec_version' ],
-								'version_url' => WpssoConfig::$cf[ $key ][ 'version_url' ],
-							) );
-
-							$notice_key   = 'notice-recommend-version-' . $this->p->lca . '-' . $version . '-' . $app_label . '-' . $app_version;
-
-							$this->p->notice->warn( $warn_msg, null, $notice_key, $dismiss_time );
-						}
-					}
-				}
-			}
-		}
-
-		public function update_count_notice() {
-
-			if ( ! current_user_can( 'update_plugins' ) ) {
-				return;
-			}
-
-			$update_count = SucomPlugin::get_updates_count( $plugin_prefix = $this->p->lca );
-
-			if ( $update_count > 0 ) {
-
-				$info       = $this->p->cf[ 'plugin' ][ $this->p->lca ];
-				$link_url   = self_admin_url( 'update-core.php' );
-				$notice_key = 'have-updates-for-' . $this->p->lca;
-
-				$this->p->notice->inf( sprintf( _n( 'There is <a href="%1$s">%2$d pending update for the %3$s plugin and/or its add-on(s)</a>.', 'There are <a href="%1$s">%2$d pending updates for the %3$s plugin and/or its add-on(s)</a>.', $update_count, 'wpsso' ), $link_url, $update_count, $info[ 'short' ] ) . ' ' . _n( 'Please install this update at your earliest convenience.', 'Please install these updates at your earliest convenience.', $update_count, 'wpsso' ), null, $notice_key, DAY_IN_SECONDS * 3 );
 			}
 		}
 
