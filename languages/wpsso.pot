@@ -1333,7 +1333,7 @@ msgstr ""
 #: lib/gettext-config.php:29 lib/gettext-config.php:35 lib/messages.php:1867
 #: lib/messages.php:2245 lib/messages.php:2254
 msgctxt "lib file description"
-msgid "Licenses"
+msgid "Premium Licenses"
 msgstr ""
 
 #: lib/gettext-config.php:30 lib/gettext-config.php:37

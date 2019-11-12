@@ -1864,7 +1864,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$um_info = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
 
 							$settings_page_link = $this->p->util->get_admin_url( 'licenses',
-								_x( 'Licenses', 'lib file description', 'wpsso' ) );
+								_x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
 
 							$text = '<blockquote class="top-info">';
 
@@ -2242,7 +2242,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'notice-pro-not-installed':
 
 						$settings_page_link = $this->p->util->get_admin_url( 'licenses',
-							_x( 'Licenses', 'lib file description', 'wpsso' ) );
+							_x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
 
 						$text = sprintf( __( 'An Authentication ID has been entered for %1$s but the plugin is not installed &mdash; you can install and activate the %2$s version from the %3$s settings page.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $pro_transl, $settings_page_link ) . ' ;-)';
 
@@ -2251,7 +2251,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'notice-pro-not-updated':
 
 						$settings_page_link = $this->p->util->get_admin_url( 'licenses',
-							_x( 'Licenses', 'lib file description', 'wpsso' ) );
+							_x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
 
 						$text = sprintf( __( 'An Authentication ID has been entered for %1$s in the %2$s settings page but the %3$s version is not installed &mdash; don\'t forget to update the plugin to install the latest %3$s version.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $settings_page_link, $pro_transl ) . ' ;-)';
 

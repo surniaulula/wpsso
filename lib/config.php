@@ -150,7 +150,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'sitesubmenu' => array(
 							'site-advanced' => 'Advanced',
 							'site-addons'   => 'Complementary Add-ons',
-							'site-licenses' => 'Licenses',
+							'site-licenses' => 'Premium Licenses',
 							'site-setup'    => 'Setup Guide',
 						),
 						'std' => array(
@@ -168,7 +168,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'general'   => 'General',
 							'advanced'  => 'Advanced',
 							'addons'    => 'Complementary Add-ons',
-							'licenses'  => 'Licenses',
+							'licenses'  => 'Premium Licenses',
 							'dashboard' => 'Dashboard',
 							'setup'     => 'Setup Guide',
 							'tools'     => 'Tools',

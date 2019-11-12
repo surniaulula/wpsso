@@ -2166,6 +2166,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_key_value( $key, array $opts, $mixed = 'current' ) {
 
 			$key_locale = self::get_key_locale( $key, $opts, $mixed );
+
 			$val_locale = isset( $opts[ $key_locale ] ) ? $opts[ $key_locale ] : null;
 
 			/**
