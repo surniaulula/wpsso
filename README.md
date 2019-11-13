@@ -64,7 +64,7 @@
 <li><p>Includes advanced quality assurance features and options.</p></li>
 </ul>
 
-<h3>Free Complementary Add-ons</h3>
+<h3>Complementary Add-ons</h3>
 
 <ul>
 <li><a href="https://wordpress.org/plugins/wpsso-faq/">WPSSO FAQ Manager</a> to manage FAQ categories with Question and Answer pages.</li>

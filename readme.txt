@@ -72,7 +72,7 @@ WPSSO Core and its complementary add-ons offer meta tags and Schema markup for F
 
 * Includes advanced quality assurance features and options.
 
-<h3>Free Complementary Add-ons</h3>
+<h3>Complementary Add-ons</h3>
 
 * [WPSSO FAQ Manager](https://wordpress.org/plugins/wpsso-faq/) to manage FAQ categories with Question and Answer pages.
 * [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
@@ -440,12 +440,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.11.3-dev.2 (TBD)**
+**Version 6.11.3-dev.2 (2019/11/13)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* The Premium features of the following add-ons have been merged into their Standard versions:
+		* [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
+		* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) to add responsive share buttons.
+		* [WPSSO Social Sharing Buttons](https://wordpress.org/plugins/wpsso-ssb/) to add traditional share buttons.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -689,6 +692,10 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 	* Removed the `SucomUtil::is_product_tag()` method.
 
 == Upgrade Notice ==
+
+= 6.11.3-dev.2 =
+
+(2019/11/13) The Premium features of three add-ons have been merged into their Standard versions.
 
 = 6.11.2 =
 
