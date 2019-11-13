@@ -2352,6 +2352,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '<li>' . __( 'Access to development and release candidate updates.', 'wpsso' ) . '</li>';
 
+						$text .= '<li>' . __( 'Premium plugin support.', 'wpsso' ) . '</li>';
+
 						$text .= '</ul>';
 
 						$text .= '<p>' . sprintf( __( '<strong>%1$s licenses never expire</strong> &mdash; you may receive unlimited / lifetime updates and support for each licensed WordPress Site Address.', 'wpsso' ), $pro_transl ) . ' ';

@@ -1038,11 +1038,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Check the stripped webpage HTML for ld+json script(s) and if not found, then suggest enabling the WPSSO JSON add-on.
 			 */
-			$json_pp         = $this->p->check->pp( 'wpssojson' );
-			$json_info       = $this->p->cf[ 'plugin' ][ 'wpssojson' ];
-			$json_addon_link = $this->p->util->get_admin_url( 'addons#wpssojson', $json_info[ 'name' ] );
-
-			if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) || ! $json_pp ) {
+			if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'checking the stripped webpage html for ld+json script(s)' );
@@ -1056,33 +1052,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$this->p->debug->log( count( $scripts_json ) . ' application/ld+json script(s) found in the webpage' );
 					}
 
-					if ( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) {
-
-						$this->p->debug->log( 'checking for woocommerce scripts with id marker' );
-
-						$id_marker = WpssoFilters::get_wc_product_data_anchor();
-
-						foreach ( $scripts_json as $script_md5 => $single_json ) {
-
-							if ( strpos( $single_json, $id_marker ) ) {
-
-								if ( $is_admin ) {
-
-									$notice_key = 'application-ld-json-script-wc-product-found';
-						
-									$notice_msg = sprintf( __( 'The webpage at %1$s includes only basic (and incomplete) Schema JSON-LD product markup added by the WooCommerce plugin.', 'wpsso' ), '<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>' ) . ' ';
-
-									$notice_msg .= __( 'Complete and accurate Schema JSON-LD markup is highly recommended for better ranking and click-through in Google search results.', 'wpsso' ) . ' ';
-						
-									$notice_msg .= sprintf( __( 'You should consider purchasing the %1$s %2$s add-on to include better Schema JSON-LD markup for WooCommerce products.', 'wpsso' ), $json_addon_link, _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) );
-
-									$this->p->notice->warn( $notice_msg, null, $notice_key, true );
-								}
-
-								break;
-							}
-						}
-					}
+					// Nothing to do.
 
 				} elseif ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
 
@@ -1092,15 +1062,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( $is_admin ) {
 
-						$notice_key = 'application-ld-json-script-not-found';
+						$notice_key   = 'application-ld-json-script-not-found';
+						$dismiss_time = true;	// Can be dismissed permanently.
 	
 						$notice_msg = sprintf( __( 'The webpage at %1$s does not include any Schema JSON-LD script(s).', 'wpsso' ), '<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>' ) . ' ';
 						
-						$notice_msg .= __( 'Complete and accurate Schema JSON-LD markup is highly recommended for better ranking and click-through in Google search results.', 'wpsso' ) . ' ';
+						$notice_msg .= __( 'Complete and accurate Schema JSON-LD markup is highly recommended for better ranking and click-through in search results.', 'wpsso' ) . ' ';
 						
-						$notice_msg .= sprintf( __( 'You should consider activating the %1$s add-on to include Schema JSON-LD markup in the webpage for Google.', 'wpsso' ), $json_addon_link );
+						$notice_msg .= sprintf( __( 'Consider activating the %1$s add-on to include Schema JSON-LD markup for Google Rich Results / Rich Snippets.', 'wpsso' ), $json_addon_link );
 
-						$this->p->notice->warn( $notice_msg, null, $notice_key, true );
+						$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time );
 					}
 				}
 			}

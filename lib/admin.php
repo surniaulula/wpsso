@@ -170,7 +170,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function set_plugin_pkg_info() {
 
-			if ( ! empty( self::$pkg ) ) {
+			if ( ! empty( self::$pkg ) ) {	// Only execute once.
 				return;
 			}
 
@@ -573,9 +573,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! empty( $info[ 'base' ] ) ) {
 
-				$install_url = is_multisite() ?
-					network_admin_url( 'plugin-install.php', null ) :
-					get_admin_url( null, 'plugin-install.php' );
+				$install_url = is_multisite() ? network_admin_url( 'plugin-install.php', null ) : get_admin_url( null, 'plugin-install.php' );
 
 				$details_url = add_query_arg( array(
 					'plugin'    => $info[ 'slug' ],
@@ -636,7 +634,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! empty( $info[ 'url' ][ 'purchase' ] ) ) {
 
-				$purchase_url = add_query_arg( array( 
+				$url = add_query_arg( array( 
 					'utm_source'  => $ext,
 					'utm_medium'  => 'plugin',
 					'utm_content' => 'licenses-action-links',
@@ -644,7 +642,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$action_links[] = $this->p->msgs->get( 'pro-purchase-link', array(
 					'ext'      => $ext,
-					'url'      => $purchase_url, 
+					'url'      => $url, 
 					'tabindex' => false !== $tabindex ? ++$tabindex : false,
 				) );
 			}
@@ -1154,19 +1152,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
 					array( $this, 'show_metabox_purchase_pro' ), $metabox_screen,
-						$metabox_context, $metabox_prio, $callback_args );
-
-				$metabox_id      = 'status_pro';
-				$metabox_title   = sprintf( _x( '%s Version Features', 'metabox title', 'wpsso' ),
-					_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) );
-				$metabox_screen  = $this->pagehook;
-				$metabox_context = 'side';
-				$metabox_prio    = 'default';
-				$callback_args   = array(	// Second argument passed to the callback function / method.
-				);
-
-				add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
-					array( $this, 'show_metabox_status_pro' ), $metabox_screen,
 						$metabox_context, $metabox_prio, $callback_args );
 
 				WpssoUser::reset_metabox_prefs( $this->pagehook, array( 'purchase_pro' ), '', '', true );
@@ -2493,20 +2478,104 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function suggest_addons() {
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
 			if ( ! $this->p->notice->can_dismiss() || ! current_user_can( 'manage_options' ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: cannot dismiss or cannot manage options' );
+				}
+
 				return;	// Stop here.
 			}
 
 			if ( ! empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {
 
-				if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) || ! $this->p->check->pp( 'wpssojson' ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'maybe suggest addons for woocommerce' );
+				}
+
+				$ext  = 'wpssojson';
+				$info = $this->p->cf[ 'plugin' ][ $ext ];
+
+				if ( ! empty( $info[ 'url' ][ 'purchase' ] ) ) {	// Just in case.
+
+					$action_links = array();
+					$notice_key   = 'suggest-' . $ext . '-for-woocommerce';
+					$dismiss_time = true;	// Can be dismissed permanently.
+
+					if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
+			
+						if ( SucomPlugin::is_plugin_installed( $info[ 'base' ], $use_cache = true ) ) {
+
+							$url = is_multisite() ? network_admin_url( 'plugins.php', null ) : get_admin_url( null, 'plugins.php' );
+
+							$url = add_query_arg( array( 's' => $info[ 'base' ] ), $url );
+
+							$action_links[] = '<a href="' . $url . '">' . sprintf( __( 'Activate the %s add-on.', 'wpsso' ),
+								self::$pkg[ $ext ][ 'short' ] ) . '</a>';
+
+						} else {
+
+							$url = $this->p->util->get_admin_url( 'addons#' . $ext );
+
+							$action_links[] = '<a href="' . $url . '">' . sprintf( __( 'Install and activate the %s add-on.', 'wpsso' ),
+								self::$pkg[ $ext ][ 'short' ] ) . '</a>';
+						}
+					}
+
+					if ( empty( self::$pkg[ $this->p->lca ][ 'pp' ] ) ) {
+
+						$url = add_query_arg( array( 
+							'utm_source'  => $this->p->lca,
+							'utm_medium'  => 'plugin',
+							'utm_content' => $notice_key,
+						), $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'url' ][ 'purchase' ] );
+	
+						$action_links[] = '<a href="' . $url . '">' . sprintf( __( 'Purchase the %s plugin.', 'wpsso' ),
+							self::$pkg[ $this->p->lca ][ 'short_pro' ] ) . '</a>';
+					}
+
+					if ( empty( self::$pkg[ $ext ][ 'pp' ] ) ) {
+
+						$url = add_query_arg( array( 
+							'utm_source'  => $this->p->lca,
+							'utm_medium'  => 'plugin',
+							'utm_content' => $notice_key,
+						), $info[ 'url' ][ 'purchase' ] );
+	
+						$action_links[] = '<a href="' . $url . '">' . sprintf( __( 'Purchase the %s add-on.', 'wpsso' ),
+							self::$pkg[ $ext ][ 'short_pro' ] ) . '</a>';
+					}
+
+					if ( ! empty( $action_links ) ) {
+
+						$notice_msg = __( 'The WooCommerce plugin provides incomplete Schema markup for Google.', 'wpsso' ) . ' ';
+						
+						$notice_msg .= __( 'The WPSSO Core Premium plugin and its WPSSO JSON Premium add-on provide a far better solution by offering complete Facebook / Pinterest Product meta tags and Schema product markup for Google Rich Results / Rich Snippets &mdash; including additional product images, product variations, product attributes (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, and much, much more.', 'wpsso' );
+
+						$notice_msg .= '<ul><li>' . implode( '</li><li>', $action_links ) . '</li></ul>';
+
+						$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time );
+					}
 				}
 			}
 		}
 
 		public function timed_notices() {
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
 			if ( ! $this->p->notice->can_dismiss() || ! current_user_can( 'manage_options' ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: cannot dismiss or cannot manage options' );
+				}
+
 				return;	// Stop here.
 			}
 
