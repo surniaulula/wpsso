@@ -6033,7 +6033,7 @@ msgstr ""
 #: lib/post.php:1070
 msgid ""
 "Complete and accurate Schema JSON-LD markup is highly recommended for better "
-"ranking and click-through in search results."
+"ranking and click-through rates in search results."
 msgstr ""
 
 #: lib/post.php:1072
