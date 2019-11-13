@@ -184,7 +184,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'desc'        => 'Apple Store / iTunes and Google Play App meta tags for Apple\'s mobile Safari banner and Twitter\'s App Card.',
 					'slug'        => 'wpsso-am',
 					'base'        => 'wpsso-am/wpsso-am.php',
-					'update_auth' => 'tid',
+					'update_auth' => '',
 					'assets'      => array(
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-am/assets/banner-772x250.jpg',
@@ -209,9 +209,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'install'   => 'https://wpsso.com/docs/plugins/wpsso-am/installation/',
 						'faqs'      => '',
 						'notes'     => '',
-						'support'   => 'https://surniaulula.com/support/create_ticket/',	// Premium support ticket.
-						'purchase'  => 'https://wpsso.com/extend/plugins/wpsso-am/',		// Purchase page.
-						'info'      => 'https://wpsso.com/extend/plugins/wpsso-am/info/',	// License information.
+						'support'   => '',	// Premium support ticket.
+						'purchase'  => '',	// Purchase page.
+						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-am/update/',
 						'latest'    => '',
 					),

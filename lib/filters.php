@@ -23,16 +23,6 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
-			 * Add a marker to the WooCommerce product @id property value. The marker is checked in
-			 * WpssoPost::check_post_head() to suggest a better JSON-LD markup solution.
-			 */
-			if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) || ! $this->p->check->pp( 'wpssojson' ) ) {
-				if ( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) {
-					add_filter( 'woocommerce_structured_data_product', array( __CLASS__, 'add_wc_product_id_marker' ), 1000, 2 );
-				}
-			}
-
 			if ( is_admin() ) {
 
 				/**
@@ -89,24 +79,6 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 					add_action( 'wp_head', array( __CLASS__, 'remove_snap_og_meta_tags_holder' ), -1000 );
 				}
 			}
-		}
-
-		public static function add_wc_product_id_marker( $json_data, $product ) {
-
-			if ( ! empty( $json_data[ '@id' ] ) ) {
-
-				$id_marker = self::get_wc_product_data_anchor();
-
-				if ( false === strpos( $json_data[ '@id' ], $id_marker ) ) {
-					$json_data[ '@id' ] .= $id_marker;
-				}
-			}
-
-			return $json_data;
-		}
-
-		public static function get_wc_product_data_anchor() {
-			return '#wc-product-data';
 		}
 
 		public function update_gform_noconflict_styles( $styles ) {
