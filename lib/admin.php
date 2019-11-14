@@ -2600,9 +2600,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return;	// Stop here.
 			}
 
-			$core_short = $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'short' ];
-			$user_id    = get_current_user_id();
-
+			$user_id             = get_current_user_id();
 			$ext_reg_actions     = $this->p->util->get_registered_actions();
 			$one_week_ago_secs   = time() - WEEK_IN_SECONDS;
 			$six_months_ago_secs = time() - ( 6 * MONTH_IN_SECONDS );
@@ -2692,7 +2690,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$notice_msg .= '</p><p>';
 
-				$notice_msg .= sprintf( __( 'We\'ve put a lot of effort into making %s and its add-ons the best possible, so it\'s great to know that you\'re finding this plugin useful.', 'wpsso' ), $core_short ) . ' :-) ';
+				$notice_msg .= sprintf( __( 'We\'ve put a lot of effort into making %s and its add-ons the best possible, so it\'s great to know that you\'re finding this plugin useful.', 'wpsso' ), $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'short' ] ) . ' :-) ';
 
 				$notice_msg .= '</p><p>';
 
@@ -2729,6 +2727,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$notice_key   = 'timed-notice-' . $this->p->lca . '-pro-purchase-notice';
 					$dismiss_time = 3 * MONTH_IN_SECONDS;
 
+					/**
+					 * Purchase action button and dismiss message.
+					 */
 					$purchase_url = add_query_arg( array(
 						'utm_source'  => $this->p->lca,
 						'utm_medium'  => 'plugin',
@@ -2744,6 +2745,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$this->form->get_button( $purchase_label, 'button-primary dismiss-on-click', '', $purchase_url,
 							true, false, array( 'dismiss-msg' => $purchase_clicked ) ) . '</div>';
 
+					/**
+					 * No thanks action button and dismiss message.
+					 */
 					$no_thanks_label   = sprintf( __( 'No thanks, I\'ll stay with the %s version for now.', 'wpsso' ),
 						_x( $this->p->cf[ 'dist' ][ 'std' ], 'distribution name', 'wpsso' ) );
 
@@ -2753,6 +2757,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$this->form->get_button( $no_thanks_label, 'button-secondary dismiss-on-click', '', '',
 							false, false, array( 'dismiss-msg' => $no_thanks_clicked ) ) . '</div>';
 
+					/**
+					 * Upsell notice.
+					 */
 					$notice_msg = '<p class="top">';
 
 					$notice_msg .= '<b>' . __( 'Fantastic!', 'wpsso' ) . '</b> ';
