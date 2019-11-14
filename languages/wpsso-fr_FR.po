@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 6.11.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-11-13 11:30-0800\n"
-"PO-Revision-Date: 2019-11-13 11:35-0800\n"
+"PO-Revision-Date: 2019-11-13 13:17-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -339,7 +339,7 @@ msgstr "Activer l'ajout %s."
 
 #: lib/admin.php:2524
 msgid "Install and activate the %s add-on."
-msgstr "Installer et activer l'ajout %1$s."
+msgstr "Installer et activer l'ajout %s."
 
 #: lib/admin.php:2537
 msgid "Purchase the %s plugin."

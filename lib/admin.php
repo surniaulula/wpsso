@@ -2491,76 +2491,97 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return;	// Stop here.
 			}
 
-			if ( ! empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {
+			$this->suggest_addons_woocommerce();
+		}
 
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'maybe suggest addons for woocommerce' );
-				}
+		private function suggest_addons_woocommerce() {
 
-				$ext  = 'wpssojson';
-				$info = $this->p->cf[ 'plugin' ][ $ext ];
+			if ( empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {
+				return;
+			}
 
-				if ( ! empty( $info[ 'url' ][ 'purchase' ] ) ) {	// Just in case.
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'maybe suggest addons for woocommerce' );
+			}
 
-					$action_links = array();
-					$notice_key   = 'suggest-' . $ext . '-for-woocommerce';
-					$dismiss_time = true;	// Can be dismissed permanently.
+			$ext  = 'wpssojson';
+			$info = $this->p->cf[ 'plugin' ][ $ext ];
 
-					if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
+			/**
+			 * All good - nothing to suggest.
+			 */
+			if ( ! empty( self::$pkg[ $this->p->lca ][ 'pp' ] ) && ! empty( self::$pkg[ $ext ][ 'pp' ] ) ) {
+				return;
+			}
+
+			$wc_version   = SucomUtil::get_const( 'WC_VERSION', 0 );
+			$action_links = array();
+			$notice_key   = 'suggest-' . $ext . '-for-woocommerce';
+			$dismiss_time = true;	// Can be dismissed permanently.
+
+			if ( ! $this->p->notice->is_admin_pre_notices( $notice_key ) ) { // Don't bother if already dismissed.
+				return;
+			}
+
+			if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
 			
-						if ( SucomPlugin::is_plugin_installed( $info[ 'base' ], $use_cache = true ) ) {
+				if ( SucomPlugin::is_plugin_installed( $info[ 'base' ], $use_cache = true ) ) {
 
-							$url = is_multisite() ? network_admin_url( 'plugins.php', null ) : get_admin_url( null, 'plugins.php' );
+					$url = is_multisite() ? network_admin_url( 'plugins.php', null ) : get_admin_url( null, 'plugins.php' );
 
-							$url = add_query_arg( array( 's' => $info[ 'base' ] ), $url );
+					$url = add_query_arg( array( 's' => $info[ 'base' ] ), $url );
 
-							$action_links[] = '<a href="' . $url . '">' . sprintf( __( 'Activate the %s add-on.', 'wpsso' ),
-								self::$pkg[ $ext ][ 'short' ] ) . '</a>';
+					$action_links[] = '<a href="' . $url . '">' . sprintf( __( 'Activate the %s add-on.', 'wpsso' ),
+						self::$pkg[ $ext ][ 'short' ] ) . '</a>';
 
-						} else {
+				} else {
 
-							$url = $this->p->util->get_admin_url( 'addons#' . $ext );
+					$url = $this->p->util->get_admin_url( 'addons#' . $ext );
 
-							$action_links[] = '<a href="' . $url . '">' . sprintf( __( 'Install and activate the %s add-on.', 'wpsso' ),
-								self::$pkg[ $ext ][ 'short' ] ) . '</a>';
-						}
-					}
-
-					if ( empty( self::$pkg[ $this->p->lca ][ 'pp' ] ) ) {
-
-						$url = add_query_arg( array( 
-							'utm_source'  => $this->p->lca,
-							'utm_medium'  => 'plugin',
-							'utm_content' => $notice_key,
-						), $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'url' ][ 'purchase' ] );
-	
-						$action_links[] = '<a href="' . $url . '">' . sprintf( __( 'Purchase the %s plugin.', 'wpsso' ),
-							self::$pkg[ $this->p->lca ][ 'short_pro' ] ) . '</a>';
-					}
-
-					if ( empty( self::$pkg[ $ext ][ 'pp' ] ) ) {
-
-						$url = add_query_arg( array( 
-							'utm_source'  => $this->p->lca,
-							'utm_medium'  => 'plugin',
-							'utm_content' => $notice_key,
-						), $info[ 'url' ][ 'purchase' ] );
-	
-						$action_links[] = '<a href="' . $url . '">' . sprintf( __( 'Purchase the %s add-on.', 'wpsso' ),
-							self::$pkg[ $ext ][ 'short_pro' ] ) . '</a>';
-					}
-
-					if ( ! empty( $action_links ) ) {
-
-						$notice_msg = __( 'The WooCommerce plugin provides incomplete Schema markup for Google.', 'wpsso' ) . ' ';
-						
-						$notice_msg .= __( 'The WPSSO Core Premium plugin and its WPSSO JSON Premium add-on provide a far better solution by offering complete Facebook / Pinterest Product meta tags and Schema product markup for Google Rich Results / Rich Snippets &mdash; including additional product images, product variations, product attributes (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, and much, much more.', 'wpsso' );
-
-						$notice_msg .= '<ul><li>' . implode( '</li><li>', $action_links ) . '</li></ul>';
-
-						$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time );
-					}
+					$action_links[] = '<a href="' . $url . '">' . sprintf( __( 'Install and activate the %s add-on.', 'wpsso' ),
+						self::$pkg[ $ext ][ 'short' ] ) . '</a>';
 				}
+			}
+
+			if ( empty( self::$pkg[ $this->p->lca ][ 'pp' ] ) ) {
+
+				$url = add_query_arg( array( 
+					'utm_source'  => $this->p->lca,
+					'utm_medium'  => 'plugin',
+					'utm_content' => $notice_key,
+				), $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'url' ][ 'purchase' ] );
+
+				$action_links[] = '<a href="' . $url . '">' . sprintf( __( 'Purchase the %s plugin.', 'wpsso' ),
+					self::$pkg[ $this->p->lca ][ 'short_pro' ] ) . '</a>';
+			}
+
+			if ( empty( self::$pkg[ $ext ][ 'pp' ] ) ) {
+
+				$url = add_query_arg( array( 
+					'utm_source'  => $this->p->lca,
+					'utm_medium'  => 'plugin',
+					'utm_content' => $notice_key,
+				), $info[ 'url' ][ 'purchase' ] );
+
+				$action_links[] = '<a href="' . $url . '">' . sprintf( __( 'Purchase the %s add-on.', 'wpsso' ),
+					self::$pkg[ $ext ][ 'short_pro' ] ) . '</a>';
+			}
+
+			if ( ! empty( $action_links ) ) {
+
+				$settings_page_link = $this->p->util->get_admin_url( 'setup', _x( 'Setup Guide', 'lib file description', 'wpsso' ) );
+				$google_tool_link   = '<a href="' . __( 'https://search.google.com/structured-data/testing-tool/u/0/', 'wpsso' ) . '">' .
+					__( 'Google Structured Data Testing Tool', 'wpsso' ) . '</a>';
+
+				$notice_msg = sprintf( __( 'The WooCommerce v%s plugin is known to provide incomplete Schema markup for Google.', 'wpsso' ), $wc_version ) . ' ';
+				
+				$notice_msg .= __( 'The WPSSO Core Premium plugin and its WPSSO JSON Premium add-on provide a far better solution by offering complete Facebook / Pinterest Product meta tags and Schema Product markup for Google Rich Results / Rich Snippets &mdash; including additional product images, product variations, product attributes (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, and much, much more.', 'wpsso' );
+
+				$notice_msg .= '<ul><li>' . implode( '</li><li>', $action_links ) . '</li></ul>' . ' ';
+
+				$notice_msg .= sprintf( __( 'As suggested in the %1$s, you can (and should) submit a few product URLs to the %2$s and make sure your Schema Product markup is complete.', 'wpsso' ), $settings_page_link, $google_tool_link ) . ' ';
+
+				$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time );
 			}
 		}
 

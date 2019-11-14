@@ -613,7 +613,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 					if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) { // Don't bother if already dismissed.
 					
-						$this->p->notice->warn( __( 'An issue with WPBakery Visual Composer has been detected.', 'wpsso' ) . ' ' . sprintf( __( 'WPBakery Visual Composer version %s (and older) are known to have a bug in their jQuery event handling code.', 'wpsso' ), WPB_VC_VERSION ) . ' ' . sprintf( __( 'To avoid jQuery crashing on show / hide events, please contact WPBakery plugin support and <a href="%s">report the WPBakery Visual Composer change event handler bug described here</a>.', 'wpsso' ), 'https://surniaulula.com/2018/apps/wordpress/plugins/wpbakery/wpbakery-visual-composer-bug-in-change-handler/' ), null, $notice_key, $dismiss_time );
+						$this->p->notice->warn( __( 'An issue with WPBakery Visual Composer has been detected.', 'wpsso' ) . ' ' . sprintf( __( 'WPBakery Visual Composer version %s (and older) are known to have a bug in their jQuery event handling code.', 'wpsso' ), $vc_version_event_bug ) . ' ' . sprintf( __( 'To avoid jQuery crashing on show / hide events, please contact WPBakery plugin support and <a href="%s">report the WPBakery Visual Composer change event handler bug described here</a>.', 'wpsso' ), 'https://surniaulula.com/2018/apps/wordpress/plugins/wpbakery/wpbakery-visual-composer-bug-in-change-handler/' ), null, $notice_key, $dismiss_time );
 					}
 				}
 			}

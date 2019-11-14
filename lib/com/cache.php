@@ -306,6 +306,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		/**
 		 * If $exp_secs is null, then use the default expiration time.
+		 *
 		 * If $exp_secs is false, then get but do not save the data.
 		 */
 		public function get( $url, $format = 'url', $cache_type = 'file', $exp_secs = null, $file_ext = '', array $curl_opts = array() ) {
@@ -450,25 +451,21 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			curl_setopt( $ch, CURLOPT_TIMEOUT, $this->curl_timeout );
 
 			/**
-			 * When negotiating a TLS or SSL connection, the server sends a
-			 * certificate indicating its identity. Curl verifies whether the
-			 * certificate is authentic, i.e. that you can trust that the server is
-			 * who the certificate says it is. This trust is based on a chain of
-			 * digital signatures, rooted in certification authority (CA)
-			 * certificates you supply. curl uses a default bundle of CA
-			 * certificates (the path for that is determined at build time) and you
-			 * can specify alternate certificates with the CURLOPT_CAINFO option or
-			 * the CURLOPT_CAPATH option. 
+			 * When negotiating a TLS or SSL connection, the server sends a certificate indicating its identity. Curl
+			 * verifies whether the certificate is authentic, i.e. that you can trust that the server is who the
+			 * certificate says it is. This trust is based on a chain of digital signatures, rooted in certification
+			 * authority (CA) certificates you supply. curl uses a default bundle of CA certificates (the path for that
+			 * is determined at build time) and you can specify alternate certificates with the CURLOPT_CAINFO option
+			 * or the CURLOPT_CAPATH option. 
 			 *
 			 * See https://curl.haxx.se/libcurl/c/CURLOPT_SSL_VERIFYPEER.html
 			 */
 			curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, 1 );
 
 			/**
-			 * When CURLOPT_SSL_VERIFYHOST is 2, that certificate must indicate
-			 * that the server is the server to which you meant to connect, or the
-			 * connection fails. Simply put, it means it has to have the same name
-			 * in the certificate as is in the URL you operate against.
+			 * When CURLOPT_SSL_VERIFYHOST is 2, that certificate must indicate that the server is the server to which
+			 * you meant to connect, or the connection fails. Simply put, it means it has to have the same name in the
+			 * certificate as is in the URL you operate against.
 			 *
 			 * See https://curl.haxx.se/libcurl/c/CURLOPT_SSL_VERIFYHOST.html
 			 */
@@ -493,9 +490,9 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			 */
 			$allowed_curl_const = array(
 				'CAINFO',
-				'USERAGENT',
 				'PROXY',
 				'PROXYUSERPWD',
+				'USERAGENT',
 			);
 
 			foreach ( $allowed_curl_const as $const_suffix ) {
