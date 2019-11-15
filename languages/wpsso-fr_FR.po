@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 6.12.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-11-15 08:23-0800\n"
-"PO-Revision-Date: 2019-11-15 08:23-0800\n"
+"PO-Revision-Date: 2019-11-15 08:35-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -58,7 +58,7 @@ msgstr "Outil de test Google des données structurées"
 
 #: lib/admin-head.php:266
 msgid "The WooCommerce v%s plugin is known to provide incomplete Schema markup for Google."
-msgstr "L'extension WooCommerce v% s est connue pour fournir un balisage de Schéma incomplet pour Google."
+msgstr "L'extension WooCommerce v%s est connue pour fournir un balisage de Schéma incomplet pour Google."
 
 #: lib/admin-head.php:268
 msgid "The WPSSO Core Premium plugin and its WPSSO JSON Premium add-on provide a far better solution by offering complete Facebook / Pinterest Product meta tags and Schema Product markup for Google Rich Results / Rich Snippets &mdash; including additional product images, product variations, product attributes (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, and much, much more."

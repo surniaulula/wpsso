@@ -991,7 +991,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 					),
 					'hosts' => array(
-						'wp_org' => false,
+						'wp_org' => false,	// Not available on wordpress.org.
 						'github' => true,
 						'wpsso'  => true,
 					),
