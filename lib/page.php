@@ -136,7 +136,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				/**
 				 * Extract custom hashtags, or get hashtags if $add_hashtags is true or numeric.
 				 */
-				list( $cap_text, $hashtags, $add_hashtags ) = $this->get_text_and_hashtags( $cap_text, $mod, $add_hashtags );
+				list( $cap_text, $hashtags ) = $this->get_text_and_hashtags( $cap_text, $mod, $add_hashtags );
 
 				if ( ! empty( $cap_text ) ) {
 
@@ -151,10 +151,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 						$cap_text = $this->p->util->limit_text_length( $cap_text, $adj_max_len, '...', false );
 					}
-				}
 
-				if ( ! empty( $hashtags ) ) {
-					$cap_text = trim( $cap_text . ' ' . $hashtags );	// Trim in case text is empty.
+					if ( ! empty( $hashtags ) ) {
+						$cap_text = trim( $cap_text . ' ' . $hashtags );	// Trim in case text is empty.
+					}
 				}
 
 				if ( $this->p->debug->enabled ) {
@@ -900,7 +900,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Extract custom hashtags, or get hashtags if $add_hashtags is true or numeric.
 			 */
-			list( $text, $hashtags, $add_hashtags ) = $this->get_text_and_hashtags( $text, $mod, $add_hashtags );
+			list( $text, $hashtags ) = $this->get_text_and_hashtags( $text, $mod, $add_hashtags );
 
 			if ( $max_len > 0 ) {
 
@@ -1331,9 +1331,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'hashtags found = "' . $hashtags . '"' );
 			}
 
-			$add_hashtags = false;
-
-			return array( $text, $hashtags, $add_hashtags );
+			return array( $text, $hashtags );
 		}
 
 		/**
