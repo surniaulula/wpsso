@@ -404,9 +404,9 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				 * The notice message.
 				 */
 				$notice_msg = '<div style="display:table-cell;">';
-				
+
 				$notice_msg .= '<p style="margin-right:20px;">' . $this->p->admin->get_ext_img_icon( $ext ) . '</p>';
-				
+
 				$notice_msg .= '</div>';
 
 				$notice_msg .= '<div style="display:table-cell;vertical-align:top;">';
@@ -451,31 +451,33 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 		 */
 		private function single_notice_upsell() {
 
-			if ( WpssoAdmin::$pkg[ $this->p->lca ][ 'pp' ] ) {
+			$ext = $this->p->lca;
+
+			if ( WpssoAdmin::$pkg[ $ext ][ 'pp' ] ) {
 				return 0;
 			}
 
-			$form                  = $this->p->admin->get_form_object( $this->p->lca );
-			$user_id               = get_current_user_id();
 			$ext_reg_actions       = $this->p->util->get_registered_actions();
 			$three_months_ago_secs = time() - ( 3 * MONTH_IN_SECONDS );
 			$three_months_transl   = __( 'three months', 'wpsso' );
 
-			if ( empty( $ext_reg_actions[ $this->p->lca . '_install_time' ] ) ||
-				$ext_reg_actions[ $this->p->lca . '_install_time' ] > $three_months_ago_secs ) {
+			if ( empty( $ext_reg_actions[ $ext . '_install_time' ] ) ||
+				$ext_reg_actions[ $ext . '_install_time' ] > $three_months_ago_secs ) {
 
 				return 0;
 			}
 
-			$info         = $this->p->cf[ 'plugin' ][ $this->p->lca ];
-			$notice_key   = 'timed-notice-' . $this->p->lca . '-pro-purchase-notice';
+			$form         = $this->p->admin->get_form_object( $this->p->lca );
+			$user_id      = get_current_user_id();
+			$info         = $this->p->cf[ 'plugin' ][ $ext ];
+			$notice_key   = 'timed-notice-' . $ext . '-pro-purchase-notice';
 			$dismiss_time = 3 * MONTH_IN_SECONDS;
 
 			/**
 			 * Purchase action button and dismiss message.
 			 */
 			$purchase_url = add_query_arg( array(
-				'utm_source'  => $this->p->lca,
+				'utm_source'  => $ext,
 				'utm_medium'  => 'plugin',
 				'utm_content' => 'pro-purchase-notice',
 			), $info[ 'url' ][ 'purchase' ] );
@@ -504,7 +506,15 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			/**
 			 * Upsell notice.
 			 */
-			$notice_msg = '<p class="top">';
+			$notice_msg = '<div style="display:table-cell;">';
+
+			$notice_msg .= '<p style="margin-right:20px;">' . $this->p->admin->get_ext_img_icon( $ext ) . '</p>';
+
+			$notice_msg .= '</div>';
+
+			$notice_msg .= '<div style="display:table-cell;vertical-align:top;">';
+
+			$notice_msg .= '<p class="top">';
 
 			$notice_msg .= '<b>' . __( 'Fantastic!', 'wpsso' ) . '</b> ';
 
@@ -520,12 +530,13 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			$notice_msg .= '<b>' . sprintf( __( 'Have you considered purchasing the %s version?', 'wpsso' ),
 				_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) ). '</b> ';
 
-			$notice_msg .= sprintf( __( 'The %s version comes with a lot of extra features!', 'wpsso' ),
-				_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) );
+			$notice_msg .= __( 'It comes with a lot of extra features!', 'wpsso' );
 
 			$notice_msg .= '</p>';
 			
 			$notice_msg .= $purchase_button . $no_thanks_button;
+
+			$notice_msg .= '</div>';
 
 			/**
 			 * The notice provides it's own dismiss button, so do not show the dismiss 'Forever' link.

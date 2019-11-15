@@ -101,7 +101,7 @@ msgstr ""
 msgid "Thank you for your earlier rating of %s!"
 msgstr ""
 
-#: lib/admin-head.php:416 lib/admin-head.php:509
+#: lib/admin-head.php:416 lib/admin-head.php:519
 msgid "Fantastic!"
 msgstr ""
 
@@ -131,40 +131,40 @@ msgstr ""
 msgid "three months"
 msgstr ""
 
-#: lib/admin-head.php:483
+#: lib/admin-head.php:485
 msgid "Yes! I'd like to get the %s update!"
 msgstr ""
 
-#: lib/admin-head.php:486
+#: lib/admin-head.php:488
 msgid "Thank you for your support!"
 msgstr ""
 
-#: lib/admin-head.php:495
+#: lib/admin-head.php:497
 msgid "No thanks, I'll stay with the %s version."
 msgstr ""
 
-#: lib/admin-head.php:498
+#: lib/admin-head.php:500
 msgid "Sorry to hear that - hopefully you'll change your mind later."
 msgstr ""
 
-#: lib/admin-head.php:511
+#: lib/admin-head.php:521
 msgid ""
 "You've been using the %1$s plugin for more than %2$s now, which is awesome!"
 msgstr ""
 
-#: lib/admin-head.php:516
+#: lib/admin-head.php:526
 msgid ""
 "We've put a lot of effort into making %1$s and its add-ons the best possible "
 "&mdash; I hope you've enjoyed all the new features, improvements and updates "
 "over the past %2$s."
 msgstr ""
 
-#: lib/admin-head.php:520
+#: lib/admin-head.php:530
 msgid "Have you considered purchasing the %s version?"
 msgstr ""
 
-#: lib/admin-head.php:523
-msgid "The %s version comes with a lot of extra features!"
+#: lib/admin-head.php:533
+msgid "It comes with a lot of extra features!"
 msgstr ""
 
 #: lib/admin.php:552
