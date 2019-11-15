@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.11.3-b.2\n"
+"Project-Id-Version: WPSSO Core 6.12.0-rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3167,7 +3167,7 @@ msgstr ""
 
 #: lib/gettext-pro.php:150 lib/gettext-pro.php:155
 #: lib/pro/ecom/woocommerce.php:840 lib/pro/ecom/wpecommerce.php:523
-msgid "\"%s\" is an unknown Schema product item condition."
+msgid "\"%s\" is an unknown Schema Product item condition."
 msgstr ""
 
 #: lib/gettext-pro.php:151 lib/gettext-pro.php:156
