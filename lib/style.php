@@ -315,9 +315,9 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				#adminmenu li.menu-top.toplevel_page_' . $menu . ':hover div.wp-menu-image::before,
 				#adminmenu li.menu-top.toplevel_page_' . $sitemenu . ':hover div.wp-menu-image::before {
 					display:inline-block;
-					font-size:28px;
+					font-size:30px;
 					content:"' . $this->p->cf[ 'menu' ][ 'before' ] . '";
-					margin:-2px 0 0 0;
+					margin:-4px 0 0 0;
 					padding:0;
 				}
 
