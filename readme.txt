@@ -440,22 +440,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.12.0-rc.1 (2019/11/15)**
+**Version 6.12.0-rc.2 (2019/11/15)**
 
 * **New Features**
-	* None.
-* **Improvements**
-	* Added a referer value when fetching video information from the Vimeo API for whitelist restrictions.
 	* The Premium features of the following add-ons have been merged into their Standard versions:
 		* [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
 		* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) to add responsive share buttons.
 		* [WPSSO Social Sharing Buttons](https://wordpress.org/plugins/wpsso-ssb/) to add traditional share buttons.
+* **Improvements**
+	* Added a referer value when fetching video information from the Vimeo API for potential whitelist restrictions.
 * **Bugfixes**
-	* None.
+	* Fixed an empty value returned by `WpssoPage->get_caption()` when requesting the title.
 * **Developer Notes**
 	* Moved 'admin_head' action hooks for notices to a new WpssoAdminHead class in lib/admin-head.php.
-	* Added a new WpssoAdminHead->suggest_addons() method for the WooCommerce Schema JSON-LD notice.
-	* Removed the WooCommerce Schema JSON-LD check from the WpssoPost->check_post_head() method.
+	* Added a new `WpssoAdminHead->suggest_addons()` method for the WooCommerce Schema JSON-LD notice.
+	* Removed the WooCommerce Schema JSON-LD check from the `WpssoPost->check_post_head()` method.
 
 **Version 6.11.2 (2019/11/10)**
 
@@ -665,7 +664,7 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added checks for [AMP](https://wordpress.org/plugins/amp/), [Better AMP](https://wordpress.org/plugins/better-amp/), and [AMP for WP](https://wordpress.org/plugins/accelerated-mobile-pages/) plugins in WpssoCheck->get_avail().
+	* Added checks for [AMP](https://wordpress.org/plugins/amp/), [Better AMP](https://wordpress.org/plugins/better-amp/), and [AMP for WP](https://wordpress.org/plugins/accelerated-mobile-pages/) plugins in `WpssoCheck->get_avail()`.
 	* Added an 'image' input type in the SucomForm->get_mixed_multi() method for WPSSO JSON v2.9.0.
 	* Added a lib/schema-noscript.php library file with a single filter for aggregate rating markup (replaces the lib/noscript.php library file).
 	* Added a lib/oembed.php library file (methods to be added in v6.4.0).
@@ -696,9 +695,9 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 
 == Upgrade Notice ==
 
-= 6.12.0-rc.1 =
+= 6.12.0-rc.2 =
 
-(2019/11/15) Added a referer value when fetching video information from the Vimeo API for whitelist restrictions. The Premium features of three add-ons have been merged into their Standard versions.
+(2019/11/15) The Premium features of three add-ons have been merged into their Standard versions. Fixed an empty value returned by `WpssoPage->get_caption()` when requesting the title.
 
 = 6.11.2 =
 
