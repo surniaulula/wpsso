@@ -440,7 +440,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.11.3-b.2 (2019/11/15)**
+**Version 6.12.0-rc.1 (2019/11/15)**
 
 * **New Features**
 	* None.
@@ -696,7 +696,7 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 
 == Upgrade Notice ==
 
-= 6.11.3-b.2 =
+= 6.12.0-rc.1 =
 
 (2019/11/15) Added a referer value when fetching video information from the Vimeo API for whitelist restrictions. The Premium features of three add-ons have been merged into their Standard versions.
 
