@@ -440,12 +440,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.11.3-b.1 (2019/11/14)**
+**Version 6.11.3-b.2 (2019/11/15)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a referer value when fetching video information from the Vimeo API for non-public videos.
+	* Added a referer value when fetching video information from the Vimeo API for whitelist restrictions.
 	* The Premium features of the following add-ons have been merged into their Standard versions:
 		* [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
 		* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) to add responsive share buttons.
@@ -453,8 +453,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Moved 'admin_head' action hooks for notices to a new WpssoAdminHead class in lib/admin-head.php.
+	* Added a new WpssoAdminHead->suggest_addons() method for the WooCommerce Schema JSON-LD notice.
 	* Removed the WooCommerce Schema JSON-LD check from the WpssoPost->check_post_head() method.
-	* Added a new WpssoAdmin->suggest_addons() method for the WooCommerce Schema JSON-LD notice.
 
 **Version 6.11.2 (2019/11/10)**
 
@@ -695,9 +696,9 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 
 == Upgrade Notice ==
 
-= 6.11.3-b.1 =
+= 6.11.3-b.2 =
 
-(2019/11/14) Added a referer value when fetching video information from the Vimeo API for non-public videos. The Premium features of three add-ons have been merged into their Standard versions.
+(2019/11/15) Added a referer value when fetching video information from the Vimeo API for whitelist restrictions. The Premium features of three add-ons have been merged into their Standard versions.
 
 = 6.11.2 =
 
