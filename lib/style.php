@@ -301,8 +301,9 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				 * Admin toolbar notices.
 				 */
 				#wpadminbar #wp-toolbar #' . $this->p->lca . '-toolbar-notices-icon.ab-icon::before { 
-					font-size:28px;
+					font-size:30px;
 					font-style:normal;
+					line-height:20px;
 					content:"' . $this->p->cf[ 'menu' ][ 'before' ] . '";
 				}
 

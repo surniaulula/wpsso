@@ -1212,26 +1212,23 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					border:0;
 					background:inherit;
 				}
+				#wpadminbar #wp-toolbar #' . $this->p->lca . '-toolbar-notices-icon.ab-icon { 
+					margin:0;
+					padding:0;
+				}
+				#wpadminbar #wp-toolbar #' . $this->p->lca . '-toolbar-notices-count {
+					margin-left:8px;
+				}
 				#wpadminbar #wp-toolbar .have-notices .ab-item:hover,
 				#wpadminbar #wp-toolbar .have-notices.hover .ab-item { 
 					color:inherit;
 					background:inherit;
 				}
-				#wpadminbar #wp-toolbar #' . $this->p->lca . '-toolbar-notices-icon.ab-icon { 
-					margin:0;
-					padding:0;
-					line-height:1em;
-				}
-				#wpadminbar #wp-toolbar #' . $this->p->lca . '-toolbar-notices-count {
-					margin-left:8px;
-				}
 				#wpadminbar #wp-toolbar .have-notices #' . $this->p->lca . '-toolbar-notices-icon.ab-icon::before { 
-					display:inline-block;
 					color:#fff;
 					background-color:inherit;
 				}
 				#wpadminbar #wp-toolbar .have-notices #' . $this->p->lca . '-toolbar-notices-count {
-					display:inline-block;
 					color:#fff;
 					background-color:inherit;
 				}
