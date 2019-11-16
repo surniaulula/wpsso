@@ -1,7 +1,7 @@
 <?php
 
 if ( ! defined( 'ABSPATH' ) ) {
-	die( 'These aren\'t the droids you\'re looking for...' );
+	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! defined( 'SUEXT_MARKDOWN_EMPTY_ELEMENT_SUFFIX' ) ) {

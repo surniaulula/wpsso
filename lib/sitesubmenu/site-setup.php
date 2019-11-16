@@ -6,11 +6,11 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	die( 'These aren\'t the droids you\'re looking for...' );
+	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
-if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {	// Just in case.
-	die( 'Incomplete plugin initialization...' );
+if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+	die( 'Do. Or do not. There is no try.' );
 }
 
 if ( ! class_exists( 'WpssoSubmenuSetup' ) ) {

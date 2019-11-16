@@ -14,7 +14,7 @@
  * Requires At Least: 3.9
  * Tested Up To: 5.3
  * WC Tested Up To: 3.8.0
- * Version: 6.12.0-rc.3
+ * Version: 6.12.0-rc.4
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -27,7 +27,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	die( 'These aren\'t the droids you\'re looking for...' );
+	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! class_exists( 'Wpsso' ) ) {
@@ -101,6 +101,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->cf = WpssoConfig::get_config( $opt_key = false, $apply_filters = false );
 
 			WpssoConfig::set_constants( __FILE__ );	
+
 			WpssoConfig::require_libs( __FILE__ );		// Includes the register.php class library.
 
 			$this->reg = new WpssoRegister( $this );	// Activate, deactivate, uninstall hooks.
