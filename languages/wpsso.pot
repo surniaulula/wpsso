@@ -160,11 +160,9 @@ msgid ""
 msgstr ""
 
 #: lib/admin-head.php:530
-msgid "Have you considered purchasing the %s version?"
-msgstr ""
-
-#: lib/admin-head.php:533
-msgid "It comes with a lot of extra features!"
+msgid ""
+"Have you considered purchasing the %s version? It comes with a lot of extra "
+"features!"
 msgstr ""
 
 #: lib/admin.php:552

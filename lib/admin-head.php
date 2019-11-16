@@ -527,10 +527,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 			$notice_msg .= '</p><p>';
 
-			$notice_msg .= '<b>' . sprintf( __( 'Have you considered purchasing the %s version?', 'wpsso' ),
-				_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) ). '</b> ';
-
-			$notice_msg .= __( 'It comes with a lot of extra features!', 'wpsso' );
+			$notice_msg .= '<b>' . sprintf( __( 'Have you considered purchasing the %s version? It comes with a lot of extra features!', 'wpsso' ), _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) ) . '</b> ';
 
 			$notice_msg .= '</p>';
 			
