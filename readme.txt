@@ -44,7 +44,7 @@ WPSSO Core is language / locale aware, which means you can customize your site i
 
 **Coded for maximum performance:**
 
-WPSSO Core makes full use of all available caching methods &mdash; along with offering advanced caching features like pre-seeding its cache in background. WPSSO Core and its complementary add-ons load only the libraries and classes they need, keeping their code small, fast and light. All code is fully tested and compatible with the latest version of WordPress and PHP v7.x (PHP v5.4 or better required).
+WPSSO Core makes full use of all available caching methods &mdash; along with offering advanced caching features like pre-seeding its cache in background. WPSSO Core and its complementary add-ons only load the libraries and classes they need, keeping their code small, fast and light. All code is fully tested and compatible with the latest version of WordPress and PHP v7.x (PHP v5.4 or better required).
 
 <h3>Users Love the WPSSO Core Plugin</h3>
 
