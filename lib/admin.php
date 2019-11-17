@@ -490,7 +490,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$dashicon = $this->p->cf[ 'menu' ][ 'dashicons' ][ $menu_id ];
 				}
 
-				$css_class  = $this->p->lca . '-menu-item' . ( $css_class ? ' ' . $css_class : '' );
+				$css_class = $this->p->lca . '-menu-item ' . $this->p->lca . '-' . $menu_id . ( $css_class ? ' ' . $css_class : '' );
+
 				$menu_title = '<div class="' . $css_class . ' dashicons-before dashicons-' . $dashicon . '"></div>' .
 					'<div class="' . $css_class . ' menu-item-label">' . $menu_name . '</div>';
 

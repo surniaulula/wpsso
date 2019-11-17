@@ -38,32 +38,24 @@
 <p><strong>Do not forget to submit a few example posts / pages to the validation tools mentioned bellow.</strong> Some markup formats, like Pinterest Rich Pins, must be requested / enabled when submitting an example post / page to their validation tool.</p>
 </dd>
 
-<dt><h3>Schema vs Google Rich Results</h3></dt>
+<dt><h3>Schema Markup vs Google Rich Results</h3></dt>
 
 <dd>
 <p>
-Schema (aka "Schema.org") is a collaborative, community lead standard for structured data. Schema is classified by type, each associated with a set of properties. The types are arranged in a hierarchy and <a href="https://schema.org/docs/schemas.html">the core vocabulary consists of 598 types, 862 properties, and 114 enumeration values</a>. The Schema vocabulary can be used with many different encodings, including RDFa, Microdata and JSON-LD. WPSSO Core adds Schema properties to webpages as meta tags for Pinterest, and other social and search crawlers that can read Schema markup.
+Schema (aka "Schema.org") is a collaborative, community lead standard for structured data. Schema markup is classified by type, each associated with a set of properties. The types are arranged in a hierarchy and <a href="https://schema.org/docs/schemas.html">the core vocabulary consists of 614 types, 902 properties, and 114 enumeration values</a>. The Schema vocabulary can be used with many different encodings, including meta tags, RDFa, Microdata, and JSON-LD. WPSSO Core adds Schema markup to webpages as meta tags for Pinterest and other social / search crawlers that can read Schema markup.
 </p>
 
 <p>
-<a href="https://developers.google.com/search/docs/guides/intro-structured-data">Google Rich Results are a set of minimum requirements for some Schema types</a>, which includes specific images dimensions (example, a 600x60px banner "logo" image for article publishers), limited selections for some properties (example, product conditions), specific Schema types for some property relations, and much more. Google Rich Results require several layers of Schema markup (aka a multi-dimensional array) that can be expressed using JSON-LD scripts in the webpage header or footer (preferred by Google), or with RDFa or Microdata markup in theme templates (older standard).
+<a href="https://developers.google.com/search/docs/guides/intro-structured-data">Google Rich Results are a set of minimum requirements for a selection of Schema types</a>, which includes specific images dimensions (example, a 600x60px banner "logo" image for article publishers), limited values for some properties (example, product conditions), specific Schema types for some property relations, and much more. Google Rich Results require several layers of Schema markup (aka a multi-dimensional arrays) that must be expressed using JSON-LD in the webpage header or footer (the latest standard preferred by Google), or with RDFa or Microdata markup in theme templates (older and deprecated standard).
 </p>
 
 <p>
-If your theme templates do not include RDFa or Microdata markup for Google Rich Results, you should enable the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> add-on. And if your theme templates include <em>incomplete or incorrect</em> RDFa or Microdata markup, you should enable both the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> add-on and the <a href="https://wordpress.org/plugins/wpsso-strip-schema-microdata/">WPSSO Strip Schema Microdata</a> add-on (to remove the incomplete or incorrect markup from your templates).
+If your theme templates do not include RDFa or Microdata markup for Google Rich Results, you should enable the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> add-on. And if your theme templates include <em>incomplete or incorrect</em> RDFa or Microdata markup (a common problem), you should enable both the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> add-on and the <a href="https://wordpress.org/plugins/wpsso-strip-schema-microdata/">WPSSO Strip Schema Microdata</a> add-on to remove the incomplete or incorrect markup from your templates.
 </p>
 
 <p>
-<strong>Not sure if your theme templates support Google Rich Results?</strong> Submit an example post / page URL from your site (not the home page) to the <a href="https://search.google.com/structured-data/testing-tool/u/0/">Google Structured Data Testing Tool</a>, and compare the results before / after enabling the WPSSO JSON add-on. Between checks, don't forget to clear the cache of any caching plugin or service you may use, along with clearing the WPSSO cache in the SSO &gt; Tools settings page.
+<strong>Not sure if your theme templates support Google Rich Results?</strong> Submit an example post / page URL from your site (not the home page) to the <a href="https://search.google.com/structured-data/testing-tool/u/0/">Google Structured Data Testing Tool</a>, and compare the results before / after enabling the WPSSO JSON add-on. Between checks, don't forget to clear the cache of any caching plugin or service you may be using, along with clearing the WPSSO cache in the SSO &gt; Tools settings page. ;-)
 </p>
-</dd>
-
-<dt><h3>Interface and General Usage</h3></dt>
-
-<dd>
-<p>On most WordPress admin pages you'll find a <em>Screen Options</em> drop-down tab on the upper right-hand side of the page. You can use these options to include / exclude specific metaboxes and columns from the current page. For example, when viewing the Posts or Pages list you can use the <em>Screen Options</em> drop-down tab to hide / view the "Schema" and "SSO Image" columns. You can also enable / disable these columns globally under the <u>SSO &gt; Advanced &gt; Columns</u> tab.</p>
-
-<p>When editing a Post, Page, category, tag, etc., you'll find a <em>Document SSO (Social and Search Optimization)</em> metabox below the content area where you can edit various social texts and image values. The "Preview" tab shows how this webpage might look like when shared on Facebook, the "Head" tab shows a complete list of meta tags created by WPSSO Core, including additional Schema markup and LD+JSON for Google, and the "Validate" tab allows you to submit the current webpage URL to a number of test and validation tools.</p>
 </dd>
 
 <dt><h3>Social and Search Image Sizes</h3></dt>
@@ -116,6 +108,14 @@ If your theme templates do not include RDFa or Microdata markup for Google Rich 
 <li><a href="https://www.ssllabs.com/ssltest/">SSL Server Test by SSL Labs</a> &mdash; recommended check for any site using https.</li>
 </ul>
 
+</dd>
+
+<dt><h3>Interface and General Usage</h3></dt>
+
+<dd>
+<p>On most WordPress admin pages you'll find a <em>Screen Options</em> drop-down tab on the upper right-hand side of the page. You can use these options to include / exclude specific metaboxes and columns from the current page. For example, when viewing the Posts or Pages list you can use the <em>Screen Options</em> drop-down tab to hide / view the "Schema" and "SSO Image" columns. You can also enable / disable these columns globally under the <u>SSO &gt; Advanced &gt; Columns</u> tab.</p>
+
+<p>When editing a Post, Page, category, tag, etc., you'll find a <em>Document SSO (Social and Search Optimization)</em> metabox below the content area where you can edit various social texts and image values. The "Preview" tab shows how this webpage might look like when shared on Facebook, the "Head" tab shows a complete list of meta tags created by WPSSO Core, including additional Schema markup and LD+JSON for Google, and the "Validate" tab allows you to submit the current webpage URL to a number of test and validation tools.</p>
 </dd>
 
 <dt><h3>Documentation and Resources</h3></dt>

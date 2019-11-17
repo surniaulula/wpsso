@@ -84,9 +84,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 						'pro' => array(
 							'admin' => array(
-								'advanced'  => 'Extend Advanced Settings',
-								'general'   => 'Extend General Settings',
-								'meta-edit' => 'Extend Meta Edit Settings',
+								'advanced'  => 'Extend Advanced',
+								'general'   => 'Extend General',
+								'meta-edit' => 'Extend Meta Edit',
 							),
 							'ecom' => array(
 								'edd'                     => '(plugin) Easy Digital Downloads',
@@ -165,13 +165,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'site-advanced' => 'Advanced',
 							'site-addons'   => 'Complementary Add-ons',
 							'site-licenses' => 'Premium Licenses',
-							'site-setup'    => 'Setup Guide',
 						),
 						'std' => array(
 							'admin' => array(
-								'advanced'  => 'Extend Advanced Settings',
-								'general'   => 'Extend General Settings',
-								'meta-edit' => 'Extend Meta Edit Settings',
+								'advanced'  => 'Extend Advanced',
+								'general'   => 'Extend General',
+								'meta-edit' => 'Extend Meta Edit',
 							),
 							'social' => array(
 								'buddypress' => '(plugin) BuddyPress',
@@ -179,13 +178,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 						'submenu' => array(
 							'essential' => 'Essential',
+							'setup'     => 'Setup Guide',
 							'general'   => 'General',
 							'advanced'  => 'Advanced',
+							'dashboard' => 'Dashboard',
+							'tools'     => 'Tools',
 							'addons'    => 'Complementary Add-ons',
 							'licenses'  => 'Premium Licenses',
-							'dashboard' => 'Dashboard',
-							'setup'     => 'Setup Guide',
-							'tools'     => 'Tools',
 						),
 						'tools' => array(
 							'sso-tools' => 'SSO Tools',
