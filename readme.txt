@@ -440,7 +440,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.12.0-rc.4 (2019/11/16)**
+**Version 6.12.0 (2019/11/17)**
 
 * **New Features**
 	* The Premium features of the following add-ons have been merged into their Standard versions:
@@ -695,11 +695,7 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 
 == Upgrade Notice ==
 
-= 6.12.0-rc.4 =
+= 6.12.0 =
 
-(2019/11/16) The Premium features of three add-ons have been merged into their Standard versions. Fixed an empty value returned by `WpssoPage->get_caption()` when requesting the title.
-
-= 6.11.2 =
-
-(2019/11/10) Added a warning notice for a known WPBakery Visual Composer bug. Moved conflict checks from WpssoAdmin to WpssoConflict in lib/conflict.php.
+(2019/11/17) The Premium features of three add-ons have been merged into their Standard versions. Fixed an empty value returned by `WpssoPage->get_caption()` when requesting the title.
 
