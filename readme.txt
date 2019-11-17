@@ -19,21 +19,21 @@ Makes sure your content looks great on all social and search sites - no matter h
 
 <p style="margin:0;"><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
 
-**WPSSO makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded:**
+**Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded:**
 
-WPSSO Core and its complementary add-ons are FAST and provide comprehensive information about your webpage content to social sites (Facebook, Pinterest, Twitter, LinkedIn, etc.), search engines and crawlers (Google, Bing, etc.), mail and text messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), REST API clients, and oEmbed data for embedded objects / iframes.
+WPSSO Core and its complementary add-ons are provide comprehensive information about your webpage content to social sites (Facebook, Pinterest, Twitter, LinkedIn, etc.), search engines and crawlers (Google, Bing, etc.), mail and text messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), REST API clients, and oEmbed data for embedded objects / iframes &mdash; all from your existing WordPress content and plugin data!
 
-**Uses your existing WordPress content for meta tags and Schema markup:**
+**Uses content and plugin data for meta tags and Schema markup:**
 
-There's no need to manually enter descriptions, titles, product information, select images / videos, etc. &mdash; WPSSO reads your existing post, page, product, media, recipe, event, forum, and SEO content automatically, and offers fine-tuning and customization options for just about anything and everything. ;-)
-
-WPSSO Core is also language / locale aware, which means you can customize your site information, social page URLs and Knowledge Graph for different languages.
+There's no need to manually re-enter descriptions, titles, product information, re-select images / videos, etc. WPSSO reads your existing post, page, product, media, recipe, event, forum, and SEO content automatically &mdash; while also offering fine-tuning and customization options for just about everything. ;-)
 
 **Creates complete and accurate meta tags and Schema markup:**
 
-WPSSO Core and its complementary add-ons offer meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph, Google Rich Results with Structured Data, Mobile Web Browsers, oEmbed data for LinkedIn, Pinterest Rich Pins, Twitter Cards, Weibo and many more &mdash; including complete markup for image SEO, video SEO, extensive e-Commerce product markup (for WooCommerce and others), mobile apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content!
+WPSSO Core and its complementary add-ons create meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph, Google Rich Results with Structured Data, Mobile Web Browsers, oEmbed data for LinkedIn, Pinterest Rich Pins, Twitter Cards, Weibo and many more &mdash; including complete markup for image SEO, video SEO, extensive e-Commerce product markup (for WooCommerce and others), mobile apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content and plugin data!
 
-**Includes advanced quality assurance features and options:**
+WPSSO Core is language / locale aware, which means you can customize your site information, social page URLs and Knowledge Graph information for different languages!
+
+**Includes quality assurance features and options:**
 
 * Checks for minimum / maximum image dimensions and aspect ratios.
 * Shows notices for missing and required images.
@@ -41,6 +41,10 @@ WPSSO Core and its complementary add-ons offer meta tags and Schema markup for F
 * Validates theme header templates for correct HTML markup.
 * Checks and warns of any missing PHP modules.
 * Checks 3rd party plugin settings for possible conflicts.
+
+**Coded for maximum performance:**
+
+WPSSO Core makes full use of all available caching methods &mdash; along with offering advanced caching features like pre-seeding its cache in background. WPSSO Core and its complementary add-ons load only the libraries and classes they need, keeping their code small, fast and light. All code is fully tested and compatible with the latest version of WordPress and PHP v7.x (PHP v5.4 or better required).
 
 <h3>Users Love the WPSSO Core Plugin</h3>
 
@@ -311,14 +315,6 @@ WPSSO Core and its complementary add-ons offer meta tags and Schema markup for F
 		* WordPress Video Shortcode (and Self-Hosted Videos)
 		* Your Own URL Shortener (YOURLS)
 		* YouTube Videos and Playlists
-
-<h3>Coded for Performance</h3>
-
-WPSSO Core makes full use of all available caching methods &mdash; along with offering advanced caching features like pre-seeding the cache in background. WPSSO Core and its complementary add-ons use only the library files and object classes they need, keeping their code small, fast and light. All code is fully tested and compatible with the latest version of WordPress and PHP v7.x (PHP v5.5 or better required).
-
-<h3>Highly Customizable</h3>
-
-WPSSO Core offers hundreds of filter hooks to customize its behavior and output, provides extensive developer documentation with examples, includes dozens of 3rd party integration modules in the Premium plugin, and offers several optional complimentary and Premium add-ons to extend WPSSO Core's functionality.
 
 == Installation ==
 
