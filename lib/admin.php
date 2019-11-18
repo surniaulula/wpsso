@@ -49,6 +49,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$doing_ajax = defined( 'DOING_AJAX' ) && DOING_AJAX ? true : false;
+
 			/**
 			 * The WpssoScript add_iframe_inline_script() method includes jQuery in the thickbox iframe to add the
 			 * iframe_parent arguments when the Install or Update button is clicked.
@@ -72,7 +74,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			add_action( 'after_switch_theme', array( $this, 'check_tmpl_head_attributes' ), 20 );
 			add_action( 'upgrader_process_complete', array( $this, 'check_tmpl_head_attributes' ), 20 );
 
-			if ( ! SucomUtil::get_const( 'DOING_AJAX' ) ) {
+			/**
+			 * Optimize performance and do not load if this is an ajax call (ie. DOING_AJAX is true).
+			 */
+			if ( ! $doing_ajax ) {
 
 				$this->head = new WpssoAdminHead( $plugin );
 
@@ -999,11 +1004,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$action_value = SucomUtil::sanitize_hookname( $action_value );
 			$nonce_value  = SucomUtil::get_request_value( WPSSO_NONCE_NAME ) ;	// POST or GET with sanitize_text_field().
 
+			$_SERVER[ 'REQUEST_URI' ] = remove_query_arg( array( $action_query, WPSSO_NONCE_NAME ) );
+
 			wp_enqueue_script( 'postbox' );
 
 			if ( ! empty( $action_value ) ) {
-
-				$_SERVER[ 'REQUEST_URI' ] = remove_query_arg( array( $action_query, WPSSO_NONCE_NAME ) );
 
 				if ( empty( $nonce_value ) ) {	// WPSSO_NONCE_NAME is an md5() string.
 

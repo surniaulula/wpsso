@@ -1784,7 +1784,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			if ( true === $newtab ) {
 				$on_click = ' onClick="window.open(\'' . SucomUtil::esc_url_encode( $url ) . '\', \'_blank\');"';
 			} else {
-				$on_click = ' onClick="location.href=\'' . SucomUtil::esc_url_encode( $url ) . '\';"';
+				$on_click = ' onClick="window.location.href = \'' . SucomUtil::esc_url_encode( $url ) . '\';"';
 			}
 
 			$data_attr = '';

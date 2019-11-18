@@ -1210,8 +1210,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$have_cleared = true;	// Prevent running a second time (by an external cache, for example).
 
 			/**
-			 * A transient is set and checked to limit the runtime and allow this process
-			 * to be terminated early (by removing the transient object).
+			 * A transient is set and checked to limit the runtime and allow this process to be terminated early (by
+			 * removing the transient object).
 			 */
 			$cache_md5_pre  = $this->p->lca . '_!_';			// Protect transient from being cleared.
 			$cache_exp_secs = HOUR_IN_SECONDS;				// Prevent duplicate runs for max 1 hour.
@@ -2109,14 +2109,15 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 * Deprecated on 2019/03/12.
 		 */
 		public static function save_all_times( $ext, $version ) {
+
 			return self::register_ext_version( $ext, $version );
 		}
 
 		public static function register_ext_version( $ext, $version ) {
 
-			self::register_ext_action( $ext, $version, 'update', $version );	// $protect only if same version.
-			self::register_ext_action( $ext, $version, 'install', true );		// $protect is true.
-			self::register_ext_action( $ext, $version, 'activate' );		// Always update timestamp.
+			self::register_ext_action( $ext, $version, 'update', $version );
+			self::register_ext_action( $ext, $version, 'install', $protect = true );
+			self::register_ext_action( $ext, $version, 'activate' );
 		}
 
 		public static function unregister_ext( $ext ) {
@@ -2164,7 +2165,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/**
 		 * Get the timestamp array and perform a quick sanity check.
 		 */
-		public function get_registered_actions() {
+		public function get_ext_registered_actions() {
 
 			$has_changed     = false;
 			$ext_reg_actions = get_option( WPSSO_TS_NAME, array() );
