@@ -173,7 +173,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 * Read Yoast SEO social meta.
 			 */
 			$table_rows[ 'plugin_wpseo_social_meta' ] = '' .
-			$form->get_th_html( _x( 'Read Yoast SEO Social Meta', 'option label', 'wpsso' ), '', 'plugin_wpseo_social_meta' ) . 
+			$form->get_th_html( _x( 'Import Yoast SEO Social Meta', 'option label', 'wpsso' ), '', 'plugin_wpseo_social_meta' ) . 
 			$form->get_td_no_checkbox( 'plugin_wpseo_social_meta' );
 
 			/**

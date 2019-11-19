@@ -23,7 +23,7 @@ _x( 'recommended', 'option comment', 'wpsso' );
 _x( 'Upscale Media Library Images', 'option label', 'wpsso' );
 _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' );
 _x( 'Add %s Metabox to', 'option label', 'wpsso' );
-_x( 'Read Yoast SEO Social Meta', 'option label', 'wpsso' );
+_x( 'Import Yoast SEO Social Meta', 'option label', 'wpsso' );
 _x( 'Default Currency', 'option label', 'wpsso' );
 __( 'Posts, Pages, Custom Post Types', 'wpsso' );
 __( 'Media Library', 'wpsso' );

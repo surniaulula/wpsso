@@ -147,10 +147,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'buddypress' => '(plugin) BuddyPress',
 							),
 							'util' => array(
-								'custom-fields' => '(feature) Read Custom Field Names',
+								'custom-fields' => '(feature) Import Custom Field Values',
 								'coauthors'     => '(plugin) Co-Authors Plus',
 								'shorten'       => '(api) URL Shortening APIs',
-								'wpseo-meta'    => '(feature) Yoast SEO Social Meta',
+								'wpseo-meta'    => '(feature) Import Yoast SEO Social Meta',
 							),
 						),
 						'profile' => array(
@@ -1457,7 +1457,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_add_to_term'              => 1,
 					'plugin_add_to_topic'             => 0,				// Bbpress
 					'plugin_add_to_user'              => 1,
-					'plugin_wpseo_social_meta'        => 0,				// Read Yoast SEO Social Meta.
+					'plugin_wpseo_social_meta'        => 0,				// Import Yoast SEO Social Meta.
 					'plugin_def_currency'             => 'USD',			// Default Currency.
 					'plugin_cf_img_url'               => '_format_image_url',	// Image URL Custom Field.
 					'plugin_cf_addl_type_urls'        => '',			// Microdata Type URLs Custom Field.
