@@ -58,13 +58,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 				array( $this, 'show_metabox_publishers' ), $metabox_screen,
 					$metabox_context, $metabox_prio, $callback_args );
 
-			/**
-			 * Issues a warning notice if the default image size is too small unless the WPSSO_CHECK_DEFAULT_IMAGE
-			 * constant has been defined as false.
-			 */
-			if ( false !== SucomUtil::get_const( 'WPSSO_CHECK_DEFAULT_IMAGE' ) ) {
-				$this->p->media->get_default_images( 1, $this->p->lca . '-opengraph', false );
-			}
+			$this->p->media->get_default_images( 1, $this->p->lca . '-opengraph', $check_dupes = false );
 		}
 
 		public function show_metabox_opengraph() {

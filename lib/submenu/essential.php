@@ -46,25 +46,7 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 				array( $this, 'show_metabox_general' ), $metabox_screen,
 					$metabox_context, $metabox_prio, $callback_args );
 
-			$metabox_id      = 'advanced';
-			$metabox_title   = _x( 'Optional Advanced Settings', 'metabox title', 'wpsso' );
-			$metabox_screen  = $this->pagehook;
-			$metabox_context = 'normal';
-			$metabox_prio    = 'default';
-			$callback_args   = array(	// Second argument passed to the callback function / method.
-			);
-
-			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
-				array( $this, 'show_metabox_advanced' ), $metabox_screen,
-					$metabox_context, $metabox_prio, $callback_args );
-
-			/**
-			 * Issues a warning notice if the default image size is too small unless the WPSSO_CHECK_DEFAULT_IMAGE
-			 * constant has been defined as false.
-			 */
-			if ( false !== SucomUtil::get_const( 'WPSSO_CHECK_DEFAULT_IMAGE' ) ) {
-				$this->p->media->get_default_images( 1, $this->p->lca . '-opengraph', false );
-			}
+			$this->p->media->get_default_images( 1, $this->p->lca . '-opengraph', $check_dupes = false );
 		}
 
 		public function show_metabox_general() {
@@ -89,16 +71,6 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 			}
 
 			$this->p->util->do_metabox_tabbed( $metabox_id, $tabs, $table_rows );
-		}
-
-		public function show_metabox_advanced() {
-
-			$metabox_id  = 'optional';
-			$tab_key     = 'advanced';
-			$filter_name = $this->p->lca . '_' . $metabox_id . '_' . $tab_key . '_rows';
-
-			$this->p->util->do_metabox_table( apply_filters( $filter_name, $this->get_table_rows( $metabox_id, $tab_key ), $this->form, false ),
-				'metabox-' . $metabox_id . '-' . $tab_key );
 		}
 
 		protected function get_table_rows( $metabox_id, $tab_key ) {
@@ -180,15 +152,6 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 					$this->form->get_th_html( _x( 'Twitter Business @username', 'option label', 'wpsso' ), '', 'tc_site',
 						array( 'is_locale' => true ) ) . 
 					'<td>' . $this->form->get_input( SucomUtil::get_key_locale( 'tc_site', $this->p->options ) ) . '</td>';
-
-					break;
-
-				case 'optional-advanced':
-
-					$table_rows[ 'plugin_clean_on_uninstall' ] = '' .
-					$this->form->get_th_html( _x( 'Remove Settings on Uninstall', 'option label', 'wpsso' ), '', 'plugin_clean_on_uninstall' ) . 
-					'<td>' . $this->form->get_checkbox( 'plugin_clean_on_uninstall' ) . ' ' .
-					_x( 'including custom meta for posts, terms, and users', 'option comment', 'wpsso' ) . '</td>';
 
 					break;
 			}
