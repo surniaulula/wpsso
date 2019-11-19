@@ -669,7 +669,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 						$wpssoum =& WpssoUm::get_instance();
 
-						if ( method_exists( 'SucomUpdate', 'quiet_update_check' ) ) {		// Since WPSSO UM v2.15.0.
+						if ( method_exists( 'SucomUpdate', 'quiet_update_check' ) ) {		// Since WPSSO UM v2.5.0.
 							$wpssoum->update->quiet_update_check();
 						} elseif ( method_exists( 'SucomUpdate', 'check_all_for_updates' ) ) {	// Since WPSSO UM v1.7.0.
 							$wpssoum->update->check_all_for_updates( $quiet = true, $read_cache = false );

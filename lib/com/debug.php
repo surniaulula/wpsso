@@ -98,9 +98,11 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			}
 
 			if ( is_int( $class_seq ) ) {
+
 				if ( false === $func_seq ) {
 					$func_seq = $class_seq;
 				}
+
 				$class_seq++;
 			}
 
@@ -120,9 +122,11 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			}
 
 			if ( is_int( $class_seq ) ) {
+
 				if ( false === $func_seq ) {
 					$func_seq = $class_seq;
 				}
+
 				$class_seq++;
 			}
 
@@ -156,14 +160,19 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			$log_msg    = '';
 
 			if ( is_int( $class_seq ) ) {
+
 				if ( false === $func_seq ) {
 					$func_seq = $class_seq;
 				}
+
 				$log_msg .= sprintf( $first_col, ( empty( $stack[ $class_seq ][ 'class' ] ) ? '' : $stack[ $class_seq ][ 'class' ] ) );
+
 			} else {
+
 				if ( false === $func_seq ) {
 					$func_seq = 1;
 				}
+
 				$log_msg .= sprintf( $first_col, $class_seq );
 			}
 
@@ -174,7 +183,9 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			}
 
 			if ( is_multisite() ) {
+
 				global $blog_id;
+
 				$log_msg .= '[blog ' . $blog_id . '] ';
 			}
 
