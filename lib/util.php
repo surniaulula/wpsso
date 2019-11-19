@@ -3749,7 +3749,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					if ( is_numeric( $max_version ) && is_array( $keys ) && $opts[ 'plugin_' . $ext . '_opt_version' ] <= $max_version ) {
 
-						self::rename_keys( $opts, $keys, true );	// Rename $modifiers = true.
+						self::rename_keys( $opts, $keys, $modifiers = true );
 
 						$opts[ 'plugin_' . $ext . '_opt_version' ] = $info[ 'opt_version' ];	// Mark as current.
 					}
