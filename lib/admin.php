@@ -1685,14 +1685,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( $ext === $this->p->lca ) {	// Features for WPSSO Core plugin.
 
 					$features = array(
-						'(feature) Debug Logging Enabled' => array(
-							'classname' => 'SucomDebug',
-							'link'      => $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_settings' ),
-						),
-						'(feature) Remove Settings on Uninstall' => array(
-							'status' => $this->p->options[ 'plugin_clean_on_uninstall' ] ? 'on' : 'off',
-							'link'   => $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_settings' ),
-						),
 						'(code) Facebook / Open Graph Meta Tags' => array(
 							'status' => class_exists( $this->p->lca . 'opengraph' ) ? 'on' : 'rec',
 						),
