@@ -642,7 +642,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			if ( false === $mod ) {
 
-				$check_required = false;
+				$have_auth_changes = false;
 
 				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
@@ -658,18 +658,22 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 							$this->p->options[ $opt_name ] = $opts[ $opt_name ];
 
-							$check_required = true;
+							$have_auth_changes = true;
 						}
 					}
 				}
 
-				if ( $check_required ) {
+				if ( $have_auth_changes ) {
 
-					if ( method_exists( 'SucomUpdate', 'check_all_for_updates' ) ) {
+					if ( class_exists( 'WpssoUm' ) ) {
 
 						$wpssoum =& WpssoUm::get_instance();
 
-						$wpssoum->update->check_all_for_updates( $quiet = true, $read_cache = false );
+						if ( method_exists( 'SucomUpdate', 'quiet_update_check' ) ) {		// Since WPSSO UM v2.15.0.
+							$wpssoum->update->quiet_update_check();
+						} elseif ( method_exists( 'SucomUpdate', 'check_all_for_updates' ) ) {	// Since WPSSO UM v1.7.0.
+							$wpssoum->update->check_all_for_updates( $quiet = true, $read_cache = false );
+						}
 					}
 				}
 

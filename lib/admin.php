@@ -754,28 +754,32 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		/**
 		 * Provide plugin data / information from the readme.txt for additional add-ons.
 		 */
-		public function external_plugin_data( $res, $action = null, $args = null ) {
+		public function external_plugin_data( $result, $action = null, $args = null ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
 
 			if ( $action !== 'plugin_information' ) {				// This filter only provides plugin data.
-				return $res;
+				return $result;
 			} elseif ( empty( $args->slug ) ) {					// Make sure we have a slug in the request.
-				return $res;
+				return $result;
 			} elseif ( empty( $this->p->cf[ '*' ][ 'slug' ][ $args->slug ] ) ) {	// Make sure the plugin slug is one of ours.
-				return $res;
-			} elseif ( isset( $res->slug ) && $res->slug === $args->slug ) {	// If the object from WordPress looks complete, return it as-is.
-				return $res;
+				return $result;
+			} elseif ( isset( $result->slug ) && $result->slug === $args->slug ) {	// If the object from WordPress looks complete, return it as-is.
+				return $result;
 			}
 
 			$ext = $this->p->cf[ '*' ][ 'slug' ][ $args->slug ];			// Get the add-on acronym to read its config.
 
 			if ( empty( $this->p->cf[ 'plugin' ][ $ext ] ) ) {			// Make sure we have a config for that acronym.
-				return $res;
+				return $result;
 			}
 
 			$plugin_data = $this->get_plugin_data( $ext, $read_cache = true );	// Get plugin data from the plugin readme.
 
 			if ( empty( $plugin_data ) ) {						// Make sure we have some data to return.
-				return $res;
+				return $result;
 			}
 
 			$plugin_data->external = true;						// Let WordPress known that this is not a wordpress.org plugin.

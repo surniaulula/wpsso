@@ -630,6 +630,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$this->has_shown = true;
 
 			$this->maybe_set_notice_cache( $user_id );
+
 			$this->maybe_add_update_errors( $user_id );
 
 			/**
@@ -823,6 +824,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$this->has_shown = true;
 
 			$this->maybe_set_notice_cache( $user_id );
+
 			$this->maybe_add_update_errors( $user_id );
 
 			/**
@@ -1041,30 +1043,35 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		private function maybe_add_update_errors( $user_id ) {
 
-			if ( isset( $this->p->cf[ 'plugin' ] ) && class_exists( 'SucomUpdate' ) ) {
+			if ( ! class_exists( 'SucomUpdate' ) ) {
+				return;
+			}
 
-				foreach ( array_keys( $this->p->cf[ 'plugin' ] ) as $ext ) {
+			if ( empty( $this->p->cf[ 'plugin' ] ) ) {
+				return;
+			}
 
-					if ( ! empty( $this->p->options[ 'plugin_' . $ext . '_tid' ] ) ) {
+			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-						$uerr = SucomUpdate::get_umsg( $ext );
+				if ( ! empty( $this->p->options[ 'plugin_' . $ext . '_tid' ] ) ) {
 
-						if ( ! empty( $uerr ) ) {
+					$uerr = SucomUpdate::get_umsg( $ext );
 
-							$msg_text   = preg_replace( '/<!--spoken-->(.*?)<!--\/spoken-->/Us', ' ', $uerr );
-							$msg_spoken = preg_replace( '/<!--not-spoken-->(.*?)<!--\/not-spoken-->/Us', ' ', $uerr );
-							$msg_spoken = SucomUtil::decode_html( SucomUtil::strip_html( $msg_spoken ) );
-							$msg_key    = sanitize_key( $msg_spoken );
+					if ( ! empty( $uerr ) ) {
 
-							if ( ! isset( $this->notice_cache[ $user_id ][ 'err' ] ) ) {	// Just in case.
-								$this->maybe_set_notice_cache( $user_id );
-							}
+						$msg_text   = preg_replace( '/<!--spoken-->(.*?)<!--\/spoken-->/Us', ' ', $uerr );
+						$msg_spoken = preg_replace( '/<!--not-spoken-->(.*?)<!--\/not-spoken-->/Us', ' ', $uerr );
+						$msg_spoken = SucomUtil::decode_html( SucomUtil::strip_html( $msg_spoken ) );
+						$msg_key    = sanitize_key( $msg_spoken );
 
-							$this->notice_cache[ $user_id ][ 'err' ][ $msg_key ] = array(
-								'msg_text'   => $msg_text,
-								'msg_spoken' => $msg_spoken,
-							);
+						if ( ! isset( $this->notice_cache[ $user_id ][ 'err' ] ) ) {	// Just in case.
+							$this->maybe_set_notice_cache( $user_id );
 						}
+
+						$this->notice_cache[ $user_id ][ 'err' ][ $msg_key ] = array(
+							'msg_text'   => $msg_text,
+							'msg_spoken' => $msg_spoken,
+						);
 					}
 				}
 			}
