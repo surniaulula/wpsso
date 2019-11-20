@@ -311,7 +311,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					$this->debug->log( 'debug enabled on ' . date( 'c' ) );
 					$this->debug->log( 'PHP version ' . phpversion() );
 					$this->debug->log( 'WP version ' . $wp_version );
-					$this->debug->log( $this->check->get_ext_list() );
+					$this->debug->log( $this->check->get_ext_gen_list() );
 				}
 
 			} else {

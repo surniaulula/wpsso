@@ -477,7 +477,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							false : $pdir ) ) ? $ue : false ) : $pdir;
 		}
 
-		public function get_ext_list() {
+		public function get_ext_gen_list() {
 
 			static $ext_list = null;
 		

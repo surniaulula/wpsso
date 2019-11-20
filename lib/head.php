@@ -592,7 +592,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/**
 			 * Generator meta tags.
 			 */
-			$mt_gen = array( 'generator' => $this->p->check->get_ext_list() );
+			$mt_gen = array( 'generator' => $this->p->check->get_ext_gen_list() );
 
 			/**
 			 * Combine and return all meta tags.
