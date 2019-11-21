@@ -436,7 +436,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.12.1-dev.2 (TBD)**
+**Version 6.13.0-dev.2 (TBD)**
 
 * **New Features**
 	* None.
