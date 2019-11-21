@@ -439,18 +439,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 6.13.0-dev.2 (TBD)**
 
 * **New Features**
-	* None.
+	* The Premium features of the following add-on(s) have been merged into their Standard version:
+		* [WPSSO Tune WP Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors) for better looking WordPress thumbnails.
 * **Improvements**
-	* Removed the 'Optional Advanced Settings' metabox from the Essential settings page.
+	* Removed the "Optional Advanced Settings" metabox from the Essential settings page.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Moved detection of Authentication ID changes (and subsequent update check) to the WPSSO UM add-on.
+	* Moved the detection of Authentication ID changes (and subsequent update check) to the WPSSO UM add-on.
+	* Added a new WpssoUtilReg class in lib/util-reg.php.
 
 **Version 6.12.0 (2019/11/17)**
 
 * **New Features**
-	* The Premium features of the following add-ons have been merged into their Standard versions:
+	* The Premium features of the following add-on(s) have been merged into their Standard version:
 		* [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
 		* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) to add responsive share buttons.
 		* [WPSSO Social Sharing Buttons](https://wordpress.org/plugins/wpsso-ssb/) to add traditional share buttons.
