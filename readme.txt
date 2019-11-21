@@ -436,6 +436,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 6.12.1-dev.2 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Removed the 'Optional Advanced Settings' metabox from the Essential settings page.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Moved detection of Authentication ID changes (and subsequent update check) to the WPSSO UM add-on.
+
 **Version 6.12.0 (2019/11/17)**
 
 * **New Features**
