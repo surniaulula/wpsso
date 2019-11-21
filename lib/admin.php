@@ -2094,7 +2094,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			foreach ( $ext_sorted as $ext => $info ) {
 
 				$ext_num++;
-				$ext_links  = $this->get_ext_action_links( $ext, $info, $tabindex );
+
+				$ext_links = $this->get_ext_action_links( $ext, $info, $tabindex );
+
 				$table_rows = array();
 
 				/**
@@ -2165,7 +2167,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			foreach ( $ext_sorted as $ext => $info ) {
 
 				$ext_num++;
+
 				$ext_links = $this->get_ext_action_links( $ext, $info, $tabindex );
+
 				$table_rows = array();
 
 				/**

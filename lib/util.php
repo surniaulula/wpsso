@@ -531,17 +531,17 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Can be called directly and from the "wp", "rest_api_init", and "current_screen" actions.
-		 * The $wp_obj variable can be false or a WP object (WP_Post, WP_Term, WP_User, WP_REST_Server, etc.).
-		 * The $mod variable can be false, and if so, it will be set using get_page_mod().
-		 * This method does not return a value, so do not use as a filter. ;-)
+		 * Can be called directly and from the "wp", "rest_api_init", and "current_screen" actions. The $wp_obj variable
+		 * can be false or a WP object (WP_Post, WP_Term, WP_User, WP_REST_Server, etc.). The $mod variable can be false,
+		 * and if so, it will be set using get_page_mod(). This method does not return a value, so do not use as a filter.
+		 * ;-)
 		 */
 		public function add_plugin_image_sizes( $wp_obj = false, $image_sizes = array(), $filter_sizes = true ) {
 
 			/**
-			 * Allow various plugin add-ons to provide their image names, labels, etc.
-			 * The first dimension array key is the option name prefix by default.
-			 * You can also include the width, height, crop, crop_x, and crop_y values.
+			 * Allow various plugin add-ons to provide their image names, labels, etc. The first dimension array key is
+			 * the option name prefix by default. You can also include the width, height, crop, crop_x, and crop_y
+			 * values.
 			 *
 			 *	Array (
 			 *		[og_img] => Array (
@@ -2115,48 +2115,20 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		public static function register_ext_version( $ext, $version ) {
 
-			self::register_ext_action( $ext, $version, 'update', $version );
-			self::register_ext_action( $ext, $version, 'install', $protect = true );
-			self::register_ext_action( $ext, $version, 'activate' );
+			self::save_ext_event_time( $ext, $version, 'update', $version );
+			self::save_ext_event_time( $ext, $version, 'install', $protect = true );
+			self::save_ext_event_time( $ext, $version, 'activate' );
 		}
 
 		public static function unregister_ext( $ext ) {
 		}
 
-		/**
-		 * $protect = true | false | version
-		 */
-		public static function register_ext_action( $ext, $version, $action, $protect = false ) {
+		public static function get_ext_event_time( $ext, $event ) {
 
-			if ( ! is_bool( $protect ) ) {
+			$ext_reg = get_option( WPSSO_TS_NAME, array() );
 
-				if ( ! empty( $protect ) ) {
-
-					$ts_version = self::get_option_key( WPSSO_TS_NAME, $ext . '_' . $action . '_version' );
-
-					if ( $ts_version !== null && version_compare( $ts_version, $protect, '==' ) ) {
-						$protect = true;
-					} else {
-						$protect = false;
-					}
-				} else {
-					$protect = true;	// Just in case.
-				}
-			}
-
-			if ( ! empty( $version ) ) {
-				self::update_option_key( WPSSO_TS_NAME, $ext . '_' . $action . '_version', $version, $protect );
-			}
-
-			self::update_option_key( WPSSO_TS_NAME, $ext . '_' . $action . '_time', time(), $protect );
-		}
-
-		public function get_ext_action_time( $ext, $action ) {
-
-			$ext_reg_actions = get_option( WPSSO_TS_NAME, array() );
-
-			if ( ! empty( $ext_reg_actions[ $ext . '_' . $action . '_time' ] ) ) {
-				return $ext_reg_actions[ $ext . '_' . $action . '_time' ];
+			if ( ! empty( $ext_reg[ $ext . '_' . $event . '_time' ] ) ) {
+				return $ext_reg[ $ext . '_' . $event . '_time' ];
 			}
 
 			return false;
@@ -2165,10 +2137,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/**
 		 * Get the timestamp array and perform a quick sanity check.
 		 */
-		public function get_ext_registered_actions() {
+		public function get_ext_registered_list() {
 
-			$has_changed     = false;
-			$ext_reg_actions = get_option( WPSSO_TS_NAME, array() );
+			$has_changed = false;
+			$ext_reg     = get_option( WPSSO_TS_NAME, array() );
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
@@ -2176,18 +2148,56 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					continue;
 				}
 
-				foreach ( array( 'update', 'install', 'activate' ) as $action ) {
+				foreach ( array( 'update', 'install', 'activate' ) as $event ) {
 
-					if ( empty( $ext_reg_actions[ $ext . '_' . $action . '_time' ] ) ||
-						( $action === 'update' && ( empty( $ext_reg_actions[ $ext . '_' . $action . '_version' ] ) ||
-							version_compare( $ext_reg_actions[ $ext . '_' . $action . '_version' ], $info[ 'version' ], '!=' ) ) ) ) {
+					if ( empty( $ext_reg[ $ext . '_' . $event . '_time' ] ) ||
+						( $event === 'update' && ( empty( $ext_reg[ $ext . '_' . $event . '_version' ] ) ||
+							version_compare( $ext_reg[ $ext . '_' . $event . '_version' ], $info[ 'version' ], '!=' ) ) ) ) {
 
-						$has_changed = self::register_ext_action( $ext, $info[ 'version' ], $action );
+						$has_changed = self::save_ext_event_time( $ext, $info[ 'version' ], $event );
 					}
 				}
 			}
 
-			return false === $has_changed ? $ext_reg_actions : get_option( WPSSO_TS_NAME, array() );
+			if ( $has_changed ) {
+				$ext_reg = get_option( WPSSO_TS_NAME, array() );
+			}
+
+			return $ext_reg;
+		}
+
+		/**
+		 * $protect = true | false | version
+		 */
+		private static function save_ext_event_time( $ext, $version, $event, $protect = false ) {
+
+			$upd_version = false;
+			$upd_time    = false;
+
+			if ( ! is_bool( $protect ) ) {
+
+				if ( ! empty( $protect ) ) {
+
+					$ts_version = self::get_option_key( WPSSO_TS_NAME, $ext . '_' . $event . '_version' );
+
+					if ( $ts_version !== null && version_compare( $ts_version, $protect, '==' ) ) {
+						$protect = true;
+					} else {
+						$protect = false;
+					}
+
+				} else {
+					$protect = true;	// Just in case.
+				}
+			}
+
+			if ( ! empty( $version ) ) {
+				$upd_version = self::update_option_key( WPSSO_TS_NAME, $ext . '_' . $event . '_version', $version, $protect );
+			}
+
+			$upd_time = self::update_option_key( WPSSO_TS_NAME, $ext . '_' . $event . '_time', time(), $protect );
+
+			return $upd_version || $upd_time ? true : false;
 		}
 
 		/**
@@ -2236,6 +2246,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		public function get_inline_vars() {
+
 			return array(
 				'%%request_url%%',
 				'%%sharing_url%%',
@@ -2250,6 +2261,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			/**
 			 * The $mod array argument is preferred but not required.
+			 *
 			 * $mod = true | false | post_id | $mod array
 			 */
 			if ( ! is_array( $mod ) ) {
@@ -3257,14 +3269,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			/**
-			 * Hooked by some modules, like bbPress and social sharing buttons,
-			 * to perform actions before/after filtering the content.
+			 * Hooked by some modules, like bbPress and social sharing buttons, to perform actions before/after
+			 * filtering the content.
 			 */
 			do_action( $this->p->lca . '_pre_apply_filters_text', $filter_name );
 
 			/**
-			 * Load the Block Filter Output (BFO) filters to block and show an error
-			 * for incorrectly coded filters.
+			 * Load the Block Filter Output (BFO) filters to block and show an error for incorrectly coded filters.
 			 */
 			if ( $hook_bfo ) {
 
@@ -3312,9 +3323,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			setup_postdata( $post );
 
 			/**
-			 * Prevent recursive loops and signal to other methods that the content filter is being
-			 * applied to create a description text - this avoids the addition of unnecessary HTML
-			 * which will be removed anyway (social sharing buttons, for example).
+			 * Prevent recursive loops and signal to other methods that the content filter is being applied to create a
+			 * description text - this avoids the addition of unnecessary HTML which will be removed anyway (social
+			 * sharing buttons, for example).
 			 */
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'setting global ' . $this->p->lca . '_doing_filter_' . $filter_name );
@@ -3435,8 +3446,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			/**
-			 * Hooked by some modules, like bbPress and social sharing buttons,
-			 * to perform actions before/after filtering the content.
+			 * Hooked by some modules, like bbPress and social sharing buttons, to perform actions before/after
+			 * filtering the content.
 			 */
 			do_action( $this->p->lca . '_after_apply_filters_text', $filter_name );
 

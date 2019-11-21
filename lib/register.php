@@ -116,7 +116,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			$this->p->set_options( $activate = true ); // Read / create options and site_options.
 			$this->p->set_objects( $activate = true ); // Load all the class objects.
 
-			$new_install = false === $this->p->util->get_ext_action_time( 'wpsso', 'install' ) ? true : false;
+			$new_install = false === WpssoUtil::get_ext_event_time( 'wpsso', 'install' ) ? true : false;
 
 			/**
 			 * Add the "person" role for all WpssoUser::get_public_ids(). 

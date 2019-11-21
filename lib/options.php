@@ -608,9 +608,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			/**
-			 * If there's no image ID, then reset the image ID library prefix to its default value.
-			 * If an image ID is used, then remove the image url (only one option can be defined).
-			 * Use isset() to check for array keys since this method is also called to sanitize meta options.
+			 * If there's no image ID, then reset the image ID library prefix to its default value. If an image ID is
+			 * used, then remove the image url (only one option can be defined). Use isset() to check for array keys
+			 * since this method is also called to sanitize meta options.
 			 */
 			foreach ( array( 'og_def' ) as $opt_pre ) {
 
@@ -642,41 +642,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			if ( false === $mod ) {
 
-				$have_auth_changes = false;
-
-				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
-
-					if ( empty( $info[ 'update_auth' ] ) ) {
-						continue;
-					}
-
-					$opt_name = 'plugin_' . $ext . '_' . $info[ 'update_auth' ];
-
-					if ( isset( $opts[ $opt_name ] ) ) {
-						
-						if ( ! isset( $this->p->options[ $opt_name ] ) || $opts[ $opt_name ] !== $this->p->options[ $opt_name ] ) {
-
-							$this->p->options[ $opt_name ] = $opts[ $opt_name ];
-
-							$have_auth_changes = true;
-						}
-					}
-				}
-
-				if ( $have_auth_changes ) {
-
-					if ( class_exists( 'WpssoUm' ) ) {
-
-						$wpssoum =& WpssoUm::get_instance();
-
-						if ( method_exists( 'SucomUpdate', 'quiet_update_check' ) ) {		// Since WPSSO UM v2.5.0.
-							$wpssoum->update->quiet_update_check();
-						} elseif ( method_exists( 'SucomUpdate', 'check_all_for_updates' ) ) {	// Since WPSSO UM v1.7.0.
-							$wpssoum->update->check_all_for_updates( $quiet = true, $read_cache = false );
-						}
-					}
-				}
-
+				/**
+				 * Check the Facebook App ID value.
+				 */
 				if ( ! empty( $opts[ 'fb_app_id' ] ) && ( ! is_numeric( $opts[ 'fb_app_id' ] ) || strlen( $opts[ 'fb_app_id' ] ) > 32 ) ) {
 
 					$this->p->notice->err( sprintf( __( 'The Facebook App ID must be numeric and 32 characters or less in length &mdash; the value of "%s" is not valid.', 'wpsso' ), $opts[ 'fb_app_id' ] ) );
@@ -746,13 +714,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( $network ) {
 
 				if ( $saved = update_site_option( $options_name, $opts ) ) {	// Auto-creates options with autoload no.
-					$this->p->site_options = $opts;
+					$this->p->site_options = $opts;				// Update the current plugin options array.
 				}
 
 			} else {
 
 				if ( $saved = update_option( $options_name, $opts ) ) {		// Auto-creates options with autoload yes.
-					$this->p->options = $opts;
+					$this->p->options = $opts;				// Update the current plugin options array.
 				}
 			}
 
@@ -765,6 +733,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 
 					if ( is_admin() ) {
+
 						$this->p->notice->inf( '<strong>' . __( 'Plugin settings have been upgraded and saved.', 'wpsso' ) . '</strong> ' .
 							__( 'A background task will begin shortly to clear all caches.', 'wpsso' ) );
 
@@ -780,11 +749,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'wordpress failed to save the ' . $options_name . ' settings' );
 				}
-
-				return false;
 			}
 
-			return true;
+			return $saved;
 		}
 
 		/**

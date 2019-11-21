@@ -308,10 +308,10 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 		 */
 		private function single_notice_review() {
 
-			$form              = $this->p->admin->get_form_object( $this->p->lca );
-			$user_id           = get_current_user_id();
-			$ext_reg_actions   = $this->p->util->get_ext_registered_actions();
-			$one_week_ago_secs = time() - ( 1 * WEEK_IN_SECONDS );
+			$form          = $this->p->admin->get_form_object( $this->p->lca );
+			$user_id       = get_current_user_id();
+			$ext_reg       = $this->p->util->get_ext_registered_list();
+			$week_ago_secs = time() - ( 1 * WEEK_IN_SECONDS );
 
 			/**
 			 * Use the transient cache to show only one notice per day.
@@ -358,11 +358,11 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				/**
 				 * Make sure we have an activation time.
 				 */
-				} elseif ( empty( $ext_reg_actions[ $ext . '_activate_time' ] ) ) {
+				} elseif ( empty( $ext_reg[ $ext . '_activate_time' ] ) ) {
 
 					continue;	// Get the next plugin.
 
-				} elseif ( $ext_reg_actions[ $ext . '_activate_time' ] > $one_week_ago_secs ) {	// Activated less than a week ago.
+				} elseif ( $ext_reg[ $ext . '_activate_time' ] > $week_ago_secs ) {	// Activated less than a week ago.
 
 					continue;	// Get the next plugin.
 
@@ -453,16 +453,17 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 			$ext = $this->p->lca;
 
-			if ( WpssoAdmin::$pkg[ $ext ][ 'pp' ] ) {
+			if ( WpssoAdmin::$pkg[ $ext ][ 'pdir' ] ) {
+
 				return 0;
 			}
 
-			$ext_reg_actions       = $this->p->util->get_ext_registered_actions();
-			$three_months_ago_secs = time() - ( 3 * MONTH_IN_SECONDS );
-			$three_months_transl   = __( 'three months', 'wpsso' );
+			$ext_reg         = $this->p->util->get_ext_registered_list();
+			$months_ago_secs = time() - ( 3 * MONTH_IN_SECONDS );
+			$months_transl   = __( 'three months', 'wpsso' );
 
-			if ( empty( $ext_reg_actions[ $ext . '_install_time' ] ) ||
-				$ext_reg_actions[ $ext . '_install_time' ] > $three_months_ago_secs ) {
+			if ( empty( $ext_reg[ $ext . '_install_time' ] ) ||
+				$ext_reg[ $ext . '_install_time' ] > $months_ago_secs ) {
 
 				return 0;
 			}
@@ -519,11 +520,11 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			$notice_msg .= '<b>' . __( 'Fantastic!', 'wpsso' ) . '</b> ';
 
 			$notice_msg .= sprintf( __( 'You\'ve been using the %1$s plugin for more than %2$s now, which is awesome!', 'wpsso' ),
-				$info[ 'short' ], $three_months_transl ) . ' ';
+				$info[ 'short' ], $months_transl ) . ' ';
 
 			$notice_msg .= '</p><p>';
 
-			$notice_msg .= sprintf( __( 'We\'ve put a lot of effort into making %1$s and its add-ons the best possible &mdash; I hope you\'ve enjoyed all the new features, improvements and updates over the past %2$s.', 'wpsso' ), $info[ 'short' ], $three_months_transl ) . ' :-)';
+			$notice_msg .= sprintf( __( 'We\'ve put a lot of effort into making %1$s and its add-ons the best possible &mdash; I hope you\'ve enjoyed all the new features, improvements and updates over the past %2$s.', 'wpsso' ), $info[ 'short' ], $months_transl ) . ' :-)';
 
 			$notice_msg .= '</p><p>';
 
