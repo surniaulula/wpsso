@@ -445,20 +445,20 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$0.3f secs', 'wpsso' ), $mtime_max );
 
 				// translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a recommended max
-				$error_msg = sprintf( __( 'Slow query detected - WordPress get_posts() took %1$0.3f secs to get the children of post ID %2$d (%3$s).',
+				$notice_msg = sprintf( __( 'Slow query detected - WordPress get_posts() took %1$0.3f secs to get the children of post ID %2$d (%3$s).',
 					'wpsso' ), $mtime_total, $mod[ 'id' ], $rec_max_msg );
 
 				/**
 				 * Show an admin warning notice, if notices not already shown.
 				 */
 				if ( $this->p->notice->is_admin_pre_notices() ) {
-					$this->p->notice->warn( $error_msg );
+					$this->p->notice->warn( $notice_msg );
 				}
 
 				// translators: %s is the short plugin name
-				$error_pre = sprintf( __( '%s warning:', 'wpsso' ), $info[ 'short' ] );
+				$notice_pre = sprintf( __( '%s warning:', 'wpsso' ), $info[ 'short' ] );
 
-				SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
+				SucomUtil::safe_error_log( $notice_pre . ' ' . $notice_msg );
 			}
 
 			if ( $this->p->debug->enabled ) {
@@ -716,10 +716,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 									$this->p->debug->log( 'og:' . $mt_suffix . ' meta tag is value empty and required' );
 								}
 
+								$notice_msg = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
 								$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-og-' . $mt_suffix;
-								$error_msg  = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
 
-								$this->p->notice->err( $error_msg, null, $notice_key );
+								$this->p->notice->err( $notice_msg, null, $notice_key );
 							}
 						}
 
@@ -922,6 +922,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 
 				if ( $is_admin ) {
+
 					$this->p->notice->err(
 						sprintf( __( 'The webpage HTML retrieved from %1$s is %2$s bytes.', 'wpsso' ),
 							'<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>', $html_size ) . ' ' . 
@@ -950,6 +951,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 
 				if ( $is_admin && $url_mtime > $warning_time ) {
+
 					$this->p->notice->warn(
 						sprintf( __( 'Retrieving the webpage HTML for %1$s took %2$s seconds.', 'wpsso' ),
 							'<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>', $url_mtime ) . ' ' . 
@@ -1062,14 +1064,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( $is_admin ) {
 
-						$notice_key   = 'application-ld-json-script-not-found';
-						$dismiss_time = true;	// Can be dismissed permanently.
+						$json_addon_link = $this->p->util->get_admin_url( 'addons#wpssojson', $this->p->cf[ 'plugin' ][ 'wpssojson' ][ 'name' ] );
 	
 						$notice_msg = sprintf( __( 'The webpage at %1$s does not include any Schema JSON-LD script(s).', 'wpsso' ), '<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>' ) . ' ';
 						
 						$notice_msg .= __( 'Complete and accurate Schema JSON-LD markup is highly recommended for better ranking and click-through rates in search results.', 'wpsso' ) . ' ';
 						
 						$notice_msg .= sprintf( __( 'Consider activating the %1$s add-on to include Schema JSON-LD markup for Google Rich Results / Rich Snippets.', 'wpsso' ), $json_addon_link );
+
+						$notice_key   = 'application-ld-json-script-not-found';
+						$dismiss_time = true;	// Can be dismissed permanently.
 
 						$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time );
 					}
@@ -1257,10 +1261,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( empty( WpssoWpMeta::$head_info[ 'og:' . $mt_suffix ] ) ) {
 
+						$notice_msg = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
 						$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-og-' . $mt_suffix;
-						$error_msg  = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
 
-						$this->p->notice->err( $error_msg, null, $notice_key );
+						$this->p->notice->err( $notice_msg, null, $notice_key );
 					}
 				}
 

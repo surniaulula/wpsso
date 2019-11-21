@@ -3391,7 +3391,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		 */
 		public static function get_config( $cf_key = false, $apply_filters = false, $read_cache = true ) {
 
-			if ( ! $read_cache || ! isset( self::$cf[ 'config_filtered' ] ) || true !== self::$cf[ 'config_filtered' ] ) {
+			if ( ! $read_cache || empty( self::$cf[ 'config_filtered' ] ) ) {
 
 				self::$cf[ '*' ] = array(
 					'base' => array(),
@@ -3404,7 +3404,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 				self::$cf[ 'opt' ][ 'version' ] = '';	// -wpsso416pro-wpssoplm8pro
 
-				if ( $apply_filters ) {
+				/**
+				 * Just in case - don't apply filters if the constants have not been defined yet.
+				 */
+				if ( $apply_filters && defined( 'WPSSO_VERSION' ) ) {
 
 					self::$cf[ 'config_filtered' ] = true;	// Set before calling filter to prevent recursion.
 
@@ -3416,17 +3419,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Parse the complete config and define some reference values.
 					 */
+					$pro_disabled = defined( 'WPSSO_PRO_DISABLE' ) && WPSSO_PRO_DISABLE ? true : false;
+
 					foreach ( self::$cf[ 'plugin' ] as $ext => $info ) {
 
-						if ( defined( strtoupper( $ext ) . '_PLUGINDIR' ) ) {
-							if ( defined( 'WPSSO_PRO_DISABLE' ) && WPSSO_PRO_DISABLE ) {
-								$pkg_lctype = 'std';
-							} else {
-								$plugin_dir = constant( strtoupper( $ext ) . '_PLUGINDIR' );
-								$pkg_lctype = is_dir( $plugin_dir .  'lib/pro/' ) ? 'pro' : 'std';
+						$pkg_lctype = 'std';
+
+						$ext_dir_const = strtoupper( $ext ) . '_PLUGINDIR';
+
+						if ( ! $pro_disabled ) {
+							if ( defined( $ext_dir_const ) ) {
+								if ( is_dir( constant( $ext_dir_const ) . 'lib/pro/' ) ) {
+									$pkg_lctype = 'pro';
+								}
 							}
-						} else {
-							$pkg_lctype = '';
 						}
 
 						if ( isset( $info[ 'slug' ] ) ) {

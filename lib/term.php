@@ -413,20 +413,20 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$0.3f secs', 'wpsso' ), $mtime_max );
 
 				// translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a taxonomy name, %4$s is a recommended max
-				$error_msg = sprintf( __( 'Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts for term ID %2$d in taxonomy %3$s (%4$s).',
+				$notice_msg = sprintf( __( 'Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts for term ID %2$d in taxonomy %3$s (%4$s).',
 					'wpsso' ), $mtime_total, $mod[ 'id' ], $mod[ 'tax_slug' ], $rec_max_msg );
 
 				/**
 				 * Show an admin warning notice, if notices not already shown.
 				 */
 				if ( $this->p->notice->is_admin_pre_notices() ) {
-					$this->p->notice->warn( $error_msg );
+					$this->p->notice->warn( $notice_msg );
 				}
 
 				// translators: %s is the short plugin name
-				$error_pre = sprintf( __( '%s warning:', 'wpsso' ), $info[ 'short' ] );
+				$notice_pre = sprintf( __( '%s warning:', 'wpsso' ), $info[ 'short' ] );
 
-				SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
+				SucomUtil::safe_error_log( $notice_pre . ' ' . $notice_msg );
 			}
 
 			if ( $this->p->debug->enabled ) {
@@ -614,10 +614,10 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 						if ( $this->p->notice->is_admin_pre_notices() ) {	// Skip if notices already shown.
 
+							$notice_msg = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
 							$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-og-' . $mt_suffix;
-							$error_msg  = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
 
-							$this->p->notice->err( $error_msg, null, $notice_key );
+							$this->p->notice->err( $notice_msg, null, $notice_key );
 						}
 					}
 				}

@@ -880,7 +880,7 @@ msgctxt "option comment"
 msgid "from"
 msgstr ""
 
-#: lib/com/form.php:1923 lib/gettext-com.php:25 lib/post.php:1328
+#: lib/com/form.php:1923 lib/gettext-com.php:25 lib/post.php:1332
 #: lib/wp-meta.php:589 lib/wp-meta.php:719
 msgid "Save a draft version or publish to update this value."
 msgstr ""
@@ -897,7 +897,7 @@ msgstr ""
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:445 lib/gettext-com.php:31 lib/post.php:1523
+#: lib/com/notice.php:445 lib/gettext-com.php:31 lib/post.php:1527
 msgid "Edit"
 msgstr ""
 
@@ -5971,7 +5971,7 @@ msgid ""
 "children of post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:706 lib/post.php:1251
+#: lib/post.php:706 lib/post.php:1255
 msgid "checking meta tags"
 msgstr ""
 
@@ -5979,157 +5979,157 @@ msgstr ""
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:926
+#: lib/post.php:927
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:928
+#: lib/post.php:929
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:929
+#: lib/post.php:930
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:954
+#: lib/post.php:956
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:956
+#: lib/post.php:958
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:958
+#: lib/post.php:960
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:959
+#: lib/post.php:961
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:971 lib/util.php:1860
+#: lib/post.php:973 lib/util.php:1860
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:984
+#: lib/post.php:986
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:997
+#: lib/post.php:999
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1010
+#: lib/post.php:1012
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1032
+#: lib/post.php:1034
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:1068
+#: lib/post.php:1069
 msgid "The webpage at %1$s does not include any Schema JSON-LD script(s)."
 msgstr ""
 
-#: lib/post.php:1070
+#: lib/post.php:1071
 msgid ""
 "Complete and accurate Schema JSON-LD markup is highly recommended for better "
 "ranking and click-through rates in search results."
 msgstr ""
 
-#: lib/post.php:1072
+#: lib/post.php:1073
 msgid ""
 "Consider activating the %1$s add-on to include Schema JSON-LD markup for "
 "Google Rich Results / Rich Snippets."
 msgstr ""
 
-#: lib/post.php:1088
+#: lib/post.php:1092
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:1104
+#: lib/post.php:1108
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1104
+#: lib/post.php:1108
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML &mdash; review the <a href=\"%1$s\">W3C Markup Validation "
 "Service</a> results and correct any errors."
 msgstr ""
 
-#: lib/post.php:1104
+#: lib/post.php:1108
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:1136
+#: lib/post.php:1140
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1137
+#: lib/post.php:1141
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1143
+#: lib/post.php:1147
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1146
+#: lib/post.php:1150
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1148
+#: lib/post.php:1152
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1513 lib/script.php:242
+#: lib/post.php:1517 lib/script.php:242
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1524
+#: lib/post.php:1528
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1535
+#: lib/post.php:1539
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1536
+#: lib/post.php:1540
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1537
+#: lib/post.php:1541
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1538
+#: lib/post.php:1542
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1614
+#: lib/post.php:1618
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -6777,7 +6777,7 @@ msgstr ""
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1334
+#: lib/user.php:1335
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
