@@ -17,10 +17,6 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 	require_once WPSSO_PLUGINDIR . 'lib/schema-graph.php';
 }
 
-if ( ! class_exists( 'WpssoSchemaNoScript' ) ) {
-	require_once WPSSO_PLUGINDIR . 'lib/schema-noscript.php';
-}
-
 if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 	require_once WPSSO_PLUGINDIR . 'lib/schema-single.php';
 }
@@ -41,6 +37,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
+
+			if ( ! class_exists( 'WpssoSchemaNoScript' ) ) {
+				require_once WPSSO_PLUGINDIR . 'lib/schema-noscript.php';
 			}
 
 			$this->noscript = new WpssoSchemaNoScript( $plugin );

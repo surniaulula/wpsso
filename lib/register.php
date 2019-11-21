@@ -129,15 +129,11 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			}
 
 			/**
-			 * Save plugin install, activation, update times.
+			 * Register plugin install, activation, update times.
 			 */
 			$version = WpssoConfig::$cf[ 'plugin' ][ 'wpsso' ][ 'version' ];
 
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'saving all times for wpsso v' . $version );
-			}
-
-			WpssoUtil::register_ext_version( 'wpsso', $version );
+			WpssoUtilReg::update_ext_version( 'wpsso', $version );
 
 			/**
 			 * Clear all caches on activate.

@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '6.13.0-dev.2',	// Plugin version.
-					'opt_version' => '679',		// Increment when changing default option values.
+					'opt_version' => '680',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -197,7 +197,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'desc'        => 'Apple Store / iTunes and Google Play App meta tags for Apple\'s mobile Safari banner and Twitter\'s App Card.',
 					'slug'        => 'wpsso-am',
 					'base'        => 'wpsso-am/wpsso-am.php',
-					'update_auth' => '',
+					'update_auth' => '',		// No premium version.
 					'assets'      => array(
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-am/assets/banner-772x250.jpg',
@@ -874,7 +874,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'desc'        => 'Sharpen and improve WordPress thumbnails and resized images for social sharing and better SEO.',
 					'slug'        => 'wpsso-tune-image-editors',
 					'base'        => 'wpsso-tune-image-editors/wpsso-tune-image-editors.php',
-					'update_auth' => 'tid',
+					'update_auth' => '',		// No premium version.
 					'assets'      => array(
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-tune-image-editors/assets/banner-772x250.jpg',
@@ -913,9 +913,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'install'   => 'https://wpsso.com/docs/plugins/wpsso-tune-image-editors/installation/',
 						'faqs'      => '',
 						'notes'     => '',
-						'support'   => 'https://surniaulula.com/support/create_ticket/',			// Premium support ticket.
-						'purchase'  => 'https://wpsso.com/extend/plugins/wpsso-tune-image-editors/',		// Purchase page.
-						'info'      => 'https://wpsso.com/extend/plugins/wpsso-tune-image-editors/info/',	// License information.
+						'support'   => '',	// Premium support ticket.
+						'purchase'  => '',	// Purchase page.
+						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-tune-image-editors/update/',
 						'latest'    => '',
 					),
@@ -990,7 +990,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 					),
 					'hosts' => array(
-						'wp_org' => false,	// Not available on wordpress.org.
+						'wp_org' => false,	// Add-on is not available on wordpress.org.
 						'github' => true,
 						'wpsso'  => true,
 					),
@@ -3389,9 +3389,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		 *
 		 * 	add_filter( 'wpsso_get_config', array( $this, 'wpsso_get_config' ), 10, 2 );
 		 */
-		public static function get_config( $cf_key = false, $apply_filters = false ) {
+		public static function get_config( $cf_key = false, $apply_filters = false, $read_cache = true ) {
 
-			if ( ! isset( self::$cf[ 'config_filtered' ] ) || true !== self::$cf[ 'config_filtered' ] ) {
+			if ( ! $read_cache || ! isset( self::$cf[ 'config_filtered' ] ) || true !== self::$cf[ 'config_filtered' ] ) {
 
 				self::$cf[ '*' ] = array(
 					'base' => array(),

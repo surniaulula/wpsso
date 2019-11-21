@@ -298,6 +298,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				677 => array(
 					'plugin_wpssoam_tid' => '',	// WPSSO AM Premium deprecated on 2019/11/14.
 				),
+				679 => array(
+					'plugin_wpssotie_tid' => '',	// WPSSO TIE Premium deprecated on 2019/11/21.
+				),
 			),
 		);
 
@@ -330,6 +333,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				),
 				677 => array(
 					'plugin_wpssoam_tid' => '',	// WPSSO AM Premium deprecated on 2019/11/14.
+				),
+				679 => array(
+					'plugin_wpssotie_tid' => '',	// WPSSO TIE Premium deprecated on 2019/11/21.
 				),
 			),
 		);

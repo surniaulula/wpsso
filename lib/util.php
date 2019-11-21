@@ -17,10 +17,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 	require_once WPSSO_PLUGINDIR . 'lib/com/util.php';
 }
 
-if ( ! class_exists( 'WpssoUtilReg' ) ) {
-	require_once WPSSO_PLUGINDIR . 'lib/util-reg.php';
-}
-
 if ( ! class_exists( 'WpssoUtil' ) ) {
 
 	class WpssoUtil extends SucomUtil {
@@ -73,6 +69,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
+
+			if ( ! class_exists( 'WpssoUtilReg' ) ) {
+				require_once WPSSO_PLUGINDIR . 'lib/util-reg.php';
 			}
 
 			$this->reg = new WpssoUtilReg( $plugin );

@@ -9,14 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
-if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
-	die( 'Do. Or do not. There is no try.' );
-}
-
-if ( ! class_exists( 'WpssoAdminHead' ) ) {
-	require_once WPSSO_PLUGINDIR . 'lib/admin-head.php';
-}
-
 if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 	class WpssoAdmin {
@@ -78,6 +70,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * Optimize performance and do not load if this is an ajax call (ie. DOING_AJAX is true).
 			 */
 			if ( ! $doing_ajax ) {
+
+				if ( ! class_exists( 'WpssoAdminHead' ) ) {
+					require_once WPSSO_PLUGINDIR . 'lib/admin-head.php';
+				}
 
 				$this->head = new WpssoAdminHead( $plugin );
 
