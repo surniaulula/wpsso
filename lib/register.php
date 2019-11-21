@@ -116,7 +116,10 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			$this->p->set_options( $activate = true ); // Read / create options and site_options.
 			$this->p->set_objects( $activate = true ); // Load all the class objects.
 
-			$new_install = false === WpssoUtil::get_ext_event_time( 'wpsso', 'install' ) ? true : false;
+			/**
+			 * Returns the event timestamp, or false if the event has not been registered.
+			 */
+			$new_install = WpssoUtilReg::get_ext_event_time( 'wpsso', 'install' ) ? false : true;
 
 			/**
 			 * Add the "person" role for all WpssoUser::get_public_ids(). 
@@ -206,7 +209,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			if ( ! empty( $opts[ 'plugin_clean_on_uninstall' ] ) ) {
 
-				delete_option( WPSSO_TS_NAME );
+				delete_option( WPSSO_REG_TS_NAME );
 
 				delete_option( WPSSO_OPTIONS_NAME );
 

@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.12.1-dev.2',	// Plugin version.
+					'version'     => '6.13.0-dev.2',	// Plugin version.
 					'opt_version' => '679',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1760,7 +1760,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '2.5.1-dev.2',	// Minimum update manager version (soft limit).
+				'rec_version' => '2.6.0-dev.2',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',
@@ -3608,8 +3608,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_OPTIONS_NAME' ]      = 'wpsso_options';
 			$var_const[ 'WPSSO_POST_CHECK_NAME' ]   = 'wpsso_post_head_count';	// Duplicate check counter.
 			$var_const[ 'WPSSO_PREF_NAME' ]         = '_wpsso_pref';		// User meta.
+			$var_const[ 'WPSSO_REG_TS_NAME' ]       = 'wpsso_timestamps';
 			$var_const[ 'WPSSO_SITE_OPTIONS_NAME' ] = 'wpsso_site_options';
-			$var_const[ 'WPSSO_TS_NAME' ]           = 'wpsso_timestamps';
 
 			/**
 			 * WPSSO hook priorities.

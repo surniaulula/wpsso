@@ -1411,14 +1411,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return ltrim( strtolower( preg_replace('/[A-Z]/', '_$0', $str ) ), '_' );
 		}
 
+		/**
+		 * Only creates new keys - does not update existing keys.
+		 */
 		public static function add_site_option_key( $name, $key, $value ) {
 
-			return self::update_option_key( $name, $key, $value, true, true );
-		}
-
-		public static function update_site_option_key( $name, $key, $value, $protect = false ) {
-
-			return self::update_option_key( $name, $key, $value, $protect, true );
+			return self::update_option_key( $name, $key, $value, $protect = true, $site = true );
 		}
 
 		/**
@@ -1426,7 +1424,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function add_option_key( $name, $key, $value ) {
 
-			return self::update_option_key( $name, $key, $value, true, false ); // $protect = true.
+			return self::update_option_key( $name, $key, $value, $protect = true, $site = false );
+		}
+
+		public static function update_site_option_key( $name, $key, $value, $protect = false ) {
+
+			return self::update_option_key( $name, $key, $value, $protect, $site = true );
 		}
 
 		public static function update_option_key( $name, $key, $value, $protect = false, $site = false ) {
@@ -1450,6 +1453,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
+		public static function get_site_option_key( $name, $key ) {
+
+			return self::get_option_key( $name, $key, $site = true );
+		}
+
 		public static function get_option_key( $name, $key, $site = false ) {
 
 			if ( true === $site ) {
@@ -1463,6 +1471,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			} else {
 				return null;
 			}
+		}
+
+		public static function delete_site_option_key( $name, $key ) {
+
+			return self::delete_option_key( $name, $key, $site = true );
 		}
 
 		public static function delete_option_key( $name, $key, $site = false ) {

@@ -17,6 +17,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 	require_once WPSSO_PLUGINDIR . 'lib/com/util.php';
 }
 
+if ( ! class_exists( 'WpssoUtilReg' ) ) {
+	require_once WPSSO_PLUGINDIR . 'lib/util-reg.php';
+}
+
 if ( ! class_exists( 'WpssoUtil' ) ) {
 
 	class WpssoUtil extends SucomUtil {
@@ -70,6 +74,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
+
+			$this->reg = new WpssoUtilReg( $plugin );
 
 			$this->add_plugin_filters( $this, array(
 				'pub_lang' => 3,
@@ -1119,8 +1125,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$user_id = $this->maybe_change_user_id( $user_id );
 
-			wp_schedule_single_event( time() + $this->event_buffer,
-				$this->p->lca . '_add_user_roles', array( $user_id ) );
+			$event_time = time() + $this->event_buffer;
+			$event_hook = $this->p->lca . '_add_user_roles';
+			$event_args = array( $user_id );
+
+			wp_schedule_single_event( $event_time, $event_hook, $event_args );
 		}
 
 		public function add_user_roles( $user_id = null ) {
@@ -1191,8 +1200,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$user_id = $this->maybe_change_user_id( $user_id );
 
-			wp_schedule_single_event( time() + $this->event_buffer,
-				$this->p->lca . '_clear_all_cache', array( $user_id, $clear_other, $clear_short, $refresh_all ) );
+			$event_time = time() + $this->event_buffer;
+			$event_hook = $this->p->lca . '_clear_all_cache';
+			$event_args = array( $user_id, $clear_other, $clear_short, $refresh_all );
+
+			wp_schedule_single_event( $event_time, $event_hook, $event_args );
 		}
 
 		public function clear_all_cache( $user_id = null, $clear_other = false, $clear_short = null, $refresh_all = null ) {
@@ -1356,8 +1368,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$user_id = $this->maybe_change_user_id( $user_id );
 
-			wp_schedule_single_event( time() + $this->event_buffer,
-				$this->p->lca . '_refresh_all_cache', array( $user_id ) );
+			$event_time = time() + $this->event_buffer;
+			$event_hook = $this->p->lca . '_refresh_all_cache';
+			$event_args = array( $user_id );
+
+			wp_schedule_single_event( $event_time, $event_hook, $event_args );
 		}
 
 		public function stop_refresh_all_cache() {
@@ -2110,94 +2125,15 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		public static function save_all_times( $ext, $version ) {
 
-			return self::register_ext_version( $ext, $version );
+			WpssoUtilReg::update_ext_version( $ext, $version );
 		}
 
+		/**
+		 * Deprecated on 2019/11/21.
+		 */
 		public static function register_ext_version( $ext, $version ) {
 
-			self::save_ext_event_time( $ext, $version, 'update', $version );
-			self::save_ext_event_time( $ext, $version, 'install', $protect = true );
-			self::save_ext_event_time( $ext, $version, 'activate' );
-		}
-
-		public static function unregister_ext( $ext ) {
-		}
-
-		public static function get_ext_event_time( $ext, $event ) {
-
-			$ext_reg = get_option( WPSSO_TS_NAME, array() );
-
-			if ( ! empty( $ext_reg[ $ext . '_' . $event . '_time' ] ) ) {
-				return $ext_reg[ $ext . '_' . $event . '_time' ];
-			}
-
-			return false;
-		}
-
-		/**
-		 * Get the timestamp array and perform a quick sanity check.
-		 */
-		public function get_ext_registered_list() {
-
-			$has_changed = false;
-			$ext_reg     = get_option( WPSSO_TS_NAME, array() );
-
-			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
-
-				if ( empty( $info[ 'version' ] ) ) {
-					continue;
-				}
-
-				foreach ( array( 'update', 'install', 'activate' ) as $event ) {
-
-					if ( empty( $ext_reg[ $ext . '_' . $event . '_time' ] ) ||
-						( $event === 'update' && ( empty( $ext_reg[ $ext . '_' . $event . '_version' ] ) ||
-							version_compare( $ext_reg[ $ext . '_' . $event . '_version' ], $info[ 'version' ], '!=' ) ) ) ) {
-
-						$has_changed = self::save_ext_event_time( $ext, $info[ 'version' ], $event );
-					}
-				}
-			}
-
-			if ( $has_changed ) {
-				$ext_reg = get_option( WPSSO_TS_NAME, array() );
-			}
-
-			return $ext_reg;
-		}
-
-		/**
-		 * $protect = true | false | version
-		 */
-		private static function save_ext_event_time( $ext, $version, $event, $protect = false ) {
-
-			$upd_version = false;
-			$upd_time    = false;
-
-			if ( ! is_bool( $protect ) ) {
-
-				if ( ! empty( $protect ) ) {
-
-					$ts_version = self::get_option_key( WPSSO_TS_NAME, $ext . '_' . $event . '_version' );
-
-					if ( $ts_version !== null && version_compare( $ts_version, $protect, '==' ) ) {
-						$protect = true;
-					} else {
-						$protect = false;
-					}
-
-				} else {
-					$protect = true;	// Just in case.
-				}
-			}
-
-			if ( ! empty( $version ) ) {
-				$upd_version = self::update_option_key( WPSSO_TS_NAME, $ext . '_' . $event . '_version', $version, $protect );
-			}
-
-			$upd_time = self::update_option_key( WPSSO_TS_NAME, $ext . '_' . $event . '_time', time(), $protect );
-
-			return $upd_version || $upd_time ? true : false;
+			WpssoUtilReg::update_ext_version( $ext, $version );
 		}
 
 		/**

@@ -310,7 +310,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 			$form          = $this->p->admin->get_form_object( $this->p->lca );
 			$user_id       = get_current_user_id();
-			$ext_reg       = $this->p->util->get_ext_registered_list();
+			$ext_reg       = $this->p->util->reg->get_ext_reg();
 			$week_ago_secs = time() - ( 1 * WEEK_IN_SECONDS );
 
 			/**
@@ -458,7 +458,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				return 0;
 			}
 
-			$ext_reg         = $this->p->util->get_ext_registered_list();
+			$ext_reg         = $this->p->util->reg->get_ext_reg();
 			$months_ago_secs = time() - ( 3 * MONTH_IN_SECONDS );
 			$months_transl   = __( 'three months', 'wpsso' );
 
