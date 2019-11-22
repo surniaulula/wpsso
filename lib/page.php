@@ -941,6 +941,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			if ( $mod[ 'is_post' ] && has_excerpt( $mod[ 'id' ] ) ) {
 
 				$filter_excerpt = empty( $this->p->options[ 'plugin_filter_excerpt' ] ) || $this->p->check->pp() ? false : true;
+
 				$filter_excerpt = apply_filters( $this->p->lca . '_can_filter_the_excerpt', $filter_excerpt, $mod );
 
 				if ( $this->p->debug->enabled ) {
@@ -970,6 +971,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			$filter_content = empty( $this->p->options[ 'plugin_filter_content' ] ) || $this->p->check->pp() ? false : true;
+
 			$filter_content = apply_filters( $this->p->lca . '_can_filter_the_content', $filter_content, $mod );
 
 			$sharing_url   = $this->p->util->get_sharing_url( $mod );

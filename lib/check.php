@@ -14,7 +14,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 	class WpssoCheck {
 
 		private $p;
-		private static $pp_c = array();
+
 		private static $extend_lib_checks = array(
 			'amp' => array(
 				'amp'                      => 'AMP',	// AMP, Better AMP, etc.
@@ -425,25 +425,28 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			return $is_avail;
 		}
 
-		public function is_pp( $ext = '', $uc = true ) {
+		public function is_pp( $ext = null, $rc = true ) {
 
-			return $this->pp( $ext, true, true, $uc );
+			return $this->pp( $ext, true, true, $rc );
 		}
 
-		public function pp( $ext = '', $li = true, $rv = true, $uc = true ) {
+		public function pp( $ext = null, $li = true, $rv = true, $rc = true, $mx = null ) {
 
-			$ext = empty( $ext ) ? $this->p->lca : $ext;
-			$cid = $ext . '-' . $li . '-' . $rv;
+			static $lc = array();
 
-			if ( $uc && isset( self::$pp_c[ $cid ] ) ) {
-				return self::$pp_c[ $cid ];
+			$ext = null !== $ext ? $this->p->lca : $ext;
+			$rv  = null !== $mx ? $rv * $mx : $rv;
+			$id  = $ext . '-' . $li . '-' . $rv;
+
+			if ( $rc && isset( $lc[ $id ] ) ) {
+				return $lc[ $id ];
 			}
 
 			$uca = strtoupper( $ext );
 
 			if ( defined( 'WPSSO_PRO_DISABLE' ) && WPSSO_PRO_DISABLE ) {
 
-				return self::$pp_c[ $cid ] = false;
+				return $lc[ $id ] = false;
 
 			} elseif ( defined( $uca . '_PLUGINDIR' ) ) {
 
@@ -459,18 +462,18 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 					if ( ! defined ( 'WP_PLUGIN_DIR' ) ||
 						! is_dir( $dir = WP_PLUGIN_DIR . '/' . $slug . '/' ) ) {
 
-						return self::$pp_c[ $cid ] = false;
+						return $lc[ $id ] = false;
 					}
 				}
 
 			} else {
-				return self::$pp_c[ $cid ] = false;
+				return $lc[ $id ] = false;
 			}
 
 			$okey = 'plugin_' . $ext . '_tid';
 			$pdir = is_dir( $dir . 'lib/pro/' ) ? $rv : false;
 
-			return self::$pp_c[ $cid ] = $li ?
+			return $lc[ $id ] = $li ?
 				( ( ! empty( $this->p->options[ $okey ] ) &&
 					$pdir && class_exists( 'SucomUpdate' ) &&
 						( $ue = SucomUpdate::get_umsg( $ext ) ?

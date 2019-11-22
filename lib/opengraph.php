@@ -13,7 +13,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 	class WpssoOpenGraph {
 
-		protected $p;
+		private $p;
 
 		public function __construct( &$plugin ) {
 
@@ -440,13 +440,13 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			/**
-			 * The 'wpsso_og_seed' filter is hooked by the Pro / Premium e-commerce modules, for example, to provide
-			 * product meta tags.
+			 * The 'wpsso_og_seed' filter is hooked by the Premium e-commerce modules, for example, to provide product
+			 * meta tags.
 			 */
-			$mt_og       = apply_filters( $this->p->lca . '_og_seed', array(), $mod );
-			$has_pp      = $this->p->check->pp();
-			$post_id     = $mod[ 'is_post' ] ? $mod[ 'id' ] : false;
-			$max_nums    = $this->p->util->get_max_nums( $mod );
+			$mt_og    = apply_filters( $this->p->lca . '_og_seed', array(), $mod );
+			$post_id  = $mod[ 'is_post' ] ? $mod[ 'id' ] : false;
+			$max_nums = $this->p->util->get_max_nums( $mod );
+			$has_pp   = $this->p->check->pp();
 
 			if ( empty( $size_name ) ) {
 				$size_name = $this->p->lca . '-opengraph';
@@ -572,9 +572,15 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 *
 			 * Call before getting all images to find / use preview images.
 			 */
-			if ( $has_pp && ! isset( $mt_og[ 'og:video' ] ) ) {
+			if ( ! isset( $mt_og[ 'og:video' ] ) ) {
 
-				if ( $max_nums[ 'og_vid_max' ] > 0 ) {
+				if ( ! $has_pp ) {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'no video modules available' );
+					}
+
+				} elseif ( $max_nums[ 'og_vid_max' ] > 0 ) {
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'getting videos for og:video meta tag' );
@@ -921,16 +927,25 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$og_ret =& $local_cache[ $cache_salt ];
 			}
 
-			$has_pp   = $this->p->check->pp();
 			$use_prev = $this->p->options[ 'og_vid_prev_img' ];
 			$num_diff = SucomUtil::count_diff( $og_ret, $num );
+			$has_pp   = $this->p->check->pp();
+
+			if ( ! $has_pp ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'no video modules available' );
+				}
+
+				return $og_ret;
+			}
 
 			$this->p->util->clear_uniq_urls( array( 'video', 'content_video', 'video_details' ) );
 
 			/**
 			 * Get video information and preview enable/disable option from the post/term/user meta.
 			 */
-			if ( $has_pp && ! empty( $mod[ 'obj' ] ) ) {
+			if ( ! empty( $mod[ 'obj' ] ) ) {
 
 				/**
 				 * Note that get_options() returns null if an index key is not found.
@@ -998,7 +1013,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 * og:video:title and og:video:description meta tags are not standard and their values will only appear in
 			 * Schema markup.
 			 */
-			if ( $has_pp && ! empty( $mod[ 'obj' ] ) && $md_pre !== 'none' ) {
+			if ( ! empty( $mod[ 'obj' ] ) && $md_pre !== 'none' ) {
 
 				foreach ( $og_ret as $num => $og_single_video ) {
 
@@ -1111,13 +1126,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$this->p->util->clear_uniq_urls( $size_name );	// Clear cache for $size_name context.
 		
-			if ( $this->p->check->pp() ) {	// Just in case.
+			$preview_images = $this->get_all_previews( $num_diff, $mod );
 
-				$preview_images = $this->get_all_previews( $num_diff, $mod );
-
-				if ( ! empty( $preview_images ) ) {
-					$og_ret = array_merge( $og_ret, $preview_images );
-				}
+			if ( ! empty( $preview_images ) ) {
+				$og_ret = array_merge( $og_ret, $preview_images );
 			}
 
 			if ( $mod[ 'is_post' ] ) {
@@ -1286,16 +1298,13 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						/**
 						 * Get videos only once.
 						 */
-						if ( $this->p->check->pp() ) {	// Just in case.
+						if ( null === $og_videos ) {
 
-							if ( null === $og_videos ) {
-
-								/**
-								 * $md_pre may be 'none' when getting Open Graph option defaults
-								 * (and not their custom values).
-								 */
-								$og_videos = $this->get_all_videos( 1, $mod, $check_dupes = true, $md_pre );
-							}
+							/**
+							 * $md_pre may be 'none' when getting Open Graph option defaults (and not
+							 * their custom values).
+							 */
+							$og_videos = $this->get_all_videos( 1, $mod, $check_dupes = true, $md_pre );
 						}
 
 						break;
