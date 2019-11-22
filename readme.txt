@@ -436,10 +436,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.13.0-dev.2 (TBD)**
+**Version 6.13.0-dev.2 (2019/11/21)**
 
 * **New Features**
-	* The Premium features of the following add-on(s) have been merged into their Standard version:
+	* The Premium features of the following add-ons have been merged into their Standard version (the Premium versions are no longer available):
 		* [WPSSO Tune WP Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors) for better looking WordPress thumbnails.
 * **Improvements**
 	* Removed the "Optional Advanced Settings" metabox from the Essential settings page.
@@ -452,7 +452,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 6.12.0 (2019/11/17)**
 
 * **New Features**
-	* The Premium features of the following add-on(s) have been merged into their Standard version:
+	* The Premium features of the following add-ons have been merged into their Standard version (the Premium versions are no longer available):
 		* [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
 		* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) to add responsive share buttons.
 		* [WPSSO Social Sharing Buttons](https://wordpress.org/plugins/wpsso-ssb/) to add traditional share buttons.
@@ -703,6 +703,10 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 	* Removed the `SucomUtil::is_product_tag()` method.
 
 == Upgrade Notice ==
+
+= 6.13.0-dev.2 =
+
+(2019/11/21) The Premium features of the WPSSO TIE add-on has been merged into its Standard version. Removed the "Optional Advanced Settings" metabox from the Essential settings page.
 
 = 6.12.0 =
 
