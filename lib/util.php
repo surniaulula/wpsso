@@ -21,6 +21,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 	class WpssoUtil extends SucomUtil {
 
+		protected $p;
 		protected $event_buffer = 5;
 		protected $uniq_urls    = array();	// Array to detect duplicate images, etc.
 		protected $size_labels  = array();	// Reference array for image size labels.
@@ -62,6 +63,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		);
 
 		protected static $form_cache = array();
+
+		public $reg;	// WpssoUtilReg.
 
 		public function __construct( &$plugin ) {
 
@@ -120,8 +123,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			/**
-			 * All facebook languages are formatted 'en_US', so
-			 * correct known two letter locales.
+			 * All facebook languages are formatted 'en_US', so correct known two letter locales.
 			 */
 			if ( strlen( $fb_lang ) == 2 ) {
 
@@ -200,8 +202,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Disable transient cache for debug mode. This method is also called for non-WordPress
-		 * sharing / canonical URLs with query arguments.
+		 * Disable transient cache for debug mode. This method is also called for non-WordPress sharing / canonical URLs
+		 * with query arguments.
 		 */
 		public function disable_cache_filters( array $add_filters = array() ) {
 
@@ -343,13 +345,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$opt_suffix = '';
 
 				if ( preg_match( '/^(.*)(#.*)$/', $opt_image_pre, $matches ) ) {	// Language.
-					$opt_image_pre = $matches[1];
-					$opt_suffix    = $matches[2] . $opt_suffix;
+					$opt_image_pre = $matches[ 1 ];
+					$opt_suffix    = $matches[ 2 ] . $opt_suffix;
 				}
 
 				if ( preg_match( '/^(.*)(_[0-9]+)$/', $opt_image_pre, $matches ) ) {	// Multi-option.
-					$opt_image_pre = $matches[1];
-					$opt_suffix    = $matches[2] . $opt_suffix;
+					$opt_image_pre = $matches[ 1 ];
+					$opt_suffix    = $matches[ 2 ] . $opt_suffix;
 				}
 
 				$media_url = self::get_mt_media_url( $opts, $opt_image_pre . $opt_suffix );
@@ -500,7 +502,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			if ( is_array( $image_info ) ) {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'PHP getimagesize() image info: ' . $image_info[0] . 'x' . $image_info[1] );
+					$this->p->debug->log( 'PHP getimagesize() image info: ' . $image_info[ 0 ] . 'x' . $image_info[ 1 ] );
 				}
 
 			} else {
@@ -1139,8 +1141,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			/**
-			 * A transient is set and checked to limit the runtime and allow this process
-			 * to be terminated early (by removing the transient object).
+			 * A transient is set and checked to limit the runtime and allow this process to be terminated early (by
+			 * removing the transient object).
 			 */
 			$cache_md5_pre  = $this->p->lca . '_!_';			// Protect transient from being cleared.
 			$cache_exp_secs = HOUR_IN_SECONDS;				// Prevent duplicate runs for max 1 hour.
@@ -1394,8 +1396,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			/**
-			 * A transient is set and checked to limit the runtime and allow this process
-			 * to be terminated early (by removing the transient object).
+			 * A transient is set and checked to limit the runtime and allow this process to be terminated early (by
+			 * removing the transient object).
 			 */
 			$cache_md5_pre  = $this->p->lca . '_!_';			// Protect transient from being cleared.
 			$cache_exp_secs = HOUR_IN_SECONDS;				// Prevent duplicate runs for max 6 hours.
@@ -2090,7 +2092,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$function_info = $this->get_is_functions();
 
 			foreach ( $function_info as $function => $info ) {
-				$this->p->debug->log( $info[0] );
+				$this->p->debug->log( $info[ 0 ] );
 			}
 		}
 
@@ -2154,6 +2156,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			/**
 			 * The $mod array argument is preferred but not required.
+			 *
 			 * $mod = true | false | post_id | $mod array
 			 */
 			if ( ! is_array( $mod ) ) {
@@ -2277,8 +2280,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			/**
-			 * Use the pretty print external library for older PHP versions.
-			 * Define WPSSO_EXT_JSON_DISABLE as true in wp-config.php to prevent external json formatting.
+			 * Use the pretty print external library for older PHP versions. Define WPSSO_EXT_JSON_DISABLE as true in
+			 * wp-config.php to prevent external json formatting.
 			 */
 			if ( $ext_json_lib && $ext_json_format ) {
 
@@ -2447,8 +2450,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$mod[ 'use_post' ] = $use_post;
 
 			/**
-			 * The post module defines is_home_page, is_home_index, and is_home.
-			 * If we don't have a module, then check if we're on the home index page.
+			 * The post module defines is_home_page, is_home_index, and is_home. If we don't have a module, then check
+			 * if we're on the home index page.
 			 */
 			if ( $mod[ 'name' ] === false ) {
 				$mod[ 'is_home_index' ] = $mod[ 'is_home' ] = is_home();
@@ -2475,6 +2478,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			/**
 			 * The $mod array argument is preferred but not required.
+			 *
 			 * $mod = true | false | post_id | $mod array
 			 */
 			if ( ! is_array( $mod ) ) {
@@ -2551,6 +2555,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			/**
 			 * The $mod array argument is preferred but not required.
+			 *
 			 * $mod = true | false | post_id | $mod array
 			 */
 			if ( ! is_array( $mod ) ) {
@@ -2629,6 +2634,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			/**
 			 * The $mod array argument is preferred but not required.
+			 *
 			 * $mod = true | false | post_id | $mod array
 			 */
 			if ( ! is_array( $mod ) ) {
@@ -2796,9 +2802,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			/**
-			 * Use the current URL as a fallback for themes and plugins that create public content and
-			 * don't use the standard WordPress functions / variables and/or are not properly integrated
-			 * with WordPress (don't use custom post types, taxonomies, terms, etc.).
+			 * Use the current URL as a fallback for themes and plugins that create public content and don't use the
+			 * standard WordPress functions / variables and/or are not properly integrated with WordPress (don't use
+			 * custom post types, taxonomies, terms, etc.).
 			 */
 			if ( empty ( $url ) ) {
 
@@ -2940,9 +2946,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			/**
-			 * The user ID is different than the current / effective user ID, so check
-			 * if the user locale is different to the current locale, and load the
-			 * user locale if required.
+			 * The user ID is different than the current / effective user ID, so check if the user locale is different
+			 * to the current locale, and load the user locale if required.
 			 */
 			$user_locale    = get_user_meta( $user_id, 'locale', true );
 			$current_locale = get_locale();
@@ -3162,7 +3167,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			/**
 			 * Check for required apply_filters() arguments.
 			 */
-			if ( empty( $args[0] ) ) {
+			if ( empty( $args[ 0 ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: filter name missing from parameter array' );
@@ -3170,7 +3175,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				return '';
 
-			} elseif ( ! isset( $args[1] ) ) {
+			} elseif ( ! isset( $args[ 1 ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: filter value missing from parameter array' );
@@ -3179,8 +3184,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return '';
 			}
 
-			$filter_name  = $args[0];
-			$filter_value = $args[1];
+			$filter_name  = $args[ 0 ];
+			$filter_value = $args[ 1 ];
 
 			if ( ! has_filter( $filter_name ) ) {	// Skip if no filters.
 
@@ -3416,7 +3421,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$current = $_SERVER[ 'REQUEST_URI' ];
 
 				if ( preg_match( '/^.*\?page=' . $this->p->lca . '-([^&]*).*$/', $current, $match ) ) {
-					$menu_id = $match[1];
+					$menu_id = $match[ 1 ];
 				} else {
 					$menu_id = key( $this->p->cf[ '*' ][ 'lib' ][ 'submenu' ] );	// Default to first submenu.
 				}
@@ -3442,11 +3447,17 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$parent_slug = $this->p->cf[ 'wp' ][ 'admin' ][ $menu_lib ][ 'page' ] . '?page=' . $this->p->lca . '-' . $menu_id;
 
 			switch ( $menu_lib ) {
+
 				case 'sitesubmenu':
+
 					$admin_url = network_admin_url( $parent_slug );
+
 					break;
+
 				default:
+
 					$admin_url = admin_url( $parent_slug );
+
 					break;
 			}
 
@@ -3466,6 +3477,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		public function do_metabox_tabbed( $metabox_id = '', $tabs = array(), $table_rows = array(), $args = array() ) {
+
 			echo $this->get_metabox_tabbed( $metabox_id, $tabs, $table_rows, $args );
 		}
 
@@ -3537,6 +3549,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		public function do_metabox_table( $table_rows, $class_href_key = '', $class_tabset_mb = '', $class_tabset = 'sucom-no_tabset' ) {
+
 			echo $this->get_metabox_table( $table_rows, $class_href_key, $class_tabset_mb, $class_tabset );
 		}
 
@@ -3595,7 +3608,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						if ( $att === 'class' && ! empty( $show_opts ) &&
 							( $matched = preg_match( '/<tr [^>]*class="[^"]*hide(_row)?_in_' . $show_opts . '[" ]/', $row, $m ) > 0 ) ) {
 
-							if ( ! isset( $m[1] ) ) {
+							if ( ! isset( $m[ 1 ] ) ) {
 								$hidden_opts += preg_match_all( '/(<th|<tr[^>]*><td)/', $row, $all_matches );
 							}
 
@@ -3780,7 +3793,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						preg_match_all( '/<img [^>]*alt=["\']([^"\'>]*)["\']/Ui',
 							$text, $all_matches, PREG_PATTERN_ORDER ) ) {
 
-						foreach ( $all_matches[1] as $alt ) {
+						foreach ( $all_matches[ 1 ] as $alt ) {
 
 							$alt = trim( $alt );
 
