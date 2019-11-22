@@ -565,8 +565,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed an array merge warning when adding co-author URLs to Open Graph meta tags.
 * **Developer Notes**
-	* Updated the SucomForm->get_select() method arguments to allow for an `$event_names` array.
-	* Added support for an 'event_names' array value in the SucomForm->get_mixed_multi() method.
+	* Updated the `SucomForm->get_select()` method arguments to allow for an `$event_names` array.
+	* Added support for an 'event_names' array value in the `SucomForm->get_mixed_multi()` method.
 
 **Version 6.8.0 (2019/10/14)**
 
@@ -674,7 +674,7 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 	* None.
 * **Developer Notes**
 	* Added checks for [AMP](https://wordpress.org/plugins/amp/), [Better AMP](https://wordpress.org/plugins/better-amp/), and [AMP for WP](https://wordpress.org/plugins/accelerated-mobile-pages/) plugins in `WpssoCheck->get_avail()`.
-	* Added an 'image' input type in the SucomForm->get_mixed_multi() method for WPSSO JSON v2.9.0.
+	* Added an 'image' input type in the `SucomForm->get_mixed_multi()` method for WPSSO JSON v2.9.0.
 	* Added a lib/schema-noscript.php library file with a single filter for aggregate rating markup (replaces the lib/noscript.php library file).
 	* Added a lib/oembed.php library file (methods to be added in v6.4.0).
 	* Removed the lib/noscript.php library file.
