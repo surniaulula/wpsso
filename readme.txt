@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires At Least: 3.9
 Tested Up To: 5.3
 WC Tested Up To: 3.8.0
-Stable Tag: 6.12.0
+Stable Tag: 6.13.0
 
 Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.
 
@@ -682,34 +682,9 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 	* Removed the lib/schema-cache.php library file (Deprecated).
 	* Updated the SuextMobileDetect class from https://github.com/serbanghita/Mobile-Detect v2.8.28 to v2.8.33.
 
-**Version 6.2.0 (2019/09/07)**
-
-Complete re-write of the WP eCommerce integration module in the Premium version.
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added support for sale prices, product variations, and product attributes in the WP eCommerce integration module (Premium version).
-* **Bugfixes**
-	* Fixed the disabled 'Product Condition' select option in the Document SSO metabox when the product attribute name is empty (Premium version).
-* **Developer Notes**
-	* Refactored the WP eCommerce integration module (Premium version).
-	* Added 'wpsso_schema_type_id', and 'wpsso_the_content_seed' filters to handle the EDD checkout page (Premium version).
-	* Added new `$prod_post_type`, `$taxonomy_cat`, and `$taxonomy_tag` properties in the e-commerce integration modules (Premium version).
-	* Added a new `SucomUtil::is_mod_post_type()` method.
-	* Added a new `SucomUtil::is_mod_tax_slug()` method.
-	* Added a new `SucomUtil::is_term_tax_slug()` method.
-	* Removed the `SucomUtil::is_product_page()` method.
-	* Removed the `SucomUtil::is_product_category()` method.
-	* Removed the `SucomUtil::is_product_tag()` method.
-
 == Upgrade Notice ==
 
 = 6.13.0 =
 
 (2019/11/23) The Premium features of the WPSSO TIE add-on has been merged into its Standard version. Removed the "Optional Advanced Settings" metabox from the Essential settings page.
-
-= 6.12.0 =
-
-(2019/11/17) The Premium features of three add-ons have been merged into their Standard versions. Fixed an empty value returned by `WpssoPage->get_caption()` when requesting the title.
 
