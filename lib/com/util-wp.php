@@ -485,54 +485,61 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			if ( $post_id ) {
 
-				$post_type = get_post_type( $post_id );
+				if ( function_exists( 'use_block_editor_for_post' ) ) {
 
-				if ( $post_type ) {
+					/**
+					 * Calling use_block_editor_for_post() in WordPress v5.0 during post save crashes the web
+					 * browser. See https://core.trac.wordpress.org/ticket/45253 for details. Only call
+					 * use_block_editor_for_post() if using WordPress v5.2 or better.
+					 */
+					global $wp_version;
 
-					if ( function_exists( 'use_block_editor_for_post' ) ) {
-
-						/**
-						 * Calling use_block_editor_for_post() in WordPress v5.0 during post save crashes
-						 * the web browser. See https://core.trac.wordpress.org/ticket/45253 for details.
-						 * Only call use_block_editor_for_post() if using an earlier version of WordPress.
-						 */
-						global $wp_version;
-
-						if ( version_compare( $wp_version, '5.0', '>=' ) ) {	// Assume can edit.
-							$can_edit_id = true;
-						} elseif ( use_block_editor_for_post( $post_id ) ) {
-							$can_edit_id = true;
-						}
-
-					} elseif ( function_exists( 'gutenberg_can_edit_post' ) ) {
-						if ( gutenberg_can_edit_post( $post_id ) ) {
+					if ( version_compare( $wp_version, '5.2', '<' ) ) {
+						$can_edit_id = true;
+					} else {
+						if ( use_block_editor_for_post( $post_id ) ) {
 							$can_edit_id = true;
 						}
 					}
-		
-					if ( function_exists( 'use_block_editor_for_post_type' ) ) {
-						if ( use_block_editor_for_post_type( $post_type ) ) {
-							$can_edit_type = true;
-						}
-					} elseif ( function_exists( 'gutenberg_can_edit_post_type' ) ) {
-						if ( gutenberg_can_edit_post_type( $post_type ) ) {
-							$can_edit_type = true;
+
+				} elseif ( function_exists( 'gutenberg_can_edit_post' ) ) {
+					if ( gutenberg_can_edit_post( $post_id ) ) {
+						$can_edit_id = true;
+					}
+				}
+
+				/**
+				 * If we can edit the post ID, then check if we can edit the post type.
+				 */
+				if ( $can_edit_id ) {
+
+					$post_type = get_post_type( $post_id );
+
+					if ( $post_type ) {
+
+						if ( function_exists( 'use_block_editor_for_post_type' ) ) {
+							if ( use_block_editor_for_post_type( $post_type ) ) {
+								$can_edit_type = true;
+							}
+						} elseif ( function_exists( 'gutenberg_can_edit_post_type' ) ) {
+							if ( gutenberg_can_edit_post_type( $post_type ) ) {
+								$can_edit_type = true;
+							}
 						}
 					}
 				}
 			}
 	
-			if ( $can_edit_id ) {
-				if ( $can_edit_type ) {
-					if ( $is_gutenbox ) {
-						$is_doing = true;
-					} elseif ( $is_meta_box ) {
-						$is_doing = true;
-					} elseif ( ! $is_classic ) {
-						$is_doing = true;
-					} elseif ( $post_id && $req_action === 'edit' ) {
-						$is_doing = true;
-					}
+			if ( $can_edit_id && $can_edit_type ) {
+
+				if ( $is_gutenbox ) {
+					$is_doing = true;
+				} elseif ( $is_meta_box ) {
+					$is_doing = true;
+				} elseif ( ! $is_classic ) {
+					$is_doing = true;
+				} elseif ( $post_id && $req_action === 'edit' ) {
+					$is_doing = true;
 				}
 			}
 
