@@ -269,7 +269,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					if ( ! $is_new_options && $version_changed ) {
 					
-						if ( empty( $opts[ 'plugin_' . $this->p->lca . '_tid' ] ) && ! $this->p->check->pp( $ext, false ) ) {
+						if ( empty( $opts[ 'plugin_' . $this->p->lca . '_tid' ] ) && ! $this->p->check->pp( $ext, $li = false ) ) {
 
 							if ( null === $def_opts ) {	// Only get default options once.
 								$def_opts = $this->get_defaults();
