@@ -436,13 +436,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.13.0-dev.3 (2019/11/22)**
+**Version 6.13.0-b.1 (2019/11/23)**
 
 * **New Features**
 	* The Premium features of the following add-ons have been merged into their Standard version (the Premium versions are no longer available):
 		* [WPSSO Tune WP Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors) for better looking WordPress thumbnails.
 * **Improvements**
 	* Removed the "Optional Advanced Settings" metabox from the Essential settings page.
+	* Re-added support for `use_block_editor_for_post()` if using WordPress v5.2 or better (this function was fixed in WordPress v5.2).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -704,9 +705,9 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 
 == Upgrade Notice ==
 
-= 6.13.0-dev.3 =
+= 6.13.0-b.1 =
 
-(2019/11/22) The Premium features of the WPSSO TIE add-on has been merged into its Standard version. Removed the "Optional Advanced Settings" metabox from the Essential settings page.
+(2019/11/23) The Premium features of the WPSSO TIE add-on has been merged into its Standard version. Removed the "Optional Advanced Settings" metabox from the Essential settings page.
 
 = 6.12.0 =
 
