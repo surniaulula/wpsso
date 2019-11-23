@@ -248,6 +248,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			/**
 			 * The $mod array argument is preferred but not required.
+			 *
 			 * $mod = true | false | post_id | $mod array
 			 */
 			if ( ! is_array( $mod ) ) {
@@ -263,15 +264,15 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$filter_title = apply_filters( $this->p->lca . '_can_filter_title', $filter_title, $mod );
 
-			if ( false === $md_key ) {		// False would return the complete meta array.
+			if ( false === $md_key ) {			// False would return the complete meta array.
 
 				$md_key = '';
 
-			} elseif ( true === $md_key ) {		// True signals use of the standard / fallback value.
+			} elseif ( true === $md_key ) {			// True signals use of the standard / fallback value.
 
 				$md_key = array( 'og_title' );
 
-			} elseif ( ! is_array( $md_key ) ) {	// Use fallback by default - get_options_multi() will do array_uniq().
+			} elseif ( ! is_array( $md_key ) ) {		// Use fallback by default - get_options_multi() will do array_uniq().
 
 				$md_key = array( $md_key, 'og_title' );
 			}

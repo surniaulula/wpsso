@@ -5902,57 +5902,57 @@ msgid ""
 "default value."
 msgstr ""
 
-#: lib/page.php:353 lib/page.php:355
+#: lib/page.php:354 lib/page.php:356
 msgctxt "default title"
 msgid "%s Archive"
 msgstr ""
 
-#: lib/page.php:431
+#: lib/page.php:432
 msgctxt "default title"
 msgid "No Title"
 msgstr ""
 
-#: lib/page.php:646 lib/page.php:648 lib/page.php:741
+#: lib/page.php:647 lib/page.php:649 lib/page.php:742
 msgctxt "default description"
 msgid "Archive for %s."
 msgstr ""
 
-#: lib/page.php:713
+#: lib/page.php:714
 msgctxt "default description"
 msgid "Tag archive for %s."
 msgstr ""
 
-#: lib/page.php:728
+#: lib/page.php:729
 msgctxt "default description"
 msgid "Category archive for %s."
 msgstr ""
 
-#: lib/page.php:757
+#: lib/page.php:758
 msgctxt "default description"
 msgid "Authored by %s."
 msgstr ""
 
-#: lib/page.php:764
+#: lib/page.php:765
 msgctxt "default description"
 msgid "Daily archive for %s."
 msgstr ""
 
-#: lib/page.php:769
+#: lib/page.php:770
 msgctxt "default description"
 msgid "Monthly archive for %s."
 msgstr ""
 
-#: lib/page.php:774
+#: lib/page.php:775
 msgctxt "default description"
 msgid "Yearly archive for %s."
 msgstr ""
 
-#: lib/page.php:779
+#: lib/page.php:780
 msgctxt "default description"
 msgid "Archive page."
 msgstr ""
 
-#: lib/page.php:824
+#: lib/page.php:825
 msgctxt "default description"
 msgid "No Description."
 msgstr ""
