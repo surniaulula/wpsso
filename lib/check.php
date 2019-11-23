@@ -434,9 +434,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 			static $lc = array();
 
+			$id  = $ext . '-' . $li . '-' . $rv . '-' . $mx;
 			$ext = null === $ext ? $this->p->lca : $ext;
 			$rv  = null === $mx ? $rv : $rv * $mx;
-			$id  = $ext . '-' . $li . '-' . $rv;
 
 			if ( $rc && isset( $lc[ $id ] ) ) {
 				return $lc[ $id ];
