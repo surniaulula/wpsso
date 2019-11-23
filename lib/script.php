@@ -34,6 +34,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 					 * Add jQuery to update the toolbar menu item counter and container on page load.
 					 */
 					if ( ! empty( $this->tb_notices ) ) {
+
 						add_action( 'admin_footer', array( $this, 'add_update_tb_notices_script' ), 1000 );
 					}
 
@@ -277,13 +278,22 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 					$this->p->debug->log( 'exiting early: doing block editor' );
 				}
 
+				echo '<!-- ' . __METHOD__ . ' exiting early: block editor will update toolbar notices -->' . "\n\n";
+
 				return;
 			}
 
 			/**
 			 * Just in case - no use getting notices if there's nothing to get.
+			 *
+			 * Example $this->tb_notices = array( 'err', 'warn', 'inf' ).
 			 */
 			if ( empty( $this->tb_notices ) || ! is_array( $this->tb_notices ) ) {
+
+				if ( ! empty( $this->p->debug->enabled ) ) {
+					$this->p->debug->log( 'exiting early: no toolbar notice types defined' );
+				}
+
 				return;
 			}
 

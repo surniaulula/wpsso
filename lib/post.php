@@ -572,6 +572,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		/**
 		 * Hooked into the current_screen action.
+		 *
 		 * Sets the WpssoWpMeta::$head_tags and WpssoWpMeta::$head_info class properties.
 		 */
 		public function load_meta_page( $screen = false ) {
