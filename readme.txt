@@ -436,7 +436,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.13.0-rc.1 (2019/11/23)**
+**Version 6.13.0 (2019/11/23)**
 
 * **New Features**
 	* The Premium features of the following add-ons have been merged into their Standard version (the Premium versions are no longer available):
@@ -705,7 +705,7 @@ Complete re-write of the WP eCommerce integration module in the Premium version.
 
 == Upgrade Notice ==
 
-= 6.13.0-rc.1 =
+= 6.13.0 =
 
 (2019/11/23) The Premium features of the WPSSO TIE add-on has been merged into its Standard version. Removed the "Optional Advanced Settings" metabox from the Essential settings page.
 
