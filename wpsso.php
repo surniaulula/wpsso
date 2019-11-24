@@ -459,7 +459,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$warn_msg     = '';
 				$info         = $this->cf[ 'plugin' ][ 'wpsso' ];
 				$notice_key   = 'debug-mode-is-active';
-				$dismiss_time = HOUR_IN_SECONDS * 3;
+				$dismiss_time = 12 * HOUR_IN_SECONDS;
 
 				if ( $this->debug->is_enabled( 'log' ) ) {
 
