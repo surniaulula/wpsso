@@ -450,17 +450,17 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 			} elseif ( defined( $uca . '_PLUGINDIR' ) ) {
 
-				$dir = constant( $uca . '_PLUGINDIR' );
+				$ext_dir = constant( $uca . '_PLUGINDIR' );
 
 			} elseif ( isset( $this->p->cf[ 'plugin' ][ $ext ][ 'slug' ] ) ) {
 
 				$slug = $this->p->cf[ 'plugin' ][ $ext ][ 'slug' ];
 
 				if ( ! defined ( 'WPMU_PLUGIN_DIR' ) ||
-					! is_dir( $dir = WPMU_PLUGIN_DIR . '/' . $slug . '/' ) ) {
+					! is_dir( $ext_dir = WPMU_PLUGIN_DIR . '/' . $slug . '/' ) ) {
 
 					if ( ! defined ( 'WP_PLUGIN_DIR' ) ||
-						! is_dir( $dir = WP_PLUGIN_DIR . '/' . $slug . '/' ) ) {
+						! is_dir( $ext_dir = WP_PLUGIN_DIR . '/' . $slug . '/' ) ) {
 
 						return $lc[ $id ] = false;
 					}
@@ -471,13 +471,10 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			}
 
 			$okey = 'plugin_' . $ext . '_tid';
-			$pdir = is_dir( $dir . 'lib/pro/' ) ? $rv : false;
+			$pdir = is_dir( $ext_dir . 'lib/pro/' ) ? $rv : false;
 
-			return $lc[ $id ] = $li ?
-				( ( ! empty( $this->p->options[ $okey ] ) &&
-					$pdir && class_exists( 'SucomUpdate' ) &&
-						( $ue = SucomUpdate::get_umsg( $ext ) ?
-							false : $pdir ) ) ? $ue : false ) : $pdir;
+			return $lc[ $id ] = $li ? ( ( ! empty( $this->p->options[ $okey ] ) && $pdir && class_exists( 'SucomUpdate' ) && 
+				( $ue = SucomUpdate::get_umsg( $ext ) ? false : $pdir ) ) ? $ue : false ) : $pdir;
 		}
 
 		public function get_ext_gen_list() {

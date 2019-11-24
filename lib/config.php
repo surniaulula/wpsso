@@ -3794,9 +3794,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				require_once WPSSO_PLUGINDIR . 'lib/ext/parse-readme.php';
 			}
 
-			if ( file_exists( WPSSO_PLUGINDIR . 'lib/loader.php' ) ) {
-				require_once WPSSO_PLUGINDIR . 'lib/loader.php';
-			}
+			/**
+			 * Additional module library loader.
+			 */
+			require_once WPSSO_PLUGINDIR . 'lib/loader.php';
 
 			add_filter( 'wpsso_load_lib', array( 'WpssoConfig', 'load_lib' ), 10, 3 );
 		}
