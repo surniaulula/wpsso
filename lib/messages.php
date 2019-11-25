@@ -146,13 +146,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-og_title':	// Default Title
 
-							$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content',
+							$advanced_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content',
 								_x( 'Use Filtered (aka SEO) Title', 'option label', 'wpsso' ) );
 
 							$text = __( 'A customized title for the Facebook / Open Graph, Pinterest Rich Pin, and Twitter Card meta tags (all Twitter Card formats).', 'wpsso' ) . ' ';
 
 							// translators: %s is a link to the (translated) "Use Filtered (aka SEO) Title" option settings page.
-							$text .= sprintf( __( 'If the %s option is enabled, the default title value may be provided by your theme or another SEO plugin.', 'wpsso' ), $settings_page_link );
+							$text .= sprintf( __( 'If the %s option is enabled, the default title value may be provided by your theme or another SEO plugin.', 'wpsso' ), $advanced_page_link );
 
 						 	break;
 
@@ -335,9 +335,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-site_name':
 
-							$settings_page_url = get_admin_url( null, 'options-general.php' );
+							$wp_general_page_url = get_admin_url( null, 'options-general.php' );
 
-							$text = sprintf( __( 'The WordPress Site Name is used for the Facebook / Open Graph and Pinterest Rich Pin %1$s meta tag. You may override <a href="%2$s">the default WordPress Site Title value</a>.', 'wpsso' ), '<code>og:site_name</code>', $settings_page_url );
+							$text = sprintf( __( 'The WordPress Site Name is used for the Facebook / Open Graph and Pinterest Rich Pin %1$s meta tag. You may override <a href="%2$s">the default WordPress Site Title value</a>.', 'wpsso' ), '<code>og:site_name</code>', $wp_general_page_url );
 
 							break;
 
@@ -349,11 +349,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-site_desc':
 
-							$settings_page_url = get_admin_url( null, 'options-general.php' );
+							$wp_general_page_url = get_admin_url( null, 'options-general.php' );
 
 							$text = sprintf( __( 'The WordPress tagline is used as a description for the blog (non-static) front page, and as a fallback for the Facebook / Open Graph and Pinterest Rich Pin %1$s meta tag.', 'wpsso' ), '<code>og:description</code>' ) . ' ';
 
-							$text .= sprintf( __( 'You may override <a href="%1$s">the default WordPress Tagline value</a> here, to provide a longer and more complete description of your website.', 'wpsso' ), $settings_page_url );
+							$text .= sprintf( __( 'You may override <a href="%1$s">the default WordPress Tagline value</a> here, to provide a longer and more complete description of your website.', 'wpsso' ), $wp_general_page_url );
 
 							break;
 
@@ -366,7 +366,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							if ( isset( $this->p->cf[ 'plugin' ][ 'wpssoplm' ] ) ) {
 
-								$plm_info       = $this->p->cf[ 'plugin' ][ 'wpssoplm' ];
+								$plm_info = $this->p->cf[ 'plugin' ][ 'wpssoplm' ];
+
 								$plm_addon_link = $this->p->util->get_admin_url( 'addons#wpssoplm', $plm_info[ 'short' ] );
 
 								$text = sprintf( __( 'Select an optional Place / Location for this Organization (requires the %s add-on).',
@@ -780,10 +781,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_check_img_dims':	// Enforce Image Size Checks.
 
-							$settings_page_link = $this->p->util->get_admin_url( 'image-dimensions',
+							$img_sizes_page_link = $this->p->util->get_admin_url( 'image-dimensions',
 								_x( 'SSO Image Sizes', 'lib file description', 'wpsso' ) );
 
-							$text = sprintf( __( 'When this option is enabled, full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you\'ve defined in the %s settings &mdash; images that do not meet or exceed the minimum requirements will be ignored.', 'wpsso' ), $settings_page_link );
+							$text = sprintf( __( 'When this option is enabled, full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you\'ve defined in the %s settings &mdash; images that do not meet or exceed the minimum requirements will be ignored.', 'wpsso' ), $img_sizes_page_link );
 
 							break;
 
@@ -1240,7 +1241,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-schema_knowledge_graph':
 
-							$settings_page_link = $this->p->util->get_admin_url( 'social-accounts',
+							$website_page_link = $this->p->util->get_admin_url( 'social-accounts',
 								_x( 'SSO WebSite Pages', 'lib file description', 'wpsso' ) );
 
 							$text = __( 'Include WebSite, Organization and/or Person Schema markup in the front page for Google\'s <em>Knowledge Graph</em>.', 'wpsso' ) . '<br/><br/>';
@@ -1249,7 +1250,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= sprintf( __( 'Developers can hook the "%s" filter to modify the site search URL (or disable its addition by returning false).', 'wpsso' ), $this->p->lca . '_json_ld_search_url' ) . '<br/><br/>';
 
-							$text .= sprintf( __( 'The Organization markup includes all URLs entered in the %s settings page.', 'wpsso' ), $settings_page_link ) . '<br/><br/>';
+							$text .= sprintf( __( 'The Organization markup includes all URLs entered in the %s settings page.', 'wpsso' ), $website_page_link ) . '<br/><br/>';
 
 							$text .= __( 'The Person markup includes all contact method URLs entered in the user\'s WordPress profile page.', 'wpsso' );
 
@@ -1759,9 +1760,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'info-meta-validate-w3c':
 
-							$settings_page_link = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google',
-								_x( 'Schema Property Meta Containers', 'option label', 'wpsso' ) );
-
 							$text = '<p class="top">';
 
 							$text .= __( 'Validate HTML syntax and HTML 5 conformance of your meta tags and theme templates.', 'wpsso' ) . ' ';
@@ -1839,7 +1837,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'info-plugin-tid':	// Displayed in the Licenses settings page.
 
-							$um_info       = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
+							$um_info = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
+
 							$um_addon_link = $this->p->util->get_admin_url( 'addons#wpssoum', $um_info[ 'name' ] );
 
 							$text = '<blockquote class="top-info">';
@@ -1863,14 +1862,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$um_info = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
 
-							$settings_page_link = $this->p->util->get_admin_url( 'licenses',
+							$licenses_page_link = $this->p->util->get_admin_url( 'licenses',
 								_x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
 
 							$text = '<blockquote class="top-info">';
 
 							$text .= '<p>' . sprintf( __( 'After purchasing the %1$s plugin or any complementary %2$s add-on, you\'ll receive an email with a unique Authentication ID for the plugin or add-on you purchased.', 'wpsso' ), $info[ 'short_pro' ], $pro_transl ) . ' ';
 
-							$text .= sprintf( __( 'You may enter each Authentication ID on this page <em>to define a value for all sites within the network</em> &mdash; or enter Authentication IDs individually on each site\'s %1$s settings page.', 'wpsso' ), $settings_page_link ) . '</p>';
+							$text .= sprintf( __( 'You may enter each Authentication ID on this page <em>to define a value for all sites within the network</em> &mdash; or enter Authentication IDs individually on each site\'s %1$s settings page.', 'wpsso' ), $licenses_page_link ) . '</p>';
 
 							$text.= '<p>' . sprintf( __( 'If you enter Authentication IDs in this network settings page, <em>please make sure you have purchased enough licenses for all sites within the network</em> &mdash; for example, to license a %1$s add-on for 10 sites, you would need an Authentication ID from a 10 license pack purchase (or better) of that %1$s add-on.', 'wpsso' ), $pro_transl ) . '</p>';
 
@@ -2123,7 +2122,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								if ( current_user_can( 'manage_options' ) ) {
 
-									$img_dim_page_link = $this->p->util->get_admin_url( 'image-dimensions', 
+									$img_sizes_page_link = $this->p->util->get_admin_url( 'image-dimensions', 
 										_x( 'SSO Image Sizes', 'lib file description', 'wpsso' ) );
 
 									$upscale_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
@@ -2142,7 +2141,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 									$text .= '<ul>';
 
 									$text .= '<li>' . sprintf( __( 'You can adjust the <b>%1$s</b> option in the %2$s settings.',
-										'wpsso' ), $info[ 'size_label' ], $img_dim_page_link ) . '</li>';
+										'wpsso' ), $info[ 'size_label' ], $img_sizes_page_link ) . '</li>';
 
 									if ( empty( $this->p->options[ 'plugin_upscale_images' ] ) ) {
 										$text .= '<li>' . sprintf( __( 'Enable the %1$s option.', 'wpsso' ),
@@ -2241,19 +2240,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'notice-pro-not-installed':
 
-						$settings_page_link = $this->p->util->get_admin_url( 'licenses',
+						$licenses_page_link = $this->p->util->get_admin_url( 'licenses',
 							_x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
 
-						$text = sprintf( __( 'An Authentication ID has been entered for %1$s but the plugin is not installed &mdash; you can install and activate the %2$s version from the %3$s settings page.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $pro_transl, $settings_page_link ) . ' ;-)';
+						$text = sprintf( __( 'An Authentication ID has been entered for %1$s but the plugin is not installed &mdash; you can install and activate the %2$s version from the %3$s settings page.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $pro_transl, $licenses_page_link ) . ' ;-)';
 
 						break;
 
 					case 'notice-pro-not-updated':
 
-						$settings_page_link = $this->p->util->get_admin_url( 'licenses',
+						$licenses_page_link = $this->p->util->get_admin_url( 'licenses',
 							_x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
 
-						$text = sprintf( __( 'An Authentication ID has been entered for %1$s in the %2$s settings page but the %3$s version is not installed &mdash; don\'t forget to update the plugin to install the latest %3$s version.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $settings_page_link, $pro_transl ) . ' ;-)';
+						$text = sprintf( __( 'An Authentication ID has been entered for %1$s in the %2$s settings page but the %3$s version is not installed &mdash; don\'t forget to update the plugin to install the latest %3$s version.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $licenses_page_link, $pro_transl ) . ' ;-)';
 
 						break;
 
@@ -2262,15 +2261,18 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$um_info = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
 
-						$settings_page_link = $this->p->util->get_admin_url( 'addons',
+						$addons_page_link = $this->p->util->get_admin_url( 'addons#wpssoum',
 							_x( 'Complementary Add-ons', 'lib file description', 'wpsso' ) );
+
+						$licenses_page_link = $this->p->util->get_admin_url( 'licenses',
+							_x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
 
 						// translators: Please ignore - translation uses a different text domain.
 						$plugins_page_link = '<a href="' . get_admin_url( null, 'plugins.php' ) . '">' . __( 'Plugins' ) . '</a>';
 
 						$text = '<p>';
 
-						$text .= '<b>' . sprintf( __( 'At least one Authentication ID has been entered in the %1$s settings page,<br/>but the %2$s add-on is not active.', 'wpsso' ), $settings_page_link, $um_info[ 'name' ] ) . '</b> ';
+						$text .= '<b>' . sprintf( __( 'At least one Authentication ID has been entered in the %1$s settings page,<br/>but the %2$s add-on is not active.', 'wpsso' ), $licenses_page_link, $um_info[ 'name' ] ) . '</b> ';
 
 						$text .= sprintf( __( 'This complementary add-on is required to update and enable %1$s and its %2$s add-ons.', 'wpsso' ), $info[ 'name_pro' ], $pro_transl );
 
@@ -2279,7 +2281,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						if ( $msg_key === 'notice-um-add-on-required' ) {
 
 							$text .= '<b>' . sprintf( __( 'Install and activate the %1$s add-on from the %2$s settings page.', 'wpsso' ),
-								$um_info[ 'name' ], $settings_page_link ) . '</b> ';
+								$um_info[ 'name' ], $addons_page_link ) . '</b> ';
 
 						} else {
 
