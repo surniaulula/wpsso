@@ -251,7 +251,7 @@ msgctxt "option label"
 msgid "Clear All Caches on Save Settings"
 msgstr ""
 
-#: lib/admin.php:926 lib/register.php:149
+#: lib/admin.php:926 lib/register.php:151
 msgid ""
 "A background task will begin shortly to clear all caches (%s is enabled)."
 msgstr ""
@@ -2655,7 +2655,7 @@ msgctxt "option label"
 msgid "Schema Types Array Cache Expiry"
 msgstr ""
 
-#: lib/gettext-pro.php:50 lib/pro/admin/advanced.php:292 lib/register.php:146
+#: lib/gettext-pro.php:50 lib/pro/admin/advanced.php:292 lib/register.php:148
 #: lib/std/admin/advanced.php:300
 msgctxt "option label"
 msgid "Clear All Caches on Activate"
@@ -3380,7 +3380,7 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
-#: lib/loader.php:184 lib/loader.php:210 lib/post.php:459 lib/register.php:311
+#: lib/loader.php:184 lib/loader.php:210 lib/post.php:459 lib/register.php:313
 #: lib/term.php:427 lib/user.php:373 lib/util.php:497 lib/util.php:3360
 msgid "%s warning:"
 msgstr ""
@@ -5371,7 +5371,7 @@ msgid ""
 "refresh of the plugin update information."
 msgstr ""
 
-#: lib/messages.php:2322 lib/register.php:321
+#: lib/messages.php:2322 lib/register.php:323
 msgid ""
 "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version "
 "is outdated, unsupported, possibly insecure</a>, and may lack important "
@@ -6162,16 +6162,16 @@ msgstr ""
 msgid "Invalid user ID."
 msgstr ""
 
-#: lib/register.php:148
+#: lib/register.php:150
 msgid "The %s plugin has been activated."
 msgstr ""
 
 #. translators: %1$s is the short plugin name, %2$s is the application name, %3$s is the application version number.
-#: lib/register.php:314 lib/register.php:323
+#: lib/register.php:316 lib/register.php:325
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr ""
 
-#: lib/register.php:325
+#: lib/register.php:327
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
