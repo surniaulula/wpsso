@@ -436,6 +436,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 6.13.2 (2019/11/25)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Minor optimization change to save the plugin settings when plugin/add-on versions change.
+* **Bugfixes**
+	* Fixed an incorrect add-on / licenses settings page link in a notification message.
+* **Developer Notes**
+	* None.
+
 **Version 6.13.1 (2019/11/23)**
 
 * **New Features**
@@ -683,6 +694,10 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 	* Updated the SuextMobileDetect class from https://github.com/serbanghita/Mobile-Detect v2.8.28 to v2.8.33.
 
 == Upgrade Notice ==
+
+= 6.13.2 =
+
+(2019/11/25) Minor optimization change to save the plugin settings when plugin/add-on versions change. Fixed an incorrect add-on / licenses settings page link in a notification message.
 
 = 6.13.1 =
 
