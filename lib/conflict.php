@@ -609,7 +609,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					}
 
 					$notice_key   = 'vc-version-event-bug';
-					$dismiss_time = MONTH_IN_SECONDS;
+					$dismiss_time = DAY_IN_SECONDS;
 
 					if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) { // Don't bother if already dismissed.
 					
@@ -628,7 +628,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				}
 
 				$notice_key   = 'wp-search-engine-visibility-disabled';
-				$dismiss_time = MONTH_IN_SECONDS * 3;
+				$dismiss_time = true;
 
 				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) { // Don't bother if already dismissed.
 

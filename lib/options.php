@@ -709,6 +709,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			$doing_upgrade = ! $is_new_options && ! $options_changed && $current_version === $latest_version ? false : true;
 
+			/**
+			 * $doing_upgrade added in WPSSO Core v4.4.0.
+			 */
 			$opts = apply_filters( $this->p->lca . '_save_options', $opts, $options_name, $network, $doing_upgrade );
 
 			if ( $network ) {
