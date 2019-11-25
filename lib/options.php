@@ -228,7 +228,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							if ( ! isset( $opts[ 'plugin_' . $ext . '_version' ] ) ||
 								$opts[ 'plugin_' . $ext . '_version' ] !== $info[ 'version' ] ) {
 
+								$opts[ 'plugin_' . $ext . '_version' ] = $info[ 'version' ];
+
 								$version_changed = true;
+
+								$options_changed = true;	// Save the options.
 							}
 						}
 					}
