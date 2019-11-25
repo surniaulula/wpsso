@@ -228,11 +228,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							if ( ! isset( $opts[ 'plugin_' . $ext . '_version' ] ) ||
 								$opts[ 'plugin_' . $ext . '_version' ] !== $info[ 'version' ] ) {
 
-								$opts[ 'plugin_' . $ext . '_version' ] = $info[ 'version' ];
-
 								$version_changed = true;
-
-								$options_changed = true;	// Save the options.
 							}
 						}
 					}
@@ -408,7 +404,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/**
 				 * Save options and show reminders.
 				 */
-				if ( $options_changed ) {
+				if ( $options_changed || $version_changed ) {
 
 					if ( ! $is_new_options ) {
 
