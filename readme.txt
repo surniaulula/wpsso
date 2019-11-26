@@ -442,9 +442,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 6.14.0-dev.1 (2019/11/26)**
 
 * **New Features**
-	* Added support for the "Perfect WooCommerce Brands" plugin (Premium version).
-* **Improvements**
 	* None.
+* **Improvements**
+	* Added support for the "Perfect WooCommerce Brands" plugin (Premium version).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
