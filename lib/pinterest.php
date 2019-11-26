@@ -117,27 +117,34 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 				return $content;
 			}
 
-			static $do_once = array();						// Prevent recursion.
+			static $do_once = array();				// Use a static variable to prevent recursion.
 
-			$use_post = in_the_loop() ? true : false;				// Use the $post object inside the loop.
+			$use_post = in_the_loop() ? true : false;		// Use the $post object inside the loop.
+
 			$use_post = apply_filters( $this->p->lca . '_use_post', $use_post );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'required call to get_page_mod()' );
 			}
 
-			$mod        = $this->p->util->get_page_mod( $use_post );		// $use_post is true by default.
+			$mod = $this->p->util->get_page_mod( $use_post );	// $use_post is true by default.
+
 			$cache_salt = SucomUtil::get_mod_salt( $mod );
 
-			if ( ! empty( $do_once[ $cache_salt ] ) ) {				// Check for recursion.
+			if ( ! empty( $do_once[ $cache_salt ] ) ) {		// Check for recursion.
 				return $content;
 			} else {
 				$do_once[ $cache_salt ] = true;
 			}
 
 			$size_name = $this->p->lca . '-schema';
+
 			$og_images = $this->p->og->get_all_images( 1, $size_name, $mod, false, $md_pre = 'schema' );
+
 			$image_url = SucomUtil::get_mt_media_url( $og_images );
+
+			$image_html = "\n" . '<!-- ' . $this->p->lca . ' schema image for pinterest pin it button -->' . "\n";
+			$image_html .= '<div class="' . $this->p->lca . '-schema-image-for-pinterest" style="display:none;">' . "\n";
 
 			if ( ! empty( $image_url ) ) {
 
@@ -145,23 +152,19 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 					$dots = '...', $mod, $read_cache = true, $add_hashtags = false, $do_encode = true,
 						$md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
 
-				$img_html = "\n" . '<!-- ' . $this->p->lca . ' schema image for pinterest pin it button -->' . "\n";
-				$img_html .= '<div class="' . $this->p->lca . '-schema-image-for-pinterest" style="display:none;">' . "\n";
-
 				/**
 				 * Note that an empty alt attribute is required for W3C validation.
 				 *
 				 * Adding a 'loading="lazy"' attribute appears to break the Pinterest Save button.
 				 */
-				$img_html .= "\t" . '<img src="' . SucomUtil::esc_url_encode( $image_url ) . '" width="0" height="0" style="width:0;height:0;" ' . 
+				$image_html .= "\t" . '<img src="' . SucomUtil::esc_url_encode( $image_url ) . '" ' .
+					'width="0" height="0" style="width:0;height:0;" ' . 
 					'data-pin-description="' . esc_attr( $data_pin_desc ) . '" alt="" />' . "\n";
-
-				$img_html .= '</div><!-- .' . $this->p->lca . '-schema-image-for-pinterest -->' . "\n\n";
-
-				$content = $img_html . $content;
 			}
 
-			return $content;
+			$image_html .= '</div><!-- .' . $this->p->lca . '-schema-image-for-pinterest -->' . "\n\n";
+
+			return $image_html . $content;
 		}
 	}
 }
