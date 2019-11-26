@@ -118,8 +118,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 
 				/**
-				 * If we don't have a caption, then provide a short description.
-				 * If we have a caption, then add the complete image description.
+				 * If we don't have a caption, then provide a short description. If we have a caption, then add the
+				 * complete image description.
 				 */
 				if ( empty( $ret[ 'caption' ] ) ) {
 
@@ -455,9 +455,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						continue;
 					}
 					
-					/**
-					 * Setup the offer with basic itemprops.
-					 */
 					if ( false !== ( $offer = WpssoSchema::get_data_itemprop_from_assoc( $event_offer, array( 
 						'name'          => 'offer_name',
 						'url'           => 'offer_url',
@@ -469,7 +466,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					) ) ) ) {
 
 						/**
-						 * Add the complete offer.
+						 * Add the offer.
 						 */
 						$ret[ 'offers' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/Offer', $offer );
 					}
