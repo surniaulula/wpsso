@@ -203,16 +203,8 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Brand', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_brand',
-					'content'  => $form->get_no_input( 'product_brand', '', '', $placeholder = true ),
-				),
-				'og_product_avail' => array(		// Open Graph meta tag product:availability.
-					'tr_class' => 'hide_og_type hide_og_type_product',
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Product Availability', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-product_avail',
-					'content'  => $form->get_no_select( 'product_avail', $this->p->cf[ 'form' ][ 'item_availability' ],
-						$css_class = '', $css_id = '', $is_assoc = true, $selected = true ),
+					'content'  => $form->get_no_input( 'product_brand',
+						$css_class = '', $css_id = '', $placeholder = true ),
 				),
 				'og_product_price' => array(		// Open Graph meta tags product:price:amount and product:price:currency.
 					'tr_class' => 'hide_og_type hide_og_type_product',
@@ -222,6 +214,15 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'tooltip'  => 'meta-product_price',
 					'content'  => $form->get_no_input( 'product_price', '', '', $placeholder = true ) . ' ' .
 						$form->get_no_select( 'product_currency', $currencies, $css_class = 'currency' ),
+				),
+				'og_product_avail' => array(		// Open Graph meta tag product:availability.
+					'tr_class' => 'hide_og_type hide_og_type_product',
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Product Availability', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_avail',
+					'content'  => $form->get_no_select( 'product_avail', $this->p->cf[ 'form' ][ 'item_availability' ],
+						$css_class = '', $css_id = '', $is_assoc = true, $selected = true ),
 				),
 				'og_product_condition' => array(		// Open Graph meta tag product:condition.
 					'tr_class' => 'hide_og_type hide_og_type_product',

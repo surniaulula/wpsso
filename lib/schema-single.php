@@ -339,11 +339,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->debug->log( 'checking for custom event offers' );
 			}
 
-			$have_event_offers = false;
-			$event_offers_max  = SucomUtil::get_const( 'WPSSO_SCHEMA_EVENT_OFFERS_MAX', 10 );
-			$def_sharing_url   = $wpsso->util->get_sharing_url( $mod );
+			$have_offers = false;
 
-			foreach ( range( 0, $event_offers_max - 1, 1 ) as $key_num ) {
+			$metadata_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX', 5 );
+
+			$def_sharing_url = $wpsso->util->get_sharing_url( $mod );
+
+			foreach ( range( 0, $metadata_offers_max - 1, 1 ) as $key_num ) {
 
 				$offer_opts = apply_filters( $wpsso->lca . '_get_event_offer_options', false, $mod, $event_id, $key_num );
 
@@ -413,9 +415,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						}
 					}
 
-					if ( false === $have_event_offers ) {
+					if ( false === $have_offers ) {
 
-						$have_event_offers = true;
+						$have_offers = true;
 
 						if ( $wpsso->debug->enabled ) {
 							$wpsso->debug->log( 'custom event offer found - creating new offers array' );
@@ -449,10 +451,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				foreach ( $event_opts[ 'event_offers' ] as $event_offer ) {
 
+					if ( ! is_array( $event_offer ) ) {	// Just in case.
+						continue;
+					}
+					
 					/**
 					 * Setup the offer with basic itemprops.
 					 */
-					if ( is_array( $event_offer ) && false !== ( $offer = WpssoSchema::get_data_itemprop_from_assoc( $event_offer, array( 
+					if ( false !== ( $offer = WpssoSchema::get_data_itemprop_from_assoc( $event_offer, array( 
 						'name'          => 'offer_name',
 						'url'           => 'offer_url',
 						'price'         => 'offer_price',

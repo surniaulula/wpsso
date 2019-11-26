@@ -3593,13 +3593,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * WPSSO schema limits.
 			 */
 			$var_const[ 'WPSSO_SCHEMA_ADDL_TYPE_URL_MAX' ]         = 5;
-			$var_const[ 'WPSSO_SCHEMA_EVENT_OFFERS_MAX' ]          = 10;
 			$var_const[ 'WPSSO_SCHEMA_HOWTO_STEPS_MAX' ]           = 40;
 			$var_const[ 'WPSSO_SCHEMA_HOWTO_SUPPLIES_MAX' ]        = 30;
 			$var_const[ 'WPSSO_SCHEMA_HOWTO_TOOLS_MAX' ]           = 20;
 			$var_const[ 'WPSSO_SCHEMA_ISPARTOF_URL_MAX' ]          = 20;
 			$var_const[ 'WPSSO_SCHEMA_JOB_LOCATIONS_MAX' ]         = 5;
-			$var_const[ 'WPSSO_SCHEMA_MOVIE_ACTORS_MAX' ]          = 20;
+			$var_const[ 'WPSSO_SCHEMA_METADATA_OFFERS_MAX' ]       = 5;
+			$var_const[ 'WPSSO_SCHEMA_MOVIE_ACTORS_MAX' ]          = 15;
 			$var_const[ 'WPSSO_SCHEMA_MOVIE_DIRECTORS_MAX' ]       = 5;
 			$var_const[ 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' ]    = YEAR_IN_SECONDS;	// Used for Schema 'priceValidUntil' property default.
 			$var_const[ 'WPSSO_SCHEMA_QUESTIONS_PER_FAQPAGE_MAX' ] = 50;
