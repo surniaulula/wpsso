@@ -111,14 +111,14 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			 * Do not add the pinterest image if the current webpage is amp or rss feed.
 			 */
 			if ( SucomUtil::is_amp() || is_feed() ) {
-				return $content;
+				return $content;	// Stop here.
 			}
 
 			/**
 			 * Check if the content filter is being applied to create a description text.
 			 */
 			if ( ! empty( $GLOBALS[ $this->p->lca . '_doing_filter_the_content' ] ) ) {
-				return $content;
+				return $content;	// Stop here.
 			}
 
 			static $do_once = array();				// Use a static variable to prevent recursion.
@@ -136,7 +136,13 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			$cache_salt = SucomUtil::get_mod_salt( $mod );
 
 			if ( ! empty( $do_once[ $cache_salt ] ) ) {		// Check for recursion.
-				return $content;
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: content filter recursion detected' );
+				}
+
+				return $content;	// Stop here.
+
 			} else {
 				$do_once[ $cache_salt ] = true;
 			}
