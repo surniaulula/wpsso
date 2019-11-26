@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.13.2',	// Plugin version.
+					'version'     => '6.14.0-dev.1',	// Plugin version.
 					'opt_version' => '680',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -89,14 +89,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'meta-edit' => 'Extend Meta Edit',
 							),
 							'ecom' => array(
-								'edd'                     => '(plugin) Easy Digital Downloads',
-								'jck-wssv'                => '(plugin) WooCommerce Show Single Variations',
-								'woocommerce'             => '(plugin) WooCommerce',
-								'woocommerce-brands'      => '(plugin) WooCommerce Brands',
-								'woo-add-gtin'            => '(plugin) WooCommerce UPC, EAN, and ISBN',
-								'wpecommerce'             => '(plugin) WP eCommerce',
-								'wpm-product-gtin-wc'     => '(plugin) Product GTIN for WooCommerce',
-								'yith-woocommerce-brands' => '(plugin) YITH WooCommerce Brands Add-on',
+								'edd'                        => '(plugin) Easy Digital Downloads',
+								'jck-wssv'                   => '(plugin) WooCommerce Show Single Variations',
+								'perfect-woocommerce-brands' => '(plugin) Perfect WooCommerce Brands',
+								'woocommerce'                => '(plugin) WooCommerce',
+								'woocommerce-brands'         => '(plugin) WooCommerce Brands',
+								'woo-add-gtin'               => '(plugin) WooCommerce UPC, EAN, and ISBN',
+								'wpecommerce'                => '(plugin) WP eCommerce',
+								'wpm-product-gtin-wc'        => '(plugin) Product GTIN for WooCommerce',
+								'yith-woocommerce-brands'    => '(plugin) YITH WooCommerce Brands Add-on',
 							),
 							'event' => array(
 								'tribe_events' => '(plugin) The Events Calendar',
@@ -1111,6 +1112,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_tax_product_brand'      => 'item.list',	// For WooCommerce Brands.
 					'schema_type_for_tax_product_cat'        => 'item.list',	// For WooCommerce.
 					'schema_type_for_tax_product_tag'        => 'item.list',	// For WooCommerce.
+					'schema_type_for_tax_pwb-brand'          => 'item.list',	// For Perfect WooCommerce Brands Add-on.
 					'schema_type_for_tax_yith_product_brand' => 'item.list',	// For YITH WooCommerce Brands Add-on.
 					'schema_type_for_tc_events'              => 'event',		// For Tickera.
 					'schema_type_for_tribe_events'           => 'event',

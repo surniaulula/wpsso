@@ -97,6 +97,12 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							break;
 
+						case 'ecom-perfect-woocommerce-brands':
+
+							$chk[ 'class' ] = '\Perfect_Woocommerce_Brands\Perfect_Woocommerce_Brands';
+
+							break;
+
 						case 'ecom-woocommerce':
 
 							$chk[ 'class' ] = 'WooCommerce';
