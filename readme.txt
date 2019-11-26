@@ -280,6 +280,7 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 		* Gravity Forms + GravityView
 		* [NextCellent Gallery - NextGEN Legacy](https://wordpress.org/plugins/nextcellent-gallery-nextgen-legacy/)
 		* [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/)
+		* [Perfect WooCommerce Brands](https://wordpress.org/plugins/perfect-woocommerce-brands/)
 		* [Polylang](https://wordpress.org/plugins/polylang/)
 		* [Product GTIN (EAN, UPC, ISBN) for WooCommerce](https://wordpress.org/plugins/product-gtin-ean-upc-isbn-for-woocommerce/)
 		* [rtMedia for WordPress, BuddyPress and bbPress](https://wordpress.org/plugins/buddypress-media/)
@@ -435,6 +436,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 <p>Under the SSO &gt; Update Manager settings page, select the "Development and Up" version filter for WPSSO Core and all its extensions (to satisfy any version dependencies). Save the plugin settings, and click the "Check for Updates" button to fetch the latest / current WPSSO version information. When new Development versions are available, they will automatically appear under your WordPress Dashboard &gt; Updates page. You can always re-select the "Stable / Production" version filter at any time to re-install the last stable / production version of a plugin.</p>
 
 <h3>Changelog / Release Notes</h3>
+
+**Version 6.14.0-dev.1 (2019/11/26)**
+
+* **New Features**
+	* Added support for the "Perfect WooCommerce Brands" plugin (Premium version).
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
 
 **Version 6.13.2 (2019/11/25)**
 
@@ -694,6 +706,10 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 	* Updated the SuextMobileDetect class from https://github.com/serbanghita/Mobile-Detect v2.8.28 to v2.8.33.
 
 == Upgrade Notice ==
+
+= 6.14.0-dev.1 =
+
+(2019/11/26) Added support for the "Perfect WooCommerce Brands" plugin (Premium version).
 
 = 6.13.2 =
 
