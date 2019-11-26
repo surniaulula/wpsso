@@ -110,8 +110,8 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 			* Article Topic
 		* Product Information
 			* Product Brand
-			* Product Availability
 			* Product Price and Currency
+			* Product Availability
 			* Product Condition
 			* Product Material
 			* Product Color
@@ -245,7 +245,9 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 			* Subject Author Name
 			* Subject Author URL
 			* Subject Publish Date
-			* Subject ISBN
+			* Subject Book ISBN
+			* Subject Product Brand
+			* Subject Product Offers (name, price, currency, availability)
 	* Claim Review Information
 		* Short Summary of Claim
 		* First Appearance URL

@@ -113,8 +113,8 @@
 
 <ul>
 <li>Product Brand</li>
-<li>Product Availability</li>
 <li>Product Price and Currency</li>
+<li>Product Availability</li>
 <li>Product Condition</li>
 <li>Product Material</li>
 <li>Product Color</li>
@@ -306,7 +306,9 @@
 <li>Subject Author Name</li>
 <li>Subject Author URL</li>
 <li>Subject Publish Date</li>
-<li>Subject ISBN</li>
+<li>Subject Book ISBN</li>
+<li>Subject Product Brand</li>
+<li>Subject Product Offers (name, price, currency, availability)</li>
 </ul></li>
 </ul></li>
 <li>Claim Review Information
