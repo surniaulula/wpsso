@@ -103,6 +103,10 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 		public function get_pinterest_img_html( $content = '' ) {
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
 			/**
 			 * Do not add the pinterest image if the current webpage is amp or rss feed.
 			 */
@@ -146,16 +150,25 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			$image_html = "\n" . '<!-- ' . $this->p->lca . ' schema image for pinterest pin it button -->' . "\n";
 			$image_html .= '<div class="' . $this->p->lca . '-schema-image-for-pinterest" style="display:none;">' . "\n";
 
-			if ( ! empty( $image_url ) ) {
+			if ( empty( $image_url ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'image url for pinterest is empty' );
+				}
+
+			} else {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'adding image url for pinterest = ' . $image_url );
+				}
 
 				$data_pin_desc = $this->p->page->get_description( $this->p->options[ 'schema_desc_max_len' ],
 					$dots = '...', $mod, $read_cache = true, $add_hashtags = false, $do_encode = true,
 						$md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
 
 				/**
-				 * Note that an empty alt attribute is required for W3C validation.
-				 *
-				 * Adding a 'loading="lazy"' attribute appears to break the Pinterest Save button.
+				 * Note that an empty alt attribute is required for W3C validation. Also note that adding a
+				 * 'loading="lazy"' attribute breaks the Pinterest Save button.
 				 */
 				$image_html .= "\t" . '<img src="' . SucomUtil::esc_url_encode( $image_url ) . '" ' .
 					'width="0" height="0" style="width:0;height:0;" ' . 
