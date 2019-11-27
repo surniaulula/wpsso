@@ -439,7 +439,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.14.0-dev.2 (2019/11/26)**
+**Version 6.14.0-dev.3 (2019/11/26)**
 
 * **New Features**
 	* None.
@@ -709,7 +709,7 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 
 == Upgrade Notice ==
 
-= 6.14.0-dev.2 =
+= 6.14.0-dev.3 =
 
 (2019/11/26) Added support for the "Perfect WooCommerce Brands" plugin (Premium version).
 
