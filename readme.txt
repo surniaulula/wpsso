@@ -446,7 +446,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Added support for the "Perfect WooCommerce Brands" plugin (Premium version).
 * **Bugfixes**
-	* None.
+	* Fixed an edge case issue with the "Add Hidden Image for Pin It Button" feature when the WordPress content filter was applied more than once.
 * **Developer Notes**
 	* None.
 
