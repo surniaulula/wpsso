@@ -111,6 +111,11 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			 * Do not add the pinterest image if the current webpage is amp or rss feed.
 			 */
 			if ( SucomUtil::is_amp() || is_feed() ) {
+				
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: is amp or feed' );
+				}
+
 				return $content;	// Stop here.
 			}
 
@@ -118,6 +123,11 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			 * Check if the content filter is being applied to create a description text.
 			 */
 			if ( ! empty( $GLOBALS[ $this->p->lca . '_doing_filter_the_content' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: doing the content filter' );
+				}
+
 				return $content;	// Stop here.
 			}
 
@@ -182,6 +192,10 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			}
 
 			$image_html .= '</div><!-- .' . $this->p->lca . '-schema-image-for-pinterest -->' . "\n\n";
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'done' );
+			}
 
 			return $image_html . $content;
 		}

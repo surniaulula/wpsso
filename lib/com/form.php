@@ -742,10 +742,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_no_select( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null,
-			$selected = false, $event_names = array() ) {
+			$selected = false, $event_names = array(), $event_args = null ) {
 		
 			return $this->get_select( $name, $values, $css_class, $css_id, $is_assoc,
-				$is_disabled = true, $selected, $event_names );
+				$is_disabled = true, $selected, $event_names, $event_args );
 		}
 
 		public function get_no_select_none( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null,
