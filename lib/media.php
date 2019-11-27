@@ -1357,9 +1357,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			foreach ( array( 'id', 'id_pre', 'url', 'url:width', 'url:height' ) as $key ) {
 
-				$key_suffix       = $key_num === null ? $key : $key . '_' . $key_num;	// Use a numbered multi-option key.
-				$opt_key          = $opt_img_pre . '_' . $key_suffix;
-				$opt_key_locale   = SucomUtil::get_key_locale( $opt_img_pre . '_' . $key_suffix, $opts );
+				$key_suffix = $key_num === null ? $key : $key . '_' . $key_num;	// Use a numbered multi-option key.
+
+				$opt_key = $opt_img_pre . '_' . $key_suffix;
+
+				$opt_key_locale = SucomUtil::get_key_locale( $opt_img_pre . '_' . $key_suffix, $opts );
 
 				$img_opts[ $key ] = empty( $opts[ $opt_key_locale ] ) ? '' : $opts[ $opt_key_locale ];
 			}

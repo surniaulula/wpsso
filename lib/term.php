@@ -506,17 +506,19 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				$this->p->debug->log( 'term ID ' . $term_id . ' for meta key ' . $meta_key );
 			}
 
-			static $do_once = array();
+			static $local_recursion = array();
 
-			if ( isset( $do_once[ $term_id ][ $meta_key ] ) ) {
+			if ( isset( $local_recursion[ $term_id ][ $meta_key ] ) ) {
 				return $value;	// Return null.
-			} else {
-				$do_once[ $term_id ][ $meta_key ] = true;			// Prevent recursion.
 			}
+
+			$local_recursion[ $term_id ][ $meta_key ] = true;			// Prevent recursion.
 
 			if ( self::get_term_meta( $term_id, $meta_key, true ) === '' ) {	// Returns empty string if meta not found.
 				$this->get_head_info( $term_id, $read_cache = true );
 			}
+
+			unset( $local_recursion[ $term_id ][ $meta_key ] );
 
 			if ( ! self::use_term_meta_table( $term_id ) ) {
 				return self::get_term_meta( $term_id, $meta_key, $single );	// Provide the options value.

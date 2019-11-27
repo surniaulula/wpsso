@@ -555,17 +555,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->log( 'post ID ' . $post_id . ' for meta key ' . $meta_key );
 			}
 
-			static $do_once = array();
+			static $local_recursion = array();
 
-			if ( isset( $do_once[ $post_id ][ $meta_key ] ) ) {
+			if ( isset( $local_recursion[ $post_id ][ $meta_key ] ) ) {
 				return $value;	// Return null.
-			} else {
-				$do_once[ $post_id ][ $meta_key ] = true;		// Prevent recursion.
 			}
+
+			$local_recursion[ $post_id ][ $meta_key ] = true;			// Prevent recursion.
 
 			if ( get_post_meta( $post_id, $meta_key, $single = true ) === '' ) {	// Returns empty string if meta not found.
 				$this->get_head_info( $post_id, $read_cache = true );
 			}
+
+			unset( $local_recursion[ $post_id ][ $meta_key ] );
 
 			return $value;	// Return null.
 		}

@@ -496,17 +496,19 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->log( 'user ID ' . $user_id . ' for meta key ' . $meta_key );
 			}
 
-			static $do_once = array();
+			static $local_recursion = array();
 
-			if ( isset( $do_once[ $user_id ][ $meta_key ] ) ) {
+			if ( isset( $local_recursion[ $user_id ][ $meta_key ] ) ) {
 				return $value;	// Return null
-			} else {
-				$do_once[ $user_id ][ $meta_key ] = true;		// Prevent recursion.
 			}
+
+			$local_recursion[ $user_id ][ $meta_key ] = true;		// Prevent recursion.
 
 			if ( get_user_meta( $user_id, $meta_key, true ) === '' ) {	// Returns empty string if meta not found.
 				$this->get_head_info( $user_id, $read_cache = true );
 			}
+
+			unset( $local_recursion[ $user_id ][ $meta_key ] );
 
 			return $value;	// Return null.
 		}

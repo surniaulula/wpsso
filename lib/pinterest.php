@@ -23,6 +23,8 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$max_int = SucomUtil::get_max_int();
+
 			add_action( 'init', array( $this, 'allow_img_data_attributes' ) );
 
 			add_filter( 'wp_get_attachment_image_attributes', array( $this, 'add_attachment_image_attributes' ), 10, 2 );
@@ -31,7 +33,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			add_filter( 'get_image_tag', array( $this, 'get_image_tag' ), 10, 6 );
 
 			if ( ! empty( $this->p->options[ 'p_add_img_html' ] ) ) {
-				add_filter( 'the_content', array( $this, 'get_pinterest_img_html' ) );
+				add_filter( 'the_content', array( $this, 'get_pinterest_img_html' ), $max_int );
 			}
 		}
 
@@ -131,7 +133,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 				return $content;	// Stop here.
 			}
 
-			static $do_once = array();				// Use a static variable to prevent recursion.
+			static $local_recursion = array();			// Use a static variable to prevent recursion.
 
 			$use_post = in_the_loop() ? true : false;		// Use the $post object inside the loop.
 
@@ -145,7 +147,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 			$cache_salt = SucomUtil::get_mod_salt( $mod );
 
-			if ( ! empty( $do_once[ $cache_salt ] ) ) {		// Check for recursion.
+			if ( ! empty( $local_recursion[ $cache_salt ] ) ) {		// Check for recursion.
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: content filter recursion detected' );
@@ -153,9 +155,9 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 				return $content;	// Stop here.
 
-			} else {
-				$do_once[ $cache_salt ] = true;
 			}
+
+			$local_recursion[ $cache_salt ] = true;
 
 			$size_name = $this->p->lca . '-schema';
 
@@ -164,6 +166,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			$image_url = SucomUtil::get_mt_media_url( $og_images );
 
 			$image_html = "\n" . '<!-- ' . $this->p->lca . ' schema image for pinterest pin it button -->' . "\n";
+
 			$image_html .= '<div class="' . $this->p->lca . '-schema-image-for-pinterest" style="display:none;">' . "\n";
 
 			if ( empty( $image_url ) ) {
@@ -182,6 +185,10 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 					$dots = '...', $mod, $read_cache = true, $add_hashtags = false, $do_encode = true,
 						$md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
 
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'pinterest data pin description = ' . $data_pin_desc );
+				}
+
 				/**
 				 * Note that an empty alt attribute is required for W3C validation. Also note that adding a
 				 * 'loading="lazy"' attribute breaks the Pinterest Save button.
@@ -196,6 +203,8 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'done' );
 			}
+
+			unset( $local_recursion[ $cache_salt ] );
 
 			return $image_html . $content;
 		}

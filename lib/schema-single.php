@@ -809,9 +809,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		}
 
 		/**
-		 * $org_id can be 'none', 'site', or a number (including 0).
-		 * $logo_key can be 'org_logo_url' or 'org_banner_url' (600x60px image) for Articles.
-		 * Do not provide localized option names - the method will fetch the localized values.
+		 * $org_id can be 'none', 'site', or a number (including 0). $logo_key can be 'org_logo_url' or 'org_banner_url'
+		 * (600x60px image) for Articles. Do not provide localized option names - the method will fetch the localized
+		 * values.
 		 */
 		public static function add_organization_data( &$json_data, $mod, $org_id = 'site', $logo_key = 'org_logo_url', $list_element = false ) {
 
@@ -957,7 +957,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						}
 					}
 
-					if ( ! self::add_place_data( $ret[ 'location' ], $mod, $place_id, $list_element = false ) ) {
+					if ( ! self::add_place_data( $ret[ 'location' ], $mod, $place_id, false ) ) {
 						unset( $ret[ 'location' ] );	// Prevent null assignment.
 					}
 				}
@@ -1386,8 +1386,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		}
 
 		/**
-		 * If not adding a list element, then inherit the existing
-		 * schema type url (if one exists).
+		 * If not adding a list element, then inherit the existing schema type url (if one exists).
 		 */
 		public static function get_type_id_url( $json_data, $type_opts, $opt_key, $def_type_id, $list_element = false ) {
 
