@@ -212,7 +212,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Price', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_price',
-					'content'  => $form->get_no_input( 'product_price', '', '', $placeholder = true ) . ' ' .
+					'content'  => $form->get_no_input( 'product_price', $css_class = 'price', $css_id = '', $placeholder = true ) . ' ' .
 						$form->get_no_select( 'product_currency', $currencies, $css_class = 'currency' ),
 				),
 				'og_product_avail' => array(		// Open Graph meta tag product:availability.
