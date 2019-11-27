@@ -526,9 +526,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			/**
 			 * Adjust Dependent Options
 			 *
-			 * All options (site and meta as well) are sanitized here, so always use 
-			 * isset() or array_key_exists() on all tests to make sure additional / 
-			 * unnecessary options are not created in post meta.
+			 * All options (site and meta as well) are sanitized here, so always use isset() or array_key_exists() on
+			 * all tests to make sure additional / unnecessary options are not created in post meta.
 			 */
 			foreach ( SucomUtil::preg_grep_keys( '/^(.*)_img_width$/', $opts, $invert = false, $replace = '$1' ) as $opt_pre => $img_width ) {
 
@@ -630,6 +629,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 * og_desc_max_len must be at least 160 chars (defined in config).
 			 */
 			if ( isset( $opts[ 'og_desc_max_len' ] ) && $opts[ 'og_desc_max_len' ] < $this->p->cf[ 'head' ][ 'limit_min' ][ 'og_desc_len' ] )  {
+
 				$opts[ 'og_desc_max_len' ] = $this->p->cf[ 'head' ][ 'limit_min' ][ 'og_desc_len' ];
 			}
 
@@ -637,6 +637,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 * Remove the SEO description if a known SEO plugin is active.
 			 */
 			if ( isset( $opts[ 'seo_desc' ] ) && ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
+
 				unset( $opts[ 'seo_desc' ] );
 			}
 
@@ -955,8 +956,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					break;
 
 				/**
-				 * Empty or alpha-numeric uppercase (hyphens are allowed as well).
-				 * Silently convert illegal characters to single hyphens and trim excess.
+				 * Empty or alpha-numeric uppercase (hyphens are allowed as well). Silently convert illegal
+				 * characters to single hyphens and trim excess.
 				 */
 				case 'auth_id':
 
@@ -1046,8 +1047,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					break;
 
 				/**
-				 * Must be a floating-point number.
-				 * The decimal precision defined before the switch() statement.
+				 * Must be a floating-point number. The decimal precision defined before the switch() statement.
 				 */
 				case 'fnum':
 

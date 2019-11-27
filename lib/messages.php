@@ -242,7 +242,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= $fb_recs_transl . ' ';
 
-							$text .= '<em>' . __( 'This field is disabled if a custom image ID has been selected.', 'wpsso' ) . '</em>';
+							$text .= '<em>' . __( 'This field is disabled if an image ID is selected.', 'wpsso' ) . '</em>';
 
 							break;
 
@@ -293,7 +293,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-schema_img_url':
 
-							$text = __( 'A customized image URL (instead of an image ID) to include first in the Google / Schema meta tags and JSON-LD markup.', 'wpsso' ) . ' <em>' . __( 'This field is disabled if a custom image ID has been selected.', 'wpsso' ) . '</em>';
+							$text = __( 'A customized image URL (instead of an image ID) to include first in the Google / Schema meta tags and JSON-LD markup.', 'wpsso' ) . ' ';
+							
+							$text .= '<em>' . __( 'This field is disabled if an image ID is selected.', 'wpsso' ) . '</em>';
 
 						 	break;
 
@@ -314,7 +316,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-meta-tc_lrg_img_url':
 						case 'tooltip-meta-tc_sum_img_url':
 
-							$text = __( 'A customized image URL (instead of an image ID) for the Twitter Card image.', 'wpsso' ) . ' <em>' . __( 'This field is disabled if a custom image ID has been selected.', 'wpsso' ) . '</em>';
+							$text = __( 'A customized image URL (instead of an image ID) for the Twitter Card image.', 'wpsso' ) . ' ';
+							
+							$text .= '<em>' . __( 'This field is disabled if an image ID is selected.', 'wpsso' ) . '</em>';
 
 						 	break;
 
@@ -2525,7 +2529,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					),
 					'product_sku' => array(
 						_x( 'Product SKU', 'option label', 'wpsso' ),
-						_x( 'a Stock-Keeping Unit (aka unique product identifier)', 'tooltip fragment', 'wpsso' ),
+						_x( 'a Stock-Keeping Unit (SKU)', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_target_gender' => array(
 						_x( 'Product Target Gender', 'option label', 'wpsso' ),
