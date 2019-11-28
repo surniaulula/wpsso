@@ -715,7 +715,7 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 
 = 6.14.0-b.3 =
 
-(2019/11/28) Added support for the "Perfect WooCommerce Brands" plugin (Premium version).
+(2019/11/28) Added support for the "Perfect WooCommerce Brands" plugin (Premium version). Added a new "Pinterest Image Description" option in the Document SSO metabox.
 
 = 6.13.2 =
 
