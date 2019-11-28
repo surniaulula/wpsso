@@ -13,8 +13,12 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 	class WpssoPinterest {
 
-		protected $p;
+		private $p;
 
+		/**
+		 * Note that Pinterest share button options (from the WPSSO SSB and WPSSO RRSSB add-ons, for example) use a "pin"
+		 * option prefix, where-as options from the WPSSO setting pages and Document SSO metabox use a "p" prefix".
+		 */
 		public function __construct( &$plugin ) {
 
 			$this->p =& $plugin;
@@ -33,6 +37,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			add_filter( 'get_image_tag', array( $this, 'get_image_tag' ), 10, 6 );
 
 			if ( ! empty( $this->p->options[ 'p_add_img_html' ] ) ) {
+
 				add_filter( 'the_content', array( $this, 'get_pinterest_img_html' ), $max_int );
 			}
 		}
@@ -182,8 +187,8 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 				}
 
 				$data_pin_desc = $this->p->page->get_description( $this->p->options[ 'schema_desc_max_len' ],
-					$dots = '...', $mod, $read_cache = true, $add_hashtags = false, $do_encode = true,
-						$md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
+					$dots = '...', $mod, $read_cache = true, $add_hashtags = true, $do_encode = true,
+						$md_key = array( 'p_img_desc', 'og_desc' ) );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'pinterest data pin description = ' . $data_pin_desc );
@@ -194,8 +199,8 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 				 * 'loading="lazy"' attribute breaks the Pinterest Save button.
 				 */
 				$image_html .= "\t" . '<img src="' . SucomUtil::esc_url_encode( $image_url ) . '" ' .
-					'width="0" height="0" style="width:0;height:0;" ' . 
-					'data-pin-description="' . esc_attr( $data_pin_desc ) . '" alt="" />' . "\n";
+					'width="0" height="0" style="width:0;height:0;" alt="" ' . 
+					'data-pin-description="' . esc_attr( $data_pin_desc ) . '" />' . "\n";
 			}
 
 			$image_html .= '</div><!-- .' . $this->p->lca . '-schema-image-for-pinterest -->' . "\n\n";

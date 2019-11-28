@@ -975,7 +975,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 * is an array, then get the first non-empty option from the options array. This is an easy way to provide a
 		 * fallback value for the first array key. Use 'none' as a key name to skip this fallback behavior.
 		 *
-		 * Example: get_options_multi( $id, array( 'p_desc', 'og_desc' ) );
+		 * Example: get_options_multi( $id, array( 'seo_desc', 'og_desc' ) );
 		 */
 		public function get_options_multi( $mod_id, $md_key = false, $filter_opts = true ) {
 

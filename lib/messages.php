@@ -156,7 +156,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-og_desc':	// Default Description
+						case 'tooltip-meta-og_desc':		// Default Description.
 
 							$text = sprintf( __( 'A customized description for the Facebook / Open Graph %s meta tag, and the default value for all other description meta tags.', 'wpsso' ), '<code>og:description</code>' ) . ' ';
 
@@ -164,19 +164,25 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-seo_desc':	// Search Description
+						case 'tooltip-meta-p_img_desc':		// Pinterest Image Description.
 
-							$text = __( 'A customized description for the Google Search "description" meta tag.', 'wpsso' );
+							$text = __( 'A customized description for the hidden Pinterest image used by the Pinterest Pin It browser button.', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-tc_desc':	// Twitter Card Desc
+						case 'tooltip-meta-tc_desc':		// Twitter Card Description.
 
 							$text = __( 'A customized description for the Twitter Card description meta tag (all Twitter Card formats).', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-sharing_url':	// Sharing URL
+						case 'tooltip-meta-seo_desc':		// Search Description.
+
+							$text = __( 'A customized description for the Google Search "description" meta tag.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-sharing_url':	// Sharing URL.
 
 							$text = __( 'A customized sharing URL for Facebook / Open Graph and Pinterest Rich Pin meta tags, Schema markup, and social sharing add-ons.', 'wpsso' ) . ' ';
 
@@ -184,7 +190,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-canonical_url':	// Canonical URL
+						case 'tooltip-meta-canonical_url':	// Canonical URL.
 
 							$text = sprintf( __( 'A customized URL used for the "%1$s" head tag.', 'wpsso' ), 'link rel canonical' ) . ' ';
 
@@ -192,7 +198,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-og_art_section':	// Article Topic
+						case 'tooltip-meta-og_art_section':	// Article Topic.
 
 							$text = __( 'A customized topic for this article, which may be different from the default Article Topic selected in the General settings page.', 'wpsso' ) . ' ';
 
@@ -2613,29 +2619,39 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			}
 
 			// translators: %s is is the short add-on name.
-			$req_msg_transl = sprintf( _x( '%s required', 'option comment', 'wpsso' ), $this->p->cf[ 'plugin' ][ $ext ][ 'short' ] );
+			$text = sprintf( _x( '%s required', 'option comment', 'wpsso' ), $this->p->cf[ 'plugin' ][ $ext ][ 'short' ] );
 
-			$req_msg_link = $this->p->util->get_admin_url( 'addons#' . $ext, $req_msg_transl );
+			$text = $this->p->util->get_admin_url( 'addons#' . $ext, $text );
 
-			return ' <span class="ext-req-msg">' . $req_msg_link . '</span>';
+			return ' <span class="ext-req-msg">' . $text . '</span>';
+		}
+
+		public function p_img_desc_disabled() {
+
+			$link = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest',
+				_x( 'Add Hidden Image for Pin It Button', 'option label', 'wpsso' ) );
+
+			$text = sprintf( __( 'Modifications disabled (the %s option is disabled).', 'wpsso' ), $link );
+
+			return '<p class="status-msg smaller">' . $text . '</p>';
 		}
 
 		public function seo_option_disabled( $mt_name ) {
 
 			// translators: %s is the meta tag name (aka meta name canonical).
-			$seo_msg_transl = __( 'Option disabled (<code>%s</code> head tag disabled or SEO plugin detected).', 'wpsso' );
+			$text = sprintf( __( 'Modifications disabled (<code>%s</code> head tag disabled or SEO plugin detected).', 'wpsso' ), $mt_name );
 
-			return '<p class="status-msg smaller">' . sprintf( $seo_msg_transl, $mt_name ) . '</p>';
+			return '<p class="status-msg smaller">' . $text . '</p>';
 		}
 
 		public function more_schema_options() {
 
-			$json_addon_link = $this->p->util->get_admin_url( 'addons#wpssojson', $this->p->cf[ 'plugin' ][ 'wpssojson' ][ 'name' ] );
+			$link = $this->p->util->get_admin_url( 'addons#wpssojson', $this->p->cf[ 'plugin' ][ 'wpssojson' ][ 'name' ] );
 
 			// translators: %s is is the add-on name (and a link to the add-on page).
-			$json_msg_transl = sprintf( __( 'Activate the %s add-on for additional Schema markup options.', 'wpsso' ), $json_addon_link );
+			$text = sprintf( __( 'Activate the %s add-on for additional Schema markup options.', 'wpsso' ), $link );
 
-			return '<p class="status-msg">' . $json_msg_transl . '</p>';
+			return '<p class="status-msg">' . $text . '</p>';
 		}
 
 		private function get_ext_p_ext( $ext ) {

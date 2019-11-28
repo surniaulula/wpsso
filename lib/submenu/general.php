@@ -266,7 +266,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						array( 'is_locale' => true ) ) . 
 					'<td>' . $this->form->get_input( SucomUtil::get_key_locale( 'p_publisher_url', $this->p->options ), 'wide' ) . '</td>';
 
-					$table_rows[ 'p_add_nopin_header_img_tag' ] = '' . 
+					$table_rows[ 'p_add_nopin_header_img_tag' ] = $this->form->get_tr_hide( 'basic', 'p_add_nopin_header_img_tag' ) . 
 					$this->form->get_th_html( _x( 'Add "nopin" to Site Header Image', 'option label', 'wpsso' ), '', 'p_add_nopin_header_img_tag' ) . 
 					'<td>' . $this->form->get_checkbox( 'p_add_nopin_header_img_tag' ) .
 					' <em>' . _x( 'recommended', 'option comment', 'wpsso' ) . '</em></td>';
@@ -280,6 +280,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->form->get_th_html( _x( 'Add Hidden Image for Pin It Button', 'option label', 'wpsso' ), '', 'p_add_img_html' ) . 
 					'<td>' . $this->form->get_checkbox( 'p_add_img_html' ) .
 					' <em>' . _x( 'recommended (adds a hidden image in the content)', 'option comment', 'wpsso' ) . '</em></td>';
+
+					$table_rows[ 'p_img_desc_max_len' ] = $this->form->get_tr_hide( 'basic', 'p_img_desc_max_len' ) . 
+					$this->form->get_th_html( _x( 'Maximum Image Description Length', 'option label', 'wpsso' ), '', 'p_img_desc_max_len' ) . 
+					'<td>' . $this->form->get_input( 'p_img_desc_max_len', 'short' ) . ' ' . 
+					_x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
 
 					break;
 

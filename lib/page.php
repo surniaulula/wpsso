@@ -70,6 +70,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			/**
 			 * The $mod array argument is preferred but not required.
+			 *
 			 * $mod = true | false | post_id | $mod array
 			 */
 			if ( ! is_array( $mod ) ) {
@@ -120,7 +121,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						break;
 				}
 
-			} else {	// $md_key could be a string or array
+			} else {	// $md_key could be a string or array.
 
 				$md_key_title = $md_key;
 				$md_key_desc  = $md_key;

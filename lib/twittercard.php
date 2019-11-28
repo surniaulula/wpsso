@@ -82,8 +82,9 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 					$this->p->debug->log( 'getting description for twitter:description meta tag' );
 				}
 
-				$mt_tc[ 'twitter:description' ] = $this->p->page->get_description( $this->p->options[ 'tc_desc_max_len' ], $dots = '...',
-					$mod, $read_cache = true, $this->p->options[ 'og_desc_hashtags' ], $do_encode = true, $md_key = 'tc_desc' );
+				$mt_tc[ 'twitter:description' ] = $this->p->page->get_description( $this->p->options[ 'tc_desc_max_len' ],
+					$dots = '...', $mod, $read_cache = true, $this->p->options[ 'og_desc_hashtags' ], $do_encode = true,
+						$md_key = array( 'tc_desc', 'og_desc' ) );
 			}
 
 			if ( ! isset( $mt_tc[ 'twitter:creator' ] ) ) {
