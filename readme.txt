@@ -101,9 +101,9 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 		* Open Graph Type
 		* Default Title
 		* Default Description
-		* Schema Description
+		* Pinterest Image Description
+		* Twitter Card Description
 		* Search Description
-		* Twitter Card Desc
 		* Sharing URL
 		* Canonical URL
 		* Article Information
@@ -121,6 +121,8 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 			* Product SKU
 			* Product MPN
 			* Product ISBN
+		* Structured Data / Schema Markup
+			* Schema Description
 	* Priority Media
 		* Facebook / Open Graph / Default Media
 			* Priority Image Information
@@ -439,7 +441,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.14.0-b.1 (2019/11/26)**
+**Version 6.14.0-b.2 (2019/11/27)**
 
 * **New Features**
 	* None.
@@ -709,9 +711,9 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 
 == Upgrade Notice ==
 
-= 6.14.0-b.1 =
+= 6.14.0-b.2 =
 
-(2019/11/26) Added support for the "Perfect WooCommerce Brands" plugin (Premium version).
+(2019/11/27) Added support for the "Perfect WooCommerce Brands" plugin (Premium version).
 
 = 6.13.2 =
 
