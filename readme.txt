@@ -10,7 +10,7 @@ Tags: open graph, meta tags, rich pins, twitter cards, schema, rich results, emb
 Contributors: jsmoriss
 Requires At Least: 3.9
 Tested Up To: 5.3
-WC Tested Up To: 3.8.0
+WC Tested Up To: 3.8.1
 Stable Tag: 6.13.2
 
 Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.
@@ -441,12 +441,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.14.0-b.2 (2019/11/27)**
+**Version 6.14.0-b.3 (2019/11/28)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added support for the "Perfect WooCommerce Brands" plugin (Premium version).
+	* Added a new "Pinterest Image Description" option in the Document SSO metabox.
+	* Added a new "Maximum Image Description Length" option under the SSO > General > Pinterest tab.
 * **Bugfixes**
 	* Fixed an edge case issue with the "Add Hidden Image for Pin It Button" feature when the WordPress content filter was applied more than once.
 * **Developer Notes**
@@ -711,9 +713,9 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 
 == Upgrade Notice ==
 
-= 6.14.0-b.2 =
+= 6.14.0-b.3 =
 
-(2019/11/27) Added support for the "Perfect WooCommerce Brands" plugin (Premium version).
+(2019/11/28) Added support for the "Perfect WooCommerce Brands" plugin (Premium version).
 
 = 6.13.2 =
 
