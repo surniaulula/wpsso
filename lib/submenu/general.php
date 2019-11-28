@@ -148,20 +148,19 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$table_rows[ 'og_title_max_len' ] = '' . 
 					$this->form->get_th_html( _x( 'Maximum Title Length', 'option label', 'wpsso' ), '', 'og_title_max_len' ) . 
 					'<td>' . 
-						$this->form->get_input( 'og_title_max_len', 'short' ) . ' ' . 
-						_x( 'characters or less (hard limit), and warn at', 'option comment', 'wpsso' ) . ' ' . 
-						$this->form->get_input( 'og_title_warn_len', 'short' ) . ' ' . 
-						_x( 'characters (soft limit)', 'option comment', 'wpsso' ) . 
+					$this->form->get_input( 'og_title_max_len', 'short' ) . ' ' . 
+					_x( 'characters or less (hard limit), and warn at', 'option comment', 'wpsso' ) . ' ' . 
+					$this->form->get_input( 'og_title_warn_len', 'short' ) . ' ' . 
+					_x( 'characters (soft limit)', 'option comment', 'wpsso' ) . 
 					'</td>';
-
 
 					$table_rows[ 'og_desc_max_len' ] = '' . 
 					$this->form->get_th_html( _x( 'Maximum Description Length', 'option label', 'wpsso' ), '', 'og_desc_max_len' ) . 
 					'<td>' . 
-						$this->form->get_input( 'og_desc_max_len', 'short' ) . ' ' . 
-						_x( 'characters or less (hard limit), and warn at', 'option comment', 'wpsso' ) . ' ' . 
-						$this->form->get_input( 'og_desc_warn_len', 'short' ) . ' ' . 
-						_x( 'characters (soft limit)', 'option comment', 'wpsso' ) . 
+					$this->form->get_input( 'og_desc_max_len', 'short' ) . ' ' . 
+					_x( 'characters or less (hard limit), and warn at', 'option comment', 'wpsso' ) . ' ' . 
+					$this->form->get_input( 'og_desc_warn_len', 'short' ) . ' ' . 
+					_x( 'characters (soft limit)', 'option comment', 'wpsso' ) . 
 					'</td>';
 
 					$table_rows[ 'og_desc_hashtags' ] = $this->form->get_tr_hide( 'basic', 'og_desc_hashtags' ) . 
@@ -283,8 +282,12 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$table_rows[ 'p_img_desc_max_len' ] = $this->form->get_tr_hide( 'basic', 'p_img_desc_max_len' ) . 
 					$this->form->get_th_html( _x( 'Maximum Image Description Length', 'option label', 'wpsso' ), '', 'p_img_desc_max_len' ) . 
-					'<td>' . $this->form->get_input( 'p_img_desc_max_len', 'short' ) . ' ' . 
-					_x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
+					'<td>' .
+					$this->form->get_input( 'p_img_desc_max_len', 'short' ) . ' ' . 
+					_x( 'characters or less (hard limit), and warn at', 'option comment', 'wpsso' ) . ' ' . 
+					$this->form->get_input( 'p_img_desc_warn_len', 'short' ) . ' ' . 
+					_x( 'characters (soft limit)', 'option comment', 'wpsso' ) . 
+					'</td>';
 
 					break;
 

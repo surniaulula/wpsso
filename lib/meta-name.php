@@ -49,10 +49,8 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 			/**
 			 * Meta name "description".
 			 */
-			$add_meta_name_description = empty( $this->p->options[ 'add_meta_name_description' ] ) ? false : true;
-			$add_meta_name_description = apply_filters( $this->p->lca . '_add_meta_name_description', $add_meta_name_description, $mod );
+			if ( ! empty( $this->p->options[ 'add_meta_name_description' ] ) ) {
 
-			if ( $add_meta_name_description ) {
 				$mt_name[ 'description' ] = $this->p->page->get_description( $this->p->options[ 'seo_desc_max_len' ],
 					$dots = '...', $mod, $read_cache = true, $add_hashtags = false, $do_encode = true, $md_key = 'seo_desc' );
 			}
@@ -73,6 +71,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 			 * Meta name "google-site-verification".
 			 */
 			if ( ! empty( $this->p->options[ 'add_meta_name_google-site-verification' ] ) ) {
+
 				if ( ! empty( $this->p->options[ 'g_site_verify' ] ) ) {	// Google Website Verification ID.
 					$mt_name[ 'google-site-verification' ] = $this->p->options[ 'g_site_verify' ];
 				}
@@ -82,6 +81,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 			 * Meta name "p:domain_verify".
 			 */
 			if ( ! empty( $this->p->options[ 'add_meta_name_p:domain_verify' ] ) ) {
+
 				if ( ! empty( $this->p->options[ 'p_site_verify' ] ) ) {	// Pinterest Website Verification ID.
 					$mt_name[ 'p:domain_verify' ] = $this->p->options[ 'p_site_verify' ];
 				}
@@ -91,6 +91,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 			 * Meta name "robots".
 			 */
 			if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
+
 				$mt_name[ 'robots' ] = $this->p->util->get_robots_content( $mod );
 			}
 

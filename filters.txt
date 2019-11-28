@@ -29,10 +29,6 @@
 
 'wpsso_add_metabox_user' ( $bool, $user_id )
 
-'wpsso_add_meta_name_description' ( $bool )
-
-'wpsso_add_meta_name_wpsso:mark' ( $bool )
-
 'wpsso_add_schema_head_attributes' ( $bool )
 
 'wpsso_add_schema_meta_array' ( $bool )

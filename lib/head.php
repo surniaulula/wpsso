@@ -301,12 +301,16 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				case 'begin':
 				case 'end':
 
-					$add_meta = apply_filters( $this->p->lca . '_add_meta_name_' . $this->p->lca . ':mark',
+					$add_meta_name = apply_filters( $this->p->lca . '_add_meta_name_' . $this->p->lca . ':mark',
 						( empty( $this->p->options[ 'plugin_check_head' ] ) ? false : true ) );
 
 					$comment = '<!-- ' . $this->p->lca . ' meta tags ' . $type . ' -->';
-					$mt_name = $add_meta ? '<meta name="' . $this->p->lca . ':mark:' . $type . '" ' . 
-						'content="' . $this->p->lca . ' meta tags ' . $type . '"/>' . "\n" : '';
+
+					if ( ! empty( $add_meta_name ) ) {
+
+						$mt_name = $add_meta ? '<meta name="' . $this->p->lca . ':mark:' . $type . '" ' . 
+							'content="' . $this->p->lca . ' meta tags ' . $type . '"/>' . "\n" : '';
+					}
 
 					if ( $type === 'begin' ) {
 						$ret = $comment . "\n" . $mt_name;

@@ -49,11 +49,8 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 			$maybe_hashtags = true;
 			$do_encode      = true;
 
-			$add_meta_name_desc = empty( $this->p->options[ 'add_meta_name_description' ] ) ? false : true;
-			$add_meta_name_desc = apply_filters( $this->p->lca . '_add_meta_name_description', $add_meta_name_desc, $mod );
-
 			$p_img_desc_disabled    = empty( $this->p->options[ 'p_add_img_html' ] ) ? true : false;
-			$seo_desc_disabled      = empty( $add_meta_name_desc ) ? true : false;
+			$seo_desc_disabled      = empty( $this->p->options[ 'add_meta_name_description' ] ) ? true : false;
 			$canonical_url_disabled = empty( $this->p->options[ 'add_link_rel_canonical' ] ) ? true : false;
 
 			$p_img_desc_msg    = $p_img_desc_disabled ? $this->p->msgs->p_img_desc_disabled() : '';
@@ -73,8 +70,8 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 			$og_title_max_len    = $this->p->options[ 'og_title_max_len' ];
 			$og_desc_max_len     = $this->p->options[ 'og_desc_max_len' ];
 			$p_img_desc_max_len  = $this->p->options[ 'p_img_desc_max_len' ];
-			$seo_desc_max_len    = $this->p->options[ 'seo_desc_max_len' ];		// Max. Description Meta Tag Length.
 			$tc_desc_max_len     = $this->p->options[ 'tc_desc_max_len' ];
+			$seo_desc_max_len    = $this->p->options[ 'seo_desc_max_len' ];		// Max. Description Meta Tag Length.
 			$schema_desc_max_len = $this->p->options[ 'schema_desc_max_len' ];	// Max. Schema Description Length.
 			$schema_desc_md_key  = array( 'seo_desc', 'og_desc' );
 
@@ -86,8 +83,8 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 			$def_og_title      = $this->p->page->get_title( $og_title_max_len, $dots, $mod, $read_cache, $no_hashtags, $do_encode, 'none' );
 			$def_og_desc       = $this->p->page->get_description( $og_desc_max_len, $dots, $mod, $read_cache, $maybe_hashtags, $do_encode, 'none' );
 			$def_p_img_desc    = $p_img_desc_disabled ? '' : $this->p->page->get_description( $p_img_desc_max_len, $dots, $mod, $read_cache, $maybe_hashtags );
-			$def_seo_desc      = $seo_desc_disabled ? '' : $this->p->page->get_description( $seo_desc_max_len, $dots, $mod, $read_cache, $no_hashtags );
 			$def_tc_desc       = $this->p->page->get_description( $tc_desc_max_len, $dots, $mod, $read_cache );
+			$def_seo_desc      = $seo_desc_disabled ? '' : $this->p->page->get_description( $seo_desc_max_len, $dots, $mod, $read_cache, $no_hashtags );
 			$def_schema_desc   = $this->p->page->get_description( $schema_desc_max_len, $dots, $mod, $read_cache, $no_hashtags, $do_encode, $schema_desc_md_key );
 			$def_sharing_url   = $this->p->util->get_sharing_url( $mod, $add_page = false );
 			$def_canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = false );
@@ -120,7 +117,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'td_class'      => 'blank',
 					'label'         => _x( 'Default Title', 'option label', 'wpsso' ),
 					'tooltip'       => 'meta-og_title',
-					'content'       => $form->get_no_input_value( $def_og_title, 'wide' ),
+					'content'       => $form->get_no_input_value( $def_og_title, $css_class = 'wide', $css_id = '', $og_title_max_len ),
 				),
 				'og_desc' => array(
 					'no_auto_draft' => true,
@@ -128,7 +125,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'td_class'      => 'blank',
 					'label'         => _x( 'Default Description', 'option label', 'wpsso' ),
 					'tooltip'       => 'meta-og_desc',
-					'content'       => $form->get_no_textarea_value( $def_og_desc, '', '', $og_desc_max_len ),
+					'content'       => $form->get_no_textarea_value( $def_og_desc, $css_class = '', $css_id = '', $og_desc_max_len ),
 				),
 				'p_img_desc' => array(
 					'no_auto_draft' => true,
@@ -137,7 +134,8 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'td_class'      => 'blank',
 					'label'         => _x( 'Pinterest Image Description', 'option label', 'wpsso' ),
 					'tooltip'       => 'meta-p_img_desc',
-					'content'       => $form->get_no_textarea_value( $def_p_img_desc, '', '', $p_img_desc_max_len ) . ' ' . $p_img_desc_msg,
+					'content'       => $form->get_no_textarea_value( $def_p_img_desc, $css_class = '', $css_id = '', $p_img_desc_max_len ) . ' ' .
+						$p_img_desc_msg,
 				),
 				'tc_desc' => array(
 					'no_auto_draft' => true,
@@ -145,7 +143,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'td_class'      => 'blank',
 					'label'         => _x( 'Twitter Card Description', 'option label', 'wpsso' ),
 					'tooltip'       => 'meta-tc_desc',
-					'content'       => $form->get_no_textarea_value( $def_tc_desc, '', '', $tc_desc_max_len ),
+					'content'       => $form->get_no_textarea_value( $def_tc_desc, $css_class = '', $css_id = '', $tc_desc_max_len ),
 				),
 				'seo_desc' => array(
 					'no_auto_draft' => true,
@@ -154,7 +152,8 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'td_class'      => 'blank',
 					'label'         => _x( 'Search Description', 'option label', 'wpsso' ),
 					'tooltip'       => 'meta-seo_desc',
-					'content'       => $form->get_no_textarea_value( $def_seo_desc, '', '', $seo_desc_max_len ) . ' ' . $seo_desc_msg,
+					'content'       => $form->get_no_textarea_value( $def_seo_desc, $css_class = '', $css_id = '', $seo_desc_max_len ) . ' ' .
+						$seo_desc_msg,
 				),
 				'sharing_url' => array(
 					'no_auto_draft' => $mod[ 'post_type' ] === 'attachment' ? false : true,
@@ -172,7 +171,8 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'td_class'      => 'blank',
 					'label'         => _x( 'Canonical URL', 'option label', 'wpsso' ),
 					'tooltip'       => 'meta-canonical_url',
-					'content'       => $form->get_no_input_value( $def_canonical_url, $css_class = 'wide' ) . ' ' . $canonical_url_msg,
+					'content'       => $form->get_no_input_value( $def_canonical_url, $css_class = 'wide' ) . ' ' .
+						$canonical_url_msg,
 				),
 
 				/**

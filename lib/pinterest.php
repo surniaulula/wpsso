@@ -186,7 +186,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 					$this->p->debug->log( 'adding image url for pinterest = ' . $image_url );
 				}
 
-				$data_pin_desc = $this->p->page->get_description( $this->p->options[ 'schema_desc_max_len' ],
+				$data_pin_desc = $this->p->page->get_description( $this->p->options[ 'p_img_desc_max_len' ],
 					$dots = '...', $mod, $read_cache = true, $add_hashtags = true, $do_encode = true,
 						$md_key = array( 'p_img_desc', 'og_desc' ) );
 
