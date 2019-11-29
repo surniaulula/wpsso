@@ -441,7 +441,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.14.0-rc.1 (2019/11/29)**
+**Version 6.14.0-rc.2 (2019/11/29)**
 
 * **New Features**
 	* None.
@@ -449,6 +449,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added support for the "Perfect WooCommerce Brands" plugin (Premium version).
 	* Added a new "Pinterest Image Description" option in the Document SSO metabox.
 	* Added a new "Maximum Image Description Length" option under the SSO > General > Pinterest tab.
+	* Added a new QA check for the WP_HOME constant value in `wp-config.php`.
 * **Bugfixes**
 	* Fixed an edge case issue with the "Add Hidden Image for Pin It Button" feature when the WordPress content filter was applied more than once.
 * **Developer Notes**
@@ -713,7 +714,7 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 
 == Upgrade Notice ==
 
-= 6.14.0-rc.1 =
+= 6.14.0-rc.2 =
 
 (2019/11/29) Added support for the "Perfect WooCommerce Brands" plugin (Premium version). Added a new "Pinterest Image Description" option in the Document SSO metabox.
 
