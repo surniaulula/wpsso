@@ -655,8 +655,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 * If the plugin_check_head option is disabled, then delete the check counter.
 				 */
 				if ( ! $network ) {
+
 					if ( empty( $this->p->options[ 'plugin_check_head' ] ) ) {
-						delete_option( WPSSO_POST_CHECK_NAME );
+						delete_option( WPSSO_POST_CHECK_COUNT_NAME );
 					}
 				}
 			}

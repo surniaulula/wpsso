@@ -15,6 +15,31 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		protected static $cache_user_exists = array();	// Saved user_exists() values.
 
+		public static function get_wp_config_file_path() {
+
+			$parent_abspath = trailingslashit( dirname( ABSPATH ) );
+
+			$wp_config_file_path = false;
+
+			/**
+			 * The config file resides in ABSPATH.
+			 */
+			if ( file_exists( ABSPATH . 'wp-config.php' ) ) {
+
+				$wp_config_file_path = ABSPATH . 'wp-config.php';
+
+			/**
+			 * The config file resides one level above ABSPATH and is not part of another installation.
+			 */
+			} elseif ( file_exists( $parent_abspath . 'wp-config.php' ) && ! file_exists( $parent_abspath . 'wp-settings.php' ) ) {
+
+				$wp_config_file_path = $parent_abspath . 'wp-config.php';
+
+			}
+		
+			return $wp_config_file_path;
+		}
+
 		/**
 		 * wp_encode_emoji() is only available since WordPress v4.2.
 		 * Use the WordPress function if available, otherwise provide the same functionality.
@@ -408,27 +433,27 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $theme->get_template() . '-' . $theme->Version;
 		}
 
-		public static function get_theme_header_files( $skip_backups = true ) {
+		public static function get_theme_header_file_paths( $skip_backups = true ) {
 
-			$header_files = array();
-			$parent_dir   = get_template_directory();
-			$child_dir    = get_stylesheet_directory();
-			$tmpl_files   = (array) glob( $parent_dir . '/header*.php' );	// Returns false on error.
+			$parent_tmpl_dir   = get_template_directory();
+			$child_tmpl_dir    = get_stylesheet_directory();
+			$header_file_paths = array();
+			$tmpl_file_paths   = (array) glob( $parent_tmpl_dir . '/header*.php' );	// Returns false on error.
 
-			if ( $parent_dir !== $child_dir ) {
-				$tmpl_files = array_merge( $tmpl_files, (array) glob( $child_dir . '/header*.php' ) );
+			if ( $parent_tmpl_dir !== $child_tmpl_dir ) {
+				$tmpl_file_paths = array_merge( $tmpl_file_paths, (array) glob( $child_tmpl_dir . '/header*.php' ) );
 			}
 
-			foreach ( $tmpl_files as $tmpl_file ) {
+			foreach ( $tmpl_file_paths as $tmpl_file ) {
 
 				if ( $skip_backups && preg_match( '/^.*\.php~.*$/', $tmpl_file ) ) { // Skip backup files.
 					continue;
 				}
 
-				$header_files[ basename( $tmpl_file ) ] = $tmpl_file; // Child template overwrites parent.
+				$header_file_paths[ basename( $tmpl_file ) ] = $tmpl_file; // Child template overwrites parent.
 			}
 
-			return $header_files;
+			return $header_file_paths;
 		}
 
 		public static function doing_frontend() {

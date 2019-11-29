@@ -59,12 +59,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->pageref_url = esc_url_raw( urldecode( $_GET[ $this->p->lca . '_pageref_url' ] ) );
 			}
 
-			add_action( 'activated_plugin', array( $this, 'reset_check_head_count' ), 10 );
-			add_action( 'after_switch_theme', array( $this, 'reset_check_head_count' ), 10 );
-			add_action( 'upgrader_process_complete', array( $this, 'reset_check_head_count' ), 10 );
-
-			add_action( 'after_switch_theme', array( $this, 'check_tmpl_head_attributes' ), 20 );
-			add_action( 'upgrader_process_complete', array( $this, 'check_tmpl_head_attributes' ), 20 );
+			add_action( 'activated_plugin', array( $this, 'reset_admin_check_options' ), 10 );
+			add_action( 'after_switch_theme', array( $this, 'reset_admin_check_options' ), 10 );
+			add_action( 'upgrader_process_complete', array( $this, 'reset_admin_check_options' ), 10 );
 
 			/**
 			 * Optimize performance and do not load if this is an ajax call (ie. DOING_AJAX is true).
@@ -85,6 +82,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_action( 'admin_menu', array( $this, 'add_admin_submenus' ), WPSSO_ADD_SUBMENU_PRIORITY );
 
 				add_action( 'admin_init', array( $this, 'add_plugins_page_upgrade_notice' ) );
+				add_action( 'admin_init', array( $this, 'check_tmpl_head_attributes' ), 20 );
+				add_action( 'admin_init', array( $this, 'check_wp_config_constants' ), 10 );
 				add_action( 'admin_init', array( $this, 'register_setting' ) );
 
 				/**
@@ -235,7 +234,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->menu_ext  = $this->p->lca;
 
 			if ( isset( $this->submenu[ $this->menu_id ] ) ) {
+
 				$menu_slug = $this->p->lca . '-' . $this->menu_id;
+
 				$this->submenu[ $this->menu_id ]->add_menu_page( $menu_slug );
 			}
 
@@ -682,7 +683,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $data[ 'plugins' ] as $file_path => &$details ) {		// Use reference to modify plugin $details.
 
-				$slug = preg_replace( '/\/.*$/', '', $file_path );		// Get the plugin slug (without the filename).
+				$slug = preg_replace( '/\/.*$/', '', $file_path );		// Get the plugin slug (without the file name).
 
 				if ( empty( $this->p->cf[ '*' ][ 'slug' ][ $slug ] ) ) {	// Make sure the plugin slug is one of ours.
 					continue;
@@ -941,8 +942,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$this->p->notice->warn( $this->p->msgs->get( $get_msg_key ), null, $notice_key, $dismiss_time );
 			}
-
-			$this->check_tmpl_head_attributes();
 
 			return $opts;
 		}
@@ -2304,7 +2303,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return;
 			}
 
-			$menu_icon  = '<span class="ab-icon" id="' . $this->p->lca . '-toolbar-notices-icon"></span>';
+			$menu_icon = '<span class="ab-icon" id="' . $this->p->lca . '-toolbar-notices-icon"></span>';
+
 			$menu_count = '<span class="ab-label" id="' . $this->p->lca . '-toolbar-notices-count">0</span>';
 
 			$no_notices_text = sprintf( __( 'Fetching %s notifications...', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
@@ -2365,9 +2365,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $footer_html;
 		}
 
-		public function reset_check_head_count() {
+		/**
+		 * Called by the 'activated_plugin', 'after_switch_theme', and 'upgrader_process_complete' actions, along with the
+		 * WpssoRegister->deactivate_plugin() method.
+		 */
+		public static function reset_admin_check_options() {
 
-			delete_option( WPSSO_POST_CHECK_NAME );
+			delete_option( WPSSO_POST_CHECK_COUNT_NAME );
+			delete_option( WPSSO_TMPL_HEAD_CHECK_NAME );
+			delete_option( WPSSO_WP_CONFIG_CHECK_NAME );
 		}
 
 		public function check_tmpl_head_attributes() {
@@ -2379,41 +2385,106 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			/**
 			 * Only check if using the default filter name.
 			 */
-			if ( empty( $this->p->options[ 'plugin_head_attr_filter_name' ] ) ||
-				$this->p->options[ 'plugin_head_attr_filter_name' ] !== 'head_attributes' ) {
+			$opt_key = 'plugin_head_attr_filter_name';
+			$def_val = 'head_attributes';
 
-				return;	// Exit early.
+			if ( empty( $this->p->options[ $opt_key ] ) || $this->p->options[ $opt_key ] !== $def_val ) {
+				return;
 			}
 
-			$header_files = SucomUtilWP::get_theme_header_files();
+			/**
+			 * Skip if previous check is already successful.
+			 */
+			if ( $passed = get_option( WPSSO_TMPL_HEAD_CHECK_NAME, $default = false ) ) {
+				return;
+			}
+
+			/**
+			 * Skip if we will be modifying the header templates.
+			 */
+			$action_query = $this->p->lca . '-action';
+			$action_value = SucomUtil::get_request_value( $action_query ) ;		// POST or GET with sanitize_text_field().
+
+			if ( 'modify_tmpl_head_attributes' === $action_value ) {
+				return;
+			}
+
+			/**
+			 * Skip if already dismissed.
+			 */
+			$notice_key = 'notice-header-tmpl-no-head-attr-' . SucomUtilWP::get_theme_slug_version();
+
+			if ( ! $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
+				return;
+			}
+
+			/**
+			 * Get parent and child theme template file paths.
+			 */
+			$header_files = SucomUtilWP::get_theme_header_file_paths();
 
 			foreach ( $header_files as $tmpl_base => $tmpl_file ) {
 
-				$html_stripped = SucomUtil::get_stripped_php( $tmpl_file );
+				$stripped_php = SucomUtil::get_stripped_php( $tmpl_file );
 
-				if ( empty( $html_stripped ) ) {	// Empty string or false.
+				if ( empty( $stripped_php ) ) {	// Empty string or false.
 
 					continue;
 
-				} elseif ( false !== strpos( $html_stripped, '<head>' ) ) {
+				} elseif ( false !== strpos( $stripped_php, '<head>' ) ) {
 
-					if ( $this->p->notice->is_admin_pre_notices() ) {
+					$notice_msg = $this->p->msgs->get( 'notice-header-tmpl-no-head-attr' );
 
-						$error_msg  = $this->p->msgs->get( 'notice-header-tmpl-no-head-attr' );
-						$notice_key = 'notice-header-tmpl-no-head-attr-' . SucomUtilWP::get_theme_slug_version();
+					$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
 
-						$this->p->notice->warn( $error_msg, null, $notice_key, true );
-					}
-
-					break;
+					return;	// Stop here.
 				}
 			}
+
+			update_option( WPSSO_TMPL_HEAD_CHECK_NAME, $passed = true, $autoload = false );
 		}
 
-		public function modify_tmpl_head_attributes() {
+		public function check_wp_config_constants() {
 
-			$have_changes    = false;
-			$header_files    = SucomUtilWP::get_theme_header_files();
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			/**
+			 * Skip if previous check is already successful.
+			 */
+			if ( $passed = get_option( WPSSO_WP_CONFIG_CHECK_NAME, $default = false ) ) {
+				return;
+			}
+
+			if ( $file_path = SucomUtilWP::get_wp_config_file_path() ) {
+				
+				$stripped_php = SucomUtil::get_stripped_php( $file_path );
+
+				if ( preg_match( '/define\( *[\'"]WP_HOME[\'"][^\)]*\$/', $stripped_php ) ) {
+
+					$notice_msg = $this->p->msgs->get( 'notice-wp-config-php-variable-home' );
+
+					$notice_key = 'notice-wp-config-php-variable-home';
+
+					$this->p->notice->err( $notice_msg, null, $notice_key );
+
+					return;	// Stop here.
+				}
+			}
+
+			update_option( WPSSO_WP_CONFIG_CHECK_NAME, $passed = true, $autoload = false );
+		}
+
+		/**
+		 * Called by WpssoAdmin->load_setting_page().
+		 */
+		private function modify_tmpl_head_attributes() {
+
+			$passed = false;
+
+			$header_files = SucomUtilWP::get_theme_header_file_paths();
+
 			$head_action_php = '<head <?php do_action( \'add_head_attributes\' ); ?' . '>>';	// Breakup the closing php string for vim.
 
 			if ( empty( $header_files ) ) {
@@ -2425,17 +2496,21 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $header_files as $tmpl_base => $tmpl_file ) {
 
-				$tmpl_base     = basename( $tmpl_file );
-				$backup_file   = $tmpl_file . '~backup-' . date( 'Ymd-His' );
-				$backup_base   = basename( $backup_file );
-				$html_stripped = SucomUtil::get_stripped_php( $tmpl_file );
+				$tmpl_base = basename( $tmpl_file );
+
+				$backup_file = $tmpl_file . '~backup-' . date( 'Ymd-His' );
+
+				$backup_base = basename( $backup_file );
+
+				$stripped_php = SucomUtil::get_stripped_php( $tmpl_file );
 	
 				/**
 				 * Double check in case of reloads etc.
 				 */
-				if ( empty( $html_stripped ) || strpos( $html_stripped, '<head>' ) === false ) {
+				if ( empty( $stripped_php ) || strpos( $stripped_php, '<head>' ) === false ) {
 
-					$this->p->notice->err( sprintf( __( 'No %1$s HTML tag found in the %2$s template.', 'wpsso' ), '&lt;head&gt;', $tmpl_file ) );
+					$this->p->notice->err( sprintf( __( 'No <code>%1$s</code> HTML tag found in the <code>%2$s</code> template.',
+						'wpsso' ), '&lt;head&gt;', $tmpl_file ) );
 
 					continue;
 				}
@@ -2445,41 +2520,61 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 */
 				if ( ! copy( $tmpl_file, $backup_file ) ) {
 
-					$this->p->notice->err( sprintf( __( 'Error copying %1$s to %2$s.', 'wpsso' ), $tmpl_file, $backup_base ) );
+					$this->p->notice->err( sprintf( __( 'Error copying <code>%1$s</code> to <code>%2$s</code>.',
+						'wpsso' ), $tmpl_file, $backup_base ) );
 
 					continue;
 				}
 
 				$tmpl_contents = file_get_contents( $tmpl_file );
+
 				$tmpl_contents = str_replace( '<head>', $head_action_php, $tmpl_contents );
 
 				if ( ! $tmpl_fh = @fopen( $tmpl_file, 'wb' ) ) {
 
-					$this->p->notice->err( sprintf( __( 'Failed to open template file %s for writing.', 'wpsso' ), $tmpl_file ) );
+					$this->p->notice->err( sprintf( __( 'Failed to open template file <code>%s</code> for writing.',
+						'wpsso' ), $tmpl_file ) );
 
 					continue;
 				}
 
 				if ( fwrite( $tmpl_fh, $tmpl_contents ) ) {
 
-					$this->p->notice->upd( sprintf( __( 'The %1$s template has been successfully modified and saved. A backup copy of the original template is available as %2$s in the same folder.', 'wpsso' ), $tmpl_file, $backup_base ) );
+					$notice_msg = sprintf( __( 'The <code>%s</code> template has been successfully modified and saved.',
+						'wpsso' ), $tmpl_file ) . ' ';
+					
+					$notice_msg .= sprintf( __( 'A backup copy of the original template has been saved as <code>%s</code> in the same folder.',
+						'wpsso' ), $backup_base );
 
-					$have_changes = true;
+					$this->p->notice->upd( $notice_msg );
+
+					$passed = true;
 
 				} else {
-					$this->p->notice->err( sprintf( __( 'Failed to write the %1$s template. You may need to restore the original template saved as %2$s in the same folder.', 'wpsso' ), $tmpl_file, $backup_base ) );
+
+					$notice_msg = sprintf( __( 'Failed to write the <code>%s</code> template.',
+						'wpsso' ), $tmpl_file ) . ' ';
+
+					$notice_msg .= sprintf( __( 'You may need to restore the original template saved as <code>%s</code> in the same folder.',
+						'wpsso' ), $backup_base );
+
+					$this->p->notice->err( $notice_msg );
 				}
 
 				fclose( $tmpl_fh );
 			}
 
-			if ( $have_changes ) {
+			if ( $passed ) {
 
-				$notice_key  = 'notice-header-tmpl-no-head-attr-' . SucomUtilWP::get_theme_slug_version();
 				$admin_roles = $this->p->cf[ 'wp' ][ 'roles' ][ 'admin' ];
-				$user_ids    = SucomUtilWP::get_roles_user_ids( $admin_roles );
+
+				$user_ids = SucomUtilWP::get_roles_user_ids( $admin_roles );
+
+				$notice_key = 'notice-header-tmpl-no-head-attr-' . SucomUtilWP::get_theme_slug_version();
 
 				$this->p->notice->clear_key( $notice_key, $user_ids );	// Just in case.
+
+				update_option( WPSSO_TMPL_HEAD_CHECK_NAME, $passed, $autoload = false );
 			}
 		}
 
@@ -2503,6 +2598,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			) as $type_name => $th_label ) {
 
 				$opt_key = 'og_type_for_' . $type_name;
+
 				$tr_html = $hide_in_basic ? $form->get_tr_hide( 'basic', $opt_key ) : '';
 
 				$table_rows[ $opt_key ] = $tr_html .
@@ -2696,6 +2792,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			) as $type_name => $th_label ) {
 
 				$opt_key = 'schema_type_for_' . $type_name;
+
 				$tr_html = $hide_in_basic ? $form->get_tr_hide( 'basic', $opt_key ) : '';
 
 				$table_rows[ $opt_key ] = $tr_html . 

@@ -271,17 +271,17 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$filepath = $this->get( $image_url, 'filepath', 'file', $exp_secs, '', $curl_opts );
+			$file_path = $this->get( $image_url, 'file_path', 'file', $exp_secs, '', $curl_opts );
 
-			if ( ! empty( $filepath ) ) {	// False on error.
+			if ( ! empty( $file_path ) ) {	// False on error.
 
-				if ( file_exists( $filepath ) ) {
+				if ( file_exists( $file_path ) ) {
 
 					if ( null !== $error_handler ) {
 						$previous_error_handler = set_error_handler( $error_handler );
 					}
 
-					$image_size = getimagesize( $filepath );
+					$image_size = getimagesize( $file_path );
 
 					if ( null !== $error_handler ) {
 						restore_error_handler();
@@ -294,11 +294,11 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					return $image_size;
 
 				} elseif ( $this->p->debug->enabled ) {
-					$this->p->debug->log( $filepath.' does not exist' );
+					$this->p->debug->log( $file_path.' does not exist' );
 				}
 
 			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'returned image filepath is empty' );
+				$this->p->debug->log( 'returned image file path is empty' );
 			}
 
 			return false;
@@ -387,7 +387,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					break;
 
 				case 'url':
-				case 'filepath':
+				case 'file_path':
 
 					if ( file_exists( $cache_file ) ) {
 
@@ -576,7 +576,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 						break;
 
-					case 'filepath':
+					case 'file_path':
 
 						return $cache_file;
 
@@ -630,7 +630,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				case 'file':
 
-					$cache_id   = md5( $cache_salt );			// No lca prefix on filenames.
+					$cache_id   = md5( $cache_salt );			// No lca prefix on file names.
 					$cache_file = $this->base_dir . $cache_id . $file_ext;
 
 					$file_exp_secs = null === $exp_secs ? $this->default_file_cache_exp : $exp_secs;

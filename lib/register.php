@@ -165,8 +165,8 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		private function deactivate_plugin() {
 
 			/**
-			 * Clear all caches on deactivate. Do not use the schedule_clear_all_cache() method
-			 * since WPSSO will be deactivated before the scheduled task can begin.
+			 * Clear all caches on deactivate. Do not use the schedule_clear_all_cache() method since WPSSO will be
+			 * deactivated before the scheduled task can begin.
 			 *
 			 * If 'plugin_clear_on_deactivate' is empty, then at least clear the disk cache.
 			 */
@@ -193,7 +193,9 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				}
 			}
 
-			delete_option( WPSSO_POST_CHECK_NAME );	// Remove the post duplicate check counter.
+			if ( class_exists( 'WpssoAdmin' ) ) {	// Just in case.
+				WpssoAdmin::reset_admin_check_options();
+			}
 		}
 
 		/**

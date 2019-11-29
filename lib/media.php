@@ -257,9 +257,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		}
 
 		/**
-		 * By default, WordPress adds only the resolution of the resized image to the filename. If the image size is ours,
-		 * then add crop information to the filename as well. This allows for different cropped versions for the same image
-		 * resolution.
+		 * By default, WordPress adds only the resolution of the resized image to the file name. If the image size is ours,
+		 * then add crop information to the file name as well. This allows for different cropped versions for the same
+		 * image resolution.
 		 *
 		 * Example:
 		 *
@@ -267,7 +267,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 * 	unicorn-wallpaper-1200x630-cropped.jpg
 		 *	unicorn-wallpaper-1200x630-cropped-center-top.jpg
 		 */
-		public function maybe_update_image_filename( $filepath ) {
+		public function maybe_update_image_filename( $file_path ) {
 
 			/**
 			 * get_attachment_image_src() in the WpssoMedia class saves / sets the image information (pid, size_name,
@@ -277,7 +277,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$img_info = (array) self::get_image_src_args();
 
 			if ( empty( $img_info[ 'size_name' ] ) || strpos( $img_info[ 'size_name' ], $this->p->lca . '-' ) !== 0 ) {
-				return $filepath;
+				return $file_path;
 			}
 
 			$size_info = $this->p->util->get_size_info( $img_info[ 'size_name' ], $img_info[ 'pid' ] );
@@ -286,18 +286,18 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 * If the resized image is not cropped, then leave the file name as-is.
 			 */
 			if ( empty( $size_info[ 'crop' ] ) ) {
-				return $filepath;
+				return $file_path;
 			}
 
-			$new_filepath = $this->get_cropped_image_filename( $filepath, $size_info );
+			$new_file_path = $this->get_cropped_image_filename( $file_path, $size_info );
 
-			if ( $filepath !== $new_filepath ) {		// Just in case
-				if ( copy( $filepath, $new_filepath ) ) {
-					return $new_filepath;		// Return the new filepath on success.
+			if ( $file_path !== $new_file_path ) {		// Just in case
+				if ( copy( $file_path, $new_file_path ) ) {
+					return $new_file_path;		// Return the new file path on success.
 				}
 			}
 
-			return $filepath;
+			return $file_path;
 		}
 
 		/**
@@ -771,8 +771,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					! empty( $img_meta[ 'sizes' ][ $size_name ][ 'height' ] ) ) {
 
 					/**
-					 * By default, WordPress adds only the resolution of the resized image to the filename. If
-					 * the image size is ours, then add crop information to the filename as well. This allows
+					 * By default, WordPress adds only the resolution of the resized image to the file name. If
+					 * the image size is ours, then add crop information to the file name as well. This allows
 					 * for different cropped versions for the same image resolution.
 					 */
 					$img_filename = $this->get_cropped_image_filename( $img_meta[ 'sizes' ][ $size_name ][ 'file' ], $size_info );
@@ -957,11 +957,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return self::reset_image_src_args();
 		}
 
-		public function get_cropped_image_filename( $filepath, $size_info ) {
+		public function get_cropped_image_filename( $file_path, $size_info ) {
 
-			$dir  = pathinfo( $filepath, PATHINFO_DIRNAME );	// Returns '.' for filenames without paths.
-			$ext  = pathinfo( $filepath, PATHINFO_EXTENSION ); 
-			$base = wp_basename( $filepath, '.' . $ext );
+			$dir  = pathinfo( $file_path, PATHINFO_DIRNAME );	// Returns '.' for filenames without paths.
+			$ext  = pathinfo( $file_path, PATHINFO_EXTENSION ); 
+			$base = wp_basename( $file_path, '.' . $ext );
 
 			$new_dir    = '.' === $dir ? '' : trailingslashit( $dir );
 			$new_ext    = '.' . $ext;
@@ -1673,8 +1673,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						}
 
 						/**
-						 * Check for filename extension, slash, or common words (in that order),
-						 * followed by an optional query string (which is ignored).
+						 * Check for filename extension, slash, or common words (in that order), followed
+						 * by an optional query string (which is ignored).
 						 */
 						if ( preg_match( '/(\.[a-z0-9]+|\/|\/embed\/.*|\/iframe\/.*)(\?[^\?]*)?$/', $media_url, $match ) ) {
 

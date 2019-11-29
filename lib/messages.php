@@ -722,11 +722,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 */
 						case 'tooltip-plugin_html_attr_filter':	// <html> Attributes Filter Hook.
 
-							$func_name   = 'language_attributes()';
-							$func_url    = __( 'https://developer.wordpress.org/reference/functions/language_attributes/', 'wpsso' );
+							$func_name = 'language_attributes()';
+
+							$func_url = __( 'https://developer.wordpress.org/reference/functions/language_attributes/', 'wpsso' );
+
 							$filter_name = 'language_attributes';
-							$tag_code    = '<code>&amp;lt;html&amp;gt;</code>';
-							$php_code    = '<pre><code>&amp;lt;html &amp;lt;?php language_attributes(); ?&amp;gt;&amp;gt;</code></pre>';
+
+							$tag_code = '<code>&amp;lt;html&amp;gt;</code>';
+
+							$php_code = '<pre><code>&amp;lt;html &amp;lt;?php language_attributes(); ?&amp;gt;&amp;gt;</code></pre>';
 
 							$text = sprintf( __( '%1$s hooks the "%2$s" filter (by default) to add / modify the %3$s HTML tag attributes for Open Graph namespace prefix values.', 'wpsso' ), $info[ 'short' ], $filter_name, $tag_code ) . ' ';
 
@@ -741,8 +745,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_head_attr_filter':	// <head> Attributes Filter Hook.
 
 							$filter_name = 'head_attributes';
-							$tag_code    = '<code>&amp;lt;head&amp;gt;</code>';
-							$php_code    = '<pre><code>&amp;lt;head &amp;lt;?php do_action( &#39;add_head_attributes&#39; ); ?&amp;gt;&amp;gt;</code></pre>';
+
+							$tag_code = '<code>&amp;lt;head&amp;gt;</code>';
+
+							$php_code = '<pre><code>&amp;lt;head &amp;lt;?php do_action( &#39;add_head_attributes&#39; ); ?&amp;gt;&amp;gt;</code></pre>';
 
 							$text = sprintf( __( '%1$s hooks the "%2$s" filter (by default) to add / modify the %3$s HTML tag attributes for Schema itemscope / itemtype markup.', 'wpsso' ), $info[ 'short' ], $filter_name, $tag_code ) . ' ';
 
@@ -2222,17 +2228,32 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						break;
 
+					case 'notice-wp-config-php-variable-home':
+
+						$text = __( 'The <code>WP_HOME</code> constant definition in your <code>wp-config.php</code> file contains a variable.', 'wpsso' ) . ' ';
+
+						$text .= __( 'WordPress uses the <code>WP_HOME</code> constant to provide a single unique canonical URL for each webpage and Media Library content.', 'wpsso' ) . ' ';
+
+						$text .= __( 'A changing <code>WP_HOME</code> value will create different canonical URLs in your webpages, leading to duplicate content penalties from Google, incorrect social share counts, possible broken media links, mixed content issues, and SSL certificate errors', 'wpsso' ) . ' ';
+
+						$text .= __( 'Please update your <code>wp-config.php</code> file and provide a fixed, non-variable value for the <code>WP_HOME</code> constant.', 'wpsso' );
+
+						break;
+
 					case 'notice-header-tmpl-no-head-attr':
 
 						$filter_name = 'head_attributes';
-						$tag_code    = '<code>&lt;head&gt;</code>';
-						$php_code    = '<pre><code>&lt;head &lt;?php do_action( &#39;add_head_attributes&#39; ); ?&gt;&gt;</code></pre>';
+
+						$tag_code = '<code>&lt;head&gt;</code>';
+
+						$php_code  = '<pre><code>&lt;head &lt;?php do_action( &#39;add_head_attributes&#39; ); ?&gt;&gt;</code></pre>';
+
 						$action_url  = wp_nonce_url( $this->p->util->get_admin_url( '?' . $this->p->lca . '-action=modify_tmpl_head_attributes' ),
 							WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 
 						$text = '<p class="top">';
 
-						$text .= __( '<b>At least one of your theme header templates does not support Schema markup of the webpage head section</b> &mdash; this is especially important for Pinterest (and Google if not using the JSON-LD add-on).', 'wpsso' ) . ' ';
+						$text .= __( '<b>At least one of your theme header templates does not support Schema markup of the webpage head section</b> &mdash; this is especially important for Pinterest (and Google if not using the complementary JSON-LD add-on).', 'wpsso' ) . ' ';
 
 						$text .= '</p><p>';
 

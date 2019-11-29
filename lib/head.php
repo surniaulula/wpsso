@@ -294,7 +294,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 		public function get_mt_mark( $type ) {
 
-			$ret = '';
+			$mt_mark = '';
 
 			switch ( $type ) {
 
@@ -304,18 +304,15 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$add_meta_name = apply_filters( $this->p->lca . '_add_meta_name_' . $this->p->lca . ':mark',
 						( empty( $this->p->options[ 'plugin_check_head' ] ) ? false : true ) );
 
-					$comment = '<!-- ' . $this->p->lca . ' meta tags ' . $type . ' -->';
+					$html_comment = '<!-- ' . $this->p->lca . ' meta tags ' . $type . ' -->';
 
-					if ( ! empty( $add_meta_name ) ) {
-
-						$mt_name = $add_meta ? '<meta name="' . $this->p->lca . ':mark:' . $type . '" ' . 
-							'content="' . $this->p->lca . ' meta tags ' . $type . '"/>' . "\n" : '';
-					}
+					$mt_name = $add_meta_name ? '<meta name="' . $this->p->lca . ':mark:' . $type . '" ' . 
+						'content="' . $this->p->lca . ' meta tags ' . $type . '"/>' . "\n" : '';
 
 					if ( $type === 'begin' ) {
-						$ret = $comment . "\n" . $mt_name;
+						$mt_mark = $html_comment . "\n" . $mt_name;
 					} else {
-						$ret = $mt_name . $comment . "\n";
+						$mt_mark = $mt_name . $html_comment . "\n";
 					}
 
 					break;
@@ -329,13 +326,13 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$prefix = '<(!--[\s\n\r]+|meta[\s\n\r]+name="?' . $this->p->lca . ':mark:(begin|end)"?[\s\n\r]+content=")';
 					$suffix = '([\s\n\r]+--|"[\s\n\r]*\/?)>';
 		
-					$ret = '/' . $prefix . $this->p->lca . ' meta tags begin' . $suffix . '.*' . 
+					$mt_mark = '/' . $prefix . $this->p->lca . ' meta tags begin' . $suffix . '.*' . 
 						$prefix . $this->p->lca . ' meta tags end' . $suffix . '/ums';	// Enable utf8 support.
 
 					break;
 			}
 
-			return $ret;
+			return $mt_mark;
 		}
 
 		public function get_head_html( $use_post = false, $mod = false, $read_cache = true ) {

@@ -862,7 +862,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;	// Stop here.
 			}
 
-			$exec_count = $this->p->debug->enabled ? 0 : (int) get_option( WPSSO_POST_CHECK_NAME );		// Cast to change false to 0.
+			$exec_count = $this->p->debug->enabled ? 0 : (int) get_option( WPSSO_POST_CHECK_COUNT_NAME, $default = 0 );
 			$max_count  = SucomUtil::get_const( 'WPSSO_DUPE_CHECK_HEADER_COUNT', 10 );
 
 			if ( $exec_count >= $max_count ) {
@@ -1155,7 +1155,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 								$inf_msg .= sprintf( __( 'Check %1$d of %2$d successful...', 'wpsso' ), $exec_count, $max_count );
 							}
 
-							update_option( WPSSO_POST_CHECK_NAME, $exec_count, false );	// Autoload is false.
+							update_option( WPSSO_POST_CHECK_COUNT_NAME, $exec_count, $autoload = false );
 
 							$this->p->notice->inf( $inf_msg );
 						}

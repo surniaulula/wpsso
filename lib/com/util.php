@@ -3257,11 +3257,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_stripped_php( $file_path ) {
 
-			$ret = '';
+			$stripped_php = '';
 
 			if ( file_exists( $file_path ) ) {
 
-				$content  = file_get_contents( $file_path );
+				$content = file_get_contents( $file_path );
+
 				$comments = array( T_COMMENT );
 
 				if ( defined( 'T_DOC_COMMENT' ) ) {
@@ -3275,20 +3276,24 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$tokens = token_get_all( $content );
 
 				foreach ( $tokens as $token ) {
+
 					if ( is_array( $token ) ) {
-						if ( in_array( $token[0], $comments ) ) {
+
+						if ( in_array( $token[ 0 ], $comments ) ) {
 							continue;
 						}
-						$token = $token[1];
+
+						$token = $token[ 1 ];
 					}
-					$ret .= $token;
+
+					$stripped_php .= $token;
 				}
 
 			} else {
-				$ret = false;
+				$stripped_php = false;
 			}
 
-			return $ret;
+			return $stripped_php;
 		}
 
 		public static function esc_url_encode( $url, $esc_url = true ) {

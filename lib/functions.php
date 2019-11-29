@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * $previous_error_handler = set_error_handler( 'wpsso_error_handler' );
  *
- * $image_size = getimagesize( $filepath );
+ * $image_size = getimagesize( $file_path );
  *
  * restore_error_handler();
  */

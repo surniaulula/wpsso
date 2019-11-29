@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.14.0-rc.1',	// Plugin version.
+					'version'     => '6.14.0-rc.2',	// Plugin version.
 					'opt_version' => '686',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2171,7 +2171,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				
 				/**
-				 * The shortener key is also its filename under lib/pro/ext/.
+				 * The shortener key is also its file name under lib/pro/ext/.
 				 */
 				'shorteners' => array(
 					'none'                 => '[None]',
@@ -3511,7 +3511,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			}
 		}
 
-		public static function set_constants( $plugin_filepath ) {
+		public static function set_constants( $plugin_file_path ) {
 
 			if ( defined( 'WPSSO_VERSION' ) ) {	// Define constants only once.
 				return;
@@ -3522,11 +3522,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/**
 			 * Define fixed constants.
 			 */
-			define( 'WPSSO_FILEPATH', $plugin_filepath );						
+			define( 'WPSSO_FILEPATH', $plugin_file_path );						
 			define( 'WPSSO_PLUGINBASE', $info[ 'base' ] );	// Example: wpsso/wpsso.php.
-			define( 'WPSSO_PLUGINDIR', trailingslashit( realpath( dirname( $plugin_filepath ) ) ) );
+			define( 'WPSSO_PLUGINDIR', trailingslashit( realpath( dirname( $plugin_file_path ) ) ) );
 			define( 'WPSSO_PLUGINSLUG', $info[ 'slug' ] );	// Example: wpsso.
-			define( 'WPSSO_URLPATH', trailingslashit( plugins_url( '', $plugin_filepath ) ) );
+			define( 'WPSSO_URLPATH', trailingslashit( plugins_url( '', $plugin_file_path ) ) );
 			define( 'WPSSO_VERSION', $info[ 'version' ] );						
 			define( 'WPSSO_UNDEF', -1 );			// Default undefined image width / height value.
 
@@ -3613,13 +3613,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/**
 			 * WPSSO option and meta array names.
 			 */
-			$var_const[ 'WPSSO_DISMISS_NAME' ]      = 'wpsso_dismissed';		// Dismissed notices.
-			$var_const[ 'WPSSO_META_NAME' ]         = '_wpsso_meta';		// Post meta.
-			$var_const[ 'WPSSO_OPTIONS_NAME' ]      = 'wpsso_options';
-			$var_const[ 'WPSSO_POST_CHECK_NAME' ]   = 'wpsso_post_head_count';	// Duplicate check counter.
-			$var_const[ 'WPSSO_PREF_NAME' ]         = '_wpsso_pref';		// User meta.
-			$var_const[ 'WPSSO_REG_TS_NAME' ]       = 'wpsso_timestamps';
-			$var_const[ 'WPSSO_SITE_OPTIONS_NAME' ] = 'wpsso_site_options';
+			$var_const[ 'WPSSO_DISMISS_NAME' ]          = 'wpsso_dismissed';
+			$var_const[ 'WPSSO_META_NAME' ]             = '_wpsso_meta';
+			$var_const[ 'WPSSO_OPTIONS_NAME' ]          = 'wpsso_options';
+			$var_const[ 'WPSSO_POST_CHECK_COUNT_NAME' ] = 'wpsso_post_check_count';
+			$var_const[ 'WPSSO_PREF_NAME' ]             = '_wpsso_pref';
+			$var_const[ 'WPSSO_REG_TS_NAME' ]           = 'wpsso_timestamps';
+			$var_const[ 'WPSSO_SITE_OPTIONS_NAME' ]     = 'wpsso_site_options';
+			$var_const[ 'WPSSO_TMPL_HEAD_CHECK_NAME' ]  = 'wpsso_tmpl_head_check';
+			$var_const[ 'WPSSO_WP_CONFIG_CHECK_NAME' ]  = 'wpsso_wp_config_check';
 
 			/**
 			 * WPSSO hook priorities.
@@ -3747,7 +3749,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return false;
 		}
 
-		public static function require_libs( $plugin_filepath ) {
+		public static function require_libs( $plugin_file_path ) {
 
 			require_once WPSSO_PLUGINDIR . 'lib/com/cache.php';
 			require_once WPSSO_PLUGINDIR . 'lib/com/nodebug.php';	// Always load fallback class.
@@ -3810,11 +3812,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 			if ( false === $ret && ! empty( $filespec ) ) {
 
-				$filepath = WPSSO_PLUGINDIR . 'lib/' . $filespec . '.php';
+				$file_path = WPSSO_PLUGINDIR . 'lib/' . $filespec . '.php';
 
-				if ( file_exists( $filepath ) ) {
+				if ( file_exists( $file_path ) ) {
 
-					require_once $filepath;
+					require_once $file_path;
 
 					if ( empty( $classname ) ) {
 						return SucomUtil::sanitize_classname( 'wpsso' . $filespec, $allow_underscore = false );
