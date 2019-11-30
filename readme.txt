@@ -441,7 +441,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.14.0-rc.2 (2019/11/29)**
+**Version 6.14.0-rc.3 (2019/11/30)**
 
 * **New Features**
 	* None.
@@ -714,9 +714,9 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 
 == Upgrade Notice ==
 
-= 6.14.0-rc.2 =
+= 6.14.0-rc.3 =
 
-(2019/11/29) Added support for the "Perfect WooCommerce Brands" plugin (Premium version). Added a new "Pinterest Image Description" option in the Document SSO metabox.
+(2019/11/30) Added support for the "Perfect WooCommerce Brands" plugin (Premium version). Added a new "Pinterest Image Description" option in the Document SSO metabox.
 
 = 6.13.2 =
 
