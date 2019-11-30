@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires At Least: 3.9
 Tested Up To: 5.3
 WC Tested Up To: 3.8.1
-Stable Tag: 6.13.2
+Stable Tag: 6.14.0
 
 Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.
 
@@ -717,8 +717,4 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 = 6.14.0 =
 
 (2019/11/30) Added support for the "Perfect WooCommerce Brands" plugin (Premium version). Added a new "Pinterest Image Description" option in the Document SSO metabox.
-
-= 6.13.2 =
-
-(2019/11/25) Minor optimization change to save the plugin settings when plugin/add-on versions change. Fixed an incorrect add-on / licenses settings page link in a notification message.
 
