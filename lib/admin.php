@@ -2481,7 +2481,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 */
 		private function modify_tmpl_head_attributes() {
 
-			$passed = false;
+			$modified = false;
 
 			$header_files = SucomUtilWP::get_theme_header_file_paths();
 
@@ -2548,7 +2548,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					$this->p->notice->upd( $notice_msg );
 
-					$passed = true;
+					$modified = true;
 
 				} else {
 
@@ -2564,7 +2564,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				fclose( $tmpl_fh );
 			}
 
-			if ( $passed ) {
+			if ( $modified ) {
 
 				$admin_roles = $this->p->cf[ 'wp' ][ 'roles' ][ 'admin' ];
 
@@ -2573,8 +2573,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$notice_key = 'notice-header-tmpl-no-head-attr-' . SucomUtilWP::get_theme_slug_version();
 
 				$this->p->notice->clear_key( $notice_key, $user_ids );	// Just in case.
-
-				update_option( WPSSO_TMPL_HEAD_CHECK_NAME, $passed, $autoload = false );
 			}
 		}
 

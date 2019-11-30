@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.14.0-rc.2\n"
+"Project-Id-Version: WPSSO Core 6.14.0-rc.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -516,260 +516,260 @@ msgid ""
 "the same folder."
 msgstr ""
 
-#: lib/admin.php:2588
+#: lib/admin.php:2586
 msgctxt "metabox title"
 msgid "Default Open Graph Types"
 msgstr ""
 
-#: lib/admin.php:2593 lib/admin.php:2787
+#: lib/admin.php:2591 lib/admin.php:2785
 msgctxt "option label"
 msgid "Type for Blog Front Page"
 msgstr ""
 
-#: lib/admin.php:2594 lib/admin.php:2788
+#: lib/admin.php:2592 lib/admin.php:2786
 msgctxt "option label"
 msgid "Type for Static Front Page"
 msgstr ""
 
-#: lib/admin.php:2595 lib/admin.php:2789
+#: lib/admin.php:2593 lib/admin.php:2787
 msgctxt "option label"
 msgid "Type for User / Author Page"
 msgstr ""
 
-#: lib/admin.php:2596 lib/admin.php:2790
+#: lib/admin.php:2594 lib/admin.php:2788
 msgctxt "option label"
 msgid "Type for Search Results Page"
 msgstr ""
 
-#: lib/admin.php:2597 lib/admin.php:2791
+#: lib/admin.php:2595 lib/admin.php:2789
 msgctxt "option label"
 msgid "Type for Other Archive Page"
 msgstr ""
 
-#: lib/admin.php:2623 lib/admin.php:2629 lib/admin.php:2655 lib/admin.php:2826
-#: lib/admin.php:2837 lib/admin.php:2869
+#: lib/admin.php:2621 lib/admin.php:2627 lib/admin.php:2653 lib/admin.php:2824
+#: lib/admin.php:2835 lib/admin.php:2867
 msgctxt "option comment"
 msgid "for %s"
 msgstr ""
 
-#: lib/admin.php:2629 lib/admin.php:2838
+#: lib/admin.php:2627 lib/admin.php:2836
 msgctxt "option comment"
 msgid "Post Type Archive Page"
 msgstr ""
 
-#: lib/admin.php:2632 lib/admin.php:2842
+#: lib/admin.php:2630 lib/admin.php:2840
 msgctxt "option label"
 msgid "Type by Post Type"
 msgstr ""
 
-#: lib/admin.php:2659 lib/admin.php:2874
+#: lib/admin.php:2657 lib/admin.php:2872
 msgctxt "option label"
 msgid "Type by Taxonomy"
 msgstr ""
 
-#: lib/admin.php:2674
+#: lib/admin.php:2672
 msgid "WebSite Information"
 msgstr ""
 
-#: lib/admin.php:2677
+#: lib/admin.php:2675
 msgid "Organization Social Profile"
 msgstr ""
 
-#: lib/admin.php:2679
+#: lib/admin.php:2677
 msgid "Person Social Profile"
 msgstr ""
 
-#: lib/admin.php:2682
+#: lib/admin.php:2680
 msgctxt "option label"
 msgid "Knowledge Graph for Home Page"
 msgstr ""
 
 #. translators: %s is "WebSite Information".
-#: lib/admin.php:2687
+#: lib/admin.php:2685
 msgid "Include %s for Google Search"
 msgstr ""
 
 #. translators: %s is "Organization Social Profile".
-#: lib/admin.php:2692
+#: lib/admin.php:2690
 msgid "Include %s for a Business Website"
 msgstr ""
 
 #. translators: %s is "Person Social Profile".
-#: lib/admin.php:2697
+#: lib/admin.php:2695
 msgid "Include %s for a Personal Website"
 msgstr ""
 
-#: lib/admin.php:2705
+#: lib/admin.php:2703
 msgctxt "option label"
 msgid "User for Person Social Profile"
 msgstr ""
 
-#: lib/admin.php:2720 lib/submenu/essential.php:129
+#: lib/admin.php:2718 lib/submenu/essential.php:129
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:2724 lib/options.php:799 lib/submenu/essential.php:134
+#: lib/admin.php:2722 lib/options.php:799 lib/submenu/essential.php:134
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
 
-#: lib/admin.php:2728
+#: lib/admin.php:2726
 msgctxt "option label"
 msgid "Author / Person Name Format"
 msgstr ""
 
-#: lib/admin.php:2732 lib/submenu/general.php:184
+#: lib/admin.php:2730 lib/submenu/general.php:184
 msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr ""
 
-#: lib/admin.php:2736 lib/submenu/general.php:187
+#: lib/admin.php:2734 lib/submenu/general.php:187
 msgctxt "option comment"
 msgid "note that video preview images are enabled (and included first)"
 msgstr ""
 
-#: lib/admin.php:2740
+#: lib/admin.php:2738
 msgctxt "option label"
 msgid "Schema Image Size"
 msgstr ""
 
-#: lib/admin.php:2744
+#: lib/admin.php:2742
 msgctxt "option label"
 msgid "Schema Article Image Size"
 msgstr ""
 
-#: lib/admin.php:2750
+#: lib/admin.php:2748
 msgctxt "option label"
 msgid "Schema Article AMP 1:1 Img Size"
 msgstr ""
 
-#: lib/admin.php:2754
+#: lib/admin.php:2752
 msgctxt "option label"
 msgid "Schema Article AMP 4:3 Img Size"
 msgstr ""
 
-#: lib/admin.php:2758
+#: lib/admin.php:2756
 msgctxt "option label"
 msgid "Schema Article AMP 16:9 Img Size"
 msgstr ""
 
-#: lib/admin.php:2763
+#: lib/admin.php:2761
 msgctxt "option label"
 msgid "Schema Thumbnail Image Size"
 msgstr ""
 
-#: lib/admin.php:2767
+#: lib/admin.php:2765
 msgctxt "option label"
 msgid "Max. Schema Description Length"
 msgstr ""
 
-#: lib/admin.php:2769 lib/submenu/general.php:251 lib/submenu/general.php:309
+#: lib/admin.php:2767 lib/submenu/general.php:251 lib/submenu/general.php:309
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
-#: lib/admin.php:2782
+#: lib/admin.php:2780
 msgctxt "metabox title"
 msgid "Default Schema Types"
 msgstr ""
 
-#: lib/admin.php:2890
+#: lib/admin.php:2888
 msgctxt "option label"
 msgid "Remove Settings on Uninstall"
 msgstr ""
 
-#: lib/admin.php:2892
+#: lib/admin.php:2890
 msgctxt "option comment"
 msgid "including custom meta for posts, terms, and users"
 msgstr ""
 
-#: lib/admin.php:2896
+#: lib/admin.php:2894
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
 
-#: lib/admin.php:2898
+#: lib/admin.php:2896
 msgctxt "option comment"
 msgid "WPSSO_HTML_DEBUG constant is true"
 msgstr ""
 
-#: lib/admin.php:2903
+#: lib/admin.php:2901
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr ""
 
-#: lib/admin.php:2908
+#: lib/admin.php:2906
 msgctxt "option label"
 msgid "Notification System"
 msgstr ""
 
-#: lib/admin.php:2920
+#: lib/admin.php:2918
 msgctxt "metabox title"
 msgid "Product Attribute Names"
 msgstr ""
 
-#: lib/admin.php:2949
+#: lib/admin.php:2947
 msgctxt "metabox title"
 msgid "Custom Field Names"
 msgstr ""
 
-#: lib/admin.php:3035
+#: lib/admin.php:3033
 msgctxt "option comment"
 msgid "in %s"
 msgstr ""
 
-#: lib/admin.php:3046
+#: lib/admin.php:3044
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:3229
+#: lib/admin.php:3227
 msgid "Return to %s"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:3260
+#: lib/admin.php:3258
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:3282
+#: lib/admin.php:3280
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:3289
+#: lib/admin.php:3287
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes, and translations)</a> to check if newer versions are "
 "available."
 msgstr ""
 
-#: lib/admin.php:3426
+#: lib/admin.php:3424
 msgid "Please select a %1$s settings file to import."
 msgstr ""
 
-#: lib/admin.php:3433
+#: lib/admin.php:3431
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr ""
 
-#: lib/admin.php:3440
+#: lib/admin.php:3438
 msgid ""
 "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr ""
 
-#: lib/admin.php:3454
+#: lib/admin.php:3452
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr ""
 
-#: lib/admin.php:3464
+#: lib/admin.php:3462
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr ""
 
-#: lib/admin.php:3474
+#: lib/admin.php:3472
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 
