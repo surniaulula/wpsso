@@ -409,7 +409,7 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 == Screenshots ==
 
 01. The document SSO metabox offers a preview tab to show an example share using the current Open Graph meta tags.
-02. The essential settings page provides a single-page, quick and easy setup.
+02. The essential settings page provides an easy and quick setup for a few essential settings.
 
 == Changelog ==
 
