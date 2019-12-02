@@ -291,14 +291,10 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				674 => array(
 					'instgram_publisher_url' => 'instagram_publisher_url',
 				),
-				676 => array(
+				686 => array(
+					'plugin_wpssoam_tid' => '',	// WPSSO AM Premium deprecated on 2019/11/14.
 					'plugin_wpssorrssb_tid' => '',	// WPSSO RRSSB Premium deprecated on 2019/11/06.
 					'plugin_wpssossb_tid'   => '',	// WPSSO SSB Premium deprecated on 2019/11/05.
-				),
-				677 => array(
-					'plugin_wpssoam_tid' => '',	// WPSSO AM Premium deprecated on 2019/11/14.
-				),
-				679 => array(
 					'plugin_wpssotie_tid' => '',	// WPSSO TIE Premium deprecated on 2019/11/21.
 				),
 			),
@@ -327,14 +323,10 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				651 => array(
 					'plugin_honor_force_ssl' => '',
 				),
-				676 => array(
+				686 => array(
+					'plugin_wpssoam_tid' => '',	// WPSSO AM Premium deprecated on 2019/11/14.
 					'plugin_wpssorrssb_tid' => '',	// WPSSO RRSSB Premium deprecated on 2019/11/06.
 					'plugin_wpssossb_tid'   => '',	// WPSSO SSB Premium deprecated on 2019/11/05.
-				),
-				677 => array(
-					'plugin_wpssoam_tid' => '',	// WPSSO AM Premium deprecated on 2019/11/14.
-				),
-				679 => array(
 					'plugin_wpssotie_tid' => '',	// WPSSO TIE Premium deprecated on 2019/11/21.
 				),
 			),
