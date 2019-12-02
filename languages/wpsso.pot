@@ -609,7 +609,7 @@ msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:2722 lib/options.php:799 lib/submenu/essential.php:134
+#: lib/admin.php:2722 lib/options.php:799 lib/submenu/essential.php:135
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
@@ -6567,12 +6567,12 @@ msgctxt "option label"
 msgid "or Default / Fallback Image URL"
 msgstr ""
 
-#: lib/submenu/essential.php:143 lib/submenu/general.php:264
+#: lib/submenu/essential.php:145 lib/submenu/general.php:264
 msgctxt "option label"
 msgid "Pinterest Company Page URL"
 msgstr ""
 
-#: lib/submenu/essential.php:152 lib/submenu/general.php:302
+#: lib/submenu/essential.php:154 lib/submenu/general.php:302
 msgctxt "option label"
 msgid "Twitter Business @username"
 msgstr ""

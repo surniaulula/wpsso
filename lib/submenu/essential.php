@@ -128,12 +128,14 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 					$this->form->get_th_html( '<a href="https://developers.google.com/structured-data/customize/logos">' . 
 					_x( 'Organization Logo URL', 'option label', 'wpsso' ) . '</a>', '', 'schema_logo_url',
 						array( 'is_locale' => true ) ) . 
-					'<td>' . $this->form->get_input( SucomUtil::get_key_locale( 'schema_logo_url', $this->p->options ), 'wide' ) . '</td>';
+					'<td>' . $this->form->get_input( SucomUtil::get_key_locale( 'schema_logo_url', $this->p->options ),
+						'wide is_required' ) . '</td>';
 
 					$table_rows[ 'schema_banner_url' ] = '' . 
 					$this->form->get_th_html( _x( 'Organization Banner URL', 'option label', 'wpsso' ), '', 'schema_banner_url',
 						array( 'is_locale' => true ) ) . 
-					'<td>' . $this->form->get_input( SucomUtil::get_key_locale( 'schema_banner_url', $this->p->options ), 'wide' ) . '</td>';
+					'<td>' . $this->form->get_input( SucomUtil::get_key_locale( 'schema_banner_url', $this->p->options ),
+						'wide is_required' ) . '</td>';
 
 					break;
 
