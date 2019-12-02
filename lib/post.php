@@ -671,7 +671,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->debug->log( 'head meta skipped: post is being trashed' );
 				}
 
-			} elseif ( SucomUtilWP::doing_block_editor() && ! empty( $_REQUEST[ 'meta_box' ] ) ) {
+			} elseif ( SucomUtilWP::doing_block_editor() && ( ! empty( $_REQUEST[ 'meta-box-loader' ] ) || ! empty( $_REQUEST[ 'meta_box' ] ) ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'head meta skipped: doing block editor for meta box' );
@@ -786,18 +786,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$is_admin = is_admin();	// Call the function only once.
-			$short    = $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'short' ];
-
-			if ( empty( $this->p->options[ 'plugin_check_head' ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: plugin_check_head option is disabled');
-				}
-
-				return;	// Stop here.
-			}
-
 			if ( ! apply_filters( $this->p->lca . '_add_meta_name_' . $this->p->lca . ':mark', true ) ) {
 
 				if ( $this->p->debug->enabled ) {
@@ -816,9 +804,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$post_obj = SucomUtil::get_post_object( $post_id );
 
 				if ( empty( $post_obj ) ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'exiting early: unable to get the post object');
 					}
+
 					return;	// Stop here.
 				}
 			}
@@ -833,8 +823,18 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					return;	// Stop here.
 				}
+
 				$post_id = $post_obj->ID;
 			}
+
+			static $do_once = array();
+
+			if ( isset( $do_once[ $post_id ] ) ) {
+
+				return;	// Stop here.
+			}
+
+			$do_once[ $post_id ] = true;
 
 			/**
 			 * Only check publicly available posts.
@@ -863,7 +863,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			$exec_count = $this->p->debug->enabled ? 0 : (int) get_option( WPSSO_POST_CHECK_COUNT_NAME, $default = 0 );
-			$max_count  = SucomUtil::get_const( 'WPSSO_DUPE_CHECK_HEADER_COUNT', 10 );
+
+			$max_count = SucomUtil::get_const( 'WPSSO_DUPE_CHECK_HEADER_COUNT', 10 );
 
 			if ( $exec_count >= $max_count ) {
 
@@ -891,6 +892,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;	// Stop here.
 			}
 
+			/**
+			 * Fetch the post HTML.
+			 */
+			$is_admin = is_admin();	// Call the function only once.
+
+			$short = $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'short' ];
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'getting html for ' . $check_url );
 			}
@@ -901,7 +909,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/**
-			 * Fetch HTML using the Facebook user agent to get Open Graph meta tags.
+			 * Use the Facebook user agent to get Open Graph meta tags.
 			 */
 			$curl_opts = array(
 				'CURLOPT_USERAGENT' => WPSSO_PHP_CURL_USERAGENT_FACEBOOK,
