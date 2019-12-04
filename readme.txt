@@ -456,7 +456,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored the `WpssoUtil->get_robots_content()` method.
 	* Added a new `SucomUtil::get_robots_default_directives()` method.
 	* Added a new 'sucom_robots_default_directives' filter.
-	* Added a new 'wpsso_robots_content' filter.
+	* Renamed the 'wpsso_get_robots_content' filter to 'wpsso_robots_content'.
 
 **Version 6.14.0 (2019/11/30)**
 
