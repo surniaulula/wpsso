@@ -183,7 +183,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'general'   => 'General',
 							'advanced'  => 'Advanced',
 							'dashboard' => 'Dashboard',
-							'tools'     => 'Tools',
+							'tools'     => 'Tools and Actions',
 							'addons'    => 'Complementary Add-ons',
 							'licenses'  => 'Premium Licenses',
 						),

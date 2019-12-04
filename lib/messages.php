@@ -2330,11 +2330,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'notice-um-version-recommended':
 
-						$um_info                  = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
-						$um_version               = isset( $um_info[ 'version' ] ) ? $um_info[ 'version' ] : 'unknown';
-						$um_rec_version           = WpssoConfig::$cf[ 'um' ][ 'rec_version' ];
-						$um_check_updates_transl  = _x( 'Check for Updates', 'submit button', 'wpsso' );
-						$tools_settings_page_link = $this->p->util->get_admin_url( 'tools', _x( 'Tools', 'lib file description', 'wpsso' ) );
+						$um_info = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
+
+						$um_version = isset( $um_info[ 'version' ] ) ? $um_info[ 'version' ] : 'unknown';
+
+						$um_rec_version = WpssoConfig::$cf[ 'um' ][ 'rec_version' ];
+
+						$um_check_updates_transl = _x( 'Check for Updates', 'submit button', 'wpsso' );
+
+						$tools_settings_page_link = $this->p->util->get_admin_url( 'tools',
+							_x( 'Tools and Actions', 'lib file description', 'wpsso' ) );
 
 						$wp_updates_page_link = '<a href="' . admin_url( 'update-core.php' ) . '">' . 
 							// translators: Please ignore - translation uses a different text domain.

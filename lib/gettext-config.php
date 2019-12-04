@@ -32,7 +32,7 @@ _x( 'Setup Guide', 'lib file description', 'wpsso' );
 _x( 'General', 'lib file description', 'wpsso' );
 _x( 'Advanced', 'lib file description', 'wpsso' );
 _x( 'Dashboard', 'lib file description', 'wpsso' );
-_x( 'Tools', 'lib file description', 'wpsso' );
+_x( 'Tools and Actions', 'lib file description', 'wpsso' );
 _x( 'Complementary Add-ons', 'lib file description', 'wpsso' );
 _x( 'Premium Licenses', 'lib file description', 'wpsso' );
 _x( 'SSO Tools', 'lib file description', 'wpsso' );
