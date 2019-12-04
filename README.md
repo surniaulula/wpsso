@@ -89,7 +89,7 @@
 
 <h3>WPSSO Core Premium Features</h3>
 
-<p>The Standard version is designed for most standard WordPress sites / blogs. If your site requires additional plugin or service API integration, like WooCommerce shops, embedded video support, or advanced customization features, then you may want the Premium version for those additional features.</p>
+<p>The Standard version is designed to satisfy the requirements of most standard WordPress sites / blogs. If your site requires additional plugin or service API integration, like WooCommerce shops, embedded video support, or advanced customization features, then you may want the Premium version for those additional features.</p>
 
 <ul>
 <li><p>Customize default values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags), custom post types, and user profiles:</p>
