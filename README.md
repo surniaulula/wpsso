@@ -120,7 +120,7 @@
 <li>Product Color</li>
 <li>Product Target Gender</li>
 <li>Product Size</li>
-<li>Product Weight</li>
+<li>Product Weight (kg)</li>
 <li>Product SKU</li>
 <li>Product MPN</li>
 <li>Product ISBN</li>

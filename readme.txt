@@ -117,7 +117,7 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 			* Product Color
 			* Product Target Gender
 			* Product Size
-			* Product Weight
+			* Product Weight (kg)
 			* Product SKU
 			* Product MPN
 			* Product ISBN
@@ -441,6 +441,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 6.15.0-dev.1 (2019/12/04)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added support for the Google robots max-snippet, max-image-preview, max-video-preview, notranslate, and noimageindex directives.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Refactored the `WpssoPost->show_robots_options()` and `save_robots_options()` methods.
+	* Refactored the `WpssoUtil->get_robots_content()` method.
+	* Added a new `SucomUtil::get_robots_default_directives()` method.
+	* Added a new 'sucom_robots_default_directives' filter.
+	* Added a new 'wpsso_robots_content' filter.
+
 **Version 6.14.0 (2019/11/30)**
 
 * **New Features**
@@ -713,6 +728,10 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 	* Updated the SuextMobileDetect class from https://github.com/serbanghita/Mobile-Detect v2.8.28 to v2.8.33.
 
 == Upgrade Notice ==
+
+= 6.15.0-dev.1 =
+
+(2019/12/04) Added support for the Google robots max-snippet, max-image-preview, max-video-preview, notranslate, and noimageindex directives.
 
 = 6.14.0 =
 
