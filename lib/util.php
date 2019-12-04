@@ -3835,34 +3835,58 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $this->p->msgs->maybe_ext_required( $mixed );
 		}
 
+		/**
+		 * See https://developers.google.com/search/reference/robots_meta_tag.
+		 */
 		public function get_robots_content( array $mod ) {
 
-			$content = '';
+			$directives = SucomUtil::get_robots_default_directives();
 
 			if ( $mod[ 'id' ] && is_object( $mod[ 'obj' ] ) ) {
 
 				foreach ( array(
-					'noindex'   => 'index',
-					'nofollow'  => 'follow',
-					'noarchive' => '',
-					'nosnippet' => '',
-				) as $meta_name => $inverse_name ) {
+					'noarchive'    => array(),
+					'nofollow'     => array( 'follow' ),
+					'noimageindex' => array( 'max-image-preview' ),
+					'noindex'      => array( 'index' ),
+					'nosnippet'    => array( 'max-snippet' ),
+					'notranslate'  => array(),
+				) as $directive => $inverse ) {
 
-					$meta_key   = '_' . $this->p->lca . '_' . $meta_name;
-					$meta_value = $mod[ 'obj' ]->get_meta_cache_value( $mod[ 'id' ], $meta_key );
+					$meta_key = '_' . $this->p->lca . '_' . $directive;
 
-					if ( ! empty( $meta_value ) ) {
-						$content .= $meta_name . ', ';
-					} elseif ( ! empty( $inverse_name ) ) {
-						$content .= $inverse_name . ', ';
+					/**
+					 * Returns '0', '1', or empty string.
+					 */
+					$meta_value = $mod[ 'obj' ]->get_meta_cache_value( $mod[ 'id' ], $meta_key );	// Always returns a string.
+
+					if ( '' !== $meta_value ) {
+
+						$directives[ $directive ] = $meta_value ? true : false;
+
+						foreach ( $inverse as $inverse_directive ) {
+							$directives[ $inverse_directive ] = $meta_value ? false : true;
+						}
 					}
 				}
-
-			} elseif ( is_404() || is_search() ) {
-				$content .= 'noindex, follow, noarchive, nosnippet';
 			}
 
-			return apply_filters( $this->p->lca . '_get_robots_content', rtrim( $content, ', ' ), $mod );
+			$content = '';
+
+			foreach ( $directives as $directive => $val ) {
+
+				if ( false === $val ) {
+					continue;
+				} elseif ( true === $val ) {
+					$content .= $directive . ', ';	// Noindex, nofollow, etc.
+				} else {
+					$content .= $directive . ':' . $val . ', ';	// Max-image-preview, max-video-preview, etc.
+				}
+			}
+
+			$content = trim( $content, ', ' );
+
+			return apply_filters( $this->p->lca . '_robots_content', $content, $mod, $directives );
 		}
 
 		/**

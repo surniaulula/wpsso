@@ -3919,5 +3919,60 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			return $html;
 		}
+
+		/**
+		 * See https://developers.google.com/search/reference/robots_meta_tag.
+		 */
+		public static function get_robots_default_directives() {
+
+			if ( isset( $_GET[ 'replytocom' ] ) ) {
+
+				$directives = array(
+					'follow'    => true,	// Allow follow.
+					'noarchive' => true,
+					'noindex'   => true,
+					'nosnippet' => true,
+				);
+
+			/**
+			 * The site is not public, so discourage robots from indexing the site.
+			 */
+			} elseif ( ! get_option( 'blog_public' ) ) {
+
+				$directives = array(
+					'noarchive' => true,
+					'nofollow'  => true,
+					'noindex'   => true,
+					'nosnippet' => true,
+				);
+
+			/**
+			 * The current webpage should not be indexed, but allow robots to follow links.
+			 */
+			} elseif ( is_404() || is_search() ) {
+
+				$directives = array(
+					'follow'    => true,	// Allow follow.
+					'noarchive' => true,
+					'noindex'   => true,
+					'nosnippet' => true,
+				);
+
+			/**
+			 * Default robots.
+			 */
+			} else {
+
+				$directives = array(
+					'follow'            => true,	// Allow follow.
+					'index'             => true,	// Allow index.
+					'max-image-preview' => 'large',	// Max size for image preview.
+					'max-snippet'       => -1,	// Max characters for textual snippet (-1 = no limit).
+					'max-video-preview' => -1,	// Max seconds for video snippet (-1 = no limit).
+				);
+			}
+
+			return apply_filters( 'sucom_robots_default_directives', $directives );
+		}
 	}
 }

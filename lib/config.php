@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.14.0',	// Plugin version.
-					'opt_version' => '687',		// Increment when changing default option values.
+					'version'     => '6.15.0-dev.1',	// Plugin version.
+					'opt_version' => '689',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -1438,11 +1438,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_product_attr_brand'         => 'Brand',			// Product Brand Attribute Name.
 					'plugin_product_attr_color'         => 'Color',			// Product Color Attribute Name.
 					'plugin_product_attr_condition'     => 'Condition',		// Product Condition Attribute Name.
+					'plugin_product_attr_depth_value'   => 'Depth',			// Product Depth Attribute Name.
 					'plugin_product_attr_gtin14'        => 'GTIN-14',		// Product GTIN-14 Attribute Name.
 					'plugin_product_attr_gtin13'        => 'GTIN-13',		// Product GTIN-13/EAN Attribute Name.
 					'plugin_product_attr_gtin12'        => 'GTIN-12',		// Product GTIN-12/UPC Attribute Name.
 					'plugin_product_attr_gtin8'         => 'GTIN-8',		// Product GTIN-8 Attribute Name.
-					'plugin_product_attr_gtin'          => '',			// Product GTIN Attribute Name.
+					'plugin_product_attr_gtin'          => 'GTIN',			// Product GTIN Attribute Name.
 					'plugin_product_attr_isbn'          => 'ISBN',			// Product ISBN Attribute Name.
 					'plugin_product_attr_material'      => 'Material',		// Product Material Attribute Name.
 					'plugin_product_attr_mpn'           => 'MPN',			// Product MPN Attribute Name.
@@ -2253,6 +2254,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_product_attr_brand'         => 'Product Brand Attribute Name',
 					'plugin_product_attr_color'         => 'Product Color Attribute Name',
 					'plugin_product_attr_condition'     => 'Product Condition Attribute Name',
+					'plugin_product_attr_depth_value'   => 'Product Depth Attribute Name',
 					'plugin_product_attr_mpn'           => 'Product MPN Attribute Name',
 					'plugin_product_attr_gtin14'        => 'Product GTIN-14 Attribute Name',
 					'plugin_product_attr_gtin13'        => 'Product GTIN-13/EAN Attribute Name',

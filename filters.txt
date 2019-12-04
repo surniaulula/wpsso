@@ -15,6 +15,8 @@
 
 'sucom_is_user_page' ( $ret )
 
+'sucom_robots_default_directives' ( $directives )
+
 'sucom_strip_shortcodes' ( $preg_array )
 
 'wpsso_add_head_html' ( $bool, $mod )
@@ -238,6 +240,8 @@
 'wpsso_rename_options_keys' ( $options_keys )
 
 'wpsso_rename_site_options_keys' ( $options_keys )
+
+'wpsso_robots_content' ( $content, $mod, $directives )
 
 'wpsso_save_options' ( $opts, $options_name, $network, $doing_upgrade )
 

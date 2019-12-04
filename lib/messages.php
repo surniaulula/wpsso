@@ -2059,13 +2059,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							if ( WpssoAdmin::$pkg[ $this->p->lca ][ 'pp' ] ) {
 
-								$text .= __( 'An e-commerce plugin is active &ndash; some product details may be managed from the e-commerce plugin.', 'wpsso' );
+								$text .= __( 'An e-commerce plugin is active &ndash; product attributes may be managed by the e-commerce plugin.', 'wpsso' );
 
 							} else {
 
 								$text .= empty( $url[ 'purchase' ] ) ? '' : '<a href="' . $url[ 'purchase' ] . '">';
 
-								$text .= sprintf( __( 'An e-commerce plugin is active &ndash; product details may be retrieved by the %s plugin.', 'wpsso' ), $info[ 'short_pro' ] );
+								$text .= sprintf( __( 'An e-commerce plugin is active &ndash; product attributes may be retrieved by the %s plugin.', 'wpsso' ), $info[ 'short_pro' ] );
 
 								$text .= empty( $url[ 'purchase' ] ) ? '' : '</a>';
 							}
@@ -2656,7 +2656,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		public function seo_option_disabled( $mt_name ) {
 
 			// translators: %s is the meta tag name (aka meta name canonical).
-			$text = sprintf( __( 'Modifications disabled (<code>%s</code> head tag disabled or SEO plugin detected).', 'wpsso' ), $mt_name );
+			$text = sprintf( __( 'Modifications disabled (<code>%s</code> tag disabled or SEO plugin detected).', 'wpsso' ), $mt_name );
 
 			return '<p class="status-msg smaller">' . $text . '</p>';
 		}

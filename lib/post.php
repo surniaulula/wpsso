@@ -86,7 +86,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				add_action( 'edit_attachment', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );	// Default is 0.
 
 				if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
+
 					add_action( 'post_submitbox_misc_actions', array( $this, 'show_robots_options' ) );
+
 					add_action( 'save_post', array( $this, 'save_robots_options' ) );
 				}
 			}
@@ -520,7 +522,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$value = (string) get_post_meta( $post_id, $meta_key, $single = true );
 			}
 
-			if ( $value === 'none' ) {
+			if ( 'none' === $value ) {
 				$value = $none;
 			}
 
@@ -1504,16 +1506,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 		}
 
+		/**
+		 * See https://developers.google.com/search/reference/robots_meta_tag.
+		 */
 		public function show_robots_options( $post ) {
 
 			if ( empty( $post->ID ) ) {	// Just in case.
 				return;
 			}
 
+			$mod              = $this->get_mod( $post->ID );
 			$post_type        = $post->post_type;
 			$post_type_object = get_post_type_object( $post_type );
-			$can_publish      = current_user_can( $post_type_object->cap->publish_posts );
-			$mod              = $this->get_mod( $post->ID );
+			$user_can_publish = current_user_can( $post_type_object->cap->publish_posts );
 			$robots_content   = $this->p->util->get_robots_content( $mod );
 			$robots_css_id    = $this->p->lca . '-robots';
 
@@ -1531,7 +1536,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			echo '<div id="post-' . $robots_css_id . '-display">' . "\n";
 			echo '<div id="post-' . $robots_css_id . '-content">' . $robots_content;
 
-			if ( $can_publish ) {
+			if ( $user_can_publish ) {
 				echo ' <a href="#" class="hide-if-no-js" role="button" onClick="' .
 					'jQuery(\'div#post-' . $robots_css_id . '-content\').hide();' .
 					'jQuery(\'div#post-' . $robots_css_id . '-select\').show();">';
@@ -1542,25 +1547,42 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			echo '</div><!-- #post-' . $robots_css_id . '-content -->' . "\n";
 
-			if ( $can_publish ) {
+			if ( $user_can_publish ) {
+
+				$default_directives = SucomUtil::get_robots_default_directives();
 
 				echo '<div id="post-' . $robots_css_id . '-select">' . "\n";
 
 				foreach ( array(
-					'noindex'   => _x( 'No index', 'option label', 'wpsso' ),
-					'nofollow'  => _x( 'No follow', 'option label', 'wpsso' ),
-					'noarchive' => _x( 'No archive', 'option label', 'wpsso' ),
-					'nosnippet' => _x( 'No snippet', 'option label', 'wpsso' ),
-				) as $meta_name => $meta_label ) {
+					'noarchive'    => _x( 'No archive', 'option label', 'wpsso' ),
+					'nofollow'     => _x( 'No follow', 'option label', 'wpsso' ),
+					'noimageindex' => _x( 'No image index', 'option label', 'wpsso' ),
+					'noindex'      => _x( 'No index', 'option label', 'wpsso' ),
+					'nosnippet'    => _x( 'No snippet', 'option label', 'wpsso' ),
+					'notranslate'  => _x( 'No translate', 'option label', 'wpsso' ),
+				) as $directive => $directive_label ) {
 
-					$meta_css_id = $this->p->lca . '_' . $meta_name;
-					$meta_key    = '_' . $meta_css_id;
-					$meta_value  = $this->get_meta_cache_value( $post->ID, $meta_key );
+					$meta_css_id = $this->p->lca . '_' . $directive;
+
+					$meta_key = '_' . $meta_css_id;
+
+					/**
+					 * Returns '0', '1', or empty string.
+					 */
+					$meta_value = $this->get_meta_cache_value( $post->ID, $meta_key );	// Always returns a string.
+
+					/**
+					 * If not explicitely enabled/disabled, then use the default value.
+					 */
+					if ( '' === $meta_value ) {
+						if ( ! empty( $default_directives[ $directive ] ) ) {	// True or false.
+							$meta_value = '1';
+						}
+					}
 
 					echo '<input type="hidden" name="is_checkbox' . $meta_key . '" value="1"/>' . "\n";
-					echo '<input type="checkbox" name="' . $meta_key . '" id="' . $meta_css_id . '"' .
-						checked( $meta_value, 1, false ) . '/>' . "\n";
-					echo '<label for="' . $meta_css_id . '" class="selectit">' . $meta_label . '</label>' . "\n";
+					echo '<input type="checkbox" name="' . $meta_key . '" id="' . $meta_css_id . '"' . checked( $meta_value, '1', false ) . '/>' . "\n";
+					echo '<label for="' . $meta_css_id . '" class="selectit">' . $directive_label . '</label>' . "\n";
 					echo '<br />' . "\n";
 				}
 
@@ -1571,6 +1593,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			echo '</div><!-- #post-' . $robots_css_id . ' -->' . "\n";
 		}
 
+		/**
+		 * See https://developers.google.com/search/reference/robots_meta_tag.
+		 */
 		public function save_robots_options( $post_id, $rel_id = false ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -1581,15 +1606,48 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;
 			}
 
-			foreach ( array( 'noindex', 'nofollow', 'noarchive', 'nosnippet' ) as $meta_name ) {
+			$default_directives = SucomUtil::get_robots_default_directives();
 
-				$meta_key = '_' . $this->p->lca . '_' . $meta_name;
+			foreach ( array(
+				'noarchive',
+				'nofollow',
+				'noimageindex',
+				'noindex',
+				'nosnippet',
+				'notranslate',
+			) as $directive ) {
+
+				$meta_key = '_' . $this->p->lca . '_' . $directive;
 
 				if ( isset( $_POST[ 'is_checkbox' . $meta_key ] ) ) {
+
+					/**
+					 * Option is unchecked.
+					 */
 					if ( empty( $_POST[ $meta_key ] ) ) {
-						delete_post_meta( $post_id, $meta_key );
+
+						/**
+						 * The default is enabled, so force disable.
+						 */
+						if ( ! empty( $default_directives[ $directive ] ) ) {	// True or false.
+							update_post_meta( $post_id, $meta_key, 0 );
+						} else {
+							delete_post_meta( $post_id, $meta_key );
+						}
+
+					/**
+					 * Option is checked.
+					 */
 					} else {
-						update_post_meta( $post_id, $meta_key, 1 );
+
+						/**
+						 * The default is disabled, so force enabling.
+						 */
+						if ( empty( $default_directives[ $directive ] ) ) {		// True or false.
+							update_post_meta( $post_id, $meta_key, 1 );
+						} else {
+							delete_post_meta( $post_id, $meta_key );
+						}
 					}
 				}
 			}

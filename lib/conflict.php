@@ -600,20 +600,21 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 			if ( defined( 'WPB_VC_VERSION' ) ) {
 
-				$vc_version_event_bug = '6.0.5';
+				$wpb_vc_version_event_bug = '6.0.5';
 
-				if ( version_compare( WPB_VC_VERSION, $vc_version_event_bug, '<=' ) ) {
+				if ( version_compare( WPB_VC_VERSION, $wpb_vc_version_event_bug, '<=' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'visual composer version with event bug detected' );
 					}
 
-					$notice_key   = 'vc-version-event-bug';
+					$notice_key = 'wpb-vc-version-event-bug';
+
 					$dismiss_time = DAY_IN_SECONDS;
 
 					if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) { // Don't bother if already dismissed.
 					
-						$this->p->notice->warn( __( 'An issue with WPBakery Visual Composer has been detected.', 'wpsso' ) . ' ' . sprintf( __( 'WPBakery Visual Composer version %s (and older) are known to have a bug in their jQuery event handling code.', 'wpsso' ), $vc_version_event_bug ) . ' ' . sprintf( __( 'To avoid jQuery crashing on show / hide events, please contact WPBakery plugin support and <a href="%s">report the WPBakery Visual Composer change event handler bug described here</a>.', 'wpsso' ), 'https://surniaulula.com/2018/apps/wordpress/plugins/wpbakery/wpbakery-visual-composer-bug-in-change-handler/' ), null, $notice_key, $dismiss_time );
+						$this->p->notice->warn( __( 'An issue with WPBakery Visual Composer has been detected.', 'wpsso' ) . ' ' . sprintf( __( 'WPBakery Visual Composer version %s (and older) are known to have a bug in their jQuery event handling code.', 'wpsso' ), $wpb_vc_version_event_bug ) . ' ' . sprintf( __( 'To avoid jQuery crashing on show / hide events, please contact WPBakery plugin support and <a href="%s">report the WPBakery Visual Composer change event handler bug described here</a>.', 'wpsso' ), 'https://surniaulula.com/2018/apps/wordpress/plugins/wpbakery/wpbakery-visual-composer-bug-in-change-handler/' ), null, $notice_key, $dismiss_time );
 					}
 				}
 			}
@@ -627,8 +628,9 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					$this->p->debug->log( 'wp blog_public option is disabled' );
 				}
 
-				$notice_key   = 'wp-search-engine-visibility-disabled';
-				$dismiss_time = true;
+				$notice_key = 'wp-search-engine-visibility-disabled';
+
+				$dismiss_time = YEAR_IN_SECONDS;
 
 				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) { // Don't bother if already dismissed.
 

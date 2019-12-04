@@ -196,6 +196,7 @@ _x( 'Video Embed HTML Custom Field', 'option label', 'wpsso' );
 _x( 'Product Brand Attribute Name', 'option value', 'wpsso' );
 _x( 'Product Color Attribute Name', 'option value', 'wpsso' );
 _x( 'Product Condition Attribute Name', 'option value', 'wpsso' );
+_x( 'Product Depth Attribute Name', 'option value', 'wpsso' );
 _x( 'Product MPN Attribute Name', 'option value', 'wpsso' );
 _x( 'Product GTIN-14 Attribute Name', 'option value', 'wpsso' );
 _x( 'Product GTIN-13/EAN Attribute Name', 'option value', 'wpsso' );

@@ -36,6 +36,44 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 
 				remove_action( 'wp_head', 'wp_shortlink_wp_head' );
 			}
+
+			add_action( 'wp_head', array( $this, 'maybe_disable_rel_canonical' ), -1000 );
+
+			if ( ! empty( $this->p->avail[ 'amp' ][ 'any' ] ) ) {
+				add_action( 'amp_post_template_head', array( $this, 'maybe_disable_rel_canonical' ), -1000 );
+			}
+		}
+
+		/**
+		 * Called by 'wp_head' and 'amp_post_template_head' actions.
+		 */
+		public function maybe_disable_rel_canonical() {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			if ( ! empty( $this->p->options[ 'add_link_rel_canonical' ] ) ) {
+
+				$current = current_filter();	// Since WP v2.5, aka current_action() in WP v3.9.
+
+				switch( $current ) {
+
+					case 'wp_head':
+
+						remove_filter( $current, 'rel_canonical' );	// WordPress.
+
+						remove_action( $current, 'amp_frontend_add_canonical' );	// AMP.
+
+						break;
+
+					case 'amp_post_template_head':
+
+						remove_action( $current, 'amp_post_template_add_canonical' );	// AMP.
+
+						break;
+				}
+			}
 		}
 
 		public function get_array( array $mod, array $mt_og = array(), $author_id = 0, $sharing_url = '' ) {

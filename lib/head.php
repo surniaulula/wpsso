@@ -23,11 +23,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->mark();
 			}
 
-			add_action( 'wp_head', array( $this, 'maybe_disable_rel_canonical' ), -1000 );
 			add_action( 'wp_head', array( $this, 'show_head' ), WPSSO_HEAD_PRIORITY );
 
 			if ( ! empty( $this->p->avail[ 'amp' ][ 'any' ] ) ) {
-				add_action( 'amp_post_template_head', array( $this, 'maybe_disable_rel_canonical' ), -1000 );
 				add_action( 'amp_post_template_head', array( $this, 'show_head' ), WPSSO_HEAD_PRIORITY );
 			}
 		}
@@ -76,38 +74,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			return $cache_index;
-		}
-
-		/**
-		 * Called by 'wp_head' and 'amp_post_template_head' actions.
-		 */
-		public function maybe_disable_rel_canonical() {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
-
-			if ( ! empty( $this->p->options[ 'add_link_rel_canonical' ] ) ) {
-
-				$current = current_filter();	// Since WP v2.5, aka current_action() in WP v3.9.
-
-				switch( $current ) {
-
-					case 'wp_head':
-
-						remove_filter( $current, 'rel_canonical' );	// WordPress.
-
-						remove_action( $current, 'amp_frontend_add_canonical' );	// AMP.
-
-						break;
-
-					case 'amp_post_template_head':
-
-						remove_action( $current, 'amp_post_template_add_canonical' );	// AMP.
-
-						break;
-				}
-			}
 		}
 
 		/**

@@ -22,6 +22,19 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
+
+			add_action( 'wp_head', array( $this, 'maybe_disable_noindex' ), -1000 );
+		}
+
+		public function maybe_disable_noindex() {
+
+			if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
+
+				if ( ! get_option( 'blog_public' ) ) {
+
+					remove_action( 'wp_head', 'noindex', 1 );
+				}
+			}
 		}
 
 		public function get_array( array $mod, array $mt_og = array(), $author_id = 0 ) {

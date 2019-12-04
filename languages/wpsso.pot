@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.14.0\n"
+"Project-Id-Version: WPSSO Core 6.15.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -264,7 +264,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:1024 lib/post.php:764 lib/term.php:646 lib/user.php:647
+#: lib/admin.php:1024 lib/post.php:766 lib/term.php:646 lib/user.php:647
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -888,7 +888,7 @@ msgctxt "option comment"
 msgid "from"
 msgstr ""
 
-#: lib/com/form.php:1923 lib/gettext-com.php:25 lib/post.php:1343
+#: lib/com/form.php:1923 lib/gettext-com.php:25 lib/post.php:1345
 #: lib/wp-meta.php:589 lib/wp-meta.php:719
 msgid "Save a draft version or publish to update this value."
 msgstr ""
@@ -905,7 +905,7 @@ msgstr ""
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:445 lib/gettext-com.php:31 lib/post.php:1538
+#: lib/com/notice.php:445 lib/gettext-com.php:31 lib/post.php:1543
 msgid "Edit"
 msgstr ""
 
@@ -1241,24 +1241,24 @@ msgstr ""
 msgid "Twitter"
 msgstr ""
 
-#: lib/conflict.php:616
+#: lib/conflict.php:617
 msgid "An issue with WPBakery Visual Composer has been detected."
 msgstr ""
 
-#: lib/conflict.php:616
+#: lib/conflict.php:617
 msgid ""
 "WPBakery Visual Composer version %s (and older) are known to have a bug in "
 "their jQuery event handling code."
 msgstr ""
 
-#: lib/conflict.php:616
+#: lib/conflict.php:617
 msgid ""
 "To avoid jQuery crashing on show / hide events, please contact WPBakery "
 "plugin support and <a href=\"%s\">report the WPBakery Visual Composer change "
 "event handler bug described here</a>."
 msgstr ""
 
-#: lib/conflict.php:635
+#: lib/conflict.php:637
 msgid ""
 "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to "
 "discourage search engine and social sites from indexing this site. This is "
@@ -1751,8 +1751,8 @@ msgstr ""
 #: lib/gettext-config.php:113 lib/gettext-config.php:116
 #: lib/gettext-config.php:119 lib/gettext-config.php:135
 #: lib/gettext-config.php:138 lib/gettext-config.php:140
-#: lib/gettext-config.php:210 lib/gettext-config.php:213
-#: lib/gettext-config.php:225 lib/gettext-config.php:234
+#: lib/gettext-config.php:211 lib/gettext-config.php:214
+#: lib/gettext-config.php:226 lib/gettext-config.php:235
 msgctxt "option value"
 msgid "[None]"
 msgstr ""
@@ -2199,240 +2199,245 @@ msgstr ""
 
 #: lib/gettext-config.php:199
 msgctxt "option value"
-msgid "Product MPN Attribute Name"
+msgid "Product Depth Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:200
 msgctxt "option value"
-msgid "Product GTIN-14 Attribute Name"
+msgid "Product MPN Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:201
 msgctxt "option value"
-msgid "Product GTIN-13/EAN Attribute Name"
+msgid "Product GTIN-14 Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:202
 msgctxt "option value"
-msgid "Product GTIN-12/UPC Attribute Name"
+msgid "Product GTIN-13/EAN Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:203
 msgctxt "option value"
-msgid "Product GTIN-8 Attribute Name"
+msgid "Product GTIN-12/UPC Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:204
 msgctxt "option value"
-msgid "Product GTIN Attribute Name"
+msgid "Product GTIN-8 Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:205
 msgctxt "option value"
-msgid "Product ISBN Attribute Name"
+msgid "Product GTIN Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:206
 msgctxt "option value"
-msgid "Product Material Attribute Name"
+msgid "Product ISBN Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:207
 msgctxt "option value"
-msgid "Product Size Attribute Name"
+msgid "Product Material Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:208
 msgctxt "option value"
-msgid "Product Target Gender Attr. Name"
+msgid "Product Size Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:209
 msgctxt "option value"
-msgid "Product Volume Attribute Name"
+msgid "Product Target Gender Attr. Name"
 msgstr ""
 
-#: lib/gettext-config.php:211
+#: lib/gettext-config.php:210
 msgctxt "option value"
-msgid "Kids"
+msgid "Product Volume Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:212
 msgctxt "option value"
-msgid "Adult"
+msgid "Kids"
 msgstr ""
 
-#: lib/gettext-config.php:214
+#: lib/gettext-config.php:213
 msgctxt "option value"
-msgid "Male"
+msgid "Adult"
 msgstr ""
 
 #: lib/gettext-config.php:215
 msgctxt "option value"
-msgid "Female"
+msgid "Male"
 msgstr ""
 
 #: lib/gettext-config.php:216
 msgctxt "option value"
-msgid "Unisex"
+msgid "Female"
 msgstr ""
 
 #: lib/gettext-config.php:217
 msgctxt "option value"
-msgid "Full Time"
+msgid "Unisex"
 msgstr ""
 
 #: lib/gettext-config.php:218
 msgctxt "option value"
-msgid "Part Time"
+msgid "Full Time"
 msgstr ""
 
 #: lib/gettext-config.php:219
 msgctxt "option value"
-msgid "Contractor"
+msgid "Part Time"
 msgstr ""
 
 #: lib/gettext-config.php:220
 msgctxt "option value"
-msgid "Temporary"
+msgid "Contractor"
 msgstr ""
 
 #: lib/gettext-config.php:221
 msgctxt "option value"
-msgid "Intern"
+msgid "Temporary"
 msgstr ""
 
 #: lib/gettext-config.php:222
 msgctxt "option value"
-msgid "Volunteer"
+msgid "Intern"
 msgstr ""
 
 #: lib/gettext-config.php:223
 msgctxt "option value"
-msgid "Per Diem"
+msgid "Volunteer"
 msgstr ""
 
 #: lib/gettext-config.php:224
 msgctxt "option value"
-msgid "Other"
+msgid "Per Diem"
 msgstr ""
 
-#: lib/gettext-config.php:226
+#: lib/gettext-config.php:225
 msgctxt "option value"
-msgid "Discontinued"
+msgid "Other"
 msgstr ""
 
 #: lib/gettext-config.php:227
 msgctxt "option value"
-msgid "In Stock"
+msgid "Discontinued"
 msgstr ""
 
 #: lib/gettext-config.php:228
 msgctxt "option value"
-msgid "In Store Only"
+msgid "In Stock"
 msgstr ""
 
 #: lib/gettext-config.php:229
 msgctxt "option value"
-msgid "Limited Availability"
+msgid "In Store Only"
 msgstr ""
 
 #: lib/gettext-config.php:230
 msgctxt "option value"
-msgid "Online Only"
+msgid "Limited Availability"
 msgstr ""
 
 #: lib/gettext-config.php:231
 msgctxt "option value"
-msgid "Out of Stock"
+msgid "Online Only"
 msgstr ""
 
 #: lib/gettext-config.php:232
 msgctxt "option value"
-msgid "Pre-Order"
+msgid "Out of Stock"
 msgstr ""
 
 #: lib/gettext-config.php:233
 msgctxt "option value"
-msgid "Sold Out"
+msgid "Pre-Order"
 msgstr ""
 
-#: lib/gettext-config.php:235
+#: lib/gettext-config.php:234
 msgctxt "option value"
-msgid "Damaged"
+msgid "Sold Out"
 msgstr ""
 
 #: lib/gettext-config.php:236
 msgctxt "option value"
-msgid "New"
+msgid "Damaged"
 msgstr ""
 
 #: lib/gettext-config.php:237
 msgctxt "option value"
-msgid "Refurbished"
+msgid "New"
 msgstr ""
 
 #: lib/gettext-config.php:238
 msgctxt "option value"
-msgid "Used"
+msgid "Refurbished"
 msgstr ""
 
 #: lib/gettext-config.php:239
 msgctxt "option value"
-msgid "Every day"
+msgid "Used"
 msgstr ""
 
 #: lib/gettext-config.php:240
 msgctxt "option value"
-msgid "Every two days"
+msgid "Every day"
 msgstr ""
 
 #: lib/gettext-config.php:241
 msgctxt "option value"
-msgid "Every three days"
+msgid "Every two days"
 msgstr ""
 
 #: lib/gettext-config.php:242
 msgctxt "option value"
-msgid "Every four days"
+msgid "Every three days"
 msgstr ""
 
 #: lib/gettext-config.php:243
 msgctxt "option value"
-msgid "Every five days"
+msgid "Every four days"
 msgstr ""
 
 #: lib/gettext-config.php:244
 msgctxt "option value"
-msgid "Every six days"
+msgid "Every five days"
 msgstr ""
 
 #: lib/gettext-config.php:245
 msgctxt "option value"
-msgid "Every week"
+msgid "Every six days"
 msgstr ""
 
 #: lib/gettext-config.php:246
 msgctxt "option value"
-msgid "Development and Up"
+msgid "Every week"
 msgstr ""
 
 #: lib/gettext-config.php:247
 msgctxt "option value"
-msgid "Alpha and Up"
+msgid "Development and Up"
 msgstr ""
 
 #: lib/gettext-config.php:248
 msgctxt "option value"
-msgid "Beta and Up"
+msgid "Alpha and Up"
 msgstr ""
 
 #: lib/gettext-config.php:249
 msgctxt "option value"
-msgid "Release Candidate and Up"
+msgid "Beta and Up"
 msgstr ""
 
 #: lib/gettext-config.php:250
+msgctxt "option value"
+msgid "Release Candidate and Up"
+msgstr ""
+
+#: lib/gettext-config.php:251
 msgctxt "option value"
 msgid "Stable / Production"
 msgstr ""
@@ -3355,27 +3360,27 @@ msgctxt "option value"
 msgid "[%s Location]"
 msgstr ""
 
-#: lib/head.php:537
+#: lib/head.php:503
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:551
+#: lib/head.php:517
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:560
+#: lib/head.php:526
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:569
+#: lib/head.php:535
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:578
+#: lib/head.php:544
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:587
+#: lib/head.php:553
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -3394,7 +3399,7 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
-#: lib/loader.php:184 lib/loader.php:210 lib/post.php:459 lib/register.php:315
+#: lib/loader.php:184 lib/loader.php:210 lib/post.php:461 lib/register.php:315
 #: lib/term.php:427 lib/user.php:373 lib/util.php:497 lib/util.php:3360
 msgid "%s warning:"
 msgstr ""
@@ -5198,14 +5203,14 @@ msgstr ""
 
 #: lib/messages.php:2062
 msgid ""
-"An e-commerce plugin is active &ndash; some product details may be managed "
-"from the e-commerce plugin."
+"An e-commerce plugin is active &ndash; product attributes may be managed by "
+"the e-commerce plugin."
 msgstr ""
 
 #: lib/messages.php:2068
 msgid ""
-"An e-commerce plugin is active &ndash; product details may be retrieved by "
-"the %s plugin."
+"An e-commerce plugin is active &ndash; product attributes may be retrieved "
+"by the %s plugin."
 msgstr ""
 
 #: lib/messages.php:2086
@@ -5787,8 +5792,7 @@ msgstr ""
 #. translators: %s is the meta tag name (aka meta name canonical).
 #: lib/messages.php:2659
 msgid ""
-"Modifications disabled (<code>%s</code> head tag disabled or SEO plugin "
-"detected)."
+"Modifications disabled (<code>%s</code> tag disabled or SEO plugin detected)."
 msgstr ""
 
 #. translators: %s is is the add-on name (and a link to the add-on page).
@@ -6016,177 +6020,187 @@ msgstr ""
 
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
-#: lib/post.php:445 lib/term.php:413 lib/user.php:359 lib/util.php:483
+#: lib/post.php:447 lib/term.php:413 lib/user.php:359 lib/util.php:483
 #: lib/util.php:3332
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a recommended max
-#: lib/post.php:448
+#: lib/post.php:450
 msgid ""
 "Slow query detected - WordPress get_posts() took %1$0.3f secs to get the "
 "children of post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:709 lib/post.php:1266
+#: lib/post.php:711 lib/post.php:1268
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/post.php:907
+#: lib/post.php:909
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:938
+#: lib/post.php:940
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:940
+#: lib/post.php:942
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:941
+#: lib/post.php:943
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:967
+#: lib/post.php:969
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:969
+#: lib/post.php:971
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:971
+#: lib/post.php:973
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:972
+#: lib/post.php:974
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:984 lib/util.php:1862
+#: lib/post.php:986 lib/util.php:1862
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:997
+#: lib/post.php:999
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1010
+#: lib/post.php:1012
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1023
+#: lib/post.php:1025
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1045
+#: lib/post.php:1047
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:1080
+#: lib/post.php:1082
 msgid "The webpage at %1$s does not include any Schema JSON-LD script(s)."
 msgstr ""
 
-#: lib/post.php:1082
+#: lib/post.php:1084
 msgid ""
 "Complete and accurate Schema JSON-LD markup is highly recommended for better "
 "ranking and click-through rates in search results."
 msgstr ""
 
-#: lib/post.php:1084
+#: lib/post.php:1086
 msgid ""
 "Consider activating the %1$s add-on to include Schema JSON-LD markup for "
 "Google Rich Results / Rich Snippets."
 msgstr ""
 
-#: lib/post.php:1103
+#: lib/post.php:1105
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:1119
+#: lib/post.php:1121
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1119
+#: lib/post.php:1121
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML &mdash; review the <a href=\"%1$s\">W3C Markup Validation "
 "Service</a> results and correct any errors."
 msgstr ""
 
-#: lib/post.php:1119
+#: lib/post.php:1121
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:1151
+#: lib/post.php:1153
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1152
+#: lib/post.php:1154
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1158
+#: lib/post.php:1160
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1161
+#: lib/post.php:1163
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1163
+#: lib/post.php:1165
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1528 lib/script.php:243
+#: lib/post.php:1533 lib/script.php:243
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1539
+#: lib/post.php:1544
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1550
-msgctxt "option label"
-msgid "No index"
-msgstr ""
-
-#: lib/post.php:1551
-msgctxt "option label"
-msgid "No follow"
-msgstr ""
-
-#: lib/post.php:1552
+#: lib/post.php:1557
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1553
+#: lib/post.php:1558
+msgctxt "option label"
+msgid "No follow"
+msgstr ""
+
+#: lib/post.php:1559
+msgctxt "option label"
+msgid "No image index"
+msgstr ""
+
+#: lib/post.php:1560
+msgctxt "option label"
+msgid "No index"
+msgstr ""
+
+#: lib/post.php:1561
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1629
+#: lib/post.php:1562
+msgctxt "option label"
+msgid "No translate"
+msgstr ""
+
+#: lib/post.php:1687
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -6964,7 +6978,7 @@ msgid "show these rows now"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name, and %3$s is the object ID.
-#: lib/util.php:4154
+#: lib/util.php:4178
 msgid "%1$s for %2$s ID %3$s"
 msgstr ""
 

@@ -1473,7 +1473,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'plugin_yourls_username':
 				case 'plugin_yourls_password':
 				case 'plugin_yourls_token':
-				case ( 0 === strpos( $base_key, 'plugin_cf_' ) ? true : false ):	// Value is the name of a meta key.
+				case ( 0 === strpos( $base_key, 'plugin_cf_' ) ? true : false ):		// Value is the name of a meta key.
 				case ( 0 === strpos( $base_key, 'plugin_product_attr_' ) ? true : false ):	// Value is the name of a product attribute.
 
 					return 'one_line';
