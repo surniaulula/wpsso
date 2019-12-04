@@ -58,7 +58,7 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 
 <h3>WPSSO Core Standard Features</h3>
 
-* *Complete and accurate meta tags for all social sites, search engines, web browser extensions, mail and messaging apps, and embedded object / iframe content.
+* Complete and accurate meta tags for all social sites, search engines, web browser extensions, mail and messaging apps, and embedded object / iframe content.
 
 * Updates the WordPress oEmbed data and HTML markup with the Open Graph title, description, and image for posts, pages, and custom post types.
 
@@ -94,6 +94,8 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 * [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale) to switch languages quickly and easily.
 
 <h3>WPSSO Core Premium Features</h3>
+
+The Standard version is designed for most standard WordPress sites / blogs. If your site requires additional plugin or service API integration, like WooCommerce shops, embedded video support, or advanced customization features, then you may want the Premium version for those additional features.
 
 * Customize default values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags), custom post types, and user profiles:
 
@@ -144,7 +146,72 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 			* Image ID
 			* or Image URL
 
-* Additional custom Schema options are available from the [WPSSO Schema JSON-LD Markup Premium add-on](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/):
+* Optionally upscale small images from the Media Library for social sharing and Schema markup.
+
+* Automatically validate all image minimum / maximum dimensions and aspect ratios.
+
+* Render shortcodes and blocks for accurate description texts and embedded video detection.
+
+* Additional Facebook, Open Graph, Rich Pin meta tags and Schema markup for videos and e-Commerce products.
+
+* Support for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube in content text.
+
+* Twitter [Player Card](https://dev.twitter.com/cards/types/player) for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube.
+
+* URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.
+
+* Integrates with services and 3rd party plugins for additional image, video, e-Commerce product details, SEO settings, and more.
+
+* The following integration modules are provided with the Premium plugin, and are automatically loaded when the supported services are required or 3rd party plugins detected.
+
+	* **Integration with 3rd Party Plugins:** 
+
+		* [All in One SEO Pack](https://wordpress.org/plugins/all-in-one-seo-pack/)
+		* [bbPress](https://wordpress.org/plugins/bbpress/)
+		* [BuddyPress](https://wordpress.org/plugins/buddypress/) (including Group Forum Topics)
+		* [Co-Authors Plus](https://wordpress.org/plugins/co-authors-plus/) (including Guest Authors)
+		* [Easy Digital Downloads](https://wordpress.org/plugins/easy-digital-downloads/)
+		* Gravity Forms + GravityView
+		* [NextCellent Gallery - NextGEN Legacy](https://wordpress.org/plugins/nextcellent-gallery-nextgen-legacy/)
+		* [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/)
+		* [Perfect WooCommerce Brands](https://wordpress.org/plugins/perfect-woocommerce-brands/)
+		* [Polylang](https://wordpress.org/plugins/polylang/)
+		* [Product GTIN (EAN, UPC, ISBN) for WooCommerce](https://wordpress.org/plugins/product-gtin-ean-upc-isbn-for-woocommerce/)
+		* [rtMedia for WordPress, BuddyPress and bbPress](https://wordpress.org/plugins/buddypress-media/)
+		* [Simple Job Board](https://wordpress.org/plugins/simple-job-board/)
+		* [The Events Calendar](https://wordpress.org/plugins/the-events-calendar/)
+		* [The SEO Framework](https://wordpress.org/plugins/autodescription/)
+		* [WooCommerce](https://wordpress.org/plugins/woocommerce/)
+		* [WooCommerce Brands](https://woocommerce.com/products/brands/)
+		* [WooCommerce UPC, EAN, and ISBN](https://wordpress.org/plugins/woo-add-gtin/)
+		* WooCommerce Show Single Variations
+		* [WP eCommerce](https://wordpress.org/plugins/wp-e-commerce/)
+		* [WP Job Manager](https://wordpress.org/plugins/wp-job-manager/)
+		* [WP Meta SEO](https://wordpress.org/plugins/wp-meta-seo/)
+		* [WP-PostRatings](https://wordpress.org/plugins/wp-postratings/)
+		* [WP Product Review](https://wordpress.org/plugins/wp-product-review/)
+		* [WP Recipe Maker](https://wordpress.org/plugins/wp-recipe-maker/)
+		* [WP Ultimate Recipe](https://wordpress.org/plugins/wp-ultimate-recipe/)
+		* [YITH WooCommerce Brands Add-on](https://wordpress.org/plugins/search/yith-woocommerce-brands-add-on/)
+		* [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/) (aka WordPress SEO)
+
+	* **Integration with Service APIs:**
+
+		* Bitly
+		* DLMY.App
+		* Facebook Embedded Videos
+		* Gravatar (Author Image)
+		* Ow.ly
+		* Slideshare Presentations
+		* Soundcloud Tracks (for the Twitter Player Card)
+		* TinyURL
+		* Vimeo Videos
+		* Wistia Videos
+		* WordPress Video Shortcode (and Self-Hosted Videos)
+		* Your Own URL Shortener (YOURLS)
+		* YouTube Videos and Playlists
+
+* Additional custom Schema options in the Document SSO metabox are available with the [WPSSO Schema JSON-LD Markup Premium add-on](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/):
 
 	* All Schema Types
 		* Schema Type
@@ -255,71 +322,6 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 		* First Appearance URL
 	* Software Application Information
 		* Operating System
-
-* Optionally upscale small images from the Media Library for social sharing and Schema markup.
-
-* Automatically validate all image minimum / maximum dimensions and aspect ratios.
-
-* Render shortcodes and blocks for accurate description texts and embedded video detection.
-
-* Additional Facebook, Open Graph, Rich Pin meta tags and Schema markup for videos and e-Commerce products.
-
-* Support for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube in content text.
-
-* Twitter [Player Card](https://dev.twitter.com/cards/types/player) for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube.
-
-* URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.
-
-* Integrates with services and 3rd party plugins for additional image, video, e-Commerce product details, SEO settings, and more.
-
-* The following integration modules are provided with the Premium plugin, and are automatically loaded when the supported services are required or 3rd party plugins detected.
-
-	* **Integration with 3rd Party Plugins:** 
-
-		* [All in One SEO Pack](https://wordpress.org/plugins/all-in-one-seo-pack/)
-		* [bbPress](https://wordpress.org/plugins/bbpress/)
-		* [BuddyPress](https://wordpress.org/plugins/buddypress/) (including Group Forum Topics)
-		* [Co-Authors Plus](https://wordpress.org/plugins/co-authors-plus/) (including Guest Authors)
-		* [Easy Digital Downloads](https://wordpress.org/plugins/easy-digital-downloads/)
-		* Gravity Forms + GravityView
-		* [NextCellent Gallery - NextGEN Legacy](https://wordpress.org/plugins/nextcellent-gallery-nextgen-legacy/)
-		* [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/)
-		* [Perfect WooCommerce Brands](https://wordpress.org/plugins/perfect-woocommerce-brands/)
-		* [Polylang](https://wordpress.org/plugins/polylang/)
-		* [Product GTIN (EAN, UPC, ISBN) for WooCommerce](https://wordpress.org/plugins/product-gtin-ean-upc-isbn-for-woocommerce/)
-		* [rtMedia for WordPress, BuddyPress and bbPress](https://wordpress.org/plugins/buddypress-media/)
-		* [Simple Job Board](https://wordpress.org/plugins/simple-job-board/)
-		* [The Events Calendar](https://wordpress.org/plugins/the-events-calendar/)
-		* [The SEO Framework](https://wordpress.org/plugins/autodescription/)
-		* [WooCommerce](https://wordpress.org/plugins/woocommerce/)
-		* [WooCommerce Brands](https://woocommerce.com/products/brands/)
-		* [WooCommerce UPC, EAN, and ISBN](https://wordpress.org/plugins/woo-add-gtin/)
-		* WooCommerce Show Single Variations
-		* [WP eCommerce](https://wordpress.org/plugins/wp-e-commerce/)
-		* [WP Job Manager](https://wordpress.org/plugins/wp-job-manager/)
-		* [WP Meta SEO](https://wordpress.org/plugins/wp-meta-seo/)
-		* [WP-PostRatings](https://wordpress.org/plugins/wp-postratings/)
-		* [WP Product Review](https://wordpress.org/plugins/wp-product-review/)
-		* [WP Recipe Maker](https://wordpress.org/plugins/wp-recipe-maker/)
-		* [WP Ultimate Recipe](https://wordpress.org/plugins/wp-ultimate-recipe/)
-		* [YITH WooCommerce Brands Add-on](https://wordpress.org/plugins/search/yith-woocommerce-brands-add-on/)
-		* [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/) (aka WordPress SEO)
-
-	* **Integration with Service APIs:**
-
-		* Bitly
-		* DLMY.App
-		* Facebook Embedded Videos
-		* Gravatar (Author Image)
-		* Ow.ly
-		* Slideshare Presentations
-		* Soundcloud Tracks (for the Twitter Player Card)
-		* TinyURL
-		* Vimeo Videos
-		* Wistia Videos
-		* WordPress Video Shortcode (and Self-Hosted Videos)
-		* Your Own URL Shortener (YOURLS)
-		* YouTube Videos and Playlists
 
 == Installation ==
 
