@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.15.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 6.15.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1405,12 +1405,12 @@ msgstr ""
 
 #: lib/gettext-config.php:35 lib/messages.php:2342
 msgctxt "lib file description"
-msgid "Tools and Actions"
+msgid "Actions and Tools"
 msgstr ""
 
 #: lib/gettext-config.php:38
 msgctxt "lib file description"
-msgid "SSO Tools"
+msgid "SSO Actions and Tools"
 msgstr ""
 
 #: lib/gettext-config.php:39

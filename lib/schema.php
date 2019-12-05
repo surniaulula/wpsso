@@ -2249,11 +2249,75 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * If we have a GTIN number, try to improve the assigned property name.
-		 * Pass $json_data by reference to modify the array directly.
-		 * A similar method exists as WpssoOpenGraph::check_gtin_mt_value().
+		 * Sanitize the sameAs array - make sure URLs are valid and remove any duplicates.
+		 */
+		public static function check_sameas_prop_values( &$json_data ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->mark();
+			}
+
+			if ( ! empty( $json_data[ 'sameAs' ] ) ) {
+
+				$added_urls = array();
+
+				foreach ( $json_data[ 'sameAs' ] as $num => $url ) {
+
+					if ( empty( $url ) ) {
+
+						if ( $wpsso->debug->enabled ) {
+							$wpsso->debug->log( 'skipping sameAs url #' . $num . ' - value is empty' );
+						}
+
+					} elseif ( isset( $json_data[ 'url' ] ) && $json_data[ 'url' ] === $url ) {
+
+						if ( $wpsso->debug->enabled ) {
+							$wpsso->debug->log( 'skipping sameAs url #' . $num . ' - value is "url" property (' . $url . ')' );
+						}
+
+					} elseif ( isset( $added_urls[ $url ] ) ) {	// Already added.
+
+						if ( $wpsso->debug->enabled ) {
+							$wpsso->debug->log( 'skipping sameAs url #' . $num . ' - value already added (' . $url . ')' );
+						}
+
+					} elseif ( filter_var( $url, FILTER_VALIDATE_URL ) === false ) {
+
+						if ( $wpsso->debug->enabled ) {
+							$wpsso->debug->log( 'skipping sameAs url #' . $num . ' - value is not valid (' . $url . ')' );
+						}
+
+					} else {	// Mark the url as already added and get the next url.
+
+						$added_urls[ $url ] = true;
+
+						continue;	// Get the next url.
+					}
+
+					unset( $json_data[ 'sameAs' ][ $num ] );	// Remove the duplicate / invalid url.
+				}
+
+				$json_data[ 'sameAs' ] = array_values( $json_data[ 'sameAs' ] );	// Reindex / renumber the array.
+			}
+
+			if ( empty( $json_data[ 'sameAs' ] ) ) {
+				unset( $json_data[ 'sameAs' ] );
+			}
+		}
+
+		/**
+		 * If we have a GTIN number, try to improve the assigned property name. Pass $json_data by reference to modify the
+		 * array directly. A similar method exists as WpssoOpenGraph::check_gtin_mt_value().
 		 */
 		public static function check_gtin_prop_value( &$json_data ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->mark();
+			}
 
 			if ( ! empty( $json_data[ 'gtin' ] ) ) {
 

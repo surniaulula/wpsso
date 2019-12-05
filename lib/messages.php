@@ -2339,7 +2339,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$um_check_updates_transl = _x( 'Check for Updates', 'submit button', 'wpsso' );
 
 						$tools_settings_page_link = $this->p->util->get_admin_url( 'tools',
-							_x( 'Tools and Actions', 'lib file description', 'wpsso' ) );
+							_x( 'Actions and Tools', 'lib file description', 'wpsso' ) );
 
 						$wp_updates_page_link = '<a href="' . admin_url( 'update-core.php' ) . '">' . 
 							// translators: Please ignore - translation uses a different text domain.
