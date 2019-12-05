@@ -306,17 +306,23 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 	* Review Information
 		* Review Rating 
 		* Rating Value Name
-		* Reviewed Subject Information
-			* Subject Type 
-			* Subject URL 
-			* Subject Name 
-			* Subject Author Type
-			* Subject Author Name
-			* Subject Author URL
-			* Subject Publish Date
-			* Subject Book ISBN
-			* Subject Product Brand
-			* Subject Product Offers (name, price, currency, availability)
+		* Reviewed Item Information
+			* Item Type 
+			* Item URL 
+			* Item Same-As URL 
+			* Item Name 
+			* Item Description 
+			* Item Image ID or URL 
+			* Item Author Type
+			* Item Author Name
+			* Item Author URL
+			* Item Published Date
+			* Item Created Date
+			* Book ISBN
+			* Product Brand
+			* Product Offers (name, price, currency, availability)
+			* Product SKU
+			* Product MPN
 	* Claim Review Information
 		* Short Summary of Claim
 		* First Appearance URL
@@ -443,7 +449,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.15.0-dev.1 (2019/12/04)**
+**Version 6.15.0-dev.2 (2019/12/05)**
 
 * **New Features**
 	* None.
@@ -731,9 +737,9 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 
 == Upgrade Notice ==
 
-= 6.15.0-dev.1 =
+= 6.15.0-dev.2 =
 
-(2019/12/04) Added support for the Google robots max-snippet, max-image-preview, max-video-preview, notranslate, and noimageindex directives.
+(2019/12/05) Added support for the Google robots max-snippet, max-image-preview, max-video-preview, notranslate, and noimageindex directives.
 
 = 6.14.0 =
 

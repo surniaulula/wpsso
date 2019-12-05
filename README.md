@@ -364,19 +364,25 @@
 <ul>
 <li>Review Rating </li>
 <li>Rating Value Name</li>
-<li>Reviewed Subject Information
+<li>Reviewed Item Information
 
 <ul>
-<li>Subject Type </li>
-<li>Subject URL </li>
-<li>Subject Name </li>
-<li>Subject Author Type</li>
-<li>Subject Author Name</li>
-<li>Subject Author URL</li>
-<li>Subject Publish Date</li>
-<li>Subject Book ISBN</li>
-<li>Subject Product Brand</li>
-<li>Subject Product Offers (name, price, currency, availability)</li>
+<li>Item Type </li>
+<li>Item URL </li>
+<li>Item Same-As URL </li>
+<li>Item Name </li>
+<li>Item Description </li>
+<li>Item Image ID or URL </li>
+<li>Item Author Type</li>
+<li>Item Author Name</li>
+<li>Item Author URL</li>
+<li>Item Published Date</li>
+<li>Item Created Date</li>
+<li>Book ISBN</li>
+<li>Product Brand</li>
+<li>Product Offers (name, price, currency, availability)</li>
+<li>Product SKU</li>
+<li>Product MPN</li>
 </ul></li>
 </ul></li>
 <li>Claim Review Information
