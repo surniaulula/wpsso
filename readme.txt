@@ -463,6 +463,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new `SucomUtil::get_robots_default_directives()` method.
 	* Added a new 'sucom_robots_default_directives' filter.
 	* Renamed the 'wpsso_get_robots_content' filter to 'wpsso_robots_content'.
+* **Requires At Least**
+	* PHP v5.4.
+	* WordPress v3.9.
 
 **Version 6.14.0 (2019/11/30)**
 
