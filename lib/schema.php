@@ -1595,6 +1595,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $videos_added;	// return count of videos added
 		}
 
+		public static function add_person_names_data( &$json_data, $prop_name = '', array $assoc, $key_name = '' ) {
+
+			if ( ! empty( $prop_name ) && ! empty( $key_name ) ) {
+				foreach ( SucomUtil::preg_grep_keys( '/^' . $key_name .'_[0-9]+$/', $assoc ) as $value ) {
+					if ( ! empty( $value ) ) {
+						$json_data[ $prop_name ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/Person', array(
+							'name' => $value,
+						) );
+					}
+				}
+			}
+		}
+
 		public static function add_aggregate_offer_data( &$json_data, array $mod, array $mt_offers ) {
 
 			$wpsso =& Wpsso::get_instance();
