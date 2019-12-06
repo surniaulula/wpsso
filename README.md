@@ -373,6 +373,12 @@
 <li>Subject Name </li>
 <li>Subject Description </li>
 <li>Subject Image ID or URL </li>
+<li>Claim Subject Information
+
+<ul>
+<li>Short Summary of Claim</li>
+<li>First Appearance URL</li>
+</ul></li>
 <li>Creative Work Subject Information
 
 <ul>
@@ -402,12 +408,6 @@
 <li>Product MPN</li>
 </ul></li>
 </ul></li>
-</ul></li>
-<li>Claim Review Information
-
-<ul>
-<li>Short Summary of Claim</li>
-<li>First Appearance URL</li>
 </ul></li>
 <li>Software Application Information
 

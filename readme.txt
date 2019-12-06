@@ -313,6 +313,9 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 			* Subject Name 
 			* Subject Description 
 			* Subject Image ID or URL 
+			* Claim Subject Information
+				* Short Summary of Claim
+				* First Appearance URL
 			* Creative Work Subject Information
 				* CW Author Type
 				* CW Author Name
@@ -329,9 +332,6 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 				* Product Offers (name, price, currency, availability)
 				* Product SKU
 				* Product MPN
-	* Claim Review Information
-		* Short Summary of Claim
-		* First Appearance URL
 	* Software Application Information
 		* Operating System
 
