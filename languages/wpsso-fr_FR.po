@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 6.15.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-12-04 15:47-0800\n"
-"PO-Revision-Date: 2019-12-04 15:47-0800\n"
+"POT-Creation-Date: 2019-12-06 08:52-0800\n"
+"PO-Revision-Date: 2019-12-06 08:52-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1319,13 +1319,13 @@ msgstr "Tableau de bord"
 
 #: lib/gettext-config.php:35 lib/messages.php:2342
 msgctxt "lib file description"
-msgid "Tools and Actions"
-msgstr "Outils et actions"
+msgid "Actions and Tools"
+msgstr "Actions et outils"
 
 #: lib/gettext-config.php:38
 msgctxt "lib file description"
-msgid "SSO Tools"
-msgstr "Outils SSO"
+msgid "SSO Actions and Tools"
+msgstr "Actions et outils SSO"
 
 #: lib/gettext-config.php:39
 msgctxt "plugin description"
@@ -6339,7 +6339,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
-
-#~ msgctxt "lib file description"
-#~ msgid "Tools"
-#~ msgstr "Outils"
