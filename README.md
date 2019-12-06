@@ -364,25 +364,43 @@
 <ul>
 <li>Review Rating </li>
 <li>Rating Value Name</li>
-<li>Reviewed Item Information
+<li>Subject of the Review
 
 <ul>
-<li>Item Type </li>
-<li>Item URL </li>
-<li>Item Same-As URL </li>
-<li>Item Name </li>
-<li>Item Description </li>
-<li>Item Image ID or URL </li>
-<li>Item Author Type</li>
-<li>Item Author Name</li>
-<li>Item Author URL</li>
-<li>Item Published Date</li>
-<li>Item Created Date</li>
+<li>Subject Type </li>
+<li>Subject Webpage URL </li>
+<li>Subject Same-As URL </li>
+<li>Subject Name </li>
+<li>Subject Description </li>
+<li>Subject Image ID or URL </li>
+<li>Creative Work Subject Information
+
+<ul>
+<li>CW Author Type</li>
+<li>CW Author Name</li>
+<li>CW Author URL</li>
+<li>CW Published Date</li>
+<li>CW Created Date</li>
+</ul></li>
+<li>Book Subject Information
+
+<ul>
 <li>Book ISBN</li>
+</ul></li>
+<li>Movie Subject Information
+
+<ul>
+<li>Movie Cast Names</li>
+<li>Movie Director Names</li>
+</ul></li>
+<li>Product Subject Information
+
+<ul>
 <li>Product Brand</li>
 <li>Product Offers (name, price, currency, availability)</li>
 <li>Product SKU</li>
 <li>Product MPN</li>
+</ul></li>
 </ul></li>
 </ul></li>
 <li>Claim Review Information
