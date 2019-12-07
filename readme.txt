@@ -44,7 +44,7 @@ WPSSO Core is language / locale aware, which means you can customize your site i
 
 **Coded for maximum performance:**
 
-WPSSO Core makes full use of all available caching methods &mdash; along with offering advanced caching features like pre-seeding its cache in background. WPSSO Core and its complementary add-ons only load the libraries and classes they need, keeping their code small, fast and light. All code is fully tested and compatible with the latest version of WordPress and PHP v7.x (PHP v5.4 or better required).
+WPSSO Core makes full use of all available caching methods &mdash; along with offering advanced caching features like pre-seeding its cache in background. WPSSO Core and its complementary add-ons only load the libraries and classes they need, keeping their code small, fast and light. All code is fully tested and compatible with the latest version of WordPress and PHP v7.x (PHP v5.5 or newer required).
 
 <h3>Users Love the WPSSO Core Plugin</h3>
 
@@ -470,7 +470,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new 'sucom_robots_default_directives' filter.
 	* Renamed the 'wpsso_get_robots_content' filter to 'wpsso_robots_content'.
 * **Requires At Least**
-	* PHP v5.4.
+	* PHP v5.5.
 	* WordPress v3.9.
 
 **Version 6.14.0 (2019/11/30)**
@@ -505,7 +505,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* [WPSSO Tune WP Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors) for better looking WordPress thumbnails.
 * **Improvements**
 	* Removed the "Optional Advanced Settings" metabox from the Essential settings page.
-	* Re-added support for `use_block_editor_for_post()` if using WordPress v5.2 or better (this function was fixed in WordPress v5.2).
+	* Re-added support for `use_block_editor_for_post()` if using WordPress v5.2 or newer (this function was fixed in WordPress v5.2).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
