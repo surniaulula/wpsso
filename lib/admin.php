@@ -545,10 +545,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$settings_page = empty( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $menu_lib ] ) ?
 				'' : key( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $menu_lib ] );
 
-			$addons_page = 'sitesubmenu' === $menu_lib ? 'site-addons' : 'addons';
-
-			$dashboard_page = 'sitesubmenu' === $menu_lib ? '' : 'dashboard';	// No dashboard for network admin.
-
 			if ( ! empty( $settings_page ) ) {
 
 				$settings_page_transl  = _x( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $menu_lib ][ $settings_page ], 'lib file description', 'wpsso' );
@@ -557,18 +553,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$action_links[] = '<a href="' . $this->p->util->get_admin_url( $settings_page ) . '">' . $settings_label_transl . '</a>';
 			}
 
-			if ( ! empty( $dashboard_page ) ) {
-				if ( $ext === $this->p->lca ) {	// Only add for the core plugin.
-					$action_links[] = '<a href="' . $this->p->util->get_admin_url( $dashboard_page ) . '">' . 
-						_x( 'Dashboard', 'plugin action link', 'wpsso' ) . '</a>';
-				}
-			}
+			if ( $ext === $this->p->lca ) {	// Only add for the core plugin.
+			
+				$addons_page = 'sitesubmenu' === $menu_lib ? 'site-addons' : 'addons';
 
-			if ( ! empty( $addons_page ) ) {
-				if ( $ext === $this->p->lca ) {	// Only add for the core plugin.
-					$action_links[] = '<a href="' . $this->p->util->get_admin_url( $addons_page ) . '">' . 
-						_x( 'Complementary Add-ons', 'plugin action link', 'wpsso' ) . '</a>';
-				}
+				$action_links[] = '<a href="' . $this->p->util->get_admin_url( $addons_page ) . '">' . 
+					_x( 'Complementary Add-ons', 'plugin action link', 'wpsso' ) . '</a>';
 			}
 
 			return $action_links;

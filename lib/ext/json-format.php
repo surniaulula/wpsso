@@ -1,7 +1,8 @@
 <?php
 /**
- * From http://www.daveperrett.com/articles/2008/03/11/format-json-with-php/
- * Modified to allow native functionality in php version >= 5.4.
+ * From http://www.daveperrett.com/articles/2008/03/11/format-json-with-php/.
+ *
+ * Modified to allow native functionality in PHP version >= 5.4.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -19,8 +20,11 @@ if ( ! class_exists( 'SuextJsonFormat' ) ) {
 				$php_version = phpversion();
 
 				if ( version_compare( $php_version, '5.5.0',  '>=' ) ) {
+
 					return json_encode( $json, $options|JSON_PRETTY_PRINT, $depth );
+
 				} elseif ( version_compare( $php_version, '5.3.0',  '>=' ) ) {
+
 					return json_encode( $json, $options|JSON_PRETTY_PRINT );
 				} else {
 					$json = json_encode( $json );

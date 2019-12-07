@@ -2265,6 +2265,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 * Decide if the encoded json will be minified or not.
 			 */
 			if ( is_admin() || $this->p->debug->enabled || $pretty_print ) {
+
 				if ( defined( 'JSON_PRETTY_PRINT' ) ) {	// Since PHP v5.4.
 					$options = $options|JSON_PRETTY_PRINT;
 				} else {

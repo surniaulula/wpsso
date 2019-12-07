@@ -153,9 +153,10 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				if ( $http_code === 301 || $http_code === 302 ) {
 
 					/**
-					 * PHP safe mode is an attempt to solve the shared-server security problem. It is architecturally incorrect
-					 * to try to solve this problem at the PHP level, but since the alternatives at the web server and OS levels
-					 * aren't very realistic, many people, especially ISP's, use safe mode for now.
+					 * PHP safe mode is an attempt to solve the shared-server security problem. It is
+					 * architecturally incorrect to try to solve this problem at the PHP level, but since the
+					 * alternatives at the web server and OS levels aren't very realistic, many people,
+					 * especially ISP's, use safe mode for now.
 					 *
 					 * This feature has been DEPRECATED as of PHP 5.3 and REMOVED as of PHP 5.4.
 					 */
@@ -171,10 +172,10 @@ if ( ! class_exists( 'SucomCache' ) ) {
 							$this->text_domain );
 
 					/**
-					 * open_basedir can be used to limit the files that can be accessed by PHP to the specified directory-tree,
-					 * including the file itself. When a script tries to access the filesystem, for example using include, or
-					 * fopen(), the location of the file is checked. When the file is outside the specified directory-tree, PHP
-					 * will refuse to access it.
+					 * open_basedir can be used to limit the files that can be accessed by PHP to the specified
+					 * directory-tree, including the file itself. When a script tries to access the filesystem,
+					 * for example using include, or fopen(), the location of the file is checked. When the
+					 * file is outside the specified directory-tree, PHP will refuse to access it.
 					 */
 					} elseif ( ini_get( 'open_basedir' ) ) {
 

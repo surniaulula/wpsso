@@ -515,7 +515,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 					/**
 					 * Calling use_block_editor_for_post() in WordPress v5.0 during post save crashes the web
 					 * browser. See https://core.trac.wordpress.org/ticket/45253 for details. Only call
-					 * use_block_editor_for_post() if using WordPress v5.2 or better.
+					 * use_block_editor_for_post() if using WordPress v5.2 or newer.
 					 */
 					global $wp_version;
 
@@ -528,6 +528,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 					}
 
 				} elseif ( function_exists( 'gutenberg_can_edit_post' ) ) {
+
 					if ( gutenberg_can_edit_post( $post_id ) ) {
 						$can_edit_id = true;
 					}
@@ -543,10 +544,13 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 					if ( $post_type ) {
 
 						if ( function_exists( 'use_block_editor_for_post_type' ) ) {
+
 							if ( use_block_editor_for_post_type( $post_type ) ) {
 								$can_edit_type = true;
 							}
+
 						} elseif ( function_exists( 'gutenberg_can_edit_post_type' ) ) {
+
 							if ( gutenberg_can_edit_post_type( $post_type ) ) {
 								$can_edit_type = true;
 							}
