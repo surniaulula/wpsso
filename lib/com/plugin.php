@@ -216,12 +216,12 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 				'homepage'          => false,
 				'icons'             => false,
 				'last_updated'      => false,
-				'sections'          => false,
-				'short_description' => false,
 				'rating'            => true,	// Get by default.
 				'ratings'           => true,	// Get by default.
 				'requires'          => false,
 				'reviews'           => false,
+				'sections'          => false,
+				'short_description' => false,
 				'tags'              => false,
 				'tested'            => false,
 				'versions'          => false

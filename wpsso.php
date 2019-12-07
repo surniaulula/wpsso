@@ -11,6 +11,7 @@
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Description: Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted or embedded.
+ * Requires PHP: 5.5
  * Requires At Least: 3.9
  * Tested Up To: 5.3
  * WC Tested Up To: 3.8.1
@@ -114,9 +115,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			add_action( 'init', array( $this, 'init_plugin' ), WPSSO_INIT_PLUGIN_PRIORITY );		// Runs at init 12 by default.
 
 			/**
-			 * The 'wpsso_init_textdomain' action is run after the debug property is defined.
-			 * Hooks the 'override_textdomain_mofile' filter (if debug is enabled) to use
-			 * local translation files instead of those from wordpress.org.
+			 * The 'wpsso_init_textdomain' action is run after the debug property is defined. Hooks the
+			 * 'override_textdomain_mofile' filter (if debug is enabled) to use local translation files instead of
+			 * those from wordpress.org.
 			 */
 			add_action( 'wpsso_init_textdomain', array( __CLASS__, 'init_textdomain' ), -10, 1 );
 		}
