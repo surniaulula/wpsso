@@ -456,7 +456,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.15.0-rc.1 (2019/12/07)**
+**Version 6.15.0 (2019/12/07)**
 
 * **New Features**
 	* None.
@@ -747,11 +747,7 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 
 == Upgrade Notice ==
 
-= 6.15.0-rc.1 =
+= 6.15.0 =
 
 (2019/12/07) Added support for the Google robots max-snippet, max-image-preview, max-video-preview, notranslate, and noimageindex directives.
-
-= 6.14.0 =
-
-(2019/11/30) Added support for the "Perfect WooCommerce Brands" plugin (Premium version). Added a new "Pinterest Image Description" option in the Document SSO metabox.
 
