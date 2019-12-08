@@ -1240,16 +1240,16 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					background-color:inherit;
 				}
 				#wpadminbar .have-notices.have-notices-error {
-					background-color:#dc3232;
+					background-color:#dc3232;	/* Red */
 				}
 				#wpadminbar .have-notices.have-notices-warning {
-					background-color:#ffb900;
+					background-color:#ffb900;	/* Yellow */
 				}
 				#wpadminbar .have-notices.have-notices-info {
-					background-color:#00a0d2;
+					background-color:#00a0d2;	/* Blue */
 				}
 				#wpadminbar .have-notices.have-notices-success {
-					background-color:#46b450;
+					background-color:#46b450;	/* Green */
 				}
 				#wpadminbar .have-notices #wp-admin-bar-'.$this->p->lca.'-toolbar-notices-default { 
 					padding:0;
