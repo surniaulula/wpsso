@@ -12,7 +12,7 @@ Requires PHP: 5.5
 Requires At Least: 3.9
 Tested Up To: 5.3
 WC Tested Up To: 3.8.1
-Stable Tag: 6.14.0
+Stable Tag: 6.15.0
 
 Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.
 
@@ -456,7 +456,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.15.0 (2019/12/07)**
+**Version 6.15.0 (2019/12/08)**
 
 * **New Features**
 	* None.
@@ -749,5 +749,5 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 
 = 6.15.0 =
 
-(2019/12/07) Added support for the Google robots max-snippet, max-image-preview, max-video-preview, notranslate, and noimageindex directives.
+(2019/12/08) Added support for the Google robots max-snippet, max-image-preview, max-video-preview, notranslate, and noimageindex directives.
 
