@@ -195,6 +195,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 		* [WP Ultimate Recipe](https://wordpress.org/plugins/wp-ultimate-recipe/)
 		* [YITH WooCommerce Brands Add-on](https://wordpress.org/plugins/search/yith-woocommerce-brands-add-on/)
 		* [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/) (aka WordPress SEO)
+		* [Yotpo Social Reviews for WooCommerce](https://wordpress.org/plugins/yotpo-social-reviews-for-woocommerce/)
 
 	* **Integration with Service APIs:**
 
@@ -455,6 +456,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 <p>Under the SSO &gt; Update Manager settings page, select the "Development and Up" version filter for WPSSO Core and all its extensions (to satisfy any version dependencies). Save the plugin settings, and click the "Check for Updates" button to fetch the latest / current WPSSO version information. When new Development versions are available, they will automatically appear under your WordPress Dashboard &gt; Updates page. You can always re-select the "Stable / Production" version filter at any time to re-install the last stable / production version of a plugin.</p>
 
 <h3>Changelog / Release Notes</h3>
+
+**Version 6.16.0-dev.1 (2019/12/10)**
+
+* **New Features**
+	* Re-added support for the Yotpo Social Reviews for WooCommerce plugin.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Renamed the `SucomForm->get_input_copy_clipboard()` method to `SucomForm::get_no_input_clipboard()`.
+	* Added a new css/com/admin-page.css stylesheet and js/com/jquery-admin-page.js script files.
+* **Requires At Least**
+	* PHP v5.5.
+	* WordPress v3.9.
 
 **Version 6.15.0 (2019/12/08)**
 
@@ -746,6 +762,10 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 	* Updated the SuextMobileDetect class from https://github.com/serbanghita/Mobile-Detect v2.8.28 to v2.8.33.
 
 == Upgrade Notice ==
+
+= 6.16.0-dev.1 =
+
+(2019/12/10) Re-added support for the Yotpo Social Reviews for WooCommerce plugin.
 
 = 6.15.0 =
 
