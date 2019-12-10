@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.15.0',	// Plugin version.
+					'version'     => '6.16.0-dev.1',	// Plugin version.
 					'opt_version' => '689',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -137,6 +137,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 							'review' => array(
 								'wpproductreview' => '(plugin) WP Product Review',
+								'yotpowc'         => '(plugin) Yotpo Social Reviews for WooCommerce',
 							),
 							'seo' => array(
 								'aioseop'         => '(plugin) All in One SEO Pack',
@@ -2009,11 +2010,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'color' => '#279d27',
 				),
 			),
-			'meta' => array(			// post, term, user add_meta_box() settings
+			'meta' => array(			// Post, term, user add_meta_box() settings.
 				'id'    => 'sso',
 				'title' => 'Document SSO (Social and Search Optimization)',
 			),
-			'edit' => array(			// post, term, user lists
+			'edit' => array(			// Post, term, user lists.
 				'columns' => array(
 					'schema_type' => array(
 						'header'   => 'Schema',

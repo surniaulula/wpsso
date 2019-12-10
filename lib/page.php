@@ -29,10 +29,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$quote_text = apply_filters( $this->p->lca . '_quote_seed', '', $mod );
 
 			if ( ! empty( $quote_text ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'quote seed = "' . $quote_text . '"' );
 				}
+
 			} else {
+
 				if ( has_excerpt( $mod[ 'id' ] ) ) {
 					$quote_text = get_the_excerpt( $mod[ 'id' ] );
 				} else {
@@ -1427,7 +1430,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			} else {
 
 				if ( $mod[ 'is_post' ] ) {
+
 					foreach ( wp_get_post_tags( $mod[ 'id' ] ) as $tag_obj ) {
+
 						if ( ! empty( $tag_obj->name ) ) {
 							$tags[] = $tag_obj->name;
 						}

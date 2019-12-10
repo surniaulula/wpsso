@@ -661,17 +661,17 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				$table_rows[] = '' . 
 				$form->get_th_html( _x( 'Sharing URL', 'option label', 'wpsso' ), 'medium' ) . 
-				'<td>' . $form->get_input_copy_clipboard( $sharing_url ) . '</td>';
+				'<td>' . SucomForm::get_no_input_clipboard( $sharing_url ) . '</td>';
 
 				$table_rows[] = ( $sharing_url === $canonical_url ? '<tr class="hide_in_basic">' : '' ) . 
 				$form->get_th_html( _x( 'Canonical URL', 'option label', 'wpsso' ), 'medium' ) . 
-				'<td>' . $form->get_input_copy_clipboard( $canonical_url ) . '</td>';
+				'<td>' . SucomForm::get_no_input_clipboard( $canonical_url ) . '</td>';
 			
 				$table_rows[] = ( empty( $this->p->options[ 'plugin_shortener' ] ) || 
 					$this->p->options[ 'plugin_shortener' ] === 'none' ||
 						$sharing_url === $shortlink_url ? '<tr class="hide_in_basic">' : '' ) . 
 				$form->get_th_html( _x( 'Shortlink URL', 'option label', 'wpsso' ), 'medium' ) . 
-				'<td>' . $form->get_input_copy_clipboard( $shortlink_url ) . '</td>';
+				'<td>' . SucomForm::get_no_input_clipboard( $shortlink_url ) . '</td>';
 			}
 
 			$table_rows[ 'subsection_og_example' ] = '<td colspan="2" class="subsection"><h4>' . 
@@ -736,11 +736,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				$table_rows[] = '' . 
 				$form->get_th_html( _x( 'oEmbed JSON URL', 'option label', 'wpsso' ), 'medium' ) . 
-				'<td>' . $form->get_input_copy_clipboard( $json_url ) . '</td>';
+				'<td>' . SucomForm::get_no_input_clipboard( $json_url ) . '</td>';
 
 				$table_rows[] = '' . 
 				$form->get_th_html( _x( 'oEmbed XML URL', 'option label', 'wpsso' ), 'medium' ) . 
-				'<td>' . $form->get_input_copy_clipboard( $xml_url ) . '</td>';
+				'<td>' . SucomForm::get_no_input_clipboard( $xml_url ) . '</td>';
 
 			}
 
@@ -914,7 +914,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'title' => _x( 'Twitter Card Validator', 'option label', 'wpsso' ),
 					'label' => _x( 'Validate Twitter Card', 'submit button', 'wpsso' ),
 					'url'   => 'https://cards-dev.twitter.com/validator',
-					'msg'   => $this->p->msgs->get( 'info-meta-validate-twitter' ) . $form->get_input_copy_clipboard( $sharing_url ),
+					'msg'   => $this->p->msgs->get( 'info-meta-validate-twitter' ) .
+						SucomForm::get_no_input_clipboard( $sharing_url ),
 				),
 				'w3c' => array(
 					'title' => _x( 'W3C Markup Validation', 'option label', 'wpsso' ),
@@ -1362,6 +1363,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$sort_cols = self::get_sortable_columns();
 
 			foreach ( $sort_cols as $col_key => $col_info ) {
+
 				if ( ! empty( $col_info[ 'meta_key' ] ) ) {
 					$meta_keys[ $col_key ] = $col_info[ 'meta_key' ];
 				}
@@ -1376,6 +1378,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$sort_cols = self::get_sortable_columns();
 
 			foreach ( $sort_cols as $col_key => $col_info ) {
+
 				if ( ! empty( $col_info[ 'header' ] ) ) {
 					$headers[ $col_key ] = _x( $col_info[ 'header' ], 'column header', 'wpsso' );
 				}
@@ -1431,6 +1434,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		public function add_sortable_columns( $columns ) { 
 
 			foreach ( self::get_sortable_columns() as $col_key => $col_info ) {
+
 				if ( ! empty( $col_info[ 'orderby' ] ) ) {
 					$columns[ $this->p->lca . '_' . $col_key ] = $this->p->lca . '_' . $col_key;
 				}
@@ -1465,13 +1469,16 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				foreach ( self::get_column_headers() as $col_key => $col_header ) {
 
+					/**
+					 * Check if the column is enabled globally for the post, term, or user edit list.
+					 */
 					if ( ! empty( $this->p->options[ 'plugin_' . $col_key . '_col_' . $mod_name] ) ) {
-
-						$columns[ $this->p->lca . '_' . $col_key ] = $col_header;
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'adding ' . $this->p->lca . '_' . $col_key . ' column' );
 						}
+
+						$columns[ $this->p->lca . '_' . $col_key ] = $col_header;
 					}
 				}
 			}

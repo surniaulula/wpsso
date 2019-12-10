@@ -74,13 +74,21 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 
 				add_filter( 'views_users', array( $this, 'add_person_view' ) );
-				add_filter( 'manage_users_columns', array( $this, 'add_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );	// Default is 100.
+
+				/**
+				 * Add edit table columns.
+				 */
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'adding column filters for users' );
+				}
+
+				add_filter( 'manage_users_columns', array( $this, 'add_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
 				add_filter( 'manage_users_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
 				add_filter( 'manage_users_custom_column', array( $this, 'get_column_content',), 10, 3 );
 
 				/**
-				 * The 'parse_query' action is hooked ONCE in the WpssoPost class
-				 * to set the column orderby for post, term, and user edit tables.
+				 * The 'parse_query' action is hooked ONCE in the WpssoPost class to set the column orderby for
+				 * post, term, and user edit tables.
 				 *
 				 * add_action( 'parse_query', array( $this, 'set_column_orderby' ), 10, 1 );
 				 */

@@ -38,9 +38,9 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			/**
 			 * Do not use minified CSS if the DEV constant is defined.
 			 */
-			$doing_dev      = SucomUtil::get_const( 'WPSSO_DEV' );
-			$css_file_ext   = $doing_dev ? 'css' : 'min.css';
-			$plugin_version = WpssoConfig::get_version();
+			$doing_dev = SucomUtil::get_const( 'WPSSO_DEV' );
+			$file_ext  = $doing_dev ? 'css' : 'min.css';
+			$version   = WpssoConfig::get_version();
 
 			/**
 			 * See https://developers.google.com/speed/libraries/.
@@ -54,16 +54,16 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			 * See http://qtip2.com/download.
 			 */
 			wp_register_style( 'jquery-qtip.js',
-				WPSSO_URLPATH . 'css/ext/jquery-qtip.' . $css_file_ext,
+				WPSSO_URLPATH . 'css/ext/jquery-qtip.' . $file_ext,
 					array(), $this->p->cf[ 'jquery-qtip' ][ 'version' ] );
 
 			wp_register_style( 'sucom-settings-table',
-				WPSSO_URLPATH . 'css/com/settings-table.' . $css_file_ext,
-					array(), $plugin_version );
+				WPSSO_URLPATH . 'css/com/settings-table.' . $file_ext,
+					array(), $version );
 
 			wp_register_style( 'sucom-metabox-tabs',
-				WPSSO_URLPATH . 'css/com/metabox-tabs.' . $css_file_ext,
-					array(), $plugin_version );
+				WPSSO_URLPATH . 'css/com/metabox-tabs.' . $file_ext,
+					array(), $version );
 
 			/**
 			 * Only load stylesheets where we need them.
@@ -92,7 +92,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 						$this->p->debug->log( 'enqueuing styles for settings page' );
 					}
 
-					$this->add_settings_page_style( $hook_name, WPSSO_URLPATH, $css_file_ext, $plugin_version );
+					$this->add_settings_page_style( $hook_name, WPSSO_URLPATH, $file_ext, $version );
 
 					// No break.
 
@@ -138,7 +138,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					break;	// Stop here.
 			}
 
-			$this->add_admin_page_style( $hook_name, WPSSO_URLPATH, $css_file_ext, $plugin_version );
+			$this->add_admin_page_style( $hook_name, WPSSO_URLPATH, $file_ext, $version );
 		}
 
 		public function add_plugins_body_class( $classes ) {
@@ -148,17 +148,17 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			return $classes;
 		}
 
-		private function add_settings_page_style( $hook_name, $plugin_urlpath, $css_file_ext, $plugin_version ) {
+		private function add_settings_page_style( $hook_name, $plugin_urlpath, $file_ext, $version ) {
 
 			$cache_md5_pre    = $this->p->lca . '_';
 			$cache_exp_filter = $this->p->lca . '_cache_expire_admin_css';
 			$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, DAY_IN_SECONDS );
-			$cache_salt       = __METHOD__ . '(hook_name:' . $hook_name . '_plugin_urlpath:' . $plugin_urlpath . '_plugin_version:' . $plugin_version . ')';
+			$cache_salt       = __METHOD__ . '(hook_name:' . $hook_name . '_plugin_urlpath:' . $plugin_urlpath . '_plugin_version:' . $version . ')';
 			$cache_id         = $cache_md5_pre . md5( $cache_salt );
 
 			wp_enqueue_style( 'sucom-settings-page',
-				$plugin_urlpath . 'css/com/settings-page.' . $css_file_ext,
-					array(), $plugin_version );
+				$plugin_urlpath . 'css/com/settings-page.' . $file_ext,
+					array(), $version );
 
 			if ( $custom_style_css = get_transient( $cache_id ) ) {	// Not empty.
 
@@ -166,7 +166,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					$this->p->debug->log( 'settings page style retrieved from cache' );
 				}
 
-				wp_add_inline_style( 'sucom-settings-page', $custom_style_css );
+				wp_add_inline_style( 'sucom-settings-page', $custom_style_css );	// Since WP v3.3.0.
 
 				return;
 			}
@@ -209,7 +209,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			}
 
 			$custom_style_css = apply_filters( $this->p->lca . '_settings_page_custom_style_css',
-				$custom_style_css, $hook_name, $plugin_urlpath, $plugin_version );
+				$custom_style_css, $hook_name, $plugin_urlpath, $version );
 	
 			if ( method_exists( 'SucomUtil', 'minify_css' ) ) {
 				$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->p->lca );
@@ -217,14 +217,20 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			set_transient( $cache_id, $custom_style_css, $cache_exp_secs );
 
-			wp_add_inline_style( 'sucom-settings-page', $custom_style_css );
+			wp_add_inline_style( 'sucom-settings-page', $custom_style_css );	// Since WP v3.3.0.
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'create and minify settings page style' );	// End timer.
 			}
 		}
 
-		private function add_admin_page_style( $hook_name, $plugin_urlpath, $css_file_ext, $plugin_version ) {
+		private function add_admin_page_style( $hook_name, $plugin_urlpath, $file_ext, $version ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			$sort_cols = WpssoWpMeta::get_sortable_columns();	// Uses a static cache.
 
 			$cache_md5_pre    = $this->p->lca . '_';
 			$cache_exp_filter = $this->p->lca . '_cache_expire_admin_css';
@@ -233,10 +239,9 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			$cache_salt       = __METHOD__ . '(';
 			$cache_salt       .= 'hook_name:' . $hook_name;
 			$cache_salt       .= '_urlpath:' . $plugin_urlpath;
-			$cache_salt       .= '_version:' . $plugin_version;
-			$cache_salt       .= '_columns:' . implode( ',', SucomUtil::preg_grep_keys( '/^plugin_col_/', $this->p->options ) );
+			$cache_salt       .= '_version:' . $version;
+			$cache_salt       .= '_columns:' . implode( ',', array_keys( $sort_cols ) );
 			$cache_salt       .= ')';
-
 			$cache_id         = $cache_md5_pre . md5( $cache_salt );
 
 			/**
@@ -246,8 +251,8 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			$use_cache = $doing_dev ? false : true;
 
 			wp_enqueue_style( 'sucom-admin-page',
-				$plugin_urlpath . 'css/com/admin-page.' . $css_file_ext,
-					array(), $plugin_version );
+				$plugin_urlpath . 'css/com/admin-page.' . $file_ext,
+					array(), $version );
 
 			if ( $use_cache ) {
 
@@ -257,7 +262,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 						$this->p->debug->log( 'admin page style retrieved from cache' );
 					}
 
-					wp_add_inline_style( 'sucom-admin-page', $custom_style_css );
+					wp_add_inline_style( 'sucom-admin-page', $custom_style_css );	// Since WP v3.3.0.
 
 					return;
 				}
@@ -267,7 +272,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				$this->p->debug->mark( 'create and minify admin page style' );	// Begin timer.
 			}
 
-			$sort_cols  = WpssoWpMeta::get_sortable_columns();
 			$metabox_id = $this->p->cf[ 'meta' ][ 'id' ];
 			$menu       = $this->p->lca . '-' . key( $this->p->cf[ '*' ][ 'lib' ][ 'submenu' ] );
 			$sitemenu   = $this->p->lca . '-' . key( $this->p->cf[ '*' ][ 'lib' ][ 'sitesubmenu' ] );
@@ -278,22 +282,22 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					font-family:"WpssoIcons";
 					font-weight:normal;
 					font-style:normal;
-					src:url("' . $plugin_urlpath . 'fonts/icons.eot?' . $plugin_version . '");
-					src:url("' . $plugin_urlpath . 'fonts/icons.eot?' . $plugin_version . '#iefix") format("embedded-opentype"),
-						url("' . $plugin_urlpath . 'fonts/icons.woff?' . $plugin_version . '") format("woff"),
-						url("' . $plugin_urlpath . 'fonts/icons.ttf?' . $plugin_version . '") format("truetype"),
-						url("' . $plugin_urlpath . 'fonts/icons.svg?' . $plugin_version . '#icons") format("svg");
+					src:url("' . $plugin_urlpath . 'fonts/icons.eot?' . $version . '");
+					src:url("' . $plugin_urlpath . 'fonts/icons.eot?' . $version . '#iefix") format("embedded-opentype"),
+						url("' . $plugin_urlpath . 'fonts/icons.woff?' . $version . '") format("woff"),
+						url("' . $plugin_urlpath . 'fonts/icons.ttf?' . $version . '") format("truetype"),
+						url("' . $plugin_urlpath . 'fonts/icons.svg?' . $version . '#icons") format("svg");
 				}
 
 				@font-face {
 					font-family:"WpssoStar";
 					font-weight:normal;
 					font-style:normal;
-					src:url("' . $plugin_urlpath . 'fonts/star.eot?' . $plugin_version . '");
-					src:url("' . $plugin_urlpath . 'fonts/star.eot?' . $plugin_version . '#iefix") format("embedded-opentype"),
-						url("' . $plugin_urlpath . 'fonts/star.woff?' . $plugin_version . '") format("woff"),
-						url("' . $plugin_urlpath . 'fonts/star.ttf?' . $plugin_version . '") format("truetype"),
-						url("' . $plugin_urlpath . 'fonts/star.svg?' . $plugin_version . '#star") format("svg");
+					src:url("' . $plugin_urlpath . 'fonts/star.eot?' . $version . '");
+					src:url("' . $plugin_urlpath . 'fonts/star.eot?' . $version . '#iefix") format("embedded-opentype"),
+						url("' . $plugin_urlpath . 'fonts/star.woff?' . $version . '") format("woff"),
+						url("' . $plugin_urlpath . 'fonts/star.ttf?' . $version . '") format("truetype"),
+						url("' . $plugin_urlpath . 'fonts/star.svg?' . $version . '#star") format("svg");
 				}
 
 
@@ -634,6 +638,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			';
 
 			foreach ( $sort_cols as $col_name => $col_info ) {
+
 				if ( isset( $col_info[ 'width' ] ) ) {
 					$custom_style_css .= '
 						table.wp-list-table > thead > tr > th.column-' . $this->p->lca . '_' . $col_name . ',
@@ -654,7 +659,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				set_transient( $cache_id, $custom_style_css, $cache_exp_secs );
 			}
 
-			wp_add_inline_style( 'sucom-admin-page', $custom_style_css );
+			wp_add_inline_style( 'sucom-admin-page', $custom_style_css );	// Since WP v3.3.0.
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'create and minify admin page style' );	// End timer.

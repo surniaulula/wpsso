@@ -1241,39 +1241,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_input( $name . '_url', 'wide', '', 0, SucomUtil::esc_url_encode( $url ), $is_disabled );
 		}
 
+		/**
+		 * Deprecated on 2019/12/09.
+		 */
 		public function get_input_copy_clipboard( $value, $css_class = 'wide', $css_id = '' ) {
 
-			if ( empty( $css_id ) ) {
-				$css_id = uniqid();
-			}
-
-			$input = '<input type="text"' .
-				( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' ) .
-				( empty( $css_id ) ? '' : ' id="text_' . esc_attr( $css_id ) . '"' ) .
-				' value="' . esc_attr( $value ) . '" readonly' .
-				' onFocus="this.select(); document.execCommand(\'Copy\',false,null);"' .
-				' onMouseUp="return false;">';
-
-			if ( ! empty( $css_id ) ) {
-
-				/**
-				 * Dashicons are only available since WP v3.8
-				 */
-				global $wp_version;
-
-				if ( version_compare( $wp_version, '3.8', '>=' ) ) {
-					$html = '<div class="clipboard"><div class="copy_button">' .
-						'<a class="outline" href="" title="Copy to clipboard"' .
-						' onClick="return sucomCopyInputId( \'text_' . esc_js( $css_id ) . '\');">' .
-						'<span class="dashicons dashicons-clipboard"></span></a>' .
-						'</div><div class="copy_text">' . $input . '</div></div>';
-				}
-
-			} else {
-				$html = $input;
-			}
-
-			return $html;
+			return self::get_no_input_clipboard( $value, $css_class = 'wide', $css_id = '' );
 		}
 
 		public function get_input_multi( $name, $css_class = '', $css_id = '', $start_num = 0, $max_input = 20, $show_first = 5, $is_disabled = false ) {
@@ -2060,6 +2033,45 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			return $css_class;
+		}
+
+		public static function get_no_input_clipboard( $value, $css_class = 'wide', $css_id = '' ) {
+
+			if ( empty( $css_id ) ) {
+				$css_id = uniqid();
+			}
+
+			$html = '<input type="text"' .
+				( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' ) .
+				( empty( $css_id ) ? '' : ' id="text_' . esc_attr( $css_id ) . '"' ) .
+				' value="' . esc_attr( $value ) . '" readonly' .
+				' onFocus="this.select(); document.execCommand(\'Copy\',false,null);"' .
+				' onMouseUp="return false;">';
+
+			/**
+			 * Maybe wrap the input field with divs and a clipboard icon.
+			 */
+			if ( ! empty( $css_id ) ) {
+
+				/**
+				 * Dashicons are only available since WP v3.8
+				 */
+				global $wp_version;
+
+				if ( version_compare( $wp_version, '3.8', '>=' ) ) {
+
+					$html = '<div class="no_input_clipboard">' .
+						'<div class="copy_button">' .
+						'<a href="" title="Copy to clipboard"' .
+						' onClick="return sucomCopyInputId( \'text_' . esc_js( $css_id ) . '\');">' .
+						'<span class="dashicons dashicons-clipboard"></span></a>' .
+						'</div>' .
+						'<div class="copy_text">' . $html . '</div>' .
+						'</div>';
+				}
+			}
+
+			return $html;
 		}
 
 		private function get_placeholder_sanitized( $name, $placeholder = '' ) {

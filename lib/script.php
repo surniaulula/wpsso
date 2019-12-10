@@ -54,32 +54,32 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			/**
 			 * Do not use minified JS if the DEV constant is defined.
 			 */
-			$doing_dev      = SucomUtil::get_const( 'WPSSO_DEV' );
-			$js_file_ext    = $doing_dev ? 'js' : 'min.js';
-			$plugin_version = WpssoConfig::get_version();
+			$doing_dev = SucomUtil::get_const( 'WPSSO_DEV' );
+			$file_ext  = $doing_dev ? 'js' : 'min.js';
+			$version   = WpssoConfig::get_version();
 
 			/**
 			 * See http://qtip2.com/download.
 			 */
 			wp_register_script( 'jquery-qtip', 
-				WPSSO_URLPATH . 'js/ext/jquery-qtip.' . $js_file_ext, 
+				WPSSO_URLPATH . 'js/ext/jquery-qtip.' . $file_ext, 
 					array( 'jquery' ), $this->p->cf[ 'jquery-qtip' ][ 'version' ], true );
 
 			wp_register_script( 'sucom-settings-page', 
-				WPSSO_URLPATH . 'js/com/jquery-settings-page.' . $js_file_ext, 
-					array( 'jquery' ), $plugin_version, true );
+				WPSSO_URLPATH . 'js/com/jquery-settings-page.' . $file_ext, 
+					array( 'jquery' ), $version, true );
 
 			wp_register_script( 'sucom-metabox', 
-				WPSSO_URLPATH . 'js/com/jquery-metabox.' . $js_file_ext, 
-					array( 'jquery' ), $plugin_version, true );
+				WPSSO_URLPATH . 'js/com/jquery-metabox.' . $file_ext, 
+					array( 'jquery' ), $version, true );
 
 			wp_register_script( 'sucom-tooltips', 
-				WPSSO_URLPATH . 'js/com/jquery-tooltips.' . $js_file_ext, 
-					array( 'jquery' ), $plugin_version, true );
+				WPSSO_URLPATH . 'js/com/jquery-tooltips.' . $file_ext, 
+					array( 'jquery' ), $version, true );
 
 			wp_register_script( 'sucom-admin-media', 
-				WPSSO_URLPATH . 'js/com/jquery-admin-media.' . $js_file_ext, 
-					array( 'jquery', 'jquery-ui-core' ), $plugin_version, true );
+				WPSSO_URLPATH . 'js/com/jquery-admin-media.' . $file_ext, 
+					array( 'jquery', 'jquery-ui-core' ), $version, true );
 
 			/**
 			 * Only load scripts where we need them.
@@ -182,7 +182,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 					break;
 			}
 
-			wp_enqueue_script( 'jquery' );	// Required for dismissible notices.
+			$this->add_admin_page_script( $hook_name, WPSSO_URLPATH, $file_ext, $version );
 		}
 
 		/**
@@ -217,13 +217,13 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			/**
 			 * Do not use minified JS if the DEV constant is defined.
 			 */
-			$doing_dev      = SucomUtil::get_const( 'WPSSO_DEV' );
-			$js_file_ext    = $doing_dev ? 'js' : 'min.js';
-			$plugin_version = WpssoConfig::get_version();
+			$doing_dev = SucomUtil::get_const( 'WPSSO_DEV' );
+			$file_ext  = $doing_dev ? 'js' : 'min.js';
+			$version   = WpssoConfig::get_version();
 
 			wp_enqueue_script( 'sucom-block-editor-admin', 
-				WPSSO_URLPATH . 'js/block-editor-admin.' . $js_file_ext, 
-					array( 'wp-data', 'wp-editor', 'wp-edit-post' ), $plugin_version, false );
+				WPSSO_URLPATH . 'js/block-editor-admin.' . $file_ext, 
+					array( 'wp-data', 'wp-editor', 'wp-edit-post' ), $version, false );
 
 			wp_localize_script( 'sucom-block-editor-admin', 'sucomBlockEditorL10n',
 				$this->get_block_editor_admin_script_data() );
@@ -431,6 +431,22 @@ jQuery( document ).ready( function(){
 			} else {
 				echo '<script type="text/javascript">' . $custom_script_js . '</script>';
 			}
+		}
+
+		private function add_admin_page_script( $hook_name, $plugin_urlpath, $file_ext, $version ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			wp_register_script( 'sucom-admin-page', 
+				WPSSO_URLPATH . 'js/com/jquery-admin-page.' . $file_ext, 
+					array( 'jquery' ), $version, true );
+
+
+			wp_enqueue_script( 'sucom-admin-page' );
+
+			wp_enqueue_script( 'jquery' );	// Required for dismissible notices.
 		}
 	}
 }

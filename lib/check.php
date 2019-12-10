@@ -211,6 +211,12 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							break;
 
+						case 'review-yotpowc':
+
+							$chk[ 'function' ] = 'wc_yotpo_init';
+
+							break;
+
 						case 'review-wpproductreview':
 
 							$chk[ 'class' ] = 'WPPR';

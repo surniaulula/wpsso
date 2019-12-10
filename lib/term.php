@@ -70,19 +70,23 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					return;
 				}
 
-				add_filter( 'manage_edit-' . $this->query_tax_slug . '_columns',
-					array( $this, 'add_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );	// Default is 100.
+				/**
+				 * Add edit table columns.
+				 */
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'adding column filters for taxonomy ' . $this->query_tax_slug );
+				}
+
+				add_filter( 'manage_edit-' . $this->query_tax_slug . '_columns', array( $this, 'add_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
 
 				/**
 				 * Enable orderby meta_key only if we have a meta table.
 				 */
 				if ( self::use_term_meta_table() ) {
-					add_filter( 'manage_edit-' . $this->query_tax_slug . '_sortable_columns', 
-						array( $this, 'add_sortable_columns' ), 10, 1 );
+					add_filter( 'manage_edit-' . $this->query_tax_slug . '_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
 				}
 
-				add_filter( 'manage_' . $this->query_tax_slug . '_custom_column',
-					array( $this, 'get_column_content' ), 10, 3 );
+				add_filter( 'manage_' . $this->query_tax_slug . '_custom_column', array( $this, 'get_column_content' ), 10, 3 );
 
 				/**
 				 * The 'parse_query' action is hooked ONCE in the WpssoPost class to set the column orderby for

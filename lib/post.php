@@ -114,17 +114,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						/**
 						 * See https://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns.
 						 */
-						add_filter( 'manage_' . $ptn . '_posts_columns',
-							array( $this, 'add_post_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );	// Default is 100.
+						add_filter( 'manage_' . $ptn . '_posts_columns', array( $this, 'add_post_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
 
-						add_filter( 'manage_edit-' . $ptn . '_sortable_columns',
-							array( $this, 'add_sortable_columns' ), 10, 1 );
+						add_filter( 'manage_edit-' . $ptn . '_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
 
 						/**
 						 * See https://codex.wordpress.org/Plugin_API/Action_Reference/manage_$post_type_posts_custom_column.
 						 */
-						add_action( 'manage_' . $ptn . '_posts_custom_column',
-							array( $this, 'show_column_content' ), 10, 2 );
+						add_action( 'manage_' . $ptn . '_posts_custom_column', array( $this, 'show_column_content' ), 10, 2 );
 					}
 				}
 
@@ -138,8 +135,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				add_action( 'manage_media_custom_column', array( $this, 'show_column_content' ), 10, 2 );
 
 				/**
-				 * The 'parse_query' action is hooked ONCE in the WpssoPost class
-				 * to set the column orderby for post, term, and user edit tables.
+				 * The 'parse_query' action is hooked ONCE in the WpssoPost class to set the column orderby for
+				 * post, term, and user edit tables.
 				 */
 				add_action( 'parse_query', array( $this, 'set_column_orderby' ), 10, 1 );
 
@@ -471,6 +468,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		public function add_media_column_headings( $columns ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
 
 			return $this->add_mod_column_headings( $columns, 'media' );
 		}
