@@ -68,6 +68,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				$defs = $this->p->util->add_ttns_to_opts( $defs, array(
+					'og_type_for_tax'     => 'website',
 					'schema_type_for_tax' => 'item.list',
 				) );
 
@@ -371,6 +372,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				$opts = $this->p->util->add_ttns_to_opts( $opts, array(
+					'og_type_for_tax'     => 'website',
 					'schema_type_for_tax' => 'item.list',
 				) );
 

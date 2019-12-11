@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.16.0-b.1',	// Plugin version.
-					'opt_version' => '690',		// Increment when changing default option values.
+					'version'     => '6.16.0-rc.1',	// Plugin version.
+					'opt_version' => '691',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -1143,17 +1143,19 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Standard WordPress types.
 					 */
-					'og_type_for_tax_category' => 'website',
-					'og_type_for_tax_post_tag' => 'website',
-					'og_type_for_archive_page' => 'website',
-					'og_type_for_attachment'   => 'website',
-					'og_type_for_home_index'   => 'website',
-					'og_type_for_home_page'    => 'website',
-					'og_type_for_page'         => 'article',
-					'og_type_for_post'         => 'article',
-					'og_type_for_post_archive' => 'website',
-					'og_type_for_search_page'  => 'website',
-					'og_type_for_user_page'    => 'website',
+					'og_type_for_archive_page'     => 'website',
+					'og_type_for_attachment'       => 'website',
+					'og_type_for_home_index'       => 'website',
+					'og_type_for_home_page'        => 'website',
+					'og_type_for_page'             => 'article',
+					'og_type_for_post'             => 'article',
+					'og_type_for_post_archive'     => 'website',
+					'og_type_for_search_page'      => 'website',
+					'og_type_for_tax_category'     => 'website',
+					'og_type_for_tax_faq_category' => 'website',
+					'og_type_for_tax_faq_tag'      => 'website',
+					'og_type_for_tax_post_tag'     => 'website',
+					'og_type_for_user_page'        => 'website',
 					
 					/**
 					 * Other term / post types.

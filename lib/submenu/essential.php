@@ -27,6 +27,25 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 			$this->menu_ext  = $ext;
 		}
 
+		protected function add_plugin_hooks() {
+
+			$this->p->util->add_plugin_filters( $this, array(
+				'form_button_rows' => 1,
+			) );
+		}
+
+		/**
+		 * Remove the "Change to View" button from the Essential settings page.
+		 */
+		public function filter_form_button_rows( $form_button_rows ) {
+
+			if ( isset( $form_button_rows[ 0 ] ) ) {
+				$form_button_rows[ 0 ] = SucomUtil::preg_grep_keys( '/^change_show_options/', $form_button_rows[ 0 ], $invert = true );
+			}
+
+			return $form_button_rows;
+		}
+
 		/**
 		 * Called by the extended WpssoAdmin class.
 		 */
