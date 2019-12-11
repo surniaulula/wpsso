@@ -1085,7 +1085,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( $count > 0 ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( $count . ' [singlepic] shortcode(s) removed from content' );
+					$this->p->debug->log( $count . ' singlepic shortcode(s) removed from content' );
 				}
 			}
 

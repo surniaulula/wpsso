@@ -223,8 +223,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$def_opts        = null;	// Optimize and only get array when needed.
 
 				if ( ! $is_new_options ) {
+
 					foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
+
 						if ( isset( $info[ 'version' ] ) ) {
+
 							if ( ! isset( $opts[ 'plugin_' . $ext . '_version' ] ) ||
 								$opts[ 'plugin_' . $ext . '_version' ] !== $info[ 'version' ] ) {
 

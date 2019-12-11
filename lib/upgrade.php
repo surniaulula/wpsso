@@ -368,7 +368,8 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 
 			if ( $options_name === constant( 'WPSSO_OPTIONS_NAME' ) ) {
 
-				$rename_filter_name = $this->p->lca . '_rename_options_keys';
+				$rename_filter_name   = $this->p->lca . '_rename_options_keys';
+				$upgraded_filter_name = $this->p->lca . '_upgraded_options';
 
 				$rename_options_keys = apply_filters( $rename_filter_name, self::$rename_options_keys );
 
@@ -380,6 +381,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				$keys_preg = 'schema_type_.*|site_org_schema_type|org_schema_type|plm_place_schema_type';
 
 				foreach ( SucomUtil::preg_grep_keys( '/^(' . $keys_preg . ')(_[0-9]+)?$/', $opts ) as $key => $val ) {
+
 					if ( ! empty( $this->p->cf[ 'head' ][ 'schema_renamed' ][ $val ] ) ) {
 						$opts[ $key ] = $this->p->cf[ 'head' ][ 'schema_renamed' ][ $val ];
 					}
@@ -419,12 +421,14 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				}
 
 				if ( $prev_version > 0 && $prev_version <= 296 ) {
+
 					if ( empty( $opts[ 'plugin_min_shorten' ] ) || $opts[ 'plugin_min_shorten' ] < 22 ) {
 						$opts[ 'plugin_min_shorten' ] = 22;
 					}
 				}
 
 				if ( $prev_version > 0 && $prev_version <= 373 ) {
+
 					if ( ! empty( $opts[ 'plugin_head_attr_filter_name' ] ) && $opts[ 'plugin_head_attr_filter_name' ] === 'language_attributes' ) {
 						$opts[ 'plugin_head_attr_filter_name' ] = 'head_attributes';
 					}
@@ -440,6 +444,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				}
 
 				if ( $prev_version > 0 && $prev_version <= 564 ) {
+
 					if ( isset( $opts[ 'schema_type_for_job_listing' ] ) && $opts[ 'schema_type_for_job_listing' ] === 'webpage' ) {
 						$opts[ 'schema_type_for_job_listing' ] = 'job.posting';
 					}
@@ -450,7 +455,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				 * and og:video:url meta tags, which are functionally identical.
 				 */
 				if ( $prev_version > 0 && $prev_version <= 591 ) {
+
 					foreach ( array( 'og:image', 'og:video' ) as $mt_name ) {
+
 						$opts[ 'add_meta_property_' . $mt_name] = 1;
 						$opts[ 'add_meta_property_' . $mt_name . ':url' ] = 0;
 					}
@@ -460,9 +467,13 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				 * Remove the 'person' role from all subscribers.
 				 */
 				if ( $prev_version > 0 && $prev_version <= 599 ) {
+
 					if ( empty( $this->p->options[ 'plugin_new_user_is_person' ] ) ) {
+
 						foreach ( SucomUtilWP::get_roles_user_ids( array( 'subscriber' ) ) as $user_id ) {
+
 							$user_obj = get_user_by( 'ID', $user_id );
+
 							$user_obj->remove_role( 'person' );
 						}
 					}
@@ -472,7 +483,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				 * The Google URL Shortener was discontinued by Google in March 2018.
 				 */
 				if ( $prev_version > 0 && $prev_version <= 614 ) {
+
 					if ( isset( $this->p->options[ 'plugin_shortener' ] ) ) {
+
 						if ( $this->p->options[ 'plugin_shortener' ] === 'googl' ||
 							$this->p->options[ 'plugin_shortener' ] === 'google-url-shortener' ) {
 
@@ -482,14 +495,17 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				}
 
 				if ( $prev_version > 0 && $prev_version <= 619 ) {
+
 					foreach ( array( 'og:image', 'og:video' ) as $mt_name ) {
+
 						$opts[ 'add_meta_property_' . $mt_name . ':secure_url' ] = 0;
 						$opts[ 'add_meta_property_' . $mt_name . ':url' ]        = 0;
-						$opts[ 'add_meta_property_' . $mt_name ]                = 1;
+						$opts[ 'add_meta_property_' . $mt_name ]                 = 1;
 					}
 				}
 
 				if ( $prev_version > 0 && $prev_version <= 622 ) {
+
 					$opts[ 'add_meta_property_product:age_group' ]              = 0;
 					$opts[ 'add_meta_property_product:expiration_time' ]        = 0;
 					$opts[ 'add_meta_property_product:is_product_shareable' ]   = 0;
@@ -509,6 +525,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				}
 
 				if ( $prev_version > 0 && $prev_version <= 625 ) {
+
 					$opts[ 'plugin_product_attr_brand' ]     = 'Brand';
 					$opts[ 'plugin_product_attr_color' ]     = 'Color';
 					$opts[ 'plugin_product_attr_condition' ] = 'Condition';
@@ -525,6 +542,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				 * All product meta tags are not enabled by default.
 				 */
 				if ( $prev_version > 0 && $prev_version <= 637 ) {
+
 					foreach ( SucomUtil::get_opts_begin( 'add_meta_property_product:', $opts ) as $key => $val ) {
 						$opts[ $key ] = 1;
 					}
@@ -534,6 +552,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				 * Increase the default SEO description length from 156 to 220 characters.
 				 */
 				if ( $prev_version > 0 && $prev_version <= 637 ) {
+
 					if ( isset( $opts[ 'seo_desc_max_len' ] ) && $opts[ 'seo_desc_max_len' ] === 156 ) {
 						$opts[ 'seo_desc_max_len' ] = 220;
 					}
@@ -546,9 +565,13 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 
 			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) ) {
 
-				$this->p->util->rename_opts_by_ext( $opts, apply_filters( $this->p->lca . '_rename_site_options_keys',
-					self::$rename_site_options_keys ) );
+				$rename_filter_name   = $this->p->lca . '_rename_site_options_keys';
+				$upgraded_filter_name = $this->p->lca . '_upgraded_site_options';
+
+				$this->p->util->rename_opts_by_ext( $opts, apply_filters( $rename_filter_name, self::$rename_site_options_keys ) );
 			}
+
+			$opts = apply_filters( $upgraded_filter_name, $opts, $def_opts );
 
 			return $this->sanitize( $opts, $def_opts, $network );	// Cleanup options and sanitize.
 		}

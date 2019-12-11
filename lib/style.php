@@ -507,6 +507,10 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				table.wp-list-table > tbody > tr > td.column-comments {
 					width:50px;
 				}
+				table.wp-list-table > thead > tr > th.column-posts.num,
+				table.wp-list-table > tbody > tr > td.column-posts.num {	/* Count text. */
+					width:60px;
+				}
 				table.wp-list-table > thead > tr > th.column-featured,
 				table.wp-list-table > tbody > tr > td.column-featured {
 					width:20px;

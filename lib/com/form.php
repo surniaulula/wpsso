@@ -1241,14 +1241,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_input( $name . '_url', 'wide', '', 0, SucomUtil::esc_url_encode( $url ), $is_disabled );
 		}
 
-		/**
-		 * Deprecated on 2019/12/09.
-		 */
-		public function get_input_copy_clipboard( $value, $css_class = 'wide', $css_id = '' ) {
-
-			return self::get_no_input_clipboard( $value, $css_class = 'wide', $css_id = '' );
-		}
-
 		public function get_input_multi( $name, $css_class = '', $css_id = '', $start_num = 0, $max_input = 20, $show_first = 5, $is_disabled = false ) {
 
 			if ( empty( $name ) ) {
@@ -1832,15 +1824,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 
 				if ( isset( $val[ 'tr_class' ] ) ) {
-
-					$tr = '<tr class="' . $val[ 'tr_class' ] . '"';
-
-					if ( strpos( $val[ 'tr_class' ], 'hide_' ) === 0 ) {
-						$tr .= ' style="display:none;"';
-					}
-
-					$tr .= '>' . "\n";
-
+					$tr = '<tr class="' . $val[ 'tr_class' ] . '">' . "\n";
 				} else {
 					$tr = '';
 				}
@@ -1851,7 +1835,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				if ( isset( $val[ 'table_row' ] ) ) {
 
 					if ( ! empty( $val[ 'table_row' ] ) ) {
-
 						$table_rows[ $key ] .= $tr . $val[ 'table_row' ] . "\n";
 					}
 
@@ -1864,7 +1847,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$is_auto_draft = false;
 
 				if ( ! empty( $val[ 'no_auto_draft' ] ) ) {
+
 					if ( $is_auto_draft = SucomUtil::is_auto_draft( $mod ) ) {
+
 						$val[ 'td_class' ] = empty( $val[ 'td_class' ] ) ? 'blank' : $val[ 'td_class' ] . ' blank';
 					}
 				}
