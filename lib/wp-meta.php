@@ -426,12 +426,12 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return array();
 		}
 
-		public function get_posts_ids( array $mod, $ppp = false, $paged = false, array $posts_args = array() ) {
+		public function get_posts_ids( array $mod, $ppp = null, $paged = null, array $posts_args = array() ) {
 
 			return $this->must_be_extended( __METHOD__, array() );	// Return an empty array.
 		}
 
-		public function get_posts_mods( array $mod, $ppp = false, $paged = false, array $posts_args = array() ) {
+		public function get_posts_mods( array $mod, $ppp = null, $paged = null, array $posts_args = array() ) {
 
 			$posts_mods = array();
 
@@ -441,6 +441,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					$this->p->debug->log( 'getting mod for post object ID ' . $post_id );
 				}
 
+				/**
+				 * Get the post module array.
+				 */
 				$posts_mods[] = $this->p->post->get_mod( $post_id );
 			}
 

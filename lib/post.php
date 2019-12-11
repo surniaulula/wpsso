@@ -391,17 +391,17 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		/**
 		 * Return an array of post IDs for a given $mod object.
 		 */
-		public function get_posts_ids( array $mod, $ppp = false, $paged = false, array $posts_args = array() ) {
+		public function get_posts_ids( array $mod, $ppp = null, $paged = null, array $posts_args = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			if ( false === $ppp ) {
+			if ( null === $ppp ) {
 				$ppp = apply_filters( $this->p->lca . '_posts_per_page', get_option( 'posts_per_page' ), $mod );
 			}
 
-			if ( false === $paged ) {
+			if ( null === $paged ) {
 				$paged = get_query_var( 'paged' );
 			}
 

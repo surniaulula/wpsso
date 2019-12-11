@@ -37,7 +37,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			} else {
 
 				if ( has_excerpt( $mod[ 'id' ] ) ) {
-					$quote_text = get_the_excerpt( $mod[ 'id' ] );
+					$quote_text = get_the_excerpt( $mod[ 'id' ] );	// Applies the 'get_the_excerpt' filter.
 				} else {
 					$quote_text = get_post_field( 'post_content', $mod[ 'id' ] );
 				}
@@ -1094,10 +1094,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( $filter_content ) {
 
-				$hook_bfo  = SucomUtil::get_const( 'WPSSO_CONTENT_BLOCK_FILTER_OUTPUT', true );
+				$use_bfo = SucomUtil::get_const( 'WPSSO_CONTENT_BLOCK_FILTER_OUTPUT', true );
+
 				$mtime_max = SucomUtil::get_const( 'WPSSO_CONTENT_FILTERS_MAX_TIME', 1.50 );
 
-				$content = $this->p->util->safe_apply_filters( array( 'the_content', $content ), $mod, $mtime_max, $hook_bfo );
+				$content = $this->p->util->safe_apply_filters( array( 'the_content', $content ), $mod, $mtime_max, $use_bfo );
 
 				/**
 				 * Cleanup for NextGEN Gallery pre-v2 album shortcode.

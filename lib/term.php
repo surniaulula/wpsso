@@ -358,17 +358,20 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		 *
 		 * Note that this method returns posts in child terms as well.
 		 */
-		public function get_posts_ids( array $mod, $ppp = false, $paged = false, array $posts_args = array() ) {
+		public function get_posts_ids( array $mod, $ppp = null, $paged = null, array $posts_args = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			if ( false === $ppp ) {
+			/**
+			 * $ppp = -1 for all posts.
+			 */
+			if ( null === $ppp ) {
 				$ppp = apply_filters( $this->p->lca . '_posts_per_page', get_option( 'posts_per_page' ), $mod );
 			}
 
-			if ( false === $paged ) {
+			if ( null === $paged ) {
 				$paged = get_query_var( 'paged' );
 			}
 
@@ -456,6 +459,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				$col_key = str_replace( $this->p->lca . '_', '', $column_name );
 
 				if ( ( $col_info = self::get_sortable_columns( $col_key ) ) !== null ) {
+
 					if ( isset( $col_info[ 'meta_key' ] ) ) {	// just in case
 						$value = $this->get_meta_cache_value( $term_id, $col_info[ 'meta_key' ] );
 					}

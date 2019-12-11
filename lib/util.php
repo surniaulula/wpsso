@@ -278,10 +278,19 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$hook_name   = self::sanitize_hookname( $ext . '_' . $name );
 					$method_name = self::sanitize_hookname( $type . '_' . $name );
 
-					call_user_func( 'add_' . $type, $hook_name, array( &$class, $method_name ), $prio, $arg_nums );
+					if ( is_callable( array( &$class, $method_name ) ) ) {
 
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'added ' . $method_name . ' (method) ' . $type, 3 );
+						call_user_func( 'add_' . $type, $hook_name, array( &$class, $method_name ), $prio, $arg_nums );
+
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'added ' . $method_name . ' method ' . $type, 3 );
+						}
+
+					} else {
+
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( $method_name . ' method ' . $type . ' is not callable' );
+						}
 					}
 
 				/**
@@ -294,16 +303,25 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$hook_name     = self::sanitize_hookname( $ext . '_' . $name );
 					$function_name = self::sanitize_hookname( $val );
 
-					call_user_func( 'add_' . $type, $hook_name, $function_name, $prio, $arg_nums );
+					if ( is_callable( $function_name ) ) {
 
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'added ' . $function_name . ' (function) ' . $type . ' for ' . $hook_name, 3 );
+						call_user_func( 'add_' . $type, $hook_name, $function_name, $prio, $arg_nums );
+
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'added ' . $function_name . ' function ' . $type . ' for ' . $hook_name, 3 );
+						}
+
+					} else {
+
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( $method_name . ' function ' . $type . ' for ' . $hook_name . ' is not callable' );
+						}
 					}
 
 				/**
 				 * Example:
 				 * 	'json_data_https_schema_org_article' => array(
-				 *		'json_data_https_schema_org_article' => 5,
+				 *		'json_data_https_schema_org_article'     => 5,
 				 *		'json_data_https_schema_org_newsarticle' => 5,
 				 *		'json_data_https_schema_org_techarticle' => 5,
 				 *	)
@@ -316,10 +334,19 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						$hook_name = self::sanitize_hookname( $ext . '_' . $hook_name );
 
-						call_user_func( 'add_' . $type, $hook_name, array( &$class, $method_name ), $prio, $arg_nums );
+						if ( is_callable( array( &$class, $method_name ) ) ) {
 
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'added ' . $method_name . ' (method) ' . $type . ' to ' . $hook_name, 3 );
+							call_user_func( 'add_' . $type, $hook_name, array( &$class, $method_name ), $prio, $arg_nums );
+
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'added ' . $method_name . ' method ' . $type . ' for ' . $hook_name, 3 );
+							}
+
+						} else {
+
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( $method_name . ' method ' . $type . ' for ' . $hook_name . ' is not callable' );
+							}
 						}
 					}
 				}
@@ -3159,7 +3186,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $max_nums;
 		}
 
-		public function safe_apply_filters( array $args, array $mod, $mtime_max = 0, $hook_bfo = false ) {
+		public function safe_apply_filters( array $args, array $mod, $mtime_max = 0, $use_bfo = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -3219,7 +3246,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			/**
 			 * Load the Block Filter Output (BFO) filters to block and show an error for incorrectly coded filters.
 			 */
-			if ( $hook_bfo ) {
+			if ( $use_bfo ) {
 
 				$classname = apply_filters( $this->p->lca . '_load_lib', false, 'com/bfo', 'SucomBFO' );
 
@@ -3383,7 +3410,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			/**
 			 * Remove the Block Filter Output (BFO) filters.
 			 */
-			if ( $hook_bfo ) {
+			if ( $use_bfo ) {
 				$bfo_obj->remove_all_hooks( array( $filter_name ) );
 			}
 

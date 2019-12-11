@@ -33,7 +33,7 @@ if ( ! class_exists( 'WpssoSchemaNoScript' ) ) {
 			}
 		}
 
-		public function filter_schema_scripts_aggregaterating( array $schema_scripts, array $mod, array $mt_og ) {
+		public function filter_schema_scripts( array $schema_scripts, array $mod, array $mt_og ) {
 
 			if ( ! apply_filters( $this->p->lca . '_add_schema_noscript_aggregaterating', true ) ) {
 				return $schema_scripts;
