@@ -467,6 +467,15 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $post_ids;
 		}
 
+		public function add_post_column_headings( $columns ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			return $this->add_mod_column_headings( $columns, 'post' );
+		}
+
 		public function add_media_column_headings( $columns ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -1691,15 +1700,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			return $user_can_edit;
-		}
-
-		public function add_post_column_headings( $columns ) {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
-
-			return $this->add_mod_column_headings( $columns, 'post' );
 		}
 
 		/**

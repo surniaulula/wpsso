@@ -493,9 +493,13 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				table.wp-list-table > tbody > tr > td.column-description {
 					width:20%;
 				}
-				table.wp-list-table.plugins > thead > tr > th.column-description,	/* Plugins table. */
-				table.wp-list-table.plugins > tbody > tr > td.column-description {
+				table.wp-list-table.plugins > thead > tr > th.column-description,
+				table.wp-list-table.plugins > tbody > tr > td.column-description {	/* Plugins table. */
 					width:75%;
+				}
+				table.wp-list-table.tags > thead > tr > th.column-description,
+				table.wp-list-table.tags > tbody > tr > td.column-description {	/* Taxonomy table */
+					width:25%;
 				}
 				table.wp-list-table.users > thead > tr > th,	/* Users table. */
 				table.wp-list-table.users > tbody > tr > td {
@@ -509,7 +513,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				}
 				table.wp-list-table > thead > tr > th.column-posts.num,
 				table.wp-list-table > tbody > tr > td.column-posts.num {	/* Count text. */
-					width:60px;
+					width:75px;
 				}
 				table.wp-list-table > thead > tr > th.column-featured,
 				table.wp-list-table > tbody > tr > td.column-featured {
