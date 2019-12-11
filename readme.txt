@@ -457,7 +457,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.16.0-dev.2 (2019/12/11)**
+**Version 6.16.0-b.1 (2019/12/11)**
 
 * **New Features**
 	* Re-added support for the Yotpo Social Reviews for WooCommerce plugin.
@@ -763,7 +763,7 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 
 == Upgrade Notice ==
 
-= 6.16.0-dev.2 =
+= 6.16.0-b.1 =
 
 (2019/12/11) Re-added support for the Yotpo Social Reviews for WooCommerce plugin.
 
