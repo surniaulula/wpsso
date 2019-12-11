@@ -457,17 +457,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.16.0-dev.1 (2019/12/10)**
+**Version 6.16.0-dev.2 (2019/12/11)**
 
 * **New Features**
 	* Re-added support for the Yotpo Social Reviews for WooCommerce plugin.
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* None.
+	* Fixed missing options in the Document SSO metabox when the "All Options" view was selected.
 * **Developer Notes**
 	* Renamed the `SucomForm->get_input_copy_clipboard()` method to `SucomForm::get_no_input_clipboard()`.
-	* Added a new css/com/admin-page.css stylesheet and js/com/jquery-admin-page.js script files.
+	* Added a new js/com/jquery-admin-page.min.js script file.
 * **Requires At Least**
 	* PHP v5.5.
 	* WordPress v3.9.
@@ -763,9 +763,9 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 
 == Upgrade Notice ==
 
-= 6.16.0-dev.1 =
+= 6.16.0-dev.2 =
 
-(2019/12/10) Re-added support for the Yotpo Social Reviews for WooCommerce plugin.
+(2019/12/11) Re-added support for the Yotpo Social Reviews for WooCommerce plugin.
 
 = 6.15.0 =
 
