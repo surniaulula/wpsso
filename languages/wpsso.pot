@@ -6421,7 +6421,7 @@ msgctxt "metabox title"
 msgid "WebSite Social Pages and Accounts"
 msgstr ""
 
-#: lib/sitesubmenu/site-addons.php:69 lib/submenu/addons.php:58
+#: lib/sitesubmenu/site-addons.php:69 lib/submenu/addons.php:57
 msgctxt "metabox title"
 msgid "Complementary Add-ons for %s"
 msgstr ""
@@ -6441,7 +6441,7 @@ msgctxt "metabox tab"
 msgid "Cache"
 msgstr ""
 
-#: lib/sitesubmenu/site-licenses.php:52 lib/submenu/licenses.php:41
+#: lib/sitesubmenu/site-licenses.php:51 lib/submenu/licenses.php:40
 msgctxt "metabox title"
 msgid "Plugin and Add-on Licenses"
 msgstr ""

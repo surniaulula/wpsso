@@ -35,7 +35,7 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 		}
 
 		/**
-		 * Remove the "Change to View" button from the Essential settings page.
+		 * Remove the "Change to View" button from the settings page.
 		 */
 		public function filter_form_button_rows( $form_button_rows ) {
 

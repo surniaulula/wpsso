@@ -12,9 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'WpssoSiteSubmenuSiteLicenses' ) && class_exists( 'WpssoAdmin' ) ) {
 
 	/**
-	 * Please note that this settings page also requires enqueuing special scripts and styles
-	 * for the plugin details / install thickbox link. See the WpssoScript and WpssoStyle
-	 * classes for more info.
+	 * Please note that this settings page also requires enqueuing special scripts and styles for the plugin details / install
+	 * thickbox link. See the WpssoScript and WpssoStyle classes for more info.
 	 */
 	class WpssoSiteSubmenuSiteLicenses extends WpssoAdmin {
 
