@@ -10,7 +10,7 @@ Tags: open graph, meta tags, rich pins, twitter cards, schema, rich results, emb
 Contributors: jsmoriss
 Requires PHP: 5.5
 Requires At Least: 3.9
-Tested Up To: 5.3
+Tested Up To: 5.3.1
 WC Tested Up To: 3.8.1
 Stable Tag: 6.16.0
 
