@@ -2659,7 +2659,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'data.catalog'         => 'https://schema.org/DataCatalog',
 							'data.set'             => 'https://schema.org/DataSet',
 							'digital.document'     => 'https://schema.org/DigitalDocument',
-							'episode'              => 'https://schema.org/Episode',
+							'episode'              => array(
+								'episode'         => 'https://schema.org/Episode',
+								'episode.podcast' => 'https://schema.org/PodcastEpisode',
+								'episode.radio'   => 'https://schema.org/RadioEpisode',
+								'episode.tv'      => 'https://schema.org/TVEpisode',
+							),
 							'game'                 => array(
 								'game'       => 'https://schema.org/Game',
 								'video.game' => 'https://schema.org/VideoGame',
