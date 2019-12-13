@@ -976,7 +976,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			$filter_content = empty( $this->p->options[ 'plugin_filter_content' ] ) || $this->p->check->pp() ? false : true;
-
 			$filter_content = apply_filters( $this->p->lca . '_can_filter_the_content', $filter_content, $mod );
 
 			$sharing_url   = $this->p->util->get_sharing_url( $mod );
@@ -1017,18 +1016,24 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$cache_array = wp_cache_get( $cache_id, __METHOD__ );
 
 					if ( isset( $cache_array[ $cache_index ] ) ) {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'exiting early: cache index found in wp_cache' );
 						}
+
 						return $cache_array[ $cache_index ];
+
 					} else {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'cache index not in wp_cache' );
 						}
+
 						if ( ! is_array( $cache_array ) ) {
 							$cache_array = array();
 						}
 					}
+
 				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'read cache for content is false' );
 				}

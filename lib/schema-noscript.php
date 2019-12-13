@@ -26,9 +26,7 @@ if ( ! class_exists( 'WpssoSchemaNoScript' ) ) {
 			if ( apply_filters( $this->p->lca . '_add_schema_noscript_array', true ) ) {
 
 				$this->p->util->add_plugin_filters( $this, array( 
-					'schema_scripts' => array(
-						'schema_scripts_aggregaterating' => 3,
-					),
+					'schema_scripts' => 3,
 				), $prio = 1000 );
 			}
 		}

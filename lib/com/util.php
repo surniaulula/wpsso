@@ -3380,21 +3380,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					foreach ( $all_matches as $num => $matches ) {
 
-						$json_md5 = md5( $matches[ 1 ] );	// md5() input must be a string.
+						$json_decoded = json_decode( $matches[ 1 ], $assoc = true );
+
+						$json_md5 = md5( serialize( $json_decoded ) );	// md5() input must be a string.
 
 						if ( $do_decode ) {	// Return only the decoded json data.
-
-							$json_decoded = json_decode( $matches[ 1 ], $assoc = true );
 
 							if ( is_array( $json_decoded ) ) {
 								$json_data[ $json_md5 ] = $json_decoded;
 							} else {
-								self::safe_error_log( 'error decoding json script: ' . print_r( $matches[1], true ) );
+								self::safe_error_log( 'error decoding json script: ' . print_r( $matches[ 1 ], true ) );
 							}
 
 						} else {	// Return the complete script container.
 
-							$json_data[ $json_md5 ] = $matches[0];
+							$json_data[ $json_md5 ] = $matches[ 0 ];
 						}
 					}
 				}

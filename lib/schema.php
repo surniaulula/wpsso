@@ -109,21 +109,22 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Potential Action (SearchAction, OrderAction, etc.)
 			 *
-			 * The 'wpsso_json_prop_https_schema_org_potentialaction' filter may already
-			 * be applied by the WPSSO JSON add-on, so do not re-apply it here.
+			 * The 'wpsso_json_prop_https_schema_org_potentialaction' filter may already be applied by the WPSSO JSON
+			 * add-on, so do not re-apply it here.
 			 *
-			 * Hook the 'wpsso_json_ld_search_url' filter and return false if you wish to
-			 * disable / skip the Potential Action property.
+			 * Hook the 'wpsso_json_ld_search_url' filter and return false if you wish to disable / skip the Potential
+			 * Action property.
 			 */
 			$search_url = SucomUtil::esc_url_encode( get_bloginfo( 'url' ) ) . '?s={search_term_string}';
+
 			$search_url = apply_filters( $this->p->lca . '_json_ld_search_url', $search_url );
 
 			if ( ! empty( $search_url ) ) {
 
 				/**
 				 * Potential Action may already be defined by the WPSSO JSON
-				 * 'wpsso_json_prop_https_schema_org_potentialaction' filter.
-				 * Make sure it's an array - just in case. ;-)
+				 * 'wpsso_json_prop_https_schema_org_potentialaction' filter. Make sure it's an array - just in
+				 * case. ;-)
 				 */
 				if ( ! isset( $ret[ 'potentialAction' ] ) || ! is_array( $ret[ 'potentialAction' ] ) ) {
 					$ret[ 'potentialAction' ] = array();
