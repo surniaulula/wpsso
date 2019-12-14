@@ -309,7 +309,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 		* Review Rating 
 		* Rating Value Name
 		* Subject of the Review
-			* Subject Type 
+			* Subject Webpage Type 
 			* Subject Webpage URL 
 			* Subject Same-As URL 
 			* Subject Name 

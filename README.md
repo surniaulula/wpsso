@@ -370,7 +370,7 @@
 <li>Subject of the Review
 
 <ul>
-<li>Subject Type </li>
+<li>Subject Webpage Type </li>
 <li>Subject Webpage URL </li>
 <li>Subject Same-As URL </li>
 <li>Subject Name </li>
