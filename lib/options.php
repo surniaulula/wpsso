@@ -44,7 +44,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( $force_filter || ! self::$allow_cache || empty( $defs[ 'options_filtered' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->mark( 'get_defaults filters' );	// start timer
+					$this->p->debug->mark( 'get_defaults filters' );	// Begin timer.
 				}
 
 				/**
@@ -138,7 +138,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$defs = apply_filters( $this->p->lca . '_get_defaults', $defs );
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->mark( 'get_defaults filters' );	// end timer
+					$this->p->debug->mark( 'get_defaults filters' );	// End timer.
 				}
 			}
 
@@ -167,7 +167,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( $force_filter || ! self::$allow_cache || empty( $defs[ 'options_filtered' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->mark( 'get_site_defaults filters' );	// start timer
+					$this->p->debug->mark( 'get_site_defaults filters' );	// Begin timer.
 				}
 
 				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
@@ -193,7 +193,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$defs = apply_filters( $this->p->lca . '_get_site_defaults', $defs );
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->mark( 'get_site_defaults filters' );	// end timer
+					$this->p->debug->mark( 'get_site_defaults filters' );	// End timer.
 				}
 			}
 

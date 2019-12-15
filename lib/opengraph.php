@@ -904,7 +904,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			);
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'get all open graph videos' );
+
+				$this->p->debug->mark( 'get all open graph videos' );	// Begin timer.
+
 				$this->p->debug->log_args( $cache_args );
 			}
 
@@ -960,13 +962,18 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'checking for custom videos in ' . $mod[ 'name' ] . ' options' );
+					$this->p->debug->mark( 'checking for custom videos in ' . $mod[ 'name' ] . ' options' );	// Begin timer.
 				}
 
 				/**
 				 * get_og_videos() converts the $md_pre value to an array and always checks for 'og' metadata as a fallback.
 				 */
 				$og_ret = array_merge( $og_ret, $mod[ 'obj' ]->get_og_videos( $num_diff, $mod[ 'id' ], $check_dupes, $md_pre ) );
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->mark( 'checking for custom videos in ' . $mod[ 'name' ] . ' options' );	// End timer.
+				}
+
 			}
 
 			$num_diff = SucomUtil::count_diff( $og_ret, $num );
@@ -977,13 +984,13 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			if ( $mod[ 'is_post' ] && ! $this->p->util->is_maxed( $og_ret, $num ) ) {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'checking for additional videos in the post content' );
+					$this->p->debug->mark( 'checking for additional videos in the post content' );	// Begin timer.
 				}
 
 				$og_ret = array_merge( $og_ret, $this->p->media->get_content_videos( $num_diff, $mod, $check_dupes ) );
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( count( $og_ret ) . ' videos found in the post content' );
+					$this->p->debug->mark( 'checking for additional videos in the post content' );	// End timer.
 				}
 			}
 
@@ -1085,8 +1092,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'returning ' . count( $og_extend ) . ' videos' );
-				$this->p->debug->mark( 'get all open graph videos' );
+
+				$this->p->debug->mark( 'get all open graph videos' );	// End timer.
 			}
 
 			return $og_extend;
@@ -1110,7 +1119,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark( 'get all open graph images' );
+				$this->p->debug->mark( 'get all open graph images' );	// Begin timer.
 
 				$this->p->debug->log_args( array(
 					'num'         => $num,
@@ -1250,8 +1259,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			$this->p->util->slice_max( $og_ret, $num );
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'returning ' . count( $og_ret ) . ' images' );
-				$this->p->debug->mark( 'get all open graph images' );
+
+				$this->p->debug->mark( 'get all open graph images' );	// End timer.
 			}
 
 			return $og_ret;

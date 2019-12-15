@@ -587,11 +587,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 */
 			if ( $this->p->debug->enabled ) {
 
-				$doing_ajax  = defined( 'DOING_AJAX' ) && DOING_AJAX ? true : false;
+				$doing_ajax = defined( 'DOING_AJAX' ) && DOING_AJAX ? true : false;
+
 				$wp_obj_type = gettype( $wp_obj ) === 'object' ? get_class( $wp_obj ) . ' object' : gettype( $wp_obj );
 
 				$this->p->debug->log( 'DOING_AJAX is ' . ( $doing_ajax ? 'true' : 'false' ) );
+
 				$this->p->debug->log( '$wp_obj type is ' . $wp_obj_type );
+
 				$this->p->debug->mark( 'define image sizes' );	// Begin timer.
 			}
 

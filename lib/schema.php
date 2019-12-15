@@ -311,7 +311,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public function get_array( array $mod, array &$mt_og = array() ) {	// Pass by reference is OK.
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'build schema array' );	// Begin timer for json array.
+				$this->p->debug->mark( 'build schema array' );	// Begin timer.
 			}
 
 			$page_type_id  = $mt_og[ 'schema:type:id' ]  = $this->get_mod_schema_type( $mod, $get_schema_id = true );	// Example: article.tech.
@@ -492,7 +492,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			unset( $graph );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'build schema array' );	// End timer for json array.
+				$this->p->debug->mark( 'build schema array' );	// End timer.
 			}
 
 			$schema_scripts = apply_filters( $this->p->lca . '_schema_scripts', $schema_scripts, $mod, $mt_og );
