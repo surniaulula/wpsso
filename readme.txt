@@ -462,7 +462,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Minor update to the SSO menu item dashicons and their order.
 * **Bugfixes**
 	* Fixed a Schema "noscript" filter hook name that provides aggregate rating meta tags.
 * **Developer Notes**
