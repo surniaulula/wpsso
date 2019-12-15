@@ -457,6 +457,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 6.16.1-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed a Schema "noscript" filter hook name that provides aggregate rating meta tags.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v5.5.
+	* WordPress v3.9.
+
 **Version 6.16.0 (2019/12/11)**
 
 * **New Features**
