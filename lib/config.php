@@ -183,10 +183,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'setup'     => 'Setup Guide',
 							'general'   => 'General',
 							'advanced'  => 'Advanced',
-							'dashboard' => 'Dashboard',
-							'tools'     => 'Actions and Tools',
 							'addons'    => 'Complementary Add-ons',
 							'licenses'  => 'Premium Licenses',
+							'tools'     => 'Actions and Tools',
+							'dashboard' => 'Dashboard',
 						),
 						'tools' => array(
 							'sso-tools' => 'SSO Actions and Tools',
@@ -1984,14 +1984,17 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'icon_html' => '&oast;',	// Circle asterix.
 				'dashicons' => array(
 					'addons'         => 'star-filled',
-					'site-addons'    => 'star-filled',
+					'advanced'       => 'admin-settings',	// Default icon.
+					'essential'      => 'admin-generic',
+					'general'        => 'admin-settings',	// Default icon.
 					'licenses'       => 'admin-network',
-					'site-licenses'  => 'admin-network',
 					'dashboard'      => 'dashboard',
-					'site-dashboard' => 'dashboard',
-					'setup'          => 'sos',
-					'site-setup'     => 'sos',
-					'tools'          => 'update',
+					'setup'          => 'welcome-learn-more',
+					'tools'          => 'admin-tools',
+					'site-addons'    => 'star-filled',
+					'site-advanced'  => 'admin-settings',	// Default icon.
+					'site-licenses'  => 'admin-network',
+					'site-setup'     => 'welcome-learn-more',
 				),
 			),
 			'notice' => array(

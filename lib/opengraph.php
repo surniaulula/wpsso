@@ -874,8 +874,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$image_url = SucomUtil::get_mt_media_url( $og_single_video, $mt_media_pre = 'og:image' );
 
 				/**
-				 * Check preview images for duplicates since the same videos may be available in
-				 * different formats (application/x-shockwave-flash and text/html for example).
+				 * Check preview images for duplicates since the same videos may be available in different formats
+				 * (application/x-shockwave-flash and text/html for example).
 				 */
 				if ( $image_url ) {
 
