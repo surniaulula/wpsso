@@ -260,7 +260,8 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			if ( ! empty( $action_links ) ) {
 
 				$settings_page_link = $this->p->util->get_admin_url( 'setup', _x( 'Setup Guide', 'lib file description', 'wpsso' ) );
-				$google_tool_link   = '<a href="' . __( 'https://search.google.com/structured-data/testing-tool/u/0/', 'wpsso' ) . '">' .
+
+				$google_tool_link = '<a href="' . __( 'https://search.google.com/structured-data/testing-tool/u/0/', 'wpsso' ) . '">' .
 					__( 'Google Structured Data Testing Tool', 'wpsso' ) . '</a>';
 
 				$notice_msg = sprintf( __( 'The WooCommerce v%s plugin is known to provide incomplete Schema markup for Google.', 'wpsso' ), $wc_version ) . ' ';

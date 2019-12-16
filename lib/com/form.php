@@ -2028,32 +2028,24 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$html = '<input type="text"' .
 				( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' ) .
-				( empty( $css_id ) ? '' : ' id="text_' . esc_attr( $css_id ) . '"' ) .
+				' id="text_' . esc_attr( $css_id ) . '"' .
 				' value="' . esc_attr( $value ) . '" readonly' .
 				' onFocus="this.select(); document.execCommand(\'Copy\',false,null);"' .
 				' onMouseUp="return false;">';
 
 			/**
-			 * Maybe wrap the input field with divs and a clipboard icon.
+			 * Dashicons are only available since WP v3.8
 			 */
-			if ( ! empty( $css_id ) ) {
+			global $wp_version;
 
-				/**
-				 * Dashicons are only available since WP v3.8
-				 */
-				global $wp_version;
+			if ( version_compare( $wp_version, '3.8', '>=' ) ) {
 
-				if ( version_compare( $wp_version, '3.8', '>=' ) ) {
-
-					$html = '<div class="no_input_clipboard">' .
-						'<div class="copy_button">' .
-						'<a href="" title="Copy to clipboard"' .
-						' onClick="return sucomCopyInputId( \'text_' . esc_js( $css_id ) . '\');">' .
-						'<span class="dashicons dashicons-clipboard"></span></a>' .
-						'</div>' .
-						'<div class="copy_text">' . $html . '</div>' .
-						'</div>';
-				}
+				$html = '<div class="no_input_clipboard">' .
+					'<div class="copy_button"><a href="" title="Copy to clipboard"' .
+					' onClick="return sucomCopyInputId( \'text_' . esc_js( $css_id ) . '\');">' .
+					'<span class="dashicons dashicons-clipboard"></span></a></div><!-- .copy_button -->' . "\n" .
+					'<div class="copy_text">' . $html . '</div><!-- .copy_text -->' . "\n" .
+					'</div><!-- .no_input_clipboard -->' . "\n";
 			}
 
 			return $html;

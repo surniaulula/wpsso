@@ -1710,7 +1710,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $msg_key ) {
 
-						case 'info-meta-validate-facebook':
+						case 'info-meta-validate-facebook-og':
 
 							$text = '<p class="top">';
 
@@ -1719,6 +1719,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= __( 'The Facebook debugger allows you to refresh Facebook\'s cache, while also validating Open Graph meta tag values.', 'wpsso' ) . ' ';
 
 							$text .= __( 'The Facebook debugger is the most stable and reliable method to verify Open Graph meta tags.', 'wpsso' );
+
+							$text .= '</p>';
+
+						 	break;
+
+						case 'info-meta-validate-facebook-microdata':
+
+							$text = '<p class="top">';
+
+							$text .= __( 'The Facebook catalog microdata debug tool allows you to validate the the structured markup data used to indicate key information about the items on your website, such as names, descriptions and prices.', 'wpsso' );
 
 							$text .= '</p>';
 

@@ -888,10 +888,17 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$sharing_url_encoded = urlencode( $sharing_url );
 
 			$buttons = array(
-				'facebook' => array(
-					'title' => _x( 'Facebook Open Graph Debugger', 'option label', 'wpsso' ),
+				'facebook-og' => array(
+					'title' => _x( 'Facebook Open Graph Object Debugger', 'option label', 'wpsso' ),
 					'label' => _x( 'Validate Open Graph', 'submit button', 'wpsso' ),
 					'url'   => 'https://developers.facebook.com/tools/debug/og/object/?q=' . $sharing_url_encoded,
+				),
+				'facebook-microdata' => array(
+					'title' => _x( 'Facebook Microdata Debug Tool', 'option label', 'wpsso' ),
+					'label' => _x( 'Validate Microdata', 'submit button', 'wpsso' ),
+					'url'   => 'https://business.facebook.com/ads/microdata/debug',
+					'msg'   => $this->p->msgs->get( 'info-meta-validate-facebook-microdata' ) .
+						SucomForm::get_no_input_clipboard( $sharing_url ),
 				),
 				'linkedin' => array(
 					'title' => _x( 'LinkedIn Post Inspector', 'option label', 'wpsso' ),

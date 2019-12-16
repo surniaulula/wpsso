@@ -223,6 +223,24 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$version_changed = false;
 				$def_opts        = null;	// Optimize and only get array when needed.
 
+				/**
+				 * Hard-code fixed options.
+				 */
+				foreach ( array( 'og:image', 'og:video' ) as $mt_name ) {
+
+					$opts[ 'add_meta_property_' . $mt_name . ':secure_url' ] = 0;
+
+					$opts[ 'add_meta_property_' . $mt_name . ':secure_url:is' ] = 'disabled';
+
+					$opts[ 'add_meta_property_' . $mt_name . ':url' ] = 0;
+
+					$opts[ 'add_meta_property_' . $mt_name . ':url:is' ] = 'disabled';
+
+					$opts[ 'add_meta_property_' . $mt_name ] = 1;
+
+					$opts[ 'add_meta_property_' . $mt_name . ':is' ] = 'disabled';
+				}
+
 				if ( ! $is_new_options ) {
 
 					foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {

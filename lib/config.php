@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.16.0',	// Plugin version.
+					'version'     => '6.16.1-dev.1',	// Plugin version.
 					'opt_version' => '691',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1312,7 +1312,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_product:purchase_limit'                 => 1,
 					'add_meta_property_product:retailer'                       => 1,
 					'add_meta_property_product:retailer_category'              => 1,
-					'add_meta_property_product:retailer_item_id'               => 0,
+					'add_meta_property_product:retailer_item_id'               => 1,
 					'add_meta_property_product:retailer_part_no'               => 1,
 					'add_meta_property_product:retailer_title'                 => 1,
 					'add_meta_property_product:sale_price:amount'              => 1,
