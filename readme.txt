@@ -457,11 +457,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.16.1-dev.1 (TBD)**
+**Version 6.16.1-dev.1 (2019/12/16)**
 
 * **New Features**
 	* None.
 * **Improvements**
+	* Added the "Facebook Microdata Debug Tool" under the Document SSO &gt; Validate tab.
 	* Minor update to the SSO menu item dashicons and their order.
 * **Bugfixes**
 	* Fixed a Schema "noscript" filter hook name that provides aggregate rating meta tags.
@@ -776,6 +777,10 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 	* Updated the SuextMobileDetect class from https://github.com/serbanghita/Mobile-Detect v2.8.28 to v2.8.33.
 
 == Upgrade Notice ==
+
+= 6.16.1-dev.1 =
+
+(2019/12/16) Added the "Facebook Microdata Debug Tool" under the Document SSO &gt; Validate tab. Fixed a Schema "noscript" filter hook name that provides aggregate rating meta tags.
 
 = 6.16.0 =
 
