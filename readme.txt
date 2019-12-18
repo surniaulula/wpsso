@@ -457,7 +457,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.16.1-dev.1 (2019/12/16)**
+**Version 6.16.1-b.1 (2019/12/18)**
 
 * **New Features**
 	* None.
@@ -778,9 +778,9 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 
 == Upgrade Notice ==
 
-= 6.16.1-dev.1 =
+= 6.16.1-b.1 =
 
-(2019/12/16) Added the "Facebook Microdata Debug Tool" under the Document SSO &gt; Validate tab. Fixed a Schema "noscript" filter hook name that provides aggregate rating meta tags.
+(2019/12/18) Added the "Facebook Microdata Debug Tool" under the Document SSO &gt; Validate tab. Fixed a Schema "noscript" filter hook name that provides aggregate rating meta tags.
 
 = 6.16.0 =
 
