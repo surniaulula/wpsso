@@ -910,6 +910,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'label' => _x( 'Validate Structured Data', 'submit button', 'wpsso' ),
 					'url'   => 'https://search.google.com/structured-data/testing-tool/u/0/#url=' . $sharing_url_encoded,
 				),
+				'google-page-speed' => array(
+					'title' => _x( 'Google PageSpeed Insights', 'option label', 'wpsso' ),
+					'label' => _x( 'Validate PageSpeed', 'submit button', 'wpsso' ),
+					'url'   => 'https://developers.google.com/speed/pagespeed/insights/?url=' . $sharing_url_encoded,
+				),
 				'google-rich-results' => array(
 					'title' => _x( 'Google Rich Results Test', 'option label', 'wpsso' ),
 					'label' => _x( 'Validate Rich Results', 'submit button', 'wpsso' ),

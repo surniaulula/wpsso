@@ -1754,6 +1754,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
+						case 'info-meta-validate-google-page-speed':
+
+							$text = '<p class="top">';
+
+							$text .= __( 'PageSpeed Insights reports on the performance of a page on both mobile and desktop devices, and provides suggestions on how that page may be improved. ', 'wpsso' );
+
+							$text .= '</p>';
+
+						 	break;
+
 						case 'info-meta-validate-google-rich-results':
 
 							$text = '<p class="top">';

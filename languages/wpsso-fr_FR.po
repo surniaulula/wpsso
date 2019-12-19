@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 6.16.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-12-17 09:50-0800\n"
-"PO-Revision-Date: 2019-12-17 09:55-0800\n"
+"POT-Creation-Date: 2019-12-19 07:53-0800\n"
+"PO-Revision-Date: 2019-12-19 07:55-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3052,24 +3052,24 @@ msgid "The WooCommerce %s method is not available - please update to a newer ver
 msgstr "La méthode WooCommerce %s n'est pas disponible - veuillez mettre à jour WooCommerce vers une version plus récente."
 
 #: lib/gettext-pro.php:151 lib/gettext-pro.php:156
-#: lib/pro/ecom/woocommerce.php:843 lib/pro/ecom/wpecommerce.php:523
+#: lib/pro/ecom/woocommerce.php:847 lib/pro/ecom/wpecommerce.php:524
 msgid "\"%s\" is an unknown Schema Product item condition."
 msgstr "\"%s\" est une condition d'élément de Schéma Produit inconnue."
 
 #: lib/gettext-pro.php:152 lib/gettext-pro.php:157
-#: lib/pro/ecom/woocommerce.php:846 lib/pro/ecom/wpecommerce.php:526
+#: lib/pro/ecom/woocommerce.php:850 lib/pro/ecom/wpecommerce.php:527
 msgid "Valid item condition values are (case is important): %s."
 msgstr "Les valeurs de condition d'élément valides sont (les majuscules et minuscules sont importants): %s."
 
-#: lib/gettext-pro.php:153 lib/pro/ecom/woocommerce.php:1150
+#: lib/gettext-pro.php:153 lib/pro/ecom/woocommerce.php:1154
 msgid "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax.html"
 msgstr "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax.html"
 
-#: lib/gettext-pro.php:154 lib/pro/ecom/woocommerce.php:1152
+#: lib/gettext-pro.php:154 lib/pro/ecom/woocommerce.php:1156
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr "La <a href=\"%1$s\">fonction WooCommerce %2$s</a> n'est pas disponible."
 
-#: lib/gettext-pro.php:155 lib/pro/ecom/woocommerce.php:1155
+#: lib/gettext-pro.php:155 lib/pro/ecom/woocommerce.php:1159
 msgid "Please update your site to WooCommerce version %s or newer."
 msgstr "SVP mettre à jour votre site à WooCommerce version %s ou plus récente."
 
@@ -5892,8 +5892,8 @@ msgstr "ou Nom d'utilisateurs admin FB"
 
 #: lib/submenu/general.php:232
 msgctxt "option label"
-msgid "Custom Facebook Locale"
-msgstr "Langue FB personnalisée"
+msgid "Alternate Facebook Locale"
+msgstr "Langue alternative Facebook"
 
 #: lib/submenu/general.php:241
 msgctxt "option label"
