@@ -457,13 +457,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.16.1-b.1 (2019/12/18)**
+**Version 6.16.1-b.2 (2019/12/19)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added the "Facebook Microdata Debug Tool" under the Document SSO &gt; Validate tab.
 	* Minor update to the SSO menu item dashicons and their order.
+	* Added the "Facebook Microdata Debug Tool" under the Document SSO &gt; Validate tab.
+	* Reviewed and updated the `product:retailer_item_id` and `product:retailer_part_no` values:
+		* `product:retailer_item_id` = The WordPress post object ID (aka the product ID from an e-commerce plugin).
+		* `product:retailer_part_no` = The product SKU from an e-commerce plugin.
 * **Bugfixes**
 	* Fixed a Schema "noscript" filter hook name that provides aggregate rating meta tags.
 * **Developer Notes**
@@ -778,9 +781,9 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 
 == Upgrade Notice ==
 
-= 6.16.1-b.1 =
+= 6.16.1-b.2 =
 
-(2019/12/18) Added the "Facebook Microdata Debug Tool" under the Document SSO &gt; Validate tab. Fixed a Schema "noscript" filter hook name that provides aggregate rating meta tags.
+(2019/12/19) Added the "Facebook Microdata Debug Tool" under the Document SSO &gt; Validate tab. Fixed a Schema "noscript" filter hook name that provides aggregate rating meta tags.
 
 = 6.16.0 =
 
