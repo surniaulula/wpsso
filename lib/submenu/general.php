@@ -229,8 +229,8 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$fb_locale_key = SucomUtil::get_key_locale( 'fb_locale', $this->p->options );
 
 					$table_rows[ 'fb_locale' ] = $this->form->get_tr_hide( 'basic', $fb_locale_key ) . 
-					$this->form->get_th_html( _x( 'Custom Facebook Locale', 'option label', 'wpsso' ), '', 'fb_locale', 
-						array( 'is_locale' => true ) ) . 
+					$this->form->get_th_html( _x( 'Alternate Facebook Locale', 'option label', 'wpsso' ),
+						$css_class = '', $css_id = 'fb_locale', array( 'is_locale' => true ) ) . 
 					'<td>' . $this->form->get_select( $fb_locale_key, $fb_pub_lang ) . '</td>';
 
 					break;

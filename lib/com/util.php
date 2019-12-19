@@ -1983,12 +1983,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':quantity:unit_text'              => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':retailer'                        => '',
 				$mt_pre . ':retailer_category'               => '',
-				$mt_pre . ':retailer_item_id'                => '',	// Facebook catalog product ID.
-				$mt_pre . ':retailer_part_no'                => '',
+				$mt_pre . ':retailer_item_id'                => '',	// Aka the product ID.
+				$mt_pre . ':retailer_part_no'                => '',	// Aka the product SKU.
 				$mt_pre . ':retailer_title'                  => '',
 				$mt_pre . ':sku'                             => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':target_gender'                   => '',
-				$mt_pre . ':upc'                             => '',	// aka UPC, UPC-A, UPC, GTIN-12.
+				$mt_pre . ':upc'                             => '',	// Aka the UPC, UPC-A, UPC, GTIN-12.
 
 				/**
 				 * Product ratings and reviews.

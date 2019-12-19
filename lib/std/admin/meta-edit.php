@@ -273,7 +273,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Size', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_size',
-					'content'  => $form->get_no_input( 'product_size', '', '', $placeholder = true ),
+					'content'  => $form->get_no_input( 'product_size', $css_class = '', $css_id = '', $placeholder = true ),
 				),
 				'og_product_weight_value' => array(	// Open Graph meta tag product:weight:value.
 					'tr_class' => 'hide_og_type hide_og_type_product',
@@ -281,7 +281,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Weight', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_weight_value',
-					'content'  => $form->get_no_input( 'product_weight_value', '', '', $placeholder = true ) .
+					'content'  => $form->get_no_input( 'product_weight_value', $css_class = '', $css_id = '', $placeholder = true ) .
 						WpssoAdmin::get_option_unit_comment( 'product_weight_value' ),
 				),
 				'og_product_sku' => array(			// Open Graph meta tag product:retailer_item_id.
@@ -290,7 +290,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product SKU', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_sku',
-					'content'  => $form->get_no_input( 'product_sku', '', '', $placeholder = true ),
+					'content'  => $form->get_no_input( 'product_sku', $css_class = '', $css_id = '', $placeholder = true ),
 				),
 				'og_product_mpn' => array(			// Open Graph meta tag product:mfr_part_no.
 					'tr_class' => 'hide_og_type hide_og_type_product',
@@ -298,7 +298,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product MPN', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_mpn',
-					'content'  => $form->get_no_input( 'product_mpn', '', '', $placeholder = true ),
+					'content'  => $form->get_no_input( 'product_mpn', $css_class = '', $css_id = '', $placeholder = true ),
 				),
 				'og_product_isbn' => array(		// Open Graph meta tag product:isbn.
 					'tr_class' => 'hide_og_type hide_og_type_product',
@@ -306,7 +306,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product ISBN', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_isbn',
-					'content'  => $form->get_no_input( 'product_isbn', '', '', $placeholder = true ),
+					'content'  => $form->get_no_input( 'product_isbn', $css_class = '', $css_id = '', $placeholder = true ),
 				),
 
 				/**

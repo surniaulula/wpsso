@@ -1893,12 +1893,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_th_html( $label = '', $css_class = '', $css_id = '', $atts = array() ) {
 
 			if ( isset( $this->p->msgs ) ) {
+
 				if ( empty( $css_id ) ) {
 					$tooltip_index = 'tooltip-' . $label;
 				} else {
 					$tooltip_index = 'tooltip-' . $css_id;
 				}
+
 				$tooltip_text = $this->p->msgs->get( $tooltip_index, $atts );	// Text is esc_attr().
+
 			} else {
 				$tooltip_text = '';
 			}

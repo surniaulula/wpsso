@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.16.1-b.1',	// Plugin version.
+					'version'     => '6.16.1-b.2',	// Plugin version.
 					'opt_version' => '691',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1127,7 +1127,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'fb_publisher_url' => '',		// Facebook Business Page URL (localized).
 					'fb_app_id'        => '',		// Facebook Application ID.
 					'fb_admins'        => '',		// or Facebook Admin Username(s).
-					'fb_locale'        => 'en_US',		// Custom Facebook Locale.
+					'fb_locale'        => 'en_US',		// Alternate Facebook Locale.
 
 					/**
 					 * Other publisher page URLs.
@@ -1768,7 +1768,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '2.6.3-b.1',	// Minimum update manager version (soft limit).
+				'rec_version' => '2.6.3-b.2',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',
@@ -2515,8 +2515,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:purchase_limit'          => '',
 						'product:retailer'                => '',
 						'product:retailer_category'       => '',
-						'product:retailer_item_id'        => 'product_sku',
-						'product:retailer_part_no'        => '',
+						'product:retailer_item_id'        => '',			// Aka the product ID. 
+						'product:retailer_part_no'        => 'product_sku',		// Aka the product SKU.
 						'product:retailer_title'          => '',
 						'product:sale_price:amount'       => '',			// Used by WooCommerce module.
 						'product:sale_price:currency'     => '',			// Used by WooCommerce module.
