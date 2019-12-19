@@ -13,7 +13,7 @@
  * Description: Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted or embedded.
  * Requires PHP: 5.5
  * Requires At Least: 3.9
- * Tested Up To: 5.3.1
+ * Tested Up To: 5.3.2
  * WC Tested Up To: 3.8.1
  * Version: 6.16.1-b.1
  *

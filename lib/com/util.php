@@ -1971,7 +1971,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':is_product_shareable'            => '',
 				$mt_pre . ':isbn'                            => '',
 				$mt_pre . ':material'                        => '',
-				$mt_pre . ':mfr_part_no'                     => '',	// aka product:mpn.
+				$mt_pre . ':mfr_part_no'                     => '',	// Value from 'product_mpn' post meta.
 				$mt_pre . ':pattern'                         => '',
 				$mt_pre . ':plural_title'                    => '',
 				$mt_pre . ':product_link'                    => '',
