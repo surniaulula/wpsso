@@ -1758,7 +1758,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = '<p class="top">';
 
-							$text .= __( 'PageSpeed Insights reports on the performance of a page on both mobile and desktop devices, and provides suggestions on how that page may be improved. ', 'wpsso' );
+							$text .= __( 'PageSpeed Insights analyzes the content of a web page, then generates suggestions to make that page faster.', 'wpsso' );
 
 							$text .= '</p>';
 

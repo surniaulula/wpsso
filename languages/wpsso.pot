@@ -5012,8 +5012,8 @@ msgstr ""
 
 #: lib/messages.php:1761
 msgid ""
-"PageSpeed Insights reports on the performance of a page on both mobile and "
-"desktop devices, and provides suggestions on how that page may be improved. "
+"PageSpeed Insights analyzes the content of a web page, then generates "
+"suggestions to make that page faster."
 msgstr ""
 
 #: lib/messages.php:1771
