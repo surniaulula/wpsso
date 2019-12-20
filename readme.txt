@@ -457,7 +457,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.16.1-b.2 (2019/12/19)**
+**Version 6.16.1-b.3 (2019/12/19)**
 
 * **New Features**
 	* None.
@@ -470,7 +470,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed a Schema "noscript" filter hook name that provides aggregate rating meta tags.
 * **Developer Notes**
-	* None.
+	* Renamed setting option keys:
+		* 'plugin_cf_product_mpn' to 'plugin_cf_product_mfr_part_no'.
+		* 'plugin_cf_product_sku' to 'plugin_cf_product_retailer_part_no'.
+		* 'plugin_product_attr_mpn' to 'plugin_product_attr_mfr_part_no'.
+	* Renamed metadata option keys:
+		* 'product_mpn' to 'product_mfr_part_no'.
+		* 'product_sku' to 'product_retailer_part_no'.
 * **Requires At Least**
 	* PHP v5.5.
 	* WordPress v3.9.
@@ -781,7 +787,7 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 
 == Upgrade Notice ==
 
-= 6.16.1-b.2 =
+= 6.16.1-b.3 =
 
 (2019/12/19) Added "Facebook Microdata Debug Tool" and "Google PageSpeed Insights" under the Document SSO &gt; Validate tab. Updated the `product:retailer_item_id` and `product:retailer_part_no` meta tag values. Fixed a Schema "noscript" filter hook name that provides aggregate rating meta tags.
 
