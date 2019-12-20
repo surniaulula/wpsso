@@ -457,7 +457,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.16.1-b.3 (2019/12/19)**
+**Version 6.16.1-b.3 (2019/12/20)**
 
 * **New Features**
 	* None.
@@ -789,7 +789,7 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 
 = 6.16.1-b.3 =
 
-(2019/12/19) Added "Facebook Microdata Debug Tool" and "Google PageSpeed Insights" under the Document SSO &gt; Validate tab. Updated the `product:retailer_item_id` and `product:retailer_part_no` meta tag values. Fixed a Schema "noscript" filter hook name that provides aggregate rating meta tags.
+(2019/12/20) Added "Facebook Microdata Debug Tool" and "Google PageSpeed Insights" under the Document SSO &gt; Validate tab. Updated the `product:retailer_item_id` and `product:retailer_part_no` meta tag values. Fixed a Schema "noscript" filter hook name that provides aggregate rating meta tags.
 
 = 6.16.0 =
 
