@@ -1971,7 +1971,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':is_product_shareable'            => '',
 				$mt_pre . ':isbn'                            => '',
 				$mt_pre . ':material'                        => '',
-				$mt_pre . ':mfr_part_no'                     => '',	// Value from 'product_mpn' post meta.
+				$mt_pre . ':mfr_part_no'                     => '',	// Product MPN.
 				$mt_pre . ':pattern'                         => '',
 				$mt_pre . ':plural_title'                    => '',
 				$mt_pre . ':product_link'                    => '',
@@ -1983,10 +1983,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':quantity:unit_text'              => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':retailer'                        => '',
 				$mt_pre . ':retailer_category'               => '',
-				$mt_pre . ':retailer_item_id'                => '',	// Aka the product ID.
-				$mt_pre . ':retailer_part_no'                => '',	// Aka the product SKU.
+				$mt_pre . ':retailer_item_id'                => '',	// Product ID.
+				$mt_pre . ':retailer_part_no'                => '',	// Product SKU.
 				$mt_pre . ':retailer_title'                  => '',
-				$mt_pre . ':sku'                             => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':target_gender'                   => '',
 				$mt_pre . ':upc'                             => '',	// Aka the UPC, UPC-A, UPC, GTIN-12.
 

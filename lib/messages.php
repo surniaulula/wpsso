@@ -2563,7 +2563,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						_x( 'Product Material', 'option label', 'wpsso' ),
 						_x( 'a product material', 'tooltip fragment', 'wpsso' ),
 					),
-					'product_mpn' => array(
+					'product_mfr_part_no' => array(
 						_x( 'Product MPN', 'option label', 'wpsso' ),
 						_x( 'a Manufacturer Part Number (MPN)', 'tooltip fragment', 'wpsso' ),
 					),
@@ -2571,13 +2571,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						_x( 'Product Price', 'option label', 'wpsso' ),
 						_x( 'a product price', 'tooltip fragment', 'wpsso' ),
 					),
+					'product_retailer_part_no' => array(
+						_x( 'Product SKU', 'option label', 'wpsso' ),
+						_x( 'a Stock-Keeping Unit (SKU)', 'tooltip fragment', 'wpsso' ),
+					),
 					'product_size' => array(
 						_x( 'Product Size', 'option label', 'wpsso' ),
 						_x( 'a product size', 'tooltip fragment', 'wpsso' ),
-					),
-					'product_sku' => array(
-						_x( 'Product SKU', 'option label', 'wpsso' ),
-						_x( 'a Stock-Keeping Unit (SKU)', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_target_gender' => array(
 						_x( 'Product Target Gender', 'option label', 'wpsso' ),

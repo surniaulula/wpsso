@@ -1481,9 +1481,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'product_brand':
 				case 'product_color':
 				case 'product_currency':
-				case 'product_mpn':
+				case 'product_mfr_part_no':		// Product MPN.
+				case 'product_retailer_part_no':	// Product SKU.
 				case 'product_size':
-				case 'product_sku':
 				case 'plugin_bitly_login':
 				case 'plugin_col_title_width':
 				case 'plugin_col_title_width_max':

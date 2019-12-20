@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.16.1-b.2',	// Plugin version.
-					'opt_version' => '691',		// Increment when changing default option values.
+					'version'     => '6.16.1-b.3',	// Plugin version.
+					'opt_version' => '693',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -1328,18 +1328,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_product:upc'                            => 1,
 					'add_meta_property_product:weight:value'                   => 1,
 					'add_meta_property_product:weight:units'                   => 1,
-					'add_meta_property_profile:first_name'                     => 1,
-					'add_meta_property_profile:last_name'                      => 1,
-					'add_meta_property_profile:username'                       => 1,
-					'add_meta_property_profile:gender'                         => 1,
-					'add_meta_property_video:actor'                            => 1,
-					'add_meta_property_video:actor:role'                       => 1,
-					'add_meta_property_video:director'                         => 1,
-					'add_meta_property_video:writer'                           => 1,
-					'add_meta_property_video:duration'                         => 1,
-					'add_meta_property_video:release_date'                     => 1,
-					'add_meta_property_video:tag'                              => 1,
-					'add_meta_property_video:series'                           => 1,
 					'add_meta_name_author'                                     => 1,
 					'add_meta_name_description'                                => 1,
 					'add_meta_name_generator'                                  => 1,
@@ -1449,7 +1437,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_product_attr_gtin'          => 'GTIN',			// Product GTIN Attribute Name.
 					'plugin_product_attr_isbn'          => 'ISBN',			// Product ISBN Attribute Name.
 					'plugin_product_attr_material'      => 'Material',		// Product Material Attribute Name.
-					'plugin_product_attr_mpn'           => 'MPN',			// Product MPN Attribute Name.
+					'plugin_product_attr_mfr_part_no'   => 'MPN',			// Product MPN Attribute Name.
 					'plugin_product_attr_size'          => 'Size',			// Product Size Attribute Name.
 					'plugin_product_attr_target_gender' => 'Gender',		// Product Target Gender Attr. Name.
 					'plugin_product_attr_volume_value'  => 'Volume',		// Product Volume Attribute Name.
@@ -1457,49 +1445,49 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced settings - Custom Meta tab.
 					 */
-					'plugin_add_to_attachment'        => 1,
-					'plugin_add_to_page'              => 1,
-					'plugin_add_to_post'              => 1,
-					'plugin_add_to_product'           => 1,
-					'plugin_add_to_reply'             => 0,				// Bbpress
-					'plugin_add_to_term'              => 1,
-					'plugin_add_to_topic'             => 0,				// Bbpress
-					'plugin_add_to_user'              => 1,
-					'plugin_wpseo_social_meta'        => 0,				// Import Yoast SEO Social Meta.
-					'plugin_def_currency'             => 'USD',			// Default Currency.
-					'plugin_cf_img_url'               => '_format_image_url',	// Image URL Custom Field.
-					'plugin_cf_addl_type_urls'        => '',			// Microdata Type URLs Custom Field.
-					'plugin_cf_howto_steps'           => '',			// How-To Steps Custom Field.
-					'plugin_cf_howto_supplies'        => '',			// How-To Supplies Custom Field.
-					'plugin_cf_howto_tools'           => '',			// How-To Tools Custom Field.
-					'plugin_cf_product_avail'         => '',			// Product Availability Custom Field.
-					'plugin_cf_product_brand'         => '',			// Product Brand Custom Field.
-					'plugin_cf_product_color'         => '',			// Product Color Custom Field.
-					'plugin_cf_product_condition'     => '',			// Product Condition Custom Field.
-					'plugin_cf_product_currency'      => '',			// Product Currency Custom Field.
-					'plugin_cf_product_depth_value'   => '',			// Product Depth Custom Field.
-					'plugin_cf_product_gtin14'        => '',			// Product GTIN-14 Custom Field.
-					'plugin_cf_product_gtin13'        => '',			// Product GTIN-13/EAN Custom Field.
-					'plugin_cf_product_gtin12'        => '',			// Product GTIN-12/UPC Custom Field.
-					'plugin_cf_product_gtin8'         => '',			// Product GTIN-8 Custom Field.
-					'plugin_cf_product_gtin'          => '_wpm_gtin_code',		// Product GTIN Custom Field.
-					'plugin_cf_product_height_value'  => '',			// Product Height Custom Field.
-					'plugin_cf_product_isbn'          => '',			// Product ISBN Custom Field.
-					'plugin_cf_product_length_value'  => '',			// Product Length Custom Field.
-					'plugin_cf_product_material'      => '',			// Product Material Custom Field.
-					'plugin_cf_product_mpn'           => '',			// Product MPN Custom Field.
-					'plugin_cf_product_price'         => '',			// Product Price Custom Field.
-					'plugin_cf_product_size'          => '',			// Product Size Custom Field.
-					'plugin_cf_product_sku'           => '',			// Product SKU Custom Field.
-					'plugin_cf_product_target_gender' => '',			// Product Target Gender Custom Field.
-					'plugin_cf_product_volume_value'  => '',			// Product Volume Custom Field.
-					'plugin_cf_product_weight_value'  => '',			// Product Weight Custom Field.
-					'plugin_cf_product_width_value'   => '',			// Product Width Custom Field.
-					'plugin_cf_recipe_ingredients'    => '',			// Recipe Ingredients Custom Field.
-					'plugin_cf_recipe_instructions'   => '',			// Recipe Instructions Custom Field.
-					'plugin_cf_sameas_urls'           => '',			// Same-As URLs Custom Field.
-					'plugin_cf_vid_url'               => '_format_video_url',	// Video URL Custom Field.
-					'plugin_cf_vid_embed'             => '',			// Video Embed HTML Custom Field.
+					'plugin_add_to_attachment'           => 1,
+					'plugin_add_to_page'                 => 1,
+					'plugin_add_to_post'                 => 1,
+					'plugin_add_to_product'              => 1,
+					'plugin_add_to_reply'                => 0,			// Bbpress
+					'plugin_add_to_term'                 => 1,
+					'plugin_add_to_topic'                => 0,			// Bbpress
+					'plugin_add_to_user'                 => 1,
+					'plugin_wpseo_social_meta'           => 0,			// Import Yoast SEO Social Meta.
+					'plugin_def_currency'                => 'USD',			// Default Currency.
+					'plugin_cf_img_url'                  => '_format_image_url',	// Image URL Custom Field.
+					'plugin_cf_addl_type_urls'           => '',			// Microdata Type URLs Custom Field.
+					'plugin_cf_howto_steps'              => '',			// How-To Steps Custom Field.
+					'plugin_cf_howto_supplies'           => '',			// How-To Supplies Custom Field.
+					'plugin_cf_howto_tools'              => '',			// How-To Tools Custom Field.
+					'plugin_cf_product_avail'            => '',			// Product Availability Custom Field.
+					'plugin_cf_product_brand'            => '',			// Product Brand Custom Field.
+					'plugin_cf_product_color'            => '',			// Product Color Custom Field.
+					'plugin_cf_product_condition'        => '',			// Product Condition Custom Field.
+					'plugin_cf_product_currency'         => '',			// Product Currency Custom Field.
+					'plugin_cf_product_depth_value'      => '',			// Product Depth Custom Field.
+					'plugin_cf_product_gtin14'           => '',			// Product GTIN-14 Custom Field.
+					'plugin_cf_product_gtin13'           => '',			// Product GTIN-13/EAN Custom Field.
+					'plugin_cf_product_gtin12'           => '',			// Product GTIN-12/UPC Custom Field.
+					'plugin_cf_product_gtin8'            => '',			// Product GTIN-8 Custom Field.
+					'plugin_cf_product_gtin'             => '_wpm_gtin_code',	// Product GTIN Custom Field.
+					'plugin_cf_product_height_value'     => '',			// Product Height Custom Field.
+					'plugin_cf_product_isbn'             => '',			// Product ISBN Custom Field.
+					'plugin_cf_product_length_value'     => '',			// Product Length Custom Field.
+					'plugin_cf_product_material'         => '',			// Product Material Custom Field.
+					'plugin_cf_product_mfr_part_no'      => '',			// Product MPN Custom Field.
+					'plugin_cf_product_price'            => '',			// Product Price Custom Field.
+					'plugin_cf_product_retailer_part_no' => '',			// Product SKU Custom Field.
+					'plugin_cf_product_size'             => '',			// Product Size Custom Field.
+					'plugin_cf_product_target_gender'    => '',			// Product Target Gender Custom Field.
+					'plugin_cf_product_volume_value'     => '',			// Product Volume Custom Field.
+					'plugin_cf_product_weight_value'     => '',			// Product Weight Custom Field.
+					'plugin_cf_product_width_value'      => '',			// Product Width Custom Field.
+					'plugin_cf_recipe_ingredients'       => '',			// Recipe Ingredients Custom Field.
+					'plugin_cf_recipe_instructions'      => '',			// Recipe Instructions Custom Field.
+					'plugin_cf_sameas_urls'              => '',			// Same-As URLs Custom Field.
+					'plugin_cf_vid_url'                  => '_format_video_url',	// Video URL Custom Field.
+					'plugin_cf_vid_embed'                => '',			// Video Embed HTML Custom Field.
 
 					/**
 					 * Advanced settings - Columns tab.
@@ -1710,39 +1698,39 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * Custom field to meta data index.
 				 */
 				'cf_md_key' => array(
-					'plugin_cf_addl_type_urls'        => 'schema_addl_type_url',	// Microdata Type URLs Custom Field.
-					'plugin_cf_howto_steps'           => 'schema_howto_step',	// How-To Steps Custom Field.
-					'plugin_cf_howto_supplies'        => 'schema_howto_supply',	// How-To Supplies Custom Field.
-					'plugin_cf_howto_tools'           => 'schema_howto_tool',	// How-To Tools Custom Field.
-					'plugin_cf_img_url'               => 'og_img_url',
-					'plugin_cf_product_avail'         => 'product_avail',
-					'plugin_cf_product_brand'         => 'product_brand',		// Product Brand Custom Field.
-					'plugin_cf_product_color'         => 'product_color',
-					'plugin_cf_product_condition'     => 'product_condition',
-					'plugin_cf_product_currency'      => 'product_currency',
-					'plugin_cf_product_depth_value'   => 'product_depth_value',	// Product Depth Custom Field.
-					'plugin_cf_product_gtin14'        => 'product_gtin14',
-					'plugin_cf_product_gtin13'        => 'product_gtin13',
-					'plugin_cf_product_gtin12'        => 'product_gtin12',
-					'plugin_cf_product_gtin8'         => 'product_gtin8',
-					'plugin_cf_product_gtin'          => 'product_gtin',
-					'plugin_cf_product_height_value'  => 'product_height_value',	// Product Height Custom Field.
-					'plugin_cf_product_isbn'          => 'product_isbn',
-					'plugin_cf_product_length_value'  => 'product_length_value',	// Product Length Custom Field.
-					'plugin_cf_product_material'      => 'product_material',
-					'plugin_cf_product_mpn'           => 'product_mpn',
-					'plugin_cf_product_price'         => 'product_price',
-					'plugin_cf_product_size'          => 'product_size',
-					'plugin_cf_product_sku'           => 'product_sku',
-					'plugin_cf_product_target_gender' => 'product_target_gender',
-					'plugin_cf_product_volume_value'  => 'product_volume_value',	// Product Volume Custom Field.
-					'plugin_cf_product_weight_value'  => 'product_weight_value',	// Product Weight Custom Field.
-					'plugin_cf_product_width_value'   => 'product_width_value',	// Product Width Custom Field.
-					'plugin_cf_recipe_ingredients'    => 'schema_recipe_ingredient',
-					'plugin_cf_recipe_instructions'   => 'schema_recipe_instruction',
-					'plugin_cf_sameas_urls'           => 'schema_sameas_url',
-					'plugin_cf_vid_embed'             => 'og_vid_embed',
-					'plugin_cf_vid_url'               => 'og_vid_url',
+					'plugin_cf_addl_type_urls'           => 'schema_addl_type_url',		// Microdata Type URLs Custom Field.
+					'plugin_cf_howto_steps'              => 'schema_howto_step',		// How-To Steps Custom Field.
+					'plugin_cf_howto_supplies'           => 'schema_howto_supply',		// How-To Supplies Custom Field.
+					'plugin_cf_howto_tools'              => 'schema_howto_tool',		// How-To Tools Custom Field.
+					'plugin_cf_img_url'                  => 'og_img_url',
+					'plugin_cf_product_avail'            => 'product_avail',
+					'plugin_cf_product_brand'            => 'product_brand',		// Product Brand Custom Field.
+					'plugin_cf_product_color'            => 'product_color',
+					'plugin_cf_product_condition'        => 'product_condition',
+					'plugin_cf_product_currency'         => 'product_currency',
+					'plugin_cf_product_depth_value'      => 'product_depth_value',		// Product Depth Custom Field.
+					'plugin_cf_product_gtin14'           => 'product_gtin14',
+					'plugin_cf_product_gtin13'           => 'product_gtin13',
+					'plugin_cf_product_gtin12'           => 'product_gtin12',
+					'plugin_cf_product_gtin8'            => 'product_gtin8',
+					'plugin_cf_product_gtin'             => 'product_gtin',
+					'plugin_cf_product_height_value'     => 'product_height_value',		// Product Height Custom Field.
+					'plugin_cf_product_isbn'             => 'product_isbn',
+					'plugin_cf_product_length_value'     => 'product_length_value',		// Product Length Custom Field.
+					'plugin_cf_product_material'         => 'product_material',
+					'plugin_cf_product_mfr_part_no'      => 'product_mfr_part_no',
+					'plugin_cf_product_price'            => 'product_price',
+					'plugin_cf_product_size'             => 'product_size',
+					'plugin_cf_product_retailer_part_no' => 'product_retailer_part_no',
+					'plugin_cf_product_target_gender'    => 'product_target_gender',
+					'plugin_cf_product_volume_value'     => 'product_volume_value',		// Product Volume Custom Field.
+					'plugin_cf_product_weight_value'     => 'product_weight_value',		// Product Weight Custom Field.
+					'plugin_cf_product_width_value'      => 'product_width_value',		// Product Width Custom Field.
+					'plugin_cf_recipe_ingredients'       => 'schema_recipe_ingredient',
+					'plugin_cf_recipe_instructions'      => 'schema_recipe_instruction',
+					'plugin_cf_sameas_urls'              => 'schema_sameas_url',
+					'plugin_cf_vid_embed'                => 'og_vid_embed',
+					'plugin_cf_vid_url'                  => 'og_vid_url',
 				),
 				
 				/**
@@ -1768,7 +1756,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '2.6.3-b.2',	// Minimum update manager version (soft limit).
+				'rec_version' => '2.6.3-b.3',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',
@@ -2081,12 +2069,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'saturday'       => 'Saturday',
 					'publicholidays' => 'Public Holidays',
 				),
-				'time_seconds' => array(	// in seconds
+				'time_seconds' => array(
 					'hour'  => HOUR_IN_SECONDS,
 					'day'   => DAY_IN_SECONDS,
-					'week'  => WEEK_IN_SECONDS,	// 7 days
-					'month' => MONTH_IN_SECONDS,	// 30 days
-					'year'  => YEAR_IN_SECONDS,	// 365 days
+					'week'  => WEEK_IN_SECONDS,
+					'month' => MONTH_IN_SECONDS,
+					'year'  => YEAR_IN_SECONDS,
 				),
 				'time_text' => array(
 					'hour'  => 'Hour',
@@ -2218,39 +2206,39 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * Custom field option labels.
 				 */
 				'cf_labels' => array(
-					'plugin_cf_img_url'               => 'Image URL Custom Field',
-					'plugin_cf_addl_type_urls'        => 'Microdata Type URLs Custom Field',
-					'plugin_cf_howto_steps'           => 'How-To Steps Custom Field',
-					'plugin_cf_howto_supplies'        => 'How-To Supplies Custom Field',
-					'plugin_cf_howto_tools'           => 'How-To Tools Custom Field',
-					'plugin_cf_product_avail'         => 'Product Availability Custom Field',
-					'plugin_cf_product_brand'         => 'Product Brand Custom Field',
-					'plugin_cf_product_color'         => 'Product Color Custom Field',
-					'plugin_cf_product_condition'     => 'Product Condition Custom Field',
-					'plugin_cf_product_currency'      => 'Product Currency Custom Field',
-					'plugin_cf_product_depth_value'   => 'Product Depth Custom Field',
-					'plugin_cf_product_gtin14'        => 'Product GTIN-14 Custom Field',
-					'plugin_cf_product_gtin13'        => 'Product GTIN-13/EAN Custom Field',
-					'plugin_cf_product_gtin12'        => 'Product GTIN-12/UPC Custom Field',
-					'plugin_cf_product_gtin8'         => 'Product GTIN-8 Custom Field',
-					'plugin_cf_product_gtin'          => 'Product GTIN Custom Field',
-					'plugin_cf_product_height_value'  => 'Product Height Custom Field',
-					'plugin_cf_product_isbn'          => 'Product ISBN Custom Field',
-					'plugin_cf_product_length_value'  => 'Product Length Custom Field',
-					'plugin_cf_product_material'      => 'Product Material Custom Field',
-					'plugin_cf_product_mpn'           => 'Product MPN Custom Field',
-					'plugin_cf_product_price'         => 'Product Price Custom Field',
-					'plugin_cf_product_size'          => 'Product Size Custom Field',
-					'plugin_cf_product_sku'           => 'Product SKU Custom Field',
-					'plugin_cf_product_target_gender' => 'Product Target Gender Custom Field',
-					'plugin_cf_product_volume_value'  => 'Product Volume Custom Field',
-					'plugin_cf_product_weight_value'  => 'Product Weight Custom Field',
-					'plugin_cf_product_width_value'   => 'Product Width Custom Field',
-					'plugin_cf_recipe_ingredients'    => 'Recipe Ingredients Custom Field',
-					'plugin_cf_recipe_instructions'   => 'Recipe Instructions Custom Field',
-					'plugin_cf_sameas_urls'           => 'Same-As URLs Custom Field',
-					'plugin_cf_vid_url'               => 'Video URL Custom Field',
-					'plugin_cf_vid_embed'             => 'Video Embed HTML Custom Field',
+					'plugin_cf_img_url'                  => 'Image URL Custom Field',
+					'plugin_cf_addl_type_urls'           => 'Microdata Type URLs Custom Field',
+					'plugin_cf_howto_steps'              => 'How-To Steps Custom Field',
+					'plugin_cf_howto_supplies'           => 'How-To Supplies Custom Field',
+					'plugin_cf_howto_tools'              => 'How-To Tools Custom Field',
+					'plugin_cf_product_avail'            => 'Product Availability Custom Field',
+					'plugin_cf_product_brand'            => 'Product Brand Custom Field',
+					'plugin_cf_product_color'            => 'Product Color Custom Field',
+					'plugin_cf_product_condition'        => 'Product Condition Custom Field',
+					'plugin_cf_product_currency'         => 'Product Currency Custom Field',
+					'plugin_cf_product_depth_value'      => 'Product Depth Custom Field',
+					'plugin_cf_product_gtin14'           => 'Product GTIN-14 Custom Field',
+					'plugin_cf_product_gtin13'           => 'Product GTIN-13/EAN Custom Field',
+					'plugin_cf_product_gtin12'           => 'Product GTIN-12/UPC Custom Field',
+					'plugin_cf_product_gtin8'            => 'Product GTIN-8 Custom Field',
+					'plugin_cf_product_gtin'             => 'Product GTIN Custom Field',
+					'plugin_cf_product_height_value'     => 'Product Height Custom Field',
+					'plugin_cf_product_isbn'             => 'Product ISBN Custom Field',
+					'plugin_cf_product_length_value'     => 'Product Length Custom Field',
+					'plugin_cf_product_material'         => 'Product Material Custom Field',
+					'plugin_cf_product_mfr_part_no'      => 'Product MPN Custom Field',
+					'plugin_cf_product_price'            => 'Product Price Custom Field',
+					'plugin_cf_product_size'             => 'Product Size Custom Field',
+					'plugin_cf_product_retailer_part_no' => 'Product SKU Custom Field',
+					'plugin_cf_product_target_gender'    => 'Product Target Gender Custom Field',
+					'plugin_cf_product_volume_value'     => 'Product Volume Custom Field',
+					'plugin_cf_product_weight_value'     => 'Product Weight Custom Field',
+					'plugin_cf_product_width_value'      => 'Product Width Custom Field',
+					'plugin_cf_recipe_ingredients'       => 'Recipe Ingredients Custom Field',
+					'plugin_cf_recipe_instructions'      => 'Recipe Instructions Custom Field',
+					'plugin_cf_sameas_urls'              => 'Same-As URLs Custom Field',
+					'plugin_cf_vid_url'                  => 'Video URL Custom Field',
+					'plugin_cf_vid_embed'                => 'Video Embed HTML Custom Field',
 				),
 
 				/**
@@ -2261,7 +2249,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_product_attr_color'         => 'Product Color Attribute Name',
 					'plugin_product_attr_condition'     => 'Product Condition Attribute Name',
 					'plugin_product_attr_depth_value'   => 'Product Depth Attribute Name',
-					'plugin_product_attr_mpn'           => 'Product MPN Attribute Name',
+					'plugin_product_attr_mfr_part_no'   => 'Product MPN Attribute Name',
 					'plugin_product_attr_gtin14'        => 'Product GTIN-14 Attribute Name',
 					'plugin_product_attr_gtin13'        => 'Product GTIN-13/EAN Attribute Name',
 					'plugin_product_attr_gtin12'        => 'Product GTIN-12/UPC Attribute Name',
@@ -2340,30 +2328,30 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_article_16_9_img_ratio' => 1.778,
 				),
 				'limit_min' => array(
-					'og_desc_len'                       => 160,
-					'og_img_width'                      => 200,	// See https://developers.facebook.com/docs/sharing/best-practices.
-					'og_img_height'                     => 200,
-					'schema_article_img_width'          => 696,	// See https://developers.google.com/search/docs/data-types/articles.
-					'schema_article_img_height'         => 279,	// Calculated from the Article minimum image width and maximum image ratio.
+					'og_desc_len'                    => 160,
+					'og_img_width'                   => 200,	// See https://developers.facebook.com/docs/sharing/best-practices.
+					'og_img_height'                  => 200,
+					'schema_article_img_width'       => 696,	// See https://developers.google.com/search/docs/data-types/articles.
+					'schema_article_img_height'      => 279,	// Calculated from the Article minimum image width and maximum image ratio.
 					'schema_article_1_1_img_width'   => 1200,
 					'schema_article_1_1_img_height'  => 1200,
 					'schema_article_4_3_img_width'   => 1200,
 					'schema_article_4_3_img_height'  => 900,
 					'schema_article_16_9_img_width'  => 1200,
 					'schema_article_16_9_img_height' => 675,
-					'schema_desc_len'                   => 156,
-					'schema_img_width'                  => 400,	// See https://developers.google.com/+/web/snippet/article-rendering.
-					'schema_img_height'                 => 160,
-					'seo_desc_len'                      => 156,
-					'tc_desc_len'                       => 160,
-					'thumb_img_width'                   => 300,	// Recommended minimum for WhatsApp is 300x200px.
-					'thumb_img_height'                  => 200,
+					'schema_desc_len'                => 156,
+					'schema_img_width'               => 400,	// See https://developers.google.com/+/web/snippet/article-rendering.
+					'schema_img_height'              => 160,
+					'seo_desc_len'                   => 156,
+					'tc_desc_len'                    => 160,
+					'thumb_img_width'                => 300,	// Recommended minimum for WhatsApp is 300x200px.
+					'thumb_img_height'               => 200,
 				),
 				'limit_max' => array(
-					'og_img_ratio'                     => 3.000,
-					'schema_article_img_ratio'         => 2.500,
-					'schema_headline_len'              => 110,
-					'schema_img_ratio'                 => 2.500,	// See https://developers.google.com/+/web/snippet/article-rendering.
+					'og_img_ratio'             => 3.000,
+					'schema_article_img_ratio' => 2.500,
+					'schema_headline_len'      => 110,
+					'schema_img_ratio'         => 2.500,	// See https://developers.google.com/+/web/snippet/article-rendering.
 				),
 				'og_type_ns' => array(		// See http://ogp.me/#types.
 					'article'             => 'http://ogp.me/ns/article#',
@@ -2502,7 +2490,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:length:value'            => 'product_length_value',	// Non-standard / internal meta tag.
 						'product:length:units'            => '',			// Non-standard / internal meta tag.
 						'product:material'                => 'product_material',
-						'product:mfr_part_no'             => 'product_mpn',
+						'product:mfr_part_no'             => 'product_mfr_part_no',	// Product MPN.
 						'product:original_price:amount'   => '',			// Used by WooCommerce module.
 						'product:original_price:currency' => '',			// Used by WooCommerce module.
 						'product:pattern'                 => '',
@@ -2515,8 +2503,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:purchase_limit'          => '',
 						'product:retailer'                => '',
 						'product:retailer_category'       => '',
-						'product:retailer_item_id'        => '',			// Aka the product ID. 
-						'product:retailer_part_no'        => 'product_sku',		// Aka the product SKU.
+						'product:retailer_item_id'        => '',				// Product ID. 
+						'product:retailer_part_no'        => 'product_retailer_part_no',	// Product SKU.
 						'product:retailer_title'          => '',
 						'product:sale_price:amount'       => '',			// Used by WooCommerce module.
 						'product:sale_price:currency'     => '',			// Used by WooCommerce module.
@@ -2527,7 +2515,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:shipping_weight:value'   => '',
 						'product:shipping_weight:units'   => '',
 						'product:size'                    => 'product_size',
-						'product:sku'                     => 'product_sku',		// Non-standard / internal meta tag.
 						'product:target_gender'           => 'product_target_gender',
 						'product:upc'                     => 'product_gtin12',
 						'product:volume:value'            => 'product_volume_value',	// Non-standard / internal meta tag.
@@ -2581,7 +2568,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'video:tag'          => '',
 					),
 				),
-				'og_type_array' => array(
+				'og_type_array' => array(			// Element of 'head' array.
 					'product' => array(
 						'product:original_price:amount'   => true,	// Used by WooCommerce module.
 						'product:original_price:currency' => true,	// Used by WooCommerce module.
@@ -2593,7 +2580,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:sale_price:currency'     => true,	// Used by WooCommerce module.
 					),
 				),
-				'og_content_map' => array(
+				'og_content_map' => array(			// Element of 'head' array.
 					'product:availability' => array(	// 'instock', 'oos', or 'pending'
 				 		'Discontinued'        => 'oos',
 				 		'InStock'             => 'instock',
@@ -3379,6 +3366,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'unitText' => 'cm',
 							'unitCode' => 'CMT',
 						),
+					),
+				),
+
+				/**
+				 * Good Relations.
+				 */
+				'schema_gr' => array(	// Element of 'head' array.
+					'DeliveryMethod' => array( 
+						'Download' => 'http://purl.org/goodrelations/v1#DeliveryModeDirectDownload',
+						'Freight'  => 'http://purl.org/goodrelations/v1#DeliveryModeFreight',
+						'Mail'     => 'http://purl.org/goodrelations/v1#DeliveryModeMail',
+						'Fleet'    => 'http://purl.org/goodrelations/v1#DeliveryModeOwnFleet',
+						'PickUp'   => 'http://purl.org/goodrelations/v1#DeliveryModePickUp',
+						'DHL'      => 'http://purl.org/goodrelations/v1#DHL',
+						'FedEx'    => 'http://purl.org/goodrelations/v1#FederalExpress',
+						'UPS'      => 'http://purl.org/goodrelations/v1#UPS',
 					),
 				),
 			),

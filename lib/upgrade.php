@@ -297,6 +297,11 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'plugin_wpssossb_tid'   => '',	// WPSSO SSB Premium deprecated on 2019/11/05.
 					'plugin_wpssotie_tid' => '',	// WPSSO TIE Premium deprecated on 2019/11/21.
 				),
+				692 => array(
+					'plugin_cf_product_mpn'   => 'plugin_cf_product_mfr_part_no',
+					'plugin_cf_product_sku'   => 'plugin_cf_product_retailer_part_no',
+					'plugin_product_attr_mpn' => 'plugin_product_attr_mfr_part_no',
+				),
 			),
 		);
 
@@ -504,26 +509,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					}
 				}
 
-				if ( $prev_version > 0 && $prev_version <= 622 ) {
-
-					$opts[ 'add_meta_property_product:age_group' ]              = 0;
-					$opts[ 'add_meta_property_product:expiration_time' ]        = 0;
-					$opts[ 'add_meta_property_product:is_product_shareable' ]   = 0;
-					$opts[ 'add_meta_property_product:mfr_part_no' ]            = 0;
-					$opts[ 'add_meta_property_product:pattern' ]                = 0;
-					$opts[ 'add_meta_property_product:plural_title' ]           = 0;
-					$opts[ 'add_meta_property_product:product_link' ]           = 0;
-					$opts[ 'add_meta_property_product:purchase_limit' ]         = 0;
-					$opts[ 'add_meta_property_product:retailer' ]               = 0;
-					$opts[ 'add_meta_property_product:retailer_category' ]      = 0;
-					$opts[ 'add_meta_property_product:retailer_part_no' ]       = 0;
-					$opts[ 'add_meta_property_product:retailer_title' ]         = 0;
-					$opts[ 'add_meta_property_product:shipping_cost:amount' ]   = 0;
-					$opts[ 'add_meta_property_product:shipping_cost:currency' ] = 0;
-					$opts[ 'add_meta_property_product:shipping_weight:value' ]  = 0;
-					$opts[ 'add_meta_property_product:shipping_weight:units' ]  = 0;
-				}
-
 				if ( $prev_version > 0 && $prev_version <= 625 ) {
 
 					$opts[ 'plugin_product_attr_brand' ]     = 'Brand';
@@ -533,6 +518,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					$opts[ 'plugin_product_attr_gtin13' ]    = 'GTIN-13';
 					$opts[ 'plugin_product_attr_gtin12' ]    = 'GTIN-12';
 					$opts[ 'plugin_product_attr_gtin8' ]     = 'GTIN-8';
+					$opts[ 'plugin_product_attr_gtin' ]      = 'GTIN';
 					$opts[ 'plugin_product_attr_isbn' ]      = 'ISBN';
 					$opts[ 'plugin_product_attr_material' ]  = 'Material';
 					$opts[ 'plugin_product_attr_size' ]      = 'Size';

@@ -101,6 +101,10 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'tc_lrg_img_crop_x'         => '',
 					'tc_lrg_img_crop_y'         => '',
 				),
+				692 => array(
+					'product_mpn' => 'product_mfr_part_no',
+					'product_sku' => 'product_retailer_part_no',
+				),
 			),
 		);
 
@@ -228,18 +232,18 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					/**
 					 * Open Graph - Product Information.
 					 */
-					'product_avail'         => 'none',
-					'product_brand'         => '',
-					'product_color'         => '',
-					'product_condition'     => 'none',
-					'product_currency'      => empty( $opts[ 'plugin_def_currency' ] ) ? 'USD' : $opts[ 'plugin_def_currency' ],
-					'product_isbn'          => '',
-					'product_material'      => '',
-					'product_mpn'           => '',
-					'product_price'         => '0.00',
-					'product_size'          => '',
-					'product_sku'           => '',
-					'product_target_gender' => 'none',
+					'product_avail'            => 'none',
+					'product_brand'            => '',
+					'product_color'            => '',
+					'product_condition'        => 'none',
+					'product_currency'         => empty( $opts[ 'plugin_def_currency' ] ) ? 'USD' : $opts[ 'plugin_def_currency' ],
+					'product_isbn'             => '',
+					'product_material'         => '',
+					'product_mfr_part_no'      => '',	// Product MPN.
+					'product_price'            => '0.00',
+					'product_retailer_part_no' => '',	// Product SKU.
+					'product_size'             => '',
+					'product_target_gender'    => 'none',
 
 					/**
 					 * Open Graph - Priority Image.

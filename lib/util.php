@@ -3963,7 +3963,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 *		'product:length:value'            => 'product_length_value',
 			 *		'product:length:units'            => '',
 			 *		'product:material'                => 'product_material',
-			 *		'product:mfr_part_no'             => 'product_mpn',
+			 *		'product:mfr_part_no'             => 'product_mfr_part_no',
 			 *		'product:original_price:amount'   => '',
 			 *		'product:original_price:currency' => '',
 			 *		'product:pattern'                 => '',
@@ -3977,7 +3977,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 *		'product:retailer'                => '',
 			 *		'product:retailer_category'       => '',
 			 *		'product:retailer_item_id'        => '',
-			 *		'product:retailer_part_no'        => 'product_sku',
+			 *		'product:retailer_part_no'        => 'product_retailer_part_no',
 			 *		'product:retailer_title'          => '',
 			 *		'product:sale_price:amount'       => '',
 			 *		'product:sale_price:currency'     => '',
@@ -3988,7 +3988,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 *		'product:shipping_weight:value'   => '',
 			 *		'product:shipping_weight:units'   => '',
 			 *		'product:size'                    => 'product_size',
-			 *		'product:sku'                     => 'product_sku',
 			 *		'product:target_gender'           => 'product_target_gender',
 			 *		'product:upc'                     => 'product_gtin12',
 			 *		'product:volume:value'            => 'product_volume_value',
@@ -4089,8 +4088,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Returns an array of product attribute names, indexed by meta
-		 * tag name ($sep = ":") or option name ($sep = "_").
+		 * Returns an array of product attribute names, indexed by meta tag name ($sep = ":") or option name ($sep = "_").
 		 *
 		 * Example $prefix = "product" and $sep = ":" for meta tag names:
 		 *
@@ -4103,7 +4101,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 *		[product:gtin14]        => GTIN-12
 		 *		[product:gtin8]         => GTIN-8
 		 *		[product:material]      => Material
-		 *		[product:mpn]           => MPN
+		 *		[product:mfr_part_no]   => MPN
 		 *		[product:size]          => Size
 		 *		[product:target_gender] => Gender
 		 *		[product:volume:value]  => Volume
@@ -4120,7 +4118,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 *		[product_gtin14]        => GTIN-12
 		 *		[product_gtin8]         => GTIN-8
 		 *		[product_material]      => Material
-		 *		[product_mpn]           => MPN
+		 *		[product_mfr_part_no]   => MPN
 		 *		[product_size]          => Size
 		 *		[product_target_gender] => Gender
 		 *		[product_volume_value]  => Volume
@@ -4154,6 +4152,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$local_cache = apply_filters( $this->p->lca . '_product_attribute_names', $local_cache );
 			}
 
+			/**
+			 * No prefix, so no separator required.
+			 */
 			if ( empty( $prefix ) ) {
 
 				return $local_cache;

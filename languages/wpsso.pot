@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.16.1-b.2\n"
+"Project-Id-Version: WPSSO Core 6.16.1-b.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -884,7 +884,7 @@ msgid "from"
 msgstr ""
 
 #: lib/com/form.php:1881 lib/gettext-com.php:25 lib/post.php:1355
-#: lib/wp-meta.php:592 lib/wp-meta.php:722
+#: lib/wp-meta.php:596 lib/wp-meta.php:726
 msgid "Save a draft version or publish to update this value."
 msgstr ""
 
@@ -2928,13 +2928,13 @@ msgid "Search Description"
 msgstr ""
 
 #: lib/gettext-pro.php:99 lib/pro/admin/meta-edit.php:161
-#: lib/std/admin/meta-edit.php:163 lib/wp-meta.php:642 lib/wp-meta.php:666
+#: lib/std/admin/meta-edit.php:163 lib/wp-meta.php:646 lib/wp-meta.php:670
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
 #: lib/gettext-pro.php:100 lib/pro/admin/meta-edit.php:169
-#: lib/std/admin/meta-edit.php:172 lib/wp-meta.php:646 lib/wp-meta.php:670
+#: lib/std/admin/meta-edit.php:172 lib/wp-meta.php:650 lib/wp-meta.php:674
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
@@ -2999,7 +2999,7 @@ msgctxt "option label"
 msgid "Product Target Gender"
 msgstr ""
 
-#: lib/gettext-pro.php:111 lib/messages.php:2575
+#: lib/gettext-pro.php:111 lib/messages.php:2579
 #: lib/pro/admin/meta-edit.php:263 lib/std/admin/meta-edit.php:274
 msgctxt "option label"
 msgid "Product Size"
@@ -3011,7 +3011,7 @@ msgctxt "option label"
 msgid "Product Weight"
 msgstr ""
 
-#: lib/gettext-pro.php:113 lib/messages.php:2579
+#: lib/gettext-pro.php:113 lib/messages.php:2575
 #: lib/pro/admin/meta-edit.php:278 lib/std/admin/meta-edit.php:291
 msgctxt "option label"
 msgid "Product SKU"
@@ -3178,12 +3178,12 @@ msgid ""
 msgstr ""
 
 #: lib/gettext-pro.php:151 lib/gettext-pro.php:156
-#: lib/pro/ecom/woocommerce.php:847 lib/pro/ecom/wpecommerce.php:524
+#: lib/pro/ecom/woocommerce.php:847 lib/pro/ecom/wpecommerce.php:527
 msgid "\"%s\" is an unknown Schema Product item condition."
 msgstr ""
 
 #: lib/gettext-pro.php:152 lib/gettext-pro.php:157
-#: lib/pro/ecom/woocommerce.php:850 lib/pro/ecom/wpecommerce.php:527
+#: lib/pro/ecom/woocommerce.php:850 lib/pro/ecom/wpecommerce.php:530
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
@@ -5269,7 +5269,7 @@ msgctxt "plugin action link"
 msgid "Purchase %s Add-on"
 msgstr ""
 
-#: lib/messages.php:2144 lib/wp-meta.php:523
+#: lib/messages.php:2144 lib/wp-meta.php:527
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr ""
@@ -5737,12 +5737,12 @@ msgstr ""
 
 #: lib/messages.php:2576
 msgctxt "tooltip fragment"
-msgid "a product size"
+msgid "a Stock-Keeping Unit (SKU)"
 msgstr ""
 
 #: lib/messages.php:2580
 msgctxt "tooltip fragment"
-msgid "a Stock-Keeping Unit (SKU)"
+msgid "a product size"
 msgstr ""
 
 #: lib/messages.php:2584
@@ -7019,193 +7019,193 @@ msgid "show these rows now"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name, and %3$s is the object ID.
-#: lib/util.php:4209
+#: lib/util.php:4210
 msgid "%1$s for %2$s ID %3$s"
-msgstr ""
-
-#: lib/wp-meta.php:522
-msgctxt "metabox tab"
-msgid "Customize"
-msgstr ""
-
-#: lib/wp-meta.php:524
-msgctxt "metabox tab"
-msgid "Preview"
-msgstr ""
-
-#: lib/wp-meta.php:525
-msgctxt "metabox tab"
-msgid "oEmbed"
 msgstr ""
 
 #: lib/wp-meta.php:526
 msgctxt "metabox tab"
+msgid "Customize"
+msgstr ""
+
+#: lib/wp-meta.php:528
+msgctxt "metabox tab"
+msgid "Preview"
+msgstr ""
+
+#: lib/wp-meta.php:529
+msgctxt "metabox tab"
+msgid "oEmbed"
+msgstr ""
+
+#: lib/wp-meta.php:530
+msgctxt "metabox tab"
 msgid "Head"
 msgstr ""
 
-#: lib/wp-meta.php:527
+#: lib/wp-meta.php:531
 msgctxt "metabox tab"
 msgid "Validate"
 msgstr ""
 
-#: lib/wp-meta.php:615
+#: lib/wp-meta.php:619
 msgctxt "preview image error"
 msgid "Image Size Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/wp-meta.php:625
+#: lib/wp-meta.php:629
 msgctxt "preview image error"
 msgid "Image Size Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/wp-meta.php:634
+#: lib/wp-meta.php:638
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/wp-meta.php:650 lib/wp-meta.php:676
+#: lib/wp-meta.php:654 lib/wp-meta.php:680
 msgctxt "option label"
 msgid "Shortlink URL"
 msgstr ""
 
-#: lib/wp-meta.php:681
+#: lib/wp-meta.php:685
 msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/wp-meta.php:727 lib/wp-meta.php:741
+#: lib/wp-meta.php:731 lib/wp-meta.php:745
 msgctxt "option label"
 msgid "oEmbed JSON URL"
 msgstr ""
 
-#: lib/wp-meta.php:731 lib/wp-meta.php:745
+#: lib/wp-meta.php:735 lib/wp-meta.php:749
 msgctxt "option label"
 msgid "oEmbed XML URL"
 msgstr ""
 
-#: lib/wp-meta.php:751
+#: lib/wp-meta.php:755
 msgctxt "option label"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/wp-meta.php:759
+#: lib/wp-meta.php:763
 msgid "(see bellow)"
 msgstr ""
 
-#: lib/wp-meta.php:768
+#: lib/wp-meta.php:772
 msgid "No oEmbed data found."
 msgstr ""
 
-#: lib/wp-meta.php:772
+#: lib/wp-meta.php:776
 msgctxt "option label"
 msgid "oEmbed HTML"
 msgstr ""
 
-#: lib/wp-meta.php:784
+#: lib/wp-meta.php:788
 msgid "No oEmbed HTML found."
 msgstr ""
 
-#: lib/wp-meta.php:892
+#: lib/wp-meta.php:896
 msgctxt "option label"
 msgid "Facebook Open Graph Object Debugger"
 msgstr ""
 
-#: lib/wp-meta.php:893
+#: lib/wp-meta.php:897
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/wp-meta.php:897
+#: lib/wp-meta.php:901
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/wp-meta.php:898
+#: lib/wp-meta.php:902
 msgctxt "submit button"
 msgid "Validate Microdata"
 msgstr ""
 
-#: lib/wp-meta.php:904
+#: lib/wp-meta.php:908
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/wp-meta.php:905
+#: lib/wp-meta.php:909
 msgctxt "submit button"
 msgid "Validate Metadata"
 msgstr ""
 
-#: lib/wp-meta.php:909
+#: lib/wp-meta.php:913
 msgctxt "option label"
 msgid "Google Structured Data Test"
 msgstr ""
 
-#: lib/wp-meta.php:910
+#: lib/wp-meta.php:914
 msgctxt "submit button"
 msgid "Validate Structured Data"
 msgstr ""
 
-#: lib/wp-meta.php:914
+#: lib/wp-meta.php:918
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/wp-meta.php:915
+#: lib/wp-meta.php:919
 msgctxt "submit button"
 msgid "Validate PageSpeed"
 msgstr ""
 
-#: lib/wp-meta.php:919
+#: lib/wp-meta.php:923
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/wp-meta.php:920
+#: lib/wp-meta.php:924
 msgctxt "submit button"
 msgid "Validate Rich Results"
 msgstr ""
 
-#: lib/wp-meta.php:924
+#: lib/wp-meta.php:928
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/wp-meta.php:925
+#: lib/wp-meta.php:929
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/wp-meta.php:929
+#: lib/wp-meta.php:933
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/wp-meta.php:930
+#: lib/wp-meta.php:934
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/wp-meta.php:936
+#: lib/wp-meta.php:940
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr ""
 
-#: lib/wp-meta.php:937
+#: lib/wp-meta.php:941
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr ""
 
-#: lib/wp-meta.php:941
+#: lib/wp-meta.php:945
 msgctxt "option label"
 msgid "The AMP Validator"
 msgstr ""
 
-#: lib/wp-meta.php:942
+#: lib/wp-meta.php:946
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/wp-meta.php:1199
+#: lib/wp-meta.php:1203
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
