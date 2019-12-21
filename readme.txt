@@ -528,6 +528,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed an edge case issue with the "Add Hidden Image for Pin It Button" feature when the WordPress content filter was applied more than once.
 * **Developer Notes**
 	* None.
+* **Requires At Least**
+	* PHP v5.4.
+	* WordPress v3.9.
 
 **Version 6.13.2 (2019/11/25)**
 
@@ -539,6 +542,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed an incorrect add-on / licenses settings page link in a notification message.
 * **Developer Notes**
 	* None.
+* **Requires At Least**
+	* PHP v5.4.
+	* WordPress v3.9.
 
 **Version 6.13.1 (2019/11/23)**
 
@@ -553,6 +559,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Moved the detection of Authentication ID changes (and subsequent update check) to the WPSSO UM add-on.
 	* Added a new WpssoUtilReg class in lib/util-reg.php.
+* **Requires At Least**
+	* PHP v5.4.
+	* WordPress v3.9.
 
 **Version 6.12.0 (2019/11/17)**
 
@@ -569,6 +578,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Moved 'admin_head' action hooks for notices to a new WpssoAdminHead class in lib/admin-head.php.
 	* Added a new `WpssoAdminHead->suggest_addons()` method for the WooCommerce Schema JSON-LD notice.
 	* Removed the WooCommerce Schema JSON-LD check from the `WpssoPost->check_post_head()` method.
+* **Requires At Least**
+	* PHP v5.4.
+	* WordPress v3.9.
 
 **Version 6.11.2 (2019/11/10)**
 
@@ -580,6 +592,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Moved conflict checks from WpssoAdmin to WpssoConflict in lib/conflict.php.
+* **Requires At Least**
+	* PHP v5.4.
+	* WordPress v3.9.
 
 **Version 6.11.1 (2019/11/05)**
 
@@ -591,6 +606,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed the on_change show event for form selects without a default selected option.
 * **Developer Notes**
 	* None.
+* **Requires At Least**
+	* PHP v5.4.
+	* WordPress v3.9.
 
 **Version 6.11.0 (2019/11/01)**
 
@@ -606,6 +624,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Updated the sucomInitMetabox() javascript to trigger a show() event for displayed table rows after refreshing the metabox with ajax.
 	* Moved the WpssoPost, WpssoTerm, and WpssoUser 'add_wp_hooks' method execution from 'init' 10 to 'wp_loaded' 10.
+* **Requires At Least**
+	* PHP v5.4.
+	* WordPress v3.9.
 
 **Version 6.10.0 (2019/10/26)**
 
@@ -659,6 +680,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* 'add_meta_itemprop_recipeyield'
 		* 'add_meta_itemprop_recipeingredient'
 		* 'add_meta_itemprop_recipeinstructions'
+* **Requires At Least**
+	* PHP v5.4.
+	* WordPress v3.9.
 
 **Version 6.9.0 (2019/10/22)**
 
@@ -672,6 +696,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Updated the `SucomForm->get_select()` method arguments to allow for an `$event_names` array.
 	* Added support for an 'event_names' array value in the `SucomForm->get_mixed_multi()` method.
+* **Requires At Least**
+	* PHP v5.4.
+	* WordPress v3.9.
 
 **Version 6.8.0 (2019/10/14)**
 
@@ -692,6 +719,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Renamed the SucomUtil `array_parent_index()` method to `get_array_parents()`, which now returns an array of (one or more) parents per child instead of a single parent string per child.
 	* Updated the WpssoSchema `get_schema_type_child_family()` and `get_schema_type_children()` methods to handle an array of parents instead of a single parent string.
 	* Removed the WpssoSchema `filter_json_data_https_schema_org_localbusiness()` method since it is no longer required - local businesses are now automatically filtered through the organization filter.
+* **Requires At Least**
+	* PHP v5.4.
+	* WordPress v3.9.
 
 **Version 6.7.1 (2019/10/08)**
 
@@ -703,6 +733,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed possible non-unique image filename conflicts by copying instead or renaming cropped images.
 * **Developer Notes**
 	* None.
+* **Requires At Least**
+	* PHP v5.4.
+	* WordPress v3.9.
 
 **Version 6.7.0 (2019/10/04)**
 
@@ -714,6 +747,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed missing argument in the WpssoAdmin `registered_setting_sanitation()` method 'wpsso_save_options' filter.
 * **Developer Notes**
 	* Updated the WpssoOptions `check_options()` and `save_options()` methods to clear all caches after upgrading the options array.
+* **Requires At Least**
+	* PHP v5.4.
+	* WordPress v3.9.
 
 **Version 6.6.0 (2019/09/28)**
 
@@ -732,6 +768,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new `get_select_multi()` and `get_no_select_multi()` methods in the WpssoForm class.
 	* Added local caching to the `WpssoOpenGraph->get_all_videos()` method.
 	* Added a new `WpssoOpenGraph->get_all_previews()` method.
+* **Requires At Least**
+	* PHP v5.4.
+	* WordPress v3.9.
 
 **Version 6.5.0 (2019/09/26)**
 
@@ -746,6 +785,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Moved the 'nopin' image attribute filters from the WpssoMedia to the WpssoPinterest class.
 	* Removed 'loading="lazy"' from the hidden Pinterest Pin It button image.
 	* Removed the deprecated 'wpsso_get_event_location_id' filter since selecting a Schema Place in the Document SSO metabox forces the Schema type to a place.
+* **Requires At Least**
+	* PHP v5.4.
+	* WordPress v3.9.
 
 **Version 6.4.0 (2019/09/22)**
 
@@ -759,6 +801,9 @@ Added a new 'oEmbed' tab in the Document SSO metabox.
 	* Fixed the "Select Image" button to trigger a jQuery `change()` event on the image ID input field.
 * **Developer Notes**
 	* None.
+* **Requires At Least**
+	* PHP v5.4.
+	* WordPress v3.9.
 
 **Version 6.3.1 (2019/09/17)**
 
@@ -785,6 +830,9 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 	* Removed the lib/noscript.php library file.
 	* Removed the lib/schema-cache.php library file (Deprecated).
 	* Updated the SuextMobileDetect class from https://github.com/serbanghita/Mobile-Detect v2.8.28 to v2.8.33.
+* **Requires At Least**
+	* PHP v5.4.
+	* WordPress v3.9.
 
 == Upgrade Notice ==
 
