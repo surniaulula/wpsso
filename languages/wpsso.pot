@@ -3388,27 +3388,27 @@ msgctxt "option value"
 msgid "[%s Location]"
 msgstr ""
 
-#: lib/head.php:527
+#: lib/head.php:532
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:541
+#: lib/head.php:546
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:550
+#: lib/head.php:555
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:559
+#: lib/head.php:564
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:568
+#: lib/head.php:573
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:577
+#: lib/head.php:582
 msgid "adding schema json-ld markup"
 msgstr ""
 

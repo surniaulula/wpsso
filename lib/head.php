@@ -85,7 +85,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$current  = current_filter();	// Since WP v2.5, aka current_action() in WP v3.9.
+			if ( function_exists( 'current_action' ) ) {	// Since WP v3.9.
+				$current  = current_action();
+			} else {
+				$current  = current_filter();
+			}
+
 			$use_post = apply_filters( $this->p->lca . '_use_post', false );
 
 			if ( $this->p->debug->enabled ) {

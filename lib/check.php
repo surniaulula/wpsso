@@ -420,15 +420,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 				case 'vary_ua':
 
-					/**
-					 * The WPSSO_VARY_USER_AGENT_DISABLE constant can be defined as true to disable mobile
-					 * browser detection and the creation of Pinterest-specific meta tag values.
-					 *
-					 * Mobile browser and Pinterest crawler detection does NOT create additional transient
-					 * cache objects or cached files on disk. Transient cache objects are indexed arrays,
-					 * and an additional index element - within the same transient cache object - will be
-					 * added, so browser and crawler detection does not increase the number of cache objects.
-					 */
 					$is_avail = ! SucomUtil::get_const( 'WPSSO_VARY_USER_AGENT_DISABLE' ) ? true : false;
 
 					break;

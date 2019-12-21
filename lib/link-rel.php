@@ -55,7 +55,11 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 
 			if ( ! empty( $this->p->options[ 'add_link_rel_canonical' ] ) ) {
 
-				$current = current_filter();	// Since WP v2.5, aka current_action() in WP v3.9.
+				if ( function_exists( 'current_action' ) ) {	// Since WP v3.9.
+					$current  = current_action();
+				} else {
+					$current  = current_filter();
+				}
 
 				switch( $current ) {
 

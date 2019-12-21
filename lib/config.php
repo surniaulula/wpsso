@@ -1787,7 +1787,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 */
 			'php' => array(
 				'label'       => 'PHP',
-				'min_version' => '5.5',		// Hard limit - deactivate the plugin when activating.
+				'min_version' => '5.6',		// Hard limit - deactivate the plugin when activating.
 				'rec_version' => '7.2',		// Soft limit - issue warning if lower version found.
 				'version_url' => 'https://secure.php.net/supported-versions.php',
 				'extensions'  => array(
@@ -1828,11 +1828,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			
 			/**
 			 * WordPress config.
+			 *
+			 * WordPress v4.0 (2014/09/04):
+			 *
+			 * 	Improved media management, embeds, writing interface, easy language change, theme customizer,
+			 * 	plugin discovery and compatibility with PHP 5.5 and MySQL 5.6.
 			 */
 			'wp' => array(
 				'label'       => 'WordPress',
-				'min_version' => '3.9',		// Hard limit - deactivate the plugin when activating.
-				'rec_version' => '5.3',		// Soft limit - issue warning if lower version found.
+				'min_version' => '4.0',		// Hard limit - deactivate the plugin when activating.
+				'rec_version' => '5.3.2',	// Soft limit - issue warning if lower version found.
 				'version_url' => 'https://codex.wordpress.org/Supported_Versions?nocache=1',
 				'tb_iframe'   => array(		// Thickbox iframe.
 					'width'  => 772,	// Url query argument.
