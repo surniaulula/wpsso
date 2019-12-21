@@ -9,7 +9,7 @@ Assets URI: https://surniaulula.github.io/wpsso/assets/
 Tags: open graph, meta tags, rich pins, twitter cards, schema, rich results, embed, social sharing, structured data, snippet, seo, facebook, twitter, linkedin, pinterest, google, schema.org
 Contributors: jsmoriss
 Requires PHP: 5.5
-Requires At Least: 3.9
+Requires At Least: 4.0
 Tested Up To: 5.3.2
 WC Tested Up To: 3.8.1
 Stable Tag: 6.16.0
@@ -477,9 +477,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Renamed metadata option keys:
 		* 'product_mpn' to 'product_mfr_part_no'.
 		* 'product_sku' to 'product_retailer_part_no'.
+	* Updated minimum WordPress version required from 3.9 to 4.0.
 * **Requires At Least**
 	* PHP v5.5.
-	* WordPress v3.9.
+	* WordPress v4.0.
 
 **Version 6.16.0 (2019/12/11)**
 
