@@ -2180,6 +2180,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 										'wpsso' ), $info[ 'size_label' ], $img_sizes_page_link ) . '</li>';
 
 									if ( empty( $this->p->options[ 'plugin_upscale_images' ] ) ) {
+
 										$text .= '<li>' . sprintf( __( 'Enable the %1$s option.', 'wpsso' ),
 											$upscale_option_link ) . '</li>';
 									}
@@ -2188,6 +2189,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 										$percent_option_link ) . '</li>';
 
 									if ( ! empty( $this->p->options[ 'plugin_check_img_dims' ] ) ) {
+
 										$text .= '<li>' . sprintf( __( 'Disable the %1$s option (not recommended).', 'wpsso' ),
 											$img_dim_option_link ) . '</li>';
 									}

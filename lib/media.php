@@ -36,6 +36,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			) );
 
 			if ( ! empty( $this->p->options[ 'plugin_check_img_dims' ] ) ) {
+
 				$this->p->util->add_plugin_filters( $this, array(
 					'attached_accept_img_dims' => 6,
 					'content_accept_img_dims'  => 6,
