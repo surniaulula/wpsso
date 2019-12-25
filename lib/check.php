@@ -25,6 +25,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				'rankmath'    => 'SEO by Rank Math',
 				'seou'        => 'SEO Ultimate',
 				'sq'          => 'Squirrly SEO',
+				'wpseo-wc'    => 'Yoast WooCommerce SEO',
 			),
 		);
 
@@ -272,6 +273,12 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						case 'seo-wpseo':
 
 							$chk[ 'function' ] = 'wpseo_init';
+
+							break;
+
+						case 'seo-wpseo-wc':
+
+							$chk[ 'class' ] = 'Yoast_WooCommerce_SEO';
 
 							break;
 

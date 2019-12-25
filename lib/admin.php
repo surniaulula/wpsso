@@ -137,7 +137,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$this->set_plugin_pkg_info();
+			$this->plugin_pkg_info();
 
 			if ( empty( $menu_libs ) ) {
 				$menu_libs = array( 'dashboard', 'plugins', 'profile', 'settings', 'submenu', 'tools' );
@@ -175,10 +175,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		public function set_plugin_pkg_info() {
+		public function plugin_pkg_info() {
 
 			if ( ! empty( self::$pkg ) ) {	// Only execute once.
-				return;
+				return self::$pkg;
 			}
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
@@ -200,6 +200,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				self::$pkg[ $ext ][ 'name' ]      = SucomUtil::get_dist_name( $info[ 'name' ], self::$pkg[ $ext ][ 'dist' ] );
 				self::$pkg[ $ext ][ 'gen' ]       = $info[ 'short' ] . ( isset( $info[ 'version' ] ) ? ' ' . $info[ 'version' ] . '/' . $ext_stat : '' );
 			}
+
+			return self::$pkg;
 		}
 
 		public function add_network_admin_menus() {
@@ -3261,7 +3263,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( class_exists( 'WpssoUm' ) ) {
 
-				$this->set_plugin_pkg_info();
+				$this->plugin_pkg_info();
 
 				$link_url = wp_nonce_url( $this->p->util->get_admin_url( 'um-general?' . $this->p->lca . '-action=check_for_updates' ),
 					WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );

@@ -45,9 +45,11 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 			if ( $update_count > 0 ) {
 
-				$info            = $this->p->cf[ 'plugin' ][ $this->p->lca ];
+				$info = $this->p->cf[ 'plugin' ][ $this->p->lca ];
+
 				$update_core_url = self_admin_url( 'update-core.php' );
-				$notice_key      = 'have-updates-for-' . $this->p->lca;
+
+				$notice_key = 'have-updates-for-' . $this->p->lca;
 
 				$pending_transl = _n( 'There is <a href="%1$s">%2$d pending update for the %3$s plugin and/or its add-on(s)</a>.',
 					'There are <a href="%1$s">%2$d pending updates for the %3$s plugin and/or its add-on(s)</a>.', $update_count, 'wpsso' );
@@ -62,7 +64,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 		public function requires_notices() {
 
-			$version  = $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'version' ];
+			$pkg      = $this->p->admin->plugin_pkg_info();
 			$um_info  = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
 			$have_tid = false;
 
@@ -82,7 +84,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 					} else {
 
-						if ( ! WpssoAdmin::$pkg[ $ext ][ 'pdir' ] ) {
+						if ( empty( $pkg[ $ext ][ 'pdir' ] ) ) {
 
 							if ( ! empty( $info[ 'base' ] ) && ! SucomPlugin::is_plugin_installed( $info[ 'base' ], $use_cache = true ) ) {
 
@@ -157,7 +159,9 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 								'version_url' => WpssoConfig::$cf[ $key ][ 'version_url' ],
 							) );
 
-							$notice_key   = 'notice-recommend-version-' . $this->p->lca . '-' . $version . '-' . $app_label . '-' . $app_version;
+							$notice_key   = 'notice-recommend-version-' . 
+								WpssoConfig::get_version( $add_slug = true ) . '-' . 
+								$app_label . '-' . $app_version;
 
 							$this->p->notice->warn( $warn_msg, null, $notice_key, $dismiss_time );
 						}
@@ -196,11 +200,12 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 			$ext  = 'wpssojson';
 			$info = $this->p->cf[ 'plugin' ][ $ext ];
+			$pkg  = $this->p->admin->plugin_pkg_info();
 
 			/**
 			 * All good - nothing to suggest.
 			 */
-			if ( ! empty( WpssoAdmin::$pkg[ $this->p->lca ][ 'pp' ] ) && ! empty( WpssoAdmin::$pkg[ $ext ][ 'pp' ] ) ) {
+			if ( ! empty( $pkg[ $this->p->lca ][ 'pp' ] ) && ! empty( $pkg[ $ext ][ 'pp' ] ) ) {
 				return;
 			}
 
@@ -222,18 +227,18 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 					$url = add_query_arg( array( 's' => $info[ 'base' ] ), $url );
 
 					$action_links[] = '<a href="' . $url . '">' . sprintf( __( 'Activate the %s add-on.', 'wpsso' ),
-						WpssoAdmin::$pkg[ $ext ][ 'short' ] ) . '</a>';
+						$pkg[ $ext ][ 'short' ] ) . '</a>';
 
 				} else {
 
 					$url = $this->p->util->get_admin_url( 'addons#' . $ext );
 
 					$action_links[] = '<a href="' . $url . '">' . sprintf( __( 'Install and activate the %s add-on.', 'wpsso' ),
-						WpssoAdmin::$pkg[ $ext ][ 'short' ] ) . '</a>';
+						$pkg[ $ext ][ 'short' ] ) . '</a>';
 				}
 			}
 
-			if ( empty( WpssoAdmin::$pkg[ $this->p->lca ][ 'pp' ] ) ) {
+			if ( empty( $pkg[ $this->p->lca ][ 'pp' ] ) ) {
 
 				$url = add_query_arg( array( 
 					'utm_source'  => $this->p->lca,
@@ -242,10 +247,10 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				), $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'url' ][ 'purchase' ] );
 
 				$action_links[] = '<a href="' . $url . '">' . sprintf( __( 'Purchase the %s plugin.', 'wpsso' ),
-					WpssoAdmin::$pkg[ $this->p->lca ][ 'short_pro' ] ) . '</a>';
+					$pkg[ $this->p->lca ][ 'short_pro' ] ) . '</a>';
 			}
 
-			if ( empty( WpssoAdmin::$pkg[ $ext ][ 'pp' ] ) ) {
+			if ( empty( $pkg[ $ext ][ 'pp' ] ) ) {
 
 				$url = add_query_arg( array( 
 					'utm_source'  => $this->p->lca,
@@ -254,7 +259,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				), $info[ 'url' ][ 'purchase' ] );
 
 				$action_links[] = '<a href="' . $url . '">' . sprintf( __( 'Purchase the %s add-on.', 'wpsso' ),
-					WpssoAdmin::$pkg[ $ext ][ 'short_pro' ] ) . '</a>';
+					$pkg[ $ext ][ 'short_pro' ] ) . '</a>';
 			}
 
 			if ( ! empty( $action_links ) ) {
@@ -453,9 +458,9 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 		private function single_notice_upsell() {
 
 			$ext = $this->p->lca;
+			$pkg = $this->p->admin->plugin_pkg_info();
 
-			if ( WpssoAdmin::$pkg[ $ext ][ 'pdir' ] ) {
-
+			if ( $pkg[ $ext ][ 'pdir' ] ) {
 				return 0;
 			}
 

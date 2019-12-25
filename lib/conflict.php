@@ -594,13 +594,36 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
 			}
+
+			/**
+			 * Yoast SEO for WooCommerce
+			 */
+			if ( $this->p->avail[ 'seo' ][ 'wpseo-wc' ] ) {
+
+				$ext = 'wpssojson';
+				$pkg = $this->p->admin->plugin_pkg_info();
+
+				$wpseo_wc_label = 'Yoast SEO: WooCommerce';
+
+				if ( ! empty( $pkg[ $this->p->lca ][ 'pp' ] ) && ! empty( $pkg[ $ext ][ 'pp' ] ) ) {
+					
+					$plugins_url = is_multisite() ? network_admin_url( 'plugins.php', null ) : get_admin_url( null, 'plugins.php' );
+
+					$plugins_url = add_query_arg( array( 's' => 'yoast seo' ), $plugins_url );
+
+					$notice_key = 'deactivate-wpseo-woocommerce';
+
+					$this->p->notice->err( sprintf( __( 'The combination of %1$s and its %2$s add-on provide much better Schema markup for WooCommerce products than the %3$s plugin.', 'wpsso' ), $pkg[ $this->p->lca ][ 'short_pro' ], $pkg[ $ext ][ 'short_pro' ], $wpseo_wc_label ) . ' ' . sprintf( __( 'There is absolutely no advantage in continuing to use the %1$s plugin.', 'wpsso' ), $wpseo_wc_label ) . ' ' . sprintf( __( 'To avoid adding incorrect and confusing Schema markup in your webpages, <a href="%1$s">please deactivate the %2$s plugin immediately</a>.' ), $plugins_url, $wpseo_wc_label ), null, $notice_key );
+				}
+			}
+
 		}
 
 		private function conflict_check_vc() {
 
 			if ( defined( 'WPB_VC_VERSION' ) ) {
 
-				$wpb_vc_version_event_bug = '6.0.5';
+				$wpb_vc_version_event_bug = '6.1.0';
 
 				if ( version_compare( WPB_VC_VERSION, $wpb_vc_version_event_bug, '<=' ) ) {
 
