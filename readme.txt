@@ -457,6 +457,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 6.16.2-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new WpssoSchema->is_schema_type_og_product() method.
+* **Requires At Least**
+	* PHP v5.5.
+	* WordPress v4.0.
+
 **Version 6.16.1 (2019/12/21)**
 
 * **New Features**
