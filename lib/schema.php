@@ -1256,6 +1256,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $css_classes;
 		}
 
+		public function is_schema_type_og_product( $type_id ) {
+
+			if ( $this->is_schema_type_child( $type_id, 'product' ) ) {
+				return true;
+			} elseif ( $this->is_schema_type_child( $type_id, 'software.application' ) ) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
 		public function is_schema_type_child( $child_id, $member_id ) {
 
 			static $local_cache = array();	// Cache for single page load.

@@ -13,8 +13,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 	class WpssoOptions {
 
-		protected $p;				// Wpsso class object
-		protected $upg;				// WpssoOptionsUpgrade class object
+		protected $p;		// Wpsso class object.
+		protected $upg;		// WpssoOptionsUpgrade class object.
 
 		protected static $allow_cache = false;
 
