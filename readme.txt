@@ -457,7 +457,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.16.2-dev.1 (TBD)**
+**Version 6.16.2-dev.2 (TBD)**
 
 * **New Features**
 	* None.
@@ -466,7 +466,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added a new WpssoSchema->is_schema_type_og_product() method.
+	* Added a new WpssoSchema->get_schema_type_og_type() method for WPSSO JSON v2.18.0.
 * **Requires At Least**
 	* PHP v5.5.
 	* WordPress v4.0.
