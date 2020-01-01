@@ -881,6 +881,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $get_value;
 		}
 
+		public function get_schema_type_og_type( $type_id ) {
+
+			if ( $this->is_schema_type_child( $type_id, 'place' ) ) {
+				return 'place';
+			} elseif ( $this->is_schema_type_child( $type_id, 'product' ) ) {
+				return 'product';
+			} elseif ( $this->is_schema_type_child( $type_id, 'software.application' ) ) {
+				return 'product';
+			}
+
+			return false;
+		}
+
 		public function get_schema_types_select( $schema_types = null, $add_none = true ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -1254,17 +1267,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$css_classes = trim( $css_classes );
 
 			return $css_classes;
-		}
-
-		public function is_schema_type_og_product( $type_id ) {
-
-			if ( $this->is_schema_type_child( $type_id, 'product' ) ) {
-				return true;
-			} elseif ( $this->is_schema_type_child( $type_id, 'software.application' ) ) {
-				return true;
-			} else {
-				return false;
-			}
 		}
 
 		public function is_schema_type_child( $child_id, $member_id ) {
