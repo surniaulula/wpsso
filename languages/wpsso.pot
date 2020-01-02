@@ -6332,32 +6332,32 @@ msgstr ""
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema.php:57
+#: lib/schema.php:64
 msgctxt "image size label"
 msgid "Schema Image"
 msgstr ""
 
-#: lib/schema.php:62
+#: lib/schema.php:69
 msgctxt "image size label"
 msgid "Schema Article Image"
 msgstr ""
 
-#: lib/schema.php:69
+#: lib/schema.php:76
 msgctxt "image size label"
 msgid "Schema Article AMP 1:1 Image"
 msgstr ""
 
-#: lib/schema.php:74
+#: lib/schema.php:81
 msgctxt "image size label"
 msgid "Schema Article AMP 4:3 Image"
 msgstr ""
 
-#: lib/schema.php:79
+#: lib/schema.php:86
 msgctxt "image size label"
 msgid "Schema Article AMP 16:9 Image"
 msgstr ""
 
-#: lib/schema.php:584
+#: lib/schema.php:605
 msgid "adding schema"
 msgstr ""
 

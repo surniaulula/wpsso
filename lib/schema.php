@@ -39,6 +39,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$max_int = SucomUtil::get_max_int();
+
 			if ( ! class_exists( 'WpssoSchemaNoScript' ) ) {
 				require_once WPSSO_PLUGINDIR . 'lib/schema-noscript.php';
 			}
@@ -48,6 +50,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$this->p->util->add_plugin_filters( $this, array( 
 				'plugin_image_sizes' => 1,
 			), $prio = 5 );
+
+			$this->p->util->add_plugin_filters( $this, array(
+				'get_post_options'  => 3,
+				'save_post_options' => 4,
+			), $max_int );
 		}
 
 		public function filter_plugin_image_sizes( $sizes ) {
@@ -81,6 +88,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			return $sizes;
+		}
+
+		public function filter_get_post_options( $md_opts, $post_id, $mod ) {
+
+			$this->update_post_md_opts( $md_opts, $post_id, $mod );	// Modifies the $md_opts array.
+
+			return $md_opts;
+		}
+
+		public function filter_save_post_options( $md_opts, $post_id, $rel_id, $mod ) {
+
+			$this->update_post_md_opts( $md_opts, $post_id, $mod );	// Modifies the $md_opts array.
+
+			return $md_opts;
 		}
 
 		/**
@@ -2581,6 +2602,27 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			} else {
 				return $json_data;
 			}
+		}
+
+		private function update_post_md_opts( &$md_opts, $post_id, $mod ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			if ( isset( $md_opts[ 'schema_type' ] ) ) {
+
+				/**
+				 * Check of the Schema type requires a specific Open Graph type. For example, a Schema Product type /
+				 * sub-type would return 'product' for the Open Graph type.
+				 */
+				if ( $og_type = $this->get_schema_type_og_type( $md_opts[ 'schema_type' ] ) ) {
+					$md_opts[ 'og_type' ]    = $og_type;
+					$md_opts[ 'og_type:is' ] = 'disabled';
+				}
+			}
+
+			return $md_opts;
 		}
 	}
 }
