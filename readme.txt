@@ -466,7 +466,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added a new WpssoSchema->get_schema_type_og_type() method for WPSSO JSON v2.18.0.
+	* Added `WpssoSchema->filter_get_post_options()` and `WpssoSchema->filter_save_post_options()` methods to set the Open Graph type based on the Schema type.
+	* Added a new WpssoSchema->get_schema_type_og_type() public method (returns false, or an Open Graph type string).
+	* Added a new WpssoSchema->update_post_md_opts() private method.
 * **Requires At Least**
 	* PHP v5.5.
 	* WordPress v4.0.
