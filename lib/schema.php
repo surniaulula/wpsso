@@ -902,6 +902,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $get_value;
 		}
 
+		/**
+		 * Check of the Schema type requires a specific Open Graph type. Retuns false, or an Open Graph type string. For
+		 * example, a Schema Product type / sub-type would return 'product' for the Open Graph type.
+		 */
 		public function get_schema_type_og_type( $type_id ) {
 
 			if ( $this->is_schema_type_child( $type_id, 'place' ) ) {
@@ -2612,10 +2616,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( isset( $md_opts[ 'schema_type' ] ) ) {
 
-				/**
-				 * Check of the Schema type requires a specific Open Graph type. For example, a Schema Product type /
-				 * sub-type would return 'product' for the Open Graph type.
-				 */
 				if ( $og_type = $this->get_schema_type_og_type( $md_opts[ 'schema_type' ] ) ) {
 					$md_opts[ 'og_type' ]    = $og_type;
 					$md_opts[ 'og_type:is' ] = 'disabled';
