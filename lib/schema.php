@@ -41,6 +41,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$max_int = SucomUtil::get_max_int();
 
+			/**
+			 * Instantiate the WpssoSchemaNoScript class object.
+			 */
 			if ( ! class_exists( 'WpssoSchemaNoScript' ) ) {
 				require_once WPSSO_PLUGINDIR . 'lib/schema-noscript.php';
 			}
