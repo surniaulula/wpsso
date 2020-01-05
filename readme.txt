@@ -457,7 +457,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.16.2-dev.2 (TBD)**
+**Version 6.16.2-rc.1 (2020/01/05)**
 
 * **New Features**
 	* None.
@@ -466,7 +466,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added `WpssoSchema->filter_get_post_options()` and `WpssoSchema->filter_save_post_options()` methods to set the Open Graph type based on the Schema type.
+	* Added `WpssoSchema->filter_get_post_options()` and `WpssoSchema->filter_save_post_options()` filter hooks to set the Open Graph type based on the Schema type.
 	* Added a new WpssoSchema->get_schema_type_og_type() public method (returns false, or an Open Graph type string).
 	* Added a new WpssoSchema->update_post_md_opts() private method.
 * **Requires At Least**
@@ -851,6 +851,10 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 	* WordPress v3.9.
 
 == Upgrade Notice ==
+
+= 6.16.2-rc.1 =
+
+(2020/01/05) Added filter hooks to set the Open Graph type based on the Schema type.
 
 = 6.16.1 =
 
