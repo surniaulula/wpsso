@@ -12,7 +12,7 @@ Requires PHP: 5.5
 Requires At Least: 4.0
 Tested Up To: 5.3.2
 WC Tested Up To: 3.8.1
-Stable Tag: 6.16.1
+Stable Tag: 6.16.2
 
 Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.
 
@@ -457,7 +457,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.16.2-rc.1 (2020/01/05)**
+**Version 6.16.2 (2020/01/05)**
 
 * **New Features**
 	* None.
@@ -852,11 +852,7 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 
 == Upgrade Notice ==
 
-= 6.16.2-rc.1 =
+= 6.16.2 =
 
 (2020/01/05) Added filter hooks to set the Open Graph type based on the Schema type.
-
-= 6.16.1 =
-
-(2019/12/21) Added "Facebook Microdata Debug Tool" and "Google PageSpeed Insights" under the Document SSO &gt; Validate tab. Updated the `product:retailer_item_id` and `product:retailer_part_no` meta tag values. Fixed a Schema "noscript" filter hook name that provides aggregate rating meta tags.
 
