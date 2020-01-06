@@ -659,7 +659,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Added a new `$hash_url` argument in the WpssoSchema::update_data_id() method.
 	* Updated the WpssoSchemaSingle::add_person_data() method to hash the '@id' string URL.
-	* Moved place / location specific "Head Tags" option keys from WPSSO Core to WPSSO PLM:
+	* Moved place specific "Head Tags" option keys from WPSSO Core to WPSSO PLM:
 		* 'add_link_itemprop_hasmenu'
 		* 'add_meta_itemprop_address'
 		* 'add_meta_itemprop_telephone'
