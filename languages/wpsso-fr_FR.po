@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.16.1\n"
+"Project-Id-Version: WPSSO Core 6.16.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-12-25 08:54-0800\n"
-"PO-Revision-Date: 2019-12-25 08:58-0800\n"
+"POT-Creation-Date: 2020-01-06 11:40-0800\n"
+"PO-Revision-Date: 2020-01-06 11:40-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1298,12 +1298,12 @@ msgctxt "lib file description"
 msgid "Advanced"
 msgstr "Avancé"
 
-#: lib/gettext-config.php:28 lib/gettext-config.php:34 lib/messages.php:2318
+#: lib/gettext-config.php:28 lib/gettext-config.php:36 lib/messages.php:2318
 msgctxt "lib file description"
 msgid "Complementary Add-ons"
 msgstr "Ajouts complémentaires"
 
-#: lib/gettext-config.php:29 lib/gettext-config.php:35 lib/messages.php:1902
+#: lib/gettext-config.php:29 lib/gettext-config.php:37 lib/messages.php:1902
 #: lib/messages.php:2297 lib/messages.php:2306 lib/messages.php:2321
 msgctxt "lib file description"
 msgid "Premium Licenses"
@@ -1319,15 +1319,15 @@ msgctxt "lib file description"
 msgid "General"
 msgstr "Général"
 
-#: lib/gettext-config.php:36 lib/messages.php:2364
-msgctxt "lib file description"
-msgid "Actions and Tools"
-msgstr "Actions et outils"
-
-#: lib/gettext-config.php:37
+#: lib/gettext-config.php:34
 msgctxt "lib file description"
 msgid "Dashboard"
 msgstr "Tableau de bord"
+
+#: lib/gettext-config.php:35 lib/messages.php:2364
+msgctxt "lib file description"
+msgid "Actions and Tools"
+msgstr "Actions et outils"
 
 #: lib/gettext-config.php:38
 msgctxt "lib file description"
@@ -1372,7 +1372,7 @@ msgstr "Personnaliser le balisage de Schéma Organisation de la page d'accueil e
 #: lib/gettext-config.php:46
 msgctxt "plugin description"
 msgid "Facebook / Open Graph Location, Pinterest Place, Schema Local Business and Local SEO meta tags."
-msgstr "Balises méta Facebook / Open Graph de position, Pinterest place, Schéma d'entreprise et locale SEO."
+msgstr "Balises méta Facebook / Open Graph d'emplacement, Pinterest place, Schéma d'entreprise locale et SEO local."
 
 #: lib/gettext-config.php:47
 msgctxt "plugin description"
@@ -1703,12 +1703,12 @@ msgstr "[Adresse personnalisée]"
 #: lib/gettext-config.php:115
 msgctxt "option value"
 msgid "[New Address]"
-msgstr "[Nouvelle adresse]"
+msgstr "[Adresse nouvelle]"
 
 #: lib/gettext-config.php:117
 msgctxt "option value"
 msgid "[New Organization]"
-msgstr "[Nouvelle organisation]"
+msgstr "[Organisation nouvelle]"
 
 #: lib/gettext-config.php:118
 msgctxt "option value"
@@ -1718,12 +1718,12 @@ msgstr "[Organisation du site Web]"
 #: lib/gettext-config.php:120
 msgctxt "option value"
 msgid "[Custom Place]"
-msgstr "[Place personnalisée]"
+msgstr "[Endroit personnalisé]"
 
 #: lib/gettext-config.php:121
 msgctxt "option value"
 msgid "[New Place]"
-msgstr "[Nouvelle place]"
+msgstr "[Endroit nouveau]"
 
 #: lib/gettext-config.php:122
 msgctxt "option value"
@@ -3171,7 +3171,7 @@ msgstr "[Organisation de %s]"
 #: lib/gettext-pro.php:191 lib/pro/event/tribe_events.php:56
 msgctxt "option value"
 msgid "[%s Venue]"
-msgstr "[L'endroit de %s]"
+msgstr "[Lieu de %s]"
 
 #: lib/gettext-pro.php:192 lib/pro/form/gravityview.php:50
 msgctxt "metabox title"
@@ -3254,7 +3254,7 @@ msgstr "[Compagnie de %s]"
 #: lib/gettext-pro.php:212 lib/pro/job/wpjobmanager.php:56
 msgctxt "option value"
 msgid "[%s Location]"
-msgstr "[Lieu de %s]"
+msgstr "[Emplacement de %s]"
 
 #: lib/head.php:532
 msgid "adding open graph meta tags"
@@ -3583,8 +3583,8 @@ msgid "You may select a more descriptive Schema type from the Organization sub-t
 msgstr "Vous pouvez sélectionner un type de Schéma plus descriptif des sous-types d'organisation (valeur par défaut est Organization)."
 
 #: lib/messages.php:383
-msgid "Select an optional Place / Location for this Organization (requires the %s add-on)."
-msgstr "Choisissez une place / position optionnel pour cette organisation (requiert l'ajout %s)."
+msgid "Select an optional location for this organization (requires the %s add-on)."
+msgstr "Choisissez un emplacement optionnel pour cette organisation (requiert l'ajout %s)."
 
 #: lib/messages.php:402
 msgid "The topic that best describes the Posts and Pages on your website."
@@ -5502,34 +5502,34 @@ msgstr "ajout de schéma de personne pour l'ID d'utilisateur %1$s"
 
 #: lib/schema-single.php:1218
 msgid "adding schema place"
-msgstr "ajout de schéma place"
+msgstr "ajout de schéma d'endroit"
 
-#: lib/schema.php:57
+#: lib/schema.php:67
 msgctxt "image size label"
 msgid "Schema Image"
 msgstr "Image Schéma"
 
-#: lib/schema.php:62
+#: lib/schema.php:72
 msgctxt "image size label"
 msgid "Schema Article Image"
 msgstr "Image Schéma d'article"
 
-#: lib/schema.php:69
+#: lib/schema.php:79
 msgctxt "image size label"
 msgid "Schema Article AMP 1:1 Image"
 msgstr "Image Schéma d'article AMP 1:1"
 
-#: lib/schema.php:74
+#: lib/schema.php:84
 msgctxt "image size label"
 msgid "Schema Article AMP 4:3 Image"
 msgstr "Image Schéma d'article AMP 4:3"
 
-#: lib/schema.php:79
+#: lib/schema.php:89
 msgctxt "image size label"
 msgid "Schema Article AMP 16:9 Image"
 msgstr "Image Schéma d'article AMP 16:9"
 
-#: lib/schema.php:584
+#: lib/schema.php:608
 msgid "adding schema"
 msgstr "ajout de schéma"
 
