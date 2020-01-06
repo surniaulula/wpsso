@@ -355,9 +355,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
 
 						if ( ! empty( $post_type_obj->labels->menu_name ) ) {
-							$title_text = sprintf( _x( '%s Archive', 'default title', 'wpsso' ), $post_type_obj->labels->menu_name );
+
+							$title_text = sprintf( _x( '%s Archive', 'default title', 'wpsso' ),
+								$post_type_obj->labels->menu_name );
+
 						} elseif ( ! empty( $post_type_obj->name ) ) {
-							$title_text = sprintf( _x( '%s Archive', 'default title', 'wpsso' ), $post_type_obj->name );
+
+							$title_text = sprintf( _x( '%s Archive', 'default title', 'wpsso' ),
+								$post_type_obj->name );
 						}
 
 						if ( $this->p->debug->enabled ) {
@@ -648,9 +653,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							}
 
 							if ( ! empty( $post_type_obj->labels->menu_name ) ) {
-								$desc_text = sprintf( _x( 'Archive for %s.', 'default description', 'wpsso' ), $post_type_obj->labels->menu_name );
+
+								$desc_text = sprintf( _x( 'Archive for %s.', 'default description', 'wpsso' ),
+									$post_type_obj->labels->menu_name );
+
 							} elseif ( ! empty( $post_type_obj->name ) ) {
-								$desc_text = sprintf( _x( 'Archive for %s.', 'default description', 'wpsso' ), $post_type_obj->name );
+
+								$desc_text = sprintf( _x( 'Archive for %s.', 'default description', 'wpsso' ),
+									$post_type_obj->name );
 							}
 						}
 

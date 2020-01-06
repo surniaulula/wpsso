@@ -1976,7 +1976,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'before'    => '\0229b',	// Circle asterix.
 				'icon_html' => '&oast;',	// Circle asterix.
 				'dashicons' => array(
-					'addons'         => 'star-filled',
+					'addons'         => 'admin-plugins',
 					'advanced'       => 'admin-settings',	// Default icon.
 					'essential'      => 'admin-generic',
 					'general'        => 'admin-settings',	// Default icon.
@@ -1984,10 +1984,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'dashboard'      => 'dashboard',
 					'setup'          => 'welcome-learn-more',
 					'tools'          => 'admin-tools',
-					'site-addons'    => 'star-filled',
+					'site-addons'    => 'admin-plugins',
 					'site-advanced'  => 'admin-settings',	// Default icon.
 					'site-licenses'  => 'admin-network',
 					'site-setup'     => 'welcome-learn-more',
+					'*'              => 'admin-settings',	// Default icon.
 				),
 			),
 			'notice' => array(

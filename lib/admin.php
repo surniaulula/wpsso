@@ -258,6 +258,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				foreach ( $info[ 'lib' ][ $menu_lib ] as $menu_id => $menu_name ) {
 
+					if ( ! empty( $info[ 'text_domain' ] ) ) {
+						$menu_name = _x( $menu_name, 'lib file description', $info[ 'text_domain' ] );
+					}
+
 					$ksort_key = $menu_name . '-' . $menu_id;
 
 					$parent_slug = $this->p->lca . '-' . $this->menu_id;
@@ -289,11 +293,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( array_merge( $unsorted_menu, $sorted_menu ) as $key => $arg ) {
 
-				if ( $arg[1] === $top_first_id ) {
+				if ( $arg[ 1 ] === $top_first_id ) {
 
 					$css_class = 'top-first-submenu-page';
 
-				} elseif ( $arg[1] === $top_last_id ) {
+				} elseif ( $arg[ 1 ] === $top_last_id ) {
 
 					$css_class = 'top-last-submenu-page';	// Underlined with add-ons.
 
@@ -303,11 +307,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$css_class .= ' with-add-ons';
 					}
 
-				} elseif ( $arg[1] === $ext_first_id ) {
+				} elseif ( $arg[ 1 ] === $ext_first_id ) {
 
 					$css_class = 'ext-first-submenu-page';
 
-				} elseif ( $arg[1] === $ext_last_id ) {
+				} elseif ( $arg[ 1 ] === $ext_last_id ) {
 
 					$css_class = 'ext-last-submenu-page';
 
@@ -316,10 +320,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$css_class = '';
 				}
 
-				if ( isset( $this->submenu[ $arg[1] ] ) ) {
-					$this->submenu[ $arg[1] ]->add_submenu_page( $arg[0], '', '', '', '', $css_class );
+				if ( isset( $this->submenu[ $arg[ 1 ] ] ) ) {
+					$this->submenu[ $arg[ 1 ] ]->add_submenu_page( $arg[ 0 ], '', '', '', '', $css_class );
 				} else {
-					$this->add_submenu_page( $arg[0], $arg[1], $arg[2], $arg[3], $arg[4], $css_class );
+					$this->add_submenu_page( $arg[ 0 ], $arg[ 1 ], $arg[ 2 ], $arg[ 3 ], $arg[ 4 ], $css_class );
 				}
 			}
 		}
@@ -350,6 +354,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					foreach ( $info[ 'lib' ][ $menu_lib ] as $menu_id => $menu_name ) {
 
+						if ( ! empty( $info[ 'text_domain' ] ) ) {
+							$menu_name = _x( $menu_name, 'lib file description', $info[ 'text_domain' ] );
+						}
+
 						$ksort_key = $menu_name . '-' . $menu_id;
 
 						$sorted_menu[ $ksort_key ] = array( $parent_slug, $menu_id, $menu_name, $menu_lib, $ext );
@@ -359,10 +367,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				ksort( $sorted_menu );
 
 				foreach ( $sorted_menu as $key => $arg ) {
-					if ( isset( $this->submenu[ $arg[1] ] ) ) {
-						$this->submenu[ $arg[1] ]->add_submenu_page( $arg[0] );
+
+					if ( isset( $this->submenu[ $arg[ 1 ] ] ) ) {
+						$this->submenu[ $arg[ 1 ] ]->add_submenu_page( $arg[ 0 ] );
 					} else {
-						$this->add_submenu_page( $arg[0], $arg[1], $arg[2], $arg[3], $arg[4] );
+						$this->add_submenu_page( $arg[ 0 ], $arg[ 1 ], $arg[ 2 ], $arg[ 3 ], $arg[ 4 ] );
 					}
 				}
 			}
@@ -482,16 +491,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 */
 			if ( ( $menu_lib === 'submenu' || $menu_lib === 'sitesubmenu' ) && version_compare( $wp_version, '3.8', '>=' ) ) {
 
-				if ( empty( $this->p->cf[ 'menu' ][ 'dashicons' ][ $menu_id ] ) ) {
-
-					if ( $menu_ext === $this->p->lca ) {
-						$dashicon = 'admin-settings';	// Use settings dashicon by default.
-					} else {
-						$dashicon = 'admin-plugins';	// Use plugin dashicon by default for add-ons.
-					}
-
-				} else {
+				if ( ! empty( $this->p->cf[ 'menu' ][ 'dashicons' ][ $menu_id ] ) ) {
 					$dashicon = $this->p->cf[ 'menu' ][ 'dashicons' ][ $menu_id ];
+				} elseif ( ! empty( $this->p->cf[ 'menu' ][ 'dashicons' ][ '*' ] ) ) {
+					$dashicon = $this->p->cf[ 'menu' ][ 'dashicons' ][ '*' ];
+				} else {
+					$dashicon = 'admin-generic';
 				}
 
 				$css_class = $this->p->lca . '-menu-item ' . $this->p->lca . '-' . $menu_id . ( $css_class ? ' ' . $css_class : '' );

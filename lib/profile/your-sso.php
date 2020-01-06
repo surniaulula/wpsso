@@ -21,10 +21,10 @@ if ( ! class_exists( 'WpssoProfileYourSSO' ) && class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$this->menu_id = $id;
+			$this->menu_id   = $id;
 			$this->menu_name = $name;
-			$this->menu_lib = $lib;
-			$this->menu_ext = $ext;
+			$this->menu_lib  = $lib;
+			$this->menu_ext  = $ext;
 		}
 
 		/**
