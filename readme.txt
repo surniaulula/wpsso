@@ -82,7 +82,7 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 * [WPSSO FAQ Manager](https://wordpress.org/plugins/wpsso-faq/) to manage FAQ categories with Question and Answer pages.
 * [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
 * [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/) to manage multiple Organizations.
-* [WPSSO Place / Location and Local SEO Meta](https://wordpress.org/plugins/wpsso-plm/) to manage multiple locations.
+* [WPSSO Place and Local SEO Meta](https://wordpress.org/plugins/wpsso-plm/) to manage multiple locations.
 * [WPSSO Ratings and Reviews](https://wordpress.org/plugins/wpsso-ratings-and-reviews/) to add ratings in WordPress comments.
 * [WPSSO REST API](https://wordpress.org/plugins/wpsso-rest-api/) to add meta tags and Schema markup in REST API queries.
 * [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) to add responsive share buttons.
@@ -90,7 +90,7 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 * [WPSSO Schema JSON-LD Markup](https://wordpress.org/plugins/wpsso-schema-json-ld/) to add JSON-LD in post and archive pages.
 * [WPSSO Social Sharing Buttons](https://wordpress.org/plugins/wpsso-ssb/) to add traditional share buttons.
 * [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata) to strip incorrect markup from templates.
-* [WPSSO Tune WP Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors) for better looking WordPress thumbnails.
+* [WPSSO Tune Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors) for better looking WordPress thumbnails.
 * [WPSSO Tweet a Quote](https://wordpress.org/plugins/wpsso-tweet-a-quote) to add tweetable quotes to your content.
 * [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale) to switch languages quickly and easily.
 
@@ -566,7 +566,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 * **New Features**
 	* The Premium features of the following add-ons have been merged into their Standard version (the Premium versions are no longer available):
-		* [WPSSO Tune WP Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors) for better looking WordPress thumbnails.
+		* [WPSSO Tune Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors) for better looking WordPress thumbnails.
 * **Improvements**
 	* Removed the "Optional Advanced Settings" metabox from the Essential settings page.
 	* Re-added support for `use_block_editor_for_post()` if using WordPress v5.2 or newer (this function was fixed in WordPress v5.2).
