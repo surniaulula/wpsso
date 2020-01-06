@@ -508,7 +508,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'wpssoplm' => array(			// Plugin acronym.
 					'short'       => 'WPSSO PLM',		// Short plugin name.
-					'name'        => 'WPSSO Place / Location and Local SEO Meta',
+					'name'        => 'WPSSO Place and Local SEO Meta',
 					'desc'        => 'Facebook / Open Graph Location, Pinterest Place, Schema Local Business and Local SEO meta tags.',
 					'slug'        => 'wpsso-plm',
 					'base'        => 'wpsso-plm/wpsso-plm.php',
@@ -872,7 +872,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'wpssotie' => array(			// Plugin acronym.
 					'short'       => 'WPSSO TIE',	// Short plugin name.
-					'name'        => 'WPSSO Tune WP Image Editors',
+					'name'        => 'WPSSO Tune Image Editors',
 					'desc'        => 'Sharpen and improve WordPress thumbnails and resized images for social sharing and better SEO.',
 					'slug'        => 'wpsso-tune-image-editors',
 					'base'        => 'wpsso-tune-image-editors/wpsso-tune-image-editors.php',

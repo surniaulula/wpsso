@@ -380,7 +380,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								$plm_addon_link = $this->p->util->get_admin_url( 'addons#wpssoplm', $plm_info[ 'short' ] );
 
-								$text = sprintf( __( 'Select an optional Place / Location for this Organization (requires the %s add-on).',
+								$text = sprintf( __( 'Select an optional Place for this Organization (requires the %s add-on).',
 									'wpsso' ), $plm_addon_link );
 							}
 

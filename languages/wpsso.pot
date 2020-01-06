@@ -3829,8 +3829,7 @@ msgstr ""
 
 #: lib/messages.php:383
 msgid ""
-"Select an optional Place / Location for this Organization (requires the %s "
-"add-on)."
+"Select an optional Place for this Organization (requires the %s add-on)."
 msgstr ""
 
 #: lib/messages.php:402
