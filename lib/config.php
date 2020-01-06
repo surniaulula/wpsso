@@ -183,10 +183,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'setup'     => 'Setup Guide',
 							'general'   => 'General',
 							'advanced'  => 'Advanced',
+							'dashboard' => 'Dashboard',
+							'tools'     => 'Actions and Tools',
 							'addons'    => 'Complementary Add-ons',
 							'licenses'  => 'Premium Licenses',
-							'tools'     => 'Actions and Tools',
-							'dashboard' => 'Dashboard',
 						),
 						'tools' => array(
 							'sso-tools' => 'SSO Actions and Tools',

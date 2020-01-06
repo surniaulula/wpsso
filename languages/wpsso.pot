@@ -1388,12 +1388,12 @@ msgctxt "lib file description"
 msgid "Advanced"
 msgstr ""
 
-#: lib/gettext-config.php:28 lib/gettext-config.php:34 lib/messages.php:2318
+#: lib/gettext-config.php:28 lib/gettext-config.php:36 lib/messages.php:2318
 msgctxt "lib file description"
 msgid "Complementary Add-ons"
 msgstr ""
 
-#: lib/gettext-config.php:29 lib/gettext-config.php:35 lib/messages.php:1902
+#: lib/gettext-config.php:29 lib/gettext-config.php:37 lib/messages.php:1902
 #: lib/messages.php:2297 lib/messages.php:2306 lib/messages.php:2321
 msgctxt "lib file description"
 msgid "Premium Licenses"
@@ -1409,14 +1409,14 @@ msgctxt "lib file description"
 msgid "General"
 msgstr ""
 
-#: lib/gettext-config.php:36 lib/messages.php:2364
-msgctxt "lib file description"
-msgid "Actions and Tools"
-msgstr ""
-
-#: lib/gettext-config.php:37
+#: lib/gettext-config.php:34
 msgctxt "lib file description"
 msgid "Dashboard"
+msgstr ""
+
+#: lib/gettext-config.php:35 lib/messages.php:2364
+msgctxt "lib file description"
+msgid "Actions and Tools"
 msgstr ""
 
 #: lib/gettext-config.php:38
