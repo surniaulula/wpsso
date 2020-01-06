@@ -433,7 +433,7 @@
 <h3>Plugin Setup</h3>
 
 <ul>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/a-setup-guide/">A Setup Guide for WPSSO</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/a-setup-guide/">Setup Guide and Notes for WPSSO Core</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/">Developer Special - Buy one, Get one Free</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/better-schema-for-woocommerce-step-by-step-guide/">Better Schema.org Markup for WooCommerce</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/">Integration Notes</a>

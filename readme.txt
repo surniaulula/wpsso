@@ -346,7 +346,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 
 <h3>Plugin Setup</h3>
 
-* [A Setup Guide for WPSSO](https://wpsso.com/docs/plugins/wpsso/installation/a-setup-guide/)
+* [Setup Guide and Notes for WPSSO Core](https://wpsso.com/docs/plugins/wpsso/installation/a-setup-guide/)
 * [Developer Special - Buy one, Get one Free](https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/)
 * [Better Schema.org Markup for WooCommerce](https://wpsso.com/docs/plugins/wpsso/installation/better-schema-for-woocommerce-step-by-step-guide/)
 * [Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/)
