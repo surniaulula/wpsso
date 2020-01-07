@@ -41,6 +41,10 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				return;
 			}
 
+			/**
+			 * Check the 'update_plugins' site transient and return the number of updates pending for a given slug
+			 * prefix.
+			 */
 			$update_count = SucomPlugin::get_updates_count( $plugin_prefix = $this->p->lca );
 
 			if ( $update_count > 0 ) {

@@ -319,7 +319,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 		}
 
 		/**
-		 * Return the number of updates pending for a slug prefix.
+		 * Check the 'update_plugins' site transient and return the number of updates pending for a given slug prefix.
 		 *
 		 * Example: $plugin_prefix = 'wpsso'
 		 */
@@ -330,8 +330,11 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 			$update_plugins = get_site_transient( 'update_plugins' );
 
 			if ( ! empty( $update_plugins->response ) ) {
+
 				if ( ! empty( $plugin_prefix ) ) {
+
 					foreach ( $update_plugins->response as $base => $data ) {
+
 						if ( isset( $data->slug ) && strpos( $data->slug, $plugin_prefix ) === 0 ) {
 							$count++;
 						}

@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.16.2',	// Plugin version.
+					'version'     => '6.16.3-dev.1',	// Plugin version.
 					'opt_version' => '693',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -184,12 +184,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'general'   => 'General',
 							'advanced'  => 'Advanced',
 							'dashboard' => 'Dashboard',
-							'tools'     => 'Actions and Tools',
+							'tools'     => 'Tools and Actions',
 							'addons'    => 'Complementary Add-ons',
 							'licenses'  => 'Premium Licenses',
 						),
 						'tools' => array(
-							'sso-tools' => 'SSO Actions and Tools',
+							'sso-tools' => 'SSO Tools and Actions',
 						),
 					),
 				),
@@ -1972,20 +1972,17 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'version' => '1.12.1',
 			),
 			'menu' => array(
-				'title'     => 'SSO',		// Menu title.
+				'title'     => 'SSO Settings',	// Menu title.
 				'before'    => '\0229b',	// Circle asterix.
 				'icon_html' => '&oast;',	// Circle asterix.
 				'dashicons' => array(
 					'addons'         => 'admin-plugins',
-					'advanced'       => 'admin-settings',	// Default icon.
-					'essential'      => 'admin-generic',
-					'general'        => 'admin-settings',	// Default icon.
+					'essential'      => 'star-filled',
 					'licenses'       => 'admin-network',
 					'dashboard'      => 'dashboard',
 					'setup'          => 'welcome-learn-more',
 					'tools'          => 'admin-tools',
 					'site-addons'    => 'admin-plugins',
-					'site-advanced'  => 'admin-settings',	// Default icon.
 					'site-licenses'  => 'admin-network',
 					'site-setup'     => 'welcome-learn-more',
 					'*'              => 'admin-settings',	// Default icon.
@@ -3596,7 +3593,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_CACHEDIR' ] = self::get_cache_dir();
 			$var_const[ 'WPSSO_CACHEURL' ] = self::get_cache_url();
 
-			$var_const[ 'WPSSO_MENU_ORDER' ]                  = '99.10';	// Position of the SSO menu item.
+			$var_const[ 'WPSSO_MENU_ORDER' ]                  = '80.0';	// Position of the SSO settings menu item.
 			$var_const[ 'WPSSO_TB_NOTICE_MENU_ORDER' ]        = '55';	// Position of the SSO notices toolbar menu item.
 			$var_const[ 'WPSSO_TB_LOCALE_MENU_ORDER' ]        = '60';	// Position of the user locale toolbar menu item.
 			$var_const[ 'WPSSO_JSON_PRETTY_PRINT' ]           = false;	// Output pretty / human readable json.
