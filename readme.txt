@@ -457,6 +457,23 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 6.16.3-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Renamed the 'SSO' menu page to 'SSO Settings'.
+	* Moved the 'SSO Settings' menua page under the WordPress 'Settings' menu page.
+	* Updated the SSO menu sorting to use translated menu item names.
+	* Updated the default SSO menu item icon to the admin-settings dashicon.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v5.5.
+	* WordPress v4.0.
+
 **Version 6.16.2 (2020/01/05)**
 
 * **New Features**
