@@ -348,7 +348,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 							sprintf( __( 'Save a draft version or publish the %s to display these options.', 'wpsso' ),
 								SucomUtil::titleize( $mod[ 'post_type' ] ) ) .
 						'</p>' .
-					'<blockquote>' .
+					'</blockquote>' .
 				'</td>';
 
 				return $table_rows;	// Stop here.
