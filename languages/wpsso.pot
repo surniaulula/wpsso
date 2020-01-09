@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.16.3-dev.1\n"
+"Project-Id-Version: WPSSO Core 6.16.3-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -900,7 +900,7 @@ msgstr ""
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:445 lib/gettext-com.php:31 lib/post.php:1553
+#: lib/com/notice.php:445 lib/gettext-com.php:31 lib/post.php:1561
 msgid "Edit"
 msgstr ""
 
@@ -909,12 +909,12 @@ msgid "Reference: %s"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/com/plugin.php:271 lib/gettext-com.php:42
+#: lib/com/plugin.php:275 lib/gettext-com.php:42
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/com/plugin.php:282 lib/gettext-com.php:44
+#: lib/com/plugin.php:286 lib/gettext-com.php:44
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
@@ -6217,46 +6217,46 @@ msgstr ""
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1543 lib/script.php:243
+#: lib/post.php:1551 lib/script.php:243
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1554
+#: lib/post.php:1562
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1567
+#: lib/post.php:1575
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1568
+#: lib/post.php:1576
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1569
+#: lib/post.php:1577
 msgctxt "option label"
 msgid "No image index"
 msgstr ""
 
-#: lib/post.php:1570
+#: lib/post.php:1578
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1571
+#: lib/post.php:1579
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1572
+#: lib/post.php:1580
 msgctxt "option label"
 msgid "No translate"
 msgstr ""
 
-#: lib/post.php:1697
+#: lib/post.php:1705
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
