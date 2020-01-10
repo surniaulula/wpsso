@@ -457,7 +457,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.16.3-dev.2 (2020/01/09)**
+**Version 6.16.3-dev.3 (2020/01/09)**
 
 * **New Features**
 	* None.
@@ -870,7 +870,7 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 
 == Upgrade Notice ==
 
-= 6.16.3-dev.2 =
+= 6.16.3-dev.3 =
 
 (2020/01/09) Renamed the 'SSO' menu page to 'SSO Settings'. Updated the SSO sub-menu sorting to use the translated sub-menu item names. Re-added post cache clearing for W3 Total Cache and WP Super Cache when a post ID is updated.
 
