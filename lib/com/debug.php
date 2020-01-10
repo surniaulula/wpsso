@@ -332,11 +332,20 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 					}
 
 					foreach ( $data as $key => $val ) {
+
 						if ( is_string( $val ) && false !== strpos( $val, '<!--' ) ) {	// Remove HTML comments.
+
 							$val = preg_replace( '/<!--.*-->/Ums', '', $val );
+
 						} elseif ( is_array( $val ) ) {	// Just in case.
+
 							$val = print_r( $val, true );
 						}
+
+						/**
+						 * Firefox does not allow double-dashes inside comment blocks.
+						 */
+						$val = str_replace( '--', '&mdash;', $val );
 
 						$html .= $is_assoc ? "\t$key = $val\n" : "\t$val\n";
 					}

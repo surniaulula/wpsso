@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.16.3-dev.2',	// Plugin version.
-					'opt_version' => '693',		// Increment when changing default option values.
+					'version'     => '6.16.3-dev.3',	// Plugin version.
+					'opt_version' => '694',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -1088,7 +1088,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_user_page'    => 'webpage.profile',
 
 					/**
-					 * Other txonomy and post types.
+					 * Other taxonomy and post types.
 					 */
 					'schema_type_for_article'                => 'article',
 					'schema_type_for_book'                   => 'book',
@@ -1158,10 +1158,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_type_for_user_page'        => 'website',
 					
 					/**
-					 * Other term / post types.
+					 * Other taxonomy and post types.
 					 */
 					'og_type_for_article'      => 'article',
 					'og_type_for_download'     => 'product',		// For Easy Digital Downloads.
+					'og_type_for_organization' => 'website',
 					'og_type_for_place'        => 'place',
 					'og_type_for_product'      => 'product', 		// For WooCommerce and most e-commerce plugins.
 					'og_type_for_website'      => 'website',
@@ -3386,6 +3387,17 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'FedEx'    => 'http://purl.org/goodrelations/v1#FederalExpress',
 						'UPS'      => 'http://purl.org/goodrelations/v1#UPS',
 					),
+				),
+
+				/**
+				 * Schema type to Open Graph type lookup array.
+				 */
+				'schema_type_og_type' => array(
+					'article'              => 'article',
+					'organization'         => 'website',
+					'place'                => 'place',
+					'product'              => 'product',
+					'software.application' => 'product',
 				),
 			),
 			'extend' => array(

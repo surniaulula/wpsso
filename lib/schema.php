@@ -906,20 +906,27 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Check of the Schema type requires a specific Open Graph type. Retuns false, or an Open Graph type string. For
-		 * example, a Schema Product type / sub-type would return 'product' for the Open Graph type.
+		 * Check if the Schema type requires a specific Open Graph type.
+		 *
+		 * For example, a Schema Place sub-type would return 'place' for the Open Graph type.
+		 *
+		 * Returns false or an Open Graph type string.
 		 */
 		public function get_schema_type_og_type( $type_id ) {
 
-			if ( $this->is_schema_type_child( $type_id, 'place' ) ) {
-				return 'place';
-			} elseif ( $this->is_schema_type_child( $type_id, 'product' ) ) {
-				return 'product';
-			} elseif ( $this->is_schema_type_child( $type_id, 'software.application' ) ) {
-				return 'product';
+			static $local_cache = array();	// Cache for single page load.
+
+			if ( isset( $local_cache[ $type_id ] ) ) {
+				return $local_cache[ $type_id ];
 			}
 
-			return false;
+			foreach ( $this->p->cf[ 'head' ][ 'schema_type_og_type' ] as $parent_id => $og_type ) {
+				if ( $this->is_schema_type_child( $type_id, $parent_id ) ) {
+					return $local_cache[ $type_id ] = $og_type;
+				}
+			}
+
+			return $local_cache[ $type_id ] = false;
 		}
 
 		public function get_schema_types_select( $schema_types = null, $add_none = true ) {
@@ -1299,17 +1306,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function is_schema_type_child( $child_id, $member_id ) {
 
-			static $local_cache = array();	// Cache for single page load.
+			static $local_cache = array();		// Cache for single page load.
 
 			if ( isset( $local_cache[ $child_id ][ $member_id ] ) ) {
 				return $local_cache[ $child_id ][ $member_id ];
 			}
 
 			if ( $child_id === $member_id ) {	// Optimize and check for obvious.
+
 				$is_child = true;
+
 			} else {
+
 				$child_family = $this->get_schema_type_child_family( $child_id );
-				$is_child     = in_array( $member_id, $child_family ) ? true : false;
+
+				$is_child = in_array( $member_id, $child_family ) ? true : false;
 			}
 
 			return $local_cache[ $child_id ][ $member_id ] = $is_child;
@@ -2618,11 +2629,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( isset( $md_opts[ 'schema_type' ] ) ) {
+				$type_id = $md_opts[ 'schema_type' ];
+			} else {
+				$type_id = $this->get_mod_schema_type( $mod, $get_schema_id = true, $use_mod_opts = false );
+			}
 
-				if ( $og_type = $this->get_schema_type_og_type( $md_opts[ 'schema_type' ] ) ) {
-					$md_opts[ 'og_type' ]    = $og_type;
-					$md_opts[ 'og_type:is' ] = 'disabled';
-				}
+			if ( $og_type = $this->get_schema_type_og_type( $type_id ) ) {
+				$md_opts[ 'og_type' ]    = $og_type;
+				$md_opts[ 'og_type:is' ] = 'disabled';
 			}
 
 			return $md_opts;
