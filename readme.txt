@@ -457,7 +457,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.16.3-rc.1 (2020/01/12)**
+**Version 6.16.3-rc.2 (2020/01/12)**
 
 * **New Features**
 	* None.
@@ -470,7 +470,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a new WpssoPost->get_post_type_og_type() public method (returns false, or an Open Graph type string).
+	* Moved the `WpssoSchema->filter_get_post_options()` and `WpssoSchema->filter_save_post_options()` filters to the WpssoOpenGraph class.
+	* Moved the `WpssoSchema->update_post_md_opts()` method to the WpssoOpenGraph class.
 * **Requires At Least**
 	* PHP v5.5.
 	* WordPress v4.0.
@@ -485,8 +487,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Added `WpssoSchema->filter_get_post_options()` and `WpssoSchema->filter_save_post_options()` filter hooks to set the Open Graph type based on the Schema type.
-	* Added a new WpssoSchema->get_schema_type_og_type() public method (returns false, or an Open Graph type string).
-	* Added a new WpssoSchema->update_post_md_opts() private method.
+	* Added a new `WpssoSchema->get_schema_type_og_type()` public method (returns false, or an Open Graph type string).
+	* Added a new `WpssoSchema->update_post_md_opts()` private method.
 * **Requires At Least**
 	* PHP v5.5.
 	* WordPress v4.0.
@@ -870,7 +872,7 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 
 == Upgrade Notice ==
 
-= 6.16.3-rc.1 =
+= 6.16.3-rc.2 =
 
 (2020/01/12) Renamed the 'SSO' menu page to 'SSO Settings'. Updated the SSO sub-menu sorting to use the translated sub-menu item names. Re-added post cache clearing for W3 Total Cache when a post ID is updated.
 
