@@ -3394,10 +3394,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 */
 				'schema_type_og_type' => array(
 					'article'              => 'article',
-					'organization'         => 'website',
 					'place'                => 'place',
 					'product'              => 'product',
 					'software.application' => 'product',
+					'organization'         => 'website',	// Match the Schema place type before Schema organization.
 				),
 			),
 			'extend' => array(
