@@ -1350,6 +1350,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				if ( function_exists( 'w3tc_pgcache_flush' ) ) {	// W3 Total Cache.
 
 					w3tc_pgcache_flush();
+
 					w3tc_objectcache_flush();
 
 					if ( $status_msg ) {

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.16.3-dev.3\n"
+"Project-Id-Version: WPSSO Core 6.16.3-rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -900,7 +900,7 @@ msgstr ""
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:445 lib/gettext-com.php:31 lib/post.php:1561
+#: lib/com/notice.php:445 lib/gettext-com.php:31 lib/post.php:1557
 msgid "Edit"
 msgstr ""
 
@@ -2698,7 +2698,7 @@ msgid "Refresh Short URLs on Clear Cache"
 msgstr ""
 
 #: lib/gettext-pro.php:54 lib/pro/admin/advanced.php:312
-#: lib/std/admin/advanced.php:320 lib/util.php:1379
+#: lib/std/admin/advanced.php:320 lib/util.php:1380
 msgctxt "option label"
 msgid "Auto-Refresh Cache After Clearing"
 msgstr ""
@@ -3444,7 +3444,7 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
 #: lib/loader.php:184 lib/loader.php:210 lib/post.php:458 lib/register.php:315
-#: lib/term.php:434 lib/user.php:381 lib/util.php:524 lib/util.php:3391
+#: lib/term.php:434 lib/user.php:381 lib/util.php:524 lib/util.php:3392
 msgid "%s warning:"
 msgstr ""
 
@@ -6077,7 +6077,7 @@ msgstr ""
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
 #: lib/post.php:444 lib/term.php:420 lib/user.php:367 lib/util.php:510
-#: lib/util.php:3363
+#: lib/util.php:3364
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -6131,7 +6131,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:996 lib/util.php:1892
+#: lib/post.php:996 lib/util.php:1893
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -6217,46 +6217,46 @@ msgstr ""
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1551 lib/script.php:243
+#: lib/post.php:1547 lib/script.php:243
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1562
+#: lib/post.php:1558
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1575
+#: lib/post.php:1571
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1576
+#: lib/post.php:1572
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1577
+#: lib/post.php:1573
 msgctxt "option label"
 msgid "No image index"
 msgstr ""
 
-#: lib/post.php:1578
+#: lib/post.php:1574
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1579
+#: lib/post.php:1575
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1580
+#: lib/post.php:1576
 msgctxt "option label"
 msgid "No translate"
 msgstr ""
 
-#: lib/post.php:1705
+#: lib/post.php:1701
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -6932,68 +6932,68 @@ msgstr ""
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:1364 lib/util.php:1503
+#: lib/util.php:1365 lib/util.php:1504
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/util.php:1370
+#: lib/util.php:1371
 msgid ""
 "A background task will begin shortly to refresh the post, term, and user "
 "cache objects."
 msgstr ""
 
-#: lib/util.php:1381
+#: lib/util.php:1382
 msgid "Cache objects will be re-created as they are needed (%s is disabled)."
 msgstr ""
 
-#: lib/util.php:1497
+#: lib/util.php:1498
 msgid ""
 "The meta tag and Schema markup caches for %1$d posts, %2$d terms, and %3$d "
 "users have been refreshed."
 msgstr ""
 
-#: lib/util.php:1720
+#: lib/util.php:1721
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util.php:1747
+#: lib/util.php:1748
 msgid "Failed to remove the cache file %s."
 msgstr ""
 
-#: lib/util.php:1809
+#: lib/util.php:1810
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:1879
+#: lib/util.php:1880
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1905
+#: lib/util.php:1906
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:2099
+#: lib/util.php:2100
 msgid ""
 "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
 "provider to have the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:2112
+#: lib/util.php:2113
 msgid ""
 "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
 "provider to have the missing function installed."
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max.
-#: lib/util.php:3366
+#: lib/util.php:3367
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3383
+#: lib/util.php:3384
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -7002,39 +7002,39 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3383
+#: lib/util.php:3384
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3680
+#: lib/util.php:3681
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:3709
+#: lib/util.php:3710
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3712
+#: lib/util.php:3713
 msgctxt "option comment"
 msgid "show these options now"
 msgstr ""
 
-#: lib/util.php:3717
+#: lib/util.php:3718
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3720
+#: lib/util.php:3721
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name, and %3$s is the object ID.
-#: lib/util.php:4210
+#: lib/util.php:4211
 msgid "%1$s for %2$s ID %3$s"
 msgstr ""
 
