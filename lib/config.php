@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.16.3-rc.1',	// Plugin version.
+					'version'     => '6.16.3-rc.2',	// Plugin version.
 					'opt_version' => '694',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2357,6 +2357,27 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_headline_len'      => 110,
 					'schema_img_ratio'         => 2.500,	// See https://developers.google.com/+/web/snippet/article-rendering.
 				),
+
+				/**
+				 * Hard-code the Open Graph type based on the WordPress post type.
+				 */
+				'og_type_by_post_type' => array(
+					'organization' => 'website',
+					'place'        => 'place',
+					'product'      => 'product',
+				),
+
+				/**
+				 * Hard-code the Open Graph type based on the Schema type.
+				 */
+				'og_type_by_schema_type' => array(
+					'article'              => 'article',
+					'place'                => 'place',	// Check for Schema place before Schema organization.
+					'organization'         => 'website',	// Check for Schema place before Schema organization.
+					'product'              => 'product',
+					'software.application' => 'product',
+				),
+
 				'og_type_ns' => array(		// See http://ogp.me/#types.
 					'article'             => 'http://ogp.me/ns/article#',
 					'book'                => 'http://ogp.me/ns/book#',
@@ -3387,17 +3408,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'FedEx'    => 'http://purl.org/goodrelations/v1#FederalExpress',
 						'UPS'      => 'http://purl.org/goodrelations/v1#UPS',
 					),
-				),
-
-				/**
-				 * Schema type to Open Graph type lookup array.
-				 */
-				'schema_type_og_type' => array(
-					'article'              => 'article',
-					'place'                => 'place',
-					'product'              => 'product',
-					'software.application' => 'product',
-					'organization'         => 'website',	// Match the Schema place type before Schema organization.
 				),
 			),
 			'extend' => array(

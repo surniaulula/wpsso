@@ -39,8 +39,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$max_int = SucomUtil::get_max_int();
-
 			/**
 			 * Instantiate the WpssoSchemaNoScript class object.
 			 */
@@ -53,11 +51,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$this->p->util->add_plugin_filters( $this, array( 
 				'plugin_image_sizes' => 1,
 			), $prio = 5 );
-
-			$this->p->util->add_plugin_filters( $this, array(
-				'get_post_options'  => 3,
-				'save_post_options' => 4,
-			), $max_int );
 		}
 
 		public function filter_plugin_image_sizes( $sizes ) {
@@ -91,20 +84,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			return $sizes;
-		}
-
-		public function filter_get_post_options( $md_opts, $post_id, $mod ) {
-
-			$this->update_post_md_opts( $md_opts, $post_id, $mod );	// Modifies the $md_opts array.
-
-			return $md_opts;
-		}
-
-		public function filter_save_post_options( $md_opts, $post_id, $rel_id, $mod ) {
-
-			$this->update_post_md_opts( $md_opts, $post_id, $mod );	// Modifies the $md_opts array.
-
-			return $md_opts;
 		}
 
 		/**
@@ -906,9 +885,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Check if the Schema type requires a specific Open Graph type.
+		 * Check if the Schema type requires a specific hard-coded Open Graph type.
 		 *
-		 * For example, a Schema Place sub-type would return 'place' for the Open Graph type.
+		 * For example, a Schema place sub-type would return 'place' for the Open Graph type.
 		 *
 		 * Returns false or an Open Graph type string.
 		 */
@@ -917,11 +896,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			static $local_cache = array();	// Cache for single page load.
 
 			if ( isset( $local_cache[ $type_id ] ) ) {
+
 				return $local_cache[ $type_id ];
 			}
 
-			foreach ( $this->p->cf[ 'head' ][ 'schema_type_og_type' ] as $parent_id => $og_type ) {
+			/**
+			 * Hard-code the Open Graph type based on the Schema type.
+			 */
+			foreach ( $this->p->cf[ 'head' ][ 'og_type_by_schema_type' ] as $parent_id => $og_type ) {
+
 				if ( $this->is_schema_type_child( $type_id, $parent_id ) ) {
+
 					return $local_cache[ $type_id ] = $og_type;
 				}
 			}
@@ -2620,26 +2605,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			} else {
 				return $json_data;
 			}
-		}
-
-		private function update_post_md_opts( &$md_opts, $post_id, $mod ) {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
-
-			if ( isset( $md_opts[ 'schema_type' ] ) ) {
-				$type_id = $md_opts[ 'schema_type' ];
-			} else {
-				$type_id = $this->get_mod_schema_type( $mod, $get_schema_id = true, $use_mod_opts = false );
-			}
-
-			if ( $og_type = $this->get_schema_type_og_type( $type_id ) ) {
-				$md_opts[ 'og_type' ]    = $og_type;
-				$md_opts[ 'og_type:is' ] = 'disabled';
-			}
-
-			return $md_opts;
 		}
 	}
 }

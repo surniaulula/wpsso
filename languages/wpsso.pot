@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.16.3-rc.1\n"
+"Project-Id-Version: WPSSO Core 6.16.3-rc.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -259,7 +259,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:1021 lib/post.php:776 lib/term.php:654 lib/user.php:655
+#: lib/admin.php:1021 lib/post.php:808 lib/term.php:654 lib/user.php:655
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -883,7 +883,7 @@ msgctxt "option comment"
 msgid "from"
 msgstr ""
 
-#: lib/com/form.php:1881 lib/gettext-com.php:25 lib/post.php:1355
+#: lib/com/form.php:1881 lib/gettext-com.php:25 lib/post.php:1387
 #: lib/wp-meta.php:596 lib/wp-meta.php:726
 msgid "Save a draft version or publish to update this value."
 msgstr ""
@@ -900,7 +900,7 @@ msgstr ""
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:445 lib/gettext-com.php:31 lib/post.php:1557
+#: lib/com/notice.php:445 lib/gettext-com.php:31 lib/post.php:1589
 msgid "Edit"
 msgstr ""
 
@@ -3443,7 +3443,7 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
-#: lib/loader.php:184 lib/loader.php:210 lib/post.php:458 lib/register.php:315
+#: lib/loader.php:184 lib/loader.php:210 lib/post.php:490 lib/register.php:315
 #: lib/term.php:434 lib/user.php:381 lib/util.php:524 lib/util.php:3392
 msgid "%s warning:"
 msgstr ""
@@ -5866,7 +5866,7 @@ msgctxt "option value"
 msgid "cropped"
 msgstr ""
 
-#: lib/opengraph.php:59
+#: lib/opengraph.php:66
 msgctxt "image size label"
 msgid "Open Graph Image"
 msgstr ""
@@ -6076,187 +6076,187 @@ msgstr ""
 
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
-#: lib/post.php:444 lib/term.php:420 lib/user.php:367 lib/util.php:510
+#: lib/post.php:476 lib/term.php:420 lib/user.php:367 lib/util.php:510
 #: lib/util.php:3364
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a recommended max
-#: lib/post.php:447
+#: lib/post.php:479
 msgid ""
 "Slow query detected - WordPress get_posts() took %1$0.3f secs to get the "
 "children of post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:721 lib/post.php:1278
+#: lib/post.php:753 lib/post.php:1310
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/post.php:919
+#: lib/post.php:951
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:950
+#: lib/post.php:982
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:952
+#: lib/post.php:984
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:953
+#: lib/post.php:985
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:979
+#: lib/post.php:1011
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:981
+#: lib/post.php:1013
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:983
+#: lib/post.php:1015
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:984
+#: lib/post.php:1016
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:996 lib/util.php:1893
+#: lib/post.php:1028 lib/util.php:1893
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1009
+#: lib/post.php:1041
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1022
+#: lib/post.php:1054
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1035
+#: lib/post.php:1067
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1057
+#: lib/post.php:1089
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:1092
+#: lib/post.php:1124
 msgid "The webpage at %1$s does not include any Schema JSON-LD script(s)."
 msgstr ""
 
-#: lib/post.php:1094
+#: lib/post.php:1126
 msgid ""
 "Complete and accurate Schema JSON-LD markup is highly recommended for better "
 "ranking and click-through rates in search results."
 msgstr ""
 
-#: lib/post.php:1096
+#: lib/post.php:1128
 msgid ""
 "Consider activating the %1$s add-on to include Schema JSON-LD markup for "
 "Google Rich Results / Rich Snippets."
 msgstr ""
 
-#: lib/post.php:1115
+#: lib/post.php:1147
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:1131
+#: lib/post.php:1163
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1131
+#: lib/post.php:1163
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML &mdash; review the <a href=\"%1$s\">W3C Markup Validation "
 "Service</a> results and correct any errors."
 msgstr ""
 
-#: lib/post.php:1131
+#: lib/post.php:1163
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:1163
+#: lib/post.php:1195
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1164
+#: lib/post.php:1196
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1170
+#: lib/post.php:1202
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1173
+#: lib/post.php:1205
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1175
+#: lib/post.php:1207
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1547 lib/script.php:243
+#: lib/post.php:1579 lib/script.php:243
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1558
+#: lib/post.php:1590
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1571
+#: lib/post.php:1603
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1572
+#: lib/post.php:1604
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1573
+#: lib/post.php:1605
 msgctxt "option label"
 msgid "No image index"
 msgstr ""
 
-#: lib/post.php:1574
+#: lib/post.php:1606
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1575
+#: lib/post.php:1607
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1576
+#: lib/post.php:1608
 msgctxt "option label"
 msgid "No translate"
 msgstr ""
 
-#: lib/post.php:1701
+#: lib/post.php:1733
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -6331,32 +6331,32 @@ msgstr ""
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema.php:67
+#: lib/schema.php:60
 msgctxt "image size label"
 msgid "Schema Image"
 msgstr ""
 
-#: lib/schema.php:72
+#: lib/schema.php:65
 msgctxt "image size label"
 msgid "Schema Article Image"
 msgstr ""
 
-#: lib/schema.php:79
+#: lib/schema.php:72
 msgctxt "image size label"
 msgid "Schema Article AMP 1:1 Image"
 msgstr ""
 
-#: lib/schema.php:84
+#: lib/schema.php:77
 msgctxt "image size label"
 msgid "Schema Article AMP 4:3 Image"
 msgstr ""
 
-#: lib/schema.php:89
+#: lib/schema.php:82
 msgctxt "image size label"
 msgid "Schema Article AMP 16:9 Image"
 msgstr ""
 
-#: lib/schema.php:608
+#: lib/schema.php:587
 msgid "adding schema"
 msgstr ""
 

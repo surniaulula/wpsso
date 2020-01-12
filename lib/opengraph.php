@@ -23,9 +23,16 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$max_int = SucomUtil::get_max_int();
+
 			$this->p->util->add_plugin_filters( $this, array(
 				'plugin_image_sizes' => 1,
 			) );
+
+			$this->p->util->add_plugin_filters( $this, array(
+				'get_post_options'  => 3,
+				'save_post_options' => 4,
+			), $max_int );
 
 			/**
 			 * Hook the first available filter name (example: 'language_attributes').
@@ -60,6 +67,20 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			);
 
 			return $sizes;
+		}
+
+		public function filter_get_post_options( $md_opts, $post_id, $mod ) {
+
+			$this->update_post_md_opts( $md_opts, $post_id, $mod );	// Modifies the $md_opts array.
+
+			return $md_opts;
+		}
+
+		public function filter_save_post_options( $md_opts, $post_id, $rel_id, $mod ) {
+
+			$this->update_post_md_opts( $md_opts, $post_id, $mod );	// Modifies the $md_opts array.
+
+			return $md_opts;
 		}
 
 		public function add_ogpns_attributes( $html_attr ) {
@@ -1673,6 +1694,41 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						break;
 				}
 			}
+		}
+
+		private function update_post_md_opts( &$md_opts, $post_id, $mod ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			/**
+			 * Check if the post type or Schema type requires a specific hard-coded Open Graph type.
+			 */
+			if ( empty( $md_opts[ 'og_type:is' ] ) ) {
+
+				if ( false && $og_type = $this->p->post->get_post_type_og_type( $mod ) ) {
+
+					$md_opts[ 'og_type' ]    = $og_type;
+					$md_opts[ 'og_type:is' ] = 'disabled';
+
+				} else {
+
+					if ( isset( $md_opts[ 'schema_type' ] ) ) {
+						$type_id = $md_opts[ 'schema_type' ];
+					} else {
+						$type_id = $this->p->schema->get_mod_schema_type( $mod, $get_schema_id = true, $use_mod_opts = false );
+					}
+
+					if ( $og_type = $this->p->schema->get_schema_type_og_type( $type_id ) ) {
+
+						$md_opts[ 'og_type' ]    = $og_type;
+						$md_opts[ 'og_type:is' ] = 'disabled';
+					}
+				}
+			}
+
+			return $md_opts;
 		}
 	}
 }

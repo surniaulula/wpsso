@@ -231,6 +231,38 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/**
+		 * Check if the post type requires a specific hard-coded Open Graph type.
+		 *
+		 * For example, a post type 'organization' would return 'website' for the Open Graph type.
+		 *
+		 * Returns false or an Open Graph type string.
+		 */
+		public function get_post_type_og_type( $mod ) {
+
+			static $local_cache = array();	// Cache for single page load.
+
+			$mod_salt = SucomUtil::get_mod_salt( $mod );
+
+			if ( isset( $local_cache[ $mod_salt ] ) ) {
+
+				return $local_cache[ $mod_salt ];
+			}
+
+			/**
+			 * Hard-code the Open Graph type based on the WordPress post type.
+			 */
+			if ( ! empty( $mod[ 'post_type' ] ) ) {
+
+				if ( ! empty( $this->p->cf[ 'head' ][ 'og_type_by_post_type' ][ $mod[ 'post_type' ] ] ) ) {
+
+					return $local_cache[ $mod_salt ] = $this->p->cf[ 'head' ][ 'og_type_by_post_type' ][ $mod[ 'post_type' ] ];
+				}
+			}
+
+			return $local_cache[ $mod_salt ] = false;
+		}
+
+		/**
 		 * Option handling methods:
 		 *
 		 *	get_defaults()
