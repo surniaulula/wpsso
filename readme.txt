@@ -457,7 +457,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.16.3-dev.3 (2020/01/09)**
+**Version 6.16.3-rc.1 (2020/01/12)**
 
 * **New Features**
 	* None.
@@ -466,7 +466,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Re-ordered the 'SSO Settings' menu page under the WordPress 'Settings' menu page.
 	* Updated the SSO sub-menu sorting to use the translated sub-menu item names.
 	* Updated the default SSO menu item icon to the admin-settings dashicon.
-	* Re-added post cache clearing for W3 Total Cache and WP Super Cache when a post ID is updated.
+	* Re-added post cache clearing for W3 Total Cache when a post ID is updated.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -870,9 +870,9 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 
 == Upgrade Notice ==
 
-= 6.16.3-dev.3 =
+= 6.16.3-rc.1 =
 
-(2020/01/09) Renamed the 'SSO' menu page to 'SSO Settings'. Updated the SSO sub-menu sorting to use the translated sub-menu item names. Re-added post cache clearing for W3 Total Cache and WP Super Cache when a post ID is updated.
+(2020/01/12) Renamed the 'SSO' menu page to 'SSO Settings'. Updated the SSO sub-menu sorting to use the translated sub-menu item names. Re-added post cache clearing for W3 Total Cache when a post ID is updated.
 
 = 6.16.2 =
 
