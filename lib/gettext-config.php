@@ -24,7 +24,7 @@ _x( 'Complementary Add-ons', 'lib file description', 'wpsso' );
 _x( 'Premium Licenses', 'lib file description', 'wpsso' );
 _x( 'Essential Settings', 'lib file description', 'wpsso' );
 _x( 'Setup Guide', 'lib file description', 'wpsso' );
-_x( 'SSO Dashboard', 'lib file description', 'wpsso' );
+_x( 'Dashboard', 'lib file description', 'wpsso' );
 _x( 'General Settings', 'lib file description', 'wpsso' );
 _x( 'Advanced Settings', 'lib file description', 'wpsso' );
 _x( 'Social Pages', 'lib file description', 'wpsso' );

@@ -170,7 +170,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'submenu' => array(
 							'essential'       => 'Essential Settings',
 							'setup'           => 'Setup Guide',
-							'dashboard'       => 'SSO Dashboard',
+							'dashboard'       => 'Dashboard',
 							'general'         => 'General Settings',
 							'advanced'        => 'Advanced Settings',
 							'social-accounts' => 'Social Pages',
