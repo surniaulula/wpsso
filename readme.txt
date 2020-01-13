@@ -466,6 +466,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Updated the SSO sub-menu sorting to use the translated sub-menu item names.
 	* Updated the default SSO menu item icon to the admin-settings dashicon.
 	* Re-added post cache clearing for W3 Total Cache when a post ID is updated.
+	* Renamed settings pages:
+		* Renamed the SSO &gt; Essential page to Essential Settings.
+		* Renamed the SSO &gt; General page to General Settings.
+		* Renamed the SSO &gt; Advanced page to Advanced Settings.
+	* Added new settings pages:
+		* Added a new SSO &gt; Image Sizes settings page.
+		* Added a new SSO &gt; Social Pages settings page.
+	* Removed duplicate settings pages:
+		* Removed the WordPress Dashboard &gt; SSO Dashboard page.
+		* Removed the WordPress Plugins &gt; SSO Complementary Add-ons page.
+		* Removed the WordPress Settings &gt; SSO Image Sizes page.
+		* Removed the WordPress Settings &gt; SSO Contact Fields page.
+		* Removed the WordPress Settings &gt; SSO WebSite Pages page.
+		* Removed the WordPress Tools &gt; SSO Tools and Actions page.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
