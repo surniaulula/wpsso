@@ -2445,7 +2445,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '</p><p>';
 
-						$text .= sprintf( __( 'Please take a moment to %1$s thank your developers %1$s by rating the plugins you use.', 'wpsso' ),
+						$text .= sprintf( __( 'Please take a moment to %1$s thank your plugin developers %1$s by rating the plugins you use.', 'wpsso' ),
 							'<span class="' . $lca . '-rate-heart"></span>' );
 
 						$text .= '</p>';

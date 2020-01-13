@@ -1381,7 +1381,7 @@ msgstr ""
 
 #: lib/gettext-config.php:27
 msgctxt "lib file description"
-msgid "Dashboard"
+msgid "SSO Dashboard"
 msgstr ""
 
 #: lib/gettext-config.php:28
@@ -5537,7 +5537,7 @@ msgstr ""
 
 #: lib/messages.php:2448
 msgid ""
-"Please take a moment to %1$s thank your developers %1$s by rating the "
+"Please take a moment to %1$s thank your plugin developers %1$s by rating the "
 "plugins you use."
 msgstr ""
 
