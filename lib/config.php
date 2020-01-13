@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.16.3-rc.2',	// Plugin version.
+					'version'     => '6.17.0-dev.1',	// Plugin version.
 					'opt_version' => '694',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -76,12 +76,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'latest'    => '',
 					),
 					'lib' => array(
-						'dashboard' => array(
-							'sso-dashboard' => 'SSO Dashboard',
-						),
-						'plugins' => array(
-							'sso-addons' => 'SSO Complementary Add-ons',
-						),
 						'pro' => array(
 							'admin' => array(
 								'advanced'  => 'Extend Advanced',
@@ -158,11 +152,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'profile' => array(
 							'your-sso' => 'Your SSO',
 						),
-						'settings' => array(
-							'image-dimensions' => 'SSO Image Sizes',
-							'contact-fields'   => 'SSO Contact Fields',
-							'social-accounts'  => 'SSO WebSite Pages',
-						),
 						'sitesubmenu' => array(
 							'site-advanced' => 'Advanced',
 							'site-addons'   => 'Complementary Add-ons',
@@ -179,17 +168,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 						),
 						'submenu' => array(
-							'essential' => 'Essential',
-							'setup'     => 'Setup Guide',
-							'general'   => 'General',
-							'advanced'  => 'Advanced',
-							'dashboard' => 'Dashboard',
-							'tools'     => 'Tools and Actions',
-							'addons'    => 'Complementary Add-ons',
-							'licenses'  => 'Premium Licenses',
-						),
-						'tools' => array(
-							'sso-tools' => 'SSO Tools and Actions',
+							'essential'        => 'Essential',
+							'setup'            => 'Setup Guide',
+							'general'          => 'General',
+							'social-accounts'  => 'Social Pages',
+							'image-dimensions' => 'Image Sizes',
+							'advanced'         => 'Advanced',
+							'dashboard'        => 'Dashboard',
+							'tools'            => 'Tools and Actions',
+							'addons'           => 'Complementary Add-ons',
+							'licenses'         => 'Premium Licenses',
 						),
 					),
 				),
@@ -1973,7 +1961,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'version' => '1.12.1',
 			),
 			'menu' => array(
-				'title'     => 'SSO Settings',	// Menu title.
+				'title'     => 'SSO',		// Menu title.
 				'before'    => '\0229b',	// Circle asterix.
 				'icon_html' => '&oast;',	// Circle asterix.
 				'dashicons' => array(
@@ -2196,6 +2184,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'wikipedia_publisher_url' => 'Wikipedia Organization Page URL',
 					'yt_publisher_url'        => 'YouTube Business Channel URL',
 				),
+
 				'embed_media_apis' => array(
 					'plugin_facebook_api'   => 'Facebook Videos',
 					'plugin_slideshare_api' => 'Slideshare Presentations',

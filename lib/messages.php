@@ -796,7 +796,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_check_img_dims':	// Enforce Image Size Checks.
 
 							$img_sizes_page_link = $this->p->util->get_admin_url( 'image-dimensions',
-								_x( 'SSO Image Sizes', 'lib file description', 'wpsso' ) );
+								_x( 'Image Sizes', 'lib file description', 'wpsso' ) );
 
 							$text = sprintf( __( 'When this option is enabled, full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you\'ve defined in the %s settings &mdash; images that do not meet or exceed the minimum requirements will be ignored.', 'wpsso' ), $img_sizes_page_link );
 
@@ -1257,8 +1257,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-schema_knowledge_graph':
 
-							$website_page_link = $this->p->util->get_admin_url( 'social-accounts',
-								_x( 'SSO WebSite Pages', 'lib file description', 'wpsso' ) );
+							$social_accounts_link = $this->p->util->get_admin_url( 'social-accounts',
+								_x( 'Social Pages', 'lib file description', 'wpsso' ) );
 
 							$text = __( 'Include WebSite, Organization and/or Person Schema markup in the front page for Google\'s <em>Knowledge Graph</em>.', 'wpsso' ) . '<br/><br/>';
 
@@ -1266,7 +1266,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= sprintf( __( 'Developers can hook the "%s" filter to modify the site search URL (or disable its addition by returning false).', 'wpsso' ), $this->p->lca . '_json_ld_search_url' ) . '<br/><br/>';
 
-							$text .= sprintf( __( 'The Organization markup includes all URLs entered in the %s settings page.', 'wpsso' ), $website_page_link ) . '<br/><br/>';
+							$text .= sprintf( __( 'The Organization markup includes all URLs entered in the %s settings page.', 'wpsso' ), $social_accounts_link ) . '<br/><br/>';
 
 							$text .= __( 'The Person markup includes all contact method URLs entered in the user\'s WordPress profile page.', 'wpsso' );
 
@@ -2161,7 +2161,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								if ( current_user_can( 'manage_options' ) ) {
 
 									$img_sizes_page_link = $this->p->util->get_admin_url( 'image-dimensions', 
-										_x( 'SSO Image Sizes', 'lib file description', 'wpsso' ) );
+										_x( 'Image Sizes', 'lib file description', 'wpsso' ) );
 
 									$upscale_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
 										_x( 'Upscale Media Library Images', 'option label', 'wpsso' ) );
