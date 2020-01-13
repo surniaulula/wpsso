@@ -1358,9 +1358,9 @@ msgctxt "lib file description"
 msgid "Your SSO"
 msgstr ""
 
-#: lib/gettext-config.php:22 lib/gettext-config.php:30
+#: lib/gettext-config.php:22 lib/gettext-config.php:29
 msgctxt "lib file description"
-msgid "Advanced"
+msgid "Advanced Settings"
 msgstr ""
 
 #: lib/gettext-config.php:23 lib/gettext-config.php:33 lib/messages.php:2320
@@ -1376,27 +1376,27 @@ msgstr ""
 
 #: lib/gettext-config.php:25
 msgctxt "lib file description"
-msgid "Essential"
+msgid "Essential Settings"
 msgstr ""
 
 #: lib/gettext-config.php:27
 msgctxt "lib file description"
-msgid "General"
+msgid "Dashboard"
 msgstr ""
 
-#: lib/gettext-config.php:28 lib/messages.php:1261
+#: lib/gettext-config.php:28
+msgctxt "lib file description"
+msgid "General Settings"
+msgstr ""
+
+#: lib/gettext-config.php:30 lib/messages.php:1261
 msgctxt "lib file description"
 msgid "Social Pages"
 msgstr ""
 
-#: lib/gettext-config.php:29 lib/messages.php:799 lib/messages.php:2164
+#: lib/gettext-config.php:31 lib/messages.php:799 lib/messages.php:2164
 msgctxt "lib file description"
 msgid "Image Sizes"
-msgstr ""
-
-#: lib/gettext-config.php:31
-msgctxt "lib file description"
-msgid "Dashboard"
 msgstr ""
 
 #: lib/gettext-config.php:32 lib/messages.php:2366
