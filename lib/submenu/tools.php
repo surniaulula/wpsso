@@ -115,7 +115,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 					),
 				),
 				array(
-					// 'Reload Default Image Sizes' button added by the WpssoSettingImageDimensions class.
+					// 'Reload Default Image Sizes' button added by the WpssoSubmenuImageSizes class.
 				),
 				array(
 					'reset_user_dismissed_notices' => _x( 'Reset User Dismissed Notices', 'submit button', 'wpsso' ),

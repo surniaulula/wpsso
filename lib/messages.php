@@ -795,7 +795,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_check_img_dims':	// Enforce Image Size Checks.
 
-							$img_sizes_page_link = $this->p->util->get_admin_url( 'image-dimensions',
+							$img_sizes_page_link = $this->p->util->get_admin_url( 'image-sizes',
 								_x( 'Image Sizes', 'lib file description', 'wpsso' ) );
 
 							$text = sprintf( __( 'When this option is enabled, full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you\'ve defined in the %s settings &mdash; images that do not meet or exceed the minimum requirements will be ignored.', 'wpsso' ), $img_sizes_page_link );
@@ -2160,7 +2160,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								if ( current_user_can( 'manage_options' ) ) {
 
-									$img_sizes_page_link = $this->p->util->get_admin_url( 'image-dimensions', 
+									$img_sizes_page_link = $this->p->util->get_admin_url( 'image-sizes', 
 										_x( 'Image Sizes', 'lib file description', 'wpsso' ) );
 
 									$upscale_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',

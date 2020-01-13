@@ -6719,57 +6719,57 @@ msgctxt "option label"
 msgid "Large Image Summary Card Img Size"
 msgstr ""
 
-#: lib/submenu/image-dimensions.php:55
+#: lib/submenu/image-sizes.php:55
 msgctxt "submit button"
 msgid "Reload Default Image Sizes"
 msgstr ""
 
-#: lib/submenu/image-dimensions.php:68
+#: lib/submenu/image-sizes.php:68
 msgctxt "metabox title"
-msgid "Social and Search Image Sizes / Dimensions"
+msgid "Social and Search Image Sizes"
 msgstr ""
 
-#: lib/submenu/image-dimensions.php:110
+#: lib/submenu/image-sizes.php:110
 msgctxt "option label"
 msgid "Open Graph (Facebook and Others)"
 msgstr ""
 
-#: lib/submenu/image-dimensions.php:115
+#: lib/submenu/image-sizes.php:115
 msgctxt "option label"
 msgid "Schema (Google and Pinterest)"
 msgstr ""
 
-#: lib/submenu/image-dimensions.php:120
+#: lib/submenu/image-sizes.php:120
 msgctxt "option label"
 msgid "Schema Article (Google and Pinterest)"
 msgstr ""
 
-#: lib/submenu/image-dimensions.php:127
+#: lib/submenu/image-sizes.php:127
 msgctxt "option label"
 msgid "Schema Article AMP 1:1 (Google)"
 msgstr ""
 
-#: lib/submenu/image-dimensions.php:132
+#: lib/submenu/image-sizes.php:132
 msgctxt "option label"
 msgid "Schema Article AMP 4:3 (Google)"
 msgstr ""
 
-#: lib/submenu/image-dimensions.php:137
+#: lib/submenu/image-sizes.php:137
 msgctxt "option label"
 msgid "Schema Article AMP 16:9 (Google)"
 msgstr ""
 
-#: lib/submenu/image-dimensions.php:143
+#: lib/submenu/image-sizes.php:143
 msgctxt "option label"
 msgid "Schema Thumbnail Image"
 msgstr ""
 
-#: lib/submenu/image-dimensions.php:148
+#: lib/submenu/image-sizes.php:148
 msgctxt "option label"
 msgid "Twitter Summary Card"
 msgstr ""
 
-#: lib/submenu/image-dimensions.php:153
+#: lib/submenu/image-sizes.php:153
 msgctxt "option label"
 msgid "Twitter Large Image Summary Card"
 msgstr ""
