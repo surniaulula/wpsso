@@ -306,7 +306,7 @@
 <li>Organization Information
 
 <ul>
-<li>Alternate Organization</li>
+<li>Select an Organization</li>
 </ul></li>
 <li>Person Information
 

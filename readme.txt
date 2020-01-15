@@ -265,7 +265,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 		* Production Company
 		* Movie Runtime
 	* Organization Information
-		* Alternate Organization
+		* Select an Organization
 	* Person Information
 		* Alternate Person
 	* Product Information (Additional)
@@ -888,8 +888,4 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 = 6.17.0 =
 
 (2020/01/15) Updated the SSO sub-menu item sorting to use the translated sub-menu item names. Re-added post cache clearing for W3 Total Cache when a post ID is updated.
-
-= 6.16.2 =
-
-(2020/01/05) Added filter hooks to set the Open Graph type based on the Schema type.
 
