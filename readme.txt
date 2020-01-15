@@ -457,7 +457,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.17.0-b.1 (2020/01/14)**
+**Version 6.17.0-rc.1 (2020/01/15)**
 
 * **New Features**
 	* None.
@@ -885,9 +885,9 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 
 == Upgrade Notice ==
 
-= 6.17.0-b.1 =
+= 6.17.0-rc.1 =
 
-(2020/01/14) Updated the SSO sub-menu item sorting to use the translated sub-menu item names. Re-added post cache clearing for W3 Total Cache when a post ID is updated.
+(2020/01/15) Updated the SSO sub-menu item sorting to use the translated sub-menu item names. Re-added post cache clearing for W3 Total Cache when a post ID is updated.
 
 = 6.16.2 =
 
