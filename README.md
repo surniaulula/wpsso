@@ -76,7 +76,7 @@
 <li><a href="https://wordpress.org/plugins/wpsso-faq/">WPSSO FAQ Manager</a> to manage FAQ categories with Question and Answer pages.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a> to manage mobile App information.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-organization/">WPSSO Organization Markup</a> to manage multiple Organizations.</li>
-<li><a href="https://wordpress.org/plugins/wpsso-plm/">WPSSO Place and Local SEO Meta</a> to manage multiple locations.</li>
+<li><a href="https://wordpress.org/plugins/wpsso-plm/">WPSSO Place and Local SEO Markup</a> to manage multiple locations.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-ratings-and-reviews/">WPSSO Ratings and Reviews</a> to add ratings in WordPress comments.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-rest-api/">WPSSO REST API</a> to add meta tags and Schema markup in REST API queries.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-rrssb/">WPSSO Ridiculously Responsive Social Sharing Buttons</a> to add responsive share buttons.</li>
