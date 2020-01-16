@@ -395,23 +395,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					$term_obj = get_term( $mod[ 'id' ], $mod[ 'tax_slug' ] );
 
-					if ( SucomUtil::is_category_page( $mod[ 'id' ] ) ) {
-
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'term is category page - calling get_category_title()' );
-						}
-
-						$title_text = $this->get_category_title( $term_obj, $sep, $mod );
-
-					} elseif ( isset( $term_obj->name ) ) {
-
-						$title_text = $term_obj->name . ' ' . $sep . ' ';
-
-						$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $sep, 'right' ), $mod );
-
-					} elseif ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'name property missing in term object' );
-					}
+					/**
+					 * Includes parent names in the term title if the $sep value is not empty.
+					 */
+					$title_text = $this->get_term_title( $term_obj, $sep, $mod );
 
 					$title_text = apply_filters( $this->p->lca . '_term_archive_title', $title_text, $mod, $term_obj );
 
@@ -1472,10 +1459,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		}
 
 		/**
-		 * Includes parent names in the category title if the $sep value is not empty.
+		 * Includes parent names in the term title if the $sep value is not empty.
 		 */
-		public function get_category_title( $term_id = 0, $sep = null, $mod = false ) {
+		public function get_term_title( $term_id = 0, $sep = null, $mod = false ) {
 
+			$term_obj   = false;
 			$title_text = '';
 
 			if ( is_object( $term_id ) ) {
@@ -1491,17 +1479,29 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				$term_obj = $term_id;
 				$term_id  = $term_obj->term_id;
+			}
+			
+			if ( is_numeric( $term_id ) ) {
+
+				if ( ! is_array( $mod ) ) {
+					$mod = $this->p->term->get_mod( $term_id );
+				}
+
+				if ( ! is_object( $term_id ) ) {
+					$term_obj = get_term( $mod[ 'id' ], $mod[ 'tax_slug' ] );
+				}
 
 			} else {
-				$term_obj = get_category( $term_id );
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: term_id is not numeric' );
+				}
+
+				return $title_text;
 			}
 
 			if ( null === $sep ) {
 				$sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
-			}
-
-			if ( ! is_array( $mod ) ) {
-				$mod = $this->p->term->get_mod( $term_id );
 			}
 
 			if ( isset( $term_obj->name ) ) {
@@ -1518,31 +1518,34 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( ! empty( $sep ) ) {	// Just in case.
 
-				$cat = get_category( $term_obj->term_id );
+				if ( ! empty( $term_obj->parent ) ) {
 
-				if ( ! empty( $cat->category_parent ) ) {
-
-					$cat_parents = get_category_parents( $term_obj->term_id, false, ' ' . $sep . ' ', false );
+					$term_parents = get_term_parents_list( $term_obj->term_id, $term_obj->taxonomy, $args = array(
+						'format'    => 'name',
+						'separator' => ' ' . $sep . ' ',
+						'link'      => false,
+						'inclusive' => true,
+					) );
 	
-					if ( is_wp_error( $cat_parents ) ) {
+					if ( is_wp_error( $term_parents ) ) {
 
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'get_category_parents error: ' . $cat_parents->get_error_message() );
+							$this->p->debug->log( 'get_term_parents_list error: ' . $term_parents->get_error_message() );
 						}
 
 					} else {
 
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'get_category_parents() = "' . $cat_parents . '"' );
+							$this->p->debug->log( 'get_term_parents_list() = "' . $term_parents . '"' );
 						}
 
-						if ( ! empty( $cat_parents ) ) {
-							$title_text = $cat_parents;
+						if ( ! empty( $term_parents ) ) {
+							$title_text = $term_parents;
 						}
 					}
 				}
 			}
-		
+
 			// translators: Post type archive title. %s: Post type name.
 			$title_text = sprintf( __( 'Archives: %s' ), $title_text );
 
