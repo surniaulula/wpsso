@@ -1542,6 +1542,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					}
 				}
 			}
+		
+			// translators: Post type archive title. %s: Post type name.
+			$title_text = sprintf( __( 'Archives: %s' ), $title_text );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'before wp_title filter = "' . $title_text . '"' );

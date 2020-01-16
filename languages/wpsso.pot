@@ -6054,6 +6054,11 @@ msgctxt "default description"
 msgid "No Description."
 msgstr ""
 
+#. translators: Post type archive title. %s: Post type name.
+#: lib/page.php:1547
+msgid "Archives: %s"
+msgstr ""
+
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
 #: lib/post.php:476 lib/term.php:420 lib/user.php:367 lib/util.php:510
