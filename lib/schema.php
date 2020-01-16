@@ -2214,7 +2214,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			$is_assoc   = SucomUtil::is_assoc( $names );
+			$is_assoc = SucomUtil::is_assoc( $names );
+
 			$prop_added = 0;
 
 			foreach ( $names as $prop_name => $key_name ) {
@@ -2225,8 +2226,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( isset( $assoc[ $key_name ] ) && $assoc[ $key_name ] !== '' ) {	// Exclude empty strings.
 
-					if ( ( 'width' === $prop_name || 'height' === $prop_name ) && 
-						WPSSO_UNDEF === $assoc[ $key_name ] ) {
+					if ( ( 'width' === $prop_name || 'height' === $prop_name ) && WPSSO_UNDEF === $assoc[ $key_name ] ) {
 
 						continue;
 

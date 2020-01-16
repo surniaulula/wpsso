@@ -397,6 +397,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					if ( SucomUtil::is_category_page( $mod[ 'id' ] ) ) {
 
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'term is category page - calling get_category_title()' );
+						}
+
 						$title_text = $this->get_category_title( $term_obj, $sep, $mod );
 
 					} elseif ( isset( $term_obj->name ) ) {
@@ -1537,6 +1541,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						}
 					}
 				}
+			}
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'before wp_title filter = "' . $title_text . '"' );
 			}
 
 			$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $sep, 'right' ), $mod );
