@@ -2277,7 +2277,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text = '<p class="top">';
 
-						$text .= __( '<b>At least one of your theme header templates does not support Schema markup of the webpage head section</b> &mdash; this is especially important for Pinterest (and Google if not using the complementary JSON-LD add-on).', 'wpsso' ) . ' ';
+						$text .= __( 'At least one of your theme header templates does not offer a recognized way to modify the head HTML tag attributes.', 'wpsso' ) . ' ';
+						
+						$text .= __( 'Adding the document Schema item type to the head HTML tag attributes is important for Pinterest.', 'wpsso' ) . ' ';
+
+						if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
+
+							$text .= __( 'It is also important for Google in cases where Schema markup describing the content is not available in the webpage (for example, when the complementary WPSSO JSON add-on is not active).', 'wpsso' ) . ' ';
+						}
 
 						$text .= '</p><p>';
 
