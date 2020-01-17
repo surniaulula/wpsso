@@ -57,9 +57,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			static $fb_recs_transl = null;
 
 			if ( null === $do_once ) {
-				$do_once        = true;
-				$pro_transl     = _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' );
-				$std_transl     = _x( $this->p->cf[ 'dist' ][ 'std' ], 'distribution name', 'wpsso' );
+
+				$do_once = true;
+
+				$pro_transl = _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' );
+				$std_transl = _x( $this->p->cf[ 'dist' ][ 'std' ], 'distribution name', 'wpsso' );
+
 				$fb_recs_transl = __( 'Facebook prefers images of 1200x630px cropped (for Retina and high-PPI displays), 600x315px cropped as a recommended minimum, and ignores images smaller than 200x200px.', 'wpsso' );
 			}
 

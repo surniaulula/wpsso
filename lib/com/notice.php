@@ -31,18 +31,19 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			static $do_once = null;	// Just in case.
 
-			if ( null === $do_once ) {
-
-				$do_once = true;
-
-				if ( ! class_exists( 'SucomUtil' ) ) {	// Just in case.
-					require_once trailingslashit( dirname( __FILE__ ) ) . 'util.php';
-				}
-
-				$this->set_config( $plugin, $lca, $text_domain, $label_transl );
-
-				$this->add_wp_hooks();
+			if ( true === $do_once ) {
+				return;
 			}
+
+			$do_once = true;
+
+			if ( ! class_exists( 'SucomUtil' ) ) {	// Just in case.
+				require_once trailingslashit( dirname( __FILE__ ) ) . 'util.php';
+			}
+
+			$this->set_config( $plugin, $lca, $text_domain, $label_transl );
+
+			$this->add_wp_hooks();
 		}
 
 		/**

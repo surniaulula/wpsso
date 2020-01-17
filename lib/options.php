@@ -26,8 +26,324 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$this->p->util->add_plugin_filters( $this, array( 'option_type' => 2 ), $prio = -100 );
-			$this->p->util->add_plugin_filters( $this, array( 'init_objects' => 0 ), $prio = 10000 );
+			$this->p->util->add_plugin_filters( $this, array(
+				'option_type' => 2
+			), $prio = -100 );
+
+			$this->p->util->add_plugin_filters( $this, array(
+				'init_objects' => 0
+			), $prio = 10000 );
+		}
+
+		public function filter_option_type( $type, $base_key ) {
+
+			if ( ! empty( $type ) ) {
+				return $type;
+			}
+
+			switch ( $base_key ) {
+
+				/**
+				 * The "use" value should be 'default', 'empty', or 'force'.
+				 */
+				case ( preg_match( '/:use$/', $base_key ) ? true : false ):
+
+					return 'not_blank';
+
+					break;
+
+				/**
+				 * Optimize and check for add meta tags options first.
+				 */
+				case ( 0 === strpos( $base_key, 'add_' ) ? true : false ):
+				case ( 0 === strpos( $base_key, 'plugin_filter_' ) ? true : false ):
+
+					return 'checkbox';
+
+					break;
+
+				/**
+				 * Empty string or must include at least one HTML tag.
+				 */
+				case 'og_vid_embed':
+
+					return 'html';
+
+					break;
+
+				/**
+				 * A regular expression.
+				 */
+				case ( preg_match( '/_preg$/', $base_key ) ? true : false ):
+
+					return 'preg';
+
+					break;
+
+				/**
+				 * JS and CSS code (cannot be blank).
+				 */
+				case ( false !== strpos( $base_key, '_js_' ) ? true : false ):
+				case ( false !== strpos( $base_key, '_css_' ) ? true : false ):
+				case ( preg_match( '/(_css|_js|_html)$/', $base_key ) ? true : false ):
+
+					return 'code';
+
+					break;
+
+				/**
+				 * Gravity View field IDs.
+				 */
+				case 'gv_id_title':	// Title Field ID.
+				case 'gv_id_desc':	// Description Field ID.
+				case 'gv_id_img':	// Post Image Field ID.
+
+					return 'blank_int';
+
+					break;
+
+				/**
+				 * Cast as integer (zero and -1 is ok).
+				 */
+				case 'og_img_max':
+				case 'og_vid_max':
+				case 'og_desc_hashtags': 
+				case 'schema_img_max':
+				case 'schema_vid_max':
+				case ( preg_match( '/_(cache_exp|caption_hashtags|filter_prio)$/', $base_key ) ? true : false ):
+				case ( preg_match( '/_(img|logo|banner)_url(:width|:height)$/', $base_key ) ? true : false ):
+
+					return 'integer';
+
+					break;
+
+				/**
+				 * Numeric options that must be positive (1 or more).
+				 */
+				case 'plugin_upscale_img_max':
+				case 'plugin_min_shorten':
+				case ( preg_match( '/_(len|warn)$/', $base_key ) ? true : false ):
+
+					return 'pos_int';
+
+					break;
+
+				/**
+				 * Must be numeric (blank and zero are ok).
+				 */
+				case 'product_depth_value':
+				case 'product_gtin14':
+				case 'product_gtin13':
+				case 'product_gtin12':
+				case 'product_gtin8':
+				case 'product_gtin':
+				case 'product_height_value':
+				case 'product_isbn':
+				case 'product_length_value':
+				case 'product_price':
+				case 'product_volume_value':
+				case 'product_weight_value':
+				case 'product_width_value':
+
+					return 'blank_num';
+
+					break;
+
+				/**
+				 * Empty string or an image ID.
+				 */
+				case 'og_def_img_id':
+				case 'og_img_id':
+				case 'schema_img_id':
+				case 'tc_lrg_img_id':
+				case 'tc_sum_img_id':
+
+					return 'img_id';
+
+				/**
+				 * Image width, subject to minimum value (typically, at least 200px).
+				 */
+				case ( preg_match( '/_img_width$/', $base_key ) ? true : false ):
+
+					return 'img_width';
+
+					break;
+
+				/**
+				 * Image height, subject to minimum value (typically, at least 200px).
+				 */
+				case ( preg_match( '/_img_height$/', $base_key ) ? true : false ):
+
+					return 'img_height';
+
+					break;
+
+				/**
+				 * Must be texturized.
+				 */
+				case 'og_title_sep':
+
+					return 'textured';
+
+					break;
+
+				/**
+				 * Empty or alpha-numeric uppercase (hyphens are allowed as well).
+				 */
+				case ( preg_match( '/_tid$/', $base_key ) ? true : false ):
+
+					return 'auth_id';
+
+					break;
+
+				/**
+				 * Empty or alpha-numeric (upper or lower case), plus underscores.
+				 */
+				case 'fb_app_id':
+				case 'fb_app_secret':
+				case 'g_site_verify':	// Google Website Verification ID.
+				case 'p_site_verify':	// Pinterest Website Verification ID.
+				case ( preg_match( '/_api_key$/', $base_key ) ? true : false ):
+
+					return 'api_key';
+
+					break;
+
+				/**
+				 * Text strings that can be blank (line breaks are removed).
+				 */
+				case 'site_name':
+				case 'site_name_alt':
+				case 'site_desc':
+				case 'og_art_section':
+				case 'og_title':
+				case 'og_desc':
+				case 'seo_desc':
+				case 'schema_desc':
+				case 'tc_desc':
+				case 'pin_desc':
+				case 'product_brand':
+				case 'product_color':
+				case 'product_currency':
+				case 'product_mfr_part_no':		// Product MPN.
+				case 'product_retailer_part_no':	// Product SKU.
+				case 'product_size':
+				case 'plugin_bitly_login':
+				case 'plugin_col_title_width':
+				case 'plugin_col_title_width_max':
+				case 'plugin_col_def_width':
+				case 'plugin_col_def_width_max':
+				case 'plugin_head_attr_filter_name':
+				case 'plugin_html_attr_filter_name':
+				case 'plugin_img_alt_prefix':
+				case 'plugin_p_cap_prefix':
+				case 'plugin_yourls_username':
+				case 'plugin_yourls_password':
+				case 'plugin_yourls_token':
+				case ( 0 === strpos( $base_key, 'plugin_cf_' ) ? true : false ):		// Value is the name of a meta key.
+				case ( 0 === strpos( $base_key, 'plugin_product_attr_' ) ? true : false ):	// Value is the name of a product attribute.
+
+					return 'one_line';
+
+					break;
+
+				/**
+				 * Options that cannot be blank.
+				 */
+				case 'site_org_schema_type':		// Example: 'organization' or a sub-type.
+				case 'site_place_id':			// Example: 'none' or place ID.
+				case 'og_author_field':
+				case 'og_def_img_id_pre': 		// Example: 'wp' or 'ngg' media library name.
+				case 'og_img_id_pre': 			// Example: 'wp' or 'ngg' media library name.
+				case 'plugin_shortener':		// Example: 'none' or name of shortener
+				case 'plugin_col_def_width':
+				case 'plugin_col_def_width_max':
+				case 'plugin_col_title_width':
+				case 'plugin_col_title_width_max':
+				case 'product_avail':			// Select option with 'none' as default.
+				case 'product_condition':		// Select option with 'none' as default.
+				case 'product_target_gender':		// Select option with 'none' as default.
+				case ( false !== strpos( $base_key, '_crop_x' ) ? true : false ):
+				case ( false !== strpos( $base_key, '_crop_y' ) ? true : false ):
+				case ( preg_match( '/^(plugin|wp)_cm_[a-z]+_(name|label)$/', $base_key ) ? true : false ):
+
+					return 'not_blank';
+
+					break;
+
+				/**
+				 * twitter-style usernames (prepend with an at).
+				 */
+				case 'tc_site':
+
+					return 'at_name';
+
+					break;
+
+				/**
+				 * Strip leading urls off facebook usernames.
+				 */
+				case 'fb_admins':
+
+					return 'url_base';
+
+					break;
+
+				/**
+				 * Empty string or a URL.
+				 *
+				 * Option key exceptions:
+				 *
+				 *	'add_meta_property_og:image:secure_url' = 1
+				 *	'add_meta_property_og:video:secure_url' = 1
+				 *	'add_meta_itemprop_url'                 = 1
+				 *	'plugin_cf_img_url'                     = '_format_image_url'
+				 *	'plugin_cf_vid_url'                     = '_format_video_url'
+				 *	'plugin_cf_review_item_image_url'       = ''
+				 */
+				case 'site_url':
+				case 'sharing_url':
+				case 'canonical_url':
+				case 'fb_page_url':
+				case 'og_def_img_url':
+				case 'og_img_url':
+				case 'og_vid_url':
+				case 'p_publisher_url':
+				case 'plugin_yourls_api_url':
+				case 'schema_addl_type_url':
+				case 'schema_banner_url':
+				case 'schema_img_url':
+				case 'schema_logo_url':
+				case 'schema_sameas_url':
+				case 'tc_lrg_img_url':
+				case 'tc_sum_img_url':
+				case ( strpos( $base_key, '_url' ) && isset( $this->p->cf[ 'form' ][ 'social_accounts' ][ $base_key ] ) ? true : false ):
+
+					return 'url';
+
+					break;
+
+				/**
+				 * CSS color code.
+				 */
+				case ( false !== strpos( $base_key, '_color_' ) ? true : false ):
+
+					return 'color';
+
+					break;
+			}
+
+			return $type;
+		}
+
+		public function filter_init_objects() {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+				$this->p->debug->log( 'setting allow_cache to true' );
+			}
+
+			self::$allow_cache = true;
 		}
 
 		public function get_defaults( $opt_key = false, $force_filter = false ) {
@@ -782,6 +1098,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			return $saved;
 		}
 
+		public static function can_cache() {
+
+			return self::$allow_cache;
+		}
+
 		/**
 		 * Update the width / height of remote image urls.
 		 */
@@ -946,7 +1267,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			$num_prec = 0;
 
 			if ( strpos( $option_type, 'fnum' ) === 0 ) {
-				$num_prec    = substr( $option_type, 4 );
+
+				$num_prec = substr( $option_type, 4 );
+
 				$option_type = 'fnum';
 			}
 
@@ -1289,322 +1612,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			return $opt_val;
-		}
-
-		public function filter_option_type( $type, $base_key ) {
-
-			if ( ! empty( $type ) ) {
-				return $type;
-			}
-
-			switch ( $base_key ) {
-
-				/**
-				 * The "use" value should be 'default', 'empty', or 'force'.
-				 */
-				case ( preg_match( '/:use$/', $base_key ) ? true : false ):
-
-					return 'not_blank';
-
-					break;
-
-				/**
-				 * Optimize and check for add meta tags options first.
-				 */
-				case ( 0 === strpos( $base_key, 'add_' ) ? true : false ):
-				case ( 0 === strpos( $base_key, 'plugin_filter_' ) ? true : false ):
-
-					return 'checkbox';
-
-					break;
-
-				/**
-				 * Empty string or must include at least one HTML tag.
-				 */
-				case 'og_vid_embed':
-
-					return 'html';
-
-					break;
-
-				/**
-				 * A regular expression.
-				 */
-				case ( preg_match( '/_preg$/', $base_key ) ? true : false ):
-
-					return 'preg';
-
-					break;
-
-				/**
-				 * JS and CSS code (cannot be blank).
-				 */
-				case ( false !== strpos( $base_key, '_js_' ) ? true : false ):
-				case ( false !== strpos( $base_key, '_css_' ) ? true : false ):
-				case ( preg_match( '/(_css|_js|_html)$/', $base_key ) ? true : false ):
-
-					return 'code';
-
-					break;
-
-				/**
-				 * Gravity View field IDs.
-				 */
-				case 'gv_id_title':	// Title Field ID.
-				case 'gv_id_desc':	// Description Field ID.
-				case 'gv_id_img':	// Post Image Field ID.
-
-					return 'blank_int';
-
-					break;
-
-				/**
-				 * Cast as integer (zero and -1 is ok).
-				 */
-				case 'og_img_max':
-				case 'og_vid_max':
-				case 'og_desc_hashtags': 
-				case 'schema_img_max':
-				case 'schema_vid_max':
-				case ( preg_match( '/_(cache_exp|caption_hashtags|filter_prio)$/', $base_key ) ? true : false ):
-				case ( preg_match( '/_(img|logo|banner)_url(:width|:height)$/', $base_key ) ? true : false ):
-
-					return 'integer';
-
-					break;
-
-				/**
-				 * Numeric options that must be positive (1 or more).
-				 */
-				case 'plugin_upscale_img_max':
-				case 'plugin_min_shorten':
-				case ( preg_match( '/_(len|warn)$/', $base_key ) ? true : false ):
-
-					return 'pos_int';
-
-					break;
-
-				/**
-				 * Must be numeric (blank and zero are ok).
-				 */
-				case 'product_depth_value':
-				case 'product_gtin14':
-				case 'product_gtin13':
-				case 'product_gtin12':
-				case 'product_gtin8':
-				case 'product_gtin':
-				case 'product_height_value':
-				case 'product_isbn':
-				case 'product_length_value':
-				case 'product_price':
-				case 'product_volume_value':
-				case 'product_weight_value':
-				case 'product_width_value':
-
-					return 'blank_num';
-
-					break;
-
-				/**
-				 * Empty string or an image ID.
-				 */
-				case 'og_def_img_id':
-				case 'og_img_id':
-				case 'schema_img_id':
-				case 'tc_lrg_img_id':
-				case 'tc_sum_img_id':
-
-					return 'img_id';
-
-				/**
-				 * Image width, subject to minimum value (typically, at least 200px).
-				 */
-				case ( preg_match( '/_img_width$/', $base_key ) ? true : false ):
-
-					return 'img_width';
-
-					break;
-
-				/**
-				 * Image height, subject to minimum value (typically, at least 200px).
-				 */
-				case ( preg_match( '/_img_height$/', $base_key ) ? true : false ):
-
-					return 'img_height';
-
-					break;
-
-				/**
-				 * Must be texturized.
-				 */
-				case 'og_title_sep':
-
-					return 'textured';
-
-					break;
-
-				/**
-				 * Empty or alpha-numeric uppercase (hyphens are allowed as well).
-				 */
-				case ( preg_match( '/_tid$/', $base_key ) ? true : false ):
-
-					return 'auth_id';
-
-					break;
-
-				/**
-				 * Empty or alpha-numeric (upper or lower case), plus underscores.
-				 */
-				case 'fb_app_id':
-				case 'fb_app_secret':
-				case 'g_site_verify':	// Google Website Verification ID.
-				case 'p_site_verify':	// Pinterest Website Verification ID.
-				case ( preg_match( '/_api_key$/', $base_key ) ? true : false ):
-
-					return 'api_key';
-
-					break;
-
-				/**
-				 * Text strings that can be blank (line breaks are removed).
-				 */
-				case 'site_name':
-				case 'site_name_alt':
-				case 'site_desc':
-				case 'og_art_section':
-				case 'og_title':
-				case 'og_desc':
-				case 'seo_desc':
-				case 'schema_desc':
-				case 'tc_desc':
-				case 'pin_desc':
-				case 'product_brand':
-				case 'product_color':
-				case 'product_currency':
-				case 'product_mfr_part_no':		// Product MPN.
-				case 'product_retailer_part_no':	// Product SKU.
-				case 'product_size':
-				case 'plugin_bitly_login':
-				case 'plugin_col_title_width':
-				case 'plugin_col_title_width_max':
-				case 'plugin_col_def_width':
-				case 'plugin_col_def_width_max':
-				case 'plugin_head_attr_filter_name':
-				case 'plugin_html_attr_filter_name':
-				case 'plugin_img_alt_prefix':
-				case 'plugin_p_cap_prefix':
-				case 'plugin_yourls_username':
-				case 'plugin_yourls_password':
-				case 'plugin_yourls_token':
-				case ( 0 === strpos( $base_key, 'plugin_cf_' ) ? true : false ):		// Value is the name of a meta key.
-				case ( 0 === strpos( $base_key, 'plugin_product_attr_' ) ? true : false ):	// Value is the name of a product attribute.
-
-					return 'one_line';
-
-					break;
-
-				/**
-				 * Options that cannot be blank.
-				 */
-				case 'site_org_schema_type':		// Example: 'organization' or a sub-type.
-				case 'site_place_id':			// Example: 'none' or place ID.
-				case 'og_author_field':
-				case 'og_def_img_id_pre': 		// Example: 'wp' or 'ngg' media library name.
-				case 'og_img_id_pre': 			// Example: 'wp' or 'ngg' media library name.
-				case 'plugin_shortener':		// Example: 'none' or name of shortener
-				case 'plugin_col_def_width':
-				case 'plugin_col_def_width_max':
-				case 'plugin_col_title_width':
-				case 'plugin_col_title_width_max':
-				case 'product_avail':			// Select option with 'none' as default.
-				case 'product_condition':		// Select option with 'none' as default.
-				case 'product_target_gender':		// Select option with 'none' as default.
-				case ( false !== strpos( $base_key, '_crop_x' ) ? true : false ):
-				case ( false !== strpos( $base_key, '_crop_y' ) ? true : false ):
-				case ( preg_match( '/^(plugin|wp)_cm_[a-z]+_(name|label)$/', $base_key ) ? true : false ):
-
-					return 'not_blank';
-
-					break;
-
-				/**
-				 * twitter-style usernames (prepend with an at).
-				 */
-				case 'tc_site':
-
-					return 'at_name';
-
-					break;
-
-				/**
-				 * Strip leading urls off facebook usernames.
-				 */
-				case 'fb_admins':
-
-					return 'url_base';
-
-					break;
-
-				/**
-				 * Empty string or a URL.
-				 *
-				 * Option key exceptions:
-				 *
-				 *	'add_meta_property_og:image:secure_url' = 1
-				 *	'add_meta_property_og:video:secure_url' = 1
-				 *	'add_meta_itemprop_url'                 = 1
-				 *	'plugin_cf_img_url'                     = '_format_image_url'
-				 *	'plugin_cf_vid_url'                     = '_format_video_url'
-				 *	'plugin_cf_review_item_image_url'       = ''
-				 */
-				case 'site_url':
-				case 'sharing_url':
-				case 'canonical_url':
-				case 'fb_page_url':
-				case 'og_def_img_url':
-				case 'og_img_url':
-				case 'og_vid_url':
-				case 'p_publisher_url':
-				case 'plugin_yourls_api_url':
-				case 'schema_addl_type_url':
-				case 'schema_banner_url':
-				case 'schema_img_url':
-				case 'schema_logo_url':
-				case 'schema_sameas_url':
-				case 'tc_lrg_img_url':
-				case 'tc_sum_img_url':
-				case ( strpos( $base_key, '_url' ) && isset( $this->p->cf[ 'form' ][ 'social_accounts' ][ $base_key ] ) ? true : false ):
-
-					return 'url';
-
-					break;
-
-				/**
-				 * CSS color code.
-				 */
-				case ( false !== strpos( $base_key, '_color_' ) ? true : false ):
-
-					return 'color';
-
-					break;
-			}
-
-			return $type;
-		}
-
-		public function filter_init_objects() {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-				$this->p->debug->log( 'setting allow_cache to true' );
-			}
-
-			self::$allow_cache = true;
-		}
-
-		public static function can_cache() {
-
-			return self::$allow_cache;
 		}
 	}
 }

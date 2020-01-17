@@ -17,6 +17,17 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 
 		public function __construct( &$plugin ) {
 
+			/**
+			 * Just in case - prevent filters from being hooked and executed more than once.
+			 */
+			static $do_once = null;
+
+			if ( true === $do_once ) {
+				return;	// Stop here.
+			}
+
+			$do_once = true;
+
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {

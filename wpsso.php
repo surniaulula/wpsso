@@ -348,9 +348,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->debug->mark( 'do init options action' );	// End timer.
 			}
 
+			$this->filters = new WpssoFilters( $this );
 			$this->script  = new WpssoScript( $this );
 			$this->style   = new WpssoStyle( $this );
-			$this->filters = new WpssoFilters( $this );
 
 			if ( $is_admin ) {
 				$this->admin    = new WpssoAdmin( $this );	// Admin menus and settings page loader.
