@@ -2947,14 +2947,12 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gettext-pro.php:103 lib/pro/admin/meta-edit.php:197
-#: lib/std/admin/meta-edit.php:202
+#: lib/gettext-pro.php:103
 msgctxt "metabox title"
 msgid "Book Information"
 msgstr ""
 
-#: lib/gettext-pro.php:104 lib/pro/admin/meta-edit.php:202
-#: lib/std/admin/meta-edit.php:208
+#: lib/gettext-pro.php:104
 msgctxt "option label"
 msgid "Book ISBN"
 msgstr ""
