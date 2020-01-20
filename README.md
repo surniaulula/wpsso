@@ -1,4 +1,4 @@
-<h1>WPSSO Core</h1><h3>The Ultimate Meta Tag and Schema Markup Solution</h3>
+<h1>WPSSO Core</h1><h3>The Complete Meta Tag and Schema Markup Solution</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
@@ -19,11 +19,13 @@
 
 <p><strong>Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded:</strong></p>
 
-<p>WPSSO Core and its complementary add-ons are provide comprehensive information about your webpage content to social sites (Facebook, Pinterest, Twitter, LinkedIn, etc.), search engines and crawlers (Google, Bing, etc.), mail and text messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), REST API clients, and oEmbed data for embedded objects / iframes &mdash; all from your existing WordPress content and plugin data!</p>
+<p>WPSSO Core and its complementary add-ons are provide comprehensive information about your webpage content to social sites (Facebook, Pinterest, Twitter, LinkedIn, etc.), search engines and crawlers (Google, Bing, etc.), mail and text messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), REST API clients, and oEmbed data for embedded objects / iframes (LinkedIn, WordPress, etc.) &mdash; all from your existing WordPress content and plugin data.</p>
+
+<p>No other meta tag or Schema plugin satisfies so many essential social and search markup standards.</p>
 
 <p><strong>Uses your pre-existing WordPress content and plugin / API data:</strong></p>
 
-<p>There's no need to manually re-enter descriptions, titles, product information, re-select images / videos, etc. WPSSO reads your existing post, page, product, media, recipe, event, forum, and SEO content automatically &mdash; while also offering fine-tuning and customization options for just about everything. ;-)</p>
+<p>There's no need to manually duplicate or re-enter descriptions, titles, product information, re-select images / videos, etc. WPSSO reads your existing post, page, product, media, recipe, event, forum, and SEO content automatically &mdash; while also offering fine-tuning and customization options for just about everything. ;-)</p>
 
 <p><strong>Creates complete and accurate meta tags and Schema markup:</strong></p>
 

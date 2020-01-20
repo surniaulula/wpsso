@@ -1,4 +1,4 @@
-=== WPSSO Core | The Ultimate Meta Tag and Schema Markup Solution ===
+=== WPSSO Core | The Complete Meta Tag and Schema Markup Solution ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -22,11 +22,13 @@ Makes sure your content looks great on all social and search sites - no matter h
 
 **Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded:**
 
-WPSSO Core and its complementary add-ons are provide comprehensive information about your webpage content to social sites (Facebook, Pinterest, Twitter, LinkedIn, etc.), search engines and crawlers (Google, Bing, etc.), mail and text messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), REST API clients, and oEmbed data for embedded objects / iframes &mdash; all from your existing WordPress content and plugin data!
+WPSSO Core and its complementary add-ons are provide comprehensive information about your webpage content to social sites (Facebook, Pinterest, Twitter, LinkedIn, etc.), search engines and crawlers (Google, Bing, etc.), mail and text messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), REST API clients, and oEmbed data for embedded objects / iframes (LinkedIn, WordPress, etc.) &mdash; all from your existing WordPress content and plugin data.
+
+No other meta tag or Schema plugin satisfies so many essential social and search markup standards.
 
 **Uses your pre-existing WordPress content and plugin / API data:**
 
-There's no need to manually re-enter descriptions, titles, product information, re-select images / videos, etc. WPSSO reads your existing post, page, product, media, recipe, event, forum, and SEO content automatically &mdash; while also offering fine-tuning and customization options for just about everything. ;-)
+There's no need to manually duplicate or re-enter descriptions, titles, product information, re-select images / videos, etc. WPSSO reads your existing post, page, product, media, recipe, event, forum, and SEO content automatically &mdash; while also offering fine-tuning and customization options for just about everything. ;-)
 
 **Creates complete and accurate meta tags and Schema markup:**
 
