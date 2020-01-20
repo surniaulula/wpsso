@@ -194,6 +194,23 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 				),
 
 				/**
+				 * Open Graph Book type.
+				 */
+				'subsection_og_book' => array(
+					'tr_class' => 'hide_og_type hide_og_type_book',
+					'header'   => 'h5',
+					'label'    => _x( 'Book Information', 'metabox title', 'wpsso' )
+				),
+				'og_book_isbn' => array(		// Open Graph meta tag book:isbn.
+					'tr_class' => 'hide_og_type hide_og_type_book',
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Book ISBN', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-og_book_isbn',
+					'content'  => $form->get_no_input( 'og_book_isbn', $css_class = 'is_required', $css_id = '', $placeholder = true ),
+				),
+
+				/**
 				 * Open Graph Product type.
 				 */
 				'subsection_og_product' => array(

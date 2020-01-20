@@ -100,6 +100,8 @@ _x( 'Sharing URL', 'option label', 'wpsso' );
 _x( 'Canonical URL', 'option label', 'wpsso' );
 _x( 'Article Information', 'metabox title', 'wpsso' );
 _x( 'Article Topic', 'option label', 'wpsso' );
+_x( 'Book Information', 'metabox title', 'wpsso' );
+_x( 'Book ISBN', 'option label', 'wpsso' );
 _x( 'Product Information', 'metabox title', 'wpsso' );
 _x( 'Product Brand', 'option label', 'wpsso' );
 _x( 'Product Price', 'option label', 'wpsso' );
