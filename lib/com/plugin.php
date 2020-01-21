@@ -65,7 +65,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 			} elseif ( method_exists( 'SucomUtil', 'safe_error_log' ) ) {	// Just in case.
 
 				$error_pre = sprintf( '%s error:', __METHOD__ );
-				$error_msg = sprintf( 'The WordPress %s function is missing and required.', 'get_plugins()' );
+				$error_msg = sprintf( 'The WordPress %1$s function is missing and required.', 'get_plugins()' );
 
 				SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
 			}

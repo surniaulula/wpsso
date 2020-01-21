@@ -2869,8 +2869,8 @@ msgid "Include Video Preview Images"
 msgstr ""
 
 #: lib/gettext-pro.php:89 lib/gettext-pro.php:128 lib/pro/admin/general.php:81
-#: lib/pro/admin/meta-edit.php:413 lib/std/admin/general.php:85
-#: lib/std/admin/meta-edit.php:429
+#: lib/pro/admin/meta-edit.php:414 lib/std/admin/general.php:85
+#: lib/std/admin/meta-edit.php:430
 msgctxt "option comment"
 msgid "note that video preview images are included first"
 msgstr ""
@@ -2957,186 +2957,186 @@ msgctxt "option label"
 msgid "Book ISBN"
 msgstr ""
 
-#: lib/gettext-pro.php:105 lib/pro/admin/meta-edit.php:214
-#: lib/std/admin/meta-edit.php:219
+#: lib/gettext-pro.php:105 lib/pro/admin/meta-edit.php:215
+#: lib/std/admin/meta-edit.php:220
 msgctxt "metabox title"
 msgid "Product Information"
 msgstr ""
 
 #: lib/gettext-pro.php:106 lib/messages.php:2522
-#: lib/pro/admin/meta-edit.php:224 lib/std/admin/meta-edit.php:230
+#: lib/pro/admin/meta-edit.php:225 lib/std/admin/meta-edit.php:231
 msgctxt "option label"
 msgid "Product Brand"
 msgstr ""
 
 #: lib/gettext-pro.php:107 lib/messages.php:2585
-#: lib/pro/admin/meta-edit.php:232 lib/std/admin/meta-edit.php:239
+#: lib/pro/admin/meta-edit.php:233 lib/std/admin/meta-edit.php:240
 msgctxt "option label"
 msgid "Product Price"
 msgstr ""
 
 #: lib/gettext-pro.php:108 lib/messages.php:2518
-#: lib/pro/admin/meta-edit.php:242 lib/std/admin/meta-edit.php:248
+#: lib/pro/admin/meta-edit.php:243 lib/std/admin/meta-edit.php:249
 msgctxt "option label"
 msgid "Product Availability"
 msgstr ""
 
 #: lib/gettext-pro.php:109 lib/messages.php:2530
-#: lib/pro/admin/meta-edit.php:250 lib/std/admin/meta-edit.php:257
+#: lib/pro/admin/meta-edit.php:251 lib/std/admin/meta-edit.php:258
 msgctxt "option label"
 msgid "Product Condition"
 msgstr ""
 
 #: lib/gettext-pro.php:110 lib/messages.php:2577
-#: lib/pro/admin/meta-edit.php:258 lib/std/admin/meta-edit.php:266
+#: lib/pro/admin/meta-edit.php:259 lib/std/admin/meta-edit.php:267
 msgctxt "option label"
 msgid "Product Material"
 msgstr ""
 
 #: lib/gettext-pro.php:111 lib/messages.php:2526
-#: lib/pro/admin/meta-edit.php:265 lib/std/admin/meta-edit.php:274
+#: lib/pro/admin/meta-edit.php:266 lib/std/admin/meta-edit.php:275
 msgctxt "option label"
 msgid "Product Color"
 msgstr ""
 
 #: lib/gettext-pro.php:112 lib/messages.php:2597
-#: lib/pro/admin/meta-edit.php:272 lib/std/admin/meta-edit.php:282
+#: lib/pro/admin/meta-edit.php:273 lib/std/admin/meta-edit.php:283
 msgctxt "option label"
 msgid "Product Target Gender"
 msgstr ""
 
 #: lib/gettext-pro.php:113 lib/messages.php:2593
-#: lib/pro/admin/meta-edit.php:280 lib/std/admin/meta-edit.php:291
+#: lib/pro/admin/meta-edit.php:281 lib/std/admin/meta-edit.php:292
 msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
 #: lib/gettext-pro.php:114 lib/messages.php:2606
-#: lib/pro/admin/meta-edit.php:287 lib/std/admin/meta-edit.php:299
+#: lib/pro/admin/meta-edit.php:288 lib/std/admin/meta-edit.php:300
 msgctxt "option label"
 msgid "Product Weight"
 msgstr ""
 
 #: lib/gettext-pro.php:115 lib/messages.php:2589
-#: lib/pro/admin/meta-edit.php:295 lib/std/admin/meta-edit.php:308
+#: lib/pro/admin/meta-edit.php:296 lib/std/admin/meta-edit.php:309
 msgctxt "option label"
 msgid "Product SKU"
 msgstr ""
 
 #: lib/gettext-pro.php:116 lib/messages.php:2581
-#: lib/pro/admin/meta-edit.php:302 lib/std/admin/meta-edit.php:316
+#: lib/pro/admin/meta-edit.php:303 lib/std/admin/meta-edit.php:317
 msgctxt "option label"
 msgid "Product MPN"
 msgstr ""
 
 #: lib/gettext-pro.php:117 lib/messages.php:2568
-#: lib/pro/admin/meta-edit.php:309 lib/std/admin/meta-edit.php:324
+#: lib/pro/admin/meta-edit.php:310 lib/std/admin/meta-edit.php:325
 msgctxt "option label"
 msgid "Product ISBN"
 msgstr ""
 
-#: lib/gettext-pro.php:118 lib/pro/admin/meta-edit.php:321
-#: lib/std/admin/meta-edit.php:335
+#: lib/gettext-pro.php:118 lib/pro/admin/meta-edit.php:322
+#: lib/std/admin/meta-edit.php:336
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup"
 msgstr ""
 
-#: lib/gettext-pro.php:119 lib/pro/admin/meta-edit.php:326
-#: lib/std/admin/meta-edit.php:341
+#: lib/gettext-pro.php:119 lib/pro/admin/meta-edit.php:327
+#: lib/std/admin/meta-edit.php:342
 msgctxt "option label"
 msgid "Description"
 msgstr ""
 
-#: lib/gettext-pro.php:120 lib/pro/admin/meta-edit.php:350
-#: lib/std/admin/meta-edit.php:365
+#: lib/gettext-pro.php:120 lib/pro/admin/meta-edit.php:351
+#: lib/std/admin/meta-edit.php:366
 msgid "Save a draft version or publish the %s to display these options."
 msgstr ""
 
-#: lib/gettext-pro.php:121 lib/pro/admin/meta-edit.php:377
-#: lib/std/admin/meta-edit.php:388
+#: lib/gettext-pro.php:121 lib/pro/admin/meta-edit.php:378
+#: lib/std/admin/meta-edit.php:389
 msgctxt "metabox title"
 msgid "Facebook / Open Graph / Default Media"
 msgstr ""
 
-#: lib/gettext-pro.php:122 lib/pro/admin/meta-edit.php:382
-#: lib/std/admin/meta-edit.php:393
+#: lib/gettext-pro.php:122 lib/pro/admin/meta-edit.php:383
+#: lib/std/admin/meta-edit.php:394
 msgctxt "metabox title"
 msgid "Priority Image Information"
 msgstr ""
 
 #: lib/gettext-pro.php:123 lib/gettext-pro.php:138
-#: lib/pro/admin/meta-edit.php:387 lib/pro/admin/meta-edit.php:527
-#: lib/std/admin/meta-edit.php:399 lib/std/admin/meta-edit.php:541
+#: lib/pro/admin/meta-edit.php:388 lib/pro/admin/meta-edit.php:528
+#: lib/std/admin/meta-edit.php:400 lib/std/admin/meta-edit.php:542
 msgctxt "option label"
 msgid "Maximum Images"
 msgstr ""
 
 #: lib/gettext-pro.php:124 lib/gettext-pro.php:135 lib/gettext-pro.php:139
-#: lib/pro/admin/meta-edit.php:393 lib/pro/admin/meta-edit.php:491
-#: lib/pro/admin/meta-edit.php:536 lib/std/admin/meta-edit.php:407
-#: lib/std/admin/meta-edit.php:507 lib/std/admin/meta-edit.php:552
+#: lib/pro/admin/meta-edit.php:394 lib/pro/admin/meta-edit.php:492
+#: lib/pro/admin/meta-edit.php:537 lib/std/admin/meta-edit.php:408
+#: lib/std/admin/meta-edit.php:508 lib/std/admin/meta-edit.php:553
 msgctxt "option label"
 msgid "Image ID"
 msgstr ""
 
 #: lib/gettext-pro.php:125 lib/gettext-pro.php:136 lib/gettext-pro.php:140
-#: lib/pro/admin/meta-edit.php:399 lib/pro/admin/meta-edit.php:499
-#: lib/pro/admin/meta-edit.php:544 lib/std/admin/meta-edit.php:414
-#: lib/std/admin/meta-edit.php:516 lib/std/admin/meta-edit.php:561
+#: lib/pro/admin/meta-edit.php:400 lib/pro/admin/meta-edit.php:500
+#: lib/pro/admin/meta-edit.php:545 lib/std/admin/meta-edit.php:415
+#: lib/std/admin/meta-edit.php:517 lib/std/admin/meta-edit.php:562
 msgctxt "option label"
 msgid "or an Image URL"
 msgstr ""
 
-#: lib/gettext-pro.php:126 lib/pro/admin/meta-edit.php:406
-#: lib/std/admin/meta-edit.php:421
+#: lib/gettext-pro.php:126 lib/pro/admin/meta-edit.php:407
+#: lib/std/admin/meta-edit.php:422
 msgctxt "metabox title"
 msgid "Priority Video Information"
 msgstr ""
 
-#: lib/gettext-pro.php:127 lib/pro/admin/meta-edit.php:410
-#: lib/std/admin/meta-edit.php:426
+#: lib/gettext-pro.php:127 lib/pro/admin/meta-edit.php:411
+#: lib/std/admin/meta-edit.php:427
 msgctxt "option label"
 msgid "Include Preview Images"
 msgstr ""
 
-#: lib/gettext-pro.php:129 lib/pro/admin/meta-edit.php:419
-#: lib/std/admin/meta-edit.php:436
+#: lib/gettext-pro.php:129 lib/pro/admin/meta-edit.php:420
+#: lib/std/admin/meta-edit.php:437
 msgctxt "option label"
 msgid "Maximum Videos"
 msgstr ""
 
-#: lib/gettext-pro.php:130 lib/pro/admin/meta-edit.php:426
-#: lib/std/admin/meta-edit.php:445
+#: lib/gettext-pro.php:130 lib/pro/admin/meta-edit.php:427
+#: lib/std/admin/meta-edit.php:446
 msgctxt "option label"
 msgid "Video Size"
 msgstr ""
 
 #: lib/gettext-pro.php:131 lib/messages.php:2628
-#: lib/pro/admin/meta-edit.php:432 lib/std/admin/meta-edit.php:452
+#: lib/pro/admin/meta-edit.php:433 lib/std/admin/meta-edit.php:453
 msgctxt "option label"
 msgid "Video Embed HTML"
 msgstr ""
 
-#: lib/gettext-pro.php:132 lib/pro/admin/meta-edit.php:438
-#: lib/std/admin/meta-edit.php:459
+#: lib/gettext-pro.php:132 lib/pro/admin/meta-edit.php:439
+#: lib/std/admin/meta-edit.php:460
 msgctxt "option label"
 msgid "or a Video URL"
 msgstr ""
 
-#: lib/gettext-pro.php:133 lib/pro/admin/meta-edit.php:445
-#: lib/std/admin/meta-edit.php:467
+#: lib/gettext-pro.php:133 lib/pro/admin/meta-edit.php:446
+#: lib/std/admin/meta-edit.php:468
 msgctxt "option label"
 msgid "Video Name / Title"
 msgstr ""
 
-#: lib/gettext-pro.php:134 lib/pro/admin/meta-edit.php:454
-#: lib/std/admin/meta-edit.php:475
+#: lib/gettext-pro.php:134 lib/pro/admin/meta-edit.php:455
+#: lib/std/admin/meta-edit.php:476
 msgctxt "option label"
 msgid "Video Description"
 msgstr ""
 
-#: lib/gettext-pro.php:137 lib/pro/admin/meta-edit.php:520
-#: lib/std/admin/meta-edit.php:533
+#: lib/gettext-pro.php:137 lib/pro/admin/meta-edit.php:521
+#: lib/std/admin/meta-edit.php:534
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup / Pinterest"
 msgstr ""
@@ -3349,37 +3349,37 @@ msgstr ""
 msgid "please disable the %1$s option in the %2$s settings page."
 msgstr ""
 
-#. translators: %s is "App Key"
-#. translators: %s is "Secret Token"
+#. translators: %1$s is "App Key"
+#. translators: %1$s is "Secret Token"
 #: lib/gettext-pro.php:206 lib/gettext-pro.php:207
 #: lib/pro/review/yotpowc.php:197 lib/pro/review/yotpowc.php:212
-msgid "Yotpo for WooCommerce \"%s\" setting value is empty."
+msgid "Yotpo for WooCommerce \"%1$s\" setting value is empty."
 msgstr ""
 
-#. translators: %s is "wc_yotpo_compatible()"
+#. translators: %1$s is "wc_yotpo_compatible()"
 #: lib/gettext-pro.php:208 lib/pro/review/yotpowc.php:227
-msgid "Yotpo for WooCommerce %s function is missing."
+msgid "Yotpo for WooCommerce %1$s function is missing."
 msgstr ""
 
-#. translators: %s is "wc_yotpo_compatible()"
+#. translators: %1$s is "wc_yotpo_compatible()"
 #: lib/gettext-pro.php:209 lib/pro/review/yotpowc.php:243
-msgid "Yotpo for WooCommerce %s function returned false."
+msgid "Yotpo for WooCommerce %1$s function returned false."
 msgstr ""
 
-#. translators: %s is "yotpo-social-reviews-for-woocommerce"
+#. translators: %1$s is "yotpo-social-reviews-for-woocommerce"
 #: lib/gettext-pro.php:210 lib/pro/review/yotpowc.php:266
 msgid ""
-"\"%s\" plugin not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
+"\"%1$s\" plugin not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
 msgstr ""
 
-#. translators: %s is the API library file path
+#. translators: %1$s is the API library file path
 #: lib/gettext-pro.php:211 lib/pro/review/yotpowc.php:283
-msgid "Yotpo for WooCommerce API library file \"%s\" not found."
+msgid "Yotpo for WooCommerce API library file \"%1$s\" not found."
 msgstr ""
 
-#. translators: %s is the API library file path
+#. translators: %1$s is the API library file path
 #: lib/gettext-pro.php:212 lib/pro/review/yotpowc.php:304
-msgid "Yotpo for WooCommerce \"%s\" class does not exist."
+msgid "Yotpo for WooCommerce \"%1$s\" class does not exist."
 msgstr ""
 
 #. translators: %s is the Job Manager plugin name
