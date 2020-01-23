@@ -193,8 +193,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		/**
-		 * Creates a vertical list (by default) of checkboxes. The $name_prefix is 
-		 * combined with the $values array names to create the checbox option name.
+		 * Creates a vertical list (by default) of checkboxes. The $name_prefix is combined with the $values array names to
+		 * create the checbox option name.
 		 */
 		public function get_checklist( $name_prefix, $values = array(), $css_class = 'input_vertical_list', $css_id = '', $is_assoc = null, $is_disabled = false ) {
 
@@ -225,8 +225,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 
 				/**
-				 * If the array is not associative (so a regular numbered array), 
-				 * then the label / description is used as the saved value.
+				 * If the array is not associative (so a regular numbered array), then the label / description is
+				 * used as the saved value.
 				 */
 				if ( $is_assoc ) {
 					$input_name = $name_prefix . '_' . $name_suffix;

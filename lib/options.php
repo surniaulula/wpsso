@@ -459,11 +459,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			if ( false !== $opt_key ) {
+
 				if ( isset( $defs[ $opt_key ] ) ) {
 					return $defs[ $opt_key ];
 				} else {
 					return null;
 				}
+
 			} else {
 				return $defs;
 			}
