@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 6.17.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-01-23 13:15-0800\n"
-"PO-Revision-Date: 2020-01-23 13:15-0800\n"
+"PO-Revision-Date: 2020-01-23 13:18-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1360,7 +1360,6 @@ msgid "Ratings and reviews for WordPress comments with Aggregate Rating meta tag
 msgstr "Notes et critiques pour commentaires WordPress avec balises méta Aggregate Rating et balisage Schéma Review."
 
 #: lib/gettext-config.php:44
-#, fuzzy
 msgctxt "plugin description"
 msgid "Enhances the WordPress REST API post, term, and user query results with an array of social and SEO meta tags, and Schema JSON-LD markup."
 msgstr "Améliore les résultats de requêtes d'article, terme et utilisateur de l'API REST WordPress avec un tableau de balises méta sociales et SEO, et de balisage Schema JSON-LD."
