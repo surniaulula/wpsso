@@ -1469,8 +1469,8 @@ msgstr ""
 #: lib/gettext-config.php:44
 msgctxt "plugin description"
 msgid ""
-"Enhances the WordPress REST API post, term, and user queries with an array "
-"of Social and Search Engine Optimization meta tags and Schema markup."
+"Enhances the WordPress REST API post, term, and user query results with an "
+"array of social and SEO meta tags, and Schema JSON-LD markup."
 msgstr ""
 
 #: lib/gettext-config.php:45
