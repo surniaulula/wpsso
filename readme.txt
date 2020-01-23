@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 5.5
 Requires At Least: 4.0
 Tested Up To: 5.3.2
-WC Tested Up To: 3.8.1
+WC Tested Up To: 3.9.0
 Stable Tag: 6.17.0
 
 Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.
