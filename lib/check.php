@@ -531,7 +531,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		private function is_opt_enabled( $opt_key ) {
 
 			if ( ! empty( $opt_key ) ) {	// Just in case.
+
 				if ( ! empty( $this->p->options[ $opt_key ] ) ) {	// Not 0 or empty string.
+
 					if ( $this->p->options[ $opt_key ] !== 'none' ) {
 						return true;
 					}

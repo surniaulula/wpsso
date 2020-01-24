@@ -1054,9 +1054,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				if ( ! empty( $this->p->options[ 'plugin_' . $ext . '_tid' ] ) ) {
+				if ( SucomUpdate::is_configured( $ext ) ) {	// Since WPSSO UM v1.0.
 
-					$uerr = SucomUpdate::get_umsg( $ext );
+					$uerr = SucomUpdate::get_umsg( $ext );	// Since WPSSO UM v1.0.
 
 					if ( ! empty( $uerr ) ) {
 
