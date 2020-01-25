@@ -73,8 +73,6 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 			$p_img_desc_max_len  = $this->p->options[ 'p_img_desc_max_len' ];
 			$tc_desc_max_len     = $this->p->options[ 'tc_desc_max_len' ];
 			$seo_desc_max_len    = $this->p->options[ 'seo_desc_max_len' ];		// Max. Description Meta Tag Length.
-			$schema_desc_max_len = $this->p->options[ 'schema_desc_max_len' ];	// Max. Schema Description Length.
-			$schema_desc_md_key  = array( 'seo_desc', 'og_desc' );
 
 			/**
 			 * Default option values.
@@ -86,7 +84,6 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 			$def_p_img_desc    = $p_img_desc_disabled ? '' : $this->p->page->get_description( $p_img_desc_max_len, $dots, $mod, $read_cache, $maybe_hashtags );
 			$def_tc_desc       = $this->p->page->get_description( $tc_desc_max_len, $dots, $mod, $read_cache );
 			$def_seo_desc      = $seo_desc_disabled ? '' : $this->p->page->get_description( $seo_desc_max_len, $dots, $mod, $read_cache, $no_hashtags );
-			$def_schema_desc   = $this->p->page->get_description( $schema_desc_max_len, $dots, $mod, $read_cache, $no_hashtags, $do_encode, $schema_desc_md_key );
 			$def_sharing_url   = $this->p->util->get_sharing_url( $mod, $add_page = false );
 			$def_canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = false );
 
@@ -343,14 +340,6 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'content'  => $form->get_select( 'schema_type', $schema_types,
 						$css_class = 'schema_type', $css_id = '', $is_assoc = true, $is_disabled = false, $selected = true,
 							$event_names = array( 'on_focus_load_json' ), $event_args = 'schema_types' ),
-				),
-				'schema_desc' => array(
-					'no_auto_draft' => true,
-					'th_class'      => 'medium',
-					'td_class'      => 'blank',
-					'label'         => _x( 'Description', 'option label', 'wpsso' ),
-					'tooltip'       => 'meta-schema_desc',
-					'content'       => $form->get_no_textarea_value( $def_schema_desc, '', '', $schema_desc_max_len ),
 				),
 				'wpssojson_addon_msg' => array(
 					'table_row' => ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ?
