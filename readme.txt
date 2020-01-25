@@ -459,6 +459,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 6.18.0-dev.1 (2020/01/22)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added a new "Schema Type" select option in the Document SSO metabox.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v5.5.
+	* WordPress v4.0.
+
 **Version 6.17.0 (2020/01/15)**
 
 * **New Features**
@@ -886,6 +900,10 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 	* WordPress v3.9.
 
 == Upgrade Notice ==
+
+= 6.18.0-dev.1 =
+
+(2020/01/22) Added a new "Schema Type" select option in the Document SSO metabox.
 
 = 6.17.0 =
 
