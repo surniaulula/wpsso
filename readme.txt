@@ -465,6 +465,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* Added a new "Schema Type" select option in the Document SSO metabox.
+	* Removed the Schema "Description" option in the Document SSO metabox.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -903,7 +904,7 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 
 = 6.18.0-dev.1 =
 
-(2020/01/22) Added a new "Schema Type" select option in the Document SSO metabox.
+(2020/01/22) Added a new "Schema Type" select option and removed the Schema "Description" option in the Document SSO metabox.
 
 = 6.17.0 =
 
