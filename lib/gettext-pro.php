@@ -116,6 +116,7 @@ _x( 'Product SKU', 'option label', 'wpsso' );
 _x( 'Product MPN', 'option label', 'wpsso' );
 _x( 'Product ISBN', 'option label', 'wpsso' );
 _x( 'Structured Data / Schema Markup', 'metabox title', 'wpsso' );
+_x( 'Schema Type', 'option label', 'wpsso' );
 _x( 'Description', 'option label', 'wpsso' );
 __( 'Save a draft version or publish the %s to display these options.', 'wpsso' );
 _x( 'Facebook / Open Graph / Default Media', 'metabox title', 'wpsso' );

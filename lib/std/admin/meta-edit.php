@@ -60,9 +60,10 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 			/**
 			 * Select option arrays.
 			 */
-			$og_types   = $this->p->og->get_og_types_select( $add_none = true );
-			$art_topics = $this->p->util->get_article_topics();
-			$currencies = SucomUtil::get_currency_abbrev();
+			$og_types     = $this->p->og->get_og_types_select( $add_none = true );
+			$art_topics   = $this->p->util->get_article_topics();
+			$currencies   = SucomUtil::get_currency_abbrev();
+			$schema_types = $this->p->schema->get_schema_types_select( null, $add_none = false );
 
 			/**
 			 * Maximum option lengths.
@@ -334,6 +335,14 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'td_class' => 'subsection',
 					'header'   => 'h4',
 					'label'    => _x( 'Structured Data / Schema Markup', 'metabox title', 'wpsso' )
+				),
+				'schema_type' => array(
+					'th_class' => 'medium',
+					'label'    => _x( 'Schema Type', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_type',
+					'content'  => $form->get_select( 'schema_type', $schema_types,
+						$css_class = 'schema_type', $css_id = '', $is_assoc = true, $is_disabled = false, $selected = true,
+							$event_names = array( 'on_focus_load_json' ), $event_args = 'schema_types' ),
 				),
 				'schema_desc' => array(
 					'no_auto_draft' => true,
