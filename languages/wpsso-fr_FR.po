@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 6.18.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-01-25 12:26-0800\n"
-"PO-Revision-Date: 2020-01-25 12:26-0800\n"
+"POT-Creation-Date: 2020-01-27 08:24-0800\n"
+"PO-Revision-Date: 2020-01-27 08:24-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -5487,23 +5487,23 @@ msgstr "%1$s nécessite %2$s version %3$s ou supérieure et a été désactivé.
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr "SVP mettre à jour %1$s avant d'essayer de réactiver l'extension %2$s."
 
-#: lib/schema-single.php:873
+#: lib/schema-single.php:952
 msgid "adding schema organization"
 msgstr "ajout de schéma organisation"
 
-#: lib/schema-single.php:915
+#: lib/schema-single.php:994
 msgid "The \"%1$s\" Organization Logo image is missing and required for the Schema %2$s markup."
 msgstr "L'image logo de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema-single.php:922
+#: lib/schema-single.php:1001
 msgid "The \"%1$s\" Organization Banner (600x60px) image is missing and required for the Schema %2$s markup."
 msgstr "L'image bannière (600x60px) de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema-single.php:1058
+#: lib/schema-single.php:1137
 msgid "adding schema for person user ID %1$s"
 msgstr "ajout de schéma de personne pour l'ID d'utilisateur %1$s"
 
-#: lib/schema-single.php:1218
+#: lib/schema-single.php:1297
 msgid "adding schema place"
 msgstr "ajout de schéma d'endroit"
 
