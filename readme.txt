@@ -469,7 +469,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Moved all methods from the WpssoJsonSchema class in WPSSO JSON v2.20.0 to WpssoSchema.
 * **Requires At Least**
 	* PHP v5.5.
 	* WordPress v4.0.
