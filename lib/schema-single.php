@@ -292,6 +292,85 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			return 1;	// Return count of videos added.
 		}
 
+		public static function add_comment_data( &$json_data, array $mod, $comment_id, $list_element = true ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			$comments_added = 0;
+
+			if ( $comment_id && $cmt = get_comment( $comment_id ) ) {	// Just in case.
+
+				/**
+				 * If not adding a list element, inherit the existing schema type url (if one exists).
+				 */
+				if ( ! $list_element && false !== ( $comment_type_url = WpssoSchema::get_data_type_url( $json_data ) ) ) {
+
+					if ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log( 'using inherited schema type url = ' . $comment_type_url );
+					}
+
+				} else {
+					$comment_type_url = 'https://schema.org/Comment';
+				}
+
+				$ret = WpssoSchema::get_schema_type_context( $comment_type_url, array(
+					'url'         => get_comment_link( $cmt->comment_ID ),
+					'dateCreated' => mysql2date( 'c', $cmt->comment_date_gmt ),
+					'description' => get_comment_excerpt( $cmt->comment_ID ),
+					'author'      => WpssoSchema::get_schema_type_context( 'https://schema.org/Person', array(
+						'name' => $cmt->comment_author,
+					) ),
+				) );
+
+				$comments_added++;
+
+				$replies_added = self::add_comment_reply_data( $ret[ 'comment' ], $mod, $cmt->comment_ID );
+
+				if ( ! $replies_added ) {
+					unset( $ret[ 'comment' ] );
+				}
+
+				if ( empty( $list_element ) ) {		// Add a single item.
+					$json_data = $ret;
+				} elseif ( is_array( $json_data ) ) {	// Just in case.
+					$json_data[] = $ret;		// Add an item to the list.
+				} else {
+					$json_data = array( $ret );	// Add an item to the list.
+				}
+			}
+
+			return $comments_added;	// Return count of comments added.
+		}
+
+		public static function add_comment_reply_data( &$json_data, $mod, $comment_id ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			$replies_added = 0;
+
+			$replies = get_comments( array(
+				'post_id' => $mod[ 'id' ],
+				'status'  => 'approve',
+				'parent'  => $comment_id,	// Get only the replies for this comment.
+				'order'   => 'DESC',
+				'number'  => get_option( 'page_comments' ),	// Limit the number of comments.
+			) );
+
+			if ( is_array( $replies ) ) {
+
+				foreach( $replies as $num => $reply ) {
+
+					$comments_added = WpssoSchemaSingle::add_comment_data( $json_data, $mod, $reply->comment_ID, true );
+
+					if ( $comments_added ) {
+						$replies_added += $comments_added;
+					}
+				}
+			}
+
+			return $replies_added;	// Return count of replies added.
+		}
+
 		public static function add_event_data( &$json_data, array $mod, $event_id = false, $list_element = false ) {
 
 			$wpsso =& Wpsso::get_instance();

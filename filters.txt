@@ -121,26 +121,6 @@
 
 'wpsso_is_functions' ( $is_functions )
 
-'wpsso_json_array_schema_page_type_ids' ( $page_type_ids, $mod )
-
-'wpsso_json_data_https_schema_org_{item_type}' ( $json_data, $mod, $mt_og, $page_type_id, $is_main )
-
-'wpsso_json_data_single_event' ( $event_data, $mod, $event_id )
-
-'wpsso_json_data_single_organization' ( $org_data, $mod, $org_id )
-
-'wpsso_json_data_single_organization_sameas' ( $org_sameas, $mod, $org_id )
-
-'wpsso_json_data_single_person' ( $person_data, $mod, $user_id )
-
-'wpsso_json_data_single_person_sameas' ( $person_sameas, $mod, $user_id )
-
-'wpsso_json_data_single_place' ( $place_data, $mod, $place_id )
-
-'wpsso_json_ld_search_url' ( $search_url, $mod, $add_page, $src_id )
-
-'wpsso_json_prop_https_schema_org_graph' ( $prop_data, $mod, $mt_og, $page_type_id, $is_main )
-
 'wpsso_js_url_facebook' ( $url, $pos )
 
 'wpsso_link_rel' ( $link_rel, $mod )
