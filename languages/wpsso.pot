@@ -6267,32 +6267,32 @@ msgstr ""
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:101 lib/pro/forum/bbpress.php:192
+#: lib/pro/forum/bbpress.php:100 lib/pro/forum/bbpress.php:191
 msgctxt "bbpress single user description"
 msgid "%s's Profile"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:201
+#: lib/pro/forum/bbpress.php:200
 msgctxt "bbpress single user description"
 msgid "%s's Topics Started"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:207
+#: lib/pro/forum/bbpress.php:206
 msgctxt "bbpress single user description"
 msgid "%s's Replies Created"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:213
+#: lib/pro/forum/bbpress.php:212
 msgctxt "bbpress single user description"
 msgid "%s's Favorites"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:219
+#: lib/pro/forum/bbpress.php:218
 msgctxt "bbpress single user description"
 msgid "%s's Subscriptions"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:225
+#: lib/pro/forum/bbpress.php:224
 msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr ""
