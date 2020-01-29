@@ -2149,9 +2149,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				$select_opt_json = SucomUtil::json_encode_array( $select_opt_arr );
 
+				$html .= '<!-- adding ' . $event_json . ' json array -->' . "\n";
 				$html .= '<script type="text/javascript">' . "\n";
 				$html .= 'var ' . $event_json . ' = ' . $select_opt_json . ';' . "\n";
 				$html .= '</script>' . "\n";
+
+			} else {
+
+				$html .= '<!-- ' . $event_json . ' json array already added -->' . "\n";
 			}
 
 			$input_id_esc = esc_js( $input_id );
