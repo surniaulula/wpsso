@@ -321,11 +321,11 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 				* Short Summary of Claim
 				* First Appearance URL
 			* Creative Work Subject Information
-				* CW Author Type
-				* CW Author Name
-				* CW Author URL
-				* CW Published Date
-				* CW Created Date
+				* C.W. Author Type
+				* C.W. Author Name
+				* C.W. Author URL
+				* C.W. Published Date
+				* C.W. Created Date
 			* Book Subject Information
 				* Book ISBN
 			* Movie Subject Information
@@ -459,7 +459,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.18.0-rc.2 (2020/01/29)**
+**Version 6.18.0-rc.3 (2020/01/29)**
 
 * **New Features**
 	* None.
@@ -903,7 +903,7 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 
 == Upgrade Notice ==
 
-= 6.18.0-rc.2 =
+= 6.18.0-rc.3 =
 
 (2020/01/29) Added a new "Schema Type" select option and removed the Schema "Description" option in the Document SSO metabox.
 
