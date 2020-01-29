@@ -385,7 +385,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$event_names = array();
 			}
 
-			$event_json = false;	// JSON array variable name.
+			$event_json = false;
 
 			if ( in_array( 'on_focus_load_json', $event_names ) ) {
 				if ( ! empty( $event_args ) && is_string( $event_args ) ) {
@@ -781,14 +781,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$css_class   = trim( 'hour-mins ' . $css_class );
 			$event_names = array( 'on_focus_load_json' );
-			$event_args  = 'hour_mins_step_' . $step_mins;	// JSON array variable name.
+			$event_args  = 'hour_mins_step_' . $step_mins;
 
 			/**
 			 * Set 'none' as the default value if no default is defined.
 			 */
 			if ( $add_none ) {
 
-				$event_args .= '_add_none';	// JSON array variable name.
+				$event_args .= '_add_none';
 
 				if ( ! empty( $name ) && ! isset( $this->defaults[ $name ] ) ) {
 					$this->defaults[ $name ] = 'none';
@@ -822,7 +822,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$css_class   = trim( 'timezone ' . $css_class );
 			$timezones   = timezone_identifiers_list();
 			$event_names = array( 'on_focus_load_json' );
-			$event_args  = 'timezones';	// JSON array variable name.
+			$event_args  = 'timezones';
 
 			if ( empty( $this->defaults[ $name ] ) ) {
 
@@ -1413,7 +1413,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					}
 
 					$event_args = empty( $atts[ 'event_args' ] ) ? null : $atts[ 'event_args' ];
-					$event_json = false;	// JSON array variable name.
+					$event_json = false;
 
 					if ( in_array( 'on_focus_load_json', $event_names ) ) {
 						if ( ! empty( $event_args ) && is_string( $event_args ) ) {
