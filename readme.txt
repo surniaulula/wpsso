@@ -466,6 +466,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Added a new "Schema Type" select option in the Document SSO metabox.
 	* Removed the Schema "Description" option in the Document SSO metabox.
+	* Updated the WP Product Review integration module to use the 'wppr_rating' metadata key instead of 'option_overall_score'.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
