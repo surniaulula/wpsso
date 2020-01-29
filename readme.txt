@@ -459,7 +459,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.18.0-rc.1 (2020/01/29)**
+**Version 6.18.0-rc.2 (2020/01/29)**
 
 * **New Features**
 	* None.
@@ -902,7 +902,7 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 
 == Upgrade Notice ==
 
-= 6.18.0-rc.1 =
+= 6.18.0-rc.2 =
 
 (2020/01/29) Added a new "Schema Type" select option and removed the Schema "Description" option in the Document SSO metabox.
 
