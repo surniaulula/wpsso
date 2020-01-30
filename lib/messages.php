@@ -415,7 +415,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 */
 						case 'tooltip-og_def_article_topic':	// Default Article Topic.
 
-							$text = __( 'The topic that best describes the content of all or most articles on your site.', 'wpsso' ) . ' ';
+							$text = __( 'The topic that best describes the content of the articles on your site.', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( 'Your selection will be used by default for the Facebook %s meta tag value.', 'wpsso' ), '<code>article:section</code>' ) . ' ';
 

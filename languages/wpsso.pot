@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.18.0-rc.4\n"
+"Project-Id-Version: WPSSO Core 6.18.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3429,7 +3429,7 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
 #: lib/loader.php:184 lib/loader.php:210 lib/post.php:490 lib/register.php:315
-#: lib/term.php:434 lib/user.php:381 lib/util.php:524 lib/util.php:3498
+#: lib/term.php:434 lib/user.php:381 lib/util.php:524 lib/util.php:3500
 msgid "%s warning:"
 msgstr ""
 
@@ -3838,9 +3838,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:418
-msgid ""
-"The topic that best describes the content of all or most articles on your "
-"site."
+msgid "The topic that best describes the content of the articles on your site."
 msgstr ""
 
 #: lib/messages.php:420 lib/messages.php:430
@@ -6104,7 +6102,7 @@ msgstr ""
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
 #: lib/post.php:476 lib/term.php:420 lib/user.php:367 lib/util.php:510
-#: lib/util.php:3470
+#: lib/util.php:3472
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -6158,7 +6156,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:1027 lib/util.php:1999
+#: lib/post.php:1027 lib/util.php:2001
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -6978,43 +6976,43 @@ msgid "Failed to remove the cache file %s."
 msgstr ""
 
 #: lib/util.php:1814
-msgid "Error reading %s article topic list file."
+msgid "Error reading the %s file for the article topics list."
 msgstr ""
 
-#: lib/util.php:1904
-msgid "Error reading %s product categories list file."
+#: lib/util.php:1905
+msgid "Error reading the %s file for the product categories list."
 msgstr ""
 
-#: lib/util.php:1986
+#: lib/util.php:1988
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:2012
+#: lib/util.php:2014
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:2206
+#: lib/util.php:2208
 msgid ""
 "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
 "provider to have the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:2219
+#: lib/util.php:2221
 msgid ""
 "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
 "provider to have the missing function installed."
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max.
-#: lib/util.php:3473
+#: lib/util.php:3475
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3490
+#: lib/util.php:3492
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -7023,39 +7021,39 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3490
+#: lib/util.php:3492
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3787
+#: lib/util.php:3789
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:3816
+#: lib/util.php:3818
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3819
+#: lib/util.php:3821
 msgctxt "option comment"
 msgid "show these options now"
 msgstr ""
 
-#: lib/util.php:3824
+#: lib/util.php:3826
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3827
+#: lib/util.php:3829
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name, and %3$s is the object ID.
-#: lib/util.php:4317
+#: lib/util.php:4319
 msgid "%1$s for %2$s ID %3$s"
 msgstr ""
 

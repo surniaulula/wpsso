@@ -1811,7 +1811,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 
 				if ( is_admin() ) {
-					$this->p->notice->err( sprintf( __( 'Error reading %s article topic list file.', 'wpsso' ), WPSSO_ARTICLE_TOPICS_LIST ) );
+					$this->p->notice->err( sprintf( __( 'Error reading the %s file for the article topics list.', 'wpsso' ),
+						WPSSO_ARTICLE_TOPICS_LIST ) );
 				}
 
 				return array();
@@ -1901,7 +1902,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 
 				if ( is_admin() ) {
-					$this->p->notice->err( sprintf( __( 'Error reading %s product categories list file.', 'wpsso' ), WPSSO_PRODUCT_CATEGORIES_LIST ) );
+					$this->p->notice->err( sprintf( __( 'Error reading the %s file for the product categories list.', 'wpsso' ),
+						WPSSO_PRODUCT_CATEGORIES_LIST ) );
 				}
 
 				return array();
