@@ -1235,36 +1235,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $text;
 		}
 
-		public function get_article_section( $post_id, $allow_none = false, $use_mod_opts = true ) {
-
-			$section = '';
-
-			/**
-			 * Get custom article section from post meta.
-			 */
-			if ( $use_mod_opts ) {
-				if ( ! empty( $post_id ) ) {	// Just in case.
-					$section = $this->p->post->get_options( $post_id, 'article_topic' );	// Returns null if index key not found.
-				}
-			}
-
-			if ( ! empty( $section ) ) {	// Must be a non-empty string.
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'found custom meta article section = ' . $section );
-				}
-			} else {
-				$section = $this->p->options[ 'og_def_article_topic' ];
-			}
-
-			if ( ! $allow_none ) {
-				if ( $section === 'none' ) {
-					$section = '';
-				}
-			}
-
-			return apply_filters( $this->p->lca . '_article_section', $section, $post_id );
-		}
-
 		/**
 		 * Returns a comma delimited text string of keywords (ie. post tag names).
 		 */
@@ -1456,6 +1426,39 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			return $tags;
+		}
+
+		public function get_article_section( array $mod ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			$section = '';
+
+			if ( ! empty( $mod[ 'id' ] ) && is_object( $mod[ 'obj' ] ) ) {
+
+				$section = (string) $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'article_topic' );
+			}
+
+			if ( ! empty( $section ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'found custom meta article section = ' . $section );
+				}
+
+			} else {
+
+				$section = (string) $this->p->options[ 'og_def_article_topic' ];
+			}
+
+			$section = (string) apply_filters( $this->p->lca . '_article_section', $section, $mod );
+
+			if ( empty( $section ) || 'none' === $section ) {
+				$section = '';
+			}
+
+			return $section;
 		}
 
 		/**

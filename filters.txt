@@ -39,7 +39,7 @@
 
 'wpsso_archive_page_url' ( $url, $mod, $add_page, $src_id )
 
-'wpsso_article_section' ( $section, $post_id )
+'wpsso_article_section' ( $section, $mod )
 
 'wpsso_article_topics' ( array $topics )
 

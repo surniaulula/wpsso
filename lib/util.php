@@ -670,7 +670,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$new_crop = array( 'center', 'center' );
 
 					foreach ( array( 'crop_x', 'crop_y' ) as $crop_key => $key ) {
+
 						if ( ! empty( $size_info[ $key ] ) && $size_info[ $key ] !== 'none' ) {
+
 							$new_crop[ $crop_key ] = $size_info[ $key ];
 						}
 					}
@@ -778,7 +780,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$value = $this->p->post->get_options( $attach_id, $md_key );
 
 					if ( $value && $value !== 'none' ) {		// Custom crop value found.
+
 						$new_crop[ $crop_key ] = $value;	// Adjust the crop value.
+
 						$crop = $new_crop;			// Update the crop array.
 					}
 				}
@@ -1833,7 +1837,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			asort( $topics, SORT_NATURAL );
 
-			$topics = array_merge( array( 'none' ), $topics );	// After sorting the array, put 'none' first.
+			$topics = array_merge( array( 'none' => '[None]' ), $topics );	// After sorting the array, put 'none' first.
 
 			if ( $cache_exp_secs > 0 ) {
 
@@ -1926,7 +1930,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			asort( $categories, SORT_NATURAL );
 
-			$categories = array_merge( array( 'none' ), $categories );	// After sorting the array, put 'none' first.
+			$categories = array_merge( array( 'none' => '[None]' ), $categories );	// After sorting the array, put 'none' first.
 
 			if ( $cache_exp_secs > 0 ) {
 

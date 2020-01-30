@@ -774,7 +774,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 
 				if ( ! isset( $mt_og[ 'article:section' ] ) ) {
-					$mt_og[ 'article:section' ] = $this->p->page->get_article_section( $post_id );
+					$mt_og[ 'article:section' ] = $this->p->page->get_article_section( $mod );
 				}
 
 				if ( ! isset( $mt_og[ 'article:published_time' ] ) ) {
