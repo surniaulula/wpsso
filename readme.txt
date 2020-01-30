@@ -464,7 +464,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.18.0-rc.4 (2020/01/30)**
+**Version 6.18.0 (2020/01/30)**
 
 * **New Features**
 	* None.
@@ -861,58 +861,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* PHP v5.4.
 	* WordPress v3.9.
 
-**Version 6.4.0 (2019/09/22)**
-
-Added a new 'oEmbed' tab in the Document SSO metabox.
-
-* **New Features**
-	* Added a new 'oEmbed' tab in the Document SSO metabox to show the oEmbed data and oEmbed HTML.
-* **Improvements**
-	* Improved WordPress oEmbed data and its HTML markup with the Open Graph image, title, and description.
-* **Bugfixes**
-	* Fixed the "Select Image" button to trigger a jQuery `change()` event on the image ID input field.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v5.4.
-	* WordPress v3.9.
-
-**Version 6.3.1 (2019/09/17)**
-
-New Schema Article AMP image sizes for the WPSSO JSON add-on.
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added a new "Notification System" option to the Essential and Advanced settings page.
-	* Added new Schema Article AMP image dimensions for Google (WPSSO JSON add-on required):
-		* Schema Article AMP 1:1 (Google).
-		* Schema Article AMP 4:3 (Google).
-		* Schema Article AMP 16:9 (Google).
-	* Added the 'uploadDate' and 'identifier' properties to Schema ImageObject markup.
-	* Added 'loading="lazy"' to the hidden Pinterest Pin It button image.
-	* Removed the "Meta Property Container" option (the WPSSO JSON add-on is a better alternative).
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added checks for [AMP](https://wordpress.org/plugins/amp/), [Better AMP](https://wordpress.org/plugins/better-amp/), and [AMP for WP](https://wordpress.org/plugins/accelerated-mobile-pages/) plugins in `WpssoCheck->get_avail()`.
-	* Added an 'image' input type in the `SucomForm->get_mixed_multi()` method for WPSSO JSON v2.9.0.
-	* Added a lib/schema-noscript.php library file with a single filter for aggregate rating markup (replaces the lib/noscript.php library file).
-	* Added a lib/oembed.php library file (methods to be added in v6.4.0).
-	* Removed the lib/noscript.php library file.
-	* Removed the lib/schema-cache.php library file (Deprecated).
-	* Updated the SuextMobileDetect class from https://github.com/serbanghita/Mobile-Detect v2.8.28 to v2.8.33.
-* **Requires At Least**
-	* PHP v5.4.
-	* WordPress v3.9.
-
 == Upgrade Notice ==
 
-= 6.18.0-rc.4 =
+= 6.18.0 =
 
 (2020/01/30) Added a new "Schema Type" select option and removed the Schema "Description" option in the Document SSO metabox.
-
-= 6.17.0 =
-
-(2020/01/15) Updated the SSO sub-menu item sorting to use the translated sub-menu item names. Re-added post cache clearing for W3 Total Cache when a post ID is updated.
 
