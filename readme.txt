@@ -473,7 +473,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Refactored the `WpssoPage->get_article_section()` method and updated its arguments from `$post_id, $allow_none, $use_mod_opts` to simply `array $mod`.
+	* Updated the 'wpsso_article_section' filter arguments from `$section, $post_id` to `$section, $mod`.
 * **Requires At Least**
 	* PHP v5.5.
 	* WordPress v4.0.
