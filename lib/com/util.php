@@ -1958,7 +1958,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':age_group'                       => '',
 				$mt_pre . ':availability'                    => '',
 				$mt_pre . ':brand'                           => '',	// There can only be one Open Graph brand meta tag, which must be a string, not an array.
-				$mt_pre . ':category'                        => '',
+				$mt_pre . ':category'                        => '',	// Product category ID.
 				$mt_pre . ':color'                           => '',
 				$mt_pre . ':condition'                       => '',
 				$mt_pre . ':ean'                             => '',	// aka EAN, EAN-13, GTIN-13.

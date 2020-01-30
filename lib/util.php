@@ -214,7 +214,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			static $do_once = array();
 
 			$default_filters = array(
-				'cache_expire_head_array'       => '__return_zero',
+				'cache_expire_head_markup'      => '__return_zero',
 				'cache_expire_setup_html'       => '__return_zero',
 				'cache_expire_shortcode_html'   => '__return_zero',
 				'cache_expire_sharing_buttons'  => '__return_zero',
@@ -1758,6 +1758,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $deleted_count;
 		}
 
+		/**
+		 * Returns an associative array, with 'none' as the first element.
+		 */
 		public function get_article_topics() {
 
 			if ( $this->p->debug->enabled ) {
@@ -1766,9 +1769,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$cache_md5_pre = $this->p->lca . '_a_';
 
-			/**
-			 * Set and filter the cache expiration value only once.
-			 */
 			static $cache_exp_secs = null;
 
 			if ( null === $cache_exp_secs ) {
@@ -1783,7 +1783,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
 				 * less in length. If using a site transient, it should be 40 characters or less in length.
 				 */
-				$cache_salt = __METHOD__ . '(' . WPSSO_TOPICS_LIST . ')';
+				$cache_salt = __METHOD__ . '(' . WPSSO_ARTICLE_TOPICS_LIST . ')';
 				$cache_id   = $cache_md5_pre . md5( $cache_salt );
 	
 				if ( $this->p->debug->enabled ) {
@@ -1793,30 +1793,44 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$topics = get_transient( $cache_id );
 
 				if ( is_array( $topics ) ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'article topics retrieved from transient ' . $cache_id );
 					}
+
 					return $topics;
 				}
 			}
 
-			if ( ( $topics = file( WPSSO_TOPICS_LIST, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES ) ) === false ) {
+			$raw_topics = file( WPSSO_ARTICLE_TOPICS_LIST, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES );	// Returns false on error.
+
+			if ( ! is_array( $raw_topics ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'error reading %s article topic list file' );
 				}
 
 				if ( is_admin() ) {
-					$this->p->notice->err( sprintf( __( 'Error reading %s article topic list file.',
-						'wpsso' ), WPSSO_TOPICS_LIST ) );
+					$this->p->notice->err( sprintf( __( 'Error reading %s article topic list file.', 'wpsso' ), WPSSO_ARTICLE_TOPICS_LIST ) );
 				}
 
-				return $topics;
+				return array();
 			}
+
+			$topics = array();
+
+			foreach ( $raw_topics as $num => $name ) {
+
+				$topics[ $name ] = $name;
+
+				unset( $topics[ $num ] );	// Save memory and unset as we go.
+			}
+
+			unset( $raw_topics );
 
 			$topics = apply_filters( $this->p->lca . '_article_topics', $topics );
 
-			natsort( $topics );
+			asort( $topics, SORT_NATURAL );
 
 			$topics = array_merge( array( 'none' ), $topics );	// After sorting the array, put 'none' first.
 
@@ -1830,6 +1844,98 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			return $topics;
+		}
+
+		/**
+		 * Format the product category list from https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt.
+		 *
+		 * Returns an associative array, with 'none' as the first element.
+		 */
+		public function get_product_categories() {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			$cache_md5_pre = $this->p->lca . '_a_';
+
+			static $cache_exp_secs = null;
+
+			if ( null === $cache_exp_secs ) {
+				$cache_exp_filter = $this->p->cf[ 'wp' ][ 'transient' ][ $cache_md5_pre ][ 'filter' ];
+				$cache_opt_key    = $this->p->cf[ 'wp' ][ 'transient' ][ $cache_md5_pre ][ 'opt_key' ];
+				$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, $this->p->options[ $cache_opt_key ] );
+			}
+
+			if ( $cache_exp_secs > 0 ) {
+
+				/**
+				 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
+				 * less in length. If using a site transient, it should be 40 characters or less in length.
+				 */
+				$cache_salt = __METHOD__ . '(' . WPSSO_PRODUCT_CATEGORIES_LIST . ')';
+				$cache_id   = $cache_md5_pre . md5( $cache_salt );
+	
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'transient cache salt ' . $cache_salt );
+				}
+
+				$categories = get_transient( $cache_id );
+
+				if ( is_array( $categories ) ) {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'product categories retrieved from transient ' . $cache_id );
+					}
+
+					return $categories;
+				}
+			}
+
+			$raw_categories = file( WPSSO_PRODUCT_CATEGORIES_LIST, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES );	// Returns false on error.
+
+			if ( ! is_array( $raw_categories ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'error reading %s product categories list file' );
+				}
+
+				if ( is_admin() ) {
+					$this->p->notice->err( sprintf( __( 'Error reading %s product categories list file.', 'wpsso' ), WPSSO_PRODUCT_CATEGORIES_LIST ) );
+				}
+
+				return array();
+			}
+
+			$categories = array();
+
+			foreach ( $raw_categories as $num => $cat_id_name ) {
+
+				if ( preg_match( '/^([0-9]+) - (.*)$/', $cat_id_name, $match ) ) {
+					$categories[ $match[ 1 ] ] = $match[ 2 ];
+				}
+
+				unset( $raw_categories[ $num ] );	// Save memory and unset as we go.
+			}
+
+			unset( $raw_categories );
+
+			$categories = apply_filters( $this->p->lca . '_product_categories', $categories );
+
+			asort( $categories, SORT_NATURAL );
+
+			$categories = array_merge( array( 'none' ), $categories );	// After sorting the array, put 'none' first.
+
+			if ( $cache_exp_secs > 0 ) {
+
+				set_transient( $cache_id, $categories, $cache_exp_secs );
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'product categories saved to transient cache for ' . $cache_exp_secs . ' seconds' );
+				}
+			}
+
+			return $categories;
 		}
 
 		/**
@@ -3945,7 +4051,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 *		'product:age_group'               => '',
 			 *		'product:availability'            => 'product_avail',
 			 *		'product:brand'                   => 'product_brand',
-			 *		'product:category'                => '',
+			 *		'product:category'                => 'product_category',
 			 *		'product:color'                   => 'product_color',
 			 *		'product:condition'               => 'product_condition',
 			 *		'product:depth:value'             => 'product_depth_value',

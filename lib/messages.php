@@ -201,18 +201,25 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-og_art_section':	// Article Topic.
+						case 'tooltip-meta-article_topic':	// Article Topic.
 
-							$text = __( 'A customized topic for this article, which may be different from the default Article Topic selected in the General settings page.', 'wpsso' ) . ' ';
+							$general_page_link = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site',
+								_x( 'Default Article Topic', 'option label', 'wpsso' ) );
 
-							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag.', 'wpsso' ),
-								'<code>article:section</code>' );
+							$text = __( 'A customized topic for this article, which may be different than the %s value.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag.', 'wpsso' ), '<code>article:section</code>' );
 
 						 	break;
 
-						case 'tooltip-meta-schema_desc':
+						case 'tooltip-meta-product_category':	// Product Category.
 
-							$text = __( 'A customized description for the Schema "description" property.', 'wpsso' );
+							$general_page_link = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site',
+								_x( 'Default Product Category', 'option label', 'wpsso' ) );
+
+							$text = __( 'A customized category for this product, which may be different than the %s value.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag.', 'wpsso' ), '<code>product:category</code>' );
 
 						 	break;
 
@@ -287,6 +294,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= __( 'The video name / title and description will be used in the video Schema JSON-LD markup (add-on required).', 'wpsso' );
 
 							break;
+
+						case 'tooltip-meta-schema_type':	// Schema Type.
+
+							$text = __( 'Select a Schema item type that best describes the main content of this webpage.', 'wpsso' );
+
+						 	break;
 
 						case 'tooltip-meta-schema_img_crop_area':
 
@@ -400,13 +413,23 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/**
 						 * Site Information tab.
 						 */
-						case 'tooltip-og_art_section':		// Default Article Topic.
+						case 'tooltip-og_def_article_topic':	// Default Article Topic.
 
-							$text = __( 'The topic that best describes the Posts and Pages on your website.', 'wpsso' ) . ' ';
+							$text = __( 'The topic that best describes the content of all or most articles on your site.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'This value will be used in the %s Facebook / Open Graph and Pinterest Rich Pin meta tags.', 'wpsso' ), '<code>article:section</code>' ) . ' ';
+							$text .= sprintf( __( 'Your selection will be used by default for the Facebook %s meta tag value.', 'wpsso' ), '<code>article:section</code>' ) . ' ';
 
 							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag.', 'wpsso' ), '<code>article:section</code>' );
+
+							break;
+
+						case 'tooltip-og_def_product_category':	// Default Product Category.
+
+							$text = __( 'The category that best describes the products on your site.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'Your selection will be used by default for the Facebook %s meta tag value.', 'wpsso' ), '<code>product:category</code>' ) . ' ';
+
+							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag.', 'wpsso' ), '<code>product:category</code>' );
 
 							break;
 

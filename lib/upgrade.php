@@ -302,6 +302,10 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'plugin_cf_product_sku'   => 'plugin_cf_product_retailer_part_no',
 					'plugin_product_attr_mpn' => 'plugin_product_attr_mfr_part_no',
 				),
+				698 => array(
+					'og_art_section'          => 'og_def_article_topic',
+					'plugin_topics_cache_exp' => 'plugin_list_cache_exp',
+				),
 			),
 		);
 
@@ -333,6 +337,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'plugin_wpssorrssb_tid' => '',	// WPSSO RRSSB Premium deprecated on 2019/11/06.
 					'plugin_wpssossb_tid'   => '',	// WPSSO SSB Premium deprecated on 2019/11/05.
 					'plugin_wpssotie_tid' => '',	// WPSSO TIE Premium deprecated on 2019/11/21.
+				),
+				698 => array(
+					'plugin_topics_cache_exp' => 'plugin_list_cache_exp',
 				),
 			),
 		);

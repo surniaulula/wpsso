@@ -2865,7 +2865,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 *		'url'             => 'product:url',
 		 *		'name'            => 'product:title',
 		 *		'description'     => 'product:description',
-		 *		'category'        => 'product:category',
 		 *		'mpn'             => 'product:mfr_part_no',
 		 *		'itemCondition'   => 'product:condition',
 		 *		'availability'    => 'product:availability',

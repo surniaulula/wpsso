@@ -105,6 +105,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'product_mpn' => 'product_mfr_part_no',
 					'product_sku' => 'product_retailer_part_no',
 				),
+				696 => array(
+					'og_art_section' => 'article_topic',
+				),
 			),
 		);
 
@@ -208,7 +211,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				$opts =& $this->p->options;		// Shortcut variable name.
 
-				$og_type = $this->p->og->get_mod_og_type( $mod, $ret_og_ns = false, $use_mod_opts = false );
+				$def_og_type = $this->p->og->get_mod_og_type( $mod, $ret_og_ns = false, $use_mod_opts = false );
+				$def_schema_type = $this->p->schema->get_mod_schema_type( $mod, $get_schema_id = true, $use_mod_opts = false );
 
 				$md_defs = array(
 					'options_filtered'  => '',
@@ -219,15 +223,16 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					/**
 					 * Customize Tab.
 					 */
-					'og_type'        => $og_type,
-					'og_art_section' => isset( $opts[ 'og_art_section' ] ) ? $opts[ 'og_art_section' ] : 'none',
-					'og_title'       => '',
-					'og_desc'        => '',
-					'seo_desc'       => '',
-					'tc_desc'        => '',
-					'sharing_url'    => '',
-					'canonical_url'  => '',
-					'schema_desc'    => '',
+					'og_type'          => $def_og_type,
+					'og_title'         => '',
+					'og_desc'          => '',
+					'seo_desc'         => '',
+					'tc_desc'          => '',
+					'sharing_url'      => '',
+					'canonical_url'    => '',
+					'article_topic'    => isset( $opts[ 'og_def_article_topic' ] ) ? $opts[ 'og_def_article_topic' ] : 'none',
+					'product_category' => isset( $opts[ 'og_def_product_category' ] ) ? $opts[ 'og_def_product_category' ] : 'none',
+					'schema_type'      => $def_schema_type,
 
 					/**
 					 * Open Graph - Product Information.

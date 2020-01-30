@@ -773,14 +773,15 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			/**
 			 * Note that 'og:url' may be provided instead of 'product:url'.
+			 *
 			 * Note that there is no Schema 'ean' property for the 'product:ean' value.
+			 *
 			 * Note that there is no Schema 'size' property for the 'product:size' value.
 			 */
 			$offer = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array( 
 				'url'             => 'product:url',
 				'name'            => 'product:title',
 				'description'     => 'product:description',
-				'category'        => 'product:category',
 				'sku'             => 'product:retailer_part_no',	// Product SKU.
 				'mpn'             => 'product:mfr_part_no',		// Product MPN.
 				'gtin14'          => 'product:gtin14',			// Valid for both products and offers.
@@ -794,6 +795,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'priceCurrency'   => 'product:price:currency',
 				'priceValidUntil' => 'product:sale_price_dates:end',
 			) );
+
+			/**
+			 * TODO: Add a 'category' text property based on the product:category ID.
+			 */
 
 			/**
 			 * Fallback to the 'og:url' value, if one is available.

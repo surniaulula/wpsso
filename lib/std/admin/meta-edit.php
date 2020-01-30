@@ -60,10 +60,11 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 			/**
 			 * Select option arrays.
 			 */
-			$og_types     = $this->p->og->get_og_types_select( $add_none = true );
-			$art_topics   = $this->p->util->get_article_topics();
-			$currencies   = SucomUtil::get_currency_abbrev();
-			$schema_types = $this->p->schema->get_schema_types_select( null, $add_none = false );
+			$og_types           = $this->p->og->get_og_types_select( $add_none = true );
+			$article_topics     = $this->p->util->get_article_topics();
+			$product_categories = $this->p->util->get_product_categories();
+			$currencies         = SucomUtil::get_currency_abbrev();
+			$schema_types       = $this->p->schema->get_schema_types_select( null, $add_none = false );
 
 			/**
 			 * Maximum option lengths.
@@ -77,8 +78,6 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 			/**
 			 * Default option values.
 			 */
-			$def_og_type       = $this->p->og->get_mod_og_type( $mod, $get_type_ns = false, $use_mod_opts = false );
-			$def_art_section   = $this->p->page->get_article_section( $mod[ 'id' ], $allow_none = true, $use_mod_opts = false );
 			$def_og_title      = $this->p->page->get_title( $og_title_max_len, $dots, $mod, $read_cache, $no_hashtags, $do_encode, 'none' );
 			$def_og_desc       = $this->p->page->get_description( $og_desc_max_len, $dots, $mod, $read_cache, $maybe_hashtags, $do_encode, 'none' );
 			$def_p_img_desc    = $p_img_desc_disabled ? '' : $this->p->page->get_description( $p_img_desc_max_len, $dots, $mod, $read_cache, $maybe_hashtags );
@@ -181,33 +180,14 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'header'   => 'h5',
 					'label'    => _x( 'Article Information', 'metabox title', 'wpsso' )
 				),
-				'og_art_section' => array(
+				'og_article_topic' => array(
 					'tr_class' => 'hide_og_type hide_og_type_article',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Article Topic', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-og_art_section',
-					'content'  => $form->get_select( 'og_art_section', $art_topics,
-						'', '', false, $def_art_section, $def_art_section ),
+					'tooltip'  => 'meta-article_topic',
+					'content'  => $form->get_no_select( 'article_topic', $article_topics, $css_class = '', $css_id = '', $is_assoc = true ),
 				),
-
-				/**
-				 * Open Graph Book type.
-				 *
-				 * 'subsection_og_book' => array(
-				 * 	'tr_class' => 'hide_og_type hide_og_type_book',
-				 * 	'header'   => 'h5',
-				 * 	'label'    => _x( 'Book Information', 'metabox title', 'wpsso' )
-				 * ),
-				 * 'og_book_isbn' => array(		// Open Graph meta tag book:isbn.
-				 * 	'tr_class' => 'hide_og_type hide_og_type_book',
-				 * 	'th_class' => 'medium',
-				 * 	'td_class' => 'blank',
-				 * 	'label'    => _x( 'Book ISBN', 'option label', 'wpsso' ),
-				 * 	'tooltip'  => 'meta-og_book_isbn',
-				 * 	'content'  => $form->get_no_input( 'og_book_isbn', $css_class = 'is_required', $css_id = '', $placeholder = true ),
-				 * ),
-				 */
 
 				/**
 				 * Open Graph Product type.
@@ -222,14 +202,20 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'table_row' => ( empty( $this->p->avail[ 'ecom' ][ 'any' ] ) ? '' :
 						'<td colspan="2">' . $this->p->msgs->get( 'pro-ecom-product-msg' ) . '</td>' ),
 				),
+				/* 'og_product_category' => array(
+					'tr_class' => 'hide_og_type hide_og_type_product',
+					'th_class' => 'medium',
+					'label'    => _x( 'Product Category', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_category',
+					'content'  => $form->get_no_select( 'product_category', $product_categories, $css_class = 'wide', $css_id = '', $is_assoc = true ),
+				), */
 				'og_product_brand' => array(		// Open Graph meta tag product:brand.
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Brand', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_brand',
-					'content'  => $form->get_no_input( 'product_brand',
-						$css_class = '', $css_id = '', $placeholder = true ),
+					'content'  => $form->get_no_input( 'product_brand', $css_class = '', $css_id = '', $placeholder = true ),
 				),
 				'og_product_price' => array(		// Open Graph meta tags product:price:amount and product:price:currency.
 					'tr_class' => 'hide_og_type hide_og_type_product',

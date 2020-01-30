@@ -1244,7 +1244,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( $use_mod_opts ) {
 				if ( ! empty( $post_id ) ) {	// Just in case.
-					$section = $this->p->post->get_options( $post_id, 'og_art_section' );	// Returns null if index key not found.
+					$section = $this->p->post->get_options( $post_id, 'article_topic' );	// Returns null if index key not found.
 				}
 			}
 
@@ -1253,7 +1253,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$this->p->debug->log( 'found custom meta article section = ' . $section );
 				}
 			} else {
-				$section = $this->p->options[ 'og_art_section' ];
+				$section = $this->p->options[ 'og_def_article_topic' ];
 			}
 
 			if ( ! $allow_none ) {

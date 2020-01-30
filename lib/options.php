@@ -215,13 +215,16 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'site_name':
 				case 'site_name_alt':
 				case 'site_desc':
-				case 'og_art_section':
+				case 'og_def_article_topic':
+				case 'og_def_product_category':
 				case 'og_title':
 				case 'og_desc':
 				case 'seo_desc':
 				case 'schema_desc':
 				case 'tc_desc':
 				case 'pin_desc':
+				case 'article_topic':
+				case 'product_category':
 				case 'product_brand':
 				case 'product_color':
 				case 'product_currency':

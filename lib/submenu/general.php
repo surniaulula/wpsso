@@ -119,21 +119,35 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'og-site':
 
+					$article_topics     = $this->p->util->get_article_topics();
+					$product_categories = $this->p->util->get_product_categories();
+
 					$table_rows[ 'site_name' ] = '' . 
-					$this->form->get_th_html( _x( 'WebSite Name', 'option label', 'wpsso' ), '', 'site_name',
-						array( 'is_locale' => true ) ) . 
+					$this->form->get_th_html( _x( 'WebSite Name', 'option label', 'wpsso' ), 
+						$css_class = '', $css_id = 'site_name', array( 'is_locale' => true ) ) . 
 					'<td>' . $this->form->get_input( SucomUtil::get_key_locale( 'site_name', $this->p->options ),
 						'long_name', '', 0, get_bloginfo( 'name', 'display' ) ) . '</td>';
 
 					$table_rows[ 'site_desc' ] = '' . 
-					$this->form->get_th_html( _x( 'WebSite Description', 'option label', 'wpsso' ), '', 'site_desc',
-						array( 'is_locale' => true ) ) . 
+					$this->form->get_th_html( _x( 'WebSite Description', 'option label', 'wpsso' ), 
+						$css_class = '', $css_id = 'site_desc', array( 'is_locale' => true ) ) . 
 					'<td>' . $this->form->get_textarea( SucomUtil::get_key_locale( 'site_desc', $this->p->options ),
 						'', '', 0, get_bloginfo( 'description', 'display' ) ) . '</td>';
 
-					$table_rows[ 'og_art_section' ] = '' . 
-					$this->form->get_th_html( _x( 'Default Article Topic', 'option label', 'wpsso' ), '', 'og_art_section' ) . 
-					'<td>' . $this->form->get_select( 'og_art_section', $this->p->util->get_article_topics() ) . '</td>';
+					$table_rows[ 'og_def_article_topic' ] = '' . 
+					$this->form->get_th_html( _x( 'Default Article Topic', 'option label', 'wpsso' ), 
+						$css_class = '', $css_id = 'og_def_article_topic' ) . 
+					'<td>' .
+					$this->form->get_select( 'og_def_article_topic', $article_topics, $css_class = '', $css_id = '', $is_assoc = true,
+						$is_disabled = false, $selected = true, $event_names = array( 'on_focus_load_json' ), $event_args = 'article_topics' ) .
+					'</td>';
+
+					/* $table_rows[ 'og_def_product_category' ] = '' . 
+					$this->form->get_th_html( _x( 'Default Product Category', 'option label', 'wpsso' ),
+						$css_class = '', $css_id = 'og_def_product_category' ) . 
+					'<td>' .
+					$this->form->get_select( 'og_def_product_category', $product_categories, $css_class = 'wide', $css_id = '', $is_assoc = true ) .
+					'</td>'; */
 
 					$this->add_og_types_table_rows( $table_rows, $this->form, $hide_in_basic = true, $is_top_section = false );
 

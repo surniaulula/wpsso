@@ -100,6 +100,8 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 				case 'essential-site':
 
+					$article_topics = $this->p->util->get_article_topics();
+
 					$table_rows[ 'site_name' ] = '' . 
 					$this->form->get_th_html( _x( 'WebSite Name', 'option label', 'wpsso' ), '', 'site_name',
 						array( 'is_locale' => true ) ) . 
@@ -112,9 +114,12 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 					'<td>' . $this->form->get_textarea( SucomUtil::get_key_locale( 'site_desc', $this->p->options ),
 						'', '', 0, get_bloginfo( 'description', 'display' ) ) . '</td>';
 
-					$table_rows[ 'og_art_section' ] = '' . 
-					$this->form->get_th_html( _x( 'Default Article Topic', 'option label', 'wpsso' ), '', 'og_art_section' ) . 
-					'<td>' . $this->form->get_select( 'og_art_section', $this->p->util->get_article_topics() ) . '</td>';
+					$table_rows[ 'og_def_article_topic' ] = '' . 
+					$this->form->get_th_html( _x( 'Default Article Topic', 'option label', 'wpsso' ), '', 'og_def_article_topic' ) . 
+					'<td>' .
+					$this->form->get_select( 'og_def_article_topic', $article_topics, $css_class = '', $css_id = '', $is_assoc = true,
+						$is_disabled = false, $selected = true, $event_names = array( 'on_focus_load_json' ), $event_args = 'article_topics' ) .
+					'</td>';
 
 					break;
 

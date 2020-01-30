@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.18.0-rc.3',	// Plugin version.
-					'opt_version' => '695',		// Increment when changing default option values.
+					'version'     => '6.18.0-rc.4',	// Plugin version.
+					'opt_version' => '699',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -1156,7 +1156,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_type_for_website'      => 'website',
 					'og_type_for_wpsc-product' => 'product',		// For WP eCommerce.
 
-					'og_art_section'             => 'none',
+					'og_author_field'            => 'facebook',		// Author Profile URL Field.
+					'og_def_article_topic'       => 'none',			// Default Article Topic
+					'og_def_img_id'              => '',			// Default / Fallback Image ID.
+					'og_def_img_id_pre'          => 'wp',
+					'og_def_img_url'             => '',			// or Default / Fallback Image URL.
+					'og_def_product_category'    => 'none',			// Default Product Category
 					'og_img_width'               => 1200,
 					'og_img_height'              => 630,
 					'og_img_crop'                => 1,
@@ -1166,10 +1171,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_vid_max'                 => 1,
 					'og_vid_autoplay'            => 1,
 					'og_vid_prev_img'            => 1,			// Include Video Preview Images.
-					'og_def_img_id'              => '',			// Default / Fallback Image ID.
-					'og_def_img_id_pre'          => 'wp',
-					'og_def_img_url'             => '',			// or Default / Fallback Image URL.
-					'og_author_field'            => 'facebook',		// Author Profile URL Field.
 					'og_title_sep'               => '-',
 					'og_title_max_len'           => 70,
 					'og_title_warn_len'          => 40,
@@ -1505,11 +1506,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced settings - Cache tab.
 					 */
-					'plugin_head_cache_exp'      => WEEK_IN_SECONDS,	// Head Markup Array Cache Expiry (1 week).
 					'plugin_content_cache_exp'   => HOUR_IN_SECONDS,	// Filtered Content Text Cache Expiry (1 hour).
+					'plugin_head_cache_exp'      => WEEK_IN_SECONDS,	// Head Markup Array Cache Expiry (1 week).
 					'plugin_imgsize_cache_exp'   => DAY_IN_SECONDS,		// Image URL Info Cache Expiry (1 day).
+					'plugin_list_cache_exp'      => MONTH_IN_SECONDS,	// Article Topics Array Cache Expiry (1 month).
 					'plugin_short_url_cache_exp' => 7776000,		// Shortened URL Cache Expiry (90 days / 3 months).
-					'plugin_topics_cache_exp'    => MONTH_IN_SECONDS,	// Article Topics Array Cache Expiry (1 month).
 					'plugin_types_cache_exp'     => MONTH_IN_SECONDS,	// Schema Types Array Cache Expiry (1 month).
 					'plugin_clear_on_activate'   => 1,			// Clear All Caches on Activate.
 					'plugin_clear_on_deactivate' => 0,			// Clear All Caches on Deactivate.
@@ -1631,16 +1632,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced settings - Cache tab.
 					 */
-					'plugin_head_cache_exp'          => WEEK_IN_SECONDS,	// Head Markup Array Cache Expiry (1 week).
-					'plugin_head_cache_exp:use'      => 'default',
 					'plugin_content_cache_exp'       => HOUR_IN_SECONDS,	// Filtered Content Text Cache Expiry (1 hour).
 					'plugin_content_cache_exp:use'   => 'default',
+					'plugin_head_cache_exp'          => WEEK_IN_SECONDS,	// Head Markup Array Cache Expiry (1 week).
+					'plugin_head_cache_exp:use'      => 'default',
 					'plugin_imgsize_cache_exp'       => DAY_IN_SECONDS,	// Image URL Info Cache Expiry (1 day).
 					'plugin_imgsize_cache_exp:use'   => 'default',
+					'plugin_list_cache_exp'          => MONTH_IN_SECONDS,	// Article Topics Array Cache Expiry (1 month).
+					'plugin_list_cache_exp:use'      => 'default',
 					'plugin_short_url_cache_exp'     => 7776000,		// Shortened URL Cache Expiry (90 days / 3 months).
 					'plugin_short_url_cache_exp:use' => 'default',
-					'plugin_topics_cache_exp'        => MONTH_IN_SECONDS,	// Article Topics Array Cache Expiry (1 month).
-					'plugin_topics_cache_exp:use'    => 'default',
 					'plugin_types_cache_exp'         => MONTH_IN_SECONDS,	// Schema Types Array Cache Expiry (1 month).
 					'plugin_types_cache_exp:use'     => 'default',
 					'plugin_clear_on_activate'       => 1,			// Clear All Caches on Activate.
@@ -1909,26 +1910,24 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'wpsso_!_' => array(	// Protect from being cleared automatically.
 					),
 					'wpsso_a_' => array(
-						'label'   => 'Article Topics',
-						'opt_key' => 'plugin_topics_cache_exp',
-						'filter'  => 'wpsso_cache_expire_article_topics',
+						'label'   => 'List Arrays',
+						'opt_key' => 'plugin_list_cache_exp',
+						'filter'  => 'wpsso_cache_expire_list_arrays',
 					),
 					'wpsso_b_' => array(	// Sharing buttons HTML.
 					),
 					'wpsso_h_' => array(
 						'label'   => 'Head Markup',
 						'opt_key' => 'plugin_head_cache_exp',
-						'filter'  => 'wpsso_cache_expire_head_array',
+						'filter'  => 'wpsso_cache_expire_head_markup',
 					),
 					'wpsso_i_' => array(
 						'label'   => 'Image URL Info',
 						'opt_key' => 'plugin_imgsize_cache_exp',
 						'filter'  => 'wpsso_cache_expire_image_url_size',
 					),
-					'wpsso_p_' => array(	// Place details.
-					),
 					'wpsso_s_' => array(
-						'label'   => 'Short URLs',
+						'label'   => 'Shortened URLs',
 						'opt_key' => 'plugin_short_url_cache_exp',
 						'filter'  => 'wpsso_cache_expire_short_url',
 					),
@@ -2485,7 +2484,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:age_group'               => '',
 						'product:availability'            => 'product_avail',
 						'product:brand'                   => 'product_brand',
-						'product:category'                => '',
+						'product:category'                => 'product_category',	// Product category ID.
 						'product:color'                   => 'product_color',
 						'product:condition'               => 'product_condition',
 						'product:depth:value'             => 'product_depth_value',	// Non-standard / internal meta tag.
@@ -3598,7 +3597,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				( defined( 'NONCE_KEY' ) ? NONCE_KEY : '' ) );
 
 			if ( defined( 'WPSSO_PLUGINDIR' ) ) {
-				$var_const[ 'WPSSO_TOPICS_LIST' ] = WPSSO_PLUGINDIR . 'share/topics.txt';
+				$var_const[ 'WPSSO_ARTICLE_TOPICS_LIST' ]     = WPSSO_PLUGINDIR . 'share/article-topics.txt';
+				$var_const[ 'WPSSO_PRODUCT_CATEGORIES_LIST' ] = WPSSO_PLUGINDIR . 'share/product-categories.txt';
 			}
 
 			$var_const[ 'WPSSO_CACHEDIR' ] = self::get_cache_dir();

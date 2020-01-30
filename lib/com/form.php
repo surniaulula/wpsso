@@ -2164,10 +2164,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			/**
 			 * The hover event is also required for Firefox to render the option list correctly.
 			 */
-			$html .= '<script type="text/javascript">';
+			$html .= '<script type="text/javascript">' . "\n";
 			$html .= 'jQuery( \'select#' . $input_id_esc . ':not( .json_loaded )\' ).on( \'hover focus\', function(){';
 			$html .= 'sucomSelectLoadJson( \'select#' . $input_id_esc . '\', \'' . $event_json . '\' );';
-			$html .= '});';
+			$html .= '});' . "\n";
 			$html .= '</script>' . "\n";
 
 			return $html;

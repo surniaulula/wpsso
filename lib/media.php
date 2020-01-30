@@ -1136,16 +1136,19 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				foreach ( $all_matches as $img_num => $img_arr ) {
 
-					$tag_value = $img_arr[0];
+					$tag_value = $img_arr[ 0 ];
 
-					if ( empty( $img_arr[5] ) ) {
-						$tag_name   = $img_arr[2];	// img
-						$attr_name  = $img_arr[3];	// data-wp-pid
-						$attr_value = $img_arr[4];	// id
+					if ( empty( $img_arr[ 5 ] ) ) {
+
+						$tag_name   = $img_arr[ 2 ];	// img
+						$attr_name  = $img_arr[ 3 ];	// data-wp-pid
+						$attr_value = $img_arr[ 4 ];	// id
+
 					} else {
-						$tag_name   = $img_arr[5];	// img
-						$attr_name  = $img_arr[6];	// data-share-src|data-lazy-src|data-src|src
-						$attr_value = $img_arr[7];	// url
+
+						$tag_name   = $img_arr[ 5 ];	// img
+						$attr_name  = $img_arr[ 6 ];	// data-share-src|data-lazy-src|data-src|src
+						$attr_value = $img_arr[ 7 ];	// url
 					}
 
 					if ( $this->p->debug->enabled ) {
@@ -1214,12 +1217,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							/**
 							 * Recognize gravatar images in the content.
 							 */
-							if ( preg_match( '/^(https?:)?(\/\/([^\.]+\.)?gravatar\.com\/avatar\/[a-zA-Z0-9]+)/', $attr_value, $match ) ) {
+							if ( preg_match( '/^https?:?\/\/[^\/]*gravatar\.com\/avatar\/([a-zA-Z0-9]+)/', $attr_value, $match ) ) {
 
 								$size_info = $this->p->util->get_size_info( $size_name );
 
-								$og_single_image[ 'og:image:url' ] = SucomUtil::get_prot() . ':' .
-									$match[2] . '?s=' . $size_info[ 'width' ] . '&d=404&r=G';
+								$og_single_image[ 'og:image:url' ] = 'https://secure.gravatar.com/avatar/' . $match[ 1 ] .
+									'.jpg?s=' . $size_info[ 'width' ] . '&d=404&r=G';
 
 								$og_single_image[ 'og:image:width' ] = $size_info[ 'width' ] > 2400 ? 2400 : $size_info[ 'width' ];
 
@@ -1680,16 +1683,16 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						if ( preg_match( '/(\.[a-z0-9]+|\/|\/embed\/.*|\/iframe\/.*)(\?[^\?]*)?$/', $media_url, $match ) ) {
 
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'matched url substr "' . $match[1] . '"' );
+								$this->p->debug->log( 'matched url substr "' . $match[ 1 ] . '"' );
 							}
 
-							switch ( $match[1] ) {
+							switch ( $match[ 1 ] ) {
 
 								case '/':	// WebPage
 								case '.htm':
 								case '.html':
-								case ( strpos( $match[1], '/embed/' ) === 0 ? true : false ):
-								case ( strpos( $match[1], '/iframe/' ) === 0 ? true : false ):
+								case ( strpos( $match[ 1 ], '/embed/' ) === 0 ? true : false ):
+								case ( strpos( $match[ 1 ], '/iframe/' ) === 0 ? true : false ):
 
 									$og_single_video[ 'og:video:type' ] = 'text/html';
 
@@ -1752,7 +1755,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								default:
 
 									if ( $this->p->debug->enabled ) {
-										$this->p->debug->log( 'unknown video extension "' . $match[1] . '"' );
+										$this->p->debug->log( 'unknown video extension "' . $match[ 1 ] . '"' );
 									}
 
 									$og_single_video[ 'og:video:type' ] = '';
@@ -2175,9 +2178,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							case ( strpos( $meta_match, 'name-twitter:app:' ) === 0 ? true : false ):	// Twitter Apps
 
 								if ( ! empty( $a[ 'content' ] ) ) {
-									if ( preg_match( '/^twitter:app:([a-z]+):([a-z]+)$/', $meta_name, $matches ) ) {
-										$og_single_video[ 'og:video:' . $matches[2] . '_' .
-											$matches[ 1 ] ] = SucomUtil::decode_html( $a[ 'content' ] );
+									if ( preg_match( '/^twitter:app:([a-z]+):([a-z]+)$/', $meta_name, $match ) ) {
+										$og_single_video[ 'og:video:' . $match[ 2 ] . '_' .
+											$match[ 1 ] ] = SucomUtil::decode_html( $a[ 'content' ] );
 									}
 								}
 

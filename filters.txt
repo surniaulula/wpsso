@@ -41,7 +41,7 @@
 
 'wpsso_article_section' ( $section, $post_id )
 
-'wpsso_article_topics' ( $topics )
+'wpsso_article_topics' ( array $topics )
 
 'wpsso_attached_accept_img_dims' ( $bool, $img_url, $img_width, $img_height, $size_name, $pid )
 
@@ -49,11 +49,11 @@
 
 'wpsso_attached_images' ( $og_ret, $num, $size_name, $post_id, $check_dupes )
 
-'wpsso_cache_expire_article_topics' ( $secs )
-
-'wpsso_cache_expire_head_array' ( $secs )
+'wpsso_cache_expire_head_markup' ( $secs )
 
 'wpsso_cache_expire_image_url_size' ( $secs )
+
+'wpsso_cache_expire_list_arrays' ( $secs )
 
 'wpsso_cache_expire_schema_types' ( $secs )
 
@@ -210,6 +210,8 @@
 'wpsso_post_url' ( $url, $mod, $add_page, $src_id )
 
 'wpsso_product_attribute_names' ( array $attr_names )
+
+'wpsso_product_categories' ( array $categories )
 
 'wpsso_quote' ( $quote, $mod )
 
