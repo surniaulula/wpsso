@@ -336,8 +336,13 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 				* Product Offers (name, price, currency, availability)
 				* Product SKU
 				* Product MPN
+			* Software App Subject Information
+				* Operating System
+				* Application Category
+				* Software App Offers (name, price, currency, availability)
 	* Software Application Information
 		* Operating System
+		* Application Category
 
 == Installation ==
 
@@ -459,7 +464,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.18.0-rc.3 (2020/01/29)**
+**Version 6.18.0-rc.4 (2020/01/30)**
 
 * **New Features**
 	* None.
@@ -903,9 +908,9 @@ New Schema Article AMP image sizes for the WPSSO JSON add-on.
 
 == Upgrade Notice ==
 
-= 6.18.0-rc.3 =
+= 6.18.0-rc.4 =
 
-(2020/01/29) Added a new "Schema Type" select option and removed the Schema "Description" option in the Document SSO metabox.
+(2020/01/30) Added a new "Schema Type" select option and removed the Schema "Description" option in the Document SSO metabox.
 
 = 6.17.0 =
 
