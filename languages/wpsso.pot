@@ -614,12 +614,12 @@ msgctxt "option label"
 msgid "Author / Person Name Format"
 msgstr ""
 
-#: lib/admin.php:2728 lib/submenu/general.php:201
+#: lib/admin.php:2728 lib/submenu/general.php:203
 msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr ""
 
-#: lib/admin.php:2732 lib/submenu/general.php:204
+#: lib/admin.php:2732 lib/submenu/general.php:206
 msgctxt "option comment"
 msgid "note that video preview images are enabled (and included first)"
 msgstr ""
@@ -659,7 +659,7 @@ msgctxt "option label"
 msgid "Max. Schema Description Length"
 msgstr ""
 
-#: lib/admin.php:2765 lib/submenu/general.php:268 lib/submenu/general.php:326
+#: lib/admin.php:2765 lib/submenu/general.php:270 lib/submenu/general.php:328
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
@@ -2447,8 +2447,8 @@ msgstr ""
 
 #: lib/gettext-pro.php:8 lib/gettext-pro.php:22 lib/pro/admin/advanced.php:62
 #: lib/pro/admin/advanced.php:131 lib/std/admin/advanced.php:61
-#: lib/std/admin/advanced.php:132 lib/submenu/general.php:222
-#: lib/submenu/general.php:288 lib/submenu/general.php:293
+#: lib/std/admin/advanced.php:132 lib/submenu/general.php:224
+#: lib/submenu/general.php:290 lib/submenu/general.php:295
 msgctxt "option comment"
 msgid "recommended"
 msgstr ""
@@ -2527,7 +2527,7 @@ msgid "Check for Duplicate Meta Tags"
 msgstr ""
 
 #: lib/gettext-pro.php:21 lib/messages.php:2199 lib/pro/admin/advanced.php:130
-#: lib/std/admin/advanced.php:131 lib/submenu/general.php:220
+#: lib/std/admin/advanced.php:131 lib/submenu/general.php:222
 msgctxt "option label"
 msgid "Enforce Image Size Checks"
 msgstr ""
@@ -3669,7 +3669,7 @@ msgstr ""
 msgid "Select \"[None]\" if you prefer to exclude the %s meta tag."
 msgstr ""
 
-#: lib/messages.php:218 lib/submenu/general.php:147
+#: lib/messages.php:218
 msgctxt "option label"
 msgid "Default Product Category"
 msgstr ""
@@ -4854,7 +4854,7 @@ msgid ""
 "the Pin It browser button from suggesting those images."
 msgstr ""
 
-#: lib/messages.php:1482 lib/messages.php:2711 lib/submenu/general.php:296
+#: lib/messages.php:1482 lib/messages.php:2711 lib/submenu/general.php:298
 msgctxt "option label"
 msgid "Add Hidden Image for Pin It Button"
 msgstr ""
@@ -6572,32 +6572,32 @@ msgctxt "option label"
 msgid "WebSite Description"
 msgstr ""
 
-#: lib/submenu/essential.php:129 lib/submenu/general.php:233
+#: lib/submenu/essential.php:129 lib/submenu/general.php:235
 msgctxt "option label"
 msgid "Facebook Business Page URL"
 msgstr ""
 
-#: lib/submenu/essential.php:134 lib/submenu/general.php:238
+#: lib/submenu/essential.php:134 lib/submenu/general.php:240
 msgctxt "option label"
 msgid "Facebook Application ID"
 msgstr ""
 
-#: lib/submenu/essential.php:138 lib/submenu/general.php:212
+#: lib/submenu/essential.php:138 lib/submenu/general.php:214
 msgctxt "option label"
 msgid "Default / Fallback Image ID"
 msgstr ""
 
-#: lib/submenu/essential.php:142 lib/submenu/general.php:216
+#: lib/submenu/essential.php:142 lib/submenu/general.php:218
 msgctxt "option label"
 msgid "or Default / Fallback Image URL"
 msgstr ""
 
-#: lib/submenu/essential.php:169 lib/submenu/general.php:281
+#: lib/submenu/essential.php:169 lib/submenu/general.php:283
 msgctxt "option label"
 msgid "Pinterest Company Page URL"
 msgstr ""
 
-#: lib/submenu/essential.php:178 lib/submenu/general.php:319
+#: lib/submenu/essential.php:178 lib/submenu/general.php:321
 msgctxt "option label"
 msgid "Twitter Business @username"
 msgstr ""
@@ -6637,124 +6637,124 @@ msgctxt "metabox tab"
 msgid "Other Sites"
 msgstr ""
 
-#: lib/submenu/general.php:162
+#: lib/submenu/general.php:164
 msgctxt "option label"
 msgid "Title Separator"
 msgstr ""
 
-#: lib/submenu/general.php:166
+#: lib/submenu/general.php:168
 msgctxt "option label"
 msgid "Maximum Title Length"
-msgstr ""
-
-#: lib/submenu/general.php:169 lib/submenu/general.php:178
-#: lib/submenu/general.php:304
-msgctxt "option comment"
-msgid "characters or less (hard limit), and warn at"
 msgstr ""
 
 #: lib/submenu/general.php:171 lib/submenu/general.php:180
 #: lib/submenu/general.php:306
 msgctxt "option comment"
+msgid "characters or less (hard limit), and warn at"
+msgstr ""
+
+#: lib/submenu/general.php:173 lib/submenu/general.php:182
+#: lib/submenu/general.php:308
+msgctxt "option comment"
 msgid "characters (soft limit)"
 msgstr ""
 
-#: lib/submenu/general.php:175 lib/submenu/general.php:324
+#: lib/submenu/general.php:177 lib/submenu/general.php:326
 msgctxt "option label"
 msgid "Maximum Description Length"
 msgstr ""
 
-#: lib/submenu/general.php:184
+#: lib/submenu/general.php:186
 msgctxt "option label"
 msgid "Add Hashtags to Descriptions"
 msgstr ""
 
-#: lib/submenu/general.php:186
+#: lib/submenu/general.php:188
 msgctxt "option comment"
 msgid "tag names"
 msgstr ""
 
-#: lib/submenu/general.php:193
+#: lib/submenu/general.php:195
 msgctxt "option label"
 msgid "Author Profile URL Field"
 msgstr ""
 
-#: lib/submenu/general.php:208
+#: lib/submenu/general.php:210
 msgctxt "option label"
 msgid "Open Graph Image Size"
 msgstr ""
 
-#: lib/submenu/general.php:242
+#: lib/submenu/general.php:244
 msgctxt "option label"
 msgid "or Facebook Admin Username(s)"
 msgstr ""
 
-#: lib/submenu/general.php:249
+#: lib/submenu/general.php:251
 msgctxt "option label"
 msgid "Alternate Facebook Locale"
 msgstr ""
 
-#: lib/submenu/general.php:258
+#: lib/submenu/general.php:260
 msgctxt "option label"
 msgid "Google Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:266
+#: lib/submenu/general.php:268
 msgctxt "option label"
 msgid "Max. Description Meta Tag Length"
 msgstr ""
 
-#: lib/submenu/general.php:277
+#: lib/submenu/general.php:279
 msgctxt "option label"
 msgid "Pinterest Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:286
+#: lib/submenu/general.php:288
 msgctxt "option label"
 msgid "Add \"nopin\" to Site Header Image"
 msgstr ""
 
-#: lib/submenu/general.php:291
+#: lib/submenu/general.php:293
 msgctxt "option label"
 msgid "Add \"nopin\" to WordPress Media"
 msgstr ""
 
-#: lib/submenu/general.php:298
+#: lib/submenu/general.php:300
 msgctxt "option comment"
 msgid "recommended (adds a hidden image in the content)"
 msgstr ""
 
-#: lib/submenu/general.php:301
+#: lib/submenu/general.php:303
 msgctxt "option label"
 msgid "Maximum Image Description Length"
 msgstr ""
 
-#: lib/submenu/general.php:314
+#: lib/submenu/general.php:316
 msgctxt "option value"
 msgid "Summary"
 msgstr ""
 
-#: lib/submenu/general.php:315
+#: lib/submenu/general.php:317
 msgctxt "option value"
 msgid "Summary Large Image"
 msgstr ""
 
-#: lib/submenu/general.php:329
+#: lib/submenu/general.php:331
 msgctxt "option label"
 msgid "Twitter Card for Post / Page Image"
 msgstr ""
 
-#: lib/submenu/general.php:333
+#: lib/submenu/general.php:335
 msgctxt "option label"
 msgid "Twitter Card Type by Default"
 msgstr ""
 
-#: lib/submenu/general.php:337
+#: lib/submenu/general.php:339
 msgctxt "option label"
 msgid "Summary Card Image Size"
 msgstr ""
 
-#: lib/submenu/general.php:341
+#: lib/submenu/general.php:343
 msgctxt "option label"
 msgid "Large Image Summary Card Img Size"
 msgstr ""

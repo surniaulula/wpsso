@@ -143,6 +143,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 							$event_args = 'article_topics' ) .
 					'</td>';
 
+					/*
 					$table_rows[ 'og_def_product_category' ] = '' . 
 					$this->form->get_th_html( _x( 'Default Product Category', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'og_def_product_category' ) . 
@@ -151,6 +152,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						$is_assoc = true, $is_disabled = false, $selected = true, $event_names = array( 'on_focus_load_json' ),
 							$event_args = 'product_categories' ) .
 					'</td>';
+					*/
 
 					$this->add_og_types_table_rows( $table_rows, $this->form, $hide_in_basic = true, $is_top_section = false );
 
