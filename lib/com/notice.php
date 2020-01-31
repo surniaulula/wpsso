@@ -1141,15 +1141,18 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				return;	// Nothing to update.
 			}
 
-			$cache_exp_secs = HOUR_IN_SECONDS;
 			$cache_md5_pre  = $this->lca . '_!_';	// Protect transient from being cleared.
+			$cache_exp_secs = HOUR_IN_SECONDS;
 			$cache_salt     = 'sucom_notice_transient(user_id:' . $user_id . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_is_empty = true;
 
 			foreach ( $this->all_types as $msg_type ) {
+
 				if ( ! empty( $this->notice_cache[ $user_id ][ $msg_type ] ) ) {
+
 					$cache_is_empty = false;
+
 					break;
 				}
 			}

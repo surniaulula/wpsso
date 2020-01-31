@@ -202,13 +202,13 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'table_row' => ( empty( $this->p->avail[ 'ecom' ][ 'any' ] ) ? '' :
 						'<td colspan="2">' . $this->p->msgs->get( 'pro-ecom-product-msg' ) . '</td>' ),
 				),
-				/* 'og_product_category' => array(
+				'og_product_category' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
 					'label'    => _x( 'Product Category', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_category',
 					'content'  => $form->get_no_select( 'product_category', $product_categories, $css_class = 'wide', $css_id = '', $is_assoc = true ),
-				), */
+				),
 				'og_product_brand' => array(		// Open Graph meta tag product:brand.
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',

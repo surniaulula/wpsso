@@ -1509,7 +1509,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_content_cache_exp'   => HOUR_IN_SECONDS,	// Filtered Content Text Cache Expiry (1 hour).
 					'plugin_head_cache_exp'      => WEEK_IN_SECONDS,	// Head Markup Array Cache Expiry (1 week).
 					'plugin_imgsize_cache_exp'   => DAY_IN_SECONDS,		// Image URL Info Cache Expiry (1 day).
-					'plugin_list_cache_exp'      => MONTH_IN_SECONDS,	// Article Topics Array Cache Expiry (1 month).
+					'plugin_list_cache_exp'      => MONTH_IN_SECONDS,	// List Arrays Cache Expiry (1 month).
 					'plugin_short_url_cache_exp' => 7776000,		// Shortened URL Cache Expiry (90 days / 3 months).
 					'plugin_types_cache_exp'     => MONTH_IN_SECONDS,	// Schema Types Array Cache Expiry (1 month).
 					'plugin_clear_on_activate'   => 1,			// Clear All Caches on Activate.
@@ -1638,7 +1638,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_head_cache_exp:use'      => 'default',
 					'plugin_imgsize_cache_exp'       => DAY_IN_SECONDS,	// Image URL Info Cache Expiry (1 day).
 					'plugin_imgsize_cache_exp:use'   => 'default',
-					'plugin_list_cache_exp'          => MONTH_IN_SECONDS,	// Article Topics Array Cache Expiry (1 month).
+					'plugin_list_cache_exp'          => MONTH_IN_SECONDS,	// List Arrays Cache Expiry (1 month).
 					'plugin_list_cache_exp:use'      => 'default',
 					'plugin_short_url_cache_exp'     => 7776000,		// Shortened URL Cache Expiry (90 days / 3 months).
 					'plugin_short_url_cache_exp:use' => 'default',
@@ -1909,29 +1909,29 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'transient' => array(
 					'wpsso_!_' => array(	// Protect from being cleared automatically.
 					),
-					'wpsso_a_' => array(
-						'label'   => 'List Arrays',
-						'opt_key' => 'plugin_list_cache_exp',
-						'filter'  => 'wpsso_cache_expire_list_arrays',
-					),
 					'wpsso_b_' => array(	// Sharing buttons HTML.
 					),
-					'wpsso_h_' => array(
+					'wpsso_h_' => array(	// Default is month in seconds.
 						'label'   => 'Head Markup',
 						'opt_key' => 'plugin_head_cache_exp',
 						'filter'  => 'wpsso_cache_expire_head_markup',
 					),
-					'wpsso_i_' => array(
+					'wpsso_i_' => array(	// Default is day in seconds.
 						'label'   => 'Image URL Info',
 						'opt_key' => 'plugin_imgsize_cache_exp',
 						'filter'  => 'wpsso_cache_expire_image_url_size',
 					),
-					'wpsso_s_' => array(
+					'wpsso_l_' => array(	// Default is month in seconds.
+						'label'   => 'List Arrays',
+						'opt_key' => 'plugin_list_cache_exp',
+						'filter'  => 'wpsso_cache_expire_list_arrays',
+					),
+					'wpsso_s_' => array(	// Default is 7776000 seconds.
 						'label'   => 'Shortened URLs',
 						'opt_key' => 'plugin_short_url_cache_exp',
 						'filter'  => 'wpsso_cache_expire_short_url',
 					),
-					'wpsso_t_' => array(
+					'wpsso_t_' => array(	// Default is month in seconds.
 						'label'   => 'Schema Types',
 						'opt_key' => 'plugin_types_cache_exp',
 						'filter'  => 'wpsso_cache_expire_schema_types',
@@ -1941,7 +1941,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 				),
 				'wp_cache' => array(
-					'wpsso_c_' => array(	// Filtered post content cache.
+					'wpsso_c_' => array(	// Default is hour in seconds.
 						'label'   => 'Filtered Content',
 						'opt_key' => 'plugin_content_cache_exp',
 						'filter'  => 'wpsso_cache_expire_the_content',

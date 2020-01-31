@@ -445,18 +445,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return $local_cache[ $image_url ] = $def_image_info;	// Stop here.
 			}
 
-			$cache_md5_pre = $this->p->lca . '_i_';
-
-			/**
-			 * Set and filter the cache expiration value only once.
-			 */
-			static $cache_exp_secs = null;
-
-			if ( null === $cache_exp_secs ) {
-				$cache_exp_filter = $this->p->cf[ 'wp' ][ 'transient' ][ $cache_md5_pre ][ 'filter' ];
-				$cache_opt_key    = $this->p->cf[ 'wp' ][ 'transient' ][ $cache_md5_pre ][ 'opt_key' ];
-				$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, $this->p->options[ $cache_opt_key ] );	// DAY_IN_SECONDS by default.
-			}
+			$cache_md5_pre  = $this->p->lca . '_i_';
+			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre );	// Default is day in seconds.
 
 			if ( $cache_exp_secs > 0 ) {
 
@@ -1771,15 +1761,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$cache_md5_pre = $this->p->lca . '_a_';
-
-			static $cache_exp_secs = null;
-
-			if ( null === $cache_exp_secs ) {
-				$cache_exp_filter = $this->p->cf[ 'wp' ][ 'transient' ][ $cache_md5_pre ][ 'filter' ];
-				$cache_opt_key    = $this->p->cf[ 'wp' ][ 'transient' ][ $cache_md5_pre ][ 'opt_key' ];
-				$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, $this->p->options[ $cache_opt_key ] );
-			}
+			$cache_md5_pre  = $this->p->lca . '_l_';
+			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre );	// Default is month in seconds.
 
 			if ( $cache_exp_secs > 0 ) {
 
@@ -1862,15 +1845,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$cache_md5_pre = $this->p->lca . '_a_';
-
-			static $cache_exp_secs = null;
-
-			if ( null === $cache_exp_secs ) {
-				$cache_exp_filter = $this->p->cf[ 'wp' ][ 'transient' ][ $cache_md5_pre ][ 'filter' ];
-				$cache_opt_key    = $this->p->cf[ 'wp' ][ 'transient' ][ $cache_md5_pre ][ 'opt_key' ];
-				$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, $this->p->options[ $cache_opt_key ] );
-			}
+			$cache_md5_pre  = $this->p->lca . '_l_';
+			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre );	// Default is month in seconds.
 
 			if ( $cache_exp_secs > 0 ) {
 
@@ -4337,6 +4313,41 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			return $this->p->notice->unset_ref( $sharing_url );
+		}
+
+		public function get_cache_exp_secs( $md5_pre, $cache_type = 'transient', $def_secs = MONTH_IN_SECONDS, $min_secs = 0 ) {
+
+			static $local_cache = array();
+
+			if ( empty( $md5_pre ) || empty( $cache_type ) ) {	// Just in case.
+
+				return $def_secs;
+
+			} elseif ( isset( $local_cache[ $md5_pre ][ $cache_type ] ) ) {
+
+				return $local_cache[ $md5_pre ][ $cache_type ];
+			}
+			
+			if ( ! empty( $this->p->cf[ 'wp' ][ $cache_type ][ $md5_pre ][ 'opt_key' ] ) ) {	// Just in case.
+
+				$opt_key  = $this->p->cf[ 'wp' ][ $cache_type ][ $md5_pre ][ 'opt_key' ];
+				$exp_secs = isset( $this->p->options[ $opt_key ] ) ? $this->p->options[ $opt_key ] : $def_secs;
+
+			} else {
+				$exp_secs = $def_secs;
+			}
+
+			if ( ! empty( $this->p->cf[ 'wp' ][ $cache_type ][ $md5_pre ][ 'filter' ] ) ) {	// Just in case.
+
+				$exp_filter = $this->p->cf[ 'wp' ][ $cache_type ][ $md5_pre ][ 'filter' ];
+				$exp_secs   = (int) apply_filters( $exp_filter, $exp_secs );
+			}
+
+			if ( $exp_secs < $min_secs ) {
+				$exp_secs = $def_secs;
+			}
+
+			return $local_cache[ $md5_pre ][ $cache_type ] = $exp_secs;
 		}
 	}
 }

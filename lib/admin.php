@@ -1514,11 +1514,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				
 				if ( ! empty( $cache_info[ 'filter' ] ) ) {
 
-					$filter_name        = $cache_info[ 'filter' ];
-					$cache_exp_filtered = (int) apply_filters( $filter_name, $cache_exp_secs );
+					$filter_name     = $cache_info[ 'filter' ];
+					$filter_exp_secs = (int) apply_filters( $filter_name, $cache_exp_secs );
 
-					if ( $cache_exp_secs !== $cache_exp_filtered ) {
-						$cache_exp_secs    = $cache_exp_filtered;
+					if ( $cache_exp_secs !== $filter_exp_secs ) {
+
+						$cache_exp_secs    = $filter_exp_secs;
 						$cache_exp_suffix  = ' [F]';	// Show that value has changed.
 						$have_filtered_exp = true;
 					}
@@ -3181,7 +3182,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$cache_exp_secs = WEEK_IN_SECONDS;
 			}
 
-			$cache_exp_filter = $this->p->lca . '_cache_expire_' . $file_key;	// 'wpsso_cache_expire_setup_html'.
+			$cache_exp_filter = $this->p->lca . '_cache_expire_' . $file_key;	// Example: 'wpsso_cache_expire_setup_html'.
 			$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, $cache_exp_secs );
 			$cache_content    = false;
 

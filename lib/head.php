@@ -419,34 +419,21 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				return array();
 			}
 
-			$is_admin      = is_admin();	// Call the function only once.
-			$cache_md5_pre = $this->p->lca . '_h_';
-			$cache_salt    = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $sharing_url ) . ')';
-			$cache_id      = $cache_md5_pre . md5( $cache_salt );
-			$cache_index   = $this->get_head_cache_index( $mod, $sharing_url );	// Includes locale, url, etc.
-			$cache_array   = array();
+			$is_admin       = is_admin();	// Call the function only once.
+			$cache_md5_pre  = $this->p->lca . '_h_';
+			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre );
+			$cache_salt     = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $sharing_url ) . ')';
+			$cache_id       = $cache_md5_pre . md5( $cache_salt );
+			$cache_index    = $this->get_head_cache_index( $mod, $sharing_url );	// Includes locale, url, etc.
+			$cache_array    = array();
 
-			/**
-			 * Set and filter the cache expiration value only once.
-			 */
-			static $cache_exp_secs = null;
+			if ( is_404() || is_search() ) {
 
-			if ( null === $cache_exp_secs ) {
-
-				$cache_exp_filter = $this->p->cf[ 'wp' ][ 'transient' ][ $cache_md5_pre ][ 'filter' ];
-				$cache_opt_key    = $this->p->cf[ 'wp' ][ 'transient' ][ $cache_md5_pre ][ 'opt_key' ];
-				$cache_exp_secs   = $this->p->options[ $cache_opt_key ];
-
-				if ( is_404() || is_search() ) {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'setting cache expiration to 0 seconds for 404 or search page' );
-					}
-
-					$cache_exp_secs = 0;
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'setting cache expiration to 0 seconds for 404 or search page' );
 				}
 
-				$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $cache_exp_secs );
+				$cache_exp_secs = 0;
 			}
 
 			if ( $this->p->debug->enabled ) {

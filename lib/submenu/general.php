@@ -138,16 +138,19 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->form->get_th_html( _x( 'Default Article Topic', 'option label', 'wpsso' ), 
 						$css_class = '', $css_id = 'og_def_article_topic' ) . 
 					'<td>' .
-					$this->form->get_select( 'og_def_article_topic', $article_topics, $css_class = '', $css_id = '', $is_assoc = true,
-						$is_disabled = false, $selected = true, $event_names = array( 'on_focus_load_json' ), $event_args = 'article_topics' ) .
+					$this->form->get_select( 'og_def_article_topic', $article_topics, $css_class = '', $css_id = '',
+						$is_assoc = true, $is_disabled = false, $selected = true, $event_names = array( 'on_focus_load_json' ),
+							$event_args = 'article_topics' ) .
 					'</td>';
 
-					/* $table_rows[ 'og_def_product_category' ] = '' . 
+					$table_rows[ 'og_def_product_category' ] = '' . 
 					$this->form->get_th_html( _x( 'Default Product Category', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'og_def_product_category' ) . 
 					'<td>' .
-					$this->form->get_select( 'og_def_product_category', $product_categories, $css_class = 'wide', $css_id = '', $is_assoc = true ) .
-					'</td>'; */
+					$this->form->get_select( 'og_def_product_category', $product_categories, $css_class = 'wide', $css_id = '',
+						$is_assoc = true, $is_disabled = false, $selected = true, $event_names = array( 'on_focus_load_json' ),
+							$event_args = 'product_categories' ) .
+					'</td>';
 
 					$this->add_og_types_table_rows( $table_rows, $this->form, $hide_in_basic = true, $is_top_section = false );
 

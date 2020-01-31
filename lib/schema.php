@@ -935,7 +935,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! isset( $this->types_cache[ 'filtered' ] ) ) {
 
 				$cache_md5_pre  = $this->p->lca . '_t_';
-				$cache_exp_secs = $this->get_types_cache_exp();
+				$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre );	// Default is month in seconds.
 
 				if ( $cache_exp_secs > 0 ) {
 
@@ -1017,7 +1017,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $use_cache ) {
 
 				$cache_md5_pre  = $this->p->lca . '_t_';
-				$cache_exp_secs = $this->get_types_cache_exp();
+				$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre );	// Default is month in seconds.
 
 				if ( $cache_exp_secs > 0 ) {
 
@@ -1066,7 +1066,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $use_cache ) {
 
 				$cache_md5_pre  = $this->p->lca . '_t_';
-				$cache_exp_secs = $this->get_types_cache_exp();
+				$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre );	// Default is month in seconds.
 
 				if ( $cache_exp_secs > 0 ) {
 
@@ -1403,24 +1403,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public function count_schema_type_children( $type_id ) {
 
 			return count( $this->get_schema_type_children( $type_id ) );
-		}
-
-		public function get_types_cache_exp() {
-
-			/**
-			 * Set and filter the cache expiration value only once.
-			 */
-			static $cache_exp_secs = null;
-
-			if ( null === $cache_exp_secs ) {
-				$cache_md5_pre    = $this->p->lca . '_t_';
-				$cache_exp_filter = $this->p->cf[ 'wp' ][ 'transient' ][ $cache_md5_pre ][ 'filter' ];
-				$cache_opt_key    = $this->p->cf[ 'wp' ][ 'transient' ][ $cache_md5_pre ][ 'opt_key' ];
-				$cache_exp_secs   = isset( $this->p->options[ $cache_opt_key ] ) ? $this->p->options[ $cache_opt_key ] : MONTH_IN_SECONDS;
-				$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, $cache_exp_secs );
-			}
-
-			return $cache_exp_secs;
 		}
 
 		public static function get_data_context( $json_data ) {
