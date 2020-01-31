@@ -464,7 +464,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.19.0-dev.1 (2020/01/30)**
+**Version 6.19.0-dev.1 (2020/01/31)**
 
 * **New Features**
 	* None.
@@ -475,6 +475,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Refactored the `WpssoPage->get_article_section()` method and updated its arguments from `$post_id, $allow_none, $use_mod_opts` to simply `array $mod`.
 	* Updated the 'wpsso_article_section' filter arguments from `$section, $post_id` to `$section, $mod`.
+	* Replaced WpssoSchema->get_types_cache_exp() by a new WpssoUtil->get_cache_exp_secs() method.
 * **Requires At Least**
 	* PHP v5.5.
 	* WordPress v4.0.
@@ -880,7 +881,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 6.19.0-dev.1 =
 
-(2020/01/30) None.
+(2020/01/31) Refactored the WpssoPage->get_article_section() method and its arguments. Updated the 'wpsso_article_section' filter arguments.
 
 = 6.18.0 =
 
