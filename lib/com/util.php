@@ -3328,7 +3328,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$charset = get_bloginfo( 'charset' ); // Only get it once.
 			}
 
-			$html = htmlentities( $html, ENT_QUOTES, $charset, false ); // $double_encode = false.
+			$html = htmlentities( $html, ENT_QUOTES, $charset, $double_encode = false );
+
 			$html = SucomUtilWP::wp_encode_emoji( $html );
 
 			return $html;

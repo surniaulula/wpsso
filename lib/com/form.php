@@ -385,11 +385,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$event_names = array();
 			}
 
-			$event_json = false;
+			$event_json_name = false;
 
 			if ( in_array( 'on_focus_load_json', $event_names ) ) {
 				if ( ! empty( $event_args ) && is_string( $event_args ) ) {
-					$event_json = SucomUtil::sanitize_hookname( $this->lca . '_form_select_' . $event_args . '_json' );
+					$event_json_name = SucomUtil::sanitize_hookname( $this->lca . '_form_select_' . $event_args . '_json' );
 				}
 			}
 
@@ -464,8 +464,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				 * Save the option value and translated label for the JSON array before adding the "(default)"
 				 * suffix.
 				 */
-				if ( $event_json ) {
-					if ( empty( $this->json_array_added[ $event_json ] ) ) {
+				if ( $event_json_name ) {
+					if ( empty( $this->json_array_added[ $event_json_name ] ) ) {
 						$select_opt_arr[ $option_value ] = $label_transl;
 					}
 				}
@@ -501,7 +501,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				/**
 				 * For disabled selects or JSON selects, only include the first and selected option(s).
 				 */
-				if ( ( ! $is_disabled && ! $event_json ) || $is_selected_html || $select_opt_count === 1 ) {
+				if ( ( ! $is_disabled && ! $event_json_name ) || $is_selected_html || $select_opt_count === 1 ) {
 
 					$select_opt_html .= '<option value="' . esc_attr( $option_value ) . '"' . $is_selected_html . '>';
 					$select_opt_html .= $label_transl;
@@ -540,7 +540,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					case 'on_focus_load_json':
 
-						$html .= $this->get_event_load_json_script( $event_json, $select_opt_arr, $input_id );
+						$html .= $this->get_event_load_json_script( $event_json_name, $select_opt_arr, $input_id );
 
 						break;
 
@@ -1413,11 +1413,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					}
 
 					$event_args = empty( $atts[ 'event_args' ] ) ? null : $atts[ 'event_args' ];
-					$event_json = false;
+
+					$event_json_name = false;
 
 					if ( in_array( 'on_focus_load_json', $event_names ) ) {
 						if ( ! empty( $event_args ) && is_string( $event_args ) ) {
-							$event_json = SucomUtil::sanitize_hookname( $this->lca . '_form_select_' . $event_args . '_json' );
+							$event_json_name = SucomUtil::sanitize_hookname( $this->lca . '_form_select_' . $event_args . '_json' );
 						}
 					}
 
@@ -1554,8 +1555,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 									 * Save the option value and translated label for the JSON
 									 * array before adding the "(default)" suffix.
 									 */
-									if ( $event_json ) {
-										if ( empty( $this->json_array_added[ $event_json ] ) ) {
+									if ( $event_json_name ) {
+										if ( empty( $this->json_array_added[ $event_json_name ] ) ) {
 											$select_opt_arr[ $option_value ] = $label_transl;
 										}
 									}
@@ -1589,7 +1590,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 									/**
 									 * For disabled selects, only include the first and/or selected option.
 									 */
-									if ( ( ! $opt_disabled && ! $event_json ) || $is_selected_html || $select_opt_count === 1 ) {
+									if ( ( ! $opt_disabled && ! $event_json_name ) || $is_selected_html || $select_opt_count === 1 ) {
 
 										$select_opt_html .= '<option value="' . esc_attr( $option_value ) . '"' . $is_selected_html . '>';
 										$select_opt_html .= $label_transl;
@@ -1620,7 +1621,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 										case 'on_focus_load_json':
 
-											$html .= $this->get_event_load_json_script( $event_json,
+											$html .= $this->get_event_load_json_script( $event_json_name,
 												$select_opt_arr, 'select_' . $input_id );
 
 											break;
@@ -2132,31 +2133,40 @@ if ( ! class_exists( 'SucomForm' ) ) {
 ';
 		}
 
-		private function get_event_load_json_script( $event_json, $select_opt_arr, $input_id ) {
+		private function get_event_load_json_script( $event_json_name, $select_opt_arr, $input_id ) {
 
 			$html = '';
 
-			if ( empty( $event_json ) || ! is_string( $event_json ) ) {	// Just in case.
+			if ( empty( $event_json_name ) || ! is_string( $event_json_name ) ) {	// Just in case.
 				return $html;
 			}
 
 			/**
 			 * Encode the PHP array to JSON only once per page load.
 			 */
-			if ( empty( $this->json_array_added[ $event_json ] ) ) {
+			if ( empty( $this->json_array_added[ $event_json_name ] ) ) {
 
-				$this->json_array_added[ $event_json ] = true;
+				$this->json_array_added[ $event_json_name ] = true;
 
-				$select_opt_json = SucomUtil::json_encode_array( $select_opt_arr );
+				/**
+				 * json_encode() cannot encode an associative array - only an object or a standard numerically
+				 * indexed array - and the object element order, when read by the browser, cannot be controlled.
+				 * Firefox, for example, will sort an object numerically instead of maintaining the original object
+				 * element order. For this reason, we must use different arrays for the array keys and their
+				 * values.
+				 */
+				$json_array_keys   = SucomUtil::json_encode_array( array_keys( $select_opt_arr ) );
+				$json_array_values = SucomUtil::json_encode_array( array_values( $select_opt_arr ) );
 
-				$html .= '<!-- adding ' . $event_json . ' json array -->' . "\n";
+				$html .= '<!-- adding ' . $event_json_name . ' json array -->' . "\n";
 				$html .= '<script type="text/javascript">' . "\n";
-				$html .= 'var ' . $event_json . ' = ' . $select_opt_json . ';' . "\n";
+				$html .= 'var ' . $event_json_name . '_array_keys = ' . $json_array_keys . ';' . "\n";
+				$html .= 'var ' . $event_json_name . '_array_values = ' . $json_array_values . ';' . "\n";
 				$html .= '</script>' . "\n";
 
 			} else {
 
-				$html .= '<!-- ' . $event_json . ' json array already added -->' . "\n";
+				$html .= '<!-- ' . $event_json_name . ' json array already added -->' . "\n";
 			}
 
 			$input_id_esc = esc_js( $input_id );
@@ -2166,7 +2176,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			 */
 			$html .= '<script type="text/javascript">' . "\n";
 			$html .= 'jQuery( \'select#' . $input_id_esc . ':not( .json_loaded )\' ).on( \'hover focus\', function(){';
-			$html .= 'sucomSelectLoadJson( \'select#' . $input_id_esc . '\', \'' . $event_json . '\' );';
+			$html .= 'sucomSelectLoadJson( \'select#' . $input_id_esc . '\', \'' . $event_json_name . '\' );';
 			$html .= '});' . "\n";
 			$html .= '</script>' . "\n";
 

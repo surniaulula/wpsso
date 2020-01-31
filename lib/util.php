@@ -1820,7 +1820,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			asort( $topics, SORT_NATURAL );
 
-			$topics = array_merge( array( 'none' => '[None]' ), $topics );	// After sorting the array, put 'none' first.
+			$topics = array( 'none' => '[None]' ) + $topics;	// After sorting the array, put 'none' first.
 
 			if ( $cache_exp_secs > 0 ) {
 
@@ -1906,7 +1906,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			asort( $categories, SORT_NATURAL );
 
-			$categories = array_merge( array( 'none' => '[None]' ), $categories );	// After sorting the array, put 'none' first.
+			$categories = array( 'none' => '[None]' ) + $categories;	// After sorting the array, put 'none' first.
 
 			if ( $cache_exp_secs > 0 ) {
 

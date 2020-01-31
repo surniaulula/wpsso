@@ -883,7 +883,7 @@ msgctxt "option comment"
 msgid "from"
 msgstr ""
 
-#: lib/com/form.php:1881 lib/gettext-com.php:25 lib/post.php:1386
+#: lib/com/form.php:1882 lib/gettext-com.php:25 lib/post.php:1386
 #: lib/wp-meta.php:601 lib/wp-meta.php:731
 msgid "Save a draft version or publish to update this value."
 msgstr ""
