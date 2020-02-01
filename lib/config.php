@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '6.19.0-dev.1',	// Plugin version.
-					'opt_version' => '699',		// Increment when changing default option values.
+					'opt_version' => '700',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -1452,6 +1452,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_howto_tools'              => '',			// How-To Tools Custom Field.
 					'plugin_cf_product_avail'            => '',			// Product Availability Custom Field.
 					'plugin_cf_product_brand'            => '',			// Product Brand Custom Field.
+					'plugin_cf_product_category'         => '',			// Product Category ID Field.
 					'plugin_cf_product_color'            => '',			// Product Color Custom Field.
 					'plugin_cf_product_condition'        => '',			// Product Condition Custom Field.
 					'plugin_cf_product_currency'         => '',			// Product Currency Custom Field.
@@ -1695,6 +1696,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_img_url'                  => 'og_img_url',
 					'plugin_cf_product_avail'            => 'product_avail',
 					'plugin_cf_product_brand'            => 'product_brand',		// Product Brand Custom Field.
+					'plugin_cf_product_category'         => 'product_category',		// Product Category ID Custom Field.
 					'plugin_cf_product_color'            => 'product_color',
 					'plugin_cf_product_condition'        => 'product_condition',
 					'plugin_cf_product_currency'         => 'product_currency',
@@ -2205,6 +2207,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_howto_tools'              => 'How-To Tools Custom Field',
 					'plugin_cf_product_avail'            => 'Product Availability Custom Field',
 					'plugin_cf_product_brand'            => 'Product Brand Custom Field',
+					'plugin_cf_product_category'         => 'Product Category ID Field',
 					'plugin_cf_product_color'            => 'Product Color Custom Field',
 					'plugin_cf_product_condition'        => 'Product Condition Custom Field',
 					'plugin_cf_product_currency'         => 'Product Currency Custom Field',
@@ -2484,7 +2487,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:age_group'               => '',
 						'product:availability'            => 'product_avail',
 						'product:brand'                   => 'product_brand',
-						'product:category'                => 'product_category',	// Product category ID.
+						'product:category'                => 'product_category',
 						'product:color'                   => 'product_color',
 						'product:condition'               => 'product_condition',
 						'product:depth:value'             => 'product_depth_value',	// Non-standard / internal meta tag.
