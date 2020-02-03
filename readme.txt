@@ -470,7 +470,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added file caching to `SucomForm->get_select()` for the javascript Schema type, article topic, and product category arrays.
 * **Bugfixes**
 	* Fixed the order of select options when using the `SucomForm->get_select()` method 'on_focus_load_json' event argument.
 * **Developer Notes**
@@ -882,7 +882,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 6.19.0-dev.2 =
 
-(2020/02/03) Refactored the WpssoPage->get_article_section() method and its arguments. Updated the 'wpsso_article_section' filter arguments.
+(2020/02/03) Added file caching to SucomForm->get_select() for the javascript Schema type, article topic, and product category arrays. Updated the 'wpsso_article_section' filter arguments.
 
 = 6.18.0 =
 
