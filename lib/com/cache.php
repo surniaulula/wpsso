@@ -316,13 +316,16 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			if ( file_exists( $cache_file ) ) {
 
+				$file_mod_time = filemtime( $cache_file );
 				$file_exp_secs = null === $exp_secs ? $this->default_file_cache_exp : $exp_secs;
 
-				if ( false !== $exp_secs && filemtime( $cache_file ) > time() - $file_exp_secs ) {
+				if ( false !== $exp_secs && $file_mod_time > time() - $file_exp_secs ) {
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'cached file found: returning url ' . $cache_url );
 					}
+
+					$cache_url = add_query_arg( 'mtime', $file_mod_time, $cache_url );
 
 					return $cache_url;
 
@@ -444,9 +447,10 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 					if ( file_exists( $cache_file ) ) {
 
+						$file_mod_time = filemtime( $cache_file );
 						$file_exp_secs = null === $exp_secs ? $this->default_file_cache_exp : $exp_secs;
 
-						if ( false !== $exp_secs && filemtime( $cache_file ) > time() - $file_exp_secs ) {
+						if ( false !== $exp_secs && $file_mod_time > time() - $file_exp_secs ) {
 
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'cached file found: returning ' . $format . ' ' . 
@@ -455,7 +459,15 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 							$this->url_mtimes[ $url ] = true;	// Signal that return is from cache.
 
-							return $format === 'url' ? $cache_url : $cache_file;
+							if ( 'url' === $format ) {
+
+								$cache_url = add_query_arg( 'mtime', $file_mod_time, $cache_url );
+
+								return $cache_url;
+
+							} else {
+								return $cache_file;
+							}
 
 						} elseif ( @unlink( $cache_file ) ) {	// Remove expired file.
 

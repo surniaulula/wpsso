@@ -2185,13 +2185,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$script_js = 'var ' . $event_json_var . '_array_keys = ' . $json_array_keys . ';' . "\n";
 				$script_js .= 'var ' . $event_json_var . '_array_values = ' . $json_array_values . ';' . "\n";
 
-				$html .= '<!-- adding ' . $event_json_var . ' json array -->' . "\n";
+				$html .= '<!-- adding ' . $event_json_var . ' array -->' . "\n";
 
 				if ( ! empty( $event_args[ 'exp_secs' ] ) ) {
 					
 					$script_url = $this->p->cache->get_data_url( $event_json_var, $script_js, $event_args[ 'exp_secs' ], $file_ext = '.js' );
 
-					$html .= '<script src="' . $script_url . '?ver=' . WpssoConfig::get_version() . '" async></script>' . "\n";
+					$html .= '<script src="' . $script_url . '" async></script>' . "\n";
 
 				} else {
 
@@ -2200,7 +2200,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			} else {
 
-				$html .= '<!-- ' . $event_json_var . ' json array already added -->' . "\n";
+				$html .= '<!-- ' . $event_json_var . ' array already added -->' . "\n";
 			}
 
 			$select_id_esc = esc_js( $select_id );
