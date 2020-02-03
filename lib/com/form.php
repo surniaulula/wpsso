@@ -388,10 +388,19 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$event_json_var = false;
 
 			if ( in_array( 'on_focus_load_json', $event_names ) ) {
+
 				if ( ! empty( $event_args ) ) {
+
 					if ( is_string( $event_args ) ) {
+
 						$event_json_var = preg_replace( '/:.$/', '', $event_args );
-						$event_json_var = SucomUtil::sanitize_hookname( $this->lca . '_form_select_' . $event_json_var . '_json' );
+						$event_json_var = SucomUtil::sanitize_hookname( $this->lca . '_form_select_' .
+							$event_json_var . '_json' );
+
+					} elseif ( ! empty( $event_args[ 'json_var' ] ) ) {
+
+						$event_json_var = SucomUtil::sanitize_hookname( $this->lca . '_form_select_' .
+							$event_args[ 'json_var' ] . '_json' );
 					}
 				}
 			}
@@ -1420,10 +1429,19 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$event_json_var = false;
 
 					if ( in_array( 'on_focus_load_json', $event_names ) ) {
+
 						if ( ! empty( $event_args ) ) {
+
 							if ( is_string( $event_args ) ) {
+
 								$event_json_var = preg_replace( '/:.$/', '', $event_args );
-								$event_json_var = SucomUtil::sanitize_hookname( $this->lca . '_form_select_' . $event_json_var . '_json' );
+								$event_json_var = SucomUtil::sanitize_hookname( $this->lca . '_form_select_' .
+									$event_json_var . '_json' );
+
+							} elseif ( ! empty( $event_args[ 'json_var' ] ) ) {
+
+								$event_json_var = SucomUtil::sanitize_hookname( $this->lca . '_form_select_' .
+									$event_args[ 'json_var' ] . '_json' );
 							}
 						}
 					}
@@ -2164,11 +2182,21 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$json_array_keys   = SucomUtil::json_encode_array( array_keys( $select_opt_arr ) );
 				$json_array_values = SucomUtil::json_encode_array( array_values( $select_opt_arr ) );
 
+				$script_js = 'var ' . $event_json_var . '_array_keys = ' . $json_array_keys . ';' . "\n";
+				$script_js .= 'var ' . $event_json_var . '_array_values = ' . $json_array_values . ';' . "\n";
+
 				$html .= '<!-- adding ' . $event_json_var . ' json array -->' . "\n";
-				$html .= '<script type="text/javascript">' . "\n";
-				$html .= 'var ' . $event_json_var . '_array_keys = ' . $json_array_keys . ';' . "\n";
-				$html .= 'var ' . $event_json_var . '_array_values = ' . $json_array_values . ';' . "\n";
-				$html .= '</script>' . "\n";
+
+				if ( ! empty( $event_args[ 'exp_secs' ] ) ) {
+					
+					$script_url = $this->p->cache->get_data_url( $event_json_var, $script_js, $event_args[ 'exp_secs' ], $file_ext = '.js' );
+
+					$html .= '<script src="' . $script_url . '?ver=' . WpssoConfig::get_version() . '" async></script>' . "\n";
+
+				} else {
+
+					$html .= '<script type="text/javascript">' . "\n" . $script_js . '</script>' . "\n";
+				}
 
 			} else {
 

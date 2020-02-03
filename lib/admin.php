@@ -2583,7 +2583,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'<td colspan="2" class="subsection ' . ( $is_top_section ? ' top' : '' ) . '"><h4>' .
 					_x( 'Default Open Graph Types', 'metabox title', 'wpsso' ) . '</h4></td>';
 
-			$og_types = $this->p->og->get_og_types_select( $add_none = true );
+			$og_types = $this->p->og->get_og_types_select();
 
 			foreach ( array( 
 				'home_index'   => _x( 'Type for Blog Front Page', 'option label', 'wpsso' ),
@@ -2777,7 +2777,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'<td colspan="2" class="subsection ' . ( $is_top_section ? ' top' : '' ) . '"><h4>' .
 					_x( 'Default Schema Types', 'metabox title', 'wpsso' ) . '</h4></td>';
 
-			$schema_types = $this->p->schema->get_schema_types_select( null, $add_none = true );
+			$schema_exp_secs = $this->p->util->get_cache_exp_secs( $this->p->lca . '_t_' );	// Default is month in seconds.
+			$schema_types    = $this->p->schema->get_schema_types_select();
 
 			foreach ( array( 
 				'home_index'   => _x( 'Type for Blog Front Page', 'option label', 'wpsso' ),
@@ -2793,9 +2794,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$table_rows[ $opt_key ] = $tr_html . 
 					$form->get_th_html( $th_label, '', $opt_key ) . 
-					'<td>' . $form->get_select( $opt_key, $schema_types,
-						$css_class = 'schema_type', $css_id = '', $is_assoc = true, $is_disabled = false,
-							$selected = false, $event_names = array( 'on_focus_load_json' ), $event_args = 'schema_types' ) .
+					'<td>' . $form->get_select( $opt_key, $schema_types, $css_class = 'schema_type', $css_id = '',
+						$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
+							$event_args = array( 'json_var' => 'schema_types', 'exp_secs' => $schema_exp_secs ) ) .
 					'</td>';
 			}
 
@@ -2812,18 +2813,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$type_label = $obj->label . ' [' . $obj->name . ']';
 
-				$type_select .= '<p>' . $form->get_select( $opt_key, $schema_types,
-					$css_class = 'schema_type', $css_id = '', $is_assoc = true, $is_disabled = false,
-						$selected = false, $event_names = array( 'on_focus_load_json' ), $event_args = 'schema_types' ) . ' ' .
+				$type_select .= '<p>' . $form->get_select( $opt_key, $schema_types, $css_class = 'schema_type', $css_id = '',
+					$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
+						$event_args = array( 'json_var' => 'schema_types', 'exp_secs' => $schema_exp_secs ) ) . ' ' .
 					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $type_label ) .
 					'</p>' . "\n";
 			}
 
 			$type_keys[] = $opt_key = 'schema_type_for_post_archive';
 
-			$type_select .= '<p>' . $form->get_select( $opt_key, $schema_types,
-				$css_class = 'schema_type', $css_id = '', $is_assoc = true, $is_disabled = false,
-					$selected = false, $event_names = array( 'on_focus_load_json' ), $event_args = 'schema_types' ) . ' ' .
+			$type_select .= '<p>' . $form->get_select( $opt_key, $schema_types, $css_class = 'schema_type', $css_id = '',
+				$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
+					$event_args = array( 'json_var' => 'schema_types', 'exp_secs' => $schema_exp_secs ) ) . ' ' .
 				sprintf( _x( 'for %s', 'option comment', 'wpsso' ), _x( 'Post Type Archive Page', 'option comment', 'wpsso' ) ) .
 				'</p>' . "\n";
 
@@ -2850,9 +2851,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$type_label = $obj->label . ' [' . $obj->name . ']';
 
-				$type_select .= '<p>' . $form->get_select( $opt_key, $schema_types,
-					$css_class = 'schema_type', $css_id = '', $is_assoc = true, $is_disabled = false,
-						$selected = false, $event_names = array( 'on_focus_load_json' ), $event_args = 'schema_types' ) . ' ' .
+				$type_select .= '<p>' . $form->get_select( $opt_key, $schema_types, $css_class = 'schema_type', $css_id = '',
+					$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
+						$event_args = array( 'json_var' => 'schema_types', 'exp_secs' => $schema_exp_secs ) ) . ' ' .
 					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $type_label ) .
 					'</p>' . "\n";
 			}

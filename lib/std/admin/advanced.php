@@ -284,11 +284,11 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
 			WpssoAdmin::get_option_site_use( 'plugin_imgsize_cache_exp', $form, $network );
 
-			$table_rows[ 'plugin_topics_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_topics_cache_exp' ) . 
-			$form->get_th_html( _x( 'Article Topics Array Cache Expiry', 'option label', 'wpsso' ), '', 'plugin_topics_cache_exp' ) . 
-			'<td nowrap class="blank">' . $form->options[ 'plugin_topics_cache_exp' ] . ' ' . 
+			$table_rows[ 'plugin_list_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_list_cache_exp' ) . 
+			$form->get_th_html( _x( 'Text List Arrays Cache Expiry', 'option label', 'wpsso' ), '', 'plugin_list_cache_exp' ) .
+			'<td nowrap class="blank">' . $form->options[ 'plugin_list_cache_exp' ] . ' ' . 
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
-			WpssoAdmin::get_option_site_use( 'plugin_topics_cache_exp', $form, $network );
+			WpssoAdmin::get_option_site_use( 'plugin_list_cache_exp', $form, $network );
 
 			$table_rows[ 'plugin_types_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_types_cache_exp' ) . 
 			$form->get_th_html( _x( 'Schema Types Array Cache Expiry', 'option label', 'wpsso' ), '', 'plugin_types_cache_exp' ) . 

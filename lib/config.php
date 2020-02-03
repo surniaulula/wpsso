@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '6.19.0-dev.2',	// Plugin version.
-					'opt_version' => '700',		// Increment when changing default option values.
+					'opt_version' => '701',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -1510,7 +1510,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_content_cache_exp'   => HOUR_IN_SECONDS,	// Filtered Content Text Cache Expiry (1 hour).
 					'plugin_head_cache_exp'      => WEEK_IN_SECONDS,	// Head Markup Array Cache Expiry (1 week).
 					'plugin_imgsize_cache_exp'   => DAY_IN_SECONDS,		// Image URL Info Cache Expiry (1 day).
-					'plugin_list_cache_exp'      => MONTH_IN_SECONDS,	// List Arrays Cache Expiry (1 month).
+					'plugin_list_cache_exp'      => MONTH_IN_SECONDS,	// Text List Arrays Cache Expiry (1 month).
 					'plugin_short_url_cache_exp' => 7776000,		// Shortened URL Cache Expiry (90 days / 3 months).
 					'plugin_types_cache_exp'     => MONTH_IN_SECONDS,	// Schema Types Array Cache Expiry (1 month).
 					'plugin_clear_on_activate'   => 1,			// Clear All Caches on Activate.
@@ -1639,7 +1639,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_head_cache_exp:use'      => 'default',
 					'plugin_imgsize_cache_exp'       => DAY_IN_SECONDS,	// Image URL Info Cache Expiry (1 day).
 					'plugin_imgsize_cache_exp:use'   => 'default',
-					'plugin_list_cache_exp'          => MONTH_IN_SECONDS,	// List Arrays Cache Expiry (1 month).
+					'plugin_list_cache_exp'          => MONTH_IN_SECONDS,	// Text List Arrays Cache Expiry (1 month).
 					'plugin_list_cache_exp:use'      => 'default',
 					'plugin_short_url_cache_exp'     => 7776000,		// Shortened URL Cache Expiry (90 days / 3 months).
 					'plugin_short_url_cache_exp:use' => 'default',
@@ -1924,7 +1924,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'filter'  => 'wpsso_cache_expire_image_url_size',
 					),
 					'wpsso_l_' => array(	// Default is month in seconds.
-						'label'   => 'List Arrays',
+						'label'   => 'Text List Arrays',
 						'opt_key' => 'plugin_list_cache_exp',
 						'filter'  => 'wpsso_cache_expire_list_arrays',
 					),

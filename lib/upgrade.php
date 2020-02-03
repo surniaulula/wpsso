@@ -302,7 +302,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'plugin_cf_product_sku'   => 'plugin_cf_product_retailer_part_no',
 					'plugin_product_attr_mpn' => 'plugin_product_attr_mfr_part_no',
 				),
-				698 => array(
+				700 => array(
 					'og_art_section'          => 'og_def_article_topic',
 					'plugin_topics_cache_exp' => 'plugin_list_cache_exp',
 				),

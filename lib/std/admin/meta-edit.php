@@ -60,11 +60,13 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 			/**
 			 * Select option arrays.
 			 */
-			$og_types           = $this->p->og->get_og_types_select( $add_none = true );
+			$list_exp_secs      = $this->p->util->get_cache_exp_secs( $this->p->lca . '_l_' );	// Default is month in seconds.
+			$schema_exp_secs    = $this->p->util->get_cache_exp_secs( $this->p->lca . '_t_' );	// Default is month in seconds.
+			$og_types           = $this->p->og->get_og_types_select();
 			$article_topics     = $this->p->util->get_article_topics();
 			$product_categories = $this->p->util->get_product_categories();
+			$schema_types       = $this->p->schema->get_schema_types_select();
 			$currencies         = SucomUtil::get_currency_abbrev();
-			$schema_types       = $this->p->schema->get_schema_types_select( null, $add_none = false );
 
 			/**
 			 * Maximum option lengths.
@@ -325,9 +327,9 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Schema Type', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_type',
-					'content'  => $form->get_select( 'schema_type', $schema_types,
-						$css_class = 'schema_type', $css_id = '', $is_assoc = true, $is_disabled = false, $selected = true,
-							$event_names = array( 'on_focus_load_json', 'on_change_unhide_rows' ), $event_args = 'schema_types' ),
+					'content'  => $form->get_select( 'schema_type', $schema_types, $css_class = 'schema_type', $css_id = '',
+						$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json', 'on_change_unhide_rows' ),
+							$event_args = array( 'json_var' => 'schema_types', 'exp_secs' => $schema_exp_secs ) ),
 				),
 				'wpssojson_addon_msg' => array(
 					'table_row' => ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ?

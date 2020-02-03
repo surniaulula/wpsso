@@ -844,7 +844,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $type_id;
 		}
 
-		public function get_og_types_select( $add_none = true ) {
+		public function get_og_types_select() {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -870,11 +870,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				asort( $select );
 			}
 
-			if ( $add_none ) {
-				return array_merge( array( 'none' => '[None]' ), $select );
-			} else {
-				return $select;
-			}
+			return $select;
 		}
 
 		public function get_all_previews( $num = 0, array $mod, $check_dupes = true, $md_pre = 'og', $force_prev = false ) {

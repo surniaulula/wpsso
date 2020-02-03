@@ -305,6 +305,58 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			return false;
 		}
 
+		public function get_data_url( $cache_salt, $cache_data, $exp_secs = null, $file_ext = '' ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			$cache_file = $this->base_dir . md5( $cache_salt ) . $file_ext;
+			$cache_url  = $this->base_url . md5( $cache_salt ) . $file_ext;
+
+			if ( file_exists( $cache_file ) ) {
+
+				$file_exp_secs = null === $exp_secs ? $this->default_file_cache_exp : $exp_secs;
+
+				if ( false !== $exp_secs && filemtime( $cache_file ) > time() - $file_exp_secs ) {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'cached file found: returning url ' . $cache_url );
+					}
+
+					return $cache_url;
+
+				} elseif ( @unlink( $cache_file ) ) {	// Remove expired file.
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'removed expired cache file ' . $cache_file );
+					}
+
+				} else {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'error removing cache file ' . $cache_file );
+					}
+
+					if ( is_admin() ) {
+						$this->p->notice->err( sprintf( __( 'Error removing cache file %s.',
+							$this->text_domain ), $cache_file ) );
+					}
+				}
+			}
+
+			if ( $this->save_cache_data( $cache_salt, $cache_data, $cache_type = 'file', $exp_secs, $file_ext ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'cache data sucessfully saved' );
+				}
+
+				return $cache_url;
+			}
+
+			return false;
+		}
+
 		/**
 		 * If $exp_secs is null, then use the default expiration time.
 		 *
@@ -342,7 +394,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				return $failure;
 			}
 
-			$url_nofrag = preg_replace( '/#.*$/', '', $url );	// remove the fragment
+			$url_nofrag = preg_replace( '/#.*$/', '', $url );	// Remove the URL fragment.
 			$url_path   = parse_url( $url_nofrag, PHP_URL_PATH );
 
 			if ( $file_ext === '' ) {
@@ -360,7 +412,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$url_fragment = '#' . $url_fragment;
 			}
 
-			$cache_salt = __CLASS__ . '::get(url:' . $url_nofrag . ')';	// SucomCache::get()
+			$cache_salt = __CLASS__ . '::get(url:' . $url_nofrag . ')';
 			$cache_file = $this->base_dir . md5( $cache_salt ) . $file_ext;
 			$cache_url  = $this->base_url . md5( $cache_salt ) . $file_ext . $url_fragment;
 			$cache_data = false;
@@ -401,7 +453,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 									( $format === 'url' ? $cache_url : $cache_file ) );
 							}
 
-							$this->url_mtimes[ $url ] = true;	// signal return is from cache
+							$this->url_mtimes[ $url ] = true;	// Signal that return is from cache.
 
 							return $format === 'url' ? $cache_url : $cache_file;
 

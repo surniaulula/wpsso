@@ -119,6 +119,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'og-site':
 
+					$list_exp_secs      = $this->p->util->get_cache_exp_secs( $this->p->lca . '_l_' );	// Default is month in seconds.
 					$article_topics     = $this->p->util->get_article_topics();
 					$product_categories = $this->p->util->get_product_categories();
 
@@ -139,20 +140,18 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						$css_class = '', $css_id = 'og_def_article_topic' ) . 
 					'<td>' .
 					$this->form->get_select( 'og_def_article_topic', $article_topics, $css_class = '', $css_id = '',
-						$is_assoc = true, $is_disabled = false, $selected = true, $event_names = array( 'on_focus_load_json' ),
-							$event_args = 'article_topics' ) .
+						$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
+							$event_args = array( 'json_var' => 'article_topics', 'exp_secs' => $list_exp_secs ) ) .
 					'</td>';
 
-					/*
 					$table_rows[ 'og_def_product_category' ] = '' . 
 					$this->form->get_th_html( _x( 'Default Product Category', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'og_def_product_category' ) . 
 					'<td>' .
 					$this->form->get_select( 'og_def_product_category', $product_categories, $css_class = 'wide', $css_id = '',
-						$is_assoc = true, $is_disabled = false, $selected = true, $event_names = array( 'on_focus_load_json' ),
-							$event_args = 'product_categories' ) .
+						$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
+							$event_args = array( 'json_var' => 'product_categories', 'exp_secs' => $list_exp_secs ) ) .
 					'</td>';
-					*/
 
 					$this->add_og_types_table_rows( $table_rows, $this->form, $hide_in_basic = true, $is_top_section = false );
 

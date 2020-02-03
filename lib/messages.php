@@ -997,14 +997,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_topics_cache_exp':
+						case 'tooltip-plugin_list_cache_exp':
 
-							$cache_exp_secs = WpssoConfig::$cf[ 'opt' ][ 'defaults' ][ 'plugin_topics_cache_exp' ];
+							$cache_exp_secs = WpssoConfig::$cf[ 'opt' ][ 'defaults' ][ 'plugin_list_cache_exp' ];
 
 							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
 								_x( 'disabled', 'option comment', 'wpsso' );
 
-							$text = __( 'The filtered article topics array is saved to the WordPress transient cache to optimize performance and disk access.', 'wpsso' ) . ' ';
+							$text = __( 'The filtered text list arrays (for example, article topics and product categories) are saved to the WordPress transient cache to optimize performance and disk access.', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
 

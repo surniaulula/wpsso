@@ -43,7 +43,7 @@ _x( 'Shortened URL Cache Expiry', 'option label', 'wpsso' );
 _x( 'seconds (0 to disable)', 'option comment', 'wpsso' );
 _x( 'Image URL Info Cache Expiry', 'option label', 'wpsso' );
 _x( 'seconds (0 to disable)', 'option comment', 'wpsso' );
-_x( 'Article Topics Array Cache Expiry', 'option label', 'wpsso' );
+_x( 'Text List Arrays Cache Expiry', 'option label', 'wpsso' );
 _x( 'seconds (0 to disable)', 'option comment', 'wpsso' );
 _x( 'Schema Types Array Cache Expiry', 'option label', 'wpsso' );
 _x( 'seconds (0 to disable)', 'option comment', 'wpsso' );

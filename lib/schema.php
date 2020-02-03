@@ -884,7 +884,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $get_value;
 		}
 
-		public function get_schema_types_select( $schema_types = null, $add_none = true ) {
+		public function get_schema_types_select( $schema_types = null ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -911,11 +911,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				asort( $select );
 			}
 
-			if ( $add_none ) {
-				return array_merge( array( 'none' => '[None]' ), $select );
-			} else {
-				return $select;
-			}
+			return $select;
 		}
 
 		/**

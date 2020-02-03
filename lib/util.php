@@ -1061,7 +1061,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						$this->get_form_cache( 'business_types' );
 
-						self::$form_cache[ $key ] = $this->p->schema->get_schema_types_select( self::$form_cache[ 'business_types' ], false );
+						self::$form_cache[ $key ] = $this->p->schema->get_schema_types_select( self::$form_cache[ 'business_types' ] );
 
 						break;
 
@@ -1077,7 +1077,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						$this->get_form_cache( 'org_types' );
 
-						self::$form_cache[ $key ] = $this->p->schema->get_schema_types_select( self::$form_cache[ 'org_types' ], false );
+						self::$form_cache[ $key ] = $this->p->schema->get_schema_types_select( self::$form_cache[ 'org_types' ] );
 
 						break;
 
@@ -1110,7 +1110,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						$this->get_form_cache( 'place_types' );
 
-						self::$form_cache[ $key ] = $this->p->schema->get_schema_types_select( self::$form_cache[ 'place_types' ], false );
+						self::$form_cache[ $key ] = $this->p->schema->get_schema_types_select( self::$form_cache[ 'place_types' ] );
 
 						break;
 
