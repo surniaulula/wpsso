@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.19.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 6.19.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2874,8 +2874,8 @@ msgid "Include Video Preview Images"
 msgstr ""
 
 #: lib/gettext-pro.php:89 lib/gettext-pro.php:127 lib/pro/admin/general.php:81
-#: lib/pro/admin/meta-edit.php:409 lib/std/admin/general.php:85
-#: lib/std/admin/meta-edit.php:420
+#: lib/pro/admin/meta-edit.php:405 lib/std/admin/general.php:85
+#: lib/std/admin/meta-edit.php:416
 msgctxt "option comment"
 msgid "note that video preview images are included first"
 msgstr ""
@@ -3041,102 +3041,102 @@ msgctxt "metabox title"
 msgid "Structured Data / Schema Markup"
 msgstr ""
 
-#: lib/gettext-pro.php:118 lib/pro/admin/meta-edit.php:321
-#: lib/std/admin/meta-edit.php:331
+#: lib/gettext-pro.php:118 lib/pro/admin/meta-edit.php:316
+#: lib/std/admin/meta-edit.php:326
 msgctxt "option label"
 msgid "Schema Type"
 msgstr ""
 
-#: lib/gettext-pro.php:119 lib/pro/admin/meta-edit.php:346
-#: lib/std/admin/meta-edit.php:356
+#: lib/gettext-pro.php:119 lib/pro/admin/meta-edit.php:342
+#: lib/std/admin/meta-edit.php:352
 msgid "Save a draft version or publish the %s to display these options."
 msgstr ""
 
-#: lib/gettext-pro.php:120 lib/pro/admin/meta-edit.php:373
-#: lib/std/admin/meta-edit.php:379
+#: lib/gettext-pro.php:120 lib/pro/admin/meta-edit.php:369
+#: lib/std/admin/meta-edit.php:375
 msgctxt "metabox title"
 msgid "Facebook / Open Graph / Default Media"
 msgstr ""
 
-#: lib/gettext-pro.php:121 lib/pro/admin/meta-edit.php:378
-#: lib/std/admin/meta-edit.php:384
+#: lib/gettext-pro.php:121 lib/pro/admin/meta-edit.php:374
+#: lib/std/admin/meta-edit.php:380
 msgctxt "metabox title"
 msgid "Priority Image Information"
 msgstr ""
 
 #: lib/gettext-pro.php:122 lib/gettext-pro.php:137
-#: lib/pro/admin/meta-edit.php:383 lib/pro/admin/meta-edit.php:523
-#: lib/std/admin/meta-edit.php:390 lib/std/admin/meta-edit.php:532
+#: lib/pro/admin/meta-edit.php:379 lib/pro/admin/meta-edit.php:519
+#: lib/std/admin/meta-edit.php:386 lib/std/admin/meta-edit.php:528
 msgctxt "option label"
 msgid "Maximum Images"
 msgstr ""
 
 #: lib/gettext-pro.php:123 lib/gettext-pro.php:134 lib/gettext-pro.php:138
-#: lib/pro/admin/meta-edit.php:389 lib/pro/admin/meta-edit.php:487
-#: lib/pro/admin/meta-edit.php:532 lib/std/admin/meta-edit.php:398
-#: lib/std/admin/meta-edit.php:498 lib/std/admin/meta-edit.php:543
+#: lib/pro/admin/meta-edit.php:385 lib/pro/admin/meta-edit.php:483
+#: lib/pro/admin/meta-edit.php:528 lib/std/admin/meta-edit.php:394
+#: lib/std/admin/meta-edit.php:494 lib/std/admin/meta-edit.php:539
 msgctxt "option label"
 msgid "Image ID"
 msgstr ""
 
 #: lib/gettext-pro.php:124 lib/gettext-pro.php:135 lib/gettext-pro.php:139
-#: lib/pro/admin/meta-edit.php:395 lib/pro/admin/meta-edit.php:495
-#: lib/pro/admin/meta-edit.php:540 lib/std/admin/meta-edit.php:405
-#: lib/std/admin/meta-edit.php:507 lib/std/admin/meta-edit.php:552
+#: lib/pro/admin/meta-edit.php:391 lib/pro/admin/meta-edit.php:491
+#: lib/pro/admin/meta-edit.php:536 lib/std/admin/meta-edit.php:401
+#: lib/std/admin/meta-edit.php:503 lib/std/admin/meta-edit.php:548
 msgctxt "option label"
 msgid "or an Image URL"
 msgstr ""
 
-#: lib/gettext-pro.php:125 lib/pro/admin/meta-edit.php:402
-#: lib/std/admin/meta-edit.php:412
+#: lib/gettext-pro.php:125 lib/pro/admin/meta-edit.php:398
+#: lib/std/admin/meta-edit.php:408
 msgctxt "metabox title"
 msgid "Priority Video Information"
 msgstr ""
 
-#: lib/gettext-pro.php:126 lib/pro/admin/meta-edit.php:406
-#: lib/std/admin/meta-edit.php:417
+#: lib/gettext-pro.php:126 lib/pro/admin/meta-edit.php:402
+#: lib/std/admin/meta-edit.php:413
 msgctxt "option label"
 msgid "Include Preview Images"
 msgstr ""
 
-#: lib/gettext-pro.php:128 lib/pro/admin/meta-edit.php:415
-#: lib/std/admin/meta-edit.php:427
+#: lib/gettext-pro.php:128 lib/pro/admin/meta-edit.php:411
+#: lib/std/admin/meta-edit.php:423
 msgctxt "option label"
 msgid "Maximum Videos"
 msgstr ""
 
-#: lib/gettext-pro.php:129 lib/pro/admin/meta-edit.php:422
-#: lib/std/admin/meta-edit.php:436
+#: lib/gettext-pro.php:129 lib/pro/admin/meta-edit.php:418
+#: lib/std/admin/meta-edit.php:432
 msgctxt "option label"
 msgid "Video Size"
 msgstr ""
 
 #: lib/gettext-pro.php:130 lib/messages.php:2651
-#: lib/pro/admin/meta-edit.php:428 lib/std/admin/meta-edit.php:443
+#: lib/pro/admin/meta-edit.php:424 lib/std/admin/meta-edit.php:439
 msgctxt "option label"
 msgid "Video Embed HTML"
 msgstr ""
 
-#: lib/gettext-pro.php:131 lib/pro/admin/meta-edit.php:434
-#: lib/std/admin/meta-edit.php:450
+#: lib/gettext-pro.php:131 lib/pro/admin/meta-edit.php:430
+#: lib/std/admin/meta-edit.php:446
 msgctxt "option label"
 msgid "or a Video URL"
 msgstr ""
 
-#: lib/gettext-pro.php:132 lib/pro/admin/meta-edit.php:441
-#: lib/std/admin/meta-edit.php:458
+#: lib/gettext-pro.php:132 lib/pro/admin/meta-edit.php:437
+#: lib/std/admin/meta-edit.php:454
 msgctxt "option label"
 msgid "Video Name / Title"
 msgstr ""
 
-#: lib/gettext-pro.php:133 lib/pro/admin/meta-edit.php:450
-#: lib/std/admin/meta-edit.php:466
+#: lib/gettext-pro.php:133 lib/pro/admin/meta-edit.php:446
+#: lib/std/admin/meta-edit.php:462
 msgctxt "option label"
 msgid "Video Description"
 msgstr ""
 
-#: lib/gettext-pro.php:136 lib/pro/admin/meta-edit.php:516
-#: lib/std/admin/meta-edit.php:524
+#: lib/gettext-pro.php:136 lib/pro/admin/meta-edit.php:512
+#: lib/std/admin/meta-edit.php:520
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup / Pinterest"
 msgstr ""

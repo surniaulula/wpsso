@@ -321,17 +321,13 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'header'   => 'h4',
 					'label'    => _x( 'Structured Data / Schema Markup', 'metabox title', 'wpsso' )
 				),
-
-				/**
-				 * Do not use the 'on_focus_load_json' event name for the Schema Type select (the WPSSO JSON add-on
-				 * will remove the event json array and the Schema Types array will appear empty).
-				 */
 				'schema_type' => array(
 					'th_class' => 'medium',
 					'label'    => _x( 'Schema Type', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_type',
 					'content'  => $form->get_select( 'schema_type', $schema_types,
-						$css_class = 'schema_type', $css_id = '', $is_assoc = true, $is_disabled = false, $selected = true ),
+						$css_class = 'schema_type', $css_id = '', $is_assoc = true, $is_disabled = false, $selected = true,
+							$event_names = array( 'on_focus_load_json', 'on_change_unhide_rows' ), $event_args = 'schema_types' ),
 				),
 				'wpssojson_addon_msg' => array(
 					'table_row' => ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ?
