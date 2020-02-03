@@ -465,7 +465,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.19.0-dev.1 (2020/01/31)**
+**Version 6.19.0-dev.2 (2020/02/03)**
 
 * **New Features**
 	* None.
@@ -880,9 +880,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.19.0-dev.1 =
+= 6.19.0-dev.2 =
 
-(2020/01/31) Refactored the WpssoPage->get_article_section() method and its arguments. Updated the 'wpsso_article_section' filter arguments.
+(2020/02/03) Refactored the WpssoPage->get_article_section() method and its arguments. Updated the 'wpsso_article_section' filter arguments.
 
 = 6.18.0 =
 
