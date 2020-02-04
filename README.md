@@ -115,7 +115,7 @@
 <ul>
 <li>Article Topic</li>
 </ul></li>
-<li>Product Information
+<li>Basic Product Information
 
 <ul>
 <li>Product Brand</li>
@@ -134,7 +134,7 @@
 <li>Structured Data / Schema Markup
 
 <ul>
-<li>Schema Description</li>
+<li>Schema Type</li>
 </ul></li>
 </ul></li>
 <li>Priority Media
@@ -241,7 +241,6 @@
 <li>All Schema Types
 
 <ul>
-<li>Schema Type</li>
 <li>Name / Title</li>
 <li>Alternate Name</li>
 <li>Description</li>
@@ -315,7 +314,7 @@
 <ul>
 <li>Alternate Person</li>
 </ul></li>
-<li>Product Information (Additional)
+<li>Additional Product Information
 
 <ul>
 <li>Product Length (cm)</li>

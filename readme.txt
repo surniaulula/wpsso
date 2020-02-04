@@ -113,7 +113,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 		* Canonical URL
 		* Article Information
 			* Article Topic
-		* Product Information
+		* Basic Product Information
 			* Product Brand
 			* Product Price and Currency
 			* Product Availability
@@ -127,7 +127,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 			* Product MPN
 			* Product ISBN
 		* Structured Data / Schema Markup
-			* Schema Description
+			* Schema Type
 	* Priority Media
 		* Facebook / Open Graph / Default Media
 			* Priority Image Information
@@ -218,7 +218,6 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 * Additional custom Schema options in the Document SSO metabox are available with the [WPSSO Schema JSON-LD Markup Premium add-on](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/):
 
 	* All Schema Types
-		* Schema Type
 		* Name / Title
 		* Alternate Name
 		* Description
@@ -270,7 +269,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 		* Select an Organization
 	* Person Information
 		* Alternate Person
-	* Product Information (Additional)
+	* Additional Product Information
 		* Product Length (cm)
 		* Product Width (cm)
 		* Product Height (cm)
