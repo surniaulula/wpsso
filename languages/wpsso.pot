@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.19.0-dev.3\n"
+"Project-Id-Version: WPSSO Core 6.19.0-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3179,33 +3179,33 @@ msgstr ""
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: lib/gettext-pro.php:151 lib/pro/ecom/woocommerce.php:135
+#: lib/gettext-pro.php:151 lib/pro/ecom/woocommerce.php:136
 msgid ""
 "The WooCommerce %s method is not available - please update to a newer "
 "version of WooCommerce."
 msgstr ""
 
 #: lib/gettext-pro.php:152 lib/gettext-pro.php:157
-#: lib/pro/ecom/woocommerce.php:847 lib/pro/ecom/wpecommerce.php:527
+#: lib/pro/ecom/woocommerce.php:853 lib/pro/ecom/wpecommerce.php:533
 msgid "\"%s\" is an unknown Schema Product item condition."
 msgstr ""
 
 #: lib/gettext-pro.php:153 lib/gettext-pro.php:158
-#: lib/pro/ecom/woocommerce.php:850 lib/pro/ecom/wpecommerce.php:530
+#: lib/pro/ecom/woocommerce.php:856 lib/pro/ecom/wpecommerce.php:536
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/gettext-pro.php:154 lib/pro/ecom/woocommerce.php:1139
+#: lib/gettext-pro.php:154 lib/pro/ecom/woocommerce.php:1147
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/gettext-pro.php:155 lib/pro/ecom/woocommerce.php:1141
+#: lib/gettext-pro.php:155 lib/pro/ecom/woocommerce.php:1149
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:156 lib/pro/ecom/woocommerce.php:1144
+#: lib/gettext-pro.php:156 lib/pro/ecom/woocommerce.php:1152
 msgid "Please update your site to WooCommerce version %s or newer."
 msgstr ""
 
@@ -3234,7 +3234,7 @@ msgid ""
 msgstr ""
 
 #: lib/gettext-pro.php:170 lib/gettext-pro.php:174 lib/pro/media/ngg.php:127
-#: lib/pro/media/ngg.php:1294
+#: lib/pro/media/ngg.php:1368
 msgid "NextGEN Gallery"
 msgstr ""
 

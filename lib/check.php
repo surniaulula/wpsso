@@ -116,6 +116,12 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							break;
 
+						case 'ecom-woocommerce-currency-switcher':
+
+							$chk[ 'class' ] = 'WOOCS';
+
+							break;
+
 						case 'ecom-woo-add-gtin':
 
 							$chk[ 'class' ] = 'Woo_GTIN';

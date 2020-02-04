@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.19.0-dev.3',	// Plugin version.
+					'version'     => '6.19.0-dev.4',	// Plugin version.
 					'opt_version' => '701',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -83,15 +83,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'meta-edit' => 'Extend Meta Edit',
 							),
 							'ecom' => array(
-								'edd'                        => '(plugin) Easy Digital Downloads',
-								'jck-wssv'                   => '(plugin) WooCommerce Show Single Variations',
-								'perfect-woocommerce-brands' => '(plugin) Perfect WooCommerce Brands',
-								'woocommerce'                => '(plugin) WooCommerce',
-								'woocommerce-brands'         => '(plugin) WooCommerce Brands',
-								'woo-add-gtin'               => '(plugin) WooCommerce UPC, EAN, and ISBN',
-								'wpecommerce'                => '(plugin) WP eCommerce',
-								'wpm-product-gtin-wc'        => '(plugin) Product GTIN for WooCommerce',
-								'yith-woocommerce-brands'    => '(plugin) YITH WooCommerce Brands Add-on',
+								'edd'                           => '(plugin) Easy Digital Downloads',
+								'jck-wssv'                      => '(plugin) WooCommerce Show Single Variations',
+								'perfect-woocommerce-brands'    => '(plugin) Perfect WooCommerce Brands',
+								'woocommerce'                   => '(plugin) WooCommerce',
+								'woocommerce-brands'            => '(plugin) WooCommerce Brands',
+								'woocommerce-currency-switcher' => '(plugin) WooCommerce Currency Switcher',
+								'woo-add-gtin'                  => '(plugin) WooCommerce UPC, EAN, and ISBN',
+								'wpecommerce'                   => '(plugin) WP eCommerce',
+								'wpm-product-gtin-wc'           => '(plugin) Product GTIN for WooCommerce',
+								'yith-woocommerce-brands'       => '(plugin) YITH WooCommerce Brands Add-on',
 							),
 							'event' => array(
 								'tribe_events' => '(plugin) The Events Calendar',
