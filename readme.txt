@@ -464,7 +464,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.19.0-dev.2 (2020/02/03)**
+**Version 6.19.0-dev.3 (2020/02/04)**
 
 * **New Features**
 	* None.
@@ -879,9 +879,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.19.0-dev.2 =
+= 6.19.0-dev.3 =
 
-(2020/02/03) Added file caching to SucomForm->get_select() for the javascript Schema type, article topic, and product category arrays. Updated the 'wpsso_article_section' filter arguments.
+(2020/02/04) Added file caching to SucomForm->get_select() for the javascript Schema type, article topic, and product category arrays. Updated the 'wpsso_article_section' filter arguments.
 
 = 6.18.0 =
 
