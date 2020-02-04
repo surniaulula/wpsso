@@ -2978,22 +2978,27 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 */
 			$cf_md_keys = (array) apply_filters( $this->p->lca . '_cf_md_keys', $this->p->cf[ 'opt' ][ 'cf_md_key' ] );
 
+			$opt_labels = array();
+
 			foreach ( $cf_md_keys as $opt_key => $cf_md_key ) {
 
 				/**
 				 * Make sure we have a label for the custom field option.
 				 */
-				if ( empty( $this->p->cf[ 'form' ][ 'cf_labels' ][ $opt_key ] ) ) {
-					continue;
+				if ( ! empty( $this->p->cf[ 'form' ][ 'cf_labels' ][ $opt_key ] ) ) {
+					$opt_labels[ $opt_key ] = $this->p->cf[ 'form' ][ 'cf_labels' ][ $opt_key ];
 				}
+			}
 
-				$opt_label = $this->p->cf[ 'form' ][ 'cf_labels' ][ $opt_key ];
+			asort( $opt_labels );
+
+			foreach ( $opt_labels as $opt_key => $opt_label ) {
 
 				/**
-				 * If we don't have a meta data key, then clear the custom field name (just in case)
-				 * and disable the option.
+				 * If we don't have a meta data key, then clear the custom field name (just in case) and disable
+				 * the option.
 				 */
-				if ( empty( $cf_md_key ) ) {
+				if ( empty( $cf_md_keys[ $opt_key ] ) ) {
 
 					$form->options[ $opt_key ] = '';
 
@@ -3011,7 +3016,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							$css_class = '', $css_id = '', $max_len = 0, $placeholder = '', $disabled ) . $cmt_transl . '</td>' :
 								'<td class="blank">' . $form->get_no_input( $opt_key ) . $cmt_transl . '</td>' );
 			}
-
 		}
 
 		public static function get_option_unit_comment( $opt_key ) {

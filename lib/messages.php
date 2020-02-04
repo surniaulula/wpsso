@@ -2545,6 +2545,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						_x( 'Product Brand', 'option label', 'wpsso' ),
 						_x( 'a product brand', 'tooltip fragment', 'wpsso' ),
 					),
+					'product_category' => array(
+						_x( 'Product Category', 'option label', 'wpsso' ),
+						sprintf( _x( 'a <a href="%s">Google product type ID</a>', 'tooltip fragment', 'wpsso' ),
+							__( 'https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt', 'wpsso' ) ),
+					),
 					'product_color' => array(
 						_x( 'Product Color', 'option label', 'wpsso' ),
 						_x( 'a product color', 'tooltip fragment', 'wpsso' ),

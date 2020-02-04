@@ -1452,7 +1452,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_howto_tools'              => '',			// How-To Tools Custom Field.
 					'plugin_cf_product_avail'            => '',			// Product Availability Custom Field.
 					'plugin_cf_product_brand'            => '',			// Product Brand Custom Field.
-					'plugin_cf_product_category'         => '',			// Product Category ID Field.
+					'plugin_cf_product_category'         => '',			// Google Product Type ID Field.
 					'plugin_cf_product_color'            => '',			// Product Color Custom Field.
 					'plugin_cf_product_condition'        => '',			// Product Condition Custom Field.
 					'plugin_cf_product_currency'         => '',			// Product Currency Custom Field.
@@ -1696,7 +1696,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_img_url'                  => 'og_img_url',
 					'plugin_cf_product_avail'            => 'product_avail',
 					'plugin_cf_product_brand'            => 'product_brand',		// Product Brand Custom Field.
-					'plugin_cf_product_category'         => 'product_category',		// Product Category ID Custom Field.
+					'plugin_cf_product_category'         => 'product_category',		// Google Product Type ID Field.
 					'plugin_cf_product_color'            => 'product_color',
 					'plugin_cf_product_condition'        => 'product_condition',
 					'plugin_cf_product_currency'         => 'product_currency',
@@ -2207,7 +2207,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_howto_tools'              => 'How-To Tools Custom Field',
 					'plugin_cf_product_avail'            => 'Product Availability Custom Field',
 					'plugin_cf_product_brand'            => 'Product Brand Custom Field',
-					'plugin_cf_product_category'         => 'Product Category ID Field',
+					'plugin_cf_product_category'         => 'Google Product Type ID Field',
 					'plugin_cf_product_color'            => 'Product Color Custom Field',
 					'plugin_cf_product_condition'        => 'Product Condition Custom Field',
 					'plugin_cf_product_currency'         => 'Product Currency Custom Field',
@@ -2244,7 +2244,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_product_attr_color'         => 'Product Color Attribute Name',
 					'plugin_product_attr_condition'     => 'Product Condition Attribute Name',
 					'plugin_product_attr_depth_value'   => 'Product Depth Attribute Name',
-					'plugin_product_attr_mfr_part_no'   => 'Product MPN Attribute Name',
 					'plugin_product_attr_gtin14'        => 'Product GTIN-14 Attribute Name',
 					'plugin_product_attr_gtin13'        => 'Product GTIN-13/EAN Attribute Name',
 					'plugin_product_attr_gtin12'        => 'Product GTIN-12/UPC Attribute Name',
@@ -2252,6 +2251,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_product_attr_gtin'          => 'Product GTIN Attribute Name',
 					'plugin_product_attr_isbn'          => 'Product ISBN Attribute Name',
 					'plugin_product_attr_material'      => 'Product Material Attribute Name',
+					'plugin_product_attr_mfr_part_no'   => 'Product MPN Attribute Name',
 					'plugin_product_attr_size'          => 'Product Size Attribute Name',
 					'plugin_product_attr_target_gender' => 'Product Target Gender Attr. Name',
 					'plugin_product_attr_volume_value'  => 'Product Volume Attribute Name',

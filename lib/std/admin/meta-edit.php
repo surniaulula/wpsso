@@ -197,14 +197,13 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 				'subsection_og_product' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'header'   => 'h5',
-					'label'    => _x( 'Product Information', 'metabox title', 'wpsso' )
+					'label'    => _x( 'Basic Product Information', 'metabox title', 'wpsso' )
 				),
 				'og_product_ecom_msg' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'table_row' => ( empty( $this->p->avail[ 'ecom' ][ 'any' ] ) ? '' :
 						'<td colspan="2">' . $this->p->msgs->get( 'pro-ecom-product-msg' ) . '</td>' ),
 				),
-				/*
 				'og_product_category' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
@@ -212,7 +211,6 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'tooltip'  => 'meta-product_category',
 					'content'  => $form->get_no_select( 'product_category', $product_categories, $css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
-				*/
 				'og_product_brand' => array(		// Open Graph meta tag product:brand.
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
