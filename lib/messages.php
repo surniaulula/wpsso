@@ -423,7 +423,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= sprintf( __( 'Your selection will be used by default for the Facebook %s meta tag value.', 'wpsso' ), '<code>article:section</code>' ) . ' ';
 
-							$text .= sprintf( __( 'Select "[None]" to exclude the %s meta tag or select a custom section when editing an article.', 'wpsso' ), '<code>article:section</code>' );
+							$text .= sprintf( __( 'Select "[None]" to exclude the %s meta tag by default (you can still select a custom section when editing an article).', 'wpsso' ), '<code>article:section</code>' );
 
 							break;
 
@@ -433,7 +433,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= sprintf( __( 'Your selection will be used by default for the Facebook %s meta tag value.', 'wpsso' ), '<code>product:category</code>' ) . ' ';
 
-							$text .= sprintf( __( 'Select "[None]" to exclude the %s meta tag or select a custom section when editing a product.', 'wpsso' ), '<code>product:category</code>' );
+							$text .= sprintf( __( 'Select "[None]" to exclude the %s meta tag by default (you can still select a custom category when editing a product).', 'wpsso' ), '<code>product:category</code>' );
 
 							break;
 

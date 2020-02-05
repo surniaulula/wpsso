@@ -2157,13 +2157,30 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return ''; // Empty string.
 		}
 
-		public static function get_file_path_locale( $file_path ) {
+		public static function get_file_path_locale( $file_path, $file_url = false ) {
 
 			if ( preg_match( '/^(.*)(\.[a-z0-9]+)$/', $file_path, $matches ) ) {
-				$file_path = $matches[1] . '-' . self::get_locale( 'current' ) . $matches[2];
+
+				if ( ! empty( $matches[ 2 ] ) ) {	// Just in case.
+
+					$file_path_locale = $matches[ 1 ] . '-' . self::get_locale( 'current' ) . $matches[ 2 ];
+
+					if ( file_exists( $file_path_locale ) ) {
+
+						$file_path = $file_path_locale;
+
+						if ( $file_url ) {
+							$file_url = self::get_file_path_locale( $file_url );
+						}
+					}
+				}
 			}
 
-			return $file_path;
+			if ( $file_url ) {
+				return array( $file_path, $file_url );
+			} else {
+				return $file_path;
+			}
 		}
 
 		public static function transl_key_values( $pattern, array &$opts, $text_domain = false ) {

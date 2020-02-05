@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.19.0-b.1',	// Plugin version.
+					'version'     => '6.19.0-b.2',	// Plugin version.
 					'opt_version' => '702',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1453,7 +1453,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_howto_tools'              => '',			// How-To Tools Custom Field.
 					'plugin_cf_product_avail'            => '',			// Product Availability Custom Field.
 					'plugin_cf_product_brand'            => '',			// Product Brand Custom Field.
-					'plugin_cf_product_category'         => '',			// Google Product Type ID Field.
+					'plugin_cf_product_category'         => '',			// Product Type ID Custom Field.
 					'plugin_cf_product_color'            => '',			// Product Color Custom Field.
 					'plugin_cf_product_condition'        => '',			// Product Condition Custom Field.
 					'plugin_cf_product_currency'         => '',			// Product Currency Custom Field.
@@ -1697,7 +1697,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_img_url'                  => 'og_img_url',
 					'plugin_cf_product_avail'            => 'product_avail',
 					'plugin_cf_product_brand'            => 'product_brand',		// Product Brand Custom Field.
-					'plugin_cf_product_category'         => 'product_category',		// Google Product Type ID Field.
+					'plugin_cf_product_category'         => 'product_category',		// Product Type ID Custom Field.
 					'plugin_cf_product_color'            => 'product_color',
 					'plugin_cf_product_condition'        => 'product_condition',
 					'plugin_cf_product_currency'         => 'product_currency',
@@ -2208,7 +2208,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_howto_tools'              => 'How-To Tools Custom Field',
 					'plugin_cf_product_avail'            => 'Product Availability Custom Field',
 					'plugin_cf_product_brand'            => 'Product Brand Custom Field',
-					'plugin_cf_product_category'         => 'Google Product Type ID Field',
+					'plugin_cf_product_category'         => 'Product Type ID Custom Field',
 					'plugin_cf_product_color'            => 'Product Color Custom Field',
 					'plugin_cf_product_condition'        => 'Product Condition Custom Field',
 					'plugin_cf_product_currency'         => 'Product Currency Custom Field',

@@ -1763,6 +1763,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$cache_md5_pre  = $this->p->lca . '_l_';
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre );	// Default is month in seconds.
+			$text_list_file = SucomUtil::get_file_path_locale( WPSSO_ARTICLE_SECTIONS_LIST );
 
 			if ( $cache_exp_secs > 0 ) {
 
@@ -1770,7 +1771,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
 				 * less in length. If using a site transient, it should be 40 characters or less in length.
 				 */
-				$cache_salt = __METHOD__ . '(' . WPSSO_ARTICLE_SECTIONS_LIST . ')';
+				$cache_salt = __METHOD__ . '(' . $text_list_file . ')';
 				$cache_id   = $cache_md5_pre . md5( $cache_salt );
 	
 				if ( $this->p->debug->enabled ) {
@@ -1789,7 +1790,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 			}
 
-			$raw_topics = file( WPSSO_ARTICLE_SECTIONS_LIST, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES );	// Returns false on error.
+			$raw_topics = file( $text_list_file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES );	// Returns false on error.
 
 			if ( ! is_array( $raw_topics ) ) {
 
@@ -1798,8 +1799,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 
 				if ( is_admin() ) {
-					$this->p->notice->err( sprintf( __( 'Error reading the %s file for the article sections list.', 'wpsso' ),
-						WPSSO_ARTICLE_SECTIONS_LIST ) );
+					$this->p->notice->err( sprintf( __( 'Error reading the %s file for the article sections list.',
+						'wpsso' ), $text_list_file ) );
 				}
 
 				return array();
@@ -1847,6 +1848,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$cache_md5_pre  = $this->p->lca . '_l_';
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre );	// Default is month in seconds.
+			$text_list_file = SucomUtil::get_file_path_locale( WPSSO_PRODUCT_CATEGORIES_LIST );
 
 			if ( $cache_exp_secs > 0 ) {
 
@@ -1854,7 +1856,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
 				 * less in length. If using a site transient, it should be 40 characters or less in length.
 				 */
-				$cache_salt = __METHOD__ . '(' . WPSSO_PRODUCT_CATEGORIES_LIST . ')';
+				$cache_salt = __METHOD__ . '(' . $text_list_file . ')';
 				$cache_id   = $cache_md5_pre . md5( $cache_salt );
 	
 				if ( $this->p->debug->enabled ) {
@@ -1873,7 +1875,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 			}
 
-			$raw_categories = file( WPSSO_PRODUCT_CATEGORIES_LIST, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES );	// Returns false on error.
+			$raw_categories = file( $text_list_file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES );	// Returns false on error.
 
 			if ( ! is_array( $raw_categories ) ) {
 
@@ -1882,8 +1884,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 
 				if ( is_admin() ) {
-					$this->p->notice->err( sprintf( __( 'Error reading the %s file for the product categories list.', 'wpsso' ),
-						WPSSO_PRODUCT_CATEGORIES_LIST ) );
+					$this->p->notice->err( sprintf( __( 'Error reading the %s file for the product categories list.',
+						'wpsso' ), $text_list_file ) );
 				}
 
 				return array();

@@ -3054,19 +3054,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				) );
 			}
 
-			$file_name   = 'readme.txt';
-			$file_key    = SucomUtil::sanitize_hookname( $file_name );	// Rename readme.txt to readme_txt.
-			$file_dir    = SucomUtil::get_const( strtoupper( $ext ) . '_PLUGINDIR' );
-			$file_local  = $file_dir ? trailingslashit( $file_dir ) . $file_name : false;
-			$file_remote = isset( $this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] ) ? 
+			$file_name = 'readme.txt';
+			$file_key  = SucomUtil::sanitize_hookname( $file_name );	// Rename readme.txt to readme_txt.
+			$file_dir  = SucomUtil::get_const( strtoupper( $ext ) . '_PLUGINDIR' );
+			$file_path = $file_dir ? trailingslashit( $file_dir ) . $file_name : false;
+			$file_url  = isset( $this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] ) ? 
 				$this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] : false;
 
-			$file_local_transl = SucomUtil::get_file_path_locale( $file_local );
-
-			if ( file_exists( $file_local_transl ) ) {
-				$file_local  = $file_local_transl;
-				$file_remote = SucomUtil::get_file_path_locale( $file_remote );
-			}
+			list( $file_path, $file_url ) = SucomUtil::get_file_path_locale( $file_path, $file_url );
 
 			$cache_md5_pre = $this->p->lca . '_';
 			$cache_salt    = __METHOD__ . '(ext:' . $ext . ')';
@@ -3097,17 +3092,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					}
 				}
 
-				if ( $file_remote && strpos( $file_remote, '://' ) ) {
+				if ( $file_url && strpos( $file_url, '://' ) ) {
 
 					/**
 					 * Clear the cache first if reading the cache is disabled.
 					 */
 					if ( ! $read_cache ) {
-						$this->p->cache->clear( $file_remote );
+						$this->p->cache->clear( $file_url );
 					}
 
 					$readme_from_url = true;
-					$readme_content  = $this->p->cache->get( $file_remote, 'raw', 'file', $cache_exp_secs );
+					$readme_content  = $this->p->cache->get( $file_url, 'raw', 'file', $cache_exp_secs );
 				}
 			} else {
 				delete_transient( $cache_id );	// Just in case.
@@ -3115,10 +3110,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( empty( $readme_content ) ) {
 
-				if ( $file_local && file_exists( $file_local ) && $fh = @fopen( $file_local, 'rb' ) ) {
+				if ( $file_path && file_exists( $file_path ) && $fh = @fopen( $file_path, 'rb' ) ) {
 
 					$readme_from_url = false;
-					$readme_content  = fread( $fh, filesize( $file_local ) );
+					$readme_content  = fread( $fh, filesize( $file_path ) );
 
 					fclose( $fh );
 				}
@@ -3169,19 +3164,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				) );
 			}
 
-			$file_name   = SucomUtil::sanitize_file_path( $file_name );
-			$file_key    = SucomUtil::sanitize_hookname( basename( $file_name ) );	// html/setup.html -> setup_html.
-			$file_dir    = SucomUtil::get_const( strtoupper( $ext ) . '_PLUGINDIR' );
-			$file_local  = $file_dir ? trailingslashit( $file_dir ) . $file_name : false;
-			$file_remote = isset( $this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] ) ? 
+			$file_name = SucomUtil::sanitize_file_path( $file_name );
+			$file_key  = SucomUtil::sanitize_hookname( basename( $file_name ) );	// html/setup.html -> setup_html.
+			$file_dir  = SucomUtil::get_const( strtoupper( $ext ) . '_PLUGINDIR' );
+			$file_path = $file_dir ? trailingslashit( $file_dir ) . $file_name : false;
+			$file_url  = isset( $this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] ) ? 
 				$this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] : false;
 
-			$file_local_transl = SucomUtil::get_file_path_locale( $file_local );
-
-			if ( file_exists( $file_local_transl ) ) {
-				$file_local  = $file_local_transl;
-				$file_remote = SucomUtil::get_file_path_locale( $file_remote );
-			}
+			list( $file_path, $file_url ) = SucomUtil::get_file_path_locale( $file_path, $file_url );
 
 			if ( null === $cache_exp_secs ) {
 				$cache_exp_secs = WEEK_IN_SECONDS;
@@ -3192,14 +3182,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$cache_content    = false;
 
 			if ( $cache_exp_secs > 0 ) {
-				if ( $file_remote && strpos( $file_remote, '://' ) ) {
-					$cache_content = $this->p->cache->get( $file_remote, 'raw', 'file', $cache_exp_secs );
+
+				if ( $file_url && strpos( $file_url, '://' ) ) {
+
+					$cache_content = $this->p->cache->get( $file_url, 'raw', 'file', $cache_exp_secs );
 				}
 			}
 
 			if ( empty( $cache_content ) ) {
-				if ( $file_local && file_exists( $file_local ) && $fh = @fopen( $file_local, 'rb' ) ) {
-					$cache_content = fread( $fh, filesize( $file_local ) );
+
+				if ( $file_path && file_exists( $file_path ) && $fh = @fopen( $file_path, 'rb' ) ) {
+
+					$cache_content = fread( $fh, filesize( $file_path ) );
+
 					fclose( $fh );
 				}
 			}
