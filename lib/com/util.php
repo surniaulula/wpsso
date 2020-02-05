@@ -932,29 +932,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return self::maybe_get_array( $local_cache, $currency_abbrev, $add_none );
 		}
 
-		public static function get_currency_symbols( $currency_abbrev = false, $add_none = false, $decode = false ) {
-
-			if ( $decode ) {
-
-				static $local_cache = null;
-
-				if ( ! isset( $local_cache ) ) {
-
-					$local_cache = array();
-
-					foreach ( self::$currency_symbols as $key => $value ) {
-						$local_cache[ $key ] = self::decode_html( $value );	// Example: USD => $
-					}
-
-					ksort( $local_cache ); // Sort by key.
-				}
-
-				return self::maybe_get_array( $local_cache, $currency_abbrev, $add_none );
-			}
-
-			return self::maybe_get_array( self::$currency_symbols, $currency_abbrev, $add_none );
-		}
-
 		public static function get_currency_symbol_abbrev( $currency_symbol = false, $default = 'USD', $decode = true ) {
 
 			if ( $decode ) {
@@ -992,6 +969,29 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return $local_cache[ $currency_symbol ] = $default;
+		}
+
+		public static function get_currency_symbols( $currency_abbrev = false, $add_none = false, $decode = false ) {
+
+			if ( $decode ) {
+
+				static $local_cache = null;
+
+				if ( ! isset( $local_cache ) ) {
+
+					$local_cache = array();
+
+					foreach ( self::$currency_symbols as $key => $value ) {
+						$local_cache[ $key ] = self::decode_html( $value );	// Example: USD => $
+					}
+
+					ksort( $local_cache ); // Sort by key.
+				}
+
+				return self::maybe_get_array( $local_cache, $currency_abbrev, $add_none );
+			}
+
+			return self::maybe_get_array( self::$currency_symbols, $currency_abbrev, $add_none );
 		}
 
 		public static function get_dashicons( $icon_number = false, $add_none = false ) {

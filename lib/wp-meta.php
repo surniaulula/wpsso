@@ -106,7 +106,10 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'product_sku' => 'product_retailer_part_no',
 				),
 				696 => array(
-					'og_art_section' => 'article_topic',
+					'og_art_section' => 'article_section',
+				),
+				701 => array(
+					'article_topic' => 'article_section',
 				),
 			),
 		);
@@ -230,7 +233,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'tc_desc'          => '',
 					'sharing_url'      => '',
 					'canonical_url'    => '',
-					'article_topic'    => isset( $opts[ 'og_def_article_topic' ] ) ? $opts[ 'og_def_article_topic' ] : 'none',
+					'article_section'  => isset( $opts[ 'og_def_article_section' ] ) ? $opts[ 'og_def_article_section' ] : 'none',
 					'product_category' => isset( $opts[ 'og_def_product_category' ] ) ? $opts[ 'og_def_product_category' ] : 'none',
 					'schema_type'      => $def_schema_type,
 

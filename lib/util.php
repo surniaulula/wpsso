@@ -1755,7 +1755,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/**
 		 * Returns an associative array, with 'none' as the first element.
 		 */
-		public function get_article_topics() {
+		public function get_article_sections() {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -1770,7 +1770,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
 				 * less in length. If using a site transient, it should be 40 characters or less in length.
 				 */
-				$cache_salt = __METHOD__ . '(' . WPSSO_ARTICLE_TOPICS_LIST . ')';
+				$cache_salt = __METHOD__ . '(' . WPSSO_ARTICLE_SECTIONS_LIST . ')';
 				$cache_id   = $cache_md5_pre . md5( $cache_salt );
 	
 				if ( $this->p->debug->enabled ) {
@@ -1782,24 +1782,24 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				if ( is_array( $topics ) ) {
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'article topics retrieved from transient ' . $cache_id );
+						$this->p->debug->log( 'article sections retrieved from transient ' . $cache_id );
 					}
 
 					return $topics;
 				}
 			}
 
-			$raw_topics = file( WPSSO_ARTICLE_TOPICS_LIST, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES );	// Returns false on error.
+			$raw_topics = file( WPSSO_ARTICLE_SECTIONS_LIST, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES );	// Returns false on error.
 
 			if ( ! is_array( $raw_topics ) ) {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'error reading %s article topic list file' );
+					$this->p->debug->log( 'error reading %s article sections list file' );
 				}
 
 				if ( is_admin() ) {
-					$this->p->notice->err( sprintf( __( 'Error reading the %s file for the article topics list.', 'wpsso' ),
-						WPSSO_ARTICLE_TOPICS_LIST ) );
+					$this->p->notice->err( sprintf( __( 'Error reading the %s file for the article sections list.', 'wpsso' ),
+						WPSSO_ARTICLE_SECTIONS_LIST ) );
 				}
 
 				return array();
@@ -1816,7 +1816,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			unset( $raw_topics );
 
-			$topics = apply_filters( $this->p->lca . '_article_topics', $topics );
+			$topics = apply_filters( $this->p->lca . '_article_sections', $topics );
 
 			asort( $topics, SORT_NATURAL );
 
@@ -1827,7 +1827,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				set_transient( $cache_id, $topics, $cache_exp_secs );
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'article topics saved to transient cache for ' . $cache_exp_secs . ' seconds' );
+					$this->p->debug->log( 'article sections saved to transient cache for ' . $cache_exp_secs . ' seconds' );
 				}
 			}
 
@@ -1839,7 +1839,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 *
 		 * Returns an associative array, with 'none' as the first element.
 		 */
-		public function get_product_categories() {
+		public function get_google_product_categories() {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -1902,7 +1902,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			unset( $raw_categories );
 
-			$categories = apply_filters( $this->p->lca . '_product_categories', $categories );
+			$categories = apply_filters( $this->p->lca . '_google_product_categories', $categories );
 
 			asort( $categories, SORT_NATURAL );
 
@@ -4007,173 +4007,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$content = trim( $content, ', ' );
 
 			return apply_filters( $this->p->lca . '_robots_content', $content, $mod, $directives );
-		}
-
-		/**
-		 * Add post/term/user meta data to the Open Graph meta tags.
-		 */
-		public function add_og_type_mt_md( $type_id, array &$mt_og, array $md_opts ) {	// Pass by reference is OK.
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
-
-			if ( empty( $this->p->cf[ 'head' ][ 'og_type_mt' ][ $type_id ] ) ) {	// Just in case.
-				return;
-			}
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'loading og_type_mt array for type id ' . $type_id );
-			}
-
-			/**
-			 * Example $og_type_mt_md array:
-			 *
-			 *	'product' => array(
-			 *		'product:age_group'               => '',
-			 *		'product:availability'            => 'product_avail',
-			 *		'product:brand'                   => 'product_brand',
-			 *		'product:category'                => 'product_category',
-			 *		'product:color'                   => 'product_color',
-			 *		'product:condition'               => 'product_condition',
-			 *		'product:depth:value'             => 'product_depth_value',
-			 *		'product:depth:units'             => '',
-			 *		'product:ean'                     => 'product_gtin13',
-			 *		'product:expiration_time'         => '',
-			 *		'product:gtin14'                  => 'product_gtin14',
-			 *		'product:gtin13'                  => 'product_gtin13',
-			 *		'product:gtin12'                  => 'product_gtin12',
-			 *		'product:gtin8'                   => 'product_gtin8',
-			 *		'product:gtin'                    => 'product_gtin',
-			 *		'product:height:value'            => 'product_height_value',
-			 *		'product:height:units'            => '',
-			 *		'product:is_product_shareable'    => '',
-			 *		'product:isbn'                    => 'product_isbn',
-			 *		'product:length:value'            => 'product_length_value',
-			 *		'product:length:units'            => '',
-			 *		'product:material'                => 'product_material',
-			 *		'product:mfr_part_no'             => 'product_mfr_part_no',
-			 *		'product:original_price:amount'   => '',
-			 *		'product:original_price:currency' => '',
-			 *		'product:pattern'                 => '',
-			 *		'product:plural_title'            => '',
-			 *		'product:pretax_price:amount'     => '',
-			 *		'product:pretax_price:currency'   => '',
-			 *		'product:price:amount'            => 'product_price',
-			 *		'product:price:currency'          => 'product_currency',
-			 *		'product:product_link'            => '',
-			 *		'product:purchase_limit'          => '',
-			 *		'product:retailer'                => '',
-			 *		'product:retailer_category'       => '',
-			 *		'product:retailer_item_id'        => '',
-			 *		'product:retailer_part_no'        => 'product_retailer_part_no',
-			 *		'product:retailer_title'          => '',
-			 *		'product:sale_price:amount'       => '',
-			 *		'product:sale_price:currency'     => '',
-			 *		'product:sale_price_dates:start'  => '',
-			 *		'product:sale_price_dates:end'    => '',
-			 *		'product:shipping_cost:amount'    => '',
-			 *		'product:shipping_cost:currency'  => '',
-			 *		'product:shipping_weight:value'   => '',
-			 *		'product:shipping_weight:units'   => '',
-			 *		'product:size'                    => 'product_size',
-			 *		'product:target_gender'           => 'product_target_gender',
-			 *		'product:upc'                     => 'product_gtin12',
-			 *		'product:volume:value'            => 'product_volume_value',
-			 *		'product:volume:units'            => '',
-			 *		'product:weight:value'            => 'product_weight_value',
-			 *		'product:weight:units'            => '',
-			 *		'product:width:value'             => 'product_width_value',
-			 *		'product:width:units'             => '',
-			 *	)
-			 */
-			$og_type_mt_md = $this->p->cf[ 'head' ][ 'og_type_mt' ][ $type_id ];
-
-			foreach ( $og_type_mt_md as $mt_name => $md_key ) {
-
-				/**
-				 * Use a custom value if one is available - ignore empty strings and 'none'.
-				 */
-				if ( ! empty( $md_key ) && isset( $md_opts[ $md_key ] ) && $md_opts[ $md_key ] !== '' ) {
-
-					if ( $md_opts[ $md_key ] === 'none' ) {
-
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $md_key . ' option is none - unsetting ' . $mt_name );
-						}
-
-						unset( $mt_og[ $mt_name ] );
-
-					/**
-					 * Check for meta data and meta tags that require a unit value.
-					 *
-					 * Example: 
-					 *
-					 *	'product:depth:value'  => 'product_depth_value',
-					 *	'product:height:value' => 'product_height_value',
-					 *	'product:length:value' => 'product_length_value',
-					 *	'product:volume:value' => 'product_volume_value',
-					 *	'product:weight:value' => 'product_weight_value',
-					 *	'product:width:value'  => 'product_width_value',
-					 */
-					} elseif ( preg_match( '/^.*_([^_]+)_value$/', $md_key, $unit_match ) &&
-						preg_match( '/^(.*):value$/', $mt_name, $mt_match ) ) {
-
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $mt_name . ' from option = ' . $md_opts[ $md_key ] );
-						}
-
-						$mt_og[ $mt_name ] = $md_opts[ $md_key ];
-
-						$mt_units = $mt_match[ 1 ] . ':units';
-
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'checking for ' . $mt_units . ' unit text' );
-						}
-
-						if ( isset( $og_type_mt_md[ $mt_units ] ) ) {
-
-							if ( $unit_text = WpssoSchema::get_data_unit_text( $unit_match[ 1 ] ) ) {
-						
-								if ( $this->p->debug->enabled ) {
-									$this->p->debug->log( $mt_units . ' from unit text = ' . $unit_text );
-								}
-
-								$mt_og[ $mt_units ] = $unit_text;
-							}
-						}
-
-					/**
-					 * Do not define units by themselves - define units when we define the value.
-					 */
-					} elseif ( preg_match( '/_units$/', $md_key ) ) {
-
-						continue;	// Get the next meta data key.
-
-					} else {
-
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $mt_name . ' from option = ' . $md_opts[ $md_key ] );
-						}
-
-						$mt_og[ $mt_name ] = $md_opts[ $md_key ];
-					}
-
-				} elseif ( isset( $mt_og[ $mt_name ] ) ) {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $mt_name . ' value kept = ' . $mt_og[ $mt_name ] );
-					}
-
-				} else {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $mt_name . ' = null' );
-					}
-
-					$mt_og[ $mt_name ] = null;	// Use null so isset() returns false.
-				}
-			}
 		}
 
 		/**

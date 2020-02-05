@@ -63,8 +63,8 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 			$list_exp_secs      = $this->p->util->get_cache_exp_secs( $this->p->lca . '_l_' );	// Default is month in seconds.
 			$schema_exp_secs    = $this->p->util->get_cache_exp_secs( $this->p->lca . '_t_' );	// Default is month in seconds.
 			$og_types           = $this->p->og->get_og_types_select();
-			$article_topics     = $this->p->util->get_article_topics();
-			$product_categories = $this->p->util->get_product_categories();
+			$article_sections   = $this->p->util->get_article_sections();
+			$product_categories = $this->p->util->get_google_product_categories();
 			$schema_types       = $this->p->schema->get_schema_types_select();
 			$currencies         = SucomUtil::get_currency_abbrev();
 
@@ -182,13 +182,13 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'header'   => 'h5',
 					'label'    => _x( 'Article Information', 'metabox title', 'wpsso' )
 				),
-				'og_article_topic' => array(
+				'og_article_section' => array(
 					'tr_class' => 'hide_og_type hide_og_type_article',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'Article Topic', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-article_topic',
-					'content'  => $form->get_no_select( 'article_topic', $article_topics, $css_class = '', $css_id = '', $is_assoc = true ),
+					'label'    => _x( 'Article Section', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-article_section',
+					'content'  => $form->get_no_select( 'article_section', $article_sections, $css_class = '', $css_id = '', $is_assoc = true ),
 				),
 
 				/**

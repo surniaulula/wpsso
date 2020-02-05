@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.19.0-dev.4',	// Plugin version.
-					'opt_version' => '701',		// Increment when changing default option values.
+					'version'     => '6.19.0-b.1',	// Plugin version.
+					'opt_version' => '702',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -1158,11 +1158,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_type_for_wpsc-product' => 'product',		// For WP eCommerce.
 
 					'og_author_field'            => 'facebook',		// Author Profile URL Field.
-					'og_def_article_topic'       => 'none',			// Default Article Topic
+					'og_def_article_section'     => 'none',			// Default Article Section.
 					'og_def_img_id'              => '',			// Default / Fallback Image ID.
 					'og_def_img_id_pre'          => 'wp',
 					'og_def_img_url'             => '',			// or Default / Fallback Image URL.
-					'og_def_product_category'    => 'none',			// Default Product Category
+					'og_def_product_category'    => 'none',			// Default Product Category.
 					'og_img_width'               => 1200,
 					'og_img_height'              => 630,
 					'og_img_crop'                => 1,
@@ -2367,6 +2367,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'place'                => 'place',	// Check for Schema place before Schema organization.
 					'organization'         => 'website',	// Check for Schema place before Schema organization.
 					'product'              => 'product',
+					'review'               => 'article',
 					'software.application' => 'product',
 				),
 
@@ -2396,15 +2397,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'product'             => 'http://ogp.me/ns/product#',	// Supported by facebook and pinterest.
 					'website'             => 'http://ogp.me/ns/website#',
 				),
-				'og_type_mt' => array(					// See https://developers.facebook.com/docs/reference/opengraph/.
-					'article' => array(				// See https://developers.facebook.com/docs/reference/opengraph/object-type/article/.
-						'article:author'          => '',	// An array of Facebook profile URLs or IDs of the authors for this article.
-						'article:publisher'       => '',	// A Facebook page URL or ID of the publishing entity.
+				'og_type_mt' => array(						// See https://developers.facebook.com/docs/reference/opengraph/.
+					'article' => array(					// See https://developers.facebook.com/docs/reference/opengraph/object-type/article/.
+						'article:author'          => '',		// An array of Facebook profile URLs or IDs of the authors for this article.
+						'article:publisher'       => '',		// A Facebook page URL or ID of the publishing entity.
 						'article:published_time'  => '',
 						'article:modified_time'   => '',
 						'article:expiration_time' => '',
-						'article:section'         => '',
-						'article:tag'             => '',	// An array of keywords relevant to the article.
+						'article:section'         => 'article_section',
+						'article:tag'             => '',		// An array of keywords relevant to the article.
 					),
 					'book' => array(
 						'book:author'       => '',
@@ -3601,7 +3602,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				( defined( 'NONCE_KEY' ) ? NONCE_KEY : '' ) );
 
 			if ( defined( 'WPSSO_PLUGINDIR' ) ) {
-				$var_const[ 'WPSSO_ARTICLE_TOPICS_LIST' ]     = WPSSO_PLUGINDIR . 'share/article-topics.txt';
+				$var_const[ 'WPSSO_ARTICLE_SECTIONS_LIST' ]   = WPSSO_PLUGINDIR . 'share/article-sections.txt';
 				$var_const[ 'WPSSO_PRODUCT_CATEGORIES_LIST' ] = WPSSO_PLUGINDIR . 'share/product-categories.txt';
 			}
 

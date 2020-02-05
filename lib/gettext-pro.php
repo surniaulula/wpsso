@@ -99,7 +99,7 @@ _x( 'Search Description', 'option label', 'wpsso' );
 _x( 'Sharing URL', 'option label', 'wpsso' );
 _x( 'Canonical URL', 'option label', 'wpsso' );
 _x( 'Article Information', 'metabox title', 'wpsso' );
-_x( 'Article Topic', 'option label', 'wpsso' );
+_x( 'Article Section', 'option label', 'wpsso' );
 _x( 'Basic Product Information', 'metabox title', 'wpsso' );
 _x( 'Product Category', 'option label', 'wpsso' );
 _x( 'Product Brand', 'option label', 'wpsso' );

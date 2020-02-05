@@ -2936,9 +2936,40 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
+		public static function check_category_prop_value( &$json_data ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->mark();
+			}
+
+			if ( ! empty( $json_data[ 'category' ] ) ) {
+
+				/**
+				 * Numeric category IDs are expected to be Google product type IDs.
+				 *
+				 * See https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt.
+				 */
+				if ( is_numeric( $json_data[ 'category' ] ) ) {
+
+					$categories = $wpsso->util->get_google_product_categories();
+
+					if ( isset( $categories[ $json_data[ 'category' ] ] ) ) {
+						$json_data[ 'category' ] = $categories[ $json_data[ 'category' ] ];
+					} else {
+						unset( $json_data[ 'category' ] );
+					}
+				}
+			}
+		}
+
 		/**
-		 * If we have a GTIN number, try to improve the assigned property name. Pass $json_data by reference to modify the
-		 * array directly. A similar method exists as WpssoOpenGraph::check_gtin_mt_value().
+		 * If we have a GTIN number, try to improve the assigned property name.
+		 * 
+		 * Pass $json_data by reference to modify the array directly.
+		 *
+		 * A similar method exists as WpssoOpenGraph::check_gtin_mt_value().
 		 */
 		public static function check_gtin_prop_value( &$json_data ) {
 

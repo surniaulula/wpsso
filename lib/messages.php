@@ -201,14 +201,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-article_topic':	// Article Topic.
+						case 'tooltip-meta-article_section':	// Article Section.
 
 							$general_page_link = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site',
-								_x( 'Default Article Topic', 'option label', 'wpsso' ) );
+								_x( 'Default Article Section', 'option label', 'wpsso' ) );
 
-							$text = __( 'A customized topic for this article, which may be different than the %s value.', 'wpsso' ) . ' ';
+							$text = sprintf( __( 'A customized section for this article, which may be different than the %s option value.',
+								'wpsso' ), $general_page_link ) . ' ';
 
-							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag.', 'wpsso' ), '<code>article:section</code>' );
+							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag.', 'wpsso' ),
+								'<code>article:section</code>' );
 
 						 	break;
 
@@ -217,9 +219,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$general_page_link = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site',
 								_x( 'Default Product Category', 'option label', 'wpsso' ) );
 
-							$text = __( 'A customized category for this product, which may be different than the %s value.', 'wpsso' ) . ' ';
+							$text = sprintf( __( 'A customized category for this product, which may be different than the %s option value.',
+								'wpsso' ), $general_page_link ) . ' ';
 
-							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag.', 'wpsso' ), '<code>product:category</code>' );
+							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag.',
+								'wpsso' ), '<code>product:category</code>' );
 
 						 	break;
 
@@ -413,23 +417,23 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/**
 						 * Site Information tab.
 						 */
-						case 'tooltip-og_def_article_topic':	// Default Article Topic.
+						case 'tooltip-og_def_article_section':	// Default Article Section.
 
-							$text = __( 'The topic that best describes the content of the articles on your site.', 'wpsso' ) . ' ';
+							$text = __( 'The section that describes the content of the articles on your site.', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( 'Your selection will be used by default for the Facebook %s meta tag value.', 'wpsso' ), '<code>article:section</code>' ) . ' ';
 
-							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag.', 'wpsso' ), '<code>article:section</code>' );
+							$text .= sprintf( __( 'Select "[None]" to exclude the %s meta tag or select a custom section when editing an article.', 'wpsso' ), '<code>article:section</code>' );
 
 							break;
 
 						case 'tooltip-og_def_product_category':	// Default Product Category.
 
-							$text = __( 'The category that best describes the products on your site.', 'wpsso' ) . ' ';
+							$text = __( 'The category that describes the products on your site.', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( 'Your selection will be used by default for the Facebook %s meta tag value.', 'wpsso' ), '<code>product:category</code>' ) . ' ';
 
-							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag.', 'wpsso' ), '<code>product:category</code>' );
+							$text .= sprintf( __( 'Select "[None]" to exclude the %s meta tag or select a custom section when editing a product.', 'wpsso' ), '<code>product:category</code>' );
 
 							break;
 
@@ -1004,7 +1008,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
 								_x( 'disabled', 'option comment', 'wpsso' );
 
-							$text = __( 'The filtered text list arrays (for example, article topics and product categories) are saved to the WordPress transient cache to optimize performance and disk access.', 'wpsso' ) . ' ';
+							$text = __( 'The filtered text list arrays (for example, article sections and product categories) are saved to the WordPress transient cache to optimize performance and disk access.', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
 

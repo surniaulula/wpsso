@@ -41,7 +41,7 @@
 
 'wpsso_article_section' ( $section, $mod )
 
-'wpsso_article_topics' ( array $topics )
+'wpsso_article_sections' ( array $topics )
 
 'wpsso_attached_accept_img_dims' ( $bool, $img_url, $img_width, $img_height, $size_name, $pid )
 
@@ -106,6 +106,10 @@
 'wpsso_get_term_options' ( $options, $term_id, $mod )
 
 'wpsso_get_user_options' ( $options, $user_id, $mod )
+
+'wpsso_google_product_categories' ( array $categories )
+
+'wpsso_google_product_category' ( $category_id, $mod )
 
 'wpsso_hashtags' ( $hashtags, $post_id )
 
@@ -210,8 +214,6 @@
 'wpsso_post_url' ( $url, $mod, $add_page, $src_id )
 
 'wpsso_product_attribute_names' ( array $attr_names )
-
-'wpsso_product_categories' ( array $categories )
 
 'wpsso_quote' ( $quote, $mod )
 

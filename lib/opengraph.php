@@ -465,7 +465,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 * meta tags.
 			 */
 			$mt_og    = apply_filters( $this->p->lca . '_og_seed', array(), $mod );
-			$post_id  = $mod[ 'is_post' ] ? $mod[ 'id' ] : false;
 			$max_nums = $this->p->util->get_max_nums( $mod );
 			$has_pp   = $this->p->check->pp();
 
@@ -484,7 +483,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 * Facebook admins meta tag.
 			 */
 			if ( ! isset( $mt_og[ 'fb:admins' ] ) ) {
+
 				if ( ! empty( $this->p->options[ 'fb_admins' ] ) ) {
+
 					foreach ( explode( ',', $this->p->options[ 'fb_admins' ] ) as $fb_admin ) {
 						$mt_og[ 'fb:admins' ][] = trim( $fb_admin );
 					}
@@ -583,8 +584,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 * Updated date / time meta tag.
 			 */
 			if ( ! isset( $mt_og[ 'og:updated_time' ] ) ) {
-				if ( $mod[ 'is_post' ] && $post_id ) {
-					$mt_og[ 'og:updated_time' ] = trim( get_post_modified_time( 'c', true, $post_id ) );	// $gmt is true.
+				if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {
+					$mt_og[ 'og:updated_time' ] = trim( get_post_modified_time( 'c', true, $mod[ 'id' ] ) );	// $gmt is true.
 				}
 			}
 
@@ -673,8 +674,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				/**
 				 * Add post/term/user meta data to the Open Graph meta tags.
 				 */
-				$this->p->util->add_og_type_mt_md( $type_id, $mt_og, $md_opts );
+				$this->add_og_type_mt_md( $type_id, $mt_og, $md_opts );
 
+				/**
+				 * If we have a GTIN number, try to improve the assigned property name.
+				 */
 				self::check_gtin_mt_value( $mt_og );
 
 				/**
@@ -696,6 +700,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							}
 						}
 				
+						/**
+						 * If we have a GTIN number, try to improve the assigned property name.
+						 */
 						self::check_gtin_mt_value( $offer );
 					}
 				
@@ -724,44 +731,41 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 * by other filters, and if the og:type is not an article, the meta tags will be sanitized at the end of
 			 * WpssoHead::get_head_array().
 			 */
-			if ( $mod[ 'is_post' ] && $post_id ) {
+			if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {
 
 				if ( ! isset( $mt_og[ 'article:author' ] ) ) {
 
-					if ( $mod[ 'is_post' ] ) {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'getting names / urls for article:author meta tags' );
+					}
 
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'getting names / urls for article:author meta tags' );
-						}
-
-						if ( $mod[ 'post_author' ] ) {
-
-							/**
-							 * Non-standard / internal meta tag used for display purposes.
-							 */
-							$mt_og[ 'article:author:name' ] = $this->p->user->get_author_meta( $mod[ 'post_author' ],
-								$this->p->options[ 'seo_author_name' ] );
-
-							/**
-							 * An array of author URLs.
-							 */
-							$mt_og[ 'article:author' ] = $this->p->user->get_authors_websites( $mod[ 'post_author' ],
-								$this->p->options[ 'og_author_field' ] );
-
-						} else {
-							$mt_og[ 'article:author' ] = array();
-						}
+					if ( $mod[ 'post_author' ] ) {
 
 						/**
-						 * Add co-author URLs if available.
+						 * Non-standard / internal meta tag used for display purposes.
 						 */
-						if ( ! empty( $mod[ 'post_coauthors' ] ) ) {
+						$mt_og[ 'article:author:name' ] = $this->p->user->get_author_meta( $mod[ 'post_author' ],
+							$this->p->options[ 'seo_author_name' ] );
 
-							$og_profile_urls = $this->p->user->get_authors_websites( $mod[ 'post_coauthors' ],
-								$this->p->options[ 'og_author_field' ] );
+						/**
+						 * An array of author URLs.
+						 */
+						$mt_og[ 'article:author' ] = $this->p->user->get_authors_websites( $mod[ 'post_author' ],
+							$this->p->options[ 'og_author_field' ] );
 
-							$mt_og[ 'article:author' ] = array_merge( $mt_og[ 'article:author' ], $og_profile_urls );
-						}
+					} else {
+						$mt_og[ 'article:author' ] = array();
+					}
+
+					/**
+					 * Add co-author URLs if available.
+					 */
+					if ( ! empty( $mod[ 'post_coauthors' ] ) ) {
+
+						$og_profile_urls = $this->p->user->get_authors_websites( $mod[ 'post_coauthors' ],
+							$this->p->options[ 'og_author_field' ] );
+
+						$mt_og[ 'article:author' ] = array_merge( $mt_og[ 'article:author' ], $og_profile_urls );
 					}
 				}
 
@@ -773,18 +777,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$mt_og[ 'article:tag' ] = $this->p->page->get_tag_names( $mod );
 				}
 
-				if ( ! isset( $mt_og[ 'article:section' ] ) ) {
-					$mt_og[ 'article:section' ] = $this->p->page->get_article_section( $mod );
-				}
-
 				if ( ! isset( $mt_og[ 'article:published_time' ] ) ) {
 					if ( $mod[ 'post_status' ] === 'publish' ) {	// Must be published to have publish time.
-						$mt_og[ 'article:published_time' ] = trim( get_post_time( 'c', $gmt = true, $post_id ) );
+						$mt_og[ 'article:published_time' ] = trim( get_post_time( 'c', $gmt = true, $mod[ 'id' ] ) );
 					}
 				}
 
 				if ( ! isset( $mt_og[ 'article:modified_time' ] ) ) {
-					$mt_og[ 'article:modified_time' ] = trim( get_post_modified_time( 'c', $gmt = true, $post_id ) );
+					$mt_og[ 'article:modified_time' ] = trim( get_post_modified_time( 'c', $gmt = true, $mod[ 'id' ] ) );
 				}
 
 				/**
@@ -1657,6 +1657,184 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		}
 
 		/**
+		 * Add post/term/user meta data to the Open Graph meta tags.
+		 */
+		public function add_og_type_mt_md( $type_id, array &$mt_og, array $md_opts ) {	// Pass by reference is OK.
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			if ( empty( $this->p->cf[ 'head' ][ 'og_type_mt' ][ $type_id ] ) ) {	// Just in case.
+				return;
+			}
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'loading og_type_mt array for type id ' . $type_id );
+			}
+
+			/**
+			 * Example $og_type_mt_md array:
+			 *
+			 *	'product' => array(
+			 *		'product:age_group'               => '',
+			 *		'product:availability'            => 'product_avail',
+			 *		'product:brand'                   => 'product_brand',
+			 *		'product:category'                => 'product_category',
+			 *		'product:color'                   => 'product_color',
+			 *		'product:condition'               => 'product_condition',
+			 *		'product:depth:value'             => 'product_depth_value',
+			 *		'product:depth:units'             => '',
+			 *		'product:ean'                     => 'product_gtin13',
+			 *		'product:expiration_time'         => '',
+			 *		'product:gtin14'                  => 'product_gtin14',
+			 *		'product:gtin13'                  => 'product_gtin13',
+			 *		'product:gtin12'                  => 'product_gtin12',
+			 *		'product:gtin8'                   => 'product_gtin8',
+			 *		'product:gtin'                    => 'product_gtin',
+			 *		'product:height:value'            => 'product_height_value',
+			 *		'product:height:units'            => '',
+			 *		'product:is_product_shareable'    => '',
+			 *		'product:isbn'                    => 'product_isbn',
+			 *		'product:length:value'            => 'product_length_value',
+			 *		'product:length:units'            => '',
+			 *		'product:material'                => 'product_material',
+			 *		'product:mfr_part_no'             => 'product_mfr_part_no',
+			 *		'product:original_price:amount'   => '',
+			 *		'product:original_price:currency' => '',
+			 *		'product:pattern'                 => '',
+			 *		'product:plural_title'            => '',
+			 *		'product:pretax_price:amount'     => '',
+			 *		'product:pretax_price:currency'   => '',
+			 *		'product:price:amount'            => 'product_price',
+			 *		'product:price:currency'          => 'product_currency',
+			 *		'product:product_link'            => '',
+			 *		'product:purchase_limit'          => '',
+			 *		'product:retailer'                => '',
+			 *		'product:retailer_category'       => '',
+			 *		'product:retailer_item_id'        => '',
+			 *		'product:retailer_part_no'        => 'product_retailer_part_no',
+			 *		'product:retailer_title'          => '',
+			 *		'product:sale_price:amount'       => '',
+			 *		'product:sale_price:currency'     => '',
+			 *		'product:sale_price_dates:start'  => '',
+			 *		'product:sale_price_dates:end'    => '',
+			 *		'product:shipping_cost:amount'    => '',
+			 *		'product:shipping_cost:currency'  => '',
+			 *		'product:shipping_weight:value'   => '',
+			 *		'product:shipping_weight:units'   => '',
+			 *		'product:size'                    => 'product_size',
+			 *		'product:target_gender'           => 'product_target_gender',
+			 *		'product:upc'                     => 'product_gtin12',
+			 *		'product:volume:value'            => 'product_volume_value',
+			 *		'product:volume:units'            => '',
+			 *		'product:weight:value'            => 'product_weight_value',
+			 *		'product:weight:units'            => '',
+			 *		'product:width:value'             => 'product_width_value',
+			 *		'product:width:units'             => '',
+			 *	)
+			 */
+			$og_type_mt_md = $this->p->cf[ 'head' ][ 'og_type_mt' ][ $type_id ];
+
+			foreach ( $og_type_mt_md as $mt_name => $md_key ) {
+
+				/**
+				 * Use a custom value if one is available - ignore empty strings and 'none'.
+				 */
+				if ( ! empty( $md_key ) && isset( $md_opts[ $md_key ] ) && $md_opts[ $md_key ] !== '' ) {
+
+					if ( $md_opts[ $md_key ] === 'none' ) {
+
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'unsetting ' . $mt_name . ': ' . $md_key . ' metadata is "none"' );
+						}
+
+						unset( $mt_og[ $mt_name ] );
+
+					/**
+					 * Check for meta data and meta tags that require a unit value.
+					 *
+					 * Example: 
+					 *
+					 *	'product:depth:value'  => 'product_depth_value',
+					 *	'product:height:value' => 'product_height_value',
+					 *	'product:length:value' => 'product_length_value',
+					 *	'product:volume:value' => 'product_volume_value',
+					 *	'product:weight:value' => 'product_weight_value',
+					 *	'product:width:value'  => 'product_width_value',
+					 */
+					} elseif ( preg_match( '/^.*_([^_]+)_value$/', $md_key, $unit_match ) &&
+						preg_match( '/^(.*):value$/', $mt_name, $mt_match ) ) {
+
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( $mt_name . ' from metadata = ' . $md_opts[ $md_key ] );
+						}
+
+						$mt_og[ $mt_name ] = $md_opts[ $md_key ];
+
+						$mt_units = $mt_match[ 1 ] . ':units';
+
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'checking for ' . $mt_units . ' unit text' );
+						}
+
+						if ( isset( $og_type_mt_md[ $mt_units ] ) ) {
+
+							if ( $unit_text = WpssoSchema::get_data_unit_text( $unit_match[ 1 ] ) ) {
+						
+								if ( $this->p->debug->enabled ) {
+									$this->p->debug->log( $mt_units . ' from unit text = ' . $unit_text );
+								}
+
+								$mt_og[ $mt_units ] = $unit_text;
+							}
+						}
+
+					/**
+					 * Do not define units by themselves - define units when we define the value.
+					 */
+					} elseif ( preg_match( '/_units$/', $md_key ) ) {
+
+						continue;	// Get the next meta data key.
+
+					} else {
+
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( $mt_name . ' from metadata = ' . $md_opts[ $md_key ] );
+						}
+
+						$mt_og[ $mt_name ] = $md_opts[ $md_key ];
+					}
+
+				} elseif ( isset( $mt_og[ $mt_name ] ) ) {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( $mt_name . ' value kept = ' . $mt_og[ $mt_name ] );
+					}
+
+				} elseif ( isset( $this->p->options[ 'og_def_' . $md_key ] ) ) {
+
+					if ( $this->p->options[ 'og_def_' . $md_key ] !== 'none' ) {
+
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( $mt_name . ' from options default = ' . $this->p->options[ 'og_def_' . $md_key ] );
+						}
+
+						$mt_og[ $mt_name ] = $this->p->options[ 'og_def_' . $md_key ];
+					}
+
+				} else {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( $mt_name . ' = null' );
+					}
+
+					$mt_og[ $mt_name ] = null;	// Use null so isset() returns false.
+				}
+			}
+		}
+
+		/**
 		 * If we have a GTIN number, try to improve the assigned property name. Pass $mt_og by reference to modify the
 		 * array directly. A similar method exists as WpssoSchema::check_gtin_prop_value().
 		 */
@@ -1703,7 +1881,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 */
 			if ( empty( $md_opts[ 'og_type:is' ] ) ) {
 
-				if ( false && $og_type = $this->p->post->get_post_type_og_type( $mod ) ) {
+				if ( $og_type = $this->p->post->get_post_type_og_type( $mod ) ) {
 
 					$md_opts[ 'og_type' ]    = $og_type;
 					$md_opts[ 'og_type:is' ] = 'disabled';

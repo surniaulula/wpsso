@@ -1418,39 +1418,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $tags;
 		}
 
-		public function get_article_section( array $mod ) {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
-
-			$section = '';
-
-			if ( ! empty( $mod[ 'id' ] ) && is_object( $mod[ 'obj' ] ) ) {
-
-				$section = (string) $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'article_topic' );
-			}
-
-			if ( ! empty( $section ) ) {
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'found custom meta article section = ' . $section );
-				}
-
-			} else {
-
-				$section = (string) $this->p->options[ 'og_def_article_topic' ];
-			}
-
-			$section = (string) apply_filters( $this->p->lca . '_article_section', $section, $mod );
-
-			if ( empty( $section ) || 'none' === $section ) {
-				$section = '';
-			}
-
-			return $section;
-		}
-
 		/**
 		 * Includes parent names in the term title if the $sep value is not empty.
 		 */
