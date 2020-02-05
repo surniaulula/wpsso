@@ -112,7 +112,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 		* Sharing URL
 		* Canonical URL
 		* Article Information
-			* Article Topic
+			* Article Section
 		* Basic Product Information
 			* Product Brand
 			* Product Price and Currency
@@ -411,7 +411,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 			* [Define a Custom Post Type (CPT) as a Product](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/define-a-custom-post-type-cpt-as-a-product/)
 			* [Detect YouTube URL Links as Videos](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/detect-youtube-url-links-as-videos/)
 			* [Modify the "article:tag" Keywords / Names](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-articletag-keywords-names/)
-			* [Modify the Default Article Topics List](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-default-topics-list/)
+			* [Modify the Default Article Section List](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-default-article-sections-list/)
 			* [Modify the Home Page Title for Facebook / Open Graph](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-home-page-title-for-facebook-open-graph/)
 			* [Modify the Sharing URL](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-sharing-url/)
 			* [Remove / Fix 'hentry' Errors in your Theme Templates](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/remove-hentry-from-theme-templates/)
@@ -464,7 +464,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.19.0-dev.4 (2020/02/04)**
+**Version 6.19.0-b.1 (2020/02/05)**
 
 * **New Features**
 	* Added a new integration module for the WooCommerce Currency Switcher plugin.
@@ -472,16 +472,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new "Product Category" option in the Document SSO metabox.
 	* Added a new "Default Product Category" option in the SSO &gt; General Settings page.
 	* Added a new "Google Product Type ID Field" option in the SSO &gt; Advanced Settings page.
-	* Added javascript file caching to `SucomForm->get_select()` for the Schema type, article topic, and product category arrays.
+	* Added javascript file caching to `SucomForm->get_select()` for the Schema type, article sections, and product category arrays.
 * **Bugfixes**
 	* Fixed the order of select options when using the `SucomForm->get_select()` method 'on_focus_load_json' event argument.
 * **Developer Notes**
-	* Added a new `WpssoUtil->get_product_categories()` method to return [Google product type IDs](https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt).
-	* Refactored the `WpssoUtil->get_article_topics()` method (now returns an associative array).
-	* Refactored the `WpssoPage->get_article_section()` method and updated its arguments from `$post_id, $allow_none, $use_mod_opts` to simply `array $mod`.
-	* Updated the 'wpsso_article_section' filter arguments from `$section, $post_id` to `$section, $mod`.
+	* Added a new `WpssoUtil->get_google_product_categories()` method.
+	* Renamed `WpssoUtil->get_article_topics()` to `WpssoUtil->get_article_sections()`.
+	* Refactored the `WpssoUtil->get_article_sections()` method (now returns an associative array).
 	* Replaced WpssoSchema->get_types_cache_exp() by a new WpssoUtil->get_cache_exp_secs() method.
 	* Updated the Easy Digital Downloads, WooCommerce, and WP eCommerce integration modules to add the currency to the head cache index.
+	* Removed `WpssoPage->get_article_section()`.
+	* Removed 'wpsso_article_section' filter.
 * **Requires At Least**
 	* PHP v5.5.
 	* WordPress v4.0.
@@ -885,9 +886,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.19.0-dev.4 =
+= 6.19.0-b.1 =
 
-(2020/02/04) Added javascript file caching to SucomForm->get_select() for the Schema type, article topic, and product category arrays. Updated the 'wpsso_article_section' filter arguments.
+(2020/02/05) Added javascript file caching to SucomForm->get_select() for the Schema type, article sections, and product category arrays. Updated the 'wpsso_article_section' filter arguments.
 
 = 6.18.0 =
 
