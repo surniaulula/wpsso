@@ -874,17 +874,17 @@ msgstr ""
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: lib/com/form.php:1156 lib/gettext-com.php:24
+#: lib/com/form.php:1157 lib/gettext-com.php:24
 msgctxt "option comment"
 msgid "crop"
 msgstr ""
 
-#: lib/com/form.php:1162 lib/gettext-com.php:25
+#: lib/com/form.php:1163 lib/gettext-com.php:25
 msgctxt "option comment"
 msgid "from"
 msgstr ""
 
-#: lib/com/form.php:1906 lib/gettext-com.php:26 lib/post.php:1386
+#: lib/com/form.php:1907 lib/gettext-com.php:26 lib/post.php:1386
 #: lib/wp-meta.php:604 lib/wp-meta.php:734
 msgid "Save a draft version or publish to update this value."
 msgstr ""

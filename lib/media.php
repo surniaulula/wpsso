@@ -399,7 +399,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$pid = $post_id;
 
-				} elseif ( $this->p->avail[ '*' ][ 'featured' ] == true && has_post_thumbnail( $post_id ) ) {
+				} elseif ( $this->p->avail[ '*' ][ 'featured' ] && has_post_thumbnail( $post_id ) ) {
 					$pid = get_post_thumbnail_id( $post_id );
 				} else {
 					$pid = false;

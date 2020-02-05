@@ -448,7 +448,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					case 'og_img_max':
 					case 'schema_img_max':
 
-						if ( $label === 0 ) {
+						if ( 0 === $label ) {
 							$label_transl .= ' ' . $this->get_value_transl( '(no images)' );
 						}
 
@@ -457,7 +457,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					case 'og_vid_max':
 					case 'schema_vid_max':
 
-						if ( $label === 0 ) {
+						if ( 0 === $label ) {
 							$label_transl .= ' ' . $this->get_value_transl( '(no videos)' );
 						}
 
@@ -465,7 +465,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					default:
 
-						if ( $label === '' || $label === 'none' ) {	// Just in case.
+						if ( '' ===  $label || 'none' === $label || '[None]' === $label ) {	// Just in case.
 							$label_transl = $this->get_value_transl( '[None]' );
 						}
 
@@ -747,7 +747,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				unset( $new_values );
 			}
 
-			$values = array( 'none' => 'none' ) + $values;
+			$values = array( 'none' => '[None]' ) + $values;
 
 			return $this->get_select( $name, $values, $css_class, $css_id, $is_assoc = true,
 				$is_disabled, $selected, $event_names, $event_args );
@@ -876,13 +876,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			if ( false === $selected ) {
 
 				if ( empty( $this->options[ $name ] ) || 
-					( $this->options[ $name ] !== 'none' && strlen( $this->options[ $name ] ) !== 2 ) ) {
+					( 'none' !== $this->options[ $name ] && 
+						2 !== strlen( $this->options[ $name ] ) ) ) {
 
 					$selected = $this->defaults[ $name ];
 				}
 			}
 
-			$values = array( 'none' => 'none' ) + SucomUtil::get_alpha2_countries();
+			$values = array( 'none' => '[None]' ) + SucomUtil::get_alpha2_countries();
 
 			return $this->get_select( $name, $values, $css_class, $css_id, $is_assoc = true, $is_disabled, $selected );
 		}
@@ -1589,7 +1590,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 									 * Save the default value and its text so we can add them (as jquery data) to the select.
 									 */
 									if ( ( $in_defaults && $option_value === (string) $this->defaults[ $opt_key ] ) ||
-										( $select_default !== null && $option_value === $select_default ) ) {
+										( null !== $select_default && $option_value === $select_default ) ) {
 
 										$default_value = $option_value;
 										$default_text  = $this->get_value_transl( '(default)' );

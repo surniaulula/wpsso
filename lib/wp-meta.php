@@ -1719,19 +1719,19 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				$video_url  = $this->get_options( $mod_id, $opt_pre . '_vid_url' );
 
 				/**
-				 * Retrieve one or more videos from the embed HTML code . 
+				 * Retrieve one or more videos from the embed HTML code. 
 				 */
 				if ( ! empty( $embed_html ) ) {
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'fetching video(s) from custom ' . $opt_pre . ' embed code',
-							get_class( $this ) );	// log extended class name
+							get_class( $this ) );	// Log extended class name.
 					}
 
 					$og_ret = array_merge( $og_ret, $this->p->media->get_content_videos( $num, $mod, $check_dupes, $embed_html ) );
 				}
 
-				if ( ! empty( $video_url ) && ( $check_dupes == false || $this->p->util->is_uniq_url( $video_url ) ) ) {
+				if ( ! empty( $video_url ) && ( ! $check_dupes || $this->p->util->is_uniq_url( $video_url ) ) ) {
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'fetching video from custom ' . $opt_pre . ' url ' . $video_url, get_class( $this ) );
@@ -1792,12 +1792,12 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		public function get_og_type_reviews( $mod_id, $og_type = 'product', $rating_meta = 'rating' ) {
 
-			return $this->must_be_extended( __METHOD__, array() );	// return an empty array
+			return $this->must_be_extended( __METHOD__, array() );	// Return an empty array.
 		}
 
 		public function get_og_review_mt( $comment_obj, $og_type = 'product', $rating_meta = 'rating' ) {
 
-			return $this->must_be_extended( __METHOD__, array() );	// return an empty array
+			return $this->must_be_extended( __METHOD__, array() );	// Return an empty array.
 		}
 
 		/**

@@ -2228,7 +2228,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								$qty_reg   = SucomUpdate::get_option( $ext, 'qty_reg' );
 								$qty_total = SucomUpdate::get_option( $ext, 'qty_total' );
 
-								if ( $qty_reg !== null && $qty_total !== null ) {
+								if ( null !== $qty_reg && null !== $qty_total ) {
 									$val = sprintf( __( '%d of %d site addresses registered', 'wpsso' ),
 										$qty_reg, $qty_total );
 								}
