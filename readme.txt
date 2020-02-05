@@ -464,14 +464,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.19.0-b.1 (2020/02/05)**
+**Version 6.19.0-b.2 (2020/02/05)**
 
 * **New Features**
 	* Added a new integration module for the WooCommerce Currency Switcher plugin.
 * **Improvements**
 	* Added a new "Product Category" option in the Document SSO metabox.
 	* Added a new "Default Product Category" option in the SSO &gt; General Settings page.
-	* Added a new "Google Product Type ID Field" option in the SSO &gt; Advanced Settings page.
+	* Added a new "Product Type ID Custom Field" option in the SSO &gt; Advanced Settings page.
 	* Added javascript file caching to `SucomForm->get_select()` for the Schema type, article sections, and product category arrays.
 * **Bugfixes**
 	* Fixed the order of select options when using the `SucomForm->get_select()` method 'on_focus_load_json' event argument.
@@ -886,7 +886,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.19.0-b.1 =
+= 6.19.0-b.2 =
 
 (2020/02/05) Added javascript file caching to SucomForm->get_select() for the Schema type, article sections, and product category arrays. Updated the 'wpsso_article_section' filter arguments.
 
