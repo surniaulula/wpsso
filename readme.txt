@@ -186,6 +186,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 		* [The SEO Framework](https://wordpress.org/plugins/autodescription/)
 		* [WooCommerce](https://wordpress.org/plugins/woocommerce/)
 		* [WooCommerce Brands](https://woocommerce.com/products/brands/)
+		* [WooCommerce Currency Switcher](https://wordpress.org/plugins/woocommerce-currency-switcher/)
 		* [WooCommerce UPC, EAN, and ISBN](https://wordpress.org/plugins/woo-add-gtin/)
 		* WooCommerce Show Single Variations
 		* [WP eCommerce](https://wordpress.org/plugins/wp-e-commerce/)
@@ -481,8 +482,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored the `WpssoUtil->get_article_sections()` method (now returns an associative array).
 	* Replaced WpssoSchema->get_types_cache_exp() by a new WpssoUtil->get_cache_exp_secs() method.
 	* Updated the Easy Digital Downloads, WooCommerce, and WP eCommerce integration modules to add the currency to the head cache index.
-	* Removed `WpssoPage->get_article_section()`.
-	* Removed 'wpsso_article_section' filter.
+	* Moved `WpssoUtil->add_og_type_mt_md()` method to `WpssoOpenGraph->add_og_type_mt_md()`.
+	* Removed the `WpssoPage->get_article_section()` method.
+	* Removed the 'wpsso_article_section' filter.
 * **Requires At Least**
 	* PHP v5.5.
 	* WordPress v4.0.
