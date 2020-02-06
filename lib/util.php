@@ -1808,9 +1808,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$topics = array();
 
-			foreach ( $raw_topics as $num => $name ) {
+			foreach ( $raw_topics as $num => $topic_name ) {
 
-				$topics[ $name ] = $name;
+				/**
+				 * Skip comment lines.
+				 */
+				if ( 0 === strpos( $topic_name, '#' ) ) {
+					continue;
+				}
+
+				$topics[ $topic_name ] = $topic_name;
 
 				unset( $topics[ $num ] );	// Save memory and unset as we go.
 			}
@@ -1893,9 +1900,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$categories = array();
 
-			foreach ( $raw_categories as $num => $cat_id_name ) {
+			foreach ( $raw_categories as $num => $category_id_name ) {
 
-				if ( preg_match( '/^([0-9]+) - (.*)$/', $cat_id_name, $match ) ) {
+				/**
+				 * Skip comment lines.
+				 */
+				if ( 0 === strpos( $category_id_name, '#' ) ) {
+					continue;
+				}
+
+				if ( preg_match( '/^([0-9]+) - (.*)$/', $category_id_name, $match ) ) {
 					$categories[ $match[ 1 ] ] = $match[ 2 ];
 				}
 

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.19.0-b.2\n"
+"Project-Id-Version: WPSSO Core 6.19.0-b.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -614,12 +614,12 @@ msgctxt "option label"
 msgid "Author / Person Name Format"
 msgstr ""
 
-#: lib/admin.php:2728 lib/submenu/general.php:202
+#: lib/admin.php:2728 lib/submenu/general.php:207
 msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr ""
 
-#: lib/admin.php:2732 lib/submenu/general.php:205
+#: lib/admin.php:2732 lib/submenu/general.php:210
 msgctxt "option comment"
 msgid "note that video preview images are enabled (and included first)"
 msgstr ""
@@ -659,7 +659,7 @@ msgctxt "option label"
 msgid "Max. Schema Description Length"
 msgstr ""
 
-#: lib/admin.php:2765 lib/submenu/general.php:269 lib/submenu/general.php:327
+#: lib/admin.php:2765 lib/submenu/general.php:274 lib/submenu/general.php:332
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
@@ -843,43 +843,43 @@ msgstr ""
 msgid "Requests to cache this URL will be ignored for %d second(s)."
 msgstr ""
 
-#: lib/com/cache.php:345 lib/com/cache.php:485 lib/gettext-com.php:16
+#: lib/com/cache.php:346 lib/com/cache.php:492 lib/gettext-com.php:16
 #: lib/gettext-com.php:18
 msgid "Error removing cache file %s."
 msgstr ""
 
-#: lib/com/cache.php:385 lib/gettext-com.php:17
+#: lib/com/cache.php:392 lib/gettext-com.php:17
 msgid ""
 "PHP cURL library is missing &mdash; contact your hosting provider to have "
 "the cURL library installed."
 msgstr ""
 
-#: lib/com/cache.php:716 lib/gettext-com.php:19
+#: lib/com/cache.php:724 lib/gettext-com.php:19
 msgid "Cache file %s is not readable."
 msgstr ""
 
-#: lib/com/cache.php:733 lib/gettext-com.php:20
+#: lib/com/cache.php:741 lib/gettext-com.php:20
 msgid "Failed to open the cache file %s for reading."
 msgstr ""
 
-#: lib/com/cache.php:828 lib/gettext-com.php:21
+#: lib/com/cache.php:837 lib/gettext-com.php:21
 msgid "Failed to create the %s cache folder."
 msgstr ""
 
-#: lib/com/cache.php:839 lib/gettext-com.php:22
+#: lib/com/cache.php:848 lib/gettext-com.php:22
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: lib/com/cache.php:850 lib/gettext-com.php:23
+#: lib/com/cache.php:859 lib/gettext-com.php:23
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: lib/com/form.php:1157 lib/gettext-com.php:24
+#: lib/com/form.php:1159 lib/gettext-com.php:24
 msgctxt "option comment"
 msgid "crop"
 msgstr ""
 
-#: lib/com/form.php:1163 lib/gettext-com.php:25
+#: lib/com/form.php:1165 lib/gettext-com.php:25
 msgctxt "option comment"
 msgid "from"
 msgstr ""
@@ -2453,8 +2453,8 @@ msgstr ""
 
 #: lib/gettext-pro.php:8 lib/gettext-pro.php:22 lib/pro/admin/advanced.php:62
 #: lib/pro/admin/advanced.php:131 lib/std/admin/advanced.php:61
-#: lib/std/admin/advanced.php:132 lib/submenu/general.php:223
-#: lib/submenu/general.php:289 lib/submenu/general.php:294
+#: lib/std/admin/advanced.php:132 lib/submenu/general.php:228
+#: lib/submenu/general.php:294 lib/submenu/general.php:299
 msgctxt "option comment"
 msgid "recommended"
 msgstr ""
@@ -2533,7 +2533,7 @@ msgid "Check for Duplicate Meta Tags"
 msgstr ""
 
 #: lib/gettext-pro.php:21 lib/messages.php:2203 lib/pro/admin/advanced.php:130
-#: lib/std/admin/advanced.php:131 lib/submenu/general.php:221
+#: lib/std/admin/advanced.php:131 lib/submenu/general.php:226
 msgctxt "option label"
 msgid "Enforce Image Size Checks"
 msgstr ""
@@ -2875,7 +2875,7 @@ msgid "Include Video Preview Images"
 msgstr ""
 
 #: lib/gettext-pro.php:89 lib/gettext-pro.php:127 lib/pro/admin/general.php:81
-#: lib/pro/admin/meta-edit.php:408 lib/std/admin/general.php:85
+#: lib/pro/admin/meta-edit.php:413 lib/std/admin/general.php:85
 #: lib/std/admin/meta-edit.php:416
 msgctxt "option comment"
 msgid "note that video preview images are included first"
@@ -2966,178 +2966,178 @@ msgid "Product Category"
 msgstr ""
 
 #: lib/gettext-pro.php:105 lib/messages.php:2549
-#: lib/pro/admin/meta-edit.php:219 lib/std/admin/meta-edit.php:218
+#: lib/pro/admin/meta-edit.php:224 lib/std/admin/meta-edit.php:218
 msgctxt "option label"
 msgid "Product Brand"
 msgstr ""
 
 #: lib/gettext-pro.php:106 lib/messages.php:2617
-#: lib/pro/admin/meta-edit.php:226 lib/std/admin/meta-edit.php:226
+#: lib/pro/admin/meta-edit.php:231 lib/std/admin/meta-edit.php:226
 msgctxt "option label"
 msgid "Product Price"
 msgstr ""
 
 #: lib/gettext-pro.php:107 lib/messages.php:2545
-#: lib/pro/admin/meta-edit.php:236 lib/std/admin/meta-edit.php:235
+#: lib/pro/admin/meta-edit.php:241 lib/std/admin/meta-edit.php:235
 msgctxt "option label"
 msgid "Product Availability"
 msgstr ""
 
 #: lib/gettext-pro.php:108 lib/messages.php:2562
-#: lib/pro/admin/meta-edit.php:244 lib/std/admin/meta-edit.php:244
+#: lib/pro/admin/meta-edit.php:249 lib/std/admin/meta-edit.php:244
 msgctxt "option label"
 msgid "Product Condition"
 msgstr ""
 
 #: lib/gettext-pro.php:109 lib/messages.php:2609
-#: lib/pro/admin/meta-edit.php:252 lib/std/admin/meta-edit.php:253
+#: lib/pro/admin/meta-edit.php:257 lib/std/admin/meta-edit.php:253
 msgctxt "option label"
 msgid "Product Material"
 msgstr ""
 
 #: lib/gettext-pro.php:110 lib/messages.php:2558
-#: lib/pro/admin/meta-edit.php:259 lib/std/admin/meta-edit.php:261
+#: lib/pro/admin/meta-edit.php:264 lib/std/admin/meta-edit.php:261
 msgctxt "option label"
 msgid "Product Color"
 msgstr ""
 
 #: lib/gettext-pro.php:111 lib/messages.php:2629
-#: lib/pro/admin/meta-edit.php:266 lib/std/admin/meta-edit.php:269
+#: lib/pro/admin/meta-edit.php:271 lib/std/admin/meta-edit.php:269
 msgctxt "option label"
 msgid "Product Target Gender"
 msgstr ""
 
 #: lib/gettext-pro.php:112 lib/messages.php:2625
-#: lib/pro/admin/meta-edit.php:274 lib/std/admin/meta-edit.php:278
+#: lib/pro/admin/meta-edit.php:279 lib/std/admin/meta-edit.php:278
 msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
 #: lib/gettext-pro.php:113 lib/messages.php:2638
-#: lib/pro/admin/meta-edit.php:281 lib/std/admin/meta-edit.php:286
+#: lib/pro/admin/meta-edit.php:286 lib/std/admin/meta-edit.php:286
 msgctxt "option label"
 msgid "Product Weight"
 msgstr ""
 
 #: lib/gettext-pro.php:114 lib/messages.php:2621
-#: lib/pro/admin/meta-edit.php:289 lib/std/admin/meta-edit.php:295
+#: lib/pro/admin/meta-edit.php:294 lib/std/admin/meta-edit.php:295
 msgctxt "option label"
 msgid "Product SKU"
 msgstr ""
 
 #: lib/gettext-pro.php:115 lib/messages.php:2613
-#: lib/pro/admin/meta-edit.php:296 lib/std/admin/meta-edit.php:303
+#: lib/pro/admin/meta-edit.php:301 lib/std/admin/meta-edit.php:303
 msgctxt "option label"
 msgid "Product MPN"
 msgstr ""
 
 #: lib/gettext-pro.php:116 lib/messages.php:2600
-#: lib/pro/admin/meta-edit.php:303 lib/std/admin/meta-edit.php:311
+#: lib/pro/admin/meta-edit.php:308 lib/std/admin/meta-edit.php:311
 msgctxt "option label"
 msgid "Product ISBN"
 msgstr ""
 
-#: lib/gettext-pro.php:117 lib/pro/admin/meta-edit.php:315
+#: lib/gettext-pro.php:117 lib/pro/admin/meta-edit.php:320
 #: lib/std/admin/meta-edit.php:322
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup"
 msgstr ""
 
-#: lib/gettext-pro.php:118 lib/pro/admin/meta-edit.php:319
+#: lib/gettext-pro.php:118 lib/pro/admin/meta-edit.php:324
 #: lib/std/admin/meta-edit.php:326
 msgctxt "option label"
 msgid "Schema Type"
 msgstr ""
 
-#: lib/gettext-pro.php:119 lib/pro/admin/meta-edit.php:345
+#: lib/gettext-pro.php:119 lib/pro/admin/meta-edit.php:350
 #: lib/std/admin/meta-edit.php:352
 msgid "Save a draft version or publish the %s to display these options."
 msgstr ""
 
-#: lib/gettext-pro.php:120 lib/pro/admin/meta-edit.php:372
+#: lib/gettext-pro.php:120 lib/pro/admin/meta-edit.php:377
 #: lib/std/admin/meta-edit.php:375
 msgctxt "metabox title"
 msgid "Facebook / Open Graph / Default Media"
 msgstr ""
 
-#: lib/gettext-pro.php:121 lib/pro/admin/meta-edit.php:377
+#: lib/gettext-pro.php:121 lib/pro/admin/meta-edit.php:382
 #: lib/std/admin/meta-edit.php:380
 msgctxt "metabox title"
 msgid "Priority Image Information"
 msgstr ""
 
 #: lib/gettext-pro.php:122 lib/gettext-pro.php:137
-#: lib/pro/admin/meta-edit.php:382 lib/pro/admin/meta-edit.php:522
+#: lib/pro/admin/meta-edit.php:387 lib/pro/admin/meta-edit.php:527
 #: lib/std/admin/meta-edit.php:386 lib/std/admin/meta-edit.php:528
 msgctxt "option label"
 msgid "Maximum Images"
 msgstr ""
 
 #: lib/gettext-pro.php:123 lib/gettext-pro.php:134 lib/gettext-pro.php:138
-#: lib/pro/admin/meta-edit.php:388 lib/pro/admin/meta-edit.php:486
-#: lib/pro/admin/meta-edit.php:531 lib/std/admin/meta-edit.php:394
+#: lib/pro/admin/meta-edit.php:393 lib/pro/admin/meta-edit.php:491
+#: lib/pro/admin/meta-edit.php:536 lib/std/admin/meta-edit.php:394
 #: lib/std/admin/meta-edit.php:494 lib/std/admin/meta-edit.php:539
 msgctxt "option label"
 msgid "Image ID"
 msgstr ""
 
 #: lib/gettext-pro.php:124 lib/gettext-pro.php:135 lib/gettext-pro.php:139
-#: lib/pro/admin/meta-edit.php:394 lib/pro/admin/meta-edit.php:494
-#: lib/pro/admin/meta-edit.php:539 lib/std/admin/meta-edit.php:401
+#: lib/pro/admin/meta-edit.php:399 lib/pro/admin/meta-edit.php:499
+#: lib/pro/admin/meta-edit.php:544 lib/std/admin/meta-edit.php:401
 #: lib/std/admin/meta-edit.php:503 lib/std/admin/meta-edit.php:548
 msgctxt "option label"
 msgid "or an Image URL"
 msgstr ""
 
-#: lib/gettext-pro.php:125 lib/pro/admin/meta-edit.php:401
+#: lib/gettext-pro.php:125 lib/pro/admin/meta-edit.php:406
 #: lib/std/admin/meta-edit.php:408
 msgctxt "metabox title"
 msgid "Priority Video Information"
 msgstr ""
 
-#: lib/gettext-pro.php:126 lib/pro/admin/meta-edit.php:405
+#: lib/gettext-pro.php:126 lib/pro/admin/meta-edit.php:410
 #: lib/std/admin/meta-edit.php:413
 msgctxt "option label"
 msgid "Include Preview Images"
 msgstr ""
 
-#: lib/gettext-pro.php:128 lib/pro/admin/meta-edit.php:414
+#: lib/gettext-pro.php:128 lib/pro/admin/meta-edit.php:419
 #: lib/std/admin/meta-edit.php:423
 msgctxt "option label"
 msgid "Maximum Videos"
 msgstr ""
 
-#: lib/gettext-pro.php:129 lib/pro/admin/meta-edit.php:421
+#: lib/gettext-pro.php:129 lib/pro/admin/meta-edit.php:426
 #: lib/std/admin/meta-edit.php:432
 msgctxt "option label"
 msgid "Video Size"
 msgstr ""
 
 #: lib/gettext-pro.php:130 lib/messages.php:2660
-#: lib/pro/admin/meta-edit.php:427 lib/std/admin/meta-edit.php:439
+#: lib/pro/admin/meta-edit.php:432 lib/std/admin/meta-edit.php:439
 msgctxt "option label"
 msgid "Video Embed HTML"
 msgstr ""
 
-#: lib/gettext-pro.php:131 lib/pro/admin/meta-edit.php:433
+#: lib/gettext-pro.php:131 lib/pro/admin/meta-edit.php:438
 #: lib/std/admin/meta-edit.php:446
 msgctxt "option label"
 msgid "or a Video URL"
 msgstr ""
 
-#: lib/gettext-pro.php:132 lib/pro/admin/meta-edit.php:440
+#: lib/gettext-pro.php:132 lib/pro/admin/meta-edit.php:445
 #: lib/std/admin/meta-edit.php:454
 msgctxt "option label"
 msgid "Video Name / Title"
 msgstr ""
 
-#: lib/gettext-pro.php:133 lib/pro/admin/meta-edit.php:449
+#: lib/gettext-pro.php:133 lib/pro/admin/meta-edit.php:454
 #: lib/std/admin/meta-edit.php:462
 msgctxt "option label"
 msgid "Video Description"
 msgstr ""
 
-#: lib/gettext-pro.php:136 lib/pro/admin/meta-edit.php:515
+#: lib/gettext-pro.php:136 lib/pro/admin/meta-edit.php:520
 #: lib/std/admin/meta-edit.php:520
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup / Pinterest"
@@ -3436,7 +3436,7 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
 #: lib/loader.php:184 lib/loader.php:210 lib/post.php:490 lib/register.php:315
-#: lib/term.php:434 lib/user.php:381 lib/util.php:514 lib/util.php:3482
+#: lib/term.php:434 lib/user.php:381 lib/util.php:514 lib/util.php:3496
 msgid "%s warning:"
 msgstr ""
 
@@ -4873,7 +4873,7 @@ msgid ""
 "the Pin It browser button from suggesting those images."
 msgstr ""
 
-#: lib/messages.php:1486 lib/messages.php:2720 lib/submenu/general.php:297
+#: lib/messages.php:1486 lib/messages.php:2720 lib/submenu/general.php:302
 msgctxt "option label"
 msgid "Add Hidden Image for Pin It Button"
 msgstr ""
@@ -6131,7 +6131,7 @@ msgstr ""
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
 #: lib/post.php:476 lib/term.php:420 lib/user.php:367 lib/util.php:500
-#: lib/util.php:3454
+#: lib/util.php:3468
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -6185,7 +6185,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:1027 lib/util.php:1983
+#: lib/post.php:1027 lib/util.php:1997
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -6601,32 +6601,32 @@ msgctxt "option label"
 msgid "WebSite Description"
 msgstr ""
 
-#: lib/submenu/essential.php:131 lib/submenu/general.php:234
+#: lib/submenu/essential.php:131 lib/submenu/general.php:239
 msgctxt "option label"
 msgid "Facebook Business Page URL"
 msgstr ""
 
-#: lib/submenu/essential.php:136 lib/submenu/general.php:239
+#: lib/submenu/essential.php:136 lib/submenu/general.php:244
 msgctxt "option label"
 msgid "Facebook Application ID"
 msgstr ""
 
-#: lib/submenu/essential.php:140 lib/submenu/general.php:213
+#: lib/submenu/essential.php:140 lib/submenu/general.php:218
 msgctxt "option label"
 msgid "Default / Fallback Image ID"
 msgstr ""
 
-#: lib/submenu/essential.php:144 lib/submenu/general.php:217
+#: lib/submenu/essential.php:144 lib/submenu/general.php:222
 msgctxt "option label"
 msgid "or Default / Fallback Image URL"
 msgstr ""
 
-#: lib/submenu/essential.php:171 lib/submenu/general.php:282
+#: lib/submenu/essential.php:171 lib/submenu/general.php:287
 msgctxt "option label"
 msgid "Pinterest Company Page URL"
 msgstr ""
 
-#: lib/submenu/essential.php:180 lib/submenu/general.php:320
+#: lib/submenu/essential.php:180 lib/submenu/general.php:325
 msgctxt "option label"
 msgid "Twitter Business @username"
 msgstr ""
@@ -6666,124 +6666,124 @@ msgctxt "metabox tab"
 msgid "Other Sites"
 msgstr ""
 
-#: lib/submenu/general.php:163
+#: lib/submenu/general.php:168
 msgctxt "option label"
 msgid "Title Separator"
 msgstr ""
 
-#: lib/submenu/general.php:167
+#: lib/submenu/general.php:172
 msgctxt "option label"
 msgid "Maximum Title Length"
 msgstr ""
 
-#: lib/submenu/general.php:170 lib/submenu/general.php:179
-#: lib/submenu/general.php:305
+#: lib/submenu/general.php:175 lib/submenu/general.php:184
+#: lib/submenu/general.php:310
 msgctxt "option comment"
 msgid "characters or less (hard limit), and warn at"
 msgstr ""
 
-#: lib/submenu/general.php:172 lib/submenu/general.php:181
-#: lib/submenu/general.php:307
+#: lib/submenu/general.php:177 lib/submenu/general.php:186
+#: lib/submenu/general.php:312
 msgctxt "option comment"
 msgid "characters (soft limit)"
 msgstr ""
 
-#: lib/submenu/general.php:176 lib/submenu/general.php:325
+#: lib/submenu/general.php:181 lib/submenu/general.php:330
 msgctxt "option label"
 msgid "Maximum Description Length"
 msgstr ""
 
-#: lib/submenu/general.php:185
+#: lib/submenu/general.php:190
 msgctxt "option label"
 msgid "Add Hashtags to Descriptions"
 msgstr ""
 
-#: lib/submenu/general.php:187
+#: lib/submenu/general.php:192
 msgctxt "option comment"
 msgid "tag names"
 msgstr ""
 
-#: lib/submenu/general.php:194
+#: lib/submenu/general.php:199
 msgctxt "option label"
 msgid "Author Profile URL Field"
 msgstr ""
 
-#: lib/submenu/general.php:209
+#: lib/submenu/general.php:214
 msgctxt "option label"
 msgid "Open Graph Image Size"
 msgstr ""
 
-#: lib/submenu/general.php:243
+#: lib/submenu/general.php:248
 msgctxt "option label"
 msgid "or Facebook Admin Username(s)"
 msgstr ""
 
-#: lib/submenu/general.php:250
+#: lib/submenu/general.php:255
 msgctxt "option label"
 msgid "Alternate Facebook Locale"
 msgstr ""
 
-#: lib/submenu/general.php:259
+#: lib/submenu/general.php:264
 msgctxt "option label"
 msgid "Google Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:267
+#: lib/submenu/general.php:272
 msgctxt "option label"
 msgid "Max. Description Meta Tag Length"
 msgstr ""
 
-#: lib/submenu/general.php:278
+#: lib/submenu/general.php:283
 msgctxt "option label"
 msgid "Pinterest Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:287
+#: lib/submenu/general.php:292
 msgctxt "option label"
 msgid "Add \"nopin\" to Site Header Image"
 msgstr ""
 
-#: lib/submenu/general.php:292
+#: lib/submenu/general.php:297
 msgctxt "option label"
 msgid "Add \"nopin\" to WordPress Media"
 msgstr ""
 
-#: lib/submenu/general.php:299
+#: lib/submenu/general.php:304
 msgctxt "option comment"
 msgid "recommended (adds a hidden image in the content)"
 msgstr ""
 
-#: lib/submenu/general.php:302
+#: lib/submenu/general.php:307
 msgctxt "option label"
 msgid "Maximum Image Description Length"
 msgstr ""
 
-#: lib/submenu/general.php:315
+#: lib/submenu/general.php:320
 msgctxt "option value"
 msgid "Summary"
 msgstr ""
 
-#: lib/submenu/general.php:316
+#: lib/submenu/general.php:321
 msgctxt "option value"
 msgid "Summary Large Image"
 msgstr ""
 
-#: lib/submenu/general.php:330
+#: lib/submenu/general.php:335
 msgctxt "option label"
 msgid "Twitter Card for Post / Page Image"
 msgstr ""
 
-#: lib/submenu/general.php:334
+#: lib/submenu/general.php:339
 msgctxt "option label"
 msgid "Twitter Card Type by Default"
 msgstr ""
 
-#: lib/submenu/general.php:338
+#: lib/submenu/general.php:343
 msgctxt "option label"
 msgid "Summary Card Image Size"
 msgstr ""
 
-#: lib/submenu/general.php:342
+#: lib/submenu/general.php:347
 msgctxt "option label"
 msgid "Large Image Summary Card Img Size"
 msgstr ""
@@ -7008,40 +7008,40 @@ msgstr ""
 msgid "Error reading the %s file for the article sections list."
 msgstr ""
 
-#: lib/util.php:1887
+#: lib/util.php:1894
 msgid "Error reading the %s file for the product categories list."
 msgstr ""
 
-#: lib/util.php:1970
+#: lib/util.php:1984
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1996
+#: lib/util.php:2010
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:2190
+#: lib/util.php:2204
 msgid ""
 "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
 "provider to have the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:2203
+#: lib/util.php:2217
 msgid ""
 "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
 "provider to have the missing function installed."
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max.
-#: lib/util.php:3457
+#: lib/util.php:3471
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3474
+#: lib/util.php:3488
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -7050,39 +7050,39 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3474
+#: lib/util.php:3488
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3771
+#: lib/util.php:3785
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:3800
+#: lib/util.php:3814
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3803
+#: lib/util.php:3817
 msgctxt "option comment"
 msgid "show these options now"
 msgstr ""
 
-#: lib/util.php:3808
+#: lib/util.php:3822
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3811
+#: lib/util.php:3825
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name, and %3$s is the object ID.
-#: lib/util.php:4134
+#: lib/util.php:4148
 msgid "%1$s for %2$s ID %3$s"
 msgstr ""
 

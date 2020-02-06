@@ -311,8 +311,9 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$cache_file = $this->base_dir . md5( $cache_salt ) . $file_ext;
-			$cache_url  = $this->base_url . md5( $cache_salt ) . $file_ext;
+			$cache_id   = md5( $cache_salt );
+			$cache_file = $this->base_dir . $cache_id . $file_ext;
+			$cache_url  = $this->base_url . $cache_id . $file_ext;
 
 			if ( file_exists( $cache_file ) ) {
 
@@ -345,6 +346,12 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						$this->p->notice->err( sprintf( __( 'Error removing cache file %s.',
 							$this->text_domain ), $cache_file ) );
 					}
+				}
+
+			} else {
+			
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'cached file not found: creating ' . $cache_url );
 				}
 			}
 
@@ -663,6 +670,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		/**
 		 * If $exp_secs is null, then use the default expiration time.
+		 *
 		 * If $exp_secs is false, then get but do not save the data.
 		 */
 		private function get_cache_data( $cache_salt, $cache_type = 'file', $exp_secs = null, $file_ext = '' ) {
@@ -761,6 +769,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		/**
 		 * If $exp_secs is null, then use the default expiration time.
+		 *
 		 * If $exp_secs is false, then get but do not save the data.
 		 */
 		private function save_cache_data( $cache_salt, &$cache_data = '', $cache_type = 'file', $exp_secs = null, $file_ext = '' ) {

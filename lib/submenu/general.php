@@ -150,7 +150,12 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>' .
 					$this->form->get_select( 'og_def_product_category', $product_categories, $css_class = 'wide', $css_id = '',
 						$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
-							$event_args = array( 'json_var' => 'product_categories', 'exp_secs' => $list_exp_secs ) ) .
+							$event_args = array(
+								'json_var' => 'product_categories',
+								'exp_secs' => $list_exp_secs,
+								'is_transl' => true,
+							)
+						) .
 					'</td>';
 
 					$this->add_og_types_table_rows( $table_rows, $this->form, $hide_in_basic = true, $is_top_section = false );

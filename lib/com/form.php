@@ -240,9 +240,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$input_disabled = $is_disabled;
 				}
 
-				if ( $this->text_domain ) {
-					$label_transl = $this->get_value_transl( $label );
-				}
+				$label_transl = $this->get_value_transl( $label );
 
 				if ( $this->in_options( $input_name ) ) {
 					$input_checked = checked( $this->options[ $input_name ], 1, false );
@@ -329,9 +327,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$val = $label;
 				}
 
-				if ( $this->text_domain ) {
-					$label_transl = $this->get_value_transl( $label );
-				}
+				$label_transl = $this->get_value_transl( $label );
 
 				$attr_name_value = ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '" value="' . esc_attr( $val ) . '"';
 
@@ -355,7 +351,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		/**
 		 * Select drop-down field.
 		 *
-		 * $is_disabled can be true, false, or an option value for the disabled select.
+		 * $is_disabled can be false or an option value for the disabled select.
 		 */
 		public function get_select( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null,
 			$is_disabled = false, $selected = false, $event_names = array(), $event_args = null ) {
@@ -415,7 +411,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$select_opt_count = 0;	// Used to check for first option.
 			$select_opt_added = 0;
 			$select_opt_html  = '';
-			$select_opt_arr   = array();
+			$select_json_arr  = array();
 			$default_value    = '';
 			$default_text     = '';
 
@@ -439,8 +435,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$option_value = (string) $label;
 				}
 
-				if ( $this->text_domain ) {
+				/**
+				 * Don't bother translating the label text if it's already translated (for example, product
+				 * categories).
+				 */
+				if ( empty( $event_args[ 'is_transl' ] ) ) {
 					$label_transl = $this->get_value_transl( $label );
+				} else {
+					$label_transl = $label;
 				}
 
 				switch ( $name ) {
@@ -478,7 +480,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				 */
 				if ( $event_json_var ) {
 					if ( empty( $this->json_array_added[ $event_json_var ] ) ) {
-						$select_opt_arr[ $option_value ] = $label_transl;
+						$select_json_arr[ $option_value ] = $label_transl;
 					}
 				}
 
@@ -552,7 +554,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					case 'on_focus_load_json':
 
-						$html .= $this->get_event_load_json_script( $event_json_var, $event_args, $select_opt_arr, $input_id );
+						$html .= $this->get_event_load_json_script( $event_json_var, $event_args, $select_json_arr, $input_id );
 
 						break;
 
@@ -1548,7 +1550,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 								$select_opt_count = 0;	// Used to check for first option.
 								$select_opt_added = 0;
 								$select_opt_html  = '';
-								$select_opt_arr   = array();
+								$select_json_arr  = array();
 								$default_value    = '';
 								$default_text     = '';
 
@@ -1572,9 +1574,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 										$option_value = (string) $label;
 									}
 
-									if ( $this->text_domain ) {
-										$label_transl = $this->get_value_transl( $label );
-									}
+									$label_transl = $this->get_value_transl( $label );
 
 									/**
 									 * Save the option value and translated label for the JSON
@@ -1582,7 +1582,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 									 */
 									if ( $event_json_var ) {
 										if ( empty( $this->json_array_added[ $event_json_var ] ) ) {
-											$select_opt_arr[ $option_value ] = $label_transl;
+											$select_json_arr[ $option_value ] = $label_transl;
 										}
 									}
 
@@ -1647,7 +1647,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 										case 'on_focus_load_json':
 
 											$html .= $this->get_event_load_json_script( $event_json_var, $event_args,
-												$select_opt_arr, 'select_' . $input_id );
+												$select_json_arr, 'select_' . $input_id );
 
 											break;
 									}
@@ -2158,7 +2158,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 ';
 		}
 
-		private function get_event_load_json_script( $event_json_var, $event_args, $select_opt_arr, $select_id ) {
+		private function get_event_load_json_script( $event_json_var, $event_args, $select_json_arr, $select_id ) {
 
 			$html = '';
 
@@ -2180,8 +2180,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				 * element order. For this reason, we must use different arrays for the array keys and their
 				 * values.
 				 */
-				$json_array_keys   = SucomUtil::json_encode_array( array_keys( $select_opt_arr ) );
-				$json_array_values = SucomUtil::json_encode_array( array_values( $select_opt_arr ) );
+				$json_array_keys   = SucomUtil::json_encode_array( array_keys( $select_json_arr ) );
+				$json_array_values = SucomUtil::json_encode_array( array_values( $select_json_arr ) );
 
 				$script_js = 'var ' . $event_json_var . '_array_keys = ' . $json_array_keys . ';' . "\n";
 				$script_js .= 'var ' . $event_json_var . '_array_values = ' . $json_array_values . ';' . "\n";
@@ -2189,13 +2189,22 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= '<!-- adding ' . $event_json_var . ' array -->' . "\n";
 
 				if ( ! empty( $event_args[ 'exp_secs' ] ) ) {
-					
-					$script_url = $this->p->cache->get_data_url( $event_json_var, $script_js, $event_args[ 'exp_secs' ], $file_ext = '.js' );
+				
+					/**
+					 * Array values may be localized, so include the current locale in the cache salt string.
+					 */
+					$cache_salt = $event_json_var . '_locale:' . SucomUtil::get_locale( 'current' );
 
-					$html .= '<script src="' . $script_url . '" async></script>' . "\n";
+					/**
+					 * Returns false on error.
+					 */
+					$script_url = $this->p->cache->get_data_url( $cache_salt, $script_js, $event_args[ 'exp_secs' ], $file_ext = '.js' );
+
+					if ( ! empty( $script_url ) ) {
+						$html .= '<script src="' . $script_url . '" async></script>' . "\n";
+					}
 
 				} else {
-
 					$html .= '<script type="text/javascript">' . "\n" . $script_js . '</script>' . "\n";
 				}
 
