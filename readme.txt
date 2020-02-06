@@ -465,7 +465,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.19.0-rc.1 (2020/02/06)**
+**Version 6.19.0 (2020/02/06)**
 
 * **New Features**
 	* Added a new integration module for the WooCommerce Currency Switcher plugin.
@@ -780,118 +780,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* PHP v5.4.
 	* WordPress v3.9.
 
-**Version 6.9.0 (2019/10/22)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Minor CSS adjustments for the new WordPress v5.3 form styles.
-	* Added information text for the "Product Attribute Names" and "Custom Field Names" options.
-* **Bugfixes**
-	* Fixed an array merge warning when adding co-author URLs to Open Graph meta tags.
-* **Developer Notes**
-	* Updated the `SucomForm->get_select()` method arguments to allow for an `$event_names` array.
-	* Added support for an 'event_names' array value in the `SucomForm->get_mixed_multi()` method.
-* **Requires At Least**
-	* PHP v5.4.
-	* WordPress v3.9.
-
-**Version 6.8.0 (2019/10/14)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added more financial service Schema types to the Schema select list:
-		* https://schema.org/BankAccount
-		* https://schema.org/BrokerageAccount
-		* https://schema.org/CreditCard
-		* https://schema.org/DepositAccount
-		* https://schema.org/InvestmentFund
-		* https://schema.org/MortgageLoan
-		* https://schema.org/PaymentCard
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Renamed the SucomUtil `array_parent_index()` method to `get_array_parents()`, which now returns an array of (one or more) parents per child instead of a single parent string per child.
-	* Updated the WpssoSchema `get_schema_type_child_family()` and `get_schema_type_children()` methods to handle an array of parents instead of a single parent string.
-	* Removed the WpssoSchema `filter_json_data_https_schema_org_localbusiness()` method since it is no longer required - local businesses are now automatically filtered through the organization filter.
-* **Requires At Least**
-	* PHP v5.4.
-	* WordPress v3.9.
-
-**Version 6.7.1 (2019/10/08)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* Fixed possible non-unique image filename conflicts by copying instead or renaming cropped images.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v5.4.
-	* WordPress v3.9.
-
-**Version 6.7.0 (2019/10/04)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added a default time-to-live of 300 seconds to all notice messages to prevent showing old / expired notices.
-* **Bugfixes**
-	* Fixed missing argument in the WpssoAdmin `registered_setting_sanitation()` method 'wpsso_save_options' filter.
-* **Developer Notes**
-	* Updated the WpssoOptions `check_options()` and `save_options()` methods to clear all caches after upgrading the options array.
-* **Requires At Least**
-	* PHP v5.4.
-	* WordPress v3.9.
-
-**Version 6.6.0 (2019/09/28)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Updated the content video detection patterns to include the new block editor embed tags.
-	* Optimized the handling of video preview images to improve selection and avoid duplicates.
-* **Bugfixes**
-	* Fixed fallback to default image for non-singular and non-term pages.
-	* Fixed 'get_avatar' filter hook for older WP pre-v4.2 sites by removing 6th argument (added in WP v4.2).
-* **Developer Notes**
-	* Moved video preview image selection from `WpssoOpenGraph->get_array()` to `WpssoOpenGraph->get_all_images()`
-	* Updated the `WpssoSchemaSingle::add_job_data() method` to allow handling of multiple hiring organization and location IDs.
-	* Updated the `WpssoSchemaSingle::add_event_data() method` to allow handling of multiple location, organizer, and performer IDs.
-	* Added a new `get_select_multi()` and `get_no_select_multi()` methods in the WpssoForm class.
-	* Added local caching to the `WpssoOpenGraph->get_all_videos()` method.
-	* Added a new `WpssoOpenGraph->get_all_previews()` method.
-* **Requires At Least**
-	* PHP v5.4.
-	* WordPress v3.9.
-
-**Version 6.5.0 (2019/09/26)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Refactored the post, term, and user `get_options()` methods to better handle fallback to default values.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added a 'nopin' attribute to Gravatar images when the Add "nopin" to Site Header Image option is enabled.
-	* Moved the 'nopin' image attribute filters from the WpssoMedia to the WpssoPinterest class.
-	* Removed 'loading="lazy"' from the hidden Pinterest Pin It button image.
-	* Removed the deprecated 'wpsso_get_event_location_id' filter since selecting a Schema Place in the Document SSO metabox forces the Schema type to a place.
-* **Requires At Least**
-	* PHP v5.4.
-	* WordPress v3.9.
-
 == Upgrade Notice ==
 
-= 6.19.0-rc.1 =
+= 6.19.0 =
 
 (2020/02/06) Added a new "Product Category" option in the Document SSO metabox. Added file caching for the Schema type, article sections, and product category arrays.
-
-= 6.18.0 =
-
-(2020/01/30) Added a new "Schema Type" select option and removed the Schema "Description" option in the Document SSO metabox.
 
