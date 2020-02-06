@@ -465,7 +465,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.19.0-b.2 (2020/02/05)**
+**Version 6.19.0-b.3 (2020/02/06)**
 
 * **New Features**
 	* Added a new integration module for the WooCommerce Currency Switcher plugin.
@@ -888,9 +888,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.19.0-b.2 =
+= 6.19.0-b.3 =
 
-(2020/02/05) Added javascript file caching to SucomForm->get_select() for the Schema type, article sections, and product category arrays. Updated the 'wpsso_article_section' filter arguments.
+(2020/02/06) Added javascript file caching to SucomForm->get_select() for the Schema type, article sections, and product category arrays. Updated the 'wpsso_article_section' filter arguments.
 
 = 6.18.0 =
 
