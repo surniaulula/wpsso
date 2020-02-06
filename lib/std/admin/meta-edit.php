@@ -327,7 +327,12 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'tooltip'  => 'meta-schema_type',
 					'content'  => $form->get_select( 'schema_type', $schema_types, $css_class = 'schema_type', $css_id = '',
 						$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json', 'on_change_unhide_rows' ),
-							$event_args = array( 'json_var' => 'schema_types', 'exp_secs' => $schema_exp_secs ) ),
+							$event_args = array(
+								'json_var'  => 'schema_types',
+								'exp_secs'  => $schema_exp_secs,
+								'is_transl' => true,	// No label translation required.
+							)
+						),
 				),
 				'wpssojson_addon_msg' => array(
 					'table_row' => ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ?

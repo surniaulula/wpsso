@@ -120,7 +120,12 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 					'<td>' .
 					$this->form->get_select( 'og_def_article_section', $article_sections, $css_class = '', $css_id = '',
 						$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
-							$event_args = array( 'json_var' => 'article_sections', 'exp_secs' => $list_exp_secs ) ) .
+							$event_args = array(
+								'json_var'  => 'article_sections',
+								'exp_secs'  => $list_exp_secs,
+								'is_transl' => true,	// No label translation required.
+							)
+						) .
 					'</td>';
 
 					break;

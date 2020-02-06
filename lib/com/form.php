@@ -371,7 +371,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$is_assoc  = SucomUtil::is_assoc( $values );
 			}
 
-			if ( $this->get_options( $name . ':is' ) === 'disabled' ) {
+			if ( 'disabled' === $this->get_options( $name . ':is' ) ) {
 				$is_disabled = true;
 			}
 

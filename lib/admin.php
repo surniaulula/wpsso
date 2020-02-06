@@ -2796,7 +2796,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$form->get_th_html( $th_label, '', $opt_key ) . 
 					'<td>' . $form->get_select( $opt_key, $schema_types, $css_class = 'schema_type', $css_id = '',
 						$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
-							$event_args = array( 'json_var' => 'schema_types', 'exp_secs' => $schema_exp_secs ) ) .
+							$event_args = array(
+								'json_var'  => 'schema_types',
+								'exp_secs'  => $schema_exp_secs,
+								'is_transl' => true,	// No label translation required.
+							)
+						) .
 					'</td>';
 			}
 
@@ -2815,7 +2820,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$type_select .= '<p>' . $form->get_select( $opt_key, $schema_types, $css_class = 'schema_type', $css_id = '',
 					$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
-						$event_args = array( 'json_var' => 'schema_types', 'exp_secs' => $schema_exp_secs ) ) . ' ' .
+						$event_args = array(
+							'json_var'  => 'schema_types',
+							'exp_secs'  => $schema_exp_secs,
+							'is_transl' => true,	// No label translation required.
+						)
+					) . ' ' .
 					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $type_label ) .
 					'</p>' . "\n";
 			}
@@ -2824,7 +2834,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$type_select .= '<p>' . $form->get_select( $opt_key, $schema_types, $css_class = 'schema_type', $css_id = '',
 				$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
-					$event_args = array( 'json_var' => 'schema_types', 'exp_secs' => $schema_exp_secs ) ) . ' ' .
+					$event_args = array(
+						'json_var'  => 'schema_types',
+						'exp_secs'  => $schema_exp_secs,
+						'is_transl' => true,	// No label translation required.
+					)
+				) . ' ' .
 				sprintf( _x( 'for %s', 'option comment', 'wpsso' ), _x( 'Post Type Archive Page', 'option comment', 'wpsso' ) ) .
 				'</p>' . "\n";
 
@@ -2853,7 +2868,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$type_select .= '<p>' . $form->get_select( $opt_key, $schema_types, $css_class = 'schema_type', $css_id = '',
 					$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
-						$event_args = array( 'json_var' => 'schema_types', 'exp_secs' => $schema_exp_secs ) ) . ' ' .
+						$event_args = array(
+							'json_var'  => 'schema_types',
+							'exp_secs'  => $schema_exp_secs,
+							'is_transl' => true,	// No label translation required.
+						)
+					) . ' ' .
 					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $type_label ) .
 					'</p>' . "\n";
 			}
