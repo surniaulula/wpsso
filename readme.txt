@@ -465,7 +465,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.19.0-b.3 (2020/02/06)**
+**Version 6.19.0-rc.1 (2020/02/06)**
 
 * **New Features**
 	* Added a new integration module for the WooCommerce Currency Switcher plugin.
@@ -483,8 +483,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Replaced WpssoSchema->get_types_cache_exp() by a new WpssoUtil->get_cache_exp_secs() method.
 	* Updated the Easy Digital Downloads, WooCommerce, and WP eCommerce integration modules to add the currency to the head cache index.
 	* Moved `WpssoUtil->add_og_type_mt_md()` method to `WpssoOpenGraph->add_og_type_mt_md()`.
-	* Removed the `WpssoPage->get_article_section()` method.
-	* Removed the 'wpsso_article_section' filter.
+	* Removed the `WpssoPage->get_article_section()` method and its 'wpsso_article_section' filter.
 * **Requires At Least**
 	* PHP v5.5.
 	* WordPress v4.0.
@@ -888,9 +887,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.19.0-b.3 =
+= 6.19.0-rc.1 =
 
-(2020/02/06) Added javascript file caching to SucomForm->get_select() for the Schema type, article sections, and product category arrays. Updated the 'wpsso_article_section' filter arguments.
+(2020/02/06) Added a new "Product Category" option in the Document SSO metabox. Added file caching for the Schema type, article sections, and product category arrays.
 
 = 6.18.0 =
 
