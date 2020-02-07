@@ -23,7 +23,7 @@
 
 <p>No other meta tag or Schema plugin satisfies all these essential social and search markup standards.</p>
 
-<p><strong>Uses your pre-existing WordPress content and plugin / API data:</strong></p>
+<p><strong>Uses your existing WordPress content and plugin / API data:</strong></p>
 
 <p>There's no need to manually duplicate or re-enter descriptions, titles, product information, re-select images / videos, etc. WPSSO reads your existing post, page, product, media, recipe, event, forum, and SEO content automatically &mdash; while also offering fine-tuning and customization options for just about everything. ;-)</p>
 
