@@ -124,6 +124,7 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 								'json_var'  => 'article_sections',
 								'exp_secs'  => $list_exp_secs,
 								'is_transl' => true,	// No label translation required.
+								'is_sorted' => true,	// No label sorting required.
 							)
 						) .
 					'</td>';

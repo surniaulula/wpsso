@@ -410,7 +410,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$select_opt_count = 0;	// Used to check for first option.
 			$select_opt_added = 0;
-			$select_opt_html  = '';
+			$select_opt_arr   = array();
 			$select_json_arr  = array();
 			$default_value    = '';
 			$default_text     = '';
@@ -517,12 +517,18 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				 */
 				if ( ( ! $is_disabled && ! $event_json_var ) || $is_selected_html || $select_opt_count === 1 ) {
 
-					$select_opt_html .= '<option value="' . esc_attr( $option_value ) . '"' . $is_selected_html . '>';
-					$select_opt_html .= $label_transl;
-					$select_opt_html .= '</option>' . "\n";
+					if ( ! isset( $select_opt_arr[ $option_value ] ) ) {
 
-					$select_opt_added++; 
+						$select_opt_arr[ $option_value ] = '<option value="' . esc_attr( $option_value ) . '"' .
+							$is_selected_html . '>' . $label_transl . '</option>';
+
+						$select_opt_added++; 
+					}
 				}
+			}
+
+			if ( empty( $event_args[ 'is_sorted' ] ) ) {
+				uasort( $select_opt_arr, array( 'self', 'sort_select_opt_by_label' ) );
 			}
 
 			$html .= "\n" . '<select ';
@@ -532,7 +538,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html .= empty( $default_value ) ? '' : ' data-default-value="' . esc_attr( $default_value ) . '"';
 			$html .= empty( $default_text ) ? '' : ' data-default-text="' . esc_attr( $default_text ) . '"';
 			$html .= '>' . "\n";
-			$html .= $select_opt_html;
+			$html .= implode( "\n", $select_opt_arr ); 
 			$html .= '<!-- ' . $select_opt_added . ' select options added -->' . "\n";
 			$html .= '</select>' . "\n";
 
@@ -638,6 +644,41 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			return $html;
+		}
+
+		private static function sort_select_opt_by_label( $a, $b ) {
+
+			/**
+			 * Extract the option label, without its qualifier (ie. "(default)").
+			 */
+			$a_label = preg_replace( '/^.*>(.*)<\/option>$/', '$1', $a, $limit = -1, $a_count );
+			$b_label = preg_replace( '/^.*>(.*)<\/option>$/', '$1', $b, $limit = -1, $b_count );
+
+			if ( $a_count && $b_count ) {	// Just in case.
+
+				/**
+				 * Option labels in square brackets (ie. "[None]") are always top-most in the select options list.
+				 */
+				$a_char = substr( $a_label, 0, 1 );
+				$b_char = substr( $b_label, 0, 1 );
+
+				if ( $a_char === '[' ) {
+
+					if ( $a_char === $b_char ) {
+						return strnatcmp( $a_label, $b_label );
+					}
+
+					return -1;	// $a is first.
+				}
+				
+				if ( $b_char === '[' ) {
+					return 1;	// $b is first.
+				}
+				
+				return strnatcmp( $a_label, $b_label );	// Binary safe case-insensitive string comparison.
+			}
+
+			return 0;	// No change.
 		}
 
 		/**
@@ -1549,7 +1590,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 								$select_opt_count = 0;	// Used to check for first option.
 								$select_opt_added = 0;
-								$select_opt_html  = '';
+								$select_opt_arr   = array();
 								$select_json_arr  = array();
 								$default_value    = '';
 								$default_text     = '';
@@ -1574,7 +1615,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 										$option_value = (string) $label;
 									}
 
-									$label_transl = $this->get_value_transl( $label );
+									/**
+									 * Don't bother translating the label text if it's already
+									 * translated (for example, product categories).
+									 */
+									if ( empty( $event_args[ 'is_transl' ] ) ) {
+										$label_transl = $this->get_value_transl( $label );
+									} else {
+										$label_transl = $label;
+									}
 
 									/**
 									 * Save the option value and translated label for the JSON
@@ -1617,12 +1666,18 @@ if ( ! class_exists( 'SucomForm' ) ) {
 									 */
 									if ( ( ! $opt_disabled && ! $event_json_var ) || $is_selected_html || $select_opt_count === 1 ) {
 
-										$select_opt_html .= '<option value="' . esc_attr( $option_value ) . '"' . $is_selected_html . '>';
-										$select_opt_html .= $label_transl;
-										$select_opt_html .= '</option>' . "\n";
+										if ( ! isset( $select_opt_arr[ $option_value ] ) ) {
 
-										$select_opt_added++; 
+											$select_opt_arr[ $option_value ] = '<option value="' . esc_attr( $option_value ) . '"' .
+												$is_selected_html . '>' . $label_transl . '</option>';
+												
+											$select_opt_added++; 
+										}
 									}
+								}
+
+								if ( empty( $event_args[ 'is_sorted' ] ) ) {
+									uasort( $select_opt_arr, array( 'self', 'sort_select_opt_by_label' ) );
 								}
 
 								$html .= "\n" . '<select ';
@@ -1634,7 +1689,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 								$html .= empty( $default_value ) ? '' : ' data-default-value="' . esc_attr( $default_value ) . '"';
 								$html .= empty( $default_text ) ? '' : ' data-default-text="' . esc_attr( $default_text ) . '"';
 								$html .= ' ' . $el_attr . '>' . "\n";
-								$html .= $select_opt_html;
+								$html .= implode( "\n", $select_opt_arr ); 
 								$html .= '<!-- ' . $select_opt_added . ' select options added -->' . "\n";
 								$html .= '</select>' . "\n";
 

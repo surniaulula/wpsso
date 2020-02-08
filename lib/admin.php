@@ -1968,7 +1968,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				),
 			);
 
-			uksort( $features, array( __CLASS__, 'sort_plugin_features' ) );
+			uksort( $features, array( 'self', 'sort_plugin_features' ) );
 
 			foreach ( $features as $label => $arr ) {
 
@@ -2063,7 +2063,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		private static function sort_plugin_features( $feature_a, $feature_b ) {
 
-			return strcasecmp( self::feature_priority( $feature_a ), self::feature_priority( $feature_b ) );
+			return strnatcmp( self::feature_priority( $feature_a ), self::feature_priority( $feature_b ) );
 		}
 
 		private static function feature_priority( $feature ) {
@@ -2800,6 +2800,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								'json_var'  => 'schema_types',
 								'exp_secs'  => $schema_exp_secs,
 								'is_transl' => true,	// No label translation required.
+								'is_sorted' => true,	// No label sorting required.
 							)
 						) .
 					'</td>';
@@ -2824,6 +2825,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							'json_var'  => 'schema_types',
 							'exp_secs'  => $schema_exp_secs,
 							'is_transl' => true,	// No label translation required.
+							'is_sorted' => true,	// No label sorting required.
 						)
 					) . ' ' .
 					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $type_label ) .
@@ -2838,6 +2840,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						'json_var'  => 'schema_types',
 						'exp_secs'  => $schema_exp_secs,
 						'is_transl' => true,	// No label translation required.
+						'is_sorted' => true,	// No label sorting required.
 					)
 				) . ' ' .
 				sprintf( _x( 'for %s', 'option comment', 'wpsso' ), _x( 'Post Type Archive Page', 'option comment', 'wpsso' ) ) .
@@ -2872,6 +2875,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							'json_var'  => 'schema_types',
 							'exp_secs'  => $schema_exp_secs,
 							'is_transl' => true,	// No label translation required.
+							'is_sorted' => true,	// No label sorting required.
 						)
 					) . ' ' .
 					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $type_label ) .

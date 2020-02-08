@@ -641,7 +641,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				if ( defined( 'SORT_STRING' ) ) {
 					asort( $user_names, SORT_STRING );
 				} else {
-					uasort( $user_names, 'strcasecmp' ); // Case-insensitive string comparison.
+					uasort( $user_names, 'strnatcmp' );
 				}
 			}
 

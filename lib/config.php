@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.19.0',	// Plugin version.
+					'version'     => '6.20.0-dev.1',	// Plugin version.
 					'opt_version' => '702',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -3539,10 +3539,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		private static function sort_ext_by_name( $a, $b ) {
 
 			if ( isset( $a[ 'name' ] ) && isset( $b[ 'name' ] ) ) {		// Just in case.
-				return strcasecmp( $a[ 'name' ], $b[ 'name' ] );	// Case-insensitive string comparison.
-			} else {
-				return 0;						// No change.
+				return strnatcmp( $a[ 'name' ], $b[ 'name' ] );
 			}
+
+			return 0;	// No change.
 		}
 
 		public static function set_constants( $plugin_file_path ) {
