@@ -472,7 +472,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Added sorting (by default) of translated labels for `SucomForm->get_select()` options.
 * **Bugfixes**
-	* None.
+	* Fixed the detection of a possible write error when writing the javascript file cache for the Schema type, article sections, and product category arrays.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
