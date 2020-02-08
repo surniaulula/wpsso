@@ -1778,21 +1778,21 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$this->p->debug->log( 'transient cache salt ' . $cache_salt );
 				}
 
-				$topics = get_transient( $cache_id );
+				$sections = get_transient( $cache_id );
 
-				if ( is_array( $topics ) ) {
+				if ( is_array( $sections ) ) {
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'article sections retrieved from transient ' . $cache_id );
 					}
 
-					return $topics;
+					return $sections;
 				}
 			}
 
-			$raw_topics = file( $text_list_file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES );	// Returns false on error.
+			$raw_sections = file( $text_list_file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES );	// Returns false on error.
 
-			if ( ! is_array( $raw_topics ) ) {
+			if ( ! is_array( $raw_sections ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'error reading %s article sections list file' );
@@ -1806,40 +1806,40 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return array();
 			}
 
-			$topics = array();
+			$sections = array();
 
-			foreach ( $raw_topics as $num => $topic_name ) {
+			foreach ( $raw_sections as $num => $section_name ) {
 
 				/**
 				 * Skip comment lines.
 				 */
-				if ( 0 === strpos( $topic_name, '#' ) ) {
+				if ( 0 === strpos( $section_name, '#' ) ) {
 					continue;
 				}
 
-				$topics[ $topic_name ] = $topic_name;
+				$sections[ $section_name ] = $section_name;
 
-				unset( $topics[ $num ] );	// Save memory and unset as we go.
+				unset( $sections[ $num ] );	// Save memory and unset as we go.
 			}
 
-			unset( $raw_topics );
+			unset( $raw_sections );
 
-			$topics = apply_filters( $this->p->lca . '_article_sections', $topics );
+			$sections = apply_filters( $this->p->lca . '_article_sections', $sections );
 
-			asort( $topics, SORT_NATURAL );
+			asort( $sections, SORT_NATURAL );
 
-			$topics = array( 'none' => '[None]' ) + $topics;	// After sorting the array, put 'none' first.
+			$sections = array( 'none' => '[None]' ) + $sections;	// After sorting the array, put 'none' first.
 
 			if ( $cache_exp_secs > 0 ) {
 
-				set_transient( $cache_id, $topics, $cache_exp_secs );
+				set_transient( $cache_id, $sections, $cache_exp_secs );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'article sections saved to transient cache for ' . $cache_exp_secs . ' seconds' );
 				}
 			}
 
-			return $topics;
+			return $sections;
 		}
 
 		/**

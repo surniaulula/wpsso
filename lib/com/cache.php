@@ -869,6 +869,17 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						fclose( $fh );
 
 						$data_saved = true;	// Success.
+
+					} else {
+
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'failed writing data to cache file ' . $cache_file );
+						}
+
+						if ( is_admin() ) {
+							$this->p->notice->err( sprintf( __( 'Failed writing data to cache file %s.',
+								$this->text_domain ), $cache_file ) );
+						}
 					}
 
 					break;

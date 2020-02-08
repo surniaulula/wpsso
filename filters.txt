@@ -39,7 +39,7 @@
 
 'wpsso_archive_page_url' ( $url, $mod, $add_page, $src_id )
 
-'wpsso_article_sections' ( array $topics )
+'wpsso_article_sections' ( array $sections )
 
 'wpsso_attached_accept_img_dims' ( $bool, $img_url, $img_width, $img_height, $size_name, $pid )
 

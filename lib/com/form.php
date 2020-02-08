@@ -2257,6 +2257,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					if ( ! empty( $script_url ) ) {
 						$html .= '<script src="' . $script_url . '" async></script>' . "\n";
+					} else {
+						$html .= '<script type="text/javascript">' . "\n" . $script_js . '</script>' . "\n";
 					}
 
 				} else {
