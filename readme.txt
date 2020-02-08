@@ -465,12 +465,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.20.0-dev.1 (TBD)**
+**Version 6.20.0-dev.1 (2020/02/08)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added sorting (by default) of translated labels for `SucomForm->get_select()` options.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -795,6 +795,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v3.9.
 
 == Upgrade Notice ==
+
+= 6.20.0-dev.1 =
+
+(2020/02/08) Added sorting (by default) of translated labels for `SucomForm->get_select()` options.
 
 = 6.19.0 =
 
