@@ -6128,7 +6128,7 @@ msgid "No Description."
 msgstr ""
 
 #. translators: Post type archive title. %s: Post type name.
-#: lib/page.php:1510
+#: lib/page.php:1511
 msgid "Archives: %s"
 msgstr ""
 
