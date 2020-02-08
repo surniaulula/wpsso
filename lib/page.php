@@ -976,7 +976,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				) );
 			}
 
-			$filter_content = empty( $this->p->options[ 'plugin_filter_content' ] ) || $this->p->check->pp() ? false : true;
+			$filter_content = empty( $this->p->options[ 'plugin_filter_content' ] ) || ! $this->p->check->pp() ? false : true;
 			$filter_content = apply_filters( $this->p->lca . '_can_filter_the_content', $filter_content, $mod );
 
 			$sharing_url    = $this->p->util->get_sharing_url( $mod );

@@ -3394,6 +3394,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_json_scripts( $html, $do_decode = true ) {
 
+			$html = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// Convert to UTF8.
+			$html = preg_replace( '/<!--.*-->/Uums', '', $html );		// Pattern and subject strings are treated as UTF8.
+
 			$json_data = array();
 
 			if ( is_string( $html ) ) {

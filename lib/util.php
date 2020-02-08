@@ -2032,9 +2032,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$ret        = array();
-			$html       = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );		// Convert to UTF8.
-			$html       = preg_replace( '/<!--.*-->/Uums', '', $html );			// Pattern and subject strings are treated as UTF8.
-			$doc        = new DOMDocument();						// Since PHP v4.1.
+			$html       = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// Convert to UTF8.
+			$html       = preg_replace( '/<!--.*-->/Uums', '', $html );		// Pattern and subject strings are treated as UTF8.
+			$doc        = new DOMDocument();					// Since PHP v4.1.
 			$has_errors = false;
 
 			if ( $libxml_errors ) {
