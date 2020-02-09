@@ -189,18 +189,15 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 									$this->p->debug->log( $log_prefix . 'library class name cannot be determined' );
 								}
 
-								$suffix_msg = __( 'The installed plugin is incomplete or the web server cannot access the required library file.',
-									'wpsso' );
+								$error_pre  = sprintf( __( '%s error:', 'wpsso' ), __METHOD__ );
+								$error_msg  = sprintf( __( 'Library class name for "%s" cannot be determined.', 'wpsso' ), $lib_path ) . ' ' .
+									__( 'The installed plugin is incomplete or the web server cannot access the required library file.',
+										'wpsso' );
 
 								if ( $is_admin && is_object( $this->p->notice ) ) {
 
-									// translators: %1$s is the short plugin name, %2$s is the PHP library path
-									$this->p->notice->err( sprintf( __( '%1$s library class name for "%2$s" cannot be determined.',
-										'wpsso' ), $info[ 'short' ], $lib_path ) . ' ' . $suffix_msg );
+									$this->p->notice->err( $error_msg . ' ' . $suffix_msg );
 								}
-
-								$error_pre = sprintf( __( '%s error:', 'wpsso' ), __METHOD__ );
-								$error_msg = sprintf( __( 'Library class name for "%s" cannot be determined.', 'wpsso' ), $lib_path );
 
 								SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg . ' ' . $suffix_msg );
 							}

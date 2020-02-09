@@ -3429,7 +3429,7 @@ msgstr ""
 msgid "Error loading %1$s: Library class \"%2$s\" is missing."
 msgstr ""
 
-#: lib/loader.php:180 lib/loader.php:202
+#: lib/loader.php:180 lib/loader.php:192
 msgid "%s error:"
 msgstr ""
 
@@ -3437,19 +3437,14 @@ msgstr ""
 msgid "Library class \"%s\" is missing."
 msgstr ""
 
-#: lib/loader.php:192
+#: lib/loader.php:193
+msgid "Library class name for \"%s\" cannot be determined."
+msgstr ""
+
+#: lib/loader.php:194
 msgid ""
 "The installed plugin is incomplete or the web server cannot access the "
 "required library file."
-msgstr ""
-
-#. translators: %1$s is the short plugin name, %2$s is the PHP library path
-#: lib/loader.php:198
-msgid "%1$s library class name for \"%2$s\" cannot be determined."
-msgstr ""
-
-#: lib/loader.php:203
-msgid "Library class name for \"%s\" cannot be determined."
 msgstr ""
 
 #: lib/media.php:65
