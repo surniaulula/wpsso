@@ -12,7 +12,7 @@ Requires PHP: 5.5
 Requires At Least: 4.0
 Tested Up To: 5.3.2
 WC Tested Up To: 3.9.1
-Stable Tag: 6.19.0
+Stable Tag: 6.20.0
 
 Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.
 
@@ -800,8 +800,4 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 6.20.0 =
 
 (2020/02/09) Added detection of write errors when creating a javascript file for the Schema type, article sections, and product category arrays.
-
-= 6.19.0 =
-
-(2020/02/06) Added a new "Product Category" option in the Document SSO metabox. Added file caching for the Schema type, article sections, and product category arrays.
 
