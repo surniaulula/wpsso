@@ -14,7 +14,7 @@ __( 'Please contact your hosting provider to have this setting disabled.', 'wpss
 __( 'The maximum number of URL redirects (%d) may have been exceeded.', 'wpsso' );
 __( 'Requests to cache this URL will be ignored for %d second(s).', 'wpsso' );
 __( 'Error removing cache file %s.', 'wpsso' );
-__( 'PHP cURL library is missing &mdash; contact your hosting provider to have the cURL library installed.', 'wpsso' );
+__( 'PHP cURL library missing &mdash; contact your hosting provider to have the cURL library installed.', 'wpsso' );
 __( 'Error removing cache file %s.', 'wpsso' );
 __( 'Cache file %s is not readable.', 'wpsso' );
 __( 'Failed to open the cache file %s for reading.', 'wpsso' );

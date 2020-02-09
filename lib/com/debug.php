@@ -25,6 +25,10 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 		public function __construct( &$plugin, $subsys = array( 'html' => false, 'log' => false ) ) {
 
+			if ( ! class_exists( 'SucomUtil' ) ) {	// Just in case.
+				require_once trailingslashit( dirname( __FILE__ ) ) . 'util.php';
+			}
+
 			$this->p =& $plugin;
 
 			$this->start_stats = array(
@@ -42,10 +46,6 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				if ( ! isset( $_SESSION ) ) {
 					session_start();
 				}
-			}
-
-			if ( ! class_exists( 'SucomUtil' ) ) {	// Just in case.
-				require_once trailingslashit( dirname( __FILE__ ) ) . 'util.php';
 			}
 
 			if ( $this->enabled ) {

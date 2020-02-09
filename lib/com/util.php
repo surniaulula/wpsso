@@ -3854,8 +3854,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Sets 'display_errors' to false to prevent PHP errors from being displayed and
-		 * restores previous PHP settings after logging the error.
+		 * Sets 'display_errors' to false to prevent PHP errors from being displayed and restores previous PHP settings
+		 * after logging the error.
 		 */
 		public static function safe_error_log( $error_msg ) {
 

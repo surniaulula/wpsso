@@ -38,6 +38,10 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		public function __construct( $plugin = null, $lca = null, $text_domain = null, $label_transl = null ) {
 
+			if ( ! class_exists( 'SucomUtil' ) ) {	// Just in case.
+				require_once trailingslashit( dirname( __FILE__ ) ) . 'util.php';
+			}
+
 			$this->set_config( $plugin, $lca, $text_domain, $label_transl );
 
 			add_action( 'shutdown', array( $this, 'save_transient' ) );
@@ -342,10 +346,11 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						$this->p->debug->log( 'error removing cache file ' . $cache_file );
 					}
 
-					if ( is_admin() ) {
-						$this->p->notice->err( sprintf( __( 'Error removing cache file %s.',
-							$this->text_domain ), $cache_file ) );
-					}
+					$error_msg = sprintf( __( 'Error removing cache file %s.', $this->text_domain ), $cache_file );
+
+					$this->p->notice->err( $error_msg );
+
+					SucomUtil::safe_error_log( $error_msg );
 				}
 
 			} else {
@@ -388,10 +393,11 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					$this->p->debug->log( 'exiting early: curl library is missing' );
 				}
 
-				if ( is_admin() ) {
-					$this->p->notice->err( __( 'PHP cURL library is missing &mdash; contact your hosting provider to have the cURL library installed.',
-						$this->text_domain ) );
-				}
+				$error_msg = __( 'PHP cURL library missing &mdash; contact your hosting provider to have the cURL library installed.', $this->text_domain );
+
+				$this->p->notice->err( $error_msg );
+
+				SucomUtil::safe_error_log( $error_msg );
 
 				return $failure;
 
@@ -488,10 +494,11 @@ if ( ! class_exists( 'SucomCache' ) ) {
 								$this->p->debug->log( 'error removing cache file ' . $cache_file );
 							}
 
-							if ( is_admin() ) {
-								$this->p->notice->err( sprintf( __( 'Error removing cache file %s.',
-									$this->text_domain ), $cache_file ) );
-							}
+							$error_msg = sprintf( __( 'Error removing cache file %s.', $this->text_domain ), $cache_file );
+
+							$this->p->notice->err( $error_msg );
+
+							SucomUtil::safe_error_log( $error_msg );
 						}
 					}
 
@@ -720,10 +727,11 @@ if ( ! class_exists( 'SucomCache' ) ) {
 							$this->p->debug->log( 'cache file ' . $cache_file . ' is not readable' );
 						}
 
-						if ( is_admin() ) {
-							$this->p->notice->err( sprintf( __( 'Cache file %s is not readable.',
-								$this->text_domain ), $cache_file ) );
-						}
+						$error_msg = sprintf( __( 'Cache file %s is not readable.', $this->text_domain ), $cache_file );
+
+						$this->p->notice->err( $error_msg );
+
+						SucomUtil::safe_error_log( $error_msg );
 
 					} elseif ( filemtime( $cache_file ) < time() - $file_exp_secs ) {
 
@@ -737,10 +745,11 @@ if ( ! class_exists( 'SucomCache' ) ) {
 							$this->p->debug->log( 'failed to open the cache file ' . $cache_file . ' for reading' );
 						}
 
-						if ( is_admin() ) {
-							$this->p->notice->err( sprintf( __( 'Failed to open the cache file %s for reading.',
-								$this->text_domain ), $cache_file ) );
-						}
+						$error_msg = sprintf( __( 'Failed to open the cache file %s for reading.', $this->text_domain ), $cache_file );
+
+						$this->p->notice->err( $error_msg );
+
+						SucomUtil::safe_error_log( $error_msg );
 
 					} else {
 
@@ -833,10 +842,11 @@ if ( ! class_exists( 'SucomCache' ) ) {
 							$this->p->debug->log( 'failed to create the ' . $this->base_dir . ' cache folder.' );
 						}
 
-						if ( is_admin() ) {
-							$this->p->notice->err( sprintf( __( 'Failed to create the %s cache folder.',
-								$this->text_domain ), $this->base_dir ) );
-						}
+						$error_msg = sprintf( __( 'Failed to create the %s cache folder.', $this->text_domain ), $this->base_dir );
+
+						$this->p->notice->err( $error_msg );
+
+						SucomUtil::safe_error_log( $error_msg );
 
 					} elseif ( ! is_writable( $this->base_dir ) ) {
 
@@ -844,10 +854,11 @@ if ( ! class_exists( 'SucomCache' ) ) {
 							$this->p->debug->log( 'cache folder ' . $this->base_dir . ' is not writable' );
 						}
 
-						if ( is_admin() ) {
-							$this->p->notice->err( sprintf( __( 'Cache folder %s is not writable.',
-								$this->text_domain ), $this->base_dir ) );
-						}
+						$error_msg = sprintf( __( 'Cache folder %s is not writable.', $this->text_domain ), $this->base_dir );
+
+						$this->p->notice->err( $error_msg );
+
+						SucomUtil::safe_error_log( $error_msg );
 
 					} elseif ( ! $fh = @fopen( $cache_file, 'wb' ) ) {
 
@@ -855,10 +866,11 @@ if ( ! class_exists( 'SucomCache' ) ) {
 							$this->p->debug->log( 'failed to open the cache file ' . $cache_file . ' for writing' );
 						}
 
-						if ( is_admin() ) {
-							$this->p->notice->err( sprintf( __( 'Failed to open the cache file %s for writing.',
-								$this->text_domain ), $cache_file ) );
-						}
+						$error_msg = sprintf( __( 'Failed to open the cache file %s for writing.', $this->text_domain ), $cache_file );
+
+						$this->p->notice->err( $error_msg );
+
+						SucomUtil::safe_error_log( $error_msg );
 
 					} elseif ( fwrite( $fh, $cache_data ) ) {
 
@@ -876,10 +888,11 @@ if ( ! class_exists( 'SucomCache' ) ) {
 							$this->p->debug->log( 'failed writing data to cache file ' . $cache_file );
 						}
 
-						if ( is_admin() ) {
-							$this->p->notice->err( sprintf( __( 'Failed writing data to cache file %s.',
-								$this->text_domain ), $cache_file ) );
-						}
+						$error_msg = sprintf( __( 'Failed writing data to cache file %s.', $this->text_domain ), $cache_file );
+
+						$this->p->notice->err( $error_msg );
+
+						SucomUtil::safe_error_log( $error_msg );
 					}
 
 					break;
