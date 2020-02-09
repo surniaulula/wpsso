@@ -465,7 +465,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.20.0-rc.1 (2020/02/09)**
+**Version 6.20.0 (2020/02/09)**
 
 * **New Features**
 	* None.
@@ -797,7 +797,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.20.0-rc.1 =
+= 6.20.0 =
 
 (2020/02/09) Added detection of write errors when creating a javascript file for the Schema type, article sections, and product category arrays.
 
