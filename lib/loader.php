@@ -132,7 +132,8 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 								continue;
 							}
 
-							$lib_path  = $type . '/' . $sub . '/' . $id;
+							$lib_path = $type . '/' . $sub . '/' . $id;
+
 							$classname = apply_filters( $ext . '_load_lib', false, $lib_path );
 
 							if ( is_string( $classname ) ) {
@@ -176,12 +177,8 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 											'wpsso' ), $lib_path, $classname ) );
 									}
 
-									// translators: %s is the PHP library class name
-									$error_msg = sprintf( __( 'Library class "%s" is missing.',
-										'wpsso' ), $classname );
-
-									// translators: %s is the short plugin name
-									$error_pre = sprintf( __( '%s warning:', 'wpsso' ), $info[ 'short' ] );
+									$error_pre = sprintf( __( '%s error:', 'wpsso' ), __METHOD__ );
+									$error_msg = sprintf( __( 'Library class "%s" is missing.', 'wpsso' ), $classname );
 
 									SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
 								}
@@ -189,27 +186,23 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 							} else {
 
 								if ( $this->p->debug->enabled ) {
-									$this->p->debug->log( $log_prefix . 'library class name is not available' );
+									$this->p->debug->log( $log_prefix . 'library class name cannot be determined' );
 								}
 
-								$suffix_msg = __( 'The installed plugin is incomplete or the web server cannot access the library file.',
+								$suffix_msg = __( 'The installed plugin is incomplete or the web server cannot access the required library file.',
 									'wpsso' );
 
 								if ( $is_admin && is_object( $this->p->notice ) ) {
 
 									// translators: %1$s is the short plugin name, %2$s is the PHP library path
-									$this->p->notice->err( sprintf( __( '%1$s library class name for "%2$s" is not available.',
+									$this->p->notice->err( sprintf( __( '%1$s library class name for "%2$s" cannot be determined.',
 										'wpsso' ), $info[ 'short' ], $lib_path ) . ' ' . $suffix_msg );
 								}
 
-								// translators: %s is the PHP library path
-								$error_msg = sprintf( __( 'Library class name for "%s" is not available.',
-									'wpsso' ), $lib_path ) . ' ' . $suffix_msg;
+								$error_pre = sprintf( __( '%s error:', 'wpsso' ), __METHOD__ );
+								$error_msg = sprintf( __( 'Library class name for "%s" cannot be determined.', 'wpsso' ), $lib_path );
 
-								// translators: %s is the short plugin name
-								$error_pre = sprintf( __( '%s warning:', 'wpsso' ), $info[ 'short' ] );
-
-								SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
+								SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg . ' ' . $suffix_msg );
 							}
 
 						} elseif ( $this->p->debug->enabled ) {

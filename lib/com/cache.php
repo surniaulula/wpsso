@@ -346,11 +346,12 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						$this->p->debug->log( 'error removing cache file ' . $cache_file );
 					}
 
+					$error_pre = sprintf( '%s error:', __METHOD__ );
 					$error_msg = sprintf( __( 'Error removing cache file %s.', $this->text_domain ), $cache_file );
 
 					$this->p->notice->err( $error_msg );
 
-					SucomUtil::safe_error_log( $error_msg );
+					SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
 				}
 
 			} else {
@@ -393,11 +394,12 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					$this->p->debug->log( 'exiting early: curl library is missing' );
 				}
 
+				$error_pre = sprintf( '%s error:', __METHOD__ );
 				$error_msg = __( 'PHP cURL library missing &mdash; contact your hosting provider to have the cURL library installed.', $this->text_domain );
 
 				$this->p->notice->err( $error_msg );
 
-				SucomUtil::safe_error_log( $error_msg );
+				SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
 
 				return $failure;
 
@@ -494,11 +496,12 @@ if ( ! class_exists( 'SucomCache' ) ) {
 								$this->p->debug->log( 'error removing cache file ' . $cache_file );
 							}
 
+							$error_pre = sprintf( '%s error:', __METHOD__ );
 							$error_msg = sprintf( __( 'Error removing cache file %s.', $this->text_domain ), $cache_file );
 
 							$this->p->notice->err( $error_msg );
 
-							SucomUtil::safe_error_log( $error_msg );
+							SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
 						}
 					}
 
@@ -727,11 +730,12 @@ if ( ! class_exists( 'SucomCache' ) ) {
 							$this->p->debug->log( 'cache file ' . $cache_file . ' is not readable' );
 						}
 
+						$error_pre = sprintf( '%s error:', __METHOD__ );
 						$error_msg = sprintf( __( 'Cache file %s is not readable.', $this->text_domain ), $cache_file );
 
 						$this->p->notice->err( $error_msg );
 
-						SucomUtil::safe_error_log( $error_msg );
+						SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
 
 					} elseif ( filemtime( $cache_file ) < time() - $file_exp_secs ) {
 
@@ -745,11 +749,12 @@ if ( ! class_exists( 'SucomCache' ) ) {
 							$this->p->debug->log( 'failed to open the cache file ' . $cache_file . ' for reading' );
 						}
 
+						$error_pre = sprintf( '%s error:', __METHOD__ );
 						$error_msg = sprintf( __( 'Failed to open the cache file %s for reading.', $this->text_domain ), $cache_file );
 
 						$this->p->notice->err( $error_msg );
 
-						SucomUtil::safe_error_log( $error_msg );
+						SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
 
 					} else {
 
@@ -842,11 +847,12 @@ if ( ! class_exists( 'SucomCache' ) ) {
 							$this->p->debug->log( 'failed to create the ' . $this->base_dir . ' cache folder.' );
 						}
 
+						$error_pre = sprintf( '%s error:', __METHOD__ );
 						$error_msg = sprintf( __( 'Failed to create the %s cache folder.', $this->text_domain ), $this->base_dir );
 
 						$this->p->notice->err( $error_msg );
 
-						SucomUtil::safe_error_log( $error_msg );
+						SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
 
 					} elseif ( ! is_writable( $this->base_dir ) ) {
 
@@ -854,11 +860,12 @@ if ( ! class_exists( 'SucomCache' ) ) {
 							$this->p->debug->log( 'cache folder ' . $this->base_dir . ' is not writable' );
 						}
 
+						$error_pre = sprintf( '%s error:', __METHOD__ );
 						$error_msg = sprintf( __( 'Cache folder %s is not writable.', $this->text_domain ), $this->base_dir );
 
 						$this->p->notice->err( $error_msg );
 
-						SucomUtil::safe_error_log( $error_msg );
+						SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
 
 					} elseif ( ! $fh = @fopen( $cache_file, 'wb' ) ) {
 
@@ -866,11 +873,12 @@ if ( ! class_exists( 'SucomCache' ) ) {
 							$this->p->debug->log( 'failed to open the cache file ' . $cache_file . ' for writing' );
 						}
 
+						$error_pre = sprintf( '%s error:', __METHOD__ );
 						$error_msg = sprintf( __( 'Failed to open the cache file %s for writing.', $this->text_domain ), $cache_file );
 
 						$this->p->notice->err( $error_msg );
 
-						SucomUtil::safe_error_log( $error_msg );
+						SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
 
 					} elseif ( fwrite( $fh, $cache_data ) ) {
 
@@ -888,11 +896,12 @@ if ( ! class_exists( 'SucomCache' ) ) {
 							$this->p->debug->log( 'failed writing data to cache file ' . $cache_file );
 						}
 
+						$error_pre = sprintf( '%s error:', __METHOD__ );
 						$error_msg = sprintf( __( 'Failed writing data to cache file %s.', $this->text_domain ), $cache_file );
 
 						$this->p->notice->err( $error_msg );
 
-						SucomUtil::safe_error_log( $error_msg );
+						SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
 					}
 
 					break;

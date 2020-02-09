@@ -269,6 +269,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 
 				if ( preg_match( '/^' . $this->bfo_check_id . '_\[([0-9]+)\](.+)$/', urldecode( $method_name ), $matches ) ) {
 
+					$error_pre = sprintf( '%s error:', __METHOD__ );
 					$error_msg = sprintf( $error_text, $matches[2], $matches[1], current_filter() );
 
 					/**
@@ -297,7 +298,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 						}
 					}
 
-					$incorrect_msg = __( 'Incorrect webpage output:', $this->text_domain ) . "\n" .
+					$output_msg = __( 'Incorrect webpage output:', $this->text_domain ) . "\n" .
 						'-----' . __( 'BEGIN OUTPUT', $this->text_domain ) . '-----' . "\n" . print_r( $output, true ) . "\n" .
 						'-----' . __( 'END OUTPUT', $this->text_domain ) . '-----' . "\n";
 
@@ -306,11 +307,9 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 					 * the error message from being displayed in the webpage.
 					 */
 					if ( method_exists( 'SucomUtil', 'safe_error_log' ) ) {
-
-						SucomUtil::safe_error_log( $this->label_transl . ': ' . $error_msg . "\n" . $incorrect_msg );
-
+						SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg . "\n" . $output_msg );
 					} else {
-						error_log( $this->label_transl . ': ' . $error_msg . "\n" . $incorrect_msg );
+						error_log( $error_pre . ' ' . $error_msg . "\n" . $output_msg );
 					}
 				}
 

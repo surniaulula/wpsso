@@ -496,24 +496,19 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						$mtime_total, $image_url ) );
 				}
 
-				// translators: %1$0.3f is a number of seconds.
+				$error_pre   = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
 				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$0.3f secs', 'wpsso' ), $mtime_max );
-
-				// translators: %1$0.3f is a number of seconds, %2$s is an image URL, %3$s is a recommended max.
-				$notice_msg = sprintf( __( 'Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s (%3$s).',
+				$error_msg   = sprintf( __( 'Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s (%3$s).',
 					'wpsso' ), $mtime_total, $image_url, $rec_max_msg );
 
 				/**
 				 * Show an admin warning notice, if notices not already shown.
 				 */
 				if ( $this->p->notice->is_admin_pre_notices() ) {
-					$this->p->notice->warn( $notice_msg );
+					$this->p->notice->warn( $error_msg );
 				}
 
-				// translators: %s is the short plugin name.
-				$notice_pre = sprintf( __( '%s warning:', 'wpsso' ), $info[ 'short' ] );
-
-				self::safe_error_log( $notice_pre . ' ' . $notice_msg );
+				self::safe_error_log( $error_pre . ' ' . $error_msg );
 			}
 
 			if ( is_array( $image_info ) ) {
@@ -3464,11 +3459,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						$mtime_total, $filter_name ) );
 				}
 
-				// translators: %1$0.3f is a number of seconds.
+				$error_pre   = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
 				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$0.3f secs', 'wpsso' ), $mtime_max );
-
-				// translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max.
-				$notice_msg = sprintf( __( 'Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "%2$s" filter (%3$s).',
+				$error_msg   = sprintf( __( 'Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "%2$s" filter (%3$s).',
 					'wpsso' ), $mtime_total, $filter_name, $rec_max_msg );
 
 				/**
@@ -3488,14 +3481,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						$this->p->notice->warn( sprintf( __( 'Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f seconds to execute. This is longer than the recommended maximum of %3$0.3f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code.', 'wpsso' ), $filter_api_link, $mtime_total, $mtime_max ) . ' ' . sprintf( __( 'Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance.', 'wpsso' ), $query_monitor_link, $info[ 'short' ] ), null, $notice_key, WEEK_IN_SECONDS );
 
 					} else {
-						$this->p->notice->warn( $notice_msg );
+						$this->p->notice->warn( $error_msg );
 					}
 				}
 
-				// translators: %s is the short plugin name.
-				$notice_pre = sprintf( __( '%s warning:', 'wpsso' ), $info[ 'short' ] );
-
-				self::safe_error_log( $notice_pre . ' ' . $notice_msg );
+				self::safe_error_log( $error_pre . ' ' . $error_msg );
 			}
 
 			/**

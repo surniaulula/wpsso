@@ -3420,9 +3420,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						if ( $do_decode ) {	// Return only the decoded json data.
 
 							if ( is_array( $json_decoded ) ) {
+
 								$json_data[ $json_md5 ] = $json_decoded;
+
 							} else {
-								self::safe_error_log( 'error decoding json script: ' . print_r( $matches[ 1 ], true ) );
+
+								$error_pre = sprintf( '%s error:', __METHOD__ );
+								$error_msg = sprintf( 'Error decoding json script: %s', print_r( $matches[ 1 ], true ) );
+
+								self::safe_error_log( $error_pre . ' ' . $error_msg );
 							}
 
 						} else {	// Return the complete script container.

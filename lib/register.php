@@ -311,10 +311,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 				if ( method_exists( 'SucomUtil', 'safe_error_log' ) ) {
 
-					// translators: %s is the short plugin name.
-					$error_pre = sprintf( __( '%s warning:', 'wpsso' ), $info[ 'short' ] );
-
-					// translators: %1$s is the short plugin name, %2$s is the application name, %3$s is the application version number.
+					$error_pre = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
 					$error_msg = sprintf( __( '%1$s requires %2$s version %3$s or higher and has been deactivated.',
 						'wpsso' ), $plugin_name, $app_label, $min_version );
 
