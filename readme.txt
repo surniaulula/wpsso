@@ -465,15 +465,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.20.0-dev.2 (2020/02/09)**
+**Version 6.20.0-rc.1 (2020/02/09)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added sorting (by default) of translated labels for `SucomForm->get_select()` options.
+	* Added detection of write errors when creating a javascript file for the Schema type, article sections, and product category arrays.
 * **Bugfixes**
-	* Fixed the detection of a possible write error when writing the javascript file cache for the Schema type, article sections, and product category arrays.
+	* None.
 * **Developer Notes**
+	* Added sorting by default for translated labels in the `SucomForm->get_select()` method.
 	* Added calls to `SucomUtil::safe_error_log()` for error messages in the SucomCache methods.
 * **Requires At Least**
 	* PHP v5.5.
@@ -796,9 +797,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.20.0-dev.2 =
+= 6.20.0-rc.1 =
 
-(2020/02/09) Added sorting (by default) of translated labels for `SucomForm->get_select()` options.
+(2020/02/09) Added detection of write errors when creating a javascript file for the Schema type, article sections, and product category arrays.
 
 = 6.19.0 =
 
