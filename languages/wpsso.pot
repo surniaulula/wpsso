@@ -847,38 +847,38 @@ msgstr ""
 msgid "Requests to cache this URL will be ignored for %d second(s)."
 msgstr ""
 
-#: lib/com/cache.php:350 lib/com/cache.php:507 lib/gettext-com.php:16
-#: lib/gettext-com.php:18
+#: lib/com/cache.php:354 lib/com/cache.php:511 lib/gettext-com.php:16
+#: lib/gettext-com.php:18 lib/util.php:1740
 msgid "Error removing cache file %s."
 msgstr ""
 
-#: lib/com/cache.php:405 lib/gettext-com.php:17
+#: lib/com/cache.php:409 lib/gettext-com.php:17
 msgid ""
 "PHP cURL library missing &mdash; contact your hosting provider to have the "
 "cURL library installed."
 msgstr ""
 
-#: lib/com/cache.php:741 lib/gettext-com.php:19
+#: lib/com/cache.php:745 lib/gettext-com.php:19
 msgid "Cache file %s is not readable."
 msgstr ""
 
-#: lib/com/cache.php:760 lib/gettext-com.php:20
+#: lib/com/cache.php:764 lib/gettext-com.php:20
 msgid "Failed to open the cache file %s for reading."
 msgstr ""
 
-#: lib/com/cache.php:858 lib/gettext-com.php:21
+#: lib/com/cache.php:862 lib/gettext-com.php:21
 msgid "Failed to create the %s cache folder."
 msgstr ""
 
-#: lib/com/cache.php:871 lib/gettext-com.php:22
+#: lib/com/cache.php:875 lib/gettext-com.php:22
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: lib/com/cache.php:884 lib/gettext-com.php:23
+#: lib/com/cache.php:888 lib/gettext-com.php:23
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: lib/com/cache.php:911 lib/gettext-com.php:24
+#: lib/com/cache.php:915 lib/gettext-com.php:24
 msgid "Failed writing data to cache file %s."
 msgstr ""
 
@@ -6124,12 +6124,12 @@ msgid "Archives: %s"
 msgstr ""
 
 #: lib/post.php:475 lib/register.php:314 lib/term.php:419 lib/user.php:366
-#: lib/util.php:499 lib/util.php:3463
+#: lib/util.php:499 lib/util.php:3467
 msgid "%s warning:"
 msgstr ""
 
 #: lib/post.php:476 lib/term.php:420 lib/user.php:367 lib/util.php:500
-#: lib/util.php:3464
+#: lib/util.php:3468
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -6182,7 +6182,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:1022 lib/util.php:1993
+#: lib/post.php:1022 lib/util.php:1997
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -6864,7 +6864,7 @@ msgstr ""
 
 #: lib/submenu/tools.php:89
 msgctxt "submit button"
-msgid "Delete All Cache Files"
+msgid "Delete All Files in Cache Folder"
 msgstr ""
 
 #: lib/submenu/tools.php:90
@@ -6998,47 +6998,43 @@ msgstr ""
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util.php:1738
-msgid "Failed to remove the cache file %s."
-msgstr ""
-
-#: lib/util.php:1798
+#: lib/util.php:1802
 msgid "Error reading the %s file for the article sections list."
 msgstr ""
 
-#: lib/util.php:1890
+#: lib/util.php:1894
 msgid "Error reading the %s file for the product categories list."
 msgstr ""
 
-#: lib/util.php:1980
+#: lib/util.php:1984
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:2006
+#: lib/util.php:2010
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:2200
+#: lib/util.php:2204
 msgid ""
 "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
 "provider to have the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:2213
+#: lib/util.php:2217
 msgid ""
 "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:3465
+#: lib/util.php:3469
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3482
+#: lib/util.php:3486
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -7047,39 +7043,39 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3482
+#: lib/util.php:3486
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3776
+#: lib/util.php:3780
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:3805
+#: lib/util.php:3809
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3808
+#: lib/util.php:3812
 msgctxt "option comment"
 msgid "show these options now"
 msgstr ""
 
-#: lib/util.php:3813
+#: lib/util.php:3817
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3816
+#: lib/util.php:3820
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name, and %3$s is the object ID.
-#: lib/util.php:4139
+#: lib/util.php:4143
 msgid "%1$s for %2$s ID %3$s"
 msgstr ""
 

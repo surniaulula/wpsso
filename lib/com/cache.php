@@ -243,9 +243,13 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				$cache_file = $this->base_dir . md5( $cache_salt ) . $file_ext;
 
-				if ( file_exists( $cache_file ) && @unlink( $cache_file ) ) {
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'cleared local cache file: ' . $cache_file );
+				if ( file_exists( $cache_file ) ) {
+				
+					if ( @unlink( $cache_file ) ) {
+
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'cleared local cache file: ' . $cache_file );
+						}
 					}
 				}
 			}

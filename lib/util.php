@@ -1707,10 +1707,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$this->p->debug->log( 'failed to open the cache folder ' . $cache_dir . ' for reading' );
 				}
 
-				if ( is_admin() ) {
-					$this->p->notice->err( sprintf( __( 'Failed to open the cache folder %s for reading.',
-						'wpsso' ), $cache_dir ) );
-				}
+				$error_pre = sprintf( '%s error:', __METHOD__ );
+				$error_msg = sprintf( __( 'Failed to open the cache folder %s for reading.', 'wpsso' ), $cache_file );
+
+				$this->p->notice->err( $error_msg );
+
+				SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
 
 			} else {
 
@@ -1731,13 +1733,15 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						} else {	
 
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'failed to remove the cache file '.$cache_file );
+								$this->p->debug->log( 'error removing cache file ' . $cache_file );
 							}
 
-							if ( is_admin() ) {
-								$this->p->notice->err( sprintf( __( 'Failed to remove the cache file %s.',
-									'wpsso' ), $cache_file ) );
-							}
+							$error_pre = sprintf( '%s error:', __METHOD__ );
+							$error_msg = sprintf( __( 'Error removing cache file %s.', 'wpsso' ), $cache_file );
+
+							$this->p->notice->err( $error_msg );
+
+							SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
 						}
 					}
 				}

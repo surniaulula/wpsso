@@ -86,7 +86,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$clear_cache_label_transl        = _x( 'Clear All Caches', 'submit button', 'wpsso' );
 			$clear_short_label_transl        = _x( 'Clear All Caches and Short URLs', 'submit button', 'wpsso' );
-			$delete_cache_files_label_transl = _x( 'Delete All Cache Files', 'submit button', 'wpsso' );
+			$delete_cache_files_label_transl = _x( 'Delete All Files in Cache Folder', 'submit button', 'wpsso' );
 			$delete_transients_label_transl  = _x( 'Delete All Database Transients', 'submit button', 'wpsso' );
 			$export_settings_label_transl    = _x( 'Export Plugin and Add-on Settings', 'submit button', 'wpsso' );
 			$import_settings_label_transl    = _x( 'Import Plugin and Add-on Settings', 'submit button', 'wpsso' );
