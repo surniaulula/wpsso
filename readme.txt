@@ -465,7 +465,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.20.1-dev.1 (2020/02/09)**
+**Version 6.20.1-dev.2 (2020/02/10)**
 
 * **New Features**
 	* None.
@@ -811,9 +811,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.20.1-dev.1 =
+= 6.20.1-dev.2 =
 
-(2020/02/09) Added a "Delete All Files in Cache Folder" button in the SSO &gt; Tools and Actions page.
+(2020/02/10) Added a "Delete All Files in Cache Folder" button in the SSO &gt; Tools and Actions page.
 
 = 6.20.0 =
 
