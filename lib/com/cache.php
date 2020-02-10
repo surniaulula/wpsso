@@ -363,11 +363,18 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			if ( $this->save_cache_data( $cache_salt, $cache_data, $cache_type = 'file', $exp_secs, $file_ext ) ) {
 
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'cache data sucessfully saved' );
-				}
+				if ( file_exists( $cache_file ) ) {
 
-				return $cache_url;
+					$file_mod_time = filemtime( $cache_file );
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'cache data sucessfully saved' );
+					}
+
+					$cache_url = add_query_arg( 'mtime', $file_mod_time, $cache_url );
+
+					return $cache_url;
+				}
 			}
 
 			return false;
@@ -890,7 +897,11 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 						$data_saved = true;	// Success.
 
-					} else {
+					} else {	// Error writing to cache file.
+
+						fclose( $fh );
+
+						@unlink( $cache_file );	// Just in case.
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'failed writing data to cache file ' . $cache_file );
