@@ -465,6 +465,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 6.20.1-dev.1 (2020/02/09)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added a "Delete All Files in Cache Folder" button in the SSO &gt; Tools and Actions page.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v5.5.
+	* WordPress v4.0.
+
 **Version 6.20.0 (2020/02/09)**
 
 * **New Features**
@@ -796,6 +810,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v3.9.
 
 == Upgrade Notice ==
+
+= 6.20.1-dev.1 =
+
+(2020/02/09) Added a "Delete All Files in Cache Folder" button in the SSO &gt; Tools and Actions page.
 
 = 6.20.0 =
 
