@@ -1405,9 +1405,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$submit_label_transl = _x( 'Save All Plugin Settings', 'submit button', 'wpsso' );
 			}
 
-			$view_next_key     = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf[ 'form' ][ 'show_options' ] );
-			$view_name_transl  = _x( $this->p->cf[ 'form' ][ 'show_options' ][ $view_next_key ], 'option value', 'wpsso' );
-			$view_label_transl = sprintf( _x( 'Change to "%s" View', 'submit button', 'wpsso' ), $view_name_transl );
+			$change_show_next_key     = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf[ 'form' ][ 'show_options' ] );
+			$change_show_name_transl  = _x( $this->p->cf[ 'form' ][ 'show_options' ][ $change_show_next_key ], 'option value', 'wpsso' );
+			$change_show_label_transl = sprintf( _x( 'Change to "%s" View', 'submit button', 'wpsso' ), $change_show_name_transl );
 
 			/**
 			 * A two dimentional array of button rows. The 'submit' button will be assigned a class of
@@ -1417,7 +1417,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$form_button_rows = array(
 				array(
 					'submit' => $submit_label_transl,
-					'change_show_options&show-opts=' . $view_next_key => $view_label_transl,
+					'change_show_options&show-opts=' . $change_show_next_key => $change_show_label_transl,
 				),
 			);
 

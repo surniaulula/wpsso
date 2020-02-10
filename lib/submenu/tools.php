@@ -82,6 +82,10 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 		public function filter_form_button_rows( $form_button_rows ) {
 
+			$change_show_next_key     = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf[ 'form' ][ 'show_options' ] );
+			$change_show_name_transl  = _x( $this->p->cf[ 'form' ][ 'show_options' ][ $change_show_next_key ], 'option value', 'wpsso' );
+			$change_show_label_transl = sprintf( _x( 'Change to "%s" View', 'submit button', 'wpsso' ), $change_show_name_transl );
+
 			$using_external_cache = wp_using_ext_object_cache();
 
 			$clear_cache_label_transl        = _x( 'Clear All Caches', 'submit button', 'wpsso' );
@@ -120,6 +124,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 					// 'Reload Default Image Sizes' button added by the WpssoSubmenuImageSizes class.
 				),
 				array(
+					'change_show_options&show-opts=' . $change_show_next_key => $change_show_label_transl,
 					'reset_user_dismissed_notices' => _x( 'Reset User Dismissed Notices', 'submit button', 'wpsso' ),
 					'reset_user_metabox_layout'    => _x( 'Reset User Metabox Layout', 'submit button', 'wpsso' ),
 				),

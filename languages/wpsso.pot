@@ -225,7 +225,7 @@ msgctxt "plugin action link"
 msgid "Community Forum"
 msgstr ""
 
-#: lib/admin.php:916 lib/submenu/tools.php:87
+#: lib/admin.php:916 lib/submenu/tools.php:91
 msgctxt "submit button"
 msgid "Clear All Caches"
 msgstr ""
@@ -329,7 +329,7 @@ msgctxt "submit button"
 msgid "Save All Plugin Settings"
 msgstr ""
 
-#: lib/admin.php:1410
+#: lib/admin.php:1410 lib/submenu/tools.php:87
 msgctxt "submit button"
 msgid "Change to \"%s\" View"
 msgstr ""
@@ -6857,37 +6857,37 @@ msgstr ""
 msgid "%1$s option is checked - shortened URLs cache will be cleared."
 msgstr ""
 
-#: lib/submenu/tools.php:88
+#: lib/submenu/tools.php:92
 msgctxt "submit button"
 msgid "Clear All Caches and Short URLs"
 msgstr ""
 
-#: lib/submenu/tools.php:89
+#: lib/submenu/tools.php:93
 msgctxt "submit button"
 msgid "Delete All Files in Cache Folder"
 msgstr ""
 
-#: lib/submenu/tools.php:90
+#: lib/submenu/tools.php:94
 msgctxt "submit button"
 msgid "Delete All Database Transients"
 msgstr ""
 
-#: lib/submenu/tools.php:91
+#: lib/submenu/tools.php:95
 msgctxt "submit button"
 msgid "Export Plugin and Add-on Settings"
 msgstr ""
 
-#: lib/submenu/tools.php:92
+#: lib/submenu/tools.php:96
 msgctxt "submit button"
 msgid "Import Plugin and Add-on Settings"
 msgstr ""
 
-#: lib/submenu/tools.php:123
+#: lib/submenu/tools.php:128
 msgctxt "submit button"
 msgid "Reset User Dismissed Notices"
 msgstr ""
 
-#: lib/submenu/tools.php:124
+#: lib/submenu/tools.php:129
 msgctxt "submit button"
 msgid "Reset User Metabox Layout"
 msgstr ""
