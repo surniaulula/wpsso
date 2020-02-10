@@ -470,7 +470,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a "Delete All Files in Cache Folder" button in the SSO &gt; Tools and Actions page.
+	* Added "Delete All Files in Cache Folder" and "Change to All/Basic Options View" buttons in the SSO &gt; Tools and Actions page.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -813,7 +813,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 6.20.1-dev.2 =
 
-(2020/02/10) Added a "Delete All Files in Cache Folder" button in the SSO &gt; Tools and Actions page.
+(2020/02/10) Added "Delete All Files in Cache Folder" and "Change to All/Basic Options View" buttons in the SSO &gt; Tools and Actions page.
 
 = 6.20.0 =
 
