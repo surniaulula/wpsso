@@ -1041,6 +1041,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							break;
 
+						case 'delete_all_cache_files':
+
+							$deleted_count = $this->p->util->delete_all_cache_files();
+
+							$this->p->notice->upd( sprintf( __( '%s cache files have been deleted.', 'wpsso' ), $deleted_count ) );
+
+							break;
+
 						case 'delete_all_db_transients':
 
 							$deleted_count = $this->p->util->delete_all_db_transients( $clear_short = true, $transient_prefix = '' );

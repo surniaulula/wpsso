@@ -1697,8 +1697,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$cache_dir = constant( 'WPSSO_CACHEDIR' );
+
 			$deleted_count = 0;
-			$cache_dir     = constant( 'WPSSO_CACHEDIR' );
 
 			if ( ! $dh = @opendir( $cache_dir ) ) {
 
