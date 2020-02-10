@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.20.0\n"
+"Project-Id-Version: WPSSO Core 6.20.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-02-09 16:30-0800\n"
-"PO-Revision-Date: 2020-02-09 16:32-0800\n"
+"POT-Creation-Date: 2020-02-10 06:32-0800\n"
+"PO-Revision-Date: 2020-02-10 06:32-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -200,7 +200,7 @@ msgctxt "plugin action link"
 msgid "Community Forum"
 msgstr "Forum communautaire"
 
-#: lib/admin.php:916 lib/submenu/tools.php:87
+#: lib/admin.php:916 lib/submenu/tools.php:91
 msgctxt "submit button"
 msgid "Clear All Caches"
 msgstr "Vider tout les caches"
@@ -295,7 +295,7 @@ msgctxt "submit button"
 msgid "Save All Plugin Settings"
 msgstr "Enregistrer les réglages"
 
-#: lib/admin.php:1410
+#: lib/admin.php:1410 lib/submenu/tools.php:87
 msgctxt "submit button"
 msgid "Change to \"%s\" View"
 msgstr "Passer l'affichage \"%s\""
@@ -6016,37 +6016,37 @@ msgstr "L'option %1$s n'est pas cochée - le cache d'URLs raccourcis sera prése
 msgid "%1$s option is checked - shortened URLs cache will be cleared."
 msgstr "L'option %1$s est cochée - le cache d'URLs raccourcis sera vidé."
 
-#: lib/submenu/tools.php:88
+#: lib/submenu/tools.php:92
 msgctxt "submit button"
 msgid "Clear All Caches and Short URLs"
 msgstr "Vider tout les caches et URLs raccourcies"
 
-#: lib/submenu/tools.php:89
+#: lib/submenu/tools.php:93
 msgctxt "submit button"
 msgid "Delete All Files in Cache Folder"
 msgstr "Supprimer les fichiers du dossier de cache"
 
-#: lib/submenu/tools.php:90
+#: lib/submenu/tools.php:94
 msgctxt "submit button"
 msgid "Delete All Database Transients"
 msgstr "Supprimer objets transitoires de la BdD"
 
-#: lib/submenu/tools.php:91
+#: lib/submenu/tools.php:95
 msgctxt "submit button"
 msgid "Export Plugin and Add-on Settings"
 msgstr "Exporter réglages d'extension et ajouts"
 
-#: lib/submenu/tools.php:92
+#: lib/submenu/tools.php:96
 msgctxt "submit button"
 msgid "Import Plugin and Add-on Settings"
 msgstr "Importer réglages d'extension et ajouts"
 
-#: lib/submenu/tools.php:123
+#: lib/submenu/tools.php:128
 msgctxt "submit button"
 msgid "Reset User Dismissed Notices"
 msgstr "Réinit. avis masquées pour l'utilisateur"
 
-#: lib/submenu/tools.php:124
+#: lib/submenu/tools.php:129
 msgctxt "submit button"
 msgid "Reset User Metabox Layout"
 msgstr "Réinit. disposition métabox pour l'utilisateur"
@@ -6434,6 +6434,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
-
-#~ msgid "Failed to remove the cache file %s."
-#~ msgstr "Impossible de supprimer le dossier de cache %s."
