@@ -296,11 +296,11 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						$og_single_image_url = SucomUtil::get_mt_media_url( $og_single_image );
 
 						/**
-						 * Two 'summary_large_image' webpages cannot have the same image URL, so add a
-						 * unique ID for all 'summary_large_image' images.
+						 * Two 'summary_large_image' pages cannot have the same image URL, so add the post
+						 * ID to all 'summary_large_image' images.
 						 */
 						if ( 'summary_large_image' === $card_type ) {
-							$og_single_image_url = add_query_arg( uniqid(), '', $og_single_image_url );
+							$og_single_image_url = add_query_arg( 'p', $mod[ 'id' ], $og_single_image_url );
 						}
 
 						$mt_tc[ 'twitter:card' ]  = $card_type;
