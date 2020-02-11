@@ -1137,6 +1137,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 		private function check_banner_image_size( $opts ) {
 
+			/**
+			 * Skip if notices have already been shown.
+			 */
 			if ( ! $this->p->notice->is_admin_pre_notices() ) {
 				return;
 			}

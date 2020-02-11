@@ -1284,7 +1284,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public function get_schema_type_url( $type_id, $default_id = false ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
+				$this->p->debug->log( 'getting schema url for ' . $type_id );
 			}
 
 			$schema_types = $this->get_schema_types_array( $flatten = true );

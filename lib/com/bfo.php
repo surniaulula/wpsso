@@ -280,6 +280,9 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 
 						if ( isset( $this->p->notice ) ) {
 
+							/**
+							 * Add notice only if the admin notices have not already been shown.
+							 */
 							if ( $this->p->notice->is_admin_pre_notices() ) {
 								$this->p->notice->err( $error_msg );
 							}
@@ -292,6 +295,9 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 
 							$notice = new SucomNotice( $this->p, $this->lca, $this->text_domain, $this->label_transl );
 
+							/**
+							 * Add notice only if the admin notices have not already been shown.
+							 */
 							if ( $notice->is_admin_pre_notices() ) {
 								$notice->err( $error_msg );
 							}

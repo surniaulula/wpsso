@@ -198,9 +198,21 @@ __( 'Plugin conflict detected', 'wpsso' );
 // translators: Please ignore - translation uses a different text domain.
 __( 'Enable Google Rich Snippets?', 'wp-postratings' );
 // translators: Please ignore - translation uses a different text domain.
+__( 'WP-PostRatings', 'wp-postratings' );
+// translators: Please ignore - translation uses a different text domain.
 __( 'Ratings', 'wp-postratings' );
 // translators: Please ignore - translation uses a different text domain.
 __( 'Ratings Options', 'wp-postratings' );
+__( 'please disable the %1$s option in the %2$s settings page.', 'wpsso' );
+__( 'Plugin conflict detected', 'wpsso' );
+// translators: Please ignore - translation uses a different text domain.
+__( 'Type of structured data for rich snippets', 'rate-my-post' );
+// translators: Please ignore - translation uses a different text domain.
+__( 'Rate my Post', 'rate-my-post' );
+// translators: Please ignore - translation uses a different text domain.
+__( 'Settings', 'rate-my-post' );
+// translators: Please ignore - translation uses a different text domain.
+__( 'Rating Widget Settings', 'rate-my-post' );
 __( 'please disable the %1$s option in the %2$s settings page.', 'wpsso' );
 __( 'Yotpo for WooCommerce "%1$s" setting value is empty.', 'wpsso' );
 __( 'Yotpo for WooCommerce "%1$s" setting value is empty.', 'wpsso' );

@@ -645,7 +645,10 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 					$dismiss_time = DAY_IN_SECONDS;
 
-					if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) { // Don't bother if already dismissed.
+					/**
+					 * Add notice only if the admin notices have not already been shown.
+					 */
+					if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
 					
 						$this->p->notice->warn( __( 'An issue with WPBakery Visual Composer has been detected.', 'wpsso' ) . ' ' . sprintf( __( 'WPBakery Visual Composer version %s (and older) are known to have a bug in their jQuery event handling code.', 'wpsso' ), $wpb_vc_version_event_bug ) . ' ' . sprintf( __( 'To avoid jQuery crashing on show / hide events, please contact WPBakery plugin support and <a href="%s">report the WPBakery Visual Composer change event handler bug described here</a>.', 'wpsso' ), 'https://surniaulula.com/2018/apps/wordpress/plugins/wpbakery/wpbakery-visual-composer-bug-in-change-handler/' ), null, $notice_key, $dismiss_time );
 					}
@@ -665,7 +668,10 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 				$dismiss_time = YEAR_IN_SECONDS;
 
-				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) { // Don't bother if already dismissed.
+				/**
+				 * Add notice only if the admin notices have not already been shown.
+				 */
+				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
 
 					$this->p->notice->warn( sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engine and social sites from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck the option to allow search engines and social sites to access your content.', 'wpsso' ), get_admin_url( null, 'options-reading.php' ) ), null, $notice_key, $dismiss_time );
 				}

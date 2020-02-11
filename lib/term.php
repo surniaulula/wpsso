@@ -422,9 +422,10 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					'wpsso' ), $mtime_total, $mod[ 'id' ], $mod[ 'tax_slug' ], $rec_max_msg );
 
 				/**
-				 * Show an admin warning notice, if notices not already shown.
+				 * Add notice only if the admin notices have not already been shown.
 				 */
 				if ( $this->p->notice->is_admin_pre_notices() ) {
+
 					$this->p->notice->warn( $error_msg );
 				}
 
@@ -617,7 +618,10 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 							$this->p->debug->log( 'og:' . $mt_suffix . ' meta tag is value empty and required' );
 						}
 
-						if ( $this->p->notice->is_admin_pre_notices() ) {	// Skip if notices already shown.
+						/**
+						 * Add notice only if the admin notices have not already been shown.
+						 */
+						if ( $this->p->notice->is_admin_pre_notices() ) {
 
 							$notice_msg = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
 							$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-og-' . $mt_suffix;
@@ -817,10 +821,16 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			if ( ! $user_can_edit = current_user_can( $this->query_tax_obj->cap->edit_terms ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'insufficient privileges to save settings for term ID ' . $term_id );
 				}
+
+				/**
+				 * Add notice only if the admin notices have not already been shown.
+				 */
 				if ( $this->p->notice->is_admin_pre_notices() ) {
+
 					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for term ID %1$s.',
 						'wpsso' ), $term_id ) );
 				}

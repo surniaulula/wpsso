@@ -991,21 +991,25 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						$wpsso->debug->log( 'organization ' . $logo_key . ' image is missing and required' );
 					}
 
-					if ( $wpsso->notice->is_admin_pre_notices() && ( ! $mod[ 'is_post' ] || $mod[ 'post_status' ] === 'publish' ) ) {
+					/**
+					 * Add notice only if the admin notices have not already been shown.
+					 */
+					if ( $wpsso->notice->is_admin_pre_notices() ) {
+					
+						if ( ! $mod[ 'is_post' ] || $mod[ 'post_status' ] === 'publish' ) {
 
-						if ( $logo_key === 'org_logo_url' ) {
+							if ( $logo_key === 'org_logo_url' ) {
 
-							$error_msg = __( 'The "%1$s" Organization Logo image is missing and required for the Schema %2$s markup.',
-								'wpsso' );
+								$error_msg = __( 'The "%1$s" Organization Logo image is missing and required for the Schema %2$s markup.', 'wpsso' );
 
-							$wpsso->notice->err( sprintf( $error_msg, $ret[ 'name' ], $org_type_url ) );
+								$wpsso->notice->err( sprintf( $error_msg, $ret[ 'name' ], $org_type_url ) );
 
-						} elseif ( $logo_key === 'org_banner_url' ) {
+							} elseif ( $logo_key === 'org_banner_url' ) {
 
-							$error_msg = __( 'The "%1$s" Organization Banner (600x60px) image is missing and required for the Schema %2$s markup.',
-								'wpsso' );
-
-							$wpsso->notice->err( sprintf( $error_msg, $ret[ 'name' ], $org_type_url ) );
+								$error_msg = __( 'The "%1$s" Organization Banner (600x60px) image is missing and required for the Schema %2$s markup.', 'wpsso' );
+	
+								$wpsso->notice->err( sprintf( $error_msg, $ret[ 'name' ], $org_type_url ) );
+							}
 						}
 					}
 				}

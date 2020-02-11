@@ -218,7 +218,10 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			$notice_key   = 'suggest-' . $ext . '-for-woocommerce';
 			$dismiss_time = true;	// Can be dismissed permanently.
 
-			if ( ! $this->p->notice->is_admin_pre_notices( $notice_key ) ) { // Skip if already dismissed.
+			/**
+			 * Skip if already dismissed.
+			 */
+			if ( ! $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
 				return;
 			}
 

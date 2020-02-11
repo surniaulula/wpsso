@@ -478,7 +478,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					'wpsso' ), $mtime_total, $mod[ 'id' ], $rec_max_msg );
 
 				/**
-				 * Show an admin warning notice, if notices not already shown.
+				 * Add notice only if the admin notices have not already been shown.
 				 */
 				if ( $this->p->notice->is_admin_pre_notices() ) {
 					$this->p->notice->warn( $error_msg );
@@ -1723,7 +1723,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->debug->log( 'insufficient privileges to save settings for ' . $post_type . ' ID ' . $post_id );
 				}
 
+				/**
+				 * Add notice only if the admin notices have not already been shown.
+				 */
 				if ( $this->p->notice->is_admin_pre_notices() ) {
+
 					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for %1$s ID %2$s.',
 						'wpsso' ), $post_type, $post_id ) );
 				}

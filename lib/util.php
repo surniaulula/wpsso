@@ -502,9 +502,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					'wpsso' ), $mtime_total, $image_url, $rec_max_msg );
 
 				/**
-				 * Show an admin warning notice, if notices not already shown.
+				 * Add notice only if the admin notices have not already been shown.
 				 */
 				if ( $this->p->notice->is_admin_pre_notices() ) {
+
 					$this->p->notice->warn( $error_msg );
 				}
 
@@ -3470,7 +3471,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					'wpsso' ), $mtime_total, $filter_name, $rec_max_msg );
 
 				/**
-				 * Show an admin warning notice, if notices not already shown.
+				 * Add notice only if the admin notices have not already been shown.
 				 */
 				if ( $this->p->notice->is_admin_pre_notices() ) {
 

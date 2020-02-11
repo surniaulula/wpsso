@@ -200,6 +200,12 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							break;
 
+						case 'rating-rate-my-post':
+
+							$chk[ 'class' ] = 'Rate_My_Post';
+
+							break;
+
 						case 'rating-wppostratings':
 
 							$chk[ 'constant' ] = 'WP_POSTRATINGS_VERSION';

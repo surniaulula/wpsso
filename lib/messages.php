@@ -2288,7 +2288,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= __( 'WordPress uses the <code>WP_HOME</code> constant to provide a single unique canonical URL for each webpage and Media Library content.', 'wpsso' ) . ' ';
 
-						$text .= __( 'A changing <code>WP_HOME</code> value will create different canonical URLs in your webpages, leading to duplicate content penalties from Google, incorrect social share counts, possible broken media links, mixed content issues, and SSL certificate errors', 'wpsso' ) . ' ';
+						$text .= __( 'A changing <code>WP_HOME</code> value will create different canonical URLs in your webpages, leading to duplicate content penalties from Google, incorrect social share counts, possible broken media links, mixed content issues, and SSL certificate errors.', 'wpsso' ) . ' ';
 
 						$text .= __( 'Please update your <code>wp-config.php</code> file and provide a fixed, non-variable value for the <code>WP_HOME</code> constant.', 'wpsso' );
 

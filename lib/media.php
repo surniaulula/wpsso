@@ -113,7 +113,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$size_info[ 'width' ] . 'x' . $size_info[ 'height' ] . '_rejected';
 
 				/**
-				 * Skip if notices have already been shown.
+				 * Add notice only if the admin notices have not already been shown.
 				 */
 				if ( $this->p->notice->is_admin_pre_notices() ) {
 
@@ -202,7 +202,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			/**
-			 * Skip if notices have already been shown.
+			 * Add notice only if the admin notices have not already been shown.
 			 */
 			if ( $this->p->notice->is_admin_pre_notices() ) {
 
@@ -648,7 +648,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$this->p->debug->log( 'ngg module is not available: image id ' . $attr_value . ' ignored' );
 					}
 
-					if ( $this->p->notice->is_admin_pre_notices() ) {	// Skip if notices already shown.
+					/**
+					 * Add notice only if the admin notices have not already been shown.
+					 */
+					if ( $this->p->notice->is_admin_pre_notices() ) {
 
 						$error_msg = __( 'The NGG integration module provided by %1$s is required to read information for image ID %2$s.', 'wpsso' );
 
@@ -717,7 +720,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$notice_key = 'full-size-image-' . $pid . '-dimensions-missing';
 
-					if ( $this->p->notice->is_admin_pre_notices() ) { // Skip if notices already shown.
+					/**
+					 * Add notice only if the admin notices have not already been shown.
+					 */
+					if ( $this->p->notice->is_admin_pre_notices() ) {
 
 						$error_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the full size image dimensions for <a href="%2$s">image ID %3$s</a> are missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' ), $media_lib, $img_edit_url, $pid, $wp_func_url, '<code>' . $wp_func_name . '</code>' );
 
@@ -740,7 +746,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$notice_key = 'full-size-image-' . $pid . '-file-path-missing';
 
-					if ( $this->p->notice->is_admin_pre_notices() ) { // Skip if notices already shown.
+					/**
+					 * Add notice only if the admin notices have not already been shown.
+					 */
+					if ( $this->p->notice->is_admin_pre_notices() ) {
 
 						$error_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the full size image file path for <a href="%2$s">image ID %3$s</a> is missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' ), $media_lib, $img_edit_url, $pid, $wp_func_url, '<code>' . $wp_func_name . '</code>' );
 
@@ -856,7 +865,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 							$notice_key = 'image-make-intermediate-size-' . $fullsizepath . '-failure';
 
-							if ( $this->p->notice->is_admin_pre_notices() ) { // Skip if notices already shown.
+							/**
+							 * Add notice only if the admin notices have not already been shown.
+							 */
+							if ( $this->p->notice->is_admin_pre_notices() ) {
 
 								$media_lib = __( 'Media Library', 'wpsso' );
 
@@ -1969,7 +1981,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$img_width . 'x' . $img_height . ' aspect ratio is equal to/or greater than ' . $max_ratio . ':1' );
 				}
 
-				if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
+				/**
+				 * Add notice only if the admin notices have not already been shown.
+				 */
+				if ( $this->p->notice->is_admin_pre_notices() ) {
 
 					$notice_key = 'image_' . $img_mixed . '_' . $img_width . 'x' . $img_height . '_' . $size_name . '_ratio_greater_than_allowed';
 
@@ -1997,7 +2012,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$img_width . 'x' . $img_height . ' smaller than minimum ' . $min_width . 'x' . $min_height . ' for ' . $size_name );
 				}
 
-				if ( $this->p->notice->is_admin_pre_notices() ) {	// Skip if notices already shown.
+				/**
+				 * Add notice only if the admin notices have not already been shown.
+				 */
+				if ( $this->p->notice->is_admin_pre_notices() ) {
 
 					$notice_key = 'image_' . $img_mixed . '_' . $img_width . 'x' . $img_height . '_' . $size_name . '_smaller_than_minimum_allowed';
 

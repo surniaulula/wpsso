@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.20.1-dev.2',	// Plugin version.
+					'version'     => '6.20.1-dev.3',	// Plugin version.
 					'opt_version' => '702',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -124,6 +124,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'youtube'    => '(api) YouTube Video / Playlist API',
 							),
 							'rating' => array(
+								'rate-my-post'  => '(plugin) Rate my Post',
 								'wppostratings' => '(plugin) WP-PostRatings',
 							),
 							'recipe' => array(
@@ -3385,6 +3386,69 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'unitCode' => 'CMT',
 						),
 					),
+				),
+
+				/**
+				 * The official Schema standard provides 'aggregateRating' and 'review' properties for these types:
+				 *
+				 * 	Brand
+				 * 	CreativeWork
+				 * 	Event
+				 * 	Offer
+				 * 	Organization
+				 * 	Place
+				 * 	Product
+				 * 	Service 
+				 *
+				 * Unfortunately, Google only supports 'aggregateRating' and 'review' properties for these types:
+				 *
+				 *	Book
+				 *	Course
+				 *	Event
+				 *	HowTo (includes the Recipe sub-type)
+				 *	LocalBusiness
+				 *	Movie
+				 *	Product
+				 *	SoftwareApplication
+				 *
+				 * And the 'review' property for these types:
+				 *
+				 *	CreativeWorkSeason
+				 *	CreativeWorkSeries
+				 *	Episode
+				 *	Game
+				 *	MediaObject
+				 *	MusicPlaylist
+				 * 	MusicRecording
+				 *	Organization
+				 */
+				'schema_aggregate_rating_parents' => array(	// Element of 'head' array.
+					'book',
+					'course',
+					'event',
+					'how.to',
+					'local.business',
+					'movie',
+					'product',
+					'software.application',
+				),
+				'schema_review_parents' => array(	// Element of 'head' array.
+					'book',
+					'course',
+					'creative.work.season',
+					'creative.work.series',
+					'episode',
+					'event',
+					'game',
+					'how.to',
+					'local.business',
+					'media.object',
+					'movie',
+					'music.playlist',
+					'music.recording',
+					'organization',
+					'product',
+					'software.application',
 				),
 
 				/**
