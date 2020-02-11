@@ -198,6 +198,7 @@
 <li><a href="https://wordpress.org/plugins/perfect-woocommerce-brands/">Perfect WooCommerce Brands</a></li>
 <li><a href="https://wordpress.org/plugins/polylang/">Polylang</a></li>
 <li><a href="https://wordpress.org/plugins/product-gtin-ean-upc-isbn-for-woocommerce/">Product GTIN (EAN, UPC, ISBN) for WooCommerce</a></li>
+<li><a href="https://wordpress.org/plugins/rate-my-post/">Rate my Post</a></li>
 <li><a href="https://wordpress.org/plugins/buddypress-media/">rtMedia for WordPress, BuddyPress and bbPress</a></li>
 <li><a href="https://wordpress.org/plugins/simple-job-board/">Simple Job Board</a></li>
 <li><a href="https://wordpress.org/plugins/the-events-calendar/">The Events Calendar</a></li>

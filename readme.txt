@@ -180,6 +180,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 		* [Perfect WooCommerce Brands](https://wordpress.org/plugins/perfect-woocommerce-brands/)
 		* [Polylang](https://wordpress.org/plugins/polylang/)
 		* [Product GTIN (EAN, UPC, ISBN) for WooCommerce](https://wordpress.org/plugins/product-gtin-ean-upc-isbn-for-woocommerce/)
+		* [Rate my Post](https://wordpress.org/plugins/rate-my-post/)
 		* [rtMedia for WordPress, BuddyPress and bbPress](https://wordpress.org/plugins/buddypress-media/)
 		* [Simple Job Board](https://wordpress.org/plugins/simple-job-board/)
 		* [The Events Calendar](https://wordpress.org/plugins/the-events-calendar/)
@@ -465,10 +466,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.20.1-dev.2 (2020/02/10)**
+**Version 6.20.1-dev.3 (2020/02/10)**
 
 * **New Features**
-	* None.
+	* Added support for the Rate my Post plugin.
 * **Improvements**
 	* Added "Delete All Files in Cache Folder" and "Change to All/Basic Options View" buttons in the SSO &gt; Tools and Actions page.
 * **Bugfixes**
@@ -811,9 +812,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.20.1-dev.2 =
+= 6.20.1-dev.3 =
 
-(2020/02/10) Added "Delete All Files in Cache Folder" and "Change to All/Basic Options View" buttons in the SSO &gt; Tools and Actions page.
+(2020/02/10) Added support for the Rate my Post plugin. Added "Delete All Files in Cache Folder" and "Change to All/Basic Options View" buttons in the SSO &gt; Tools and Actions page.
 
 = 6.20.0 =
 
