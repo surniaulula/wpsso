@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.21.0-dev.5\n"
+"Project-Id-Version: WPSSO Core 6.21.0-dev.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -848,7 +848,7 @@ msgid "Requests to cache this URL will be ignored for %d second(s)."
 msgstr ""
 
 #: lib/com/cache.php:354 lib/com/cache.php:511 lib/gettext-com.php:16
-#: lib/gettext-com.php:18 lib/util.php:1741
+#: lib/gettext-com.php:18 lib/util.php:1846
 msgid "Error removing cache file %s."
 msgstr ""
 
@@ -2698,7 +2698,7 @@ msgid "Refresh Short URLs on Clear Cache"
 msgstr ""
 
 #: lib/gettext-pro.php:54 lib/pro/admin/advanced.php:312
-#: lib/std/admin/advanced.php:320 lib/util.php:1370
+#: lib/std/admin/advanced.php:320 lib/util.php:1313
 msgctxt "option label"
 msgid "Auto-Refresh Cache After Clearing"
 msgstr ""
@@ -6147,12 +6147,12 @@ msgid "Archives: %s"
 msgstr ""
 
 #: lib/post.php:475 lib/register.php:314 lib/term.php:419 lib/user.php:366
-#: lib/util.php:499 lib/util.php:3474
+#: lib/util.php:496 lib/util.php:3579
 msgid "%s warning:"
 msgstr ""
 
-#: lib/post.php:476 lib/term.php:420 lib/user.php:367 lib/util.php:500
-#: lib/util.php:3475
+#: lib/post.php:476 lib/term.php:420 lib/user.php:367 lib/util.php:497
+#: lib/util.php:3580
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -6205,7 +6205,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:1022 lib/util.php:1998
+#: lib/post.php:1022 lib/util.php:2103
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -6981,83 +6981,83 @@ msgstr ""
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/util.php:501
+#: lib/util.php:498
 msgid ""
 "Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s "
 "(%3$s)."
 msgstr ""
 
-#: lib/util.php:1297
+#: lib/util.php:1293
 msgid ""
 "%s cached files, transient cache, column meta, and the WordPress object "
 "cache have been cleared."
 msgstr ""
 
-#: lib/util.php:1302
-msgid "The cache for %s has also been cleared."
-msgstr ""
-
-#: lib/util.php:1355 lib/util.php:1494
-msgid "The total execution time for this task was %0.3f seconds."
-msgstr ""
-
-#: lib/util.php:1361
+#: lib/util.php:1306
 msgid ""
 "A background task will begin shortly to refresh the post, term, and user "
 "cache objects."
 msgstr ""
 
-#: lib/util.php:1372
+#: lib/util.php:1315
 msgid "Cache objects will be re-created as they are needed (%s is disabled)."
 msgstr ""
 
-#: lib/util.php:1488
+#: lib/util.php:1321 lib/util.php:1595
+msgid "The total execution time for this task was %0.3f seconds."
+msgstr ""
+
+#: lib/util.php:1340
+msgid "The cache for <strong>%s</strong> has also been cleared."
+msgstr ""
+
+#: lib/util.php:1590
 msgid ""
 "The meta tag and Schema markup caches for %1$d posts, %2$d terms, and %3$d "
 "users have been refreshed."
 msgstr ""
 
-#: lib/util.php:1712
+#: lib/util.php:1817
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util.php:1803
+#: lib/util.php:1908
 msgid "Error reading the %s file for the article sections list."
 msgstr ""
 
-#: lib/util.php:1895
+#: lib/util.php:2000
 msgid "Error reading the %s file for the product categories list."
 msgstr ""
 
-#: lib/util.php:1985
+#: lib/util.php:2090
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:2011
+#: lib/util.php:2116
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:2211
+#: lib/util.php:2316
 msgid ""
 "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
 "provider to have the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:2224
+#: lib/util.php:2329
 msgid ""
 "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:3476
+#: lib/util.php:3581
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3493
+#: lib/util.php:3598
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -7066,39 +7066,39 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3493
+#: lib/util.php:3598
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3787
+#: lib/util.php:3892
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:3816
+#: lib/util.php:3921
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3819
+#: lib/util.php:3924
 msgctxt "option comment"
 msgid "show these options now"
 msgstr ""
 
-#: lib/util.php:3824
+#: lib/util.php:3929
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3827
+#: lib/util.php:3932
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name, and %3$s is the object ID.
-#: lib/util.php:4153
+#: lib/util.php:4258
 msgid "%1$s for %2$s ID %3$s"
 msgstr ""
 

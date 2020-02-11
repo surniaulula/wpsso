@@ -15,7 +15,7 @@
  * Requires At Least: 4.0
  * Tested Up To: 5.3.2
  * WC Tested Up To: 3.9.1
- * Version: 6.21.0-dev.5
+ * Version: 6.21.0-dev.6
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -562,7 +562,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 						if ( $has_function_use ) {
 
 							$function = function() use ( $action, $prio ) {
-								echo "\n" . '<!-- wpsso ' . $action . ' action hook priority ' . $prio . ' mark -->' . "\n\n";
+								echo "\n" . '<!-- wpsso ' . $action . ' action hook priority ' .
+									$prio . ' mark -->' . "\n\n";
 							};
 
 							add_action( $action, $function, $prio );
@@ -583,7 +584,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 						 * Prepend marker.
 						 */
 						$function = function( $str ) use ( $filter, $min_int ) {
-							return "\n\n" . '<!-- wpsso ' . $filter . ' filter hook priority ' . $min_int . ' mark -->' . "\n\n" . $str;
+							return "\n\n" . '<!-- wpsso ' . $filter . ' filter hook priority ' .
+								$min_int . ' mark -->' . "\n\n" . $str;
 						};
 	
 						add_filter( $filter, $function, $min_int );
@@ -592,7 +594,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 						 * Append marker.
 						 */
 						$function = function( $str ) use ( $filter, $max_int ) {
-							return $str . "\n\n" . '<!-- wpsso ' . $filter . ' filter hook priority ' . $max_int . ' mark -->' . "\n\n";
+							return $str . "\n\n" . '<!-- wpsso ' . $filter . ' filter hook priority ' .
+								$max_int . ' mark -->' . "\n\n";
 						};
 	
 						add_filter( $filter, $function, $max_int );

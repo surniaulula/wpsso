@@ -477,12 +477,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$mtime_start = microtime( true );
-
-			$image_info = $this->p->cache->get_image_size( $image_url, $exp_secs = 300, $curl_opts = array(), $error_handler = 'wpsso_error_handler' );
-
+			$image_info  = $this->p->cache->get_image_size( $image_url, $exp_secs = 300, $curl_opts = array(), $error_handler = 'wpsso_error_handler' );
 			$mtime_total = microtime( true ) - $mtime_start;
-
-			$mtime_max = self::get_const( 'WPSSO_PHP_GETIMGSIZE_MAX_TIME', 1.50 );
+			$mtime_max   = self::get_const( 'WPSSO_PHP_GETIMGSIZE_MAX_TIME', 1.50 );
 
 			/**
 			 * Issue warning for slow getimagesize() request.
@@ -1267,8 +1264,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$mtime_start = microtime( true );
-
-			$user_id = $this->maybe_change_user_id( $user_id );
+			$user_id     = $this->maybe_change_user_id( $user_id );
 
 			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
 				do_action( $this->p->lca . '_scheduled_task_started', $user_id );
@@ -1294,94 +1290,201 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			wp_cache_flush();	// Clear non-database transients as well.
 
-			$status_msg = $user_id ? sprintf( __( '%s cached files, transient cache, column meta, and the WordPress object cache have been cleared.',
-				'wpsso' ), $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'short' ] ) : '';
+			$notice_msg = sprintf( __( '%s cached files, transient cache, column meta, and the WordPress object cache have been cleared.', 'wpsso' ),
+				$this->p->cf[ 'plugin' ][ $this->p->lca ][ 'short' ] ) . ' ';
 
+			/**
+			 * Clear all other known caches (Comet Cache, W3TC, etc.).
+			 */
 			if ( $clear_other ) {
 
-				$other_msg = ' ' . __( 'The cache for %s has also been cleared.', 'wpsso' );
-
-				if ( isset( $GLOBALS[ 'comet_cache' ] ) ) {		// Comet Cache.
-
-					$GLOBALS[ 'comet_cache' ]->wipe_cache();
-
-					if ( $status_msg ) {
-						$status_msg .= sprintf( $other_msg, 'Comet Cache' );
-					}
-				}
-
-				if ( class_exists( 'LiteSpeed_Cache_API' ) ) {		// LiteSpeed Cache.
-
-					LiteSpeed_Cache_API::purge_all();
-
-					if ( $status_msg ) {
-						$status_msg .= sprintf( $other_msg, 'LiteSpeed Cache' );
-					}
-				}
-
-				if ( function_exists( 'rocket_clean_domain' ) ) {	// WP Rocket
-
-					rocket_clean_domain();
-
-					if ( $status_msg ) {
-						$status_msg .= sprintf( $other_msg, 'WP Rocket' );
-					}
-				}
-
-				if ( function_exists( 'wp_cache_clear_cache' ) ) {	// WP Super Cache.
-
-					wp_cache_clear_cache();
-
-					if ( $status_msg ) {
-						$status_msg .= sprintf( $other_msg, 'WP Super Cache' );
-					}
-				}
-
-				if ( function_exists( 'w3tc_pgcache_flush' ) ) {	// W3 Total Cache.
-
-					w3tc_pgcache_flush();
-
-					w3tc_objectcache_flush();
-
-					if ( $status_msg ) {
-						$status_msg .= sprintf( $other_msg, 'W3 Total Cache' );
-					}
-				}
-			}
-
-			$mtime_total = microtime( true ) - $mtime_start;
-
-			if ( $status_msg ) {
-				$status_msg .= ' ' . sprintf( __( 'The total execution time for this task was %0.3f seconds.', 'wpsso' ), $mtime_total );
+				$notice_msg .= $this->clear_all_other();
 			}
 
 			if ( $refresh_all ) {
 
-				if ( $status_msg ) {
-					$status_msg .= ' ' . __( 'A background task will begin shortly to refresh the post, term, and user cache objects.', 'wpsso' );
-				}
+				$notice_msg .= __( 'A background task will begin shortly to refresh the post, term, and user cache objects.', 'wpsso' ) . ' ';
 
 				$this->schedule_refresh_all_cache( $user_id );	// Run in the next minute.
 
 			} elseif ( empty( $this->p->options[ 'plugin_clear_all_refresh' ] ) ) {
 
-				if ( $status_msg ) {
-					$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
-						_x( 'Auto-Refresh Cache After Clearing', 'option label', 'wpsso' ) );
+				$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
+					_x( 'Auto-Refresh Cache After Clearing', 'option label', 'wpsso' ) );
 
-					$status_msg .= ' ' . sprintf( __( 'Cache objects will be re-created as they are needed (%s is disabled).',
-						'wpsso' ), $settings_page_link );
-				}
+				$notice_msg .= sprintf( __( 'Cache objects will be re-created as they are needed (%s is disabled).', 'wpsso' ),
+					$settings_page_link ) . ' ';
 			}
 
-			if ( $status_msg ) {
+			$mtime_total = microtime( true ) - $mtime_start;
 
-				$notice_key = 'clear-add-cache-' . $clear_other . '-' . $clear_short . '-' . $refresh_all . '-done';
+			$notice_msg .= sprintf( __( 'The total execution time for this task was %0.3f seconds.', 'wpsso' ), $mtime_total );
 
-				$this->p->notice->upd( $status_msg, $user_id, $notice_key );
+			/**
+			 * Do not save the notice
+			 */
+			if ( $user_id ) {
+
+				$notice_key = 'clear-all-cache-' . $clear_other . '-' . $clear_short . '-' . $refresh_all . '-done';
+
+				$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
 			}
 
 			delete_transient( $cache_id );
+		}
+
+		public function clear_all_other() {
+
+			$notice_msg = '';
+
+			$cleared_msg = __( 'The cache for <strong>%s</strong> has also been cleared.', 'wpsso' ) . ' ';
+
+			/**
+			 * Autoptimize.
+			 */
+			if ( class_exists( 'autoptimizeCache' ) ) {
+			
+				if ( method_exists( 'autoptimizeCache', 'clearall' ) ) {
+				
+					autoptimizeCache::clearall();
+
+					$notice_msg .= sprintf( $cleared_msg, 'Autoptimize' );
+				}
+			}
+
+			/**
+			 * Cache Enabler.
+			 */
+			if ( class_exists( 'Cache_Enabler' ) ) {
+			
+				if ( method_exists('Cache_Enabler', 'clear_total_cache') ) { 
+
+					Cache_Enabler::clear_total_cache();
+
+					$notice_msg .= sprintf( $cleared_msg, 'Cache Enabler' );
+				}
+			}
+
+			/**
+			 * Comet Cache.
+			 */
+			if ( isset( $GLOBALS[ 'comet_cache' ] ) ) {
+
+				$GLOBALS[ 'comet_cache' ]->wipe_cache();
+
+				$notice_msg .= sprintf( $cleared_msg, 'Comet Cache' );
+			}
+
+			/**
+			 * LiteSpeed Cache.
+			 */
+			if ( class_exists( 'LiteSpeed_Cache_API' ) ) {
+
+				if ( method_exists( 'LiteSpeed_Cache_API', 'purge_all' ) ) {
+
+					LiteSpeed_Cache_API::purge_all();
+
+					$notice_msg .= sprintf( $cleared_msg, 'LiteSpeed Cache' );
+				}
+			}
+
+			/**
+			 * Hummingbird Cache.
+			 */
+			if ( class_exists( '\Hummingbird\WP_Hummingbird' ) ) {
+
+				if ( method_exists( '\Hummingbird\WP_Hummingbird', 'flush_cache' ) ) {
+
+					\Hummingbird\WP_Hummingbird::flush_cache();
+
+					$notice_msg .= sprintf( $cleared_msg, 'Hummingbird Cache' );
+				}
+			}
+
+			/**
+			 * Pagely.
+			 */
+			if ( class_exists( 'PagelyCachePurge' ) ) {
+
+				if ( method_exists( 'PagelyCachePurge', 'purgeAll' ) ) {
+
+					PagelyCachePurge::purgeAll();
+
+					$notice_msg .= sprintf( $cleared_msg, 'Pagely' );
+				}
+			}
+
+			/**
+			 * Siteground Optimizer.
+			 */
+			if ( function_exists( 'sg_cachepress_purge_cache' ) ) {
+			
+				sg_cachepress_purge_cache();
+
+				$notice_msg .= sprintf( $cleared_msg, 'Siteground Optimizer' );
+			}
+
+			/**
+			 * W3 Total Cache (aka W3TC).
+			 */
+			if ( function_exists( 'w3tc_pgcache_flush' ) ) {
+
+				w3tc_pgcache_flush();
+
+				if ( function_exists( 'w3tc_objectcache_flush' ) ) {
+					w3tc_objectcache_flush();
+				}
+
+				$notice_msg .= sprintf( $cleared_msg, 'W3 Total Cache' );
+			}
+
+			/**
+			 * WP Engine Cache.
+			 */
+			if ( class_exists( 'WpeCommon' ) ) {
+
+				if ( method_exists( 'WpeCommon', 'purge_memcached' ) ) {
+					WpeCommon::purge_memcached();
+				}
+
+				if ( method_exists( 'WpeCommon', 'purge_varnish_cache' ) ) {
+					WpeCommon::purge_varnish_cache();
+				}
+
+				$notice_msg .= sprintf( $cleared_msg, 'WP Engine Cache' );
+			}
+
+			/**
+			 * WP Fastest Cache.
+			 */
+			if( function_exists( 'wpfc_clear_all_cache' ) ) {
+
+				wpfc_clear_all_cache( true );
+
+				$notice_msg .= sprintf( $cleared_msg, 'WP Fastest Cache' );
+			}
+
+			/**
+			 * WP Rocket Cache.
+			 */
+			if ( function_exists( 'rocket_clean_domain' ) ) {
+
+				rocket_clean_domain();
+
+				$notice_msg .= sprintf( $cleared_msg, 'WP Rocket Cache' );
+			}
+
+			/**
+			 * WP Super Cache.
+			 */
+			if ( function_exists( 'wp_cache_clear_cache' ) ) {
+
+				wp_cache_clear_cache();
+
+				$notice_msg .= sprintf( $cleared_msg, 'WP Super Cache' );
+			}
+
+			return $notice_msg;
 		}
 
 		/**
@@ -1447,8 +1550,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$mtime_start = microtime( true );
-
-			$user_id = $this->maybe_change_user_id( $user_id );
+			$user_id     = $this->maybe_change_user_id( $user_id );
 
 			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
 				do_action( $this->p->lca . '_scheduled_task_started', $user_id );
@@ -1485,15 +1587,18 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 			}
 
-			$status_msg = $user_id ? sprintf( __( 'The meta tag and Schema markup caches for %1$d posts, %2$d terms, and %3$d users have been refreshed.',
-				'wpsso' ), $total_count[ 'post' ], $total_count[ 'term' ], $total_count[ 'user' ] ) : '';
+			$notice_msg = sprintf( __( 'The meta tag and Schema markup caches for %1$d posts, %2$d terms, and %3$d users have been refreshed.', 'wpsso' ),
+				$total_count[ 'post' ], $total_count[ 'term' ], $total_count[ 'user' ] ) . ' ';
 
 			$mtime_total = microtime( true ) - $mtime_start;
 
-			if ( $status_msg ) {
-				$status_msg .= ' ' . sprintf( __( 'The total execution time for this task was %0.3f seconds.', 'wpsso' ), $mtime_total );
+			$notice_msg .= sprintf( __( 'The total execution time for this task was %0.3f seconds.', 'wpsso' ), $mtime_total );
 
-				$this->p->notice->upd( $status_msg, $user_id );
+			if ( $user_id ) {
+
+				$notice_key = 'refresh-all-cache-done';
+
+				$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
 			}
 
 			delete_transient( $cache_id );
