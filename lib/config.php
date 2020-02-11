@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '6.21.0-b.1',	// Plugin version.
-					'opt_version' => '702',		// Increment when changing default option values.
+					'opt_version' => '703',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -3072,7 +3072,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'fire.station'            => 'https://schema.org/FireStation',
 								'government.building'     => 'https://schema.org/GovernmentBuilding',
 								'hospital'                => 'https://schema.org/Hospital',
-								'movie.theatre'           => 'https://schema.org/MovieTheatre',
+								'movie.theater'           => 'https://schema.org/MovieTheater',
 								'museum'                  => 'https://schema.org/Museum',
 								'music.venue'             => 'https://schema.org/MusicVenue',
 								'park'                    => 'https://schema.org/Park',
@@ -3121,7 +3121,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 									'casino'                 => 'https://schema.org/Casino',
 									'comedy.club'            => 'https://schema.org/ComedyClub',
 									'entertainment.business' => 'https://schema.org/EntertainmentBusiness',
-									'movie.theatre'          => 'https://schema.org/MovieTheatre',
+									'movie.theater'          => 'https://schema.org/MovieTheater',
 									'night.club'             => 'https://schema.org/NightClub',
 								),
 								'financial.service'  => 'https://schema.org/FinancialService',
@@ -3296,6 +3296,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'laboratory.science'      => 'laboratory.science.specialty',
 					'medical.audience'        => 'audience.medical',
 					'midwifery'               => 'midwifery.specialty',
+					'movie.theatre'           => 'movie.theater',
 					'musculoskeletal'         => 'musculoskeletal.specialty',
 					'music.venu'              => 'music.venue',
 					'neurologic'              => 'neurologic.specialty',

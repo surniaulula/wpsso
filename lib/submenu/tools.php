@@ -135,7 +135,9 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 				$form_button_rows[ 0 ][ 'delete_all_db_transients' ] = $delete_transients_label_transl;
 
 				if ( $this->p->options[ 'plugin_shortener' ] !== 'none' ) {
+
 					if ( empty( $this->p->options[ 'plugin_clear_short_urls' ] ) ) {
+
 						$form_button_rows[ 0 ][ 'clear_all_cache_and_short_urls' ] = $clear_short_label_transl;
 					}
 				}
