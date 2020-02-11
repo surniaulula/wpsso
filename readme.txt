@@ -468,11 +468,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.21.0-dev.9 (2020/02/11)**
+**Version 6.21.0-b.1 (2020/02/12)**
 
 * **New Features**
 	* Added support for the Rate my Post plugin.
-	* Added support for third-party cache plugins:
+	* Added support for clearing third-party cache plugins:
 		* Autoptimize
 		* Cache Enabler
 		* Comet Cache
@@ -485,13 +485,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* WP Fastest Cache
 		* WP Rocket Cache
 		* WP Super Cache
-
 * **Improvements**
 	* Added "Delete All Files in Cache Folder" and "Change to All/Basic Options View" buttons in the SSO &gt; Tools and Actions page.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added a new `WpssoUtil->clear_all_other()` method called by `WpssoUtil->clear_all_cache()`.
+	* Added a new `WpssoUtil->clear_all_other()` method called by `WpssoUtil->clear_all_cache()` (see the list of supported plugins in the New Features section above).
 * **Requires At Least**
 	* PHP v5.5.
 	* WordPress v4.0.
@@ -828,9 +827,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.21.0-dev.9 =
+= 6.21.0-b.1 =
 
-(2020/02/11) Added support for the Rate my Post plugin. Added "Delete All Files in Cache Folder" and "Change to All/Basic Options View" buttons in the SSO &gt; Tools and Actions page.
+(2020/02/12) Added support for the Rate my Post plugin. Added support for clearing third-party cache plugins.
 
 = 6.20.0 =
 
