@@ -466,7 +466,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.20.1-dev.3 (2020/02/10)**
+**Version 6.21.0-dev.4 (2020/02/11)**
 
 * **New Features**
 	* Added support for the Rate my Post plugin.
@@ -812,9 +812,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.20.1-dev.3 =
+= 6.21.0-dev.4 =
 
-(2020/02/10) Added support for the Rate my Post plugin. Added "Delete All Files in Cache Folder" and "Change to All/Basic Options View" buttons in the SSO &gt; Tools and Actions page.
+(2020/02/11) Added support for the Rate my Post plugin. Added "Delete All Files in Cache Folder" and "Change to All/Basic Options View" buttons in the SSO &gt; Tools and Actions page.
 
 = 6.20.0 =
 
