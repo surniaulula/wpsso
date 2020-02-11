@@ -2032,10 +2032,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return false;
 			}
 
-			$ret        = array();
-			$html       = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// Convert to UTF8.
-			$html       = preg_replace( '/<!--.*-->/Uums', '', $html );		// Pattern and subject strings are treated as UTF8.
-			$doc        = new DOMDocument();					// Since PHP v4.1.
+			$ret = array();
+
+			if ( function_exists( 'mb_convert_encoding' ) ) {	// Just in case.
+				$html = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// Convert to UTF8.
+			}
+
+			$html = preg_replace( '/<!--.*-->/Uums', '', $html );		// Pattern and subject strings are treated as UTF8.
+
+			$doc = new DOMDocument();					// Since PHP v4.1.
+
 			$has_errors = false;
 
 			if ( $libxml_errors ) {
@@ -3859,18 +3865,21 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$charset = get_bloginfo( 'charset' );
-			$text    = html_entity_decode( self::decode_utf8( $text ), ENT_QUOTES, $charset );
 
-			if ( $maxlen > 0 ) {
+			$text = html_entity_decode( self::decode_utf8( $text ), ENT_QUOTES, $charset );
+
+			if ( $maxlen > 0 && function_exists( 'mb_strlen' ) && function_exists( 'mb_substr' ) ) {
 
 				if ( mb_strlen( $trailing ) > $maxlen ) {
 					$trailing = mb_substr( $trailing, 0, $maxlen );			// Trim the trailing string, if too long.
 				}
 
 				if ( mb_strlen( $text ) > $maxlen ) {
+
 					$text = mb_substr( $text, 0, $maxlen - mb_strlen( $trailing ) );
 					$text = trim( preg_replace( '/[^ ]*$/', '', $text ) );		// Remove trailing bits of words.
 					$text = preg_replace( '/[,\.]*$/', '', $text );			// Remove trailing puntuation.
+
 				} else {
 					$trailing = '';							// Truncate trailing string if text is less than maxlen.
 				}
@@ -3878,7 +3887,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$text = $text . $trailing;						// Trim and add trailing string (if provided).
 			}
 
-			$text = preg_replace( '/&nbsp;/', ' ', $text);					// Just in case.
+			$text = preg_replace( '/&nbsp;/', ' ', $text );					// Just in case.
 
 			return $text;
 		}

@@ -1543,7 +1543,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$serialized = serialize( $arr );
 
-			if ( function_exists( 'mb_strlen' ) ) {
+			if ( function_exists( 'mb_strlen' ) ) {	// Just in case.
+
 				return mb_strlen( $serialized, '8bit' );
 			}
 
@@ -3142,10 +3143,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function encode_utf8( $decoded ) {
 
-			if ( mb_detect_encoding( $decoded, 'UTF-8') !== 'UTF-8' ) {
-				$encoded = utf8_encode( $decoded );
-			} else {
-				$encoded = $decoded;
+			$encoded = $decoded;
+
+			if ( function_exists( 'mb_detect_encoding' ) ) { 	// Just in case.
+
+				if ( mb_detect_encoding( $decoded, 'UTF-8') !== 'UTF-8' ) {
+
+					if ( function_exists( 'utf8_encode' ) ) {
+
+						$encoded = utf8_encode( $decoded );
+					}
+				}
 			}
 
 			return $encoded;
@@ -3187,17 +3195,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$encoded = preg_replace( '/&#8230;/', '...', $encoded );
 
 			/**
-			 * If mb_decode_numericentity is not available, return the string un-converted.
+			 * If mb_decode_numericentity() is not available, then return the string un-converted.
 			 */
-			if ( ! function_exists( 'mb_decode_numericentity' ) ) {
+			if ( ! function_exists( 'mb_decode_numericentity' ) ) {	// Just in case.
+
 				return $encoded;
 			}
 
-			$decoded = preg_replace_callback( '/&#\d{2,5};/u', array( __CLASS__, 'decode_utf8_entity' ), $encoded );
-
-			return $decoded;
+			return preg_replace_callback( '/&#\d{2,5};/u', array( __CLASS__, 'decode_utf8_entity' ), $encoded );
 		}
 
+		/**
+		 * The existence of mb_decode_numericentity() is checked before doing the callback.
+		 */
 		public static function decode_utf8_entity( $matches ) {
 
 			$convmap = array( 0x0, 0x10000, 0, 0xfffff );
@@ -3357,9 +3367,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function replace_unicode_escape( $str ) {
 
+			/**
+			 * If mb_convert_encoding() is not available, then return the string un-converted.
+			 */
 			if ( ! function_exists( 'mb_convert_encoding' ) ) {
-
-				$this->p->util->php_function_missing( 'mb_convert_encoding()' );
 
 				return $str;
 			}
@@ -3367,6 +3378,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return preg_replace_callback( '/\\\\u([0-9a-f]{4})/i', array( __CLASS__, 'replace_unicode_escape_callback' ), $str );
 		}
 
+		/**
+		 * The existence of mb_convert_encoding() is checked before doing the callback.
+		 */
 		private static function replace_unicode_escape_callback( $match ) {
 
 			return mb_convert_encoding( pack( 'H*', $match[ 1 ] ), 'UTF-8', 'UCS-2' );
@@ -3401,7 +3415,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_json_scripts( $html, $do_decode = true ) {
 
-			$html = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// Convert to UTF8.
+			if ( function_exists( 'mb_convert_encoding' ) ) {
+
+				$html = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// Convert to UTF8.
+			}
+
 			$html = preg_replace( '/<!--.*-->/Uums', '', $html );		// Pattern and subject strings are treated as UTF8.
 
 			$json_data = array();

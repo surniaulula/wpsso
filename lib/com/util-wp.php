@@ -42,6 +42,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		/**
 		 * wp_encode_emoji() is only available since WordPress v4.2.
+		 *
 		 * Use the WordPress function if available, otherwise provide the same functionality.
 		 */
 		public static function wp_encode_emoji( $content ) {
@@ -49,33 +50,39 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			if ( function_exists( 'wp_encode_emoji' ) ) {
 
 				return wp_encode_emoji( $content ); // Since WP v4.2.
+			}
+			
+			/**
+			 * If mb_convert_encoding() is not available, then return the string un-converted.
+			 */
+			if ( ! function_exists( 'mb_convert_encoding' ) ) {	// Just in case.
 
-			} elseif ( function_exists( 'mb_convert_encoding' ) ) {	// Just in case.
+				return $content;
+			}
 
-				$regex = '/(
-				     \x23\xE2\x83\xA3               # Digits
-				     [\x30-\x39]\xE2\x83\xA3
-				   | \xF0\x9F[\x85-\x88][\xA6-\xBF] # Enclosed characters
-				   | \xF0\x9F[\x8C-\x97][\x80-\xBF] # Misc
-				   | \xF0\x9F\x98[\x80-\xBF]        # Smilies
-				   | \xF0\x9F\x99[\x80-\x8F]
-				   | \xF0\x9F\x9A[\x80-\xBF]        # Transport and map symbols
-				)/x';
+			$regex = '/(
+			     \x23\xE2\x83\xA3               # Digits
+			     [\x30-\x39]\xE2\x83\xA3
+			   | \xF0\x9F[\x85-\x88][\xA6-\xBF] # Enclosed characters
+			   | \xF0\x9F[\x8C-\x97][\x80-\xBF] # Misc
+			   | \xF0\x9F\x98[\x80-\xBF]        # Smilies
+			   | \xF0\x9F\x99[\x80-\x8F]
+			   | \xF0\x9F\x9A[\x80-\xBF]        # Transport and map symbols
+			)/x';
 
-				if ( preg_match_all( $regex, $content, $all_matches ) ) {
+			if ( preg_match_all( $regex, $content, $all_matches ) ) {
 
-					if ( ! empty( $all_matches[ 1 ] ) ) {
+				if ( ! empty( $all_matches[ 1 ] ) ) {
 
-						foreach ( $all_matches[ 1 ] as $emoji ) {
+					foreach ( $all_matches[ 1 ] as $emoji ) {
 
-							$unpacked = unpack( 'H*', mb_convert_encoding( $emoji, 'UTF-32', 'UTF-8' ) );
+						$unpacked = unpack( 'H*', mb_convert_encoding( $emoji, 'UTF-32', 'UTF-8' ) );
 
-							if ( isset( $unpacked[ 1 ] ) ) {
+						if ( isset( $unpacked[ 1 ] ) ) {
 
-								$entity = '&#x' . ltrim( $unpacked[ 1 ], '0' ) . ';';
+							$entity = '&#x' . ltrim( $unpacked[ 1 ], '0' ) . ';';
 
-								$content = str_replace( $emoji, $entity, $content );
-							}
+							$content = str_replace( $emoji, $entity, $content );
 						}
 					}
 				}

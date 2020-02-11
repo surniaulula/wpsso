@@ -1801,13 +1801,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'label' => 'JavaScript Object Notation (JSON)',
 						'url'   => 'https://secure.php.net/manual/en/book.json.php',
 					),
+					'xml' => array(		// PHP extension name.
+						'label' => 'XML Parser',
+						'url'   => 'https://www.php.net/manual/en/book.xml.php',
+						'functions' => array(	// Extra checks to make sure the PHP extension is complete.
+							'utf8_encode',
+						),
+					),
 					'mbstring' => array(	// PHP extension name.
 						'label' => 'Multibyte String',
 						'url'   => 'https://secure.php.net/manual/en/book.mbstring.php',
 						'functions' => array(	// Extra checks to make sure the PHP extension is complete.
+							'mb_decode_numericentity',
+							'mb_detect_encoding',
+							'mb_convert_encoding',
 							'mb_strlen',
 							'mb_substr',
-							'mb_convert_encoding',
 						),
 					),
 					'simplexml' => array(	// PHP extension name.

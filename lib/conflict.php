@@ -200,7 +200,8 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 		private function conflict_check_seo() {
 
-			$err_pre =  __( 'Plugin conflict detected', 'wpsso' ) . ' &mdash; ';
+			$notice_pre =  __( 'Plugin conflict detected', 'wpsso' ) . ' &mdash; ';
+
 			$log_pre = 'seo plugin conflict detected - ';
 
 			/**
@@ -225,7 +226,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 						$this->p->debug->log( $log_pre . 'aioseop social meta feature is enabled' );
 					}
 
-					$this->p->notice->err( $err_pre . sprintf( __( 'please deactivate the %1$s feature in the %2$s settings.',
+					$this->p->notice->err( $notice_pre . sprintf( __( 'please deactivate the %1$s feature in the %2$s settings.',
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
 
@@ -246,7 +247,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 						$this->p->debug->log( $log_pre . 'aioseop schema markup option is checked' );
 					}
 
-					$this->p->notice->err( $err_pre . sprintf( __( 'please uncheck the %1$s option in the %2$s metabox.',
+					$this->p->notice->err( $notice_pre . sprintf( __( 'please uncheck the %1$s option in the %2$s metabox.',
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
 			}
@@ -277,7 +278,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 							$this->p->debug->log( $log_pre . 'seo ultimate opengraph module is enabled' );
 						}
 
-						$this->p->notice->err( $err_pre . sprintf( __( 'please disable the %1$s module in the %2$s settings.',
+						$this->p->notice->err( $notice_pre . sprintf( __( 'please disable the %1$s module in the %2$s settings.',
 							'wpsso' ), $label_transl, $settings_link ) );
 					}
 				}
@@ -318,7 +319,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 							$this->p->debug->log( $log_pre . 'squirrly seo ' . $opt_key . ' option is enabled' );
 						}
 
-						$this->p->notice->err( $err_pre . sprintf( __( 'please disable the %1$s option in the %2$s metabox.',
+						$this->p->notice->err( $notice_pre . sprintf( __( 'please disable the %1$s option in the %2$s metabox.',
 							'wpsso' ), $label_transl, $settings_link ) );
 					}
 				}
@@ -348,7 +349,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 							$this->p->debug->log( $log_pre . 'squirrly seo ' . $opt_key . ' option is enabled' );
 						}
 
-						$this->p->notice->err( $err_pre . sprintf( __( 'please disable the %1$s option in the %2$s metabox.',
+						$this->p->notice->err( $notice_pre . sprintf( __( 'please disable the %1$s option in the %2$s metabox.',
 							'wpsso' ), $label_transl, $settings_link ) );
 					}
 				}
@@ -398,7 +399,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 							$this->p->debug->log( $log_pre . 'autodescription ' . $opt_key . ' option is checked' );
 						}
 
-						$this->p->notice->err( $err_pre . sprintf( __( 'please uncheck the %1$s option in the %2$s metabox.',
+						$this->p->notice->err( $notice_pre . sprintf( __( 'please uncheck the %1$s option in the %2$s metabox.',
 							'wpsso' ), $label_transl, $settings_link ) );
 					}
 				}
@@ -421,7 +422,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 						$this->p->debug->log( $log_pre . 'autodescription knowledge_output option is checked' );
 					}
 
-					$this->p->notice->err( $err_pre . sprintf( __( 'please uncheck the %1$s option in the %2$s metabox.',
+					$this->p->notice->err( $notice_pre . sprintf( __( 'please uncheck the %1$s option in the %2$s metabox.',
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
 
@@ -462,7 +463,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 							$this->p->debug->log( $log_pre . 'wpmetaseo ' . $opt_key . ' option is not empty' );
 						}
 
-						$this->p->notice->err( $err_pre . sprintf( __( 'please remove the %1$s option value in the %2$s settings.',
+						$this->p->notice->err( $notice_pre . sprintf( __( 'please remove the %1$s option value in the %2$s settings.',
 							'wpsso' ), $label_transl, $settings_link ) );
 					}
 				}
@@ -476,7 +477,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 						$this->p->debug->log( $log_pre . 'wpmetaseo metaseo_showsocial option is enabled' );
 					}
 
-					$this->p->notice->err( $err_pre . sprintf( __( 'please disable the %1$s option in the %2$s settings.',
+					$this->p->notice->err( $notice_pre . sprintf( __( 'please disable the %1$s option in the %2$s settings.',
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
 			}
@@ -524,7 +525,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 							$this->p->debug->log( $log_pre . 'wpseo ' . $opt_key . ' option is not empty' );
 						}
 
-						$this->p->notice->err( $err_pre . sprintf( __( 'please remove the %1$s option value in the %2$s settings.',
+						$this->p->notice->err( $notice_pre . sprintf( __( 'please remove the %1$s option value in the %2$s settings.',
 							'wpsso' ), $label_transl, $settings_link ) );
 					}
 				}
@@ -551,7 +552,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 						$this->p->debug->log( $log_pre . 'wpseo opengraph option is enabled' );
 					}
 
-					$this->p->notice->err( $err_pre . sprintf( __( 'please disable the %1$s option in the %2$s settings.',
+					$this->p->notice->err( $notice_pre . sprintf( __( 'please disable the %1$s option in the %2$s settings.',
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
 
@@ -574,7 +575,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 						$this->p->debug->log( $log_pre . 'wpseo fbadminapp option is not empty' );
 					}
 
-					$this->p->notice->err( $err_pre . sprintf( __( 'please remove the %1$s option value in the %2$s settings.',
+					$this->p->notice->err( $notice_pre . sprintf( __( 'please remove the %1$s option value in the %2$s settings.',
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
 
@@ -600,7 +601,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 						$this->p->debug->log( $log_pre . 'wpseo twitter option is enabled' );
 					}
 
-					$this->p->notice->err( $err_pre . sprintf( __( 'please disable the %1$s option in the %2$s settings.',
+					$this->p->notice->err( $notice_pre . sprintf( __( 'please disable the %1$s option in the %2$s settings.',
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
 			}
@@ -649,8 +650,16 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					 * Add notice only if the admin notices have not already been shown.
 					 */
 					if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
-					
-						$this->p->notice->warn( __( 'An issue with WPBakery Visual Composer has been detected.', 'wpsso' ) . ' ' . sprintf( __( 'WPBakery Visual Composer version %s (and older) are known to have a bug in their jQuery event handling code.', 'wpsso' ), $wpb_vc_version_event_bug ) . ' ' . sprintf( __( 'To avoid jQuery crashing on show / hide events, please contact WPBakery plugin support and <a href="%s">report the WPBakery Visual Composer change event handler bug described here</a>.', 'wpsso' ), 'https://surniaulula.com/2018/apps/wordpress/plugins/wpbakery/wpbakery-visual-composer-bug-in-change-handler/' ), null, $notice_key, $dismiss_time );
+
+						$blog_post_url = 'https://surniaulula.com/2018/apps/wordpress/plugins/wpbakery/wpbakery-visual-composer-bug-in-change-handler/';
+
+						$error_msg = __( 'An issue with WPBakery Visual Composer has been detected.', 'wpsso' ) . ' ';
+						
+						$error_msg .= sprintf( __( 'WPBakery Visual Composer version %s (and older) are known to have a bug in their jQuery event handling code.', 'wpsso' ), $wpb_vc_version_event_bug ) . ' ';
+						
+						$error_msg .= sprintf( __( 'To avoid jQuery crashing on show / hide events, please contact WPBakery plugin support and <a href="%s">report the WPBakery Visual Composer change event handler bug described here</a>.', 'wpsso' ), $blog_post_url );
+
+						$this->p->notice->err( $error_msg, null, $notice_key, $dismiss_time );
 					}
 				}
 			}
@@ -673,7 +682,11 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				 */
 				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
 
-					$this->p->notice->warn( sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engine and social sites from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck the option to allow search engines and social sites to access your content.', 'wpsso' ), get_admin_url( null, 'options-reading.php' ) ), null, $notice_key, $dismiss_time );
+					$settings_url = get_admin_url( null, 'options-reading.php' );
+
+					$notice_msg = sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engine and social sites from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck the option to allow search engines and social sites to access your content.', 'wpsso' ), $settings_url );
+
+					$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time );
 				}
 			}
 		}
