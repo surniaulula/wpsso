@@ -358,417 +358,417 @@ msgstr ""
 msgid "Not Available"
 msgstr ""
 
-#: lib/admin.php:1635
+#: lib/admin.php:1636
 msgctxt "option label"
 msgid "Installed"
 msgstr ""
 
-#: lib/admin.php:1642
+#: lib/admin.php:1643
 msgctxt "option label"
 msgid "Stable"
 msgstr ""
 
-#: lib/admin.php:1646
+#: lib/admin.php:1647
 msgctxt "option label"
 msgid "Latest"
 msgstr ""
 
-#: lib/admin.php:1660
+#: lib/admin.php:1661
 msgid "View %s changelog..."
 msgstr ""
 
-#: lib/admin.php:1862
+#: lib/admin.php:1863
 msgctxt "submit button"
 msgid "Purchase %s"
 msgstr ""
 
-#: lib/admin.php:1883
+#: lib/admin.php:1884
 msgid "<a href=\"%s\">Frequently Asked Questions</a>"
 msgstr ""
 
-#: lib/admin.php:1888
+#: lib/admin.php:1889
 msgid "<a href=\"%s\">Advanced Documentation and Notes</a>"
 msgstr ""
 
-#: lib/admin.php:1894
+#: lib/admin.php:1895
 msgid "<a href=\"%s\">Priority Support Ticket</a>"
 msgstr ""
 
-#: lib/admin.php:1899
+#: lib/admin.php:1900
 msgid "<a href=\"%s\">Community Support Forum</a>"
 msgstr ""
 
-#: lib/admin.php:1916
+#: lib/admin.php:1917
 msgid "Rate your plugins"
 msgstr ""
 
-#: lib/admin.php:1967
+#: lib/admin.php:1968
 msgid "Feature is enabled."
 msgstr ""
 
-#: lib/admin.php:1971
+#: lib/admin.php:1972
 msgid "Feature is disabled."
 msgstr ""
 
-#: lib/admin.php:1975
+#: lib/admin.php:1976
 msgid "Feature is recommended but disabled."
 msgstr ""
 
-#: lib/admin.php:1997
+#: lib/admin.php:1998
 msgid "Generic feature module"
 msgstr ""
 
-#: lib/admin.php:2009
+#: lib/admin.php:2010
 msgid "Service API module"
 msgstr ""
 
-#: lib/admin.php:2017
+#: lib/admin.php:2018
 msgid "HTML tag and markup module"
 msgstr ""
 
-#: lib/admin.php:2025
+#: lib/admin.php:2026
 msgid "Plugin integration module"
 msgstr ""
 
-#: lib/admin.php:2033
+#: lib/admin.php:2034
 msgid "Markup property module"
 msgstr ""
 
-#: lib/admin.php:2041
+#: lib/admin.php:2042
 msgid "Sharing functionality module"
 msgstr ""
 
-#: lib/admin.php:2049
+#: lib/admin.php:2050
 msgid "Additional functionality module"
 msgstr ""
 
-#: lib/admin.php:2192
+#: lib/admin.php:2193
 msgctxt "option label"
 msgid "%s Authentication ID"
 msgstr ""
 
-#: lib/admin.php:2206
+#: lib/admin.php:2207
 msgctxt "option label"
 msgid "Support and Updates Expire"
 msgstr ""
 
-#: lib/admin.php:2207
+#: lib/admin.php:2208
 msgctxt "option label"
 msgid "License Information"
 msgstr ""
 
-#: lib/admin.php:2216
+#: lib/admin.php:2217
 msgctxt "option value"
 msgid "Not available"
 msgstr ""
 
-#: lib/admin.php:2221
+#: lib/admin.php:2222
 msgctxt "option value"
 msgid "Never"
 msgstr ""
 
-#: lib/admin.php:2229
+#: lib/admin.php:2230
 msgid "%s site addresses registered"
 msgstr ""
 
-#: lib/admin.php:2240
+#: lib/admin.php:2241
 msgid "%d of %d site addresses registered"
 msgstr ""
 
-#: lib/admin.php:2316
+#: lib/admin.php:2317
 msgid "Fetching %s notifications..."
 msgstr ""
 
-#: lib/admin.php:2498
+#: lib/admin.php:2499
 msgid "No header templates found in the parent or child theme directories."
 msgstr ""
 
-#: lib/admin.php:2518
+#: lib/admin.php:2519
 msgid "No <code>%1$s</code> HTML tag found in the <code>%2$s</code> template."
 msgstr ""
 
-#: lib/admin.php:2529
+#: lib/admin.php:2530
 msgid "Error copying <code>%1$s</code> to <code>%2$s</code>."
 msgstr ""
 
-#: lib/admin.php:2541
+#: lib/admin.php:2542
 msgid "Failed to open template file <code>%s</code> for writing."
 msgstr ""
 
-#: lib/admin.php:2549
+#: lib/admin.php:2550
 msgid "The <code>%s</code> template has been successfully modified and saved."
 msgstr ""
 
-#: lib/admin.php:2552
+#: lib/admin.php:2553
 msgid ""
 "A backup copy of the original template has been saved as <code>%s</code> in "
 "the same folder."
 msgstr ""
 
-#: lib/admin.php:2561
+#: lib/admin.php:2562
 msgid "Failed to write the <code>%s</code> template."
 msgstr ""
 
-#: lib/admin.php:2564
+#: lib/admin.php:2565
 msgid ""
 "You may need to restore the original template saved as <code>%s</code> in "
 "the same folder."
 msgstr ""
 
-#: lib/admin.php:2592
+#: lib/admin.php:2593
 msgctxt "metabox title"
 msgid "Default Open Graph Types"
 msgstr ""
 
-#: lib/admin.php:2597 lib/admin.php:2792
+#: lib/admin.php:2598 lib/admin.php:2793
 msgctxt "option label"
 msgid "Type for Blog Front Page"
 msgstr ""
 
-#: lib/admin.php:2598 lib/admin.php:2793
+#: lib/admin.php:2599 lib/admin.php:2794
 msgctxt "option label"
 msgid "Type for Static Front Page"
 msgstr ""
 
-#: lib/admin.php:2599 lib/admin.php:2794
+#: lib/admin.php:2600 lib/admin.php:2795
 msgctxt "option label"
 msgid "Type for User / Author Page"
 msgstr ""
 
-#: lib/admin.php:2600 lib/admin.php:2795
+#: lib/admin.php:2601 lib/admin.php:2796
 msgctxt "option label"
 msgid "Type for Search Results Page"
 msgstr ""
 
-#: lib/admin.php:2601 lib/admin.php:2796
+#: lib/admin.php:2602 lib/admin.php:2797
 msgctxt "option label"
 msgid "Type for Other Archive Page"
 msgstr ""
 
-#: lib/admin.php:2627 lib/admin.php:2633 lib/admin.php:2659 lib/admin.php:2839
-#: lib/admin.php:2854 lib/admin.php:2889
+#: lib/admin.php:2628 lib/admin.php:2634 lib/admin.php:2660 lib/admin.php:2840
+#: lib/admin.php:2855 lib/admin.php:2890
 msgctxt "option comment"
 msgid "for %s"
 msgstr ""
 
-#: lib/admin.php:2633 lib/admin.php:2854
+#: lib/admin.php:2634 lib/admin.php:2855
 msgctxt "option comment"
 msgid "Post Type Archive Page"
 msgstr ""
 
-#: lib/admin.php:2636 lib/admin.php:2858
+#: lib/admin.php:2637 lib/admin.php:2859
 msgctxt "option label"
 msgid "Type by Post Type"
 msgstr ""
 
-#: lib/admin.php:2663 lib/admin.php:2894
+#: lib/admin.php:2664 lib/admin.php:2895
 msgctxt "option label"
 msgid "Type by Taxonomy"
 msgstr ""
 
-#: lib/admin.php:2678
+#: lib/admin.php:2679
 msgid "WebSite Information"
 msgstr ""
 
-#: lib/admin.php:2681
+#: lib/admin.php:2682
 msgid "Organization Social Profile"
 msgstr ""
 
-#: lib/admin.php:2683
+#: lib/admin.php:2684
 msgid "Person Social Profile"
 msgstr ""
 
-#: lib/admin.php:2686
+#: lib/admin.php:2687
 msgctxt "option label"
 msgid "Knowledge Graph for Home Page"
 msgstr ""
 
 #. translators: %s is "WebSite Information".
-#: lib/admin.php:2691
+#: lib/admin.php:2692
 msgid "Include %s for Google Search"
 msgstr ""
 
 #. translators: %s is "Organization Social Profile".
-#: lib/admin.php:2696
+#: lib/admin.php:2697
 msgid "Include %s for a Business Website"
 msgstr ""
 
 #. translators: %s is "Person Social Profile".
-#: lib/admin.php:2701
+#: lib/admin.php:2702
 msgid "Include %s for a Personal Website"
 msgstr ""
 
-#: lib/admin.php:2709
+#: lib/admin.php:2710
 msgctxt "option label"
 msgid "User for Person Social Profile"
 msgstr ""
 
-#: lib/admin.php:2724 lib/submenu/essential.php:161
+#: lib/admin.php:2725 lib/submenu/essential.php:161
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:2728 lib/options.php:1148 lib/submenu/essential.php:167
+#: lib/admin.php:2729 lib/options.php:1148 lib/submenu/essential.php:167
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
 
-#: lib/admin.php:2732
+#: lib/admin.php:2733
 msgctxt "option label"
 msgid "Author / Person Name Format"
 msgstr ""
 
-#: lib/admin.php:2736 lib/submenu/general.php:214
+#: lib/admin.php:2737 lib/submenu/general.php:214
 msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr ""
 
-#: lib/admin.php:2740 lib/submenu/general.php:217
+#: lib/admin.php:2741 lib/submenu/general.php:217
 msgctxt "option comment"
 msgid "note that video preview images are enabled (and included first)"
 msgstr ""
 
-#: lib/admin.php:2744
+#: lib/admin.php:2745
 msgctxt "option label"
 msgid "Schema Image Size"
 msgstr ""
 
-#: lib/admin.php:2748
+#: lib/admin.php:2749
 msgctxt "option label"
 msgid "Schema Article Image Size"
 msgstr ""
 
-#: lib/admin.php:2754
+#: lib/admin.php:2755
 msgctxt "option label"
 msgid "Schema Article AMP 1:1 Img Size"
 msgstr ""
 
-#: lib/admin.php:2758
+#: lib/admin.php:2759
 msgctxt "option label"
 msgid "Schema Article AMP 4:3 Img Size"
 msgstr ""
 
-#: lib/admin.php:2762
+#: lib/admin.php:2763
 msgctxt "option label"
 msgid "Schema Article AMP 16:9 Img Size"
 msgstr ""
 
-#: lib/admin.php:2767
+#: lib/admin.php:2768
 msgctxt "option label"
 msgid "Schema Thumbnail Image Size"
 msgstr ""
 
-#: lib/admin.php:2771
+#: lib/admin.php:2772
 msgctxt "option label"
 msgid "Max. Schema Description Length"
 msgstr ""
 
-#: lib/admin.php:2773 lib/submenu/general.php:281 lib/submenu/general.php:339
+#: lib/admin.php:2774 lib/submenu/general.php:281 lib/submenu/general.php:339
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
-#: lib/admin.php:2786
+#: lib/admin.php:2787
 msgctxt "metabox title"
 msgid "Default Schema Types"
 msgstr ""
 
-#: lib/admin.php:2910
+#: lib/admin.php:2911
 msgctxt "option label"
 msgid "Remove Settings on Uninstall"
 msgstr ""
 
-#: lib/admin.php:2912
+#: lib/admin.php:2913
 msgctxt "option comment"
 msgid "including custom meta for posts, terms, and users"
 msgstr ""
 
-#: lib/admin.php:2916
+#: lib/admin.php:2917
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
 
-#: lib/admin.php:2918
+#: lib/admin.php:2919
 msgctxt "option comment"
 msgid "WPSSO_HTML_DEBUG constant is true"
 msgstr ""
 
-#: lib/admin.php:2923
+#: lib/admin.php:2924
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr ""
 
-#: lib/admin.php:2928
+#: lib/admin.php:2929
 msgctxt "option label"
 msgid "Notification System"
 msgstr ""
 
-#: lib/admin.php:2940
+#: lib/admin.php:2941
 msgctxt "metabox title"
 msgid "Product Attribute Names"
 msgstr ""
 
-#: lib/admin.php:2969
+#: lib/admin.php:2970
 msgctxt "metabox title"
 msgid "Custom Field Names"
 msgstr ""
 
-#: lib/admin.php:3059
+#: lib/admin.php:3060
 msgctxt "option comment"
 msgid "in %s"
 msgstr ""
 
-#: lib/admin.php:3070
+#: lib/admin.php:3071
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:3248
+#: lib/admin.php:3249
 msgid "Return to %s"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:3279
+#: lib/admin.php:3280
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:3301
+#: lib/admin.php:3302
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:3308
+#: lib/admin.php:3309
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes, and translations)</a> to check if newer versions are "
 "available."
 msgstr ""
 
-#: lib/admin.php:3445
+#: lib/admin.php:3446
 msgid "Please select a %1$s settings file to import."
 msgstr ""
 
-#: lib/admin.php:3452
+#: lib/admin.php:3453
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr ""
 
-#: lib/admin.php:3459
+#: lib/admin.php:3460
 msgid ""
 "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr ""
 
-#: lib/admin.php:3473
+#: lib/admin.php:3474
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr ""
 
-#: lib/admin.php:3483
+#: lib/admin.php:3484
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr ""
 
-#: lib/admin.php:3493
+#: lib/admin.php:3494
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 
@@ -927,63 +927,68 @@ msgstr ""
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
-#: lib/conflict.php:76
+#: lib/conflict.php:76 lib/conflict.php:103 lib/loader.php:180
+#: lib/loader.php:192
+msgid "%s error:"
+msgstr ""
+
+#: lib/conflict.php:78
 msgid ""
 "Your database is configured for a \"%1$s\" size of %2$d bytes, which is less "
 "than the recommended minimum value of %3$d bytes (a common default value is "
 "%4$d bytes)."
 msgstr ""
 
-#: lib/conflict.php:78
+#: lib/conflict.php:80
 msgid ""
 "Please contact your hosting provider and have the \"%1$s\" database option "
 "adjusted to a larger and safer value."
 msgstr ""
 
-#: lib/conflict.php:80
+#: lib/conflict.php:82
 msgid ""
 "See the %1$s sections %2$s and %3$s for more information on this database "
 "option."
 msgstr ""
 
-#: lib/conflict.php:139
+#: lib/conflict.php:148
 msgid ""
 "WordPress is configured to use the %1$s image editing class but the <a href="
 "\"%2$s\">PHP %3$s extension module</a> is not loaded:"
 msgstr ""
 
-#: lib/conflict.php:143
+#: lib/conflict.php:152
 msgid "The <a href=\"%1$s\">PHP %2$s extension module</a> is not loaded:"
 msgstr ""
 
-#: lib/conflict.php:150
+#: lib/conflict.php:159
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> for \"%3$s\" returned false."
 msgstr ""
 
-#: lib/conflict.php:151
+#: lib/conflict.php:160
 msgid "https://secure.php.net/manual/en/function.extension-loaded.php"
 msgstr ""
 
-#: lib/conflict.php:160
+#: lib/conflict.php:169
 msgid ""
 "Note that the ImageMagick application and the PHP \"%1$s\" extension are two "
 "different products &mdash; this error is for the PHP \"%1$s\" extension, not "
 "the ImageMagick application."
 msgstr ""
 
-#: lib/conflict.php:163
+#: lib/conflict.php:172
 msgid ""
 "Please contact your hosting provider to have the missing PHP \"%1$s\" "
 "extension installed and enabled."
 msgstr ""
 
-#: lib/conflict.php:178
+#: lib/conflict.php:187
 msgid ""
 "The <a href=\"%1$s\">PHP %2$s extension module</a> is loaded but the %3$s "
 "function is missing."
 msgstr ""
 
-#: lib/conflict.php:180 lib/gettext-pro.php:161 lib/gettext-pro.php:164
+#: lib/conflict.php:189 lib/gettext-pro.php:161 lib/gettext-pro.php:164
 #: lib/gettext-pro.php:167 lib/pro/media/slideshare.php:186
 #: lib/pro/media/vimeo.php:160 lib/pro/media/wistia.php:307
 msgid ""
@@ -991,294 +996,294 @@ msgid ""
 "installed."
 msgstr ""
 
-#: lib/conflict.php:193 lib/gettext-pro.php:197
+#: lib/conflict.php:203 lib/gettext-pro.php:197
 #: lib/pro/rating/wppostratings.php:46
 msgid "Plugin conflict detected"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:206
+#: lib/conflict.php:216
 msgid "Social Meta"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:210 lib/conflict.php:229
+#: lib/conflict.php:220 lib/conflict.php:239
 msgid "All in One SEO"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:212
+#: lib/conflict.php:222
 msgid "Feature Manager"
 msgstr ""
 
-#: lib/conflict.php:218
+#: lib/conflict.php:228
 msgid "please deactivate the %1$s feature in the %2$s settings."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:225
+#: lib/conflict.php:235
 msgid "Use Schema.org Markup"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:231 lib/conflict.php:233
+#: lib/conflict.php:241 lib/conflict.php:243
 msgid "General Settings"
 msgstr ""
 
-#: lib/conflict.php:239 lib/conflict.php:391 lib/conflict.php:414
+#: lib/conflict.php:249 lib/conflict.php:401 lib/conflict.php:424
 msgid "please uncheck the %1$s option in the %2$s metabox."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:255
+#: lib/conflict.php:265
 msgid "SEO Ultimate"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:257
+#: lib/conflict.php:267
 msgid "Modules"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:264
+#: lib/conflict.php:274
 msgid "Open Graph Integrator"
 msgstr ""
 
-#: lib/conflict.php:270
+#: lib/conflict.php:280
 msgid "please disable the %1$s module in the %2$s settings."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:290 lib/conflict.php:323
+#: lib/conflict.php:300 lib/conflict.php:333
 msgid "Squirrly"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:292 lib/conflict.php:325 lib/conflict.php:327
+#: lib/conflict.php:302 lib/conflict.php:335 lib/conflict.php:337
 msgid "SEO Settings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:294
+#: lib/conflict.php:304
 msgid "Social Media"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:296
+#: lib/conflict.php:306
 msgid "Social Media Options"
 msgstr ""
 
-#: lib/conflict.php:299
+#: lib/conflict.php:309
 msgid ""
 "Add the Social Open Graph protocol so that your Facebook shares look good."
 msgstr ""
 
-#: lib/conflict.php:301
+#: lib/conflict.php:311
 msgid "Add the Twitter card in your tweets."
 msgstr ""
 
-#: lib/conflict.php:311 lib/conflict.php:341
+#: lib/conflict.php:321 lib/conflict.php:351
 msgid "please disable the %1$s option in the %2$s metabox."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:329
+#: lib/conflict.php:339
 msgid "Let Squirrly SEO Optimize This Blog"
 msgstr ""
 
-#: lib/conflict.php:332
+#: lib/conflict.php:342
 msgid "adds the Json-LD metas for Semantic SEO"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:363 lib/conflict.php:401
+#: lib/conflict.php:373 lib/conflict.php:411
 msgid "The SEO Framework"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:365
+#: lib/conflict.php:375
 msgid "Social Meta Settings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:368
+#: lib/conflict.php:378
 msgid "Posts"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:372
+#: lib/conflict.php:382
 msgid "Output Open Graph meta tags?"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:374
+#: lib/conflict.php:384
 msgid "Output Facebook meta tags?"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:376
+#: lib/conflict.php:386
 msgid "Output Twitter meta tags?"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:378 lib/conflict.php:381
+#: lib/conflict.php:388 lib/conflict.php:391
 msgid "Add %1$s to %2$s?"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:403
+#: lib/conflict.php:413
 msgid "Schema Settings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:408
+#: lib/conflict.php:418
 msgid "Output Authorized Presence?"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:434
+#: lib/conflict.php:444
 msgid "WP Meta SEO"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:436
+#: lib/conflict.php:446
 msgid "Settings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:438
+#: lib/conflict.php:448
 msgid "Global"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:442
+#: lib/conflict.php:452
 msgid "Facebook profile URL"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:444 lib/conflict.php:551
+#: lib/conflict.php:454 lib/conflict.php:561
 msgid "Facebook App ID"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:446 lib/conflict.php:498
+#: lib/conflict.php:456 lib/conflict.php:508
 msgid "Twitter Username"
 msgstr ""
 
-#: lib/conflict.php:455 lib/conflict.php:517 lib/conflict.php:567
+#: lib/conflict.php:465 lib/conflict.php:527 lib/conflict.php:577
 msgid "please remove the %1$s option value in the %2$s settings."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:463
+#: lib/conflict.php:473
 msgid "Social sharing block"
 msgstr ""
 
-#: lib/conflict.php:469 lib/conflict.php:544 lib/conflict.php:593
+#: lib/conflict.php:479 lib/conflict.php:554 lib/conflict.php:603
 msgid "please disable the %1$s option in the %2$s settings."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:488 lib/conflict.php:534 lib/conflict.php:557
-#: lib/conflict.php:583
+#: lib/conflict.php:498 lib/conflict.php:544 lib/conflict.php:567
+#: lib/conflict.php:593
 msgid "Yoast SEO"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:490 lib/conflict.php:536 lib/conflict.php:559
-#: lib/conflict.php:585
+#: lib/conflict.php:500 lib/conflict.php:546 lib/conflict.php:569
+#: lib/conflict.php:595
 msgid "Social"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:492
+#: lib/conflict.php:502
 msgid "Accounts"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:496
+#: lib/conflict.php:506
 msgid "Facebook Page URL"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:500
+#: lib/conflict.php:510
 msgid "Instagram URL"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:502
+#: lib/conflict.php:512
 msgid "LinkedIn URL"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:504
+#: lib/conflict.php:514
 msgid "MySpace URL"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:506
+#: lib/conflict.php:516
 msgid "Pinterest URL"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:508
+#: lib/conflict.php:518
 msgid "YouTube URL"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:528
+#: lib/conflict.php:538
 msgid "Add Open Graph meta data"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:538 lib/conflict.php:561
+#: lib/conflict.php:548 lib/conflict.php:571
 msgid "Facebook"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:577
+#: lib/conflict.php:587
 msgid "Add Twitter Card meta data"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:587
+#: lib/conflict.php:597
 msgid "Twitter"
 msgstr ""
 
-#: lib/conflict.php:616
+#: lib/conflict.php:626
 msgid ""
 "The combination of %1$s and its %2$s add-on provide much better Schema "
 "markup for WooCommerce products than the %3$s plugin."
 msgstr ""
 
-#: lib/conflict.php:616
+#: lib/conflict.php:626
 msgid "There is absolutely no advantage in continuing to use the %1$s plugin."
 msgstr ""
 
-#: lib/conflict.php:616
+#: lib/conflict.php:626
 msgid ""
 "To avoid adding incorrect and confusing Schema markup in your webpages, <a "
 "href=\"%1$s\">please deactivate the %2$s plugin immediately</a>."
 msgstr ""
 
-#: lib/conflict.php:640
+#: lib/conflict.php:650
 msgid "An issue with WPBakery Visual Composer has been detected."
 msgstr ""
 
-#: lib/conflict.php:640
+#: lib/conflict.php:650
 msgid ""
 "WPBakery Visual Composer version %s (and older) are known to have a bug in "
 "their jQuery event handling code."
 msgstr ""
 
-#: lib/conflict.php:640
+#: lib/conflict.php:650
 msgid ""
 "To avoid jQuery crashing on show / hide events, please contact WPBakery "
 "plugin support and <a href=\"%s\">report the WPBakery Visual Composer change "
 "event handler bug described here</a>."
 msgstr ""
 
-#: lib/conflict.php:660
+#: lib/conflict.php:670
 msgid ""
 "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to "
 "discourage search engine and social sites from indexing this site. This is "
@@ -3431,10 +3436,6 @@ msgstr ""
 #. translators: %1$s is the PHP library path, %2$s is the PHP library class name
 #: lib/loader.php:176
 msgid "Error loading %1$s: Library class \"%2$s\" is missing."
-msgstr ""
-
-#: lib/loader.php:180 lib/loader.php:192
-msgid "%s error:"
 msgstr ""
 
 #: lib/loader.php:181

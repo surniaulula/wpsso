@@ -3357,6 +3357,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function replace_unicode_escape( $str ) {
 
+			if ( ! function_exists( 'mb_convert_encoding' ) ) {
+
+				$this->p->util->php_function_missing( 'mb_convert_encoding()' );
+
+				return $str;
+			}
+
 			return preg_replace_callback( '/\\\\u([0-9a-f]{4})/i', array( __CLASS__, 'replace_unicode_escape_callback' ), $str );
 		}
 

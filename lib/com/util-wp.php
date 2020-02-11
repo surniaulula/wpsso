@@ -50,7 +50,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 				return wp_encode_emoji( $content ); // Since WP v4.2.
 
-			} elseif ( function_exists( 'mb_convert_encoding' ) ) {
+			} elseif ( function_exists( 'mb_convert_encoding' ) ) {	// Just in case.
 
 				$regex = '/(
 				     \x23\xE2\x83\xA3               # Digits
@@ -80,6 +80,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 					}
 				}
 			}
+
 			return $content;
 		}
 

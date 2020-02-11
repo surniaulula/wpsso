@@ -73,6 +73,8 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 				if ( $result[ 'max_allowed_packet' ]->Value < $min_bytes ) {
 
+					$error_pre = sprintf( __( '%s error:', 'wpsso' ), __METHOD__ );
+
 					$error_msg = sprintf( __( 'Your database is configured for a "%1$s" size of %2$d bytes, which is less than the recommended minimum value of %3$d bytes (a common default value is %4$d bytes).', 'wpsso' ), 'max_allowed_packet', $result[ 'max_allowed_packet' ]->Value, $min_bytes, $def_bytes ) . ' ';
 
 					$error_msg .= sprintf( __( 'Please contact your hosting provider and have the "%1$s" database option adjusted to a larger and safer value.', 'wpsso' ), 'max_allowed_packet' ) . ' ';
@@ -95,7 +97,10 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 			require_once ABSPATH . WPINC . '/class-wp-image-editor-imagick.php';
 
 			$implementations = apply_filters( 'wp_image_editors', array( 'WP_Image_Editor_Imagick', 'WP_Image_Editor_GD' ) );
-			$php_extensions  = $this->p->cf[ 'php' ][ 'extensions' ];
+
+			$php_extensions = $this->p->cf[ 'php' ][ 'extensions' ];
+
+			$error_pre = sprintf( __( '%s error:', 'wpsso' ), __METHOD__ );
 
 			foreach ( $php_extensions as $php_ext => $php_info ) {
 
@@ -103,7 +108,9 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				 * Skip image extensions for WordPress image editors that are not used.
 				 */
 				if ( ! empty( $php_info[ 'wp_image_editor' ][ 'class' ] ) ) {
+
 					if ( ! in_array( $php_info[ 'wp_image_editor' ][ 'class' ], $implementations ) ) {
+
 						continue;
 					}
 				}
@@ -130,8 +137,10 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 						 * image editor class name.
 						 */
 						if ( ! empty( $php_info[ 'wp_image_editor' ][ 'url' ] ) ) {
+
 							$editor_class = '<a href="' . $php_info[ 'wp_image_editor' ][ 'url' ] . '">' .
 								$php_info[ 'wp_image_editor' ][ 'class' ] . '</a>';
+
 						} else {
 							$editor_class = $php_info[ 'wp_image_editor' ][ 'class' ];
 						}
@@ -183,6 +192,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				}
 
 				if ( ! empty( $error_msg ) ) {
+
 					$this->p->notice->err( $error_msg );
 				}
 			}

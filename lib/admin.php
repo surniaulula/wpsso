@@ -1595,14 +1595,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( ! empty( $readme_info[ 'stable_tag' ] ) ) {
 
 					$stable_version = $readme_info[ 'stable_tag' ];
-					$newer_avail = version_compare( $installed_version, $stable_version, '<' );
+					$is_newer_avail = version_compare( $installed_version, $stable_version, '<' );
 
 					if ( is_array( $readme_info[ 'upgrade_notice' ] ) ) {
 
 						/**
 						 * Hooked by the update manager to apply the version filter.
 						 */
-						$upgrade_notice = apply_filters( $this->p->lca . '_readme_upgrade_notices', $readme_info[ 'upgrade_notice' ], $ext );
+						$upgrade_notice = apply_filters( $this->p->lca . '_readme_upgrade_notices',
+							$readme_info[ 'upgrade_notice' ], $ext );
 
 						if ( ! empty( $upgrade_notice ) ) {
 
@@ -1618,7 +1619,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					 * non-stable filter is selected for that plugin / add-on.
 					 */
 					if ( apply_filters( $this->p->lca . '_newer_version_available',
-						$newer_avail, $ext, $installed_version, $stable_version, $latest_version ) ) {
+						$is_newer_avail, $ext, $installed_version, $stable_version, $latest_version ) ) {
 
 						$installed_style = 'style="background-color:#f00;"';	// Red background.
 
