@@ -75,6 +75,8 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 
 * Built-in support for [AMP](https://wordpress.org/plugins/amp/), [Better AMP](https://wordpress.org/plugins/better-amp/), and [AMP for WP](https://wordpress.org/plugins/accelerated-mobile-pages/) plugins.
 
+* Compatible with all known caching plugins, including Autoptimize, Cache Enabler, Comet Cache, LiteSpeed Cache, Hummingbird Cache, Pagely, Siteground Optimizer, W3 Total Cache (aka W3TC), WP Engine Cache, WP Fastest Cache, WP Rocket Cache, WP Super Cache.
+
 * Supports advanced WordPress configurations, including [WordPress Network / Multisite installations](https://wpsso.com/docs/plugins/wpsso/notes/multisite-network-support/) and WordPress MU Domain Mapping.
 
 * Includes advanced quality assurance features and options.
