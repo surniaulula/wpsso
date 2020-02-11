@@ -15,7 +15,7 @@
  * Requires At Least: 4.0
  * Tested Up To: 5.3.2
  * WC Tested Up To: 3.9.1
- * Version: 6.21.0-dev.4
+ * Version: 6.21.0-dev.5
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -548,35 +548,63 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$max_int = SucomUtil::get_max_int();
 
 				/**
+				 * PHP v5.3+ is required for "function() use () {}" syntax.
+				 */
+				$has_function_use = version_compare( phpversion(), '5.3.0', '>=' ) ? true : false;
+
+				/**
 				 * Show a comment marker at the top / bottom of the head and footer sections.
 				 */
 				foreach ( array( 'wp_head', 'wp_footer', 'admin_head', 'admin_footer' ) as $action ) {
 
-					/**
-					 * PHP v5.3+ is required for "function() use () {}" syntax.
-					 */
-					if ( version_compare( phpversion(), '5.3.0', '<' ) ) {
-						break;
-					}
-
 					foreach ( array( $min_int, $max_int ) as $prio ) {
 
-						$show_action_prio_func = function() use ( $action, $prio ) {
-							echo "\n" . '<!-- wpsso ' . $action . ' action hook priority ' . $prio . ' mark -->' . "\n\n";
-						};
+						if ( $has_function_use ) {
 
-						add_action( $action, $show_action_prio_func, $prio );
-						add_action( $action, array( $this, 'show_debug' ), $prio + 1 );
+							$function = function() use ( $action, $prio ) {
+								echo "\n" . '<!-- wpsso ' . $action . ' action hook priority ' . $prio . ' mark -->' . "\n\n";
+							};
+
+							add_action( $action, $function, $prio );
+						}
+
+						add_action( $action, array( $this, 'show_debug' ), $prio );
 					}
 				}
 
 				/**
-				 * Show the plugin settings at the end, just before the footer marker. 
+				 * Show a comment marker at the top / bottom of the content section.
+				 */
+				foreach ( array( 'the_content' ) as $filter ) {
+
+					if ( $has_function_use ) {
+
+						/**
+						 * Prepend marker.
+						 */
+						$function = function( $str ) use ( $filter, $min_int ) {
+							return "\n\n" . '<!-- wpsso ' . $filter . ' filter hook priority ' . $min_int . ' mark -->' . "\n\n" . $str;
+						};
+	
+						add_filter( $filter, $function, $min_int );
+
+						/**
+						 * Append marker.
+						 */
+						$function = function( $str ) use ( $filter, $max_int ) {
+							return $str . "\n\n" . '<!-- wpsso ' . $filter . ' filter hook priority ' . $max_int . ' mark -->' . "\n\n";
+						};
+	
+						add_filter( $filter, $function, $max_int );
+					}
+				}
+
+				/**
+				 * Show the plugin settings just before the footer marker. 
 				 */
 				foreach ( array( 'wp_footer', 'admin_footer' ) as $action ) {
-					foreach ( array( $max_int - 1 ) as $prio ) {
-						add_action( $action, array( $this, 'show_config' ), $prio );
-					}
+
+					add_action( $action, array( $this, 'show_config' ), $max_int );
 				}
 			}
 
@@ -666,9 +694,11 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$defined_constants[ 'user' ][ 'WPSSO_NONCE_NAME' ] = '********';
 
 			if ( is_multisite() ) {
+
 				$this->debug->show_html( SucomUtil::preg_grep_keys( '/^(MULTISITE|^SUBDOMAIN_INSTALL|.*_SITE)$/',
 					$defined_constants[ 'user' ] ), 'multisite constants' );
 			}
+
 			$this->debug->show_html( SucomUtil::preg_grep_keys( '/^WPSSO_/', $defined_constants[ 'user' ] ), 'wpsso constants' );
 
 			/**

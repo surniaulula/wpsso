@@ -35,12 +35,11 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		}
 
 		/**
-		 * Please note that get_avail() is executed *before* the debug class object is defined,
-		 * so do not log any debugging messages using $this->p->debug, for example.
+		 * Please note that get_avail() is executed *before* the debug class object is defined, so do not log any debugging
+		 * messages using $this->p->debug, for example.
 		 *
-		 * Most PHP library files have already been loaded, even if the class objects have not
-		 * yet been defined, so you can safely use static methods, like SucomUtil::get_const(),
-		 * for example.
+		 * Most PHP library files have already been loaded, even if the class objects have not yet been defined, so you can
+		 * safely use static methods, like SucomUtil::get_const(), for example.
 		 */
 		public function get_avail() {
 
@@ -51,8 +50,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			}
 
 			$lib_checks = SucomUtil::array_merge_recursive_distinct( $this->p->cf[ '*' ][ 'lib' ][ 'pro' ], self::$extend_lib_checks );
-
-			$jetpack_mods = method_exists( 'Jetpack', 'get_active_modules' ) ? Jetpack::get_active_modules() : array();
 
 			foreach ( $lib_checks as $sub => $lib ) {
 
@@ -71,8 +68,8 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						/**
 						 * 3rd Party Plugins
 						 *
-						 * Prefer to check for class names than plugin slugs for 
-						 * compatibility with free / premium / pro versions.
+						 * Prefer to check for class names than plugin slugs for compatibility with free /
+						 * premium / pro versions.
 						 */
 						case 'amp-amp':		// AMP, Better AMP, etc.
 
@@ -249,6 +246,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							break;
 
 						case 'seo-jetpack-seo':
+
+							$jetpack_mods = method_exists( 'Jetpack', 'get_active_modules' ) ?
+								Jetpack::get_active_modules() : array();
 
 							if ( ! empty( $jetpack_mods ) ) {
 								if ( in_array( 'seo-tools', $jetpack_mods ) ) {

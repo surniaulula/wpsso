@@ -735,7 +735,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( isset( $this->p->cf[ 'extend' ] ) ) {
+
 				foreach ( $this->p->cf[ 'extend' ] as $host ) {
+
 					if ( 0 === strpos( $url, $host ) ) {
 						return true;
 					}
