@@ -363,30 +363,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return $html;
 		}
 
-		public function get_json_scripts( $use_post = false, $mod = false, $read_cache = true ) {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
-
-			$head_array = $this->get_head_array( $use_post, $mod, $read_cache );
-
-			$head_scripts = '';
-
-			foreach ( $head_array as $meta ) {
-
-				if ( ! empty( $meta[ 0 ] ) ) {
-
-					if ( strpos( $meta[ 0 ], '<script type="application/ld+json"' ) === 0 ) {
-
-						$head_scripts .= $meta[ 0 ];
-					}
-				}
-			}
-
-			return $head_scripts;
-		}
-
 		/**
 		 * $read_cache is false when called by the post/term/user load_meta_page() method.
 		 */

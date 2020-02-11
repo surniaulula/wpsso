@@ -1122,7 +1122,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			$content = preg_replace( '/[\s\n\r]+/s', ' ', $content );		// Put everything on one line.
+			$content = preg_replace( '/[\s\r\n]+/s', ' ', $content );	// Put everything on one line.
 
 			/**
 			 * Maybe use only a certain part of the content.

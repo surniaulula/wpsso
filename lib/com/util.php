@@ -3347,7 +3347,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return str_replace( $replace, $allowed, $encoded_url );
 		}
 
-		public static function encode_html_emoji( $html ) {
+		public static function encode_html_emoji( $content ) {
 
 			static $charset = null;
 
@@ -3355,11 +3355,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$charset = get_bloginfo( 'charset' ); // Only get it once.
 			}
 
-			$html = htmlentities( $html, ENT_QUOTES, $charset, $double_encode = false );
+			$content = htmlentities( $content, ENT_QUOTES, $charset, $double_encode = false );
 
-			$html = SucomUtilWP::wp_encode_emoji( $html );
+			$content = SucomUtilWP::wp_encode_emoji( $content );
 
-			return $html;
+			return $content;
 		}
 
 		/**
@@ -3413,53 +3413,50 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public static function get_json_scripts( $html, $do_decode = true ) {
+		public static function get_json_scripts( $content, $do_decode = true ) {
 
 			if ( function_exists( 'mb_convert_encoding' ) ) {
 
-				$html = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// Convert to UTF8.
+				$content = mb_convert_encoding( $content, 'HTML-ENTITIES', 'UTF-8' );	// Convert to UTF8.
 			}
 
-			$html = preg_replace( '/<!--.*-->/Uums', '', $html );		// Pattern and subject strings are treated as UTF8.
+			$content = preg_replace( '/<!--.*-->/Uums', '', $content );	// Pattern and subject strings are treated as UTF8.
 
 			$json_data = array();
 
-			if ( is_string( $html ) ) {
+			/**
+			 * U = Inverts the "greediness" of quantifiers so that they are not greedy by default.
+			 * i = Letters in the pattern match both upper and lower case letters. 
+			 * s = A dot metacharacter in the pattern matches all characters, including newlines.
+			 *
+			 * See http://php.net/manual/en/reference.pcre.pattern.modifiers.php.
+			 */
+			if ( preg_match_all( '/<script\b[^>]*type=["\']application\/ld\+json["\'][^>]*>(.*)<\/script>/Uis',
+				$content, $all_matches, PREG_SET_ORDER ) ) {
 
-				/**
-				 * U = Inverts the "greediness" of quantifiers so that they are not greedy by default.
-				 * i = Letters in the pattern match both upper and lower case letters. 
-				 * s = A dot metacharacter in the pattern matches all characters, including newlines.
-				 *
-				 * See http://php.net/manual/en/reference.pcre.pattern.modifiers.php.
-				 */
-				if ( preg_match_all( '/<script\b[^>]*type=["\']application\/ld\+json["\'][^>]*>(.*)<\/script>/Uis',
-					$html, $all_matches, PREG_SET_ORDER ) ) {
+				foreach ( $all_matches as $num => $matches ) {
 
-					foreach ( $all_matches as $num => $matches ) {
+					$json_decoded = json_decode( $matches[ 1 ], $assoc = true );
 
-						$json_decoded = json_decode( $matches[ 1 ], $assoc = true );
+					$json_md5 = md5( serialize( $json_decoded ) );	// md5() input must be a string.
 
-						$json_md5 = md5( serialize( $json_decoded ) );	// md5() input must be a string.
+					if ( $do_decode ) {	// Return only the decoded json data.
 
-						if ( $do_decode ) {	// Return only the decoded json data.
+						if ( is_array( $json_decoded ) ) {
 
-							if ( is_array( $json_decoded ) ) {
+							$json_data[ $json_md5 ] = $json_decoded;
 
-								$json_data[ $json_md5 ] = $json_decoded;
+						} else {
 
-							} else {
+							$error_pre = sprintf( '%s error:', __METHOD__ );
+							$error_msg = sprintf( 'Error decoding json script: %s', print_r( $matches[ 1 ], true ) );
 
-								$error_pre = sprintf( '%s error:', __METHOD__ );
-								$error_msg = sprintf( 'Error decoding json script: %s', print_r( $matches[ 1 ], true ) );
-
-								self::safe_error_log( $error_pre . ' ' . $error_msg );
-							}
-
-						} else {	// Return the complete script container.
-
-							$json_data[ $json_md5 ] = $matches[ 0 ];
+							self::safe_error_log( $error_pre . ' ' . $error_msg );
 						}
+
+					} else {	// Return the complete script container.
+
+						$json_data[ $json_md5 ] = $matches[ 0 ];
 					}
 				}
 			}
