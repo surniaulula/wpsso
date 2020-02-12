@@ -538,6 +538,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Added a new `WpssoUtil->clear_all_other()` method called by `WpssoUtil->clear_all_cache()` (see the list of supported plugins in the New Features section above).
+	* Added a `$strip_html` argument (false by default) to the `SucomUtil::safe_error_log()` method.
+	* Added a QA check for the PHP 'dom' extension, including its 'DOMDocument' class.
+	* Added a QA check for the PHP 'libxml' extension, including its 'libxml_use_internal_errors' function.
+	* Added a call to `SucomUtil::safe_error_log()` in `WpssoConflict->conflict_check_php()`.
+	* Added support for Rank Math in `WpssoFilters->cleanup_rankmath_filters()`.
+	* Removed support for the WPSSO_HEAD_HTML_DISABLE constant.
 * **Requires At Least**
 	* PHP v5.5.
 	* WordPress v4.0.
