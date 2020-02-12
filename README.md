@@ -63,7 +63,16 @@
 <ul>
 <li><p>Complete and accurate meta tags for all social sites, search engines, web browser extensions, mail and messaging apps, and embedded object / iframe content.</p></li>
 <li><p>Updates the WordPress oEmbed data and HTML markup with the Open Graph title, description, and image for posts, pages, and custom post types.</p></li>
-<li><p>Provides meta tags and markup for posts, pages, custom post types, tags, categories, custom taxonomy / terms, user profile pages, search pages, and attachment pages.</p></li>
+<li><p>Offers meta tags and markup for all webpages, including:</p>
+
+<ul>
+<li>Home page (static or blog).</li>
+<li>Posts, pages, custom post types.</li>
+<li>Categories, tags, custom taxonomy / terms.</li>
+<li>User profile pages.</li>
+<li>Media attachment pages.</li>
+<li>Search pages.</li>
+</ul></li>
 <li><p>Uses images from numerous sources, including featured, attached, gallery shortcode, images from HTML tags, or a custom fallback image.</p></li>
 <li><p>Image dimension settings for Facebook / Open Graph, Schema markup, Google Rich Results with Structured Data, Pinterest Rich Pins, and Twitter Cards.</p></li>
 <li><p>Contextual help for every plugin option and <a href="https://wpsso.com/docs/plugins/wpsso/">comprehensive online documentation</a>.</p></li>

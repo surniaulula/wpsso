@@ -65,7 +65,14 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 
 * Updates the WordPress oEmbed data and HTML markup with the Open Graph title, description, and image for posts, pages, and custom post types.
 
-* Provides meta tags and markup for posts, pages, custom post types, tags, categories, custom taxonomy / terms, user profile pages, search pages, and attachment pages.
+* Offers meta tags and markup for all webpages, including:
+
+	* Home page (static or blog).
+	* Posts, pages, custom post types.
+	* Categories, tags, custom taxonomy / terms.
+	* User profile pages.
+	* Media attachment pages.
+	* Search pages.
 
 * Uses images from numerous sources, including featured, attached, gallery shortcode, images from HTML tags, or a custom fallback image.
 
