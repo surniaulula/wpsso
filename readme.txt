@@ -403,14 +403,14 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 
 <h3>Plugin Setup</h3>
 
-* [Setup Guide and Notes for WPSSO Core](https://wpsso.com/docs/plugins/wpsso/installation/a-setup-guide/)
-* [Developer Special - Buy one, Get one Free](https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/)
-* [Better Schema.org Markup for WooCommerce](https://wpsso.com/docs/plugins/wpsso/installation/better-schema-for-woocommerce-step-by-step-guide/)
+* [Setup Guide](https://wpsso.com/docs/plugins/wpsso/installation/setup-guide/)
+* [Developer Special: Buy one, Get one Free](https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/)
+* [Better Schema for WooCommerce](https://wpsso.com/docs/plugins/wpsso/installation/better-schema-for-woocommerce/)
 * [Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/)
 	* [BuddyPress Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/)
 	* [WooCommerce Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/)
 	* [WP eCommerce Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/wp-ecommerce-integration/)
-* [Debugging and Problem Solving](https://wpsso.com/docs/plugins/wpsso/installation/debugging-and-problem-solving/)
+* [Troubleshooting Guide](https://wpsso.com/docs/plugins/wpsso/installation/troubleshooting-guide/)
 * [Performance Tuning](https://wpsso.com/docs/plugins/wpsso/installation/performance-tuning/)
 
 == Frequently Asked Questions ==
