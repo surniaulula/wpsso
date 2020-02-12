@@ -36,12 +36,12 @@
 <p><strong>Includes quality assurance features and options:</strong></p>
 
 <ul>
-<li>Checks for minimum / maximum image dimensions and aspect ratios.</li>
-<li>Shows notices for missing and required images.</li>
-<li>Verifies webpages for duplicate meta tags.</li>
-<li>Validates theme header templates for correct HTML markup.</li>
 <li>Checks and warns of any missing PHP modules.</li>
 <li>Checks 3rd party plugin settings for possible conflicts.</li>
+<li>Checks for minimum / maximum image dimensions and aspect ratios.</li>
+<li>Shows notices for missing and required images.</li>
+<li>Validates theme header templates for correct HTML markup.</li>
+<li>Verifies webpage HTML for duplicate meta tags.</li>
 </ul>
 
 <p><strong>Coded for maximum performance:</strong></p>
@@ -116,10 +116,19 @@
 <li>WordPress MU Domain Mapping</li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/multisite-network-support/">Network / Multisite Installations</a></li>
 </ul></li>
-<li><p>Includes advanced quality assurance features and options.</p></li>
+<li><p>Includes advanced quality assurance features and options:</p>
+
+<ul>
+<li>Checks and warns of any missing PHP modules.</li>
+<li>Checks 3rd party plugin settings for possible conflicts.</li>
+<li>Checks for minimum / maximum image dimensions and aspect ratios.</li>
+<li>Shows notices for missing and required images.</li>
+<li>Validates theme header templates for correct HTML markup.</li>
+<li>Verifies webpage HTML for duplicate meta tags.</li>
+</ul></li>
 </ul>
 
-<h3>Complementary Add-ons</h3>
+<h3>Free Complementary Add-ons</h3>
 
 <ul>
 <li><a href="https://wordpress.org/plugins/wpsso-faq/">WPSSO FAQ Manager</a> to manage FAQ categories with Question and Answer pages.</li>

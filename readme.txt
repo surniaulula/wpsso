@@ -38,12 +38,12 @@ WPSSO Core is language / locale aware, which means you can customize your site i
 
 **Includes quality assurance features and options:**
 
-* Checks for minimum / maximum image dimensions and aspect ratios.
-* Shows notices for missing and required images.
-* Verifies webpages for duplicate meta tags.
-* Validates theme header templates for correct HTML markup.
 * Checks and warns of any missing PHP modules.
 * Checks 3rd party plugin settings for possible conflicts.
+* Checks for minimum / maximum image dimensions and aspect ratios.
+* Shows notices for missing and required images.
+* Validates theme header templates for correct HTML markup.
+* Verifies webpage HTML for duplicate meta tags.
 
 **Coded for maximum performance:**
 
@@ -115,9 +115,16 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 	* WordPress MU Domain Mapping
 	* [Network / Multisite Installations](https://wpsso.com/docs/plugins/wpsso/notes/multisite-network-support/)
 
-* Includes advanced quality assurance features and options.
+* Includes advanced quality assurance features and options:
 
-<h3>Complementary Add-ons</h3>
+	* Checks and warns of any missing PHP modules.
+	* Checks 3rd party plugin settings for possible conflicts.
+	* Checks for minimum / maximum image dimensions and aspect ratios.
+	* Shows notices for missing and required images.
+	* Validates theme header templates for correct HTML markup.
+	* Verifies webpage HTML for duplicate meta tags.
+
+<h3>Free Complementary Add-ons</h3>
 
 * [WPSSO FAQ Manager](https://wordpress.org/plugins/wpsso-faq/) to manage FAQ categories with Question and Answer pages.
 * [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
