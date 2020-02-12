@@ -236,7 +236,9 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 					// translators: Please ignore - translation uses a different text domain.
 					$label_transl = '<strong>' . __( 'Social Meta', 'all-in-one-seo-pack' ) . '</strong>';
-					$settings_url = get_admin_url( null, 'admin.php?page=all-in-one-seo-pack%2Fmodules%2Faioseop_feature_manager.php' );
+
+					$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=all-in-one-seo-pack%2Fmodules%2Faioseop_feature_manager.php' );
+
 					$settings_link = '<a href="' . $settings_url . '">' .
 						// translators: Please ignore - translation uses a different text domain.
 						__( 'All in One SEO', 'all-in-one-seo-pack' ) . ' &gt; ' .
@@ -255,7 +257,9 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 					// translators: Please ignore - translation uses a different text domain.
 					$label_transl = '<strong>' . __( 'Use Schema.org Markup', 'all-in-one-seo-pack' ) . '</strong>';
-					$settings_url = get_admin_url( null, 'admin.php?page=all-in-one-seo-pack%2Faioseop_class.php' );
+
+					$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=all-in-one-seo-pack%2Faioseop_class.php' );
+
 					$settings_link = '<a href="' . $settings_url . '">' .
 						// translators: Please ignore - translation uses a different text domain.
 						__( 'All in One SEO', 'all-in-one-seo-pack' ) . ' &gt; ' .
@@ -280,7 +284,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 				$opts = get_option( 'seo_ultimate' );
 
-				$settings_url = get_admin_url( null, 'admin.php?page=seo' );
+				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=seo' );
 
 				$settings_link = '<a href="' . $settings_url . '">' .
 					// translators: Please ignore - translation uses a different text domain.
@@ -315,7 +319,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				/**
 				 * Squirrly SEO > SEO Settings > Social Media > Social Media Options Metabox
 				 */
-				$settings_url = get_admin_url( null, 'admin.php?page=sq_seo#socials' );
+				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=sq_seo#socials' );
 
 				$settings_link = '<a href="' . $settings_url . '">' .
 					// translators: Please ignore - translation uses a different text domain.
@@ -348,7 +352,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				/**
 				 * Squirrly SEO > SEO Settings > SEO Settings > Let Squirrly SEO Optimize This Blog Metabox
 				 */
-				$settings_url = get_admin_url( null, 'admin.php?page=sq_seo#seo' );
+				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=sq_seo#seo' );
 
 				$settings_link = '<a href="' . $settings_url . '">' .
 					// translators: Please ignore - translation uses a different text domain.
@@ -388,7 +392,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				/**
 				 * The SEO Framework > Social Meta Settings Metabox
 				 */
-				$settings_url = get_admin_url( null, 'admin.php?page=theseoframework-settings' );
+				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=theseoframework-settings' );
 
 				$settings_link = '<a href="' . $settings_url . '">' .
 					// translators: Please ignore - translation uses a different text domain.
@@ -459,7 +463,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				/**
 				 * WP Meta SEO > Settings > Global
 				 */
-				$settings_url = get_admin_url( null, 'admin.php?page=metaseo_settings' );
+				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=metaseo_settings' );
 
 				$settings_link = '<a href="' . $settings_url . '">' .
 					// translators: Please ignore - translation uses a different text domain.
@@ -513,7 +517,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				/**
 				 * Yoast SEO > Social > Accounts Tab
 				 */
-				$settings_url = get_admin_url( null, 'admin.php?page=wpseo_social#top#accounts' );
+				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=wpseo_social#top#accounts' );
 
 				$settings_link = '<a href="' . $settings_url . '">' .
 					// translators: Please ignore - translation uses a different text domain.
@@ -559,7 +563,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					// translators: Please ignore - translation uses a different text domain.
 					$label_transl = '<strong>' . __( 'Add Open Graph meta data', 'wordpress-seo' ) . '</strong>';
 
-					$settings_url = get_admin_url( null, 'admin.php?page=wpseo_social#top#facebook' );
+					$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=wpseo_social#top#facebook' );
 
 					$settings_link = '<a href="' . $settings_url . '">' .
 						// translators: Please ignore - translation uses a different text domain.
@@ -582,7 +586,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					// translators: Please ignore - translation uses a different text domain.
 					$label_transl = '<strong>' . __( 'Facebook App ID', 'wordpress-seo' ) . '</strong>';
 
-					$settings_url = get_admin_url( null, 'admin.php?page=wpseo_social#top#facebook' );
+					$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=wpseo_social#top#facebook' );
 
 					$settings_link = '<a href="' . $settings_url . '">' .
 						// translators: Please ignore - translation uses a different text domain.
@@ -608,7 +612,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					// translators: Please ignore - translation uses a different text domain.
 					$label_transl = '<strong>' . __( 'Add Twitter Card meta data', 'wordpress-seo' ) . '</strong>';
 
-					$settings_url = get_admin_url( null, 'admin.php?page=wpseo_social#top#twitterbox' );
+					$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=wpseo_social#top#twitterbox' );
 
 					$settings_link = '<a href="' . $settings_url . '">' .
 						// translators: Please ignore - translation uses a different text domain.
@@ -639,7 +643,8 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 				if ( ! empty( $pkg[ $this->p->lca ][ 'pp' ] ) && ! empty( $pkg[ $ext ][ 'pp' ] ) ) {
 					
-					$plugins_url = is_multisite() ? network_admin_url( 'plugins.php', null ) : get_admin_url( null, 'plugins.php' );
+					$plugins_url = is_multisite() ? network_admin_url( 'plugins.php', null ) :
+						get_admin_url( $blog_id = null, 'plugins.php' );
 
 					$plugins_url = add_query_arg( array( 's' => 'yoast seo' ), $plugins_url );
 
@@ -692,7 +697,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					$this->p->debug->log( 'wp blog_public option is disabled' );
 				}
 
-				$settings_url = get_admin_url( null, 'options-reading.php' );
+				$settings_url = get_admin_url( $blog_id = null, 'options-reading.php' );
 
 				$error_msg = sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engine and social sites from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck the option to allow search engines and social sites to access your content.', 'wpsso' ), $settings_url );
 

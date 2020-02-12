@@ -580,7 +580,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! empty( $info[ 'base' ] ) ) {
 
-				$install_url = is_multisite() ? network_admin_url( 'plugin-install.php', null ) : get_admin_url( null, 'plugin-install.php' );
+				$install_url = is_multisite() ? network_admin_url( 'plugin-install.php', null ) :
+					get_admin_url( $blog_id = null, 'plugin-install.php' );
 
 				$details_url = add_query_arg( array(
 					'plugin'    => $info[ 'slug' ],

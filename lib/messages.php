@@ -365,7 +365,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-site_name':
 
-							$wp_general_page_url = get_admin_url( null, 'options-general.php' );
+							$wp_general_page_url = get_admin_url( $blog_id = null, 'options-general.php' );
 
 							$text = sprintf( __( 'The WordPress Site Name is used for the Facebook / Open Graph and Pinterest Rich Pin %1$s meta tag. You may override <a href="%2$s">the default WordPress Site Title value</a>.', 'wpsso' ), '<code>og:site_name</code>', $wp_general_page_url );
 
@@ -379,7 +379,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-site_desc':
 
-							$wp_general_page_url = get_admin_url( null, 'options-general.php' );
+							$wp_general_page_url = get_admin_url( $blog_id = null, 'options-general.php' );
 
 							$text = sprintf( __( 'The WordPress tagline is used as a description for the blog (non-static) front page, and as a fallback for the Facebook / Open Graph and Pinterest Rich Pin %1$s meta tag.', 'wpsso' ), '<code>og:description</code>' ) . ' ';
 
@@ -1889,7 +1889,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'info-priority-media':
 
-							$upload_url = get_admin_url( 'upload.php' );
+							$upload_url = get_admin_url( $blog_id = null, 'upload.php' );
 
 							$text = '<blockquote class="top-info">';
 
@@ -2020,7 +2020,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<p>';
 
-							$text .= sprintf( __( 'These options allow you to customize the list of contact fields shown in the %1$s section of <a href="%2$s">the user profile page</a>.', 'wpsso' ), $contact_info_transl, get_admin_url( null, 'profile.php' ) ) . ' ';
+							$text .= sprintf( __( 'These options allow you to customize the list of contact fields shown in the %1$s section of <a href="%2$s">the user profile page</a>.', 'wpsso' ), $contact_info_transl, get_admin_url( $blog_id = null, 'profile.php' ) ) . ' ';
 
 							$text .= sprintf( __( '%1$s uses the Facebook and Twitter contact field values in its meta tags and Schema markup.', 'wpsso' ), $info[ 'short' ] ) . ' ';
 
@@ -2034,7 +2034,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<strong>' . __( 'Do not enter your contact information here &ndash; these options are for contact field ids and labels only.', 'wpsso' ) . '</strong><br/>';
 
-							$text .= sprintf( __( 'Enter your personal contact information in <a href="%1$s">the user profile page</a>.', 'wpsso' ), get_admin_url( null, 'profile.php' ) );
+							$text .= sprintf( __( 'Enter your personal contact information in <a href="%1$s">the user profile page</a>.', 'wpsso' ), get_admin_url( $blog_id = null, 'profile.php' ) );
 
 							$text .= '</center>';
 
@@ -2360,7 +2360,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							_x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
 
 						// translators: Please ignore - translation uses a different text domain.
-						$plugins_page_link = '<a href="' . get_admin_url( null, 'plugins.php' ) . '">' . __( 'Plugins' ) . '</a>';
+						$plugins_page_link = '<a href="' . get_admin_url( $blog_id = null, 'plugins.php' ) . '">' . __( 'Plugins' ) . '</a>';
 
 						$text = '<p>';
 

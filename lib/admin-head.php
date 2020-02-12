@@ -229,7 +229,8 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			
 				if ( SucomPlugin::is_plugin_installed( $info[ 'base' ], $use_cache = true ) ) {
 
-					$url = is_multisite() ? network_admin_url( 'plugins.php', null ) : get_admin_url( null, 'plugins.php' );
+					$url = is_multisite() ? network_admin_url( 'plugins.php', null ) :
+						get_admin_url( $blog_id = null, 'plugins.php' );
 
 					$url = add_query_arg( array( 's' => $info[ 'base' ] ), $url );
 
