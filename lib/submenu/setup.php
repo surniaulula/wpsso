@@ -48,7 +48,7 @@ if ( ! class_exists( 'WpssoSubmenuSetup' ) && class_exists( 'WpssoAdmin' ) ) {
 		protected function add_meta_boxes() {
 
 			$metabox_id      = 'setup_guide';
-			$metabox_title   = _x( 'Setup Guide and Notes', 'metabox title', 'wpsso' );
+			$metabox_title   = _x( 'Setup Guide', 'metabox title', 'wpsso' );
 			$metabox_screen  = $this->pagehook;
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';

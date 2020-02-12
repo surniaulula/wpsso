@@ -6873,7 +6873,7 @@ msgstr ""
 
 #: lib/submenu/setup.php:51
 msgctxt "metabox title"
-msgid "Setup Guide and Notes"
+msgid "Setup Guide"
 msgstr ""
 
 #: lib/submenu/social-accounts.php:38

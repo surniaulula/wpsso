@@ -11,11 +11,11 @@
 
 <p>JavaScript and jQuery errors are probably not caused by WPSSO Core or its add-ons, but we're happy to help you diagnose the issue and propose a solution.</p>
 
-<h3>HTTP Error Code 500</h3>
+<h3>HTTP Error Code 5xx</h3>
 
-<p>In some cases, a web server may display an HTTP 500 error page with a generic error message. This error message is generic on purpose - the actual details of the error can be found in the web server's error log.</p>
+<p>In some cases, a web server may display an HTTP 5xx error page (500, 502, etc.) with a generic error message. This error message is generic on purpose - the actual details of the error can be found in the web server's error log.</p>
 
-<p>The most common cause of an HTTP 500 error are from lack of available memory when PHP is executing - for example, when creating thumbnails from large images, executing a bloated plugin, executing a badly coded recursive filter, etc. If you are seeing an HTTP 500 error message, you must get the error details from the web server's error log to know what the issue actually is.<p>
+<p>The most common cause of an HTTP 5xx error are from lack of available memory when PHP is executing - for example, when creating thumbnails from large images, executing a bloated plugin, executing a badly coded recursive filter, etc. If you are seeing an HTTP 5xx error message, you must get the error details from the web server's error log to know what the issue actually is.<p>
 
 <p>Some older versions of PHP are known to have bugs in their ImageMagick library or PHP may have timed-out when trying to create several thumbnail images in a row (<a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-an-http-error-when-uploading-images/">see this FAQ for details</a>), or PHP may have run out of memory (<a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-a-php-fatal-out-of-memory-error/">see this FAQ for details</a>), or WPSSO Core may be triggering a bug in your theme or another plugin (try disabling WPSSO Core's use of the WordPress content filter as suggested bellow).</p>
 
