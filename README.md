@@ -130,6 +130,8 @@
 
 <h3>Free Complementary Add-ons</h3>
 
+<p>Need even more features? Activate the free complementary add-on(s) you need:</p>
+
 <ul>
 <li><a href="https://wordpress.org/plugins/wpsso-faq/">WPSSO FAQ Manager</a> to manage FAQ categories with Question and Answer pages.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a> to manage mobile App information.</li>
