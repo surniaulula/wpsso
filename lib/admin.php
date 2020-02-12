@@ -1002,6 +1002,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function load_setting_page() {
 
+			$user_id      = get_current_user_id();
 			$action_query = $this->p->lca . '-action';
 			$action_value = SucomUtil::get_request_value( $action_query ) ;		// POST or GET with sanitize_text_field().
 			$action_value = SucomUtil::sanitize_hookname( $action_value );
@@ -1021,8 +1022,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				} elseif ( ! wp_verify_nonce( $nonce_value, WpssoAdmin::get_nonce_action() ) ) {
 
-					$this->p->notice->err( sprintf( __( 'Nonce token validation failed for %1$s action "%2$s".',
-						'wpsso' ), 'admin', $action_value ) );
+					$notice_msg = sprintf( __( 'Nonce token validation failed for %1$s action "%2$s".', 'wpsso' ), 'admin', $action_value );
+
+					$this->p->notice->err( $notice_msg, $user_id );
 
 				} else {
 
@@ -1030,17 +1032,21 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'clear_all_cache':
 
-							$this->p->notice->upd( __( 'A background task will begin shortly to clear all caches.', 'wpsso' ) );
+							$this->p->util->schedule_clear_all_cache( $user_id, $clear_other = true );
 
-							$this->p->util->schedule_clear_all_cache( get_current_user_id(), $clear_other = true );
+							$notice_msg = __( 'A background task will begin shortly to clear all caches.', 'wpsso' );
+
+							$this->p->notice->upd( $notice_msg, $user_id );
 
 							break;
 
 						case 'clear_all_cache_and_short_urls':
 
-							$this->p->notice->upd( __( 'A background task will begin shortly to clear all caches and short URLs.', 'wpsso' ) );
+							$this->p->util->schedule_clear_all_cache( $user_id, $clear_other = true, $clear_short = true );
 
-							$this->p->util->schedule_clear_all_cache( get_current_user_id(), $clear_other = true, $clear_short = true );
+							$notice_msg = __( 'A background task will begin shortly to clear all caches and short URLs.', 'wpsso' );
+
+							$this->p->notice->upd( $notice_msg, $user_id );
 
 							break;
 
@@ -1048,7 +1054,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							$deleted_count = $this->p->util->delete_all_cache_files();
 
-							$this->p->notice->upd( sprintf( __( '%s cache files have been deleted.', 'wpsso' ), $deleted_count ) );
+							$notice_msg = sprintf( __( '%s cache files have been deleted.', 'wpsso' ), $deleted_count );
+
+							$this->p->notice->upd( $notice_msg, $user_id );
 
 							break;
 
@@ -1056,34 +1064,50 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							$deleted_count = $this->p->util->delete_all_db_transients( $clear_short = true, $transient_prefix = '' );
 
-							$this->p->notice->upd( sprintf( __( '%s database transients have been deleted.', 'wpsso' ), $deleted_count ) );
+							$notice_msg = sprintf( __( '%s database transients have been deleted.', 'wpsso' ), $deleted_count );
+
+							$this->p->notice->upd( $notice_msg, $user_id );
+
+							break;
+
+						case 'refresh_all_cache':
+
+							$this->p->util->schedule_refresh_all_cache( $user_id );
+
+							$notice_msg = __( 'A background task will begin shortly to refresh the post, term, and user cache objects.', 'wpsso' );
+
+							$this->p->notice->upd( $notice_msg, $user_id );
 
 							break;
 
 						case 'reset_user_metabox_layout':
 
-							$user_id   = get_current_user_id();
-							$user_obj  = get_userdata( $user_id );
-							$user_name = $user_obj->display_name;
-
 							WpssoUser::delete_metabox_prefs( $user_id );
 
-							$this->p->notice->upd( sprintf( __( 'Metabox layout preferences for user ID #%d "%s" have been reset.',
-								'wpsso' ), $user_id, $user_name ) );
+							$user_obj = get_userdata( $user_id );
+
+							$user_name = $user_obj->display_name;
+
+							$notice_msg = sprintf( __( 'Metabox layout preferences for user ID #%d "%s" have been reset.', 'wpsso' ),
+								$user_id, $user_name );
+
+							$this->p->notice->upd( $notice_msg, $user_id );
 
 							break;
 
 						case 'reset_user_dismissed_notices':
 
-							$user_id   = get_current_user_id();
-							$user_obj  = get_userdata( $user_id );
-							$user_name = $user_obj->display_name;
-
 							delete_user_option( $user_id, WPSSO_DISMISS_NAME, $global = false );
 							delete_user_option( $user_id, WPSSO_DISMISS_NAME, $global = true );
 
-							$this->p->notice->upd( sprintf( __( 'Dismissed notices for user ID #%d "%s" have been reset.',
-								'wpsso' ), $user_id, $user_name ) );
+							$user_obj = get_userdata( $user_id );
+
+							$user_name = $user_obj->display_name;
+
+							$notice_msg = sprintf( __( 'Dismissed notices for user ID #%d "%s" have been reset.', 'wpsso' ),
+								$user_id, $user_name );
+
+							$this->p->notice->upd( $notice_msg, $user_id );
 
 							break;
 
@@ -1091,12 +1115,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							$_SERVER[ 'REQUEST_URI' ] = remove_query_arg( array( 'show-opts' ) );
 
-							if ( isset( $this->p->cf[ 'form' ][ 'show_options' ][ $_GET[ 'show-opts' ] ] ) ) {
+							$show_opts_key = isset( $_GET[ 'show-opts' ] ) ? SucomUtil::sanitize_key( $_GET[ 'show-opts' ] ) : null;
 
-								WpssoUser::save_pref( array( 'show_opts' => $_GET[ 'show-opts' ] ) );
+							if ( isset( $this->p->cf[ 'form' ][ 'show_options' ][ $show_opts_key ] ) ) {
 
-								$this->p->notice->upd( sprintf( __( 'Option preference saved &mdash; viewing "%s" by default.',
-									'wpsso' ), $this->p->cf[ 'form' ][ 'show_options' ][ $_GET[ 'show-opts' ] ] ) );
+								$show_name_transl  = _x( $this->p->cf[ 'form' ][ 'show_options' ][ $show_opts_key ], 'option value', 'wpsso' );
+
+								WpssoUser::save_pref( array( 'show_opts' => $show_opts_key ) );
+
+								$notice_msg = sprintf( __( 'Option preference saved &mdash; viewing "%s" by default.', 'wpsso' ),
+									$show_name_transl );
+
+								$this->p->notice->upd( $notice_msg, $user_id );
 							}
 
 							break;

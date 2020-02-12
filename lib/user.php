@@ -1161,20 +1161,26 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$parent_slug = 'options-general.php';
 
-			foreach ( array_keys( $cf[ '*' ][ 'lib' ][ 'settings' ] ) as $lib_id ) {
+			if ( ! empty( $cf[ '*' ][ 'lib' ][ 'settings' ] ) ) {
 
-				$menu_slug = $slug_prefix . '-' . $lib_id;
+				foreach ( array_keys( $cf[ '*' ][ 'lib' ][ 'settings' ] ) as $lib_id ) {
 
-				self::delete_metabox_pagehook( $user_id, $menu_slug, $parent_slug );
+					$menu_slug = $slug_prefix . '-' . $lib_id;
+
+					self::delete_metabox_pagehook( $user_id, $menu_slug, $parent_slug );
+				}
 			}
 
-			$parent_slug = $slug_prefix . '-' . key( $cf[ '*' ][ 'lib' ][ 'submenu' ] );
+			if ( ! empty( $cf[ '*' ][ 'lib' ][ 'submenu' ] ) ) {
 
-			foreach ( array_keys( $cf[ '*' ][ 'lib' ][ 'submenu' ] ) as $lib_id ) {
+				$parent_slug = $slug_prefix . '-' . key( $cf[ '*' ][ 'lib' ][ 'submenu' ] );
 
-				$menu_slug = $slug_prefix . '-' . $lib_id;
+				foreach ( array_keys( $cf[ '*' ][ 'lib' ][ 'submenu' ] ) as $lib_id ) {
 
-				self::delete_metabox_pagehook( $user_id, $menu_slug, $parent_slug );
+					$menu_slug = $slug_prefix . '-' . $lib_id;
+
+					self::delete_metabox_pagehook( $user_id, $menu_slug, $parent_slug );
+				}
 			}
 		}
 

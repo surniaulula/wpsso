@@ -1145,8 +1145,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		public function schedule_add_user_roles( $user_id = null ) {
 
-			$user_id = $this->maybe_change_user_id( $user_id );
-
+			$user_id    = $this->maybe_change_user_id( $user_id );
 			$event_time = time() + $this->event_buffer;
 			$event_hook = $this->p->lca . '_add_user_roles';
 			$event_args = array( $user_id );
@@ -1220,8 +1219,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		public function schedule_clear_all_cache( $user_id = null, $clear_other = false, $clear_short = null, $refresh_all = null ) {
 
-			$user_id = $this->maybe_change_user_id( $user_id );
-
+			$user_id    = $this->maybe_change_user_id( $user_id );
 			$event_time = time() + $this->event_buffer;
 			$event_hook = $this->p->lca . '_clear_all_cache';
 			$event_args = array( $user_id, $clear_other, $clear_short, $refresh_all );
@@ -1496,8 +1494,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		public function schedule_refresh_all_cache( $user_id = null ) {
 
-			$user_id = $this->maybe_change_user_id( $user_id );
-
+			$user_id    = $this->maybe_change_user_id( $user_id );
 			$event_time = time() + $this->event_buffer;
 			$event_hook = $this->p->lca . '_refresh_all_cache';
 			$event_args = array( $user_id );
