@@ -515,7 +515,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.21.0-b.2 (2020/02/12)**
+**Version 6.21.0-b.3 (2020/02/12)**
 
 * **New Features**
 	* Added support for the Rate my Post plugin.
@@ -533,7 +533,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* WP Rocket Cache
 		* WP Super Cache
 * **Improvements**
-	* Added "Delete All Files in Cache Folder" and "Change to All/Basic Options View" buttons in the SSO &gt; Tools and Actions page.
+	* Added new buttons in the SSO &gt; Tools and Actions page:
+		* Delete All Files in Cache Folder
+		* Refresh All Cache
+		* Change to All/Basic Options View
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -880,9 +883,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.21.0-b.2 =
+= 6.21.0-b.3 =
 
-(2020/02/12) Added support for the Rate my Post plugin. Added support for clearing third-party cache plugins.
+(2020/02/12) Added support for the Rate my Post plugin. Added support for clearing third-party cache plugins. Added new buttons in the SSO &gt; Tools and Actions page.
 
 = 6.20.0 =
 
