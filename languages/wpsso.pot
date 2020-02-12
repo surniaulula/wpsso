@@ -5546,7 +5546,7 @@ msgid ""
 "refresh of the plugin update information."
 msgstr ""
 
-#: lib/messages.php:2419 lib/register.php:322
+#: lib/messages.php:2419 lib/register.php:330
 msgid ""
 "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version "
 "is outdated, unsupported, possibly insecure</a>, and may lack important "
@@ -6146,7 +6146,7 @@ msgstr ""
 msgid "Archives: %s"
 msgstr ""
 
-#: lib/post.php:475 lib/register.php:314 lib/term.php:419 lib/user.php:366
+#: lib/post.php:475 lib/register.php:322 lib/term.php:419 lib/user.php:366
 #: lib/util.php:496 lib/util.php:3579
 msgid "%s warning:"
 msgstr ""
@@ -6372,11 +6372,11 @@ msgstr ""
 msgid "The %s plugin has been activated."
 msgstr ""
 
-#: lib/register.php:315 lib/register.php:324
+#: lib/register.php:323 lib/register.php:332
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr ""
 
-#: lib/register.php:326
+#: lib/register.php:334
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 

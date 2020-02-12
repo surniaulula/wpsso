@@ -205,7 +205,8 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		private static function uninstall_plugin() {
 
 			$blog_id = get_current_blog_id();
-			$opts    = get_option( WPSSO_OPTIONS_NAME, array() );
+
+			$opts = get_option( WPSSO_OPTIONS_NAME, array() );
 
 			if ( ! empty( $opts[ 'plugin_clean_on_uninstall' ] ) ) {
 
@@ -286,12 +287,19 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				}
 
 				switch ( $key ) {
+
 					case 'wp':
+
 						global $wp_version;
+
 						$app_version = $wp_version;
+
 						break;
+
 					case 'php':
+
 						$app_version = phpversion();
+
 						break;
 				}
 
