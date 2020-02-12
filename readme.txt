@@ -126,7 +126,9 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 
 <h3>Free Complementary Add-ons</h3>
 
-Need even more features? Activate the free complementary add-on(s) you need:
+Need even more features?
+
+Simply activate the free complementary add-on(s) you need:
 
 * [WPSSO FAQ Manager](https://wordpress.org/plugins/wpsso-faq/) to manage FAQ categories with Question and Answer pages.
 * [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
