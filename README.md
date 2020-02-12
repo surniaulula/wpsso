@@ -67,9 +67,34 @@
 <li><p>Uses images from numerous sources, including featured, attached, gallery shortcode, images from HTML tags, or a custom fallback image.</p></li>
 <li><p>Image dimension settings for Facebook / Open Graph, Schema markup, Google Rich Results with Structured Data, Pinterest Rich Pins, and Twitter Cards.</p></li>
 <li><p>Contextual help for every plugin option and <a href="https://wpsso.com/docs/plugins/wpsso/">comprehensive online documentation</a>.</p></li>
-<li><p>Built-in support for <a href="https://wordpress.org/plugins/amp/">AMP</a>, <a href="https://wordpress.org/plugins/better-amp/">Better AMP</a>, and <a href="https://wordpress.org/plugins/accelerated-mobile-pages/">AMP for WP</a> plugins.</p></li>
-<li><p>Compatible with all known caching plugins, including Autoptimize, Cache Enabler, Comet Cache, LiteSpeed Cache, Hummingbird Cache, Pagely, Siteground Optimizer, W3 Total Cache (aka W3TC), WP Engine Cache, WP Fastest Cache, WP Rocket Cache, WP Super Cache.</p></li>
-<li><p>Supports advanced WordPress configurations, including <a href="https://wpsso.com/docs/plugins/wpsso/notes/multisite-network-support/">WordPress Network / Multisite installations</a> and WordPress MU Domain Mapping.</p></li>
+<li><p>Built-in support for AMP plugins:</p>
+
+<ul>
+<li><a href="https://wordpress.org/plugins/amp/">AMP</a></li>
+<li><a href="https://wordpress.org/plugins/better-amp/">Better AMP</a></li>
+<li><a href="https://wordpress.org/plugins/accelerated-mobile-pages/">AMP for WP</a></li>
+</ul></li>
+<li><p>Built-in support for caching plugins:</p>
+
+<ul>
+<li>Autoptimize</li>
+<li>Cache Enabler</li>
+<li>Comet Cache</li>
+<li>LiteSpeed Cache</li>
+<li>Hummingbird Cache</li>
+<li>Pagely, Siteground Optimizer</li>
+<li>W3 Total Cache (aka W3TC)</li>
+<li>WP Engine Cache</li>
+<li>WP Fastest Cache</li>
+<li>WP Rocket Cache</li>
+<li>WP Super Cache.</li>
+</ul></li>
+<li><p>Built-in support for advanced WordPress configurations:</p>
+
+<ul>
+<li>WordPress MU Domain Mapping</li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/notes/multisite-network-support/">Network / Multisite Installations</a></li>
+</ul></li>
 <li><p>Includes advanced quality assurance features and options.</p></li>
 </ul>
 
