@@ -6912,7 +6912,7 @@ msgstr ""
 
 #: lib/submenu/tools.php:95
 msgctxt "submit button"
-msgid "Refresh All Caches"
+msgid "Refresh Transient Cache"
 msgstr ""
 
 #: lib/submenu/tools.php:96
