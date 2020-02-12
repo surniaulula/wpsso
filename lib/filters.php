@@ -39,16 +39,19 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				/**
 				 * Cleanup incorrect Yoast SEO notifications.
 				 */
-				if ( function_exists( 'wpseo_init' ) ) {	// Includes wpseo premium.
+				if ( $this->p->avail[ 'seo' ][ 'wpseo' ] ) {
+
 					add_action( 'admin_init', array( $this, 'cleanup_wpseo_notifications' ), 15 );
 				}
 
 				if ( class_exists( 'GFForms' ) ) {
+
 					add_action( 'gform_noconflict_styles', array( $this, 'update_gform_noconflict_styles' ) );
 					add_action( 'gform_noconflict_scripts', array( $this, 'update_gform_noconflict_scripts' ) );
 				}
 
 				if ( class_exists( 'GravityView_Plugin' ) ) {
+
 					add_action( 'gravityview_noconflict_styles', array( $this, 'update_gform_noconflict_styles' ) );
 					add_action( 'gravityview_noconflict_scripts', array( $this, 'update_gform_noconflict_scripts' ) );
 				}
@@ -58,7 +61,8 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				/**
 				 * Disable JetPack open graph meta tags.
 				 */
-				if ( SucomPlugin::is_plugin_active( 'jetpack/jetpack.php', $use_cache = true ) ) {
+				if ( $this->p->avail[ 'util' ][ 'jetpack' ] ) {
+
 					add_filter( 'jetpack_enable_opengraph', '__return_false', 1000 );
 					add_filter( 'jetpack_enable_open_graph', '__return_false', 1000 );
 					add_filter( 'jetpack_disable_twitter_cards', '__return_true', 1000 );
@@ -68,26 +72,38 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				 * Disable Yoast SEO social meta tags.
 				 *
 				 * Must be executed after add_action( 'template_redirect', 'wpseo_frontend_head_init', 999 );
+				 *
 				 * 'template_redirect' is not executed by the AMP plugin, so hook the 'amp_post_template_head'
 				 * action as well.
 				 */
-				if ( function_exists( 'wpseo_init' ) ) {
+				if ( $this->p->avail[ 'seo' ][ 'wpseo' ] ) {
+
 					add_action( 'template_redirect', array( $this, 'cleanup_wpseo_filters' ), 10000 );
 					add_action( 'amp_post_template_head', array( $this, 'cleanup_wpseo_filters' ), -10000 );
 				}
 
 				/**
-				 * Honor the FORCE_SSL constant on the front-end with a 301 redirect.
+				 * Disable Rank Math social meta tags.
 				 */
-				if ( SucomUtil::get_const( 'FORCE_SSL' ) ) {
-					add_action( 'wp_loaded', array( __CLASS__, 'force_ssl_redirect' ), -1000 );
+				if ( $this->p->avail[ 'seo' ][ 'rankmath' ] ) {
+
+					add_action( 'rank_math/head', array( $this, 'cleanup_rankmath_filters' ), -10000 );
 				}
 
 				/**
 				 * Prevent SNAP from adding meta tags for the Facebook user agent.
 				 */
 				if ( function_exists( 'nxs_initSNAP' ) ) {
+
 					add_action( 'wp_head', array( __CLASS__, 'remove_snap_og_meta_tags_holder' ), -1000 );
+				}
+
+				/**
+				 * Honor the FORCE_SSL constant on the front-end with a 301 redirect.
+				 */
+				if ( SucomUtil::get_const( 'FORCE_SSL' ) ) {
+
+					add_action( 'wp_loaded', array( __CLASS__, 'force_ssl_redirect' ), -1000 );
 				}
 			}
 		}
@@ -188,8 +204,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 
 										unset( $wpseo_notif[ $num ] );
 
-										set_transient( Yoast_Notification_Center::TRANSIENT_KEY,
-											json_encode( $wpseo_notif ) );
+										set_transient( Yoast_Notification_Center::TRANSIENT_KEY, json_encode( $wpseo_notif ) );
 									}
 								}
 							}
@@ -200,7 +215,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 		}
 
 		/**
-		 * Disable Yoast SEO social meta tags.
+		 * Disable Yoast SEO social meta tags and Schema markup.
 		 */
 		public function cleanup_wpseo_filters() {
 
@@ -256,9 +271,30 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 		}
 
 		/**
-		 * Redirect from HTTP to HTTPS if the current webpage URL is not HTTPS.
-		 * A 301 redirect is considered a best practice when moving from HTTP to
-		 * HTTPS. See https://en.wikipedia.org/wiki/HTTP_301 for more info.
+		 * Disable Rank Math social meta tags and Schema markup.
+		 */
+		public function cleanup_rankmath_filters() {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			remove_all_actions( 'rank_math/opengraph/facebook' );
+			remove_all_actions( 'rank_math/opengraph/twitter' );
+			remove_all_actions( 'rank_math/json_ld' );
+		}
+
+		/**
+		 * Prevent SNAP from adding meta tags for the Facebook user agent.
+		 */
+		public static function remove_snap_og_meta_tags_holder() {
+
+			remove_action( 'wp_head', 'nxs_addOGTagsPreHolder', 150 );
+		}
+
+		/**
+		 * Redirect from HTTP to HTTPS if the current webpage URL is not HTTPS. A 301 redirect is considered a best
+		 * practice when moving from HTTP to HTTPS. See https://en.wikipedia.org/wiki/HTTP_301 for more info.
 		 */
 		public static function force_ssl_redirect() {
 
@@ -274,11 +310,6 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 					exit();
 				}
 			}
-		}
-
-		public static function remove_snap_og_meta_tags_holder() {
-
-			remove_action( 'wp_head', 'nxs_addOGTagsPreHolder', 150 );
 		}
 	}
 }

@@ -595,6 +595,10 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				table.wp-list-table > tbody > tr > td.column-wpseo-focuskw {
 					width:8em;
 				}
+				table.wp-list-table > thead > tr > th.column-rank_math_seo_details,	/* Rank Math. */
+				table.wp-list-table > tbody > tr > td.column-rank_math_seo_details {
+					width:170px;
+				}
 				table.wp-list-table > thead > tr > th.column-template,
 				table.wp-list-table > tbody > tr > td.column-template {
 				        width:10%;

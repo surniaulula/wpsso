@@ -321,22 +321,32 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 			return $text;
 		}
 	
-		function sanitize_text( $text ) { // not fancy
-			$text = strip_tags($text);
-			$text = esc_html($text);
-			$text = trim($text);
+		function sanitize_text( $text ) { // Not fancy.
+
+			$text = strip_tags( $text );
+
+			$text = esc_html( $text );
+
+			$text = trim( $text );
+
 			return $text;
 		}
 	
 		function filter_text( $text, $markdown = false ) {
+
 			$text = trim( $text );
+
 		        $text = call_user_func( array( __CLASS__, 'code_trick' ), $text, $markdown );
+
 			if ( $markdown ) {
+
 				if ( ! function_exists( 'suext_markdown' ) ) {
 					require_once SUEXT_README_MARKDOWN;
 				}
+
 				$text = suext_markdown( $text, $this->debug );
 			}
+
 			$allowed = array(
 				'a' => array(
 					'name' => array(),

@@ -81,7 +81,9 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 					$error_msg .= sprintf( __( 'See the %1$s sections %2$s and %3$s for more information on this database option.', 'wpsso' ), 'MySQL 8.0 Reference Manual', '<a href="https://dev.mysql.com/doc/refman/8.0/en/program-variables.html">Using Options to Set Program Variables</a>', '<a href="https://dev.mysql.com/doc/refman/8.0/en/packet-too-large.html">Packet Too Large</a>', 'max_allowed_packet' ) . ' ';
 
-					$this->p->notice->err( $error_msg );
+					$notice_key = 'db-max-allowed-packet-too-small';
+
+					$this->p->notice->err( $error_msg, null, $notice_key );
 				}
 			}
 		}
@@ -166,6 +168,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					 * difference between the OS package and the PHP extension.
 					 */
 					if ( $php_ext === 'imagick' ) {
+
 						$error_msg .= sprintf( __( 'Note that the ImageMagick application and the PHP "%1$s" extension are two different products &mdash; this error is for the PHP "%1$s" extension, not the ImageMagick application.', 'wpsso' ), $php_ext ) . ' ';
 					}
 
@@ -174,17 +177,33 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				/**
 				 * If the PHP extension is loaded, then maybe check to make sure the extension is complete. ;-)
 				 */
-				} elseif ( ! empty( $php_info[ 'functions' ] ) && is_array( $php_info[ 'functions' ] ) ) {
+				} elseif ( ! empty( $php_info[ 'classes' ] ) && is_array( $php_info[ 'classes' ] ) ) {
 
-					foreach ( $php_info[ 'functions' ] as $func_name ) {
+					foreach ( $php_info[ 'classes' ] as $class_name ) {
 
-						if ( ! function_exists( $func_name ) ) {
+						if ( ! class_exists( $class_name ) ) {
 
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'php ' . $func_name . ' function is missing' );
+								$this->p->debug->log( 'php ' . $class_name . ' class is missing' );
 							}
 
-							$error_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s extension module</a> is loaded but the %3$s function is missing.', 'wpsso' ), $php_info[ 'url' ], $php_info[ 'label' ], '<code>' . $func_name . '()</code>' ) . ' ';
+							$error_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s extension module</a> is loaded but the %3$s class is missing.', 'wpsso' ), $php_info[ 'url' ], $php_info[ 'label' ], '<code>' . $class_name . '</code>' ) . ' ';
+
+							$error_msg .= __( 'Please contact your hosting provider to have the missing PHP class installed.', 'wpsso' );
+						}
+					}
+
+				} elseif ( ! empty( $php_info[ 'functions' ] ) && is_array( $php_info[ 'functions' ] ) ) {
+
+					foreach ( $php_info[ 'functions' ] as $function_name ) {
+
+						if ( ! function_exists( $function_name ) ) {
+
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'php ' . $function_name . '() function is missing' );
+							}
+
+							$error_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s extension module</a> is loaded but the %3$s function is missing.', 'wpsso' ), $php_info[ 'url' ], $php_info[ 'label' ], '<code>' . $function_name . '()</code>' ) . ' ';
 
 							$error_msg .= __( 'Please contact your hosting provider to have the missing PHP function installed.', 'wpsso' );
 						}
@@ -194,6 +213,8 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				if ( ! empty( $error_msg ) ) {
 
 					$this->p->notice->err( $error_msg );
+				
+					SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg, $strip_html = true );
 				}
 			}
 		}
@@ -622,9 +643,15 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 					$plugins_url = add_query_arg( array( 's' => 'yoast seo' ), $plugins_url );
 
+					$error_msg = sprintf( __( 'The combination of %1$s and its %2$s add-on provide much better Schema markup for WooCommerce products than the %3$s plugin.', 'wpsso' ), $pkg[ $this->p->lca ][ 'short_pro' ], $pkg[ $ext ][ 'short_pro' ], $wpseo_wc_label ) . ' ';
+					
+					$error_msg .= sprintf( __( 'There is absolutely no advantage in continuing to use the %1$s plugin.', 'wpsso' ), $wpseo_wc_label ) . ' ';
+					
+					$error_msg .= sprintf( __( 'To avoid adding incorrect and confusing Schema markup in your webpages, <a href="%1$s">please deactivate the %2$s plugin immediately</a>.' ), $plugins_url, $wpseo_wc_label );
+
 					$notice_key = 'deactivate-wpseo-woocommerce';
 
-					$this->p->notice->err( sprintf( __( 'The combination of %1$s and its %2$s add-on provide much better Schema markup for WooCommerce products than the %3$s plugin.', 'wpsso' ), $pkg[ $this->p->lca ][ 'short_pro' ], $pkg[ $ext ][ 'short_pro' ], $wpseo_wc_label ) . ' ' . sprintf( __( 'There is absolutely no advantage in continuing to use the %1$s plugin.', 'wpsso' ), $wpseo_wc_label ) . ' ' . sprintf( __( 'To avoid adding incorrect and confusing Schema markup in your webpages, <a href="%1$s">please deactivate the %2$s plugin immediately</a>.' ), $plugins_url, $wpseo_wc_label ), null, $notice_key );
+					$this->p->notice->err( $error_msg, null, $notice_key );
 				}
 			}
 
@@ -642,25 +669,17 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 						$this->p->debug->log( 'visual composer version with event bug detected' );
 					}
 
+					$blog_post_url = 'https://surniaulula.com/2018/apps/wordpress/plugins/wpbakery/wpbakery-visual-composer-bug-in-change-handler/';
+
+					$error_msg = __( 'An issue with WPBakery Visual Composer has been detected.', 'wpsso' ) . ' ';
+						
+					$error_msg .= sprintf( __( 'WPBakery Visual Composer version %s (and older) are known to have a bug in their jQuery event handling code.', 'wpsso' ), $wpb_vc_version_event_bug ) . ' ';
+						
+					$error_msg .= sprintf( __( 'To avoid jQuery crashing on show / hide events, please contact WPBakery plugin support and <a href="%s">report the WPBakery Visual Composer change event handler bug described here</a>.', 'wpsso' ), $blog_post_url );
+
 					$notice_key = 'wpb-vc-version-event-bug';
 
-					$dismiss_time = DAY_IN_SECONDS;
-
-					/**
-					 * Add notice only if the admin notices have not already been shown.
-					 */
-					if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
-
-						$blog_post_url = 'https://surniaulula.com/2018/apps/wordpress/plugins/wpbakery/wpbakery-visual-composer-bug-in-change-handler/';
-
-						$error_msg = __( 'An issue with WPBakery Visual Composer has been detected.', 'wpsso' ) . ' ';
-						
-						$error_msg .= sprintf( __( 'WPBakery Visual Composer version %s (and older) are known to have a bug in their jQuery event handling code.', 'wpsso' ), $wpb_vc_version_event_bug ) . ' ';
-						
-						$error_msg .= sprintf( __( 'To avoid jQuery crashing on show / hide events, please contact WPBakery plugin support and <a href="%s">report the WPBakery Visual Composer change event handler bug described here</a>.', 'wpsso' ), $blog_post_url );
-
-						$this->p->notice->err( $error_msg, null, $notice_key, $dismiss_time );
-					}
+					$this->p->notice->err( $error_msg, null, $notice_key );
 				}
 			}
 		}
@@ -673,21 +692,15 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					$this->p->debug->log( 'wp blog_public option is disabled' );
 				}
 
+				$settings_url = get_admin_url( null, 'options-reading.php' );
+
+				$error_msg = sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engine and social sites from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck the option to allow search engines and social sites to access your content.', 'wpsso' ), $settings_url );
+
 				$notice_key = 'wp-search-engine-visibility-disabled';
 
 				$dismiss_time = YEAR_IN_SECONDS;
 
-				/**
-				 * Add notice only if the admin notices have not already been shown.
-				 */
-				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
-
-					$settings_url = get_admin_url( null, 'options-reading.php' );
-
-					$notice_msg = sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engine and social sites from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck the option to allow search engines and social sites to access your content.', 'wpsso' ), $settings_url );
-
-					$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time );
-				}
+				$this->p->notice->warn( $error_msg, null, $notice_key, $dismiss_time );
 			}
 		}
 	}

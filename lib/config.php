@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.21.0-b.1',	// Plugin version.
+					'version'     => '6.21.0-b.2',	// Plugin version.
 					'opt_version' => '703',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1783,15 +1783,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'label'       => 'PHP',
 				'min_version' => '5.6',		// Hard limit - deactivate the plugin when activating.
 				'rec_version' => '7.2',		// Soft limit - issue warning if lower version found.
-				'version_url' => 'https://secure.php.net/supported-versions.php',
+				'version_url' => 'https://www.php.net/supported-versions.php',
 				'extensions'  => array(
 					'curl' => array(	// PHP extension name.
 						'label' => 'Client URL Library (cURL)',
-						'url'   => 'https://secure.php.net/manual/en/book.curl.php',
+						'url'   => 'https://www.php.net/manual/en/book.curl.php',
+					),
+					'dom' => array(		// PHP extension name.
+						'label' => 'Document Object Model',
+						'url'   => 'https://www.php.net/manual/en/book.dom.php',
+						'classes' => array(	// Extra checks to make sure the PHP extension is complete.
+							'DOMDocument',
+						),
 					),
 					'gd' => array(		// PHP extension name.
 						'label' => 'Image Processing (GD)',
-						'url'   => 'https://secure.php.net/manual/en/book.image.php',
+						'url'   => 'https://www.php.net/manual/en/book.image.php',
 						'wp_image_editor' => array(
 							'class' => 'WP_Image_Editor_GD',
 							'url'   => 'https://developer.wordpress.org/reference/classes/wp_image_editor_gd/',
@@ -1799,11 +1806,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'json' => array(	// PHP extension name.
 						'label' => 'JavaScript Object Notation (JSON)',
-						'url'   => 'https://secure.php.net/manual/en/book.json.php',
+						'url'   => 'https://www.php.net/manual/en/book.json.php',
+					),
+					'libxml' => array(	// PHP extension name.
+						'label' => 'libxml',
+						'url'   => 'https://www.php.net/manual/en/book.libxml.php',
+						'functions' => array(	// Extra checks to make sure the PHP extension is complete.
+							'libxml_use_internal_errors',
+						),
 					),
 					'mbstring' => array(	// PHP extension name.
 						'label' => 'Multibyte String',
-						'url'   => 'https://secure.php.net/manual/en/book.mbstring.php',
+						'url'   => 'https://www.php.net/manual/en/book.mbstring.php',
 						'functions' => array(	// Extra checks to make sure the PHP extension is complete.
 							'mb_convert_encoding',
 							'mb_decode_numericentity',
@@ -1814,7 +1828,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'simplexml' => array(	// PHP extension name.
 						'label' => 'SimpleXML',
-						'url'   => 'https://secure.php.net/manual/en/book.simplexml.php',
+						'url'   => 'https://www.php.net/manual/en/book.simplexml.php',
 						'functions' => array(	// Extra checks to make sure the PHP extension is complete.
 							'simplexml_load_string',
 						),

@@ -383,7 +383,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				) );
 			}
 
-			$og_images       = array();
+			$og_images = array();
+
 			$og_single_image = SucomUtil::get_mt_image_seed();
 
 			if ( ! empty( $post_id ) ) {
@@ -399,9 +400,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$pid = $post_id;
 
-				} elseif ( $this->p->avail[ '*' ][ 'featured' ] && has_post_thumbnail( $post_id ) ) {
+				} elseif ( $this->p->avail[ 'wp' ][ 'featured' ] && has_post_thumbnail( $post_id ) ) {
+
 					$pid = get_post_thumbnail_id( $post_id );
+
 				} else {
+
 					$pid = false;
 				}
 

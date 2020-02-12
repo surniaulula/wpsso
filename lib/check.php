@@ -27,6 +27,13 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				'sq'          => 'Squirrly SEO',
 				'wpseo-wc'    => 'Yoast WooCommerce SEO',
 			),
+			'util' => array(
+				'jetpack' => 'Jetpack',
+				'vary_ua' => 'Vary by User Agent',
+			),
+			'wp' => array(
+				'featured' => 'Post Thumbnail',
+			),
 		);
 
 		public function __construct( &$plugin ) {
@@ -43,11 +50,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		 */
 		public function get_avail() {
 
-			$get_avail = array();	// Initialize the array to return.
+			$mtime_start  = microtime( true );
 
-			foreach ( array( 'featured', 'head_html', 'vary_ua' ) as $key ) {
-				$get_avail[ '*' ][ $key ] = $this->is_avail( $key );
-			}
+			$get_avail = array();	// Initialize the array to return.
 
 			$lib_checks = SucomUtil::array_merge_recursive_distinct( $this->p->cf[ '*' ][ 'lib' ][ 'pro' ], self::$extend_lib_checks );
 
@@ -68,8 +73,8 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						/**
 						 * 3rd Party Plugins
 						 *
-						 * Prefer to check for class names than plugin slugs for compatibility with free /
-						 * premium / pro versions.
+						 * Prefer checking for class / function names instead of plugin slugs for
+						 * compatibility with free / premium / pro plugins.
 						 */
 						case 'amp-amp':		// AMP, Better AMP, etc.
 
@@ -340,6 +345,12 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							break;
 
+						case 'util-jetpack':
+
+							$chk[ 'class' ] = 'Jetpack';
+
+							break;
+
 						case 'util-post':
 						case 'util-term':
 						case 'util-user':
@@ -354,9 +365,29 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							break;
 
+						case 'util-vary_ua':
+
+							/**
+							 * Enabled by default.
+							 */
+							$get_avail[ $sub ][ $id ] = SucomUtil::get_const( 'WPSSO_VARY_USER_AGENT_DISABLE' ) ? false : true;
+
+							/**
+							 * Maintain backwards compatibility.
+							 */
+							$get_avail[ '*' ][ $id ] = $get_avail[ $sub ][ $id ];
+
+							break;
+
 						case 'util-wpseo-meta':
 
 							$chk[ 'opt_key' ] = 'plugin_wpseo_social_meta';
+
+							break;
+
+						case 'wp-featured':
+
+							$chk[ 'function' ] = 'has_post_thumbnail';
 
 							break;
 					}
@@ -410,41 +441,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				$get_avail[ 'seo' ][ 'any' ] = true;
 			}
 
+			$mtime_total = microtime( true ) - $mtime_start;
+
 			return apply_filters( $this->p->lca . '_get_avail', $get_avail );
-		}
-
-		/**
-		 * Private method to check for availability of specific features by keyword.
-		 */
-		private function is_avail( $key ) {
-
-			$is_avail = false;
-
-			switch ( $key ) {
-
-				case 'featured':
-
-					$is_avail = function_exists( 'has_post_thumbnail' ) ? true : false;
-
-					break;
-
-				case 'head_html':
-
-					$is_avail = ! SucomUtil::get_const( 'WPSSO_HEAD_HTML_DISABLE' ) &&
-						empty( $_SERVER[ 'WPSSO_HEAD_HTML_DISABLE' ] ) &&
-							empty( $_GET[ 'WPSSO_HEAD_HTML_DISABLE' ] ) ?
-								true : false;
-
-					break;
-
-				case 'vary_ua':
-
-					$is_avail = ! SucomUtil::get_const( 'WPSSO_VARY_USER_AGENT_DISABLE' ) ? true : false;
-
-					break;
-			}
-
-			return $is_avail;
 		}
 
 		public function is_pp( $ext = null, $rc = true ) {

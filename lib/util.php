@@ -477,9 +477,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$mtime_start = microtime( true );
-			$image_info  = $this->p->cache->get_image_size( $image_url, $exp_secs = 300, $curl_opts = array(), $error_handler = 'wpsso_error_handler' );
+
+			$image_info = $this->p->cache->get_image_size( $image_url, $exp_secs = 300, $curl_opts = array(), $error_handler = 'wpsso_error_handler' );
+
 			$mtime_total = microtime( true ) - $mtime_start;
-			$mtime_max   = self::get_const( 'WPSSO_PHP_GETIMGSIZE_MAX_TIME', 1.50 );
+
+			$mtime_max = self::get_const( 'WPSSO_PHP_GETIMGSIZE_MAX_TIME', 1.50 );
 
 			/**
 			 * Issue warning for slow getimagesize() request.
@@ -1264,7 +1267,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$mtime_start = microtime( true );
-			$user_id     = $this->maybe_change_user_id( $user_id );
+
+			$user_id = $this->maybe_change_user_id( $user_id );
 
 			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
 				do_action( $this->p->lca . '_scheduled_task_started', $user_id );
@@ -1550,7 +1554,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$mtime_start = microtime( true );
-			$user_id     = $this->maybe_change_user_id( $user_id );
+
+			$user_id = $this->maybe_change_user_id( $user_id );
 
 			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
 				do_action( $this->p->lca . '_scheduled_task_started', $user_id );
@@ -1905,8 +1910,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 
 				if ( is_admin() ) {
-					$this->p->notice->err( sprintf( __( 'Error reading the %s file for the article sections list.',
-						'wpsso' ), $text_list_file ) );
+
+					$error_pre = sprintf( '%s error:', __METHOD__ );
+					$error_msg = sprintf( __( 'Error reading the %s file for the article sections list.', 'wpsso' ), $text_list_file );
+
+					$this->p->notice->err( $error_msg );
+
+					SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
 				}
 
 				return array();
@@ -1997,8 +2007,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 
 				if ( is_admin() ) {
-					$this->p->notice->err( sprintf( __( 'Error reading the %s file for the product categories list.',
-						'wpsso' ), $text_list_file ) );
+
+					$error_pre = sprintf( '%s error:', __METHOD__ );
+					$error_msg = sprintf( __( 'Error reading the %s file for the product categories list.', 'wpsso' ), $text_list_file );
+
+					$this->p->notice->err( $error_msg );
+
+					SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
 				}
 
 				return array();
@@ -2126,13 +2141,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 */
 			if ( ! class_exists( 'DOMDocument' ) ) {
 
-				$this->php_class_missing( 'DOMDocument' );
+				$this->php_class_missing( 'DOMDocument', __METHOD__ );
 
 				return false;
 
 			} elseif ( ! function_exists( 'mb_convert_encoding' ) ) {
 
-				$this->php_function_missing( 'mb_convert_encoding()' );
+				$this->php_function_missing( 'mb_convert_encoding()', __METHOD__ );
 
 				return false;
 			}
@@ -2153,7 +2168,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( ! function_exists( 'libxml_use_internal_errors' ) ) {	// Since PHP v5.1.
 
-					$this->php_function_missing( 'libxml_use_internal_errors()' );
+					$this->php_function_missing( 'libxml_use_internal_errors()', __METHOD__ );
 
 					@$doc->loadHTML( $html );	// Load HTML and ignore errors.
 
@@ -2304,7 +2319,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $html;
 		}
 
-		public function php_class_missing( $class ) {
+		public function php_class_missing( $class, $method = null ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( $class . ' PHP class is missing' );
@@ -2317,7 +2332,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 		}
 
-		public function php_function_missing( $function ) {
+		public function php_function_missing( $function, $method = null ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( $function . ' PHP function is missing' );
@@ -2351,9 +2366,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( function_exists( $function ) ) {
 
-					$mtime_start  = microtime( true );
+					$mtime_start = microtime( true );
+
 					$function_ret = $function();
-					$mtime_total  = microtime( true ) - $mtime_start;
+
+					$mtime_total = microtime( true ) - $mtime_start;
 
 					$function_info[ $function ] = array(
 						sprintf( '%-40s (%f secs)', $function . '() = ' . ( $function_ret ? 'TRUE' : 'false' ), $mtime_total ),
@@ -3529,9 +3546,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->mark( 'applying WordPress ' . $filter_name . ' filters' );	// Begin timer.
 			}
 
-			$mtime_start  = microtime( true );
+			$mtime_start = microtime( true );
+
 			$filter_value = call_user_func_array( 'apply_filters', $args );
-			$mtime_total  = microtime( true ) - $mtime_start;
+
+			$mtime_total = microtime( true ) - $mtime_start;
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'applying WordPress ' . $filter_name . ' filters' );	// End timer.
@@ -4005,7 +4024,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->options[ 'plugin_img_alt_prefix' ] : 'Image:';
 
 			$text = self::strip_shortcodes( $text );					// Remove any remaining shortcodes.
-
 			$text = preg_replace( '/[\s\n\r]+/s', ' ', $text );				// Put everything on one line.
 			$text = preg_replace( '/<\?.*\?'.'>/U', ' ', $text );				// Remove php.
 			$text = preg_replace( '/<script\b[^>]*>(.*)<\/script>/Ui', ' ', $text );	// Remove javascript.
@@ -4015,25 +4033,33 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 * Maybe remove text between ignore markers.
 			 */
 			if ( false !== strpos( $text, $this->p->lca . '-ignore' ) ) {
-				$text = preg_replace( '/<!-- *' . $this->p->lca . '-ignore *-->.*' .
-					'<!-- *\/' . $this->p->lca . '-ignore *-->/U', ' ', $text );
+				$text = preg_replace( '/<!-- *' . $this->p->lca . '-ignore *-->.*<!-- *\/' . $this->p->lca . '-ignore *-->/U', ' ', $text );
 			}
 
+			/**
+			 * Similar to SucomUtil::strip_html(), but includes image alt tags.
+			 */
 			if ( $strip_tags ) {
 
 				/**
-				 * Maybe add missing dot to buttons, headers, lists, etc.
+				 * Add missing dot to buttons, headers, lists, etc.
 				 */
-				$text = preg_replace( '/([\w])<\/(button|dt|h[0-9]+|li|th)>/i', '$1. ', $text);
+				$text = preg_replace( '/([\w])<\/(button|dt|h[0-9]+|li|th)>/i', '$1. ', $text );
 
 				/**
-				 * Replace end of paragraph with a space.
+				 * Replace paragraph tags with a space.
 				 */
-				$text = preg_replace( '/<\/p>/i', ' ', $text);
+				$text = preg_replace( '/(<p>|<p[^>]+>|<\/p>)/i', ' ', $text );
 
-				$text_stripped = trim( strip_tags( $text ) );				// Remove remaining html tags.
+				/**
+				 * Remove remaining html tags.
+				 */
+				$text_stripped = trim( strip_tags( $text ) );
 
-				if ( $text_stripped === '' && $use_img_alt ) {				// Possibly use img alt strings if no text.
+				/**
+				 * Possibly use img alt strings if no text.
+				 */
+				if ( $text_stripped === '' && $use_img_alt ) {
 
 					if ( false !== strpos( $text, '<img ' ) &&
 						preg_match_all( '/<img [^>]*alt=["\']([^"\'>]*)["\']/Ui',
@@ -4066,7 +4092,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 			}
 
-			$text = preg_replace( '/(\xC2\xA0|\s)+/s', ' ', $text );	// Replace 1+ spaces to a single space.
+			/**
+			 * Replace 1+ spaces to a single space.
+			 */
+			$text = preg_replace( '/(\xC2\xA0|\s)+/s', ' ', $text );
 
 			return trim( $text );
 		}

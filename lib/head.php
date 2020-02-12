@@ -97,8 +97,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->log( 'required call to get_page_mod()' );
 			}
 
-			$mod        = $this->p->util->get_page_mod( $use_post );	// Get post/user/term id, module name, and module object reference.
-			$read_cache = true;
+			$mod = $this->p->util->get_page_mod( $use_post );	// Get post/user/term id, module name, and module object reference.
+
+			$add_head_html = apply_filters( $this->p->lca . '_add_head_html', true, $mod );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'home url = ' . get_option( 'home' ) );
@@ -106,18 +107,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->log( 'locale current = ' . SucomUtil::get_locale( 'current' ) );
 				$this->p->debug->log( 'locale mod = ' . SucomUtil::get_locale( $mod ) );
 				$this->p->debug->log( 'wp_query salt = ' . SucomUtil::get_query_salt() );
+				$this->p->debug->log( 'add_head_html = ' . ( $add_head_html ? 'true' : 'false' ) );
 				$this->p->util->log_is_functions();
 			}
 
-			$add_head_html = apply_filters( $this->p->lca . '_add_head_html', $this->p->avail[ '*' ][ 'head_html' ], $mod );
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'avail head_html = ' . ( $this->p->avail[ '*' ][ 'head_html' ] ? 'true' : 'false' ) );
-				$this->p->debug->log( 'add_head_html = ' . ( $add_head_html ? 'true' : 'false' ) );
-			}
-
 			if ( $add_head_html ) {
-				echo $this->get_head_html( $use_post, $mod, $read_cache );
+				echo $this->get_head_html( $use_post, $mod, $read_cache = true );
 			} else {
 				echo "\n" . '<!-- ' . $this->p->lca . ' head html is disabled -->' . "\n";
 			}
