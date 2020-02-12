@@ -2284,13 +2284,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'notice-wp-config-php-variable-home':
 
-						$text = __( 'The <code>WP_HOME</code> constant definition in your <code>wp-config.php</code> file contains a variable.', 'wpsso' ) . ' ';
+						$const_html = '<code>WP_HOME</code>';
 
-						$text .= __( 'WordPress uses the <code>WP_HOME</code> constant to provide a single unique canonical URL for each webpage and Media Library content.', 'wpsso' ) . ' ';
+						$cfg_php_html = '<code>wp-config.php</code>';
 
-						$text .= __( 'A changing <code>WP_HOME</code> value will create different canonical URLs in your webpages, leading to duplicate content penalties from Google, incorrect social share counts, possible broken media links, mixed content issues, and SSL certificate errors.', 'wpsso' ) . ' ';
+						$text = sprintf( __( 'The %1$s constant definition in your %2$s file contains a variable.', 'wpsso' ), $const_html, $cfg_php_html ) . ' ';
 
-						$text .= __( 'Please update your <code>wp-config.php</code> file and provide a fixed, non-variable value for the <code>WP_HOME</code> constant.', 'wpsso' );
+						$text .= sprintf( __( 'WordPress uses the %1$s constant to provide a single unique canonical URL for each webpage and Media Library content.', 'wpsso' ), $const_html ) . ' ';
+
+						$text .= sprintf( __( 'A changing %1$s value will create different canonical URLs in your webpages, leading to duplicate content penalties from Google, incorrect social share counts, possible broken media links, mixed content issues, and SSL certificate errors.', 'wpsso' ), $const_html ) . ' ';
+
+						$text .= sprintf( __( 'Please update your %1$s file and provide a fixed, non-variable value for the %2$s constant.', 'wpsso' ), $cfg_php_html, $const_html );
 
 						break;
 
