@@ -3421,7 +3421,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$content = mb_convert_encoding( $content, 'HTML-ENTITIES', 'UTF-8' );	// Convert to UTF8.
 			}
 
-			$content = preg_replace( '/<!--.*-->/Uums', '', $content );	// Pattern and subject strings are treated as UTF8.
+			/**
+			 * Remove containers that should not include json scripts.
+			 */
+			$content = preg_replace( '/<!--.*-->/Uums', '', $content );
+			$content = preg_replace( '/<pre[ >].*<\/pre>/Uiums', '', $content );
+			$content = preg_replace( '/<textarea[ >].*<\/textarea>/Uiums', '', $content );
 
 			$json_data = array();
 
