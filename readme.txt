@@ -535,7 +535,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Added new buttons in the SSO &gt; Tools and Actions page:
 		* Delete All Files in Cache Folder
-		* Refresh All Cache
+		* Refresh Transient Cache
 		* Change to All/Basic Options View
 * **Bugfixes**
 	* None.
