@@ -515,7 +515,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.21.0-b.1 (2020/02/12)**
+**Version 6.21.0-b.2 (2020/02/12)**
 
 * **New Features**
 	* Added support for the Rate my Post plugin.
@@ -874,7 +874,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.21.0-b.1 =
+= 6.21.0-b.2 =
 
 (2020/02/12) Added support for the Rate my Post plugin. Added support for clearing third-party cache plugins.
 
