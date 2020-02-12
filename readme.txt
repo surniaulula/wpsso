@@ -63,20 +63,30 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 
 * Complete and accurate meta tags for all social sites, search engines, web browser extensions, mail and messaging apps, and embedded object / iframe content.
 
-* Updates the WordPress oEmbed data and HTML markup with the Open Graph title, description, and image for posts, pages, and custom post types.
+* Updates WordPress oEmbed data with the Open Graph title, description, and image for posts, pages, and custom post types.
 
 * Offers meta tags and markup for all webpages, including:
 
-	* Home page (static or blog).
-	* Posts, pages, custom post types.
-	* Categories, tags, custom taxonomy / terms.
-	* User profile pages.
-	* Media attachment pages.
-	* Search pages.
+	* Home (Static Page or Blog)
+	* Posts, Pages, and Custom Post Types
+	* Categories, Tags, and Custom Taxonomy / Terms
+	* User Profile Pages
+	* Media Attachment Pages
+	* Search Result Pages
 
-* Uses images from numerous sources, including featured, attached, gallery shortcode, images from HTML tags, or a custom fallback image.
+* Custom WordPress image size settings for:
 
-* Image dimension settings for Facebook / Open Graph, Schema markup, Google Rich Results with Structured Data, Pinterest Rich Pins, and Twitter Cards.
+	* Open Graph (Facebook and Others)
+	* Schema (Google and Pinterest)
+	* Schema Article (Google and Pinterest)
+	* Schema Article AMP 1:1 (Google)
+	* Schema Article AMP 4:3 (Google)
+	* Schema Article AMP 16:9 (Google)
+	* Schema Thumbnail Image
+	* Twitter Summary Card
+	* Twitter Large Image Summary Card
+
+* Capable of finding images from numerous sources, including featured, attached, gallery shortcode, images from HTML tags, or a custom fallback image.
 
 * Contextual help for every plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/).
 
