@@ -537,10 +537,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Delete All Files in Cache Folder
 		* Refresh Transient Cache
 		* Change to All/Basic Options View
+	* Added a progress notice when the "Refresh Transient Cache" method is running.
+	* Updated the "Delete All Files" success notice with the number of cached files, transient cache objects and column metadata cleared.
 	* Removed the "Auto-Refresh Cache After Clearing" option (now always enabled).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Added a new `SucomUtilWP::count_metadata()` method to return a total count of metadata keys.
 	* Added a new `WpssoUtil->clear_all_other()` method called by `WpssoUtil->clear_all_cache()` (see the list of supported plugins in the New Features section above).
 	* Added a `$strip_html` argument (false by default) to the `SucomUtil::safe_error_log()` method.
 	* Added a QA check for the PHP 'dom' extension, including its 'DOMDocument' class.
