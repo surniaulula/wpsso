@@ -309,6 +309,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				701 => array(
 					'og_def_article_topic' => 'og_def_article_section',
 				),
+				703 => array(
+					'plugin_clear_all_refresh' => '',
+				),
 			),
 		);
 
@@ -343,6 +346,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				),
 				698 => array(
 					'plugin_topics_cache_exp' => 'plugin_list_cache_exp',
+				),
+				703 => array(
+					'plugin_clear_all_refresh' => '',
 				),
 			),
 		);

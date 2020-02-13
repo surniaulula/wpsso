@@ -316,11 +316,6 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$form->get_td_no_checkbox( 'plugin_clear_short_urls' ) . 
 			WpssoAdmin::get_option_site_use( 'plugin_clear_short_urls', $form, $network );
 
-			$table_rows[ 'plugin_clear_all_refresh' ] = '' . 
-			$form->get_th_html( _x( 'Auto-Refresh Cache After Clearing', 'option label', 'wpsso' ), '', 'plugin_clear_all_refresh' ) . 
-			$form->get_td_no_checkbox( 'plugin_clear_all_refresh' ) . 
-			WpssoAdmin::get_option_site_use( 'plugin_clear_all_refresh', $form, $network );
-
 			$table_rows[ 'plugin_clear_post_terms' ] = $form->get_tr_hide( 'basic', 'plugin_clear_post_terms' ) . 
 			$form->get_th_html( _x( 'Clear Term Cache for Published Post', 'option label', 'wpsso' ), '', 'plugin_clear_post_terms' ) . 
 			$form->get_td_no_checkbox( 'plugin_clear_post_terms' ) . 

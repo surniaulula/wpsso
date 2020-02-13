@@ -801,5 +801,36 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			return $local_cache = array( $min_width, $min_height, $size_count );
 		}
+
+		public static function count_metadata( $meta_type, $meta_key ) {
+
+			global $wpdb;
+ 
+ 			if ( ! $meta_type || ! $meta_key ) {
+				return false;
+			}
+ 
+			$table = _get_meta_table( $meta_type );
+		
+			if ( ! $table ) {
+				return false;
+			}
+ 
+			$type_column = sanitize_key( $meta_type . '_id' );
+
+			$id_column = 'user' == $meta_type ? 'umeta_id' : 'meta_id';
+
+			$meta_key = wp_unslash( $meta_key );
+ 
+ 			$query = $wpdb->prepare( "SELECT COUNT( $id_column )FROM $table WHERE meta_key = %s", $meta_key );
+ 
+ 			$result = $wpdb->get_col( $query );
+
+			if ( isset( $result[ 0 ] ) && is_numeric( $result[ 0 ] ) ) {	// Just in case;
+				return $result[ 0 ];
+			}
+
+			return 0;
+		}
 	}
 }

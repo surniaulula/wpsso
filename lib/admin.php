@@ -214,7 +214,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
-		 * Add a new main menu, and its sub-menu items.
+		 * Add a new main menu and its sub-menu items.
 		 *
 		 * $menu_lib = 'dashboard' | 'plugins' | 'profile' | 'settings' | 'submenu' | 'sitesubmenu' | 'tools'
 		 */
@@ -1072,9 +1072,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'refresh_all_cache':
 
-							$this->p->util->schedule_refresh_all_cache( $user_id );
+							$this->p->util->schedule_refresh_all_cache( $user_id, $read_cache = false, $throttle = false );
 
-							$notice_msg = __( 'A background task will begin shortly to refresh the post, term, and user cache objects.', 'wpsso' );
+							$notice_msg = __( 'A background task will begin shortly to refresh the post, term and user transient cache objects.', 'wpsso' );
 
 							$this->p->notice->upd( $notice_msg, $user_id );
 
@@ -1623,7 +1623,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$latest_version    = __( 'Not Available', 'wpsso' ); // Default value.
 				$latest_notice     = '';
 				$changelog_url     = isset( $info[ 'url' ][ 'changelog' ] ) ? $info[ 'url' ][ 'changelog' ] : '';
-				$readme_info       = $this->get_readme_info( $ext, true ); // $read_cache is true.
+				$readme_info       = $this->get_readme_info( $ext, $read_cache = true );
 
 				if ( ! empty( $readme_info[ 'stable_tag' ] ) ) {
 
@@ -2139,7 +2139,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$table_rows = array();
 
 				/**
-				 * Plugin name, description, and links.
+				 * Plugin name, description and links.
 				 */
 				$plugin_name_html = '<h4>' . $info[ 'name' ] . '</h4>';
 
@@ -2212,7 +2212,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$table_rows = array();
 
 				/**
-				 * Plugin Name, Description, and Links
+				 * Plugin name, description and links
 				 */
 				$plugin_name_html = '<h4>' . $info[ 'name' ] . '</h4>';
 
@@ -2943,7 +2943,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$table_rows[ 'plugin_clean_on_uninstall' ] = '' .
 			$form->get_th_html( _x( 'Remove Settings on Uninstall', 'option label', 'wpsso' ), '', 'plugin_clean_on_uninstall' ) . 
 			'<td>' . $form->get_checkbox( 'plugin_clean_on_uninstall' ) . ' ' .
-			_x( 'including custom meta for posts, terms, and users', 'option comment', 'wpsso' ) . '</td>' .
+			_x( 'including custom meta for posts, terms and users', 'option comment', 'wpsso' ) . '</td>' .
 			self::get_option_site_use( 'plugin_clean_on_uninstall', $form, $network, true );
 
 			$table_rows[ 'plugin_debug' ] = '' .
@@ -3339,7 +3339,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$link_url = self_admin_url( 'update-core.php?force-check=1' );
 
 				// translators: %1$s is the URL.
-				$link_html = sprintf( __( 'You may <a href="%1$s">refresh the update information for WordPress (plugins, themes, and translations)</a> to check if newer versions are available.', 'wpsso' ), $link_url );
+				$link_html = sprintf( __( 'You may <a href="%1$s">refresh the update information for WordPress (plugins, themes and translations)</a> to check if newer versions are available.', 'wpsso' ), $link_url );
 
 			}
 

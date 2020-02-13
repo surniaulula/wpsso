@@ -268,13 +268,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$this->maybe_set_notice_cache( $user_id, $use_cache );
 
-			if ( empty( $this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] ) ) {
+			$this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] = $payload;
 
-				$this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] = $payload;
-
-				if ( ! $use_cache ) {
-					$this->update_notice_transient( $user_id );
-				}
+			if ( ! $use_cache ) {
+				$this->update_notice_transient( $user_id );
 			}
 		}
 
@@ -322,8 +319,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					 * Clear notice for a specific notice key.
 					 */
 					if ( ! empty( $notice_key ) ) {
+
 						foreach ( $this->notice_cache[ $user_id ][ $msg_type ] as $msg_key => $payload ) {
+
 							if ( ! empty( $payload[ 'notice_key' ] ) && $payload[ 'notice_key' ] === $notice_key ) {
+
 								unset( $this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] );
 							}
 						}
@@ -332,8 +332,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					 * Clear a specific message text.
 					 */
 					} elseif ( ! empty( $msg_text ) ) {
+
 						foreach ( $this->notice_cache[ $user_id ][ $msg_type ] as $msg_key => $payload ) {
+
 							if ( ! empty( $payload[ 'msg_text' ] ) && $payload[ 'msg_text' ] === $msg_text ) {
+
 								unset( $this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] );
 							}
 						}
@@ -504,7 +507,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			return true;
 		}
 
-		public function is_dismissed( $notice_key = false, $user_id = null ) {
+		public function force_expire( $notice_key = false, $user_id = null ) {
+
+			$this->is_dismissed( $notice_key, $user_id, $force_expire = true );
+		}
+
+		public function is_dismissed( $notice_key = false, $user_id = null, $force_expire = false ) {
 
 			if ( empty( $notice_key ) || ! $this->can_dismiss() ) {	// Just in case.
 				return false;
@@ -529,7 +537,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$current_time = time();
 				$dismiss_time = $user_dismissed[ $notice_key ];
 
-				if ( empty( $dismiss_time ) || $dismiss_time > $current_time ) {
+				if ( ! $force_expire && ( empty( $dismiss_time ) || $dismiss_time > $current_time ) ) {
 
 					return true;
 
@@ -538,11 +546,15 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					unset( $user_dismissed[ $notice_key ] );
 
 					if ( empty( $user_dismissed ) ) {
-						delete_user_option( $user_id, $this->dis_name, false );	// $global is false.
-						delete_user_option( $user_id, $this->dis_name, true );	// $global is true.
+
+						delete_user_option( $user_id, $this->dis_name, $global = true );
+						delete_user_option( $user_id, $this->dis_name, $global = false );
+
 					} else {
-						update_user_option( $user_id, $this->dis_name, $user_dismissed, false );	// $global is false.
+						update_user_option( $user_id, $this->dis_name, $user_dismissed, $global = false );
 					}
+			
+					return false;
 				}
 			}
 
@@ -708,10 +720,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 					if ( empty( $user_dismissed ) ) {
 
-						delete_user_option( $user_id, $this->dis_name, false );	// $global is false.
-						delete_user_option( $user_id, $this->dis_name, true );	// $global is true.
+						delete_user_option( $user_id, $this->dis_name, $global = true );
+						delete_user_option( $user_id, $this->dis_name, $global = false );
+
 					} else {
-						update_user_option( $user_id, $this->dis_name, $user_dismissed, false );	// $global is false.
+						update_user_option( $user_id, $this->dis_name, $user_dismissed, $global = false );
 					}
 				}
 			}
@@ -775,7 +788,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$user_dismissed[ $dismiss_info[ 'notice_key' ] ] = time() + $dismiss_info[ 'dismiss_time' ];
 			}
 
-			update_user_option( $user_id, $this->dis_name, $user_dismissed, false );	// $global is false
+			update_user_option( $user_id, $this->dis_name, $user_dismissed, $global = false );
 
 			die( '1' );
 		}
@@ -904,10 +917,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 					if ( empty( $user_dismissed ) ) {
 
-						delete_user_option( $user_id, $this->dis_name, false );	// $global is false
-						delete_user_option( $user_id, $this->dis_name, true );	// $global is true
+						delete_user_option( $user_id, $this->dis_name, $global = true );
+						delete_user_option( $user_id, $this->dis_name, $global = false );
+
 					} else {
-						update_user_option( $user_id, $this->dis_name, $user_dismissed, false );	// $global is false
+						update_user_option( $user_id, $this->dis_name, $user_dismissed, $global = false );
 					}
 				}
 			}

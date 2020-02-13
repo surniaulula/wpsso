@@ -51,7 +51,6 @@ _x( 'Clear All Caches on Activate', 'option label', 'wpsso' );
 _x( 'Clear All Caches on Deactivate', 'option label', 'wpsso' );
 _x( 'Clear All Caches on Save Settings', 'option label', 'wpsso' );
 _x( 'Refresh Short URLs on Clear Cache', 'option label', 'wpsso' );
-_x( 'Auto-Refresh Cache After Clearing', 'option label', 'wpsso' );
 _x( 'Clear Term Cache for Published Post', 'option label', 'wpsso' );
 _x( 'Clear Post Cache for New Comment', 'option label', 'wpsso' );
 _x( 'Preferred URL Shortening Service', 'option label', 'wpsso' );

@@ -165,8 +165,9 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		private function deactivate_plugin() {
 
 			/**
-			 * Clear all caches on deactivate. Do not use the schedule_clear_all_cache() method since WPSSO will be
-			 * deactivated before the scheduled task can begin.
+			 * Clear all caches on deactivate.
+			 *
+			 * Do not call the schedule_clear_all_cache() method since WPSSO will be deactivated before the scheduled task can begin.
 			 *
 			 * If 'plugin_clear_on_deactivate' is empty, then at least clear the disk cache.
 			 */
@@ -199,8 +200,8 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		}
 
 		/**
-		 * uninstall.php defines constants before calling network_uninstall(),
-		 * which calls do_multisite(), and then calls uninstall_plugin().
+		 * uninstall.php defines constants before calling network_uninstall(), which calls do_multisite(), and then calls
+		 * uninstall_plugin().
 		 */
 		private static function uninstall_plugin() {
 
@@ -217,7 +218,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				/**
 				 * Delete post settings and meta.
 				 */
-				delete_metadata( 'post', null, WPSSO_META_NAME, '', true );	// $delete_all is true.
+				delete_metadata( $meta_type = 'post', $object_id = null, WPSSO_META_NAME, $meta_value = null, $delete_all = true );
 
 				delete_post_meta_by_key( '_wpsso_wpproductreview' );	// Re-created automatically.
 				delete_post_meta_by_key( '_wpsso_wprecipemaker' );	// Re-created automatically.
@@ -234,8 +235,8 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				/**
 				 * Delete user settings and meta.
 				 */
-				delete_metadata( 'user', null, WPSSO_META_NAME, '', true );	// $delete_all is true.
-				delete_metadata( 'user', null, WPSSO_PREF_NAME, '', true );	// $delete_all is true.
+				delete_metadata( $meta_type = 'user', $object_id = null, WPSSO_META_NAME, $meta_value = null, $delete_all = true );
+				delete_metadata( $meta_type = 'user', $object_id = null, WPSSO_PREF_NAME, $meta_value = null, $delete_all = true );
 
 				while ( $user_ids = SucomUtil::get_user_ids( $blog_id, '', 1000 ) ) {	// Get a maximum of 1000 user IDs at a time.
 
