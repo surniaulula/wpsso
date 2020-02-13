@@ -1279,7 +1279,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( $user_id ) {
 
-					$notice_msg = __( 'Aborting cache clearing - another task is still running.', 'wpsso' );
+					$notice_msg = __( 'Aborting cache clearing - an identical task is still running.', 'wpsso' );
 
 					$this->p->notice->warn( $notice_msg, $user_id, $notice_key );
 				}
@@ -1307,7 +1307,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			wp_cache_flush();	// Clear non-database transients as well.
 
-			$notice_msg = sprintf( __( '%1$d cached files, %2$d transient cache objects, %3$d column metadata, and the WordPress object cache have all been cleared.', 'wpsso' ), $deleted_files, $deleted_transients, $deleted_col_meta ) . ' ';
+			$notice_msg = sprintf( __( '%1$d cached files, %2$d transient cache objects, %3$d column metadata, and the WordPress object cache have all been cleared.',
+				'wpsso' ), $deleted_files, $deleted_transients, $deleted_col_meta ) . ' ';
 
 			/**
 			 * Clear all other known caches (Comet Cache, W3TC, WP Rocket, etc.).
@@ -1559,7 +1560,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					if ( $user_id ) {
 
-						$notice_msg = __( 'Aborting transient cache refresh - another task is still running.', 'wpsso' );
+						$notice_msg = __( 'Aborting transient cache refresh - an identical task is still running.', 'wpsso' );
 
 						$this->p->notice->warn( $notice_msg, $user_id, $notice_key );
 					}
