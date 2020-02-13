@@ -1874,7 +1874,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				$this->p->notice->err( $error_msg );
 
-				SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
+				self::safe_error_log( $error_pre . ' ' . $error_msg );
 
 			} else {
 
@@ -1903,7 +1903,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 							$this->p->notice->err( $error_msg );
 
-							SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
+							self::safe_error_log( $error_pre . ' ' . $error_msg );
 						}
 					}
 				}
@@ -1925,7 +1925,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$cache_md5_pre  = $this->p->lca . '_l_';
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre );	// Default is month in seconds.
-			$text_list_file = SucomUtil::get_file_path_locale( WPSSO_ARTICLE_SECTIONS_LIST );
+			$text_list_file = self::get_file_path_locale( WPSSO_ARTICLE_SECTIONS_LIST );
 
 			if ( $cache_exp_secs > 0 ) {
 
@@ -1967,7 +1967,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					$this->p->notice->err( $error_msg );
 
-					SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
+					self::safe_error_log( $error_pre . ' ' . $error_msg );
 				}
 
 				return array();
@@ -2022,7 +2022,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$cache_md5_pre  = $this->p->lca . '_l_';
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre );	// Default is month in seconds.
-			$text_list_file = SucomUtil::get_file_path_locale( WPSSO_PRODUCT_CATEGORIES_LIST );
+			$text_list_file = self::get_file_path_locale( WPSSO_PRODUCT_CATEGORIES_LIST );
 
 			if ( $cache_exp_secs > 0 ) {
 
@@ -2064,7 +2064,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					$this->p->notice->err( $error_msg );
 
-					SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
+					self::safe_error_log( $error_pre . ' ' . $error_msg );
 				}
 
 				return array();
@@ -4170,7 +4170,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		public function get_robots_content( array $mod ) {
 
-			$directives = SucomUtil::get_robots_default_directives();
+			$directives = self::get_robots_default_directives();
 
 			if ( $mod[ 'id' ] && is_object( $mod[ 'obj' ] ) ) {
 
