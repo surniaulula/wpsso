@@ -1072,7 +1072,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'refresh_all_cache':
 
-							$this->p->util->schedule_refresh_all_cache( $user_id, $read_cache = false, $throttle = false );
+							$this->p->util->schedule_refresh_all_cache( $user_id, $read_cache = false );
 
 							$notice_msg = __( 'A background task will begin shortly to refresh the post, term and user transient cache objects.', 'wpsso' );
 

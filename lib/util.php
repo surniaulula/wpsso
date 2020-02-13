@@ -1496,12 +1496,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/**
 		 * Schedule the refreshing of all post, term and user transient cache objects.
 		 */
-		public function schedule_refresh_all_cache( $user_id = null, $read_cache = false, $throttle = true ) {
+		public function schedule_refresh_all_cache( $user_id = null, $read_cache = false ) {
 
 			$user_id    = $this->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 			$event_time = time() + $this->event_buffer;
 			$event_hook = $this->p->lca . '_refresh_all_cache';
-			$event_args = array( $user_id, $read_cache, $throttle );
+			$event_args = array( $user_id, $read_cache );
 
 			wp_schedule_single_event( $event_time, $event_hook, $event_args );
 		}
@@ -1518,7 +1518,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 		}
 
-		public function refresh_all_cache( $user_id = null, $read_cache = false, $throttle = true ) {
+		public function refresh_all_cache( $user_id = null, $read_cache = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -1614,7 +1614,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						$this->p->notice->upd( $notice_msg, $user_id, $notice_key, $dismiss_time = HOUR_IN_SECONDS / 2 );
 					}
 
-					$this->refresh_mod_head_meta( $mod, $user_id, $read_cache, $throttle );
+					$this->refresh_mod_head_meta( $mod, $user_id, $read_cache );
 				}
 			}
 
@@ -1638,7 +1638,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/**
 		 * Called by refresh_all_cache().
 		 */
-		public function refresh_mod_head_meta( array $mod, $user_id = null, $read_cache = false, $throttle = true ) {
+		public function refresh_mod_head_meta( array $mod, $user_id = null, $read_cache = false ) {
 
 			$this->add_plugin_image_sizes( $wp_obj = false, $image_sizes = array(), $filter_sizes = true );
 
@@ -1646,12 +1646,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$head_info = $this->p->head->extract_head_info( $mod, $head_tags );
 
-			if ( $throttle ) {
+			$sleep_secs = self::get_const( 'WPSSO_REFRESH_CACHE_SLEEP_TIME', 0.50 );
 
-				$sleep_secs = self::get_const( 'WPSSO_REFRESH_CACHE_SLEEP_TIME', 0.50 );
-
-				usleep( $sleep_secs * 1000000 );	// Sleeps for 0.50 seconds by default.
-			}
+			usleep( $sleep_secs * 1000000 );	// Sleeps for 0.50 seconds by default.
 		}
 
 		public function delete_all_column_meta() {
