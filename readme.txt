@@ -515,7 +515,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.21.0-b.3 (2020/02/12)**
+**Version 6.21.0-b.4 (2020/02/13)**
 
 * **New Features**
 	* Added support for the Rate my Post plugin.
@@ -537,6 +537,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Delete All Files in Cache Folder
 		* Refresh Transient Cache
 		* Change to All/Basic Options View
+	* Removed the "Auto-Refresh Cache After Clearing" option (now always enabled).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -883,9 +884,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.21.0-b.3 =
+= 6.21.0-b.4 =
 
-(2020/02/12) Added support for the Rate my Post plugin. Added support for clearing third-party cache plugins. Added new buttons in the SSO &gt; Tools and Actions page.
+(2020/02/13) Added support for the Rate my Post plugin. Added support for clearing third-party cache plugins. Added new buttons in the SSO &gt; Tools and Actions page.
 
 = 6.20.0 =
 
