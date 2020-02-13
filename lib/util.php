@@ -1243,6 +1243,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$mtime_start = microtime( true );
 
+			/**
+			 * Get the default settings value.
+			 */
+			if ( null === $clear_short ) {
+				$clear_short = isset( $this->p->options[ 'plugin_clear_short_urls' ] ) ?
+					$this->p->options[ 'plugin_clear_short_urls' ] : false;
+			}
+
 			$user_id = $this->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 
 			$notice_key = 'clear-all-cache-' . $clear_other . '-' . $clear_short . '-' . $refresh_all . '-status';
@@ -1289,14 +1297,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
 				do_action( $this->p->lca . '_scheduled_task_started', $user_id );
-			}
-
-			/**
-			 * Get the default settings value.
-			 */
-			if ( null === $clear_short ) {
-				$clear_short = isset( $this->p->options[ 'plugin_clear_short_urls' ] ) ?
-					$this->p->options[ 'plugin_clear_short_urls' ] : false;
 			}
 
 			$deleted_files = $this->delete_all_cache_files();
@@ -4333,8 +4333,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$name = $mod[ 'post_type' ];
 			}
 
-			// translators: %1$s is an action message, %2$s is the module or post type name and %3$s is the object ID.
-			return $this->p->notice->set_ref( $sharing_url, $mod, sprintf( __( '%1$s for %2$s ID %3$s', 'wpsso' ),
+			// translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
+			return $this->p->notice->set_ref( $sharing_url, $mod, sprintf( __( '%1$s for %2$s ID %3$d', 'wpsso' ),
 				$msg_transl, $name, $mod[ 'id' ] ) );
 		}
 
