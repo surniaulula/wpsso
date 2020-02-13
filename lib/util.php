@@ -1169,23 +1169,24 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$cache_exp_secs = HOUR_IN_SECONDS;				// Prevent duplicate runs for max 1 hour.
 			$cache_salt     = __CLASS__ . '::add_user_roles';		// Generic salt value for other methods.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
-			$cache_status   = 'running';
+			$cache_running  = 'running';
+			$cache_abort    = 'abort';
 
 			/**
 			 * Prevent concurrent execution.
 			 */
-			if ( false !== get_transient( $cache_id ) ) {			// Another process is already running.
+			if ( false !== get_transient( $cache_id ) ) {				// Another process is already running.
 
-				set_transient( $cache_id, 'stop', $cache_exp_secs );	// Signal the other process to stop.
+				set_transient( $cache_id, $cache_abort, $cache_exp_secs );	// Signal the other process to stop.
 
-				usleep( 3 * 1000000 );					// Sleep for 3 second.
+				usleep( 3 * 1000000 );						// Sleep for 3 second.
 
-				if ( false !== get_transient( $cache_id ) ) {		// Stop here if the other process is still running.
+				if ( false !== get_transient( $cache_id ) ) {			// Stop here if the other process is still running.
 					return;
 				}
 			}
 
-			set_transient( $cache_id, $cache_status, $cache_exp_secs );
+			set_transient( $cache_id, $cache_running, $cache_exp_secs );
 
 			if ( 0 === get_current_user_id() ) {		// User is the scheduler.
 				set_time_limit( HOUR_IN_SECONDS );	// Set maximum PHP execution time to one hour.
@@ -1199,7 +1200,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			foreach ( $public_ids as $person_id ) {
 
-				if ( get_transient( $cache_id ) !== $cache_status ) {	// Check that we are allowed to continue.
+				if ( get_transient( $cache_id ) !== $cache_running ) {	// Check that we are allowed to continue.
 
 					delete_transient( $cache_id );
 
@@ -1270,7 +1271,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$cache_exp_secs = HOUR_IN_SECONDS;				// Prevent duplicate runs for max 1 hour.
 			$cache_salt     = __CLASS__ . '::clear_all_cache';		// Generic salt value for other methods.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
-			$cache_status   = 'running';
+			$cache_running  = 'running';
+			$cache_abort    = 'abort';
 
 			/**
 			 * Prevent concurrent execution.
@@ -1287,7 +1289,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return;
 			}
 
-			set_transient( $cache_id, $cache_status, $cache_exp_secs );	// Signal that we are running.
+			set_transient( $cache_id, $cache_running, $cache_exp_secs );	// Signal that we are running.
 
 			$this->stop_refresh_all_cache();	// Just in case.
 
@@ -1512,9 +1514,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$cache_exp_secs = HOUR_IN_SECONDS * 6;				// Prevent duplicate runs for max 6 hours.
 			$cache_salt     = __CLASS__ . '::refresh_all_cache';		// Generic salt value for other methods.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
+			$cache_abort    = 'abort';
 
-			if ( false !== get_transient( $cache_id ) ) {			// Another process is already running.
-				set_transient( $cache_id, 'stop', $cache_exp_secs );	// Signal the other process to stop.
+			if ( false !== get_transient( $cache_id ) ) {				// Another process is already running.
+				set_transient( $cache_id, $cache_abort, $cache_exp_secs );	// Signal the other process to stop.
 			}
 		}
 
@@ -1545,14 +1548,15 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$cache_exp_secs = HOUR_IN_SECONDS;			// Prevent duplicate runs for max 6 hours.
 			$cache_salt     = __CLASS__ . '::refresh_all_cache';	// Generic salt value for other methods.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
-			$cache_status   = 'running';
+			$cache_running  = 'running';
+			$cache_abort    = 'abort';
 
 			/**
 			 * Prevent concurrent execution.
 			 */
 			if ( false !== get_transient( $cache_id ) ) {			// Another process is already running.
 
-				set_transient( $cache_id, 'stop', $cache_exp_secs );	// Signal the other process to stop.
+				set_transient( $cache_id, $cache_abort, $cache_exp_secs );	// Signal the other process to stop.
 
 				usleep( 10000000 );					// Sleep for 10 seconds.
 
@@ -1569,7 +1573,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 			}
 
-			set_transient( $cache_id, $cache_status, $cache_exp_secs );	// Signal that we are running.
+			set_transient( $cache_id, $cache_running, $cache_exp_secs );	// Signal that we are running.
 
 			if ( 0 === get_current_user_id() ) {		// User is the scheduler.
 				set_time_limit( HOUR_IN_SECONDS );	// Set maximum PHP execution time to one hour.
@@ -1598,8 +1602,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					/**
 					 * Check that we are allowed to continue. Stop if cache status is not 'running'.
 					 */
-					if ( $cache_status !== get_transient( $cache_id ) ) {
-						break 2;
+					if ( get_transient( $cache_id ) !== $cache_running ) {
+
+						delete_transient( $cache_id );
+
+						return;
 					}
 
 					$count++;
