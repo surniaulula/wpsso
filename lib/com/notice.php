@@ -1176,10 +1176,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				return $result;
 			}
 
-			if ( ! isset( $this->notice_cache[ $user_id ] ) ) {
-				return $result;	// Nothing to update.
-			}
-
 			$cache_md5_pre  = $this->lca . '_!_';	// Protect transient from being cleared.
 			$cache_exp_secs = HOUR_IN_SECONDS;
 			$cache_salt     = 'sucom_notice_transient(user_id:' . $user_id . ')';
