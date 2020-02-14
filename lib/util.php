@@ -1169,15 +1169,15 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$cache_exp_secs = HOUR_IN_SECONDS;				// Prevent duplicate runs for max 1 hour.
 			$cache_salt     = __CLASS__ . '::add_user_roles';		// Generic salt value for other methods.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
-			$cache_running  = 'running';
-			$cache_abort    = 'abort';
+			$cache_run_val  = 'running';
+			$cache_stop_val = 'stop';
 
 			/**
 			 * Prevent concurrent execution.
 			 */
 			if ( false !== get_transient( $cache_id ) ) {				// Another process is already running.
 
-				set_transient( $cache_id, $cache_abort, $cache_exp_secs );	// Signal the other process to stop.
+				set_transient( $cache_id, $cache_stop_val, $cache_exp_secs );	// Signal the other process to stop.
 
 				usleep( 3 * 1000000 );						// Sleep for 3 second.
 
@@ -1186,7 +1186,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 			}
 
-			set_transient( $cache_id, $cache_running, $cache_exp_secs );
+			set_transient( $cache_id, $cache_run_val, $cache_exp_secs );
 
 			if ( 0 === get_current_user_id() ) {		// User is the scheduler.
 				set_time_limit( HOUR_IN_SECONDS );	// Set maximum PHP execution time to one hour.
@@ -1200,7 +1200,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			foreach ( $public_ids as $person_id ) {
 
-				if ( get_transient( $cache_id ) !== $cache_running ) {	// Check that we are allowed to continue.
+				if ( get_transient( $cache_id ) !== $cache_run_val ) {	// Check that we are allowed to continue.
 
 					delete_transient( $cache_id );
 
@@ -1271,8 +1271,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$cache_exp_secs = HOUR_IN_SECONDS;				// Prevent duplicate runs for max 1 hour.
 			$cache_salt     = __CLASS__ . '::clear_all_cache';		// Generic salt value for other methods.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
-			$cache_running  = 'running';
-			$cache_abort    = 'abort';
+			$cache_run_val  = 'running';
+			$cache_stop_val = 'stop';
 
 			/**
 			 * Prevent concurrent execution.
@@ -1283,13 +1283,15 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					$notice_msg = __( 'Aborting cache clearing - an identical task is still running.', 'wpsso' );
 
+					$this->p->notice->force_expire( $notice_key, $user_id );
+
 					$this->p->notice->warn( $notice_msg, $user_id, $notice_key );
 				}
 
 				return;
 			}
 
-			set_transient( $cache_id, $cache_running, $cache_exp_secs );	// Signal that we are running.
+			set_transient( $cache_id, $cache_run_val, $cache_exp_secs );	// Signal that we are running.
 
 			$this->stop_refresh_all_cache();	// Just in case.
 
@@ -1329,8 +1331,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$notice_msg .= '<strong>' . __( 'A background task will begin shortly to refresh the post, term and user transient cache objects.',
 					'wpsso' ) . '</strong>';
 
-				$this->schedule_refresh_all_cache( $user_id );	// Run in the next minute.
-
+				$this->schedule_refresh_all_cache( $user_id, $read_cache = true );	// Run in the next minute.
 			}
 
 			if ( $user_id ) {
@@ -1514,10 +1515,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$cache_exp_secs = HOUR_IN_SECONDS;				// Prevent duplicate runs for max 1 hour.
 			$cache_salt     = __CLASS__ . '::refresh_all_cache';		// Generic salt value for other methods.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
-			$cache_abort    = 'abort';
+			$cache_stop_val = 'stop';
 
 			if ( false !== get_transient( $cache_id ) ) {				// Another process is already running.
-				set_transient( $cache_id, $cache_abort, $cache_exp_secs );	// Signal the other process to stop.
+
+				set_transient( $cache_id, $cache_stop_val, $cache_exp_secs );	// Signal the other process to stop.
 			}
 		}
 
@@ -1531,7 +1533,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$user_id = $this->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 
-			$notice_key = 'refresh-all-cache-status';	// Keep overwriting the same notice key.
+			$notice_key = 'refresh-all-cache-status';		// Keep overwriting the same notice key.
 
 			if ( $user_id ) {
 
@@ -1548,23 +1550,25 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$cache_exp_secs = HOUR_IN_SECONDS;			// Prevent duplicate runs for max 1 hour.
 			$cache_salt     = __CLASS__ . '::refresh_all_cache';	// Generic salt value for other methods.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
-			$cache_running  = 'running';
-			$cache_abort    = 'abort';
+			$cache_run_val  = 'running';
+			$cache_stop_val = 'stop';
 
 			/**
 			 * Prevent concurrent execution.
 			 */
-			if ( false !== get_transient( $cache_id ) ) {			// Another process is already running.
+			if ( false !== get_transient( $cache_id ) ) {				// Another process is already running.
 
-				set_transient( $cache_id, $cache_abort, $cache_exp_secs );	// Signal the other process to stop.
+				set_transient( $cache_id, $cache_stop_val, $cache_exp_secs );	// Signal the other process to stop.
 
-				usleep( 10000000 );					// Sleep for 10 seconds.
+				usleep( 10000000 );						// Sleep for 10 seconds.
 
-				if ( false !== get_transient( $cache_id ) ) {		// Stop here if the other process is still running.
+				if ( false !== get_transient( $cache_id ) ) {			// Stop here if the other process is still running.
 
 					if ( $user_id ) {
 
 						$notice_msg = __( 'Aborting transient cache refresh - an identical task is still running.', 'wpsso' );
+
+						$this->p->notice->force_expire( $notice_key, $user_id );
 
 						$this->p->notice->warn( $notice_msg, $user_id, $notice_key );
 					}
@@ -1573,7 +1577,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 			}
 
-			set_transient( $cache_id, $cache_running, $cache_exp_secs );	// Signal that we are running.
+			set_transient( $cache_id, $cache_run_val, $cache_exp_secs );	// Signal that we are running.
 
 			if ( 0 === get_current_user_id() ) {		// User is the scheduler.
 				set_time_limit( HOUR_IN_SECONDS );	// Set maximum PHP execution time to one hour.
@@ -1602,7 +1606,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					/**
 					 * Check that we are allowed to continue. Stop if cache status is not 'running'.
 					 */
-					if ( get_transient( $cache_id ) !== $cache_running ) {
+					if ( get_transient( $cache_id ) !== $cache_run_val ) {
 
 						delete_transient( $cache_id );
 
@@ -3250,22 +3254,22 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		private function maybe_change_user_id( $user_id ) {
 
-			$current_user_id = get_current_user_id();	// 0 for a scheduled task.
+			$current_user_id = get_current_user_id();	// Always returns an integer.
 
-			if ( null === $user_id ) {			// Default argument value for most methods.
+			$user_id = is_numeric( $user_id ) ? (int) $user_id : $current_user_id;	// // User ID can be true, false, null, or a number.
 
-				return $current_user_id;
-
-			} elseif ( $user_id === $current_user_id ) {
-
-				return $user_id;			// Nothing to do.
+			if ( empty( $user_id ) ) {	// User ID is 0 (cron user, for example).
+				return $user_id;
+			} elseif ( $user_id === $current_user_id ) {	// Nothing to do.
+				return $user_id;
 			}
 
 			/**
 			 * The user ID is different than the current / effective user ID, so check if the user locale is different
 			 * to the current locale and load the user locale if required.
 			 */
-			$user_locale    = get_user_meta( $user_id, 'locale', true );
+			$user_locale = get_user_meta( $user_id, 'locale', true );
+
 			$current_locale = get_locale();
 
 			if ( ! empty( $user_locale ) && $user_locale !== $current_locale ) {
