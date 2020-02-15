@@ -6996,7 +6996,7 @@ msgid ""
 msgstr ""
 
 #: lib/util.php:1261
-msgid "A cache clearing task started at %s."
+msgid "Cache clearing task started at %s."
 msgstr ""
 
 #: lib/util.php:1284
@@ -7018,7 +7018,7 @@ msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr ""
 
 #: lib/util.php:1538
-msgid "A transient cache refresh task started at %s."
+msgid "Transient cache refresh task started at %s."
 msgstr ""
 
 #: lib/util.php:1561

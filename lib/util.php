@@ -1258,7 +1258,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( $user_id ) {
 
-				$notice_msg = sprintf( __( 'A cache clearing task started at %s.', 'wpsso' ), gmdate( 'c' ) );
+				$notice_msg = sprintf( __( 'Cache clearing task started at %s.', 'wpsso' ), gmdate( 'c' ) );
 
 				$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
 			}
@@ -1535,7 +1535,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( $user_id ) {
 
-				$notice_msg = sprintf( __( 'A transient cache refresh task started at %s.', 'wpsso' ), gmdate( 'c' ) );
+				$notice_msg = sprintf( __( 'Transient cache refresh task started at %s.', 'wpsso' ), gmdate( 'c' ) );
 
 				$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
 			}
