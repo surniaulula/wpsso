@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 6.21.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-02-13 11:12-0800\n"
-"PO-Revision-Date: 2020-02-13 11:12-0800\n"
+"POT-Creation-Date: 2020-02-15 13:31-0800\n"
+"PO-Revision-Date: 2020-02-15 13:37-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -251,7 +251,7 @@ msgstr "%s fichiers de cache ont été supprimés."
 msgid "%s database transients have been deleted."
 msgstr "%s objets transitoires ont été supprimés de la base de données."
 
-#: lib/admin.php:1077 lib/util.php:1327
+#: lib/admin.php:1077 lib/util.php:1329
 msgid "A background task will begin shortly to refresh the post, term and user transient cache objects."
 msgstr "Une tâche en arrière-plan commencera sous peu pour actualiser les objets de cache d'articles, de termes et d'utilisateurs."
 
@@ -732,12 +732,12 @@ msgstr "Le fichier de réglages %1$s n'a pas pu être décodé dans un tableau d
 msgid "Import of plugin and add-on settings is complete."
 msgstr "L'importation des réglages d'extension et ajouts est terminée."
 
-#: lib/com/bfo.php:242 lib/com/cache.php:81 lib/com/notice.php:89
+#: lib/com/bfo.php:242 lib/com/cache.php:81 lib/com/notice.php:90
 #: lib/gettext-com.php:6 lib/gettext-com.php:28 lib/gettext-com.php:35
 msgid "%s Notice"
 msgstr "Avis %s"
 
-#: lib/com/bfo.php:245 lib/com/cache.php:84 lib/com/notice.php:92
+#: lib/com/bfo.php:245 lib/com/cache.php:84 lib/com/notice.php:93
 #: lib/gettext-com.php:7 lib/gettext-com.php:29 lib/gettext-com.php:36
 msgid "Notice"
 msgstr "Avis"
@@ -796,7 +796,7 @@ msgid "Requests to cache this URL will be ignored for %d second(s)."
 msgstr "Les demandes de mise en cache de cette URL seront ignorées pour %d seconde(s)."
 
 #: lib/com/cache.php:354 lib/com/cache.php:511 lib/gettext-com.php:16
-#: lib/gettext-com.php:18 lib/util.php:1898
+#: lib/gettext-com.php:18 lib/util.php:1897
 msgid "Error removing cache file %s."
 msgstr "Erreur de suppression du fichier cache %s."
 
@@ -844,23 +844,23 @@ msgstr "de"
 msgid "Save a draft version or publish to update this value."
 msgstr "Sauvegardez une version préliminaire ou publiez pour mettre à jour cette valeur."
 
-#: lib/com/notice.php:221 lib/gettext-com.php:30
+#: lib/com/notice.php:220 lib/gettext-com.php:30
 msgid "Forever"
 msgstr "Toujours"
 
-#: lib/com/notice.php:223 lib/gettext-com.php:31
+#: lib/com/notice.php:222 lib/gettext-com.php:31
 msgid "This notice can be dismissed permanently."
 msgstr "Cet avis peut être masqué définitivement."
 
-#: lib/com/notice.php:234 lib/gettext-com.php:32
+#: lib/com/notice.php:233 lib/gettext-com.php:32
 msgid "This notice can be dismissed for %s."
 msgstr "Cet avis peut être masqué pour %s."
 
-#: lib/com/notice.php:449 lib/gettext-com.php:33 lib/post.php:1583
+#: lib/com/notice.php:450 lib/gettext-com.php:33 lib/post.php:1583
 msgid "Edit"
 msgstr "Modifier"
 
-#: lib/com/notice.php:453 lib/gettext-com.php:34
+#: lib/com/notice.php:454 lib/gettext-com.php:34
 msgid "Reference: %s"
 msgstr "Référence: %s"
 
@@ -934,7 +934,7 @@ msgid "Please contact your hosting provider to have the missing PHP function ins
 msgstr "SVP contacter votre hébergeur pour installer la fonction PHP manquante."
 
 #: lib/conflict.php:224 lib/gettext-pro.php:196 lib/gettext-pro.php:206
-#: lib/pro/rating/rate-my-post.php:46 lib/pro/rating/wppostratings.php:46
+#: lib/pro/rating/rate-my-post.php:48 lib/pro/rating/wppostratings.php:46
 msgid "Plugin conflict detected"
 msgstr "Conflit détecté"
 
@@ -1083,7 +1083,7 @@ msgstr "WP Meta SEO"
 
 #. translators: Please ignore - translation uses a different text domain.
 #: lib/conflict.php:472 lib/gettext-pro.php:212
-#: lib/pro/rating/rate-my-post.php:61
+#: lib/pro/rating/rate-my-post.php:63
 msgid "Settings"
 msgstr "Settings"
 
@@ -3226,22 +3226,22 @@ msgid "Ratings Options"
 msgstr "Ratings Options"
 
 #: lib/gettext-pro.php:205 lib/gettext-pro.php:215
-#: lib/pro/rating/rate-my-post.php:69 lib/pro/rating/wppostratings.php:69
+#: lib/pro/rating/rate-my-post.php:71 lib/pro/rating/wppostratings.php:69
 msgid "please disable the %1$s option in the %2$s settings page."
 msgstr "SVP désactiver l'option %1$s dans la page de réglages %2$s."
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:208 lib/pro/rating/rate-my-post.php:53
+#: lib/gettext-pro.php:208 lib/pro/rating/rate-my-post.php:55
 msgid "Type of structured data for rich snippets"
 msgstr "Type of structured data for rich snippets"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:210 lib/pro/rating/rate-my-post.php:59
+#: lib/gettext-pro.php:210 lib/pro/rating/rate-my-post.php:61
 msgid "Rate my Post"
 msgstr "Rate my Post"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:214 lib/pro/rating/rate-my-post.php:63
+#: lib/gettext-pro.php:214 lib/pro/rating/rate-my-post.php:65
 msgid "Rating Widget Settings"
 msgstr "Rating Widget Settings"
 
@@ -5340,12 +5340,12 @@ msgid "Archives: %s"
 msgstr "Archives: %s"
 
 #: lib/post.php:475 lib/register.php:323 lib/term.php:419 lib/user.php:366
-#: lib/util.php:499 lib/util.php:3645
+#: lib/util.php:499 lib/util.php:3644
 msgid "%s warning:"
 msgstr "Alerte %s:"
 
 #: lib/post.php:476 lib/term.php:420 lib/user.php:367 lib/util.php:500
-#: lib/util.php:3646
+#: lib/util.php:3645
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr "supérieur au max recommandé de %1$0.3f secs"
 
@@ -5389,7 +5389,7 @@ msgstr "SVP envisager d'améliorer la vitesse de votre site."
 msgid "As an added benefit, a faster site will also improve ranking in search results."
 msgstr "Comme avantage supplémentaire, un site plus rapide améliore également le classement dans les résultats de recherche."
 
-#: lib/post.php:1022 lib/util.php:2165
+#: lib/post.php:1022 lib/util.php:2164
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr "Erreur en récupérant le la page Web <a href=\"%1$s\">%1$s</a>."
 
@@ -6147,110 +6147,110 @@ msgstr "Privilèges insuffisants pour enregistrer les réglages pour l'usager ID
 msgid "Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s (%3$s)."
 msgstr "Fonction PHP lente détectée - getimagesize() a pris %1$0.3f secs pour %2$s (%3$s)."
 
-#: lib/util.php:1260
-msgid "A cache clearing task has started."
-msgstr "Une tâche de vidage du cache a démarré."
+#: lib/util.php:1261
+msgid "Cache clearing task started at %s."
+msgstr "Une tâche de vidage du cache a commencé à %s."
 
-#: lib/util.php:1282
-msgid "Aborting cache clearing - an identical task is still running."
-msgstr "Abandon de vidage du cache - une tâche identique est toujours en cours d'exécution."
+#: lib/util.php:1284
+msgid "Aborting cache clearing - another identical task is still running."
+msgstr "Abandon de vidage du cache - une autre tâche identique est toujours en cours d'exécution."
 
-#: lib/util.php:1310
+#: lib/util.php:1312
 msgid "%1$d cached files, %2$d transient cache objects, %3$d column metadata, and the WordPress object cache have all been cleared."
 msgstr "%1$d fichiers mis en cache, %2$d objets de cache transitoire, %3$d métadonnées de colonne, et le cache d'objets WordPress ont tous été effacés."
 
-#: lib/util.php:1323 lib/util.php:1628
+#: lib/util.php:1325 lib/util.php:1630
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr "Le temps d'exécution total pour cette tâche était %0.3f secondes."
 
-#: lib/util.php:1346
+#: lib/util.php:1347
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr "Le cache pour <strong>%s</strong> a été vidé aussi."
 
-#: lib/util.php:1535
-msgid "A transient cache refresh task has started."
-msgstr "Une tâche d'actualisation du cache transitoire a démarré."
+#: lib/util.php:1538
+msgid "Transient cache refresh task started at %s."
+msgstr "Une tâche d'actualisation du cache transitoire a commencé à %s."
 
-#: lib/util.php:1563
-msgid "Aborting transient cache refresh - an identical task is still running."
-msgstr "Abandon de l'actualisation du cache transitoire - une tâche identique est toujours en cours d'exécution."
+#: lib/util.php:1561
+msgid "Another transient cache refresh task is running - attempting to stop it..."
+msgstr "Une autre tâche d'actualisation du cache transitoire est en cours d'exécution - un essaie d'arrêt est en cours.."
 
-#: lib/util.php:1611
-msgid "A transient cache refresh task is currently running (refreshing %1$s ID %2$d)."
-msgstr "Une tâche d'actualisation du cache transitoire est en cours d'exécution (actualisation %1$s ID %2$d)."
+#: lib/util.php:1574
+msgid "Aborting transient cache refresh - another identical task is still running."
+msgstr "Abandon de l'actualisation du cache transitoire - une autre tâche identique est toujours en cours d'exécution."
 
-#: lib/util.php:1625
+#: lib/util.php:1627
 msgid "The transient cache for %1$d posts, %2$d terms and %3$d users has been refreshed."
 msgstr "Le cache transitoires pour %1$d articles, %2$d termes et %3$d utilisateurs a été actualisé."
 
-#: lib/util.php:1869
+#: lib/util.php:1868
 msgid "Failed to open the cache folder %s for reading."
 msgstr "Impossible d'ouvrir le dossier de cache %s pour lecture."
 
-#: lib/util.php:1962
+#: lib/util.php:1961
 msgid "Error reading the %s file for the article sections list."
 msgstr "Erreur de lecture du fichier %s pour la liste des rubriques d'article."
 
-#: lib/util.php:2059
+#: lib/util.php:2058
 msgid "Error reading the %s file for the product categories list."
 msgstr "Erreur de lecture du fichier %s pour de la liste des catégories de produit."
 
-#: lib/util.php:2152
+#: lib/util.php:2151
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr "L'argument de demande à %1$s n'est pas du HTML ou un URL valide."
 
-#: lib/util.php:2178
+#: lib/util.php:2177
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr "La page Web récupéré de <a href=\"%1$s\">%1$s</a> est vide."
 
 #. translators: %1$s is the class name.
-#: lib/util.php:2378
+#: lib/util.php:2377
 msgid "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting provider to have the missing class installed."
 msgstr "La classe PHP <code>%1$s</code> est manquante &ndash; contactez votre fournisseur d'hébergement pour installer la classe manquante."
 
 #. translators: %1$s is the function name.
-#: lib/util.php:2391
+#: lib/util.php:2390
 msgid "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting provider to have the missing function installed."
 msgstr "La fonction PHP <code>%1$s</code> est manquante &ndash; contactez votre fournisseur d'hébergement pour installer la fonction manquante."
 
-#: lib/util.php:3647
+#: lib/util.php:3646
 msgid "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the \"%2$s\" filter (%3$s)."
 msgstr "Crochet(s) de filtre lent détecté - WordPress a pris %1$0.3f secs pour exécuter le filtre \"%2$s\" (%3$s)."
 
-#: lib/util.php:3662
+#: lib/util.php:3661
 msgid "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f seconds to execute. This is longer than the recommended maximum of %3$0.3f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr "Crochet(s) de filtre lent détecté &mdash le filtre WordPress %1$s a pris %2$0.3f secondes pour exécuter. Ceci est plus long que le maximum recommandé de %3$0.3f secondes et peut affecter le temps de chargement de la page. S'il vous plaît, envisagez d'examiner les fonctions d'extensions de tiers partie et de thème accrochées au filtre WordPress %1$s pour du code PHP lent et/ou sous-optimal."
 
-#: lib/util.php:3664
+#: lib/util.php:3663
 msgid "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance."
 msgstr "Si vous activez l'extension %1$s et effacez le cache de %2$s (pour ré-appliquer le filtre), vous obtiendrez peut-être plus d'informations sur les crochets spécifiques ou le code PHP affectant les performances."
 
-#: lib/util.php:3962
+#: lib/util.php:3961
 msgid "No options available."
 msgstr "Aucune options disponibles."
 
-#: lib/util.php:3991
+#: lib/util.php:3990
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr "%1$d options supplémentaires ne figurent pas dans l'affichage \"%2$s\""
 
-#: lib/util.php:3994
+#: lib/util.php:3993
 msgctxt "option comment"
 msgid "show these options now"
 msgstr "afficher ces options maintenant"
 
-#: lib/util.php:3999
+#: lib/util.php:3998
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue \"%2$s\""
 
-#: lib/util.php:4002
+#: lib/util.php:4001
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr "afficher ces lignes maintenant"
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:4338
+#: lib/util.php:4337
 msgid "%1$s for %2$s ID %3$d"
 msgstr "%1$s pour %2$s ID %3$d"
 

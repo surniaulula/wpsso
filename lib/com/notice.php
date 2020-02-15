@@ -1098,7 +1098,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$this->maybe_load_notice_cache( $user_id );
 
 			$cache_md5_pre  = $this->lca . '_!_';	// Protect transient from being cleared.
-			$cache_exp_secs = HOUR_IN_SECONDS;
+			$cache_exp_secs = DAY_IN_SECONDS;
 			$cache_salt     = 'sucom_notice_transient(user_id:' . $user_id . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 
