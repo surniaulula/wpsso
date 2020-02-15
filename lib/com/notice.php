@@ -24,6 +24,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private $all_types    = array( 'nag', 'err', 'warn', 'inf', 'upd' );	// Sort by importance (most to least).
 		private $notice_info  = array();
 		private $notice_cache = array();
+		private $cache_loaded = array();
 
 		public $enabled = true;
 
@@ -1077,11 +1078,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						$msg_spoken = SucomUtil::decode_html( SucomUtil::strip_html( $msg_spoken ) );
 						$msg_key    = sanitize_key( $msg_spoken );
 
-						if ( ! isset( $this->notice_cache[ $user_id ][ 'err' ] ) ) {	// Just in case.
-
-							$this->maybe_load_notice_cache( $user_id );
-						}
-
 						$this->notice_cache[ $user_id ][ 'err' ][ $msg_key ] = array(
 							'msg_text'   => $msg_text,
 							'msg_spoken' => $msg_spoken,
@@ -1137,30 +1133,28 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			if ( $user_id === $current_user_id ) {
 
-				if ( isset( $this->notice_cache[ $user_id ] ) ) {
+				if ( isset( $this->cache_loaded[ $user_id ] ) ) {
 
 					return false;	// Nothing to do.
 				}
 			}
 
-			$transient_value = $this->get_notice_transient( $user_id );	// Returns an empty array.
+			$transient_cache = $this->get_notice_transient( $user_id );	// Returns an empty array.
 
-			if ( empty( $this->notice_cache[ $user_id ] ) ) {	// Set notice cache to transient notices.
+			$this->cache_loaded[ $user_id ] = true;
 
-				$this->notice_cache[ $user_id ] = $transient_value;
+			if ( empty( $this->notice_cache[ $user_id ] ) ) {	// Set the notice cache from the transient notices.
 
-			} elseif ( ! empty( $transient_value ) ) {
+				$this->notice_cache[ $user_id ] = $transient_cache;
+
+			} elseif ( ! empty( $transient_cache ) ) {	// Merge notice cache with transient notices (without overwriting).
 
 				foreach ( $this->all_types as $msg_type ) {
 
-					if ( ! empty( $transient_value[ $msg_type ] ) ) {
+					if ( ! empty( $transient_cache[ $msg_type ] ) ) {
 
-						foreach ( $transient_value[ $msg_type ] as $msg_key => $payload ) {
+						foreach ( $transient_cache[ $msg_type ] as $msg_key => $payload ) {
 
-							/**
-							 * Prefer existing notice keys in the notice cache instead of older notice
-							 * keys from the transient cache.
-							 */
 							if ( ! isset( $this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] ) ) {
 
 								$this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] = $payload;
@@ -1178,6 +1172,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					$this->notice_cache[ $user_id ][ $msg_type ] = array();
 				}
 			}
+
+			return true;
 		}
 
 		private function get_notice_transient( $user_id ) {
@@ -1190,13 +1186,13 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$cache_salt    = 'sucom_notice_transient(user_id:' . $user_id . ')';
 			$cache_id      = $cache_md5_pre . md5( $cache_salt );
 
-			$transient_value = get_transient( $cache_id );
+			$transient_cache = get_transient( $cache_id );
 
-			if ( ! is_array( $transient_value ) ) {
-				$transient_value = array();
+			if ( ! is_array( $transient_cache ) ) {
+				$transient_cache = array();
 			}
 
-			return $transient_value;
+			return $transient_cache;
 		}
 
 		private function get_notice_style() {

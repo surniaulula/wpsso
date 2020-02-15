@@ -1281,7 +1281,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( $user_id ) {
 
-					$notice_msg = __( 'Aborting cache clearing - an identical task is still running.', 'wpsso' );
+					$notice_msg = __( 'Aborting cache clearing - another identical task is still running.', 'wpsso' );
 
 					$this->p->notice->warn( $notice_msg, $user_id, $notice_key );
 				}
@@ -1558,6 +1558,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 */
 			if ( false !== get_transient( $cache_id ) ) {				// Another process is already running.
 
+				if ( $user_id ) {
+
+					$notice_msg = __( 'Another transient cache refresh task is running - attempting to stop it...', 'wpsso' );
+
+					$this->p->notice->warn( $notice_msg, $user_id, $notice_key );
+				}
+
 				set_transient( $cache_id, $cache_stop_val, $cache_exp_secs );	// Signal the other process to stop.
 
 				usleep( 10000000 );						// Sleep for 10 seconds.
@@ -1566,7 +1573,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					if ( $user_id ) {
 
-						$notice_msg = __( 'Aborting transient cache refresh - an identical task is still running.', 'wpsso' );
+						$notice_msg = __( 'Aborting transient cache refresh - another identical task is still running.', 'wpsso' );
 
 						$this->p->notice->warn( $notice_msg, $user_id, $notice_key );
 					}
@@ -1593,10 +1600,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			foreach ( $total_count as $obj_name => &$count ) {
 
-				/**
-				 * Note that PHP class names are not case sensitive, so we can  use "wpssopost" here instead of
-				 * "WpssoPost".
-				 */
 				$obj_ids = call_user_func( array( $this->p->lca . $obj_name, 'get_public_ids' ) );	// Call static method.
 
 				foreach ( $obj_ids as $obj_id ) {
@@ -1614,14 +1617,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$count++;
 
 					$mod = $this->p->$obj_name->get_mod( $obj_id );
-
-					if ( $user_id ) {
-
-						$notice_msg = sprintf( __( 'A transient cache refresh task is currently running (refreshing %1$s ID %2$d).',
-							'wpsso' ), $mod[ 'name' ], $mod[ 'id' ] );
-
-						$this->p->notice->upd( $notice_msg, $user_id, $notice_key, $dismiss_time = HOUR_IN_SECONDS / 2 );
-					}
 
 					$this->refresh_mod_head_meta( $mod, $user_id, $read_cache );
 				}

@@ -409,12 +409,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$posts_args = array(
 				'has_password'   => false,
 				'orderby'        => 'date',
-				'order'          => 'DESC',
+				'order'          => 'DESC',	// Newest first.
 				'paged'          => false,
-				'post_status'    => 'publish',		// Only 'publish' (not 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', or 'trash').
-				'post_type'      => 'any',		// Return any post, page, or custom post type.
+				'post_status'    => 'publish',	// Only 'publish' (not 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', or 'trash').
+				'post_type'      => 'any',	// Return any post, page, or custom post type.
 				'posts_per_page' => -1,
-				'fields'         => 'ids',		// Return an array of post ids.
+				'fields'         => 'ids',	// Return an array of post ids.
 			);
 
 			return get_posts( $posts_args );
@@ -449,7 +449,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$posts_args = array_merge( array(
 				'has_password'   => false,
 				'orderby'        => 'date',
-				'order'          => 'DESC',
+				'order'          => 'DESC',		// Newest first.
 				'paged'          => $paged,
 				'post_status'    => 'publish',		// Only 'publish', not 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', or 'trash'.
 				'post_type'      => 'any',		// Return post, page, or any custom post type.
@@ -1757,7 +1757,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'post_id' => $post_id,
 				'status'  => 'approve',
 				'parent'  => 0,					// Parent ID of comment to retrieve children of (0 = don't get replies).
-				'order'   => 'DESC',
+				'orderby' => 'date',
+				'order'   => 'DESC',				// Newest first.
 				'number'  => get_option( 'comments_per_page' ),	// Maximum number of comments to retrieve.
 			) );
 

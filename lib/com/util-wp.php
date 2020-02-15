@@ -379,6 +379,130 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $ret;
 		}
 
+		public static function raw_delete_transient( $transient ) { 
+		
+			if ( wp_using_ext_object_cache() ) {
+			
+				$result = wp_cache_delete( $transient, 'transient' );
+				
+			} else {
+			
+				$option_timeout = '_transient_timeout_' . $transient;
+				$option         = '_transient_' . $transient;
+				$result         = delete_option( $option );
+				
+				if ( $result ) {
+					delete_option( $option_timeout );
+				}
+			}
+			
+			return $result;
+		}
+
+		public static function raw_get_transient( $transient ) {
+
+			if ( wp_using_ext_object_cache() ) {
+
+				$value = wp_cache_get( $transient, 'transient' );
+
+			} else {
+
+				$transient_option = '_transient_' . $transient;
+
+				if ( ! wp_installing() ) {
+
+					/**
+					 * If option is not in alloptions, it is not autoloaded and thus has a timeout.
+					 */
+					$alloptions = wp_load_alloptions();
+
+					if ( ! isset( $alloptions[ $transient_option ] ) ) {
+
+						$transient_timeout = '_transient_timeout_' . $transient;
+						$timeout           = get_option( $transient_timeout );
+
+						if ( false !== $timeout && $timeout < time() ) {
+
+							delete_option( $transient_option );
+							delete_option( $transient_timeout );
+
+							$value = false;
+						}
+					}
+				}
+
+				if ( ! isset( $value ) ) {
+					$value = get_option( $transient_option );
+				}
+			}
+
+			return $value;
+		}
+
+		public static function raw_set_transient( $transient, $value, $expiration = 0 ) {
+
+			$expiration = (int) $expiration;
+
+			if ( wp_using_ext_object_cache() ) {
+
+				$result = wp_cache_set( $transient, $value, 'transient', $expiration );
+
+			} else {
+
+				$transient_timeout = '_transient_timeout_' . $transient;
+				$transient_option  = '_transient_' . $transient;
+
+				if ( false === get_option( $transient_option ) ) {
+
+					$autoload = 'yes';
+
+					/**
+					 * If we have an expiration time, do not autoload the transient.
+					 */
+					if ( $expiration ) {
+
+						$autoload = 'no';
+
+						add_option( $transient_timeout, time() + $expiration, '', 'no' );
+					}
+
+					$result = add_option( $transient_option, $value, '', $autoload );
+
+				} else {
+
+					/**
+					 * If an expiration time is provided, but the existing transient does not have a timeout
+					 * value, delete, then re-create the transient with an expiration time.
+					 */
+					$update = true;
+
+					if ( $expiration ) {
+
+						if ( false === get_option( $transient_timeout ) ) {
+
+							delete_option( $transient_option );
+
+							add_option( $transient_timeout, time() + $expiration, '', 'no' );
+
+							$result = add_option( $transient_option, $value, '', 'no' );
+
+							$update = false;
+
+						} else {
+
+							update_option( $transient_timeout, time() + $expiration );
+						}
+					}
+
+					if ( $update ) {
+						$result = update_option( $transient_option, $value );
+					}
+				}
+			}
+
+			return $result;
+		}
+
 		public static function get_filter_hook_names( $filter_name ) {
 
 			global $wp_filter;

@@ -341,7 +341,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$posts_args = array_merge( array(
 				'has_password'   => false,
 				'orderby'        => 'date',
-				'order'          => 'DESC',
+				'order'          => 'DESC',		// Newest first.
 				'paged'          => $paged,
 				'post_status'    => 'publish',		// Only 'publish', not 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', or 'trash'.
 				'post_type'      => 'any',		// Return post, page, or any custom post type.
