@@ -515,7 +515,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.21.0-rc.2 (2020/02/14)**
+**Version 6.21.0-rc.3 (2020/02/14)**
 
 * **New Features**
 	* Added support for the [Rate my Post](https://wordpress.org/plugins/rate-my-post/) plugin.
@@ -537,7 +537,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Delete All Files in Cache Folder
 		* Refresh Transient Cache
 		* Change to All/Basic Options View
-	* Added a progress notice when the "Refresh Transient Cache" method is running.
 	* Updated the "Delete All Files" success notice with the number of cached files, transient cache objects, and column metadata cleared.
 	* Removed the "Auto-Refresh Cache After Clearing" option (now always enabled).
 * **Bugfixes**
@@ -888,7 +887,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.21.0-rc.2 =
+= 6.21.0-rc.3 =
 
 (2020/02/14) Added support for the Rate my Post plugin. Added support for clearing third-party cache plugins. Added new buttons in the SSO &gt; Tools and Actions page.
 
