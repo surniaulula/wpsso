@@ -1283,8 +1283,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					$notice_msg = __( 'Aborting cache clearing - an identical task is still running.', 'wpsso' );
 
-					$this->p->notice->force_expire( $notice_key, $user_id );
-
 					$this->p->notice->warn( $notice_msg, $user_id, $notice_key );
 				}
 
@@ -1537,6 +1535,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( $user_id ) {
 
+				$this->p->notice->force_expire( $notice_key, $user_id );
+
 				$notice_msg = __( 'A transient cache refresh task has started.', 'wpsso' );
 
 				$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
@@ -1567,8 +1567,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					if ( $user_id ) {
 
 						$notice_msg = __( 'Aborting transient cache refresh - an identical task is still running.', 'wpsso' );
-
-						$this->p->notice->force_expire( $notice_key, $user_id );
 
 						$this->p->notice->warn( $notice_msg, $user_id, $notice_key );
 					}

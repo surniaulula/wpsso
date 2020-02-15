@@ -118,6 +118,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		/**
 		 * Unfiltered version of wp_get_shortlink() from wordpress/wp-includes/link-template.php
+		 *
 		 * Last synchronized with WordPress v5.0.3 on 2019/01/29.
 		 */
 		public static function raw_wp_get_shortlink( $id = 0, $context = 'post', $allow_slugs = true ) {
@@ -159,6 +160,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		/**
 		 * Unfiltered version of home_url() from wordpress/wp-includes/link-template.php
+		 *
 		 * Last synchronized with WordPress v5.0.3 on 2019/01/28.
 		 */
 		public static function raw_home_url( $path = '', $scheme = null ) {
@@ -168,6 +170,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		/**
 		 * Unfiltered version of get_home_url() from wordpress/wp-includes/link-template.php
+		 *
 		 * Last synchronized with WordPress v5.0.3 on 2019/01/28.
 		 */
 		public static function raw_get_home_url( $blog_id = null, $path = '', $scheme = null ) {
@@ -220,6 +223,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		/**
 		 * Unfiltered version of site_url() from wordpress/wp-includes/link-template.php
+		 *
 		 * Last synchronized with WordPress v5.0.3 on 2019/01/28.
 		 */
 		public static function raw_site_url( $path = '', $scheme = null ) {
@@ -229,6 +233,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		/**
 		 * Unfiltered version of get_site_url() from wordpress/wp-includes/link-template.php
+		 *
 		 * Last synchronized with WordPress v5.0.3 on 2019/01/28.
 		 */
 		public static function raw_get_site_url( $blog_id = null, $path = '', $scheme = null ) {
@@ -269,6 +274,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		/**
 		 * Unfiltered version of set_url_scheme() from wordpress/wp-includes/link-template.php
+		 *
 		 * Last synchronized with WordPress v5.0 on 2018/12/12.
 		 */
 		private static function raw_set_url_scheme( $url, $scheme = null ) {
@@ -303,8 +309,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		}
 
 		/**
-		 * Temporarily disable filter and action hooks before calling
-		 * get_option(), update_option, and delete_option().
+		 * Temporarily disable filter and action hooks before calling get_option(), update_option, and delete_option().
 		 */
 		public static function raw_do_option( $action, $opt_name, $val = null ) {
 
