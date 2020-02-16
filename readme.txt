@@ -515,7 +515,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.21.0-rc.4 (2020/02/14)**
+**Version 6.21.0 (2020/02/15)**
 
 * **New Features**
 	* Added support for the [Rate my Post](https://wordpress.org/plugins/rate-my-post/) plugin.
@@ -887,11 +887,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.21.0-rc.4 =
+= 6.21.0 =
 
-(2020/02/14) Added support for the Rate my Post plugin. Added support for clearing third-party cache plugins. Added new buttons in the SSO &gt; Tools and Actions page.
-
-= 6.20.0 =
-
-(2020/02/09) Added detection of write errors when creating a javascript file for the Schema type, article sections, and product category arrays.
+(2020/02/15) Added support for the Rate my Post plugin. Added support for clearing third-party cache plugins. Added new buttons in the SSO &gt; Tools and Actions page.
 
