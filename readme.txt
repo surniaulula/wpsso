@@ -515,7 +515,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.21.0 (2020/02/15)**
+**Version 6.21.0 (2020/02/16)**
 
 * **New Features**
 	* Added support for the [Rate my Post](https://wordpress.org/plugins/rate-my-post/) plugin.
@@ -889,5 +889,5 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 6.21.0 =
 
-(2020/02/15) Added support for the Rate my Post plugin. Added support for clearing third-party cache plugins. Added new buttons in the SSO &gt; Tools and Actions page.
+(2020/02/16) Added support for the Rate my Post plugin. Added support for clearing third-party cache plugins. Added new buttons in the SSO &gt; Tools and Actions page.
 
