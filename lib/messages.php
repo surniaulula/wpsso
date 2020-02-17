@@ -145,7 +145,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= __( 'Please note that for sharing purposes, the document Open Graph Type must be "article", "place", "product", or "website".', 'wpsso' ) . ' ';
 
-							$text .= __( 'The document Schema Type option offers a much larger selection of types and the Open Graph Type value may reflect specific Schema Type selections (the Open Graph Type option will be disabled in these cases).', 'wpsso' ) . ' ';
+							$text .= __( 'The document Schema Type option offers a much larger selection of types, and the Open Graph Type value may reflect specific Schema Type selections (the Open Graph Type option will be disabled in these cases).', 'wpsso' ) . ' ';
+
+							$text .= __( 'For example, a Schema Type or sub-type of "Article" will change the Open Graph Type to "article", a Schema Type or sub-type of "Place" will change the Open Graph Type to "place", etc.', 'wpsso' ) . ' ';
 
 						 	break;
 
