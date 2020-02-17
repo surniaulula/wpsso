@@ -515,6 +515,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 6.21.1 (2020/02/17)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Updated the WP Bakery jQuery event handling bug check, which is apparently fixed in WP Bakery v6.1.0 (props @boldairdeveloppement).
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v5.5.
+	* WordPress v4.0.
+
 **Version 6.21.0 (2020/02/16)**
 
 * **New Features**
@@ -886,6 +900,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v3.9.
 
 == Upgrade Notice ==
+
+= 6.21.1 =
+
+(2020/02/17) Updated the WP Bakery jQuery event handling bug check, which is apparently fixed in WP Bakery v6.1.0.
 
 = 6.21.0 =
 
