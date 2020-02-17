@@ -143,7 +143,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'A customized Facebook / Open Graph type for this content.', 'wpsso' ) . ' ';
 
-							$text .= __( 'Please note that for sharing purposes, the Open Graph Type must be "article", "place", "product", or "website".', 'wpsso' ) . ' ';
+							$text .= __( 'Please note that for sharing purposes, the document Open Graph Type must be "article", "place", "product", or "website".', 'wpsso' ) . ' ';
+
+							$text .= __( 'The document Schema Type option offers a much larger selection of types and the Open Graph Type value may reflect specific Schema Type selections (the Open Graph Type option will be disabled in these cases).', 'wpsso' ) . ' ';
 
 						 	break;
 
