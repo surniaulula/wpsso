@@ -242,8 +242,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 					foreach ( $user_ids as $user_id ) {
 
-						delete_user_option( $user_id, WPSSO_DISMISS_NAME, false );	// $global is false.
-						delete_user_option( $user_id, WPSSO_DISMISS_NAME, true );	// $global is true.
+						delete_user_option( $user_id, WPSSO_DISMISS_NAME );
 	
 						WpssoUser::delete_metabox_prefs( $user_id );
 
