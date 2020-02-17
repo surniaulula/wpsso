@@ -667,8 +667,8 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 			if ( defined( 'WPB_VC_VERSION' ) ) {
 
 				/**
-				 * Although no specific entry was added in the WP Bakery changelog, it has been reported that this
-				 * bug is now fixed in the current WP Bakery version (6.1.0).
+				 * Although no specific entry was added in the WPBakery changelog, it has been reported that this
+				 * bug is now fixed in the current WPBakery version (6.1.0).
 				 *
 				 * https://kb.wpbakery.com/docs/preface/release-notes/
 				 */
@@ -684,11 +684,11 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 					$error_msg = __( 'An issue with WPBakery Visual Composer has been detected.', 'wpsso' ) . ' ';
 						
-					$error_msg .= sprintf( __( 'WPBakery Visual Composer version %s (and older) are known to have a bug in their jQuery event handling code.', 'wpsso' ), $wpb_vc_version_event_bug ) . ' ';
+					$error_msg .= sprintf( __( 'WPBakery Visual Composer version %s and older are known to have a bug in their jQuery event handling code.', 'wpsso' ), $wpb_vc_version_event_bug ) . ' ';
 						
-					$error_msg .= sprintf( __( 'To avoid jQuery crashing on show / hide events, please contact WPBakery plugin support and <a href="%s">report the WPBakery Visual Composer change event handler bug described here</a>.', 'wpsso' ), $blog_post_url );
+					$error_msg .= __( 'To avoid jQuery crashing on show / hide jQuery events, please update your version of WPBakery Visual Composer immediately.', 'wpsso' );
 
-					$notice_key = 'wpb-vc-version-event-bug';
+					$notice_key = 'wpb-vc-version-event-bug-' . $wpb_vc_version_event_bug;
 
 					$this->p->notice->err( $error_msg, null, $notice_key );
 				}

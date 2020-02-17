@@ -1290,15 +1290,14 @@ msgstr ""
 
 #: lib/conflict.php:687
 msgid ""
-"WPBakery Visual Composer version %s (and older) are known to have a bug in "
+"WPBakery Visual Composer version %s and older are known to have a bug in "
 "their jQuery event handling code."
 msgstr ""
 
 #: lib/conflict.php:689
 msgid ""
-"To avoid jQuery crashing on show / hide events, please contact WPBakery "
-"plugin support and <a href=\"%s\">report the WPBakery Visual Composer change "
-"event handler bug described here</a>."
+"To avoid jQuery crashing on show / hide jQuery events, please update your "
+"version of WPBakery Visual Composer immediately."
 msgstr ""
 
 #: lib/conflict.php:708
