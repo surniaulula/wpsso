@@ -520,7 +520,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Updated the WP Bakery jQuery event handling bug check, which is apparently fixed in WP Bakery v6.1.0 (props @boldairdeveloppement).
+	* Updated the WPBakery Visual Composer jQuery event handling bug check, which is apparently fixed in WPBakery Visual Composer v6.1.0 (props @boldairdeveloppement).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -797,113 +797,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* PHP v5.4.
 	* WordPress v3.9.
 
-**Version 6.11.2 (2019/11/10)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added a warning notice for a known WPBakery Visual Composer bug.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Moved conflict checks from WpssoAdmin to WpssoConflict in lib/conflict.php.
-* **Requires At Least**
-	* PHP v5.4.
-	* WordPress v3.9.
-
-**Version 6.11.1 (2019/11/05)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* Fixed the on_change show event for form selects without a default selected option.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v5.4.
-	* WordPress v3.9.
-
-**Version 6.11.0 (2019/11/01)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added support for the "YITH WooCommerce Brands Add-On" plugin (Premium version).
-	* Added a "Wikipedia Page URL" option in the user profile page.
-	* Added a "Wikipedia Organization Page URL" option in the SSO &gt; General settings page.
-	* Added a new "Suggested minimum dimension for uploaded images (to satisfy all XX image sizes): XXXX by XXXX pixels." message to the Media Library upload page.
-* **Bugfixes**
-	* Fixed non-working table row show / hide jQuery event triggers after refreshing the metabox in the block editor.
-* **Developer Notes**
-	* Updated the sucomInitMetabox() javascript to trigger a show() event for displayed table rows after refreshing the metabox with ajax.
-	* Moved the WpssoPost, WpssoTerm, and WpssoUser 'add_wp_hooks' method execution from 'init' 10 to 'wp_loaded' 10.
-* **Requires At Least**
-	* PHP v5.4.
-	* WordPress v3.9.
-
-**Version 6.10.0 (2019/10/26)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added the Media Library image title after the image ID in notice messages.
-	* Added a new "Google Website Verification ID" option.
-	* Updated the "Pinterest Website Verification ID" option help text.
-	* Updated the Schema Person markup to hash the '@id' string URL.
-	* Updated the preload SSO toolbar notifications text to "Fetching SSO notifications..." .
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added a new `$hash_url` argument in the WpssoSchema::update_data_id() method.
-	* Updated the WpssoSchemaSingle::add_person_data() method to hash the '@id' string URL.
-	* Moved place specific "Head Tags" option keys from WPSSO Core to WPSSO PLM:
-		* 'add_link_itemprop_hasmenu'
-		* 'add_meta_itemprop_address'
-		* 'add_meta_itemprop_telephone'
-		* 'add_meta_itemprop_currenciesaccepted'
-		* 'add_meta_itemprop_paymentaccepted'
-		* 'add_meta_itemprop_pricerange'
-		* 'add_meta_itemprop_acceptsreservations'
-		* 'add_meta_itemprop_servescuisine'
-	* Removed deprecated "Head Tags" option keys (these values are available in JSON-LD markup, not meta tags).
-		* 'add_link_itemprop_author.url'
-		* 'add_link_itemprop_author.image'
-		* 'add_link_itemprop_contributor.url'
-		* 'add_link_itemprop_contributor.image'
-		* 'add_link_itemprop_image.url'
-		* 'add_meta_itemprop_email'
-		* 'add_meta_itemprop_image.width'
-		* 'add_meta_itemprop_image.height'
-		* 'add_meta_itemprop_publisher.name'
-		* 'add_meta_itemprop_author.name'
-		* 'add_meta_itemprop_author.description'
-		* 'add_meta_itemprop_contributor.name'
-		* 'add_meta_itemprop_contributor.description'
-		* 'add_meta_itemprop_openinghoursspecification.dayofweek'
-		* 'add_meta_itemprop_openinghoursspecification.opens'
-		* 'add_meta_itemprop_openinghoursspecification.closes'
-		* 'add_meta_itemprop_openinghoursspecification.validfrom'
-		* 'add_meta_itemprop_openinghoursspecification.validthrough'
-		* 'add_meta_itemprop_startdate'
-		* 'add_meta_itemprop_enddate'
-		* 'add_meta_itemprop_location'
-		* 'add_meta_itemprop_preptime'
-		* 'add_meta_itemprop_cooktime'
-		* 'add_meta_itemprop_totaltime'
-		* 'add_meta_itemprop_recipeyield'
-		* 'add_meta_itemprop_recipeingredient'
-		* 'add_meta_itemprop_recipeinstructions'
-* **Requires At Least**
-	* PHP v5.4.
-	* WordPress v3.9.
-
 == Upgrade Notice ==
 
 = 6.21.1 =
 
-(2020/02/17) Updated the WP Bakery jQuery event handling bug check, which is apparently fixed in WP Bakery v6.1.0.
+(2020/02/17) Updated the WPBakery Visual Composer jQuery event handling bug check, which is apparently fixed in WPBakery Visual Composer v6.1.0.
 
 = 6.21.0 =
 
