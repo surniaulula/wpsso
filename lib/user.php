@@ -462,7 +462,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			if ( isset( $meta_cache[ $meta_key ][ 0 ] ) ) {
 				$value = (string) maybe_unserialize( $meta_cache[ $meta_key ][ 0 ] );
 			} else {
-				$value = (string) get_user_meta( $user_id, $meta_key, true );	// $single = true
+				$value = (string) get_user_meta( $user_id, $meta_key, $single = true );
 			}
 
 			if ( $value === 'none' ) {
@@ -508,7 +508,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$local_recursion[ $user_id ][ $meta_key ] = true;		// Prevent recursion.
 
-			if ( get_user_meta( $user_id, $meta_key, true ) === '' ) {	// Returns empty string if meta not found.
+			if ( get_user_meta( $user_id, $meta_key, $single = true ) === '' ) {	// Returns empty string if meta not found.
 				$this->get_head_info( $user_id, $read_cache = true );
 			}
 
@@ -1059,8 +1059,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$meta_key = $state . '_' . $pagehook;
 
 				if ( $force && empty( $box_ids ) ) {
-					delete_user_option( $user_id, $meta_key, false );	// $global = false
-					delete_user_option( $user_id, $meta_key, true );	// $global = true
+					delete_user_option( $user_id, $meta_key );
 				}
 
 				$is_changed = false;
@@ -1133,7 +1132,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 
 				if ( $is_default || $is_changed ) {
-					update_user_option( $user_id, $meta_key, array_unique( $user_opts ), true );	// $global = true
+					update_user_option( $user_id, $meta_key, array_unique( $user_opts ) );
 				}
 			}
 		}
@@ -1195,15 +1194,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					);
 
 					foreach ( get_users( $users_args ) as $user_obj ) {
+
 						if ( ! empty( $user_obj->ID ) ) {	// Just in case.
-							delete_user_option( $user_obj->ID, $meta_key, false );	// $global is false.
-							delete_user_option( $user_obj->ID, $meta_key, true );	// $global is true.
+
+							delete_user_option( $user_obj->ID, $meta_key );
 						}
 					}
 
 				} elseif ( is_numeric( $user_id ) ) {
-					delete_user_option( $user_id, $meta_key, false );	// $global is false.
-					delete_user_option( $user_id, $meta_key, true );	// $global is true.
+
+					delete_user_option( $user_id, $meta_key );
 				}
 			}
 		}
@@ -1216,7 +1216,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				$wpsso =& Wpsso::get_instance();
 
-				self::$cache_pref[ $user_id ] = get_user_meta( $user_id, WPSSO_PREF_NAME, true );
+				self::$cache_pref[ $user_id ] = get_user_meta( $user_id, WPSSO_PREF_NAME, $single = true );
 
 				if ( ! is_array( self::$cache_pref[ $user_id ] ) ) {
 					self::$cache_pref[ $user_id ] = array();

@@ -1097,8 +1097,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'reset_user_dismissed_notices':
 
-							delete_user_option( $user_id, WPSSO_DISMISS_NAME, $global = false );
-							delete_user_option( $user_id, WPSSO_DISMISS_NAME, $global = true );
+							delete_user_option( $user_id, WPSSO_DISMISS_NAME );
 
 							$user_obj = get_userdata( $user_id );
 
