@@ -60,6 +60,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 * Other functions.
 			 */
 			'is_amp_endpoint',
+			'wp_using_ext_object_cache',
 		);
 
 		protected static $form_cache = array();

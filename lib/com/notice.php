@@ -547,10 +547,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					unset( $user_dismissed[ $notice_key ] );
 
 					if ( empty( $user_dismissed ) ) {
-
-						delete_user_option( $user_id, $this->dis_name, $global = true );	// Just in case.
 						delete_user_option( $user_id, $this->dis_name );
-
 					} else {
 						update_user_option( $user_id, $this->dis_name, $user_dismissed );
 					}
@@ -720,10 +717,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				if ( true === $update_dismissed ) {
 
 					if ( empty( $user_dismissed ) ) {
-
-						delete_user_option( $user_id, $this->dis_name, $global = true );	// Just in case.
 						delete_user_option( $user_id, $this->dis_name );
-
 					} else {
 						update_user_option( $user_id, $this->dis_name, $user_dismissed );
 					}
@@ -917,10 +911,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				if ( true === $update_dismissed ) {
 
 					if ( empty( $user_dismissed ) ) {
-
-						delete_user_option( $user_id, $this->dis_name, $global = true );	// Just in case.
 						delete_user_option( $user_id, $this->dis_name );
-
 					} else {
 						update_user_option( $user_id, $this->dis_name, $user_dismissed );
 					}
