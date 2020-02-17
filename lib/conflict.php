@@ -666,7 +666,13 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 			if ( defined( 'WPB_VC_VERSION' ) ) {
 
-				$wpb_vc_version_event_bug = '6.1.0';
+				/**
+				 * Although no specific entry was added in the WP Bakery changelog, it has been reported that this
+				 * bug is now fixed in the current WP Bakery version (6.1.0).
+				 *
+				 * https://kb.wpbakery.com/docs/preface/release-notes/
+				 */
+				$wpb_vc_version_event_bug = '6.0.5';
 
 				if ( version_compare( WPB_VC_VERSION, $wpb_vc_version_event_bug, '<=' ) ) {
 

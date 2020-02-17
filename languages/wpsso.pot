@@ -1284,24 +1284,24 @@ msgid ""
 "href=\"%1$s\">please deactivate the %2$s plugin immediately</a>."
 msgstr ""
 
-#: lib/conflict.php:679
+#: lib/conflict.php:685
 msgid "An issue with WPBakery Visual Composer has been detected."
 msgstr ""
 
-#: lib/conflict.php:681
+#: lib/conflict.php:687
 msgid ""
 "WPBakery Visual Composer version %s (and older) are known to have a bug in "
 "their jQuery event handling code."
 msgstr ""
 
-#: lib/conflict.php:683
+#: lib/conflict.php:689
 msgid ""
 "To avoid jQuery crashing on show / hide events, please contact WPBakery "
 "plugin support and <a href=\"%s\">report the WPBakery Visual Composer change "
 "event handler bug described here</a>."
 msgstr ""
 
-#: lib/conflict.php:702
+#: lib/conflict.php:708
 msgid ""
 "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to "
 "discourage search engine and social sites from indexing this site. This is "
