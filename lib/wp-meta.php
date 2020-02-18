@@ -285,7 +285,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'tc_sum_img_url'    => '',
 
 					/**
-					 * Structured Data / Schema Markup / Pinterest.
+					 * Schema Markup and Structured Data.
 					 */
 					'schema_img_max'    => isset( $opts[ 'og_img_max' ] ) ? (int) $opts[ 'og_img_max' ] : 1,	// 1 by default.
 					'schema_img_id'     => '',

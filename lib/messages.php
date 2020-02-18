@@ -139,15 +139,25 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $msg_key ) {
 
+						case 'tooltip-meta-og_schema_type':	// Schema Type.
+
+							$text = __( 'Select a document Schema type that best describes the main content of this webpage.', 'wpsso' );
+
+						 	break;
+
 						case 'tooltip-meta-og_type':	// Open Graph Type
 
-							$text = __( 'A customized Facebook / Open Graph type for this content.', 'wpsso' ) . ' ';
+							$text = __( 'Select a document Facebook / Open Graph type that best describes the main content of this webpage.', 'wpsso' ) . ' ';
 
-							$text .= __( 'Please note that for sharing purposes, the document Open Graph Type must be "article", "place", "product", or "website".', 'wpsso' ) . ' ';
+							$text .= '<br/><br/>';
 
-							$text .= __( 'The document Schema Type option offers a much larger selection of types, and the Open Graph Type value may reflect specific Schema Type selections (the Open Graph Type option will be disabled in these cases).', 'wpsso' ) . ' ';
+							$text .= __( 'The Schema Type option offers a larger and comprehensive selection of types for the content, and the Open Graph Type may reflect the Schema Type selected (the Open Graph Type option will be disabled in this case).', 'wpsso' ) . ' ';
 
-							$text .= __( 'For example, a Schema Type or sub-type of "Article" will change the Open Graph Type to "article", a Schema Type or sub-type of "Place" will change the Open Graph Type to "place", etc.', 'wpsso' ) . ' ';
+							$text .= __( 'For example, a Schema type (or sub-type) of "Article" will change the Open Graph Type to "article", a Schema type (or sub-type) of "Place" will change the Open Graph Type to "place", a Schema type (or sub-type) of "Product" will change the Open Graph Type to "product",  etc.', 'wpsso' ) . ' ';
+
+							$text .= '<br/><br/>';
+
+							$text .= __( 'Note that for social sharing purposes, the document Open Graph type must be "article", "place", "product", or "website".', 'wpsso' ) . ' ';
 
 						 	break;
 
@@ -302,12 +312,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= __( 'The video name / title and description will be used in the video Schema JSON-LD markup (add-on required).', 'wpsso' );
 
 							break;
-
-						case 'tooltip-meta-schema_type':	// Schema Type.
-
-							$text = __( 'Select a Schema item type that best describes the main content of this webpage.', 'wpsso' );
-
-						 	break;
 
 						case 'tooltip-meta-schema_img_crop_area':
 
@@ -2739,7 +2743,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			$link = $this->p->util->get_admin_url( 'addons#wpssojson', $this->p->cf[ 'plugin' ][ 'wpssojson' ][ 'name' ] );
 
 			// translators: %s is is the add-on name (and a link to the add-on page).
-			$text = sprintf( __( 'Activate the %s add-on for additional Schema markup options.', 'wpsso' ), $link );
+			$text = sprintf( __( 'Activate the %s add-on<br/>for comprehensive Schema Markup and Structured Data options.', 'wpsso' ), $link );
 
 			return '<p class="status-msg">' . $text . '</p>';
 		}

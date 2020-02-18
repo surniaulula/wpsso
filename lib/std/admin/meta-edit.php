@@ -99,12 +99,26 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'tooltip'  => 'meta-og_img_crop_area',
 					'content'  => $form->get_no_input_image_crop_area( 'attach_img', $add_none = true ),
 				) : array(),
+				'og_schema_type' => array(
+					'th_class' => 'medium',
+					'label'    => _x( 'Schema Type', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-og_schema_type',
+					'content'  => $form->get_select( 'schema_type', $schema_types, $css_class = 'schema_type', $css_id = '',
+						$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json', 'on_change_unhide_rows' ),
+							$event_args = array(
+								'json_var'  => 'schema_types',
+								'exp_secs'  => $schema_exp_secs,
+								'is_transl' => true,	// No label translation required.
+								'is_sorted' => true,	// No label sorting required.
+							)
+						),
+				),
 				'og_type' => array(
 					'th_class' => 'medium',
 					'label'    => _x( 'Open Graph Type', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_type',
 					'content'  => $form->get_select( 'og_type', $og_types,
-						$css_class = '', $css_id = '', $is_assoc = true, $is_disabled = false,
+						$css_class = 'og_type', $css_id = '', $is_assoc = true, $is_disabled = false,
 							$selected = true, $event_names = array( 'on_change_unhide_rows' ) ),
 				),
 				'pro-feature-msg' => array(
@@ -319,21 +333,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 				'subsection_schema' => array(
 					'td_class' => 'subsection',
 					'header'   => 'h4',
-					'label'    => _x( 'Structured Data / Schema Markup', 'metabox title', 'wpsso' )
-				),
-				'schema_type' => array(
-					'th_class' => 'medium',
-					'label'    => _x( 'Schema Type', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-schema_type',
-					'content'  => $form->get_select( 'schema_type', $schema_types, $css_class = 'schema_type', $css_id = '',
-						$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json', 'on_change_unhide_rows' ),
-							$event_args = array(
-								'json_var'  => 'schema_types',
-								'exp_secs'  => $schema_exp_secs,
-								'is_transl' => true,	// No label translation required.
-								'is_sorted' => true,	// No label sorting required.
-							)
-						),
+					'label'    => _x( 'Schema Markup and Structured Data', 'metabox title', 'wpsso' )
 				),
 				'wpssojson_addon_msg' => array(
 					'table_row' => ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ?
@@ -378,7 +378,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 				'subsection_opengraph' => array(
 					'td_class' => 'subsection top',
 					'header'   => 'h4',
-					'label'    => _x( 'Facebook / Open Graph / Default Media', 'metabox title', 'wpsso' ),
+					'label'    => _x( 'Facebook / Open Graph and Default Media', 'metabox title', 'wpsso' ),
 				),
 				'subsection_priority_image' => array(
 					'td_class' => 'subsection top',
@@ -513,7 +513,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 			}
 
 			/**
-			 * Structured Data / Schema Markup / Pinterest
+			 * Schema Markup and Structured Data
 			 */
 			$media_info = $this->p->og->get_media_info( $this->p->lca . '-schema',
 				array( 'pid', 'img_url' ), $mod, $md_pre = 'og', $mt_pre = 'og' );
@@ -523,7 +523,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 			$form_rows[ 'subsection_schema' ] = array(
 				'tr_class' => $schema_row_class,
 				'td_class' => 'subsection', 'header' => 'h4',
-				'label'    => _x( 'Structured Data / Schema Markup / Pinterest', 'metabox title', 'wpsso' )
+				'label'    => _x( 'Schema Markup and Structured Data', 'metabox title', 'wpsso' )
 			);
 
 			if ( $mod[ 'is_post' ] ) {
