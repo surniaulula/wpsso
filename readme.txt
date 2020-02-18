@@ -152,6 +152,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 * Customize default values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags), custom post types, and user profiles:
 
 	* Customize Text
+		* Schema Type
 		* Open Graph Type
 		* Default Title
 		* Default Description
@@ -175,10 +176,8 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 			* Product SKU
 			* Product MPN
 			* Product ISBN
-		* Structured Data / Schema Markup
-			* Schema Type
 	* Priority Media
-		* Facebook / Open Graph / Default Media
+		* Facebook / Open Graph and Default Media
 			* Priority Image Information
 				* Maximum Images
 				* Image ID
@@ -193,7 +192,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 		* Twitter Card
 			* Image ID
 			* or Image URL
-		 * Structured Data / Schema Markup / Pinterest
+		* Schema Markup and Structured Data
 			* Maximum Images
 			* Image ID
 			* or Image URL
@@ -515,6 +514,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 6.21.2-dev.1 (2020/02/18)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Moved the Schema Type option, in the Document SSO metabox, above / before the Open Graph Type.
+* **Bugfixes**
+	* Fixed notice messages for the block editor to avoid a RawHTML element beging cast as a string (the block editor `createNotice()` function casts all notice messages as strings).
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v5.5.
+	* WordPress v4.0.
+
 **Version 6.21.1 (2020/02/17)**
 
 * **New Features**
@@ -799,11 +812,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
+= 6.21.2-dev.1 =
+
+(2020/02/18) Moved the Schema Type option, in the Document SSO metabox, above / before the Open Graph Type.
+
 = 6.21.1 =
 
 (2020/02/17) Updated the WPBakery Visual Composer jQuery event handling bug check, which is apparently fixed in WPBakery Visual Composer v6.1.0.
-
-= 6.21.0 =
-
-(2020/02/16) Added support for the Rate my Post plugin. Added support for clearing third-party cache plugins. Added new buttons in the SSO &gt; Tools and Actions page.
 

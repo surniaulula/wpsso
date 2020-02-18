@@ -162,6 +162,7 @@
 <li>Customize Text
 
 <ul>
+<li>Schema Type</li>
 <li>Open Graph Type</li>
 <li>Default Title</li>
 <li>Default Description</li>
@@ -191,16 +192,11 @@
 <li>Product MPN</li>
 <li>Product ISBN</li>
 </ul></li>
-<li>Structured Data / Schema Markup
-
-<ul>
-<li>Schema Type</li>
-</ul></li>
 </ul></li>
 <li>Priority Media
 
 <ul>
-<li>Facebook / Open Graph / Default Media
+<li>Facebook / Open Graph and Default Media
 
 <ul>
 <li>Priority Image Information
@@ -226,7 +222,10 @@
 <ul>
 <li>Image ID</li>
 <li>or Image URL</li>
-<li>Structured Data / Schema Markup / Pinterest</li>
+</ul></li>
+<li>Schema Markup and Structured Data
+
+<ul>
 <li>Maximum Images</li>
 <li>Image ID</li>
 <li>or Image URL</li>
