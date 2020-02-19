@@ -514,16 +514,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.21.2-dev.1 (2020/02/18)**
+**Version 6.21.2-dev.2 (2020/02/19)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Moved the Schema Type option, in the Document SSO metabox, above / before the Open Graph Type.
+	* Moved the Schema Type option in the Document SSO metabox just above the Open Graph Type option.
+	* Added a jQuery change event to dynamically update the Open Graph type value based on the selected Schema type.
 * **Bugfixes**
 	* Fixed notice messages for the block editor to avoid a RawHTML element beging cast as a string (the block editor `createNotice()` function casts all notice messages as strings).
 * **Developer Notes**
-	* None.
+	* Added a new `sucomSchemaTypeOgType()` function in js/com/jquery-metabox.js with a jQuery change event for 'select#select_og_schema_type'.
 * **Requires At Least**
 	* PHP v5.5.
 	* WordPress v4.0.
@@ -812,9 +813,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.21.2-dev.1 =
+= 6.21.2-dev.2 =
 
-(2020/02/18) Moved the Schema Type option, in the Document SSO metabox, above / before the Open Graph Type.
+(2020/02/19) Moved the Schema Type option in the Document SSO metabox just above the Open Graph Type option. Added a jQuery change event to dynamically update the Open Graph type value based on the selected Schema type.
 
 = 6.21.1 =
 
