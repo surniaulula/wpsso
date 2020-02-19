@@ -192,7 +192,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 		* Twitter Card
 			* Image ID
 			* or Image URL
-		* Schema Markup and Structured Data
+		* Schema JSON-LD Markup / Rich Results
 			* Maximum Images
 			* Image ID
 			* or Image URL
