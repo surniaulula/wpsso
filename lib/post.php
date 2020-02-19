@@ -1119,7 +1119,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						
 						$notice_msg .= __( 'Complete and accurate Schema JSON-LD markup is highly recommended for better ranking and click-through rates in search results.', 'wpsso' ) . ' ';
 						
-						$notice_msg .= sprintf( __( 'Consider activating the %1$s add-on to include Schema JSON-LD markup for Google Rich Results / Rich Snippets.', 'wpsso' ), $json_addon_link );
+						$notice_msg .= sprintf( __( 'Consider activating the %1$s add-on to include Schema JSON-LD markup for Google Rich Results.', 'wpsso' ), $json_addon_link );
 
 						$notice_key   = 'application-ld-json-script-not-found';
 						$dismiss_time = true;	// Can be dismissed permanently.
@@ -1273,22 +1273,22 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			check_ajax_referer( WPSSO_NONCE_NAME, '_ajax_nonce', true );
 
 			if ( empty( $_POST[ 'post_id' ] ) ) {
-				die( '-1' );
+				die( -1 );
 			}
 
 			$post_id  = $_POST[ 'post_id' ];
 			$post_obj = SucomUtil::get_post_object( $post_id );
 
 			if ( ! is_object( $post_obj ) ) {
-				die( '-1' );
+				die( -1 );
 			} elseif ( empty( $post_obj->post_type ) ) {
-				die( '-1' );
+				die( -1 );
 			} elseif ( empty( $post_obj->post_status ) ) {
-				die( '-1' );
+				die( -1 );
 			} elseif ( $post_obj->post_status === 'auto-draft' ) {
-				die( '-1' );
+				die( -1 );
 			} elseif ( $post_obj->post_status === 'trash' ) {
-				die( '-1' );
+				die( -1 );
 			}
 
 			$mod = $this->get_mod( $post_id );

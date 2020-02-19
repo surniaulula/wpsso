@@ -730,7 +730,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		public function ajax_metabox_custom_meta() {
 
-			die( '-1' );	// Nothing to do.
+			die( -1 );	// Nothing to do.
 		}
 
 		public function show_metabox_custom_meta( $term_obj ) {

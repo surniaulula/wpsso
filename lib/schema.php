@@ -51,6 +51,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$this->p->util->add_plugin_filters( $this, array( 
 				'plugin_image_sizes' => 1,
 			), $prio = 5 );
+
+			add_action( 'wp_ajax_' . $this->lca . '_schema_type_og_type', array( $this, 'ajax_schema_type_og_type' ) );
 		}
 
 		public function filter_plugin_image_sizes( $sizes ) {
@@ -1223,6 +1225,25 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			return $local_cache[ $type_id ] = false;
+		}
+
+		public function ajax_schema_type_og_type() {
+
+			if ( ! SucomUtil::get_const( 'DOING_AJAX' ) ) {
+				return;
+			} elseif ( SucomUtil::get_const( 'DOING_AUTOSAVE' ) ) {
+				die( -1 );
+			}
+
+			check_ajax_referer( WPSSO_NONCE_NAME, '_ajax_nonce', true );
+
+			$schema_type = sanitize_text_field( filter_input( INPUT_POST, 'schema_type' ) );
+
+			if ( $og_type = $this->get_schema_type_og_type( $schema_type ) ) {
+				die( $og_type );
+			} else {
+				die( -1 );
+			}
 		}
 
 		/**

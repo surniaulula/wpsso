@@ -333,7 +333,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 				'subsection_schema' => array(
 					'td_class' => 'subsection',
 					'header'   => 'h4',
-					'label'    => _x( 'Schema Markup and Structured Data', 'metabox title', 'wpsso' )
+					'label'    => _x( 'Schema JSON-LD Markup / Rich Results', 'metabox title', 'wpsso' )
 				),
 				'wpssojson_addon_msg' => array(
 					'table_row' => ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ?
@@ -513,7 +513,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 			}
 
 			/**
-			 * Schema Markup and Structured Data
+			 * Schema JSON-LD Markup / Rich Results
 			 */
 			$media_info = $this->p->og->get_media_info( $this->p->lca . '-schema',
 				array( 'pid', 'img_url' ), $mod, $md_pre = 'og', $mt_pre = 'og' );
@@ -523,7 +523,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 			$form_rows[ 'subsection_schema' ] = array(
 				'tr_class' => $schema_row_class,
 				'td_class' => 'subsection', 'header' => 'h4',
-				'label'    => _x( 'Schema Markup and Structured Data', 'metabox title', 'wpsso' )
+				'label'    => _x( 'Schema JSON-LD Markup / Rich Results', 'metabox title', 'wpsso' )
 			);
 
 			if ( $mod[ 'is_post' ] ) {

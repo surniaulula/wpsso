@@ -755,7 +755,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$dismiss_info = array();
 
 			if ( empty( $user_id ) || ! current_user_can( 'edit_user', $user_id ) ) {
-				die( '-1' );
+				die( -1 );
 			}
 
 			check_ajax_referer( __FILE__, 'dismiss_nonce', true );
@@ -768,7 +768,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			if ( empty( $dismiss_info[ 'notice_key' ] ) ) {	// Just in case.
-				die( '-1' );
+				die( -1 );
 			}
 
 			$user_dismissed = get_user_option( $this->dis_name, $user_id );

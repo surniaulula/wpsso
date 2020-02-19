@@ -143,6 +143,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'Select a document Schema type that best describes the main content of this webpage.', 'wpsso' );
 
+							$text .= '<br/><br/>';
+
+							$text .= __( 'The Schema type option offers a much larger selection of types than the Open Graph type, and the Open Graph type may reflect the Schema type selected (the Open Graph type option will be disabled in this case).', 'wpsso' ) . ' ';
+
+							$text .= __( 'As an example, a Schema type or sub-type of "Article" will change the Open Graph type to "article", a Schema type or sub-type of "Place" will change the Open Graph type to "place", a Schema type or sub-type of "Product" will change the Open Graph type to "product",  etc.', 'wpsso' ) . ' ';
+
 						 	break;
 
 						case 'tooltip-meta-og_type':	// Open Graph Type
@@ -151,9 +157,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<br/><br/>';
 
-							$text .= __( 'The Schema Type option offers a larger and comprehensive selection of types for the content, and the Open Graph Type may reflect the Schema Type selected (the Open Graph Type option will be disabled in this case).', 'wpsso' ) . ' ';
+							$text .= __( 'The Schema type option offers a much larger selection of types than the Open Graph type, and the Open Graph type may reflect the Schema type selected (the Open Graph type option will be disabled in this case).', 'wpsso' ) . ' ';
 
-							$text .= __( 'For example, a Schema type (or sub-type) of "Article" will change the Open Graph Type to "article", a Schema type (or sub-type) of "Place" will change the Open Graph Type to "place", a Schema type (or sub-type) of "Product" will change the Open Graph Type to "product",  etc.', 'wpsso' ) . ' ';
+							$text .= __( 'As an example, a Schema type or sub-type of "Article" will change the Open Graph type to "article", a Schema type or sub-type of "Place" will change the Open Graph type to "place", a Schema type or sub-type of "Product" will change the Open Graph type to "product",  etc.', 'wpsso' ) . ' ';
 
 							$text .= '<br/><br/>';
 
