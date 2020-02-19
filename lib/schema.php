@@ -52,7 +52,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'plugin_image_sizes' => 1,
 			), $prio = 5 );
 
-			add_action( 'wp_ajax_' . $this->lca . '_schema_type_og_type', array( $this, 'ajax_schema_type_og_type' ) );
+			add_action( 'wp_ajax_' . $this->p->lca . '_schema_type_og_type', array( $this, 'ajax_schema_type_og_type' ) );
 		}
 
 		public function filter_plugin_image_sizes( $sizes ) {

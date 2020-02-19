@@ -103,7 +103,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Schema Type', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_schema_type',
-					'content'  => $form->get_select( 'schema_type', $schema_types, $css_class = 'schema_type', $css_id = '',
+					'content'  => $form->get_select( 'schema_type', $schema_types, $css_class = 'schema_type', $css_id = 'og_schema_type',
 						$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json', 'on_change_unhide_rows' ),
 							$event_args = array(
 								'json_var'  => 'schema_types',
