@@ -513,9 +513,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 
 				/**
-				 * For disabled selects or JSON selects, only include the first and selected option(s).
+				 * Only include the first and selected option(s).
 				 */
-				if ( ( ! $is_disabled && ! $event_json_var ) || $is_selected_html || $select_opt_count === 1 ) {
+				if ( ! $event_json_var || $is_selected_html || $select_opt_count === 1 ) {
 
 					if ( ! isset( $select_opt_arr[ $option_value ] ) ) {
 
@@ -531,8 +531,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				uasort( $select_opt_arr, array( 'self', 'sort_select_opt_by_label' ) );
 			}
 
-			$html .= "\n" . '<select ';
-			$html .= $is_disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"';
+			$html .= "\n";
+			$html .= '<select ';
+			$html .= $is_disabled ? ' disabled="disabled"' : '';
+			$html .= ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"';
 			$html .= ' id="' . esc_attr( $input_id ) . '"';	// Always has a value.
 			$html .= empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"';
 			$html .= empty( $default_value ) ? '' : ' data-default-value="' . esc_attr( $default_value ) . '"';

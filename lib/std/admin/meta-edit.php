@@ -117,9 +117,8 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Open Graph Type', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_type',
-					'content'  => $form->get_select( 'og_type', $og_types,
-						$css_class = 'og_type', $css_id = '', $is_assoc = true, $is_disabled = false,
-							$selected = true, $event_names = array( 'on_change_unhide_rows' ) ),
+					'content'  => $form->get_select( 'og_type', $og_types, $css_class = 'og_type', $css_id = '',
+						$is_assoc = true, $is_disabled = false, $selected = true, $event_names = array( 'on_change_unhide_rows' ) ),
 				),
 				'pro-feature-msg' => array(
 					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>',
