@@ -240,7 +240,11 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			$no_notices_text = sprintf( __( 'No %s notifications.', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
 			$no_notices_html = '<div class="ab-item ab-empty-item">' . $no_notices_text . '</div>';
 
-			$option_labels = array( 'robots'   => _x( 'Robots', 'option label', 'wpsso' ) );
+			$option_labels = array(
+				'robots'      => _x( 'Robots', 'option label', 'wpsso' ),
+				'schema_type' => _x( 'Schema Type', 'option label', 'wpsso' ),
+			);
+
 			$container_ids = array( $container_id );
 
 			$option_labels = apply_filters( $this->p->lca . '_block_editor_admin_option_labels', $option_labels );
@@ -254,6 +258,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				'_ajax_nonce'      => wp_create_nonce( WPSSO_NONCE_NAME ),
 				'_tb_notices'      => $this->tb_notices,	// Maybe null, true, false, or array.
 				'_no_notices_html' => $no_notices_html,
+				'_linked_to_label' => __( 'Value is linked to %s', 'wpsso' ),
 				'_option_labels'   => $option_labels,
 				'_container_ids'   => $container_ids,
 			);
