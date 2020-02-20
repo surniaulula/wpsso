@@ -258,7 +258,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				'_ajax_nonce'      => wp_create_nonce( WPSSO_NONCE_NAME ),
 				'_tb_notices'      => $this->tb_notices,	// Maybe null, true, false, or array.
 				'_no_notices_html' => $no_notices_html,
-				'_linked_to_label' => __( 'Value is linked to %s', 'wpsso' ),
+				'_linked_to_label' => __( 'Value linked to %s', 'wpsso' ),
 				'_option_labels'   => $option_labels,
 				'_container_ids'   => $container_ids,
 			);

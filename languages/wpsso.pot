@@ -6474,7 +6474,7 @@ msgid "No %s notifications."
 msgstr ""
 
 #: lib/script.php:261
-msgid "Value is linked to %s"
+msgid "Value linked to %s"
 msgstr ""
 
 #: lib/sitesubmenu/site-addons.php:69 lib/submenu/addons.php:57
