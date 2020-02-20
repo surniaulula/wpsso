@@ -514,7 +514,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.21.2-dev.3 (2020/02/19)**
+**Version 6.21.2-dev.4 (2020/02/20)**
 
 * **New Features**
 	* None.
@@ -813,9 +813,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.21.2-dev.3 =
+= 6.21.2-dev.4 =
 
-(2020/02/19) Moved the Schema Type option in the Document SSO metabox just above the Open Graph Type option. Added a jQuery change event to dynamically update the Open Graph type value based on the selected Schema type.
+(2020/02/20) Moved the Schema Type option in the Document SSO metabox just above the Open Graph Type option. Added a jQuery change event to dynamically update the Open Graph type value based on the selected Schema type.
 
 = 6.21.1 =
 
