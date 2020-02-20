@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.21.2-dev.3\n"
+"Project-Id-Version: WPSSO Core 6.21.2-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -888,17 +888,17 @@ msgstr ""
 msgid "Failed writing data to cache file %s."
 msgstr ""
 
-#: lib/com/form.php:1202 lib/gettext-com.php:25
+#: lib/com/form.php:1187 lib/gettext-com.php:25
 msgctxt "option comment"
 msgid "crop"
 msgstr ""
 
-#: lib/com/form.php:1208 lib/gettext-com.php:26
+#: lib/com/form.php:1193 lib/gettext-com.php:26
 msgctxt "option comment"
 msgid "from"
 msgstr ""
 
-#: lib/com/form.php:1964 lib/gettext-com.php:27 lib/post.php:1381
+#: lib/com/form.php:1946 lib/gettext-com.php:27 lib/post.php:1381
 #: lib/wp-meta.php:604 lib/wp-meta.php:734
 msgid "Save a draft version or publish to update this value."
 msgstr ""
