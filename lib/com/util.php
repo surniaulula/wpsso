@@ -2274,6 +2274,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$results = array();
 
 			foreach ( $matches as $key => $value ) {
+
 				$num = preg_replace( '/^' . $prefix . '_([0-9]+)(#.*)?$/', '$1', $key );
 
 				if ( ! empty( $results[ $num ] ) ) { // Preserve the first non-blank value.

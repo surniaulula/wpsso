@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.21.2\n"
+"Project-Id-Version: WPSSO Core 6.21.3-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2606,7 +2606,7 @@ msgid "Posts, Pages, Custom Post Types"
 msgstr ""
 
 #: lib/gettext-pro.php:29 lib/media.php:124 lib/media.php:704 lib/media.php:877
-#: lib/media.php:1868 lib/pro/admin/advanced.php:207
+#: lib/media.php:1876 lib/pro/admin/advanced.php:207
 #: lib/std/admin/advanced.php:212
 msgid "Media Library"
 msgstr ""
@@ -3488,7 +3488,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: lib/media.php:127 lib/media.php:1875
+#: lib/media.php:127 lib/media.php:1883
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
@@ -3557,51 +3557,51 @@ msgid ""
 "%4$s."
 msgstr ""
 
-#: lib/media.php:1332
+#: lib/media.php:1336
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1885
+#: lib/media.php:1893
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:1910
+#: lib/media.php:1918
 msgctxt "option label"
 msgid "Facebook Open Graph"
 msgstr ""
 
-#: lib/media.php:1919
+#: lib/media.php:1927
 msgctxt "option label"
 msgid "Google Schema"
 msgstr ""
 
-#: lib/media.php:1928
+#: lib/media.php:1936
 msgctxt "option label"
 msgid "Google Schema Article"
 msgstr ""
 
-#: lib/media.php:1937
+#: lib/media.php:1945
 msgctxt "option label"
 msgid "Google Schema Article AMP 1:1"
 msgstr ""
 
-#: lib/media.php:1946
+#: lib/media.php:1954
 msgctxt "option label"
 msgid "Google Schema Article AMP 4:3"
 msgstr ""
 
-#: lib/media.php:1955
+#: lib/media.php:1963
 msgctxt "option label"
 msgid "Google Schema Article AMP 16:9"
 msgstr ""
 
-#: lib/media.php:1995
+#: lib/media.php:2003
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:2026
+#: lib/media.php:2034
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -6158,7 +6158,7 @@ msgid "No Description."
 msgstr ""
 
 #. translators: Post type archive title. %s: Post type name.
-#: lib/page.php:1508
+#: lib/page.php:1503
 msgid "Archives: %s"
 msgstr ""
 
@@ -7321,7 +7321,7 @@ msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/wp-meta.php:1211
+#: lib/wp-meta.php:1212
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 

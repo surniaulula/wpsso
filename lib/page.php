@@ -964,7 +964,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $excerpt_text;
 		}
 
-		public function get_the_content( array $mod, $read_cache = true, $md_key = '' ) {
+		public function get_the_content( array $mod, $read_cache = true, $md_key = '', $flatten = true ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
@@ -1010,7 +1010,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							$this->p->debug->log( 'exiting early: cache index found in wp_cache' );
 						}
 
-						return $cache_array[ $cache_index ];
+						$content =& $cache_array[ $cache_index ];
+
+						/**
+						 * Maybe put everything on one line but do not cache the re-formatted content.
+						 */
+						return $flatten ? preg_replace( '/[\s\r\n]+/s', ' ', $content ) : $content;
 
 					} else {
 
@@ -1056,15 +1061,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			} elseif ( $mod[ 'is_post' ] ) {
 
 				$content = get_post_field( 'post_content', $mod[ 'id' ] );
-
-				if ( empty( $content ) ) {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'exiting early: no post_content for post id ' . $mod[ 'id' ] );
-					}
-
-					return false;
-				}
 			}
 
 			/**
@@ -1103,38 +1099,27 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Maybe apply the 'do_blocks' filters.
 			 */
-			} else {
-			
+			} elseif ( function_exists( 'do_blocks' ) ) {	// Since WP v5.0.
+
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'the_content filters skipped (shortcodes not expanded)' );
+					$this->p->debug->log( 'calling do_blocks to filter the content text.' );
 				}
 
-				if ( function_exists( 'do_blocks' ) ) {	// Since WP v5.0.
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'calling do_blocks to filter the content text.' );
-					}
-
-					$content = do_blocks( $content );
-				}
+				$content = do_blocks( $content );
 			}
-
-			$content = preg_replace( '/[\s\r\n]+/s', ' ', $content );	// Put everything on one line.
 
 			/**
 			 * Maybe use only a certain part of the content.
 			 */
 			if ( false !== strpos( $content, $this->p->lca . '-content' ) ) {
-				$content = preg_replace( '/^.*<!-- *' . $this->p->lca . '-content-->(.*)<!--\/' . 
-					$this->p->lca . '-content *-->.*$/', '$1', $content );
+				$content = preg_replace( '/^.*<!-- *' . $this->p->lca . '-content-->(.*)<!--\/' . $this->p->lca . '-content *-->.*$/Us', '$1', $content );
 			}
 
 			/**
 			 * Maybe remove text between ignore markers.
 			 */
 			if ( false !== strpos( $content, $this->p->lca . '-ignore' ) ) {
-				$content = preg_replace( '/<!-- *' . $this->p->lca . '-ignore *-->.*' .
-					'<!-- *\/' . $this->p->lca . '-ignore *-->/U', ' ', $content );
+				$content = preg_replace( '/<!-- *' . $this->p->lca . '-ignore *-->.*<!-- *\/' . $this->p->lca . '-ignore *-->/Us', ' ', $content );
 			}
 
 			/**
@@ -1144,24 +1129,16 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$content = preg_replace( '/<a +rel="author" +href="" +style="display:none;">Google\+<\/a>/', ' ', $content );
 			}
 
+			/**
+			 * Prefix caption text.
+			 */
 			if ( false !== strpos( $content, '<p class="wp-caption-text">' ) ) {
 
-				$caption_prefix = isset( $this->p->options[ 'plugin_p_cap_prefix' ] ) ?
-					$this->p->options[ 'plugin_p_cap_prefix' ] : 'Caption:';
+				$caption_prefix = SucomUtil::get_key_value( 'plugin_p_cap_prefix', $this->p->options );
 
 				if ( ! empty( $caption_prefix ) ) {
 					$content = preg_replace( '/<p class="wp-caption-text">/', '${0}' . $caption_prefix . ' ', $content );
 				}
-			}
-
-			if ( false !== strpos( $content, ']]>' ) ) {
-				$content = str_replace( ']]>', ']]&gt;', $content );
-			}
-
-			$strlen_after_filters = strlen( $content );
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'content strlen before ' . $strlen_before_filters . ' and after changes / filters ' . $strlen_after_filters );
 			}
 
 			/**
@@ -1169,6 +1146,18 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			$content = apply_filters( $this->p->lca . '_the_content', $content, $mod, $read_cache, $md_key );
 
+			/**
+			 * Log content strlen before and after changes / filters.
+			 */
+			$strlen_after_filters = strlen( $content );
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'content strlen before ' . $strlen_before_filters . ' and after changes / filters ' . $strlen_after_filters );
+			}
+
+			/**
+			 * Save content to cache.
+			 */
 			if ( $cache_exp_secs > 0 ) {
 
 				wp_cache_add_non_persistent_groups( array( __METHOD__ ) );	// Only some caching plugins support this feature.
@@ -1180,7 +1169,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			return $content;
+			/**
+			 * Maybe put everything on one line but do not cache the re-formatted content.
+			 */
+			return $flatten ? preg_replace( '/[\s\r\n]+/s', ' ', $content ) : $content;
 		}
 
 		/**
@@ -1215,8 +1207,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 * If there's no custom text, then go ahead and generate the text value.
 			 */
 			if ( empty( $text ) ) {
+
 				$text = $this->get_the_content( $mod, $read_cache, $md_key );
+
 				$text = preg_replace( '/<pre[^>]*>.*<\/pre>/Ums', '', $text );
+
 				$text = $this->p->util->cleanup_html_tags( $text, true, $this->p->options[ 'plugin_use_img_alt' ] );
 			}
 

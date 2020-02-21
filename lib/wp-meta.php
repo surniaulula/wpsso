@@ -1113,6 +1113,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			);
 
 			$deleted_count = 0;
+
 			$deleted_ids = array();
 
 			foreach ( $cache_types as $type_name => $type_keys ) {

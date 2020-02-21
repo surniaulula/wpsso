@@ -1074,6 +1074,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			/**
 			 * The $mod array argument is preferred but not required.
+			 *
 			 * $mod = true | false | post_id | $mod array
 			 */
 			if ( ! is_array( $mod ) ) {
@@ -1089,6 +1090,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			/**
 			 * Allow custom content to be passed as an argument in $content.
+			 *
 			 * Allow empty post IDs to get additional content from filter hooks.
 			 */
 			if ( empty( $content ) ) {
@@ -1102,9 +1104,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			if ( empty( $content ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: empty post content' );
 				}
+
 				return $og_images;
 			}
 
@@ -1423,6 +1427,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			/**
 			 * The $mod array argument is preferred but not required.
+			 *
 			 * $mod = true | false | post_id | $mod array
 			 */
 			if ( ! is_array( $mod ) ) {
@@ -1438,6 +1443,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			/**
 			 * Allow custom content to be passed as an argument in $content.
+			 *
 			 * Allow empty post IDs to get additional content from filter hooks.
 			 */
 			if ( empty( $content ) ) {
@@ -1451,9 +1457,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			if ( empty( $content ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: empty post content' );
 				}
+
 				return $og_videos;
 			}
 
