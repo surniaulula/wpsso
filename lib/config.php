@@ -3699,7 +3699,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_TB_LOCALE_MENU_ORDER' ]        = '60';	// Position of the user locale toolbar menu item.
 			$var_const[ 'WPSSO_JSON_PRETTY_PRINT' ]           = false;	// Output pretty / human readable json.
 			$var_const[ 'WPSSO_CONTENT_BLOCK_FILTER_OUTPUT' ] = true;	// Monitor and fix incorrectly coded filter hooks.
-			$var_const[ 'WPSSO_CONTENT_FILTERS_MAX_TIME' ]    = 1.0;	// Issue a warning if the content filter takes longer than 1.0 seconds.
+			$var_const[ 'WPSSO_CONTENT_FILTERS_MAX_TIME' ]    = 1.00;	// Issue a warning if the content filter takes longer than 1 second.
 			$var_const[ 'WPSSO_CONTENT_IMAGES_MAX_LIMIT' ]    = 5;		// Maximum number of images extracted from the content.
 			$var_const[ 'WPSSO_CONTENT_VIDEOS_MAX_LIMIT' ]    = 5;		// Maximum number of videos extracted from the content.
 			$var_const[ 'WPSSO_DUPE_CHECK_HEADER_COUNT' ]     = 10;		// Maximum number of times to check for duplicates.
