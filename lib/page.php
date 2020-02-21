@@ -265,7 +265,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			$filter_title = empty( $this->p->options[ 'plugin_filter_title' ] ) ? false : true;
-
 			$filter_title = apply_filters( $this->p->lca . '_can_filter_title', $filter_title, $mod );
 
 			if ( false === $md_key ) {			// False would return the complete meta array.
@@ -947,7 +946,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			if ( $mod[ 'is_post' ] && has_excerpt( $mod[ 'id' ] ) ) {
 
 				$filter_excerpt = empty( $this->p->options[ 'plugin_filter_excerpt' ] ) ? false : true;
-
 				$filter_excerpt = apply_filters( $this->p->lca . '_can_filter_the_excerpt', $filter_excerpt, $mod );
 
 				if ( $this->p->debug->enabled ) {
@@ -977,7 +975,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			$filter_content = empty( $this->p->options[ 'plugin_filter_content' ] ) ? false : true;
-
 			$filter_content = apply_filters( $this->p->lca . '_can_filter_the_content', $filter_content, $mod );
 
 			$sharing_url    = $this->p->util->get_sharing_url( $mod );
@@ -1093,7 +1090,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				$use_bfo = SucomUtil::get_const( 'WPSSO_CONTENT_BLOCK_FILTER_OUTPUT', true );
 
-				$mtime_max = SucomUtil::get_const( 'WPSSO_CONTENT_FILTERS_MAX_TIME', 1.50 );
+				$mtime_max = SucomUtil::get_const( 'WPSSO_CONTENT_FILTERS_MAX_TIME', 1.0 );
 
 				$content = $this->p->util->safe_apply_filters( array( 'the_content', $content ), $mod, $mtime_max, $use_bfo );
 

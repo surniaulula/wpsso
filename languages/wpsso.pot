@@ -6102,63 +6102,63 @@ msgid ""
 "default value."
 msgstr ""
 
-#: lib/page.php:359 lib/page.php:364
+#: lib/page.php:358 lib/page.php:363
 msgctxt "default title"
 msgid "%s Archive"
 msgstr ""
 
-#: lib/page.php:432
+#: lib/page.php:431
 msgctxt "default title"
 msgid "No Title"
 msgstr ""
 
-#: lib/page.php:648 lib/page.php:653 lib/page.php:747
+#: lib/page.php:647 lib/page.php:652 lib/page.php:746
 msgctxt "default description"
 msgid "Archive for %s."
 msgstr ""
 
-#: lib/page.php:719
+#: lib/page.php:718
 msgctxt "default description"
 msgid "Tag archive for %s."
 msgstr ""
 
-#: lib/page.php:734
+#: lib/page.php:733
 msgctxt "default description"
 msgid "Category archive for %s."
 msgstr ""
 
-#: lib/page.php:763
+#: lib/page.php:762
 msgctxt "default description"
 msgid "Authored by %s."
 msgstr ""
 
-#: lib/page.php:770
+#: lib/page.php:769
 msgctxt "default description"
 msgid "Daily archive for %s."
 msgstr ""
 
-#: lib/page.php:775
+#: lib/page.php:774
 msgctxt "default description"
 msgid "Monthly archive for %s."
 msgstr ""
 
-#: lib/page.php:780
+#: lib/page.php:779
 msgctxt "default description"
 msgid "Yearly archive for %s."
 msgstr ""
 
-#: lib/page.php:785
+#: lib/page.php:784
 msgctxt "default description"
 msgid "Archive page."
 msgstr ""
 
-#: lib/page.php:830
+#: lib/page.php:829
 msgctxt "default description"
 msgid "No Description."
 msgstr ""
 
 #. translators: Post type archive title. %s: Post type name.
-#: lib/page.php:1511
+#: lib/page.php:1508
 msgid "Archives: %s"
 msgstr ""
 
