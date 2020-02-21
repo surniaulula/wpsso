@@ -1510,9 +1510,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		public function stop_refresh_all_cache() {
 
-			$cache_md5_pre  = $this->p->lca . '_!_';			// Protect transient from being cleared.
-			$cache_exp_secs = HOUR_IN_SECONDS;				// Prevent duplicate runs for max 1 hour.
-			$cache_salt     = __CLASS__ . '::refresh_all_cache';		// Generic salt value for other methods.
+			$cache_md5_pre  = $this->p->lca . '_!_';		// Protect transient from being cleared.
+			$cache_exp_secs = HOUR_IN_SECONDS;			// Prevent duplicate runs for max 1 hour.
+			$cache_salt     = __CLASS__ . '::refresh_all_cache';	// Generic salt value for other methods.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_stop_val = 'stop';
 
@@ -1566,7 +1566,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				set_transient( $cache_id, $cache_stop_val, $cache_exp_secs );	// Signal the other process to stop.
 
-				usleep( 10000000 );						// Sleep for 10 seconds.
+				usleep( 20000000 );						// Sleep for 20 seconds.
 
 				if ( false !== get_transient( $cache_id ) ) {			// Stop here if the other process is still running.
 
