@@ -936,11 +936,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( empty( $opts[ 'plugin_filter_content' ] ) ) {
 
-				$get_msg_key  = 'notice-content-filters-disabled';
-				$notice_key   = $get_msg_key . '-warning';
-				$dismiss_time = true;	// Can be dismissed permanently.
+				$notice_key = 'notice-content-filters-disabled';
 
-				$this->p->notice->warn( $this->p->msgs->get( $get_msg_key ), null, $notice_key, $dismiss_time );
+				$notice_msg = $this->p->msgs->get( $notice_msg );
+
+				$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
 			}
 
 			return $opts;
@@ -1233,9 +1233,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $current_locale && $default_locale && $current_locale !== $default_locale ) {
 
+				$notice_msg = sprintf( __( 'Please note that your current language is different from the default site language (%s).', 'wpsso' ), $default_locale ) . ' ';
+				
+				$notice_msg .= sprintf( __( 'Localized option values (%s) are used for webpages and content in that language only (not for the default language, or any other language).', 'wpsso' ), $current_locale );
+
 				$notice_key = $this->menu_id . '-language-notice-current-' . $current_locale . '-default-' . $default_locale;
 
-				$this->p->notice->inf( sprintf( __( 'Please note that your current language is different from the default site language (%s).', 'wpsso' ), $default_locale ) . ' ' . sprintf( __( 'Localized option values (%s) are used for webpages and content in that language only (not for the default language, or any other language).', 'wpsso' ), $current_locale ), null, $notice_key, true );
+				$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
 			}
 		}
 
@@ -2502,9 +2506,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( preg_match( '/define\( *[\'"]WP_HOME[\'"][^\)]*\$/', $stripped_php ) ) {
 
-					$notice_msg = $this->p->msgs->get( 'notice-wp-config-php-variable-home' );
-
 					$notice_key = 'notice-wp-config-php-variable-home';
+
+					$notice_msg = $this->p->msgs->get( $notice_key );
 
 					$this->p->notice->err( $notice_msg, null, $notice_key );
 

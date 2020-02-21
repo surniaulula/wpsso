@@ -118,8 +118,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 
 				/**
-				 * If we don't have a caption, then provide a short description. If we have a caption, then add the
-				 * complete image description.
+				 * If we don't have a caption, then provide a short description.
+				 *
+				 * If we have a caption, then add the complete image description.
 				 */
 				if ( empty( $ret[ 'caption' ] ) ) {
 
@@ -129,10 +130,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				} else {
 
-					$ret[ 'description' ] = $wpsso->page->get_the_content( $mod, $read_cache = true,
+					$ret[ 'description' ] = $wpsso->page->get_the_text( $mod, $read_cache = true,
 						$md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
-
-					$ret[ 'description' ] = $wpsso->util->cleanup_html_tags( $ret[ 'description' ] );
 				}
 
 				if ( empty( $ret[ 'description' ] ) ) {

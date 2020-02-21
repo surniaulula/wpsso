@@ -216,7 +216,6 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			$wc_version   = SucomUtil::get_const( 'WC_VERSION', 0 );
 			$action_links = array();
 			$notice_key   = 'suggest-' . $ext . '-for-woocommerce';
-			$dismiss_time = true;	// Can be dismissed permanently.
 
 			/**
 			 * Skip if already dismissed.
@@ -285,7 +284,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 				$notice_msg .= sprintf( __( 'As suggested in the %1$s, you can (and should) submit a few product URLs to the %2$s and make sure your Schema Product markup is complete.', 'wpsso' ), $settings_page_link, $google_tool_link ) . ' ';
 
-				$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time );
+				$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
 			}
 		}
 
@@ -338,7 +337,6 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
 				$notice_key   = 'timed-notice-' . $ext . '-plugin-review';
-				$dismiss_time = true;				// Can be dismissed permanently.
 				$showing_ext  = get_transient( $cache_id );	// Returns an empty string or the $notice_key value.
 
 				/**
@@ -452,7 +450,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				/**
 				 * The notice provides it's own dismiss button, so do not show the dismiss 'Forever' link.
 				 */
-				$this->p->notice->log( 'inf', $notice_msg, $user_id, $notice_key, $dismiss_time, array( 'dismiss_diff' => false ) );
+				$this->p->notice->log( 'inf', $notice_msg, $user_id, $notice_key, $dismiss_time = true, array( 'dismiss_diff' => false ) );
 
 				return 1;	// Show only one notice at a time.
 			}

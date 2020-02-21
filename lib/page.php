@@ -685,12 +685,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 								}
 
 								/**
-								 * i = Letters in the pattern match both upper and lower case letters. 
 								 * U = Inverts the "greediness" of quantifiers so that they are not greedy by default.
+								 * i = Letters in the pattern match both upper and lower case letters. 
 								 *
 								 * See http://php.net/manual/en/reference.pcre.pattern.modifiers.php.
 								 */
-								$desc_text = preg_replace( '/^.*<p>/iU', '', $desc_text );
+								$desc_text = preg_replace( '/^.*<p>/Ui', '', $desc_text );
 							}
 						}
 
@@ -1210,7 +1210,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				$text = $this->get_the_content( $mod, $read_cache, $md_key );
 
-				$text = preg_replace( '/<pre[^>]*>.*<\/pre>/Ums', '', $text );
+				$text = preg_replace( '/<!\[CDATA\[.*\]\]>/Us', '', $text );
+
+				$text = preg_replace( '/<pre[^>]*>.*<\/pre>/Us', '', $text );
 
 				$text = $this->p->util->cleanup_html_tags( $text, true, $this->p->options[ 'plugin_use_img_alt' ] );
 			}

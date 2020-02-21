@@ -1121,10 +1121,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						
 						$notice_msg .= sprintf( __( 'Consider activating the %1$s add-on to include Schema JSON-LD markup for Google Rich Results.', 'wpsso' ), $json_addon_link );
 
-						$notice_key   = 'application-ld-json-script-not-found';
-						$dismiss_time = true;	// Can be dismissed permanently.
+						$notice_key = 'application-ld-json-script-not-found';
 
-						$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time );
+						$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
 					}
 				}
 			}

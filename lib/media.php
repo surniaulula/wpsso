@@ -1113,7 +1113,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			$content_img_preg = $this->default_content_img_preg;
-			$og_single_image  = SucomUtil::get_mt_image_seed();
+
+			$og_single_image = SucomUtil::get_mt_image_seed();
 
 			/**
 			 * Allow the html_tag and pid_attr regex to be modified.
