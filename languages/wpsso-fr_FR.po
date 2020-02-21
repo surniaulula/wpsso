@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 6.21.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-02-20 10:19-0800\n"
-"PO-Revision-Date: 2020-02-20 10:20-0800\n"
+"POT-Creation-Date: 2020-02-21 07:31-0800\n"
+"PO-Revision-Date: 2020-02-21 07:32-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2788,7 +2788,7 @@ msgctxt "option label"
 msgid "Preferred Cropping"
 msgstr "Recadrage préféré"
 
-#: lib/gettext-pro.php:92 lib/pro/admin/meta-edit.php:110 lib/script.php:245
+#: lib/gettext-pro.php:92 lib/pro/admin/meta-edit.php:110 lib/script.php:193
 #: lib/std/admin/meta-edit.php:104
 msgctxt "option label"
 msgid "Schema Type"
@@ -5460,7 +5460,7 @@ msgstr "L'option de débogage est activée - cette vérification sera répétée
 msgid "Check %1$d of %2$d successful..."
 msgstr "Vérification %1$d de %2$d réussi..."
 
-#: lib/post.php:1573 lib/script.php:244
+#: lib/post.php:1573 lib/script.php:192
 msgctxt "option label"
 msgid "Robots"
 msgstr "Robots"
@@ -5598,33 +5598,33 @@ msgstr "Image Schéma d'article AMP 16:9"
 msgid "adding schema"
 msgstr "ajout de schéma"
 
-#: lib/script.php:194
-msgid "{0} of {1} characters minimum"
-msgstr "{0} de {1} caractères minimum"
-
-#: lib/script.php:195
-msgid "{0} of {1} characters required"
-msgstr "{0} de {1} caractères requis"
-
-#: lib/script.php:196
-msgid "{0} of {1} characters maximum"
-msgstr "{0} de {1} caractères maximum"
-
-#: lib/script.php:197
-msgid "{0} characters"
-msgstr "{0} caractères"
-
-#: lib/script.php:207
-msgid "Select Image"
-msgstr "Choisir l'image"
-
-#: lib/script.php:240 lib/script.php:305
+#: lib/script.php:200 lib/script.php:285
 msgid "No %s notifications."
 msgstr "Aucune notification %s."
 
-#: lib/script.php:261
-msgid "Value linked to %s"
-msgstr "Valeur liée à %s"
+#: lib/script.php:211
+msgid "Linked to %s option"
+msgstr "Lié à l'option %s"
+
+#: lib/script.php:212
+msgid "{0} of {1} characters minimum"
+msgstr "{0} de {1} caractères minimum"
+
+#: lib/script.php:213
+msgid "{0} of {1} characters required"
+msgstr "{0} de {1} caractères requis"
+
+#: lib/script.php:214
+msgid "{0} of {1} characters maximum"
+msgstr "{0} de {1} caractères maximum"
+
+#: lib/script.php:215
+msgid "{0} characters"
+msgstr "{0} caractères"
+
+#: lib/script.php:225
+msgid "Select Image"
+msgstr "Choisir l'image"
 
 #: lib/sitesubmenu/site-addons.php:69 lib/submenu/addons.php:57
 msgctxt "metabox title"

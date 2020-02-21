@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.21.2-dev.4\n"
+"Project-Id-Version: WPSSO Core 6.21.2-rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2917,7 +2917,7 @@ msgctxt "option label"
 msgid "Preferred Cropping"
 msgstr ""
 
-#: lib/gettext-pro.php:92 lib/pro/admin/meta-edit.php:110 lib/script.php:245
+#: lib/gettext-pro.php:92 lib/pro/admin/meta-edit.php:110 lib/script.php:193
 #: lib/std/admin/meta-edit.php:104
 msgctxt "option label"
 msgid "Schema Type"
@@ -6307,7 +6307,7 @@ msgstr ""
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1573 lib/script.php:244
+#: lib/post.php:1573 lib/script.php:192
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
@@ -6449,32 +6449,32 @@ msgstr ""
 msgid "adding schema"
 msgstr ""
 
-#: lib/script.php:194
-msgid "{0} of {1} characters minimum"
-msgstr ""
-
-#: lib/script.php:195
-msgid "{0} of {1} characters required"
-msgstr ""
-
-#: lib/script.php:196
-msgid "{0} of {1} characters maximum"
-msgstr ""
-
-#: lib/script.php:197
-msgid "{0} characters"
-msgstr ""
-
-#: lib/script.php:207
-msgid "Select Image"
-msgstr ""
-
-#: lib/script.php:240 lib/script.php:305
+#: lib/script.php:200 lib/script.php:285
 msgid "No %s notifications."
 msgstr ""
 
-#: lib/script.php:261
-msgid "Value linked to %s"
+#: lib/script.php:211
+msgid "Linked to %s option"
+msgstr ""
+
+#: lib/script.php:212
+msgid "{0} of {1} characters minimum"
+msgstr ""
+
+#: lib/script.php:213
+msgid "{0} of {1} characters required"
+msgstr ""
+
+#: lib/script.php:214
+msgid "{0} of {1} characters maximum"
+msgstr ""
+
+#: lib/script.php:215
+msgid "{0} characters"
+msgstr ""
+
+#: lib/script.php:225
+msgid "Select Image"
 msgstr ""
 
 #: lib/sitesubmenu/site-addons.php:69 lib/submenu/addons.php:57

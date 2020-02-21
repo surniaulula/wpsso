@@ -135,8 +135,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 					wp_enqueue_script( 'sucom-tooltips' );
 					wp_enqueue_script( 'wp-color-picker' );
 
-					wp_localize_script( 'sucom-metabox', 'sucomMetaboxL10n',
-						$this->get_metabox_script_data() );
+					wp_localize_script( 'sucom-metabox', 'sucomMetaboxL10n', $this->get_metabox_script_data() );
 
 					if ( function_exists( 'wp_enqueue_media' ) ) {
 
@@ -144,18 +143,17 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 							$this->p->debug->log( 'wp_enqueue_media() function is available' );
 						}
 
-						if ( SucomUtil::is_post_page( false ) &&
-							( $post_id = SucomUtil::get_post_object( false, 'id' ) ) > 0 ) {
+						if ( SucomUtil::is_post_page( false ) && ( $post_id = SucomUtil::get_post_object( false, 'id' ) ) > 0 ) {
 
 							wp_enqueue_media( array( 'post' => $post_id ) );
+
 						} else {
 							wp_enqueue_media();
 						}
 
 						wp_enqueue_script( 'sucom-admin-media' );
 
-						wp_localize_script( 'sucom-admin-media', 'sucomMediaL10n',
-							$this->get_admin_media_script_data() );
+						wp_localize_script( 'sucom-admin-media', 'sucomMediaL10n', $this->get_admin_media_script_data() );
 
 					} elseif ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'wp_enqueue_media() function not found' );
@@ -186,20 +184,40 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 		}
 
 		/**
-		 * Start localized variable names with an underscore.
+		 * sucomMetaboxL10n.
 		 */
 		public function get_metabox_script_data() {
 
+			$option_labels = array(
+				'robots'      => _x( 'Robots', 'option label', 'wpsso' ),
+				'schema_type' => _x( 'Schema Type', 'option label', 'wpsso' ),
+			);
+
+			$metabox_id       = $this->p->cf[ 'meta' ][ 'id' ];
+			$mb_container_id  = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
+			$mb_container_ids = apply_filters( $this->p->lca . '_metabox_container_ids', array( $mb_container_id ) );
+
+			$no_notices_transl = sprintf( __( 'No %s notifications.', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
+			$no_notices_html   = '<div class="ab-item ab-empty-item">' . $no_notices_transl . '</div>';
+
+			$option_labels = apply_filters( $this->p->lca . '_option_labels', $option_labels );
+
 			return array(
-				'_min_len_msg' => __( '{0} of {1} characters minimum', 'wpsso' ),
-				'_req_len_msg' => __( '{0} of {1} characters required', 'wpsso' ),
-				'_max_len_msg' => __( '{0} of {1} characters maximum', 'wpsso' ),
-				'_len_msg'     => __( '{0} characters', 'wpsso' ),
+				'_ajax_nonce'       => wp_create_nonce( WPSSO_NONCE_NAME ),
+				'_option_labels'    => $option_labels,
+				'_mb_container_ids' => $mb_container_ids,	// Metabox ids to update when block editor saves.
+				'_tb_notices'       => $this->tb_notices,	// Maybe null, true, false, or array.
+				'_no_notices_html'  => $no_notices_html,
+				'_linked_to_msg'    => __( 'Linked to %s option', 'wpsso' ),
+				'_min_len_msg'      => __( '{0} of {1} characters minimum', 'wpsso' ),
+				'_req_len_msg'      => __( '{0} of {1} characters required', 'wpsso' ),
+				'_max_len_msg'      => __( '{0} of {1} characters maximum', 'wpsso' ),
+				'_len_msg'          => __( '{0} characters', 'wpsso' ),
 			);
 		}
 
 		/**
-		 * Always start localized variable names with an underscore.
+		 * sucomMediaL10n.
 		 */
 		public function get_admin_media_script_data() {
 
@@ -224,44 +242,6 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			wp_enqueue_script( 'sucom-block-editor-admin', 
 				WPSSO_URLPATH . 'js/block-editor-admin.' . $file_ext, 
 					array( 'wp-data', 'wp-editor', 'wp-edit-post' ), $version, false );
-
-			wp_localize_script( 'sucom-block-editor-admin', 'sucomBlockEditorL10n',
-				$this->get_block_editor_admin_script_data() );
-		}
-
-		/**
-		 * Always start localized variable names with an underscore.
-		 */
-		public function get_block_editor_admin_script_data() {
-
-			$metabox_id   = $this->p->cf[ 'meta' ][ 'id' ];
-			$container_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
-
-			$no_notices_text = sprintf( __( 'No %s notifications.', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
-			$no_notices_html = '<div class="ab-item ab-empty-item">' . $no_notices_text . '</div>';
-
-			$option_labels = array(
-				'robots'      => _x( 'Robots', 'option label', 'wpsso' ),
-				'schema_type' => _x( 'Schema Type', 'option label', 'wpsso' ),
-			);
-
-			$container_ids = array( $container_id );
-
-			$option_labels = apply_filters( $this->p->lca . '_block_editor_admin_option_labels', $option_labels );
-
-			/**
-			 * Each metabox ID is sanitized by the jQuery wpssoUpdateMetabox() function.
-			 */
-			$container_ids = apply_filters( $this->p->lca . '_block_editor_admin_container_ids', $container_ids );
-
-			return array(
-				'_ajax_nonce'      => wp_create_nonce( WPSSO_NONCE_NAME ),
-				'_tb_notices'      => $this->tb_notices,	// Maybe null, true, false, or array.
-				'_no_notices_html' => $no_notices_html,
-				'_linked_to_label' => __( 'Value linked to %s', 'wpsso' ),
-				'_option_labels'   => $option_labels,
-				'_container_ids'   => $container_ids,
-			);
 		}
 
 		/**
@@ -302,8 +282,8 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				return;
 			}
 
-			$no_notices_text = sprintf( __( 'No %s notifications.', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
-			$no_notices_html = '<div class="ab-item ab-empty-item">' . $no_notices_text . '</div>';
+			$no_notices_transl = sprintf( __( 'No %s notifications.', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
+			$no_notices_html   = '<div class="ab-item ab-empty-item">' . $no_notices_transl . '</div>';
 
 			/**
 			 * A wpssoUpdateToolbar() function will exist in block editor pages (see js/block-editor-admin.js), but not
