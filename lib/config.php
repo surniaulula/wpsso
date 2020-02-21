@@ -3709,7 +3709,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_IMAGE_MAKE_SIZE_MAX_TIME' ]    = 1.00;	// Send an error to trigger_error() if get_posts() takes longer.
 			$var_const[ 'WPSSO_PHP_GETIMGSIZE_MAX_TIME' ]     = 1.50;	// Send an error to trigger_error() if getimagesize() takes longer.
 			$var_const[ 'WPSSO_REFRESH_CACHE_SLEEP_TIME' ]    = 0.50;	// Seconds to sleep between requests when refreshing the cache.
-			$var_const[ 'WPSSO_SELECT_PERSON_NAMES_MAX' ]     = 200;	// Maximum number of persons to include in a form select.
+			$var_const[ 'WPSSO_SELECT_PERSON_NAMES_MAX' ]     = 100;	// Maximum number of persons to include in a form select.
 
 			/**
 			 * WPSSO schema limits.
@@ -3719,6 +3719,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_SCHEMA_HOWTO_SUPPLIES_MAX' ]        = 30;
 			$var_const[ 'WPSSO_SCHEMA_HOWTO_TOOLS_MAX' ]           = 20;
 			$var_const[ 'WPSSO_SCHEMA_ISPARTOF_URL_MAX' ]          = 20;
+			$var_const[ 'WPSSO_SCHEMA_ITEMS_PER_LIST_MAX' ]        = 100;
 			$var_const[ 'WPSSO_SCHEMA_JOB_LOCATIONS_MAX' ]         = 5;
 			$var_const[ 'WPSSO_SCHEMA_METADATA_OFFERS_MAX' ]       = 5;
 			$var_const[ 'WPSSO_SCHEMA_MOVIE_ACTORS_MAX' ]          = 15;
