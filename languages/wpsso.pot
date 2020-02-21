@@ -6445,7 +6445,7 @@ msgctxt "image size label"
 msgid "Schema Article AMP 16:9 Image"
 msgstr ""
 
-#: lib/schema.php:589
+#: lib/schema.php:591
 msgid "adding schema"
 msgstr ""
 
