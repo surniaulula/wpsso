@@ -514,7 +514,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.21.3-dev.1 (2020/02/21)**
+**Version 6.21.3-dev.2 (2020/02/21)**
 
 * **New Features**
 	* None.
@@ -523,7 +523,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Updated the `WpssoPage->get_the_content()` method to return single-line (default) or multi-line content.
 * **Requires At Least**
 	* PHP v5.5.
 	* WordPress v4.0.
@@ -827,9 +827,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.21.3-dev.1 =
+= 6.21.3-dev.2 =
 
-(2020/02/21) None.
+(2020/02/21) Updated the `WpssoPage->get_the_content()` method to return single-line (default) or multi-line content.
 
 = 6.21.2 =
 
