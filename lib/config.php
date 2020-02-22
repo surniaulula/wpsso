@@ -2998,7 +2998,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'medical.condition'               => array(
 								'medical.condition'          => 'https://schema.org/MedicalCondition',
 								'medical.infectious.disease' => 'https://schema.org/InfectiousDisease',
-								'medical.sign.or.symptom'    => 'https://schema.org/MedicalSignOrSymptom',
+								'medical.sign.or.symptom'    => array(
+									'medical.sign.or.symptom' => 'https://schema.org/MedicalSignOrSymptom',
+									'medical.sign'            => array(
+										'medical.sign'       => 'https://schema.org/MedicalSign',
+										'medical.sign.vital' => 'https://schema.org/MedicalVitalSign',
+									),
+									'medical.symptom' => 'https://schema.org/MedicalSymptom',
+								),
 							),
 							'medical.contraindication'        => 'https://schema.org/MedicalContraindication',
 							'medical.device'                  => 'https://schema.org/MedicalDevice',
