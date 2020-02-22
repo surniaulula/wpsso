@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.21.3-dev.2',	// Plugin version.
+					'version'     => '6.21.2',	// Plugin version.
 					'opt_version' => '705',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2992,24 +2992,28 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 						),
 						'medical.entity' => array(
-							'medical.anatomical.structure'    => 'https://health-lifesci.schema.org/AnatomicalStructure',
-							'medical.anatomical.systems'      => 'https://health-lifesci.schema.org/AnatomicalSystem',
-							'medical.cause'                   => 'https://health-lifesci.schema.org/MedicalCause',
-							'medical.condition'               => 'https://health-lifesci.schema.org/MedicalCondition',
-							'medical.contraindication'        => 'https://health-lifesci.schema.org/MedicalContraindication',
-							'medical.device'                  => 'https://health-lifesci.schema.org/MedicalDevice',
-							'medical.entity'                  => 'https://health-lifesci.schema.org/MedicalEntity',
-							'medical.guideline'               => 'https://health-lifesci.schema.org/MedicalGuideline',
-							'medical.indication'              => 'https://health-lifesci.schema.org/MedicalIndication',
-							'medical.intangible'              => 'https://health-lifesci.schema.org/MedicalIntangible',
-							'medical.lifestyle.modifications' => 'https://health-lifesci.schema.org/LifestyleModification',
-							'medical.procedure'               => 'https://health-lifesci.schema.org/MedicalProcedure',
-							'medical.risk.estimator'          => 'https://health-lifesci.schema.org/MedicalRiskEstimator',
-							'medical.risk.factor'             => 'https://health-lifesci.schema.org/MedicalRiskFactor',
-							'medical.study'                   => 'https://health-lifesci.schema.org/MedicalStudy',
-							'medical.substance'               => 'https://health-lifesci.schema.org/Substance',
-							'medical.superficial.anatomy'     => 'https://health-lifesci.schema.org/SuperficialAnatomy',
-							'medical.test'                    => 'https://health-lifesci.schema.org/MedicalTest',
+							'medical.anatomical.structure'    => 'https://schema.org/AnatomicalStructure',
+							'medical.anatomical.systems'      => 'https://schema.org/AnatomicalSystem',
+							'medical.cause'                   => 'https://schema.org/MedicalCause',
+							'medical.condition'               => array(
+								'medical.condition'          => 'https://schema.org/MedicalCondition',
+								'medical.infectious.disease' => 'https://schema.org/InfectiousDisease',
+								'medical.sign.or.symptom'    => 'https://schema.org/MedicalSignOrSymptom',
+							),
+							'medical.contraindication'        => 'https://schema.org/MedicalContraindication',
+							'medical.device'                  => 'https://schema.org/MedicalDevice',
+							'medical.entity'                  => 'https://schema.org/MedicalEntity',
+							'medical.guideline'               => 'https://schema.org/MedicalGuideline',
+							'medical.indication'              => 'https://schema.org/MedicalIndication',
+							'medical.intangible'              => 'https://schema.org/MedicalIntangible',
+							'medical.lifestyle.modifications' => 'https://schema.org/LifestyleModification',
+							'medical.procedure'               => 'https://schema.org/MedicalProcedure',
+							'medical.risk.estimator'          => 'https://schema.org/MedicalRiskEstimator',
+							'medical.risk.factor'             => 'https://schema.org/MedicalRiskFactor',
+							'medical.study'                   => 'https://schema.org/MedicalStudy',
+							'medical.substance'               => 'https://schema.org/Substance',
+							'medical.superficial.anatomy'     => 'https://schema.org/SuperficialAnatomy',
+							'medical.test'                    => 'https://schema.org/MedicalTest',
 						),
 						'organization' => array(
 							'airline'                  => 'https://schema.org/Airline',
