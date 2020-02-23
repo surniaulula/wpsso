@@ -519,11 +519,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added the Schema MedicalCondition sub-types:
+		* https://schema.org/InfectiousDisease
+		* https://schema.org/MedicalSignOrSymptom
+			* https://schema.org/MedicalSign
+				* https://schema.org/MedicalVitalSign
+			* https://schema.org/MedicalSymptom
 * **Bugfixes**
 	* None.
 * **Developer Notes**
 	* Updated the `WpssoPage->get_the_content()` method to return single-line (default) or multi-line content.
+	* Changed the default 'WPSSO_CONTENT_FILTERS_MAX_TIME' value from 1.5s to 1.0s.
+	* Changed the default 'WPSSO_SELECT_PERSON_NAMES_MAX' value from 200 to 100.
 * **Requires At Least**
 	* PHP v5.5.
 	* WordPress v4.0.
@@ -829,7 +836,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 6.21.3-dev.2 =
 
-(2020/02/21) Updated the `WpssoPage->get_the_content()` method to return single-line (default) or multi-line content.
+(2020/02/21) Added the Schema MedicalCondition sub-types. Updated the `WpssoPage->get_the_content()` method to return single-line (default) or multi-line content.
 
 = 6.21.2 =
 
