@@ -490,19 +490,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			if ( SucomUtil::get_const( 'DOING_AJAX' ) ) {
 
-				$doing_ajax_js = 'true';
-
-				$metabox_html .= '
-<!-- metabox javascript for ajax call -->
-<script type="text/javascript">
-
-	sucomInitAdminMedia( "' . $container_id . '", ' . $doing_ajax_js . ' );
-
-	sucomInitMetabox( "' . $container_id . '", ' . $doing_ajax_js . ' );
-
-	sucomInitToolTips( "' . $container_id . '", ' . $doing_ajax_js . ' );
-
-</script>' . "\n";
+				$metabox_html .= '<!-- metabox javascript for ajax call -->' . "\n";
+				$metabox_html .= '<script type="text/javascript">sucomInitMetabox( "' . $container_id . '", true );</script>' . "\n";
 			}
 
 			return $metabox_html;

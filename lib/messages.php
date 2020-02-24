@@ -1293,7 +1293,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $msg_key ) {
 
-						case 'tooltip-schema_knowledge_graph':
+						case 'tooltip-schema_knowledge_graph':	// Knowledge Graph for Home Page.
 
 							$social_accounts_link = $this->p->util->get_admin_url( 'social-accounts',
 								_x( 'Social Pages', 'lib file description', 'wpsso' ) );
@@ -1310,7 +1310,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-schema_home_person_id':
+						case 'tooltip-schema_home_person_id':	// User for Person Social Profile.
 
 							$text = __( 'Select an optional site owner for the <em>Knowledge Graph</em> Person markup included in the front page.', 'wpsso' ) . ' ';
 
@@ -1321,19 +1321,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-schema_logo_url':
+						case 'tooltip-schema_logo_url':		// Organization Logo URL.
 
 							$text = __( 'A URL for this organization\'s logo image that Google can use in its search results and <em>Knowledge Graph</em>.', 'wpsso' );
 
 							break;
 
-						case 'tooltip-schema_banner_url':
+						case 'tooltip-schema_banner_url':	// Organization Banner URL.
 
 							$text = __( 'A URL for this organization\'s banner image &mdash; <strong>measuring exactly 600x60px</strong> &mdash; that Google News can use for Schema Article content from this publisher.', 'wpsso' );
 
 							break;
 
-						case 'tooltip-schema_img_max':	// Maximum Images to Include.
+						case 'tooltip-schema_img_max':		// Maximum Images to Include.
 
 							$text = __( 'The maximum number of images to include in Schema markup, including custom, featured, attached, and content images.', 'wpsso' ) . ' ';
 
@@ -1341,7 +1341,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-schema_img_size':
+						case 'tooltip-schema_img_size':		// Schema Image Size.
 
 							$def_img_dims = $this->get_def_img_dims( 'schema_img' );
 
@@ -1349,7 +1349,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-schema_article_img_size':
+						case 'tooltip-schema_article_img_size':	// Schema Article Image Size.
 
 							$def_img_dims = $this->get_def_img_dims( 'schema_article_img' );
 

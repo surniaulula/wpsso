@@ -1383,8 +1383,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					/**
 					 * Call sucomDisableUnchanged() on submit to exclude unchanged options from the $_POST.
 					 */
-					echo '<form name="' . $this->p->lca . '" id="' . $form_css_id . '" ' .
-						'action="options.php" method="post" onSubmit="sucomDisableUnchanged();">' . "\n";
+					echo '<form name="' . $this->p->lca . '" id="' . $form_css_id . '" action="options.php" method="post"' .
+						' onSubmit="sucomDisableUnchanged( \'#' . $form_css_id . '\' );">' . "\n";
 	
 					settings_fields( $this->p->lca . '_setting' );
 
