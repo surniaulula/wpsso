@@ -514,7 +514,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.21.3-dev.2 (2020/02/21)**
+**Version 6.21.3-dev.3 (2020/02/21)**
 
 * **New Features**
 	* None.
@@ -531,6 +531,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Updated the `WpssoPage->get_the_content()` method to return single-line (default) or multi-line content.
 	* Changed the default 'WPSSO_CONTENT_FILTERS_MAX_TIME' value from 1.5s to 1.0s.
 	* Changed the default 'WPSSO_SELECT_PERSON_NAMES_MAX' value from 200 to 100.
+	* Added a jQuery `trigger( 'sucom_init_metabox' )` event when initializing the Document SSO metabox.
+	* Refactored the jQuery `sucomSchemaTypeOgType()` function.
 * **Requires At Least**
 	* PHP v5.5.
 	* WordPress v4.0.
@@ -834,9 +836,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.21.3-dev.2 =
+= 6.21.3-dev.3 =
 
-(2020/02/21) Added the Schema MedicalCondition sub-types. Updated the `WpssoPage->get_the_content()` method to return single-line (default) or multi-line content.
+(2020/02/21) Added the Schema MedicalCondition sub-types. Updated `WpssoPage->get_the_content()` to return single or multi-line content. Refactored the jQuery `sucomSchemaTypeOgType()` function.
 
 = 6.21.2 =
 
