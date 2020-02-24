@@ -47,8 +47,8 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 		public function admin_enqueue_scripts( $hook_name ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'hook name = '.$hook_name );
-				$this->p->debug->log( 'screen base = '.SucomUtil::get_screen_base() );
+				$this->p->debug->log( 'hook name = ' . $hook_name );
+				$this->p->debug->log( 'screen base = ' . SucomUtil::get_screen_base() );
 			}
 
 			/**
@@ -159,6 +159,8 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 						$this->p->debug->log( 'wp_enqueue_media() function not found' );
 					}
 
+					do_action( $this->p->lca . '_admin_enqueue_scripts_editing_page', $hook_name, $file_ext );
+
 					break;	// Stop here.
 
 				case 'plugin-install.php':
@@ -180,7 +182,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 					break;
 			}
 
-			$this->add_admin_page_script( $hook_name, WPSSO_URLPATH, $file_ext, $version );
+			$this->add_admin_page_script( $hook_name, $file_ext, $version );
 		}
 
 		/**
@@ -200,7 +202,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			$no_notices_transl = sprintf( __( 'No %s notifications.', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
 			$no_notices_html   = '<div class="ab-item ab-empty-item">' . $no_notices_transl . '</div>';
 
-			$option_labels = apply_filters( $this->p->lca . '_option_labels', $option_labels );
+			$option_labels = apply_filters( $this->p->lca . '_metabox_script_data_option_labels', $option_labels );
 
 			return array(
 				'_ajax_nonce'       => wp_create_nonce( WPSSO_NONCE_NAME ),
@@ -208,7 +210,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				'_mb_container_ids' => $mb_container_ids,	// Metabox ids to update when block editor saves.
 				'_tb_notices'       => $this->tb_notices,	// Maybe null, true, false, or array.
 				'_no_notices_html'  => $no_notices_html,
-				'_linked_to_msg'    => __( 'Linked to %s option', 'wpsso' ),
+				'_linked_to_msg'    => __( 'Value linked to %s option', 'wpsso' ),
 				'_min_len_msg'      => __( '{0} of {1} characters minimum', 'wpsso' ),
 				'_req_len_msg'      => __( '{0} of {1} characters required', 'wpsso' ),
 				'_max_len_msg'      => __( '{0} of {1} characters maximum', 'wpsso' ),
@@ -418,7 +420,7 @@ jQuery( document ).ready( function(){
 			}
 		}
 
-		private function add_admin_page_script( $hook_name, $plugin_urlpath, $file_ext, $version ) {
+		private function add_admin_page_script( $hook_name, $file_ext, $version ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();

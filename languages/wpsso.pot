@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.21.3-dev.2\n"
+"Project-Id-Version: WPSSO Core 6.21.3-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -899,7 +899,7 @@ msgid "from"
 msgstr ""
 
 #: lib/com/form.php:1946 lib/gettext-com.php:27 lib/post.php:1380
-#: lib/wp-meta.php:604 lib/wp-meta.php:734
+#: lib/wp-meta.php:605 lib/wp-meta.php:735
 msgid "Save a draft version or publish to update this value."
 msgstr ""
 
@@ -2917,7 +2917,7 @@ msgctxt "option label"
 msgid "Preferred Cropping"
 msgstr ""
 
-#: lib/gettext-pro.php:92 lib/pro/admin/meta-edit.php:110 lib/script.php:193
+#: lib/gettext-pro.php:92 lib/pro/admin/meta-edit.php:110 lib/script.php:195
 #: lib/std/admin/meta-edit.php:104
 msgctxt "option label"
 msgid "Schema Type"
@@ -2960,13 +2960,13 @@ msgid "Search Description"
 msgstr ""
 
 #: lib/gettext-pro.php:99 lib/pro/admin/meta-edit.php:175
-#: lib/std/admin/meta-edit.php:175 lib/wp-meta.php:654 lib/wp-meta.php:678
+#: lib/std/admin/meta-edit.php:175 lib/wp-meta.php:655 lib/wp-meta.php:679
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
 #: lib/gettext-pro.php:100 lib/pro/admin/meta-edit.php:183
-#: lib/std/admin/meta-edit.php:184 lib/wp-meta.php:658 lib/wp-meta.php:682
+#: lib/std/admin/meta-edit.php:184 lib/wp-meta.php:659 lib/wp-meta.php:683
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
@@ -5345,7 +5345,7 @@ msgctxt "plugin action link"
 msgid "Purchase %s Add-on"
 msgstr ""
 
-#: lib/messages.php:2184 lib/wp-meta.php:535
+#: lib/messages.php:2184 lib/wp-meta.php:536
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr ""
@@ -6307,7 +6307,7 @@ msgstr ""
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1572 lib/script.php:192
+#: lib/post.php:1572 lib/script.php:194
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
@@ -6449,31 +6449,31 @@ msgstr ""
 msgid "adding schema"
 msgstr ""
 
-#: lib/script.php:200 lib/script.php:285
+#: lib/script.php:202 lib/script.php:287
 msgid "No %s notifications."
 msgstr ""
 
-#: lib/script.php:211
-msgid "Linked to %s option"
-msgstr ""
-
-#: lib/script.php:212
-msgid "{0} of {1} characters minimum"
-msgstr ""
-
 #: lib/script.php:213
-msgid "{0} of {1} characters required"
+msgid "Value linked to %s option"
 msgstr ""
 
 #: lib/script.php:214
-msgid "{0} of {1} characters maximum"
+msgid "{0} of {1} characters minimum"
 msgstr ""
 
 #: lib/script.php:215
+msgid "{0} of {1} characters required"
+msgstr ""
+
+#: lib/script.php:216
+msgid "{0} of {1} characters maximum"
+msgstr ""
+
+#: lib/script.php:217
 msgid "{0} characters"
 msgstr ""
 
-#: lib/script.php:225
+#: lib/script.php:227
 msgid "Select Image"
 msgstr ""
 
@@ -7139,189 +7139,189 @@ msgstr ""
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 
-#: lib/wp-meta.php:534
+#: lib/wp-meta.php:535
 msgctxt "metabox tab"
 msgid "Customize"
 msgstr ""
 
-#: lib/wp-meta.php:536
+#: lib/wp-meta.php:537
 msgctxt "metabox tab"
 msgid "Preview"
 msgstr ""
 
-#: lib/wp-meta.php:537
+#: lib/wp-meta.php:538
 msgctxt "metabox tab"
 msgid "oEmbed"
 msgstr ""
 
-#: lib/wp-meta.php:538
+#: lib/wp-meta.php:539
 msgctxt "metabox tab"
 msgid "Head"
 msgstr ""
 
-#: lib/wp-meta.php:539
+#: lib/wp-meta.php:540
 msgctxt "metabox tab"
 msgid "Validate"
 msgstr ""
 
-#: lib/wp-meta.php:627
+#: lib/wp-meta.php:628
 msgctxt "preview image error"
 msgid "Image Size Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/wp-meta.php:637
+#: lib/wp-meta.php:638
 msgctxt "preview image error"
 msgid "Image Size Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/wp-meta.php:646
+#: lib/wp-meta.php:647
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/wp-meta.php:662 lib/wp-meta.php:688
+#: lib/wp-meta.php:663 lib/wp-meta.php:689
 msgctxt "option label"
 msgid "Shortlink URL"
 msgstr ""
 
-#: lib/wp-meta.php:693
+#: lib/wp-meta.php:694
 msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/wp-meta.php:739 lib/wp-meta.php:753
+#: lib/wp-meta.php:740 lib/wp-meta.php:754
 msgctxt "option label"
 msgid "oEmbed JSON URL"
 msgstr ""
 
-#: lib/wp-meta.php:743 lib/wp-meta.php:757
+#: lib/wp-meta.php:744 lib/wp-meta.php:758
 msgctxt "option label"
 msgid "oEmbed XML URL"
 msgstr ""
 
-#: lib/wp-meta.php:763
+#: lib/wp-meta.php:764
 msgctxt "option label"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/wp-meta.php:771
+#: lib/wp-meta.php:772
 msgid "(see bellow)"
 msgstr ""
 
-#: lib/wp-meta.php:780
+#: lib/wp-meta.php:781
 msgid "No oEmbed data found."
 msgstr ""
 
-#: lib/wp-meta.php:784
+#: lib/wp-meta.php:785
 msgctxt "option label"
 msgid "oEmbed HTML"
 msgstr ""
 
-#: lib/wp-meta.php:796
+#: lib/wp-meta.php:797
 msgid "No oEmbed HTML found."
 msgstr ""
 
-#: lib/wp-meta.php:904
+#: lib/wp-meta.php:905
 msgctxt "option label"
 msgid "Facebook Open Graph Object Debugger"
 msgstr ""
 
-#: lib/wp-meta.php:905
+#: lib/wp-meta.php:906
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/wp-meta.php:909
+#: lib/wp-meta.php:910
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/wp-meta.php:910
+#: lib/wp-meta.php:911
 msgctxt "submit button"
 msgid "Validate Microdata"
 msgstr ""
 
-#: lib/wp-meta.php:916
+#: lib/wp-meta.php:917
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/wp-meta.php:917
+#: lib/wp-meta.php:918
 msgctxt "submit button"
 msgid "Validate Metadata"
 msgstr ""
 
-#: lib/wp-meta.php:921
+#: lib/wp-meta.php:922
 msgctxt "option label"
 msgid "Google Structured Data Test"
 msgstr ""
 
-#: lib/wp-meta.php:922
+#: lib/wp-meta.php:923
 msgctxt "submit button"
 msgid "Validate Structured Data"
 msgstr ""
 
-#: lib/wp-meta.php:926
+#: lib/wp-meta.php:927
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/wp-meta.php:927
+#: lib/wp-meta.php:928
 msgctxt "submit button"
 msgid "Validate PageSpeed"
 msgstr ""
 
-#: lib/wp-meta.php:931
+#: lib/wp-meta.php:932
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/wp-meta.php:932
+#: lib/wp-meta.php:933
 msgctxt "submit button"
 msgid "Validate Rich Results"
 msgstr ""
 
-#: lib/wp-meta.php:936
+#: lib/wp-meta.php:937
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/wp-meta.php:937
+#: lib/wp-meta.php:938
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/wp-meta.php:941
+#: lib/wp-meta.php:942
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/wp-meta.php:942
+#: lib/wp-meta.php:943
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/wp-meta.php:948
+#: lib/wp-meta.php:949
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr ""
 
-#: lib/wp-meta.php:949
+#: lib/wp-meta.php:950
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr ""
 
-#: lib/wp-meta.php:953
+#: lib/wp-meta.php:954
 msgctxt "option label"
 msgid "The AMP Validator"
 msgstr ""
 
-#: lib/wp-meta.php:954
+#: lib/wp-meta.php:955
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/wp-meta.php:1212
+#: lib/wp-meta.php:1213
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 

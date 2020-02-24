@@ -214,8 +214,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				$opts =& $this->p->options;		// Shortcut variable name.
 
-				$def_og_type = $this->p->og->get_mod_og_type( $mod, $ret_og_ns = false, $use_mod_opts = false );
-				$def_schema_type = $this->p->schema->get_mod_schema_type( $mod, $get_schema_id = true, $use_mod_opts = false );
+				$def_og_type = $this->p->og->get_mod_og_type( $mod, $get_ns = false, $use_mod_opts = false );
+
+				$def_schema_type = $this->p->schema->get_mod_schema_type( $mod, $get_id = true, $use_mod_opts = false );
 
 				$md_defs = array(
 					'options_filtered'  => '',

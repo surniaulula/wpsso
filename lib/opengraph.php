@@ -161,7 +161,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		 *
 		 * Example: article, product, place, etc.
 		 */
-		public function get_mod_og_type( array $mod, $get_type_ns = false, $use_mod_opts = true ) {
+		public function get_mod_og_type( array $mod, $get_ns = false, $use_mod_opts = true ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -176,8 +176,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 */
 			if ( ! empty( $mod[ 'name' ] ) && ! empty( $mod[ 'id' ] ) ) {
 
-				$cache_salt = SucomUtil::get_mod_salt( $mod ) .
-					'_ns:' . (string) $get_type_ns . '_opts:' . (string) $use_mod_opts;
+				$cache_salt = SucomUtil::get_mod_salt( $mod ) . '_ns:' . (string) $get_ns . '_opts:' . (string) $use_mod_opts;
 
 				if ( isset( $local_cache[ $cache_salt ] ) ) {
 
@@ -197,7 +196,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					if ( ! empty( $value ) ) {
 
-						if ( $get_type_ns && $value !== 'none' ) {	// Return the og type namespace instead.
+						if ( $get_ns && $value !== 'none' ) {	// Return the og type namespace instead.
 
 							$og_type_ns  = $this->p->cf[ 'head' ][ 'og_type_ns' ];
 
@@ -427,7 +426,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$this->p->debug->log( 'returning false: og type id "' . $type_id . '" is unknown' );
 				}
 
-			} elseif ( $get_type_ns ) {	// False by default.
+			} elseif ( $get_ns ) {	// False by default.
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'returning og type namespace "' . $og_type_ns[ $type_id ] . '"' );
@@ -1891,7 +1890,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					if ( isset( $md_opts[ 'schema_type' ] ) ) {
 						$type_id = $md_opts[ 'schema_type' ];
 					} else {
-						$type_id = $this->p->schema->get_mod_schema_type( $mod, $get_schema_id = true, $use_mod_opts = false );
+						$type_id = $this->p->schema->get_mod_schema_type( $mod, $get_id = true, $use_mod_opts = false );
 					}
 
 					if ( $og_type = $this->p->schema->get_schema_type_og_type( $type_id ) ) {

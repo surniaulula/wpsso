@@ -84,7 +84,7 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 			}
 
 			$mod           = $this->p->util->get_page_mod( $use_post );
-			$page_type_id  = $this->p->schema->get_mod_schema_type( $mod, $get_schema_id = true );
+			$page_type_id  = $this->p->schema->get_mod_schema_type( $mod, $get_id = true );
 			$page_type_url = $this->p->schema->get_schema_type_url( $page_type_id );
 
 			if ( empty( $page_type_url ) ) {
@@ -168,7 +168,7 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 			$mt_item       = array();
 			$size_name     = $this->p->lca . '-schema';	// Default image size name.
 			$max_nums      = $this->p->util->get_max_nums( $mod, 'schema' );
-			$page_type_id  = $this->p->schema->get_mod_schema_type( $mod, $get_schema_id = true );
+			$page_type_id  = $this->p->schema->get_mod_schema_type( $mod, $get_id = true );
 			$page_type_url = $this->p->schema->get_schema_type_url( $page_type_id );
 
 			self::add_mt_item_from_assoc( $mt_item, $mt_og, array(

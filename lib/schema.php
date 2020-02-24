@@ -321,7 +321,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark( 'build schema array' );	// Begin timer.
 			}
 
-			$page_type_id  = $mt_og[ 'schema:type:id' ]  = $this->get_mod_schema_type( $mod, $get_schema_id = true );	// Example: article.tech.
+			$page_type_id  = $mt_og[ 'schema:type:id' ]  = $this->get_mod_schema_type( $mod, $get_id = true );	// Example: article.tech.
 			$page_type_url = $mt_og[ 'schema:type:url' ] = $this->get_schema_type_url( $page_type_id );	// Example: https://schema.org/TechArticle.
 
 			list(
@@ -517,7 +517,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( empty( $page_type_id ) ) {
-				$page_type_id = $this->get_mod_schema_type( $mod, $get_schema_id = true );
+				$page_type_id = $this->get_mod_schema_type( $mod, $get_id = true );
 			}
 
 			$json_data         = null;
@@ -587,7 +587,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$size_name    = $this->p->lca . '-schema';
-			$page_type_id = $this->get_mod_schema_type( $mod, $get_schema_id = true );
+			$page_type_id = $this->get_mod_schema_type( $mod, $get_id = true );
 			$sharing_url  = $this->p->util->maybe_set_ref( null, $mod, __( 'adding schema', 'wpsso' ) );
 			$mt_og        = $this->p->og->get_array( $mod, $size_name );
 			$json_data    = $this->get_json_data( $mod, $mt_og, $page_type_id, $is_main = true );
@@ -598,9 +598,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Return the schema type URL by default. Use $get_schema_id = true to return the schema type ID instead.
+		 * Return the schema type URL by default.
+		 * 
+		 * Use $get_id = true to return the schema type ID instead of the URL.
 		 */
-		public function get_mod_schema_type( array $mod, $get_schema_id = false, $use_mod_opts = true ) {
+		public function get_mod_schema_type( array $mod, $get_id = false, $use_mod_opts = true ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -613,9 +615,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			if ( ! empty( $mod[ 'name' ] ) && ! empty( $mod[ 'id' ] ) ) {
 
-				if ( isset( $local_cache[ $mod[ 'name' ] ][ $mod[ 'id' ] ][ $get_schema_id ][ $use_mod_opts ] ) ) {
+				if ( isset( $local_cache[ $mod[ 'name' ] ][ $mod[ 'id' ] ][ $get_id ][ $use_mod_opts ] ) ) {
 
-					$value =& $local_cache[ $mod[ 'name' ] ][ $mod[ 'id' ] ][ $get_schema_id ][ $use_mod_opts ];
+					$value =& $local_cache[ $mod[ 'name' ] ][ $mod[ 'id' ] ][ $get_id ][ $use_mod_opts ];
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'returning local cache value "' . $value . '"' );
@@ -633,7 +635,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( ! empty( $value ) ) {
 
-						if ( ! $get_schema_id && $value !== 'none' ) {	// Return the schema type url instead.
+						if ( ! $get_id && $value !== 'none' ) {	// Return the schema type url instead.
 
 							$schema_types = $this->get_schema_types_array( $flatten = true );
 
@@ -655,7 +657,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							$this->p->debug->log( 'returning column wp_cache value "' . $value . '"' );
 						}
 
-						return $local_cache[ $mod[ 'name' ] ][ $mod[ 'id' ] ][ $get_schema_id ][ $use_mod_opts ] = $value;
+						return $local_cache[ $mod[ 'name' ] ][ $mod[ 'id' ] ][ $get_id ][ $use_mod_opts ] = $value;
 					}
 				}
 
@@ -861,7 +863,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$this->p->debug->log( 'returning false: schema type id "' . $type_id . '" is unknown' );
 				}
 
-			} elseif ( ! $get_schema_id ) {	// False by default.
+			} elseif ( ! $get_id ) {	// False by default.
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'returning schema type url "' . $schema_types[ $type_id ] . '"' );
@@ -882,7 +884,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Optimize and cache post/term/user schema type values.
 			 */
 			if ( ! empty( $mod[ 'name' ] ) && ! empty( $mod[ 'id' ] ) ) {
-				$local_cache[ $mod[ 'name' ] ][ $mod[ 'id' ] ][ $get_schema_id ][ $use_mod_opts ] = $get_value;
+				$local_cache[ $mod[ 'name' ] ][ $mod[ 'id' ] ][ $get_id ][ $use_mod_opts ] = $get_value;
 			}
 
 			return $get_value;
@@ -2204,7 +2206,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				foreach ( $page_posts_mods as $post_mod ) {
 
-					$post_type_id = $wpsso->schema->get_mod_schema_type( $post_mod, $get_schema_id = true );
+					$post_type_id = $wpsso->schema->get_mod_schema_type( $post_mod, $get_id = true );
 
 					$add_post_data = false;
 
