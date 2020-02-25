@@ -514,7 +514,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.21.3-dev.4 (2020/02/24)**
+**Version 6.21.3-dev.5 (2020/02/24)**
 
 * **New Features**
 	* None.
@@ -525,6 +525,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 			* https://schema.org/MedicalSign
 				* https://schema.org/MedicalVitalSign
 			* https://schema.org/MedicalSymptom
+	* Added a new "Term Title Prefix" option in the SSO &gt; Advanced Settings page.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -836,7 +837,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.21.3-dev.4 =
+= 6.21.3-dev.5 =
 
 (2020/02/24) Added the Schema MedicalCondition sub-types. Updated `WpssoPage->get_the_content()` to return single or multi-line content. Refactored the jQuery `sucomSchemaTypeOgType()` function.
 
