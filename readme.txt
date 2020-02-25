@@ -514,7 +514,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.21.3-dev.5 (2020/02/25)**
+**Version 6.21.3-b.1 (2020/02/25)**
 
 * **New Features**
 	* None.
@@ -837,7 +837,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.21.3-dev.5 =
+= 6.21.3-b.1 =
 
 (2020/02/25) Added the Schema MedicalCondition sub-types. Added a new "Term Title Prefix" option in the SSO &gt; Advanced Settings page.
 
