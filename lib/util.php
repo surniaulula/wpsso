@@ -3470,7 +3470,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $max_nums;
 		}
 
-		public function safe_apply_filters( array $args, array $mod, $mtime_max = 0, $use_bfo = false ) {
+		public function safe_apply_filters( array $args, array $mod = array(), $mtime_max = 0, $use_bfo = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -3557,16 +3557,22 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			/**
 			 * Make sure the $post object is correct before filtering.
 			 */
-			if ( $mod[ 'is_post' ] && $mod[ 'id' ] && ( ! isset( $post->ID ) || $mod[ 'id' ] !== $post->ID ) ) {
+			if ( ! empty( $mod[ 'is_post' ] ) ) {
+			
+				if ( ! empty( $mod[ 'id' ] ) ) {
 
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'resetting post object from mod id ' . $mod[ 'id' ] );
+					if ( ! isset( $post->ID ) || $post->ID !== $mod[ 'id' ] ) {
+
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'resetting post object from mod id ' . $mod[ 'id' ] );
+						}
+	
+						$post = self::get_post_object( $mod[ 'id' ] );	// Redefine the $post global.
+
+					} elseif ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'post object id matches the post mod id' );
+					}
 				}
-
-				$post = self::get_post_object( $mod[ 'id' ] );	// Redefine $post global.
-
-			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'post object id matches the post mod id' );
 			}
 
 			if ( $this->p->debug->enabled ) {

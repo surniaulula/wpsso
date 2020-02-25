@@ -80,6 +80,10 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$form->get_th_html( _x( 'WP Caption Prefix', 'option label', 'wpsso' ), '', 'plugin_p_cap_prefix', $atts_locale ) . 
 			'<td class="blank">' . SucomUtil::get_key_value( 'plugin_p_cap_prefix', $form->options ) . '</td>';
 
+			$table_rows[ 'plugin_term_title_prefix' ] = '' . 
+			$form->get_th_html( _x( 'Term Title Prefix', 'option label', 'wpsso' ), '', 'plugin_term_title_prefix', $atts_locale ) . 
+			'<td class="blank">' . SucomUtil::get_key_value( 'plugin_term_title_prefix', $form->options ) . '</td>';
+
 			$check_embed_html = '';
 
 			foreach ( $this->p->cf[ 'form' ][ 'embed_media_apis' ] as $opt_key => $opt_label ) {

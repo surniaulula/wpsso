@@ -1014,7 +1014,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					 */
 					default:
 
-						$parts[ 5 ] = htmlentities( $parts[ 5 ], ENT_QUOTES, $charset, false );	// $double_encode is false.
+						$parts[ 5 ] = htmlentities( $parts[ 5 ], ENT_QUOTES, $charset, $double_encode = false );
 
 						break;
 				}

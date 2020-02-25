@@ -11,6 +11,7 @@ _x( 'Content Starts at 1st Paragraph', 'option label', 'wpsso' );
 _x( 'Use Image Alt if No Content', 'option label', 'wpsso' );
 _x( 'Image Alt Text Prefix', 'option label', 'wpsso' );
 _x( 'WP Caption Prefix', 'option label', 'wpsso' );
+_x( 'Term Title Prefix', 'option label', 'wpsso' );
 _x( 'Check for Embedded Media', 'option label', 'wpsso' );
 _x( '&lt;html&gt; Attributes Filter Hook', 'option label', 'wpsso' );
 _x( '&lt;head&gt; Attributes Filter Hook', 'option label', 'wpsso' );

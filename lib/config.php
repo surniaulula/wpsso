@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.21.3-dev.4',	// Plugin version.
-					'opt_version' => '705',		// Increment when changing default option values.
+					'version'     => '6.21.3-dev.5',	// Plugin version.
+					'opt_version' => '707',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -1388,21 +1388,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced settings - Content Text tab.
 					 */
-					'plugin_filter_title'   => 0,				// Use Filtered (aka SEO) Title.
-					'plugin_filter_content' => 0,				// Use WordPress Content Filters.
-					'plugin_filter_excerpt' => 0,				// Use WordPress Excerpt Filters.
-					'plugin_p_strip'        => 1,				// Content Starts at 1st Paragraph.
-					'plugin_use_img_alt'    => 1,				// Use Image Alt if No Content.
-					'plugin_img_alt_prefix' => 'Image:',			// Image Alt Text Prefix.
-					'plugin_p_cap_prefix'   => 'Caption:',			// WP Caption Prefix.
-					'plugin_gravatar_api'   => 1,				// Gravatar is Author Default Image
-					'plugin_facebook_api'   => 1,				// Check for Embedded Media: Facebook Videos.
-					'plugin_slideshare_api' => 1,				// Check for Embedded Media: Slideshare Presentations.
-					'plugin_soundcloud_api' => 1,				// Check for Embedded Media: Soundcloud Tracks.
-					'plugin_vimeo_api'      => 1,				// Check for Embedded Media: Vimeo Videos.
-					'plugin_wistia_api'     => 1,				// Check for Embedded Media: Wistia Videos.
-					'plugin_wpvideo_api'    => 1,				// Check for Embedded Media: WordPress Video Shortcode.
-					'plugin_youtube_api'    => 1,				// Check for Embedded Media: Youtube Videos and Playlists.
+					'plugin_filter_title'      => 0,			// Use Filtered (aka SEO) Title.
+					'plugin_filter_content'    => 0,			// Use WordPress Content Filters.
+					'plugin_filter_excerpt'    => 0,			// Use WordPress Excerpt Filters.
+					'plugin_p_strip'           => 1,			// Content Starts at 1st Paragraph.
+					'plugin_use_img_alt'       => 1,			// Use Image Alt if No Content.
+					'plugin_img_alt_prefix'    => 'Image:',			// Image Alt Text Prefix.
+					'plugin_p_cap_prefix'      => 'Caption:',		// WP Caption Prefix.
+					'plugin_term_title_prefix' => 'Archives:',		// Term Title Prefix.
+					'plugin_gravatar_api'      => 1,			// Gravatar is Author Default Image
+					'plugin_facebook_api'      => 1,			// Check for Embedded Media: Facebook Videos.
+					'plugin_slideshare_api'    => 1,			// Check for Embedded Media: Slideshare Presentations.
+					'plugin_soundcloud_api'    => 1,			// Check for Embedded Media: Soundcloud Tracks.
+					'plugin_vimeo_api'         => 1,			// Check for Embedded Media: Vimeo Videos.
+					'plugin_wistia_api'        => 1,			// Check for Embedded Media: Wistia Videos.
+					'plugin_wpvideo_api'       => 1,			// Check for Embedded Media: WordPress Video Shortcode.
+					'plugin_youtube_api'       => 1,			// Check for Embedded Media: Youtube Videos and Playlists.
 					
 					/**
 					 * Advanced settings - Integration tab.

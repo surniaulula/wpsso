@@ -345,7 +345,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 						/**
 						 * Firefox does not allow double-dashes inside comment blocks.
 						 */
-						$val = str_replace( '--', '&mdash;', $val );
+						$val = str_replace( '--', '&hyphen;&hyphen;', $val );
 
 						$html .= $is_assoc ? "\t$key = $val\n" : "\t$val\n";
 					}

@@ -264,9 +264,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$mod = $this->p->util->get_page_mod( $mod );
 			}
 
-			$filter_title = empty( $this->p->options[ 'plugin_filter_title' ] ) ? false : true;
-			$filter_title = apply_filters( $this->p->lca . '_can_filter_title', $filter_title, $mod );
-
 			if ( false === $md_key ) {			// False would return the complete meta array.
 
 				$md_key = '';
@@ -280,25 +277,15 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$md_key = array( $md_key, 'og_title' );
 			}
 
-			$md_key       = array_unique( $md_key );	// Just in case.
-			$title_text   = false;
-			$paged_suffix = '';
+			$md_key = array_unique( $md_key );	// Just in case.
 
 			if ( null === $sep ) {
 				$sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
 			}
 
-			/**
-			 * Setup filters to save and restore original / pre-filtered title value.
-			 */
-			if ( ! $filter_title ) {
+			$title_text = false;
 
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'protecting filter value for wp_title (auto_unprotect is false)' );
-				}
-
-				SucomUtil::protect_filter_value( 'wp_title', $auto_unprotect = false );
-			}
+			$paged_suffix = '';
 
 			/**
 			 * Check for custom title if a metadata index key is provided.
@@ -343,123 +330,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( empty( $title_text ) ) {
 
-				if ( $mod[ 'is_post' ] ) {
-
-					if ( $mod[ 'is_post_type_archive' ] ) {
-
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'getting the title for post type ' . $mod[ 'post_type' ] );
-						}
-
-						$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
-
-						if ( ! empty( $post_type_obj->labels->menu_name ) ) {
-
-							$title_text = sprintf( _x( '%s Archive', 'default title', 'wpsso' ),
-								$post_type_obj->labels->menu_name );
-
-						} elseif ( ! empty( $post_type_obj->name ) ) {
-
-							$title_text = sprintf( _x( '%s Archive', 'default title', 'wpsso' ),
-								$post_type_obj->name );
-						}
-
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'before post_archive_title filter = ' . $title_text );
-						}
-	
-						$title_text = apply_filters( $this->p->lca . '_post_archive_title', $title_text, $mod, $post_type_obj );
-
-					} else {
-
-						$title_text = html_entity_decode( get_the_title( $mod[ 'id' ] ) ) . ' ';
-
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' get_the_title() = "' . $title_text . '"' );
-						}
-					}
-
-					if ( ! empty( $sep ) ) {
-
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'adding separator "' . $sep . '" to title string' );
-						}
-
-						$title_text .= $sep . ' ';
-					}
-
-					$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $sep, 'right' ), $mod );
-
-				} elseif ( $mod[ 'is_term' ] ) {
-
-					$term_obj = get_term( $mod[ 'id' ], $mod[ 'tax_slug' ] );
-
-					/**
-					 * Includes parent names in the term title if the $sep value is not empty.
-					 */
-					$title_text = $this->get_term_title( $term_obj, $sep, $mod );
-
-					$title_text = apply_filters( $this->p->lca . '_term_archive_title', $title_text, $mod, $term_obj );
-
-				} elseif ( $mod[ 'is_user' ] ) {
-
-					$user_obj = SucomUtil::get_user_object( $mod[ 'id' ] );
-
-					$title_text = $user_obj->display_name . ' ' . $sep . ' ';
-
-					$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $sep, 'right' ), $mod );
-
-					$title_text = apply_filters( $this->p->lca . '_user_archive_title', $title_text, $mod, $user_obj );
-
-				} else {
-
-					$title_text = wp_title( $sep, false, 'right' );
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'default wp_title() = "' . $title_text . '"' );
-					}
-
-					$title_text = apply_filters( $this->p->lca . '_wp_title', $title_text, $mod );
-				}
-
-				if ( empty( $title_text ) ) {
-					if ( $title_text = get_bloginfo( 'name', 'display' ) ) {
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'fallback get_bloginfo() = "' . $title_text . '"' );
-						}
-					} else {
-						$title_text = _x( 'No Title', 'default title', 'wpsso' );	// Just in case.
-					}
-				}
+				$title_text = $this->get_the_title( $mod );
 			}
-
-			if ( ! $filter_title ) {
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'original wp_title value: ' . SucomUtil::get_original_filter_value( 'wp_title' ) );
-					$this->p->debug->log( 'modified wp_title value: ' . SucomUtil::get_modified_filter_value( 'wp_title' ) );
-					$this->p->debug->log( 'unprotecting filter value for wp_title' );
-				}
-
-				SucomUtil::unprotect_filter_value( 'wp_title' );
-			}
-
-			/**
-			 * Strip html tags before removing separator.
-			 */
-			$title_text = $this->p->util->cleanup_html_tags( $title_text );
-
-			/**
-			 * Trim excess separator.
-			 */
-			if ( ! empty( $sep ) ) {
-				$title_text = preg_replace( '/ *' . preg_quote( $sep, '/' ) . ' *$/', '', $title_text );
-			}
-
-			/**
-			 * Apply a title filter before adjusting it's length.
-			 */
-			$title_text = apply_filters( $this->p->lca . '_title_pre_limit', $title_text );
 
 			/**
 			 * Replace any inline variables in the string.
@@ -467,6 +339,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			if ( false !== strpos( $title_text, '%%' ) ) {
 				$title_text = $this->p->util->replace_inline_vars( $title_text, $mod );
 			}
+
+			/**
+			 * Apply a title filter before adjusting it's length.
+			 */
+			$title_text = apply_filters( $this->p->lca . '_title_pre_limit', $title_text );
 
 			/**
 			 * Check title against string length limits.
@@ -529,8 +406,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		}
 
 		/**
-		 * $mod    = true | false | post_id | array
-		 * $md_key = true | false | string | array
+		 * $mod = true | false | post_id | array.
+		 *
+		 * $md_key = true | false | string | array.
 		 */
 		public function get_description( $max_len = 160, $dots = '...', $mod = false, $read_cache = true,
 			$add_hashtags = true, $do_encode = true, $md_key = 'og_desc' ) {
@@ -552,7 +430,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			/**
 			 * The $mod array argument is preferred but not required.
-			 * $mod = true | false | post_id | $mod array
+			 * 
+			 * $mod = true | false | post_id | $mod array.
 			 */
 			if ( ! is_array( $mod ) ) {
 
@@ -576,7 +455,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$md_key = array( $md_key, 'og_desc' );
 			}
 
-			$md_key    = array_unique( $md_key );	// Just in case.
+			$md_key = array_unique( $md_key );	// Just in case.
+
 			$desc_text = false;
 
 			/**
@@ -936,6 +816,150 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return apply_filters( $this->p->lca . '_text', $text, $mod, $add_hashtags, $md_key );
 		}
 
+		public function get_the_title( array $mod, $sep = null ) {
+
+			$title_text = false;
+
+			if ( null === $sep ) {
+				$sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
+			}
+
+			$filter_title = empty( $this->p->options[ 'plugin_filter_title' ] ) ? false : true;
+			$filter_title = apply_filters( $this->p->lca . '_can_filter_title', $filter_title, $mod );
+
+			/**
+			 * Setup filters to save and restore original / pre-filtered title value.
+			 */
+			if ( ! $filter_title ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'protecting filter value for wp_title (auto_unprotect is false)' );
+				}
+
+				SucomUtil::protect_filter_value( 'wp_title', $auto_unprotect = false );
+			}
+
+			if ( $mod[ 'is_post' ] ) {
+
+				if ( $mod[ 'is_post_type_archive' ] ) {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'getting the title for post type ' . $mod[ 'post_type' ] );
+					}
+
+					$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
+
+					if ( ! empty( $post_type_obj->labels->menu_name ) ) {
+
+						$title_text = sprintf( _x( '%s Archive', 'default title', 'wpsso' ), $post_type_obj->labels->menu_name );
+
+					} elseif ( ! empty( $post_type_obj->name ) ) {
+
+						$title_text = sprintf( _x( '%s Archive', 'default title', 'wpsso' ), $post_type_obj->name );
+					}
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'before post_archive_title filter = ' . $title_text );
+					}
+
+					$title_text = apply_filters( $this->p->lca . '_post_archive_title', $title_text, $mod, $post_type_obj );
+
+				} else {
+
+					$title_text = html_entity_decode( get_the_title( $mod[ 'id' ] ) ) . ' ';
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' get_the_title() = "' . $title_text . '"' );
+					}
+				}
+
+				if ( ! empty( $sep ) ) {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'adding separator "' . $sep . '" to title string' );
+					}
+
+					$title_text .= $sep . ' ';
+				}
+
+				$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $sep, 'right' ), $mod );
+
+			} elseif ( $mod[ 'is_term' ] ) {
+
+				$term_obj = get_term( $mod[ 'id' ], $mod[ 'tax_slug' ] );
+
+				/**
+				 * Includes parent names in the term title if the $sep value is not empty.
+				 */
+				$title_text = $this->get_term_title( $term_obj, $sep );
+
+				$title_text = apply_filters( $this->p->lca . '_term_archive_title', $title_text, $mod, $term_obj );
+
+			} elseif ( $mod[ 'is_user' ] ) {
+
+				$user_obj = SucomUtil::get_user_object( $mod[ 'id' ] );
+
+				$title_text = $user_obj->display_name . ' ' . $sep . ' ';
+
+				$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $sep, 'right' ), $mod );
+
+				$title_text = apply_filters( $this->p->lca . '_user_archive_title', $title_text, $mod, $user_obj );
+
+			} else {
+
+				$title_text = wp_title( $sep, false, 'right' );
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'default wp_title() = "' . $title_text . '"' );
+				}
+
+				$title_text = apply_filters( $this->p->lca . '_wp_title', $title_text, $mod );
+			}
+
+			if ( empty( $title_text ) ) {
+
+				if ( $title_text = get_bloginfo( 'name', 'display' ) ) {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'fallback get_bloginfo() = "' . $title_text . '"' );
+					}
+
+				} else {
+					$title_text = _x( 'No Title', 'default title', 'wpsso' );	// Just in case.
+				}
+			}
+
+			if ( ! $filter_title ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'original wp_title value: ' . SucomUtil::get_original_filter_value( 'wp_title' ) );
+					$this->p->debug->log( 'modified wp_title value: ' . SucomUtil::get_modified_filter_value( 'wp_title' ) );
+					$this->p->debug->log( 'unprotecting filter value for wp_title' );
+				}
+
+				SucomUtil::unprotect_filter_value( 'wp_title' );
+			}
+
+			/**
+			 * Strip html tags before removing separator.
+			 */
+			$title_text = $this->p->util->cleanup_html_tags( $title_text );
+
+			/**
+			 * Trim excess separator.
+			 */
+			if ( ! empty( $sep ) ) {
+				$title_text = preg_replace( '/ *' . preg_quote( $sep, '/' ) . ' *$/', '', $title_text );
+			}
+
+			/**
+			 * Apply the filter.
+			 */
+			$title_text = apply_filters( $this->p->lca . '_the_title', $title_text, $mod, $sep );
+
+			return $title_text;
+		}
+
 		public function get_the_excerpt( array $mod ) {
 
 			$excerpt_text = false;
@@ -943,23 +967,33 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Use the excerpt, if we have one.
 			 */
-			if ( $mod[ 'is_post' ] && has_excerpt( $mod[ 'id' ] ) ) {
+			if ( $mod[ 'is_post' ] ) {
+			
+				if ( has_excerpt( $mod[ 'id' ] ) ) {
 
-				$filter_excerpt = empty( $this->p->options[ 'plugin_filter_excerpt' ] ) ? false : true;
-				$filter_excerpt = apply_filters( $this->p->lca . '_can_filter_the_excerpt', $filter_excerpt, $mod );
+					$filter_excerpt = empty( $this->p->options[ 'plugin_filter_excerpt' ] ) ? false : true;
+					$filter_excerpt = apply_filters( $this->p->lca . '_can_filter_the_excerpt', $filter_excerpt, $mod );
 
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'getting the excerpt for post id ' . $mod[ 'id' ] );
-				}
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'getting the excerpt for post id ' . $mod[ 'id' ] );
+					}
+	
+					$excerpt_text = get_post_field( 'post_excerpt', $mod[ 'id' ] );
 
-				$excerpt_text = get_post_field( 'post_excerpt', $mod[ 'id' ] );
+					if ( $filter_excerpt ) {
 
-				if ( $filter_excerpt ) {
-					$excerpt_text = $this->p->util->safe_apply_filters( array( 'get_the_excerpt', $excerpt_text ), $mod );
-				} elseif ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'skipped the WordPress get_the_excerpt filters' );
+						$excerpt_text = $this->p->util->safe_apply_filters( array( 'get_the_excerpt', $excerpt_text ), $mod );
+
+					} elseif ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'skipped the WordPress get_the_excerpt filters' );
+					}
 				}
 			}
+
+			/**
+			 * Apply the filter.
+			 */
+			$excerpt_text = apply_filters( $this->p->lca . '_the_excerpt', $excerpt_text, $mod );
 
 			return $excerpt_text;
 		}
@@ -1044,6 +1078,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$content =& $cache_array[ $cache_index ];	// Reference the cache element.
 
+			/**
+			 * Apply the seed filter.
+			 */
 			$content = apply_filters( $this->p->lca . '_the_content_seed', '', $mod, $read_cache, $md_key );
 
 			if ( $content === false ) {
@@ -1142,7 +1179,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			/**
-			 * Apply filters before caching.
+			 * Apply the filter.
 			 */
 			$content = apply_filters( $this->p->lca . '_the_content', $content, $mod, $read_cache, $md_key );
 
@@ -1416,10 +1453,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		/**
 		 * Includes parent names in the term title if the $sep value is not empty.
 		 */
-		public function get_term_title( $term_id = 0, $sep = null, $mod = false ) {
+		public function get_term_title( $term_id = 0, $sep = null, $prefix = null ) {
 
 			$term_obj   = false;
-			$title_text = '';
+			$title_text = false;
 
 			if ( is_object( $term_id ) ) {
 
@@ -1433,23 +1470,19 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 
 				$term_obj = $term_id;
-				$term_id  = $term_obj->term_id;
-			}
-			
-			if ( is_numeric( $term_id ) ) {
 
-				if ( ! is_array( $mod ) ) {
-					$mod = $this->p->term->get_mod( $term_id );
-				}
+				$term_id = $term_obj->term_id;
 
-				if ( ! is_object( $term_id ) ) {
-					$term_obj = get_term( $mod[ 'id' ], $mod[ 'tax_slug' ] );
-				}
+			} elseif ( is_numeric( $term_id ) ) {
+
+				$mod = $this->p->term->get_mod( $term_id );
+
+				$term_obj = get_term( $mod[ 'id' ], $mod[ 'tax_slug' ] );
 
 			} else {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: term_id is not numeric' );
+					$this->p->debug->log( 'exiting early: term_id is not an object or numeric' );
 				}
 
 				return $title_text;
@@ -1457,6 +1490,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( null === $sep ) {
 				$sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
+			}
+
+			if ( null === $prefix ) {
+				$prefix = SucomUtil::get_key_value( 'plugin_term_title_prefix', $this->p->options );
 			}
 
 			if ( isset( $term_obj->name ) ) {
@@ -1501,14 +1538,22 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			// translators: Post type archive title. %s: Post type name.
-			$title_text = sprintf( __( 'Archives: %s' ), $title_text );
+			if ( ! empty( $prefix ) ) {
+				$title_text = (string) $prefix . ' ' . $title_text;
+			}
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'before wp_title filter = "' . $title_text . '"' );
 			}
 
-			$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $sep, 'right' ), $mod );
+			$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $sep, 'right' ) );
+
+			/**
+			 * Trim excess separator.
+			 */
+			if ( ! empty( $sep ) ) {
+				$title_text = preg_replace( '/ *' . preg_quote( $sep, '/' ) . ' *$/', '', $title_text );
+			}
 
 			return $title_text;
 		}
