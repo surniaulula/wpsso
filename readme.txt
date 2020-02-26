@@ -113,7 +113,7 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 * Built-in support for advanced WordPress configurations:
 
 	* WordPress MU Domain Mapping
-	* [Network / Multisite Installations](https://wpsso.com/docs/plugins/wpsso/notes/multisite-network-support/)
+	* Network / Multisite Installations
 
 * Includes advanced quality assurance features and options:
 
@@ -515,21 +515,24 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.22.0-b.2 (2020/02/26)**
+**Version 6.22.0-b.3 (2020/02/26)**
 
 * **New Features**
-	* Added a WPML integration module to provide better locale information (Premium version).
+	* Added a WPML integration module to improve locale support (Premium version).
 * **Improvements**
+	* Updated the Bitly API from v3 to v4 (Premium version).
 	* Added the Schema MedicalCondition sub-types:
 		* https://schema.org/InfectiousDisease
 		* https://schema.org/MedicalSignOrSymptom
 			* https://schema.org/MedicalSign
 				* https://schema.org/MedicalVitalSign
 			* https://schema.org/MedicalSymptom
-	* Added a new "Term Title Prefix" option in the SSO &gt; Advanced Settings page.
+	* Added a new "Term Title Prefix" option in the SSO &gt; Advanced Settings page (Premium version).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Added a new lib/pro/com/bitly.php file and SucomBitly class for the Bitly v4 API (Premium version).
+	* Removed the lib/pro/ext/bitly.php file (Premium version).
 	* Updated the `WpssoPage->get_the_content()` method to return single-line (default) or multi-line content.
 	* Changed the default 'WPSSO_CONTENT_FILTERS_MAX_TIME' value from 1.5s to 1.0s.
 	* Changed the default 'WPSSO_SELECT_PERSON_NAMES_MAX' value from 200 to 100.
@@ -838,9 +841,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.22.0-b.2 =
+= 6.22.0-b.3 =
 
-(2020/02/26) Added a WPML integration module to provide better locale information (Premium version). Added the Schema MedicalCondition sub-types. Added a new "Term Title Prefix" option in the SSO &gt; Advanced Settings page.
+(2020/02/26) Added a WPML integration module to improve locale support (Premium version). Updated the Bitly API from v3 to v4 (Premium version). Added the Schema MedicalCondition sub-types. Added a new "Term Title Prefix" option (Premium version).
 
 = 6.21.2 =
 
