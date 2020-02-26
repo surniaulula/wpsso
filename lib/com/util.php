@@ -2313,10 +2313,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_locale( $mixed = 'current' ) {
 
-			$key = is_array( $mixed ) ? $mixed[ 'name' ] . '_' . $mixed[ 'id' ] : $mixed;
+			$cache_index = is_array( $mixed ) ? $mixed[ 'name' ] . '_' . $mixed[ 'id' ] : $mixed;
 
-			if ( isset( self::$cache_locale_names[ $key ] ) ) {
-				return self::$cache_locale_names[ $key ];
+			if ( isset( self::$cache_locale_names[ $cache_index ] ) ) {
+
+				return self::$cache_locale_names[ $cache_index ];
 			}
 
 			if ( $mixed === 'default' ) {
@@ -2363,7 +2364,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			return self::$cache_locale_names[ $key ] = apply_filters( 'sucom_locale', $locale, $mixed );
+			return self::$cache_locale_names[ $cache_index ] = apply_filters( 'sucom_locale', $locale, $mixed );
 		}
 
 		public static function get_available_locales() {

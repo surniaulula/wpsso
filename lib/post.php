@@ -1019,8 +1019,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 
 				if ( $is_admin ) {
-					$this->p->notice->err( sprintf( __( 'Error retrieving webpage from <a href="%1$s">%1$s</a>.',
-						'wpsso' ), $check_url ) );
+					$this->p->notice->err( sprintf( __( 'Error retrieving webpage from <a href="%1$s">%1$s</a>.', 'wpsso' ), $check_url ) );
 				}
 
 				return;	// Stop here.
@@ -1032,8 +1031,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 
 				if ( $is_admin ) {
-					$this->p->notice->err( sprintf( __( 'An &lt;html&gt; tag was not found in <a href="%1$s">%1$s</a>.',
-						'wpsso' ), $check_url ) );
+					$this->p->notice->err( sprintf( __( 'An %1$s tag was not found in <a href="%2$s">%2$s</a>.', 'wpsso' ),
+						'&lt;html&gt;', $check_url ) );
 				}
 
 				return;	// Stop here
@@ -1045,8 +1044,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 
 				if ( $is_admin ) {
-					$this->p->notice->err( sprintf( __( 'No %1$s HTML tags were found in <a href="%2$s">%2$s</a>.',
-						'wpsso' ), '&lt;meta/&gt;', $check_url ) );
+					$this->p->notice->err( sprintf( __( 'No %1$s HTML tags were found in <a href="%2$s">%2$s</a>.', 'wpsso' ),
+						'&lt;meta/&gt;', $check_url ) );
 				}
 
 				return;	// Stop here.

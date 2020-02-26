@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.21.3-b.1\n"
+"Project-Id-Version: WPSSO Core 6.22.0-b.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -898,7 +898,7 @@ msgctxt "option comment"
 msgid "from"
 msgstr ""
 
-#: lib/com/form.php:1946 lib/gettext-com.php:27 lib/post.php:1380
+#: lib/com/form.php:1946 lib/gettext-com.php:27 lib/post.php:1379
 #: lib/wp-meta.php:594 lib/wp-meta.php:724
 msgid "Save a draft version or publish to update this value."
 msgstr ""
@@ -915,7 +915,7 @@ msgstr ""
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:450 lib/gettext-com.php:33 lib/post.php:1582
+#: lib/com/notice.php:450 lib/gettext-com.php:33 lib/post.php:1581
 msgid "Edit"
 msgstr ""
 
@@ -2773,14 +2773,14 @@ msgid "Bitly URL Shortener"
 msgstr ""
 
 #: lib/gettext-pro.php:63 lib/gettext-pro.php:180
-#: lib/pro/admin/advanced.php:384 lib/pro/util/shorten.php:280
+#: lib/pro/admin/advanced.php:384 lib/pro/util/shorten.php:279
 #: lib/std/admin/advanced.php:395
 msgctxt "option label"
 msgid "Bitly Username"
 msgstr ""
 
 #: lib/gettext-pro.php:64 lib/gettext-pro.php:182
-#: lib/pro/admin/advanced.php:389 lib/pro/util/shorten.php:298
+#: lib/pro/admin/advanced.php:389 lib/pro/util/shorten.php:297
 #: lib/std/admin/advanced.php:400
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
@@ -2811,7 +2811,7 @@ msgid "DLMY.App URL Shortener"
 msgstr ""
 
 #: lib/gettext-pro.php:69 lib/gettext-pro.php:185
-#: lib/pro/admin/advanced.php:410 lib/pro/util/shorten.php:331
+#: lib/pro/admin/advanced.php:410 lib/pro/util/shorten.php:330
 #: lib/std/admin/advanced.php:421
 msgctxt "option label"
 msgid "DLMY.App API Key"
@@ -2824,7 +2824,7 @@ msgid "Ow.ly URL Shortener"
 msgstr ""
 
 #: lib/gettext-pro.php:71 lib/gettext-pro.php:187
-#: lib/pro/admin/advanced.php:420 lib/pro/util/shorten.php:358
+#: lib/pro/admin/advanced.php:420 lib/pro/util/shorten.php:357
 #: lib/std/admin/advanced.php:431
 msgctxt "option label"
 msgid "Ow.ly API Key"
@@ -2837,7 +2837,7 @@ msgid "Your Own URL Shortener (YOURLS)"
 msgstr ""
 
 #: lib/gettext-pro.php:73 lib/gettext-pro.php:189
-#: lib/pro/admin/advanced.php:430 lib/pro/util/shorten.php:410
+#: lib/pro/admin/advanced.php:430 lib/pro/util/shorten.php:409
 #: lib/std/admin/advanced.php:441
 msgctxt "option label"
 msgid "YOURLS API URL"
@@ -3302,29 +3302,29 @@ msgstr ""
 msgid "No Description"
 msgstr ""
 
-#: lib/gettext-pro.php:178 lib/pro/util/shorten.php:256
+#: lib/gettext-pro.php:178 lib/pro/util/shorten.php:255
 msgid "The URL shortening library file \"%s\" is missing and required."
 msgstr ""
 
 #: lib/gettext-pro.php:179 lib/gettext-pro.php:184 lib/gettext-pro.php:186
-#: lib/gettext-pro.php:188 lib/pro/util/shorten.php:279
-#: lib/pro/util/shorten.php:330 lib/pro/util/shorten.php:357
-#: lib/pro/util/shorten.php:409
+#: lib/gettext-pro.php:188 lib/pro/util/shorten.php:278
+#: lib/pro/util/shorten.php:329 lib/pro/util/shorten.php:356
+#: lib/pro/util/shorten.php:408
 msgid "The \"%s\" option value is empty and required."
 msgstr ""
 
-#: lib/gettext-pro.php:181 lib/pro/util/shorten.php:294
+#: lib/gettext-pro.php:181 lib/pro/util/shorten.php:293
 msgid ""
 "The \"%1$s\" and \"%2$s\" option values are empty &mdash; at least one "
 "option value is required."
 msgstr ""
 
-#: lib/gettext-pro.php:183 lib/pro/util/shorten.php:299
+#: lib/gettext-pro.php:183 lib/pro/util/shorten.php:298
 msgctxt "option label"
 msgid "Bitly API Key"
 msgstr ""
 
-#: lib/gettext-pro.php:190 lib/pro/util/shorten.php:453
+#: lib/gettext-pro.php:190 lib/pro/util/shorten.php:452
 msgid ""
 "Incomplete and/or missing API credentials for the \"%s\" URL shortening "
 "service."
@@ -6184,7 +6184,7 @@ msgid ""
 "post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:748 lib/post.php:1303
+#: lib/post.php:748 lib/post.php:1302
 msgid "checking meta tags"
 msgstr ""
 
@@ -6231,128 +6231,128 @@ msgstr ""
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1035
-msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
+#: lib/post.php:1034
+msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1048
+#: lib/post.php:1047
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1061
+#: lib/post.php:1060
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1083
+#: lib/post.php:1082
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:1118
+#: lib/post.php:1117
 msgid "The webpage at %1$s does not include any Schema JSON-LD script(s)."
 msgstr ""
 
-#: lib/post.php:1120
+#: lib/post.php:1119
 msgid ""
 "Complete and accurate Schema JSON-LD markup is highly recommended for better "
 "ranking and click-through rates in search results."
 msgstr ""
 
-#: lib/post.php:1122
+#: lib/post.php:1121
 msgid ""
 "Consider activating the %1$s add-on to include Schema JSON-LD markup for "
 "Google Rich Results."
 msgstr ""
 
-#: lib/post.php:1140
+#: lib/post.php:1139
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:1156
+#: lib/post.php:1155
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1156
+#: lib/post.php:1155
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML &mdash; review the <a href=\"%1$s\">W3C Markup Validation "
 "Service</a> results and correct any errors."
 msgstr ""
 
-#: lib/post.php:1156
+#: lib/post.php:1155
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:1188
+#: lib/post.php:1187
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1189
+#: lib/post.php:1188
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1195
+#: lib/post.php:1194
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1198
+#: lib/post.php:1197
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1200
+#: lib/post.php:1199
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1572 lib/script.php:194
+#: lib/post.php:1571 lib/script.php:194
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1583
+#: lib/post.php:1582
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1596
+#: lib/post.php:1595
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1597
+#: lib/post.php:1596
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1598
+#: lib/post.php:1597
 msgctxt "option label"
 msgid "No image index"
 msgstr ""
 
-#: lib/post.php:1599
+#: lib/post.php:1598
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1600
+#: lib/post.php:1599
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1601
+#: lib/post.php:1600
 msgctxt "option label"
 msgid "No translate"
 msgstr ""
 
-#: lib/post.php:1730
+#: lib/post.php:1729
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 

@@ -68,326 +68,449 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 					$get_avail[ $sub ][ $id ] = false;	// Default value.
 
-					switch ( $sub . '-' . $id ) {
+					switch ( $sub ) {
 
-						/**
-						 * 3rd Party Plugins
-						 *
-						 * Prefer checking for class / function names instead of plugin slugs for
-						 * compatibility with free / premium / pro plugins.
-						 */
-						case 'amp-amp':		// AMP, Better AMP, etc.
+						case 'amp':
 
-							$chk[ 'function' ] = 'is_amp_endpoint';
+							switch ( $id ) {
 
-							break;
+								/**
+								 * AMP, Better AMP, etc.
+								 */
+								case 'amp':
 
-						case 'amp-accelerated-mobile-pages':	// Accelerated Mobile Pages.
+									$chk[ 'function' ] = 'is_amp_endpoint';
 
-							$chk[ 'function' ] = 'ampforwp_is_amp_endpoint';
+									break;
 
-							break;
+								/**
+								 * Accelerated Mobile Pages.
+								 */
+								case 'accelerated-mobile-pages':
 
-						case 'ecom-edd':
+									$chk[ 'function' ] = 'ampforwp_is_amp_endpoint';
 
-							$chk[ 'class' ] = 'Easy_Digital_Downloads';
-
-							break;
-
-						case 'ecom-jck-wssv':
-
-							$chk[ 'class' ] = 'JCK_WSSV';
-
-							break;
-
-						case 'ecom-perfect-woocommerce-brands':
-
-							$chk[ 'class' ] = '\Perfect_Woocommerce_Brands\Perfect_Woocommerce_Brands';
-
-							break;
-
-						case 'ecom-woocommerce':
-
-							$chk[ 'class' ] = 'WooCommerce';
-
-							break;
-
-						case 'ecom-woocommerce-brands':
-
-							$chk[ 'class' ] = 'WC_Brands';
-
-							break;
-
-						case 'ecom-woocommerce-currency-switcher':
-
-							$chk[ 'class' ] = 'WOOCS';
-
-							break;
-
-						case 'ecom-woo-add-gtin':
-
-							$chk[ 'class' ] = 'Woo_GTIN';
-
-							break;
-
-						case 'ecom-wpecommerce':
-
-							$chk[ 'class' ] = 'WP_eCommerce';
-
-							break;
-
-						case 'ecom-wpm-product-gtin-wc':
-
-							$chk[ 'class' ] = 'WPM_Product_GTIN_WC';
-
-							break;
-
-						case 'ecom-yith-woocommerce-brands':
-
-							$chk[ 'class' ] = 'YITH_WCBR';
-
-							break;
-
-						case 'event-tribe_events':
-
-							$chk[ 'class' ] = 'Tribe__Events__Main';
-
-							break;
-
-						case 'form-gravityforms':
-
-							$chk[ 'class' ] = 'GFForms';
-
-							break;
-
-						case 'form-gravityview':
-
-							$chk[ 'class' ] = 'GravityView_Plugin';
-
-							break;
-
-						case 'forum-bbpress':
-
-							$chk[ 'plugin' ] = 'bbpress/bbpress.php';
-
-							break;
-
-						case 'job-simplejobboard':
-
-							$chk[ 'class' ] = 'Simple_Job_Board';
-
-							break;
-
-						case 'job-wpjobmanager':
-
-							$chk[ 'class' ] = 'WP_Job_Manager';
-
-							break;
-
-						case 'lang-polylang':
-
-							$chk[ 'class' ] = 'Polylang';
-
-							break;
-
-						case 'media-ngg':	// NextGEN Gallery and NextCellent Gallery
-
-							$chk[ 'class' ] = 'nggdb';
-
-							break;
-
-						case 'media-rtmedia':
-
-							$chk[ 'plugin' ] = 'buddypress-media/index.php';
-
-							break;
-
-						case 'rating-rate-my-post':
-
-							$chk[ 'class' ] = 'Rate_My_Post';
-
-							break;
-
-						case 'rating-wppostratings':
-
-							$chk[ 'constant' ] = 'WP_POSTRATINGS_VERSION';
-
-							break;
-
-						case 'recipe-wprecipemaker':
-
-							$chk[ 'class' ] = 'WP_Recipe_Maker';
-
-							break;
-
-						case 'recipe-wpultimaterecipe':
-
-							$chk[ 'class' ] = 'WPUltimateRecipe';
-
-							break;
-
-						case 'review-yotpowc':
-
-							$chk[ 'function' ] = 'wc_yotpo_init';
-
-							break;
-
-						case 'review-wpproductreview':
-
-							$chk[ 'class' ] = 'WPPR';
-
-							break;
-
-						case 'seo-aioseop':
-
-							$chk[ 'function' ] = 'aioseop_init_class';
-
-							break;
-
-						case 'seo-autodescription':
-
-							$chk[ 'function' ] = 'the_seo_framework';
-
-							break;
-
-						case 'seo-jetpack-seo':
-
-							$jetpack_mods = method_exists( 'Jetpack', 'get_active_modules' ) ?
-								Jetpack::get_active_modules() : array();
-
-							if ( ! empty( $jetpack_mods ) ) {
-								if ( in_array( 'seo-tools', $jetpack_mods ) ) {
-									$get_avail[ $sub ][ 'any' ] = $get_avail[ $sub ][ $id ] = true;
-								}
+									break;
 							}
 
 							break;
 
-						case 'seo-rankmath':
+						case 'ecom':
 
-							$chk[ 'class' ] = 'RankMath';
+							switch ( $id ) {
 
-							break;
+								case 'edd':
 
-						case 'seo-seou':
+									$chk[ 'class' ] = 'Easy_Digital_Downloads';
 
-							$chk[ 'plugin' ] = 'seo-ultimate/seo-ultimate.php';
+									break;
 
-							break;
+								case 'jck-wssv':
 
-						case 'seo-sq':
+									$chk[ 'class' ] = 'JCK_WSSV';
 
-							$chk[ 'plugin' ] = 'squirrly-seo/squirrly.php';
+									break;
 
-							break;
+								case 'perfect-woocommerce-brands':
 
-						case 'seo-wpmetaseo':
+									$chk[ 'class' ] = '\Perfect_Woocommerce_Brands\Perfect_Woocommerce_Brands';
 
-							$chk[ 'class' ] = 'WpMetaSeo';
+									break;
 
-							break;
+								case 'woocommerce':
 
-						case 'seo-wpseo':
+									$chk[ 'class' ] = 'WooCommerce';
 
-							$chk[ 'function' ] = 'wpseo_init';
+									break;
 
-							break;
+								case 'woocommerce-brands':
 
-						case 'seo-wpseo-wc':
+									$chk[ 'class' ] = 'WC_Brands';
 
-							$chk[ 'class' ] = 'Yoast_WooCommerce_SEO';
+									break;
 
-							break;
+								case 'woocommerce-currency-switcher':
 
-						case 'social-buddyblog':
+									$chk[ 'class' ] = 'WOOCS';
 
-							$chk[ 'class' ] = 'BuddyBlog';
+									break;
 
-							break;
+								case 'woo-add-gtin':
 
-						case 'social-buddypress':
+									$chk[ 'class' ] = 'Woo_GTIN';
 
-							$chk[ 'class' ] = 'BuddyPress';
+									break;
 
-							break;
+								case 'wpecommerce':
 
-						/**
-						 * Premium version features / options.
-						 */
-						case 'media-facebook':
-						case 'media-gravatar':
-						case 'media-slideshare':
-						case 'media-soundcloud':
-						case 'media-vimeo':
-						case 'media-wistia':
-						case 'media-wpvideo':
-						case 'media-youtube':
+									$chk[ 'class' ] = 'WP_eCommerce';
 
-							$chk[ 'opt_key' ] = 'plugin_' . $id . '_api';
+									break;
 
-							break;
+								case 'wpm-product-gtin-wc':
 
-						case 'media-upscale':
+									$chk[ 'class' ] = 'WPM_Product_GTIN_WC';
 
-							$chk[ 'opt_key' ] = 'plugin_upscale_images';
+									break;
+
+								case 'yith-woocommerce-brands':
+
+									$chk[ 'class' ] = 'YITH_WCBR';
+
+									break;
+							}
 
 							break;
 
-						case 'util-custom-fields':
+						case 'event':
 
-							$get_avail[ $sub ][ 'any' ] = $get_avail[ $sub ][ $id ] = true;
+							switch ( $id ) {
 
-							break;
+								case 'tribe_events':
 
-						case 'util-coauthors':
+									$chk[ 'class' ] = 'Tribe__Events__Main';
 
-							$chk[ 'plugin' ] = 'co-authors-plus/co-authors-plus.php';
-
-							break;
-
-						case 'util-jetpack':
-
-							$chk[ 'class' ] = 'Jetpack';
+									break;
+							}
 
 							break;
 
-						case 'util-post':
-						case 'util-term':
-						case 'util-user':
+						case 'form':
 
-							$get_avail[ $sub ][ 'any' ] = $get_avail[ $sub ][ $id ] = true;
+							switch ( $id ) {
 
-							break;
+								case 'gravityforms':
 
-						case 'util-shorten':
+									$chk[ 'class' ] = 'GFForms';
 
-							$chk[ 'opt_key' ] = 'plugin_shortener';
+									break;
 
-							break;
+								case 'gravityview':
 
-						case 'util-vary_ua':
+									$chk[ 'class' ] = 'GravityView_Plugin';
 
-							/**
-							 * Enabled by default.
-							 */
-							$get_avail[ $sub ][ $id ] = SucomUtil::get_const( 'WPSSO_VARY_USER_AGENT_DISABLE' ) ? false : true;
-
-							/**
-							 * Maintain backwards compatibility.
-							 */
-							$get_avail[ '*' ][ $id ] = $get_avail[ $sub ][ $id ];
+									break;
+							}
 
 							break;
 
-						case 'util-wpseo-meta':
 
-							$chk[ 'opt_key' ] = 'plugin_wpseo_social_meta';
+						case 'forum':
+
+							switch ( $id ) {
+
+								case 'bbpress':
+
+									$chk[ 'plugin' ] = 'bbpress/bbpress.php';
+
+									break;
+							}
 
 							break;
 
-						case 'wp-featured':
 
-							$chk[ 'function' ] = 'has_post_thumbnail';
+						case 'job':
+
+							switch ( $id ) {
+
+								case 'simplejobboard':
+
+									$chk[ 'class' ] = 'Simple_Job_Board';
+
+									break;
+
+								case 'wpjobmanager':
+
+									$chk[ 'class' ] = 'WP_Job_Manager';
+
+									break;
+							}
+
+							break;
+
+
+						case 'lang':
+
+							switch ( $id ) {
+
+								case 'polylang':
+
+									$chk[ 'class' ] = 'Polylang';
+
+									break;
+
+								case 'wpml':
+
+									$chk[ 'function' ] = 'wpml_object_id';
+
+									break;
+							}
+
+							break;
+
+
+						case 'media':
+
+							switch ( $id ) {
+
+								/**
+								 * NextGEN Gallery and NextCellent Gallery.
+								 */
+								case 'ngg':
+
+									$chk[ 'class' ] = 'nggdb';
+
+									break;
+
+								case 'rtmedia':
+
+									$chk[ 'plugin' ] = 'buddypress-media/index.php';
+
+									break;
+
+								/**
+								 * Premium version feature / option.
+								 */
+								case 'facebook':
+								case 'gravatar':
+								case 'slideshare':
+								case 'soundcloud':
+								case 'vimeo':
+								case 'wistia':
+								case 'wpvideo':
+								case 'youtube':
+
+									$chk[ 'opt_key' ] = 'plugin_' . $id . '_api';
+
+									break;
+
+								/**
+								 * Premium version feature / option.
+								 */
+								case 'upscale':
+
+									$chk[ 'opt_key' ] = 'plugin_upscale_images';
+
+									break;
+							}
+
+							break;
+
+						case 'rating':
+
+							switch ( $id ) {
+
+								case 'rate-my-post':
+
+									$chk[ 'class' ] = 'Rate_My_Post';
+
+									break;
+
+								case 'wppostratings':
+
+									$chk[ 'constant' ] = 'WP_POSTRATINGS_VERSION';
+
+									break;
+							}
+
+							break;
+
+						case 'recipe':
+
+							switch ( $id ) {
+
+								case 'wprecipemaker':
+
+									$chk[ 'class' ] = 'WP_Recipe_Maker';
+
+									break;
+
+								case 'wpultimaterecipe':
+
+									$chk[ 'class' ] = 'WPUltimateRecipe';
+
+									break;
+							}
+
+							break;
+
+						case 'review':
+
+							switch ( $id ) {
+
+								case 'yotpowc':
+
+									$chk[ 'function' ] = 'wc_yotpo_init';
+
+									break;
+
+								case 'wpproductreview':
+
+									$chk[ 'class' ] = 'WPPR';
+
+									break;
+							}
+
+							break;
+
+						case 'seo':
+
+							switch ( $id ) {
+
+								case 'aioseop':
+
+									$chk[ 'function' ] = 'aioseop_init_class';
+
+									break;
+
+								case 'autodescription':
+
+									$chk[ 'function' ] = 'the_seo_framework';
+
+									break;
+
+								case 'jetpack-seo':
+
+									$jetpack_modules = method_exists( 'Jetpack', 'get_active_modules' ) ?
+										Jetpack::get_active_modules() : array();
+
+									if ( ! empty( $jetpack_modules ) ) {
+
+										if ( in_array( 'seo-tools', $jetpack_modules ) ) {
+
+											$get_avail[ $sub ][ 'any' ] = $get_avail[ $sub ][ $id ] = true;
+										}
+									}
+
+									break;
+
+								case 'rankmath':
+
+									$chk[ 'class' ] = 'RankMath';
+
+									break;
+
+								case 'seou':
+
+									$chk[ 'plugin' ] = 'seo-ultimate/seo-ultimate.php';
+
+									break;
+
+								case 'sq':
+
+									$chk[ 'plugin' ] = 'squirrly-seo/squirrly.php';
+
+									break;
+
+								case 'wpmetaseo':
+
+									$chk[ 'class' ] = 'WpMetaSeo';
+
+									break;
+
+								case 'wpseo':
+
+									$chk[ 'function' ] = 'wpseo_init';
+
+									break;
+
+								case 'wpseo-wc':
+
+									$chk[ 'class' ] = 'Yoast_WooCommerce_SEO';
+
+									break;
+							}
+
+							break;
+
+						case 'social':
+
+							switch ( $id ) {
+
+								case 'buddyblog':
+
+									$chk[ 'class' ] = 'BuddyBlog';
+
+									break;
+
+								case 'buddypress':
+
+									$chk[ 'class' ] = 'BuddyPress';
+
+									break;
+							}
+
+							break;
+
+						case 'util':
+
+							switch ( $id ) {
+
+								case 'custom-fields':
+
+									$get_avail[ $sub ][ 'any' ] = $get_avail[ $sub ][ $id ] = true;
+
+									break;
+
+								case 'coauthors':
+
+									$chk[ 'plugin' ] = 'co-authors-plus/co-authors-plus.php';
+
+									break;
+
+								case 'jetpack':
+
+									$chk[ 'class' ] = 'Jetpack';
+
+									break;
+
+								case 'post':
+								case 'term':
+								case 'user':
+
+									$get_avail[ $sub ][ 'any' ] = $get_avail[ $sub ][ $id ] = true;
+
+									break;
+
+								case 'shorten':
+
+									$chk[ 'opt_key' ] = 'plugin_shortener';
+
+									break;
+
+								case 'vary_ua':
+
+									/**
+									 * Support for user agent checks is enabled by default.
+									 */
+									$get_avail[ $sub ][ $id ] = SucomUtil::get_const( 'WPSSO_VARY_USER_AGENT_DISABLE' ) ? false : true;
+
+									/**
+									 * Maintain backwards compatibility.
+									 */
+									$get_avail[ '*' ][ $id ] = $get_avail[ $sub ][ $id ];
+
+									break;
+
+								case 'wpseo-meta':
+
+									$chk[ 'opt_key' ] = 'plugin_wpseo_social_meta';
+
+									break;
+							}
+
+							break;
+
+						case 'wp':
+
+							switch ( $id ) {
+
+								case 'featured':
+
+									$chk[ 'function' ] = 'has_post_thumbnail';
+
+									break;
+							}
 
 							break;
 					}
@@ -438,6 +561,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			 * Define WPSSO_UNKNOWN_SEO_PLUGIN_ACTIVE as true to disable WPSSO's SEO related meta tags and features.
 			 */
 			if ( SucomUtil::get_const( 'WPSSO_UNKNOWN_SEO_PLUGIN_ACTIVE' ) ) {
+
 				$get_avail[ 'seo' ][ 'any' ] = true;
 			}
 
@@ -529,14 +653,12 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			$ext_auth_type = $this->get_ext_auth_type( $ext );
 			$ext_auth_key  = 'plugin_' . $ext . '_' . $ext_auth_type;
 
-			return empty( $this->p->options[ $ext_auth_key ] ) ?
-				'' : $this->p->options[ $ext_auth_key ];
+			return empty( $this->p->options[ $ext_auth_key ] ) ? '' : $this->p->options[ $ext_auth_key ];
 		}
 
 		public function get_ext_auth_type( $ext ) {
 
-			return empty( $this->p->cf[ 'plugin' ][ $ext ][ 'update_auth' ] ) ?
-				'none' : $this->p->cf[ 'plugin' ][ $ext ][ 'update_auth' ];
+			return empty( $this->p->cf[ 'plugin' ][ $ext ][ 'update_auth' ] ) ? 'none' : $this->p->cf[ 'plugin' ][ $ext ][ 'update_auth' ];
 		}
 
 		private function is_opt_enabled( $opt_key ) {
