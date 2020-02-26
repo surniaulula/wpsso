@@ -528,6 +528,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 				* https://schema.org/MedicalVitalSign
 			* https://schema.org/MedicalSymptom
 	* Added a new "Term Title Prefix" option in the SSO &gt; Advanced Settings page (Premium version).
+	* Removed the deprecated "Bitly Username" option (Premium version).
+	* Removed the deprecated "Bitly API Key" option (Premium version).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
