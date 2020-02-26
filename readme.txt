@@ -245,6 +245,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 		* [WP Product Review](https://wordpress.org/plugins/wp-product-review/)
 		* [WP Recipe Maker](https://wordpress.org/plugins/wp-recipe-maker/)
 		* [WP Ultimate Recipe](https://wordpress.org/plugins/wp-ultimate-recipe/)
+		* [WPML](https://wpml.org/)
 		* [YITH WooCommerce Brands Add-on](https://wordpress.org/plugins/search/yith-woocommerce-brands-add-on/)
 		* [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/) (aka WordPress SEO)
 		* [Yotpo Social Reviews for WooCommerce](https://wordpress.org/plugins/yotpo-social-reviews-for-woocommerce/)
@@ -514,10 +515,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.21.3-b.1 (2020/02/25)**
+**Version 6.22.0-b.2 (2020/02/26)**
 
 * **New Features**
-	* None.
+	* Added a WPML integration module to provide better locale information (Premium version).
 * **Improvements**
 	* Added the Schema MedicalCondition sub-types:
 		* https://schema.org/InfectiousDisease
@@ -837,9 +838,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.21.3-b.1 =
+= 6.22.0-b.2 =
 
-(2020/02/25) Added the Schema MedicalCondition sub-types. Added a new "Term Title Prefix" option in the SSO &gt; Advanced Settings page.
+(2020/02/26) Added a WPML integration module to provide better locale information (Premium version). Added the Schema MedicalCondition sub-types. Added a new "Term Title Prefix" option in the SSO &gt; Advanced Settings page.
 
 = 6.21.2 =
 

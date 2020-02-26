@@ -274,6 +274,7 @@
 <li><a href="https://wordpress.org/plugins/wp-product-review/">WP Product Review</a></li>
 <li><a href="https://wordpress.org/plugins/wp-recipe-maker/">WP Recipe Maker</a></li>
 <li><a href="https://wordpress.org/plugins/wp-ultimate-recipe/">WP Ultimate Recipe</a></li>
+<li><a href="https://wpml.org/">WPML</a></li>
 <li><a href="https://wordpress.org/plugins/search/yith-woocommerce-brands-add-on/">YITH WooCommerce Brands Add-on</a></li>
 <li><a href="https://wordpress.org/plugins/wordpress-seo/">Yoast SEO</a> (aka WordPress SEO)</li>
 <li><a href="https://wordpress.org/plugins/yotpo-social-reviews-for-woocommerce/">Yotpo Social Reviews for WooCommerce</a></li>
