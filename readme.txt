@@ -534,7 +534,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Added a new lib/pro/com/bitly.php file and SucomBitly class for the Bitly v4 API (Premium version).
-	* Removed the lib/pro/ext/bitly.php file (Premium version).
+	* Removed the deprecated lib/pro/ext/bitly.php file (Premium version).
 	* Updated the `WpssoPage->get_the_content()` method to return single-line (default) or multi-line content.
 	* Changed the default 'WPSSO_CONTENT_FILTERS_MAX_TIME' value from 1.5s to 1.0s.
 	* Changed the default 'WPSSO_SELECT_PERSON_NAMES_MAX' value from 200 to 100.
