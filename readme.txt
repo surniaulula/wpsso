@@ -515,7 +515,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.22.0-b.3 (2020/02/26)**
+**Version 6.22.0-rc.1 (2020/02/26)**
 
 * **New Features**
 	* Added a WPML integration module to improve locale support (Premium version).
@@ -843,7 +843,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.22.0-b.3 =
+= 6.22.0-rc.1 =
 
 (2020/02/26) Added a WPML integration module to improve locale support (Premium version). Updated the Bitly API from v3 to v4 (Premium version). Added the Schema MedicalCondition sub-types. Added a new "Term Title Prefix" option (Premium version).
 
