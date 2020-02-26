@@ -208,6 +208,7 @@ __( 'Settings', 'rate-my-post' );
 // translators: Please ignore - translation uses a different text domain.
 __( 'Rating Widget Settings', 'rate-my-post' );
 __( 'please disable the %1$s option in the %2$s settings page.', 'wpsso' );
+__( '%s error:', 'wpsso' );
 __( 'Yotpo for WooCommerce "%1$s" setting value is empty.', 'wpsso' );
 __( 'Yotpo for WooCommerce "%1$s" setting value is empty.', 'wpsso' );
 __( 'Yotpo for WooCommerce %1$s function is missing.', 'wpsso' );

@@ -933,8 +933,8 @@ msgstr ""
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
-#: lib/conflict.php:76 lib/conflict.php:105 lib/loader.php:180
-#: lib/loader.php:192
+#: lib/conflict.php:76 lib/conflict.php:105 lib/gettext-pro.php:211
+#: lib/loader.php:180 lib/loader.php:192 lib/pro/review/yotpowc.php:195
 msgid "%s error:"
 msgstr ""
 
@@ -3372,45 +3372,45 @@ msgstr ""
 
 #. translators: %1$s is "App Key"
 #. translators: %1$s is "Secret Token"
-#: lib/gettext-pro.php:211 lib/gettext-pro.php:212
-#: lib/pro/review/yotpowc.php:204 lib/pro/review/yotpowc.php:219
+#: lib/gettext-pro.php:212 lib/gettext-pro.php:213
+#: lib/pro/review/yotpowc.php:206 lib/pro/review/yotpowc.php:225
 msgid "Yotpo for WooCommerce \"%1$s\" setting value is empty."
 msgstr ""
 
 #. translators: %1$s is "wc_yotpo_compatible()"
-#: lib/gettext-pro.php:213 lib/pro/review/yotpowc.php:234
+#: lib/gettext-pro.php:214 lib/pro/review/yotpowc.php:244
 msgid "Yotpo for WooCommerce %1$s function is missing."
 msgstr ""
 
 #. translators: %1$s is "wc_yotpo_compatible()"
-#: lib/gettext-pro.php:214 lib/pro/review/yotpowc.php:250
+#: lib/gettext-pro.php:215 lib/pro/review/yotpowc.php:264
 msgid "Yotpo for WooCommerce %1$s function returned false."
 msgstr ""
 
 #. translators: %1$s is "yotpo-social-reviews-for-woocommerce"
-#: lib/gettext-pro.php:215 lib/pro/review/yotpowc.php:273
+#: lib/gettext-pro.php:216 lib/pro/review/yotpowc.php:291
 msgid ""
 "\"%1$s\" plugin not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
 msgstr ""
 
 #. translators: %1$s is the API library file path
-#: lib/gettext-pro.php:216 lib/pro/review/yotpowc.php:290
+#: lib/gettext-pro.php:217 lib/pro/review/yotpowc.php:312
 msgid "Yotpo for WooCommerce API library file \"%1$s\" not found."
 msgstr ""
 
 #. translators: %1$s is the API library file path
-#: lib/gettext-pro.php:217 lib/pro/review/yotpowc.php:311
+#: lib/gettext-pro.php:218 lib/pro/review/yotpowc.php:337
 msgid "Yotpo for WooCommerce \"%1$s\" class does not exist."
 msgstr ""
 
 #. translators: %s is the Job Manager plugin name
-#: lib/gettext-pro.php:218 lib/pro/job/wpjobmanager.php:48
+#: lib/gettext-pro.php:219 lib/pro/job/wpjobmanager.php:48
 msgctxt "option value"
 msgid "[%s Company]"
 msgstr ""
 
 #. translators: %s is the Job Manager plugin name
-#: lib/gettext-pro.php:219 lib/pro/job/wpjobmanager.php:56
+#: lib/gettext-pro.php:220 lib/pro/job/wpjobmanager.php:56
 msgctxt "option value"
 msgid "[%s Location]"
 msgstr ""
