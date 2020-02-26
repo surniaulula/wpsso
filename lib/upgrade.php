@@ -312,6 +312,10 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				703 => array(
 					'plugin_clear_all_refresh' => '',
 				),
+				708 => array(
+					'plugin_bitly_login'   => '',	// Bitly Username.
+					'plugin_bitly_api_key' => '',	// Bitly API Key (deprecated).
+				),
 			),
 		);
 

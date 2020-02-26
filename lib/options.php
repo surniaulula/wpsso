@@ -231,7 +231,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'product_mfr_part_no':		// Product MPN.
 				case 'product_retailer_part_no':	// Product SKU.
 				case 'product_size':
-				case 'plugin_bitly_login':
 				case 'plugin_col_title_width':
 				case 'plugin_col_title_width_max':
 				case 'plugin_col_def_width':
@@ -793,7 +792,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$admin_url = $this->p->util->get_admin_url( 'general' );
 					}
 
-					$this->p->notice->err( $error_msg . ' ' . sprintf( __( 'The plugin settings have been returned to their default values &mdash; <a href="%s">please review and save the new settings</a>.', 'wpsso' ), $admin_url ) );
+					$error_msg .= ' ' . sprintf( __( 'The plugin settings have been returned to their default values &mdash; <a href="%s">please review and save the new settings</a>.', 'wpsso' ), $admin_url );
+
+					$this->p->notice->err( $error_msg );
 				}
 
 				$opts = $network ? $this->get_site_defaults() : $this->get_defaults();
@@ -1083,7 +1084,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					if ( is_admin() ) {
 
-						$this->p->notice->inf( '<strong>' . __( 'Plugin settings have been upgraded and saved.', 'wpsso' ) . '</strong> ' .
+						$this->p->notice->upd( '<strong>' . __( 'Plugin settings have been upgraded and saved.', 'wpsso' ) . '</strong> ' .
 							__( 'A background task will begin shortly to clear all caches.', 'wpsso' ) );
 
 						$this->p->util->schedule_clear_all_cache( $user_id = get_current_user_id(), $clear_other = true );

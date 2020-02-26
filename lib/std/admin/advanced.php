@@ -342,16 +342,14 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$tr_html = array();
 
 			foreach ( array(
-				'bitly'    => 'plugin_bitly_login',	// Bitly Username
-				'dlmyapp'  => 'plugin_dlmyapp_api_key',	// DLMY.App API Key
-				//'google' => 'plugin_google_api_key',	// Google Project API Key
-				'owly'     => 'plugin_owly_api_key',	// Ow.ly API Key
-				'yourls'   => 'plugin_yourls_api_url',	// YOURLS API URL
+				'bitly'    => 'plugin_bitly_access_token',	// Bitly Generic Access Token.
+				'dlmyapp'  => 'plugin_dlmyapp_api_key',		// DLMY.App API Key.
+				'owly'     => 'plugin_owly_api_key',		// Ow.ly API Key.
+				'yourls'   => 'plugin_yourls_api_url',		// YOURLS API URL.
 			) as $tr_key => $opt_key ) {
 
-				$tr_html[ $tr_key ] = empty( $form->options[ $opt_key ] ) &&
-					$form->options[ 'plugin_shortener' ] !== $tr_key ?
-						$form->get_tr_hide( 'basic' ) : '';
+				$tr_html[ $tr_key ] = empty( $form->options[ $opt_key ] ) && $form->options[ 'plugin_shortener' ] !== $tr_key ?
+					$form->get_tr_hide( 'basic' ) : '';
 			}
 
 			/**
@@ -391,21 +389,10 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[ 'subsection_plugin_bitly' ] = $tr_html[ 'bitly' ] . 
 			'<td colspan="2" class="subsection"><h4>' . _x( 'Bitly URL Shortener', 'metabox title', 'wpsso' ) . '</h4></td>';
 
-			$table_rows[ 'plugin_bitly_login' ] = $tr_html[ 'bitly' ] . 
-			$form->get_th_html( _x( 'Bitly Username', 'option label', 'wpsso' ), '', 'plugin_bitly_login' ) . 
-			'<td class="blank mono">' . $form->options[ 'plugin_bitly_login' ] . '</td>';
-
 			$table_rows[ 'plugin_bitly_access_token' ] = $tr_html[ 'bitly' ] . 
 			$form->get_th_html( '<a href="https://bitly.com/a/oauth_apps">' . 
 			_x( 'Bitly Generic Access Token', 'option label', 'wpsso' ) . '</a>', '', 'plugin_bitly_access_token' ) . 
 			'<td class="blank mono">' . $form->options[ 'plugin_bitly_access_token' ] . '</td>';
-
-			$table_rows[ 'plugin_bitly_api_key' ] = empty( $tr_html[ 'bitly' ] ) ? 
-				$form->get_tr_hide( 'basic', 'plugin_bitly_api_key' ) : $tr_html[ 'bitly' ] . 
-			$form->get_th_html( '<a href="http://bitly.com/a/your_api_key">' . 
-			_x( 'or Bitly API Key (deprecated)', 'option label', 'wpsso' ) . '</a>', '', 'plugin_bitly_api_key' ) . 
-			'<td class="blank mono">' . $form->options[ 'plugin_bitly_api_key' ] . ' <em>' . 
-			_x( 'api key authentication is deprecated', 'option comment', 'wpsso' ) . '</em></td>';
 
 			$table_rows[ 'plugin_bitly_domain' ] = $tr_html[ 'bitly' ] . 
 			$form->get_th_html( _x( 'Bitly Custom Short Domain', 'option label', 'wpsso' ), '', 'plugin_bitly_domain' ) . 

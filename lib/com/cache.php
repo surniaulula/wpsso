@@ -154,7 +154,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$errors[] = sprintf( __( 'Error connecting to %1$s for caching (HTTP code %2$d).',
 					$this->text_domain ), '<a href="' . $url . '">' . $url . '</a>', $http_code );
 
-				if ( $http_code === 301 || $http_code === 302 ) {
+				if ( 301 === $http_code || 302 === $http_code ) {
 
 					/**
 					 * PHP safe mode is an attempt to solve the shared-server security problem. It is
@@ -272,6 +272,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		 * Get image size for remote URL and cache for 300 seconds (5 minutes) by default.
 		 *
 		 * If $exp_secs is null, then use the default expiration time.
+		 *
 		 * If $exp_secs is false, then get but do not save the data.
 		 */
 		public function get_image_size( $image_url, $exp_secs = 300, array $curl_opts = array(), $error_handler = null ) {
@@ -569,7 +570,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			 */
 			curl_setopt( $ch, CURLOPT_HTTPHEADER, array( 'Expect:' ) );
 
-			if ( ! ini_get('safe_mode') && ! ini_get('open_basedir') ) {
+			if ( ! ini_get( 'safe_mode' ) && ! ini_get( 'open_basedir' ) ) {
 
 				curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1 );
 				curl_setopt( $ch, CURLOPT_MAXREDIRS, $this->curl_max_redirs );
@@ -635,7 +636,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$this->p->debug->log( 'curl: ssl verify result = ' . $ssl_verify );
 			}
 
-			if ( $http_code == 200 ) {
+			if ( 200 === $http_code ) {
 
 				$this->url_mtimes[ $url ] = $mtime_total;
 
