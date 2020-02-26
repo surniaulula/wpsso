@@ -933,8 +933,9 @@ msgstr ""
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
-#: lib/conflict.php:76 lib/conflict.php:105 lib/gettext-pro.php:211
-#: lib/loader.php:180 lib/loader.php:192 lib/pro/review/yotpowc.php:195
+#: lib/conflict.php:76 lib/conflict.php:105 lib/gettext-pro.php:175
+#: lib/gettext-pro.php:212 lib/loader.php:180 lib/loader.php:192
+#: lib/pro/review/yotpowc.php:195 lib/pro/util/shorten.php:237
 msgid "%s error:"
 msgstr ""
 
@@ -1013,7 +1014,7 @@ msgid ""
 "installed."
 msgstr ""
 
-#: lib/conflict.php:224 lib/gettext-pro.php:191 lib/gettext-pro.php:201
+#: lib/conflict.php:224 lib/gettext-pro.php:192 lib/gettext-pro.php:202
 #: lib/pro/rating/rate-my-post.php:48 lib/pro/rating/wppostratings.php:46
 msgid "Plugin conflict detected"
 msgstr ""
@@ -1163,7 +1164,7 @@ msgid "WP Meta SEO"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:472 lib/gettext-pro.php:207
+#: lib/conflict.php:472 lib/gettext-pro.php:208
 #: lib/pro/rating/rate-my-post.php:63
 msgid "Settings"
 msgstr ""
@@ -2772,8 +2773,8 @@ msgctxt "metabox title"
 msgid "Bitly URL Shortener"
 msgstr ""
 
-#: lib/gettext-pro.php:63 lib/gettext-pro.php:177
-#: lib/pro/admin/advanced.php:384 lib/pro/util/shorten.php:279
+#: lib/gettext-pro.php:63 lib/gettext-pro.php:178
+#: lib/pro/admin/advanced.php:384 lib/pro/util/shorten.php:285
 #: lib/std/admin/advanced.php:394
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
@@ -2791,8 +2792,8 @@ msgctxt "metabox title"
 msgid "DLMY.App URL Shortener"
 msgstr ""
 
-#: lib/gettext-pro.php:66 lib/gettext-pro.php:179
-#: lib/pro/admin/advanced.php:398 lib/pro/util/shorten.php:305
+#: lib/gettext-pro.php:66 lib/gettext-pro.php:180
+#: lib/pro/admin/advanced.php:398 lib/pro/util/shorten.php:311
 #: lib/std/admin/advanced.php:408
 msgctxt "option label"
 msgid "DLMY.App API Key"
@@ -2804,8 +2805,8 @@ msgctxt "metabox title"
 msgid "Ow.ly URL Shortener"
 msgstr ""
 
-#: lib/gettext-pro.php:68 lib/gettext-pro.php:181
-#: lib/pro/admin/advanced.php:408 lib/pro/util/shorten.php:330
+#: lib/gettext-pro.php:68 lib/gettext-pro.php:182
+#: lib/pro/admin/advanced.php:408 lib/pro/util/shorten.php:336
 #: lib/std/admin/advanced.php:418
 msgctxt "option label"
 msgid "Ow.ly API Key"
@@ -2817,8 +2818,8 @@ msgctxt "metabox title"
 msgid "Your Own URL Shortener (YOURLS)"
 msgstr ""
 
-#: lib/gettext-pro.php:70 lib/gettext-pro.php:183
-#: lib/pro/admin/advanced.php:418 lib/pro/util/shorten.php:378
+#: lib/gettext-pro.php:70 lib/gettext-pro.php:184
+#: lib/pro/admin/advanced.php:418 lib/pro/util/shorten.php:384
 #: lib/std/admin/advanced.php:428
 msgctxt "option label"
 msgid "YOURLS API URL"
@@ -3283,134 +3284,136 @@ msgstr ""
 msgid "No Description"
 msgstr ""
 
-#: lib/gettext-pro.php:175 lib/pro/util/shorten.php:260
+#. translators: %s is the service id.
+#: lib/gettext-pro.php:176 lib/pro/util/shorten.php:263
 msgid "The URL shortening library file for \"%s\" is missing and required."
 msgstr ""
 
-#: lib/gettext-pro.php:176 lib/gettext-pro.php:178 lib/gettext-pro.php:180
-#: lib/gettext-pro.php:182 lib/pro/util/shorten.php:278
-#: lib/pro/util/shorten.php:304 lib/pro/util/shorten.php:329
-#: lib/pro/util/shorten.php:377
+#: lib/gettext-pro.php:177 lib/gettext-pro.php:179 lib/gettext-pro.php:181
+#: lib/gettext-pro.php:183 lib/pro/util/shorten.php:284
+#: lib/pro/util/shorten.php:310 lib/pro/util/shorten.php:335
+#: lib/pro/util/shorten.php:383
 msgid "The \"%s\" option value is empty and required."
 msgstr ""
 
-#: lib/gettext-pro.php:184 lib/pro/util/shorten.php:421
+#. translators: %s is the service id.
+#: lib/gettext-pro.php:185 lib/pro/util/shorten.php:429
 msgid "Incomplete API options to instantiate the \"%s\" shortening service."
 msgstr ""
 
 #. translators: %s is the Events Calendar plugin name
-#: lib/gettext-pro.php:185 lib/pro/event/tribe_events.php:49
+#: lib/gettext-pro.php:186 lib/pro/event/tribe_events.php:49
 msgctxt "option value"
 msgid "[%s Organizer]"
 msgstr ""
 
 #. translators: %s is the Events Calendar plugin name
-#: lib/gettext-pro.php:186 lib/pro/event/tribe_events.php:56
+#: lib/gettext-pro.php:187 lib/pro/event/tribe_events.php:56
 msgctxt "option value"
 msgid "[%s Venue]"
 msgstr ""
 
-#: lib/gettext-pro.php:187 lib/pro/form/gravityview.php:50
+#: lib/gettext-pro.php:188 lib/pro/form/gravityview.php:50
 msgctxt "metabox title"
 msgid "Single Entry Integration"
 msgstr ""
 
-#: lib/gettext-pro.php:188 lib/pro/form/gravityview.php:77
+#: lib/gettext-pro.php:189 lib/pro/form/gravityview.php:77
 msgctxt "option label"
 msgid "Title Field ID"
 msgstr ""
 
-#: lib/gettext-pro.php:189 lib/pro/form/gravityview.php:81
+#: lib/gettext-pro.php:190 lib/pro/form/gravityview.php:81
 msgctxt "option label"
 msgid "Description Field ID"
 msgstr ""
 
-#: lib/gettext-pro.php:190 lib/pro/form/gravityview.php:85
+#: lib/gettext-pro.php:191 lib/pro/form/gravityview.php:85
 msgctxt "option label"
 msgid "Post Image Field ID"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:193 lib/pro/rating/wppostratings.php:53
+#: lib/gettext-pro.php:194 lib/pro/rating/wppostratings.php:53
 msgid "Enable Google Rich Snippets?"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:195 lib/pro/rating/wppostratings.php:59
+#: lib/gettext-pro.php:196 lib/pro/rating/wppostratings.php:59
 msgid "WP-PostRatings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:197 lib/pro/rating/wppostratings.php:61
+#: lib/gettext-pro.php:198 lib/pro/rating/wppostratings.php:61
 msgid "Ratings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:199 lib/pro/rating/wppostratings.php:63
+#: lib/gettext-pro.php:200 lib/pro/rating/wppostratings.php:63
 msgid "Ratings Options"
 msgstr ""
 
-#: lib/gettext-pro.php:200 lib/gettext-pro.php:210
+#: lib/gettext-pro.php:201 lib/gettext-pro.php:211
 #: lib/pro/rating/rate-my-post.php:71 lib/pro/rating/wppostratings.php:69
 msgid "please disable the %1$s option in the %2$s settings page."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:203 lib/pro/rating/rate-my-post.php:55
+#: lib/gettext-pro.php:204 lib/pro/rating/rate-my-post.php:55
 msgid "Type of structured data for rich snippets"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:205 lib/pro/rating/rate-my-post.php:61
+#: lib/gettext-pro.php:206 lib/pro/rating/rate-my-post.php:61
 msgid "Rate my Post"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:209 lib/pro/rating/rate-my-post.php:65
+#: lib/gettext-pro.php:210 lib/pro/rating/rate-my-post.php:65
 msgid "Rating Widget Settings"
 msgstr ""
 
-#. translators: %1$s is "App Key"
-#. translators: %1$s is "Secret Token"
-#: lib/gettext-pro.php:212 lib/gettext-pro.php:213
+#. translators: %s is "App Key".
+#. translators: %s is "Secret Token".
+#: lib/gettext-pro.php:213 lib/gettext-pro.php:214
 #: lib/pro/review/yotpowc.php:206 lib/pro/review/yotpowc.php:225
-msgid "Yotpo for WooCommerce \"%1$s\" setting value is empty."
+msgid "Yotpo for WooCommerce \"%s\" setting value is empty."
 msgstr ""
 
-#. translators: %1$s is "wc_yotpo_compatible()"
-#: lib/gettext-pro.php:214 lib/pro/review/yotpowc.php:244
-msgid "Yotpo for WooCommerce %1$s function is missing."
+#. translators: %s is "wc_yotpo_compatible()".
+#: lib/gettext-pro.php:215 lib/pro/review/yotpowc.php:244
+msgid "Yotpo for WooCommerce %s function is missing."
 msgstr ""
 
-#. translators: %1$s is "wc_yotpo_compatible()"
-#: lib/gettext-pro.php:215 lib/pro/review/yotpowc.php:264
-msgid "Yotpo for WooCommerce %1$s function returned false."
+#. translators: %s is "wc_yotpo_compatible()".
+#: lib/gettext-pro.php:216 lib/pro/review/yotpowc.php:264
+msgid "Yotpo for WooCommerce %s function returned false."
 msgstr ""
 
-#. translators: %1$s is "yotpo-social-reviews-for-woocommerce"
-#: lib/gettext-pro.php:216 lib/pro/review/yotpowc.php:291
+#. translators: %s is "yotpo-social-reviews-for-woocommerce".
+#: lib/gettext-pro.php:217 lib/pro/review/yotpowc.php:291
 msgid ""
-"\"%1$s\" plugin not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
+"\"%s\" plugin not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
 msgstr ""
 
-#. translators: %1$s is the API library file path
-#: lib/gettext-pro.php:217 lib/pro/review/yotpowc.php:312
-msgid "Yotpo for WooCommerce API library file \"%1$s\" not found."
+#. translators: %s is the API library file path.
+#: lib/gettext-pro.php:218 lib/pro/review/yotpowc.php:312
+msgid "Yotpo for WooCommerce API library file \"%s\" not found."
 msgstr ""
 
-#. translators: %1$s is the API library file path
-#: lib/gettext-pro.php:218 lib/pro/review/yotpowc.php:337
-msgid "Yotpo for WooCommerce \"%1$s\" class does not exist."
+#. translators: %s is the API library file path.
+#: lib/gettext-pro.php:219 lib/pro/review/yotpowc.php:337
+msgid "Yotpo for WooCommerce \"%s\" class does not exist."
 msgstr ""
 
 #. translators: %s is the Job Manager plugin name
-#: lib/gettext-pro.php:219 lib/pro/job/wpjobmanager.php:48
+#: lib/gettext-pro.php:220 lib/pro/job/wpjobmanager.php:48
 msgctxt "option value"
 msgid "[%s Company]"
 msgstr ""
 
 #. translators: %s is the Job Manager plugin name
-#: lib/gettext-pro.php:220 lib/pro/job/wpjobmanager.php:56
+#: lib/gettext-pro.php:221 lib/pro/job/wpjobmanager.php:56
 msgctxt "option value"
 msgid "[%s Location]"
 msgstr ""
