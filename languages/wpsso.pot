@@ -935,7 +935,7 @@ msgstr ""
 
 #: lib/conflict.php:76 lib/conflict.php:105 lib/gettext-pro.php:175
 #: lib/gettext-pro.php:212 lib/loader.php:180 lib/loader.php:192
-#: lib/pro/review/yotpowc.php:195 lib/pro/util/shorten.php:237
+#: lib/pro/review/yotpowc.php:195 lib/pro/util/shorten.php:238
 msgid "%s error:"
 msgstr ""
 
@@ -2774,7 +2774,7 @@ msgid "Bitly URL Shortener"
 msgstr ""
 
 #: lib/gettext-pro.php:63 lib/gettext-pro.php:178
-#: lib/pro/admin/advanced.php:384 lib/pro/util/shorten.php:285
+#: lib/pro/admin/advanced.php:384 lib/pro/util/shorten.php:286
 #: lib/std/admin/advanced.php:394
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
@@ -2793,7 +2793,7 @@ msgid "DLMY.App URL Shortener"
 msgstr ""
 
 #: lib/gettext-pro.php:66 lib/gettext-pro.php:180
-#: lib/pro/admin/advanced.php:398 lib/pro/util/shorten.php:311
+#: lib/pro/admin/advanced.php:398 lib/pro/util/shorten.php:312
 #: lib/std/admin/advanced.php:408
 msgctxt "option label"
 msgid "DLMY.App API Key"
@@ -2806,7 +2806,7 @@ msgid "Ow.ly URL Shortener"
 msgstr ""
 
 #: lib/gettext-pro.php:68 lib/gettext-pro.php:182
-#: lib/pro/admin/advanced.php:408 lib/pro/util/shorten.php:336
+#: lib/pro/admin/advanced.php:408 lib/pro/util/shorten.php:337
 #: lib/std/admin/advanced.php:418
 msgctxt "option label"
 msgid "Ow.ly API Key"
@@ -2819,7 +2819,7 @@ msgid "Your Own URL Shortener (YOURLS)"
 msgstr ""
 
 #: lib/gettext-pro.php:70 lib/gettext-pro.php:184
-#: lib/pro/admin/advanced.php:418 lib/pro/util/shorten.php:384
+#: lib/pro/admin/advanced.php:418 lib/pro/util/shorten.php:385
 #: lib/std/admin/advanced.php:428
 msgctxt "option label"
 msgid "YOURLS API URL"
@@ -3285,19 +3285,19 @@ msgid "No Description"
 msgstr ""
 
 #. translators: %s is the service id.
-#: lib/gettext-pro.php:176 lib/pro/util/shorten.php:263
+#: lib/gettext-pro.php:176 lib/pro/util/shorten.php:264
 msgid "The URL shortening library file for \"%s\" is missing and required."
 msgstr ""
 
 #: lib/gettext-pro.php:177 lib/gettext-pro.php:179 lib/gettext-pro.php:181
-#: lib/gettext-pro.php:183 lib/pro/util/shorten.php:284
-#: lib/pro/util/shorten.php:310 lib/pro/util/shorten.php:335
-#: lib/pro/util/shorten.php:383
+#: lib/gettext-pro.php:183 lib/pro/util/shorten.php:285
+#: lib/pro/util/shorten.php:311 lib/pro/util/shorten.php:336
+#: lib/pro/util/shorten.php:384
 msgid "The \"%s\" option value is empty and required."
 msgstr ""
 
 #. translators: %s is the service id.
-#: lib/gettext-pro.php:185 lib/pro/util/shorten.php:429
+#: lib/gettext-pro.php:185 lib/pro/util/shorten.php:430
 msgid "Incomplete API options to instantiate the \"%s\" shortening service."
 msgstr ""
 
