@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 6.22.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-02-27 07:53-0800\n"
-"PO-Revision-Date: 2020-02-27 07:53-0800\n"
+"PO-Revision-Date: 2020-02-27 09:19-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -627,7 +627,7 @@ msgstr "Taille d'image miniature Schéma"
 #: lib/admin.php:2808
 msgctxt "option label"
 msgid "Max. Schema Description Length"
-msgstr "Longueur max. de description pour Schéma"
+msgstr "Longueur max. de description Schéma"
 
 #: lib/admin.php:2810 lib/submenu/general.php:281 lib/submenu/general.php:339
 msgctxt "option comment"
@@ -5909,7 +5909,7 @@ msgstr "ID de vérif. du site Web pour Google"
 #: lib/submenu/general.php:279
 msgctxt "option label"
 msgid "Max. Description Meta Tag Length"
-msgstr "Longueur max. pour balise méta description"
+msgstr "Longueur max. balise méta description"
 
 #: lib/submenu/general.php:290
 msgctxt "option label"
@@ -5934,7 +5934,7 @@ msgstr "recommandé (ajoute une image cachée dans le contenu)"
 #: lib/submenu/general.php:314
 msgctxt "option label"
 msgid "Maximum Image Description Length"
-msgstr "Longueur maximale de description de l'image"
+msgstr "Longueur max. description d'image"
 
 #: lib/submenu/general.php:327
 msgctxt "option value"
