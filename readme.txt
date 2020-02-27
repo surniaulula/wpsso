@@ -515,21 +515,22 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.22.0-rc.1 (2020/02/26)**
+**Version 6.22.0-rc.2 (2020/02/27)**
 
 * **New Features**
 	* Added a WPML integration module to improve locale support (Premium version).
 * **Improvements**
 	* Updated the Bitly API from v3 to v4 (Premium version).
+	* Removed the deprecated "Bitly Username" option (Premium version).
+	* Removed the deprecated "Bitly API Key" option (Premium version).
+	* Added a new "Bitly Group Name (Optional)" option under the SSO &gt; Advanced Settings &gt; Service APIs tab (Premium version).
+	* Added a new "Term Title Prefix" option under the SSO &gt; Advanced Settings &gt; Content Text tab (Premium version).
 	* Added the Schema MedicalCondition sub-types:
 		* https://schema.org/InfectiousDisease
 		* https://schema.org/MedicalSignOrSymptom
 			* https://schema.org/MedicalSign
 				* https://schema.org/MedicalVitalSign
 			* https://schema.org/MedicalSymptom
-	* Added a new "Term Title Prefix" option in the SSO &gt; Advanced Settings page (Premium version).
-	* Removed the deprecated "Bitly Username" option (Premium version).
-	* Removed the deprecated "Bitly API Key" option (Premium version).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -843,9 +844,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.22.0-rc.1 =
+= 6.22.0-rc.2 =
 
-(2020/02/26) Added a WPML integration module to improve locale support (Premium version). Updated the Bitly API from v3 to v4 (Premium version). Added the Schema MedicalCondition sub-types. Added a new "Term Title Prefix" option (Premium version).
+(2020/02/27) Added a WPML integration module to improve locale support (Premium version). Updated the Bitly API from v3 to v4 (Premium version). Added the Schema MedicalCondition sub-types. Added a new "Term Title Prefix" option (Premium version).
 
 = 6.21.2 =
 
