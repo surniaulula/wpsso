@@ -239,6 +239,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'plugin_html_attr_filter_name':
 				case 'plugin_img_alt_prefix':
 				case 'plugin_p_cap_prefix':
+				case 'plugin_term_title_prefix':
+				case 'plugin_bitly_access_token':	// Bitly Generic Access Token.
+				case 'plugin_bitly_domain':		// Bitly Short Domain (Optional).
+				case 'plugin_bitly_group_name':		// Bitly Group Name (Optional).
+				case 'plugin_dlmyapp_api_key':
+				case 'plugin_owly_api_key':
 				case 'plugin_yourls_username':
 				case 'plugin_yourls_password':
 				case 'plugin_yourls_token':

@@ -1114,13 +1114,24 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_bitly_access_token':	// Bitly Generic Access Token.
 
-							$text = sprintf( __( 'The Bitly shortening service requires a <a href="%s">Generic Access Token</a> to shorten URLs.', 'wpsso' ), 'https://bitly.com/a/oauth_apps' );
+							$text = __( 'The Bitly shortening service requires a Generic Access Token to shorten URLs.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( '<a href="%s">You can create a Generic Access Token in your Bitly profile settings</a> and enter its value here.', 'wpsso' ), 'https://bitly.com/a/oauth_apps' );
 
 							break;
 
-						case 'tooltip-plugin_bitly_domain':		// Bitly Custom Short Domain.
+						case 'tooltip-plugin_bitly_domain':		// Bitly Short Domain (Optional).
 
-							$text = __( 'An optional Bitly short domain to use; either bit.ly, j.mp, bitly.com, or another custom short domain. If no value is entered here, the short domain selected in your Bitly account settings will be used.', 'wpsso' );
+							$text = __( 'An optional Bitly short domain to use - either bit.ly, j.mp, bitly.com, or another custom short domain.', 'wpsso' ) . ' ';
+
+							$text .= __( 'If no value is entered here, the short domain selected in your Bitly account settings will be used.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-plugin_bitly_group_name':		// Bitly Group Name (Optional).
+
+							$text = sprintf( __( 'An optional <a href="%s">Bitly group name to organize your Bitly account links</a>.', 'wpsso' ),
+								'https://support.bitly.com/hc/en-us/articles/115004551268' );
 
 							break;
 

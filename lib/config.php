@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.22.0-rc.1',	// Plugin version.
-					'opt_version' => '709',		// Increment when changing default option values.
+					'version'     => '6.22.0-rc.2',	// Plugin version.
+					'opt_version' => '710',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -1531,7 +1531,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_wp_shortlink'       => 1,			// Use Shortnened URL for WP Shortlink.
 					'plugin_min_shorten'        => 23,
 					'plugin_bitly_access_token' => '',			// Bitly Generic Access Token.
-					'plugin_bitly_domain'       => '',			// Bitly Custom Short Domain.
+					'plugin_bitly_domain'       => '',			// Bitly Short Domain (Optional).
+					'plugin_bitly_group_name'   => '',			// Bitly Group Name (Optional).
 					'plugin_dlmyapp_api_key'    => '',			// DLMY.App API Key.
 					'plugin_owly_api_key'       => '',			// Ow.ly API Key.
 					'plugin_yourls_api_url'     => '',			// YOURLS API URL.

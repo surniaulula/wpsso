@@ -25,11 +25,15 @@ if ( ! function_exists( 'wpsso_error_handler' ) ) {
 		require_once WPSSO_PLUGINDIR . 'lib/exception.php';	// Extends ErrorException.
 	}
 
-	function wpsso_error_handler( $severity, $errstr, $filename, $lineno, array $errcontext ) {
+	function wpsso_error_handler( $severity, $errstr, $filename, $lineno ) {
+
 		try {
+
 			throw new WpssoErrorException( $errstr, $errno = 0, $severity, $filename, $lineno );
+
 		} catch ( WpssoErrorException $e ) {
-			return $e->errorMessage();
+
+			return $e->errorMessage( $ret = false );
 		}
 	}
 }

@@ -53,35 +53,35 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
 
 			$table_rows[ 'plugin_filter_title' ] = '' . 
-			$form->get_th_html( _x( 'Use Filtered (aka SEO) Title', 'option label', 'wpsso' ), '', 'plugin_filter_title' ) . 
+			$form->get_th_html( _x( 'Use Filtered (aka SEO) Title', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_filter_title' ) . 
 			$form->get_td_no_checkbox( 'plugin_filter_title' );
 
 			$table_rows[ 'plugin_filter_content' ] = '' . 
-			$form->get_th_html( _x( 'Use WordPress Content Filters', 'option label', 'wpsso' ), '', 'plugin_filter_content' ) . 
+			$form->get_th_html( _x( 'Use WordPress Content Filters', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_filter_content' ) . 
 			$form->get_td_no_checkbox( 'plugin_filter_content', '<em>' . _x( 'recommended', 'option comment', 'wpsso' ) . '</em>' );
 
 			$table_rows[ 'plugin_filter_excerpt' ] = '' . 
-			$form->get_th_html( _x( 'Use WordPress Excerpt Filters', 'option label', 'wpsso' ), '', 'plugin_filter_excerpt' ) . 
+			$form->get_th_html( _x( 'Use WordPress Excerpt Filters', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_filter_excerpt' ) . 
 			$form->get_td_no_checkbox( 'plugin_filter_excerpt' );
 
 			$table_rows[ 'plugin_p_strip' ] = '' .
-			$form->get_th_html( _x( 'Content Starts at 1st Paragraph', 'option label', 'wpsso' ), '', 'plugin_p_strip' ) . 
+			$form->get_th_html( _x( 'Content Starts at 1st Paragraph', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_p_strip' ) . 
 			$form->get_td_no_checkbox( 'plugin_p_strip' );
 
 			$table_rows[ 'plugin_use_img_alt' ] = '' .
-			$form->get_th_html( _x( 'Use Image Alt if No Content', 'option label', 'wpsso' ), '', 'plugin_use_img_alt' ) . 
+			$form->get_th_html( _x( 'Use Image Alt if No Content', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_use_img_alt' ) . 
 			$form->get_td_no_checkbox( 'plugin_use_img_alt' );
 
 			$table_rows[ 'plugin_img_alt_prefix' ] = '' . 
-			$form->get_th_html( _x( 'Image Alt Text Prefix', 'option label', 'wpsso' ), '', 'plugin_img_alt_prefix', $atts_locale ) . 
+			$form->get_th_html( _x( 'Image Alt Text Prefix', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_img_alt_prefix', $atts_locale ) . 
 			'<td class="blank">' . SucomUtil::get_key_value( 'plugin_img_alt_prefix', $form->options ) . '</td>';
 
 			$table_rows[ 'plugin_p_cap_prefix' ] = '' . 
-			$form->get_th_html( _x( 'WP Caption Prefix', 'option label', 'wpsso' ), '', 'plugin_p_cap_prefix', $atts_locale ) . 
+			$form->get_th_html( _x( 'WP Caption Prefix', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_p_cap_prefix', $atts_locale ) . 
 			'<td class="blank">' . SucomUtil::get_key_value( 'plugin_p_cap_prefix', $form->options ) . '</td>';
 
 			$table_rows[ 'plugin_term_title_prefix' ] = '' . 
-			$form->get_th_html( _x( 'Term Title Prefix', 'option label', 'wpsso' ), '', 'plugin_term_title_prefix', $atts_locale ) . 
+			$form->get_th_html( _x( 'Term Title Prefix', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_term_title_prefix', $atts_locale ) . 
 			'<td class="blank">' . SucomUtil::get_key_value( 'plugin_term_title_prefix', $form->options ) . '</td>';
 
 			$check_embed_html = '';
@@ -91,7 +91,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			}
 
 			$table_rows[ 'plugin_embed_media_apis' ] = $form->get_tr_hide( 'basic', $this->p->cf[ 'form' ][ 'embed_media_apis' ] ) . 
-			$form->get_th_html( _x( 'Check for Embedded Media', 'option label', 'wpsso' ), '', 'plugin_embed_media_apis' ).
+			$form->get_th_html( _x( 'Check for Embedded Media', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_embed_media_apis' ).
 			'<td class="blank">' . $check_embed_html . '</td>';
 
 			return $table_rows;
@@ -106,41 +106,41 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
 
 			$table_rows[ 'plugin_html_attr_filter' ] = '' .
-			$form->get_th_html( _x( '&lt;html&gt; Attributes Filter Hook', 'option label', 'wpsso' ), '', 'plugin_html_attr_filter' ).
+			$form->get_th_html( _x( '&lt;html&gt; Attributes Filter Hook', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_html_attr_filter' ).
 			'<td class="blank">Name: ' . $form->options[ 'plugin_html_attr_filter_name' ] . ', ' . 
 			'Priority: ' . $form->options[ 'plugin_html_attr_filter_prio' ] . '</td>';
 
 			$table_rows[ 'plugin_head_attr_filter' ] = '' .
-			$form->get_th_html( _x( '&lt;head&gt; Attributes Filter Hook', 'option label', 'wpsso' ), '', 'plugin_head_attr_filter' ).
+			$form->get_th_html( _x( '&lt;head&gt; Attributes Filter Hook', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_head_attr_filter' ).
 			'<td class="blank">Name: ' . $form->options[ 'plugin_head_attr_filter_name' ] . ', '.
 			'Priority: ' . $form->options[ 'plugin_head_attr_filter_prio' ] . '</td>';
 
 			$table_rows[ 'plugin_new_user_is_person' ] = '' . 
-			$form->get_th_html( _x( 'Add Person Role for New Users', 'option label', 'wpsso' ), '', 'plugin_new_user_is_person' ) . 
+			$form->get_th_html( _x( 'Add Person Role for New Users', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_new_user_is_person' ) . 
 			$form->get_td_no_checkbox( 'plugin_new_user_is_person' );
 
 			$table_rows[ 'plugin_page_excerpt' ] = '' . 
-			$form->get_th_html( _x( 'Enable WP Excerpt for Pages', 'option label', 'wpsso' ), '', 'plugin_page_excerpt' ) . 
+			$form->get_th_html( _x( 'Enable WP Excerpt for Pages', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_page_excerpt' ) . 
 			$form->get_td_no_checkbox( 'plugin_page_excerpt' );
 
 			$table_rows[ 'plugin_page_tags' ] = '' . 
-			$form->get_th_html( _x( 'Enable WP Tags for Pages', 'option label', 'wpsso' ), '', 'plugin_page_tags' ) . 
+			$form->get_th_html( _x( 'Enable WP Tags for Pages', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_page_tags' ) . 
 			$form->get_td_no_checkbox( 'plugin_page_tags' );
 
 			$table_rows[ 'plugin_check_head' ] = '' . 
-			$form->get_th_html( _x( 'Check for Duplicate Meta Tags', 'option label', 'wpsso' ), '', 'plugin_check_head' ) . 
+			$form->get_th_html( _x( 'Check for Duplicate Meta Tags', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_check_head' ) . 
 			$form->get_td_no_checkbox( 'plugin_check_head' );
 
 			$table_rows[ 'plugin_check_img_dims' ] = '' . 
-			$form->get_th_html( _x( 'Enforce Image Size Checks', 'option label', 'wpsso' ), '', 'plugin_check_img_dims' ) . 
+			$form->get_th_html( _x( 'Enforce Image Size Checks', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_check_img_dims' ) . 
 			$form->get_td_no_checkbox( 'plugin_check_img_dims', '<em>' . _x( 'recommended', 'option comment', 'wpsso' ) . '</em>' );
 
 			$table_rows[ 'plugin_upscale_images' ] = '' . 
-			$form->get_th_html( _x( 'Upscale Media Library Images', 'option label', 'wpsso' ), '', 'plugin_upscale_images' ) . 
+			$form->get_th_html( _x( 'Upscale Media Library Images', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_upscale_images' ) . 
 			$form->get_td_no_checkbox( 'plugin_upscale_images' );
 
 			$table_rows[ 'plugin_upscale_img_max' ] = '' .
-			$form->get_th_html( _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ), '', 'plugin_upscale_img_max' ) . 
+			$form->get_th_html( _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_upscale_img_max' ) . 
 			'<td class="blank">' . $form->options[ 'plugin_upscale_img_max' ] . ' %</td>';
 
 			/**
@@ -170,21 +170,21 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			) );
 
 			$table_rows[ 'plugin_add_to' ] = '' .
-			$form->get_th_html( sprintf( _x( 'Add %s Metabox to', 'option label', 'wpsso' ), $add_to_metabox_title ), '', 'plugin_add_to' ) . 
+			$form->get_th_html( sprintf( _x( 'Add %s Metabox to', 'option label', 'wpsso' ), $add_to_metabox_title ), $css_class = '', $css_id = 'plugin_add_to' ) . 
 			'<td class="blank">' . $add_to_checklist . '</td>';
 
 			/**
 			 * Read Yoast SEO social meta.
 			 */
 			$table_rows[ 'plugin_wpseo_social_meta' ] = '' .
-			$form->get_th_html( _x( 'Import Yoast SEO Social Meta', 'option label', 'wpsso' ), '', 'plugin_wpseo_social_meta' ) . 
+			$form->get_th_html( _x( 'Import Yoast SEO Social Meta', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_wpseo_social_meta' ) . 
 			$form->get_td_no_checkbox( 'plugin_wpseo_social_meta' );
 
 			/**
 			 * Default currency.
 			 */
 			$table_rows[ 'plugin_def_currency' ] = '' .
-			$form->get_th_html( _x( 'Default Currency', 'option label', 'wpsso' ), '', 'plugin_def_currency' ) . 
+			$form->get_th_html( _x( 'Default Currency', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_def_currency' ) . 
 			'<td class="blank">' . $form->get_no_select( 'plugin_def_currency', SucomUtil::get_currencies() ) . '</td>';
 
 			/**
@@ -234,20 +234,19 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$cols .= '</table>' . "\n";
 
 			$table_rows[ 'plugin_show_columns' ] = $form->get_th_html( _x( 'Additional List Table Columns',
-				'option label', 'wpsso' ), '', 'plugin_show_columns' ).
-					'<td>' . $cols . '</td>';
+				'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_show_columns' ) . '<td>' . $cols . '</td>';
 
 			/**
 			 * Default and custom column widths.
 			 */
 			$table_rows[ 'plugin_col_title_width' ] = '' . 
-			$form->get_th_html( _x( 'Title / Name Column Width', 'option label', 'wpsso' ), '', 'plugin_col_title_width' ) . 
+			$form->get_th_html( _x( 'Title / Name Column Width', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_col_title_width' ) . 
 			'<td>' . $form->get_no_input( 'plugin_col_title_width', 'short' ) . ' ' .
 				_x( 'and max width', 'option comment', 'wpsso' ) . ' ' . 
 					$form->get_no_input( 'plugin_col_title_width_max', 'short' ) . '</td>';
 
 			$table_rows[ 'plugin_col_def_width' ] = '' . 
-			$form->get_th_html( _x( 'Default Width for Posts / Pages', 'option label', 'wpsso' ), '', 'plugin_col_def_width' ) . 
+			$form->get_th_html( _x( 'Default Width for Posts / Pages', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_col_def_width' ) . 
 			'<td>' . $form->get_no_input( 'plugin_col_def_width', 'short' ) .
 				_x( 'and max width', 'option comment', 'wpsso' ) . ' ' . 
 					$form->get_no_input( 'plugin_col_def_width_max', 'short' ) . '</td>';
@@ -265,68 +264,68 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$this->p->msgs->get( 'pro-feature-msg', array( 'lca' => 'wpsso' ) ) . '</td>';
 
 			$table_rows[ 'plugin_head_cache_exp' ] = '' . 
-			$form->get_th_html( _x( 'Head Markup Array Cache Expiry', 'option label', 'wpsso' ), '', 'plugin_head_cache_exp' ) . 
+			$form->get_th_html( _x( 'Head Markup Array Cache Expiry', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_head_cache_exp' ) . 
 			'<td nowrap class="blank">' . $form->options[ 'plugin_head_cache_exp' ] . ' ' . 
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
 			WpssoAdmin::get_option_site_use( 'plugin_head_cache_exp', $form, $network );
 
 			$table_rows[ 'plugin_content_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_content_cache_exp' ) . 
-			$form->get_th_html( _x( 'Filtered Content Text Cache Expiry', 'option label', 'wpsso' ), '', 'plugin_content_cache_exp' ) . 
+			$form->get_th_html( _x( 'Filtered Content Text Cache Expiry', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_content_cache_exp' ) . 
 			'<td nowrap class="blank">' . $form->options[ 'plugin_content_cache_exp' ] . ' ' . 
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
 			WpssoAdmin::get_option_site_use( 'plugin_content_cache_exp', $form, $network );
 
 			$table_rows[ 'plugin_short_url_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_short_url_cache_exp' ) .
-			$form->get_th_html( _x( 'Shortened URL Cache Expiry', 'option label', 'wpsso' ), '', 'plugin_short_url_cache_exp' ) . 
+			$form->get_th_html( _x( 'Shortened URL Cache Expiry', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_short_url_cache_exp' ) . 
 			'<td nowrap class="blank">' . $form->options[ 'plugin_short_url_cache_exp' ] . ' ' . 
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
 			WpssoAdmin::get_option_site_use( 'plugin_short_url_cache_exp', $form, $network );
 
 			$table_rows[ 'plugin_imgsize_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_imgsize_cache_exp' ) . 
-			$form->get_th_html( _x( 'Image URL Info Cache Expiry', 'option label', 'wpsso' ), '', 'plugin_imgsize_cache_exp' ) . 
+			$form->get_th_html( _x( 'Image URL Info Cache Expiry', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_imgsize_cache_exp' ) . 
 			'<td nowrap class="blank">' . $form->options[ 'plugin_imgsize_cache_exp' ] . ' ' . 
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
 			WpssoAdmin::get_option_site_use( 'plugin_imgsize_cache_exp', $form, $network );
 
 			$table_rows[ 'plugin_list_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_list_cache_exp' ) . 
-			$form->get_th_html( _x( 'Text List Arrays Cache Expiry', 'option label', 'wpsso' ), '', 'plugin_list_cache_exp' ) .
+			$form->get_th_html( _x( 'Text List Arrays Cache Expiry', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_list_cache_exp' ) .
 			'<td nowrap class="blank">' . $form->options[ 'plugin_list_cache_exp' ] . ' ' . 
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
 			WpssoAdmin::get_option_site_use( 'plugin_list_cache_exp', $form, $network );
 
 			$table_rows[ 'plugin_types_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_types_cache_exp' ) . 
-			$form->get_th_html( _x( 'Schema Types Array Cache Expiry', 'option label', 'wpsso' ), '', 'plugin_types_cache_exp' ) . 
+			$form->get_th_html( _x( 'Schema Types Array Cache Expiry', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_types_cache_exp' ) . 
 			'<td nowrap class="blank">' . $form->options[ 'plugin_types_cache_exp' ] . ' ' . 
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
 			WpssoAdmin::get_option_site_use( 'plugin_types_cache_exp', $form, $network );
 
 			$table_rows[ 'plugin_clear_on_activate' ] = $form->get_tr_hide( 'basic', 'plugin_clear_on_activate' ) . 
-			$form->get_th_html( _x( 'Clear All Caches on Activate', 'option label', 'wpsso' ), '', 'plugin_clear_on_activate' ) . 
+			$form->get_th_html( _x( 'Clear All Caches on Activate', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_clear_on_activate' ) . 
 			$form->get_td_no_checkbox( 'plugin_clear_on_activate' ) . 
 			WpssoAdmin::get_option_site_use( 'plugin_clear_on_activate', $form, $network );
 
 			$table_rows[ 'plugin_clear_on_deactivate' ] = $form->get_tr_hide( 'basic', 'plugin_clear_on_deactivate' ) . 
-			$form->get_th_html( _x( 'Clear All Caches on Deactivate', 'option label', 'wpsso' ), '', 'plugin_clear_on_deactivate' ) . 
+			$form->get_th_html( _x( 'Clear All Caches on Deactivate', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_clear_on_deactivate' ) . 
 			$form->get_td_no_checkbox( 'plugin_clear_on_deactivate' ) . 
 			WpssoAdmin::get_option_site_use( 'plugin_clear_on_deactivate', $form, $network );
 
 			$table_rows[ 'plugin_clear_on_save' ] = '' . 
-			$form->get_th_html( _x( 'Clear All Caches on Save Settings', 'option label', 'wpsso' ), '', 'plugin_clear_on_save' ) . 
+			$form->get_th_html( _x( 'Clear All Caches on Save Settings', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_clear_on_save' ) . 
 			$form->get_td_no_checkbox( 'plugin_clear_on_save' ) . 
 			WpssoAdmin::get_option_site_use( 'plugin_clear_on_save', $form, $network );
 
 			$table_rows[ 'plugin_clear_short_urls' ] = $form->get_tr_hide( 'basic', 'plugin_clear_short_urls' ) . 
-			$form->get_th_html( _x( 'Refresh Short URLs on Clear Cache', 'option label', 'wpsso' ), '', 'plugin_clear_short_urls' ) . 
+			$form->get_th_html( _x( 'Refresh Short URLs on Clear Cache', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_clear_short_urls' ) . 
 			$form->get_td_no_checkbox( 'plugin_clear_short_urls' ) . 
 			WpssoAdmin::get_option_site_use( 'plugin_clear_short_urls', $form, $network );
 
 			$table_rows[ 'plugin_clear_post_terms' ] = $form->get_tr_hide( 'basic', 'plugin_clear_post_terms' ) . 
-			$form->get_th_html( _x( 'Clear Term Cache for Published Post', 'option label', 'wpsso' ), '', 'plugin_clear_post_terms' ) . 
+			$form->get_th_html( _x( 'Clear Term Cache for Published Post', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_clear_post_terms' ) . 
 			$form->get_td_no_checkbox( 'plugin_clear_post_terms' ) . 
 			WpssoAdmin::get_option_site_use( 'plugin_clear_post_terms', $form, $network );
 
 			$table_rows[ 'plugin_clear_for_comment' ] = $form->get_tr_hide( 'basic', 'plugin_clear_for_comment' ) . 
-			$form->get_th_html( _x( 'Clear Post Cache for New Comment', 'option label', 'wpsso' ), '', 'plugin_clear_for_comment' ) . 
+			$form->get_th_html( _x( 'Clear Post Cache for New Comment', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_clear_for_comment' ) . 
 			$form->get_td_no_checkbox( 'plugin_clear_for_comment' ) . 
 			WpssoAdmin::get_option_site_use( 'plugin_clear_for_comment', $form, $network );
 
@@ -365,23 +364,22 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg', array( 'lca' => 'wpsso' ) ) . '</td>';
 
 			$table_rows[ 'plugin_shortener' ] = '' . 
-			$form->get_th_html( _x( 'Preferred URL Shortening Service', 'option label', 'wpsso' ), '', 'plugin_shortener' ) . 
+			$form->get_th_html( _x( 'Preferred URL Shortening Service', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_shortener' ) . 
 			'<td class="blank">[None]</td>';
 
 			$table_rows[ 'plugin_min_shorten' ] = $form->get_tr_hide( 'basic', 'plugin_min_shorten' ) . 
-			$form->get_th_html( _x( 'Minimum URL Length to Shorten', 'option label', 'wpsso' ), '', 'plugin_min_shorten' ) . 
-			'<td nowrap class="blank">' . $form->options[ 'plugin_min_shorten' ] . ' ' . 
-			_x( 'characters', 'option comment', 'wpsso' ) . '</td>';
+			$form->get_th_html( _x( 'Minimum URL Length to Shorten', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_min_shorten' ) . 
+			'<td nowrap class="blank">' . $form->options[ 'plugin_min_shorten' ] . ' ' . _x( 'characters', 'option comment', 'wpsso' ) . '</td>';
 
 			$table_rows[ 'plugin_wp_shortlink' ] = '' . 
-			$form->get_th_html( _x( 'Short Sharing URL for WP Shortlink', 'option label', 'wpsso' ), '', 'plugin_wp_shortlink' ) . 
+			$form->get_th_html( _x( 'Short Sharing URL for WP Shortlink', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_wp_shortlink' ) . 
 			$form->get_td_no_checkbox( 'plugin_wp_shortlink' );
 
 			$table_rows[ 'plugin_add_link_rel_shortlink' ] = '' . 
 			$form->get_th_html( sprintf( _x( 'Add "%s" HTML Tag', 'option label', 'wpsso' ),
-				'link&nbsp;rel&nbsp;shortlink' ), '', 'plugin_add_link_rel_shortlink' ) . 
-			'<td class="blank">' . $form->get_no_checkbox( 'add_link_rel_shortlink',
-				'', 'add_link_rel_shortlink_html_tag', null, 'add_link_rel_shortlink' ) . '</td>';	// Group with option in head tags list
+				'link&nbsp;rel&nbsp;shortlink' ), $css_class = '', $css_id = 'plugin_add_link_rel_shortlink' ) . 
+			'<td class="blank">' . $form->get_no_checkbox( 'add_link_rel_shortlink', $css_class = '', $css_id = 'add_link_rel_shortlink_html_tag',
+				$force = null, $group = 'add_link_rel_shortlink' ) . '</td>';	// Group with option in head tags list
 
 			/**
 			 * Bitly URL shortener.
@@ -390,13 +388,16 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			'<td colspan="2" class="subsection"><h4>' . _x( 'Bitly URL Shortener', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 			$table_rows[ 'plugin_bitly_access_token' ] = $tr_html[ 'bitly' ] . 
-			$form->get_th_html( '<a href="https://bitly.com/a/oauth_apps">' . 
-			_x( 'Bitly Generic Access Token', 'option label', 'wpsso' ) . '</a>', '', 'plugin_bitly_access_token' ) . 
+			$form->get_th_html( _x( 'Bitly Generic Access Token', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_bitly_access_token' ) . 
 			'<td class="blank mono">' . $form->options[ 'plugin_bitly_access_token' ] . '</td>';
 
 			$table_rows[ 'plugin_bitly_domain' ] = $tr_html[ 'bitly' ] . 
-			$form->get_th_html( _x( 'Bitly Custom Short Domain', 'option label', 'wpsso' ), '', 'plugin_bitly_domain' ) . 
+			$form->get_th_html( _x( 'Bitly Short Domain (Optional)', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_bitly_domain' ) . 
 			'<td class="blank mono">' . $form->options[ 'plugin_bitly_domain' ] . '</td>';
+
+			$table_rows[ 'plugin_bitly_group_name' ] = $tr_html[ 'bitly' ] . 
+			$form->get_th_html( _x( 'Bitly Group Name (Optional)', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_bitly_group_name' ) . 
+			'<td class="blank mono">' . $form->options[ 'plugin_bitly_group_name' ] . '</td>';
 
 			/**
 			 * DLMY.App URL shortener.
@@ -405,7 +406,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			'<td colspan="2" class="subsection"><h4>' . _x( 'DLMY.App URL Shortener', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 			$table_rows[ 'plugin_dlmyapp_api_key' ] = $tr_html[ 'dlmyapp' ] . 
-			$form->get_th_html( _x( 'DLMY.App API Key', 'option label', 'wpsso' ), '', 'plugin_dlmyapp_api_key' ) . 
+			$form->get_th_html( _x( 'DLMY.App API Key', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_dlmyapp_api_key' ) . 
 			'<td class="blank mono">' . $form->options[ 'plugin_dlmyapp_api_key' ] . '</td>';
 
 			/**
@@ -415,7 +416,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			'<td colspan="2" class="subsection"><h4>' . _x( 'Ow.ly URL Shortener', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 			$table_rows[ 'plugin_owly_api_key' ] = $tr_html[ 'owly' ] . 
-			$form->get_th_html( _x( 'Ow.ly API Key', 'option label', 'wpsso' ), '', 'plugin_owly_api_key' ) . 
+			$form->get_th_html( _x( 'Ow.ly API Key', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_owly_api_key' ) . 
 			'<td class="blank mono">' . $form->options[ 'plugin_owly_api_key' ] . '</td>';
 
 			/**
@@ -425,19 +426,19 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			'<td colspan="2" class="subsection"><h4>' . _x( 'Your Own URL Shortener (YOURLS)', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 			$table_rows[ 'plugin_yourls_api_url' ] = $tr_html[ 'yourls' ] . 
-			$form->get_th_html( _x( 'YOURLS API URL', 'option label', 'wpsso' ), '', 'plugin_yourls_api_url' ) . 
+			$form->get_th_html( _x( 'YOURLS API URL', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_yourls_api_url' ) . 
 			'<td class="blank mono">' . $form->options[ 'plugin_yourls_api_url' ] . '</td>';
 
 			$table_rows[ 'plugin_yourls_username' ] = $tr_html[ 'yourls' ] . 
-			$form->get_th_html( _x( 'YOURLS Username', 'option label', 'wpsso' ), '', 'plugin_yourls_username' ) . 
+			$form->get_th_html( _x( 'YOURLS Username', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_yourls_username' ) . 
 			'<td class="blank mono">' . $form->options[ 'plugin_yourls_username' ] . '</td>';
 
 			$table_rows[ 'plugin_yourls_password' ] = $tr_html[ 'yourls' ] . 
-			$form->get_th_html( _x( 'YOURLS Password', 'option label', 'wpsso' ), '', 'plugin_yourls_password' ) . 
+			$form->get_th_html( _x( 'YOURLS Password', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_yourls_password' ) . 
 			'<td class="blank mono">' . $form->options[ 'plugin_yourls_password' ] . '</td>';
 
 			$table_rows[ 'plugin_yourls_token' ] = $tr_html[ 'yourls' ] . 
-			$form->get_th_html( _x( 'YOURLS Token', 'option label', 'wpsso' ), '', 'plugin_yourls_token' ) . 
+			$form->get_th_html( _x( 'YOURLS Token', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_yourls_token' ) . 
 			'<td class="blank mono">' . $form->options[ 'plugin_yourls_token' ] . '</td>';
 
 			return $table_rows;
