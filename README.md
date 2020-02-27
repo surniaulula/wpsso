@@ -3,11 +3,11 @@
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
 <tr><th align="right" valign="top" nowrap>Summary</th><td>Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.</td></tr>
-<tr><th align="right" valign="top" nowrap>Stable Version</th><td>6.21.2</td></tr>
+<tr><th align="right" valign="top" nowrap>Stable Version</th><td>6.22.0</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires PHP</th><td>5.5 or newer</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires WordPress</th><td>4.0 or newer</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To WordPress</th><td>5.3.2</td></tr>
-<tr><th align="right" valign="top" nowrap>Tested Up To WooCommerce</th><td>3.9.1</td></tr>
+<tr><th align="right" valign="top" nowrap>Tested Up To WooCommerce</th><td>3.9.2</td></tr>
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
 <tr><th align="right" valign="top" nowrap>License</th><td><a href="https://www.gnu.org/licenses/gpl.txt">GPLv3</a></td></tr>
 <tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>open graph, meta tags, rich pins, twitter cards, schema, rich results, embed, social sharing, structured data, snippet, seo, facebook, twitter, linkedin, pinterest, google, schema.org</td></tr>
