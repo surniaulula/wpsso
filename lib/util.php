@@ -1617,7 +1617,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					$mod = $this->p->$obj_name->get_mod( $obj_id );
 
-					$this->refresh_mod_head_meta( $mod, $user_id, $read_cache );
+					$this->refresh_mod_head_meta( $mod, $read_cache );
 				}
 			}
 
@@ -1630,8 +1630,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				$notice_msg .= sprintf( __( 'The total execution time for this task was %0.3f seconds.', 'wpsso' ), $mtime_total );
 
-				$this->p->notice->force_expire( $notice_key, $user_id );
-
 				$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
 			}
 
@@ -1641,7 +1639,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/**
 		 * Called by refresh_all_cache().
 		 */
-		public function refresh_mod_head_meta( array $mod, $user_id = null, $read_cache = false ) {
+		public function refresh_mod_head_meta( array $mod, $read_cache = false ) {
 
 			$this->add_plugin_image_sizes( $wp_obj = false, $image_sizes = array(), $filter_sizes = true );
 

@@ -854,7 +854,7 @@ msgid "Requests to cache this URL will be ignored for %d second(s)."
 msgstr ""
 
 #: lib/com/cache.php:355 lib/com/cache.php:512 lib/gettext-com.php:16
-#: lib/gettext-com.php:18 lib/util.php:1898
+#: lib/gettext-com.php:18 lib/util.php:1896
 msgid "Error removing cache file %s."
 msgstr ""
 
@@ -6150,12 +6150,12 @@ msgid "No Title"
 msgstr ""
 
 #: lib/post.php:475 lib/register.php:322 lib/term.php:419 lib/user.php:366
-#: lib/util.php:500 lib/util.php:3651
+#: lib/util.php:500 lib/util.php:3649
 msgid "%s warning:"
 msgstr ""
 
 #: lib/post.php:476 lib/term.php:420 lib/user.php:367 lib/util.php:501
-#: lib/util.php:3652
+#: lib/util.php:3650
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -6208,7 +6208,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:1022 lib/util.php:2165
+#: lib/post.php:1022 lib/util.php:2163
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -7041,47 +7041,47 @@ msgid ""
 "refreshed."
 msgstr ""
 
-#: lib/util.php:1869
+#: lib/util.php:1867
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util.php:1962
+#: lib/util.php:1960
 msgid "Error reading the %s file for the article sections list."
 msgstr ""
 
-#: lib/util.php:2059
+#: lib/util.php:2057
 msgid "Error reading the %s file for the product categories list."
 msgstr ""
 
-#: lib/util.php:2152
+#: lib/util.php:2150
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:2178
+#: lib/util.php:2176
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:2378
+#: lib/util.php:2376
 msgid ""
 "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
 "provider to have the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:2391
+#: lib/util.php:2389
 msgid ""
 "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:3653
+#: lib/util.php:3651
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3668
+#: lib/util.php:3666
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -7090,39 +7090,39 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3670
+#: lib/util.php:3668
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3968
+#: lib/util.php:3966
 msgid "No options available."
 msgstr ""
 
-#: lib/util.php:3997
+#: lib/util.php:3995
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:4000
+#: lib/util.php:3998
 msgctxt "option comment"
 msgid "show these options now"
 msgstr ""
 
-#: lib/util.php:4005
+#: lib/util.php:4003
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:4008
+#: lib/util.php:4006
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:4344
+#: lib/util.php:4342
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 
