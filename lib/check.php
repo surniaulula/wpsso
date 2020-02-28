@@ -241,7 +241,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 								case 'wpml':
 
-									$chk[ 'function' ] = 'icl_object_id';
+									$chk[ 'class' ] = 'SitePress';
 
 									break;
 							}
