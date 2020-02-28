@@ -36,7 +36,7 @@ _x( 'Premium Licenses', 'lib file description', 'wpsso' );
 _x( 'Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.', 'plugin description', 'wpsso' );
 _x( 'Apple Store / iTunes and Google Play App meta tags for Apple\'s mobile Safari banner and Twitter\'s App Card.', 'plugin description', 'wpsso' );
 _x( 'Schema BreadcrumbList markup in JSON-LD for better Google Rich Results with Structured Data.', 'plugin description', 'wpsso' );
-_x( 'Manage FAQ categories with Question and Answer pages.', 'plugin description', 'wpsso' );
+_x( 'Create FAQ and Question / Answer pages and/or use shortcodes to include FAQs anywhere in your content.', 'plugin description', 'wpsso' );
 _x( 'Inherit featured and custom images from parents for posts, pages, custom post types, categories, tags, and custom taxonomies.', 'plugin description', 'wpsso' );
 _x( 'Google Rich Results with Structured Data for Articles, Carousels, Events, FAQPages, HowTos, Images, Local Business, Products, Recipes, Reviews, Videos, and more.', 'plugin description', 'wpsso' );
 _x( 'Customize home page Schema Organization markup and manage additional Organizations (publisher, organizer, etc.).', 'plugin description', 'wpsso' );

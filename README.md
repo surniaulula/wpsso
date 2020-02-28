@@ -33,17 +33,6 @@
 
 <p>WPSSO Core is language / locale aware, which means you can customize your site information, social page URLs and Knowledge Graph information for different languages.</p>
 
-<p><strong>Includes quality assurance features and options:</strong></p>
-
-<ul>
-<li>Checks and warns of any missing PHP modules.</li>
-<li>Checks 3rd party plugin settings for possible conflicts.</li>
-<li>Checks for minimum / maximum image dimensions and aspect ratios.</li>
-<li>Shows notices for missing and required images.</li>
-<li>Validates theme header templates for correct HTML markup.</li>
-<li>Verifies webpage HTML for duplicate meta tags.</li>
-</ul>
-
 <p><strong>Coded for maximum performance:</strong></p>
 
 <p>WPSSO Core makes full use of all available caching methods &mdash; along with offering advanced caching features like pre-seeding its cache in background. WPSSO Core and its complementary add-ons only load the libraries and classes they need, keeping their code small, fast and light. All code is fully tested and compatible with the latest version of WordPress and PHP v7.x (PHP v5.5 or newer required).</p>

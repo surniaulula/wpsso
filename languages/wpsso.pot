@@ -1464,7 +1464,9 @@ msgstr ""
 
 #: lib/gettext-config.php:39
 msgctxt "plugin description"
-msgid "Manage FAQ categories with Question and Answer pages."
+msgid ""
+"Create FAQ and Question / Answer pages and/or use shortcodes to include FAQs "
+"anywhere in your content."
 msgstr ""
 
 #: lib/gettext-config.php:40

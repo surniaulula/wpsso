@@ -36,15 +36,6 @@ WPSSO Core and its complementary add-ons create meta tags and Schema markup for 
 
 WPSSO Core is language / locale aware, which means you can customize your site information, social page URLs and Knowledge Graph information for different languages.
 
-**Includes quality assurance features and options:**
-
-* Checks and warns of any missing PHP modules.
-* Checks 3rd party plugin settings for possible conflicts.
-* Checks for minimum / maximum image dimensions and aspect ratios.
-* Shows notices for missing and required images.
-* Validates theme header templates for correct HTML markup.
-* Verifies webpage HTML for duplicate meta tags.
-
 **Coded for maximum performance:**
 
 WPSSO Core makes full use of all available caching methods &mdash; along with offering advanced caching features like pre-seeding its cache in background. WPSSO Core and its complementary add-ons only load the libraries and classes they need, keeping their code small, fast and light. All code is fully tested and compatible with the latest version of WordPress and PHP v7.x (PHP v5.5 or newer required).

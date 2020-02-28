@@ -291,7 +291,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssofaq' => array(			// Plugin acronym.
 					'short'       => 'WPSSO FAQ',	// Short plugin name.
 					'name'        => 'WPSSO FAQ Manager',
-					'desc'        => 'Manage FAQ categories with Question and Answer pages.',
+					'desc'        => 'Create FAQ and Question / Answer pages and/or use shortcodes to include FAQs anywhere in your content.',
 					'slug'        => 'wpsso-faq',
 					'base'        => 'wpsso-faq/wpsso-faq.php',
 					'update_auth' => '',		// No premium version.
