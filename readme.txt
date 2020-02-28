@@ -12,7 +12,7 @@ Requires PHP: 5.5
 Requires At Least: 4.0
 Tested Up To: 5.3.2
 WC Tested Up To: 3.9.2
-Stable Tag: 6.22.0
+Stable Tag: 6.22.1
 
 Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.
 
@@ -852,12 +852,4 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 6.22.1 =
 
 (2020/02/28) Fix to handle a WP_Error object returned by the WPML 'wpml_post_language_details' filter on post editing pages.
-
-= 6.22.0 =
-
-(2020/02/27) Added a WPML integration module to improve locale support (Premium version). Updated the Bitly API from v3 to v4 (Premium version). Added the Schema MedicalCondition sub-types.
-
-= 6.21.2 =
-
-(2020/02/21) Moved the Schema Type option in the Document SSO metabox just above the Open Graph Type option. Added a jQuery change event to dynamically update the Open Graph type value based on the selected Schema type.
 
