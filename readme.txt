@@ -506,6 +506,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 6.22.1 (2020/02/28)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fix to handle a WP_Error object returned by the WPML 'wpml_post_language_details' filter on post editing pages.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v5.5.
+	* WordPress v4.0.
+
 **Version 6.22.0 (2020/02/27)**
 
 * **New Features**
@@ -834,6 +848,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v3.9.
 
 == Upgrade Notice ==
+
+= 6.22.1 =
+
+(2020/02/28) Fix to handle a WP_Error object returned by the WPML 'wpml_post_language_details' filter on post editing pages.
 
 = 6.22.0 =
 
