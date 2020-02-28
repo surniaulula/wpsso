@@ -513,7 +513,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* Fix to handle a WP_Error object returned by the WPML 'wpml_post_language_details' filter on post editing pages.
+	* Fix to handle a WP_Error object returned by the WPML 'wpml_post_language_details' filter on post editing pages (Premium version).
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -851,5 +851,5 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 6.22.1 =
 
-(2020/02/28) Fix to handle a WP_Error object returned by the WPML 'wpml_post_language_details' filter on post editing pages.
+(2020/02/28) Fix to handle a WP_Error object returned by the WPML 'wpml_post_language_details' filter on post editing pages (Premium version).
 
