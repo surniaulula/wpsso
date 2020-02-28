@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.22.0\n"
+"Project-Id-Version: WPSSO Core 6.22.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-02-27 07:53-0800\n"
-"PO-Revision-Date: 2020-02-27 09:19-0800\n"
+"POT-Creation-Date: 2020-02-28 13:08-0800\n"
+"PO-Revision-Date: 2020-02-28 13:11-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -796,7 +796,7 @@ msgid "Requests to cache this URL will be ignored for %d second(s)."
 msgstr "Les demandes de mise en cache de cette URL seront ignorées pour %d seconde(s)."
 
 #: lib/com/cache.php:355 lib/com/cache.php:512 lib/gettext-com.php:16
-#: lib/gettext-com.php:18 lib/util.php:1898
+#: lib/gettext-com.php:18 lib/util.php:1896
 msgid "Error removing cache file %s."
 msgstr "Erreur de suppression du fichier cache %s."
 
@@ -1364,8 +1364,8 @@ msgstr "Balisage Schéma BreadcrumbList en format JSON-LD pour de meilleurs rés
 
 #: lib/gettext-config.php:39
 msgctxt "plugin description"
-msgid "Manage FAQ categories with Question and Answer pages."
-msgstr "Gérez les catégories de FAQ avec pages de questions et réponses."
+msgid "Create FAQ and Question / Answer pages and/or use shortcodes to include FAQs anywhere in your content."
+msgstr "Créez des pages FAQ et Questions / Réponses et/ou utilisez des shortcodes pour inclure des FAQ dans votre contenu."
 
 #: lib/gettext-config.php:40
 msgctxt "plugin description"
@@ -5334,12 +5334,12 @@ msgid "No Title"
 msgstr "Aucun titre"
 
 #: lib/post.php:475 lib/register.php:322 lib/term.php:419 lib/user.php:366
-#: lib/util.php:500 lib/util.php:3651
+#: lib/util.php:500 lib/util.php:3649
 msgid "%s warning:"
 msgstr "Alerte %s:"
 
 #: lib/post.php:476 lib/term.php:420 lib/user.php:367 lib/util.php:501
-#: lib/util.php:3652
+#: lib/util.php:3650
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr "supérieur au max recommandé de %1$0.3f secs"
 
@@ -5383,7 +5383,7 @@ msgstr "SVP envisager d'améliorer la vitesse de votre site."
 msgid "As an added benefit, a faster site will also improve ranking in search results."
 msgstr "Comme avantage supplémentaire, un site plus rapide améliore également le classement dans les résultats de recherche."
 
-#: lib/post.php:1022 lib/util.php:2165
+#: lib/post.php:1022 lib/util.php:2163
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr "Erreur en récupérant le la page Web <a href=\"%1$s\">%1$s</a>."
 
@@ -6181,74 +6181,74 @@ msgstr "Abandon de l'actualisation du cache transitoire - une autre tâche ident
 msgid "The transient cache for %1$d posts, %2$d terms and %3$d users has been refreshed."
 msgstr "Le cache transitoires pour %1$d articles, %2$d termes et %3$d utilisateurs a été actualisé."
 
-#: lib/util.php:1869
+#: lib/util.php:1867
 msgid "Failed to open the cache folder %s for reading."
 msgstr "Impossible d'ouvrir le dossier de cache %s pour lecture."
 
-#: lib/util.php:1962
+#: lib/util.php:1960
 msgid "Error reading the %s file for the article sections list."
 msgstr "Erreur de lecture du fichier %s pour la liste des rubriques d'article."
 
-#: lib/util.php:2059
+#: lib/util.php:2057
 msgid "Error reading the %s file for the product categories list."
 msgstr "Erreur de lecture du fichier %s pour de la liste des catégories de produit."
 
-#: lib/util.php:2152
+#: lib/util.php:2150
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr "L'argument de demande à %1$s n'est pas du HTML ou un URL valide."
 
-#: lib/util.php:2178
+#: lib/util.php:2176
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr "La page Web récupéré de <a href=\"%1$s\">%1$s</a> est vide."
 
 #. translators: %1$s is the class name.
-#: lib/util.php:2378
+#: lib/util.php:2376
 msgid "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting provider to have the missing class installed."
 msgstr "La classe PHP <code>%1$s</code> est manquante &ndash; contactez votre fournisseur d'hébergement pour installer la classe manquante."
 
 #. translators: %1$s is the function name.
-#: lib/util.php:2391
+#: lib/util.php:2389
 msgid "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting provider to have the missing function installed."
 msgstr "La fonction PHP <code>%1$s</code> est manquante &ndash; contactez votre fournisseur d'hébergement pour installer la fonction manquante."
 
-#: lib/util.php:3653
+#: lib/util.php:3651
 msgid "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the \"%2$s\" filter (%3$s)."
 msgstr "Crochet(s) de filtre lent détecté - WordPress a pris %1$0.3f secs pour exécuter le filtre \"%2$s\" (%3$s)."
 
-#: lib/util.php:3668
+#: lib/util.php:3666
 msgid "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f seconds to execute. This is longer than the recommended maximum of %3$0.3f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr "Crochet(s) de filtre lent détecté &mdash le filtre WordPress %1$s a pris %2$0.3f secondes pour exécuter. Ceci est plus long que le maximum recommandé de %3$0.3f secondes et peut affecter le temps de chargement de la page. S'il vous plaît, envisagez d'examiner les fonctions d'extensions de tiers partie et de thème accrochées au filtre WordPress %1$s pour du code PHP lent et/ou sous-optimal."
 
-#: lib/util.php:3670
+#: lib/util.php:3668
 msgid "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance."
 msgstr "Si vous activez l'extension %1$s et effacez le cache de %2$s (pour ré-appliquer le filtre), vous obtiendrez peut-être plus d'informations sur les crochets spécifiques ou le code PHP affectant les performances."
 
-#: lib/util.php:3968
+#: lib/util.php:3966
 msgid "No options available."
 msgstr "Aucune options disponibles."
 
-#: lib/util.php:3997
+#: lib/util.php:3995
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr "%1$d options supplémentaires ne figurent pas dans l'affichage \"%2$s\""
 
-#: lib/util.php:4000
+#: lib/util.php:3998
 msgctxt "option comment"
 msgid "show these options now"
 msgstr "afficher ces options maintenant"
 
-#: lib/util.php:4005
+#: lib/util.php:4003
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue \"%2$s\""
 
-#: lib/util.php:4008
+#: lib/util.php:4006
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr "afficher ces lignes maintenant"
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:4344
+#: lib/util.php:4342
 msgid "%1$s for %2$s ID %3$d"
 msgstr "%1$s pour %2$s ID %3$d"
 
