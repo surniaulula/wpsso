@@ -56,16 +56,7 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 
 * Updates WordPress oEmbed data with the Open Graph title, description, and image for posts, pages, and custom post types.
 
-* Offers meta tags and markup for all webpages, including:
-
-	* Home (Static Page or Blog)
-	* Posts, Pages, and Custom Post Types
-	* Categories, Tags, and Custom Taxonomy / Terms
-	* User Profile Pages
-	* Media Attachment Pages
-	* Search Result Pages
-
-* Custom WordPress image size settings for:
+* Provides WordPress image size settings for:
 
 	* Open Graph (Facebook and Others)
 	* Schema (Google and Pinterest)
@@ -77,9 +68,22 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 	* Twitter Summary Card
 	* Twitter Large Image Summary Card
 
-* Capable of finding images from numerous sources, including featured, attached, gallery shortcode, images from HTML tags, or a custom fallback image.
+* Locates images from numerous sources, including featured, attached, gallery shortcode, content images, or a custom fallback image.
 
-* Contextual help for every plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/).
+* Offers meta tags and markup for all webpages, including:
+
+	* Home Page (static page or blog)
+	* Posts, Pages, and Custom Post Types
+	* Categories, Tags, and Custom Taxonomy / Terms
+	* User Profile Pages
+	* Media Attachment Pages
+	* Search Result Pages
+
+* Customize values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags), custom post types, and user profiles:
+
+	* Customize Text
+		* Schema Type
+		* Open Graph Type
 
 * Built-in support for AMP plugins:
 
@@ -115,6 +119,8 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 	* Validates theme header templates for correct HTML markup.
 	* Verifies webpage HTML for duplicate meta tags.
 
+* Contextual help for every plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/).
+
 <h3>Free Complementary Add-ons</h3>
 
 Need even more features?
@@ -140,11 +146,9 @@ Simply activate the free complementary add-on(s) you need:
 
 The Standard version is designed to satisfy the requirements of most standard WordPress sites / blogs. If your site requires additional plugin or service API integration, like WooCommerce shops, embedded video support, or advanced customization features, then you may want the Premium version for those additional features.
 
-* Customize default values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags), custom post types, and user profiles:
+* Customize additional values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags), custom post types, and user profiles:
 
 	* Customize Text
-		* Schema Type
-		* Open Graph Type
 		* Default Title
 		* Default Description
 		* Pinterest Image Description
@@ -506,6 +510,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 6.23.0-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v5.5.
+	* WordPress v4.0.
+
 **Version 6.22.1 (2020/02/28)**
 
 * **New Features**
@@ -848,6 +866,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v3.9.
 
 == Upgrade Notice ==
+
+= 6.23.0-dev.1 =
+
+(TBD) None.
 
 = 6.22.1 =
 

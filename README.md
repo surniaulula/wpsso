@@ -52,17 +52,7 @@
 <ul>
 <li><p>Complete and accurate meta tags for all social sites, search engines, web browser extensions, mail and messaging apps, and embedded object / iframe content.</p></li>
 <li><p>Updates WordPress oEmbed data with the Open Graph title, description, and image for posts, pages, and custom post types.</p></li>
-<li><p>Offers meta tags and markup for all webpages, including:</p>
-
-<ul>
-<li>Home (Static Page or Blog)</li>
-<li>Posts, Pages, and Custom Post Types</li>
-<li>Categories, Tags, and Custom Taxonomy / Terms</li>
-<li>User Profile Pages</li>
-<li>Media Attachment Pages</li>
-<li>Search Result Pages</li>
-</ul></li>
-<li><p>Custom WordPress image size settings for:</p>
+<li><p>Provides WordPress image size settings for:</p>
 
 <ul>
 <li>Open Graph (Facebook and Others)</li>
@@ -75,8 +65,27 @@
 <li>Twitter Summary Card</li>
 <li>Twitter Large Image Summary Card</li>
 </ul></li>
-<li><p>Capable of finding images from numerous sources, including featured, attached, gallery shortcode, images from HTML tags, or a custom fallback image.</p></li>
-<li><p>Contextual help for every plugin option and <a href="https://wpsso.com/docs/plugins/wpsso/">comprehensive online documentation</a>.</p></li>
+<li><p>Locates images from numerous sources, including featured, attached, gallery shortcode, content images, or a custom fallback image.</p></li>
+<li><p>Offers meta tags and markup for all webpages, including:</p>
+
+<ul>
+<li>Home Page (static page or blog)</li>
+<li>Posts, Pages, and Custom Post Types</li>
+<li>Categories, Tags, and Custom Taxonomy / Terms</li>
+<li>User Profile Pages</li>
+<li>Media Attachment Pages</li>
+<li>Search Result Pages</li>
+</ul></li>
+<li><p>Customize values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags), custom post types, and user profiles:</p>
+
+<ul>
+<li>Customize Text
+
+<ul>
+<li>Schema Type</li>
+<li>Open Graph Type</li>
+</ul></li>
+</ul></li>
 <li><p>Built-in support for AMP plugins:</p>
 
 <ul>
@@ -115,6 +124,7 @@
 <li>Validates theme header templates for correct HTML markup.</li>
 <li>Verifies webpage HTML for duplicate meta tags.</li>
 </ul></li>
+<li><p>Contextual help for every plugin option and <a href="https://wpsso.com/docs/plugins/wpsso/">comprehensive online documentation</a>.</p></li>
 </ul>
 
 <h3>Free Complementary Add-ons</h3>
@@ -145,14 +155,12 @@
 <p>The Standard version is designed to satisfy the requirements of most standard WordPress sites / blogs. If your site requires additional plugin or service API integration, like WooCommerce shops, embedded video support, or advanced customization features, then you may want the Premium version for those additional features.</p>
 
 <ul>
-<li><p>Customize default values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags), custom post types, and user profiles:</p>
+<li><p>Customize additional values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags), custom post types, and user profiles:</p>
 
 <ul>
 <li>Customize Text
 
 <ul>
-<li>Schema Type</li>
-<li>Open Graph Type</li>
 <li>Default Title</li>
 <li>Default Description</li>
 <li>Pinterest Image Description</li>
