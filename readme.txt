@@ -314,7 +314,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 	* Organization Information
 		* Select an Organization
 	* Person Information
-		* Alternate Person
+		* Select a Person
 	* Additional Product Information
 		* Product Length (cm)
 		* Product Width (cm)
