@@ -239,7 +239,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'plugin_html_attr_filter_name':
 				case 'plugin_img_alt_prefix':		// Content Image Alt Prefix.
 				case 'plugin_p_cap_prefix':		// WP Caption Text Prefix.
-				case 'plugin_term_title_prefix':	// Term Title Prefix.
 				case 'plugin_bitly_access_token':	// Bitly Generic Access Token.
 				case 'plugin_bitly_domain':		// Bitly Short Domain (Optional).
 				case 'plugin_bitly_group_name':		// Bitly Group Name (Optional).

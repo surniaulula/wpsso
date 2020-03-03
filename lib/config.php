@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.23.0-dev.1',	// Plugin version.
-					'opt_version' => '711',		// Increment when changing default option values.
+					'version'     => '6.23.0-dev.2',	// Plugin version.
+					'opt_version' => '712',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -1396,7 +1396,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_use_img_alt'       => 1,			// Use Image Alt if No Content.
 					'plugin_img_alt_prefix'    => 'Image:',			// Content Image Alt Prefix.
 					'plugin_p_cap_prefix'      => 'Caption:',		// WP Caption Text Prefix.
-					'plugin_term_title_prefix' => '',			// Term Title Prefix.
 					'plugin_no_title_text'     => 'No Title',		// No Title Text.
 					'plugin_no_desc_text'      => 'No Description.',	// No Description Text.
 					'plugin_gravatar_api'      => 1,			// Gravatar is Author Default Image

@@ -752,14 +752,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_term_title_prefix':	// Term Title Prefix.
-
-							$text = sprintf( __( '%s can prefix the title of term archive pages (for example, "Archive for").', 'wpsso' ), $info[ 'short' ] ) . ' ';
-
-							$text .= __( 'Leave this option blank to prevent term titles from being prefixed.', 'wpsso' );
-
-							break;
-
 						case 'tooltip-plugin_no_title_text':	// No Title Text.
 
 							$text = __( 'A fallback string to use when there is no title text available (for example, "No Title").' );

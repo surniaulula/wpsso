@@ -1441,9 +1441,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		/**
 		 * Includes parent names in the term title if the $sep value is not empty.
 		 */
-		public function get_term_title( $term_id = 0, $sep = null, $prefix = null ) {
+		public function get_term_title( $term_id = 0, $sep = null ) {
 
-			$term_obj   = false;
+			$term_obj = false;
+
 			$title_text = false;
 
 			if ( is_object( $term_id ) ) {
@@ -1478,10 +1479,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( null === $sep ) {
 				$sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
-			}
-
-			if ( null === $prefix ) {
-				$prefix = SucomUtil::get_key_value( 'plugin_term_title_prefix', $this->p->options );
 			}
 
 			if ( isset( $term_obj->name ) ) {
@@ -1524,13 +1521,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						}
 					}
 				}
-			}
-
-			/**
-			 * Add an optional prefix, if we have one, to the term title, if we have one.
-			 */
-			if ( ! empty( $prefix ) && ! empty( $title_text ) ) {
-				$title_text = (string) $prefix . ' ' . $title_text;
 			}
 
 			if ( $this->p->debug->enabled ) {

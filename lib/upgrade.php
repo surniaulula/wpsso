@@ -354,6 +354,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				703 => array(
 					'plugin_clear_all_refresh' => '',
 				),
+				711 => array(
+					'plugin_term_title_prefix' => '',
+				),
 			),
 		);
 
