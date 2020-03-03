@@ -694,7 +694,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$desc_text = SucomUtil::get_key_value( 'plugin_no_desc_text', $this->p->options );
 
 				if ( empty( $desc_text ) ) {	// Just in case.
-					$desc_text = _x( 'No Description', 'default description', 'wpsso' );
+					$desc_text = _x( 'No Description.', 'default description', 'wpsso' );
 				}
 			}
 

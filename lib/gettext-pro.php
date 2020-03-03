@@ -160,7 +160,7 @@ __( '%1$s %2$s ignored &mdash; the resulting image of %3$s is too small for the 
 __( 'NextGEN Gallery', 'wpsso' );
 _x( 'BuddyPress Member Bio Field Name', 'option label', 'wpsso' );
 __( 'The BuddyPress member profile page does not include the <em>Biographical Info</em> text from the WordPress user profile. If you\'ve created an additional BuddyPress Profile Field for members to enter their profile description, enter the field name here (example: Biographical Info, About Me, etc.).', 'wpsso' );
-__( 'No Description', 'wpsso' );
+_x( 'No Description.', 'default description', 'wpsso' );
 __( '%s error:', 'wpsso' );
 __( 'The URL shortening library file for "%s" is missing and required.', 'wpsso' );
 __( 'The "%s" option value is empty and required.', 'wpsso' );

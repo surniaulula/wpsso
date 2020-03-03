@@ -3207,8 +3207,10 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: lib/gettext-pro.php:163 lib/pro/social/buddypress.php:656
-msgid "No Description"
+#: lib/gettext-pro.php:163 lib/page.php:697 lib/pro/social/buddypress.php:656
+#: lib/wp-meta.php:839
+msgctxt "default description"
+msgid "No Description."
 msgstr ""
 
 #. translators: %s is the service id.
@@ -4115,7 +4117,7 @@ msgstr ""
 
 #: lib/messages.php:741
 msgid ""
-"When using the text from image %1$s attributes, %2$s can prefix the "
+"When the text from image %1$s attributes is used, %2$s can prefix the "
 "attribute text with an optional string (for example, \"Image:\")."
 msgstr ""
 
@@ -6060,17 +6062,12 @@ msgctxt "default description"
 msgid "Archive page."
 msgstr ""
 
-#: lib/page.php:697
-msgctxt "default description"
-msgid "No Description"
-msgstr ""
-
 #: lib/page.php:842 lib/page.php:846
 msgctxt "default title"
 msgid "%s Archive"
 msgstr ""
 
-#: lib/page.php:916
+#: lib/page.php:916 lib/wp-meta.php:836
 msgctxt "default title"
 msgid "No Title"
 msgstr ""

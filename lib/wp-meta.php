@@ -832,11 +832,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					<div class="preview_box">
 						' . $og_prev_img_html . '
 						<div class="preview_txt">
-							<div class="preview_title">' . 
-								( empty( $head_info[ 'og:title' ] ) ? 'No Title' : $head_info[ 'og:title' ] ) . 
+							<div class="preview_title">' . ( empty( $head_info[ 'og:title' ] ) ?
+								_x( 'No Title', 'default title', 'wpsso' ) : $head_info[ 'og:title' ] ) . 
 							'</div><!-- .preview_title -->
-							<div class="preview_desc">' . 
-								( empty( $head_info[ 'og:description' ] ) ? 'No Description' : $head_info[ 'og:description' ] ) . 
+							<div class="preview_desc">' . ( empty( $head_info[ 'og:description' ] ) ?
+								_x( 'No Description.', 'default description', 'wpsso' ) : $head_info[ 'og:description' ] ) . 
 							'</div><!-- .preview_desc -->
 							<div class="preview_by">' . 
 								$_SERVER[ 'SERVER_NAME' ] . 
