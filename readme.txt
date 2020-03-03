@@ -82,8 +82,18 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 * Customize values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags), custom post types, and user profiles:
 
 	* Customize Text
+		* Preferred Cropping (image editing page) 
 		* Schema Type
 		* Open Graph Type
+		* Default Title
+		* Default Description
+		* Pinterest Image Description
+		* Twitter Card Description
+		* Search Description
+		* Sharing URL
+		* Canonical URL
+		* Article Information
+			* Article Section
 
 * Built-in support for AMP plugins:
 
@@ -149,15 +159,6 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 * Customize additional values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags), custom post types, and user profiles:
 
 	* Customize Text
-		* Default Title
-		* Default Description
-		* Pinterest Image Description
-		* Twitter Card Description
-		* Search Description
-		* Sharing URL
-		* Canonical URL
-		* Article Information
-			* Article Section
 		* Basic Product Information
 			* Product Brand
 			* Product Price and Currency
@@ -515,11 +516,30 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* When creating a new post/page, the Document SSO metabox will now show a "Save a draft or publish to display these options" message by default in all tabs.
+	* Moved most Open Graph options in the Document SSO metabox from the Pro version to the Standard / Free version:
+		* Customize Text
+			* Preferred Cropping (image editing page) 
+			* Schema Type
+			* Open Graph Type
+			* Default Title
+			* Default Description
+			* Pinterest Image Description
+			* Twitter Card Description
+			* Search Description
+			* Sharing URL
+			* Canonical URL
+			* Article Information
+				* Article Section
+	* Added new options under the SSO &gt; Advanced Settings &gt; Content Text tab:
+		* No Title Text
+		* No Description Text
+	* Removed options under the SSO &gt; Advanced Settings &gt; Content Text tab:
+		* Term Title Prefix
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Removed support for the 'no_auto_draft' argument in form options.
 * **Requires At Least**
 	* PHP v5.5.
 	* WordPress v4.0.
@@ -866,10 +886,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v3.9.
 
 == Upgrade Notice ==
-
-= 6.23.0-dev.1 =
-
-(TBD) None.
 
 = 6.22.1 =
 
