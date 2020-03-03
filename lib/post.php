@@ -60,6 +60,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					/**
 					 * load_meta_page() priorities: 100 post, 200 user, 300 term.
+					 *
 					 * Sets the WpssoWpMeta::$head_tags and WpssoWpMeta::$head_info class properties.
 					 */
 					add_action( 'current_screen', array( $this, 'load_meta_page' ), 100, 1 );
@@ -645,11 +646,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					return;
 			}
 
+			/**
+			 * Get post object for sanity checks.
+			 */
 			$post_obj = SucomUtil::get_post_object( true );
 			$post_id  = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'showing user metabox for post ID ' . $post_id );
+				$this->p->debug->log( 'showing metabox for post ID ' . $post_id );
 			}
 
 			/**
@@ -800,8 +804,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				} elseif ( ! wp_verify_nonce( $_GET[ WPSSO_NONCE_NAME ], WpssoAdmin::get_nonce_action() ) ) {
 
-					$this->p->notice->err( sprintf( __( 'Nonce token validation failed for %1$s action "%2$s".',
-						'wpsso' ), 'post', $action_name ) );
+					$this->p->notice->err( sprintf( __( 'Nonce token validation failed for %1$s action "%2$s".', 'wpsso' ), 'post', $action_name ) );
 
 				} else {
 
@@ -1336,6 +1339,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$opts       = $this->get_options( $post_obj->ID );
 			$def_opts   = $this->get_defaults( $post_obj->ID );
 
+			$is_auto_draft = SucomUtil::is_auto_draft( $mod );
+
 			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts, $this->p->lca );
 
 			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
@@ -1348,16 +1353,25 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			foreach ( $tabs as $tab_key => $title ) {
 
-				$filter_name = $this->p->lca . '_' . $mod[ 'name' ] . '_' . $tab_key . '_rows';
+				if ( $is_auto_draft ) {
 
-				$table_rows[ $tab_key ] = array_merge(
-					$this->get_table_rows( $metabox_id, $tab_key, WpssoWpMeta::$head_info, $mod ),
-					(array) apply_filters( $filter_name, array(), $this->form, WpssoWpMeta::$head_info, $mod )
-				);
+					$table_rows[ $tab_key ][] = '<td><blockquote class="status-info save-a-draft"><p>' .
+						__( 'Save a draft or publish to display these options.', 'wpsso' ) . '</p></blockquote></td>';
+
+				} else {
+
+					$filter_name = $this->p->lca . '_' . $mod[ 'name' ] . '_' . $tab_key . '_rows';
+
+					$table_rows[ $tab_key ] = array_merge(
+						$this->get_table_rows( $metabox_id, $tab_key, WpssoWpMeta::$head_info, $mod ),
+						(array) apply_filters( $filter_name, array(), $this->form, WpssoWpMeta::$head_info, $mod )
+					);
+				}
 			}
 
 			$tabbed_args = array(
-				'layout' => 'vertical',
+				'layout'        => 'vertical',
+				'is_auto_draft' => $is_auto_draft,
 			);
 
 			$container_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
@@ -1370,54 +1384,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			return $metabox_html;
-		}
-
-		protected function get_table_rows( $metabox_id, $tab_key, $head_info, $mod ) {
-
-			$is_auto_draft = SucomUtil::is_auto_draft( $mod );
-
-			$save_draft_msg = __( 'Save a draft version or publish to update this value.', 'wpsso' );
-
-			$table_rows = array();
-
-			switch ( $tab_key ) {
-
-				case 'preview':
-
-					$table_rows = $this->get_rows_preview_tab( $this->form, $head_info, $mod );
-
-					break;
-
-				case 'oembed':
-
-					$table_rows = $this->get_rows_oembed_tab( $this->form, $head_info, $mod );
-
-					break;
-
-				case 'head':
-
-					if ( $is_auto_draft ) {
-						$table_rows[] = '<td><blockquote class="status-info"><p class="centered">' .
-							$save_draft_msg . '</p></blockquote></td>';
-					} else {
-						$table_rows = $this->get_rows_head_tab( $this->form, $head_info, $mod );
-					}
-
-					break;
-
-				case 'validate':
-
-					if ( $is_auto_draft ) {
-						$table_rows[] = '<td><blockquote class="status-info"><p class="centered">' .
-							$save_draft_msg . '</p></blockquote></td>';
-					} else {
-						$table_rows = $this->get_rows_validate_tab( $this->form, $head_info, $mod );
-					}
-
-					break;
-			}
-
-			return $table_rows;
 		}
 
 		public function clear_cache_for_new_comment( $comment_id, $comment_approved ) {

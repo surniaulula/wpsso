@@ -7,7 +7,7 @@ _x( 'Premium', 'distribution name', 'wpsso' );
 _x( 'Standard', 'distribution name', 'wpsso' );
 _x( 'Image:', 'option value', 'wpsso' );
 _x( 'Caption:', 'option value', 'wpsso' );
-_x( 'Archives:', 'option value', 'wpsso' );
+_x( '', 'option value', 'wpsso' );
 _x( 'Facebook User URL', 'option value', 'wpsso' );
 _x( 'Instagram URL', 'option value', 'wpsso' );
 _x( 'LinkedIn URL', 'option value', 'wpsso' );

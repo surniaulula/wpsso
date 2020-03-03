@@ -43,174 +43,30 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$dots           = '...';
-			$read_cache     = true;
-			$no_hashtags    = false;
-			$maybe_hashtags = true;
-			$do_encode      = true;
-
-			$p_img_desc_disabled    = empty( $this->p->options[ 'p_add_img_html' ] ) ? true : false;
-			$seo_desc_disabled      = empty( $this->p->options[ 'add_meta_name_description' ] ) ? true : false;
-			$canonical_url_disabled = empty( $this->p->options[ 'add_link_rel_canonical' ] ) ? true : false;
-
-			$p_img_desc_msg    = $p_img_desc_disabled ? $this->p->msgs->p_img_desc_disabled() : '';
-			$seo_desc_msg      = $seo_desc_disabled ? $this->p->msgs->seo_option_disabled( 'meta name description' ) : '';
-			$canonical_url_msg = $canonical_url_disabled ? $this->p->msgs->seo_option_disabled( 'link rel canonical' ) : '';
-
 			/**
 			 * Select option arrays.
 			 */
 			$list_exp_secs      = $this->p->util->get_cache_exp_secs( $this->p->lca . '_l_' );	// Default is month in seconds.
-			$schema_exp_secs    = $this->p->util->get_cache_exp_secs( $this->p->lca . '_t_' );	// Default is month in seconds.
-			$og_types           = $this->p->og->get_og_types_select();
-			$article_sections   = $this->p->util->get_article_sections();
 			$product_categories = $this->p->util->get_google_product_categories();
-			$schema_types       = $this->p->schema->get_schema_types_select();
 			$currencies         = SucomUtil::get_currency_abbrev();
-
-			/**
-			 * Maximum option lengths.
-			 */
-			$og_title_max_len    = $this->p->options[ 'og_title_max_len' ];
-			$og_desc_max_len     = $this->p->options[ 'og_desc_max_len' ];
-			$p_img_desc_max_len  = $this->p->options[ 'p_img_desc_max_len' ];
-			$tc_desc_max_len     = $this->p->options[ 'tc_desc_max_len' ];
-			$seo_desc_max_len    = $this->p->options[ 'seo_desc_max_len' ];		// Max. Description Meta Tag Length.
-
-			/**
-			 * Default option values.
-			 */
-			$def_og_title      = $this->p->page->get_title( $og_title_max_len, $dots, $mod, $read_cache, $no_hashtags, $do_encode, 'none' );
-			$def_og_desc       = $this->p->page->get_description( $og_desc_max_len, $dots, $mod, $read_cache, $maybe_hashtags, $do_encode, 'none' );
-			$def_p_img_desc    = $p_img_desc_disabled ? '' : $this->p->page->get_description( $p_img_desc_max_len, $dots, $mod, $read_cache, $maybe_hashtags );
-			$def_tc_desc       = $this->p->page->get_description( $tc_desc_max_len, $dots, $mod, $read_cache );
-			$def_seo_desc      = $seo_desc_disabled ? '' : $this->p->page->get_description( $seo_desc_max_len, $dots, $mod, $read_cache, $no_hashtags );
-			$def_sharing_url   = $this->p->util->get_sharing_url( $mod, $add_page = false );
-			$def_canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = false );
 
 			/**
 			 * Metabox form rows.
 			 */
 			$form_rows = array(
-				'attach_img_crop' => $mod[ 'post_type' ] === 'attachment' && wp_attachment_is_image( $mod[ 'id' ] ) ? array(
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Preferred Cropping', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-og_img_crop_area',
-					'content'  => $form->get_no_input_image_crop_area( 'attach_img', $add_none = true ),
-				) : array(),
-				'og_schema_type' => array(
-					'th_class' => 'medium',
-					'label'    => _x( 'Schema Type', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-og_schema_type',
-					'content'  => $form->get_select( 'schema_type', $schema_types, $css_class = 'schema_type', $css_id = 'og_schema_type',
-						$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json', 'on_change_unhide_rows' ),
-							$event_args = array(
-								'json_var'  => 'schema_types',
-								'exp_secs'  => $schema_exp_secs,
-								'is_transl' => true,	// No label translation required.
-								'is_sorted' => true,	// No label sorting required.
-							)
-						),
-				),
-				'og_type' => array(
-					'th_class' => 'medium',
-					'label'    => _x( 'Open Graph Type', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-og_type',
-					'content'  => $form->get_select( 'og_type', $og_types, $css_class = 'og_type', $css_id = '',
-						$is_assoc = true, $is_disabled = false, $selected = true, $event_names = array( 'on_change_unhide_rows' ) ),
-				),
-				'pro-feature-msg' => array(
-					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>',
-				),
-				'og_title' => array(
-					'no_auto_draft' => true,
-					'th_class'      => 'medium',
-					'td_class'      => 'blank',
-					'label'         => _x( 'Default Title', 'option label', 'wpsso' ),
-					'tooltip'       => 'meta-og_title',
-					'content'       => $form->get_no_input_value( $def_og_title, $css_class = 'wide', $css_id = '', $og_title_max_len ),
-				),
-				'og_desc' => array(
-					'no_auto_draft' => true,
-					'th_class'      => 'medium',
-					'td_class'      => 'blank',
-					'label'         => _x( 'Default Description', 'option label', 'wpsso' ),
-					'tooltip'       => 'meta-og_desc',
-					'content'       => $form->get_no_textarea_value( $def_og_desc, $css_class = '', $css_id = '', $og_desc_max_len ),
-				),
-				'p_img_desc' => array(
-					'no_auto_draft' => true,
-					'tr_class'      => $p_img_desc_disabled ? 'hide_in_basic': '',
-					'th_class'      => 'medium',
-					'td_class'      => 'blank',
-					'label'         => _x( 'Pinterest Image Description', 'option label', 'wpsso' ),
-					'tooltip'       => 'meta-p_img_desc',
-					'content'       => $form->get_no_textarea_value( $def_p_img_desc, $css_class = '', $css_id = '', $p_img_desc_max_len ) . ' ' .
-						$p_img_desc_msg,
-				),
-				'tc_desc' => array(
-					'no_auto_draft' => true,
-					'th_class'      => 'medium',
-					'td_class'      => 'blank',
-					'label'         => _x( 'Twitter Card Description', 'option label', 'wpsso' ),
-					'tooltip'       => 'meta-tc_desc',
-					'content'       => $form->get_no_textarea_value( $def_tc_desc, $css_class = '', $css_id = '', $tc_desc_max_len ),
-				),
-				'seo_desc' => array(
-					'no_auto_draft' => true,
-					'tr_class'      => $seo_desc_disabled ? 'hide_in_basic' : '',
-					'th_class'      => 'medium',
-					'td_class'      => 'blank',
-					'label'         => _x( 'Search Description', 'option label', 'wpsso' ),
-					'tooltip'       => 'meta-seo_desc',
-					'content'       => $form->get_no_textarea_value( $def_seo_desc, $css_class = '', $css_id = '', $seo_desc_max_len ) . ' ' .
-						$seo_desc_msg,
-				),
-				'sharing_url' => array(
-					'no_auto_draft' => $mod[ 'post_type' ] === 'attachment' ? false : true,
-					'tr_class'      => $form->get_css_class_hide( 'basic', 'sharing_url' ),
-					'th_class'      => 'medium',
-					'td_class'      => 'blank',
-					'label'         => _x( 'Sharing URL', 'option label', 'wpsso' ),
-					'tooltip'       => 'meta-sharing_url',
-					'content'       => $form->get_no_input_value( $def_sharing_url, $css_class = 'wide' ),
-				),
-				'canonical_url' => array(
-					'no_auto_draft' => $mod[ 'post_type' ] === 'attachment' ? false : true,
-					'tr_class'      => $canonical_url_disabled ? 'hide_in_basic' : $form->get_css_class_hide( 'basic', 'canonical_url' ),
-					'th_class'      => 'medium',
-					'td_class'      => 'blank',
-					'label'         => _x( 'Canonical URL', 'option label', 'wpsso' ),
-					'tooltip'       => 'meta-canonical_url',
-					'content'       => $form->get_no_input_value( $def_canonical_url, $css_class = 'wide' ) . ' ' .
-						$canonical_url_msg,
-				),
-
-				/**
-				 * Open Graph Article type.
-				 */
-				'subsection_og_art' => array(
-					'tr_class' => 'hide_og_type hide_og_type_article',
-					'header'   => 'h5',
-					'label'    => _x( 'Article Information', 'metabox title', 'wpsso' )
-				),
-				'og_article_section' => array(
-					'tr_class' => 'hide_og_type hide_og_type_article',
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Article Section', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-article_section',
-					'content'  => $form->get_no_select( 'article_section', $article_sections, $css_class = '', $css_id = '', $is_assoc = true ),
-				),
 
 				/**
 				 * Open Graph Product type.
 				 */
 				'subsection_og_product' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
+					'td_class' => 'subsection',
 					'header'   => 'h5',
 					'label'    => _x( 'Basic Product Information', 'metabox title', 'wpsso' )
+				),
+				'pro-feature-msg' => array(
+					'tr_class'  => 'hide_og_type hide_og_type_product',
+					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>',
 				),
 				'og_product_ecom_msg' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
@@ -265,7 +121,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Material', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_material',
-					'content'  => $form->get_no_input( 'product_material', '', '', $placeholder = true ),
+					'content'  => $form->get_no_input( 'product_material', $css_class = '', $css_id = '', $placeholder = true ),
 				),
 				'og_product_color' => array(		// Open Graph meta tag product:color.
 					'tr_class' => 'hide_og_type hide_og_type_product',
@@ -273,7 +129,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Color', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_color',
-					'content'  => $form->get_no_input( 'product_color', '', '', $placeholder = true ),
+					'content'  => $form->get_no_input( 'product_color', $css_class = '', $css_id = '', $placeholder = true ),
 				),
 				'og_product_target_gender' => array(	// Open Graph meta tag product:target_gender.
 					'tr_class' => 'hide_og_type hide_og_type_product',
@@ -349,22 +205,8 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( SucomUtil::is_auto_draft( $mod ) ) {
-
-				$table_rows[] = '<td>' .
-					'<blockquote class="status-info">' .
-						'<p class="centered">' . 
-							sprintf( __( 'Save a draft version or publish the %s to display these options.', 'wpsso' ),
-								SucomUtil::titleize( $mod[ 'post_type' ] ) ) .
-						'</p>' .
-					'</blockquote>' .
-				'</td>';
-
-				return $table_rows;	// Stop here.
-			}
-
-			$media_info = $this->p->og->get_media_info( $this->p->lca . '-opengraph',
-				array( 'pid', 'img_url' ), $mod, $md_pre = 'none', $mt_pre = 'og' );
+			$media_info = $this->p->og->get_media_info( $this->p->lca . '-opengraph', array( 'pid', 'img_url' ),
+				$mod, $md_pre = 'none', $mt_pre = 'og' );
 
 			$form_rows = array(
 				'info-priority-media' => array(
@@ -405,7 +247,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_img_url',
-					'content'  => $form->get_no_input_value( $media_info[ 'img_url' ], 'wide' ),
+					'content'  => $form->get_no_input_value( $media_info[ 'img_url' ], $css_class = 'wide' ),
 				),
 				'subsection_priority_video' => array(
 					'td_class' => 'subsection',
@@ -450,7 +292,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'or a Video URL', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_vid_url',
-					'content'  => $form->get_no_input_value( '', 'wide' ),	// The Standard plugin does not include video modules.
+					'content'  => $form->get_no_input_value( '', $css_class = 'wide' ),	// The Standard plugin does not include video modules.
 				),
 				'og_vid_title' => array(
 					'tr_class' => $form->get_css_class_hide( 'basic', 'og_vid_title' ),
@@ -458,7 +300,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Video Name / Title', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_vid_title',
-					'content'  => $form->get_no_input_value( '', 'wide' ),	// The Standard plugin does not include video modules.
+					'content'  => $form->get_no_input_value( '', $css_class = 'wide' ),	// The Standard plugin does not include video modules.
 				),
 				'og_vid_desc' => array(
 					'tr_class' => $form->get_css_class_hide( 'basic', 'og_vid_desc' ),
@@ -473,17 +315,17 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 			/**
 			 * Twitter Card
 			 */
-			list( $card_type, $card_label, $size_name, $tc_pre ) = $this->p->tc->get_card_info( $mod, $head );
+			list( $card_type, $card_label, $size_name, $tc_prefix ) = $this->p->tc->get_card_info( $mod, $head );
 
 			if ( ! empty( $size_name ) ) {
 
-				$media_info = $this->p->og->get_media_info( $size_name,
-					array( 'pid', 'img_url' ), $mod, $md_pre = 'og', $mt_pre = 'og' );
+				$media_info = $this->p->og->get_media_info( $size_name, array( 'pid', 'img_url' ),
+					$mod, $md_pre = 'og', $mt_pre = 'og' );
 	
 				/**
 				 * Hide unless a custom twitter card image exists.
 				 */
-				$tc_row_class = $form->in_options( '/^' . $tc_pre . '_img_/', true ) ? '' : 'hide_in_basic';
+				$tc_row_class = $form->in_options( '/^' . $tc_prefix . '_img_/', true ) ? '' : 'hide_in_basic';
 
 				$form_rows[ 'subsection_tc' ] = array(
 					'tr_class' => $tc_row_class,
@@ -492,30 +334,30 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'label'    => $card_label,
 				);
 
-				$form_rows[ $tc_pre . '_img_id' ] = array(
+				$form_rows[ $tc_prefix . '_img_id' ] = array(
 					'tr_class' => $tc_row_class,
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-' . $tc_pre . '_img_id',
-					'content'  => $form->get_no_input_image_upload( $tc_pre . '_img', $media_info[ 'pid' ], true ),
+					'tooltip'  => 'meta-' . $tc_prefix . '_img_id',
+					'content'  => $form->get_no_input_image_upload( $tc_prefix . '_img', $media_info[ 'pid' ], true ),
 				);
 
-				$form_rows[ $tc_pre . '_img_url' ] = array(
+				$form_rows[ $tc_prefix . '_img_url' ] = array(
 					'tr_class' => $tc_row_class,
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-' . $tc_pre . '_img_url',
-					'content'  => $form->get_no_input_value( $media_info[ 'img_url' ], 'wide' ),
+					'tooltip'  => 'meta-' . $tc_prefix . '_img_url',
+					'content'  => $form->get_no_input_value( $media_info[ 'img_url' ], $css_class = 'wide' ),
 				);
 			}
 
 			/**
 			 * Schema JSON-LD Markup / Rich Results
 			 */
-			$media_info = $this->p->og->get_media_info( $this->p->lca . '-schema',
-				array( 'pid', 'img_url' ), $mod, $md_pre = 'og', $mt_pre = 'og' );
+			$media_info = $this->p->og->get_media_info( $this->p->lca . '-schema', array( 'pid', 'img_url' ),
+				$mod, $md_pre = 'og', $mt_pre = 'og' );
 	
 			$schema_row_class = $form->in_options( '/^schema_img_/', true ) ? '' : 'hide_in_basic';	// Hide unless a custom schema image exists.
 
@@ -552,7 +394,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 				'td_class' => 'blank',
 				'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
 				'tooltip'  => 'meta-schema_img_url',
-				'content'  => $form->get_no_input_value( $media_info[ 'img_url' ], 'wide' ),
+				'content'  => $form->get_no_input_value( $media_info[ 'img_url' ], $css_class = 'wide' ),
 			);
 
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head, $mod );

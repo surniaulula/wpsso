@@ -2972,18 +2972,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 */
 		public function add_advanced_product_attr_table_rows( array &$table_rows, $form, $hide_in_basic = true, $is_top_section = false ) {
 
+			if ( $is_top_section ) {
+				if ( ! self::$pkg[ $this->p->lca ][ 'pp' ] ) {
+					$table_rows[] = ( $hide_in_basic ? $form->get_tr_hide( 'basic' ) : '' ) .
+						'<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
+				}
+			}
+
 			$table_rows[ 'subsection_product_attr' ] = ( $hide_in_basic ? $form->get_tr_hide( 'basic' ) : '' ) .
 				'<td colspan="2" class="subsection ' . ( $is_top_section ? ' top' : '' ) . '"><h4>' .
 					_x( 'Product Attribute Names', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 			$table_rows[ 'info_product_attr' ] = ( $hide_in_basic ? $form->get_tr_hide( 'basic' ) : '' ) .
 				'<td colspan="2">' . $this->p->msgs->get( 'info-product-attr' ) . '</td>';
-
-			if ( $is_top_section ) {
-				if ( ! self::$pkg[ $this->p->lca ][ 'pp' ] ) {
-					$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
-				}
-			}
 
 			foreach ( $this->p->cf[ 'form' ][ 'product_attr_labels' ] as $opt_key => $opt_label ) {
 
@@ -3001,16 +3002,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 */
 		public function add_advanced_custom_fields_table_rows( array &$table_rows, $form, $hide_in_basic = true, $is_top_section = false ) {
 
-			$table_rows[ 'subsection_custom_fields' ] = ( $hide_in_basic ? $form->get_tr_hide( 'basic' ) : '' ) .
-				'<td colspan="2" class="subsection ' . ( $is_top_section ? ' top' : '' ) . '"><h4>' .
-					_x( 'Custom Field Names', 'metabox title', 'wpsso' ) . '</h4></td>';
-
 			if ( $is_top_section ) {
 				if ( ! self::$pkg[ $this->p->lca ][ 'pp' ] ) {
 					$table_rows[] = ( $hide_in_basic ? $form->get_tr_hide( 'basic' ) : '' ) .
 						'<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
 				}
 			}
+
+			$table_rows[ 'subsection_custom_fields' ] = ( $hide_in_basic ? $form->get_tr_hide( 'basic' ) : '' ) .
+				'<td colspan="2" class="subsection ' . ( $is_top_section ? ' top' : '' ) . '"><h4>' .
+					_x( 'Custom Field Names', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 			$table_rows[] = ( $hide_in_basic ? $form->get_tr_hide( 'basic' ) : '' ) .
 				'<td colspan="2">' . $this->p->msgs->get( 'info-cf-attr' ) . '</td>';

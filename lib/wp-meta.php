@@ -16,8 +16,13 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		protected $p;
 		protected $form;
 
-		protected static $head_tags         = false;	// Must be false by default.
-		protected static $head_info         = array();
+		/**
+		 * The WpssoPost, WpssoTerm, and WpssoUser->load_meta_page() methods define the $head_tags and $head_info static
+		 * variables.
+		 */
+		protected static $head_tags = false;	// Must be false by default.
+		protected static $head_info = array();
+
 		protected static $last_column_id    = null;	// Cache id of the last column request in list table.
 		protected static $last_column_array = array();	// Array of column values for last column requested.
 		protected static $cache_short_url   = null;
@@ -550,51 +555,221 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return apply_filters( $this->p->lca . '_' . $mod[ 'name' ] . '_custom_meta_tabs', $tabs, $mod, $metabox_id );
 		}
 
-		protected function get_table_rows( $metabox_id, $tab_key, $head_info, $mod ) {
+		protected function get_table_rows( $metabox_id, $tab_key, array $head_info, array $mod ) {
 
-			$table_rows = array();
+			$table_rows  = array();
 
-			switch ( $tab_key ) {
+			/**
+			 * Call the following methods:
+			 *
+			 *	get_table_rows_sso_edit_tab()
+			 *	get_table_rows_sso_media_tab()
+			 *	get_table_rows_sso_preview_tab()
+			 *	get_table_rows_sso_oembed_tab()
+			 *	get_table_rows_sso_head_tab()
+			 *	get_table_rows_sso_validate_tab()
+			 */
+			$method_name = 'get_table_rows_' . $metabox_id . '_' . $tab_key . '_tab';
 
-				case 'preview':
-
-					$table_rows = $this->get_rows_preview_tab( $this->form, $head_info, $mod );
-
-					break;
-
-				case 'head':	
-
-					$table_rows = $this->get_rows_head_tab( $this->form, $head_info, $mod );
-
-					break; 
-
-				case 'validate':
-
-					$table_rows = $this->get_rows_validate_tab( $this->form, $head_info, $mod );
-
-					break; 
-
+			if ( method_exists( $this, $method_name ) ) {
+				$table_rows = call_user_func( array( $this, $method_name ), $this->form, $head_info, $mod );
 			}
 
 			return $table_rows;
 		}
 
-		public function get_rows_preview_tab( $form, $head_info, $mod ) {
+		public function get_table_rows_sso_edit_tab( $form, $head_info, $mod ) {
+
+			$table_rows = array();
+
+			$dots           = '...';
+			$read_cache     = true;
+			$no_hashtags    = false;
+			$maybe_hashtags = true;
+			$do_encode      = true;
+
+			$p_img_desc_disabled    = empty( $this->p->options[ 'p_add_img_html' ] ) ? true : false;
+			$seo_desc_disabled      = empty( $this->p->options[ 'add_meta_name_description' ] ) ? true : false;
+			$canonical_url_disabled = empty( $this->p->options[ 'add_link_rel_canonical' ] ) ? true : false;
+
+			$p_img_desc_msg    = $p_img_desc_disabled ? $this->p->msgs->p_img_desc_disabled() : '';
+			$seo_desc_msg      = $seo_desc_disabled ? $this->p->msgs->seo_option_disabled( 'meta name description' ) : '';
+			$canonical_url_msg = $canonical_url_disabled ? $this->p->msgs->seo_option_disabled( 'link rel canonical' ) : '';
+
+			/**
+			 * Select option arrays.
+			 */
+			$list_exp_secs    = $this->p->util->get_cache_exp_secs( $this->p->lca . '_l_' );	// Default is month in seconds.
+			$schema_exp_secs  = $this->p->util->get_cache_exp_secs( $this->p->lca . '_t_' );	// Default is month in seconds.
+			$og_types         = $this->p->og->get_og_types_select();
+			$schema_types     = $this->p->schema->get_schema_types_select();
+			$article_sections = $this->p->util->get_article_sections();
+
+			/**
+			 * Maximum option lengths.
+			 */
+			$og_title_max_len    = $this->p->options[ 'og_title_max_len' ];
+			$og_title_warn_len   = $this->p->options[ 'og_title_warn_len' ];
+			$og_desc_max_len     = $this->p->options[ 'og_desc_max_len' ];
+			$og_desc_warn_len    = $this->p->options[ 'og_desc_warn_len' ];
+			$p_img_desc_max_len  = $this->p->options[ 'p_img_desc_max_len' ];
+			$p_img_desc_warn_len = $this->p->options[ 'p_img_desc_warn_len' ];
+			$tc_desc_max_len     = $this->p->options[ 'tc_desc_max_len' ];
+			$seo_desc_max_len    = $this->p->options[ 'seo_desc_max_len' ];		// Max. Description Meta Tag Length.
+
+			/**
+			 * Default option values.
+			 */
+			$def_og_title      = $this->p->page->get_title( $og_title_max_len, $dots, $mod, $read_cache, $no_hashtags, $do_encode, 'none' );
+			$def_og_desc       = $this->p->page->get_description( $og_desc_max_len, $dots, $mod, $read_cache, $maybe_hashtags, $do_encode, 'none' );
+			$def_p_img_desc    = $p_img_desc_disabled ? '' : $this->p->page->get_description( $p_img_desc_max_len, $dots, $mod, $read_cache, $maybe_hashtags );
+			$def_tc_desc       = $this->p->page->get_description( $tc_desc_max_len, $dots, $mod, $read_cache );
+			$def_seo_desc      = $seo_desc_disabled ? '' : $this->p->page->get_description( $seo_desc_max_len, $dots, $mod, $read_cache, $no_hashtags );
+			$def_sharing_url   = $this->p->util->get_sharing_url( $mod, $add_page = false );
+			$def_canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = false );
+
+			/**
+			 * Metabox form rows.
+			 */
+			$form_rows = array(
+				'attach_img_crop' => $mod[ 'post_type' ] === 'attachment' && wp_attachment_is_image( $mod[ 'id' ] ) ? array(
+					'th_class' => 'medium',
+					'label'    => _x( 'Preferred Cropping', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-og_img_crop_area',
+					'content'  => $form->get_input_image_crop_area( 'attach_img', $add_none = true ),
+				) : array(),
+				'og_schema_type' => array(
+					'th_class' => 'medium',
+					'label'    => _x( 'Schema Type', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-og_schema_type',
+					'content'  => $form->get_select( 'schema_type', $schema_types, $css_class = 'schema_type', $css_id = 'og_schema_type',
+						$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json', 'on_change_unhide_rows' ),
+							$event_args = array(
+								'json_var'  => 'schema_types',
+								'exp_secs'  => $schema_exp_secs,
+								'is_transl' => true,	// No label translation required.
+								'is_sorted' => true,	// No label sorting required.
+							)
+						),
+				),
+				'og_type' => array(
+					'th_class' => 'medium',
+					'label'    => _x( 'Open Graph Type', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-og_type',
+					'content'  => $form->get_select( 'og_type', $og_types, $css_class = 'og_type', $css_id = '',
+						$is_assoc = true, $is_disabled = false, $selected = true, $event_names = array( 'on_change_unhide_rows' ) ),
+				),
+				'og_title' => array(
+					'th_class' => 'medium',
+					'label'    => _x( 'Default Title', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-og_title',
+					'content'  => $form->get_input( 'og_title', $css_class = 'wide', $css_id = '',
+						array( 'max' => $og_title_max_len, 'warn' => $og_title_warn_len ), $def_og_title ),
+				),
+				'og_desc' => array(
+					'th_class' => 'medium',
+					'label'    => _x( 'Default Description', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-og_desc',
+					'content'  => $form->get_textarea( 'og_desc', $css_class = '', $css_id = '', 
+						array( 'max' => $og_desc_max_len, 'warn' => $og_desc_warn_len ), $def_og_desc ),
+				),
+				'p_img_desc' => array(
+					'tr_class' => $p_img_desc_disabled ? 'hide_in_basic' : '',
+					'th_class' => 'medium',
+					'label'    => _x( 'Pinterest Image Description', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-p_img_desc',
+					'content'  => $form->get_textarea( 'p_img_desc', $css_class = '', $css_id = '',
+						array( 'max' => $p_img_desc_max_len, 'warn' => $p_img_desc_warn_len ), $def_p_img_desc,
+							$p_img_desc_disabled ) . ' ' . $p_img_desc_msg,
+				),
+				'tc_desc' => array(
+					'th_class' => 'medium',
+					'label'    => _x( 'Twitter Card Description', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-tc_desc',
+					'content'  => $form->get_textarea( 'tc_desc', $css_class = '', $css_id = '', $tc_desc_max_len, $def_tc_desc ),
+				),
+				'seo_desc' => array(
+					'tr_class' => $seo_desc_disabled ? 'hide_in_basic' : '',
+					'th_class' => 'medium',
+					'label'    => _x( 'Search Description', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-seo_desc',
+					'content'  => $form->get_textarea( 'seo_desc', $css_class = '', $css_id = '', $seo_desc_max_len, $def_seo_desc,
+						$seo_desc_disabled ) . ' ' . $seo_desc_msg,
+				),
+				'sharing_url' => array(
+					'tr_class' => $form->get_css_class_hide( 'basic', 'sharing_url' ),
+					'th_class' => 'medium',
+					'label'    => _x( 'Sharing URL', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-sharing_url',
+					'content'  => $form->get_input( 'sharing_url', $css_class = 'wide', $css_id = '', $max_len = 0, $def_sharing_url ),
+				),
+				'canonical_url' => array(
+					'tr_class' => $canonical_url_disabled ? 'hide_in_basic' : $form->get_css_class_hide( 'basic', 'canonical_url' ),
+					'th_class' => 'medium',
+					'label'    => _x( 'Canonical URL', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-canonical_url',
+					'content'  => $form->get_input( 'canonical_url', $css_class = 'wide', $css_id = '', $max_len = 0, $def_canonical_url,
+						$canonical_url_disabled ) . ' ' . $canonical_url_msg,
+				),
+
+				/**
+				 * Open Graph Article type.
+				 */
+				'subsection_og_article' => array(
+					'tr_class' => 'hide_og_type hide_og_type_article',
+					'td_class' => 'subsection',
+					'header'   => 'h5',
+					'label'    => _x( 'Article Information', 'metabox title', 'wpsso' )
+				),
+				'og_article_section' => array(
+					'tr_class' => 'hide_og_type hide_og_type_article',
+					'th_class' => 'medium',
+					'label'    => _x( 'Article Section', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-article_section',
+					'content'  => $form->get_select( 'article_section', $article_sections, $css_class = 'article_section', $css_id = '',
+						$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
+							$event_args = array(
+								'json_var'  => 'article_sections',
+								'exp_secs'  => $list_exp_secs,
+								'is_transl' => true,	// No label translation required.
+								'is_sorted' => true,	// No label sorting required.
+							)
+						),
+				),
+			);
+
+			return $form->get_md_form_rows( array(), $form_rows, $head_info, $mod );
+		}
+
+		public function get_table_rows_sso_media_tab( $form, $head_info, $mod ) {
+
+			$table_rows = array();
+
+			return $table_rows;
+		}
+
+		public function get_table_rows_sso_preview_tab( $form, $head_info, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
 			$table_rows       = array();
-			$media_url        = SucomUtil::get_mt_media_url( $head_info );
 			$og_prev_width    = 600;
 			$og_prev_height   = 315;
 			$og_prev_img_html = '';
-			$is_auto_draft    = SucomUtil::is_auto_draft( $mod );
-			$save_draft_msg   = __( 'Save a draft version or publish to update this value.', 'wpsso' );
+			$media_url        = SucomUtil::get_mt_media_url( $head_info );
+			$sharing_url      = $this->p->util->get_sharing_url( $mod, $add_page = false );
+			$canonical_url    = $this->p->util->get_canonical_url( $mod, $add_page = false );
 
-			$have_sizes = ( isset( $head_info[ 'og:image:width' ] ) && $head_info[ 'og:image:width' ] > 0 && 
-				isset( $head_info[ 'og:image:height' ] ) && $head_info[ 'og:image:height' ] > 0 ) ? true : false;
+			if ( $mod[ 'is_post' ] ) {
+				$shortlink_url = SucomUtilWP::wp_get_shortlink( $mod[ 'id' ], $context = 'post' );
+			} else {
+				$shortlink_url = apply_filters( $this->p->lca . '_get_short_url', $sharing_url, $this->p->options[ 'plugin_shortener' ], $mod );
+			}
+
+			$have_sizes = isset( $head_info[ 'og:image:width' ] ) && $head_info[ 'og:image:width' ] > 0 && 
+				isset( $head_info[ 'og:image:height' ] ) && $head_info[ 'og:image:height' ] > 0 ? true : false;
 
 			$is_sufficient = true === $have_sizes && $head_info[ 'og:image:width' ] >= $og_prev_width && 
 				$head_info[ 'og:image:height' ] >= $og_prev_height ? true : false;
@@ -623,61 +798,30 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				} else {
 
 					$og_prev_img_html .= '<div class="preview_img" style="background-image:url(' . $media_url . ');" />';
-
 					$og_prev_img_html .= '<p>' . _x( 'Image Size Unknown<br/>or Not Available', 'preview image error', 'wpsso' ) . '</p>';
-
 					$og_prev_img_html .= '</div>';
 				}
 				
 			} else {
 
 				$og_prev_img_html .= '<div class="preview_img">';
-				
 				$og_prev_img_html .= '<p>' . _x( 'No Open Graph Image Found', 'preview image error', 'wpsso' ) . '</p>';
-
 				$og_prev_img_html .= '</div>';
 			}
 
-			if ( $is_auto_draft ) {
+			$table_rows[] = '' . 
+			$form->get_th_html( _x( 'Sharing URL', 'option label', 'wpsso' ), 'medium' ) . 
+			'<td>' . SucomForm::get_no_input_clipboard( $sharing_url ) . '</td>';
 
-				$table_rows[] = '' . 
-				$form->get_th_html( _x( 'Sharing URL', 'option label', 'wpsso' ), 'medium' ) .
-				'<td class="blank"><em>' . $save_draft_msg . '</em></td>';
-	
-				$table_rows[] = '<tr class="hide_in_basic">' .
-				$form->get_th_html( _x( 'Canonical URL', 'option label', 'wpsso' ), 'medium' ) .
-				'<td class="blank"><em>' . $save_draft_msg . '</em></td>';
-	
-				$table_rows[] = '<tr class="hide_in_basic">' .
-				$form->get_th_html( _x( 'Shortlink URL', 'option label', 'wpsso' ), 'medium' ) .
-				'<td class="blank"><em>' . $save_draft_msg . '</em></td>';
-	
-			} else {
-
-				$sharing_url   = $this->p->util->get_sharing_url( $mod, $add_page = false );
-				$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = false );
-
-				if ( $mod[ 'is_post' ] ) {
-					$shortlink_url = SucomUtilWP::wp_get_shortlink( $mod[ 'id' ], $context = 'post' );
-				} else {
-					$shortlink_url = apply_filters( $this->p->lca . '_get_short_url', $sharing_url,
-						$this->p->options[ 'plugin_shortener' ], $mod );
-				}
-
-				$table_rows[] = '' . 
-				$form->get_th_html( _x( 'Sharing URL', 'option label', 'wpsso' ), 'medium' ) . 
-				'<td>' . SucomForm::get_no_input_clipboard( $sharing_url ) . '</td>';
-
-				$table_rows[] = ( $sharing_url === $canonical_url ? '<tr class="hide_in_basic">' : '' ) . 
-				$form->get_th_html( _x( 'Canonical URL', 'option label', 'wpsso' ), 'medium' ) . 
-				'<td>' . SucomForm::get_no_input_clipboard( $canonical_url ) . '</td>';
-			
-				$table_rows[] = ( empty( $this->p->options[ 'plugin_shortener' ] ) || 
-					$this->p->options[ 'plugin_shortener' ] === 'none' ||
-						$sharing_url === $shortlink_url ? '<tr class="hide_in_basic">' : '' ) . 
-				$form->get_th_html( _x( 'Shortlink URL', 'option label', 'wpsso' ), 'medium' ) . 
-				'<td>' . SucomForm::get_no_input_clipboard( $shortlink_url ) . '</td>';
-			}
+			$table_rows[] = ( $sharing_url === $canonical_url ? '<tr class="hide_in_basic">' : '' ) . 
+			$form->get_th_html( _x( 'Canonical URL', 'option label', 'wpsso' ), 'medium' ) . 
+			'<td>' . SucomForm::get_no_input_clipboard( $canonical_url ) . '</td>';
+		
+			$table_rows[] = ( empty( $this->p->options[ 'plugin_shortener' ] ) || 
+				$this->p->options[ 'plugin_shortener' ] === 'none' ||
+					$sharing_url === $shortlink_url ? '<tr class="hide_in_basic">' : '' ) . 
+			$form->get_th_html( _x( 'Shortlink URL', 'option label', 'wpsso' ), 'medium' ) . 
+			'<td>' . SucomForm::get_no_input_clipboard( $shortlink_url ) . '</td>';
 
 			$table_rows[ 'subsection_og_example' ] = '<td colspan="2" class="subsection"><h4>' . 
 				_x( 'Facebook / Open Graph Example', 'option label', 'wpsso' ) . '</h4></td>';
@@ -710,7 +854,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $table_rows;
 		}
 
-		public function get_rows_oembed_tab( $form, $head_info, $mod ) {
+		public function get_table_rows_sso_oembed_tab( $form, $head_info, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -720,34 +864,18 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$oembed_data    = false;
 			$oembed_html    = '';
 			$oembed_width   = 600;
-			$is_auto_draft  = SucomUtil::is_auto_draft( $mod );
-			$save_draft_msg = __( 'Save a draft version or publish to update this value.', 'wpsso' );
 
-			if ( $is_auto_draft ) {
+			$json_url    = $this->p->util->get_oembed_url( $mod, 'json' );
+			$xml_url     = $this->p->util->get_oembed_url( $mod, 'xml' );
+			$oembed_data = $this->p->util->get_oembed_data( $mod, $oembed_width );
 
-				$table_rows[] = '' . 
-				$form->get_th_html( _x( 'oEmbed JSON URL', 'option label', 'wpsso' ), 'medium' ) .
-				'<td class="blank"><em>' . $save_draft_msg . '</em></td>';
+			$table_rows[] = '' . 
+			$form->get_th_html( _x( 'oEmbed JSON URL', 'option label', 'wpsso' ), 'medium' ) . 
+			'<td>' . SucomForm::get_no_input_clipboard( $json_url ) . '</td>';
 
-				$table_rows[] = '' . 
-				$form->get_th_html( _x( 'oEmbed XML URL', 'option label', 'wpsso' ), 'medium' ) .
-				'<td class="blank"><em>' . $save_draft_msg . '</em></td>';
-
-			} else {
-
-				$json_url    = $this->p->util->get_oembed_url( $mod, 'json' );
-				$xml_url     = $this->p->util->get_oembed_url( $mod, 'xml' );
-				$oembed_data = $this->p->util->get_oembed_data( $mod, $oembed_width );
-
-				$table_rows[] = '' . 
-				$form->get_th_html( _x( 'oEmbed JSON URL', 'option label', 'wpsso' ), 'medium' ) . 
-				'<td>' . SucomForm::get_no_input_clipboard( $json_url ) . '</td>';
-
-				$table_rows[] = '' . 
-				$form->get_th_html( _x( 'oEmbed XML URL', 'option label', 'wpsso' ), 'medium' ) . 
-				'<td>' . SucomForm::get_no_input_clipboard( $xml_url ) . '</td>';
-
-			}
+			$table_rows[] = '' . 
+			$form->get_th_html( _x( 'oEmbed XML URL', 'option label', 'wpsso' ), 'medium' ) . 
+			'<td>' . SucomForm::get_no_input_clipboard( $xml_url ) . '</td>';
 
 			$table_rows[ 'subsection_oembed_data' ] = '<td colspan="2" class="subsection"><h4>' . 
 				_x( 'oEmbed Data', 'option label', 'wpsso' ) . '</h4></td>';
@@ -789,18 +917,20 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $table_rows;
 		}
 
-		public function get_rows_head_tab( $form, $head_info, $mod ) {
+		public function get_table_rows_sso_head_tab( $form, $head_info, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			$table_rows   = array();
-			$script_class = '';
+			$table_rows = array();
 
 			if ( ! is_array( WpssoWpMeta::$head_tags ) ) {	// Just in case.
+
 				return $table_rows;
 			}
+
+			$script_class = '';
 
 			foreach ( WpssoWpMeta::$head_tags as $parts ) {
 
@@ -879,13 +1009,13 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $table_rows;
 		}
 
-		public function get_rows_validate_tab( $form, $head_info, $mod ) {
+		public function get_table_rows_sso_validate_tab( $form, $head_info, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			$sharing_url = $this->p->util->get_sharing_url( $mod, false );	// $add_page = false
+			$sharing_url = $this->p->util->get_sharing_url( $mod, $add_page = false );
 
 			$sharing_url_encoded = urlencode( $sharing_url );
 

@@ -123,8 +123,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					add_action( 'admin_init', array( $this, 'add_meta_boxes' ) );
 
 					/**
-					 * Sets the WpssoWpMeta::$head_tags and WpssoWpMeta::$head_info class properties.
 					 * load_meta_page() priorities: 100 post, 200 user, 300 term
+					 *
+					 * Sets the WpssoWpMeta::$head_tags and WpssoWpMeta::$head_info class properties.
 					 */
 					add_action( 'current_screen', array( $this, 'load_meta_page' ), 300, 1 );
 					add_action( $this->query_tax_slug . '_edit_form', array( $this, 'show_metaboxes' ), 100, 1 );
@@ -533,6 +534,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		/**
 		 * Hooked into the current_screen action.
+		 *
 		 * Sets the WpssoWpMeta::$head_tags and WpssoWpMeta::$head_info class properties.
 		 */
 		public function load_meta_page( $screen = false ) {
@@ -569,7 +571,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'showing user metabox for term ID ' . $this->query_term_id );
+				$this->p->debug->log( 'showing metabox for term ID ' . $this->query_term_id );
 			}
 
 			$mod = $this->get_mod( $this->query_term_id, $this->query_tax_slug );
@@ -650,8 +652,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				} elseif ( ! wp_verify_nonce( $_GET[ WPSSO_NONCE_NAME ], WpssoAdmin::get_nonce_action() ) ) {
 
-					$this->p->notice->err( sprintf( __( 'Nonce token validation failed for %1$s action "%2$s".',
-						'wpsso' ), 'term', $action_name ) );
+					$this->p->notice->err( sprintf( __( 'Nonce token validation failed for %1$s action "%2$s".', 'wpsso' ), 'term', $action_name ) );
 
 				} else {
 

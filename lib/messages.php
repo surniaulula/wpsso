@@ -379,31 +379,28 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-site_name':
 
-							$wp_general_page_url = get_admin_url( $blog_id = null, 'options-general.php' );
-
-							$text = sprintf( __( 'The WordPress Site Name is used for the Facebook / Open Graph and Pinterest Rich Pin %1$s meta tag. You may override <a href="%2$s">the default WordPress Site Title value</a>.', 'wpsso' ), '<code>og:site_name</code>', $wp_general_page_url );
-
+							$text = sprintf( __( 'The website name is used for the Facebook / Open Graph and Pinterest Rich Pin %s meta tag.',
+								'wpsso' ), '<code>og:site_name</code>' ) . ' ';
+							
 							break;
 
 						case 'tooltip-site_name_alt':
 
-							$text = __( 'An optional alternate name for your WebSite that you want Google to consider.', 'wpsso' );
+							$text = __( 'An optional alternate name for your website that you want Google to consider.', 'wpsso' );
 
 							break;
 
 						case 'tooltip-site_desc':
 
-							$wp_general_page_url = get_admin_url( $blog_id = null, 'options-general.php' );
-
-							$text = sprintf( __( 'The WordPress tagline is used as a description for the blog (non-static) front page, and as a fallback for the Facebook / Open Graph and Pinterest Rich Pin %1$s meta tag.', 'wpsso' ), '<code>og:description</code>' ) . ' ';
-
-							$text .= sprintf( __( 'You may override <a href="%1$s">the default WordPress Tagline value</a> here, to provide a longer and more complete description of your website.', 'wpsso' ), $wp_general_page_url );
+							$text = __( 'The website description is used for the WordPress blog (non-static) front page.', 'wpsso' );
 
 							break;
 
 						case 'tooltip-site_org_schema_type':
 
-							$text = __( 'You may select a more descriptive Schema type from the Organization sub-types (default is Organization).', 'wpsso' );
+							$text = __( 'You may optionally choose a more accurate Schema type for this organization (default is Organization).',
+								'wpsso' );
+
 							break;
 
 						case 'tooltip-site_place_id':
@@ -695,7 +692,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/**
 						 * Content Text settings.
 						 */
-						case 'tooltip-plugin_filter_title':
+						case 'tooltip-plugin_filter_title':	// Use Filtered (aka SEO) Title.
 
 							$def_checked = $this->p->opt->get_defaults( 'plugin_filter_title' ) ?
 								_x( 'checked', 'option value', 'wpsso' ) :
@@ -707,7 +704,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_filter_content':
+						case 'tooltip-plugin_filter_content':	// Use WordPress Content Filters.
 
 							$text .= __( 'The use of WordPress content filters allows the plugin to fully render your content text for meta tag descriptions and detect additional images and/or embedded videos provided by shortcodes.', 'wpsso' ) . ' ';
 
@@ -717,13 +714,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_filter_excerpt':
+						case 'tooltip-plugin_filter_excerpt':	// Use WordPress Excerpt Filters.
 
 							$text = __( 'Apply the WordPress "get_the_excerpt" filter to the excerpt text (default is unchecked). Enable this option if you use shortcodes in your excerpts, for example.', 'wpsso' ) . ' ';
 
 							break;
 
-						case 'tooltip-plugin_p_strip':
+						case 'tooltip-plugin_p_strip':	// Content Starts at 1st Paragraph.
 
 							$text = sprintf( __( 'If a post, page, or custom post type does not have an excerpt, %s will use the content text to create a description value.', 'wpsso' ), $info[ 'short' ] ) . ' ';
 
@@ -733,25 +730,45 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_use_img_alt':
+						case 'tooltip-plugin_use_img_alt':	// Use Image Alt if No Content.
 
-							$text = sprintf( __( 'If the content text is comprised entirely of HTML tags (which must be removed to create text-only descriptions), %s can extract and use image <em>alt</em> attributes instead of returning an empty description.', 'wpsso' ), $info[ 'short' ] );
-
-							break;
-
-						case 'tooltip-plugin_img_alt_prefix':
-
-							$text = sprintf( __( 'When use of image <em>alt</em> attributes is enabled, %s can prefix the attribute text with an optional string.', 'wpsso' ), $info[ 'short' ] ) . ' ';
-
-							$text .= __( 'Leave this option blank to prevent the image alt attribute text from being prefixed.', 'wpsso' );
+							$text = sprintf( __( 'If the content text is comprised entirely of HTML tags (which must be removed to create a text-only description), %1$s can extract and use the image %2$s attributes it finds, instead of returning an empty description.', 'wpsso' ), $info[ 'short' ], '<em>alt</em>' );
 
 							break;
 
-						case 'tooltip-plugin_p_cap_prefix':
+						case 'tooltip-plugin_img_alt_prefix':	// Content Image Alt Prefix.
 
-							$text = sprintf( __( '%s can add a prefix to paragraphs found with the "wp-caption-text" class.', 'wpsso' ), $info[ 'short' ] ) . ' ';
+							$text = sprintf( __( 'When using the text from image %1$s attributes, %2$s can prefix the attribute text with an optional string (for example, "Image:").', 'wpsso' ), '<em>alt</em>', $info[ 'short' ] ) . ' ';
+
+							$text .= sprintf( __( 'Leave this option blank to prevent the text from image %s attributes from being prefixed.', 'wpsso' ), '<em>alt</em>' );
+
+							break;
+
+						case 'tooltip-plugin_p_cap_prefix':	// WP Caption Text Prefix.
+
+							$text = sprintf( __( '%1$s can prefix caption paragraphs found with the "%2$s" class (for example, "Caption:").', 'wpsso' ), $info[ 'short' ], 'wp-caption-text' ) . ' ';
 
 							$text .= __( 'Leave this option blank to prevent caption paragraphs from being prefixed.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-plugin_term_title_prefix':	// Term Title Prefix.
+
+							$text = sprintf( __( '%s can prefix the title of term archive pages (for example, "Archive for").', 'wpsso' ), $info[ 'short' ] ) . ' ';
+
+							$text .= __( 'Leave this option blank to prevent term titles from being prefixed.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-plugin_no_title_text':	// No Title Text.
+
+							$text = __( 'A fallback string to use when there is no title text available (for example, "No Title").' );
+
+							break;
+
+						case 'tooltip-plugin_no_desc_text':	// No Description Text.
+
+							$text = __( 'A fallback string to use when there is no description text available (for example, "No Description.").' );
 
 							break;
 
@@ -1902,7 +1919,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<p>';
 
-							$text .= sprintf( __( 'Edit images in the WordPress <a href="%s">Media Library</a> to select a preferred cropping area and manage image SEO.', 'wpsso' ), $upload_url );
+							$text .= sprintf( __( 'Edit images in the <a href="%s">WordPress Media Library</a> to select a preferred cropping area and optimize image SEO.', 'wpsso' ), $upload_url );
 
 							$text .= '</p>';
 
@@ -2091,10 +2108,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text .= empty( $url[ 'purchase' ] ) ? '' : '<a href="' . $url[ 'purchase' ] . '">';
 
 						if ( $lca === $this->p->lca ) {
-
 							$text .= sprintf( __( 'Purchase the %1$s plugin to upgrade and get the following features.',
 								'wpsso' ), $info[ 'short_pro' ] );
-
 						} else {
 							$text .= sprintf( __( 'Purchase the %1$s add-on to upgrade and get the following features.',
 								'wpsso' ), $info[ 'short_pro' ] );

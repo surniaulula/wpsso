@@ -329,7 +329,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 * Construct a title of our own.
 			 */
 			if ( empty( $title_text ) ) {
-
 				$title_text = $this->get_the_title( $mod );
 			}
 
@@ -621,8 +620,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					} else {
 
 						if ( ! empty( $term_obj->description ) ) {
+
 							$desc_text = $term_obj->description;
+
 						} elseif ( ! empty( $term_obj->name ) ) {
+
 							$desc_text = sprintf( _x( 'Archive for %s.', 'default description', 'wpsso' ), $term_obj->name );
 						}
 					}
@@ -657,11 +659,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				} elseif ( is_year() ) {
 
 					$desc_text = sprintf( _x( 'Yearly archive for %s.', 'default description', 'wpsso' ), get_the_date('Y') );
+
 					$desc_text = apply_filters( $this->p->lca . '_yearly_archive_description', $desc_text, $mod );
 
 				} elseif ( SucomUtil::is_archive_page() ) {	// Just in case.
 
 					$desc_text = _x( 'Archive page.', 'default description', 'wpsso' );
+
 					$desc_text = apply_filters( $this->p->lca . '_archive_page_description', $desc_text, $mod );
 				}
 			}
@@ -684,29 +688,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			if ( empty( $desc_text ) ) {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'description is empty - falling back to generic description' );
+					$this->p->debug->log( 'description is empty - falling back to generic description text' );
 				}
 
-				if ( $mod[ 'post_status' ] === 'auto-draft' ) {
+				$desc_text = SucomUtil::get_key_value( 'plugin_no_desc_text', $this->p->options );
 
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'post_status is auto-draft: using empty description' );
-					}
-
-				} elseif ( $mod[ 'post_type' ] === 'attachment' ) {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'post_type is attachment: using empty description' );
-					}
-
-				} elseif ( $desc_text = SucomUtil::get_site_description( $this->p->options, $mod ) ) {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'fallback SucomUtil::get_site_description() = "' . $desc_text . '"' );
-					}
-
-				} else {
-					$desc_text = _x( 'No Description.', 'default description', 'wpsso' );	// Just in case.
+				if ( empty( $desc_text ) ) {	// Just in case.
+					$desc_text = _x( 'No Description', 'default description', 'wpsso' );
 				}
 			}
 
@@ -918,14 +906,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( empty( $title_text ) ) {
 
-				if ( $title_text = get_bloginfo( 'name', 'display' ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'title is empty - falling back to generic title text' );
+				}
 
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'fallback get_bloginfo() = "' . $title_text . '"' );
-					}
+				$title_text = SucomUtil::get_key_value( 'plugin_no_title_text', $this->p->options );
 
-				} else {
-					$title_text = _x( 'No Title', 'default title', 'wpsso' );	// Just in case.
+				if ( empty( $title_text ) ) {	// Just in case.
+					$title_text = _x( 'No Title', 'default title', 'wpsso' );
 				}
 			}
 
@@ -1538,7 +1526,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			if ( ! empty( $prefix ) ) {
+			/**
+			 * Add an optional prefix, if we have one, to the term title, if we have one.
+			 */
+			if ( ! empty( $prefix ) && ! empty( $title_text ) ) {
 				$title_text = (string) $prefix . ' ' . $title_text;
 			}
 

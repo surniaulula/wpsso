@@ -1906,19 +1906,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					continue;
 				}
 
-				/**
-				 * Do not show the option if the post status is empty or auto-draft.
-				 */
-				$is_auto_draft = false;
-
-				if ( ! empty( $val[ 'no_auto_draft' ] ) ) {
-
-					if ( $is_auto_draft = SucomUtil::is_auto_draft( $mod ) ) {
-
-						$val[ 'td_class' ] = empty( $val[ 'td_class' ] ) ? 'blank' : $val[ 'td_class' ] . ' blank';
-					}
-				}
-
 				$td_class = empty( $val[ 'td_class' ] ) ? '' : ' class="' . $val[ 'td_class' ] . '"';
 
 				if ( ! empty( $val[ 'header' ] ) ) {
@@ -1942,11 +1929,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					$table_rows[ $key ] .= '<td' . $col_span . $td_class . '>';
 
-					if ( $is_auto_draft ) {
-						$table_rows[ $key ] .= '<em>' . __( 'Save a draft version or publish to update this value.', $this->text_domain ) . '</em>';
-					} else {
-						$table_rows[ $key ] .= empty( $val[ 'content' ] ) ? '' : $val[ 'content' ];
-					}
+					$table_rows[ $key ] .= empty( $val[ 'content' ] ) ? '' : $val[ 'content' ];
 							
 					$table_rows[ $key ] .= '</td>' . "\n";
 				}

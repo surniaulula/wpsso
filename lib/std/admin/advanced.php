@@ -64,25 +64,33 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$form->get_th_html( _x( 'Use WordPress Excerpt Filters', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_filter_excerpt' ) . 
 			$form->get_td_no_checkbox( 'plugin_filter_excerpt' );
 
-			$table_rows[ 'plugin_p_strip' ] = '' .
+			$table_rows[ 'plugin_p_strip' ] = $form->get_tr_hide( 'basic', 'plugin_p_strip' ) .
 			$form->get_th_html( _x( 'Content Starts at 1st Paragraph', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_p_strip' ) . 
 			$form->get_td_no_checkbox( 'plugin_p_strip' );
 
-			$table_rows[ 'plugin_use_img_alt' ] = '' .
+			$table_rows[ 'plugin_use_img_alt' ] = $form->get_tr_hide( 'basic', 'plugin_use_img_alt' ) .
 			$form->get_th_html( _x( 'Use Image Alt if No Content', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_use_img_alt' ) . 
 			$form->get_td_no_checkbox( 'plugin_use_img_alt' );
 
 			$table_rows[ 'plugin_img_alt_prefix' ] = '' . 
-			$form->get_th_html( _x( 'Image Alt Text Prefix', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_img_alt_prefix', $atts_locale ) . 
+			$form->get_th_html( _x( 'Content Image Alt Prefix', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_img_alt_prefix', $atts_locale ) . 
 			'<td class="blank">' . SucomUtil::get_key_value( 'plugin_img_alt_prefix', $form->options ) . '</td>';
 
 			$table_rows[ 'plugin_p_cap_prefix' ] = '' . 
-			$form->get_th_html( _x( 'WP Caption Prefix', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_p_cap_prefix', $atts_locale ) . 
+			$form->get_th_html( _x( 'WP Caption Text Prefix', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_p_cap_prefix', $atts_locale ) . 
 			'<td class="blank">' . SucomUtil::get_key_value( 'plugin_p_cap_prefix', $form->options ) . '</td>';
 
 			$table_rows[ 'plugin_term_title_prefix' ] = '' . 
 			$form->get_th_html( _x( 'Term Title Prefix', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_term_title_prefix', $atts_locale ) . 
 			'<td class="blank">' . SucomUtil::get_key_value( 'plugin_term_title_prefix', $form->options ) . '</td>';
+
+			$table_rows[ 'plugin_no_title_text' ] = '' . 
+			$form->get_th_html( _x( 'No Title Text', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_no_title_text', $atts_locale ) . 
+			'<td class="blank">' . SucomUtil::get_key_value( 'plugin_no_title_text', $form->options ) . '</td>';
+
+			$table_rows[ 'plugin_no_desc_text' ] = '' . 
+			$form->get_th_html( _x( 'No Description Text', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_no_desc_text', $atts_locale ) . 
+			'<td class="blank">' . SucomUtil::get_key_value( 'plugin_no_desc_text', $form->options ) . '</td>';
 
 			$check_embed_html = '';
 

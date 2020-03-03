@@ -2682,7 +2682,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function is_auto_draft( array $mod ) {
 
-			if ( $mod[ 'is_post' ] && isset( $mod[ 'post_status' ] ) ) {
+			if ( ! empty( $mod[ 'is_post' ] ) ) {
 
 				if ( empty( $mod[ 'post_status' ] ) || $mod[ 'post_status' ] === 'auto-draft' ) {
 

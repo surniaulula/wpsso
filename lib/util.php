@@ -3813,11 +3813,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			extract( array_merge( array(
-				'layout'    => 'horizontal',	// 'horizontal', 'vertical', or 'responsive'
-				'scroll_to' => isset( $_GET[ 'scroll_to' ] ) ? '#' . self::sanitize_key( $_GET[ 'scroll_to' ] ) : '',
+				'layout'        => 'horizontal',	// 'horizontal', 'vertical', or 'responsive'.
+				'is_auto_draft' => false,
+				'scroll_to'     => isset( $_GET[ 'scroll_to' ] ) ? '#' . self::sanitize_key( $_GET[ 'scroll_to' ] ) : '',
 			), $args ) );
 
-			$class_metabox_tabs .= ' ' . $layout;
+			$class_metabox_tabs .= ' ' . $layout . ( $is_auto_draft ? ' auto-draft' : '' );
 
 			$metabox_html .= "\n" . '<script type="text/javascript">jQuery( document ).ready( function() { ' . 
 				'sucomTabs(\'' . $metabox_id . '\', \'' . $default_tab . '\', \'' . $scroll_to . '\'); });</script>' . "\n";
@@ -3882,9 +3883,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$count_rows  = 0;
 			$hidden_opts = 0;
 			$hidden_rows = 0;
-
-			$show_opts = class_exists( $this->p->lca . 'user' ) ? 
-				call_user_func( array( $this->p->lca . 'user', 'show_opts' ) ) : 'basic';
+			$show_opts   = class_exists( $this->p->lca . 'user' ) ? call_user_func( array( $this->p->lca . 'user', 'show_opts' ) ) : 'basic';
 
 			foreach ( $table_rows as $key => $row ) {
 

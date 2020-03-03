@@ -67,8 +67,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					add_action( 'admin_init', array( $this, 'add_meta_boxes' ) );
 
 					/**
-					 * Sets the WpssoWpMeta::$head_tags and WpssoWpMeta::$head_info class properties.
 					 * load_meta_page() priorities: 100 post, 200 user, 300 term.
+					 *
+					 * Sets the WpssoWpMeta::$head_tags and WpssoWpMeta::$head_info class properties.
 					 */
 					add_action( 'current_screen', array( $this, 'load_meta_page' ), 200, 1 );
 				}
@@ -560,7 +561,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$user_id = SucomUtil::get_user_object( false, 'id' );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'showing user metabox for user ID ' . $user_id );
+				$this->p->debug->log( 'showing metabox for user ID ' . $user_id );
 			}
 
 			$mod = $this->get_mod( $user_id );
@@ -641,8 +642,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				} elseif ( ! wp_verify_nonce( $_GET[ WPSSO_NONCE_NAME ], WpssoAdmin::get_nonce_action() ) ) {
 
-					$this->p->notice->err( sprintf( __( 'Nonce token validation failed for %1$s action "%2$s".',
-						'wpsso' ), 'user', $action_name ) );
+					$this->p->notice->err( sprintf( __( 'Nonce token validation failed for %1$s action "%2$s".', 'wpsso' ), 'user', $action_name ) );
 
 				} else {
 

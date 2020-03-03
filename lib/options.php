@@ -237,9 +237,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'plugin_col_def_width_max':
 				case 'plugin_head_attr_filter_name':
 				case 'plugin_html_attr_filter_name':
-				case 'plugin_img_alt_prefix':
-				case 'plugin_p_cap_prefix':
-				case 'plugin_term_title_prefix':
+				case 'plugin_img_alt_prefix':		// Content Image Alt Prefix.
+				case 'plugin_p_cap_prefix':		// WP Caption Text Prefix.
+				case 'plugin_term_title_prefix':	// Term Title Prefix.
 				case 'plugin_bitly_access_token':	// Bitly Generic Access Token.
 				case 'plugin_bitly_domain':		// Bitly Short Domain (Optional).
 				case 'plugin_bitly_group_name':		// Bitly Group Name (Optional).
@@ -268,6 +268,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'plugin_col_def_width_max':
 				case 'plugin_col_title_width':
 				case 'plugin_col_title_width_max':
+				case 'plugin_no_title_text':		// No Title Text.
+				case 'plugin_no_desc_text':		// No Description Text.
 				case 'product_avail':			// Select option with 'none' as default.
 				case 'product_condition':		// Select option with 'none' as default.
 				case 'product_target_gender':		// Select option with 'none' as default.
