@@ -511,13 +511,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.23.0-dev.1 (TBD)**
+**Version 6.23.0-dev.2 (2020/03/03)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* When creating a new post/page, the Document SSO metabox will now show a "Save a draft or publish to display these options" message by default in all tabs.
-	* Moved most Open Graph options in the Document SSO metabox from the Pro version to the Standard / Free version:
+	* Added several Open Graph options in the Document SSO metabox to the Standard / Free version:
 		* Customize Text
 			* Preferred Cropping (image editing page) 
 			* Schema Type
@@ -536,6 +535,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* No Description Text
 	* Removed options under the SSO &gt; Advanced Settings &gt; Content Text tab:
 		* Term Title Prefix
+	* When creating a new post/page the Document SSO metabox will now show a "Save a draft or publish to display these options" message in all tabs.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -886,6 +886,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v3.9.
 
 == Upgrade Notice ==
+
+= 6.23.0-dev.2 =
+
+(2020/03/03) Added several Open Graph options in the Document SSO metabox to the Standard / Free version.
 
 = 6.22.1 =
 
