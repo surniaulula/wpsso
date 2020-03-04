@@ -12,7 +12,7 @@ Requires PHP: 5.5
 Requires At Least: 4.0
 Tested Up To: 5.4
 WC Tested Up To: 3.9.2
-Stable Tag: 6.23.0
+Stable Tag: 6.23.1
 
 Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.
 
@@ -511,25 +511,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.23.1-dev.1 (TBD)**
+**Version 6.23.1 (2020/03/04)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v5.5.
-	* WordPress v4.0.
-
-**Version 6.23.0 (2020/03/04)**
-
-* **New Features**
-	* None.
-* **Improvements**
+	* Added a feature to unhide the WordPress admin toolbar when using the fullscreen editor if there are notices.
 	* Added several Open Graph options in the Document SSO metabox to the Standard / Free version:
 		* Customize Text
 			* Preferred Cropping (image editing page) 
@@ -901,7 +888,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.23.0 =
+= 6.23.1 =
 
 (2020/03/04) Added several Open Graph options in the Document SSO metabox to the Standard / Free version.
 
