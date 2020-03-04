@@ -511,6 +511,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 6.23.1-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fix for the WordPress v5.4 fullscreen editor CSS to show the WordPress admin top toobar.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v5.5.
+	* WordPress v4.0.
+
 **Version 6.23.0 (2020/03/04)**
 
 * **New Features**
