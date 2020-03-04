@@ -272,11 +272,56 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				$this->p->debug->mark( 'create and minify admin page style' );	// Begin timer.
 			}
 
+			global $wp_version;
+
 			$metabox_id = $this->p->cf[ 'meta' ][ 'id' ];
 			$menu       = $this->p->lca . '-' . key( $this->p->cf[ '*' ][ 'lib' ][ 'submenu' ] );
 			$sitemenu   = $this->p->lca . '-' . key( $this->p->cf[ '*' ][ 'lib' ][ 'sitesubmenu' ] );
 
+			/**
+			 * Fix the WordPress fullscreen editor.
+			 */
 			$custom_style_css = '
+
+				body.wp-admin.is-fullscreen-mode #wpadminbar {
+					display:block;
+				}
+
+				body.wp-admin.is-fullscreen-mode .block-editor__container {
+					min-height:calc(100vh - 32px);
+				}
+			';
+
+			/**
+			 * Fix the WordPress v5.3 fullscreen editor.
+			 */
+			if ( version_compare( $wp_version, '5.3.2', '>' ) ) {
+
+				$custom_style_css .= '
+
+					body.wp-admin.is-fullscreen-mode .block-editor__container .block-editor-editor-skeleton {
+						top:32px;
+					}
+				';
+
+			/**
+			 * Fix the WordPress v5.4 fullscreen editor.
+			 */
+			} else {
+
+				$custom_style_css .= '
+
+					body.wp-admin.is-fullscreen-mode .block-editor__container .edit-post-layout > .edit-post-header {
+						top:32px;
+					}
+
+					body.wp-admin.is-fullscreen-mode .block-editor__container .edit-post-layout > div > .edit-post-sidebar {
+						top:88px;
+					}
+				';
+			}
+
+			$custom_style_css .= '
 
 				@font-face {
 					font-family:"WpssoIcons";
@@ -298,21 +343,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 						url("' . $plugin_urlpath . 'fonts/star.woff?' . $version . '") format("woff"),
 						url("' . $plugin_urlpath . 'fonts/star.ttf?' . $version . '") format("truetype"),
 						url("' . $plugin_urlpath . 'fonts/star.svg?' . $version . '#star") format("svg");
-				}
-
-				/**
-				 * Fix the WordPress v5.4 fullscreen editor.
-				 */
-				body.wp-admin.is-fullscreen-mode #wpadminbar {
-					display:block;
-				}
-
-				body.wp-admin.is-fullscreen-mode .block-editor__container {
-					min-height: calc(100vh - 32px);
-				}
-
-				body.wp-admin.is-fullscreen-mode .block-editor-editor-skeleton {
-					top:32px;
 				}
 
 				/**
