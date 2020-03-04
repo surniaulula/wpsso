@@ -518,7 +518,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* Fix for the WordPress v5.4 fullscreen editor CSS to show the WordPress admin top toobar.
+	* None.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
