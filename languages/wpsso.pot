@@ -5498,9 +5498,7 @@ msgid "<strong>%s includes:</strong>"
 msgstr ""
 
 #: lib/messages.php:2464
-msgid ""
-"%s options for posts, pages, custom post types, terms (categories, tags, "
-"custom taxonomies), and user profiles."
+msgid "Additional options in the %s metabox."
 msgstr ""
 
 #: lib/messages.php:2466

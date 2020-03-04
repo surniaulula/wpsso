@@ -2461,7 +2461,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '<ul>';
 
-						$text .= '<li>' . sprintf( __( '%s options for posts, pages, custom post types, terms (categories, tags, custom taxonomies), and user profiles.', 'wpsso' ), $metabox_title ) . '</li>';
+						$text .= '<li>' . sprintf( __( 'Additional options in the %s metabox.', 'wpsso' ), $metabox_title ) . '</li>';
 
 						$text .= '<li>' . __( 'Integration with 3rd party plugins and service APIs.', 'wpsso' ) . '</li>';
 
