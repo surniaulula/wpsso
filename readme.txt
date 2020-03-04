@@ -12,7 +12,7 @@ Requires PHP: 5.5
 Requires At Least: 4.0
 Tested Up To: 5.3.2
 WC Tested Up To: 3.9.2
-Stable Tag: 6.22.1
+Stable Tag: 6.23.0
 
 Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.
 
@@ -890,8 +890,4 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 6.23.0 =
 
 (2020/03/04) Added several Open Graph options in the Document SSO metabox to the Standard / Free version.
-
-= 6.22.1 =
-
-(2020/02/28) Fix to handle a WP_Error object returned by the WPML 'wpml_post_language_details' filter on post editing pages (Premium version).
 
