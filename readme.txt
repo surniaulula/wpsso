@@ -511,7 +511,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.23.0-dev.2 (2020/03/03)**
+**Version 6.23.0-b.1 (2020/03/03)**
 
 * **New Features**
 	* None.
@@ -887,7 +887,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.23.0-dev.2 =
+= 6.23.0-b.1 =
 
 (2020/03/03) Added several Open Graph options in the Document SSO metabox to the Standard / Free version.
 
