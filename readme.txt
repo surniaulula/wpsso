@@ -8,7 +8,7 @@ License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
 Tags: open graph, meta tags, rich pins, twitter cards, schema, rich results, embed, social sharing, structured data, snippet, seo, facebook, twitter, linkedin, pinterest, google, schema.org
 Contributors: jsmoriss
-Requires PHP: 5.5
+Requires PHP: 5.6
 Requires At Least: 4.0
 Tested Up To: 5.4
 WC Tested Up To: 3.9.2
@@ -516,7 +516,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a feature to unhide the WordPress admin toolbar when using the fullscreen editor if there are notices.
 	* Added several Open Graph options in the Document SSO metabox to the Standard / Free version:
 		* Customize Text
 			* Preferred Cropping (image editing page) 
@@ -531,18 +530,19 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 			* Canonical URL
 			* Article Information
 				* Article Section
+	* The Document SSO metabox will now show a "Save a draft or publish to display these options" message when creating a new post/page.
+	* Added CSS to unhide / show the WordPress admin toolbar when there are notices.
 	* Added new options under the SSO &gt; Advanced Settings &gt; Content Text tab:
 		* No Title Text
 		* No Description Text
 	* Removed options under the SSO &gt; Advanced Settings &gt; Content Text tab:
 		* Term Title Prefix
-	* When creating a new post/page the Document SSO metabox will now show a "Save a draft or publish to display these options" message in all tabs.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
 	* Removed support for the 'no_auto_draft' argument in form options.
 * **Requires At Least**
-	* PHP v5.5.
+	* PHP v5.6.
 	* WordPress v4.0.
 
 **Version 6.22.1 (2020/02/28)**
@@ -556,7 +556,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* None.
 * **Requires At Least**
-	* PHP v5.5.
+	* PHP v5.6.
 	* WordPress v4.0.
 
 **Version 6.22.0 (2020/02/27)**
@@ -586,7 +586,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a jQuery `trigger( 'sucom_init_metabox' )` event when initializing the Document SSO metabox.
 	* Refactored the jQuery `sucomSchemaTypeOgType()` function.
 * **Requires At Least**
-	* PHP v5.5.
+	* PHP v5.6.
 	* WordPress v4.0.
 
 **Version 6.21.2 (2020/02/21)**
@@ -601,7 +601,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Added a new `sucomSchemaTypeOgType()` function in js/com/jquery-metabox.js with a jQuery change event for 'select#select_og_schema_type'.
 * **Requires At Least**
-	* PHP v5.5.
+	* PHP v5.6.
 	* WordPress v4.0.
 
 **Version 6.21.1 (2020/02/17)**
@@ -615,7 +615,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* None.
 * **Requires At Least**
-	* PHP v5.5.
+	* PHP v5.6.
 	* WordPress v4.0.
 
 **Version 6.21.0 (2020/02/16)**
@@ -655,7 +655,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added support for Rank Math in `WpssoFilters->cleanup_rankmath_filters()`.
 	* Removed support for the WPSSO_HEAD_HTML_DISABLE constant.
 * **Requires At Least**
-	* PHP v5.5.
+	* PHP v5.6.
 	* WordPress v4.0.
 
 **Version 6.20.0 (2020/02/09)**
@@ -670,7 +670,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added sorting by default for translated labels in the `SucomForm->get_select()` method.
 	* Added calls to `SucomUtil::safe_error_log()` for error messages in the SucomCache methods.
 * **Requires At Least**
-	* PHP v5.5.
+	* PHP v5.6.
 	* WordPress v4.0.
 
 **Version 6.19.0 (2020/02/06)**
@@ -693,7 +693,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Moved `WpssoUtil->add_og_type_mt_md()` method to `WpssoOpenGraph->add_og_type_mt_md()`.
 	* Removed the `WpssoPage->get_article_section()` method and its 'wpsso_article_section' filter.
 * **Requires At Least**
-	* PHP v5.5.
+	* PHP v5.6.
 	* WordPress v4.0.
 
 **Version 6.18.0 (2020/01/30)**
@@ -709,7 +709,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Moved all methods from the WpssoJsonSchema class in WPSSO JSON v2.20.0 to WpssoSchema.
 * **Requires At Least**
-	* PHP v5.5.
+	* PHP v5.6.
 	* WordPress v4.0.
 
 **Version 6.17.0 (2020/01/15)**
@@ -742,7 +742,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Moved the `WpssoSchema->filter_get_post_options()` and `WpssoSchema->filter_save_post_options()` filters to the WpssoOpenGraph class.
 	* Moved the `WpssoSchema->update_post_md_opts()` method to the WpssoOpenGraph class.
 * **Requires At Least**
-	* PHP v5.5.
+	* PHP v5.6.
 	* WordPress v4.0.
 
 **Version 6.16.2 (2020/01/05)**
@@ -758,7 +758,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new `WpssoSchema->get_schema_type_og_type()` public method (returns false, or an Open Graph type string).
 	* Added a new `WpssoSchema->update_post_md_opts()` private method.
 * **Requires At Least**
-	* PHP v5.5.
+	* PHP v5.6.
 	* WordPress v4.0.
 
 **Version 6.16.1 (2019/12/21)**
@@ -783,7 +783,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* 'product_sku' to 'product_retailer_part_no'.
 	* Updated minimum WordPress version required from 3.9 to 4.0.
 * **Requires At Least**
-	* PHP v5.5.
+	* PHP v5.6.
 	* WordPress v4.0.
 
 **Version 6.16.0 (2019/12/11)**
@@ -890,5 +890,5 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 6.23.1 =
 
-(2020/03/04) Added several Open Graph options in the Document SSO metabox to the Standard / Free version.
+(2020/03/04) Added several Open Graph options in the Document SSO metabox to the Standard / Free version. Added CSS to unhide / show the WordPress admin toolbar when there are notices.
 
