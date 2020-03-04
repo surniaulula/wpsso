@@ -604,26 +604,26 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				        width:10%;
 				}
 				.column-' . $lca . '_schema_type {
-					width:' . $sort_cols[ 'schema_type' ][ 'width' ] . ' !important;
-					max-width:' . $sort_cols[ 'schema_type' ][ 'width' ] . ' !important;
+					width:' . $cols[ 'schema_type' ][ 'width' ] . ' !important;
+					max-width:' . $cols[ 'schema_type' ][ 'width' ] . ' !important;
 					white-space:nowrap;
 					overflow:hidden;
 				}
 				.column-' . $lca . '_og_type {
-					width:' . $sort_cols[ 'og_type' ][ 'width' ] . ' !important;
-					max-width:' . $sort_cols[ 'og_type' ][ 'width' ] . ' !important;
+					width:' . $cols[ 'og_type' ][ 'width' ] . ' !important;
+					max-width:' . $cols[ 'og_type' ][ 'width' ] . ' !important;
 					white-space:nowrap;
 					overflow:hidden;
 				}
 				.column-' . $lca . '_og_img { 
-					width:' . $sort_cols[ 'og_img' ][ 'width' ] . ' !important;
-					max-width:' . $sort_cols[ 'og_img' ][ 'width' ] . ' !important;
+					width:' . $cols[ 'og_img' ][ 'width' ] . ' !important;
+					max-width:' . $cols[ 'og_img' ][ 'width' ] . ' !important;
 				}
 				.column-' . $lca . '_og_img .preview_img { 
-					max-width:' . $sort_cols[ 'og_img' ][ 'width' ] . ' !important;
-					height:' . $sort_cols[ 'og_img' ][ 'height' ] . ';
-					min-height:' . $sort_cols[ 'og_img' ][ 'height' ] . ';
-					background-size:' . $sort_cols[ 'og_img' ][ 'width' ] . ' auto;
+					max-width:' . $cols[ 'og_img' ][ 'width' ] . ' !important;
+					height:' . $cols[ 'og_img' ][ 'height' ] . ';
+					min-height:' . $cols[ 'og_img' ][ 'height' ] . ';
+					background-size:' . $cols[ 'og_img' ][ 'width' ] . ' auto;
 					background-repeat:no-repeat;
 					background-position:center center;
 					overflow:hidden;
@@ -649,7 +649,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				}
 			';
 
-			foreach ( $sort_cols as $col_name => $col_info ) {
+			foreach ( $cols as $col_name => $col_info ) {
 
 				if ( isset( $col_info[ 'width' ] ) ) {
 					$custom_style_css .= '
