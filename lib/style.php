@@ -300,6 +300,20 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 						url("' . $plugin_urlpath . 'fonts/star.svg?' . $version . '#star") format("svg");
 				}
 
+				/**
+				 * Fix the WordPress v5.4 fullscreen editor.
+				 */
+				body.wp-admin.is-fullscreen-mode #wpadminbar {
+					display:block;
+				}
+
+				body.wp-admin.is-fullscreen-mode .block-editor__container {
+					min-height: calc(100vh - 32px);
+				}
+
+				body.wp-admin.is-fullscreen-mode .block-editor-editor-skeleton {
+					top:32px;
+				}
 
 				/**
 				 * Admin toolbar notices.
