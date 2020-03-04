@@ -315,6 +315,10 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 						top:32px;
 					}
 
+					body.wp-admin.is-fullscreen-mode .block-editor__container .edit-post-layout > .edit-post-layout__content {
+						top:88px;
+					}
+
 					body.wp-admin.is-fullscreen-mode .block-editor__container .edit-post-layout > div > .edit-post-sidebar {
 						top:88px;
 					}
