@@ -230,17 +230,18 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$sort_cols = WpssoWpMeta::get_sortable_columns();	// Uses a static cache.
+			$lca  = $this->p->lca;
+			$cols = WpssoWpMeta::get_sortable_columns();	// Uses a static cache.
 
-			$cache_md5_pre    = $this->p->lca . '_';
-			$cache_exp_filter = $this->p->lca . '_cache_expire_admin_css';
+			$cache_md5_pre    = $lca . '_';
+			$cache_exp_filter = $lca . '_cache_expire_admin_css';
 			$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, DAY_IN_SECONDS );
 
 			$cache_salt       = __METHOD__ . '(';
 			$cache_salt       .= 'hook_name:' . $hook_name;
 			$cache_salt       .= '_urlpath:' . $plugin_urlpath;
 			$cache_salt       .= '_version:' . $version;
-			$cache_salt       .= '_columns:' . implode( ',', array_keys( $sort_cols ) );
+			$cache_salt       .= '_columns:' . implode( ',', array_keys( $cols ) );
 			$cache_salt       .= ')';
 			$cache_id         = $cache_md5_pre . md5( $cache_salt );
 
@@ -272,60 +273,11 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				$this->p->debug->mark( 'create and minify admin page style' );	// Begin timer.
 			}
 
-			global $wp_version;
-
 			$metabox_id = $this->p->cf[ 'meta' ][ 'id' ];
-			$menu       = $this->p->lca . '-' . key( $this->p->cf[ '*' ][ 'lib' ][ 'submenu' ] );
-			$sitemenu   = $this->p->lca . '-' . key( $this->p->cf[ '*' ][ 'lib' ][ 'sitesubmenu' ] );
+			$menu       = $lca . '-' . key( $this->p->cf[ '*' ][ 'lib' ][ 'submenu' ] );
+			$sitemenu   = $lca . '-' . key( $this->p->cf[ '*' ][ 'lib' ][ 'sitesubmenu' ] );
 
-			/**
-			 * Fix the WordPress fullscreen editor.
-			 */
 			$custom_style_css = '
-
-				body.wp-admin.is-fullscreen-mode #wpadminbar {
-					display:block;
-				}
-
-				body.wp-admin.is-fullscreen-mode .block-editor__container {
-					min-height:calc(100vh - 32px);
-				}
-			';
-
-			/**
-			 * Fix the WordPress v5.3 fullscreen editor.
-			 */
-			if ( version_compare( $wp_version, '5.3.2', '>' ) ) {
-
-				$custom_style_css .= '
-
-					body.wp-admin.is-fullscreen-mode .block-editor__container .block-editor-editor-skeleton {
-						top:32px;
-					}
-				';
-
-			/**
-			 * Fix the WordPress v5.4 fullscreen editor.
-			 */
-			} else {
-
-				$custom_style_css .= '
-
-					body.wp-admin.is-fullscreen-mode .block-editor__container .edit-post-layout > .edit-post-header {
-						top:32px;
-					}
-
-					body.wp-admin.is-fullscreen-mode .block-editor__container .edit-post-layout > .edit-post-layout__content {
-						top:88px;
-					}
-
-					body.wp-admin.is-fullscreen-mode .block-editor__container .edit-post-layout > div > .edit-post-sidebar {
-						top:88px;
-					}
-				';
-			}
-
-			$custom_style_css .= '
 
 				@font-face {
 					font-family:"WpssoIcons";
@@ -352,7 +304,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				/**
 				 * Admin toolbar notices.
 				 */
-				#wpadminbar #wp-toolbar #' . $this->p->lca . '-toolbar-notices-icon.ab-icon::before { 
+				#wpadminbar #wp-toolbar #' . $lca . '-toolbar-notices-icon.ab-icon::before { 
 					font-size:30px;
 					font-style:normal;
 					line-height:20px;
@@ -378,28 +330,28 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					padding:6px 8px;	/* Default is 6px 12px. */
 				}
 
-				#adminmenu ul.wp-submenu div.' . $this->p->lca . '-menu-item {
+				#adminmenu ul.wp-submenu div.' . $lca . '-menu-item {
 					display:table-cell;
 				}
 
-				#adminmenu ul.wp-submenu div.' . $this->p->lca . '-menu-item.dashicons-before {
+				#adminmenu ul.wp-submenu div.' . $lca . '-menu-item.dashicons-before {
 					max-width:1.3em;
 					padding-right:6px;
 				}
 
-				#adminmenu ul.wp-submenu div.' . $this->p->lca . '-menu-item.dashicons-before::before {
+				#adminmenu ul.wp-submenu div.' . $lca . '-menu-item.dashicons-before::before {
 					font-size:1.3em;
 					text-align:left;
 					opacity:0.5;
 					filter:alpha(opacity=50);	/* IE8 and earlier. */
 				}
 
-				#adminmenu ul.wp-submenu div.' . $this->p->lca . '-menu-item.menu-item-label {
+				#adminmenu ul.wp-submenu div.' . $lca . '-menu-item.menu-item-label {
 					width:100%;
 				}
 
-				#adminmenu ul.wp-submenu div.' . $this->p->lca . '-menu-item.' . $this->p->lca . '-essential,
-				#adminmenu ul.wp-submenu div.' . $this->p->lca . '-menu-item.top-last-submenu-page.with-add-ons {
+				#adminmenu ul.wp-submenu div.' . $lca . '-menu-item.' . $lca . '-essential,
+				#adminmenu ul.wp-submenu div.' . $lca . '-menu-item.top-last-submenu-page.with-add-ons {
 					padding-bottom:12px;
 					border-bottom:1px solid;
 				}
@@ -407,59 +359,59 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				/**
 				 * Settings pages.
 				 */
-				#profile-page.wrap #your-profile #' . $this->p->lca . '_' . $metabox_id . '.postbox h3:first-of-type {
+				#profile-page.wrap #your-profile #' . $lca . '_' . $metabox_id . '.postbox h3:first-of-type {
 					margin:0;
 				}
 
-				#' . $this->p->lca . '_' . $metabox_id . '.postbox {
+				#' . $lca . '_' . $metabox_id . '.postbox {
 					min-width:455px;	/* The default WordPress postbox minimum width is 255px. */
 				}
 
-				#' . $this->p->lca . '_' . $metabox_id . ' .inside {
+				#' . $lca . '_' . $metabox_id . ' .inside {
 					padding:0;
 					margin:0;
 				}
 
-				.' . $this->p->lca . '-rate-heart {
+				.' . $lca . '-rate-heart {
 					color:red;
 					font-size:1.5em;
 					vertical-align:top;
 				}
 
-				.' . $this->p->lca . '-rate-heart::before {
+				.' . $lca . '-rate-heart::before {
 					content:"\2665";	/* Heart. */
 				}
 
 				/**
 				 * Post publish robots option.
 				 */
-				#post-' . $this->p->lca . '-robots {
+				#post-' . $lca . '-robots {
 					display:table;
 				}
 
-				#post-' . $this->p->lca . '-robots-label {
+				#post-' . $lca . '-robots-label {
 					display:table-cell;
 					padding-left:3px;
 					vertical-align:top;
 				}
 
-				#post-' . $this->p->lca . '-robots-display {
+				#post-' . $lca . '-robots-display {
 					display:table-cell;
 					padding-left:3px;
 					vertical-align:top;
 				}
 
-				#post-' . $this->p->lca . '-robots-content {
+				#post-' . $lca . '-robots-content {
 					display:block;
 					word-wrap:normal;
 					font-weight:bold;
 				}
 
-				#post-' . $this->p->lca . '-robots-content a {
+				#post-' . $lca . '-robots-content a {
 					font-weight:normal;
 				}
 
-				#post-' . $this->p->lca . '-robots-select {
+				#post-' . $lca . '-robots-select {
 					display:none;
 				}
 			';
@@ -651,23 +603,23 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				table.wp-list-table > tbody > tr > td.column-template {
 				        width:10%;
 				}
-				.column-' . $this->p->lca . '_schema_type {
+				.column-' . $lca . '_schema_type {
 					width:' . $sort_cols[ 'schema_type' ][ 'width' ] . ' !important;
 					max-width:' . $sort_cols[ 'schema_type' ][ 'width' ] . ' !important;
 					white-space:nowrap;
 					overflow:hidden;
 				}
-				.column-' . $this->p->lca . '_og_type {
+				.column-' . $lca . '_og_type {
 					width:' . $sort_cols[ 'og_type' ][ 'width' ] . ' !important;
 					max-width:' . $sort_cols[ 'og_type' ][ 'width' ] . ' !important;
 					white-space:nowrap;
 					overflow:hidden;
 				}
-				.column-' . $this->p->lca . '_og_img { 
+				.column-' . $lca . '_og_img { 
 					width:' . $sort_cols[ 'og_img' ][ 'width' ] . ' !important;
 					max-width:' . $sort_cols[ 'og_img' ][ 'width' ] . ' !important;
 				}
-				.column-' . $this->p->lca . '_og_img .preview_img { 
+				.column-' . $lca . '_og_img .preview_img { 
 					max-width:' . $sort_cols[ 'og_img' ][ 'width' ] . ' !important;
 					height:' . $sort_cols[ 'og_img' ][ 'height' ] . ';
 					min-height:' . $sort_cols[ 'og_img' ][ 'height' ] . ';
@@ -678,20 +630,20 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					margin:0;
 					padding:0;
 				}
-				.column-' . $this->p->lca . '_og_desc {
+				.column-' . $lca . '_og_desc {
 					overflow:hidden;
 				}
-				td.column-' . $this->p->lca . '_schema_type,
-				td.column-' . $this->p->lca . '_og_type,
-				td.column-' . $this->p->lca . '_og_desc {
+				td.column-' . $lca . '_schema_type,
+				td.column-' . $lca . '_og_type,
+				td.column-' . $lca . '_og_desc {
 					direction:ltr;
 					font-family:"Helvetica";
 					text-align:left;
 					word-wrap:break-word;
 				}
 				@media ( max-width:1295px ) {
-					th.column-' . $this->p->lca . '_og_desc,
-					td.column-' . $this->p->lca . '_og_desc {
+					th.column-' . $lca . '_og_desc,
+					td.column-' . $lca . '_og_desc {
 						display:none;
 					}
 				}
@@ -701,8 +653,8 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 				if ( isset( $col_info[ 'width' ] ) ) {
 					$custom_style_css .= '
-						table.wp-list-table > thead > tr > th.column-' . $this->p->lca . '_' . $col_name . ',
-						table.wp-list-table > tbody > tr > td.column-' . $this->p->lca . '_' . $col_name . ' {
+						table.wp-list-table > thead > tr > th.column-' . $lca . '_' . $col_name . ',
+						table.wp-list-table > tbody > tr > td.column-' . $lca . '_' . $col_name . ' {
 							width:' . $col_info[ 'width' ] . ' !important;
 							min-width:' . $col_info[ 'width' ] . ' !important;
 						}
@@ -713,7 +665,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			if ( $use_cache ) {
 
 				if ( method_exists( 'SucomUtil', 'minify_css' ) ) {
-					$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->p->lca );
+					$custom_style_css = SucomUtil::minify_css( $custom_style_css, $lca );
 				}
 
 				set_transient( $cache_id, $custom_style_css, $cache_exp_secs );

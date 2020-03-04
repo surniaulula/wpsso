@@ -337,22 +337,24 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 								} );
 							} );
 	
-							jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).removeClass( 'have-notices-error' );
-							jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).removeClass( 'have-notices-warning' );
-							jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).removeClass( 'have-notices-info' );
-							jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).removeClass( 'have-notices-success' );
+							jQuery( 'body.wp-admin' ).removeClass( 'has-toolbar-notices' );
+							jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).removeClass( 'has-toolbar-notices' );
+							jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).removeClass( 'toolbar-notices-error' );
+							jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).removeClass( 'toolbar-notices-warning' );
+							jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).removeClass( 'toolbar-notices-info' );
+							jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).removeClass( 'toolbar-notices-success' );
 
 							if ( updateNoticeHtml ) {
 
 								if ( noticeHtml ) {
 
 									jQuery( '#wp-admin-bar-wpsso-toolbar-notices-container' ).html( noticeHtml );
-									jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).addClass( 'have-notices' );
+									jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).addClass( 'has-toolbar-notices' );
+									jQuery( 'body.wp-admin' ).addClass( 'has-toolbar-notices' );
 
 								} else {
 
 									jQuery( '#wp-admin-bar-wpsso-toolbar-notices-container' ).html( noNoticesHtml );
-									jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).removeClass( 'have-notices' );
 								}
 							}
 	
@@ -372,7 +374,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 									noticeStatus = 'success';
 								}
 	
-								jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).addClass( 'have-notices-' + noticeStatus );
+								jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).addClass( 'toolbar-notices-' + noticeStatus );
 							}
 						} );
 					}
