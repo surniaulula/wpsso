@@ -1527,8 +1527,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'before wp_title filter = "' . $title_text . '"' );
 			}
 
-			$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $sep, 'right' ) );
-
 			/**
 			 * Trim excess separator.
 			 */
