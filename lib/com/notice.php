@@ -1211,7 +1211,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			/**
-			 * Make sure the admin toolbar is shown when there are notices, even when using the fullscreen editor.
+			 * Unhide the WordPress admin toolbar if there are notices, including when using the fullscreen editor.
 			 */
 			$custom_style_css .= '
 
