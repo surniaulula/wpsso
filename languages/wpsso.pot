@@ -910,7 +910,7 @@ msgstr ""
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:450 lib/gettext-com.php:32 lib/post.php:1547
+#: lib/com/notice.php:450 lib/gettext-com.php:32 lib/post.php:1552
 msgid "Edit"
 msgstr ""
 
@@ -6086,7 +6086,7 @@ msgid ""
 "post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:752 lib/post.php:1305
+#: lib/post.php:752 lib/post.php:1310
 msgid "checking meta tags"
 msgstr ""
 
@@ -6195,70 +6195,70 @@ msgid ""
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:1190
+#: lib/post.php:1192
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1191
+#: lib/post.php:1194
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1197
+#: lib/post.php:1202
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1200
+#: lib/post.php:1205
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1202
+#: lib/post.php:1207
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1359
+#: lib/post.php:1364
 msgid "Save a draft or publish to display these options."
 msgstr ""
 
-#: lib/post.php:1537 lib/script.php:194
+#: lib/post.php:1542 lib/script.php:194
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1548
+#: lib/post.php:1553
 msgid "Edit robots"
-msgstr ""
-
-#: lib/post.php:1561
-msgctxt "option label"
-msgid "No archive"
-msgstr ""
-
-#: lib/post.php:1562
-msgctxt "option label"
-msgid "No follow"
-msgstr ""
-
-#: lib/post.php:1563
-msgctxt "option label"
-msgid "No image index"
-msgstr ""
-
-#: lib/post.php:1564
-msgctxt "option label"
-msgid "No index"
-msgstr ""
-
-#: lib/post.php:1565
-msgctxt "option label"
-msgid "No snippet"
 msgstr ""
 
 #: lib/post.php:1566
 msgctxt "option label"
+msgid "No archive"
+msgstr ""
+
+#: lib/post.php:1567
+msgctxt "option label"
+msgid "No follow"
+msgstr ""
+
+#: lib/post.php:1568
+msgctxt "option label"
+msgid "No image index"
+msgstr ""
+
+#: lib/post.php:1569
+msgctxt "option label"
+msgid "No index"
+msgstr ""
+
+#: lib/post.php:1570
+msgctxt "option label"
+msgid "No snippet"
+msgstr ""
+
+#: lib/post.php:1571
+msgctxt "option label"
 msgid "No translate"
 msgstr ""
 
-#: lib/post.php:1695
+#: lib/post.php:1700
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
