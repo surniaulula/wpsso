@@ -14,7 +14,10 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 	class WpssoScript {
 
 		private $p;
-		private $tb_notices;
+		private $doing_dev  = false;
+		private $file_ext   = 'min.js';
+		private $version    = '';
+		private $tb_notices = false;
 
 		public function __construct( &$plugin ) {
 
@@ -23,6 +26,10 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
+
+			$this->doing_dev = SucomUtil::get_const( 'WPSSO_DEV' );
+			$this->file_ext  = $this->doing_dev ? 'js' : 'min.js';
+			$this->version   = WpssoConfig::get_version();
 
 			if ( ! SucomUtil::get_const( 'DOING_AJAX' ) ) {
 
@@ -52,34 +59,27 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			}
 
 			/**
-			 * Do not use minified JS if the DEV constant is defined.
-			 */
-			$doing_dev = SucomUtil::get_const( 'WPSSO_DEV' );
-			$file_ext  = $doing_dev ? 'js' : 'min.js';
-			$version   = WpssoConfig::get_version();
-
-			/**
 			 * See http://qtip2.com/download.
 			 */
 			wp_register_script( 'jquery-qtip', 
-				WPSSO_URLPATH . 'js/ext/jquery-qtip.' . $file_ext, 
+				WPSSO_URLPATH . 'js/ext/jquery-qtip.' . $this->file_ext, 
 					array( 'jquery' ), $this->p->cf[ 'jquery-qtip' ][ 'version' ], true );
 
 			wp_register_script( 'sucom-settings-page', 
-				WPSSO_URLPATH . 'js/com/jquery-settings-page.' . $file_ext, 
-					array( 'jquery' ), $version, true );
+				WPSSO_URLPATH . 'js/com/jquery-settings-page.' . $this->file_ext, 
+					array( 'jquery' ), $this->version, true );
 
 			wp_register_script( 'sucom-metabox', 
-				WPSSO_URLPATH . 'js/com/jquery-metabox.' . $file_ext, 
-					array( 'jquery' ), $version, true );
+				WPSSO_URLPATH . 'js/com/jquery-metabox.' . $this->file_ext, 
+					array( 'jquery' ), $this->version, true );
 
 			wp_register_script( 'sucom-tooltips', 
-				WPSSO_URLPATH . 'js/com/jquery-tooltips.' . $file_ext, 
-					array( 'jquery' ), $version, true );
+				WPSSO_URLPATH . 'js/com/jquery-tooltips.' . $this->file_ext, 
+					array( 'jquery' ), $this->version, true );
 
 			wp_register_script( 'sucom-admin-media', 
-				WPSSO_URLPATH . 'js/com/jquery-admin-media.' . $file_ext, 
-					array( 'jquery', 'jquery-ui-core' ), $version, true );
+				WPSSO_URLPATH . 'js/com/jquery-admin-media.' . $this->file_ext, 
+					array( 'jquery', 'jquery-ui-core' ), $this->version, true );
 
 			/**
 			 * Only load scripts where we need them.
@@ -159,7 +159,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 						$this->p->debug->log( 'wp_enqueue_media() function not found' );
 					}
 
-					do_action( $this->p->lca . '_admin_enqueue_scripts_editing_page', $hook_name, $file_ext );
+					do_action( $this->p->lca . '_admin_enqueue_scripts_editing_page', $hook_name, $this->file_ext );
 
 					break;	// Stop here.
 
@@ -182,7 +182,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 					break;
 			}
 
-			$this->add_admin_page_script( $hook_name, $file_ext, $version );
+			$this->add_admin_page_script( $hook_name );
 		}
 
 		/**
@@ -234,16 +234,9 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
-			 * Do not use minified JS if the DEV constant is defined.
-			 */
-			$doing_dev = SucomUtil::get_const( 'WPSSO_DEV' );
-			$file_ext  = $doing_dev ? 'js' : 'min.js';
-			$version   = WpssoConfig::get_version();
-
 			wp_enqueue_script( 'sucom-block-editor-admin', 
-				WPSSO_URLPATH . 'js/block-editor-admin.' . $file_ext, 
-					array( 'wp-data', 'wp-editor', 'wp-edit-post' ), $version, false );
+				WPSSO_URLPATH . 'js/block-editor-admin.' . $this->file_ext, 
+					array( 'wp-data', 'wp-editor', 'wp-edit-post' ), $this->version, false );
 		}
 
 		/**
@@ -422,15 +415,15 @@ jQuery( document ).ready( function(){
 			}
 		}
 
-		private function add_admin_page_script( $hook_name, $file_ext, $version ) {
+		private function add_admin_page_script( $hook_name ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
 			wp_register_script( 'sucom-admin-page', 
-				WPSSO_URLPATH . 'js/com/jquery-admin-page.' . $file_ext, 
-					array( 'jquery' ), $version, true );
+				WPSSO_URLPATH . 'js/com/jquery-admin-page.' . $this->file_ext, 
+					array( 'jquery' ), $this->version, true );
 
 
 			wp_enqueue_script( 'sucom-admin-page' );

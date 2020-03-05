@@ -14,6 +14,10 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 	class WpssoStyle {
 
 		private $p;
+		private $doing_dev = false;
+		private $use_cache = true;	// Read/save minimized CSS from/to transient cache.
+		private $file_ext  = 'min.css';
+		private $version   = '';
 
 		public function __construct( &$plugin ) {
 
@@ -22,6 +26,11 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
+
+			$this->doing_dev = SucomUtil::get_const( 'WPSSO_DEV' );
+			$this->use_cache = $this->doing_dev ? false : true;	// Read/save minimized CSS from/to transient cache.
+			$this->file_ext  = $this->doing_dev ? 'css' : 'min.css';
+			$this->version   = WpssoConfig::get_version();
 
 			if ( is_admin() ) {
 				add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_styles' ), -1000 );
@@ -36,13 +45,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			}
 
 			/**
-			 * Do not use minified CSS if the DEV constant is defined.
-			 */
-			$doing_dev = SucomUtil::get_const( 'WPSSO_DEV' );
-			$file_ext  = $doing_dev ? 'css' : 'min.css';
-			$version   = WpssoConfig::get_version();
-
-			/**
 			 * See https://developers.google.com/speed/libraries/.
 			 */
 			wp_register_style( 'jquery-ui.js',
@@ -54,16 +56,16 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			 * See http://qtip2.com/download.
 			 */
 			wp_register_style( 'jquery-qtip.js',
-				WPSSO_URLPATH . 'css/ext/jquery-qtip.' . $file_ext,
+				WPSSO_URLPATH . 'css/ext/jquery-qtip.' . $this->file_ext,
 					array(), $this->p->cf[ 'jquery-qtip' ][ 'version' ] );
 
 			wp_register_style( 'sucom-settings-table',
-				WPSSO_URLPATH . 'css/com/settings-table.' . $file_ext,
-					array(), $version );
+				WPSSO_URLPATH . 'css/com/settings-table.' . $this->file_ext,
+					array(), $this->version );
 
 			wp_register_style( 'sucom-metabox-tabs',
-				WPSSO_URLPATH . 'css/com/metabox-tabs.' . $file_ext,
-					array(), $version );
+				WPSSO_URLPATH . 'css/com/metabox-tabs.' . $this->file_ext,
+					array(), $this->version );
 
 			/**
 			 * Only load stylesheets where we need them.
@@ -92,7 +94,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 						$this->p->debug->log( 'enqueuing styles for settings page' );
 					}
 
-					$this->add_settings_page_style( $hook_name, WPSSO_URLPATH, $file_ext, $version );
+					$this->add_settings_page_style( $hook_name );
 
 					// No break.
 
@@ -138,7 +140,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					break;	// Stop here.
 			}
 
-			$this->add_admin_page_style( $hook_name, WPSSO_URLPATH, $file_ext, $version );
+			$this->add_admin_page_style( $hook_name );
 		}
 
 		public function add_plugins_body_class( $classes ) {
@@ -148,17 +150,17 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			return $classes;
 		}
 
-		private function add_settings_page_style( $hook_name, $plugin_urlpath, $file_ext, $version ) {
+		private function add_settings_page_style( $hook_name ) {
 
 			$cache_md5_pre    = $this->p->lca . '_';
 			$cache_exp_filter = $this->p->lca . '_cache_expire_admin_css';
 			$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, DAY_IN_SECONDS );
-			$cache_salt       = __METHOD__ . '(hook_name:' . $hook_name . '_plugin_urlpath:' . $plugin_urlpath . '_plugin_version:' . $version . ')';
+			$cache_salt       = __METHOD__ . '(hook_name:' . $hook_name . '_urlpath:' . WPSSO_URLPATH . '_version:' . $this->version . ')';
 			$cache_id         = $cache_md5_pre . md5( $cache_salt );
 
 			wp_enqueue_style( 'sucom-settings-page',
-				$plugin_urlpath . 'css/com/settings-page.' . $file_ext,
-					array(), $version );
+				WPSSO_URLPATH . 'css/com/settings-page.' . $this->file_ext,
+					array(), $this->version );
 
 			if ( $custom_style_css = get_transient( $cache_id ) ) {	// Not empty.
 
@@ -174,6 +176,8 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'create and minify settings page style' );	// Begin timer.
 			}
+
+			$custom_style_css = '';	// Start with an empty string.
 
 			/**
 			 * Re-use the notice border colors for the side column and dashboard metaboxes.
@@ -208,8 +212,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				$custom_style_css .= 'div#' . $hook_name . ' div#normal-sortables { min-height:0; }';
 			}
 
-			$custom_style_css = apply_filters( $this->p->lca . '_settings_page_custom_style_css',
-				$custom_style_css, $hook_name, $plugin_urlpath, $version );
+			$custom_style_css = apply_filters( $this->p->lca . '_settings_page_custom_style_css', $custom_style_css );
 	
 			if ( method_exists( 'SucomUtil', 'minify_css' ) ) {
 				$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->p->lca );
@@ -224,7 +227,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			}
 		}
 
-		private function add_admin_page_style( $hook_name, $plugin_urlpath, $file_ext, $version ) {
+		private function add_admin_page_style( $hook_name ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -238,25 +241,19 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			$cache_exp_filter = $lca . '_cache_expire_admin_css';
 			$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, DAY_IN_SECONDS );
 
-			$cache_salt       = __METHOD__ . '(';
-			$cache_salt       .= 'hook_name:' . $hook_name;
-			$cache_salt       .= '_urlpath:' . $plugin_urlpath;
-			$cache_salt       .= '_version:' . $version;
-			$cache_salt       .= '_columns:' . implode( ',', array_keys( $sort_cols ) );
-			$cache_salt       .= ')';
-			$cache_id         = $cache_md5_pre . md5( $cache_salt );
-
-			/**
-			 * Do not use transient cache if the DEV constant is defined.
-			 */
-			$doing_dev = SucomUtil::get_const( 'WPSSO_DEV' );
-			$use_cache = $doing_dev ? false : true;
+			$cache_salt = __METHOD__ . '(';
+			$cache_salt .= 'hook_name:' . $hook_name;
+			$cache_salt .= '_urlpath:' . WPSSO_URLPATH;
+			$cache_salt .= '_version:' . $this->version;
+			$cache_salt .= '_columns:' . implode( ',', array_keys( $sort_cols ) );
+			$cache_salt .= ')';
+			$cache_id   = $cache_md5_pre . md5( $cache_salt );
 
 			wp_enqueue_style( 'sucom-admin-page',
-				$plugin_urlpath . 'css/com/admin-page.' . $file_ext,
-					array(), $version );
+				WPSSO_URLPATH . 'css/com/admin-page.' . $this->file_ext,
+					array(), $this->version );
 
-			if ( $use_cache ) {
+			if ( $this->use_cache ) {
 
 				if ( $custom_style_css = get_transient( $cache_id ) ) {	// not empty
 
@@ -286,21 +283,21 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					font-family:"WpssoIcons";
 					font-weight:normal;
 					font-style:normal;
-					src:url("' . $plugin_urlpath . 'fonts/icons.eot?' . $version . '");
-					src:url("' . $plugin_urlpath . 'fonts/icons.eot?' . $version . '#iefix") format("embedded-opentype"),
-						url("' . $plugin_urlpath . 'fonts/icons.woff?' . $version . '") format("woff"),
-						url("' . $plugin_urlpath . 'fonts/icons.ttf?' . $version . '") format("truetype"),
-						url("' . $plugin_urlpath . 'fonts/icons.svg?' . $version . '#icons") format("svg");
+					src:url("' . WPSSO_URLPATH . 'fonts/icons.eot?' . $this->version . '");
+					src:url("' . WPSSO_URLPATH . 'fonts/icons.eot?' . $this->version . '#iefix") format("embedded-opentype"),
+						url("' . WPSSO_URLPATH . 'fonts/icons.woff?' . $this->version . '") format("woff"),
+						url("' . WPSSO_URLPATH . 'fonts/icons.ttf?' . $this->version . '") format("truetype"),
+						url("' . WPSSO_URLPATH . 'fonts/icons.svg?' . $this->version . '#icons") format("svg");
 				}
 				@font-face {
 					font-family:"WpssoStar";
 					font-weight:normal;
 					font-style:normal;
-					src:url("' . $plugin_urlpath . 'fonts/star.eot?' . $version . '");
-					src:url("' . $plugin_urlpath . 'fonts/star.eot?' . $version . '#iefix") format("embedded-opentype"),
-						url("' . $plugin_urlpath . 'fonts/star.woff?' . $version . '") format("woff"),
-						url("' . $plugin_urlpath . 'fonts/star.ttf?' . $version . '") format("truetype"),
-						url("' . $plugin_urlpath . 'fonts/star.svg?' . $version . '#star") format("svg");
+					src:url("' . WPSSO_URLPATH . 'fonts/star.eot?' . $this->version . '");
+					src:url("' . WPSSO_URLPATH . 'fonts/star.eot?' . $this->version . '#iefix") format("embedded-opentype"),
+						url("' . WPSSO_URLPATH . 'fonts/star.woff?' . $this->version . '") format("woff"),
+						url("' . WPSSO_URLPATH . 'fonts/star.ttf?' . $this->version . '") format("truetype"),
+						url("' . WPSSO_URLPATH . 'fonts/star.svg?' . $this->version . '#star") format("svg");
 				}
 			';
 
@@ -680,7 +677,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				}
 			}
 
-			if ( $use_cache ) {
+			if ( $this->use_cache ) {
 
 				if ( method_exists( 'SucomUtil', 'minify_css' ) ) {
 					$custom_style_css = SucomUtil::minify_css( $custom_style_css, $lca );

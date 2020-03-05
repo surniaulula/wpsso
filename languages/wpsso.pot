@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.23.1\n"
+"Project-Id-Version: WPSSO Core 6.23.2-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -778,12 +778,12 @@ msgstr ""
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 
-#: lib/com/bfo.php:242 lib/com/cache.php:81 lib/com/notice.php:90
+#: lib/com/bfo.php:242 lib/com/cache.php:81 lib/com/notice.php:101
 #: lib/gettext-com.php:6 lib/gettext-com.php:27 lib/gettext-com.php:34
 msgid "%s Notice"
 msgstr ""
 
-#: lib/com/bfo.php:245 lib/com/cache.php:84 lib/com/notice.php:93
+#: lib/com/bfo.php:245 lib/com/cache.php:84 lib/com/notice.php:104
 #: lib/gettext-com.php:7 lib/gettext-com.php:28 lib/gettext-com.php:35
 msgid "Notice"
 msgstr ""
@@ -898,23 +898,23 @@ msgctxt "option comment"
 msgid "from"
 msgstr ""
 
-#: lib/com/notice.php:220 lib/gettext-com.php:29
+#: lib/com/notice.php:228 lib/gettext-com.php:29
 msgid "Forever"
 msgstr ""
 
-#: lib/com/notice.php:222 lib/gettext-com.php:30
+#: lib/com/notice.php:230 lib/gettext-com.php:30
 msgid "This notice can be dismissed permanently."
 msgstr ""
 
-#: lib/com/notice.php:233 lib/gettext-com.php:31
+#: lib/com/notice.php:241 lib/gettext-com.php:31
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:450 lib/gettext-com.php:32 lib/post.php:1552
+#: lib/com/notice.php:458 lib/gettext-com.php:32 lib/post.php:1552
 msgid "Edit"
 msgstr ""
 
-#: lib/com/notice.php:454 lib/gettext-com.php:33
+#: lib/com/notice.php:462 lib/gettext-com.php:33
 msgid "Reference: %s"
 msgstr ""
 
@@ -6366,7 +6366,7 @@ msgctxt "option label"
 msgid "Schema Type"
 msgstr ""
 
-#: lib/script.php:202 lib/script.php:287
+#: lib/script.php:202 lib/script.php:280
 msgid "No %s notifications."
 msgstr ""
 
