@@ -520,7 +520,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed possible javascript undefined variable error for missing checkbox name attributes.
 * **Developer Notes**
-	* Refactored the WpssoStyle, WpssoScript, and SucomNotice classes to check the WPSSO_DEV constant once when each class object is instantiated.
+	* Refactored the WpssoStyle, WpssoScript, and SucomNotice classes to check the WPSSO_DEV constant once when each class is instantiated.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.0.
