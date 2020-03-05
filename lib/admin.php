@@ -1949,8 +1949,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function show_metabox_rate_review() {
 
 			echo '<table class="sucom-settings ' . $this->p->lca . ' column-metabox"><tr><td>';
+
 			echo $this->p->msgs->get( 'column-rate-review' );
-			echo '<h4>' . __( 'Rate your plugins', 'option label', 'wpsso' ) . ':</h4>' . "\n";
+
+			echo '<h4>' . __( 'Rate your favorite plugins', 'option label', 'wpsso' ) . ':</h4>' . "\n";
 
 			$action_links = array();
 
