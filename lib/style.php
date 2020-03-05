@@ -230,8 +230,9 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$lca  = $this->p->lca;
-			$cols = WpssoWpMeta::get_sortable_columns();	// Uses a static cache.
+			$lca = $this->p->lca;
+
+			$sort_cols = WpssoWpMeta::get_sortable_columns();	// Uses a static cache.
 
 			$cache_md5_pre    = $lca . '_';
 			$cache_exp_filter = $lca . '_cache_expire_admin_css';
@@ -241,7 +242,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			$cache_salt       .= 'hook_name:' . $hook_name;
 			$cache_salt       .= '_urlpath:' . $plugin_urlpath;
 			$cache_salt       .= '_version:' . $version;
-			$cache_salt       .= '_columns:' . implode( ',', array_keys( $cols ) );
+			$cache_salt       .= '_columns:' . implode( ',', array_keys( $sort_cols ) );
 			$cache_salt       .= ')';
 			$cache_id         = $cache_md5_pre . md5( $cache_salt );
 
@@ -277,8 +278,10 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			$menu       = $lca . '-' . key( $this->p->cf[ '*' ][ 'lib' ][ 'submenu' ] );
 			$sitemenu   = $lca . '-' . key( $this->p->cf[ '*' ][ 'lib' ][ 'sitesubmenu' ] );
 
+			/**
+			 * Fonts.
+			 */
 			$custom_style_css = '
-
 				@font-face {
 					font-family:"WpssoIcons";
 					font-weight:normal;
@@ -289,7 +292,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 						url("' . $plugin_urlpath . 'fonts/icons.ttf?' . $version . '") format("truetype"),
 						url("' . $plugin_urlpath . 'fonts/icons.svg?' . $version . '#icons") format("svg");
 				}
-
 				@font-face {
 					font-family:"WpssoStar";
 					font-weight:normal;
@@ -300,20 +302,24 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 						url("' . $plugin_urlpath . 'fonts/star.ttf?' . $version . '") format("truetype"),
 						url("' . $plugin_urlpath . 'fonts/star.svg?' . $version . '#star") format("svg");
 				}
+			';
 
-				/**
-				 * Admin toolbar notices.
-				 */
+			/**
+			 * Admin toolbar notices.
+			 */
+			$custom_style_css .= '
 				#wpadminbar #wp-toolbar #' . $lca . '-toolbar-notices-icon.ab-icon::before { 
 					font-size:30px;
 					font-style:normal;
 					line-height:20px;
 					content:"' . $this->p->cf[ 'menu' ][ 'before' ] . '";
 				}
+			';
 
-				/**
-				 * Admin menu and sub-menu items.
-				 */
+			/**
+			 * Admin menu and sub-menu items.
+			 */
+			$custom_style_css .= '
 				#adminmenu li.menu-top.toplevel_page_' . $menu . ' div.wp-menu-image::before,
 				#adminmenu li.menu-top.toplevel_page_' . $sitemenu . ' div.wp-menu-image::before,
 				#adminmenu li.menu-top.toplevel_page_' . $menu . ':hover div.wp-menu-image::before,
@@ -324,93 +330,82 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					margin:-4px 0 0 0;
 					padding:0;
 				}
-
 				#adminmenu #toplevel_page_' . $menu . ' ul > li > a,
 				#adminmenu #toplevel_page_' . $sitemenu . ' ul > li > a {
 					padding:6px 8px;	/* Default is 6px 12px. */
 				}
-
 				#adminmenu ul.wp-submenu div.' . $lca . '-menu-item {
 					display:table-cell;
 				}
-
 				#adminmenu ul.wp-submenu div.' . $lca . '-menu-item.dashicons-before {
 					max-width:1.3em;
 					padding-right:6px;
 				}
-
 				#adminmenu ul.wp-submenu div.' . $lca . '-menu-item.dashicons-before::before {
 					font-size:1.3em;
 					text-align:left;
 					opacity:0.5;
 					filter:alpha(opacity=50);	/* IE8 and earlier. */
 				}
-
 				#adminmenu ul.wp-submenu div.' . $lca . '-menu-item.menu-item-label {
 					width:100%;
 				}
-
 				#adminmenu ul.wp-submenu div.' . $lca . '-menu-item.' . $lca . '-essential,
 				#adminmenu ul.wp-submenu div.' . $lca . '-menu-item.top-last-submenu-page.with-add-ons {
 					padding-bottom:12px;
 					border-bottom:1px solid;
 				}
+			';
 
-				/**
-				 * Settings pages.
-				 */
+			/**
+			 * Settings pages.
+			 */
+			$custom_style_css .= '
 				#profile-page.wrap #your-profile #' . $lca . '_' . $metabox_id . '.postbox h3:first-of-type {
 					margin:0;
 				}
-
 				#' . $lca . '_' . $metabox_id . '.postbox {
 					min-width:455px;	/* The default WordPress postbox minimum width is 255px. */
 				}
-
 				#' . $lca . '_' . $metabox_id . ' .inside {
 					padding:0;
 					margin:0;
 				}
-
 				.' . $lca . '-rate-heart {
 					color:red;
 					font-size:1.5em;
 					vertical-align:top;
 				}
-
 				.' . $lca . '-rate-heart::before {
 					content:"\2665";	/* Heart. */
 				}
+			';
 
-				/**
-				 * Post publish robots option.
-				 */
+			/**
+			 * Post publish robots option.
+			 */
+			$custom_style_css .= '
 				#post-' . $lca . '-robots {
 					display:table;
 				}
-
 				#post-' . $lca . '-robots-label {
 					display:table-cell;
 					padding-left:3px;
 					vertical-align:top;
 				}
-
 				#post-' . $lca . '-robots-display {
 					display:table-cell;
 					padding-left:3px;
 					vertical-align:top;
 				}
-
 				#post-' . $lca . '-robots-content {
 					display:block;
 					word-wrap:normal;
 					font-weight:bold;
 				}
-
 				#post-' . $lca . '-robots-content a {
 					font-weight:normal;
 				}
-
 				#post-' . $lca . '-robots-select {
 					display:none;
 				}
@@ -603,33 +598,57 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				table.wp-list-table > tbody > tr > td.column-template {
 				        width:10%;
 				}
-				.column-' . $lca . '_schema_type {
-					width:' . $cols[ 'schema_type' ][ 'width' ] . ' !important;
-					max-width:' . $cols[ 'schema_type' ][ 'width' ] . ' !important;
-					white-space:nowrap;
-					overflow:hidden;
+			';
+
+			if ( isset( $sort_cols[ 'schema_type' ][ 'width' ] ) ) {
+				$custom_style_css .= '
+					.column-' . $lca . '_schema_type {
+						width:' . $sort_cols[ 'schema_type' ][ 'width' ] . ' !important;
+						max-width:' . $sort_cols[ 'schema_type' ][ 'width' ] . ' !important;
+						white-space:nowrap;
+						overflow:hidden;
+					}
+				';
+			}
+
+			if ( isset( $sort_cols[ 'og_type' ][ 'width' ] ) ) {
+				$custom_style_css .= '
+					.column-' . $lca . '_og_type {
+						width:' . $sort_cols[ 'og_type' ][ 'width' ] . ' !important;
+						max-width:' . $sort_cols[ 'og_type' ][ 'width' ] . ' !important;
+						white-space:nowrap;
+						overflow:hidden;
+					}
+				';
+			}
+
+			if ( isset( $sort_cols[ 'og_img' ][ 'width' ] ) ) {
+			
+				$custom_style_css .= '
+					.column-' . $lca . '_og_img { 
+						width:' . $sort_cols[ 'og_img' ][ 'width' ] . ' !important;
+						max-width:' . $sort_cols[ 'og_img' ][ 'width' ] . ' !important;
+					}
+				';
+
+				if ( isset( $sort_cols[ 'og_img' ][ 'height' ] ) ) {
+					$custom_style_css .= '
+						.column-' . $lca . '_og_img .preview_img { 
+							max-width:' . $sort_cols[ 'og_img' ][ 'width' ] . ' !important;
+							height:' . $sort_cols[ 'og_img' ][ 'height' ] . ';
+							min-height:' . $sort_cols[ 'og_img' ][ 'height' ] . ';
+							background-size:' . $sort_cols[ 'og_img' ][ 'width' ] . ' auto;
+							background-repeat:no-repeat;
+							background-position:center center;
+							overflow:hidden;
+							margin:0;
+							padding:0;
+						}
+					';
 				}
-				.column-' . $lca . '_og_type {
-					width:' . $cols[ 'og_type' ][ 'width' ] . ' !important;
-					max-width:' . $cols[ 'og_type' ][ 'width' ] . ' !important;
-					white-space:nowrap;
-					overflow:hidden;
-				}
-				.column-' . $lca . '_og_img { 
-					width:' . $cols[ 'og_img' ][ 'width' ] . ' !important;
-					max-width:' . $cols[ 'og_img' ][ 'width' ] . ' !important;
-				}
-				.column-' . $lca . '_og_img .preview_img { 
-					max-width:' . $cols[ 'og_img' ][ 'width' ] . ' !important;
-					height:' . $cols[ 'og_img' ][ 'height' ] . ';
-					min-height:' . $cols[ 'og_img' ][ 'height' ] . ';
-					background-size:' . $cols[ 'og_img' ][ 'width' ] . ' auto;
-					background-repeat:no-repeat;
-					background-position:center center;
-					overflow:hidden;
-					margin:0;
-					padding:0;
-				}
+			}
+
+			$custom_style_css .= '
 				.column-' . $lca . '_og_desc {
 					overflow:hidden;
 				}
@@ -649,8 +668,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				}
 			';
 
-			foreach ( $cols as $col_name => $col_info ) {
-
+			foreach ( $sort_cols as $col_name => $col_info ) {
 				if ( isset( $col_info[ 'width' ] ) ) {
 					$custom_style_css .= '
 						table.wp-list-table > thead > tr > th.column-' . $lca . '_' . $col_name . ',

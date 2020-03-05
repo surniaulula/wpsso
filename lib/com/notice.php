@@ -1213,7 +1213,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			/**
 			 * Unhide the WordPress admin toolbar if there are notices, including when using the fullscreen editor.
 			 */
-			$custom_style_css .= '
+			$custom_style_css = '
 
 				body.wp-admin.has-toolbar-notices #wpadminbar {
 					display:block;
