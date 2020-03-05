@@ -73,17 +73,15 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 				if ( $result[ 'max_allowed_packet' ]->Value < $min_bytes ) {
 
-					$error_pre = sprintf( __( '%s error:', 'wpsso' ), __METHOD__ );
+					$notice_msg = sprintf( __( 'Your database is configured for a "%1$s" size of %2$d bytes, which is less than the recommended minimum value of %3$d bytes (a common default value is %4$d bytes).', 'wpsso' ), 'max_allowed_packet', $result[ 'max_allowed_packet' ]->Value, $min_bytes, $def_bytes ) . ' ';
 
-					$error_msg = sprintf( __( 'Your database is configured for a "%1$s" size of %2$d bytes, which is less than the recommended minimum value of %3$d bytes (a common default value is %4$d bytes).', 'wpsso' ), 'max_allowed_packet', $result[ 'max_allowed_packet' ]->Value, $min_bytes, $def_bytes ) . ' ';
+					$notice_msg .= sprintf( __( 'Please contact your hosting provider and have the "%1$s" database option adjusted to a larger and safer value.', 'wpsso' ), 'max_allowed_packet' ) . ' ';
 
-					$error_msg .= sprintf( __( 'Please contact your hosting provider and have the "%1$s" database option adjusted to a larger and safer value.', 'wpsso' ), 'max_allowed_packet' ) . ' ';
-
-					$error_msg .= sprintf( __( 'See the %1$s sections %2$s and %3$s for more information on this database option.', 'wpsso' ), 'MySQL 8.0 Reference Manual', '<a href="https://dev.mysql.com/doc/refman/8.0/en/program-variables.html">Using Options to Set Program Variables</a>', '<a href="https://dev.mysql.com/doc/refman/8.0/en/packet-too-large.html">Packet Too Large</a>', 'max_allowed_packet' ) . ' ';
+					$notice_msg .= sprintf( __( 'See the %1$s sections %2$s and %3$s for more information on this database option.', 'wpsso' ), 'MySQL 8.0 Reference Manual', '<a href="https://dev.mysql.com/doc/refman/8.0/en/program-variables.html">Using Options to Set Program Variables</a>', '<a href="https://dev.mysql.com/doc/refman/8.0/en/packet-too-large.html">Packet Too Large</a>', 'max_allowed_packet' ) . ' ';
 
 					$notice_key = 'db-max-allowed-packet-too-small';
 
-					$this->p->notice->err( $error_msg, null, $notice_key );
+					$this->p->notice->err( $notice_msg, null, $notice_key );
 				}
 			}
 		}
@@ -117,7 +115,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					}
 				}
 
-				$error_msg = '';	// Clear any previous error message.
+				$notice_msg = '';	// Clear any previous error message.
 
 				/**
 				 * Check for the extension first, then maybe check for its functions.
@@ -147,18 +145,18 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 							$editor_class = $php_info[ 'wp_image_editor' ][ 'class' ];
 						}
 
-						$error_msg .= sprintf( __( 'WordPress is configured to use the %1$s image editing class but the <a href="%2$s">PHP %3$s extension module</a> is not loaded:', 'wpsso' ), $editor_class, $php_info[ 'url' ], $php_info[ 'label' ] ) . ' ';
+						$notice_msg .= sprintf( __( 'WordPress is configured to use the %1$s image editing class but the <a href="%2$s">PHP %3$s extension module</a> is not loaded:', 'wpsso' ), $editor_class, $php_info[ 'url' ], $php_info[ 'label' ] ) . ' ';
 
 					} else {
 
-						$error_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s extension module</a> is not loaded:', 'wpsso' ),
+						$notice_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s extension module</a> is not loaded:', 'wpsso' ),
 							$php_info[ 'url' ], $php_info[ 'label' ] ) . ' ';
 					}
 
 					/**
 					 * Add additional / mode specific information about this check for the hosting provider.
 					 */
-					$error_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s function</a> for "%3$s" returned false.', 'wpsso' ),
+					$notice_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s function</a> for "%3$s" returned false.', 'wpsso' ),
 						__( 'https://secure.php.net/manual/en/function.extension-loaded.php', 'wpsso' ),
 							'<code>extension_loaded()</code>', $php_ext ) . ' ';
 
@@ -169,10 +167,10 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					 */
 					if ( $php_ext === 'imagick' ) {
 
-						$error_msg .= sprintf( __( 'Note that the ImageMagick application and the PHP "%1$s" extension are two different products &mdash; this error is for the PHP "%1$s" extension, not the ImageMagick application.', 'wpsso' ), $php_ext ) . ' ';
+						$notice_msg .= sprintf( __( 'Note that the ImageMagick application and the PHP "%1$s" extension are two different products &mdash; this error is for the PHP "%1$s" extension, not the ImageMagick application.', 'wpsso' ), $php_ext ) . ' ';
 					}
 
-					$error_msg .= sprintf( __( 'Please contact your hosting provider to have the missing PHP "%1$s" extension installed and enabled.', 'wpsso' ), $php_ext );
+					$notice_msg .= sprintf( __( 'Please contact your hosting provider to have the missing PHP "%1$s" extension installed and enabled.', 'wpsso' ), $php_ext );
 
 				/**
 				 * If the PHP extension is loaded, then maybe check to make sure the extension is complete. ;-)
@@ -187,9 +185,9 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 								$this->p->debug->log( 'php ' . $class_name . ' class is missing' );
 							}
 
-							$error_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s extension module</a> is loaded but the %3$s class is missing.', 'wpsso' ), $php_info[ 'url' ], $php_info[ 'label' ], '<code>' . $class_name . '</code>' ) . ' ';
+							$notice_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s extension module</a> is loaded but the %3$s class is missing.', 'wpsso' ), $php_info[ 'url' ], $php_info[ 'label' ], '<code>' . $class_name . '</code>' ) . ' ';
 
-							$error_msg .= __( 'Please contact your hosting provider to have the missing PHP class installed.', 'wpsso' );
+							$notice_msg .= __( 'Please contact your hosting provider to have the missing PHP class installed.', 'wpsso' );
 						}
 					}
 
@@ -203,18 +201,18 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 								$this->p->debug->log( 'php ' . $function_name . '() function is missing' );
 							}
 
-							$error_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s extension module</a> is loaded but the %3$s function is missing.', 'wpsso' ), $php_info[ 'url' ], $php_info[ 'label' ], '<code>' . $function_name . '()</code>' ) . ' ';
+							$notice_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s extension module</a> is loaded but the %3$s function is missing.', 'wpsso' ), $php_info[ 'url' ], $php_info[ 'label' ], '<code>' . $function_name . '()</code>' ) . ' ';
 
-							$error_msg .= __( 'Please contact your hosting provider to have the missing PHP function installed.', 'wpsso' );
+							$notice_msg .= __( 'Please contact your hosting provider to have the missing PHP function installed.', 'wpsso' );
 						}
 					}
 				}
 
-				if ( ! empty( $error_msg ) ) {
+				if ( ! empty( $notice_msg ) ) {
 
-					$this->p->notice->err( $error_msg );
+					$this->p->notice->err( $notice_msg );
 				
-					SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg, $strip_html = true );
+					SucomUtil::safe_error_log( $error_pre . ' ' . $notice_msg, $strip_html = true );
 				}
 			}
 		}
@@ -648,15 +646,15 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 					$plugins_url = add_query_arg( array( 's' => 'yoast seo' ), $plugins_url );
 
-					$error_msg = sprintf( __( 'The combination of %1$s and its %2$s add-on provide much better Schema markup for WooCommerce products than the %3$s plugin.', 'wpsso' ), $pkg[ $this->p->lca ][ 'short_pro' ], $pkg[ $ext ][ 'short_pro' ], $wpseo_wc_label ) . ' ';
+					$notice_msg = sprintf( __( 'The combination of %1$s and its %2$s add-on provide much better Schema markup for WooCommerce products than the %3$s plugin.', 'wpsso' ), $pkg[ $this->p->lca ][ 'short_pro' ], $pkg[ $ext ][ 'short_pro' ], $wpseo_wc_label ) . ' ';
 					
-					$error_msg .= sprintf( __( 'There is absolutely no advantage in continuing to use the %1$s plugin.', 'wpsso' ), $wpseo_wc_label ) . ' ';
+					$notice_msg .= sprintf( __( 'There is absolutely no advantage in continuing to use the %1$s plugin.', 'wpsso' ), $wpseo_wc_label ) . ' ';
 					
-					$error_msg .= sprintf( __( 'To avoid adding incorrect and confusing Schema markup in your webpages, <a href="%1$s">please deactivate the %2$s plugin immediately</a>.' ), $plugins_url, $wpseo_wc_label );
+					$notice_msg .= sprintf( __( 'To avoid adding incorrect and confusing Schema markup in your webpages, <a href="%1$s">please deactivate the %2$s plugin immediately</a>.' ), $plugins_url, $wpseo_wc_label );
 
 					$notice_key = 'deactivate-wpseo-woocommerce';
 
-					$this->p->notice->err( $error_msg, null, $notice_key );
+					$this->p->notice->err( $notice_msg, null, $notice_key );
 				}
 			}
 
@@ -682,15 +680,15 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 					$blog_post_url = 'https://surniaulula.com/2018/apps/wordpress/plugins/wpbakery/wpbakery-visual-composer-bug-in-change-handler/';
 
-					$error_msg = __( 'An issue with WPBakery Visual Composer has been detected.', 'wpsso' ) . ' ';
+					$notice_msg = __( 'An issue with WPBakery Visual Composer has been detected.', 'wpsso' ) . ' ';
 						
-					$error_msg .= sprintf( __( 'WPBakery Visual Composer version %s and older are known to have a bug in their jQuery event handling code.', 'wpsso' ), $wpb_vc_version_event_bug ) . ' ';
+					$notice_msg .= sprintf( __( 'WPBakery Visual Composer version %s and older are known to have a bug in their jQuery event handling code.', 'wpsso' ), $wpb_vc_version_event_bug ) . ' ';
 						
-					$error_msg .= __( 'To avoid jQuery crashing on show / hide jQuery events, please update your version of WPBakery Visual Composer immediately.', 'wpsso' );
+					$notice_msg .= __( 'To avoid jQuery crashing on show / hide jQuery events, please update your version of WPBakery Visual Composer immediately.', 'wpsso' );
 
 					$notice_key = 'wpb-vc-version-event-bug-' . $wpb_vc_version_event_bug;
 
-					$this->p->notice->err( $error_msg, null, $notice_key );
+					$this->p->notice->err( $notice_msg, null, $notice_key );
 				}
 			}
 		}
@@ -705,13 +703,13 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 				$settings_url = get_admin_url( $blog_id = null, 'options-reading.php' );
 
-				$error_msg = sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engine and social sites from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck the option to allow search engines and social sites to access your content.', 'wpsso' ), $settings_url );
+				$notice_msg = sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engine and social sites from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck the option to allow search engines and social sites to access your content.', 'wpsso' ), $settings_url );
 
 				$notice_key = 'wp-search-engine-visibility-disabled';
 
 				$dismiss_time = YEAR_IN_SECONDS;
 
-				$this->p->notice->warn( $error_msg, null, $notice_key, $dismiss_time );
+				$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time );
 			}
 		}
 	}

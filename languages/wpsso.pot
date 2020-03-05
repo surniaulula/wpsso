@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.23.2-dev.1\n"
+"Project-Id-Version: WPSSO Core 6.23.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -928,80 +928,80 @@ msgstr ""
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
-#: lib/conflict.php:76 lib/conflict.php:105 lib/gettext-pro.php:164
-#: lib/gettext-pro.php:201 lib/loader.php:180 lib/loader.php:192
-#: lib/pro/review/yotpowc.php:195 lib/pro/util/shorten.php:238
-msgid "%s error:"
-msgstr ""
-
-#: lib/conflict.php:78
+#: lib/conflict.php:76
 msgid ""
 "Your database is configured for a \"%1$s\" size of %2$d bytes, which is less "
 "than the recommended minimum value of %3$d bytes (a common default value is "
 "%4$d bytes)."
 msgstr ""
 
-#: lib/conflict.php:80
+#: lib/conflict.php:78
 msgid ""
 "Please contact your hosting provider and have the \"%1$s\" database option "
 "adjusted to a larger and safer value."
 msgstr ""
 
-#: lib/conflict.php:82
+#: lib/conflict.php:80
 msgid ""
 "See the %1$s sections %2$s and %3$s for more information on this database "
 "option."
 msgstr ""
 
-#: lib/conflict.php:150
+#: lib/conflict.php:103 lib/gettext-pro.php:164 lib/gettext-pro.php:201
+#: lib/loader.php:180 lib/loader.php:192 lib/pro/review/yotpowc.php:195
+#: lib/pro/util/shorten.php:238
+msgid "%s error:"
+msgstr ""
+
+#: lib/conflict.php:148
 msgid ""
 "WordPress is configured to use the %1$s image editing class but the <a href="
 "\"%2$s\">PHP %3$s extension module</a> is not loaded:"
 msgstr ""
 
-#: lib/conflict.php:154
+#: lib/conflict.php:152
 msgid "The <a href=\"%1$s\">PHP %2$s extension module</a> is not loaded:"
 msgstr ""
 
-#: lib/conflict.php:161
+#: lib/conflict.php:159
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> for \"%3$s\" returned false."
 msgstr ""
 
-#: lib/conflict.php:162
+#: lib/conflict.php:160
 msgid "https://secure.php.net/manual/en/function.extension-loaded.php"
 msgstr ""
 
-#: lib/conflict.php:172
+#: lib/conflict.php:170
 msgid ""
 "Note that the ImageMagick application and the PHP \"%1$s\" extension are two "
 "different products &mdash; this error is for the PHP \"%1$s\" extension, not "
 "the ImageMagick application."
 msgstr ""
 
-#: lib/conflict.php:175
+#: lib/conflict.php:173
 msgid ""
 "Please contact your hosting provider to have the missing PHP \"%1$s\" "
 "extension installed and enabled."
 msgstr ""
 
-#: lib/conflict.php:190
+#: lib/conflict.php:188
 msgid ""
 "The <a href=\"%1$s\">PHP %2$s extension module</a> is loaded but the %3$s "
 "class is missing."
 msgstr ""
 
-#: lib/conflict.php:192
+#: lib/conflict.php:190
 msgid ""
 "Please contact your hosting provider to have the missing PHP class installed."
 msgstr ""
 
-#: lib/conflict.php:206
+#: lib/conflict.php:204
 msgid ""
 "The <a href=\"%1$s\">PHP %2$s extension module</a> is loaded but the %3$s "
 "function is missing."
 msgstr ""
 
-#: lib/conflict.php:208 lib/gettext-pro.php:147 lib/gettext-pro.php:150
+#: lib/conflict.php:206 lib/gettext-pro.php:147 lib/gettext-pro.php:150
 #: lib/gettext-pro.php:153 lib/pro/media/slideshare.php:186
 #: lib/pro/media/vimeo.php:160 lib/pro/media/wistia.php:307
 msgid ""
@@ -1009,294 +1009,294 @@ msgid ""
 "installed."
 msgstr ""
 
-#: lib/conflict.php:224 lib/gettext-pro.php:181 lib/gettext-pro.php:191
+#: lib/conflict.php:222 lib/gettext-pro.php:181 lib/gettext-pro.php:191
 #: lib/pro/rating/rate-my-post.php:48 lib/pro/rating/wppostratings.php:46
 msgid "Plugin conflict detected"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:238
+#: lib/conflict.php:236
 msgid "Social Meta"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:244 lib/conflict.php:265
+#: lib/conflict.php:242 lib/conflict.php:263
 msgid "All in One SEO"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:246
+#: lib/conflict.php:244
 msgid "Feature Manager"
 msgstr ""
 
-#: lib/conflict.php:252
+#: lib/conflict.php:250
 msgid "please deactivate the %1$s feature in the %2$s settings."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:259
+#: lib/conflict.php:257
 msgid "Use Schema.org Markup"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:267 lib/conflict.php:269
+#: lib/conflict.php:265 lib/conflict.php:267
 msgid "General Settings"
 msgstr ""
 
-#: lib/conflict.php:275 lib/conflict.php:427 lib/conflict.php:450
+#: lib/conflict.php:273 lib/conflict.php:425 lib/conflict.php:448
 msgid "please uncheck the %1$s option in the %2$s metabox."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:291
+#: lib/conflict.php:289
 msgid "SEO Ultimate"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:293
+#: lib/conflict.php:291
 msgid "Modules"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:300
+#: lib/conflict.php:298
 msgid "Open Graph Integrator"
 msgstr ""
 
-#: lib/conflict.php:306
+#: lib/conflict.php:304
 msgid "please disable the %1$s module in the %2$s settings."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:326 lib/conflict.php:359
+#: lib/conflict.php:324 lib/conflict.php:357
 msgid "Squirrly"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:328 lib/conflict.php:361 lib/conflict.php:363
+#: lib/conflict.php:326 lib/conflict.php:359 lib/conflict.php:361
 msgid "SEO Settings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:330
+#: lib/conflict.php:328
 msgid "Social Media"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:332
+#: lib/conflict.php:330
 msgid "Social Media Options"
 msgstr ""
 
-#: lib/conflict.php:335
+#: lib/conflict.php:333
 msgid ""
 "Add the Social Open Graph protocol so that your Facebook shares look good."
 msgstr ""
 
-#: lib/conflict.php:337
+#: lib/conflict.php:335
 msgid "Add the Twitter card in your tweets."
 msgstr ""
 
-#: lib/conflict.php:347 lib/conflict.php:377
+#: lib/conflict.php:345 lib/conflict.php:375
 msgid "please disable the %1$s option in the %2$s metabox."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:365
+#: lib/conflict.php:363
 msgid "Let Squirrly SEO Optimize This Blog"
 msgstr ""
 
-#: lib/conflict.php:368
+#: lib/conflict.php:366
 msgid "adds the Json-LD metas for Semantic SEO"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:399 lib/conflict.php:437
+#: lib/conflict.php:397 lib/conflict.php:435
 msgid "The SEO Framework"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:401
+#: lib/conflict.php:399
 msgid "Social Meta Settings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:404
+#: lib/conflict.php:402
 msgid "Posts"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:408
+#: lib/conflict.php:406
 msgid "Output Open Graph meta tags?"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:410
+#: lib/conflict.php:408
 msgid "Output Facebook meta tags?"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:412
+#: lib/conflict.php:410
 msgid "Output Twitter meta tags?"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:414 lib/conflict.php:417
+#: lib/conflict.php:412 lib/conflict.php:415
 msgid "Add %1$s to %2$s?"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:439
+#: lib/conflict.php:437
 msgid "Schema Settings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:444
+#: lib/conflict.php:442
 msgid "Output Authorized Presence?"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:470
+#: lib/conflict.php:468
 msgid "WP Meta SEO"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:472 lib/gettext-pro.php:197
+#: lib/conflict.php:470 lib/gettext-pro.php:197
 #: lib/pro/rating/rate-my-post.php:63
 msgid "Settings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:474
+#: lib/conflict.php:472
 msgid "Global"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:478
+#: lib/conflict.php:476
 msgid "Facebook profile URL"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:480 lib/conflict.php:587
+#: lib/conflict.php:478 lib/conflict.php:585
 msgid "Facebook App ID"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:482 lib/conflict.php:534
+#: lib/conflict.php:480 lib/conflict.php:532
 msgid "Twitter Username"
 msgstr ""
 
-#: lib/conflict.php:491 lib/conflict.php:553 lib/conflict.php:603
+#: lib/conflict.php:489 lib/conflict.php:551 lib/conflict.php:601
 msgid "please remove the %1$s option value in the %2$s settings."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:499
+#: lib/conflict.php:497
 msgid "Social sharing block"
 msgstr ""
 
-#: lib/conflict.php:505 lib/conflict.php:580 lib/conflict.php:629
+#: lib/conflict.php:503 lib/conflict.php:578 lib/conflict.php:627
 msgid "please disable the %1$s option in the %2$s settings."
+msgstr ""
+
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/conflict.php:522 lib/conflict.php:568 lib/conflict.php:591
+#: lib/conflict.php:617
+msgid "Yoast SEO"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: lib/conflict.php:524 lib/conflict.php:570 lib/conflict.php:593
 #: lib/conflict.php:619
-msgid "Yoast SEO"
-msgstr ""
-
-#. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:526 lib/conflict.php:572 lib/conflict.php:595
-#: lib/conflict.php:621
 msgid "Social"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:528
+#: lib/conflict.php:526
 msgid "Accounts"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:532
+#: lib/conflict.php:530
 msgid "Facebook Page URL"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:536
+#: lib/conflict.php:534
 msgid "Instagram URL"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:538
+#: lib/conflict.php:536
 msgid "LinkedIn URL"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:540
+#: lib/conflict.php:538
 msgid "MySpace URL"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:542
+#: lib/conflict.php:540
 msgid "Pinterest URL"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:544
+#: lib/conflict.php:542
 msgid "YouTube URL"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:564
+#: lib/conflict.php:562
 msgid "Add Open Graph meta data"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:574 lib/conflict.php:597
+#: lib/conflict.php:572 lib/conflict.php:595
 msgid "Facebook"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:613
+#: lib/conflict.php:611
 msgid "Add Twitter Card meta data"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:623
+#: lib/conflict.php:621
 msgid "Twitter"
 msgstr ""
 
-#: lib/conflict.php:651
+#: lib/conflict.php:649
 msgid ""
 "The combination of %1$s and its %2$s add-on provide much better Schema "
 "markup for WooCommerce products than the %3$s plugin."
 msgstr ""
 
-#: lib/conflict.php:653
+#: lib/conflict.php:651
 msgid "There is absolutely no advantage in continuing to use the %1$s plugin."
 msgstr ""
 
-#: lib/conflict.php:655
+#: lib/conflict.php:653
 msgid ""
 "To avoid adding incorrect and confusing Schema markup in your webpages, <a "
 "href=\"%1$s\">please deactivate the %2$s plugin immediately</a>."
 msgstr ""
 
-#: lib/conflict.php:685
+#: lib/conflict.php:683
 msgid "An issue with WPBakery Visual Composer has been detected."
 msgstr ""
 
-#: lib/conflict.php:687
+#: lib/conflict.php:685
 msgid ""
 "WPBakery Visual Composer version %s and older are known to have a bug in "
 "their jQuery event handling code."
 msgstr ""
 
-#: lib/conflict.php:689
+#: lib/conflict.php:687
 msgid ""
 "To avoid jQuery crashing on show / hide jQuery events, please update your "
 "version of WPBakery Visual Composer immediately."
 msgstr ""
 
-#: lib/conflict.php:708
+#: lib/conflict.php:706
 msgid ""
 "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to "
 "discourage search engine and social sites from indexing this site. This is "
