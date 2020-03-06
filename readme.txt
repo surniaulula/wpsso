@@ -511,7 +511,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.23.2-dev.1 (2020/03/05)**
+**Version 6.23.2-rc.1 (2020/03/06)**
 
 * **New Features**
 	* None.
@@ -902,9 +902,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.23.2-dev.1 =
+= 6.23.2-rc.1 =
 
-(2020/03/05) Fixed possible javascript undefined variable error for missing checkbox name attributes. Refactored the WpssoStyle, WpssoScript, and SucomNotice classes.
+(2020/03/06) Fixed possible javascript undefined variable error for missing checkbox name attributes. Refactored the WpssoStyle, WpssoScript, and SucomNotice classes.
 
 = 6.23.1 =
 
