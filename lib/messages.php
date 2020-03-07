@@ -1789,7 +1789,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = '<p class="top">';
 
-							$text .= __( 'Analyze the webpage content and suggest ways to make the webpage faster for better ranking in search results.', 'wpsso' );
+							$text .= __( 'Analyzes the webpage content and suggests ways to make the webpage faster for better ranking in search results.', 'wpsso' );
 
 							$text .= '</p>';
 
@@ -1829,7 +1829,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = '<p class="top">';
 
-							$text .= __( 'Validate Rich Pin markup and submit a request to show the Rich Pin markup in zoomed pins.', 'wpsso' );
+							$text .= __( 'Validate Rich Pin markup and submit a request to show Rich Pin markup in zoomed pins.', 'wpsso' );
 
 							$text .= '</p>';
 

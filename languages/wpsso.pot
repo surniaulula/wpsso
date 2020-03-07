@@ -4998,8 +4998,8 @@ msgstr ""
 
 #: lib/messages.php:1792
 msgid ""
-"Analyze the webpage content and suggest ways to make the webpage faster for "
-"better ranking in search results."
+"Analyzes the webpage content and suggests ways to make the webpage faster "
+"for better ranking in search results."
 msgstr ""
 
 #: lib/messages.php:1802
@@ -5018,7 +5018,7 @@ msgstr ""
 
 #: lib/messages.php:1832
 msgid ""
-"Validate Rich Pin markup and submit a request to show the Rich Pin markup in "
+"Validate Rich Pin markup and submit a request to show Rich Pin markup in "
 "zoomed pins."
 msgstr ""
 
