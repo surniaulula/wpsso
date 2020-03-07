@@ -12,7 +12,7 @@
 <dd>
 
 <p>
-If you haven't already done so, create a Facebook Page and Twitter account for your website / business. You can enter all your website / business social account information on the WordPress <em><strong>Settings &gt; SSO WebSite Pages</strong></em> settings page. The social account URLs are used by WPSSO Core for Open Graph, Schema, and other meta tag values - including the Organization social profiles in Schema JSON-LD markup (which may appear in Google Search results to highlight your website / business social pages).
+If you haven't already done so, create a Facebook Page and Twitter account for your website / business. You can enter all your website / business social account information on the WordPress <em><strong>SSO &gt; Social Pages</strong></em> settings page. The social account URLs are used by WPSSO Core for Open Graph, Schema, and other meta tag values - including the Organization social profiles in Schema JSON-LD markup (which may appear in Google Search results to highlight your website / business social pages).
 <p>
 
 <p><strong>Related information:</strong></p>
@@ -41,7 +41,7 @@ Ask your content authors to enter their Facebook and Twitter contact information
 <dd>
 
 <p>
-Review the site description on the <em><strong>SSO &gt; Essential</strong></em> settings page and select a default / fallback image ID or URL. The default image is used for index / archive pages, and as a fallback for Posts and Pages that do not have a suitable image featured, attached, or in their content.
+Review the site description on the <em><strong>SSO &gt; Essential Settings</strong></em> page and select a default / fallback image ID or URL. The default image is used for index / archive pages, and as a fallback for posts and pages that do not have a suitable image featured, attached, or available in their content.
 </p>
 
 <p>
@@ -81,7 +81,7 @@ If your theme templates do not include RDFa / Microdata markup for Google Rich R
 </p>
 
 <p>
-<strong>Not sure if your theme templates support Google Rich Results?</strong> Submit an example post / page URL from your site (not the home page) to the <a href="https://search.google.com/structured-data/testing-tool/u/0/">Google Structured Data Testing Tool</a>, and compare the results before / after enabling the WPSSO JSON add-on. Between checks, don't forget to clear the cache of any caching plugin or service you may be using, along with clearing the WPSSO cache in the SSO &gt; Tools and Actions settings page. ;-)
+<strong>Not sure if your theme templates support Google Rich Results?</strong> Submit an example post / page URL from your site (not the home page) to the <a href="https://search.google.com/structured-data/testing-tool/u/0/">Google Structured Data Testing Tool</a>, and compare the results before / after enabling the WPSSO JSON add-on. Between checks, don't forget to clear the cache of any caching plugin or service you may be using, along with clearing the WPSSO cache in the <em><strong>SSO &gt; Tools and Actions</strong></em> settings page. ;-)
 </p>
 
 </dd>
@@ -103,7 +103,7 @@ Most social and search sites automatically crop images to fit within a specific 
 <h4>Upscale / Enlarge Images?</h4>
 
 <p>
-<strong>WordPress does not upscale / enlarge images</strong>. WordPress can only create smaller images from larger full size originals. Upscaled images do not look as sharp or clear, and if enlarged too much, will look fuzzy and unappealing - not something you want to promote on social and search sites. WPSSO Core Premium includes an optional module that allows upscaling of WordPress Media Library images (up to a maximum upscale percentage). For example, a full size image of 100x200px could be upscaled up to 150x300px using a maximum of 50%, but resizing any larger would fail. If you feel strongly that upscaling small images is something you require (instead of uploading larger full size originals), you can enable the <em><strong>SSO &gt; Advanced &gt; Integration &gt; Upscale Media Library Images</strong></em> option.
+<strong>WordPress does not upscale / enlarge images</strong>. WordPress can only create smaller images from larger full size originals. Upscaled images do not look as sharp or clear, and if enlarged too much, will look fuzzy and unappealing - not something you want to promote on social and search sites. WPSSO Core Premium includes an optional module that allows upscaling of WordPress Media Library images (up to a maximum upscale percentage). For example, a full size image of 100x200px could be upscaled up to 150x300px using a maximum of 50%, but resizing any larger would fail. If you feel strongly that upscaling small images is something you require (instead of uploading larger full size originals), you can enable the <em><strong>SSO &gt; Advanced Settings&gt; Integration &gt; Upscale Media Library Images</strong></em> option.
 </p>
 
 </dd>
@@ -113,19 +113,19 @@ Most social and search sites automatically crop images to fit within a specific 
 <dd>
 
 <p>
-Submit a few sample Posts, Pages, etc. to the <a href="https://developers.facebook.com/tools/debug/">Facebook Open Graph Object Debugger</a> to verify your Open Graph meta tags. A link to the Facebook debugger is available under the Validate tab in the Document SSO metabox (on post, term, and user editing pages). Submitting a URL to the Facebook debugger can also be used to clear Facebook's cache (after clicking the "Fetch new scrape information" button). If you're validating older posts / pages, pre-dating the activation of WPSSO Core, note that <a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/">Facebook may continue to use the old meta tag values from its cache</a>, even after fetching the new scrape information.
+Submit a few sample posts, pages, etc. to the <a href="https://developers.facebook.com/tools/debug/">Facebook Open Graph Object Debugger</a> to verify your Open Graph meta tags. A link to the Facebook debugger is available under the Validate tab in the Document SSO metabox (on post, term, and user editing pages). Submitting a URL to the Facebook debugger can also be used to clear Facebook's cache (after clicking the "Fetch new scrape information" button). If you're validating older posts / pages, pre-dating the activation of WPSSO Core, note that <a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/">Facebook may continue to use the old meta tag values from its cache</a>, even after fetching the new scrape information.
 </p>
 
 <p>
-Submit an example Post / Page to the <a href="http://developers.pinterest.com/rich_pins/validator/">Pinterest Rich Pins Validator</a>. Note that the Pinterest validator recognizes known Rich Pin types only (article, recipe, product, etc.) - your home page and WordPress archive pages are generally not valid Rich Pin types. Pinterest Rich Pins are an extension of Open Graph and Schema meta tags, but the Rich Pins Validator can be a little buggy, so double check any errors with the Facebook debugger to make sure they are actual / real errors. If you haven't already requested / enabled Rich Pins support from Pinterest for your website, you can request Rich Pin support when validating an example Post / Page from your site (that uses a known Rich Pin type).
+Submit an example post / page to the <a href="http://developers.pinterest.com/rich_pins/validator/">Pinterest Rich Pins Validator</a>. Note that the Pinterest validator recognizes known Rich Pin types only (article, recipe, product, etc.) - your home page and WordPress archive pages are generally not valid Rich Pin types. Pinterest Rich Pins are an extension of Open Graph and Schema meta tags, but the Rich Pins Validator can be a little buggy, so double check any errors with the Facebook debugger to make sure they are actual / real errors. If you haven't already requested / enabled Rich Pins support from Pinterest for your website, you can request Rich Pin support when validating an example Post / Page from your site (that uses a known Rich Pin type).
 </p>
 
 <p>
-You can also submit URLs to the <a href="https://search.google.com/structured-data/testing-tool">Google Structured Data Testing Tool</a>. Note that Google may suggest adding more complex markup, depending on the document Schema type. WPSSO Core includes all the meta tags social sites need, along with Schema markup for Google's Knowledge Graph in the site home page. To express more complex Schema markup you may need to activate the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> add-on plugin, and some Schema types may require additional organization and/or location information from the <a href="https://wordpress.org/plugins/wpsso-organization/">WPSSO Organization Markup</a> and/or <a href="https://wordpress.org/plugins/wpsso-plm/">WPSSO Place and Local SEO Markup</a> add-on plugins.
+If you have activated the WPSSO JSON add-on, you can also submit URLs to the <a href="https://search.google.com/structured-data/testing-tool">Google Structured Data Testing Tool</a>. WPSSO Core includes all the meta tags social sites need, along with Schema markup for Google's Knowledge Graph in the site home page. To express more complex Schema markup you must activate the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> add-on. Some Schema types may also require additional organization and/or location information from the <a href="https://wordpress.org/plugins/wpsso-organization/">WPSSO Organization Markup</a> and/or <a href="https://wordpress.org/plugins/wpsso-plm/">WPSSO Place and Local SEO Markup</a> add-on.
 </p>
 
 <p>
-Submit index / archive and Post / Page URLs to the <a href="https://validator.w3.org/">W3C Markup Validation Service</a> to verify the HTML of your theme templates. Social and search engine crawlers expect properly coded HTML markup that conforms to current HTML / XHTML standards. If your webpages contain serious HTML markup errors, social and search engine crawlers may be unable to read your meta tags and Schema markup. Report any serious template markup issues with your theme author.
+Submit index / archive and Post / Page URLs to the <a href="https://validator.w3.org/">W3C Markup Validation Service</a> to verify the HTML of your theme templates. Social and search engine crawlers expect properly coded HTML markup that conforms to current HTML / XHTML standards. If your webpages contain serious HTML markup errors, social and search engine crawlers may be unable to read your meta tags and Schema markup. You should report any template markup errors to your theme author.
 </p>
 
 <p><strong>Validators:</strong></p>
@@ -157,7 +157,7 @@ Submit index / archive and Post / Page URLs to the <a href="https://validator.w3
 <dd>
 
 <p>
-On most WordPress admin pages you'll find a "Screen Options" drop-down tab on the upper right-hand side of the page. You can use these options to include / exclude specific metaboxes and columns from the current page. For example, when viewing the Posts or Pages list you can use the "Screen Options" drop-down tab to hide / view the "Schema" and "SSO Image" columns. You can also enable / disable these columns globally under the <em><strong>SSO &gt; Advanced &gt; Columns</strong></em> tab.
+On most WordPress admin pages you'll find a "Screen Options" drop-down tab on the upper right-hand side of the page. You can use these options to include / exclude specific metaboxes and columns from the current page. For example, when viewing the Posts or Pages list you can use the "Screen Options" drop-down tab to hide / view the "Schema" and "SSO Image" columns. You can also enable / disable these columns globally under the <em><strong>SSO &gt; Advanced Settings&gt; Columns</strong></em> tab.
 </p>
 
 <p>
@@ -221,13 +221,13 @@ Please note that the Free / Standard version of the WPSSO JSON add-on offers com
 <ul>
 
 <!-- Check for Duplicate Meta Tags -->
-<li><p>If you know that your theme header templates do not include any social meta tags, and no other plugin is adding social meta tags to your webpages, then you could disable the "Check for Duplicate Meta Tags" option under the <em><strong>SSO &gt; Advanced &gt; Integration</strong></em> tab.</p></li>
+<li><p>If you know that your theme header templates do not include any social meta tags, and no other plugin is adding social meta tags to your webpages, then you could disable the "Check for Duplicate Meta Tags" option under the <em><strong>SSO &gt; Advanced Settings&gt; Integration</strong></em> tab.</p></li>
 
 <!-- Custom Field Names -->
-<li><p>If your theme uses custom fields to manage additional images, video URLs, embed video HTML, product details, etc., you can enter their custom field names under the <em><strong>SSO &gt; Advanced &gt; Custom Meta</strong></em> tab.</p></li>
+<li><p>If your theme uses custom fields to manage additional images, video URLs, embed video HTML, product details, etc., you can enter their custom field names under the <em><strong>SSO &gt; Advanced Settings&gt; Custom Meta</strong></em> tab.</p></li>
 
 <!-- SEO plugins and meta tags -->
-<li><p>WPSSO Core adds the "link rel canonical", "meta name description", and "meta name robots" meta tags to webpage headers by default. All three of these meta tags are disabled automatically if an SEO plugin is detected, or you can enabled / disable them manually under the <em><strong>SSO &gt; Advanced &gt; Head Tags &gt; SEO / Other</strong></em> tab.</p></li>
+<li><p>WPSSO Core adds the "link rel canonical", "meta name description", and "meta name robots" meta tags to webpage headers by default. All three of these meta tags are disabled automatically if an SEO plugin is detected, or you can enabled / disable them manually under the <em><strong>SSO &gt; Advanced Settings&gt; Head Tags &gt; SEO / Other</strong></em> tab.</p></li>
 
 <!-- WPSSO Schema JSON-LD Markup -->
 <li><p>WPSSO Core creates Schema WebSite, Organization, and Person social JSON-LD markup in the front page for Google's Knowledge Graph. If your theme does not include proper Schema markup for your post / page content (aka Microdata markup), you should consider enabling the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> add-on, which can provide complete Schema JSON-LD / SEO markup for your content (Schema Article, Place, Product, etc.).</p></li>
