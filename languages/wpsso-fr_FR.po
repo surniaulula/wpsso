@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 6.23.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-03-07 13:27-0800\n"
-"PO-Revision-Date: 2020-03-07 13:28-0800\n"
+"POT-Creation-Date: 2020-03-07 13:33-0800\n"
+"PO-Revision-Date: 2020-03-07 13:34-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4387,8 +4387,8 @@ msgid "Verify the webpage structured data markup."
 msgstr "Vérifiez le balisage des données structurées de la page Web."
 
 #: lib/messages.php:1812
-msgid "Check the webpage structured data markup for Google rich result types (Job posting, Recipe, etc.)."
-msgstr "Vérifiez le balisage des données structurées de la page Web pour les types de résultats riches de Google (offre d'emploi, recette, etc.)."
+msgid "Check the webpage structured data markup for Google Rich Result types (Job posting, Recipe, etc.)."
+msgstr "Vérifiez le balisage des données structurées de la page Web pour les types de Résultats riches de Google (offre d'emploi, recette, etc.)."
 
 #: lib/messages.php:1822
 msgid "Refresh LinkedIn's cache and validate the webpage oEmbed data."
