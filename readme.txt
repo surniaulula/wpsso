@@ -511,7 +511,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.23.2-rc.1 (2020/03/06)**
+**Version 6.23.2 (2020/03/06)**
 
 * **New Features**
 	* None.
@@ -902,11 +902,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.23.2-rc.1 =
+= 6.23.2 =
 
 (2020/03/06) Fixed possible javascript undefined variable error for missing checkbox name attributes. Refactored the WpssoStyle, WpssoScript, and SucomNotice classes.
-
-= 6.23.1 =
-
-(2020/03/04) Added several Open Graph options in the Document SSO metabox to the Standard / Free version. Added CSS to unhide / show the WordPress admin toolbar when there are notices.
 
