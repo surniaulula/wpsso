@@ -1750,7 +1750,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				}	// End of tooltips.
 
 			/**
-			 * Misc informational messages
+			 * Misc informational messages.
 			 */
 			} elseif ( strpos( $msg_key, 'info-' ) === 0 ) {
 
@@ -1758,15 +1758,18 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $msg_key ) {
 
+						/**
+						 * Validate tab.
+						 */
 						case 'info-meta-validate-facebook-og':
 
 							$text = '<p class="top">';
 
-							$text .= __( 'All social websites read Open Graph meta tags.', 'wpsso' ) . ' ';
+							$text .= __( 'All social sites (except for LinkedIn) read Open Graph meta tags.', 'wpsso' ) . ' ';
 
-							$text .= __( 'The Facebook debugger allows you to refresh Facebook\'s cache, while also validating Open Graph meta tag values.', 'wpsso' ) . ' ';
+							$text .= __( 'The Facebook debugger allows you to validate Open Graph meta tags and refresh Facebook\'s cache.', 'wpsso' ) . ' ';
 
-							$text .= __( 'The Facebook debugger is the most stable and reliable method to verify Open Graph meta tags.', 'wpsso' );
+							$text .= __( 'The Facebook debugger is the most reliable validation tool for Open Graph meta tags.', 'wpsso' );
 
 							$text .= '</p>';
 
@@ -1776,27 +1779,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = '<p class="top">';
 
-							$text .= __( 'The Facebook catalog microdata debug tool allows you to validate the the structured markup data used to indicate key information about the items on your website, such as names, descriptions and prices.', 'wpsso' );
-
-							$text .= '</p>';
-
-						 	break;
-
-						case 'info-meta-validate-linkedin':
-
-							$text = '<p class="top">';
-
-							$text .= __( 'Refresh LinkedIn\'s cache and validate meta tag values.', 'wpsso' ) . ' ';
-
-							$text .= '</p>';
-
-						 	break;
-
-						case 'info-meta-validate-google-testing-tool':
-
-							$text = '<p class="top">';
-
-							$text .= __( 'Verify the webpage structured data markup (meta tags, Schema, Microdata, and JSON-LD).', 'wpsso' );
+							$text .= __( 'The Facebook catalog microdata debug tool allows you to validate the structured data used to indicate key information about the items on your website, such as their name, description and prices.', 'wpsso' );
 
 							$text .= '</p>';
 
@@ -1806,7 +1789,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = '<p class="top">';
 
-							$text .= __( 'PageSpeed Insights analyzes the content of a web page, then generates suggestions to make that page faster.', 'wpsso' );
+							$text .= __( 'Analyze the webpage content and suggest ways to make the webpage faster for better ranking in search results.', 'wpsso' );
+
+							$text .= '</p>';
+
+						 	break;
+
+						case 'info-meta-validate-google-testing-tool':
+
+							$text = '<p class="top">';
+
+							$text .= __( 'Verify the webpage structured data markup.', 'wpsso' );
 
 							$text .= '</p>';
 
@@ -1816,7 +1809,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = '<p class="top">';
 
-							$text .= __( 'Check the webpage known for Google rich result types (Job posting, Recipe, Course, etc.).', 'wpsso' );
+							$text .= __( 'Check the webpage structured data markup for Google rich result types (Job posting, Recipe, etc.).', 'wpsso' );
+
+							$text .= '</p>';
+
+						 	break;
+
+						case 'info-meta-validate-linkedin':
+
+							$text = '<p class="top">';
+
+							$text .= __( 'Refresh LinkedIn\'s cache and validate the webpage oEmbed data.', 'wpsso' ) . ' ';
 
 							$text .= '</p>';
 
@@ -1826,7 +1829,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = '<p class="top">';
 
-							$text .= __( 'Validate Rich Pin meta tags and submit a request to show them in Pinterest zoomed pins.', 'wpsso' );
+							$text .= __( 'Validate Rich Pin markup and submit a request to show the Rich Pin markup in zoomed pins.', 'wpsso' );
 
 							$text .= '</p>';
 
@@ -1842,20 +1845,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
-						case 'info-meta-validate-w3c':
-
-							$text = '<p class="top">';
-
-							$text .= __( 'Validate HTML syntax and HTML 5 conformance of your meta tags and theme templates.', 'wpsso' ) . ' ';
-
-							$text .= __( 'Templates with serious errors can prevent social and search crawlers from correctly parsing the webpage.', 'wpsso' ) . ' ';
-
-							$text .= __( 'Validating your theme templates is an important step.', 'wpsso' );
-
-							$text .= '</p>';
-
-						 	break;
-
 						case 'info-meta-validate-amp':
 
 							$text = '<p class="top">';
@@ -1864,13 +1853,41 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '</p>';
 
-							if ( empty( $this->p->avail[ 'amp' ][ 'any' ] ) ) {
+						 	break;
 
-								$text .= '<p><i>';
+						case 'info-meta-validate-w3c':
 
-								$text .= __( 'Note that an active AMP plugin is required to validate AMP webpages.', 'wpsso' );
+							$text = '<p class="top">';
 
-								$text .= '</i></p>';
+							$text .= __( 'Validate the HTML syntax and HTML 5 conformance of your meta tags and theme templates.', 'wpsso' ) . ' ';
+
+							$text .= __( 'Validating your theme templates is important - theme templates with serious errors can prevent social and search crawlers from understanding the webpage structure.', 'wpsso' ) . ' ';
+
+							$text .= '</p>';
+
+						 	break;
+
+						case 'info-meta-validate-info':
+
+							if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
+
+								$link = $this->p->util->get_admin_url( 'addons#wpssojson',
+									$this->p->cf[ 'plugin' ][ 'wpssojson' ][ 'short' ] );
+
+								$text .= '<p class="status-msg left">';
+
+								$text .= '* ' . sprintf( __( 'Activate the %s add-on for Google structured data markup.', 'wpsso' ), $link );
+
+								$text .= '</p>';
+							}
+
+							if ( ! function_exists( 'amp_get_permalink' ) ) {
+
+								$text .= '<p class="status-msg left">';
+
+								$text .= '** ' . __( 'Activate an AMP plugin to create and validate AMP pages.', 'wpsso' );
+
+								$text .= '</p>';
 							}
 
 						 	break;
@@ -2742,7 +2759,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			$text = sprintf( __( 'Modifications disabled (the %s option is disabled).', 'wpsso' ), $link );
 
-			return '<p class="status-msg smaller">' . $text . '</p>';
+			return '<p class="status-msg smaller disabled">' . $text . '</p>';
 		}
 
 		public function seo_option_disabled( $mt_name ) {
@@ -2750,7 +2767,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			// translators: %s is the meta tag name (aka meta name canonical).
 			$text = sprintf( __( 'Modifications disabled (<code>%s</code> tag disabled or SEO plugin detected).', 'wpsso' ), $mt_name );
 
-			return '<p class="status-msg smaller">' . $text . '</p>';
+			return '<p class="status-msg smaller disabled">' . $text . '</p>';
 		}
 
 		public function more_schema_options() {
@@ -2787,8 +2804,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			$def_opts = $this->p->opt->get_defaults();
 
-			$img_width   = empty( $def_opts[ $opt_pre . '_width' ] ) ? 0 : $def_opts[ $opt_pre . '_width' ];
-			$img_height  = empty( $def_opts[ $opt_pre . '_height' ] ) ? 0 : $def_opts[ $opt_pre . '_height' ];
+			$img_width = empty( $def_opts[ $opt_pre . '_width' ] ) ? 0 : $def_opts[ $opt_pre . '_width' ];
+
+			$img_height = empty( $def_opts[ $opt_pre . '_height' ] ) ? 0 : $def_opts[ $opt_pre . '_height' ];
+
 			$img_cropped = empty( $def_opts[ $opt_pre . '_crop' ] ) ?
 				_x( 'uncropped', 'option value', 'wpsso' ) :
 				_x( 'cropped', 'option value', 'wpsso' );

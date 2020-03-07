@@ -66,7 +66,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 				$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
 					_x( 'Refresh Short URLs on Clear Cache', 'option label', 'wpsso' ) );
 
-				echo '<p><small>[*] ';
+				echo '<p class="status-msg smaller left">* ';
 
 				if ( empty( $this->p->options[ 'plugin_clear_short_urls' ] ) ) {
 					echo sprintf( __( '%1$s option is unchecked - shortened URLs cache will be preserved.', 'wpsso' ), $settings_page_link );
@@ -74,7 +74,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 					echo sprintf( __( '%1$s option is checked - shortened URLs cache will be cleared.', 'wpsso' ), $settings_page_link );
 				}
 
-				echo '</small></p>';
+				echo '</p>';
 			}
 
 			echo '</div><!-- #wpsso_tools -->' . "\n";
@@ -97,7 +97,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			$import_settings_label_transl    = _x( 'Import Plugin and Add-on Settings', 'submit button', 'wpsso' );
 
 			if ( ! $using_external_cache && $this->p->options[ 'plugin_shortener' ] !== 'none' ) {
-				$clear_cache_label_transl .= ' [*]';
+				$clear_cache_label_transl .= ' *';
 			}
 
 			$form_button_rows = array(

@@ -1564,7 +1564,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( $cache_exp_secs !== $filter_exp_secs ) {
 
 						$cache_exp_secs    = $filter_exp_secs;
-						$cache_exp_suffix  = ' [F]';	// Show that value has changed.
+						$cache_exp_suffix  = ' *';	// Show that value was changed by a filter.
 						$have_filtered_exp = true;
 					}
 				}
@@ -1591,9 +1591,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $have_filtered_exp ) {
 				echo '<tr><td></td></tr>' . "\n";
-				echo '<tr><td colspan="' . $table_cols . '"><p><small>[F] ' .
-					__( 'Cache expiration modified by filter.',
-						'wpsso' ) . '</small></p></td></tr>' . "\n";
+				echo '<tr><td colspan="' . $table_cols . '"><p class="status-msg smaller left">* ' .
+					__( 'Cache expiration modified by filter.', 'wpsso' ) . '</small></p></td></tr>' . "\n";
 			}
 
 			echo '</table>';

@@ -1032,25 +1032,29 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'msg'   => $this->p->msgs->get( 'info-meta-validate-facebook-microdata' ) .
 						SucomForm::get_no_input_clipboard( $sharing_url ),
 				),
-				'linkedin' => array(
-					'title' => _x( 'LinkedIn Post Inspector', 'option label', 'wpsso' ),
-					'label' => _x( 'Validate Metadata', 'submit button', 'wpsso' ),
-					'url'   => 'https://www.linkedin.com/post-inspector/inspect/' . $sharing_url_encoded,
-				),
-				'google-testing-tool' => array(
-					'title' => _x( 'Google Structured Data Test', 'option label', 'wpsso' ),
-					'label' => _x( 'Validate Structured Data', 'submit button', 'wpsso' ),
-					'url'   => 'https://search.google.com/structured-data/testing-tool/u/0/#url=' . $sharing_url_encoded,
-				),
 				'google-page-speed' => array(
 					'title' => _x( 'Google PageSpeed Insights', 'option label', 'wpsso' ),
 					'label' => _x( 'Validate PageSpeed', 'submit button', 'wpsso' ),
 					'url'   => 'https://developers.google.com/speed/pagespeed/insights/?url=' . $sharing_url_encoded,
 				),
+				'google-testing-tool' => array(
+					'title' => _x( 'Google Structured Data Test', 'option label', 'wpsso' ),
+					'label' => _x( 'Validate Structured Data', 'submit button', 'wpsso' ) .
+						( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ? ' *' : '' ),
+					'url'   => empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ? '' :
+						'https://search.google.com/structured-data/testing-tool/u/0/#url=' . $sharing_url_encoded,
+				),
 				'google-rich-results' => array(
 					'title' => _x( 'Google Rich Results Test', 'option label', 'wpsso' ),
-					'label' => _x( 'Validate Rich Results', 'submit button', 'wpsso' ),
-					'url'   => 'https://search.google.com/test/rich-results?url=' . $sharing_url_encoded,
+					'label' => _x( 'Validate Rich Results', 'submit button', 'wpsso' ) .
+						( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ? ' *' : '' ),
+					'url'   => empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ? '' :
+						'https://search.google.com/test/rich-results?url=' . $sharing_url_encoded,
+				),
+				'linkedin' => array(
+					'title' => _x( 'LinkedIn Post Inspector', 'option label', 'wpsso' ),
+					'label' => _x( 'Validate Metadata', 'submit button', 'wpsso' ),
+					'url'   => 'https://www.linkedin.com/post-inspector/inspect/' . $sharing_url_encoded,
 				),
 				'pinterest' => array(
 					'title' => _x( 'Pinterest Rich Pins Validator', 'option label', 'wpsso' ),
@@ -1064,32 +1068,39 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'msg'   => $this->p->msgs->get( 'info-meta-validate-twitter' ) .
 						SucomForm::get_no_input_clipboard( $sharing_url ),
 				),
+				'amp' => array(
+					'title' => $mod[ 'is_post' ] ? _x( 'The AMP Validator', 'option label', 'wpsso' ) : '',
+					'label' => $mod[ 'is_post' ] ? _x( 'Validate AMP Markup', 'submit button', 'wpsso' ) .
+						( function_exists( 'amp_get_permalink' ) ? '' : ' **' ) : '',
+					'url'   => $mod[ 'is_post' ] && function_exists( 'amp_get_permalink' ) ?
+						'https://validator.ampproject.org/#url=' . urlencode( amp_get_permalink( $mod[ 'id' ] ) ) : '',
+				),
 				'w3c' => array(
 					'title' => _x( 'W3C Markup Validation', 'option label', 'wpsso' ),
 					'label' => _x( 'Validate HTML Markup', 'submit button', 'wpsso' ),
 					'url'   => 'https://validator.w3.org/nu/?doc=' . $sharing_url_encoded,
 				),
-				'amp' => array(
-					'title' => $mod[ 'is_post' ] ? _x( 'The AMP Validator', 'option label', 'wpsso' ) : '',
-					'label' => $mod[ 'is_post' ] ? _x( 'Validate AMP Markup', 'submit button', 'wpsso' ) : '',
-					'url'   => $mod[ 'is_post' ] && function_exists( 'amp_get_permalink' ) ?
-						'https://validator.ampproject.org/#url=' . urlencode( amp_get_permalink( $mod[ 'id' ] ) ) : '',
-				),
 			);
 
 			$table_rows = array();
 
-			foreach ( $buttons as $key => $btn ) {
+			foreach ( $buttons as $key => $b ) {
 
-				if ( ! empty( $btn[ 'title' ] ) ) {	// The amp validator title will be empty for non-post objects.
+				if ( ! empty( $b[ 'title' ] ) ) {
 
-					$table_rows[ 'validate_' . $key ] = $form->get_th_html( $btn[ 'title' ], 'medium' ) . 
-					'<td class="validate">' . ( isset( $btn[ 'msg' ] ) ? $btn[ 'msg' ] :
-						$this->p->msgs->get( 'info-meta-validate-' . $key ) ). '</td>' . 
-					'<td class="validate">' . $form->get_button( $btn[ 'label' ], 'button-secondary', '', $btn[ 'url' ],
-						$newtab = true, ( $btn[ 'url' ] ? false : true ) ) . '</td>';
+					$table_rows[ 'validate_' . $key ] = $form->get_th_html( $b[ 'title' ], 'medium' );
+
+					$table_rows[ 'validate_' . $key ] .= '<td class="validate">' . 
+						( isset( $b[ 'msg' ] ) ? $b[ 'msg' ] : $this->p->msgs->get( 'info-meta-validate-' . $key ) ) .
+							'</td>';
+
+					$table_rows[ 'validate_' . $key ] .= '<td class="validate">' .
+						$form->get_button( $b[ 'label' ], 'button-secondary', '', $b[ 'url' ], $newtab = true, ( $b[ 'url' ] ? false : true ) ) .
+							'</td>';
 				}
 			}
+
+			$table_rows[ 'validate_info' ] .= '<td class="validate" colspan="3">' . $this->p->msgs->get( 'info-meta-validate-info' ) . '</td>';
 
 			return $table_rows;
 		}
