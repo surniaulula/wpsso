@@ -1809,7 +1809,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = '<p class="top">';
 
-							$text .= __( 'Check the webpage structured data markup for Google rich result types (Job posting, Recipe, etc.).', 'wpsso' );
+							$text .= __( 'Check the webpage structured data markup for Google Rich Result types (Job posting, Recipe, etc.).', 'wpsso' );
 
 							$text .= '</p>';
 

@@ -5008,7 +5008,7 @@ msgstr ""
 
 #: lib/messages.php:1812
 msgid ""
-"Check the webpage structured data markup for Google rich result types (Job "
+"Check the webpage structured data markup for Google Rich Result types (Job "
 "posting, Recipe, etc.)."
 msgstr ""
 
