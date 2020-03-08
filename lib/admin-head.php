@@ -206,7 +206,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				return;
 			}
 
-			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
+			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {	// Since WPSSO Core v6.23.3.
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'schema markup is disabled' );

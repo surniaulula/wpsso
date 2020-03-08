@@ -587,7 +587,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
+			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {	// Since WPSSO Core v6.23.3.
 
 				$table_rows[ 'schema_disabled' ] = '<tr><td align="center">' .
 					'<p><em>' . __( 'Schema markup is disabled.', 'wpsso' ) . '</em></p>' .

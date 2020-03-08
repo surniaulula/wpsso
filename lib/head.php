@@ -525,7 +525,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$this->p->util->maybe_unset_ref( $sharing_url );
 
-			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
+			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {	// Since WPSSO Core v6.23.3.
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'schema markup is disabled' );

@@ -1091,7 +1091,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Check the stripped webpage HTML for ld+json script(s) and if not found, then suggest enabling the WPSSO JSON add-on.
 			 */
-			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
+			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {	// Since WPSSO Core v6.23.3.
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'schema markup is disabled' );
