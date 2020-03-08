@@ -20,6 +20,10 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				'amp'                      => 'AMP',	// AMP, Better AMP, etc.
 				'accelerated-mobile-pages' => 'Accelerated Mobile Pages',
 			),
+			'p' => array(
+				'schema'  => 'Schema Markup',
+				'vary_ua' => 'Vary by User Agent',
+			),
 			'seo' => array(
 				'jetpack-seo' => 'Jetpack SEO Tools',
 				'rankmath'    => 'SEO by Rank Math',
@@ -29,7 +33,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			),
 			'util' => array(
 				'jetpack' => 'Jetpack',
-				'vary_ua' => 'Vary by User Agent',
 			),
 			'wp' => array(
 				'featured' => 'Post Thumbnail',
@@ -296,6 +299,30 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							break;
 
+						case 'p':
+
+							switch ( $id ) {
+
+								case 'schema':
+
+									$get_avail[ $sub ][ $id ] = SucomUtil::get_const( 'WPSSO_SCHEMA_MARKUP_DISABLE' ) ? false : true;
+
+									break;
+
+								case 'vary_ua':
+
+									$get_avail[ $sub ][ $id ] = SucomUtil::get_const( 'WPSSO_VARY_USER_AGENT_DISABLE' ) ? false : true;
+
+									/**
+									 * Maintain backwards compatibility.
+									 */
+									$get_avail[ '*' ][ $id ] = $get_avail[ $sub ][ $id ];
+
+									break;
+							}
+
+							break;
+
 						case 'rating':
 
 							switch ( $id ) {
@@ -464,31 +491,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								case 'post':
-								case 'term':
-								case 'user':
-
-									$get_avail[ $sub ][ 'any' ] = $get_avail[ $sub ][ $id ] = true;
-
-									break;
-
 								case 'shorten':
 
 									$chk[ 'opt_key' ] = 'plugin_shortener';
-
-									break;
-
-								case 'vary_ua':
-
-									/**
-									 * Support for user agent checks is enabled by default.
-									 */
-									$get_avail[ $sub ][ $id ] = SucomUtil::get_const( 'WPSSO_VARY_USER_AGENT_DISABLE' ) ? false : true;
-
-									/**
-									 * Maintain backwards compatibility.
-									 */
-									$get_avail[ '*' ][ $id ] = $get_avail[ $sub ][ $id ];
 
 									break;
 

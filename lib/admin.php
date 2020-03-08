@@ -938,7 +938,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$notice_key = 'notice-content-filters-disabled';
 
-				$notice_msg = $this->p->msgs->get( $notice_msg );
+				$notice_msg = $this->p->msgs->get( $notice_key );
 
 				$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
 			}

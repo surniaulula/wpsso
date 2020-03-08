@@ -525,23 +525,36 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$this->p->util->maybe_unset_ref( $sharing_url );
 
-			/**
-			 * Schema itemprop meta tags.
-			 */
-			$this->p->util->maybe_set_ref( $sharing_url, $mod, __( 'adding schema meta tags', 'wpsso' ) );
+			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
 
-			$mt_item = $this->p->meta_item->get_array( $mod, $mt_og );
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'schema markup is disabled' );
+				}
 
-			$this->p->util->maybe_unset_ref( $sharing_url );
+				$mt_item = array();
 
-			/**
-			 * Schema json scripts.
-			 */
-			$this->p->util->maybe_set_ref( $sharing_url, $mod, __( 'adding schema json-ld markup', 'wpsso' ) );
+				$schema_scripts = array();
 
-			$schema_scripts = $this->p->schema->get_array( $mod, $mt_og );
+			} else {
 
-			$this->p->util->maybe_unset_ref( $sharing_url );
+				/**
+				 * Schema itemprop meta tags.
+				 */
+				$this->p->util->maybe_set_ref( $sharing_url, $mod, __( 'adding schema meta tags', 'wpsso' ) );
+	
+				$mt_item = $this->p->meta_item->get_array( $mod, $mt_og );
+
+				$this->p->util->maybe_unset_ref( $sharing_url );
+
+				/**
+				 * Schema json scripts.
+				 */
+				$this->p->util->maybe_set_ref( $sharing_url, $mod, __( 'adding schema json-ld markup', 'wpsso' ) );
+
+				$schema_scripts = $this->p->schema->get_array( $mod, $mt_og );
+
+				$this->p->util->maybe_unset_ref( $sharing_url );
+			}
 
 			/**
 			 * Generator meta tags.

@@ -1100,7 +1100,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				}
 			}
 
-			$table_rows[ 'validate_info' ] .= '<td class="validate" colspan="3">' . $this->p->msgs->get( 'info-meta-validate-info' ) . '</td>';
+			$table_rows[ 'validate_info' ] = '<td class="validate" colspan="3">' . $this->p->msgs->get( 'info-meta-validate-info' ) . '</td>';
 
 			return $table_rows;
 		}

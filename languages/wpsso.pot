@@ -3363,11 +3363,11 @@ msgstr ""
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:531
+#: lib/head.php:543
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:540
+#: lib/head.php:552
 msgid "adding schema json-ld markup"
 msgstr ""
 

@@ -23,14 +23,23 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 				$this->p->debug->mark();
 			}
 
-			add_action( 'add_head_attributes', array( $this, 'add_head_attributes' ), -1000 );
+			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
 
-			if ( ! empty( $this->p->options[ 'plugin_head_attr_filter_name' ] ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'schema markup is disabled' );
+				}
 
-				$filter_name = $this->p->options[ 'plugin_head_attr_filter_name' ];
-				$filter_prio = $this->p->options[ 'plugin_head_attr_filter_prio' ];
+			} else {
 
-				add_filter( $filter_name, array( $this, 'filter_head_attributes' ), $filter_prio, 1 );
+				add_action( 'add_head_attributes', array( $this, 'add_head_attributes' ), -1000 );
+
+				if ( ! empty( $this->p->options[ 'plugin_head_attr_filter_name' ] ) ) {
+
+					$filter_name = $this->p->options[ 'plugin_head_attr_filter_name' ];
+					$filter_prio = $this->p->options[ 'plugin_head_attr_filter_prio' ];
+
+					add_filter( $filter_name, array( $this, 'filter_head_attributes' ), $filter_prio, 1 );
+				}
 			}
 		}
 
