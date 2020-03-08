@@ -154,6 +154,16 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 				case 'essential-google':
 
+					if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
+
+						$table_rows[ 'schema_disabled' ] = '<tr><td align="center">' .
+							'<p><em>' . __( 'Schema markup is disabled.', 'wpsso' ) . '</em></p>' .
+							'<p><em>' . __( 'No options available.', 'wpsso' ) . '</em></p>' .
+							'</td></tr>';
+
+						break;
+					}
+
 					$this->add_schema_knowledge_graph_table_rows( $table_rows, $this->form );
 
 					$table_rows[ 'schema_logo_url' ] = '' . 

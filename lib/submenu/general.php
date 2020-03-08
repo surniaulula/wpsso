@@ -267,6 +267,16 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'pub-google':
 
+					if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
+
+						$table_rows[ 'schema_disabled' ] = '<tr><td align="center">' .
+							'<p><em>' . __( 'Schema markup is disabled.', 'wpsso' ) . '</em></p>' .
+							'<p><em>' . __( 'No options available.', 'wpsso' ) . '</em></p>' .
+							'</td></tr>';
+
+						break;
+					}
+
 					$table_rows[ 'g_site_verify' ] = '' .
 					$this->form->get_th_html( _x( 'Google Website Verification ID', 'option label', 'wpsso' ), '', 'g_site_verify' ) . 
 					'<td>' . $this->form->get_input( 'g_site_verify', 'api_key' ) . '</td>';

@@ -79,6 +79,8 @@ _x( 'Contact Field Label', 'column title', 'wpsso' );
 _x( 'Show', 'column title', 'wpsso' );
 _x( 'Contact Field ID', 'column title', 'wpsso' );
 _x( 'Contact Field Label', 'column title', 'wpsso' );
+__( 'Schema markup is disabled.', 'wpsso' );
+__( 'No options available.', 'wpsso' );
 __( 'An SEO plugin has been detected &mdash; some basic SEO meta tags have been unchecked and disabled automatically.', 'wpsso' );
 _x( 'Gravatar is Author Default Image', 'option label', 'wpsso' );
 _x( 'Upscale Media Library Images', 'option label', 'wpsso' );

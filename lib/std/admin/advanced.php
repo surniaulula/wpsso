@@ -587,6 +587,16 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$this->p->debug->mark();
 			}
 
+			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
+
+				$table_rows[ 'schema_disabled' ] = '<tr><td align="center">' .
+					'<p><em>' . __( 'Schema markup is disabled.', 'wpsso' ) . '</em></p>' .
+					'<p><em>' . __( 'No options available.', 'wpsso' ) . '</em></p>' .
+					'</td></tr>';
+
+				return $table_rows;
+			}
+
 			return $this->get_head_tags_rows( $table_rows, $form, $network, array( '/^add_(meta|link)_(itemprop)_(.+)$/' ) );
 		}
 
