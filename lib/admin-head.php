@@ -192,9 +192,26 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			$this->suggest_addons_woocommerce();
 		}
 
+		/**
+		 * Suggest activating the WPSSO JSON add-on for better Schema markup.
+		 */
 		private function suggest_addons_woocommerce() {
 
 			if ( empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'woocommerce is not active' );
+				}
+
+				return;
+			}
+
+			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'schema markup is disabled' );
+				}
+
 				return;
 			}
 

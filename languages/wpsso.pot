@@ -28,42 +28,42 @@ msgid_plural "Please install these updates at your earliest convenience."
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/admin-head.php:236
+#: lib/admin-head.php:253
 msgid "Activate the %s add-on."
 msgstr ""
 
-#: lib/admin-head.php:243
+#: lib/admin-head.php:260
 msgid "Install and activate the %s add-on."
 msgstr ""
 
-#: lib/admin-head.php:256
+#: lib/admin-head.php:273
 msgid "Purchase the %s plugin."
 msgstr ""
 
-#: lib/admin-head.php:268
+#: lib/admin-head.php:285
 msgid "Purchase the %s add-on."
 msgstr ""
 
-#: lib/admin-head.php:274 lib/gettext-config.php:26
+#: lib/admin-head.php:291 lib/gettext-config.php:26
 msgctxt "lib file description"
 msgid "Setup Guide"
 msgstr ""
 
-#: lib/admin-head.php:276
+#: lib/admin-head.php:293
 msgid "https://search.google.com/structured-data/testing-tool/u/0/"
 msgstr ""
 
-#: lib/admin-head.php:277
+#: lib/admin-head.php:294
 msgid "Google Structured Data Testing Tool"
 msgstr ""
 
-#: lib/admin-head.php:279
+#: lib/admin-head.php:296
 msgid ""
 "The WooCommerce v%s plugin is known to provide incomplete Schema markup for "
 "Google."
 msgstr ""
 
-#: lib/admin-head.php:281
+#: lib/admin-head.php:298
 msgid ""
 "The WPSSO Core Premium plugin and its WPSSO JSON Premium add-on provide a "
 "far better solution by offering complete Facebook / Pinterest Product meta "
@@ -75,91 +75,91 @@ msgid ""
 "prices, VAT prices, and much, much more."
 msgstr ""
 
-#: lib/admin-head.php:285
+#: lib/admin-head.php:302
 msgid ""
 "As suggested in the %1$s, you can (and should) submit a few product URLs to "
 "the %2$s and make sure your Schema Product markup is complete."
 msgstr ""
 
-#: lib/admin-head.php:397
+#: lib/admin-head.php:414
 msgid "The %s plugin description page on WordPress.org."
 msgstr ""
 
-#: lib/admin-head.php:403
+#: lib/admin-head.php:420
 msgid "Yes! Rate %s 5 stars!"
 msgstr ""
 
-#: lib/admin-head.php:404
+#: lib/admin-head.php:421
 msgid "Thank you for rating the %s plugin!"
 msgstr ""
 
-#: lib/admin-head.php:409
+#: lib/admin-head.php:426
 msgid "I've already rated %s."
 msgstr ""
 
-#: lib/admin-head.php:410
+#: lib/admin-head.php:427
 msgid "Thank you for your earlier rating of %s!"
 msgstr ""
 
-#: lib/admin-head.php:428 lib/admin-head.php:532
+#: lib/admin-head.php:445 lib/admin-head.php:549
 msgid "Fantastic!"
 msgstr ""
 
-#: lib/admin-head.php:430
+#: lib/admin-head.php:447
 msgid "You've been using <b>%s</b> for a while now, which is awesome!"
 msgstr ""
 
-#: lib/admin-head.php:434
+#: lib/admin-head.php:451
 msgid ""
 "We've put a lot of effort into making %s and its add-ons the best possible, "
 "so it's great to know that you're finding this plugin useful."
 msgstr ""
 
-#: lib/admin-head.php:438
+#: lib/admin-head.php:455
 msgid ""
 "Now that you're familiar with %s, would you rate this plugin 5 stars on "
 "WordPress.org?"
 msgstr ""
 
-#: lib/admin-head.php:442
+#: lib/admin-head.php:459
 msgid ""
 "Your rating is a great way to encourage us and it helps other WordPress "
 "users find great plugins!"
 msgstr ""
 
-#: lib/admin-head.php:475
+#: lib/admin-head.php:492
 msgid "three months"
 msgstr ""
 
-#: lib/admin-head.php:498
+#: lib/admin-head.php:515
 msgid "Yes! I'd like to get the %s update!"
 msgstr ""
 
-#: lib/admin-head.php:501
+#: lib/admin-head.php:518
 msgid "Thank you for your support!"
 msgstr ""
 
-#: lib/admin-head.php:510
+#: lib/admin-head.php:527
 msgid "No thanks, I'll stay with the %s version."
 msgstr ""
 
-#: lib/admin-head.php:513
+#: lib/admin-head.php:530
 msgid "Sorry to hear that - hopefully you'll change your mind later."
 msgstr ""
 
-#: lib/admin-head.php:534
+#: lib/admin-head.php:551
 msgid ""
 "You've been using the %1$s plugin for more than %2$s now, which is awesome!"
 msgstr ""
 
-#: lib/admin-head.php:539
+#: lib/admin-head.php:556
 msgid ""
 "We've put a lot of effort into making %1$s and its add-ons the best possible "
 "&mdash; I hope you've enjoyed all the new features, improvements and updates "
 "over the past %2$s."
 msgstr ""
 
-#: lib/admin-head.php:543
+#: lib/admin-head.php:560
 msgid ""
 "Have you considered purchasing the %s version? It comes with a lot of extra "
 "features!"
@@ -910,7 +910,7 @@ msgstr ""
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:458 lib/gettext-com.php:32 lib/post.php:1552
+#: lib/com/notice.php:458 lib/gettext-com.php:32 lib/post.php:1558
 msgid "Edit"
 msgstr ""
 
@@ -6083,7 +6083,7 @@ msgid ""
 "post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:752 lib/post.php:1310
+#: lib/post.php:752 lib/post.php:1316
 msgid "checking meta tags"
 msgstr ""
 
@@ -6151,111 +6151,111 @@ msgid ""
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:1120
+#: lib/post.php:1126
 msgid "The webpage at %1$s does not include any Schema JSON-LD script(s)."
 msgstr ""
 
-#: lib/post.php:1122
+#: lib/post.php:1128
 msgid ""
 "Complete and accurate Schema JSON-LD markup is highly recommended for better "
 "ranking and click-through rates in search results."
 msgstr ""
 
-#: lib/post.php:1124
+#: lib/post.php:1130
 msgid ""
 "Consider activating the %1$s add-on to include Schema JSON-LD markup for "
 "Google Rich Results."
 msgstr ""
 
-#: lib/post.php:1142
+#: lib/post.php:1148
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:1158
+#: lib/post.php:1164
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1158
+#: lib/post.php:1164
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML &mdash; review the <a href=\"%1$s\">W3C Markup Validation "
 "Service</a> results and correct any errors."
 msgstr ""
 
-#: lib/post.php:1158
+#: lib/post.php:1164
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:1192
+#: lib/post.php:1198
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1194
+#: lib/post.php:1200
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1202
+#: lib/post.php:1208
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1205
+#: lib/post.php:1211
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1207
+#: lib/post.php:1213
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1364
+#: lib/post.php:1370
 msgid "Save a draft or publish to display these options."
 msgstr ""
 
-#: lib/post.php:1542 lib/script.php:194
+#: lib/post.php:1548 lib/script.php:194
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1553
+#: lib/post.php:1559
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1566
+#: lib/post.php:1572
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1567
+#: lib/post.php:1573
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1568
+#: lib/post.php:1574
 msgctxt "option label"
 msgid "No image index"
 msgstr ""
 
-#: lib/post.php:1569
+#: lib/post.php:1575
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1570
+#: lib/post.php:1576
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1571
+#: lib/post.php:1577
 msgctxt "option label"
 msgid "No translate"
 msgstr ""
 
-#: lib/post.php:1700
+#: lib/post.php:1706
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 

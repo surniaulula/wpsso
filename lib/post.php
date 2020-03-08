@@ -1067,7 +1067,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/**
-			 * Remove WPSSO meta tags and Schema markup from the webpage html to check for duplicate meta tags and markup.
+			 * Remove the WPSSO meta tag and Schema markup section from the webpage to check for duplicate meta tags and markup.
 			 */
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'removing the ' . $this->p->lca . ' meta tag section from the webpage html' );
@@ -1091,7 +1091,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Check the stripped webpage HTML for ld+json script(s) and if not found, then suggest enabling the WPSSO JSON add-on.
 			 */
-			if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
+			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'schema markup is disabled' );
+				}
+
+			} elseif ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'checking the stripped webpage html for ld+json script(s)' );
