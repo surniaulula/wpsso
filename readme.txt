@@ -511,12 +511,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.23.3-dev.1 (TBD)**
+**Version 6.24.0-dev.1 (2020/03/09)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added several Open Graph options in the Document SSO metabox to the Standard / Free version:
+	* Added several Open Graph image options in the Document SSO metabox to the Standard / Free version:
 		* Priority Media
 			* Priority Image Information
 				* Maximum Images
@@ -921,6 +921,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v3.9.
 
 == Upgrade Notice ==
+
+= 6.24.0-dev.1 =
+
+(2020/03/09) Added several Open Graph image options in the Document SSO metabox to the Standard / Free version.
 
 = 6.23.2 =
 
