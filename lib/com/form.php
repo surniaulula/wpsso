@@ -1914,7 +1914,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					$table_rows[ $key ] .= $tr . '<td' . $col_span . $td_class . '>';
 
-					$table_rows[ $key ] .= '<' . $val[ 'header' ] . '>' . $val[ 'label' ] . '</' . $val[ 'header' ] . '>';
+					$table_rows[ $key ] .= '<' . $val[ 'header' ];
+
+					if ( ! empty( $val[ 'header_class' ] ) ) {
+						$table_rows[ $key ] .= ' class="' . $val[ 'header_class' ] . '"';
+					}
+					
+					$table_rows[ $key ] .= '>' . $val[ 'label' ] . '</' . $val[ 'header' ] . '>';
 
 					$table_rows[ $key ] .= '</td>' . "\n";
 

@@ -36,7 +36,7 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
+			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			$table_rows[ 'og_author_gravatar' ] = '' . 
 			$form->get_th_html( _x( 'Gravatar is Author Default Image', 'option label', 'wpsso' ), null, 'og_author_gravatar' ) . 
@@ -51,7 +51,7 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
+			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			$table_rows[ 'plugin_upscale_images' ] = '' . 
 			$form->get_th_html( _x( 'Upscale Media Library Images', 'option label', 'wpsso' ), '', 'plugin_upscale_images' ) . 
@@ -70,10 +70,11 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$table_rows[] = '<td colspan="2"><p style="text-align:center;margin:0;">' .
+			$table_rows[] = '<td colspan="2">' .
+				'<p class="pro-feature-msg">' .
 				sprintf( __( 'Video discovery and service API modules are provided with the %s version.', 'wpsso' ), 
 					_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) ) .
-						'</p>' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
+				'</p>' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			$table_rows[ 'og_vid_max' ] = $form->get_tr_hide( 'basic', 'og_vid_max' ) . 
 			$form->get_th_html( _x( 'Maximum Videos to Include', 'option label', 'wpsso' ), null, 'og_vid_max' ) . 

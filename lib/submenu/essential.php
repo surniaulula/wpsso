@@ -156,12 +156,7 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 					if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {	// Since WPSSO Core v6.23.3.
 
-						$table_rows[ 'schema_disabled' ] = '<tr><td align="center">' .
-							'<p><em>' . __( 'Schema markup is disabled.', 'wpsso' ) . '</em></p>' .
-							'<p><em>' . __( 'No options available.', 'wpsso' ) . '</em></p>' .
-							'</td></tr>';
-
-						break;
+						return $this->p->msgs->get_schema_disabled_rows( $table_rows, $col_span = 1 );
 					}
 
 					$this->add_schema_knowledge_graph_table_rows( $table_rows, $this->form );

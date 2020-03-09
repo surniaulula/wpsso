@@ -3963,7 +3963,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			if ( 0 === $count_rows ) {
 				
 				$table_rows[ 'no_options' ] = '<tr><td align="center">' .
-					'<p><em>' . __( 'No options available.', 'wpsso' ) . '</em></p>' .
+					'<p class="status-msg">' . __( 'No options available.', 'wpsso' ) . '</p>' .
 					'</td></tr>';
 
 				$count_rows++;

@@ -2976,7 +2976,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( $is_top_section ) {
 				if ( ! self::$pkg[ $this->p->lca ][ 'pp' ] ) {
 					$table_rows[] = ( $hide_in_basic ? $form->get_tr_hide( 'basic' ) : '' ) .
-						'<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
+						'<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 				}
 			}
 
@@ -3006,7 +3006,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( $is_top_section ) {
 				if ( ! self::$pkg[ $this->p->lca ][ 'pp' ] ) {
 					$table_rows[] = ( $hide_in_basic ? $form->get_tr_hide( 'basic' ) : '' ) .
-						'<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
+						'<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 				}
 			}
 

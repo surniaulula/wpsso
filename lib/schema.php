@@ -484,7 +484,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$graph_json     = WpssoSchemaGraph::get_json_clean();
 			$graph_type_url = WpssoSchemaGraph::get_type_url();
 			$filter_name    = $this->p->lca . '_json_prop_' . SucomUtil::sanitize_hookname( $graph_type_url );
-			$graph_json     = apply_filters( $filter_name, $graph_json, $mod, $mt_og, $page_type_id, $is_main );
+			$graph_json     = apply_filters( $filter_name, $graph_json, $mod, $mt_og );
 
 			$schema_scripts  = array();
 

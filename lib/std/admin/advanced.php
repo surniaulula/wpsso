@@ -50,7 +50,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$atts_locale = array( 'is_locale' => true );
 
-			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
+			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			$table_rows[ 'plugin_filter_title' ] = '' . 
 			$form->get_th_html( _x( 'Use Filtered (aka SEO) Title', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_filter_title' ) . 
@@ -107,7 +107,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
+			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			$table_rows[ 'plugin_html_attr_filter' ] = '' .
 			$form->get_th_html( _x( '&lt;html&gt; Attributes Filter Hook', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_html_attr_filter' ).
@@ -161,7 +161,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
+			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			/**
 			 * Add custom meta metaboxes.
@@ -205,7 +205,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
+			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			$cols = '<table class="plugin-list-columns">' . "\n" . '<tr>';
 
@@ -264,8 +264,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$table_rows[] = '<td colspan="' . ( $network ? 4 : 2 ) . '">' . 
-				$this->p->msgs->get( 'pro-feature-msg', array( 'lca' => 'wpsso' ) ) . '</td>';
+			$table_rows[] = '<td colspan="' . ( $network ? 4 : 2 ) . '">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			$table_rows[ 'plugin_head_cache_exp' ] = '' . 
 			$form->get_th_html( _x( 'Head Markup Array Cache Expiry', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_head_cache_exp' ) . 
@@ -365,7 +364,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$tr_html[ 'bitly' ] = '';
 			}
 
-			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg', array( 'lca' => 'wpsso' ) ) . '</td>';
+			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			$table_rows[ 'plugin_shortener' ] = '' . 
 			$form->get_th_html( _x( 'Preferred URL Shortening Service', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_shortener' ) . 
@@ -456,7 +455,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$atts_locale = array( 'is_locale' => true );
 
-			$table_rows[] = '<td colspan="4">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
+			$table_rows[] = '<td colspan="4">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			$table_rows[] = '<td></td>' . 
 			$form->get_th_html( _x( 'Show', 'column title', 'wpsso' ), 'checkbox left', 'custom-cm-show-checkbox' ) . 
@@ -522,7 +521,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$atts_locale = array( 'is_locale' => true );
 
-			$table_rows[] = '<td colspan="4">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
+			$table_rows[] = '<td colspan="4">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			$table_rows[] = '<td></td>' . 
 			$form->get_th_html( _x( 'Show', 'column title', 'wpsso' ), 'checkbox left', 'custom-cm-show-checkbox' ) . 
@@ -589,12 +588,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {	// Since WPSSO Core v6.23.3.
 
-				$table_rows[ 'schema_disabled' ] = '<tr><td align="center">' .
-					'<p><em>' . __( 'Schema markup is disabled.', 'wpsso' ) . '</em></p>' .
-					'<p><em>' . __( 'No options available.', 'wpsso' ) . '</em></p>' .
-					'</td></tr>';
-
-				return $table_rows;
+				return $this->p->msgs->get_schema_disabled_rows( $table_rows, $col_span = 1 );
 			}
 
 			return $this->get_head_tags_rows( $table_rows, $form, $network, array( '/^add_(meta|link)_(itemprop)_(.+)$/' ) );

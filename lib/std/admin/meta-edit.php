@@ -64,9 +64,9 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'header'   => 'h5',
 					'label'    => _x( 'Basic Product Information', 'metabox title', 'wpsso' )
 				),
-				'pro-feature-msg' => array(
+				'pro_feature_msg' => array(
 					'tr_class'  => 'hide_og_type hide_og_type_product',
-					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>',
+					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
 				),
 				'og_product_ecom_msg' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
@@ -205,54 +205,16 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$media_info = $this->p->og->get_media_info( $this->p->lca . '-opengraph', array( 'pid', 'img_url' ),
-				$mod, $md_pre = 'none', $mt_pre = 'og' );
+			$max_media_items = $this->p->cf[ 'form' ][ 'max_media_items' ];
 
 			$form_rows = array(
-				'info-priority-media' => array(
-					'table_row' => empty( $media_info[ 'pid' ] ) ?
-						'' : '<td colspan="2">' . $this->p->msgs->get( 'info-priority-media' ) . '</td>',
-				),
-				'pro-feature-msg' => array(
-					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>',
-				),
-				'subsection_opengraph' => array(
-					'td_class' => 'subsection top',
-					'header'   => 'h4',
-					'label'    => _x( 'Facebook / Open Graph and Default Media', 'metabox title', 'wpsso' ),
-				),
-				'subsection_priority_image' => array(
-					'td_class' => 'subsection top',
-					'header'   => 'h5',
-					'label'    => _x( 'Priority Image Information', 'metabox title', 'wpsso' ),
-				),
-				'og_img_max' => $mod[ 'is_post' ] ? array(
-					'tr_class' => $form->get_css_class_hide( 'basic', 'og_img_max' ),
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Maximum Images', 'option label', 'wpsso' ),
-					'tooltip'  => 'og_img_max',	// Use tooltip message from settings.
-					'content'  => $form->get_no_select( 'og_img_max',
-						range( 0, $this->p->cf[ 'form' ][ 'max_media_items' ] ), 'medium' ),
-				) : '',	// Placeholder if not a post module.
-				'og_img_id' => array(
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-og_img_id',
-					'content'  => $form->get_no_input_image_upload( 'og_img', $media_info[ 'pid' ], true ),
-				),
-				'og_img_url' => array(
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-og_img_url',
-					'content'  => $form->get_no_input_value( $media_info[ 'img_url' ], $css_class = 'wide' ),
-				),
 				'subsection_priority_video' => array(
-					'td_class' => 'subsection',
-					'header'   => 'h5',
-					'label'    => _x( 'Priority Video Information', 'metabox title', 'wpsso' )
+					'td_class'     => 'subsection',
+					'header'       => 'h5',
+					'label'        => _x( 'Priority Video Information', 'metabox title', 'wpsso' )
+				),
+				'pro_feature_msg' => array(
+					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
 				),
 				'og_vid_prev_img' => array(
 					'th_class' => 'medium',
@@ -269,8 +231,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Maximum Videos', 'option label', 'wpsso' ),
 					'tooltip'  => 'og_vid_max',	// Use tooltip message from settings.
-					'content'  => $form->get_no_select( 'og_vid_max',
-						range( 0, $this->p->cf[ 'form' ][ 'max_media_items' ] ), 'medium' ),
+					'content'  => $form->get_no_select( 'og_vid_max', range( 0, $max_media_items ), $css_class = 'medium' ),
 				) : '',	// Placeholder if not a post module.
 				'og_vid_dimensions' => array(
 					'tr_class' => $form->get_css_class_hide_vid_dim( 'basic', 'og_vid' ),
@@ -319,8 +280,8 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 
 			if ( ! empty( $size_name ) ) {
 
-				$media_info = $this->p->og->get_media_info( $size_name, array( 'pid', 'img_url' ),
-					$mod, $md_pre = 'og', $mt_pre = 'og' );
+				$media_info = $this->p->og->get_media_info( $size_name,
+					array( 'pid', 'img_url' ), $mod, $md_pre = 'og', $mt_pre = 'og' );
 	
 				/**
 				 * Hide unless a custom twitter card image exists.
@@ -354,47 +315,17 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 			}
 
 			/**
-			 * Schema JSON-LD Markup / Rich Results
+			 * Schema JSON-LD Markup / Rich Results.
 			 */
-			$media_info = $this->p->og->get_media_info( $this->p->lca . '-schema', array( 'pid', 'img_url' ),
-				$mod, $md_pre = 'og', $mt_pre = 'og' );
-	
-			$schema_row_class = $form->in_options( '/^schema_img_/', true ) ? '' : 'hide_in_basic';	// Hide unless a custom schema image exists.
-
 			$form_rows[ 'subsection_schema' ] = array(
-				'tr_class' => $schema_row_class,
-				'td_class' => 'subsection', 'header' => 'h4',
+				'td_class' => 'subsection',
+				'header'   => 'h4',
 				'label'    => _x( 'Schema JSON-LD Markup / Rich Results', 'metabox title', 'wpsso' )
 			);
 
-			if ( $mod[ 'is_post' ] ) {
-				$form_rows[ 'schema_img_max' ] = array(
-					'tr_class' => $form->get_css_class_hide( 'basic', 'schema_img_max' ),
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Maximum Images', 'option label', 'wpsso' ),
-					'tooltip'  => 'schema_img_max',	// Use tooltip message from settings.
-					'content'  => $form->get_no_select( 'schema_img_max',
-						range( 0, $this->p->cf[ 'form' ][ 'max_media_items' ] ), 'medium' ),
-				);
-			}
-
-			$form_rows[ 'schema_img_id' ] = array(
-				'tr_class' => $schema_row_class,
-				'th_class' => 'medium',
-				'td_class' => 'blank',
-				'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
-				'tooltip'  => 'meta-schema_img_id',
-				'content'  => $form->get_no_input_image_upload( 'schema_img', $media_info[ 'pid' ], true ),
-			);
-
-			$form_rows[ 'schema_img_url' ] = array(
-				'tr_class' => $schema_row_class,
-				'th_class' => 'medium',
-				'td_class' => 'blank',
-				'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
-				'tooltip'  => 'meta-schema_img_url',
-				'content'  => $form->get_no_input_value( $media_info[ 'img_url' ], $css_class = 'wide' ),
+			$form_rows[ 'wpssojson_addon_msg' ] = array(
+				'table_row' => ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ?
+					'<td colspan="2">' . $this->p->msgs->more_schema_options() . '</td>' : '' ),
 			);
 
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head, $mod );

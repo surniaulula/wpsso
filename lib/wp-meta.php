@@ -743,9 +743,54 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		public function get_table_rows_sso_media_tab( $form, $head_info, $mod ) {
 
-			$table_rows = array();
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
 
-			return $table_rows;
+			$max_media_items = $this->p->cf[ 'form' ][ 'max_media_items' ];
+
+			$media_info = $this->p->og->get_media_info( $this->p->lca . '-opengraph', 
+				array( 'pid', 'img_url' ), $mod, $md_pre = 'none', $mt_pre = 'og' );
+
+			/**
+			 * Metabox form rows.
+			 */
+			$form_rows = array(
+				'info-priority-media' => array(
+					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-priority-media' ) . '</td>',
+				),
+				'subsection_opengraph' => array(
+					'td_class' => 'subsection top',
+					'header'   => 'h4',
+					'label'    => _x( 'Facebook / Open Graph and Default Media', 'metabox title', 'wpsso' ),
+				),
+				'subsection_priority_image' => array(
+					'td_class' => 'subsection top',
+					'header'   => 'h5',
+					'label'    => _x( 'Priority Image Information', 'metabox title', 'wpsso' )
+				),
+				'og_img_max' => $mod[ 'is_post' ] ? array(
+					'tr_class' => $form->get_css_class_hide( 'basic', 'og_img_max' ),
+					'th_class' => 'medium',
+					'label'    => _x( 'Maximum Images', 'option label', 'wpsso' ),
+					'tooltip'  => 'og_img_max',		// Use tooltip message from settings.
+					'content'  => $form->get_select( 'og_img_max', range( 0, $max_media_items ), $css_class = 'medium' ),
+				) : '',	// Placeholder if not a post module.
+				'og_img_id' => array(
+					'th_class' => 'medium',
+					'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-og_img_id',
+					'content'  => $form->get_input_image_upload( 'og_img', $media_info[ 'pid' ] ),
+				),
+				'og_img_url' => array(
+					'th_class' => 'medium',
+					'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-og_img_url',
+					'content'  => $form->get_input_image_url( 'og_img', $media_info[ 'img_url' ] ),
+				),
+			);
+
+			return $form->get_md_form_rows( array(), $form_rows, $head_info, $mod );
 		}
 
 		public function get_table_rows_sso_preview_tab( $form, $head_info, $mod ) {
@@ -1019,6 +1064,10 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			$sharing_url_encoded = urlencode( $sharing_url );
 
+			$no_schema = empty( $this->p->avail[ 'p' ][ 'schema' ] ) || empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ?  true : false;
+
+			$no_amp = ! function_exists( 'amp_get_permalink' ) ? true : false;
+
 			$buttons = array(
 				'facebook-og' => array(
 					'title' => _x( 'Facebook Open Graph Object Debugger', 'option label', 'wpsso' ),
@@ -1039,17 +1088,13 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				),
 				'google-testing-tool' => array(
 					'title' => _x( 'Google Structured Data Test', 'option label', 'wpsso' ),
-					'label' => _x( 'Validate Structured Data', 'submit button', 'wpsso' ) .
-						( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ? ' *' : '' ),
-					'url'   => empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ? '' :
-						'https://search.google.com/structured-data/testing-tool/u/0/#url=' . $sharing_url_encoded,
+					'label' => _x( 'Validate Structured Data', 'submit button', 'wpsso' ) . ( $no_schema ? ' *' : '' ),
+					'url'   => $no_schema ? '' : 'https://search.google.com/structured-data/testing-tool/u/0/#url=' . $sharing_url_encoded,
 				),
 				'google-rich-results' => array(
 					'title' => _x( 'Google Rich Results Test', 'option label', 'wpsso' ),
-					'label' => _x( 'Validate Rich Results', 'submit button', 'wpsso' ) .
-						( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ? ' *' : '' ),
-					'url'   => empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ? '' :
-						'https://search.google.com/test/rich-results?url=' . $sharing_url_encoded,
+					'label' => _x( 'Validate Rich Results', 'submit button', 'wpsso' ) . ( $no_schema ? ' *' : '' ),
+					'url'   => $no_schema ? '' : 'https://search.google.com/test/rich-results?url=' . $sharing_url_encoded,
 				),
 				'linkedin' => array(
 					'title' => _x( 'LinkedIn Post Inspector', 'option label', 'wpsso' ),
@@ -1070,10 +1115,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				),
 				'amp' => array(
 					'title' => $mod[ 'is_post' ] ? _x( 'The AMP Validator', 'option label', 'wpsso' ) : '',
-					'label' => $mod[ 'is_post' ] ? _x( 'Validate AMP Markup', 'submit button', 'wpsso' ) .
-						( function_exists( 'amp_get_permalink' ) ? '' : ' **' ) : '',
-					'url'   => $mod[ 'is_post' ] && function_exists( 'amp_get_permalink' ) ?
-						'https://validator.ampproject.org/#url=' . urlencode( amp_get_permalink( $mod[ 'id' ] ) ) : '',
+					'label' => $mod[ 'is_post' ] ? _x( 'Validate AMP Markup', 'submit button', 'wpsso' ) . ( $no_amp ? ' **' : '' ) : '',
+					'url'   => $mod[ 'is_post' ] && $no_amp ? '' : 'https://validator.ampproject.org/#url=' . urlencode( amp_get_permalink( $mod[ 'id' ] ) ),
 				),
 				'w3c' => array(
 					'title' => _x( 'W3C Markup Validation', 'option label', 'wpsso' ),

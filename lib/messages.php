@@ -1867,25 +1867,38 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
+						/**
+						 * Always called at the end of the validation table.
+						 *
+						 * Return an empty string if there are no special status messages. 
+						 */
 						case 'info-meta-validate-info':
 
-							if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
+							if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {	// Since WPSSO Core v6.23.3.
+
+								$text .= '<p class="status-msg left">* ';
+
+								$text .= __( 'Schema markup is disabled.', 'wpsso' );
+
+								$text .= '</p>';
+
+							} elseif ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
 
 								$link = $this->p->util->get_admin_url( 'addons#wpssojson',
 									$this->p->cf[ 'plugin' ][ 'wpssojson' ][ 'short' ] );
 
-								$text .= '<p class="status-msg left">';
+								$text .= '<p class="status-msg left">* ';
 
-								$text .= '* ' . sprintf( __( 'Activate the %s add-on for Google structured data markup.', 'wpsso' ), $link );
+								$text .= sprintf( __( 'Activate the %s add-on for Google structured data markup.', 'wpsso' ), $link );
 
 								$text .= '</p>';
 							}
 
 							if ( ! function_exists( 'amp_get_permalink' ) ) {
 
-								$text .= '<p class="status-msg left">';
+								$text .= '<p class="status-msg left">** ';
 
-								$text .= '** ' . __( 'Activate an AMP plugin to create and validate AMP pages.', 'wpsso' );
+								$text .= __( 'Activate an AMP plugin to create and validate AMP pages.', 'wpsso' );
 
 								$text .= '</p>';
 							}
@@ -2772,12 +2785,33 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 		public function more_schema_options() {
 
-			$link = $this->p->util->get_admin_url( 'addons#wpssojson', $this->p->cf[ 'plugin' ][ 'wpssojson' ][ 'name' ] );
+			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {	// Since WPSSO Core v6.23.3.
 
-			// translators: %s is is the add-on name (and a link to the add-on page).
-			$text = sprintf( __( 'Activate the %s add-on<br/>for comprehensive Schema Markup and Structured Data options.', 'wpsso' ), $link );
+				return $this->schema_disabled();
 
-			return '<p class="status-msg">' . $text . '</p>';
+			} else {
+
+				$link = $this->p->util->get_admin_url( 'addons#wpssojson', $this->p->cf[ 'plugin' ][ 'wpssojson' ][ 'name' ] );
+
+				// translators: %s is is the add-on name (and a link to the add-on page).
+				$text = sprintf( __( 'Activate the %s add-on<br/>for Schema markup and structured data options.', 'wpsso' ), $link );
+
+				return '<p class="status-msg">' . $text . '</p>';
+			}
+		}
+
+		public function schema_disabled() {
+
+			return '<p class="status-msg">' . __( 'Schema markup is disabled.', 'wpsso' ) . '</p>' .
+				'<p class="status-msg">' . __( 'No options available.', 'wpsso' ) . '</p>';
+		}
+
+		public function get_schema_disabled_rows( array &$table_rows, $col_span = 1 ) {
+
+			$table_rows[ 'schema_disabled' ] = '<tr><td align="center" colspan="' . $col_span . '">' .
+				$this->schema_disabled() . '</td></tr>';
+
+			return $table_rows;
 		}
 
 		private function get_ext_p_ext( $ext ) {
