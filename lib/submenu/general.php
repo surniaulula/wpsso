@@ -113,6 +113,8 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$table_rows = array();
 
+			$max_media_items = $this->p->cf[ 'form' ][ 'max_media_items' ];
+
 			$user_contacts = $this->p->user->get_form_contact_fields();
 
 			switch ( $metabox_id . '-' . $tab_key ) {
@@ -212,10 +214,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$table_rows[ 'og_img_max' ] = $this->form->get_tr_hide( 'basic', 'og_img_max' ) . 
 					$this->form->get_th_html( _x( 'Maximum Images to Include', 'option label', 'wpsso' ), '', 'og_img_max' ) . 
-					'<td>' . $this->form->get_select( 'og_img_max', range( 0, $this->p->cf[ 'form' ][ 'max_media_items' ] ), 'short', '', true ) . 
-					( empty( $this->form->options[ 'og_vid_prev_img' ] ) ? '' : ' <em>' .
-						_x( 'note that video preview images are enabled (and included first)',
-							'option comment', 'wpsso' ) . '</em>' ) . '</td>';
+					'<td>' .
+					$this->form->get_select( 'og_img_max', range( 0, $max_media_items ), 'short', '', true ) . 
+					( empty( $this->form->options[ 'og_vid_prev_img' ] ) ? '' :
+						' <em>' . _x( 'note that video preview images are enabled (and included first)', 'option comment', 'wpsso' ) . '</em>' ) .
+					'</td>';
 
 					$table_rows[ 'og_img' ] = $this->form->get_tr_hide_img_dim( 'basic', 'og_img' ). 
 					$this->form->get_th_html( _x( 'Open Graph Image Size', 'option label', 'wpsso' ), '', 'og_img_size' ) . 

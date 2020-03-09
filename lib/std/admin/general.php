@@ -70,11 +70,7 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$table_rows[] = '<td colspan="2">' .
-				'<p class="pro-feature-msg">' .
-				sprintf( __( 'Video discovery and service API modules are provided with the %s version.', 'wpsso' ), 
-					_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) ) .
-				'</p>' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
+			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature_video_api( 'wpsso' ) . '</td>';
 
 			$table_rows[ 'og_vid_max' ] = $form->get_tr_hide( 'basic', 'og_vid_max' ) . 
 			$form->get_th_html( _x( 'Maximum Videos to Include', 'option label', 'wpsso' ), null, 'og_vid_max' ) . 

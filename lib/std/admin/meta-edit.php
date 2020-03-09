@@ -214,16 +214,15 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'label'        => _x( 'Priority Video Information', 'metabox title', 'wpsso' )
 				),
 				'pro_feature_msg' => array(
-					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
+					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature_video_api( 'wpsso' ) . '</td>',
 				),
 				'og_vid_prev_img' => array(
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Include Preview Images', 'option label', 'wpsso' ),
 					'tooltip'  => 'og_vid_prev_img',	// Use tooltip message from settings.
-					'content'  => $form->get_no_checkbox( 'og_vid_prev_img' ) . ' <em>' .
-						_x( 'note that video preview images are included first',
-							'option comment', 'wpsso' ) . '</em>',
+					'content'  => $form->get_no_checkbox( 'og_vid_prev_img' ) .
+						' <em>' . _x( 'note that video preview images are included first', 'option comment', 'wpsso' ) . '</em>',
 				),
 				'og_vid_max' => $mod[ 'is_post' ] ? array(
 					'tr_class' => $form->get_css_class_hide( 'basic', 'og_vid_max' ),

@@ -2740,6 +2740,18 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			return $this->get( 'pro-feature-msg', array( 'lca' => $ext ) );
 		}
 
+		public function pro_feature_video_api( $ext ) {
+
+			$html = '<p class="pro-feature-msg">';
+
+			$html .= sprintf( __( 'Video discovery and service API modules are provided with the %s version.', 'wpsso' ),
+					_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) );
+
+			$html .= '</p>';
+			
+			return $html . $this->pro_feature( 'wpsso' );
+		}
+
 		/**
 		 * If an add-on is not active, return a short message that this add-on is required.
 		 */
