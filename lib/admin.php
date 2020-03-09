@@ -2781,8 +2781,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$form->get_th_html( _x( 'Maximum Images to Include', 'option label', 'wpsso' ), '', 'schema_img_max' ) . 
 			'<td>' .
 			$form->get_select( 'schema_img_max', range( 0, $max_media_items ), $css_class = 'short', $css_id = '', $is_assoc = true ) .
-			( empty( $form->options[ 'og_vid_prev_img' ] ) ? '' : ' <em>' . _x( 'note that video preview images are enabled (and included first)',
-				'option comment', 'wpsso' ) . '</em>' ) .
+			$this->p->msgs->maybe_preview_images_first() .
 			'</td>';
 
 			$table_rows[ 'schema_img' ] = $form->get_tr_hide_img_dim( 'basic', 'schema_img' ) . 

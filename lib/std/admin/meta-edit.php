@@ -221,8 +221,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Include Preview Images', 'option label', 'wpsso' ),
 					'tooltip'  => 'og_vid_prev_img',	// Use tooltip message from settings.
-					'content'  => $form->get_no_checkbox( 'og_vid_prev_img' ) .
-						' <em>' . _x( 'note that video preview images are included first', 'option comment', 'wpsso' ) . '</em>',
+					'content'  => $form->get_no_checkbox( 'og_vid_prev_img' ) . $this->p->msgs->preview_images_first(),
 				),
 				'og_vid_max' => $mod[ 'is_post' ] ? array(
 					'tr_class' => $form->get_css_class_hide( 'basic', 'og_vid_max' ),

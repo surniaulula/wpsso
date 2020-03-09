@@ -78,9 +78,7 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 
 			$table_rows[ 'og_vid_prev_img' ] = '' . 
 			$form->get_th_html( _x( 'Include Video Preview Images', 'option label', 'wpsso' ), null, 'og_vid_prev_img' ) . 
-			'<td class="blank"><input type="checkbox" disabled="disabled" />' .
-			'<em>' . _x( 'note that video preview images are included first', 'option comment', 'wpsso' ) . '</em>' .
-			'</td>';
+			'<td class="blank"><input type="checkbox" disabled="disabled" />' . $this->p->msgs->preview_images_first() . '</td>';
 
 			$table_rows[ 'og_vid_autoplay' ] = '' . 
 			$form->get_th_html( _x( 'Force Autoplay when Possible', 'option label', 'wpsso' ), null, 'og_vid_autoplay' ) . 

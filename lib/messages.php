@@ -2777,6 +2777,22 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			return ' <span class="ext-req-msg">' . $text . '</span>';
 		}
 
+		public function preview_images_first() {
+
+			return ' <em>' . _x( 'note that video preview images are included first', 'option comment', 'wpsso' ) . '</em>';
+		}
+
+		public function maybe_preview_images_first() {
+
+			$html = '';
+
+			if ( ! empty( $this->form->options[ 'og_vid_prev_img' ] ) ) {
+				$html .= ' <em>' . _x( 'note that video preview images are enabled (and included first)', 'option comment', 'wpsso' ) . '</em>';
+			}
+
+			return $html;
+		}
+
 		public function p_img_desc_disabled() {
 
 			$link = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest',
