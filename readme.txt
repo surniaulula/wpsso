@@ -516,7 +516,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added several Open Graph options in the Document SSO metabox to the Standard / Free version:
+		* Priority Media
+			* Priority Image Information
+				* Maximum Images
+				* Image ID
+				* or an Image URL
+	* Moved the Document SSO &gt; Priority Media &gt; Schema JSON-LD Markup / Rich Results options from WPSSO Core to the WPSSO JSON add-on.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
