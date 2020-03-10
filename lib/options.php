@@ -632,7 +632,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 								'plugin_debug',
 								'plugin_show_opts',
 								'plugin_notice_system',
-								'plugin_check_img_dims',
+								'plugin_check_img_dims',	// Option on both Advanced and General settings pages.
 							) as $opt_key ) {
 								unset( $advanced_opts[ $opt_key ] );
 							}

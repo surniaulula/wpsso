@@ -494,11 +494,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$this->p->util->maybe_unset_ref( $sharing_url );
 
 			/**
-			 * Weibo.
-			 */
-			$mt_weibo = $this->p->weibo->get_array( $mod, $mt_og );
-
-			/**
 			 * Twitter Cards.
 			 */
 			$this->p->util->maybe_set_ref( $sharing_url, $mod, __( 'adding twitter card meta tags', 'wpsso' ) );
@@ -570,7 +565,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->get_mt_array( 'meta', 'name', $mt_gen, $mod ),
 				$this->get_mt_array( 'link', 'rel', $link_rel, $mod ),
 				$this->get_mt_array( 'meta', 'property', $mt_og, $mod ),
-				$this->get_mt_array( 'meta', 'name', $mt_weibo, $mod ),
 				$this->get_mt_array( 'meta', 'name', $mt_tc, $mod ),
 				$this->get_mt_array( 'meta', 'itemprop', $mt_item, $mod ),
 				$this->get_mt_array( 'meta', 'name', $mt_name, $mod ),	// SEO description is last.

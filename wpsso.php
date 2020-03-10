@@ -15,7 +15,7 @@
  * Requires At Least: 4.0
  * Tested Up To: 5.4
  * WC Tested Up To: 3.9.2
- * Version: 6.24.0-dev.2
+ * Version: 6.24.0-b.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -74,7 +74,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $pinterest;	// WpssoPinterest.
 		public $schema;		// WpssoSchema.
 		public $tc;		// WpssoTwitterCard.
-		public $weibo;		// WpssoWeibo.
 
 		/**
 		 * Reference variables (config, options, modules, etc.).
@@ -393,7 +392,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 *	$pinterest
 			 *	$schema
 			 *	$tc
-			 *	$weibo
 			 *	$loader
 			 */
 			$this->head      = new WpssoHead( $this );
@@ -405,7 +403,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->pinterest = new WpssoPinterest( $this );		// Pinterest image markup.
 			$this->schema    = new WpssoSchema( $this );		// Schema json scripts.
 			$this->tc        = new WpssoTwitterCard( $this );	// Twitter Card meta tags.
-			$this->weibo     = new WpssoWeibo( $this );		// Weibo meta tags.
 
 			/**
 			 * Setup additional modules:

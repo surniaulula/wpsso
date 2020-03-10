@@ -1064,9 +1064,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			$sharing_url_encoded = urlencode( $sharing_url );
 
-			$no_schema = empty( $this->p->avail[ 'p' ][ 'schema' ] ) || empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ?  true : false;
+			$have_schema = empty( $this->p->avail[ 'p' ][ 'schema' ] ) || empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ?  false : true;
 
-			$no_amp = ! function_exists( 'amp_get_permalink' ) ? true : false;
+			$have_amp = function_exists( 'amp_get_permalink' ) ? true : false;
+
+			$amp_url_encoded = $have_amp ? urlencode( amp_get_permalink( $mod[ 'id' ] ) ) : '';
 
 			$buttons = array(
 				'facebook-og' => array(
@@ -1088,13 +1090,13 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				),
 				'google-testing-tool' => array(
 					'title' => _x( 'Google Structured Data Test', 'option label', 'wpsso' ),
-					'label' => _x( 'Validate Structured Data', 'submit button', 'wpsso' ) . ( $no_schema ? ' *' : '' ),
-					'url'   => $no_schema ? '' : 'https://search.google.com/structured-data/testing-tool/u/0/#url=' . $sharing_url_encoded,
+					'label' => _x( 'Validate Structured Data', 'submit button', 'wpsso' ) . ( $have_schema ? '' : ' *' ),
+					'url'   => $have_schema ? 'https://search.google.com/structured-data/testing-tool/u/0/#url=' . $sharing_url_encoded : '',
 				),
 				'google-rich-results' => array(
 					'title' => _x( 'Google Rich Results Test', 'option label', 'wpsso' ),
-					'label' => _x( 'Validate Rich Results', 'submit button', 'wpsso' ) . ( $no_schema ? ' *' : '' ),
-					'url'   => $no_schema ? '' : 'https://search.google.com/test/rich-results?url=' . $sharing_url_encoded,
+					'label' => _x( 'Validate Rich Results', 'submit button', 'wpsso' ) . ( $have_schema ? '' : ' *' ),
+					'url'   => $have_schema ? 'https://search.google.com/test/rich-results?url=' . $sharing_url_encoded : '',
 				),
 				'linkedin' => array(
 					'title' => _x( 'LinkedIn Post Inspector', 'option label', 'wpsso' ),
@@ -1114,9 +1116,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 						SucomForm::get_no_input_clipboard( $sharing_url ),
 				),
 				'amp' => array(
-					'title' => $mod[ 'is_post' ] ? _x( 'The AMP Validator', 'option label', 'wpsso' ) : '',
-					'label' => $mod[ 'is_post' ] ? _x( 'Validate AMP Markup', 'submit button', 'wpsso' ) . ( $no_amp ? ' **' : '' ) : '',
-					'url'   => $mod[ 'is_post' ] && $no_amp ? '' : 'https://validator.ampproject.org/#url=' . urlencode( amp_get_permalink( $mod[ 'id' ] ) ),
+					'title' => $mod[ 'is_post' ] ? _x( 'The AMP Project Validator', 'option label', 'wpsso' ) : '',
+					'label' => $mod[ 'is_post' ] ? _x( 'Validate AMP Markup', 'submit button', 'wpsso' ) . ( $have_amp ? '' : ' **' ) : '',
+					'url'   => $mod[ 'is_post' ] && $have_amp ? 'https://validator.ampproject.org/#url=' . $amp_url_encoded : '',
 				),
 				'w3c' => array(
 					'title' => _x( 'W3C Markup Validation', 'option label', 'wpsso' ),

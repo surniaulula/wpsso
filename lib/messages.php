@@ -1868,7 +1868,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 	break;
 
 						/**
-						 * Always called at the end of the validation table.
+						 * Called at the bottom of the Document SSO > Validate tab.
 						 *
 						 * Return an empty string if there are no special status messages. 
 						 */
@@ -2779,7 +2779,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 		public function preview_images_first() {
 
-			return ' <em>' . _x( 'note that video preview images are included first', 'option comment', 'wpsso' ) . '</em>';
+			$html = ' <em>' . _x( 'note that video preview images are included first', 'option comment', 'wpsso' ) . '</em>';
+
+			return $html;
 		}
 
 		public function maybe_preview_images_first() {

@@ -42,11 +42,13 @@ if ( ! function_exists( 'wpsso_is_mobile' ) ) {
 
 	function wpsso_is_mobile() {
 
-		if ( SucomUtil::get_const( 'WPSSO_VARY_USER_AGENT_DISABLE' ) ) {
-			return null;
+		$wpsso =& Wpsso::get_instance();
+
+		if ( $wpsso->avail[ 'p' ][ 'vary_ua' ] ) {
+			return SucomUtil::is_mobile();
 		}
 
-		return SucomUtil::is_mobile();
+		return null;
 	}
 }
 

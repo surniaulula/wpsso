@@ -316,6 +316,10 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'plugin_bitly_login'   => '',	// Bitly Username.
 					'plugin_bitly_api_key' => '',	// Bitly API Key (deprecated).
 				),
+				712 => array(
+					'add_meta_name_weibo:article:create_at' => '',
+					'add_meta_name_weibo:article:update_at' => '',
+				),
 			),
 		);
 
