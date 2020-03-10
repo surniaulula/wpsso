@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 5.6
 Requires At Least: 4.0
 Tested Up To: 5.4
-WC Tested Up To: 3.9.2
+WC Tested Up To: 4.0.0
 Stable Tag: 6.23.2
 
 Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.
@@ -511,7 +511,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.24.0-b.1 (2020/03/10)**
+**Version 6.24.0-rc.1 (2020/03/11)**
 
 * **New Features**
 	* None.
@@ -923,9 +923,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.24.0-b.1 =
+= 6.24.0-rc.1 =
 
-(2020/03/10) Added several Open Graph image options in the Document SSO metabox to the Standard / Free version.
+(2020/03/11) Added several Open Graph image options in the Document SSO metabox to the Standard / Free version.
 
 = 6.23.2 =
 
