@@ -1552,11 +1552,15 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			echo '<div id="post-' . $robots_css_id . '-content">' . $robots_content;
 
 			if ( $user_can_publish ) {
+
 				echo ' <a href="#" class="hide-if-no-js" role="button" onClick="' .
 					'jQuery(\'div#post-' . $robots_css_id . '-content\').hide();' .
 					'jQuery(\'div#post-' . $robots_css_id . '-select\').show();">';
+
 				echo '<span aria-hidden="true">' . __( 'Edit', 'wpsso' ) . '</span>'."\n";
+
 				echo '<span class="screen-reader-text">' . __( 'Edit robots' ) . '</span>';
+
 				echo '</a>' . "\n";
 			}
 

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.24.0-b.1\n"
+"Project-Id-Version: WPSSO Core 6.24.0-rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -905,7 +905,7 @@ msgstr ""
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:458 lib/gettext-com.php:32 lib/post.php:1558
+#: lib/com/notice.php:458 lib/gettext-com.php:32 lib/post.php:1560
 msgid "Edit"
 msgstr ""
 
@@ -6208,41 +6208,41 @@ msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1559
+#: lib/post.php:1562
 msgid "Edit robots"
-msgstr ""
-
-#: lib/post.php:1572
-msgctxt "option label"
-msgid "No archive"
-msgstr ""
-
-#: lib/post.php:1573
-msgctxt "option label"
-msgid "No follow"
-msgstr ""
-
-#: lib/post.php:1574
-msgctxt "option label"
-msgid "No image index"
-msgstr ""
-
-#: lib/post.php:1575
-msgctxt "option label"
-msgid "No index"
 msgstr ""
 
 #: lib/post.php:1576
 msgctxt "option label"
-msgid "No snippet"
+msgid "No archive"
 msgstr ""
 
 #: lib/post.php:1577
 msgctxt "option label"
+msgid "No follow"
+msgstr ""
+
+#: lib/post.php:1578
+msgctxt "option label"
+msgid "No image index"
+msgstr ""
+
+#: lib/post.php:1579
+msgctxt "option label"
+msgid "No index"
+msgstr ""
+
+#: lib/post.php:1580
+msgctxt "option label"
+msgid "No snippet"
+msgstr ""
+
+#: lib/post.php:1581
+msgctxt "option label"
 msgid "No translate"
 msgstr ""
 
-#: lib/post.php:1706
+#: lib/post.php:1710
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -7027,7 +7027,7 @@ msgid "show these rows now"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:4343
+#: lib/util.php:4344
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

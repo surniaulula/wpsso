@@ -4177,10 +4177,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				foreach ( array(
 					'noarchive'    => array(),
-					'nofollow'     => array( 'follow' ),
-					'noimageindex' => array( 'max-image-preview' ),
-					'noindex'      => array( 'index' ),
-					'nosnippet'    => array( 'max-snippet' ),
+					'nofollow'     => array( 'follow' => true ),
+					'noimageindex' => array( 'max-image-preview' => 'large' ),
+					'noindex'      => array( 'index' => true ),
+					'nosnippet'    => array( 'max-snippet' => -1, 'max-video-preview' => -1 ),
 					'notranslate'  => array(),
 				) as $directive => $inverse ) {
 
@@ -4195,8 +4195,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						$directives[ $directive ] = $meta_value ? true : false;
 
-						foreach ( $inverse as $inverse_directive ) {
-							$directives[ $inverse_directive ] = $meta_value ? false : true;
+						foreach ( $inverse as $inverse_directive => $inverse_value ) {
+
+							$directives[ $inverse_directive ] = $meta_value ? false : $inverse_value;
 						}
 					}
 				}
