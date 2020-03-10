@@ -511,7 +511,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.24.0-dev.2 (2020/03/09)**
+**Version 6.24.0-b.1 (2020/03/10)**
 
 * **New Features**
 	* None.
@@ -527,6 +527,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Added support for a new WPSSO_SCHEMA_MARKUP_DISABLE constant.
+	* Removed support for Weibo meta tags.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.0.
@@ -922,9 +923,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.24.0-dev.2 =
+= 6.24.0-b.1 =
 
-(2020/03/09) Added several Open Graph image options in the Document SSO metabox to the Standard / Free version.
+(2020/03/10) Added several Open Graph image options in the Document SSO metabox to the Standard / Free version.
 
 = 6.23.2 =
 
