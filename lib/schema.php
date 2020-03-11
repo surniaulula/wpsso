@@ -3111,7 +3111,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			static $id_anchor = null;
 			static $id_delim  = null;
 
-			if ( null === $id_anchor ) {	// Optimize and call just once.
+			if ( null === $id_anchor || null === $id_delim ) {	// Optimize and call just once.
 				$id_anchor = self::get_id_anchor();
 				$id_delim  = self::get_id_delim();
 			}
@@ -3170,8 +3170,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * '@id' value as a URL, use a leading slash to create the same path for the same '@id' URLs between
 			 * different Schema JSON-LD scripts (ie. not relative to the current webpage). For example:
 			 *
-			 *	"@id": "http://adm.surniaulula.com/author/manovotny/#id/person"
-			 *	"@id": "/06d3730efc83058f497d3d44f2f364e3#id/person"
+			 *	"@id": "http://adm.surniaulula.com/author/manovotny/#wpsso/person"
+			 *	"@id": "/06d3730efc83058f497d3d44f2f364e3#wpsso/person"
 			 */
 			if ( $hash_url ) {
 				$json_data[ '@id' ] = preg_replace( '/^(.*:\/\/.*)(' . preg_quote( $id_anchor, '/' ) . '.*)?$/U',
@@ -3186,7 +3186,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		public static function get_id_anchor() {
-			return '#id/';
+			return '#wpsso/';
 		}
 
 		public static function get_id_delim() {
