@@ -511,6 +511,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 6.25.0-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Removed support for the WPSSO_APPLY_FILTERS_SINGLE_MT constant.
+	* Changed the Schema '@id' suffix value from '#id/' to '#wpsso/'.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.0.
+
 **Version 6.24.0 (2020/03/11)**
 
 * **New Features**
@@ -867,56 +882,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed an edge case issue with the "Add Hidden Image for Pin It Button" feature when the WordPress content filter was applied more than once.
 * **Developer Notes**
 	* None.
-* **Requires At Least**
-	* PHP v5.4.
-	* WordPress v3.9.
-
-**Version 6.13.2 (2019/11/25)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Minor optimization change to save the plugin settings when plugin/add-on versions change.
-* **Bugfixes**
-	* Fixed an incorrect add-on / licenses settings page link in a notification message.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v5.4.
-	* WordPress v3.9.
-
-**Version 6.13.1 (2019/11/23)**
-
-* **New Features**
-	* The Premium features of the following add-ons have been merged into their Standard version (the Premium versions are no longer available):
-		* [WPSSO Tune Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors) for better looking WordPress thumbnails.
-* **Improvements**
-	* Removed the "Optional Advanced Settings" metabox from the Essential settings page.
-	* Re-added support for `use_block_editor_for_post()` if using WordPress v5.2 or newer (this function was fixed in WordPress v5.2).
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Moved the detection of Authentication ID changes (and subsequent update check) to the WPSSO UM add-on.
-	* Added a new WpssoUtilReg class in lib/util-reg.php.
-* **Requires At Least**
-	* PHP v5.4.
-	* WordPress v3.9.
-
-**Version 6.12.0 (2019/11/17)**
-
-* **New Features**
-	* The Premium features of the following add-ons have been merged into their Standard version (the Premium versions are no longer available):
-		* [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
-		* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) to add responsive share buttons.
-		* [WPSSO Social Sharing Buttons](https://wordpress.org/plugins/wpsso-ssb/) to add traditional share buttons.
-* **Improvements**
-	* Added a referer value when fetching video information from the Vimeo API for potential whitelist restrictions.
-* **Bugfixes**
-	* Fixed an empty value returned by `WpssoPage->get_caption()` when requesting the title.
-* **Developer Notes**
-	* Moved 'admin_head' action hooks for notices to a new WpssoAdminHead class in lib/admin-head.php.
-	* Added a new `WpssoAdminHead->suggest_addons()` method for the WooCommerce Schema JSON-LD notice.
-	* Removed the WooCommerce Schema JSON-LD check from the `WpssoPost->check_post_head()` method.
 * **Requires At Least**
 	* PHP v5.4.
 	* WordPress v3.9.
