@@ -20,7 +20,6 @@ WPSSO_ADD_MENU_PRIORITY                  = -20
 WPSSO_ADD_SUBMENU_PRIORITY               = -10
 WPSSO_ADMIN_DEBUG_HTML                   = false	// Add only back-end debug messages to the webpage HTML.
 WPSSO_ADMIN_DEBUG_LOG                    = false	// Log only back-end debug messages to the PHP error log.
-WPSSO_APPLY_FILTERS_SINGLE_MT            = false
 WPSSO_ARTICLE_SECTIONS_LIST              = WPSSO_PLUGINDIR . 'share/article-sections.txt'
 WPSSO_CACHEDIR                           = trailingslashit( WP_CONTENT_DIR ) . 'cache/wpsso/'
 WPSSO_CACHEURL                           = content_url( 'cache/wpsso/' )
