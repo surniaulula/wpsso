@@ -500,7 +500,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssoplm' => array(			// Plugin acronym.
 					'short'       => 'WPSSO PLM',		// Short plugin name.
 					'name'        => 'WPSSO Place and Local SEO Markup',
-					'desc'        => 'Manage Places and Local SEO for Facebook / Open Graph, Pinterest, Google Local Business and Schema Place markup.',
+					'desc'        => 'Manage Places and Local SEO for Facebook / Open Graph, Pinterest, Google Local Business and Schema Place.',
 					'slug'        => 'wpsso-plm',
 					'base'        => 'wpsso-plm/wpsso-plm.php',
 					'update_auth' => 'tid',

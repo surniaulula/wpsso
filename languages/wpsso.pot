@@ -1480,7 +1480,7 @@ msgstr ""
 msgctxt "plugin description"
 msgid ""
 "Manage Places and Local SEO for Facebook / Open Graph, Pinterest, Google "
-"Local Business and Schema Place markup."
+"Local Business and Schema Place."
 msgstr ""
 
 #: lib/gettext-config.php:43
