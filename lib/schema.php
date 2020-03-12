@@ -175,7 +175,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $org_id === 'none' ) {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: organization id is none' );
+					$this->p->debug->log( 'exiting early: organization id is "none"' );
 				}
 
 				return $json_data;
@@ -584,12 +584,39 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function get_mod_json_data( array $mod ) {
 
-			if ( ! is_object( $mod[ 'obj' ] ) || ! $mod[ 'id' ] ) {
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			if ( empty( $mod[ 'name' ] ) || empty( $mod[ 'id' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: no module object name or object id' );
+				}
+
+				return false;
+			}
+
+			$page_type_id = $this->get_mod_schema_type( $mod, $get_id = true );
+
+			if ( empty( $page_type_id ) ) {	// Just in case.
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: page type id is empty' );
+				}
+
+				return false;
+
+			} elseif ( 'none' === $page_type_id ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: page type id is "none"' );
+				}
+
 				return false;
 			}
 
 			$size_name    = $this->p->lca . '-schema';
-			$page_type_id = $this->get_mod_schema_type( $mod, $get_id = true );
 			$sharing_url  = $this->p->util->maybe_set_ref( null, $mod, __( 'adding schema', 'wpsso' ) );
 			$mt_og        = $this->p->og->get_array( $mod, $size_name );
 			$json_data    = $this->get_json_data( $mod, $mt_og, $page_type_id, $is_main = true );
@@ -693,7 +720,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					} elseif ( $type_id === 'none' ) {
 
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'custom type id is disabled with value none' );
+							$this->p->debug->log( 'custom type id is disabled with value "none"' );
 						}
 
 					} elseif ( empty( $schema_types[ $type_id ] ) ) {

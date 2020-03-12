@@ -812,12 +812,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
 			}
 
-			$filter_title = empty( $this->p->options[ 'plugin_filter_title' ] ) ? false : true;
-			$filter_title = apply_filters( $this->p->lca . '_can_filter_title', $filter_title, $mod );
-
 			/**
 			 * Setup filters to save and restore original / pre-filtered title value.
 			 */
+			$filter_title = empty( $this->p->options[ 'plugin_filter_title' ] ) ? false : true;
+
 			if ( ! $filter_title ) {
 
 				if ( $this->p->debug->enabled ) {
@@ -959,14 +958,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			
 				if ( has_excerpt( $mod[ 'id' ] ) ) {
 
-					$filter_excerpt = empty( $this->p->options[ 'plugin_filter_excerpt' ] ) ? false : true;
-					$filter_excerpt = apply_filters( $this->p->lca . '_can_filter_the_excerpt', $filter_excerpt, $mod );
-
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'getting the excerpt for post id ' . $mod[ 'id' ] );
 					}
 	
 					$excerpt_text = get_post_field( 'post_excerpt', $mod[ 'id' ] );
+
+					$filter_excerpt = empty( $this->p->options[ 'plugin_filter_excerpt' ] ) ? false : true;
 
 					if ( $filter_excerpt ) {
 
@@ -997,8 +995,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			$filter_content = empty( $this->p->options[ 'plugin_filter_content' ] ) ? false : true;
-			$filter_content = apply_filters( $this->p->lca . '_can_filter_the_content', $filter_content, $mod );
-
 			$sharing_url    = $this->p->util->get_sharing_url( $mod );
 			$cache_md5_pre  = $this->p->lca . '_c_';
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'wp_cache', $def_secs = HOUR_IN_SECONDS );
@@ -1131,6 +1127,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 
 				$content = do_blocks( $content );
+
+				/**
+				 * When the content filter is disabled, fallback and apply our own shortcode filter.
+				 */
+				if ( false !== strpos( $content, '[' ) ) {
+					$content = apply_filters( $this->p->lca . '_do_shortcode', $content );
+				}
 			}
 
 			/**

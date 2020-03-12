@@ -59,12 +59,6 @@
 
 'wpsso_cache_expire_the_content' ( $secs )
 
-'wpsso_can_filter_the_content' ( $bool, $mod )
-
-'wpsso_can_filter_the_excerpt' ( $bool, $mod )
-
-'wpsso_can_filter_title' ( $bool, $mod )
-
 'wpsso_canonical_url' ( $url, $mod, $add_page, $src_id )
 
 'wpsso_caption' ( $caption, $mod, $add_hashtags, $md_key )

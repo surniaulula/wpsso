@@ -15,6 +15,32 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		protected static $cache_user_exists = array();	// Saved user_exists() values.
 
+		public static function do_shortcode_names( array $shortcode_names, $content, $ignore_html = false ) {
+
+			if ( ! empty( $shortcode_names ) ) {		// Just in case.
+
+				global $shortcode_tags;
+
+				$registered_tags = $shortcode_tags;	// Save the original registered shortcodes.
+
+				$shortcode_tags = array();		// Init a new empty shortcode tags array.
+
+				foreach ( $shortcode_names as $key ) {
+					if ( isset( $registered_tags[ $key ] ) ) {
+						$shortcode_tags[ $key ] = $registered_tags[ $key ];
+					}
+				}
+
+				if ( ! empty( $shortcode_tags ) ) {	// Just in case.
+					$content = do_shortcode( $content, $ignore_html );
+				}
+
+				$shortcode_tags = $registered_tags;	// Restore the original registered shortcodes.
+			}
+
+			return $content;
+		}
+
 		public static function get_wp_config_file_path() {
 
 			$parent_abspath = trailingslashit( dirname( ABSPATH ) );

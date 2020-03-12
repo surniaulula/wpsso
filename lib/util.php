@@ -2585,7 +2585,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			/**
 			 * Encode the json.
 			 */
-			if ( ! is_string( $json ) ) {
+			if ( is_array( $json ) ) {
 				$json = self::json_encode_array( $json, $options, $depth );
 			}
 
