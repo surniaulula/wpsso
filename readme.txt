@@ -511,7 +511,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.25.0-dev.1 (TBD)**
+**Version 6.25.0-dev.1 (2020/03/12)**
 
 * **New Features**
 	* None.
@@ -520,8 +520,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Removed support for the WPSSO_APPLY_FILTERS_SINGLE_MT constant.
 	* Changed the Schema '@id' suffix value from '#id/' to '#wpsso/'.
+	* Added a new `SucomUtilWP::do_shortcode_names()` method to expand only specific shortcodes.
+	* Removed support for the WPSSO_APPLY_FILTERS_SINGLE_MT constant.
+	* Removed the following filters:
+		* 'wpsso_can_filter_the_content'
+		* 'wpsso_can_filter_the_excerpt'
+		* 'wpsso_can_filter_title'
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.0.
@@ -887,6 +892,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v3.9.
 
 == Upgrade Notice ==
+
+= 6.25.0-dev.1 =
+
+(2020/03/12) Changed the Schema '@id' suffix value from '#id/' to '#wpsso/'. Added a new method to expand only specific shortcodes.
 
 = 6.24.0 =
 
