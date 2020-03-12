@@ -38,8 +38,8 @@ _x( 'Schema BreadcrumbList markup in JSON-LD for better Google Rich Results with
 _x( 'Create FAQ and Question / Answer pages and/or use shortcodes to include FAQs anywhere in your content.', 'plugin description', 'wpsso' );
 _x( 'Inherit featured and custom images from parents for posts, pages, custom post types, categories, tags, and custom taxonomies.', 'plugin description', 'wpsso' );
 _x( 'Google Rich Results with Structured Data for Articles, Carousels, Events, FAQPages, HowTos, Images, Local Business, Products, Recipes, Reviews, Videos, and more.', 'plugin description', 'wpsso' );
-_x( 'Customize home page Schema Organization markup and manage additional Organizations (publisher, organizer, etc.).', 'plugin description', 'wpsso' );
-_x( 'Facebook / Open Graph Location, Pinterest Place, Schema Local Business and Local SEO meta tags.', 'plugin description', 'wpsso' );
+_x( 'Customize the home page Schema Organization markup and manage additional Organizations (publisher, organizer, etc.).', 'plugin description', 'wpsso' );
+_x( 'Manage Places and Local SEO for Facebook / Open Graph, Pinterest, Google Local Business and Schema Place markup.', 'plugin description', 'wpsso' );
 _x( 'Ratings and reviews for WordPress comments with Aggregate Rating meta tags and Schema Review markup.', 'plugin description', 'wpsso' );
 _x( 'Enhances the WordPress REST API post, term, and user query results with an array of social and SEO meta tags, and Schema JSON-LD markup.', 'plugin description', 'wpsso' );
 _x( 'Ridiculously Responsive (SVG) Social Sharing Buttons for your content, excerpts, CSS sidebar, widget, shortcode, editor pages, etc.', 'plugin description', 'wpsso' );

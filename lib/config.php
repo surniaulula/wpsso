@@ -448,7 +448,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssoorg' => array(			// Plugin acronym.
 					'short'       => 'WPSSO ORG',	// Short plugin name.
 					'name'        => 'WPSSO Organization Markup',
-					'desc'        => 'Customize home page Schema Organization markup and manage additional Organizations (publisher, organizer, etc.).',
+					'desc'        => 'Customize the home page Schema Organization markup and manage additional Organizations (publisher, organizer, etc.).',
 					'slug'        => 'wpsso-organization',
 					'base'        => 'wpsso-organization/wpsso-organization.php',
 					'update_auth' => 'tid',
@@ -500,7 +500,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssoplm' => array(			// Plugin acronym.
 					'short'       => 'WPSSO PLM',		// Short plugin name.
 					'name'        => 'WPSSO Place and Local SEO Markup',
-					'desc'        => 'Facebook / Open Graph Location, Pinterest Place, Schema Local Business and Local SEO meta tags.',
+					'desc'        => 'Manage Places and Local SEO for Facebook / Open Graph, Pinterest, Google Local Business and Schema Place markup.',
 					'slug'        => 'wpsso-plm',
 					'base'        => 'wpsso-plm/wpsso-plm.php',
 					'update_auth' => 'tid',
