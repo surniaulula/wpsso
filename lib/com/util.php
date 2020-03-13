@@ -804,20 +804,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public function __construct() {
 		}
 
-		/**
-		 * Deprecated on 2019/01/23.
-		 * 
-		 * Continue to maintain this method for old plugins using an old SucomUtil class.
-		 */
-		public static function active_plugins( $plugin_base = false, $use_cache = true ) {
-
-			if ( empty( $plugin_base ) ) {
-				return SucomPlugin::get_active_plugins( $use_cache );
-			} else {
-				return SucomPlugin::is_plugin_installed( $plugin_base, $use_cache );
-			}
-		}
-
 		public static function get_min_int() {
 
 			return defined( 'PHP_INT_MIN' ) ? PHP_INT_MIN : -2147483648;	// Since PHP v7.0.0.

@@ -292,10 +292,10 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'instgram_publisher_url' => 'instagram_publisher_url',
 				),
 				686 => array(
-					'plugin_wpssoam_tid' => '',	// WPSSO AM Premium deprecated on 2019/11/14.
-					'plugin_wpssorrssb_tid' => '',	// WPSSO RRSSB Premium deprecated on 2019/11/06.
-					'plugin_wpssossb_tid'   => '',	// WPSSO SSB Premium deprecated on 2019/11/05.
-					'plugin_wpssotie_tid' => '',	// WPSSO TIE Premium deprecated on 2019/11/21.
+					'plugin_wpssoam_tid'    => '',	// Deprecated on 2019/11/14.
+					'plugin_wpssorrssb_tid' => '',	// Deprecated on 2019/11/06.
+					'plugin_wpssossb_tid'   => '',	// Deprecated on 2019/11/05.
+					'plugin_wpssotie_tid'   => '',	// Deprecated on 2019/11/21.
 				),
 				692 => array(
 					'plugin_cf_product_mpn'   => 'plugin_cf_product_mfr_part_no',
@@ -347,10 +347,10 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'plugin_honor_force_ssl' => '',
 				),
 				686 => array(
-					'plugin_wpssoam_tid' => '',	// WPSSO AM Premium deprecated on 2019/11/14.
-					'plugin_wpssorrssb_tid' => '',	// WPSSO RRSSB Premium deprecated on 2019/11/06.
-					'plugin_wpssossb_tid'   => '',	// WPSSO SSB Premium deprecated on 2019/11/05.
-					'plugin_wpssotie_tid' => '',	// WPSSO TIE Premium deprecated on 2019/11/21.
+					'plugin_wpssoam_tid' => '',	// Deprecated on 2019/11/14.
+					'plugin_wpssorrssb_tid' => '',	// Deprecated on 2019/11/06.
+					'plugin_wpssossb_tid'   => '',	// Deprecated on 2019/11/05.
+					'plugin_wpssotie_tid' => '',	// Deprecated on 2019/11/21.
 				),
 				698 => array(
 					'plugin_topics_cache_exp' => 'plugin_list_cache_exp',

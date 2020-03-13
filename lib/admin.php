@@ -3384,16 +3384,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
-		 * Deprecated on 2019/07/10.
-		 *
-		 * Check that all add-ons are no longer using this method before removing it.
-		 */
-		public function get_ext_required_msg( $mixed ) {
-
-			return $this->p->msgs->maybe_ext_required( $mixed );
-		}
-
-		/**
 		 * Called from the network settings pages.
 		 */
 		public function add_class_postbox_network( $classes ) {

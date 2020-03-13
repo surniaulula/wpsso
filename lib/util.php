@@ -2432,14 +2432,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Deprecated on 2019/03/12.
-		 */
-		public static function save_all_times( $ext, $version ) {
-
-			WpssoUtilReg::update_ext_version( $ext, $version );
-		}
-
-		/**
 		 * Deprecated on 2019/11/21.
 		 */
 		public static function register_ext_version( $ext, $version ) {

@@ -2680,22 +2680,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Deprecated on 2019/03/30.
-		 */
-		public static function add_data_quant_from_assoc( array &$json_data, array $assoc, array $names ) {
-
-			return self::add_data_unit_from_assoc( $json_data, $assoc, $names );
-		}
-
-		/**
-		 * Deprecated on 2019/08/01.
-		 */
-		public static function add_data_unitcode_from_assoc( array &$json_data, array $assoc, array $names ) {
-
-			return self::add_data_unit_from_assoc( $json_data, $assoc, $names );
-		}
-
-		/**
 		 * QuantitativeValue (width, height, length, depth, weight).
 		 *
 		 * unitCodes from http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes.
