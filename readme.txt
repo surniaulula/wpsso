@@ -511,12 +511,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.25.0-b.1 (2020/03/12)**
+**Version 6.25.0-b.1 (2020/03/13)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Removed the WPSSO SSB and WPSSO RRSSB add-ons from the Complementary Add-ons settings page. These plugins are no longer required as social sharing icons are now available in the WordPress block editor by default.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -527,6 +527,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* 'wpsso_can_filter_the_content'
 		* 'wpsso_can_filter_the_excerpt'
 		* 'wpsso_can_filter_title'
+	* Removed methods and functions deprecated before 2019/03.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.0.
@@ -895,7 +896,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 6.25.0-b.1 =
 
-(2020/03/12) Changed the Schema '@id' suffix value from '#id/' to '#wpsso/'. Added a new method to expand only specific shortcodes.
+(2020/03/13) Removed the WPSSO SSB and WPSSO RRSSB add-ons from the Complementary Add-ons settings page.
 
 = 6.24.0 =
 
