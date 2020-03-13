@@ -4149,16 +4149,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Deprecated on 2018/05/08.
-		 *
-		 * Check that all add-ons are no longer using this method before removing it.
-		 */
-		public function get_ext_req_msg( $mixed ) {
-
-			return $this->p->msgs->maybe_ext_required( $mixed );
-		}
-
-		/**
 		 * See https://developers.google.com/search/reference/robots_meta_tag.
 		 */
 		public function get_robots_content( array $mod ) {
