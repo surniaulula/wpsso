@@ -511,7 +511,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.25.0-dev.1 (2020/03/12)**
+**Version 6.25.0-b.1 (2020/03/12)**
 
 * **New Features**
 	* None.
@@ -893,7 +893,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.25.0-dev.1 =
+= 6.25.0-b.1 =
 
 (2020/03/12) Changed the Schema '@id' suffix value from '#id/' to '#wpsso/'. Added a new method to expand only specific shortcodes.
 
