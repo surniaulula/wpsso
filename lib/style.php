@@ -497,6 +497,10 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				table.wp-list-table.users > tbody > tr > td {
 					width:15%;
 				}
+				table.wp-list-table.users > thead > tr > th.column-email,
+				table.wp-list-table.users > tbody > tr > td.column-email {
+					width:20%;
+				}
 				table.wp-list-table > thead > tr > th.num,
 				table.wp-list-table > tbody > tr > td.num,
 				table.wp-list-table > thead > tr > th.column-comments,
