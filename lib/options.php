@@ -555,17 +555,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				foreach ( array( 'og:image', 'og:video' ) as $mt_name ) {
 
-					$opts[ 'add_meta_property_' . $mt_name . ':secure_url' ] = 0;
-
-					$opts[ 'add_meta_property_' . $mt_name . ':secure_url:is' ] = 'disabled';
-
-					$opts[ 'add_meta_property_' . $mt_name . ':url' ] = 0;
-
-					$opts[ 'add_meta_property_' . $mt_name . ':url:is' ] = 'disabled';
-
-					$opts[ 'add_meta_property_' . $mt_name ] = 1;
-
-					$opts[ 'add_meta_property_' . $mt_name . ':is' ] = 'disabled';
+					$opts[ 'add_meta_property_' . $mt_name . ':secure_url' ]    = 0;		// Always unchecked.
+					$opts[ 'add_meta_property_' . $mt_name . ':secure_url:is' ] = 'disabled';	// Prevent changes in settings page.
+					$opts[ 'add_meta_property_' . $mt_name . ':url' ]           = 0;		// Always unchecked.
+					$opts[ 'add_meta_property_' . $mt_name . ':url:is' ]        = 'disabled';	// Prevent changes in settings page.
+					$opts[ 'add_meta_property_' . $mt_name ]                    = 1;		// Always checked (canonical URL).
+					$opts[ 'add_meta_property_' . $mt_name . ':is' ]            = 'disabled';	// Prevent changes in settings page.
 				}
 
 				if ( ! $is_new_options ) {
@@ -679,19 +674,18 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 							$def_val = (int) apply_filters( $this->p->lca . '_' . $opt_key, $def_val );
 
-							$opts[ $opt_key . ':is' ] = 'disabled';
+							$opts[ $opt_key . ':is' ] = 'disabled';	// Prevent changes in settings page.
 
-							if ( $opts[ $opt_key ] === $def_val ) {
-								continue;
+							if ( $opts[ $opt_key ] !== $def_val ) {
+
+								if ( $this->p->debug->enabled ) {
+									$this->p->debug->log( 'setting ' . $opt_key . ' to ' . $def_val );
+								}
+
+								$opts[ $opt_key ] = $def_val;
+
+								$options_changed = true;	// Save the options.
 							}
-
-							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'setting ' . $opt_key . ' to ' . $def_val );
-							}
-
-							$opts[ $opt_key ] = $def_val;
-
-							$options_changed = true;	// Save the options.
 						}
 					}
 				}
@@ -731,12 +725,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 
 					$opts[ 'plugin_notice_system' ]    = 'toolbar_notices';
-					$opts[ 'plugin_notice_system:is' ] = 'disabled';
+					$opts[ 'plugin_notice_system:is' ] = 'disabled';	// Prevent changes in settings page.
 				}
 
 				/**
-				 * Note that generator meta tags are required for plugin support. If you disable the generator meta
-				 * tags, requests for plugin support will be denied.
+				 * Note that generator meta tags are required for plugin support.
+				 *
+				 * If you disable the generator meta tags, requests for plugin support will be denied.
 				 */
 				if ( ! $network ) {
 
@@ -747,7 +742,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						}
 
 						$opts[ 'add_meta_name_generator' ]    = SucomUtil::get_const( 'WPSSO_META_GENERATOR_DISABLE' ) ? 0 : 1;
-						$opts[ 'add_meta_name_generator:is' ] = 'disabled';
+						$opts[ 'add_meta_name_generator:is' ] = 'disabled';	// Prevent changes in settings page.
 					}
 				}
 
@@ -928,7 +923,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						case 'limit':
 				
 							$opts[ $opt_pre . '_img_crop' ]    = 1;
-							$opts[ $opt_pre . '_img_crop:is' ] = 'disabled';
+							$opts[ $opt_pre . '_img_crop:is' ] = 'disabled';	// Prevent changes in settings page.
 
 							if ( $img_ratio !== $limit_ratio ) {
 								$error_msg = sprintf( __( 'Option keys "%1$s" (%2$d) and "%3$s" (%4$d) have an aspect ratio of %5$s:1, which not equal to the required image ratio of %6$s:1.', 'wpsso' ), $opt_pre . '_img_width', $img_width, $opt_pre . '_img_height', $img_height, $img_ratio, $limit_ratio );
