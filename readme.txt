@@ -511,7 +511,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.25.0-rc.1 (2020/03/14)**
+**Version 6.25.0 (2020/03/14)**
 
 * **New Features**
 	* None.
@@ -894,7 +894,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.25.0-rc.1 =
+= 6.25.0 =
 
 (2020/03/14) Removed the WPSSO SSB and WPSSO RRSSB add-ons from the Complementary Add-ons settings page.
 
