@@ -252,7 +252,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 */
 		public function set_objects( $activate = false ) {
 
-			$is_admin   = is_admin() ? true : false;
+			$is_admin   = is_admin() ? true : false;	// Only check once.
 			$network    = is_multisite() ? true : false;
 			$doing_cron = defined( 'DOING_CRON' ) ? DOING_CRON : false;
 			$debug_log  = false;
@@ -454,18 +454,20 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 */
 			if ( $this->debug->enabled ) {
 
-				$warn_msg     = '';
-				$info         = $this->cf[ 'plugin' ][ 'wpsso' ];
 				$notice_key   = 'debug-mode-is-active';
+				$notice_msg   = '';
 				$dismiss_time = 12 * HOUR_IN_SECONDS;
+
+				$info = $this->cf[ 'plugin' ][ 'wpsso' ];
 
 				if ( $this->debug->is_enabled( 'log' ) ) {
 
 					$this->debug->log( 'WP debug log mode is active' );
 
 					if ( $is_admin ) {
+
 						$notice_key .= '-with-debug-log';
-						$warn_msg   .= __( 'WP debug logging mode is active &mdash; debug messages are being sent to the WordPress debug log.',
+						$notice_msg .= __( 'WP debug logging mode is active &mdash; debug messages are being sent to the WordPress debug log.',
 							'wpsso' ) . ' ';
 					}
 				}
@@ -475,21 +477,22 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					$this->debug->log( 'HTML debug mode is active' );
 
 					if ( $is_admin ) {
+
 						$notice_key .= '-with-html-comments';
-						$warn_msg   .= __( 'HTML debug mode is active &mdash; debug messages are being added to webpages as hidden HTML comments.',
+						$notice_msg .= __( 'HTML debug mode is active &mdash; debug messages are being added to webpages as hidden HTML comments.',
 							'wpsso' ) . ' ';
 					}
 				}
 
 				if ( $this->debug->enabled ) {
 
-					if ( ! empty( $warn_msg ) ) {
+					if ( ! empty( $notice_msg ) ) {
 
 						// translators: %s is the short plugin name.
-						$warn_msg .= sprintf( __( 'Debug mode disables some %s caching features, which degrades performance slightly.',
+						$notice_msg .= sprintf( __( 'Debug mode disables some %s caching features, which degrades performance slightly.',
 							'wpsso' ), $info[ 'short' ] ) . ' ' . __( 'Please disable debug mode when debugging is complete.', 'wpsso' );
 
-						$this->notice->warn( $warn_msg, null, $notice_key, $dismiss_time );
+						$this->notice->warn( $notice_msg, null, $notice_key, $dismiss_time );
 					}
 
 					$this->util->disable_cache_filters();

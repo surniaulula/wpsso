@@ -3779,6 +3779,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 		public static function require_libs( $plugin_file_path ) {
 
+			$is_admin = is_admin() ? true : false;	// Only check once.
+
 			require_once WPSSO_PLUGINDIR . 'lib/com/cache.php';
 			require_once WPSSO_PLUGINDIR . 'lib/com/nodebug.php';	// Always load fallback class.
 			require_once WPSSO_PLUGINDIR . 'lib/com/nonotice.php';	// Always load fallback class.
@@ -3819,7 +3821,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			require_once WPSSO_PLUGINDIR . 'lib/schema.php';
 			require_once WPSSO_PLUGINDIR . 'lib/twittercard.php';
 
-			if ( is_admin() ) {
+			if ( $is_admin ) {
+
 				require_once WPSSO_PLUGINDIR . 'lib/admin.php';
 				require_once WPSSO_PLUGINDIR . 'lib/conflict.php';
 				require_once WPSSO_PLUGINDIR . 'lib/messages.php';
