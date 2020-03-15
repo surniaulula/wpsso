@@ -2233,6 +2233,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * Localize an options array key.
 		 *
 		 * $opts = false | array
+		 *
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
 		public static function get_key_locale( $key, $opts = false, $mixed = 'current' ) {

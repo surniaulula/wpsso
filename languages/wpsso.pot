@@ -3076,26 +3076,26 @@ msgid ""
 msgstr ""
 
 #: lib/gettext-pro.php:128 lib/gettext-pro.php:133
-#: lib/pro/ecom/woocommerce.php:853 lib/pro/ecom/wpecommerce.php:533
+#: lib/pro/ecom/woocommerce.php:889 lib/pro/ecom/wpecommerce.php:533
 msgid "\"%s\" is an unknown Schema Product item condition."
 msgstr ""
 
 #: lib/gettext-pro.php:129 lib/gettext-pro.php:134
-#: lib/pro/ecom/woocommerce.php:856 lib/pro/ecom/wpecommerce.php:536
+#: lib/pro/ecom/woocommerce.php:892 lib/pro/ecom/wpecommerce.php:536
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/gettext-pro.php:130 lib/pro/ecom/woocommerce.php:1147
+#: lib/gettext-pro.php:130 lib/pro/ecom/woocommerce.php:1184
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/gettext-pro.php:131 lib/pro/ecom/woocommerce.php:1149
+#: lib/gettext-pro.php:131 lib/pro/ecom/woocommerce.php:1186
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:132 lib/pro/ecom/woocommerce.php:1152
+#: lib/gettext-pro.php:132 lib/pro/ecom/woocommerce.php:1189
 msgid "Please update your site to WooCommerce version %s or newer."
 msgstr ""
 
@@ -7007,7 +7007,7 @@ msgid "show these rows now"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:4326
+#: lib/util.php:4325
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

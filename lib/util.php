@@ -4252,10 +4252,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					if ( 0 === strpos( $key, 'plugin_product_attr_' ) ) {
 
-						/**
-						 * Skip attributes that have no associated name.
-						 */
-						if ( empty( $val ) ) {
+						if ( empty( $val ) ) {	// Skip attributes that have no associated name.
+							continue;
+						} elseif ( preg_match( '/:is$/', $key ) ) {	// Skip option qualifiers.
 							continue;
 						}
 
