@@ -3773,9 +3773,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		/**
 		 * Load all essential library files.
 		 *
-		 * Avoid using is_admin() in this method as it can be unreliable this early in the load process. Some
-		 * plugins/themes do not define WP_ADMIN in their back-end templates (as they should), which is required to use
-		 * is_admin() early in the WordPress load process.
+		 * Avoid calling is_admin() as it can be unreliable this early in the load process - some plugins, that operate
+		 * outside of the standard WordPress load process, do not define WP_ADMIN as they should (which is required to by
+		 * is_admin() this early in the WordPress load process).
 		 */
 		public static function require_libs( $plugin_file_path ) {
 
