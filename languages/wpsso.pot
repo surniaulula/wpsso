@@ -6822,7 +6822,7 @@ msgid ""
 "%2$d in taxonomy %3$s (%4$s)."
 msgstr ""
 
-#: lib/term.php:835
+#: lib/term.php:836
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -6862,23 +6862,23 @@ msgid ""
 "user ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/user.php:866
+#: lib/user.php:867
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:949
+#: lib/user.php:950
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:950
+#: lib/user.php:951
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:951
+#: lib/user.php:952
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1344
+#: lib/user.php:1345
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
