@@ -106,6 +106,13 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			$this->reg = new WpssoRegister( $this );	// Activate, deactivate, uninstall hooks.
 
+			/**
+			 * The WordPress 'init' action fires after WordPress has finished loading, but before any headers are sent.
+			 *
+			 * Most of WordPress is loaded at this stage, and the user is authenticated. WordPress continues to load on
+			 * the 'init' hook (e.g. widgets), and many plugins instantiate themselves on it for all sorts of reasons
+			 * (e.g. they need a user, a taxonomy, etc.).
+			 */
 			add_action( 'init', array( $this, 'set_config' ), -10 );					// Runs at init -10 (before widgets_init).
 			add_action( 'widgets_init', array( $this, 'init_widgets' ), 10 );				// Runs at init 1.
 			add_action( 'init', array( $this, 'set_options' ), WPSSO_INIT_OPTIONS_PRIORITY );		// Runs at init 9 by default.
@@ -352,6 +359,13 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->style   = new WpssoStyle( $this );
 
 			if ( $is_admin ) {
+
+				require_once WPSSO_PLUGINDIR . 'lib/admin.php';
+				require_once WPSSO_PLUGINDIR . 'lib/conflict.php';
+				require_once WPSSO_PLUGINDIR . 'lib/messages.php';
+				require_once WPSSO_PLUGINDIR . 'lib/com/form.php';
+				require_once WPSSO_PLUGINDIR . 'lib/ext/parse-readme.php';
+
 				$this->admin    = new WpssoAdmin( $this );	// Admin menus and settings page loader.
 				$this->conflict = new WpssoConflict( $this );	// Admin plugin conflict checks.
 				$this->msgs     = new WpssoMessages( $this );	// Admin tooltip messages.

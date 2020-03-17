@@ -3408,16 +3408,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		/**
-		 * WpccoConfig::get_config() is called very early, so don't apply filters by default.
-		 *
-		 * WpccoConfig::get_config() is called with $apply_filters = true at WordPress 'init' priority -10, after
-		 * WpssoConfig::set_constants() and WpssoConfig::require_libs() have been called, but before any plugin / add-on
-		 * class objects have been defined.
-		 *
-		 * The following hook is standard in the main plugin class of every add-on to merge their config with
-		 * WpssoConfig::$cf.
-		 *
-		 * 	add_filter( 'wpsso_get_config', array( $this, 'wpsso_get_config' ), 10, 2 );
+		 * WpccoConfig::get_config() is called very early, so don't apply filters by default. The method is called with
+		 * $apply_filters = true at WordPress 'init' priority -10, after set_constants() and require_libs() have been
+		 * called, but before any plugin / add-on class objects have been defined.
 		 */
 		public static function get_config( $cf_key = false, $apply_filters = false, $read_cache = true ) {
 
@@ -3779,8 +3772,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 		public static function require_libs( $plugin_file_path ) {
 
-			$is_admin = is_admin() ? true : false;	// Only check once.
-
 			require_once WPSSO_PLUGINDIR . 'lib/com/cache.php';
 			require_once WPSSO_PLUGINDIR . 'lib/com/nodebug.php';	// Always load fallback class.
 			require_once WPSSO_PLUGINDIR . 'lib/com/nonotice.php';	// Always load fallback class.
@@ -3820,15 +3811,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			require_once WPSSO_PLUGINDIR . 'lib/pinterest.php';
 			require_once WPSSO_PLUGINDIR . 'lib/schema.php';
 			require_once WPSSO_PLUGINDIR . 'lib/twittercard.php';
-
-			if ( $is_admin ) {
-
-				require_once WPSSO_PLUGINDIR . 'lib/admin.php';
-				require_once WPSSO_PLUGINDIR . 'lib/conflict.php';
-				require_once WPSSO_PLUGINDIR . 'lib/messages.php';
-				require_once WPSSO_PLUGINDIR . 'lib/com/form.php';
-				require_once WPSSO_PLUGINDIR . 'lib/ext/parse-readme.php';
-			}
 
 			/**
 			 * Additional module library loader.
