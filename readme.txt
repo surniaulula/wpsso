@@ -511,6 +511,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 6.25.1-dev.1 (2020/03/17)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Moved `is_admin()` checks from the plugin constructors to the WordPress 'init' action to avoid issues with back-end plugin / theme templates that do not define WP_ADMIN.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.0.
+
 **Version 6.25.0 (2020/03/14)**
 
 * **New Features**
@@ -893,6 +907,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v3.9.
 
 == Upgrade Notice ==
+
+= 6.25.1-dev.1 =
+
+(2020/03/17) Moved `is_admin()` checks from the plugin constructors to the WordPress 'init' action.
 
 = 6.25.0 =
 
