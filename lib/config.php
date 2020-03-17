@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.25.1-dev.1',	// Plugin version.
+					'version'     => '6.25.0',	// Plugin version.
 					'opt_version' => '713',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -3773,15 +3773,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		/**
 		 * Load all essential library files.
 		 *
-		 * Avoid calling is_admin() as it can be unreliable this early in the load process - some plugins, that operate
-		 * outside of the standard WordPress load process, do not define WP_ADMIN as they should (which is required to by
+		 * Avoid calling is_admin() here as it can be unreliable this early in the load process - some plugins that operate
+		 * outside of the standard WordPress load process do not define WP_ADMIN as they should (which is required to by
 		 * is_admin() this early in the WordPress load process).
 		 */
 		public static function require_libs( $plugin_file_path ) {
 
 			require_once WPSSO_PLUGINDIR . 'lib/com/cache.php';
-			require_once WPSSO_PLUGINDIR . 'lib/com/nodebug.php';	// Always load fallback class.
-			require_once WPSSO_PLUGINDIR . 'lib/com/nonotice.php';	// Always load fallback class.
+			require_once WPSSO_PLUGINDIR . 'lib/com/nodebug.php';	// Always load the debug fallback class.
+			require_once WPSSO_PLUGINDIR . 'lib/com/nonotice.php';	// Always load the notice fallback class.
 			require_once WPSSO_PLUGINDIR . 'lib/com/plugin.php';
 			require_once WPSSO_PLUGINDIR . 'lib/com/util.php';
 			require_once WPSSO_PLUGINDIR . 'lib/com/util-wp.php';
