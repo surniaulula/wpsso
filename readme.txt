@@ -511,16 +511,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.25.1-dev.1 (2020/03/17)**
+**Version 6.25.1 (2020/03/18)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* None.
+	* Fixed the title and description values for a blog (aka non-static) home page.
 * **Developer Notes**
 	* Moved `is_admin()` checks from the plugin constructors to the WordPress 'init' action to avoid issues with back-end plugin / theme templates that do not define WP_ADMIN.
+	* Renamed the `SucomUtil::is_home_index()` method to `SucomUtil::is_home_blog()`.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.0.
@@ -908,9 +909,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.25.1-dev.1 =
+= 6.25.1 =
 
-(2020/03/17) Moved `is_admin()` checks from the plugin constructors to the WordPress 'init' action.
+(2020/03/18) Fixed the title and description values for a blog (aka non-static) home page.
 
 = 6.25.0 =
 
