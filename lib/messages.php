@@ -468,7 +468,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-og_type_for_user_page':	// Type for User / Author Webpage.
+						case 'tooltip-og_type_for_user_page':	// Type for User / Author.
 
 							$def_type = $this->p->opt->get_defaults( 'og_type_for_user_page' );
 
@@ -478,7 +478,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-og_type_for_search_page':	// Type for Search Results Webpage.
+						case 'tooltip-og_type_for_search_page':	// Type for Search Results.
 
 							$def_type = $this->p->opt->get_defaults( 'og_type_for_search_page' );
 
@@ -488,7 +488,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-og_type_for_archive_page':	// Type for Other Archive Webpage.
+						case 'tooltip-og_type_for_archive_page':	// Type for Other Archive.
 
 							$def_type = $this->p->opt->get_defaults( 'og_type_for_archive_page' );
 
@@ -498,7 +498,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-og_type_for_ptn':		// Type by Post Type Webpage.
+						case 'tooltip-og_type_for_ptn':		// Type by Post Type.
 
 							$text = sprintf( __( 'Select the %1$s type for each WordPress post type.', 'wpsso' ), 'Open Graph' ) . ' ';
 
@@ -506,7 +506,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-og_type_for_ttn':		// Type by Taxonomy Webpage.
+						case 'tooltip-og_type_for_ttn':		// Type by Taxonomy.
 
 							$text = __( 'Select the Open Graph type for each WordPress taxonomy.', 'wpsso' );
 
@@ -1413,7 +1413,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-schema_type_for_user_page':	// Type for User / Author Webpage.
+						case 'tooltip-schema_type_for_user_page':	// Type for User / Author.
 
 							$def_type = $this->p->opt->get_defaults( 'schema_type_for_user_page' );
 
@@ -1423,7 +1423,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-schema_type_for_search_page':	// Type for Search Results Webpage.
+						case 'tooltip-schema_type_for_search_page':	// Type for Search Results.
 
 							$def_type = $this->p->opt->get_defaults( 'schema_type_for_search_page' );
 
@@ -1433,7 +1433,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-schema_type_for_archive_page':	// Type for Other Archive Webpage.
+						case 'tooltip-schema_type_for_archive_page':	// Type for Other Archive.
 
 							$def_type = $this->p->opt->get_defaults( 'schema_type_for_archive_page' );
 
@@ -1443,13 +1443,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-schema_type_for_ptn':	// Type by Post Type Webpage.
+						case 'tooltip-schema_type_for_ptn':	// Type by Post Type.
 
 							$text = sprintf( __( 'Select the %1$s type for each WordPress post type.', 'wpsso' ), 'Schema' );
 
 							break;
 
-						case 'tooltip-schema_type_for_ttn':	// Type by Taxonomy Webpage.
+						case 'tooltip-schema_type_for_ttn':	// Type by Taxonomy.
 
 							$text = __( 'Select the Schema type for each WordPress taxonomy.', 'wpsso' );
 

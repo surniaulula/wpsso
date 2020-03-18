@@ -2649,7 +2649,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			/**
-			 * Type by Post Type Webpage.
+			 * Type by Post Type.
 			 */
 			$type_select = '';
 			$type_keys   = array();
@@ -2671,7 +2671,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				sprintf( _x( 'for %s', 'option comment', 'wpsso' ), _x( 'Post Type Archive Page', 'option comment', 'wpsso' ) ) . '</p>' . "\n";
 
 			$tr_key   = 'og_type_for_ptn';
-			$th_label = _x( 'Type by Post Type Webpage', 'option label', 'wpsso' );
+			$th_label = _x( 'Type by Post Type', 'option label', 'wpsso' );
 			$tr_html  = $hide_in_basic ? $form->get_tr_hide( 'basic', $type_keys ) : '';
 
 			$table_rows[ $tr_key ] = $tr_html .
@@ -2681,7 +2681,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			unset( $type_select, $type_keys );	// Just in case.
 
 			/**
-			 * Type by Taxonomy Webpage.
+			 * Type by Taxonomy.
 			 */
 			$type_select = '';
 			$type_keys   = array();
@@ -2698,7 +2698,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$tr_key   = 'og_type_for_ttn';
-			$th_label = _x( 'Type by Taxonomy Webpage', 'option label', 'wpsso' );
+			$th_label = _x( 'Type by Taxonomy', 'option label', 'wpsso' );
 			$tr_html  = $hide_in_basic ? $form->get_tr_hide( 'basic', $type_keys ) : '';
 
 			$table_rows[ $tr_key ] = $tr_html . 
@@ -2859,7 +2859,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			/**
-			 * Type by Post Type Webpage.
+			 * Type by Post Type.
 			 */
 			$type_select = '';
 			$type_keys   = array();
@@ -2899,7 +2899,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'</p>' . "\n";
 
 			$tr_key   = 'schema_type_for_ptn';
-			$th_label = _x( 'Type by Post Type Webpage', 'option label', 'wpsso' );
+			$th_label = _x( 'Type by Post Type', 'option label', 'wpsso' );
 			$tr_html  = $hide_in_basic ? $form->get_tr_hide( 'basic', $type_keys ) : '';
 
 			$table_rows[ $tr_key ] = $tr_html . 
@@ -2909,7 +2909,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			unset( $type_select, $type_keys );	// Just in case.
 
 			/**
-			 * Type by Taxonomy Webpage.
+			 * Type by Taxonomy.
 			 */
 			$type_select = '';
 			$type_keys   = array();
@@ -2935,7 +2935,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$tr_key   = 'schema_type_for_ttn';
-			$th_label = _x( 'Type by Taxonomy Webpage', 'option label', 'wpsso' );
+			$th_label = _x( 'Type by Taxonomy', 'option label', 'wpsso' );
 			$tr_html  = $hide_in_basic ? $form->get_tr_hide( 'basic', $type_keys ) : '';
 
 			$table_rows[ $tr_key ] = $tr_html .

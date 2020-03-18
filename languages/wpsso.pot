@@ -564,12 +564,12 @@ msgstr ""
 
 #: lib/admin.php:2674 lib/admin.php:2902
 msgctxt "option label"
-msgid "Type by Post Type Webpage"
+msgid "Type by Post Type"
 msgstr ""
 
 #: lib/admin.php:2701 lib/admin.php:2938
 msgctxt "option label"
-msgid "Type by Taxonomy Webpage"
+msgid "Type by Taxonomy"
 msgstr ""
 
 #: lib/admin.php:2716
