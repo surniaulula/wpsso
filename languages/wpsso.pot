@@ -538,17 +538,17 @@ msgstr ""
 
 #: lib/admin.php:2637 lib/admin.php:2838
 msgctxt "option label"
-msgid "Type for User / Author Page"
+msgid "Type for User / Author"
 msgstr ""
 
 #: lib/admin.php:2638 lib/admin.php:2839
 msgctxt "option label"
-msgid "Type for Search Results Page"
+msgid "Type for Search Results"
 msgstr ""
 
 #: lib/admin.php:2639 lib/admin.php:2840
 msgctxt "option label"
-msgid "Type for Other Archive Page"
+msgid "Type for Other Archive"
 msgstr ""
 
 #: lib/admin.php:2665 lib/admin.php:2671 lib/admin.php:2697 lib/admin.php:2883
@@ -564,12 +564,12 @@ msgstr ""
 
 #: lib/admin.php:2674 lib/admin.php:2902
 msgctxt "option label"
-msgid "Type by Post Type"
+msgid "Type by Post Type Webpage"
 msgstr ""
 
 #: lib/admin.php:2701 lib/admin.php:2938
 msgctxt "option label"
-msgid "Type by Taxonomy"
+msgid "Type by Taxonomy Webpage"
 msgstr ""
 
 #: lib/admin.php:2716

@@ -2634,9 +2634,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			foreach ( array( 
 				'home_page'    => _x( 'Type for Page Homepage', 'option label', 'wpsso' ),
 				'home_posts'   => _x( 'Type for Posts Homepage', 'option label', 'wpsso' ),
-				'user_page'    => _x( 'Type for User / Author Page', 'option label', 'wpsso' ),
-				'search_page'  => _x( 'Type for Search Results Page', 'option label', 'wpsso' ),
-				'archive_page' => _x( 'Type for Other Archive Page', 'option label', 'wpsso' ),
+				'user_page'    => _x( 'Type for User / Author', 'option label', 'wpsso' ),
+				'search_page'  => _x( 'Type for Search Results', 'option label', 'wpsso' ),
+				'archive_page' => _x( 'Type for Other Archive', 'option label', 'wpsso' ),
 			) as $type_name => $th_label ) {
 
 				$opt_key = 'og_type_for_' . $type_name;
@@ -2649,7 +2649,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			/**
-			 * Type by Post Type
+			 * Type by Post Type Webpage.
 			 */
 			$type_select = '';
 			$type_keys   = array();
@@ -2671,7 +2671,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				sprintf( _x( 'for %s', 'option comment', 'wpsso' ), _x( 'Post Type Archive Page', 'option comment', 'wpsso' ) ) . '</p>' . "\n";
 
 			$tr_key   = 'og_type_for_ptn';
-			$th_label = _x( 'Type by Post Type', 'option label', 'wpsso' );
+			$th_label = _x( 'Type by Post Type Webpage', 'option label', 'wpsso' );
 			$tr_html  = $hide_in_basic ? $form->get_tr_hide( 'basic', $type_keys ) : '';
 
 			$table_rows[ $tr_key ] = $tr_html .
@@ -2681,7 +2681,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			unset( $type_select, $type_keys );	// Just in case.
 
 			/**
-			 * Type by Taxonomy
+			 * Type by Taxonomy Webpage.
 			 */
 			$type_select = '';
 			$type_keys   = array();
@@ -2698,7 +2698,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$tr_key   = 'og_type_for_ttn';
-			$th_label = _x( 'Type by Taxonomy', 'option label', 'wpsso' );
+			$th_label = _x( 'Type by Taxonomy Webpage', 'option label', 'wpsso' );
 			$tr_html  = $hide_in_basic ? $form->get_tr_hide( 'basic', $type_keys ) : '';
 
 			$table_rows[ $tr_key ] = $tr_html . 
@@ -2835,9 +2835,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			foreach ( array( 
 				'home_page'    => _x( 'Type for Page Homepage', 'option label', 'wpsso' ),
 				'home_posts'   => _x( 'Type for Posts Homepage', 'option label', 'wpsso' ),
-				'user_page'    => _x( 'Type for User / Author Page', 'option label', 'wpsso' ),
-				'search_page'  => _x( 'Type for Search Results Page', 'option label', 'wpsso' ),
-				'archive_page' => _x( 'Type for Other Archive Page', 'option label', 'wpsso' ),
+				'user_page'    => _x( 'Type for User / Author', 'option label', 'wpsso' ),
+				'search_page'  => _x( 'Type for Search Results', 'option label', 'wpsso' ),
+				'archive_page' => _x( 'Type for Other Archive', 'option label', 'wpsso' ),
 			) as $type_name => $th_label ) {
 
 				$opt_key = 'schema_type_for_' . $type_name;
@@ -2859,7 +2859,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			/**
-			 * Type by Post Type
+			 * Type by Post Type Webpage.
 			 */
 			$type_select = '';
 			$type_keys   = array();
@@ -2899,7 +2899,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'</p>' . "\n";
 
 			$tr_key   = 'schema_type_for_ptn';
-			$th_label = _x( 'Type by Post Type', 'option label', 'wpsso' );
+			$th_label = _x( 'Type by Post Type Webpage', 'option label', 'wpsso' );
 			$tr_html  = $hide_in_basic ? $form->get_tr_hide( 'basic', $type_keys ) : '';
 
 			$table_rows[ $tr_key ] = $tr_html . 
@@ -2909,7 +2909,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			unset( $type_select, $type_keys );	// Just in case.
 
 			/**
-			 * Type by Taxonomy
+			 * Type by Taxonomy Webpage.
 			 */
 			$type_select = '';
 			$type_keys   = array();
@@ -2935,7 +2935,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$tr_key   = 'schema_type_for_ttn';
-			$th_label = _x( 'Type by Taxonomy', 'option label', 'wpsso' );
+			$th_label = _x( 'Type by Taxonomy Webpage', 'option label', 'wpsso' );
 			$tr_html  = $hide_in_basic ? $form->get_tr_hide( 'basic', $type_keys ) : '';
 
 			$table_rows[ $tr_key ] = $tr_html .
