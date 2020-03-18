@@ -208,10 +208,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Post elements.
 			 */
-			$mod[ 'is_post' ]      = true;
-			$mod[ 'is_home_page' ] = SucomUtil::is_home_page( $mod_id );
-			$mod[ 'is_home_blog' ] = $mod[ 'is_home_page' ] ? false : SucomUtil::is_home_blog( $mod_id );
-			$mod[ 'is_home' ]      = $mod[ 'is_home_page' ] || $mod[ 'is_home_blog' ] ? true : false;
+			$mod[ 'is_post' ]       = true;
+			$mod[ 'is_home_page' ]  = SucomUtil::is_home_page( $mod_id );
+			$mod[ 'is_home_posts' ] = $mod[ 'is_home_page' ] ? false : SucomUtil::is_home_posts( $mod_id );
+			$mod[ 'is_home' ]       = $mod[ 'is_home_page' ] || $mod[ 'is_home_posts' ] ? true : false;
 
 			if ( $mod[ 'id' ] ) {
 

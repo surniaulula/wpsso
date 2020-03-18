@@ -769,12 +769,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					} else {
 
-						$type_id = $this->get_schema_type_id_for_name( 'home_blog' );
+						$type_id = $this->get_schema_type_id_for_name( 'home_posts' );
 
-						$type_id = apply_filters( $this->p->lca . '_schema_type_for_home_blog', $type_id, $mod );
+						$type_id = apply_filters( $this->p->lca . '_schema_type_for_home_posts', $type_id, $mod );
 
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'using schema type id "' . $type_id . '" for home index' );
+							$this->p->debug->log( 'using schema type id "' . $type_id . '" for home posts' );
 						}
 					}
 
@@ -3295,7 +3295,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $is_main ) {
 
-				if ( $mod[ 'is_home_blog' ] || ! is_object( $mod[ 'obj' ] ) ) {
+				if ( $mod[ 'is_home_posts' ] || ! is_object( $mod[ 'obj' ] ) ) {
 
 					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( 'home is index or object is false (archive = true)' );
@@ -3363,7 +3363,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					$wp_query = new WP_Query( $posts_args );
 				
-					if ( $mod[ 'is_home_blog' ] ) {
+					if ( $mod[ 'is_home_posts' ] ) {
 						$wp_query->is_home = true;
 					}
 				}

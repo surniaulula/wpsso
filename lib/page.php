@@ -646,15 +646,15 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					$desc_text = apply_filters( $this->p->lca . '_user_archive_description', $desc_text, $mod, $user_obj );
 
-				} elseif ( $mod[ 'is_home_blog' ] ) {
+				} elseif ( $mod[ 'is_home_posts' ] ) {
 
 					$desc_text = SucomUtil::get_site_description( $this->p->options );
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'home index get_site_description() = "' . $desc_text . '"' );
+						$this->p->debug->log( 'home posts get_site_description() = "' . $desc_text . '"' );
 					}
 
-					$desc_text = apply_filters( $this->p->lca . '_home_blog_description', $desc_text, $mod );
+					$desc_text = apply_filters( $this->p->lca . '_home_posts_description', $desc_text, $mod );
 
 				} elseif ( is_day() ) {
 
@@ -904,17 +904,17 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				$title_text = apply_filters( $this->p->lca . '_user_archive_title', $title_text, $mod, $user_obj );
 
-			} elseif ( $mod[ 'is_home_blog' ] ) {
+			} elseif ( $mod[ 'is_home_posts' ] ) {
 
 				$title_text = SucomUtil::get_site_name( $this->p->options );
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'home index get_site_name() = "' . $title_text . '"' );
+					$this->p->debug->log( 'home posts get_site_name() = "' . $title_text . '"' );
 				}
 
 				$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $sep, 'right' ), $mod );
 
-				$title_text = apply_filters( $this->p->lca . '_home_blog_title', $title_text, $mod );
+				$title_text = apply_filters( $this->p->lca . '_home_posts_title', $title_text, $mod );
 
 			} else {
 

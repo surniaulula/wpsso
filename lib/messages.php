@@ -448,21 +448,21 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-og_type_for_home_blog':	// Type for Blog Front Page.
+						case 'tooltip-og_type_for_home_page':	// Type for Page Homepage.
 
-							$def_type = $this->p->opt->get_defaults( 'og_type_for_home_blog' );
+							$def_type = $this->p->opt->get_defaults( 'og_type_for_home_page' );
 
-							$text = sprintf( __( 'Select the %1$s type for a blog (non-static) front page.', 'wpsso' ), 'Open Graph' ) . ' ';
+							$text = sprintf( __( 'Select the %1$s type for a static front page.', 'wpsso' ), 'Open Graph' ) . ' ';
 
 							$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Open Graph', $def_type  );
 
 							break;
 
-						case 'tooltip-og_type_for_home_page':	// Type for Static Front Page.
+						case 'tooltip-og_type_for_home_posts':	// Type for Posts Homepage.
 
-							$def_type = $this->p->opt->get_defaults( 'og_type_for_home_page' );
+							$def_type = $this->p->opt->get_defaults( 'og_type_for_home_posts' );
 
-							$text = sprintf( __( 'Select the %1$s type for a static front page.', 'wpsso' ), 'Open Graph' ) . ' ';
+							$text = sprintf( __( 'Select the %1$s type for a blog (non-static) front page.', 'wpsso' ), 'Open Graph' ) . ' ';
 
 							$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Open Graph', $def_type  );
 
@@ -1393,21 +1393,21 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-schema_type_for_home_blog':	// Type for Blog Front Page.
+						case 'tooltip-schema_type_for_home_page':	// Type for Page Homepage.
 
-							$def_type = $this->p->opt->get_defaults( 'schema_type_for_home_blog' );
+							$def_type = $this->p->opt->get_defaults( 'schema_type_for_home_page' );
 
-							$text = sprintf( __( 'Select the %1$s type for a blog (non-static) front page.', 'wpsso' ), 'Schema' ) . ' ';
+							$text = sprintf( __( 'Select the %1$s type for a static front page.', 'wpsso' ), 'Schema' ) . ' ';
 
 							$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Schema', $def_type  );
 
 							break;
 
-						case 'tooltip-schema_type_for_home_page':	// Type for Static Front Page.
+						case 'tooltip-schema_type_for_home_posts':	// Type for Posts Homepage.
 
-							$def_type = $this->p->opt->get_defaults( 'schema_type_for_home_page' );
+							$def_type = $this->p->opt->get_defaults( 'schema_type_for_home_posts' );
 
-							$text = sprintf( __( 'Select the %1$s type for a static front page.', 'wpsso' ), 'Schema' ) . ' ';
+							$text = sprintf( __( 'Select the %1$s type for a blog (non-static) front page.', 'wpsso' ), 'Schema' ) . ' ';
 
 							$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Schema', $def_type  );
 

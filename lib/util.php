@@ -2752,11 +2752,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$mod[ 'use_post' ] = $use_post;
 
 			/**
-			 * The post module defines is_home_page, is_home_blog and is_home. If we don't have a module, then check
-			 * if we're on the home index page.
+			 * The post module defines is_home_page, is_home_posts and is_home.
+			 *
+			 * If we don't have a module, then check if we're on the home posts page.
 			 */
 			if ( $mod[ 'name' ] === false ) {
-				$mod[ 'is_home_blog' ] = $mod[ 'is_home' ] = is_home();
+				$mod[ 'is_home_posts' ] = $mod[ 'is_home' ] = is_home();
 			}
 
 			if ( $this->p->debug->enabled ) {

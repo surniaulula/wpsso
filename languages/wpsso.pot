@@ -528,12 +528,12 @@ msgstr ""
 
 #: lib/admin.php:2635 lib/admin.php:2836
 msgctxt "option label"
-msgid "Type for Blog Front Page"
+msgid "Type for Page Homepage"
 msgstr ""
 
 #: lib/admin.php:2636 lib/admin.php:2837
 msgctxt "option label"
-msgid "Type for Static Front Page"
+msgid "Type for Posts Homepage"
 msgstr ""
 
 #: lib/admin.php:2637 lib/admin.php:2838
@@ -3763,7 +3763,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:455 lib/messages.php:1400
-msgid "Select the %1$s type for a blog (non-static) front page."
+msgid "Select the %1$s type for a static front page."
 msgstr ""
 
 #: lib/messages.php:457 lib/messages.php:467 lib/messages.php:477
@@ -3774,7 +3774,7 @@ msgid "The default %1$s type is \"%2$s\"."
 msgstr ""
 
 #: lib/messages.php:465 lib/messages.php:1410
-msgid "Select the %1$s type for a static front page."
+msgid "Select the %1$s type for a blog (non-static) front page."
 msgstr ""
 
 #: lib/messages.php:475 lib/messages.php:1420
@@ -5817,7 +5817,7 @@ msgid ""
 "Activate the %s add-on<br/>for Schema markup and structured data options."
 msgstr ""
 
-#: lib/messages.php:2834 lib/util.php:3958
+#: lib/messages.php:2834 lib/util.php:3959
 msgid "No options available."
 msgstr ""
 
@@ -6035,12 +6035,12 @@ msgid "No Title"
 msgstr ""
 
 #: lib/post.php:476 lib/register.php:322 lib/term.php:420 lib/user.php:367
-#: lib/util.php:500 lib/util.php:3641
+#: lib/util.php:500 lib/util.php:3642
 msgid "%s warning:"
 msgstr ""
 
 #: lib/post.php:477 lib/term.php:421 lib/user.php:368 lib/util.php:501
-#: lib/util.php:3642
+#: lib/util.php:3643
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -6964,13 +6964,13 @@ msgid ""
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:3643
+#: lib/util.php:3644
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3658
+#: lib/util.php:3659
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -6979,35 +6979,35 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3660
+#: lib/util.php:3661
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3988
+#: lib/util.php:3989
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3991
+#: lib/util.php:3992
 msgctxt "option comment"
 msgid "show these options now"
 msgstr ""
 
-#: lib/util.php:3996
+#: lib/util.php:3997
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3999
+#: lib/util.php:4000
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:4325
+#: lib/util.php:4326
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

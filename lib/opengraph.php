@@ -303,12 +303,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 	
 					} else {
 	
-						$type_id = $this->get_og_type_id_for_name( 'home_blog' );
+						$type_id = $this->get_og_type_id_for_name( 'home_posts' );
 
-						$type_id = apply_filters( $this->p->lca . '_og_type_for_home_blog', $type_id, $mod );
+						$type_id = apply_filters( $this->p->lca . '_og_type_for_home_posts', $type_id, $mod );
 	
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'using og type id "' . $type_id . '" for home index' );
+							$this->p->debug->log( 'using og type id "' . $type_id . '" for home posts' );
 						}
 					}
 	

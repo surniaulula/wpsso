@@ -2632,8 +2632,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$og_types = $this->p->og->get_og_types_select();
 
 			foreach ( array( 
-				'home_blog'    => _x( 'Type for Blog Front Page', 'option label', 'wpsso' ),
-				'home_page'    => _x( 'Type for Static Front Page', 'option label', 'wpsso' ),
+				'home_page'    => _x( 'Type for Page Homepage', 'option label', 'wpsso' ),
+				'home_posts'   => _x( 'Type for Posts Homepage', 'option label', 'wpsso' ),
 				'user_page'    => _x( 'Type for User / Author Page', 'option label', 'wpsso' ),
 				'search_page'  => _x( 'Type for Search Results Page', 'option label', 'wpsso' ),
 				'archive_page' => _x( 'Type for Other Archive Page', 'option label', 'wpsso' ),
@@ -2833,8 +2833,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$schema_types    = $this->p->schema->get_schema_types_select();
 
 			foreach ( array( 
-				'home_blog'    => _x( 'Type for Blog Front Page', 'option label', 'wpsso' ),
-				'home_page'    => _x( 'Type for Static Front Page', 'option label', 'wpsso' ),
+				'home_page'    => _x( 'Type for Page Homepage', 'option label', 'wpsso' ),
+				'home_posts'   => _x( 'Type for Posts Homepage', 'option label', 'wpsso' ),
 				'user_page'    => _x( 'Type for User / Author Page', 'option label', 'wpsso' ),
 				'search_page'  => _x( 'Type for Search Results Page', 'option label', 'wpsso' ),
 				'archive_page' => _x( 'Type for Other Archive Page', 'option label', 'wpsso' ),

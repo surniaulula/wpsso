@@ -136,7 +136,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			'is_post_type_archive' => false,	// Post is an archive.
 			'is_home'              => false,	// Home page (index or static)
 			'is_home_page'         => false,	// Static front page.
-			'is_home_blog'         => false,	// Static posts page or home index.
+			'is_home_posts'        => false,	// Static posts page or latest posts.
 			'post_slug'            => false,	// Post name (aka slug).
 			'post_type'            => false,	// Post type name.
 			'post_mime'            => false,	// Post mime type (ie. image/jpg).

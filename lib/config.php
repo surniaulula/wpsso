@@ -964,8 +964,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'schema_type_for_archive_page' => 'item.list',
 					'schema_type_for_attachment'   => 'webpage',
-					'schema_type_for_home_blog'    => 'blog',
 					'schema_type_for_home_page'    => 'website',
+					'schema_type_for_home_posts'   => 'blog',
 					'schema_type_for_page'         => 'article',
 					'schema_type_for_post'         => 'blog.posting',
 					'schema_type_for_post_archive' => 'item.list',
@@ -1032,8 +1032,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'og_type_for_archive_page'     => 'website',
 					'og_type_for_attachment'       => 'website',
-					'og_type_for_home_blog'        => 'website',
 					'og_type_for_home_page'        => 'website',
+					'og_type_for_home_posts'       => 'website',
 					'og_type_for_page'             => 'article',
 					'og_type_for_post'             => 'article',
 					'og_type_for_post_archive'     => 'website',

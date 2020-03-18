@@ -2649,7 +2649,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return apply_filters( 'sucom_is_home_page', $ret, $use_post );
 		}
 
-		public static function is_home_blog( $use_post = false ) {
+		public static function is_home_posts( $use_post = false ) {
 
 			$ret = false;
 
@@ -2671,7 +2671,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$ret = true;
 			}
 
-			return apply_filters( 'sucom_is_home_blog', $ret, $use_post );
+			return apply_filters( 'sucom_is_home_posts', $ret, $use_post );
 		}
 
 		public static function is_auto_draft( array $mod ) {
