@@ -12,7 +12,7 @@ Requires PHP: 5.6
 Requires At Least: 4.0
 Tested Up To: 5.4
 WC Tested Up To: 4.0.0
-Stable Tag: 6.25.0
+Stable Tag: 6.25.1
 
 Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.
 
@@ -459,7 +459,6 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 			* [Detect YouTube URL Links as Videos](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/detect-youtube-url-links-as-videos/)
 			* [Modify the "article:tag" Keywords / Names](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-articletag-keywords-names/)
 			* [Modify the Default Article Section List](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-default-article-sections-list/)
-			* [Modify the Home Page Title for Facebook / Open Graph](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-home-page-title-for-facebook-open-graph/)
 			* [Modify the Sharing URL](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-sharing-url/)
 			* [Remove / Fix 'hentry' Errors in your Theme Templates](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/remove-hentry-from-theme-templates/)
 			* [Strip Additional Shortcodes](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/strip-additional-shortcodes/)

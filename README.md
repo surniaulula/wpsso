@@ -3,7 +3,7 @@
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
 <tr><th align="right" valign="top" nowrap>Summary</th><td>Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.</td></tr>
-<tr><th align="right" valign="top" nowrap>Stable Version</th><td>6.25.0</td></tr>
+<tr><th align="right" valign="top" nowrap>Stable Version</th><td>6.25.1</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires PHP</th><td>5.6 or newer</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires WordPress</th><td>4.0 or newer</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To WordPress</th><td>5.4</td></tr>
@@ -582,7 +582,6 @@
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/detect-youtube-url-links-as-videos/">Detect YouTube URL Links as Videos</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-articletag-keywords-names/">Modify the "article:tag" Keywords / Names</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-default-article-sections-list/">Modify the Default Article Section List</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-home-page-title-for-facebook-open-graph/">Modify the Home Page Title for Facebook / Open Graph</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-sharing-url/">Modify the Sharing URL</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/remove-hentry-from-theme-templates/">Remove / Fix 'hentry' Errors in your Theme Templates</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/strip-additional-shortcodes/">Strip Additional Shortcodes</a></li>
