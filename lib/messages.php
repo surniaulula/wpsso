@@ -448,9 +448,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-og_type_for_home_index':	// Type for Blog Front Page.
+						case 'tooltip-og_type_for_home_blog':	// Type for Blog Front Page.
 
-							$def_type = $this->p->opt->get_defaults( 'og_type_for_home_index' );
+							$def_type = $this->p->opt->get_defaults( 'og_type_for_home_blog' );
 
 							$text = sprintf( __( 'Select the %1$s type for a blog (non-static) front page.', 'wpsso' ), 'Open Graph' ) . ' ';
 
@@ -1393,9 +1393,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-schema_type_for_home_index':	// Type for Blog Front Page.
+						case 'tooltip-schema_type_for_home_blog':	// Type for Blog Front Page.
 
-							$def_type = $this->p->opt->get_defaults( 'schema_type_for_home_index' );
+							$def_type = $this->p->opt->get_defaults( 'schema_type_for_home_blog' );
 
 							$text = sprintf( __( 'Select the %1$s type for a blog (non-static) front page.', 'wpsso' ), 'Schema' ) . ' ';
 

@@ -2635,9 +2635,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$front_post_id = get_option( 'show_on_front' ) === 'page' ? (int) get_option( 'page_on_front' ) : null;
 
 			if ( $front_post_id > 0 ) {
+
 				if ( is_numeric( $use_post ) && (int) $use_post === $front_post_id ) {
+
 					$ret = true;
+
 				} elseif ( self::get_post_object( $use_post, 'id' ) === $front_post_id ) {
+
 					$ret = true;
 				}
 			}
@@ -2645,7 +2649,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return apply_filters( 'sucom_is_home_page', $ret, $use_post );
 		}
 
-		public static function is_home_index( $use_post = false ) {
+		public static function is_home_blog( $use_post = false ) {
 
 			$ret = false;
 
@@ -2655,16 +2659,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$front_post_id = get_option( 'show_on_front' ) === 'page' ? (int) get_option( 'page_for_posts' ) : null;
 
 			if ( is_numeric( $use_post ) && (int) $use_post === $front_post_id ) {
+
 				$ret = true;
 
 			} elseif ( $front_post_id > 0 && self::get_post_object( $use_post, 'id' ) === $front_post_id ) {
+
 				$ret = true;
 
 			} elseif ( false === $use_post && is_home() && is_front_page() ) {
+
 				$ret = true;
 			}
 
-			return apply_filters( 'sucom_is_home_index', $ret, $use_post );
+			return apply_filters( 'sucom_is_home_blog', $ret, $use_post );
 		}
 
 		public static function is_auto_draft( array $mod ) {

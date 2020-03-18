@@ -646,14 +646,26 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					$desc_text = apply_filters( $this->p->lca . '_user_archive_description', $desc_text, $mod, $user_obj );
 
+				} elseif ( $mod[ 'is_home_blog' ] ) {
+
+					$desc_text = SucomUtil::get_site_description( $this->p->options );
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'home index get_site_description() = "' . $desc_text . '"' );
+					}
+
+					$desc_text = apply_filters( $this->p->lca . '_home_blog_description', $desc_text, $mod );
+
 				} elseif ( is_day() ) {
 
 					$desc_text = sprintf( _x( 'Daily archive for %s.', 'default description', 'wpsso' ), get_the_date() );
+
 					$desc_text = apply_filters( $this->p->lca . '_daily_archive_description', $desc_text, $mod );
 
 				} elseif ( is_month() ) {
 
 					$desc_text = sprintf( _x( 'Monthly archive for %s.', 'default description', 'wpsso' ), get_the_date('F Y') );
+
 					$desc_text = apply_filters( $this->p->lca . '_monthly_archive_description', $desc_text, $mod );
 
 				} elseif ( is_year() ) {
@@ -892,6 +904,18 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				$title_text = apply_filters( $this->p->lca . '_user_archive_title', $title_text, $mod, $user_obj );
 
+			} elseif ( $mod[ 'is_home_blog' ] ) {
+
+				$title_text = SucomUtil::get_site_name( $this->p->options );
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'home index get_site_name() = "' . $title_text . '"' );
+				}
+
+				$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $sep, 'right' ), $mod );
+
+				$title_text = apply_filters( $this->p->lca . '_home_blog_title', $title_text, $mod );
+
 			} else {
 
 				$title_text = wp_title( $sep, false, 'right' );
@@ -919,8 +943,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			if ( ! $filter_title ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'original wp_title value: ' . SucomUtil::get_original_filter_value( 'wp_title' ) );
+
 					$this->p->debug->log( 'modified wp_title value: ' . SucomUtil::get_modified_filter_value( 'wp_title' ) );
+
 					$this->p->debug->log( 'unprotecting filter value for wp_title' );
 				}
 

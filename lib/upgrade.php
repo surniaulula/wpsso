@@ -320,6 +320,10 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'add_meta_name_weibo:article:create_at' => '',
 					'add_meta_name_weibo:article:update_at' => '',
 				),
+				714 => array(
+					'schema_type_for_home_index' => 'schema_type_for_home_blog',
+					'og_type_for_home_index'     => 'og_type_for_home_blog',
+				),
 			),
 		);
 

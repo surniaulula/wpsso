@@ -5,7 +5,7 @@
 
 'sucom_get_user_object' ( $user_obj, $user_id )
 
-'sucom_is_home_index' ( $ret, $use_post )
+'sucom_is_home_blog' ( $ret, $use_post )
 
 'sucom_is_home_page' ( $ret, $use_post )
 
@@ -161,7 +161,7 @@
 
 'wpsso_og_type_for_default' ( 'website', $mod )
 
-'wpsso_og_type_for_home_index' ( $type_id, $mod )
+'wpsso_og_type_for_home_blog' ( $type_id, $mod )
 
 'wpsso_og_type_for_home_page' ( $type_id, $mod )
 
@@ -235,7 +235,7 @@
 
 'wpsso_schema_type_for_default' ( 'webpage', $mod )
 
-'wpsso_schema_type_for_home_index' ( $type_id, $mod )
+'wpsso_schema_type_for_home_blog' ( $type_id, $mod )
 
 'wpsso_schema_type_for_home_page' ( $type_id, $mod )
 

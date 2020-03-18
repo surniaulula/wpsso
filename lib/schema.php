@@ -759,8 +759,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( $mod[ 'is_home_page' ] ) {
 
-						$type_id = apply_filters( $this->p->lca . '_schema_type_for_home_page',
-							$this->get_schema_type_id_for_name( 'home_page' ), $mod );
+						$type_id = $this->get_schema_type_id_for_name( 'home_page' );
+
+						$type_id = apply_filters( $this->p->lca . '_schema_type_for_home_page', $type_id, $mod );
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'using schema type id "' . $type_id . '" for home page' );
@@ -768,8 +769,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					} else {
 
-						$type_id = apply_filters( $this->p->lca . '_schema_type_for_home_index',
-							$this->get_schema_type_id_for_name( 'home_index' ), $mod );
+						$type_id = $this->get_schema_type_id_for_name( 'home_blog' );
+
+						$type_id = apply_filters( $this->p->lca . '_schema_type_for_home_blog', $type_id, $mod );
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'using schema type id "' . $type_id . '" for home index' );
@@ -782,8 +784,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						if ( $mod[ 'is_post_type_archive' ] ) {
 
-							$type_id = apply_filters( $this->p->lca . '_schema_type_for_post_type_archive_page',
-								$this->get_schema_type_id_for_name( 'post_archive' ), $mod );
+							$$type_id = $this->get_schema_type_id_for_name( 'post_archive' );
+
+							$type_id = apply_filters( $this->p->lca . '_schema_type_for_post_type_archive_page', $type_id, $mod );
 
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'using schema type id "' . $type_id . '" for post_type_archive page' );
@@ -807,8 +810,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						} else {	// Unknown post type.
 
-							$type_id = apply_filters( $this->p->lca . '_schema_type_for_post_type_unknown_type', 
-								$this->get_schema_type_id_for_name( 'page' ), $mod );
+							$type_id = $this->get_schema_type_id_for_name( 'page' );
+
+							$type_id = apply_filters( $this->p->lca . '_schema_type_for_post_type_unknown_type', $type_id, $mod );
 
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'using "page" schema type for unknown post type ' . $mod[ 'post_type' ] );
@@ -817,8 +821,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					} else {	// Post objects without a post_type property.
 
-						$type_id = apply_filters( $this->p->lca . '_schema_type_for_post_type_empty_type', 
-							$this->get_schema_type_id_for_name( 'page' ), $mod );
+						$type_id = $this->get_schema_type_id_for_name( 'page' );
+
+						$type_id = apply_filters( $this->p->lca . '_schema_type_for_post_type_empty_type', $type_id, $mod );
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'using "page" schema type for empty post type' );
@@ -3290,7 +3295,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $is_main ) {
 
-				if ( $mod[ 'is_home_index' ] || ! is_object( $mod[ 'obj' ] ) ) {
+				if ( $mod[ 'is_home_blog' ] || ! is_object( $mod[ 'obj' ] ) ) {
 
 					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( 'home is index or object is false (archive = true)' );
@@ -3358,7 +3363,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					$wp_query = new WP_Query( $posts_args );
 				
-					if ( $mod[ 'is_home_index' ] ) {
+					if ( $mod[ 'is_home_blog' ] ) {
 						$wp_query->is_home = true;
 					}
 				}

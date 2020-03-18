@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.25.0\n"
+"Project-Id-Version: WPSSO Core 6.25.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3158,7 +3158,7 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: lib/gettext-pro.php:153 lib/page.php:697 lib/pro/social/buddypress.php:656
+#: lib/gettext-pro.php:153 lib/page.php:709 lib/pro/social/buddypress.php:656
 #: lib/wp-meta.php:884
 msgctxt "default description"
 msgid "No Description."
@@ -6004,32 +6004,32 @@ msgctxt "default description"
 msgid "Authored by %s."
 msgstr ""
 
-#: lib/page.php:651
+#: lib/page.php:661
 msgctxt "default description"
 msgid "Daily archive for %s."
 msgstr ""
 
-#: lib/page.php:656
+#: lib/page.php:667
 msgctxt "default description"
 msgid "Monthly archive for %s."
 msgstr ""
 
-#: lib/page.php:661
+#: lib/page.php:673
 msgctxt "default description"
 msgid "Yearly archive for %s."
 msgstr ""
 
-#: lib/page.php:667
+#: lib/page.php:679
 msgctxt "default description"
 msgid "Archive page."
 msgstr ""
 
-#: lib/page.php:841 lib/page.php:845
+#: lib/page.php:853 lib/page.php:857
 msgctxt "default title"
 msgid "%s Archive"
 msgstr ""
 
-#: lib/page.php:915 lib/wp-meta.php:881
+#: lib/page.php:939 lib/wp-meta.php:881
 msgctxt "default title"
 msgid "No Title"
 msgstr ""
