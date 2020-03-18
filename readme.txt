@@ -520,7 +520,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed the title and description values for a blog (aka non-static) home page.
 * **Developer Notes**
 	* Moved `is_admin()` checks from the plugin constructors to the WordPress 'init' action to avoid issues with back-end plugin / theme templates that do not define WP_ADMIN.
-	* Renamed the `SucomUtil::is_home_index()` method to `SucomUtil::is_home_blog()`.
+	* Renamed the `SucomUtil::is_home_index()` method to `SucomUtil::is_home_posts()`.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.0.
