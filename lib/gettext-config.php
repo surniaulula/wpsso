@@ -41,7 +41,7 @@ _x( 'Google Rich Results with Structured Data for Articles, Carousels, Events, F
 _x( 'Customize the home page Schema Organization markup and manage additional Organizations (publisher, organizer, etc.).', 'plugin description', 'wpsso' );
 _x( 'Manage Places and Local SEO for Facebook / Open Graph, Pinterest, Google Local Business and Schema Place.', 'plugin description', 'wpsso' );
 _x( 'Ratings and reviews for WordPress comments with Aggregate Rating meta tags and Schema Review markup.', 'plugin description', 'wpsso' );
-_x( 'Enhances the WordPress REST API post, term, and user query results with an array of social and SEO meta tags, and Schema JSON-LD markup.', 'plugin description', 'wpsso' );
+_x( 'Enhances the WordPress REST API post, term and user queries with an array of social meta tags, SEO HTML tags and Schema JSON-LD markup.', 'plugin description', 'wpsso' );
 _x( 'Removes outdated Schema microdata from theme templates and leaves Schema JSON-LD untouched for better Google Rich Results.', 'plugin description', 'wpsso' );
 _x( 'Twitter-style quoted text for your content with customizable CSS and convenient Tweet share link.', 'plugin description', 'wpsso' );
 _x( 'Sharpen and improve WordPress thumbnails and resized images for social sharing and better SEO.', 'plugin description', 'wpsso' );

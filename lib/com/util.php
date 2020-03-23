@@ -3466,31 +3466,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $json_data;
 		}
 
-		/**
-		 * Example:
-		 *      'article'              => 'Schema Type Article',
-		 *      'article#news:no_load' => 'Schema Type NewsArticle',
-		 *      'article#tech:no_load' => 'Schema Type TechArticle',
-		 */
-		public static function get_lib_stub_action( $lib_id ) {
-
-			if ( false !== ( $pos = strpos( $lib_id, ':' ) ) ) {
-				$action = substr( $lib_id, $pos + 1 );
-				$lib_id = substr( $lib_id, 0, $pos );
-			} else {
-				$action = false;
-			}
-
-			if ( false !== ( $pos = strpos( $lib_id, '#' ) ) ) {
-				$stub = substr( $lib_id, $pos + 1 );
-				$lib_id = substr( $lib_id, 0, $pos );
-			} else {
-				$stub = false;
-			}
-
-			return array( $lib_id, $stub, $action );
-		}
-
 		public static function get_user_ids( $blog_id = null, $role = '', $limit = '' ) {
 
 			static $offset = '';

@@ -891,11 +891,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		}
 
 		/**
-		 * $org_id can be 'none', 'site', or a number (including 0). $logo_key can be 'org_logo_url' or 'org_banner_url'
-		 * (600x60px image) for Articles. Do not provide localized option names - the method will fetch the localized
-		 * values.
+		 * $org_id can be 'none', 'site', or a number (including 0).
+		 *
+		 * $org_logo_key can be 'org_logo_url' or 'org_banner_url' (600x60px image) for Articles.
+		 *
+		 * Do not provide localized option names - the method will fetch the localized values.
 		 */
-		public static function add_organization_data( &$json_data, $mod, $org_id = 'site', $logo_key = 'org_logo_url', $list_element = false ) {
+		public static function add_organization_data( &$json_data, $mod, $org_id = 'site', $org_logo_key = 'org_logo_url', $list_element = false ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -968,18 +970,35 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			) );
 
 			/**
+			 * Organization image.
+			 *
+			 * Google requires a local business to have an image.
+			 */
+			$org_image_key = 'org_logo_url';
+
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->log( 'adding image from ' . $org_image_key . ' option' );
+			}
+
+			if ( ! empty( $org_opts[ $org_image_key ] ) ) {
+				if ( ! self::add_image_data_mt( $ret[ 'image' ], $org_opts, $org_image_key, false ) ) {	// $list_element is false.
+					unset( $ret[ 'image' ] );	// Prevent null assignment.
+				}
+			}
+
+			/**
 			 * Organization logo.
 			 *
-			 * $logo_key can be false, 'org_logo_url' (default), or 'org_banner_url' (600x60px image) for Articles.
+			 * $org_logo_key can be false, 'org_logo_url' (default), or 'org_banner_url' (600x60px image) for Articles.
 			 */
-			if ( ! empty( $logo_key ) ) {
+			if ( ! empty( $org_logo_key ) ) {
 
 				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'adding image from ' . $logo_key . ' option' );
+					$wpsso->debug->log( 'adding logo from ' . $org_logo_key . ' option' );
 				}
 
-				if ( ! empty( $org_opts[ $logo_key ] ) ) {
-					if ( ! self::add_image_data_mt( $ret[ 'logo' ], $org_opts, $logo_key, false ) ) {	// $list_element is false.
+				if ( ! empty( $org_opts[ $org_logo_key ] ) ) {
+					if ( ! self::add_image_data_mt( $ret[ 'logo' ], $org_opts, $org_logo_key, false ) ) {	// $list_element is false.
 						unset( $ret[ 'logo' ] );	// Prevent null assignment.
 					}
 				}
@@ -987,7 +1006,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				if ( empty( $ret[ 'logo' ] ) ) {
 
 					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( 'organization ' . $logo_key . ' image is missing and required' );
+						$wpsso->debug->log( 'organization ' . $org_logo_key . ' image is missing and required' );
 					}
 
 					/**
@@ -997,13 +1016,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					
 						if ( ! $mod[ 'is_post' ] || $mod[ 'post_status' ] === 'publish' ) {
 
-							if ( $logo_key === 'org_logo_url' ) {
+							if ( $org_logo_key === 'org_logo_url' ) {
 
 								$error_msg = __( 'The "%1$s" Organization Logo image is missing and required for the Schema %2$s markup.', 'wpsso' );
 
 								$wpsso->notice->err( sprintf( $error_msg, $ret[ 'name' ], $org_type_url ) );
 
-							} elseif ( $logo_key === 'org_banner_url' ) {
+							} elseif ( $org_logo_key === 'org_banner_url' ) {
 
 								$error_msg = __( 'The "%1$s" Organization Banner (600x60px) image is missing and required for the Schema %2$s markup.', 'wpsso' );
 	
@@ -1078,7 +1097,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Update the @id string based on $ret[ 'url' ], $org_type_id, and $org_id values.
 			 */
-			WpssoSchema::update_data_id( $ret, $org_type_id . '/' . $org_id );
+			WpssoSchema::update_data_id( $ret, $org_type_id . '/' . $org_id . '/' . $org_logo_key );
 
 			/**
 			 * Restore previous reference values for admin notices.

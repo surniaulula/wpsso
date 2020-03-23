@@ -38,8 +38,8 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
-			$table_rows[ 'og_author_gravatar' ] = '' . 
-			$form->get_th_html( _x( 'Gravatar is Author Default Image', 'option label', 'wpsso' ), null, 'og_author_gravatar' ) . 
+			$table_rows[ 'plugin_gravatar_api' ] = '' . 
+			$form->get_th_html( _x( 'Gravatar is Author Default Image', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_gravatar_api' ) . 
 			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
 
 			return $table_rows;
@@ -53,13 +53,13 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
+			$table_rows[ 'plugin_check_img_dims' ] = '' . 
+			$form->get_th_html( _x( 'Enforce Image Size Checks', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_check_img_dims' ) . 
+			$form->get_td_no_checkbox( 'plugin_check_img_dims', '<em>' . _x( 'recommended', 'option comment', 'wpsso' ) . '</em>' );
+
 			$table_rows[ 'plugin_upscale_images' ] = '' . 
 			$form->get_th_html( _x( 'Upscale Media Library Images', 'option label', 'wpsso' ), '', 'plugin_upscale_images' ) . 
 			$form->get_td_no_checkbox( 'plugin_upscale_images' );
-
-			$table_rows[ 'plugin_upscale_img_max' ] = $form->get_tr_hide( 'basic', 'plugin_upscale_img_max' ) . 
-			$form->get_th_html( _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ), '', 'plugin_upscale_img_max' ) . 
-			'<td class="blank">' . $form->options[ 'plugin_upscale_img_max' ] . ' %</td>';
 
 			return $table_rows;
 		}

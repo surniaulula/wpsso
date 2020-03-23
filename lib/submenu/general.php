@@ -67,7 +67,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$tabs = apply_filters( $this->p->lca . '_general_' . $metabox_id . '_tabs', array(
 				'site'    => _x( 'Site Information', 'metabox tab', 'wpsso' ),
-				'content' => _x( 'Titles / Descriptions', 'metabox tab', 'wpsso' ),
+				'content' => _x( 'Content and Text', 'metabox tab', 'wpsso' ),
 				'author'  => _x( 'Authorship', 'metabox tab', 'wpsso' ),
 				'images'  => _x( 'Images', 'metabox tab', 'wpsso' ),
 				'videos'  => _x( 'Videos', 'metabox tab', 'wpsso' ),
@@ -167,8 +167,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						) .
 					'</td>';
 
-					$this->add_og_types_table_rows( $table_rows, $this->form, $hide_in_basic = true, $is_top_section = false );
-
 					break;
 
 				case 'og-content':
@@ -231,11 +229,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->form->get_th_html( _x( 'or Default / Fallback Image URL', 'option label', 'wpsso' ), '', 'og_def_img_url' ) . 
 					'<td>' . $this->form->get_input_image_url( 'og_def_img' ) . '</td>';
 
-					$table_rows[ 'plugin_check_img_dims' ] = '' .
-					$this->form->get_th_html( _x( 'Enforce Image Size Checks', 'option label', 'wpsso' ), '', 'plugin_check_img_dims' ) .
-					'<td>' . $this->form->get_checkbox( 'plugin_check_img_dims' ) .
-					' <em>' . _x( 'recommended', 'option comment', 'wpsso' ) . '</em></td>';
-
 					break;
 
 				case 'og-videos':
@@ -286,8 +279,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->form->get_th_html( _x( 'Max. Description Meta Tag Length', 'option label', 'wpsso' ), '', 'seo_desc_max_len' ) . 
 					'<td>' . $this->form->get_input( 'seo_desc_max_len', 'short' ) . ' ' .
 					_x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
-
-					$this->add_schema_item_types_table_rows( $table_rows, $this->form, $hide_in_basic = true, $is_top_section = false );
 
 					break;
 

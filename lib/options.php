@@ -627,7 +627,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 								'plugin_debug',
 								'plugin_show_opts',
 								'plugin_notice_system',
-								'plugin_check_img_dims',	// Option on both Advanced and General settings pages.
 							) as $opt_key ) {
 								unset( $advanced_opts[ $opt_key ] );
 							}
@@ -1149,10 +1148,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			$size_name          = false;	// Only check banner urls - skip any banner image id options.
 			$opt_img_pre        = 'schema_banner';
-			$settings_page_link = $this->p->util->get_admin_url(
-				'essential#sucom-tabset_essential-tab_google',
-				_x( 'Organization Banner URL', 'option label', 'wpsso' )
-			);
+			$settings_page_link = $this->p->util->get_admin_url( 'essential#sucom-tabset_essential-tab_google',
+				_x( 'Organization Banner URL', 'option label', 'wpsso' ) );
 
 			/**
 			 * Returns an image array:

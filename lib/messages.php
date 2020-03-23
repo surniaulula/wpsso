@@ -151,7 +151,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-og_type':	// Open Graph Type
+						case 'tooltip-meta-og_type':		// Open Graph Type
 
 							$text = __( 'Select a document Facebook / Open Graph type that best describes the main content of this webpage.', 'wpsso' ) . ' ';
 
@@ -167,21 +167,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-og_title':	// Default Title
+						case 'tooltip-meta-og_title':		// Default Title
 
-							$advanced_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content',
-								_x( 'Use Filtered (aka SEO) Title', 'option label', 'wpsso' ) );
-
-							$text = __( 'A customized title for the Facebook / Open Graph, Pinterest Rich Pin, and Twitter Card meta tags (all Twitter Card formats).', 'wpsso' ) . ' ';
-
-							// translators: %s is a link to the (translated) "Use Filtered (aka SEO) Title" option settings page.
-							$text .= sprintf( __( 'If the %s option is enabled, the default title value may be provided by your theme or another SEO plugin.', 'wpsso' ), $advanced_page_link );
+							$text = sprintf( __( 'A customized title for the Facebook / Open Graph %s meta tag, and the default for all other title values.', 'wpsso' ), '<code>og:title</code>' );
 
 						 	break;
 
 						case 'tooltip-meta-og_desc':		// Default Description.
 
-							$text = sprintf( __( 'A customized description for the Facebook / Open Graph %s meta tag, and the default value for all other description meta tags.', 'wpsso' ), '<code>og:description</code>' ) . ' ';
+							$text = sprintf( __( 'A customized description for the Facebook / Open Graph %s meta tag, and the default for all other description values.', 'wpsso' ), '<code>og:description</code>' ) . ' ';
 
 							$text .= __( 'Update and save the custom Facebook / Open Graph description to change the default value of all other description fields.', 'wpsso' );
 
@@ -513,7 +507,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						/**
-						 * Titles / Descriptions tab.
+						 * Content and Text tab.
 						 */
 						case 'tooltip-og_title_sep':		// Title Separator.
 
@@ -555,16 +549,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= __( 'The suggested setting is the "Facebook URL" user profile contact field (default value).', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag and prevent Facebook from showing author attribution in shared links.', 'wpsso' ), '<code>article:author</code>' );
-
-							break;
-
-						case 'tooltip-og_author_gravatar':	// Gravatar is Author Default Image.
-
-							$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
-
-							$text = __( 'If no custom image has been defined for an author, fallback to using their Gravatar image in author related meta tags and Schema markup.', 'wpsso' ) . ' ';
-
-							$text .= sprintf( __( 'A customized image can be selected for/by each author in the WordPress user profile %s metabox.', 'wpsso' ), $metabox_title );
 
 							break;
 
@@ -690,7 +674,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						/**
-						 * Content Text settings.
+						 * Content settings.
 						 */
 						case 'tooltip-plugin_filter_title':	// Use Filtered (aka SEO) Title.
 
@@ -877,98 +861,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case ( 0 === strpos( $msg_key, 'tooltip-plugin_product_attr_' ) ? true : false ):
-
-							$attr_key = substr( $msg_key, 8 );	// Remove the 'tooltip-' prefix.
-
-							$text .= __( 'Enter the name (aka label) of a product attribute that you have created in your e-commerce plugin (in WooCommerce, for example).', 'wpsso' ) . ' ';
-
-							$text .= sprintf( __( 'The product attribute name allows %s to request the attribute value from your e-commerce plugin.', 'wpsso' ), $info[ 'short_pro' ] ) . ' ';
-
-							$text .= sprintf( __( 'The default attribute name is "%s".', 'wpsso' ), $this->p->opt->get_defaults( $attr_key ) );
-
-							break;
-
-						/**
-						 * Custom Meta settings
-						 */
-						case 'tooltip-plugin_add_to':
-
-							$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
-
-							$text = sprintf( __( 'Add or remove the %s metabox from admin editing pages for posts, pages, custom post types, terms (categories and tags), and user profile pages.', 'wpsso' ), $metabox_title );
-
-							break;
-
-						case 'tooltip-plugin_wpseo_social_meta':
-
-							$text = __( 'Import the Yoast SEO custom social meta text for Posts, Terms, and Users.', 'wpsso' ) . ' ';
-
-							$text .= __( 'This option is checked by default if the Yoast SEO plugin is active or its settings are found in the database.', 'wpsso' );
-
-							break;
-
-						case 'tooltip-plugin_def_currency':
-
-							$text = __( 'The default currency used for money related options (product price, job salary, etc.).', 'wpsso' );
-
-							break;
-
-						case ( 0 === strpos( $msg_key, 'tooltip-plugin_cf_' ) ? true : false ):
-
-							$cf_key = preg_replace( '/^tooltip-/', '', $msg_key );
-
-							$cf_info = $this->get_cf_info( preg_replace( '/^tooltip-plugin_cf_/', '', $msg_key ) );
-
-							$cf_md_key = empty( $this->p->cf[ 'opt' ][ 'cf_md_key' ][ $cf_key ] ) ?
-								false : $this->p->cf[ 'opt' ][ 'cf_md_key' ][ $cf_key ];
-
-							$cf_is_multi = empty( $this->p->cf[ 'opt' ][ 'cf_md_multi' ][ $cf_md_key ] ) ? false : true;
-
-							$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
-
-							if ( ! empty( $cf_info ) ) {	// Just in case.
-
-								$text = sprintf( __( 'If your theme or another plugin provides a custom field for %1$s, you may enter its custom field name here.', 'wpsso' ), $cf_info[ 1 ] ) . ' ';
-
-								$text .= sprintf( __( 'If a custom field matching that name is found, its value may be used for the "%1$s" option in the %2$s metabox.', 'wpsso' ), $cf_info[ 0 ], $metabox_title ) . ' ';
-
-								if ( $cf_is_multi ) {
-									$text .= sprintf( __( 'The "%1$s" option offers multiple input fields &mdash; the custom field value will be split on newline characters, and each line used for an individual input field.', 'wpsso' ), $cf_info[ 0 ] );
-								}
-							}
-
-							break;
-
-						/**
-						 * Columns settings
-						 */
-						case 'tooltip-plugin_show_columns':	// Additional List Table Columns.
-
-							$text = __( 'Additional columns can be included in admin list tables to show the Schema type ID, Open Graph image, etc.', 'wpsso' ) . ' ';
-
-							$text .= __( 'When a column is enabled, <strong>each user can still hide that column</strong> by using the <em>Screen Options</em> tab on the list table page.', 'wpsso' );
-
-							break;
-
-						case 'tooltip-plugin_col_title_width':	// Title / Name Column Width.
-
-							$text .= __( 'WordPress does not define a column width for its Title column, which can create display issues when showing list tables with additional columns.', 'wpsso' ) . ' ';
-
-							$text .= __( 'This option allows you to define a custom width for the Title column, to prevent these kinds of issues.', 'wpsso' ) . ' ';
-
-							break;
-
-						case 'tooltip-plugin_col_def_width':	// Default Width for Posts / Pages.
-
-							$text .= __( 'A default column width for the admin Posts and Pages list table.', 'wpsso' ) . ' ';
-
-							$text .= __( 'All columns should have a width defined, but some 3rd party plugins do not provide width information for their columns.', 'wpsso' ) . ' ';
-
-							$text .= __( 'This option offers a way to set a generic width for all Posts and Pages list table columns.', 'wpsso' ) . ' ';
-
-							break;
-
 						/**
 						 * Cache settings.
 						 */
@@ -1097,6 +989,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/**
 						 * Service APIs settings.
 						 */
+						case 'tooltip-plugin_gravatar_api':	// Gravatar is Author Default Image.
+
+							$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+
+							$text = __( 'If no custom image has been defined for an author, fallback to using their Gravatar image (if available) in author related meta tags and Schema markup.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'A customized image can be selected for/by each author in the WordPress user profile %s metabox.', 'wpsso' ), $metabox_title );
+
+							break;
+
 						case 'tooltip-plugin_shortener':
 
 							$text = sprintf( __( 'A preferred URL shortening service for %s plugin filters and/or add-ons that may need to shorten URLs &mdash; don\'t forget to define the service API keys for the URL shortening service of your choice.', 'wpsso' ), $info[ 'short' ] );
@@ -1176,6 +1078,104 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_yourls_token':
 
 							$text = sprintf( __( 'If <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service is private, you can use a token string for authentication instead of a username / password combination.', 'wpsso' ), 'http://yourls.org/' );
+
+							break;
+
+						/**
+						 * Table Columns settings
+						 */
+						case 'tooltip-plugin_show_columns':	// Additional List Table Columns.
+
+							$text = __( 'Additional columns can be included in admin list tables to show the Schema type ID, Open Graph image, etc.', 'wpsso' ) . ' ';
+
+							$text .= __( 'When a column is enabled, <strong>each user can still hide that column</strong> by using the <em>Screen Options</em> tab on the list table page.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-plugin_col_title_width':	// Title / Name Column Width.
+
+							$text .= __( 'WordPress does not define a column width for its Title column, which can create display issues when showing list tables with additional columns.', 'wpsso' ) . ' ';
+
+							$text .= __( 'This option allows you to define a custom width for the Title column, to prevent these kinds of issues.', 'wpsso' ) . ' ';
+
+							break;
+
+						case 'tooltip-plugin_col_def_width':	// Default Width for Posts / Pages.
+
+							$text .= __( 'A default column width for the admin Posts and Pages list table.', 'wpsso' ) . ' ';
+
+							$text .= __( 'All columns should have a width defined, but some 3rd party plugins do not provide width information for their columns.', 'wpsso' ) . ' ';
+
+							$text .= __( 'This option offers a way to set a generic width for all Posts and Pages list table columns.', 'wpsso' ) . ' ';
+
+							break;
+
+						/**
+						 * Metabox Meta settings
+						 */
+						case 'tooltip-plugin_add_to':
+
+							$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+
+							$text = sprintf( __( 'Add or remove the %s metabox from admin editing pages for posts, pages, custom post types, terms (categories and tags), and user profile pages.', 'wpsso' ), $metabox_title );
+
+							break;
+
+						case 'tooltip-plugin_wpseo_social_meta':
+
+							$text = __( 'Import the Yoast SEO custom social meta text for Posts, Terms, and Users.', 'wpsso' ) . ' ';
+
+							$text .= __( 'This option is checked by default if the Yoast SEO plugin is active or its settings are found in the database.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-plugin_def_currency':
+
+							$text = __( 'The default currency used for money related options (product price, job salary, etc.).', 'wpsso' );
+
+							break;
+
+						/**
+						 * Product Attributes settings.
+						 */
+						case ( 0 === strpos( $msg_key, 'tooltip-plugin_product_attr_' ) ? true : false ):
+
+							$attr_key = substr( $msg_key, 8 );	// Remove the 'tooltip-' prefix.
+
+							$text .= __( 'Enter the name (aka label) of a product attribute that you have created in your e-commerce plugin (in WooCommerce, for example).', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'The product attribute name allows %s to request the attribute value from your e-commerce plugin.', 'wpsso' ), $info[ 'short_pro' ] ) . ' ';
+
+							$text .= sprintf( __( 'The default attribute name is "%s".', 'wpsso' ), $this->p->opt->get_defaults( $attr_key ) );
+
+							break;
+
+						/**
+						 * Custom Fields settings
+						 */
+						case ( 0 === strpos( $msg_key, 'tooltip-plugin_cf_' ) ? true : false ):
+
+							$cf_key = preg_replace( '/^tooltip-/', '', $msg_key );
+
+							$cf_info = $this->get_cf_info( preg_replace( '/^tooltip-plugin_cf_/', '', $msg_key ) );
+
+							$cf_md_key = empty( $this->p->cf[ 'opt' ][ 'cf_md_key' ][ $cf_key ] ) ?
+								false : $this->p->cf[ 'opt' ][ 'cf_md_key' ][ $cf_key ];
+
+							$cf_is_multi = empty( $this->p->cf[ 'opt' ][ 'cf_md_multi' ][ $cf_md_key ] ) ? false : true;
+
+							$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+
+							if ( ! empty( $cf_info ) ) {	// Just in case.
+
+								$text = sprintf( __( 'If your theme or another plugin provides a custom field for %1$s, you may enter its custom field name here.', 'wpsso' ), $cf_info[ 1 ] ) . ' ';
+
+								$text .= sprintf( __( 'If a custom field matching that name is found, its value may be used for the "%1$s" option in the %2$s metabox.', 'wpsso' ), $cf_info[ 0 ], $metabox_title ) . ' ';
+
+								if ( $cf_is_multi ) {
+									$text .= sprintf( __( 'The "%1$s" option offers multiple input fields &mdash; the custom field value will be split on newline characters, and each line used for an individual input field.', 'wpsso' ), $cf_info[ 0 ] );
+								}
+							}
 
 							break;
 
@@ -2039,7 +2039,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= sprintf( __( 'These options allow you to customize the product attribute names (aka attribute labels) that %s uses to request additional product information from your e-commerce plugin.', 'wpsso' ), $info[ 'short_pro' ] ) . ' ';
 
-							$text .= __( 'These are product attribute names that you can optionally create in your e-commerce plugin, and not their values.', 'wpsso' ) . ' ';
+							$text .= __( 'These are the product attribute names that you can create in your e-commerce plugin and not their values.', 'wpsso' ) . ' ';
 
 							$text .= '</p><p>';
 
@@ -2096,11 +2096,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<p>';
 
-							$text .= sprintf( __( '%s adds the following Facebook, Open Graph, Twitter, Schema, Pinterest, and SEO meta tags to the <code>&lt;head&gt;</code> section of your webpages.', 'wpsso' ), $info[ 'short' ] ) . ' ';
+							$text .= sprintf( __( '%s adds the following Facebook, Open Graph, Twitter, Schema, Pinterest, and SEO HTML tags to the <code>&lt;head&gt;</code> section of your webpages.', 'wpsso' ), $info[ 'short' ] ) . ' ';
 
-							$text .= __( 'If your theme or another plugin already creates one or more of these meta tags, you can uncheck them here to prevent duplicates from being added.', 'wpsso' ) . ' ';
+							$text .= __( 'If your theme or another plugin already creates one or more of these HTML tags, you can uncheck them here to prevent duplicates from being added.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'As an example, the "%1$s" SEO meta tag is automatically unchecked if a <em>known</em> SEO plugin is detected, and the "%2$s" meta tag is unchecked by default (themes often include this meta tag in their header template).', 'wpsso' ), 'meta name description', 'link rel canonical' );
+							$text .= sprintf( __( 'As an example, the "%1$s" SEO HTML tag is automatically unchecked if a <em>known</em> SEO plugin is detected, and the "%2$s" HTML tag is unchecked by default (themes often include this HTML tag in their header template).', 'wpsso' ), 'meta name description', 'link rel canonical' );
 
 							$text .= '</p>';
 
@@ -2234,40 +2234,30 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								if ( current_user_can( 'manage_options' ) ) {
 
-									$img_sizes_page_link = $this->p->util->get_admin_url( 'image-sizes', 
-										_x( 'Image Sizes', 'lib file description', 'wpsso' ) );
-
-									$upscale_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
-										_x( 'Upscale Media Library Images', 'option label', 'wpsso' ) );
-
-									$percent_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
-										_x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ) );
-
-									$img_dim_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
-										_x( 'Enforce Image Size Checks', 'option label', 'wpsso' ) );
-
-									$text .= '<p style="margin-left:0;"><em>' . 
-										__( 'Additional information shown only to users with Administrative privileges:',
-											'wpsso' ) . '</em></p>';
+									$text .= '<p style="margin-left:0;"><em>' . __( 'Additional information shown only to users with Administrative privileges:', 'wpsso' ) . '</em></p>';
 
 									$text .= '<ul>';
 
-									$text .= '<li>' . sprintf( __( 'You can adjust the <b>%1$s</b> option in the %2$s settings.',
-										'wpsso' ), $info[ 'size_label' ], $img_sizes_page_link ) . '</li>';
+									$img_sizes_page_link = $this->p->util->get_admin_url( 'image-sizes', _x( 'Image Sizes', 'lib file description', 'wpsso' ) );
+
+									$text .= '<li>' . sprintf( __( 'You can adjust the <b>%1$s</b> option in the %2$s settings.', 'wpsso' ), $info[ 'size_label' ], $img_sizes_page_link ) . '</li>';
 
 									if ( empty( $this->p->options[ 'plugin_upscale_images' ] ) ) {
 
-										$text .= '<li>' . sprintf( __( 'Enable the %1$s option.', 'wpsso' ),
-											$upscale_option_link ) . '</li>';
+										$upscale_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', _x( 'Upscale Media Library Images', 'option label', 'wpsso' ) );
+
+										$text .= '<li>' . sprintf( __( 'Enable the %1$s option.', 'wpsso' ), $upscale_option_link ) . '</li>';
 									}
 
-									$text .= '<li>' . sprintf( __( 'Increase the %1$s option value.', 'wpsso' ),
-										$percent_option_link ) . '</li>';
+									$percent_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ) );
+
+									$text .= '<li>' . sprintf( __( 'Increase the %1$s option value.', 'wpsso' ), $percent_option_link ) . '</li>';
 
 									if ( ! empty( $this->p->options[ 'plugin_check_img_dims' ] ) ) {
 
-										$text .= '<li>' . sprintf( __( 'Disable the %1$s option (not recommended).', 'wpsso' ),
-											$img_dim_option_link ) . '</li>';
+										$img_dim_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', _x( 'Enforce Image Size Checks', 'option label', 'wpsso' ) );
+
+										$text .= '<li>' . sprintf( __( 'Disable the %1$s option (not recommended).', 'wpsso' ), $img_dim_option_link ) . '</li>';
 									}
 
 									$text .= '</ul>';

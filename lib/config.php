@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.25.1',	// Plugin version.
+					'version'     => '6.26.0-dev.1',	// Plugin version.
 					'opt_version' => '716',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -604,7 +604,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssorest' => array(			// Plugin acronym.
 					'short'       => 'WPSSO REST',	// Short plugin name.
 					'name'        => 'WPSSO REST API',
-					'desc'        => 'Enhances the WordPress REST API post, term, and user query results with an array of social and SEO meta tags, and Schema JSON-LD markup.',
+					'desc'        => 'Enhances the WordPress REST API post, term and user queries with an array of social meta tags, SEO HTML tags and Schema JSON-LD markup.',
 					'slug'        => 'wpsso-rest-api',
 					'base'        => 'wpsso-rest-api/wpsso-rest-api.php',
 					'update_auth' => '',		// No premium version.
@@ -936,21 +936,21 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_article_img_crop'           => 0,
 					'schema_article_img_crop_x'         => 'center',
 					'schema_article_img_crop_y'         => 'center',
-					'schema_article_1_1_img_width'   => 1200,		// Must be at least 1200px for Articles.
-					'schema_article_1_1_img_height'  => 1200,
-					'schema_article_1_1_img_crop'    => 1,
-					'schema_article_1_1_img_crop_x'  => 'center',
-					'schema_article_1_1_img_crop_y'  => 'center',
-					'schema_article_4_3_img_width'   => 1200,		// Must be at least 1200px for Articles.
-					'schema_article_4_3_img_height'  => 900,
-					'schema_article_4_3_img_crop'    => 1,
-					'schema_article_4_3_img_crop_x'  => 'center',
-					'schema_article_4_3_img_crop_y'  => 'center',
-					'schema_article_16_9_img_width'  => 1200,		// Must be at least 1200px for Articles.
-					'schema_article_16_9_img_height' => 675,
-					'schema_article_16_9_img_crop'   => 1,
-					'schema_article_16_9_img_crop_x' => 'center',
-					'schema_article_16_9_img_crop_y' => 'center',
+					'schema_article_1_1_img_width'      => 1200,		// Must be at least 1200px for Articles.
+					'schema_article_1_1_img_height'     => 1200,
+					'schema_article_1_1_img_crop'       => 1,
+					'schema_article_1_1_img_crop_x'     => 'center',
+					'schema_article_1_1_img_crop_y'     => 'center',
+					'schema_article_4_3_img_width'      => 1200,		// Must be at least 1200px for Articles.
+					'schema_article_4_3_img_height'     => 900,
+					'schema_article_4_3_img_crop'       => 1,
+					'schema_article_4_3_img_crop_x'     => 'center',
+					'schema_article_4_3_img_crop_y'     => 'center',
+					'schema_article_16_9_img_width'     => 1200,		// Must be at least 1200px for Articles.
+					'schema_article_16_9_img_height'    => 675,
+					'schema_article_16_9_img_crop'      => 1,
+					'schema_article_16_9_img_crop_x'    => 'center',
+					'schema_article_16_9_img_crop_y'    => 'center',
 					'schema_img_width'                  => 1200,		// Must be at least 400px.
 					'schema_img_height'                 => 1800,
 					'schema_img_crop'                   => 0,
@@ -996,7 +996,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_recipe'                 => 'recipe',		// For WP Ultimate Recipe.
 					'schema_type_for_review'                 => 'review',		// For WP Product Review.
 					'schema_type_for_tax_faq_category'       => 'webpage.faq',	// For WPSSO FAQ Add-on.
-					'schema_type_for_tax_faq_tag'            => 'webpage.faq',	// For WPSSO FAQ Add-on.
 					'schema_type_for_tax_product_brand'      => 'item.list',	// For WooCommerce Brands.
 					'schema_type_for_tax_product_cat'        => 'item.list',	// For WooCommerce.
 					'schema_type_for_tax_product_tag'        => 'item.list',	// For WooCommerce.
@@ -1037,10 +1036,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_type_for_page'             => 'article',
 					'og_type_for_post'             => 'article',
 					'og_type_for_post_archive'     => 'website',
+					'og_type_for_question'         => 'article',
 					'og_type_for_search_page'      => 'website',
 					'og_type_for_tax_category'     => 'website',
 					'og_type_for_tax_faq_category' => 'website',
-					'og_type_for_tax_faq_tag'      => 'website',
 					'og_type_for_tax_post_tag'     => 'website',
 					'og_type_for_user_page'        => 'website',
 					
@@ -1273,7 +1272,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_itemprop_aggregaterating.reviewcount'            => 1,
 
 					/**
-					 * Advanced settings - Plugin Behavior tab.
+					 * Advanced Settings - Plugin Behavior tab.
 					 */
 					'plugin_clean_on_uninstall' => 0,			// Remove Settings on Uninstall.
 					'plugin_debug'              => 0,			// Add Hidden Debug Messages.
@@ -1281,7 +1280,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_notice_system'      => 'toolbar_notices',	// Notification System.
 					
 					/**
-					 * Advanced settings - Content Text tab.
+					 * Advanced Settings - Content tab.
 					 */
 					'plugin_filter_title'      => 0,			// Use Filtered (aka SEO) Title.
 					'plugin_filter_content'    => 0,			// Use WordPress Content Filters.
@@ -1302,7 +1301,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_youtube_api'       => 1,			// Check for Embedded Media: Youtube Videos and Playlists.
 					
 					/**
-					 * Advanced settings - Integration tab.
+					 * Advanced Settings - Integration tab.
 					 */
 					'plugin_html_attr_filter_name'      => 'language_attributes',	// <html> Attributes Filter Hook.
 					'plugin_html_attr_filter_prio'      => 1000,
@@ -1315,6 +1314,80 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_check_img_dims'             => 1,			// Enforce Image Size Checks.
 					'plugin_upscale_images'             => 0,			// Upscale Media Library Images.
 					'plugin_upscale_img_max'            => 33,			// Maximum Image Upscale Percent.
+
+					/**
+					 * Advanced Settings - Cache tab.
+					 */
+					'plugin_content_cache_exp'   => HOUR_IN_SECONDS,	// Filtered Content Cache Expiry (1 hour).
+					'plugin_head_cache_exp'      => WEEK_IN_SECONDS,	// Head Markup Array Cache Expiry (1 week).
+					'plugin_imgsize_cache_exp'   => DAY_IN_SECONDS,		// Image URL Info Cache Expiry (1 day).
+					'plugin_list_cache_exp'      => MONTH_IN_SECONDS,	// Text List Arrays Cache Expiry (1 month).
+					'plugin_short_url_cache_exp' => 7776000,		// Shortened URL Cache Expiry (90 days / 3 months).
+					'plugin_types_cache_exp'     => MONTH_IN_SECONDS,	// Schema Types Array Cache Expiry (1 month).
+					'plugin_clear_on_activate'   => 1,			// Clear All Caches on Activate.
+					'plugin_clear_on_deactivate' => 0,			// Clear All Caches on Deactivate.
+					'plugin_clear_on_save'       => 0,			// Clear All Caches on Save Settings.
+					'plugin_clear_short_urls'    => 0,			// Refresh Short URLs on Clear Cache.
+					'plugin_clear_post_terms'    => 1,			// Clear Term Cache for Published Post.
+					'plugin_clear_for_comment'   => 1,			// Clear Post Cache for New Comment.
+					
+					/**
+					 * Advanced Settings - Service APIs tab.
+					 */
+					'plugin_shortener'          => 'none',			// Preferred URL Shortening Service.
+					'plugin_wp_shortlink'       => 1,			// Use Shortnened URL for WP Shortlink.
+					'plugin_min_shorten'        => 23,
+					'plugin_bitly_access_token' => '',			// Bitly Generic Access Token.
+					'plugin_bitly_domain'       => '',			// Bitly Short Domain (Optional).
+					'plugin_bitly_group_name'   => '',			// Bitly Group Name (Optional).
+					'plugin_dlmyapp_api_key'    => '',			// DLMY.App API Key.
+					'plugin_owly_api_key'       => '',			// Ow.ly API Key.
+					'plugin_yourls_api_url'     => '',			// YOURLS API URL.
+					'plugin_yourls_username'    => '',			// YOURLS Username.
+					'plugin_yourls_password'    => '',			// YOURLS Password.
+					'plugin_yourls_token'       => '',			// YOURLS Token.
+					
+					/**
+					 * Advanced Settings - Table Columns tab.
+					 */
+					'plugin_schema_type_col_media'  => 0,
+					'plugin_schema_type_col_post'   => 1,
+					'plugin_schema_type_col_term'   => 0,
+					'plugin_schema_type_col_user'   => 0,
+					'plugin_og_type_col_media'      => 0,
+					'plugin_og_type_col_post'       => 0,
+					'plugin_og_type_col_term'       => 0,
+					'plugin_og_type_col_user'       => 0,
+					'plugin_og_img_col_media'       => 0,
+					'plugin_og_img_col_post'        => 1,
+					'plugin_og_img_col_term'        => 1,
+					'plugin_og_img_col_user'        => 1,
+					'plugin_og_desc_col_media'      => 1,
+					'plugin_og_desc_col_post'       => 0,
+					'plugin_og_desc_col_term'       => 0,
+					'plugin_og_desc_col_user'       => 1,
+					'plugin_col_title_width'        => '30%',
+					'plugin_col_title_width_max'    => '15vw',
+					'plugin_col_def_width'          => '15%',
+					'plugin_col_def_width_max'      => '15vw',
+
+					/**
+					 * Advanced Settings - Metabox Meta tab.
+					 */
+					'plugin_add_to_attachment'           => 1,
+					'plugin_add_to_page'                 => 1,
+					'plugin_add_to_post'                 => 1,
+					'plugin_add_to_product'              => 1,
+					'plugin_add_to_reply'                => 0,			// Bbpress
+					'plugin_add_to_term'                 => 1,
+					'plugin_add_to_topic'                => 0,			// Bbpress
+					'plugin_add_to_user'                 => 1,
+					'plugin_wpseo_social_meta'           => 0,			// Import Yoast SEO Social Meta.
+					'plugin_def_currency'                => 'USD',			// Default Currency.
+
+					/**
+					 * Advanced Settings - Product Attrs tab.
+					 */
 					'plugin_product_attr_brand'         => 'Brand',			// Product Brand Attribute Name.
 					'plugin_product_attr_color'         => 'Color',			// Product Color Attribute Name.
 					'plugin_product_attr_condition'     => 'Condition',		// Product Condition Attribute Name.
@@ -1332,18 +1405,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_product_attr_volume_value'  => 'Volume',		// Product Volume Attribute Name.
 
 					/**
-					 * Advanced settings - Custom Meta tab.
+					 * Advanced Settings - Custom Fields tab.
 					 */
-					'plugin_add_to_attachment'           => 1,
-					'plugin_add_to_page'                 => 1,
-					'plugin_add_to_post'                 => 1,
-					'plugin_add_to_product'              => 1,
-					'plugin_add_to_reply'                => 0,			// Bbpress
-					'plugin_add_to_term'                 => 1,
-					'plugin_add_to_topic'                => 0,			// Bbpress
-					'plugin_add_to_user'                 => 1,
-					'plugin_wpseo_social_meta'           => 0,			// Import Yoast SEO Social Meta.
-					'plugin_def_currency'                => 'USD',			// Default Currency.
 					'plugin_cf_img_url'                  => '_format_image_url',	// Image URL Custom Field.
 					'plugin_cf_addl_type_urls'           => '',			// Microdata Type URLs Custom Field.
 					'plugin_cf_howto_steps'              => '',			// How-To Steps Custom Field.
@@ -1380,63 +1443,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_vid_embed'                => '',			// Video Embed HTML Custom Field.
 
 					/**
-					 * Advanced settings - Columns tab.
-					 */
-					'plugin_schema_type_col_media'  => 0,
-					'plugin_schema_type_col_post'   => 1,
-					'plugin_schema_type_col_term'   => 0,
-					'plugin_schema_type_col_user'   => 0,
-					'plugin_og_type_col_media'      => 0,
-					'plugin_og_type_col_post'       => 0,
-					'plugin_og_type_col_term'       => 0,
-					'plugin_og_type_col_user'       => 0,
-					'plugin_og_img_col_media'       => 0,
-					'plugin_og_img_col_post'        => 1,
-					'plugin_og_img_col_term'        => 1,
-					'plugin_og_img_col_user'        => 1,
-					'plugin_og_desc_col_media'      => 1,
-					'plugin_og_desc_col_post'       => 0,
-					'plugin_og_desc_col_term'       => 0,
-					'plugin_og_desc_col_user'       => 1,
-					'plugin_col_title_width'        => '30%',
-					'plugin_col_title_width_max'    => '15vw',
-					'plugin_col_def_width'          => '15%',
-					'plugin_col_def_width_max'      => '15vw',
-
-					/**
-					 * Advanced settings - Cache tab.
-					 */
-					'plugin_content_cache_exp'   => HOUR_IN_SECONDS,	// Filtered Content Text Cache Expiry (1 hour).
-					'plugin_head_cache_exp'      => WEEK_IN_SECONDS,	// Head Markup Array Cache Expiry (1 week).
-					'plugin_imgsize_cache_exp'   => DAY_IN_SECONDS,		// Image URL Info Cache Expiry (1 day).
-					'plugin_list_cache_exp'      => MONTH_IN_SECONDS,	// Text List Arrays Cache Expiry (1 month).
-					'plugin_short_url_cache_exp' => 7776000,		// Shortened URL Cache Expiry (90 days / 3 months).
-					'plugin_types_cache_exp'     => MONTH_IN_SECONDS,	// Schema Types Array Cache Expiry (1 month).
-					'plugin_clear_on_activate'   => 1,			// Clear All Caches on Activate.
-					'plugin_clear_on_deactivate' => 0,			// Clear All Caches on Deactivate.
-					'plugin_clear_on_save'       => 0,			// Clear All Caches on Save Settings.
-					'plugin_clear_short_urls'    => 0,			// Refresh Short URLs on Clear Cache.
-					'plugin_clear_post_terms'    => 1,			// Clear Term Cache for Published Post.
-					'plugin_clear_for_comment'   => 1,			// Clear Post Cache for New Comment.
-					
-					/**
-					 * Advanced settings - Service APIs tab.
-					 */
-					'plugin_shortener'          => 'none',			// Preferred URL Shortening Service.
-					'plugin_wp_shortlink'       => 1,			// Use Shortnened URL for WP Shortlink.
-					'plugin_min_shorten'        => 23,
-					'plugin_bitly_access_token' => '',			// Bitly Generic Access Token.
-					'plugin_bitly_domain'       => '',			// Bitly Short Domain (Optional).
-					'plugin_bitly_group_name'   => '',			// Bitly Group Name (Optional).
-					'plugin_dlmyapp_api_key'    => '',			// DLMY.App API Key.
-					'plugin_owly_api_key'       => '',			// Ow.ly API Key.
-					'plugin_yourls_api_url'     => '',			// YOURLS API URL.
-					'plugin_yourls_username'    => '',			// YOURLS Username.
-					'plugin_yourls_password'    => '',			// YOURLS Password.
-					'plugin_yourls_token'       => '',			// YOURLS Token.
-					
-					/**
-					 * Advanced settings - Contact Fields.
+					 * Advanced Settings - Contact Fields.
 					 */
 					'plugin_cm_fb_name'           => 'facebook',
 					'plugin_cm_fb_label'          => 'Facebook User URL',
@@ -1490,7 +1497,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'options_filtered' => false,
 					
 					/**
-					 * Advanced settings - Plugin Behavior tab.
+					 * Advanced Settings - Plugin Behavior tab.
 					 */
 					'plugin_clean_on_uninstall'     => 0,			// Remove Settings on Uninstall
 					'plugin_clean_on_uninstall:use' => 'default',
@@ -1502,7 +1509,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_notice_system:use'      => 'default',
 					
 					/**
-					 * Advanced settings - Integration tab.
+					 * Advanced Settings - Integration tab.
 					 */
 					'plugin_html_attr_filter_name'     => 'language_attributes',
 					'plugin_html_attr_filter_name:use' => 'default',
@@ -1528,9 +1535,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_upscale_img_max:use'       => 'default',
 					
 					/**
-					 * Advanced settings - Cache tab.
+					 * Advanced Settings - Cache tab.
 					 */
-					'plugin_content_cache_exp'       => HOUR_IN_SECONDS,	// Filtered Content Text Cache Expiry (1 hour).
+					'plugin_content_cache_exp'       => HOUR_IN_SECONDS,	// Filtered Content Cache Expiry (1 hour).
 					'plugin_content_cache_exp:use'   => 'default',
 					'plugin_head_cache_exp'          => WEEK_IN_SECONDS,	// Head Markup Array Cache Expiry (1 week).
 					'plugin_head_cache_exp:use'      => 'default',
@@ -1555,7 +1562,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_clear_for_comment'       => 1,			// Clear Post Cache for New Comment.
 					'plugin_clear_for_comment:use'   => 'default',
 				),
-				
+
 				/**
 				 * Contact method options prefix.
 				 */
@@ -3549,8 +3556,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			define( 'WPSSO_VERSION', $info[ 'version' ] );						
 			define( 'WPSSO_UNDEF', -1 );			// Default undefined image width / height value.
 
+			define( 'WPSSO_INIT_CONFIG_PRIORITY', -10 );
 			define( 'WPSSO_INIT_OPTIONS_PRIORITY', 9 );
 			define( 'WPSSO_INIT_OBJECTS_PRIORITY', 10 );
+			define( 'WPSSO_INIT_HOOKS_PRIORITY', 11 );
 			define( 'WPSSO_INIT_SHORTCODES_PRIORITY', 11 );
 			define( 'WPSSO_INIT_PLUGIN_PRIORITY', 12 );
 

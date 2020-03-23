@@ -1223,10 +1223,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							/**
 							 * Prevent duplicates by silently ignoring ngg images (already processed by the ngg module).
 							 */
-							if ( true === $this->p->avail[ 'media' ][ 'ngg' ] && 
-								! empty( $this->p->m[ 'media' ][ 'ngg' ] ) &&
-									( preg_match( '/ class=[\'"]ngg[_-]/', $tag_value ) || preg_match( '/^(' .
-										$content_img_preg[ 'ngg_src' ] . ')$/', $attr_value ) ) ) {
+							if ( true === $this->p->avail[ 'media' ][ 'ngg' ] && ! empty( $this->p->m[ 'media' ][ 'ngg' ] ) &&
+								( preg_match( '/ class=[\'"]ngg[_-]/', $tag_value ) || preg_match( '/^(' .
+									$content_img_preg[ 'ngg_src' ] . ')$/', $attr_value ) ) ) {
 
 								if ( $this->p->debug->enabled ) {
 									$this->p->debug->log( 'silently ignoring ngg image for ' . $attr_name );

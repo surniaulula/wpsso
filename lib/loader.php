@@ -9,6 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
+/**
+ * The distribution module loader (ie. lib/std/ or lib/pro/).
+ */
 if ( ! class_exists( 'WpssoLoader' ) ) {
 
 	class WpssoLoader {
@@ -23,10 +26,10 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$this->mod_load();
+			$this->load_dist_modules();
 		}
 
-		private function mod_load( $has_action = false ) {
+		private function load_dist_modules() {
 
 			$is_admin = is_admin();
 
@@ -48,91 +51,58 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark( 'load modules' );	// Begin timer.
-
-				if ( $has_action ) {
-					$this->p->debug->log( 'loading modules for action ' . $has_action );
-				} else {
-					$this->p->debug->log( 'no action provided to filter module keys' );
-				}
+				$this->p->debug->mark( 'load distribution modules' );	// Begin timer.
 			}
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				$type = $this->p->check->pp( $ext, $li = true, WPSSO_UNDEF, $rc = true, -1 ) === 1 ? 'pro' : 'std';
+				$type_dir = $this->p->check->pp( $ext, true, WPSSO_UNDEF, true, -1 ) === 1 ? 'pro' : 'std';
 
-				if ( ! isset( $info[ 'lib' ][ $type ] ) ) {
-
-					if ( 'std' === $type && isset( $info[ 'lib' ][ 'gpl' ] ) ) {
-
-						$type = 'gpl';
-
-					} else {
-
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $ext . ' lib/' . $type . ' not defined' );
-						}
-	
-						continue;
-					}
-				}
-
-				if ( ! is_array( $info[ 'lib' ][ $type ] ) ) {
+				if ( ! isset( $info[ 'lib' ][ $type_dir ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $ext . ' lib/' . $type . ' not an array' );
+						$this->p->debug->log( $ext . ' lib/' . $type_dir . ' not defined' );
+					}
+
+					continue;
+
+				} elseif ( ! is_array( $info[ 'lib' ][ $type_dir ] ) ) {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( $ext . ' lib/' . $type_dir . ' not an array' );
 					}
 
 					continue;
 				}
 
-				foreach ( $info[ 'lib' ][ $type ] as $sub => $libs ) {
-
-					$log_prefix = 'loading ' . $ext . ' ' . $type . '/' . $sub . ': ';
+				foreach ( $info[ 'lib' ][ $type_dir ] as $sub_dir => $libs ) {
 
 					/**
 					 * Skip loading admin library modules if not in admin back-end.
 					 */
-					if ( 'admin' === $sub && ! $is_admin ) {
+					if ( 'admin' === $sub_dir && ! $is_admin ) {
 						continue;
 					}
 
-					foreach ( $libs as $lib_name => $lib_label ) {
+					$log_prefix = 'loading ' . $ext . ' ' . $type_dir . '/' . $sub_dir . ': ';
 
-						/**
-						 * Example:
-						 *	'article'              => 'Schema Type Article',
-						 *	'article#news:no_load' => 'Schema Type NewsArticle',
-						 *	'article#tech:no_load' => 'Schema Type TechArticle',
-						 */
-						list( $id, $stub, $action ) = SucomUtil::get_lib_stub_action( $lib_name );
+					foreach ( $libs as $id => $label ) {
 
-						$log_prefix = 'loading ' . $ext . ' ' . $type . '/' . $sub . '/' . $id . ': ';
+						$log_prefix = 'loading ' . $ext . ' ' . $type_dir . '/' . $sub_dir . '/' . $id . ': ';
 
 						/**
 						 * Loading of admin library modules in back-end is always allowed.
 						 */
-						if ( 'admin' === $sub && $is_admin ) {
-							$this->p->avail[ $sub ][ $id ] = true;
+						if ( 'admin' === $sub_dir && $is_admin ) {
+							$this->p->avail[ $sub_dir ][ $id ] = true;
 						}
 
-						if ( ! empty( $this->p->avail[ $sub ][ $id ] ) ) {
+						/**
+						 * Check if the dependent resource (active plugin or enabled option) is available.
+						 */
+						if ( ! empty( $this->p->avail[ $sub_dir ][ $id ] ) ) {
 
-							/**
-							 * Compare $action from library id with $has_action method argument.
-							 * This is usually / almost always a false === false comparison.
-							 */
-							if ( $action !== $has_action ) {
-
-								if ( $this->p->debug->enabled ) {
-									$this->p->debug->log( $log_prefix . 'ignored for action ' . $action );
-								}
-
-								continue;
-							}
-
-							$lib_path = $type . '/' . $sub . '/' . $id;
+							$lib_path = $type_dir . '/' . $sub_dir . '/' . $id;
 
 							$classname = apply_filters( $ext . '_load_lib', false, $lib_path );
 
@@ -149,8 +119,8 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 											$this->p->debug->log( $log_prefix . 'new library module for ' . $classname );
 										}
 
-										if ( ! isset( $this->p->m[ $sub ][ $id ] ) ) {
-											$this->p->m[ $sub ][ $id ] = new $classname( $this->p );
+										if ( ! isset( $this->p->m[ $sub_dir ][ $id ] ) ) {
+											$this->p->m[ $sub_dir ][ $id ] = new $classname( $this->p );
 										} elseif ( $this->p->debug->enabled ) {
 											$this->p->debug->log( $log_prefix . 'library module already defined' );
 										}
@@ -158,8 +128,8 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 									/**
 									 * Loaded module objects from extensions / add-ons.
 									 */
-									} elseif ( ! isset( $this->p->m_ext[ $ext ][ $sub ][ $id ] ) ) {
-										$this->p->m_ext[ $ext ][ $sub ][ $id ] = new $classname( $this->p );
+									} elseif ( ! isset( $this->p->m_ext[ $ext ][ $sub_dir ][ $id ] ) ) {
+										$this->p->m_ext[ $ext ][ $sub_dir ][ $id ] = new $classname( $this->p );
 									} elseif ( $this->p->debug->enabled ) {
 										$this->p->debug->log( $log_prefix . 'library ext module already defined' );
 									}
@@ -195,7 +165,6 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 										'wpsso' );
 
 								if ( $is_admin && is_object( $this->p->notice ) ) {
-
 									$this->p->notice->err( $error_msg . ' ' . $suffix_msg );
 								}
 
@@ -210,7 +179,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'load modules' );	// End timer.
+				$this->p->debug->mark( 'load distribution modules' );	// End timer.
 			}
 		}
 	}

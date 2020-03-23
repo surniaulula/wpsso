@@ -14,8 +14,8 @@
  * Requires PHP: 5.6
  * Requires At Least: 4.0
  * Tested Up To: 5.4
- * WC Tested Up To: 4.0.0
- * Version: 6.25.1
+ * WC Tested Up To: 4.0.1
+ * Version: 6.26.0-dev.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -113,12 +113,13 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 * the 'init' hook (e.g. widgets), and many plugins instantiate themselves on it for all sorts of reasons
 			 * (e.g. they need a user, a taxonomy, etc.).
 			 */
-			add_action( 'init', array( $this, 'set_config' ), -10 );					// Runs at init -10 (before widgets_init).
-			add_action( 'widgets_init', array( $this, 'init_widgets' ), 10 );				// Runs at init 1.
-			add_action( 'init', array( $this, 'set_options' ), WPSSO_INIT_OPTIONS_PRIORITY );		// Runs at init 9 by default.
-			add_action( 'init', array( $this, 'set_objects' ), WPSSO_INIT_OBJECTS_PRIORITY );		// Runs at init 10 by default.
-			add_action( 'init', array( $this, 'init_shortcodes' ), WPSSO_INIT_SHORTCODES_PRIORITY );	// Runs at init 11 by default.
-			add_action( 'init', array( $this, 'init_plugin' ), WPSSO_INIT_PLUGIN_PRIORITY );		// Runs at init 12 by default.
+			add_action( 'init', array( $this, 'set_config' ), WPSSO_INIT_CONFIG_PRIORITY );			// Runs at init -10.
+			add_action( 'widgets_init', array( $this, 'register_widgets' ), 10 );				// Runs at init 1.
+			add_action( 'init', array( $this, 'set_options' ), WPSSO_INIT_OPTIONS_PRIORITY );		// Runs at init 9.
+			add_action( 'init', array( $this, 'set_objects' ), WPSSO_INIT_OBJECTS_PRIORITY );		// Runs at init 10.
+			add_action( 'init', array( $this, 'init_hooks' ), WPSSO_INIT_HOOKS_PRIORITY );			// Runs at init 11.
+			add_action( 'init', array( $this, 'init_shortcodes' ), WPSSO_INIT_SHORTCODES_PRIORITY );	// Runs at init 11.
+			add_action( 'init', array( $this, 'init_plugin' ), WPSSO_INIT_PLUGIN_PRIORITY );		// Runs at init 12.
 
 			/**
 			 * The 'wpsso_init_textdomain' action is run after the debug property is defined. Hooks the
@@ -148,26 +149,17 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		/**
 		 * Runs at init 1.
 		 */
-		public function init_widgets() {
+		public function register_widgets() {
 
-			foreach ( $this->cf[ 'plugin' ] as $ext => $info ) {
+			$classnames = $this->get_lib_classnames( 'widget' );	// Always returns an array.
 
-				if ( isset( $info[ 'lib' ][ 'widget' ] ) && is_array( $info[ 'lib' ][ 'widget' ] ) ) {
-
-					foreach ( $info[ 'lib' ][ 'widget' ] as $id => $name ) {
-
-						$classname = apply_filters( $ext . '_load_lib', false, 'widget/' . $id );
-
-						if ( false !== $classname && class_exists( $classname ) ) {
-							register_widget( $classname );	// Name of a class that extends WP_Widget.
-						}
-					}
-				}
+			foreach ( $classnames as $id => $classname ) {
+				register_widget( $classname );
 			}
 		}
 
 		/**
-		 * Runs at init priority 9 by default. Called by activate_plugin() as well.
+		 * Runs at init priority 9. Called by activate_plugin() as well.
 		 */
 		public function set_options( $activate = false ) {
 
@@ -255,7 +247,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		}
 
 		/**
-		 * Runs at init priority 10 by default. Called by activate_plugin() as well.
+		 * Runs at init priority 10. Called by activate_plugin() as well.
 		 */
 		public function set_objects( $activate = false ) {
 
@@ -345,13 +337,13 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->opt   = new WpssoOptions( $this );
 
 			if ( $this->debug->enabled ) {
-				$this->debug->mark( 'do init options action' );	// Begin timer.
+				$this->debug->mark( 'init options do action' );	// Begin timer.
 			}
 
 			do_action( $this->lca . '_init_options' );
 
 			if ( $this->debug->enabled ) {
-				$this->debug->mark( 'do init options action' );	// End timer.
+				$this->debug->mark( 'init options do action' );	// End timer.
 			}
 
 			$this->filters = new WpssoFilters( $this );
@@ -419,24 +411,27 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->tc        = new WpssoTwitterCard( $this );	// Twitter Card meta tags.
 
 			/**
-			 * Setup additional modules:
+			 * Load distribution modules.
 			 */
 			$this->loader = new WpssoLoader( $this );		// Module loader.
 
 			if ( $this->debug->enabled ) {
-				$this->debug->mark( 'do init objects action' );	// Begin timer.
-			}
-
-			do_action( 'wpsso_init_objects', $activate );
-
-			if ( $this->debug->enabled ) {
-				$this->debug->mark( 'do init objects action' );	// End timer.
+				$this->debug->mark( 'init objects do action' );	// Begin timer.
 			}
 
 			/**
-			 * set_options() may have loaded the static defaults for new or missing options.
-			 * After all objects have been loaded, and all filter / action hooks registered,
-			 * check to see if the options need to be reloaded from the filtered defaults.
+			 * Init additional class objects.
+			 */
+			do_action( 'wpsso_init_objects', $activate );
+
+			if ( $this->debug->enabled ) {
+				$this->debug->mark( 'init objects do action' );	// End timer.
+			}
+
+			/**
+			 * set_options() may have loaded the static defaults for new or missing options. After all objects have
+			 * been loaded, and all filter / action hooks registered, check to see if the options need to be reloaded
+			 * from the filtered defaults.
 			 */
 			if ( ! empty( $this->options[ '__reload_defaults' ] ) ) {
 
@@ -519,7 +514,13 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		}
 
 		/**
-		 * Runs at init priority 11 by default.
+		 * Runs at init priority 11.
+		 */
+		public function init_hooks() {
+		}
+
+		/**
+		 * Runs at init priority 11.
 		 */
 		public function init_shortcodes() {
 
@@ -527,19 +528,10 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->debug->mark( 'init shortcodes' );	// Begin timer.
 			}
 
-			foreach ( $this->cf[ 'plugin' ] as $ext => $info ) {
+			$classnames = $this->get_lib_classnames( 'shortcode' );	// Always returns an array.
 
-				if ( isset( $info[ 'lib' ][ 'shortcode' ] ) && is_array( $info[ 'lib' ][ 'shortcode' ] ) ) {
-
-					foreach ( $info[ 'lib' ][ 'shortcode' ] as $id => $name ) {
-
-						$classname = apply_filters( $ext . '_load_lib', false, 'shortcode/' . $id );
-
-						if ( false !== $classname && class_exists( $classname ) ) {
-							$this->sc[ $id ] = new $classname( $this );
-						}
-					}
-				}
+			foreach ( $classnames as $id => $classname ) {
+				$this->sc[ $id ] = new $classname( $this );
 			}
 
 			if ( $this->debug->enabled ) {
@@ -548,7 +540,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		}
 
 		/**
-		 * Runs at init priority 12 by default.
+		 * Runs at init priority 12.
 		 */
 		public function init_plugin() {
 
@@ -626,13 +618,16 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			}
 
 			if ( $this->debug->enabled ) {
-				$this->debug->mark( 'do init plugin action' );	// Begin timer.
+				$this->debug->mark( 'init plugin do action' );	// Begin timer.
 			}
 
+			/**
+			 * All WPSSO objects are instantiated and configured.
+			 */
 			do_action( 'wpsso_init_plugin' );
 
 			if ( $this->debug->enabled ) {
-				$this->debug->mark( 'do init plugin action' );	// End timer.
+				$this->debug->mark( 'init plugin do action' );	// End timer.
 			}
 
 			if ( $this->debug->enabled ) {
@@ -650,6 +645,58 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			}
 
 			load_plugin_textdomain( 'wpsso', false, 'wpsso/languages/' );
+		}
+
+		public function get_lib_classnames( $type_dir ) {
+
+			$is_admin = is_admin();
+
+			$classnames = array();
+
+			foreach ( $this->cf[ 'plugin' ] as $ext => $info ) {
+
+				if ( ! isset( $info[ 'lib' ][ $type_dir ] ) ) {
+					continue;
+				} elseif ( ! is_array( $info[ 'lib' ][ $type_dir ] ) ) {
+					continue;
+				}
+
+				foreach ( $info[ 'lib' ][ $type_dir ] as $sub_dir => $libs ) {
+
+					if ( is_array( $libs ) ) {
+
+						/**
+						 * Skip loading admin library modules if not in admin back-end.
+						 */
+						if ( 'admin' === $sub_dir && ! $is_admin ) {
+							continue;
+						}
+
+						foreach ( $libs as $id => $label ) {
+
+							$lib_path  = $type_dir . '/' . $sub_dir . '/' . $id;
+							$classname = apply_filters( $ext . '_load_lib', false, $lib_path );
+
+							if ( is_string( $classname ) && class_exists( $classname ) ) {
+								$classnames[ $id ] = $classname;
+							}
+						}
+
+					} elseif ( is_string( $libs ) ) {
+
+						$id        = $sub_dir;
+						$label     = $libs;
+						$lib_path  = $type_dir . '/' . $id;
+						$classname = apply_filters( $ext . '_load_lib', false, $lib_path );
+
+						if ( is_string( $classname ) && class_exists( $classname ) ) {
+							$classnames[ $id ] = $classname;
+						}
+					}
+				}
+			}
+
+			return $classnames;
 		}
 
 		/**

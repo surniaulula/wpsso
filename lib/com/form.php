@@ -982,7 +982,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_no_input( $name = '', $css_class = '', $css_id = '', $placeholder = '' ) {
+		public function get_no_input( $name = '', $css_class = '', $css_id = '', $placeholder = '', $disabled = true ) {
 
 			$html        = '';
 			$value       = $this->in_options( $name ) ? $this->options[ $name ] : '';

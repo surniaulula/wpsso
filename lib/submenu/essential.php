@@ -94,6 +94,8 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 		protected function get_table_rows( $metabox_id, $tab_key ) {
 
+			$atts_locale = array( 'is_locale' => true );
+
 			$table_rows = array();
 
 			switch ( $metabox_id . '-' . $tab_key ) {
@@ -104,14 +106,12 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 					$article_sections = $this->p->util->get_article_sections();
 
 					$table_rows[ 'site_name' ] = '' . 
-					$this->form->get_th_html( _x( 'WebSite Name', 'option label', 'wpsso' ), '', 'site_name',
-						array( 'is_locale' => true ) ) . 
+					$this->form->get_th_html( _x( 'WebSite Name', 'option label', 'wpsso' ), '', 'site_name', $atts_locale ) . 
 					'<td>' . $this->form->get_input( SucomUtil::get_key_locale( 'site_name', $this->p->options ),
 						'long_name', '', 0, get_bloginfo( 'name', 'display' ) ) . '</td>';
 
 					$table_rows[ 'site_desc' ] = '' . 
-					$this->form->get_th_html( _x( 'WebSite Description', 'option label', 'wpsso' ), '', 'site_desc',
-						array( 'is_locale' => true ) ) . 
+					$this->form->get_th_html( _x( 'WebSite Description', 'option label', 'wpsso' ), '', 'site_desc', $atts_locale ) .
 					'<td>' . $this->form->get_textarea( SucomUtil::get_key_locale( 'site_desc', $this->p->options ),
 						'', '', 0, get_bloginfo( 'description', 'display' ) ) . '</td>';
 
@@ -134,8 +134,7 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 				case 'essential-facebook':
 
 					$table_rows[ 'fb_publisher_url' ] = '' . 
-					$this->form->get_th_html( _x( 'Facebook Business Page URL', 'option label', 'wpsso' ), '', 'fb_publisher_url',
-						array( 'is_locale' => true ) ) . 
+					$this->form->get_th_html( _x( 'Facebook Business Page URL', 'option label', 'wpsso' ), '', 'fb_publisher_url', $atts_locale ) .
 					'<td>' . $this->form->get_input( SucomUtil::get_key_locale( 'fb_publisher_url', $this->p->options ), 'wide' ) . '</td>';
 
 					$table_rows[ 'fb_app_id' ] = '' . 
@@ -163,24 +162,22 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 					$table_rows[ 'schema_logo_url' ] = '' . 
 					$this->form->get_th_html( '<a href="https://developers.google.com/structured-data/customize/logos">' . 
-					_x( 'Organization Logo URL', 'option label', 'wpsso' ) . '</a>', '', 'schema_logo_url',
-						array( 'is_locale' => true ) ) . 
+					_x( 'Organization Logo URL', 'option label', 'wpsso' ) . '</a>', $css_class = '', $css_id = 'schema_logo_url', $atts_locale ) .
 					'<td>' . $this->form->get_input( SucomUtil::get_key_locale( 'schema_logo_url', $this->p->options ),
-						'wide is_required' ) . '</td>';
+						$css_class = 'wide is_required' ) . '</td>';
 
 					$table_rows[ 'schema_banner_url' ] = '' . 
-					$this->form->get_th_html( _x( 'Organization Banner URL', 'option label', 'wpsso' ), '', 'schema_banner_url',
-						array( 'is_locale' => true ) ) . 
+					$this->form->get_th_html( '<a href="https://developers.google.com/search/docs/data-types/article#logo-guidelines">' .
+					_x( 'Organization Banner URL', 'option label', 'wpsso' ) . '</a>', $css_class = '', $css_id = 'schema_banner_url', $atts_locale ) .
 					'<td>' . $this->form->get_input( SucomUtil::get_key_locale( 'schema_banner_url', $this->p->options ),
-						'wide is_required' ) . '</td>';
+						$css_class = 'wide is_required' ) . '</td>';
 
 					break;
 
 				case 'essential-pinterest':
 
 					$table_rows[ 'p_publisher_url' ] = '' . 
-					$this->form->get_th_html( _x( 'Pinterest Company Page URL', 'option label', 'wpsso' ), '', 'p_publisher_url',
-						array( 'is_locale' => true ) ) . 
+					$this->form->get_th_html( _x( 'Pinterest Company Page URL', 'option label', 'wpsso' ), '', 'p_publisher_url', $atts_locale ) .
 					'<td>' . $this->form->get_input( SucomUtil::get_key_locale( 'p_publisher_url', $this->p->options ), 'wide' ) . '</td>';
 
 					break;
@@ -188,8 +185,7 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 				case 'essential-twitter':
 
 					$table_rows[ 'tc_site' ] = '' . 
-					$this->form->get_th_html( _x( 'Twitter Business @username', 'option label', 'wpsso' ), '', 'tc_site',
-						array( 'is_locale' => true ) ) . 
+					$this->form->get_th_html( _x( 'Twitter Business @username', 'option label', 'wpsso' ), '', 'tc_site', $atts_locale ) .
 					'<td>' . $this->form->get_input( SucomUtil::get_key_locale( 'tc_site', $this->p->options ) ) . '</td>';
 
 					break;

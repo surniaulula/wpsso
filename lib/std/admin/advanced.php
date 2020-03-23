@@ -28,10 +28,10 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$this->p->util->add_plugin_filters( $this, array(
 				'plugin_content_rows'        => 2,
 				'plugin_integration_rows'    => 2,
-				'plugin_custom_meta_rows'    => 2,
-				'plugin_list_columns_rows'   => 2,
 				'plugin_cache_rows'          => 3,
 				'plugin_apikeys_rows'        => 2,
+				'edit_table_columns_rows'    => 2,
+				'edit_custom_meta_rows'      => 2,
 				'cm_custom_contacts_rows'    => 2,
 				'cm_default_contacts_rows'   => 2,
 				'head_tags_facebook_rows'    => 3,
@@ -145,17 +145,12 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[ 'plugin_upscale_img_max' ] = '' .
 			$form->get_th_html( _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_upscale_img_max' ) . 
-			'<td class="blank">' . $form->options[ 'plugin_upscale_img_max' ] . ' %</td>';
-
-			/**
-			 * Product attribute names.
-			 */
-			$this->p->admin->add_advanced_product_attr_table_rows( $table_rows, $form, $hide_in_basic = true, $is_top_section = false );
+			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
 
 			return $table_rows;
 		}
 
-		public function filter_plugin_custom_meta_rows( $table_rows, $form ) {
+		public function filter_edit_custom_meta_rows( $table_rows, $form ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -191,15 +186,10 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$form->get_th_html( _x( 'Default Currency', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_def_currency' ) . 
 			'<td class="blank">' . $form->get_no_select( 'plugin_def_currency', SucomUtil::get_currencies() ) . '</td>';
 
-			/**
-			 * Custom field names.
-			 */
-			$this->p->admin->add_advanced_custom_fields_table_rows( $table_rows, $form, $hide_in_basic = true, $is_top_section = false );
-
 			return $table_rows;
 		}
 
-		public function filter_plugin_list_columns_rows( $table_rows, $form ) {
+		public function filter_edit_table_columns_rows( $table_rows, $form ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -237,19 +227,20 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$cols .= '</table>' . "\n";
 
-			$table_rows[ 'plugin_show_columns' ] = $form->get_th_html( _x( 'Additional List Table Columns',
-				'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_show_columns' ) . '<td>' . $cols . '</td>';
+			$table_rows[ 'plugin_show_columns' ] = '' .
+			$form->get_th_html( _x( 'Additional List Table Columns', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_show_columns' ) .
+			'<td>' . $cols . '</td>';
 
 			/**
 			 * Default and custom column widths.
 			 */
-			$table_rows[ 'plugin_col_title_width' ] = '' . 
+			$table_rows[ 'plugin_col_title_width' ] = $form->get_tr_hide( 'basic', 'plugin_col_title_width' ) . 
 			$form->get_th_html( _x( 'Title / Name Column Width', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_col_title_width' ) . 
 			'<td>' . $form->get_no_input( 'plugin_col_title_width', 'short' ) . ' ' .
 				_x( 'and max width', 'option comment', 'wpsso' ) . ' ' . 
 					$form->get_no_input( 'plugin_col_title_width_max', 'short' ) . '</td>';
 
-			$table_rows[ 'plugin_col_def_width' ] = '' . 
+			$table_rows[ 'plugin_col_def_width' ] = $form->get_tr_hide( 'basic', 'plugin_col_def_width' ) . 
 			$form->get_th_html( _x( 'Default Width for Posts / Pages', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_col_def_width' ) . 
 			'<td>' . $form->get_no_input( 'plugin_col_def_width', 'short' ) .
 				_x( 'and max width', 'option comment', 'wpsso' ) . ' ' . 
@@ -273,7 +264,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			WpssoAdmin::get_option_site_use( 'plugin_head_cache_exp', $form, $network );
 
 			$table_rows[ 'plugin_content_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_content_cache_exp' ) . 
-			$form->get_th_html( _x( 'Filtered Content Text Cache Expiry', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_content_cache_exp' ) . 
+			$form->get_th_html( _x( 'Filtered Content Cache Expiry', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_content_cache_exp' ) . 
 			'<td nowrap class="blank">' . $form->options[ 'plugin_content_cache_exp' ] . ' ' . 
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
 			WpssoAdmin::get_option_site_use( 'plugin_content_cache_exp', $form, $network );
@@ -365,6 +356,10 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			}
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
+
+			$table_rows[ 'plugin_gravatar_api' ] = '' . 
+			$form->get_th_html( _x( 'Gravatar is Author Default Image', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_gravatar_api' ) . 
+			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
 
 			$table_rows[ 'plugin_shortener' ] = '' . 
 			$form->get_th_html( _x( 'Preferred URL Shortening Service', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_shortener' ) . 

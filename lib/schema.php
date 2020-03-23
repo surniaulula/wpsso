@@ -194,7 +194,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 	/**
 			 * $org_id can be 'none', 'site', or a number (including 0).
 			 *
-		 	 * $logo_key can be 'org_logo_url' or 'org_banner_url' (600x60px image) for Articles.
+		 	 * $org_logo_key can be 'org_logo_url' or 'org_banner_url' (600x60px image) for Articles.
 			 *
 			 * Do not provide localized option names - the method will fetch the localized values.
 			 */
@@ -202,7 +202,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log( 'adding data for organization id = ' . $org_id );
 			}
 
-			WpssoSchemaSingle::add_organization_data( $ret, $mod, $org_id, 'org_logo_url', false );	// $list_element is false.
+			WpssoSchemaSingle::add_organization_data( $ret, $mod, $org_id, $org_logo_key = 'org_logo_url', $list_element = false );
 
 			return self::return_data_from_filter( $json_data, $ret, $is_main );
 		}
@@ -3483,9 +3483,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/**
 		 * Deprecated on 2019/04/18. 
 		 */
-		public static function add_single_organization_data( &$json_data, $mod, $org_id = 'site', $logo_key = 'org_logo_url', $list_element = false ) {
+		public static function add_single_organization_data( &$json_data, $mod, $org_id = 'site', $org_logo_key = 'org_logo_url', $list_element = false ) {
 
-			return WpssoSchemaSingle::add_organization_data( $json_data, $mod, $org_id, $logo_key, $list_element );
+			return WpssoSchemaSingle::add_organization_data( $json_data, $mod, $org_id, $org_logo_key, $list_element );
 		}
 
 		/**
