@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 5.6
 Requires At Least: 4.0
 Tested Up To: 5.4
-WC Tested Up To: 4.0.0
+WC Tested Up To: 4.0.1
 Stable Tag: 6.25.1
 
 Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.
@@ -510,6 +510,27 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 6.26.0-dev.1 (2020/03/23)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added an SSO &gt; Advanced Settings &gt; Editing Pages metabox with tabs:
+		* Table Columns
+		* Metabox Meta
+		* Product Attributes
+		* Custom Fields
+	* Added an SSO &gt; Advanced Settings &gt; Document Types metabox with tabs:
+		* Open Graph Types
+		* Schema Types
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.0.
+
 **Version 6.25.1 (2020/03/18)**
 
 * **New Features**
@@ -602,10 +623,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 				* Article Section
 	* The Document SSO metabox will now show a "Save a draft or publish to display these options" message when creating a new post/page.
 	* Added CSS to unhide / show the WordPress admin toolbar when there are notices.
-	* Added new options under the SSO &gt; Advanced Settings &gt; Content Text tab:
+	* Added new options under the SSO &gt; Advanced Settings &gt; Content tab:
 		* No Title Text
 		* No Description Text
-	* Removed options under the SSO &gt; Advanced Settings &gt; Content Text tab:
+	* Removed options under the SSO &gt; Advanced Settings &gt; Content tab:
 		* Term Title Prefix
 * **Bugfixes**
 	* None.
@@ -638,7 +659,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Removed the deprecated "Bitly Username" option (Premium version).
 	* Removed the deprecated "Bitly API Key" option (Premium version).
 	* Added a new "Bitly Group Name (Optional)" option under the SSO &gt; Advanced Settings &gt; Service APIs tab (Premium version).
-	* Added a new "Term Title Prefix" option under the SSO &gt; Advanced Settings &gt; Content Text tab (Premium version).
+	* Added a new "Term Title Prefix" option under the SSO &gt; Advanced Settings &gt; Content tab (Premium version).
 	* Added the Schema MedicalCondition sub-types:
 		* https://schema.org/InfectiousDisease
 		* https://schema.org/MedicalSignOrSymptom
@@ -907,6 +928,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v3.9.
 
 == Upgrade Notice ==
+
+= 6.26.0-dev.1 =
+
+(2020/03/23) Added new Editing Pages and Documet Types metaboxes in the Advanced Settings page.
 
 = 6.25.1 =
 
