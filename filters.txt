@@ -187,7 +187,7 @@
 
 'wpsso_post_cache_wp_cache_keys' ( $wp_cache_keys, $mod, $sharing_url, $mod_salt )
 
-'wpsso_post_custom_meta_tabs' ( $tabs, $mod, $metabox_id )
+'wpsso_post_document_meta_tabs' ( $tabs, $mod, $metabox_id )
 
 'wpsso_post_image_ids' ( array $ids, $size_name, $post_id )
 
@@ -275,7 +275,7 @@
 
 'wpsso_term_cache_wp_cache_keys' ( $wp_cache_keys, $mod, $sharing_url, $mod_salt )
 
-'wpsso_term_custom_meta_tabs' ( $tabs, $mod, $metabox_id )
+'wpsso_term_document_meta_tabs' ( $tabs, $mod, $metabox_id )
 
 'wpsso_term_image_ids' ( array $ids, $size_name, $term_id )
 
@@ -303,7 +303,7 @@
 
 'wpsso_user_cache_wp_cache_keys' ( $wp_cache_keys, $mod, $sharing_url, $mod_salt )
 
-'wpsso_user_custom_meta_tabs' ( $tabs, $mod, $metabox_id )
+'wpsso_user_document_meta_tabs' ( $tabs, $mod, $metabox_id )
 
 'wpsso_user_image_ids' ( array $ids, $size_name, $user_id )
 

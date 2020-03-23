@@ -701,7 +701,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				);
 
 				add_meta_box( $this->p->lca . '_' . $metabox_id, $metabox_title,
-					array( $this, 'show_metabox_custom_meta' ), $metabox_screen,
+					array( $this, 'show_metabox_document_meta' ), $metabox_screen,
 						$metabox_context, $metabox_prio, $callback_args );
 			}
 		}
@@ -729,21 +729,21 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			echo '<!-- ' . $this->p->lca . ' term metabox section end -->' . "\n";
 		}
 
-		public function ajax_metabox_custom_meta() {
+		public function ajax_metabox_document_meta() {
 
 			die( -1 );	// Nothing to do.
 		}
 
-		public function show_metabox_custom_meta( $term_obj ) {
+		public function show_metabox_document_meta( $term_obj ) {
 
-			echo $this->get_metabox_custom_meta( $term_obj );
+			echo $this->get_metabox_document_meta( $term_obj );
 		}
 
-		public function get_metabox_custom_meta( $term_obj ) {
+		public function get_metabox_document_meta( $term_obj ) {
 
 			$metabox_id = $this->p->cf[ 'meta' ][ 'id' ];
 			$mod        = $this->get_mod( $term_obj->term_id, $this->query_tax_slug );
-			$tabs       = $this->get_custom_meta_tabs( $metabox_id, $mod );
+			$tabs       = $this->get_document_meta_tabs( $metabox_id, $mod );
 			$opts       = $this->get_options( $term_obj->term_id );
 			$def_opts   = $this->get_defaults( $term_obj->term_id );
 

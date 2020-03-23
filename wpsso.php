@@ -434,7 +434,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 * from the filtered defaults.
 			 */
 			if ( ! empty( $this->options[ '__reload_defaults' ] ) ) {
-
 				$this->options = $this->opt->get_defaults();
 			}
 

@@ -54,7 +54,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$metabox_id   = $this->p->cf[ 'meta' ][ 'id' ];
 				$container_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
 
-				add_action( 'wp_ajax_update_container_id_' . $container_id, array( $this, 'ajax_metabox_custom_meta' ) );
+				add_action( 'wp_ajax_update_container_id_' . $container_id, array( $this, 'ajax_metabox_document_meta' ) );
 
 				if ( ! empty( $_GET ) || basename( $_SERVER[ 'PHP_SELF' ] ) === 'post-new.php' ) {
 
@@ -1269,12 +1269,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				);
 
 				add_meta_box( $this->p->lca . '_' . $metabox_id, $metabox_title,
-					array( $this, 'show_metabox_custom_meta' ), $metabox_screen,
+					array( $this, 'show_metabox_document_meta' ), $metabox_screen,
 						$metabox_context, $metabox_prio, $callback_args );
 			}
 		}
 
-		public function ajax_metabox_custom_meta() {
+		public function ajax_metabox_document_meta() {
 
 			if ( ! SucomUtil::get_const( 'DOING_AJAX' ) ) {
 				return;
@@ -1288,7 +1288,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				die( -1 );
 			}
 
-			$post_id  = $_POST[ 'post_id' ];
+			$post_id = $_POST[ 'post_id' ];
+
 			$post_obj = SucomUtil::get_post_object( $post_id );
 
 			if ( ! is_object( $post_obj ) ) {
@@ -1332,21 +1333,21 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->util->maybe_unset_ref( WpssoWpMeta::$head_info[ 'og:url' ] );
 			}
 
-			$metabox_html = $this->get_metabox_custom_meta( $post_obj );
+			$metabox_html = $this->get_metabox_document_meta( $post_obj );
 
 			die( $metabox_html );
 		}
 
-		public function show_metabox_custom_meta( $post_obj ) {
+		public function show_metabox_document_meta( $post_obj ) {
 
-			echo $this->get_metabox_custom_meta( $post_obj );
+			echo $this->get_metabox_document_meta( $post_obj );
 		}
 
-		public function get_metabox_custom_meta( $post_obj ) {
+		public function get_metabox_document_meta( $post_obj ) {
 
 			$metabox_id = $this->p->cf[ 'meta' ][ 'id' ];
 			$mod        = $this->get_mod( $post_obj->ID );
-			$tabs       = $this->get_custom_meta_tabs( $metabox_id, $mod );
+			$tabs       = $this->get_document_meta_tabs( $metabox_id, $mod );
 			$opts       = $this->get_options( $post_obj->ID );
 			$def_opts   = $this->get_defaults( $post_obj->ID );
 

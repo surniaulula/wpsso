@@ -26,19 +26,19 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			}
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'plugin_content_rows'        => 2,
-				'plugin_integration_rows'    => 2,
-				'plugin_cache_rows'          => 3,
-				'plugin_apikeys_rows'        => 2,
-				'edit_table_columns_rows'    => 2,
-				'edit_custom_meta_rows'      => 2,
-				'cm_custom_contacts_rows'    => 2,
-				'cm_default_contacts_rows'   => 2,
-				'head_tags_facebook_rows'    => 3,
-				'head_tags_open_graph_rows'  => 3,
-				'head_tags_twitter_rows'     => 3,
-				'head_tags_schema_rows'      => 3,
-				'head_tags_seo_other_rows'   => 3,
+				'plugin_content_rows'       => 2,
+				'plugin_integration_rows'   => 2,
+				'plugin_cache_rows'         => 3,
+				'plugin_apikeys_rows'       => 2,
+				'edit_table_columns_rows'   => 2,
+				'edit_document_meta_rows'   => 2,
+				'cm_custom_contacts_rows'   => 2,
+				'cm_default_contacts_rows'  => 2,
+				'head_tags_facebook_rows'   => 3,
+				'head_tags_open_graph_rows' => 3,
+				'head_tags_twitter_rows'    => 3,
+				'head_tags_schema_rows'     => 3,
+				'head_tags_seo_other_rows'  => 3,
 			), $prio = 20 );
 		}
 
@@ -150,7 +150,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_edit_custom_meta_rows( $table_rows, $form ) {
+		public function filter_edit_document_meta_rows( $table_rows, $form ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();

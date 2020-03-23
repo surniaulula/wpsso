@@ -753,12 +753,12 @@ msgstr ""
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 
-#: lib/com/bfo.php:242 lib/com/cache.php:81 lib/com/notice.php:101
+#: lib/com/bfo.php:242 lib/com/cache.php:81 lib/com/notice.php:102
 #: lib/gettext-com.php:6 lib/gettext-com.php:27 lib/gettext-com.php:34
 msgid "%s Notice"
 msgstr ""
 
-#: lib/com/bfo.php:245 lib/com/cache.php:84 lib/com/notice.php:104
+#: lib/com/bfo.php:245 lib/com/cache.php:84 lib/com/notice.php:105
 #: lib/gettext-com.php:7 lib/gettext-com.php:28 lib/gettext-com.php:35
 msgid "Notice"
 msgstr ""
@@ -873,23 +873,23 @@ msgctxt "option comment"
 msgid "from"
 msgstr ""
 
-#: lib/com/notice.php:228 lib/gettext-com.php:29
+#: lib/com/notice.php:230 lib/gettext-com.php:29
 msgid "Forever"
 msgstr ""
 
-#: lib/com/notice.php:230 lib/gettext-com.php:30
+#: lib/com/notice.php:232 lib/gettext-com.php:30
 msgid "This notice can be dismissed permanently."
 msgstr ""
 
-#: lib/com/notice.php:241 lib/gettext-com.php:31
+#: lib/com/notice.php:243 lib/gettext-com.php:31
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:458 lib/gettext-com.php:32 lib/post.php:1560
+#: lib/com/notice.php:460 lib/gettext-com.php:32 lib/post.php:1561
 msgid "Edit"
 msgstr ""
 
-#: lib/com/notice.php:462 lib/gettext-com.php:33
+#: lib/com/notice.php:464 lib/gettext-com.php:33
 msgid "Reference: %s"
 msgstr ""
 
@@ -6025,7 +6025,7 @@ msgid ""
 "post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:752 lib/post.php:1316
+#: lib/post.php:752 lib/post.php:1317
 msgid "checking meta tags"
 msgstr ""
 
@@ -6154,50 +6154,50 @@ msgstr ""
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1370
+#: lib/post.php:1371
 msgid "Save a draft or publish to display these options."
 msgstr ""
 
-#: lib/post.php:1548 lib/script.php:194
+#: lib/post.php:1549 lib/script.php:194
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1562
+#: lib/post.php:1563
 msgid "Edit robots"
-msgstr ""
-
-#: lib/post.php:1576
-msgctxt "option label"
-msgid "No archive"
 msgstr ""
 
 #: lib/post.php:1577
 msgctxt "option label"
-msgid "No follow"
+msgid "No archive"
 msgstr ""
 
 #: lib/post.php:1578
 msgctxt "option label"
-msgid "No image index"
+msgid "No follow"
 msgstr ""
 
 #: lib/post.php:1579
 msgctxt "option label"
-msgid "No index"
+msgid "No image index"
 msgstr ""
 
 #: lib/post.php:1580
 msgctxt "option label"
-msgid "No snippet"
+msgid "No index"
 msgstr ""
 
 #: lib/post.php:1581
 msgctxt "option label"
+msgid "No snippet"
+msgstr ""
+
+#: lib/post.php:1582
+msgctxt "option label"
 msgid "No translate"
 msgstr ""
 
-#: lib/post.php:1710
+#: lib/post.php:1711
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -7267,26 +7267,26 @@ msgstr ""
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: wpsso.php:479
+#: wpsso.php:478
 msgid ""
 "WP debug logging mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:491
+#: wpsso.php:490
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."
 msgstr ""
 
 #. translators: %s is the short plugin name.
-#: wpsso.php:501
+#: wpsso.php:500
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:502
+#: wpsso.php:501
 msgid "Please disable debug mode when debugging is complete."
 msgstr ""
 

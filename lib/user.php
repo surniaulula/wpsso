@@ -695,7 +695,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				);
 
 				add_meta_box( $this->p->lca . '_' . $metabox_id, $metabox_title,
-					array( $this, 'show_metabox_custom_meta' ), $metabox_screen,
+					array( $this, 'show_metabox_document_meta' ), $metabox_screen,
 						$metabox_context, $metabox_prio, $callback_args );
 			}
 		}
@@ -734,17 +734,17 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			echo '<!-- ' . $this->p->lca . ' user metabox section end -->' . "\n";
 		}
 
-		public function ajax_metabox_custom_meta() {
+		public function ajax_metabox_document_meta() {
 
 			die( -1 );	// Nothing to do.
 		}
 
-		public function show_metabox_custom_meta( $user_obj ) {
+		public function show_metabox_document_meta( $user_obj ) {
 
-			echo $this->get_metabox_custom_meta( $user_obj );
+			echo $this->get_metabox_document_meta( $user_obj );
 		}
 
-		public function get_metabox_custom_meta( $user_obj ) {
+		public function get_metabox_document_meta( $user_obj ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -752,7 +752,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$metabox_id = $this->p->cf[ 'meta' ][ 'id' ];
 			$mod        = $this->get_mod( $user_obj->ID );
-			$tabs       = $this->get_custom_meta_tabs( $metabox_id, $mod );
+			$tabs       = $this->get_document_meta_tabs( $metabox_id, $mod );
 			$opts       = $this->get_options( $user_obj->ID );
 			$def_opts   = $this->get_defaults( $user_obj->ID );
 

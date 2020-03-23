@@ -18,6 +18,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private $uca          = 'SUCOM';
 		private $text_domain  = 'sucom';
 		private $dismiss_name = 'sucom_dismissed';
+		private $default_ttl  = 600;
 		private $label_transl = false;
 		private $doing_dev    = false;
 		private $use_cache    = true;	// Read/save minimized CSS from/to transient cache.
@@ -205,9 +206,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				return false;
 			}
 
-			$payload[ 'notice_key' ]   = empty( $notice_key ) ? false : sanitize_key( $notice_key );
-			$payload[ 'notice_time' ]  = time();
-			$payload[ 'notice_ttl' ]   = isset( $payload[ 'notice_ttl' ] ) ? (int) $payload[ 'notice_ttl' ] : 300;	// 0 to disable notice epiration.
+			$payload[ 'notice_key' ]  = empty( $notice_key ) ? false : sanitize_key( $notice_key );
+			$payload[ 'notice_time' ] = time();
+			$payload[ 'notice_ttl' ]  = isset( $payload[ 'notice_ttl' ] ) ?
+				(int) $payload[ 'notice_ttl' ] : $this->default_ttl;	// 0 to disable notice expiration.
 
 			$payload[ 'dismiss_time' ] = false;
 			$payload[ 'dismiss_diff' ] = isset( $payload[ 'dismiss_diff' ] ) ? $payload[ 'dismiss_diff' ] : null;
@@ -670,8 +672,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					}
 
 					/**
-					 * Make sure the notice has not exceeded its TTL. A 'notice_ttl' value of 0 disables the
-					 * notice message expiration.
+					 * Make sure the notice has not exceeded its TTL.
+					 *
+					 * A 'notice_ttl' value of 0 disables the notice message expiration.
 					 */
 					if ( ! empty( $payload[ 'notice_time' ] ) && ! empty( $payload[ 'notice_ttl' ] ) ) {
 						if ( time() > $payload[ 'notice_time' ] + $payload[ 'notice_ttl' ] ) {
@@ -862,8 +865,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					}
 
 					/**
-					 * Make sure the notice has not exceeded its TTL. A 'notice_ttl' value of 0 disables the
-					 * notice message expiration.
+					 * Make sure the notice has not exceeded its TTL.
+					 *
+					 * A 'notice_ttl' value of 0 disables the notice message expiration.
 					 */
 					if ( ! empty( $payload[ 'notice_time' ] ) && ! empty( $payload[ 'notice_ttl' ] ) ) {
 						if ( time() > $payload[ 'notice_time' ] + $payload[ 'notice_ttl' ] ) {

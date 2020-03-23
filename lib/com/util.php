@@ -4016,5 +4016,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			return apply_filters( 'sucom_robots_default_directives', $directives );
 		}
+
+		/**
+		 * Deprecated on 2020/03/23.
+		 */
+		public static function get_lib_stub_action( $lib_id ) {
+
+			return array( $lib_id, false, false );
+		}
 	}
 }

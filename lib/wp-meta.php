@@ -473,17 +473,17 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $this->must_be_extended( __METHOD__ );
 		}
 
-		public function ajax_metabox_custom_meta() {
+		public function ajax_metabox_document_meta() {
 
 			return $this->must_be_extended( __METHOD__ );
 		}
 
-		public function show_metabox_custom_meta( $obj ) {
+		public function show_metabox_document_meta( $obj ) {
 
 			return $this->must_be_extended( __METHOD__ );
 		}
 
-		public function get_metabox_custom_meta( $obj ) {
+		public function get_metabox_document_meta( $obj ) {
 
 			return $this->must_be_extended( __METHOD__ );
 		}
@@ -518,7 +518,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return false;
 		}
 
-		protected function get_custom_meta_tabs( $metabox_id, array $mod ) {
+		protected function get_document_meta_tabs( $metabox_id, array $mod ) {
 
 			$tabs = array();
 
@@ -552,7 +552,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				unset( $tabs[ 'oembed' ] );
 			}
 
-			return apply_filters( $this->p->lca . '_' . $mod[ 'name' ] . '_custom_meta_tabs', $tabs, $mod, $metabox_id );
+			return apply_filters( $this->p->lca . '_' . $mod[ 'name' ] . '_document_meta_tabs', $tabs, $mod, $metabox_id );
 		}
 
 		protected function get_table_rows( $metabox_id, $tab_key, array $head_info, array $mod ) {
