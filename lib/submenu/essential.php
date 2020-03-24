@@ -158,8 +158,6 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 						return $this->p->msgs->get_schema_disabled_rows( $table_rows, $col_span = 1 );
 					}
 
-					$this->add_schema_knowledge_graph_table_rows( $table_rows, $this->form );
-
 					$table_rows[ 'schema_logo_url' ] = '' . 
 					$this->form->get_th_html( '<a href="https://developers.google.com/structured-data/customize/logos">' . 
 					_x( 'Organization Logo URL', 'option label', 'wpsso' ) . '</a>', $css_class = '', $css_id = 'schema_logo_url', $atts_locale ) .
@@ -179,6 +177,16 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 					$table_rows[ 'p_publisher_url' ] = '' . 
 					$this->form->get_th_html( _x( 'Pinterest Company Page URL', 'option label', 'wpsso' ), '', 'p_publisher_url', $atts_locale ) .
 					'<td>' . $this->form->get_input( SucomUtil::get_key_locale( 'p_publisher_url', $this->p->options ), 'wide' ) . '</td>';
+
+					$table_rows[ 'p_add_nopin_media_img_tag' ] = '' . 
+					$this->form->get_th_html( _x( 'Add "nopin" to WordPress Media', 'option label', 'wpsso' ), '', 'p_add_nopin_media_img_tag' ) . 
+					'<td>' . $this->form->get_checkbox( 'p_add_nopin_media_img_tag' ) .
+					' <em>' . _x( 'recommended', 'option comment', 'wpsso' ) . '</em></td>';
+
+					$table_rows[ 'p_add_img_html' ] = '' . 
+					$this->form->get_th_html( _x( 'Add Hidden Image for Pin It Button', 'option label', 'wpsso' ), '', 'p_add_img_html' ) . 
+					'<td>' . $this->form->get_checkbox( 'p_add_img_html' ) .
+					' <em>' . _x( 'recommended (adds a hidden image in the content)', 'option comment', 'wpsso' ) . '</em></td>';
 
 					break;
 

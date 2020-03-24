@@ -604,12 +604,12 @@ msgctxt "option label"
 msgid "User for Person Social Profile"
 msgstr ""
 
-#: lib/admin.php:2751 lib/submenu/essential.php:165
+#: lib/admin.php:2751 lib/submenu/essential.php:163
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:2756 lib/options.php:1152 lib/submenu/essential.php:171
+#: lib/admin.php:2756 lib/options.php:1152 lib/submenu/essential.php:169
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
@@ -2444,7 +2444,8 @@ msgstr ""
 #: lib/pro/admin/advanced.php:61 lib/pro/admin/advanced.php:138
 #: lib/pro/admin/general.php:58 lib/std/admin/advanced.php:61
 #: lib/std/admin/advanced.php:140 lib/std/admin/general.php:58
-#: lib/submenu/general.php:299 lib/submenu/general.php:304
+#: lib/submenu/essential.php:184 lib/submenu/general.php:299
+#: lib/submenu/general.php:304
 msgctxt "option comment"
 msgid "recommended"
 msgstr ""
@@ -4761,7 +4762,8 @@ msgid ""
 "the Pin It browser button from suggesting those images."
 msgstr ""
 
-#: lib/messages.php:1502 lib/messages.php:2799 lib/submenu/general.php:307
+#: lib/messages.php:1502 lib/messages.php:2799 lib/submenu/essential.php:187
+#: lib/submenu/general.php:307
 msgctxt "option label"
 msgid "Add Hidden Image for Pin It Button"
 msgstr ""
@@ -6560,12 +6562,22 @@ msgctxt "option label"
 msgid "or Default / Fallback Image URL"
 msgstr ""
 
-#: lib/submenu/essential.php:180 lib/submenu/general.php:292
+#: lib/submenu/essential.php:178 lib/submenu/general.php:292
 msgctxt "option label"
 msgid "Pinterest Company Page URL"
 msgstr ""
 
-#: lib/submenu/essential.php:188 lib/submenu/general.php:330
+#: lib/submenu/essential.php:182 lib/submenu/general.php:302
+msgctxt "option label"
+msgid "Add \"nopin\" to WordPress Media"
+msgstr ""
+
+#: lib/submenu/essential.php:189 lib/submenu/general.php:309
+msgctxt "option comment"
+msgid "recommended (adds a hidden image in the content)"
+msgstr ""
+
+#: lib/submenu/essential.php:196 lib/submenu/general.php:330
 msgctxt "option label"
 msgid "Twitter Business @username"
 msgstr ""
@@ -6675,16 +6687,6 @@ msgstr ""
 #: lib/submenu/general.php:297
 msgctxt "option label"
 msgid "Add \"nopin\" to Site Header Image"
-msgstr ""
-
-#: lib/submenu/general.php:302
-msgctxt "option label"
-msgid "Add \"nopin\" to WordPress Media"
-msgstr ""
-
-#: lib/submenu/general.php:309
-msgctxt "option comment"
-msgid "recommended (adds a hidden image in the content)"
 msgstr ""
 
 #: lib/submenu/general.php:312
