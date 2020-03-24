@@ -335,7 +335,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				) );
 			}
 
-			$og_images   = array();
+			$og_images = array();
 
 			if ( ! empty( $post_id ) ) {
 
@@ -343,8 +343,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				 * get_og_images() also provides filter hooks for additional image ids and urls unless $md_pre is
 				 * 'none', get_og_images() will fallback to the 'og' custom meta.
 				 */
-				$og_images = array_merge( $og_images, $this->p->post->get_og_images( 1,
-					$size_name, $post_id, $check_dupes, $md_pre ) );
+				$og_images = array_merge( $og_images, $this->p->post->get_og_images( 1, $size_name, $post_id, $check_dupes, $md_pre ) );
 			}
 
 			/**
@@ -354,8 +353,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$num_diff = SucomUtil::count_diff( $og_images, $num );
 
-				$og_images = array_merge( $og_images, $this->get_featured( $num_diff,
-					$size_name, $post_id, $check_dupes ) );
+				$og_images = array_merge( $og_images, $this->get_featured( $num_diff, $size_name, $post_id, $check_dupes ) );
 			}
 
 			/**
@@ -365,8 +363,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$num_diff = SucomUtil::count_diff( $og_images, $num );
 
-				$og_images = array_merge( $og_images, $this->get_attached_images( $num_diff,
-					$size_name, $post_id, $check_dupes ) );
+				$og_images = array_merge( $og_images, $this->get_attached_images( $num_diff, $size_name, $post_id, $check_dupes ) );
 			}
 
 			return $og_images;

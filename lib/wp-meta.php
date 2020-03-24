@@ -676,7 +676,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				'p_img_desc' => array(
 					'tr_class' => $p_img_desc_disabled ? 'hide_in_basic' : '',
 					'th_class' => 'medium',
-					'label'    => _x( 'Pinterest Image Description', 'option label', 'wpsso' ),
+					'label'    => _x( 'Pinterest Description', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-p_img_desc',
 					'content'  => $form->get_textarea( 'p_img_desc', $css_class = '', $css_id = '',
 						array( 'max' => $p_img_desc_max_len, 'warn' => $p_img_desc_warn_len ), $def_p_img_desc,
@@ -789,6 +789,20 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'content'  => $form->get_input_image_url( 'og_img', $media_info[ 'img_url' ] ),
 				),
 			);
+
+			/**
+			 * Additional sections and sub-sections added by the 'wpsso_meta_media_rows' filter:
+			 *
+			 * 	Facebook / Open Graph and Default Media
+			 *
+			 * 		Priority Video Information
+			 *
+			 * 	Pinterest Pin It
+			 *
+			 * 	Twitter Card
+			 *
+			 * 	Schema JSON-LD Markup / Rich Results
+			 */
 
 			return $form->get_md_form_rows( array(), $form_rows, $head_info, $mod );
 		}
@@ -1428,7 +1442,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			/**
 			 * Check image size options (id, prefix, width, height, crop, etc.).
 			 */
-			foreach ( array( 'og', 'tc_sum', 'tc_lrg', 'schema' ) as $md_pre ) {
+			foreach ( array( 'og', 'tc_sum', 'tc_lrg', 'schema', 'p' ) as $md_pre ) {
 
 				/**
 				 * If there's no image ID, then remove the image ID library prefix.
@@ -1720,6 +1734,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $media_html;
 		}
 
+		/**
+		 * Note that $md_pre can be a text string or array of prefixes.
+		 */
 		public function get_md_images( $num, $size_name, array $mod, $check_dupes = true, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -1739,14 +1756,19 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				return $mt_ret;
 			}
 
-			/**
-			 * Unless $md_pre is 'none' allways fallback to the 'og' custom meta.
-			 */
-			foreach( array_unique( array( $md_pre, 'og' ) ) as $opt_pre ) {
+			if ( is_array( $md_pre ) ) {
+				$md_pre_unique = array_merge( $md_pre, array( 'og' ) );
+			} else {
+				$md_pre_unique = array( $md_pre, 'og' );
+			}
 
-				if ( $opt_pre === 'none' ) {	// special index keyword
+			$md_pre_unique = array_unique( $md_pre_unique );
+
+			foreach( $md_pre_unique as $opt_pre ) {
+
+				if ( $opt_pre === 'none' ) {		// Special index keyword.
 					break;
-				} elseif ( empty( $opt_pre ) ) {	// skip empty md_pre values
+				} elseif ( empty( $opt_pre ) ) {	// Skip empty md_pre values.
 					continue;
 				}
 
@@ -1793,6 +1815,13 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					if ( $this->p->util->push_max( $mt_ret, $mt_single_image, $num ) ) {
 						return $mt_ret;
 					}
+				}
+
+				/**
+				 * Stop here if we had a custom image ID or URL.
+				 */
+				if ( $pid || $url ) {
+					break;
 				}
 			}
 
@@ -1854,7 +1883,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		}
 
 		/**
-		 * Methods that return an associative array of Open Graph meta tags.
+		 * Note that $md_pre can be a text string or array of prefixes.
 		 */
 		public function get_og_images( $num, $size_name, $mod_id, $check_dupes = true, $md_pre = 'og' ) {
 
@@ -1868,7 +1897,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		}
 
 		/**
-		 * get_og_videos() converts the $md_pre value to an array and always checks for 'og' metadata as a fallback.
+		 * Note that $md_pre can be a text string or array of prefixes.
 		 */
 		public function get_og_videos( $num = 0, $mod_id, $check_dupes = false, $md_pre = 'og', $mt_pre = 'og' ) {
 
@@ -1882,7 +1911,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				), get_class( $this ) );
 			}
 
-			$mod       = $this->get_mod( $mod_id );	// required for get_content_videos()
+			$mod       = $this->get_mod( $mod_id );	// Required for get_content_videos().
 			$og_ret    = array();
 			$og_videos = array();
 
@@ -1890,7 +1919,15 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				return $og_ret;
 			}
 
-			foreach( array_unique( array( $md_pre, 'og' ) ) as $opt_pre ) {
+			if ( is_array( $md_pre ) ) {
+				$md_pre_unique = array_merge( $md_pre, array( 'og' ) );
+			} else {
+				$md_pre_unique = array( $md_pre, 'og' );
+			}
+
+			$md_pre_unique = array_unique( $md_pre_unique );
+
+			foreach( $md_pre_unique as $opt_pre ) {
 
 				$embed_html = $this->get_options( $mod_id, $opt_pre . '_vid_embed' );
 				$video_url  = $this->get_options( $mod_id, $opt_pre . '_vid_url' );

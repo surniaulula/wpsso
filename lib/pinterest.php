@@ -16,8 +16,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 		private $p;
 
 		/**
-		 * Note that Pinterest share button options (from the WPSSO SSB and WPSSO RRSSB add-ons, for example) use a "pin"
-		 * option prefix, where-as options from the WPSSO setting pages and Document SSO metabox use a "p" prefix".
+		 * Note that options from the WPSSO Core setting pages and Document SSO metabox use a "p" option prefix.
 		 */
 		public function __construct( &$plugin ) {
 
@@ -37,6 +36,10 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			add_filter( 'get_image_tag', array( $this, 'get_image_tag' ), 10, 6 );
 
 			if ( ! empty( $this->p->options[ 'p_add_img_html' ] ) ) {
+
+				$this->p->util->add_plugin_filters( $this, array( 
+					'plugin_image_sizes' => 1,
+				) );
 
 				add_filter( 'the_content', array( $this, 'get_pinterest_img_html' ), $max_int );
 			}
@@ -103,6 +106,19 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			return $html;
 		}
 
+		public function filter_plugin_image_sizes( $sizes ) {
+
+			if ( ! empty( $this->p->options[ 'p_add_img_html' ] ) ) {
+
+				$sizes[ 'p' ] = array(	// Option prefix.
+					'name'  => 'pinterest',
+					'label' => _x( 'Pinterest Pin It Image', 'image size label', 'wpsso' ),
+				);
+			}
+
+			return $sizes;
+		}
+
 		public function show_pinterest_img_html() {
 
 			echo $this->get_pinterest_img_html();
@@ -164,15 +180,15 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 			$local_recursion[ $cache_salt ] = true;
 
-			$size_name = $this->p->lca . '-schema';
+			$size_name = $this->p->lca . '-pinterest';
 
-			$og_images = $this->p->og->get_all_images( 1, $size_name, $mod, false, $md_pre = 'schema' );
+			$og_images = $this->p->og->get_all_images( 1, $size_name, $mod, false, $md_pre = array( 'p', 'schema', 'og' ) );
 
 			$image_url = SucomUtil::get_mt_media_url( $og_images );
 
-			$image_html = "\n" . '<!-- ' . $this->p->lca . ' schema image for pinterest pin it button -->' . "\n";
+			$image_html = '<!-- ' . $this->p->lca . ' pinterest pin it image added on ' . date( 'c' ) . ' -->' . "\n";
 
-			$image_html .= '<div class="' . $this->p->lca . '-schema-image-for-pinterest" style="display:none;">' . "\n";
+			$image_html .= '<div class="' . $this->p->lca . '-pinterest-pin-it-image" style="display:none !important;">' . "\n";
 
 			if ( empty( $image_url ) ) {
 
@@ -203,7 +219,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 					'data-pin-description="' . esc_attr( $data_pin_desc ) . '" />' . "\n";
 			}
 
-			$image_html .= '</div><!-- .' . $this->p->lca . '-schema-image-for-pinterest -->' . "\n\n";
+			$image_html .= '</div><!-- .' . $this->p->lca . '-pinterest-pin-it-image -->' . "\n\n";
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'done' );

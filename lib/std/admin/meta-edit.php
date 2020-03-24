@@ -272,10 +272,48 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 			);
 
 			/**
+			 * Pinterest Pin It
+			 */
+			$media_info = $this->p->og->get_media_info( $this->p->lca . '-pinterest',
+				array( 'pid', 'img_url' ), $mod, $md_pre = array( 'schema', 'og' ), $mt_pre = 'og' );
+
+			$row_class = $form->in_options( '/^p_img_/', $is_preg = true ) ? '' : 'hide_in_basic';
+
+			$form_rows[ 'subsection_pinterest' ] = array(
+				'tr_class' => $row_class,
+				'td_class' => 'subsection',
+				'header'   => 'h4',
+				'label'    => _x( 'Pinterest Pin It', 'metabox title', 'wpsso' )
+			);
+
+			$form_rows[ 'p_img_id' ] = array(
+				'tr_class' => $row_class,
+				'th_class' => 'medium',
+				'td_class' => 'blank',
+				'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
+				'tooltip'  => 'meta-p_img_id',
+				'content'  => $form->get_no_input_image_upload( 'p_img', $media_info[ 'pid' ], true ),
+			);
+
+			$form_rows[ 'p_img_url' ] = array(
+				'tr_class' => $row_class,
+				'th_class' => 'medium',
+				'td_class' => 'blank',
+				'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
+				'tooltip'  => 'meta-p_img_url',
+				'content'  => $form->get_no_input_value( $media_info[ 'img_url' ], $css_class = 'wide' ),
+			);
+
+			/**
 			 * Twitter Card
 			 */
 			list( $card_type, $card_label, $size_name, $tc_prefix ) = $this->p->tc->get_card_info( $mod, $head );
 
+			/**
+			 * App and Player cards do not have a $size_name.
+			 *
+			 * Only show custom image options for the Summary and Summary Large Image cards. 
+			 */
 			if ( ! empty( $size_name ) ) {
 
 				$media_info = $this->p->og->get_media_info( $size_name,
@@ -284,17 +322,17 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 				/**
 				 * Hide unless a custom twitter card image exists.
 				 */
-				$tc_row_class = $form->in_options( '/^' . $tc_prefix . '_img_/', true ) ? '' : 'hide_in_basic';
+				$row_class = $form->in_options( '/^' . $tc_prefix . '_img_/', $is_preg = true ) ? '' : 'hide_in_basic';
 
 				$form_rows[ 'subsection_tc' ] = array(
-					'tr_class' => $tc_row_class,
+					'tr_class' => $row_class,
 					'td_class' => 'subsection',
 					'header'   => 'h4',
 					'label'    => $card_label,
 				);
 
 				$form_rows[ $tc_prefix . '_img_id' ] = array(
-					'tr_class' => $tc_row_class,
+					'tr_class' => $row_class,
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
@@ -303,7 +341,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 				);
 
 				$form_rows[ $tc_prefix . '_img_url' ] = array(
-					'tr_class' => $tc_row_class,
+					'tr_class' => $row_class,
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
@@ -315,16 +353,21 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 			/**
 			 * Schema JSON-LD Markup / Rich Results.
 			 */
+			$row_class = $form->in_options( '/^schema_img_/', $is_preg = true ) ? '' : 'hide_in_basic';
+
 			$form_rows[ 'subsection_schema' ] = array(
+				'tr_class' => $row_class,
 				'td_class' => 'subsection',
 				'header'   => 'h4',
 				'label'    => _x( 'Schema JSON-LD Markup / Rich Results', 'metabox title', 'wpsso' )
 			);
 
-			$form_rows[ 'wpssojson_addon_msg' ] = array(
-				'table_row' => ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ?
-					'<td colspan="2">' . $this->p->msgs->more_schema_options() . '</td>' : '' ),
-			);
+			if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
+				$form_rows[ 'wpssojson_addon_msg' ] = array(
+					'tr_class'  => $row_class,
+					'table_row' => '<td colspan="2">' . $this->p->msgs->more_schema_options() . '</td>',
+				);
+			}
 
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head, $mod );
 		}

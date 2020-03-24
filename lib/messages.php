@@ -181,9 +181,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-p_img_desc':		// Pinterest Image Description.
+						case 'tooltip-meta-p_img_desc':		// Pinterest Description.
 
-							$text = __( 'A customized description for the hidden Pinterest image used by the Pin It browser button.', 'wpsso' );
+							$text = __( 'A customized description for the Pinterest Pin It browser button.', 'wpsso' );
 
 						 	break;
 
@@ -569,7 +569,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$def_img_dims = $this->get_def_img_dims( 'og_img' );
 
-							$text = sprintf( __( 'The image dimensions used for Facebook / Open Graph meta tags (the default dimensions are %s).', 'wpsso' ), $def_img_dims ) . ' ';
+							$text = sprintf( __( 'The image dimensions used for Facebook / Open Graph meta tags and oEmbed markup (the default dimensions are %s).', 'wpsso' ), $def_img_dims ) . ' ';
 
 							$text .= $fb_recs_transl;
 
@@ -1111,7 +1111,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						/**
-						 * Metabox Meta settings
+						 * Document Meta settings
 						 */
 						case 'tooltip-plugin_add_to':
 
@@ -1353,7 +1353,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$def_img_dims = $this->get_def_img_dims( 'schema_img' );
 
-							$text = sprintf( __( 'The image dimensions used for Google / Pinterest / Schema meta tags and JSON-LD markup (the default dimensions are %s).', 'wpsso' ), $def_img_dims );
+							$text = sprintf( __( 'The image dimensions used for Schema meta tags and JSON-LD markup (the default dimensions are %s).', 'wpsso' ), $def_img_dims );
 
 							break;
 
@@ -1473,7 +1473,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-p_site_verify':	// Pinterest Website Verification ID.
 
-							$text = sprintf( __( 'To <a href="%s">claim your website with Pinterest</a>, edit your account settings on Pinterest, select the "Claim" section, enter your website URL, and click the "Claim" button.', 'wpsso' ), 'https://help.pinterest.com/en/business/article/claim-your-website' ) . ' ';
+							$text = sprintf( __( 'To <a href="%s">claim your website with Pinterest</a>: Edit your account settings on Pinterest, select the "Claim" section, enter your website URL, then click the "Claim" button.', 'wpsso' ), 'https://help.pinterest.com/en/business/article/claim-your-website' ) . ' ';
 
 							$text .= __( 'Choose "Add HTML tag" and enter the "p:domain_verify" meta tag <code>content</code> value here (enter only the verification ID string, not the meta tag HTML).', 'wpsso' );
 
@@ -1515,7 +1515,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-p_img_desc_max_len':		// Maximum Image Description Length.
 
-							$text = sprintf( __( 'The maximum length for the hidden Pinterest image description value (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'p_img_desc_max_len' ) ) . ' ';
+							$text = sprintf( __( 'The maximum length used for the Pinterest Pin It browser button description (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'p_img_desc_max_len' ) ) . ' ';
+
+							break;
+
+						case 'tooltip-p_img_size':			// Pinterest Pin It Image Size.
+
+							$def_img_dims = $this->get_def_img_dims( 'p_img' );
+
+							$text = sprintf( __( 'The dimensions used for the Pinterest Pin It browser button image (the default dimensions are %s).', 'wpsso' ), $def_img_dims );
+
+							break;
 
 						default:
 

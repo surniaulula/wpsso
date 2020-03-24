@@ -566,7 +566,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 * values.
 			 *
 			 *	Array (
-			 *		[og_img] => Array (
+			 *		[og] => Array (
 			 *			[name] => opengraph
 			 *			[label] => Open Graph Image
 			 *		)

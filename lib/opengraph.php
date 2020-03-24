@@ -61,7 +61,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 		public function filter_plugin_image_sizes( $sizes ) {
 
-			$sizes[ 'og' ] = array(
+			$sizes[ 'og' ] = array(	// Option prefix.
 				'name'  => 'opengraph',
 				'label' => _x( 'Open Graph Image', 'image size label', 'wpsso' ),
 			);

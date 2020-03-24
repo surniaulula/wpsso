@@ -93,10 +93,10 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 					$metabox_context, $metabox_prio, $callback_args );
 
 			/**
-			 * Head HTML Tags metabox.
+			 * HTML Tags metabox.
 			 */
 			$metabox_id      = 'head_tags';
-			$metabox_title   = _x( 'Head HTML Tags', 'metabox title', 'wpsso' );
+			$metabox_title   = _x( 'HTML Tags', 'metabox title', 'wpsso' );
 			$metabox_screen  = $this->pagehook;
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
@@ -146,7 +146,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 			$tabs = apply_filters( $this->p->lca . '_advanced_' . $metabox_id . '_tabs', array(
 				'table_columns' => _x( 'Table Columns', 'metabox tab', 'wpsso' ),
-				'document_meta' => _x( 'Metabox Meta', 'metabox tab', 'wpsso' ),
+				'document_meta' => _x( 'Document Meta', 'metabox tab', 'wpsso' ),
 				'product_attrs' => _x( 'Product Attributes', 'metabox tab', 'wpsso' ),
 				'custom_fields' => _x( 'Custom Fields', 'metabox tab', 'wpsso' ),
 			) );

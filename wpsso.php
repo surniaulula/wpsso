@@ -15,7 +15,7 @@
  * Requires At Least: 4.0
  * Tested Up To: 5.4
  * WC Tested Up To: 4.0.1
- * Version: 6.26.0-dev.1
+ * Version: 6.26.0-dev.2
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -516,6 +516,23 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 * Runs at init priority 11.
 		 */
 		public function init_hooks() {
+
+			if ( $this->debug->enabled ) {
+				$this->debug->mark( 'init hooks' );	// Begin timer.
+			}
+
+			foreach ( array( 'filters' ) as $type_dir ) {
+
+				$classnames = $this->get_lib_classnames( $type_dir );	// Always returns an array.
+
+				foreach ( $classnames as $id => $classname ) {
+					new $classname( $this );	// Variable assignment is not required.
+				}
+			}
+
+			if ( $this->debug->enabled ) {
+				$this->debug->mark( 'init hooks' );	// End timer.
+			}
 		}
 
 		/**

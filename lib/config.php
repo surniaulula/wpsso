@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.26.0-dev.1',	// Plugin version.
-					'opt_version' => '716',		// Increment when changing default option values.
+					'version'     => '6.26.0-dev.2',	// Plugin version.
+					'opt_version' => '717',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -910,54 +910,80 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 				),
 			),
-			'opt' => array(						// Plugin options.
+			'opt' => array(
 				'defaults' => array(
-					'options_version'                   => '',		// Example: -wpsso512pro-wpssoum3gpl
-					'options_filtered'                  => false,
-					'site_name'                         => '',		// (localized)
-					'site_name_alt'                     => '',		// (localized)
-					'site_desc'                         => '',		// (localized)
-					'site_url'                          => '',
-					'site_org_schema_type'              => 'organization',
-					'site_place_id'                     => 'none',
-					'thumb_img_width'                   => 1200,
-					'thumb_img_height'                  => 630,
-					'thumb_img_crop'                    => 1,
-					'thumb_img_crop_x'                  => 'center',
-					'thumb_img_crop_y'                  => 'center',
-					'schema_add_home_organization'      => 1,
-					'schema_add_home_person'            => 0,
-					'schema_add_home_website'           => 1,
-					'schema_home_person_id'             => 'none',
-					'schema_logo_url'                   => '',
-					'schema_banner_url'                 => '',
-					'schema_article_img_width'          => 1200,		// Must be at least 696px for Articles.
-					'schema_article_img_height'         => 1800,
-					'schema_article_img_crop'           => 0,
-					'schema_article_img_crop_x'         => 'center',
-					'schema_article_img_crop_y'         => 'center',
-					'schema_article_1_1_img_width'      => 1200,		// Must be at least 1200px for Articles.
-					'schema_article_1_1_img_height'     => 1200,
-					'schema_article_1_1_img_crop'       => 1,
-					'schema_article_1_1_img_crop_x'     => 'center',
-					'schema_article_1_1_img_crop_y'     => 'center',
-					'schema_article_4_3_img_width'      => 1200,		// Must be at least 1200px for Articles.
-					'schema_article_4_3_img_height'     => 900,
-					'schema_article_4_3_img_crop'       => 1,
-					'schema_article_4_3_img_crop_x'     => 'center',
-					'schema_article_4_3_img_crop_y'     => 'center',
-					'schema_article_16_9_img_width'     => 1200,		// Must be at least 1200px for Articles.
-					'schema_article_16_9_img_height'    => 675,
-					'schema_article_16_9_img_crop'      => 1,
-					'schema_article_16_9_img_crop_x'    => 'center',
-					'schema_article_16_9_img_crop_y'    => 'center',
-					'schema_img_width'                  => 1200,		// Must be at least 400px.
-					'schema_img_height'                 => 1800,
-					'schema_img_crop'                   => 0,
-					'schema_img_crop_x'                 => 'center',
-					'schema_img_crop_y'                 => 'center',
-					'schema_img_max'                    => 1,
-					'schema_desc_max_len'               => 250,		// Max. Schema Description Length (hard limit).
+					'options_version'              => '',		// Example: -wpsso512pro-wpssoum3gpl
+					'options_filtered'             => false,
+					'site_name'                    => '',		// (localized)
+					'site_name_alt'                => '',		// (localized)
+					'site_desc'                    => '',		// (localized)
+					'site_url'                     => '',
+					'site_org_schema_type'         => 'organization',
+					'site_place_id'                => 'none',
+					'schema_add_home_organization' => 1,
+					'schema_add_home_person'       => 0,
+					'schema_add_home_website'      => 1,
+					'schema_home_person_id'        => 'none',
+					'schema_logo_url'              => '',
+					'schema_banner_url'            => '',
+					'schema_img_max'               => 1,
+					'schema_desc_max_len'          => 250,		// Max. Schema Description Length (hard limit).
+
+					/**
+					 * Open Graph image size.
+					 */
+					'og_img_width'  => 1200,
+					'og_img_height' => 630,
+					'og_img_crop'   => 1,
+					'og_img_crop_x' => 'center',
+					'og_img_crop_y' => 'center',
+
+					/**
+					 * Pinterest PinIt image size.
+					 */
+					'p_img_width'  => 1200,
+					'p_img_height' => 1800,
+					'p_img_crop'   => 0,
+					'p_img_crop_x' => 'center',
+					'p_img_crop_y' => 'center',
+
+					/**
+					 * Schema image sizes.
+					 */
+					'schema_article_img_width'       => 1200,		// Must be at least 696px for Articles.
+					'schema_article_img_height'      => 1800,
+					'schema_article_img_crop'        => 0,
+					'schema_article_img_crop_x'      => 'center',
+					'schema_article_img_crop_y'      => 'center',
+					'schema_article_1_1_img_width'   => 1200,		// Must be at least 1200px for Articles.
+					'schema_article_1_1_img_height'  => 1200,
+					'schema_article_1_1_img_crop'    => 1,
+					'schema_article_1_1_img_crop_x'  => 'center',
+					'schema_article_1_1_img_crop_y'  => 'center',
+					'schema_article_4_3_img_width'   => 1200,		// Must be at least 1200px for Articles.
+					'schema_article_4_3_img_height'  => 900,
+					'schema_article_4_3_img_crop'    => 1,
+					'schema_article_4_3_img_crop_x'  => 'center',
+					'schema_article_4_3_img_crop_y'  => 'center',
+					'schema_article_16_9_img_width'  => 1200,		// Must be at least 1200px for Articles.
+					'schema_article_16_9_img_height' => 675,
+					'schema_article_16_9_img_crop'   => 1,
+					'schema_article_16_9_img_crop_x' => 'center',
+					'schema_article_16_9_img_crop_y' => 'center',
+					'schema_img_width'               => 1200,		// Must be at least 400px.
+					'schema_img_height'              => 1800,
+					'schema_img_crop'                => 0,
+					'schema_img_crop_x'              => 'center',
+					'schema_img_crop_y'              => 'center',
+
+					/**
+					 * Schema thumbnail image size.
+					 */
+					'thumb_img_width'              => 1200,
+					'thumb_img_height'             => 630,
+					'thumb_img_crop'               => 1,
+					'thumb_img_crop_x'             => 'center',
+					'thumb_img_crop_y'             => 'center',
 
 					/**
 					 * Standard WordPress types.
@@ -1060,11 +1086,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_def_img_id_pre'          => 'wp',
 					'og_def_img_url'             => '',			// or Default / Fallback Image URL.
 					'og_def_product_category'    => 'none',			// Default Product Category.
-					'og_img_width'               => 1200,
-					'og_img_height'              => 630,
-					'og_img_crop'                => 1,
-					'og_img_crop_x'              => 'center',
-					'og_img_crop_y'              => 'center',
 					'og_img_max'                 => 1,
 					'og_vid_max'                 => 1,
 					'og_vid_autoplay'            => 1,
@@ -1372,7 +1393,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_col_def_width_max'      => '15vw',
 
 					/**
-					 * Advanced Settings - Metabox Meta tab.
+					 * Advanced Settings - Document Meta tab.
 					 */
 					'plugin_add_to_attachment'           => 1,
 					'plugin_add_to_page'                 => 1,

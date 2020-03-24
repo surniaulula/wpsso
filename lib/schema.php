@@ -57,29 +57,29 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function filter_plugin_image_sizes( $sizes ) {
 
-			$sizes[ 'schema' ] = array(
+			$sizes[ 'schema' ] = array(	// Option prefix.
 				'name'  => 'schema',
 				'label' => _x( 'Schema Image', 'image size label', 'wpsso' ),
 			);
 
-			$sizes[ 'schema_article' ] = array(
+			$sizes[ 'schema_article' ] = array(	// Option prefix.
 				'name'   => 'schema-article',
 				'label'  => _x( 'Schema Article Image', 'image size label', 'wpsso' ),
 			);
 
 			if ( ! empty( $this->p->avail[ 'amp' ][ 'any' ] ) ) {
 
-				$sizes[ 'schema_article_1_1' ] = array(
+				$sizes[ 'schema_article_1_1' ] = array(	// Option prefix.
 					'name'   => 'schema-article-1-1',
 					'label'  => _x( 'Schema Article AMP 1:1 Image', 'image size label', 'wpsso' ),
 				);
 
-				$sizes[ 'schema_article_4_3' ] = array(
+				$sizes[ 'schema_article_4_3' ] = array(	// Option prefix.
 					'name'   => 'schema-article-4-3',
 					'label'  => _x( 'Schema Article AMP 4:3 Image', 'image size label', 'wpsso' ),
 				);
 
-				$sizes[ 'schema_article_16_9' ] = array(
+				$sizes[ 'schema_article_16_9' ] = array(	// Option prefix.
 					'name'   => 'schema-article-16-9',
 					'label'  => _x( 'Schema Article AMP 16:9 Image', 'image size label', 'wpsso' ),
 				);
