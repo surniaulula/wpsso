@@ -58,12 +58,13 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 
 * Provides WordPress image size settings for:
 
-	* Open Graph (Facebook and Others)
-	* Schema (Google and Pinterest)
-	* Schema Article (Google and Pinterest)
-	* Schema Article AMP 1:1 (Google)
-	* Schema Article AMP 4:3 (Google)
-	* Schema Article AMP 16:9 (Google)
+	* Open Graph (Facebook and oEmbed)
+	* Pinterest Pin It
+	* Schema
+	* Schema Article
+	* Schema Article AMP 1:1
+	* Schema Article AMP 4:3
+	* Schema Article AMP 16:9
 	* Schema Thumbnail Image
 	* Twitter Summary Card
 	* Twitter Large Image Summary Card
@@ -87,13 +88,19 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 		* Open Graph Type
 		* Default Title
 		* Default Description
-		* Pinterest Image Description
+		* Pinterest Description
 		* Twitter Card Description
 		* Search Description
 		* Sharing URL
 		* Canonical URL
 		* Article Information
 			* Article Section
+	* Priority Media
+		* Facebook / Open Graph and Default Media
+			* Priority Image Information
+				* Maximum Images
+				* Image ID
+				* or Image URL
 
 * Built-in support for AMP plugins:
 
@@ -174,10 +181,6 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 			* Product ISBN
 	* Priority Media
 		* Facebook / Open Graph and Default Media
-			* Priority Image Information
-				* Maximum Images
-				* Image ID
-				* or Image URL
 			* Priority Video Information
 				* Include Preview Images
 				* Maximum Videos
@@ -185,6 +188,9 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 				* or Video URL
 				* Video Name / Title
 				* Video Description
+		* Pinterest Pin It
+			* Image ID
+			* or Image URL
 		* Twitter Card
 			* Image ID
 			* or Image URL
@@ -510,14 +516,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.26.0-dev.1 (2020/03/23)**
+**Version 6.26.0-dev.2 (2020/03/24)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added an SSO &gt; Advanced Settings &gt; Editing Pages metabox with tabs:
 		* Table Columns
-		* Metabox Meta
+		* Document Meta
 		* Product Attributes
 		* Custom Fields
 	* Added an SSO &gt; Advanced Settings &gt; Document Types metabox with tabs:
@@ -614,7 +620,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 			* Open Graph Type
 			* Default Title
 			* Default Description
-			* Pinterest Image Description
+			* Pinterest Description
 			* Twitter Card Description
 			* Search Description
 			* Sharing URL
@@ -916,7 +922,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* Added support for the "Perfect WooCommerce Brands" plugin (Premium version).
-	* Added a new "Pinterest Image Description" option in the Document SSO metabox.
+	* Added a new "Pinterest Description" option in the Document SSO metabox.
 	* Added a new "Maximum Image Description Length" option under the SSO > General > Pinterest tab.
 	* Added a new QA check for the WP_HOME constant value in `wp-config.php`.
 * **Bugfixes**
@@ -929,9 +935,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.26.0-dev.1 =
+= 6.26.0-dev.2 =
 
-(2020/03/23) Added new Editing Pages and Documet Types metaboxes in the Advanced Settings page.
+(2020/03/24) Added new Editing Pages and Documet Types metaboxes in the Advanced Settings page.
 
 = 6.25.1 =
 
