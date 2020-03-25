@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 6.26.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-03-25 13:27-0700\n"
-"PO-Revision-Date: 2020-03-25 13:37-0700\n"
+"POT-Creation-Date: 2020-03-25 14:07-0700\n"
+"PO-Revision-Date: 2020-03-25 14:07-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2693,7 +2693,7 @@ msgstr "Jeton YOURLS"
 
 #: lib/gettext-pro.php:77 lib/gettext-pro.php:80 lib/pro/admin/advanced.php:445
 #: lib/pro/admin/advanced.php:509 lib/std/admin/advanced.php:456
-#: lib/std/admin/advanced.php:522
+#: lib/std/admin/advanced.php:523
 msgctxt "column title"
 msgid "Show"
 msgstr "Afficher"
@@ -2701,7 +2701,7 @@ msgstr "Afficher"
 #: lib/gettext-pro.php:78 lib/gettext-pro.php:81 lib/messages.php:1722
 #: lib/messages.php:1724 lib/messages.php:1736 lib/messages.php:2083
 #: lib/pro/admin/advanced.php:446 lib/pro/admin/advanced.php:510
-#: lib/std/admin/advanced.php:457 lib/std/admin/advanced.php:523
+#: lib/std/admin/advanced.php:457 lib/std/admin/advanced.php:524
 msgctxt "column title"
 msgid "Contact Field ID"
 msgstr "ID du champ contact"
@@ -2709,13 +2709,13 @@ msgstr "ID du champ contact"
 #: lib/gettext-pro.php:79 lib/gettext-pro.php:82 lib/messages.php:1730
 #: lib/messages.php:2085 lib/pro/admin/advanced.php:447
 #: lib/pro/admin/advanced.php:511 lib/std/admin/advanced.php:458
-#: lib/std/admin/advanced.php:524
+#: lib/std/admin/advanced.php:525
 msgctxt "column title"
 msgid "Contact Field Label"
 msgstr "Titre du champ contact"
 
 #: lib/gettext-pro.php:83 lib/pro/admin/advanced.php:588
-#: lib/std/admin/advanced.php:600
+#: lib/std/admin/advanced.php:601
 msgid "An SEO plugin has been detected &mdash; some basic SEO meta tags have been unchecked and disabled automatically."
 msgstr "Une extension SEO a été détectée &mdash; certaines balises méta SEO de base ont été décochées et désactivées automatiquement."
 
