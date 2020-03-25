@@ -521,6 +521,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
+	* Added a new Pinterest Pin It image size to the SSO &gt; Image Sizes settings page.
+	* Added a new Pinterest Pin It section in the Document SSO &gt; Priority Media tab:
+		* Image ID
+		* or Image URL
 	* Added an SSO &gt; Advanced Settings &gt; Editing Pages metabox with tabs:
 		* Table Columns
 		* Document Meta
@@ -529,9 +533,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added an SSO &gt; Advanced Settings &gt; Document Types metabox with tabs:
 		* Open Graph Types
 		* Schema Types
-	* Added a new Pinterest Pin It section in the Document SSO &gt; Priority Media tab:
-		* Image ID
-		* or Image URL
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -940,7 +941,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 6.26.0-dev.3 =
 
-(2020/03/25) Added a new Pinterest Pin It section in the Document SSO &gt; Priority Media tab. Added new Editing Pages and Document Types metaboxes in the Advanced Settings page.
+(2020/03/25) Added a new Pinterest Pin It image size and section in the Document SSO &gt; Priority Media tab.
 
 = 6.25.1 =
 
