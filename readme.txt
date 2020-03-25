@@ -516,7 +516,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.26.0-dev.2 (2020/03/24)**
+**Version 6.26.0-dev.3 (2020/03/25)**
 
 * **New Features**
 	* None.
@@ -938,9 +938,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.26.0-dev.2 =
+= 6.26.0-dev.3 =
 
-(2020/03/24) Added a new Pinterest Pin It section in the Document SSO &gt; Priority Media tab. Added new Editing Pages and Document Types metaboxes in the Advanced Settings page.
+(2020/03/25) Added a new Pinterest Pin It section in the Document SSO &gt; Priority Media tab. Added new Editing Pages and Document Types metaboxes in the Advanced Settings page.
 
 = 6.25.1 =
 
