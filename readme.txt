@@ -521,9 +521,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a new Pinterest Pin It options in the Document SSO &gt; Priority Media tab:
-		* Image ID
-		* or Image URL
 	* Added an SSO &gt; Advanced Settings &gt; Editing Pages metabox with tabs:
 		* Table Columns
 		* Document Meta
@@ -532,6 +529,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added an SSO &gt; Advanced Settings &gt; Document Types metabox with tabs:
 		* Open Graph Types
 		* Schema Types
+	* Added a new Pinterest Pin It section in the Document SSO &gt; Priority Media tab:
+		* Image ID
+		* or Image URL
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -929,7 +929,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new "Maximum Image Description Length" option under the SSO > General > Pinterest tab.
 	* Added a new QA check for the WP_HOME constant value in `wp-config.php`.
 * **Bugfixes**
-	* Fixed an edge case issue with the "Add Hidden Image for Pin It Button" feature when the WordPress content filter was applied more than once.
+	* Fixed an edge case issue with the "Add Hidden Image for Pinterest" feature when the WordPress content filter was applied more than once.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -940,7 +940,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 6.26.0-dev.2 =
 
-(2020/03/24) Added a new Pinterest Pin It options in the Document SSO &gt; Priority Media tab. Added new Editing Pages and Document Types metaboxes in the Advanced Settings page.
+(2020/03/24) Added a new Pinterest Pin It section in the Document SSO &gt; Priority Media tab. Added new Editing Pages and Document Types metaboxes in the Advanced Settings page.
 
 = 6.25.1 =
 
