@@ -1974,9 +1974,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				( empty( $tooltip_text ) ? '' : $tooltip_text ) . '</p></th>';
 		}
 
-		public function get_tr_hide( $in_view = 'basic', $opt_keys = array() ) {
+		public function get_tr_hide( $in_view = 'basic', $option_keys = array() ) {
 
-			$css_class = self::get_css_class_hide( $in_view, $opt_keys );
+			$css_class = self::get_css_class_hide( $in_view, $option_keys );
 
 			return empty( $css_class ) ? '' : '<tr class="' . $css_class . '">';
 		}
@@ -1998,85 +1998,79 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_css_class_hide_img_dim( $in_view = 'basic', $name ) {
 
 			foreach ( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $name_suffix ) {
-				$opt_keys[] = $name . '_' . $name_suffix;
+				$option_keys[] = $name . '_' . $name_suffix;
 			}
 
-			return self::get_css_class_hide( $in_view, $opt_keys );
+			return self::get_css_class_hide( $in_view, $option_keys );
 		}
 
 		public function get_css_class_hide_vid_dim( $in_view = 'basic', $name ) {
 
 			foreach ( array( 'width', 'height' ) as $name_suffix ) {
-				$opt_keys[] = $name . '_' . $name_suffix;
+				$option_keys[] = $name . '_' . $name_suffix;
 			}
 
-			return self::get_css_class_hide( $in_view, $opt_keys );
+			return self::get_css_class_hide( $in_view, $option_keys );
 		}
 
 		public function get_css_class_hide_prefix( $in_view = 'basic', $name ) {
 
-			$opt_keys = SucomUtil::get_opts_begin( $name, $this->options );
+			$option_keys = SucomUtil::get_opts_begin( $name, $this->options );
 
-			return self::get_css_class_hide( $in_view, $opt_keys );
+			return self::get_css_class_hide( $in_view, $option_keys );
 		}
 
-		public function get_css_class_hide( $in_view = 'basic', $opt_keys = array() ) {
+		public function get_css_class_hide( $in_view = 'basic', $option_keys = array() ) {
 
 			$css_class = 'hide_in_' . $in_view;
 
-			if ( empty( $opt_keys ) ) {
+			if ( empty( $option_keys ) ) {
 
 				return $css_class;
 
-			} elseif ( ! is_array( $opt_keys ) ) {
+			} elseif ( ! is_array( $option_keys ) ) {
 
-				$opt_keys = array( $opt_keys );
+				$option_keys = array( $option_keys );
 
-			} elseif ( SucomUtil::is_assoc( $opt_keys ) ) {
+			} elseif ( SucomUtil::is_assoc( $option_keys ) ) {
 
-				$opt_keys = array_keys( $opt_keys );
+				$option_keys = array_keys( $option_keys );
 			}
 
-			foreach ( $opt_keys as $opt_key ) {
+			foreach ( $option_keys as $opt_locale_key ) {
 
-				if ( strpos( $opt_key, ':is' ) ) {	// Skip option flags.
+				if ( strpos( $opt_locale_key, ':is' ) ) {	// Skip option flags.
 
 					continue;
 				}
 
-				$def_key = false !== strpos( $opt_key, '#' ) ? preg_replace( '/#.*$/', '', $opt_key ) : $opt_key;
+				$def_locale_key = $opt_locale_key;
 
-				if ( empty( $def_key ) ) {
+				$def_key = preg_replace( '/#.*$/', '', $opt_locale_key );
 
-					continue;
-
-				} elseif ( ! isset( $this->options[ $opt_key ] ) ) {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'missing options key for ' . $opt_key );
-					}
+				if ( empty( $def_key ) ) {	// Just in case.
 
 					continue;
 
-				} elseif ( ! isset( $this->defaults[ $def_key ] ) ) {
-
-					if ( $this->options[ $opt_key ] !== '' ) {
-						return '';
-					}
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'missing defaults key for ' . $def_key );
-					}
+				} elseif ( ! isset( $this->options[ $opt_locale_key ] ) ) {	// Just in case.
 
 					continue;
 
-				} elseif ( $this->options[ $opt_key ] !== $this->defaults[ $def_key ] ) {
+				} elseif ( isset( $this->defaults[ $def_locale_key ] ) ) {
 
-					return '';
+					if ( $this->options[ $opt_locale_key ] !== $this->defaults[ $def_locale_key ] ) {
+						return '';	// Show option.
+					}
+
+				} elseif ( isset( $this->defaults[ $def_key ] ) ) {
+
+					if ( $this->options[ $opt_locale_key ] !== $this->defaults[ $def_key ] ) {
+						return '';	// Show option.
+					}
 				}
 			}
 
-			return $css_class;
+			return $css_class;	// Hide option.
 		}
 
 		public static function get_no_input_clipboard( $value, $css_class = 'wide', $css_id = '' ) {

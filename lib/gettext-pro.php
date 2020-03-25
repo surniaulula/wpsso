@@ -24,7 +24,7 @@ _x( 'Enforce Image Size Checks', 'option label', 'wpsso' );
 _x( 'recommended', 'option comment', 'wpsso' );
 _x( 'Upscale Media Library Images', 'option label', 'wpsso' );
 _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' );
-_x( 'Add %s Metabox to', 'option label', 'wpsso' );
+_x( 'Add %s Metabox', 'option label', 'wpsso' );
 _x( 'Import Yoast SEO Social Meta', 'option label', 'wpsso' );
 _x( 'Default Currency', 'option label', 'wpsso' );
 __( 'Posts, Pages, Custom Post Types', 'wpsso' );

@@ -2124,7 +2124,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<p>';
 
-							$text .= sprintf( __( 'WordPress and %s create resized image files based on the image size dimensions and crop settings.', 'wpsso' ), $info[ 'short' ] ) . ' ';
+							$text .= sprintf( __( 'WordPress and %s create resized image files based on image size dimensions and crop settings.', 'wpsso' ), $info[ 'short' ] ) . ' ';
 
 							$text .= __( 'Image sizes using the same dimensions and crop settings will create only a single image file.', 'wpsso' ) . ' ';
 

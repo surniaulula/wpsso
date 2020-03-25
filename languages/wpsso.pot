@@ -2169,77 +2169,77 @@ msgid "Video Embed HTML Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:191
-msgctxt "option value"
+msgctxt "option label"
 msgid "Product Brand Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:192
-msgctxt "option value"
+msgctxt "option label"
 msgid "Product Color Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:193
-msgctxt "option value"
+msgctxt "option label"
 msgid "Product Condition Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:194
-msgctxt "option value"
+msgctxt "option label"
 msgid "Product Depth Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:195
-msgctxt "option value"
+msgctxt "option label"
 msgid "Product GTIN-14 Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:196
-msgctxt "option value"
+msgctxt "option label"
 msgid "Product GTIN-13/EAN Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:197
-msgctxt "option value"
+msgctxt "option label"
 msgid "Product GTIN-12/UPC Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:198
-msgctxt "option value"
+msgctxt "option label"
 msgid "Product GTIN-8 Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:199
-msgctxt "option value"
+msgctxt "option label"
 msgid "Product GTIN Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:200
-msgctxt "option value"
+msgctxt "option label"
 msgid "Product ISBN Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:201
-msgctxt "option value"
+msgctxt "option label"
 msgid "Product Material Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:202
-msgctxt "option value"
+msgctxt "option label"
 msgid "Product MPN Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:203
-msgctxt "option value"
+msgctxt "option label"
 msgid "Product Size Attribute Name"
 msgstr ""
 
 #: lib/gettext-config.php:204
-msgctxt "option value"
+msgctxt "option label"
 msgid "Product Target Gender Attr. Name"
 msgstr ""
 
 #: lib/gettext-config.php:205
-msgctxt "option value"
+msgctxt "option label"
 msgid "Product Volume Attribute Name"
 msgstr ""
 
@@ -2558,7 +2558,7 @@ msgstr ""
 #: lib/gettext-pro.php:27 lib/pro/admin/advanced.php:168
 #: lib/std/admin/advanced.php:172
 msgctxt "option label"
-msgid "Add %s Metabox to"
+msgid "Add %s Metabox"
 msgstr ""
 
 #: lib/gettext-pro.php:28 lib/pro/admin/advanced.php:175
@@ -2819,7 +2819,7 @@ msgstr ""
 
 #: lib/gettext-pro.php:77 lib/gettext-pro.php:80 lib/pro/admin/advanced.php:445
 #: lib/pro/admin/advanced.php:509 lib/std/admin/advanced.php:456
-#: lib/std/admin/advanced.php:522
+#: lib/std/admin/advanced.php:523
 msgctxt "column title"
 msgid "Show"
 msgstr ""
@@ -2827,7 +2827,7 @@ msgstr ""
 #: lib/gettext-pro.php:78 lib/gettext-pro.php:81 lib/messages.php:1722
 #: lib/messages.php:1724 lib/messages.php:1736 lib/messages.php:2083
 #: lib/pro/admin/advanced.php:446 lib/pro/admin/advanced.php:510
-#: lib/std/admin/advanced.php:457 lib/std/admin/advanced.php:523
+#: lib/std/admin/advanced.php:457 lib/std/admin/advanced.php:524
 msgctxt "column title"
 msgid "Contact Field ID"
 msgstr ""
@@ -2835,13 +2835,13 @@ msgstr ""
 #: lib/gettext-pro.php:79 lib/gettext-pro.php:82 lib/messages.php:1730
 #: lib/messages.php:2085 lib/pro/admin/advanced.php:447
 #: lib/pro/admin/advanced.php:511 lib/std/admin/advanced.php:458
-#: lib/std/admin/advanced.php:524
+#: lib/std/admin/advanced.php:525
 msgctxt "column title"
 msgid "Contact Field Label"
 msgstr ""
 
 #: lib/gettext-pro.php:83 lib/pro/admin/advanced.php:588
-#: lib/std/admin/advanced.php:600
+#: lib/std/admin/advanced.php:601
 msgid ""
 "An SEO plugin has been detected &mdash; some basic SEO meta tags have been "
 "unchecked and disabled automatically."
@@ -5177,8 +5177,8 @@ msgstr ""
 
 #: lib/messages.php:2127
 msgid ""
-"WordPress and %s create resized image files based on the image size "
-"dimensions and crop settings."
+"WordPress and %s create resized image files based on image size dimensions "
+"and crop settings."
 msgstr ""
 
 #: lib/messages.php:2129

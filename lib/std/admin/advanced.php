@@ -169,7 +169,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			) );
 
 			$table_rows[ 'plugin_add_to' ] = '' .
-			$form->get_th_html( sprintf( _x( 'Add %s Metabox to', 'option label', 'wpsso' ), $add_to_metabox_title ), $css_class = '', $css_id = 'plugin_add_to' ) . 
+			$form->get_th_html( sprintf( _x( 'Add %s Metabox', 'option label', 'wpsso' ), $add_to_metabox_title ), $css_class = '', $css_id = 'plugin_add_to' ) . 
 			'<td class="blank">' . $add_to_checklist . '</td>';
 
 			/**
@@ -463,9 +463,9 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			foreach ( $sorted_opt_pre as $cm_id => $opt_pre ) {
 
-				$cm_enabled_key = 'plugin_cm_' . $opt_pre . '_enabled';
-				$cm_name_key    = 'plugin_cm_' . $opt_pre . '_name';
-				$cm_label_key   = SucomUtil::get_key_locale( 'plugin_cm_' . $opt_pre . '_label', $form->options );
+				$cm_enabled_key      = 'plugin_cm_' . $opt_pre . '_enabled';
+				$cm_name_key         = 'plugin_cm_' . $opt_pre . '_name';
+				$cm_label_locale_key = SucomUtil::get_key_locale( 'plugin_cm_' . $opt_pre . '_label', $form->options );
 
 				/**
 				 * Not all social sites have a contact method field.
@@ -494,15 +494,16 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 						/**
 						 * Hide all other contact methods if their values have not been customized.
 						 */
-						$tr_html = $form->get_tr_hide( 'basic', array( $cm_enabled_key, $cm_name_key, $cm_label_key ) );
+						$tr_html = $form->get_tr_hide( 'basic', array( $cm_enabled_key, $cm_name_key, $cm_label_locale_key ) );
 
 						break;
 				}
 
-				$table_rows[] = $tr_html . $form->get_th_html( $opt_label, 'medium' ) . 
+				$table_rows[] = $tr_html .
+				$form->get_th_html( $opt_label, 'medium' ) . 
 				$form->get_td_no_checkbox( $cm_enabled_key, '', true ) . 
 				'<td class="blank medium">' . $form->get_no_input( $cm_name_key, 'medium' ) . '</td>' . 
-				'<td class="blank wide">' . $form->get_no_input( $cm_label_key ) . '</td>';
+				'<td class="blank wide">' . $form->get_no_input( $cm_label_locale_key ) . '</td>';
 			}
 
 			return $table_rows;
@@ -529,9 +530,9 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			foreach ( $sorted_cm_names as $cm_id => $opt_label ) {
 
-				$cm_enabled_key = 'wp_cm_' . $cm_id . '_enabled';
-				$cm_name_key = 'wp_cm_' . $cm_id . '_name';
-				$cm_label_key = SucomUtil::get_key_locale( 'wp_cm_' . $cm_id . '_label', $form->options );
+				$cm_enabled_key      = 'wp_cm_' . $cm_id . '_enabled';
+				$cm_name_key         = 'wp_cm_' . $cm_id . '_name';
+				$cm_label_locale_key = SucomUtil::get_key_locale( 'wp_cm_' . $cm_id . '_label', $form->options );
 				/**
 				 * Not all social websites have a contact method field.
 				 */
@@ -542,7 +543,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$table_rows[] = $form->get_th_html( $opt_label, 'medium' ) . 
 				'<td class="checkbox blank">' . $form->get_no_checkbox_comment( $cm_enabled_key ) . '</td>' . 
 				'<td class="medium">' . $form->get_no_input( $cm_name_key, 'medium' ) . '</td>' . 
-				'<td class="blank wide">' . $form->get_no_input( $cm_label_key ) . '</td>';
+				'<td class="blank wide">' . $form->get_no_input( $cm_label_locale_key ) . '</td>';
 			}
 
 			return $table_rows;
