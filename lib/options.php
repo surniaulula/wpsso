@@ -607,13 +607,16 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				/**
-				 * Adjust / cleanup site options.
+				 * Adjust / cleanup options.
 				 */
 				if ( ! $network ) {
 
 					if ( ! $is_new_options && $version_changed ) {
 					
-						if ( empty( $opts[ 'plugin_' . $this->p->lca . '_tid' ] ) && ! $this->p->check->pp( $ext, $li = false ) ) {
+						if ( empty( $opts[ 'plugin_wpsso_tid' ] ) && ! $this->p->check->pp( 'wpsso', $li = false ) ) {
+
+							// translators: %s is the option key name.
+							$notice_msg = __( 'Non-standard value found for the "%s" option - resetting the option to its default value.', 'wpsso' );
 
 							if ( null === $def_opts ) {	// Only get default options once.
 								$def_opts = $this->get_defaults();
@@ -631,8 +634,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 								unset( $advanced_opts[ $opt_key ] );
 							}
 
-							$warn_msg = __( 'Non-standard value found for "%s" option - resetting to default value.', 'wpsso' );
-
 							foreach ( $advanced_opts as $opt_key => $def_val ) {
 
 								if ( isset( $opts[ $opt_key ] ) ) {
@@ -642,7 +643,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 									}
 
 									if ( is_admin() ) {
-										$this->p->notice->warn( sprintf( $warn_msg, $opt_key ) );
+										$this->p->notice->warn( sprintf( $notice_msg, $opt_key ) );
 									}
 								}
 
@@ -1055,11 +1056,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			$opts[ 'options_version' ] = $latest_version;	// Mark the new options array as current.
 
-			$doing_upgrade = ! $is_new_options && ! $options_changed && $current_version === $latest_version ? false : true;
-
 			/**
 			 * $doing_upgrade added in WPSSO Core v4.4.0.
 			 */
+			$doing_upgrade = ! $is_new_options && ! $options_changed && $current_version === $latest_version ? false : true;
+
 			$opts = apply_filters( $this->p->lca . '_save_options', $opts, $options_name, $network, $doing_upgrade );
 
 			if ( $network ) {

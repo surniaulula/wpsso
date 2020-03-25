@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.26.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 6.26.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -263,7 +263,7 @@ msgstr ""
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
-#: lib/admin.php:1037 lib/options.php:1089
+#: lib/admin.php:1037 lib/options.php:1090
 msgid "A background task will begin shortly to clear all caches."
 msgstr ""
 
@@ -609,7 +609,7 @@ msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:2756 lib/options.php:1152 lib/submenu/essential.php:169
+#: lib/admin.php:2756 lib/options.php:1153 lib/submenu/essential.php:169
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
@@ -5827,149 +5827,151 @@ msgctxt "image size label"
 msgid "Open Graph Image"
 msgstr ""
 
-#: lib/options.php:634
+#. translators: %s is the option key name.
+#: lib/options.php:619
 msgid ""
-"Non-standard value found for \"%s\" option - resetting to default value."
+"Non-standard value found for the \"%s\" option - resetting the option to its "
+"default value."
 msgstr ""
 
-#: lib/options.php:775
+#: lib/options.php:776
 msgid "WordPress could not find an entry for %s in the options table."
 msgstr ""
 
-#: lib/options.php:777
+#: lib/options.php:778
 msgid ""
 "WordPress returned a non-array value when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:779
+#: lib/options.php:780
 msgid ""
 "WordPress returned an empty array when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:781
+#: lib/options.php:782
 msgid ""
 "WordPress returned an unknown condition when reading %s from the options "
 "table."
 msgstr ""
 
-#: lib/options.php:796
+#: lib/options.php:797
 msgid ""
 "The plugin settings have been returned to their default values &mdash; <a "
 "href=\"%s\">please review and save the new settings</a>."
 msgstr ""
 
-#: lib/options.php:928
+#: lib/options.php:929
 msgid ""
 "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of "
 "%5$s:1, which not equal to the required image ratio of %6$s:1."
 msgstr ""
 
-#: lib/options.php:936
+#: lib/options.php:937
 msgid ""
 "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of "
 "%5$s:1, which is equal to / or greater than the maximum image ratio of "
 "%6$s:1."
 msgstr ""
 
-#: lib/options.php:944
+#: lib/options.php:945
 msgid "These options have been reset to their default values."
 msgstr ""
 
-#: lib/options.php:997
+#: lib/options.php:998
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length "
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:1088
+#: lib/options.php:1089
 msgid "Plugin settings have been upgraded and saved."
 msgstr ""
 
-#: lib/options.php:1185
+#: lib/options.php:1186
 msgid "The %1$s image dimensions cannot be determined."
 msgstr ""
 
-#: lib/options.php:1188
+#: lib/options.php:1189
 msgid ""
 "Please make sure this site can access the image URL at %1$s using the PHP "
 "getimagesize() function."
 msgstr ""
 
-#: lib/options.php:1193
+#: lib/options.php:1194
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr ""
 
-#: lib/options.php:1196
+#: lib/options.php:1197
 msgid "Please correct the banner image at %s."
 msgstr ""
 
-#: lib/options.php:1228
+#: lib/options.php:1229
 msgid ""
 "The value of option \"%s\" must be alpha-numeric - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1229
+#: lib/options.php:1230
 msgid ""
 "The value of option \"%s\" must be blank or numeric - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1230
+#: lib/options.php:1231
 msgid ""
 "The value of option \"%s\" must be a CSS color code - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1231
+#: lib/options.php:1232
 msgid ""
 "The value of option \"%s\" must be a comma-delimited list of URL(s) - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1232
+#: lib/options.php:1233
 msgid ""
 "The value of option \"%s\" must be a yyyy-mm-dd date - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1233
+#: lib/options.php:1234
 msgid ""
 "The value of option \"%s\" must be HTML code - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1234
+#: lib/options.php:1235
 msgid ""
 "The value of option \"%s\" must be an image ID - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1235
+#: lib/options.php:1236
 msgid ""
 "The value of option \"%s\" cannot be an empty string - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1236
+#: lib/options.php:1237
 msgid ""
 "The value of option \"%s\" must be numeric - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1237
+#: lib/options.php:1238
 msgid ""
 "The value of option \"%1$s\" must be equal to or greather than %2$s - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1238
+#: lib/options.php:1239
 msgid ""
 "The value of option \"%s\" must be a hh:mm time - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1239
+#: lib/options.php:1240
 msgid ""
 "The value of option \"%s\" must be a URL - resetting this option to its "
 "default value."
