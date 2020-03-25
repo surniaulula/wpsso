@@ -226,6 +226,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			) );
 
 			$table_rows = array();
+			$info_msg   = $this->p->msgs->get( 'info-' . $metabox_id );
 
 			foreach ( $tabs as $tab_key => $title ) {
 
@@ -237,7 +238,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				);
 			}
 
-			$this->p->util->do_metabox_table( array( '<td>' . $this->p->msgs->get( 'info-' . $metabox_id ) . '</td>' ), 'metabox-' . $metabox_id . '-info' );
+			$this->p->util->do_metabox_table( array( '<td>' . $info_msg . '</td>' ), 'metabox-' . $metabox_id . '-info' );
 
 			$this->p->util->do_metabox_tabbed( $metabox_id, $tabs, $table_rows );
 		}

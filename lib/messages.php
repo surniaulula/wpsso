@@ -2118,6 +2118,24 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
+						case 'info-image-sizes':
+
+							$text = '<blockquote class="top-info">';
+
+							$text .= '<p>';
+
+							$text .= sprintf( __( 'WordPress and %s create resized image files based on the image size dimensions and crop settings.', 'wpsso' ), $info[ 'short' ] ) . ' ';
+
+							$text .= __( 'Image sizes using the same dimensions and crop settings will create only a single image file.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'The default dimensions and crop settings from %s create only two resized image files per original full size image.', 'wpsso' ), $info[ 'short' ] );
+
+							$text .= '</p>';
+
+							$text .= '</blockquote>';
+
+							break;
+
 						default:
 
 							$text = apply_filters( $lca . '_messages_info', $text, $msg_key, $info );
