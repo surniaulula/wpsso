@@ -588,11 +588,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$maybe_hashtags = true;
 			$do_encode      = true;
 
-			$p_img_desc_disabled    = empty( $this->p->options[ 'p_add_img_html' ] ) ? true : false;
+			$p_img_disabled         = empty( $this->p->options[ 'p_add_img_html' ] ) ? true : false;
 			$seo_desc_disabled      = empty( $this->p->options[ 'add_meta_name_description' ] ) ? true : false;
 			$canonical_url_disabled = empty( $this->p->options[ 'add_link_rel_canonical' ] ) ? true : false;
 
-			$p_img_desc_msg    = $p_img_desc_disabled ? $this->p->msgs->p_img_desc_disabled() : '';
+			$p_img_msg         = $p_img_disabled ? $this->p->msgs->p_img_disabled() : '';
 			$seo_desc_msg      = $seo_desc_disabled ? $this->p->msgs->seo_option_disabled( 'meta name description' ) : '';
 			$canonical_url_msg = $canonical_url_disabled ? $this->p->msgs->seo_option_disabled( 'link rel canonical' ) : '';
 
@@ -622,7 +622,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			 */
 			$def_og_title      = $this->p->page->get_title( $og_title_max_len, $dots, $mod, $read_cache, $no_hashtags, $do_encode, 'none' );
 			$def_og_desc       = $this->p->page->get_description( $og_desc_max_len, $dots, $mod, $read_cache, $maybe_hashtags, $do_encode, 'none' );
-			$def_p_img_desc    = $p_img_desc_disabled ? '' : $this->p->page->get_description( $p_img_desc_max_len, $dots, $mod, $read_cache, $maybe_hashtags );
+			$def_p_img_desc    = $p_img_disabled ? '' : $this->p->page->get_description( $p_img_desc_max_len, $dots, $mod, $read_cache, $maybe_hashtags );
 			$def_tc_desc       = $this->p->page->get_description( $tc_desc_max_len, $dots, $mod, $read_cache );
 			$def_seo_desc      = $seo_desc_disabled ? '' : $this->p->page->get_description( $seo_desc_max_len, $dots, $mod, $read_cache, $no_hashtags );
 			$def_sharing_url   = $this->p->util->get_sharing_url( $mod, $add_page = false );
@@ -674,42 +674,44 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 						array( 'max' => $og_desc_max_len, 'warn' => $og_desc_warn_len ), $def_og_desc ),
 				),
 				'p_img_desc' => array(
-					'tr_class' => $p_img_desc_disabled ? 'hide_in_basic' : '',
+					'tr_class' => $p_img_disabled ? 'hide_in_basic' : '',
 					'th_class' => 'medium',
 					'label'    => _x( 'Pinterest Description', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-p_img_desc',
 					'content'  => $form->get_textarea( 'p_img_desc', $css_class = '', $css_id = '',
-						array( 'max' => $p_img_desc_max_len, 'warn' => $p_img_desc_warn_len ), $def_p_img_desc,
-							$p_img_desc_disabled ) . ' ' . $p_img_desc_msg,
+						array( 'max' => $p_img_desc_max_len, 'warn' => $p_img_desc_warn_len ),
+							$def_p_img_desc, $p_img_disabled ) . ' ' . $p_img_msg,
 				),
 				'tc_desc' => array(
 					'th_class' => 'medium',
 					'label'    => _x( 'Twitter Card Description', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-tc_desc',
-					'content'  => $form->get_textarea( 'tc_desc', $css_class = '', $css_id = '', $tc_desc_max_len, $def_tc_desc ),
+					'content'  => $form->get_textarea( 'tc_desc', $css_class = '', $css_id = '',
+						$tc_desc_max_len, $def_tc_desc ),
 				),
 				'seo_desc' => array(
 					'tr_class' => $seo_desc_disabled ? 'hide_in_basic' : '',
 					'th_class' => 'medium',
 					'label'    => _x( 'Search Description', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-seo_desc',
-					'content'  => $form->get_textarea( 'seo_desc', $css_class = '', $css_id = '', $seo_desc_max_len, $def_seo_desc,
-						$seo_desc_disabled ) . ' ' . $seo_desc_msg,
+					'content'  => $form->get_textarea( 'seo_desc', $css_class = '', $css_id = '',
+						$seo_desc_max_len, $def_seo_desc, $seo_desc_disabled ) . ' ' . $seo_desc_msg,
 				),
 				'sharing_url' => array(
 					'tr_class' => $form->get_css_class_hide( 'basic', 'sharing_url' ),
 					'th_class' => 'medium',
 					'label'    => _x( 'Sharing URL', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-sharing_url',
-					'content'  => $form->get_input( 'sharing_url', $css_class = 'wide', $css_id = '', $max_len = 0, $def_sharing_url ),
+					'content'  => $form->get_input( 'sharing_url', $css_class = 'wide', $css_id = '',
+						$max_len = 0, $def_sharing_url ),
 				),
 				'canonical_url' => array(
 					'tr_class' => $canonical_url_disabled ? 'hide_in_basic' : $form->get_css_class_hide( 'basic', 'canonical_url' ),
 					'th_class' => 'medium',
 					'label'    => _x( 'Canonical URL', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-canonical_url',
-					'content'  => $form->get_input( 'canonical_url', $css_class = 'wide', $css_id = '', $max_len = 0, $def_canonical_url,
-						$canonical_url_disabled ) . ' ' . $canonical_url_msg,
+					'content'  => $form->get_input( 'canonical_url', $css_class = 'wide', $css_id = '',
+						$max_len = 0, $def_canonical_url, $canonical_url_disabled ) . ' ' . $canonical_url_msg,
 				),
 
 				/**

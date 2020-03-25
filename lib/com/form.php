@@ -1230,7 +1230,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_input_image_crop_area( $name, $add_none = false, $is_disabled = true );
 		}
 
-		public function get_input_image_url( $name, $url = '' ) {
+		public function get_input_image_url( $name, $url = '', $is_disabled = false ) {
 
 			$key_suffix = '';
 
@@ -1242,17 +1242,19 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$input_name_id  = $name . '_id' . $key_suffix;
 			$input_name_url = $name . '_url' . $key_suffix;
 
+			/**
+			 * Disable the image URL option if we have an image ID.
+			 */
 			if ( empty( $this->options[ $input_name_id ] ) ) {
 
-				$placeholder = SucomUtil::esc_url_encode( $url );
-				$is_disabled = false;
-
-			} else {
 				$placeholder = '';
 				$is_disabled = true;
+
+			} else {
+				$placeholder = SucomUtil::esc_url_encode( $url );
 			}
 
-			return $this->get_input( $input_name_url, 'wide', '', 0, $placeholder, $is_disabled );
+			return $this->get_input( $input_name_url, $css_class = 'wide', $css_id = '', $len = 0, $placeholder, $is_disabled );
 		}
 
 		public function get_input_video_dimensions( $name, $media_info = array(), $is_disabled = false ) {

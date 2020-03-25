@@ -81,19 +81,14 @@ if ( ! class_exists( 'WpssoSubmenuImageSizes' ) && class_exists( 'WpssoAdmin' ) 
 
 			$metabox_id = $this->menu_id;
 
-			echo '<table class="sucom-settings ' . $this->p->lca . '">';
+			$filter_name = SucomUtil::sanitize_hookname( $this->p->lca . '_' . $metabox_id . '_general_rows' );
 
-			$table_rows = array_merge( $this->get_table_rows( $metabox_id, 'general' ),
-				apply_filters( SucomUtil::sanitize_hookname( $this->p->lca . '_' . $metabox_id . '_general_rows' ),
-					array(), $this->form ) );
+			$table_rows = array_merge(
+				$this->get_table_rows( $metabox_id, 'general' ),
+				apply_filters( $filter_name, array(), $this->form )
+			);
 
-			ksort( $table_rows );
-
-			foreach ( $table_rows as $num => $row ) {
-				echo '<tr>' . $row . '</tr>' . "\n";
-			}
-
-			echo '</table>';
+			$this->p->util->do_metabox_table( $table_rows, 'metabox-' . $metabox_id );
 		}
 
 		protected function get_table_rows( $metabox_id, $tab_key ) {
@@ -104,18 +99,19 @@ if ( ! class_exists( 'WpssoSubmenuImageSizes' ) && class_exists( 'WpssoAdmin' ) 
 
 				case 'image-sizes-general':
 
+					$p_img_disabled = empty( $this->p->options[ 'p_add_img_html' ] ) ? true : false;
+					$p_img_msg      = $p_img_disabled ? $this->p->msgs->p_img_disabled( 'left' ) : '';
+
 					$json_req_msg = $this->p->msgs->maybe_ext_required( 'wpssojson' );
 
 					$table_rows[ 'og_img_size' ] = '' .
 					$this->form->get_th_html( _x( 'Open Graph (Facebook and oEmbed)', 'option label', 'wpsso' ), '', 'og_img_size' ) . 
 					'<td>' . $this->form->get_input_image_dimensions( 'og_img' ) . '</td>';
 
-					if ( ! empty( $this->p->options[ 'p_add_img_html' ] ) ) {
-
-						$table_rows[ 'p_img_size' ] = '' .
-						$this->form->get_th_html( _x( 'Pinterest Pin It', 'option label', 'wpsso' ), '', 'p_img_size' ) . 
-						'<td>' . $this->form->get_input_image_dimensions( 'p_img' ) . '</td>';
-					}
+					$table_rows[ 'p_img_size' ] = ( $p_img_disabled ? $this->form->get_tr_hide( 'basic' ) : '' ) .
+					$this->form->get_th_html( _x( 'Pinterest Pin It', 'option label', 'wpsso' ), '', 'p_img_size' ) . 
+					'<td>' . $this->form->get_input_image_dimensions( 'p_img', $is_narrow = false,
+						$p_img_disabled ) . ' ' . $p_img_msg . '</td>';
 
 					$table_rows[ 'schema_00_img_size' ] = '' .		// Use a key name that sorts first.
 					$this->form->get_th_html( _x( 'Schema', 'option label', 'wpsso' ), '', 'schema_img_size' ) . 

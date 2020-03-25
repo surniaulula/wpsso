@@ -1101,7 +1101,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'p_publisher_url'            => '',
 					'p_add_nopin_header_img_tag' => 1,			// Add "nopin" to Site Header Image.
 					'p_add_nopin_media_img_tag'  => 0,			// Add "nopin" to WordPress Media.
-					'p_add_img_html'             => 0,			// Add Hidden Image for Pin It Button.
+					'p_add_img_html'             => 0,			// Add Hidden Image for Pinterest.
 					'p_img_desc_max_len'         => 300,			// Maximum Image Description Length (hard limit).
 					'p_img_desc_warn_len'        => 100,			// Maximum Image Description Length (soft limit).
 					'sc_publisher_url'           => '',

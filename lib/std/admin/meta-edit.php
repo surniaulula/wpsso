@@ -274,10 +274,13 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 			/**
 			 * Pinterest Pin It
 			 */
+			$p_img_disabled = empty( $this->p->options[ 'p_add_img_html' ] ) ? true : false;
+			$p_img_msg      = $p_img_disabled ? $this->p->msgs->p_img_disabled() : '';
+
 			$media_info = $this->p->og->get_media_info( $this->p->lca . '-pinterest',
 				array( 'pid', 'img_url' ), $mod, $md_pre = array( 'schema', 'og' ), $mt_pre = 'og' );
 
-			$row_class = $form->in_options( '/^p_img_/', $is_preg = true ) ? '' : 'hide_in_basic';
+			$row_class = ! $p_img_disabled && $form->in_options( '/^p_img_/', $is_preg = true ) ? '' : 'hide_in_basic';
 
 			$form_rows[ 'subsection_pinterest' ] = array(
 				'tr_class' => $row_class,
@@ -301,7 +304,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 				'td_class' => 'blank',
 				'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
 				'tooltip'  => 'meta-p_img_url',
-				'content'  => $form->get_no_input_value( $media_info[ 'img_url' ], $css_class = 'wide' ),
+				'content'  => $form->get_no_input_value( $media_info[ 'img_url' ], $css_class = 'wide' ) . ' ' . $p_img_msg,
 			);
 
 			/**

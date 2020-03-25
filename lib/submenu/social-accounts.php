@@ -51,17 +51,14 @@ if ( ! class_exists( 'WpssoSubmenuSocialAccounts' ) && class_exists( 'WpssoAdmin
 
 			$metabox_id = $this->menu_id;
 
-			echo '<table class="sucom-settings ' . $this->p->lca . '">';
+			$filter_name = SucomUtil::sanitize_hookname( $this->p->lca . '_' . $metabox_id . '_general_rows' );
 
-			$table_rows = array_merge( $this->get_table_rows( $metabox_id, 'general' ),
-				apply_filters( SucomUtil::sanitize_hookname( $this->p->lca . '_' . $metabox_id . '_general_rows' ),
-					array(), $this->form ) );
-					
-			foreach ( $table_rows as $num => $row ) {
-				echo '<tr>' . $row . '</tr>';
-			}
+			$table_rows = array_merge(
+				$this->get_table_rows( $metabox_id, 'general' ),
+				apply_filters( $filter_name, array(), $this->form )
+			);
 
-			echo '</table>';
+			$this->p->util->do_metabox_table( $table_rows, 'metabox-' . $metabox_id );
 		}
 
 		protected function get_table_rows( $metabox_id, $tab_key ) {

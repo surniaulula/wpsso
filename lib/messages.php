@@ -1499,7 +1499,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-p_add_nopin_media_img_tag':	// Add "nopin" to WordPress Media.
 
-							$add_img_html_label = _x( 'Add Hidden Image for Pin It Button', 'option label', 'wpsso' );
+							$add_img_html_label = _x( 'Add Hidden Image for Pinterest', 'option label', 'wpsso' );
 
 							$text = __( 'Add a "nopin" attribute to images from the WordPress Media Library to prevent the Pin It browser button from suggesting those images.', 'wpsso' ) . ' ';
 
@@ -1507,7 +1507,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-p_add_img_html':			// Add Hidden Image for Pin It Button.
+						case 'tooltip-p_add_img_html':			// Add Hidden Image for Pinterest.
 
 							$text = __( 'Add an extra hidden image in the WordPress post / page content for the Pinterest Pin It browser button.', 'wpsso' );
 
@@ -2793,14 +2793,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			return $html;
 		}
 
-		public function p_img_desc_disabled() {
+		public function p_img_disabled( $extra_css_class = '' ) {
 
 			$link = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest',
-				_x( 'Add Hidden Image for Pin It Button', 'option label', 'wpsso' ) );
+				_x( 'Add Hidden Image for Pinterest', 'option label', 'wpsso' ) );
 
-			$text = sprintf( __( 'Modifications disabled (the %s option is disabled).', 'wpsso' ), $link );
+			$text = sprintf( __( 'Modifications disabled (the %s option is unchecked).', 'wpsso' ), $link );
 
-			return '<p class="status-msg smaller disabled">' . $text . '</p>';
+			return '<p class="status-msg smaller disabled ' . $extra_css_class . '">' . $text . '</p>';
 		}
 
 		public function seo_option_disabled( $mt_name ) {
