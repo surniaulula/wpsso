@@ -19,19 +19,17 @@
 
 <p><strong>Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded:</strong></p>
 
-<p>WPSSO Core and its complementary add-ons are provide comprehensive information about your webpage content to social sites (Facebook, Pinterest, Twitter, LinkedIn, etc.), search engines and crawlers (Google, Bing, etc.), mail and text messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), REST API clients, and oEmbed data for embedded objects / iframes (LinkedIn, WordPress, etc.) &mdash; all from your existing WordPress content and plugin data.</p>
+<p>WPSSO Core and its free complementary add-ons provide comprehensive information about your webpage content to social sites (Facebook, Pinterest, Twitter, LinkedIn, etc.), search engines and crawlers (Google, Bing, etc.), mail and text messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), REST API clients, and oEmbed data for embedded objects / iframes (LinkedIn, WordPress, etc.) &mdash; all from your existing WordPress content and supported plugins.</p>
 
-<p>No other meta tag or Schema plugin satisfies all these essential social and search markup standards.</p>
+<p><strong>Uses your existing WordPress content, plugin and service API data:</strong></p>
 
-<p><strong>Uses your existing WordPress content and plugin / API data:</strong></p>
-
-<p>There's no need to manually duplicate or re-enter descriptions, titles, product information, re-select images / videos, etc. WPSSO reads your existing post, page, product, media, recipe, event, forum, and SEO content automatically &mdash; while also offering fine-tuning and customization options for just about everything. ;-)</p>
+<p>There's no need to manually re-create descriptions, titles, product information, re-select images / videos, etc. WPSSO Core reads your existing post, page, product, media, recipe, event, forum, and SEO content automatically &mdash; while also offering fine-tuning and customization options for just about everything. ;-)</p>
 
 <p><strong>Creates complete and accurate meta tags and Schema markup:</strong></p>
 
-<p>WPSSO Core and its complementary add-ons create meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph, Google Rich Results (previously known as Rich Snippets) with Structured Data, Mobile Web Browsers, oEmbed data for LinkedIn, Pinterest Rich Pins, Twitter Cards, Weibo and many more &mdash; including complete markup for image SEO, video SEO, extensive e-Commerce product markup (for WooCommerce and others), mobile apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content and plugin data!</p>
+<p>WPSSO Core and its complementary add-ons create meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph, Google Rich Results (aka Rich Snippets) with Structured Data, Mobile Web Browsers, oEmbed data for LinkedIn, Pinterest Rich Pins, Twitter Cards &mdash; including complete markup for image SEO, video SEO, extensive e-Commerce product markup (for WooCommerce and others), mobile store apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content and plugin data!</p>
 
-<p>WPSSO Core is language / locale aware, which means you can customize your site information, social page URLs and Knowledge Graph information for different languages.</p>
+<p>WPSSO Core is also language / locale aware, which means you can customize many option values for different languages.</p>
 
 <p><strong>Coded for maximum performance:</strong></p>
 
@@ -76,6 +74,7 @@
 <li>User Profile Pages</li>
 <li>Media Attachment Pages</li>
 <li>Search Result Pages</li>
+<li>Archive Pages</li>
 </ul></li>
 <li><p>Customize values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags), custom post types, and user profiles:</p>
 
@@ -109,8 +108,7 @@
 
 <ul>
 <li>Maximum Images</li>
-<li>Image ID</li>
-<li>or Image URL</li>
+<li>Image ID or Image URL</li>
 </ul></li>
 </ul></li>
 </ul></li>
@@ -171,7 +169,7 @@
 <li><a href="https://wordpress.org/plugins/wpsso-rest-api/">WPSSO REST API</a> to add meta tags and Schema markup in REST API queries.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-rrssb/">WPSSO Ridiculously Responsive Social Sharing Buttons</a> to add responsive share buttons.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-breadcrumbs/">WPSSO Schema Breadcrumbs Markup</a> to add Breadcrumbs markup for Google.</li>
-<li><a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> to add JSON-LD in post and archive pages.</li>
+<li><a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> to add JSON-LD for Google.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-ssb/">WPSSO Social Sharing Buttons</a> to add traditional share buttons.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-strip-schema-microdata">WPSSO Strip Schema Microdata</a> to strip incorrect markup from templates.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-tune-image-editors">WPSSO Tune Image Editors</a> for better looking WordPress thumbnails.</li>
@@ -184,76 +182,11 @@
 <p>The Standard version is designed to satisfy the requirements of most standard WordPress sites / blogs. If your site requires additional plugin or service API integration, like WooCommerce shops, embedded video support, or advanced customization features, then you may want the Premium version for those additional features.</p>
 
 <ul>
-<li><p>Customize additional values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags), custom post types, and user profiles:</p>
-
-<ul>
-<li>Customize Text
-
-<ul>
-<li>Basic Product Information
-
-<ul>
-<li>Product Brand</li>
-<li>Product Price and Currency</li>
-<li>Product Availability</li>
-<li>Product Condition</li>
-<li>Product Material</li>
-<li>Product Color</li>
-<li>Product Target Gender</li>
-<li>Product Size</li>
-<li>Product Weight (kg)</li>
-<li>Product SKU</li>
-<li>Product MPN</li>
-<li>Product ISBN</li>
-</ul></li>
-</ul></li>
-<li>Priority Media
-
-<ul>
-<li>Facebook / Open Graph and Default Media
-
-<ul>
-<li>Priority Video Information
-
-<ul>
-<li>Include Preview Images</li>
-<li>Maximum Videos</li>
-<li>Video Size</li>
-<li>or Video URL</li>
-<li>Video Name / Title</li>
-<li>Video Description</li>
-</ul></li>
-</ul></li>
-<li>Pinterest Pin It
-
-<ul>
-<li>Image ID</li>
-<li>or Image URL</li>
-</ul></li>
-<li>Twitter Card
-
-<ul>
-<li>Image ID</li>
-<li>or Image URL</li>
-</ul></li>
-<li>Schema JSON-LD Markup / Rich Results
-
-<ul>
-<li>Maximum Images</li>
-<li>Image ID</li>
-<li>or Image URL</li>
-</ul></li>
-</ul></li>
-</ul></li>
-<li><p>Optionally upscale small images from the Media Library for social sharing and Schema markup.</p></li>
-<li><p>Automatically validate all image minimum / maximum dimensions and aspect ratios.</p></li>
-<li><p>Render shortcodes and blocks for accurate description texts and embedded video detection.</p></li>
-<li><p>Additional Facebook, Open Graph, Rich Pin meta tags and Schema markup for videos and e-Commerce products.</p></li>
 <li><p>Support for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube in content text.</p></li>
 <li><p>Twitter <a href="https://dev.twitter.com/cards/types/player">Player Card</a> for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube.</p></li>
+<li><p>Optionally upscale small images from the Media Library for social sharing and Schema markup.</p></li>
 <li><p>URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.</p></li>
-<li><p>Integrates with services and 3rd party plugins for additional image, video, e-Commerce product details, SEO settings, and more.</p></li>
-<li><p>The following integration modules are provided with the Premium plugin, and are automatically loaded when the supported services are required or 3rd party plugins detected.</p>
+<li><p>Integrates with 3rd party plugins and services for additional image, video, eCommerce product details, SEO settings, etc. The following modules are included with the Premium version, and are automatically loaded if/when the supported plugins and/or services are required.</p>
 
 <ul>
 <li><p><strong>Integration with 3rd Party Plugins:</strong></p>
@@ -310,7 +243,65 @@
 <li>YouTube Videos and Playlists</li>
 </ul></li>
 </ul></li>
-<li><p>Additional custom Schema options in the Document SSO metabox are available with the <a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup Premium add-on</a>:</p>
+<li><p>Customize additional option values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags), custom post types, and user profiles:</p>
+
+<ul>
+<li>Customize Text
+
+<ul>
+<li>Basic Product Information
+
+<ul>
+<li>Product Brand</li>
+<li>Product Price and Currency</li>
+<li>Product Availability</li>
+<li>Product Condition</li>
+<li>Product Material</li>
+<li>Product Color</li>
+<li>Product Target Gender</li>
+<li>Product Size</li>
+<li>Product Weight (kg)</li>
+<li>Product SKU</li>
+<li>Product MPN</li>
+<li>Product ISBN</li>
+</ul></li>
+</ul></li>
+<li>Priority Media
+
+<ul>
+<li>Facebook / Open Graph and Default Media
+
+<ul>
+<li>Priority Video Information
+
+<ul>
+<li>Include Preview Images</li>
+<li>Maximum Videos</li>
+<li>Video Size</li>
+<li>Video Embed HTML or Video URL</li>
+<li>Video Name / Title</li>
+<li>Video Description</li>
+</ul></li>
+</ul></li>
+<li>Pinterest Pin It
+
+<ul>
+<li>Image ID or Image URL</li>
+</ul></li>
+<li>Twitter Card
+
+<ul>
+<li>Image ID or Image URL</li>
+</ul></li>
+<li>Schema JSON-LD Markup / Rich Results
+
+<ul>
+<li>Maximum Images</li>
+<li>Image ID or Image URL</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><p>Additional customizable option values in the Document SSO metabox are available from the <a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup Premium add-on</a>:</p>
 
 <ul>
 <li>All Schema Types
@@ -321,6 +312,12 @@
 <li>Description</li>
 <li>Microdata Type URLs</li>
 <li>Same-As URLs</li>
+</ul></li>
+<li>Claim Review Information
+
+<ul>
+<li>Short Summary of Claim</li>
+<li>First Appearance URL</li>
 </ul></li>
 <li>Creative Work Information
 
@@ -340,9 +337,9 @@
 
 <ul>
 <li>Event Language</li>
-<li>Event Organizer Org</li>
+<li>Event Organizer Organization</li>
 <li>Event Organizer Person</li>
-<li>Event Performer Org</li>
+<li>Event Performer Organization</li>
 <li>Event Performer Person</li>
 <li>Event Venue</li>
 <li>Event Start (date, time, timezone)</li>
@@ -359,17 +356,17 @@
 <li>How-To Total Time </li>
 <li>How-To Supplies </li>
 <li>How-To Tools </li>
-<li>How-To Steps (section name, section description, step name, and direction text)</li>
+<li>How-To Steps (section name, section description, step name, direction text and image)</li>
 </ul></li>
 <li>Job Posting Information
 
 <ul>
-<li>Job Posting Job Title</li>
-<li>Job Posting Hiring Organization</li>
-<li>Job Posting Job Location</li>
-<li>Job Posting Base Salary</li>
-<li>Job Posting Employment Type</li>
-<li>Job Posting Expires</li>
+<li>Job Title</li>
+<li>Hiring Organization</li>
+<li>Job Location</li>
+<li>Base Salary</li>
+<li>Employment Type</li>
+<li>Jpb Posting Expires</li>
 </ul></li>
 <li>Movie Information
 
@@ -389,7 +386,7 @@
 <ul>
 <li>Select a Person</li>
 </ul></li>
-<li>Additional Product Information
+<li>Product Information (Additional)
 
 <ul>
 <li>Product Length (cm)</li>
@@ -414,14 +411,13 @@
 <li>Recipe Cuisine </li>
 <li>Recipe Course </li>
 <li>Recipe Makes </li>
-<li>Recipe Cooking Method </li>
-<li>Recipe Preparation Time </li>
-<li>Recipe Cooking Time </li>
-<li>Recipe Total Time </li>
-<li>Recipe Total Calories </li>
+<li>Cooking Method </li>
+<li>Preparation Time </li>
+<li>Cooking Time </li>
+<li>Total Time </li>
 <li>Recipe Ingredients </li>
 <li>Recipe Instructions </li>
-<li>Recipe Nutrition Information per Serving 
+<li>Nutrition Information per Serving 
 
 <ul>
 <li>Serving Size</li>
