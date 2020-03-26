@@ -1128,6 +1128,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
+			$children = array_unique( $children );
+
 			if ( $use_cache ) {
 				if ( $cache_exp_secs > 0 ) {
 					set_transient( $cache_id, $children, $cache_exp_secs );
@@ -1457,7 +1459,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function count_schema_type_children( $type_id ) {
 
-			return count( $this->get_schema_type_children( $type_id ) );
+			$children = $this->get_schema_type_children( $type_id );
+
+			return count( $children );
 		}
 
 		public static function get_data_context( $json_data ) {
