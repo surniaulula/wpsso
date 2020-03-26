@@ -1991,9 +1991,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			/**
-			 * $alt_size_names must be empty, or an array of one or more image size names. Images created for
-			 * $alt_size_names are not added to the markup - they are only created to make sure the image file is
-			 * available, and to generate image related notices.
+			 * $alt_size_names must be empty, or an array of one or more image size names.
+			 *
+			 * Images created for $alt_size_names are not added to the markup - they are only created to make sure the
+			 * image file is available, and to generate image related notices.
 			 */
 			if ( empty( $alt_size_names ) ) {
 				$alt_size_names = null;
@@ -2922,6 +2923,35 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			return empty( $json_data ) ? false : $json_data;
+		}
+
+		public static function check_required( &$json_data, array $mod, $prop_names = array( 'image' ) ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			/**
+			 * Check only published posts or other non-post objects.
+			 */
+			if ( 'publish' === $mod[ 'post_status' ] || ! $mod[ 'is_post' ] ) {
+
+				foreach ( $prop_names as $prop_name ) {
+
+					if ( empty( $json_data[ $prop_name ] ) ) {
+
+						if ( $wpsso->debug->enabled ) {
+							$wpsso->debug->log( $prop_name . ' property value is empty and required' );
+						}
+
+						if ( $wpsso->notice->is_admin_pre_notices() ) {
+
+							$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-schema-' . $prop_name;
+							$error_msg  = $wpsso->msgs->get( 'notice-missing-schema-' . $prop_name );
+
+							$wpsso->notice->err( $error_msg, null, $notice_key );
+						}
+					}
+				}
+			}
 		}
 
 		/**

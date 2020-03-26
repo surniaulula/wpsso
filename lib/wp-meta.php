@@ -293,7 +293,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					/**
 					 * Schema JSON-LD Markup / Rich Results.
 					 */
-					'schema_img_max'    => isset( $opts[ 'og_img_max' ] ) ? (int) $opts[ 'og_img_max' ] : 1,	// 1 by default.
+					'schema_img_max'    => isset( $opts[ 'schema_img_max' ] ) ? (int) $opts[ 'schema_img_max' ] : 1,	// 1 by default.
 					'schema_img_id'     => '',
 					'schema_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
 					'schema_img_url'    => '',

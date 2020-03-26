@@ -600,6 +600,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 */
 			if ( ! isset( $mt_og[ 'og:video' ] ) ) {
 
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'getting videos for og:video meta tag' );
+				}
+
 				if ( ! $has_pp ) {
 
 					if ( $this->p->debug->enabled ) {
@@ -607,10 +611,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					}
 
 				} elseif ( $max_nums[ 'og_vid_max' ] > 0 ) {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'getting videos for og:video meta tag' );
-					}
 
 					$mt_og[ 'og:video' ] = $this->get_all_videos( $max_nums[ 'og_vid_max' ], $mod );
 
@@ -641,6 +641,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 * Get all images.
 			 */
 			if ( ! isset( $mt_og[ 'og:image' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'getting images for og:image meta tag' );
+				}
 
 				if ( $max_nums[ 'og_img_max' ] > 0 ) {
 
