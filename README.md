@@ -179,14 +179,14 @@
 
 <h3>WPSSO Core Premium Features</h3>
 
-<p>The Standard version is designed to satisfy the requirements of most standard WordPress sites / blogs. If your site requires additional plugin or service API integration, like WooCommerce shops, embedded video support, or advanced customization features, then you may want the Premium version for those additional features.</p>
+<p>The Standard version is designed to satisfy the requirements of most standard WordPress sites / blogs. If your site requires additional 3rd party plugin or service API integration, like WooCommerce shops, embedded video support, or advanced customization features, then you may want the Premium version for those additional features.</p>
 
 <ul>
 <li><p>Support for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube in content text.</p></li>
 <li><p>Twitter <a href="https://dev.twitter.com/cards/types/player">Player Card</a> for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube.</p></li>
 <li><p>Optionally upscale small images from the Media Library for social sharing and Schema markup.</p></li>
 <li><p>URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.</p></li>
-<li><p>Integrates with 3rd party plugins and services for additional image, video, eCommerce product details, SEO settings, etc. The following modules are included with the Premium version, and are automatically loaded if/when the supported plugins and/or services are required.</p>
+<li><p>Integrates with 3rd party plugins and service APIs for additional image, video, eCommerce product details, SEO settings, etc. The following modules are included with the Premium version, and are automatically loaded if/when the supported plugins and/or services are required.</p>
 
 <ul>
 <li><p><strong>Integration with 3rd Party Plugins:</strong></p>

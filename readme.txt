@@ -159,7 +159,7 @@ Simply activate the free complementary add-on(s) you need:
 
 <h3>WPSSO Core Premium Features</h3>
 
-The Standard version is designed to satisfy the requirements of most standard WordPress sites / blogs. If your site requires additional plugin or service API integration, like WooCommerce shops, embedded video support, or advanced customization features, then you may want the Premium version for those additional features.
+The Standard version is designed to satisfy the requirements of most standard WordPress sites / blogs. If your site requires additional 3rd party plugin or service API integration, like WooCommerce shops, embedded video support, or advanced customization features, then you may want the Premium version for those additional features.
 
 * Support for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube in content text.
 
@@ -169,7 +169,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 
 * URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.
 
-* Integrates with 3rd party plugins and services for additional image, video, eCommerce product details, SEO settings, etc. The following modules are included with the Premium version, and are automatically loaded if/when the supported plugins and/or services are required.
+* Integrates with 3rd party plugins and service APIs for additional image, video, eCommerce product details, SEO settings, etc. The following modules are included with the Premium version, and are automatically loaded if/when the supported plugins and/or services are required.
 
 	* **Integration with 3rd Party Plugins:** 
 
@@ -505,7 +505,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.26.0-b.1 (2020/03/26)**
+**Version 6.26.0-rc.1 (2020/03/26)**
 
 * **New Features**
 	* None.
@@ -926,7 +926,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.26.0-b.1 =
+= 6.26.0-rc.1 =
 
 (2020/03/26) Added a new Pinterest Pin It image size and section in the Document SSO &gt; Priority Media tab.
 
