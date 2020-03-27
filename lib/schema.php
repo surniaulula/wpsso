@@ -3385,7 +3385,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $is_archive ) {
 
 				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'using query loop to get posts mods' );
+					$wpsso->debug->log( 'using query loop to get post mods' );
 				}
 
 				/**
@@ -3478,21 +3478,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			} elseif ( is_object( $mod[ 'obj' ] ) && method_exists( $mod[ 'obj' ], 'get_posts_mods' ) ) {
 
 				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'using module object to get posts mods' );
+					$wpsso->debug->log( 'using module object to get post mods' );
 				}
 
 				$page_posts_mods = $mod[ 'obj' ]->get_posts_mods( $mod, $ppp, $wpsso_paged, $posts_args );
 
 			} else {
 				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'no source to get posts mods' );
+					$wpsso->debug->log( 'no source to get post mods' );
 				}
 			}
 
 			$page_posts_mods = apply_filters( $wpsso->lca . '_json_page_posts_mods', $page_posts_mods, $mod, $page_type_id, $is_main );
 
 			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->log( 'returning ' . count( $page_posts_mods ) . ' page posts mods' );
+				$wpsso->debug->log( 'returning ' . count( $page_posts_mods ) . ' post mods' );
 			}
 
 			return $page_posts_mods;
