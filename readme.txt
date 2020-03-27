@@ -510,7 +510,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added AMP image sizes to the SSO &gt; Image Sizes page (as hidden options), even if an AMP plugin is not active.
 * **Bugfixes**
 	* Fixed a possible image_make_intermediate_size() error from using an undefined Pinterest image size.
 * **Developer Notes**
