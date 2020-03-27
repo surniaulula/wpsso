@@ -2128,7 +2128,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= __( 'Image sizes using the same dimensions and crop settings will create only a single image file.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'The default dimensions and crop settings from %s create only two resized image files per original full size image.', 'wpsso' ), $info[ 'short' ] );
+							$text .= sprintf( __( 'The default dimensions and crop settings from %1$s create only %2$s resized image files (%3$s if an AMP plugin is active) per original full size image.', 'wpsso' ), $info[ 'short' ], __( 'two', 'wpsso' ), __( 'five', 'wpsso' ) );
 
 							$text .= '</p>';
 
@@ -2817,6 +2817,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				_x( 'Add Hidden Image for Pinterest', 'option label', 'wpsso' ) );
 
 			$text = sprintf( __( 'Modifications disabled (the %s option is unchecked).', 'wpsso' ), $link );
+
+			return '<p class="status-msg smaller disabled ' . $extra_css_class . '">' . $text . '</p>';
+		}
+
+		public function amp_img_disabled( $extra_css_class = '' ) {
+
+			$text = sprintf( __( 'Modifications disabled (no AMP plugin active).', 'wpsso' ), $link );
 
 			return '<p class="status-msg smaller disabled ' . $extra_css_class . '">' . $text . '</p>';
 		}

@@ -105,9 +105,11 @@ if ( ! class_exists( 'WpssoSubmenuImageSizes' ) && class_exists( 'WpssoAdmin' ) 
 				case 'image-sizes-general':
 
 					$p_img_disabled = empty( $this->p->options[ 'p_add_img_html' ] ) ? true : false;
-					$p_img_msg      = $p_img_disabled ? $this->p->msgs->p_img_disabled( 'left' ) : '';
+					$p_img_msg      = $p_img_disabled ? $this->p->msgs->p_img_disabled( 'inline' ) : '';
 
-					$json_req_msg = $this->p->msgs->maybe_ext_required( 'wpssojson' );
+					$amp_img_disabled = empty( $this->p->avail[ 'amp' ][ 'any' ] ) ? true : false;
+					$amp_img_msg      = $amp_img_disabled ? $this->p->msgs->amp_img_disabled( 'inline' ) :
+						$this->p->msgs->maybe_ext_required( 'wpssojson' );
 
 					$table_rows[ 'og_img_size' ] = '' .
 					$this->form->get_th_html( _x( 'Open Graph (Facebook and oEmbed)', 'option label', 'wpsso' ), '', 'og_img_size' ) . 
@@ -126,20 +128,20 @@ if ( ! class_exists( 'WpssoSubmenuImageSizes' ) && class_exists( 'WpssoAdmin' ) 
 					$this->form->get_th_html( _x( 'Schema Article', 'option label', 'wpsso' ), '', 'schema_article_img_size' ) . 
 					'<td>' . $this->form->get_input_image_dimensions( 'schema_article_img' ) . '</td>';
 
-					if ( ! empty( $this->p->avail[ 'amp' ][ 'any' ] ) ) {
+					$table_rows[ 'schema_article_01_01_img_size' ] = ( $amp_img_disabled ? $this->form->get_tr_hide( 'basic' ) : '' ) .
+					$this->form->get_th_html( _x( 'Schema Article AMP 1:1', 'option label', 'wpsso' ), '', 'schema_article_1_1_img_size' ) . 
+					'<td>' . $this->form->get_input_image_dimensions( 'schema_article_1_1_img', $is_narrow = false,
+						$amp_img_disabled ) . $amp_img_msg . '</td>';
 
-						$table_rows[ 'schema_article_01_01_img_size' ] = '' .
-						$this->form->get_th_html( _x( 'Schema Article AMP 1:1', 'option label', 'wpsso' ), '', 'schema_article_1_1_img_size' ) . 
-						'<td>' . $this->form->get_input_image_dimensions( 'schema_article_1_1_img' ) . $json_req_msg . '</td>';
+					$table_rows[ 'schema_article_04_03_img_size' ] = ( $amp_img_disabled ? $this->form->get_tr_hide( 'basic' ) : '' ) .
+					$this->form->get_th_html( _x( 'Schema Article AMP 4:3', 'option label', 'wpsso' ), '', 'schema_article_4_3_img_size' ) . 
+					'<td>' . $this->form->get_input_image_dimensions( 'schema_article_4_3_img', $is_narrow = false,
+						$amp_img_disabled ) . $amp_img_msg . '</td>';
 
-						$table_rows[ 'schema_article_04_03_img_size' ] = '' .
-						$this->form->get_th_html( _x( 'Schema Article AMP 4:3', 'option label', 'wpsso' ), '', 'schema_article_4_3_img_size' ) . 
-						'<td>' . $this->form->get_input_image_dimensions( 'schema_article_4_3_img' ) . $json_req_msg . '</td>';
-
-						$table_rows[ 'schema_article_16_09_img_size' ] = '' .
-						$this->form->get_th_html( _x( 'Schema Article AMP 16:9', 'option label', 'wpsso' ), '', 'schema_article_16_9_img_size' ) . 
-						'<td>' . $this->form->get_input_image_dimensions( 'schema_article_16_9_img' ) . $json_req_msg . '</td>';
-					}
+					$table_rows[ 'schema_article_16_09_img_size' ] = ( $amp_img_disabled ? $this->form->get_tr_hide( 'basic' ) : '' ) .
+					$this->form->get_th_html( _x( 'Schema Article AMP 16:9', 'option label', 'wpsso' ), '', 'schema_article_16_9_img_size' ) . 
+					'<td>' . $this->form->get_input_image_dimensions( 'schema_article_16_9_img', $is_narrow = false,
+						$amp_img_disabled ) . $amp_img_msg . '</td>';
 
 					$table_rows[ 'schema_thumb_img_size' ] = '' .
 					$this->form->get_th_html( _x( 'Schema Thumbnail Image', 'option label', 'wpsso' ), '', 'thumb_img_size' ) . 

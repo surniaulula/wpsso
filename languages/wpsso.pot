@@ -4983,7 +4983,7 @@ msgid ""
 "structure."
 msgstr ""
 
-#: lib/messages.php:1891 lib/messages.php:2851
+#: lib/messages.php:1891 lib/messages.php:2858
 msgid "Schema markup is disabled."
 msgstr ""
 
@@ -5184,8 +5184,16 @@ msgstr ""
 
 #: lib/messages.php:2131
 msgid ""
-"The default dimensions and crop settings from %s create only two resized "
-"image files per original full size image."
+"The default dimensions and crop settings from %1$s create only %2$s resized "
+"image files (%3$s if an AMP plugin is active) per original full size image."
+msgstr ""
+
+#: lib/messages.php:2131
+msgid "two"
+msgstr ""
+
+#: lib/messages.php:2131
+msgid "five"
 msgstr ""
 
 #: lib/messages.php:2161
@@ -5809,28 +5817,32 @@ msgstr ""
 msgid "Modifications disabled (the %s option is unchecked)."
 msgstr ""
 
+#: lib/messages.php:2826
+msgid "Modifications disabled (no AMP plugin active)."
+msgstr ""
+
 #. translators: %s is the meta tag name (aka meta name canonical).
-#: lib/messages.php:2827
+#: lib/messages.php:2834
 msgid ""
 "Modifications disabled (<code>%s</code> tag disabled or SEO plugin detected)."
 msgstr ""
 
 #. translators: %s is is the add-on name (and a link to the add-on page).
-#: lib/messages.php:2843
+#: lib/messages.php:2850
 msgid ""
 "Activate the %s add-on<br/>for Schema markup and structured data options."
 msgstr ""
 
-#: lib/messages.php:2852 lib/util.php:3960
+#: lib/messages.php:2859 lib/util.php:3960
 msgid "No options available."
 msgstr ""
 
-#: lib/messages.php:2892
+#: lib/messages.php:2899
 msgctxt "option value"
 msgid "uncropped"
 msgstr ""
 
-#: lib/messages.php:2893
+#: lib/messages.php:2900
 msgctxt "option value"
 msgid "cropped"
 msgstr ""
@@ -6768,22 +6780,22 @@ msgctxt "metabox title"
 msgid "Social and Search Image Sizes"
 msgstr ""
 
-#: lib/submenu/image-sizes.php:113
+#: lib/submenu/image-sizes.php:115
 msgctxt "option label"
 msgid "Open Graph (Facebook and oEmbed)"
 msgstr ""
 
-#: lib/submenu/image-sizes.php:117
+#: lib/submenu/image-sizes.php:119
 msgctxt "option label"
 msgid "Pinterest Pin It"
 msgstr ""
 
-#: lib/submenu/image-sizes.php:122
+#: lib/submenu/image-sizes.php:124
 msgctxt "option label"
 msgid "Schema"
 msgstr ""
 
-#: lib/submenu/image-sizes.php:126
+#: lib/submenu/image-sizes.php:128
 msgctxt "option label"
 msgid "Schema Article"
 msgstr ""
@@ -6793,27 +6805,27 @@ msgctxt "option label"
 msgid "Schema Article AMP 1:1"
 msgstr ""
 
-#: lib/submenu/image-sizes.php:136
+#: lib/submenu/image-sizes.php:137
 msgctxt "option label"
 msgid "Schema Article AMP 4:3"
 msgstr ""
 
-#: lib/submenu/image-sizes.php:140
+#: lib/submenu/image-sizes.php:142
 msgctxt "option label"
 msgid "Schema Article AMP 16:9"
 msgstr ""
 
-#: lib/submenu/image-sizes.php:145
+#: lib/submenu/image-sizes.php:147
 msgctxt "option label"
 msgid "Schema Thumbnail Image"
 msgstr ""
 
-#: lib/submenu/image-sizes.php:149
+#: lib/submenu/image-sizes.php:151
 msgctxt "option label"
 msgid "Twitter Summary Card"
 msgstr ""
 
-#: lib/submenu/image-sizes.php:153
+#: lib/submenu/image-sizes.php:155
 msgctxt "option label"
 msgid "Twitter Large Image Summary Card"
 msgstr ""
