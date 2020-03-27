@@ -2811,19 +2811,26 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			return $html;
 		}
 
+		/**
+		 * $extra_css_class can be empty, 'left', or 'inline'.
+		 */
 		public function p_img_disabled( $extra_css_class = '' ) {
 
 			$link = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest',
 				_x( 'Add Hidden Image for Pinterest', 'option label', 'wpsso' ) );
 
-			$text = sprintf( __( 'Modifications disabled (the %s option is unchecked).', 'wpsso' ), $link );
+			// translators: %s is the option name, linked to its settings page.
+			$text = sprintf( __( 'Modifications disabled (%s option is unchecked).', 'wpsso' ), $link );
 
 			return '<p class="status-msg smaller disabled ' . $extra_css_class . '">' . $text . '</p>';
 		}
 
+		/**
+		 * $extra_css_class can be empty, 'left', or 'inline'.
+		 */
 		public function amp_img_disabled( $extra_css_class = '' ) {
 
-			$text = sprintf( __( 'Modifications disabled (no AMP plugin active).', 'wpsso' ), $link );
+			$text = __( 'Modifications disabled (no AMP plugin active).', 'wpsso' );
 
 			return '<p class="status-msg smaller disabled ' . $extra_css_class . '">' . $text . '</p>';
 		}

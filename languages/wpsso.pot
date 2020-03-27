@@ -4757,7 +4757,7 @@ msgid ""
 "the Pin It browser button from suggesting those images."
 msgstr ""
 
-#: lib/messages.php:1502 lib/messages.php:2817 lib/submenu/essential.php:187
+#: lib/messages.php:1502 lib/messages.php:2820 lib/submenu/essential.php:187
 #: lib/submenu/general.php:307
 msgctxt "option label"
 msgid "Add Hidden Image for Pinterest"
@@ -4983,7 +4983,7 @@ msgid ""
 "structure."
 msgstr ""
 
-#: lib/messages.php:1891 lib/messages.php:2858
+#: lib/messages.php:1891 lib/messages.php:2865
 msgid "Schema markup is disabled."
 msgstr ""
 
@@ -5813,36 +5813,37 @@ msgctxt "option comment"
 msgid "note that video preview images are enabled (and included first)"
 msgstr ""
 
-#: lib/messages.php:2819
-msgid "Modifications disabled (the %s option is unchecked)."
+#. translators: %s is the option name, linked to its settings page.
+#: lib/messages.php:2823
+msgid "Modifications disabled (%s option is unchecked)."
 msgstr ""
 
-#: lib/messages.php:2826
+#: lib/messages.php:2833
 msgid "Modifications disabled (no AMP plugin active)."
 msgstr ""
 
 #. translators: %s is the meta tag name (aka meta name canonical).
-#: lib/messages.php:2834
+#: lib/messages.php:2841
 msgid ""
 "Modifications disabled (<code>%s</code> tag disabled or SEO plugin detected)."
 msgstr ""
 
 #. translators: %s is is the add-on name (and a link to the add-on page).
-#: lib/messages.php:2850
+#: lib/messages.php:2857
 msgid ""
 "Activate the %s add-on<br/>for Schema markup and structured data options."
 msgstr ""
 
-#: lib/messages.php:2859 lib/util.php:3960
+#: lib/messages.php:2866 lib/util.php:3960
 msgid "No options available."
 msgstr ""
 
-#: lib/messages.php:2899
+#: lib/messages.php:2906
 msgctxt "option value"
 msgid "uncropped"
 msgstr ""
 
-#: lib/messages.php:2900
+#: lib/messages.php:2907
 msgctxt "option value"
 msgid "cropped"
 msgstr ""
