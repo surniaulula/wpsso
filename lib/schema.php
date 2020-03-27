@@ -2932,7 +2932,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Check only published posts or other non-post objects.
 			 */
-			if ( 'publish' === $mod[ 'post_status' ] || ! $mod[ 'is_post' ] ) {
+			if ( ! $mod[ 'is_post' ] || $mod[ 'post_status' ] === 'publish' ) {
 
 				foreach ( $prop_names as $prop_name ) {
 
@@ -2945,7 +2945,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						if ( $wpsso->notice->is_admin_pre_notices() ) {
 
 							$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-schema-' . $prop_name;
-							$error_msg  = $wpsso->msgs->get( 'notice-missing-schema-' . $prop_name );
+
+							$error_msg = $wpsso->msgs->get( 'notice-missing-schema-' . $prop_name );
 
 							$wpsso->notice->err( $error_msg, null, $notice_key );
 						}

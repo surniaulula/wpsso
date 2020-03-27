@@ -921,7 +921,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			if ( empty( $org_opts ) ) {
 
-				if ( $org_id === 'site' ) {
+				if ( 'site' === $org_id ) {
 
 					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( 'getting site organization options array' );
@@ -1003,30 +1003,57 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					}
 				}
 
-				if ( empty( $ret[ 'logo' ] ) ) {
+				if ( ! $mod[ 'is_post' ] || $mod[ 'post_status' ] === 'publish' ) {
 
-					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( 'organization ' . $org_logo_key . ' image is missing and required' );
-					}
+					if ( empty( $ret[ 'logo' ] ) ) {
 
-					/**
-					 * Add notice only if the admin notices have not already been shown.
-					 */
-					if ( $wpsso->notice->is_admin_pre_notices() ) {
-					
-						if ( ! $mod[ 'is_post' ] || $mod[ 'post_status' ] === 'publish' ) {
+						if ( $wpsso->debug->enabled ) {
+							$wpsso->debug->log( 'organization ' . $org_logo_key . ' image is missing and required' );
+						}
 
-							if ( $org_logo_key === 'org_logo_url' ) {
+						/**
+						 * Add notice only if the admin notices have not already been shown.
+						 */
+						if ( $wpsso->notice->is_admin_pre_notices() ) {
 
-								$error_msg = __( 'The "%1$s" Organization Logo image is missing and required for the Schema %2$s markup.', 'wpsso' );
+							$logo_missing_msg   = __( 'An organization logo image is missing and required for the "%1$s" organization Schema %2$s markup.', 'wpsso' );
+							$banner_missing_msg = __( 'An organization banner image (600x60px) is missing and required for the "%1$s" organization Schema %2$s markup.', 'wpsso' );
+							$org_settings_msg   = __( 'Please enter the missing image URL in the "%1$s" %2$s organization settings.', 'wpsso' );
 
-								$wpsso->notice->err( sprintf( $error_msg, $ret[ 'name' ], $org_type_url ) );
+							if ( 'org_logo_url' === $org_logo_key ) {
+								$notice_msg = sprintf( $logo_missing_msg, $ret[ 'name' ], $org_type_url );
+							} elseif ( 'org_banner_url' === $org_logo_key ) {
+								$notice_msg = sprintf( $banner_missing_msg, $ret[ 'name' ], $org_type_url );
+							} else {
+								$notice_msg = '';
+							}
 
-							} elseif ( $org_logo_key === 'org_banner_url' ) {
+							if ( $notice_msg ) {
 
-								$error_msg = __( 'The "%1$s" Organization Banner (600x60px) image is missing and required for the Schema %2$s markup.', 'wpsso' );
-	
-								$wpsso->notice->err( sprintf( $error_msg, $ret[ 'name' ], $org_type_url ) );
+								if ( 'site' === $org_id ) {
+
+									$general_page_link = $wpsso->util->get_admin_url( 'essential#sucom-tabset_essential-tab_google' );
+
+									$notice_msg .= ' <a href="' . $general_page_link . '">';
+									$notice_msg .= sprintf( $org_settings_msg, $ret[ 'name' ], $org_id );
+									$notice_msg .= '</a>';
+
+								} elseif ( ! empty( $wpsso->avail[ 'p_ext' ][ 'org' ] ) ) {
+
+									$org_page_link = $wpsso->util->get_admin_url( 'org-general#sucom-tabset_organization-tab_other_organizations' );
+
+									$notice_msg .= ' <a href="' . $org_page_link . '">';
+									$notice_msg .= sprintf( $org_settings_msg, $ret[ 'name' ], 'ID #' . $org_id );
+									$notice_msg .= '</a>';
+
+								} else {
+									$notice_msg .= ' ';
+									$notice_msg .= sprintf( $org_settings_msg, $ret[ 'name' ], 'ID #' . $org_id );
+								}
+
+								$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-schema-' . $org_logo_key;
+
+								$wpsso->notice->err( $notice_msg, null, $notice_key );
 							}
 						}
 					}
