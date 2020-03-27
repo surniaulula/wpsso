@@ -2945,8 +2945,8 @@ msgid "Product ISBN"
 msgstr ""
 
 #: lib/gettext-pro.php:106 lib/gettext-pro.php:120
-#: lib/pro/admin/meta-edit.php:190 lib/pro/admin/meta-edit.php:366
-#: lib/std/admin/meta-edit.php:191 lib/std/admin/meta-edit.php:371
+#: lib/pro/admin/meta-edit.php:190 lib/pro/admin/meta-edit.php:364
+#: lib/std/admin/meta-edit.php:191 lib/std/admin/meta-edit.php:369
 msgctxt "metabox title"
 msgid "Schema JSON-LD Markup / Rich Results"
 msgstr ""
@@ -2999,23 +2999,23 @@ msgctxt "option label"
 msgid "Video Description"
 msgstr ""
 
-#: lib/gettext-pro.php:115 lib/pro/admin/meta-edit.php:294
-#: lib/std/admin/meta-edit.php:295
+#: lib/gettext-pro.php:115 lib/pro/admin/meta-edit.php:292
+#: lib/std/admin/meta-edit.php:293
 msgctxt "metabox title"
 msgid "Pinterest Pin It"
 msgstr ""
 
 #: lib/gettext-pro.php:116 lib/gettext-pro.php:118
-#: lib/pro/admin/meta-edit.php:300 lib/pro/admin/meta-edit.php:343
-#: lib/std/admin/meta-edit.php:302 lib/std/admin/meta-edit.php:347
+#: lib/pro/admin/meta-edit.php:298 lib/pro/admin/meta-edit.php:341
+#: lib/std/admin/meta-edit.php:300 lib/std/admin/meta-edit.php:345
 #: lib/wp-meta.php:784
 msgctxt "option label"
 msgid "Image ID"
 msgstr ""
 
 #: lib/gettext-pro.php:117 lib/gettext-pro.php:119
-#: lib/pro/admin/meta-edit.php:308 lib/pro/admin/meta-edit.php:351
-#: lib/std/admin/meta-edit.php:311 lib/std/admin/meta-edit.php:356
+#: lib/pro/admin/meta-edit.php:306 lib/pro/admin/meta-edit.php:349
+#: lib/std/admin/meta-edit.php:309 lib/std/admin/meta-edit.php:354
 #: lib/wp-meta.php:790
 msgctxt "option label"
 msgid "or an Image URL"
