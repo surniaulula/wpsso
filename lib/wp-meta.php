@@ -751,8 +751,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			$max_media_items = $this->p->cf[ 'form' ][ 'max_media_items' ];
 
-			$media_info = $this->p->og->get_media_info( $this->p->lca . '-opengraph', 
-				array( 'pid', 'img_url' ), $mod, $md_pre = 'none', $mt_pre = 'og' );
+			$size_name = $this->p->lca . '-opengraph';
+
+			$media_info = $this->p->og->get_media_info( $size_name, array( 'pid', 'img_url' ), $mod, $md_pre = 'none', $mt_pre = 'og' );
 
 			/**
 			 * Metabox form rows.

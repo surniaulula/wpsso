@@ -2573,8 +2573,8 @@ msgstr ""
 msgid "Posts, Pages, Custom Post Types"
 msgstr ""
 
-#: lib/gettext-pro.php:31 lib/media.php:124 lib/media.php:701 lib/media.php:874
-#: lib/media.php:1873 lib/pro/admin/advanced.php:204
+#: lib/gettext-pro.php:31 lib/media.php:124 lib/media.php:711 lib/media.php:884
+#: lib/media.php:1883 lib/pro/admin/advanced.php:204
 #: lib/std/admin/advanced.php:210
 msgid "Media Library"
 msgstr ""
@@ -2945,8 +2945,8 @@ msgid "Product ISBN"
 msgstr ""
 
 #: lib/gettext-pro.php:106 lib/gettext-pro.php:120
-#: lib/pro/admin/meta-edit.php:190 lib/pro/admin/meta-edit.php:360
-#: lib/std/admin/meta-edit.php:191 lib/std/admin/meta-edit.php:365
+#: lib/pro/admin/meta-edit.php:190 lib/pro/admin/meta-edit.php:366
+#: lib/std/admin/meta-edit.php:191 lib/std/admin/meta-edit.php:371
 msgctxt "metabox title"
 msgid "Schema JSON-LD Markup / Rich Results"
 msgstr ""
@@ -2999,24 +2999,24 @@ msgctxt "option label"
 msgid "Video Description"
 msgstr ""
 
-#: lib/gettext-pro.php:115 lib/pro/admin/meta-edit.php:288
-#: lib/std/admin/meta-edit.php:289
+#: lib/gettext-pro.php:115 lib/pro/admin/meta-edit.php:294
+#: lib/std/admin/meta-edit.php:295
 msgctxt "metabox title"
 msgid "Pinterest Pin It"
 msgstr ""
 
 #: lib/gettext-pro.php:116 lib/gettext-pro.php:118
-#: lib/pro/admin/meta-edit.php:294 lib/pro/admin/meta-edit.php:337
-#: lib/std/admin/meta-edit.php:296 lib/std/admin/meta-edit.php:341
-#: lib/wp-meta.php:783
+#: lib/pro/admin/meta-edit.php:300 lib/pro/admin/meta-edit.php:343
+#: lib/std/admin/meta-edit.php:302 lib/std/admin/meta-edit.php:347
+#: lib/wp-meta.php:784
 msgctxt "option label"
 msgid "Image ID"
 msgstr ""
 
 #: lib/gettext-pro.php:117 lib/gettext-pro.php:119
-#: lib/pro/admin/meta-edit.php:302 lib/pro/admin/meta-edit.php:345
-#: lib/std/admin/meta-edit.php:305 lib/std/admin/meta-edit.php:350
-#: lib/wp-meta.php:789
+#: lib/pro/admin/meta-edit.php:308 lib/pro/admin/meta-edit.php:351
+#: lib/std/admin/meta-edit.php:311 lib/std/admin/meta-edit.php:356
+#: lib/wp-meta.php:790
 msgctxt "option label"
 msgid "or an Image URL"
 msgstr ""
@@ -3147,7 +3147,7 @@ msgid ""
 msgstr ""
 
 #: lib/gettext-pro.php:158 lib/page.php:716 lib/pro/social/buddypress.php:656
-#: lib/wp-meta.php:900
+#: lib/wp-meta.php:901
 msgctxt "default description"
 msgid "No Description."
 msgstr ""
@@ -3338,7 +3338,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: lib/media.php:127 lib/media.php:1880
+#: lib/media.php:127 lib/media.php:1890
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
@@ -3361,97 +3361,97 @@ msgid ""
 "all %1$d image sizes): %2$d by %3$d pixels."
 msgstr ""
 
-#: lib/media.php:657
+#: lib/media.php:667
 msgid ""
 "The NGG integration module provided by %1$s is required to read information "
 "for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:703
+#: lib/media.php:713
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:707 lib/media.php:880
+#: lib/media.php:717 lib/media.php:890
 msgid ""
 "You may consider regenerating the thumbnails of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:729
+#: lib/media.php:739
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image dimensions for "
 "<a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:755
+#: lib/media.php:765
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image file path for "
 "<a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:876
+#: lib/media.php:886
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:882
+#: lib/media.php:892
 msgid ""
 "Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress "
 "%3$s function</a> reported an error when trying to create an image size from "
 "%4$s."
 msgstr ""
 
-#: lib/media.php:1333
+#: lib/media.php:1343
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1890
+#: lib/media.php:1900
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:1915
+#: lib/media.php:1925
 msgctxt "option label"
 msgid "Facebook Open Graph"
 msgstr ""
 
-#: lib/media.php:1924
+#: lib/media.php:1934
 msgctxt "option label"
 msgid "Google Schema"
 msgstr ""
 
-#: lib/media.php:1933
+#: lib/media.php:1943
 msgctxt "option label"
 msgid "Google Schema Article"
 msgstr ""
 
-#: lib/media.php:1942
+#: lib/media.php:1952
 msgctxt "option label"
 msgid "Google Schema Article AMP 1:1"
 msgstr ""
 
-#: lib/media.php:1951
+#: lib/media.php:1961
 msgctxt "option label"
 msgid "Google Schema Article AMP 4:3"
 msgstr ""
 
-#: lib/media.php:1960
+#: lib/media.php:1970
 msgctxt "option label"
 msgid "Google Schema Article AMP 16:9"
 msgstr ""
 
-#: lib/media.php:2000
+#: lib/media.php:2010
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:2031
+#: lib/media.php:2041
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -6040,7 +6040,7 @@ msgctxt "default title"
 msgid "%s Archive"
 msgstr ""
 
-#: lib/page.php:946 lib/wp-meta.php:897
+#: lib/page.php:946 lib/wp-meta.php:898
 msgctxt "default title"
 msgid "No Title"
 msgstr ""
@@ -7131,12 +7131,12 @@ msgctxt "option label"
 msgid "Search Description"
 msgstr ""
 
-#: lib/wp-meta.php:703 lib/wp-meta.php:874
+#: lib/wp-meta.php:703 lib/wp-meta.php:875
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
-#: lib/wp-meta.php:711 lib/wp-meta.php:878
+#: lib/wp-meta.php:711 lib/wp-meta.php:879
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
@@ -7151,179 +7151,179 @@ msgctxt "option label"
 msgid "Article Section"
 msgstr ""
 
-#: lib/wp-meta.php:767
+#: lib/wp-meta.php:768
 msgctxt "metabox title"
 msgid "Facebook / Open Graph and Default Media"
 msgstr ""
 
-#: lib/wp-meta.php:772
+#: lib/wp-meta.php:773
 msgctxt "metabox title"
 msgid "Priority Image Information"
 msgstr ""
 
-#: lib/wp-meta.php:777
+#: lib/wp-meta.php:778
 msgctxt "option label"
 msgid "Maximum Images"
 msgstr ""
 
-#: lib/wp-meta.php:853
+#: lib/wp-meta.php:854
 msgctxt "preview image error"
 msgid "Image Size Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/wp-meta.php:862
+#: lib/wp-meta.php:863
 msgctxt "preview image error"
 msgid "Image Size Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/wp-meta.php:869
+#: lib/wp-meta.php:870
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/wp-meta.php:884
+#: lib/wp-meta.php:885
 msgctxt "option label"
 msgid "Shortlink URL"
 msgstr ""
 
-#: lib/wp-meta.php:888
+#: lib/wp-meta.php:889
 msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/wp-meta.php:934
+#: lib/wp-meta.php:935
 msgctxt "option label"
 msgid "oEmbed JSON URL"
 msgstr ""
 
-#: lib/wp-meta.php:938
+#: lib/wp-meta.php:939
 msgctxt "option label"
 msgid "oEmbed XML URL"
 msgstr ""
 
-#: lib/wp-meta.php:942
+#: lib/wp-meta.php:943
 msgctxt "option label"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/wp-meta.php:950
+#: lib/wp-meta.php:951
 msgid "(see bellow)"
 msgstr ""
 
-#: lib/wp-meta.php:959
+#: lib/wp-meta.php:960
 msgid "No oEmbed data found."
 msgstr ""
 
-#: lib/wp-meta.php:963
+#: lib/wp-meta.php:964
 msgctxt "option label"
 msgid "oEmbed HTML"
 msgstr ""
 
-#: lib/wp-meta.php:975
+#: lib/wp-meta.php:976
 msgid "No oEmbed HTML found."
 msgstr ""
 
-#: lib/wp-meta.php:1091
+#: lib/wp-meta.php:1092
 msgctxt "option label"
 msgid "Facebook Open Graph Object Debugger"
 msgstr ""
 
-#: lib/wp-meta.php:1092
+#: lib/wp-meta.php:1093
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/wp-meta.php:1096
+#: lib/wp-meta.php:1097
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/wp-meta.php:1097
+#: lib/wp-meta.php:1098
 msgctxt "submit button"
 msgid "Validate Microdata"
 msgstr ""
 
-#: lib/wp-meta.php:1103
+#: lib/wp-meta.php:1104
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/wp-meta.php:1104
+#: lib/wp-meta.php:1105
 msgctxt "submit button"
 msgid "Validate PageSpeed"
 msgstr ""
 
-#: lib/wp-meta.php:1108
+#: lib/wp-meta.php:1109
 msgctxt "option label"
 msgid "Google Structured Data Test"
 msgstr ""
 
-#: lib/wp-meta.php:1109
+#: lib/wp-meta.php:1110
 msgctxt "submit button"
 msgid "Validate Structured Data"
 msgstr ""
 
-#: lib/wp-meta.php:1113
+#: lib/wp-meta.php:1114
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/wp-meta.php:1114
+#: lib/wp-meta.php:1115
 msgctxt "submit button"
 msgid "Validate Rich Results"
 msgstr ""
 
-#: lib/wp-meta.php:1118
+#: lib/wp-meta.php:1119
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/wp-meta.php:1119
+#: lib/wp-meta.php:1120
 msgctxt "submit button"
 msgid "Validate Metadata"
 msgstr ""
 
-#: lib/wp-meta.php:1123
+#: lib/wp-meta.php:1124
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/wp-meta.php:1124
+#: lib/wp-meta.php:1125
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/wp-meta.php:1128
+#: lib/wp-meta.php:1129
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/wp-meta.php:1129
+#: lib/wp-meta.php:1130
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/wp-meta.php:1135
+#: lib/wp-meta.php:1136
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr ""
 
-#: lib/wp-meta.php:1136
+#: lib/wp-meta.php:1137
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/wp-meta.php:1140
+#: lib/wp-meta.php:1141
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr ""
 
-#: lib/wp-meta.php:1141
+#: lib/wp-meta.php:1142
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr ""
 
-#: lib/wp-meta.php:1404
+#: lib/wp-meta.php:1405
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 

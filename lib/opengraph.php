@@ -1320,11 +1320,18 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						 */
 						if ( null === $og_images ) {
 
-							/**
-							 * $md_pre may be 'none' when getting Open Graph option defaults (and not
-							 * their custom values).
-							 */
-							$og_images = $this->get_all_images( $num = 1, $size_name, $mod, $check_dupes = true, $md_pre );
+							$size_info = $this->p->util->get_size_info( $size_name );
+
+							if ( empty( $size_info[ 'width' ] ) && empty( $size_info[ 'height' ] ) ) {
+
+								if ( $this->p->debug->enabled ) {
+									$this->p->debug->log( 'missing size information for ' . $size_name );
+								}
+
+							} else {
+
+								$og_images = $this->get_all_images( $num = 1, $size_name, $mod, $check_dupes = true, $md_pre );
+							}
 						}
 
 						break;

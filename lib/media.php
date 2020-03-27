@@ -631,7 +631,17 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->log_args( $args );
 			}
 
-			$size_info  = $this->p->util->get_size_info( $size_name, $pid );
+			$size_info = $this->p->util->get_size_info( $size_name, $pid );
+
+			if ( empty( $size_info[ 'width' ] ) && empty( $size_info[ 'height' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: missing size information for ' . $size_name );
+				}
+
+				return self::reset_image_src_args();
+			}
+
 			$img_url    = '';
 			$img_width  = WPSSO_UNDEF;
 			$img_height = WPSSO_UNDEF;

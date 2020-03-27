@@ -277,8 +277,14 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 			$p_img_disabled = empty( $this->p->options[ 'p_add_img_html' ] ) ? true : false;
 			$p_img_msg      = $p_img_disabled ? $this->p->msgs->p_img_disabled() : '';
 
-			$media_info = $this->p->og->get_media_info( $this->p->lca . '-pinterest',
-				array( 'pid', 'img_url' ), $mod, $md_pre = array( 'schema', 'og' ), $mt_pre = 'og' );
+			if ( ! empty( $this->p->options[ 'p_add_img_html' ] ) ) {
+
+				$media_info = $this->p->og->get_media_info( $this->p->lca . '-pinterest',
+					array( 'pid', 'img_url' ), $mod, $md_pre = array( 'schema', 'og' ), $mt_pre = 'og' );
+
+			} else {
+				$media_info = array( '', '' );
+			}
 
 			$row_class = ! $p_img_disabled && $form->in_options( '/^p_img_/', $is_preg = true ) ? '' : 'hide_in_basic';
 
