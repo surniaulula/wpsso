@@ -664,15 +664,22 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				} elseif ( is_month() ) {
 
-					$desc_text = sprintf( _x( 'Monthly archive for %s.', 'default description', 'wpsso' ), get_the_date('F Y') );
+					$desc_text = sprintf( _x( 'Monthly archive for %s.', 'default description', 'wpsso' ), get_the_date( 'F Y' ) );
 
 					$desc_text = apply_filters( $this->p->lca . '_monthly_archive_description', $desc_text, $mod );
 
 				} elseif ( is_year() ) {
 
-					$desc_text = sprintf( _x( 'Yearly archive for %s.', 'default description', 'wpsso' ), get_the_date('Y') );
+					$desc_text = sprintf( _x( 'Yearly archive for %s.', 'default description', 'wpsso' ), get_the_date( 'Y' ) );
 
 					$desc_text = apply_filters( $this->p->lca . '_yearly_archive_description', $desc_text, $mod );
+
+				} elseif ( is_search() ) {
+
+					$desc_text = sprintf( _x( 'Search results for %s.', 'default description', 'wpsso' ), get_search_query() );
+
+					$desc_text = apply_filters( $this->p->lca . '_search_results_description', $desc_text, $mod );
+
 
 				} elseif ( SucomUtil::is_archive_page() ) {	// Just in case.
 

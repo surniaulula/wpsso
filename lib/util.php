@@ -3077,6 +3077,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				} elseif ( is_search() ) {
 
 					$url = $this->check_url_string( get_search_link(), 'search link' );
+
 					$url = apply_filters( $this->p->lca . '_search_url', $url, $mod, $add_page, $src_id );
 
 				} elseif ( function_exists( 'get_post_type_archive_link' ) && $mod[ 'is_post_type_archive' ] ) {

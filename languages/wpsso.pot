@@ -3146,7 +3146,7 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: lib/gettext-pro.php:158 lib/page.php:709 lib/pro/social/buddypress.php:656
+#: lib/gettext-pro.php:158 lib/page.php:716 lib/pro/social/buddypress.php:656
 #: lib/wp-meta.php:900
 msgctxt "default description"
 msgid "No Description."
@@ -5821,7 +5821,7 @@ msgid ""
 "Activate the %s add-on<br/>for Schema markup and structured data options."
 msgstr ""
 
-#: lib/messages.php:2852 lib/util.php:3959
+#: lib/messages.php:2852 lib/util.php:3960
 msgid "No options available."
 msgstr ""
 
@@ -6027,15 +6027,20 @@ msgstr ""
 
 #: lib/page.php:679
 msgctxt "default description"
+msgid "Search results for %s."
+msgstr ""
+
+#: lib/page.php:686
+msgctxt "default description"
 msgid "Archive page."
 msgstr ""
 
-#: lib/page.php:853 lib/page.php:857
+#: lib/page.php:860 lib/page.php:864
 msgctxt "default title"
 msgid "%s Archive"
 msgstr ""
 
-#: lib/page.php:939 lib/wp-meta.php:897
+#: lib/page.php:946 lib/wp-meta.php:897
 msgctxt "default title"
 msgid "No Title"
 msgstr ""
@@ -6046,12 +6051,12 @@ msgid "Pinterest Pin It Image"
 msgstr ""
 
 #: lib/post.php:476 lib/register.php:322 lib/term.php:420 lib/user.php:367
-#: lib/util.php:500 lib/util.php:3642
+#: lib/util.php:500 lib/util.php:3643
 msgid "%s warning:"
 msgstr ""
 
 #: lib/post.php:477 lib/term.php:421 lib/user.php:368 lib/util.php:501
-#: lib/util.php:3643
+#: lib/util.php:3644
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -7019,13 +7024,13 @@ msgid ""
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:3644
+#: lib/util.php:3645
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3659
+#: lib/util.php:3660
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -7034,35 +7039,35 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3661
+#: lib/util.php:3662
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3989
+#: lib/util.php:3990
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3992
+#: lib/util.php:3993
 msgctxt "option comment"
 msgid "show these options now"
 msgstr ""
 
-#: lib/util.php:3997
+#: lib/util.php:3998
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:4000
+#: lib/util.php:4001
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:4326
+#: lib/util.php:4327
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 
