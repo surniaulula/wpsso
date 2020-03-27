@@ -1039,8 +1039,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 									$general_page_link = $wpsso->util->get_admin_url( 'essential#sucom-tabset_essential-tab_google' );
 
+									// translators: site, as in the "site organization settings".
+									$org_id_transl = __( 'site', 'wpsso' );
+
 									$notice_msg .= ' <a href="' . $general_page_link . '">';
-									$notice_msg .= sprintf( $org_settings_msg, $ret[ 'name' ], __( 'site', 'wpsso' ) );
+									$notice_msg .= sprintf( $org_settings_msg, $ret[ 'name' ], $org_id_transl );
 									$notice_msg .= '</a>';
 
 								} elseif ( ! empty( $wpsso->avail[ 'p_ext' ][ 'org' ] ) ) {

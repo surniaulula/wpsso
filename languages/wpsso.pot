@@ -6313,15 +6313,16 @@ msgid ""
 "settings."
 msgstr ""
 
+#. translators: site, as in the "site organization settings".
 #: lib/schema-single.php:1043
 msgid "site"
 msgstr ""
 
-#: lib/schema-single.php:1195
+#: lib/schema-single.php:1198
 msgid "adding schema for person user ID %1$s"
 msgstr ""
 
-#: lib/schema-single.php:1355
+#: lib/schema-single.php:1358
 msgid "adding schema place"
 msgstr ""
 

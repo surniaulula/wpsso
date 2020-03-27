@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 6.26.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-03-26 22:32-0700\n"
-"PO-Revision-Date: 2020-03-26 22:37-0700\n"
+"POT-Creation-Date: 2020-03-26 22:43-0700\n"
+"PO-Revision-Date: 2020-03-26 22:44-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -5451,23 +5451,30 @@ msgstr "SVP mettre à jour %1$s avant d'essayer de réactiver l'extension %2$s."
 msgid "adding schema organization"
 msgstr "ajout de schéma organisation"
 
-#: lib/schema-single.php:1019
+#. translators: %1$s is the organization name, %2$s the Schema type URL.
+#: lib/schema-single.php:1020
 msgid "An organization logo image is missing and required for the \"%1$s\" organization Schema %2$s markup."
 msgstr "Une image de logo d'organisation est manquante et requise pour le balisage de Schéma %2$s de l'organisation \"%1$s\"."
 
-#: lib/schema-single.php:1020
+#. translators: %1$s is the organization name, %2$s the Schema type URL.
+#: lib/schema-single.php:1023
 msgid "An organization banner image (600x60px) is missing and required for the \"%1$s\" organization Schema %2$s markup."
 msgstr "Une image de bannière d'organisation (600x60px) est manquante et requise pour le balisage de Schéma %2$s de l'organisation \"%1$s\"."
 
-#: lib/schema-single.php:1021
+#. translators: %1$s is the organization name, %2$s is 'site' (translated) or 'ID #'.
+#: lib/schema-single.php:1026
 msgid "Please enter the missing image URL in the \"%1$s\" %2$s organization settings."
 msgstr "Veuillez fournir l'URL de l'image manquante dans les paramètres de l'organisation %2$s \"%1$s\"."
 
-#: lib/schema-single.php:1190
+#: lib/schema-single.php:1043
+msgid "site"
+msgstr "site"
+
+#: lib/schema-single.php:1195
 msgid "adding schema for person user ID %1$s"
 msgstr "ajout de schéma de personne pour l'ID d'utilisateur %1$s"
 
-#: lib/schema-single.php:1350
+#: lib/schema-single.php:1355
 msgid "adding schema place"
 msgstr "ajout de schéma d'endroit"
 
