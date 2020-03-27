@@ -1122,11 +1122,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					if ( $is_admin ) {
 
 						$json_addon_link = $this->p->util->get_admin_url( 'addons#wpssojson', $this->p->cf[ 'plugin' ][ 'wpssojson' ][ 'name' ] );
-	
+
 						$notice_msg = sprintf( __( 'The webpage at %1$s does not include any Schema JSON-LD script(s).', 'wpsso' ), '<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>' ) . ' ';
-						
+
 						$notice_msg .= __( 'Complete and accurate Schema JSON-LD markup is highly recommended for better ranking and click-through rates in search results.', 'wpsso' ) . ' ';
-						
+
 						$notice_msg .= sprintf( __( 'Consider activating the %1$s add-on to include Schema JSON-LD markup for Google Rich Results.', 'wpsso' ), $json_addon_link );
 
 						$notice_key = 'application-ld-json-script-not-found';
@@ -1507,9 +1507,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$post_taxonomies = get_post_taxonomies( $post_id );
 
 					foreach ( $post_taxonomies as $tax_slug ) {
-		
+
 						$post_terms = wp_get_post_terms( $post_id, $tax_slug );
-		
+
 						foreach ( $post_terms as $post_term ) {
 							$this->p->term->clear_cache( $post_term->term_id, $post_term->term_taxonomy_id );
 						}

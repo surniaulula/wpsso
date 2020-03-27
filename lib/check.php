@@ -630,7 +630,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		public function get_ext_gen_list() {
 
 			static $ext_list = null;
-		
+
 			if ( null !== $ext_list ) {
 				return $ext_list;
 			}

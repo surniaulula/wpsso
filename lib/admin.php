@@ -507,7 +507,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			} else {
 				$menu_title = $menu_name;
 			}
-	
+
 			$page_title = self::$pkg[ $menu_ext ][ 'short' ] . ' &mdash; ' . $menu_name;
 
 			$cap_name = isset( $this->p->cf[ 'wp' ][ 'admin' ][ $menu_lib ][ 'cap' ] ) ?	// Just in case.
@@ -560,7 +560,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( $ext === $this->p->lca ) {	// Only add for the core plugin.
-			
+
 				$addons_page = 'sitesubmenu' === $menu_lib ? 'site-addons' : 'addons';
 
 				$action_links[] = '<a href="' . $this->p->util->get_admin_url( $addons_page ) . '">' . 
@@ -916,7 +916,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$clear_cache_link = $this->p->util->get_admin_url( wp_nonce_url( '?' . $this->p->lca . '-action=clear_all_cache',
 					WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME ), _x( 'Clear All Caches', 'submit button', 'wpsso' ) );
-	
+
 				$this->p->notice->upd( '<strong>' . __( 'Plugin settings have been saved.', 'wpsso' ) . '</strong> ' .
 					sprintf( __( 'Note that some caches may take several days to expire and reflect these changes (or %s now).',
 						'wpsso' ), $clear_cache_link ) );
@@ -1233,7 +1233,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( $current_locale && $default_locale && $current_locale !== $default_locale ) {
 
 				$notice_msg = sprintf( __( 'Please note that your current language is different from the default site language (%s).', 'wpsso' ), $default_locale ) . ' ';
-				
+
 				$notice_msg .= sprintf( __( 'Localized option values (%s) are used for webpages and content in that language only (not for the default language, or any other language).', 'wpsso' ), $current_locale );
 
 				$notice_key = $this->menu_id . '-language-notice-current-' . $current_locale . '-default-' . $default_locale;
@@ -1341,11 +1341,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			switch ( $this->menu_lib ) {
 
 				case 'profile':
-	
+
 					$user_id     = get_current_user_id();
 					$user_obj    = get_user_to_edit( $user_id );
 					$admin_color = get_user_option( 'admin_color', $user_id );
-	
+
 					if ( empty( $admin_color ) ) {
 						$admin_color = 'fresh';
 					}
@@ -1356,7 +1356,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$referer_admin_url = current_user_can( 'list_users' ) ?
 						$this->p->util->get_admin_url( $this->menu_id, null, 'users' ) :
 						$this->p->util->get_admin_url( $this->menu_id, null, $this->menu_lib );
-	
+
 					echo '<form name="' . $this->p->lca . '" id="' . $form_css_id . '" ' .
 						'action="user-edit.php" method="post">' . "\n";
 					echo '<input type="hidden" name="wp_http_referer" value="' . $referer_admin_url . '" />' . "\n";
@@ -1384,7 +1384,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					 */
 					echo '<form name="' . $this->p->lca . '" id="' . $form_css_id . '" action="options.php" method="post"' .
 						' onSubmit="sucomDisableUnchanged( \'#' . $form_css_id . '\' );">' . "\n";
-	
+
 					settings_fields( $this->p->lca . '_setting' );
 
 					break;
@@ -1393,7 +1393,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					echo '<form name="' . $this->p->lca . '" id="' . $form_css_id . '" ' .
 						'action="edit.php?action=' . WPSSO_SITE_OPTIONS_NAME . '" method="post">' . "\n";
-	
+
 					echo '<input type="hidden" name="page" value="' . $this->menu_id . '" />' . "\n";
 
 					break;
@@ -1554,7 +1554,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$cache_opt_key      = isset( $cache_info[ 'opt_key' ] ) ? $cache_info[ 'opt_key' ] : false;
 				$cache_exp_secs     = $cache_opt_key && isset( $this->p->options[ $cache_opt_key ] ) ? $this->p->options[ $cache_opt_key ] : 0;
 				$cache_exp_suffix   = '';
-				
+
 				if ( ! empty( $cache_info[ 'filter' ] ) ) {
 
 					$filter_name     = $cache_info[ 'filter' ];
@@ -1694,7 +1694,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					echo '<p><a href="' . $changelog_url . '">' . sprintf( __( 'View %s changelog...', 'wpsso'),
 						$info[ 'short' ] ) . '</a></p>';
-					
+
 					echo '</td></tr>';
 				}
 			}
@@ -1909,7 +1909,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$action_links[] = sprintf( __( '<a href="%s">Frequently Asked Questions</a>',
 						'wpsso' ), $info[ 'url' ][ 'faqs' ] );
 				}
-						
+
 				if ( ! empty( $info[ 'url' ][ 'notes' ] ) ) {
 					$action_links[] = sprintf( __( '<a href="%s">Advanced Documentation and Notes</a>',
 						'wpsso' ), $info[ 'url' ][ 'notes' ] );
@@ -2240,7 +2240,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$val = SucomUpdate::get_option( $ext, $key );
 
 						if ( empty( $val ) ) {	// Add an empty row for empty values.
-							
+
 							$val = _x( 'Not available', 'option value', 'wpsso' );
 
 						} elseif ( $key === 'exp_date' ) {
@@ -2492,7 +2492,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( $file_path = SucomUtilWP::get_wp_config_file_path() ) {
-				
+
 				$stripped_php = SucomUtil::get_stripped_php( $file_path );
 
 				if ( preg_match( '/define\( *[\'"]WP_HOME[\'"][^\)]*\$/', $stripped_php ) ) {
@@ -2537,7 +2537,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$backup_base = basename( $backup_file );
 
 				$stripped_php = SucomUtil::get_stripped_php( $tmpl_file );
-	
+
 				/**
 				 * Double check in case of reloads etc.
 				 */
@@ -2576,7 +2576,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					$notice_msg = sprintf( __( 'The <code>%s</code> template has been successfully modified and saved.',
 						'wpsso' ), $tmpl_file ) . ' ';
-					
+
 					$notice_msg .= sprintf( __( 'A backup copy of the original template has been saved as <code>%s</code> in the same folder.',
 						'wpsso' ), $backup_base );
 
@@ -3165,7 +3165,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$parser = new SuextParseReadme( $this->p->debug );
 
 				$readme_info = $parser->parse_readme_contents( $readme_content );
-	
+
 				/**
 				 * Remove possibly inaccurate information from the local readme file.
 				 */
@@ -3387,7 +3387,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( strstr( $_SERVER[ 'HTTP_USER_AGENT' ], 'MSIE' ) ) {
 				$file_name_gz = preg_replace( '/\./', '%2e', $file_name_gz, substr_count( $file_name_gz, '.' ) - 1 );
 			}
-	
+
 			if ( isset( $_SERVER[ 'HTTPS' ] ) ) {
 
 				header( 'Pragma: ' );

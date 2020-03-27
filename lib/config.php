@@ -47,20 +47,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'wpsso'  => true,
 					),
 					'url' => array(
-						
+
 						/**
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso',
 						'review' => 'https://wordpress.org/support/plugin/wpsso/reviews/?rate=5#new-post',
-						
+
 						/**
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso/master/readme.txt',
 						'setup_html' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso/master/html/setup.html',
-						
+
 						/**
 						 * WPSSO.com.
 						 */
@@ -207,20 +207,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'wpsso'  => true,
 					),
 					'url' => array(
-						
+
 						/**
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso-am/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-am',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-am/reviews/?rate=5#new-post',
-						
+
 						/**
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-am/master/readme.txt',
 						'setup_html' => '',
-						
+
 						/**
 						 * WPSSO.com.
 						 */
@@ -259,20 +259,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'wpsso'  => true,
 					),
 					'url' => array(
-						
+
 						/**
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso-breadcrumbs/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-breadcrumbs',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-breadcrumbs/reviews/?rate=5#new-post',
-						
+
 						/**
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-breadcrumbs/master/readme.txt',
 						'setup_html' => '',
-						
+
 						/**
 						 * WPSSO.com.
 						 */
@@ -311,20 +311,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'wpsso'  => true,
 					),
 					'url' => array(
-						
+
 						/**
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso-faq/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-faq',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-faq/reviews/?rate=5#new-post',
-						
+
 						/**
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-faq/master/readme.txt',
 						'setup_html' => '',
-						
+
 						/**
 						 * WPSSO.com.
 						 */
@@ -363,20 +363,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'wpsso'  => true,
 					),
 					'url' => array(
-						
+
 						/**
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso-inherit-parent-meta/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-inherit-parent-meta',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-inherit-parent-meta/reviews/?rate=5#new-post',
-						
+
 						/**
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-inherit-parent-meta/master/readme.txt',
 						'setup_html' => '',
-						
+
 						/**
 						 * WPSSO.com.
 						 */
@@ -415,21 +415,21 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'wpsso'  => true,
 					),
 					'url' => array(
-						
+
 						/**
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso-schema-json-ld/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-schema-json-ld',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-schema-json-ld/reviews/?rate=5#new-post',
-						
+
 						/**
 						 * GitHub.com.
 						 */
 						'readme_txt'     => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-schema-json-ld/master/readme.txt',
 						'setup_html'     => '',
 						'shortcode_html' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-schema-json-ld/master/html/shortcode.html',
-						
+
 						/**
 						 * WPSSO.com.
 						 */
@@ -468,20 +468,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'wpsso'  => true,
 					),
 					'url' => array(
-						
+
 						/**
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso-organization/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-organization',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-organization/reviews/?rate=5#new-post',
-						
+
 						/**
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-organization/master/readme.txt',
 						'setup_html' => '',
-						
+
 						/**
 						 * WPSSO.com.
 						 */
@@ -520,20 +520,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'wpsso'  => true,
 					),
 					'url' => array(
-						
+
 						/**
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso-plm/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-plm',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-plm/reviews/?rate=5#new-post',
-						
+
 						/**
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-plm/master/readme.txt',
 						'setup_html' => '',
-						
+
 						/**
 						 * WPSSO.com.
 						 */
@@ -572,20 +572,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'wpsso'  => true,
 					),
 					'url' => array(
-						
+
 						/**
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso-ratings-and-reviews/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-ratings-and-reviews',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-ratings-and-reviews/reviews/?rate=5#new-post',
-						
+
 						/**
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-ratings-and-reviews/master/readme.txt',
 						'setup_html' => '',
-						
+
 						/**
 						 * WPSSO.com.
 						 */
@@ -624,20 +624,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'wpsso'  => true,
 					),
 					'url' => array(
-						
+
 						/**
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso-rest-api/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-rest-api',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-rest-api/reviews/?rate=5#new-post',
-						
+
 						/**
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-rest-api/master/readme.txt',
 						'setup_html' => '',
-						
+
 						/**
 						 * WPSSO.com.
 						 */
@@ -676,20 +676,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'wpsso'  => true,
 					),
 					'url' => array(
-						
+
 						/**
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso-strip-schema-microdata/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-strip-schema-microdata',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-strip-schema-microdata/reviews/?rate=5#new-post',
-						
+
 						/**
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-strip-schema-microdata/master/readme.txt',
 						'setup_html' => '',
-						
+
 						/**
 						 * WPSSO.com.
 						 */
@@ -728,20 +728,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'wpsso'  => true,
 					),
 					'url' => array(
-						
+
 						/**
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso-tweet-a-quote/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-tweet-a-quote',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-tweet-a-quote/reviews/?rate=5#new-post',
-						
+
 						/**
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-tweet-a-quote/master/readme.txt',
 						'setup_html' => '',
-						
+
 						/**
 						 * WPSSO.com.
 						 */
@@ -780,20 +780,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'wpsso'  => true,
 					),
 					'url' => array(
-						
+
 						/**
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso-tune-image-editors/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-tune-image-editors',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-tune-image-editors/reviews/?rate=5#new-post',
-						
+
 						/**
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-tune-image-editors/master/readme.txt',
 						'setup_html' => '',
-						
+
 						/**
 						 * WPSSO.com.
 						 */
@@ -832,20 +832,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'wpsso'  => true,
 					),
 					'url' => array(
-						
+
 						/**
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso-user-locale/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-user-locale',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-user-locale/reviews/?rate=5#new-post',
-						
+
 						/**
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-user-locale/master/readme.txt',
 						'setup_html' => '',
-						
+
 						/**
 						 * WPSSO.com.
 						 */
@@ -884,13 +884,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'wpsso'  => true,
 					),
 					'url' => array(
-						
+
 						/**
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-um/master/readme.txt',
 						'setup_html' => '',
-						
+
 						/**
 						 * WPSSO.com.
 						 */
@@ -1051,7 +1051,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tumblr_publisher_url'    => '',	// Tumblr Business Page URL (localized).
 					'wikipedia_publisher_url' => '',	// Wikipedia Organization Page URL (localized).
 					'yt_publisher_url'        => '',	// YouTube Business Channel URL (localized).
-					
+
 					/**
 					 * Standard WordPress types.
 					 */
@@ -1068,7 +1068,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_type_for_tax_faq_category' => 'website',
 					'og_type_for_tax_post_tag'     => 'website',
 					'og_type_for_user_page'        => 'website',
-					
+
 					/**
 					 * Other taxonomy and post types.
 					 */
@@ -1109,7 +1109,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'seo_author_name'            => 'display_name',		// Author / Person Name Format.
 					'tumblr_publisher_url'       => '',
 					'yt_publisher_url'           => '',
-					
+
 					/**
 					 * Twitter Card options.
 					 */
@@ -1127,7 +1127,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tc_lrg_img_crop'   => 0,
 					'tc_lrg_img_crop_x' => 'center',
 					'tc_lrg_img_crop_y' => 'center',
-					
+
 					/**
 					 * Enable / disable individual head HTML tags.
 					 */
@@ -1299,7 +1299,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_debug'              => 0,			// Add Hidden Debug Messages.
 					'plugin_show_opts'          => 'basic',			// Options to Show by Default.
 					'plugin_notice_system'      => 'toolbar_notices',	// Notification System.
-					
+
 					/**
 					 * Advanced Settings - Content tab.
 					 */
@@ -1320,7 +1320,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_wistia_api'     => 1,				// Check for Embedded Media: Wistia Videos.
 					'plugin_wpvideo_api'    => 1,				// Check for Embedded Media: WordPress Video Shortcode.
 					'plugin_youtube_api'    => 1,				// Check for Embedded Media: Youtube Videos and Playlists.
-					
+
 					/**
 					 * Advanced Settings - Integration tab.
 					 */
@@ -1351,7 +1351,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_clear_short_urls'    => 0,			// Refresh Short URLs on Clear Cache.
 					'plugin_clear_post_terms'    => 1,			// Clear Term Cache for Published Post.
 					'plugin_clear_for_comment'   => 1,			// Clear Post Cache for New Comment.
-					
+
 					/**
 					 * Advanced Settings - Service APIs tab.
 					 */
@@ -1367,7 +1367,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_yourls_username'    => '',			// YOURLS Username.
 					'plugin_yourls_password'    => '',			// YOURLS Password.
 					'plugin_yourls_token'       => '',			// YOURLS Token.
-					
+
 					/**
 					 * Advanced Settings - Table Columns tab.
 					 */
@@ -1509,14 +1509,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'wp_cm_yim_label'             => 'Yahoo Messenger',
 					'wp_cm_yim_enabled'           => 1,
 				),
-				
+
 				/**
 				 * Multisite options.
 				 */
 				'site_defaults' => array(
 					'options_version'  => '',		// Example: -wpsso512pro-wpssoum3gpl
 					'options_filtered' => false,
-					
+
 					/**
 					 * Advanced Settings - Plugin Behavior tab.
 					 */
@@ -1528,7 +1528,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_show_opts:use'          => 'default',
 					'plugin_notice_system'          => 'toolbar_notices',	// Notification System.
 					'plugin_notice_system:use'      => 'default',
-					
+
 					/**
 					 * Advanced Settings - Integration tab.
 					 */
@@ -1554,7 +1554,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_upscale_images:use'        => 'default',
 					'plugin_upscale_img_max'           => 33,		// Maximum Image Upscale Percent.
 					'plugin_upscale_img_max:use'       => 'default',
-					
+
 					/**
 					 * Advanced Settings - Cache tab.
 					 */
@@ -1607,7 +1607,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'wikipedia'   => 'wikipedia',
 					'youtube'     => 'yt',
 				),
-				
+
 				/**
 				 * Custom field to meta data index.
 				 */
@@ -1647,7 +1647,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_vid_embed'                => 'og_vid_embed',
 					'plugin_cf_vid_url'                  => 'og_vid_url',
 				),
-				
+
 				/**
 				 * Read and split custom field values into numbered meta keys.
 				 */
@@ -1666,7 +1666,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_sameas_url'         => true,	// Same-As URLs.
 				),
 			),
-			
+
 			/**
 			 * Update manager config.
 			 */
@@ -1696,7 +1696,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'stable' => '/^[0-9][0-9\.\-]+$/',
 				),
 			),
-			
+
 			/**
 			 * PHP config.
 			 */
@@ -1763,7 +1763,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 				),
 			),
-			
+
 			/**
 			 * WordPress config.
 			 *
@@ -1850,7 +1850,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'person',
 					),
 				),
-				
+
 				/**
 				 * Transient id prefix.
 				 */
@@ -2103,7 +2103,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'none'      => '[None]',
 					'ancestors' => 'Parents',
 				),
-				
+
 				/**
 				 * The shortener key is also its file name under lib/pro/ext/.
 				 */
@@ -2115,7 +2115,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tinyurl'              => 'TinyURL',		// Requires lib/pro/ext/tinyurl.php.
 					'yourls'               => 'YOURLS',		// Requires lib/pro/ext/yourls.php.
 				),
-				
+
 				/**
 				 * Social account keys and labels for Organization SameAs.
 				 */
@@ -2202,7 +2202,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_product_attr_target_gender' => 'Product Target Gender Attr. Name',
 					'plugin_product_attr_volume_value'  => 'Product Volume Attribute Name',
 				),
-				
+
 				/**
 				 * See https://developers.facebook.com/docs/reference/opengraph/object-type/product/.
 				 */
@@ -2211,7 +2211,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'kids'   => 'Kids',
 					'adult'  => 'Adult',
 				),
-				
+
 				/**
 				 * See https://schema.org/suggestedGender.
 				 */
@@ -2221,7 +2221,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'female' => 'Female',
 					'unisex' => 'Unisex',
 				),
-				
+
 				/**
 				 * See https://developers.google.com/search/docs/data-types/job-postings.
 				 */
@@ -2235,7 +2235,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'per_diem'   => 'Per Diem',
 					'other'      => 'Other',
 				),
-				
+
 				/**
 				 * See https://schema.org/ItemAvailability.
 				 */
@@ -2250,7 +2250,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 		'PreOrder'            => 'Pre-Order',
 			 		'SoldOut '            => 'Sold Out',
 				),
-				
+
 				/**
 				 * See https://schema.org/OfferItemCondition.
 				 */
@@ -2871,7 +2871,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'reservation' => 'https://schema.org/Reservation',
 							'role'        => 'https://schema.org/Role',
 							'seat'        => 'https://schema.org/Seat',
-							
+
 							/**
 							 * A service provided by an organization, e.g. delivery service, print services, etc.
 							 */
@@ -3756,7 +3756,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		private static function is_cache_dir( $dir ) {
-			
+
 			$dir = trailingslashit( $dir );		// Just in case.
 
 			$index_file  = $dir . 'index.php';

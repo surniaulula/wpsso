@@ -57,7 +57,7 @@ if ( ! class_exists( 'WpssoErrorException' ) ) {
 			504 => 'Gateway Timeout',
 			505 => 'HTTP Version Not Supported'
 		);
-	
+
 		public function __construct( $errstr = '', $errno = 0, $severity = E_ERROR, $filename = __FILE__, $lineno = __LINE__, Exception $previous = null ) {
 
 			$this->p =& Wpsso::get_instance();

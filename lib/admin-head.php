@@ -242,7 +242,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			}
 
 			if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
-			
+
 				if ( SucomPlugin::is_plugin_installed( $info[ 'base' ], $use_cache = true ) ) {
 
 					$url = is_multisite() ? network_admin_url( 'plugins.php', null ) :
@@ -294,7 +294,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 					__( 'Google Structured Data Testing Tool', 'wpsso' ) . '</a>';
 
 				$notice_msg = sprintf( __( 'The WooCommerce v%s plugin is known to provide incomplete Schema markup for Google.', 'wpsso' ), $wc_version ) . ' ';
-				
+
 				$notice_msg .= __( 'The WPSSO Core Premium plugin and its WPSSO JSON Premium add-on provide a far better solution by offering complete Facebook / Pinterest Product meta tags and Schema Product markup for Google Rich Results (previously known as Rich Snippets) &mdash; including additional product images, product variations, product attributes (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, and much, much more.', 'wpsso' );
 
 				$notice_msg .= '<ul><li>' . implode( '</li><li>', $action_links ) . '</li></ul>' . ' ';
@@ -441,9 +441,9 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				$notice_msg .= '<div style="display:table-cell;vertical-align:top;">';
 
 				$notice_msg .= '<p class="top">';
-				
+
 				$notice_msg .= '<b>' . __( 'Fantastic!', 'wpsso' ) . '</b> ';
-				
+
 				$notice_msg .= sprintf( __( 'You\'ve been using <b>%s</b> for a while now, which is awesome!', 'wpsso' ), $wp_plugin_link ) . ' ';
 
 				$notice_msg .= '</p><p>';
@@ -459,9 +459,9 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				$notice_msg .= __( 'Your rating is a great way to encourage us and it helps other WordPress users find great plugins!', 'wpsso' ) . ' ';
 
 				$notice_msg .= '</p>';
-				
+
 				$notice_msg .= $rate_plugin_button . $already_rated_button;
-					
+
 				$notice_msg .= '</div>';
 
 				/**
@@ -560,7 +560,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			$notice_msg .= '<b>' . sprintf( __( 'Have you considered purchasing the %s version? It comes with a lot of extra features!', 'wpsso' ), _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) ) . '</b> ';
 
 			$notice_msg .= '</p>';
-			
+
 			$notice_msg .= $purchase_button . $no_thanks_button;
 
 			$notice_msg .= '</div>';

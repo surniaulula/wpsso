@@ -2026,7 +2026,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$img_added = self::add_images_data_mt( $json_data[ 'image' ], $og_images );
 			}
 
-			
 			if ( empty( $json_data[ 'image' ] ) ) {
 				unset( $json_data[ 'image' ] );	// Prevent null assignment.
 			}
@@ -2621,7 +2620,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$md_date     = empty( $opts[ $md_pre . '_date' ] ) || $opts[ $md_pre . '_date' ] === 'none' ? '' : $opts[ $md_pre . '_date' ];
 			$md_time     = empty( $opts[ $md_pre . '_time' ] ) || $opts[ $md_pre . '_time' ] === 'none' ? '' : $opts[ $md_pre . '_time' ];
 			$md_timezone = empty( $opts[ $md_pre . '_timezone' ] ) || $opts[ $md_pre . '_timezone' ] === 'none' ? '' : $opts[ $md_pre . '_timezone' ];
-				
+
 			if ( empty( $md_date ) && empty( $md_time ) ) {		// No date or time.
 
 				if ( $wpsso->debug->enabled ) {
@@ -2631,7 +2630,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return '';	// Nothing to do.
 
 			}
-			
+
 			if ( ! empty( $md_date ) && empty( $md_time ) ) {	// Date with no time.
 
 				$md_time = '00:00';
@@ -2641,7 +2640,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 			}
-			
+
 			if ( empty( $md_date ) && ! empty( $md_time ) ) {	// Time with no date.
 
 				$md_date = gmdate( 'Y-m-d', time() );
@@ -3210,7 +3209,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				} else {
 					$new_id = $id_url . $id_anchor . $type_id;
 				}
-	
+
 				unset( $json_data[ '@id' ] );	// Just in case.
 
 				$json_data = array( '@id' => $new_id ) + $json_data;	// Make @id the first value in the array.
@@ -3410,7 +3409,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 
 					$wp_query = new WP_Query( $posts_args );
-				
+
 					if ( $mod[ 'is_home_posts' ] ) {
 						$wp_query->is_home = true;
 					}

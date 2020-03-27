@@ -131,7 +131,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				 * Find and remove an existing prefix attribute value.
 				 */
 				if ( strpos( $html_attr, 'prefix=' ) ) {
-					
+
 					/**
 				 	 * s = A dot metacharacter in the pattern matches all characters, including newlines.
 					 *
@@ -143,13 +143,13 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 
 				$prefix_value = '';
-	
+
 				foreach ( $og_ns as $name => $url ) {
 					if ( strpos( $prefix_value, ' ' . $name . ': ' . $url ) === false ) {
 						$prefix_value .= ' ' . $name . ': ' . $url;
 					}
 				}
-	
+
 				$html_attr .= ' prefix="' . trim( $prefix_value ) . '"';
 			}
 
@@ -288,36 +288,36 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 
 				if ( $mod[ 'is_home' ] ) {	// Static or index page.
-	
+
 					$type_id = $default_key;
-	
+
 					if ( $mod[ 'is_home_page' ] ) {
-	
+
 						$type_id = $this->get_og_type_id_for_name( 'home_page' );
 
 						$type_id = apply_filters( $this->p->lca . '_og_type_for_home_page', $type_id, $mod );
-	
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'using og type id "' . $type_id . '" for home page' );
 						}
-	
+
 					} else {
-	
+
 						$type_id = $this->get_og_type_id_for_name( 'home_posts' );
 
 						$type_id = apply_filters( $this->p->lca . '_og_type_for_home_posts', $type_id, $mod );
-	
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'using og type id "' . $type_id . '" for home posts' );
 						}
 					}
-	
+
 				} elseif ( $mod[ 'is_post' ] ) {
-	
+
 					if ( ! empty( $mod[ 'post_type' ] ) ) {
-	
+
 						if ( $mod[ 'is_post_type_archive' ] ) {
-	
+
 							$type_id = $this->get_og_type_id_for_name( 'post_archive' );
 
 							$type_id = apply_filters( $this->p->lca . '_og_type_for_post_type_archive_page', $type_id, $mod );
@@ -327,7 +327,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							}
 
 						} elseif ( isset( $this->p->options[ 'og_type_for_' . $mod[ 'post_type' ] ] ) ) {
-	
+
 							$type_id = $this->get_og_type_id_for_name( $mod[ 'post_type' ] );
 
 							if ( $this->p->debug->enabled ) {
@@ -363,7 +363,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							$this->p->debug->log( 'using "page" og type for empty post type' );
 						}
 					}
-	
+
 				} elseif ( $mod[ 'is_term' ] ) {
 
 					if ( ! empty( $mod[ 'tax_slug' ] ) ) {
@@ -707,13 +707,13 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 								}
 							}
 						}
-				
+
 						/**
 						 * If we have a GTIN number, try to improve the assigned property name.
 						 */
 						self::check_gtin_mt_value( $offer );
 					}
-				
+
 				} elseif ( isset( $mt_og[ 'product:price:amount' ] ) ) {
 
 					if ( is_numeric( $mt_og[ 'product:price:amount' ] ) ) {	// Allow for price of 0.
@@ -1055,12 +1055,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						'og_vid_title'  => 'og:video:title',
 						'og_vid_desc'   => 'og:video:description',
 					) as $md_key => $mt_name ) {
-	
+
 						/**
 						 * Note that get_options() returns null if an index key is not found.
 						 */
 						$value = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_key );
-	
+
 						if ( ! empty( $value ) ) {	// Must be a non-empty string.
 							$og_ret[ $num ][ $mt_name ] = $value;
 						}
@@ -1159,7 +1159,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			$num_diff = SucomUtil::count_diff( $og_ret, $num );
 
 			$this->p->util->clear_uniq_urls( $size_name );	// Clear cache for $size_name context.
-		
+
 			$preview_images = $this->get_all_previews( $num_diff, $mod );
 
 			if ( ! empty( $preview_images ) ) {
@@ -1321,7 +1321,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						if ( null === $og_images ) {
 
 							/**
-							 * Make sure the image size exists, just in case.
+							 * Optimize and make sure the image size exists first, just in case.
 							 */
 							$size_info = $this->p->util->get_size_info( $size_name );
 
@@ -1583,7 +1583,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				return $locale;
 
 			}
-			
+
 			/**
 			 * Fallback to the default WordPress locale.
 			 */
@@ -1801,7 +1801,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						if ( isset( $og_type_mt_md[ $mt_units ] ) ) {
 
 							if ( $unit_text = WpssoSchema::get_data_unit_text( $unit_match[ 1 ] ) ) {
-						
+
 								if ( $this->p->debug->enabled ) {
 									$this->p->debug->log( $mt_units . ' from unit text = ' . $unit_text );
 								}

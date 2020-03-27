@@ -532,7 +532,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					if ( ! is_array( $event_offer ) ) {	// Just in case.
 						continue;
 					}
-					
+
 					if ( false !== ( $offer = WpssoSchema::get_data_itemprop_from_assoc( $event_offer, array( 
 						'name'          => 'offer_name',
 						'url'           => 'offer_url',
@@ -838,7 +838,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				if ( null === $price_valid_until ) {
 					$price_valid_until = gmdate( 'c', time() + $valid_max_time );
 				}
-	
+
 				$offer[ 'priceValidUntil' ] = $price_valid_until;
 			}
 
@@ -1431,12 +1431,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 							'opens'     => $open,
 							'closes'    => $close,
 						);
-	
+
 						foreach ( array(
 							'validFrom'    => 'place_season_from_date',
 							'validThrough' => 'place_season_to_date',
 						) as $prop_name => $opt_key ) {
-	
+
 							if ( isset( $place_opts[ $opt_key ] ) && $place_opts[ $opt_key ] !== '' ) {
 								$weekday_spec[ $prop_name ] = $place_opts[ $opt_key ];
 							}

@@ -227,7 +227,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * Save meta tag values for later sorting in list tables.
 			 */
 			foreach ( WpssoWpMeta::get_sortable_columns() as $col_key => $col_info ) {
-				
+
 				if ( empty( $col_info[ 'meta_key' ] ) || strpos( $col_info[ 'meta_key' ], '_' . $this->p->lca . '_head_info_' ) !== 0 ) {
 					continue;
 				}
@@ -291,7 +291,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					 */
 					$prefix = '<(!--[\s\n\r]+|meta[\s\n\r]+name="?' . $this->p->lca . ':mark:(begin|end)"?[\s\n\r]+content=")';
 					$suffix = '([\s\n\r]+--|"[\s\n\r]*\/?)>';
-		
+
 					$mt_mark = '/' . $prefix . $this->p->lca . ' meta tags begin' . $suffix . '.*' . 
 						$prefix . $this->p->lca . ' meta tags end' . $suffix . '/ums';	// Enable utf8 support.
 
@@ -457,7 +457,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 
 			} else {
-			
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'head array transient cache is disabled' );
 				}
@@ -536,7 +536,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				 * Schema itemprop meta tags.
 				 */
 				$this->p->util->maybe_set_ref( $sharing_url, $mod, __( 'adding schema meta tags', 'wpsso' ) );
-	
+
 				$mt_item = $this->p->meta_item->get_array( $mod, $mt_og );
 
 				$this->p->util->maybe_unset_ref( $sharing_url );
@@ -842,7 +842,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					if ( $last_secure_url !== $value ) {	// Just in case.
 
 						if ( $value ) {
-					
+
 							$name_secure_url = str_replace( ':url', ':secure_url', $name );
 							$name_url        = $name;
 							$name_no_url     = str_replace( ':url', '', $name );
@@ -853,9 +853,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 							$singles[] = array( '', $tag, $type, $name_url, $attr, $value, $cmt );
 							$singles[] = array( '', $tag, $type, $name_no_url, $attr, $value, $cmt );
-					
+
 							$last_url = $value;
-					
+
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log_arr( 'singles', $singles );
 							}

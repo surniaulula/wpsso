@@ -1358,7 +1358,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
-			
+
 			$mod = $this->get_mod( $user_id );
 
 			/**
@@ -1457,7 +1457,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$website_url = trim( $website_url );	// Just in case.
 
 			} else {
-			
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'user id ' . $user_id . ' is not a WordPress user' );
 				}

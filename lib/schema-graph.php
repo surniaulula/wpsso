@@ -60,14 +60,14 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 		public static function get_json_clean() {
 
 			$json_data = self::get_json();
-			
+
 			self::clean_data();
 
 			return $json_data;
 		}
 
 		public static function clean_data() {
-			
+
 			self::$graph_data = array();
 		}
 
@@ -76,7 +76,7 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 			static $new_data  = array();
 			static $recursion = null;
 			static $id_anchor = null;
-			
+
 			if ( null === $id_anchor ) {	// Optimize and call just once.
 				$id_anchor = WpssoSchema::get_id_anchor();
 			}

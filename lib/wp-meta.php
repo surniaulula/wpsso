@@ -863,7 +863,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					$og_prev_img_html .= '<p>' . _x( 'Image Size Unknown<br/>or Not Available', 'preview image error', 'wpsso' ) . '</p>';
 					$og_prev_img_html .= '</div>';
 				}
-				
+
 			} else {
 
 				$og_prev_img_html .= '<div class="preview_img">';
@@ -878,7 +878,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$table_rows[] = ( $sharing_url === $canonical_url ? '<tr class="hide_in_basic">' : '' ) . 
 			$form->get_th_html( _x( 'Canonical URL', 'option label', 'wpsso' ), 'medium' ) . 
 			'<td>' . SucomForm::get_no_input_clipboard( $canonical_url ) . '</td>';
-		
+
 			$table_rows[] = ( empty( $this->p->options[ 'plugin_shortener' ] ) || 
 				$this->p->options[ 'plugin_shortener' ] === 'none' ||
 					$sharing_url === $shortlink_url ? '<tr class="hide_in_basic">' : '' ) . 
@@ -1182,7 +1182,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			if ( isset( $local_cache[ $cache_id ] ) ) {
 				return $local_cache[ $cache_id ];
 			}
-		
+
 			$mod = $this->get_mod( $obj_id );
 
 			$local_head_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache );
@@ -1384,7 +1384,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				return false;
 
 			}
-			
+
 			if ( empty( $_POST[ WPSSO_NONCE_NAME ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
@@ -1394,7 +1394,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				return false;
 
 			}
-			
+
 			if ( ! wp_verify_nonce( $_POST[ WPSSO_NONCE_NAME ], WpssoAdmin::get_nonce_action() ) ) {
 
 				if ( $this->p->debug->enabled ) {
@@ -1999,7 +1999,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			}
 
 			$media_url = SucomUtil::get_mt_media_url( $head_info );
-			
+
 			if ( ! empty( $media_url ) ) {
 				$media_html = '<div class="preview_img" style="background-image:url(' . $media_url . ');"></div>';
 			}

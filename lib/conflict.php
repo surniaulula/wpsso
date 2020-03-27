@@ -211,7 +211,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				if ( ! empty( $notice_msg ) ) {
 
 					$this->p->notice->err( $notice_msg );
-				
+
 					SucomUtil::safe_error_log( $error_pre . ' ' . $notice_msg, $strip_html = true );
 				}
 			}
@@ -640,16 +640,16 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				$wpseo_wc_label = 'Yoast SEO: WooCommerce';
 
 				if ( ! empty( $pkg[ $this->p->lca ][ 'pp' ] ) && ! empty( $pkg[ $ext ][ 'pp' ] ) ) {
-					
+
 					$plugins_url = is_multisite() ? network_admin_url( 'plugins.php', null ) :
 						get_admin_url( $blog_id = null, 'plugins.php' );
 
 					$plugins_url = add_query_arg( array( 's' => 'yoast seo' ), $plugins_url );
 
 					$notice_msg = sprintf( __( 'The combination of %1$s and its %2$s add-on provide much better Schema markup for WooCommerce products than the %3$s plugin.', 'wpsso' ), $pkg[ $this->p->lca ][ 'short_pro' ], $pkg[ $ext ][ 'short_pro' ], $wpseo_wc_label ) . ' ';
-					
+
 					$notice_msg .= sprintf( __( 'There is absolutely no advantage in continuing to use the %1$s plugin.', 'wpsso' ), $wpseo_wc_label ) . ' ';
-					
+
 					$notice_msg .= sprintf( __( 'To avoid adding incorrect and confusing Schema markup in your webpages, <a href="%1$s">please deactivate the %2$s plugin immediately</a>.' ), $plugins_url, $wpseo_wc_label );
 
 					$notice_key = 'deactivate-wpseo-woocommerce';
@@ -681,9 +681,9 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					$blog_post_url = 'https://surniaulula.com/2018/apps/wordpress/plugins/wpbakery/wpbakery-visual-composer-bug-in-change-handler/';
 
 					$notice_msg = __( 'An issue with WPBakery Visual Composer has been detected.', 'wpsso' ) . ' ';
-						
+
 					$notice_msg .= sprintf( __( 'WPBakery Visual Composer version %s and older are known to have a bug in their jQuery event handling code.', 'wpsso' ), $wpb_vc_version_event_bug ) . ' ';
-						
+
 					$notice_msg .= __( 'To avoid jQuery crashing on show / hide jQuery events, please update your version of WPBakery Visual Composer immediately.', 'wpsso' );
 
 					$notice_key = 'wpb-vc-version-event-bug-' . $wpb_vc_version_event_bug;

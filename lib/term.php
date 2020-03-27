@@ -314,7 +314,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$public_term_ids = array();
 
 			foreach ( self::get_public_tax_names( $tax_name ) as $term_tax_name ) {
-				
+
 				if ( $add_tax_in_args ) {	// Since WP v4.5.
 
 					$terms_args[ 'taxonomy' ] = $term_tax_name;

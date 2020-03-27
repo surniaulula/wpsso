@@ -139,7 +139,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$rejected_msg, null, $notice_key, true );
 
 				} else {
-				
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'skipped admin notice for rejected Media Library image id ' . $pid );
 						$this->p->debug->log( 'admin warning notice for rejected image id ' . $pid . ' is ' .
@@ -1556,7 +1556,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					}
 				}
 			}
-		
+
 			/**
 			 * Additional filters / modules may detect other embedded video markup.
 			 */
@@ -1689,15 +1689,15 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					 * Fallback to the original video url.
 					 */
 					if ( empty( $media_url ) && $fallback ) {
-	
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'no video returned by filters' );
 							$this->p->debug->log( 'falling back to media url: ' . $args[ 'url' ] );
 						}
-	
+
 						$media_url = $og_single_video[ 'og:video:url' ] = $args[ 'url' ];
 					}
-	
+
 					/**
 					 * Check for an empty mime_type.
 					 */
@@ -2246,7 +2246,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $og_single_video );
 				}
-	
+
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'no head meta found in ' . $url );
 			}
