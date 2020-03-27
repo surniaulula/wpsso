@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 6.26.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-03-27 10:59-0700\n"
-"PO-Revision-Date: 2020-03-27 11:02-0700\n"
+"POT-Creation-Date: 2020-03-27 15:42-0700\n"
+"PO-Revision-Date: 2020-03-27 15:44-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -27,116 +27,112 @@ msgid_plural "Please install these updates at your earliest convenience."
 msgstr[0] "SVP installer cette mise à jour dès que possible."
 msgstr[1] "SVP installer ces mises à jour dès que possible."
 
-#: lib/admin-head.php:253
+#: lib/admin-head.php:256
 msgid "Activate the %s add-on."
 msgstr "Activer l'ajout %s."
 
-#: lib/admin-head.php:260
+#: lib/admin-head.php:263
 msgid "Install and activate the %s add-on."
 msgstr "Installer et activer l'ajout %s."
 
-#: lib/admin-head.php:273
+#: lib/admin-head.php:279
 msgid "Purchase the %s plugin."
 msgstr "Acheter l'extension %s."
 
-#: lib/admin-head.php:285
-msgid "Purchase the %s add-on."
-msgstr "Acheter l'ajout %s."
-
-#: lib/admin-head.php:291 lib/gettext-config.php:26
+#: lib/admin-head.php:288 lib/gettext-config.php:26
 msgctxt "lib file description"
 msgid "Setup Guide"
 msgstr "Guide de config."
 
-#: lib/admin-head.php:293
+#: lib/admin-head.php:290
 msgid "https://search.google.com/structured-data/testing-tool/u/0/"
 msgstr "https://search.google.com/structured-data/testing-tool/u/0/"
 
-#: lib/admin-head.php:294
+#: lib/admin-head.php:291
 msgid "Google Structured Data Testing Tool"
 msgstr "Outil de test Google des données structurées"
 
-#: lib/admin-head.php:296
+#: lib/admin-head.php:293
 msgid "The WooCommerce v%s plugin is known to provide incomplete Schema markup for Google."
 msgstr "L'extension WooCommerce v%s est connue pour fournir un balisage de Schéma incomplet pour Google."
 
-#: lib/admin-head.php:298
-msgid "The WPSSO Core Premium plugin and its WPSSO JSON Premium add-on provide a far better solution by offering complete Facebook / Pinterest Product meta tags and Schema Product markup for Google Rich Results (previously known as Rich Snippets) &mdash; including additional product images, product variations, product attributes (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, and much, much more."
-msgstr "L'extension WPSSO Core Premium et son ajout WPSSO JSON Premium constituent une meilleure solution en proposant des balises méta de produit Facebook / Pinterest complètes et un balisage de produit Schéma pour les résultats riches (anciens extraits enrichis) de Google &mdash; y compris des images de produit supplémentaires, des variantes de produit et des attributs de produit (marque, couleur, état, EAN, dimensions, GTIN-8/12/13/14, ISBN, matériau, MPN, taille, SKU, etc.), critiques de produits, évaluations de produits, dates de début / fin des ventes, prix de vente, prix hors taxes, prix TVA et bien plus encore."
+#: lib/admin-head.php:295
+msgid "The WPSSO Core Premium plugin (required for WooCommerce integration) and its WPSSO Schema JSON-LD Markup add-on provide a far better solution by offering complete Facebook / Pinterest Product meta tags and Schema Product markup for Google Rich Results (previously known as Rich Snippets) &mdash; including additional product images, product variations, product attributes (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, and much, much more."
+msgstr "L'extension WPSSO Core Premium (requis pour l'intégration de WooCommerce) et son ajout WPSSO Schema JSON-LD Markup offre une meilleure solution en proposant des balises méta de produit Facebook / Pinterest complètes et un balisage de produit Schéma pour les résultats riches (anciennement Rich Snippets) de Google &mdash; y compris des images de produit supplémentaires, des variantes de produit et des attributs de produit (marque, couleur, état, EAN, dimensions, GTIN-8/12/13/14, ISBN, matériau, MPN, taille, SKU, etc.), critiques de produits, évaluations de produits, dates de début / fin des ventes, prix de vente, prix hors taxes, prix TVA et bien plus encore."
 
-#: lib/admin-head.php:302
+#: lib/admin-head.php:299
 msgid "As suggested in the %1$s, you can (and should) submit a few product URLs to the %2$s and make sure your Schema Product markup is complete."
 msgstr "Comme suggéré dans le %1$s, vous pouvez (et devriez) soumettre quelques URL de produit a l'%2$s et vous assurer que le balisage de Schéma Produit est complet."
 
-#: lib/admin-head.php:414
+#: lib/admin-head.php:411
 msgid "The %s plugin description page on WordPress.org."
 msgstr "La page de description pour l'extension %s sur WordPress.org."
 
-#: lib/admin-head.php:420
+#: lib/admin-head.php:417
 msgid "Yes! Rate %s 5 stars!"
 msgstr "Oui! Noter %s 5 étoiles!"
 
-#: lib/admin-head.php:421
+#: lib/admin-head.php:418
 msgid "Thank you for rating the %s plugin!"
 msgstr "Merci d'avoir noté l'extension %s!"
 
-#: lib/admin-head.php:426
+#: lib/admin-head.php:423
 msgid "I've already rated %s."
 msgstr "J'ai déjà noté %s."
 
-#: lib/admin-head.php:427
+#: lib/admin-head.php:424
 msgid "Thank you for your earlier rating of %s!"
 msgstr "Merci pour votre note antérieure de %s!"
 
-#: lib/admin-head.php:445 lib/admin-head.php:549
+#: lib/admin-head.php:442 lib/admin-head.php:546
 msgid "Fantastic!"
 msgstr "Fantastique!"
 
-#: lib/admin-head.php:447
+#: lib/admin-head.php:444
 msgid "You've been using <b>%s</b> for a while now, which is awesome!"
 msgstr "Vous utilisez <b>%s</b> depuis un moment maintenant, ce qui est génial!"
 
-#: lib/admin-head.php:451
+#: lib/admin-head.php:448
 msgid "We've put a lot of effort into making %s and its add-ons the best possible, so it's great to know that you're finding this plugin useful."
 msgstr "Nous avons mis beaucoup d'efforts à faire %s et ses ajouts les meilleurs possible, c'est donc super de savoir que vous trouvez cette extension utile."
 
-#: lib/admin-head.php:455
+#: lib/admin-head.php:452
 msgid "Now that you're familiar with %s, would you rate this plugin 5 stars on WordPress.org?"
 msgstr "Maintenant que vous êtes familier avec %s, évalueriez-vous cette extension 5 étoiles sur WordPress.org?"
 
-#: lib/admin-head.php:459
+#: lib/admin-head.php:456
 msgid "Your rating is a great way to encourage us and it helps other WordPress users find great plugins!"
 msgstr "Votre note est un excellent moyen de nous encourager et aide les autres utilisateurs de WordPress à trouver de bonnes extensions!"
 
-#: lib/admin-head.php:492
+#: lib/admin-head.php:489
 msgid "three months"
 msgstr "trois mois"
 
-#: lib/admin-head.php:515
+#: lib/admin-head.php:512
 msgid "Yes! I'd like to get the %s update!"
 msgstr "Oui! J'aimerais avoir la mise à jour %s!"
 
-#: lib/admin-head.php:518
+#: lib/admin-head.php:515
 msgid "Thank you for your support!"
 msgstr "Merci pour votre soutien!"
 
-#: lib/admin-head.php:527
+#: lib/admin-head.php:524
 msgid "No thanks, I'll stay with the %s version."
 msgstr "Non merci, je vais rester avec la version %s."
 
-#: lib/admin-head.php:530
+#: lib/admin-head.php:527
 msgid "Sorry to hear that - hopefully you'll change your mind later."
 msgstr "Je suis désolé d'entendre ça - vous pouvez toujours changer d'avis plus tard."
 
-#: lib/admin-head.php:551
+#: lib/admin-head.php:548
 msgid "You've been using the %1$s plugin for more than %2$s now, which is awesome!"
 msgstr "Vous utilisez l'extension %1$s depuis plus de %2$s déja, ce qui est génial!"
 
-#: lib/admin-head.php:556
+#: lib/admin-head.php:553
 msgid "We've put a lot of effort into making %1$s and its add-ons the best possible &mdash; I hope you've enjoyed all the new features, improvements and updates over the past %2$s."
 msgstr "Nous avons mis beaucoup d'efforts à faire %1$s et ses ajouts les meilleurs possible &mdash; Nous espérons que vous avez apprécié toutes les nouvelles fonctionnalités, améliorations et mises à jour au cours des derniers %2$s."
 
-#: lib/admin-head.php:560
+#: lib/admin-head.php:557
 msgid "Have you considered purchasing the %s version? It comes with a lot of extra features!"
 msgstr "Avez-vous envisagé d'acheter la version %s? Elle vient avec beaucoup de fonctionnalités supplémentaires!"
 
