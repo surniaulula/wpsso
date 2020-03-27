@@ -184,9 +184,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				( empty( $comment ) ? '' : ' ' . $comment );
 		}
 
-		public function get_td_no_checkbox( $name, $comment = '' ) {
+		public function get_td_no_checkbox( $name, $comment = '', $extra_css_class = '' ) {
 
-			return '<td class="checkbox blank">' . $this->get_no_checkbox_comment( $name, $comment ) . '</td>';
+			return '<td class="' . $extra_css_class . ' blank">' . $this->get_no_checkbox_comment( $name, $comment ) . '</td>';
 		}
 
 		/**
