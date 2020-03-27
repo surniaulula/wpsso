@@ -3330,10 +3330,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $is_main ) {
 
-				if ( $mod[ 'is_home_posts' ] || ! is_object( $mod[ 'obj' ] ) ) {
+				if ( $mod[ 'is_home_posts' ] ) {
 
 					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( 'home is index or object is false (archive = true)' );
+						$wpsso->debug->log( 'home is posts (archive = true)' );
 					}
 
 					$is_archive = true;
@@ -3342,6 +3342,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( 'post type is archive (archive = true)' );
+					}
+
+					$is_archive = true;
+
+				} elseif ( ! is_object( $mod[ 'obj' ] ) ) {
+
+					if ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log( 'object is false (archive = true)' );
 					}
 
 					$is_archive = true;
@@ -3384,6 +3392,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 * Setup the query for archive pages in the back-end.
 				 */
 				$use_query = SucomUtilWP::doing_frontend() ? true : false;
+
 				$use_query = apply_filters( $wpsso->lca . '_page_posts_use_query', $use_query, $mod );
 
 				if ( ! $use_query ) {
@@ -3396,16 +3405,30 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					$saved_wp_query = $wp_query;
 
+					if ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log( 'setting the $wp_query variable' );
+					}
+
 					$wp_query = new WP_Query( $posts_args );
 				
 					if ( $mod[ 'is_home_posts' ] ) {
 						$wp_query->is_home = true;
+					}
+
+				} else {
+
+					if ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log( 'keeping existing $wp_query variable' );
 					}
 				}
 
 				$have_num = 0;
 
 				if ( have_posts() ) {
+
+					if ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log( 'looping through have_posts() results' );
+					}
 
 					while ( have_posts() ) {
 
@@ -3426,11 +3449,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						}
 					}
 
-					rewind_posts();
+					if ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log( 'retrieved ' . $have_num . ' post mods' );
+					}
 
 					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( $have_num . ' page_posts_mods added' );
+						$wpsso->debug->log( 'rewinding posts query' );
 					}
+
+					rewind_posts();
 
 				} elseif ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'no posts to add' );
@@ -3440,6 +3467,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 * Restore the original WP_Query.
 				 */
 				if ( ! $use_query ) {
+
+					if ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log( 'restoring the $wp_query variable' );
+					}
+
 					$wp_query = $saved_wp_query;
 				}
 
