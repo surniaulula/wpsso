@@ -1320,6 +1320,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						 */
 						if ( null === $og_images ) {
 
+							/**
+							 * Make sure the image size exists, just in case.
+							 */
 							$size_info = $this->p->util->get_size_info( $size_name );
 
 							if ( empty( $size_info[ 'width' ] ) && empty( $size_info[ 'height' ] ) ) {
@@ -1327,6 +1330,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 								if ( $this->p->debug->enabled ) {
 									$this->p->debug->log( 'missing size information for ' . $size_name );
 								}
+
+								$og_images = array();
 
 							} else {
 
