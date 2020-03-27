@@ -505,7 +505,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.26.0-rc.2 (2020/03/26)**
+**Version 6.26.0 (2020/03/27)**
 
 * **New Features**
 	* None.
@@ -926,9 +926,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.26.0-rc.2 =
+= 6.26.0 =
 
-(2020/03/26) Added a new Pinterest Pin It image size and section in the Document SSO &gt; Priority Media tab.
+(2020/03/27) Added a new Pinterest Pin It image size and section in the Document SSO &gt; Priority Media tab.
 
 = 6.25.1 =
 
