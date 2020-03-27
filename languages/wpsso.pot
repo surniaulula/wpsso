@@ -6292,29 +6292,36 @@ msgstr ""
 msgid "adding schema organization"
 msgstr ""
 
-#: lib/schema-single.php:1019
+#. translators: %1$s is the organization name, %2$s the Schema type URL.
+#: lib/schema-single.php:1020
 msgid ""
 "An organization logo image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
-#: lib/schema-single.php:1020
+#. translators: %1$s is the organization name, %2$s the Schema type URL.
+#: lib/schema-single.php:1023
 msgid ""
 "An organization banner image (600x60px) is missing and required for the "
 "\"%1$s\" organization Schema %2$s markup."
 msgstr ""
 
-#: lib/schema-single.php:1021
+#. translators: %1$s is the organization name, %2$s is 'site' (translated) or 'ID #'.
+#: lib/schema-single.php:1026
 msgid ""
 "Please enter the missing image URL in the \"%1$s\" %2$s organization "
 "settings."
 msgstr ""
 
-#: lib/schema-single.php:1190
+#: lib/schema-single.php:1043
+msgid "site"
+msgstr ""
+
+#: lib/schema-single.php:1195
 msgid "adding schema for person user ID %1$s"
 msgstr ""
 
-#: lib/schema-single.php:1350
+#: lib/schema-single.php:1355
 msgid "adding schema place"
 msgstr ""
 

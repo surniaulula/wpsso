@@ -1016,8 +1016,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						 */
 						if ( $wpsso->notice->is_admin_pre_notices() ) {
 
+							// translators: %1$s is the organization name, %2$s the Schema type URL.
 							$logo_missing_msg   = __( 'An organization logo image is missing and required for the "%1$s" organization Schema %2$s markup.', 'wpsso' );
+
+							// translators: %1$s is the organization name, %2$s the Schema type URL.
 							$banner_missing_msg = __( 'An organization banner image (600x60px) is missing and required for the "%1$s" organization Schema %2$s markup.', 'wpsso' );
+
+							// translators: %1$s is the organization name, %2$s is 'site' (translated) or 'ID #'.
 							$org_settings_msg   = __( 'Please enter the missing image URL in the "%1$s" %2$s organization settings.', 'wpsso' );
 
 							if ( 'org_logo_url' === $org_logo_key ) {
@@ -1035,7 +1040,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 									$general_page_link = $wpsso->util->get_admin_url( 'essential#sucom-tabset_essential-tab_google' );
 
 									$notice_msg .= ' <a href="' . $general_page_link . '">';
-									$notice_msg .= sprintf( $org_settings_msg, $ret[ 'name' ], $org_id );
+									$notice_msg .= sprintf( $org_settings_msg, $ret[ 'name' ], __( 'site', 'wpsso' ) );
 									$notice_msg .= '</a>';
 
 								} elseif ( ! empty( $wpsso->avail[ 'p_ext' ][ 'org' ] ) ) {

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 6.26.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-03-26 09:34-0700\n"
-"PO-Revision-Date: 2020-03-26 09:34-0700\n"
+"POT-Creation-Date: 2020-03-26 22:32-0700\n"
+"PO-Revision-Date: 2020-03-26 22:37-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -5451,19 +5451,23 @@ msgstr "SVP mettre à jour %1$s avant d'essayer de réactiver l'extension %2$s."
 msgid "adding schema organization"
 msgstr "ajout de schéma organisation"
 
+#: lib/schema-single.php:1019
+msgid "An organization logo image is missing and required for the \"%1$s\" organization Schema %2$s markup."
+msgstr "Une image de logo d'organisation est manquante et requise pour le balisage de Schéma %2$s de l'organisation \"%1$s\"."
+
+#: lib/schema-single.php:1020
+msgid "An organization banner image (600x60px) is missing and required for the \"%1$s\" organization Schema %2$s markup."
+msgstr "Une image de bannière d'organisation (600x60px) est manquante et requise pour le balisage de Schéma %2$s de l'organisation \"%1$s\"."
+
 #: lib/schema-single.php:1021
-msgid "The \"%1$s\" Organization Logo image is missing and required for the Schema %2$s markup."
-msgstr "L'image logo de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
+msgid "Please enter the missing image URL in the \"%1$s\" %2$s organization settings."
+msgstr "Veuillez fournir l'URL de l'image manquante dans les paramètres de l'organisation %2$s \"%1$s\"."
 
-#: lib/schema-single.php:1027
-msgid "The \"%1$s\" Organization Banner (600x60px) image is missing and required for the Schema %2$s markup."
-msgstr "L'image bannière (600x60px) de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
-
-#: lib/schema-single.php:1163
+#: lib/schema-single.php:1190
 msgid "adding schema for person user ID %1$s"
 msgstr "ajout de schéma de personne pour l'ID d'utilisateur %1$s"
 
-#: lib/schema-single.php:1323
+#: lib/schema-single.php:1350
 msgid "adding schema place"
 msgstr "ajout de schéma d'endroit"
 
