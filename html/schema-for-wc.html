@@ -7,28 +7,27 @@
 
 <p>WooCommerce is a popular e-commerce plugin that offers a lot of flexibility with a solid and well designed codebase. </p>
 
-<p><strong>WooCommerce is not an SEO plugin or a social sharing plugin</strong>, so its Schema markup for search engines and social sites is minimal -- and its social meta tags for Facebook, Twitter, and other social sites are non-existent.</p>
+<p><strong>WooCommerce is not an SEO plugin or a social sharing plugin</strong>, so its Schema markup for search engines and social sites is minimal - and its social meta tags for Facebook, Twitter, and other social sites are non-existent.</p>
 
-<p>You may have found your way to this webpage after sharing a WooCommerce product page on Facebook, Pinterest and social sites -- or maybe testing a product page using <a href="https://search.google.com/structured-data/testing-tool/u/0/">Google's Structured Data Testing Tool</a> -- and being unimpressed with the results.</p>
-
-<p>The following guide provides a quick and easy way to improve how your WooCommerce products look when shared on social sites and displayed in search results. Having more complete and accurate Schema markup will also improve your search ranking -- significantly in some instances. :)</p>
+<p>You may have found your way to this webpage after sharing a WooCommerce product page on Facebook, Pinterest and social sites - or maybe testing a product page using <a href="https://search.google.com/structured-data/testing-tool/u/0/">Google's Structured Data Testing Tool</a> - and being unimpressed with the results. The following guide provides a quick and easy way to improve how your WooCommerce products look when shared on social sites and displayed in search results. Having more complete and accurate Schema markup will also improve your search ranking - significantly in some instances. :)</p>
 
 <h3>Common Warnings for WooCommerce Markup</h3>
 
 <p><a href="https://search.google.com/structured-data/testing-tool/u/0/">Google's Structured Data Testing Tool</a> and/or <a href="https://search.google.com/search-console">Google's Search Console</a> for site owners may report the following errors for the default Schema JSON-LD markup offered by WooCommerce:</p>
 
 <ul>
-	<li><strong>The </strong><em><strong>aggregateRating</strong></em><strong> field is recommended.</strong></li>
-	<li><strong>The </strong><em><strong>brand</strong></em><strong> field is recommended.</strong></li>
-	<li><strong>The </strong><em><strong>review</strong></em><strong> field is recommended.</strong></li>
+	<li><strong>The aggregateRating field is recommended.</strong></li>
+	<li><strong>The brand field is recommended.</strong></li>
+	<li><strong>The review field is recommended.</strong></li>
 	<li><strong>This Product is missing a global identifier (e.g. isbn, mpn or gtin8).</strong></li>
+	<li><strong>No global identifier provided (e.g. gtin mpn isbn).</strong></li>
 </ul>
 
 <p>The <em>aggregateRating</em> warning from WooCommerce's Schema markup can be addressed by having your customers leave one or more reviews for each of your products. Unfortunately, products without any reviews will not have an <em>aggregateRating</em> value.</p>
 
-<p>If your product has several reviews, WooCommerce will only include the <strong>last review</strong> in the Schema Product markup, which may not reflect the <em>aggregateRating</em> values -- which are calculated from all reviews, not just the last one.</p>
+<p>If your product has several reviews, WooCommerce will only include the <strong>last review</strong> in the Schema Product markup, which may not reflect the <em>aggregateRating</em> values - which are calculated from all reviews, not just the last one.</p>
 
-<p>All product reviews (ie. have a star rating) and comments (ie. no rating value) are combined by WooCommerce into a separate Schema JSON-LD block for "reviews", no matter if a review / comment has a rating value or not.</p>
+<p>All product reviews (ie. have a star rating) and comments (ie. no rating value) are combined by WooCommerce into a separate, disconnected Schema JSON-LD block for reviews, no matter if a review or comment has a rating value or not.</p>
 
 <p>One or more of the following values should be included in the Schema markup, but WooCommerce does not handle these product attributes by default, nor would it include them, even if you created these product attributes.</p>
 
@@ -52,19 +51,15 @@
 	</figure>
 </div>
 
-<p>The combination of the <a href="https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso&amp;utm_medium=web&amp;utm_content=better-schema-for-woocommerce">WPSSO (aka WordPress Social and Search Optimization) Core Premium plugin</a> -- and its <a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso&amp;utm_medium=web&amp;utm_content=better-schema-for-woocommerce">JSON Premium add-on</a> -- addresses all the Schema markup weaknesses from WooCommerce, and WPSSO includes many more Schema product properties for Google -- not to mention complete social meta tags for Facebook, LinkedIn, Pinterest, Twitter, etc. ;-)</p>
+<p>The combination of the <a href="https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso&amp;utm_medium=web&amp;utm_content=better-schema-for-woocommerce">WPSSO (aka WordPress Social and Search Optimization) Core Premium plugin</a> and its <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup add-on</a> addresses all the Schema markup weaknesses from WooCommerce, and includes many more Schema product properties for Google - not to mention complete social meta tags for Facebook, LinkedIn, Pinterest, Twitter, etc. ;-)</p>
 
-<blockquote class="wp-block-quote">
-<p><a href="https://wpsso.com/docs/plugins/wpsso-schema-json-ld/notes/markup-examples/markup-example-for-a-woocommerce-product/">See an example of the Schema Product markup for a WooCommerce product with variations, created by the WPSSO Core Premium plugin and its WPSSO JSON Premium add-on.</a></p>
-</blockquote>
+<p>WPSSO includes an <em>aggregateRating</em> and <em>review</em> property for all your products, even if they do not have any reviews - and if your products have reviews (ie. with a star rating) and comments (ie. no rating value), they will be classified properly - added to the Schema product markup as "reviews" and "comments" respectfully.</p>
 
-<p>WPSSO includes an <em>aggregateRating</em> and <em>review</em> property for all your products, even if they do not have any reviews -- and if your products have reviews (ie. with a star rating) and comments (ie. no rating value), they will be classified properly, and added to the Schema product markup as "reviews" and "comments" respectfully.</p>
-
-<p>WooCommerce provides only a single product offer in its Schema markup -- even for variable products with different pricing -- while WPSSO includes all product variation offers, grouped by currency, with complete product details for each offer (description, image, mpn, sku, gtin 8-14, item condition, availability, price, currency, VAT added, etc.). </p>
+<p>WooCommerce provides only a single product offer in its Schema markup - even for variable products with different pricing - while WPSSO includes all product variation offers, grouped by currency, with complete product details for each offer (description, image, mpn, sku, gtin 8-14, item condition, availability, price, currency, VAT added, etc.).</p>
 
 <p>WPSSO includes product prices without VAT (by default) or can optionally include VAT in the offer prices. WPSSO also includes the WooCommerce product and variation image, weight, width, height, and length values for each offer.</p>
 
-<p>WPSSO Core Premium and its WPSSO JSON Premium add-on support many additional WooCommerce product and variation attributes as well, including:</p>
+<p>WPSSO Core Premium and its WPSSO Schema JSON-LD Markup add-on support many additional WooCommerce product and variation attributes as well, including:</p>
 
 <ul>
 	<li><strong>Brand</strong></li>
@@ -86,35 +81,31 @@
 
 <ol>
 	<li>
-		<p><strong>Install the Free / Standard version of WPSSO Core:</strong></p>
+		<p><strong>Install the WPSSO Core plugin:</strong></p>
 		<p>From your WordPress site's <em>Plugins &gt; Add New</em> page, search for "<em>WPSSO Core</em>".</p>
 	</li>
 	<li>
-		<p><strong>Install the Free / Standard version of WPSSO Schema JSON-LD Markup:</strong></p>
+		<p><strong>Install the WPSSO Schema JSON-LD Markup add-on:</strong></p>
 		<p>From your WordPress site's <em>Plugins &gt; Add New</em> page, search for "<em>WPSSO JSON</em>".</p>
 	</li>
 	<li>
-		<p>After submitting a few posts / pages to the <a href="https://search.google.com/structured-data/testing-tool/u/0/">Google Structured Data Testing Tool</a>, if you find there is old <strong>Schema microdata</strong> from your theme templates in the results, you should install the Free / Standard version of WPSSO Strip Schema Microdata:</p>
+		<p>After submitting a few posts / pages to the <a href="https://search.google.com/structured-data/testing-tool/u/0/">Google Structured Data Testing Tool</a>, if you find there is old <strong>Schema microdata</strong> from your theme templates in the results, you should install the WPSSO Strip Schema Microdata add-on:</p>
 		<p>From your WordPress site's <em>Plugins &gt; Add New</em> page, search for "<em>WPSSO SSM</em>".</p>
 	</li>
 	<li>
-		<p><strong>Optionally</strong> install the Free / Standard version of WPSSO Schema Breadcrumbs Markup (<em>recommended</em>):</p>
+		<p><strong>Optionally</strong> install the WPSSO Schema Breadcrumbs Markup add-on (<em>recommended</em>):</p>
 		<p>From your WordPress site's <em>Plugins &gt; Add New</em> page, search for "<em>WPSSO BC</em>".</p>
 	</li>
 	<li>
-		<p><strong>Optionally</strong> install the Free / Standard version of WPSSO Tune WP Image Editors to improve the quality of your WordPress social and search images (<em>recommended</em>):</p>
+		<p><strong>Optionally</strong> install the WPSSO Tune WP Image Editors add-on to improve the quality of your WordPress social and search images (<em>recommended</em>):</p>
 		<p>From your WordPress site's Plugins &gt; Add New page, search for "<em>WPSSO TIE</em>".</p>
 	</li>
 	<li>
 		<p><strong>Have a look through your WordPress site's new <a href="https://wpsso.com/docs/plugins/wpsso/installation/a-setup-guide/?utm_source=wpsso&amp;utm_medium=web&amp;utm_content=better-schema-for-woocommerce"><em>SSO &gt; Setup Guide</em></a> page for possible setting suggestions.</strong></p>
 	</li>
 	<li>
-		<p><strong>To add support for WooCommerce products, other 3rd party plugins and advanced features:</strong></p>
+		<p><strong>To add support for WooCommerce products, other 3rd party plugins, service APIs, and advanced settings:</strong></p>
 		<p>Purchase the <a href="https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso&amp;utm_medium=web&amp;utm_content=better-schema-for-woocommerce">WPSSO Core Premium plugin</a> and follow the installation notes provided by email.</p>
-	</li>
-	<li>
-		<p><strong>To get support for the Schema Product type, and other Schema types:</strong></p>
-		<p>Purchase the <a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso&amp;utm_medium=web&amp;utm_content=better-schema-for-woocommerce">WPSSO Schema JSON-LD Markup Premium add-on</a> and follow the installation notes provided by email.<p>
 	</li>
 	<li>
 		<p><strong>For more information on setting up WooCommerce product attributes, and optionally including VAT in product offer prices:</strong></p>

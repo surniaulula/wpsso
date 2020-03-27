@@ -3,21 +3,19 @@
 
 <ol>
 
-<li><p>The following WooCommerce integration notes are for the WPSSO Core Premium plugin, which includes an integration module to fetch product information from the WooCommerce plugin. If you use the Free / Standard version of WPSSO Core, you will need to <a href="https://wpsso.com/extend/plugins/wpsso/">purchase the Premium version of WPSSO Core</a>.</p></li>
+	<li><p>The following WooCommerce integration notes are for the WPSSO Core Premium plugin, which includes an integration module to fetch product information from the WooCommerce plugin. If you use the Free / Standard version of WPSSO Core, you will need to <a href="https://wpsso.com/extend/plugins/wpsso/">purchase the Premium version of WPSSO Core</a> before using these integration notes.</p></li>
 
-<li><p><strong>You should be familiar with WooCommerce product attributes - see the <a href="https://docs.woocommerce.com/document/managing-product-taxonomies/#section-6">WooCommerce documentation on Managing Product Attributes</a> for additional information.</strong></p></li>
+	<li><p><strong>You should be familiar with creating and managing WooCommerce product attributes - see the <a href="https://docs.woocommerce.com/document/managing-product-taxonomies/#section-6">WooCommerce documentation on Managing Product Attributes</a> for additional information.</strong></p></li>
 
-<li><p>You may want to <a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/">purchase the WPSSO JSON Premium add-on</a> (if you haven't already) to replace the default Schema markup offered by WooCommerce. The WooCommerce plugin offers incomplete Schema markup and will not pass Google validation. The WPSSO Core Premium plugin provides complete product Schema and Open Graph <em>meta tags</em> (not JSON-LD) for Facebook, Pinterest, and other social websites.</p>
+	<li><p>You may want to activate the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup add-on</a> (if you haven't already) to replace the default Schema markup offered by WooCommerce. The WooCommerce plugin provides incomplete Schema markup and will not pass Google validation. Unless you have taken steps (ie. coded custom filters) to fix the default WooCommerce Schema JSON-LD markup for Google's Rich Results, you will want to activate the WPSSO Schema JSON-LD Markup add-on.</p>
 
-<p>Unless you have taken steps (ie. coded custom filters) to fix the default WooCommerce Schema JSON-LD markup for Google's Rich Results, you will need to purchase the WPSSO JSON Premium add-on.</p>
-
-<p>Together, the WPSSO Core Premium plugin and its WPSSO JSON Premium add-on provide <em>extensive, complete and correct</em> Schema product markup as JSON-LD for Google Rich Results, including additional product images, product variations, product attributes (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, and much, much more.</p></li>
+	<p>Together, the WPSSO Core Premium plugin and its WPSSO Schema JSON-LD Markup add-on provide <em>extensive, complete and correct</em> Schema product markup as JSON-LD for Google Rich Results, including additional product images, product variations, product attributes (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, and much, much more.</p></li>
 
 </ol>
 
 <h2>Additional WooCommerce Product Information</h2>
 
-<p>The WPSSO Core Premium plugin will read all standard product information from WooCommerce automatically (prices, sku, sales, dimensions, variations, etc.), and can also read the following additional WooCommerce product attributes if you create them in your WooCommerce store (note that upper / lower case is important).</p>
+<p>The WPSSO Core Premium plugin will read all standard product information from WooCommerce automatically (prices, sku, sales, dimensions, variations, etc.), and can also read the following additional WooCommerce product attributes <em>if you create them in your WooCommerce store</em> (note that upper/lower case is important).</p>
 
 <ul>
 	<li><strong>Brand</strong></li>
@@ -64,7 +62,7 @@
 
 <h2>What if you prefer WordPress custom fields?</h2>
 
-<p>It's possible to use WordPress custom fields (aka WordPress post meta) instead of WooCommerce product attributes, but there are some downsides to doing this. Custom fields can only offer one value, and as such, can only be applied to simple product markup, not product variation markup. WooCommerce is also designed to manage products and product information -- using the built-in features of WooCommerce makes more sense than using free-form / non-standard custom fields. If you're certain that you want to use WordPress custom fields, instead of WooCommerce product attributes, you need to:</p>
+<p>It's possible to use WordPress custom fields (aka WordPress post meta) instead of WooCommerce product attributes, but there are some downsides to doing this. Custom fields can only offer one value, and as such, can only be applied to simple product markup, not product variations. WooCommerce is also designed to manage products and product information -- using the built-in features of WooCommerce makes more sense than using free-form / non-standard custom fields. If you're certain that you want to use WordPress custom fields, instead of WooCommerce product attributes, you need to:</p>
 
 <ol>
 	<li>Enter the desired WordPress custom field name under the <em>SSO &gt; Advanced Settings &gt; Editing Pages &gt; Custom Fields</em> tab.</li>
@@ -73,7 +71,7 @@
 
 <h2>What if you prefer manual entry in the Document SSO metabox?</h2>
 
-<p>Like WordPress custom fields (see above), manual / customized values in the Document SSO metabox can only offer one value, and as such, can only be applied to simple product markup, not product variation markup. If you're certain that you want to use manual / customized values in the Document SSO metabox, instead of WooCommerce product attributes or WordPress custom fields, you need to:</p>
+<p>Like WordPress custom fields (see above), manual / customized values in the Document SSO metabox can only offer one value, and as such, can only be applied to simple product markup, not product variations. If you're certain that you want to use manual / customized values in the Document SSO metabox, instead of WooCommerce product attributes or WordPress custom fields, you need to:</p>
 
 <ol>
 	<li>Clear the desired Product Attribute Name under the <em>SSO &gt; Advanced Settings &gt; Editing Pages &gt; Product Attributes</em> tab.</li>
