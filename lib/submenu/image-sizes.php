@@ -117,8 +117,7 @@ if ( ! class_exists( 'WpssoSubmenuImageSizes' ) && class_exists( 'WpssoAdmin' ) 
 
 					$table_rows[ 'p_img_size' ] = ( $p_img_disabled ? $this->form->get_tr_hide( 'basic' ) : '' ) .
 					$this->form->get_th_html( _x( 'Pinterest Pin It', 'option label', 'wpsso' ), '', 'p_img_size' ) . 
-					'<td>' . $this->form->get_input_image_dimensions( 'p_img', $is_narrow = false,
-						$p_img_disabled ) . ' ' . $p_img_msg . '</td>';
+					'<td>' . $this->form->get_input_image_dimensions( 'p_img', $p_img_disabled ) . ' ' . $p_img_msg . '</td>';
 
 					$table_rows[ 'schema_00_img_size' ] = '' .		// Use a key name that sorts first.
 					$this->form->get_th_html( _x( 'Schema', 'option label', 'wpsso' ), '', 'schema_img_size' ) . 
@@ -130,18 +129,15 @@ if ( ! class_exists( 'WpssoSubmenuImageSizes' ) && class_exists( 'WpssoAdmin' ) 
 
 					$table_rows[ 'schema_article_01_01_img_size' ] = ( $amp_img_disabled ? $this->form->get_tr_hide( 'basic' ) : '' ) .
 					$this->form->get_th_html( _x( 'Schema Article AMP 1:1', 'option label', 'wpsso' ), '', 'schema_article_1_1_img_size' ) . 
-					'<td>' . $this->form->get_input_image_dimensions( 'schema_article_1_1_img', $is_narrow = false,
-						$amp_img_disabled ) . $amp_img_msg . '</td>';
+					'<td>' . $this->form->get_input_image_dimensions( 'schema_article_1_1_img', $amp_img_disabled ) . $amp_img_msg . '</td>';
 
 					$table_rows[ 'schema_article_04_03_img_size' ] = ( $amp_img_disabled ? $this->form->get_tr_hide( 'basic' ) : '' ) .
 					$this->form->get_th_html( _x( 'Schema Article AMP 4:3', 'option label', 'wpsso' ), '', 'schema_article_4_3_img_size' ) . 
-					'<td>' . $this->form->get_input_image_dimensions( 'schema_article_4_3_img', $is_narrow = false,
-						$amp_img_disabled ) . $amp_img_msg . '</td>';
+					'<td>' . $this->form->get_input_image_dimensions( 'schema_article_4_3_img', $amp_img_disabled ) . $amp_img_msg . '</td>';
 
 					$table_rows[ 'schema_article_16_09_img_size' ] = ( $amp_img_disabled ? $this->form->get_tr_hide( 'basic' ) : '' ) .
 					$this->form->get_th_html( _x( 'Schema Article AMP 16:9', 'option label', 'wpsso' ), '', 'schema_article_16_9_img_size' ) . 
-					'<td>' . $this->form->get_input_image_dimensions( 'schema_article_16_9_img', $is_narrow = false,
-						$amp_img_disabled ) . $amp_img_msg . '</td>';
+					'<td>' . $this->form->get_input_image_dimensions( 'schema_article_16_9_img', $amp_img_disabled ) . $amp_img_msg . '</td>';
 
 					$table_rows[ 'schema_thumb_img_size' ] = '' .
 					$this->form->get_th_html( _x( 'Schema Thumbnail Image', 'option label', 'wpsso' ), '', 'thumb_img_size' ) . 

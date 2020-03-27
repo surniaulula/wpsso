@@ -184,10 +184,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				( empty( $comment ) ? '' : ' ' . $comment );
 		}
 
-		public function get_td_no_checkbox( $name, $comment = '', $is_narrow = false ) {
+		public function get_td_no_checkbox( $name, $comment = '' ) {
 
-			return '<td class="'.( $is_narrow ? 'checkbox ' : '' ) . 'blank">' . 
-				$this->get_no_checkbox_comment( $name, $comment ) . '</td>';
+			return '<td class="checkbox blank">' . $this->get_no_checkbox_comment( $name, $comment ) . '</td>';
 		}
 
 		/**
@@ -1176,7 +1175,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_input_image_upload( $name, $placeholder, $is_disabled = true );
 		}
 
-		public function get_input_image_dimensions( $name, $is_narrow = false, $is_disabled = false ) {
+		public function get_input_image_dimensions( $name, $is_disabled = false ) {
 
 			$html = $this->get_input( $name . '_width', $css_class = 'short width', $css_id = '',
 				$len = 0, $placeholder = '', $is_disabled ) . 'x&nbsp;';
@@ -1187,11 +1186,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html .= _x( 'crop', 'option comment', $this->text_domain ) . ' ' .
 				$this->get_checkbox( $name . '_crop', '', '', $is_disabled );
 
-			if ( $is_narrow ) {
-				$html .= ' <div class="img_crop_from is_narrow">';
-			} else {
-				$html .= ' <div class="img_crop_from">' . _x( 'from', 'option comment', $this->text_domain ) . ' ';
-			}
+			$html .= ' <div class="img_crop_from">' . _x( 'from', 'option comment', $this->text_domain ) . ' ';
 
 			$html .= $this->get_input_image_crop_area( $name, $add_none = false, $is_disabled );
 
@@ -1200,9 +1195,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_no_input_image_dimensions( $name, $is_narrow = false ) {
+		public function get_no_input_image_dimensions( $name ) {
 
-			return $this->get_input_image_dimensions( $name, $is_narrow, $is_disabled = true );
+			return $this->get_input_image_dimensions( $name, $is_disabled = true );
 		}
 
 		public function get_input_image_crop_area( $name, $add_none = false, $is_disabled = false ) {
