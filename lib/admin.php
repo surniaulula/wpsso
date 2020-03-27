@@ -554,10 +554,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! empty( $settings_page ) ) {
 
-				$settings_page_transl  = _x( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $menu_lib ][ $settings_page ], 'lib file description', 'wpsso' );
-				$settings_label_transl = sprintf( _x( '%s Settings', 'plugin action link', 'wpsso' ), $settings_page_transl );
+				$settings_page_transl = _x( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $menu_lib ][ $settings_page ], 'lib file description', 'wpsso' );
 
-				$action_links[] = '<a href="' . $this->p->util->get_admin_url( $settings_page ) . '">' . $settings_label_transl . '</a>';
+				$action_links[] = '<a href="' . $this->p->util->get_admin_url( $settings_page ) . '">' . $settings_page_transl . '</a>';
 			}
 
 			if ( $ext === $this->p->lca ) {	// Only add for the core plugin.
