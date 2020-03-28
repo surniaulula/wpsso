@@ -6429,12 +6429,12 @@ msgstr ""
 
 #: lib/submenu/advanced.php:54
 msgctxt "metabox title"
-msgid "Editing Pages"
+msgid "Document Types"
 msgstr ""
 
 #: lib/submenu/advanced.php:69
 msgctxt "metabox title"
-msgid "Document Types"
+msgid "Editing Pages"
 msgstr ""
 
 #: lib/submenu/advanced.php:84

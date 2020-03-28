@@ -48,10 +48,10 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 					$metabox_context, $metabox_prio, $callback_args );
 
 			/**
-			 * Editing Pages metabox.
+			 * Document Types metabox.
 			 */
-			$metabox_id      = 'edit';
-			$metabox_title   = _x( 'Editing Pages', 'metabox title', 'wpsso' );
+			$metabox_id      = 'types';
+			$metabox_title   = _x( 'Document Types', 'metabox title', 'wpsso' );
 			$metabox_screen  = $this->pagehook;
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
@@ -63,10 +63,10 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 					$metabox_context, $metabox_prio, $callback_args );
 
 			/**
-			 * Document Types metabox.
+			 * Editing Pages metabox.
 			 */
-			$metabox_id      = 'types';
-			$metabox_title   = _x( 'Document Types', 'metabox title', 'wpsso' );
+			$metabox_id      = 'edit';
+			$metabox_title   = _x( 'Editing Pages', 'metabox title', 'wpsso' );
 			$metabox_screen  = $this->pagehook;
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
@@ -259,21 +259,6 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 					break;
 
 				/**
-				 * Editing Pages metabox.
-				 */
-				case 'edit-product_attrs':
-			
-					$this->add_advanced_product_attr_table_rows( $table_rows, $this->form );
-
-					break;
-
-				case 'edit-custom_fields':
-			
-					$this->add_advanced_custom_fields_table_rows( $table_rows, $this->form );
-
-					break;
-
-				/**
 				 * Document Types metabox.
 				 */
 				case 'types-og_types':
@@ -285,6 +270,21 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				case 'types-schema_types':
 
 					$this->add_schema_item_types_table_rows( $table_rows, $this->form );
+
+					break;
+
+				/**
+				 * Editing Pages metabox.
+				 */
+				case 'edit-product_attrs':
+			
+					$this->add_advanced_product_attr_table_rows( $table_rows, $this->form );
+
+					break;
+
+				case 'edit-custom_fields':
+			
+					$this->add_advanced_custom_fields_table_rows( $table_rows, $this->form );
 
 					break;
 			}
