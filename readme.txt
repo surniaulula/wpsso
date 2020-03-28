@@ -527,14 +527,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new Pinterest Pin It image size to the SSO &gt; Image Sizes settings page.
 	* Added a new Pinterest Pin It section in the Document SSO &gt; Priority Media tab:
 		* Image ID or Image URL
+	* Added an SSO &gt; Advanced Settings &gt; Document Types metabox with tabs:
+		* Open Graph Types
+		* Schema Types
 	* Added an SSO &gt; Advanced Settings &gt; Editing Pages metabox with tabs:
 		* Table Columns
 		* Document Meta
 		* Product Attributes
 		* Custom Fields
-	* Added an SSO &gt; Advanced Settings &gt; Document Types metabox with tabs:
-		* Open Graph Types
-		* Schema Types
 * **Bugfixes**
 	* None.
 * **Developer Notes**
