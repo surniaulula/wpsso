@@ -510,11 +510,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Renamed all https://health-lifesci.schema.org/ types (deprecated) to https://schema.org/.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a `WpssoConfig::$cf[ 'form' ][ 'event_status' ]` array for the WPSSO JSON add-on.
+	* Added support for an 'eventStatus' property in the WpssoSchemaSingle::add_event_data() method.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.0.
