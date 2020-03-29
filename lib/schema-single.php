@@ -409,10 +409,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * {event option name} => {meta data option name}.
 			 */
 			WpssoSchema::add_mod_opts_date_iso( $mod, $event_opts, array( 
-				'event_start_date'        => 'schema_event_start',        // Prefix for date, time, timezone, iso.
-				'event_end_date'          => 'schema_event_end',          // Prefix for date, time, timezone, iso.
-				'event_offers_start_date' => 'schema_event_offers_start', // Prefix for date, time, timezone, iso.
-				'event_offers_end_date'   => 'schema_event_offers_end',   // Prefix for date, time, timezone, iso.
+				'event_start_date'        => 'schema_event_start',		// Prefix for date, time, timezone, iso.
+				'event_end_date'          => 'schema_event_end',		// Prefix for date, time, timezone, iso.
+				'event_previous_date'     => 'schema_event_previous',		// Prefix for date, time, timezone, iso.
+				'event_offers_start_date' => 'schema_event_offers_start',	// Prefix for date, time, timezone, iso.
+				'event_offers_end_date'   => 'schema_event_offers_end',		// Prefix for date, time, timezone, iso.
 			) );
 
 			/**
@@ -525,11 +526,16 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$ret = WpssoSchema::get_schema_type_context( $event_type_url );
 
 			WpssoSchema::add_data_itemprop_from_assoc( $ret, $event_opts, array(
-				'inLanguage'  => 'event_lang',
-				'eventStatus' => 'event_status',
-				'startDate'   => 'event_start_date_iso',
-				'endDate'     => 'event_end_date_iso',
+				'inLanguage'        => 'event_lang',
+				'eventStatus'       => 'event_status',
+				'startDate'         => 'event_start_date_iso',
+				'endDate'           => 'event_end_date_iso',
+				'previousStartDate' => 'event_previous_date_iso',
 			) );
+
+			if ( ! empty( $event_opts[ 'event_previous_date_iso' ] ) ) {
+				$ret[ 'eventStatus' ] = 'EventRescheduled';
+			}
 
 			if ( ! empty( $event_opts[ 'event_offers' ] ) && is_array( $event_opts[ 'event_offers' ] ) ) {
 

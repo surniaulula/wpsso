@@ -2560,13 +2560,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		/**
 		 * Get dates from the meta data options and add ISO formatted dates to the array (passed by reference).
-		 *
-		 * $opts_md_pre = array( 
-		 *	'event_start_date'        => 'schema_event_start',        // Prefix for date, time, timezone, iso.
-		 *	'event_end_date'          => 'schema_event_end',          // Prefix for date, time, timezone, iso.
-		 *	'event_offers_start_date' => 'schema_event_offers_start', // Prefix for date, time, timezone, iso.
-		 *	'event_offers_end_date'   => 'schema_event_offers_end',   // Prefix for date, time, timezone, iso.
-		 * );
 		 */
 		public static function add_mod_opts_date_iso( array $mod, &$opts, array $opts_md_pre ) {
 
