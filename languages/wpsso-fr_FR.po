@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.26.0\n"
+"Project-Id-Version: WPSSO Core 6.26.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-03-27 15:42-0700\n"
-"PO-Revision-Date: 2020-03-27 15:44-0700\n"
+"POT-Creation-Date: 2020-03-28 22:04-0700\n"
+"PO-Revision-Date: 2020-03-28 22:04-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -794,12 +794,12 @@ msgstr "Impossible d'ouvrir le fichier de cache %s pour écriture."
 msgid "Failed writing data to cache file %s."
 msgstr "Échec d'écriture des données dans le fichier cache %s."
 
-#: lib/com/form.php:1186 lib/gettext-com.php:25
+#: lib/com/form.php:1185 lib/gettext-com.php:25
 msgctxt "option comment"
 msgid "crop"
 msgstr "recadrer"
 
-#: lib/com/form.php:1189 lib/gettext-com.php:26
+#: lib/com/form.php:1188 lib/gettext-com.php:26
 msgctxt "option comment"
 msgid "from"
 msgstr "de"
@@ -5582,13 +5582,13 @@ msgstr "Réglages avancés"
 
 #: lib/submenu/advanced.php:54
 msgctxt "metabox title"
-msgid "Editing Pages"
-msgstr "Pages d'édition"
+msgid "Document Types"
+msgstr "Types de documents"
 
 #: lib/submenu/advanced.php:69
 msgctxt "metabox title"
-msgid "Document Types"
-msgstr "Types de documents"
+msgid "Editing Pages"
+msgstr "Pages d'édition"
 
 #: lib/submenu/advanced.php:84
 msgctxt "metabox title"
