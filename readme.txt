@@ -505,14 +505,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.26.1-dev.1 (TBD)**
+**Version 6.26.1-rc.1 (2020/03/28)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added AMP image sizes to the SSO &gt; Image Sizes page (as hidden options), even if an AMP plugin is not active.
 * **Bugfixes**
-	* Fixed a possible image_make_intermediate_size() error from using an undefined Pinterest image size.
+	* Fixed a possible `image_make_intermediate_size()` error from using an undefined Pinterest image size.
+	* Fixed incorrectly disabled "or Image URL" options, which should only be disabled when an image ID is selected.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -790,7 +791,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new `WpssoUtil->get_google_product_categories()` method.
 	* Renamed `WpssoUtil->get_article_topics()` to `WpssoUtil->get_article_sections()`.
 	* Refactored the `WpssoUtil->get_article_sections()` method (now returns an associative array).
-	* Replaced WpssoSchema->get_types_cache_exp() by a new WpssoUtil->get_cache_exp_secs() method.
+	* Replaced `WpssoSchema->get_types_cache_exp()` by a new `WpssoUtil->get_cache_exp_secs()` method.
 	* Updated the Easy Digital Downloads, WooCommerce, and WP eCommerce integration modules to add the currency to the head cache index.
 	* Moved `WpssoUtil->add_og_type_mt_md()` method to `WpssoOpenGraph->add_og_type_mt_md()`.
 	* Removed the `WpssoPage->get_article_section()` method and its 'wpsso_article_section' filter.
@@ -840,7 +841,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added a new WpssoPost->get_post_type_og_type() public method (returns false, or an Open Graph type string).
+	* Added a new `WpssoPost->get_post_type_og_type()` public method (returns false, or an Open Graph type string).
 	* Moved the `WpssoSchema->filter_get_post_options()` and `WpssoSchema->filter_save_post_options()` filters to the WpssoOpenGraph class.
 	* Moved the `WpssoSchema->update_post_md_opts()` method to the WpssoOpenGraph class.
 * **Requires At Least**
@@ -939,6 +940,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v3.9.
 
 == Upgrade Notice ==
+
+= 6.26.1-rc.1 =
+
+(2020/03/28) Added AMP image sizes to the SSO &gt; Image Sizes page (as hidden options), even if an AMP plugin is not active. Fixed a possible `image_make_intermediate_size()` error. Fixed incorrectly disabled "or Image URL" options.
 
 = 6.26.0 =
 
