@@ -1144,8 +1144,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$placeholder = preg_replace( '/^ngg-/', '', $placeholder );
 			}
 
-			$input_pid = $this->get_input( $input_name_id, 'pid', '', 0, $placeholder, $is_disabled, $tabindex = null, $el_attr );
-
+			$input_pid  = $this->get_input( $input_name_id, 'pid', '', 0, $placeholder, $is_disabled, $tabindex = null, $el_attr );
 			$select_lib = $this->get_select( $input_name_id_pre, $media_libs, '', '', true, $lib_disabled, $default_lib );
 
 			if ( ! empty( $this->options[ $input_name_id ] ) &&
@@ -1227,29 +1226,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_input_image_url( $name, $url = '', $is_disabled = false ) {
 
-			$key_suffix = '';
-
-			if ( preg_match( '/^(.*)(_[0-9]+)$/', $name, $matches ) ) {
-				$name       = $matches[1];
-				$key_suffix = $matches[2];
-			}
-
-			$input_name_id  = $name . '_id' . $key_suffix;
-			$input_name_url = $name . '_url' . $key_suffix;
-
-			/**
-			 * Disable the image URL option if we have an image ID.
-			 */
-			if ( empty( $this->options[ $input_name_id ] ) ) {
-
-				$placeholder = '';
-				$is_disabled = true;
-
-			} else {
-				$placeholder = SucomUtil::esc_url_encode( $url );
-			}
-
-			return $this->get_input( $input_name_url, $css_class = 'wide', $css_id = '', $len = 0, $placeholder, $is_disabled );
+			return $this->get_input_media_url( $name, $media_suffix = 'id', $url, $is_disabled );
 		}
 
 		public function get_input_video_dimensions( $name, $media_info = array(), $is_disabled = false ) {
@@ -1271,14 +1248,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_input_video_dimensions( $name, $media_info, $is_disabled = true );
 		}
 
-		public function get_input_video_url( $name, $url = '' ) {
+		public function get_input_video_url( $name, $url = '', $is_disabled = false ) {
 
-			/**
-			 * Disable if we have a custom video embed.
-			 */
-			$is_disabled = empty( $this->options[ $name . '_embed' ] ) ? false : true;
-
-			return $this->get_input( $name . '_url', 'wide', '', 0, SucomUtil::esc_url_encode( $url ), $is_disabled );
+			return $this->get_input_media_url( $name, $media_suffix = 'embed', $url, $is_disabled );
 		}
 
 		public function get_input_multi( $name, $css_class = '', $css_id = '', $start_num = 0, $max_input = 20, $show_first = 5, $is_disabled = false ) {
@@ -2097,6 +2069,33 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			return $html;
+		}
+
+		private function get_input_media_url( $name, $media_suffix = 'id', $url = '', $is_disabled = false ) {
+
+			$key_suffix = '';
+
+			if ( preg_match( '/^(.*)(_[0-9]+)$/', $name, $matches ) ) {
+				$name       = $matches[1];
+				$key_suffix = $matches[2];
+			}
+
+			$input_name_media = $name . '_' . $media_suffix . $key_suffix;
+			$input_name_url   = $name . '_url' . $key_suffix;
+
+			/**
+			 * Disable the image URL option if we have an image ID.
+			 */
+			if ( ! empty( $this->options[ $input_name_media ] ) ) {
+
+				$placeholder = '';
+				$is_disabled = true;
+
+			} else {
+				$placeholder = SucomUtil::esc_url_encode( $url );
+			}
+
+			return $this->get_input( $input_name_url, $css_class = 'wide', $css_id = '', $len = 0, $placeholder, $is_disabled );
 		}
 
 		private function get_placeholder_sanitized( $name, $placeholder = '' ) {
