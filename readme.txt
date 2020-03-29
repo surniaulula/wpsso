@@ -505,7 +505,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.26.1-rc.1 (2020/03/28)**
+**Version 6.26.1 (2020/03/29)**
 
 * **New Features**
 	* None.
@@ -941,9 +941,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.26.1-rc.1 =
+= 6.26.1 =
 
-(2020/03/28) Added AMP image sizes to the SSO &gt; Image Sizes page (as hidden options), even if an AMP plugin is not active. Fixed a possible `image_make_intermediate_size()` error. Fixed incorrectly disabled "or Image URL" options.
+(2020/03/29) Added AMP image sizes to the SSO &gt; Image Sizes page (as hidden options), even if an AMP plugin is not active. Fixed a possible `image_make_intermediate_size()` error. Fixed incorrectly disabled "or Image URL" options.
 
 = 6.26.0 =
 
