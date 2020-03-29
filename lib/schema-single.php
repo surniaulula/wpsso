@@ -385,7 +385,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			$event_opts = apply_filters( $wpsso->lca . '_get_event_options', false, $mod, $event_id );
 
-			$event_opts = WpssoUtil::complete_type_options( $event_opts, $mod, array( 'event' => 'schema_event' ) );
+			$event_opts = SucomUtil::complete_type_options( $event_opts, $mod, array( 'event' => 'schema_event' ) );
 
 			if ( empty( $event_opts ) ) {
 
@@ -403,6 +403,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->debug->log( 'checking for custom event start/end date and time' );
 			}
 
+			/**
+			 * Get dates from the meta data options and add ISO formatted dates to the array (passed by reference).
+			 *
+			 * {event option name} => {meta data option name}.
+			 */
 			WpssoSchema::add_mod_opts_date_iso( $mod, $event_opts, array( 
 				'event_start_date'        => 'schema_event_start',        // Prefix for date, time, timezone, iso.
 				'event_end_date'          => 'schema_event_end',          // Prefix for date, time, timezone, iso.
@@ -520,9 +525,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$ret = WpssoSchema::get_schema_type_context( $event_type_url );
 
 			WpssoSchema::add_data_itemprop_from_assoc( $ret, $event_opts, array(
-				'inLanguage' => 'event_lang',
-				'startDate'  => 'event_start_date_iso',
-				'endDate'    => 'event_end_date_iso',
+				'inLanguage'  => 'event_lang',
+				'eventStatus' => 'event_status',
+				'startDate'   => 'event_start_date_iso',
+				'endDate'     => 'event_end_date_iso',
 			) );
 
 			if ( ! empty( $event_opts[ 'event_offers' ] ) && is_array( $event_opts[ 'event_offers' ] ) ) {
@@ -652,6 +658,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->debug->log( 'checking for custom job expire date and time' );
 			}
 
+			/**
+			 * Get dates from the meta data options and add ISO formatted dates to the array (passed by reference).
+			 *
+			 * {job option name} => {meta data option name}.
+			 */
 			WpssoSchema::add_mod_opts_date_iso( $mod, $job_opts, $opts_md_pre = array(
 				'job_expire' => 'schema_job_expire',	// Prefix for date, time, timezone, iso.
 			) );

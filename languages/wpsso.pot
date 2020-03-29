@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.26.1\n"
+"Project-Id-Version: WPSSO Core 6.27.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2361,60 +2361,85 @@ msgstr ""
 
 #: lib/gettext-config.php:235
 msgctxt "option value"
-msgid "Every day"
+msgid "Cancelled"
 msgstr ""
 
 #: lib/gettext-config.php:236
 msgctxt "option value"
-msgid "Every two days"
+msgid "Moved Online"
 msgstr ""
 
 #: lib/gettext-config.php:237
 msgctxt "option value"
-msgid "Every three days"
+msgid "Postponed"
 msgstr ""
 
 #: lib/gettext-config.php:238
 msgctxt "option value"
-msgid "Every four days"
+msgid "Rescheduled"
 msgstr ""
 
 #: lib/gettext-config.php:239
 msgctxt "option value"
-msgid "Every five days"
+msgid "Scheduled"
 msgstr ""
 
 #: lib/gettext-config.php:240
 msgctxt "option value"
-msgid "Every six days"
+msgid "Every day"
 msgstr ""
 
 #: lib/gettext-config.php:241
 msgctxt "option value"
-msgid "Every week"
+msgid "Every two days"
 msgstr ""
 
 #: lib/gettext-config.php:242
 msgctxt "option value"
-msgid "Development and Up"
+msgid "Every three days"
 msgstr ""
 
 #: lib/gettext-config.php:243
 msgctxt "option value"
-msgid "Alpha and Up"
+msgid "Every four days"
 msgstr ""
 
 #: lib/gettext-config.php:244
 msgctxt "option value"
-msgid "Beta and Up"
+msgid "Every five days"
 msgstr ""
 
 #: lib/gettext-config.php:245
 msgctxt "option value"
-msgid "Release Candidate and Up"
+msgid "Every six days"
 msgstr ""
 
 #: lib/gettext-config.php:246
+msgctxt "option value"
+msgid "Every week"
+msgstr ""
+
+#: lib/gettext-config.php:247
+msgctxt "option value"
+msgid "Development and Up"
+msgstr ""
+
+#: lib/gettext-config.php:248
+msgctxt "option value"
+msgid "Alpha and Up"
+msgstr ""
+
+#: lib/gettext-config.php:249
+msgctxt "option value"
+msgid "Beta and Up"
+msgstr ""
+
+#: lib/gettext-config.php:250
+msgctxt "option value"
+msgid "Release Candidate and Up"
+msgstr ""
+
+#: lib/gettext-config.php:251
 msgctxt "option value"
 msgid "Stable / Production"
 msgstr ""
@@ -6297,41 +6322,41 @@ msgstr ""
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
-#: lib/schema-single.php:957
+#: lib/schema-single.php:968
 msgid "adding schema organization"
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1020
+#: lib/schema-single.php:1031
 msgid ""
 "An organization logo image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1023
+#: lib/schema-single.php:1034
 msgid ""
 "An organization banner image (600x60px) is missing and required for the "
 "\"%1$s\" organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or 'ID #'.
-#: lib/schema-single.php:1026
+#: lib/schema-single.php:1037
 msgid ""
 "Please enter the missing image URL in the \"%1$s\" %2$s organization "
 "settings."
 msgstr ""
 
 #. translators: site, as in the "site organization settings".
-#: lib/schema-single.php:1043
+#: lib/schema-single.php:1054
 msgid "site"
 msgstr ""
 
-#: lib/schema-single.php:1198
+#: lib/schema-single.php:1209
 msgid "adding schema for person user ID %1$s"
 msgstr ""
 
-#: lib/schema-single.php:1358
+#: lib/schema-single.php:1369
 msgid "adding schema place"
 msgstr ""
 
