@@ -507,7 +507,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.27.0-dev.2 (2020/03/30)**
+**Version 6.27.0-b.1 (2020/03/31)**
+
+Added Schema Event properties for virtual, postponed, and canceled events as [suggested by Google on March 17th, 2020](https://webmasters.googleblog.com/2020/03/new-properties-virtual-or-canceled-events.html).
 
 * **New Features**
 	* None.
@@ -516,9 +518,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added a `WpssoConfig::$cf[ 'form' ][ 'event_attendance' ]` array for the WPSSO JSON add-on.
-	* Added a `WpssoConfig::$cf[ 'form' ][ 'event_status' ]` array for the WPSSO JSON add-on.
+	* Added a `WpssoConfig::$cf[ 'form' ][ 'event_attendance' ]` array.
+	* Added a `WpssoConfig::$cf[ 'form' ][ 'event_status' ]` array.
 	* Added support for an 'eventStatus' property in the WpssoSchemaSingle::add_event_data() method.
+	* Renamed the tribe_events.php integration module to the-events-calendar.php (Premium version).
 	* Renamed all https://health-lifesci.schema.org/ types (deprecated) to https://schema.org/.
 	* The WPSSO_JSON_PRETTY_PRINT constant is now true by default (allows for better visual cues in the Google validator).
 * **Requires At Least**
@@ -961,9 +964,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.27.0-dev.2 =
+= 6.27.0-b.1 =
 
-(2020/03/30) Added support for the Schema 'eventAttendanceMode' and 'eventStatus' properties in Schema Event markup.
+(2020/03/31) Added support for the Schema 'eventAttendanceMode' and 'eventStatus' properties in Schema Event markup.
 
 = 6.26.1 =
 
