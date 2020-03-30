@@ -2554,23 +2554,27 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		public function json_format( $json, $options = 0, $depth = 32 ) {
 
-			$pretty_print    = self::get_const( 'WPSSO_JSON_PRETTY_PRINT', false );
-			$ext_json_lib    = self::get_const( 'WPSSO_EXT_JSON_DISABLE', false ) ? false : true;
-			$ext_json_format = false;
+			/**
+			 * Allows for better visual cues in the Google validator.
+			 */
+			$do_pretty = self::get_const( 'WPSSO_JSON_PRETTY_PRINT', true ) || $this->p->debug->enabled ? true : false;
+
+			$use_ext_lib = self::get_const( 'WPSSO_EXT_JSON_DISABLE', false ) ? false : true;
+
+			$have_old_php = false;
 
 			if ( 0 === $options && defined( 'JSON_UNESCAPED_SLASHES' ) ) {
-				$options = JSON_UNESCAPED_SLASHES;	// Since PHP v5.4.
+				$options = JSON_UNESCAPED_SLASHES;		// Since PHP v5.4.
 			}
 
 			/**
 			 * Decide if the encoded json will be minified or not.
 			 */
-			if ( is_admin() || $this->p->debug->enabled || $pretty_print ) {
-
-				if ( defined( 'JSON_PRETTY_PRINT' ) ) {	// Since PHP v5.4.
+			if ( $do_pretty ) {
+				if ( defined( 'JSON_PRETTY_PRINT' ) ) {		// Since PHP v5.4.
 					$options = $options|JSON_PRETTY_PRINT;
 				} else {
-					$ext_json_format = true;	// Use SuextJsonFormat for older PHP.
+					$have_old_php = true;			// Use SuextJsonFormat for older PHP.
 				}
 			}
 
@@ -2582,10 +2586,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			/**
-			 * Use the pretty print external library for older PHP versions. Define WPSSO_EXT_JSON_DISABLE as true in
-			 * wp-config.php to prevent external json formatting.
+			 * After the JSON is encoded, maybe use the pretty print library for older PHP versions.
+			 *
+			 * Define WPSSO_EXT_JSON_DISABLE as true in wp-config.php to prevent using this library.
 			 */
-			if ( $ext_json_lib && $ext_json_format ) {
+			if ( $have_old_php && $use_ext_lib ) {
 
 				$classname = WpssoConfig::load_lib( false, 'ext/json-format', 'suextjsonformat' );
 

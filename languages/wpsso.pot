@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.27.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 6.27.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1724,7 +1724,7 @@ msgstr ""
 #: lib/gettext-config.php:113 lib/gettext-config.php:129
 #: lib/gettext-config.php:132 lib/gettext-config.php:134
 #: lib/gettext-config.php:206 lib/gettext-config.php:209
-#: lib/gettext-config.php:221 lib/gettext-config.php:230
+#: lib/gettext-config.php:229 lib/gettext-config.php:238
 msgctxt "option value"
 msgid "[None]"
 msgstr ""
@@ -2299,147 +2299,162 @@ msgctxt "option value"
 msgid "Other"
 msgstr ""
 
+#: lib/gettext-config.php:221
+msgctxt "option value"
+msgid "Physical Location"
+msgstr ""
+
 #: lib/gettext-config.php:222
 msgctxt "option value"
-msgid "Discontinued"
+msgid "Online"
 msgstr ""
 
 #: lib/gettext-config.php:223
 msgctxt "option value"
-msgid "In Stock"
+msgid "Mixed"
 msgstr ""
 
 #: lib/gettext-config.php:224
 msgctxt "option value"
-msgid "In Store Only"
+msgid "Cancelled"
 msgstr ""
 
 #: lib/gettext-config.php:225
 msgctxt "option value"
-msgid "Limited Availability"
+msgid "Moved Online"
 msgstr ""
 
 #: lib/gettext-config.php:226
 msgctxt "option value"
-msgid "Online Only"
+msgid "Postponed"
 msgstr ""
 
 #: lib/gettext-config.php:227
 msgctxt "option value"
-msgid "Out of Stock"
+msgid "Rescheduled"
 msgstr ""
 
 #: lib/gettext-config.php:228
 msgctxt "option value"
-msgid "Pre-Order"
+msgid "Scheduled"
 msgstr ""
 
-#: lib/gettext-config.php:229
+#: lib/gettext-config.php:230
 msgctxt "option value"
-msgid "Sold Out"
+msgid "Discontinued"
 msgstr ""
 
 #: lib/gettext-config.php:231
 msgctxt "option value"
-msgid "Damaged"
+msgid "In Stock"
 msgstr ""
 
 #: lib/gettext-config.php:232
 msgctxt "option value"
-msgid "New"
+msgid "In Store Only"
 msgstr ""
 
 #: lib/gettext-config.php:233
 msgctxt "option value"
-msgid "Refurbished"
+msgid "Limited Availability"
 msgstr ""
 
 #: lib/gettext-config.php:234
 msgctxt "option value"
-msgid "Used"
+msgid "Online Only"
 msgstr ""
 
 #: lib/gettext-config.php:235
 msgctxt "option value"
-msgid "Cancelled"
+msgid "Out of Stock"
 msgstr ""
 
 #: lib/gettext-config.php:236
 msgctxt "option value"
-msgid "Moved Online"
+msgid "Pre-Order"
 msgstr ""
 
 #: lib/gettext-config.php:237
 msgctxt "option value"
-msgid "Postponed"
-msgstr ""
-
-#: lib/gettext-config.php:238
-msgctxt "option value"
-msgid "Rescheduled"
+msgid "Sold Out"
 msgstr ""
 
 #: lib/gettext-config.php:239
 msgctxt "option value"
-msgid "Scheduled"
+msgid "Damaged"
 msgstr ""
 
 #: lib/gettext-config.php:240
 msgctxt "option value"
-msgid "Every day"
+msgid "New"
 msgstr ""
 
 #: lib/gettext-config.php:241
 msgctxt "option value"
-msgid "Every two days"
+msgid "Refurbished"
 msgstr ""
 
 #: lib/gettext-config.php:242
 msgctxt "option value"
-msgid "Every three days"
+msgid "Used"
 msgstr ""
 
 #: lib/gettext-config.php:243
 msgctxt "option value"
-msgid "Every four days"
+msgid "Every day"
 msgstr ""
 
 #: lib/gettext-config.php:244
 msgctxt "option value"
-msgid "Every five days"
+msgid "Every two days"
 msgstr ""
 
 #: lib/gettext-config.php:245
 msgctxt "option value"
-msgid "Every six days"
+msgid "Every three days"
 msgstr ""
 
 #: lib/gettext-config.php:246
 msgctxt "option value"
-msgid "Every week"
+msgid "Every four days"
 msgstr ""
 
 #: lib/gettext-config.php:247
 msgctxt "option value"
-msgid "Development and Up"
+msgid "Every five days"
 msgstr ""
 
 #: lib/gettext-config.php:248
 msgctxt "option value"
-msgid "Alpha and Up"
+msgid "Every six days"
 msgstr ""
 
 #: lib/gettext-config.php:249
 msgctxt "option value"
-msgid "Beta and Up"
+msgid "Every week"
 msgstr ""
 
 #: lib/gettext-config.php:250
 msgctxt "option value"
-msgid "Release Candidate and Up"
+msgid "Development and Up"
 msgstr ""
 
 #: lib/gettext-config.php:251
+msgctxt "option value"
+msgid "Alpha and Up"
+msgstr ""
+
+#: lib/gettext-config.php:252
+msgctxt "option value"
+msgid "Beta and Up"
+msgstr ""
+
+#: lib/gettext-config.php:253
+msgctxt "option value"
+msgid "Release Candidate and Up"
+msgstr ""
+
+#: lib/gettext-config.php:254
 msgctxt "option value"
 msgid "Stable / Production"
 msgstr ""
@@ -3193,13 +3208,13 @@ msgstr ""
 #. translators: %s is the Events Calendar plugin name
 #: lib/gettext-pro.php:170 lib/pro/event/tribe_events.php:50
 msgctxt "option value"
-msgid "[%s Organizer]"
+msgid "[%s Venue]"
 msgstr ""
 
 #. translators: %s is the Events Calendar plugin name
-#: lib/gettext-pro.php:171 lib/pro/event/tribe_events.php:57
+#: lib/gettext-pro.php:171 lib/pro/event/tribe_events.php:58
 msgctxt "option value"
-msgid "[%s Venue]"
+msgid "[%s Organizer]"
 msgstr ""
 
 #: lib/gettext-pro.php:172 lib/pro/form/gravityview.php:50
@@ -5855,7 +5870,7 @@ msgid ""
 "Activate the %s add-on<br/>for Schema markup and structured data options."
 msgstr ""
 
-#: lib/messages.php:2866 lib/util.php:3960
+#: lib/messages.php:2866 lib/util.php:3965
 msgid "No options available."
 msgstr ""
 
@@ -6085,12 +6100,12 @@ msgid "Pinterest Pin It Image"
 msgstr ""
 
 #: lib/post.php:476 lib/register.php:322 lib/term.php:420 lib/user.php:367
-#: lib/util.php:500 lib/util.php:3643
+#: lib/util.php:500 lib/util.php:3648
 msgid "%s warning:"
 msgstr ""
 
 #: lib/post.php:477 lib/term.php:421 lib/user.php:368 lib/util.php:501
-#: lib/util.php:3644
+#: lib/util.php:3649
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -6322,41 +6337,41 @@ msgstr ""
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
-#: lib/schema-single.php:974
+#: lib/schema-single.php:1011
 msgid "adding schema organization"
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1037
+#: lib/schema-single.php:1074
 msgid ""
 "An organization logo image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1040
+#: lib/schema-single.php:1077
 msgid ""
 "An organization banner image (600x60px) is missing and required for the "
 "\"%1$s\" organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or 'ID #'.
-#: lib/schema-single.php:1043
+#: lib/schema-single.php:1080
 msgid ""
 "Please enter the missing image URL in the \"%1$s\" %2$s organization "
 "settings."
 msgstr ""
 
 #. translators: site, as in the "site organization settings".
-#: lib/schema-single.php:1060
+#: lib/schema-single.php:1097
 msgid "site"
 msgstr ""
 
-#: lib/schema-single.php:1215
+#: lib/schema-single.php:1252
 msgid "adding schema for person user ID %1$s"
 msgstr ""
 
-#: lib/schema-single.php:1375
+#: lib/schema-single.php:1412
 msgid "adding schema place"
 msgstr ""
 
@@ -7058,13 +7073,13 @@ msgid ""
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:3645
+#: lib/util.php:3650
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3660
+#: lib/util.php:3665
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -7073,35 +7088,35 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3662
+#: lib/util.php:3667
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3990
+#: lib/util.php:3995
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3993
+#: lib/util.php:3998
 msgctxt "option comment"
 msgid "show these options now"
 msgstr ""
 
-#: lib/util.php:3998
+#: lib/util.php:4003
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:4001
+#: lib/util.php:4006
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:4327
+#: lib/util.php:4332
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

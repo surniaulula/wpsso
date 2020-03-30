@@ -359,7 +359,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				foreach( $replies as $num => $reply ) {
 
-					$comments_added = WpssoSchemaSingle::add_comment_data( $json_data, $mod, $reply->comment_ID, true );
+					$comments_added = WpssoSchemaSingle::add_comment_data( $json_data, $mod, $reply->comment_ID, $comment_list_el = true );
 
 					if ( $comments_added ) {
 						$replies_added += $comments_added;
@@ -379,8 +379,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/**
-			 * Begin creation of $event_opts array.
-			 *
+			 * ---------------------------------------------------------------------------------------------------------
+			 * Begin creating the $event_opts array.
+			 * ---------------------------------------------------------------------------------------------------------
+			 */
+
+			/**
 			 * Maybe get options from Premium version integration modules.
 			 */
 			$event_opts = apply_filters( $wpsso->lca . '_get_event_options', false, $mod, $event_id );
@@ -515,6 +519,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/**
+			 * ---------------------------------------------------------------------------------------------------------
+			 * End creating the $event_opts array.
+			 * ---------------------------------------------------------------------------------------------------------
+			 */
+
+			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
 			list( $event_type_id, $event_type_url ) = self::get_type_id_url( $json_data,
@@ -526,15 +536,83 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$ret = WpssoSchema::get_schema_type_context( $event_type_url );
 
 			WpssoSchema::add_data_itemprop_from_assoc( $ret, $event_opts, array(
-				'inLanguage'        => 'event_lang',
-				'eventStatus'       => 'event_status',
-				'startDate'         => 'event_start_date_iso',
-				'endDate'           => 'event_end_date_iso',
-				'previousStartDate' => 'event_previous_date_iso',
+				'inLanguage'          => 'event_lang',
+				'eventAttendanceMode' => 'event_attendance',
+				'eventStatus'         => 'event_status',
+				'previousStartDate'   => 'event_previous_date_iso',
+				'startDate'           => 'event_start_date_iso',
+				'endDate'             => 'event_end_date_iso',
 			) );
 
+			/**
+			 * Events with a previous start date must have rescheduled as their status.
+			 *
+			 * Rescheduled events, without a previous start date, is an invalid combination.
+			 */
 			if ( ! empty( $event_opts[ 'event_previous_date_iso' ] ) ) {
 				$ret[ 'eventStatus' ] = 'EventRescheduled';
+			} elseif ( isset( $ret[ 'eventStatus' ] ) && 'EventRescheduled' === $ret[ 'eventStatus' ] ) {
+				$ret[ 'eventStatus' ] = 'EventScheduled';
+			}
+
+			/**
+			 * Add place, organization, and person data.
+			 *
+			 * Use $opt_prefix => $prop_name association as the property name may be repeated (ie. non-unique).
+			 */
+			foreach ( array( 
+				'event_online_url'          => 'location',
+				'event_location_id'         => 'location',
+				'event_organizer_org_id'    => 'organizer',
+				'event_organizer_person_id' => 'organizer',
+				'event_performer_org_id'    => 'performer',
+				'event_performer_person_id' => 'performer',
+			) as $opt_prefix => $prop_name ) {
+
+				foreach ( SucomUtil::preg_grep_keys( '/^' . $opt_prefix . '(_[0-9]+)?$/', $event_opts ) as $opt_key => $id ) {
+
+					/**
+					 * Check that the id value is not true, false, null, or 'none'.
+					 */
+					if ( ! SucomUtil::is_valid_option_id( $id ) ) {
+						continue;
+					}
+
+					switch ( $opt_prefix ) {
+
+						case 'event_online_url':
+
+							$ret[ 'location' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/VirtualLocation', array(
+								'url' => $event_opts[ $opt_prefix ],
+							) );
+
+							break;
+
+						case 'event_location_id':
+
+							WpssoSchemaSingle::add_place_data( $ret[ $prop_name ], $mod, $id, $place_list_el = true );
+
+							break;
+
+						case 'event_organizer_org_id':
+						case 'event_performer_org_id':
+
+							WpssoSchemaSingle::add_organization_data( $ret[ $prop_name ], $mod, $id, 'org_logo_url', $org_list_el = true );
+
+							break;
+
+						case 'event_organizer_person_id':
+						case 'event_performer_person_id':
+
+							WpssoSchemaSingle::add_person_data( $ret[ $prop_name ], $mod, $id, $person_list_el = true );
+
+							break;
+					}
+				}
+
+				if ( empty( $ret[ $prop_name ] ) ) {	// Just in case.
+					unset( $ret[ $prop_name ] );
+				}
 			}
 
 			if ( ! empty( $event_opts[ 'event_offers' ] ) && is_array( $event_opts[ 'event_offers' ] ) ) {
@@ -560,52 +638,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						 */
 						$ret[ 'offers' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/Offer', $offer );
 					}
-				}
-			}
-
-			/**
-			 * Add place, organization, and person data.
-			 */
-			foreach ( array( 
-				'event_location_id'         => 'location',
-				'event_organizer_org_id'    => 'organizer',
-				'event_organizer_person_id' => 'organizer',
-				'event_performer_org_id'    => 'performer',
-				'event_performer_person_id' => 'performer',
-			) as $opt_prefix => $prop_name ) {
-
-				foreach ( SucomUtil::preg_grep_keys( '/^' . $opt_prefix . '(_[0-9]+)?$/', $event_opts ) as $opt_key => $id ) {
-
-					if ( ! SucomUtil::is_valid_option_id( $id ) ) {
-						continue;
-					}
-
-					switch ( $opt_prefix ) {
-
-						case 'event_location_id':
-
-							WpssoSchemaSingle::add_place_data( $ret[ $prop_name ], $mod, $id, true );
-
-							break;
-
-						case 'event_organizer_org_id':
-						case 'event_performer_org_id':
-
-							WpssoSchemaSingle::add_organization_data( $ret[ $prop_name ], $mod, $id, 'org_logo_url', true );
-
-							break;
-
-						case 'event_organizer_person_id':
-						case 'event_performer_person_id':
-
-							WpssoSchemaSingle::add_person_data( $ret[ $prop_name ], $mod, $id, true );
-
-							break;
-					}
-				}
-
-				if ( empty( $ret[ $prop_name ] ) ) {	// Just in case.
-					unset( $ret[ $prop_name ] );
 				}
 			}
 
@@ -723,6 +755,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			/**
 			 * Add place, organization, and person data.
+			 *
+			 * Use $opt_prefix => $prop_name association as the property name may be repeated (ie. non-unique).
 			 */
 			foreach ( array( 
 				'job_hiring_org_id' => 'hiringOrganization',
@@ -731,6 +765,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				foreach ( SucomUtil::preg_grep_keys( '/^' . $opt_prefix . '(_[0-9]+)?$/', $job_opts ) as $opt_key => $id ) {
 
+					/**
+					 * Check that the id value is not true, false, null, or 'none'.
+					 */
 					if ( ! SucomUtil::is_valid_option_id( $id ) ) {
 						continue;
 					}
@@ -739,13 +776,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 						case 'job_hiring_org_id':
 
-							WpssoSchemaSingle::add_organization_data( $ret[ $prop_name ], $mod, $id, 'org_logo_url', true );
+							WpssoSchemaSingle::add_organization_data( $ret[ $prop_name ], $mod, $id, 'org_logo_url', $org_list_el = true );
 
 							break;
 
 						case 'job_location_id':
 
-							WpssoSchemaSingle::add_place_data( $ret[ $prop_name ], $mod, $id, true );
+							WpssoSchemaSingle::add_place_data( $ret[ $prop_name ], $mod, $id, $place_list_el = true );
 
 							break;
 					}

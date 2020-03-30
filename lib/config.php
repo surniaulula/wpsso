@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.27.0-dev.1',	// Plugin version.
-					'opt_version' => '717',		// Increment when changing default option values.
+					'version'     => '6.27.0-dev.2',	// Plugin version.
+					'opt_version' => '718',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -2237,6 +2237,26 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/**
+				 * See https://schema.org/EventAttendanceModeEnumeration.
+				 */
+				'event_attendance' => array(
+					'OfflineEventAttendanceMode' => 'Physical Location',	// Default.
+					'OnlineEventAttendanceMode'  => 'Online',
+					'MixedEventAttendanceMode'   => 'Mixed',
+				),
+
+				/**
+				 * See https://schema.org/EventStatusType.
+				 */
+				'event_status' => array(	
+					'EventCancelled'   => 'Cancelled',
+					'EventMovedOnline' => 'Moved Online',
+					'EventPostponed'   => 'Postponed',
+					'EventRescheduled' => 'Rescheduled',
+					'EventScheduled'   => 'Scheduled',	// Default.
+				),
+
+				/**
 				 * See https://schema.org/ItemAvailability.
 				 */
 				'item_availability' => array(
@@ -2260,17 +2280,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'NewCondition'         => 'New',
 					'RefurbishedCondition' => 'Refurbished',
 					'UsedCondition'        => 'Used',
-				),
-
-				/**
-				 * See https://schema.org/EventStatusType.
-				 */
-				'event_status' => array(	
-					'EventCancelled'   => 'Cancelled',
-					'EventMovedOnline' => 'Moved Online',
-					'EventPostponed'   => 'Postponed',
-					'EventRescheduled' => 'Rescheduled',
-					'EventScheduled'   => 'Scheduled',	// Default.
 				),
 			),
 			'head' => array(
@@ -2926,6 +2935,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'trip.train'   => 'https://schema.org/TrainTrip',
 								'trip.tourist' => 'https://schema.org/TouristTrip',
 							),
+							'virtual.location' => 'https://schema.org/VirtualLocation',
 						),
 						'medical.entity' => array(
 							'medical.anatomical.structure'    => 'https://schema.org/AnatomicalStructure',
@@ -3648,7 +3658,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_MENU_ORDER' ]                  = '80.0';	// Position of the SSO settings menu item.
 			$var_const[ 'WPSSO_TB_NOTICE_MENU_ORDER' ]        = '55';	// Position of the SSO notices toolbar menu item.
 			$var_const[ 'WPSSO_TB_LOCALE_MENU_ORDER' ]        = '60';	// Position of the user locale toolbar menu item.
-			$var_const[ 'WPSSO_JSON_PRETTY_PRINT' ]           = false;	// Output pretty / human readable json.
+			$var_const[ 'WPSSO_JSON_PRETTY_PRINT' ]           = true;	// Allows for better visual cues in the Google validator.
 			$var_const[ 'WPSSO_CONTENT_BLOCK_FILTER_OUTPUT' ] = true;	// Monitor and fix incorrectly coded filter hooks.
 			$var_const[ 'WPSSO_CONTENT_FILTERS_MAX_TIME' ]    = 1.00;	// Issue a warning if the content filter takes longer than 1 second.
 			$var_const[ 'WPSSO_CONTENT_IMAGES_MAX_LIMIT' ]    = 5;		// Maximum number of images extracted from the content.
