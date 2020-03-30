@@ -102,7 +102,7 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 				case 'essential-site':
 
-					$list_exp_secs    = $this->p->util->get_cache_exp_secs( $this->p->lca . '_l_' );	// Default is month in seconds.
+					$select_exp_secs  = $this->p->util->get_cache_exp_secs( $this->p->lca . '_f_' );	// Default is month in seconds.
 					$article_sections = $this->p->util->get_article_sections();
 
 					$table_rows[ 'site_name' ] = '' . 
@@ -122,7 +122,7 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 						$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
 							$event_args = array(
 								'json_var'  => 'article_sections',
-								'exp_secs'  => $list_exp_secs,
+								'exp_secs'  => $select_exp_secs,
 								'is_transl' => true,	// No label translation required.
 								'is_sorted' => true,	// No label sorting required.
 							)

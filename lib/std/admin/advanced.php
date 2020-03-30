@@ -260,7 +260,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[] = '<td colspan="' . ( $network ? 4 : 2 ) . '">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			$table_rows[ 'plugin_head_cache_exp' ] = '' . 
-			$form->get_th_html( _x( 'Head Markup Array Cache Expiry', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_head_cache_exp' ) . 
+			$form->get_th_html( _x( 'Head Markup Cache Expiry', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_head_cache_exp' ) . 
 			'<td nowrap class="blank">' . $form->options[ 'plugin_head_cache_exp' ] . ' ' . 
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
 			WpssoAdmin::get_option_site_use( 'plugin_head_cache_exp', $form, $network );
@@ -283,14 +283,14 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
 			WpssoAdmin::get_option_site_use( 'plugin_imgsize_cache_exp', $form, $network );
 
-			$table_rows[ 'plugin_list_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_list_cache_exp' ) . 
-			$form->get_th_html( _x( 'Text List Arrays Cache Expiry', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_list_cache_exp' ) .
-			'<td nowrap class="blank">' . $form->options[ 'plugin_list_cache_exp' ] . ' ' . 
+			$table_rows[ 'plugin_select_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_select_cache_exp' ) . 
+			$form->get_th_html( _x( 'Form Selects Cache Expiry', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_select_cache_exp' ) .
+			'<td nowrap class="blank">' . $form->options[ 'plugin_select_cache_exp' ] . ' ' . 
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
-			WpssoAdmin::get_option_site_use( 'plugin_list_cache_exp', $form, $network );
+			WpssoAdmin::get_option_site_use( 'plugin_select_cache_exp', $form, $network );
 
 			$table_rows[ 'plugin_types_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_types_cache_exp' ) . 
-			$form->get_th_html( _x( 'Schema Types Array Cache Expiry', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_types_cache_exp' ) . 
+			$form->get_th_html( _x( 'Schema Types Cache Expiry', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_types_cache_exp' ) . 
 			'<td nowrap class="blank">' . $form->options[ 'plugin_types_cache_exp' ] . ' ' . 
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
 			WpssoAdmin::get_option_site_use( 'plugin_types_cache_exp', $form, $network );

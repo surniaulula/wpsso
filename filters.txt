@@ -51,9 +51,9 @@
 
 'wpsso_cache_expire_image_url_size' ( $secs )
 
-'wpsso_cache_expire_list_arrays' ( $secs )
-
 'wpsso_cache_expire_schema_types' ( $secs )
+
+'wpsso_cache_expire_select_arrays' ( $secs )
 
 'wpsso_cache_expire_short_url' ( $secs )
 

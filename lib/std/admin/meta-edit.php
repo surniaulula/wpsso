@@ -46,7 +46,6 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 			/**
 			 * Select option arrays.
 			 */
-			$list_exp_secs      = $this->p->util->get_cache_exp_secs( $this->p->lca . '_l_' );	// Default is month in seconds.
 			$product_categories = $this->p->util->get_google_product_categories();
 			$currencies         = SucomUtil::get_currency_abbrev();
 

@@ -304,7 +304,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				),
 				700 => array(
 					'og_art_section'          => 'og_def_article_section',
-					'plugin_topics_cache_exp' => 'plugin_list_cache_exp',
+					'plugin_topics_cache_exp' => 'plugin_select_cache_exp',
 				),
 				701 => array(
 					'og_def_article_topic' => 'og_def_article_section',
@@ -316,6 +316,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'plugin_bitly_login'   => '',	// Bitly Username.
 					'plugin_bitly_api_key' => '',	// Bitly API Key (deprecated).
 				),
+				711 => array(
+					'plugin_term_title_prefix' => '',
+				),
 				712 => array(
 					'add_meta_name_weibo:article:create_at' => '',
 					'add_meta_name_weibo:article:update_at' => '',
@@ -325,6 +328,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'schema_type_for_home_index' => 'schema_type_for_home_posts',
 					'og_type_for_home_blog'      => 'og_type_for_home_posts',
 					'og_type_for_home_index'     => 'og_type_for_home_posts',
+				),
+				718 => array(
+					'plugin_list_cache_exp' => 'plugin_select_cache_exp',
 				),
 			),
 		);
@@ -358,14 +364,17 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'plugin_wpssossb_tid'   => '',	// Deprecated on 2019/11/05.
 					'plugin_wpssotie_tid' => '',	// Deprecated on 2019/11/21.
 				),
-				698 => array(
-					'plugin_topics_cache_exp' => 'plugin_list_cache_exp',
+				700 => array(
+					'plugin_topics_cache_exp' => 'plugin_select_cache_exp',
 				),
 				703 => array(
 					'plugin_clear_all_refresh' => '',
 				),
 				711 => array(
 					'plugin_term_title_prefix' => '',
+				),
+				718 => array(
+					'plugin_list_cache_exp' => 'plugin_select_cache_exp',
 				),
 			),
 		);

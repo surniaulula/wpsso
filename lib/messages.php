@@ -916,9 +916,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_list_cache_exp':
+						case 'tooltip-plugin_select_cache_exp':
 
-							$cache_exp_secs = WpssoConfig::$cf[ 'opt' ][ 'defaults' ][ 'plugin_list_cache_exp' ];
+							$cache_exp_secs = WpssoConfig::$cf[ 'opt' ][ 'defaults' ][ 'plugin_select_cache_exp' ];
 
 							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
 								_x( 'disabled', 'option comment', 'wpsso' );
