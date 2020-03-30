@@ -279,11 +279,13 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 		* Provider
 	* Event Information
 		* Event Language
+		* Event Attendance
+		* Event Online URL
+		* Event Physical Venue
 		* Event Organizer Organization
 		* Event Organizer Person
 		* Event Performer Organization
 		* Event Performer Person
-		* Event Venue
 		* Event Start (date, time, timezone)
 		* Event End (date, time, timezone)
 		* Event Offers Start (date, time, timezone)
@@ -505,18 +507,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.27.0-dev.1 (2020/03/29)**
+**Version 6.27.0-dev.2 (2020/03/30)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added support for the Schema 'eventStatus' property in Schema Event markup.
+	* Added support for the Schema 'eventAttendanceMode' and 'eventStatus' properties in Schema Event markup.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Added a `WpssoConfig::$cf[ 'form' ][ 'event_attendance' ]` array for the WPSSO JSON add-on.
 	* Added a `WpssoConfig::$cf[ 'form' ][ 'event_status' ]` array for the WPSSO JSON add-on.
 	* Added support for an 'eventStatus' property in the WpssoSchemaSingle::add_event_data() method.
 	* Renamed all https://health-lifesci.schema.org/ types (deprecated) to https://schema.org/.
+	* The WPSSO_JSON_PRETTY_PRINT constant is now true by default (allows for better visual cues in the Google validator).
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.0.
@@ -957,9 +961,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 6.27.0-dev.1 =
+= 6.27.0-dev.2 =
 
-(2020/03/29) Added support for the Schema 'eventStatus' property in Schema Event markup.
+(2020/03/30) Added support for the Schema 'eventAttendanceMode' and 'eventStatus' properties in Schema Event markup.
 
 = 6.26.1 =
 
