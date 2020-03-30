@@ -169,7 +169,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							switch ( $id ) {
 
-								case 'tribe_events':
+								case 'the-events-calendar':
 
 									$chk[ 'class' ] = 'Tribe__Events__Main';
 

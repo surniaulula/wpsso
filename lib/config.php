@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.27.0-dev.2',	// Plugin version.
+					'version'     => '6.27.0-b.1',	// Plugin version.
 					'opt_version' => '721',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -95,7 +95,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'yith-woocommerce-brands'       => '(plugin) YITH WooCommerce Brands Add-on',
 							),
 							'event' => array(
-								'tribe_events' => '(plugin) The Events Calendar',
+								'the-events-calendar' => '(plugin) The Events Calendar',
 							),
 							'form' => array(
 								'gravityview' => '(plugin) GravityView',
@@ -1028,7 +1028,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_tax_pwb-brand'          => 'item.list',	// For Perfect WooCommerce Brands Add-on.
 					'schema_type_for_tax_yith_product_brand' => 'item.list',	// For YITH WooCommerce Brands Add-on.
 					'schema_type_for_tc_events'              => 'event',		// For Tickera.
-					'schema_type_for_tribe_events'           => 'event',
+					'schema_type_for_tribe_events'           => 'event',		// For The Events Calendar.
 					'schema_type_for_webpage'                => 'webpage',
 					'schema_type_for_website'                => 'website',
 					'schema_type_for_wpsc-product'           => 'product',		// For WP eCommerce.

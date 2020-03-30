@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.27.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 6.27.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3206,13 +3206,13 @@ msgid "Incomplete API options to instantiate the \"%s\" shortening service."
 msgstr ""
 
 #. translators: %s is the Events Calendar plugin name
-#: lib/gettext-pro.php:170 lib/pro/event/tribe_events.php:50
+#: lib/gettext-pro.php:170 lib/pro/event/the-events-calendar.php:50
 msgctxt "option value"
 msgid "[%s Venue]"
 msgstr ""
 
 #. translators: %s is the Events Calendar plugin name
-#: lib/gettext-pro.php:171 lib/pro/event/tribe_events.php:58
+#: lib/gettext-pro.php:171 lib/pro/event/the-events-calendar.php:58
 msgctxt "option value"
 msgid "[%s Organizer]"
 msgstr ""
