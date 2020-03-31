@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 6.27.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-03-31 13:20-0700\n"
-"PO-Revision-Date: 2020-03-31 13:20-0700\n"
+"POT-Creation-Date: 2020-03-31 15:46-0700\n"
+"PO-Revision-Date: 2020-03-31 15:48-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4438,8 +4438,8 @@ msgid "If you enter Authentication IDs in this network settings page, <em>please
 msgstr "Si vous entrez des IDs d'authentification dans cette page de réglages réseau, <em>assurez vous d'avoir acheté suffisamment de licences pour tous les sites du réseau</em> &mdash; par exemple, pour autoriser un ajout %1$s pour 10 sites, vous aurez besoin d'un ID d'authentification d'un achat de 10 licences (ou plus) de cet ajout %1$s."
 
 #: lib/messages.php:2000
-msgid "<strong>WordPress uses the default site / blog ID to install and/or update plugins from the Network Admin interface</strong> &mdash; to update the %1$s and its %2$s add-ons, please make sure the %3$s add-on is active on the default site, and the default site is licensed."
-msgstr "<strong>WordPress utilise l'ID du site / blog par défaut pour installer et/ou mettre à jour les extensions de l'interface Admin du réseau</strong> &mdash; pour mettre à jour %1$s et ses ajouts %2$s, assurez-vous que l'ajout %3$s est actif sur le site par défaut, et que le site par défaut est sous licence."
+msgid "<strong>WordPress uses the default blog to install and/or update plugins from the Network Admin interface</strong> &mdash; to update the %1$s and its %2$s add-ons, please make sure the %3$s add-on is active on the default blog, and the default blog is licensed."
+msgstr "<strong>WordPress utilise le blog par défaut pour installer et/ou mettre à jour les extensions de l'interface admin du réseau</strong> &mdash; pour mettre à jour %1$s et ses ajouts %2$s, assurez-vous que l'ajout %3$s est actif sur le blog par défaut, et que le blog par défaut possède une licence."
 
 #: lib/messages.php:2012
 msgid "These options allow you to customize the custom field names (aka metadata names) that %s can use to get additional information about your content."
