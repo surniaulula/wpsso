@@ -328,7 +328,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							switch ( $id ) {
 
 								/**
-								 * Rate my Post – WP Rating System.
+								 * Rate my Post.
 								 *
 								 * https://wordpress.org/plugins/rate-my-post/
 								 */
