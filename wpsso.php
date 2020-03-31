@@ -694,7 +694,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 							$classname = apply_filters( $ext . '_load_lib', false, $lib_path );
 
 							if ( is_string( $classname ) && class_exists( $classname ) ) {
-								$classnames[ $id ] = $classname;
+								$classnames[ $sub_dir . '-' . $id ] = $classname;
 							}
 						}
 

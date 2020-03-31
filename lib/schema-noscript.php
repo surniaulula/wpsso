@@ -41,13 +41,13 @@ if ( ! class_exists( 'WpssoSchemaNoScript' ) ) {
 				return $mt_og;
 			}
 
-			$og_type_id = $mt_og[ 'og:type' ];
+			$og_type = $mt_og[ 'og:type' ];
 
 			/**
 			 * Aggregate rating needs at least one rating or review count.
 			 */
-			if ( empty( $mt_og[ $og_type_id . ':rating:average' ] ) ||
-				( empty( $mt_og[ $og_type_id . ':rating:count' ] ) && empty( $mt_og[ $og_type_id . ':review:count' ] ) ) ) {
+			if ( empty( $mt_og[ $og_type . ':rating:average' ] ) ||
+				( empty( $mt_og[ $og_type . ':rating:count' ] ) && empty( $mt_og[ $og_type . ':review:count' ] ) ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: rating average and/or counts are empty' );
@@ -59,29 +59,29 @@ if ( ! class_exists( 'WpssoSchemaNoScript' ) ) {
 			$meta_item_props = array();
 			$schema_noscript = array();
 
-			if ( ! empty( $mt_og[ $og_type_id . ':rating:average' ] ) ) {
+			if ( ! empty( $mt_og[ $og_type . ':rating:average' ] ) ) {
 				$meta_item_props[] = $this->p->head->get_single_mt( 'meta', 'itemprop', 'aggregaterating.ratingvalue',
-					$mt_og[ $og_type_id . ':rating:average' ], '', $mod );
+					$mt_og[ $og_type . ':rating:average' ], '', $mod );
 			}
 
-			if ( ! empty( $mt_og[ $og_type_id . ':rating:count' ] ) ) {
+			if ( ! empty( $mt_og[ $og_type . ':rating:count' ] ) ) {
 				$meta_item_props[] = $this->p->head->get_single_mt( 'meta', 'itemprop', 'aggregaterating.ratingcount',
-					$mt_og[ $og_type_id . ':rating:count' ], '', $mod );
+					$mt_og[ $og_type . ':rating:count' ], '', $mod );
 			}
 
-			if ( ! empty( $mt_og[ $og_type_id . ':rating:worst' ] ) ) {
+			if ( ! empty( $mt_og[ $og_type . ':rating:worst' ] ) ) {
 				$meta_item_props[] = $this->p->head->get_single_mt( 'meta', 'itemprop', 'aggregaterating.worstrating',
-					$mt_og[ $og_type_id . ':rating:worst' ], '', $mod );
+					$mt_og[ $og_type . ':rating:worst' ], '', $mod );
 			}
 
-			if ( ! empty( $mt_og[ $og_type_id . ':rating:best' ] ) ) {
+			if ( ! empty( $mt_og[ $og_type . ':rating:best' ] ) ) {
 				$meta_item_props[] = $this->p->head->get_single_mt( 'meta', 'itemprop', 'aggregaterating.bestrating',
-					$mt_og[ $og_type_id . ':rating:best' ], '', $mod );
+					$mt_og[ $og_type . ':rating:best' ], '', $mod );
 			}
 
-			if ( ! empty( $mt_og[ $og_type_id . ':review:count' ] ) ) {
+			if ( ! empty( $mt_og[ $og_type . ':review:count' ] ) ) {
 				$meta_item_props[] = $this->p->head->get_single_mt( 'meta', 'itemprop', 'aggregaterating.reviewcount',
-					$mt_og[ $og_type_id . ':review:count' ], '', $mod );
+					$mt_og[ $og_type . ':review:count' ], '', $mod );
 			}
 
 			$schema_noscript[] = array( '<noscript itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">' . "\n" );
