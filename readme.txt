@@ -507,7 +507,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.27.0-b.1 (2020/03/31)**
+**Version 6.27.0-rc.1 (2020/03/31)**
 
 Added Schema Event properties for virtual, postponed, and canceled events as [suggested by Google on March 17th, 2020](https://webmasters.googleblog.com/2020/03/new-properties-virtual-or-canceled-events.html).
 
@@ -964,7 +964,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 6.27.0-b.1 =
+= 6.27.0-rc.1 =
 
 (2020/03/31) Added support for the Schema 'eventAttendanceMode' and 'eventStatus' properties in Schema Event markup.
 
