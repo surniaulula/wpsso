@@ -976,7 +976,7 @@ msgid ""
 msgstr ""
 
 #: lib/conflict.php:222 lib/gettext-pro.php:176 lib/gettext-pro.php:186
-#: lib/pro/rating/rate-my-post.php:48 lib/pro/rating/wppostratings.php:46
+#: lib/pro/rating/rate-my-post.php:53 lib/pro/rating/wppostratings.php:51
 msgid "Plugin conflict detected"
 msgstr ""
 
@@ -1126,7 +1126,7 @@ msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: lib/conflict.php:470 lib/gettext-pro.php:192
-#: lib/pro/rating/rate-my-post.php:63
+#: lib/pro/rating/rate-my-post.php:68
 msgid "Settings"
 msgstr ""
 
@@ -3239,42 +3239,42 @@ msgid "Post Image Field ID"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:178 lib/pro/rating/wppostratings.php:53
+#: lib/gettext-pro.php:178 lib/pro/rating/wppostratings.php:58
 msgid "Enable Google Rich Snippets?"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:180 lib/pro/rating/wppostratings.php:59
+#: lib/gettext-pro.php:180 lib/pro/rating/wppostratings.php:64
 msgid "WP-PostRatings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:182 lib/pro/rating/wppostratings.php:61
+#: lib/gettext-pro.php:182 lib/pro/rating/wppostratings.php:66
 msgid "Ratings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:184 lib/pro/rating/wppostratings.php:63
+#: lib/gettext-pro.php:184 lib/pro/rating/wppostratings.php:68
 msgid "Ratings Options"
 msgstr ""
 
 #: lib/gettext-pro.php:185 lib/gettext-pro.php:195
-#: lib/pro/rating/rate-my-post.php:71 lib/pro/rating/wppostratings.php:69
+#: lib/pro/rating/rate-my-post.php:76 lib/pro/rating/wppostratings.php:74
 msgid "please disable the %1$s option in the %2$s settings page."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:188 lib/pro/rating/rate-my-post.php:55
+#: lib/gettext-pro.php:188 lib/pro/rating/rate-my-post.php:60
 msgid "Type of structured data for rich snippets"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:190 lib/pro/rating/rate-my-post.php:61
+#: lib/gettext-pro.php:190 lib/pro/rating/rate-my-post.php:66
 msgid "Rate my Post"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:194 lib/pro/rating/rate-my-post.php:65
+#: lib/gettext-pro.php:194 lib/pro/rating/rate-my-post.php:70
 msgid "Rating Widget Settings"
 msgstr ""
 

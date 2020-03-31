@@ -327,12 +327,22 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							switch ( $id ) {
 
+								/**
+								 * Rate my Post – WP Rating System.
+								 *
+								 * https://wordpress.org/plugins/rate-my-post/
+								 */
 								case 'rate-my-post':
 
 									$chk[ 'class' ] = 'Rate_My_Post';
 
 									break;
 
+								/**
+								 * WP-PostRatings.
+								 *
+								 * https://wordpress.org/plugins/wp-postratings/
+								 */
 								case 'wppostratings':
 
 									$chk[ 'constant' ] = 'WP_POSTRATINGS_VERSION';
