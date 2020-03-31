@@ -165,10 +165,10 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 										'wpsso' );
 
 								if ( $is_admin && is_object( $this->p->notice ) ) {
-									$this->p->notice->err( $error_msg . ' ' . $suffix_msg );
+									$this->p->notice->err( $error_msg );
 								}
 
-								SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg . ' ' . $suffix_msg );
+								SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
 							}
 
 						} elseif ( $this->p->debug->enabled ) {

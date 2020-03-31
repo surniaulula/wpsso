@@ -1436,7 +1436,7 @@ msgstr ""
 msgctxt "plugin description"
 msgid ""
 "Google Rich Results with Structured Data for Articles, Carousels, Events, "
-"FAQPages, HowTos, Images, Local Business, Products, Recipes, Reviews, "
+"FAQ Pages, How-Tos, Images, Local Business, Products, Recipes, Reviews, "
 "Videos, and more."
 msgstr ""
 
