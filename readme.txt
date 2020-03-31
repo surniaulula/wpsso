@@ -520,11 +520,11 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 * **Developer Notes**
 	* Added a `WpssoConfig::$cf[ 'form' ][ 'event_attendance' ]` array.
 	* Added a `WpssoConfig::$cf[ 'form' ][ 'event_status' ]` array.
-	* Added support for an 'eventStatus' property in the WpssoSchemaSingle::add_event_data() method.
+	* Added support 'eventAttendanceMode' and 'eventStatus' properties in the WpssoSchemaSingle::add_event_data() method.
+	* Added checks for invalid average rating and rating count values in the Rate my Post and WP-PostRatings plugin integration modules (Premium version).
 	* Renamed the tribe_events.php integration module to the-events-calendar.php (Premium version).
 	* Renamed all https://health-lifesci.schema.org/ types (deprecated) to https://schema.org/.
-	* The WPSSO_JSON_PRETTY_PRINT constant is now true by default (allows for better visual cues in the Google validator).
-	* Added checks for invalid average rating and rating count values in the Rate my Post and WP-PostRatings plugin integration modules.
+	* The WPSSO_JSON_PRETTY_PRINT constant is now true by default (allows for better visual cues in Google validator results).
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.0.
