@@ -2008,12 +2008,12 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $media_html;
 		}
 
-		public function get_og_type_reviews( $mod_id, $og_type = 'product', $rating_meta = 'rating' ) {
+		public function get_og_type_reviews( $mod_id, $og_type = 'product', $rating_meta = 'rating', $worst_rating = 1, $best_rating = 5 ) {
 
 			return $this->must_be_extended( __METHOD__, array() );	// Return an empty array.
 		}
 
-		public function get_og_review_mt( $comment_obj, $og_type = 'product', $rating_meta = 'rating' ) {
+		public function get_og_review_mt( $comment_obj, $og_type = 'product', $rating_meta = 'rating', $worst_rating = 1, $best_rating = 5 ) {
 
 			return $this->must_be_extended( __METHOD__, array() );	// Return an empty array.
 		}

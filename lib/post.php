@@ -1719,7 +1719,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		/**
 		 * Methods that return an associative array of Open Graph meta tags.
 		 */
-		public function get_og_type_reviews( $post_id, $og_type = 'product', $rating_meta = 'rating' ) {
+		public function get_og_type_reviews( $post_id, $og_type = 'product', $rating_meta = 'rating', $worst_rating = 1, $best_rating = 5 ) {
 
 			static $reviews_max = null;
 
@@ -1746,7 +1746,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				foreach( $comments as $num => $comment_obj ) {
 
-					$og_review = $this->get_og_review_mt( $comment_obj, $og_type, $rating_meta );
+					$og_review = $this->get_og_review_mt( $comment_obj, $og_type, $rating_meta, $worst_rating, $best_rating );
 
 					if ( ! empty( $og_review ) ) {	// Just in case.
 						$ret[] = $og_review;
@@ -1766,11 +1766,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $ret;
 		}
 
-		public function get_og_review_mt( $comment_obj, $og_type = 'product', $rating_meta = 'rating' ) {
+		public function get_og_review_mt( $comment_obj, $og_type = 'product', $rating_meta = 'rating', $worst_rating = 1, $best_rating = 5 ) {
 
 			$ret = array();
-
-			$rating_value = (float) get_comment_meta( $comment_obj->comment_ID, $rating_meta, true );
 
 			$ret[ $og_type . ':review:id' ]           = $comment_obj->comment_ID;
 			$ret[ $og_type . ':review:url' ]          = get_comment_link( $comment_obj->comment_ID );
@@ -1789,10 +1787,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 *
 			 * Rating values must be larger than 0 to include rating info.
 			 */
+			$rating_value = (float) get_comment_meta( $comment_obj->comment_ID, $rating_meta, true );
+
 			if ( $rating_value > 0 ) {
+
 				$ret[ $og_type . ':review:rating:value' ] = $rating_value;
-				$ret[ $og_type . ':review:rating:worst' ] = 1;
-				$ret[ $og_type . ':review:rating:best' ]  = 5;
+				$ret[ $og_type . ':review:rating:worst' ] = $worst_rating;
+				$ret[ $og_type . ':review:rating:best' ]  = $best_rating;
 			}
 
 			return $ret;
