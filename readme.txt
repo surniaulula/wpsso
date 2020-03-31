@@ -24,7 +24,7 @@ Makes sure your content looks great on all social and search sites - no matter h
 
 WPSSO Core and its free complementary add-ons provide comprehensive information about your webpage content to social sites (Facebook, Pinterest, Twitter, LinkedIn, etc.), search engines and crawlers (Google, Bing, etc.), mail and text messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), REST API clients, and oEmbed data for embedded objects / iframes (LinkedIn, WordPress, etc.) &mdash; all from your existing WordPress content and supported plugins.
 
-**Uses your existing WordPress content, plugin and service API data:**
+**Uses existing WordPress content, plugin and service API data:**
 
 There's no need to manually re-create descriptions, titles, product information, re-select images / videos, etc. WPSSO Core reads your existing post, page, product, media, recipe, event, forum, and SEO content automatically &mdash; while also offering fine-tuning and customization options for just about everything. ;-)
 
