@@ -5087,10 +5087,10 @@ msgstr ""
 
 #: lib/messages.php:2000
 msgid ""
-"<strong>WordPress uses the default site / blog ID to install and/or update "
-"plugins from the Network Admin interface</strong> &mdash; to update the %1$s "
-"and its %2$s add-ons, please make sure the %3$s add-on is active on the "
-"default site, and the default site is licensed."
+"<strong>WordPress uses the default blog to install and/or update plugins "
+"from the Network Admin interface</strong> &mdash; to update the %1$s and its "
+"%2$s add-ons, please make sure the %3$s add-on is active on the default "
+"blog, and the default blog is licensed."
 msgstr ""
 
 #: lib/messages.php:2012

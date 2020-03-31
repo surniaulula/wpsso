@@ -1997,7 +1997,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text.= '<p>' . sprintf( __( 'If you enter Authentication IDs in this network settings page, <em>please make sure you have purchased enough licenses for all sites within the network</em> &mdash; for example, to license a %1$s add-on for 10 sites, you would need an Authentication ID from a 10 license pack purchase (or better) of that %1$s add-on.', 'wpsso' ), $pro_transl ) . '</p>';
 
-							$text .= '<p>' . sprintf( __( '<strong>WordPress uses the default site / blog ID to install and/or update plugins from the Network Admin interface</strong> &mdash; to update the %1$s and its %2$s add-ons, please make sure the %3$s add-on is active on the default site, and the default site is licensed.', 'wpsso' ), $info[ 'name_pro' ], $pro_transl, $um_info[ 'name' ] ) . '</p>';
+							$text .= '<p>' . sprintf( __( '<strong>WordPress uses the default blog to install and/or update plugins from the Network Admin interface</strong> &mdash; to update the %1$s and its %2$s add-ons, please make sure the %3$s add-on is active on the default blog, and the default blog is licensed.', 'wpsso' ), $info[ 'name_pro' ], $pro_transl, $um_info[ 'name' ] ) . '</p>';
 
 							$text .= '</blockquote>';
 
