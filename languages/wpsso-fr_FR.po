@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 6.27.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-03-30 13:21-0700\n"
-"PO-Revision-Date: 2020-03-30 13:26-0700\n"
+"POT-Creation-Date: 2020-03-31 07:39-0700\n"
+"PO-Revision-Date: 2020-03-31 07:47-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1329,8 +1329,8 @@ msgstr "Hérite l'image \"mise en avant\" et personnalisées des parents pour ar
 
 #: lib/gettext-config.php:40
 msgctxt "plugin description"
-msgid "Google Rich Results with Structured Data for Articles, Carousels, Events, FAQPages, HowTos, Images, Local Business, Products, Recipes, Reviews, Videos, and more."
-msgstr "Résultats riche de Google avec données structurées d'articles, carrousels, événements, pages FAQ, images, entreprise locale, produits, recettes, critiques, videos, et plus."
+msgid "Google Rich Results and Structured Data for Articles, Carousels (aka Item Lists), Claim Reviews, Events, FAQ Pages, How-Tos, Images, Local Business / Local SEO, Organizations, Products, Ratings, Recipes, Restaurants, Reviews, Videos, and more."
+msgstr "Résultats riche de Google et données structurées pour articles, carrousels, critiques, entreprise / référencement locale, étapes pratiques, évaluations de déclarations, événements, images, organisations, pages FAQ, produits, recettes, restaurants, videos, et plus."
 
 #: lib/gettext-config.php:41
 msgctxt "plugin description"
@@ -3059,13 +3059,13 @@ msgid "Incomplete API options to instantiate the \"%s\" shortening service."
 msgstr "Options d'API incomplètes pour instancier le service de raccourcissement \"%s\"."
 
 #. translators: %s is the Events Calendar plugin name
-#: lib/gettext-pro.php:170 lib/pro/event/tribe_events.php:50
+#: lib/gettext-pro.php:170 lib/pro/event/the-events-calendar.php:50
 msgctxt "option value"
 msgid "[%s Venue]"
 msgstr "[Lieu de %s]"
 
 #. translators: %s is the Events Calendar plugin name
-#: lib/gettext-pro.php:171 lib/pro/event/tribe_events.php:58
+#: lib/gettext-pro.php:171 lib/pro/event/the-events-calendar.php:58
 msgctxt "option value"
 msgid "[%s Organizer]"
 msgstr "[Organisation de %s]"

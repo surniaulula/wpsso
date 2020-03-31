@@ -20,6 +20,10 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		private $subsys       = array();	// Associative array to enable various outputs.
 		private $start_stats  = null;
 		private $begin_marks  = array();
+		private $log_msg_cols = array(
+			'%-36s:: ',
+			'%-55s: ',
+		);
 
 		public $enabled = false;		// True if at least one subsys is true.
 
@@ -154,10 +158,8 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				return;
 			}
 
-			$first_col  = '%-38s:: ';
-			$second_col = '%-50s: ';
-			$stack      = debug_backtrace();
-			$log_msg    = '';
+			$stack   = debug_backtrace();
+			$log_msg = '';
 
 			if ( is_int( $class_seq ) ) {
 
@@ -165,7 +167,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 					$func_seq = $class_seq;
 				}
 
-				$log_msg .= sprintf( $first_col, ( empty( $stack[ $class_seq ][ 'class' ] ) ? '' : $stack[ $class_seq ][ 'class' ] ) );
+				$log_msg .= sprintf( $this->log_msg_cols[ 0 ], ( empty( $stack[ $class_seq ][ 'class' ] ) ? '' : $stack[ $class_seq ][ 'class' ] ) );
 
 			} else {
 
@@ -173,13 +175,13 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 					$func_seq = 1;
 				}
 
-				$log_msg .= sprintf( $first_col, $class_seq );
+				$log_msg .= sprintf( $this->log_msg_cols[ 0 ], $class_seq );
 			}
 
 			if ( is_int( $func_seq ) ) {
-				$log_msg .= sprintf( $second_col, ( empty( $stack[ $func_seq ][ 'function' ] ) ? '' : $stack[ $func_seq ][ 'function' ] ) );
+				$log_msg .= sprintf( $this->log_msg_cols[ 1 ], ( empty( $stack[ $func_seq ][ 'function' ] ) ? '' : $stack[ $func_seq ][ 'function' ] ) );
 			} else {
-				$log_msg .= sprintf( $second_col, $func_seq );
+				$log_msg .= sprintf( $this->log_msg_cols[ 1 ], $func_seq );
 			}
 
 			if ( is_multisite() ) {
