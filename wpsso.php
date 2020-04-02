@@ -656,6 +656,14 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 */
 		public static function init_textdomain( $debug_enabled ) {
 
+			static $do_once = null;
+
+			if ( true === $do_once ) {
+				return;
+			}
+
+			$do_once = true;
+
 			if ( $debug_enabled ) {
 				add_filter( 'load_textdomain_mofile', array( self::get_instance(), 'override_textdomain_mofile' ), 10, 3 );
 			}

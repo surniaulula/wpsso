@@ -639,13 +639,13 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 		public function get_ext_gen_list() {
 
-			static $ext_list = null;
+			static $local_cache = null;
 
-			if ( null !== $ext_list ) {
-				return $ext_list;
+			if ( null !== $local_cache ) {
+				return $local_cache;
 			}
 
-			$ext_list = array();
+			$local_cache = array();
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
@@ -657,10 +657,11 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				$ext_auth_id = $this->get_ext_auth_id( $ext );
 				$ext_pp      = $ext_auth_id && $this->pp( $ext, $li = true, WPSSO_UNDEF ) === WPSSO_UNDEF ? true : false;
 				$ext_stat    = ( $ext_pp ? 'L' : ( $ext_pdir ? 'U' : 'S' ) ) . ( $ext_auth_id ? '*' : '' );
-				$ext_list[]  = $info[ 'short' ] . ' ' . $info[ 'version' ] . '/' . $ext_stat;
+
+				$local_cache[] = $info[ 'short' ] . ' ' . $info[ 'version' ] . '/' . $ext_stat;
 			}
 
-			return $ext_list;
+			return $local_cache;
 		}
 
 		public function get_ext_auth_id( $ext ) {
