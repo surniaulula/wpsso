@@ -537,7 +537,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			$purchase_clicked = '<p><b>' . __( 'Awesome!', 'wpsso' ) . '</b> ' .
 				__( 'Thank you for your support!', 'wpsso' ) . '</p>';
 
-			$no_thanks_clicked = '<p>' . __( 'I\'m sorry to hear that.', 'wpsso' ) . ' ' .
+			$no_thanks_clicked = '<p>' . 
 				sprintf( __( 'Hopefully you\'ll change your mind in the future and choose to support the continued development of %s.',
 					'wpsso' ), $info[ 'name' ] ) . '</p>';
 
@@ -577,7 +577,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 			$notice_msg .= '</p><p>';
 
-			$notice_msg .= sprintf( __( 'Have you considered purchasing the %s version? It comes with a lot of great extra features!', 'wpsso' ),
+			$notice_msg .= sprintf( __( 'Have you thought about purchasing the %s version? It comes with a lot of great extra features!', 'wpsso' ),
 				_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) );
 
 			$notice_msg .= '</p>';

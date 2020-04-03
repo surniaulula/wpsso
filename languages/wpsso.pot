@@ -143,10 +143,6 @@ msgstr ""
 msgid "Thank you for your support!"
 msgstr ""
 
-#: lib/admin-head.php:540
-msgid "I'm sorry to hear that."
-msgstr ""
-
 #: lib/admin-head.php:541
 msgid ""
 "Hopefully you'll change your mind in the future and choose to support the "
@@ -165,8 +161,8 @@ msgstr ""
 
 #: lib/admin-head.php:580
 msgid ""
-"Have you considered purchasing the %s version? It comes with a lot of great "
-"extra features!"
+"Have you thought about purchasing the %s version? It comes with a lot of "
+"great extra features!"
 msgstr ""
 
 #: lib/admin.php:567
