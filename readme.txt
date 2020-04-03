@@ -516,6 +516,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Refactored the `SucomNotice::log()` method.
 	* Refactored the `WpssoConfig::get_config()` method.
 	* Refactored the `WpssoConfig::get_ext_sorted()` method.
 * **Requires At Least**
