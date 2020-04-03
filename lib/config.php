@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.27.1',	// Plugin version.
+					'version'     => '6.27.2-dev.2',	// Plugin version.
 					'opt_version' => '721',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -31,6 +31,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'update_auth' => 'tid',
 					'text_domain' => 'wpsso',
 					'domain_path' => '/languages',
+
+					/**
+					 * URLs or relative paths to plugin banners and icons.
+					 */
 					'assets'      => array(
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso/assets/banner-772x250.jpg',
@@ -191,6 +195,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'slug'        => 'wpsso-am',
 					'base'        => 'wpsso-am/wpsso-am.php',
 					'update_auth' => '',		// No premium version.
+
+					/**
+					 * URLs or relative paths to plugin banners and icons.
+					 */
 					'assets'      => array(
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-am/assets/banner-772x250.jpg',
@@ -243,6 +251,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'slug'        => 'wpsso-breadcrumbs',
 					'base'        => 'wpsso-breadcrumbs/wpsso-breadcrumbs.php',
 					'update_auth' => '',		// No premium version.
+
+					/**
+					 * URLs or relative paths to plugin banners and icons.
+					 */
 					'assets'      => array(
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-breadcrumbs/assets/banner-772x250.jpg',
@@ -295,6 +307,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'slug'        => 'wpsso-faq',
 					'base'        => 'wpsso-faq/wpsso-faq.php',
 					'update_auth' => '',		// No premium version.
+
+					/**
+					 * URLs or relative paths to plugin banners and icons.
+					 */
 					'assets'      => array(
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-faq/assets/banner-772x250.jpg',
@@ -347,6 +363,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'slug'        => 'wpsso-inherit-parent-meta',
 					'base'        => 'wpsso-inherit-parent-meta/wpsso-inherit-parent-meta.php',
 					'update_auth' => '',		// No premium version.
+
+					/**
+					 * URLs or relative paths to plugin banners and icons.
+					 */
 					'assets'      => array(
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-inherit-parent-meta/assets/banner-772x250.jpg',
@@ -399,6 +419,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'slug'        => 'wpsso-schema-json-ld',
 					'base'        => 'wpsso-schema-json-ld/wpsso-schema-json-ld.php',
 					'update_auth' => 'tid',
+
+					/**
+					 * URLs or relative paths to plugin banners and icons.
+					 */
 					'assets'      => array(
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-schema-json-ld/assets/banner-772x250.jpg',
@@ -452,6 +476,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'slug'        => 'wpsso-organization',
 					'base'        => 'wpsso-organization/wpsso-organization.php',
 					'update_auth' => 'tid',
+
+					/**
+					 * URLs or relative paths to plugin banners and icons.
+					 */
 					'assets'      => array(
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-organization/assets/banner-772x250.jpg',
@@ -504,6 +532,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'slug'        => 'wpsso-plm',
 					'base'        => 'wpsso-plm/wpsso-plm.php',
 					'update_auth' => 'tid',
+
+					/**
+					 * URLs or relative paths to plugin banners and icons.
+					 */
 					'assets'      => array(
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-plm/assets/banner-772x250.jpg',
@@ -556,6 +588,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'slug'        => 'wpsso-ratings-and-reviews',
 					'base'        => 'wpsso-ratings-and-reviews/wpsso-ratings-and-reviews.php',
 					'update_auth' => '',		// No premium version.
+
+					/**
+					 * URLs or relative paths to plugin banners and icons.
+					 */
 					'assets'      => array(
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-ratings-and-reviews/assets/banner-772x250.jpg',
@@ -608,6 +644,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'slug'        => 'wpsso-rest-api',
 					'base'        => 'wpsso-rest-api/wpsso-rest-api.php',
 					'update_auth' => '',		// No premium version.
+
+					/**
+					 * URLs or relative paths to plugin banners and icons.
+					 */
 					'assets'      => array(
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-rest-api/assets/banner-772x250.jpg',
@@ -660,6 +700,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'slug'        => 'wpsso-rrssb',
 					'base'        => 'wpsso-rrssb/wpsso-rrssb.php',
 					'update_auth' => '',		// No premium version.
+
+					/**
+					 * URLs or relative paths to plugin banners and icons.
+					 */
 					'assets'      => array(
 						'banners' => array(
 							'low' => 'https://surniaulula.github.io/wpsso-rrssb/assets/banner-772x250.jpg',
@@ -712,6 +756,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'slug'        => 'wpsso-strip-schema-microdata',
 					'base'        => 'wpsso-strip-schema-microdata/wpsso-strip-schema-microdata.php',
 					'update_auth' => '',		// No premium version.
+
+					/**
+					 * URLs or relative paths to plugin banners and icons.
+					 */
 					'assets'      => array(
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-strip-schema-microdata/assets/banner-772x250.jpg',
@@ -764,6 +812,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'slug'        => 'wpsso-tweet-a-quote',
 					'base'        => 'wpsso-tweet-a-quote/wpsso-tweet-a-quote.php',
 					'update_auth' => '',		// No premium version.
+
+					/**
+					 * URLs or relative paths to plugin banners and icons.
+					 */
 					'assets'      => array(
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-tweet-a-quote/assets/banner-772x250.jpg',
@@ -816,6 +868,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'slug'        => 'wpsso-tune-image-editors',
 					'base'        => 'wpsso-tune-image-editors/wpsso-tune-image-editors.php',
 					'update_auth' => '',		// No premium version.
+
+					/**
+					 * URLs or relative paths to plugin banners and icons.
+					 */
 					'assets'      => array(
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-tune-image-editors/assets/banner-772x250.jpg',
@@ -868,6 +924,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'slug'        => 'wpsso-user-locale',
 					'base'        => 'wpsso-user-locale/wpsso-user-locale.php',
 					'update_auth' => '',		// No premium version.
+
+					/**
+					 * URLs or relative paths to plugin banners and icons.
+					 */
 					'assets'      => array(
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-user-locale/assets/banner-772x250.jpg',
@@ -920,6 +980,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'slug'        => 'wpsso-um',
 					'base'        => 'wpsso-um/wpsso-um.php',
 					'update_auth' => '',		// No premium version.
+
+					/**
+					 * URLs or relative paths to plugin banners and icons.
+					 */
 					'assets'      => array(
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-um/assets/banner-772x250.jpg',
@@ -3519,117 +3583,121 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		/**
-		 * WpccoConfig::get_config() is called very early, so don't apply filters by default. The method is called with
-		 * $apply_filters = true at WordPress 'init' priority -10, after set_constants() and require_libs() have been
-		 * called, but before any plugin / add-on class objects have been defined.
+		 * WpccoConfig::get_config() is called very early, so don't apply filters by default.
+		 *
+		 * The method is called with $apply_filters = true at WordPress 'init' priority -10, after set_constants() and
+		 * require_libs() have been called, but before any plugin / add-on class objects have been defined.
 		 */
-		public static function get_config( $cf_key = false, $apply_filters = false, $read_cache = true ) {
+		public static function get_config( $apply_filters = false, $read_cache = true ) {
 
-			if ( ! $read_cache || empty( self::$cf[ 'config_filtered' ] ) ) {
-
-				self::$cf[ '*' ] = array(
-					'base' => array(),
-					'lib'  => array(
-						'pro' => array(),
-						'std' => array(),
-					),
-					'version' => '',		// -wpsso3.29.0pro-wpssoplm1.5.1pro-wpssoum1.4.0gpl
-				);
-
-				self::$cf[ 'opt' ][ 'version' ] = '';	// -wpsso416pro-wpssoplm8pro
-
-				/**
-				 * Just in case - don't apply filters if the constants have not been defined yet.
-				 */
-				if ( $apply_filters && defined( 'WPSSO_VERSION' ) ) {
-
-					self::$cf[ 'config_filtered' ] = true;	// Set before calling filter to prevent recursion.
-
-					/**
-					 * Apply filters to have add-ons include their config.
-					 */
-					self::$cf = apply_filters( 'wpsso_get_config', self::$cf, self::get_version() );
-
-					/**
-					 * Parse the complete config and define some reference values.
-					 */
-					$pro_disabled = defined( 'WPSSO_PRO_DISABLE' ) && WPSSO_PRO_DISABLE ? true : false;
-
-					foreach ( self::$cf[ 'plugin' ] as $ext => $info ) {
-
-						$pkg_lctype = 'std';
-
-						$ext_dir_const = strtoupper( $ext ) . '_PLUGINDIR';
-
-						if ( ! $pro_disabled ) {
-							if ( defined( $ext_dir_const ) ) {
-								if ( is_dir( constant( $ext_dir_const ) . 'lib/pro/' ) ) {
-									$pkg_lctype = 'pro';
-								}
-							}
-						}
-
-						if ( isset( $info[ 'slug' ] ) ) {
-							self::$cf[ '*' ][ 'slug' ][ $info[ 'slug' ] ] = $ext;
-						}
-
-						if ( isset( $info[ 'base' ] ) ) {
-							self::$cf[ '*' ][ 'base' ][ $info[ 'base' ] ] = $ext;
-						}
-
-						if ( isset( $info[ 'lib' ] ) && is_array( $info[ 'lib' ] ) ) {
-							self::$cf[ '*' ][ 'lib' ] = SucomUtil::array_merge_recursive_distinct(
-								self::$cf[ '*' ][ 'lib' ], $info[ 'lib' ] );
-						}
-
-						if ( isset( $info[ 'version' ] ) ) {
-							self::$cf[ '*' ][ 'version' ] .= '-' . $ext . $info[ 'version' ] . $pkg_lctype;
-						}
-
-						if ( isset( $info[ 'opt_version' ] ) ) {
-							self::$cf[ 'opt' ][ 'version' ] .= '-' . $ext . $info[ 'opt_version' ] . $pkg_lctype;
-						}
-
-						/**
-						 * Maybe complete relative paths in the image arrays.
-						 */
-						$plugin_base = trailingslashit( plugins_url( '', $info[ 'base' ] ) );
-
-						array_walk_recursive( self::$cf[ 'plugin' ][ $ext ][ 'assets' ], 
-							array( __CLASS__, 'maybe_prefix_base_url' ), $plugin_base );
-					}
-				}
-			}
-
-			if ( false !== $cf_key ) {
-				if ( isset( self::$cf[ $cf_key ] ) ) {
-					return self::$cf[ $cf_key ];
-				} else {
-					return null;
-				}
-			} else {
+			if ( ! empty( self::$cf[ 'config_filtered' ] ) && $read_cache ) {
 				return self::$cf;
 			}
+
+			self::$cf[ '*' ] = array(
+				'base' => array(),
+				'lib'  => array(
+					'pro' => array(),
+					'std' => array(),
+				),
+				'version' => '',		// -wpsso3.29.0pro-wpssoplm1.5.1pro-wpssoum1.4.0gpl
+			);
+
+			self::$cf[ 'opt' ][ 'version' ] = '';	// -wpsso416pro-wpssoplm8pro
+
+			/**
+			 * Just in case - don't apply filters if the constants have not been defined yet.
+			 */
+			if ( $apply_filters && defined( 'WPSSO_VERSION' ) ) {
+
+				self::$cf[ 'config_filtered' ] = true;	// Set before calling filter to prevent recursion.
+
+				/**
+				 * Apply filters to have add-ons include their config.
+				 */
+				self::$cf = apply_filters( 'wpsso_get_config', self::$cf, self::get_version() );
+
+				/**
+				 * Parse the complete config and define some reference values.
+				 */
+				$pro_disabled = defined( 'WPSSO_PRO_DISABLE' ) && WPSSO_PRO_DISABLE ? true : false;
+
+				foreach ( self::$cf[ 'plugin' ] as $ext => $info ) {
+
+					$pkg_dir = 'std';
+
+					$ext_dir_const = strtoupper( $ext ) . '_PLUGINDIR';
+
+					if ( ! $pro_disabled ) {
+						if ( defined( $ext_dir_const ) ) {
+							if ( is_dir( constant( $ext_dir_const ) . 'lib/pro/' ) ) {
+								$pkg_dir = 'pro';
+							}
+						}
+					}
+
+					if ( isset( $info[ 'slug' ] ) ) {
+						self::$cf[ '*' ][ 'slug' ][ $info[ 'slug' ] ] = $ext;
+					}
+
+					if ( isset( $info[ 'base' ] ) ) {
+						self::$cf[ '*' ][ 'base' ][ $info[ 'base' ] ] = $ext;
+					}
+
+					if ( isset( $info[ 'lib' ] ) && is_array( $info[ 'lib' ] ) ) {
+						self::$cf[ '*' ][ 'lib' ] = SucomUtil::array_merge_recursive_distinct(
+							self::$cf[ '*' ][ 'lib' ], $info[ 'lib' ] );
+					}
+
+					if ( isset( $info[ 'version' ] ) ) {
+						self::$cf[ '*' ][ 'version' ] .= '-' . $ext . $info[ 'version' ] . $pkg_dir;
+					}
+
+					if ( isset( $info[ 'opt_version' ] ) ) {
+						self::$cf[ 'opt' ][ 'version' ] .= '-' . $ext . $info[ 'opt_version' ] . $pkg_dir;
+					}
+
+					/**
+					 * Maybe complete relative paths in the image arrays.
+					 */
+					$plugin_base = trailingslashit( plugins_url( '', $info[ 'base' ] ) );
+
+					array_walk_recursive( self::$cf[ 'plugin' ][ $ext ][ 'assets' ], 
+						array( __CLASS__, 'maybe_prefix_base_url' ), $plugin_base );
+				}
+			}
+
+			return self::$cf;
 		}
 
 		private static function maybe_prefix_base_url( &$url, $key, $plugin_base ) {
 
-			if ( ! empty( $url ) && strpos( $url, '//' ) === false ) {
+			if ( ! empty( $url ) && false === strpos( $url, '//' ) ) {
 				$url = $plugin_base . $url;
 			}
 		}
 
-		public static function get_ext_sorted( $apply_filters = true, $core_first = true ) {
+		public static function get_ext_sorted() {
 
-			$ext = self::get_config( 'plugin', $apply_filters );
+			$cf = self::get_config();
 
-			uasort( $ext, array( 'self', 'sort_ext_by_name' ) );	// Sort array and maintain index association.
+			/**
+			 * Sort the array by plugin name and maintain index association.
+			 */
+			uasort( $cf[ 'plugin' ], array( 'self', 'sort_ext_by_name' ) );
 
-			if ( $core_first && isset( $ext[ 'wpsso' ] ) ) {
-				SucomUtil::move_to_front( $ext, 'wpsso' );
+			reset( $cf[ 'plugin' ] );	// Just in case.
+
+			$first_key = key( $cf[ 'plugin' ] );
+
+			/**
+			 * Make sure the core plugin is first.
+			 */
+			if ( 'wpsso' !== $first_key ) {
+				SucomUtil::move_to_front( $cf[ 'plugin' ], 'wpsso' );
 			}
 
-			return $ext;
+			return $cf[ 'plugin' ];
 		}
 
 		private static function sort_ext_by_name( $a, $b ) {
@@ -3656,9 +3724,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			define( 'WPSSO_PLUGINBASE', $info[ 'base' ] );	// Example: wpsso/wpsso.php.
 			define( 'WPSSO_PLUGINDIR', trailingslashit( realpath( dirname( $plugin_file_path ) ) ) );
 			define( 'WPSSO_PLUGINSLUG', $info[ 'slug' ] );	// Example: wpsso.
+			define( 'WPSSO_UNDEF', -1 );			// Default undefined image width / height value.
 			define( 'WPSSO_URLPATH', trailingslashit( plugins_url( '', $plugin_file_path ) ) );
 			define( 'WPSSO_VERSION', $info[ 'version' ] );						
-			define( 'WPSSO_UNDEF', -1 );			// Default undefined image width / height value.
 
 			define( 'WPSSO_INIT_CONFIG_PRIORITY', -10 );
 			define( 'WPSSO_INIT_OPTIONS_PRIORITY', 9 );

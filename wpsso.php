@@ -15,7 +15,7 @@
  * Requires At Least: 4.0
  * Tested Up To: 5.4
  * WC Tested Up To: 4.0.1
- * Version: 6.27.1
+ * Version: 6.27.2-dev.2
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -98,7 +98,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			require_once $plugin_dir . 'lib/config.php';
 
-			$this->cf = WpssoConfig::get_config( $opt_key = false, $apply_filters = false );
+			$this->cf = WpssoConfig::get_config( $apply_filters = false );
 
 			WpssoConfig::set_constants( __FILE__ );	
 
@@ -139,11 +139,11 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		}
 
 		/**
-		 * Runs at init priority -10. Called by activate_plugin() as well.
+		 * Runs at init priority -10 and Called by activate_plugin() as well.
 		 */
 		public function set_config( $activate = false ) {
 
-			$this->cf = WpssoConfig::get_config( $opt_key = false, $apply_filters = true );
+			$this->cf = WpssoConfig::get_config( $apply_filters = true );
 		}
 
 		/**
@@ -310,7 +310,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					$this->debug->log( 'debug enabled on ' . date( 'c' ) );
 					$this->debug->log( 'PHP version ' . phpversion() );
 					$this->debug->log( 'WP version ' . $wp_version );
-					$this->debug->log( $this->check->get_ext_gen_list() );
+
+					$this->debug->log_arr( 'generator list', $this->check->get_ext_gen_list() );
 				}
 
 			} else {

@@ -1145,7 +1145,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 */
 		public static function delete_metabox_prefs( $user_id = false, $slug_prefix = 'wpsso' ) {
 
-			$cf = WpssoConfig::get_config( $cf_key = false, $apply_filters = true );
+			$cf = WpssoConfig::get_config( $apply_filters = true );
 
 			$user_id = empty( $user_id ) ? get_current_user_id() : $user_id;
 

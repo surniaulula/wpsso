@@ -79,8 +79,10 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 					$have_tid = true;	// Found at least one plugin with an auth id.
 
 					/**
-					 * If the update manager is active, the version should be available. Skip individual
-					 * warnings and show nag to install the update manager.
+					 * If the update manager is active, its version should be available.
+					 *
+					 * If the update manager version is defined, the skip the warning notices and show a nag
+					 * notice to install the update manager.
 					 */
 					if ( empty( $um_info[ 'version' ] ) ) {
 
@@ -103,7 +105,10 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 			if ( true === $have_tid ) {
 
-				if ( ! empty( $um_info[ 'version' ] ) ) {	// If update manager is active, its version should be available.
+				/**
+				 * If the update manager is active, its version should be available.
+				 */
+				if ( ! empty( $um_info[ 'version' ] ) ) {
 
 					$rec_version = WpssoConfig::$cf[ 'um' ][ 'rec_version' ];
 
@@ -112,11 +117,17 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 						$this->p->notice->warn( $this->p->msgs->get( 'notice-um-version-recommended' ) );
 					}
 
-				} elseif ( SucomPlugin::is_plugin_installed( $um_info[ 'base' ], $use_cache = true ) ) {	// Check if update manager is installed.
+				/**
+				 * Check if update manager is installed.
+				 */
+				} elseif ( SucomPlugin::is_plugin_installed( $um_info[ 'base' ], $use_cache = true ) ) {
 
 					$this->p->notice->nag( $this->p->msgs->get( 'notice-um-activate-add-on' ) );
 
-				} else {	// The update manager is not active or installed.
+				/**
+				 * The update manager is not active or installed.
+				 */
+				} else {
 
 					$this->p->notice->nag( $this->p->msgs->get( 'notice-um-add-on-required' ) );
 				}
@@ -416,13 +427,13 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				 */
 				$rate_plugin_label   = sprintf( __( 'Yes! Rate %s 5 stars!', 'wpsso' ), $info[ 'short' ] );
 				$rate_plugin_clicked = sprintf( __( 'Thank you for rating the %s plugin!', 'wpsso' ), $info[ 'short' ] );
-				$rate_plugin_button  = '<div style="display:inline-block;vertical-align:top;margin:1.2em 0.8em 0.8em 0;">' .
+				$rate_plugin_button  = '<div style="display:inline-block;vertical-align:top;margin:0.4em 0.8em 0.4em 0;">' .
 					$form->get_button( $rate_plugin_label, 'button-primary dismiss-on-click', '', $info[ 'url' ][ 'review' ],
 						true, false, array( 'dismiss-msg' => $rate_plugin_clicked ) ) . '</div>';
 
 				$already_rated_label   = sprintf( __( 'I\'ve already rated %s.', 'wpsso' ), $info[ 'short' ] );
 				$already_rated_clicked = sprintf( __( 'Thank you for your earlier rating of %s!', 'wpsso' ), $info[ 'short' ] );
-				$already_rated_button  = '<div style="display:inline-block;vertical-align:top;margin:1.2em 0 0.8em 0;">' .
+				$already_rated_button  = '<div style="display:inline-block;vertical-align:top;margin:0.4em 0 0.4em 0;">' .
 					$form->get_button( $already_rated_label, 'button-secondary dismiss-on-click', '', '',
 						false, false, array( 'dismiss-msg' => $already_rated_clicked ) ) . '</div>';
 
@@ -441,30 +452,34 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 				$notice_msg .= '<b>' . __( 'Fantastic!', 'wpsso' ) . '</b> ';
 
-				$notice_msg .= sprintf( __( 'You\'ve been using <b>%s</b> for a while now, which is awesome!', 'wpsso' ), $wp_plugin_link ) . ' ';
+				$notice_msg .= sprintf( __( 'You\'ve been using %s for a while now, which is awesome!', 'wpsso' ), $wp_plugin_link ) . ' ';
 
 				$notice_msg .= '</p><p>';
 
-				$notice_msg .= sprintf( __( 'We\'ve put a lot of effort into making %s and its add-ons the best possible, so it\'s great to know that you\'re finding this plugin useful.', 'wpsso' ), $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'short' ] ) . ' :-) ';
+				$notice_msg .= sprintf( __( 'We\'ve put many years of time and effort into making %1$s and its add-ons the best possible, so it\'s great to know that you\'re finding %2$s useful.', 'wpsso' ), $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'short' ], $wp_plugin_link ) . ' :-) ';
 
 				$notice_msg .= '</p><p>';
 
-				$notice_msg .= sprintf( __( 'Now that you\'re familiar with %s, would you rate this plugin 5 stars on WordPress.org?', 'wpsso' ), $info[ 'short' ] ) . ' ';
+				$notice_msg .= sprintf( __( 'Now that you\'ve been using %s for a while, could you quickly rate it on WordPress.org?', 'wpsso' ), $wp_plugin_link ) . ' ';
 
 				$notice_msg .= '</p><p>';
 
-				$notice_msg .= __( 'Your rating is a great way to encourage us and it helps other WordPress users find great plugins!', 'wpsso' ) . ' ';
+				$notice_msg .= __( 'A great rating is an excellent way to encourage your plugin developers and support the continued development of your favorite plugins.', 'wpsso' ) . ' ';
 
 				$notice_msg .= '</p>';
+				
+				$notice_msg .= '<div style="text-align:center;">';
 
 				$notice_msg .= $rate_plugin_button . $already_rated_button;
+
+				$notice_msg .= '</div>';
 
 				$notice_msg .= '</div>';
 
 				/**
 				 * The notice provides it's own dismiss button, so do not show the dismiss 'Forever' link.
 				 */
-				$this->p->notice->log( 'inf', $notice_msg, $user_id, $notice_key, $dismiss_time = true, array( 'dismiss_diff' => false ) );
+				$this->p->notice->log( 'nag', $notice_msg, $user_id, $notice_key, $dismiss_time = true, array( 'dismiss_diff' => false ) );
 
 				return 1;	// Show only one notice at a time.
 			}

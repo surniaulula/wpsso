@@ -595,7 +595,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			static $lc = array();
 
 			$ext = null === $ext ? $this->p->lca : $ext;
-			$id  = $ext . '/' . $li . '/' . $rv . '/' . $mx;
+			$id  = '|' . $ext . '-' . $li . '-' . $rv . '-' . $mx . '|';
 			$rv  = null === $mx ? $rv : $rv * $mx;
 
 			if ( $rc && isset( $lc[ $id ] ) ) {
@@ -647,7 +647,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 			$local_cache = array();
 
-			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
+			foreach ( WpssoConfig::get_ext_sorted() as $ext => $info ) {
 
 				if ( empty( $info[ 'version' ] ) ) {	// Include only active add-ons.
 					continue;
