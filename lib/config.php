@@ -653,6 +653,58 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'latest'    => '',
 					),
 				),
+				'wpssorrssb' => array(			// Plugin acronym.
+					'short'       => 'WPSSO RRSSB',	// Short plugin name.
+					'name'        => 'WPSSO Ridiculously Responsive Social Sharing Buttons',
+					'desc'        => 'Ridiculously Responsive (SVG) Social Sharing Buttons for your content, excerpts, CSS sidebar, widget, shortcode, editor pages, etc.',
+					'slug'        => 'wpsso-rrssb',
+					'base'        => 'wpsso-rrssb/wpsso-rrssb.php',
+					'update_auth' => '',		// No premium version.
+					'assets'      => array(
+						'banners' => array(
+							'low' => 'https://surniaulula.github.io/wpsso-rrssb/assets/banner-772x250.jpg',
+							'high' => 'https://surniaulula.github.io/wpsso-rrssb/assets/banner-1544x500.jpg',
+						),
+						'icons' => array(
+							'low' => 'https://surniaulula.github.io/wpsso-rrssb/assets/icon-128x128.png',
+							'high' => 'https://surniaulula.github.io/wpsso-rrssb/assets/icon-256x256.png',
+						),
+					),
+					'hosts' => array(
+						'wp_org' => true,
+						'github' => true,
+						'wpsso'  => true,
+					),
+					'url' => array(
+						
+						/**
+						 * WordPress.org.
+						 */
+						'home'   => 'https://wordpress.org/plugins/wpsso-rrssb/',
+						'forum'  => 'https://wordpress.org/support/plugin/wpsso-rrssb',
+						'review' => 'https://wordpress.org/support/plugin/wpsso-rrssb/reviews/?rate=5#new-post',
+						
+						/**
+						 * GitHub.com.
+						 */
+						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-rrssb/master/readme.txt',
+						'setup_html' => '',
+						
+						/**
+						 * WPSSO.com.
+						 */
+						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-rrssb/changelog/',
+						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-rrssb/',
+						'install'   => 'https://wpsso.com/docs/plugins/wpsso-rrssb/installation/',
+						'faqs'      => '',
+						'notes'     => 'https://wpsso.com/docs/plugins/wpsso-rrssb/notes/',
+						'support'   => '',	// Premium support ticket.
+						'purchase'  => '',	// Purchase page.
+						'info'      => '',	// License information.
+						'update'    => 'https://wpsso.com/extend/plugins/wpsso-rrssb/update/',
+						'latest'    => '',
+					),
+				),
 				'wpssossm' => array(			// Plugin acronym.
 					'short'       => 'WPSSO SSM',	// Short plugin name.
 					'name'        => 'WPSSO Strip Schema Microdata',
