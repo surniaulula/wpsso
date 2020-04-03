@@ -507,7 +507,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.27.2-dev.2 (2020/04/03)**
+**Version 6.27.2-dev.3 (2020/04/03)**
 
 * **New Features**
 	* None.
@@ -980,7 +980,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 6.27.2-dev.2 =
+= 6.27.2-dev.3 =
 
 (2020/04/03) Updated the plugin rating notice message.
 
