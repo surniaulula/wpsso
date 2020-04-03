@@ -167,32 +167,39 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 		}
 
-		public function nag( $msg_text, $user_id = null, $notice_key = false ) {
+		public function nag( $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false, $payload = array() ) {
 
-			$this->log( 'nag', $msg_text, $user_id, $notice_key, $dismiss_time = false );
+			/**
+			 * By default, do not show a dismiss button.
+			 */
+			if ( ! isset( $payload[ 'dismiss_diff' ] ) ) {
+				$payload[ 'dismiss_diff' ] = false;
+			}
+
+			$this->log( 'nag', $msg_text, $user_id, $notice_key, $dismiss_time, $payload );
 		}
 
-		public function err( $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false ) {
+		public function err( $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false, $payload = array() ) {
 
-			$this->log( 'err', $msg_text, $user_id, $notice_key, $dismiss_time );
+			$this->log( 'err', $msg_text, $user_id, $notice_key, $dismiss_time, $payload );
 		}
 
-		public function warn( $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false ) {
+		public function warn( $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false, $payload = array() ) {
 
-			$this->log( 'warn', $msg_text, $user_id, $notice_key, $dismiss_time );
+			$this->log( 'warn', $msg_text, $user_id, $notice_key, $dismiss_time, $payload );
 		}
 
-		public function inf( $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false ) {
+		public function inf( $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false, $payload = array() ) {
 
-			$this->log( 'inf', $msg_text, $user_id, $notice_key, $dismiss_time );
+			$this->log( 'inf', $msg_text, $user_id, $notice_key, $dismiss_time, $payload );
 		}
 
-		public function upd( $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false ) {
+		public function upd( $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false, $payload = array() ) {
 
-			$this->log( 'upd', $msg_text, $user_id, $notice_key, $dismiss_time );
+			$this->log( 'upd', $msg_text, $user_id, $notice_key, $dismiss_time, $payload );
 		}
 
-		public function log( $msg_type, $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false, $payload = array() ) {
+		private function log( $msg_type, $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false, $payload = array() ) {
 
 			if ( empty( $msg_type ) || empty( $msg_text ) ) {
 				return false;
@@ -206,18 +213,21 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				return false;
 			}
 
-			$payload[ 'notice_key' ]  = empty( $notice_key ) ? false : sanitize_key( $notice_key );
+			$payload[ 'notice_key' ] = empty( $notice_key ) ? false : sanitize_key( $notice_key );
+
 			$payload[ 'notice_time' ] = time();
+
 			$payload[ 'notice_ttl' ]  = isset( $payload[ 'notice_ttl' ] ) ?
 				(int) $payload[ 'notice_ttl' ] : $this->default_ttl;	// 0 to disable notice expiration.
 
 			$payload[ 'dismiss_time' ] = false;
+
 			$payload[ 'dismiss_diff' ] = isset( $payload[ 'dismiss_diff' ] ) ? $payload[ 'dismiss_diff' ] : null;
 
 			/**
 			 * Add dismiss text for dismiss button and notice message.
 			 */
-			if ( $msg_type !== 'nag' && $this->can_dismiss() ) {	// Do not allow dismiss of nag messages.
+			if ( $this->can_dismiss() ) {
 
 				$payload[ 'dismiss_time' ] = $dismiss_time;	// Maybe true, false, 0, or seconds greater than 0.
 
@@ -234,6 +244,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					} elseif ( empty( $payload[ 'dismiss_time' ] ) ) {	// False or 0 seconds.
 
 						$payload[ 'dismiss_time' ] = false;
+
 						$payload[ 'dismiss_diff' ] = false;
 
 					} elseif ( is_numeric( $payload[ 'dismiss_time' ] ) ) {	// Seconds greater than 0.
@@ -642,11 +653,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$this->p->debug->log( 'doing block editor is false' );
 			}
 
+			$nag_html         = '';
 			$msg_html         = '';
-			$nag_text         = '';
 			$user_id          = get_current_user_id();	// Always returns an integer.
 			$user_dismissed   = $user_id ? get_user_option( $this->dismiss_name, $user_id ) : false;
-			$update_dismissed = false;
+			$update_user_meta = false;
 
 			$this->has_shown = true;
 
@@ -682,13 +693,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						}
 					}
 
-					if ( 'nag' === $msg_type ) {
-
-						$nag_text .= $payload[ 'msg_text' ];	// Append to echo a single msg block.
-
-						continue;
-					}
-
 					if ( ! empty( $payload[ 'dismiss_time' ] ) ) {	// True or seconds greater than 0.
 
 						/**
@@ -705,7 +709,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 							} else {	// Dismiss has expired.
 
-								$update_dismissed = true;	// Update the user meta when done.
+								$update_user_meta = true;	// Update the user meta when done.
 
 								unset( $user_dismissed[ $payload[ 'notice_key' ] ] );
 							}
@@ -716,7 +720,18 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						continue;
 					}
 
-					$msg_html .= $this->get_notice_html( $msg_type, $payload );
+					/**
+					 * Only show a single nag message at a time.
+					 */
+					if ( 'nag' === $msg_type ) {
+
+						if ( empty( $nag_html ) ) {
+							$nag_html .= $this->get_notice_html( $msg_type, $payload );
+						}
+
+					} else {
+						$msg_html .= $this->get_notice_html( $msg_type, $payload );
+					}
 				}
 			}
 
@@ -725,7 +740,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 */
 			if ( ! empty( $user_id ) ) {	// Just in case.
 
-				if ( true === $update_dismissed ) {
+				if ( true === $update_user_meta ) {
 
 					if ( empty( $user_dismissed ) ) {
 						delete_user_option( $user_id, $this->dismiss_name );
@@ -735,19 +750,15 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 			}
 
-			if ( ! empty( $nag_text ) ) {
-
-				$payload = array(
-					'msg_text'   => preg_replace( '/<!--spoken-->(.*?)<!--\/spoken-->/Us', ' ', $nag_text ),
-					'msg_spoken' => preg_replace( '/<!--not-spoken-->(.*?)<!--\/not-spoken-->/Us', ' ', $nag_text ),
-					'msg_spoken' => SucomUtil::decode_html( SucomUtil::strip_html( $payload[ 'msg_spoken' ] ) ),
-				);
+			if ( ! empty( $nag_html ) ) {
 
 				echo $this->get_nag_style();
-				echo $this->get_notice_html( 'nag', $payload );
+
+				echo $nag_html . "\n";
 			}
 
 			echo $msg_html . "\n";
+
 			echo '<!-- ' . $this->lca . ' admin notices end -->' . "\n";
 		}
 
@@ -837,7 +848,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$user_id          = get_current_user_id();	// Always returns an integer.
 			$user_dismissed   = $user_id ? get_user_option( $this->dismiss_name, $user_id ) : false;
-			$update_dismissed = false;
+			$update_user_meta = false;
 			$json_notices     = array();
 			$ajax_context     = empty( $_REQUEST[ 'context' ] ) ? '' : $_REQUEST[ 'context' ];	// 'block_editor' or 'toolbar_notices'
 
@@ -891,7 +902,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 							} else {	// Dismiss has expired.
 
-								$update_dismissed = true;	// Update the user meta when done.
+								$update_user_meta = true;	// Update the user meta when done.
 
 								unset( $user_dismissed[ $payload[ 'notice_key' ] ] );
 							}
@@ -920,7 +931,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 */
 			if ( ! empty( $user_id ) ) {	// Just in case.
 
-				if ( true === $update_dismissed ) {
+				if ( true === $update_user_meta ) {
 
 					if ( empty( $user_dismissed ) ) {
 						delete_user_option( $user_id, $this->dismiss_name );
@@ -1024,13 +1035,14 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				( empty( $payload[ 'hidden' ] ) ? 'display:block;' : 'display:none;' ) . '"';
 
 			$msg_html = '<div class="' . $this->lca . '-notice ' . 
-				( ! $is_dismissible ? '' : $this->lca . '-dismissible ' ) .
+				( $is_dismissible ? $this->lca . '-dismissible ' : '' ) .
 				$wp_class . '"' . $css_id_attr . $style_attr . $data_attr . '>';	// Display block or none.
 
 			/**
 			 * Float the dismiss button on the right, so the button must be added first.
 			 */
 			if ( ! empty( $payload[ 'dismiss_diff' ] ) && $is_dismissible ) {
+
 				$msg_html .= '<button class="notice-dismiss" type="button">' .
 					'<span class="notice-dismiss-text">' . $payload[ 'dismiss_diff' ] . '</span>' .
 						'</button><!-- .notice-dismiss -->';
@@ -1614,7 +1626,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 	jQuery( document ).on( "click", "div.' . $this->lca . '-dismissible > button.notice-dismiss, div.' . $this->lca . '-dismissible .dismiss-on-click", function() {
 
-		var notice      = jQuery( this ).closest( ".' . $this->lca . '-dismissible" );
+		var notice = jQuery( this ).closest( ".' . $this->lca . '-dismissible" );
+
 		var dismiss_msg = jQuery( this ).data( "dismiss-msg" );
 
 		var ajaxDismissData = {
@@ -1629,8 +1642,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		if ( dismiss_msg ) {
+
 			notice.children( "button.notice-dismiss" ).hide();
+
 			jQuery( this ).closest( "div.notice-message" ).html( dismiss_msg );
+
 		} else {
 			notice.hide();
 		}

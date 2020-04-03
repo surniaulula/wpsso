@@ -2430,24 +2430,21 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '<b>' . sprintf( __( 'At least one Authentication ID has been entered in the %1$s settings page,<br/>but the %2$s add-on is not active.', 'wpsso' ), $licenses_page_link, $um_info[ 'name' ] ) . '</b> ';
 
-						$text .= sprintf( __( 'This complementary add-on is required to update and enable %1$s and its %2$s add-ons.', 'wpsso' ), $info[ 'name_pro' ], $pro_transl );
-
 						$text .= '</p><p>';
+
+						$text .= sprintf( __( 'This complementary add-on is required to update and enable the %1$s plugin and its %2$s add-ons.', 'wpsso' ), $info[ 'name_pro' ], $pro_transl ) . ' ';
 
 						if ( $msg_key === 'notice-um-add-on-required' ) {
 
-							$text .= '<b>' . sprintf( __( 'Install and activate the %1$s add-on from the %2$s settings page.', 'wpsso' ),
-								$um_info[ 'name' ], $addons_page_link ) . '</b> ';
+							$text .= sprintf( __( 'Install and activate the %1$s add-on from the %2$s settings page.', 'wpsso' ),
+								$um_info[ 'name' ], $addons_page_link ) . ' ';
 
 						} else {
 
-							$text .= '<b>' . sprintf( __( 'The %1$s add-on can be activated from the WordPress %2$s page.', 'wpsso' ),
-								$um_info[ 'name' ], $plugins_page_link ) . '</b> ';
-
-							$text .= __( 'Please activate this complementary add-on now.', 'wpsso' ) . ' ';
+							$text .= sprintf( __( 'The %1$s add-on can be activated from the WordPress %2$s page &mdash; please activate this complementary add-on now.', 'wpsso' ), $um_info[ 'name' ], $plugins_page_link ) . ' ';
 						}
 
-						$text .= sprintf( __( 'When the %1$s add-on is active, one or more %2$s version updates may be available for your licensed plugin and/or its add-on(s).', 'wpsso' ), $um_info[ 'name' ], $pro_transl );
+						$text .= sprintf( __( 'When the %1$s add-on is active, one or more %2$s version updates may be available for your licensed plugin and its add-on(s).', 'wpsso' ), $um_info[ 'name' ], $pro_transl );
 
 						$text .= '</p>';
 
@@ -2542,7 +2539,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text = '<p style="text-align:center;">';
 
-						$text .= __( 'A great rating is an excellent way to encourage your plugin developers.', 'wpsso' );
+						$text .= __( 'Great ratings are an excellent way to encourage your plugin developers.', 'wpsso' );
 
 						$text .= '</p><p style="text-align:center;">';
 
