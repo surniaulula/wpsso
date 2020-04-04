@@ -1133,7 +1133,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$input_name_id     = $name . '_id' . $key_suffix;
 			$input_name_id_pre = $name . '_id_pre' . $key_suffix;
 
-			if ( true === $this->p->avail[ 'media' ][ 'ngg' ] ) {
+			if ( ! empty( $this->p->avail[ 'media' ][ 'ngg' ] ) ) {
 				$media_libs[ 'ngg' ] = 'NextGEN Gallery';
 			}
 

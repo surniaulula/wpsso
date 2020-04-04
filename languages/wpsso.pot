@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.27.1\n"
+"Project-Id-Version: WPSSO Core 6.27.2-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2623,7 +2623,7 @@ msgid "Posts, Pages, Custom Post Types"
 msgstr ""
 
 #: lib/gettext-pro.php:31 lib/media.php:124 lib/media.php:711 lib/media.php:884
-#: lib/media.php:1883 lib/pro/admin/advanced.php:204
+#: lib/media.php:1884 lib/pro/admin/advanced.php:204
 #: lib/std/admin/advanced.php:210
 msgid "Media Library"
 msgstr ""
@@ -3387,7 +3387,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: lib/media.php:127 lib/media.php:1890
+#: lib/media.php:127 lib/media.php:1891
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
@@ -3456,51 +3456,51 @@ msgid ""
 "%4$s."
 msgstr ""
 
-#: lib/media.php:1343
+#: lib/media.php:1344
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1900
+#: lib/media.php:1901
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:1925
+#: lib/media.php:1926
 msgctxt "option label"
 msgid "Facebook Open Graph"
 msgstr ""
 
-#: lib/media.php:1934
+#: lib/media.php:1935
 msgctxt "option label"
 msgid "Google Schema"
 msgstr ""
 
-#: lib/media.php:1943
+#: lib/media.php:1944
 msgctxt "option label"
 msgid "Google Schema Article"
 msgstr ""
 
-#: lib/media.php:1952
+#: lib/media.php:1953
 msgctxt "option label"
 msgid "Google Schema Article AMP 1:1"
 msgstr ""
 
-#: lib/media.php:1961
+#: lib/media.php:1962
 msgctxt "option label"
 msgid "Google Schema Article AMP 4:3"
 msgstr ""
 
-#: lib/media.php:1970
+#: lib/media.php:1971
 msgctxt "option label"
 msgid "Google Schema Article AMP 16:9"
 msgstr ""
 
-#: lib/media.php:2010
+#: lib/media.php:2011
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:2041
+#: lib/media.php:2042
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -6302,32 +6302,32 @@ msgstr ""
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:100 lib/pro/forum/bbpress.php:191
+#: lib/pro/forum/bbpress.php:101 lib/pro/forum/bbpress.php:192
 msgctxt "bbpress single user description"
 msgid "%s's Profile"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:200
+#: lib/pro/forum/bbpress.php:201
 msgctxt "bbpress single user description"
 msgid "%s's Topics Started"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:206
+#: lib/pro/forum/bbpress.php:207
 msgctxt "bbpress single user description"
 msgid "%s's Replies Created"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:212
+#: lib/pro/forum/bbpress.php:213
 msgctxt "bbpress single user description"
 msgid "%s's Favorites"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:218
+#: lib/pro/forum/bbpress.php:219
 msgctxt "bbpress single user description"
 msgid "%s's Subscriptions"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:224
+#: lib/pro/forum/bbpress.php:225
 msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr ""
