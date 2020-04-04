@@ -1771,7 +1771,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/**
 						 * Validate tab.
 						 */
-						case 'info-meta-validate-facebook-og':
+						case 'info-meta-validate-facebook-debugger':
 
 							$text = '<p class="top">';
 

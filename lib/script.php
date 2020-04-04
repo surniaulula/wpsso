@@ -195,12 +195,15 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				'schema_type' => _x( 'Schema Type', 'option label', 'wpsso' ),
 			);
 
-			$metabox_id       = $this->p->cf[ 'meta' ][ 'id' ];
-			$mb_container_id  = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
+			$metabox_id = $this->p->cf[ 'meta' ][ 'id' ];
+
+			$mb_container_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
+
 			$mb_container_ids = apply_filters( $this->p->lca . '_metabox_container_ids', array( $mb_container_id ) );
 
 			$no_notices_transl = sprintf( __( 'No %s notifications.', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
-			$no_notices_html   = '<div class="ab-item ab-empty-item">' . $no_notices_transl . '</div>';
+
+			$no_notices_html = '<div class="ab-item ab-empty-item">' . $no_notices_transl . '</div>';
 
 			$option_labels = apply_filters( $this->p->lca . '_metabox_script_data_option_labels', $option_labels );
 

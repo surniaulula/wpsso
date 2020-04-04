@@ -746,10 +746,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function get_metabox_document_meta( $user_obj ) {
 
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
-
 			$metabox_id = $this->p->cf[ 'meta' ][ 'id' ];
 			$mod        = $this->get_mod( $user_obj->ID );
 			$tabs       = $this->get_document_meta_tabs( $metabox_id, $mod );
@@ -780,10 +776,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				'layout' => 'vertical',
 			);
 
-			$container_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
-			$metabox_html = $this->p->util->get_metabox_tabbed( $metabox_id, $tabs, $table_rows, $tabbed_args );
-			$metabox_html = "\n" . '<div id="' . $container_id . '">' . $metabox_html . '</div><!-- #'. $container_id . ' -->' . "\n";
-			$metabox_html .= $this->get_metabox_javascript( $container_id );
+			$mb_container_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
+
+			$metabox_html = "\n" . '<div id="' . $mb_container_id . '">';
+			$metabox_html .= $this->p->util->get_metabox_tabbed( $metabox_id, $tabs, $table_rows, $tabbed_args );
+			$metabox_html .= apply_filters( $mb_container_id . '_footer', '', $mod );
+			$metabox_html .= '</div><!-- #'. $mb_container_id . ' -->' . "\n";
+			$metabox_html .= $this->get_metabox_javascript( $mb_container_id );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( $metabox_id . ' table rows' );	// End timer.

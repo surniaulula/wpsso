@@ -430,9 +430,11 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 				$already_rated_label = sprintf( __( 'I\'ve already rated %s.', 'wpsso' ), $info[ 'short' ] );
 
-				$rate_plugin_clicked = '<p>' . sprintf( __( 'Thank you for rating the %s plugin!', 'wpsso' ), $info[ 'name' ] ) . '</p>';
+				$rate_plugin_clicked = '<p>' . sprintf( __( 'Thank you for rating the %s plugin!',
+					'wpsso' ), $info[ 'name' ] ) . '</p>';
 
-				$already_rated_clicked = '<p>' . sprintf( __( 'Thank you for your earlier rating of %s!', 'wpsso' ), $info[ 'name' ] ) . '</p>';
+				$already_rated_clicked = '<p>' . sprintf( __( 'Thank you for encouraging and supporting your plugin developers!',
+					'wpsso' ), $info[ 'name' ] ) . '</p>';
 
 				$rate_plugin_button = '<div style="display:inline-block;vertical-align:top;margin:0.4em 0.8em 0.6em 0;">' .
 					$form->get_button( $rate_plugin_label, 'button-primary dismiss-on-click', '', $info[ 'url' ][ 'review' ],
@@ -535,7 +537,8 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				_x( $this->p->cf[ 'dist' ][ 'std' ], 'distribution name', 'wpsso' ) );
 
 			$purchase_clicked = '<p><b>' . __( 'Awesome!', 'wpsso' ) . '</b> ' .
-				__( 'Thank you for your support!', 'wpsso' ) . '</p>';
+				sprintf( __( 'Thank you for encouraging and supporting the continued development of %s.',
+					'wpsso' ), $info[ 'name' ] ) . '</p>';
 
 			$no_thanks_clicked = '<p>' . 
 				sprintf( __( 'Hopefully you\'ll change your mind in the future and choose to support the continued development of %s.',

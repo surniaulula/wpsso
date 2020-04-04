@@ -357,7 +357,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			if ( ! empty( $md_opts ) && ( empty( $md_opts[ 'options_version' ] ) || 
 				$md_opts[ 'options_version' ] !== $this->p->cf[ 'opt' ][ 'version' ] ) ) {
 
-				$rename_filter_name  = $this->p->lca . '_rename_md_options_keys';
+				$rename_filter_name = $this->p->lca . '_rename_md_options_keys';
+
 				$rename_options_keys = apply_filters( $rename_filter_name, self::$rename_md_options_keys );
 
 				$this->p->util->rename_opts_by_ext( $md_opts, $rename_options_keys );
@@ -491,11 +492,13 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		public function get_metabox_javascript( $container_id ) {
 
 			$container_id = empty( $container_id ) ? '' : '#' . $container_id;
+
 			$metabox_html = '';
 
 			if ( SucomUtil::get_const( 'DOING_AJAX' ) ) {
 
 				$metabox_html .= '<!-- metabox javascript for ajax call -->' . "\n";
+
 				$metabox_html .= '<script type="text/javascript">sucomInitMetabox( "' . $container_id . '", true );</script>' . "\n";
 			}
 
@@ -1089,10 +1092,10 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$amp_url_encoded = $have_amp ? urlencode( amp_get_permalink( $mod[ 'id' ] ) ) : '';
 
 			$buttons = array(
-				'facebook-og' => array(
-					'title' => _x( 'Facebook Open Graph Object Debugger', 'option label', 'wpsso' ),
+				'facebook-debugger' => array(
+					'title' => _x( 'Facebook Sharing Debugger', 'option label', 'wpsso' ),
 					'label' => _x( 'Validate Open Graph', 'submit button', 'wpsso' ),
-					'url'   => 'https://developers.facebook.com/tools/debug/og/object/?q=' . $sharing_url_encoded,
+					'url'   => 'https://developers.facebook.com/tools/debug/?q=' . $sharing_url_encoded,
 				),
 				'facebook-microdata' => array(
 					'title' => _x( 'Facebook Microdata Debug Tool', 'option label', 'wpsso' ),

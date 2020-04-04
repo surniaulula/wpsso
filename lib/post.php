@@ -49,12 +49,15 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$is_admin = is_admin();	// Only check once.
 
+			$doing_ajax = SucomUtil::get_const( 'DOING_AJAX' );
+
 			if ( $is_admin ) {
 
 				$metabox_id   = $this->p->cf[ 'meta' ][ 'id' ];
-				$container_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
 
-				add_action( 'wp_ajax_update_container_id_' . $container_id, array( $this, 'ajax_metabox_document_meta' ) );
+				$mb_container_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
+
+				add_action( 'wp_ajax_update_container_id_' . $mb_container_id, array( $this, 'ajax_metabox_document_meta' ) );
 
 				if ( ! empty( $_GET ) || basename( $_SERVER[ 'PHP_SELF' ] ) === 'post-new.php' ) {
 
@@ -97,7 +100,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Add the columns when doing AJAX as well to allow Quick Edit to add the required columns.
 			 */
-			if ( $is_admin || SucomUtil::get_const( 'DOING_AJAX' ) ) {
+			if ( $is_admin || $doing_ajax ) {
 
 				/**
 				 * Only use public post types (to avoid menu items, product variations, etc.).
@@ -1276,7 +1279,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function ajax_metabox_document_meta() {
 
-			if ( ! SucomUtil::get_const( 'DOING_AJAX' ) ) {
+			$doing_ajax = SucomUtil::get_const( 'DOING_AJAX' );
+
+			if ( ! $doing_ajax ) {	// Just in case.
 				return;
 			} elseif ( SucomUtil::get_const( 'DOING_AUTOSAVE' ) ) {
 				die( -1 );
@@ -1386,10 +1391,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'is_auto_draft' => $is_auto_draft,
 			);
 
-			$container_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
-			$metabox_html = $this->p->util->get_metabox_tabbed( $metabox_id, $tabs, $table_rows, $tabbed_args );
-			$metabox_html = "\n" . '<div id="' . $container_id . '">' . $metabox_html . '</div><!-- #'. $container_id . ' -->' . "\n";
-			$metabox_html .= $this->get_metabox_javascript( $container_id );
+			$mb_container_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
+
+			$metabox_html = "\n" . '<div id="' . $mb_container_id . '">';
+			$metabox_html .= $this->p->util->get_metabox_tabbed( $metabox_id, $tabs, $table_rows, $tabbed_args );
+			$metabox_html .= apply_filters( $mb_container_id . '_footer', '', $mod );
+			$metabox_html .= '</div><!-- #'. $mb_container_id . ' -->' . "\n";
+			$metabox_html .= $this->get_metabox_javascript( $mb_container_id );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( $metabox_id . ' table rows' );	// End timer.

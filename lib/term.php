@@ -771,10 +771,13 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				'layout' => 'vertical',
 			);
 
-			$container_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
-			$metabox_html = $this->p->util->get_metabox_tabbed( $metabox_id, $tabs, $table_rows, $tabbed_args );
-			$metabox_html = "\n" . '<div id="' . $container_id . '">' . $metabox_html . '</div><!-- #'. $container_id . ' -->' . "\n";
-			$metabox_html .= $this->get_metabox_javascript( $container_id );
+			$mb_container_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
+
+			$metabox_html = "\n" . '<div id="' . $mb_container_id . '">';
+			$metabox_html .= $this->p->util->get_metabox_tabbed( $metabox_id, $tabs, $table_rows, $tabbed_args );
+			$metabox_html .= apply_filters( $mb_container_id . '_footer', '', $mod );
+			$metabox_html .= '</div><!-- #'. $mb_container_id . ' -->' . "\n";
+			$metabox_html .= $this->get_metabox_javascript( $mb_container_id );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( $metabox_id . ' table rows' );	// End timer.
