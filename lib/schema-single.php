@@ -168,10 +168,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					$json_data = array( $json_data );
 				}
 
-				$json_data[] = $ret;	// Add an item to the list.
+				$json_data[] = $ret;		// Add an item to the list.
 
 			} else {
-
 				$json_data = array( $ret );	// Add an item to the list.
 			}
 
