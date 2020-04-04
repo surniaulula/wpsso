@@ -76,13 +76,14 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 		public static function clean_json( array &$arr ) {
 
 			foreach ( $arr as $key => $value ) {
+
 				if ( null === $value ) {		// Null value.
 					unset( $arr[ $key ] );
 				} elseif ( '' === $value ) {		// Empty string.
 					unset( $arr[ $key ] );
 				} elseif ( array() === $value ) {	// Empty array.
 					unset( $arr[ $key ] );
-				} elseif ( is_array( $value ) ) {	// Recurse.
+				} elseif ( is_array( $value ) ) {
 					self::clean_json( $arr[ $key ] );
 				}
 			}

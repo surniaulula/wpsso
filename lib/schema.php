@@ -481,8 +481,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Get the @graph json array and start a new @graph array.
 			 */
-			$graph_json     = WpssoSchemaGraph::get_json_reset_data();
 			$graph_type_url = WpssoSchemaGraph::get_type_url();
+			$graph_json     = WpssoSchemaGraph::get_json_reset_data();
 			$filter_name    = $this->p->lca . '_json_prop_' . SucomUtil::sanitize_hookname( $graph_type_url );
 			$graph_json     = apply_filters( $filter_name, $graph_json, $mod, $mt_og );
 
@@ -490,15 +490,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( ! empty( $graph_json[ '@graph' ] ) ) {	// Just in case.
 
-				if ( ! SucomUtil::get_const( 'WPSSO_JSON_OPTIMIZE_DISABLE' ) ) {
-					$graph_json = WpssoSchemaGraph::optimize_json( $graph_json );
-				}
+				$graph_json = WpssoSchemaGraph::optimize_json( $graph_json );
 
 				$schema_scripts[][] = '<script type="application/ld+json">' .
 					$this->p->util->json_format( $graph_json ) . '</script>' . "\n";
 			}
 
-			unset( $graph );
+			unset( $graph_json );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'build schema array' );	// End timer.
@@ -1780,7 +1778,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $comments_added;
 			}
 
-			$json_data[ 'commentCount' ] = get_comments_number( $mod[ 'id' ] );
+			$json_data[ 'commentCount' ] = (int) get_comments_number( $mod[ 'id' ] );
 
 			/**
 			 * Only get parent comments. The add_comment_data() method will recurse and add the children.

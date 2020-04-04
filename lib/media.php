@@ -627,7 +627,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			) );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
 				$this->p->debug->log_args( $args );
 			}
 
@@ -872,7 +871,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								( false === $resized_meta ? 'failure' : 'success' ) );
 						}
 
-						if ( $resized_meta == false ) {
+						if ( false === $resized_meta ) {
 
 							$notice_key = 'image-make-intermediate-size-' . $fullsizepath . '-failure';
 
@@ -891,17 +890,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 									( $size_info[ 'crop' ] ? _x( 'cropped', 'option value', 'wpsso' ) :
 										_x( 'uncropped', 'option value', 'wpsso' ) );
 
-								$error_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the <a href="%2$s">WordPress %3$s function</a> reported an error when trying to create the $4%s (%5$s) image size from %6$s.', 'wpsso' ), $media_lib, $wp_func_url, '<code>' . $wp_func_name . '</code>', $size_name, $size_msg, $fullsizepath );
+								$error_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the <a href="%2$s">WordPress %3$s function</a> reported an error (returned false) when trying to create the "%4$s" image size (%5$s) from %6$s.', 'wpsso' ), $media_lib, $wp_func_url, '<code>' . $wp_func_name . '</code>', $size_name, $size_msg, $fullsizepath );
 
 								$regen_msg = sprintf( __( 'You may consider regenerating the thumbnails of all WordPress Media Library images using one of <a href="%s">several available plugins from WordPress.org</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/regenerate+thumbnails/' );
 
 								$this->p->notice->err( $error_msg . ' ' . $regen_msg, null, $notice_key, $dismiss_time = WEEK_IN_SECONDS );
-
-							} elseif ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'admin error notice for image_make_intermediate_size() from ' .
-									$fullsizepath . ' is ' . ( $this->p->notice->is_dismissed( $notice_key ) ?
-										'dismissed' : 'shown (not dismissed)' ) );
 							}
 
 						} else {

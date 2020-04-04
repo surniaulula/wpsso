@@ -2622,8 +2622,8 @@ msgstr ""
 msgid "Posts, Pages, Custom Post Types"
 msgstr ""
 
-#: lib/gettext-pro.php:31 lib/media.php:124 lib/media.php:711 lib/media.php:884
-#: lib/media.php:1888 lib/pro/admin/advanced.php:204
+#: lib/gettext-pro.php:31 lib/media.php:124 lib/media.php:710 lib/media.php:883
+#: lib/media.php:1881 lib/pro/admin/advanced.php:204
 #: lib/std/admin/advanced.php:210
 msgid "Media Library"
 msgstr ""
@@ -3195,7 +3195,7 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: lib/gettext-pro.php:158 lib/page.php:718 lib/pro/social/buddypress.php:656
+#: lib/gettext-pro.php:158 lib/page.php:733 lib/pro/social/buddypress.php:656
 #: lib/wp-meta.php:905
 msgctxt "default description"
 msgid "No Description."
@@ -3387,7 +3387,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: lib/media.php:127 lib/media.php:1895
+#: lib/media.php:127 lib/media.php:1888
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
@@ -3410,107 +3410,107 @@ msgid ""
 "all %1$d image sizes): %2$d by %3$d pixels."
 msgstr ""
 
-#: lib/media.php:667
+#: lib/media.php:666
 msgid ""
 "The NGG integration module provided by %1$s is required to read information "
 "for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:713
+#: lib/media.php:712
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:717 lib/media.php:896
+#: lib/media.php:716 lib/media.php:895
 msgid ""
 "You may consider regenerating the thumbnails of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:739
+#: lib/media.php:738
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image dimensions for "
 "<a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:765
+#: lib/media.php:764
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image file path for "
 "<a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:886
+#: lib/media.php:885
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:891 lib/messages.php:2907
+#: lib/media.php:890 lib/messages.php:2907
 msgctxt "option value"
 msgid "cropped"
 msgstr ""
 
-#: lib/media.php:892 lib/messages.php:2906
+#: lib/media.php:891 lib/messages.php:2906
 msgctxt "option value"
 msgid "uncropped"
 msgstr ""
 
-#: lib/media.php:894
+#: lib/media.php:893
 msgid ""
 "Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress "
-"%3$s function</a> reported an error when trying to create the $4%s (%5$s) "
-"image size from %6$s."
+"%3$s function</a> reported an error (returned false) when trying to create "
+"the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:1348
+#: lib/media.php:1341
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1905
+#: lib/media.php:1898
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:1930
+#: lib/media.php:1923
 msgctxt "option label"
 msgid "Facebook Open Graph"
 msgstr ""
 
-#: lib/media.php:1939
+#: lib/media.php:1932
 msgctxt "option label"
 msgid "Google Schema"
 msgstr ""
 
-#: lib/media.php:1948
+#: lib/media.php:1941
 msgctxt "option label"
 msgid "Google Schema Article"
 msgstr ""
 
-#: lib/media.php:1957
+#: lib/media.php:1950
 msgctxt "option label"
 msgid "Google Schema Article AMP 1:1"
 msgstr ""
 
-#: lib/media.php:1966
+#: lib/media.php:1959
 msgctxt "option label"
 msgid "Google Schema Article AMP 4:3"
 msgstr ""
 
-#: lib/media.php:1975
+#: lib/media.php:1968
 msgctxt "option label"
 msgid "Google Schema Article AMP 16:9"
 msgstr ""
 
-#: lib/media.php:2015
+#: lib/media.php:2008
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:2046
+#: lib/media.php:2039
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -6063,57 +6063,57 @@ msgid ""
 "default value."
 msgstr ""
 
-#: lib/page.php:528 lib/page.php:533 lib/page.php:630
+#: lib/page.php:528 lib/page.php:533 lib/page.php:645
 msgctxt "default description"
 msgid "Archive for %s."
 msgstr ""
 
-#: lib/page.php:599
+#: lib/page.php:614
 msgctxt "default description"
 msgid "Tag archive for %s."
 msgstr ""
 
-#: lib/page.php:614
+#: lib/page.php:629
 msgctxt "default description"
 msgid "Category archive for %s."
 msgstr ""
 
-#: lib/page.php:646
+#: lib/page.php:661
 msgctxt "default description"
 msgid "Authored by %s."
 msgstr ""
 
-#: lib/page.php:663
+#: lib/page.php:678
 msgctxt "default description"
 msgid "Daily archive for %s."
 msgstr ""
 
-#: lib/page.php:669
+#: lib/page.php:684
 msgctxt "default description"
 msgid "Monthly archive for %s."
 msgstr ""
 
-#: lib/page.php:675
+#: lib/page.php:690
 msgctxt "default description"
 msgid "Yearly archive for %s."
 msgstr ""
 
-#: lib/page.php:681
+#: lib/page.php:696
 msgctxt "default description"
 msgid "Search results for %s."
 msgstr ""
 
-#: lib/page.php:688
+#: lib/page.php:703
 msgctxt "default description"
 msgid "Archive page."
 msgstr ""
 
-#: lib/page.php:863 lib/page.php:867
+#: lib/page.php:878 lib/page.php:882
 msgctxt "default title"
 msgid "%s Archive"
 msgstr ""
 
-#: lib/page.php:949 lib/wp-meta.php:902
+#: lib/page.php:964 lib/wp-meta.php:902
 msgctxt "default title"
 msgid "No Title"
 msgstr ""
@@ -6424,7 +6424,7 @@ msgctxt "image size label"
 msgid "Schema Article AMP 16:9 Image"
 msgstr ""
 
-#: lib/schema.php:620
+#: lib/schema.php:618
 msgid "adding schema"
 msgstr ""
 

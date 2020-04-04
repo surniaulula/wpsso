@@ -559,19 +559,28 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							/**
 							 * Ignore everything before the first paragraph if true.
 							 */
-							if ( $this->p->options[ 'plugin_p_strip' ] ) {
+							if ( empty( $desc_text ) ) {
 
 								if ( $this->p->debug->enabled ) {
-									$this->p->debug->log( 'removing all text before the first paragraph' );
+									$this->p->debug->log( 'returned content text is empty' );
 								}
 
-								/**
-								 * U = Inverts the "greediness" of quantifiers so that they are not greedy by default.
-								 * i = Letters in the pattern match both upper and lower case letters. 
-								 *
-								 * See http://php.net/manual/en/reference.pcre.pattern.modifiers.php.
-								 */
-								$desc_text = preg_replace( '/^.*<p>/Ui', '', $desc_text );
+							} else {
+
+								if ( $this->p->options[ 'plugin_p_strip' ] ) {
+
+									if ( $this->p->debug->enabled ) {
+										$this->p->debug->log( 'removing text before the first paragraph' );
+									}
+
+									/**
+									 * U = Inverts the "greediness" of quantifiers so that they are not greedy by default.
+									 * i = Letters in the pattern match both upper and lower case letters. 
+									 *
+									 * See http://php.net/manual/en/reference.pcre.pattern.modifiers.php.
+									 */
+									$desc_text = preg_replace( '/^.*<p>/Ui', '', $desc_text );
+								}
 							}
 						}
 
@@ -579,7 +588,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						 * Fallback to the image alt value.
 						 */
 						if ( empty( $desc_text ) ) {
+
 							if ( $mod[ 'post_type' ] === 'attachment' && strpos( $mod[ 'post_mime' ], 'image/' ) === 0 ) {
+
+								if ( $this->p->debug->enabled ) {
+									$this->p->debug->log( 'falling back to the attachment image alt text' );
+								}
+
 								$desc_text = get_post_meta( $mod[ 'id' ], '_wp_attachment_image_alt', true );
 							}
 						}
