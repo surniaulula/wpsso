@@ -1757,12 +1757,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * List of contributors / co-authors.
 			 */
 			if ( ! empty( $mod[ 'post_coauthors' ] ) ) {
+
 				foreach ( $mod[ 'post_coauthors' ] as $author_id ) {
 					$coauthors_added += WpssoSchemaSingle::add_person_data( $json_data[ 'contributor' ], $mod, $author_id, $list_element = true );
 				}
 			}
 
 			foreach ( array( 'author', 'contributor' ) as $prop_name ) {
+
 				if ( empty( $json_data[ $prop_name ] ) ) {
 					unset( $json_data[ $prop_name ] );	// Prevent null assignment.
 				}

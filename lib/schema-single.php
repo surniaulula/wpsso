@@ -179,10 +179,24 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			if ( empty( $list_element ) ) {		// Add a single item.
+
 				$json_data = $ret;
+
 			} elseif ( is_array( $json_data ) ) {	// Just in case.
-				$json_data[] = $ret;		// Add an item to the list.
+
+				if ( SucomUtil::is_assoc( $json_data ) ) {
+
+					if ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log( 'converting array from associative to list element' );
+					}
+
+					$json_data = array( $json_data );
+				}
+
+				$json_data[] = $ret;	// Add an item to the list.
+
 			} else {
+
 				$json_data = array( $ret );	// Add an item to the list.
 			}
 
@@ -936,8 +950,15 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Images.
 			 */
 			if ( ! empty( $mt_offer[ 'og:image' ] ) ) {
+
 				if ( ! WpssoSchema::add_images_data_mt( $offer[ 'image' ], $mt_offer[ 'og:image' ] ) ) {
-					unset( $offer[ 'image' ] );	// Prevent null assignment.
+
+					if ( empty( $offer[ 'image' ] ) ) {
+						unset( $offer[ 'image' ] );	// Prevent null assignment.
+					}
+
+				} elseif ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( $ret[ 'image' ] );
 				}
 			}
 
@@ -1035,8 +1056,15 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			if ( ! empty( $org_opts[ $org_image_key ] ) ) {
-				if ( ! self::add_image_data_mt( $ret[ 'image' ], $org_opts, $org_image_key, false ) ) {	// $list_element is false.
-					unset( $ret[ 'image' ] );	// Prevent null assignment.
+
+				if ( ! self::add_image_data_mt( $ret[ 'image' ], $org_opts, $org_image_key ) ) {
+
+					if ( empty( $ret[ 'image' ] ) ) {
+						unset( $ret[ 'image' ] );	// Prevent null assignment.
+					}
+
+				} elseif ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( $ret[ 'image' ] );
 				}
 			}
 
@@ -1052,8 +1080,15 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 
 				if ( ! empty( $org_opts[ $org_logo_key ] ) ) {
+
 					if ( ! self::add_image_data_mt( $ret[ 'logo' ], $org_opts, $org_logo_key, false ) ) {	// $list_element is false.
-						unset( $ret[ 'logo' ] );	// Prevent null assignment.
+
+						if ( empty( $ret[ 'logo' ] ) ) {
+							unset( $ret[ 'logo' ] );	// Prevent null assignment.
+						}
+
+					} elseif ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log( $ret[ 'logo' ] );
 					}
 				}
 
@@ -1152,7 +1187,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					}
 
 					if ( ! self::add_place_data( $ret[ 'location' ], $mod, $place_id, false ) ) {
-						unset( $ret[ 'location' ] );	// Prevent null assignment.
+
+						if ( empty( $ret[ 'location' ] ) ) {
+							unset( $ret[ 'location' ] );	// Prevent null assignment.
+						}
+
+					} elseif ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log( $ret[ 'location' ] );
 					}
 				}
 			}
@@ -1323,8 +1364,15 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Images.
 			 */
 			if ( ! empty( $person_opts[ 'person_og_image' ] ) ) {
+
 				if ( ! WpssoSchema::add_images_data_mt( $ret[ 'image' ], $person_opts[ 'person_og_image' ] ) ) {
-					unset( $ret[ 'image' ] );	// Prevent null assignment.
+
+					if ( empty( $ret[ 'image' ] ) ) {
+						unset( $ret[ 'image' ] );	// Prevent null assignment.
+					}
+
+				} elseif ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( $ret[ 'image' ] );
 				}
 			}
 
@@ -1549,8 +1597,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$mt_image = $wpsso->media->get_opts_single_image( $place_opts, $size_name, 'place_img' );
 
-				if ( ! self::add_image_data_mt( $ret[ 'image' ], $mt_image, 'og:image', true ) ) {	// $list_element is true.
-					unset( $ret[ 'image' ] );	// Prevent null assignment.
+				if ( ! self::add_image_data_mt( $ret[ 'image' ], $mt_image, 'og:image' ) ) {
+
+					if ( empty( $ret[ 'image' ] ) ) {
+						unset( $ret[ 'image' ] );	// Prevent null assignment.
+					}
+
+				} elseif ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( $ret[ 'image' ] );
 				}
 			}
 
