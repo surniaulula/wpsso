@@ -124,7 +124,7 @@ msgid ""
 msgstr ""
 
 #: lib/admin-head.php:510
-msgid "three months"
+msgid "two months"
 msgstr ""
 
 #: lib/admin-head.php:533

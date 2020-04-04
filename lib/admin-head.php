@@ -506,8 +506,8 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			}
 
 			$ext_reg         = $this->p->util->reg->get_ext_reg();
-			$months_ago_secs = time() - ( 3 * MONTH_IN_SECONDS );
-			$months_transl   = __( 'three months', 'wpsso' );
+			$months_ago_secs = time() - ( 2 * MONTH_IN_SECONDS );
+			$months_transl   = __( 'two months', 'wpsso' );
 
 			if ( empty( $ext_reg[ $ext . '_install_time' ] ) || $ext_reg[ $ext . '_install_time' ] > $months_ago_secs ) {
 				return 0;
