@@ -39,7 +39,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				/**
 				 * Cleanup incorrect Yoast SEO notifications.
 				 */
-				if ( $this->p->avail[ 'seo' ][ 'wpseo' ] ) {
+				if ( ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) ) {
 
 					add_action( 'admin_init', array( $this, 'cleanup_wpseo_notifications' ), 15 );
 				}
@@ -61,7 +61,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				/**
 				 * Disable JetPack open graph meta tags.
 				 */
-				if ( $this->p->avail[ 'util' ][ 'jetpack' ] ) {
+				if ( ! empty( $this->p->avail[ 'util' ][ 'jetpack' ] ) ) {
 
 					add_filter( 'jetpack_enable_opengraph', '__return_false', 1000 );
 					add_filter( 'jetpack_enable_open_graph', '__return_false', 1000 );
@@ -76,7 +76,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				 * 'template_redirect' is not executed by the AMP plugin, so hook the 'amp_post_template_head'
 				 * action as well.
 				 */
-				if ( $this->p->avail[ 'seo' ][ 'wpseo' ] ) {
+				if ( ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) ) {
 
 					add_action( 'template_redirect', array( $this, 'cleanup_wpseo_filters' ), 10000 );
 					add_action( 'amp_post_template_head', array( $this, 'cleanup_wpseo_filters' ), -10000 );
@@ -85,7 +85,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				/**
 				 * Disable Rank Math social meta tags.
 				 */
-				if ( $this->p->avail[ 'seo' ][ 'rankmath' ] ) {
+				if ( ! empty( $this->p->avail[ 'seo' ][ 'rankmath' ] ) ) {
 
 					add_action( 'rank_math/head', array( $this, 'cleanup_rankmath_filters' ), -10000 );
 				}
