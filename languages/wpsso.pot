@@ -3195,7 +3195,7 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: lib/gettext-pro.php:158 lib/page.php:716 lib/pro/social/buddypress.php:656
+#: lib/gettext-pro.php:158 lib/page.php:718 lib/pro/social/buddypress.php:656
 #: lib/wp-meta.php:905
 msgctxt "default description"
 msgid "No Description."
@@ -6063,57 +6063,57 @@ msgid ""
 "default value."
 msgstr ""
 
-#: lib/page.php:526 lib/page.php:531 lib/page.php:628
+#: lib/page.php:528 lib/page.php:533 lib/page.php:630
 msgctxt "default description"
 msgid "Archive for %s."
 msgstr ""
 
-#: lib/page.php:597
+#: lib/page.php:599
 msgctxt "default description"
 msgid "Tag archive for %s."
 msgstr ""
 
-#: lib/page.php:612
+#: lib/page.php:614
 msgctxt "default description"
 msgid "Category archive for %s."
 msgstr ""
 
-#: lib/page.php:644
+#: lib/page.php:646
 msgctxt "default description"
 msgid "Authored by %s."
 msgstr ""
 
-#: lib/page.php:661
+#: lib/page.php:663
 msgctxt "default description"
 msgid "Daily archive for %s."
 msgstr ""
 
-#: lib/page.php:667
+#: lib/page.php:669
 msgctxt "default description"
 msgid "Monthly archive for %s."
 msgstr ""
 
-#: lib/page.php:673
+#: lib/page.php:675
 msgctxt "default description"
 msgid "Yearly archive for %s."
 msgstr ""
 
-#: lib/page.php:679
+#: lib/page.php:681
 msgctxt "default description"
 msgid "Search results for %s."
 msgstr ""
 
-#: lib/page.php:686
+#: lib/page.php:688
 msgctxt "default description"
 msgid "Archive page."
 msgstr ""
 
-#: lib/page.php:860 lib/page.php:864
+#: lib/page.php:863 lib/page.php:867
 msgctxt "default title"
 msgid "%s Archive"
 msgstr ""
 
-#: lib/page.php:946 lib/wp-meta.php:902
+#: lib/page.php:949 lib/wp-meta.php:902
 msgctxt "default title"
 msgid "No Title"
 msgstr ""

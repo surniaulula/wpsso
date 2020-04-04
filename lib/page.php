@@ -52,8 +52,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		}
 
 		/**
-		 * $type   = 'title' | 'excerpt' | 'both'
-		 * $mod    = true | false | post_id | array
+		 * $type = 'title' | 'excerpt' | 'both'
+		 *
+		 * $mod = true | false | post_id | array
+		 *
 		 * $md_key = true | false | string | array
 		 */
 		public function get_caption( $type = 'title', $max_len = 200, $mod = true, $read_cache = true,
@@ -85,7 +87,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$mod = $this->p->util->get_page_mod( $mod );
 			}
 
-			$cap_text = false;
+			$cap_text = '';
 
 			$sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
 
@@ -231,7 +233,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		}
 
 		/**
-		 * $mod    = true | false | post_id | array
+		 * $mod = true | false | post_id | array
+		 *
 		 * $md_key = true | false | string | array
 		 */
 		public function get_title( $max_len = 70, $dots = '', $mod = false, $read_cache = true,
@@ -283,8 +286,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
 			}
 
-			$title_text = false;
-
+			$title_text   = '';
 			$paged_suffix = '';
 
 			/**
@@ -352,7 +354,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				/**
 				 * Apply seo-like title modifications.
 				 */
-				if ( $this->p->avail[ 'seo' ][ 'any' ] === false ) {
+				if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
 
 					global $wpsso_paged;
 
@@ -456,7 +458,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$md_key = array_unique( $md_key );	// Just in case.
 
-			$desc_text = false;
+			$desc_text = '';
 
 			/**
 			 * Check for custom description if a metadata index key is provided.
@@ -776,6 +778,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			/**
 			 * The $mod array argument is preferred but not required.
+			 *
 			 * $mod = true | false | post_id | $mod array
 			 */
 			if ( ! is_array( $mod ) ) {
@@ -825,7 +828,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 		public function get_the_title( array $mod, $sep = null ) {
 
-			$title_text = false;
+			$title_text = '';
 
 			if ( null === $sep ) {
 				$sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
@@ -983,7 +986,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 		public function get_the_excerpt( array $mod ) {
 
-			$excerpt_text = false;
+			$excerpt_text = '';
 
 			/**
 			 * Use the excerpt, if we have one.
@@ -1098,10 +1101,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			/**
 			 * Apply the seed filter.
+			 *
+			 * Return false to prevent the 'post_content' from being used.
 			 */
 			$content = apply_filters( $this->p->lca . '_the_content_seed', '', $mod, $read_cache, $md_key );
 
-			if ( $content === false ) {
+			if ( false === $content ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'content seed is false' );
@@ -1480,9 +1485,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 */
 		public function get_term_title( $term_id = 0, $sep = null ) {
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
 			$term_obj = false;
 
-			$title_text = false;
+			$title_text = '';
 
 			if ( is_object( $term_id ) ) {
 
