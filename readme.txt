@@ -512,6 +512,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
+	* Updated the Facebook debugger URL.
 	* Updated the plugin rating notice message.
 * **Bugfixes**
 	* None.
