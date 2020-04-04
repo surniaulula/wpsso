@@ -420,7 +420,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				$defs[ 'og_author_field' ]  = $this->p->options[ 'plugin_cm_fb_name' ];
 
-				$defs[ 'plugin_wpseo_social_meta' ] = $this->p->avail[ 'seo' ][ 'wpseo' ] || get_option( 'wpseo' ) ? 1 : 0;
+				/**
+				 * Read Yoast SEO social meta if the Yoast SEO plugin is active, or Yoast SEO settings are found.
+				 */
+				$defs[ 'plugin_wpseo_social_meta' ] = ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) || get_option( 'wpseo' ) ? 1 : 0;
 
 				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 					if ( ! empty( $info[ 'update_auth' ] ) && $info[ 'update_auth' ]!== 'none' ) {	// Just in case.
