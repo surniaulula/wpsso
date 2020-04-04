@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.27.2-dev.3',	// Plugin version.
+					'version'     => '6.28.0-dev.4',	// Plugin version.
 					'opt_version' => '721',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1787,7 +1787,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '2.8.0-dev.3',	// Minimum update manager version (soft limit).
+				'rec_version' => '2.8.0-dev.4',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',
@@ -1883,15 +1883,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/**
 			 * WordPress config.
 			 *
-			 * WordPress v4.0 (2014/09/04):
-			 *
-			 * 	Improved media management, embeds, writing interface, easy language change, theme customizer,
-			 * 	plugin discovery and compatibility with PHP 5.5 and MySQL 5.6.
+			 * WordPress v4.2 was released on April 23, 2015.
 			 */
 			'wp' => array(
 				'label'       => 'WordPress',
-				'min_version' => '4.0',		// Hard limit - deactivate the plugin when activating.
-				'rec_version' => '5.4',	// Soft limit - issue warning if lower version found.
+				'min_version' => '4.2',		// Hard limit - deactivate the plugin when activating.
+				'rec_version' => '5.4',		// Soft limit - issue warning if lower version found.
 				'version_url' => 'https://codex.wordpress.org/Supported_Versions?nocache=1',
 				'tb_iframe'   => array(		// Thickbox iframe.
 					'width'  => 772,	// Url query argument.
@@ -3108,7 +3105,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								),
 								'pharmacy.organization'       => 'https://schema.org/Pharmacy',
 								'physician.organization'      => 'https://schema.org/Physician',
-								'Veterinary.care'         => 'https://schema.org/VeterinaryCare',
+								'veterinary.care'         => 'https://schema.org/VeterinaryCare',
 							),
 							'non-governmental.organization' => 'https://schema.org/NGO',
 							'organization'                  => 'https://schema.org/Organization',
@@ -3793,7 +3790,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_SELECT_PERSON_NAMES_MAX' ]     = 100;	// Maximum number of persons to include in a form select.
 
 			/**
-			 * WPSSO schema limits.
+			 * Schema limits.
 			 */
 			$var_const[ 'WPSSO_SCHEMA_ADDL_TYPE_URL_MAX' ]         = 5;
 			$var_const[ 'WPSSO_SCHEMA_HOWTO_STEPS_MAX' ]           = 40;
@@ -3813,7 +3810,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_SCHEMA_SAMEAS_URL_MAX' ]            = 5;
 
 			/**
-			 * WPSSO option and meta array names.
+			 * Site organization ID. 
+			 */
+			$var_const[ 'WPSSO_SCHEMA_ORGANIZATION_TYPE_ID' ] = 'organization';
+
+			/**
+			 * Setting and meta array names.
 			 */
 			$var_const[ 'WPSSO_DISMISS_NAME' ]          = 'wpsso_dismissed';
 			$var_const[ 'WPSSO_META_NAME' ]             = '_wpsso_meta';
@@ -3826,7 +3828,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_WP_CONFIG_CHECK_NAME' ]  = 'wpsso_wp_config_check';
 
 			/**
-			 * WPSSO hook priorities.
+			 * Hook priorities.
 			 */
 			$var_const[ 'WPSSO_ADD_MENU_PRIORITY' ]         = -20;
 			$var_const[ 'WPSSO_ADD_SUBMENU_PRIORITY' ]      = -10;
@@ -3838,7 +3840,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_SEO_SEED_FILTERS_PRIORITY' ] = 100;
 
 			/**
-			 * WPSSO PHP cURL library settings.
+			 * PHP cURL library settings.
 			 */
 			$var_const[ 'WPSSO_PHP_CURL_CAINFO' ]             = ABSPATH . WPINC . '/certificates/ca-bundle.crt';
 			$var_const[ 'WPSSO_PHP_CURL_USERAGENT' ]          = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:70.0) Gecko/20100101 Firefox/70.0';

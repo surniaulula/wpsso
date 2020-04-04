@@ -340,7 +340,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Include WebSite, Organization and/or Person markup on the home page.
 			 *
-			 * Note that the custom 'site_org_schema_type' may be a sub-type of organization, and may be filtered as a
+			 * The custom 'site_org_schema_type' may be a sub-type of organization, and may be filtered as a
 			 * local.business.
 			 */
 			if ( $mod[ 'is_home' ] ) {	// Static or index home page.
@@ -385,7 +385,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Start a new @graph array.
 			 */
-			WpssoSchemaGraph::clean_data();
+			WpssoSchemaGraph::reset_data();
 
 			foreach ( $page_type_ids as $type_id => $is_enabled ) {
 
@@ -481,7 +481,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Get the @graph json array and start a new @graph array.
 			 */
-			$graph_json     = WpssoSchemaGraph::get_json_clean();
+			$graph_json     = WpssoSchemaGraph::get_json_reset_data();
 			$graph_type_url = WpssoSchemaGraph::get_type_url();
 			$filter_name    = $this->p->lca . '_json_prop_' . SucomUtil::sanitize_hookname( $graph_type_url );
 			$graph_json     = apply_filters( $filter_name, $graph_json, $mod, $mt_og );
@@ -491,7 +491,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! empty( $graph_json[ '@graph' ] ) ) {	// Just in case.
 
 				if ( ! SucomUtil::get_const( 'WPSSO_JSON_OPTIMIZE_DISABLE' ) ) {
-					$graph_json = WpssoSchemaGraph::optimize( $graph_json );
+					$graph_json = WpssoSchemaGraph::optimize_json( $graph_json );
 				}
 
 				$schema_scripts[][] = '<script type="application/ld+json">' .
@@ -1763,20 +1763,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			foreach ( array( 'author', 'contributor' ) as $prop_name ) {
-
-				if ( empty( $json_data[ $prop_name ] ) ) {
-					unset( $json_data[ $prop_name ] );	// Prevent null assignment.
-				}
-			}
-
 			return $authors_added + $coauthors_added;	// Return count of authors and coauthors added.
 		}
 
 		public static function add_comment_list_data( &$json_data, $mod ) {
 
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->mark();
+			}
+
+			$comments_added = 0;
+
 			if ( ! $mod[ 'is_post' ] || ! $mod[ 'id' ] || ! comments_open( $mod[ 'id' ] ) ) {
-				return;
+				return $comments_added;
 			}
 
 			$json_data[ 'commentCount' ] = get_comments_number( $mod[ 'id' ] );
@@ -1795,14 +1796,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( is_array( $comments ) ) {
 
 				foreach( $comments as $num => $cmt ) {
-
-					$comments_added = WpssoSchemaSingle::add_comment_data( $json_data[ 'comment' ], $mod, $cmt->comment_ID );
-
-					if ( ! $comments_added ) {
-						unset( $json_data[ 'comment' ] );
-					}
+					$comments_added += WpssoSchemaSingle::add_comment_data( $json_data[ 'comment' ], $mod, $cmt->comment_ID );
 				}
 			}
+
+			return $comments_added;	// Return count of comments added.
 		}
 
 		/**
@@ -1810,17 +1808,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public static function add_images_data_mt( &$json_data, &$mt_list, $mt_pre = 'og:image' ) {
 
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->mark();
+			}
+
 			$images_added = 0;
 
 			if ( isset( $mt_list[ 0 ] ) && is_array( $mt_list[ 0 ] ) ) {	// 2 dimensional array.
 
 				foreach ( $mt_list as $og_single_image ) {
-
 					$images_added += WpssoSchemaSingle::add_image_data_mt( $json_data, $og_single_image, $mt_pre, $list_element = true );
 				}
 
 			} elseif ( is_array( $mt_list ) ) {
-
 				$images_added += WpssoSchemaSingle::add_image_data_mt( $json_data, $mt_list, $mt_pre, $list_element = true );
 			}
 
@@ -1948,15 +1950,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				$json_data[ $prop_name ] = (array) apply_filters( $filter_name, $json_data[ $prop_name ], $mod, $mt_og, $page_type_id, $is_main );
-
-				if ( empty( $json_data[ $prop_name ] ) ) {
-
-					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( 'json data prop_name ' . $prop_name . ' is empty' );
-					}
-
-					unset( $json_data[ $prop_name ] );
-				}
 			}
 
 			return $posts_count;
@@ -2028,10 +2021,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$img_added = self::add_images_data_mt( $json_data[ 'image' ], $og_images );
 			}
 
-			if ( empty( $json_data[ 'image' ] ) ) {
-				unset( $json_data[ 'image' ] );	// Prevent null assignment.
-			}
-
 			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( $img_added . ' images added' );
 			}
@@ -2055,10 +2044,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 
 					$vid_added = self::add_videos_data_mt( $json_data[ 'video' ], $mt_og[ 'og:video' ], 'og:video' );
-				}
-
-				if ( empty( $json_data[ 'video' ] ) ) {
-					unset( $json_data[ 'video' ] );	// Prevent null assignment.
 				}
 
 				if ( $wpsso->debug->enabled ) {
@@ -2335,15 +2320,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				$json_data[ $prop_name ] = (array) apply_filters( $filter_name, $json_data[ $prop_name ], $mod, $mt_og, $page_type_id, $is_main );
-
-				if ( empty( $json_data[ $prop_name ] ) ) {
-
-					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( 'json data prop_name ' . $prop_name . ' is empty' );
-					}
-
-					unset( $json_data[ $prop_name ] );
-				}
 			}
 
 			unset( $wpsso_paged );
@@ -3003,10 +2979,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$json_data[ 'sameAs' ] = array_values( $json_data[ 'sameAs' ] );	// Reindex / renumber the array.
 			}
-
-			if ( empty( $json_data[ 'sameAs' ] ) ) {
-				unset( $json_data[ 'sameAs' ] );
-			}
 		}
 
 		public static function check_category_prop_value( &$json_data ) {
@@ -3277,6 +3249,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$json_data = array_merge( $json_head, $json_data, $merge_data );
 
 				foreach ( $json_head as $prop_name => $prop_val ) {
+
 					if ( empty( $json_data[ $prop_name ] ) ) {
 						unset( $json_data[ $prop_name ] );
 					}

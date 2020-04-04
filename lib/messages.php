@@ -392,8 +392,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-site_org_schema_type':
 
-							$text = __( 'You may optionally choose a more accurate Schema type for this organization (default is Organization).',
-								'wpsso' );
+							$text = __( 'Google does not recognize all Schema Organization sub-types as valid organization and publisher types.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'The WebSite organization type ID should be "%s" unless you are confident that Google will recognize your preferred Schema Organization sub-type as a valid organization.', 'wpsso' ), 'organization' ) . ' ';
+							
+							$text .= sprintf( __( 'To select a different organization type ID for your WebSite, define the %s constant with your preferred type ID (not the Schema type URL).', 'wpsso' ), '<code>WPSSO_SCHEMA_ORGANIZATION_TYPE_ID</code>' );
 
 							break;
 

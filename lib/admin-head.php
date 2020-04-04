@@ -35,6 +35,9 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			}
 		}
 
+		/**
+		 * Show a notice if there are pending WPSSO plugin updates and the user can update plugins.
+		 */
 		public function update_count_notice() {
 
 			if ( ! current_user_can( 'update_plugins' ) ) {
@@ -133,7 +136,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				}
 			}
 
-			if ( current_user_can( 'manage_options' ) ) {
+			if ( $this->p->notice->can_dismiss() && current_user_can( 'manage_options' ) ) {
 
 				foreach ( array( 'wp', 'php' ) as $key ) {
 
@@ -176,7 +179,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 							$notice_key   = 'notice-recommend-version-' . 
 								WpssoConfig::get_version( $add_slug = true ) . '-' . 
-								$app_label . '-' . $app_version;
+									$app_label . '-' . $app_version;
 
 							$this->p->notice->warn( $warn_msg, null, $notice_key, $dismiss_time );
 						}
@@ -264,15 +267,15 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 					$url = add_query_arg( array( 's' => $info[ 'base' ] ), $url );
 
-					$action_links[] = '<a href="' . $url . '">' . sprintf( __( 'Activate the %s add-on.', 'wpsso' ),
-						$pkg[ $ext ][ 'short' ] ) . '</a>';
+					$action_links[] = '<a href="' . $url . '">' . sprintf( __( 'Activate the %s add-on.',
+						'wpsso' ), $pkg[ $ext ][ 'short' ] ) . '</a>';
 
 				} else {
 
 					$url = $this->p->util->get_admin_url( 'addons#' . $ext );
 
-					$action_links[] = '<a href="' . $url . '">' . sprintf( __( 'Install and activate the %s add-on.', 'wpsso' ),
-						$pkg[ $ext ][ 'short' ] ) . '</a>';
+					$action_links[] = '<a href="' . $url . '">' . sprintf( __( 'Install and activate the %s add-on.',
+						'wpsso' ), $pkg[ $ext ][ 'short' ] ) . '</a>';
 				}
 			}
 
@@ -343,7 +346,10 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 		}
 
 		/**
-		 * This method should return 0 by default, and 1 if a notice has been added.
+		 * This method is called by $this->timed_notices() only if WordPress can dismiss notices and the user can manage
+		 * options.
+		 *
+		 * Returns 0 by default and 1 if a notice has been created.
 		 */
 		private function single_notice_review() {
 
@@ -494,7 +500,10 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 		}
 
 		/**
-		 * This method should return 0 by default, and 1 if a notice has been added.
+		 * This method is called by $this->timed_notices() only if WordPress can dismiss notices and the user can manage
+		 * options.
+		 *
+		 * Returns 0 by default and 1 if a notice has been created.
 		 */
 		private function single_notice_upsell() {
 

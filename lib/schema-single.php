@@ -84,10 +84,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				 */
 				$ret[ 'name' ] = $wpsso->page->get_title( 0, '', $mod, true, false, true, 'schema_title', false );
 
-				if ( empty( $ret[ 'name' ] ) ) {
-					unset( $ret[ 'name' ] );
-				}
-
 				/**
 				 * Get the image alternate title, if one has been defined in the custom post meta.
 				 */
@@ -95,7 +91,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$ret[ 'alternateName' ] = $wpsso->page->get_title( $title_max_len, '...', $mod, true, false, true, 'schema_title_alt' );
 
-				if ( empty( $ret[ 'alternateName' ] ) || $ret[ 'name' ] === $ret[ 'alternateName' ] ) {
+				if ( $ret[ 'name' ] === $ret[ 'alternateName' ] ) {	// Prevent duplicate values.
 					unset( $ret[ 'alternateName' ] );
 				}
 
@@ -104,7 +100,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				 */
 				$ret[ 'alternativeHeadline' ] = get_post_meta( $mod[ 'id' ], '_wp_attachment_image_alt', true );
 
-				if ( empty( $ret[ 'alternativeHeadline' ] ) || $ret[ 'name' ] === $ret[ 'alternativeHeadline' ] ) {
+				if ( $ret[ 'name' ] === $ret[ 'alternativeHeadline' ] ) {	// Prevent duplicate values.
 					unset( $ret[ 'alternativeHeadline' ] );
 				}
 
@@ -112,10 +108,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				 * Get the image caption (aka excerpt of the post object).
 				 */
 				$ret[ 'caption' ] = $wpsso->page->get_the_excerpt( $mod );
-
-				if ( empty( $ret[ 'caption' ] ) ) {
-					unset( $ret[ 'caption' ] );
-				}
 
 				/**
 				 * If we don't have a caption, then provide a short description.
@@ -134,27 +126,15 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						$md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
 				}
 
-				if ( empty( $ret[ 'description' ] ) ) {
-					unset( $ret[ 'description' ] );
-				}
-
 				/**
 				 * Set the 'fileFormat' property to the image mime type.
 				 */
 				$ret[ 'fileFormat' ] = get_post_mime_type( $mod[ 'id' ] );
 
-				if ( empty( $ret[ 'fileFormat' ] ) ) {
-					unset( $ret[ 'fileFormat' ] );
-				}
-
 				/**
 				 * Set the 'uploadDate' property to the image attachment publish time.
 				 */
 				$ret[ 'uploadDate' ] = trim( get_post_time( 'c', $gmt = true, $mod[ 'id' ] ) );
-
-				if ( empty( $ret[ 'uploadDate' ] ) ) {
-					unset( $ret[ 'uploadDate' ] );
-				}
 			}
 
 			foreach ( array( 'width', 'height' ) as $prop_name ) {
@@ -276,9 +256,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			) );
 
 			if ( ! empty( $mt_single[ $mt_pre . ':has_image' ] ) ) {
-				if ( ! self::add_image_data_mt( $ret[ 'thumbnail' ], $mt_single, null, false ) ) {	// $list_element is false.
-					unset( $ret[ 'thumbnail' ] );
-				}
+				self::add_image_data_mt( $ret[ 'thumbnail' ], $mt_single, null, false );	// $list_element is false.
 			}
 
 			if ( ! empty( $mt_single[ $mt_pre . ':tag' ] ) ) {
@@ -339,14 +317,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$replies_added = self::add_comment_reply_data( $ret[ 'comment' ], $mod, $cmt->comment_ID );
 
-				if ( ! $replies_added ) {
-					unset( $ret[ 'comment' ] );
-				}
-
 				if ( empty( $list_element ) ) {		// Add a single item.
+
 					$json_data = $ret;
+
 				} elseif ( is_array( $json_data ) ) {	// Just in case.
+
 					$json_data[] = $ret;		// Add an item to the list.
+
 				} else {
 					$json_data = array( $ret );	// Add an item to the list.
 				}
@@ -623,10 +601,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 							break;
 					}
 				}
-
-				if ( empty( $ret[ $prop_name ] ) ) {	// Just in case.
-					unset( $ret[ $prop_name ] );
-				}
 			}
 
 			if ( ! empty( $event_opts[ 'event_offers' ] ) && is_array( $event_opts[ 'event_offers' ] ) ) {
@@ -800,10 +774,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 							break;
 					}
-				}
-
-				if ( empty( $ret[ $prop_name ] ) ) {	// Just in case.
-					unset( $ret[ $prop_name ] );
 				}
 			}
 
@@ -1056,16 +1026,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			if ( ! empty( $org_opts[ $org_image_key ] ) ) {
-
-				if ( ! self::add_image_data_mt( $ret[ 'image' ], $org_opts, $org_image_key ) ) {
-
-					if ( empty( $ret[ 'image' ] ) ) {
-						unset( $ret[ 'image' ] );	// Prevent null assignment.
-					}
-
-				} elseif ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( $ret[ 'image' ] );
-				}
+				self::add_image_data_mt( $ret[ 'image' ], $org_opts, $org_image_key );
 			}
 
 			/**
@@ -1080,16 +1041,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 
 				if ( ! empty( $org_opts[ $org_logo_key ] ) ) {
-
-					if ( ! self::add_image_data_mt( $ret[ 'logo' ], $org_opts, $org_logo_key, false ) ) {	// $list_element is false.
-
-						if ( empty( $ret[ 'logo' ] ) ) {
-							unset( $ret[ 'logo' ] );	// Prevent null assignment.
-						}
-
-					} elseif ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( $ret[ 'logo' ] );
-					}
+					self::add_image_data_mt( $ret[ 'logo' ], $org_opts, $org_logo_key, false );	// $list_element is false.
 				}
 
 				if ( ! $mod[ 'is_post' ] || $mod[ 'post_status' ] === 'publish' ) {
@@ -1186,15 +1138,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						}
 					}
 
-					if ( ! self::add_place_data( $ret[ 'location' ], $mod, $place_id, false ) ) {
-
-						if ( empty( $ret[ 'location' ] ) ) {
-							unset( $ret[ 'location' ] );	// Prevent null assignment.
-						}
-
-					} elseif ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( $ret[ 'location' ] );
-					}
+					self::add_place_data( $ret[ 'location' ], $mod, $place_id, false );	// $list_element is false.
 				}
 			}
 
@@ -1364,16 +1308,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Images.
 			 */
 			if ( ! empty( $person_opts[ 'person_og_image' ] ) ) {
-
-				if ( ! WpssoSchema::add_images_data_mt( $ret[ 'image' ], $person_opts[ 'person_og_image' ] ) ) {
-
-					if ( empty( $ret[ 'image' ] ) ) {
-						unset( $ret[ 'image' ] );	// Prevent null assignment.
-					}
-
-				} elseif ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( $ret[ 'image' ] );
-				}
+				WpssoSchema::add_images_data_mt( $ret[ 'image' ], $person_opts[ 'person_og_image' ] );
 			}
 
 			/**
@@ -1597,15 +1532,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$mt_image = $wpsso->media->get_opts_single_image( $place_opts, $size_name, 'place_img' );
 
-				if ( ! self::add_image_data_mt( $ret[ 'image' ], $mt_image, 'og:image' ) ) {
-
-					if ( empty( $ret[ 'image' ] ) ) {
-						unset( $ret[ 'image' ] );	// Prevent null assignment.
-					}
-
-				} elseif ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( $ret[ 'image' ] );
-				}
+				self::add_image_data_mt( $ret[ 'image' ], $mt_image, 'og:image' );
 			}
 
 			$ret = apply_filters( $wpsso->lca . '_json_data_single_place', $ret, $mod, $place_id );

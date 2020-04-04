@@ -12,10 +12,10 @@
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Description: Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted or embedded.
  * Requires PHP: 5.6
- * Requires At Least: 4.0
+ * Requires At Least: 4.2
  * Tested Up To: 5.4
  * WC Tested Up To: 4.0.1
- * Version: 6.27.2-dev.3
+ * Version: 6.28.0-dev.4
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *

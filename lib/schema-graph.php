@@ -47,6 +47,15 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 			return false;
 		}
 
+		public static function get_json_reset_data() {
+
+			$json_data = self::get_json();
+
+			self::reset_data();
+
+			return $json_data;
+		}
+
 		public static function get_json() {
 
 			$json_data = array(
@@ -54,24 +63,32 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 				'@graph'   => array_values( self::$graph_data ),	// Exclude the associative array key values.
 			);
 
-			return $json_data;
-		}
-
-		public static function get_json_clean() {
-
-			$json_data = self::get_json();
-
-			self::clean_data();
+			self::clean_json( $json_data );
 
 			return $json_data;
 		}
 
-		public static function clean_data() {
+		public static function reset_data() {
 
 			self::$graph_data = array();
 		}
 
-		public static function optimize( array &$json_data ) {	// Pass by reference is OK.
+		public static function clean_json( array &$arr ) {
+
+			foreach ( $arr as $key => $value ) {
+				if ( null === $value ) {		// Null value.
+					unset( $arr[ $key ] );
+				} elseif ( '' === $value ) {		// Empty string.
+					unset( $arr[ $key ] );
+				} elseif ( array() === $value ) {	// Empty array.
+					unset( $arr[ $key ] );
+				} elseif ( is_array( $value ) ) {	// Recurse.
+					self::clean_json( $arr[ $key ] );
+				}
+			}
+		}
+
+		public static function optimize_json( array &$json_data ) {	// Pass by reference is OK.
 
 			static $new_data  = array();
 			static $recursion = null;
@@ -95,7 +112,7 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 				if ( is_array( $val ) ) {
 
-					self::optimize( $val );
+					self::optimize_json( $val );
 
 				} elseif ( $recursion > 2 && '@id' === $key && strpos( $val, $id_anchor ) ) {
 
@@ -107,7 +124,7 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 							foreach ( $new_data[ $val ] as $new_key => &$new_val ) {
 								if ( is_array( $new_val ) ) {
-									self::optimize( $new_val );
+									self::optimize_json( $new_val );
 								}
 							}
 						}

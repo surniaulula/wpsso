@@ -750,6 +750,23 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				/**
+				 * Google does not recognize all Schema Organization sub-types as valid organization and publisher
+				 * types. The WebSite organization type ID should be "organization" unless you are confident that
+				 * Google will recognize your preferred Schema Organization sub-type as a valid organization. To
+				 * select a different organization type ID for your WebSite, define the
+				 * WPSSO_SCHEMA_ORGANIZATION_TYPE_ID constant with your preferred type ID (not the Schema type
+				 * URL).
+				 */
+				$site_org_type_id = SucomUtil::get_const( 'WPSSO_SCHEMA_ORGANIZATION_TYPE_ID', 'organization' );
+
+				if ( ! preg_match( '/^[a-z\.]+$/', $site_org_type_id ) ) {	// Quick sanitation to allow only valid IDs.
+					$site_org_type_id = 'organization';
+				}
+
+				$opts[ 'site_org_schema_type' ]    = $site_org_type_id;
+				$opts[ 'site_org_schema_type:is' ] = 'disabled';
+
+				/**
 				 * Save options and show reminders.
 				 */
 				if ( $options_changed || $version_changed ) {
