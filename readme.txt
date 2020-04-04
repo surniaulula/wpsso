@@ -9,7 +9,7 @@ Assets URI: https://surniaulula.github.io/wpsso/assets/
 Tags: open graph, meta tags, rich pins, twitter cards, schema, rich results, embed, social sharing, structured data, snippet, seo, facebook, twitter, linkedin, pinterest, google, schema.org
 Contributors: jsmoriss
 Requires PHP: 5.6
-Requires At Least: 4.0
+Requires At Least: 4.2
 Tested Up To: 5.4
 WC Tested Up To: 4.0.1
 Stable Tag: 6.27.1
@@ -507,22 +507,25 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.27.2-dev.3 (2020/04/03)**
+**Version 6.28.0-dev.4 (2020/04/04)**
 
 * **New Features**
 	* None.
 * **Improvements**
+	* Updated "Requires At Least" to WordPress v4.2.
 	* Updated the Facebook debugger URL.
 	* Updated the plugin rating notice message.
+	* The WebSite Organization Schema Type option is now fixed to "Organization" since Google does not recognize all Schema Organization sub-types as valid organization and publisher types. The WebSite organization type ID should be "organization" unless you are confident that Google will recognize your preferred Schema Organization sub-type as a valid organization. To select a different organization type ID for your WebSite, define the `WPSSO_SCHEMA_ORGANIZATION_TYPE_ID` constant with your preferred type ID (not the Schema type URL).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
 	* Refactored the `SucomNotice::log()` method.
 	* Refactored the `WpssoConfig::get_config()` method.
 	* Refactored the `WpssoConfig::get_ext_sorted()` method.
+	* Removed `empty()` property checks when creating json data and added a `WpssoSchemaGraph::clean_json()` method to remove null values, empty strings, and empty arrays from the json data.
 * **Requires At Least**
 	* PHP v5.6.
-	* WordPress v4.0.
+	* WordPress v4.2.
 
 **Version 6.27.1 (2020/03/31)**
 
@@ -982,9 +985,9 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 6.27.2-dev.3 =
+= 6.28.0-dev.4 =
 
-(2020/04/03) Updated the plugin rating notice message.
+(2020/04/04) Updated "Requires At Least" to WordPress v4.2. The WebSite Organization Schema Type option is now fixed to "Organization" (see changelog for details).
 
 = 6.27.1 =
 
