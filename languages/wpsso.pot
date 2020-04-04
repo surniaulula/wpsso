@@ -2623,7 +2623,7 @@ msgid "Posts, Pages, Custom Post Types"
 msgstr ""
 
 #: lib/gettext-pro.php:31 lib/media.php:124 lib/media.php:711 lib/media.php:884
-#: lib/media.php:1884 lib/pro/admin/advanced.php:204
+#: lib/media.php:1888 lib/pro/admin/advanced.php:204
 #: lib/std/admin/advanced.php:210
 msgid "Media Library"
 msgstr ""
@@ -3160,20 +3160,20 @@ msgid ""
 "%6$s image size."
 msgstr ""
 
-#: lib/gettext-pro.php:151 lib/gettext-pro.php:155 lib/pro/media/ngg.php:130
-#: lib/pro/media/ngg.php:1374
+#: lib/gettext-pro.php:151 lib/gettext-pro.php:155 lib/pro/media/ngg.php:134
+#: lib/pro/media/ngg.php:1378
 msgid "NextGEN Gallery"
 msgstr ""
 
-#: lib/gettext-pro.php:152 lib/pro/media/ngg.php:131
+#: lib/gettext-pro.php:152 lib/pro/media/ngg.php:135
 msgid "image ID %s"
 msgstr ""
 
-#: lib/gettext-pro.php:153 lib/media.php:132 lib/pro/media/ngg.php:135
+#: lib/gettext-pro.php:153 lib/media.php:132 lib/pro/media/ngg.php:139
 msgid "cropped"
 msgstr ""
 
-#: lib/gettext-pro.php:154 lib/media.php:134 lib/pro/media/ngg.php:137
+#: lib/gettext-pro.php:154 lib/media.php:134 lib/pro/media/ngg.php:141
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is too small for the "
 "required %4$s image dimensions."
@@ -3387,7 +3387,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: lib/media.php:127 lib/media.php:1891
+#: lib/media.php:127 lib/media.php:1895
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
@@ -3422,7 +3422,7 @@ msgid ""
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:717 lib/media.php:890
+#: lib/media.php:717 lib/media.php:896
 msgid ""
 "You may consider regenerating the thumbnails of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
@@ -3449,58 +3449,68 @@ msgid ""
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:892
-msgid ""
-"Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress "
-"%3$s function</a> reported an error when trying to create an image size from "
-"%4$s."
+#: lib/media.php:891 lib/messages.php:2907
+msgctxt "option value"
+msgid "cropped"
 msgstr ""
 
-#: lib/media.php:1344
+#: lib/media.php:892 lib/messages.php:2906
+msgctxt "option value"
+msgid "uncropped"
+msgstr ""
+
+#: lib/media.php:894
+msgid ""
+"Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress "
+"%3$s function</a> reported an error when trying to create the $4%s (%5$s) "
+"image size from %6$s."
+msgstr ""
+
+#: lib/media.php:1348
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1901
+#: lib/media.php:1905
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:1926
+#: lib/media.php:1930
 msgctxt "option label"
 msgid "Facebook Open Graph"
 msgstr ""
 
-#: lib/media.php:1935
+#: lib/media.php:1939
 msgctxt "option label"
 msgid "Google Schema"
 msgstr ""
 
-#: lib/media.php:1944
+#: lib/media.php:1948
 msgctxt "option label"
 msgid "Google Schema Article"
 msgstr ""
 
-#: lib/media.php:1953
+#: lib/media.php:1957
 msgctxt "option label"
 msgid "Google Schema Article AMP 1:1"
 msgstr ""
 
-#: lib/media.php:1962
+#: lib/media.php:1966
 msgctxt "option label"
 msgid "Google Schema Article AMP 4:3"
 msgstr ""
 
-#: lib/media.php:1971
+#: lib/media.php:1975
 msgctxt "option label"
 msgid "Google Schema Article AMP 16:9"
 msgstr ""
 
-#: lib/media.php:2011
+#: lib/media.php:2015
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:2042
+#: lib/media.php:2046
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -5896,16 +5906,6 @@ msgstr ""
 
 #: lib/messages.php:2866 lib/util.php:3965
 msgid "No options available."
-msgstr ""
-
-#: lib/messages.php:2906
-msgctxt "option value"
-msgid "uncropped"
-msgstr ""
-
-#: lib/messages.php:2907
-msgctxt "option value"
-msgid "cropped"
 msgstr ""
 
 #: lib/opengraph.php:66
