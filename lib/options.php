@@ -1061,6 +1061,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			$latest_version  = $this->p->cf[ 'opt' ][ 'version' ];
 
 			/**
+			 * $doing_upgrade added in WPSSO Core v4.4.0.
+			 */
+			$doing_upgrade = ! $is_new_options && ! $options_changed && $current_version === $latest_version ? false : true;
+
+			$opts = apply_filters( $this->p->lca . '_save_options', $opts, $options_name, $network, $doing_upgrade );
+
+			/**
 			 * Save the plugin version and options version.
 			 */
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
@@ -1075,13 +1082,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			$opts[ 'options_version' ] = $latest_version;	// Mark the new options array as current.
-
-			/**
-			 * $doing_upgrade added in WPSSO Core v4.4.0.
-			 */
-			$doing_upgrade = ! $is_new_options && ! $options_changed && $current_version === $latest_version ? false : true;
-
-			$opts = apply_filters( $this->p->lca . '_save_options', $opts, $options_name, $network, $doing_upgrade );
 
 			if ( $network ) {
 

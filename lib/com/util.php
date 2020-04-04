@@ -1504,11 +1504,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function is_assoc( $mixed ) {
 
-			if ( is_array( $mixed ) ) {
-				return is_numeric( implode( array_keys( $mixed ) ) ) ? false : true;
+			$ret = false;
+
+			if ( ! empty( $mixed ) ) {	// Optimize.
+				if ( is_array( $mixed ) ) {	// Just in case.
+					if ( ! is_numeric( implode( array_keys( $mixed ) ) ) ) {
+						$ret = true;
+					}
+				}
 			}
 
-			return false;
+			return $ret;
 		}
 
 		public static function a_to_aa( array $arr ) {

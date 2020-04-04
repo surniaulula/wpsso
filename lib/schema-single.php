@@ -164,12 +164,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			} elseif ( is_array( $json_data ) ) {	// Just in case.
 
-				if ( SucomUtil::is_assoc( $json_data ) ) {
-
-					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( 'converting array from associative to list element' );
-					}
-
+				if ( SucomUtil::is_assoc( $json_data ) ) {	// Converting from associative to array element.
 					$json_data = array( $json_data );
 				}
 
@@ -273,9 +268,17 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			WpssoSchema::update_data_id( $ret, $video_type_id );
 
 			if ( empty( $list_element ) ) {		// Add a single item.
+
 				$json_data = $ret;
+
 			} elseif ( is_array( $json_data ) ) {	// Just in case.
+
+				if ( SucomUtil::is_assoc( $json_data ) ) {	// Converting from associative to array element.
+					$json_data = array( $json_data );
+				}
+
 				$json_data[] = $ret;		// Add an item to the list.
+
 			} else {
 				$json_data = array( $ret );	// Add an item to the list.
 			}
@@ -322,6 +325,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					$json_data = $ret;
 
 				} elseif ( is_array( $json_data ) ) {	// Just in case.
+
+					if ( SucomUtil::is_assoc( $json_data ) ) {	// Converting from associative to array element.
+						$json_data = array( $json_data );
+					}
 
 					$json_data[] = $ret;		// Add an item to the list.
 
@@ -637,9 +644,17 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			WpssoSchema::update_data_id( $ret, $event_type_id . '/' . $event_id );
 
 			if ( empty( $list_element ) ) {		// Add a single item.
+
 				$json_data = $ret;
+
 			} elseif ( is_array( $json_data ) ) {	// Just in case.
+
+				if ( SucomUtil::is_assoc( $json_data ) ) {	// Converting from associative to array element.
+					$json_data = array( $json_data );
+				}
+
 				$json_data[] = $ret;		// Add an item to the list.
+
 			} else {
 				$json_data = array( $ret );	// Add an item to the list.
 			}
@@ -785,9 +800,17 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			WpssoSchema::update_data_id( $ret, $job_type_id . '/' . $job_id );
 
 			if ( empty( $list_element ) ) {		// Add a single item.
+
 				$json_data = $ret;
+
 			} elseif ( is_array( $json_data ) ) {	// Just in case.
+
+				if ( SucomUtil::is_assoc( $json_data ) ) {	// Converting from associative to array element.
+					$json_data = array( $json_data );
+				}
+
 				$json_data[] = $ret;		// Add an item to the list.
+
 			} else {
 				$json_data = array( $ret );	// Add an item to the list.
 			}
@@ -912,24 +935,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Returns 0 if no organization was found / added.
 			 */
-			if ( ! self::add_organization_data( $offer[ 'seller' ], $mod, 'site', 'org_logo_url', false ) ) {
-				unset( $offer[ 'seller' ] );	// Just in case.
-			}
+			self::add_organization_data( $offer[ 'seller' ], $mod, 'site', 'org_logo_url', false );
 
 			/**
 			 * Images.
 			 */
 			if ( ! empty( $mt_offer[ 'og:image' ] ) ) {
-
-				if ( ! WpssoSchema::add_images_data_mt( $offer[ 'image' ], $mt_offer[ 'og:image' ] ) ) {
-
-					if ( empty( $offer[ 'image' ] ) ) {
-						unset( $offer[ 'image' ] );	// Prevent null assignment.
-					}
-
-				} elseif ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( $ret[ 'image' ] );
-				}
+				WpssoSchema::add_images_data_mt( $offer[ 'image' ], $mt_offer[ 'og:image' ] );
 			}
 
 			return WpssoSchema::get_schema_type_context( 'https://schema.org/Offer', $offer );
@@ -1181,9 +1193,17 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			if ( empty( $list_element ) ) {		// Add a single item.
+
 				$json_data = $ret;
+
 			} elseif ( is_array( $json_data ) ) {	// Just in case.
+
+				if ( SucomUtil::is_assoc( $json_data ) ) {	// Converting from associative to array element.
+					$json_data = array( $json_data );
+				}
+
 				$json_data[] = $ret;		// Add an item to the list.
+
 			} else {
 				$json_data = array( $ret );	// Add an item to the list.
 			}
@@ -1334,9 +1354,17 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			WpssoSchema::update_data_id( $ret, $person_type_id, $sharing_url, $hash_url = true );
 
 			if ( empty( $list_element ) ) {		// Add a single item.
+
 				$json_data = $ret;
+
 			} elseif ( is_array( $json_data ) ) {	// Just in case.
+
+				if ( SucomUtil::is_assoc( $json_data ) ) {	// Converting from associative to array element.
+					$json_data = array( $json_data );
+				}
+
 				$json_data[] = $ret;		// Add an item to the list.
+
 			} else {
 				$json_data = array( $ret );	// Add an item to the list.
 			}
@@ -1550,9 +1578,17 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			if ( empty( $list_element ) ) {		// Add a single item.
+
 				$json_data = $ret;
+
 			} elseif ( is_array( $json_data ) ) {	// Just in case.
+
+				if ( SucomUtil::is_assoc( $json_data ) ) {	// Converting from associative to array element.
+					$json_data = array( $json_data );
+				}
+
 				$json_data[] = $ret;		// Add an item to the list.
+
 			} else {
 				$json_data = array( $ret );	// Add an item to the list.
 			}
