@@ -1413,7 +1413,7 @@ msgstr ""
 msgctxt "plugin description"
 msgid ""
 "Apple Store / iTunes and Google Play App Meta Tags for Apple's mobile Safari "
-"Banner and Twitter's App Card"
+"Banner and Twitter's App Card."
 msgstr ""
 
 #: lib/gettext-config.php:37
