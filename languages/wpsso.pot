@@ -1412,29 +1412,29 @@ msgstr ""
 #: lib/gettext-config.php:36
 msgctxt "plugin description"
 msgid ""
-"Apple Store / iTunes and Google Play App meta tags for Apple's mobile Safari "
-"banner and Twitter's App Card."
+"Apple Store / iTunes and Google Play App Meta Tags for Apple's mobile Safari "
+"Banner and Twitter's App Card"
 msgstr ""
 
 #: lib/gettext-config.php:37
 msgctxt "plugin description"
 msgid ""
-"Schema BreadcrumbList markup in JSON-LD for better Google Rich Results with "
+"Schema BreadcrumbList Markup in JSON-LD for Better Google Rich Results with "
 "Structured Data."
 msgstr ""
 
 #: lib/gettext-config.php:38
 msgctxt "plugin description"
 msgid ""
-"Create FAQ and Question / Answer pages and/or use shortcodes to include FAQs "
-"anywhere in your content."
+"Create FAQ and Question / Answer Pages with Optional Shortcodes to Include "
+"FAQs and Questions in your Content."
 msgstr ""
 
 #: lib/gettext-config.php:39
 msgctxt "plugin description"
 msgid ""
-"Inherit featured and custom images from parents for posts, pages, custom "
-"post types, categories, tags, and custom taxonomies."
+"Inherit Featured and Custom Images from Parents for Posts, Pages, Custom "
+"Post Types, Categories, Tags, and Custom Taxonomies."
 msgstr ""
 
 #: lib/gettext-config.php:40
@@ -1449,8 +1449,8 @@ msgstr ""
 #: lib/gettext-config.php:41
 msgctxt "plugin description"
 msgid ""
-"Customize the home page Schema Organization markup and manage additional "
-"Organizations (publisher, organizer, etc.)."
+"Customize the Home Page Schema Organization Markup and Manage Additional "
+"Organizations (Publisher, Organizer, etc.)."
 msgstr ""
 
 #: lib/gettext-config.php:42
@@ -1463,57 +1463,57 @@ msgstr ""
 #: lib/gettext-config.php:43
 msgctxt "plugin description"
 msgid ""
-"Ratings and reviews for WordPress comments with Aggregate Rating meta tags "
-"and Schema Review markup."
+"Ratings and Reviews for WordPress Comments with Schema Aggregate Rating and "
+"Schema Review Markup."
 msgstr ""
 
 #: lib/gettext-config.php:44
 msgctxt "plugin description"
 msgid ""
-"Enhances the WordPress REST API post, term and user queries with an array of "
-"social meta tags, SEO HTML tags and Schema JSON-LD markup."
+"Enhances the WordPress REST API Post, Term and User Queries with an Array of "
+"Social Meta Tags, SEO HTML Tags and Schema JSON-LD Markup."
 msgstr ""
 
 #: lib/gettext-config.php:45
 msgctxt "plugin description"
 msgid ""
-"Ridiculously Responsive (SVG) Social Sharing Buttons for your content, "
-"excerpts, CSS sidebar, widget, shortcode, editor pages, etc."
+"Ridiculously Responsive (SVG) Social Sharing Buttons for your Content, "
+"Excerpts, CSS Sidebar, Widget, Shortcode, Templates, and Editor."
 msgstr ""
 
 #: lib/gettext-config.php:46
 msgctxt "plugin description"
 msgid ""
-"Removes outdated Schema microdata from theme templates and leaves Schema "
-"JSON-LD untouched for better Google Rich Results."
+"Remove Outdated / Incorrect Microdata from Theme Templates for Better Google "
+"Rich Results with Schema JSON-LD Markup."
 msgstr ""
 
 #: lib/gettext-config.php:47
 msgctxt "plugin description"
 msgid ""
-"Twitter-style quoted text for your content with customizable CSS and "
-"convenient Tweet share link."
+"Twitter-Style Quoted Text for your Content with Customizable CSS and "
+"Convenient Tweet Share Link."
 msgstr ""
 
 #: lib/gettext-config.php:48
 msgctxt "plugin description"
 msgid ""
-"Sharpen and improve WordPress thumbnails and resized images for social "
-"sharing and better SEO."
+"Sharpen and Improve WordPress Thumbnails and Resized Images for Social "
+"Sharing and Better SEO."
 msgstr ""
 
 #: lib/gettext-config.php:49
 msgctxt "plugin description"
 msgid ""
-"Quick and easy locale / language / region selector for the WordPress admin "
-"toolbar."
+"Quick and Easy Locale / Language / Region Selector for the WordPress Admin "
+"Toolbar."
 msgstr ""
 
 #: lib/gettext-config.php:50
 msgctxt "plugin description"
 msgid ""
-"Update manager for the WPSSO Core Premium plugin and its complementary "
-"Premium add-ons."
+"Update Manager for the WPSSO Core Premium Plugin and its Premium "
+"Complementary Add-ons."
 msgstr ""
 
 #: lib/gettext-config.php:51

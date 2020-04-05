@@ -191,7 +191,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssoam' => array(			// Plugin acronym.
 					'short'       => 'WPSSO AM',	// Short plugin name.
 					'name'        => 'WPSSO Mobile App Meta',
-					'desc'        => 'Apple Store / iTunes and Google Play App meta tags for Apple\'s mobile Safari banner and Twitter\'s App Card.',
+					'desc'        => 'Apple Store / iTunes and Google Play App Meta Tags for Apple\'s mobile Safari Banner and Twitter\'s App Card',
 					'slug'        => 'wpsso-am',
 					'base'        => 'wpsso-am/wpsso-am.php',
 					'update_auth' => '',		// No premium version.
@@ -247,7 +247,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssobc' => array(			// Plugin acronym.
 					'short'       => 'WPSSO BC',	// Short plugin name.
 					'name'        => 'WPSSO Schema Breadcrumbs Markup',
-					'desc'        => 'Schema BreadcrumbList markup in JSON-LD for better Google Rich Results with Structured Data.',
+					'desc'        => 'Schema BreadcrumbList Markup in JSON-LD for Better Google Rich Results with Structured Data.',
 					'slug'        => 'wpsso-breadcrumbs',
 					'base'        => 'wpsso-breadcrumbs/wpsso-breadcrumbs.php',
 					'update_auth' => '',		// No premium version.
@@ -303,7 +303,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssofaq' => array(			// Plugin acronym.
 					'short'       => 'WPSSO FAQ',	// Short plugin name.
 					'name'        => 'WPSSO FAQ Manager',
-					'desc'        => 'Create FAQ and Question / Answer pages and/or use shortcodes to include FAQs anywhere in your content.',
+					'desc'        => 'Create FAQ and Question / Answer Pages with Optional Shortcodes to Include FAQs and Questions in your Content.',
 					'slug'        => 'wpsso-faq',
 					'base'        => 'wpsso-faq/wpsso-faq.php',
 					'update_auth' => '',		// No premium version.
@@ -359,7 +359,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssoipm' => array(			// Plugin acronym.
 					'short'       => 'WPSSO IPM',	// Short plugin name.
 					'name'        => 'WPSSO Inherit Parent Metadata',
-					'desc'        => 'Inherit featured and custom images from parents for posts, pages, custom post types, categories, tags, and custom taxonomies.',
+					'desc'        => 'Inherit Featured and Custom Images from Parents for Posts, Pages, Custom Post Types, Categories, Tags, and Custom Taxonomies.',
 					'slug'        => 'wpsso-inherit-parent-meta',
 					'base'        => 'wpsso-inherit-parent-meta/wpsso-inherit-parent-meta.php',
 					'update_auth' => '',		// No premium version.
@@ -472,7 +472,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssoorg' => array(			// Plugin acronym.
 					'short'       => 'WPSSO ORG',	// Short plugin name.
 					'name'        => 'WPSSO Organization Markup',
-					'desc'        => 'Customize the home page Schema Organization markup and manage additional Organizations (publisher, organizer, etc.).',
+					'desc'        => 'Customize the Home Page Schema Organization Markup and Manage Additional Organizations (Publisher, Organizer, etc.).',
 					'slug'        => 'wpsso-organization',
 					'base'        => 'wpsso-organization/wpsso-organization.php',
 					'update_auth' => 'tid',
@@ -584,7 +584,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssorar' => array(			// Plugin acronym.
 					'short'       => 'WPSSO RAR',	// Short plugin name.
 					'name'        => 'WPSSO Ratings and Reviews',
-					'desc'        => 'Ratings and reviews for WordPress comments with Aggregate Rating meta tags and Schema Review markup.',
+					'desc'        => 'Ratings and Reviews for WordPress Comments with Schema Aggregate Rating and Schema Review Markup.',
 					'slug'        => 'wpsso-ratings-and-reviews',
 					'base'        => 'wpsso-ratings-and-reviews/wpsso-ratings-and-reviews.php',
 					'update_auth' => '',		// No premium version.
@@ -640,7 +640,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssorest' => array(			// Plugin acronym.
 					'short'       => 'WPSSO REST',	// Short plugin name.
 					'name'        => 'WPSSO REST API',
-					'desc'        => 'Enhances the WordPress REST API post, term and user queries with an array of social meta tags, SEO HTML tags and Schema JSON-LD markup.',
+					'desc'        => 'Enhances the WordPress REST API Post, Term and User Queries with an Array of Social Meta Tags, SEO HTML Tags and Schema JSON-LD Markup.',
 					'slug'        => 'wpsso-rest-api',
 					'base'        => 'wpsso-rest-api/wpsso-rest-api.php',
 					'update_auth' => '',		// No premium version.
@@ -696,7 +696,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssorrssb' => array(			// Plugin acronym.
 					'short'       => 'WPSSO RRSSB',	// Short plugin name.
 					'name'        => 'WPSSO Ridiculously Responsive Social Sharing Buttons',
-					'desc'        => 'Ridiculously Responsive (SVG) Social Sharing Buttons for your content, excerpts, CSS sidebar, widget, shortcode, editor pages, etc.',
+					'desc'        => 'Ridiculously Responsive (SVG) Social Sharing Buttons for your Content, Excerpts, CSS Sidebar, Widget, Shortcode, Templates, and Editor.',
 					'slug'        => 'wpsso-rrssb',
 					'base'        => 'wpsso-rrssb/wpsso-rrssb.php',
 					'update_auth' => '',		// No premium version.
@@ -752,7 +752,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssossm' => array(			// Plugin acronym.
 					'short'       => 'WPSSO SSM',	// Short plugin name.
 					'name'        => 'WPSSO Strip Schema Microdata',
-					'desc'        => 'Removes outdated Schema microdata from theme templates and leaves Schema JSON-LD untouched for better Google Rich Results.',
+					'desc'        => 'Remove Outdated / Incorrect Microdata from Theme Templates for Better Google Rich Results with Schema JSON-LD Markup.',
 					'slug'        => 'wpsso-strip-schema-microdata',
 					'base'        => 'wpsso-strip-schema-microdata/wpsso-strip-schema-microdata.php',
 					'update_auth' => '',		// No premium version.
@@ -808,7 +808,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssotaq' => array(			// Plugin acronym.
 					'short'       => 'WPSSO TAQ',	// Short plugin name.
 					'name'        => 'WPSSO Tweet a Quote',
-					'desc'        => 'Twitter-style quoted text for your content with customizable CSS and convenient Tweet share link.',
+					'desc'        => 'Twitter-Style Quoted Text for your Content with Customizable CSS and Convenient Tweet Share Link.',
 					'slug'        => 'wpsso-tweet-a-quote',
 					'base'        => 'wpsso-tweet-a-quote/wpsso-tweet-a-quote.php',
 					'update_auth' => '',		// No premium version.
@@ -864,7 +864,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssotie' => array(			// Plugin acronym.
 					'short'       => 'WPSSO TIE',	// Short plugin name.
 					'name'        => 'WPSSO Tune Image Editors',
-					'desc'        => 'Sharpen and improve WordPress thumbnails and resized images for social sharing and better SEO.',
+					'desc'        => 'Sharpen and Improve WordPress Thumbnails and Resized Images for Social Sharing and Better SEO.',
 					'slug'        => 'wpsso-tune-image-editors',
 					'base'        => 'wpsso-tune-image-editors/wpsso-tune-image-editors.php',
 					'update_auth' => '',		// No premium version.
@@ -920,7 +920,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssoul' => array(			// Plugin acronym.
 					'short'       => 'WPSSO UL',	// Short plugin name.
 					'name'        => 'WPSSO User Locale Selector',
-					'desc'        => 'Quick and easy locale / language / region selector for the WordPress admin toolbar.',
+					'desc'        => 'Quick and Easy Locale / Language / Region Selector for the WordPress Admin Toolbar.',
 					'slug'        => 'wpsso-user-locale',
 					'base'        => 'wpsso-user-locale/wpsso-user-locale.php',
 					'update_auth' => '',		// No premium version.
@@ -976,7 +976,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssoum' => array(			// Plugin acronym.
 					'short'       => 'WPSSO UM',	// Short plugin name.
 					'name'        => 'WPSSO Update Manager',
-					'desc'        => 'Update manager for the WPSSO Core Premium plugin and its complementary Premium add-ons.',
+					'desc'        => 'Update Manager for the WPSSO Core Premium Plugin and its Premium Complementary Add-ons.',
 					'slug'        => 'wpsso-um',
 					'base'        => 'wpsso-um/wpsso-um.php',
 					'update_auth' => '',		// No premium version.
