@@ -375,6 +375,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 *	[organization] => true
 			 *	[person]       => false
 			 * )
+			 *
+			 * Hooked by the WpssoBcFilters->filter_json_array_schema_page_type_ids() filter at add its
+			 * 'breadcrumb.list' type ID.
 			 */
 			$page_type_ids = apply_filters( $this->p->lca . '_json_array_schema_page_type_ids', $page_type_ids, $mod );
 

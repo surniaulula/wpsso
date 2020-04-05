@@ -396,7 +396,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= sprintf( __( 'The WebSite organization type ID should be "%s" unless you are confident that Google will recognize your preferred Schema Organization sub-type as a valid organization.', 'wpsso' ), 'organization' ) . ' ';
 							
-							$text .= sprintf( __( 'To select a different organization type ID for your WebSite, define the %s constant with your preferred type ID (not the Schema type URL).', 'wpsso' ), '<code>WPSSO_SCHEMA_ORGANIZATION_TYPE_ID</code>' );
+							$text .= sprintf( __( 'To select a different organization type ID for your WebSite, define the %s constant with your preferred type ID (the type ID, not the Schema type URL).', 'wpsso' ), '<code>WPSSO_SCHEMA_ORGANIZATION_TYPE_ID</code>' );
 
 							break;
 
