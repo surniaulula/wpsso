@@ -331,7 +331,7 @@
 <li>Copyright Year</li>
 <li>License URL</li>
 <li>Publisher</li>
-<li>Provider</li>
+<li>Service Provider</li>
 </ul></li>
 <li>Event Information
 

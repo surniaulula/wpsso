@@ -276,7 +276,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 		* Copyright Year
 		* License URL
 		* Publisher
-		* Provider
+		* Service Provider
 	* Event Information
 		* Event Language
 		* Event Attendance
@@ -507,7 +507,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.28.0-b.1 (2020/04/04)**
+**Version 6.28.0-rc.1 (2020/04/05)**
 
 * **New Features**
 	* None.
@@ -515,7 +515,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Updated "Requires At Least" to WordPress v4.2.
 	* Updated the Facebook debugger URL.
 	* Updated the plugin rating notice message.
-	* The WebSite Organization Schema Type option is now fixed to "Organization" since Google does not recognize all Schema Organization sub-types as valid organization and publisher types. The WebSite organization type ID should be "organization" unless you are confident that Google will recognize your preferred Schema Organization sub-type as a valid organization. To select a different organization type ID for your WebSite, define the `WPSSO_SCHEMA_ORGANIZATION_TYPE_ID` constant with your preferred type ID (not the Schema type URL).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -523,6 +522,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored the `WpssoConfig::get_config()` method.
 	* Refactored the `WpssoConfig::get_ext_sorted()` method.
 	* Removed `empty()` property checks when creating json data and added a `WpssoSchemaGraph::clean_json()` method to remove null values, empty strings, and empty arrays from the json data.
+	* The WebSite Organization Schema Type option is now fixed to "Organization" since Google does not recognize all Schema Organization sub-types as valid organization and publisher types.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
@@ -985,9 +985,9 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 6.28.0-b.1 =
+= 6.28.0-rc.1 =
 
-(2020/04/04) Updated "Requires At Least" to WordPress v4.2. The WebSite Organization Schema Type option is now fixed to "Organization" (see changelog for details).
+(2020/04/05) Updated "Requires At Least" to WordPress v4.2. The WebSite Organization Schema Type option is now fixed to "Organization" (see changelog for details).
 
 = 6.27.1 =
 
