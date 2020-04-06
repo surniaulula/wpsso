@@ -140,7 +140,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		}
 
 		/**
-		 * Runs at init priority -10 and Called by activate_plugin() as well.
+		 * Runs at init priority -10 and called by activate_plugin() as well.
 		 */
 		public function set_config( $activate = false ) {
 
@@ -319,6 +319,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->debug = new SucomNoDebug();
 			}
 
+			/**
+			 * The 'wpsso_init_textdomain' action is run after the $check, $avail, and $debug properties are defined.
+			 */
 			do_action( 'wpsso_init_textdomain', $this->debug->enabled );
 
 			/**
@@ -342,6 +345,10 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->debug->mark( 'init options do action' );	// Begin timer.
 			}
 
+			/**
+			 * The 'wpsso_init_options' action is run after the $check, $avail, $debug, $notice, $cache, $util, and
+			 * $opt properties are defined.
+			 */
 			do_action( $this->lca . '_init_options' );
 
 			if ( $this->debug->enabled ) {
