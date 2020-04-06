@@ -345,10 +345,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->debug->mark( 'init options do action' );	// Begin timer.
 			}
 
-			/**
-			 * The 'wpsso_init_options' action is run after the $check, $avail, $debug, $notice, $cache, $util, and
-			 * $opt properties are defined.
-			 */
 			do_action( $this->lca . '_init_options' );
 
 			if ( $this->debug->enabled ) {
