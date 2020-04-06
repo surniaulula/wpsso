@@ -15,7 +15,7 @@
  * Requires At Least: 4.2
  * Tested Up To: 5.4
  * WC Tested Up To: 4.0.1
- * Version: 6.28.0-rc.2
+ * Version: 6.28.0-rc.3
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -122,9 +122,10 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			add_action( 'init', array( $this, 'init_plugin' ), WPSSO_INIT_PLUGIN_PRIORITY );		// Runs at init 12.
 
 			/**
-			 * The 'wpsso_init_textdomain' action is run after the debug property is defined. Hooks the
-			 * 'override_textdomain_mofile' filter (if debug is enabled) to use local translation files instead of
-			 * those from wordpress.org.
+			 * The 'wpsso_init_textdomain' action is run after the $check, $avail, and $debug properties are defined.
+			 *
+			 * Hooks the 'override_textdomain_mofile' filter (if debug is enabled) to use the local translation files
+			 * instead of those from wordpress.org.
 			 */
 			add_action( 'wpsso_init_textdomain', array( __CLASS__, 'init_textdomain' ), -10, 1 );
 		}
@@ -654,6 +655,11 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 		/**
 		 * Runs at wpsso_init_textdomain priority -10.
+		 *
+		 * The 'wpsso_init_textdomain' action is run after the $check, $avail, and $debug properties are defined.
+		 *
+		 * Hooks the 'override_textdomain_mofile' filter (if debug is enabled) to use the local translation files
+		 * instead of those from wordpress.org.
 		 */
 		public static function init_textdomain( $debug_enabled ) {
 
