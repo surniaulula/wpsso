@@ -507,7 +507,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.28.0-rc.2 (2020/04/06)**
+**Version 6.28.0-rc.3 (2020/04/06)**
 
 * **New Features**
 	* None.
@@ -985,7 +985,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 6.28.0-rc.2 =
+= 6.28.0-rc.3 =
 
 (2020/04/06) Updated "Requires At Least" to WordPress v4.2. The WebSite Organization Schema Type option is now fixed to "Organization" (see changelog for details).
 
