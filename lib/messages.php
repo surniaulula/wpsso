@@ -2269,24 +2269,24 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								$img_sizes_page_link = $this->p->util->get_admin_url( 'image-sizes', _x( 'Image Sizes', 'lib file description', 'wpsso' ) );
 
-								$text .= '<li>' . sprintf( __( 'Update image dimensions in the %1$s settings page.', 'wpsso' ), $img_sizes_page_link ) . '</li>';
+								$text .= '<li>' . sprintf( __( 'Update image size dimensions in the %s settings page.', 'wpsso' ), $img_sizes_page_link ) . '</li>';
 
 								if ( empty( $this->p->options[ 'plugin_upscale_images' ] ) ) {
 
 									$upscale_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', _x( 'Upscale Media Library Images', 'option label', 'wpsso' ) );
 
-									$text .= '<li>' . sprintf( __( 'Enable the %1$s option.', 'wpsso' ), $upscale_option_link ) . '</li>';
+									$text .= '<li>' . sprintf( __( 'Enable the %s option.', 'wpsso' ), $upscale_option_link ) . '</li>';
 								}
 
 								$percent_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ) );
 
-								$text .= '<li>' . sprintf( __( 'Increase the %1$s option value.', 'wpsso' ), $percent_option_link ) . '</li>';
+								$text .= '<li>' . sprintf( __( 'Increase the %s option value.', 'wpsso' ), $percent_option_link ) . '</li>';
 
 								if ( ! empty( $this->p->options[ 'plugin_check_img_dims' ] ) ) {
 
 									$img_dim_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', _x( 'Enforce Image Size Checks', 'option label', 'wpsso' ) );
 
-									$text .= '<li>' . sprintf( __( 'Disable the %1$s option (not recommended).', 'wpsso' ), $img_dim_option_link ) . '</li>';
+									$text .= '<li>' . sprintf( __( 'Disable the %s option (not recommended).', 'wpsso' ), $img_dim_option_link ) . '</li>';
 								}
 
 								$text .= '</ul>';
