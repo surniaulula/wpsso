@@ -1194,7 +1194,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 * Maybe use only a certain part of the content.
 			 */
 			if ( false !== strpos( $content, $this->p->lca . '-content' ) ) {
-				$content = preg_replace( '/^.*<!-- *' . $this->p->lca . '-content-->(.*)<!--\/' . $this->p->lca . '-content *-->.*$/Us', '$1', $content );
+				$content = preg_replace( '/^.*<!-- *' . $this->p->lca . '-content *-->(.*)<!--\/' . $this->p->lca . '-content *-->.*$/Us', '$1', $content );
 			}
 
 			/**

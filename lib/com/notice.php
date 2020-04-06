@@ -1052,6 +1052,23 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$msg_html .= '<div class="notice-label">' . $payload[ 'notice_label' ] . '</div><!-- .notice-label -->';
 			}
 
+			/**
+			 * Check to see if there's a section that should be shown only once.
+			 */
+			if ( preg_match( '/<!-- show-once -->.*<!-- \/show-once -->/Us', $payload[ 'msg_text' ], $matches ) ) {
+
+				static $show_once = array();
+
+				$match_md5 = md5( $matches[ 0 ] );
+
+				if ( isset( $show_once[ $match_md5 ] ) ) {
+					$payload[ 'msg_text' ] = str_replace( $matches[ 0 ], '', $payload[ 'msg_text' ] );
+				} else {
+					$show_once[ $match_md5 ] = true;
+				}
+			}
+
+
 			$msg_html .= '<div class="notice-message">' . $payload[ 'msg_text' ] . '</div><!-- .notice-message -->';
 
 			$msg_html .= '</div><!-- .' . $this->lca . '-notice -->' . "\n";

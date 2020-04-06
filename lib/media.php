@@ -127,12 +127,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$img_label    = sprintf( __( 'image ID %1$s (%2$s)', 'wpsso' ), $pid, $img_title );
 					$img_label    = empty( $img_edit_url ) ? $img_label : '<a href="' . $img_edit_url . '">' . $img_label . '</a>';
 					$size_label   = $this->p->util->get_image_size_label( $size_name );
-					$req_img_dims = '<b>' . $size_label . '</b> (' . $size_info[ 'width' ] . 'x' . $size_info[ 'height' ] .
-						( $is_cropped ? ' ' . __( 'cropped', 'wpsso' ) : '' ) . ')';
+					$req_img_dims = '<b>' . $size_label . '</b> (' . $size_info[ 'width' ] . 'x' . $size_info[ 'height' ] . ( $is_cropped ? ' ' . __( 'cropped', 'wpsso' ) : '' ) . ')';
 
 					$error_msg = __( '%1$s %2$s ignored &mdash; the resulting image of %3$s is too small for the required %4$s image dimensions.', 'wpsso' );
 
-					$rejected_msg = $this->p->msgs->get( 'notice-image-rejected', array( 'size_label' => $size_label ) );
+					$rejected_msg = $this->p->msgs->get( 'notice-image-rejected' );
 
 					$this->p->notice->warn( sprintf( $error_msg, $media_lib, $img_label, $size_text, $req_img_dims ) . ' ' . 
 						$rejected_msg, null, $notice_key, true );
@@ -207,7 +206,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$notice_key   = 'content_' . $og_image_url . '_' . $size_name . '_rejected';
 				$size_label   = $this->p->util->get_image_size_label( $size_name );
-				$req_img_dims = '<b>' . $size_label . '</b> (' . $size_name . ')';
+				$req_img_dims = '<b>' . $size_label . '</b> (' . $size_info[ 'width' ] . 'x' . $size_info[ 'height' ] . ( $is_cropped ? ' ' . __( 'cropped', 'wpsso' ) : '' ) . ')';
 
 				$error_msg    = __( 'Image %1$s in content ignored &mdash; the image width / height is too small for the required %2$s image dimensions.', 'wpsso' );
 
@@ -1872,7 +1871,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$cf_max     = $this->p->cf[ 'head' ][ 'limit_max' ];
 			$img_ratio  = 0;
 			$img_label  = $img_mixed;
-			$size_label = $this->p->util->get_image_size_label( $size_name );
 
 			if ( 0 !== strpos( $size_name, $this->p->lca . '-' ) ) {	// Only check our own sizes.
 				return true;
@@ -2008,7 +2006,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$error_msg = __( '%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>.', 'wpsso' );
 
-					$rejected_msg = $this->p->msgs->get( 'notice-image-rejected', array( 'size_label' => $size_label, 'show_adjust_img_opts' => false ) );
+					$rejected_msg = $this->p->msgs->get( 'notice-image-rejected', array( 'show_adjust_img_opts' => false ) );
 
 		 			/**
 					 * $media_lib can be 'Media Library', 'NextGEN Gallery', 'Content', etc.
@@ -2039,7 +2037,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$error_msg = __( '%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>.', 'wpsso' );
 
-					$rejected_msg = $this->p->msgs->get( 'notice-image-rejected', array( 'size_label' => $size_label ) );
+					$rejected_msg = $this->p->msgs->get( 'notice-image-rejected' );
 
 		 			/**
 					 * $media_lib can be 'Media Library', 'NextGEN Gallery', 'Content', etc.

@@ -105,10 +105,10 @@ if ( ! class_exists( 'WpssoSubmenuImageSizes' ) && class_exists( 'WpssoAdmin' ) 
 				case 'image-sizes-general':
 
 					$p_img_disabled = empty( $this->p->options[ 'p_add_img_html' ] ) ? true : false;
-					$p_img_msg      = $p_img_disabled ? $this->p->msgs->p_img_disabled( 'inline' ) : '';
+					$p_img_msg      = $p_img_disabled ? $this->p->msgs->p_img_disabled( $extra_css_class = 'inline' ) : '';
 
 					$amp_img_disabled = empty( $this->p->avail[ 'amp' ][ 'any' ] ) ? true : false;
-					$amp_img_msg      = $amp_img_disabled ? $this->p->msgs->amp_img_disabled( 'inline' ) :
+					$amp_img_msg      = $amp_img_disabled ? $this->p->msgs->amp_img_disabled( $extra_css_class = 'inline' ) :
 						$this->p->msgs->maybe_ext_required( 'wpssojson' );
 
 					$table_rows[ 'og_img_size' ] = '' .
@@ -117,7 +117,7 @@ if ( ! class_exists( 'WpssoSubmenuImageSizes' ) && class_exists( 'WpssoAdmin' ) 
 
 					$table_rows[ 'p_img_size' ] = ( $p_img_disabled ? $this->form->get_tr_hide( 'basic' ) : '' ) .
 					$this->form->get_th_html( _x( 'Pinterest Pin It', 'option label', 'wpsso' ), '', 'p_img_size' ) . 
-					'<td>' . $this->form->get_input_image_dimensions( 'p_img', $p_img_disabled ) . ' ' . $p_img_msg . '</td>';
+					'<td>' . $this->form->get_input_image_dimensions( 'p_img', $p_img_disabled ) . $p_img_msg . '</td>';
 
 					$table_rows[ 'schema_00_img_size' ] = '' .		// Use a key name that sorts first.
 					$this->form->get_th_html( _x( 'Schema', 'option label', 'wpsso' ), '', 'schema_img_size' ) . 

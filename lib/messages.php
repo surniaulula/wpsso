@@ -2258,13 +2258,18 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							if ( current_user_can( 'manage_options' ) ) {
 
+								/**
+								 * Signal that additional md5() matching sections should be removed from the notice messages.
+								 */
+								$text .= '<!-- show-once -->';
+
 								$text .= '<p style="margin-left:0;"><em>' . __( 'Additional information shown only to users with Administrative privileges:', 'wpsso' ) . '</em></p>';
 
 								$text .= '<ul>';
 
 								$img_sizes_page_link = $this->p->util->get_admin_url( 'image-sizes', _x( 'Image Sizes', 'lib file description', 'wpsso' ) );
 
-								$text .= '<li>' . sprintf( __( 'You can adjust the <b>%1$s</b> option in the %2$s settings.', 'wpsso' ), $info[ 'size_label' ], $img_sizes_page_link ) . '</li>';
+								$text .= '<li>' . sprintf( __( 'Update image dimensions in the %1$s settings page.', 'wpsso' ), $img_sizes_page_link ) . '</li>';
 
 								if ( empty( $this->p->options[ 'plugin_upscale_images' ] ) ) {
 
@@ -2285,6 +2290,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								}
 
 								$text .= '</ul>';
+
+								$text .= '<!-- /show-once -->';
 							}
 						}
 
@@ -2799,6 +2806,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			}
 
 			return $html;
+		}
+
+		public function recommend_img_dims( $opt_pre ) {
+
+			$og_def_img_dims = $this->p->msgs->get_def_img_dims( $opt_pre );
+
+			return ' <em>' . $this->p->msgs->get_def_img_dims( 'og_img' ). ' ' . __( 'recommended', 'wpsso' ) . '</em>';
 		}
 
 		/**
