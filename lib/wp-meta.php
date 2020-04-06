@@ -506,19 +506,22 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		}
 
 		/**
-		 * Does this page have a post/term/user SSO metabox?
+		 * Does this page have a Document SSO metabox?
 		 *
-		 * If this is a post/term/user editing page, and the SSO metabox is shown, then the 
-		 * WpssoWpMeta::$head_tags variable will be an array *and* include the head meta
-		 * tags array.
+		 * If this is a post/term/user editing page, then the WpssoWpMeta::$head_tags variable will be an array.
 		 */
 		public static function is_meta_page() {
 
-			if ( ! empty( WpssoWpMeta::$head_tags ) ) {
+			if ( is_array( WpssoWpMeta::$head_tags ) ) {
 				return true;
 			}
 
 			return false;
+		}
+
+		public static function get_head_tags() {
+
+			return WpssoWpMeta::$head_tags;
 		}
 
 		protected function get_document_meta_tabs( $metabox_id, array $mod ) {

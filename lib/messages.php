@@ -2240,61 +2240,51 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'notice-image-rejected':
 
-						static $do_once_custom_notice = null;
+						if ( WpssoWpMeta::is_meta_page() ) {
 
-						if ( null === $do_once_custom_notice ) {
+							$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-							if ( WpssoWpMeta::is_meta_page() ) {
+							$metabox_tab = _x( 'Priority Media', 'metabox tab', 'wpsso' );
 
-								$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
-
-								$metabox_tab = _x( 'Priority Media', 'metabox tab', 'wpsso' );
-
-								$text .= sprintf( __( 'A larger custom image can be selected in the %1$s metabox under the %2$s tab.',
-									'wpsso' ), $metabox_title, $metabox_tab );
-
-								$do_once_custom_notice = true;
-							}
+							$text .= sprintf( __( 'A larger custom image can be selected in the %1$s metabox under the %2$s tab.',
+								'wpsso' ), $metabox_title, $metabox_tab );
 						}
 
-						static $do_once_upscale_notice = null;
+						/**
+						 * WpssoMedia->img_size_within_limits() uses show_adjust_img_opts = false for
+						 * images with an incorrect aspect ratio.
+						 */
+						if ( ! isset( $info[ 'show_adjust_img_opts' ] ) || ! empty( $info[ 'show_adjust_img_opts' ] ) ) {
 
-						if ( null === $do_once_upscale_notice ) {
+							if ( current_user_can( 'manage_options' ) ) {
 
-							if ( ! isset( $info[ 'allow_upscale' ] ) || ! empty( $info[ 'allow_upscale' ] ) ) {
+								$text .= '<p style="margin-left:0;"><em>' . __( 'Additional information shown only to users with Administrative privileges:', 'wpsso' ) . '</em></p>';
 
-								if ( current_user_can( 'manage_options' ) ) {
+								$text .= '<ul>';
 
-									$text .= '<p style="margin-left:0;"><em>' . __( 'Additional information shown only to users with Administrative privileges:', 'wpsso' ) . '</em></p>';
+								$img_sizes_page_link = $this->p->util->get_admin_url( 'image-sizes', _x( 'Image Sizes', 'lib file description', 'wpsso' ) );
 
-									$text .= '<ul>';
+								$text .= '<li>' . sprintf( __( 'You can adjust the <b>%1$s</b> option in the %2$s settings.', 'wpsso' ), $info[ 'size_label' ], $img_sizes_page_link ) . '</li>';
 
-									$img_sizes_page_link = $this->p->util->get_admin_url( 'image-sizes', _x( 'Image Sizes', 'lib file description', 'wpsso' ) );
+								if ( empty( $this->p->options[ 'plugin_upscale_images' ] ) ) {
 
-									$text .= '<li>' . sprintf( __( 'You can adjust the <b>%1$s</b> option in the %2$s settings.', 'wpsso' ), $info[ 'size_label' ], $img_sizes_page_link ) . '</li>';
+									$upscale_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', _x( 'Upscale Media Library Images', 'option label', 'wpsso' ) );
 
-									if ( empty( $this->p->options[ 'plugin_upscale_images' ] ) ) {
-
-										$upscale_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', _x( 'Upscale Media Library Images', 'option label', 'wpsso' ) );
-
-										$text .= '<li>' . sprintf( __( 'Enable the %1$s option.', 'wpsso' ), $upscale_option_link ) . '</li>';
-									}
-
-									$percent_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ) );
-
-									$text .= '<li>' . sprintf( __( 'Increase the %1$s option value.', 'wpsso' ), $percent_option_link ) . '</li>';
-
-									if ( ! empty( $this->p->options[ 'plugin_check_img_dims' ] ) ) {
-
-										$img_dim_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', _x( 'Enforce Image Size Checks', 'option label', 'wpsso' ) );
-
-										$text .= '<li>' . sprintf( __( 'Disable the %1$s option (not recommended).', 'wpsso' ), $img_dim_option_link ) . '</li>';
-									}
-
-									$text .= '</ul>';
-
-									$do_once_upscale_notice = true;
+									$text .= '<li>' . sprintf( __( 'Enable the %1$s option.', 'wpsso' ), $upscale_option_link ) . '</li>';
 								}
+
+								$percent_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ) );
+
+								$text .= '<li>' . sprintf( __( 'Increase the %1$s option value.', 'wpsso' ), $percent_option_link ) . '</li>';
+
+								if ( ! empty( $this->p->options[ 'plugin_check_img_dims' ] ) ) {
+
+									$img_dim_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', _x( 'Enforce Image Size Checks', 'option label', 'wpsso' ) );
+
+									$text .= '<li>' . sprintf( __( 'Disable the %1$s option (not recommended).', 'wpsso' ), $img_dim_option_link ) . '</li>';
+								}
+
+								$text .= '</ul>';
 							}
 						}
 

@@ -127,15 +127,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$img_label    = sprintf( __( 'image ID %1$s (%2$s)', 'wpsso' ), $pid, $img_title );
 					$img_label    = empty( $img_edit_url ) ? $img_label : '<a href="' . $img_edit_url . '">' . $img_label . '</a>';
 					$size_label   = $this->p->util->get_image_size_label( $size_name );
-
-					$required_text = '<b>' . $size_label . '</b> (' . $size_info[ 'width' ] . 'x' . $size_info[ 'height' ] .
-						( $is_cropped ? ' <i>' . __( 'cropped', 'wpsso' ) . '</i>' : '' ) . ')';
+					$req_img_dims = '<b>' . $size_label . '</b> (' . $size_info[ 'width' ] . 'x' . $size_info[ 'height' ] .
+						( $is_cropped ? ' ' . __( 'cropped', 'wpsso' ) : '' ) . ')';
 
 					$error_msg = __( '%1$s %2$s ignored &mdash; the resulting image of %3$s is too small for the required %4$s image dimensions.', 'wpsso' );
 
 					$rejected_msg = $this->p->msgs->get( 'notice-image-rejected', array( 'size_label' => $size_label ) );
 
-					$this->p->notice->warn( sprintf( $error_msg, $media_lib, $img_label, $size_text, $required_text ) . ' ' . 
+					$this->p->notice->warn( sprintf( $error_msg, $media_lib, $img_label, $size_text, $req_img_dims ) . ' ' . 
 						$rejected_msg, null, $notice_key, true );
 
 				} else {
@@ -206,13 +205,15 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 */
 			if ( $this->p->notice->is_admin_pre_notices() ) {
 
-				$notice_key    = 'content_' . $og_image_url . '_' . $size_name . '_rejected';
-				$size_label    = $this->p->util->get_image_size_label( $size_name );
-				$required_text = '<b>' . $size_label . '</b> (' . $size_name . ')';
-				$error_msg     = __( 'Image %1$s in content ignored &mdash; the image width / height is too small for the required %2$s image dimensions.', 'wpsso' );
+				$notice_key   = 'content_' . $og_image_url . '_' . $size_name . '_rejected';
+				$size_label   = $this->p->util->get_image_size_label( $size_name );
+				$req_img_dims = '<b>' . $size_label . '</b> (' . $size_name . ')';
+
+				$error_msg    = __( 'Image %1$s in content ignored &mdash; the image width / height is too small for the required %2$s image dimensions.', 'wpsso' );
+
 				$data_attr_msg = $content_passed ? '' : ' ' . sprintf( __( '%1$s includes an additional \'data-wp-pid\' attribute for Media Library images &mdash; if this image was selected from the Media Library before %1$s was activated, try removing and adding the image back to your content.', 'wpsso' ), $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'short' ] );
 
-				$this->p->notice->warn( sprintf( $error_msg, $og_image_url, $required_text ) . $data_attr_msg, null, $notice_key, true );
+				$this->p->notice->warn( sprintf( $error_msg, $og_image_url, $req_img_dims ) . $data_attr_msg, null, $notice_key, true );
 			}
 
 			return false;
@@ -2007,7 +2008,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$error_msg = __( '%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>.', 'wpsso' );
 
-					$rejected_msg = $this->p->msgs->get( 'notice-image-rejected', array( 'size_label' => $size_label, 'allow_upscale' => false ) );
+					$rejected_msg = $this->p->msgs->get( 'notice-image-rejected', array( 'size_label' => $size_label, 'show_adjust_img_opts' => false ) );
 
 		 			/**
 					 * $media_lib can be 'Media Library', 'NextGEN Gallery', 'Content', etc.
@@ -2038,7 +2039,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$error_msg = __( '%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>.', 'wpsso' );
 
-					$rejected_msg = $this->p->msgs->get( 'notice-image-rejected', array( 'size_label' => $size_label, 'allow_upscale' => true ) );
+					$rejected_msg = $this->p->msgs->get( 'notice-image-rejected', array( 'size_label' => $size_label ) );
 
 		 			/**
 					 * $media_lib can be 'Media Library', 'NextGEN Gallery', 'Content', etc.
