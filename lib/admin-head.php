@@ -429,6 +429,8 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 				$wp_plugin_link = '<a href="' . $info[ 'url' ][ 'home' ] . '">' . $info[ 'name' ] . '</a>';
 
+				$wp_plugin_link_desc = $wp_plugin_link . ' (' . trim( $info[ 'desc' ], '.' ) . ')';
+
 				/**
 				 * The action buttons.
 				 */
@@ -465,19 +467,17 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 				$notice_msg .= '<b>' . __( 'Fantastic!', 'wpsso' ) . '</b> ';
 
-				$notice_msg .= sprintf( __( 'You\'ve been using %s for a while now, which is awesome!', 'wpsso' ), $wp_plugin_link );
+				$notice_msg .= sprintf( __( 'You\'ve been using %s for a while now, which is awesome!', 'wpsso' ), $wp_plugin_link_desc );
 
 				$notice_msg .= '</p><p>';
 
-				$notice_msg .= sprintf( __( 'We\'ve put many years of time and effort into making %s and its add-ons the best possible.', 'wpsso' ),
-					$this->p->cf[ 'plugin' ][ $this->p->lca ][ 'name' ] ) . ' ';
+				$notice_msg .= sprintf( __( 'We\'ve put many years of time and effort into making %s and its add-ons the best possible.', 'wpsso' ), $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'name' ] ) . ' ';
 
-				$notice_msg .= sprintf( __( 'It\'s great that %s is a valued addition to your site.', 'wpsso' ), $wp_plugin_link );
+				$notice_msg .= sprintf( __( 'It\'s great that %s is a valued addition to your site.', 'wpsso' ), $wp_plugin_link ) . ' ';
 
 				$notice_msg .= '</p><p>';
 
-				$notice_msg .= sprintf( __( 'Now that you\'ve been using %s for a while, could you quickly rate it on WordPress.org?', 'wpsso' ),
-					$wp_plugin_link ) . ' ';
+				$notice_msg .= sprintf( __( 'Now that you\'ve been using %s for a while, could you quickly rate it on WordPress.org?', 'wpsso' ), $wp_plugin_link ) . ' ';
 
 				$notice_msg .= '<b>' . __( 'Great ratings are an excellent way to encourage your plugin developers and support the continued development of your favorite plugins!', 'wpsso' ) . '</b>';
 
@@ -576,21 +576,17 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 			$notice_msg .= '<b>' . __( 'Fantastic!', 'wpsso' ) . '</b> ';
 
-			$notice_msg .= sprintf( __( 'You\'ve been using %1$s for more than %2$s now, which is awesome!', 'wpsso' ),
-				$wp_plugin_link, $months_transl );
+			$notice_msg .= sprintf( __( 'You\'ve been using %1$s for more than %2$s now, which is awesome!', 'wpsso' ), $wp_plugin_link, $months_transl );
 
 			$notice_msg .= '</p><p>';
 
-			$notice_msg .= sprintf( __( 'We\'ve put many years of time and effort into making %s and its add-ons the best possible.', 'wpsso' ),
-				$this->p->cf[ 'plugin' ][ $this->p->lca ][ 'name' ] ) . ' ';
+			$notice_msg .= sprintf( __( 'We\'ve put many years of time and effort into making %s and its add-ons the best possible.', 'wpsso' ), $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'name' ] ) . ' ';
 
-			$notice_msg .= sprintf( __( 'I hope you\'ve enjoyed all the new features, improvements and updates over the past %s.', 'wpsso' ),
-				$months_transl );
+			$notice_msg .= sprintf( __( 'I hope you\'ve enjoyed all the new features, improvements and updates over the past %s.', 'wpsso' ), $months_transl );
 
 			$notice_msg .= '</p><p>';
 
-			$notice_msg .= sprintf( __( 'Have you thought about purchasing the %s version? It comes with a lot of great extra features!', 'wpsso' ),
-				_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) );
+			$notice_msg .= sprintf( __( 'Have you thought about purchasing the %s version? It comes with a lot of great extra features!', 'wpsso' ), _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) );
 
 			$notice_msg .= '</p>';
 

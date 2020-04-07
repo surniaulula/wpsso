@@ -77,41 +77,41 @@ msgid ""
 "the %2$s and make sure your Schema Product markup is complete."
 msgstr ""
 
-#: lib/admin-head.php:435
+#: lib/admin-head.php:437
 msgid "Yes! Rate %s 5 stars!"
 msgstr ""
 
-#: lib/admin-head.php:437
+#: lib/admin-head.php:439
 msgid "I've already rated %s."
 msgstr ""
 
-#: lib/admin-head.php:439
+#: lib/admin-head.php:441
 msgid "Thank you for rating the %s plugin!"
 msgstr ""
 
-#: lib/admin-head.php:442
+#: lib/admin-head.php:444
 msgid "Thank you for encouraging and supporting your plugin developers!"
 msgstr ""
 
-#: lib/admin-head.php:466 lib/admin-head.php:577
+#: lib/admin-head.php:468 lib/admin-head.php:577
 msgid "Fantastic!"
 msgstr ""
 
-#: lib/admin-head.php:468
+#: lib/admin-head.php:470
 msgid "You've been using %s for a while now, which is awesome!"
 msgstr ""
 
-#: lib/admin-head.php:472 lib/admin-head.php:584
+#: lib/admin-head.php:474 lib/admin-head.php:583
 msgid ""
 "We've put many years of time and effort into making %s and its add-ons the "
 "best possible."
 msgstr ""
 
-#: lib/admin-head.php:475
+#: lib/admin-head.php:476
 msgid "It's great that %s is a valued addition to your site."
 msgstr ""
 
-#: lib/admin-head.php:479
+#: lib/admin-head.php:480
 msgid ""
 "Now that you've been using %s for a while, could you quickly rate it on "
 "WordPress.org?"
@@ -154,13 +154,13 @@ msgstr ""
 msgid "You've been using %1$s for more than %2$s now, which is awesome!"
 msgstr ""
 
-#: lib/admin-head.php:587
+#: lib/admin-head.php:585
 msgid ""
 "I hope you've enjoyed all the new features, improvements and updates over "
 "the past %s."
 msgstr ""
 
-#: lib/admin-head.php:592
+#: lib/admin-head.php:589
 msgid ""
 "Have you thought about purchasing the %s version? It comes with a lot of "
 "great extra features!"
