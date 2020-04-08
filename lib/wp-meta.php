@@ -960,7 +960,13 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 						 *
 						 * Allows the iframe to run scripts.
 						 */
-						$oembed_html = preg_replace( '/<iframe /', '<iframe sandbox="allow-same-origin allow-scripts" ', $oembed_html );
+						$sandbox_val = "allow-same-origin allow-scripts";
+
+						if ( false !== strpos( $oembed_html, 'sandbox="' ) ) {
+							$oembed_html = preg_replace( '/ *sandbox="[^"]+"/', ' sandbox="' . $sandbox_val . '"', $oembed_html );
+						} else {
+							$oembed_html = preg_replace( '/<iframe /', '<iframe sandbox="' . $sandbox_val . '" ', $oembed_html );
+						}
 
 						$val = __( '(see bellow)', 'wpsso' );
 					}

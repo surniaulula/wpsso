@@ -7284,124 +7284,124 @@ msgctxt "option label"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/wp-meta.php:965
+#: lib/wp-meta.php:971
 msgid "(see bellow)"
 msgstr ""
 
-#: lib/wp-meta.php:973
+#: lib/wp-meta.php:979
 msgid "No oEmbed data found."
 msgstr ""
 
-#: lib/wp-meta.php:977
+#: lib/wp-meta.php:983
 msgctxt "option label"
 msgid "oEmbed HTML"
 msgstr ""
 
-#: lib/wp-meta.php:986
+#: lib/wp-meta.php:992
 msgid "No oEmbed HTML found."
 msgstr ""
 
-#: lib/wp-meta.php:1102
+#: lib/wp-meta.php:1108
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/wp-meta.php:1103
+#: lib/wp-meta.php:1109
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/wp-meta.php:1107
+#: lib/wp-meta.php:1113
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/wp-meta.php:1108
+#: lib/wp-meta.php:1114
 msgctxt "submit button"
 msgid "Validate Microdata"
 msgstr ""
 
-#: lib/wp-meta.php:1114
+#: lib/wp-meta.php:1120
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/wp-meta.php:1115
+#: lib/wp-meta.php:1121
 msgctxt "submit button"
 msgid "Validate PageSpeed"
 msgstr ""
 
-#: lib/wp-meta.php:1119
+#: lib/wp-meta.php:1125
 msgctxt "option label"
 msgid "Google Structured Data Test"
 msgstr ""
 
-#: lib/wp-meta.php:1120
+#: lib/wp-meta.php:1126
 msgctxt "submit button"
 msgid "Validate Structured Data"
 msgstr ""
 
-#: lib/wp-meta.php:1124
+#: lib/wp-meta.php:1130
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/wp-meta.php:1125
+#: lib/wp-meta.php:1131
 msgctxt "submit button"
 msgid "Validate Rich Results"
 msgstr ""
 
-#: lib/wp-meta.php:1129
+#: lib/wp-meta.php:1135
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/wp-meta.php:1130
+#: lib/wp-meta.php:1136
 msgctxt "submit button"
 msgid "Validate Metadata"
 msgstr ""
 
-#: lib/wp-meta.php:1134
+#: lib/wp-meta.php:1140
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/wp-meta.php:1135
+#: lib/wp-meta.php:1141
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/wp-meta.php:1139
+#: lib/wp-meta.php:1145
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/wp-meta.php:1140
+#: lib/wp-meta.php:1146
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/wp-meta.php:1146
+#: lib/wp-meta.php:1152
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr ""
 
-#: lib/wp-meta.php:1147
+#: lib/wp-meta.php:1153
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/wp-meta.php:1151
+#: lib/wp-meta.php:1157
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr ""
 
-#: lib/wp-meta.php:1152
+#: lib/wp-meta.php:1158
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr ""
 
-#: lib/wp-meta.php:1415
+#: lib/wp-meta.php:1421
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
