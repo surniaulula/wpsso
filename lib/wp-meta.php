@@ -964,8 +964,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 						if ( false !== strpos( $oembed_html, 'sandbox="' ) ) {
 							$oembed_html = preg_replace( '/ *sandbox="[^"]+"/', ' sandbox="' . $sandbox_val . '"', $oembed_html );
-						} else {
-							$oembed_html = preg_replace( '/<iframe /', '<iframe sandbox="' . $sandbox_val . '" ', $oembed_html );
 						}
 
 						$val = __( '(see bellow)', 'wpsso' );
