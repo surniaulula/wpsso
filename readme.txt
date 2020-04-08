@@ -514,9 +514,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* Fixed triggering a known "NS_ERROR_FAILURE" bug in Firefox for hidden iframes (see https://bugzilla.mozilla.org/show_bug.cgi?id=941146).
+	* None.
 * **Developer Notes**
-	* Added 'sandbox="allow-same-origin allow-scripts"' to the WordPress oEmbed iframe used in the Document SSO &gt; oEmbed tab.
+	* Added "allow-same-origin" to the sandbox attribute for the oEmbed iframe used in the Document SSO &gt; oEmbed tab.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
@@ -1001,7 +1001,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 = 6.28.1-dev.1 =
 
-(2020/04/06) Fixed triggering a known "NS_ERROR_FAILURE" bug in Firefix for hidden iframes.
+(2020/04/06) Added "allow-same-origin" to the sandbox attribute for the oEmbed iframe used in the Document SSO &gt; oEmbed tab.
 
 = 6.28.0 =
 
