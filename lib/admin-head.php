@@ -444,11 +444,11 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				$already_rated_clicked = '<p>' . sprintf( __( 'Thank you for encouraging and supporting your plugin developers!',
 					'wpsso' ), $info[ 'name' ] ) . '</p>';
 
-				$rate_plugin_button = '<div style="display:inline-block;vertical-align:top;margin:0.4em 0.8em 0.6em 0;">' .
+				$rate_plugin_button = '<div class="notice-single-button">' .
 					$form->get_button( $rate_plugin_label, 'button-primary dismiss-on-click', '', $info[ 'url' ][ 'review' ],
 						true, false, array( 'dismiss-msg' => $rate_plugin_clicked ) ) . '</div>';
 
-				$already_rated_button = '<div style="display:inline-block;vertical-align:top;margin:0.4em 0 0.6em 0;">' .
+				$already_rated_button = '<div class="notice-single-button">' .
 					$form->get_button( $already_rated_label, 'button-secondary dismiss-on-click', '', '',
 						false, false, array( 'dismiss-msg' => $already_rated_clicked ) ) . '</div>';
 
@@ -463,7 +463,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 				$notice_msg .= '<div style="display:table-cell;vertical-align:top;">';
 
-				$notice_msg .= '<p class="top">';
+				$notice_msg .= '<p>';
 
 				$notice_msg .= '<b>' . __( 'Fantastic!', 'wpsso' ) . '</b> ';
 
@@ -483,7 +483,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 				$notice_msg .= '</p>';
 				
-				$notice_msg .= '<div style="text-align:center;">';
+				$notice_msg .= '<div class="notice-actions">';
 
 				$notice_msg .= $rate_plugin_button . $already_rated_button;
 
@@ -553,11 +553,11 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				sprintf( __( 'Hopefully you\'ll change your mind in the future and choose to support the continued development of %s.',
 					'wpsso' ), $info[ 'name' ] ) . '</p>';
 
-			$purchase_button  = '<div style="display:inline-block;vertical-align:top;margin:0.4em 0.8em 0.6em 0;">' .
+			$purchase_button  = '<div class="notice-single-button">' .
 				$form->get_button( $purchase_label, 'button-primary dismiss-on-click', '', $purchase_url,
 					true, false, array( 'dismiss-msg' => $purchase_clicked ) ) . '</div>';
 
-			$no_thanks_button  = '<div style="display:inline-block;vertical-align:top;margin:0.4em 0 0.6em 0;">' .
+			$no_thanks_button  = '<div class="notice-single-button">' .
 				$form->get_button( $no_thanks_label, 'button-secondary dismiss-on-click', '', '',
 					false, false, array( 'dismiss-msg' => $no_thanks_clicked ) ) . '</div>';
 
@@ -572,7 +572,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 			$notice_msg .= '<div style="display:table-cell;vertical-align:top;">';
 
-			$notice_msg .= '<p class="top">';
+			$notice_msg .= '<p>';
 
 			$notice_msg .= '<b>' . __( 'Fantastic!', 'wpsso' ) . '</b> ';
 
@@ -590,7 +590,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 			$notice_msg .= '</p>';
 
-			$notice_msg .= '<div style="text-align:center;">';
+			$notice_msg .= '<div class="notice-actions">';
 
 			$notice_msg .= $purchase_button . $no_thanks_button;
 

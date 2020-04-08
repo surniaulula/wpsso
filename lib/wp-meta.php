@@ -938,12 +938,10 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$xml_url     = $this->p->util->get_oembed_url( $mod, 'xml' );
 			$oembed_data = $this->p->util->get_oembed_data( $mod, $oembed_width );
 
-			$table_rows[] = '' . 
-			$form->get_th_html( _x( 'oEmbed JSON URL', 'option label', 'wpsso' ), 'medium' ) . 
+			$table_rows[] = $form->get_th_html( _x( 'oEmbed JSON URL', 'option label', 'wpsso' ), 'medium' ) . 
 			'<td>' . SucomForm::get_no_input_clipboard( $json_url ) . '</td>';
 
-			$table_rows[] = '' . 
-			$form->get_th_html( _x( 'oEmbed XML URL', 'option label', 'wpsso' ), 'medium' ) . 
+			$table_rows[] = $form->get_th_html( _x( 'oEmbed XML URL', 'option label', 'wpsso' ), 'medium' ) . 
 			'<td>' . SucomForm::get_no_input_clipboard( $xml_url ) . '</td>';
 
 			$table_rows[ 'subsection_oembed_data' ] = '<td colspan="2" class="subsection"><h4>' . 
@@ -954,13 +952,14 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				foreach( $oembed_data as $key => $val ) {
 
 					if ( 'html' === $key ) {
+
 						$oembed_html = $val;
+
 						$val = __( '(see bellow)', 'wpsso' );
 					}
 
-					$table_rows[] = '' . 
-					'<th class="short">' . esc_html( $key ) . '</th>' .
-					'<td class="wide">' . SucomUtil::maybe_link_url( esc_html( $val ) ) . '</td>';
+					$table_rows[] = '<th class="short">' . esc_html( $key ) . '</th>' .
+						'<td class="wide">' . SucomUtil::maybe_link_url( esc_html( $val ) ) . '</td>';
 				}
 
 			} else {
@@ -972,10 +971,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			if ( ! empty( $oembed_html ) ) {
 
-				$table_rows[] = '' .
-				'<td colspan="2" class="oembed_container">
-					' . $oembed_html . '
-				</td><!-- .oembed_container -->';
+				$table_rows[] = '<td colspan="2" class="oembed_container">' . $oembed_html . '</td><!-- .oembed_container -->';
 
 				$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-meta-oembed-html' ) . '</td>';
 
