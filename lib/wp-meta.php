@@ -552,9 +552,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			/**
 			 * Exclude the 'oEmbed' tab from non-post editing pages.
 			 */
-			if ( ! function_exists( 'get_oembed_response_data' ) ||	// Since WP v4.4.
-				! $mod[ 'is_post' ] || ! $mod[ 'id' ] ) {
-
+			if ( ! function_exists( 'get_oembed_response_data' ) ||	! $mod[ 'is_post' ] || ! $mod[ 'id' ] ) {
 				unset( $tabs[ 'oembed' ] );
 			}
 
