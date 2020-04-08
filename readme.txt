@@ -507,20 +507,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.28.1-dev.1 (2020/04/08)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added "allow-same-origin" to the sandbox attribute for the oEmbed iframe used in the Document SSO &gt; oEmbed tab.
-* **Requires At Least**
-	* PHP v5.6.
-	* WordPress v4.2.
-
 **Version 6.28.0 (2020/04/06)**
 
 * **New Features**
@@ -998,10 +984,6 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 	* WordPress v3.9.
 
 == Upgrade Notice ==
-
-= 6.28.1-dev.1 =
-
-(2020/04/06) Added "allow-same-origin" to the sandbox attribute for the oEmbed iframe used in the Document SSO &gt; oEmbed tab.
 
 = 6.28.0 =
 
