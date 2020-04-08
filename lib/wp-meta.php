@@ -955,17 +955,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 						$oembed_html = $val;
 
-						/**
-						 * Allows the iframe content to be treated as being from the same origin.
-						 *
-						 * Allows the iframe to run scripts.
-						 */
-						$sandbox_val = "allow-same-origin allow-scripts";
-
-						if ( false !== strpos( $oembed_html, 'sandbox="' ) ) {
-							$oembed_html = preg_replace( '/ *sandbox="[^"]+"/', ' sandbox="' . $sandbox_val . '"', $oembed_html );
-						}
-
 						$val = __( '(see bellow)', 'wpsso' );
 					}
 
