@@ -75,7 +75,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			if ( function_exists( 'wp_encode_emoji' ) ) {
 
-				return wp_encode_emoji( $content ); // Since WP v4.2.
+				return wp_encode_emoji( $content );	// Since WP v4.2.
 			}
 			
 			/**
@@ -129,11 +129,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		 */
 		public static function wp_get_shortlink( $id = 0, $context = 'post', $allow_slugs = true ) {
 
-			$shortlink = '';
-
-			if ( function_exists( 'wp_get_shortlink' ) ) {
-				$shortlink = wp_get_shortlink( $id, $context, $allow_slugs ); // Since WP v3.0.
-			}
+			$shortlink = wp_get_shortlink( $id, $context, $allow_slugs );	// Since WP v3.0.
 
 			if ( empty( $shortlink ) || ! is_string( $shortlink) || filter_var( $shortlink, FILTER_VALIDATE_URL ) === false ) {
 				$shortlink = self::raw_wp_get_shortlink( $id, $context, $allow_slugs );

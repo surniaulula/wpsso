@@ -255,7 +255,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:1024 lib/post.php:810 lib/term.php:655 lib/user.php:645
+#: lib/admin.php:1024 lib/post.php:810 lib/term.php:656 lib/user.php:645
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -6128,12 +6128,12 @@ msgctxt "image size label"
 msgid "Pinterest Pin It Image"
 msgstr ""
 
-#: lib/post.php:479 lib/register.php:322 lib/term.php:420 lib/user.php:367
+#: lib/post.php:479 lib/register.php:322 lib/term.php:421 lib/user.php:367
 #: lib/util.php:500 lib/util.php:3648
 msgid "%s warning:"
 msgstr ""
 
-#: lib/post.php:480 lib/term.php:421 lib/user.php:368 lib/util.php:501
+#: lib/post.php:480 lib/term.php:422 lib/user.php:368 lib/util.php:501
 #: lib/util.php:3649
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
@@ -6954,13 +6954,13 @@ msgctxt "submit button"
 msgid "Reset User Metabox Layout"
 msgstr ""
 
-#: lib/term.php:422
+#: lib/term.php:423
 msgid ""
 "Slow query detected - get_posts() took %1$0.3f secs to get posts for term ID "
 "%2$d in taxonomy %3$s (%4$s)."
 msgstr ""
 
-#: lib/term.php:839
+#: lib/term.php:840
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 

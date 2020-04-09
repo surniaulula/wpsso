@@ -311,6 +311,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			);
 
 			$add_tax_in_args = version_compare( $wp_version, '4.5.0', '>=' ) ? true : false;
+
 			$public_term_ids = array();
 
 			foreach ( self::get_public_tax_names( $tax_name ) as $term_tax_name ) {

@@ -81,7 +81,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 		/**
 		 * $html = apply_filters( 'get_avatar', $html, $id_or_email, $size_px, $default_type, $alt );
 		 *
-		 * Since WP v4.2.0:
+		 * The $data_args filter hook argument is available since WP v4.2.0:
 		 *
 		 * $html = apply_filters( 'get_avatar', $html, $id_or_email, $size_px, $default_type, $alt, $data_args );
 		 */
