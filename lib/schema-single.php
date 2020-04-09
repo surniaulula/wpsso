@@ -1100,7 +1100,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 								} elseif ( ! empty( $wpsso->avail[ 'p_ext' ][ 'org' ] ) ) {
 
-									$org_page_link = $wpsso->util->get_admin_url( 'org-general#sucom-tabset_organization-tab_other_organizations' );
+									$org_page_link = $wpsso->util->get_admin_url( 'org-general#sucom-tabset_org-tab_other_organizations' );
 
 									$notice_msg .= ' <a href="' . $org_page_link . '">';
 									$notice_msg .= sprintf( $org_settings_msg, $ret[ 'name' ], 'ID #' . $org_id );
