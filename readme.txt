@@ -509,6 +509,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 **Version 6.28.0 (2020/04/06)**
 
+The WebSite Organization Schema Type option (WPSSO ORG add-on required) is now fixed to "Organization" since Google does not recognize all Schema Organization sub-types as valid organization and publisher types.
+
 * **New Features**
 	* None.
 * **Improvements**
@@ -522,7 +524,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored the `WpssoConfig::get_config()` method.
 	* Refactored the `WpssoConfig::get_ext_sorted()` method.
 	* Removed `empty()` property checks when creating json data and added a `WpssoSchemaGraph::clean_json()` method to remove null values, empty strings, and empty arrays from the json data.
-	* The WebSite Organization Schema Type option is now fixed to "Organization" since Google does not recognize all Schema Organization sub-types as valid organization and publisher types.
+	* The WebSite Organization Schema Type option (WPSSO ORG add-on required) is now fixed to "Organization" since Google does not recognize all Schema Organization sub-types as valid organization and publisher types.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
