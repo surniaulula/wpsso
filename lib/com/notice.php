@@ -1257,12 +1257,16 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			';
 
 			if ( version_compare( $wp_version, '5.3.2', '>' ) ) {
+
 				$custom_style_css .= '
-					body.wp-admin.is-fullscreen-mode.has-toolbar-notices .block-editor__container .block-editor-editor-skeleton {
+					body.wp-admin.is-fullscreen-mode.has-toolbar-notices .block-editor__container .block-editor-editor-skeleton,
+					body.wp-admin.is-fullscreen-mode.has-toolbar-notices .block-editor__container .block-editor-editor-skeleton .editor-post-publish-panel {
 						top:32px;
 					}
 				';
+
 			} else {
+
 				$custom_style_css .= '
 					body.wp-admin.is-fullscreen-mode.has-toolbar-notices .block-editor__container .edit-post-layout > .edit-post-header {
 						top:32px;
