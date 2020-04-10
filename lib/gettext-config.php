@@ -248,6 +248,7 @@ _x( 'Every four days', 'option value', 'wpsso' );
 _x( 'Every five days', 'option value', 'wpsso' );
 _x( 'Every six days', 'option value', 'wpsso' );
 _x( 'Every week', 'option value', 'wpsso' );
+_x( 'Every two weeks', 'option value', 'wpsso' );
 _x( 'Development and Up', 'option value', 'wpsso' );
 _x( 'Alpha and Up', 'option value', 'wpsso' );
 _x( 'Beta and Up', 'option value', 'wpsso' );

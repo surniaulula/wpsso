@@ -1796,6 +1796,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					120 => 'Every five days',
 					144 => 'Every six days',
 					168 => 'Every week',
+					336 => 'Every two weeks',
 				),
 				'version_filter' => array(
 					'dev'    => 'Development and Up',

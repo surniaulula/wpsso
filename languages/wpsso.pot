@@ -2449,25 +2449,30 @@ msgstr ""
 
 #: lib/gettext-config.php:251
 msgctxt "option value"
-msgid "Development and Up"
+msgid "Every two weeks"
 msgstr ""
 
 #: lib/gettext-config.php:252
 msgctxt "option value"
-msgid "Alpha and Up"
+msgid "Development and Up"
 msgstr ""
 
 #: lib/gettext-config.php:253
 msgctxt "option value"
-msgid "Beta and Up"
+msgid "Alpha and Up"
 msgstr ""
 
 #: lib/gettext-config.php:254
 msgctxt "option value"
-msgid "Release Candidate and Up"
+msgid "Beta and Up"
 msgstr ""
 
 #: lib/gettext-config.php:255
+msgctxt "option value"
+msgid "Release Candidate and Up"
+msgstr ""
+
+#: lib/gettext-config.php:256
 msgctxt "option value"
 msgid "Stable / Production"
 msgstr ""
