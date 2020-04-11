@@ -294,7 +294,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				686 => array(
 					'plugin_wpssoam_tid'    => '',	// Deprecated on 2019/11/14.
 					'plugin_wpssorrssb_tid' => '',	// Deprecated on 2019/11/06.
-					'plugin_wpssossb_tid'   => '',	// Deprecated on 2019/11/05.
 					'plugin_wpssotie_tid'   => '',	// Deprecated on 2019/11/21.
 				),
 				692 => array(
@@ -361,7 +360,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				686 => array(
 					'plugin_wpssoam_tid' => '',	// Deprecated on 2019/11/14.
 					'plugin_wpssorrssb_tid' => '',	// Deprecated on 2019/11/06.
-					'plugin_wpssossb_tid'   => '',	// Deprecated on 2019/11/05.
 					'plugin_wpssotie_tid' => '',	// Deprecated on 2019/11/21.
 				),
 				700 => array(
