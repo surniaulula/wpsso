@@ -306,10 +306,10 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			 */
 			$custom_style_css .= '
 				#wpadminbar #wp-toolbar #' . $lca . '-toolbar-notices-icon.ab-icon::before { 
-					font-size:30px;
-					font-style:normal;
-					line-height:20px;
 					content:"' . $this->p->cf[ 'menu' ][ 'before' ] . '";
+					display:inline-block;
+					font-size:26px;
+					line-height:20px;
 				}
 			';
 
@@ -321,10 +321,10 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				#adminmenu li.menu-top.toplevel_page_' . $sitemenu . ' div.wp-menu-image::before,
 				#adminmenu li.menu-top.toplevel_page_' . $menu . ':hover div.wp-menu-image::before,
 				#adminmenu li.menu-top.toplevel_page_' . $sitemenu . ':hover div.wp-menu-image::before {
-					display:inline-block;
-					font-size:30px;
 					content:"' . $this->p->cf[ 'menu' ][ 'before' ] . '";
-					margin:-4px 0 0 0;
+					display:inline-block;
+					font-size:26px;
+					margin:0;
 					padding:0;
 				}
 				#adminmenu #toplevel_page_' . $menu . ' ul > li > a,

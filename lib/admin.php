@@ -452,7 +452,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$cap_name = isset( $this->p->cf[ 'wp' ][ 'admin' ][ $this->menu_lib ][ 'cap' ] ) ?	// Just in case.
 				$this->p->cf[ 'wp' ][ 'admin' ][ $this->menu_lib ][ 'cap' ] : 'manage_options';
 
-			$icon_url = null;	// An icon is provided by WpssoStyle::add_admin_page_style().
+			$icon_url = 'none';	// An icon is provided by WpssoStyle::add_admin_page_style().
 
 			$function = array( $this, 'show_setting_page' );
 
