@@ -1920,11 +1920,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'info-meta-social-preview':
 
+							$upload_url = get_admin_url( $blog_id = null, 'upload.php' );
+
 							$fb_img_dims = '600x315px';
 
 						 	$text = '<p class="status-msg">';
 
 							$text .= sprintf( __( 'The example image container uses the minimum recommended Facebook image dimensions of %s.', 'wpsso' ), $fb_img_dims );
+
+						 	$text .= '</p><p class="status-msg">';
+
+							$text .= sprintf( __( 'Edit images in the <a href="%s">WordPress Media Library</a> to select a preferred cropping area (ie. top/bottom) and optimize the image SEO text.', 'wpsso' ), $upload_url );
 
 							$text .= '</p>';
 
@@ -1946,6 +1952,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $msg_key ) {
 
+						/**
+						 *
+						 */
 						case 'info-priority-media':
 
 							$upload_url = get_admin_url( $blog_id = null, 'upload.php' );
@@ -1954,7 +1963,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<p>';
 
-							$text .= sprintf( __( 'Edit images in the <a href="%s">WordPress Media Library</a> to select a preferred cropping area and optimize image SEO.', 'wpsso' ), $upload_url );
+							$text .= sprintf( __( 'Edit images in the <a href="%s">WordPress Media Library</a> to select a preferred cropping area (ie. top/bottom) and optimize the image SEO text.', 'wpsso' ), $upload_url );
 
 							$text .= '</p>';
 

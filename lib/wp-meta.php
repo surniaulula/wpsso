@@ -791,6 +791,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'content'  => $form->get_input_image_upload( 'og_img', $media_info[ 'pid' ] ),
 				),
 				'og_img_url' => array(
+					'tr_class' => $form->in_options( 'og_img_id' ) ? 'hide_in_basic' : '',
 					'th_class' => 'medium',
 					'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_img_url',
