@@ -108,7 +108,7 @@
 
 <ul>
 <li>Maximum Images</li>
-<li>Image ID or Image URL</li>
+<li>Image ID or an Image URL</li>
 </ul></li>
 </ul></li>
 </ul></li>
@@ -286,18 +286,18 @@
 <li>Pinterest Pin It
 
 <ul>
-<li>Image ID or Image URL</li>
+<li>Image ID or an Image URL</li>
 </ul></li>
 <li>Twitter Card
 
 <ul>
-<li>Image ID or Image URL</li>
+<li>Image ID or an Image URL</li>
 </ul></li>
 <li>Schema JSON-LD Markup / Rich Results
 
 <ul>
 <li>Maximum Images</li>
-<li>Image ID or Image URL</li>
+<li>Image ID or an Image URL</li>
 </ul></li>
 </ul></li>
 </ul></li>

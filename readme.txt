@@ -98,7 +98,7 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 		* Facebook / Open Graph and Default Media
 			* Priority Image Information
 				* Maximum Images
-				* Image ID or Image URL
+				* Image ID or an Image URL
 
 * Built-in support for AMP plugins:
 
@@ -248,12 +248,12 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 				* Video Name / Title
 				* Video Description
 		* Pinterest Pin It
-			* Image ID or Image URL
+			* Image ID or an Image URL
 		* Twitter Card
-			* Image ID or Image URL
+			* Image ID or an Image URL
 		* Schema JSON-LD Markup / Rich Results
 			* Maximum Images
-			* Image ID or Image URL
+			* Image ID or an Image URL
 
 * Additional customizable option values in the Document SSO metabox are available from the [WPSSO Schema JSON-LD Markup Premium add-on](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/):
 
@@ -559,7 +559,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 	* Added AMP image sizes to the SSO &gt; Image Sizes page (as hidden options), even if an AMP plugin is not active.
 * **Bugfixes**
 	* Fixed a possible `image_make_intermediate_size()` error from using an undefined Pinterest image size.
-	* Fixed incorrectly disabled "or Image URL" options, which should only be disabled when an image ID is selected.
+	* Fixed incorrectly disabled "or an Image URL" options, which should only be disabled when an image ID is selected.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -573,7 +573,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 * **Improvements**
 	* Added a new Pinterest Pin It image size to the SSO &gt; Image Sizes settings page.
 	* Added a new Pinterest Pin It section in the Document SSO &gt; Priority Media tab:
-		* Image ID or Image URL
+		* Image ID or an Image URL
 	* Added an SSO &gt; Advanced Settings &gt; Document Types metabox with tabs:
 		* Open Graph Types
 		* Schema Types
@@ -997,7 +997,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 = 6.26.1 =
 
-(2020/03/29) Added AMP image sizes to the SSO &gt; Image Sizes page (as hidden options), even if an AMP plugin is not active. Fixed a possible `image_make_intermediate_size()` error. Fixed incorrectly disabled "or Image URL" options.
+(2020/03/29) Added AMP image sizes to the SSO &gt; Image Sizes page (as hidden options), even if an AMP plugin is not active. Fixed a possible `image_make_intermediate_size()` error. Fixed incorrectly disabled "or an Image URL" options.
 
 = 6.26.0 =
 
