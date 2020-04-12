@@ -51,10 +51,8 @@ if ( ! class_exists( 'WpssoSubmenuAddons' ) && class_exists( 'WpssoAdmin' ) ) {
 		 */
 		protected function add_meta_boxes() {
 	
-			$short_name = $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'short' ];
-
 			$metabox_id      = 'addons';
-			$metabox_title   = sprintf( _x( 'Complementary Add-ons for %s', 'metabox title', 'wpsso' ), $short_name );
+			$metabox_title   = _x( 'Complementary Add-ons', 'metabox title', 'wpsso' );
 			$metabox_screen  = $this->pagehook;
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';

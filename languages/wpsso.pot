@@ -6471,7 +6471,7 @@ msgstr ""
 msgid "Select Image"
 msgstr ""
 
-#: lib/sitesubmenu/site-addons.php:69 lib/submenu/addons.php:57
+#: lib/sitesubmenu/site-addons.php:69
 msgctxt "metabox title"
 msgid "Complementary Add-ons for %s"
 msgstr ""
@@ -6483,7 +6483,7 @@ msgstr ""
 
 #: lib/sitesubmenu/site-advanced.php:70 lib/submenu/advanced.php:122
 msgctxt "metabox tab"
-msgid "Plugin Behavior"
+msgid "Other Settings"
 msgstr ""
 
 #: lib/sitesubmenu/site-advanced.php:71 lib/submenu/advanced.php:125
@@ -6494,6 +6494,11 @@ msgstr ""
 #: lib/sitesubmenu/site-licenses.php:51 lib/submenu/licenses.php:40
 msgctxt "metabox title"
 msgid "Plugin and Add-on Licenses"
+msgstr ""
+
+#: lib/submenu/addons.php:55
+msgctxt "metabox title"
+msgid "Complementary Add-ons"
 msgstr ""
 
 #: lib/submenu/advanced.php:39
@@ -7171,7 +7176,7 @@ msgstr ""
 
 #: lib/wp-meta.php:539
 msgctxt "metabox tab"
-msgid "Head"
+msgid "Head Markup"
 msgstr ""
 
 #: lib/wp-meta.php:540

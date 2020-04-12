@@ -109,12 +109,12 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
-			$table_rows[ 'plugin_html_attr_filter' ] = '' .
+			$table_rows[ 'plugin_html_attr_filter' ] = $form->get_tr_hide( 'basic', array( 'plugin_html_attr_filter_name', 'plugin_html_attr_filter_prio' ) ) .
 			$form->get_th_html( _x( '&lt;html&gt; Attributes Filter Hook', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_html_attr_filter' ).
 			'<td class="blank">Name: ' . $form->options[ 'plugin_html_attr_filter_name' ] . ', ' . 
 			'Priority: ' . $form->options[ 'plugin_html_attr_filter_prio' ] . '</td>';
 
-			$table_rows[ 'plugin_head_attr_filter' ] = '' .
+			$table_rows[ 'plugin_head_attr_filter' ] = $form->get_tr_hide( 'basic', array( 'plugin_head_attr_filter_name', 'plugin_head_attr_filter_prio' ) ) .
 			$form->get_th_html( _x( '&lt;head&gt; Attributes Filter Hook', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_head_attr_filter' ).
 			'<td class="blank">Name: ' . $form->options[ 'plugin_head_attr_filter_name' ] . ', '.
 			'Priority: ' . $form->options[ 'plugin_head_attr_filter_prio' ] . '</td>';

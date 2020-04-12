@@ -536,7 +536,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					$tabs[ 'media' ]    = _x( 'Priority Media', 'metabox tab', 'wpsso' );
 					$tabs[ 'preview' ]  = _x( 'Preview', 'metabox tab', 'wpsso' );
 					$tabs[ 'oembed' ]   = _x( 'oEmbed', 'metabox tab', 'wpsso' );
-					$tabs[ 'head' ]     = _x( 'Head', 'metabox tab', 'wpsso' );
+					$tabs[ 'head' ]     = _x( 'Head Markup', 'metabox tab', 'wpsso' );
 					$tabs[ 'validate' ] = _x( 'Validate', 'metabox tab', 'wpsso' );
 
 					break;
