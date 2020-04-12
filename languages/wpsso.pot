@@ -1392,7 +1392,7 @@ msgctxt "lib file description"
 msgid "Social Pages"
 msgstr ""
 
-#: lib/gettext-config.php:31 lib/messages.php:839 lib/messages.php:2276
+#: lib/gettext-config.php:31 lib/messages.php:799 lib/messages.php:2276
 msgctxt "lib file description"
 msgid "Image Sizes"
 msgstr ""
@@ -2489,10 +2489,10 @@ msgctxt "option label"
 msgid "Use WordPress Content Filters"
 msgstr ""
 
-#: lib/gettext-pro.php:8 lib/gettext-pro.php:24 lib/gettext-pro.php:86
-#: lib/pro/admin/advanced.php:61 lib/pro/admin/advanced.php:138
+#: lib/gettext-pro.php:8 lib/gettext-pro.php:22 lib/gettext-pro.php:86
+#: lib/pro/admin/advanced.php:61 lib/pro/admin/advanced.php:128
 #: lib/pro/admin/general.php:58 lib/std/admin/advanced.php:61
-#: lib/std/admin/advanced.php:140 lib/std/admin/general.php:58
+#: lib/std/admin/advanced.php:130 lib/std/admin/general.php:58
 #: lib/submenu/essential.php:184 lib/submenu/general.php:299
 #: lib/submenu/general.php:304
 msgctxt "option comment"
@@ -2551,57 +2551,57 @@ msgstr ""
 #: lib/gettext-pro.php:17 lib/pro/admin/advanced.php:111
 #: lib/std/admin/advanced.php:113
 msgctxt "option label"
-msgid "&lt;html&gt; Attributes Filter Hook"
-msgstr ""
-
-#: lib/gettext-pro.php:18 lib/pro/admin/advanced.php:116
-#: lib/std/admin/advanced.php:118
-msgctxt "option label"
-msgid "&lt;head&gt; Attributes Filter Hook"
-msgstr ""
-
-#: lib/gettext-pro.php:19 lib/pro/admin/advanced.php:121
-#: lib/std/admin/advanced.php:123
-msgctxt "option label"
 msgid "Add Person Role for New Users"
 msgstr ""
 
-#: lib/gettext-pro.php:20 lib/pro/admin/advanced.php:125
-#: lib/std/admin/advanced.php:127
+#: lib/gettext-pro.php:18 lib/pro/admin/advanced.php:115
+#: lib/std/admin/advanced.php:117
 msgctxt "option label"
 msgid "Enable WP Excerpt for Pages"
 msgstr ""
 
-#: lib/gettext-pro.php:21 lib/pro/admin/advanced.php:129
-#: lib/std/admin/advanced.php:131
+#: lib/gettext-pro.php:19 lib/pro/admin/advanced.php:119
+#: lib/std/admin/advanced.php:121
 msgctxt "option label"
 msgid "Enable WP Tags for Pages"
 msgstr ""
 
-#: lib/gettext-pro.php:22 lib/pro/admin/advanced.php:133
-#: lib/std/admin/advanced.php:135
+#: lib/gettext-pro.php:20 lib/pro/admin/advanced.php:123
+#: lib/std/admin/advanced.php:125
 msgctxt "option label"
 msgid "Check for Duplicate Meta Tags"
 msgstr ""
 
-#: lib/gettext-pro.php:23 lib/gettext-pro.php:85 lib/messages.php:2293
-#: lib/pro/admin/advanced.php:137 lib/pro/admin/general.php:57
-#: lib/std/admin/advanced.php:139 lib/std/admin/general.php:57
+#: lib/gettext-pro.php:21 lib/gettext-pro.php:85 lib/messages.php:2293
+#: lib/pro/admin/advanced.php:127 lib/pro/admin/general.php:57
+#: lib/std/admin/advanced.php:129 lib/std/admin/general.php:57
 msgctxt "option label"
-msgid "Enforce Image Size Checks"
+msgid "Enforce Image Dimension Checks"
 msgstr ""
 
-#: lib/gettext-pro.php:25 lib/gettext-pro.php:87 lib/messages.php:2282
-#: lib/pro/admin/advanced.php:141 lib/pro/admin/general.php:61
-#: lib/std/admin/advanced.php:143 lib/std/admin/general.php:61
+#: lib/gettext-pro.php:23 lib/gettext-pro.php:87 lib/messages.php:2282
+#: lib/pro/admin/advanced.php:131 lib/pro/admin/general.php:61
+#: lib/std/admin/advanced.php:133 lib/std/admin/general.php:61
 msgctxt "option label"
 msgid "Upscale Media Library Images"
 msgstr ""
 
-#: lib/gettext-pro.php:26 lib/messages.php:2287 lib/pro/admin/advanced.php:145
-#: lib/std/admin/advanced.php:147
+#: lib/gettext-pro.php:24 lib/messages.php:2287 lib/pro/admin/advanced.php:135
+#: lib/std/admin/advanced.php:137
 msgctxt "option label"
 msgid "Maximum Image Upscale Percent"
+msgstr ""
+
+#: lib/gettext-pro.php:25 lib/pro/admin/advanced.php:139
+#: lib/std/admin/advanced.php:141
+msgctxt "option label"
+msgid "&lt;html&gt; Attributes Filter Hook"
+msgstr ""
+
+#: lib/gettext-pro.php:26 lib/pro/admin/advanced.php:144
+#: lib/std/admin/advanced.php:146
+msgctxt "option label"
+msgid "&lt;head&gt; Attributes Filter Hook"
 msgstr ""
 
 #: lib/gettext-pro.php:27 lib/pro/admin/advanced.php:168
@@ -4155,87 +4155,40 @@ msgid ""
 "width / height, etc.)."
 msgstr ""
 
-#: lib/messages.php:767
-msgid ""
-"https://developer.wordpress.org/reference/functions/language_attributes/"
-msgstr ""
-
-#: lib/messages.php:775
-msgid ""
-"%1$s hooks the \"%2$s\" filter (by default) to add / modify the %3$s HTML "
-"tag attributes for Open Graph namespace prefix values."
-msgstr ""
-
-#: lib/messages.php:777
-msgid ""
-"The <a href=\"%1$s\">WordPress %2$s function</a> and its \"%3$s\" filter are "
-"used by most themes &mdash; if the namespace prefix values are missing from "
-"your %4$s HTML tag attributes, make sure your header template(s) use the "
-"%2$s function."
-msgstr ""
-
-#: lib/messages.php:779
-msgid ""
-"Leaving this option empty disables the addition of Open Graph namespace "
-"values."
-msgstr ""
-
-#: lib/messages.php:781 lib/messages.php:799
-msgid "Example code for header templates: %1$s"
-msgstr ""
-
-#: lib/messages.php:793
-msgid ""
-"%1$s hooks the \"%2$s\" filter (by default) to add / modify the %3$s HTML "
-"tag attributes for Schema itemscope / itemtype markup."
-msgstr ""
-
-#: lib/messages.php:795
-msgid ""
-"If your theme already offers a filter for the %1$s HTML tag attributes, "
-"enter its name here (most themes do not offer this filter)."
-msgstr ""
-
-#: lib/messages.php:797
-msgid ""
-"Alternatively, you can edit your your theme header templates and add an "
-"action to call the \"%1$s\" filter."
-msgstr ""
-
-#: lib/messages.php:805
+#: lib/messages.php:765
 msgid "Automatically add the \"%s\" role when a new user is created."
 msgstr ""
 
-#: lib/messages.php:806 lib/user.php:42 lib/user.php:421
+#: lib/messages.php:766 lib/user.php:42 lib/user.php:421
 msgctxt "user role"
 msgid "Person"
 msgstr ""
 
-#: lib/messages.php:812
+#: lib/messages.php:772
 msgid "Enable the WordPress excerpt metabox for Pages."
 msgstr ""
 
-#: lib/messages.php:814
+#: lib/messages.php:774
 msgid ""
 "An excerpt is an optional hand-crafted summary of your content, that %s can "
 "also use as a default description value for meta tags and Schema markup."
 msgstr ""
 
-#: lib/messages.php:820
+#: lib/messages.php:780
 msgid "Enable the WordPress tags metabox for Pages."
 msgstr ""
 
-#: lib/messages.php:822
+#: lib/messages.php:782
 msgid ""
 "WordPress tags are optional keywords about the content subject, often used "
 "for searches and \"tag clouds\"."
 msgstr ""
 
-#: lib/messages.php:824
+#: lib/messages.php:784
 msgid "%s can convert WordPress tags into hashtags for some social sites."
 msgstr ""
 
-#: lib/messages.php:832
+#: lib/messages.php:792
 msgid ""
 "When editing Posts and Pages, %1$s can check the head section of webpages "
 "for conflicting and/or duplicate HTML tags. After %2$d <em>successful</em> "
@@ -4243,7 +4196,7 @@ msgid ""
 "or any plugin is updated, when another %2$d checks are performed."
 msgstr ""
 
-#: lib/messages.php:841
+#: lib/messages.php:801
 msgid ""
 "When this option is enabled, full size images used for meta tags and Schema "
 "markup must be equal to (or larger) than the image dimensions you've defined "
@@ -4251,32 +4204,32 @@ msgid ""
 "requirements will be ignored."
 msgstr ""
 
-#: lib/messages.php:847
+#: lib/messages.php:807
 msgid ""
 "WordPress does not upscale / enlarge images &mdash; WordPress can only "
 "create smaller images from larger full size originals."
 msgstr ""
 
-#: lib/messages.php:849
+#: lib/messages.php:809
 msgid ""
 "Upscaled images do not look as sharp or clear, and if enlarged too much, "
 "will look fuzzy and unappealing &mdash; not something you want to promote on "
 "social and search sites."
 msgstr ""
 
-#: lib/messages.php:851
+#: lib/messages.php:811
 msgid ""
 "%1$s includes a feature that allows upscaling of WordPress Media Library "
 "images for %2$s image sizes (up to a maximum upscale percentage)."
 msgstr ""
 
-#: lib/messages.php:853
+#: lib/messages.php:813
 msgid ""
 "Do not enable this option unless you want to publish lower quality images on "
 "social and search sites."
 msgstr ""
 
-#: lib/messages.php:861
+#: lib/messages.php:821
 msgid ""
 "When upscaling of %1$s image sizes is allowed, %2$s can make sure smaller "
 "images are not upscaled beyond reason, which would publish very low "
@@ -4284,10 +4237,57 @@ msgid ""
 "%3$s%%)."
 msgstr ""
 
-#: lib/messages.php:863
+#: lib/messages.php:823
 msgid ""
 "If an image needs to be upscaled beyond this maximum, in either width or "
 "height, the image will not be upscaled."
+msgstr ""
+
+#: lib/messages.php:831
+msgid ""
+"https://developer.wordpress.org/reference/functions/language_attributes/"
+msgstr ""
+
+#: lib/messages.php:839
+msgid ""
+"%1$s hooks the \"%2$s\" filter (by default) to add / modify the %3$s HTML "
+"tag attributes for Open Graph namespace prefix values."
+msgstr ""
+
+#: lib/messages.php:841
+msgid ""
+"The <a href=\"%1$s\">WordPress %2$s function</a> and its \"%3$s\" filter are "
+"used by most themes &mdash; if the namespace prefix values are missing from "
+"your %4$s HTML tag attributes, make sure your header template(s) use the "
+"%2$s function."
+msgstr ""
+
+#: lib/messages.php:843
+msgid ""
+"Leaving this option empty disables the addition of Open Graph namespace "
+"values."
+msgstr ""
+
+#: lib/messages.php:845 lib/messages.php:863
+msgid "Example code for header templates: %1$s"
+msgstr ""
+
+#: lib/messages.php:857
+msgid ""
+"%1$s hooks the \"%2$s\" filter (by default) to add / modify the %3$s HTML "
+"tag attributes for Schema itemscope / itemtype markup."
+msgstr ""
+
+#: lib/messages.php:859
+msgid ""
+"If your theme already offers a filter for the %1$s HTML tag attributes, "
+"enter its name here (most themes do not offer this filter)."
+msgstr ""
+
+#: lib/messages.php:861
+msgid ""
+"Alternatively, you can edit your your theme header templates and add an "
+"action to call the \"%1$s\" filter."
 msgstr ""
 
 #: lib/messages.php:875 lib/messages.php:888 lib/messages.php:901
@@ -6636,7 +6636,7 @@ msgstr ""
 
 #: lib/submenu/essential.php:57
 msgctxt "metabox title"
-msgid "Essential General Settings"
+msgid "Essential Settings"
 msgstr ""
 
 #: lib/submenu/essential.php:76 lib/submenu/general.php:69
@@ -7134,28 +7134,28 @@ msgid ""
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3995
+#: lib/util.php:3996
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3998
+#: lib/util.php:3999
 msgctxt "option comment"
 msgid "show these options now"
 msgstr ""
 
-#: lib/util.php:4003
+#: lib/util.php:4004
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:4006
+#: lib/util.php:4007
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:4332
+#: lib/util.php:4333
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

@@ -53,8 +53,8 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 			$this->maybe_show_language_notice();
 
-			$metabox_id      = 'general';
-			$metabox_title   = _x( 'Essential General Settings', 'metabox title', 'wpsso' );
+			$metabox_id      = 'essential';
+			$metabox_title   = _x( 'Essential Settings', 'metabox title', 'wpsso' );
 			$metabox_screen  = $this->pagehook;
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
@@ -62,17 +62,17 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 			);
 
 			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
-				array( $this, 'show_metabox_general' ), $metabox_screen,
+				array( $this, 'show_metabox_' . $metabox_id ), $metabox_screen,
 					$metabox_context, $metabox_prio, $callback_args );
 
 			$this->p->media->get_default_images( 1, $this->p->lca . '-opengraph', $check_dupes = false );
 		}
 
-		public function show_metabox_general() {
+		public function show_metabox_essential() {
 
 			$metabox_id = 'essential';
 
-			$tabs = apply_filters( $this->p->lca . '_essential_general_tabs', array(
+			$tabs = apply_filters( $this->p->lca . '_essential_tabs', array(
 				'site'      => _x( 'Site Information', 'metabox tab', 'wpsso' ),
 				'facebook'  => _x( 'Facebook', 'metabox tab', 'wpsso' ),
 				'google'    => _x( 'Google', 'metabox tab', 'wpsso' ),

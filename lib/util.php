@@ -3857,7 +3857,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$class_href_key = $class_tabset . $metabox_id . '-tab_' . $tab;
 
 				$metabox_html .= $this->get_metabox_table( $table_rows[ $tab ], $class_href_key, 
-					( empty( $metabox_id ) ? '' : $class_tabset . $metabox_id ), $class_tabset );
+					( empty( $metabox_id ) ? '' : $class_tabset . $metabox_id ), $class_tabset, $title );
 			}
 
 			$metabox_html .= '</div><!-- .' . $class_metabox_tabs . ' -->' . "\n";
@@ -3865,12 +3865,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $metabox_html;
 		}
 
-		public function do_metabox_table( $table_rows, $class_href_key = '', $class_tabset_mb = '', $class_tabset = 'sucom-no_tabset' ) {
+		public function do_metabox_table( $table_rows, $class_href_key = '', $class_tabset_mb = '', $class_tabset = 'sucom-no_tabset', $tab_title = '' ) {
 
 			echo $this->get_metabox_table( $table_rows, $class_href_key, $class_tabset_mb, $class_tabset );
 		}
 
-		public function get_metabox_table( $table_rows, $class_href_key = '', $class_tabset_mb = '', $class_tabset = 'sucom-no_tabset' ) {
+		public function get_metabox_table( $table_rows, $class_href_key = '', $class_tabset_mb = '', $class_tabset = 'sucom-no_tabset', $tab_title = '' ) {
 
 			$metabox_html = '';
 
@@ -3978,6 +3978,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				( $hidden_rows > 0 && $hidden_rows === $count_rows ? ' hide_in_' . $show_opts : '' );
 
 			$metabox_html .= '<div class="' . $div_class . '">' . "\n";
+			$metabox_html .= $tab_title ? '<h3 class="sucom-metabox-tab_title">' . $tab_title . '</h3>' : '';
 			$metabox_html .= '<table class="' . $table_class . '">' . "\n";
 
 			foreach ( $table_rows as $row ) {

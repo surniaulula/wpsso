@@ -1448,7 +1448,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_page_excerpt'          => 0,				// Enable WP Excerpt for Pages.
 					'plugin_page_tags'             => 0,				// Enable WP Tags for Pages.
 					'plugin_check_head'            => 1,				// Check for Duplicate Meta Tags.
-					'plugin_check_img_dims'        => 1,				// Enforce Image Size Checks.
+					'plugin_check_img_dims'        => 1,				// Enforce Image Dimension Checks.
 					'plugin_upscale_images'        => 0,				// Upscale Media Library Images.
 					'plugin_upscale_img_max'       => 33,				// Maximum Image Upscale Percent.
 
@@ -1648,14 +1648,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings - Integration tab.
 					 */
-					'plugin_html_attr_filter_name'     => 'language_attributes',	// <html> Attributes Filter Hook.
-					'plugin_html_attr_filter_name:use' => 'default',
-					'plugin_html_attr_filter_prio'     => 1000,
-					'plugin_html_attr_filter_prio:use' => 'default',
-					'plugin_head_attr_filter_name'     => 'head_attributes',	// <head> Attributes Filter Hook.
-					'plugin_head_attr_filter_name:use' => 'default',
-					'plugin_head_attr_filter_prio'     => 1000,
-					'plugin_head_attr_filter_prio:use' => 'default',
 					'plugin_new_user_is_person'        => 0,			// Add Person Role for New Users.
 					'plugin_new_user_is_person:use'    => 'default',
 					'plugin_page_excerpt'              => 0,			// Enable WP Excerpt for Pages.
@@ -1664,12 +1656,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_page_tags:use'             => 'default',
 					'plugin_check_head'                => 1,			// Check for Duplicate Meta Tags.
 					'plugin_check_head:use'            => 'default',
-					'plugin_check_img_dims'            => 1,			// Enforce Image Size Checks.
+					'plugin_check_img_dims'            => 1,			// Enforce Image Dimension Checks.
 					'plugin_check_img_dims:use'        => 'default',
 					'plugin_upscale_images'            => 0,			// Upscale Media Library Images.
 					'plugin_upscale_images:use'        => 'default',
 					'plugin_upscale_img_max'           => 33,			// Maximum Image Upscale Percent.
 					'plugin_upscale_img_max:use'       => 'default',
+					'plugin_html_attr_filter_name'     => 'language_attributes',	// <html> Attributes Filter Hook.
+					'plugin_html_attr_filter_name:use' => 'default',
+					'plugin_html_attr_filter_prio'     => 1000,
+					'plugin_html_attr_filter_prio:use' => 'default',
+					'plugin_head_attr_filter_name'     => 'head_attributes',	// <head> Attributes Filter Hook.
+					'plugin_head_attr_filter_name:use' => 'default',
+					'plugin_head_attr_filter_prio'     => 1000,
+					'plugin_head_attr_filter_prio:use' => 'default',
 
 					/**
 					 * Advanced Settings - Cache tab.

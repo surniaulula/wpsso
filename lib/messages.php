@@ -760,6 +760,70 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/**
 						 * Integration settings
 						 */
+						case 'tooltip-plugin_new_user_is_person':	// Add Person Role for New Users.
+
+							$text = sprintf( __( 'Automatically add the "%s" role when a new user is created.', 'wpsso' ),
+								_x( 'Person', 'user role', 'wpsso' ) );
+
+							break;
+
+						case 'tooltip-plugin_page_excerpt':	// Enable WP Excerpt for Pages.
+
+							$text = __( 'Enable the WordPress excerpt metabox for Pages.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'An excerpt is an optional hand-crafted summary of your content, that %s can also use as a default description value for meta tags and Schema markup.', 'wpsso' ), $info[ 'short' ] );
+
+							break;
+
+						case 'tooltip-plugin_page_tags':	// Enable WP Tags for Pages.
+
+							$text = __( 'Enable the WordPress tags metabox for Pages.', 'wpsso' ) . ' ';
+
+							$text .= __( 'WordPress tags are optional keywords about the content subject, often used for searches and "tag clouds".', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( '%s can convert WordPress tags into hashtags for some social sites.', 'wpsso' ), $info[ 'short' ] );
+
+							break;
+
+						case 'tooltip-plugin_check_head':	// Check for Duplicate Meta Tags.
+
+							$check_head_count = SucomUtil::get_const( 'WPSSO_DUPE_CHECK_HEADER_COUNT', 10 );
+
+							$text = sprintf( __( 'When editing Posts and Pages, %1$s can check the head section of webpages for conflicting and/or duplicate HTML tags. After %2$d <em>successful</em> checks, no additional checks will be performed &mdash; until the theme and/or any plugin is updated, when another %2$d checks are performed.', 'wpsso' ), $info[ 'short' ], $check_head_count );
+
+							break;
+
+						case 'tooltip-plugin_check_img_dims':	// Enforce Image Dimension Checks.
+
+							$img_sizes_page_link = $this->p->util->get_admin_url( 'image-sizes',
+								_x( 'Image Sizes', 'lib file description', 'wpsso' ) );
+
+							$text = sprintf( __( 'When this option is enabled, full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you\'ve defined in the %s settings &mdash; images that do not meet or exceed the minimum requirements will be ignored.', 'wpsso' ), $img_sizes_page_link );
+
+							break;
+
+						case 'tooltip-plugin_upscale_images':	// Upscale Media Library Images.
+
+							$text = __( 'WordPress does not upscale / enlarge images &mdash; WordPress can only create smaller images from larger full size originals.', 'wpsso' ) . ' ';
+
+							$text .= __( 'Upscaled images do not look as sharp or clear, and if enlarged too much, will look fuzzy and unappealing &mdash; not something you want to promote on social and search sites.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( '%1$s includes a feature that allows upscaling of WordPress Media Library images for %2$s image sizes (up to a maximum upscale percentage).', 'wpsso' ), $info[ 'name_pro' ], $info[ 'short' ] ) . ' ';
+
+							$text .= '<strong>' . __( 'Do not enable this option unless you want to publish lower quality images on social and search sites.', 'wpsso' ) . '</strong>';
+
+							break;
+
+						case 'tooltip-plugin_upscale_img_max':	// Maximum Image Upscale Percent.
+
+							$upscale_max = WpssoConfig::$cf[ 'opt' ][ 'defaults' ][ 'plugin_upscale_img_max' ];
+
+							$text = sprintf( __( 'When upscaling of %1$s image sizes is allowed, %2$s can make sure smaller images are not upscaled beyond reason, which would publish very low quality / fuzzy images on social and search sites (the default maximum is %3$s%%).', 'wpsso' ), $info[ 'short' ], $info[ 'name_pro' ], $upscale_max ) . ' ';
+
+							$text .= __( 'If an image needs to be upscaled beyond this maximum, in either width or height, the image will not be upscaled.', 'wpsso' );
+
+							break;
+
 						case 'tooltip-plugin_html_attr_filter':	// <html> Attributes Filter Hook.
 
 							$func_name = 'language_attributes()';
@@ -797,70 +861,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= sprintf( __( 'Alternatively, you can edit your your theme header templates and add an action to call the "%1$s" filter.', 'wpsso' ), $filter_name ) . ' ';
 
 							$text .= sprintf( __( 'Example code for header templates: %1$s', 'wpsso' ), $php_code );
-
-							break;
-
-						case 'tooltip-plugin_new_user_is_person':	// Add Person Role for New Users.
-
-							$text = sprintf( __( 'Automatically add the "%s" role when a new user is created.', 'wpsso' ),
-								_x( 'Person', 'user role', 'wpsso' ) );
-
-							break;
-
-						case 'tooltip-plugin_page_excerpt':	// Enable WP Excerpt for Pages.
-
-							$text = __( 'Enable the WordPress excerpt metabox for Pages.', 'wpsso' ) . ' ';
-
-							$text .= sprintf( __( 'An excerpt is an optional hand-crafted summary of your content, that %s can also use as a default description value for meta tags and Schema markup.', 'wpsso' ), $info[ 'short' ] );
-
-							break;
-
-						case 'tooltip-plugin_page_tags':	// Enable WP Tags for Pages.
-
-							$text = __( 'Enable the WordPress tags metabox for Pages.', 'wpsso' ) . ' ';
-
-							$text .= __( 'WordPress tags are optional keywords about the content subject, often used for searches and "tag clouds".', 'wpsso' ) . ' ';
-
-							$text .= sprintf( __( '%s can convert WordPress tags into hashtags for some social sites.', 'wpsso' ), $info[ 'short' ] );
-
-							break;
-
-						case 'tooltip-plugin_check_head':	// Check for Duplicate Meta Tags.
-
-							$check_head_count = SucomUtil::get_const( 'WPSSO_DUPE_CHECK_HEADER_COUNT', 10 );
-
-							$text = sprintf( __( 'When editing Posts and Pages, %1$s can check the head section of webpages for conflicting and/or duplicate HTML tags. After %2$d <em>successful</em> checks, no additional checks will be performed &mdash; until the theme and/or any plugin is updated, when another %2$d checks are performed.', 'wpsso' ), $info[ 'short' ], $check_head_count );
-
-							break;
-
-						case 'tooltip-plugin_check_img_dims':	// Enforce Image Size Checks.
-
-							$img_sizes_page_link = $this->p->util->get_admin_url( 'image-sizes',
-								_x( 'Image Sizes', 'lib file description', 'wpsso' ) );
-
-							$text = sprintf( __( 'When this option is enabled, full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you\'ve defined in the %s settings &mdash; images that do not meet or exceed the minimum requirements will be ignored.', 'wpsso' ), $img_sizes_page_link );
-
-							break;
-
-						case 'tooltip-plugin_upscale_images':	// Upscale Media Library Images.
-
-							$text = __( 'WordPress does not upscale / enlarge images &mdash; WordPress can only create smaller images from larger full size originals.', 'wpsso' ) . ' ';
-
-							$text .= __( 'Upscaled images do not look as sharp or clear, and if enlarged too much, will look fuzzy and unappealing &mdash; not something you want to promote on social and search sites.', 'wpsso' ) . ' ';
-
-							$text .= sprintf( __( '%1$s includes a feature that allows upscaling of WordPress Media Library images for %2$s image sizes (up to a maximum upscale percentage).', 'wpsso' ), $info[ 'name_pro' ], $info[ 'short' ] ) . ' ';
-
-							$text .= '<strong>' . __( 'Do not enable this option unless you want to publish lower quality images on social and search sites.', 'wpsso' ) . '</strong>';
-
-							break;
-
-						case 'tooltip-plugin_upscale_img_max':	// Maximum Image Upscale Percent.
-
-							$upscale_max = WpssoConfig::$cf[ 'opt' ][ 'defaults' ][ 'plugin_upscale_img_max' ];
-
-							$text = sprintf( __( 'When upscaling of %1$s image sizes is allowed, %2$s can make sure smaller images are not upscaled beyond reason, which would publish very low quality / fuzzy images on social and search sites (the default maximum is %3$s%%).', 'wpsso' ), $info[ 'short' ], $info[ 'name_pro' ], $upscale_max ) . ' ';
-
-							$text .= __( 'If an image needs to be upscaled beyond this maximum, in either width or height, the image will not be upscaled.', 'wpsso' );
 
 							break;
 
@@ -2290,7 +2290,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								if ( ! empty( $this->p->options[ 'plugin_check_img_dims' ] ) ) {
 
-									$img_dim_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', _x( 'Enforce Image Size Checks', 'option label', 'wpsso' ) );
+									$img_dim_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', _x( 'Enforce Image Dimension Checks', 'option label', 'wpsso' ) );
 
 									$text .= '<li>' . sprintf( __( 'Disable the %s option (not recommended).', 'wpsso' ), $img_dim_option_link ) . '</li>';
 								}

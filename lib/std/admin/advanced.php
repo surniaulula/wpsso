@@ -109,16 +109,6 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
-			$table_rows[ 'plugin_html_attr_filter' ] = $form->get_tr_hide( 'basic', array( 'plugin_html_attr_filter_name', 'plugin_html_attr_filter_prio' ) ) .
-			$form->get_th_html( _x( '&lt;html&gt; Attributes Filter Hook', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_html_attr_filter' ).
-			'<td class="blank">Name: ' . $form->options[ 'plugin_html_attr_filter_name' ] . ', ' . 
-			'Priority: ' . $form->options[ 'plugin_html_attr_filter_prio' ] . '</td>';
-
-			$table_rows[ 'plugin_head_attr_filter' ] = $form->get_tr_hide( 'basic', array( 'plugin_head_attr_filter_name', 'plugin_head_attr_filter_prio' ) ) .
-			$form->get_th_html( _x( '&lt;head&gt; Attributes Filter Hook', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_head_attr_filter' ).
-			'<td class="blank">Name: ' . $form->options[ 'plugin_head_attr_filter_name' ] . ', '.
-			'Priority: ' . $form->options[ 'plugin_head_attr_filter_prio' ] . '</td>';
-
 			$table_rows[ 'plugin_new_user_is_person' ] = '' . 
 			$form->get_th_html( _x( 'Add Person Role for New Users', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_new_user_is_person' ) . 
 			$form->get_td_no_checkbox( 'plugin_new_user_is_person' );
@@ -136,7 +126,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$form->get_td_no_checkbox( 'plugin_check_head' );
 
 			$table_rows[ 'plugin_check_img_dims' ] = '' . 
-			$form->get_th_html( _x( 'Enforce Image Size Checks', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_check_img_dims' ) . 
+			$form->get_th_html( _x( 'Enforce Image Dimension Checks', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_check_img_dims' ) . 
 			$form->get_td_no_checkbox( 'plugin_check_img_dims', '<em>' . _x( 'recommended', 'option comment', 'wpsso' ) . '</em>' );
 
 			$table_rows[ 'plugin_upscale_images' ] = '' . 
@@ -146,6 +136,16 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[ 'plugin_upscale_img_max' ] = '' .
 			$form->get_th_html( _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_upscale_img_max' ) . 
 			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
+
+			$table_rows[ 'plugin_html_attr_filter' ] = $form->get_tr_hide( 'basic', array( 'plugin_html_attr_filter_name', 'plugin_html_attr_filter_prio' ) ) .
+			$form->get_th_html( _x( '&lt;html&gt; Attributes Filter Hook', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_html_attr_filter' ).
+			'<td class="blank">Name: ' . $form->options[ 'plugin_html_attr_filter_name' ] . ', ' . 
+			'Priority: ' . $form->options[ 'plugin_html_attr_filter_prio' ] . '</td>';
+
+			$table_rows[ 'plugin_head_attr_filter' ] = $form->get_tr_hide( 'basic', array( 'plugin_head_attr_filter_name', 'plugin_head_attr_filter_prio' ) ) .
+			$form->get_th_html( _x( '&lt;head&gt; Attributes Filter Hook', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_head_attr_filter' ).
+			'<td class="blank">Name: ' . $form->options[ 'plugin_head_attr_filter_name' ] . ', '.
+			'Priority: ' . $form->options[ 'plugin_head_attr_filter_prio' ] . '</td>';
 
 			return $table_rows;
 		}
