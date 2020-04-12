@@ -869,23 +869,23 @@ msgctxt "option comment"
 msgid "from"
 msgstr ""
 
-#: lib/com/notice.php:240 lib/gettext-com.php:29
+#: lib/com/notice.php:241 lib/gettext-com.php:29
 msgid "Forever"
 msgstr ""
 
-#: lib/com/notice.php:242 lib/gettext-com.php:30
+#: lib/com/notice.php:243 lib/gettext-com.php:30
 msgid "This notice can be dismissed permanently."
 msgstr ""
 
-#: lib/com/notice.php:254 lib/gettext-com.php:31
+#: lib/com/notice.php:255 lib/gettext-com.php:31
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:471 lib/gettext-com.php:32 lib/post.php:1569
+#: lib/com/notice.php:472 lib/gettext-com.php:32 lib/post.php:1569
 msgid "Edit"
 msgstr ""
 
-#: lib/com/notice.php:475 lib/gettext-com.php:33
+#: lib/com/notice.php:476 lib/gettext-com.php:33
 msgid "Reference: %s"
 msgstr ""
 

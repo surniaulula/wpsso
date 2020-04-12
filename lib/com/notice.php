@@ -170,11 +170,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		public function nag( $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false, $payload = array() ) {
 
 			/**
-			 * By default, do not show a dismiss button.
+			 * Do not show a dismiss button by default.
+			 *
+			 * if ( ! isset( $payload[ 'dismiss_diff' ] ) ) {
+			 * 	$payload[ 'dismiss_diff' ] = false;
+			 * }
 			 */
-			if ( ! isset( $payload[ 'dismiss_diff' ] ) ) {
-				$payload[ 'dismiss_diff' ] = false;
-			}
 
 			$this->log( 'nag', $msg_text, $user_id, $notice_key, $dismiss_time, $payload );
 		}
