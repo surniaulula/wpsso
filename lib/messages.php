@@ -1952,10 +1952,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $msg_key ) {
 
-						/**
-						 *
-						 */
-						case 'info-priority-media':
+						case 'info-priority-media':	// Shown in the Document SSO > Priority Media tab.
 
 							$upload_url = get_admin_url( $blog_id = null, 'upload.php' );
 
@@ -1971,7 +1968,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'info-plugin-tid':	// Displayed in the Licenses settings page.
+						case 'info-plugin-tid':		// Shown in the Licenses settings page.
 
 							$um_info = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
 
@@ -1994,7 +1991,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'info-plugin-tid-network':	// Displayed in the Network Licenses settings page.
+						case 'info-plugin-tid-network':	// Shown in the Network Licenses settings page.
 
 							$um_info = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
 
