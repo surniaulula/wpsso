@@ -277,7 +277,7 @@
 <ul>
 <li>Include Preview Images</li>
 <li>Maximum Videos</li>
-<li>Video Size</li>
+<li>Video Dimensions</li>
 <li>Video Embed HTML or Video URL</li>
 <li>Video Name / Title</li>
 <li>Video Description</li>

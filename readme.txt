@@ -243,7 +243,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 			* Priority Video Information
 				* Include Preview Images
 				* Maximum Videos
-				* Video Size
+				* Video Dimensions
 				* Video Embed HTML or Video URL
 				* Video Name / Title
 				* Video Description
@@ -506,6 +506,28 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 <p>Under the SSO &gt; Update Manager settings page, select the "Development and Up" version filter for WPSSO Core and all its extensions (to satisfy any version dependencies). Save the plugin settings, and click the "Check for Updates" button to fetch the latest / current WPSSO version information. When new Development versions are available, they will automatically appear under your WordPress Dashboard &gt; Updates page. You can always re-select the "Stable / Production" version filter at any time to re-install the last stable / production version of a plugin.</p>
 
 <h3>Changelog / Release Notes</h3>
+
+**Version 6.29.0-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Renamed the Document SSO "Head" tab to "Head Markup".
+	* Renamed the SSO &gt; Advanced Settings "Plugin Behavior" tab to "Plugin Setup".
+	* Renamed the 'Enforce Image Size Checks' option to 'Enforce Image Dimension Checks'.
+	* Renamed the 'Video Size' option to 'Video Dimensions'.
+	* Added a default icon for unknown WPSSO settings tabs.
+	* Added a dismiss link to WPSSO "update-nag" notices.
+	* Added a title in the tab content for mobile icon-only tabs.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Updated the Image ID and Image URL option enabled/disabled behavior:
+		* The Image ID option is disabled when an Image URL is entered.
+		* The Image URL option is disabled when an Image ID is selected.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.2.
 
 **Version 6.28.0 (2020/04/06)**
 
