@@ -1299,7 +1299,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				.components-notice-list .' . $this->lca . '-notice *,
 				#wpadminbar .' . $this->lca . '-notice *,
 				.' . $this->lca . '-notice * {
-					line-height:1.5em;
+					line-height:1.4em;
 				}
 				.components-notice-list .' . $this->lca . '-notice .notice-label,
 				.components-notice-list .' . $this->lca . '-notice .notice-message,
@@ -1611,6 +1611,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				.' . $this->lca . '-notice.update-nag ol {
 					font-size:1em;
 					text-align:center;
+					margin:10px auto 10px auto;
 				}
 				.' . $this->lca . '-notice.update-nag ul li {
 					list-style-type:square;

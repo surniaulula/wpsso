@@ -256,39 +256,41 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-og_img_crop_area':
+						case 'tooltip-meta-og_img_crop_area':	// Preferred Cropping.
 
-							$text = __( 'The main subject area of the Facebook / Open Graph image.', 'wpsso' );
-
-						 	break;
-
-						case 'tooltip-meta-og_img_id':
-
-							$text = __( 'A customized image ID to include first, before any featured, attached, or content images.', 'wpsso' );
+							$text = __( 'Select the preferred cropping (ie. main subject) area of the image.', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-og_img_url':
+						case 'tooltip-meta-og_img_id':		// Image ID.
+
+							$text = __( 'A customized image ID to include first, before any featured, attached, or content images.', 'wpsso' ) . ' ';
+
+							$text .= '<em>' . __( 'This field is disabled if a custom image URL is entered.', 'wpsso' ) . '</em>';
+
+						 	break;
+
+						case 'tooltip-meta-og_img_url':		// or an Image URL.
 
 							$text = __( 'A customized image URL (instead of an image ID) to include first, before any featured, attached, or content images.', 'wpsso' ) . ' ';
 
-							$text .= __( 'Please make sure your custom image is large enough, or it may be ignored by social website(s).', 'wpsso' ) . ' ';
+							$text .= __( 'Make sure your custom image is large enough or it may be ignored by social website(s).', 'wpsso' ) . ' ';
 
 							$text .= $fb_recs_transl . ' ';
 
-							$text .= '<em>' . __( 'This field is disabled if an image ID is selected.', 'wpsso' ) . '</em>';
+							$text .= '<em>' . __( 'This field is disabled if a custom image ID is selected.', 'wpsso' ) . '</em>';
 
 							break;
 
-						case 'tooltip-meta-og_vid_dimensions':
+						case 'tooltip-meta-og_vid_dimensions':	// Video Dimensions.
 
-							$text = sprintf( __( 'The %1$s video API modules can offer default video width and height values, provided that information is available from the API service.', 'wpsso' ), $info[ 'short_pro' ] ) . ' ';
+							$text = sprintf( __( 'The %1$s video API modules can offer default video width and height values, provided that information is available from the service API.', 'wpsso' ), $info[ 'short_pro' ] ) . ' ';
 
 							$text .= __( 'If the default video width and/or height values are incorrect, you may adjust their values here.', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-og_vid_embed':
+						case 'tooltip-meta-og_vid_embed':	// Video Embed HTML.
 
 							$text = __( 'Custom video embed HTML for the first video in the Facebook / Open Graph and Twitter Card meta tags, and in the Schema JSON-LD markup.', 'wpsso' ) . ' ';
 
@@ -296,7 +298,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-og_vid_url':
+						case 'tooltip-meta-og_vid_url':		// or a Video URL.
 
 							$text = __( 'A customized video URL for the first video in the Facebook / Open Graph and Twitter Card meta tags, and in the Schema JSON-LD markup.', 'wpsso' ) . ' ';
 
@@ -304,55 +306,62 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-og_vid_title':
-						case 'tooltip-meta-og_vid_desc':
+						case 'tooltip-meta-og_vid_title':	// Video Name / Title.
+						case 'tooltip-meta-og_vid_desc':	// Video Description.
 
-							$text = sprintf( __( 'The %1$s video API modules can offer a default video name / title and description, provided that information is available from the API service.', 'wpsso' ), $info[ 'short_pro' ] ) . ' ';
+							$text = sprintf( __( 'The %1$s video API modules can offer a default video name / title and description, provided that information is available from the service API.', 'wpsso' ), $info[ 'short_pro' ] ) . ' ';
 
 							$text .= __( 'The video name / title and description will be used in the video Schema JSON-LD markup (add-on required).', 'wpsso' );
 
 							break;
 
-						case 'tooltip-meta-schema_img_crop_area':
+						case 'tooltip-meta-p_img_id':		// Image ID.
 
-							$text = __( 'The main subject area of the Google / Pinterest / Schema image.', 'wpsso' );
+							$text = __( 'A customized image ID for the Pinterest Pin It browser button.', 'wpsso' ) . ' ';
 
-							break;
-
-						case 'tooltip-meta-schema_img_id':
-
-							$text = __( 'A customized image ID to include first in the Google / Schema meta tags and JSON-LD markup, before any featured, attached, or content images.', 'wpsso' );
+							$text .= '<em>' . __( 'This field is disabled if a custom image URL is entered.', 'wpsso' ) . '</em>';
 
 						 	break;
 
-						case 'tooltip-meta-schema_img_url':
+						case 'tooltip-meta-p_img_url':		// or an Image URL.
 
-							$text = __( 'A customized image URL (instead of an image ID) to include first in the Google / Schema meta tags and JSON-LD markup.', 'wpsso' ) . ' ';
+							$text = __( 'A customized image URL (instead of an image ID) for the Pinterest Pin It browser button.', 'wpsso' ) . ' ';
 							
-							$text .= '<em>' . __( 'This field is disabled if an image ID is selected.', 'wpsso' ) . '</em>';
+							$text .= '<em>' . __( 'This field is disabled if a custom image ID is selected.', 'wpsso' ) . '</em>';
 
 						 	break;
 
-						case 'tooltip-meta-tc_lrg_img_crop_area':
-						case 'tooltip-meta-tc_sum_img_crop_area':
+						case 'tooltip-meta-schema_img_id':	// Image ID.
 
-							$text = __( 'The main subject area of the Twitter Card image.', 'wpsso' );
+							$text = __( 'A customized image ID to include first in the Schema meta tags and JSON-LD markup.', 'wpsso' ) . ' ';
 
-						 	break;
-
-						case 'tooltip-meta-tc_lrg_img_id':
-						case 'tooltip-meta-tc_sum_img_id':
-
-							$text = __( 'A customized image ID for the Twitter Card image.', 'wpsso' );
+							$text .= '<em>' . __( 'This field is disabled if a custom image URL is entered.', 'wpsso' ) . '</em>';
 
 						 	break;
 
-						case 'tooltip-meta-tc_lrg_img_url':
-						case 'tooltip-meta-tc_sum_img_url':
+						case 'tooltip-meta-schema_img_url':	// or an Image URL.
+
+							$text = __( 'A customized image URL (instead of an image ID) to include first in the Schema meta tags and JSON-LD markup.', 'wpsso' ) . ' ';
+							
+							$text .= '<em>' . __( 'This field is disabled if a custom image ID is selected.', 'wpsso' ) . '</em>';
+
+						 	break;
+
+						case 'tooltip-meta-tc_lrg_img_id':	// Image ID.
+						case 'tooltip-meta-tc_sum_img_id':	// Image ID.
+
+							$text = __( 'A customized image ID for the Twitter Card image.', 'wpsso' ) . ' ';
+
+							$text .= '<em>' . __( 'This field is disabled if a custom image URL is entered.', 'wpsso' ) . '</em>';
+
+						 	break;
+
+						case 'tooltip-meta-tc_lrg_img_url':	// or an Image URL.
+						case 'tooltip-meta-tc_sum_img_url':	// or an Image URL.
 
 							$text = __( 'A customized image URL (instead of an image ID) for the Twitter Card image.', 'wpsso' ) . ' ';
 							
-							$text .= '<em>' . __( 'This field is disabled if an image ID is selected.', 'wpsso' ) . '</em>';
+							$text .= '<em>' . __( 'This field is disabled if a custom image ID is selected.', 'wpsso' ) . '</em>';
 
 						 	break;
 
@@ -640,7 +649,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					switch ( $msg_key ) {
 
 						/**
-						 * Other Settings settings.
+						 * Plugin Setup settings.
 						 */
 						case 'tooltip-plugin_clean_on_uninstall': // Remove Settings on Uninstall.
 

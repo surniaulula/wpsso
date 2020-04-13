@@ -24,6 +24,8 @@
 .icon-upload:before { content: '\e816'; } /* '' */
 .icon-help-circled:before { content: '\e817'; } /* '' */
 .icon-comment:before { content: '\e818'; } /* '' */
+.icon-th-large:before { content: '\e819'; } /* '' */
+.icon-th:before { content: '\e81a'; } /* '' */
 .icon-tasks:before { content: '\f0ae'; } /* '' */
 .icon-filter:before { content: '\f0b0'; } /* '' */
 .icon-table:before { content: '\f0ce'; } /* '' */
@@ -38,6 +40,7 @@
 .icon-flag-empty:before { content: '\f11d'; } /* '' */
 .icon-code:before { content: '\f121'; } /* '' */
 .icon-direction:before { content: '\f124'; } /* '' */
+.icon-puzzle:before { content: '\f12e'; } /* '' */
 .icon-shield:before { content: '\f132'; } /* '' */
 .icon-export-alt:before { content: '\f14d'; } /* '' */
 .icon-apple:before { content: '\f179'; } /* '' */

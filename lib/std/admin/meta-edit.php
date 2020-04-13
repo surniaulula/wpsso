@@ -234,7 +234,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 					'tr_class' => $form->get_css_class_hide_vid_dim( 'basic', 'og_vid' ),
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'Video Size', 'option label', 'wpsso' ),
+					'label'    => _x( 'Video Dimensions', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_vid_dimensions',
 					'content'  => $form->get_no_input_video_dimensions( 'og_vid' ),
 				),

@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.28.0',	// Plugin version.
+					'version'     => '6.29.0-dev.1',	// Plugin version.
 					'opt_version' => '721',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1409,7 +1409,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_itemprop_aggregaterating.reviewcount'            => 1,
 
 					/**
-					 * Advanced Settings - Other Settings tab.
+					 * Advanced Settings - Plugin Setup tab.
 					 */
 					'plugin_clean_on_uninstall' => 0,			// Remove Settings on Uninstall.
 					'plugin_debug'              => 0,			// Add Hidden Debug Messages.
@@ -1634,7 +1634,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'options_filtered' => false,
 
 					/**
-					 * Advanced Settings - Other Settings tab.
+					 * Advanced Settings - Plugin Setup tab.
 					 */
 					'plugin_clean_on_uninstall'     => 0,			// Remove Settings on Uninstall
 					'plugin_clean_on_uninstall:use' => 'default',

@@ -1132,6 +1132,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$input_name        = $name . $key_suffix;
 			$input_name_id     = $name . '_id' . $key_suffix;
 			$input_name_id_pre = $name . '_id_pre' . $key_suffix;
+			$input_name_url    = $name . '_url' . $key_suffix;
+
+			/**
+			 * Disable the image ID option if we have an image URL.
+			 */
+			if ( ! empty( $this->options[ $input_name_url ] ) ) {
+				$placeholder = '';
+				$is_disabled = true;
+			}
 
 			if ( ! empty( $this->p->avail[ 'media' ][ 'ngg' ] ) ) {
 				$media_libs[ 'ngg' ] = 'NextGEN Gallery';
@@ -1144,7 +1153,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$placeholder = preg_replace( '/^ngg-/', '', $placeholder );
 			}
 
-			$input_pid  = $this->get_input( $input_name_id, 'pid', '', 0, $placeholder, $is_disabled, $tabindex = null, $el_attr );
+			$input_pid = $this->get_input( $input_name_id, 'pid', '', 0, $placeholder, $is_disabled, $tabindex = null, $el_attr );
+
 			$select_lib = $this->get_select( $input_name_id_pre, $media_libs, '', '', true, $lib_disabled, $default_lib );
 
 			if ( ! empty( $this->options[ $input_name_id ] ) &&
@@ -1154,7 +1164,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$data[ 'pid' ] = $this->options[ $input_name_id ];
 
 			} elseif ( $default_lib === 'wp' && ! empty( $placeholder ) ) {
-
 				$data[ 'pid' ] = $placeholder;
 			}
 
@@ -2087,10 +2096,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			 * Disable the image URL option if we have an image ID.
 			 */
 			if ( ! empty( $this->options[ $input_name_media ] ) ) {
-
 				$placeholder = '';
 				$is_disabled = true;
-
 			} else {
 				$placeholder = SucomUtil::esc_url_encode( $url );
 			}

@@ -107,7 +107,7 @@ _x( 'Schema JSON-LD Markup / Rich Results', 'metabox title', 'wpsso' );
 _x( 'Priority Video Information', 'metabox title', 'wpsso' );
 _x( 'Include Preview Images', 'option label', 'wpsso' );
 _x( 'Maximum Videos', 'option label', 'wpsso' );
-_x( 'Video Size', 'option label', 'wpsso' );
+_x( 'Video Dimensions', 'option label', 'wpsso' );
 _x( 'Video Embed HTML', 'option label', 'wpsso' );
 _x( 'or a Video URL', 'option label', 'wpsso' );
 _x( 'Video Name / Title', 'option label', 'wpsso' );
