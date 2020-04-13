@@ -649,7 +649,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					switch ( $msg_key ) {
 
 						/**
-						 * Plugin Setup settings.
+						 * Standard Settings settings.
 						 */
 						case 'tooltip-plugin_clean_on_uninstall': // Remove Settings on Uninstall.
 

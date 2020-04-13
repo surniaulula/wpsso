@@ -1409,7 +1409,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_itemprop_aggregaterating.reviewcount'            => 1,
 
 					/**
-					 * Advanced Settings - Plugin Setup tab.
+					 * Advanced Settings - Standard Settings tab.
 					 */
 					'plugin_clean_on_uninstall' => 0,			// Remove Settings on Uninstall.
 					'plugin_debug'              => 0,			// Add Hidden Debug Messages.
@@ -1634,7 +1634,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'options_filtered' => false,
 
 					/**
-					 * Advanced Settings - Plugin Setup tab.
+					 * Advanced Settings - Standard Settings tab.
 					 */
 					'plugin_clean_on_uninstall'     => 0,			// Remove Settings on Uninstall
 					'plugin_clean_on_uninstall:use' => 'default',

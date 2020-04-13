@@ -6491,7 +6491,7 @@ msgstr ""
 
 #: lib/sitesubmenu/site-advanced.php:70 lib/submenu/advanced.php:122
 msgctxt "metabox tab"
-msgid "Plugin Setup"
+msgid "Standard Settings"
 msgstr ""
 
 #: lib/sitesubmenu/site-advanced.php:71 lib/submenu/advanced.php:125
