@@ -513,7 +513,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* Renamed the Document SSO "Head" tab to "Head Markup".
-	* Renamed the SSO &gt; Advanced Settings "Plugin Behavior" tab to "Plugin Setup".
+	* Renamed the SSO &gt; Advanced Settings "Plugin Behavior" tab to "Standard Settings".
 	* Renamed the 'Enforce Image Size Checks' option to 'Enforce Image Dimension Checks'.
 	* Renamed the 'Video Size' option to 'Video Dimensions'.
 	* Added a default icon for unknown WPSSO settings tabs.
