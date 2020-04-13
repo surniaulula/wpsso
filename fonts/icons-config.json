@@ -223,12 +223,6 @@
       "src": "fontawesome"
     },
     {
-      "uid": "d531ea7e8c094b73df941ed0bac921f3",
-      "css": "shopping-bag",
-      "code": 62096,
-      "src": "fontawesome"
-    },
-    {
       "uid": "9396b2d8849e0213a0f11c5fd7fcc522",
       "css": "tasks",
       "code": 61614,
@@ -337,12 +331,6 @@
       "src": "fontawesome"
     },
     {
-      "uid": "6846d155ad5bda456569df81f3057faa",
-      "css": "clone",
-      "code": 62029,
-      "src": "fontawesome"
-    },
-    {
       "uid": "1d2b426ab6db81a58547ba13d8701ad8",
       "css": "paypal",
       "code": 61933,
@@ -376,6 +364,12 @@
       "uid": "5f0f183e241d15cbe486bff88b188dff",
       "css": "puzzle",
       "code": 61742,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "4aad6bb50b02c18508aae9cbe14e784e",
+      "css": "share",
+      "code": 61920,
       "src": "fontawesome"
     }
   ]
