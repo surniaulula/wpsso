@@ -1601,21 +1601,16 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			$custom_style_css .= '
-				.' . $this->lca . '-notice.update-nag {
-					clear:none;
-					margin-top:0;
-				}
 				.' . $this->lca . '-notice.update-nag .notice-message {
 					display:block;
 					margin:0 auto;
-					max-width:800px;
+					max-width:940px;
 				}
 				.' . $this->lca . '-notice.update-nag p,
 				.' . $this->lca . '-notice.update-nag ul,
 				.' . $this->lca . '-notice.update-nag ol {
 					font-size:1em;
 					text-align:center;
-					margin:15px auto 15px auto;
 				}
 				.' . $this->lca . '-notice.update-nag ul li {
 					list-style-type:square;

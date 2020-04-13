@@ -457,7 +457,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				 */
 				$notice_msg = '<div style="display:table-cell;">';
 
-				$notice_msg .= '<p style="margin-right:20px;">' . $this->p->admin->get_ext_img_icon( $ext ) . '</p>';
+				$notice_msg .= '<p style="margin-right:25px;">' . $this->p->admin->get_ext_img_icon( $ext ) . '</p>';
 
 				$notice_msg .= '</div>';
 
@@ -566,7 +566,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			 */
 			$notice_msg = '<div style="display:table-cell;">';
 
-			$notice_msg .= '<p style="margin-right:20px;">' . $this->p->admin->get_ext_img_icon( $ext ) . '</p>';
+			$notice_msg .= '<p style="margin-right:25px;">' . $this->p->admin->get_ext_img_icon( $ext ) . '</p>';
 
 			$notice_msg .= '</div>';
 

@@ -182,29 +182,28 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			/**
 			 * Re-use the notice border colors for the side column and dashboard metaboxes.
 			 */
+			$color            = $this->p->cf[ 'notice' ][ 'update-nag' ][ 'color' ];
+			$border_color     = $this->p->cf[ 'notice' ][ 'update-nag' ][ 'border-color' ];
+			$background_color = $this->p->cf[ 'notice' ][ 'update-nag' ][ 'background-color' ];
+
 			$custom_style_css .= '
-
 				#poststuff #side-info-column .postbox {
-					border:1px solid ' . $this->p->cf[ 'notice' ][ 'update-nag' ][ 'border-color' ] . ';
+					border:1px solid ' . $border_color . ';
 				}
-
 				#poststuff #side-info-column .postbox h2 {
-					border-bottom:1px dotted ' . $this->p->cf[ 'notice' ][ 'update-nag' ][ 'border-color' ] . ';
+					border-bottom:1px dotted ' . $border_color . ';
 				}
-
 				#poststuff #side-info-column .postbox.closed h2 {
-					border-bottom:1px solid ' . $this->p->cf[ 'notice' ][ 'update-nag' ][ 'border-color' ] . ';
+					border-bottom:1px solid ' . $border_color . ';
 				}
-
 				#poststuff #side-info-column .postbox.closed {
 					border-bottom:none;
 				}
-
 				#poststuff #side-info-column .postbox .inside td.blank,
 				#poststuff .dashboard_col .postbox .inside td.blank {
-					color:' . $this->p->cf[ 'notice' ][ 'update-nag' ][ 'color' ] . ';
-					border-color:' . $this->p->cf[ 'notice' ][ 'update-nag' ][ 'border-color' ] . ';
-					background-color:' . $this->p->cf[ 'notice' ][ 'update-nag' ][ 'background-color' ] . ';
+					color:' . $color . ';
+					border-color:' . $border_color . ';
+					background-color:' . $background_color . ';
 				}
 			';
 
