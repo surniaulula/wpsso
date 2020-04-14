@@ -348,7 +348,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		public function filter_init_objects() {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
 				$this->p->debug->log( 'setting allow_cache to true' );
 			}
 

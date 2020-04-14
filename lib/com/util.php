@@ -3605,33 +3605,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Returns the class and id attributes.
+		 * Deprecated on 2020/04/14.
 		 */
 		public static function get_atts_css_attr( array $atts, $css_name, $css_extra = '' ) {
-
-			$css_class = $css_name . '-' . ( empty( $atts[ 'css_class' ] ) ? 'button' : $atts[ 'css_class' ] );
-
-			if ( ! empty( $css_extra ) ) {
-				$css_class = $css_extra . ' ' . $css_class;
-			}
-
-			return 'class="' . $css_class . '" id="' . self::get_atts_src_id( $atts, $css_name ) . '"';
+			return '';
 		}
 
+		/**
+		 * Deprecated on 2020/04/14.
+		 */
 		public static function get_atts_src_id( array $atts, $src_name ) {
-
-			$src_id = $src_name . '-' . ( empty( $atts[ 'css_id' ] ) ? 'button' : $atts[ 'css_id' ] );
-
-			if ( ! empty( $atts[ 'use_post' ] ) || is_singular() || in_the_loop() ) {
-
-				global $post;
-
-				if ( ! empty( $post->ID ) ) {
-					$src_id .= '-post-' . $post->ID;
-				}
-			}
-
-			return $src_id;
+			return '';
 		}
 
 		public static function is_toplevel_edit( $hook_name ) {
@@ -4029,8 +4013,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * Deprecated on 2020/03/23.
 		 */
 		public static function get_lib_stub_action( $lib_id ) {
-
 			return array( $lib_id, false, false );
+		}
+
+		public static function add_query_frag( $url, $new_frag ) {
+
+			if ( $old_frag = strstr( $url, '#' ) ) {
+				$url = substr( $url, 0, -strlen( $old_frag ) );
+			}
+
+			return $url . '#' . $new_frag;
 		}
 	}
 }

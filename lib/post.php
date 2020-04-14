@@ -216,7 +216,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$mod[ 'is_home_posts' ] = $mod[ 'is_home_page' ] ? false : SucomUtil::is_home_posts( $mod_id );
 			$mod[ 'is_home' ]       = $mod[ 'is_home_page' ] || $mod[ 'is_home_posts' ] ? true : false;
 
-			if ( $mod[ 'id' ] ) {
+			if ( $mod[ 'id' ] ) {	// Just in case.
 
 				$mod[ 'post_slug' ]      = get_post_field( 'post_name', $mod[ 'id' ] );		// Post name (aka slug).
 				$mod[ 'post_type' ]      = get_post_type( $mod[ 'id' ] );			// Post type name.
@@ -226,6 +226,15 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$mod[ 'post_coauthors' ] = array();
 
 				$mod[ 'is_post_type_archive' ] = SucomUtil::is_post_type_archive( $mod[ 'post_type' ], $mod[ 'post_slug' ] );
+
+				/**
+				 * Check if the post type is publicly available.
+				 */
+				if ( $post_type_object = get_post_type_object( $mod[ 'post_type' ] ) ) {
+					if ( isset( $post_type_object->public ) ) {
+						$mod[ 'is_public' ] = $post_type_object->public ? true : false;
+					}
+				}
 			}
 
 			/**
@@ -748,15 +757,18 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 * $read_cache is false to generate notices etc.
 					 */
 					WpssoWpMeta::$head_tags = $this->p->head->get_head_array( $post_id, $mod, $read_cache = false );
+
 					WpssoWpMeta::$head_info = $this->p->head->extract_head_info( $mod, WpssoWpMeta::$head_tags );
 
-					if ( $mod[ 'post_status' ] === 'publish' ) {
+					/**
+					 * Check for missing open graph image and description values.
+					 */
+					if ( $mod[ 'is_public' ] && 'publish' === $mod[ 'post_status' ] ) {
 
-						$this->p->util->maybe_set_ref( WpssoWpMeta::$head_info[ 'og:url' ], $mod, __( 'checking meta tags', 'wpsso' ) );
+						$ref_url = empty( WpssoWpMeta::$head_info[ 'og:url' ] ) ? null : WpssoWpMeta::$head_info[ 'og:url' ];
 
-						/**
-						 * Check for missing open graph image and description values.
-						 */
+						$ref_url = $this->p->util->maybe_set_ref( $ref_url, $mod, __( 'checking meta tags', 'wpsso' ) );
+
 						foreach ( array( 'image', 'description' ) as $mt_suffix ) {
 
 							if ( empty( WpssoWpMeta::$head_info[ 'og:' . $mt_suffix ] ) ) {
@@ -765,14 +777,18 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 									$this->p->debug->log( 'og:' . $mt_suffix . ' meta tag is value empty and required' );
 								}
 
-								$notice_msg = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
-								$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-og-' . $mt_suffix;
+								if ( $this->p->notice->is_admin_pre_notices() ) {
 
-								$this->p->notice->err( $notice_msg, null, $notice_key );
+									$notice_msg = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
+
+									$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-og-' . $mt_suffix;
+
+									$this->p->notice->err( $notice_msg, null, $notice_key );
+								}
 							}
 						}
 
-						$this->p->util->maybe_unset_ref( WpssoWpMeta::$head_info[ 'og:url' ] );
+						$this->p->util->maybe_unset_ref( $ref_url);
 
 						/**
 						 * Check duplicates only when the post is available publicly and we have a valid permalink.
@@ -1315,27 +1331,34 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 * $read_cache is false to generate notices etc.
 			 */
 			WpssoWpMeta::$head_tags = $this->p->head->get_head_array( $post_id, $mod, $read_cache = false );
+
 			WpssoWpMeta::$head_info = $this->p->head->extract_head_info( $mod, WpssoWpMeta::$head_tags );
 
-			if ( $mod[ 'post_status' ] === 'publish' ) {
+			/**
+			 * Check for missing open graph image and description values.
+			 */
+			if ( $mod[ 'is_public' ] && 'publish' === $mod[ 'post_status' ] ) {
 
-				$this->p->util->maybe_set_ref( WpssoWpMeta::$head_info[ 'og:url' ], $mod, __( 'checking meta tags', 'wpsso' ) );
+				$ref_url = empty( WpssoWpMeta::$head_info[ 'og:url' ] ) ? null : WpssoWpMeta::$head_info[ 'og:url' ];
 
-				/**
-				 * Check for missing open graph image and description values.
-				 */
+				$ref_url = $this->p->util->maybe_set_ref( $ref_url, $mod, __( 'checking meta tags', 'wpsso' ) );
+
 				foreach ( array( 'image', 'description' ) as $mt_suffix ) {
 
 					if ( empty( WpssoWpMeta::$head_info[ 'og:' . $mt_suffix ] ) ) {
 
-						$notice_msg = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
-						$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-og-' . $mt_suffix;
+						if ( $this->p->notice->is_admin_pre_notices() ) {
 
-						$this->p->notice->err( $notice_msg, null, $notice_key );
+							$notice_msg = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
+
+							$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-og-' . $mt_suffix;
+
+							$this->p->notice->err( $notice_msg, null, $notice_key );
+						}
 					}
 				}
 
-				$this->p->util->maybe_unset_ref( WpssoWpMeta::$head_info[ 'og:url' ] );
+				$this->p->util->maybe_unset_ref( $ref_url );
 			}
 
 			$metabox_html = $this->get_metabox_document_meta( $post_obj );

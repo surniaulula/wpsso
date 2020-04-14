@@ -15,7 +15,7 @@
  * Requires At Least: 4.2
  * Tested Up To: 5.4
  * WC Tested Up To: 4.0.1
- * Version: 6.29.0-dev.1
+ * Version: 6.29.0-dev.2
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -345,7 +345,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->debug->mark( 'init options do action' );	// Begin timer.
 			}
 
-			do_action( $this->lca . '_init_options' );
+			do_action( $this->lca . '_init_options', $activate );
 
 			if ( $this->debug->enabled ) {
 				$this->debug->mark( 'init options do action' );	// End timer.

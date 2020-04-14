@@ -124,9 +124,10 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			/**
 			 * Common elements.
 			 */
-			'id'   => 0,			// Post, term, or user ID.
-			'name' => false,		// Module name ('post', 'term', or 'user').
-			'obj'  => false,		// Module object.
+			'id'        => 0,		// Post, term, or user ID.
+			'name'      => false,		// Module name ('post', 'term', or 'user').
+			'obj'       => false,		// Module object.
+			'is_public' => true,		// Module object is public.
 
 			/**
 			 * Post elements.
@@ -1187,6 +1188,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$mod = $this->get_mod( $obj_id );
 
 			$local_head_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache );
+
 			$local_head_info = $this->p->head->extract_head_info( $mod, $local_head_tags );
 
 			return $local_cache[ $cache_id ] = $local_head_info;

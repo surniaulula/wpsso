@@ -2514,10 +2514,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$add_page = isset( $atts[ 'add_page' ] ) ? $atts[ 'add_page' ] : true;
-			$src_id   = isset( $atts[ 'src_id' ] ) ? $atts[ 'src_id' ] : '';
 
 			if ( empty( $atts[ 'url' ] ) ) {
-				$sharing_url = $this->get_sharing_url( $mod, $add_page, $src_id );
+				$sharing_url = $this->get_sharing_url( $mod, $add_page );
 			} else {
 				$sharing_url = $atts[ 'url' ];
 			}
@@ -2909,32 +2908,31 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return apply_filters( $this->p->lca . '_oembed_data', $data, $mod, $width );
 		}
 
-		public function get_canonical_url( $mod = false, $add_page = true, $src_id = '' ) {
+		public function get_canonical_url( $mod = false, $add_page = true ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			return $this->get_page_url( 'canonical', $mod, $add_page, $src_id );
+			return $this->get_page_url( 'canonical', $mod, $add_page );
 		}
 
-		public function get_sharing_url( $mod = false, $add_page = true, $src_id = '' ) {
+		public function get_sharing_url( $mod = false, $add_page = true ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			return $this->get_page_url( 'sharing', $mod, $add_page, $src_id );
+			return $this->get_page_url( 'sharing', $mod, $add_page );
 		}
 
-		private function get_page_url( $type, $mod, $add_page, $src_id ) {
+		private function get_page_url( $type, $mod, $add_page ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
 					'type'     => $type,
 					'mod'      => $mod,
 					'add_page' => $add_page,
-					'src_id'   => $src_id,
 				) );
 			}
 
@@ -3021,7 +3019,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					}
 				}
 
-				$url = apply_filters( $this->p->lca . '_post_url', $url, $mod, $add_page, $src_id );
+				$url = apply_filters( $this->p->lca . '_post_url', $url, $mod, $add_page );
 
 			} else {
 
@@ -3033,7 +3031,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					} else {
 
-						$url = apply_filters( $this->p->lca . '_home_url', home_url( '/' ), $mod, $add_page, $src_id );
+						$url = apply_filters( $this->p->lca . '_home_url', home_url( '/' ), $mod, $add_page );
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'home url = ' . $url );
@@ -3057,7 +3055,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						}
 					}
 
-					$url = apply_filters( $this->p->lca . '_term_url', $url, $mod, $add_page, $src_id );
+					$url = apply_filters( $this->p->lca . '_term_url', $url, $mod, $add_page );
 
 				} elseif ( $mod[ 'is_user' ] ) {
 
@@ -3068,22 +3066,26 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						}
 
 						if ( ! empty( $url ) ) {	// Must be a non-empty string.
+
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'custom user ' . $type . '_url = ' . $url );
 							}
+
 						} else {
+
 							$url = get_author_posts_url( $mod[ 'id' ] );
+
 							$url = $this->check_url_string( $url, 'author posts' );
 						}
 					}
 
-					$url = apply_filters( $this->p->lca . '_user_url', $url, $mod, $add_page, $src_id );
+					$url = apply_filters( $this->p->lca . '_user_url', $url, $mod, $add_page );
 
 				} elseif ( is_search() ) {
 
 					$url = $this->check_url_string( get_search_link(), 'search link' );
 
-					$url = apply_filters( $this->p->lca . '_search_url', $url, $mod, $add_page, $src_id );
+					$url = apply_filters( $this->p->lca . '_search_url', $url, $mod, $add_page );
 
 				} elseif ( function_exists( 'get_post_type_archive_link' ) && $mod[ 'is_post_type_archive' ] ) {
 
@@ -3104,7 +3106,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						}
 					}
 
-					$url = apply_filters( $this->p->lca . '_archive_page_url', $url, $mod, $add_page, $src_id );
+					$url = apply_filters( $this->p->lca . '_archive_page_url', $url, $mod, $add_page );
 				}
 
 				$url = $this->get_url_paged( $url, $mod, $add_page );
@@ -3124,7 +3126,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 
 				/**
-				 * Strip out tracking query arguments by facebook, google, etc.
+				 * Remove tracking query arguments used by facebook, google, etc.
 				 */
 				$url = preg_replace( '/([\?&])(' .
 					'fb_action_ids|fb_action_types|fb_source|fb_aggregation_id|' . 
@@ -3132,7 +3134,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					'gclid|pk_campaign|pk_kwd' .
 					')=[^&]*&?/i', '$1', $url );
 
-				$url = apply_filters( $this->p->lca . '_server_request_url', $url, $mod, $add_page, $src_id );
+				$url = apply_filters( $this->p->lca . '_server_request_url', $url, $mod, $add_page );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'server request url (filtered) = ' . $url );
@@ -3141,13 +3143,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				/**
 				 * Maybe disable transient cache and URL shortening.
 				 */
-				if ( $src_id === 'head_sharing_url' && false !== strpos( $url, '?' ) ) {
+				if ( false !== strpos( $url, '?' ) ) {
 					$disable_cache = true;
 				} else {
 					$disable_cache = false;
 				}
 
-				if ( apply_filters( $this->p->lca . '_server_request_url_disable_cache', $disable_cache, $url, $mod, $add_page, $src_id ) ) {
+				if ( apply_filters( $this->p->lca . '_server_request_url_disable_cache', $disable_cache, $url, $mod, $add_page ) ) {
 					$this->disable_cache_filters( array( 'shorten_url' => '__return_false' ) );
 				}
 			}
@@ -3164,7 +3166,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$url = set_url_scheme( $url, 'https' );
 			}
 
-			return apply_filters( $this->p->lca . '_' . $type . '_url', $url, $mod, $add_page, $src_id );
+			return apply_filters( $this->p->lca . '_' . $type . '_url', $url, $mod, $add_page );
 		}
 
 		private function get_url_paged( $url, $mod, $add_page ) {
@@ -4330,8 +4332,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			// translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-			return $this->p->notice->set_ref( $sharing_url, $mod, sprintf( __( '%1$s for %2$s ID %3$d', 'wpsso' ),
-				$msg_transl, $name, $mod[ 'id' ] ) );
+			$msg_transl = sprintf( __( '%1$s for %2$s ID %3$d', 'wpsso' ), $msg_transl, $name, $mod[ 'id' ] );
+
+			return $this->p->notice->set_ref( $sharing_url, $mod, $msg_transl );
 		}
 
 		public function maybe_unset_ref( $sharing_url ) {

@@ -379,7 +379,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$mod = $this->p->util->get_page_mod( $use_post );
 			}
 
-			$sharing_url = $this->p->util->get_sharing_url( $mod, $add_page = true, 'head_sharing_url' );
+			$sharing_url = $this->p->util->get_sharing_url( $mod, $add_page = true );
 
 			if ( empty( $sharing_url ) ) {	// Just in case.
 

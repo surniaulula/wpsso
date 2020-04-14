@@ -973,7 +973,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			$meta_key = wp_unslash( $meta_key );
  
- 			$query = $wpdb->prepare( "SELECT COUNT( $id_column )FROM $table WHERE meta_key = %s", $meta_key );
+ 			$query = $wpdb->prepare( "SELECT COUNT( $id_column ) FROM $table WHERE meta_key = %s", $meta_key );
  
  			$result = $wpdb->get_col( $query );
 

@@ -617,12 +617,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return false;
 			}
 
-			$size_name   = $this->p->lca . '-schema';
-			$sharing_url = $this->p->util->maybe_set_ref( null, $mod, __( 'adding schema', 'wpsso' ) );
-			$mt_og       = $this->p->og->get_array( $mod, $size_name );
-			$json_data   = $this->get_json_data( $mod, $mt_og, $page_type_id, $is_main = true );
+			$size_name = $this->p->lca . '-schema';
 
-			$this->p->util->maybe_unset_ref( $sharing_url );
+			$ref_url = $this->p->util->maybe_set_ref( null, $mod, __( 'adding schema', 'wpsso' ) );
+
+			$mt_og = $this->p->og->get_array( $mod, $size_name );
+
+			$json_data = $this->get_json_data( $mod, $mt_og, $page_type_id, $is_main = true );
+
+			$this->p->util->maybe_unset_ref( $ref_url );
 
 			return $json_data;
 		}
@@ -2904,7 +2907,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Check only published posts or other non-post objects.
 			 */
-			if ( ! $mod[ 'is_post' ] || $mod[ 'post_status' ] === 'publish' ) {
+			if ( ! $mod[ 'is_post' ] || 'publish' === $mod[ 'post_status' ] ) {
+
+				$ref_url = $wpsso->util->maybe_set_ref( null, $mod, __( 'checking meta tags', 'wpsso' ) );
 
 				foreach ( $prop_names as $prop_name ) {
 
@@ -2924,6 +2929,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						}
 					}
 				}
+
+				$wpsso->util->maybe_unset_ref( $ref_url );
 			}
 		}
 

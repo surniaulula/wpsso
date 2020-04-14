@@ -596,30 +596,38 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				 * $read_cache is false to generate notices etc.
 				 */
 				WpssoWpMeta::$head_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache = false );
+
 				WpssoWpMeta::$head_info = $this->p->head->extract_head_info( $mod, WpssoWpMeta::$head_tags );
 
 				/**
 				 * Check for missing open graph image and description values.
 				 */
-				foreach ( array( 'image', 'description' ) as $mt_suffix ) {
+				if ( $mod[ 'is_public' ] ) {
 
-					if ( empty( WpssoWpMeta::$head_info[ 'og:' . $mt_suffix ] ) ) {
+					$ref_url = empty( WpssoWpMeta::$head_info[ 'og:url' ] ) ? null : WpssoWpMeta::$head_info[ 'og:url' ];
 
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'og:' . $mt_suffix . ' meta tag is value empty and required' );
-						}
+					$ref_url = $this->p->util->maybe_set_ref( $ref_url, $mod, __( 'checking meta tags', 'wpsso' ) );
 
-						/**
-						 * Add notice only if the admin notices have not already been shown.
-						 */
-						if ( $this->p->notice->is_admin_pre_notices() ) {
+					foreach ( array( 'image', 'description' ) as $mt_suffix ) {
 
-							$notice_msg = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
-							$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-og-' . $mt_suffix;
+						if ( empty( WpssoWpMeta::$head_info[ 'og:' . $mt_suffix ] ) ) {
 
-							$this->p->notice->err( $notice_msg, null, $notice_key );
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'og:' . $mt_suffix . ' meta tag is value empty and required' );
+							}
+
+							if ( $this->p->notice->is_admin_pre_notices() ) {
+
+								$notice_msg = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
+
+								$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-og-' . $mt_suffix;
+
+								$this->p->notice->err( $notice_msg, null, $notice_key );
+							}
 						}
 					}
+
+					$this->p->util->maybe_unset_ref( $ref_url );
 				}
 			}
 
