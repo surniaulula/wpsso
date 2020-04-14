@@ -507,7 +507,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.29.0-dev.1 (TBD)**
+**Version 6.29.0-dev.2 (TBD)**
 
 * **New Features**
 	* None.
@@ -522,9 +522,26 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Added an 'is_public' key to the `$mod` array (value is `true` by default, and `false` for non-public post types and taxonomies).
 	* Updated the Image ID and Image URL option enabled/disabled behavior:
 		* The Image ID option is disabled when an Image URL is entered.
 		* The Image URL option is disabled when an Image ID is selected.
+	* Removed the `$src_id` argument from the `WpssoUtil->get_canonical_url()` public method.
+	* Removed the `$src_id` argument from the `WpssoUtil->get_sharing_url()` public method.
+	* Removed the `$src_id` argument from the `WpssoUtil->get_page_url()` private method.
+	* Removed the `$src_id` argument from the following filters:
+		* 'wpsso_archive_page_url'
+		* 'wpsso_canonical_url'
+		* 'wpsso_home_url'
+		* 'wpsso_post_url'
+		* 'wpsso_search_url'
+		* 'wpsso_server_request_url_disable_cache'
+		* 'wpsso_server_request_url'
+		* 'wpsso_sharing_url'
+		* 'wpsso_term_url'
+		* 'wpsso_user_url'
+	* Deprecated the `WpssoUtil->get_atts_css_attr()` public method.
+	* Deprecated the `WpssoUtil->get_atts_src_id()` public method.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
