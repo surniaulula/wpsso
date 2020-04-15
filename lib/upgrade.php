@@ -53,7 +53,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'tc_prod_def_data2'              => '',
 					'plugin_version'                 => '',
 					'plugin_columns_taxonomy'        => 'plugin_columns_term',
-					'plugin_add_to_taxonomy'         => 'plugin_add_to_term',
+					'plugin_add_to_taxonomy'         => '',	// Replaced by "plugin_add_to_tax_{tax_slug}" options.
 					'plugin_ignore_small_img'        => 'plugin_check_img_dims',
 					'plugin_file_cache_exp'          => 'plugin_social_file_cache_exp',
 					'plugin_object_cache_exp'        => '',
@@ -330,6 +330,10 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				),
 				718 => array(
 					'plugin_list_cache_exp' => 'plugin_select_cache_exp',
+				),
+				722 => array(
+					'plugin_add_to_term' => '',	// Replaced by "plugin_add_to_tax_{tax_slug}" options.
+					'plugin_add_to_user' => 'plugin_add_to_user_page',
 				),
 			),
 		);

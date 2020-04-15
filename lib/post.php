@@ -102,30 +102,27 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 */
 			if ( $is_admin || $doing_ajax ) {
 
-				/**
-				 * Only use public post types (to avoid menu items, product variations, etc.).
-				 */
-				$ptns = $this->p->util->get_post_types( 'names' );	// Get public post types.
+				$post_type_names = $this->p->util->get_post_types( 'names' );
 
-				if ( is_array( $ptns ) ) {
+				if ( is_array( $post_type_names ) ) {
 
-					foreach ( $ptns as $ptn ) {
+					foreach ( $post_type_names as $name ) {
 
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'adding column filters for post type ' . $ptn );
+							$this->p->debug->log( 'adding column filters for post type ' . $name );
 						}
 
 						/**
 						 * See https://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns.
 						 */
-						add_filter( 'manage_' . $ptn . '_posts_columns', array( $this, 'add_post_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
+						add_filter( 'manage_' . $name . '_posts_columns', array( $this, 'add_post_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
 
-						add_filter( 'manage_edit-' . $ptn . '_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
+						add_filter( 'manage_edit-' . $name . '_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
 
 						/**
 						 * See https://codex.wordpress.org/Plugin_API/Action_Reference/manage_$post_type_posts_custom_column.
 						 */
-						add_action( 'manage_' . $ptn . '_posts_custom_column', array( $this, 'show_column_content' ), 10, 2 );
+						add_action( 'manage_' . $name . '_posts_custom_column', array( $this, 'show_column_content' ), 10, 2 );
 					}
 				}
 
@@ -738,6 +735,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			} else {
 
 				$add_metabox = empty( $this->p->options[ 'plugin_add_to_' . $post_obj->post_type ] ) ? false : true;
+
 				$add_metabox = apply_filters( $this->p->lca . '_add_metabox_post', $add_metabox, $post_id, $post_obj->post_type );
 
 				if ( $this->p->debug->enabled ) {
@@ -911,12 +909,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;	// Stop here.
 			}
 
-			/**
-			 * Only check public post types (to avoid menu items, product variations, etc.).
-			 */
-			$ptns = $this->p->util->get_post_types( 'names' );	// Get public post types.
-
-			if ( empty( $post_obj->post_type ) || ! in_array( $post_obj->post_type, $ptns ) ) {
+			if ( empty( $post_obj->post_type ) || SucomUtilWP::is_post_type_public( $post_obj->post_type ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: post_type "' . $post_obj->post_type . '" not public' );
@@ -1272,6 +1265,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_' . $post_obj->post_type ] ) ? false : true;
+
 			$add_metabox = apply_filters( $this->p->lca . '_add_metabox_post', $add_metabox, $post_id, $post_obj->post_type );
 
 			if ( $this->p->debug->enabled ) {

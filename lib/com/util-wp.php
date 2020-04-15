@@ -983,5 +983,92 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			return 0;
 		}
+
+		public static function is_post_type_public( $mixed ) {
+
+			$name = null;
+
+			if ( is_object( $mixed ) || is_numeric( $mixed ) ) {	// Post object or ID.
+				$name = get_post_type( $mixed );
+			} else {
+				$name = $mixed;					// Post type name.
+			}
+
+			if ( $name ) {
+
+				$args = array(
+					'name'    => $name,
+					'public'  => 1,
+					'show_ui' => 1,
+				);
+
+				$post_types = get_post_types( $args, $output = 'names', $operator = 'and' );
+			
+				if ( isset( $post_types[ 0 ] ) && $post_types[ 0 ] === $name ) {
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		public static function get_post_type_labels( array $values = array(), $val_prefix = '', $label_prefix = '' ) {
+
+			$args = array( 'show_in_menu' => 1, 'show_ui' => 1 );
+
+			$objects = get_post_types( $args, $output = 'objects', $operator = 'and' );
+
+			foreach ( $objects as $obj ) {
+				$values[ $val_prefix . $obj->name ] = trim( $label_prefix . ' ' . $obj->label . 
+					( empty( $obj->description ) ? '' : ' (' . $obj->description . ')' ) );
+			}
+
+			asort( $values );	// Sort by label.
+
+			return $values;
+		}
+
+		public static function get_taxonomy_labels( array $values = array(), $val_prefix = '', $label_prefix = '' ) {
+
+			$args = array( 'show_in_menu' => 1, 'show_ui' => 1 );
+
+			$objects = get_taxonomies( $args, $output = 'objects', $operator = 'and' );
+
+			foreach ( $objects as $obj ) {
+				$values[ $val_prefix . $obj->name ] = trim( $label_prefix . ' ' . $obj->label . 
+					( empty( $obj->description ) ? '' : ' (' . $obj->description . ')' ) );
+			}
+
+			asort( $values );	// Sort by label.
+
+			return $values;
+		}
+
+		public static function sort_objects_by_label( array &$objects ) {
+
+			$sorted  = array();
+			$by_name = array();
+
+			foreach ( $objects as $num => $obj ) {
+
+				if ( ! empty( $obj->labels->name ) ) {
+					$sort_key = $obj->labels->name . '-' . $num;
+				} elseif ( ! empty( $obj->label ) ) {
+					$sort_key = $obj->label . '-' . $num;
+				} else {
+					$sort_key = $obj->name . '-' . $num;
+				}
+
+				$by_name[ $sort_key ] = $num;	// Make sure key is sortable and unique.
+			}
+
+			ksort( $by_name );
+
+			foreach ( $by_name as $sort_key => $num ) {
+				$sorted[] = $objects[ $num ];
+			}
+
+			return $objects = $sorted;
+		}
 	}
 }

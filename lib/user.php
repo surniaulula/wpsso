@@ -579,7 +579,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			WpssoWpMeta::$head_tags = array();
 
-			$add_metabox = empty( $this->p->options[ 'plugin_add_to_user' ] ) ? false : true;
+			$add_metabox = empty( $this->p->options[ 'plugin_add_to_user_page' ] ) ? false : true;
+
 			$add_metabox = apply_filters( $this->p->lca . '_add_metabox_user', $add_metabox, $user_id );
 
 			if ( $this->p->debug->enabled ) {
@@ -686,7 +687,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return;
 			}
 
-			$add_metabox = empty( $this->p->options[ 'plugin_add_to_user' ] ) ? false : true;
+			$add_metabox = empty( $this->p->options[ 'plugin_add_to_user_page' ] ) ? false : true;
+
 			$add_metabox = apply_filters( $this->p->lca . '_add_metabox_user', $add_metabox, $user_id );
 
 			if ( $this->p->debug->enabled ) {

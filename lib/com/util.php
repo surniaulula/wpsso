@@ -2581,13 +2581,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_page_info( $use_post = false ) {
 
-			/**
-			 * Optimize and only check what we need to.
-			 */
-			$is_term_page = $is_user_page = false;
+			$is_post_page = $is_term_page = $is_user_page = false;
 
+			/**
+			 * Optimize and stop on first match.
+			 */
 			if ( ! $is_post_page = self::is_post_page( $use_post ) ) {
+
 				if ( ! $is_term_page = self::is_term_page() ) {
+
 					$is_user_page = self::is_user_page();
 				}
 			}
@@ -4023,33 +4025,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return $url . '#' . $new_frag;
-		}
-
-		public static function sort_objects_by_label( array &$objects ) {
-
-			$sorted  = array();
-			$by_name = array();
-
-			foreach ( $objects as $num => $obj ) {
-
-				if ( ! empty( $obj->labels->name ) ) {
-					$sort_key = $obj->labels->name . '-' . $num;
-				} elseif ( ! empty( $obj->label ) ) {
-					$sort_key = $obj->label . '-' . $num;
-				} else {
-					$sort_key = $obj->name . '-' . $num;
-				}
-
-				$by_name[ $sort_key ] = $num;	// Make sure key is sortable and unique.
-			}
-
-			ksort( $by_name );
-
-			foreach ( $by_name as $sort_key => $num ) {
-				$sorted[] = $objects[ $num ];
-			}
-
-			return $objects = $sorted;
 		}
 	}
 }

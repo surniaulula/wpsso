@@ -163,14 +163,15 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 */
 			$add_to_metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-			$add_to_checklist = $form->get_no_checklist_post_types( 'plugin_add_to', array(
-				'term' => 'Terms (Categories and Tags)',
-				'user' => 'User Profile',
-			) );
+			$add_to_values = array( 'user_page' => _x( 'User Profile', 'option label', 'wpsso' ) );
+			$add_to_values = SucomUtilWP::get_post_type_labels( $add_to_values, '', _x( 'Post Type', 'option label', 'wpsso' ) );
+			$add_to_values = SucomUtilWP::get_taxonomy_labels( $add_to_values, 'tax_', _x( 'Taxonomy', 'option label', 'wpsso' ) );
 
 			$table_rows[ 'plugin_add_to' ] = '' .
-			$form->get_th_html( sprintf( _x( 'Add %s Metabox', 'option label', 'wpsso' ), $add_to_metabox_title ), $css_class = '', $css_id = 'plugin_add_to' ) . 
-			'<td class="blank">' . $add_to_checklist . '</td>';
+			$form->get_th_html( sprintf( _x( 'Add %s Metabox', 'option label', 'wpsso' ), $add_to_metabox_title ),
+				$css_class = '', $css_id = 'plugin_add_to' ) . 
+			'<td class="blank">' . $form->get_no_checklist( 'plugin_add_to', $add_to_values,
+				$css_class = 'input_vertical_list', $css_id = '', $is_assoc = true ) . '</td>';
 
 			/**
 			 * Read Yoast SEO social meta.
@@ -206,9 +207,9 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$cols .= '<td class="underline"></td></tr>' . "\n";
 
 			foreach ( array(
-				'post'  => __( 'Posts, Pages, Custom Post Types', 'wpsso' ),
+				'post'  => __( 'Posts, Pages, and Custom Post Types', 'wpsso' ),
 				'media' => __( 'Media Library', 'wpsso' ),
-				'term'  => __( 'Terms (Categories and Tags)', 'wpsso' ),
+				'term'  => __( 'Categories, Tags, and Custom Taxonomies', 'wpsso' ),
 				// translators: Please ignore - translation uses a different text domain.
 				'user'  => __( 'Users' ),
 			) as $mod_name => $mod_label ) {
@@ -217,13 +218,15 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 				foreach ( WpssoWpMeta::get_column_headers() as $col_key => $col_header ) {
 
-					if ( $form->in_defaults( 'plugin_' . $col_key . '_col_' . $mod_name ) ) {	// Just in case.
-						$cols .= $form->get_td_no_checkbox( $name = 'plugin_' . $col_key . '_col_' . $mod_name,
-							$comment = '', $extra_css_class = 'checkbox' );	// Narrow column.
+					$opt_key = 'plugin_' . $col_key . '_col_' . $mod_name;
+
+					if ( $form->in_defaults( $opt_key ) ) {	// Just in case.
+						$cols .= $form->get_td_no_checkbox( $opt_key, $comment = '', $extra_css_class = 'checkbox' );	// Narrow column.
 					} else {
 						$cols .= '<td class="checkbox"></td>';
 					}
 				}
+
 				$cols .= '<td><p>' . $mod_label . '</p></td></tr>' . "\n";
 			}
 

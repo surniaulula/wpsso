@@ -340,21 +340,21 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		/**
 		 * Get all publicly accessible taxonomy names for a taxonomy slug (optional).
+		 *
+		 * Called by self::get_public_ids().
 		 */
 		public static function get_public_tax_names( $tax_name = null ) {
 
-			$get_tax_args = array(
+			$args = array(
 				'public'  => 1,
 				'show_ui' => 1,
 			);
 
 			if ( is_string( $tax_name ) ) {
-				$get_tax_args[ 'name' ] = $tax_name;
+				$args[ 'name' ] = $tax_name;
 			}
 
-			$tax_oper = 'and';
-
-			return get_taxonomies( $get_tax_args, 'names', $tax_oper );
+			return get_taxonomies( $args, $output = 'names', $operator = 'and' );
 		}
 
 		/**
@@ -589,7 +589,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			WpssoWpMeta::$head_tags = array();
 
-			$add_metabox = empty( $this->p->options[ 'plugin_add_to_term' ] ) ? false : true;
+			$add_metabox = empty( $this->p->options[ 'plugin_add_to_tax_' . $this->query_tax_slug ] ) ? false : true;
 
 			$add_metabox = apply_filters( $this->p->lca . '_add_metabox_term', $add_metabox, $this->query_term_id );
 
@@ -692,7 +692,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				return;
 			}
 
-			$add_metabox = empty( $this->p->options[ 'plugin_add_to_term' ] ) ? false : true;
+			$add_metabox = empty( $this->p->options[ 'plugin_add_to_tax_' . $this->query_tax_slug ] ) ? false : true;
+
 			$add_metabox = apply_filters( $this->p->lca . '_add_metabox_term', $add_metabox, $this->query_term_id );
 
 			if ( $this->p->debug->enabled ) {

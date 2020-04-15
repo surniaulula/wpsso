@@ -2616,8 +2616,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$se_func = 'get_select';
 
 			if ( ! self::$pkg[ $this->p->lca ][ 'pp' ] ) {
+
 				$td_attr = ' class="blank"';
 				$se_func = 'get_no_select';
+
 				$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 			}
 
@@ -2626,7 +2628,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			foreach ( array( 
 				'home_page'    => _x( 'Type for Page Homepage', 'option label', 'wpsso' ),
 				'home_posts'   => _x( 'Type for Posts Homepage', 'option label', 'wpsso' ),
-				'user_page'    => _x( 'Type for User / Author', 'option label', 'wpsso' ),
+				'user_page'    => _x( 'Type for User Profile', 'option label', 'wpsso' ),
 				'search_page'  => _x( 'Type for Search Results', 'option label', 'wpsso' ),
 				'archive_page' => _x( 'Type for Other Archive', 'option label', 'wpsso' ),
 			) as $type_name => $th_label ) {
@@ -2639,11 +2641,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			/**
-			 * Type by Post Type.
+			 * Open Graph Type by Post Type.
 			 */
 			$type_select = '';
 			$type_keys   = array();
-			$post_types  = $this->p->util->get_post_types( 'objects' );	// Get public post types.
+			$post_types  = $this->p->util->get_post_types( 'objects' );
 
 			foreach ( $post_types as $obj ) {
 
@@ -2670,7 +2672,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			unset( $type_select, $type_keys );	// Just in case.
 
 			/**
-			 * Type by Taxonomy.
+			 * Open Graph Type by Taxonomy.
 			 */
 			$type_select = '';
 			$type_keys   = array();
@@ -2816,7 +2818,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			foreach ( array( 
 				'home_page'    => _x( 'Type for Page Homepage', 'option label', 'wpsso' ),
 				'home_posts'   => _x( 'Type for Posts Homepage', 'option label', 'wpsso' ),
-				'user_page'    => _x( 'Type for User / Author', 'option label', 'wpsso' ),
+				'user_page'    => _x( 'Type for User Profile', 'option label', 'wpsso' ),
 				'search_page'  => _x( 'Type for Search Results', 'option label', 'wpsso' ),
 				'archive_page' => _x( 'Type for Other Archive', 'option label', 'wpsso' ),
 			) as $type_name => $th_label ) {
@@ -2838,11 +2840,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			/**
-			 * Type by Post Type.
+			 * Schema Type by Post Type.
 			 */
 			$type_select = '';
 			$type_keys   = array();
-			$post_types  = $this->p->util->get_post_types( 'objects' );	// Get public post types.
+			$post_types  = $this->p->util->get_post_types( 'objects' );
 
 			foreach ( $post_types as $obj ) {
 
@@ -2887,7 +2889,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			unset( $type_select, $type_keys );	// Just in case.
 
 			/**
-			 * Type by Taxonomy.
+			 * Schema Type by Taxonomy.
 			 */
 			$type_select = '';
 			$type_keys   = array();

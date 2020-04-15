@@ -378,9 +378,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->log( 'adding defaults derived from post type names' );
 				}
 
-				$defs = $this->p->util->add_ptns_to_opts( $defs, array(
+				$this->p->util->add_post_type_names( $defs, array(
+					'plugin_add_to'   => 1,			// Add Document SSO Metabox.
 					'og_type_for'     => 'article',
-					'plugin_add_to'   => 1,
 					'schema_type_for' => 'webpage',
 				) );
 
@@ -391,7 +391,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->log( 'adding defaults derived from term names' );
 				}
 
-				$defs = $this->p->util->add_ttns_to_opts( $defs, array(
+				$this->p->util->add_taxonomy_names( $defs, array(
+					'plugin_add_to_tax'   => 1,		// Add Document SSO Metabox.
 					'og_type_for_tax'     => 'website',
 					'schema_type_for_tax' => 'item.list',
 				) );
@@ -699,9 +700,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->log( 'adding options derived from post type names' );
 				}
 
-				$opts = $this->p->util->add_ptns_to_opts( $opts, array(
+				$this->p->util->add_post_type_names( $opts, array(
+					'plugin_add_to'   => 1,			// Add Document SSO Metabox.
 					'og_type_for'     => 'article',
-					'plugin_add_to'   => 1,
 					'schema_type_for' => 'webpage',
 				) );
 
@@ -712,7 +713,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->log( 'adding options derived from term names' );
 				}
 
-				$opts = $this->p->util->add_ttns_to_opts( $opts, array(
+				$this->p->util->add_taxonomy_names( $opts, array(
+					'plugin_add_to_tax'   => 1,		// Add Document SSO Metabox.
 					'og_type_for_tax'     => 'website',
 					'schema_type_for_tax' => 'item.list',
 				) );

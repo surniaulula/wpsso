@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '6.29.0-dev.2',	// Plugin version.
-					'opt_version' => '721',		// Increment when changing default option values.
+					'version'     => '6.29.0-dev.3',	// Plugin version.
+					'opt_version' => '723',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -1104,17 +1104,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Standard WordPress types.
 					 */
-					'schema_type_for_archive_page' => 'item.list',
-					'schema_type_for_attachment'   => 'webpage',
-					'schema_type_for_home_page'    => 'website',
-					'schema_type_for_home_posts'   => 'blog',
-					'schema_type_for_page'         => 'article',
-					'schema_type_for_post'         => 'blog.posting',
-					'schema_type_for_post_archive' => 'item.list',
-					'schema_type_for_search_page'  => 'webpage.search.results',
-					'schema_type_for_tax_category' => 'item.list',
-					'schema_type_for_tax_post_tag' => 'item.list',
-					'schema_type_for_user_page'    => 'webpage.profile',
+					'schema_type_for_archive_page'      => 'item.list',
+					'schema_type_for_attachment'        => 'webpage',
+					'schema_type_for_home_page'         => 'website',
+					'schema_type_for_home_posts'        => 'blog',
+					'schema_type_for_page'              => 'article',
+					'schema_type_for_post'              => 'blog.posting',
+					'schema_type_for_post_archive'      => 'item.list',
+					'schema_type_for_search_page'       => 'webpage.search.results',
+					'schema_type_for_tax_category'      => 'item.list',
+					'schema_type_for_tax_link_category' => 'item.list',
+					'schema_type_for_tax_post_tag'      => 'item.list',
+					'schema_type_for_user_page'         => 'webpage.profile',
 
 					/**
 					 * Other taxonomy and post types.
@@ -1171,30 +1172,39 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Standard WordPress types.
 					 */
-					'og_type_for_archive_page'     => 'website',
-					'og_type_for_attachment'       => 'website',
-					'og_type_for_home_page'        => 'website',
-					'og_type_for_home_posts'       => 'website',
-					'og_type_for_page'             => 'article',
-					'og_type_for_post'             => 'article',
-					'og_type_for_post_archive'     => 'website',
-					'og_type_for_question'         => 'article',
-					'og_type_for_search_page'      => 'website',
-					'og_type_for_tax_category'     => 'website',
-					'og_type_for_tax_faq_category' => 'website',
-					'og_type_for_tax_post_tag'     => 'website',
-					'og_type_for_user_page'        => 'website',
+					'og_type_for_archive_page'      => 'website',
+					'og_type_for_attachment'        => 'website',
+					'og_type_for_home_page'         => 'website',
+					'og_type_for_home_posts'        => 'website',
+					'og_type_for_page'              => 'article',
+					'og_type_for_post'              => 'article',
+					'og_type_for_post_archive'      => 'website',
+					'og_type_for_question'          => 'article',
+					'og_type_for_search_page'       => 'website',
+					'og_type_for_tax_category'      => 'website',
+					'og_type_for_tax_link_category' => 'website',
+					'og_type_for_tax_post_tag'      => 'website',
+					'og_type_for_user_page'         => 'website',
 
 					/**
 					 * Other taxonomy and post types.
 					 */
-					'og_type_for_article'      => 'article',
-					'og_type_for_download'     => 'product',		// For Easy Digital Downloads.
-					'og_type_for_organization' => 'website',
-					'og_type_for_place'        => 'place',
-					'og_type_for_product'      => 'product', 		// For WooCommerce and most e-commerce plugins.
-					'og_type_for_website'      => 'website',
-					'og_type_for_wpsc-product' => 'product',		// For WP eCommerce.
+					'og_type_for_article'                => 'article',
+					'og_type_for_download'               => 'product',	// For Easy Digital Downloads.
+					'og_type_for_organization'           => 'website',
+					'og_type_for_place'                  => 'place',
+					'og_type_for_product'                => 'product', 	// For WooCommerce and most e-commerce plugins.
+					'og_type_for_question'               => 'article',
+					'og_type_for_tax_faq_category'       => 'website',
+					'og_type_for_tax_product_brand'      => 'website',	// For WooCommerce Brands.
+					'og_type_for_tax_product_cat'        => 'website',	// For WooCommerce.
+					'og_type_for_tax_product_tag'        => 'website',	// For WooCommerce.
+					'og_type_for_tax_pwb-brand'          => 'website',	// For Perfect WooCommerce Brands Add-on.
+					'og_type_for_tax_yith_product_brand' => 'website',	// For YITH WooCommerce Brands Add-on.
+					'og_type_for_tc_events'              => 'article',	// For Tickera.
+					'og_type_for_tribe_events'           => 'article',	// For The Events Calendar.
+					'og_type_for_website'                => 'website',
+					'og_type_for_wpsc-product'           => 'product',	// For WP eCommerce.
 
 					'og_author_field'            => 'facebook',		// Author Profile URL Field.
 					'og_def_article_section'     => 'none',			// Default Article Section.
@@ -1511,16 +1521,36 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings - Document Meta tab.
 					 */
-					'plugin_add_to_attachment'           => 1,
-					'plugin_add_to_page'                 => 1,
-					'plugin_add_to_post'                 => 1,
-					'plugin_add_to_product'              => 1,
-					'plugin_add_to_reply'                => 0,			// Bbpress
-					'plugin_add_to_term'                 => 1,
-					'plugin_add_to_topic'                => 0,			// Bbpress
-					'plugin_add_to_user'                 => 1,
-					'plugin_wpseo_social_meta'           => 0,			// Import Yoast SEO Social Meta.
-					'plugin_def_currency'                => 'USD',			// Default Currency.
+					'plugin_add_to_attachment'        => 1,
+					'plugin_add_to_page'              => 1,
+					'plugin_add_to_post'              => 1,
+					'plugin_add_to_tax_category'      => 1,
+					'plugin_add_to_tax_link_category' => 1,
+					'plugin_add_to_tax_post_tag'      => 1,
+					'plugin_add_to_user_page'         => 1,
+					'plugin_wpseo_social_meta'        => 0,			// Import Yoast SEO Social Meta.
+					'plugin_def_currency'             => 'USD',		// Default Currency.
+
+					/**
+					 * Other taxonomy and post types.
+					 */
+					'plugin_add_to_article'                => 1,
+					'plugin_add_to_download'               => 1,		// For Easy Digital Downloads.
+					'plugin_add_to_organization'           => 1,
+					'plugin_add_to_place'                  => 1,
+					'plugin_add_to_product'                => 1,
+					'plugin_add_to_question'               => 1,
+					'plugin_add_to_reply'                  => 0,		// Bbpress
+					'plugin_add_to_tax_faq_category'       => 1,
+					'plugin_add_to_tax_product_brand'      => 1,		// For WooCommerce Brands.
+					'plugin_add_to_tax_product_cat'        => 1,		// For WooCommerce.
+					'plugin_add_to_tax_product_tag'        => 1,		// For WooCommerce.
+					'plugin_add_to_tax_pwb-brand'          => 1,		// For Perfect WooCommerce Brands Add-on.
+					'plugin_add_to_tax_yith_product_brand' => 1,		// For YITH WooCommerce Brands Add-on.
+					'plugin_add_to_topic'                  => 0,		// Bbpress
+					'plugin_add_to_tribe_events'           => 1,		// The Events Calendar.
+					'plugin_add_to_tribe-ea-record'        => 1,		// The Events Calendar.
+					'plugin_add_to_wpsc-product'           => 1,		// For WP eCommerce.
 
 					/**
 					 * Advanced Settings - Product Attrs tab.

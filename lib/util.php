@@ -787,7 +787,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Add options using a key prefix string / array and post type names.
+		 * Deprecated on 2020/04/15.
 		 */
 		public function add_ptns_to_opts( array &$opts, $mixed, $default = 1 ) {
 
@@ -795,15 +795,23 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$mixed = array( $mixed => $default );
 			}
 
-			foreach ( $mixed as $opt_pre => $def_val ) {
+			return $this->add_post_type_names( $opts, $mixed );
+		}
+
+		/**
+		 * Add options using a key prefix string / array and post type names.
+		 */
+		public function add_post_type_names( array &$opts, array $defaults ) {
+
+			foreach ( $defaults as $opt_pre => $def_val ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'checking options for prefix ' . $opt_pre );
 				}
 
-				foreach ( $this->get_post_types( 'names' ) as $ptn ) {	// Get public post types.
+				foreach ( $this->get_post_types( 'names' ) as $name ) {
 
-					$opt_key = $opt_pre . '_' . $ptn;
+					$opt_key = $opt_pre . '_' . $name;
 
 					if ( ! isset( $opts[ $opt_key ] ) ) {
 
@@ -814,6 +822,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						$opts[ $opt_key ] = $def_val;
 
 					} else {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'skipped ' . $opt_key . ' - already set' );
 						}
@@ -825,7 +834,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Add options using a key prefix string / array and term names.
+		 * Deprecated on 2020/04/15.
 		 */
 		public function add_ttns_to_opts( array &$opts, $mixed, $default = 1 ) {
 
@@ -833,15 +842,23 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$mixed = array( $mixed => $default );
 			}
 
-			foreach ( $mixed as $opt_pre => $def_val ) {
+			return $this->add_taxonomy_names( $opts, $mixed );
+		}
+
+		/**
+		 * Add options using a key prefix string / array and term names.
+		 */
+		public function add_taxonomy_names( array &$opts, array $defaults ) {
+
+			foreach ( $defaults as $opt_pre => $def_val ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'checking options for prefix ' . $opt_pre );
 				}
 
-				foreach ( $this->get_taxonomies( 'names' ) as $ttn ) {
+				foreach ( $this->get_taxonomies( 'names' ) as $name ) {
 
-					$opt_key = $opt_pre . '_' . $ttn;
+					$opt_key = $opt_pre . '_' . $name;
 
 					if ( ! isset( $opts[ $opt_key ] ) ) {
 
@@ -865,15 +882,15 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/**
 		 * $output = objects | names
 		 */
-		public function get_post_types( $output = 'objects', $sorted = true ) {
+		public function get_post_types( $output = 'objects' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			$obj_filter = array( 'public' => 1, 'show_in_menu' => 1, 'show_ui' => 1 );
-
-			$ret = array();
+			$ret      = array();
+			$args     = array( 'show_in_menu' => 1, 'show_ui' => 1 );
+			$operator = 'and';
 
 			switch ( $output ) {
 
@@ -892,13 +909,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				case 'names':
 				case 'objects':
 
-					$ret = get_post_types( $obj_filter, $output );
+					$ret = get_post_types( $args, $output, $operator );
 
 					break;
 			}
 
 			if ( $output === 'objects' ) {
-				SucomUtil::sort_objects_by_label( $ret );
+				SucomUtilWP::sort_objects_by_label( $ret );
 			}
 
 			return apply_filters( $this->p->lca . '_get_post_types', $ret, $output );
@@ -907,15 +924,15 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/**
 		 * $output = objects | names
 		 */
-		public function get_taxonomies( $output = 'objects', $sorted = true ) {
+		public function get_taxonomies( $output = 'objects' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			$obj_filter = array( 'public' => 1, 'show_ui' => 1 );
-
-			$ret = array();
+			$ret      = array();
+			$args     = array( 'show_in_menu' => 1, 'show_ui' => 1 );
+			$operator = 'and';
 
 			switch ( $output ) {
 
@@ -934,40 +951,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				case 'names':
 				case 'objects':
 
-					$ret = get_taxonomies( $obj_filter, $output );
+					$ret = get_taxonomies( $args, $output, $operator );
 
 					break;
 			}
 
 			if ( $output === 'objects' ) {
-
-				$unsorted = $ret;
-
-				$by_name = array();
-
-				$ret = array();
-
-				foreach ( $unsorted as $num => $obj ) {
-
-					if ( ! empty( $obj->labels->name ) ) {
-						$sort_key = $obj->labels->name . '-' . $num;
-					} elseif ( ! empty( $obj->label ) ) {
-						$sort_key = $obj->label . '-' . $num;
-					} else {
-						$sort_key = $obj->name . '-' . $num;
-					}
-
-					$by_name[ $sort_key ] = $num;	// Make sure key is sortable and unique.
-				}
-
-				ksort( $by_name );
-
-				foreach ( $by_name as $sort_key => $num ) {
-
-					$ret[] = $unsorted[ $num ];
-				}
-
-				unset( $unsorted, $by_name );
+				SucomUtilWP::sort_objects_by_label( $ret );
 			}
 
 			return apply_filters( $this->p->lca . '_get_taxonomies', $ret, $output );

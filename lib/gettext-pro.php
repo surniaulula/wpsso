@@ -24,12 +24,15 @@ _x( 'Upscale Media Library Images', 'option label', 'wpsso' );
 _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' );
 _x( '&lt;html&gt; Attributes Filter Hook', 'option label', 'wpsso' );
 _x( '&lt;head&gt; Attributes Filter Hook', 'option label', 'wpsso' );
+_x( 'User Profile', 'option label', 'wpsso' );
+_x( 'Post Type', 'option label', 'wpsso' );
+_x( 'Taxonomy', 'option label', 'wpsso' );
 _x( 'Add %s Metabox', 'option label', 'wpsso' );
 _x( 'Import Yoast SEO Social Meta', 'option label', 'wpsso' );
 _x( 'Default Currency', 'option label', 'wpsso' );
-__( 'Posts, Pages, Custom Post Types', 'wpsso' );
+__( 'Posts, Pages, and Custom Post Types', 'wpsso' );
 __( 'Media Library', 'wpsso' );
-__( 'Terms (Categories and Tags)', 'wpsso' );
+__( 'Categories, Tags, and Custom Taxonomies', 'wpsso' );
 // translators: Please ignore - translation uses a different text domain.
 __( 'Users' );
 _x( 'Additional List Table Columns', 'option label', 'wpsso' );
