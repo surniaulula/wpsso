@@ -543,12 +543,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* 'wpsso_home_url'
 		* 'wpsso_post_url'
 		* 'wpsso_search_url'
-		* 'wpsso_server_request_url_disable_cache'
+		* 'wpsso_server_request_url_cache_disabled'
 		* 'wpsso_server_request_url'
 		* 'wpsso_sharing_url'
 		* 'wpsso_term_url'
 		* 'wpsso_user_url'
 	* Removed the 'plugin_add_to_term' option key (replaced by new 'plugin_add_to_tax_{tax_slug}' options).
+	* Renamed the 'wpsso_server_request_url_disable_cache' filter to 'wpsso_server_request_url_cache_disabled'.
 	* Deprecated the `WpssoUtil->get_atts_css_attr()` public method.
 	* Deprecated the `WpssoUtil->get_atts_src_id()` public method.
 	* Refactored the `SucomForm->get_checklist_post_types()` method and removed the `$values` argument.
