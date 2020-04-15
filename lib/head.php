@@ -390,7 +390,22 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				return array();
 			}
 
-			$is_admin       = is_admin();	// Call the function only once.
+			/**
+			 * Disable transient cache and URL shortening by default if the URL contains a query argument.
+			 */
+			if ( false !== strpos( $sharing_url, '?' ) ) {
+				$cache_disabled = true;
+			} else {
+				$cache_disabled = false;
+			}
+
+			if ( apply_filters( $this->p->lca . '_server_request_url_cache_disabled', $cache_disabled, $sharing_url, $mod, $add_page ) ) {
+				$this->p->util->disable_cache_filters( array( 'shorten_url' => '__return_false' ) );
+			}
+
+			/**
+			 * Setup variables for transient cache.
+			 */
 			$cache_md5_pre  = $this->p->lca . '_h_';
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre );
 			$cache_salt     = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $sharing_url ) . ')';

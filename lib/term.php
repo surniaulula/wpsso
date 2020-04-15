@@ -161,7 +161,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			 * Check if the taxonomy terms are publicly available.
 			 */
 			if ( $tax_object = get_taxonomy( $mod[ 'tax_slug' ] ) ) {
+
 				if ( isset( $tax_object->public ) ) {
+
 					$mod[ 'is_public' ] = $tax_object->public ? true : false;
 				}
 			}
@@ -303,6 +305,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		/**
 		 * Get all publicly accessible term IDs for a taxonomy slug (optional).
+		 *
+		 * These may include term IDs from non-public taxonomies.
 		 */
 		public static function get_public_ids( $tax_name = null ) {
 
@@ -316,16 +320,20 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$public_term_ids = array();
 
-			foreach ( self::get_public_tax_names( $tax_name ) as $term_tax_name ) {
+			$args = array( 'show_in_menu' => 1, 'show_ui' => 1 );
+
+			$tax_names = get_taxonomies( $args, $output = 'names', $operator = 'and' );
+
+			foreach ( $tax_names as $name ) {
 
 				if ( $add_tax_in_args ) {	// Since WP v4.5.
 
-					$terms_args[ 'taxonomy' ] = $term_tax_name;
+					$terms_args[ 'taxonomy' ] = $name;
 
 					$term_ids = get_terms( $terms_args );
 
 				} else {
-					$term_ids = get_terms( $term_tax_name, $terms_args );
+					$term_ids = get_terms( $name, $terms_args );
 				}
 
 				foreach ( $term_ids as $term_id ) {
@@ -336,25 +344,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			rsort( $public_term_ids );	// Newest id first.
 
 			return $public_term_ids;
-		}
-
-		/**
-		 * Get all publicly accessible taxonomy names for a taxonomy slug (optional).
-		 *
-		 * Called by self::get_public_ids().
-		 */
-		public static function get_public_tax_names( $tax_name = null ) {
-
-			$args = array(
-				'public'  => 1,
-				'show_ui' => 1,
-			);
-
-			if ( is_string( $tax_name ) ) {
-				$args[ 'name' ] = $tax_name;
-			}
-
-			return get_taxonomies( $args, $output = 'names', $operator = 'and' );
 		}
 
 		/**

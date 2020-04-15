@@ -255,7 +255,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:1024 lib/post.php:827 lib/term.php:666 lib/user.php:657
+#: lib/admin.php:1024 lib/post.php:829 lib/term.php:655 lib/user.php:657
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -881,7 +881,7 @@ msgstr ""
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:472 lib/gettext-com.php:32 lib/post.php:1593
+#: lib/com/notice.php:472 lib/gettext-com.php:32 lib/post.php:1595
 msgid "Edit"
 msgstr ""
 
@@ -890,12 +890,12 @@ msgid "Reference: %s"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/com/plugin.php:275 lib/gettext-com.php:43
+#: lib/com/plugin.php:290 lib/gettext-com.php:43
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/com/plugin.php:286 lib/gettext-com.php:45
+#: lib/com/plugin.php:301 lib/gettext-com.php:45
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
@@ -3359,27 +3359,27 @@ msgctxt "option value"
 msgid "[%s Location]"
 msgstr ""
 
-#: lib/head.php:490
+#: lib/head.php:505
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:499
+#: lib/head.php:514
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:508
+#: lib/head.php:523
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:517
+#: lib/head.php:532
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:538
+#: lib/head.php:553
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:547
+#: lib/head.php:562
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -5940,7 +5940,7 @@ msgid ""
 "Activate the %s add-on<br/>for Schema markup and structured data options."
 msgstr ""
 
-#: lib/messages.php:2885 lib/util.php:3930
+#: lib/messages.php:2885 lib/util.php:3965
 msgid "No options available."
 msgstr ""
 
@@ -6159,196 +6159,196 @@ msgctxt "image size label"
 msgid "Pinterest Pin It Image"
 msgstr ""
 
-#: lib/post.php:488 lib/register.php:322 lib/term.php:423 lib/user.php:370
-#: lib/util.php:500 lib/util.php:3613
+#: lib/post.php:490 lib/register.php:322 lib/term.php:412 lib/user.php:370
+#: lib/util.php:500 lib/util.php:3648
 msgid "%s warning:"
 msgstr ""
 
-#: lib/post.php:489 lib/term.php:424 lib/user.php:371 lib/util.php:501
-#: lib/util.php:3614
+#: lib/post.php:491 lib/term.php:413 lib/user.php:371 lib/util.php:501
+#: lib/util.php:3649
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
-#: lib/post.php:490
+#: lib/post.php:492
 msgid ""
 "Slow query detected - get_posts() took %1$0.3f secs to get the children of "
 "post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:771 lib/post.php:1341 lib/schema.php:2912 lib/term.php:623
+#: lib/post.php:773 lib/post.php:1343 lib/schema.php:2933 lib/term.php:612
 #: lib/user.php:613
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/post.php:963
+#: lib/post.php:965
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:994
+#: lib/post.php:996
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:996
+#: lib/post.php:998
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:997
+#: lib/post.php:999
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:1023
+#: lib/post.php:1025
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:1025
+#: lib/post.php:1027
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:1027
+#: lib/post.php:1029
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:1028
+#: lib/post.php:1030
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:1040 lib/util.php:2126
+#: lib/post.php:1042 lib/util.php:2126
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1052
+#: lib/post.php:1054
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1065
+#: lib/post.php:1067
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1078
+#: lib/post.php:1080
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1100
+#: lib/post.php:1102
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:1141
+#: lib/post.php:1143
 msgid "The webpage at %1$s does not include any Schema JSON-LD script(s)."
 msgstr ""
 
-#: lib/post.php:1143
+#: lib/post.php:1145
 msgid ""
 "Complete and accurate Schema JSON-LD markup is highly recommended for better "
 "ranking and click-through rates in search results."
 msgstr ""
 
-#: lib/post.php:1145
+#: lib/post.php:1147
 msgid ""
 "Consider activating the %1$s add-on to include Schema JSON-LD markup for "
 "Google Rich Results."
 msgstr ""
 
-#: lib/post.php:1163
+#: lib/post.php:1165
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:1179
+#: lib/post.php:1181
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1179
+#: lib/post.php:1181
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML &mdash; review the <a href=\"%1$s\">W3C Markup Validation "
 "Service</a> results and correct any errors."
 msgstr ""
 
-#: lib/post.php:1179
+#: lib/post.php:1181
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:1213
+#: lib/post.php:1215
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1215
+#: lib/post.php:1217
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1223
+#: lib/post.php:1225
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1226
+#: lib/post.php:1228
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1228
+#: lib/post.php:1230
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1396
+#: lib/post.php:1398
 msgid "Save a draft or publish to display these options."
 msgstr ""
 
-#: lib/post.php:1581 lib/script.php:194
+#: lib/post.php:1583 lib/script.php:194
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1595
+#: lib/post.php:1597
 msgid "Edit robots"
-msgstr ""
-
-#: lib/post.php:1609
-msgctxt "option label"
-msgid "No archive"
-msgstr ""
-
-#: lib/post.php:1610
-msgctxt "option label"
-msgid "No follow"
 msgstr ""
 
 #: lib/post.php:1611
 msgctxt "option label"
-msgid "No image index"
+msgid "No archive"
 msgstr ""
 
 #: lib/post.php:1612
 msgctxt "option label"
-msgid "No index"
+msgid "No follow"
 msgstr ""
 
 #: lib/post.php:1613
 msgctxt "option label"
-msgid "No snippet"
+msgid "No image index"
 msgstr ""
 
 #: lib/post.php:1614
 msgctxt "option label"
+msgid "No index"
+msgstr ""
+
+#: lib/post.php:1615
+msgctxt "option label"
+msgid "No snippet"
+msgstr ""
+
+#: lib/post.php:1616
+msgctxt "option label"
 msgid "No translate"
 msgstr ""
 
-#: lib/post.php:1743
+#: lib/post.php:1745
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -6461,7 +6461,7 @@ msgctxt "image size label"
 msgid "Schema Article AMP 16:9 Image"
 msgstr ""
 
-#: lib/schema.php:622
+#: lib/schema.php:635
 msgid "adding schema"
 msgstr ""
 
@@ -6991,13 +6991,13 @@ msgctxt "submit button"
 msgid "Reset User Metabox Layout"
 msgstr ""
 
-#: lib/term.php:425
+#: lib/term.php:414
 msgid ""
 "Slow query detected - get_posts() took %1$0.3f secs to get posts for term ID "
 "%2$d in taxonomy %3$s (%4$s)."
 msgstr ""
 
-#: lib/term.php:855
+#: lib/term.php:844
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -7139,13 +7139,13 @@ msgid ""
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:3615
+#: lib/util.php:3650
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3630
+#: lib/util.php:3665
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -7154,35 +7154,35 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3632
+#: lib/util.php:3667
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3961
+#: lib/util.php:3996
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3964
+#: lib/util.php:3999
 msgctxt "option comment"
 msgid "show these options now"
 msgstr ""
 
-#: lib/util.php:3969
+#: lib/util.php:4004
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3972
+#: lib/util.php:4007
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:4298
+#: lib/util.php:4333
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

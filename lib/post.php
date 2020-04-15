@@ -416,6 +416,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		/**
 		 * Get all publicly accessible post IDs.
+		 *
+		 * These may include post IDs from non-public post types.
 		 */
 		public static function get_public_ids() {
 

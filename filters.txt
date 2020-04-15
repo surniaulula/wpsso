@@ -251,7 +251,7 @@
 
 'wpsso_search_url' ( $url, $mod, $add_page )
 
-'wpsso_server_request_url_disable_cache' ( $bool, $url, $mod, $add_page )
+'wpsso_server_request_url_cache_disabled' ( $bool, $url, $mod, $add_page )
 
 'wpsso_server_request_url' ( $url, $mod, $add_page )
 

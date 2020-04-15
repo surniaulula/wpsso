@@ -117,18 +117,26 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 			static $local_cache = array();					// Associative array of true/false values.
 
 			if ( $use_cache && isset( $local_cache[ $plugin_base ] ) ) {
+
 				return $local_cache[ $plugin_base ];
+
 			} elseif ( empty( $plugin_base ) ) { 				// Just in case.
+
 				return $local_cache[ $plugin_base ] = false;
+
 			} elseif ( validate_file( $plugin_base ) > 0 ) {		// Contains invalid characters.
+
 				return $local_cache[ $plugin_base ] = false;
+
 			} elseif ( ! is_file( WP_PLUGIN_DIR . '/' . $plugin_base ) ) {	// Check existence of plugin folder.
+
 				return $local_cache[ $plugin_base ] = false;
 			}
 
 			$plugins = SucomPlugin::get_plugins();				// Front-end safe and uses cache.
 
 			if ( ! empty( $plugins[ $plugin_base ] ) ) {			// Check for a valid plugin header.
+
 				return $local_cache[ $plugin_base ] = true;
 			}
 
@@ -188,14 +196,18 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 			static $local_cache = array();						// Associative array of true/false values.
 
 			if ( isset( $local_cache[ $plugin_slug ] ) ) {
+
 				return $local_cache[ $plugin_slug ];
+
 			} elseif ( empty( $plugin_slug ) ) {					// Just in case.
+
 				return $local_cache[ $plugin_slug ] = false;
 			}
 
 			foreach ( SucomPlugin::get_active_plugins( $use_cache = true ) as $plugin_base => $active ) {
 
 				if ( strpos( $plugin_base, $plugin_slug . '/' ) === 0 ) {	// Plugin slug found.
+
 					return $local_cache[ $plugin_slug ] = true;		// Stop here.
 				}
 			}
@@ -234,8 +246,11 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 			$fields_key = json_encode( $plugin_fields ); // Unique index based on selected fields.
 
 			if ( isset( $local_cache[ $plugin_slug ][ $fields_key ] ) ) {
+
 				return $local_cache[ $plugin_slug ][ $fields_key ];
+
 			} elseif ( empty( $plugin_slug ) ) {	// Just in case.
+
 				return $local_cache[ $plugin_slug ][ $fields_key ] = false;
 			}
 

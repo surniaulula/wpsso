@@ -2915,7 +2915,31 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$mod = $this->get_page_mod( $mod );
 			}
 
-			if ( $mod[ 'is_post' ] ) {
+			/**
+			 * Optimize and return the URL from local cache if possible.
+			 */
+			static $local_cache = array();
+
+			$cache_salt = false;
+
+			if ( ! empty( $mod[ 'name' ] ) && ! empty( $mod[ 'id' ] ) ) {
+
+				$cache_salt = SucomUtil::get_mod_salt( $mod ) . '_type:' . (string) $type . '_add_page:' . (string) $add_page;
+
+				if ( ! empty( $local_cache[ $cache_salt ] ) ) {
+					return $local_cache[ $cache_salt ];
+				}
+			}
+
+			if ( empty( $mod[ 'is_public' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'public is false - using the request url' );
+				}
+
+				$url = $this->get_request_url( $mod, $add_page );
+
+			} elseif ( $mod[ 'is_post' ] ) {
 
 				if ( ! empty( $mod[ 'id' ] ) ) {
 
@@ -3082,39 +3106,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 */
 			if ( empty ( $url ) ) {
 
-				$url = self::get_prot() . '://' . $_SERVER[ 'SERVER_NAME' ] . $_SERVER[ 'REQUEST_URI' ];
-
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'server request url = ' . $url );
+					$this->p->debug->log( 'url is empty - falling back to request url' );
 				}
 
-				/**
-				 * Remove tracking query arguments used by facebook, google, etc.
-				 */
-				$url = preg_replace( '/([\?&])(' .
-					'fb_action_ids|fb_action_types|fb_source|fb_aggregation_id|' . 
-					'utm_source|utm_medium|utm_campaign|utm_term|utm_content|' .
-					'gclid|pk_campaign|pk_kwd' .
-					')=[^&]*&?/i', '$1', $url );
-
-				$url = apply_filters( $this->p->lca . '_server_request_url', $url, $mod, $add_page );
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'server request url (filtered) = ' . $url );
-				}
-
-				/**
-				 * Maybe disable transient cache and URL shortening.
-				 */
-				if ( false !== strpos( $url, '?' ) ) {
-					$disable_cache = true;
-				} else {
-					$disable_cache = false;
-				}
-
-				if ( apply_filters( $this->p->lca . '_server_request_url_disable_cache', $disable_cache, $url, $mod, $add_page ) ) {
-					$this->disable_cache_filters( array( 'shorten_url' => '__return_false' ) );
-				}
+				$url = $this->get_request_url( $mod, $add_page );
 			}
 
 			/**
@@ -3129,7 +3125,46 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$url = set_url_scheme( $url, 'https' );
 			}
 
-			return apply_filters( $this->p->lca . '_' . $type . '_url', $url, $mod, $add_page );
+			$url = apply_filters( $this->p->lca . '_' . $type . '_url', $url, $mod, $add_page );
+
+			if ( ! empty( $cache_salt ) ) {
+				$local_cache[ $cache_salt ] = $url;
+			}
+
+			return $url;
+		}
+
+		private function get_request_url( $mod, $add_page ) {
+
+			$url = self::get_prot() . '://' . $_SERVER[ 'SERVER_NAME' ] . $_SERVER[ 'REQUEST_URI' ];
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'server request url = ' . $url );
+			}
+
+			/**
+			 * Remove tracking query arguments used by facebook, google, etc.
+			 */
+			$url = preg_replace( '/([\?&])(' .
+				'fb_action_ids|fb_action_types|fb_source|fb_aggregation_id|' . 
+				'utm_source|utm_medium|utm_campaign|utm_term|utm_content|' .
+				'gclid|pk_campaign|pk_kwd' .
+				')=[^&]*&?/i', '$1', $url );
+
+			if ( empty( $mod[ 'is_public' ] ) ) {
+
+				$frag_anchor = self::get_frag_anchor( $mod );	// Returns for example "#sso-post-123".
+
+				$url = SucomUtil::add_query_frag( $url, $frag_anchor );
+			}
+
+			$url = apply_filters( $this->p->lca . '_server_request_url', $url, $mod, $add_page );
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'server request url (filtered) = ' . $url );
+			}
+
+			return $url;
 		}
 
 		private function get_url_paged( $url, $mod, $add_page ) {
@@ -4349,5 +4384,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			return $local_cache[ $md5_pre ][ $cache_type ] = $exp_secs;
 		}
+
+		public static function get_frag_anchor( $mod = null ) {
+
+			return '#sso-' . ( $mod ? SucomUtil::get_mod_anchor( $mod ) : '' );
+		}
+
 	}
 }

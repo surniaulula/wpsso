@@ -1353,6 +1353,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return preg_replace( '/[^a-z0-9_\-]/', '', strtolower( $key ) );
 		}
 
+		public static function sanitize_anchor( $anchor ) {
+
+			return preg_replace( '/[^a-z0-9\-]/', '-', strtolower( $anchor ) );
+		}
+
 		public static function array_to_keywords( array $tags = array() ) {
 
 			$keywords = array_map( 'sanitize_text_field', $tags );
@@ -2403,6 +2408,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $type_opts;
 		}
 
+		public static function get_mod_anchor( array $mod ) {
+
+			$mod_anchor = self::get_mod_salt( $mod );
+
+			$mod_anchor = self::sanitize_anchor( $mod_anchor );
+
+			return $mod_anchor;
+		}
+
 		/**
 		 * Results a salt string based on $mod values.
 		 *
@@ -2414,11 +2428,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_mod_salt( array $mod, $sharing_url = false ) {
 
+			$sep = '_';
+
 			$mod_salt = '';
 
 			if ( ! empty( $mod[ 'name' ] ) ) {
 
-				$mod_salt .= '_' . $mod[ 'name' ] . ':';
+				$mod_salt .= $sep . $mod[ 'name' ] . ':';
 
 				if ( $mod[ 'id' ] === false ) {
 					$mod_salt .= 'false';
@@ -2432,21 +2448,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( ! empty( $mod[ 'tax_slug' ] ) ) {
-				$mod_salt .= '_tax:' . $mod[ 'tax_slug' ];
+				$mod_salt .= $sep . 'tax:' . $mod[ 'tax_slug' ];
 			}
 
 			if ( empty( $mod[ 'id' ] ) ) {
 
 				if ( ! empty( $mod[ 'is_home' ] ) ) {
-					$mod_salt .= '_home';
+					$mod_salt .= $sep . 'home';
 				}
 
 				if ( ! empty( $sharing_url ) ) {
-					$mod_salt .= '_url:' . $sharing_url;
+					$mod_salt .= $sep . 'url:' . $sharing_url;
 				}
 			}
 
-			$mod_salt = ltrim( $mod_salt, '_' );	// Remove leading underscore.
+			$mod_salt = ltrim( $mod_salt, $sep );
 
 			return apply_filters( 'sucom_mod_salt', $mod_salt, $sharing_url );
 		}
@@ -2736,6 +2752,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			static $local_cache = array();
 
 			if ( ! isset( $local_cache[ $term_id ] ) ) {
+
 				$local_cache[ $term_id ] = get_term_by( 'id', $term_id, $tax_slug, OBJECT, 'raw' );
 			}
 
@@ -4024,7 +4041,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$url = substr( $url, 0, -strlen( $old_frag ) );
 			}
 
-			return $url . '#' . $new_frag;
+			return $url . '#' . trim( $new_frag, '#' );
 		}
 	}
 }
