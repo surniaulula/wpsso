@@ -606,7 +606,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				/**
 				 * Check for missing open graph image and description values.
 				 */
-				if ( $mod[ 'is_public' ] ) {
+				if ( $mod[ 'is_public' ] ) {	// Since WPSSO Core v6.29.0.
 
 					$ref_url = empty( WpssoWpMeta::$head_info[ 'og:url' ] ) ? null : WpssoWpMeta::$head_info[ 'og:url' ];
 

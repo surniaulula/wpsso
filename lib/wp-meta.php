@@ -533,7 +533,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				case $this->p->cf[ 'meta' ][ 'id' ]:	// 'sso' metabox ID.
 
-					if ( $mod[ 'is_public' ] ) {
+					if ( $mod[ 'is_public' ] ) {	// Since WPSSO Core v6.29.0.
 
 						$tabs[ 'edit' ]     = _x( 'Customize', 'metabox tab', 'wpsso' );
 						$tabs[ 'media' ]    = _x( 'Priority Media', 'metabox tab', 'wpsso' );

@@ -228,7 +228,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 * Check if the post type is publicly available.
 				 */
 				if ( $post_type_object = get_post_type_object( $mod[ 'post_type' ] ) ) {
+
 					if ( isset( $post_type_object->public ) ) {
+
 						$mod[ 'is_public' ] = $post_type_object->public ? true : false;
 					}
 				}
