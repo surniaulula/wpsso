@@ -3249,7 +3249,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( ! empty( $merge_data[ 'url' ] ) ) {
 
-						$frag_anchor = WpssoUtil::get_frag_anchor();	// Returns "sso-".
+						$frag_anchor = WpssoUtil::get_frag_anchor();	// Returns the "#sso-" fragment prefix.
 
 						if ( false === strpos( $merge_data[ 'url' ], $frag_anchor ) ) {
 							$merge_data[ 'mainEntityOfPage' ] = $merge_data[ 'url' ];

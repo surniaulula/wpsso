@@ -2934,10 +2934,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			if ( empty( $mod[ 'is_public' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'public is false - using the request url' );
+					$this->p->debug->log( 'public is false - using a fragment anchor' );
 				}
 
-				$url = $this->get_request_url( $mod, $add_page );
+				$url = self::get_frag_anchor( $mod );	// Returns for example "#sso-post-123".
 
 			} elseif ( $mod[ 'is_post' ] ) {
 
@@ -3107,7 +3107,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			if ( empty ( $url ) ) {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'url is empty - falling back to request url' );
+					$this->p->debug->log( 'falling back to request url' );
 				}
 
 				$url = $this->get_request_url( $mod, $add_page );
@@ -3116,13 +3116,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			/**
 			 * Maybe enforce the FORCE_SSL constant.
 			 */
-			if ( self::get_const( 'FORCE_SSL' ) && ! self::is_https( $url ) ) {
+			if ( strpos( $url, '://' ) ) {	// Only check URLs with a protocol.
+				
+				if ( self::get_const( 'FORCE_SSL' ) && ! self::is_https( $url ) ) {
 
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'force ssl is enabled - replacing http by https' );
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'force ssl is enabled - replacing http by https' );
+					}
+
+					$url = set_url_scheme( $url, 'https' );
 				}
-
-				$url = set_url_scheme( $url, 'https' );
 			}
 
 			$url = apply_filters( $this->p->lca . '_' . $type . '_url', $url, $mod, $add_page );
@@ -3150,13 +3153,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				'utm_source|utm_medium|utm_campaign|utm_term|utm_content|' .
 				'gclid|pk_campaign|pk_kwd' .
 				')=[^&]*&?/i', '$1', $url );
-
-			if ( empty( $mod[ 'is_public' ] ) ) {
-
-				$frag_anchor = self::get_frag_anchor( $mod );	// Returns for example "#sso-post-123".
-
-				$url = SucomUtil::add_query_frag( $url, $frag_anchor );
-			}
 
 			$url = apply_filters( $this->p->lca . '_server_request_url', $url, $mod, $add_page );
 
@@ -4385,6 +4381,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $local_cache[ $md5_pre ][ $cache_type ] = $exp_secs;
 		}
 
+		/**
+		 * Returns for example "#sso-post-123" with a $mod array or "#sso-" without.
+		 */
 		public static function get_frag_anchor( $mod = null ) {
 
 			return '#sso-' . ( $mod ? SucomUtil::get_mod_anchor( $mod ) : '' );

@@ -1116,30 +1116,27 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return $local_cache[ $url ];
 			}
 
-			if ( ! empty( $url ) ) {
+			if ( strpos( $url, '://' ) ) {
 
-				if ( strpos( $url, '://' ) && parse_url( $url, PHP_URL_SCHEME ) === 'https' ) {
+				if ( 'https' === parse_url( $url, PHP_URL_SCHEME ) ) {
 					return $local_cache[ $url ] = true;
 				} else {
 					return $local_cache[ $url ] = false;
 				}
 
-			} else {
+			} elseif ( is_ssl() ) {
 
-				if ( is_ssl() ) {
+				return $local_cache[ $url ] = true;
 
-					return $local_cache[ $url ] = true;
+			} elseif ( isset( $_SERVER[ 'HTTP_X_FORWARDED_PROTO' ] )
+				&& 'https' === strtolower( $_SERVER[ 'HTTP_X_FORWARDED_PROTO' ] ) ) {
 
-				} elseif ( isset( $_SERVER[ 'HTTP_X_FORWARDED_PROTO' ] )
-					&& strtolower( $_SERVER[ 'HTTP_X_FORWARDED_PROTO' ] ) === 'https' ) {
+				return $local_cache[ $url ] = true;
 
-					return $local_cache[ $url ] = true;
+			} elseif ( isset( $_SERVER[ 'HTTP_X_FORWARDED_SSL' ] )
+				&& 'on' === strtolower( $_SERVER[ 'HTTP_X_FORWARDED_SSL' ] ) ) {
 
-				} elseif ( isset( $_SERVER[ 'HTTP_X_FORWARDED_SSL' ] )
-					&& strtolower( $_SERVER[ 'HTTP_X_FORWARDED_SSL' ] ) === 'on' ) {
-
-					return $local_cache[ $url ] = true;
-				}
+				return $local_cache[ $url ] = true;
 			}
 
 			return $local_cache[ $url ] = false;
