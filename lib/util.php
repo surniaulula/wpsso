@@ -2871,6 +2871,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return apply_filters( $this->p->lca . '_oembed_data', $data, $mod, $width );
 		}
 
+		/**
+		 * Returns a relative fragment for a non-public mod.
+		 */
 		public function get_canonical_url( $mod = false, $add_page = true ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -2880,6 +2883,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $this->get_page_url( 'canonical', $mod, $add_page );
 		}
 
+		/**
+		 * Returns a relative fragment for a non-public mod.
+		 */
 		public function get_sharing_url( $mod = false, $add_page = true ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -2889,6 +2895,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $this->get_page_url( 'sharing', $mod, $add_page );
 		}
 
+		/**
+		 * Returns a relative fragment for a non-public mod.
+		 */
 		private function get_page_url( $type, $mod, $add_page ) {
 
 			if ( $this->p->debug->enabled ) {

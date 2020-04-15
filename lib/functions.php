@@ -256,7 +256,7 @@ if ( ! function_exists( 'wpsso_get_canonical_url' ) ) {
 		$wpsso =& Wpsso::get_instance();
 
 		if ( ! empty( $wpsso->util ) ) {	// Just in case.
-			return $wpsso->util->get_canonical_url( $mod, $add_page );
+			return $wpsso->util->get_canonical_url( $mod, $add_page );	// Returns a relative fragment for a non-public mod.
 		}
 
 		return false;

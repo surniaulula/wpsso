@@ -5940,7 +5940,7 @@ msgid ""
 "Activate the %s add-on<br/>for Schema markup and structured data options."
 msgstr ""
 
-#: lib/messages.php:2885 lib/util.php:3961
+#: lib/messages.php:2885 lib/util.php:3970
 msgid "No options available."
 msgstr ""
 
@@ -6160,12 +6160,12 @@ msgid "Pinterest Pin It Image"
 msgstr ""
 
 #: lib/post.php:490 lib/register.php:322 lib/term.php:412 lib/user.php:370
-#: lib/util.php:500 lib/util.php:3644
+#: lib/util.php:500 lib/util.php:3653
 msgid "%s warning:"
 msgstr ""
 
 #: lib/post.php:491 lib/term.php:413 lib/user.php:371 lib/util.php:501
-#: lib/util.php:3645
+#: lib/util.php:3654
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -7139,13 +7139,13 @@ msgid ""
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:3646
+#: lib/util.php:3655
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3661
+#: lib/util.php:3670
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -7154,35 +7154,35 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3663
+#: lib/util.php:3672
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3992
+#: lib/util.php:4001
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3995
+#: lib/util.php:4004
 msgctxt "option comment"
 msgid "show these options now"
 msgstr ""
 
-#: lib/util.php:4000
+#: lib/util.php:4009
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:4003
+#: lib/util.php:4012
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:4329
+#: lib/util.php:4338
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 
