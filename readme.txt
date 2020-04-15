@@ -507,7 +507,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.29.0-dev.3 (2020/04/15)**
+**Version 6.29.0-dev.4 (2020/04/15)**
 
 * **New Features**
 	* None.
@@ -1037,7 +1037,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 6.29.0-dev.3 =
+= 6.29.0-dev.4 =
 
 (2020/04/15) Added taxonomies to the SSO &gt; Advanced Settings &gt; Editing Pages &gt; Add Document SSO (Social and Search Optimization) Metabox option.
 
