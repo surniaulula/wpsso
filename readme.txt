@@ -507,22 +507,30 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 6.29.0-dev.2 (TBD)**
+**Version 6.29.0-dev.3 (2020/04/15)**
 
 * **New Features**
 	* None.
 * **Improvements**
+	* Added taxonomies to the SSO &gt; Advanced Settings &gt; Editing Pages &gt; Add Document SSO (Social and Search Optimization) Metabox option.
+	* Added a default icon for unknown WPSSO settings tabs.
+	* Added a dismiss link to WPSSO "update-nag" notices.
+	* Added a title in the tab content for mobile icon-only tabs.
 	* Renamed the Document SSO "Head" tab to "Head Markup".
 	* Renamed the SSO &gt; Advanced Settings "Plugin Behavior" tab to "Standard Settings".
 	* Renamed the 'Enforce Image Size Checks' option to 'Enforce Image Dimension Checks'.
 	* Renamed the 'Video Size' option to 'Video Dimensions'.
-	* Added a default icon for unknown WPSSO settings tabs.
-	* Added a dismiss link to WPSSO "update-nag" notices.
-	* Added a title in the tab content for mobile icon-only tabs.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
 	* Added an 'is_public' key to the `$mod` array (value is `true` by default, and `false` for non-public post types and taxonomies).
+	* Added new public static methods in `SucomUtilWP`:
+		* `is_post_type_public()`
+		* `get_post_type_labels()`
+		* `get_taxonomy_labels()`
+		* `sort_objects_by_label()`
+	* Added a new `WpssoUtil->add_post_type_names()` public method.
+	* Added a new `WpssoUtil->add_taxonomy_names()` public method.
 	* Updated the Image ID and Image URL option enabled/disabled behavior:
 		* The Image ID option is disabled when an Image URL is entered.
 		* The Image URL option is disabled when an Image ID is selected.
@@ -540,8 +548,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* 'wpsso_sharing_url'
 		* 'wpsso_term_url'
 		* 'wpsso_user_url'
+	* Removed the 'plugin_add_to_term' option key (replaced by new 'plugin_add_to_tax_{tax_slug}' options).
 	* Deprecated the `WpssoUtil->get_atts_css_attr()` public method.
 	* Deprecated the `WpssoUtil->get_atts_src_id()` public method.
+	* Refactored the `SucomForm->get_checklist_post_types()` method and removed the `$values` argument.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
@@ -1025,6 +1035,10 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 	* WordPress v3.9.
 
 == Upgrade Notice ==
+
+= 6.29.0-dev.3 =
+
+(2020/04/15) Added taxonomies to the SSO &gt; Advanced Settings &gt; Editing Pages &gt; Add Document SSO (Social and Search Optimization) Metabox option.
 
 = 6.28.0 =
 
