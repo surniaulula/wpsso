@@ -61,15 +61,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				$this->query_tax_obj = get_taxonomy( $this->query_tax_slug );
 
-				if ( empty( $this->query_tax_obj->public ) ) {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'exiting early: taxonomy is not public' );
-					}
-
-					return;
-				}
-
 				/**
 				 * Add edit table columns.
 				 */
@@ -291,6 +282,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
 				unset( $opts[ 'seo_desc' ] );
 			}
+
+			$opts = apply_filters( $this->p->lca . '_save_md_options', $opts, $mod );
 
 			$opts = apply_filters( $this->p->lca . '_save_term_options', $opts, $term_id, $term_tax_id, $mod );
 
@@ -792,9 +785,13 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$mb_container_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
 
 			$metabox_html = "\n" . '<div id="' . $mb_container_id . '">';
+
 			$metabox_html .= $this->p->util->get_metabox_tabbed( $metabox_id, $tabs, $table_rows, $tabbed_args );
+
 			$metabox_html .= apply_filters( $mb_container_id . '_footer', '', $mod );
+
 			$metabox_html .= '</div><!-- #'. $mb_container_id . ' -->' . "\n";
+
 			$metabox_html .= $this->get_metabox_javascript( $mb_container_id );
 
 			if ( $this->p->debug->enabled ) {

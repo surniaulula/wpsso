@@ -2643,7 +2643,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 */
 			$type_select = '';
 			$type_keys   = array();
-			$post_types  = $this->p->util->get_post_types( 'objects' );
+			$post_types  = $this->p->util->get_post_types( 'objects' );	// Get public post types.
 
 			foreach ( $post_types as $obj ) {
 
@@ -2842,7 +2842,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 */
 			$type_select = '';
 			$type_keys   = array();
-			$post_types  = $this->p->util->get_post_types( 'objects' );
+			$post_types  = $this->p->util->get_post_types( 'objects' );	// Get public post types.
 
 			foreach ( $post_types as $obj ) {
 

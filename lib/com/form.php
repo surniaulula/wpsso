@@ -263,8 +263,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_checklist_post_types( $name_prefix, $values = array(), $css_class = 'input_vertical_list', $css_id = '', $is_disabled = false ) {
 
-			foreach ( $this->p->util->get_post_types( 'objects' ) as $pt ) {
-				$values[ $pt->name ] = $pt->label.( empty( $pt->description ) ? '' : ' (' . $pt->description . ')' );
+			$obj_filter = array( 'show_in_menu' => 1, 'show_ui' => 1 );	// Includes non-public post types.
+
+			$post_types = get_post_types( $obj_filter, 'objects' );
+
+			SucomUtil::sort_objects_by_label( $post_types );
+
+			foreach ( $post_types as $pt ) {	// Get public post types.
+				$values[ $pt->name ] = $pt->label . ( empty( $pt->description ) ? '' : ' (' . $pt->description . ')' );
 			}
 
 			asort( $values );	// Sort by label.

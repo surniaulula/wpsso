@@ -801,7 +801,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$this->p->debug->log( 'checking options for prefix ' . $opt_pre );
 				}
 
-				foreach ( $this->get_post_types( 'names' ) as $ptn ) {
+				foreach ( $this->get_post_types( 'names' ) as $ptn ) {	// Get public post types.
 
 					$opt_key = $opt_pre . '_' . $ptn;
 
@@ -871,7 +871,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$obj_filter = array( 'public' => 1, 'show_ui' => 1 );
+			$obj_filter = array( 'public' => 1, 'show_in_menu' => 1, 'show_ui' => 1 );
 
 			$ret = array();
 
@@ -898,34 +898,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			if ( $output === 'objects' ) {
-
-				$unsorted = $ret;
-
-				$by_name = array();
-
-				$ret = array();
-
-				foreach ( $unsorted as $num => $obj ) {
-
-					if ( ! empty( $obj->labels->name ) ) {
-						$sort_key = $obj->labels->name . '-' . $num;
-					} elseif ( ! empty( $obj->label ) ) {
-						$sort_key = $obj->label . '-' . $num;
-					} else {
-						$sort_key = $obj->name . '-' . $num;
-					}
-
-					$by_name[ $sort_key ] = $num;	// Make sure key is sortable and unique.
-				}
-
-				ksort( $by_name );
-
-				foreach ( $by_name as $sort_key => $num ) {
-
-					$ret[] = $unsorted[ $num ];
-				}
-
-				unset( $unsorted, $by_name );
+				SucomUtil::sort_objects_by_label( $ret );
 			}
 
 			return apply_filters( $this->p->lca . '_get_post_types', $ret, $output );

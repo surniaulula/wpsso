@@ -268,12 +268,15 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return;
 			}
 
-			$mod  = $this->get_mod( $user_id );
+			$mod = $this->get_mod( $user_id );
+
 			$opts = $this->get_submit_opts( $user_id );
 
 			if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
 				unset( $opts[ 'seo_desc' ] );
 			}
+
+			$opts = apply_filters( $this->p->lca . '_save_md_options', $opts, $mod );
 
 			$opts = apply_filters( $this->p->lca . '_save_user_options', $opts, $user_id, $rel_id, $mod );
 
@@ -787,9 +790,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$mb_container_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
 
 			$metabox_html = "\n" . '<div id="' . $mb_container_id . '">';
+
 			$metabox_html .= $this->p->util->get_metabox_tabbed( $metabox_id, $tabs, $table_rows, $tabbed_args );
+
 			$metabox_html .= apply_filters( $mb_container_id . '_footer', '', $mod );
+
 			$metabox_html .= '</div><!-- #'. $mb_container_id . ' -->' . "\n";
+
 			$metabox_html .= $this->get_metabox_javascript( $mb_container_id );
 
 			if ( $this->p->debug->enabled ) {

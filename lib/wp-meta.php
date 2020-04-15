@@ -531,14 +531,22 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			switch ( $metabox_id ) {
 
-				case $this->p->cf[ 'meta' ][ 'id' ]:
+				case $this->p->cf[ 'meta' ][ 'id' ]:	// 'sso' metabox ID.
 
-					$tabs[ 'edit' ]     = _x( 'Customize', 'metabox tab', 'wpsso' );
-					$tabs[ 'media' ]    = _x( 'Priority Media', 'metabox tab', 'wpsso' );
-					$tabs[ 'preview' ]  = _x( 'Preview', 'metabox tab', 'wpsso' );
-					$tabs[ 'oembed' ]   = _x( 'oEmbed', 'metabox tab', 'wpsso' );
-					$tabs[ 'head' ]     = _x( 'Head Markup', 'metabox tab', 'wpsso' );
-					$tabs[ 'validate' ] = _x( 'Validate', 'metabox tab', 'wpsso' );
+					if ( $mod[ 'is_public' ] ) {
+
+						$tabs[ 'edit' ]     = _x( 'Customize', 'metabox tab', 'wpsso' );
+						$tabs[ 'media' ]    = _x( 'Priority Media', 'metabox tab', 'wpsso' );
+						$tabs[ 'preview' ]  = _x( 'Preview', 'metabox tab', 'wpsso' );
+						$tabs[ 'oembed' ]   = _x( 'oEmbed', 'metabox tab', 'wpsso' );
+						$tabs[ 'head' ]     = _x( 'Head Markup', 'metabox tab', 'wpsso' );
+						$tabs[ 'validate' ] = _x( 'Validate', 'metabox tab', 'wpsso' );
+
+					} else {
+
+						$tabs[ 'edit' ]     = _x( 'Customize', 'metabox tab', 'wpsso' );
+						$tabs[ 'media' ]    = _x( 'Priority Media', 'metabox tab', 'wpsso' );
+					}
 
 					break;
 			}

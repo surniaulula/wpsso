@@ -105,7 +105,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				/**
 				 * Only use public post types (to avoid menu items, product variations, etc.).
 				 */
-				$ptns = $this->p->util->get_post_types( 'names' );
+				$ptns = $this->p->util->get_post_types( 'names' );	// Get public post types.
 
 				if ( is_array( $ptns ) ) {
 
@@ -383,7 +383,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;
 			}
 
-			$mod  = $this->get_mod( $post_id );
+			$mod = $this->get_mod( $post_id );
+
 			$opts = $this->get_submit_opts( $post_id );
 
 			/**
@@ -399,6 +400,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( ! empty( $this->p->avail[ 'ecom' ][ 'any' ] ) ) {
 				unset( $opts[ 'product_avail' ] );
 			}
+
+			$opts = apply_filters( $this->p->lca . '_save_md_options', $opts, $mod );
 
 			$opts = apply_filters( $this->p->lca . '_save_post_options', $opts, $post_id, $rel_id, $mod );
 
@@ -911,7 +914,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Only check public post types (to avoid menu items, product variations, etc.).
 			 */
-			$ptns = $this->p->util->get_post_types( 'names' );
+			$ptns = $this->p->util->get_post_types( 'names' );	// Get public post types.
 
 			if ( empty( $post_obj->post_type ) || ! in_array( $post_obj->post_type, $ptns ) ) {
 
@@ -1417,9 +1420,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$mb_container_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
 
 			$metabox_html = "\n" . '<div id="' . $mb_container_id . '">';
+
 			$metabox_html .= $this->p->util->get_metabox_tabbed( $metabox_id, $tabs, $table_rows, $tabbed_args );
+
 			$metabox_html .= apply_filters( $mb_container_id . '_footer', '', $mod );
+
 			$metabox_html .= '</div><!-- #'. $mb_container_id . ' -->' . "\n";
+
 			$metabox_html .= $this->get_metabox_javascript( $mb_container_id );
 
 			if ( $this->p->debug->enabled ) {

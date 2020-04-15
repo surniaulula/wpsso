@@ -4024,5 +4024,32 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			return $url . '#' . $new_frag;
 		}
+
+		public static function sort_objects_by_label( array &$objects ) {
+
+			$sorted  = array();
+			$by_name = array();
+
+			foreach ( $objects as $num => $obj ) {
+
+				if ( ! empty( $obj->labels->name ) ) {
+					$sort_key = $obj->labels->name . '-' . $num;
+				} elseif ( ! empty( $obj->label ) ) {
+					$sort_key = $obj->label . '-' . $num;
+				} else {
+					$sort_key = $obj->name . '-' . $num;
+				}
+
+				$by_name[ $sort_key ] = $num;	// Make sure key is sortable and unique.
+			}
+
+			ksort( $by_name );
+
+			foreach ( $by_name as $sort_key => $num ) {
+				$sorted[] = $objects[ $num ];
+			}
+
+			return $objects = $sorted;
+		}
 	}
 }
