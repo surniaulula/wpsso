@@ -535,9 +535,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* `SucomUtilWP::is_post_type_public()`
 		* `SucomUtilWP::sort_objects_by_label()`
 	* Updated post type and taxonomy "public" query filters:
-		* From: `array( 'public' => 1, 'show_ui' => 1 )`
-		* To: `array( 'show_in_menu' => 1, 'show_ui' => 1 )`
-		* In: `SucomUtilWP::get_post_type_labels()`, `SucomUtilWP::get_taxonomy_labels()`, `WpssoTerm::get_public_ids()`, `WpssoUtil->get_post_types()`
+		* From `array( 'public' => 1, 'show_ui' => 1 )`.
+		* To `array( 'show_in_menu' => 1, 'show_ui' => 1 )`.
+		* In `SucomUtilWP::get_post_type_labels()`, `SucomUtilWP::get_taxonomy_labels()`, `WpssoTerm::get_public_ids()`, `WpssoUtil->get_post_types()`.
 	* Added a new 'is_public' key to the `$mod` associative array (value is `true` by default, and `false` for non-public post types and taxonomies).
 	* Added a static local cache to the `WpssoUtil->get_page_url()` private method.
 	* Refactored the `SucomForm->get_checklist_post_types()` method and removed the `$values` argument.
