@@ -328,7 +328,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$trunc_user_ids = array( $user_id );
 			}
 
-			unset( $user_id );	// A reminder that we are re-using this variable name bellow.
+			unset( $user_id );	// A reminder that we are re-using this variable name below.
 
 			$trunc_types = empty( $msg_type ) ? $this->all_types : array( (string) $msg_type );
 

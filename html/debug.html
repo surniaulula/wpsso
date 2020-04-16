@@ -5,7 +5,7 @@
 
 <h3>JavaScript and jQuery errors</h3>
 
-<p>Since the advent of "page builders" and the new block editor in WordPress v5, JavaScript and jQuery errors have become more common and not easily diagnosed using standard WordPress debugging methods, like defining the WordPress WP_DEBUG constant (see bellow) and using the Query Monitor plugin.</p>
+<p>Since the advent of "page builders" and the new block editor in WordPress v5, JavaScript and jQuery errors have become more common and not easily diagnosed using standard WordPress debugging methods, like defining the WordPress WP_DEBUG constant (see below) and using the Query Monitor plugin.</p>
 
 <p>To view JavaScript and jQuery related errors, you must enable your web browser's console, and how you do that depends on the web browser you use (<a href="https://www.google.com/search?q=open+the+browser+javascript+console">see this Google search result for more information on that</a>). It's definitely worth enabling your web browser's console to make sure there are no JavaScript and jQuery errors. If there are, you can select the error and <a href="https://surniaulula.com/support/">copy-paste the error text into a new support ticket</a> (<em>please do not submit screenshots as we cannot work with text in an image</em>). ;-)</p>
 
@@ -17,7 +17,7 @@
 
 <p>The most common cause of an HTTP 5xx error are from lack of available memory when PHP is executing - for example, when creating thumbnails from large images, executing a bloated plugin, executing a badly coded recursive filter, etc. If you are seeing an HTTP 5xx error message, you must get the error details from the web server's error log to know what the issue actually is.<p>
 
-<p>Some older versions of PHP are known to have bugs in their ImageMagick library or PHP may have timed-out when trying to create several thumbnail images in a row (<a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-an-http-error-when-uploading-images/">see this FAQ for details</a>), or PHP may have run out of memory (<a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-a-php-fatal-out-of-memory-error/">see this FAQ for details</a>), or WPSSO Core may be triggering a bug in your theme or another plugin (try disabling WPSSO Core's use of the WordPress content filter as suggested bellow).</p>
+<p>Some older versions of PHP are known to have bugs in their ImageMagick library or PHP may have timed-out when trying to create several thumbnail images in a row (<a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-an-http-error-when-uploading-images/">see this FAQ for details</a>), or PHP may have run out of memory (<a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-a-php-fatal-out-of-memory-error/">see this FAQ for details</a>), or WPSSO Core may be triggering a bug in your theme or another plugin (try disabling WPSSO Core's use of the WordPress content filter as suggested below).</p>
 
 <h3>WordPress Content Filters</h3>
 

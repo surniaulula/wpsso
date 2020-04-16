@@ -138,7 +138,7 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 		 * Filters the thumbnail shape for use in the embed template.
 		 *
 		 * The 'rectangular' shape puts the image above the title (like Facebook) and the 'square' shape puts the image
-		 * bellow the title.
+		 * below the title.
 		 */
 		public function the_embed_thumbnail_image_shape( $shape, $pid ) {
 

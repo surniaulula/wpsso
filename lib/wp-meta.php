@@ -962,7 +962,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 						$oembed_html = $val;
 
-						$val = __( '(see bellow)', 'wpsso' );
+						$val = __( '(see below)', 'wpsso' );
 					}
 
 					$table_rows[] = '<th class="short">' . esc_html( $key ) . '</th>' .
