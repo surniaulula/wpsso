@@ -4388,11 +4388,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		/**
 		 * Returns for example "#sso-post-123" with a $mod array or "#sso-" without.
+		 *
+		 * Called by:
+		 *
+		 *	WpssoFaqShortcodeFaq->do_shortcode()
+		 *	WpssoFaqShortcodeQuestion->do_shortcode()
+		 *	WpssoJsonFiltersTypeThing->filter_json_data_https_schema_org_thing()
 		 */
 		public static function get_frag_anchor( $mod = null ) {
 
 			return '#sso-' . ( $mod ? SucomUtil::get_mod_anchor( $mod ) : '' );
 		}
-
 	}
 }
