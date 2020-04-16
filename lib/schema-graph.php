@@ -124,6 +124,7 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 							$new_data[ $val ] = $json_data;
 
 							foreach ( $new_data[ $val ] as $new_key => &$new_val ) {
+
 								if ( is_array( $new_val ) ) {
 									self::optimize_json( $new_val );
 								}

@@ -3249,11 +3249,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( ! empty( $merge_data[ 'url' ] ) ) {
 
-						$frag_anchor = WpssoUtil::get_frag_anchor();	// Returns the "#sso-" fragment prefix.
-
-						if ( false === strpos( $merge_data[ 'url' ], $frag_anchor ) ) {
-							$merge_data[ 'mainEntityOfPage' ] = $merge_data[ 'url' ];
-						}
+						/**
+						 * Remove any URL fragment from the main entity URL. The 'mainEntityOfPage' value
+						 * can be empty and will be removed by WpssoSchemaGraph::optimize_json().
+						 */
+						$merge_data[ 'mainEntityOfPage' ] = preg_replace( '/#.*$/', '', $merge_data[ 'url' ] );
 					}
 				}
 			}
