@@ -391,19 +391,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			/**
-			 * Disable transient cache and URL shortening by default if the URL contains a query argument.
-			 */
-			if ( false !== strpos( $sharing_url, '?' ) ) {
-				$cache_disabled = true;
-			} else {
-				$cache_disabled = false;
-			}
-
-			if ( apply_filters( $this->p->lca . '_server_request_url_cache_disabled', $cache_disabled, $sharing_url, $mod, $add_page ) ) {
-				$this->p->util->disable_cache_filters( array( 'shorten_url' => '__return_false' ) );
-			}
-
-			/**
 			 * Setup variables for transient cache.
 			 */
 			$cache_md5_pre  = $this->p->lca . '_h_';

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 6.29.0-dev.4\n"
+"Project-Id-Version: WPSSO Core 6.29.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3359,27 +3359,27 @@ msgctxt "option value"
 msgid "[%s Location]"
 msgstr ""
 
-#: lib/head.php:505
+#: lib/head.php:492
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:514
+#: lib/head.php:501
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:523
+#: lib/head.php:510
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:532
+#: lib/head.php:519
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:553
+#: lib/head.php:540
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:562
+#: lib/head.php:549
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -5940,7 +5940,7 @@ msgid ""
 "Activate the %s add-on<br/>for Schema markup and structured data options."
 msgstr ""
 
-#: lib/messages.php:2885 lib/util.php:3953
+#: lib/messages.php:2885 lib/util.php:3966
 msgid "No options available."
 msgstr ""
 
@@ -6160,12 +6160,12 @@ msgid "Pinterest Pin It Image"
 msgstr ""
 
 #: lib/post.php:492 lib/register.php:322 lib/term.php:412 lib/user.php:370
-#: lib/util.php:500 lib/util.php:3636
+#: lib/util.php:500 lib/util.php:3649
 msgid "%s warning:"
 msgstr ""
 
 #: lib/post.php:493 lib/term.php:413 lib/user.php:371 lib/util.php:501
-#: lib/util.php:3637
+#: lib/util.php:3650
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -7139,13 +7139,13 @@ msgid ""
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:3638
+#: lib/util.php:3651
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3653
+#: lib/util.php:3666
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -7154,35 +7154,35 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3655
+#: lib/util.php:3668
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3984
+#: lib/util.php:3997
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3987
+#: lib/util.php:4000
 msgctxt "option comment"
 msgid "show these options now"
 msgstr ""
 
-#: lib/util.php:3992
+#: lib/util.php:4005
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3995
+#: lib/util.php:4008
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:4321
+#: lib/util.php:4334
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 
