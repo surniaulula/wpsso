@@ -801,9 +801,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/**
 		 * Add options using a key prefix string / array and post type names.
 		 */
-		public function add_post_type_names( array &$opts, array $defaults ) {
+		public function add_post_type_names( array &$opts, array $pre_defs ) {
 
-			foreach ( $defaults as $opt_pre => $def_val ) {
+			foreach ( $pre_defs as $opt_pre => $def_val ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'checking options for prefix ' . $opt_pre );
@@ -848,9 +848,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/**
 		 * Add options using a key prefix string / array and term names.
 		 */
-		public function add_taxonomy_names( array &$opts, array $defaults ) {
+		public function add_taxonomy_names( array &$opts, array $pre_defs ) {
 
-			foreach ( $defaults as $opt_pre => $def_val ) {
+			foreach ( $pre_defs as $opt_pre => $def_val ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'checking options for prefix ' . $opt_pre );
@@ -2924,7 +2924,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( ! empty( $mod[ 'name' ] ) && ! empty( $mod[ 'id' ] ) ) {
 
-				$cache_salt = SucomUtil::get_mod_salt( $mod ) . '_type:' . (string) $type . '_add_page:' . (string) $add_page;
+				$cache_salt = self::get_mod_salt( $mod ) . '_type:' . (string) $type . '_add_page:' . (string) $add_page;
 
 				if ( ! empty( $local_cache[ $cache_salt ] ) ) {
 					return $local_cache[ $cache_salt ];
@@ -4387,7 +4387,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Returns for example "#sso-post-123" with a $mod array or "#sso-" without.
+		 * Returns for example "#sso-post-123", #sso-term-123-tax-faq-category with a $mod array or "#sso-" without.
 		 *
 		 * Called by:
 		 *
@@ -4395,9 +4395,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 *	WpssoFaqShortcodeQuestion->do_shortcode()
 		 *	WpssoJsonFiltersTypeThing->filter_json_data_https_schema_org_thing()
 		 */
-		public static function get_frag_anchor( $mod = null ) {
+		public static function get_fragment_anchor( $mod = null ) {
 
-			return '#sso-' . ( $mod ? SucomUtil::get_mod_anchor( $mod ) : '' );
+			return '#sso-' . ( $mod ? self::get_mod_anchor( $mod ) : '' );
 		}
 	}
 }

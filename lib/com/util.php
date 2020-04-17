@@ -1027,6 +1027,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * Deprecated on 2019/08/18.
 		 */
 		public static function is_force_regen() {
+
 			return false;
 		}
 
@@ -3261,6 +3262,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $url;
 		}
 
+		public static function add_query_fragment( $url, $new_fragment ) {
+
+			if ( $old_fragment = strstr( $url, '#' ) ) {
+				$url = substr( $url, 0, -strlen( $old_fragment ) );
+			}
+
+			return $url . '#' . trim( $new_fragment, '#' );
+		}
+
 		public static function unparse_url( $parsed_url ) {
 
 			$scheme   = isset( $parsed_url[ 'scheme' ] )   ? $parsed_url[ 'scheme' ] . '://' : '';
@@ -3624,6 +3634,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * Deprecated on 2020/04/14.
 		 */
 		public static function get_atts_css_attr( array $atts, $css_name, $css_extra = '' ) {
+
 			return '';
 		}
 
@@ -3631,6 +3642,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * Deprecated on 2020/04/14.
 		 */
 		public static function get_atts_src_id( array $atts, $src_name ) {
+
 			return '';
 		}
 
@@ -4029,16 +4041,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * Deprecated on 2020/03/23.
 		 */
 		public static function get_lib_stub_action( $lib_id ) {
+
 			return array( $lib_id, false, false );
-		}
-
-		public static function add_query_frag( $url, $new_frag ) {
-
-			if ( $old_frag = strstr( $url, '#' ) ) {
-				$url = substr( $url, 0, -strlen( $old_frag ) );
-			}
-
-			return $url . '#' . trim( $new_frag, '#' );
 		}
 	}
 }

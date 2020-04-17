@@ -996,11 +996,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			if ( $name ) {
 
-				$args = array(
-					'name'    => $name,
-					'public'  => 1,
-					'show_ui' => 1,
-				);
+				$args = array( 'name' => $name, 'public'  => 1 );
 
 				$post_types = get_post_types( $args, $output = 'names', $operator = 'and' );
 			
