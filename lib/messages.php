@@ -771,8 +771,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 */
 						case 'tooltip-plugin_new_user_is_person':	// Add Person Role for New Users.
 
-							$text = sprintf( __( 'Automatically add the "%s" role when a new user is created.', 'wpsso' ),
-								_x( 'Person', 'user role', 'wpsso' ) );
+							$text = sprintf( __( 'Automatically add the "%s" role when a new user is created.', 'wpsso' ), _x( 'Person', 'user role', 'wpsso' ) ) . ' ';
+
+							$text .= sprintf( __( 'You may also consider activating <a href="%s">a plugin from WordPress.org to manage user roles and their members</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/user+role/' );
 
 							break;
 

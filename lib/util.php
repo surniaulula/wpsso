@@ -1109,9 +1109,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		public function schedule_add_user_roles( $user_id = null ) {
 
-			$user_id    = $this->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$user_id = $this->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+
 			$event_time = time() + $this->event_buffer;
+
 			$event_hook = $this->p->lca . '_add_user_roles';
+
 			$event_args = array( $user_id );
 
 			wp_schedule_single_event( $event_time, $event_hook, $event_args );
