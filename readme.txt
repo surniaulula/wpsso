@@ -507,7 +507,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.0.0-rc.1 (2020/04/16)**
+**Version 7.0.0 (2020/04/17)**
 
 * **New Features**
 	* Added taxonomy names to the SSO &gt; Advanced Settings &gt; Editing Pages &gt; Add Document SSO (Social and Search Optimization) Metabox option.
@@ -527,13 +527,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Added new methods:
+		* `SucomUtil::add_query_fragment()`
+		* `SucomUtil::get_mod_anchor()`
+		* `SucomUtil::sanitize_anchor()`
 		* `SucomUtilWP::get_post_type_labels()`
 		* `SucomUtilWP::get_taxonomy_labels()`
 		* `SucomUtilWP::is_post_type_public()`
 		* `SucomUtilWP::sort_objects_by_label()`
 		* `WpssoUtil->add_post_type_names()`
 		* `WpssoUtil->add_taxonomy_names()`
-		* `WpssoUtil::get_frag_anchor()` (for the WPSSO FAQ add-on)
+		* `WpssoUtil::get_fragment_anchor()` (for the WPSSO FAQ add-on)
 	* Updated post type and taxonomy "public" query filters:
 		* From:
 			* `array( 'public' => 1, 'show_ui' => 1 )`
@@ -1049,9 +1052,9 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 7.0.0-rc.1 =
+= 7.0.0 =
 
-(2020/04/16) Added taxonomy names to the SSO &gt; Advanced Settings &gt; Editing Pages &gt; Add Document SSO (Social and Search Optimization) Metabox option.
+(2020/04/17) Added taxonomy names to the SSO &gt; Advanced Settings &gt; Editing Pages &gt; Add Document SSO (Social and Search Optimization) Metabox option. Deprecated the WPSSO Social Sharing Buttons (aka WPSSO SSB) add-on.
 
 = 6.28.0 =
 
