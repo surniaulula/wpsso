@@ -25,7 +25,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'opt_version' => '723',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
-					'desc'        => 'Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.',
+					'desc'        => 'Makes sure your content looks great on all search and social sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.',
 					'slug'        => 'wpsso',
 					'base'        => 'wpsso/wpsso.php',
 					'update_auth' => 'tid',
@@ -2088,7 +2088,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'meta' => array(			// Post, term, user add_meta_box() settings.
 				'id'    => 'sso',
-				'title' => 'Document SSO (Social and Search Optimization)',
+				'title' => 'Document SSO (Search and Social Optimization)',
 			),
 			'edit' => array(			// Post, term, user lists.
 				'columns' => array(

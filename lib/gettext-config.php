@@ -32,7 +32,7 @@ _x( 'Image Sizes', 'lib file description', 'wpsso' );
 _x( 'Tools and Actions', 'lib file description', 'wpsso' );
 _x( 'Complementary Add-ons', 'lib file description', 'wpsso' );
 _x( 'Premium Licenses', 'lib file description', 'wpsso' );
-_x( 'Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.', 'plugin description', 'wpsso' );
+_x( 'Makes sure your content looks great on all search and social sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.', 'plugin description', 'wpsso' );
 _x( 'Apple Store / iTunes and Google Play App Meta Tags for Apple\'s mobile Safari Banner and Twitter\'s App Card.', 'plugin description', 'wpsso' );
 _x( 'Schema BreadcrumbList Markup in JSON-LD for Better Google Rich Results with Structured Data.', 'plugin description', 'wpsso' );
 _x( 'Create FAQ and Question / Answer Pages with Optional Shortcodes to Include FAQs and Questions in your Content.', 'plugin description', 'wpsso' );
@@ -49,7 +49,7 @@ _x( 'Sharpen and Improve WordPress Thumbnails and Resized Images for Social Shar
 _x( 'Quick and Easy Locale / Language / Region Selector for the WordPress Admin Toolbar.', 'plugin description', 'wpsso' );
 _x( 'Update Manager for the WPSSO Core Premium Plugin and its Premium Complementary Add-ons.', 'plugin description', 'wpsso' );
 _x( 'SSO', 'menu title', 'wpsso' );
-_x( 'Document SSO (Social and Search Optimization)', 'metabox title', 'wpsso' );
+_x( 'Document SSO (Search and Social Optimization)', 'metabox title', 'wpsso' );
 _x( 'Schema', 'column header', 'wpsso' );
 _x( 'OG Type', 'column header', 'wpsso' );
 _x( 'SSO Image', 'column header', 'wpsso' );
