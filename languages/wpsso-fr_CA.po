@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 7.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-04-17 07:08-0700\n"
-"PO-Revision-Date: 2020-04-17 07:09-0700\n"
+"POT-Creation-Date: 2020-04-18 12:05-0700\n"
+"PO-Revision-Date: 2020-04-18 12:11-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1308,8 +1308,8 @@ msgstr "Outils et actions"
 
 #: lib/gettext-config.php:35
 msgctxt "plugin description"
-msgid "Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded."
-msgstr "Assure que votre contenu a une belle apparence sur tous les sites, quelle que soit la manière dont vos pages Web sont explorées, partagées, re-partagées, publiées ou incorporées."
+msgid "Makes sure your content looks great on all search and social sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded."
+msgstr "Assure que votre contenu a fière allure sur tous les sites - quelle que soit la manière dont vos pages Web sont explorées, partagées, re-partagées, publiées ou intégrées."
 
 #: lib/gettext-config.php:36
 msgctxt "plugin description"
@@ -1393,8 +1393,8 @@ msgstr "SSO"
 
 #: lib/gettext-config.php:52
 msgctxt "metabox title"
-msgid "Document SSO (Social and Search Optimization)"
-msgstr "SSO du document (optimisation sociale et de recherche)"
+msgid "Document SSO (Search and Social Optimization)"
+msgstr "SSO du document (optimisation de recherche et sociale)"
 
 #: lib/gettext-config.php:53
 msgctxt "column header"
@@ -3856,20 +3856,20 @@ msgid "WordPress does not upscale / enlarge images &mdash; WordPress can only cr
 msgstr "WordPress n'agrandit pas les images &mdash; WordPress ne peut créer que des images plus petites à partir d'originaux plus grands."
 
 #: lib/messages.php:819
-msgid "Upscaled images do not look as sharp or clear, and if enlarged too much, will look fuzzy and unappealing &mdash; not something you want to promote on social and search sites."
-msgstr "Les images agrandies ne semblent pas aussi nettes et claires, et si elles sont trop agrandies, peuvent apparaître floues et moins attrayantes - pas quelque chose que vous souhaitez promouvoir sur les sites sociaux et de recherche."
+msgid "Upscaled images do not look as sharp or clear, and if enlarged too much, will look fuzzy and unappealing &mdash; not something you want to promote on search and social sites."
+msgstr "Les images agrandies ne semblent pas aussi nettes et claires, et si elles sont trop agrandies, peuvent apparaître floues et moins attrayantes - pas quelque chose que vous souhaitez promouvoir sur les sites de recherche et sociaux."
 
 #: lib/messages.php:821
 msgid "%1$s includes a feature that allows upscaling of WordPress Media Library images for %2$s image sizes (up to a maximum upscale percentage)."
 msgstr "%1$s comprend une fonctionnalité qui permet d'agrandir les images de la bibliothèque de médias WordPress pour %2$s (jusqu'à un pourcentage d'agrandissement maximal)."
 
 #: lib/messages.php:823
-msgid "Do not enable this option unless you want to publish lower quality images on social and search sites."
-msgstr "N'activez pas cette option, sauf si vous souhaitez publier des images de qualité inférieure sur les sites sociaux et de recherche."
+msgid "Do not enable this option unless you want to publish lower quality images on search and social sites."
+msgstr "N'activez cette option que si vous souhaitez publier des images de qualité inférieure sur les sites de recherche et sociaux."
 
 #: lib/messages.php:831
-msgid "When upscaling of %1$s image sizes is allowed, %2$s can make sure smaller images are not upscaled beyond reason, which would publish very low quality / fuzzy images on social and search sites (the default maximum is %3$s%%)."
-msgstr "Lorsque l'agrandissement des image pour %1$s est autorisé, %2$s peut s'assurer que les images plus petites ne sont pas agrandies au-delà de la raison, ce qui publiera des images peu claires / floues sur les sites sociaux et de recherche (le maximum par défaut est de %3$s%%)."
+msgid "When upscaling of %1$s image sizes is allowed, %2$s can make sure smaller images are not upscaled beyond reason, which would publish very low quality / fuzzy images on search and social sites (the default maximum is %3$s%%)."
+msgstr "Lorsque l'agrandissement des image pour %1$s est autorisé, %2$s peut s'assurer que les images plus petites ne sont pas agrandies au-delà de la raison, ce qui publiera des images peu claires / floues sur les sites de recherche et sociaux (le maximum par défaut est de %3$s%%)."
 
 #: lib/messages.php:833
 msgid "If an image needs to be upscaled beyond this maximum, in either width or height, the image will not be upscaled."
@@ -4451,8 +4451,8 @@ msgid "Validate the HTML syntax and HTML 5 conformance of your meta tags and the
 msgstr "Validez la syntaxe HTML et la conformité HTML 5 de vos balises méta et modèles de thème."
 
 #: lib/messages.php:1887
-msgid "Validating your theme templates is important - theme templates with serious errors can prevent social and search crawlers from understanding the webpage structure."
-msgstr "La validation de vos modèles de thème est importante - les modèles de thème avec de erreurs graves peuvent empêcher les robots sociaux et de recherche de comprendre la structure de la page Web."
+msgid "Validating your theme templates is important - theme templates with serious errors can prevent search and social crawlers from understanding the webpage structure."
+msgstr "La validation de vos modèles de thème est importante - les modèles de thème avec de erreurs graves peuvent empêcher les robots de recherche et sociaux de comprendre la structure de la page Web."
 
 #: lib/messages.php:1904 lib/messages.php:2885
 msgid "Schema markup is disabled."
@@ -5341,7 +5341,7 @@ msgstr "supérieur au max recommandé de %1$0.3f secs"
 msgid "Slow query detected - get_posts() took %1$0.3f secs to get the children of post ID %2$d (%3$s)."
 msgstr "Requête lente détectée - get_posts() a pris %1$0.3f secs pour obtenir les enfants de l'article ID %2$d (%3$s)."
 
-#: lib/post.php:775 lib/post.php:1345 lib/schema.php:2933 lib/term.php:612
+#: lib/post.php:775 lib/post.php:1345 lib/schema.php:2936 lib/term.php:612
 #: lib/user.php:613
 msgid "checking meta tags"
 msgstr "vérification des balises méta"
@@ -6016,8 +6016,8 @@ msgstr "Recharger les tailles d'images par défaut"
 
 #: lib/submenu/image-sizes.php:68
 msgctxt "metabox title"
-msgid "Social and Search Image Sizes"
-msgstr "Tailles d'images sociales et de recherche"
+msgid "Search and Social Image Sizes"
+msgstr "Tailles d'images de recherche et sociale"
 
 #: lib/submenu/image-sizes.php:115
 msgctxt "option label"
@@ -6578,8 +6578,8 @@ msgid "https://wpsso.com/extend/plugins/wpsso/"
 msgstr "https://wpsso.com/extend/plugins/wpsso/"
 
 #. Description of the plugin/theme
-msgid "Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted or embedded."
-msgstr "Assure que votre contenu a une belle apparence sur tous les sites, quelle que soit la manière dont vos pages Web sont explorées, partagées, re-partagées, publiées ou incorporées."
+msgid "Makes sure your content looks great on all search and social sites - no matter how webpage URLs are crawled, shared, re-shared, posted or embedded."
+msgstr "Assure que votre contenu a fière allure sur tous les sites - quelle que soit la manière dont vos pages Web sont explorées, partagées, re-partagées, publiées ou intégrées."
 
 #. Author of the plugin/theme
 msgid "JS Morisset"
