@@ -14,13 +14,13 @@ Tested Up To: 5.4
 WC Tested Up To: 4.0.1
 Stable Tag: 7.0.0
 
-Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.
+Makes sure your content looks great on all search and social sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.
 
 == Description ==
 
 <p style="margin:0;"><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
 
-**Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded:**
+**Makes sure your content looks great on all search and social sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded:**
 
 WPSSO Core and its free complementary add-ons provide comprehensive information about your webpage content to social sites (Facebook, Pinterest, Twitter, LinkedIn, etc.), search engines and crawlers (Google, Bing, etc.), mail and text messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), REST API clients, and oEmbed data for embedded objects / iframes (LinkedIn, WordPress, etc.) &mdash; all from your existing WordPress content and supported plugins.
 
@@ -510,7 +510,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 7.0.0 (2020/04/17)**
 
 * **New Features**
-	* Added taxonomy names to the SSO &gt; Advanced Settings &gt; Editing Pages &gt; Add Document SSO (Social and Search Optimization) Metabox option.
+	* Added taxonomy names to the SSO &gt; Advanced Settings &gt; Editing Pages &gt; Add Document SSO (Search and Social Optimization) Metabox option.
 	* Deprecated the WPSSO Social Sharing Buttons (aka WPSSO SSB) add-on.
 * **Improvements**
 	* Added a title to the tab content for mobile icon-only tabs.
@@ -1054,7 +1054,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 = 7.0.0 =
 
-(2020/04/17) Added taxonomy names to the SSO &gt; Advanced Settings &gt; Editing Pages &gt; Add Document SSO (Social and Search Optimization) Metabox option. Deprecated the WPSSO Social Sharing Buttons (aka WPSSO SSB) add-on.
+(2020/04/17) Added taxonomy names to the SSO &gt; Advanced Settings &gt; Editing Pages &gt; Add Document SSO (Search and Social Optimization) Metabox option. Deprecated the WPSSO Social Sharing Buttons (aka WPSSO SSB) add-on.
 
 = 6.28.0 =
 

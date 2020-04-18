@@ -2,7 +2,7 @@
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
-<tr><th align="right" valign="top" nowrap>Summary</th><td>Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.</td></tr>
+<tr><th align="right" valign="top" nowrap>Summary</th><td>Makes sure your content looks great on all search and social sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.</td></tr>
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>7.0.0</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires PHP</th><td>5.6 or newer</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires WordPress</th><td>4.2 or newer</td></tr>
@@ -17,7 +17,7 @@
 
 <p style="margin:0;"><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
 
-<p><strong>Makes sure your content looks great on all social and search sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded:</strong></p>
+<p><strong>Makes sure your content looks great on all search and social sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded:</strong></p>
 
 <p>WPSSO Core and its free complementary add-ons provide comprehensive information about your webpage content to social sites (Facebook, Pinterest, Twitter, LinkedIn, etc.), search engines and crawlers (Google, Bing, etc.), mail and text messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), REST API clients, and oEmbed data for embedded objects / iframes (LinkedIn, WordPress, etc.) &mdash; all from your existing WordPress content and supported plugins.</p>
 
