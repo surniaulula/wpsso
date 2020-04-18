@@ -1935,8 +1935,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( empty( $json_data[ $prop_name ] ) ) {
+
 				$json_data[ $prop_name ] = array();
+
 			} elseif ( ! is_array( $json_data[ $prop_name ] ) ) {	// Convert single value to an array.
+
 				$json_data[ $prop_name ] = array( $json_data[ $prop_name ] );
 			}
 
