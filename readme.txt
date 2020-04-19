@@ -512,7 +512,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added a fallback to the full size image if the requested image size is uncropped and one side matches the image size.
 * **Bugfixes**
 	* Fixed a possible error notice when the WordPress `image_make_intermediate_size()` function returns false instead of creating a resized image as expected.
 * **Developer Notes**
@@ -1062,6 +1062,10 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 	* WordPress v3.9.
 
 == Upgrade Notice ==
+
+= 7.0.1 =
+
+(2020/04/19) Added a fallback to the full size image if the requested image size is uncropped and one side matches the image size. Fixed a possible error notice when the WordPress `image_make_intermediate_size()` function returns false.
 
 = 7.0.0 =
 
