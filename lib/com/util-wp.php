@@ -1021,8 +1021,10 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			$objects = get_post_types( $args, $output = 'objects', $operator = 'and' );
 
 			foreach ( $objects as $obj ) {
-				$values[ $val_prefix . $obj->name ] = trim( $label_prefix . ' ' . $obj->label . 
-					( empty( $obj->description ) ? '' : ' (' . $obj->description . ')' ) );
+
+				$obj_label = SucomUtilWP::get_object_label( $obj );
+
+				$values[ $val_prefix . $obj->name ] = trim( $label_prefix . ' ' . $obj_label );
 			}
 
 			asort( $values );	// Sort by label.
@@ -1037,13 +1039,32 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			$objects = get_taxonomies( $args, $output = 'objects', $operator = 'and' );
 
 			foreach ( $objects as $obj ) {
-				$values[ $val_prefix . $obj->name ] = trim( $label_prefix . ' ' . $obj->label . 
-					( empty( $obj->description ) ? '' : ' (' . $obj->description . ')' ) );
+
+				$obj_label = SucomUtilWP::get_object_label( $obj );
+
+				$values[ $val_prefix . $obj->name ] = trim( $label_prefix . ' ' . $obj_label );
 			}
 
 			asort( $values );	// Sort by label.
 
 			return $values;
+		}
+
+		public static function get_object_label( $obj ) {
+
+			$desc = '';
+				
+			if ( empty( $obj->description ) ) {
+
+				if ( empty( $obj->_builtin ) ) {
+					$desc = '[' . $obj->name . ']';
+				}
+				
+			} else {
+				$decs = '(' . $obj->description . ')';
+			}
+
+			return $obj->label . ' ' . $desc;
 		}
 
 		public static function sort_objects_by_label( array &$objects ) {

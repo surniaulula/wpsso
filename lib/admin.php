@@ -2651,10 +2651,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$type_keys[] = $opt_key = 'og_type_for_' . $obj->name;
 
-				$type_label = $obj->label . ' [' . $obj->name . ']';
+				$obj_label = SucomUtilWP::get_object_label( $obj );
 
 				$type_select .= '<p>' . $form->$se_func( $opt_key, $og_types, $css_class = 'og_type' ) . ' ' .
-					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $type_label ) . '</p>' . "\n";
+					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
 			}
 
 			$type_keys[] = $opt_key = 'og_type_for_post_archive';
@@ -2682,10 +2682,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$type_keys[] = $opt_key = 'og_type_for_tax_' . $obj->name;
 
-				$type_label = $obj->label . ' [' . $obj->name . ']';
+				$obj_label = SucomUtilWP::get_object_label( $obj );
 
 				$type_select .= '<p>' . $form->$se_func( $opt_key, $og_types, $css_class = 'og_type' ) . ' ' .
-					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $type_label ) . '</p>' . "\n";
+					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
 			}
 
 			$tr_key   = 'og_type_for_ttn';
@@ -2850,7 +2850,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$type_keys[] = $opt_key = 'schema_type_for_' . $obj->name;
 
-				$type_label = $obj->label . ' [' . $obj->name . ']';
+				$obj_label = SucomUtilWP::get_object_label( $obj );
 
 				$type_select .= '<p>' . $form->$se_func( $opt_key, $schema_types, $css_class = 'schema_type', $css_id = '',
 					$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
@@ -2860,9 +2860,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							'is_transl' => true,	// No label translation required.
 							'is_sorted' => true,	// No label sorting required.
 						)
-					) . ' ' .
-					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $type_label ) .
-					'</p>' . "\n";
+					) . ' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
 			}
 
 			$type_keys[] = $opt_key = 'schema_type_for_post_archive';
@@ -2899,7 +2897,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$type_keys[] = $opt_key = 'schema_type_for_tax_' . $obj->name;
 
-				$type_label = $obj->label . ' [' . $obj->name . ']';
+				$obj_label = SucomUtilWP::get_object_label( $obj );
 
 				$type_select .= '<p>' . $form->$se_func( $opt_key, $schema_types, $css_class = 'schema_type', $css_id = '',
 					$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
@@ -2909,9 +2907,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							'is_transl' => true,	// No label translation required.
 							'is_sorted' => true,	// No label sorting required.
 						)
-					) . ' ' .
-					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $type_label ) .
-					'</p>' . "\n";
+					) . ' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
 			}
 
 			$tr_key   = 'schema_type_for_ttn';
