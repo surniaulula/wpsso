@@ -1056,6 +1056,9 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				
 			if ( empty( $obj->description ) ) {
 
+				/**
+				 * Only show the slug (ie. name) of custom post types and taxonomies.
+				 */
 				if ( empty( $obj->_builtin ) ) {
 					$desc = '[' . $obj->name . ']';
 				}
@@ -1064,7 +1067,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				$decs = '(' . $obj->description . ')';
 			}
 
-			return $obj->label . ' ' . $desc;
+			return trim( $obj->label . ' ' . $desc );
 		}
 
 		public static function sort_objects_by_label( array &$objects ) {
