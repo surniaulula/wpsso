@@ -42,9 +42,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			 * Set a default text string, if one is provided.
 			 */
 			if ( is_string( $info ) ) {
+
 				$text = $info;
+
 				$info = array( 'text' => $text );
+
 			} else {
+
 				$text = isset( $info[ 'text' ] ) ? $info[ 'text' ] : '';
 			}
 
