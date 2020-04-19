@@ -20,6 +20,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				'amp'                      => 'AMP',	// AMP, Better AMP, etc.
 				'accelerated-mobile-pages' => 'Accelerated Mobile Pages',
 			),
+			'media' => array(
+				'wp-retina-2x' => 'WP Retina 2x',
+			),
 			'p' => array(
 				'schema'  => 'Schema Markup',
 				'vary_ua' => 'Vary by User Agent',
@@ -268,6 +271,15 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								case 'rtmedia':
 
 									$chk[ 'plugin' ] = 'buddypress-media/index.php';
+
+									break;
+
+								/**
+								 * WP Retina 2x.
+								 */
+								case 'wp-retina-2x':
+
+									$chk[ 'class' ] = 'Meow_WR2X_Core';
 
 									break;
 

@@ -546,7 +546,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		public function get_image_size_label( $size_name ) {
 
 			if ( ! empty( $this->size_labels[ $size_name ] ) ) {
+
 				return $this->size_labels[ $size_name ];
+
 			} else {
 				return $size_name;
 			}

@@ -933,17 +933,23 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				}
 
 				if ( $crop ) {
+
 					if ( $width > $min_width ) {
 						$min_width = $width;
 					}
+
 					if ( $height > $min_height ) {
 						$min_height = $height;
 					}
+
 				} elseif ( $width < $height ) {
+
 					if ( $width > $min_width ) {
 						$min_width = $width;
 					}
+
 				} else {
+
 					if ( $height > $min_height ) {
 						$min_height = $height;
 					}

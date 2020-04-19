@@ -34,6 +34,10 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				$this->p->debug->mark();
 			}
 
+			if ( ! empty( $this->p->avail[ 'media' ][ 'wp-retina-2x' ] ) ) {
+				add_filter( 'option_wr2x_ignore_sizes', array( $this, 'update_wr2x_ignore_sizes' ), 10, 1 );
+			}
+
 			if ( is_admin() ) {
 
 				/**
@@ -106,6 +110,38 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 					add_action( 'wp_loaded', array( __CLASS__, 'force_ssl_redirect' ), -1000 );
 				}
 			}
+		}
+
+		public function update_wr2x_ignore_sizes( $mixed ) {
+
+			global $_wp_additional_image_sizes;
+
+			/**
+			 * Maybe remove old image size names.
+			 */
+			if ( is_array( $mixed ) ) {
+
+				foreach ( $mixed as $size_name => $disabled ) {
+					if ( false !== strpos( $size_name, $this->p->lca . '-' ) ) {
+						unset( $mixed[ $size_name ] );
+					}
+				}
+
+			} else {
+
+				$mixed = array();
+			}
+
+			/**
+			 * Disable all current WPSSO image size names.
+			 */
+			foreach ( $_wp_additional_image_sizes as $size_name => $size_info ) {
+				if ( false !== strpos( $size_name, $this->p->lca . '-' ) ) {
+					$mixed[ $size_name ] = 1;
+				}
+			}
+
+			return $mixed;
 		}
 
 		public function update_gform_noconflict_styles( $styles ) {
