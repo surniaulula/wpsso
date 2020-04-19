@@ -12,7 +12,7 @@ Requires PHP: 5.6
 Requires At Least: 4.2
 Tested Up To: 5.4
 WC Tested Up To: 4.0.1
-Stable Tag: 7.0.0
+Stable Tag: 7.0.1
 
 Makes sure your content looks great on all search and social sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.
 
@@ -1098,8 +1098,4 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 = 6.24.0 =
 
 (2020/03/11) Added several Open Graph image options in the Document SSO metabox to the Standard / Free version.
-
-= 6.23.2 =
-
-(2020/03/06) Fixed possible javascript undefined variable error for missing checkbox name attributes. Refactored the WpssoStyle, WpssoScript, and SucomNotice classes.
 
