@@ -974,7 +974,7 @@ msgstr ""
 
 #: lib/conflict.php:206 lib/gettext-pro.php:145 lib/gettext-pro.php:148
 #: lib/gettext-pro.php:151 lib/pro/media/slideshare.php:186
-#: lib/pro/media/vimeo.php:160 lib/pro/media/wistia.php:307
+#: lib/pro/media/vimeo.php:164 lib/pro/media/wistia.php:307
 msgid ""
 "Please contact your hosting provider to have the missing PHP function "
 "installed."
@@ -3160,13 +3160,13 @@ msgid "Please update your site to WooCommerce version %s or newer."
 msgstr ""
 
 #: lib/gettext-pro.php:143 lib/gettext-pro.php:146 lib/gettext-pro.php:149
-#: lib/pro/media/slideshare.php:181 lib/pro/media/vimeo.php:155
+#: lib/pro/media/slideshare.php:181 lib/pro/media/vimeo.php:159
 #: lib/pro/media/wistia.php:302
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
 #: lib/gettext-pro.php:144 lib/gettext-pro.php:147 lib/gettext-pro.php:150
-#: lib/pro/media/slideshare.php:183 lib/pro/media/vimeo.php:157
+#: lib/pro/media/slideshare.php:183 lib/pro/media/vimeo.php:161
 #: lib/pro/media/wistia.php:304
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
