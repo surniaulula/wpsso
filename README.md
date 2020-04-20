@@ -313,12 +313,6 @@
 <li>Microdata Type URLs</li>
 <li>Same-As URLs</li>
 </ul></li>
-<li>Claim Review Information
-
-<ul>
-<li>Short Summary of Claim</li>
-<li>First Appearance URL</li>
-</ul></li>
 <li>Creative Work Information
 
 <ul>
@@ -450,7 +444,7 @@
 <li>Subject Name </li>
 <li>Subject Description </li>
 <li>Subject Image ID or URL </li>
-<li>Claim Subject Information
+<li>Claim Subject Information (for Claim Review)
 
 <ul>
 <li>Short Summary of Claim</li>

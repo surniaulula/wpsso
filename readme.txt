@@ -263,9 +263,6 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 		* Description
 		* Microdata Type URLs
 		* Same-As URLs
-	* Claim Review Information
-		* Short Summary of Claim
-		* First Appearance URL
 	* Creative Work Information
 		* Is Part of URL
 		* Headline
@@ -360,7 +357,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 			* Subject Name 
 			* Subject Description 
 			* Subject Image ID or URL 
-			* Claim Subject Information
+			* Claim Subject Information (for Claim Review)
 				* Short Summary of Claim
 				* First Appearance URL
 			* Creative Work Subject Information
