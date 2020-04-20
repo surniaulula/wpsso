@@ -849,10 +849,19 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						if ( $this->can_make_intermediate_size( $img_meta, $size_info ) ) {
 
+							$media_lib    = __( 'Media Library', 'wpsso' );
+							$wp_func_url  = __( 'https://developer.wordpress.org/reference/functions/image_make_intermediate_size/', 'wpsso' );
+							$wp_func_name = 'image_make_intermediate_size()';
 							$fullsizepath = get_attached_file( $pid );
 
 							$mtime_start = microtime( true );
 
+							/**
+							 * image_make_intermediate_size() resizes an image to make a thumbnail or
+							 * intermediate size.
+							 *
+							 * Returns (array|false) metadata array on success, false if no image was created.
+							 */
 							$resized_meta = image_make_intermediate_size( $fullsizepath,
 								$size_info[ 'width' ], $size_info[ 'height' ], $size_info[ 'crop' ] );
 
@@ -861,24 +870,24 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							$mtime_max = SucomUtil::get_const( 'WPSSO_IMAGE_MAKE_SIZE_MAX_TIME', 1.00 );
 
 							/**
-							 * Issue warning for slow getimagesize() request.
+							 * Issue warning for slow image_make_intermediate_size() request.
 							 */
 							if ( $mtime_max > 0 && $mtime_total > $mtime_max ) {
 
 								$info = $this->p->cf[ 'plugin' ][ $this->p->lca ];
 
 								if ( $this->p->debug->enabled ) {
-									$this->p->debug->log( sprintf( 'slow WordPress function detected - image_make_intermediate_size() took %1$0.3f secs to make size "%2$s" from %3$s', $mtime_total, $size_name, $fullsizepath ) );
+									$this->p->debug->log( sprintf( 'slow WordPress function detected - %1$s took %2$0.3f secs to make size "%3$s" from %4$s', $wp_func_name, $mtime_total, $size_name, $fullsizepath ) );
 								}
 							}
 
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'WordPress image_make_intermediate_size() reported ' . 
+								$this->p->debug->log( 'WordPress ' . $wp_func_name . ' reported ' .
 									( false === $resized_meta ? 'failure' : 'success' ) );
 							}
 
 							/**
-							 * image_make_intermediate_size() returns metadata array on success and false if no image was created.
+							 * Returns (array|false) metadata array on success, false if no image was created.
 							 */
 							if ( false === $resized_meta ) {
 
@@ -888,12 +897,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								 * Add notice only if the admin notices have not already been shown.
 								 */
 								if ( $this->p->notice->is_admin_pre_notices() ) {
-
-									$media_lib = __( 'Media Library', 'wpsso' );
-
-									$wp_func_url = __( 'https://developer.wordpress.org/reference/functions/image_make_intermediate_size/', 'wpsso' );
-
-									$wp_func_name = 'image_make_intermediate_size()';
 
 									$size_msg = $size_info[ 'width' ] . 'x' . $size_info[ 'height' ] . 'px ' . 
 										( $size_info[ 'crop' ] ? _x( 'cropped', 'option value', 'wpsso' ) :

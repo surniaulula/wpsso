@@ -2645,8 +2645,8 @@ msgstr ""
 msgid "Posts, Pages, and Custom Post Types"
 msgstr ""
 
-#: lib/gettext-pro.php:34 lib/media.php:121 lib/media.php:716 lib/media.php:892
-#: lib/media.php:1896 lib/pro/admin/advanced.php:205
+#: lib/gettext-pro.php:34 lib/media.php:121 lib/media.php:716 lib/media.php:852
+#: lib/media.php:1899 lib/pro/admin/advanced.php:205
 #: lib/std/admin/advanced.php:211
 msgid "Media Library"
 msgstr ""
@@ -3411,7 +3411,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: lib/media.php:124 lib/media.php:1903
+#: lib/media.php:124 lib/media.php:1906
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
@@ -3440,7 +3440,7 @@ msgid ""
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:721 lib/media.php:904
+#: lib/media.php:721 lib/media.php:907
 msgid ""
 "You may consider regenerating the thumbnails of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
@@ -3461,73 +3461,73 @@ msgid ""
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:894
+#: lib/media.php:853
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:899 lib/messages.php:2931
+#: lib/media.php:902 lib/messages.php:2931
 msgctxt "option value"
 msgid "cropped"
 msgstr ""
 
-#: lib/media.php:900 lib/messages.php:2930
+#: lib/media.php:903 lib/messages.php:2930
 msgctxt "option value"
 msgid "uncropped"
 msgstr ""
 
-#: lib/media.php:902
+#: lib/media.php:905
 msgid ""
 "Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress "
 "%3$s function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:1357
+#: lib/media.php:1360
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1913
+#: lib/media.php:1916
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:1938
+#: lib/media.php:1941
 msgctxt "option label"
 msgid "Facebook Open Graph"
 msgstr ""
 
-#: lib/media.php:1947
+#: lib/media.php:1950
 msgctxt "option label"
 msgid "Google Schema"
 msgstr ""
 
-#: lib/media.php:1956
+#: lib/media.php:1959
 msgctxt "option label"
 msgid "Google Schema Article"
 msgstr ""
 
-#: lib/media.php:1965
+#: lib/media.php:1968
 msgctxt "option label"
 msgid "Google Schema Article AMP 1:1"
 msgstr ""
 
-#: lib/media.php:1974
+#: lib/media.php:1977
 msgctxt "option label"
 msgid "Google Schema Article AMP 4:3"
 msgstr ""
 
-#: lib/media.php:1983
+#: lib/media.php:1986
 msgctxt "option label"
 msgid "Google Schema Article AMP 16:9"
 msgstr ""
 
-#: lib/media.php:2023
+#: lib/media.php:2026
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:2054
+#: lib/media.php:2057
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
