@@ -183,19 +183,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				$ext_pdir    = $this->p->check->pp( $ext, $li = false );
-				$ext_auth_id = $this->p->check->get_ext_auth_id( $ext );
-				$ext_pp      = $ext_auth_id && $this->p->check->pp( $ext, $li = true, WPSSO_UNDEF ) === WPSSO_UNDEF ? true : false;
-				$ext_stat    = ( $ext_pp ? 'L' : ( $ext_pdir ? 'U' : 'S' ) ) . ( $ext_auth_id ? '*' : '' );
+				$ext_pdir      = $this->p->check->pp( $ext, $li = false );
+				$ext_auth_id   = $this->p->check->get_ext_auth_id( $ext );
+				$ext_pp        = $ext_auth_id && $this->p->check->pp( $ext, $li = true, WPSSO_UNDEF ) === WPSSO_UNDEF ? true : false;
+				$ext_stat      = ( $ext_pp ? 'L' : ( $ext_pdir ? 'U' : 'S' ) ) . ( $ext_auth_id ? '*' : '' );
+				$dist_pro_name = _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' );
+				$dist_std_name = _x( $this->p->cf[ 'dist' ][ 'std' ], 'distribution name', 'wpsso' );
 
 				self::$pkg[ $ext ][ 'pdir' ] = $ext_pdir;
 				self::$pkg[ $ext ][ 'pp' ]   = $ext_pp;
-				self::$pkg[ $ext ][ 'dist' ] = $ext_pp ?
-					_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) :
-					_x( $this->p->cf[ 'dist' ][ 'std' ], 'distribution name', 'wpsso' );
-
-				self::$pkg[ $ext ][ 'short_pro' ] = $info[ 'short' ] . ' ' . _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' );
-				self::$pkg[ $ext ][ 'short_std' ] = $info[ 'short' ] . ' ' . _x( $this->p->cf[ 'dist' ][ 'std' ], 'distribution name', 'wpsso' );
+				self::$pkg[ $ext ][ 'dist' ] = $ext_pp ? $dist_pro_name : $dist_std_name;
+				self::$pkg[ $ext ][ 'short_pro' ] = $info[ 'short' ] . ' ' . $dist_pro_name;
+				self::$pkg[ $ext ][ 'short_std' ] = $info[ 'short' ] . ' ' . $dist_std_name;
 				self::$pkg[ $ext ][ 'short' ]     = $info[ 'short' ] . ' ' . self::$pkg[ $ext ][ 'dist' ];
 				self::$pkg[ $ext ][ 'name' ]      = SucomUtil::get_dist_name( $info[ 'name' ], self::$pkg[ $ext ][ 'dist' ] );
 				self::$pkg[ $ext ][ 'gen' ]       = $info[ 'short' ] . ( isset( $info[ 'version' ] ) ? ' ' . $info[ 'version' ] . '/' . $ext_stat : '' );

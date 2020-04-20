@@ -76,52 +76,23 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 
 		protected function add_meta_boxes() {
 
+			$metabox_ids    = array();
+			$external_cache = wp_using_ext_object_cache();
+			$dist_pro_name  = _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' );
+			$dist_std_name  = _x( $this->p->cf[ 'dist' ][ 'std' ], 'distribution name', 'wpsso' );
+
 			/**
 			 * Don't include the 'cache_status' metabox if we're using an external object cache.
 			 */
-			$external_cache = wp_using_ext_object_cache();
-
-			if ( $external_cache ) {
-
-				$metabox_ids = array( 
-
-					/**
-					 * First row.
-					 */
-					'rate_review'  => _x( 'Your Rating is Important', 'metabox title', 'wpsso' ),
-					'help_support' => _x( 'Help and Support', 'metabox title', 'wpsso' ),
-					'version_info' => _x( 'Version Information', 'metabox title', 'wpsso' ), 
-
-					/**
-					 * Second row.
-					 */
-					'status_std'   => sprintf( _x( '%s Features', 'metabox title', 'wpsso' ),
-						_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) ),
-					'status_pro'   => sprintf( _x( '%s Features', 'metabox title', 'wpsso' ),
-						_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) ),
-				);
-
-			} else {
-
-				$metabox_ids = array( 
-
-					/**
-					 * First row.
-					 */
-					'cache_status' => _x( 'Cache Status', 'metabox title', 'wpsso' ), 
-					'rate_review'  => _x( 'Your Rating is Important', 'metabox title', 'wpsso' ),
-					'help_support' => _x( 'Help and Support', 'metabox title', 'wpsso' ),
-
-					/**
-					 * Second row.
-					 */
-					'status_std'   => sprintf( _x( '%s Features', 'metabox title', 'wpsso' ),
-						_x( $this->p->cf[ 'dist' ][ 'std' ], 'distribution name', 'wpsso' ) ),
-					'status_pro'   => sprintf( _x( '%s Features', 'metabox title', 'wpsso' ),
-						_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) ),
-					'version_info' => _x( 'Version Information', 'metabox title', 'wpsso' ), 
-				);
+			if ( ! $external_cache ) {
+				$metabox_ids[ 'cache_status' ] = _x( 'Cache Status', 'metabox title', 'wpsso' );
 			}
+
+			$metabox_ids[ 'rate_review' ]  = _x( 'Your Rating is Important', 'metabox title', 'wpsso' );
+			$metabox_ids[ 'help_support' ] = _x( 'Help and Support', 'metabox title', 'wpsso' );
+			$metabox_ids[ 'version_info' ] = _x( 'Version Information', 'metabox title', 'wpsso' ); 
+			$metabox_ids[ 'status_std' ]   = sprintf( _x( '%s Features', 'metabox title', 'wpsso' ), $dist_std_name );
+			$metabox_ids[ 'status_pro' ]   = sprintf( _x( '%s Features', 'metabox title', 'wpsso' ), $dist_pro_name );
 
 			$dashboard_col = 0;
 
