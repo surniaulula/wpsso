@@ -504,6 +504,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 7.1.0 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new 'wpsso_get_md_options' filter.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.2.
+
 **Version 7.0.1 (2020/04/19)**
 
 * **New Features**
@@ -514,6 +528,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed a possible error notice when the WordPress `image_make_intermediate_size()` function returns false instead of creating a resized image as expected.
 * **Developer Notes**
 	* Added a 'wp_image_resize_identical_dimensions' filter (added in WordPress v5.3) hook in `WpssoMedia->maybe_resize_fuzzy_dimensions()` to prevent WordPress from skipping image creation if the resized image and the original image are "close enough".
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.2.
 
 **Version 7.0.0 (2020/04/17)**
 
