@@ -4,7 +4,7 @@
 		float:right;
 		width:40%;
 		max-width:1200px;
-		margin:40px 0 40px 60px;
+		margin:1em 0 2em 5em;
 	}
 	@media (max-width: 767px) {
 		.wpsso-setup-guide.alignright {
@@ -110,6 +110,8 @@
 <p>Submit a few sample posts, pages, etc. to the <a href="https://developers.facebook.com/tools/debug/">Facebook Sharing Debugger</a> to verify your Open Graph meta tags. A link to the Facebook debugger is available under the Validate tab in the Document SSO metabox (on post, term, and user editing pages). Submitting a URL to the Facebook debugger can also be used to clear Facebook's cache (after clicking the "Fetch new scrape information" button). If you're validating older posts / pages, pre-dating the activation of WPSSO Core, note that <a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/">Facebook may continue to use the old meta tag values from its cache</a>, even after fetching the new scrape information.</p>
 
 <p>Submit an example post / page to the <a href="http://developers.pinterest.com/rich_pins/validator/">Pinterest Rich Pins Validator</a>. Note that the Pinterest validator recognizes known Rich Pin types only (article, recipe, product, etc.) - your home page and WordPress archive pages are generally not valid Rich Pin types. Pinterest Rich Pins are an extension of Open Graph and Schema meta tags, but the Rich Pins Validator can be a little buggy, so double check any errors with the Facebook debugger to make sure they are actual / real errors. If you haven't already requested / enabled Rich Pins support from Pinterest for your website, you can request Rich Pin support when validating an example Post / Page from your site (that uses a known Rich Pin type).</p>
+
+<img src="https://surniaulula.github.io/wpsso/images/google-structured-data-testing-tool.png" class="wpsso-setup-guide alignright">
 
 <p>If you have activated the WPSSO Schema JSON-LD Markup add-on, you can also submit URLs to the <a href="https://search.google.com/structured-data/testing-tool">Google Structured Data Testing Tool</a>. WPSSO Core includes all the meta tags social sites need, along with Schema markup for Google's Knowledge Graph in the site home page. To express more complex Schema markup you must activate the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup add-on</a>. Some Schema types may also require additional organization and/or location information from the <a href="https://wordpress.org/plugins/wpsso-organization/">WPSSO Organization Markup add-on</a> and/or <a href="https://wordpress.org/plugins/wpsso-plm/">WPSSO Place and Local SEO Markup add-on</a>.</p>
 
