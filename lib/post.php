@@ -357,6 +357,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$md_opts[ 'options_filtered' ] = true;	// Set before calling filter to prevent recursion.
 
 					/**
+					 * Since WPSSO Core v7.1.0.
+					 */
+					$md_opts = apply_filters( $this->p->lca . '_get_md_options', $md_opts, $mod );
+
+					/**
 					 * Hooked by several integration modules to provide information about the current content.
 					 * E-commerce integration modules will provide information on their product (price,
 					 * condition, etc.) and disable these options in the Document SSO metabox.

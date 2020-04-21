@@ -247,6 +247,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					$mod = $this->get_mod( $user_id );
 
+					/**
+					 * Since WPSSO Core v7.1.0.
+					 */
+					$md_opts = apply_filters( $this->p->lca . '_get_md_options', $md_opts, $mod );
+
 					$md_opts = apply_filters( $this->p->lca . '_get_user_options', $md_opts, $user_id, $mod );
 
 					if ( $this->p->debug->enabled ) {

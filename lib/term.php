@@ -247,6 +247,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 					$mod = $this->get_mod( $term_id );
 
+					/**
+					 * Since WPSSO Core v7.1.0.
+					 */
+					$md_opts = apply_filters( $this->p->lca . '_get_md_options', $md_opts, $mod );
+
 					$md_opts = apply_filters( $this->p->lca . '_get_term_options', $md_opts, $term_id, $mod );
 
 					if ( $this->p->debug->enabled ) {

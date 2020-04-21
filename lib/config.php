@@ -3771,8 +3771,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 		public static function set_variable_constants( $var_const = null ) {
 
-			if ( null === $var_const ) {
-				$var_const = self::get_variable_constants();
+			if ( ! is_array( $var_const ) ) {
+				$var_const = (array) self::get_variable_constants();
 			}
 
 			/**

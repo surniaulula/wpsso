@@ -1456,7 +1456,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			/**
 			 * Check image size options (id, prefix, width, height, crop, etc.).
 			 */
-			foreach ( array( 'og', 'tc_sum', 'tc_lrg', 'schema', 'p' ) as $md_pre ) {
+			foreach ( array( 'og', 'p', 'schema', 'tc_lrg', 'tc_sum' ) as $md_pre ) {
 
 				/**
 				 * If there's no image ID, then remove the image ID library prefix.
