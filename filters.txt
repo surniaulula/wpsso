@@ -89,6 +89,8 @@
 
 'wpsso_get_defaults' ( $defaults )
 
+'wpsso_get_md_options' ( $options, $mod )
+
 'wpsso_get_post_options' ( $options, $post_id, $mod )
 
 'wpsso_get_short_url' ( $long_url, $service_id, $mod )

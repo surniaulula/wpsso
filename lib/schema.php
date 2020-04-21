@@ -3162,7 +3162,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			static $id_delim  = null;
 
 			if ( null === $id_anchor || null === $id_delim ) {	// Optimize and call just once.
-
 				$id_anchor = self::get_id_anchor();
 				$id_delim  = self::get_id_delim();
 			}
@@ -3176,7 +3175,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			/**
-			 * Check if $type_id is a URL, just in case. If $type_id is a URL, then use it as-is.
+			 * If $type_id is a URL, then use it as-is.
 			 */
 			if ( false !== filter_var( $type_id, FILTER_VALIDATE_URL ) ) {
 
@@ -3198,22 +3197,33 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			} else {
 
-				$id_url = empty( $type_url ) ? $json_data[ 'url' ] : $type_url;
+				if ( ! empty( $type_url ) ) {
+					$id_url = $type_url;
+				} elseif ( ! empty( $json_data[ '@id' ] ) ) {
+					$id_url = $json_data[ '@id' ];
+				} else {
+					$id_url = $json_data[ 'url' ];
+				}
 
 				/**
-				 * Just in case - remove any id anchor from the begining of the $type_id string.
+				 * Maybe remove an anchor ID from the begining of the type ID string.
 				 */
 				$type_id = preg_replace( '/^' . preg_quote( $id_anchor, '/' ) . '/', '', $type_id );
 
-				if ( false !== strpos( $id_url, $id_anchor ) ) {	// Just in case.
-					$new_id = trim( $id_url, $id_delim ) . $id_delim . $type_id;
+				/**
+				 * Check to see if we already have an anchor ID in the URL.
+				 */
+				if ( false !== strpos( $id_url, $id_anchor ) ) {
+					$id_url = rtrim( $id_url, $id_delim );			// Avoid repeating the delimiter.
+					$id_url = rtrim( $id_url, $id_delim . $type_id );	// Avoid appending a duplicate type ID.
+					$id_url .= $id_delim . $type_id;
 				} else {
-					$new_id = $id_url . $id_anchor . $type_id;
+					$id_url .= $id_anchor . $type_id;
 				}
 
 				unset( $json_data[ '@id' ] );	// Just in case.
 
-				$json_data = array( '@id' => $new_id ) + $json_data;	// Make @id the first value in the array.
+				$json_data = array( '@id' => $id_url ) + $json_data;	// Make @id the first value in the array.
 			}
 
 			/**
