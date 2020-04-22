@@ -1,4 +1,4 @@
-=== The Complete Meta Tag and Schema Markup Solution | WPSSO Core ===
+=== The Social and Search Optimizer | WPSSO Core ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -14,29 +14,23 @@ Tested Up To: 5.4
 WC Tested Up To: 4.0.1
 Stable Tag: 7.0.1
 
-Makes sure your content looks great on all search and social sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded.
+Make sure your content looks great on all social and search sites - no matter how your URLs are crawled, shared, re-shared, posted, or embedded.
 
 == Description ==
 
 <p style="margin:0;"><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
 
-**Makes sure your content looks great on all search and social sites - no matter how webpage URLs are crawled, shared, re-shared, posted, or embedded:**
+**Make sure your content looks great on all social and search sites - no matter how your URLs are crawled, shared, re-shared, posted, or embedded:**
 
-WPSSO Core and its free complementary add-ons provide comprehensive information about your webpage content to social sites (Facebook, Pinterest, Twitter, LinkedIn, etc.), search engines and crawlers (Google, Bing, etc.), mail and text messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), REST API clients, and oEmbed data for embedded objects / iframes (LinkedIn, WordPress, etc.) &mdash; all from your existing WordPress content and supported plugins.
+WPSSO Core and its complementary add-ons create meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph, Google Rich Results (aka Rich Snippets, Structured Data), Mobile Web Browsers, oEmbed data for LinkedIn, Pinterest Rich Pins, Twitter Cards &mdash; including complete markup for image SEO, video SEO, extensive e-Commerce product markup (for WooCommerce and others), mobile store apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content, supported plugin data, and service API data.
 
-**Uses your existing WordPress content, plugin and service API data:**
+There's no need to manually re-enter descriptions, titles, product information, re-select images / videos, etc. like other meta tag and Schema markup plugins &mdash; WPSSO Core reads all your existing post, page, image, video, e-commerce product, recipe, rating, review, event, and SEO content automatically.
 
-There's no need to manually re-create descriptions, titles, product information, re-select images / videos, etc. WPSSO Core reads your existing post, page, product, media, recipe, event, forum, and SEO content automatically &mdash; while also offering fine-tuning and customization options for just about everything. ;-)
-
-**Creates complete and accurate meta tags and Schema markup:**
-
-WPSSO Core and its complementary add-ons create meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph, Google Rich Results (aka Rich Snippets) with Structured Data, Mobile Web Browsers, oEmbed data for LinkedIn, Pinterest Rich Pins, Twitter Cards &mdash; including complete markup for image SEO, video SEO, extensive e-Commerce product markup (for WooCommerce and others), mobile store apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content and plugin data!
-
-WPSSO Core is also language / locale aware, which means you can customize many option values for different languages.
+WPSSO Core is also language / locale aware, which means you can customize several option values for different webpage languages.
 
 **Coded for maximum performance:**
 
-WPSSO Core makes full use of all available caching methods &mdash; along with offering advanced caching features like pre-seeding its cache in background. WPSSO Core and its complementary add-ons only load the libraries and classes they need, keeping their code small, fast and light. All code is fully tested and compatible with the latest version of WordPress and PHP v7.x (PHP v5.5 or newer required).
+WPSSO Core makes full use of all available caching methods &mdash; along with offering advanced caching features like pre-seeding in background. WPSSO Core and its complementary add-ons load only the libraries and classes they need, keeping their code small, fast and light. All code is fully tested and compatible with the latest version of WordPress and PHP v7.x (WordPress v4.2 and PHP v5.6 or newer required).
 
 <h3>Users Love the WPSSO Core Plugin</h3>
 
@@ -504,7 +498,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.1.0 (TBD)**
+**Version 7.1.0-dev.1 (TBD)**
 
 * **New Features**
 	* None.
@@ -535,7 +529,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 7.0.0 (2020/04/17)**
 
 * **New Features**
-	* Added taxonomy names to the SSO &gt; Advanced Settings &gt; Editing Pages &gt; Add Document SSO (Search and Social Optimization) Metabox option.
+	* Added taxonomy names to the SSO &gt; Advanced Settings &gt; Editing Pages &gt; Add Document SSO Metabox option.
 	* Deprecated the WPSSO Social Sharing Buttons (aka WPSSO SSB) add-on.
 * **Improvements**
 	* Added a title to the tab content for mobile icon-only tabs.
@@ -1083,7 +1077,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 = 7.0.0 =
 
-(2020/04/17) Added taxonomy names to the SSO &gt; Advanced Settings &gt; Editing Pages &gt; Add Document SSO (Search and Social Optimization) Metabox option. Deprecated the WPSSO Social Sharing Buttons (aka WPSSO SSB) add-on.
+(2020/04/17) Added taxonomy names to the SSO &gt; Advanced Settings &gt; Editing Pages &gt; Add Document SSO Metabox option. Deprecated the WPSSO Social Sharing Buttons (aka WPSSO SSB) add-on.
 
 = 6.28.0 =
 
