@@ -1460,6 +1460,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				/**
 				 * If there's no image ID, then remove the image ID library prefix.
+				 *
 				 * If an image ID is being used, then remove the image url (only one can be defined).
 				 */
 				if ( empty( $md_opts[ $md_pre . '_img_id' ] ) ) {

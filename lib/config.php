@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '7.1.0-dev.1',	// Plugin version.
+					'version'     => '7.0.1',	// Plugin version.
 					'opt_version' => '723',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -864,7 +864,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssotie' => array(			// Plugin acronym.
 					'short'       => 'WPSSO TIE',	// Short plugin name.
 					'name'        => 'WPSSO Tune Image Editors',
-					'desc'        => 'Sharpen and Improve WordPress Thumbnails and Resized Images for Social Sharing and Better SEO.',
+					'desc'        => 'Improve the Look of Thumbnails and Resized Images for Better Click-Through-Rates on Social and Search Sites.',
 					'slug'        => 'wpsso-tune-image-editors',
 					'base'        => 'wpsso-tune-image-editors/wpsso-tune-image-editors.php',
 					'update_auth' => '',		// No premium version.

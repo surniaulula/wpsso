@@ -355,6 +355,31 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
+		 * If this is an '_img_url' option key, add image sizes and unset the '_img_id' option key.
+		 */
+		public function maybe_add_img_url_size( array &$opts, $opt_key ) {
+
+			/**
+			 * Only process option keys with '_img_url' in their name.
+			 */
+			if ( false === strpos( $opt_key, '_img_url' ) ) {
+				return;
+			}
+
+			$this->p->util->add_image_url_size( $opts, $opt_key );
+
+			$img_id_key = str_replace( '_img_url', '_img_id', $opt_key, $count );	// Image ID key.
+
+			if ( $count ) {	// Just in case.
+
+				$img_id_pre_key = str_replace( '_img_url', '_img_id_pre', $opt_key );	// Image ID media library prefix key.
+
+				unset( $opts[ $img_id_key ] );
+				unset( $opts[ $img_id_pre_key ] );
+			}
+		}
+
+		/**
 		 * $opt_prefixes can be a single key name or an array of key names. Uses a reference variable to modify the $opts
 		 * array directly.
 		 */

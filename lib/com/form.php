@@ -1116,8 +1116,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$data        = array();
 
 			if ( preg_match( '/^(.*)(_[0-9]+)$/', $name, $matches ) ) {
-				$name       = $matches[1];
-				$key_suffix = $matches[2];	// Mutiple numbered option.
+				$name       = $matches[ 1 ];
+				$key_suffix = $matches[ 2 ];	// Mutiple numbered option.
 			}
 
 			$input_name        = $name . $key_suffix;
@@ -1159,6 +1159,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			if ( function_exists( 'wp_enqueue_media' ) ) {
+
 				$upload_button = $this->get_button( 'Select Image',
 					'sucom_image_upload_button button', $input_name,
 						'', false, $is_disabled, $data );
