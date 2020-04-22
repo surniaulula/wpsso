@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 7.0.1\n"
+"Project-Id-Version: WPSSO Core 7.1.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1405,8 +1405,8 @@ msgstr ""
 #: lib/gettext-config.php:35
 msgctxt "plugin description"
 msgid ""
-"Makes sure your content looks great on all search and social sites - no "
-"matter how webpage URLs are crawled, shared, re-shared, posted, or embedded."
+"Makes sure your content looks great on all social and search sites - no "
+"matter how your URLs are crawled, shared, re-shared, posted, or embedded."
 msgstr ""
 
 #: lib/gettext-config.php:36
@@ -1523,7 +1523,7 @@ msgstr ""
 
 #: lib/gettext-config.php:52
 msgctxt "metabox title"
-msgid "Document SSO (Search and Social Optimization)"
+msgid "Document SSO"
 msgstr ""
 
 #: lib/gettext-config.php:53
@@ -4239,7 +4239,7 @@ msgstr ""
 msgid ""
 "Upscaled images do not look as sharp or clear, and if enlarged too much, "
 "will look fuzzy and unappealing &mdash; not something you want to promote on "
-"search and social sites."
+"social and search sites."
 msgstr ""
 
 #: lib/messages.php:825
@@ -4251,14 +4251,14 @@ msgstr ""
 #: lib/messages.php:827
 msgid ""
 "Do not enable this option unless you want to publish lower quality images on "
-"search and social sites."
+"social and search sites."
 msgstr ""
 
 #: lib/messages.php:835
 msgid ""
 "When upscaling of %1$s image sizes is allowed, %2$s can make sure smaller "
 "images are not upscaled beyond reason, which would publish very low "
-"quality / fuzzy images on search and social sites (the default maximum is "
+"quality / fuzzy images on social and search sites (the default maximum is "
 "%3$s%%)."
 msgstr ""
 
@@ -5082,7 +5082,7 @@ msgstr ""
 #: lib/messages.php:1891
 msgid ""
 "Validating your theme templates is important - theme templates with serious "
-"errors can prevent search and social crawlers from understanding the webpage "
+"errors can prevent social and search crawlers from understanding the webpage "
 "structure."
 msgstr ""
 
@@ -6863,7 +6863,7 @@ msgstr ""
 
 #: lib/submenu/image-sizes.php:68
 msgctxt "metabox title"
-msgid "Search and Social Image Sizes"
+msgid "Social and Search Image Sizes"
 msgstr ""
 
 #: lib/submenu/image-sizes.php:115
@@ -7458,8 +7458,8 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Makes sure your content looks great on all search and social sites - no "
-"matter how webpage URLs are crawled, shared, re-shared, posted or embedded."
+"Makes sure your content looks great on all social and search sites - no "
+"matter how your URLs are crawled, shared, re-shared, posted or embedded."
 msgstr ""
 
 #. Author of the plugin/theme

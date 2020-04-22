@@ -325,7 +325,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$mod = $this->p->util->get_page_mod( $use_post );
 			}
 
-			$html = "\n\n" . '<!-- search and social optimization by ' . $short_version . ' - https://wpsso.com/ -->' . "\n";
+			$html = "\n\n" . '<!-- social and search optimization by ' . $short_version . ' - https://wpsso.com/ -->' . "\n";
 
 			$html .= $this->get_mt_mark( 'begin' );
 

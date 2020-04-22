@@ -65,7 +65,7 @@ if ( ! class_exists( 'WpssoSubmenuImageSizes' ) && class_exists( 'WpssoAdmin' ) 
 		protected function add_meta_boxes() {
 
 			$metabox_id      = 'image_dimensions';
-			$metabox_title   = _x( 'Search and Social Image Sizes', 'metabox title', 'wpsso' );
+			$metabox_title   = _x( 'Social and Search Image Sizes', 'metabox title', 'wpsso' );
 			$metabox_screen  = $this->pagehook;
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
