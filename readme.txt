@@ -498,12 +498,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.1.0-dev.1 (TBD)**
+**Version 7.1.0-dev.1 (2020/04/22)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Updated the plugin description, document metabox title and banner text.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -1070,6 +1070,10 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 	* WordPress v3.9.
 
 == Upgrade Notice ==
+
+= 7.1.0-dev.1 =
+
+(2020/04/22) Updated the plugin description, document metabox title and banner text. Added a new 'wpsso_get_md_options' filter.
 
 = 7.0.1 =
 
