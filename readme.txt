@@ -503,12 +503,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
+	* The SSO &gt; Advanced Settings &gt; Editing Pages &gt; Document Meta &gt; Import Yoast SEO Social Meta option (when enabled) now reads image IDs instead of image URLs and shows an update notice for any custom metadata values read.
 	* Updated the plugin description, document metabox title and banner text.
 * **Bugfixes**
 	* Fixed a possible conflict when a custom Image ID was selected in the Document SSO metabox and a custom image URL was provided by the Yoast SEO plugin.
 * **Developer Notes**
-	* Refactored the "Import Yoast SEO Social Meta" module to read image IDs instead of image URLs and show an update notice for custom metadata values read. 
 	* Added a new 'wpsso_get_md_options' filter.
+	* Refactored the WpssoProUtilWpseoMeta class methods.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
@@ -1074,7 +1075,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 = 7.1.0-dev.2 =
 
-(2020/04/22) Updated the plugin description, document metabox title and banner text. Fixed a possible conflict when a custom Image ID was selected in the Document SSO metabox and a custom image URL was provided by the Yoast SEO plugin.
+(2020/04/22) The Import Yoast SEO Social Meta option (when enabled) now reads image IDs instead of image URLs.
 
 = 7.0.1 =
 
