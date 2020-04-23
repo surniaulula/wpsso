@@ -4725,14 +4725,14 @@ msgstr ""
 
 #: lib/messages.php:1326
 msgid ""
-"Include WebSite, Organization and/or Person Schema markup in the front page "
-"for Google's Knowledge Graph."
+"Enable or disable the Schema WebSite, Organization, and Person markup for "
+"Google's Knowledge Graph in the home page."
 msgstr ""
 
 #: lib/messages.php:1333
 msgid ""
-"The WebSite markup includes the site name, alternate site name, site URL and "
-"search query URL."
+"The Schema WebSite markup includes the site name, alternate site name, site "
+"URL, and search query URL."
 msgstr ""
 
 #: lib/messages.php:1335
@@ -4743,19 +4743,26 @@ msgstr ""
 
 #: lib/messages.php:1342
 msgid ""
-"The Organization markup includes all URLs entered in the %s settings page."
+"The Schema Organization markup includes all URLs entered in the %s settings "
+"page."
 msgstr ""
 
-#: lib/messages.php:1349 lib/messages.php:1357
+#: lib/messages.php:1349
 msgid ""
-"The Person markup includes all contact method URLs entered in the user's "
-"WordPress profile page."
+"The Schema Person markup includes all contact method URLs entered in the "
+"user's WordPress profile page."
 msgstr ""
 
 #: lib/messages.php:1355
 msgid ""
 "Select an optional site owner for the <em>Knowledge Graph</em> Person markup "
 "included in the front page."
+msgstr ""
+
+#: lib/messages.php:1357
+msgid ""
+"The Person markup includes all contact method URLs entered in the user's "
+"WordPress profile page."
 msgstr ""
 
 #: lib/messages.php:1359
