@@ -505,8 +505,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Updated the plugin description, document metabox title and banner text.
 * **Bugfixes**
-	* Fixed a possible conflict when a custom Image ID was selected in the Document SSO metabox, and a custom image URL was provided by the Yoast SEO plugin.
+	* Fixed a possible conflict when a custom Image ID was selected in the Document SSO metabox and a custom image URL was provided by the Yoast SEO plugin.
 * **Developer Notes**
+	* Refactored the "Import Yoast SEO Social Meta" module to read image IDs instead of image URLs and show an update notice for custom metadata values read. 
 	* Added a new 'wpsso_get_md_options' filter.
 * **Requires At Least**
 	* PHP v5.6.
@@ -1073,7 +1074,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 = 7.1.0-dev.2 =
 
-(2020/04/22) Updated the plugin description, document metabox title and banner text. Added a new 'wpsso_get_md_options' filter.
+(2020/04/22) Updated the plugin description, document metabox title and banner text. Fixed a possible conflict when a custom Image ID was selected in the Document SSO metabox and a custom image URL was provided by the Yoast SEO plugin.
 
 = 7.0.1 =
 
