@@ -368,9 +368,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$this->p->util->add_image_url_size( $opts, $opt_key );
 
-			$img_id_key = str_replace( '_img_url', '_img_id', $opt_key, $count );	// Image ID key.
-
-			$img_id_pre_key = str_replace( '_img_url', '_img_id_pre', $opt_key );	// Image ID media library prefix key.
+			$img_id_key     = str_replace( '_img_url', '_img_id', $opt_key, $count );	// Image ID key.
+			$img_id_pre_key = str_replace( '_img_url', '_img_id_pre', $opt_key );		// Image ID media library prefix key.
 
 			if ( $count ) {	// Just in case.
 

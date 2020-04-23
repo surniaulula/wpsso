@@ -420,6 +420,15 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 		/**
 		 * $mixed = 'singular' | 'default' | $mod.
+		 *
+		 * Example return:
+		 *
+		 *	array(
+		 *		'summary_large_image',
+		 *		'Twitter Large Image Summary Card',
+		 *		'wpsso-tc-lrgimg',
+		 *		'tc_lrg',
+		 *	)
 		 */
 		public function get_card_info( $mixed, $head = array() ) {
 
@@ -502,9 +511,11 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			}
 
 			/**
-			 * Example:
+			 * Example return:
+			 *
 			 *	array(
 			 *		'summary_large_image',
+			 *		'Twitter Large Image Summary Card',
 			 *		'wpsso-tc-lrgimg',
 			 *		'tc_lrg',
 			 *	)
