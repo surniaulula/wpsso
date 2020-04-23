@@ -1323,30 +1323,26 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$social_accounts_link = $this->p->util->get_admin_url( 'social-accounts',
 								_x( 'Social Pages', 'lib file description', 'wpsso' ) );
 
-							$text = __( 'Enable or disable the Schema WebSite, Organization, and Person markup for Google\'s Knowledge Graph in the home page.', 'wpsso' ) . ' ';
-
-							$text .= '<br/><br/>';
+							$text = __( 'Enable or disable the Schema WebSite, Organization, and Person markup in the home page for Google\'s Knowledge Graph.', 'wpsso' ) . ' ';
 
 							/**
-							 * Include WebSite Information for Google Search.
+							 * Include Schema WebSite.
 							 */
 							$text .= __( 'The Schema WebSite markup includes the site name, alternate site name, site URL, and search query URL.', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( 'Developers can hook the "%s" filter to modify the site search URL (or disable its addition by returning false).', 'wpsso' ), $this->p->lca . '_json_ld_search_url' ) . ' ';
 
-							$text .= '<br/><br/>';
-
 							/**
-							 * Include Organization Social Profile for a Business Website.
+							 * Include Schema Organization.
 							 */
 							$text .= sprintf( __( 'The Schema Organization markup includes all URLs entered in the %s settings page.', 'wpsso' ), $social_accounts_link ) . ' ';
 
-							$text .= '<br/><br/>';
-
 							/**
-							 * Include Person Social Profile for a Personal Website.
+							 * Include Schema Person.
 							 */
 							$text .= __( 'The Schema Person markup includes all contact method URLs entered in the user\'s WordPress profile page.', 'wpsso' );
+
+							$text .= __( 'Traditionally, the Schema Organization markup is included for business websites, where-as the Schema Person markup is included for personal websites.', 'wpsso' );
 
 							break;
 

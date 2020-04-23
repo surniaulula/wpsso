@@ -2699,31 +2699,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function add_schema_knowledge_graph_table_rows( array &$table_rows, $form ) {
 
-			$website_info = __( 'WebSite Information', 'wpsso' );
-
-			$org_social = '<a href="https://developers.google.com/search/docs/guides/enhance-site#add-your-sites-name-logo-and-social-links">' .
-				__( 'Organization Social Profile', 'wpsso' ) . '</a>';
-
-			$person_social = __( 'Person Social Profile', 'wpsso' );
-
 			$table_rows[ 'schema_knowledge_graph' ] = '' . 
 			$form->get_th_html( _x( 'Knowledge Graph for Home Page', 'option label', 'wpsso' ), '', 'schema_knowledge_graph' ) . 
 			'<td>' .
-			'<p>' .
-				$form->get_checkbox( 'schema_add_home_website' ) . ' ' .
-				// translators: %s is "WebSite Information".
-				sprintf( __( 'Include %s for Google Search', 'wpsso' ), $website_info ) .
-			'</p>' .
-			'<p>' .
-				$form->get_checkbox( 'schema_add_home_organization' ) . ' ' .
-				// translators: %s is "Organization Social Profile".
-				sprintf( __( 'Include %s for a Business Website', 'wpsso' ), $org_social ) .
-			'</p>' .
-			'<p>' .
-				$form->get_checkbox( 'schema_add_home_person' ) . ' ' .
-				// translators: %s is "Person Social Profile".
-				sprintf( __( 'Include %s for a Personal Website', 'wpsso' ), $person_social ) .
-			'</p>' .
+			'<p>' . $form->get_checkbox( 'schema_add_home_website' ) . ' ' . __( 'Include Schema WebSite', 'wpsso' ) . '</p>' .
+			'<p>' . $form->get_checkbox( 'schema_add_home_organization' ) . ' ' . __( 'Include Schema Organization', 'wpsso' ) . '</p>' .
+			'<p>' . $form->get_checkbox( 'schema_add_home_person' ) . ' ' . __( 'Include Schema Person', 'wpsso' ) . '</p>' .
 			'</td>';
 
 			$owner_roles = $this->p->cf[ 'wp' ][ 'roles' ][ 'owner' ];
