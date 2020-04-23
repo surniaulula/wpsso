@@ -498,14 +498,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.1.0-dev.1 (2020/04/22)**
+**Version 7.1.0-dev.2 (2020/04/22)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Updated the plugin description, document metabox title and banner text.
 * **Bugfixes**
-	* None.
+	* Fixed a possible conflict when a custom Image ID was selected in the Document SSO metabox, and a custom image URL was provided by the Yoast SEO plugin.
 * **Developer Notes**
 	* Added a new 'wpsso_get_md_options' filter.
 * **Requires At Least**
@@ -1071,7 +1071,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 7.1.0-dev.1 =
+= 7.1.0-dev.2 =
 
 (2020/04/22) Updated the plugin description, document metabox title and banner text. Added a new 'wpsso_get_md_options' filter.
 
