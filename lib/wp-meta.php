@@ -386,6 +386,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return false;
 		}
 
+		/**
+		 * Do not pass $md_opts by reference as the options array may get padded with default values.
+		 */
 		protected function return_options( $mod_id, array $md_opts, $md_key = false, $pad_opts = false ) {
 
 			if ( $pad_opts ) {
@@ -397,6 +400,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					if ( is_array( $def_opts ) ) {	// Just in case.
 
 						foreach ( $def_opts as $key => $val ) {
+
 							if ( ! isset( $md_opts[ $key ] ) && $val !== '' ) {
 								$md_opts[ $key ] = $def_opts[ $key ];
 							}

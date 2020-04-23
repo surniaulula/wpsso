@@ -182,11 +182,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			static $local_cache = array();
 
-			$cache_id = SucomUtil::get_assoc_salt( array(
-				'id'     => $user_id,
-				'filter' => $filter_opts,
-				'pad'    => $pad_opts,
-			) );
+			/**
+			 * Do not add $pad_opts to the $cache_id string.
+			 */
+			$cache_id = SucomUtil::get_assoc_salt( array( 'id' => $user_id, 'filter' => $filter_opts ) );
 
 			/**
 			 * Maybe initialize the cache.
