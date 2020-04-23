@@ -45,7 +45,7 @@ _x( 'Enhances the WordPress REST API Post, Term and User Queries with an Array o
 _x( 'Ridiculously Responsive (SVG) Social Sharing Buttons for your Content, Excerpts, CSS Sidebar, Widget, Shortcode, Templates, and Editor.', 'plugin description', 'wpsso' );
 _x( 'Remove Outdated / Incorrect Microdata from Theme Templates for Better Google Rich Results with Schema JSON-LD Markup.', 'plugin description', 'wpsso' );
 _x( 'Twitter-Style Quoted Text for your Content with Customizable CSS and Convenient Tweet Share Link.', 'plugin description', 'wpsso' );
-_x( 'Improve the Look of Thumbnails and Resized Images for Better Click-Through-Rates on Social and Search Sites.', 'plugin description', 'wpsso' );
+_x( 'Improves the Look of Thumbnails and Resized Images for Better Click-Through-Rates on Social and Search Sites.', 'plugin description', 'wpsso' );
 _x( 'Quick and Easy Locale / Language / Region Selector for the WordPress Admin Toolbar.', 'plugin description', 'wpsso' );
 _x( 'Update Manager for the WPSSO Core Premium Plugin and its Premium Complementary Add-ons.', 'plugin description', 'wpsso' );
 _x( 'SSO', 'menu title', 'wpsso' );
