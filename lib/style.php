@@ -472,13 +472,13 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				table.wp-list-table > tbody > tr > td.column-categories,
 				table.wp-list-table > thead > tr > th.column-product_cat,
 				table.wp-list-table > tbody > tr > td.column-product_cat {
-					width:15% !important;
+					width:20%;
 				}
 				table.wp-list-table > thead > tr > th.column-tags,
 				table.wp-list-table > tbody > tr > td.column-tags,
 				table.wp-list-table > thead > tr > th.column-product_tag,
 				table.wp-list-table > tbody > tr > td.column-product_tag {
-					width:15% !important;
+					width:15%;
 				}
 				table.wp-list-table > thead > tr > th.column-description,
 				table.wp-list-table > tbody > tr > td.column-description {
@@ -584,11 +584,11 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				table.wp-list-table > tbody > tr > td.column-wpseo-title,
 				table.wp-list-table > thead > tr > th.column-wpseo-metadesc,
 				table.wp-list-table > tbody > tr > td.column-wpseo-metadesc {
-					width:15%;
+					width:20%;
 				}
 				table.wp-list-table > thead > tr > th.column-wpseo-focuskw,	/* Yoast SEO. */
 				table.wp-list-table > tbody > tr > td.column-wpseo-focuskw {
-					width:8em;
+					width:8em;	/* Leave room for the sort arrow. */
 				}
 				table.wp-list-table > thead > tr > th.column-rank_math_seo_details,	/* Rank Math. */
 				table.wp-list-table > tbody > tr > td.column-rank_math_seo_details {
@@ -603,8 +603,8 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			if ( isset( $sort_cols[ 'schema_type' ][ 'width' ] ) ) {
 				$custom_style_css .= '
 					.column-' . $lca . '_schema_type {
-						width:' . $sort_cols[ 'schema_type' ][ 'width' ] . ' !important;
-						max-width:' . $sort_cols[ 'schema_type' ][ 'width' ] . ' !important;
+						width:' . $sort_cols[ 'schema_type' ][ 'width' ] . ';
+						max-width:' . $sort_cols[ 'schema_type' ][ 'width' ] . ';
 						white-space:nowrap;
 						overflow:hidden;
 					}

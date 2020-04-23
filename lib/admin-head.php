@@ -441,7 +441,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				$rate_plugin_clicked = '<p>' . sprintf( __( 'Thank you for rating the %s plugin!',
 					'wpsso' ), $info[ 'name' ] ) . '</p>';
 
-				$already_rated_clicked = '<p>' . sprintf( __( 'Thank you for encouraging and supporting your plugin developers!',
+				$already_rated_clicked = '<p>' . sprintf( __( 'Thank you for supporting and encouraging your plugin developers!',
 					'wpsso' ), $info[ 'name' ] ) . '</p>';
 
 				$rate_plugin_button = '<div class="notice-single-button">' .

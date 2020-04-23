@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 7.1.0-dev.3\n"
+"Project-Id-Version: WPSSO Core 7.1.0-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -90,7 +90,7 @@ msgid "Thank you for rating the %s plugin!"
 msgstr ""
 
 #: lib/admin-head.php:444
-msgid "Thank you for encouraging and supporting your plugin developers!"
+msgid "Thank you for supporting and encouraging your plugin developers!"
 msgstr ""
 
 #: lib/admin-head.php:468 lib/admin-head.php:577
@@ -3121,26 +3121,26 @@ msgid ""
 msgstr ""
 
 #: lib/gettext-pro.php:136 lib/gettext-pro.php:141
-#: lib/pro/ecom/woocommerce.php:922 lib/pro/ecom/wpecommerce.php:533
+#: lib/pro/ecom/woocommerce.php:921 lib/pro/ecom/wpecommerce.php:533
 msgid "\"%s\" is an unknown Schema Product item condition."
 msgstr ""
 
 #: lib/gettext-pro.php:137 lib/gettext-pro.php:142
-#: lib/pro/ecom/woocommerce.php:925 lib/pro/ecom/wpecommerce.php:536
+#: lib/pro/ecom/woocommerce.php:924 lib/pro/ecom/wpecommerce.php:536
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/gettext-pro.php:138 lib/pro/ecom/woocommerce.php:1217
+#: lib/gettext-pro.php:138 lib/pro/ecom/woocommerce.php:1208
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/gettext-pro.php:139 lib/pro/ecom/woocommerce.php:1219
+#: lib/gettext-pro.php:139 lib/pro/ecom/woocommerce.php:1210
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:140 lib/pro/ecom/woocommerce.php:1222
+#: lib/gettext-pro.php:140 lib/pro/ecom/woocommerce.php:1213
 msgid "Please update your site to WooCommerce version %s or newer."
 msgstr ""
 
