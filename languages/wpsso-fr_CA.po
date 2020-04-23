@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 7.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-04-23 08:07-0700\n"
-"PO-Revision-Date: 2020-04-23 08:07-0700\n"
+"PO-Revision-Date: 2020-04-23 08:10-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3093,15 +3093,15 @@ msgstr "Options d'API incomplètes pour instancier le service de raccourcissemen
 
 #: lib/gettext-pro.php:173 lib/pro/util/wpseo-meta.php:104
 msgid "Reading Yoast SEO \"%1$s\" metadata from post ID %2$d."
-msgstr ""
+msgstr "Lecture de métadonnée Yoast SEO \"%1$s\" de l'ID d'article %2$d."
 
 #: lib/gettext-pro.php:174 lib/pro/util/wpseo-meta.php:210
 msgid "Reading Yoast SEO \"%1$s\" metadata from term ID %2$d."
-msgstr ""
+msgstr "Lecture de métadonnée Yoast SEO \"%1$s\" de l'ID du terme %2$d."
 
 #: lib/gettext-pro.php:175 lib/pro/util/wpseo-meta.php:278
 msgid "Reading Yoast SEO \"%1$s\" metadata from user ID %2$d."
-msgstr ""
+msgstr "Lecture de métadonnée Yoast SEO \"%1$s\" de l'ID d'utilisateur %2$d."
 
 #. translators: %s is the Events Calendar plugin name
 #: lib/gettext-pro.php:176 lib/pro/event/the-events-calendar.php:49
@@ -6595,7 +6595,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
-
-#~ msgctxt "plugin description"
-#~ msgid "Sharpen and Improve WordPress Thumbnails and Resized Images for Social Sharing and Better SEO."
-#~ msgstr "Affinez et améliorez les images miniatures et redimensionnées WordPress pour le partage social et un meilleur référencement."
