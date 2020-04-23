@@ -1126,6 +1126,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$input_name_url    = $name . '_url' . $key_suffix;
 
 			/**
+			 * Prevent conflicts by removing the image URL if we have an image ID.
+			 */
+			if ( ! empty( $this->options[ $input_name_id ] ) ) {
+				unset( $this->options[ $input_name_url ] );
+				unset( $this->options[ $input_name_url . ':width' ] );
+				unset( $this->options[ $input_name_url . ':height' ] );
+			}
+
+			/**
 			 * Disable the image ID option if we have an image URL.
 			 */
 			if ( ! empty( $this->options[ $input_name_url ] ) ) {
