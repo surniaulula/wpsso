@@ -498,7 +498,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.1.0-b.1 (2020/04/23)**
+**Version 7.1.0-b.1 (2020/04/24)**
 
 * **New Features**
 	* None.
@@ -507,8 +507,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed a conflict when both a custom Image ID and Image URL were provided for the same option.
 * **Developer Notes**
-	* Refactored the WpssoProUtilWpseoMeta class methods (ie. the "Import Yoast SEO Social Meta" option module).
 	* Added a new 'wpsso_get_md_options' filter.
+	* Added a new `SucomForm->get_input_locale()` method.
+	* Added a new `SucomForm->get_th_html_locale()` method.
+	* Refactored the WpssoProUtilWpseoMeta class methods (ie. the "Import Yoast SEO Social Meta" option module).
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
@@ -666,7 +668,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 		* Table Columns
 		* Document Meta
 		* Product Attributes
-		* Custom Fields
+		* Custom Fields (Metadata)
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -1074,7 +1076,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 = 7.1.0-b.1 =
 
-(2020/04/23) The "Import Yoast SEO Social Meta" option module (Advanced Settings page) now reads image IDs instead of image URLs. Fixed a conflict when both a custom Image ID and Image URL were provided for the same option.
+(2020/04/24) The "Import Yoast SEO Social Meta" option module (Advanced Settings page) now reads image IDs instead of image URLs. Fixed a conflict when both a custom Image ID and Image URL were provided for the same option.
 
 = 7.0.1 =
 
