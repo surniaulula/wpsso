@@ -1553,7 +1553,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_add_to_wpsc-product'           => 1,		// For WP eCommerce.
 
 					/**
-					 * Advanced Settings - Product Attrs tab.
+					 * Advanced Settings - Product Attributes tab.
 					 */
 					'plugin_product_attr_brand'         => 'Brand',			// Product Brand Attribute Name.
 					'plugin_product_attr_color'         => 'Color',			// Product Color Attribute Name.

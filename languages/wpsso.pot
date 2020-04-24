@@ -6732,7 +6732,7 @@ msgstr ""
 
 #: lib/submenu/general.php:50
 msgctxt "metabox title"
-msgid "Specific Sites and Publishers"
+msgid "Social and Search Sites"
 msgstr ""
 
 #: lib/submenu/general.php:71

@@ -1939,27 +1939,27 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				case $this->p->lca . '-opengraph':
 
 					$markup_name = _x( 'Facebook Open Graph', 'option label', 'wpsso' );
-					$min_width   = $cf_min[ 'og_img_width' ];	// Default is 200.
-					$min_height  = $cf_min[ 'og_img_height' ];	// Default is 200.
-					$max_ratio   = $cf_max[ 'og_img_ratio' ];	// Default is 3.000.
+					$min_width   = $cf_min[ 'og_img_width' ];			// Default is 200.
+					$min_height  = $cf_min[ 'og_img_height' ];			// Default is 200.
+					$max_ratio   = $cf_max[ 'og_img_ratio' ];			// Default is 3.000.
 
 					break;
 
 				case $this->p->lca . '-schema':
 
 					$markup_name = _x( 'Google Schema', 'option label', 'wpsso' );
-					$min_width   = $cf_min[ 'schema_img_width' ];	// Default is 400.
-					$min_height  = $cf_min[ 'schema_img_height' ];	// Default is 160.
-					$max_ratio   = $cf_max[ 'schema_img_ratio' ];	// Default is 2.500.
+					$min_width   = $cf_min[ 'schema_img_width' ];			// Default is 400.
+					$min_height  = $cf_min[ 'schema_img_height' ];			// Default is 160.
+					$max_ratio   = $cf_max[ 'schema_img_ratio' ];			// Default is 2.500.
 
 					break;
 
 				case $this->p->lca . '-schema-article':
 
 					$markup_name = _x( 'Google Schema Article', 'option label', 'wpsso' );
-					$min_width   = $cf_min[ 'schema_article_img_width' ];	// Default is 696.
-					$min_height  = $cf_min[ 'schema_article_img_height' ];	// Default is 279.
-					$max_ratio   = $cf_max[ 'schema_article_img_ratio' ];	// Default is 2.500.
+					$min_width   = $cf_min[ 'schema_article_img_width' ];		// Default is 696.
+					$min_height  = $cf_min[ 'schema_article_img_height' ];		// Default is 279.
+					$max_ratio   = $cf_max[ 'schema_article_img_ratio' ];		// Default is 2.500.
 
 					break;
 

@@ -34,7 +34,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$this->maybe_show_language_notice();
 
-			$metabox_id      = 'opengraph';
+			$metabox_id      = 'og';
 			$metabox_title   = _x( 'General Settings', 'metabox title', 'wpsso' );
 			$metabox_screen  = $this->pagehook;
 			$metabox_context = 'normal';
@@ -43,11 +43,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 			);
 
 			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
-				array( $this, 'show_metabox_opengraph' ), $metabox_screen,
+				array( $this, 'show_metabox_' . $metabox_id ), $metabox_screen,
 					$metabox_context, $metabox_prio, $callback_args );
 
-			$metabox_id      = 'publishers';
-			$metabox_title   = _x( 'Specific Sites and Publishers', 'metabox title', 'wpsso' );
+			$metabox_id      = 'social_and_search';
+			$metabox_title   = _x( 'Social and Search Sites', 'metabox title', 'wpsso' );
 			$metabox_screen  = $this->pagehook;
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
@@ -55,13 +55,13 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 			);
 
 			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
-				array( $this, 'show_metabox_publishers' ), $metabox_screen,
+				array( $this, 'show_metabox_' . $metabox_id ), $metabox_screen,
 					$metabox_context, $metabox_prio, $callback_args );
 
 			$this->p->media->get_default_images( 1, $this->p->lca . '-opengraph', $check_dupes = false );
 		}
 
-		public function show_metabox_opengraph() {
+		public function show_metabox_og() {
 
 			$metabox_id = 'og';
 
@@ -85,7 +85,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 			$this->p->util->do_metabox_tabbed( $metabox_id, $tabs, $table_rows );
 		}
 
-		public function show_metabox_publishers() {
+		public function show_metabox_social_and_search() {
 
 			$metabox_id = 'pub';
 
