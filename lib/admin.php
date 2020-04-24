@@ -2927,11 +2927,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function add_advanced_product_attr_table_rows( array &$table_rows, $form ) {
 
 			$td_attr = '';
-			$in_func = 'get_input_locale';
+			$in_func = 'get_input';
 
 			if ( ! self::$pkg[ $this->p->lca ][ 'pp' ] ) {
 				$td_attr = ' class="blank"';
-				$in_func = 'get_no_input_locale';
+				$in_func = 'get_no_input';
 				$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 			}
 
@@ -2942,7 +2942,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$cmt_transl = self::get_option_unit_comment( $opt_key );
 
 				$table_rows[ $opt_key ] = '' .
-				$form->get_th_html_locale( _x( $opt_label, 'option label', 'wpsso' ), '', $opt_key ) . 
+				$form->get_th_html( _x( $opt_label, 'option label', 'wpsso' ), '', $opt_key ) . 
 				'<td' . $td_attr . '>' . $form->$in_func( $opt_key ) . $cmt_transl . '</td>';
 			}
 		}

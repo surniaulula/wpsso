@@ -126,13 +126,16 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$product_categories = $this->p->util->get_google_product_categories();
 
 					$table_rows[ 'site_name' ] = '' . 
-					$this->form->get_th_html_locale( _x( 'WebSite Name', 'option label', 'wpsso' ), $css_class = '', $css_id = 'site_name' ) . 
-					'<td>' . $this->form->get_input_locale( 'site_name', $css_class = 'long_name', '', 0, get_bloginfo( 'name', 'display' ) ) . '</td>';
+					$this->form->get_th_html_locale( _x( 'WebSite Name', 'option label', 'wpsso' ),
+						$css_class = '', $css_id = 'site_name' ) . 
+					'<td>' . $this->form->get_input_locale( 'site_name', $css_class = 'long_name', $css_id = '',
+						$len = 0, $pl_hldr = get_bloginfo( 'name', 'display' ) ) . '</td>';
 
 					$table_rows[ 'site_desc' ] = '' . 
-					$this->form->get_th_html_locale( _x( 'WebSite Description', 'option label', 'wpsso' ), $css_class = '', $css_id = 'site_desc' ) . 
-					'<td>' . $this->form->get_textarea( SucomUtil::get_key_locale( 'site_desc', $this->p->options ),
-						$css_class = '', $css_id = '', 0, get_bloginfo( 'description', 'display' ) ) . '</td>';
+					$this->form->get_th_html_locale( _x( 'WebSite Description', 'option label', 'wpsso' ),
+						$css_class = '', $css_id = 'site_desc' ) . 
+					'<td>' . $this->form->get_textarea_locale( 'site_desc', $css_class = '', $css_id = '',
+						$len = 0, $pl_hldr = get_bloginfo( 'description', 'display' ) ) . '</td>';
 
 					$table_rows[ 'og_def_article_section' ] = '' . 
 					$this->form->get_th_html( _x( 'Default Article Section', 'option label', 'wpsso' ), 
