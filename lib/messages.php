@@ -1157,9 +1157,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 */
 						case ( 0 === strpos( $msg_key, 'tooltip-plugin_product_attr_' ) ? true : false ):
 
-							$attr_key = substr( $msg_key, 8 );	// Remove the 'tooltip-' prefix.
+							$attr_key = str_replace( 'tooltip-', '', $msg_key );
 
-							$text .= __( 'Enter the name (aka label) of a product attribute that you have created in your e-commerce plugin (in WooCommerce, for example).', 'wpsso' ) . ' ';
+							$text .= __( 'Enter the name of a product attribute available in your e-commerce plugin.', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( 'The product attribute name allows %s to request the attribute value from your e-commerce plugin.', 'wpsso' ), $info[ 'short_pro' ] ) . ' ';
 
@@ -1168,16 +1168,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						/**
-						 * Custom Fields settings
+						 * Custom Fields (Metadata) settings
 						 */
 						case ( 0 === strpos( $msg_key, 'tooltip-plugin_cf_' ) ? true : false ):
 
-							$cf_key = preg_replace( '/^tooltip-/', '', $msg_key );
+							$cf_key = str_replace( 'tooltip-', '', $msg_key );
 
 							$cf_info = $this->get_cf_info( preg_replace( '/^tooltip-plugin_cf_/', '', $msg_key ) );
 
-							$cf_md_key = empty( $this->p->cf[ 'opt' ][ 'cf_md_key' ][ $cf_key ] ) ?
-								false : $this->p->cf[ 'opt' ][ 'cf_md_key' ][ $cf_key ];
+							$cf_md_key = empty( $this->p->cf[ 'opt' ][ 'cf_md_key' ][ $cf_key ] ) ? '' :
+								$this->p->cf[ 'opt' ][ 'cf_md_key' ][ $cf_key ];
 
 							$cf_is_multi = empty( $this->p->cf[ 'opt' ][ 'cf_md_multi' ][ $cf_md_key ] ) ? false : true;
 
@@ -1185,12 +1185,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							if ( ! empty( $cf_info ) ) {	// Just in case.
 
-								$text = sprintf( __( 'If your theme or another plugin provides a custom field for %1$s, you may enter its custom field name here.', 'wpsso' ), $cf_info[ 1 ] ) . ' ';
+								$text = sprintf( __( 'If your theme or another plugin provides a custom field (aka metadata) for %1$s, you may enter its custom field name here.', 'wpsso' ), $cf_info[ 1 ] ) . ' ';
 
-								$text .= sprintf( __( 'If a custom field matching that name is found, its value may be used for the "%1$s" option in the %2$s metabox.', 'wpsso' ), $cf_info[ 0 ], $metabox_title ) . ' ';
+								$text .= sprintf( __( 'If a custom field matching this name is found, its value will be imported for the %1$s "%2$s" option.', 'wpsso' ), $metabox_title, $cf_info[ 0 ] ) . ' ';
 
 								if ( $cf_is_multi ) {
-									$text .= sprintf( __( 'The "%1$s" option offers multiple input fields &mdash; the custom field value will be split on newline characters, and each line used for an individual input field.', 'wpsso' ), $cf_info[ 0 ] );
+
+									$text .= '</br></br>';
+
+									$text .= sprintf( __( 'Note that the "%1$s" option provides multiple input fields &mdash; the custom field value will be split on newline characters, and each line will be assigned to an individual input field.', 'wpsso' ), $cf_info[ 0 ] );
 								}
 							}
 
@@ -2594,7 +2597,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				$text = apply_filters( $lca . '_messages', $text, $msg_key, $info );
 			}
 
-			if ( is_array( $info ) && ! empty( $info[ 'is_locale' ] ) ) {
+			if ( ! empty( $info[ 'is_locale' ] ) ) {
 
 				// translators: %s is the wordpress.org URL for the WPSSO User Locale Selector add-on.
 				$text .= ' ' . sprintf( __( 'This option is localized &mdash; <a href="%s">you may change the WordPress locale</a> to define alternate values for different languages.', 'wpsso' ), 'https://wordpress.org/plugins/wpsso-user-locale/' );

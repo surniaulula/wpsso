@@ -148,7 +148,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'table_columns' => _x( 'Table Columns', 'metabox tab', 'wpsso' ),
 				'document_meta' => _x( 'Document Meta', 'metabox tab', 'wpsso' ),
 				'product_attrs' => _x( 'Product Attributes', 'metabox tab', 'wpsso' ),
-				'custom_fields' => _x( 'Custom Fields', 'metabox tab', 'wpsso' ),
+				'custom_fields' => _x( 'Custom Fields (Metadata)', 'metabox tab', 'wpsso' ),
 			) );
 
 			foreach ( $tabs as $tab_key => $title ) {

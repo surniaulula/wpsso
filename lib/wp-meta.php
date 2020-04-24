@@ -9,6 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
+/**
+ * WordPress metadata class, extended by the WpssoPost, WpssoTerm, and WpssoUser classes.
+ */
 if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 	class WpssoWpMeta {
@@ -20,9 +23,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 * The WpssoPost, WpssoTerm, and WpssoUser->load_meta_page() methods define the $head_tags and $head_info static
 		 * variables.
 		 */
-		protected static $head_tags = false;	// Must be false by default.
-		protected static $head_info = array();
-
+		protected static $head_tags         = false;	// Must be false by default.
+		protected static $head_info         = array();
 		protected static $last_column_id    = null;	// Cache id of the last column request in list table.
 		protected static $last_column_array = array();	// Array of column values for last column requested.
 		protected static $cache_short_url   = null;

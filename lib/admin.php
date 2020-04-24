@@ -2725,17 +2725,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$json_req_msg = $this->p->msgs->maybe_ext_required( 'wpssojson' );
 
-			$atts_locale = array( 'is_locale' => true );
-
 			$table_rows[ 'schema_logo_url' ] = '' . 
-			$form->get_th_html( '<a href="https://developers.google.com/structured-data/customize/logos">' .
-			_x( 'Organization Logo URL', 'option label', 'wpsso' ) . '</a>', $css_class = '', $css_id = 'schema_logo_url', $atts_locale ) . 
-			'<td>' . $form->get_input( SucomUtil::get_key_locale( 'schema_logo_url', $this->p->options ), $css_class = 'wide is_required' ) . '</td>';
+			$form->get_th_html_locale( '<a href="https://developers.google.com/structured-data/customize/logos">' .
+			_x( 'Organization Logo URL', 'option label', 'wpsso' ) . '</a>', $css_class = '', $css_id = 'schema_logo_url' ) . 
+			'<td>' . $form->get_input_locale( 'schema_logo_url', $css_class = 'wide is_required' ) . '</td>';
 
 			$table_rows[ 'schema_banner_url' ] = '' . 
-			$form->get_th_html( '<a href="https://developers.google.com/search/docs/data-types/article#logo-guidelines">' .
-			_x( 'Organization Banner URL', 'option label', 'wpsso' ) . '</a>', $css_class = '', $css_id = 'schema_banner_url', $atts_locale ) . 
-			'<td>' . $form->get_input( SucomUtil::get_key_locale( 'schema_banner_url', $this->p->options ), $css_class = 'wide is_required' ) . '</td>';
+			$form->get_th_html_locale( '<a href="https://developers.google.com/search/docs/data-types/article#logo-guidelines">' .
+			_x( 'Organization Banner URL', 'option label', 'wpsso' ) . '</a>', $css_class = '', $css_id = 'schema_banner_url' ) . 
+			'<td>' . $form->get_input_locale( 'schema_banner_url', $css_class = 'wide is_required' ) . '</td>';
 
 			$table_rows[ 'seo_author_name' ] = $form->get_tr_hide( 'basic', 'seo_author_name' ) . 
 			$form->get_th_html( _x( 'Author / Person Name Format', 'option label', 'wpsso' ), $css_class = '', $css_id = 'seo_author_name' ) . 
@@ -2929,11 +2927,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function add_advanced_product_attr_table_rows( array &$table_rows, $form ) {
 
 			$td_attr = '';
-			$in_func = 'get_input';
+			$in_func = 'get_input_locale';
 
 			if ( ! self::$pkg[ $this->p->lca ][ 'pp' ] ) {
 				$td_attr = ' class="blank"';
-				$in_func = 'get_no_input';
+				$in_func = 'get_no_input_locale';
 				$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 			}
 
@@ -2944,7 +2942,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$cmt_transl = self::get_option_unit_comment( $opt_key );
 
 				$table_rows[ $opt_key ] = '' .
-				$form->get_th_html( _x( $opt_label, 'option label', 'wpsso' ), '', $opt_key ) . 
+				$form->get_th_html_locale( _x( $opt_label, 'option label', 'wpsso' ), '', $opt_key ) . 
 				'<td' . $td_attr . '>' . $form->$in_func( $opt_key ) . $cmt_transl . '</td>';
 			}
 		}
@@ -3038,7 +3036,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$cmt_transl = '';
 
 			if ( preg_match( '/^.*_([^_]+)_value$/', $opt_key, $unit_match ) ) {
+
 				if ( $unit_text = WpssoSchema::get_data_unit_text( $unit_match[ 1 ] ) ) {
+
 					$cmt_transl = ' ' . sprintf( _x( 'in %s', 'option comment', 'wpsso' ), $unit_text );
 				}
 			}

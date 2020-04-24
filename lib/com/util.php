@@ -2247,6 +2247,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_key_locale( $key, $opts = false, $mixed = 'current' ) {
 
+			/**
+			 * Remove any pre-existing locale value.
+			 */
+			if ( false !== ( $pos = strpos( $key, '#' ) ) ) {
+				$key = substr_replace( $key, '', $pos );
+			}
+
 			$default    = self::get_locale( 'default' );
 			$locale     = self::get_locale( $mixed );
 			$key_locale = $key . '#' . $locale;

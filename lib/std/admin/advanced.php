@@ -48,44 +48,42 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$atts_locale = array( 'is_locale' => true );
-
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			$table_rows[ 'plugin_filter_title' ] = '' . 
 			$form->get_th_html( _x( 'Use Filtered (aka SEO) Title', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_filter_title' ) . 
-			$form->get_td_no_checkbox( 'plugin_filter_title' );
+			$form->get_no_td_checkbox( 'plugin_filter_title' );
 
 			$table_rows[ 'plugin_filter_content' ] = '' . 
 			$form->get_th_html( _x( 'Use WordPress Content Filters', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_filter_content' ) . 
-			$form->get_td_no_checkbox( 'plugin_filter_content', '<em>' . _x( 'recommended', 'option comment', 'wpsso' ) . '</em>' );
+			$form->get_no_td_checkbox( 'plugin_filter_content', '<em>' . _x( 'recommended', 'option comment', 'wpsso' ) . '</em>' );
 
 			$table_rows[ 'plugin_filter_excerpt' ] = '' . 
 			$form->get_th_html( _x( 'Use WordPress Excerpt Filters', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_filter_excerpt' ) . 
-			$form->get_td_no_checkbox( 'plugin_filter_excerpt' );
+			$form->get_no_td_checkbox( 'plugin_filter_excerpt' );
 
 			$table_rows[ 'plugin_p_strip' ] = $form->get_tr_hide( 'basic', 'plugin_p_strip' ) .
 			$form->get_th_html( _x( 'Content Starts at 1st Paragraph', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_p_strip' ) . 
-			$form->get_td_no_checkbox( 'plugin_p_strip' );
+			$form->get_no_td_checkbox( 'plugin_p_strip' );
 
 			$table_rows[ 'plugin_use_img_alt' ] = $form->get_tr_hide( 'basic', 'plugin_use_img_alt' ) .
 			$form->get_th_html( _x( 'Use Image Alt if No Content', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_use_img_alt' ) . 
-			$form->get_td_no_checkbox( 'plugin_use_img_alt' );
+			$form->get_no_td_checkbox( 'plugin_use_img_alt' );
 
 			$table_rows[ 'plugin_img_alt_prefix' ] = '' . 
-			$form->get_th_html( _x( 'Content Image Alt Prefix', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_img_alt_prefix', $atts_locale ) . 
+			$form->get_th_html_locale( _x( 'Content Image Alt Prefix', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_img_alt_prefix' ) . 
 			'<td class="blank">' . SucomUtil::get_key_value( 'plugin_img_alt_prefix', $form->options ) . '</td>';
 
 			$table_rows[ 'plugin_p_cap_prefix' ] = '' . 
-			$form->get_th_html( _x( 'WP Caption Text Prefix', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_p_cap_prefix', $atts_locale ) . 
+			$form->get_th_html_locale( _x( 'WP Caption Text Prefix', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_p_cap_prefix' ) . 
 			'<td class="blank">' . SucomUtil::get_key_value( 'plugin_p_cap_prefix', $form->options ) . '</td>';
 
 			$table_rows[ 'plugin_no_title_text' ] = '' . 
-			$form->get_th_html( _x( 'No Title Text', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_no_title_text', $atts_locale ) . 
+			$form->get_th_html_locale( _x( 'No Title Text', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_no_title_text' ) . 
 			'<td class="blank">' . SucomUtil::get_key_value( 'plugin_no_title_text', $form->options ) . '</td>';
 
 			$table_rows[ 'plugin_no_desc_text' ] = '' . 
-			$form->get_th_html( _x( 'No Description Text', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_no_desc_text', $atts_locale ) . 
+			$form->get_th_html_locale( _x( 'No Description Text', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_no_desc_text' ) . 
 			'<td class="blank">' . SucomUtil::get_key_value( 'plugin_no_desc_text', $form->options ) . '</td>';
 
 			$check_embed_html = '';
@@ -111,27 +109,27 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[ 'plugin_new_user_is_person' ] = '' . 
 			$form->get_th_html( _x( 'Add Person Role for New Users', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_new_user_is_person' ) . 
-			$form->get_td_no_checkbox( 'plugin_new_user_is_person' );
+			$form->get_no_td_checkbox( 'plugin_new_user_is_person' );
 
 			$table_rows[ 'plugin_page_excerpt' ] = '' . 
 			$form->get_th_html( _x( 'Enable WP Excerpt for Pages', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_page_excerpt' ) . 
-			$form->get_td_no_checkbox( 'plugin_page_excerpt' );
+			$form->get_no_td_checkbox( 'plugin_page_excerpt' );
 
 			$table_rows[ 'plugin_page_tags' ] = '' . 
 			$form->get_th_html( _x( 'Enable WP Tags for Pages', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_page_tags' ) . 
-			$form->get_td_no_checkbox( 'plugin_page_tags' );
+			$form->get_no_td_checkbox( 'plugin_page_tags' );
 
 			$table_rows[ 'plugin_check_head' ] = '' . 
 			$form->get_th_html( _x( 'Check for Duplicate Meta Tags', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_check_head' ) . 
-			$form->get_td_no_checkbox( 'plugin_check_head' );
+			$form->get_no_td_checkbox( 'plugin_check_head' );
 
 			$table_rows[ 'plugin_check_img_dims' ] = '' . 
 			$form->get_th_html( _x( 'Enforce Image Dimension Checks', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_check_img_dims' ) . 
-			$form->get_td_no_checkbox( 'plugin_check_img_dims', '<em>' . _x( 'recommended', 'option comment', 'wpsso' ) . '</em>' );
+			$form->get_no_td_checkbox( 'plugin_check_img_dims', '<em>' . _x( 'recommended', 'option comment', 'wpsso' ) . '</em>' );
 
 			$table_rows[ 'plugin_upscale_images' ] = '' . 
 			$form->get_th_html( _x( 'Upscale Media Library Images', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_upscale_images' ) . 
-			$form->get_td_no_checkbox( 'plugin_upscale_images' );
+			$form->get_no_td_checkbox( 'plugin_upscale_images' );
 
 			$table_rows[ 'plugin_upscale_img_max' ] = '' .
 			$form->get_th_html( _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_upscale_img_max' ) . 
@@ -178,7 +176,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 */
 			$table_rows[ 'plugin_wpseo_social_meta' ] = '' .
 			$form->get_th_html( _x( 'Import Yoast SEO Social Meta', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_wpseo_social_meta' ) . 
-			$form->get_td_no_checkbox( 'plugin_wpseo_social_meta' );
+			$form->get_no_td_checkbox( 'plugin_wpseo_social_meta' );
 
 			/**
 			 * Default currency.
@@ -221,7 +219,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$opt_key = 'plugin_' . $col_key . '_col_' . $mod_name;
 
 					if ( $form->in_defaults( $opt_key ) ) {	// Just in case.
-						$cols .= $form->get_td_no_checkbox( $opt_key, $comment = '', $extra_css_class = 'checkbox' );	// Narrow column.
+						$cols .= $form->get_no_td_checkbox( $opt_key, $comment = '', $extra_css_class = 'checkbox' );	// Narrow column.
 					} else {
 						$cols .= '<td class="checkbox"></td>';
 					}
@@ -300,32 +298,32 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[ 'plugin_clear_on_activate' ] = $form->get_tr_hide( 'basic', 'plugin_clear_on_activate' ) . 
 			$form->get_th_html( _x( 'Clear All Caches on Activate', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_clear_on_activate' ) . 
-			$form->get_td_no_checkbox( 'plugin_clear_on_activate' ) . 
+			$form->get_no_td_checkbox( 'plugin_clear_on_activate' ) . 
 			WpssoAdmin::get_option_site_use( 'plugin_clear_on_activate', $form, $network );
 
 			$table_rows[ 'plugin_clear_on_deactivate' ] = $form->get_tr_hide( 'basic', 'plugin_clear_on_deactivate' ) . 
 			$form->get_th_html( _x( 'Clear All Caches on Deactivate', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_clear_on_deactivate' ) . 
-			$form->get_td_no_checkbox( 'plugin_clear_on_deactivate' ) . 
+			$form->get_no_td_checkbox( 'plugin_clear_on_deactivate' ) . 
 			WpssoAdmin::get_option_site_use( 'plugin_clear_on_deactivate', $form, $network );
 
 			$table_rows[ 'plugin_clear_on_save' ] = '' . 
 			$form->get_th_html( _x( 'Clear All Caches on Save Settings', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_clear_on_save' ) . 
-			$form->get_td_no_checkbox( 'plugin_clear_on_save' ) . 
+			$form->get_no_td_checkbox( 'plugin_clear_on_save' ) . 
 			WpssoAdmin::get_option_site_use( 'plugin_clear_on_save', $form, $network );
 
 			$table_rows[ 'plugin_clear_short_urls' ] = $form->get_tr_hide( 'basic', 'plugin_clear_short_urls' ) . 
 			$form->get_th_html( _x( 'Refresh Short URLs on Clear Cache', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_clear_short_urls' ) . 
-			$form->get_td_no_checkbox( 'plugin_clear_short_urls' ) . 
+			$form->get_no_td_checkbox( 'plugin_clear_short_urls' ) . 
 			WpssoAdmin::get_option_site_use( 'plugin_clear_short_urls', $form, $network );
 
 			$table_rows[ 'plugin_clear_post_terms' ] = $form->get_tr_hide( 'basic', 'plugin_clear_post_terms' ) . 
 			$form->get_th_html( _x( 'Clear Term Cache for Published Post', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_clear_post_terms' ) . 
-			$form->get_td_no_checkbox( 'plugin_clear_post_terms' ) . 
+			$form->get_no_td_checkbox( 'plugin_clear_post_terms' ) . 
 			WpssoAdmin::get_option_site_use( 'plugin_clear_post_terms', $form, $network );
 
 			$table_rows[ 'plugin_clear_for_comment' ] = $form->get_tr_hide( 'basic', 'plugin_clear_for_comment' ) . 
 			$form->get_th_html( _x( 'Clear Post Cache for New Comment', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_clear_for_comment' ) . 
-			$form->get_td_no_checkbox( 'plugin_clear_for_comment' ) . 
+			$form->get_no_td_checkbox( 'plugin_clear_for_comment' ) . 
 			WpssoAdmin::get_option_site_use( 'plugin_clear_for_comment', $form, $network );
 
 			return $table_rows;
@@ -376,7 +374,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[ 'plugin_wp_shortlink' ] = '' . 
 			$form->get_th_html( _x( 'Short Sharing URL for WP Shortlink', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_wp_shortlink' ) . 
-			$form->get_td_no_checkbox( 'plugin_wp_shortlink' );
+			$form->get_no_td_checkbox( 'plugin_wp_shortlink' );
 
 			$table_rows[ 'plugin_add_link_rel_shortlink' ] = '' . 
 			$form->get_th_html( sprintf( _x( 'Add "%s" HTML Tag', 'option label', 'wpsso' ),
@@ -453,14 +451,12 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$atts_locale = array( 'is_locale' => true );
-
 			$table_rows[] = '<td colspan="4">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			$table_rows[] = '<td></td>' . 
 			$form->get_th_html( _x( 'Show', 'column title', 'wpsso' ), 'checkbox left', 'custom-cm-show-checkbox' ) . 
 			$form->get_th_html( _x( 'Contact Field ID', 'column title', 'wpsso' ), 'medium left', 'custom-cm-field-id' ) . 
-			$form->get_th_html( _x( 'Contact Field Label', 'column title', 'wpsso' ), 'wide left', 'custom-cm-field-label', $atts_locale );
+			$form->get_th_html_locale( _x( 'Contact Field Label', 'column title', 'wpsso' ), 'wide left', 'custom-cm-field-label' );
 
 			$sorted_opt_pre = $this->p->cf[ 'opt' ][ 'cm_prefix' ];
 
@@ -506,7 +502,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 				$table_rows[] = $tr_html .
 				$form->get_th_html( $opt_label, 'medium' ) . 
-				$form->get_td_no_checkbox( $cm_enabled_key, '', true ) . 
+				$form->get_no_td_checkbox( $cm_enabled_key, '', true ) . 
 				'<td class="blank medium">' . $form->get_no_input( $cm_name_key, 'medium' ) . '</td>' . 
 				'<td class="blank wide">' . $form->get_no_input( $cm_label_locale_key ) . '</td>';
 			}
@@ -520,14 +516,12 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$atts_locale = array( 'is_locale' => true );
-
 			$table_rows[] = '<td colspan="4">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			$table_rows[] = '<td></td>' . 
 			$form->get_th_html( _x( 'Show', 'column title', 'wpsso' ), 'checkbox left', 'custom-cm-show-checkbox' ) . 
 			$form->get_th_html( _x( 'Contact Field ID', 'column title', 'wpsso' ), 'medium left', 'wp-cm-field-id' ) . 
-			$form->get_th_html( _x( 'Contact Field Label', 'column title', 'wpsso' ), 'wide left', 'custom-cm-field-label', $atts_locale );
+			$form->get_th_html_locale( _x( 'Contact Field Label', 'column title', 'wpsso' ), 'wide left', 'custom-cm-field-label' );
 
 			$sorted_cm_names = $this->p->cf[ 'wp' ][ 'cm_names' ];
 
