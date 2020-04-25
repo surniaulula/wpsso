@@ -1555,21 +1555,21 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings - Product Attributes tab.
 					 */
-					'plugin_product_attr_brand'         => 'Brand',			// Brand Attribute Name.
-					'plugin_product_attr_color'         => 'Color',			// Color Attribute Name.
-					'plugin_product_attr_condition'     => 'Condition',		// Condition Attribute Name.
-					'plugin_product_attr_depth_value'   => 'Depth',			// Depth Attribute Name.
-					'plugin_product_attr_gtin14'        => 'GTIN-14',		// GTIN-14 Attribute Name.
-					'plugin_product_attr_gtin13'        => 'GTIN-13',		// GTIN-13/EAN Attribute Name.
-					'plugin_product_attr_gtin12'        => 'GTIN-12',		// GTIN-12/UPC Attribute Name.
-					'plugin_product_attr_gtin8'         => 'GTIN-8',		// GTIN-8 Attribute Name.
-					'plugin_product_attr_gtin'          => 'GTIN',			// GTIN Attribute Name.
-					'plugin_product_attr_isbn'          => 'ISBN',			// ISBN Attribute Name.
-					'plugin_product_attr_material'      => 'Material',		// Material Attribute Name.
-					'plugin_product_attr_mfr_part_no'   => 'MPN',			// MPN Attribute Name.
-					'plugin_product_attr_size'          => 'Size',			// Size Attribute Name.
-					'plugin_product_attr_target_gender' => 'Gender',		// Target Gender Attribute Name.
-					'plugin_product_attr_volume_value'  => 'Volume',		// Volume Attribute Name.
+					'plugin_product_attr_brand'         => 'Brand',		// Brand Attribute Name.
+					'plugin_product_attr_color'         => 'Color',		// Color Attribute Name.
+					'plugin_product_attr_condition'     => 'Condition',	// Condition Attribute Name.
+					'plugin_product_attr_depth_value'   => 'Depth',		// Depth Attribute Name.
+					'plugin_product_attr_gtin14'        => 'GTIN-14',	// GTIN-14 Attribute Name.
+					'plugin_product_attr_gtin13'        => 'GTIN-13',	// GTIN-13/EAN Attribute Name.
+					'plugin_product_attr_gtin12'        => 'GTIN-12',	// GTIN-12/UPC Attribute Name.
+					'plugin_product_attr_gtin8'         => 'GTIN-8',	// GTIN-8 Attribute Name.
+					'plugin_product_attr_gtin'          => 'GTIN',		// GTIN Attribute Name.
+					'plugin_product_attr_isbn'          => 'ISBN',		// ISBN Attribute Name.
+					'plugin_product_attr_material'      => 'Material',	// Material Attribute Name.
+					'plugin_product_attr_mfr_part_no'   => 'MPN',		// MPN Attribute Name.
+					'plugin_product_attr_size'          => 'Size',		// Size Attribute Name.
+					'plugin_product_attr_target_gender' => 'Gender',	// Target Gender Attribute Name.
+					'plugin_product_attr_volume_value'  => 'Volume',	// Volume Attribute Name.
 
 					/**
 					 * Advanced Settings - Custom Fields (Metadata) tab.
@@ -1590,7 +1590,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_gtin13'           => '',			// Product GTIN-13/EAN Custom Field.
 					'plugin_cf_product_gtin12'           => '',			// Product GTIN-12/UPC Custom Field.
 					'plugin_cf_product_gtin8'            => '',			// Product GTIN-8 Custom Field.
-					'plugin_cf_product_gtin'             => '_wpm_gtin_code',	// Product GTIN Custom Field.
+					'plugin_cf_product_gtin'             => '',			// Product GTIN Custom Field.
 					'plugin_cf_product_height_value'     => '',			// Product Height Custom Field.
 					'plugin_cf_product_isbn'             => '',			// Product ISBN Custom Field.
 					'plugin_cf_product_length_value'     => '',			// Product Length Custom Field.
@@ -1599,7 +1599,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_price'            => '',			// Product Price Custom Field.
 					'plugin_cf_product_retailer_part_no' => '',			// Product SKU Custom Field.
 					'plugin_cf_product_size'             => '',			// Product Size Custom Field.
-					'plugin_cf_product_target_gender'    => '',			// Product Target Gender Custom Field.
+					'plugin_cf_product_target_gender'    => '',			// Product Gender Custom Field.
 					'plugin_cf_product_volume_value'     => '',			// Product Volume Custom Field.
 					'plugin_cf_product_weight_value'     => '',			// Product Weight Custom Field.
 					'plugin_cf_product_width_value'      => '',			// Product Width Custom Field.
@@ -2315,7 +2315,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_price'            => 'Product Price Custom Field',
 					'plugin_cf_product_size'             => 'Product Size Custom Field',
 					'plugin_cf_product_retailer_part_no' => 'Product SKU Custom Field',
-					'plugin_cf_product_target_gender'    => 'Product Target Gender Custom Field',
+					'plugin_cf_product_target_gender'    => 'Product Gender Custom Field',
 					'plugin_cf_product_volume_value'     => 'Product Volume Custom Field',
 					'plugin_cf_product_weight_value'     => 'Product Weight Custom Field',
 					'plugin_cf_product_width_value'      => 'Product Width Custom Field',
@@ -2343,7 +2343,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_product_attr_material'      => 'Material Attribute Name',
 					'plugin_product_attr_mfr_part_no'   => 'MPN Attribute Name',
 					'plugin_product_attr_size'          => 'Size Attribute Name',
-					'plugin_product_attr_target_gender' => 'Gender Attribute Name',
+					'plugin_product_attr_target_gender' => 'Target Gender Attribute Name',
 					'plugin_product_attr_volume_value'  => 'Volume Attribute Name',
 				),
 

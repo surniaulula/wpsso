@@ -2040,65 +2040,82 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'info-cf-attr':
+						case 'info-product-attr':
 
-							$text .= '<blockquote class="top-info">';
+							$text = '<blockquote class="top-info"><p>';
 
-							$text .= '<p>';
+							$text .= sprintf( __( 'These options allow you to customize the product attribute names (aka attribute labels) that %s uses to request additional product information from your e-commerce plugin.', 'wpsso' ), $info[ 'short_pro' ] ) . ' ';
 
-							$text .= sprintf( __( 'These options allow you to customize the custom field names (aka metadata names) that %s can use to get additional information about your content.', 'wpsso' ), $info[ 'short_pro' ] ) . ' ';
+							$text .= __( 'These are the product attribute names that you can create in your e-commerce plugin and not their values.', 'wpsso' ) . ' ';
 
-							$text .= '</p><p>';
+							$text .= '</p><p><center><strong>';
+							
+							$text .= __( 'Do not enter product attribute values here &ndash; these options are for product attribute names only.', 'wpsso' );
+							
+							$text .= '</strong><br/>';
 
-							$text .= '<center>';
+							$text .= __( 'You can create the following product attribute names and choose their corresponding values in your e-commerce plugin.', 'wpsso' );
 
-							$text .= '<strong>' . __( 'Do not enter custom field values here &ndash; these options are for custom field names only.', 'wpsso' ) . '</strong><br/>';
-
-							$text .= __( 'Use the following custom field names when creating custom fields for your posts, pages, and custom post types.', 'wpsso' );
-
-							$text .= '</center>';
-
-							$text .= '</p>';
+							$text .= '</center></p>';
 
 							if ( ! empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {
 
+								$text .= '<p><center><strong>';
 
-								$text .= '<p>';
+								$text .= __( 'An active WooCommerce plugin has been detected.', 'wpsso' );
 
-								$text .= __( 'An active WooCommerce plugin has been detected.', 'wpsso' ) . ' ';
+								$text .= '</strong></br>';
 
-								$text .= __( 'Please note that custom product attributes from WooCommerce have precedence over custom field values.', 'wpsso' ) . ' ';
+								$text .= __( 'Please note that WooCommerce creates a selector on the product purchase page for product attributes used for variations.', 'wpsso' ) . ' ';
 
-								$text .= sprintf( __( 'Refer to the <a href="%s">WooCommerce integration notes</a> for information on setting up product attributes and custom fields.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/' );
+								$text .= '</br>';
 
-								$text .= '</p>';
+								$text .= __( 'Enabling the WooCommerce "Used for variations" attribute option may not be suitable for some product attributes (like GTIN, ISBN, and MPN).', 'wpsso' );
+
+								$text .= '</br>';
+
+								$text .= __( 'We suggest using a supported 3rd party plugin for WooCommerce to manage Brand, GTIN, ISBN, and MPN values for variations.', 'wpsso' );
+
+								$text .= '</center></p>';
 							}
 
 							$text .= '</blockquote>';
 
 							break;
 
-						case 'info-product-attr':
+						case 'info-cf-attr':
 
-							$text = '<blockquote class="top-info">';
+							$text .= '<blockquote class="top-info"><p>';
 
-							$text .= '<p>';
+							$text .= sprintf( __( 'These options allow you to customize the custom field names (aka metadata names) that %s can use to get additional information about your content.', 'wpsso' ), $info[ 'short_pro' ] ) . ' ';
 
-							$text .= sprintf( __( 'These options allow you to customize the product attribute names (aka attribute labels) that %s uses to request additional product information from your e-commerce plugin.', 'wpsso' ), $info[ 'short_pro' ] ) . ' ';
+							$text .= '</p><p><center><strong>';
 
-							$text .= __( 'These are the product attribute names that you can create in your e-commerce plugin and not their values.', 'wpsso' ) . ' ';
+							$text .= __( 'Do not enter custom field values here &ndash; these options are for custom field names only.', 'wpsso' );
+							
+							$text .= '</strong><br/>';
 
-							$text .= '</p><p>';
+							$text .= __( 'Use the following custom field names when creating custom fields for your posts, pages, and custom post types.', 'wpsso' );
 
-							$text .= '<center>';
+							$text .= '</center></p>';
 
-							$text .= '<strong>' . __( 'Do not enter product attribute values here &ndash; these options are for product attribute names only.', 'wpsso' ) . '</strong><br/>';
+							if ( ! empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {
 
-							$text .= __( 'You can create the following product attribute names and choose their corresponding values in your e-commerce plugin.', 'wpsso' );
 
-							$text .= '</center>';
+								$text .= '<p><center><strong>';
 
-							$text .= '</p>';
+								$text .= __( 'An active WooCommerce plugin has been detected.', 'wpsso' );
+
+								$text .= '</strong></br>';
+
+								$text .= __( 'Please note that custom product attributes from WooCommerce have precedence over custom field values.', 'wpsso' ) . ' ';
+
+								$text .= '</br>';
+
+								$text .= sprintf( __( 'Refer to the <a href="%s">WooCommerce integration notes</a> for information on setting up product attributes and custom fields.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/' );
+
+								$text .= '</center></p>';
+							}
 
 							$text .= '</blockquote>';
 
