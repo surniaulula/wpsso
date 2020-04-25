@@ -180,7 +180,7 @@ _x( 'Product MPN Custom Field', 'option label', 'wpsso' );
 _x( 'Product Price Custom Field', 'option label', 'wpsso' );
 _x( 'Product Size Custom Field', 'option label', 'wpsso' );
 _x( 'Product SKU Custom Field', 'option label', 'wpsso' );
-_x( 'Product Gender Custom Field', 'option label', 'wpsso' );
+_x( 'Product Target Gender Custom Field', 'option label', 'wpsso' );
 _x( 'Product Volume Custom Field', 'option label', 'wpsso' );
 _x( 'Product Weight Custom Field', 'option label', 'wpsso' );
 _x( 'Product Width Custom Field', 'option label', 'wpsso' );

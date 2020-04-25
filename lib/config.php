@@ -1599,7 +1599,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_price'            => '',			// Product Price Custom Field.
 					'plugin_cf_product_retailer_part_no' => '',			// Product SKU Custom Field.
 					'plugin_cf_product_size'             => '',			// Product Size Custom Field.
-					'plugin_cf_product_target_gender'    => '',			// Product Gender Custom Field.
+					'plugin_cf_product_target_gender'    => '',			// Product Target Gender Custom Field.
 					'plugin_cf_product_volume_value'     => '',			// Product Volume Custom Field.
 					'plugin_cf_product_weight_value'     => '',			// Product Weight Custom Field.
 					'plugin_cf_product_width_value'      => '',			// Product Width Custom Field.
@@ -2252,12 +2252,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * The shortener key is also its file name under lib/pro/ext/.
 				 */
 				'shorteners' => array(
-					'none'                 => '[None]',
-					'bitly'                => 'Bitly (suggested)',	// Requires lib/pro/ext/bitly.php.
-					'dlmyapp'              => 'DLMY.App',		// Requires lib/pro/ext/dlmy.php.
-					'owly'                 => 'Ow.ly',		// Requires lib/pro/ext/owly.php.
-					'tinyurl'              => 'TinyURL',		// Requires lib/pro/ext/tinyurl.php.
-					'yourls'               => 'YOURLS',		// Requires lib/pro/ext/yourls.php.
+					'none'    => '[None]',
+					'bitly'   => 'Bitly (suggested)',	// Requires lib/pro/ext/bitly.php.
+					'dlmyapp' => 'DLMY.App',		// Requires lib/pro/ext/dlmy.php.
+					'owly'    => 'Ow.ly',		// Requires lib/pro/ext/owly.php.
+					'tinyurl' => 'TinyURL',		// Requires lib/pro/ext/tinyurl.php.
+					'yourls'  => 'YOURLS',		// Requires lib/pro/ext/yourls.php.
 				),
 
 				/**
@@ -2315,7 +2315,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_price'            => 'Product Price Custom Field',
 					'plugin_cf_product_size'             => 'Product Size Custom Field',
 					'plugin_cf_product_retailer_part_no' => 'Product SKU Custom Field',
-					'plugin_cf_product_target_gender'    => 'Product Gender Custom Field',
+					'plugin_cf_product_target_gender'    => 'Product Target Gender Custom Field',
 					'plugin_cf_product_volume_value'     => 'Product Volume Custom Field',
 					'plugin_cf_product_weight_value'     => 'Product Weight Custom Field',
 					'plugin_cf_product_width_value'      => 'Product Width Custom Field',

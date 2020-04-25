@@ -2066,11 +2066,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								$text .= '</strong></br>';
 
-								$text .= __( 'Please note that WooCommerce creates a selector on the product purchase page for product attributes used for variations.', 'wpsso' ) . ' ';
+								$text .= __( 'Please note that WooCommerce creates a selector on the purchase page for product attributes used for variations.', 'wpsso' ) . ' ';
 
 								$text .= '</br>';
 
-								$text .= __( 'Enabling the WooCommerce "Used for variations" attribute option may not be suitable for some product attributes (like GTIN, ISBN, and MPN).', 'wpsso' );
+								// translators: Please ignore - translation uses a different text domain.
+								$used_for_variations = __( 'Used for variations', 'woocommerce' );
+
+								$text .= sprintf( __( 'Enabling the WooCommerce "%s" attribute option may not be suitable for some product attributes (like GTIN, ISBN, and MPN).', 'wpsso' ), $used_for_variations );
 
 								$text .= '</br>';
 
