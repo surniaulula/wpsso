@@ -1173,6 +1173,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			 * Prevent conflicts by removing the image URL if we have an image ID.
 			 */
 			if ( ! empty( $this->options[ $input_name_id ] ) ) {
+
 				unset( $this->options[ $input_name_url ] );
 				unset( $this->options[ $input_name_url . ':width' ] );
 				unset( $this->options[ $input_name_url . ':height' ] );
@@ -2172,11 +2173,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			$input_name_media = $name . '_' . $media_suffix . $key_suffix;
-
-			$input_name_url = $name . '_url' . $key_suffix;
+			$input_name_url   = $name . '_url' . $key_suffix;
 
 			/**
-			 * Disable the image URL option if we have an image ID.
+			 * Disable the image / video URL option if we have an image ID / video embed.
 			 */
 			if ( ! empty( $this->options[ $input_name_media ] ) ) {
 
@@ -2185,7 +2185,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$is_disabled = true;
 
 			} else {
-
 				$pl_hldr = SucomUtil::esc_url_encode( $url );
 			}
 

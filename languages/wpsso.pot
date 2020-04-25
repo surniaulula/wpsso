@@ -844,12 +844,12 @@ msgstr ""
 msgid "Failed writing data to cache file %s."
 msgstr ""
 
-#: lib/com/form.php:1236 lib/gettext-com.php:25
+#: lib/com/form.php:1237 lib/gettext-com.php:25
 msgctxt "option comment"
 msgid "crop"
 msgstr ""
 
-#: lib/com/form.php:1238 lib/gettext-com.php:26
+#: lib/com/form.php:1239 lib/gettext-com.php:26
 msgctxt "option comment"
 msgid "from"
 msgstr ""
