@@ -1187,6 +1187,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								$text = sprintf( __( 'If your theme or another plugin provides a custom field (aka metadata) for %1$s, you may enter its custom field name here.', 'wpsso' ), $cf_info[ 1 ] ) . ' ';
 
+								// translators: %1$s is the metabox name, %2$s is the option name.
 								$text .= sprintf( __( 'If a custom field matching this name is found, its value will be imported for the %1$s "%2$s" option.', 'wpsso' ), $metabox_title, $cf_info[ 0 ] ) . ' ';
 
 								if ( $cf_is_multi ) {

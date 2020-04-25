@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 7.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-04-25 16:34-0700\n"
-"PO-Revision-Date: 2020-04-25 16:41-0700\n"
+"PO-Revision-Date: 2020-04-25 16:57-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4094,7 +4094,7 @@ msgstr "Si votre thème ou une autre extension fournit un champ personnalisé (a
 
 #: lib/messages.php:1190
 msgid "If a custom field matching this name is found, its value will be imported for the %1$s \"%2$s\" option."
-msgstr "Si un champ personnalisé correspondant à ce nom est trouvé, sa valeur sera importée pour l'option \"%1$s\"."
+msgstr "Si un champ personnalisé correspondant à ce nom est trouvé, sa valeur sera importée pour l'option %1$s \"%2$s\"."
 
 #: lib/messages.php:1196
 msgid "Note that the \"%1$s\" option provides multiple input fields &mdash; the custom field value will be split on newline characters, and each line will be assigned to an individual input field."
