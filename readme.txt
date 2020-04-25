@@ -503,14 +503,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* The "Import Yoast SEO Social Meta" option module (Advanced Settings page) now reads image IDs instead of image URLs, and shows an update notice for any custom metadata values read.
+	* The "Import Yoast SEO Social Meta" option module (Advanced Settings page) now reads image IDs instead of image URLs, and shows an update notice for any custom metadata values read (Premium version).
+	* The "Structured data product" setting for the Product GTIN (EAN, UPC, ISBN) for WooCommerce plugin is now checked to assign the GTIN/ISBN/MPN value to the correct Schema property (Premium version).
 * **Bugfixes**
 	* Fixed a conflict when both a custom Image ID and Image URL were provided for the same option.
 * **Developer Notes**
 	* Added a new 'wpsso_get_md_options' filter.
 	* Added a new `SucomForm->get_input_locale()` method.
+	* Added a new `SucomForm->get_textarea_locale()` method.
 	* Added a new `SucomForm->get_th_html_locale()` method.
 	* Refactored the WpssoProUtilWpseoMeta class methods (ie. the "Import Yoast SEO Social Meta" option module).
+	* Refactored the `SucomForm->get_css_class_hide()` method to check both localized and non-localized values.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
