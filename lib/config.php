@@ -359,7 +359,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssoipm' => array(			// Plugin acronym.
 					'short'       => 'WPSSO IPM',	// Short plugin name.
 					'name'        => 'WPSSO Inherit Parent Metadata',
-					'desc'        => 'Inherit Featured and Custom Images from Parents for Posts, Pages, Custom Post Types, Categories, Tags, and Custom Taxonomies.',
+					'desc'        => 'Inherit the Featured and Custom Images from Parents for Posts, Pages, Custom Post Types, Categories, Tags, and Custom Taxonomies.',
 					'slug'        => 'wpsso-inherit-parent-meta',
 					'base'        => 'wpsso-inherit-parent-meta/wpsso-inherit-parent-meta.php',
 					'update_auth' => '',		// No premium version.
