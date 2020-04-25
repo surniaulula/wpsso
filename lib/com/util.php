@@ -3906,8 +3906,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				$ini_saved[ $name ] = ini_get( $name );	// Returns false if option does not exist.
 
-				if ( false !== $ini_saved[ $name ] && $ini_saved[ $name ] !== $value ) {
-					ini_set( $name, $value );
+				if ( false !== $ini_saved[ $name ] ) {
+				
+					if ( $ini_saved[ $name ] !== $value ) {
+						ini_set( $name, $value );
+					} else {
+						unset( $ini_saved[ $name ] );
+					}
+
 				} else {
 					unset( $ini_saved[ $name ] );
 				}
@@ -3923,7 +3929,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			error_log( $error_msg );
 
 			/**
-			 * Restore old option values that were changed.
+			 * Only restore option values that were changed.
 			 */
 			foreach ( $ini_saved as $name => $value ) {
 				ini_set( $name, $value );

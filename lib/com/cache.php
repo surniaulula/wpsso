@@ -190,6 +190,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 							$this->text_domain );
 
 					} else {
+
 						$errors[] = sprintf( __( 'The maximum number of URL redirects (%d) may have been exceeded.',
 							$this->text_domain ), $this->curl_max_redirs );
 					}
