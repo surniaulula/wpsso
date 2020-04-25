@@ -498,7 +498,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.1.0-rc.1 (2020/04/25)**
+**Version 7.1.0 (2020/04/25)**
 
 * **New Features**
 	* None.
@@ -1074,7 +1074,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 7.1.0-rc.1 =
+= 7.1.0 =
 
 (2020/04/25) The "Import Yoast SEO Social Meta" option module (Advanced Settings page) now reads image IDs instead of image URLs. Fixed a conflict when both a custom Image ID and Image URL were provided for the same option.
 
