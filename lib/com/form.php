@@ -214,35 +214,57 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$option_keys = array_keys( $option_keys );
 			}
 
-			foreach ( $option_keys as $opt_locale_key ) {
+			foreach ( $option_keys as $opt_key ) {
 
-				if ( strpos( $opt_locale_key, ':is' ) ) {	// Skip option flags.
+				$opt_key = preg_replace( '/#.*$/', '', $opt_key );	// Just in case.
+
+				if ( empty( $opt_key ) ) {	// Just in case.
+
+					continue;
+
+				} elseif ( strpos( $opt_key, ':is' ) ) {	// Skip option flags.
 
 					continue;
 				}
 
-				$def_locale_key = $opt_locale_key;
+				/**
+				 * Example:
+				 *
+				 *	$opt_key        = 'site_name'
+				 *	$opt_locale_key = 'site_name#fr_FR'
+				 */
+				$opt_locale_key = SucomUtil::get_key_locale( $opt_key, $this->options );
 
-				$def_key = preg_replace( '/#.*$/', '', $opt_locale_key );
+				if ( isset( $this->defaults[ $opt_locale_key ] ) ) {
+					
+					if ( isset( $this->options[ $opt_locale_key ] ) ) {
 
-				if ( empty( $def_key ) ) {	// Just in case.
+						if ( $this->options[ $opt_locale_key ] !== $this->defaults[ $opt_locale_key ] ) {
 
-					continue;
-
-				} elseif ( ! isset( $this->options[ $opt_locale_key ] ) ) {	// Just in case.
-
-					continue;
-
-				} elseif ( isset( $this->defaults[ $def_locale_key ] ) ) {
-
-					if ( $this->options[ $opt_locale_key ] !== $this->defaults[ $def_locale_key ] ) {
-						return '';	// Show option.
+							return '';	// Show option.
+						}
 					}
+				}
 
-				} elseif ( isset( $this->defaults[ $def_key ] ) ) {
+				if ( $opt_locale_key !== $opt_key ) {
 
-					if ( $this->options[ $opt_locale_key ] !== $this->defaults[ $def_key ] ) {
-						return '';	// Show option.
+					if ( isset( $this->defaults[ $opt_key ] ) ) {
+
+						if ( isset( $this->options[ $opt_locale_key ] ) ) {
+
+							if ( $this->options[ $opt_locale_key ] !== $this->defaults[ $opt_key ] ) {
+
+								return '';	// Show option.
+							}
+						}
+
+						if ( isset( $this->options[ $opt_key ] ) ) {
+
+							if ( $this->options[ $opt_key ] !== $this->defaults[ $opt_key ] ) {
+
+								return '';	// Show option.
+							}
+						}
 					}
 				}
 			}

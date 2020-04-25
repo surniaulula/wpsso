@@ -121,6 +121,9 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'og-site':
 
+					$def_site_name = get_bloginfo( 'name' );
+					$def_site_desc = get_bloginfo( 'description' );
+
 					$select_exp_secs    = $this->p->util->get_cache_exp_secs( $this->p->lca . '_f_' );	// Default is month in seconds.
 					$article_sections   = $this->p->util->get_article_sections();
 					$product_categories = $this->p->util->get_google_product_categories();
@@ -129,13 +132,13 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->form->get_th_html_locale( _x( 'WebSite Name', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'site_name' ) . 
 					'<td>' . $this->form->get_input_locale( 'site_name', $css_class = 'long_name', $css_id = '',
-						$len = 0, $pl_hldr = get_bloginfo( 'name', 'display' ) ) . '</td>';
+						$len = 0, $def_site_name ) . '</td>';
 
 					$table_rows[ 'site_desc' ] = '' . 
 					$this->form->get_th_html_locale( _x( 'WebSite Description', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'site_desc' ) . 
 					'<td>' . $this->form->get_textarea_locale( 'site_desc', $css_class = '', $css_id = '',
-						$len = 0, $pl_hldr = get_bloginfo( 'description', 'display' ) ) . '</td>';
+						$len = 0, $def_site_desc ) . '</td>';
 
 					$table_rows[ 'og_def_article_section' ] = '' . 
 					$this->form->get_th_html( _x( 'Default Article Section', 'option label', 'wpsso' ), 
