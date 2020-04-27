@@ -15,7 +15,7 @@
  * Requires At Least: 4.2
  * Tested Up To: 5.4
  * WC Tested Up To: 4.0.1
- * Version: 7.1.0
+ * Version: 7.2.0-dev.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -345,7 +345,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->debug->mark( 'init options do action' );	// Begin timer.
 			}
 
-			do_action( $this->lca . '_init_options', $activate );
+			do_action( 'wpsso_init_options', $activate );
 
 			if ( $this->debug->enabled ) {
 				$this->debug->mark( 'init options do action' );	// End timer.
@@ -439,6 +439,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 * from the filtered defaults.
 			 */
 			if ( ! empty( $this->options[ '__reload_defaults' ] ) ) {
+
 				$this->options = $this->opt->get_defaults();
 			}
 
@@ -461,6 +462,11 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					$this->debug->log( 'site options array len is ' . SucomUtil::serialized_len( $this->options ) . ' bytes' );
 				}
 			}
+
+			/**
+			 * Init option checks.
+			 */
+			do_action( 'wpsso_init_check_options' );
 
 			/**
 			 * Issue reminder notices and disable some caching when the plugin's debug mode is enabled.

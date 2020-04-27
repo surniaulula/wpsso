@@ -2705,6 +2705,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * 	'width'  => 'product:width:value',
 		 * );
 		 */
+		public static function get_data_unit_from_assoc( array $assoc, array $names ) {
+
+			$json_data = array();
+
+			self::add_data_unit_from_assoc( $json_data, $assoc, $names );
+
+			return empty( $json_data ) ? false : $json_data;
+		}
+
 		public static function add_data_unit_from_assoc( array &$json_data, array $assoc, array $names ) {
 
 			$wpsso =& Wpsso::get_instance();

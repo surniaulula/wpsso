@@ -1586,14 +1586,16 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			}
 
 			if ( false !== $col_key ) {
+
 				if ( isset( $sort_cols[ $col_key ] ) ) {
 					return $sort_cols[ $col_key ];
-				} else {
-					return null;
 				}
-			} else {
-				return $sort_cols;
+
+				return null;
+				
 			}
+
+			return $sort_cols;
 		}
 
 		public static function get_column_meta_keys() { 

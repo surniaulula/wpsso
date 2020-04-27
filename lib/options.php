@@ -248,7 +248,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'plugin_yourls_password':
 				case 'plugin_yourls_token':
 				case ( 0 === strpos( $base_key, 'plugin_cf_' ) ? true : false ):		// Value is the name of a meta key.
-				case ( 0 === strpos( $base_key, 'plugin_product_attr_' ) ? true : false ):	// Value is the name of a product attribute.
+				case ( 0 === strpos( $base_key, 'plugin_attr_product_' ) ? true : false ):	// Value is the name of a product attribute.
 
 					return 'one_line';
 
@@ -1431,7 +1431,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$ret_fnum = true;
 
 					if ( ! is_numeric( $opt_val ) ) {
+
 						$this->p->notice->err( sprintf( $error_messages[ 'numeric' ], $opt_key ) );
+
 						$opt_val = $def_val;
 					}
 

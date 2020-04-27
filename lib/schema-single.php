@@ -833,9 +833,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Note that 'og:url' may be provided instead of 'product:url'.
 			 *
-			 * Note that there is no Schema 'ean' property for the 'product:ean' value.
+			 * Note that there is no Schema 'ean' property.
 			 *
-			 * Note that there is no Schema 'size' property for the 'product:size' value.
+			 * Note that there is no Schema 'size' property.
 			 */
 			$offer = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array( 
 				'url'             => 'product:url',
@@ -932,6 +932,15 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/**
+			 * Some properties cannot be added to a Schema Offer, so add them to itemOffered instead.
+			 */
+			$item_offered = self::get_individual_product_data( $mod, $mt_offer );
+
+			if ( false !== $item_offered ) {
+				$offer[ 'itemOffered' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/IndividualProduct', $item_offered );
+			}
+
+			/**
 			 * Returns 0 if no organization was found / added.
 			 */
 			self::add_organization_data( $offer[ 'seller' ], $mod, 'site', 'org_logo_url', false );
@@ -944,6 +953,23 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			return WpssoSchema::get_schema_type_context( 'https://schema.org/Offer', $offer );
+		}
+
+		public static function get_individual_product_data( array $mod, array $mt_offer ) {
+
+			$json_data = array();
+
+			WpssoSchema::add_data_unit_from_assoc( $json_data, $mt_offer, $names = array(
+				'depth'  => 'product:depth:value',
+				'height' => 'product:height:value',
+				'length' => 'product:length:value',
+				'size'   => 'product:size',
+				'volume' => 'product:volume:value',
+				'weight' => 'product:weight:value',
+				'width'  => 'product:width:value',
+			) );
+		
+			return empty( $json_data ) ? false : $json_data;
 		}
 
 		/**

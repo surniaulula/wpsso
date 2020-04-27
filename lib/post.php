@@ -344,13 +344,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$mod = $this->get_mod( $post_id );
 
 					/**
-					 * The 'get_custom_fields' filter is executed BEFORE the 'wpsso_get_post_options' filter,
-					 * so values retrieved from custom fields may get overwritten by later filters.
+					 * The 'import_custom_fields' filter is executed BEFORE the 'wpsso_get_post_options'
+					 * filter, so values retrieved from custom fields may get overwritten by later filters.
 					 */
-					$md_opts = apply_filters( $this->p->lca . '_get_custom_fields', $md_opts, get_post_meta( $post_id ) );
+					$md_opts = apply_filters( $this->p->lca . '_import_custom_fields', $md_opts, get_post_meta( $post_id ) );
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'applying get_post_options filters for post_id ' . $post_id . ' meta' );
+						$this->p->debug->log( 'applying get_post_options filters for post id ' . $post_id . ' metadata' );
 					}
 
 					$md_opts[ 'options_filtered' ] = true;	// Set before calling filter to prevent recursion.

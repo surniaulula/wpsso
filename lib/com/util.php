@@ -2197,14 +2197,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Return a localized option value.
+		 * Returns a localized option value or null.
 		 *
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
 		public static function get_key_value( $key, array $opts, $mixed = 'current' ) {
 
 			$key_locale = self::get_key_locale( $key, $opts, $mixed );
-
 			$val_locale = isset( $opts[ $key_locale ] ) ? $opts[ $key_locale ] : null;
 
 			/**
@@ -2212,23 +2211,24 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			 */
 			if ( ! isset( $opts[ $key_locale ] ) || $opts[ $key_locale ] === '' ) {
 
-				if ( ( $pos = strpos( $key_locale, '#' ) ) > 0 ) {
+				if ( false !== ( $pos = strpos( $key_locale, '#' ) ) ) {
 
-					$key_default = self::get_key_locale( substr( $key_locale, 0, $pos ), $opts, 'default' );
+					$key_default = substr( $key_locale, 0, $pos );
+					$key_default = self::get_key_locale( $key_default, $opts, 'default' );
 
 					if ( $key_locale !== $key_default ) {
 						return isset( $opts[ $key_default ] ) ? $opts[ $key_default ] : $val_locale;
-					} else {
-						return $val_locale;
 					}
 
-				} else {
 					return $val_locale;
+
 				}
 
-			} else {
 				return $val_locale;
+
 			}
+
+			return $val_locale;
 		}
 
 		public static function set_key_locale( $key, $value, &$opts, $mixed = 'current' ) {

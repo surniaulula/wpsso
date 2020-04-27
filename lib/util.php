@@ -79,7 +79,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				require_once WPSSO_PLUGINDIR . 'lib/util-reg.php';
 			}
 
-			$this->reg = new WpssoUtilReg( $plugin );
+			$this->reg = new WpssoUtilReg( $plugin, $this );
+
+			if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
+				require_once WPSSO_PLUGINDIR . 'lib/util-custom-fields.php';
+			}
+
+			$this->cf = new WpssoUtilCustomFields( $plugin, $this );
 
 			$this->add_plugin_filters( $this, array(
 				'pub_lang' => 3,
@@ -366,7 +372,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return;
 			}
 
-			$this->p->util->add_image_url_size( $opts, $opt_key );
+			$this->add_image_url_size( $opts, $opt_key );
 
 			$img_id_key     = str_replace( '_img_url', '_img_id', $opt_key, $count );	// Image ID key.
 			$img_id_pre_key = str_replace( '_img_url', '_img_id_pre', $opt_key );		// Image ID media library prefix key.
@@ -471,7 +477,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$cache_md5_pre  = $this->p->lca . '_i_';
-			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre );	// Default is day in seconds.
+			$cache_exp_secs = $this->get_cache_exp_secs( $cache_md5_pre );	// Default is day in seconds.
 
 			if ( $cache_exp_secs > 0 ) {
 
@@ -1910,7 +1916,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$cache_md5_pre  = $this->p->lca . '_f_';
-			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre );	// Default is month in seconds.
+			$cache_exp_secs = $this->get_cache_exp_secs( $cache_md5_pre );	// Default is month in seconds.
 			$text_list_file = self::get_file_path_locale( WPSSO_ARTICLE_SECTIONS_LIST );
 
 			if ( $cache_exp_secs > 0 ) {
@@ -2007,7 +2013,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$cache_md5_pre  = $this->p->lca . '_f_';
-			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre );	// Default is month in seconds.
+			$cache_exp_secs = $this->get_cache_exp_secs( $cache_md5_pre );	// Default is month in seconds.
 			$text_list_file = self::get_file_path_locale( WPSSO_PRODUCT_CATEGORIES_LIST );
 
 			if ( $cache_exp_secs > 0 ) {
@@ -3191,7 +3197,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			if ( apply_filters( $this->p->lca . '_server_request_url_cache_disabled', $cache_disabled, $url, $mod, $add_page ) ) {
-				$this->p->util->disable_cache_filters( array( 'shorten_url' => '__return_false' ) );
+				$this->disable_cache_filters( array( 'shorten_url' => '__return_false' ) );
 			}
 
 			return $url;
@@ -4286,19 +4292,19 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				$local_cache = array();
 
-				foreach ( $this->p->options as $key => $val ) {
+				foreach ( $this->p->cf[ 'form' ][ 'attr_labels' ] as $key => $label ) {
 
-					if ( 0 === strpos( $key, 'plugin_product_attr_' ) ) {
+					if ( 0 === strpos( $key, 'plugin_attr_product_' ) ) {	// Only use product attributes.
 
-						if ( empty( $val ) ) {	// Skip attributes that have no associated name.
-							continue;
-						} elseif ( preg_match( '/:is$/', $key ) ) {	// Skip option qualifiers.
+						$attr_name = SucomUtil::get_key_value( $key, $this->p->options );
+
+						if ( empty( $attr_name ) ) {	// Skip attributes that have no associated name.
 							continue;
 						}
 
-						$key = preg_replace( '/^plugin_product_attr_/', '', $key );
+						$key = preg_replace( '/^plugin_attr_product_/', '', $key );
 
-						$local_cache[ $key ] = $val;
+						$local_cache[ $key ] = $attr_name;
 					}
 				}
 
@@ -4311,22 +4317,20 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			if ( empty( $prefix ) ) {
 
 				return $local_cache;
+			}
 
-			} else {
+			$ret = array();
 
-				$ret = array();
+			foreach ( $local_cache as $key => $val ) {
 
-				foreach ( $local_cache as $key => $val ) {
-
-					if ( $sep !== '_' ) {
-						$key = preg_replace( '/_(value|units)$/', $sep . '$1', $key );
-					}
-
-					$ret[ $prefix . $sep . $key ] = $val;
+				if ( $sep !== '_' ) {
+					$key = preg_replace( '/_(value|units)$/', $sep . '$1', $key );
 				}
 
-				return $ret;
+				$ret[ $prefix . $sep . $key ] = $val;
 			}
+
+			return $ret;
 		}
 
 		public function maybe_set_ref( $sharing_url = null, $mod = false, $msg_transl = '' ) {

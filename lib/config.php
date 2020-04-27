@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '7.1.0',	// Plugin version.
-					'opt_version' => '723',		// Increment when changing default option values.
+					'version'     => '7.2.0-dev.1',	// Plugin version.
+					'opt_version' => '724',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Make sure your content looks great on all social and search sites - no matter how your URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -150,7 +150,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'buddypress' => '(plugin) BuddyPress',
 							),
 							'util' => array(
-								'custom-fields' => '(feature) Import Custom Fields (Metadata)',
 								'coauthors'     => '(plugin) Co-Authors Plus',
 								'shorten'       => '(api) URL Shortening APIs',
 								'wpseo-meta'    => '(feature) Import Yoast SEO Social Meta',
@@ -190,7 +189,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'wpssoam' => array(			// Plugin acronym.
 					'short'       => 'WPSSO AM',	// Short plugin name.
-					'name'        => 'WPSSO Mobile App Meta',
+					'name'        => 'WPSSO Mobile App Meta Tags',
 					'desc'        => 'Apple Store / iTunes and Google Play App Meta Tags for Apple\'s mobile Safari Banner and Twitter\'s App Card.',
 					'slug'        => 'wpsso-am',
 					'base'        => 'wpsso-am/wpsso-am.php',
@@ -1025,6 +1024,58 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'latest'    => 'https://wpsso.com/extend/plugins/wpsso-um/latest/',
 					),
 				),
+				'wpssowcmd' => array(			// Plugin acronym.
+					'short'       => 'WPSSO WCMD',	// Short plugin name.
+					'name'        => 'WPSSO Metadata for WooCommerce',
+					'desc'        => 'GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, Depth (cm), and Volume (ml) for WooCommerce Products and Variations.',
+					'slug'        => 'wpsso-wc-metadata',
+					'base'        => 'wpsso-wc-metadata/wpsso-wc-metadata.php',
+					'update_auth' => '',		// No premium version.
+
+					/**
+					 * URLs or relative paths to plugin banners and icons.
+					 */
+					'assets'      => array(
+						'banners' => array(
+							'low'  => 'https://surniaulula.github.io/wpsso-wc-metadata/assets/banner-772x250.jpg',
+							'high' => 'https://surniaulula.github.io/wpsso-wc-metadata/assets/banner-1544x500.jpg',
+						),
+						'icons' => array(
+							'low'  => 'https://surniaulula.github.io/wpsso-wc-metadata/assets/icon-128x128.png',
+							'high' => 'https://surniaulula.github.io/wpsso-wc-metadata/assets/icon-256x256.png',
+						),
+					),
+					'hosts' => array(
+						'wp_org' => false,	// Add-on is not available on wordpress.org.
+						'github' => true,
+						'wpsso'  => true,
+					),
+					'url' => array(
+
+						/**
+						 * GitHub.com.
+						 */
+						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-wc-metadata/master/readme.txt',
+						'setup_html' => '',
+
+						/**
+						 * WPSSO.com.
+						 */
+						'home'      => 'https://wpsso.com/extend/plugins/wpsso-wc-metadata/',
+						'forum'  => '',
+						'review' => '',
+						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-wc-metadata/changelog/',
+						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-wc-metadata/',
+						'install'   => 'https://wpsso.com/docs/plugins/wpsso-wc-metadata/installation/',
+						'faqs'      => '',
+						'notes'     => '',
+						'support'   => '',	// Premium support ticket.
+						'purchase'  => '',	// Purchase page.
+						'info'      => '',	// License information.
+						'update'    => 'https://wpsso.com/extend/plugins/wpsso-wc-metadata/update/',
+						'latest'    => 'https://wpsso.com/extend/plugins/wpsso-wc-metadata/latest/',
+					),
+				),
 			),
 			'opt' => array(
 				'defaults' => array(
@@ -1555,59 +1606,59 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings - Product Attributes tab.
 					 */
-					'plugin_product_attr_brand'         => 'Brand',		// Brand Attribute Name.
-					'plugin_product_attr_color'         => 'Color',		// Color Attribute Name.
-					'plugin_product_attr_condition'     => 'Condition',	// Condition Attribute Name.
-					'plugin_product_attr_depth_value'   => 'Depth',		// Depth Attribute Name.
-					'plugin_product_attr_gtin14'        => 'GTIN-14',	// GTIN-14 Attribute Name.
-					'plugin_product_attr_gtin13'        => 'GTIN-13',	// GTIN-13/EAN Attribute Name.
-					'plugin_product_attr_gtin12'        => 'GTIN-12',	// GTIN-12/UPC Attribute Name.
-					'plugin_product_attr_gtin8'         => 'GTIN-8',	// GTIN-8 Attribute Name.
-					'plugin_product_attr_gtin'          => 'GTIN',		// GTIN Attribute Name.
-					'plugin_product_attr_isbn'          => 'ISBN',		// ISBN Attribute Name.
-					'plugin_product_attr_material'      => 'Material',	// Material Attribute Name.
-					'plugin_product_attr_mfr_part_no'   => 'MPN',		// MPN Attribute Name.
-					'plugin_product_attr_size'          => 'Size',		// Size Attribute Name.
-					'plugin_product_attr_target_gender' => 'Gender',	// Target Gender Attribute Name.
-					'plugin_product_attr_volume_value'  => 'Volume',	// Volume Attribute Name.
+					'plugin_attr_product_brand'         => 'Brand',		// Brand Attribute Name.
+					'plugin_attr_product_color'         => 'Color',		// Color Attribute Name.
+					'plugin_attr_product_condition'     => 'Condition',	// Condition Attribute Name.
+					'plugin_attr_product_depth_value'   => 'Depth',		// Depth Attribute Name.
+					'plugin_attr_product_gtin14'        => 'GTIN-14',	// GTIN-14 Attribute Name.
+					'plugin_attr_product_gtin13'        => 'GTIN-13',	// GTIN-13 (EAN) Attribute Name.
+					'plugin_attr_product_gtin12'        => 'GTIN-12',	// GTIN-12 (UPC) Attribute Name.
+					'plugin_attr_product_gtin8'         => 'GTIN-8',	// GTIN-8 Attribute Name.
+					'plugin_attr_product_gtin'          => 'GTIN',		// GTIN Attribute Name.
+					'plugin_attr_product_isbn'          => 'ISBN',		// ISBN Attribute Name.
+					'plugin_attr_product_material'      => 'Material',	// Material Attribute Name.
+					'plugin_attr_product_mfr_part_no'   => 'MPN',		// MPN Attribute Name.
+					'plugin_attr_product_size'          => 'Size',		// Size Attribute Name.
+					'plugin_attr_product_target_gender' => 'Gender',	// Target Gender Attribute Name.
+					'plugin_attr_product_volume_value'  => 'Volume',	// Volume Attribute Name.
 
 					/**
 					 * Advanced Settings - Custom Fields (Metadata) tab.
 					 */
-					'plugin_cf_img_url'                  => '_format_image_url',	// Image URL Custom Field.
-					'plugin_cf_addl_type_urls'           => '',			// Microdata Type URLs Custom Field.
-					'plugin_cf_howto_steps'              => '',			// How-To Steps Custom Field.
-					'plugin_cf_howto_supplies'           => '',			// How-To Supplies Custom Field.
-					'plugin_cf_howto_tools'              => '',			// How-To Tools Custom Field.
-					'plugin_cf_product_avail'            => '',			// Product Availability Custom Field.
-					'plugin_cf_product_brand'            => '',			// Product Brand Custom Field.
-					'plugin_cf_product_category'         => '',			// Product Type ID Custom Field.
-					'plugin_cf_product_color'            => '',			// Product Color Custom Field.
-					'plugin_cf_product_condition'        => '',			// Product Condition Custom Field.
-					'plugin_cf_product_currency'         => '',			// Product Currency Custom Field.
-					'plugin_cf_product_depth_value'      => '',			// Product Depth Custom Field.
-					'plugin_cf_product_gtin14'           => '',			// Product GTIN-14 Custom Field.
-					'plugin_cf_product_gtin13'           => '',			// Product GTIN-13/EAN Custom Field.
-					'plugin_cf_product_gtin12'           => '',			// Product GTIN-12/UPC Custom Field.
-					'plugin_cf_product_gtin8'            => '',			// Product GTIN-8 Custom Field.
-					'plugin_cf_product_gtin'             => '',			// Product GTIN Custom Field.
-					'plugin_cf_product_height_value'     => '',			// Product Height Custom Field.
-					'plugin_cf_product_isbn'             => '',			// Product ISBN Custom Field.
-					'plugin_cf_product_length_value'     => '',			// Product Length Custom Field.
-					'plugin_cf_product_material'         => '',			// Product Material Custom Field.
-					'plugin_cf_product_mfr_part_no'      => '',			// Product MPN Custom Field.
-					'plugin_cf_product_price'            => '',			// Product Price Custom Field.
-					'plugin_cf_product_retailer_part_no' => '',			// Product SKU Custom Field.
-					'plugin_cf_product_size'             => '',			// Product Size Custom Field.
-					'plugin_cf_product_target_gender'    => '',			// Product Target Gender Custom Field.
-					'plugin_cf_product_volume_value'     => '',			// Product Volume Custom Field.
-					'plugin_cf_product_weight_value'     => '',			// Product Weight Custom Field.
-					'plugin_cf_product_width_value'      => '',			// Product Width Custom Field.
-					'plugin_cf_recipe_ingredients'       => '',			// Recipe Ingredients Custom Field.
-					'plugin_cf_recipe_instructions'      => '',			// Recipe Instructions Custom Field.
-					'plugin_cf_sameas_urls'              => '',			// Same-As URLs Custom Field.
-					'plugin_cf_vid_url'                  => '_format_video_url',	// Video URL Custom Field.
-					'plugin_cf_vid_embed'                => '',			// Video Embed HTML Custom Field.
+					'plugin_cf_img_url'                  => '',		// Image URL Custom Field.
+					'plugin_cf_addl_type_urls'           => '',		// Microdata Type URLs Custom Field.
+					'plugin_cf_howto_steps'              => '',		// How-To Steps Custom Field.
+					'plugin_cf_howto_supplies'           => '',		// How-To Supplies Custom Field.
+					'plugin_cf_howto_tools'              => '',		// How-To Tools Custom Field.
+					'plugin_cf_product_avail'            => '',		// Product Availability Custom Field.
+					'plugin_cf_product_brand'            => '',		// Product Brand Custom Field.
+					'plugin_cf_product_category'         => '',		// Product Type ID Custom Field.
+					'plugin_cf_product_color'            => '',		// Product Color Custom Field.
+					'plugin_cf_product_condition'        => '',		// Product Condition Custom Field.
+					'plugin_cf_product_currency'         => '',		// Product Currency Custom Field.
+					'plugin_cf_product_depth_value'      => '',		// Product Depth Custom Field.
+					'plugin_cf_product_gtin14'           => '',		// Product GTIN-14 Custom Field.
+					'plugin_cf_product_gtin13'           => '',		// Product GTIN-13 (EAN) Custom Field.
+					'plugin_cf_product_gtin12'           => '',		// Product GTIN-12 (UPC) Custom Field.
+					'plugin_cf_product_gtin8'            => '',		// Product GTIN-8 Custom Field.
+					'plugin_cf_product_gtin'             => '',		// Product GTIN Custom Field.
+					'plugin_cf_product_height_value'     => '',		// Product Height Custom Field.
+					'plugin_cf_product_isbn'             => '',		// Product ISBN Custom Field.
+					'plugin_cf_product_length_value'     => '',		// Product Length Custom Field.
+					'plugin_cf_product_material'         => '',		// Product Material Custom Field.
+					'plugin_cf_product_mfr_part_no'      => '',		// Product MPN Custom Field.
+					'plugin_cf_product_price'            => '',		// Product Price Custom Field.
+					'plugin_cf_product_retailer_part_no' => '',		// Product SKU Custom Field.
+					'plugin_cf_product_size'             => '',		// Product Size Custom Field.
+					'plugin_cf_product_target_gender'    => '',		// Product Target Gender Custom Field.
+					'plugin_cf_product_volume_value'     => '',		// Product Volume Custom Field.
+					'plugin_cf_product_weight_value'     => '',		// Product Weight Custom Field.
+					'plugin_cf_product_width_value'      => '',		// Product Width Custom Field.
+					'plugin_cf_recipe_ingredients'       => '',		// Recipe Ingredients Custom Field.
+					'plugin_cf_recipe_instructions'      => '',		// Recipe Instructions Custom Field.
+					'plugin_cf_sameas_urls'              => '',		// Same-As URLs Custom Field.
+					'plugin_cf_vid_url'                  => '',		// Video URL Custom Field.
+					'plugin_cf_vid_embed'                => '',		// Video Embed HTML Custom Field.
 
 					/**
 					 * Advanced Settings - Contact Fields.
@@ -1757,7 +1808,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				/**
 				 * Custom field to meta data index.
 				 */
-				'cf_md_key' => array(
+				'cf_md_index' => array(
 					'plugin_cf_addl_type_urls'           => 'schema_addl_type_url',		// Microdata Type URLs Custom Field.
 					'plugin_cf_howto_steps'              => 'schema_howto_step',		// How-To Steps Custom Field.
 					'plugin_cf_howto_supplies'           => 'schema_howto_supply',		// How-To Supplies Custom Field.
@@ -2303,8 +2354,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_currency'         => 'Product Currency Custom Field',
 					'plugin_cf_product_depth_value'      => 'Product Depth Custom Field',
 					'plugin_cf_product_gtin14'           => 'Product GTIN-14 Custom Field',
-					'plugin_cf_product_gtin13'           => 'Product GTIN-13/EAN Custom Field',
-					'plugin_cf_product_gtin12'           => 'Product GTIN-12/UPC Custom Field',
+					'plugin_cf_product_gtin13'           => 'Product GTIN-13 (EAN) Custom Field',
+					'plugin_cf_product_gtin12'           => 'Product GTIN-12 (UPC) Custom Field',
 					'plugin_cf_product_gtin8'            => 'Product GTIN-8 Custom Field',
 					'plugin_cf_product_gtin'             => 'Product GTIN Custom Field',
 					'plugin_cf_product_height_value'     => 'Product Height Custom Field',
@@ -2327,24 +2378,24 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/**
-				 * Product attribute option labels.
+				 * Attribute option labels.
 				 */
-				'product_attr_labels' => array(
-					'plugin_product_attr_brand'         => 'Brand Attribute Name',
-					'plugin_product_attr_color'         => 'Color Attribute Name',
-					'plugin_product_attr_condition'     => 'Condition Attribute Name',
-					'plugin_product_attr_depth_value'   => 'Depth Attribute Name',
-					'plugin_product_attr_gtin14'        => 'GTIN-14 Attribute Name',
-					'plugin_product_attr_gtin13'        => 'GTIN-13/EAN Attribute Name',
-					'plugin_product_attr_gtin12'        => 'GTIN-12/UPC Attribute Name',
-					'plugin_product_attr_gtin8'         => 'GTIN-8 Attribute Name',
-					'plugin_product_attr_gtin'          => 'GTIN Attribute Name',
-					'plugin_product_attr_isbn'          => 'ISBN Attribute Name',
-					'plugin_product_attr_material'      => 'Material Attribute Name',
-					'plugin_product_attr_mfr_part_no'   => 'MPN Attribute Name',
-					'plugin_product_attr_size'          => 'Size Attribute Name',
-					'plugin_product_attr_target_gender' => 'Target Gender Attribute Name',
-					'plugin_product_attr_volume_value'  => 'Volume Attribute Name',
+				'attr_labels' => array(
+					'plugin_attr_product_brand'         => 'Brand Attribute Name',
+					'plugin_attr_product_color'         => 'Color Attribute Name',
+					'plugin_attr_product_condition'     => 'Condition Attribute Name',
+					'plugin_attr_product_depth_value'   => 'Depth Attribute Name',
+					'plugin_attr_product_gtin14'        => 'GTIN-14 Attribute Name',
+					'plugin_attr_product_gtin13'        => 'GTIN-13 (EAN) Attribute Name',
+					'plugin_attr_product_gtin12'        => 'GTIN-12 (UPC) Attribute Name',
+					'plugin_attr_product_gtin8'         => 'GTIN-8 Attribute Name',
+					'plugin_attr_product_gtin'          => 'GTIN Attribute Name',
+					'plugin_attr_product_isbn'          => 'ISBN Attribute Name',
+					'plugin_attr_product_material'      => 'Material Attribute Name',
+					'plugin_attr_product_mfr_part_no'   => 'MPN Attribute Name',
+					'plugin_attr_product_size'          => 'Size Attribute Name',
+					'plugin_attr_product_target_gender' => 'Target Gender Attribute Name',
+					'plugin_attr_product_volume_value'  => 'Volume Attribute Name',
 				),
 
 				/**

@@ -1155,7 +1155,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/**
 						 * Product Attributes settings.
 						 */
-						case ( 0 === strpos( $msg_key, 'tooltip-plugin_product_attr_' ) ? true : false ):
+						case ( 0 === strpos( $msg_key, 'tooltip-plugin_attr_product_' ) ? true : false ):
 
 							$attr_key = str_replace( 'tooltip-', '', $msg_key );
 
@@ -1176,10 +1176,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$cf_info = $this->get_cf_info( preg_replace( '/^tooltip-plugin_cf_/', '', $msg_key ) );
 
-							$cf_md_key = empty( $this->p->cf[ 'opt' ][ 'cf_md_key' ][ $cf_key ] ) ? '' :
-								$this->p->cf[ 'opt' ][ 'cf_md_key' ][ $cf_key ];
+							$cf_md_index = empty( $this->p->cf[ 'opt' ][ 'cf_md_index' ][ $cf_key ] ) ? '' :
+								$this->p->cf[ 'opt' ][ 'cf_md_index' ][ $cf_key ];
 
-							$cf_is_multi = empty( $this->p->cf[ 'opt' ][ 'cf_md_multi' ][ $cf_md_key ] ) ? false : true;
+							$cf_is_multi = empty( $this->p->cf[ 'opt' ][ 'cf_md_multi' ][ $cf_md_index ] ) ? false : true;
 
 							$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
@@ -2041,7 +2041,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'info-product-attr':
+						case 'info-product-attrs':
 
 							$text = '<blockquote class="top-info"><p>';
 
@@ -2078,7 +2078,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								$text .= '</br>';
 
-								$text .= __( 'We suggest using a supported 3rd party plugin for WooCommerce to manage Brand, GTIN, ISBN, and MPN values for variations.', 'wpsso' );
+								$text .= __( 'We suggest using a supported 3rd party plugin to manage Brand, GTIN, ISBN, and MPN values for variations.', 'wpsso' );
 
 								$text .= '</center></p>';
 							}
@@ -2087,7 +2087,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'info-cf-attr':
+						case 'info-custom-fields':
 
 							$text .= '<blockquote class="top-info"><p>';
 
@@ -2112,11 +2112,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								$text .= '</strong></br>';
 
-								$text .= __( 'Please note that custom product attributes from WooCommerce have precedence over custom field values.', 'wpsso' ) . ' ';
+								$text .= __( 'Please note that product attributes from WooCommerce have precedence over custom field values.', 'wpsso' ) . ' ';
 
 								$text .= '</br>';
 
 								$text .= sprintf( __( 'Refer to the <a href="%s">WooCommerce integration notes</a> for information on setting up product attributes and custom fields.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/' );
+
+								$text .= '</br>';
+
+								$text .= __( 'We suggest using a supported 3rd party plugin to manage Brand, GTIN, ISBN, and MPN values for variations.', 'wpsso' );
 
 								$text .= '</center></p>';
 							}
@@ -2241,13 +2245,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							if ( WpssoAdmin::$pkg[ $this->p->lca ][ 'pp' ] ) {
 
-								$text .= __( 'An e-commerce plugin is active &ndash; product attributes may be managed by the e-commerce plugin.', 'wpsso' );
+								$text .= __( 'An e-commerce plugin is active &ndash; product information may be provided by the e-commerce plugin.', 'wpsso' );
 
 							} else {
 
 								$text .= empty( $url[ 'purchase' ] ) ? '' : '<a href="' . $url[ 'purchase' ] . '">';
 
-								$text .= sprintf( __( 'An e-commerce plugin is active &ndash; product attributes may be retrieved by the %s plugin.', 'wpsso' ), $info[ 'short_pro' ] );
+								$text .= sprintf( __( 'An e-commerce plugin is active &ndash; product information may be imported by the %s plugin.', 'wpsso' ), $info[ 'short_pro' ] );
 
 								$text .= empty( $url[ 'purchase' ] ) ? '' : '</a>';
 							}
@@ -2634,11 +2638,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			return $text;
 		}
 
-		private function get_cf_info( $msg_key = false ) {
+		/**
+		 * Returns an array of two elements: The custom field option label and a tooltip fragment.
+		 */
+		public function get_cf_info( $msg_key = false ) {
 
 			static $local_cache = null;
 
 			if ( null === $local_cache ) {
+
 				$local_cache = array(
 					'addl_type_urls' => array(
 						_x( 'Microdata Type URLs', 'option label', 'wpsso' ),
@@ -2695,12 +2703,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						_x( 'a product GTIN-14 code', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_gtin13' => array(
-						_x( 'Product GTIN-13/EAN', 'option label', 'wpsso' ),
+						_x( 'Product GTIN-13 (EAN)', 'option label', 'wpsso' ),
 						_x( 'a product GTIN-13 code (aka 13-digit ISBN codes or EAN/UCC-13)', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_gtin12' => array(
-						_x( 'Product GTIN-12/UPC', 'option label', 'wpsso' ),
-						_x( 'a product GTIN-12 code (12-digit GS1 identification key composed of a U.P.C. company prefix, item reference, and check digit)', 'tooltip fragment', 'wpsso' ),
+						_x( 'Product GTIN-12 (UPC)', 'option label', 'wpsso' ),
+						_x( 'a product GTIN-12 code (12-digit GS1 identification key composed of a UPC company prefix, item reference, and check digit)', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_gtin8' => array(
 						_x( 'Product GTIN-8', 'option label', 'wpsso' ),
@@ -2787,14 +2795,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			}
 
 			if ( false !== $local_cache ) {
+
 				if ( isset( $local_cache[ $msg_key ] ) ) {
 					return $local_cache[ $msg_key ];
-				} else {
-					return null;
 				}
-			} else {
-				return $local_cache;
+
+				return null;
 			}
+
+			return $local_cache;
 		}
 
 		public function pro_feature( $ext ) {

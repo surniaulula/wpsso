@@ -14,13 +14,15 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 	class WpssoUtilReg {
 
 		private $p;
+		private $util;
 
 		/**
 		 * Instantiated by WpssoUtil->__construct().
 		 */
-		public function __construct( &$plugin ) {
+		public function __construct( &$plugin, &$util ) {
 
-			$this->p =& $plugin;
+			$this->p    =& $plugin;
+			$this->util =& $util;
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();

@@ -495,12 +495,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							switch ( $id ) {
 
-								case 'custom-fields':
-
-									$get_avail[ $sub ][ 'any' ] = $get_avail[ $sub ][ $id ] = true;
-
-									break;
-
 								case 'coauthors':
 
 									$chk[ 'plugin' ] = 'co-authors-plus/co-authors-plus.php';

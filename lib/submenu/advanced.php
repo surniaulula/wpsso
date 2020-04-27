@@ -278,7 +278,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				 */
 				case 'edit-product_attrs':
 			
-					$this->add_advanced_product_attr_table_rows( $table_rows, $this->form );
+					$this->add_advanced_product_attrs_table_rows( $table_rows, $this->form );
 
 					break;
 

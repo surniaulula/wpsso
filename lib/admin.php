@@ -288,7 +288,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
-			ksort( $sorted_menu );
+			ksort( $sorted_menu,  SORT_FLAG_CASE | SORT_NATURAL );
 
 			foreach ( array_merge( $unsorted_menu, $sorted_menu ) as $key => $arg ) {
 
@@ -363,7 +363,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					}
 				}
 
-				ksort( $sorted_menu );
+				ksort( $sorted_menu, SORT_FLAG_CASE | SORT_NATURAL );
 
 				foreach ( $sorted_menu as $key => $arg ) {
 
@@ -2924,7 +2924,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			self::get_option_site_use( 'plugin_notice_system', $form, $network, true );
 		}
 
-		public function add_advanced_product_attr_table_rows( array &$table_rows, $form ) {
+		public function add_advanced_product_attrs_table_rows( array &$table_rows, $form ) {
 
 			$td_attr = '';
 			$in_func = 'get_input';
@@ -2935,9 +2935,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 			}
 
-			$table_rows[ 'info_product_attr' ] = '<td colspan="2">' . $this->p->msgs->get( 'info-product-attr' ) . '</td>';
+			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-product-attrs' ) . '</td>';
 
-			foreach ( $this->p->cf[ 'form' ][ 'product_attr_labels' ] as $opt_key => $opt_label ) {
+			foreach ( $this->p->cf[ 'form' ][ 'attr_labels' ] as $opt_key => $opt_label ) {
 
 				$cmt_transl = self::get_option_unit_comment( $opt_key );
 
@@ -2958,12 +2958,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 			}
 
-			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-cf-attr' ) . '</td>';
+			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-custom-fields' ) . '</td>';
 
 			/**
 			 * Example config:
 			 *
-			 * 	$cf_md_keys = array(
+			 * 	$cf_md_index = array(
 			 *		'plugin_cf_addl_type_urls'           => 'schema_addl_type_url',
 			 *		'plugin_cf_howto_steps'              => 'schema_howto_step',
 			 *		'plugin_cf_howto_supplies'           => 'schema_howto_supply',
@@ -2990,11 +2990,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * Hooked by the WpssoProRecipeWpRecipeMaker and WpssoProRecipeWpUltimateRecipe classes
 			 * to clear the 'plugin_cf_recipe_ingredients' and 'plugin_cf_recipe_instructions' values.
 			 */
-			$cf_md_keys = (array) apply_filters( $this->p->lca . '_cf_md_keys', $this->p->cf[ 'opt' ][ 'cf_md_key' ] );
+			$cf_md_index = (array) apply_filters( $this->p->lca . '_cf_md_index', $this->p->cf[ 'opt' ][ 'cf_md_index' ] );
 
 			$opt_labels = array();
 
-			foreach ( $cf_md_keys as $opt_key => $cf_md_key ) {
+			foreach ( $cf_md_index as $opt_key => $md_key ) {
 
 				/**
 				 * Make sure we have a label for the custom field option.
@@ -3012,7 +3012,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * If we don't have a meta data key, then clear the custom field name (just in case) and disable
 				 * the option.
 				 */
-				if ( empty( $cf_md_keys[ $opt_key ] ) ) {
+				if ( empty( $cf_md_index[ $opt_key ] ) ) {
 
 					$form->options[ $opt_key ] = '';
 
