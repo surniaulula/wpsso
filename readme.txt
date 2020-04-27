@@ -501,7 +501,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 7.2.0-dev.1 (TBD)**
 
 * **New Features**
-	* Added a new WPSSO Microdata for WooCommerce add-on: GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, Depth (cm), and Volume (ml) for WooCommerce Products and Variations.
+	* Added a new WPSSO Microdata for WooCommerce add-on: GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, Depth, and Volume for WooCommerce Products and Variations.
 * **Improvements**
 	* Added Schema IndividualProduct markup for width, height, length, etc. in the Schema Offer markup.
 * **Bugfixes**
