@@ -1504,8 +1504,8 @@ msgstr ""
 #: lib/gettext-config.php:51
 msgctxt "plugin description"
 msgid ""
-"GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, Depth (cm), "
-"and Volume (ml) for WooCommerce Products and Variations."
+"GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, Depth, and "
+"Volume for WooCommerce Products and Variations."
 msgstr ""
 
 #: lib/gettext-config.php:52
