@@ -501,12 +501,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 7.2.0-dev.1 (TBD)**
 
 * **New Features**
-	* None.
+	* Added a new WPSSO Microdata for WooCommerce add-on: GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, Depth (cm), and Volume (ml) for WooCommerce Products and Variations.
 * **Improvements**
-	* None.
+	* Added Schema IndividualProduct markup for width, height, length, etc. in the Schema Offer markup.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Added a new WpssoSchemaSingle::get_individual_product_data() method to include additional product information (width, height, length, etc.).
+	* Moved the lib/pro/util/custom-fields.php library module to lib/util-custom-fields.php.
 	* Renamed the 'plugin_product_attr_*' option keys to 'plugin_attr_product_*' for the new WPSSO WCMD add-on.
 * **Requires At Least**
 	* PHP v5.6.
