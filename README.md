@@ -157,7 +157,7 @@
 <ul>
 <li><a href="https://wordpress.org/plugins/wpsso-faq/">WPSSO FAQ Manager</a> to manage FAQ categories with Question and Answer pages.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-inherit-parent-meta/">WPSSO Inherit Parent Metadata</a> to inherit featured and custom images.</li>
-<li><a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a> to manage mobile App information.</li>
+<li><a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta Tags</a> to manage mobile App information.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-organization/">WPSSO Organization Markup</a> to manage multiple Organizations.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-plm/">WPSSO Place and Local SEO Markup</a> to manage multiple locations.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-ratings-and-reviews/">WPSSO Ratings and Reviews</a> to add ratings in WordPress comments.</li>
@@ -385,8 +385,8 @@
 <li>Product Depth (cm)</li>
 <li>Product Volume (ml)</li>
 <li>Product GTIN-14</li>
-<li>Product GTIN-13/EAN</li>
-<li>Product GTIN-12/UPC</li>
+<li>Product GTIN-13 (EAN)</li>
+<li>Product GTIN-12 (UPC)</li>
 <li>Product GTIN-8</li>
 <li>Product GTIN</li>
 </ul></li>

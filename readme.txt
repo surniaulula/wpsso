@@ -138,7 +138,7 @@ Simply activate the free complementary add-on(s) you need:
 
 * [WPSSO FAQ Manager](https://wordpress.org/plugins/wpsso-faq/) to manage FAQ categories with Question and Answer pages.
 * [WPSSO Inherit Parent Metadata](https://wordpress.org/plugins/wpsso-inherit-parent-meta/) to inherit featured and custom images.
-* [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
+* [WPSSO Mobile App Meta Tags](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
 * [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/) to manage multiple Organizations.
 * [WPSSO Place and Local SEO Markup](https://wordpress.org/plugins/wpsso-plm/) to manage multiple locations.
 * [WPSSO Ratings and Reviews](https://wordpress.org/plugins/wpsso-ratings-and-reviews/) to add ratings in WordPress comments.
@@ -312,8 +312,8 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 		* Product Depth (cm)
 		* Product Volume (ml)
 		* Product GTIN-14
-		* Product GTIN-13/EAN
-		* Product GTIN-12/UPC
+		* Product GTIN-13 (EAN)
+		* Product GTIN-12 (UPC)
 		* Product GTIN-8
 		* Product GTIN
 	* QA Page Information
@@ -497,6 +497,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 <p>Under the SSO &gt; Update Manager settings page, select the "Development and Up" version filter for WPSSO Core and all its extensions (to satisfy any version dependencies). Save the plugin settings, and click the "Check for Updates" button to fetch the latest / current WPSSO version information. When new Development versions are available, they will automatically appear under your WordPress Dashboard &gt; Updates page. You can always re-select the "Stable / Production" version filter at any time to re-install the last stable / production version of a plugin.</p>
 
 <h3>Changelog / Release Notes</h3>
+
+**Version 7.2.0-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Renamed the 'plugin_product_attr_*' option keys to 'plugin_attr_product_*' for the new WPSSO WCMD add-on.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.2.
 
 **Version 7.1.0 (2020/04/25)**
 
