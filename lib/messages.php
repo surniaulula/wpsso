@@ -247,11 +247,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case ( 0 === strpos( $msg_key, 'tooltip-meta-product_' ) ? true : false ):
 
-							$cf_info = $this->get_cf_info( preg_replace( '/^tooltip-meta-/', '', $msg_key ) );
+							$cf_fragments = $this->get_cf_tooltip_fragments( preg_replace( '/^tooltip-meta-/', '', $msg_key ) );
 
-							if ( ! empty( $cf_info ) ) {	// Just in case.
+							if ( ! empty( $cf_fragments ) ) {	// Just in case.
 
-								$text = sprintf( __( 'The value of %1$s can be used in meta tags and Schema markup for simple products.', 'wpsso' ), $cf_info[ 1 ] ) . ' ';
+								$text = sprintf( __( 'The value of %1$s can be used in meta tags and Schema markup for simple products.', 'wpsso' ), $cf_fragments[ 1 ] ) . ' ';
 
 								$text .= __( 'When e-commerce product variations are available, the value from each variation will be used instead.', 'wpsso' ) . ' ';
 
@@ -1174,7 +1174,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$cf_key = str_replace( 'tooltip-', '', $msg_key );
 
-							$cf_info = $this->get_cf_info( preg_replace( '/^tooltip-plugin_cf_/', '', $msg_key ) );
+							$cf_fragments = $this->get_cf_tooltip_fragments( preg_replace( '/^tooltip-plugin_cf_/', '', $msg_key ) );
 
 							$cf_md_index = empty( $this->p->cf[ 'opt' ][ 'cf_md_index' ][ $cf_key ] ) ? '' :
 								$this->p->cf[ 'opt' ][ 'cf_md_index' ][ $cf_key ];
@@ -1183,18 +1183,18 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-							if ( ! empty( $cf_info ) ) {	// Just in case.
+							if ( ! empty( $cf_fragments ) ) {	// Just in case.
 
-								$text = sprintf( __( 'If your theme or another plugin provides a custom field (aka metadata) for %1$s, you may enter its custom field name here.', 'wpsso' ), $cf_info[ 1 ] ) . ' ';
+								$text = sprintf( __( 'If your theme or another plugin provides a custom field (aka metadata) for %1$s, you may enter its custom field name here.', 'wpsso' ), $cf_fragments[ 1 ] ) . ' ';
 
 								// translators: %1$s is the metabox name, %2$s is the option name.
-								$text .= sprintf( __( 'If a custom field matching this name is found, its value will be imported for the %1$s "%2$s" option.', 'wpsso' ), $metabox_title, $cf_info[ 0 ] ) . ' ';
+								$text .= sprintf( __( 'If a custom field matching this name is found, its value will be imported for the %1$s "%2$s" option.', 'wpsso' ), $metabox_title, $cf_fragments[ 0 ] ) . ' ';
 
 								if ( $cf_is_multi ) {
 
 									$text .= '</br></br>';
 
-									$text .= sprintf( __( 'Note that the "%1$s" option provides multiple input fields &mdash; the custom field value will be split on newline characters, and each line will be assigned to an individual input field.', 'wpsso' ), $cf_info[ 0 ] );
+									$text .= sprintf( __( 'Note that the "%1$s" option provides multiple input fields &mdash; the custom field value will be split on newline characters, and each line will be assigned to an individual input field.', 'wpsso' ), $cf_fragments[ 0 ] );
 								}
 							}
 
@@ -2641,7 +2641,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		/**
 		 * Returns an array of two elements: The custom field option label and a tooltip fragment.
 		 */
-		public function get_cf_info( $msg_key = false ) {
+		public function get_cf_tooltip_fragments( $msg_key = false ) {
 
 			static $local_cache = null;
 
