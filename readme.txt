@@ -523,7 +523,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Renamed the 'plugin_product_attr_' option keys to 'plugin_attr_product_' for the new WPSSO WCMD add-on.
 	* Moved the lib/pro/util/custom-fields.php library module to lib/util-custom-fields.php.
-	* Removed the use of the following filters, which are no longer compatible with Yoast SEO v14.0.
+	* Removed applying the following filters, which are no longer compatible with Yoast SEO v14.0.
 		* 'wpseo_desc'
 		* 'wpseo_metadesc'
 		* 'wpseo_title'
