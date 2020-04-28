@@ -670,15 +670,15 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 * Hooks the 'override_textdomain_mofile' filter (if debug is enabled) to use the local translation files
 		 * instead of those from wordpress.org.
 		 */
-		public static function init_textdomain( $debug_enabled ) {
+		public static function init_textdomain( $debug_enabled = false ) {
 
-			static $do_once = null;
+			static $loaded = null;
 
-			if ( true === $do_once ) {
+			if ( null !== $loaded ) {
 				return;
 			}
 
-			$do_once = true;
+			$loaded = true;
 
 			if ( $debug_enabled ) {
 				add_filter( 'load_textdomain_mofile', array( self::get_instance(), 'override_textdomain_mofile' ), 10, 3 );
@@ -744,7 +744,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 */
 		public function override_textdomain_mofile( $wp_mofile, $domain ) {
 
-			if ( strpos( $domain, 'wpsso' ) === 0 ) {	// Optimize.
+			if ( 0 === strpos( $domain, 'wpsso' ) ) {	// Optimize.
 
 				foreach ( $this->cf[ 'plugin' ] as $ext => $info ) {
 

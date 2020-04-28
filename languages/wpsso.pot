@@ -242,7 +242,7 @@ msgctxt "option label"
 msgid "Clear All Caches on Save Settings"
 msgstr ""
 
-#: lib/admin.php:929 lib/register.php:151
+#: lib/admin.php:929 lib/register.php:153
 msgid ""
 "A background task will begin shortly to clear all caches (%s is enabled)."
 msgstr ""
@@ -2720,7 +2720,7 @@ msgctxt "option label"
 msgid "Schema Types Cache Expiry"
 msgstr ""
 
-#: lib/gettext-pro.php:55 lib/pro/admin/advanced.php:292 lib/register.php:148
+#: lib/gettext-pro.php:55 lib/pro/admin/advanced.php:292 lib/register.php:150
 #: lib/std/admin/advanced.php:300
 msgctxt "option label"
 msgid "Clear All Caches on Activate"
@@ -5560,7 +5560,7 @@ msgid ""
 "refresh of the plugin update information."
 msgstr ""
 
-#: lib/messages.php:2539 lib/register.php:330
+#: lib/messages.php:2539 lib/register.php:332
 msgid ""
 "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version "
 "is outdated, unsupported, possibly insecure</a>, and may lack important "
@@ -6177,7 +6177,7 @@ msgctxt "image size label"
 msgid "Pinterest Pin It Image"
 msgstr ""
 
-#: lib/post.php:496 lib/register.php:322 lib/term.php:416 lib/user.php:374
+#: lib/post.php:496 lib/register.php:324 lib/term.php:416 lib/user.php:374
 #: lib/util.php:530 lib/util.php:3684
 msgid "%s warning:"
 msgstr ""
@@ -6404,15 +6404,15 @@ msgstr ""
 msgid "Invalid user ID."
 msgstr ""
 
-#: lib/register.php:150
+#: lib/register.php:152
 msgid "The %s plugin has been activated."
 msgstr ""
 
-#: lib/register.php:323 lib/register.php:332
+#: lib/register.php:325 lib/register.php:334
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr ""
 
-#: lib/register.php:334
+#: lib/register.php:336
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 

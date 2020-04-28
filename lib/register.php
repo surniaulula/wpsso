@@ -110,12 +110,14 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 		private function activate_plugin() {
 
-			load_plugin_textdomain( 'wpsso', false, 'wpsso/languages/' );
+			Wpsso::init_textdomain();
 
 			$this->check_required( WpssoConfig::$cf );
 
 			$this->p->set_config( $activate = true );  // Apply filters and define the $cf[ '*' ] array.
+
 			$this->p->set_options( $activate = true ); // Read / create options and site_options.
+
 			$this->p->set_objects( $activate = true ); // Load all the class objects.
 
 			/**
