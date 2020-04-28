@@ -33,7 +33,6 @@ WPSSO_DISMISS_NAME                       = 'wpsso_dismissed'
 WPSSO_DUPE_CHECK_HEADER_COUNT            = 10
 WPSSO_DUPE_CHECK_TIMEOUT_TIME            = 3.0
 WPSSO_DUPE_CHECK_WARNING_TIME            = 2.5
-WPSSO_FOOTER_PRIORITY                    = 10
 WPSSO_GET_POSTS_MAX_TIME                 = 0.10
 WPSSO_HEAD_PRIORITY                      = 10
 WPSSO_IMAGE_UPSCALE_ALL                  = false

@@ -3864,7 +3864,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_ADD_SUBMENU_PRIORITY' ]      = -10;
 			$var_const[ 'WPSSO_ADD_COLUMN_PRIORITY' ]       = 100;
 			$var_const[ 'WPSSO_HEAD_PRIORITY' ]             = 10;
-			$var_const[ 'WPSSO_FOOTER_PRIORITY' ]           = 100;
 			$var_const[ 'WPSSO_META_SAVE_PRIORITY' ]        = -10;	// Save our custom post/term/user meta before clearing the cache.
 			$var_const[ 'WPSSO_META_CACHE_PRIORITY' ]       = 0;	// Clear our cache before priority 10 (where most caching plugins are hooked).
 			$var_const[ 'WPSSO_SEO_SEED_FILTERS_PRIORITY' ] = 100;
