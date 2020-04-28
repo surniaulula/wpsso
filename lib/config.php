@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '7.2.0-dev.1',	// Plugin version.
+					'version'     => '7.2.0-dev.2',	// Plugin version.
 					'opt_version' => '724',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1022,58 +1022,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-um/update/',
 						'latest'    => 'https://wpsso.com/extend/plugins/wpsso-um/latest/',
-					),
-				),
-				'wpssowcmd' => array(			// Plugin acronym.
-					'short'       => 'WPSSO WCMD',	// Short plugin name.
-					'name'        => 'WPSSO Metadata for WooCommerce',
-					'desc'        => 'GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, Depth, and Volume for WooCommerce Products and Variations.',
-					'slug'        => 'wpsso-wc-metadata',
-					'base'        => 'wpsso-wc-metadata/wpsso-wc-metadata.php',
-					'update_auth' => '',		// No premium version.
-
-					/**
-					 * URLs or relative paths to plugin banners and icons.
-					 */
-					'assets'      => array(
-						'banners' => array(
-							'low'  => 'https://surniaulula.github.io/wpsso-wc-metadata/assets/banner-772x250.jpg',
-							'high' => 'https://surniaulula.github.io/wpsso-wc-metadata/assets/banner-1544x500.jpg',
-						),
-						'icons' => array(
-							'low'  => 'https://surniaulula.github.io/wpsso-wc-metadata/assets/icon-128x128.png',
-							'high' => 'https://surniaulula.github.io/wpsso-wc-metadata/assets/icon-256x256.png',
-						),
-					),
-					'hosts' => array(
-						'wp_org' => false,	// Add-on is not available on wordpress.org.
-						'github' => true,
-						'wpsso'  => true,
-					),
-					'url' => array(
-
-						/**
-						 * GitHub.com.
-						 */
-						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-wc-metadata/master/readme.txt',
-						'setup_html' => '',
-
-						/**
-						 * WPSSO.com.
-						 */
-						'home'      => 'https://wpsso.com/extend/plugins/wpsso-wc-metadata/',
-						'forum'  => '',
-						'review' => '',
-						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-wc-metadata/changelog/',
-						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-wc-metadata/',
-						'install'   => 'https://wpsso.com/docs/plugins/wpsso-wc-metadata/installation/',
-						'faqs'      => '',
-						'notes'     => '',
-						'support'   => '',	// Premium support ticket.
-						'purchase'  => '',	// Purchase page.
-						'info'      => '',	// License information.
-						'update'    => 'https://wpsso.com/extend/plugins/wpsso-wc-metadata/update/',
-						'latest'    => 'https://wpsso.com/extend/plugins/wpsso-wc-metadata/latest/',
 					),
 				),
 			),

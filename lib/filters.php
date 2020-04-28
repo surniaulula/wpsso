@@ -35,6 +35,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			}
 
 			if ( ! empty( $this->p->avail[ 'media' ][ 'wp-retina-2x' ] ) ) {
+
 				add_filter( 'option_wr2x_ignore_sizes', array( $this, 'update_wr2x_ignore_sizes' ), 10, 1 );
 			}
 
@@ -51,12 +52,14 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				if ( class_exists( 'GFForms' ) ) {
 
 					add_action( 'gform_noconflict_styles', array( $this, 'update_gform_noconflict_styles' ) );
+
 					add_action( 'gform_noconflict_scripts', array( $this, 'update_gform_noconflict_scripts' ) );
 				}
 
 				if ( class_exists( 'GravityView_Plugin' ) ) {
 
 					add_action( 'gravityview_noconflict_styles', array( $this, 'update_gform_noconflict_styles' ) );
+
 					add_action( 'gravityview_noconflict_scripts', array( $this, 'update_gform_noconflict_scripts' ) );
 				}
 
@@ -68,22 +71,32 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				if ( ! empty( $this->p->avail[ 'util' ][ 'jetpack' ] ) ) {
 
 					add_filter( 'jetpack_enable_opengraph', '__return_false', 1000 );
+
 					add_filter( 'jetpack_enable_open_graph', '__return_false', 1000 );
+
 					add_filter( 'jetpack_disable_twitter_cards', '__return_true', 1000 );
 				}
 
 				/**
-				 * Disable Yoast SEO social meta tags.
-				 *
-				 * Must be executed after add_action( 'template_redirect', 'wpseo_frontend_head_init', 999 );
-				 *
-				 * 'template_redirect' is not executed by the AMP plugin, so hook the 'amp_post_template_head'
-				 * action as well.
+				 * Disable Yoast SEO social meta tags and Schema markup.
 				 */
 				if ( ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) ) {
 
-					add_action( 'template_redirect', array( $this, 'cleanup_wpseo_filters' ), 10000 );
-					add_action( 'amp_post_template_head', array( $this, 'cleanup_wpseo_filters' ), -10000 );
+					/**
+					 * Since Yoast SEO v14.0.
+					 *
+					 * Disable Yoast SEO social meta tags and Schema markup.
+					 */
+					if ( method_exists( 'Yoast\WP\SEO\Integrations\Front_End_Integration', 'get_presenters' ) ) {
+
+						add_filter( 'wpseo_frontend_presenters', array( $this, 'cleanup_wpseo_frontend_presenters' ), 10000 );
+
+					} else {
+
+						add_action( 'template_redirect', array( $this, 'cleanup_wpseo_filters' ), 10000 );
+
+						add_action( 'amp_post_template_head', array( $this, 'cleanup_wpseo_filters' ), -10000 );
+					}
 				}
 
 				/**
@@ -122,6 +135,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			if ( is_array( $mixed ) ) {
 
 				foreach ( $mixed as $size_name => $disabled ) {
+
 					if ( false !== strpos( $size_name, $this->p->lca . '-' ) ) {
 						unset( $mixed[ $size_name ] );
 					}
@@ -136,6 +150,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			 * Disable all current WPSSO image size names.
 			 */
 			foreach ( $_wp_additional_image_sizes as $size_name => $size_info ) {
+
 				if ( false !== strpos( $size_name, $this->p->lca . '-' ) ) {
 					$mixed[ $size_name ] = 1;
 				}
@@ -181,6 +196,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			 * Yoast SEO only checks for a conflict with WPSSO if the Open Graph option is enabled.
 			 */
 			if ( method_exists( 'WPSEO_Options', 'get' ) ) {
+
 				if ( ! WPSEO_Options::get( 'opengraph' ) ) {
 					return;
 				}
@@ -251,6 +267,36 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 		}
 
 		/**
+		 * Since Yoast SEO v14.0.
+		 *
+		 * Disable Yoast SEO social meta tags and Schema markup.
+		 */
+		public function cleanup_wpseo_frontend_presenters( $presenters ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			foreach ( $presenters as $num => $obj ) {
+
+				$class_name = get_class( $obj );
+
+				if ( preg_match( '/(Open_Graph|Twitter|Schema)/', $class_name ) ) {
+			
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'removing presenter: ' . $class_name );
+					}
+
+					unset( $presenters[ $num ] );
+				}
+			}
+
+			return $presenters;
+		}
+
+		/**
+		 * Deprecated since 2020/04/28 by Yoast SEO v14.0.
+		 *
 		 * Disable Yoast SEO social meta tags and Schema markup.
 		 */
 		public function cleanup_wpseo_filters() {
@@ -258,6 +304,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
+
 
 			if ( isset( $GLOBALS[ 'wpseo_og' ] ) && is_object( $GLOBALS[ 'wpseo_og' ] ) ) {
 
@@ -303,6 +350,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			}
 
 			add_filter( 'wpseo_json_ld_output', '__return_false', PHP_INT_MAX );
+
 			add_filter( 'wpseo_schema_graph_pieces', '__return_empty_array', PHP_INT_MAX );
 		}
 
