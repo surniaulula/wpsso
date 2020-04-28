@@ -48,6 +48,7 @@ _x( 'Twitter-Style Quoted Text for your Content with Customizable CSS and Conven
 _x( 'Improves the Look of Thumbnails and Resized Images for Better Click-Through-Rates on Social and Search Sites.', 'plugin description', 'wpsso' );
 _x( 'Quick and Easy Locale / Language / Region Selector for the WordPress Admin Toolbar.', 'plugin description', 'wpsso' );
 _x( 'Update Manager for the WPSSO Core Premium Plugin and its Premium Complementary Add-ons.', 'plugin description', 'wpsso' );
+_x( 'GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, Depth, and Volume for WooCommerce Products and Variations.', 'plugin description', 'wpsso' );
 _x( 'SSO', 'menu title', 'wpsso' );
 _x( 'Document SSO', 'metabox title', 'wpsso' );
 _x( 'Schema', 'column header', 'wpsso' );

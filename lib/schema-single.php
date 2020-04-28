@@ -934,11 +934,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Some properties cannot be added to a Schema Offer, so add them to itemOffered instead.
 			 */
-			$item_offered = self::get_individual_product_data( $mod, $mt_offer );
-
-			if ( false !== $item_offered ) {
-				$offer[ 'itemOffered' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/IndividualProduct', $item_offered );
-			}
+			// TODO check for gtin / isbn / mpn and make sure this function does not recurse (individual.product is a child of product).
+			//$offer[ 'itemOffered' ] = $wpsso->schema->get_json_data( $mod, $mt_offer, 'individual.product', false );
 
 			/**
 			 * Returns 0 if no organization was found / added.
@@ -953,23 +950,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			return WpssoSchema::get_schema_type_context( 'https://schema.org/Offer', $offer );
-		}
-
-		public static function get_individual_product_data( array $mod, array $mt_offer ) {
-
-			$json_data = array();
-
-			WpssoSchema::add_data_unit_from_assoc( $json_data, $mt_offer, $names = array(
-				'depth'  => 'product:depth:value',
-				'height' => 'product:height:value',
-				'length' => 'product:length:value',
-				'size'   => 'product:size',
-				'volume' => 'product:volume:value',
-				'weight' => 'product:weight:value',
-				'width'  => 'product:width:value',
-			) );
-		
-			return empty( $json_data ) ? false : $json_data;
 		}
 
 		/**
