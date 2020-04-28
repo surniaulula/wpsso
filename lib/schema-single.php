@@ -932,13 +932,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/**
-			 * Some properties cannot be added to a Schema Offer, so add them to itemOffered instead.
-			 */
-			// TODO check for gtin / isbn / mpn and make sure this function does not recurse (individual.product is a child of product).
-			//$offer[ 'itemOffered' ] = $wpsso->schema->get_json_data( $mod, $mt_offer, 'individual.product', false );
-
-			/**
-			 * Returns 0 if no organization was found / added.
+			 * Add the seller organization data.
 			 */
 			self::add_organization_data( $offer[ 'seller' ], $mod, 'site', 'org_logo_url', false );
 
