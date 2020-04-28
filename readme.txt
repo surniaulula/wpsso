@@ -501,16 +501,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 7.3.0-dev.3 (2020/04/28)**
 
 * **New Features**
-	* Added a new WPSSO Metadata add-on to easily include these additional WooCommerce product information fields:
-		* GTIN
-		* GTIN-8
-		* GTIN-12 (UPC)
-		* GTIN-13 (EAN)
-		* GTIN-14
-		* ISBN
-		* MPN
-		* Depth
-		* Volume
+	* Added a new WPSSO Metadata add-on.
 * **Improvements**
 	* None.
 * **Bugfixes**
@@ -530,7 +521,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Renamed the 'plugin_product_attr_*' option keys to 'plugin_attr_product_*' for the new WPSSO WCMD add-on.
+	* Renamed the 'plugin_product_attr_' option keys to 'plugin_attr_product_' for the new WPSSO WCMD add-on.
 	* Moved the lib/pro/util/custom-fields.php library module to lib/util-custom-fields.php.
 * **Requires At Least**
 	* PHP v5.6.
@@ -1117,7 +1108,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 = 7.3.0-dev.3 =
 
-(2020/04/28) Added a new WPSSO Metadata add-on to easily include additional WooCommerce product information fields.
+(2020/04/28) Added a new WPSSO Metadata add-on.
 
 = 7.2.0 =
 
