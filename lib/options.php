@@ -274,6 +274,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'product_target_gender':		// Select option with 'none' as default.
 				case ( false !== strpos( $base_key, '_crop_x' ) ? true : false ):
 				case ( false !== strpos( $base_key, '_crop_y' ) ? true : false ):
+				case ( false !== strpos( $base_key, '_type_for_' ) ? true : false ):
 				case ( preg_match( '/^(plugin|wp)_cm_[a-z]+_(name|label)$/', $base_key ) ? true : false ):
 
 					return 'not_blank';
