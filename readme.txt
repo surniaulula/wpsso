@@ -498,7 +498,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.2.0-b.1 (2020/04/28)**
+**Version 7.2.0-rc.1 (2020/04/28)**
 
 * **New Features**
 	* None.
@@ -1094,7 +1094,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 7.2.0-b.1 =
+= 7.2.0-rc.1 =
 
 (2020/04/28) Added an 'itemOffered' property in Schema Offer markup for Schema IndividualProduct width, height, length, etc.
 
