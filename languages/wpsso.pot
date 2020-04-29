@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 7.3.0-dev.3\n"
+"Project-Id-Version: WPSSO Core 7.3.0-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -276,7 +276,7 @@ msgstr ""
 msgid "%s database transients have been deleted."
 msgstr ""
 
-#: lib/admin.php:1075 lib/util.php:1328
+#: lib/admin.php:1075 lib/util.php:1343
 msgid ""
 "A background task will begin shortly to refresh the post, term and user "
 "transient cache objects."
@@ -810,7 +810,7 @@ msgid "Requests to cache this URL will be ignored for %d second(s)."
 msgstr ""
 
 #: lib/com/cache.php:356 lib/com/cache.php:513 lib/gettext-com.php:16
-#: lib/gettext-com.php:18 lib/util.php:1894
+#: lib/gettext-com.php:18 lib/util.php:1909
 msgid "Error removing cache file %s."
 msgstr ""
 
@@ -3085,43 +3085,43 @@ msgctxt "option label"
 msgid "or an Image URL"
 msgstr ""
 
-#: lib/gettext-pro.php:124 lib/pro/ecom/woocommerce.php:54
+#: lib/gettext-pro.php:124 lib/pro/ecom/woocommerce.php:55
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Advanced &gt; Page setup</a> section."
 msgstr ""
 
-#: lib/gettext-pro.php:125 lib/pro/ecom/woocommerce.php:57
+#: lib/gettext-pro.php:125 lib/pro/ecom/woocommerce.php:58
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Products &gt; General</a> section."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:127 lib/pro/ecom/woocommerce.php:61
+#: lib/gettext-pro.php:127 lib/pro/ecom/woocommerce.php:62
 msgid "My account page"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:129 lib/pro/ecom/woocommerce.php:62
+#: lib/gettext-pro.php:129 lib/pro/ecom/woocommerce.php:63
 msgid "Cart page"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:131 lib/pro/ecom/woocommerce.php:63
+#: lib/gettext-pro.php:131 lib/pro/ecom/woocommerce.php:64
 msgid "Checkout page"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:133 lib/pro/ecom/woocommerce.php:64
+#: lib/gettext-pro.php:133 lib/pro/ecom/woocommerce.php:65
 msgid "Shop page"
 msgstr ""
 
-#: lib/gettext-pro.php:134 lib/pro/ecom/woocommerce.php:69
+#: lib/gettext-pro.php:134 lib/pro/ecom/woocommerce.php:70
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: lib/gettext-pro.php:135 lib/pro/ecom/woocommerce.php:136
+#: lib/gettext-pro.php:135 lib/pro/ecom/woocommerce.php:137
 msgid ""
 "The WooCommerce %s method is not available - please update to a newer "
 "version of WooCommerce."
@@ -3137,17 +3137,17 @@ msgstr ""
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/gettext-pro.php:138 lib/pro/ecom/woocommerce.php:1254
+#: lib/gettext-pro.php:138 lib/pro/ecom/woocommerce.php:1126
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/gettext-pro.php:139 lib/pro/ecom/woocommerce.php:1256
+#: lib/gettext-pro.php:139 lib/pro/ecom/woocommerce.php:1128
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:140 lib/pro/ecom/woocommerce.php:1259
+#: lib/gettext-pro.php:140 lib/pro/ecom/woocommerce.php:1131
 msgid "Please update your site to WooCommerce version %s or newer."
 msgstr ""
 
@@ -5965,7 +5965,7 @@ msgid ""
 "Activate the %s add-on<br/>for Schema markup and structured data options."
 msgstr ""
 
-#: lib/messages.php:2934 lib/util.php:4001
+#: lib/messages.php:2934 lib/util.php:4016
 msgid "No options available."
 msgstr ""
 
@@ -6185,12 +6185,12 @@ msgid "Pinterest Pin It Image"
 msgstr ""
 
 #: lib/post.php:496 lib/register.php:324 lib/term.php:416 lib/user.php:374
-#: lib/util.php:530 lib/util.php:3684
+#: lib/util.php:545 lib/util.php:3699
 msgid "%s warning:"
 msgstr ""
 
-#: lib/post.php:497 lib/term.php:417 lib/user.php:375 lib/util.php:531
-#: lib/util.php:3685
+#: lib/post.php:497 lib/term.php:417 lib/user.php:375 lib/util.php:546
+#: lib/util.php:3700
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -6244,7 +6244,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:1048 lib/util.php:2161
+#: lib/post.php:1048 lib/util.php:2176
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -7081,95 +7081,95 @@ msgstr ""
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/util.php:532
+#: lib/util.php:547
 msgid ""
 "Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s "
 "(%3$s)."
 msgstr ""
 
-#: lib/util.php:1260
+#: lib/util.php:1275
 msgid "Cache clearing task started at %s."
 msgstr ""
 
-#: lib/util.php:1283
+#: lib/util.php:1298
 msgid "Aborting cache clearing - another identical task is still running."
 msgstr ""
 
-#: lib/util.php:1311
+#: lib/util.php:1326
 msgid ""
 "%1$d cached files, %2$d transient cache objects, %3$d column metadata, and "
 "the WordPress object cache have all been cleared."
 msgstr ""
 
-#: lib/util.php:1324 lib/util.php:1629
+#: lib/util.php:1339 lib/util.php:1644
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/util.php:1346
+#: lib/util.php:1361
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr ""
 
-#: lib/util.php:1537
+#: lib/util.php:1552
 msgid "Transient cache refresh task started at %s."
 msgstr ""
 
-#: lib/util.php:1560
+#: lib/util.php:1575
 msgid ""
 "Another transient cache refresh task is running - attempting to stop it..."
 msgstr ""
 
-#: lib/util.php:1573
+#: lib/util.php:1588
 msgid ""
 "Aborting transient cache refresh - another identical task is still running."
 msgstr ""
 
-#: lib/util.php:1626
+#: lib/util.php:1641
 msgid ""
 "The transient cache for %1$d posts, %2$d terms and %3$d users has been "
 "refreshed."
 msgstr ""
 
-#: lib/util.php:1865
+#: lib/util.php:1880
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util.php:1958
+#: lib/util.php:1973
 msgid "Error reading the %s file for the article sections list."
 msgstr ""
 
-#: lib/util.php:2055
+#: lib/util.php:2070
 msgid "Error reading the %s file for the product categories list."
 msgstr ""
 
-#: lib/util.php:2148
+#: lib/util.php:2163
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:2174
+#: lib/util.php:2189
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:2374
+#: lib/util.php:2389
 msgid ""
 "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
 "provider to have the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:2387
+#: lib/util.php:2402
 msgid ""
 "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:3686
+#: lib/util.php:3701
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3701
+#: lib/util.php:3716
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -7178,35 +7178,35 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3703
+#: lib/util.php:3718
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:4032
+#: lib/util.php:4047
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:4035
+#: lib/util.php:4050
 msgctxt "option comment"
 msgid "show these options now"
 msgstr ""
 
-#: lib/util.php:4040
+#: lib/util.php:4055
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:4043
+#: lib/util.php:4058
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:4367
+#: lib/util.php:4382
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 
@@ -7466,26 +7466,26 @@ msgstr ""
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: wpsso.php:489
+#: wpsso.php:484
 msgid ""
 "WP debug logging mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:501
+#: wpsso.php:496
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."
 msgstr ""
 
 #. translators: %s is the short plugin name.
-#: wpsso.php:511
+#: wpsso.php:506
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:512
+#: wpsso.php:507
 msgid "Please disable debug mode when debugging is complete."
 msgstr ""
 

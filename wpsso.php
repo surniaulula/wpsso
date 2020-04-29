@@ -15,7 +15,7 @@
  * Requires At Least: 4.2
  * Tested Up To: 5.4
  * WC Tested Up To: 4.0.1
- * Version: 7.3.0-dev.3
+ * Version: 7.3.0-dev.4
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -34,11 +34,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'Wpsso' ) ) {
 
 	class Wpsso {
-
-		/**
-		 * Wpsso plugin class object variable.
-		 */
-		public $p;		// Wpsso.
 
 		/**
 		 * Library class object variables.

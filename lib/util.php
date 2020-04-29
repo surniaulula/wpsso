@@ -21,7 +21,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 	class WpssoUtil extends SucomUtil {
 
-		protected $p;
+		protected $p;		// Wpsso.
+		protected $cf;		// WpssoUtilCustomFields.
+
 		protected $event_buffer = 5;
 		protected $uniq_urls    = array();	// Array to detect duplicate images, etc.
 		protected $size_labels  = array();	// Reference array for image size labels.
@@ -65,7 +67,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		protected static $form_cache = array();
 
-		public $reg;	// WpssoUtilReg.
+		public $reg;		// WpssoUtilReg.
+		public $wc;		// WpssoUtilWooCommerce.
 
 		public function __construct( &$plugin ) {
 
@@ -86,6 +89,18 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$this->cf = new WpssoUtilCustomFields( $plugin, $this );
+
+			/**
+			 * If WooCommerce is available, load the WooCommerce utility class.
+			 */
+			if ( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) {
+
+				if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
+					require_once WPSSO_PLUGINDIR . 'lib/util-woocommerce.php';
+				}
+
+				$this->wc = new WpssoUtilWooCommerce( $plugin, $this );
+			}
 
 			$this->add_plugin_filters( $this, array(
 				'pub_lang' => 3,
