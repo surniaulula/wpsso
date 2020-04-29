@@ -498,7 +498,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.3.0-dev.4 (2020/04/28)**
+**Version 7.3.0-dev.4 (2020/04/29)**
 
 * **New Features**
 	* Added a new WPSSO Metadata for WooCommerce add-on.
@@ -507,7 +507,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a new lib/util-woocommerce.php library file.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
@@ -522,7 +522,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Renamed the 'plugin_product_attr_' option keys to 'plugin_attr_product_' for the new WPSSO WCMD add-on.
-	* Moved the lib/pro/util/custom-fields.php library module to lib/util-custom-fields.php.
+	* Moved the lib/pro/util/custom-fields.php library class to lib/util-custom-fields.php.
 	* Removed applying the following filters, which are no longer compatible with Yoast SEO v14.0.
 		* 'wpseo_desc'
 		* 'wpseo_metadesc'
@@ -536,7 +536,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* The "Import Yoast SEO Social Meta" option module (Advanced Settings page) now reads image IDs instead of image URLs, and shows an update notice for any custom metadata values read (Premium version).
+	* The "Import Yoast SEO Social Meta" feature module (Advanced Settings page) now reads image IDs instead of image URLs, and shows an update notice for any custom metadata values read (Premium version).
 	* The "Structured data product" setting for the Product GTIN (EAN, UPC, ISBN) for WooCommerce plugin is now checked to assign the GTIN/ISBN/MPN value to the correct Schema property (Premium version).
 * **Bugfixes**
 	* Fixed a conflict when both a custom Image ID and Image URL were provided for the same option.
@@ -545,7 +545,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new `SucomForm->get_input_locale()` method.
 	* Added a new `SucomForm->get_textarea_locale()` method.
 	* Added a new `SucomForm->get_th_html_locale()` method.
-	* Refactored the WpssoProUtilWpseoMeta class methods (ie. the "Import Yoast SEO Social Meta" option module).
+	* Refactored the WpssoProUtilWpseoMeta class methods (ie. the "Import Yoast SEO Social Meta" feature module).
 	* Refactored the `SucomForm->get_css_class_hide()` method to check both localized and non-localized values.
 * **Requires At Least**
 	* PHP v5.6.
@@ -1112,7 +1112,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 = 7.3.0-dev.4 =
 
-(2020/04/28) Added a new WPSSO Metadata for WooCommerce add-on.
+(2020/04/29) Added a new WPSSO Metadata for WooCommerce add-on.
 
 = 7.2.0 =
 
@@ -1120,7 +1120,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 = 7.1.0 =
 
-(2020/04/25) The "Import Yoast SEO Social Meta" option module (Advanced Settings page) now reads image IDs instead of image URLs. Fixed a conflict when both a custom Image ID and Image URL were provided for the same option.
+(2020/04/25) The "Import Yoast SEO Social Meta" feature module (Advanced Settings page) now reads image IDs instead of image URLs. Fixed a conflict when both a custom Image ID and Image URL were provided for the same option.
 
 = 7.0.1 =
 
