@@ -2183,6 +2183,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$ext_sorted = WpssoConfig::get_ext_sorted();
 
 			foreach ( $ext_sorted as $ext => $info ) {
+
 				if ( empty( $info[ 'update_auth' ] ) ) {	// Only show plugins with Premium versions.
 					unset( $ext_sorted[ $ext ] );
 				}

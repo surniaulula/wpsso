@@ -1868,7 +1868,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '2.9.0',	// Minimum update manager version (soft limit).
+				'rec_version' => '2.10.0-dev.4',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',
@@ -3756,6 +3756,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			}
 		}
 
+		/**
+		 * Since WPSSO Core v3.38.3.
+		 */
 		public static function get_ext_sorted() {
 
 			$cf = self::get_config();
@@ -3770,9 +3773,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$first_key = key( $cf[ 'plugin' ] );
 
 			/**
-			 * Make sure the core plugin is first.
+			 * Make sure the core plugin is listed first.
 			 */
 			if ( 'wpsso' !== $first_key ) {
+
 				SucomUtil::move_to_front( $cf[ 'plugin' ], 'wpsso' );
 			}
 

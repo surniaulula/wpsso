@@ -652,8 +652,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			}
 
 			$local_cache = array();
+			$ext_sorted  = WpssoConfig::get_ext_sorted();
 
-			foreach ( WpssoConfig::get_ext_sorted() as $ext => $info ) {
+			foreach ( $ext_sorted as $ext => $info ) {
 
 				if ( empty( $info[ 'version' ] ) ) {	// Include only active add-ons.
 					continue;
