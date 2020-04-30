@@ -465,8 +465,8 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 
 == Screenshots ==
 
-01. The document SSO metabox offers a preview tab to show an example share using the current Open Graph meta tags.
-02. The essential settings page provides an easy and quick setup for a few essential settings.
+01. The Document SSO metabox shows a different set of options based on the content type selected, allowing you to customize the details of articles, events, e-Commerce products, recipes, reviews, and more.
+02. The Essential Settings page offers a quick and easy setup for a few essential settings. The General, and Advanced (Premium) settings pages offer a wealth of additional options for all levels.
 
 == Changelog ==
 
