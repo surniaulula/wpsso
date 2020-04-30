@@ -13,9 +13,9 @@
  * Description: Make sure your content looks great on all social and search sites - no matter how your URLs are crawled, shared, re-shared, posted or embedded.
  * Requires PHP: 5.6
  * Requires At Least: 4.2
- * Tested Up To: 5.4
+ * Tested Up To: 4.5.1
  * WC Tested Up To: 4.0.1
- * Version: 7.3.0-dev.4
+ * Version: 7.3.0-dev.5
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -464,10 +464,15 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			do_action( 'wpsso_init_check_options' );
 
 			/**
-			 * Issue reminder notices and disable some caching when the plugin's debug mode is enabled.
+			 * Disable some caching when the plugin's debug mode is enabled.
+			 *
+			 * Show a reminder that debug mode is enabled if the WPSSO_DEV constant is not defined.
 			 */
 			if ( $this->debug->enabled ) {
 
+				$this->util->disable_cache_filters();
+
+				$doing_dev    = SucomUtil::get_const( 'WPSSO_DEV' );
 				$notice_key   = 'debug-mode-is-active';
 				$notice_msg   = '';
 				$dismiss_time = 12 * HOUR_IN_SECONDS;
@@ -498,18 +503,13 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					}
 				}
 
-				if ( $this->debug->enabled ) {
+				if ( ! $doing_dev && ! empty( $notice_msg ) ) {
 
-					if ( ! empty( $notice_msg ) ) {
+					// translators: %s is the short plugin name.
+					$notice_msg .= sprintf( __( 'Debug mode disables some %s caching features, which degrades performance slightly.',
+						'wpsso' ), $info[ 'short' ] ) . ' ' . __( 'Please disable debug mode when debugging is complete.', 'wpsso' );
 
-						// translators: %s is the short plugin name.
-						$notice_msg .= sprintf( __( 'Debug mode disables some %s caching features, which degrades performance slightly.',
-							'wpsso' ), $info[ 'short' ] ) . ' ' . __( 'Please disable debug mode when debugging is complete.', 'wpsso' );
-
-						$this->notice->warn( $notice_msg, null, $notice_key, $dismiss_time );
-					}
-
-					$this->util->disable_cache_filters();
+					$this->notice->warn( $notice_msg, null, $notice_key, $dismiss_time );
 				}
 			}
 
