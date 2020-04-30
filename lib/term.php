@@ -510,18 +510,21 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			static $local_recursion = array();
 
 			if ( isset( $local_recursion[ $term_id ][ $meta_key ] ) ) {
+
 				return $value;	// Return null.
 			}
 
 			$local_recursion[ $term_id ][ $meta_key ] = true;			// Prevent recursion.
 
 			if ( self::get_term_meta( $term_id, $meta_key, true ) === '' ) {	// Returns empty string if meta not found.
+
 				$this->get_head_info( $term_id, $read_cache = true );
 			}
 
 			unset( $local_recursion[ $term_id ][ $meta_key ] );
 
 			if ( ! self::use_term_meta_table( $term_id ) ) {
+
 				return self::get_term_meta( $term_id, $meta_key, $single );	// Provide the options value.
 			}
 

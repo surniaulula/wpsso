@@ -183,9 +183,9 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->form->get_th_html( _x( 'Maximum Title Length', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'og_title_max_len' ) . 
 					'<td>' . 
-					$this->form->get_input( 'og_title_max_len', 'short' ) . ' ' . 
+					$this->form->get_input( 'og_title_max_len', $css_class = 'chars' ) . ' ' . 
 					_x( 'characters or less (hard limit), and warn at', 'option comment', 'wpsso' ) . ' ' . 
-					$this->form->get_input( 'og_title_warn_len', 'short' ) . ' ' . 
+					$this->form->get_input( 'og_title_warn_len', $css_class = 'chars' ) . ' ' . 
 					_x( 'characters (soft limit)', 'option comment', 'wpsso' ) . 
 					'</td>';
 
@@ -193,9 +193,9 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->form->get_th_html( _x( 'Maximum Description Length', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'og_desc_max_len' ) . 
 					'<td>' . 
-					$this->form->get_input( 'og_desc_max_len', 'short' ) . ' ' . 
+					$this->form->get_input( 'og_desc_max_len', $css_class = 'chars' ) . ' ' . 
 					_x( 'characters or less (hard limit), and warn at', 'option comment', 'wpsso' ) . ' ' . 
-					$this->form->get_input( 'og_desc_warn_len', 'short' ) . ' ' . 
+					$this->form->get_input( 'og_desc_warn_len', $css_class = 'chars' ) . ' ' . 
 					_x( 'characters (soft limit)', 'option comment', 'wpsso' ) . 
 					'</td>';
 
@@ -264,11 +264,10 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						$css_class = '', $css_id = 'fb_admins' ) . 
 					'<td>' . $this->form->get_input( 'fb_admins' ) . '</td>';
 
-					$table_rows[ 'fb_locale' ] = $this->form->get_tr_hide( 'basic', $fb_locale_key ) . 
+					$table_rows[ 'fb_locale' ] = $this->form->get_tr_hide( 'basic', 'fb_locale' ) . 
 					$this->form->get_th_html_locale( _x( 'Alternate Facebook Locale', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'fb_locale' ) . 
-					'<td>' . $this->form->get_select( SucomUtil::get_key_locale( 'fb_locale', $this->p->options ),
-						SucomUtil::get_pub_lang( 'facebook' ) ) . '</td>';
+					'<td>' . $this->form->get_select_locale( 'fb_locale', SucomUtil::get_pub_lang( 'facebook' ) ) . '</td>';
 
 					break;
 
@@ -291,7 +290,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$table_rows[ 'seo_desc_max_len' ] = $this->form->get_tr_hide( 'basic', 'seo_desc_max_len' ) . 
 					$this->form->get_th_html( _x( 'Max. Description Meta Tag Length', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'seo_desc_max_len' ) . 
-					'<td>' . $this->form->get_input( 'seo_desc_max_len', 'short' ) . ' ' .
+					'<td>' . $this->form->get_input( 'seo_desc_max_len', $css_class = 'chars' ) . ' ' .
 					_x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
 
 					break;
@@ -330,9 +329,9 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->form->get_th_html( _x( 'Maximum Image Description Length', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'p_img_desc_max_len' ) . 
 					'<td>' .
-					$this->form->get_input( 'p_img_desc_max_len', 'short' ) . ' ' . 
+					$this->form->get_input( 'p_img_desc_max_len', $css_class = 'chars' ) . ' ' . 
 					_x( 'characters or less (hard limit), and warn at', 'option comment', 'wpsso' ) . ' ' . 
-					$this->form->get_input( 'p_img_desc_warn_len', 'short' ) . ' ' . 
+					$this->form->get_input( 'p_img_desc_warn_len', $css_class = 'chars' ) . ' ' . 
 					_x( 'characters (soft limit)', 'option comment', 'wpsso' ) . 
 					'</td>';
 
@@ -353,7 +352,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$table_rows[ 'tc_desc_max_len' ] = $this->form->get_tr_hide( 'basic', 'tc_desc_max_len' ) . 
 					$this->form->get_th_html( _x( 'Maximum Description Length', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'tc_desc_max_len' ) . 
-					'<td>' . $this->form->get_input( 'tc_desc_max_len', 'short' ) . ' ' . 
+					'<td>' . $this->form->get_input( 'tc_desc_max_len', $css_class = 'chars' ) . ' ' . 
 					_x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
 
 					$table_rows[ 'tc_type_singular' ] = $this->form->get_tr_hide( 'basic', 'tc_type_singular' ) . 

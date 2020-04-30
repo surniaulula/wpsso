@@ -91,21 +91,21 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 		public static function optimize_json( array &$json_data ) {	// Pass by reference is OK.
 
-			static $new_data  = array();
-			static $recursion = null;
-			static $id_anchor = null;
+			static $local_new_data  = array();
+			static $local_recursion = null;
+			static $local_id_anchor = null;
 
-			if ( null === $id_anchor ) {	// Optimize and call just once.
-				$id_anchor = WpssoSchema::get_id_anchor();
+			if ( null === $local_id_anchor ) {	// Optimize and call just once.
+				$local_id_anchor = WpssoSchema::get_id_anchor();
 			}
 
 			if ( isset( $json_data[ '@graph' ] ) ) {	// Top level of json.
-				$recursion = 0;
-			} elseif ( null !== $recursion ) {
-				$recursion++;
+				$local_recursion = 0;
+			} elseif ( null !== $local_recursion ) {
+				$local_recursion++;
 			}
 
-			if ( $recursion > 32 ) {	// Just in case.
+			if ( $local_recursion > 32 ) {	// Just in case.
 				return;
 			}
 
@@ -115,15 +115,15 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 					self::optimize_json( $val );
 
-				} elseif ( $recursion > 2 && '@id' === $key && strpos( $val, $id_anchor ) ) {
+				} elseif ( $local_recursion > 2 && '@id' === $key && strpos( $val, $local_id_anchor ) ) {
 
 					if ( count( $json_data ) > 1 ) {	// Ignore arrays with only an @id property.
 
-						if ( ! isset( $new_data[ $val ] ) ) {
+						if ( ! isset( $local_new_data[ $val ] ) ) {
 
-							$new_data[ $val ] = $json_data;
+							$local_new_data[ $val ] = $json_data;
 
-							foreach ( $new_data[ $val ] as $new_key => &$new_val ) {
+							foreach ( $local_new_data[ $val ] as $new_key => &$new_val ) {
 
 								if ( is_array( $new_val ) ) {
 									self::optimize_json( $new_val );
@@ -140,18 +140,18 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 			if ( isset( $json_data[ '@graph' ] ) ) {	// Top level of json.
 
-				$json_data[ '@graph' ] = array_merge( array_values( $new_data ), $json_data[ '@graph' ] );
+				$json_data[ '@graph' ] = array_merge( array_values( $local_new_data ), $json_data[ '@graph' ] );
 
 				/**
 				 * Reset the static variables after saving/merging the new data.
 				 */
-				$new_data  = array();
-				$recursion = null;
+				$local_new_data  = array();
+				$local_recursion = null;
 
 				return $json_data;
 
-			} elseif ( null !== $recursion ) {
-				$recursion--;
+			} elseif ( null !== $local_recursion ) {
+				$local_recursion--;
 			}
 		}
 	}

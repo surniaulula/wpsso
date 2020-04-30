@@ -850,6 +850,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
+		public function get_select_locale( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null, $is_disabled = false,
+			$selected = false, $event_names = array(), $event_args = null ) {
+
+			$name = SucomUtil::get_key_locale( $name, $this->options );
+
+			return $this->get_select( $name, $values, $css_class, $css_id, $is_assoc, $is_disabled, $selected, $event_names, $event_args );
+		}
+
 		/**
 		 * $is_disabled can be true, false, or a text string (ie. "WPSSO PLM required").
 		 */
@@ -1230,9 +1238,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_input_image_dimensions( $name, $is_disabled = false ) {
 
-			$html = $this->get_input( $name . '_width', $css_class = 'short width', $css_id = '', $len = 0, $holder = '', $is_disabled ) . 'x&nbsp;';
+			$html = $this->get_input( $name . '_width', $css_class = 'size width', $css_id = '', $len = 0, $holder = '', $is_disabled ) . 'x&nbsp;';
 
-			$html .= $this->get_input( $name . '_height', $css_class = 'short height', $css_id = '', $len = 0, $holder = '', $is_disabled ) . 'px' . ' ';
+			$html .= $this->get_input( $name . '_height', $css_class = 'size height', $css_id = '', $len = 0, $holder = '', $is_disabled ) . 'px' . ' ';
 
 			$html .= _x( 'crop', 'option comment', $this->text_domain ) . ' ' . $this->get_checkbox( $name . '_crop', '', '', $is_disabled );
 
@@ -1285,9 +1293,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$holder_h = empty( $media_info[ 'vid_height' ] ) ? '' : $media_info[ 'vid_height' ];
 			}
 
-			$html = $this->get_input( $name . '_width', 'short width', '', 0, $holder_w, $is_disabled ) . 'x&nbsp;';
+			$html = $this->get_input( $name . '_width', 'size width', '', 0, $holder_w, $is_disabled ) . 'x&nbsp;';
 
-			$html .= $this->get_input( $name . '_height', 'short height', '', 0, $holder_h, $is_disabled ) . 'px';
+			$html .= $this->get_input( $name . '_height', 'size height', '', 0, $holder_h, $is_disabled ) . 'px';
 
 			return $html;
 		}

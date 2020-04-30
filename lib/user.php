@@ -511,12 +511,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			static $local_recursion = array();
 
 			if ( isset( $local_recursion[ $user_id ][ $meta_key ] ) ) {
+
 				return $value;	// Return null
 			}
 
 			$local_recursion[ $user_id ][ $meta_key ] = true;		// Prevent recursion.
 
 			if ( get_user_meta( $user_id, $meta_key, $single = true ) === '' ) {	// Returns empty string if meta not found.
+
 				$this->get_head_info( $user_id, $read_cache = true );
 			}
 

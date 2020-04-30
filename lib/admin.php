@@ -2776,8 +2776,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$table_rows[ 'schema_desc_max_len' ] = $form->get_tr_hide( 'basic', 'schema_desc_max_len' ) . 
 			$form->get_th_html( _x( 'Max. Schema Description Length', 'option label', 'wpsso' ), '', 'schema_desc_max_len' ) . 
-			'<td>' . $form->get_input( 'schema_desc_max_len', 'short' ) . ' ' .
-			_x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
+			'<td>' . $form->get_input( 'schema_desc_max_len', 'chars' ) . ' ' . _x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
 		}
 
 		public function add_schema_item_types_table_rows( array &$table_rows, $form ) {

@@ -608,6 +608,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 * Example $meta_key value: '_wpsso_head_info_og_img_thumb'.
 			 */
 			if ( 0 !== strpos( $meta_key, '_' . $this->p->lca . '_head_info_' ) ) {
+
 				return $value;	// Return null.
 			}
 
@@ -618,12 +619,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			static $local_recursion = array();
 
 			if ( isset( $local_recursion[ $post_id ][ $meta_key ] ) ) {
+
 				return $value;	// Return null.
 			}
 
 			$local_recursion[ $post_id ][ $meta_key ] = true;			// Prevent recursion.
 
 			if ( get_post_meta( $post_id, $meta_key, $single = true ) === '' ) {	// Returns empty string if meta not found.
+
 				$this->get_head_info( $post_id, $read_cache = true );
 			}
 
