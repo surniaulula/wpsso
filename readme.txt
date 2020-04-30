@@ -10,7 +10,7 @@ Tags: optimize, open graph, meta tags, rich pins, twitter cards, schema, seo, so
 Contributors: jsmoriss
 Requires PHP: 5.6
 Requires At Least: 4.2
-Tested Up To: 5.4
+Tested Up To: 4.5.1
 WC Tested Up To: 4.0.1
 Stable Tag: 7.2.0
 
@@ -498,7 +498,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.3.0-dev.4 (2020/04/29)**
+**Version 7.3.0-dev.5 (2020/04/29)**
 
 * **New Features**
 	* Added a new WPSSO Metadata for WooCommerce add-on.
@@ -1110,7 +1110,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 7.3.0-dev.4 =
+= 7.3.0-dev.5 =
 
 (2020/04/29) Added a new WPSSO Metadata for WooCommerce add-on.
 
