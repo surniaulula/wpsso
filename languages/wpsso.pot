@@ -5749,7 +5749,7 @@ msgstr ""
 
 #: lib/messages.php:2698
 msgctxt "tooltip fragment"
-msgid "a product GTIN-14 code (aka ITF-14 code)"
+msgid "a product GTIN-14 code (aka ITF-14)"
 msgstr ""
 
 #: lib/messages.php:2701
@@ -5856,7 +5856,7 @@ msgstr ""
 
 #: lib/messages.php:2756
 msgctxt "tooltip fragment"
-msgid "a product volume (in %s)"
+msgid "a product fluid volume (in %s)"
 msgstr ""
 
 #: lib/messages.php:2761
@@ -6200,7 +6200,7 @@ msgid ""
 "post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:782 lib/post.php:1352 lib/schema.php:2945 lib/term.php:619
+#: lib/post.php:782 lib/post.php:1352 lib/schema.php:2948 lib/term.php:619
 #: lib/user.php:619
 msgid "checking meta tags"
 msgstr ""
@@ -7081,44 +7081,44 @@ msgstr ""
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/util-woocommerce.php:274
-msgid "ml (millilitre)"
+#: lib/util-woocommerce.php:198
+msgid "millilitre"
 msgstr ""
 
-#: lib/util-woocommerce.php:275
-msgid "cl (centilitre)"
+#: lib/util-woocommerce.php:199
+msgid "centilitre"
 msgstr ""
 
-#: lib/util-woocommerce.php:276
-msgid "l (liter)"
+#: lib/util-woocommerce.php:200
+msgid "liter"
 msgstr ""
 
-#: lib/util-woocommerce.php:277
-msgid "kl (kiloliter)"
+#: lib/util-woocommerce.php:201
+msgid "kiloliter"
 msgstr ""
 
-#: lib/util-woocommerce.php:278
-msgid "tsp (teaspoon)"
+#: lib/util-woocommerce.php:202
+msgid "teaspoon"
 msgstr ""
 
-#: lib/util-woocommerce.php:279
-msgid "tbsp (tablespoon)"
+#: lib/util-woocommerce.php:203
+msgid "tablespoon"
 msgstr ""
 
-#: lib/util-woocommerce.php:280
-msgid "fl oz (fluid ounce)"
+#: lib/util-woocommerce.php:204
+msgid "fluid ounce"
 msgstr ""
 
-#: lib/util-woocommerce.php:281
-msgid "pt (US pint)"
+#: lib/util-woocommerce.php:205
+msgid "US pint"
 msgstr ""
 
-#: lib/util-woocommerce.php:282
-msgid "qt (US quart)"
+#: lib/util-woocommerce.php:206
+msgid "US quart"
 msgstr ""
 
-#: lib/util-woocommerce.php:283
-msgid "gal (US gallon)"
+#: lib/util-woocommerce.php:207
+msgid "US gallon"
 msgstr ""
 
 #: lib/util.php:547

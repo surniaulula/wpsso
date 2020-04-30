@@ -2730,12 +2730,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return;
 			}
 
-			foreach ( $names as $idx => $key_name ) {
+			foreach ( $names as $key => $key_name ) {
 
 				/**
 				 * Make sure the property name we need (width, height, weight, etc.) is configured.
 				 */
-				if ( empty( self::$units_cache[ $idx ] ) || ! is_array( self::$units_cache[ $idx ] ) ) {
+				if ( empty( self::$units_cache[ $key ] ) || ! is_array( self::$units_cache[ $key ] ) ) {
 					continue;
 				}
 
@@ -2759,7 +2759,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 *		),
 				 *	),
 				 */
-				foreach ( self::$units_cache[ $idx ] as $prop_name => $prop_data ) {
+				foreach ( self::$units_cache[ $key ] as $prop_name => $prop_data ) {
 
 					$prop_data[ 'value' ] = $assoc[ $key_name ];
 
@@ -2771,12 +2771,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/**
 		 * Deprecated on 2019/08/01.
 		 */
-		public static function get_data_unitcode_text( $idx ) {
+		public static function get_data_unitcode_text( $key ) {
 
-			return self::get_data_unit_text( $idx );
+			return self::get_data_unit_text( $key );
 		}
 
-		public static function get_data_unit_text( $idx ) {
+		/**
+		 * Returns a https://schema.org/unitText value (for example, 'cm', 'ml', 'kg', etc.).
+		 */
+		public static function get_data_unit_text( $key ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -2786,16 +2789,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			static $local_cache = array();
 
-			if ( isset( $local_cache[ $idx ] ) ) {
-				return $local_cache[ $idx ];
+			if ( isset( $local_cache[ $key ] ) ) {
+				return $local_cache[ $key ];
 			}
 
 			if ( null === self::$units_cache ) {
 				self::$units_cache = apply_filters( $wpsso->lca . '_schema_units', $wpsso->cf[ 'head' ][ 'schema_units' ] );
 			}
 
-			if ( empty( self::$units_cache[ $idx ] ) || ! is_array( self::$units_cache[ $idx ] ) ) {
-				return $local_cache[ $idx ] = '';
+			if ( empty( self::$units_cache[ $key ] ) || ! is_array( self::$units_cache[ $key ] ) ) {
+				return $local_cache[ $key ] = '';
 			}
 
 			/**
@@ -2811,14 +2814,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 *		),
 			 *	),
 			 */
-			foreach ( self::$units_cache[ $idx ] as $prop_name => $prop_data ) {
+			foreach ( self::$units_cache[ $key ] as $prop_name => $prop_data ) {
 
 				if ( isset( $prop_data[ 'unitText' ] ) ) {	// Return the first match.
-					return $local_cache[ $idx ] = $prop_data[ 'unitText' ];
+					return $local_cache[ $key ] = $prop_data[ 'unitText' ];
 				}
 			}
 
-			return $local_cache[ $idx ] = '';
+			return $local_cache[ $key ] = '';
 		}
 
 		/**

@@ -2695,7 +2695,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					),
 					'product_gtin14' => array(
 						'label' => _x( 'Product GTIN-14', 'option label', 'wpsso' ),
-						'desc'  => _x( 'a product GTIN-14 code (aka ITF-14 code)', 'tooltip fragment', 'wpsso' ),
+						'desc'  => _x( 'a product GTIN-14 code (aka ITF-14)', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_gtin13' => array(
 						'label' => _x( 'Product GTIN-13 (EAN)', 'option label', 'wpsso' ),
@@ -2753,7 +2753,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					),
 					'product_fluid_volume_value' => array(
 						'label' => _x( 'Product Fluid Volume', 'option label', 'wpsso' ),
-						'desc'  => sprintf( _x( 'a product volume (in %s)', 'tooltip fragment', 'wpsso' ),
+						'desc'  => sprintf( _x( 'a product fluid volume (in %s)', 'tooltip fragment', 'wpsso' ),
 							WpssoSchema::get_data_unit_text( 'fluid_volume' ) ),
 					),
 					'product_weight_value' => array(

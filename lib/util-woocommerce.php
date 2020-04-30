@@ -161,9 +161,54 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 			return $available_variations;
 		}
 
+		/**
+		 * Dimensions.
+		 */
+		public static function get_dimension_label( $unit_text ) {
+
+			return __( $unit_text, 'woocommerce' );
+		}
+
 		public static function get_dimension( $dimension, $to_unit, $from_unit = '' ) {
 
 			return wc_get_dimension( $dimension, $to_unit, $from_unit );
+		}
+
+		/**
+		 * Fluid volumes.
+		 */
+		public static function get_fluid_volume_label( $unit_text ) {
+
+			$fl_vol_units = self::get_fluid_volume_units();	// Returns translated values.
+
+			if ( isset( $fl_vol_units[ $unit_text ] ) ) {
+				return $fl_vol_units[ $unit_text ];
+			}
+
+			return '';
+		}
+
+		public static function get_fluid_volume_units() {
+
+			static $local_cache = null;
+
+			if ( null === $local_cache ) {
+
+				$local_cache = array(
+					'ml'    => __( 'millilitre', 'wpsso' ),
+					'cl'    => __( 'centilitre', 'wpsso' ),
+					'l'     => __( 'liter', 'wpsso' ),
+					'kl'    => __( 'kiloliter', 'wpsso' ),
+					'tsp'   => __( 'teaspoon', 'wpsso' ),
+					'tbsp'  => __( 'tablespoon', 'wpsso' ),
+					'fl oz' => __( 'fluid ounce', 'wpsso' ),
+					'pt'    => __( 'US pint', 'wpsso' ),
+					'qt'    => __( 'US quart', 'wpsso' ),
+					'gal'   => __( 'US gallon', 'wpsso' ),
+				);
+			}
+
+			return $local_cache;
 		}
 
 		public static function get_fluid_volume( $volume, $to_unit, $from_unit = '' ) {
@@ -268,22 +313,9 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 			return ( $volume < 0 ) ? 0 : $volume;
 		}
 
-		public static function get_fluid_volume_units() {
-
-			return array(
-				'ml'    => __( 'ml (millilitre)', 'wpsso' ),
-				'cl'    => __( 'cl (centilitre)', 'wpsso' ),
-				'l'     => __( 'l (liter)', 'wpsso' ),
-				'kl'    => __( 'kl (kiloliter)', 'wpsso' ),
-				'tsp'   => __( 'tsp (teaspoon)', 'wpsso' ),
-				'tbsp'  => __( 'tbsp (tablespoon)', 'wpsso' ),
-				'fl oz' => __( 'fl oz (fluid ounce)', 'wpsso' ),
-				'pt'    => __( 'pt (US pint)', 'wpsso' ),
-				'qt'    => __( 'qt (US quart)', 'wpsso' ),
-				'gal'   => __( 'gal (US gallon)', 'wpsso' ),
-			);
-		}
-
+		/**
+		 * Weights.
+		 */
 		public static function get_weight( $weight, $to_unit, $from_unit = '' ) {
 
 			return wc_get_weight( $weight, $to_unit, $from_unit );
