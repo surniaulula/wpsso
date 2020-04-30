@@ -247,11 +247,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case ( 0 === strpos( $msg_key, 'tooltip-meta-product_' ) ? true : false ):
 
-							$cf_fragments = $this->get_cf_tooltip_fragments( preg_replace( '/^tooltip-meta-/', '', $msg_key ) );
+							$cf_frags = $this->get_cf_tooltip_fragments( preg_replace( '/^tooltip-meta-/', '', $msg_key ) );
 
-							if ( ! empty( $cf_fragments ) ) {	// Just in case.
+							if ( ! empty( $cf_frags ) ) {	// Just in case.
 
-								$text = sprintf( __( 'The value of %1$s can be used in meta tags and Schema markup for simple products.', 'wpsso' ), $cf_fragments[ 1 ] ) . ' ';
+								$text = sprintf( __( 'The value of %1$s can be used in meta tags and Schema markup for simple products.', 'wpsso' ), $cf_frags[ 'desc' ] ) . ' ';
 
 								$text .= __( 'When e-commerce product variations are available, the value from each variation will be used instead.', 'wpsso' ) . ' ';
 
@@ -669,9 +669,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_show_opts': 	// Options to Show by Default.
 
-							$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+							$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-							$text = sprintf( __( 'You can select the default set of options to display in settings pages and the %1$s metabox.', 'wpsso' ), $metabox_title ) . ' ';
+							$text = sprintf( __( 'You can select the default set of options to display in settings pages and the %1$s metabox.', 'wpsso' ), $mb_title ) . ' ';
 
 							$text .= __( 'The basic view shows the most commonly used options, and includes a link to temporarily show all options when desired.', 'wpsso' ) . ' ';
 
@@ -1008,11 +1008,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 */
 						case 'tooltip-plugin_gravatar_api':	// Gravatar is Author Default Image.
 
-							$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+							$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
 							$text = __( 'If no custom image has been defined for an author, fallback to using their Gravatar image (if available) in author related meta tags and Schema markup.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'A customized image can be selected for/by each author in the WordPress user profile %s metabox.', 'wpsso' ), $metabox_title );
+							$text .= sprintf( __( 'A customized image can be selected for/by each author in the WordPress user profile %s metabox.', 'wpsso' ), $mb_title );
 
 							break;
 
@@ -1132,9 +1132,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 */
 						case 'tooltip-plugin_add_to':
 
-							$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+							$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-							$text = sprintf( __( 'Add or remove the %s metabox from admin editing pages for posts, pages, custom post types, terms (categories and tags), and user profile pages.', 'wpsso' ), $metabox_title );
+							$text = sprintf( __( 'Add or remove the %s metabox from admin editing pages for posts, pages, custom post types, terms (categories and tags), and user profile pages.', 'wpsso' ), $mb_title );
 
 							break;
 
@@ -1172,29 +1172,25 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 */
 						case ( 0 === strpos( $msg_key, 'tooltip-plugin_cf_' ) ? true : false ):
 
-							$cf_key = str_replace( 'tooltip-', '', $msg_key );
+							$cf_key      = str_replace( 'tooltip-', '', $msg_key );
+							$cf_frags    = $this->get_cf_tooltip_fragments( preg_replace( '/^tooltip-plugin_cf_/', '', $msg_key ) );
+							$cf_md_index = $this->p->cf[ 'opt' ][ 'cf_md_index' ];
+							$cf_md_key   = empty( $cf_md_index[ $cf_key ] ) ? '' : $cf_md_index[ $cf_key ];
+							$cf_is_multi = empty( $this->p->cf[ 'opt' ][ 'cf_md_multi' ][ $cf_md_key ] ) ? false : true;
+							$mb_title    = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-							$cf_fragments = $this->get_cf_tooltip_fragments( preg_replace( '/^tooltip-plugin_cf_/', '', $msg_key ) );
+							if ( ! empty( $cf_frags ) ) {	// Just in case.
 
-							$cf_md_index = empty( $this->p->cf[ 'opt' ][ 'cf_md_index' ][ $cf_key ] ) ? '' :
-								$this->p->cf[ 'opt' ][ 'cf_md_index' ][ $cf_key ];
-
-							$cf_is_multi = empty( $this->p->cf[ 'opt' ][ 'cf_md_multi' ][ $cf_md_index ] ) ? false : true;
-
-							$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
-
-							if ( ! empty( $cf_fragments ) ) {	// Just in case.
-
-								$text = sprintf( __( 'If your theme or another plugin provides a custom field (aka metadata) for %1$s, you may enter its custom field name here.', 'wpsso' ), $cf_fragments[ 1 ] ) . ' ';
+								$text = sprintf( __( 'If your theme or another plugin provides a custom field (aka metadata) for %1$s, you may enter its custom field name here.', 'wpsso' ), $cf_frags[ 'desc' ] ) . ' ';
 
 								// translators: %1$s is the metabox name, %2$s is the option name.
-								$text .= sprintf( __( 'If a custom field matching this name is found, its value will be imported for the %1$s "%2$s" option.', 'wpsso' ), $metabox_title, $cf_fragments[ 0 ] ) . ' ';
+								$text .= sprintf( __( 'If a custom field matching this name is found, its value will be imported for the %1$s "%2$s" option.', 'wpsso' ), $mb_title, $cf_frags[ 'label' ] ) . ' ';
 
 								if ( $cf_is_multi ) {
 
 									$text .= '</br></br>';
 
-									$text .= sprintf( __( 'Note that the "%1$s" option provides multiple input fields &mdash; the custom field value will be split on newline characters, and each line will be assigned to an individual input field.', 'wpsso' ), $cf_fragments[ 0 ] );
+									$text .= sprintf( __( 'Note that the "%1$s" option provides multiple input fields &mdash; the custom field value will be split on newline characters, and each line will be assigned to an individual input field.', 'wpsso' ), $cf_frags[ 'label' ] );
 								}
 							}
 
@@ -2301,12 +2297,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						if ( WpssoWpMeta::is_meta_page() ) {
 
-							$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
-
-							$metabox_tab = _x( 'Priority Media', 'metabox tab', 'wpsso' );
+							$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+							$md_tab   = _x( 'Priority Media', 'metabox tab', 'wpsso' );
 
 							$text .= sprintf( __( 'A larger custom image can be selected in the %1$s metabox under the %2$s tab.',
-								'wpsso' ), $metabox_title, $metabox_tab );
+								'wpsso' ), $mb_title, $md_tab );
 						}
 
 						/**
@@ -2358,25 +2353,25 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'notice-missing-og-image':
 
-						$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+						$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-						$text = sprintf( __( 'An Open Graph image meta tag could not be generated from this webpage content or its custom %s metabox settings. Facebook <em>requires at least one image meta tag</em> to render shared content correctly.', 'wpsso' ), $metabox_title );
+						$text = sprintf( __( 'An Open Graph image meta tag could not be generated from this webpage content or its custom %s metabox settings. Facebook <em>requires at least one image meta tag</em> to render shared content correctly.', 'wpsso' ), $mb_title );
 
 						break;
 
 					case 'notice-missing-og-description':
 
-						$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+						$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-						$text = sprintf( __( 'An Open Graph description meta tag could not be generated from this webpage content or its custom %s metabox settings. Facebook <em>requires a description meta tag</em> to render shared content correctly.', 'wpsso' ), $metabox_title );
+						$text = sprintf( __( 'An Open Graph description meta tag could not be generated from this webpage content or its custom %s metabox settings. Facebook <em>requires a description meta tag</em> to render shared content correctly.', 'wpsso' ), $mb_title );
 
 						break;
 
 					case 'notice-missing-schema-image':
 
-						$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+						$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-						$text = sprintf( __( 'A Schema "image" property could not be generated from this webpage content or its custom %s metabox settings. Google <em>requires at least one "image" property</em> for this Schema type.', 'wpsso' ), $metabox_title );
+						$text = sprintf( __( 'A Schema "image" property could not be generated from this webpage content or its custom %s metabox settings. Google <em>requires at least one "image" property</em> for this Schema type.', 'wpsso' ), $mb_title );
 
 						break;
 
@@ -2557,13 +2552,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'column-purchase-pro':
 
-						$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+						$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
 						$text = '<p>' . sprintf( __( '<strong>%s includes:</strong>', 'wpsso' ), $info[ 'short_pro' ] ) . '</p>';
 
 						$text .= '<ul>';
 
-						$text .= '<li>' . sprintf( __( 'Additional options in the %s metabox.', 'wpsso' ), $metabox_title ) . '</li>';
+						$text .= '<li>' . sprintf( __( 'Additional options in the %s metabox.', 'wpsso' ), $mb_title ) . '</li>';
 
 						$text .= '<li>' . __( 'Integration with 3rd party plugins and service APIs.', 'wpsso' ) . '</li>';
 
@@ -2641,7 +2636,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		/**
 		 * Returns an array of two elements: The custom field option label and a tooltip fragment.
 		 */
-		public function get_cf_tooltip_fragments( $msg_key = false ) {
+		private function get_cf_tooltip_fragments( $msg_key = false ) {
 
 			static $local_cache = null;
 
@@ -2649,147 +2644,147 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 				$local_cache = array(
 					'addl_type_urls' => array(
-						_x( 'Microdata Type URLs', 'option label', 'wpsso' ),
-						_x( 'additional microdata type URLs', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Microdata Type URLs', 'option label', 'wpsso' ),
+						'desc'  => _x( 'additional microdata type URLs', 'tooltip fragment', 'wpsso' ),
 					),
 					'howto_steps' => array(
-						_x( 'How-To Steps', 'option label', 'wpsso' ),
-						_x( 'how-to steps', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'How-To Steps', 'option label', 'wpsso' ),
+						'desc'  => _x( 'how-to steps', 'tooltip fragment', 'wpsso' ),
 					),
 					'howto_supplies' => array(
-						_x( 'How-To Supplies', 'option label', 'wpsso' ),
-						_x( 'how-to supplies', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'How-To Supplies', 'option label', 'wpsso' ),
+						'desc'  => _x( 'how-to supplies', 'tooltip fragment', 'wpsso' ),
 					),
 					'howto_tools' => array(
-						_x( 'How-To Tools', 'option label', 'wpsso' ),
-						_x( 'how-to tools', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'How-To Tools', 'option label', 'wpsso' ),
+						'desc'  => _x( 'how-to tools', 'tooltip fragment', 'wpsso' ),
 					),
 					'img_url' => array(
-						_x( 'Image URL', 'option label', 'wpsso' ),
-						_x( 'an image URL', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Image URL', 'option label', 'wpsso' ),
+						'desc'  => _x( 'an image URL', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_avail' => array(
-						_x( 'Product Availability', 'option label', 'wpsso' ),
-						_x( 'a product availability', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Product Availability', 'option label', 'wpsso' ),
+						'desc'  => _x( 'a product availability', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_brand' => array(
-						_x( 'Product Brand', 'option label', 'wpsso' ),
-						_x( 'a product brand', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Product Brand', 'option label', 'wpsso' ),
+						'desc'  => _x( 'a product brand', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_category' => array(
-						_x( 'Product Category', 'option label', 'wpsso' ),
-						sprintf( _x( 'a <a href="%s">Google product type ID</a>', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Product Category', 'option label', 'wpsso' ),
+						'desc'  => sprintf( _x( 'a <a href="%s">Google product type ID</a>', 'tooltip fragment', 'wpsso' ),
 							__( 'https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt', 'wpsso' ) ),
 					),
 					'product_color' => array(
-						_x( 'Product Color', 'option label', 'wpsso' ),
-						_x( 'a product color', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Product Color', 'option label', 'wpsso' ),
+						'desc'  => _x( 'a product color', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_condition' => array(
-						_x( 'Product Condition', 'option label', 'wpsso' ),
-						_x( 'a product condition', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Product Condition', 'option label', 'wpsso' ),
+						'desc'  => _x( 'a product condition', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_currency' => array(
-						_x( 'Product Currency', 'option label', 'wpsso' ),
-						_x( 'a product currency', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Product Currency', 'option label', 'wpsso' ),
+						'desc'  => _x( 'a product currency', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_depth_value' => array(
-						_x( 'Product Depth', 'option label', 'wpsso' ),
-						sprintf( _x( 'a product depth (in %s)', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Product Depth', 'option label', 'wpsso' ),
+						'desc'  => sprintf( _x( 'a product depth (in %s)', 'tooltip fragment', 'wpsso' ),
 							WpssoSchema::get_data_unit_text( 'depth' ) ),
 					),
 					'product_gtin14' => array(
-						_x( 'Product GTIN-14', 'option label', 'wpsso' ),
-						_x( 'a product GTIN-14 code', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Product GTIN-14', 'option label', 'wpsso' ),
+						'desc'  => _x( 'a product GTIN-14 code (aka ITF-14 code)', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_gtin13' => array(
-						_x( 'Product GTIN-13 (EAN)', 'option label', 'wpsso' ),
-						_x( 'a product GTIN-13 code (aka 13-digit ISBN codes or EAN/UCC-13)', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Product GTIN-13 (EAN)', 'option label', 'wpsso' ),
+						'desc'  => _x( 'a product GTIN-13 code (aka 13-digit ISBN codes or EAN/UCC-13)', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_gtin12' => array(
-						_x( 'Product GTIN-12 (UPC)', 'option label', 'wpsso' ),
-						_x( 'a product GTIN-12 code (12-digit GS1 identification key composed of a UPC company prefix, item reference, and check digit)', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Product GTIN-12 (UPC)', 'option label', 'wpsso' ),
+						'desc'  => _x( 'a product GTIN-12 code (12-digit GS1 identification key composed of a UPC company prefix, item reference, and check digit)', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_gtin8' => array(
-						_x( 'Product GTIN-8', 'option label', 'wpsso' ),
-						_x( 'a product GTIN-8 code (aka EAN/UCC-8 or 8-digit EAN)', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Product GTIN-8', 'option label', 'wpsso' ),
+						'desc'  => _x( 'a product GTIN-8 code (aka EAN/UCC-8 or 8-digit EAN)', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_gtin' => array(
-						_x( 'Product GTIN', 'option label', 'wpsso' ),
-						_x( 'a product GTIN code (GTIN-8, GTIN-12/UPC, GTIN-13/EAN, or GTIN-14)', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Product GTIN', 'option label', 'wpsso' ),
+						'desc'  => _x( 'a product GTIN code (GTIN-8, GTIN-12/UPC, GTIN-13/EAN, or GTIN-14)', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_height_value' => array(
-						_x( 'Product Height', 'option label', 'wpsso' ),
-						sprintf( _x( 'a product height (in %s)', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Product Height', 'option label', 'wpsso' ),
+						'desc'  => sprintf( _x( 'a product height (in %s)', 'tooltip fragment', 'wpsso' ),
 							WpssoSchema::get_data_unit_text( 'height' ) ),
 					),
 					'product_isbn' => array(
-						_x( 'Product ISBN', 'option label', 'wpsso' ),
-						_x( 'an ISBN code (aka International Standard Book Number)', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Product ISBN', 'option label', 'wpsso' ),
+						'desc'  => _x( 'an ISBN code (aka International Standard Book Number)', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_length_value' => array(
-						_x( 'Product Length', 'option label', 'wpsso' ),
-						sprintf( _x( 'a product length (in %s)', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Product Length', 'option label', 'wpsso' ),
+						'desc'  => sprintf( _x( 'a product length (in %s)', 'tooltip fragment', 'wpsso' ),
 							WpssoSchema::get_data_unit_text( 'length' ) ),
 					),
 					'product_material' => array(
-						_x( 'Product Material', 'option label', 'wpsso' ),
-						_x( 'a product material', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Product Material', 'option label', 'wpsso' ),
+						'desc'  => _x( 'a product material', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_mfr_part_no' => array(
-						_x( 'Product MPN', 'option label', 'wpsso' ),
-						_x( 'a Manufacturer Part Number (MPN)', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Product MPN', 'option label', 'wpsso' ),
+						'desc'  => _x( 'a Manufacturer Part Number (MPN)', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_price' => array(
-						_x( 'Product Price', 'option label', 'wpsso' ),
-						_x( 'a product price', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Product Price', 'option label', 'wpsso' ),
+						'desc'  => _x( 'a product price', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_retailer_part_no' => array(
-						_x( 'Product SKU', 'option label', 'wpsso' ),
-						_x( 'a Stock-Keeping Unit (SKU)', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Product SKU', 'option label', 'wpsso' ),
+						'desc'  => _x( 'a Stock-Keeping Unit (SKU)', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_size' => array(
-						_x( 'Product Size', 'option label', 'wpsso' ),
-						_x( 'a product size', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Product Size', 'option label', 'wpsso' ),
+						'desc'  => _x( 'a product size', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_target_gender' => array(
-						_x( 'Product Target Gender', 'option label', 'wpsso' ),
-						_x( 'a product target gender', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Product Target Gender', 'option label', 'wpsso' ),
+						'desc'  => _x( 'a product target gender', 'tooltip fragment', 'wpsso' ),
 					),
-					'product_volume_value' => array(
-						_x( 'Product Volume', 'option label', 'wpsso' ),
-						sprintf( _x( 'a product volume (in %s)', 'tooltip fragment', 'wpsso' ),
-							WpssoSchema::get_data_unit_text( 'volume' ) ),
+					'product_fluid_volume_value' => array(
+						'label' => _x( 'Product Fluid Volume', 'option label', 'wpsso' ),
+						'desc'  => sprintf( _x( 'a product volume (in %s)', 'tooltip fragment', 'wpsso' ),
+							WpssoSchema::get_data_unit_text( 'fluid_volume' ) ),
 					),
 					'product_weight_value' => array(
-						_x( 'Product Weight', 'option label', 'wpsso' ),
-						sprintf( _x( 'a product weight (in %s)', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Product Weight', 'option label', 'wpsso' ),
+						'desc'  => sprintf( _x( 'a product weight (in %s)', 'tooltip fragment', 'wpsso' ),
 							WpssoSchema::get_data_unit_text( 'weight' ) ),
 					),
 					'product_width_value' => array(
-						_x( 'Product Width', 'option label', 'wpsso' ),
-						sprintf( _x( 'a product width (in %s)', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Product Width', 'option label', 'wpsso' ),
+						'desc'  => sprintf( _x( 'a product width (in %s)', 'tooltip fragment', 'wpsso' ),
 							WpssoSchema::get_data_unit_text( 'width' ) ),
 					),
 					'recipe_ingredients' => array(
-						_x( 'Recipe Ingredients', 'option label', 'wpsso' ),
-						_x( 'recipe ingredients', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Recipe Ingredients', 'option label', 'wpsso' ),
+						'desc'  => _x( 'recipe ingredients', 'tooltip fragment', 'wpsso' ),
 					),
 					'recipe_instructions' => array(
-						_x( 'Recipe Instructions', 'option label', 'wpsso' ),
-						_x( 'recipe instructions', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Recipe Instructions', 'option label', 'wpsso' ),
+						'desc'  => _x( 'recipe instructions', 'tooltip fragment', 'wpsso' ),
 					),
 					'sameas_urls' => array(
-						_x( 'Same-As URLs', 'option label', 'wpsso' ),
-						_x( 'additional Same-As URLs', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Same-As URLs', 'option label', 'wpsso' ),
+						'desc'  => _x( 'additional Same-As URLs', 'tooltip fragment', 'wpsso' ),
 					),
 					'vid_embed' => array(
-						_x( 'Video Embed HTML', 'option label', 'wpsso' ),
-						_x( 'video embed HTML code (not a URL)', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Video Embed HTML', 'option label', 'wpsso' ),
+						'desc'  => _x( 'video embed HTML code (not a URL)', 'tooltip fragment', 'wpsso' ),
 					),
 					'vid_url' => array(
-						_x( 'Video URL', 'option label', 'wpsso' ),
-						_x( 'a video URL (not HTML code)', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Video URL', 'option label', 'wpsso' ),
+						'desc'  => _x( 'a video URL (not HTML code)', 'tooltip fragment', 'wpsso' ),
 					),
 				);
 			}

@@ -118,6 +118,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				701 => array(
 					'article_topic' => 'article_section',
 				),
+				725 => array(
+					'product_volume_value' => 'product_fluid_volume_value',
+				),
 			),
 		);
 

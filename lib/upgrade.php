@@ -226,8 +226,8 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'plugin_cf_product_ean' => 'plugin_cf_product_gtin13',
 				),
 				650 => array(
-					'plugin_product_attr_volume' => 'plugin_attr_product_volume_value',
-					'plugin_cf_product_volume'   => 'plugin_cf_product_volume_value',
+					'plugin_product_attr_volume' => 'plugin_attr_product_fluid_volume_value',
+					'plugin_cf_product_volume'   => 'plugin_cf_product_fluid_volume_value',
 				),
 				651 => array(
 					'plugin_honor_force_ssl' => '',
@@ -393,7 +393,11 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'plugin_product_attr_mfr_part_no'   => 'plugin_attr_product_mfr_part_no',
 					'plugin_product_attr_size'          => 'plugin_attr_product_size',
 					'plugin_product_attr_target_gender' => 'plugin_attr_product_target_gender',
-					'plugin_product_attr_volume_value'  => 'plugin_attr_product_volume_value',
+					'plugin_product_attr_volume_value'  => 'plugin_attr_product_fluid_volume_value',
+				),
+				725 => array(
+					'plugin_attr_product_volume_value' => 'plugin_attr_product_fluid_volume_value',
+					'plugin_cf_product_volume_value'   => 'plugin_cf_product_fluid_volume_value',
 				),
 			),
 		);

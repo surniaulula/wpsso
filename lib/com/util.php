@@ -1653,9 +1653,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$pos  = array_search( $needle, $keys );
 
 			if ( false !== $pos ) {
+
 				if ( isset( $keys[ $pos + 1 ] ) ) {
+
 					return $keys[ $pos + 1 ];
+
 				} elseif ( true === $loop ) {
+
 					return $keys[0];
 				}
 			}
@@ -1683,7 +1687,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function move_to_front( array &$arr, $key ) {
 
 			if ( array_key_exists( $key, $arr ) ) {
+
 				$val = $arr[ $key ];
+
 				$arr = array_merge( array( $key => $val ), $arr );
 			}
 
@@ -1691,95 +1697,56 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Returns the modified array.
-		 */
-		public static function get_before_key( array $arr, $match_key, $mixed, $add_value = '' ) {
-
-			return self::insert_in_array( 'before', $arr, $match_key, $mixed, $add_value );
-		}
-
-		/**
-		 * Returns the modified array.
-		 */
-		public static function get_after_key( array $arr, $match_key, $mixed, $add_value = '' ) {
-
-			return self::insert_in_array( 'after', $arr, $match_key, $mixed, $add_value );
-		}
-
-		/**
-		 * Returns the modified array.
-		 */
-		public static function get_replace_key( array $arr, $match_key, $mixed, $add_value = '' ) {
-
-			return self::insert_in_array( 'replace', $arr, $match_key, $mixed, $add_value );
-		}
-
-		/**
 		 * Modifies the referenced array directly, and returns true or false.
 		 */
-		public static function add_before_key( array &$arr, $match_key, $mixed, $add_value = '' ) {
+		public static function add_after_key( array &$arr, $match_key, $mixed, $add_value = null ) {
 
-			return self::insert_in_array( 'before', $arr, $match_key, $mixed, $add_value, $ret_matched = true );
+			return self::insert_in_array( 'after', $arr, $match_key, $mixed, $add_value, $ret_bool = true );
 		}
 
-		/**
-		 * Modifies the referenced array directly, and returns true or false.
-		 */
-		public static function add_after_key( array &$arr, $match_key, $mixed, $add_value = '' ) {
-
-			return self::insert_in_array( 'after', $arr, $match_key, $mixed, $add_value, $ret_matched = true );
-		}
-
-		/**
-		 * Modifies the referenced array directly, and returns true or false.
-		 */
-		public static function do_replace_key( array &$arr, $match_key, $mixed, $add_value = '' ) {
-
-			return self::insert_in_array( 'replace', $arr, $match_key, $mixed, $add_value, $ret_matched = true );
-		}
-
-		private static function insert_in_array( $rel_pos, array &$arr, $match_key, $mixed, $add_value, $ret_matched = false ) {
+		private static function insert_in_array( $pos, array &$arr, $match_key, $mixed, $add_value = null, $ret_bool = false ) {
 
 			$matched = false;
 
 			if ( array_key_exists( $match_key, $arr ) ) {
 
-				$new_array = array();
+				$new_arr = array();
 
-				foreach ( $arr as $key => $value ) {
+				foreach ( $arr as $key => $val ) {
 
-					if ( $rel_pos === 'after' ) {
-						$new_array[ $key ] = $value;
+					if ( $pos === 'after' ) {
+						$new_arr[ $key ] = $val;
 					}
 
 					/**
 					 * Add new value before/after the matched key.
+					 *
 					 * Replace the matched key by default (no test required).
 					 */
 					if ( $key === $match_key ) {
 
 						if ( is_array( $mixed ) ) {
-							$new_array = array_merge( $new_array, $mixed );
+							$new_arr = array_merge( $new_arr, $mixed );
 						} elseif ( is_string( $mixed ) ) {
-							$new_array[ $mixed ] = $add_value;
+							$new_arr[ $mixed ] = $add_value;
 						} else {
-							$new_array[] = $add_value;
+							$new_arr[] = $add_value;
 						}
 
 						$matched = true;
 					}
 
-					if ( $rel_pos === 'before' ) {
-						$new_array[ $key ] = $value;
+					if ( $pos === 'before' ) {
+						$new_arr[ $key ] = $val;
 					}
 				}
 
-				$arr = $new_array;
+				$arr = $new_arr;
 
-				unset( $new_array );
+				unset( $new_arr );
 			}
 
-			return $ret_matched ? $matched : $arr; // Return true/false or the array (default).
+			return $ret_bool ? $matched : $arr; // Return true/false or the array (default).
 		}
 
 		/**
@@ -2004,8 +1971,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':height:units'                    => '',	// Non-standard / internal meta tag (units after value).
 				$mt_pre . ':length:value'                    => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':length:units'                    => '',	// Non-standard / internal meta tag (units after value).
-				$mt_pre . ':volume:value'                    => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':volume:units'                    => '',	// Non-standard / internal meta tag (units after value).
+				$mt_pre . ':fluid_volume:value'              => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':fluid_volume:units'              => '',	// Non-standard / internal meta tag (units after value).
 				$mt_pre . ':weight:value'                    => '',
 				$mt_pre . ':weight:units'                    => '',
 				$mt_pre . ':width:value'                     => '',	// Non-standard / internal meta tag.

@@ -4268,35 +4268,35 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 * Example $prefix = "product" and $sep = ":" for meta tag names:
 		 *
 		 * 	Array(
-		 *		[product:brand]         => Brand
-		 *		[product:color]         => Color
-		 *		[product:condition]     => Condition
-		 *		[product:gtin14]        => GTIN-14
-		 *		[product:gtin14]        => GTIN-13
-		 *		[product:gtin14]        => GTIN-12
-		 *		[product:gtin8]         => GTIN-8
-		 *		[product:material]      => Material
-		 *		[product:mfr_part_no]   => MPN
-		 *		[product:size]          => Size
-		 *		[product:target_gender] => Gender
-		 *		[product:volume:value]  => Volume
+		 *		[product:brand]              => Brand
+		 *		[product:color]              => Color
+		 *		[product:condition]          => Condition
+		 *		[product:gtin14]             => GTIN-14
+		 *		[product:gtin14]             => GTIN-13
+		 *		[product:gtin14]             => GTIN-12
+		 *		[product:gtin8]              => GTIN-8
+		 *		[product:material]           => Material
+		 *		[product:mfr_part_no]        => MPN
+		 *		[product:size]               => Size
+		 *		[product:target_gender]      => Gender
+		 *		[product:fluid_volume:value] => Volume
 		 *	)
 		 *
 		 * Example $prefix = "product" and $sep = "_" for option names:
 		 *
 		 * 	Array(
-		 *		[product_brand]         => Brand
-		 *		[product_color]         => Color
-		 *		[product_condition]     => Condition
-		 *		[product_gtin14]        => GTIN-14
-		 *		[product_gtin14]        => GTIN-13
-		 *		[product_gtin14]        => GTIN-12
-		 *		[product_gtin8]         => GTIN-8
-		 *		[product_material]      => Material
-		 *		[product_mfr_part_no]   => MPN
-		 *		[product_size]          => Size
-		 *		[product_target_gender] => Gender
-		 *		[product_volume_value]  => Volume
+		 *		[product_brand]              => Brand
+		 *		[product_color]              => Color
+		 *		[product_condition]          => Condition
+		 *		[product_gtin14]             => GTIN-14
+		 *		[product_gtin14]             => GTIN-13
+		 *		[product_gtin14]             => GTIN-12
+		 *		[product_gtin8]              => GTIN-8
+		 *		[product_material]           => Material
+		 *		[product_mfr_part_no]        => MPN
+		 *		[product_size]               => Size
+		 *		[product_target_gender]      => Gender
+		 *		[product_fluid_volume_value] => Volume
 		 *	)
 		 */
 		public function get_product_attr_names( $prefix = 'product', $sep = ':' ) {

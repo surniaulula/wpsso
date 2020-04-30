@@ -2696,13 +2696,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Example $names array:
 		 *
 		 * array(
-		 * 	'depth'  => 'product:depth:value',
-		 * 	'height' => 'product:height:value',
-		 * 	'length' => 'product:length:value',
-		 * 	'size'   => 'product:size',
-		 * 	'volume' => 'product:volume:value',
-		 * 	'weight' => 'product:weight:value',
-		 * 	'width'  => 'product:width:value',
+		 * 	'depth'        => 'product:depth:value',
+		 * 	'height'       => 'product:height:value',
+		 * 	'length'       => 'product:length:value',
+		 * 	'size'         => 'product:size',
+		 * 	'fluid_volume' => 'product:fluid_volume:value',
+		 * 	'weight'       => 'product:weight:value',
+		 * 	'width'        => 'product:width:value',
 		 * );
 		 */
 		public static function get_data_unit_from_assoc( array $assoc, array $names ) {

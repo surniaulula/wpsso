@@ -1746,8 +1746,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 *		'product:size'                    => 'product_size',
 			 *		'product:target_gender'           => 'product_target_gender',
 			 *		'product:upc'                     => 'product_gtin12',
-			 *		'product:volume:value'            => 'product_volume_value',
-			 *		'product:volume:units'            => '',
+			 *		'product:fluid_volume:value'      => 'product_fluid_volume_value',
+			 *		'product:fluid_volume:units'      => '',
 			 *		'product:weight:value'            => 'product_weight_value',
 			 *		'product:weight:units'            => '',
 			 *		'product:width:value'             => 'product_width_value',
@@ -1766,7 +1766,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					if ( $md_opts[ $md_key ] === 'none' ) {
 
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'unsetting ' . $mt_name . ': ' . $md_key . ' metadata is "none"' );
+							$this->p->debug->log( 'unsetting ' . $mt_name . ': ' .
+								$md_key . ' metadata is "none"' );
 						}
 
 						unset( $mt_og[ $mt_name ] );
@@ -1776,15 +1777,15 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					 *
 					 * Example: 
 					 *
-					 *	'product:depth:value'  => 'product_depth_value',
-					 *	'product:height:value' => 'product_height_value',
-					 *	'product:length:value' => 'product_length_value',
-					 *	'product:volume:value' => 'product_volume_value',
-					 *	'product:weight:value' => 'product_weight_value',
-					 *	'product:width:value'  => 'product_width_value',
+					 *	'product:depth:value'        => 'product_depth_value',
+					 *	'product:height:value'       => 'product_height_value',
+					 *	'product:length:value'       => 'product_length_value',
+					 *	'product:fluid_volume:value' => 'product_fluid_volume_value',
+					 *	'product:weight:value'       => 'product_weight_value',
+					 *	'product:width:value'        => 'product_width_value',
 					 */
-					} elseif ( preg_match( '/^.*_([^_]+)_value$/', $md_key, $unit_match ) &&
-						preg_match( '/^(.*):value$/', $mt_name, $mt_match ) ) {
+					} elseif ( preg_match( '/^(.*):value$/', $mt_name, $mt_match ) && 
+						preg_match( '/^[^_]+_(.*)_value$/', $md_key, $unit_match ) ) {
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( $mt_name . ' from metadata = ' . $md_opts[ $md_key ] );
@@ -1837,7 +1838,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					if ( $this->p->options[ 'og_def_' . $md_key ] !== 'none' ) {
 
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $mt_name . ' from options default = ' . $this->p->options[ 'og_def_' . $md_key ] );
+							$this->p->debug->log( $mt_name . ' from options default = ' .
+								$this->p->options[ 'og_def_' . $md_key ] );
 						}
 
 						$mt_og[ $mt_name ] = $this->p->options[ 'og_def_' . $md_key ];

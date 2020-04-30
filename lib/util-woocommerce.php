@@ -160,5 +160,133 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 
 			return $available_variations;
 		}
+
+		public static function get_dimension( $dimension, $to_unit, $from_unit = '' ) {
+
+			return wc_get_dimension( $dimension, $to_unit, $from_unit );
+		}
+
+		public static function get_fluid_volume( $volume, $to_unit, $from_unit = '' ) {
+
+			$to_unit = strtolower( $to_unit );
+
+			if ( empty( $from_unit ) ) {
+				$from_unit = strtolower( get_option( 'woocommerce_fluid_volume_unit', $default = 'ml' ) );
+			}
+
+			// Unify all units to ml first.
+			if ( $from_unit !== $to_unit ) {
+
+				switch ( $from_unit ) {
+
+					/**
+					 * Imperial units.
+					 */
+					case 'tsp':	// US teaspoon.
+						$volume *= 4.92892;
+						break;
+					case 'tbsp':	// US tablespoon.
+						$volume *= 14.7868;
+						break;
+					case 'fl oz':	// Fluid oz.
+						$volume *= 29.5735;
+						break;
+					case 'pt':	// US pint.
+						$volume *= 473.176;
+						break;
+					case 'qt':	// US quart.
+						$volume *= 946.353;
+						break;
+					case 'gal':	// US gallon.
+						$volume *= 3785.41;
+						break;
+
+					/**
+					 * Metric units.
+					 */
+					case 'ml':	// Millilitre.
+						$volume *= 1;
+						break;
+					case 'cl':	// Centilitre.
+						$volume *= 10;
+						break;
+					case 'l':	// Liter.
+						$volume *= 1000;
+						break;
+					case 'kl':	// Kiloliter.
+						$volume *= 1000000;
+						break;
+				}
+
+				// Output desired unit.
+				switch ( $to_unit ) {
+
+					/**
+					 * Imperial units.
+					 */
+					case 'tsp':	// US teaspoon.
+						$volume *= 0.202884;
+						break;
+					case 'tbsp':	// US tablespoon.
+						$volume *= 0.067628;
+						break;
+					case 'fl oz':	// Fluid oz.
+						$volume *= 0.033814;
+						break;
+					case 'pt':	// US pint.
+						$volume *= 0.00211338;
+						break;
+					case 'qt':	// US quart.
+						$volume *= 0.00105669;
+						break;
+					case 'gal':	// US gallon.
+						$volume *= 0.000264172;
+						break;
+
+					/**
+					 * Metric units.
+					 */
+					case 'ml':	// Millilitre.
+						$volume *= 1;
+						break;
+					case 'cl':	// Centilitre.
+						$volume *= 0.1;
+						break;
+					case 'l':	// Liter.
+						$volume *= 0.001;
+						break;
+					case 'kl':	// Kiloliter.
+						$volume *= 0.000001;
+						break;
+				}
+
+				// Output desired unit.
+				switch ( $to_unit ) {
+				}
+			}
+
+			return ( $volume < 0 ) ? 0 : $volume;
+		}
+
+		public static function get_fluid_volume_units() {
+
+			return array(
+				'ml'    => __( 'ml (millilitre)', 'wpsso' ),
+				'cl'    => __( 'cl (centilitre)', 'wpsso' ),
+				'l'     => __( 'l (liter)', 'wpsso' ),
+				'kl'    => __( 'kl (kiloliter)', 'wpsso' ),
+				'tsp'   => __( 'tsp (teaspoon)', 'wpsso' ),
+				'tbsp'  => __( 'tbsp (tablespoon)', 'wpsso' ),
+				'fl oz' => __( 'fl oz (fluid ounce)', 'wpsso' ),
+				'pt'    => __( 'pt (US pint)', 'wpsso' ),
+				'qt'    => __( 'qt (US quart)', 'wpsso' ),
+				'gal'   => __( 'gal (US gallon)', 'wpsso' ),
+			);
+		}
+
+		public static function get_weight( $weight, $to_unit, $from_unit = '' ) {
+
+			return wc_get_weight( $weight, $to_unit, $from_unit );
+		}
 	}
 }

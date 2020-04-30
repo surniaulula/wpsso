@@ -132,6 +132,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 * Must be numeric (blank and zero are ok).
 				 */
 				case 'product_depth_value':
+				case 'product_fluid_volume_value':
 				case 'product_gtin14':
 				case 'product_gtin13':
 				case 'product_gtin12':
@@ -141,7 +142,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'product_isbn':
 				case 'product_length_value':
 				case 'product_price':
-				case 'product_volume_value':
 				case 'product_weight_value':
 				case 'product_width_value':
 
