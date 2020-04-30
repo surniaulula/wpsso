@@ -7082,43 +7082,43 @@ msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
 #: lib/util-woocommerce.php:198
-msgid "millilitre"
+msgid "ml"
 msgstr ""
 
 #: lib/util-woocommerce.php:199
-msgid "centilitre"
+msgid "cl"
 msgstr ""
 
 #: lib/util-woocommerce.php:200
-msgid "liter"
+msgid "l"
 msgstr ""
 
 #: lib/util-woocommerce.php:201
-msgid "kiloliter"
+msgid "kl"
 msgstr ""
 
 #: lib/util-woocommerce.php:202
-msgid "teaspoon"
+msgid "US tsp"
 msgstr ""
 
 #: lib/util-woocommerce.php:203
-msgid "tablespoon"
+msgid "US tbsp"
 msgstr ""
 
 #: lib/util-woocommerce.php:204
-msgid "fluid ounce"
+msgid "US fl oz"
 msgstr ""
 
 #: lib/util-woocommerce.php:205
-msgid "US pint"
+msgid "US pt"
 msgstr ""
 
 #: lib/util-woocommerce.php:206
-msgid "US quart"
+msgid "US qt"
 msgstr ""
 
 #: lib/util-woocommerce.php:207
-msgid "US gallon"
+msgid "US gal"
 msgstr ""
 
 #: lib/util.php:547

@@ -195,16 +195,16 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 			if ( null === $local_cache ) {
 
 				$local_cache = array(
-					'ml'    => __( 'millilitre', 'wpsso' ),
-					'cl'    => __( 'centilitre', 'wpsso' ),
-					'l'     => __( 'liter', 'wpsso' ),
-					'kl'    => __( 'kiloliter', 'wpsso' ),
-					'tsp'   => __( 'teaspoon', 'wpsso' ),
-					'tbsp'  => __( 'tablespoon', 'wpsso' ),
-					'fl oz' => __( 'fluid ounce', 'wpsso' ),
-					'pt'    => __( 'US pint', 'wpsso' ),
-					'qt'    => __( 'US quart', 'wpsso' ),
-					'gal'   => __( 'US gallon', 'wpsso' ),
+					'ml'       => __( 'ml', 'wpsso' ),		// Millilitre.
+					'cl'       => __( 'cl', 'wpsso' ),		// Centilitre.
+					'l'        => __( 'l', 'wpsso' ),		// Liter.
+					'kl'       => __( 'kl', 'wpsso' ),		// Kiloliter.
+					'US tsp'   => __( 'US tsp', 'wpsso' ),		// US teaspoon.
+					'US tbsp'  => __( 'US tbsp', 'wpsso' ),		// US tablespoon.
+					'US fl oz' => __( 'US fl oz', 'wpsso' ),	// US fluid ounce.
+					'US pt'    => __( 'US pt', 'wpsso' ),		// US pint.
+					'US qt'    => __( 'US qt', 'wpsso' ),		// US quart.
+					'US gal'   => __( 'US gal', 'wpsso' ),		// US gallon.
 				);
 			}
 
@@ -219,94 +219,94 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 				$from_unit = strtolower( get_option( 'woocommerce_fluid_volume_unit', $default = 'ml' ) );
 			}
 
-			// Unify all units to ml first.
 			if ( $from_unit !== $to_unit ) {
 
+				/**
+				 * Convert any volume to 'ml' first.
+				 */
 				switch ( $from_unit ) {
 
 					/**
-					 * Imperial units.
-					 */
-					case 'tsp':	// US teaspoon.
-						$volume *= 4.92892;
-						break;
-					case 'tbsp':	// US tablespoon.
-						$volume *= 14.7868;
-						break;
-					case 'fl oz':	// Fluid oz.
-						$volume *= 29.5735;
-						break;
-					case 'pt':	// US pint.
-						$volume *= 473.176;
-						break;
-					case 'qt':	// US quart.
-						$volume *= 946.353;
-						break;
-					case 'gal':	// US gallon.
-						$volume *= 3785.41;
-						break;
-
-					/**
 					 * Metric units.
 					 */
-					case 'ml':	// Millilitre.
+					case 'ml':		// Millilitre.
 						$volume *= 1;
 						break;
-					case 'cl':	// Centilitre.
+					case 'cl':		// Centilitre.
 						$volume *= 10;
 						break;
-					case 'l':	// Liter.
+					case 'l':		// Liter.
 						$volume *= 1000;
 						break;
-					case 'kl':	// Kiloliter.
+					case 'kl':		// Kiloliter.
 						$volume *= 1000000;
 						break;
-				}
-
-				// Output desired unit.
-				switch ( $to_unit ) {
 
 					/**
 					 * Imperial units.
 					 */
-					case 'tsp':	// US teaspoon.
-						$volume *= 0.202884;
+					case 'US tsp':		// US teaspoon.
+						$volume *= 4.92892;
 						break;
-					case 'tbsp':	// US tablespoon.
-						$volume *= 0.067628;
+					case 'US tbsp':		// US tablespoon.
+						$volume *= 14.7868;
 						break;
-					case 'fl oz':	// Fluid oz.
-						$volume *= 0.033814;
+					case 'US fl oz':	// US fluid oz.
+						$volume *= 29.5735;
 						break;
-					case 'pt':	// US pint.
-						$volume *= 0.00211338;
+					case 'US pt':		// US pint.
+						$volume *= 473.176;
 						break;
-					case 'qt':	// US quart.
-						$volume *= 0.00105669;
+					case 'US qt':		// US quart.
+						$volume *= 946.353;
 						break;
-					case 'gal':	// US gallon.
-						$volume *= 0.000264172;
+					case 'US gal':		// US gallon.
+						$volume *= 3785.41;
 						break;
+				}
+
+				/**
+				 * Convert volume from ml to desired output.
+				 */
+				switch ( $to_unit ) {
 
 					/**
 					 * Metric units.
 					 */
-					case 'ml':	// Millilitre.
+					case 'ml':		// Millilitre.
 						$volume *= 1;
 						break;
-					case 'cl':	// Centilitre.
+					case 'cl':		// Centilitre.
 						$volume *= 0.1;
 						break;
-					case 'l':	// Liter.
+					case 'l':		// Liter.
 						$volume *= 0.001;
 						break;
-					case 'kl':	// Kiloliter.
+					case 'kl':		// Kiloliter.
 						$volume *= 0.000001;
 						break;
-				}
 
-				// Output desired unit.
-				switch ( $to_unit ) {
+					/**
+					 * Imperial units.
+					 */
+					case 'US tsp':		// US teaspoon.
+						$volume *= 0.202884;
+						break;
+					case 'US tbsp':		// US tablespoon.
+						$volume *= 0.067628;
+						break;
+					case 'US fl oz':	// US fluid oz.
+						$volume *= 0.033814;
+						break;
+					case 'US pt':		// US pint.
+						$volume *= 0.00211338;
+						break;
+					case 'US qt':		// US quart.
+						$volume *= 0.00105669;
+						break;
+					case 'US gal':		// US gallon.
+						$volume *= 0.000264172;
+						break;
 				}
 			}
 
