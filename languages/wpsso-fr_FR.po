@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 7.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-04-30 10:05-0700\n"
-"PO-Revision-Date: 2020-04-30 10:06-0700\n"
+"POT-Creation-Date: 2020-04-30 12:21-0700\n"
+"PO-Revision-Date: 2020-04-30 12:23-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -805,7 +805,7 @@ msgstr "Cet avis peut être masqué définitivement."
 msgid "This notice can be dismissed for %s."
 msgstr "Cet avis peut être masqué pour %s."
 
-#: lib/com/notice.php:472 lib/gettext-com.php:32 lib/post.php:1604
+#: lib/com/notice.php:472 lib/gettext-com.php:32 lib/post.php:1606
 msgid "Edit"
 msgstr "Modifier"
 
@@ -5475,46 +5475,46 @@ msgstr "Vérification %1$d de %2$d réussi..."
 msgid "Save a draft or publish to display these options."
 msgstr "Enregistrez un brouillon ou publiez pour afficher ces options."
 
-#: lib/post.php:1592 lib/script.php:194
+#: lib/post.php:1594 lib/script.php:194
 msgctxt "option label"
 msgid "Robots"
 msgstr "Robots"
 
-#: lib/post.php:1606
+#: lib/post.php:1608
 msgid "Edit robots"
 msgstr "Modifier robots"
 
-#: lib/post.php:1620
+#: lib/post.php:1622
 msgctxt "option label"
 msgid "No archive"
 msgstr "Pas d'archivage"
 
-#: lib/post.php:1621
+#: lib/post.php:1623
 msgctxt "option label"
 msgid "No follow"
 msgstr "Pas de suivi"
 
-#: lib/post.php:1622
+#: lib/post.php:1624
 msgctxt "option label"
 msgid "No image index"
 msgstr "Pas d'indexation d'image"
 
-#: lib/post.php:1623
+#: lib/post.php:1625
 msgctxt "option label"
 msgid "No index"
 msgstr "Pas d'indexation"
 
-#: lib/post.php:1624
+#: lib/post.php:1626
 msgctxt "option label"
 msgid "No snippet"
 msgstr "Pas d'extrait"
 
-#: lib/post.php:1625
+#: lib/post.php:1627
 msgctxt "option label"
 msgid "No translate"
 msgstr "Pas de traduction"
 
-#: lib/post.php:1754
+#: lib/post.php:1756
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages pour %1$s ID %2$s."
 
@@ -6213,44 +6213,48 @@ msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages pour l'usager ID %1$s."
 
 #: lib/util-woocommerce.php:198
-msgid "millilitre"
-msgstr "millilitre"
+msgid "ml"
+msgstr "ml"
 
 #: lib/util-woocommerce.php:199
-msgid "centilitre"
-msgstr "centilitre"
+msgid "cl"
+msgstr "cl"
 
 #: lib/util-woocommerce.php:200
-msgid "liter"
-msgstr "litre"
+msgid "l"
+msgstr "l"
 
 #: lib/util-woocommerce.php:201
-msgid "kiloliter"
-msgstr "kilolitre"
+msgid "kl"
+msgstr "kl"
 
 #: lib/util-woocommerce.php:202
-msgid "teaspoon"
-msgstr "cuillère à thé"
+msgid "US tsp"
+msgstr "c.-à-t. américaine"
 
 #: lib/util-woocommerce.php:203
-msgid "tablespoon"
-msgstr "cuillère à soupe"
+msgid "US tbsp"
+msgstr "c.-à-s. américaine"
 
 #: lib/util-woocommerce.php:204
-msgid "fluid ounce"
-msgstr "once liquide"
+msgid "US fl oz"
+msgstr "oz liq américaine"
 
 #: lib/util-woocommerce.php:205
-msgid "US pint"
-msgstr "pinte américaine"
+msgid "US cup"
+msgstr "tasse américaine"
 
 #: lib/util-woocommerce.php:206
-msgid "US quart"
-msgstr "quart américain"
+msgid "US pt"
+msgstr "pinte américaine"
 
 #: lib/util-woocommerce.php:207
-msgid "US gallon"
-msgstr "gallon américain"
+msgid "US qt"
+msgstr "quart américain"
+
+#: lib/util-woocommerce.php:208
+msgid "US gal"
+msgstr "gal. américain"
 
 #: lib/util.php:547
 msgid "Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s (%3$s)."

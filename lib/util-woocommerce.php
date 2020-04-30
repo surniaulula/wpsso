@@ -202,6 +202,7 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 					'US tsp'   => __( 'US tsp', 'wpsso' ),		// US teaspoon.
 					'US tbsp'  => __( 'US tbsp', 'wpsso' ),		// US tablespoon.
 					'US fl oz' => __( 'US fl oz', 'wpsso' ),	// US fluid ounce.
+					'US cup'   => __( 'US cup', 'wpsso' ),		// US cup.
 					'US pt'    => __( 'US pt', 'wpsso' ),		// US pint.
 					'US qt'    => __( 'US qt', 'wpsso' ),		// US quart.
 					'US gal'   => __( 'US gal', 'wpsso' ),		// US gallon.
@@ -254,6 +255,9 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 					case 'US fl oz':	// US fluid oz.
 						$volume *= 29.5735;
 						break;
+					case 'US cup':		// US cup.
+						$volume *= 236.588;
+						break;
 					case 'US pt':		// US pint.
 						$volume *= 473.176;
 						break;
@@ -297,6 +301,9 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 						break;
 					case 'US fl oz':	// US fluid oz.
 						$volume *= 0.033814;
+						break;
+					case 'US cup':		// US cup.
+						$volume *= 0.00422675;
 						break;
 					case 'US pt':		// US pint.
 						$volume *= 0.00211338;

@@ -7110,14 +7110,18 @@ msgid "US fl oz"
 msgstr ""
 
 #: lib/util-woocommerce.php:205
-msgid "US pt"
+msgid "US cup"
 msgstr ""
 
 #: lib/util-woocommerce.php:206
-msgid "US qt"
+msgid "US pt"
 msgstr ""
 
 #: lib/util-woocommerce.php:207
+msgid "US qt"
+msgstr ""
+
+#: lib/util-woocommerce.php:208
 msgid "US gal"
 msgstr ""
 
