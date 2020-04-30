@@ -10,7 +10,7 @@ Tags: optimize, open graph, meta tags, rich pins, twitter cards, schema, seo, so
 Contributors: jsmoriss
 Requires PHP: 5.6
 Requires At Least: 4.2
-Tested Up To: 4.5.1
+Tested Up To: 5.4.1
 WC Tested Up To: 4.0.1
 Stable Tag: 7.2.0
 
