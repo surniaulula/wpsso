@@ -310,7 +310,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 		* Product Width (cm)
 		* Product Height (cm)
 		* Product Depth (cm)
-		* Product Volume (ml)
+		* Product Fluid Volume (ml)
 		* Product GTIN-14
 		* Product GTIN-13 (EAN)
 		* Product GTIN-12 (UPC)
@@ -498,7 +498,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.3.0-dev.5 (2020/04/29)**
+**Version 7.3.0-dev.6 (2020/04/29)**
 
 * **New Features**
 	* Added a new WPSSO Metadata for WooCommerce add-on.
@@ -1110,7 +1110,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 7.3.0-dev.5 =
+= 7.3.0-dev.6 =
 
 (2020/04/29) Added a new WPSSO Metadata for WooCommerce add-on.
 
