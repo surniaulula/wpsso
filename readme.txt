@@ -466,7 +466,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 == Screenshots ==
 
 01. The Document SSO metabox shows a different set of options based on the content type selected, allowing you to customize the details of articles, events, e-Commerce products, recipes, reviews, and more.
-02. The Essential Settings page offers a quick and easy setup for a few essential settings. The General, and Advanced (Premium) settings pages offer a wealth of additional options for all levels.
+02. The Essential Settings page offers a quick and easy setup for a few essential settings. The General and Advanced settings pages offer a wealth of additional options to further customize the plugin for your site.
 
 == Changelog ==
 
@@ -498,7 +498,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.3.0-b.1 (2020/04/30)**
+**Version 7.3.0-rc.1 (2020/05/01)**
 
 * **New Features**
 	* Added a new WPSSO Metadata for WooCommerce add-on.
@@ -1110,9 +1110,9 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 7.3.0-b.1 =
+= 7.3.0-rc.1 =
 
-(2020/04/30) Added a new WPSSO Metadata for WooCommerce add-on.
+(2020/05/01) Added a new WPSSO Metadata for WooCommerce add-on.
 
 = 7.2.0 =
 
