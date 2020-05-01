@@ -29,11 +29,11 @@
 
 	<li><p>The following WooCommerce integration notes are for the WPSSO Core Premium plugin, which includes an integration module to fetch product information from <a href="https://wordpress.org/plugins/woocommerce/">the WooCommerce plugin</a>. If you use the Free / Standard version of WPSSO Core, you will need to <a href="https://wpsso.com/extend/plugins/wpsso/">purchase the Premium version of WPSSO Core</a> before using these integration notes.</p></li>
 
-	<li><p><strong>You should be familiar with creating and managing WooCommerce Product Attributes. See the <a href="https://docs.woocommerce.com/document/managing-product-taxonomies/#section-6">WooCommerce documentation on Managing Product Attributes</a> for additional information.</strong></p></li>
+	<li><p><strong>You should be familiar with creating and managing WooCommerce Product Attributes.</strong> See <a href="https://docs.woocommerce.com/document/managing-product-taxonomies/#section-6">WooCommerce documentation on Managing Product Attributes</a> for additional information.</p></li>
 
 	<li><p>You may want to activate the <a href="https://wordpress.org/plugins/wpsso-wc-metadata/">WPSSO Product Metadata for WooCommerce add-on</a> (if you haven't already) to manage GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, and MPN product information in WooCommerce. You can create WooCommerce Product Attributes for these and other values (see bellow), but WooCommerce Product Attributes are designed primarily for selectable product options, not singular product information like GTIN, ISBN, and MPN codes.</p></li>
 
-	<li><p>You may want to activate the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup add-on</a> (if you haven't already) to replace the default Schema markup offered by WooCommerce. The WooCommerce plugin provides incomplete Schema markup and will not pass Google validation. Unless you have taken steps (ie. coded custom filters) to fix the default WooCommerce Schema JSON-LD markup for Google's Rich Results, you will want to activate the WPSSO Schema JSON-LD Markup add-on. Together, the WPSSO Core Premium plugin and its WPSSO Schema JSON-LD Markup add-on provide <em>extensive, complete and correct</em> Schema product markup as JSON-LD for Google Rich Results, including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, and much, much more.</p></li>
+	<li><p>You may want to activate the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup add-on</a> (if you haven't already) to replace the default Schema markup offered by WooCommerce. The WooCommerce plugin is known to offer incomplete Schema markup for Google, and will not pass Google validation. Unless you have taken steps (ie. coded custom filters) to fix the default WooCommerce Schema JSON-LD markup for Google's Rich Results, you will want to activate the WPSSO Schema JSON-LD Markup add-on. Together, the WPSSO Core Premium plugin and its WPSSO Schema JSON-LD Markup add-on provide <em>extensive, complete and correct</em> Schema product markup as JSON-LD for Google Rich Results, including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, and much, much more.</p></li>
 
 </ol>
 
@@ -59,7 +59,7 @@
 	<li><strong>Volume</strong> (in ml)</li>
 </ul>
 
-<p>When creating WooCommerce Product Attributes, you can use the Product Attribute for variations (ie. the WooCommerce product "<em>Used for variations</em>" option is enabled), or not &mdash; if not, then its value will be used for the main product and inherited by variations. If you use the Product Attribute for variations, then you can assign a default value for all variations under the WooCommerce Product "<em>Variations</em>" tab, or not &mdash; and if not, then each variation is expected to have a different value, like Color or Size, for example. See the <a href="https://docs.woocommerce.com/document/managing-product-taxonomies/#section-6">WooCommerce documentation on Managing Product Attributes</a> for additional information.</p> 
+<p>When creating WooCommerce Product Attributes, you can use the Product Attribute for variations (ie. the WooCommerce product "<em>Used for variations</em>" option is enabled), or not &mdash; if not, then its value will be used for the main product and inherited by variations. If you use the Product Attribute for variations, then you can assign a default value for all variations under the WooCommerce Product "<em>Variations</em>" tab, or not &mdash; and if not, then each variation is expected to have a different value, like Color or Size, for example. See <a href="https://docs.woocommerce.com/document/managing-product-taxonomies/#section-6">WooCommerce documentation on Managing Product Attributes</a> for additional information.</p> 
 
 <p><strong>Please note</strong> that WooCommerce creates a selector on the purchase page for Product Attributes used for variations, which may be fine for some purchase options like Color, Condition, Size, etc., but is not suitable for other values like GTIN, ISBN, and MPN. We suggest activating the <a href="https://wordpress.org/plugins/wpsso-wc-metadata/">WPSSO Product Metadata for WooCommerce add-on</a>, or using one of the supported 3rd party plugins to manage singular product information like Brand, GTIN, ISBN, and MPN.</p>
 
@@ -89,7 +89,7 @@
 
 <h2>WordPress Custom Fields</h2>
 
-<p><strong>What if you prefer WordPress Custom Fields to manage additional product information?</strong></p>
+<h3>What if you prefer Custom Fields for additional product information?</h3>
 
 <p>It's possible to use WordPress Custom Fields (aka WordPress post metadata) instead of WooCommerce Product Attributes, but there are some downsides to doing this. Custom fields can only be created for the main product, not for variations, and as such can only offer information for simple products or the main product including all its variations. This may be suitable for values like Brand, where the main product and all its variations share the same Brand value, but may not work for variable information like Color, Size, and singular product information like GTIN, ISBN, and MPN. Keep in mind that WooCommerce is a plugin designed to manage products and product information &mdash; using the built-in features of WooCommerce makes more sense than using free-form / non-standard Custom Fields. If you're certain that you want to use WordPress Custom Fields instead of WooCommerce Product Attributes, you need to:</p>
 
@@ -101,7 +101,7 @@
 
 <h2>Document SSO Metabox</h2>
 
-<p><strong>What if you prefer entering custom values in the Document SSO metabox?</strong></p>
+<h3>What if you prefer entering custom values in the Document SSO metabox?</h3>
 
 <p>Like WordPress Custom Fields (see above), customized values in the Document SSO metabox can only offer one value, and as such can only offer information for simple products or the main product including all its variations. If you're certain that you want to use customized values in the Document SSO metabox, instead of WooCommerce Product Attributes or WordPress Custom Fields, you need to:</p>
 

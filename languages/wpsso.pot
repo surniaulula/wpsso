@@ -55,7 +55,7 @@ msgstr ""
 
 #: lib/admin-head.php:307
 msgid ""
-"The WooCommerce v%s plugin is known to provide incomplete Schema markup for "
+"The WooCommerce v%s plugin is known to offer incomplete Schema markup for "
 "Google."
 msgstr ""
 
