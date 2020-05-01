@@ -141,6 +141,7 @@ Simply activate the free complementary add-on(s) you need:
 * [WPSSO Mobile App Meta Tags](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
 * [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/) to manage multiple Organizations.
 * [WPSSO Place and Local SEO Markup](https://wordpress.org/plugins/wpsso-plm/) to manage multiple locations.
+* [WPSSO Product Metadata for WooCommerce](https://wordpress.org/plugins/wpsso-wc-metadata) to manage GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, Depth, and Volume information in WooCommerce.
 * [WPSSO Ratings and Reviews](https://wordpress.org/plugins/wpsso-ratings-and-reviews/) to add ratings in WordPress comments.
 * [WPSSO REST API](https://wordpress.org/plugins/wpsso-rest-api/) to add meta tags and Schema markup in REST API queries.
 * [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) to add responsive share buttons.
@@ -150,7 +151,6 @@ Simply activate the free complementary add-on(s) you need:
 * [WPSSO Tune Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors) for better looking WordPress thumbnails.
 * [WPSSO Tweet a Quote](https://wordpress.org/plugins/wpsso-tweet-a-quote) to add tweetable quotes to your content.
 * [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale) to switch languages quickly and easily.
-* [WPSSO Microdata for WooCommerce](https://wordpress.org/plugins/wpsso-wc-microdata) to add product and variation GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, Depth, and Volume information.
 
 <h3>WPSSO Core Premium Features</h3>
 

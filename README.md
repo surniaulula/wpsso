@@ -160,6 +160,7 @@
 <li><a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta Tags</a> to manage mobile App information.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-organization/">WPSSO Organization Markup</a> to manage multiple Organizations.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-plm/">WPSSO Place and Local SEO Markup</a> to manage multiple locations.</li>
+<li><a href="https://wordpress.org/plugins/wpsso-wc-metadata">WPSSO Product Metadata for WooCommerce</a> to manage GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, Depth, and Volume information in WooCommerce.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-ratings-and-reviews/">WPSSO Ratings and Reviews</a> to add ratings in WordPress comments.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-rest-api/">WPSSO REST API</a> to add meta tags and Schema markup in REST API queries.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-rrssb/">WPSSO Ridiculously Responsive Social Sharing Buttons</a> to add responsive share buttons.</li>
@@ -169,7 +170,6 @@
 <li><a href="https://wordpress.org/plugins/wpsso-tune-image-editors">WPSSO Tune Image Editors</a> for better looking WordPress thumbnails.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-tweet-a-quote">WPSSO Tweet a Quote</a> to add tweetable quotes to your content.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-user-locale">WPSSO User Locale Selector</a> to switch languages quickly and easily.</li>
-<li><a href="https://wordpress.org/plugins/wpsso-wc-microdata">WPSSO Microdata for WooCommerce</a> to add product and variation GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, Depth, and Volume information.</li>
 </ul>
 
 <h3>WPSSO Core Premium Features</h3>
