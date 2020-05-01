@@ -1055,9 +1055,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						/**
 						 * WordPress.org.
 						 */
-						'home'   => 'https://wordpress.org/plugins/wpsso-wc-microdata/',
-						'forum'  => 'https://wordpress.org/support/plugin/wpsso-wc-microdata',
-						'review' => 'https://wordpress.org/support/plugin/wpsso-wc-microdata/reviews/?rate=5#new-post',
+						'home'   => 'https://wordpress.org/plugins/wpsso-wc-metadata/',
+						'forum'  => 'https://wordpress.org/support/plugin/wpsso-wc-metadata',
+						'review' => 'https://wordpress.org/support/plugin/wpsso-wc-metadata/reviews/?rate=5#new-post',
 
 						/**
 						 * GitHub.com.
