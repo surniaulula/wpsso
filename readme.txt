@@ -498,7 +498,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.3.0-rc.1 (2020/05/01)**
+**Version 7.3.0 (2020/05/01)**
 
 * **New Features**
 	* Added a new WPSSO Metadata for WooCommerce add-on.
@@ -1110,7 +1110,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 7.3.0-rc.1 =
+= 7.3.0 =
 
 (2020/05/01) Added a new WPSSO Metadata for WooCommerce add-on.
 
