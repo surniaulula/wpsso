@@ -821,6 +821,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					case 'base':	// From plugin config.
 
 						if ( ! empty( $info[ $readme_key ] ) ) {
+
 							$data->$prop_name = $info[ $readme_key ];
 						}
 
@@ -832,14 +833,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							$data->$prop_name = $info[ 'url' ][ 'purchase' ];
 
-							break;
+						} elseif ( ! empty( $info[ 'url' ][ $readme_key ] ) ) {
+
+							$data->$prop_name = $info[ 'url' ][ $readme_key ];
 						}
 
-						// No break - override with 'home' url from config (if one is defined).
+						break;
 
 					case 'latest':	// From plugin config.
 
 						if ( ! empty( $info[ 'url' ][ $readme_key ] ) ) {
+
 							$data->$prop_name = $info[ 'url' ][ $readme_key ];
 						}
 
@@ -848,6 +852,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					case 'banners':	// From plugin config.
 
 						if ( ! empty( $info[ 'assets' ][ $readme_key ] ) ) {
+
 							$data->$prop_name = $info[ 'assets' ][ $readme_key ];	// Array with low / high images.
 						}
 
@@ -856,6 +861,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					case 'remaining_content':
 
 						if ( ! empty( $readme[ $readme_key ] ) ) {
+
 							$data->sections[ $prop_name ] = $readme[ $readme_key ];
 						}
 
@@ -864,6 +870,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					default:
 
 						if ( ! empty( $readme[ $readme_key ] ) ) {
+
 							$data->$prop_name = $readme[ $readme_key ];
 						}
 
