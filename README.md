@@ -169,6 +169,7 @@
 <li><a href="https://wordpress.org/plugins/wpsso-tune-image-editors">WPSSO Tune Image Editors</a> for better looking WordPress thumbnails.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-tweet-a-quote">WPSSO Tweet a Quote</a> to add tweetable quotes to your content.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-user-locale">WPSSO User Locale Selector</a> to switch languages quickly and easily.</li>
+<li><a href="https://wordpress.org/plugins/wpsso-wc-microdata">WPSSO Microdata for WooCommerce</a> to add product and variation GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, Depth, and Volume information.</li>
 </ul>
 
 <h3>WPSSO Core Premium Features</h3>

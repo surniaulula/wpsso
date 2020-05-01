@@ -150,6 +150,7 @@ Simply activate the free complementary add-on(s) you need:
 * [WPSSO Tune Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors) for better looking WordPress thumbnails.
 * [WPSSO Tweet a Quote](https://wordpress.org/plugins/wpsso-tweet-a-quote) to add tweetable quotes to your content.
 * [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale) to switch languages quickly and easily.
+* [WPSSO Microdata for WooCommerce](https://wordpress.org/plugins/wpsso-wc-microdata) to add product and variation GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, Depth, and Volume information.
 
 <h3>WPSSO Core Premium Features</h3>
 
