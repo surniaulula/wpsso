@@ -1046,11 +1046,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 					),
 					'hosts' => array(
-						'wp_org' => false,	// Add-on is not available on wordpress.org.
+						'wp_org' => true,
 						'github' => true,
 						'wpsso'  => true,
 					),
 					'url' => array(
+
+						/**
+						 * WordPress.org.
+						 */
+						'home'   => 'https://wordpress.org/plugins/wpsso-wc-microdata/',
+						'forum'  => 'https://wordpress.org/support/plugin/wpsso-wc-microdata',
+						'review' => 'https://wordpress.org/support/plugin/wpsso-wc-microdata/reviews/?rate=5#new-post',
 
 						/**
 						 * GitHub.com.
@@ -1061,9 +1068,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						/**
 						 * WPSSO.com.
 						 */
-						'home'      => 'https://wpsso.com/extend/plugins/wpsso-wc-metadata/',
-						'forum'  => '',
-						'review' => '',
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-wc-metadata/changelog/',
 						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-wc-metadata/',
 						'install'   => 'https://wpsso.com/docs/plugins/wpsso-wc-metadata/installation/',
@@ -1073,7 +1077,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-wc-metadata/update/',
-						'latest'    => 'https://wpsso.com/extend/plugins/wpsso-wc-metadata/latest/',
+						'latest'    => '',
 					),
 				),
 			),
