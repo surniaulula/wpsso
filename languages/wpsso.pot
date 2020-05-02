@@ -85,12 +85,16 @@ msgstr ""
 msgid "I've already rated %s."
 msgstr ""
 
-#: lib/admin-head.php:441
+#: lib/admin-head.php:441 lib/admin-head.php:444 lib/admin-head.php:548
+msgid "Awesome!"
+msgstr ""
+
+#: lib/admin-head.php:442
 msgid "Thank you for rating the %s plugin!"
 msgstr ""
 
-#: lib/admin-head.php:444
-msgid "Thank you for supporting and encouraging your plugin developers!"
+#: lib/admin-head.php:445
+msgid "Thank you for supporting and encouraging your developers!"
 msgstr ""
 
 #: lib/admin-head.php:468 lib/admin-head.php:577
@@ -135,18 +139,18 @@ msgstr ""
 msgid "No thanks. I'll stay with the %s version."
 msgstr ""
 
-#: lib/admin-head.php:548
-msgid "Awesome!"
-msgstr ""
-
 #: lib/admin-head.php:549
 msgid ""
 "Thank you for encouraging and supporting the continued development of %s."
 msgstr ""
 
+#: lib/admin-head.php:552
+msgid "Thank you."
+msgstr ""
+
 #: lib/admin-head.php:553
 msgid ""
-"Hopefully you'll change your mind in the future and choose to support the "
+"Hopefully you'll change your mind in the future and help support the "
 "continued development of %s."
 msgstr ""
 

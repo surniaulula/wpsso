@@ -1543,6 +1543,14 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				.' . $this->lca . '-notice .notice-message strong a {
 					font-weight:600;
 				}
+				#wpadminbar .' . $this->lca . '-notice .notice-dismiss .notice-dismiss-text,
+				.' . $this->lca . '-notice .notice-dismiss .notice-dismiss-text {
+					display:inline-block;
+					font-size:12px;
+					padding:2px;
+					vertical-align:top;
+					white-space:nowrap;
+				}
 				.' . $this->lca . '-notice .notice-message .button-highlight {
 					border-color:#0074a2;
 					background-color:#daeefc;
@@ -1553,13 +1561,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				.' . $this->lca . '-notice .notice-dismiss::before {
 					display:inline-block;
 					padding:2px;
-				}
-				.' . $this->lca . '-notice .notice-dismiss .notice-dismiss-text {
-					display:inline-block;
-					font-size:12px;
-					padding:2px;
-					vertical-align:top;
-					white-space:nowrap;
 				}
 			';
 
@@ -1602,16 +1603,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$custom_style_css .= '
 				.' . $this->lca . '-notice.update-nag .notice-message {
-					display:block;
-					margin:0 auto;
-					max-width:940px;
+					padding:15px 30px;
 				}
 				.' . $this->lca . '-notice.update-nag p,
 				.' . $this->lca . '-notice.update-nag ul,
 				.' . $this->lca . '-notice.update-nag ol {
-					font-size:1em;
-					text-align:center;
-					margin:10px auto 10px auto;
+					margin:15px 0;
 				}
 				.' . $this->lca . '-notice.update-nag ul li {
 					list-style-type:square;
@@ -1620,7 +1617,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					list-style-type:decimal;
 				}
 				.' . $this->lca . '-notice.update-nag li {
-					text-align:left;
 					margin:5px 0 5px 60px;
 				}
 			';
