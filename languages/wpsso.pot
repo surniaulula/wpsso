@@ -7085,48 +7085,93 @@ msgstr ""
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/util-woocommerce.php:198
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/util-woocommerce.php:185
+msgid "mm"
+msgstr ""
+
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/util-woocommerce.php:188
+msgid "cm"
+msgstr ""
+
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/util-woocommerce.php:191
+msgid "m"
+msgstr ""
+
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/util-woocommerce.php:194
+msgid "in"
+msgstr ""
+
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/util-woocommerce.php:197
+msgid "yd"
+msgstr ""
+
+#: lib/util-woocommerce.php:231
 msgid "ml"
 msgstr ""
 
-#: lib/util-woocommerce.php:199
+#: lib/util-woocommerce.php:232
 msgid "cl"
 msgstr ""
 
-#: lib/util-woocommerce.php:200
+#: lib/util-woocommerce.php:233
 msgid "l"
 msgstr ""
 
-#: lib/util-woocommerce.php:201
+#: lib/util-woocommerce.php:234
 msgid "kl"
 msgstr ""
 
-#: lib/util-woocommerce.php:202
+#: lib/util-woocommerce.php:235
 msgid "US tsp"
 msgstr ""
 
-#: lib/util-woocommerce.php:203
+#: lib/util-woocommerce.php:236
 msgid "US tbsp"
 msgstr ""
 
-#: lib/util-woocommerce.php:204
+#: lib/util-woocommerce.php:237
 msgid "US fl oz"
 msgstr ""
 
-#: lib/util-woocommerce.php:205
+#: lib/util-woocommerce.php:238
 msgid "US cup"
 msgstr ""
 
-#: lib/util-woocommerce.php:206
+#: lib/util-woocommerce.php:239
 msgid "US pt"
 msgstr ""
 
-#: lib/util-woocommerce.php:207
+#: lib/util-woocommerce.php:240
 msgid "US qt"
 msgstr ""
 
-#: lib/util-woocommerce.php:208
+#: lib/util-woocommerce.php:241
 msgid "US gal"
+msgstr ""
+
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/util-woocommerce.php:377
+msgid "g"
+msgstr ""
+
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/util-woocommerce.php:380
+msgid "kg"
+msgstr ""
+
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/util-woocommerce.php:383
+msgid "oz"
+msgstr ""
+
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/util-woocommerce.php:386
+msgid "lbz"
 msgstr ""
 
 #: lib/util.php:547

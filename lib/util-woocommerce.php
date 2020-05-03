@@ -166,7 +166,39 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 		 */
 		public static function get_dimension_label( $unit_text ) {
 
+			// translators: Please ignore - translation uses a different text domain.
 			return __( $unit_text, 'woocommerce' );
+		}
+
+		public static function get_dimension_units() {
+
+			static $local_cache = null;
+
+			if ( null === $local_cache ) {
+
+				/**
+				 * From woocommerce/includes/admin/settings/class-wc-settings-products.php.
+				 */
+				$local_cache = array(
+
+					// translators: Please ignore - translation uses a different text domain.
+					'mm' => __( 'mm', 'woocommerce' ),	// Milimeter.
+
+					// translators: Please ignore - translation uses a different text domain.
+					'cm' => __( 'cm', 'woocommerce' ),	// Centimeter.
+
+					// translators: Please ignore - translation uses a different text domain.
+					'm'  => __( 'm', 'woocommerce' ),	// Meter.
+
+					// translators: Please ignore - translation uses a different text domain.
+					'in' => __( 'in', 'woocommerce' ),	// Inch.
+
+					// translators: Please ignore - translation uses a different text domain.
+					'yd' => __( 'yd', 'woocommerce' ),	// Yard.
+				);
+			}
+
+			return $local_cache;
 		}
 
 		public static function get_dimension( $dimension, $to_unit, $from_unit = '' ) {
@@ -182,6 +214,7 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 			$fl_vol_units = self::get_fluid_volume_units();	// Returns translated values.
 
 			if ( isset( $fl_vol_units[ $unit_text ] ) ) {
+
 				return $fl_vol_units[ $unit_text ];
 			}
 
@@ -321,8 +354,42 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 		}
 
 		/**
-		 * Weights.
+		 * Weight.
 		 */
+		public static function get_weight_label( $unit_text ) {
+
+			// translators: Please ignore - translation uses a different text domain.
+			return __( $unit_text, 'woocommerce' );
+		}
+
+		public static function get_weight_units() {
+
+			static $local_cache = null;
+
+			if ( null === $local_cache ) {
+
+				/**
+				 * From woocommerce/includes/admin/settings/class-wc-settings-products.php.
+				 */
+				$local_cache = array(
+
+					// translators: Please ignore - translation uses a different text domain.
+					'g'   => __( 'g', 'woocommerce' ),	// Gram.
+
+					// translators: Please ignore - translation uses a different text domain.
+					'kg'  => __( 'kg', 'woocommerce' ),	// Kilogram.
+
+					// translators: Please ignore - translation uses a different text domain.
+					'oz'  => __( 'oz', 'woocommerce' ),	// Ounce.
+
+					// translators: Please ignore - translation uses a different text domain.
+					'lbs' => __( 'lbz', 'woocommerce' ),	// Pound.
+				);
+			}
+
+			return $local_cache;
+		}
+
 		public static function get_weight( $weight, $to_unit, $from_unit = '' ) {
 
 			return wc_get_weight( $weight, $to_unit, $from_unit );
