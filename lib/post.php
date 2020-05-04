@@ -1485,13 +1485,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function clear_cache( $post_id, $rel_id = false ) {
 
-error_log( __METHOD__.' '.$post_id );
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
 			$post_status = get_post_status( $post_id );
-error_log( __METHOD__.' '.$post_status );
 
 			switch ( $post_status ) {
 

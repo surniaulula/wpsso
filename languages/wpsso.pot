@@ -870,7 +870,7 @@ msgstr ""
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:472 lib/gettext-com.php:32 lib/post.php:1606
+#: lib/com/notice.php:472 lib/gettext-com.php:32 lib/post.php:1604
 msgid "Edit"
 msgstr ""
 
@@ -6338,46 +6338,46 @@ msgstr ""
 msgid "Save a draft or publish to display these options."
 msgstr ""
 
-#: lib/post.php:1594 lib/script.php:194
+#: lib/post.php:1592 lib/script.php:194
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1608
+#: lib/post.php:1606
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1622
+#: lib/post.php:1620
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1623
+#: lib/post.php:1621
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1624
+#: lib/post.php:1622
 msgctxt "option label"
 msgid "No image index"
 msgstr ""
 
-#: lib/post.php:1625
+#: lib/post.php:1623
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1626
+#: lib/post.php:1624
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1627
+#: lib/post.php:1625
 msgctxt "option label"
 msgid "No translate"
 msgstr ""
 
-#: lib/post.php:1756
+#: lib/post.php:1754
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
