@@ -864,8 +864,8 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				'blog_id' => $blog_id,
 				'offset'  => $offset,
 				'number'  => $limit,
-				'orderby' => 'display_name',
 				'order'   => 'ASC',
+				'orderby' => 'display_name',
 				'role'    => $role,
 				'fields'  => array(	// Save memory and only return only specific fields.
 					'ID',

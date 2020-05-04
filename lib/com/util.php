@@ -3490,8 +3490,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				'blog_id' => $blog_id,
 				'offset'  => $offset,
 				'number'  => $limit,
-				'orderby' => 'ID',
 				'order'   => 'DESC',	// Newest users first.
+				'orderby' => 'ID',
 				'role'    => $role,
 				'fields'  => array(	// Save memory and only return only specific fields.
 					'ID',

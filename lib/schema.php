@@ -1880,8 +1880,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$posts_args = array(
 				'has_password'   => false,
-				'orderby'        => 'date',
 				'order'          => 'DESC',
+				'orderby'        => 'date',
 				'paged'          => $wpsso_paged,
 				'post_status'    => 'publish',
 				'post_type'      => 'any',		// Return post, page, or any custom post type.
@@ -3406,8 +3406,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$posts_args = array_merge( array(
 				'has_password'   => false,
-				'orderby'        => 'date',
 				'order'          => 'DESC',
+				'orderby'        => 'date',
 				'paged'          => $wpsso_paged,
 				'post_status'    => 'publish',
 				'post_type'      => 'any',		// Post, page, or custom post type.

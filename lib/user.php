@@ -348,8 +348,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$posts_args = array_merge( array(
 				'has_password'   => false,
-				'orderby'        => 'date',
 				'order'          => 'DESC',		// Newest first.
+				'orderby'        => 'date',
 				'paged'          => $paged,
 				'post_status'    => 'publish',		// Only 'publish', not 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', or 'trash'.
 				'post_type'      => 'any',		// Return post, page, or any custom post type.
@@ -1208,8 +1208,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					$users_args = array(
 						'role'     => 'contributor',	// Contributors can delete_posts, edit_posts, read.
-						'orderby'  => 'ID',
 						'order'    => 'DESC',		// Newest user first.
+						'orderby'  => 'ID',
 						'meta_key' => $meta_key,	// The meta_key in the wp_usermeta table.
 						'fields'   => array(		// Save memory and only return only specific fields.
 							'ID',
