@@ -1917,7 +1917,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 				if ( ! empty( $info[ 'url' ][ 'notes' ] ) ) {
-					$action_links[] = sprintf( __( '<a href="%s">Advanced Documentation and Notes</a>',
+					$action_links[] = sprintf( __( '<a href="%s">Notes and Documentation</a>',
 						'wpsso' ), $info[ 'url' ][ 'notes' ] );
 				}
 

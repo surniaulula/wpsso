@@ -393,7 +393,7 @@ msgid "<a href=\"%s\">Frequently Asked Questions</a>"
 msgstr ""
 
 #: lib/admin.php:1920
-msgid "<a href=\"%s\">Advanced Documentation and Notes</a>"
+msgid "<a href=\"%s\">Notes and Documentation</a>"
 msgstr ""
 
 #: lib/admin.php:1926
