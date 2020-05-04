@@ -424,7 +424,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 * [Why is the Open Graph title the same for every webpage?](https://wpsso.com/docs/plugins/wpsso/faqs/why-is-the-open-graph-title-the-same-for-every-webpage/)
 * [Why shouldn't I upload small images to the Media library?](https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/)
 
-<h3>Advanced Documentation and Notes</h3>
+<h3>Notes and Documentation</h3>
 
 * [About WPSSO Core Premium Integration Modules](https://wpsso.com/docs/plugins/wpsso/notes/modules/)
 	* [Author Gravatar](https://wpsso.com/docs/plugins/wpsso/notes/modules/author-gravatar/)
