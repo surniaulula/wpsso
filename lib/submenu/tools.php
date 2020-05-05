@@ -88,13 +88,13 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$using_external_cache = wp_using_ext_object_cache();
 
-			$clear_cache_label_transl        = _x( 'Clear All Caches', 'submit button', 'wpsso' );
-			$clear_short_label_transl        = _x( 'Clear All Caches and Short URLs', 'submit button', 'wpsso' );
-			$delete_cache_files_label_transl = _x( 'Delete All Files in Cache Folder', 'submit button', 'wpsso' );
-			$delete_transients_label_transl  = _x( 'Delete All Database Transients', 'submit button', 'wpsso' );
-			$refresh_cache_label_transl      = _x( 'Refresh Transient Cache', 'submit button', 'wpsso' );
-			$export_settings_label_transl    = _x( 'Export Plugin and Add-on Settings', 'submit button', 'wpsso' );
-			$import_settings_label_transl    = _x( 'Import Plugin and Add-on Settings', 'submit button', 'wpsso' );
+			$clear_cache_label_transl       = _x( 'Clear All Caches', 'submit button', 'wpsso' );
+			$clear_short_label_transl       = _x( 'Clear All Caches and Short URLs', 'submit button', 'wpsso' );
+			$clear_cache_dir_label_transl   = _x( 'Clear All Files in Cache Folder', 'submit button', 'wpsso' );
+			$clear_transients_label_transl  = _x( 'Clear All Database Transients', 'submit button', 'wpsso' );
+			$refresh_cache_label_transl     = _x( 'Refresh Transient Cache', 'submit button', 'wpsso' );
+			$export_settings_label_transl   = _x( 'Export Plugin and Add-on Settings', 'submit button', 'wpsso' );
+			$import_settings_label_transl   = _x( 'Import Plugin and Add-on Settings', 'submit button', 'wpsso' );
 
 			if ( ! $using_external_cache && $this->p->options[ 'plugin_shortener' ] !== 'none' ) {
 				$clear_cache_label_transl .= ' *';
@@ -102,11 +102,11 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$form_button_rows = array(
 				array(
-					'clear_all_cache'                => $clear_cache_label_transl,		// Clear All Caches.
-					'clear_all_cache_and_short_urls' => null,				// Clear All Caches and Short URLs.
-					'delete_all_cache_files'         => $delete_cache_files_label_transl,	// Delete All Cache Files.
-					'delete_all_db_transients'       => null,				// Delete All Database Transients.
-					'refresh_all_cache'              => $refresh_cache_label_transl,	// Refresh Transient Cache.
+					'clear_cache'                => $clear_cache_label_transl,	// Clear All Caches.
+					'clear_cache_and_short_urls' => null,				// Clear All Caches and Short URLs.
+					'clear_cache_dir'            => $clear_cache_dir_label_transl,	// Clear All Cache Files.
+					'clear_db_transients'        => null,				// Clear All Database Transients.
+					'refresh_cache'              => $refresh_cache_label_transl,	// Refresh Transient Cache.
 				),
 				array(
 					'export_plugin_settings_json' => $export_settings_label_transl,
@@ -134,13 +134,13 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! $using_external_cache ) {
 
-				$form_button_rows[ 0 ][ 'delete_all_db_transients' ] = $delete_transients_label_transl;
+				$form_button_rows[ 0 ][ 'clear_db_transients' ] = $clear_transients_label_transl;
 
 				if ( $this->p->options[ 'plugin_shortener' ] !== 'none' ) {
 
 					if ( empty( $this->p->options[ 'plugin_clear_short_urls' ] ) ) {
 
-						$form_button_rows[ 0 ][ 'clear_all_cache_and_short_urls' ] = $clear_short_label_transl;
+						$form_button_rows[ 0 ][ 'clear_cache_and_short_urls' ] = $clear_short_label_transl;
 					}
 				}
 			}

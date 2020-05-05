@@ -9,6 +9,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
+if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+	die( 'Do. Or do not. There is no try.' );
+}
+
 /**
  * WordPress metadata class, extended by the WpssoPost, WpssoTerm, and WpssoUser classes.
  */
@@ -1604,6 +1608,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		public static function get_column_meta_keys() { 
 
 			$meta_keys = array();
+
 			$sort_cols = self::get_sortable_columns();
 
 			foreach ( $sort_cols as $col_key => $col_info ) {

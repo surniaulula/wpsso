@@ -9,6 +9,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
+if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+	die( 'Do. Or do not. There is no try.' );
+}
+
 if ( ! class_exists( 'WpssoUser' ) ) {
 
 	class WpssoUser extends WpssoWpMeta {
@@ -35,14 +39,17 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$is_admin   = is_admin();	// Only check once.
+			$is_admin = is_admin();	// Only check once.
+
 			$cm_fb_name = $this->p->options[ 'plugin_cm_fb_name' ];
 
 			if ( ! SucomUtilWP::role_exists( 'person' ) ) {
+
 				add_role( 'person', _x( 'Person', 'user role', 'wpsso' ), array() );
 			}
 
 			if ( ! empty( $this->p->options[ 'plugin_new_user_is_person' ] ) ) {
+
 				if ( is_multisite() ) {
 					add_action( 'wpmu_new_user', array( __CLASS__, 'add_person_role' ), 20, 1 );
 				} else {
@@ -51,7 +58,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			add_filter( 'user_contactmethods', array( $this, 'add_contact_methods' ), 20, 2 );
+
 			add_filter( 'user_' . $cm_fb_name . '_label', array( $this, 'fb_contact_label' ), 20, 1 );
+
+			add_action( $this->p->lca . '_add_user_roles', array( $this, 'add_user_roles' ), 10, 1 );	// For single scheduled task.
 
 			/**
 			 * Hook a minimum number of admin actions to maximize performance. The user_id argument is 
@@ -84,7 +94,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 
 				add_filter( 'manage_users_columns', array( $this, 'add_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
+
 				add_filter( 'manage_users_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
+
 				add_filter( 'manage_users_custom_column', array( $this, 'get_column_content',), 10, 3 );
 
 				/**
@@ -116,11 +128,15 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				add_action( 'edit_user_profile', array( $this, 'show_metabox_section' ), 20 );
 
 				add_action( 'edit_user_profile_update', array( $this, 'sanitize_submit_cm' ), 5 );
+
 				add_action( 'edit_user_profile_update', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );	// Default is -10.
+
 				add_action( 'edit_user_profile_update', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );	// Default is 0.
 
 				add_action( 'personal_options_update', array( $this, 'sanitize_submit_cm' ), 5 );
+
 				add_action( 'personal_options_update', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );	// Default is -10.
+
 				add_action( 'personal_options_update', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );	// Default is 0.
 			}
 		}
@@ -392,51 +408,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			return $post_ids;
-		}
-
-		public static function get_person_names( $add_none = true ) {
-
-			$wpsso =& Wpsso::get_instance();
-
-			$roles = $wpsso->cf[ 'wp' ][ 'roles' ][ 'person' ];
-			$limit = WPSSO_SELECT_PERSON_NAMES_MAX;	// Default is 100 user names.
-
-			return SucomUtilWP::get_roles_user_select( $roles, $blog_id = null, $add_none, $limit );
-		}
-
-		public static function add_person_role( $user_id ) {
-
-			$user_obj = get_user_by( 'ID', $user_id );
-
-			$user_obj->add_role( 'person' );
-		}
-
-		public static function remove_person_role( $user_id ) {
-
-			$user_obj = get_user_by( 'ID', $user_id );
-
-			$user_obj->remove_role( 'person' );
-		}
-
-		public function add_person_view( $user_views ) {
-
-			$user_views    = array_reverse( $user_views );
-			$all_view_link = $user_views[ 'all' ];
-
-			unset( $user_views[ 'all' ], $user_views[ 'person' ] );
-
-			$role_label = _x( 'Person', 'user role', 'wpsso' );
-			$role_view  = add_query_arg( 'role', 'person', admin_url( 'users.php' ) );
-			$user_query = new WP_User_Query( array( 'role' => 'person' ) );
-			$user_count = $user_query->get_total();
-
-			$user_views[ 'person' ] = '<a href="' . $role_view . '">' .  $role_label . '</a> (' . $user_count . ')';
-
-			$user_views[ 'all' ] = $all_view_link;
-
-			$user_views = array_reverse( $user_views );
-
-			return $user_views;
 		}
 
 		public function add_column_headings( $columns ) {
@@ -1282,6 +1253,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			$old_prefs = self::get_pref( false, $user_id );	// get all prefs for user
+
 			$new_prefs = array_merge( $old_prefs, $user_prefs );
 
 			/**
@@ -1330,10 +1302,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function clear_cache( $user_id, $rel_id = false ) {
 
-			$mod           = $this->get_mod( $user_id );
+			$mod = $this->get_mod( $user_id );
+
 			$col_meta_keys = WpssoWpMeta::get_column_meta_keys();
 
 			foreach ( $col_meta_keys as $col_key => $meta_key ) {
+
 				delete_user_meta( $user_id, $meta_key );
 			}
 
@@ -1492,6 +1466,131 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			return $website_url;
+		}
+
+		/**
+		 * Schedule the addition of user roles for self::get_public_ids().
+		 */
+		public function schedule_add_user_roles( $user_id = null ) {
+
+			$user_id = $this->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+
+			$event_time = time() + 5;	// Add a 5 second event buffer.
+
+			$event_hook = $this->p->lca . '_add_user_roles';
+
+			$event_args = array( $user_id );
+
+			wp_schedule_single_event( $event_time, $event_hook, $event_args );
+		}
+
+		public function add_user_roles( $user_id = null ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			$user_id = $this->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+
+			/**
+			 * A transient is set and checked to limit the runtime and allow this process to be terminated early (by
+			 * removing the transient object).
+			 */
+			$cache_md5_pre  = $this->p->lca . '_!_';			// Protect transient from being cleared.
+			$cache_exp_secs = HOUR_IN_SECONDS;				// Prevent duplicate runs for max 1 hour.
+			$cache_salt     = __CLASS__ . '::add_user_roles';		// Generic salt value for other methods.
+			$cache_id       = $cache_md5_pre . md5( $cache_salt );
+			$cache_run_val  = 'running';
+			$cache_stop_val = 'stop';
+
+			/**
+			 * Prevent concurrent execution.
+			 */
+			if ( false !== get_transient( $cache_id ) ) {				// Another process is already running.
+
+				set_transient( $cache_id, $cache_stop_val, $cache_exp_secs );	// Signal the other process to stop.
+
+				usleep( 3 * 1000000 );						// Sleep for 3 second.
+
+				if ( false !== get_transient( $cache_id ) ) {			// Stop here if the other process is still running.
+					return;
+				}
+			}
+
+			set_transient( $cache_id, $cache_run_val, $cache_exp_secs );
+
+			if ( 0 === get_current_user_id() ) {		// User is the scheduler.
+				set_time_limit( HOUR_IN_SECONDS );	// Set maximum PHP execution time to one hour.
+			}
+
+			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
+				do_action( $this->p->lca . '_scheduled_task_started', $user_id );
+			}
+
+			$public_ids = self::get_public_ids();	// Aka 'administrator', 'editor', 'author', and 'contributor'.
+
+			foreach ( $public_ids as $person_id ) {
+
+				if ( get_transient( $cache_id ) !== $cache_run_val ) {	// Check that we are allowed to continue.
+
+					delete_transient( $cache_id );
+
+					return;
+				}
+
+				$user_obj = get_user_by( 'ID', $person_id );
+
+				$user_obj->add_role( 'person' );
+			}
+
+			delete_transient( $cache_id );
+		}
+
+		public static function add_person_role( $user_id ) {
+
+			$user_obj = get_user_by( 'ID', $user_id );
+
+			$user_obj->add_role( 'person' );
+		}
+
+		public static function remove_person_role( $user_id ) {
+
+			$user_obj = get_user_by( 'ID', $user_id );
+
+			$user_obj->remove_role( 'person' );
+		}
+
+		public static function get_person_names( $add_none = true ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			$roles = $wpsso->cf[ 'wp' ][ 'roles' ][ 'person' ];
+
+			$limit = WPSSO_SELECT_PERSON_NAMES_MAX;	// Default is 100 user names.
+
+			return SucomUtilWP::get_roles_user_select( $roles, $blog_id = null, $add_none, $limit );
+		}
+
+		public function add_person_view( $user_views ) {
+
+			$user_views = array_reverse( $user_views );
+
+			$all_view_link = $user_views[ 'all' ];
+
+			unset( $user_views[ 'all' ], $user_views[ 'person' ] );
+
+			$role_label = _x( 'Person', 'user role', 'wpsso' );
+			$role_view  = add_query_arg( 'role', 'person', admin_url( 'users.php' ) );
+			$user_query = new WP_User_Query( array( 'role' => 'person' ) );
+			$user_count = $user_query->get_total();
+
+			$user_views[ 'person' ] = '<a href="' . $role_view . '">' .  $role_label . '</a> (' . $user_count . ')';
+
+			$user_views[ 'all' ] = $all_view_link;
+
+			$user_views = array_reverse( $user_views );
+
+			return $user_views;
 		}
 	}
 }

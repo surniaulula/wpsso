@@ -13,10 +13,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 	class SucomUtil {
 
-		protected $p;
-
-		protected static $cache_locale_names  = array();	// Saved get_locale() values.
-		protected static $cache_filter_values = array();	// Saved filter return values.
+		private static $cache_locale  = array();	// Saved get_locale() values.
+		private static $cache_protect = array();	// Saved protect_filter_value() values.
 
 		private static $currencies = array(
 			'AED' => 'United Arab Emirates dirham',
@@ -2285,9 +2283,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$cache_index = is_array( $mixed ) ? $mixed[ 'name' ] . '_' . $mixed[ 'id' ] : $mixed;
 
-			if ( isset( self::$cache_locale_names[ $cache_index ] ) ) {
+			if ( isset( self::$cache_locale[ $cache_index ] ) ) {
 
-				return self::$cache_locale_names[ $cache_index ];
+				return self::$cache_locale[ $cache_index ];
 			}
 
 			if ( $mixed === 'default' ) {
@@ -2334,7 +2332,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			return self::$cache_locale_names[ $cache_index ] = apply_filters( 'sucom_locale', $locale, $mixed );
+			return self::$cache_locale[ $cache_index ] = apply_filters( 'sucom_locale', $locale, $mixed );
 		}
 
 		public static function get_available_locales() {
@@ -3764,13 +3762,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function protect_filter_value( $filter_name, $auto_unprotect = true ) {
 
-			unset( self::$cache_filter_values[ $filter_name ] );	// Just in case.
+			unset( self::$cache_protect[ $filter_name ] );	// Just in case.
 
 			if ( ! has_filter( $filter_name ) ) {			// No protection required.
 				return false;
 			}
 
-			self::$cache_filter_values[ $filter_name ][ 'auto_unprotect' ] = $auto_unprotect;
+			self::$cache_protect[ $filter_name ][ 'auto_unprotect' ] = $auto_unprotect;
 
 			if ( ! has_filter( $filter_name, array( __CLASS__, '__save_current_filter_value' ) ) ) {
 
@@ -3801,8 +3799,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_original_filter_value( $filter_name ) {
 
-			if ( isset( self::$cache_filter_values[ $filter_name ][ 'original_value' ] ) ) {
-				return self::$cache_filter_values[ $filter_name ][ 'original_value' ];
+			if ( isset( self::$cache_protect[ $filter_name ][ 'original_value' ] ) ) {
+				return self::$cache_protect[ $filter_name ][ 'original_value' ];
 			}
 
 			return null;
@@ -3810,8 +3808,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_modified_filter_value( $filter_name ) {
 
-			if ( isset( self::$cache_filter_values[ $filter_name ][ 'modified_value' ] ) ) {
-				return self::$cache_filter_values[ $filter_name ][ 'modified_value' ];
+			if ( isset( self::$cache_protect[ $filter_name ][ 'modified_value' ] ) ) {
+				return self::$cache_protect[ $filter_name ][ 'modified_value' ];
 			}
 
 			return null;
@@ -3821,8 +3819,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$filter_name = current_filter();
 
-			self::$cache_filter_values[ $filter_name ][ 'original_value' ] = $value;	// Save value to static cache.
-			self::$cache_filter_values[ $filter_name ][ 'modified_value' ] = $value;	// Save value to static cache.
+			self::$cache_protect[ $filter_name ][ 'original_value' ] = $value;	// Save value to static cache.
+			self::$cache_protect[ $filter_name ][ 'modified_value' ] = $value;	// Save value to static cache.
 
 			return $value;
 		}
@@ -3831,16 +3829,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$filter_name = current_filter();
 
-			if ( isset( self::$cache_filter_values[ $filter_name ][ 'original_value' ] ) ) {		// Just in case.
+			if ( isset( self::$cache_protect[ $filter_name ][ 'original_value' ] ) ) {		// Just in case.
 
-				self::$cache_filter_values[ $filter_name ][ 'modified_value' ] = $value;		// Save for get_modified_filter_value().
+				self::$cache_protect[ $filter_name ][ 'modified_value' ] = $value;		// Save for get_modified_filter_value().
 
-				if ( $value !== self::$cache_filter_values[ $filter_name ][ 'original_value' ] ) {
-					$value = self::$cache_filter_values[ $filter_name ][ 'original_value' ];	// Restore value from static cache.
+				if ( $value !== self::$cache_protect[ $filter_name ][ 'original_value' ] ) {
+					$value = self::$cache_protect[ $filter_name ][ 'original_value' ];	// Restore value from static cache.
 				}
 			}
 
-			if ( ! empty( self::$cache_filter_values[ $filter_name ][ 'auto_unprotect' ] ) ) {
+			if ( ! empty( self::$cache_protect[ $filter_name ][ 'auto_unprotect' ] ) ) {
 
 				$min_int = self::get_min_int();
 				$max_int = self::get_max_int();

@@ -9,6 +9,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
+if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+	die( 'Do. Or do not. There is no try.' );
+}
+
 if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 	class WpssoAdmin {
@@ -920,7 +924,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( empty( $this->p->options[ 'plugin_clear_on_save' ] ) ) {
 
-				$clear_cache_link = $this->p->util->get_admin_url( wp_nonce_url( '?' . $this->p->lca . '-action=clear_all_cache',
+				$clear_cache_link = $this->p->util->get_admin_url( wp_nonce_url( '?' . $this->p->lca . '-action=clear_cache',
 					WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME ), _x( 'Clear All Caches', 'submit button', 'wpsso' ) );
 
 				$this->p->notice->upd( '<strong>' . __( 'Plugin settings have been saved.', 'wpsso' ) . '</strong> ' .
@@ -936,7 +940,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					sprintf( __( 'A background task will begin shortly to clear all caches (%s is enabled).',
 						'wpsso' ), $settings_page_link ) );
 
-				$this->p->util->schedule_clear_all_cache( $user_id = get_current_user_id(), $clear_other = true );
+				$this->p->util->cache->schedule_clear( $user_id = get_current_user_id(), $clear_other = true );
 			}
 
 			if ( empty( $opts[ 'plugin_filter_content' ] ) ) {
@@ -1035,9 +1039,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					switch ( $action_value ) {
 
-						case 'clear_all_cache':
+						case 'clear_cache':
 
-							$this->p->util->schedule_clear_all_cache( $user_id, $clear_other = true );
+							$this->p->util->cache->schedule_clear( $user_id, $clear_other = true );
 
 							$notice_msg = __( 'A background task will begin shortly to clear all caches.', 'wpsso' );
 
@@ -1045,9 +1049,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							break;
 
-						case 'clear_all_cache_and_short_urls':
+						case 'clear_cache_and_short_urls':
 
-							$this->p->util->schedule_clear_all_cache( $user_id, $clear_other = true, $clear_short = true );
+							$this->p->util->cache->schedule_clear( $user_id, $clear_other = true, $clear_short = true );
 
 							$notice_msg = __( 'A background task will begin shortly to clear all caches and short URLs.', 'wpsso' );
 
@@ -1055,9 +1059,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							break;
 
-						case 'delete_all_cache_files':
+						case 'clear_cache_dir':
 
-							$deleted_count = $this->p->util->delete_all_cache_files();
+							$deleted_count = $this->p->util->cache->clear_cache_dir();
 
 							$notice_msg = sprintf( __( '%s cache files have been deleted.', 'wpsso' ), $deleted_count );
 
@@ -1065,9 +1069,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							break;
 
-						case 'delete_all_db_transients':
+						case 'clear_db_transients':
 
-							$deleted_count = $this->p->util->delete_all_db_transients( $clear_short = true, $transient_prefix = '' );
+							$deleted_count = $this->p->util->cache->clear_db_transients( $clear_short = true, $transient_prefix = '' );
 
 							$notice_msg = sprintf( __( '%s database transients have been deleted.', 'wpsso' ), $deleted_count );
 
@@ -1075,9 +1079,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							break;
 
-						case 'refresh_all_cache':
+						case 'refresh_cache':
 
-							$this->p->util->schedule_refresh_all_cache( $user_id, $read_cache = false );
+							$this->p->util->cache->schedule_refresh( $user_id, $read_cache = false );
 
 							$notice_msg = __( 'A background task will begin shortly to refresh the post, term and user transient cache objects.', 'wpsso' );
 
@@ -1520,7 +1524,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function show_metabox_cache_status() {
 
 			$table_cols         = 4;
-			$db_transient_keys  = $this->p->util->get_db_transient_keys();
+			$db_transient_keys  = SucomUtilWP::get_db_transient_keys();
 			$all_transients_pre = $this->p->lca . '_';
 			$have_filtered_exp  = false;
 
@@ -1556,7 +1560,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$cache_text_dom     = empty( $cache_info[ 'text_domain' ] ) ? $this->p->lca : $cache_info[ 'text_domain' ];
 				$cache_label_transl = _x( $cache_info[ 'label' ], 'option label', $cache_text_dom );
 				$cache_count        = count( preg_grep( '/^' . $cache_md5_pre . '/', $db_transient_keys ) );
-				$cache_size         = $this->p->util->get_db_transient_size_mb( $decimals = 1, $dec_point = '.', $thousands_sep = '', $cache_md5_pre );
+				$cache_size         = SucomUtilWP::get_db_transient_size_mb( $decimals = 1, $dec_point = '.', $thousands_sep = '', $cache_md5_pre );
 				$cache_opt_key      = isset( $cache_info[ 'opt_key' ] ) ? $cache_info[ 'opt_key' ] : false;
 				$cache_exp_secs     = $cache_opt_key && isset( $this->p->options[ $cache_opt_key ] ) ? $this->p->options[ $cache_opt_key ] : 0;
 				$cache_exp_suffix   = '';

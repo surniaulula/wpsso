@@ -9,6 +9,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
+if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+	die( 'Do. Or do not. There is no try.' );
+}
+
 if ( ! class_exists( 'WpssoOptions' ) ) {
 
 	class WpssoOptions {
@@ -1098,7 +1102,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 			}
 
-			if ( true === $saved ) {
+			if ( $saved ) {
 
 				if ( $doing_upgrade ) {
 
@@ -1111,7 +1115,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$this->p->notice->upd( '<strong>' . __( 'Plugin settings have been upgraded and saved.', 'wpsso' ) . '</strong> ' .
 							__( 'A background task will begin shortly to clear all caches.', 'wpsso' ) );
 
-						$this->p->util->schedule_clear_all_cache( $user_id = get_current_user_id(), $clear_other = true );
+						$this->p->util->cache->schedule_clear( $user_id = get_current_user_id(), $clear_other = true );
 					}
 
 				} elseif ( $this->p->debug->enabled ) {

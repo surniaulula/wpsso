@@ -9,6 +9,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
+if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+	die( 'Do. Or do not. There is no try.' );
+}
+
 if ( ! class_exists( 'WpssoRegister' ) ) {
 
 	class WpssoRegister {
@@ -129,7 +133,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			 * Add the "person" role for all WpssoUser::get_public_ids(). 
 			 */
 			if ( $new_install ) {
-				$this->p->util->schedule_add_user_roles();
+				$this->p->user->schedule_add_user_roles();
 			}
 
 			/**
@@ -153,7 +157,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 					sprintf( __( 'A background task will begin shortly to clear all caches (%s is enabled).',
 						'wpsso' ), $settings_page_link ) );
 
-				$this->p->util->schedule_clear_all_cache( $user_id = get_current_user_id(), $clear_other = true );
+				$this->p->util->cache->schedule_clear( $user_id = get_current_user_id(), $clear_other = true );
 			}
 
 			/**
@@ -169,13 +173,13 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			/**
 			 * Clear all caches on deactivate.
 			 *
-			 * Do not call the schedule_clear_all_cache() method since WPSSO will be deactivated before the scheduled task can begin.
+			 * Do not call the WpssoUtilCache->schedule_clear() method since WPSSO will be deactivated before the scheduled task can begin.
 			 *
 			 * If 'plugin_clear_on_deactivate' is empty, then at least clear the disk cache.
 			 */
 			if ( ! empty( $this->p->options[ 'plugin_clear_on_deactivate' ] ) ) {
 
-				$this->p->util->clear_all_cache( $user_id = 0, $clear_other = true, $clear_short = true, $refresh_all = false );
+				$this->p->util->cache->clear( $user_id = 0, $clear_other = true, $clear_short = true, $refresh = false );
 
 			} else {
 
@@ -223,7 +227,9 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				delete_metadata( $meta_type = 'post', $object_id = null, WPSSO_META_NAME, $meta_value = null, $delete_all = true );
 
 				delete_post_meta_by_key( '_wpsso_wpproductreview' );	// Re-created automatically.
+
 				delete_post_meta_by_key( '_wpsso_wprecipemaker' );	// Re-created automatically.
+
 				delete_post_meta_by_key( '_wpsso_wpultimaterecipe' );	// Re-created automatically.
 
 				/**
@@ -238,6 +244,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				 * Delete user settings and meta.
 				 */
 				delete_metadata( $meta_type = 'user', $object_id = null, WPSSO_META_NAME, $meta_value = null, $delete_all = true );
+
 				delete_metadata( $meta_type = 'user', $object_id = null, WPSSO_PREF_NAME, $meta_value = null, $delete_all = true );
 
 				while ( $user_ids = SucomUtil::get_user_ids( $blog_id, '', 1000 ) ) {	// Get a maximum of 1000 user IDs at a time.
