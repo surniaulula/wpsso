@@ -1061,9 +1061,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'clear_cache_dir':
 
-							$deleted_count = $this->p->util->cache->clear_cache_dir();
+							$cleared_count = $this->p->util->cache->clear_cache_dir();
 
-							$notice_msg = sprintf( __( '%s cache files have been deleted.', 'wpsso' ), $deleted_count );
+							$notice_msg = sprintf( __( '%s cache files have been deleted.', 'wpsso' ), $cleared_count );
 
 							$this->p->notice->upd( $notice_msg, $user_id );
 
@@ -1071,9 +1071,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'clear_db_transients':
 
-							$deleted_count = $this->p->util->cache->clear_db_transients( $clear_short = true, $transient_prefix = '' );
+							$cleared_count = $this->p->util->cache->clear_db_transients( $clear_short = true, $transient_prefix = '' );
 
-							$notice_msg = sprintf( __( '%s database transients have been deleted.', 'wpsso' ), $deleted_count );
+							$notice_msg = sprintf( __( '%s database transients have been deleted.', 'wpsso' ), $cleared_count );
 
 							$this->p->notice->upd( $notice_msg, $user_id );
 
@@ -1083,7 +1083,30 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							$this->p->util->cache->schedule_refresh( $user_id, $read_cache = false );
 
-							$notice_msg = __( 'A background task will begin shortly to refresh the post, term and user transient cache objects.', 'wpsso' );
+							$notice_msg = __( 'A background task will begin shortly to refresh the post, term and user transient cache objects.',
+								'wpsso' );
+
+							$this->p->notice->upd( $notice_msg, $user_id );
+
+							break;
+
+						case 'add_persons':
+
+							$this->p->user->schedule_add_user_roles();
+
+							$notice_msg = sprintf( __( 'A background task will begin shortly to add the %s role to content creators.',
+								'wpsso' ), _x( 'Person', 'user role', 'wpsso' ) );
+
+							$this->p->notice->upd( $notice_msg, $user_id );
+
+							break;
+
+						case 'remove_persons':
+
+							$this->p->user->schedule_remove_user_roles();
+
+							$notice_msg = sprintf( __( 'A background task will begin shortly to remove the %s role from all users.',
+								'wpsso' ), _x( 'Person', 'user role', 'wpsso' ) );
 
 							$this->p->notice->upd( $notice_msg, $user_id );
 
@@ -2720,6 +2743,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			'</td>';
 
 			$owner_roles = $this->p->cf[ 'wp' ][ 'roles' ][ 'owner' ];
+
 			$site_owners = SucomUtilWP::get_roles_user_select( $owner_roles );
 
 			$table_rows[ 'schema_home_person_id' ] = '' . 

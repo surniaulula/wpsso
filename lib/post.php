@@ -1003,7 +1003,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->debug->log( 'size of ' . $check_url . ' is ' . $html_size . ' bytes' );
 				}
 
-				if ( $is_admin ) {
+				if ( $is_admin && ! $this->p->debug->enabled ) {
 
 					$this->p->notice->err(
 						sprintf( __( 'The webpage HTML retrieved from %1$s is %2$s bytes.', 'wpsso' ),

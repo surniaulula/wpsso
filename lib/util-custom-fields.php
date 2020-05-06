@@ -22,21 +22,19 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 	class WpssoUtilCustomFields {
 
 		private $p;
-		private $util;
 
 		/**
 		 * Instantiated by WpssoUtil->__construct().
 		 */
 		public function __construct( &$plugin, &$util ) {
 
-			$this->p    =& $plugin;
-			$this->util =& $util;
+			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			$this->util->add_plugin_filters( $this, array(
+			$util->add_plugin_filters( $this, array(
 				'import_custom_fields' => 3,
 			), $prio = 1000 );
 		}
@@ -202,7 +200,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 					/**
 					 * If this is an '_img_url' option, add the image size and unset the '_img_id' option.
 					 */
-					$this->util->maybe_add_img_url_size( $md_opts, $md_key );
+					$this->p->util->maybe_add_img_url_size( $md_opts, $md_key );
 
 				} else {
 

@@ -13,6 +13,8 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 	class WpssoSubmenuTools extends WpssoAdmin {
 
+		public $using_db_cache = true;
+
 		public function __construct( &$plugin, $id, $name, $lib, $ext ) {
 
 			$this->p =& $plugin;
@@ -25,6 +27,8 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			$this->menu_name = $name;
 			$this->menu_lib  = $lib;
 			$this->menu_ext  = $ext;
+
+			$this->using_db_cache = wp_using_ext_object_cache() ? false : true;
 		}
 
 		protected function add_plugin_hooks() {
@@ -37,6 +41,8 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		protected function show_form_content() {
+
+			$role_label = _x( 'Person', 'user role', 'wpsso' );
 
 			/**
 			 * Add a form to support side metabox open / close functions.
@@ -59,46 +65,70 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			echo $this->get_form_buttons();
 
-			$using_external_cache = wp_using_ext_object_cache();
+			/**
+			 * Add a note about shortened URLs being preserved or cleared, depending on the 'plugin_clear_short_urls'
+			 * option value.
+			 */
+			if ( $this->using_db_cache ) {
+			
+				if ( $this->p->options[ 'plugin_shortener' ] !== 'none' ) {
 
-			if ( ! $using_external_cache && $this->p->options[ 'plugin_shortener' ] !== 'none' ) {
+					$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
+						_x( 'Refresh Short URLs on Clear Cache', 'option label', 'wpsso' ) );
 
-				$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
-					_x( 'Refresh Short URLs on Clear Cache', 'option label', 'wpsso' ) );
+					echo '<p class="status-msg smaller left">';
+					
+					echo '* ';
 
-				echo '<p class="status-msg smaller left">* ';
+					if ( empty( $this->p->options[ 'plugin_clear_short_urls' ] ) ) {
+						echo sprintf( __( '%1$s option is unchecked - shortened URLs cache will be preserved.', 'wpsso' ), $settings_page_link );
+					} else {
+						echo sprintf( __( '%1$s option is checked - shortened URLs cache will be cleared.', 'wpsso' ), $settings_page_link );
+					}
 
-				if ( empty( $this->p->options[ 'plugin_clear_short_urls' ] ) ) {
-					echo sprintf( __( '%1$s option is unchecked - shortened URLs cache will be preserved.', 'wpsso' ), $settings_page_link );
-				} else {
-					echo sprintf( __( '%1$s option is checked - shortened URLs cache will be cleared.', 'wpsso' ), $settings_page_link );
+					echo '</p>';
 				}
-
-				echo '</p>';
 			}
+
+			echo '<p class="status-msg smaller left">';
+			echo '** ';
+			echo sprintf( __( 'Members of the %s role may be selected for some Schema type properties (content creators are administrators, editors, authors or contributors).', 'wpsso' ), $role_label );
+			echo '</p>';
 
 			echo '</div><!-- #wpsso_tools -->' . "\n";
 		}
 
 		public function filter_form_button_rows( $form_button_rows ) {
 
+			$role_label = _x( 'Person', 'user role', 'wpsso' );
+
 			$change_show_next_key     = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf[ 'form' ][ 'show_options' ] );
 			$change_show_name_transl  = _x( $this->p->cf[ 'form' ][ 'show_options' ][ $change_show_next_key ], 'option value', 'wpsso' );
 			$change_show_label_transl = sprintf( _x( 'Change to "%s" View', 'submit button', 'wpsso' ), $change_show_name_transl );
-
-			$using_external_cache = wp_using_ext_object_cache();
 
 			$clear_cache_label_transl       = _x( 'Clear All Caches', 'submit button', 'wpsso' );
 			$clear_short_label_transl       = _x( 'Clear All Caches and Short URLs', 'submit button', 'wpsso' );
 			$clear_cache_dir_label_transl   = _x( 'Clear All Files in Cache Folder', 'submit button', 'wpsso' );
 			$clear_transients_label_transl  = _x( 'Clear All Database Transients', 'submit button', 'wpsso' );
 			$refresh_cache_label_transl     = _x( 'Refresh Transient Cache', 'submit button', 'wpsso' );
+			$add_persons_label_transl       = sprintf( _x( 'Add %s Role for Content Creators', 'submit button', 'wpsso' ), $role_label );
+			$remove_persons_label_transl    = sprintf( _x( 'Remove %s Role from All Users', 'submit button', 'wpsso' ), $role_label );
 			$export_settings_label_transl   = _x( 'Export Plugin and Add-on Settings', 'submit button', 'wpsso' );
 			$import_settings_label_transl   = _x( 'Import Plugin and Add-on Settings', 'submit button', 'wpsso' );
 
-			if ( ! $using_external_cache && $this->p->options[ 'plugin_shortener' ] !== 'none' ) {
-				$clear_cache_label_transl .= ' *';
+			/**
+			 * Add a note about shortened URLs being preserved or cleared, depending on the 'plugin_clear_short_urls'
+			 * option value.
+			 */
+			if ( $this->using_db_cache ) {
+			
+				if ( $this->p->options[ 'plugin_shortener' ] !== 'none' ) {
+
+					$clear_cache_label_transl .= ' *';
+				}
 			}
+
+			$add_persons_label_transl .= ' **';
 
 			$form_button_rows = array(
 				array(
@@ -123,19 +153,27 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 					),
 				),
 				array(
+					'add_persons'    => $add_persons_label_transl,
+					'remove_persons' => $remove_persons_label_transl,
 					// 'Reload Default Image Sizes' button added by the WpssoSubmenuImageSizes class.
 				),
 				array(
 					'change_show_options&show-opts=' . $change_show_next_key => $change_show_label_transl,
-					'reset_user_dismissed_notices' => _x( 'Reset User Dismissed Notices', 'submit button', 'wpsso' ),
-					'reset_user_metabox_layout'    => _x( 'Reset User Metabox Layout', 'submit button', 'wpsso' ),
+					'reset_user_dismissed_notices' => _x( 'Reset Dismissed Notices', 'submit button', 'wpsso' ),
+					'reset_user_metabox_layout'    => _x( 'Reset Metabox Layout', 'submit button', 'wpsso' ),
 				),
 			);
 
-			if ( ! $using_external_cache ) {
+			if ( $this->using_db_cache ) {
 
+				/**
+				 * Clear All Database Transients.
+				 */
 				$form_button_rows[ 0 ][ 'clear_db_transients' ] = $clear_transients_label_transl;
 
+				/**
+				 * Clear All Caches and Short URLs.
+				 */
 				if ( $this->p->options[ 'plugin_shortener' ] !== 'none' ) {
 
 					if ( empty( $this->p->options[ 'plugin_clear_short_urls' ] ) ) {

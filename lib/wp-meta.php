@@ -1329,9 +1329,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				'salt' => 'WpssoPage::get_the_content(' . $mod_salt . ')',
 			);
 
-			$deleted_count = 0;
+			$cleared_count = 0;
 
-			$deleted_ids = array();
+			$cleared_ids = array();
 
 			foreach ( $cache_types as $type_name => $type_keys ) {
 
@@ -1361,7 +1361,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 						$cache_id = $cache_key = $mixed;
 					}
 
-					if ( isset( $deleted_ids[ $type_name ][ $cache_id ] ) ) {	// skip duplicate cache ids
+					if ( isset( $cleared_ids[ $type_name ][ $cache_id ] ) ) {	// skip duplicate cache ids
 						continue;
 					}
 
@@ -1387,14 +1387,14 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					}
 
 					if ( $ret ) {
-						$deleted_count++;
+						$cleared_count++;
 					}
 
-					$deleted_ids[ $type_name ][ $cache_key ] = $ret;
+					$cleared_ids[ $type_name ][ $cache_key ] = $ret;
 				}
 			}
 
-			return $deleted_count;
+			return $cleared_count;
 		}
 
 		protected function verify_submit_nonce() {

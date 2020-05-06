@@ -2027,25 +2027,25 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'contributor',
 						'subscriber',
 					),
-					'writer' => array(	// Users that can write posts.
+					'creator' => array(	// Users that can create content.
 						'administrator',
 						'editor',
 						'author',
 						'contributor',
 					),
-					'publisher' => array(	// Users that can publish posts.
+					'publisher' => array(	// Users that can publish content.
 						'administrator',
 						'editor',
 						'author',
 					),
-					'owner' => array(	// Users that can manage posts (edit, publish, delete, etc.).
+					'owner' => array(	// Users that can manage content (edit, publish, delete, etc.).
 						'administrator',
 						'editor',
 					),
 					'admin' => array(
 						'administrator',
 					),
-					'person' => array(	// Users for the Schema Person markup.
+					'person' => array(	// Users for Schema Person selections.
 						'person',
 					),
 				),

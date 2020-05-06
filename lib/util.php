@@ -80,22 +80,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			/**
-			 * WpssoUtilReg.
-			 */
-			if ( ! class_exists( 'WpssoUtilReg' ) ) {
-				require_once WPSSO_PLUGINDIR . 'lib/util-reg.php';
-			}
-
-			$this->reg = new WpssoUtilReg( $plugin, $this );
-
-			/**
 			 * WpssoUtilCache.
 			 */
 			if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				require_once WPSSO_PLUGINDIR . 'lib/util-cache.php';
 			}
 
-			$this->cache = new WpssoUtilCache( $plugin, $this );
+			$this->cache = new WpssoUtilCache( $plugin );
 
 			/**
 			 * WpssoUtilCustomFields.
@@ -104,7 +95,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				require_once WPSSO_PLUGINDIR . 'lib/util-custom-fields.php';
 			}
 
-			$this->cf = new WpssoUtilCustomFields( $plugin, $this );
+			$this->cf = new WpssoUtilCustomFields( $plugin, $this );	// Constructor uses $this->add_plugin_filters().
+
+			/**
+			 * WpssoUtilReg.
+			 */
+			if ( ! class_exists( 'WpssoUtilReg' ) ) {
+				require_once WPSSO_PLUGINDIR . 'lib/util-reg.php';
+			}
+
+			$this->reg = new WpssoUtilReg( $plugin );
 
 			/**
 			 * WpssoUtilWooCommerce.
@@ -115,7 +115,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					require_once WPSSO_PLUGINDIR . 'lib/util-woocommerce.php';
 				}
 
-				$this->wc = new WpssoUtilWooCommerce( $plugin, $this );
+				$this->wc = new WpssoUtilWooCommerce( $plugin );
 			}
 
 			$this->add_plugin_filters( $this, array(
@@ -1396,7 +1396,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				return false;
 
-			} elseif ( empty( $query ) ) {	// Just in case.
+			}
+			
+			if ( empty( $query ) ) {	// Just in case.
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: the query argument is empty' );
@@ -1404,13 +1406,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				return false;
 
-			} elseif ( false !== stripos( $request, '<html' ) ) {	// Request contains html.
+			}
+			
+			if ( false !== stripos( $request, '<html' ) ) {	// Request contains html.
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'using the html submitted as the request argument' );
 				}
 
 				$html = $request;
+
 				$request = false;	// Just in case.
 
 			} elseif ( filter_var( $request, FILTER_VALIDATE_URL ) === false ) {	// Request is an invalid url.
@@ -1426,7 +1431,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				return false;
 
-			} elseif ( ( $html = $this->p->cache->get( $request, 'raw', 'transient', null, '', $curl_opts ) ) === false ) {
+			} elseif ( false === ( $html = $this->p->cache->get( $request, 'raw', 'transient', null, '', $curl_opts ) ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: error caching ' . $request );
@@ -1439,7 +1444,20 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				return false;
 
-			} elseif ( empty( $html ) ) {	// Returned html for url is empty.
+			}
+			
+			if ( ! function_exists( 'mb_convert_encoding' ) ) {
+
+				$this->php_function_missing( 'mb_convert_encoding()', __METHOD__ );
+
+				return false;
+			}
+
+			$html = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// Convert to UTF8.
+
+			$html = preg_replace( '/<!--.*-->/Uums', '', $html );		// Pattern and subject strings are treated as UTF8.
+
+			if ( empty( $html ) ) {	// Returned html for url is empty.
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: html for ' . $request . ' is empty' );
@@ -1462,21 +1480,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->php_class_missing( 'DOMDocument', __METHOD__ );
 
 				return false;
-
-			} elseif ( ! function_exists( 'mb_convert_encoding' ) ) {
-
-				$this->php_function_missing( 'mb_convert_encoding()', __METHOD__ );
-
-				return false;
 			}
 
 			$ret = array();
-
-			if ( function_exists( 'mb_convert_encoding' ) ) {	// Just in case.
-				$html = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// Convert to UTF8.
-			}
-
-			$html = preg_replace( '/<!--.*-->/Uums', '', $html );		// Pattern and subject strings are treated as UTF8.
 
 			$doc = new DOMDocument();					// Since PHP v4.1.
 

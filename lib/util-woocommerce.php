@@ -22,15 +22,13 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 	class WpssoUtilWooCommerce {
 
 		private $p;
-		private $util;
 
 		/**
 		 * Instantiated by WpssoUtil->__construct().
 		 */
-		public function __construct( &$plugin, &$util ) {
+		public function __construct( &$plugin ) {
 
-			$this->p    =& $plugin;
-			$this->util =& $util;
+			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();

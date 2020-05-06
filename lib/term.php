@@ -123,6 +123,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					 * Sets the WpssoWpMeta::$head_tags and WpssoWpMeta::$head_info class properties.
 					 */
 					add_action( 'current_screen', array( $this, 'load_meta_page' ), 300, 1 );
+
 					add_action( $this->query_tax_slug . '_edit_form', array( $this, 'show_metaboxes' ), 100, 1 );
 				}
 
