@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '7.4.0-dev.1',	// Plugin version.
+					'version'     => '7.4.0-dev.2',	// Plugin version.
 					'opt_version' => '726',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2045,7 +2045,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'admin' => array(
 						'administrator',
 					),
-					'person' => array(	// Users for Schema Person selections.
+					'person' => array(	// Users for Schema Person select.
 						'person',
 					),
 				),

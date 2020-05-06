@@ -15,7 +15,7 @@
  * Requires At Least: 4.2
  * Tested Up To: 5.4.1
  * WC Tested Up To: 4.1.0
- * Version: 7.4.0-dev.1
+ * Version: 7.4.0-dev.2
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -82,7 +82,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $site_options = array();	// Multisite options.
 		public $sc           = array();	// Shortcodes.
 
-		private static $instance;
+		private static $instance = null;
 
 		/**
 		 * Wpsso constructor.
@@ -127,7 +127,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 		public static function &get_instance() {
 
-			if ( ! isset( self::$instance ) ) {
+			if ( null === self::$instance ) {
 				self::$instance = new self;
 			}
 

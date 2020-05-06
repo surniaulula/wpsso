@@ -255,7 +255,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 	
 						WpssoUser::delete_metabox_prefs( $id );
 
-						WpssoUser::remove_person_role( $id );
+						WpssoUser::remove_role_by_id( $id, $role = 'person' );
 					}
 				}
 

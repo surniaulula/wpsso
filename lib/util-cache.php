@@ -562,16 +562,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			 */
 			if ( false !== get_transient( $cache_id ) ) {	// Another process is already running.
 
-				if ( $user_id ) {
-
-					$notice_msg = __( 'Another task to refresh the transient cache is running - attempting to stop it...', 'wpsso' );
-
-					$this->p->notice->warn( $notice_msg, $user_id, $notice_key );
-				}
-
 				set_transient( $cache_id, $cache_stop_val, $cache_exp_secs );	// Signal the other process to stop.
 
-				usleep( 20 * 1000000 );						// Sleep for 20 seconds.
+				usleep( 10 * 1000000 );						// Sleep for 20 seconds.
 
 				if ( false !== get_transient( $cache_id ) ) {			// Stop here if the other process is still running.
 
@@ -615,10 +608,10 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 						delete_transient( $cache_id );
 
-						return;
+						return;	// Stop here.
 					}
 
-					$count++;
+					$count++;	// Reference to post, term, or user total count.
 
 					$mod = $this->p->$obj_name->get_mod( $obj_id );
 
