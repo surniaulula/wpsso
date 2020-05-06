@@ -497,7 +497,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.4.0-dev.1 (TBD)**
+**Version 7.4.0-dev.2 (2020/05/06)**
 
 * **New Features**
 	* None.
@@ -1123,9 +1123,9 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 7.4.0-dev.1 =
+= 7.4.0-dev.2 =
 
-(TBD) Added a new lib/util-cache.php library file.
+(2020/05/06) Added a new lib/util-cache.php library file.
 
 = 7.3.0 =
 
