@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 5.6
 Requires At Least: 4.2
 Tested Up To: 5.4.1
-WC Tested Up To: 4.0.1
+WC Tested Up To: 4.1.0
 Stable Tag: 7.3.0
 
 Make sure your content looks great on all social and search sites - no matter how your URLs are crawled, shared, re-shared, posted, or embedded.
@@ -506,7 +506,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a new lib/util-cache.php library file.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
@@ -1125,7 +1125,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 = 7.4.0-dev.1 =
 
-(TBD) None.
+(TBD) Added a new lib/util-cache.php library file.
 
 = 7.3.0 =
 
