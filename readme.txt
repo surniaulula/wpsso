@@ -24,15 +24,15 @@ Make sure your content looks great on all social and search sites - no matter ho
 
 **Make sure your content looks great on all social and search sites - no matter how your URLs are crawled, shared, re-shared, posted, or embedded:**
 
-WPSSO Core and its complementary add-ons create meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph, Google Rich Results (aka Rich Snippets, Structured Data), Mobile Web Browsers, oEmbed data for LinkedIn, Pinterest Rich Pins, Twitter Cards &mdash; including complete markup for image SEO, video SEO, extensive e-Commerce product markup (for WooCommerce and others), mobile store apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content, supported plugin data, and service API data.
+WPSSO creates meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph, Google Rich Results (aka Rich Snippets, Structured Data), Mobile Web Browsers, oEmbed data for LinkedIn, Pinterest Rich Pins, Twitter Cards &mdash; including complete markup for image SEO, video SEO, extensive e-Commerce product markup (for WooCommerce and others), mobile store apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content, supported plugin data, and service API data.
 
-There's no need to manually re-enter descriptions, titles, product information, re-select images / videos, etc. like other meta tag and Schema markup plugins &mdash; WPSSO Core reads all your existing post, page, image, video, e-commerce product, recipe, rating, review, event, and SEO content automatically.
+There's no need to manually re-enter descriptions, titles, product information, re-select images / videos, etc. like other meta tag and Schema markup plugins &mdash; WPSSO reads all your existing post, page, image, video, e-commerce product, recipe, rating, review, event, and SEO content automatically.
 
-WPSSO Core is also language / locale aware, which means you can customize several option values for different webpage languages.
+WPSSO is also language / locale aware, which means you can customize several option values for different webpage languages.
 
 **Coded for maximum performance:**
 
-WPSSO Core makes full use of all available caching methods &mdash; along with offering advanced caching features like pre-seeding in background. WPSSO Core and its complementary add-ons load only the libraries and classes they need, keeping their code small, fast and light. All code is fully tested and compatible with the latest version of WordPress and PHP v7.x (WordPress v4.2 and PHP v5.6 or newer required).
+WPSSO makes full use of all available caching methods &mdash; along with offering advanced caching features like pre-seeding in background. WPSSO Core and its complementary add-ons load only the libraries and classes they need, keeping their code small, fast and light. All code is fully tested and compatible with the latest version of WordPress and PHP v7.x (WordPress v4.2 and PHP v5.6 or newer required).
 
 <h3>Users Love the WPSSO Core Plugin</h3>
 
@@ -46,7 +46,7 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 
 <h3>WPSSO Core Standard Features</h3>
 
-* Complete and accurate meta tags for all social sites, search engines, web browser extensions, mail and messaging apps, and embedded object / iframe content.
+* Complete and accurate meta tags for ALL social sites, search engines, web browser extensions, mail and messaging apps, and embedded object / iframe content.
 
 * Updates WordPress oEmbed data with the Open Graph title, description, and image for posts, pages, and custom post types.
 
@@ -65,7 +65,7 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 
 * Locates images from numerous sources, including featured, attached, gallery shortcode, content images, or a custom fallback image.
 
-* Offers meta tags and markup for all webpages, including:
+* Offers meta tags and optional Schema markup for all webpages, including:
 
 	* Home Page (static page or blog)
 	* Posts, Pages, and Custom Post Types
@@ -75,26 +75,7 @@ WPSSO Core makes full use of all available caching methods &mdash; along with of
 	* Search Result Pages
 	* Archive Pages
 
-* Customize values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags), custom post types, and user profiles:
-
-	* Customize Text
-		* Preferred Cropping (image editing page) 
-		* Schema Type
-		* Open Graph Type
-		* Default Title
-		* Default Description
-		* Pinterest Description
-		* Twitter Card Description
-		* Search Description
-		* Sharing URL
-		* Canonical URL
-		* Article Information
-			* Article Section
-	* Priority Media
-		* Facebook / Open Graph and Default Media
-			* Priority Image Information
-				* Maximum Images
-				* Image ID or an Image URL
+* Customize values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags), custom post types, and user profiles.
 
 * Built-in support for AMP plugins:
 
@@ -217,167 +198,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 		* Your Own URL Shortener (YOURLS)
 		* YouTube Videos and Playlists
 
-* Customize additional option values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags), custom post types, and user profiles:
-
-	* Customize Text
-		* Basic Product Information
-			* Product Brand
-			* Product Price and Currency
-			* Product Availability
-			* Product Condition
-			* Product Material
-			* Product Color
-			* Product Target Gender
-			* Product Size
-			* Product Weight (kg)
-			* Product SKU
-			* Product MPN
-			* Product ISBN
-	* Priority Media
-		* Facebook / Open Graph and Default Media
-			* Priority Video Information
-				* Include Preview Images
-				* Maximum Videos
-				* Video Dimensions
-				* Video Embed HTML or Video URL
-				* Video Name / Title
-				* Video Description
-		* Pinterest Pin It
-			* Image ID or an Image URL
-		* Twitter Card
-			* Image ID or an Image URL
-		* Schema JSON-LD Markup / Rich Results
-			* Maximum Images
-			* Image ID or an Image URL
-
-* Additional customizable option values in the Document SSO metabox are available from the [WPSSO Schema JSON-LD Markup Premium add-on](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/):
-
-	* All Schema Types
-		* Name / Title
-		* Alternate Name
-		* Description
-		* Microdata Type URLs
-		* Same-As URLs
-	* Creative Work Information
-		* Is Part of URL
-		* Headline
-		* Full Text
-		* Keywords
-		* Language
-		* Family Friendly
-		* Copyright Year
-		* License URL
-		* Publisher
-		* Service Provider
-	* Event Information
-		* Event Language
-		* Event Attendance
-		* Event Online URL
-		* Event Physical Venue
-		* Event Organizer Organization
-		* Event Organizer Person
-		* Event Performer Organization
-		* Event Performer Person
-		* Event Start (date, time, timezone)
-		* Event End (date, time, timezone)
-		* Event Offers Start (date, time, timezone)
-		* Event Offers End (date, time, timezone)
-		* Event Offers (name, price, currency, availability)
-	* How-To
-		* How-To Makes 
-		* How-To Preparation Time 
-		* How-To Total Time 
-		* How-To Supplies 
-		* How-To Tools 
-		* How-To Steps (section name, section description, step name, direction text and image)
-	* Job Posting Information
-		* Job Title
-		* Hiring Organization
-		* Job Location
-		* Base Salary
-		* Employment Type
-		* Jpb Posting Expires
-	* Movie Information
-		* Cast Names
-		* Director Names
-		* Production Company
-		* Movie Runtime
-	* Organization Information
-		* Select an Organization
-	* Person Information
-		* Select a Person
-	* Product Information (Additional)
-		* Product Length (cm)
-		* Product Width (cm)
-		* Product Height (cm)
-		* Product Depth (cm)
-		* Product Fluid Volume (ml)
-		* Product GTIN-14
-		* Product GTIN-13 (EAN)
-		* Product GTIN-12 (UPC)
-		* Product GTIN-8
-		* Product GTIN
-	* QA Page Information
-		* QA Heading
-	* Recipe Information
-		* Recipe Cuisine 
-		* Recipe Course 
-		* Recipe Makes 
-		* Cooking Method 
-		* Preparation Time 
-		* Cooking Time 
-		* Total Time 
-		* Recipe Ingredients 
-		* Recipe Instructions 
-		* Nutrition Information per Serving 
-			* Serving Size
-			* Calories
-			* Protein
-			* Fiber
-			* Carbohydrates
-			* Sugar
-			* Sodium
-			* Fat
-			* Saturated Fat
-			* Unsaturated Fat
-			* Trans Fat
-			* Cholesterol
-	* Review Information
-		* Review Rating 
-		* Rating Value Name
-		* Subject of the Review
-			* Subject Webpage Type 
-			* Subject Webpage URL 
-			* Subject Same-As URL 
-			* Subject Name 
-			* Subject Description 
-			* Subject Image ID or URL 
-			* Claim Subject Information (for Claim Review)
-				* Short Summary of Claim
-				* First Appearance URL
-			* Creative Work Subject Information
-				* C.W. Author Type
-				* C.W. Author Name
-				* C.W. Author URL
-				* C.W. Published Date
-				* C.W. Created Date
-			* Book Subject Information
-				* Book ISBN
-			* Movie Subject Information
-				* Movie Cast Names
-				* Movie Director Names
-			* Product Subject Information
-				* Product Brand
-				* Product Offers (name, price, currency, availability)
-				* Product SKU
-				* Product MPN
-			* Software App Subject Information
-				* Operating System
-				* Application Category
-				* Software App Offers (name, price, currency, availability)
-	* Software Application Information
-		* Operating System
-		* Application Category
+* Customize additional option values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags), custom post types, and user profiles.
 
 == Installation ==
 
