@@ -1093,7 +1093,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'add_persons':
 
-							$this->p->user->schedule_add_user_roles();
+							$this->p->user->schedule_add_person_role();
 
 							$notice_msg = sprintf( __( 'A background task will begin shortly to add the %s role to content creators.',
 								'wpsso' ), _x( 'Person', 'user role', 'wpsso' ) );
@@ -1104,7 +1104,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'remove_persons':
 
-							$this->p->user->schedule_remove_user_roles();
+							$this->p->user->schedule_remove_person_role();
 
 							$notice_msg = sprintf( __( 'A background task will begin shortly to remove the %s role from all users.',
 								'wpsso' ), _x( 'Person', 'user role', 'wpsso' ) );
@@ -3306,8 +3306,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function get_check_for_updates_link( $get_notice = true ) {
 
-			$link_url  = '';
-			$link_html = '';
+			$link_url = '';
+
+			$notice_html = '';
 
 			if ( class_exists( 'WpssoUm' ) ) {
 
@@ -3316,19 +3317,24 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$link_url = wp_nonce_url( $this->p->util->get_admin_url( 'um-general?' . $this->p->lca . '-action=check_for_updates' ),
 					WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 
+				$short_name = self::$pkg[ 'wpsso' ][ 'short' ];
+
 				// translators: %1$s is the URL, %2$s is the short plugin name.
-				$link_html = sprintf( __( 'You may <a href="%1$s">refresh the update information for %2$s and its add-ons</a> to check if newer versions are available.', 'wpsso' ), $link_url, self::$pkg[ $this->p->lca ][ 'short' ] );
+				$notice_transl = __( 'You may <a href="%s">refresh the update information for %2$s and its add-ons</a> to check if newer versions are available.', 'wpsso' );
+
+				$notice_html = sprintf( $notice_transl, $link_url, $short_name );
 
 			} elseif ( empty( $_GET[ 'force-check' ] ) ) {
 
 				$link_url = self_admin_url( 'update-core.php?force-check=1' );
 
 				// translators: %1$s is the URL.
-				$link_html = sprintf( __( 'You may <a href="%1$s">refresh the update information for WordPress (plugins, themes and translations)</a> to check if newer versions are available.', 'wpsso' ), $link_url );
+				$notice_transl = __( 'You may <a href="%1$s">refresh the update information for WordPress (plugins, themes and translations)</a> to check if newer versions are available.', 'wpsso' );
 
+				$notice_html = sprintf( $notice_transl, $link_url );
 			}
 
-			return $get_notice ? $link_html : $link_url;
+			return $get_notice ? $notice_html : $link_url;
 		}
 
 		/**

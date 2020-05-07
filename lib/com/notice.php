@@ -632,9 +632,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				return;
 			}
 
-			echo "\n";
-			echo '<!-- ' . $this->lca . ' admin notices begin -->' . "\n";
+			echo "\n" . '<!-- ' . $this->lca . ' admin notices begin -->' . "\n";
+
 			echo '<div id="' . sanitize_html_class( $this->lca . '-admin-notices-begin' ) . '"></div>' . "\n";
+
 			echo $this->get_notice_style();
 
 			/**
@@ -1308,13 +1309,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					margin:0;
 					border:0;
 					background:inherit;
-				}
-				#wpadminbar #wp-toolbar #' . $this->lca . '-toolbar-notices-icon.ab-icon { 
-					margin:0;
-					padding:0;
-				}
-				#wpadminbar #wp-toolbar #' . $this->lca . '-toolbar-notices-count {
-					margin-left:8px;
 				}
 				#wpadminbar #wp-toolbar .has-toolbar-notices .ab-item:hover,
 				#wpadminbar #wp-toolbar .has-toolbar-notices.hover .ab-item { 

@@ -1712,7 +1712,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				foreach ( $arr as $key => $val ) {
 
-					if ( $pos === 'after' ) {
+					if ( 'after' === $pos ) {
 						$new_arr[ $key ] = $val;
 					}
 
@@ -1734,7 +1734,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						$matched = true;
 					}
 
-					if ( $pos === 'before' ) {
+					if ( 'before' === $pos ) {
 						$new_arr[ $key ] = $val;
 					}
 				}

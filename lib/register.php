@@ -133,7 +133,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			 * Add the "person" role for all WpssoUser::get_public_ids(). 
 			 */
 			if ( $new_install ) {
-				$this->p->user->schedule_add_user_roles();
+				$this->p->user->schedule_add_person_role();
 			}
 
 			/**

@@ -63,9 +63,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			add_filter( 'user_' . $cm_fb_name . '_label', array( $this, 'fb_contact_label' ), 20, 1 );
 
-			add_action( $this->p->lca . '_add_user_roles', array( $this, 'add_user_roles' ), 10, 1 );	// For single scheduled task.
+			add_action( $this->p->lca . '_add_person_role', array( $this, 'add_person_role' ), 10, 1 );	// For single scheduled task.
 
-			add_action( $this->p->lca . '_remove_user_roles', array( $this, 'remove_user_roles' ), 10, 1 );	// For single scheduled task.
+			add_action( $this->p->lca . '_remove_person_role', array( $this, 'remove_person_role' ), 10, 1 );	// For single scheduled task.
 
 			/**
 			 * Hook a minimum number of admin actions to maximize performance. The user_id argument is 
@@ -1475,24 +1475,24 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		/**
 		 * Schedule the addition of user roles for self::get_public_ids().
 		 */
-		public function schedule_add_user_roles( $user_id = null ) {
+		public function schedule_add_person_role( $user_id = null ) {
 
 			$user_id = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 
 			$event_time = time() + 5;	// Add a 5 second event buffer.
 
-			$event_hook = $this->p->lca . '_add_user_roles';
+			$event_hook = $this->p->lca . '_add_person_role';
 
 			$event_args = array( $user_id );
 
 			wp_schedule_single_event( $event_time, $event_hook, $event_args );
 		}
 
-		public function stop_add_user_roles() {
+		public function stop_add_person_role() {
 
 			$cache_md5_pre  = $this->p->lca . '_!_';		// Protect transient from being cleared.
 			$cache_exp_secs = HOUR_IN_SECONDS;			// Prevent duplicate runs for max 1 hour.
-			$cache_salt     = __CLASS__ . '::add_user_roles';	// Use a common cache salt for start / stop.
+			$cache_salt     = __CLASS__ . '::add_person_role';	// Use a common cache salt for start / stop.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_stop_val = 'stop';
 
@@ -1502,7 +1502,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 		}
 
-		public function add_user_roles( $user_id = null ) {
+		public function add_person_role( $user_id = null ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -1529,7 +1529,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			 */
 			$cache_md5_pre  = $this->p->lca . '_!_';		// Protect transient from being cleared.
 			$cache_exp_secs = HOUR_IN_SECONDS;			// Prevent duplicate runs for max 1 hour.
-			$cache_salt     = __CLASS__ . '::add_user_roles';	// Use a common cache salt for start / stop.
+			$cache_salt     = __CLASS__ . '::add_person_role';	// Use a common cache salt for start / stop.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_run_val  = 'running';
 			$cache_stop_val = 'stop';
@@ -1603,20 +1603,20 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		/**
 		 * Schedule the removal of user roles for self::get_public_ids().
 		 */
-		public function schedule_remove_user_roles( $user_id = null ) {
+		public function schedule_remove_person_role( $user_id = null ) {
 
 			$user_id = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 
 			$event_time = time() + 5;	// Add a 5 second event buffer.
 
-			$event_hook = $this->p->lca . '_remove_user_roles';
+			$event_hook = $this->p->lca . '_remove_person_role';
 
 			$event_args = array( $user_id );
 
 			wp_schedule_single_event( $event_time, $event_hook, $event_args );
 		}
 
-		public function remove_user_roles( $user_id = null ) {
+		public function remove_person_role( $user_id = null ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -1643,7 +1643,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			 */
 			$cache_md5_pre  = $this->p->lca . '_!_';		// Protect transient from being cleared.
 			$cache_exp_secs = HOUR_IN_SECONDS;			// Prevent duplicate runs for max 1 hour.
-			$cache_salt     = __CLASS__ . '::remove_user_roles';	// Use a common cache salt for start / stop.
+			$cache_salt     = __CLASS__ . '::remove_person_role';	// Use a common cache salt for start / stop.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_run_val  = 'running';
 			$cache_stop_val = 'stop';
@@ -1666,7 +1666,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			set_transient( $cache_id, $cache_run_val, $cache_exp_secs );	// Signal that we are running.
 
-			$this->stop_add_user_roles();	// Just in case.
+			$this->stop_add_person_role();	// Just in case.
 
 			if ( 0 === get_current_user_id() ) {		// User is the scheduler.
 				set_time_limit( HOUR_IN_SECONDS );	// Set maximum PHP execution time to one hour.

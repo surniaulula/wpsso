@@ -371,6 +371,12 @@
       "css": "share",
       "code": 61920,
       "src": "fontawesome"
+    },
+    {
+      "uid": "9b0229b620364d8704940e408dde73fb",
+      "css": "spinner2",
+      "code": 62761,
+      "src": "mfglabs"
     }
   ]
 }
