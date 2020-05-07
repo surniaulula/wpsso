@@ -320,12 +320,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.4.0-dev.2 (2020/05/06)**
+**Version 7.4.0-dev.3 (2020/05/07)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added new "Add Person Role for Content Creators" and "Remove Person Role from All Users" buttons in the SSO &gt; Tools and Actions page.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -946,9 +946,9 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 7.4.0-dev.2 =
+= 7.4.0-dev.3 =
 
-(2020/05/06) Added a new lib/util-cache.php library file.
+(2020/05/07) Added new "Add Person Role for Content Creators" and "Remove Person Role from All Users" buttons in the SSO &gt; Tools and Actions page.
 
 = 7.3.0 =
 
