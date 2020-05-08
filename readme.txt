@@ -325,6 +325,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
+	* Changed the menu font icon for better compatibility between Mac OS and Windows (Mac OS superscripted the original font icon).
 	* Added new "Add Person Role for Content Creators" and "Remove Person Role from All Users" buttons in the SSO &gt; Tools and Actions page.
 * **Bugfixes**
 	* None.
