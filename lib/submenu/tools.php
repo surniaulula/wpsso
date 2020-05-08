@@ -92,7 +92,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			echo '<p class="status-msg smaller left">';
 			echo '** ';
-			echo sprintf( __( 'Members of the %s role may be selected for some Schema type properties (content creators are administrators, editors, authors or contributors).', 'wpsso' ), $role_label );
+			echo sprintf( __( 'Members of the %s role may be hand selected for certain Schema properties (content creators are administrators, editors, authors or contributors).', 'wpsso' ), $role_label );
 			echo '</p>';
 
 			echo '</div><!-- #wpsso_tools -->' . "\n";

@@ -385,7 +385,7 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 					'oz'  => __( 'oz', 'woocommerce' ),	// Ounce.
 
 					// translators: Please ignore - translation uses a different text domain.
-					'lbs' => __( 'lbz', 'woocommerce' ),	// Pound.
+					'lbs' => __( 'lbs', 'woocommerce' ),	// Pound.
 				);
 			}
 

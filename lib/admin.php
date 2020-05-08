@@ -3328,7 +3328,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$short_name = self::$pkg[ 'wpsso' ][ 'short' ];
 
 				// translators: %1$s is the URL, %2$s is the short plugin name.
-				$notice_transl = __( 'You may <a href="%s">refresh the update information for %2$s and its add-ons</a> to check if newer versions are available.', 'wpsso' );
+				$notice_transl = __( 'You may <a href="%1$s">refresh the update information for %2$s and its add-ons</a> to check if newer versions are available.', 'wpsso' );
 
 				$notice_html = sprintf( $notice_transl, $link_url, $short_name );
 

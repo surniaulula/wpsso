@@ -718,7 +718,7 @@ msgstr ""
 #. translators: %1$s is the URL, %2$s is the short plugin name.
 #: lib/admin.php:3331
 msgid ""
-"You may <a href=\"%s\">refresh the update information for %2$s and its add-"
+"You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
@@ -6993,7 +6993,7 @@ msgstr ""
 
 #: lib/submenu/tools.php:95
 msgid ""
-"Members of the %s role may be selected for some Schema type properties "
+"Members of the %s role may be hand selected for certain Schema properties "
 "(content creators are administrators, editors, authors or contributors)."
 msgstr ""
 
@@ -7271,7 +7271,7 @@ msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: lib/util-woocommerce.php:388
-msgid "lbz"
+msgid "lbs"
 msgstr ""
 
 #: lib/util.php:561
