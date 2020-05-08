@@ -2960,6 +2960,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			self::get_option_site_use( 'plugin_notice_system', $form, $network, true );
 		}
 
+		/**
+		 * Deprecated since 2020/04/28.
+		 */
+		public function add_advanced_product_attr_table_rows( array &$table_rows, $form ) {
+
+			$this->add_advanced_product_attrs_table_rows( $table_rows, $form );
+		}
+
 		public function add_advanced_product_attrs_table_rows( array &$table_rows, $form ) {
 
 			$td_attr = '';

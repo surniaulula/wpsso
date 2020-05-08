@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 7.4.0-dev.4\n"
+"Project-Id-Version: WPSSO Core 7.4.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -696,62 +696,62 @@ msgctxt "option label"
 msgid "Notification System"
 msgstr ""
 
-#: lib/admin.php:3078
+#: lib/admin.php:3086
 msgctxt "option comment"
 msgid "in %s"
 msgstr ""
 
-#: lib/admin.php:3089
+#: lib/admin.php:3097
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:3267
+#: lib/admin.php:3275
 msgid "Return to %s"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:3298
+#: lib/admin.php:3306
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:3323
+#: lib/admin.php:3331
 msgid ""
 "You may <a href=\"%s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:3332
+#: lib/admin.php:3340
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes and translations)</a> to check if newer versions are "
 "available."
 msgstr ""
 
-#: lib/admin.php:3460
+#: lib/admin.php:3468
 msgid "Please select a %1$s settings file to import."
 msgstr ""
 
-#: lib/admin.php:3467
+#: lib/admin.php:3475
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr ""
 
-#: lib/admin.php:3474
+#: lib/admin.php:3482
 msgid ""
 "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr ""
 
-#: lib/admin.php:3488
+#: lib/admin.php:3496
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr ""
 
-#: lib/admin.php:3498
+#: lib/admin.php:3506
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr ""
 
-#: lib/admin.php:3508
+#: lib/admin.php:3516
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 
@@ -5583,7 +5583,7 @@ msgid ""
 "refresh of the plugin update information."
 msgstr ""
 
-#: lib/messages.php:2538 lib/register.php:337
+#: lib/messages.php:2538 lib/register.php:339
 msgid ""
 "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version "
 "is outdated, unsupported, possibly insecure</a>, and may lack important "
@@ -6200,7 +6200,7 @@ msgctxt "image size label"
 msgid "Pinterest Pin It Image"
 msgstr ""
 
-#: lib/post.php:500 lib/register.php:329 lib/term.php:421 lib/user.php:394
+#: lib/post.php:500 lib/register.php:330 lib/term.php:421 lib/user.php:394
 #: lib/util.php:557 lib/util.php:2967
 msgid "%s warning:"
 msgstr ""
@@ -6431,11 +6431,11 @@ msgstr ""
 msgid "The %s plugin has been activated."
 msgstr ""
 
-#: lib/register.php:330 lib/register.php:339
+#: lib/register.php:332 lib/register.php:341
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr ""
 
-#: lib/register.php:341
+#: lib/register.php:343
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
@@ -7613,26 +7613,26 @@ msgstr ""
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: wpsso.php:502
+#: wpsso.php:503
 msgid ""
 "WP debug logging mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:515
+#: wpsso.php:516
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."
 msgstr ""
 
 #. translators: %s is the short plugin name.
-#: wpsso.php:523
+#: wpsso.php:524
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:524
+#: wpsso.php:525
 msgid "Please disable debug mode when debugging is complete."
 msgstr ""
 

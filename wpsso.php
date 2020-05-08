@@ -15,7 +15,7 @@
  * Requires At Least: 4.2
  * Tested Up To: 5.4.1
  * WC Tested Up To: 4.1.0
- * Version: 7.4.0-dev.4
+ * Version: 7.4.0-b.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -128,6 +128,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public static function &get_instance() {
 
 			if ( null === self::$instance ) {
+
 				self::$instance = new self;
 			}
 

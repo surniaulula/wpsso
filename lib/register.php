@@ -319,6 +319,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				}
 
 				if ( ! function_exists( 'deactivate_plugins' ) ) {
+
 					require_once trailingslashit( ABSPATH ) . 'wp-admin/includes/plugin.php';
 				}
 
@@ -327,6 +328,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				if ( method_exists( 'SucomUtil', 'safe_error_log' ) ) {
 
 					$error_pre = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
+
 					$error_msg = sprintf( __( '%1$s requires %2$s version %3$s or higher and has been deactivated.',
 						'wpsso' ), $plugin_name, $app_label, $min_version );
 
