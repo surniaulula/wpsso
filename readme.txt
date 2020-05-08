@@ -320,7 +320,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.4.0-dev.4 (2020/05/07)**
+**Version 7.4.0-b.1 (2020/05/08)**
 
 * **New Features**
 	* None.
@@ -947,9 +947,9 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 7.4.0-dev.4 =
+= 7.4.0-b.1 =
 
-(2020/05/07) Added new "Add Person Role for Content Creators" and "Remove Person Role from All Users" buttons in the SSO &gt; Tools and Actions page.
+(2020/05/08) Added new "Add Person Role for Content Creators" and "Remove Person Role from All Users" buttons in the SSO &gt; Tools and Actions page.
 
 = 7.3.0 =
 
