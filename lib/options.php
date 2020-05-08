@@ -604,6 +604,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 
 					if ( null === $def_opts ) {	// Only get default options once.
+
 						if ( $network ) {
 							$def_opts = $this->get_site_defaults();
 						} else {
@@ -780,6 +781,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					if ( ! $is_new_options ) {
 
 						if ( null === $def_opts ) {	// Only get default options once.
+
 							if ( $network ) {
 								$def_opts = $this->get_site_defaults();
 							} else {
@@ -1039,6 +1041,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 * Skip refreshing the image URL dimensions if saving network options.
 			 */
 			if ( ! $network ) {
+
 				$this->refresh_image_url_sizes( $opts );	// $opts passed by reference.
 			}
 

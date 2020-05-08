@@ -3090,18 +3090,25 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $cmt_transl;
 		}
 
-		public static function get_option_site_use( $name, $form, $network = false, $enabled = false ) {
+		public static function get_option_site_use( $name, $form, $network = false, $is_enabled = false ) {
+
+			$html = '';
 
 			if ( $network ) {
 
-				return $form->get_th_html( _x( 'Site Use', 'option label (very short)', 'wpsso' ), 'site-use' ) . 
-				( $enabled || self::$pkg[ 'wpsso' ][ 'pp' ] ? '<td class="site-use">' . $form->get_select( $name . ':use',
-					WpssoConfig::$cf[ 'form' ][ 'site_option_use' ], $css_class = 'site-use' ) . '</td>' :
-				'<td class="blank site-use">' . $form->get_no_select( $name . ':use',
-					WpssoConfig::$cf[ 'form' ][ 'site_option_use' ], $css_class = 'site-use' ) . '</td>' );
-			} else {
-				return '';
+				$is_enabled = $is_enabled || self::$pkg[ 'wpsso' ][ 'pp' ] ? true : false;
+
+				$html .= $form->get_th_html( _x( 'Site Use', 'option label (very short)', 'wpsso' ), 'site-use' );
+
+				$html .= $is_enabled ? '<td class="site-use">' : '<td class="blank site-use">';
+
+				$html .= $is_enabled ? $form->get_select( $name . ':use', WpssoConfig::$cf[ 'form' ][ 'site_option_use' ], $css_class = 'site-use' ) :
+					$form->get_no_select( $name . ':use', WpssoConfig::$cf[ 'form' ][ 'site_option_use' ], $css_class = 'site-use' );
+
+				$html .= '</td>';
 			}
+
+			return $html;
 		}
 
 		public function get_readme_info( $ext, $read_cache = true ) {
