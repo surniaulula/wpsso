@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 7.4.0-dev.3\n"
+"Project-Id-Version: WPSSO Core 7.4.0-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5981,7 +5981,7 @@ msgid ""
 "Activate the %s add-on<br/>for Schema markup and structured data options."
 msgstr ""
 
-#: lib/messages.php:2933 lib/util.php:3282
+#: lib/messages.php:2933 lib/util.php:3286
 msgid "No options available."
 msgstr ""
 
@@ -6201,12 +6201,12 @@ msgid "Pinterest Pin It Image"
 msgstr ""
 
 #: lib/post.php:500 lib/register.php:329 lib/term.php:421 lib/user.php:394
-#: lib/util.php:557 lib/util.php:2965
+#: lib/util.php:557 lib/util.php:2967
 msgid "%s warning:"
 msgstr ""
 
 #: lib/post.php:501 lib/term.php:422 lib/user.php:395 lib/util.php:559
-#: lib/util.php:2966
+#: lib/util.php:2969
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -6260,7 +6260,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:1055 lib/util.php:1441
+#: lib/post.php:1055 lib/util.php:1443
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -7280,43 +7280,43 @@ msgid ""
 "(%3$s)."
 msgstr ""
 
-#: lib/util.php:1233
+#: lib/util.php:1234
 msgid "Error reading the %s file for the article sections list."
 msgstr ""
 
-#: lib/util.php:1330
+#: lib/util.php:1332
 msgid "Error reading the %s file for the product categories list."
 msgstr ""
 
-#: lib/util.php:1428
+#: lib/util.php:1430
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1467
+#: lib/util.php:1469
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1655
+#: lib/util.php:1657
 msgid ""
 "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
 "provider to have the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1668
+#: lib/util.php:1670
 msgid ""
 "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:2967
+#: lib/util.php:2971
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:2982
+#: lib/util.php:2986
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -7325,35 +7325,35 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2984
+#: lib/util.php:2988
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3313
+#: lib/util.php:3317
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3316
+#: lib/util.php:3320
 msgctxt "option comment"
 msgid "show these options now"
 msgstr ""
 
-#: lib/util.php:3321
+#: lib/util.php:3325
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3324
+#: lib/util.php:3328
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3648
+#: lib/util.php:3652
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 
@@ -7613,26 +7613,26 @@ msgstr ""
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: wpsso.php:489
+#: wpsso.php:502
 msgid ""
 "WP debug logging mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:501
+#: wpsso.php:515
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."
 msgstr ""
 
 #. translators: %s is the short plugin name.
-#: wpsso.php:509
+#: wpsso.php:523
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:510
+#: wpsso.php:524
 msgid "Please disable debug mode when debugging is complete."
 msgstr ""
 

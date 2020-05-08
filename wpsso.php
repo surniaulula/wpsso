@@ -15,7 +15,7 @@
  * Requires At Least: 4.2
  * Tested Up To: 5.4.1
  * WC Tested Up To: 4.1.0
- * Version: 7.4.0-dev.3
+ * Version: 7.4.0-dev.4
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -247,23 +247,35 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 */
 		public function set_objects( $activate = false ) {
 
-			$is_admin   = is_admin() ? true : false;	// Only check once.
-			$network    = is_multisite() ? true : false;
+			$is_admin = is_admin() ? true : false;	// Only check once.
+
+			$network = is_multisite() ? true : false;
+
 			$doing_cron = defined( 'DOING_CRON' ) ? DOING_CRON : false;
-			$debug_log  = false;
+
+			$debug_log = false;
+
 			$debug_html = false;
 
 			if ( defined( 'WPSSO_DEBUG_LOG' ) && WPSSO_DEBUG_LOG ) {
+
 				$debug_log = true;
+
 			} elseif ( $is_admin && defined( 'WPSSO_ADMIN_DEBUG_LOG' ) && WPSSO_ADMIN_DEBUG_LOG ) {
+
 				$debug_log = true;
 			}
 
 			if ( ! empty( $this->options[ 'plugin_debug' ] ) ) {
+
 				$debug_html = true;
+
 			} elseif ( defined( 'WPSSO_DEBUG_HTML' ) && WPSSO_DEBUG_HTML ) {
+
 				$debug_html = true;
+
 			} elseif ( $is_admin && defined( 'WPSSO_ADMIN_DEBUG_HTML' ) && WPSSO_ADMIN_DEBUG_HTML ) {
+
 				$debug_html = true;
 			}
 
@@ -486,6 +498,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					if ( $is_admin ) {
 
 						$notice_key .= '-with-debug-log';
+
 						$notice_msg .= __( 'WP debug logging mode is active &mdash; debug messages are being sent to the WordPress debug log.',
 							'wpsso' ) . ' ';
 					}
@@ -498,6 +511,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					if ( $is_admin ) {
 
 						$notice_key .= '-with-html-comments';
+
 						$notice_msg .= __( 'HTML debug mode is active &mdash; debug messages are being added to webpages as hidden HTML comments.',
 							'wpsso' ) . ' ';
 					}
@@ -569,6 +583,10 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			if ( $this->debug->enabled ) {
 				$this->debug->mark( 'init plugin' );	// Begin timer.
 			}
+
+			$is_admin = is_admin() ? true : false;	// Only check once.
+
+			$doing_ajax = SucomUtil::get_const( 'DOING_AJAX' );
 
 			if ( $this->debug->enabled ) {
 
@@ -646,7 +664,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			/**
 			 * All WPSSO objects are instantiated and configured.
 			 */
-			do_action( 'wpsso_init_plugin' );
+			do_action( 'wpsso_init_plugin', $is_admin, $doing_ajax );
 
 			if ( $this->debug->enabled ) {
 				$this->debug->mark( 'init plugin do action' );	// End timer.

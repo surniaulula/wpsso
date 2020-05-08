@@ -1230,6 +1230,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				if ( is_admin() ) {
 
 					$error_pre = sprintf( '%s error:', __METHOD__ );
+
 					$error_msg = sprintf( __( 'Error reading the %s file for the article sections list.', 'wpsso' ), $text_list_file );
 
 					$this->p->notice->err( $error_msg );
@@ -1327,6 +1328,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				if ( is_admin() ) {
 
 					$error_pre = sprintf( '%s error:', __METHOD__ );
+
 					$error_msg = sprintf( __( 'Error reading the %s file for the product categories list.', 'wpsso' ), $text_list_file );
 
 					$this->p->notice->err( $error_msg );
@@ -2962,9 +2964,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						$mtime_total, $filter_name ) );
 				}
 
-				$error_pre   = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
+				$error_pre = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
+
 				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$0.3f secs', 'wpsso' ), $mtime_max );
-				$error_msg   = sprintf( __( 'Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "%2$s" filter (%3$s).',
+
+				$error_msg = sprintf( __( 'Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "%2$s" filter (%3$s).',
 					'wpsso' ), $mtime_total, $filter_name, $rec_max_msg );
 
 				/**
