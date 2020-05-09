@@ -319,13 +319,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.4.0-rc.1 (2020/05/08)**
+**Version 7.4.0 (2020/05/09)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Changed the menu font icon for better compatibility between Mac OS and Windows (Mac OS superscripted the original font icon).
-	* Added new "Add Person Role for Content Creators" and "Remove Person Role from All Users" buttons in the SSO &gt; Tools and Actions page.
+	* Added new buttons in the SSO &gt; Tools and Actions page:
+		* Add Person Role for Content Creators
+		* Remove Person Role from All Users
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -946,9 +948,9 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 7.4.0-rc.1 =
+= 7.4.0 =
 
-(2020/05/08) Added new "Add Person Role for Content Creators" and "Remove Person Role from All Users" buttons in the SSO &gt; Tools and Actions page.
+(2020/05/09) Added new buttons in the SSO &gt; Tools and Actions page. Changed the menu font icon for better compatibility between Mac OS and Windows.
 
 = 7.3.0 =
 
