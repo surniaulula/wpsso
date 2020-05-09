@@ -267,6 +267,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			if ( ! empty( $disable_filters ) ) {
+
 				$this->add_plugin_filters( $this, $disable_filters );
 			}
 		}
@@ -1809,9 +1810,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			if ( empty( $atts[ 'short_url' ] ) ) {
+
 				$short_url = apply_filters( $this->p->lca . '_get_short_url', $sharing_url,
 					$this->p->options[ 'plugin_shortener' ], $mod );
+
 			} else {
+
 				$short_url = $atts[ 'short_url' ];
 			}
 
@@ -2480,7 +2484,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			if ( apply_filters( $this->p->lca . '_server_request_url_cache_disabled', $cache_disabled, $url, $mod, $add_page ) ) {
-				$this->disable_cache_filters( array( 'shorten_url' => '__return_false' ) );
+
+				$this->disable_cache_filters( array( 'shorten_url_disabled' => '__return_true' ) );
 			}
 
 			return $url;

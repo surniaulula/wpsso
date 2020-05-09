@@ -926,7 +926,7 @@ msgstr ""
 
 #: lib/conflict.php:107 lib/gettext-pro.php:162 lib/gettext-pro.php:202
 #: lib/loader.php:154 lib/loader.php:166 lib/pro/review/yotpowc.php:195
-#: lib/pro/util/shorten.php:239
+#: lib/pro/util/shorten.php:252
 msgid "%s error:"
 msgstr ""
 
@@ -2822,7 +2822,7 @@ msgid "Bitly URL Shortener"
 msgstr ""
 
 #: lib/gettext-pro.php:68 lib/gettext-pro.php:165
-#: lib/pro/admin/advanced.php:383 lib/pro/util/shorten.php:287
+#: lib/pro/admin/advanced.php:383 lib/pro/util/shorten.php:300
 #: lib/std/admin/advanced.php:392
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
@@ -2847,7 +2847,7 @@ msgid "DLMY.App URL Shortener"
 msgstr ""
 
 #: lib/gettext-pro.php:72 lib/gettext-pro.php:167
-#: lib/pro/admin/advanced.php:401 lib/pro/util/shorten.php:314
+#: lib/pro/admin/advanced.php:401 lib/pro/util/shorten.php:327
 #: lib/std/admin/advanced.php:410
 msgctxt "option label"
 msgid "DLMY.App API Key"
@@ -2860,7 +2860,7 @@ msgid "Ow.ly URL Shortener"
 msgstr ""
 
 #: lib/gettext-pro.php:74 lib/gettext-pro.php:169
-#: lib/pro/admin/advanced.php:411 lib/pro/util/shorten.php:339
+#: lib/pro/admin/advanced.php:411 lib/pro/util/shorten.php:352
 #: lib/std/admin/advanced.php:420
 msgctxt "option label"
 msgid "Ow.ly API Key"
@@ -2873,7 +2873,7 @@ msgid "Your Own URL Shortener (YOURLS)"
 msgstr ""
 
 #: lib/gettext-pro.php:76 lib/gettext-pro.php:171
-#: lib/pro/admin/advanced.php:421 lib/pro/util/shorten.php:387
+#: lib/pro/admin/advanced.php:421 lib/pro/util/shorten.php:400
 #: lib/std/admin/advanced.php:430
 msgctxt "option label"
 msgid "YOURLS API URL"
@@ -3239,19 +3239,19 @@ msgid "No Description."
 msgstr ""
 
 #. translators: %s is the service id.
-#: lib/gettext-pro.php:163 lib/pro/util/shorten.php:265
+#: lib/gettext-pro.php:163 lib/pro/util/shorten.php:278
 msgid "The URL shortening library file for \"%s\" is missing and required."
 msgstr ""
 
 #: lib/gettext-pro.php:164 lib/gettext-pro.php:166 lib/gettext-pro.php:168
-#: lib/gettext-pro.php:170 lib/pro/util/shorten.php:286
-#: lib/pro/util/shorten.php:313 lib/pro/util/shorten.php:338
-#: lib/pro/util/shorten.php:386
+#: lib/gettext-pro.php:170 lib/pro/util/shorten.php:299
+#: lib/pro/util/shorten.php:326 lib/pro/util/shorten.php:351
+#: lib/pro/util/shorten.php:399
 msgid "The \"%s\" option value is empty and required."
 msgstr ""
 
 #. translators: %s is the service id.
-#: lib/gettext-pro.php:172 lib/pro/util/shorten.php:432
+#: lib/gettext-pro.php:172 lib/pro/util/shorten.php:445
 msgid "Incomplete API options to instantiate the \"%s\" shortening service."
 msgstr ""
 
@@ -5981,7 +5981,7 @@ msgid ""
 "Activate the %s add-on<br/>for Schema markup and structured data options."
 msgstr ""
 
-#: lib/messages.php:2933 lib/util.php:3286
+#: lib/messages.php:2933 lib/util.php:3291
 msgid "No options available."
 msgstr ""
 
@@ -6201,12 +6201,12 @@ msgid "Pinterest Pin It Image"
 msgstr ""
 
 #: lib/post.php:500 lib/register.php:330 lib/term.php:421 lib/user.php:394
-#: lib/util.php:557 lib/util.php:2967
+#: lib/util.php:558 lib/util.php:2972
 msgid "%s warning:"
 msgstr ""
 
-#: lib/post.php:501 lib/term.php:422 lib/user.php:395 lib/util.php:559
-#: lib/util.php:2969
+#: lib/post.php:501 lib/term.php:422 lib/user.php:395 lib/util.php:560
+#: lib/util.php:2974
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -6260,7 +6260,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:1055 lib/util.php:1443
+#: lib/post.php:1055 lib/util.php:1444
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -7274,49 +7274,49 @@ msgstr ""
 msgid "lbs"
 msgstr ""
 
-#: lib/util.php:561
+#: lib/util.php:562
 msgid ""
 "Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s "
 "(%3$s)."
 msgstr ""
 
-#: lib/util.php:1234
+#: lib/util.php:1235
 msgid "Error reading the %s file for the article sections list."
 msgstr ""
 
-#: lib/util.php:1332
+#: lib/util.php:1333
 msgid "Error reading the %s file for the product categories list."
 msgstr ""
 
-#: lib/util.php:1430
+#: lib/util.php:1431
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1469
+#: lib/util.php:1470
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1657
+#: lib/util.php:1658
 msgid ""
 "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
 "provider to have the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1670
+#: lib/util.php:1671
 msgid ""
 "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:2971
+#: lib/util.php:2976
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:2986
+#: lib/util.php:2991
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -7325,35 +7325,35 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2988
+#: lib/util.php:2993
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3317
+#: lib/util.php:3322
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3320
+#: lib/util.php:3325
 msgctxt "option comment"
 msgid "show these options now"
 msgstr ""
 
-#: lib/util.php:3325
+#: lib/util.php:3330
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3328
+#: lib/util.php:3333
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3652
+#: lib/util.php:3657
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 
