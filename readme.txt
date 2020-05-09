@@ -217,7 +217,6 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 	* [WooCommerce Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/)
 	* [WP eCommerce Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/wp-ecommerce-integration/)
 * [Troubleshooting Guide](https://wpsso.com/docs/plugins/wpsso/installation/troubleshooting-guide/)
-* [Performance Tuning](https://wpsso.com/docs/plugins/wpsso/installation/performance-tuning/)
 
 == Frequently Asked Questions ==
 
