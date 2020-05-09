@@ -309,7 +309,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			 */
 			$custom_style_css .= '
 				#wpadminbar #wp-toolbar #' . $lca . '-toolbar-notices-icon.ab-icon::before { 
-					display:inline-block;
 					content:"' . $this->p->cf[ 'menu' ][ 'icon-code' ] . '";
 					font-family:'. $this->p->cf[ 'menu' ][ 'icon-family' ] . ';
 				}
@@ -323,7 +322,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				#adminmenu li.menu-top.toplevel_page_' . $sitemenu . ' div.wp-menu-image::before,
 				#adminmenu li.menu-top.toplevel_page_' . $menu . ':hover div.wp-menu-image::before,
 				#adminmenu li.menu-top.toplevel_page_' . $sitemenu . ':hover div.wp-menu-image::before {
-					display:inline-block;
 					content:"' . $this->p->cf[ 'menu' ][ 'icon-code' ] . '";
 					font-family:'. $this->p->cf[ 'menu' ][ 'icon-family' ] . ';
 				}
