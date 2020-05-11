@@ -2249,6 +2249,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$cache_salt = self::get_mod_salt( $mod ) . '_type:' . (string) $type . '_add_page:' . (string) $add_page;
 
 				if ( ! empty( $local_cache[ $cache_salt ] ) ) {
+
 					return $local_cache[ $cache_salt ];
 				}
 			}
@@ -2304,6 +2305,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						global $wp_rewrite;
 
 						$post_obj = self::get_post_object( $mod[ 'id' ] );
+
 						$numpages = substr_count( $post_obj->post_content, '<!--nextpage-->' ) + 1;
 
 						if ( $numpages && get_query_var( 'page' ) <= $numpages ) {

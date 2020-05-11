@@ -157,9 +157,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					}
 
 					$min_int = SucomUtil::get_min_int();
+
 					$max_int = SucomUtil::get_max_int();
 
 					add_filter( 'pre_get_shortlink', array( $this, 'get_sharing_shortlink' ), $min_int, 4 );
+
 					add_filter( 'pre_get_shortlink', array( $this, 'maybe_restore_shortlink' ), $max_int, 4 );
 
 					if ( function_exists( 'wpme_get_shortlink_handler' ) ) {
@@ -1852,6 +1854,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 * WpssoPost class specific methods.
 		 *
 		 * Filters the wp shortlink for a post - returns the shortened sharing URL.
+		 *
 		 * The wp_shortlink_wp_head() function calls wp_get_shortlink( 0, 'query' );
 		 */
 		public function get_sharing_shortlink( $shortlink = false, $post_id = 0, $context = 'post', $allow_slugs = true ) {
