@@ -746,6 +746,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$opts       = $this->get_options( $user_obj->ID );
 			$def_opts   = $this->get_defaults( $user_obj->ID );
 
+			$this->p->admin->plugin_pkg_info();
+
 			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts, $this->p->lca );
 
 			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );

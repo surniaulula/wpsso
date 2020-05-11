@@ -2243,7 +2243,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = '<p class="pro-feature-msg">';
 
-							if ( WpssoAdmin::$pkg[ $this->p->lca ][ 'pp' ] ) {
+							if ( ! empty( WpssoAdmin::$pkg[ $this->p->lca ][ 'pp' ] ) ) {
 
 								$text .= __( 'An e-commerce plugin is active &ndash; product information may be provided by the e-commerce plugin.', 'wpsso' );
 

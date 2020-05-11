@@ -183,6 +183,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function plugin_pkg_info() {
 
 			if ( ! empty( self::$pkg ) ) {	// Only execute once.
+
 				return self::$pkg;
 			}
 
@@ -195,9 +196,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$dist_pro_name = _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' );
 				$dist_std_name = _x( $this->p->cf[ 'dist' ][ 'std' ], 'distribution name', 'wpsso' );
 
-				self::$pkg[ $ext ][ 'pdir' ] = $ext_pdir;
-				self::$pkg[ $ext ][ 'pp' ]   = $ext_pp;
-				self::$pkg[ $ext ][ 'dist' ] = $ext_pp ? $dist_pro_name : $dist_std_name;
+				self::$pkg[ $ext ][ 'pdir' ]      = $ext_pdir;
+				self::$pkg[ $ext ][ 'pp' ]        = $ext_pp;
+				self::$pkg[ $ext ][ 'dist' ]      = $ext_pp ? $dist_pro_name : $dist_std_name;
 				self::$pkg[ $ext ][ 'short_pro' ] = $info[ 'short' ] . ' ' . $dist_pro_name;
 				self::$pkg[ $ext ][ 'short_std' ] = $info[ 'short' ] . ' ' . $dist_std_name;
 				self::$pkg[ $ext ][ 'short' ]     = $info[ 'short' ] . ' ' . self::$pkg[ $ext ][ 'dist' ];

@@ -1393,6 +1393,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$is_auto_draft = SucomUtil::is_auto_draft( $mod );
 
+			$this->p->admin->plugin_pkg_info();
+
 			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts, $this->p->lca );
 
 			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
