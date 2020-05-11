@@ -2629,7 +2629,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$base = self::get_prot() . '://' . $_SERVER[ 'SERVER_NAME' ] . $_SERVER[ 'REQUEST_URI' ];
 
 				if ( false !== strpos( $base, '?' ) ) {
+
 					$base_parts = explode( '?', $base );
+
 					$base = reset( $base_parts );
 				}
 

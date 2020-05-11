@@ -1543,7 +1543,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				set_transient( $cache_id, $cache_stop_val, $cache_exp_secs );	// Signal the other process to stop.
 
-				usleep( 10 * 1000000 );						// Sleep for 10 second.
+				usleep( 5 * 1000000 );						// Sleep for 5 second.
 
 				if ( false !== get_transient( $cache_id ) ) {			// Stop here if the other process is still running.
 
