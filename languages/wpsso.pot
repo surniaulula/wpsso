@@ -3142,33 +3142,33 @@ msgstr ""
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: lib/gettext-pro.php:135 lib/pro/ecom/woocommerce.php:137
+#: lib/gettext-pro.php:135 lib/pro/ecom/woocommerce.php:138
 msgid ""
 "The WooCommerce %s method is not available - please update to a newer "
 "version of WooCommerce."
 msgstr ""
 
 #: lib/gettext-pro.php:136 lib/gettext-pro.php:141
-#: lib/pro/ecom/woocommerce.php:959 lib/pro/ecom/wpecommerce.php:533
+#: lib/pro/ecom/woocommerce.php:951 lib/pro/ecom/wpecommerce.php:533
 msgid "\"%s\" is an unknown Schema Product item condition."
 msgstr ""
 
 #: lib/gettext-pro.php:137 lib/gettext-pro.php:142
-#: lib/pro/ecom/woocommerce.php:962 lib/pro/ecom/wpecommerce.php:536
+#: lib/pro/ecom/woocommerce.php:954 lib/pro/ecom/wpecommerce.php:536
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/gettext-pro.php:138 lib/pro/ecom/woocommerce.php:1126
+#: lib/gettext-pro.php:138 lib/pro/ecom/woocommerce.php:1112
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/gettext-pro.php:139 lib/pro/ecom/woocommerce.php:1128
+#: lib/gettext-pro.php:139 lib/pro/ecom/woocommerce.php:1114
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:140 lib/pro/ecom/woocommerce.php:1131
+#: lib/gettext-pro.php:140 lib/pro/ecom/woocommerce.php:1117
 msgid "Please update your site to WooCommerce version %s or newer."
 msgstr ""
 
@@ -7186,91 +7186,91 @@ msgid ""
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:194
+#: lib/util-woocommerce.php:176
 msgid "mm"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:197
+#: lib/util-woocommerce.php:179
 msgid "cm"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:200
+#: lib/util-woocommerce.php:182
 msgid "m"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:203
+#: lib/util-woocommerce.php:185
 msgid "in"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:206
+#: lib/util-woocommerce.php:188
 msgid "yd"
 msgstr ""
 
-#: lib/util-woocommerce.php:240
+#: lib/util-woocommerce.php:222
 msgid "ml"
 msgstr ""
 
-#: lib/util-woocommerce.php:241
+#: lib/util-woocommerce.php:223
 msgid "cl"
 msgstr ""
 
-#: lib/util-woocommerce.php:242
+#: lib/util-woocommerce.php:224
 msgid "l"
 msgstr ""
 
-#: lib/util-woocommerce.php:243
+#: lib/util-woocommerce.php:225
 msgid "kl"
 msgstr ""
 
-#: lib/util-woocommerce.php:244
+#: lib/util-woocommerce.php:226
 msgid "US tsp"
 msgstr ""
 
-#: lib/util-woocommerce.php:245
+#: lib/util-woocommerce.php:227
 msgid "US tbsp"
 msgstr ""
 
-#: lib/util-woocommerce.php:246
+#: lib/util-woocommerce.php:228
 msgid "US fl oz"
 msgstr ""
 
-#: lib/util-woocommerce.php:247
+#: lib/util-woocommerce.php:229
 msgid "US cup"
 msgstr ""
 
-#: lib/util-woocommerce.php:248
+#: lib/util-woocommerce.php:230
 msgid "US pt"
 msgstr ""
 
-#: lib/util-woocommerce.php:249
+#: lib/util-woocommerce.php:231
 msgid "US qt"
 msgstr ""
 
-#: lib/util-woocommerce.php:250
+#: lib/util-woocommerce.php:232
 msgid "US gal"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:386
+#: lib/util-woocommerce.php:368
 msgid "g"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:389
+#: lib/util-woocommerce.php:371
 msgid "kg"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:392
+#: lib/util-woocommerce.php:374
 msgid "oz"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:395
+#: lib/util-woocommerce.php:377
 msgid "lbs"
 msgstr ""
 

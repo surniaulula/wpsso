@@ -41,17 +41,11 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 
 			$product = false;
 
-			/**
-			 * WooCommerce v2 and v3.
-			 */
 			if ( isset( $woocommerce->product_factory ) &&
 				is_callable( array( $woocommerce->product_factory, 'get_product' ) ) ) {
 
 				$product = $woocommerce->product_factory->get_product( $product_id );
 
-			/**
-			 * WooCommerce v1.
-			 */
 			} elseif ( class_exists( 'WC_Product' ) ) {
 
 				$product = new WC_Product( $product_id );
@@ -67,16 +61,10 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 
 			$product_id = 0;
 
-			/**
-			 * WooCommerce v3.
-			 */
 			if ( is_callable( array( $product, 'get_id' ) ) ) {
 
-				$product_id = $product->get_id();
+				$product_id = $product->get_id();	// Since WooCommerce v2.6.0.
 
-			/**
-			 * WooCommerce v2.
-			 */
 			} elseif ( isset( $product->id ) ) {
 
 				$product_id = $product->id;
@@ -92,16 +80,10 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 
 			$product_type = '';
 
-			/**
-			 * WooCommerce v3.
-			 */
 			if ( is_callable( array( $product, 'get_type' ) ) ) {
 
-				$product_type = $product->get_type();
+				$product_type = $product->get_type();	// Returns 'simple', 'variable', etc.
 
-			/**
-			 * WooCommerce v2.
-			 */
 			} elseif ( isset( $product->product_type ) ) {
 
 				$product_type = $product->product_type;
@@ -122,7 +104,7 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 
 			foreach ( $product->get_children() as $child_id ) {
 
-				$variation = wc_get_product( $child_id );
+				$variation = wc_get_product( $child_id );	// Since WooCommerce v2.2.0.
 
 				if ( ! $variation ) {
 
