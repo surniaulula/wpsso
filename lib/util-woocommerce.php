@@ -157,6 +157,13 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 					continue;
 				}
 
+				/**
+				 * Returns an array of data for a variation.
+				 *
+				 * Applies the 'woocommerce_available_variation' filter.
+				 *
+				 * Since WooCommerce v2.4.0.
+				 */
 				$available_variations[] = $product->get_available_variation( $variation );
 			}
 
