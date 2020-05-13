@@ -319,7 +319,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.4.1-dev.1 (TBD)**
+**Version 7.5.0-dev.1 (2020/05/13)**
 
 * **New Features**
 	* None.
@@ -962,9 +962,9 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 7.4.1-dev.1 =
+= 7.5.0-dev.1 =
 
-(TBD) Added a check to prevent post URLs from non-public post types from being shortened.
+(2020/05/13) Added a check to prevent post URLs from non-public post types from being shortened.
 
 = 7.4.0 =
 
