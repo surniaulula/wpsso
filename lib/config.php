@@ -804,62 +804,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'latest'    => '',	// Optional.
 					),
 				),
-				'wpssotaq' => array(			// Plugin acronym.
-					'short'       => 'WPSSO TAQ',	// Short plugin name.
-					'name'        => 'WPSSO Tweet a Quote',
-					'desc'        => 'Twitter-Style Quoted Text for your Content with Customizable CSS and Convenient Tweet Share Link.',
-					'slug'        => 'wpsso-tweet-a-quote',
-					'base'        => 'wpsso-tweet-a-quote/wpsso-tweet-a-quote.php',
-					'update_auth' => '',		// No premium version.
-
-					/**
-					 * URLs or relative paths to plugin banners and icons.
-					 */
-					'assets'      => array(
-						'banners' => array(
-							'low'  => 'https://surniaulula.github.io/wpsso-tweet-a-quote/assets/banner-772x250.jpg',
-							'high' => 'https://surniaulula.github.io/wpsso-tweet-a-quote/assets/banner-1544x500.jpg',
-						),
-						'icons' => array(
-							'low'  => 'https://surniaulula.github.io/wpsso-tweet-a-quote/assets/icon-128x128.png',
-							'high' => 'https://surniaulula.github.io/wpsso-tweet-a-quote/assets/icon-256x256.png',
-						),
-					),
-					'hosts' => array(
-						'wp_org' => true,
-						'github' => true,
-						'wpsso'  => true,
-					),
-					'url' => array(
-
-						/**
-						 * WordPress.org.
-						 */
-						'home'   => 'https://wordpress.org/plugins/wpsso-tweet-a-quote/',
-						'forum'  => 'https://wordpress.org/support/plugin/wpsso-tweet-a-quote',
-						'review' => 'https://wordpress.org/support/plugin/wpsso-tweet-a-quote/reviews/?rate=5#new-post',
-
-						/**
-						 * GitHub.com.
-						 */
-						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-tweet-a-quote/master/readme.txt',
-						'setup_html' => '',
-
-						/**
-						 * WPSSO.com.
-						 */
-						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-tweet-a-quote/changelog/',
-						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-tweet-a-quote/',
-						'install'   => 'https://wpsso.com/docs/plugins/wpsso-tweet-a-quote/installation/',
-						'faqs'      => '',
-						'notes'     => '',
-						'support'   => '',	// Premium support ticket.
-						'purchase'  => '',	// Purchase page.
-						'info'      => '',	// License information.
-						'update'    => 'https://wpsso.com/extend/plugins/wpsso-tweet-a-quote/update/',
-						'latest'    => '',	// Optional.
-					),
-				),
 				'wpssotie' => array(			// Plugin acronym.
 					'short'       => 'WPSSO TIE',	// Short plugin name.
 					'name'        => 'WPSSO Tune Image Editors',
