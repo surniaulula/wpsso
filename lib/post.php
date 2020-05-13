@@ -403,13 +403,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				unset( $opts[ 'seo_desc' ] );
 			}
 
-			/**
-			 * Just in case - do not save the product availability if an e-commerce plugin is active.
-			 */
-			if ( ! empty( $this->p->avail[ 'ecom' ][ 'any' ] ) ) {
-				unset( $opts[ 'product_avail' ] );
-			}
-
 			$opts = apply_filters( $this->p->lca . '_save_md_options', $opts, $mod );
 
 			$opts = apply_filters( $this->p->lca . '_save_post_options', $opts, $post_id, $rel_id, $mod );
