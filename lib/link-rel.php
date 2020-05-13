@@ -98,6 +98,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 			$add_link_rel_canonical = empty( $this->p->options[ 'add_link_rel_canonical' ] ) ? false : true;
 
 			if ( apply_filters( $this->p->lca . '_add_link_rel_canonical', $add_link_rel_canonical, $mod ) ) {
+
 				$link_rel[ 'canonical' ] = $this->p->util->get_canonical_url( $mod );
 			}
 

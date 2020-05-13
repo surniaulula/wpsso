@@ -292,6 +292,12 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 					}
 
 					unset( $presenters[ $num ] );
+
+				} else {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'skipping presenter: ' . $class_name );
+					}
 				}
 			}
 

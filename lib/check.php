@@ -46,6 +46,10 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			),
 		);
 
+		/**
+		 * The WpssoCheck class is instantiated before the SucomDebug class, so do not use the $this->p->debug class
+		 * object to log status messages.
+		 */
 		public function __construct( &$plugin ) {
 
 			$this->p =& $plugin;

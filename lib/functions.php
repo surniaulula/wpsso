@@ -257,6 +257,7 @@ if ( ! function_exists( 'wpsso_get_user_og_image' ) ) {
 	function wpsso_get_user_og_image( $user_id, $size_name = 'thumbnail' ) {
 
 		if ( $mod = wpsso_get_user_mod( $user_id ) ) {
+
 			return wpsso_get_mod_og_image( $mod, $size_name );
 		}
 
@@ -271,6 +272,7 @@ if ( ! function_exists( 'wpsso_get_canonical_url' ) ) {
 		$wpsso =& Wpsso::get_instance();
 
 		if ( ! empty( $wpsso->util ) ) {	// Just in case.
+
 			return $wpsso->util->get_canonical_url( $mod, $add_page );
 		}
 
@@ -285,6 +287,7 @@ if ( ! function_exists( 'wpsso_get_sharing_url' ) ) {
 		$wpsso =& Wpsso::get_instance();
 
 		if ( ! empty( $wpsso->util ) ) {	// Just in case.
+
 			return $wpsso->util->get_sharing_url( $mod, $add_page );
 		}
 

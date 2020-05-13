@@ -335,7 +335,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 * Construct a title of our own.
 			 */
 			if ( empty( $title_text ) ) {
-				$title_text = $this->get_the_title( $mod );
+				$title_text = $this->get_the_title( $mod, $sep );
 			}
 
 			/**
@@ -933,7 +933,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				$title_text = apply_filters( $this->p->lca . '_user_archive_title', $title_text, $mod, $user_obj );
 
-			} elseif ( $mod[ 'is_home_posts' ] ) {
+			} elseif ( $mod[ 'is_home' ] ) {
 
 				$title_text = SucomUtil::get_site_name( $this->p->options );
 

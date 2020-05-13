@@ -124,7 +124,9 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 										}
 
 										if ( ! isset( $this->p->m[ $sub_dir ][ $id ] ) ) {
+
 											$this->p->m[ $sub_dir ][ $id ] = new $classname( $this->p );
+
 										} elseif ( $this->p->debug->enabled ) {
 											$this->p->debug->log( $log_prefix . 'library module already defined' );
 										}
@@ -133,7 +135,9 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 									 * Loaded module objects from extensions / add-ons.
 									 */
 									} elseif ( ! isset( $this->p->m_ext[ $ext ][ $sub_dir ][ $id ] ) ) {
+
 										$this->p->m_ext[ $ext ][ $sub_dir ][ $id ] = new $classname( $this->p );
+
 									} elseif ( $this->p->debug->enabled ) {
 										$this->p->debug->log( $log_prefix . 'library ext module already defined' );
 									}
@@ -152,6 +156,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 									}
 
 									$error_pre = sprintf( __( '%s error:', 'wpsso' ), __METHOD__ );
+
 									$error_msg = sprintf( __( 'Library class "%s" is missing.', 'wpsso' ), $classname );
 
 									SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
@@ -164,6 +169,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 								}
 
 								$error_pre  = sprintf( __( '%s error:', 'wpsso' ), __METHOD__ );
+
 								$error_msg  = sprintf( __( 'Library class name for "%s" cannot be determined.', 'wpsso' ), $lib_path ) . ' ' .
 									__( 'The installed plugin is incomplete or the web server cannot access the required library file.',
 										'wpsso' );

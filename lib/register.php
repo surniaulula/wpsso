@@ -289,7 +289,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			foreach ( array( 'wp', 'php' ) as $key ) {
 
-				if ( empty( $cf[$key][ 'min_version' ] ) ) {
+				if ( empty( $cf[ $key ][ 'min_version' ] ) ) {
 					return;
 				}
 

@@ -25,9 +25,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 	class WpssoSchema {
 
-		private $p;
-		private $noscript;
-		private $types_cache = null;		// Schema types array cache.
+		private $p;				// Wpsso class object.
+		private $noscript;			// WpssoSchemaNoScript class object.
+
+		private $types_cache = array();		// Schema types array cache.
 
 		private static $units_cache = null;	// Schema unicodes array cache.
 
@@ -98,7 +99,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$ret = self::get_schema_type_context( 'https://schema.org/WebSite', array(
-				'url' => $mt_og[ 'og:url' ],
+				'url' => SucomUtil::get_site_url( $this->p->options, $mod ),
 			) );
 
 			foreach ( array(
@@ -106,6 +107,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'alternateName' => SucomUtil::get_site_name_alt( $this->p->options, $mod ),
 				'description'   => SucomUtil::get_site_description( $this->p->options, $mod ),
 			) as $key => $value ) {
+
 				if ( ! empty( $value ) ) {
 					$ret[ $key ] = $value;
 				}
@@ -126,26 +128,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( ! empty( $search_url ) ) {
 
-				/**
-				 * Potential Action may already be defined by the WPSSO JSON
-				 * 'wpsso_json_prop_https_schema_org_potentialaction' filter. Make sure it's an array - just in
-				 * case. ;-)
-				 */
-				if ( ! isset( $ret[ 'potentialAction' ] ) || ! is_array( $ret[ 'potentialAction' ] ) ) {
-					$ret[ 'potentialAction' ] = array();
-				}
-
-				$ret[ 'potentialAction' ][] = array(
-					'@context'    => 'https://schema.org',
-					'@type'       => 'SearchAction',
+				$ret[ 'potentialAction' ][] = self::get_schema_type_context( 'https://schema.org/SearchAction', array(
 					'target'      => $search_url,
 					'query-input' => 'required name=search_term_string',
-				);
+				) );
 
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'skipping search action: search url is empty' );
 			}
 
+			
 			return self::return_data_from_filter( $json_data, $ret, $is_main );
 		}
 
@@ -347,18 +339,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$site_org_type_id = $this->p->options[ 'site_org_schema_type' ];	// Organization or a sub-type of organization.
 
+				$page_type_ids[ $site_org_type_id ] = $this->p->options[ 'schema_add_home_organization' ];
+				$page_type_ids[ 'person' ]          = $this->p->options[ 'schema_add_home_person' ];
+				$page_type_ids[ 'website' ]         = $this->p->options[ 'schema_add_home_website' ];
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'organization schema type id is ' . $site_org_type_id );
 				}
-
-				$page_type_ids[ 'website' ] = isset( $this->p->options[ 'schema_add_home_website' ] ) ?
-					$this->p->options[ 'schema_add_home_website' ] : 1;
-
-				$page_type_ids[ $site_org_type_id ] = isset( $this->p->options[ 'schema_add_home_organization' ] ) ?
-					$this->p->options[ 'schema_add_home_organization' ] : 1;
-
-				$page_type_ids[ 'person' ] = isset( $this->p->options[ 'schema_add_home_person' ] ) ?
-					$this->p->options[ 'schema_add_home_person' ] : 0;
 			}
 
 			/**
@@ -429,8 +416,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$json_data = $this->get_json_data( $mod, $mt_og, $type_id, $is_main );
 
 				/**
-				 * The $json_data array will almost always be a single associative array,
-				 * but the breadcrumblist filter may return an array of associative arrays.
+				 * The $json_data array will almost always be a single associative array, but the breadcrumblist
+				 * filter may return an array of associative arrays.
 				 */
 				if ( isset( $json_data[ 0 ] ) && ! SucomUtil::is_assoc( $json_data ) ) {	// Multiple json arrays returned.
 
@@ -584,6 +571,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			} else {
 				self::update_data_id( $json_data, $page_type_id );
 			}
+
+			return $json_data;
+		}
+
+		public function get_json_data_home_website() {
+
+			$mod = WpssoWpMeta::get_mod_home();
+
+			$mt_og = array();
+
+			$json_data = $this->get_json_data( $mod, $mt_og, $type_id = 'website', $is_main = false );
 
 			return $json_data;
 		}
@@ -988,6 +986,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public function get_schema_types_array( $flatten = true, $read_cache = true ) {
 
 			if ( false === $read_cache ) {
+
 				$this->types_cache[ 'filtered' ]  = null;
 				$this->types_cache[ 'flattened' ] = null;
 				$this->types_cache[ 'parents' ]   = null;
@@ -1008,6 +1007,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$this->types_cache = get_transient( $cache_id );	// Returns false when not found.
 
 						if ( ! empty( $this->types_cache ) ) {
+
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'using schema types array from transient ' . $cache_id );
 							}
@@ -1095,8 +1095,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$schema_types = $this->get_schema_types_array( $flatten = true );	// Defines the 'parents' array.
 
 			if ( isset( $this->types_cache[ 'parents' ][ $child_id ] ) ) {
+
 				foreach( $this->types_cache[ 'parents' ][ $child_id ] as $parent_id ) {
+
 					if ( $parent_id !== $child_id )	{		// Prevent infinite loops.
+
 						$this->get_schema_type_child_family( $parent_id, $child_use_cache = false, $child_family );
 					}
 				}
@@ -1146,8 +1149,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$schema_types = $this->get_schema_types_array( $flatten = true );	// Defines the 'parents' array.
 
 			foreach ( $this->types_cache[ 'parents' ] as $child_id => $parent_ids ) {
+
 				foreach( $parent_ids as $parent_id ) {
+
 					if ( $parent_id === $type_id ) {
+
 						$this->get_schema_type_children( $child_id, $child_use_cache = false, $children );
 					}
 				}

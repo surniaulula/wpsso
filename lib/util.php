@@ -2193,24 +2193,51 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return apply_filters( $this->p->lca . '_oembed_data', $data, $mod, $width );
 		}
 
+		/**
+		 * The $mod array argument is preferred but not required.
+		 *
+		 * $mod = true | false | post_id | $mod array
+		 */
 		public function get_canonical_url( $mod = false, $add_page = true ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			return $this->get_page_url( 'canonical', $mod, $add_page );
+			if ( empty( $mod[ 'canonical_url' ] ) ) {
+				$url = $this->get_page_url( 'canonical', $mod, $add_page );
+			} else {
+				$url = $mod[ 'canonical_url' ];
+			}
+
+			return $url;
 		}
 
+		/**
+		 * The $mod array argument is preferred but not required.
+		 *
+		 * $mod = true | false | post_id | $mod array
+		 */
 		public function get_sharing_url( $mod = false, $add_page = true ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			return $this->get_page_url( 'sharing', $mod, $add_page );
+			if ( empty( $mod[ 'sharing_url' ] ) ) {
+				$url = $this->get_page_url( 'sharing', $mod, $add_page );
+			} else {
+				$url = $mod[ 'sharing_url' ];
+			}
+
+			return $url;
 		}
 
+		/**
+		 * The $mod array argument is preferred but not required.
+		 *
+		 * $mod = true | false | post_id | $mod array
+		 */
 		private function get_page_url( $type, $mod, $add_page ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -2223,11 +2250,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$url = false;
 
-			/**
-			 * The $mod array argument is preferred but not required.
-			 *
-			 * $mod = true | false | post_id | $mod array
-			 */
 			if ( ! is_array( $mod ) ) {
 
 				if ( $this->p->debug->enabled ) {

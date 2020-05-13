@@ -1547,11 +1547,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 					if ( ! empty( $order_url ) ) {	// Just in case.
 
-						$ret[ 'potentialAction' ][] = array(
-							'@context' => 'https://schema.org',
-							'@type'    => 'OrderAction',
+						$ret[ 'potentialAction' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/OrderAction', array(
 							'target'   => $order_url,
-						);
+						) );
 					}
 				}
 			}

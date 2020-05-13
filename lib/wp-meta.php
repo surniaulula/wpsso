@@ -187,6 +187,36 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $this->must_be_extended( __METHOD__, self::$mod_defaults );
 		}
 
+		public static function get_mod_home() {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->mark();
+			}
+
+			$mod = self::$mod_defaults;
+
+			$front_post_id = 0;
+			
+			if ( get_option( 'show_on_front' ) === 'page' ) {
+			
+				if ( ! $front_post_id = (int) get_option( 'page_on_front', $default = 0 ) ) {
+
+					$front_post_id = (int) get_option( 'page_for_posts', $default = 0 );
+				}
+			
+				$mod = $wpsso->post->get_mod( $front_post_id );
+			}
+			
+			/**
+			 * Post elements.
+			 */
+			$mod[ 'is_home' ] = true;
+
+			return $mod;
+		}
+
 		/**
 		 * Option handling methods:
 		 *
@@ -527,6 +557,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		public static function is_meta_page() {
 
 			if ( is_array( WpssoWpMeta::$head_tags ) ) {
+
 				return true;
 			}
 
