@@ -2626,15 +2626,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			/**
 			 * Fallback to null so $use_post = 0 does not match.
 			 */
-			$front_post_id = get_option( 'show_on_front' ) === 'page' ? (int) get_option( 'page_on_front' ) : null;
+			$post_id = get_option( 'show_on_front' ) === 'page' ? (int) get_option( 'page_on_front' ) : null;
 
-			if ( $front_post_id > 0 ) {
+			if ( $post_id > 0 ) {
 
-				if ( is_numeric( $use_post ) && (int) $use_post === $front_post_id ) {
+				if ( is_numeric( $use_post ) && (int) $use_post === $post_id ) {
 
 					$ret = true;
 
-				} elseif ( self::get_post_object( $use_post, 'id' ) === $front_post_id ) {
+				} elseif ( self::get_post_object( $use_post, 'id' ) === $post_id ) {
 
 					$ret = true;
 				}
@@ -2650,13 +2650,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			/**
 			 * Fallback to null so $use_post = 0 does not match.
 			 */
-			$front_post_id = get_option( 'show_on_front' ) === 'page' ? (int) get_option( 'page_for_posts' ) : null;
+			$post_id = get_option( 'show_on_front' ) === 'page' ? (int) get_option( 'page_for_posts' ) : null;
 
-			if ( is_numeric( $use_post ) && (int) $use_post === $front_post_id ) {
+			if ( is_numeric( $use_post ) && (int) $use_post === $post_id ) {
 
 				$ret = true;
 
-			} elseif ( $front_post_id > 0 && self::get_post_object( $use_post, 'id' ) === $front_post_id ) {
+			} elseif ( $post_id > 0 && self::get_post_object( $use_post, 'id' ) === $post_id ) {
 
 				$ret = true;
 

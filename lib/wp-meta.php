@@ -187,6 +187,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $this->must_be_extended( __METHOD__, self::$mod_defaults );
 		}
 
+		/**
+		 * Get the $mod object for the home page.
+		 */
 		public static function get_mod_home() {
 
 			$wpsso =& Wpsso::get_instance();
@@ -197,16 +200,16 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			$mod = self::$mod_defaults;
 
-			$front_post_id = 0;
+			$post_id = 0;
 			
 			if ( get_option( 'show_on_front' ) === 'page' ) {
 			
-				if ( ! $front_post_id = (int) get_option( 'page_on_front', $default = 0 ) ) {
+				if ( ! $post_id = (int) get_option( 'page_on_front', $default = 0 ) ) {
 
-					$front_post_id = (int) get_option( 'page_for_posts', $default = 0 );
+					$post_id = (int) get_option( 'page_for_posts', $default = 0 );
 				}
 			
-				$mod = $wpsso->post->get_mod( $front_post_id );
+				$mod = $wpsso->post->get_mod( $post_id );
 			}
 			
 			/**
