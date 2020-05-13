@@ -130,7 +130,6 @@ Do you need even more advanced, special and unique features? Simply activate the
 * [WPSSO Schema JSON-LD Markup](https://wordpress.org/plugins/wpsso-schema-json-ld/) to provide Google with Schema markup in its preferred format.
 * [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata/) to strip incorrect markup from templates.
 * [WPSSO Tune Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors/) for better looking WordPress thumbnails.
-* [WPSSO Tweet a Quote](https://wordpress.org/plugins/wpsso-tweet-a-quote/) to add tweetable quotes to your content.
 * [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale/) to switch languages quickly and easily.
 
 <h3>WPSSO Core Premium Features</h3>
@@ -324,9 +323,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
+	* The WPSSO Tweet a Quote add-on has been deprecated and removed.
 	* Added a check to prevent post URLs from non-public post types from being shortened.
 * **Bugfixes**
-	* None.
+	* Fixed an ignored Product Availability value in the Document SSO metabox for custom product pages that are not e-commerce product pages.
 * **Developer Notes**
 	* Added a new WpssoSchema->get_json_data_home_website() method.
 	* Added a new WpssoWpMeta::get_mod_home() method.
@@ -965,7 +965,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 = 7.5.0-dev.2 =
 
-(2020/05/13) Added a check to prevent post URLs from non-public post types from being shortened.
+(2020/05/13) Added a check to prevent post URLs from non-public post types from being shortened. Fixed an ignored Product Availability value in the Document SSO metabox for custom product pages that are not e-commerce product pages.
 
 = 7.4.0 =
 

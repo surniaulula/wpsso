@@ -132,7 +132,6 @@
 <li><a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> to provide Google with Schema markup in its preferred format.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-strip-schema-microdata/">WPSSO Strip Schema Microdata</a> to strip incorrect markup from templates.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-tune-image-editors/">WPSSO Tune Image Editors</a> for better looking WordPress thumbnails.</li>
-<li><a href="https://wordpress.org/plugins/wpsso-tweet-a-quote/">WPSSO Tweet a Quote</a> to add tweetable quotes to your content.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-user-locale/">WPSSO User Locale Selector</a> to switch languages quickly and easily.</li>
 </ul>
 
