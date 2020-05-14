@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 7.5.0\n"
+"Project-Id-Version: WPSSO Core 7.6.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -293,7 +293,7 @@ msgstr ""
 
 #: lib/admin.php:1100 lib/admin.php:1111 lib/messages.php:782
 #: lib/submenu/tools.php:45 lib/submenu/tools.php:103 lib/user.php:48
-#: lib/user.php:1517 lib/user.php:1624 lib/user.php:1750
+#: lib/user.php:1529 lib/user.php:1636 lib/user.php:1762
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -887,7 +887,7 @@ msgstr ""
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:472 lib/gettext-com.php:32 lib/post.php:1607
+#: lib/com/notice.php:472 lib/gettext-com.php:32 lib/post.php:1632
 msgid "Edit"
 msgstr ""
 
@@ -6343,46 +6343,46 @@ msgstr ""
 msgid "Save a draft or publish to display these options."
 msgstr ""
 
-#: lib/post.php:1595 lib/script.php:198
+#: lib/post.php:1620 lib/script.php:198
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1609
+#: lib/post.php:1634
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1623
+#: lib/post.php:1648
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1624
+#: lib/post.php:1649
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1625
+#: lib/post.php:1650
 msgctxt "option label"
 msgid "No image index"
 msgstr ""
 
-#: lib/post.php:1626
+#: lib/post.php:1651
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1627
+#: lib/post.php:1652
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1628
+#: lib/post.php:1653
 msgctxt "option label"
 msgid "No translate"
 msgstr ""
 
-#: lib/post.php:1757
+#: lib/post.php:1782
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -7046,7 +7046,7 @@ msgid ""
 "%2$d in taxonomy %3$s (%4$s)."
 msgstr ""
 
-#: lib/term.php:858
+#: lib/term.php:871
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -7102,40 +7102,40 @@ msgstr ""
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1347
+#: lib/user.php:1359
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1523
+#: lib/user.php:1535
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1546
+#: lib/user.php:1558
 msgid ""
 "Aborting task to add the %1$s role to content creators - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1588
+#: lib/user.php:1600
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1590 lib/user.php:1692 lib/util-cache.php:152
+#: lib/user.php:1602 lib/user.php:1704 lib/util-cache.php:152
 #: lib/util-cache.php:622
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/user.php:1630
+#: lib/user.php:1642
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1653
+#: lib/user.php:1665
 msgid ""
 "Aborting task to remove the %1$s role from all users - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1690
+#: lib/user.php:1702
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 

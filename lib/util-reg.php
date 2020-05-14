@@ -87,10 +87,15 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 			return $ext_reg;
 		}
 
+		/**
+		 * Called by all add-ons from their activate_plugin() method.
+		 */
 		public static function update_ext_version( $ext, $version ) {
 
 			self::update_ext_event_time( $ext, $version, 'update', $version );
+
 			self::update_ext_event_time( $ext, $version, 'install', $protect = true );
+
 			self::update_ext_event_time( $ext, $version, 'activate' );
 		}
 
@@ -104,6 +109,7 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 			$ext_reg = get_option( WPSSO_REG_TS_NAME, array() );
 
 			if ( ! empty( $ext_reg[ $ext . '_' . $event . '_time' ] ) ) {
+
 				return $ext_reg[ $ext . '_' . $event . '_time' ];
 			}
 
@@ -119,7 +125,7 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 
 				if ( ! empty( $protect ) ) {
 
-					$event_version = SucomUtil::get_option_key( WPSSO_REG_TS_NAME, $ext . '_' . $event . '_version' );
+					$event_version = SucomUtilWP::get_option_key( WPSSO_REG_TS_NAME, $ext . '_' . $event . '_version' );
 
 					if ( $event_version === $protect ) {
 						$protect = true;
@@ -133,10 +139,11 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 			}
 
 			if ( ! empty( $version ) ) {
-				SucomUtil::update_option_key( WPSSO_REG_TS_NAME, $ext . '_' . $event . '_version', $version, $protect );
+
+				SucomUtilWP::update_option_key( WPSSO_REG_TS_NAME, $ext . '_' . $event . '_version', $version, $protect );
 			}
 
-			SucomUtil::update_option_key( WPSSO_REG_TS_NAME, $ext . '_' . $event . '_time', time(), $protect );
+			SucomUtilWP::update_option_key( WPSSO_REG_TS_NAME, $ext . '_' . $event . '_time', time(), $protect );
 		}
 	}
 }

@@ -386,7 +386,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		public function get_options( $mod_id, $md_key = false, $filter_opts = true, $pad_opts = false ) {
 
-			if ( false === $md_key ) {
+			if ( false === $md_key ) {	// Allow for 0.
 				$ret_val = array();
 			} else {
 				$ret_val = null;
@@ -2106,6 +2106,24 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		public function get_author_website( $user_id, $field_id = 'url' ) {
 
 			return $this->must_be_extended( __METHOD__, '' );
+		}
+
+		/**
+		 * Since WPSSO Core v7.6.0.
+		 */
+		public function add_attached( $obj_id, $attach_type, $attach_id ) {
+
+			return $this->must_be_extended( __METHOD__, $ret_val = false );	// No addition.
+		}
+
+		public function get_attached( $obj_id, $attach_type ) {
+
+			return $this->must_be_extended( __METHOD__, $ret_val = array() );	// No values.
+		}
+
+		public function delete_attached( $obj_id, $attach_type, $attach_id ) {
+
+			return $this->must_be_extended( __METHOD__, $ret_val = false );	// No delete.
 		}
 	}
 }

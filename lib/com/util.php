@@ -1399,106 +1399,24 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Only creates new keys - does not update existing keys.
-		 */
-		public static function add_site_option_key( $name, $key, $value ) {
-
-			return self::update_option_key( $name, $key, $value, $protect = true, $site = true );
-		}
-
-		/**
-		 * Only creates new keys - does not update existing keys.
-		 */
-		public static function add_option_key( $name, $key, $value ) {
-
-			return self::update_option_key( $name, $key, $value, $protect = true, $site = false );
-		}
-
-		public static function update_site_option_key( $name, $key, $value, $protect = false ) {
-
-			return self::update_option_key( $name, $key, $value, $protect, $site = true );
-		}
-
-		public static function update_option_key( $name, $key, $value, $protect = false, $site = false ) {
-
-			if ( true === $site ) {
-				$opts = get_site_option( $name, array() );
-			} else {
-				$opts = get_option( $name, array() );
-			}
-
-			if ( true === $protect && isset( $opts[ $key ] ) ) {
-				return false;
-			}
-
-			$opts[ $key ] = $value;
-
-			if ( true === $site ) {
-				return update_site_option( $name, $opts );
-			} else {
-				return update_option( $name, $opts );
-			}
-		}
-
-		public static function get_site_option_key( $name, $key ) {
-
-			return self::get_option_key( $name, $key, $site = true );
-		}
-
-		public static function get_option_key( $name, $key, $site = false ) {
-
-			if ( true === $site ) {
-				$opts = get_site_option( $name, array() );
-			} else {
-				$opts = get_option( $name, array() );
-			}
-
-			if ( isset( $opts[ $key ] ) ) {
-				return $opts[ $key ];
-			} else {
-				return null;
-			}
-		}
-
-		public static function delete_site_option_key( $name, $key ) {
-
-			return self::delete_option_key( $name, $key, $site = true );
-		}
-
-		public static function delete_option_key( $name, $key, $site = false ) {
-
-			if ( true === $site ) {
-				$opts = get_site_option( $name, array() );
-			} else {
-				$opts = get_option( $name, array() );
-			}
-
-			if ( isset( $opts[ $key ] ) ) {
-
-				unset( $opts[ $key ] );
-
-				if ( true === $site ) {
-					return update_site_option( $name, $opts );
-				} else {
-					return update_option( $name, $opts );
-				}
-			}
-
-			return false;
-		}
-
-		/**
 		 * Check that the id value is not true, false, null, or 'none'.
 		 */
 		public static function is_valid_option_id( $id ) {
 
 			if ( true === $id ) {
+
 				return false;
+
 			} elseif ( empty( $id ) && ! is_numeric( $id ) ) { // Null or false.
+
 				return false;
+
 			} elseif ( $id === 'none' ) {
+
 				return false;
+
 			} else {
+
 				return true;
 			}
 		}
@@ -1508,8 +1426,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$ret = false;
 
 			if ( ! empty( $mixed ) ) {	// Optimize.
+
 				if ( is_array( $mixed ) ) {	// Just in case.
+
 					if ( ! is_numeric( implode( array_keys( $mixed ) ) ) ) {
+
 						$ret = true;
 					}
 				}
@@ -1523,6 +1444,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$arr_arr = array();
 
 			foreach ( $arr as $el ) {
+
 				$arr_arr[][] = $el;
 			}
 

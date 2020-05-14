@@ -816,6 +816,18 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		 */
 		public function clear_cache( $term_id, $term_tax_id = false ) {
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+			
+			static $do_once = array();
+
+			if ( isset( $do_once[ $term_id ][ $term_tax_id ] ) ) {
+				return;
+			}
+
+			$do_once[ $term_id ][ $term_tax_id ] = true;
+
 			$taxonomy = get_term_by( 'term_taxonomy_id', $term_tax_id, $tax_slug = '' );
 
 			if ( isset( $taxonomy->slug ) ) {	// Just in case.
@@ -827,6 +839,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$col_meta_keys = WpssoWpMeta::get_column_meta_keys();
 
 			foreach ( $col_meta_keys as $col_key => $meta_key ) {
+
 				self::delete_term_meta( $term_id, $meta_key );
 			}
 
@@ -866,13 +879,13 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		/**
 		 * Backwards compatible methods for handling term meta, which did not exist before WordPress v4.4.
 		 */
-		public static function get_term_meta( $term_id, $key_name, $single = false ) {
+		public static function get_term_meta( $term_id, $meta_name, $single = false ) {
 
 			$term_meta = false === $single ? array() : '';
 
 			if ( self::use_term_meta_table( $term_id ) ) {
 
-				$term_meta = get_term_meta( $term_id, $key_name, $single );	// Since WP v4.4.
+				$term_meta = get_term_meta( $term_id, $meta_name, $single );	// Since WP v4.4.
 
 				/**
 				 * Fallback to checking for deprecated term meta in the options table.
@@ -882,15 +895,15 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					/**
 					 * If deprecated meta is found, update the meta table and delete the deprecated meta.
 					 */
-					if ( ( $opt_term_meta = get_option( $key_name . '_term_' . $term_id, null ) ) !== null ) {
+					if ( ( $opt_term_meta = get_option( $meta_name . '_term_' . $term_id, null ) ) !== null ) {
 
-						$updated = update_term_meta( $term_id, $key_name, $opt_term_meta );	// Since WP v4.4.
+						$updated = update_term_meta( $term_id, $meta_name, $opt_term_meta );	// Since WP v4.4.
 
 						if ( ! is_wp_error( $updated ) ) {
 
-							delete_option( $key_name . '_term_' . $term_id );
+							delete_option( $meta_name . '_term_' . $term_id );
 
-							$term_meta = get_term_meta( $term_id, $key_name, $single );
+							$term_meta = get_term_meta( $term_id, $meta_name, $single );
 
 						} else {
 							$term_meta = false === $single ? array( $opt_term_meta ) : $opt_term_meta;
@@ -898,7 +911,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					}
 				}
 
-			} elseif ( ( $opt_term_meta = get_option( $key_name . '_term_' . $term_id, null ) ) !== null ) {
+			} elseif ( ( $opt_term_meta = get_option( $meta_name . '_term_' . $term_id, null ) ) !== null ) {
 
 				$term_meta = false === $single ? array( $opt_term_meta ) : $opt_term_meta;
 			}
@@ -906,25 +919,25 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return $term_meta;
 		}
 
-		public static function update_term_meta( $term_id, $key_name, $opts ) {
+		public static function update_term_meta( $term_id, $meta_name, $opts ) {
 
 			if ( self::use_term_meta_table( $term_id ) ) {
 
-				return update_term_meta( $term_id, $key_name, $opts );	// Since WP v4.4.
+				return update_term_meta( $term_id, $meta_name, $opts );	// Since WP v4.4.
 
 			} else {
-				return update_option( $key_name . '_term_' . $term_id, $opts );
+				return update_option( $meta_name . '_term_' . $term_id, $opts );
 			}
 		}
 
-		public static function delete_term_meta( $term_id, $key_name ) {
+		public static function delete_term_meta( $term_id, $meta_name ) {
 
 			if ( self::use_term_meta_table( $term_id ) ) {
 
-				return delete_term_meta( $term_id, $key_name );	// Since WP v4.4.
+				return delete_term_meta( $term_id, $meta_name );	// Since WP v4.4.
 
 			} else {
-				return delete_option( $key_name . '_term_' . $term_id );
+				return delete_option( $meta_name . '_term_' . $term_id );
 			}
 		}
 
@@ -948,6 +961,60 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			return $local_cache;
+		}
+
+		/**
+		 * Since WPSSO Core v7.6.0.
+		 */
+		public function add_attached( $term_id, $attach_type, $attach_id ) {
+
+			$opts = self::get_term_meta( $term_id, WPSSO_META_ATTACHED_NAME, $single = true );
+
+			if ( ! isset( $opts[ $attach_type ][ $attach_id ] ) ) {
+
+				if ( ! is_array( $opts ) ) {
+					$opts = array();
+				}
+
+				$opts[ $attach_type ][ $attach_id ] = true;
+
+				return self::update_term_meta( $term_id, WPSSO_META_ATTACHED_NAME, $opts );
+			}
+
+			return false;	// No addition.
+		}
+
+		public function get_attached( $term_id, $attach_type ) {
+
+			$opts = self::get_term_meta( $term_id, WPSSO_META_ATTACHED_NAME, $single = true );
+
+			if ( isset( $opts[ $attach_type ] ) ) {
+
+				if ( is_array( $opts[ $attach_type ] ) ) {	// Just in case.
+
+					return $opts[ $attach_type ];
+				}
+			}
+
+			return array();	// No values.
+		}
+
+		public function delete_attached( $term_id, $attach_type, $attach_id ) {
+
+			$opts = self::get_term_meta( $term_id, WPSSO_META_ATTACHED_NAME, $single = true );
+
+			if ( isset( $opts[ $attach_type ][ $attach_id ] ) ) {
+
+				unset( $opts[ $attach_type ][ $attach_id ] );
+
+				if ( empty( $opts ) ) {	// Cleanup.
+					return self::delete_term_meta( $term_id, WPSSO_META_ATTACHED_NAME );
+				}
+
+				return self::update_term_meta( $term_id, WPSSO_META_ATTACHED_NAME, $opts );
+			}
+
+			return false;	// No delete.
 		}
 	}
 }

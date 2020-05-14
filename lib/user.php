@@ -221,7 +221,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$user_exists = SucomUtilWP::user_exists( $user_id );
 
 				if ( $user_exists ) {
-					$md_opts = get_user_meta( $user_id, WPSSO_META_NAME, true );
+					$md_opts = get_user_meta( $user_id, WPSSO_META_NAME, $single = true );
 				} else {
 					$md_opts = apply_filters( $this->p->lca . '_get_other_user_meta', false, $user_id );
 				}
@@ -1308,6 +1308,18 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function clear_cache( $user_id, $rel_id = false ) {
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+			
+			static $do_once = array();
+
+			if ( isset( $do_once[ $user_id ][ $rel_id ] ) ) {
+				return;
+			}
+
+			$do_once[ $user_id ][ $rel_id ] = true;
+
 			$mod = $this->get_mod( $user_id );
 
 			$col_meta_keys = WpssoWpMeta::get_column_meta_keys();
@@ -1762,6 +1774,60 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$user_views = array_reverse( $user_views );
 
 			return $user_views;
+		}
+
+		/**
+		 * Since WPSSO Core v7.6.0.
+		 */
+		public function add_attached( $user_id, $attach_type, $attach_id ) {
+
+			$opts = get_user_meta( $user_id, WPSSO_META_ATTACHED_NAME, $single = true );
+
+			if ( ! isset( $opts[ $attach_type ][ $attach_id ] ) ) {
+
+				if ( ! is_array( $opts ) ) {
+					$opts = array();
+				}
+
+				$opts[ $attach_type ][ $attach_id ] = true;
+
+				return update_user_meta( $user_id, WPSSO_META_ATTACHED_NAME, $opts );
+			}
+
+			return false;	// No addition.
+		}
+
+		public function get_attached( $user_id, $attach_type ) {
+
+			$opts = get_user_meta( $user_id, WPSSO_META_ATTACHED_NAME, $single = true );
+
+			if ( isset( $opts[ $attach_type ] ) ) {
+
+				if ( is_array( $opts[ $attach_type ] ) ) {	// Just in case.
+
+					return $opts[ $attach_type ];
+				}
+			}
+
+			return array();	// No values.
+		}
+
+		public function delete_attached( $user_id, $attach_type, $attach_id ) {
+
+			$opts = get_user_meta( $user_id, WPSSO_META_ATTACHED_NAME, $single = true );
+
+			if ( isset( $opts[ $attach_type ][ $attach_id ] ) ) {
+
+				unset( $opts[ $attach_type ][ $attach_id ] );
+
+				if ( empty( $opts ) ) {	// Cleanup.
+					return delete_user_meta( $user_id, WPSSO_META_ATTACHED_NAME );
+				}
+
+				return update_user_meta( $user_id, WPSSO_META_ATTACHED_NAME, $opts );
+			}
+
+			return false;	// No delete.
 		}
 	}
 }

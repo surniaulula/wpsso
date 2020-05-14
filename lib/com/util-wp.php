@@ -1037,21 +1037,21 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		public static function is_post_type_public( $mixed ) {
 
-			$name = null;
+			$post_type_name = null;
 
-			if ( is_object( $mixed ) || is_numeric( $mixed ) ) {	// Post object or ID.
-				$name = get_post_type( $mixed );
+			if ( is_object( $mixed ) || is_numeric( $mixed ) ) {
+				$post_type_name = get_post_type( $mixed );	// Post object or ID.
 			} else {
-				$name = $mixed;					// Post type name.
+				$post_type_name = $mixed;			// Post type name.
 			}
 
-			if ( $name ) {
+			if ( $post_type_name ) {
 
-				$args = array( 'name' => $name, 'public'  => 1 );
+				$args = array( 'name' => $post_type_name, 'public'  => 1 );
 
 				$post_types = get_post_types( $args, $output = 'names', $operator = 'and' );
 			
-				if ( isset( $post_types[ 0 ] ) && $post_types[ 0 ] === $name ) {
+				if ( isset( $post_types[ 0 ] ) && $post_types[ 0 ] === $post_type_name ) {
 					return true;
 				}
 			}
@@ -1140,6 +1140,104 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			}
 
 			return $objects = $sorted;
+		}
+
+		/**
+		 * Only creates new keys - does not update existing keys.
+		 */
+		public static function add_site_option_key( $opt_name, $key, $value ) {
+
+			return self::update_option_key( $opt_name, $key, $value, $protect = true, $site = true );
+		}
+
+		/**
+		 * Only creates new keys - does not update existing keys.
+		 */
+		public static function add_option_key( $opt_name, $key, $value ) {
+
+			return self::update_option_key( $opt_name, $key, $value, $protect = true, $site = false );
+		}
+
+		public static function update_site_option_key( $opt_name, $key, $value, $protect = false ) {
+
+			return self::update_option_key( $opt_name, $key, $value, $protect, $site = true );
+		}
+
+		public static function update_option_key( $opt_name, $key, $value, $protect = false, $site = false ) {
+
+			if ( $site ) {
+				$opts = get_site_option( $opt_name, array() );
+			} else {
+				$opts = get_option( $opt_name, array() );
+			}
+
+			if ( $protect && isset( $opts[ $key ] ) ) {
+
+				return false;	// No update.
+			}
+
+			$opts[ $key ] = $value;
+
+			if ( $site ) {
+				return update_site_option( $opt_name, $opts );
+			} else {
+				return update_option( $opt_name, $opts );
+			}
+		}
+
+		public static function get_site_option_key( $opt_name, $key ) {
+
+			return self::get_option_key( $opt_name, $key, $site = true );
+		}
+
+		public static function get_option_key( $opt_name, $key, $site = false ) {
+
+			if ( $site ) {
+				$opts = get_site_option( $opt_name, array() );
+			} else {
+				$opts = get_option( $opt_name, array() );
+			}
+
+			if ( isset( $opts[ $key ] ) ) {
+				return $opts[ $key ];
+			}
+
+			return null;	// No value.
+		}
+
+		public static function delete_site_option_key( $opt_name, $key ) {
+
+			return self::delete_option_key( $opt_name, $key, $site = true );
+		}
+
+		public static function delete_option_key( $opt_name, $key, $site = false ) {
+
+			if ( $site ) {
+				$opts = get_site_option( $opt_name, array() );
+			} else {
+				$opts = get_option( $opt_name, array() );
+			}
+
+			if ( isset( $opts[ $key ] ) ) {
+
+				unset( $opts[ $key ] );
+
+				if ( empty( $opts ) ) {	// Cleanup.
+					if ( $site ) {
+						return delete_site_option( $opt_name );
+					} else {
+						return delete_option( $opt_name );
+					}
+				}
+
+				if ( $site ) {
+					return update_site_option( $opt_name, $opts );
+				} else {
+					return update_option( $opt_name, $opts );
+				}
+			}
+
+			return false;	// No delete.
 		}
 	}
 }

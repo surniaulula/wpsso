@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '7.5.0',	// Plugin version.
+					'version'     => '7.6.0-dev.3',	// Plugin version.
 					'opt_version' => '726',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -3853,6 +3853,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 */
 			$var_const[ 'WPSSO_DISMISS_NAME' ]          = 'wpsso_dismissed';
 			$var_const[ 'WPSSO_META_NAME' ]             = '_wpsso_meta';
+			$var_const[ 'WPSSO_META_ATTACHED_NAME' ]    = '_wpsso_meta_attached';
 			$var_const[ 'WPSSO_OPTIONS_NAME' ]          = 'wpsso_options';
 			$var_const[ 'WPSSO_POST_CHECK_COUNT_NAME' ] = 'wpsso_post_check_count';
 			$var_const[ 'WPSSO_PREF_NAME' ]             = '_wpsso_pref';

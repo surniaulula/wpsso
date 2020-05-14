@@ -1447,6 +1447,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
+			
+			static $do_once = array();
+
+			if ( isset( $do_once[ $post_id ][ $rel_id ] ) ) {
+				return;
+			}
+
+			$do_once[ $post_id ][ $rel_id ] = true;
 
 			$post_status = get_post_status( $post_id );
 
@@ -1474,6 +1482,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$cache_md5_pre = $this->p->lca . '_';
 
 			foreach ( $col_meta_keys as $col_key => $meta_key ) {
+
 				delete_post_meta( $post_id, $meta_key );
 			}
 
@@ -1523,6 +1532,22 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( function_exists( 'w3tc_pgcache_flush_post' ) ) {	// Clear W3 Total Cache.
 				w3tc_pgcache_flush_post( $post_id );
+			}
+
+			/**
+			 * The question shortcode (in the WPSSO FAQ add-on) attaches the post ID to the question so the post cache
+			 * can be cleared when the question is updated.
+			 */
+			foreach ( array( 'post' ) as $attach_type ) {
+
+				$attached_ids = $this->get_attached( $post_id, $attach_type );
+
+				foreach ( $attached_ids as $post_id => $bool ) {
+				
+					if ( $bool ) {
+						$this->p->$attach_type->clear_cache( $post_id );
+					}
+				}
 			}
 		}
 
@@ -2037,5 +2062,58 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $shortlink;
 		}
 
+		/**
+		 * Since WPSSO Core v7.6.0.
+		 */
+		public function add_attached( $post_id, $attach_type, $attach_id ) {
+
+			$opts = get_post_meta( $post_id, WPSSO_META_ATTACHED_NAME, $single = true );
+
+			if ( ! isset( $opts[ $attach_type ][ $attach_id ] ) ) {
+
+				if ( ! is_array( $opts ) ) {
+					$opts = array();
+				}
+
+				$opts[ $attach_type ][ $attach_id ] = true;
+			
+				return update_post_meta( $post_id, WPSSO_META_ATTACHED_NAME, $opts );
+			}
+
+			return false;	// No addition.
+		}
+
+		public function get_attached( $post_id, $attach_type ) {
+
+			$opts = get_post_meta( $post_id, WPSSO_META_ATTACHED_NAME, $single = true );
+
+			if ( isset( $opts[ $attach_type ] ) ) {
+
+				if ( is_array( $opts[ $attach_type ] ) ) {	// Just in case.
+
+					return $opts[ $attach_type ];
+				}
+			}
+
+			return array();	// No values.
+		}
+
+		public function delete_attached( $post_id, $attach_type, $attach_id ) {
+
+			$opts = get_post_meta( $post_id, WPSSO_META_ATTACHED_NAME, $single = true );
+
+			if ( isset( $opts[ $attach_type ][ $attach_id ] ) ) {
+
+				unset( $opts[ $attach_type ][ $attach_id ] );
+
+				if ( empty( $opts ) ) {	// Cleanup.
+					return delete_post_meta( $post_id, WPSSO_META_ATTACHED_NAME );
+				}
+
+				return update_post_meta( $post_id, WPSSO_META_ATTACHED_NAME, $opts );
+			}
+
+			return false;	// No delete.
+		}
 	}
 }
