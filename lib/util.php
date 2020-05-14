@@ -100,7 +100,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			/**
 			 * WpssoUtilReg.
 			 */
-			if ( ! class_exists( 'WpssoUtilReg' ) ) {
+			if ( ! class_exists( 'WpssoUtilReg' ) ) { // Since WPSSO Core v6.13.1.
 				require_once WPSSO_PLUGINDIR . 'lib/util-reg.php';
 			}
 
