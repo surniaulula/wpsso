@@ -984,21 +984,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return false;	// No addition.
 		}
 
-		public function get_attached( $term_id, $attach_type ) {
-
-			$opts = self::get_term_meta( $term_id, WPSSO_META_ATTACHED_NAME, $single = true );
-
-			if ( isset( $opts[ $attach_type ] ) ) {
-
-				if ( is_array( $opts[ $attach_type ] ) ) {	// Just in case.
-
-					return $opts[ $attach_type ];
-				}
-			}
-
-			return array();	// No values.
-		}
-
 		public function delete_attached( $term_id, $attach_type, $attach_id ) {
 
 			$opts = self::get_term_meta( $term_id, WPSSO_META_ATTACHED_NAME, $single = true );
@@ -1015,6 +1000,21 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			return false;	// No delete.
+		}
+
+		public function get_attached( $term_id, $attach_type ) {
+
+			$opts = self::get_term_meta( $term_id, WPSSO_META_ATTACHED_NAME, $single = true );
+
+			if ( isset( $opts[ $attach_type ] ) ) {
+
+				if ( is_array( $opts[ $attach_type ] ) ) {	// Just in case.
+
+					return $opts[ $attach_type ];
+				}
+			}
+
+			return array();	// No values.
 		}
 	}
 }

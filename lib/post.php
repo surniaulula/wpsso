@@ -2083,21 +2083,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return false;	// No addition.
 		}
 
-		public function get_attached( $post_id, $attach_type ) {
-
-			$opts = get_post_meta( $post_id, WPSSO_META_ATTACHED_NAME, $single = true );
-
-			if ( isset( $opts[ $attach_type ] ) ) {
-
-				if ( is_array( $opts[ $attach_type ] ) ) {	// Just in case.
-
-					return $opts[ $attach_type ];
-				}
-			}
-
-			return array();	// No values.
-		}
-
 		public function delete_attached( $post_id, $attach_type, $attach_id ) {
 
 			$opts = get_post_meta( $post_id, WPSSO_META_ATTACHED_NAME, $single = true );
@@ -2114,6 +2099,21 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			return false;	// No delete.
+		}
+
+		public function get_attached( $post_id, $attach_type ) {
+
+			$opts = get_post_meta( $post_id, WPSSO_META_ATTACHED_NAME, $single = true );
+
+			if ( isset( $opts[ $attach_type ] ) ) {
+
+				if ( is_array( $opts[ $attach_type ] ) ) {	// Just in case.
+
+					return $opts[ $attach_type ];
+				}
+			}
+
+			return array();	// No values.
 		}
 	}
 }

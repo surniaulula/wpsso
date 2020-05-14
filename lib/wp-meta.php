@@ -2116,14 +2116,14 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $this->must_be_extended( __METHOD__, $ret_val = false );	// No addition.
 		}
 
-		public function get_attached( $obj_id, $attach_type ) {
-
-			return $this->must_be_extended( __METHOD__, $ret_val = array() );	// No values.
-		}
-
 		public function delete_attached( $obj_id, $attach_type, $attach_id ) {
 
 			return $this->must_be_extended( __METHOD__, $ret_val = false );	// No delete.
+		}
+
+		public function get_attached( $obj_id, $attach_type ) {
+
+			return $this->must_be_extended( __METHOD__, $ret_val = array() );	// No values.
 		}
 	}
 }
