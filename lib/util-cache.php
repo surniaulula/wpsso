@@ -562,21 +562,14 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			 */
 			if ( false !== get_transient( $cache_id ) ) {	// Another process is already running.
 
-				set_transient( $cache_id, $cache_stop_val, $cache_exp_secs );	// Signal the other process to stop.
+				if ( $user_id ) {
 
-				usleep( 5 * 1000000 );						// Sleep for 5 seconds.
+					$notice_msg = __( 'Aborting task to refresh the transient cache - another identical task is still running.', 'wpsso' );
 
-				if ( false !== get_transient( $cache_id ) ) {			// Stop here if the other process is still running.
-
-					if ( $user_id ) {
-
-						$notice_msg = __( 'Aborting task to refresh the transient cache - another identical task is still running.', 'wpsso' );
-
-						$this->p->notice->warn( $notice_msg, $user_id, $notice_key );
-					}
-
-					return;
+					$this->p->notice->warn( $notice_msg, $user_id, $notice_key );
 				}
+
+				return;
 			}
 
 			set_transient( $cache_id, $cache_run_val, $cache_exp_secs );	// Signal that we are running.

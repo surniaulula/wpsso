@@ -1442,48 +1442,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $metabox_html;
 		}
 
-		public function clear_cache_for_new_comment( $comment_id, $comment_approved ) {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
-
-			if ( $comment_id && $comment_approved === 1 ) {
-
-				if ( ( $comment = get_comment( $comment_id ) ) && $comment->comment_post_ID ) {
-
-					$post_id = $comment->comment_post_ID;
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'clearing post_id ' . $post_id . ' cache for comment_id ' . $comment_id );
-					}
-
-					$this->clear_cache( $post_id );
-				}
-			}
-		}
-
-		public function clear_cache_for_comment_status( $comment_id, $comment_status ) {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
-
-			if ( $comment_id ) {	// Just in case.
-
-				if ( ( $comment = get_comment( $comment_id ) ) && $comment->comment_post_ID ) {
-
-					$post_id = $comment->comment_post_ID;
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'clearing post_id ' . $post_id . ' cache for comment_id ' . $comment_id );
-					}
-
-					$this->clear_cache( $post_id );
-				}
-			}
-		}
-
 		public function clear_cache( $post_id, $rel_id = false ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -1532,6 +1490,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			);
 
 			if ( $permalink !== $check_url ) {
+
 				$cache_types[ 'transient' ][] = array(
 					'id'   => $cache_md5_pre . md5( 'SucomCache::get(url:' . $check_url . ')' ),
 					'pre'  => $cache_md5_pre,
@@ -1555,6 +1514,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$post_terms = wp_get_post_terms( $post_id, $tax_slug );
 
 						foreach ( $post_terms as $post_term ) {
+
 							$this->p->term->clear_cache( $post_term->term_id, $post_term->term_taxonomy_id );
 						}
 					}
@@ -1563,6 +1523,48 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( function_exists( 'w3tc_pgcache_flush_post' ) ) {	// Clear W3 Total Cache.
 				w3tc_pgcache_flush_post( $post_id );
+			}
+		}
+
+		public function clear_cache_for_new_comment( $comment_id, $comment_approved ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			if ( $comment_id && $comment_approved === 1 ) {
+
+				if ( ( $comment = get_comment( $comment_id ) ) && $comment->comment_post_ID ) {
+
+					$post_id = $comment->comment_post_ID;
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'clearing post_id ' . $post_id . ' cache for comment_id ' . $comment_id );
+					}
+
+					$this->clear_cache( $post_id );
+				}
+			}
+		}
+
+		public function clear_cache_for_comment_status( $comment_id, $comment_status ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			if ( $comment_id ) {	// Just in case.
+
+				if ( ( $comment = get_comment( $comment_id ) ) && $comment->comment_post_ID ) {
+
+					$post_id = $comment->comment_post_ID;
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'clearing post_id ' . $post_id . ' cache for comment_id ' . $comment_id );
+					}
+
+					$this->clear_cache( $post_id );
+				}
 			}
 		}
 

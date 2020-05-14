@@ -293,7 +293,7 @@ msgstr ""
 
 #: lib/admin.php:1100 lib/admin.php:1111 lib/messages.php:782
 #: lib/submenu/tools.php:45 lib/submenu/tools.php:103 lib/user.php:48
-#: lib/user.php:1517 lib/user.php:1631 lib/user.php:1757
+#: lib/user.php:1517 lib/user.php:1624 lib/user.php:1750
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -887,7 +887,7 @@ msgstr ""
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:472 lib/gettext-com.php:32 lib/post.php:1605
+#: lib/com/notice.php:472 lib/gettext-com.php:32 lib/post.php:1607
 msgid "Edit"
 msgstr ""
 
@@ -6343,46 +6343,46 @@ msgstr ""
 msgid "Save a draft or publish to display these options."
 msgstr ""
 
-#: lib/post.php:1593 lib/script.php:198
+#: lib/post.php:1595 lib/script.php:198
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1607
+#: lib/post.php:1609
 msgid "Edit robots"
-msgstr ""
-
-#: lib/post.php:1621
-msgctxt "option label"
-msgid "No archive"
-msgstr ""
-
-#: lib/post.php:1622
-msgctxt "option label"
-msgid "No follow"
 msgstr ""
 
 #: lib/post.php:1623
 msgctxt "option label"
-msgid "No image index"
+msgid "No archive"
 msgstr ""
 
 #: lib/post.php:1624
 msgctxt "option label"
-msgid "No index"
+msgid "No follow"
 msgstr ""
 
 #: lib/post.php:1625
 msgctxt "option label"
-msgid "No snippet"
+msgid "No image index"
 msgstr ""
 
 #: lib/post.php:1626
 msgctxt "option label"
+msgid "No index"
+msgstr ""
+
+#: lib/post.php:1627
+msgctxt "option label"
+msgid "No snippet"
+msgstr ""
+
+#: lib/post.php:1628
+msgctxt "option label"
 msgid "No translate"
 msgstr ""
 
-#: lib/post.php:1755
+#: lib/post.php:1757
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -7110,32 +7110,32 @@ msgstr ""
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1552
+#: lib/user.php:1546
 msgid ""
 "Aborting task to add the %1$s role to content creators - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1595
+#: lib/user.php:1588
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1597 lib/user.php:1699 lib/util-cache.php:152
-#: lib/util-cache.php:629
+#: lib/user.php:1590 lib/user.php:1692 lib/util-cache.php:152
+#: lib/util-cache.php:622
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/user.php:1637
+#: lib/user.php:1630
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1660
+#: lib/user.php:1653
 msgid ""
 "Aborting task to remove the %1$s role from all users - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1697
+#: lib/user.php:1690
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 
@@ -7166,13 +7166,13 @@ msgstr ""
 msgid "A task to refresh the transient cache was started at %s."
 msgstr ""
 
-#: lib/util-cache.php:573
+#: lib/util-cache.php:567
 msgid ""
 "Aborting task to refresh the transient cache - another identical task is "
 "still running."
 msgstr ""
 
-#: lib/util-cache.php:626
+#: lib/util-cache.php:619
 msgid ""
 "The transient cache for %1$d posts, %2$d terms and %3$d users has been "
 "refreshed."
