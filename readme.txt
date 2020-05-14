@@ -318,7 +318,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.5.0-rc.1 (2020/05/14)**
+**Version 7.5.0 (2020/05/14)**
 
 * **New Features**
 	* None.
@@ -963,7 +963,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 7.5.0-rc.1 =
+= 7.5.0 =
 
 (2020/05/14) Added a check to prevent post URLs from non-public post types from being shortened. Fixed an ignored Product Availability value in the Document SSO metabox for custom product pages that are not e-commerce product pages.
 
