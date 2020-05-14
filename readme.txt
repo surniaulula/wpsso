@@ -323,11 +323,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added post cache clearing for attached post IDs.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Updated the `WpssoPost->clear_cache()` method to clear attached post IDs.
+	* Added recursion prevention in the WpssoPost, WpssoTerm, and WpssoUser `clear_cache()` methods.
+	* Added new methods in the WpssoPost, WpssoTerm, WpssoUser, and WpssoWpMeta classes:
+		* add_attached()
+		* delete_attached()
+		* get_attached()
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
@@ -979,7 +984,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 = 7.6.0-dev.3 =
 
-(2020/05/14) None.
+(2020/05/14) Added post cache clearing for attached post IDs.
 
 = 7.5.0 =
 
