@@ -318,6 +318,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 7.6.0-dev.3 (2020/05/14)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.2.
+
 **Version 7.5.0 (2020/05/14)**
 
 * **New Features**
@@ -962,6 +976,10 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 	* WordPress v3.9.
 
 == Upgrade Notice ==
+
+= 7.6.0-dev.3 =
+
+(2020/05/14) None.
 
 = 7.5.0 =
 
