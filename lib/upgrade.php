@@ -145,7 +145,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'plugin_cf_add_type_urls'  => 'plugin_cf_addl_type_urls',
 					'schema_organization_json' => 'schema_add_home_organization',
 					'schema_person_json'       => 'schema_add_home_person',
-					'schema_website_json'      => 'schema_add_home_website',
+					'schema_website_json'      => '',
 					'schema_person_id'         => 'schema_home_person_id',
 				),
 				574 => array(
@@ -628,7 +628,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 
 			$opts = apply_filters( $upgraded_filter_name, $opts, $def_opts );
 
-			return $this->sanitize( $opts, $def_opts, $network );	// Cleanup options and sanitize.
+			return $opts;
 		}
 	}
 }

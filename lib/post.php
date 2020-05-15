@@ -359,7 +359,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$this->p->debug->log( 'applying get_post_options filters for post id ' . $post_id . ' metadata' );
 					}
 
-					$md_opts[ 'options_filtered' ] = true;	// Set before calling filter to prevent recursion.
+					$md_opts[ 'options_filtered' ] = 1;	// Set before calling filter to prevent recursion.
 
 					/**
 					 * Since WPSSO Core v7.1.0.

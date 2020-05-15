@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '7.6.0-dev.3',	// Plugin version.
-					'opt_version' => '726',		// Increment when changing default option values.
+					'version'     => '7.6.0-dev.4',	// Plugin version.
+					'opt_version' => '728',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Make sure your content looks great on all social and search sites - no matter how your URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -1028,7 +1028,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'opt' => array(
 				'defaults' => array(
 					'options_version'              => '',		// Example: -wpsso512pro-wpssoum3gpl
-					'options_filtered'             => false,
+					'options_filtered'             => 0,
 					'site_name'                    => '',		// (localized)
 					'site_name_alt'                => '',		// (localized)
 					'site_desc'                    => '',		// (localized)
@@ -1037,7 +1037,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'site_place_id'                => 'none',
 					'schema_add_home_organization' => 1,
 					'schema_add_home_person'       => 0,
-					'schema_add_home_website'      => 1,
 					'schema_home_person_id'        => 'none',
 					'schema_logo_url'              => '',
 					'schema_banner_url'            => '',
@@ -1660,7 +1659,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 */
 				'site_defaults' => array(
 					'options_version'  => '',		// Example: -wpsso512pro-wpssoum3gpl
-					'options_filtered' => false,
+					'options_filtered' => 0,
 
 					/**
 					 * Advanced Settings - Standard Settings tab.

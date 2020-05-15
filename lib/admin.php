@@ -911,7 +911,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->p->notice->clear();
 
 			$opts = SucomUtil::restore_checkboxes( $opts );
+
 			$opts = array_merge( $this->p->options, $opts );
+
 			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network = false );	// Sanitation updates image width/height info.
 
 			/**
@@ -1770,7 +1772,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							'status' => $this->p->options[ 'schema_add_home_organization' ] ? 'on' : 'off',
 						),
 						'(code) Knowledge Graph WebSite Markup' => array(
-							'status' => $this->p->options[ 'schema_add_home_website' ] ? 'on' : 'rec',
+							'status' => 'on',
 						),
 						'(code) Twitter Card Meta Tags' => array(
 							'status' => class_exists( $this->p->lca . 'twittercard' ) ? 'on' : 'rec',
@@ -2739,7 +2741,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$table_rows[ 'schema_knowledge_graph' ] = '' . 
 			$form->get_th_html( _x( 'Knowledge Graph for Home Page', 'option label', 'wpsso' ), '', 'schema_knowledge_graph' ) . 
 			'<td>' .
-			'<p>' . $form->get_checkbox( 'schema_add_home_website' ) . ' ' . __( 'Include Schema WebSite', 'wpsso' ) . '</p>' .
 			'<p>' . $form->get_checkbox( 'schema_add_home_organization' ) . ' ' . __( 'Include Schema Organization', 'wpsso' ) . '</p>' .
 			'<p>' . $form->get_checkbox( 'schema_add_home_person' ) . ' ' . __( 'Include Schema Person', 'wpsso' ) . '</p>' .
 			'</td>';

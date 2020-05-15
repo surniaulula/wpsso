@@ -341,7 +341,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$page_type_ids[ $site_org_type_id ] = $this->p->options[ 'schema_add_home_organization' ];
 				$page_type_ids[ 'person' ]          = $this->p->options[ 'schema_add_home_person' ];
-				$page_type_ids[ 'website' ]         = $this->p->options[ 'schema_add_home_website' ];
+				$page_type_ids[ 'website' ]         = true;
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'organization schema type id is ' . $site_org_type_id );

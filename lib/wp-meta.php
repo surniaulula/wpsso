@@ -267,7 +267,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				$def_schema_type = $this->p->schema->get_mod_schema_type( $mod, $get_id = true, $use_mod_opts = false );
 
 				$md_defs = array(
-					'options_filtered'  => '',
+					'options_filtered'  => 0,
 					'options_version'   => '',
 					'attach_img_crop_x' => 'none',
 					'attach_img_crop_y' => 'none',
@@ -352,10 +352,10 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				if ( WpssoOptions::can_cache() ) {
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'setting options_filtered to true' );
+						$this->p->debug->log( 'setting options_filtered to 1' );
 					}
 
-					$md_defs[ 'options_filtered' ] = true;	// Set before calling filter to prevent recursion.
+					$md_defs[ 'options_filtered' ] = 1;	// Set before calling filter to prevent recursion.
 
 				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'options_filtered value unchanged' );
@@ -1486,12 +1486,15 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$md_unset_keys = array( 'options_filtered', 'options_version' );
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
+
 				if ( isset( $info[ 'opt_version' ] ) ) {
+
 					$md_unset_keys[] = 'plugin_' . $ext . '_opt_version';
 				}
 			}
 
 			foreach ( $md_unset_keys as $md_key ) {
+
 				unset( $md_defs[ $md_key ], $md_prev[ $md_key ] );
 			}
 

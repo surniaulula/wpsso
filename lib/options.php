@@ -368,9 +368,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				) );
 			}
 
-			$defs =& $this->p->cf[ 'opt' ][ 'defaults' ];	// Shortcut variable.
+			$defs =& $this->p->cf[ 'opt' ][ 'defaults' ];
 
-			if ( $force_filter || ! self::$allow_cache || empty( $defs[ 'options_filtered' ] ) ) {
+			if ( $force_filter || empty( self::$allow_cache ) || empty( $defs[ 'options_filtered' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->mark( 'get_defaults filters' );	// Begin timer.
@@ -456,19 +456,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->log( 'applying get_defaults filters' );
 				}
 
-				if ( self::$allow_cache ) {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'setting options_filtered to true' );
-					}
-
-					$defs[ 'options_filtered' ] = true;	// Set before calling filter to prevent recursion.
-
-				} elseif ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'options_filtered value unchanged' );
-				}
+				$defs[ 'options_filtered' ] = 1;	// Set before calling filter to prevent recursion.
 
 				$defs = apply_filters( $this->p->lca . '_get_defaults', $defs );
+
+				if ( empty( self::$allow_cache ) ) {
+					$defs[ 'options_filtered' ] = 0;
+				}
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->mark( 'get_defaults filters' );	// End timer.
@@ -478,14 +472,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( false !== $opt_key ) {
 
 				if ( isset( $defs[ $opt_key ] ) ) {
+
 					return $defs[ $opt_key ];
-				} else {
-					return null;
 				}
 
-			} else {
-				return $defs;
+				return null;
 			}
+
+			return $defs;
 		}
 
 		public function get_site_defaults( $opt_key = false, $force_filter = false ) {
@@ -497,17 +491,20 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				) );
 			}
 
-			$defs =& $this->p->cf[ 'opt' ][ 'site_defaults' ];	// Shortcut variable.
+			$defs =& $this->p->cf[ 'opt' ][ 'site_defaults' ];
 
-			if ( $force_filter || ! self::$allow_cache || empty( $defs[ 'options_filtered' ] ) ) {
+			if ( $force_filter || empty( self::$allow_cache ) || empty( $defs[ 'options_filtered' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->mark( 'get_site_defaults filters' );	// Begin timer.
 				}
 
 				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
+
 					if ( ! empty( $info[ 'update_auth' ] ) && $info[ 'update_auth' ]!== 'none' ) {	// Just in case.
-						$defs[ 'plugin_' . $ext . '_' . $info[ 'update_auth' ]] = '';
+
+						$defs[ 'plugin_' . $ext . '_' . $info[ 'update_auth' ] ] = '';
+
 						$defs[ 'plugin_' . $ext . '_' . $info[ 'update_auth' ] . ':use' ] = 'default';
 					}
 				}
@@ -516,16 +513,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->log( 'applying get_site_defaults filters' );
 				}
 
-				if ( self::$allow_cache ) {
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'setting options_filtered to true' );
-					}
-					$defs[ 'options_filtered' ] = true;
-				} elseif ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'options_filtered value unchanged' );
-				}
+				$defs[ 'options_filtered' ] = 1;	// Set before calling filter to prevent recursion.
 
 				$defs = apply_filters( $this->p->lca . '_get_site_defaults', $defs );
+
+				if ( empty( self::$allow_cache ) ) {
+					$defs[ 'options_filtered' ] = 0;
+				}
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->mark( 'get_site_defaults filters' );	// End timer.
@@ -533,14 +527,16 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			if ( false !== $opt_key ) {
+
 				if ( isset( $defs[ $opt_key ] ) ) {
+
 					return $defs[ $opt_key ];
-				} else {
-					return null;
 				}
-			} else {
-				return $defs;
+
+				return null;
 			}
+
+			return $defs;
 		}
 
 		public function check_options( $options_name, &$opts = array(), $network = false ) {
@@ -556,7 +552,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$latest_version  = $this->p->cf[ 'opt' ][ 'version' ];
 				$options_changed = $current_version === $latest_version ? false : true;
 				$version_changed = false;
-				$def_opts        = null;	// Optimize and only get array when needed.
+				$defs            = null;	// Optimize and only get array when needed.
 
 				/**
 				 * Hard-code fixed options.
@@ -603,16 +599,16 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$this->upg = new WpssoOptionsUpgrade( $this->p );
 					}
 
-					if ( null === $def_opts ) {	// Only get default options once.
+					if ( null === $defs ) {	// Only get default options once.
 
 						if ( $network ) {
-							$def_opts = $this->get_site_defaults();
+							$defs = $this->get_site_defaults();
 						} else {
-							$def_opts = $this->get_defaults();
+							$defs = $this->get_defaults();
 						}
 					}
 
-					$opts = $this->upg->options( $options_name, $opts, $def_opts, $network );
+					$opts = $this->upg->options( $options_name, $opts, $defs, $network );
 				}
 
 				/**
@@ -627,11 +623,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							// translators: %s is the option key name.
 							$notice_msg = __( 'Non-standard value found for the "%s" option - resetting the option to its default value.', 'wpsso' );
 
-							if ( null === $def_opts ) {	// Only get default options once.
-								$def_opts = $this->get_defaults();
+							if ( null === $defs ) {	// Only get default options once.
+								$defs = $this->get_defaults();
 							}
 
-							$advanced_opts = SucomUtil::preg_grep_keys( '/^plugin_/', $def_opts );
+							$advanced_opts = SucomUtil::preg_grep_keys( '/^plugin_/', $defs );
 							$advanced_opts = SucomUtil::preg_grep_keys( '/^plugin_.*_tid$/', $advanced_opts, $invert = true );
 
 							foreach ( array(
@@ -780,19 +776,19 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					if ( ! $is_new_options ) {
 
-						if ( null === $def_opts ) {	// Only get default options once.
+						if ( null === $defs ) {	// Only get default options once.
 
 							if ( $network ) {
-								$def_opts = $this->get_site_defaults();
+								$defs = $this->get_site_defaults();
 							} else {
-								$def_opts = $this->get_defaults();
+								$defs = $this->get_defaults();
 							}
 						}
 
 						/**
 						 * Sanitation also updates image width/height info.
 						 */
-						$opts = $this->sanitize( $opts, $def_opts, $network );
+						$opts = $this->sanitize( $opts, $defs, $network );
 					}
 
 					$this->save_options( $options_name, $opts, $network, $options_changed );
@@ -840,7 +836,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		/**
 		 * Sanitize and validate options, including both the plugin options and custom meta options arrays.
 		 */
-		public function sanitize( $opts = array(), $def_opts = array(), $network = false, $mod = false ) {
+		public function sanitize( $opts = array(), $defs = array(), $network = false, $mod = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -849,7 +845,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			/**
 			 * Make sure we have something to work with.
 			 */
-			if ( empty( $def_opts ) || ! is_array( $def_opts ) ) {
+			if ( empty( $defs ) || ! is_array( $defs ) ) {
+
 				return $opts;
 			}
 
@@ -857,8 +854,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 * Add any missing options from the defaults, unless sanitizing for a module.
 			 */
 			if ( false === $mod ) {
-				foreach ( $def_opts as $opt_key => $def_val ) {
+
+				foreach ( $defs as $opt_key => $def_val ) {
+
 					if ( ! empty( $opt_key ) && ! isset( $opts[ $opt_key ] ) ) {
+
 						$opts[ $opt_key ] = $def_val;
 					}
 				}
@@ -893,7 +893,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/**
 				 * Multi-options and localized options will default to an empty string.
 				 */
-				$def_val = isset( $def_opts[ $opt_key ] ) ? $def_opts[ $opt_key ] : '';
+				$def_val = isset( $defs[ $opt_key ] ) ? $defs[ $opt_key ] : '';
 
 				$opts[ $opt_key ] = $this->check_value( $opt_key, $base_key, $opt_val, $def_val, $network, $mod );
 			}
@@ -974,9 +974,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 						$this->p->notice->err( $error_msg );
 
-						$opts[ $opt_pre . '_img_width' ]  = $def_opts[ $opt_pre . '_img_width' ];
-						$opts[ $opt_pre . '_img_height' ] = $def_opts[ $opt_pre . '_img_height' ];
-						$opts[ $opt_pre . '_img_crop' ]   = $def_opts[ $opt_pre . '_img_crop' ];
+						$opts[ $opt_pre . '_img_width' ]  = $defs[ $opt_pre . '_img_width' ];
+						$opts[ $opt_pre . '_img_height' ] = $defs[ $opt_pre . '_img_height' ];
+						$opts[ $opt_pre . '_img_crop' ]   = $defs[ $opt_pre . '_img_crop' ];
 					}
 				}
 			}
@@ -990,8 +990,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				if ( empty( $opts[ $opt_pre . '_img_id' ] ) ) {
 
-					if ( isset( $def_opts[ $opt_pre . '_img_id_pre' ] ) ) {	// Just in case.
-						$opts[ $opt_pre . '_img_id_pre' ] = $def_opts[ $opt_pre . '_img_id_pre' ];
+					if ( isset( $defs[ $opt_pre . '_img_id_pre' ] ) ) {	// Just in case.
+						$opts[ $opt_pre . '_img_id_pre' ] = $defs[ $opt_pre . '_img_id_pre' ];
 					}
 
 				} elseif ( isset( $opts[ $opt_pre . '_img_url' ] ) ) {
@@ -1065,8 +1065,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				return false;
 			}
 
-			$is_new_options  = empty( $opts[ 'options_version' ] ) ? true : false;	// Example: -wpsso512pro-wpssoum3gpl
+			$is_new_options = empty( $opts[ 'options_version' ] ) ? true : false;	// Example: -wpsso512pro-wpssoum3gpl
+
 			$current_version = $is_new_options ? 0 : $opts[ 'options_version' ];	// Example: -wpsso512pro-wpssoum3gpl
+
 			$latest_version  = $this->p->cf[ 'opt' ][ 'version' ];
 
 			/**
