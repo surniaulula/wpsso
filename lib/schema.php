@@ -956,6 +956,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 			}
 
+			if ( is_array( $context ) ) {	// Backwards compatibility.
+
+				$schema_types = $context;
+
+				$context = null;
+			}
+
 			if ( ! is_array( $schema_types ) ) {
 
 				$schema_types = $this->get_schema_types_array( $flatten = false );
