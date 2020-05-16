@@ -13,9 +13,11 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 	die( 'Do. Or do not. There is no try.' );
 }
 
-if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) ) {
+if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 
-	class WpssoOptionsUpgrade extends WpssoOptions {
+	class WpssoOptionsUpgrade {
+
+		private $p;		// Wpsso class object.
 
 		private static $rename_options_keys = array(
 			'wpsso' => array(	// WPSSO Core plugin.
@@ -405,8 +407,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				),
 			),
 		);
-
-		protected $p;
 
 		public function __construct( &$plugin ) {
 

@@ -17,10 +17,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 	class WpssoOptions {
 
-		protected $p;		// Wpsso class object.
-		protected $upg;		// WpssoOptionsUpgrade class object.
+		private $p;		// Wpsso class object.
+		private $upg;		// WpssoOptionsUpgrade class object.
 
-		protected static $allow_cache = false;
+		private $defaults_cache      = array();	// Default options cache.
+		private $site_defaults_cache = array();	// Default site options cache.
+
+		private static $allow_cache = false;
 
 		public function __construct( &$plugin ) {
 
@@ -368,9 +371,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				) );
 			}
 
-			$defs =& $this->p->cf[ 'opt' ][ 'defaults' ];
 
-			if ( $force_filter || empty( self::$allow_cache ) || empty( $defs[ 'options_filtered' ] ) ) {
+			if ( empty( $this->defaults_cache ) || empty( self::$allow_cache ) ) {
+
+				$this->defaults_cache = $this->p->cf[ 'opt' ][ 'defaults' ];
+			}
+
+			if ( $force_filter || empty( $this->defaults_cache[ 'options_filtered' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->mark( 'get_defaults filters' );	// Begin timer.
@@ -383,7 +390,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->log( 'adding defaults derived from post type names' );
 				}
 
-				$this->p->util->add_post_type_names( $defs, array(
+				$this->p->util->add_post_type_names( $this->defaults_cache, array(
 					'plugin_add_to'   => 1,			// Add Document SSO Metabox.
 					'og_type_for'     => 'article',
 					'schema_type_for' => 'webpage',
@@ -396,7 +403,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->log( 'adding defaults derived from term names' );
 				}
 
-				$this->p->util->add_taxonomy_names( $defs, array(
+				$this->p->util->add_taxonomy_names( $this->defaults_cache, array(
 					'plugin_add_to_tax'   => 1,		// Add Document SSO Metabox.
 					'og_type_for_tax'     => 'website',
 					'schema_type_for_tax' => 'item.list',
@@ -409,30 +416,33 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->log( 'translating plugin contact field labels' );
 				}
 
-				SucomUtil::transl_key_values( '/^plugin_(cm_.*_label|.*_prefix)$/', $defs, 'wpsso' );
+				SucomUtil::transl_key_values( '/^plugin_(cm_.*_label|.*_prefix)$/', $this->defaults_cache, 'wpsso' );
 
 				/**
 				 * Define the default Facebook locale and current locale values.
 				 */
-				$defs[ 'fb_locale' ] = $this->p->og->get_fb_locale( array(), 'default' );
+				$this->defaults_cache[ 'fb_locale' ] = $this->p->og->get_fb_locale( array(), 'default' );
 
 				if ( ( $locale_key = SucomUtil::get_key_locale( 'fb_locale' ) ) !== 'fb_locale' ) {
-					$defs[ $locale_key ] = $this->p->og->get_fb_locale( array(), 'current' );
+
+					$this->defaults_cache[ $locale_key ] = $this->p->og->get_fb_locale( array(), 'current' );
 				}
 
 				/**
 				 * Maybe use a custom value from the SSO > Advanced settings page.
 				 */
-				$defs[ 'og_author_field' ]  = $this->p->options[ 'plugin_cm_fb_name' ];
+				$this->defaults_cache[ 'og_author_field' ]  = $this->p->options[ 'plugin_cm_fb_name' ];
 
 				/**
 				 * Read Yoast SEO social meta if the Yoast SEO plugin is active, or Yoast SEO settings are found.
 				 */
-				$defs[ 'plugin_wpseo_social_meta' ] = ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) || get_option( 'wpseo' ) ? 1 : 0;
+				$this->defaults_cache[ 'plugin_wpseo_social_meta' ] = ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) || get_option( 'wpseo' ) ? 1 : 0;
 
 				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
+
 					if ( ! empty( $info[ 'update_auth' ] ) && $info[ 'update_auth' ]!== 'none' ) {	// Just in case.
-						$defs[ 'plugin_' . $ext . '_' . $info[ 'update_auth' ] ] = '';
+
+						$this->defaults_cache[ 'plugin_' . $ext . '_' . $info[ 'update_auth' ] ] = '';
 					}
 				}
 
@@ -443,10 +453,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					foreach ( $this->p->site_options as $site_opt_key => $site_opt_val ) {
 
-						if ( isset( $defs[ $site_opt_key ] ) && isset( $this->p->site_options[ $site_opt_key . ':use' ] ) ) {
+						if ( isset( $this->defaults_cache[ $site_opt_key ] ) && isset( $this->p->site_options[ $site_opt_key . ':use' ] ) ) {
 
 							if ( $this->p->site_options[ $site_opt_key . ':use' ] === 'default' ) {
-								$defs[ $site_opt_key ] = $this->p->site_options[ $site_opt_key ];
+
+								$this->defaults_cache[ $site_opt_key ] = $this->p->site_options[ $site_opt_key ];
 							}
 						}
 					}
@@ -456,12 +467,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->log( 'applying get_defaults filters' );
 				}
 
-				$defs[ 'options_filtered' ] = 1;	// Set before calling filter to prevent recursion.
+				$this->defaults_cache[ 'options_filtered' ] = 1;	// Set before calling filter to prevent recursion.
 
-				$defs = apply_filters( $this->p->lca . '_get_defaults', $defs );
+				$this->defaults_cache = apply_filters( $this->p->lca . '_get_defaults', $this->defaults_cache );
 
 				if ( empty( self::$allow_cache ) ) {
-					$defs[ 'options_filtered' ] = 0;
+
+					$this->defaults_cache[ 'options_filtered' ] = 0;
 				}
 
 				if ( $this->p->debug->enabled ) {
@@ -471,15 +483,15 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			if ( false !== $opt_key ) {
 
-				if ( isset( $defs[ $opt_key ] ) ) {
+				if ( isset( $this->defaults_cache[ $opt_key ] ) ) {
 
-					return $defs[ $opt_key ];
+					return $this->defaults_cache[ $opt_key ];
 				}
 
 				return null;
 			}
 
-			return $defs;
+			return $this->defaults_cache;
 		}
 
 		public function get_site_defaults( $opt_key = false, $force_filter = false ) {
@@ -491,9 +503,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				) );
 			}
 
-			$defs =& $this->p->cf[ 'opt' ][ 'site_defaults' ];
+			if ( empty( $this->site_defaults_cache ) || empty( self::$allow_cache ) ) {
 
-			if ( $force_filter || empty( self::$allow_cache ) || empty( $defs[ 'options_filtered' ] ) ) {
+				$this->site_defaults_cache = $this->p->cf[ 'opt' ][ 'site_defaults' ];
+			}
+
+			if ( $force_filter || empty( $this->site_defaults_cache[ 'options_filtered' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->mark( 'get_site_defaults filters' );	// Begin timer.
@@ -503,9 +518,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					if ( ! empty( $info[ 'update_auth' ] ) && $info[ 'update_auth' ]!== 'none' ) {	// Just in case.
 
-						$defs[ 'plugin_' . $ext . '_' . $info[ 'update_auth' ] ] = '';
+						$this->site_defaults_cache[ 'plugin_' . $ext . '_' . $info[ 'update_auth' ] ] = '';
 
-						$defs[ 'plugin_' . $ext . '_' . $info[ 'update_auth' ] . ':use' ] = 'default';
+						$this->site_defaults_cache[ 'plugin_' . $ext . '_' . $info[ 'update_auth' ] . ':use' ] = 'default';
 					}
 				}
 
@@ -513,12 +528,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->log( 'applying get_site_defaults filters' );
 				}
 
-				$defs[ 'options_filtered' ] = 1;	// Set before calling filter to prevent recursion.
+				$this->site_defaults_cache[ 'options_filtered' ] = 1;	// Set before calling filter to prevent recursion.
 
-				$defs = apply_filters( $this->p->lca . '_get_site_defaults', $defs );
+				$this->site_defaults_cache = apply_filters( $this->p->lca . '_get_site_defaults', $this->site_defaults_cache );
 
 				if ( empty( self::$allow_cache ) ) {
-					$defs[ 'options_filtered' ] = 0;
+
+					$this->site_defaults_cache[ 'options_filtered' ] = 0;
 				}
 
 				if ( $this->p->debug->enabled ) {
@@ -528,15 +544,15 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			if ( false !== $opt_key ) {
 
-				if ( isset( $defs[ $opt_key ] ) ) {
+				if ( isset( $this->site_defaults_cache[ $opt_key ] ) ) {
 
-					return $defs[ $opt_key ];
+					return $this->site_defaults_cache[ $opt_key ];
 				}
 
 				return null;
 			}
 
-			return $defs;
+			return $this->site_defaults_cache;
 		}
 
 		public function check_options( $options_name, &$opts = array(), $network = false ) {

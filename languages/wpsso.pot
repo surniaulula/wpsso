@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 7.6.0-dev.4\n"
+"Project-Id-Version: WPSSO Core 7.6.0-dev.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -263,7 +263,7 @@ msgstr ""
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
-#: lib/admin.php:1050 lib/options.php:1121
+#: lib/admin.php:1050 lib/options.php:1137
 msgid "A background task will begin shortly to clear all caches."
 msgstr ""
 
@@ -538,48 +538,48 @@ msgid ""
 "the same folder."
 msgstr ""
 
-#: lib/admin.php:2667 lib/admin.php:2835
+#: lib/admin.php:2667 lib/admin.php:2836
 msgctxt "option label"
 msgid "Type for Page Homepage"
 msgstr ""
 
-#: lib/admin.php:2668 lib/admin.php:2836
+#: lib/admin.php:2668 lib/admin.php:2837
 msgctxt "option label"
 msgid "Type for Posts Homepage"
 msgstr ""
 
-#: lib/admin.php:2669 lib/admin.php:2837
+#: lib/admin.php:2669 lib/admin.php:2838
 msgctxt "option label"
 msgid "Type for User Profile"
 msgstr ""
 
-#: lib/admin.php:2670 lib/admin.php:2838
+#: lib/admin.php:2670 lib/admin.php:2839
 msgctxt "option label"
 msgid "Type for Search Results"
 msgstr ""
 
-#: lib/admin.php:2671 lib/admin.php:2839
+#: lib/admin.php:2671 lib/admin.php:2840
 msgctxt "option label"
 msgid "Type for Other Archive"
 msgstr ""
 
-#: lib/admin.php:2695 lib/admin.php:2701 lib/admin.php:2726 lib/admin.php:2879
-#: lib/admin.php:2893 lib/admin.php:2926
+#: lib/admin.php:2695 lib/admin.php:2701 lib/admin.php:2726 lib/admin.php:2880
+#: lib/admin.php:2894 lib/admin.php:2927
 msgctxt "option comment"
 msgid "for %s"
 msgstr ""
 
-#: lib/admin.php:2701 lib/admin.php:2893
+#: lib/admin.php:2701 lib/admin.php:2894
 msgctxt "option comment"
 msgid "Post Type Archive Page"
 msgstr ""
 
-#: lib/admin.php:2704 lib/admin.php:2897
+#: lib/admin.php:2704 lib/admin.php:2898
 msgctxt "option label"
 msgid "Type by Post Type"
 msgstr ""
 
-#: lib/admin.php:2730 lib/admin.php:2930
+#: lib/admin.php:2730 lib/admin.php:2931
 msgctxt "option label"
 msgid "Type by Taxonomy"
 msgstr ""
@@ -607,7 +607,7 @@ msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:2774 lib/options.php:1184 lib/submenu/essential.php:176
+#: lib/admin.php:2774 lib/options.php:1200 lib/submenu/essential.php:176
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
@@ -662,92 +662,92 @@ msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
-#: lib/admin.php:2942
+#: lib/admin.php:2943
 msgctxt "option label"
 msgid "Remove Settings on Uninstall"
 msgstr ""
 
-#: lib/admin.php:2944
+#: lib/admin.php:2945
 msgctxt "option comment"
 msgid "including custom meta for posts, terms and users"
 msgstr ""
 
-#: lib/admin.php:2948
+#: lib/admin.php:2949
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
 
-#: lib/admin.php:2950
+#: lib/admin.php:2951
 msgctxt "option comment"
 msgid "WPSSO_HTML_DEBUG constant is true"
 msgstr ""
 
-#: lib/admin.php:2955
+#: lib/admin.php:2956
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr ""
 
-#: lib/admin.php:2960
+#: lib/admin.php:2961
 msgctxt "option label"
 msgid "Notification System"
 msgstr ""
 
-#: lib/admin.php:3088
+#: lib/admin.php:3089
 msgctxt "option comment"
 msgid "in %s"
 msgstr ""
 
-#: lib/admin.php:3103
+#: lib/admin.php:3104
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:3284
+#: lib/admin.php:3285
 msgid "Return to %s"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:3315
+#: lib/admin.php:3316
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:3340
+#: lib/admin.php:3341
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:3349
+#: lib/admin.php:3350
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes and translations)</a> to check if newer versions are "
 "available."
 msgstr ""
 
-#: lib/admin.php:3477
+#: lib/admin.php:3478
 msgid "Please select a %1$s settings file to import."
 msgstr ""
 
-#: lib/admin.php:3484
+#: lib/admin.php:3485
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr ""
 
-#: lib/admin.php:3491
+#: lib/admin.php:3492
 msgid ""
 "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr ""
 
-#: lib/admin.php:3505
+#: lib/admin.php:3506
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr ""
 
-#: lib/admin.php:3515
+#: lib/admin.php:3516
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr ""
 
-#: lib/admin.php:3525
+#: lib/admin.php:3526
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 
@@ -5970,7 +5970,7 @@ msgid ""
 "Activate the %s add-on<br/>for Schema markup and structured data options."
 msgstr ""
 
-#: lib/messages.php:2933 lib/util.php:3317
+#: lib/messages.php:2933 lib/util.php:3320
 msgid "No options available."
 msgstr ""
 
@@ -5980,150 +5980,150 @@ msgid "Open Graph Image"
 msgstr ""
 
 #. translators: %s is the option key name.
-#: lib/options.php:624
+#: lib/options.php:640
 msgid ""
 "Non-standard value found for the \"%s\" option - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:800
+#: lib/options.php:816
 msgid "WordPress could not find an entry for %s in the options table."
 msgstr ""
 
-#: lib/options.php:802
+#: lib/options.php:818
 msgid ""
 "WordPress returned a non-array value when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:804
+#: lib/options.php:820
 msgid ""
 "WordPress returned an empty array when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:806
+#: lib/options.php:822
 msgid ""
 "WordPress returned an unknown condition when reading %s from the options "
 "table."
 msgstr ""
 
-#: lib/options.php:821
+#: lib/options.php:837
 msgid ""
 "The plugin settings have been returned to their default values &mdash; <a "
 "href=\"%s\">please review and save the new settings</a>."
 msgstr ""
 
-#: lib/options.php:957
+#: lib/options.php:973
 msgid ""
 "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of "
 "%5$s:1, which not equal to the required image ratio of %6$s:1."
 msgstr ""
 
-#: lib/options.php:965
+#: lib/options.php:981
 msgid ""
 "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of "
 "%5$s:1, which is equal to / or greater than the maximum image ratio of "
 "%6$s:1."
 msgstr ""
 
-#: lib/options.php:973
+#: lib/options.php:989
 msgid "These options have been reset to their default values."
 msgstr ""
 
-#: lib/options.php:1026
+#: lib/options.php:1042
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length "
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:1120
+#: lib/options.php:1136
 msgid "Plugin settings have been upgraded and saved."
 msgstr ""
 
-#: lib/options.php:1217
+#: lib/options.php:1233
 msgid "The %1$s image dimensions cannot be determined."
 msgstr ""
 
-#: lib/options.php:1220
+#: lib/options.php:1236
 msgid ""
 "Please make sure this site can access the image URL at %1$s using the PHP "
 "getimagesize() function."
 msgstr ""
 
-#: lib/options.php:1225
+#: lib/options.php:1241
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr ""
 
-#: lib/options.php:1228
+#: lib/options.php:1244
 msgid "Please correct the banner image at %s."
 msgstr ""
 
-#: lib/options.php:1260
+#: lib/options.php:1276
 msgid ""
 "The value of option \"%s\" must be alpha-numeric - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1261
+#: lib/options.php:1277
 msgid ""
 "The value of option \"%s\" must be blank or numeric - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1262
+#: lib/options.php:1278
 msgid ""
 "The value of option \"%s\" must be a CSS color code - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1263
+#: lib/options.php:1279
 msgid ""
 "The value of option \"%s\" must be a comma-delimited list of URL(s) - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1264
+#: lib/options.php:1280
 msgid ""
 "The value of option \"%s\" must be a yyyy-mm-dd date - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1265
+#: lib/options.php:1281
 msgid ""
 "The value of option \"%s\" must be HTML code - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1266
+#: lib/options.php:1282
 msgid ""
 "The value of option \"%s\" must be an image ID - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1267
+#: lib/options.php:1283
 msgid ""
 "The value of option \"%s\" cannot be an empty string - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1268
+#: lib/options.php:1284
 msgid ""
 "The value of option \"%s\" must be numeric - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1269
+#: lib/options.php:1285
 msgid ""
 "The value of option \"%1$s\" must be equal to or greather than %2$s - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1270
+#: lib/options.php:1286
 msgid ""
 "The value of option \"%s\" must be a hh:mm time - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1271
+#: lib/options.php:1287
 msgid ""
 "The value of option \"%s\" must be a URL - resetting this option to its "
 "default value."
@@ -6190,12 +6190,12 @@ msgid "Pinterest Pin It Image"
 msgstr ""
 
 #: lib/post.php:495 lib/register.php:330 lib/term.php:421 lib/user.php:394
-#: lib/util.php:558 lib/util.php:2998
+#: lib/util.php:558 lib/util.php:3001
 msgid "%s warning:"
 msgstr ""
 
 #: lib/post.php:496 lib/term.php:422 lib/user.php:395 lib/util.php:560
-#: lib/util.php:3000
+#: lib/util.php:3003
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -6205,7 +6205,7 @@ msgid ""
 "post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:781 lib/post.php:1351 lib/schema.php:2954 lib/term.php:624
+#: lib/post.php:781 lib/post.php:1351 lib/schema.php:2960 lib/term.php:624
 #: lib/user.php:594
 msgid "checking meta tags"
 msgstr ""
@@ -6249,7 +6249,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:1050 lib/util.php:1444
+#: lib/post.php:1050 lib/util.php:1447
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -7269,43 +7269,43 @@ msgid ""
 "(%3$s)."
 msgstr ""
 
-#: lib/util.php:1235
+#: lib/util.php:1238
 msgid "Error reading the %s file for the article sections list."
 msgstr ""
 
-#: lib/util.php:1333
+#: lib/util.php:1336
 msgid "Error reading the %s file for the product categories list."
 msgstr ""
 
-#: lib/util.php:1431
+#: lib/util.php:1434
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1470
+#: lib/util.php:1473
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1658
+#: lib/util.php:1661
 msgid ""
 "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
 "provider to have the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1671
+#: lib/util.php:1674
 msgid ""
 "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:3002
+#: lib/util.php:3005
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3017
+#: lib/util.php:3020
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -7314,35 +7314,35 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3019
+#: lib/util.php:3022
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3348
+#: lib/util.php:3351
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3351
+#: lib/util.php:3354
 msgctxt "option comment"
 msgid "show these options now"
 msgstr ""
 
-#: lib/util.php:3356
+#: lib/util.php:3359
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3359
+#: lib/util.php:3362
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3683
+#: lib/util.php:3686
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 
@@ -7602,26 +7602,26 @@ msgstr ""
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: wpsso.php:503
+#: wpsso.php:508
 msgid ""
 "WP debug logging mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:516
+#: wpsso.php:521
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."
 msgstr ""
 
 #. translators: %s is the short plugin name.
-#: wpsso.php:524
+#: wpsso.php:529
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:525
+#: wpsso.php:530
 msgid "Please disable debug mode when debugging is complete."
 msgstr ""
 

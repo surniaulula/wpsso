@@ -15,7 +15,7 @@
  * Requires At Least: 4.2
  * Tested Up To: 5.4.1
  * WC Tested Up To: 4.1.0
- * Version: 7.6.0-dev.4
+ * Version: 7.6.0-dev.5
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -172,6 +172,11 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			if ( ! is_array( $this->options ) ) {
 
+				/**
+				 * The set_options() action is run before the set_objects() action, where the WpssoOptions class is
+				 * instantiated, so the WpssoOptions->get_defaults() method is not available yet. Load the defaults
+				 * directly from the config array.
+				 */
 				if ( isset( $this->cf[ 'opt' ][ 'defaults' ] ) ) {	// just in case.
 					$this->options = $this->cf[ 'opt' ][ 'defaults' ];
 				} else {

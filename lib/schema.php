@@ -947,17 +947,23 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $get_value;
 		}
 
-		public function get_schema_types_select( $schema_types = null ) {
+		/**
+		 * $context = 'settings', 'business', 'organization', 'place', or 'meta'.
+		 */
+		public function get_schema_types_select( $context = null, $schema_types = null ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
 			if ( ! is_array( $schema_types ) ) {
+
 				$schema_types = $this->get_schema_types_array( $flatten = false );
 			}
 
 			$schema_types = SucomUtil::array_flatten( $schema_types );
+
+			$schema_types = (array) apply_filters( $this->p->lca . '_schema_types_select', $schema_types, $context );
 
 			$select = array();
 

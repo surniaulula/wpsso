@@ -2829,7 +2829,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$schema_exp_secs = $this->p->util->get_cache_exp_secs( $this->p->lca . '_t_' );	// Default is month in seconds.
-			$schema_types    = $this->p->schema->get_schema_types_select();
+
+			$schema_types = $this->p->schema->get_schema_types_select( $context = 'settings' );
 
 			foreach ( array( 
 				'home_page'    => _x( 'Type for Page Homepage', 'option label', 'wpsso' ),

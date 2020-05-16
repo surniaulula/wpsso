@@ -663,7 +663,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$schema_exp_secs = $this->p->util->get_cache_exp_secs( $this->p->lca . '_t_' );	// Default is month in seconds.
 
 			$og_types         = $this->p->og->get_og_types_select();
-			$schema_types     = $this->p->schema->get_schema_types_select();
+			$schema_types     = $this->p->schema->get_schema_types_select( $context = 'meta' );
 			$article_sections = $this->p->util->get_article_sections();
 
 			/**

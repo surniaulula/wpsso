@@ -251,6 +251,8 @@
 
 'wpsso_schema_types' ( (array) $schema_types )
 
+'wpsso_schema_types_select' ( (array) $schema_types, $context )	// $context = 'settings', 'business', 'organization', 'place', or 'meta'.
+
 'wpsso_search_url' ( $url, $mod, $add_page )
 
 'wpsso_server_request_url_cache_disabled' ( $bool, $url, $mod, $add_page )
