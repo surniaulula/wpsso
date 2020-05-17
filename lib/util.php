@@ -636,7 +636,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 */
 			if ( $this->p->debug->enabled ) {
 
-				$doing_ajax = defined( 'DOING_AJAX' ) && DOING_AJAX ? true : false;
+				$doing_ajax = SucomUtil::get_const( 'DOING_AJAX' );
 
 				$wp_obj_type = gettype( $wp_obj ) === 'object' ? get_class( $wp_obj ) . ' object' : gettype( $wp_obj );
 

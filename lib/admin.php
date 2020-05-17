@@ -45,7 +45,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$doing_ajax = defined( 'DOING_AJAX' ) && DOING_AJAX ? true : false;
+			$doing_ajax = SucomUtil::get_const( 'DOING_AJAX' );
 
 			/**
 			 * The WpssoScript add_iframe_inline_script() method includes jQuery in the thickbox iframe to add the

@@ -156,7 +156,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 						'wpsso' ) . '</strong>';
 				}
 
-				$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
+				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-done' );
 			}
 
 			if ( $refresh ) {
@@ -621,7 +621,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				$notice_msg .= sprintf( __( 'The total execution time for this task was %0.3f seconds.', 'wpsso' ), $mtime_total );
 
-				$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
+				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-done' );
 			}
 
 			delete_transient( $cache_id );

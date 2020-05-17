@@ -391,9 +391,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						' to get posts authored by user ID %2$d', $mtime_total, $mod[ 'id' ] ) );
 				}
 
-				$error_pre   = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
+				$error_pre = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
+
 				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$0.3f secs', 'wpsso' ), $mtime_max );
-				$error_msg   = sprintf( __( 'Slow query detected - get_posts() took %1$0.3f secs to get posts authored by user ID %2$d (%3$s).',
+
+				$error_msg = sprintf( __( 'Slow query detected - get_posts() took %1$0.3f secs to get posts authored by user ID %2$d (%3$s).',
 					'wpsso' ), $mtime_total, $mod[ 'id' ], $rec_max_msg );
 
 				/**
@@ -1601,7 +1603,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				$notice_msg .= sprintf( __( 'The total execution time for this task was %0.3f seconds.', 'wpsso' ), $mtime_total );
 
-				$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
+				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-done' );
 			}
 
 			delete_transient( $cache_id );
@@ -1703,7 +1705,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				$notice_msg .= sprintf( __( 'The total execution time for this task was %0.3f seconds.', 'wpsso' ), $mtime_total );
 
-				$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
+				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-done' );
 			}
 
 			delete_transient( $cache_id );

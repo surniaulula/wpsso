@@ -555,270 +555,30 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			return $this->site_defaults_cache;
 		}
 
-		public function check_options( $options_name, &$opts = array(), $network = false ) {
+		/**
+		 * Returns a checked, fixed, and/or upgraded options array.
+		 */
+		public function check_options( $options_name, $opts = array(), $network = false ) {
 
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'checking options' );	// Begin timer.
-			}
-
-			if ( is_array( $opts ) && ! empty( $opts ) ) {	// Just in case.
-
-				$is_new_options  = empty( $opts[ 'options_version' ] ) ? true : false;	// Example: -wpsso512pro-wpssoum3gpl
-				$current_version = $is_new_options ? 0 : $opts[ 'options_version' ];	// Example: -wpsso512pro-wpssoum3gpl
-				$latest_version  = $this->p->cf[ 'opt' ][ 'version' ];
-				$options_changed = $current_version === $latest_version ? false : true;
-				$version_changed = false;
-				$defs            = null;	// Optimize and only get array when needed.
-
-				/**
-				 * Hard-code fixed options.
-				 */
-				foreach ( array( 'og:image', 'og:video' ) as $mt_name ) {
-
-					$opts[ 'add_meta_property_' . $mt_name . ':secure_url' ]    = 0;		// Always unchecked.
-					$opts[ 'add_meta_property_' . $mt_name . ':secure_url:is' ] = 'disabled';	// Prevent changes in settings page.
-					$opts[ 'add_meta_property_' . $mt_name . ':url' ]           = 0;		// Always unchecked.
-					$opts[ 'add_meta_property_' . $mt_name . ':url:is' ]        = 'disabled';	// Prevent changes in settings page.
-					$opts[ 'add_meta_property_' . $mt_name ]                    = 1;		// Always checked (canonical URL).
-					$opts[ 'add_meta_property_' . $mt_name . ':is' ]            = 'disabled';	// Prevent changes in settings page.
-				}
-
-				if ( ! $is_new_options ) {
-
-					foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
-
-						if ( isset( $info[ 'version' ] ) ) {
-
-							if ( ! isset( $opts[ 'plugin_' . $ext . '_version' ] ) ||
-								$opts[ 'plugin_' . $ext . '_version' ] !== $info[ 'version' ] ) {
-
-								$version_changed = true;
-							}
-						}
-					}
-				}
-
-				/**
-				 * Upgrade the options array if necessary (renamed or remove keys).
-				 */
-				if ( ! $is_new_options && $options_changed ) {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $options_name . ' current v' . $current_version .
-							' different than latest v' . $latest_version );
-					}
-
-					if ( ! is_object( $this->upg ) ) {
-
-						require_once WPSSO_PLUGINDIR . 'lib/upgrade.php';
-
-						$this->upg = new WpssoOptionsUpgrade( $this->p );
-					}
-
-					if ( null === $defs ) {	// Only get default options once.
-
-						if ( $network ) {
-							$defs = $this->get_site_defaults();
-						} else {
-							$defs = $this->get_defaults();
-						}
-					}
-
-					$opts = $this->upg->options( $options_name, $opts, $defs, $network );
-				}
-
-				/**
-				 * Adjust / cleanup options.
-				 */
-				if ( ! $network ) {
-
-					if ( ! $is_new_options && $version_changed ) {
-					
-						if ( empty( $opts[ 'plugin_wpsso_tid' ] ) && ! $this->p->check->pp( 'wpsso', $li = false ) ) {
-
-							// translators: %s is the option key name.
-							$notice_msg = __( 'Non-standard value found for the "%s" option - resetting the option to its default value.', 'wpsso' );
-
-							if ( null === $defs ) {	// Only get default options once.
-								$defs = $this->get_defaults();
-							}
-
-							$advanced_opts = SucomUtil::preg_grep_keys( '/^plugin_/', $defs );
-							$advanced_opts = SucomUtil::preg_grep_keys( '/^plugin_.*_tid$/', $advanced_opts, $invert = true );
-
-							foreach ( array(
-								'plugin_clean_on_uninstall',
-								'plugin_debug',
-								'plugin_show_opts',
-								'plugin_notice_system',
-							) as $opt_key ) {
-								unset( $advanced_opts[ $opt_key ] );
-							}
-
-							foreach ( $advanced_opts as $opt_key => $def_val ) {
-
-								if ( isset( $opts[ $opt_key ] ) ) {
-
-									if ( $opts[ $opt_key ] === $def_val ) {
-										continue;
-									}
-
-									if ( is_admin() ) {
-										$this->p->notice->warn( sprintf( $notice_msg, $opt_key ) );
-									}
-								}
-
-								$opts[ $opt_key ] = $def_val;
-
-								$options_changed = true;	// Save the options.
-							}
-						}
-					}
-				}
-
-				/**
-				 * If an SEO plugin is detected, adjust some related SEO options.
-				 */
-				if ( ! $network ) {
-
-					if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
-
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'seo plugin found - checking meta tag options' );
-						}
-
-						foreach ( array(
-							'add_link_rel_canonical'    => 0,
-							'add_meta_name_description' => 0,
-							'add_meta_name_robots'      => 0,
-						) as $opt_key => $def_val ) {
-
-							$def_val = (int) apply_filters( $this->p->lca . '_' . $opt_key, $def_val );
-
-							$opts[ $opt_key . ':is' ] = 'disabled';	// Prevent changes in settings page.
-
-							if ( $opts[ $opt_key ] !== $def_val ) {
-
-								if ( $this->p->debug->enabled ) {
-									$this->p->debug->log( 'setting ' . $opt_key . ' to ' . $def_val );
-								}
-
-								$opts[ $opt_key ] = $def_val;
-
-								$options_changed = true;	// Save the options.
-							}
-						}
-					}
-				}
-
-				/**
-				 * Add options using a key prefix array and post type names.
-				 */
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'adding options derived from post type names' );
-				}
-
-				$this->p->util->add_post_type_names( $opts, array(
-					'plugin_add_to'   => 1,			// Add Document SSO Metabox.
-					'og_type_for'     => 'article',
-					'schema_type_for' => 'webpage',
-				) );
-
-				/**
-				 * Add options using a key prefix array and term names.
-				 */
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'adding options derived from term names' );
-				}
-
-				$this->p->util->add_taxonomy_names( $opts, array(
-					'plugin_add_to_tax'   => 1,		// Add Document SSO Metabox.
-					'og_type_for_tax'     => 'website',
-					'schema_type_for_tax' => 'item.list',
-				) );
-
-				/**
-				 * Enable or disable the toolbar notification system dynamically.
-				 */
-				if ( SucomUtil::get_const( 'WPSSO_TOOLBAR_NOTICES' ) ) {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'WPSSO_TOOLBAR_NOTICES constant is defined' );
-					}
-
-					$opts[ 'plugin_notice_system' ]    = 'toolbar_notices';
-					$opts[ 'plugin_notice_system:is' ] = 'disabled';	// Prevent changes in settings page.
-				}
-
-				/**
-				 * Note that generator meta tags are required for plugin support.
-				 *
-				 * If you disable the generator meta tags, requests for plugin support will be denied.
-				 */
-				if ( ! $network ) {
-
-					if ( SucomUtil::get_const( 'WPSSO_META_GENERATOR_DISABLE' ) ) {
-
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'WPSSO_META_GENERATOR_DISABLE constant is defined' );
-						}
-
-						$opts[ 'add_meta_name_generator' ]    = SucomUtil::get_const( 'WPSSO_META_GENERATOR_DISABLE' ) ? 0 : 1;
-						$opts[ 'add_meta_name_generator:is' ] = 'disabled';	// Prevent changes in settings page.
-					}
-				}
-
-				/**
-				 * Google does not recognize all Schema Organization sub-types as valid organization and publisher
-				 * types. The WebSite organization type ID should be "organization" unless you are confident that
-				 * Google will recognize your preferred Schema Organization sub-type as a valid organization. To
-				 * select a different organization type ID for your WebSite, define the
-				 * WPSSO_SCHEMA_ORGANIZATION_TYPE_ID constant with your preferred type ID (not the Schema type
-				 * URL).
-				 */
-				$site_org_type_id = SucomUtil::get_const( 'WPSSO_SCHEMA_ORGANIZATION_TYPE_ID', 'organization' );
-
-				if ( ! preg_match( '/^[a-z\.]+$/', $site_org_type_id ) ) {	// Quick sanitation to allow only valid IDs.
-					$site_org_type_id = 'organization';
-				}
-
-				$opts[ 'site_org_schema_type' ]    = $site_org_type_id;
-				$opts[ 'site_org_schema_type:is' ] = 'disabled';
-
-				/**
-				 * Save options and show reminders.
-				 */
-				if ( $options_changed || $version_changed ) {
-
-					if ( ! $is_new_options ) {
-
-						if ( null === $defs ) {	// Only get default options once.
-
-							if ( $network ) {
-								$defs = $this->get_site_defaults();
-							} else {
-								$defs = $this->get_defaults();
-							}
-						}
-
-						/**
-						 * Sanitation also updates image width/height info.
-						 */
-						$opts = $this->sanitize( $opts, $defs, $network );
-					}
-
-					$this->save_options( $options_name, $opts, $network, $options_changed );
-				}
-
-			} else {	// $opts is empty or not an array.
+			/**
+			 * Options should always be an array and not empty.
+			 */
+			if ( empty( $opts ) || ! is_array( $opts ) ) {
 
 				if ( false === $opts ) {
+
 					$error_msg = sprintf( __( 'WordPress could not find an entry for %s in the options table.', 'wpsso' ), $options_name );
+
 				} elseif ( ! is_array( $opts ) ) {
+
 					$error_msg = sprintf( __( 'WordPress returned a non-array value when reading %s from the options table.', 'wpsso' ), $options_name );
+
 				} elseif ( empty( $opts ) ) {
+
 					$error_msg = sprintf( __( 'WordPress returned an empty array when reading %s from the options table.', 'wpsso' ), $options_name );
+
 				} else {
+
 					$error_msg = sprintf( __( 'WordPress returned an unknown condition when reading %s from the options table.', 'wpsso' ), $options_name );
 				}
 
@@ -839,7 +599,248 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->notice->err( $error_msg );
 				}
 
-				$opts = $network ? $this->get_site_defaults() : $this->get_defaults();
+				return $network ? $this->get_site_defaults() : $this->get_defaults();
+			}
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark( 'checking options' );	// Begin timer.
+			}
+
+			$is_new_options  = empty( $opts[ 'options_version' ] ) ? true : false;	// Example: -wpsso512pro-wpssoum3gpl
+			$current_version = $is_new_options ? 0 : $opts[ 'options_version' ];	// Example: -wpsso512pro-wpssoum3gpl
+			$latest_version  = $this->p->cf[ 'opt' ][ 'version' ];
+			$options_changed = $current_version === $latest_version ? false : true;
+			$version_changed = false;
+			$defs            = null;	// Optimize and only get array when needed.
+
+			/**
+			 * Hard-code fixed options.
+			 */
+			foreach ( array( 'og:image', 'og:video' ) as $mt_name ) {
+
+				$opts[ 'add_meta_property_' . $mt_name . ':secure_url' ]    = 0;		// Always unchecked.
+				$opts[ 'add_meta_property_' . $mt_name . ':secure_url:is' ] = 'disabled';	// Prevent changes in settings page.
+				$opts[ 'add_meta_property_' . $mt_name . ':url' ]           = 0;		// Always unchecked.
+				$opts[ 'add_meta_property_' . $mt_name . ':url:is' ]        = 'disabled';	// Prevent changes in settings page.
+				$opts[ 'add_meta_property_' . $mt_name ]                    = 1;		// Always checked (canonical URL).
+				$opts[ 'add_meta_property_' . $mt_name . ':is' ]            = 'disabled';	// Prevent changes in settings page.
+			}
+
+			if ( ! $is_new_options ) {
+
+				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
+
+					if ( isset( $info[ 'version' ] ) ) {
+
+						if ( ! isset( $opts[ 'plugin_' . $ext . '_version' ] ) ||
+							$opts[ 'plugin_' . $ext . '_version' ] !== $info[ 'version' ] ) {
+
+							$version_changed = true;
+						}
+					}
+				}
+			}
+
+			/**
+			 * Upgrade the options array if necessary (renamed or remove keys).
+			 */
+			if ( ! $is_new_options && $options_changed ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( $options_name . ' current v' . $current_version .
+						' different than latest v' . $latest_version );
+				}
+
+				if ( ! is_object( $this->upg ) ) {
+
+					require_once WPSSO_PLUGINDIR . 'lib/upgrade.php';
+
+					$this->upg = new WpssoOptionsUpgrade( $this->p );
+				}
+
+				if ( null === $defs ) {	// Only get default options once.
+
+					if ( $network ) {
+						$defs = $this->get_site_defaults();
+					} else {
+						$defs = $this->get_defaults();
+					}
+				}
+
+				$opts = $this->upg->options( $options_name, $opts, $defs, $network );
+			}
+
+			/**
+			 * Adjust / cleanup options.
+			 */
+			if ( ! $network ) {
+
+				if ( ! $is_new_options && $version_changed ) {
+				
+					if ( empty( $opts[ 'plugin_wpsso_tid' ] ) && ! $this->p->check->pp( 'wpsso', $li = false ) ) {
+
+						// translators: %s is the option key name.
+						$notice_msg = __( 'Non-standard value found for the "%s" option - resetting the option to its default value.', 'wpsso' );
+
+						if ( null === $defs ) {	// Only get default options once.
+							$defs = $this->get_defaults();
+						}
+
+						$advanced_opts = SucomUtil::preg_grep_keys( '/^plugin_/', $defs );
+						$advanced_opts = SucomUtil::preg_grep_keys( '/^plugin_.*_tid$/', $advanced_opts, $invert = true );
+
+						foreach ( array(
+							'plugin_clean_on_uninstall',
+							'plugin_debug',
+							'plugin_show_opts',
+							'plugin_notice_system',
+						) as $opt_key ) {
+							unset( $advanced_opts[ $opt_key ] );
+						}
+
+						foreach ( $advanced_opts as $opt_key => $def_val ) {
+
+							if ( isset( $opts[ $opt_key ] ) ) {
+
+								if ( $opts[ $opt_key ] === $def_val ) {
+									continue;
+								}
+
+								if ( is_admin() ) {
+									$this->p->notice->warn( sprintf( $notice_msg, $opt_key ) );
+								}
+							}
+
+							$opts[ $opt_key ] = $def_val;
+
+							$options_changed = true;	// Save the options.
+						}
+					}
+				}
+			}
+
+			/**
+			 * If an SEO plugin is detected, adjust some related SEO options.
+			 */
+			if ( ! $network ) {
+
+				if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'seo plugin found - checking meta tag options' );
+					}
+
+					foreach ( array(
+						'add_link_rel_canonical'    => 0,
+						'add_meta_name_description' => 0,
+						'add_meta_name_robots'      => 0,
+					) as $opt_key => $def_val ) {
+
+						$def_val = (int) apply_filters( $this->p->lca . '_' . $opt_key, $def_val );
+
+						$opts[ $opt_key . ':is' ] = 'disabled';	// Prevent changes in settings page.
+
+						if ( $opts[ $opt_key ] !== $def_val ) {
+
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'setting ' . $opt_key . ' to ' . $def_val );
+							}
+
+							$opts[ $opt_key ] = $def_val;
+
+							$options_changed = true;	// Save the options.
+						}
+					}
+				}
+			}
+
+			/**
+			 * Add options using a key prefix array and post type names.
+			 */
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'adding options derived from post type names' );
+			}
+
+			$this->p->util->add_post_type_names( $opts, array(
+				'plugin_add_to'   => 1,			// Add Document SSO Metabox.
+				'og_type_for'     => 'article',
+				'schema_type_for' => 'webpage',
+			) );
+
+			/**
+			 * Add options using a key prefix array and term names.
+			 */
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'adding options derived from term names' );
+			}
+
+			$this->p->util->add_taxonomy_names( $opts, array(
+				'plugin_add_to_tax'   => 1,		// Add Document SSO Metabox.
+				'og_type_for_tax'     => 'website',
+				'schema_type_for_tax' => 'item.list',
+			) );
+
+			/**
+			 * Enable or disable the toolbar notification system dynamically.
+			 */
+			if ( SucomUtil::get_const( 'WPSSO_TOOLBAR_NOTICES' ) ) {
+
+				$opts[ 'plugin_notice_system' ]    = 'toolbar_notices';
+				$opts[ 'plugin_notice_system:is' ] = 'disabled';	// Prevent changes in settings page.
+			}
+
+			/**
+			 * Note that generator meta tags are required for plugin support. If you disable the generator meta
+			 * tags, requests for plugin support will be denied.
+			 */
+			if ( SucomUtil::get_const( 'WPSSO_META_GENERATOR_DISABLE' ) ) {
+				$opts[ 'add_meta_name_generator' ] = 0;
+			} else {
+				$opts[ 'add_meta_name_generator' ] = 1;
+			}
+
+			$opts[ 'add_meta_name_generator' ] = 'disabled';
+
+			/**
+			 * Google does not recognize all Schema Organization sub-types as valid organization and publisher
+			 * types. The WebSite organization type ID should be "organization" unless you are confident that
+			 * Google will recognize your preferred Schema Organization sub-type as a valid organization. To
+			 * select a different organization type ID for your WebSite, define the
+			 * WPSSO_SCHEMA_ORGANIZATION_TYPE_ID constant with your preferred type ID (not the Schema type
+			 * URL).
+			 */
+			$site_org_type_id = SucomUtil::get_const( 'WPSSO_SCHEMA_ORGANIZATION_TYPE_ID', 'organization' );
+
+			if ( ! preg_match( '/^[a-z\.]+$/', $site_org_type_id ) ) {	// Quick sanitation to allow only valid IDs.
+				$site_org_type_id = 'organization';
+			}
+
+			$opts[ 'site_org_schema_type' ]    = $site_org_type_id;
+			$opts[ 'site_org_schema_type:is' ] = 'disabled';
+
+			/**
+			 * Save options and show reminders.
+			 */
+			if ( $options_changed || $version_changed ) {
+
+				if ( ! $is_new_options ) {
+
+					if ( null === $defs ) {	// Only get default options once.
+
+						if ( $network ) {
+							$defs = $this->get_site_defaults();
+						} else {
+							$defs = $this->get_defaults();
+						}
+					}
+
+					/**
+					 * Sanitation also updates image width/height info.
+					 */
+					$opts = $this->sanitize( $opts, $defs, $network );
+				}
+
+				$this->save_options( $options_name, $opts, $network, $options_changed );
 			}
 
 			if ( $this->p->debug->enabled ) {
@@ -1048,6 +1049,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				if ( ! $network ) {
 
 					if ( empty( $this->p->options[ 'plugin_check_head' ] ) ) {
+
 						delete_option( WPSSO_POST_CHECK_COUNT_NAME );
 					}
 				}
