@@ -948,7 +948,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * $context = 'settings', 'business', 'organization', 'place', or 'meta'.
+		 * $context is 'settings', 'business', 'organization', 'place', or 'meta'.
+		 *
+		 * $mod is provided when get_schema_types_select() is called from a post, term, or user metabox.
 		 */
 		public function get_schema_types_select( $context = null, $schema_types = null ) {
 

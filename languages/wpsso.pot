@@ -5970,7 +5970,7 @@ msgid ""
 "Activate the %s add-on<br/>for Schema markup and structured data options."
 msgstr ""
 
-#: lib/messages.php:2933 lib/util.php:3320
+#: lib/messages.php:2933 lib/util.php:3321
 msgid "No options available."
 msgstr ""
 
@@ -6190,12 +6190,12 @@ msgid "Pinterest Pin It Image"
 msgstr ""
 
 #: lib/post.php:495 lib/register.php:330 lib/term.php:421 lib/user.php:394
-#: lib/util.php:558 lib/util.php:3001
+#: lib/util.php:558 lib/util.php:3002
 msgid "%s warning:"
 msgstr ""
 
 #: lib/post.php:496 lib/term.php:422 lib/user.php:396 lib/util.php:560
-#: lib/util.php:3003
+#: lib/util.php:3004
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -6205,7 +6205,7 @@ msgid ""
 "post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:781 lib/post.php:1351 lib/schema.php:2967 lib/term.php:624
+#: lib/post.php:781 lib/post.php:1351 lib/schema.php:2969 lib/term.php:624
 #: lib/user.php:596
 msgid "checking meta tags"
 msgstr ""
@@ -6249,7 +6249,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:1050 lib/util.php:1447
+#: lib/post.php:1050 lib/util.php:1448
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -7269,43 +7269,43 @@ msgid ""
 "(%3$s)."
 msgstr ""
 
-#: lib/util.php:1238
+#: lib/util.php:1239
 msgid "Error reading the %s file for the article sections list."
 msgstr ""
 
-#: lib/util.php:1336
+#: lib/util.php:1337
 msgid "Error reading the %s file for the product categories list."
 msgstr ""
 
-#: lib/util.php:1434
+#: lib/util.php:1435
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1473
+#: lib/util.php:1474
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1661
+#: lib/util.php:1662
 msgid ""
 "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
 "provider to have the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1674
+#: lib/util.php:1675
 msgid ""
 "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:3005
+#: lib/util.php:3006
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3020
+#: lib/util.php:3021
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -7314,35 +7314,35 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3022
+#: lib/util.php:3023
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3351
+#: lib/util.php:3352
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3354
+#: lib/util.php:3355
 msgctxt "option comment"
 msgid "show these options now"
 msgstr ""
 
-#: lib/util.php:3359
+#: lib/util.php:3360
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3362
+#: lib/util.php:3363
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3686
+#: lib/util.php:3687
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

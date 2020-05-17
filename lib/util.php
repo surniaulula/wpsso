@@ -1141,7 +1141,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					default:
 
-						self::$form_cache[ $key ] = apply_filters( $this->p->lca . '_form_cache_' . $key, self::$form_cache[ $key ] );
+						self::$form_cache[ $key ] = apply_filters( $this->p->lca . '_form_cache_' . $key,
+							self::$form_cache[ $key ] );
 
 						break;
 				}
