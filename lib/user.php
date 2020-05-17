@@ -1525,20 +1525,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			$mtime_start = microtime( true );
-
-			$user_id = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
-
-			$role_label = _x( 'Person', 'user role', 'wpsso' );
-
-			$notice_key = 'add-user-roles-status';		// Keep overwriting the same notice key.
-
-			if ( $user_id ) {
-
-				$notice_msg = sprintf( __( 'A task to add the %1$s role for content creators was started at %2$s.',
-					'wpsso' ), $role_label, gmdate( 'c' ) );
-
-				$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
-			}
+			$user_id     = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$notice_key  = 'add-user-roles-status';
+			$role_label  = _x( 'Person', 'user role', 'wpsso' );
 
 			/**
 			 * A transient is set and checked to limit the runtime and allow this process to be terminated early.
@@ -1560,13 +1549,21 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$notice_msg = sprintf( __( 'Aborting task to add the %1$s role to content creators - another identical task is still running.',
 						'wpsso' ), $role_label );
 
-					$this->p->notice->warn( $notice_msg, $user_id, $notice_key );
+					$this->p->notice->warn( $notice_msg, $user_id, $notice_key . '-abort' );
 				}
 
 				return;
 			}
 
 			set_transient( $cache_id, $cache_run_val, $cache_exp_secs );
+
+			if ( $user_id ) {
+
+				$notice_msg = sprintf( __( 'A task to add the %1$s role for content creators was started at %2$s.',
+					'wpsso' ), $role_label, gmdate( 'c' ) );
+
+				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-start' );
+			}
 
 			if ( 0 === get_current_user_id() ) {		// User is the scheduler.
 				set_time_limit( HOUR_IN_SECONDS );	// Set maximum PHP execution time to one hour.
@@ -1603,7 +1600,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				$notice_msg .= sprintf( __( 'The total execution time for this task was %0.3f seconds.', 'wpsso' ), $mtime_total );
 
-				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-done' );
+				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-end' );
 			}
 
 			delete_transient( $cache_id );
@@ -1632,20 +1629,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			$mtime_start = microtime( true );
-
-			$user_id = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
-
-			$role_label = _x( 'Person', 'user role', 'wpsso' );
-
-			$notice_key = 'remove-user-roles-status';	// Keep overwriting the same notice key.
-
-			if ( $user_id ) {
-
-				$notice_msg = sprintf( __( 'A task to remove the %1$s role from all users was started at %2$s.',
-					'wpsso' ), $role_label, gmdate( 'c' ) );
-
-				$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
-			}
+			$user_id     = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$notice_key  = 'remove-user-roles-status';
+			$role_label  = _x( 'Person', 'user role', 'wpsso' );
 
 			/**
 			 * A transient is set and checked to limit the runtime and allow this process to be terminated early.
@@ -1667,13 +1653,21 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$notice_msg = sprintf( __( 'Aborting task to remove the %1$s role from all users - another identical task is still running.',
 						'wpsso' ), $role_label );
 
-					$this->p->notice->warn( $notice_msg, $user_id, $notice_key );
+					$this->p->notice->warn( $notice_msg, $user_id, $notice_key . '-abort' );
 				}
 
 				return;
 			}
 
 			set_transient( $cache_id, $cache_run_val, $cache_exp_secs );	// Signal that we are running.
+
+			if ( $user_id ) {
+
+				$notice_msg = sprintf( __( 'A task to remove the %1$s role from all users was started at %2$s.',
+					'wpsso' ), $role_label, gmdate( 'c' ) );
+
+				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-start' );
+			}
 
 			$this->stop_add_person_role();	// Just in case.
 
@@ -1705,7 +1699,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				$notice_msg .= sprintf( __( 'The total execution time for this task was %0.3f seconds.', 'wpsso' ), $mtime_total );
 
-				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-done' );
+				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-end' );
 			}
 
 			delete_transient( $cache_id );
