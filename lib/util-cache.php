@@ -80,9 +80,8 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					$this->p->options[ 'plugin_clear_short_urls' ] : false;
 			}
 
-			$mtime_start = microtime( true );
-			$user_id     = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
-			$notice_key  = 'clear-cache-status';
+			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$notice_key = 'clear-cache-status';
 
 			/**
 			 * A transient is set and checked to limit the runtime and allow this process to be terminated early.
@@ -109,13 +108,15 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				return;
 			}
 
-			set_transient( $cache_id, $cache_run_val, $cache_exp_secs );	// Signal that we are running.
+			set_transient( $cache_id, $cache_run_val, $cache_exp_secs );
+
+			$mtime_start = microtime( true );
 
 			if ( $user_id ) {
 
 				$notice_msg = sprintf( __( 'A task to clear the cache was started at %s.', 'wpsso' ), gmdate( 'c' ) );
 
-				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-start' );
+				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-begin' );
 			}
 
 			$this->stop_refresh();	// Just in case.
@@ -532,15 +533,14 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$mtime_start = microtime( true );
-			$user_id     = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
-			$notice_key  = 'refresh-cache-status';
+			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$notice_key = 'refresh-cache-status';
 
 			/**
 			 * A transient is set and checked to limit the runtime and allow this process to be terminated early.
 			 */
-			$cache_md5_pre  = $this->p->lca . '_!_';		// Protect transient from being cleared.
-			$cache_exp_secs = HOUR_IN_SECONDS;			// Prevent duplicate runs for max 1 hour.
+			$cache_md5_pre  = $this->p->lca . '_!_';	// Protect transient from being cleared.
+			$cache_exp_secs = HOUR_IN_SECONDS;		// Prevent duplicate runs for max 1 hour.
 			$cache_salt     = __CLASS__ . '::refresh';	// Use a common cache salt for start / stop.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_run_val  = 'running';
@@ -561,13 +561,15 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				return;
 			}
 
-			set_transient( $cache_id, $cache_run_val, $cache_exp_secs );	// Signal that we are running.
+			set_transient( $cache_id, $cache_run_val, $cache_exp_secs );
+
+			$mtime_start = microtime( true );
 
 			if ( $user_id ) {
 
 				$notice_msg = sprintf( __( 'A task to refresh the transient cache was started at %s.', 'wpsso' ), gmdate( 'c' ) );
 
-				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-start' );
+				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-begin' );
 			}
 
 			if ( 0 === get_current_user_id() ) {		// User is the scheduler.

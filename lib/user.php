@@ -1524,10 +1524,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$mtime_start = microtime( true );
-			$user_id     = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
-			$notice_key  = 'add-user-roles-status';
-			$role_label  = _x( 'Person', 'user role', 'wpsso' );
+			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$notice_key = 'add-user-roles-status';
+			$role_label = _x( 'Person', 'user role', 'wpsso' );
 
 			/**
 			 * A transient is set and checked to limit the runtime and allow this process to be terminated early.
@@ -1557,12 +1556,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			set_transient( $cache_id, $cache_run_val, $cache_exp_secs );
 
+			$mtime_start = microtime( true );
+
 			if ( $user_id ) {
 
 				$notice_msg = sprintf( __( 'A task to add the %1$s role for content creators was started at %2$s.',
 					'wpsso' ), $role_label, gmdate( 'c' ) );
 
-				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-start' );
+				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-begin' );
 			}
 
 			if ( 0 === get_current_user_id() ) {		// User is the scheduler.
@@ -1628,10 +1629,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$mtime_start = microtime( true );
-			$user_id     = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
-			$notice_key  = 'remove-user-roles-status';
-			$role_label  = _x( 'Person', 'user role', 'wpsso' );
+			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$notice_key = 'remove-user-roles-status';
+			$role_label = _x( 'Person', 'user role', 'wpsso' );
 
 			/**
 			 * A transient is set and checked to limit the runtime and allow this process to be terminated early.
@@ -1659,14 +1659,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return;
 			}
 
-			set_transient( $cache_id, $cache_run_val, $cache_exp_secs );	// Signal that we are running.
+			set_transient( $cache_id, $cache_run_val, $cache_exp_secs );
+
+			$mtime_start = microtime( true );
 
 			if ( $user_id ) {
 
 				$notice_msg = sprintf( __( 'A task to remove the %1$s role from all users was started at %2$s.',
 					'wpsso' ), $role_label, gmdate( 'c' ) );
 
-				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-start' );
+				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-begin' );
 			}
 
 			$this->stop_add_person_role();	// Just in case.
