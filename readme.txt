@@ -318,7 +318,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.6.0-dev.6 (2020/05/17)**
+**Version 7.6.0-dev.7 (2020/05/17)**
 
 * **New Features**
 	* None.
@@ -984,7 +984,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 7.6.0-dev.6 =
+= 7.6.0-dev.7 =
 
 (2020/05/17) Added post cache clearing for attached post IDs. Removed the Knowledge Graph for Home Page &gt; Include Schema WebSite option.
 
