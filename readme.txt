@@ -247,16 +247,6 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 
 <h3>Notes and Documentation</h3>
 
-* [About WPSSO Core Premium Integration Modules](https://wpsso.com/docs/plugins/wpsso/notes/modules/)
-	* [Author Gravatar](https://wpsso.com/docs/plugins/wpsso/notes/modules/author-gravatar/)
-	* [Co-Author Plus](https://wpsso.com/docs/plugins/wpsso/notes/modules/co-author-plus/)
-	* [Easy Digital Downloads](https://wpsso.com/docs/plugins/wpsso/notes/modules/easy-digital-downloads/)
-	* [Facebook, Slideshare, Vimeo, Wistia, Youtube Video APIs](https://wpsso.com/docs/plugins/wpsso/notes/modules/facebook-slideshare-vimeo-wistia-youtube-video-apis/)
-	* [NextCellent Gallery and NextGEN Gallery](https://wpsso.com/docs/plugins/wpsso/notes/modules/nextcellent-gallery-and-nextgen-gallery/)
-	* [Polylang](https://wpsso.com/docs/plugins/wpsso/notes/modules/polylang/)
-	* [The Events Calendar](https://wpsso.com/docs/plugins/wpsso/notes/modules/the-events-calendar/)
-	* [WooCommerce](https://wpsso.com/docs/plugins/wpsso/notes/modules/woocommerce/)
-	* [Yoast SEO (aka WordPress SEO)](https://wpsso.com/docs/plugins/wpsso/notes/modules/yoast-seo-aka-wordpress-seo/)
 * [Developer Resources](https://wpsso.com/docs/plugins/wpsso/notes/developer/)
 	* [Constants](https://wpsso.com/docs/plugins/wpsso/notes/developer/constants/)
 		* [All Constants](https://wpsso.com/docs/plugins/wpsso/notes/developer/constants/all/)
