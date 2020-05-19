@@ -972,6 +972,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$schema_types = SucomUtil::array_flatten( $schema_types );
 
+			if ( defined( 'SORT_STRING' ) ) {	// Just in case.
+				ksort( $schema_types, SORT_STRING );
+			} else {
+				ksort( $schema_types );
+			}
+
+			/**
+			 * $schema_types = Array (
+			 *	[accommodation] => https://schema.org/Accommodation
+			 *	.
+			 *	.
+			 *	.
+			 *	[zoo] => https://schema.org/Zoo
+			 * );
+			 */
 			$schema_types = (array) apply_filters( $this->p->lca . '_schema_types_select', $schema_types, $context );
 
 			$select = array();
@@ -981,12 +996,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$type_url = preg_replace( '/^.*\/\//', '', $type_url );
 
 				$select[ $type_id ] = $type_id . ' | ' . $type_url;
-			}
-
-			if ( defined( 'SORT_STRING' ) ) {	// Just in case.
-				asort( $select, SORT_STRING );
-			} else {
-				asort( $select );
 			}
 
 			return $select;
