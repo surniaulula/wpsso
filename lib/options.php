@@ -683,10 +683,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$notice_msg = __( 'Non-standard value found for the "%s" option - resetting the option to its default value.', 'wpsso' );
 
 						if ( null === $defs ) {	// Only get default options once.
+
 							$defs = $this->get_defaults();
 						}
 
 						$advanced_opts = SucomUtil::preg_grep_keys( '/^plugin_/', $defs );
+
 						$advanced_opts = SucomUtil::preg_grep_keys( '/^plugin_.*_tid$/', $advanced_opts, $invert = true );
 
 						foreach ( array(
@@ -833,11 +835,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$defs = $this->get_defaults();
 						}
 					}
-
-					/**
-					 * Sanitation also updates image width/height info.
-					 */
-					$opts = $this->sanitize( $opts, $defs, $network );
 				}
 
 				$this->save_options( $options_name, $opts, $network, $options_changed );
