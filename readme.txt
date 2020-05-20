@@ -308,7 +308,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.6.0-rc.1 (2020/05/19)**
+**Version 7.6.0-rc.1 (2020/05/20)**
 
 * **New Features**
 	* None.
@@ -977,7 +977,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 = 7.6.0-rc.1 =
 
-(2020/05/19) Added post cache clearing for attached post IDs. Add a new "Show Yoast SEO Import Details" option. Removed the "Include Schema WebSite" option.
+(2020/05/20) Added post cache clearing for attached post IDs. Add a new "Show Yoast SEO Import Details" option. Removed the "Include Schema WebSite" option.
 
 = 7.5.0 =
 
