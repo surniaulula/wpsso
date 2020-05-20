@@ -29,6 +29,7 @@ _x( 'Post Type', 'option label', 'wpsso' );
 _x( 'Taxonomy', 'option label', 'wpsso' );
 _x( 'Add %s Metabox', 'option label', 'wpsso' );
 _x( 'Import Yoast SEO Social Meta', 'option label', 'wpsso' );
+_x( 'Show Yoast SEO Import Details', 'option label', 'wpsso' );
 _x( 'Default Currency', 'option label', 'wpsso' );
 __( 'Posts, Pages, and Custom Post Types', 'wpsso' );
 __( 'Media Library', 'wpsso' );

@@ -434,9 +434,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->defaults_cache[ 'og_author_field' ]  = $this->p->options[ 'plugin_cm_fb_name' ];
 
 				/**
-				 * Read Yoast SEO social meta if the Yoast SEO plugin is active, or Yoast SEO settings are found.
+				 * Import Yoast SEO Social Meta.
+				 *
+				 * Enabled by default if the Yoast SEO plugin is active or Yoast SEO settings are found.
 				 */
-				$this->defaults_cache[ 'plugin_wpseo_social_meta' ] = ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) || get_option( 'wpseo' ) ? 1 : 0;
+				if ( ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) || get_option( 'wpseo' ) ) {
+
+					$this->defaults_cache[ 'plugin_wpseo_social_meta' ] = 1;
+				}
 
 				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
@@ -948,8 +953,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					continue;
 				}
 
-				$img_ratio  = $img_width >= $img_height ? $img_width / $img_height : $img_height / $img_width;
-				$img_ratio  = number_format( $img_ratio, 3, '.', '' );
+				$img_ratio = $img_width >= $img_height ? $img_width / $img_height : $img_height / $img_width;
+				$img_ratio = number_format( $img_ratio, 3, '.', '' );
 
 				foreach ( array( 'limit', 'limit_max' ) as $limit_type ) {
 
@@ -957,7 +962,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						continue;
 					}
 
-					$error_msg   = false;
+					$error_msg = false;
+
 					$limit_ratio = number_format( $this->p->cf[ 'head' ][ $limit_type ][ $opt_pre . '_img_ratio' ], 3, '.', '' );
 
 					switch ( $limit_type ) {

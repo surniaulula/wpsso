@@ -1142,11 +1142,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_wpseo_social_meta':
+						case 'tooltip-plugin_wpseo_social_meta':	// Import Yoast SEO Social Meta.
 
-							$text = __( 'Import the Yoast SEO custom social meta text for Posts, Terms, and Users.', 'wpsso' ) . ' ';
+							$text = __( 'Import the Yoast SEO custom social meta for Posts, Terms, and Users.', 'wpsso' ) . ' ';
 
-							$text .= __( 'This option is checked by default if the Yoast SEO plugin is active or its settings are found in the database.', 'wpsso' );
+							$text .= __( 'This option is checked by default if the Yoast SEO plugin is active or its settings are found in the WordPress database.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-plugin_wpseo_show_import':	// Show Yoast SEO Import Details.
+
+							$text = __( 'Show notification messages for Yoast SEO custom social meta imported for Posts, Terms, and Users.', 'wpsso' ) . ' ';
 
 							break;
 

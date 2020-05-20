@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '7.6.0-b.1',	// Plugin version.
-					'opt_version' => '737',		// Increment when changing default option values.
+					'version'     => '7.6.0-rc.1',	// Plugin version.
+					'opt_version' => '738',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Make sure your content looks great on all social and search sites - no matter how your URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -1527,6 +1527,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_add_to_tax_post_tag'      => 1,
 					'plugin_add_to_user_page'         => 1,
 					'plugin_wpseo_social_meta'        => 0,			// Import Yoast SEO Social Meta.
+					'plugin_wpseo_show_import'        => 0,			// Show Yoast SEO Import Details.
 					'plugin_def_currency'             => 'USD',		// Default Currency.
 
 					/**

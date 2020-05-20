@@ -524,7 +524,23 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			$event_args = array( $user_id, $read_cache );
 
+			$this->stop_refresh();	// Just in case.
+
 			wp_schedule_single_event( $event_time, $event_hook, $event_args );
+		}
+
+		public function stop_refresh() {
+
+			$cache_md5_pre  = $this->p->lca . '_!_';	// Protect transient from being cleared.
+			$cache_exp_secs = HOUR_IN_SECONDS;		// Prevent duplicate runs for max 1 hour.
+			$cache_salt     = __CLASS__ . '::refresh';	// Use a common cache salt for start / stop.
+			$cache_id       = $cache_md5_pre . md5( $cache_salt );
+			$cache_stop_val = 'stop';
+
+			if ( false !== get_transient( $cache_id ) ) {				// Another process is already running.
+
+				set_transient( $cache_id, $cache_stop_val, $cache_exp_secs );	// Signal the other process to stop.
+			}
 		}
 
 		public function refresh( $user_id = null, $read_cache = false ) {
@@ -623,20 +639,6 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			}
 
 			delete_transient( $cache_id );
-		}
-
-		public function stop_refresh() {
-
-			$cache_md5_pre  = $this->p->lca . '_!_';	// Protect transient from being cleared.
-			$cache_exp_secs = HOUR_IN_SECONDS;		// Prevent duplicate runs for max 1 hour.
-			$cache_salt     = __CLASS__ . '::refresh';	// Use a common cache salt for start / stop.
-			$cache_id       = $cache_md5_pre . md5( $cache_salt );
-			$cache_stop_val = 'stop';
-
-			if ( false !== get_transient( $cache_id ) ) {				// Another process is already running.
-
-				set_transient( $cache_id, $cache_stop_val, $cache_exp_secs );	// Signal the other process to stop.
-			}
 		}
 
 		/**

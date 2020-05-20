@@ -1501,6 +1501,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$event_args = array( $user_id );
 
+			$this->stop_add_person_role();	// Just in case.
+
 			wp_schedule_single_event( $event_time, $event_hook, $event_args );
 		}
 

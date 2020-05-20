@@ -178,6 +178,10 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$form->get_th_html( _x( 'Import Yoast SEO Social Meta', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_wpseo_social_meta' ) . 
 			$form->get_no_td_checkbox( 'plugin_wpseo_social_meta' );
 
+			$table_rows[ 'plugin_wpseo_show_import' ] = '' .
+			$form->get_th_html( _x( 'Show Yoast SEO Import Details', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_wpseo_show_import' ) .
+			$form->get_no_td_checkbox( 'plugin_wpseo_show_import' );
+
 			/**
 			 * Default currency.
 			 */
