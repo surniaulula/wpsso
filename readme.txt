@@ -308,13 +308,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.6.0-b.1 (2020/05/19)**
+**Version 7.6.0-rc.1 (2020/05/19)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added post cache clearing for attached post IDs.
-	* Removed the Knowledge Graph for Home Page &gt; Include Schema WebSite option.
+	* Added post cache clearing for attached post IDs (used by the WPSSO FAQ add-on).
+	* Added a new "Show Yoast SEO Import Details" option under the SSO &gt; Advanced Settings &gt; Editing Pages &gt; Document Meta tab.
+	* Removed the SSO &gt; General Settings &gt; Social and Search Sites &gt; Google &gt; Knowledge Graph for Home Page &gt; Include Schema WebSite option.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -974,9 +975,9 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 7.6.0-b.1 =
+= 7.6.0-rc.1 =
 
-(2020/05/19) Added post cache clearing for attached post IDs. Removed the Knowledge Graph for Home Page &gt; Include Schema WebSite option.
+(2020/05/19) Added post cache clearing for attached post IDs. Add a new "Show Yoast SEO Import Details" option. Removed the "Include Schema WebSite" option.
 
 = 7.5.0 =
 
