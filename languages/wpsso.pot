@@ -4569,7 +4569,8 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:1147
-msgid "Import the Yoast SEO custom social meta for Posts, Terms, and Users."
+msgid ""
+"Import the Yoast SEO custom social meta text for Posts, Terms, and Users."
 msgstr ""
 
 #: lib/messages.php:1149
@@ -4580,8 +4581,8 @@ msgstr ""
 
 #: lib/messages.php:1155
 msgid ""
-"Show notification messages for Yoast SEO custom social meta imported for "
-"Posts, Terms, and Users."
+"Show notification messages for imported Yoast SEO custom social meta text "
+"for Posts, Terms, and Users."
 msgstr ""
 
 #: lib/messages.php:1161
