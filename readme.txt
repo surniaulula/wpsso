@@ -978,7 +978,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 = 7.6.0-rc.2 =
 
-(2020/05/21) Added post cache clearing for attached post IDs. Add a new "Show Yoast SEO Import Details" option. Removed the "Include Schema WebSite" option.
+(2020/05/21) Added post cache clearing for attached post IDs. Added a new "Show Yoast SEO Import Details" option. Removed the "Include Schema WebSite" option. Moved the 'sucom-block-editor-admin' script to work around a bug in NextGEN Gallery.
 
 = 7.5.0 =
 
