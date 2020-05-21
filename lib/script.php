@@ -236,6 +236,11 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				$this->p->debug->mark();
 			}
 
+			/**
+			 * The 'sucom-block-editor-admin' script, with its 'wp-edit-post' dependency, must be loaded in the footer
+			 * to work around a bug in the NextGEN Gallery featured image picker. If the script is loaded in the
+			 * header, with a dependency on 'wp-edit-post', the NextGEN Gallery featured image picker does not load.
+			 */
 			wp_register_script( 'sucom-block-editor-admin', WPSSO_URLPATH . 'js/block-editor-admin.' . $this->file_ext, 
 				array( 'wp-data', 'wp-editor', 'wp-edit-post' ), $this->version, $in_footer = false );
 

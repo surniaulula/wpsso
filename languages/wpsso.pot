@@ -6512,7 +6512,7 @@ msgctxt "option label"
 msgid "Schema Type"
 msgstr ""
 
-#: lib/script.php:203 lib/script.php:283
+#: lib/script.php:203 lib/script.php:288
 msgid "No %s notifications."
 msgstr ""
 
