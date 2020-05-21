@@ -308,7 +308,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.6.0-rc.3 (2020/05/21)**
+**Version 7.6.0 (2020/05/22)**
 
 * **New Features**
 	* None.
@@ -976,9 +976,9 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 7.6.0-rc.3 =
+= 7.6.0 =
 
-(2020/05/21) Added post cache clearing for attached post IDs. Added a new "Show Yoast SEO Import Details" option. Removed the "Include Schema WebSite" option. Moved the 'sucom-block-editor-admin' script to work around a bug in NextGEN Gallery.
+(2020/05/22) Added post cache clearing for attached post IDs. Added a new "Show Yoast SEO Import Details" option. Removed the "Include Schema WebSite" option. Moved the 'sucom-block-editor-admin' script to work around a bug in NextGEN Gallery.
 
 = 7.5.0 =
 
