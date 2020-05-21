@@ -65,25 +65,20 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			/**
 			 * See http://qtip2.com/download.
 			 */
-			wp_register_script( 'jquery-qtip', 
-				WPSSO_URLPATH . 'js/ext/jquery-qtip.' . $this->file_ext, 
-					array( 'jquery' ), $this->p->cf[ 'jquery-qtip' ][ 'version' ], true );
+			wp_register_script( 'jquery-qtip', WPSSO_URLPATH . 'js/ext/jquery-qtip.' . $this->file_ext, 
+				array( 'jquery' ), $this->p->cf[ 'jquery-qtip' ][ 'version' ], $in_footer = true );
 
-			wp_register_script( 'sucom-settings-page', 
-				WPSSO_URLPATH . 'js/com/jquery-settings-page.' . $this->file_ext, 
-					array( 'jquery' ), $this->version, true );
+			wp_register_script( 'sucom-settings-page', WPSSO_URLPATH . 'js/com/jquery-settings-page.' . $this->file_ext, 
+				array( 'jquery' ), $this->version, $in_footer = true );
 
-			wp_register_script( 'sucom-metabox', 
-				WPSSO_URLPATH . 'js/com/jquery-metabox.' . $this->file_ext, 
-					array( 'jquery' ), $this->version, true );
+			wp_register_script( 'sucom-metabox', WPSSO_URLPATH . 'js/com/jquery-metabox.' . $this->file_ext, 
+				array( 'jquery' ), $this->version, $in_footer = true );
 
-			wp_register_script( 'sucom-tooltips', 
-				WPSSO_URLPATH . 'js/com/jquery-tooltips.' . $this->file_ext, 
-					array( 'jquery' ), $this->version, true );
+			wp_register_script( 'sucom-tooltips', WPSSO_URLPATH . 'js/com/jquery-tooltips.' . $this->file_ext, 
+				array( 'jquery' ), $this->version, $in_footer = true );
 
-			wp_register_script( 'sucom-admin-media', 
-				WPSSO_URLPATH . 'js/com/jquery-admin-media.' . $this->file_ext, 
-					array( 'jquery', 'jquery-ui-core' ), $this->version, true );
+			wp_register_script( 'sucom-admin-media', WPSSO_URLPATH . 'js/com/jquery-admin-media.' . $this->file_ext, 
+				array( 'jquery', 'jquery-ui-core' ), $this->version, $in_footer = true );
 
 			/**
 			 * Only load scripts where we need them.
@@ -241,9 +236,10 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				$this->p->debug->mark();
 			}
 
-			wp_enqueue_script( 'sucom-block-editor-admin', 
-				WPSSO_URLPATH . 'js/block-editor-admin.' . $this->file_ext, 
-					array( 'wp-data', 'wp-editor', 'wp-edit-post' ), $this->version, false );
+			wp_register_script( 'sucom-block-editor-admin', WPSSO_URLPATH . 'js/block-editor-admin.' . $this->file_ext, 
+				array( 'wp-data', 'wp-editor', 'wp-edit-post' ), $this->version, $in_footer = false );
+
+			wp_enqueue_script( 'sucom-block-editor-admin' );
 		}
 
 		/**
@@ -428,9 +424,8 @@ jQuery( document ).ready( function(){
 				$this->p->debug->mark();
 			}
 
-			wp_register_script( 'sucom-admin-page', 
-				WPSSO_URLPATH . 'js/com/jquery-admin-page.' . $this->file_ext, 
-					array( 'jquery' ), $this->version, true );
+			wp_register_script( 'sucom-admin-page', WPSSO_URLPATH . 'js/com/jquery-admin-page.' . $this->file_ext, 
+				array( 'jquery' ), $this->version, $in_footer = true );
 
 
 			wp_enqueue_script( 'sucom-admin-page' );
