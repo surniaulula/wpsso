@@ -418,9 +418,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 		}
 
 		/**
-		 * The $def_opts argument accepts output from functions, so don't force reference.
+		 * The $defs argument accepts output from functions, so don't force reference.
 		 */
-		public function options( $options_name, &$opts = array(), $def_opts = array(), $network = false ) {
+		public function options( $options_name, &$opts = array(), $defs = array(), $network = false ) {
 
 			/**
 			 * Save / create the current options version number for version checks to follow.
@@ -442,7 +442,8 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 
 			if ( $options_name === constant( 'WPSSO_OPTIONS_NAME' ) ) {
 
-				$rename_filter_name   = $this->p->lca . '_rename_options_keys';
+				$rename_filter_name = $this->p->lca . '_rename_options_keys';
+
 				$upgraded_filter_name = $this->p->lca . '_upgraded_options';
 
 				$rename_options_keys = apply_filters( $rename_filter_name, self::$rename_options_keys );
@@ -620,13 +621,16 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 
 			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) ) {
 
-				$rename_filter_name   = $this->p->lca . '_rename_site_options_keys';
+				$rename_filter_name = $this->p->lca . '_rename_site_options_keys';
+
 				$upgraded_filter_name = $this->p->lca . '_upgraded_site_options';
 
 				$this->p->util->rename_opts_by_ext( $opts, apply_filters( $rename_filter_name, self::$rename_site_options_keys ) );
 			}
 
-			$opts = apply_filters( $upgraded_filter_name, $opts, $def_opts );
+			$opts = apply_filters( $upgraded_filter_name, $opts, $defs );
+
+			$opts = $this->p->opt->sanitize( $opts, $defs, $network );	// Create any new / missing options.
 
 			return $opts;
 		}
