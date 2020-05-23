@@ -308,6 +308,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 7.7.0-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new `SucomUtil::is_non_assoc()` method to test for non-associative arrays.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.2.
+
 **Version 7.6.0 (2020/05/22)**
 
 * **New Features**
