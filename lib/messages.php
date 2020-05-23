@@ -2935,16 +2935,29 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 		public function schema_disabled() {
 
-			return '<p class="status-msg">' . __( 'Schema markup is disabled.', 'wpsso' ) . '</p>' .
-				'<p class="status-msg">' . __( 'No options available.', 'wpsso' ) . '</p>';
+			$html = '<p class="status-msg">' . __( 'Schema markup is disabled.', 'wpsso' ) . '</p>';
+
+			$html .= '<p class="status-msg">' . __( 'No options available.', 'wpsso' ) . '</p>';
+
+			return $html;
 		}
 
 		public function get_schema_disabled_rows( array &$table_rows, $col_span = 1 ) {
 
-			$table_rows[ 'schema_disabled' ] = '<tr><td align="center" colspan="' . $col_span . '">' .
-				$this->schema_disabled() . '</td></tr>';
+			$table_rows[ 'schema_disabled' ] = '<tr><td align="center" colspan="' . $col_span . '">' . $this->schema_disabled() . '</td></tr>';
 
 			return $table_rows;
+		}
+
+		public function get_schema_qapage_msg() {
+
+			$html = '<p class="status-msg">';
+
+			$html .= __( 'Please note that Google requires that Schema QAPage markup include one or more user submitted and upvoted answers.', 'wpsso' ) . ' ';
+
+			$html .= '</p>';
+
+			return $html;
 		}
 
 		private function get_ext_p_ext( $ext ) {

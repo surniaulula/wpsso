@@ -279,7 +279,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			/**
 			 * Maybe add a reference URL at the end.
 			 */
-			$msg_text .= $this->get_ref_url_html();
+			if ( 'upd' !== $msg_type ) {
+				$msg_text .= $this->get_ref_url_html();
+			}
 
 			$payload[ 'msg_text' ]   = preg_replace( '/<!--spoken-->(.*?)<!--\/spoken-->/Us', ' ', $msg_text );
 			$payload[ 'msg_spoken' ] = preg_replace( '/<!--not-spoken-->(.*?)<!--\/not-spoken-->/Us', ' ', $msg_text );
@@ -294,6 +296,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 * shutdown_notice_cache() method to execute.
 			 */
 			if ( $user_id !== $current_user_id ) {
+
 				$this->update_notice_transient( $user_id );
 			}
 		}

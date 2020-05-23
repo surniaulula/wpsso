@@ -883,11 +883,11 @@ msgstr ""
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:472 lib/gettext-com.php:32 lib/post.php:1632
+#: lib/com/notice.php:475 lib/gettext-com.php:32 lib/post.php:1632
 msgid "Edit"
 msgstr ""
 
-#: lib/com/notice.php:476 lib/gettext-com.php:33
+#: lib/com/notice.php:479 lib/gettext-com.php:33
 msgid "Reference: %s"
 msgstr ""
 
@@ -3487,12 +3487,12 @@ msgid ""
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:906 lib/messages.php:2980
+#: lib/media.php:906 lib/messages.php:2993
 msgctxt "option value"
 msgid "cropped"
 msgstr ""
 
-#: lib/media.php:907 lib/messages.php:2979
+#: lib/media.php:907 lib/messages.php:2992
 msgctxt "option value"
 msgid "uncropped"
 msgstr ""
@@ -5982,8 +5982,14 @@ msgid ""
 "Activate the %s add-on<br/>for Schema markup and structured data options."
 msgstr ""
 
-#: lib/messages.php:2939 lib/util.php:3321
+#: lib/messages.php:2940 lib/util.php:3321
 msgid "No options available."
+msgstr ""
+
+#: lib/messages.php:2956
+msgid ""
+"Please note that Google requires that Schema QAPage markup include one or "
+"more user submitted and upvoted answers."
 msgstr ""
 
 #: lib/opengraph.php:70
@@ -6217,7 +6223,7 @@ msgid ""
 "post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:781 lib/post.php:1351 lib/schema.php:2980 lib/term.php:624
+#: lib/post.php:781 lib/post.php:1351 lib/schema.php:2994 lib/term.php:624
 #: lib/user.php:596
 msgid "checking meta tags"
 msgstr ""

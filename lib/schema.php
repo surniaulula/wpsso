@@ -2928,6 +2928,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
+		 * Since WPSSO Core v7.7.0.
+		 */
+		public static function move_data_itemprop_from_assoc( array &$json_data, array &$assoc, array $names, $overwrite = true ) {
+			
+			$prop_added = self::add_data_itemprop_from_assoc( $json_data, $assoc, $names, $overwrite );
+
+			foreach ( $names as $prop_name => $key_name ) {
+				unset( $assoc[ $key_name ] );
+			}
+
+			return $prop_added;
+		}
+
+		/**
 		 * Example usage:
 		 *
 		 *	$offer = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array( 
