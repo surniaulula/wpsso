@@ -6217,7 +6217,7 @@ msgid ""
 "post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:781 lib/post.php:1351 lib/schema.php:2978 lib/term.php:624
+#: lib/post.php:781 lib/post.php:1351 lib/schema.php:2980 lib/term.php:624
 #: lib/user.php:596
 msgid "checking meta tags"
 msgstr ""

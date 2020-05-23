@@ -1897,7 +1897,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$prop_name = 'itemListElement';
 
-			$posts_count = isset( $json_data[ $prop_name ] ) ? count( $json_data[ $prop_name ] ) : 0;
+			$posts_data_count = isset( $json_data[ $prop_name ] ) ? count( $json_data[ $prop_name ] ) : 0;
 
 			/**
 			 * Set the page number and the posts per page values.
@@ -1957,7 +1957,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				unset( $wpsso_paged );	// Unset the forced page number.
 
-				return $posts_count;
+				return $posts_data_count;
 			}
 
 			if ( $wpsso->debug->enabled ) {
@@ -1977,14 +1977,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			foreach ( $page_posts_mods as $post_mod ) {
 
-				$posts_count++;
-
 				$post_sharing_url = $wpsso->util->get_sharing_url( $post_mod );
 
 				$post_json_data = self::get_schema_type_context( 'https://schema.org/ListItem', array(
-					'position' => $posts_count,
+					'position' => $posts_data_count,
 					'url'      => $post_sharing_url,
 				) );
+
+				$posts_data_count++;
 
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'adding post id ' . $post_mod[ 'id' ] . ' to ' . $prop_name . ' as array element #' . $prop_name_count );
@@ -2001,16 +2001,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					break;	// Stop here.
 				}
 
-				$filter_name = SucomUtil::sanitize_hookname( $wpsso->lca . '_json_prop_https_schema_org_' . $prop_name );
-
-				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'applying ' . $filter_name . ' filters' );
-				}
-
-				$json_data[ $prop_name ] = (array) apply_filters( $filter_name, $json_data[ $prop_name ], $mod, $mt_og, $page_type_id, $is_main );
+				$prop_name_count++;
 			}
 
-			return $posts_count;
+			$filter_name = SucomUtil::sanitize_hookname( $wpsso->lca . '_json_prop_https_schema_org_' . $prop_name );
+
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->log( 'applying ' . $filter_name . ' filters' );
+			}
+
+			$json_data[ $prop_name ] = (array) apply_filters( $filter_name, $json_data[ $prop_name ], $mod, $mt_og, $page_type_id, $is_main );
+
+			return $posts_data_count;
 		}
 
 		/**
@@ -2170,7 +2172,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			$posts_count = 0;
+			$posts_data_count = 0;
 
 			/**
 			 * Sanity checks.
@@ -2181,7 +2183,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$wpsso->debug->log( 'exiting early: page_type_id is empty' );
 				}
 
-				return $posts_count;
+				return $posts_data_count;
 
 			} elseif ( empty( $prop_name_type_ids ) ) {
 
@@ -2189,7 +2191,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$wpsso->debug->log( 'exiting early: prop_name_type_ids is empty' );
 				}
 
-				return $posts_count;
+				return $posts_data_count;
 			}
 
 			/**
@@ -2201,7 +2203,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$wpsso->debug->log( 'exiting early: preventing recursion of page_type_id ' . $page_type_id );
 				}
 
-				return $posts_count;
+				return $posts_data_count;
 
 			} else {
 				$added_page_type_ids[ $page_type_id ] = true;
@@ -2239,7 +2241,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				unset( $wpsso_paged );	// Unset the forced page number.
 
-				return $posts_count;
+				return $posts_data_count;
 			}
 
 			if ( $wpsso->debug->enabled ) {
@@ -2351,9 +2353,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						continue;	// Get the next post mod.
 					}
 
-					$posts_count++;
-
-					$prop_name_count++;
+					$posts_data_count++;
 
 					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( 'adding post id ' . $post_mod[ 'id' ] . ' to ' . $prop_name . ' as array element #' . $prop_name_count );
@@ -2369,6 +2369,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						break;	// Stop here.
 					}
+				
+					$prop_name_count++;
 				}
 
 				$filter_name = SucomUtil::sanitize_hookname( $wpsso->lca . '_json_prop_https_schema_org_' . $prop_name );
@@ -2391,7 +2393,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->mark( 'adding posts data' );	// End timer.
 			}
 
-			return $posts_count;
+			return $posts_data_count;
 		}
 
 		/**
@@ -2427,7 +2429,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$wpsso =& Wpsso::get_instance();
 
-			$posts_count = 0;
+			$posts_data_count = 0;
 
 			/**
 			 * Set the page number and the posts per page values.
@@ -2451,7 +2453,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				unset( $wpsso_paged );	// Unset the forced page number.
 
-				return $posts_count;
+				return $posts_data_count;
 			}
 
 			if ( $wpsso->debug->enabled ) {
@@ -2460,13 +2462,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			foreach ( $page_posts_mods as $post_mod ) {
 
-				$posts_count++;
+				$posts_data_count++;
 
 				$post_sharing_url = $wpsso->util->get_sharing_url( $post_mod );
 
 				$json_data[] = $post_sharing_url;
 
-				if ( $posts_count >= $ppp ) {
+				if ( $posts_data_count >= $ppp ) {
 
 					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( 'stopping here: maximum posts per page of ' . $ppp . ' reached' );
@@ -2476,7 +2478,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			return $posts_count;
+			return $posts_data_count;
 		}
 
 		public static function add_person_names_data( &$json_data, $prop_name = '', array $assoc, $key_name = '' ) {
@@ -2973,7 +2975,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Check only published posts or other non-post objects.
 			 */
-			if ( ! $mod[ 'is_post' ] || 'publish' === $mod[ 'post_status' ] ) {
+			if ( $mod[ 'id' ] && ( ! $mod[ 'is_post' ] || 'publish' === $mod[ 'post_status' ] ) ) {
 
 				$ref_url = $wpsso->util->maybe_set_ref( null, $mod, __( 'checking meta tags', 'wpsso' ) );
 

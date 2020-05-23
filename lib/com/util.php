@@ -1421,6 +1421,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
+		/**
+		 * Since WPSSO Core v1.21.0.
+		 */
 		public static function is_assoc( $mixed ) {
 
 			$ret = false;
@@ -1439,6 +1442,27 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $ret;
 		}
 
+		/**
+		 * Since WPSSO Core v7.7.0.
+		 */
+		public static function is_non_assoc( $mixed ) {
+
+			$ret = false;
+
+			if ( is_array( $mixed ) ) {	// Just in case.
+
+				if ( is_numeric( implode( array_keys( $mixed ) ) ) ) {
+
+					$ret = true;
+				}
+			}
+
+			return $ret;
+		}
+
+		/**
+		 * Since WPSSO Core v4.17.0.
+		 */
 		public static function a_to_aa( array $arr ) {
 
 			$arr_arr = array();
