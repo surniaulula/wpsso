@@ -226,6 +226,8 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				 */
 				delete_metadata( $meta_type = 'post', $object_id = null, WPSSO_META_NAME, $meta_value = null, $delete_all = true );
 
+				delete_metadata( $meta_type = 'post', $object_id = null, WPSSO_META_ATTACHED_NAME, $meta_value = null, $delete_all = true );
+
 				delete_post_meta_by_key( '_wpsso_wpproductreview' );	// Re-created automatically.
 
 				delete_post_meta_by_key( '_wpsso_wprecipemaker' );	// Re-created automatically.
@@ -238,12 +240,16 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				foreach ( WpssoTerm::get_public_ids() as $id ) {
 
 					WpssoTerm::delete_term_meta( $id, WPSSO_META_NAME );
+
+					WpssoTerm::delete_term_meta( $id, WPSSO_META_ATTACHED_NAME );
 				}
 
 				/**
 				 * Delete user settings and meta.
 				 */
 				delete_metadata( $meta_type = 'user', $object_id = null, WPSSO_META_NAME, $meta_value = null, $delete_all = true );
+
+				delete_metadata( $meta_type = 'user', $object_id = null, WPSSO_META_ATTACHED_NAME, $meta_value = null, $delete_all = true );
 
 				delete_metadata( $meta_type = 'user', $object_id = null, WPSSO_PREF_NAME, $meta_value = null, $delete_all = true );
 

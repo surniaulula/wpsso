@@ -5584,7 +5584,7 @@ msgid ""
 "refresh of the plugin update information."
 msgstr ""
 
-#: lib/messages.php:2544 lib/register.php:339
+#: lib/messages.php:2544 lib/register.php:345
 msgid ""
 "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version "
 "is outdated, unsupported, possibly insecure</a>, and may lack important "
@@ -6207,7 +6207,7 @@ msgctxt "image size label"
 msgid "Pinterest Pin It Image"
 msgstr ""
 
-#: lib/post.php:495 lib/register.php:330 lib/term.php:421 lib/user.php:394
+#: lib/post.php:495 lib/register.php:336 lib/term.php:421 lib/user.php:394
 #: lib/util.php:558 lib/util.php:3002
 msgid "%s warning:"
 msgstr ""
@@ -6438,11 +6438,11 @@ msgstr ""
 msgid "The %s plugin has been activated."
 msgstr ""
 
-#: lib/register.php:332 lib/register.php:341
+#: lib/register.php:338 lib/register.php:347
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr ""
 
-#: lib/register.php:343
+#: lib/register.php:349
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
