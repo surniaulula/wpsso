@@ -515,14 +515,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			$json_data         = null;
-			$page_type_url     = $this->get_schema_type_url( $page_type_id );
-			$filter_name       = SucomUtil::sanitize_hookname( $page_type_url );
-			$child_family_urls = array();
-
 			/**
 			 * Returns an array of type ids with gparents, parents, child (in that order).
 			 */
+			$child_family_urls = array();
+
 			foreach ( $this->get_schema_type_child_family( $page_type_id ) as $type_id ) {
 				$child_family_urls[] = $this->get_schema_type_url( $type_id );
 			}
@@ -531,38 +528,37 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log_arr( '$child_family_urls', $child_family_urls );
 			}
 
-			foreach ( $child_family_urls as $type_url ) {
+			$json_data = null;
 
-				$type_filter_name = SucomUtil::sanitize_hookname( $type_url );
-				$has_type_filter  = has_filter( $this->p->lca . '_json_data_' . $type_filter_name );	// Check only once.
+			foreach ( $child_family_urls as $num => $type_url ) {
 
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'type filter name is ' . $type_filter_name . ' and has filter is ' . 
-						( $has_type_filter ? 'true' : 'false' ) );
-				}
+				$type_hookname      = SucomUtil::sanitize_hookname( $type_url );
+				$data_filter_name   = $this->p->lca . '_json_data_' . $type_hookname;
+				$valid_filter_name  = $this->p->lca . '_json_data_validate_' . $type_hookname;
+				$method_filter_name = 'filter_json_data_' . $type_hookname;
 
 				/**
 				 * Add website, organization, and person markup to home page.
 				 */
-				if ( $mod[ 'is_home' ] && ! $has_type_filter && method_exists( __CLASS__, 'filter_json_data_' . $type_filter_name ) ) {
+				if ( has_filter( $data_filter_name ) ) {
+				
+					$json_data = apply_filters( $data_filter_name, $json_data, $mod, $mt_og, $page_type_id, $is_main );
 
-					$json_data = call_user_func( array( __CLASS__, 'filter_json_data_' . $type_filter_name ),
-						$json_data, $mod, $mt_og, $page_type_id, false );	// $is_main is always false for method.
+					if ( has_filter( $valid_filter_name ) ) {
 
-				} elseif ( $has_type_filter ) {
-
-					$json_data = apply_filters( $this->p->lca . '_json_data_' . $type_filter_name,
-						$json_data, $mod, $mt_og, $page_type_id, $is_main );
-
-				} else {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'no filters registered for ' . $type_filter_name );
+						$json_data = apply_filters( $valid_filter_name, $json_data, $mod, $mt_og, $page_type_id, $is_main );
 					}
+
+				} elseif ( $mod[ 'is_home' ] && method_exists( $this, $method_filter_name ) ) {
+
+					/**
+					 * $is_main is always false for method.
+					 */
+					$json_data = call_user_func( array( $this, $method_filter_name ), $json_data, $mod, $mt_og, $page_type_id, false );
 				}
 			}
 
-			if ( isset( $json_data[ 0 ] ) && ! SucomUtil::is_assoc( $json_data ) ) {	// Multiple json arrays returned.
+			if ( isset( $json_data[ 0 ] ) && SucomUtil::is_non_assoc( $json_data ) ) {	// Multiple json arrays returned.
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'multiple json data arrays returned' );

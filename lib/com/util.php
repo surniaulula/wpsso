@@ -1423,6 +1423,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		/**
 		 * Since WPSSO Core v1.21.0.
+		 *
+		 * Note that an empty array is not an associative array (ie. returns false for an empty array).
 		 */
 		public static function is_assoc( $mixed ) {
 
@@ -1444,6 +1446,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		/**
 		 * Since WPSSO Core v7.7.0.
+		 *
+		 * Note that an empty array is not an associative array (ie. returns false for an empty array).
 		 */
 		public static function is_non_assoc( $mixed ) {
 
@@ -1451,7 +1455,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( is_array( $mixed ) ) {	// Just in case.
 
-				if ( is_numeric( implode( array_keys( $mixed ) ) ) ) {
+				if ( empty( $mixed ) ) {	// Optimize.
+
+					$ret = true;
+
+				} elseif ( is_numeric( implode( array_keys( $mixed ) ) ) ) {
 
 					$ret = true;
 				}
