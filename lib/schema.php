@@ -1340,32 +1340,75 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/**
 		 * Javascript classes to hide/show table rows by the selected schema type value.
 		 */
-		public static function get_schema_type_row_class( $name = 'schema_type', $class_type_ids = null ) {
+		public static function get_schema_type_row_class( $name = 'schema_type' ) {
 
-			if ( empty( $class_type_ids ) || ! is_array( $class_type_ids ) ) {
-				$class_type_ids = array(
-					'book'           => 'book',
-					'creative_work'  => 'creative.work',
-					'course'         => 'course',
-					'event'          => 'event',
-					'how_to'         => 'how.to',
-					'job_posting'    => 'job.posting',
-					'local_business' => 'local.business',
-					'movie'          => 'movie',
-					'organization'   => 'organization',
-					'person'         => 'person',
-					'product'        => 'product',
-					'qapage'         => 'webpage.qa',
-					'recipe'         => 'recipe',
-					'review'         => 'review',
-					'review_claim'   => 'review.claim',
-					'software_app'   => 'software.application',
-				);
+			static $local_cache = null;
+
+			if ( isset( $local_cache[ $name ] ) ) {
+				return $local_cache[ $name ];
 			}
 
 			$wpsso =& Wpsso::get_instance();
 
-			$row_class = array();
+			$cache_md5_pre  = $wpsso->lca . '_t_';
+			$cache_exp_secs = $wpsso->util->get_cache_exp_secs( $cache_md5_pre );	// Default is month in seconds.
+
+			if ( $cache_exp_secs > 0 ) {
+
+				$cache_salt  = __METHOD__;
+				$cache_id    = $cache_md5_pre . md5( $cache_salt );
+				$local_cache = get_transient( $cache_id );	// Returns false when not found.
+
+				if ( isset( $local_cache[ $name ] ) ) {
+					return $local_cache[ $name ];
+				}
+			}
+
+			if ( ! is_array( $local_cache ) ) {
+				$local_cache = array();
+			}
+
+			$class_type_ids = array();
+
+			switch ( $name ) {
+
+				case 'schema_review_item_type':
+
+					$class_type_ids = array(
+						'book'           => 'book',
+						'creative_work'  => 'creative.work',
+						'movie'          => 'movie',
+						'product'        => 'product',
+						'software_app'   => 'software.application',
+					);
+
+					break;
+
+				case 'schema_type':
+
+					$class_type_ids = array(
+						'book'           => 'book',
+						'creative_work'  => 'creative.work',
+						'course'         => 'course',
+						'event'          => 'event',
+						'faq'            => 'webpage.faq',
+						'how_to'         => 'how.to',
+						'job_posting'    => 'job.posting',
+						'local_business' => 'local.business',
+						'movie'          => 'movie',
+						'organization'   => 'organization',
+						'person'         => 'person',
+						'product'        => 'product',
+						'qa'             => 'webpage.qa',
+						'question'       => 'question',
+						'recipe'         => 'recipe',
+						'review'         => 'review',
+						'review_claim'   => 'review.claim',
+						'software_app'   => 'software.application',
+					);
+
+					break;
+			}
 
 			foreach ( $class_type_ids as $class_name => $type_id ) {
 
@@ -1384,10 +1427,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						break;
 				}
 
-				$row_class[ $class_name ] = $wpsso->schema->get_children_css_class( $type_id, $class_prefix = 'hide_' . $name, $exclude_match );
+				$local_cache[ $name ][ $class_name ] = $wpsso->schema->get_children_css_class( $type_id,
+					$class_prefix = 'hide_' . $name, $exclude_match );
 			}
 
-			return $row_class;
+			if ( $cache_exp_secs > 0 ) {
+				set_transient( $cache_id, $local_cache, $cache_exp_secs );
+			}
+
+			return $local_cache[ $name ];
 		}
 
 		/**
@@ -1463,9 +1511,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( empty( $class_prefix ) ) {
+
 				$css_classes  = '';
 				$class_prefix = '';
+
 			} else {
+
 				$css_classes  = $class_prefix;
 				$class_prefix = SucomUtil::sanitize_hookname( $class_prefix ) . '_';
 			}
@@ -1473,7 +1524,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			foreach ( $this->get_schema_type_children( $type_id ) as $child ) {
 
 				if ( ! empty( $exclude_match ) ) {
+
 					if ( preg_match( $exclude_match, $child ) ) {
+
 						continue;
 					}
 				}

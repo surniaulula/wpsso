@@ -1987,6 +1987,68 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $msg_key ) {
 
+						case 'info-schema-faq':
+
+							/**
+							 * If the WPSSO FAQ add-on is active, avoid showing possible duplicate and confusing information.
+							 */
+							if ( ! empty( $this->p->avail[ 'p_ext' ][ 'faq' ] ) ) {
+
+								break;
+							}
+
+							$text = '<blockquote class="top-info">';
+
+							$text .= '<p>';
+
+							$text .= __( 'Schema FAQPage markup is a collection of Questions and Answers, and WordPress manages a collection of related content in two different ways:', 'wpsso' ) . ' ';
+
+							$text .= __( 'Schema FAQPage can be a parent page with Schema Question child pages, or a taxonomy (ie. categories, tags or custom taxonomies) term with Schema Question posts / pages assigned to that term.', 'wpsso' ) . ' ';
+							
+							$text .= '</p>';
+
+							$text .= '</blockquote>';
+
+							break;
+
+						case 'info-schema-qa':
+
+							$text = '<blockquote class="top-info">';
+
+							$text .= '<p>';
+
+							$text .= __( 'Google requires that Schema QAPage markup include one or more user submitted and upvoted answers.', 'wpsso' ) . ' ';
+							
+							$text .= __( 'The Schema QAPage document title is a summary of the question and the content text is the complete question.', 'wpsso' ) . ' ';
+
+							$text .= '</p>';
+
+							$text .= '</blockquote>';
+						
+							break;
+
+						case 'info-schema-question':
+
+							$text = '<blockquote class="top-info">';
+
+							$text .= '<p>';
+
+							/**
+							 * If the WPSSO FAQ add-on is active, avoid showing possible duplicate and confusing information.
+							 */
+							if ( empty( $this->p->avail[ 'p_ext' ][ 'faq' ] ) ) {
+
+								$text .= __( 'Schema Question can be a child page of a Schema FAQPage parent, or assigned to a Schema FAQPage taxonomy term.', 'wpsso' ) . ' ';
+							}
+
+							$text .= __( 'The Schema Question document title is a summary of the question and the content text is the complete answer for that question.', 'wpsso' ) . ' ';
+
+							$text .= '</p>';
+
+							$text .= '</blockquote>';
+
+							break;
+
 						case 'info-priority-media':	// Shown in the Document SSO > Priority Media tab.
 
 							$upload_url = get_admin_url( $blog_id = null, 'upload.php' );
@@ -2842,12 +2904,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			list( $ext, $p_ext ) = $this->get_ext_p_ext( $ext );
 
 			if ( empty( $ext ) ) {							// Just in case.
+
 				return '';
+
 			} elseif ( $this->p->lca === $ext ) {					// The main plugin is not considered an add-on.
+
 				return '';
+
 			} elseif ( ! empty( $this->p->avail[ 'p_ext' ][ $p_ext ] ) ) {		// Add-on is already active.
+
 				return '';
+
 			} elseif ( empty( $this->p->cf[ 'plugin' ][ $ext ][ 'short' ] ) ) {	// Unknown add-on.
+
 				return '';
 			}
 
@@ -2947,17 +3016,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			$table_rows[ 'schema_disabled' ] = '<tr><td align="center" colspan="' . $col_span . '">' . $this->schema_disabled() . '</td></tr>';
 
 			return $table_rows;
-		}
-
-		public function get_schema_qapage_msg() {
-
-			$html = '<p class="status-msg">';
-
-			$html .= __( 'Please note that Google requires that Schema QAPage markup include one or more user submitted and upvoted answers.', 'wpsso' ) . ' ';
-
-			$html .= '</p>';
-
-			return $html;
 		}
 
 		private function get_ext_p_ext( $ext ) {

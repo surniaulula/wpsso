@@ -89,9 +89,26 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			$def_canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = false );
 
 			/**
+			 * Javascript classes to hide/show rows by selected schema type.
+			 */
+			$schema_type_row_class = WpssoSchema::get_schema_type_row_class( 'schema_type' );
+
+			/**
 			 * Metabox form rows.
 			 */
 			$form_rows = array(
+				'info_schema_faq' => array(
+					'tr_class'  => $schema_type_row_class[ 'faq' ],
+					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-schema-faq' ) . '</td>',
+				),
+				'info_schema_qa' => array(
+					'tr_class'  => $schema_type_row_class[ 'qa' ],
+					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-schema-qa' ) . '</td>',
+				),
+				'info_schema_question' => array(
+					'tr_class'  => $schema_type_row_class[ 'question' ],
+					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-schema-question' ) . '</td>',
+				),
 				'attach_img_crop' => $mod[ 'post_type' ] === 'attachment' && wp_attachment_is_image( $mod[ 'id' ] ) ? array(
 					'th_class' => 'medium',
 					'label'    => _x( 'Preferred Cropping', 'option label', 'wpsso' ),
@@ -219,7 +236,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			 * Metabox form rows.
 			 */
 			$form_rows = array(
-				'info-priority-media' => array(
+				'info_priority_media' => array(
 					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-priority-media' ) . '</td>',
 				),
 				'subsection_opengraph' => array(
