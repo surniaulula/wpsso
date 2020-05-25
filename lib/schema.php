@@ -290,7 +290,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$filter_name = $this->get_json_data_filter( $mod, $type_url );
 
-			return ! empty( $filter_name ) && has_filter( $filter_name ) ? true : false;
+			return empty( $filter_name ) ? false : has_filter( $filter_name );
 		}
 
 		public function get_json_data_filter( array $mod, $type_url = '' ) {
@@ -540,11 +540,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/**
 				 * Add website, organization, and person markup to home page.
 				 */
-				if ( has_filter( $data_filter_name ) ) {
+				if ( false !== has_filter( $data_filter_name ) ) {
 				
 					$json_data = apply_filters( $data_filter_name, $json_data, $mod, $mt_og, $page_type_id, $is_main );
 
-					if ( has_filter( $valid_filter_name ) ) {
+					if ( false !== has_filter( $valid_filter_name ) ) {
 
 						$json_data = apply_filters( $valid_filter_name, $json_data, $mod, $mt_og, $page_type_id, $is_main );
 					}

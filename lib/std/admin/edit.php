@@ -9,9 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
-if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
+if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 
-	class WpssoStdAdminMetaEdit {
+	class WpssoStdAdminEdit {
 
 		private $p;
 
@@ -24,20 +24,12 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 			}
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'meta_edit_rows' => array(
-					'post_edit_rows' => 4,
-					'term_edit_rows' => 4,
-					'user_edit_rows' => 4,
-				),
-				'meta_media_rows' => array(
-					'post_media_rows' => 4,
-					'term_media_rows' => 4,
-					'user_media_rows' => 4,
-				),
-			) );
+				'metabox_sso_edit_rows'  => 4,
+				'metabox_sso_media_rows' => 4,
+			), -10000 );
 		}
 
-		public function filter_meta_edit_rows( $table_rows, $form, $head, $mod ) {
+		public function filter_metabox_sso_edit_rows( $table_rows, $form, $head_info, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -195,10 +187,10 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 				),
 			);
 
-			return $form->get_md_form_rows( $table_rows, $form_rows, $head, $mod );
+			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
 		}
 
-		public function filter_meta_media_rows( $table_rows, $form, $head, $mod ) {
+		public function filter_metabox_sso_media_rows( $table_rows, $form, $head_info, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -309,7 +301,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 			/**
 			 * Twitter Card
 			 */
-			list( $card_type, $card_label, $size_name, $tc_prefix ) = $this->p->tc->get_card_info( $mod, $head );
+			list( $card_type, $card_label, $size_name, $tc_prefix ) = $this->p->tc->get_card_info( $mod, $head_info );
 
 			/**
 			 * App and Player cards do not have a $size_name.
@@ -371,7 +363,7 @@ if ( ! class_exists( 'WpssoStdAdminMetaEdit' ) ) {
 				);
 			}
 
-			return $form->get_md_form_rows( $table_rows, $form_rows, $head, $mod );
+			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
 		}
 	}
 }

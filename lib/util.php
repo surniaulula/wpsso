@@ -2850,7 +2850,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$filter_name  = $args[ 0 ];
 			$filter_value = $args[ 1 ];
 
-			if ( ! has_filter( $filter_name ) ) {	// Skip if no filters.
+			if ( false === has_filter( $filter_name ) ) {	// Skip if no filters.
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: ' . $filter_name . ' has no filter hooks' );

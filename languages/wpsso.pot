@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 7.7.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 7.7.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -11,6 +11,41 @@ msgstr ""
 "PO-Revision-Date: 2020-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: lib/abstracts/wp-meta.php:585 lib/abstracts/wp-meta.php:594
+msgctxt "metabox tab"
+msgid "Customize"
+msgstr ""
+
+#: lib/abstracts/wp-meta.php:586 lib/abstracts/wp-meta.php:595
+#: lib/messages.php:2311
+msgctxt "metabox tab"
+msgid "Priority Media"
+msgstr ""
+
+#: lib/abstracts/wp-meta.php:587
+msgctxt "metabox tab"
+msgid "Preview"
+msgstr ""
+
+#: lib/abstracts/wp-meta.php:588
+msgctxt "metabox tab"
+msgid "oEmbed"
+msgstr ""
+
+#: lib/abstracts/wp-meta.php:589
+msgctxt "metabox tab"
+msgid "Head Markup"
+msgstr ""
+
+#: lib/abstracts/wp-meta.php:590
+msgctxt "metabox tab"
+msgid "Validate"
+msgstr ""
+
+#: lib/abstracts/wp-meta.php:880
+msgid "Nonce token validation failed for the submitted form (update ignored)."
+msgstr ""
 
 #: lib/admin-head.php:65
 msgid ""
@@ -259,7 +294,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:1041 lib/post.php:837 lib/term.php:667 lib/user.php:640
+#: lib/admin.php:1041 lib/post.php:835 lib/term.php:667 lib/user.php:640
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -293,7 +328,7 @@ msgstr ""
 
 #: lib/admin.php:1105 lib/admin.php:1116 lib/messages.php:782
 #: lib/submenu/tools.php:45 lib/submenu/tools.php:103 lib/user.php:48
-#: lib/user.php:1531 lib/user.php:1636 lib/user.php:1762
+#: lib/user.php:1533 lib/user.php:1638 lib/user.php:1764
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -1276,6 +1311,263 @@ msgid ""
 "not compatible with the purpose of sharing content on social sites &mdash; "
 "please uncheck the option to allow search engines and social sites to access "
 "your content."
+msgstr ""
+
+#: lib/edit.php:97
+msgctxt "option label"
+msgid "Preferred Cropping"
+msgstr ""
+
+#: lib/edit.php:103 lib/script.php:194
+msgctxt "option label"
+msgid "Schema Type"
+msgstr ""
+
+#: lib/edit.php:117
+msgctxt "option label"
+msgid "Open Graph Type"
+msgstr ""
+
+#: lib/edit.php:124
+msgctxt "option label"
+msgid "Default Title"
+msgstr ""
+
+#: lib/edit.php:131
+msgctxt "option label"
+msgid "Default Description"
+msgstr ""
+
+#: lib/edit.php:139
+msgctxt "option label"
+msgid "Pinterest Description"
+msgstr ""
+
+#: lib/edit.php:147
+msgctxt "option label"
+msgid "Twitter Card Description"
+msgstr ""
+
+#: lib/edit.php:155
+msgctxt "option label"
+msgid "Search Description"
+msgstr ""
+
+#: lib/edit.php:163 lib/edit.php:337
+msgctxt "option label"
+msgid "Sharing URL"
+msgstr ""
+
+#: lib/edit.php:171 lib/edit.php:341
+msgctxt "option label"
+msgid "Canonical URL"
+msgstr ""
+
+#: lib/edit.php:184
+msgctxt "metabox title"
+msgid "Article Information"
+msgstr ""
+
+#: lib/edit.php:189
+msgctxt "option label"
+msgid "Article Section"
+msgstr ""
+
+#: lib/edit.php:228
+msgctxt "metabox title"
+msgid "Facebook / Open Graph and Default Media"
+msgstr ""
+
+#: lib/edit.php:233
+msgctxt "metabox title"
+msgid "Priority Image Information"
+msgstr ""
+
+#: lib/edit.php:238
+msgctxt "option label"
+msgid "Maximum Images"
+msgstr ""
+
+#: lib/edit.php:244 lib/gettext-pro.php:120 lib/gettext-pro.php:122
+#: lib/pro/admin/edit.php:287 lib/pro/admin/edit.php:330
+#: lib/std/admin/edit.php:287 lib/std/admin/edit.php:332
+msgctxt "option label"
+msgid "Image ID"
+msgstr ""
+
+#: lib/edit.php:250 lib/gettext-pro.php:121 lib/gettext-pro.php:123
+#: lib/pro/admin/edit.php:295 lib/pro/admin/edit.php:338
+#: lib/std/admin/edit.php:296 lib/std/admin/edit.php:341
+msgctxt "option label"
+msgid "or an Image URL"
+msgstr ""
+
+#: lib/edit.php:316
+msgctxt "preview image error"
+msgid "Image Size Smaller<br/>than Suggested Minimum<br/>of %s"
+msgstr ""
+
+#: lib/edit.php:325
+msgctxt "preview image error"
+msgid "Image Size Unknown<br/>or Not Available"
+msgstr ""
+
+#: lib/edit.php:332
+msgctxt "preview image error"
+msgid "No Open Graph Image Found"
+msgstr ""
+
+#: lib/edit.php:347
+msgctxt "option label"
+msgid "Shortlink URL"
+msgstr ""
+
+#: lib/edit.php:351
+msgctxt "option label"
+msgid "Facebook / Open Graph Example"
+msgstr ""
+
+#: lib/edit.php:360 lib/page.php:968
+msgctxt "default title"
+msgid "No Title"
+msgstr ""
+
+#: lib/edit.php:363 lib/gettext-pro.php:162 lib/page.php:737
+#: lib/pro/social/buddypress.php:656
+msgctxt "default description"
+msgid "No Description."
+msgstr ""
+
+#: lib/edit.php:395
+msgctxt "option label"
+msgid "oEmbed JSON URL"
+msgstr ""
+
+#: lib/edit.php:398
+msgctxt "option label"
+msgid "oEmbed XML URL"
+msgstr ""
+
+#: lib/edit.php:402
+msgctxt "option label"
+msgid "oEmbed Data"
+msgstr ""
+
+#: lib/edit.php:412
+msgid "(see below)"
+msgstr ""
+
+#: lib/edit.php:420
+msgid "No oEmbed data found."
+msgstr ""
+
+#: lib/edit.php:424
+msgctxt "option label"
+msgid "oEmbed HTML"
+msgstr ""
+
+#: lib/edit.php:433
+msgid "No oEmbed HTML found."
+msgstr ""
+
+#: lib/edit.php:549
+msgctxt "option label"
+msgid "Facebook Sharing Debugger"
+msgstr ""
+
+#: lib/edit.php:550
+msgctxt "submit button"
+msgid "Validate Open Graph"
+msgstr ""
+
+#: lib/edit.php:554
+msgctxt "option label"
+msgid "Facebook Microdata Debug Tool"
+msgstr ""
+
+#: lib/edit.php:555
+msgctxt "submit button"
+msgid "Validate Microdata"
+msgstr ""
+
+#: lib/edit.php:561
+msgctxt "option label"
+msgid "Google PageSpeed Insights"
+msgstr ""
+
+#: lib/edit.php:562
+msgctxt "submit button"
+msgid "Validate PageSpeed"
+msgstr ""
+
+#: lib/edit.php:566
+msgctxt "option label"
+msgid "Google Structured Data Test"
+msgstr ""
+
+#: lib/edit.php:567
+msgctxt "submit button"
+msgid "Validate Structured Data"
+msgstr ""
+
+#: lib/edit.php:571
+msgctxt "option label"
+msgid "Google Rich Results Test"
+msgstr ""
+
+#: lib/edit.php:572
+msgctxt "submit button"
+msgid "Validate Rich Results"
+msgstr ""
+
+#: lib/edit.php:576
+msgctxt "option label"
+msgid "LinkedIn Post Inspector"
+msgstr ""
+
+#: lib/edit.php:577
+msgctxt "submit button"
+msgid "Validate Metadata"
+msgstr ""
+
+#: lib/edit.php:581
+msgctxt "option label"
+msgid "Pinterest Rich Pins Validator"
+msgstr ""
+
+#: lib/edit.php:582
+msgctxt "submit button"
+msgid "Validate Rich Pins"
+msgstr ""
+
+#: lib/edit.php:586
+msgctxt "option label"
+msgid "Twitter Card Validator"
+msgstr ""
+
+#: lib/edit.php:587
+msgctxt "submit button"
+msgid "Validate Twitter Card"
+msgstr ""
+
+#: lib/edit.php:593
+msgctxt "option label"
+msgid "The AMP Project Validator"
+msgstr ""
+
+#: lib/edit.php:594
+msgctxt "submit button"
+msgid "Validate AMP Markup"
+msgstr ""
+
+#: lib/edit.php:598
+msgctxt "option label"
+msgid "W3C Markup Validation"
+msgstr ""
+
+#: lib/edit.php:599
+msgctxt "submit button"
+msgid "Validate HTML Markup"
 msgstr ""
 
 #: lib/gettext-config.php:6
@@ -2940,165 +3232,148 @@ msgctxt "option label"
 msgid "Force Autoplay when Possible"
 msgstr ""
 
-#: lib/gettext-pro.php:96 lib/pro/admin/meta-edit.php:70
-#: lib/std/admin/meta-edit.php:64
+#: lib/gettext-pro.php:96 lib/pro/admin/edit.php:62 lib/std/admin/edit.php:56
 msgctxt "metabox title"
 msgid "Basic Product Information"
 msgstr ""
 
-#: lib/gettext-pro.php:97 lib/messages.php:2685 lib/pro/admin/meta-edit.php:80
-#: lib/std/admin/meta-edit.php:78
+#: lib/gettext-pro.php:97 lib/messages.php:2685 lib/pro/admin/edit.php:72
+#: lib/std/admin/edit.php:70
 msgctxt "option label"
 msgid "Product Category"
 msgstr ""
 
-#: lib/gettext-pro.php:98 lib/messages.php:2681 lib/pro/admin/meta-edit.php:95
-#: lib/std/admin/meta-edit.php:86
+#: lib/gettext-pro.php:98 lib/messages.php:2681 lib/pro/admin/edit.php:87
+#: lib/std/admin/edit.php:78
 msgctxt "option label"
 msgid "Product Brand"
 msgstr ""
 
-#: lib/gettext-pro.php:99 lib/messages.php:2749 lib/pro/admin/meta-edit.php:102
-#: lib/std/admin/meta-edit.php:94
+#: lib/gettext-pro.php:99 lib/messages.php:2749 lib/pro/admin/edit.php:94
+#: lib/std/admin/edit.php:86
 msgctxt "option label"
 msgid "Product Price"
 msgstr ""
 
-#: lib/gettext-pro.php:100 lib/messages.php:2677
-#: lib/pro/admin/meta-edit.php:112 lib/std/admin/meta-edit.php:103
+#: lib/gettext-pro.php:100 lib/messages.php:2677 lib/pro/admin/edit.php:104
+#: lib/std/admin/edit.php:95
 msgctxt "option label"
 msgid "Product Availability"
 msgstr ""
 
-#: lib/gettext-pro.php:101 lib/messages.php:2694
-#: lib/pro/admin/meta-edit.php:120 lib/std/admin/meta-edit.php:112
+#: lib/gettext-pro.php:101 lib/messages.php:2694 lib/pro/admin/edit.php:112
+#: lib/std/admin/edit.php:104
 msgctxt "option label"
 msgid "Product Condition"
 msgstr ""
 
-#: lib/gettext-pro.php:102 lib/messages.php:2741
-#: lib/pro/admin/meta-edit.php:128 lib/std/admin/meta-edit.php:121
+#: lib/gettext-pro.php:102 lib/messages.php:2741 lib/pro/admin/edit.php:120
+#: lib/std/admin/edit.php:113
 msgctxt "option label"
 msgid "Product Material"
 msgstr ""
 
-#: lib/gettext-pro.php:103 lib/messages.php:2690
-#: lib/pro/admin/meta-edit.php:135 lib/std/admin/meta-edit.php:129
+#: lib/gettext-pro.php:103 lib/messages.php:2690 lib/pro/admin/edit.php:127
+#: lib/std/admin/edit.php:121
 msgctxt "option label"
 msgid "Product Color"
 msgstr ""
 
-#: lib/gettext-pro.php:104 lib/messages.php:2761
-#: lib/pro/admin/meta-edit.php:142 lib/std/admin/meta-edit.php:137
+#: lib/gettext-pro.php:104 lib/messages.php:2761 lib/pro/admin/edit.php:134
+#: lib/std/admin/edit.php:129
 msgctxt "option label"
 msgid "Product Target Gender"
 msgstr ""
 
-#: lib/gettext-pro.php:105 lib/messages.php:2757
-#: lib/pro/admin/meta-edit.php:150 lib/std/admin/meta-edit.php:146
+#: lib/gettext-pro.php:105 lib/messages.php:2757 lib/pro/admin/edit.php:142
+#: lib/std/admin/edit.php:138
 msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gettext-pro.php:106 lib/messages.php:2770
-#: lib/pro/admin/meta-edit.php:157 lib/std/admin/meta-edit.php:154
+#: lib/gettext-pro.php:106 lib/messages.php:2770 lib/pro/admin/edit.php:149
+#: lib/std/admin/edit.php:146
 msgctxt "option label"
 msgid "Product Weight"
 msgstr ""
 
-#: lib/gettext-pro.php:107 lib/messages.php:2753
-#: lib/pro/admin/meta-edit.php:165 lib/std/admin/meta-edit.php:163
+#: lib/gettext-pro.php:107 lib/messages.php:2753 lib/pro/admin/edit.php:157
+#: lib/std/admin/edit.php:155
 msgctxt "option label"
 msgid "Product SKU"
 msgstr ""
 
-#: lib/gettext-pro.php:108 lib/messages.php:2745
-#: lib/pro/admin/meta-edit.php:172 lib/std/admin/meta-edit.php:171
+#: lib/gettext-pro.php:108 lib/messages.php:2745 lib/pro/admin/edit.php:164
+#: lib/std/admin/edit.php:163
 msgctxt "option label"
 msgid "Product MPN"
 msgstr ""
 
-#: lib/gettext-pro.php:109 lib/messages.php:2732
-#: lib/pro/admin/meta-edit.php:179 lib/std/admin/meta-edit.php:179
+#: lib/gettext-pro.php:109 lib/messages.php:2732 lib/pro/admin/edit.php:171
+#: lib/std/admin/edit.php:171
 msgctxt "option label"
 msgid "Product ISBN"
 msgstr ""
 
-#: lib/gettext-pro.php:110 lib/gettext-pro.php:124
-#: lib/pro/admin/meta-edit.php:191 lib/pro/admin/meta-edit.php:361
-#: lib/std/admin/meta-edit.php:190 lib/std/admin/meta-edit.php:364
+#: lib/gettext-pro.php:110 lib/gettext-pro.php:124 lib/pro/admin/edit.php:183
+#: lib/pro/admin/edit.php:353 lib/std/admin/edit.php:182
+#: lib/std/admin/edit.php:356
 msgctxt "metabox title"
 msgid "Schema JSON-LD Markup / Rich Results"
 msgstr ""
 
-#: lib/gettext-pro.php:111 lib/pro/admin/meta-edit.php:222
-#: lib/std/admin/meta-edit.php:213
+#: lib/gettext-pro.php:111 lib/pro/admin/edit.php:214
+#: lib/std/admin/edit.php:205
 msgctxt "metabox title"
 msgid "Priority Video Information"
 msgstr ""
 
-#: lib/gettext-pro.php:112 lib/pro/admin/meta-edit.php:226
-#: lib/std/admin/meta-edit.php:221
+#: lib/gettext-pro.php:112 lib/pro/admin/edit.php:218
+#: lib/std/admin/edit.php:213
 msgctxt "option label"
 msgid "Include Preview Images"
 msgstr ""
 
-#: lib/gettext-pro.php:113 lib/pro/admin/meta-edit.php:233
-#: lib/std/admin/meta-edit.php:229
+#: lib/gettext-pro.php:113 lib/pro/admin/edit.php:225
+#: lib/std/admin/edit.php:221
 msgctxt "option label"
 msgid "Maximum Videos"
 msgstr ""
 
-#: lib/gettext-pro.php:114 lib/pro/admin/meta-edit.php:240
-#: lib/std/admin/meta-edit.php:237
+#: lib/gettext-pro.php:114 lib/pro/admin/edit.php:232
+#: lib/std/admin/edit.php:229
 msgctxt "option label"
 msgid "Video Dimensions"
 msgstr ""
 
-#: lib/gettext-pro.php:115 lib/messages.php:2792
-#: lib/pro/admin/meta-edit.php:246 lib/std/admin/meta-edit.php:244
+#: lib/gettext-pro.php:115 lib/messages.php:2792 lib/pro/admin/edit.php:238
+#: lib/std/admin/edit.php:236
 msgctxt "option label"
 msgid "Video Embed HTML"
 msgstr ""
 
-#: lib/gettext-pro.php:116 lib/pro/admin/meta-edit.php:252
-#: lib/std/admin/meta-edit.php:251
+#: lib/gettext-pro.php:116 lib/pro/admin/edit.php:244
+#: lib/std/admin/edit.php:243
 msgctxt "option label"
 msgid "or a Video URL"
 msgstr ""
 
-#: lib/gettext-pro.php:117 lib/pro/admin/meta-edit.php:259
-#: lib/std/admin/meta-edit.php:259
+#: lib/gettext-pro.php:117 lib/pro/admin/edit.php:251
+#: lib/std/admin/edit.php:251
 msgctxt "option label"
 msgid "Video Name / Title"
 msgstr ""
 
-#: lib/gettext-pro.php:118 lib/pro/admin/meta-edit.php:267
-#: lib/std/admin/meta-edit.php:267
+#: lib/gettext-pro.php:118 lib/pro/admin/edit.php:259
+#: lib/std/admin/edit.php:259
 msgctxt "option label"
 msgid "Video Description"
 msgstr ""
 
-#: lib/gettext-pro.php:119 lib/pro/admin/meta-edit.php:289
-#: lib/std/admin/meta-edit.php:288
+#: lib/gettext-pro.php:119 lib/pro/admin/edit.php:281
+#: lib/std/admin/edit.php:280
 msgctxt "metabox title"
 msgid "Pinterest Pin It"
-msgstr ""
-
-#: lib/gettext-pro.php:120 lib/gettext-pro.php:122
-#: lib/pro/admin/meta-edit.php:295 lib/pro/admin/meta-edit.php:338
-#: lib/std/admin/meta-edit.php:295 lib/std/admin/meta-edit.php:340
-#: lib/wp-meta.php:845
-msgctxt "option label"
-msgid "Image ID"
-msgstr ""
-
-#: lib/gettext-pro.php:121 lib/gettext-pro.php:123
-#: lib/pro/admin/meta-edit.php:303 lib/pro/admin/meta-edit.php:346
-#: lib/std/admin/meta-edit.php:304 lib/std/admin/meta-edit.php:349
-#: lib/wp-meta.php:851
-msgctxt "option label"
-msgid "or an Image URL"
 msgstr ""
 
 #: lib/gettext-pro.php:125 lib/pro/ecom/woocommerce.php:55
@@ -3225,12 +3500,6 @@ msgid ""
 "additional BuddyPress Profile Field for members to enter their profile "
 "description, enter the field name here (example: Biographical Info, About "
 "Me, etc.)."
-msgstr ""
-
-#: lib/gettext-pro.php:162 lib/page.php:737 lib/pro/social/buddypress.php:656
-#: lib/wp-meta.php:965
-msgctxt "default description"
-msgid "No Description."
 msgstr ""
 
 #. translators: %s is the service id.
@@ -5392,11 +5661,6 @@ msgctxt "plugin action link"
 msgid "Purchase %s Add-on"
 msgstr ""
 
-#: lib/messages.php:2311 lib/wp-meta.php:586 lib/wp-meta.php:595
-msgctxt "metabox tab"
-msgid "Priority Media"
-msgstr ""
-
 #: lib/messages.php:2313
 msgid ""
 "A larger custom image can be selected in the %1$s metabox under the %2$s tab."
@@ -6197,163 +6461,158 @@ msgctxt "default title"
 msgid "%s Archive"
 msgstr ""
 
-#: lib/page.php:968 lib/wp-meta.php:962
-msgctxt "default title"
-msgid "No Title"
-msgstr ""
-
 #: lib/pinterest.php:119
 msgctxt "image size label"
 msgid "Pinterest Pin It Image"
 msgstr ""
 
-#: lib/post.php:495 lib/register.php:336 lib/term.php:421 lib/user.php:394
+#: lib/post.php:493 lib/register.php:336 lib/term.php:421 lib/user.php:394
 #: lib/util.php:558 lib/util.php:3002
 msgid "%s warning:"
 msgstr ""
 
-#: lib/post.php:496 lib/term.php:422 lib/user.php:396 lib/util.php:560
+#: lib/post.php:494 lib/term.php:422 lib/user.php:396 lib/util.php:560
 #: lib/util.php:3004
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
-#: lib/post.php:497
+#: lib/post.php:495
 msgid ""
 "Slow query detected - get_posts() took %1$0.3f secs to get the children of "
 "post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:781 lib/post.php:1351 lib/schema.php:2990 lib/term.php:624
+#: lib/post.php:779 lib/post.php:1349 lib/schema.php:2990 lib/term.php:624
 #: lib/user.php:596
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/post.php:973
+#: lib/post.php:971
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:1004
+#: lib/post.php:1002
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:1006
+#: lib/post.php:1004
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:1007
+#: lib/post.php:1005
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:1033
+#: lib/post.php:1031
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:1035
+#: lib/post.php:1033
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:1037
+#: lib/post.php:1035
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:1038
+#: lib/post.php:1036
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:1050 lib/util.php:1448
+#: lib/post.php:1048 lib/util.php:1448
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1062
+#: lib/post.php:1060
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1075
+#: lib/post.php:1073
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1088
+#: lib/post.php:1086
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1110
+#: lib/post.php:1108
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:1151
+#: lib/post.php:1149
 msgid "The webpage at %1$s does not include any Schema JSON-LD script(s)."
 msgstr ""
 
-#: lib/post.php:1153
+#: lib/post.php:1151
 msgid ""
 "Complete and accurate Schema JSON-LD markup is highly recommended for better "
 "ranking and click-through rates in search results."
 msgstr ""
 
-#: lib/post.php:1155
+#: lib/post.php:1153
 msgid ""
 "Consider activating the %1$s add-on to include Schema JSON-LD markup for "
 "Google Rich Results."
 msgstr ""
 
-#: lib/post.php:1173
+#: lib/post.php:1171
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:1189
+#: lib/post.php:1187
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1189
+#: lib/post.php:1187
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML &mdash; review the <a href=\"%1$s\">W3C Markup Validation "
 "Service</a> results and correct any errors."
 msgstr ""
 
-#: lib/post.php:1189
+#: lib/post.php:1187
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:1223
+#: lib/post.php:1221
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1225
+#: lib/post.php:1223
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1233
+#: lib/post.php:1231
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1236
+#: lib/post.php:1234
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1238
+#: lib/post.php:1236
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1408
+#: lib/post.php:1406
 msgid "Save a draft or publish to display these options."
 msgstr ""
 
@@ -6511,11 +6770,6 @@ msgstr ""
 
 #: lib/schema.php:629
 msgid "adding schema"
-msgstr ""
-
-#: lib/script.php:194 lib/wp-meta.php:704
-msgctxt "option label"
-msgid "Schema Type"
 msgstr ""
 
 #: lib/script.php:203 lib/script.php:288
@@ -7060,7 +7314,7 @@ msgid ""
 "%2$d in taxonomy %3$s (%4$s)."
 msgstr ""
 
-#: lib/term.php:871
+#: lib/term.php:873
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -7100,56 +7354,56 @@ msgid ""
 "user ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/user.php:868
+#: lib/user.php:870
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:951
+#: lib/user.php:953
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:952
+#: lib/user.php:954
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:953
+#: lib/user.php:955
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1361
+#: lib/user.php:1363
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1550
+#: lib/user.php:1552
 msgid ""
 "Aborting task to add the %1$s role to content creators - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1565
+#: lib/user.php:1567
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1602
+#: lib/user.php:1604
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1604 lib/user.php:1704 lib/util-cache.php:151
+#: lib/user.php:1606 lib/user.php:1706 lib/util-cache.php:151
 #: lib/util-cache.php:636
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/user.php:1655
+#: lib/user.php:1657
 msgid ""
 "Aborting task to remove the %1$s role from all users - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1670
+#: lib/user.php:1672
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1702
+#: lib/user.php:1704
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 
@@ -7364,282 +7618,26 @@ msgstr ""
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 
-#: lib/wp-meta.php:585 lib/wp-meta.php:594
-msgctxt "metabox tab"
-msgid "Customize"
-msgstr ""
-
-#: lib/wp-meta.php:587
-msgctxt "metabox tab"
-msgid "Preview"
-msgstr ""
-
-#: lib/wp-meta.php:588
-msgctxt "metabox tab"
-msgid "oEmbed"
-msgstr ""
-
-#: lib/wp-meta.php:589
-msgctxt "metabox tab"
-msgid "Head Markup"
-msgstr ""
-
-#: lib/wp-meta.php:590
-msgctxt "metabox tab"
-msgid "Validate"
-msgstr ""
-
-#: lib/wp-meta.php:698
-msgctxt "option label"
-msgid "Preferred Cropping"
-msgstr ""
-
-#: lib/wp-meta.php:718
-msgctxt "option label"
-msgid "Open Graph Type"
-msgstr ""
-
-#: lib/wp-meta.php:725
-msgctxt "option label"
-msgid "Default Title"
-msgstr ""
-
-#: lib/wp-meta.php:732
-msgctxt "option label"
-msgid "Default Description"
-msgstr ""
-
-#: lib/wp-meta.php:740
-msgctxt "option label"
-msgid "Pinterest Description"
-msgstr ""
-
-#: lib/wp-meta.php:748
-msgctxt "option label"
-msgid "Twitter Card Description"
-msgstr ""
-
-#: lib/wp-meta.php:756
-msgctxt "option label"
-msgid "Search Description"
-msgstr ""
-
-#: lib/wp-meta.php:764 lib/wp-meta.php:939
-msgctxt "option label"
-msgid "Sharing URL"
-msgstr ""
-
-#: lib/wp-meta.php:772 lib/wp-meta.php:943
-msgctxt "option label"
-msgid "Canonical URL"
-msgstr ""
-
-#: lib/wp-meta.php:785
-msgctxt "metabox title"
-msgid "Article Information"
-msgstr ""
-
-#: lib/wp-meta.php:790
-msgctxt "option label"
-msgid "Article Section"
-msgstr ""
-
-#: lib/wp-meta.php:829
-msgctxt "metabox title"
-msgid "Facebook / Open Graph and Default Media"
-msgstr ""
-
-#: lib/wp-meta.php:834
-msgctxt "metabox title"
-msgid "Priority Image Information"
-msgstr ""
-
-#: lib/wp-meta.php:839
-msgctxt "option label"
-msgid "Maximum Images"
-msgstr ""
-
-#: lib/wp-meta.php:918
-msgctxt "preview image error"
-msgid "Image Size Smaller<br/>than Suggested Minimum<br/>of %s"
-msgstr ""
-
-#: lib/wp-meta.php:927
-msgctxt "preview image error"
-msgid "Image Size Unknown<br/>or Not Available"
-msgstr ""
-
-#: lib/wp-meta.php:934
-msgctxt "preview image error"
-msgid "No Open Graph Image Found"
-msgstr ""
-
-#: lib/wp-meta.php:949
-msgctxt "option label"
-msgid "Shortlink URL"
-msgstr ""
-
-#: lib/wp-meta.php:953
-msgctxt "option label"
-msgid "Facebook / Open Graph Example"
-msgstr ""
-
-#: lib/wp-meta.php:998
-msgctxt "option label"
-msgid "oEmbed JSON URL"
-msgstr ""
-
-#: lib/wp-meta.php:1001
-msgctxt "option label"
-msgid "oEmbed XML URL"
-msgstr ""
-
-#: lib/wp-meta.php:1005
-msgctxt "option label"
-msgid "oEmbed Data"
-msgstr ""
-
-#: lib/wp-meta.php:1015
-msgid "(see below)"
-msgstr ""
-
-#: lib/wp-meta.php:1023
-msgid "No oEmbed data found."
-msgstr ""
-
-#: lib/wp-meta.php:1027
-msgctxt "option label"
-msgid "oEmbed HTML"
-msgstr ""
-
-#: lib/wp-meta.php:1036
-msgid "No oEmbed HTML found."
-msgstr ""
-
-#: lib/wp-meta.php:1152
-msgctxt "option label"
-msgid "Facebook Sharing Debugger"
-msgstr ""
-
-#: lib/wp-meta.php:1153
-msgctxt "submit button"
-msgid "Validate Open Graph"
-msgstr ""
-
-#: lib/wp-meta.php:1157
-msgctxt "option label"
-msgid "Facebook Microdata Debug Tool"
-msgstr ""
-
-#: lib/wp-meta.php:1158
-msgctxt "submit button"
-msgid "Validate Microdata"
-msgstr ""
-
-#: lib/wp-meta.php:1164
-msgctxt "option label"
-msgid "Google PageSpeed Insights"
-msgstr ""
-
-#: lib/wp-meta.php:1165
-msgctxt "submit button"
-msgid "Validate PageSpeed"
-msgstr ""
-
-#: lib/wp-meta.php:1169
-msgctxt "option label"
-msgid "Google Structured Data Test"
-msgstr ""
-
-#: lib/wp-meta.php:1170
-msgctxt "submit button"
-msgid "Validate Structured Data"
-msgstr ""
-
-#: lib/wp-meta.php:1174
-msgctxt "option label"
-msgid "Google Rich Results Test"
-msgstr ""
-
-#: lib/wp-meta.php:1175
-msgctxt "submit button"
-msgid "Validate Rich Results"
-msgstr ""
-
-#: lib/wp-meta.php:1179
-msgctxt "option label"
-msgid "LinkedIn Post Inspector"
-msgstr ""
-
-#: lib/wp-meta.php:1180
-msgctxt "submit button"
-msgid "Validate Metadata"
-msgstr ""
-
-#: lib/wp-meta.php:1184
-msgctxt "option label"
-msgid "Pinterest Rich Pins Validator"
-msgstr ""
-
-#: lib/wp-meta.php:1185
-msgctxt "submit button"
-msgid "Validate Rich Pins"
-msgstr ""
-
-#: lib/wp-meta.php:1189
-msgctxt "option label"
-msgid "Twitter Card Validator"
-msgstr ""
-
-#: lib/wp-meta.php:1190
-msgctxt "submit button"
-msgid "Validate Twitter Card"
-msgstr ""
-
-#: lib/wp-meta.php:1196
-msgctxt "option label"
-msgid "The AMP Project Validator"
-msgstr ""
-
-#: lib/wp-meta.php:1197
-msgctxt "submit button"
-msgid "Validate AMP Markup"
-msgstr ""
-
-#: lib/wp-meta.php:1201
-msgctxt "option label"
-msgid "W3C Markup Validation"
-msgstr ""
-
-#: lib/wp-meta.php:1202
-msgctxt "submit button"
-msgid "Validate HTML Markup"
-msgstr ""
-
-#: lib/wp-meta.php:1466
-msgid "Nonce token validation failed for the submitted form (update ignored)."
-msgstr ""
-
-#: wpsso.php:508
+#: wpsso.php:511
 msgid ""
 "WP debug logging mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:521
+#: wpsso.php:524
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."
 msgstr ""
 
 #. translators: %s is the short plugin name.
-#: wpsso.php:529
+#: wpsso.php:532
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:530
+#: wpsso.php:533
 msgid "Please disable debug mode when debugging is complete."
 msgstr ""
 

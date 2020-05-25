@@ -15,7 +15,7 @@
  * Requires At Least: 4.2
  * Tested Up To: 5.4.1
  * WC Tested Up To: 4.2.0
- * Version: 7.7.0-dev.1
+ * Version: 7.7.0-dev.2
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -43,6 +43,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $check;		// WpssoCheck.
 		public $conflict;	// WpssoConflict (admin plugin conflict checks).
 		public $debug;		// SucomDebug or SucomNoDebug.
+		public $edit;		// WpssoEdit
 		public $head;		// WpssoHead.
 		public $loader;		// WpssoLoader.
 		public $media;		// WpssoMedia (images, videos, etc.).
@@ -372,12 +373,14 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 				require_once WPSSO_PLUGINDIR . 'lib/admin.php';
 				require_once WPSSO_PLUGINDIR . 'lib/conflict.php';
+				require_once WPSSO_PLUGINDIR . 'lib/edit.php';
 				require_once WPSSO_PLUGINDIR . 'lib/messages.php';
 				require_once WPSSO_PLUGINDIR . 'lib/com/form.php';
 				require_once WPSSO_PLUGINDIR . 'lib/ext/parse-readme.php';
 
 				$this->admin    = new WpssoAdmin( $this );	// Admin menus and settings page loader.
 				$this->conflict = new WpssoConflict( $this );	// Admin plugin conflict checks.
+				$this->edit     = new WpssoEdit( $this );	// Admin editing page metabox table rows.
 				$this->msgs     = new WpssoMessages( $this );	// Admin tooltip messages.
 			}
 

@@ -3712,19 +3712,26 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		/**
 		 * Wrap a filter to return its original / unchanged value.
+		 *
 		 * Returns true if protection filters were added, false if protection filters are not required.
 		 */
 		public static function protect_filter_value( $filter_name, $auto_unprotect = true ) {
 
 			unset( self::$cache_protect[ $filter_name ] );	// Just in case.
 
-			if ( ! has_filter( $filter_name ) ) {			// No protection required.
+			/**
+			 * Don't bother if there's nothing to protect.
+			 */
+			if ( false === has_filter( $filter_name ) ) {
 				return false;
 			}
 
 			self::$cache_protect[ $filter_name ][ 'auto_unprotect' ] = $auto_unprotect;
 
-			if ( ! has_filter( $filter_name, array( __CLASS__, '__save_current_filter_value' ) ) ) {
+			/**
+			 * Only hook the save/restore protection filters once.
+			 */
+			if ( false === has_filter( $filter_name, array( __CLASS__, '__save_current_filter_value' ) ) ) {	// Can return a priority of 0.
 
 				$min_int = self::get_min_int();
 				$max_int = self::get_max_int();
@@ -3738,7 +3745,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function unprotect_filter_value( $filter_name ) {
 
-			if ( ! has_filter( $filter_name, array( __CLASS__, '__save_current_filter_value' ) ) ) {
+			/**
+			 * Don't bother if there are no protection filters.
+			 */
+			if ( false === has_filter( $filter_name, array( __CLASS__, '__save_current_filter_value' ) ) ) {	// Can return a priority of 0.
 				return false;
 			}
 

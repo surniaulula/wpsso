@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '7.7.0-dev.1',	// Plugin version.
+					'version'     => '7.7.0-dev.2',	// Plugin version.
 					'opt_version' => '740',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -82,9 +82,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'lib' => array(
 						'pro' => array(
 							'admin' => array(
-								'advanced'  => 'Extend Advanced',
-								'general'   => 'Extend General',
-								'meta-edit' => 'Extend Meta Edit',
+								'advanced' => 'Advanced Settings Filters',
+								'general'  => 'General Settings Filters',
+								'edit'     => 'Edit Metabox Filters',
 							),
 							'ecom' => array(
 								'edd'                           => '(plugin) Easy Digital Downloads',
@@ -165,9 +165,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 						'std' => array(
 							'admin' => array(
-								'advanced'  => 'Extend Advanced',
-								'general'   => 'Extend General',
-								'meta-edit' => 'Extend Meta Edit',
+								'advanced' => 'Advanced Settings Filters',
+								'general'  => 'General Settings Filters',
+								'edit'     => 'Edit Metabox Filters',
 							),
 							'social' => array(
 								'buddypress' => '(plugin) BuddyPress',
@@ -4019,7 +4019,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/**
 			 * Post, term, user modules.
 			 */
-			require_once WPSSO_PLUGINDIR . 'lib/wp-meta.php';
+			require_once WPSSO_PLUGINDIR . 'lib/abstracts/wp-meta.php';
 			require_once WPSSO_PLUGINDIR . 'lib/post.php';		// Extends WpssoWpMeta.
 			require_once WPSSO_PLUGINDIR . 'lib/term.php';		// Extends WpssoWpMeta.
 			require_once WPSSO_PLUGINDIR . 'lib/user.php';		// Extends WpssoWpMeta.

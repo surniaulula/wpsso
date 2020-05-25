@@ -83,7 +83,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					/**
 					 * load_meta_page() priorities: 100 post, 200 user, 300 term.
 					 *
-					 * Sets the WpssoWpMeta::$head_tags and WpssoWpMeta::$head_info class properties.
+					 * Sets the parent::$head_tags and parent::$head_info class properties.
 					 */
 					add_action( 'current_screen', array( $this, 'load_meta_page' ), 200, 1 );
 				}
@@ -154,7 +154,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$mod = WpssoWpMeta::$mod_defaults;
+			$mod = parent::$mod_defaults;
 
 			/**
 			 * Common elements.
@@ -492,7 +492,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return $value;	// Return null
 			}
 
-			$local_recursion[ $user_id ][ $meta_key ] = true;		// Prevent recursion.
+			$local_recursion[ $user_id ][ $meta_key ] = true;	// Prevent recursion.
 
 			if ( get_user_meta( $user_id, $meta_key, $single = true ) === '' ) {	// Returns empty string if meta not found.
 
@@ -507,7 +507,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		/**
 		 * Hooked into the current_screen action.
 		 *
-		 * Sets the WpssoWpMeta::$head_tags and WpssoWpMeta::$head_info class properties.
+		 * Sets the parent::$head_tags and parent::$head_info class properties.
 		 */
 		public function load_meta_page( $screen = false ) {
 
@@ -518,7 +518,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			/**
 			 * All meta modules set this property, so use it to optimize code execution.
 			 */
-			if ( false !== WpssoWpMeta::$head_tags || ! isset( $screen->id ) ) {
+			if ( false !== parent::$head_tags || ! isset( $screen->id ) ) {
 				return;
 			}
 
@@ -560,7 +560,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->log( SucomUtil::pretty_array( $mod ) );
 			}
 
-			WpssoWpMeta::$head_tags = array();
+			parent::$head_tags = array();
 
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_user_page' ] ) ? false : true;
 
@@ -582,22 +582,22 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				/**
 				 * $read_cache is false to generate notices etc.
 				 */
-				WpssoWpMeta::$head_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache = false );
+				parent::$head_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache = false );
 
-				WpssoWpMeta::$head_info = $this->p->head->extract_head_info( $mod, WpssoWpMeta::$head_tags );
+				parent::$head_info = $this->p->head->extract_head_info( $mod, parent::$head_tags );
 
 				/**
 				 * Check for missing open graph image and description values.
 				 */
 				if ( $mod[ 'is_public' ] ) {	// Since WPSSO Core v7.0.0.
 
-					$ref_url = empty( WpssoWpMeta::$head_info[ 'og:url' ] ) ? null : WpssoWpMeta::$head_info[ 'og:url' ];
+					$ref_url = empty( parent::$head_info[ 'og:url' ] ) ? null : parent::$head_info[ 'og:url' ];
 
 					$ref_url = $this->p->util->maybe_set_ref( $ref_url, $mod, __( 'checking meta tags', 'wpsso' ) );
 
 					foreach ( array( 'image', 'description' ) as $mt_suffix ) {
 
-						if ( empty( WpssoWpMeta::$head_info[ 'og:' . $mt_suffix ] ) ) {
+						if ( empty( parent::$head_info[ 'og:' . $mt_suffix ] ) ) {
 
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'og:' . $mt_suffix . ' meta tag is value empty and required' );
@@ -762,12 +762,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			foreach ( $tabs as $tab_key => $title ) {
 
-				$filter_name = $this->p->lca . '_' . $mod[ 'name' ] . '_' . $tab_key . '_rows';
+				$mb_filter_name  = $this->p->lca . '_metabox_' . $metabox_id . '_' . $tab_key . '_rows';
+				$mod_filter_name = $this->p->lca . '_' . $mod[ 'name' ] . '_' . $tab_key . '_rows';
 
-				$table_rows[ $tab_key ] = array_merge(
-					$this->get_table_rows( $metabox_id, $tab_key, WpssoWpMeta::$head_info, $mod ),
-					(array) apply_filters( $filter_name, array(), $this->form, WpssoWpMeta::$head_info, $mod )
-				);
+				$table_rows[ $tab_key ] = (array) apply_filters( $mb_filter_name,
+					array(), $this->form, parent::$head_info, $mod );
+
+				$table_rows[ $tab_key ] = (array) apply_filters( $mod_filter_name,
+					$table_rows[ $tab_key ], $this->form, parent::$head_info, $mod );
 			}
 
 			$tabbed_args = array(
@@ -1324,7 +1326,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$mod = $this->get_mod( $user_id );
 
-			$col_meta_keys = WpssoWpMeta::get_column_meta_keys();
+			$col_meta_keys = parent::get_column_meta_keys();
 
 			foreach ( $col_meta_keys as $col_key => $meta_key ) {
 
