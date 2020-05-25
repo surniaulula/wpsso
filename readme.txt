@@ -308,12 +308,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.7.0-dev.2 (2020/05/25)**
+**Version 7.7.0-dev.3 (2020/05/25)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added an informational message when selecting the Schema FAQPage, QAPage, or Question type.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -993,9 +993,9 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 7.7.0-dev.2 =
+= 7.7.0-dev.3 =
 
-(2020/05/25) Added a new WpssoEdit class in lib/edit.php for post, term, and user editing page filters. Moved the lib/wp-meta.php library file to lib/abstracts/wp-meta.php.
+(2020/05/25) Added an informational message when selecting the Schema FAQPage, QAPage, or Question type.
 
 = 7.6.0 =
 
