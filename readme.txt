@@ -308,7 +308,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.7.0-dev.1 (2020/05/24)**
+**Version 7.7.0-dev.2 (2020/05/25)**
 
 * **New Features**
 	* None.
@@ -317,8 +317,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added new 'wpsso_json_data_validate_https_schema_org_{item_type}' filters for WPSSO JSON v3.10.0.
+	* Added a new WpssoEdit class in lib/edit.php for post, term, and user editing page filters.
 	* Added a new `SucomUtil::is_non_assoc()` method to test for non-associative arrays.
+	* Added new 'wpsso_json_data_validate_https_schema_org_{item_type}' filters for WPSSO JSON v3.10.0.
+	* Moved the lib/wp-meta.php library file to lib/abstracts/wp-meta.php.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
@@ -991,9 +993,9 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 7.7.0-dev.1 =
+= 7.7.0-dev.2 =
 
-(2020/05/24) Added new 'wpsso_json_data_validate_https_schema_org_{item_type}' filters for WPSSO JSON v3.10.0.
+(2020/05/25) Added a new WpssoEdit class in lib/edit.php for post, term, and user editing page filters. Moved the lib/wp-meta.php library file to lib/abstracts/wp-meta.php.
 
 = 7.6.0 =
 
