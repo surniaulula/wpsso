@@ -180,6 +180,29 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
+		public function get_menu_dashicon_html( $menu_id, $css_class = '' ) {
+
+			$dashicon = $this->get_menu_dashicon( $menu_id );
+
+			return '<div class="' . trim( $css_class . ' dashicons-before dashicons-' . $dashicon ) . '"></div>';
+		}
+
+		public function get_menu_dashicon( $menu_id ) {
+
+			$dashicon = 'admin-generic';
+
+			if ( ! empty( $this->p->cf[ 'menu' ][ 'dashicons' ][ $menu_id ] ) ) {
+
+				$dashicon = $this->p->cf[ 'menu' ][ 'dashicons' ][ $menu_id ];
+
+			} elseif ( ! empty( $this->p->cf[ 'menu' ][ 'dashicons' ][ '*' ] ) ) {
+
+				$dashicon = $this->p->cf[ 'menu' ][ 'dashicons' ][ '*' ];
+			}
+
+			return $dashicon;
+		}
+
 		public function plugin_pkg_info() {
 
 			if ( ! empty( self::$pkg ) ) {	// Only execute once.
@@ -496,18 +519,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 */
 			if ( ( $menu_lib === 'submenu' || $menu_lib === 'sitesubmenu' ) && version_compare( $wp_version, '3.8', '>=' ) ) {
 
-				if ( ! empty( $this->p->cf[ 'menu' ][ 'dashicons' ][ $menu_id ] ) ) {
-					$dashicon = $this->p->cf[ 'menu' ][ 'dashicons' ][ $menu_id ];
-				} elseif ( ! empty( $this->p->cf[ 'menu' ][ 'dashicons' ][ '*' ] ) ) {
-					$dashicon = $this->p->cf[ 'menu' ][ 'dashicons' ][ '*' ];
-				} else {
-					$dashicon = 'admin-generic';
-				}
+				$css_class = trim( $this->p->lca . '-menu-item ' . $this->p->lca . '-' . $menu_id . ' ' . $css_class );
 
-				$css_class = $this->p->lca . '-menu-item ' . $this->p->lca . '-' . $menu_id . ( $css_class ? ' ' . $css_class : '' );
+				$dashicon_html = $this->get_menu_dashicon_html( $menu_id, $css_class );
 
-				$menu_title = '<div class="' . $css_class . ' dashicons-before dashicons-' . $dashicon . '"></div>' .
-					'<div class="' . $css_class . ' menu-item-label">' . $menu_name . '</div>';
+				$menu_title = $dashicon_html . '<div class="' . $css_class . ' menu-item-label">' . $menu_name . '</div>';
 
 			} else {
 				$menu_title = $menu_name;
@@ -1296,12 +1312,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$this->get_form_object( $menu_ext );
 
+			$dashicon_html = $this->get_menu_dashicon_html( $this->menu_id );
+
 			echo '<div class="wrap" id="' . $this->pagehook . '">' . "\n";
 			echo '<h1>';
-			echo self::$pkg[ $this->menu_ext ][ 'short' ] . ' ';
-			echo '<span class="qualifier">&ndash; ';
+			echo $dashicon_html . ' ';
 			echo $this->menu_name;
-			echo '</span></h1>' . "\n";
+			echo ' <span class="qualifier">(';
+			echo self::$pkg[ $this->menu_ext ][ 'short' ];
+			echo ')</span></h1>' . "\n";
 
 			if ( ! self::$pkg[ $this->p->lca ][ 'pp' ] ) {
 
@@ -2120,7 +2139,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					}
 
 					echo '<tr>' .
-					'<td><span class="dashicons dashicons-' . $icon_type . '" title="' . $icon_title . '"></span></td>' .
+					'<td><div class="dashicons-before dashicons-' . $icon_type . '" title="' . $icon_title . '"></div></td>' .
 					'<td class="' . trim( $td_class ) . '">' .
 					( $label_url ? '<a href="' . $label_url . '">' : '' ).
 					$label_text .
