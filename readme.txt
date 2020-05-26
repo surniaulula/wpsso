@@ -308,7 +308,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.7.0-dev.4 (2020/05/25)**
+**Version 7.7.0-dev.4 (2020/05/26)**
 
 * **New Features**
 	* None.
@@ -996,7 +996,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 = 7.7.0-dev.4 =
 
-(2020/05/25) Added an informational message when selecting the Schema FAQPage, QAPage, or Question type.
+(2020/05/26) Added an informational message when selecting the Schema FAQPage, QAPage, or Question type.
 
 = 7.6.0 =
 
