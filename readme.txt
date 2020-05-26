@@ -308,7 +308,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.7.0-dev.3 (2020/05/25)**
+**Version 7.7.0-dev.4 (2020/05/25)**
 
 * **New Features**
 	* None.
@@ -319,6 +319,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Added a new WpssoEdit class in lib/edit.php for post, term, and user editing page filters.
 	* Added a new `SucomUtil::is_non_assoc()` method to test for non-associative arrays.
+	* Added a new `SucomUtil::is_mod_current_screen()` method for notice text in `WpssoUtil::maybe_set_ref()`.
 	* Added new 'wpsso_json_data_validate_https_schema_org_{item_type}' filters for WPSSO JSON v3.10.0.
 	* Moved the lib/wp-meta.php library file to lib/abstracts/wp-meta.php.
 * **Requires At Least**
@@ -993,7 +994,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 7.7.0-dev.3 =
+= 7.7.0-dev.4 =
 
 (2020/05/25) Added an informational message when selecting the Schema FAQPage, QAPage, or Question type.
 
