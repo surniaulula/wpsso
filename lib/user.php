@@ -159,9 +159,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			/**
 			 * Common elements.
 			 */
-			$mod[ 'id' ]   = is_numeric( $mod_id ) ? (int) $mod_id : 0;	// Cast as integer.
-			$mod[ 'name' ] = 'user';
-			$mod[ 'obj' ]  =& $this;
+			$mod[ 'id' ]          = is_numeric( $mod_id ) ? (int) $mod_id : 0;	// Cast as integer.
+			$mod[ 'name' ]        = 'user';
+			$mod[ 'name_transl' ] = _x( 'user', 'module name', 'wpsso' );
+			$mod[ 'obj' ]         =& $this;
 
 			/**
 			 * User elements.

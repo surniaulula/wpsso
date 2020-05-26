@@ -152,9 +152,10 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			/**
 			 * Common elements.
 			 */
-			$mod[ 'id' ]   = is_numeric( $mod_id ) ? (int) $mod_id : 0;	// Cast as integer.
-			$mod[ 'name' ] = 'term';
-			$mod[ 'obj' ]  =& $this;
+			$mod[ 'id' ]          = is_numeric( $mod_id ) ? (int) $mod_id : 0;	// Cast as integer.
+			$mod[ 'name' ]        = 'term';
+			$mod[ 'name_transl' ] = _x( 'term', 'module name', 'wpsso' );
+			$mod[ 'obj' ]         =& $this;
 
 			/**
 			 * Term elements.
@@ -162,13 +163,13 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$mod[ 'is_term' ]  = true;
 			$mod[ 'tax_slug' ] = SucomUtil::get_term_object( $mod[ 'id' ], (string) $tax_slug, 'taxonomy' );
 
-			/**
-			 * Check if the taxonomy terms are publicly available.
-			 */
 			if ( $tax_object = get_taxonomy( $mod[ 'tax_slug' ] ) ) {
 
-				if ( isset( $tax_object->public ) ) {
+				if ( isset( $tax_object->labels->singular_name ) ) {
+					$mod[ 'tax_label' ] = $tax_object->labels->singular_name;
+				}
 
+				if ( isset( $tax_object->public ) ) {
 					$mod[ 'is_public' ] = $tax_object->public ? true : false;
 				}
 			}

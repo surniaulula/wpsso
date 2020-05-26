@@ -133,10 +133,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			/**
 			 * Common elements.
 			 */
-			'id'        => 0,		// Post, term, or user ID.
-			'name'      => false,		// Module name ('post', 'term', or 'user').
-			'obj'       => false,		// Module object.
-			'is_public' => true,		// Module object is public.
+			'id'          => 0,		// Post, term, or user ID.
+			'name'        => false,		// Module name ('post', 'term', or 'user').
+			'name_transl' => false,		// Module name translated.
+			'obj'         => false,		// Module object.
+			'is_public'   => true,		// Module object is public.
 
 			/**
 			 * Post elements.
@@ -149,6 +150,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			'is_home_posts'        => false,	// Static posts page or latest posts.
 			'post_slug'            => false,	// Post name (aka slug).
 			'post_type'            => false,	// Post type name.
+			'post_type_label'      => false,	// Post type singular name.
 			'post_mime'            => false,	// Post mime type (ie. image/jpg).
 			'post_status'          => false,	// Post status name.
 			'post_author'          => false,	// Post author id.
@@ -157,13 +159,14 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			/**
 			 * Term elements.
 			 */
-			'is_term'  => false,		// Is term module.
-			'tax_slug' => '',		// Empty string by default.
+			'is_term'   => false,	// Is term module.
+			'tax_slug'  => '',	// Empty string by default.
+			'tax_label' => false,	// Taxonomy singular name.
 
 			/**
 			 * User elements.
 			 */
-			'is_user' => false,		// Is user module.
+			'is_user' => false,	// Is user module.
 		);
 
 		public function __construct( &$plugin ) {

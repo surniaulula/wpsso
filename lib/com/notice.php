@@ -279,9 +279,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			/**
 			 * Maybe add a reference URL at the end.
 			 */
-			if ( 'upd' !== $msg_type ) {
-				$msg_text .= $this->get_ref_url_html();
-			}
+			$msg_text .= $this->get_ref_url_html();
 
 			$payload[ 'msg_text' ]   = preg_replace( '/<!--spoken-->(.*?)<!--\/spoken-->/Us', ' ', $msg_text );
 			$payload[ 'msg_spoken' ] = preg_replace( '/<!--not-spoken-->(.*?)<!--\/not-spoken-->/Us', ' ', $msg_text );
@@ -440,13 +438,13 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				if ( isset( $refs[ $ref_key ] ) ) {
 					return $text_prefix . $refs[ $ref_key ] . $text_suffix;
-				} else {
-					return null;
 				}
 
-			} else {
-				return $refs;
+				return null;
+
 			}
+
+			return $refs;
 		}
 
 		public function get_ref_url_html() {
@@ -470,7 +468,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				 * Returns an empty string or a clickable (Edit) link.
 				 */
 				$edit_html = $this->get_ref(
-					$ref_key = 'edit',
+					$ref_key     = 'edit',
 					$text_prefix = ' (<a href="',
 					$text_suffix = '">' . __( 'Edit', $this->text_domain ) . '</a>)'
 				);

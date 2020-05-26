@@ -3677,15 +3677,32 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return $this->p->notice->set_ref( $sharing_url, $mod, $msg_transl );
 			}
 
-			if ( empty( $mod[ 'post_type' ] ) ) {
-				$name = $mod[ 'name' ];
+			if ( $mod[ 'is_post' ] && $mod[ 'post_type_label' ] ) {
+
+				$name = mb_strtolower( $mod[ 'post_type_label' ] );
+
+			} elseif ( $mod[ 'is_term' ] && $mod[ 'tax_label' ] ) {
+
+				$name = mb_strtolower( $mod[ 'tax_label' ] );
 			} else {
-				$name = $mod[ 'post_type' ];
+				$name = $mod[ 'name_transl' ];
+			}
+
+			if ( self::is_mod_current_screen( $mod ) ) {
+
+				// translators: %1$s is an action message, %2$s is the module or post type name.
+				$msg_transl = sprintf( __( '%1$s for this %2$s', 'wpsso' ), $msg_transl, $name );
+
+				/**
+				 * Exclude the $mod array to avoid adding an 'Edit' link to the notice message.
+				 */
+				return $this->p->notice->set_ref( $sharing_url, false, $msg_transl );
+
 			}
 
 			// translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
 			$msg_transl = sprintf( __( '%1$s for %2$s ID %3$d', 'wpsso' ), $msg_transl, $name, $mod[ 'id' ] );
-
+			
 			return $this->p->notice->set_ref( $sharing_url, $mod, $msg_transl );
 		}
 

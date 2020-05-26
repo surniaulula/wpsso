@@ -205,9 +205,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Common elements.
 			 */
-			$mod[ 'id' ]   = is_numeric( $mod_id ) ? (int) $mod_id : 0;	// Cast as integer.
-			$mod[ 'name' ] = 'post';
-			$mod[ 'obj' ]  =& $this;
+			$mod[ 'id' ]          = is_numeric( $mod_id ) ? (int) $mod_id : 0;	// Cast as integer.
+			$mod[ 'name' ]        = 'post';
+			$mod[ 'name_transl' ] = _x( 'post', 'module name', 'wpsso' );
+			$mod[ 'obj' ]         =& $this;
 
 			/**
 			 * Post elements.
@@ -228,13 +229,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$mod[ 'is_post_type_archive' ] = SucomUtil::is_post_type_archive( $mod[ 'post_type' ], $mod[ 'post_slug' ] );
 
-				/**
-				 * Check if the post type is publicly available.
-				 */
 				if ( $post_type_object = get_post_type_object( $mod[ 'post_type' ] ) ) {
 
-					if ( isset( $post_type_object->public ) ) {
+					if ( isset( $post_type_object->labels->singular_name ) ) {
+						$mod[ 'post_type_label' ] = $post_type_object->labels->singular_name;
+					}
 
+					if ( isset( $post_type_object->public ) ) {
 						$mod[ 'is_public' ] = $post_type_object->public ? true : false;
 					}
 				}
