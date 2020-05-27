@@ -316,7 +316,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added an informational message when selecting the Schema FAQPage, QAPage, or Question type.
 	* Added a "Copy notifications to clipboard." link under the SSO notifications list.
 * **Bugfixes**
-	* None.
+	* Fix to skip shortening the URL for 404 and search pages.
 * **Developer Notes**
 	* Added a new WpssoEdit class in lib/edit.php for post, term, and user editing page filters.
 	* Added a new `SucomUtil::is_non_assoc()` method to test for non-associative arrays.
@@ -997,7 +997,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 = 7.7.0-dev.5 =
 
-(2020/05/27) Added an informational message when selecting the Schema FAQPage, QAPage, or Question type. Added a "Copy notifications to clipboard." link under the SSO notifications list.
+(2020/05/27) Added an informational message when selecting the Schema FAQPage, QAPage, or Question type. Added a "Copy notifications to clipboard." link under the SSO notifications list. Fix to skip shortening the URL for 404 and search pages.
 
 = 7.6.0 =
 
