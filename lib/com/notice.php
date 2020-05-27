@@ -1378,28 +1378,33 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				#wpadminbar .' . $this->lca . '-notice.updated > div {
 					min-height:50px;
 				}
-				#wpadminbar .' . $this->lca . '-notice.notice-copy {
+				#wpadminbar div.' . $this->lca . '-notice.notice-copy {
+					font-size:0.8em;
+					line-height:1;
 					text-align:center;
-				}
-				#wpadminbar .' . $this->lca . '-notice.notice-copy > div {
 					min-height:auto;
 				}
-				#wpadminbar .' . $this->lca . '-notice.notice-copy .notice-message {
+				#wpadminbar div.' . $this->lca . '-notice.notice-copy > div {
+					min-height:auto;
+				}
+				#wpadminbar div.' . $this->lca . '-notice.notice-copy div.notice-message {
 					display:inline-block;
-					padding:5px 20px;
+					padding:0 20px 2px 20px;
 				}
-				#wpadminbar .' . $this->lca . '-notice.notice-copy .notice-message a {
+				#wpadminbar div.' . $this->lca . '-notice.notice-copy div.notice-message a {
 					font-size:0.8em;
+					font-weight:200;
+					letter-spacing:0.5px;
 				}
-				#wpadminbar .' . $this->lca . '-notice a,
+				#wpadminbar div.' . $this->lca . '-notice a,
 				.' . $this->lca . '-notice a {
 					display:inline;
 					text-decoration:underline;
 					padding:0;
 				}
-				#wpadminbar .' . $this->lca . '-notice .notice-label,
-				#wpadminbar .' . $this->lca . '-notice .notice-message,
-				#wpadminbar .' . $this->lca . '-notice .notice-dismiss {
+				#wpadminbar div.' . $this->lca . '-notice .notice-label,
+				#wpadminbar div.' . $this->lca . '-notice .notice-message,
+				#wpadminbar div.' . $this->lca . '-notice .notice-dismiss {
 					position:relative;
 					display:table-cell;
 					padding:20px;

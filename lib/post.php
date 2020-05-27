@@ -1914,16 +1914,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/**
-			 * The WordPress link-template.php functions call wp_get_shortlink() with a post ID of 0.
-			 * Recreate the same code here to get a real post ID and create a default shortlink (if required).
+			 * The WordPress link-template.php functions call wp_get_shortlink() with a post ID of 0. Recreate the same
+			 * code here to get a real post ID and create a default shortlink (if required).
 			 */
-			if ( $post_id === 0 ) {
+			if ( 0 === $post_id ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'provided post id is 0 (current post)' );
 				}
 
-				if ( $context === 'query' && is_singular() ) {	// wp_get_shortlink() uses the same logic.
+				if ( 'query' === $context && is_singular() ) {	// wp_get_shortlink() uses the same logic.
 
 					$post_id = get_queried_object_id();
 
@@ -1931,7 +1931,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$this->p->debug->log( 'setting post id ' . $post_id . ' from queried object' );
 					}
 
-				} elseif ( $context === 'post' ) {
+				} elseif ( 'post' === $context ) {
 
 					$post_obj = get_post();
 
@@ -1963,7 +1963,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 
 				if ( empty( $shortlink ) ) {
-					if ( get_post_type( $post_id ) === 'page' && get_option( 'page_on_front' ) == $post_id && get_option( 'show_on_front' ) == 'page' ) {
+
+					if ( 'page' === get_post_type( $post_id ) &&
+						$post_id === (int) get_option( 'page_on_front' ) &&
+							'page' === get_option( 'show_on_front' ) ) {
+
 						$shortlink = home_url( '/' );
 					} else {
 						$shortlink = home_url( '?p=' . $post_id );
@@ -2016,8 +2020,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$sharing_url = $this->p->util->get_sharing_url( $mod, $add_page = false );
 
-			$short_url = apply_filters( $this->p->lca . '_get_short_url', $sharing_url,
-				$this->p->options[ 'plugin_shortener' ], $mod );
+			$short_url = apply_filters( $this->p->lca . '_get_short_url', $sharing_url, $this->p->options[ 'plugin_shortener' ], $mod );
 
 			if ( filter_var( $short_url, FILTER_VALIDATE_URL ) === false ) {	// Invalid url.
 

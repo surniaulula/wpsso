@@ -21,7 +21,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		private $start_stats  = null;
 		private $begin_marks  = array();
 		private $log_msg_cols = array(
-			'%-38s:: ',
+			'%-40s:: ',
 			'%-55s: ',
 		);
 

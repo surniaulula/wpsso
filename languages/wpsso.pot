@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 7.7.0-dev.4\n"
+"Project-Id-Version: WPSSO Core 7.7.0-dev.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -957,7 +957,7 @@ msgstr ""
 
 #: lib/conflict.php:107 lib/gettext-pro.php:163 lib/gettext-pro.php:203
 #: lib/loader.php:158 lib/loader.php:171 lib/pro/review/yotpowc.php:195
-#: lib/pro/util/shorten.php:260
+#: lib/pro/util/shorten.php:275
 msgid "%s error:"
 msgstr ""
 
@@ -3109,7 +3109,7 @@ msgid "Bitly URL Shortener"
 msgstr ""
 
 #: lib/gettext-pro.php:69 lib/gettext-pro.php:166
-#: lib/pro/admin/advanced.php:387 lib/pro/util/shorten.php:308
+#: lib/pro/admin/advanced.php:387 lib/pro/util/shorten.php:323
 #: lib/std/admin/advanced.php:396
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
@@ -3134,7 +3134,7 @@ msgid "DLMY.App URL Shortener"
 msgstr ""
 
 #: lib/gettext-pro.php:73 lib/gettext-pro.php:168
-#: lib/pro/admin/advanced.php:405 lib/pro/util/shorten.php:335
+#: lib/pro/admin/advanced.php:405 lib/pro/util/shorten.php:350
 #: lib/std/admin/advanced.php:414
 msgctxt "option label"
 msgid "DLMY.App API Key"
@@ -3147,7 +3147,7 @@ msgid "Ow.ly URL Shortener"
 msgstr ""
 
 #: lib/gettext-pro.php:75 lib/gettext-pro.php:170
-#: lib/pro/admin/advanced.php:415 lib/pro/util/shorten.php:360
+#: lib/pro/admin/advanced.php:415 lib/pro/util/shorten.php:375
 #: lib/std/admin/advanced.php:424
 msgctxt "option label"
 msgid "Ow.ly API Key"
@@ -3160,7 +3160,7 @@ msgid "Your Own URL Shortener (YOURLS)"
 msgstr ""
 
 #: lib/gettext-pro.php:77 lib/gettext-pro.php:172
-#: lib/pro/admin/advanced.php:425 lib/pro/util/shorten.php:408
+#: lib/pro/admin/advanced.php:425 lib/pro/util/shorten.php:423
 #: lib/std/admin/advanced.php:434
 msgctxt "option label"
 msgid "YOURLS API URL"
@@ -3503,19 +3503,19 @@ msgid ""
 msgstr ""
 
 #. translators: %s is the service id.
-#: lib/gettext-pro.php:164 lib/pro/util/shorten.php:286
+#: lib/gettext-pro.php:164 lib/pro/util/shorten.php:301
 msgid "The URL shortening library file for \"%s\" is missing and required."
 msgstr ""
 
 #: lib/gettext-pro.php:165 lib/gettext-pro.php:167 lib/gettext-pro.php:169
-#: lib/gettext-pro.php:171 lib/pro/util/shorten.php:307
-#: lib/pro/util/shorten.php:334 lib/pro/util/shorten.php:359
-#: lib/pro/util/shorten.php:407
+#: lib/gettext-pro.php:171 lib/pro/util/shorten.php:322
+#: lib/pro/util/shorten.php:349 lib/pro/util/shorten.php:374
+#: lib/pro/util/shorten.php:422
 msgid "The \"%s\" option value is empty and required."
 msgstr ""
 
 #. translators: %s is the service id.
-#: lib/gettext-pro.php:173 lib/pro/util/shorten.php:453
+#: lib/gettext-pro.php:173 lib/pro/util/shorten.php:468
 msgid "Incomplete API options to instantiate the \"%s\" shortening service."
 msgstr ""
 
@@ -6283,7 +6283,7 @@ msgid ""
 "Activate the %s add-on<br/>for Schema markup and structured data options."
 msgstr ""
 
-#: lib/messages.php:3009 lib/util.php:3321
+#: lib/messages.php:3009 lib/util.php:3328
 msgid "No options available."
 msgstr ""
 
@@ -6503,12 +6503,12 @@ msgid "post"
 msgstr ""
 
 #: lib/post.php:494 lib/register.php:336 lib/term.php:422 lib/user.php:395
-#: lib/util.php:558 lib/util.php:3002
+#: lib/util.php:558 lib/util.php:3009
 msgid "%s warning:"
 msgstr ""
 
 #: lib/post.php:495 lib/term.php:423 lib/user.php:397 lib/util.php:560
-#: lib/util.php:3004
+#: lib/util.php:3011
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -6816,31 +6816,31 @@ msgstr ""
 msgid "Copy notifications to clipboard."
 msgstr ""
 
-#: lib/script.php:220
+#: lib/script.php:222
 msgid "Copied to clipboard."
 msgstr ""
 
-#: lib/script.php:221
+#: lib/script.php:223
 msgid "Value linked to %s option"
 msgstr ""
 
-#: lib/script.php:222
+#: lib/script.php:224
 msgid "{0} of {1} characters minimum"
 msgstr ""
 
-#: lib/script.php:223
+#: lib/script.php:225
 msgid "{0} of {1} characters required"
 msgstr ""
 
-#: lib/script.php:224
+#: lib/script.php:226
 msgid "{0} of {1} characters maximum"
 msgstr ""
 
-#: lib/script.php:225
+#: lib/script.php:227
 msgid "{0} characters"
 msgstr ""
 
-#: lib/script.php:235
+#: lib/script.php:237
 msgid "Select Image"
 msgstr ""
 
@@ -7625,13 +7625,13 @@ msgid ""
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:3006
+#: lib/util.php:3013
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3021
+#: lib/util.php:3028
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -7640,40 +7640,40 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3023
+#: lib/util.php:3030
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3352
+#: lib/util.php:3359
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3355
+#: lib/util.php:3362
 msgctxt "option comment"
 msgid "show these options now"
 msgstr ""
 
-#: lib/util.php:3360
+#: lib/util.php:3367
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3363
+#: lib/util.php:3370
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3694
+#: lib/util.php:3701
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3704
+#: lib/util.php:3711
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

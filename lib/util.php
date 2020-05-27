@@ -1732,6 +1732,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		public function replace_inline_vars( $content, $mod = false, $atts = array(), $extra = array() ) {
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
 			if ( strpos( $content, '%%' ) === false ) {
 
 				if ( $this->p->debug->enabled ) {
@@ -1756,16 +1760,21 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$replace_vars = $this->get_inline_vars();
+
 			$replace_vals = $this->get_inline_vals( $mod, $atts );
 
 			if ( ! empty( $extra ) && self::is_assoc( $extra ) ) {
+
 				foreach ( $extra as $match => $replace ) {
+
 					$replace_vars[] = '%%' . $match . '%%';
+
 					$replace_vals[] = $replace;
 				}
 			}
 
 			ksort( $replace_vars );
+
 			ksort( $replace_vals );
 
 			return str_replace( $replace_vars, $replace_vals, $content );
@@ -1815,11 +1824,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( empty( $atts[ 'short_url' ] ) ) {
 
-				$short_url = apply_filters( $this->p->lca . '_get_short_url', $sharing_url,
-					$this->p->options[ 'plugin_shortener' ], $mod );
+				$shortener = $this->p->options[ 'plugin_shortener' ];
 
+				$short_url = apply_filters( $this->p->lca . '_get_short_url', $sharing_url, $shortener, $mod, $is_main = true );
 			} else {
-
 				$short_url = $atts[ 'short_url' ];
 			}
 
@@ -2512,7 +2520,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			if ( apply_filters( $this->p->lca . '_server_request_url_cache_disabled', $cache_disabled, $url, $mod, $add_page ) ) {
-
 				$this->disable_cache_filters( array( 'shorten_url_disabled' => '__return_true' ) );
 			}
 

@@ -205,8 +205,10 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 			$copy_notices_transl = __( 'Copy notifications to clipboard.', 'wpsso' );
 			$copy_notices_html   = '<div class="wpsso-notice notice notice-alt notice-copy">' .
-				'<div class="notice-message"><a href="" onClick="return sucomCopyById( \'wpsso-notice-copy-text\' );">' .
-					$copy_notices_transl . '</a></div></div>';
+				'<div class="notice-message">' .
+				'<a href="" onClick="return sucomCopyById( \'wpsso-notice-copy-text\' );">' . $copy_notices_transl . '</a>' .
+				'</div><!-- .notice-message -->' .
+				'</div><!-- .notice-copy -->';
 
 			$option_labels = apply_filters( $this->p->lca . '_metabox_script_data_option_labels', $option_labels );
 
