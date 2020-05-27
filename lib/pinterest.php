@@ -215,11 +215,14 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 				}
 
 				/**
-				 * Note that an empty alt attribute is required for W3C validation. Also note that adding a
-				 * 'loading="lazy"' attribute breaks the Pinterest Save button.
+				 * Note that an empty alt attribute is required for W3C validation.
+				 *
+				 * Adding a 'loading="lazy"' attribute breaks the Pinterest Save button.
+				 *
+				 * The 'skip-lazy' class is used by WP Rocket to skip lazy loading an image.
 				 */
 				$image_html .= "\t" . '<img src="' . SucomUtil::esc_url_encode( $image_url ) . '" ' .
-					'width="0" height="0" style="width:0;height:0;" alt="" ' . 
+					'width="0" height="0" class="skip-lazy" style="width:0;height:0;" alt="" ' . 
 					'data-pin-description="' . esc_attr( $data_pin_desc ) . '" />' . "\n";
 			}
 
