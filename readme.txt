@@ -308,7 +308,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.7.0-dev.4 (2020/05/26)**
+**Version 7.7.0-dev.5 (2020/05/27)**
 
 * **New Features**
 	* None.
@@ -995,9 +995,9 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 7.7.0-dev.4 =
+= 7.7.0-dev.5 =
 
-(2020/05/26) Added an informational message when selecting the Schema FAQPage, QAPage, or Question type. Added a "Copy notifications to clipboard." link under the SSO notifications list.
+(2020/05/27) Added an informational message when selecting the Schema FAQPage, QAPage, or Question type. Added a "Copy notifications to clipboard." link under the SSO notifications list.
 
 = 7.6.0 =
 
