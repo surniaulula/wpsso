@@ -314,6 +314,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* Added an informational message when selecting the Schema FAQPage, QAPage, or Question type.
+	* Added a "Copy notifications to clipboard." link under the SSO notifications list.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -996,7 +997,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 = 7.7.0-dev.4 =
 
-(2020/05/26) Added an informational message when selecting the Schema FAQPage, QAPage, or Question type.
+(2020/05/26) Added an informational message when selecting the Schema FAQPage, QAPage, or Question type. Added a "Copy notifications to clipboard." link under the SSO notifications list.
 
 = 7.6.0 =
 
