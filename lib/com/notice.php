@@ -115,10 +115,15 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 * Set the notification system.
 			 */
 			if ( ! is_admin_bar_showing() ) {	// Just in case.
+
 				$this->tb_notices = false;
+
 			} if ( empty( $this->p->options[ 'plugin_notice_system' ] ) ) {	// Just in case.
+
 				$this->tb_notices = true;
+
 			} elseif ( 'toolbar_notices' === $this->p->options[ 'plugin_notice_system' ] ) {
+
 				$this->tb_notices = true;
 			} else {
 				$this->tb_notices = false;
@@ -214,12 +219,16 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				return false;
 			}
 
+			$payload[ 'notice_label' ] = isset( $payload[ 'notice_label' ] ) ? $payload[ 'notice_label' ] : $this->label_transl;
+
 			$payload[ 'notice_key' ] = empty( $notice_key ) ? false : sanitize_key( $notice_key );
 
 			$payload[ 'notice_time' ] = time();
 
-			$payload[ 'notice_ttl' ]  = isset( $payload[ 'notice_ttl' ] ) ?
-				(int) $payload[ 'notice_ttl' ] : $this->default_ttl;	// 0 to disable notice expiration.
+			/**
+			 * 0 disables notice expiration.
+			 */
+			$payload[ 'notice_ttl' ]  = isset( $payload[ 'notice_ttl' ] ) ? (int) $payload[ 'notice_ttl' ] : $this->default_ttl;
 
 			$payload[ 'dismiss_time' ] = false;
 
@@ -281,7 +290,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 */
 			$msg_text .= $this->get_ref_url_html();
 
-			$payload[ 'msg_text' ]   = preg_replace( '/<!--spoken-->(.*?)<!--\/spoken-->/Us', ' ', $msg_text );
+			$payload[ 'msg_text' ] = preg_replace( '/<!--spoken-->(.*?)<!--\/spoken-->/Us', ' ', $msg_text );
+
 			$payload[ 'msg_spoken' ] = preg_replace( '/<!--not-spoken-->(.*?)<!--\/not-spoken-->/Us', ' ', $msg_text );
 			$payload[ 'msg_spoken' ] = SucomUtil::decode_html( SucomUtil::strip_html( $payload[ 'msg_spoken' ] ) );
 
@@ -473,7 +483,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					$text_suffix = '">' . __( 'Edit', $this->text_domain ) . '</a>)'
 				);
 
-				$ref_html .= '<p class="reference-message">' .
+				$ref_html .= ' <p class="reference-message">' .
 					sprintf( __( 'Reference: %s', $this->text_domain ),
 						$context_transl . $edit_html ) . '</p>';
 			}
@@ -691,7 +701,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					 * A 'notice_ttl' value of 0 disables the notice message expiration.
 					 */
 					if ( ! empty( $payload[ 'notice_time' ] ) && ! empty( $payload[ 'notice_ttl' ] ) ) {
+
 						if ( time() > $payload[ 'notice_time' ] + $payload[ 'notice_ttl' ] ) {
+
 							continue;
 						}
 					}
@@ -867,6 +879,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			foreach ( $notice_types as $msg_type ) {
 
 				if ( ! isset( $this->notice_cache[ $user_id ][ $msg_type ] ) ) {	// Just in case.
+
 					continue;
 				}
 
@@ -875,6 +888,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					unset( $this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] );	// Don't show it twice.
 
 					if ( empty( $payload[ 'msg_text' ] ) ) {	// Nothing to show.
+
 						continue;
 					}
 
@@ -884,7 +898,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					 * A 'notice_ttl' value of 0 disables the notice message expiration.
 					 */
 					if ( ! empty( $payload[ 'notice_time' ] ) && ! empty( $payload[ 'notice_ttl' ] ) ) {
+
 						if ( time() > $payload[ 'notice_time' ] + $payload[ 'notice_ttl' ] ) {
+
 							continue;
 						}
 					}
@@ -913,18 +929,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					}
 
 					if ( ! empty( $payload[ 'hidden' ] ) ) {	// Notice is hidden.
+
 						continue;
 					}
 
 					$payload[ 'msg_html' ] = $this->get_notice_html( $msg_type, $payload, true );	// $notice_alt is true.
 
-					/**
-					 * Add paragraph tags for the block editor in case we want to use the 'msg_text' instead of 'msg_html'.
-					 */
-					if ( stripos( $payload[ 'msg_text' ], '<p>' ) === false ) {
-						$payload[ 'msg_text' ] = '<p>' . $payload[ 'msg_text' ] . '</p>';
-					}
-				
 					$json_notices[ $msg_type ][ $msg_key ] = $payload;
 				}
 			}
@@ -964,7 +974,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				case 'nag':
 
-					$payload[ 'notice_label' ] = false;	// No label for nag notices.
+					$payload[ 'notice_label' ] = '';	// No label for nag notices.
 
 					$msg_type = 'nag';
 					$wp_class = 'update-nag';
@@ -1011,10 +1021,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					break;
 			}
 
-			if ( ! isset( $payload[ 'notice_label' ] ) ) {	// Can be unset, false, empty string, or translated string.
-				$payload[ 'notice_label' ] = $this->label_transl;
-			}
-
 			$css_id_attr = empty( $payload[ 'notice_key' ] ) ? '' : ' id="' . $msg_type . '-' . $payload[ 'notice_key' ] . '"';
 
 			$is_dismissible = empty( $payload[ 'dismiss_time' ] ) ? false : true;
@@ -1051,7 +1057,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						'</button><!-- .notice-dismiss -->';
 			}
 
-			if ( false !== $payload[ 'notice_label' ] ) {	// Can be false, empty string, or translated string.
+			/**
+			 * The notice label can be false, an empty string, or translated string.
+			 */
+			if ( ! empty( $payload[ 'notice_label' ] ) ) {
+
 				$msg_html .= '<div class="notice-label">' . $payload[ 'notice_label' ] . '</div><!-- .notice-label -->';
 			}
 
@@ -1367,6 +1377,19 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				#wpadminbar .' . $this->lca . '-notice.error > div,
 				#wpadminbar .' . $this->lca . '-notice.updated > div {
 					min-height:50px;
+				}
+				#wpadminbar .' . $this->lca . '-notice.notice-copy {
+					text-align:center;
+				}
+				#wpadminbar .' . $this->lca . '-notice.notice-copy > div {
+					min-height:auto;
+				}
+				#wpadminbar .' . $this->lca . '-notice.notice-copy .notice-message {
+					display:inline-block;
+					padding:5px 20px;
+				}
+				#wpadminbar .' . $this->lca . '-notice.notice-copy .notice-message a {
+					font-size:0.8em;
 				}
 				#wpadminbar .' . $this->lca . '-notice a,
 				.' . $this->lca . '-notice a {

@@ -906,23 +906,23 @@ msgctxt "option comment"
 msgid "from"
 msgstr ""
 
-#: lib/com/notice.php:241 lib/gettext-com.php:29
+#: lib/com/notice.php:250 lib/gettext-com.php:29
 msgid "Forever"
 msgstr ""
 
-#: lib/com/notice.php:243 lib/gettext-com.php:30
+#: lib/com/notice.php:252 lib/gettext-com.php:30
 msgid "This notice can be dismissed permanently."
 msgstr ""
 
-#: lib/com/notice.php:255 lib/gettext-com.php:31
+#: lib/com/notice.php:264 lib/gettext-com.php:31
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:473 lib/gettext-com.php:32 lib/post.php:1633
+#: lib/com/notice.php:483 lib/gettext-com.php:32 lib/post.php:1633
 msgid "Edit"
 msgstr ""
 
-#: lib/com/notice.php:477 lib/gettext-com.php:33
+#: lib/com/notice.php:487 lib/gettext-com.php:33
 msgid "Reference: %s"
 msgstr ""
 
@@ -1318,7 +1318,7 @@ msgctxt "option label"
 msgid "Preferred Cropping"
 msgstr ""
 
-#: lib/edit.php:120 lib/script.php:194
+#: lib/edit.php:120 lib/script.php:195
 msgctxt "option label"
 msgid "Schema Type"
 msgstr ""
@@ -6652,7 +6652,7 @@ msgstr ""
 msgid "Save a draft or publish to display these options."
 msgstr ""
 
-#: lib/post.php:1621 lib/script.php:193
+#: lib/post.php:1621 lib/script.php:194
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
@@ -6808,31 +6808,39 @@ msgstr ""
 msgid "adding schema"
 msgstr ""
 
-#: lib/script.php:203 lib/script.php:288
+#: lib/script.php:203
 msgid "No %s notifications."
 msgstr ""
 
-#: lib/script.php:215
+#: lib/script.php:206
+msgid "Copy notifications to clipboard."
+msgstr ""
+
+#: lib/script.php:220
+msgid "Copied to clipboard."
+msgstr ""
+
+#: lib/script.php:221
 msgid "Value linked to %s option"
 msgstr ""
 
-#: lib/script.php:216
+#: lib/script.php:222
 msgid "{0} of {1} characters minimum"
 msgstr ""
 
-#: lib/script.php:217
+#: lib/script.php:223
 msgid "{0} of {1} characters required"
 msgstr ""
 
-#: lib/script.php:218
+#: lib/script.php:224
 msgid "{0} of {1} characters maximum"
 msgstr ""
 
-#: lib/script.php:219
+#: lib/script.php:225
 msgid "{0} characters"
 msgstr ""
 
-#: lib/script.php:229
+#: lib/script.php:235
 msgid "Select Image"
 msgstr ""
 

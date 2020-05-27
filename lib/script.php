@@ -50,6 +50,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 					}
 
 					add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_editor_assets' ), -1000 );
+
 					add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), -1000 );
 				}
 			}
@@ -196,27 +197,32 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 			$metabox_id = $this->p->cf[ 'meta' ][ 'id' ];
 
-			$mb_container_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
-
+			$mb_container_id  = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
 			$mb_container_ids = apply_filters( $this->p->lca . '_metabox_container_ids', array( $mb_container_id ) );
 
 			$no_notices_transl = sprintf( __( 'No %s notifications.', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
+			$no_notices_html   = '<div class="ab-item ab-empty-item">' . $no_notices_transl . '</div>';
 
-			$no_notices_html = '<div class="ab-item ab-empty-item">' . $no_notices_transl . '</div>';
+			$copy_notices_transl = __( 'Copy notifications to clipboard.', 'wpsso' );
+			$copy_notices_html   = '<div class="wpsso-notice notice notice-alt notice-copy">' .
+				'<div class="notice-message"><a href="" onClick="return sucomCopyById( \'wpsso-notice-copy-text\' );">' .
+					$copy_notices_transl . '</a></div></div>';
 
 			$option_labels = apply_filters( $this->p->lca . '_metabox_script_data_option_labels', $option_labels );
 
 			return array(
-				'_ajax_nonce'       => wp_create_nonce( WPSSO_NONCE_NAME ),
-				'_option_labels'    => $option_labels,
-				'_mb_container_ids' => $mb_container_ids,	// Metabox ids to update when block editor saves.
-				'_tb_notices'       => $this->tb_notices,	// Maybe null, true, false, or array.
-				'_no_notices_html'  => $no_notices_html,
-				'_linked_to_msg'    => __( 'Value linked to %s option', 'wpsso' ),
-				'_min_len_msg'      => __( '{0} of {1} characters minimum', 'wpsso' ),
-				'_req_len_msg'      => __( '{0} of {1} characters required', 'wpsso' ),
-				'_max_len_msg'      => __( '{0} of {1} characters maximum', 'wpsso' ),
-				'_len_msg'          => __( '{0} characters', 'wpsso' ),
+				'_ajax_nonce'         => wp_create_nonce( WPSSO_NONCE_NAME ),
+				'_option_labels'      => $option_labels,
+				'_mb_container_ids'   => $mb_container_ids,	// Metabox ids to update when block editor saves.
+				'_tb_notices'         => $this->tb_notices,	// Maybe null, true, false, or array.
+				'_no_notices_html'    => $no_notices_html,
+				'_copy_notices_html'  => $copy_notices_html,
+				'_copy_clipboard_msg' => __( 'Copied to clipboard.', 'wpsso' ),
+				'_linked_to_msg'      => __( 'Value linked to %s option', 'wpsso' ),
+				'_min_len_msg'        => __( '{0} of {1} characters minimum', 'wpsso' ),
+				'_req_len_msg'        => __( '{0} of {1} characters required', 'wpsso' ),
+				'_max_len_msg'        => __( '{0} of {1} characters maximum', 'wpsso' ),
+				'_len_msg'            => __( '{0} characters', 'wpsso' ),
 			);
 		}
 
@@ -285,9 +291,6 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				return;
 			}
 
-			$no_notices_transl = sprintf( __( 'No %s notifications.', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
-			$no_notices_html   = '<div class="ab-item ab-empty-item">' . $no_notices_transl . '</div>';
-
 			/**
 			 * A wpssoUpdateToolbar() function will exist in block editor pages (see js/block-editor-admin.js), but not
 			 * in other admin pages, like settings pages for example. If the function does not exist, then create the
@@ -302,7 +305,9 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 					 * Make sure to run this script last, so WordPress does not move notices out of the toolbar.
 					 */
 					jQuery( document ).ready( function() {
+
 						jQuery( window ).load( function() {
+
 							wpssoUpdateToolbar();
 						});
 					});
@@ -311,20 +316,22 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 						updateNoticeHtml = typeof updateNoticeHtml !== 'undefined' ? updateNoticeHtml : true;
 
-						var ajaxNoticesData = {
+						var ajaxData = {
 							action: 'wpsso_get_notices_json',
 							context: 'toolbar_notices',
 							_ajax_nonce: '<?php echo wp_create_nonce( WPSSO_NONCE_NAME ); ?>',
 							_notice_types: '<?php echo implode( ',', $this->tb_notices ); ?>',
 						}
 	
-						jQuery.getJSON( ajaxurl, ajaxNoticesData, function( data ) {
+						jQuery.getJSON( ajaxurl, ajaxData, function( data ) {
 	
 							var noticeHtml       = '';
+							var noticeText       = '';
 							var noticeStatus     = '';
 							var noticeTotalCount = 0;
 							var noticeTypeCount  = {};
-							var noNoticesHtml    = '<?php echo $no_notices_html; ?>';
+							var noNoticesHtml    = sucomMetaboxL10n._no_notices_html;
+							var copyNoticesHtml  = sucomMetaboxL10n._copy_notices_html;
 	
 							jQuery.each( data, function( noticeType ) {
 	
@@ -332,6 +339,13 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 	
 									noticeHtml += data[ noticeType ][ noticeKey ][ 'msg_html' ];
 	
+									noticeText += "\n";
+									noticeText += '[' + noticeType + '] ';
+									noticeText += data[ noticeType ][ noticeKey ][ 'notice_label' ];
+									noticeText += ': ';
+									noticeText += data[ noticeType ][ noticeKey ][ 'msg_text' ];
+									noticeText += "\n";
+
 									noticeTypeCount[ noticeType ] = ++noticeTypeCount[ noticeType ] || 1;
 	
 									noticeTotalCount++;
@@ -348,9 +362,15 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 							if ( updateNoticeHtml ) {
 
 								if ( noticeHtml ) {
+				
+									noticeHtml += '<div style="display:none;" id="wpsso-notice-copy-text">' + noticeText + '</div>';
+									
+									noticeHtml += copyNoticesHtml;
 
-									jQuery( '#wp-admin-bar-wpsso-toolbar-notices-container' ).html( noticeHtml );
+									jQuery( '#wp-admin-bar-wpsso-toolbar-notices-container' ).html( noticeHtml + copyNoticesHtml );
+
 									jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).addClass( 'has-toolbar-notices' );
+
 									jQuery( 'body.wp-admin' ).addClass( 'has-toolbar-notices' );
 
 								} else {

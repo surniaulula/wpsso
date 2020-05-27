@@ -105,8 +105,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 			/**
 			 * Link rel shortlink.
 			 */
-			$add_link_rel_shortlink = empty( $this->p->options[ 'add_link_rel_shortlink' ] ) ||
-				is_404() || is_search() ? false : true;
+			$add_link_rel_shortlink = empty( $this->p->options[ 'add_link_rel_shortlink' ] ) || is_404() || is_search() ? false : true;
 
 			if ( $add_link_rel_shortlink ) {
 

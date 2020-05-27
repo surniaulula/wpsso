@@ -2106,7 +2106,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' ) .
 				' id="text_' . esc_attr( $css_id ) . '"' .
 				' value="' . esc_attr( $value ) . '" readonly' .
-				' onFocus="this.select(); document.execCommand(\'Copy\',false,null);"' .
+				' onFocus="this.select();"' .
 				' onMouseUp="return false;">';
 
 			/**
@@ -2117,9 +2117,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			if ( version_compare( $wp_version, '3.8', '>=' ) ) {
 
 				$html = '<div class="no_input_clipboard">' .
-					'<div class="copy_button"><a href="" title="Copy to clipboard"' .
-					' onClick="return sucomCopyInputId( \'text_' . esc_js( $css_id ) . '\');">' .
-					'<span class="dashicons dashicons-clipboard"></span></a></div><!-- .copy_button -->' . "\n" .
+					'<div class="copy_button"><a href="" onClick="return sucomCopyById( \'text_' . esc_js( $css_id ) . '\' );">' .
+					'<span class="dashicons dashicons-clipboard"></span>' .
+					'</a></div><!-- .copy_button -->' . "\n" .
 					'<div class="copy_text">' . $html . '</div><!-- .copy_text -->' . "\n" .
 					'</div><!-- .no_input_clipboard -->' . "\n";
 			}
