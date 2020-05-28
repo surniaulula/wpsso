@@ -314,7 +314,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* Added an informational message when selecting the Schema FAQPage, QAPage, or Question type.
-	* Added a "Copy notifications to clipboard." link in the SSO notifications list.
+	* Added a "Copy notifications text to clipboard." link in the SSO notifications list.
 * **Bugfixes**
 	* Fix to skip shortening the URL for 404 and search pages.
 * **Developer Notes**
@@ -998,7 +998,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 = 7.7.0-b.1 =
 
-(2020/05/28) Added an informational message when selecting the Schema FAQPage, QAPage, or Question type. Added a "Copy notifications to clipboard." link in the SSO notifications list. Fix to skip shortening the URL for 404 and search pages.
+(2020/05/28) Added an informational message when selecting the Schema FAQPage, QAPage, or Question type. Added a "Copy notifications text to clipboard." link in the SSO notifications list. Fix to skip shortening the URL for 404 and search pages.
 
 = 7.6.0 =
 
