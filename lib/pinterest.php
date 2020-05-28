@@ -112,7 +112,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 		public function filter_plugin_image_sizes( $sizes ) {
 
-			if ( ! empty( $this->p->options[ 'p_add_img_html' ] ) ) {
+			if ( ! empty( $this->p->options[ 'p_add_img_html' ] ) ) {	// Just in case.
 
 				$sizes[ 'p' ] = array(	// Option prefix.
 					'name'  => 'pinterest',

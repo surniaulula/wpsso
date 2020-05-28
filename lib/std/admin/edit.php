@@ -263,7 +263,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			);
 
 			/**
-			 * Pinterest Pin It
+			 * Pinterest Pin It.
 			 */
 			$p_img_disabled = empty( $this->p->options[ 'p_add_img_html' ] ) ? true : false;
 			$p_img_msg      = $p_img_disabled ? $this->p->msgs->p_img_disabled() : '';
