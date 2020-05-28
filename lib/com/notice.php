@@ -569,6 +569,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			if ( isset( $user_dismissed[ $notice_key ] ) ) {	// Notice has been dismissed.
 
 				$current_time = time();
+
 				$dismiss_time = $user_dismissed[ $notice_key ];
 
 				if ( ! $force_expire && ( empty( $dismiss_time ) || $dismiss_time > $current_time ) ) {
@@ -716,6 +717,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						if ( ! empty( $payload[ 'notice_key' ] ) && isset( $user_dismissed[ $payload[ 'notice_key' ] ] ) ) {
 
 							$current_time = time();
+
 							$dismiss_time = $user_dismissed[ $payload[ 'notice_key' ] ];	// Get time for key.
 
 							if ( empty( $dismiss_time ) || $dismiss_time > $current_time ) {	// 0 or time in future.
@@ -729,10 +731,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 								unset( $user_dismissed[ $payload[ 'notice_key' ] ] );
 							}
 						}
-					}
-
-					if ( ! empty( $payload[ 'hidden' ] ) ) {	// Notice is hidden.
-						continue;
 					}
 
 					/**
@@ -913,6 +911,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						if ( ! empty( $payload[ 'notice_key' ] ) && isset( $user_dismissed[ $payload[ 'notice_key' ] ] ) ) {
 
 							$current_time = time();
+
 							$dismiss_time = $user_dismissed[ $payload[ 'notice_key' ] ];	// Get time for key.
 
 							if ( empty( $dismiss_time ) || $dismiss_time > $current_time ) {	// 0 or time in future.
@@ -926,11 +925,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 								unset( $user_dismissed[ $payload[ 'notice_key' ] ] );
 							}
 						}
-					}
-
-					if ( ! empty( $payload[ 'hidden' ] ) ) {	// Notice is hidden.
-
-						continue;
 					}
 
 					$payload[ 'msg_html' ] = $this->get_notice_html( $msg_type, $payload, true );	// $notice_alt is true.
@@ -1379,7 +1373,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					min-height:50px;
 				}
 				#wpadminbar div.' . $this->lca . '-notice.notice-copy {
-					font-size:0.8em;
+					font-size:0.9em;
 					line-height:1;
 					text-align:center;
 					min-height:auto;
@@ -1389,12 +1383,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 				#wpadminbar div.' . $this->lca . '-notice.notice-copy div.notice-message {
 					display:inline-block;
-					padding:0 20px 2px 20px;
+					padding:5px 20px;
 				}
 				#wpadminbar div.' . $this->lca . '-notice.notice-copy div.notice-message a {
-					font-size:0.8em;
+					font-size:0.9em;
 					font-weight:200;
-					letter-spacing:0.5px;
+					letter-spacing:0.2px;
 				}
 				#wpadminbar div.' . $this->lca . '-notice a,
 				.' . $this->lca . '-notice a {

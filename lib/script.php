@@ -337,6 +337,10 @@ jQuery( document ).ready( function(){
 
 			return array(
 				'_ajax_nonce'         => wp_create_nonce( WPSSO_NONCE_NAME ),
+				'_ajax_actions'       => array(
+					'get_notices_json'    => 'wpsso_get_notices_json',
+					'schema_type_og_type' => 'wpsso_schema_type_og_type',
+				),
 				'_option_labels'      => $option_labels,
 				'_mb_container_ids'   => $mb_container_ids,	// Metabox ids to update when block editor saves.
 				'_tb_notices'         => $this->tb_notices,	// Maybe null, true, false, or array.

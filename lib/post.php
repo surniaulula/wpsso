@@ -61,7 +61,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$mb_container_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
 
-				add_action( 'wp_ajax_update_container_id_' . $mb_container_id, array( $this, 'ajax_metabox_document_meta' ) );
+				add_action( 'wp_ajax_get_container_id_' . $mb_container_id, array( $this, 'ajax_get_metabox_document_meta' ) );
 
 				if ( ! empty( $_GET ) || basename( $_SERVER[ 'PHP_SELF' ] ) === 'post-new.php' ) {
 
@@ -1299,7 +1299,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 		}
 
-		public function ajax_metabox_document_meta() {
+		public function ajax_get_metabox_document_meta() {
 
 			$doing_ajax = SucomUtil::get_const( 'DOING_AJAX' );
 
