@@ -326,7 +326,7 @@ jQuery( document ).ready( function(){
 			$no_notices_html   = '<div class="ab-item ab-empty-item">' . $no_notices_transl . '</div>';
 
 			$notice_text_id      = $this->p->lca . '_' . uniqid();	// CSS id of hidden notice text container.
-			$copy_notices_transl = __( 'Copy notifications to clipboard.', 'wpsso' );
+			$copy_notices_transl = __( 'Copy notifications text to clipboard.', 'wpsso' );
 			$copy_notices_html   = '<div class="wpsso-notice notice notice-alt notice-copy">' .
 				'<div class="notice-message">' .
 				'<a href="" onClick="return sucomCopyById( \'' . $notice_text_id . '\' );">' . $copy_notices_transl . '</a>' .
