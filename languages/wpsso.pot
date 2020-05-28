@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 7.7.0-dev.7\n"
+"Project-Id-Version: WPSSO Core 7.7.0-dev.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -294,7 +294,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:1057 lib/post.php:836 lib/term.php:668 lib/user.php:641
+#: lib/admin.php:1057 lib/post.php:837 lib/term.php:668 lib/user.php:637
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -328,7 +328,7 @@ msgstr ""
 
 #: lib/admin.php:1121 lib/admin.php:1132 lib/messages.php:782
 #: lib/submenu/tools.php:45 lib/submenu/tools.php:103 lib/user.php:48
-#: lib/user.php:1534 lib/user.php:1639 lib/user.php:1765
+#: lib/user.php:1530 lib/user.php:1635 lib/user.php:1761
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -918,7 +918,7 @@ msgstr ""
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:483 lib/gettext-com.php:32 lib/post.php:1633
+#: lib/com/notice.php:483 lib/gettext-com.php:32 lib/post.php:1634
 msgid "Edit"
 msgstr ""
 
@@ -6497,201 +6497,201 @@ msgctxt "image size label"
 msgid "Pinterest Pin It Image"
 msgstr ""
 
-#: lib/post.php:210
+#: lib/post.php:211
 msgctxt "module name"
 msgid "post"
 msgstr ""
 
-#: lib/post.php:494 lib/register.php:336 lib/term.php:422 lib/user.php:395
+#: lib/post.php:495 lib/register.php:336 lib/term.php:422 lib/user.php:391
 #: lib/util.php:558 lib/util.php:3009
 msgid "%s warning:"
 msgstr ""
 
-#: lib/post.php:495 lib/term.php:423 lib/user.php:397 lib/util.php:560
+#: lib/post.php:496 lib/term.php:423 lib/user.php:393 lib/util.php:560
 #: lib/util.php:3011
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
-#: lib/post.php:496
+#: lib/post.php:497
 msgid ""
 "Slow query detected - get_posts() took %1$0.3f secs to get the children of "
 "post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:780 lib/post.php:1350 lib/schema.php:3043 lib/term.php:625
-#: lib/user.php:597
+#: lib/post.php:781 lib/post.php:1351 lib/schema.php:3043 lib/term.php:625
+#: lib/user.php:593
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/post.php:972
+#: lib/post.php:973
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:1003
+#: lib/post.php:1004
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:1005
+#: lib/post.php:1006
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:1006
+#: lib/post.php:1007
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:1032
+#: lib/post.php:1033
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:1034
+#: lib/post.php:1035
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:1036
+#: lib/post.php:1037
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:1037
+#: lib/post.php:1038
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:1049 lib/util.php:1448
+#: lib/post.php:1050 lib/util.php:1448
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1061
+#: lib/post.php:1062
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1074
+#: lib/post.php:1075
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1087
+#: lib/post.php:1088
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1109
+#: lib/post.php:1110
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:1150
+#: lib/post.php:1151
 msgid "The webpage at %1$s does not include any Schema JSON-LD script(s)."
 msgstr ""
 
-#: lib/post.php:1152
+#: lib/post.php:1153
 msgid ""
 "Complete and accurate Schema JSON-LD markup is highly recommended for better "
 "ranking and click-through rates in search results."
 msgstr ""
 
-#: lib/post.php:1154
+#: lib/post.php:1155
 msgid ""
 "Consider activating the %1$s add-on to include Schema JSON-LD markup for "
 "Google Rich Results."
 msgstr ""
 
-#: lib/post.php:1172
+#: lib/post.php:1173
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:1188
+#: lib/post.php:1189
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1188
+#: lib/post.php:1189
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML &mdash; review the <a href=\"%1$s\">W3C Markup Validation "
 "Service</a> results and correct any errors."
 msgstr ""
 
-#: lib/post.php:1188
+#: lib/post.php:1189
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:1222
+#: lib/post.php:1223
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1224
+#: lib/post.php:1225
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1232
+#: lib/post.php:1233
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1235
+#: lib/post.php:1236
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1237
+#: lib/post.php:1238
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1407
+#: lib/post.php:1408
 msgid "Save a draft or publish to display these options."
 msgstr ""
 
-#: lib/post.php:1621 lib/script.php:317
+#: lib/post.php:1622 lib/script.php:317
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1635
+#: lib/post.php:1636
 msgid "Edit robots"
-msgstr ""
-
-#: lib/post.php:1649
-msgctxt "option label"
-msgid "No archive"
 msgstr ""
 
 #: lib/post.php:1650
 msgctxt "option label"
-msgid "No follow"
+msgid "No archive"
 msgstr ""
 
 #: lib/post.php:1651
 msgctxt "option label"
-msgid "No image index"
+msgid "No follow"
 msgstr ""
 
 #: lib/post.php:1652
 msgctxt "option label"
-msgid "No index"
+msgid "No image index"
 msgstr ""
 
 #: lib/post.php:1653
 msgctxt "option label"
-msgid "No snippet"
+msgid "No index"
 msgstr ""
 
 #: lib/post.php:1654
 msgctxt "option label"
+msgid "No snippet"
+msgstr ""
+
+#: lib/post.php:1655
+msgctxt "option label"
 msgid "No translate"
 msgstr ""
 
-#: lib/post.php:1783
+#: lib/post.php:1784
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -7397,67 +7397,67 @@ msgctxt "metabox title"
 msgid "Twitter Large Image Summary Card"
 msgstr ""
 
-#: lib/user.php:164
+#: lib/user.php:160
 msgctxt "module name"
 msgid "user"
 msgstr ""
 
-#: lib/user.php:399
+#: lib/user.php:395
 msgid ""
 "Slow query detected - get_posts() took %1$0.3f secs to get posts authored by "
 "user ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/user.php:871
+#: lib/user.php:867
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:954
+#: lib/user.php:950
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:955
+#: lib/user.php:951
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:956
+#: lib/user.php:952
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1364
+#: lib/user.php:1360
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1553
+#: lib/user.php:1549
 msgid ""
 "Aborting task to add the %1$s role to content creators - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1568
+#: lib/user.php:1564
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1605
+#: lib/user.php:1601
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1607 lib/user.php:1707 lib/util-cache.php:151
+#: lib/user.php:1603 lib/user.php:1703 lib/util-cache.php:151
 #: lib/util-cache.php:636
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/user.php:1658
+#: lib/user.php:1654
 msgid ""
 "Aborting task to remove the %1$s role from all users - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1673
+#: lib/user.php:1669
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1705
+#: lib/user.php:1701
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 

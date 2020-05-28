@@ -78,20 +78,21 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 * The 'save_post' action is run after other post type specific actions,
 				 * so we can use it to save post meta for any post type.
 				 */
-				add_action( 'save_post', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );	// Default is -10.
+				add_action( 'save_post', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );	// Default is -100.
 
 				/**
 				 * Don't hook the 'clean_post_cache' action since 'save_post' is run after
 				 * 'clean_post_cache' and our custom post meta has not been saved yet.
 				 */
-				add_action( 'save_post', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );	// Default is 0.
+				add_action( 'save_post', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );	// Default is -10.
 
 				/**
 				 * The wp_insert_post() function returns after running the 'edit_attachment' action,
 				 * so the 'save_post' action is never run for attachments.
 				 */
-				add_action( 'edit_attachment', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );	// Default is -10.
-				add_action( 'edit_attachment', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );	// Default is 0.
+				add_action( 'edit_attachment', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );	// Default is -100.
+
+				add_action( 'edit_attachment', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );	// Default is -10.
 
 				if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
 

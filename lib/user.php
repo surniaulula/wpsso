@@ -131,17 +131,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				 */
 				add_action( 'edit_user_profile', array( $this, 'show_metabox_section' ), 20 );
 
-				add_action( 'edit_user_profile_update', array( $this, 'sanitize_submit_cm' ), 5 );
+				add_action( 'edit_user_profile_update', array( $this, 'sanitize_submit_cm' ), -200 );
+				add_action( 'edit_user_profile_update', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );	// Default is -100.
+				add_action( 'edit_user_profile_update', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );	// Default is -10.
 
-				add_action( 'edit_user_profile_update', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );	// Default is -10.
-
-				add_action( 'edit_user_profile_update', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );	// Default is 0.
-
-				add_action( 'personal_options_update', array( $this, 'sanitize_submit_cm' ), 5 );
-
-				add_action( 'personal_options_update', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );	// Default is -10.
-
-				add_action( 'personal_options_update', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );	// Default is 0.
+				add_action( 'personal_options_update', array( $this, 'sanitize_submit_cm' ), -200 );
+				add_action( 'personal_options_update', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );	// Default is -100.
+				add_action( 'personal_options_update', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );	// Default is -10.
 			}
 		}
 
@@ -885,7 +881,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				if ( isset( $this->p->options[ 'plugin_cm_' . $opt_pre . '_name' ] ) ) {
 
 					$cm_enabled_value = $this->p->options[ 'plugin_cm_' . $opt_pre . '_enabled' ];
-					$cm_name_value = $this->p->options[ 'plugin_cm_' . $opt_pre . '_name' ];
+					$cm_name_value    = $this->p->options[ 'plugin_cm_' . $opt_pre . '_name' ];
 
 					/**
 					 * Sanitize values only for those enabled contact methods.
