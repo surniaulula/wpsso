@@ -208,6 +208,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			 */
 			if ( ! isset( $local_cache[ $cache_id ] ) ) {
 				$local_cache[ $cache_id ] = false;
+			} elseif ( $this->md_local_cache_disabled ) {
+				$local_cache[ $cache_id ] = false;
 			}
 
 			$md_opts =& $local_cache[ $cache_id ];	// Shortcut variable name.
@@ -277,6 +279,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			if ( ! $this->user_can_edit( $term_id, $term_tax_id ) ) {
 				return;
 			}
+
+			$this->md_local_cache_disabled = true;	// Disable local cache for get_defaults() and get_options().
 
 			/**
 			 * Get first term with matching 'term_taxonomy_id'.

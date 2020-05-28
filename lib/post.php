@@ -91,7 +91,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 * so the 'save_post' action is never run for attachments.
 				 */
 				add_action( 'edit_attachment', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );	// Default is -100.
-
 				add_action( 'edit_attachment', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );	// Default is -10.
 
 				if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
@@ -302,7 +301,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			static $local_cache = array();
 
 			/**
-			 * Do not add $pad_opts to the $cache_id string.
+			 * Use $post_id and $filter_opts to create the cache ID string, but do not add $pad_opts.
 			 */
 			$cache_id = SucomUtil::get_assoc_salt( array( 'id' => $post_id, 'filter' => $filter_opts ) );
 
@@ -310,6 +309,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 * Maybe initialize the cache.
 			 */
 			if ( ! isset( $local_cache[ $cache_id ] ) ) {
+				$local_cache[ $cache_id ] = false;
+			} elseif ( $this->md_local_cache_disabled ) {
 				$local_cache[ $cache_id ] = false;
 			}
 
@@ -391,6 +392,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( ! $this->user_can_edit( $post_id, $rel_id ) ) {
 				return;
 			}
+
+			$this->md_local_cache_disabled = true;	// Disable local cache for get_defaults() and get_options().
 
 			$mod = $this->get_mod( $post_id );
 

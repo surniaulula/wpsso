@@ -1527,7 +1527,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_add_to_tax_post_tag'      => 1,
 					'plugin_add_to_user_page'         => 1,
 					'plugin_wpseo_social_meta'        => 0,			// Import Yoast SEO Social Meta.
-					'plugin_wpseo_show_import'        => 0,			// Show Yoast SEO Import Details.
+					'plugin_wpseo_show_import'        => 1,			// Show Yoast SEO Import Details.
 					'plugin_def_currency'             => 'USD',		// Default Currency.
 
 					/**
