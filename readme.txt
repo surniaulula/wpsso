@@ -308,20 +308,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.7.0-b.1 (2020/05/28)**
+**Version 7.7.0-rc.1 (2020/05/29)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added an informational message when selecting the Schema FAQPage, QAPage, or Question type.
-	* Added a "Copy notifications text to clipboard." link in the SSO notifications list.
+	* Added a "Copy notifications to clipboard." link in the SSO notifications list.
 * **Bugfixes**
 	* Fix to skip shortening the URL for 404 and search pages.
 * **Developer Notes**
 	* Added a new WpssoEdit class in lib/edit.php for post, term, and user editing page filters.
 	* Added a new `SucomUtil::is_non_assoc()` method to test for non-associative arrays.
 	* Added a new `SucomUtil::is_mod_current_screen()` method for notice text in `WpssoUtil::maybe_set_ref()`.
-	* Added a new `WpssoWpMeta->$md_local_cache_disabled` property to skip local caches after saving post/term/user options.
+	* Added a new `WpssoWpMeta->$md_cache_disabled` property to skip local caches after saving post/term/user options.
 	* Added new 'wpsso_json_data_validate_https_schema_org_{item_type}' filters for WPSSO JSON v3.10.0.
 	* Moved the lib/wp-meta.php library file to lib/abstracts/wp-meta.php.
 * **Requires At Least**
@@ -996,9 +996,9 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 7.7.0-b.1 =
+= 7.7.0-rc.1 =
 
-(2020/05/28) Added an informational message when selecting the Schema FAQPage, QAPage, or Question type. Added a "Copy notifications text to clipboard." link in the SSO notifications list. Fix to skip shortening the URL for 404 and search pages.
+(2020/05/29) Added an informational message when selecting the Schema FAQPage, QAPage, or Question type. Added a "Copy notifications to clipboard." link in the SSO notifications list. Fix to skip shortening the URL for 404 and search pages.
 
 = 7.6.0 =
 
