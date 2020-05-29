@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		protected $p;
 		protected $form;
-		protected $md_local_cache_disabled = false;	// Disable local caches after saving options.
+		protected $md_cache_disabled = false;	// Disable local caches after saving options.
 
 		/**
 		 * The WpssoPost, WpssoTerm, and WpssoUser->load_meta_page() methods define the $head_tags and $head_info static
@@ -256,7 +256,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			 */
 			if ( ! isset( $local_cache[ $cache_id ] ) ) {
 				$local_cache[ $cache_id ] = array();
-			} elseif ( $this->md_local_cache_disabled ) {
+			} elseif ( $this->md_cache_disabled ) {
 				$local_cache[ $cache_id ] = array();
 			}
 

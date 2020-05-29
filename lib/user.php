@@ -209,7 +209,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			 */
 			if ( ! isset( $local_cache[ $cache_id ] ) ) {
 				$local_cache[ $cache_id ] = false;
-			} elseif ( $this->md_local_cache_disabled ) {
+			} elseif ( $this->md_cache_disabled ) {
 				$local_cache[ $cache_id ] = false;
 			}
 
@@ -291,7 +291,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return;
 			}
 
-			$this->md_local_cache_disabled = true;	// Disable local cache for get_defaults() and get_options().
+			$this->md_cache_disabled = true;	// Disable local cache for get_defaults() and get_options().
 
 			$mod = $this->get_mod( $user_id );
 
