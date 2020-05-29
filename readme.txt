@@ -308,7 +308,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.7.0-rc.2 (2020/05/30)**
+**Version 7.7.0 (2020/05/30)**
 
 * **New Features**
 	* None.
@@ -996,7 +996,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 7.7.0-rc.2 =
+= 7.7.0 =
 
 (2020/05/30) Added a "Copy notifications to clipboard." link in the SSO notifications list. Added an informational message about Schema FAQPage, QAPage, and Question markup when selecting those types. Fix to skip URL shortening for 404 and search pages.
 
