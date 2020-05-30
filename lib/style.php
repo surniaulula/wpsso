@@ -415,7 +415,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				''              => 'plugin_col_def_width',
 			) as $css_class => $opt_key ) {
 
-				$custom_style_css .= "\n@media ( min-width:783px ) {\n";
+				$custom_style_css .= "\n@media screen and ( min-width:783px ) {\n";
 
 				switch ( $css_class ) {
 
@@ -648,9 +648,11 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			}
 
 			$custom_style_css .= '
+
 				.column-' . $lca . '_og_desc {
 					overflow:hidden;
 				}
+
 				td.column-' . $lca . '_schema_type,
 				td.column-' . $lca . '_og_type,
 				td.column-' . $lca . '_og_desc {
@@ -659,7 +661,9 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					text-align:left;
 					word-wrap:break-word;
 				}
-				@media ( max-width:1295px ) {
+
+				@media screen and ( max-width:1295px ) {
+
 					th.column-' . $lca . '_og_desc,
 					td.column-' . $lca . '_og_desc {
 						display:none;
