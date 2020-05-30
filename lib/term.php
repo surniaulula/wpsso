@@ -496,8 +496,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			if ( ! empty( $term_id ) ) {	// just in case
+
 				if ( ( $col_info = self::get_sortable_columns( $col_key ) ) !== null ) {
+
 					if ( isset( $col_info[ 'meta_key' ] ) ) {	// just in case
+
 						self::update_term_meta( $term_id, $col_info[ 'meta_key' ], $content );
 					}
 				}

@@ -294,7 +294,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:1057 lib/post.php:840 lib/term.php:672 lib/user.php:641
+#: lib/admin.php:1057 lib/post.php:840 lib/term.php:675 lib/user.php:641
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -3519,15 +3519,15 @@ msgstr ""
 msgid "Incomplete API options to instantiate the \"%s\" shortening service."
 msgstr ""
 
-#: lib/gettext-pro.php:174 lib/pro/util/wpseo-meta.php:130
+#: lib/gettext-pro.php:174 lib/pro/util/wpseo-meta.php:129
 msgid "Imported Yoast SEO \"%1$s\" metadata from post ID %2$d."
 msgstr ""
 
-#: lib/gettext-pro.php:175 lib/pro/util/wpseo-meta.php:262
+#: lib/gettext-pro.php:175 lib/pro/util/wpseo-meta.php:263
 msgid "Imported Yoast SEO \"%1$s\" metadata from term ID %2$d."
 msgstr ""
 
-#: lib/gettext-pro.php:176 lib/pro/util/wpseo-meta.php:360
+#: lib/gettext-pro.php:176 lib/pro/util/wpseo-meta.php:363
 msgid "Imported Yoast SEO \"%1$s\" metadata from user ID %2$d."
 msgstr ""
 
@@ -6518,7 +6518,7 @@ msgid ""
 "post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:784 lib/post.php:1354 lib/schema.php:3043 lib/term.php:629
+#: lib/post.php:784 lib/post.php:1354 lib/schema.php:3043 lib/term.php:632
 #: lib/user.php:597
 msgid "checking meta tags"
 msgstr ""
@@ -7363,7 +7363,7 @@ msgid ""
 "%2$d in taxonomy %3$s (%4$s)."
 msgstr ""
 
-#: lib/term.php:878
+#: lib/term.php:881
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
