@@ -3519,15 +3519,15 @@ msgstr ""
 msgid "Incomplete API options to instantiate the \"%s\" shortening service."
 msgstr ""
 
-#: lib/gettext-pro.php:174 lib/pro/util/wpseo-meta.php:156
+#: lib/gettext-pro.php:174 lib/pro/util/wpseo-meta.php:159
 msgid "Imported Yoast SEO \"%1$s\" metadata from post ID %2$d."
 msgstr ""
 
-#: lib/gettext-pro.php:175 lib/pro/util/wpseo-meta.php:301
+#: lib/gettext-pro.php:175 lib/pro/util/wpseo-meta.php:304
 msgid "Imported Yoast SEO \"%1$s\" metadata from term ID %2$d."
 msgstr ""
 
-#: lib/gettext-pro.php:176 lib/pro/util/wpseo-meta.php:396
+#: lib/gettext-pro.php:176 lib/pro/util/wpseo-meta.php:399
 msgid "Imported Yoast SEO \"%1$s\" metadata from user ID %2$d."
 msgstr ""
 
