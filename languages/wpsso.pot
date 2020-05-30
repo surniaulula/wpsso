@@ -3412,33 +3412,33 @@ msgstr ""
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: lib/gettext-pro.php:136 lib/pro/ecom/woocommerce.php:139
+#: lib/gettext-pro.php:136 lib/pro/ecom/woocommerce.php:142
 msgid ""
 "The WooCommerce %s method is not available - please update to a newer "
 "version of WooCommerce."
 msgstr ""
 
 #: lib/gettext-pro.php:137 lib/gettext-pro.php:142
-#: lib/pro/ecom/woocommerce.php:963 lib/pro/ecom/wpecommerce.php:533
+#: lib/pro/ecom/woocommerce.php:966 lib/pro/ecom/wpecommerce.php:533
 msgid "\"%s\" is an unknown Schema Product item condition."
 msgstr ""
 
 #: lib/gettext-pro.php:138 lib/gettext-pro.php:143
-#: lib/pro/ecom/woocommerce.php:966 lib/pro/ecom/wpecommerce.php:536
+#: lib/pro/ecom/woocommerce.php:969 lib/pro/ecom/wpecommerce.php:536
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/gettext-pro.php:139 lib/pro/ecom/woocommerce.php:1124
+#: lib/gettext-pro.php:139 lib/pro/ecom/woocommerce.php:1127
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/gettext-pro.php:140 lib/pro/ecom/woocommerce.php:1126
+#: lib/gettext-pro.php:140 lib/pro/ecom/woocommerce.php:1129
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:141 lib/pro/ecom/woocommerce.php:1129
+#: lib/gettext-pro.php:141 lib/pro/ecom/woocommerce.php:1132
 msgid "Please update your site to WooCommerce version %s or newer."
 msgstr ""
 
@@ -3519,15 +3519,15 @@ msgstr ""
 msgid "Incomplete API options to instantiate the \"%s\" shortening service."
 msgstr ""
 
-#: lib/gettext-pro.php:174 lib/pro/util/wpseo-meta.php:105
+#: lib/gettext-pro.php:174 lib/pro/util/wpseo-meta.php:156
 msgid "Imported Yoast SEO \"%1$s\" metadata from post ID %2$d."
 msgstr ""
 
-#: lib/gettext-pro.php:175 lib/pro/util/wpseo-meta.php:215
+#: lib/gettext-pro.php:175 lib/pro/util/wpseo-meta.php:301
 msgid "Imported Yoast SEO \"%1$s\" metadata from term ID %2$d."
 msgstr ""
 
-#: lib/gettext-pro.php:176 lib/pro/util/wpseo-meta.php:287
+#: lib/gettext-pro.php:176 lib/pro/util/wpseo-meta.php:396
 msgid "Imported Yoast SEO \"%1$s\" metadata from user ID %2$d."
 msgstr ""
 
