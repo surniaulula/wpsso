@@ -1,25 +1,36 @@
 
 <style type="text/css">
 
-	#document-sso-section,
-	#plugin-service-section,
-	#addons-section {
+	#wpsso-home-page .page-section {
 		clear:both;
 		width:100%;
 		margin:0;
-		padding:60px 80px 50px;
-		background-color:#f9f9f9;
+		padding:70px 80px 60px 80px;
 	}
 
-	#plugin-service-section {
-		background-color:#f3f3f3;
+	#intro-section {
+		background-color:#fafafa;
+	}
+
+	#sso-section {
+		background-color:#f6f6f6;
+	}
+
+	#api-section {
+		background-color:#f9f9f9;
 	}
 	
 	#addons-section {
-		margin:0 0 20px 0;
-		background-color:#f9f9f9;
+		background-color:#f3f3f3;
 	}
-	
+
+	#action-buttons {
+		margin-top:20px;
+	}
+
+	/**
+	 * WordPress Social and Search Optimizer
+	 */
 	#wpsso-home-page h1 {
 		font-family:"HelveticaNeue-Light","Helvetica Neue Light","Segoe UI Light","Helvetica Neue","Segoe UI","Helvetica",Arial,"Lucida Grande",sans-serif; 
 		font-weight:200;
@@ -29,7 +40,10 @@
 		color:#0f533d;
 		margin:30px 0 15px 0;
 	}
-	
+
+	/**
+	 * The Complete Meta Tag and Schema Markup Solution
+	 */
 	#wpsso-home-page h2 {
 		font-size:34px;
 		font-weight:200;
@@ -40,6 +54,11 @@
 		margin:15px 0 10px 0;
 	}
 	
+	/**
+	 * Meta Tags and Schema Markup for Facebook / Open Graph, Pinterest Rich Pins,
+	 * Twitter Cards, Google Rich Results with Structured Data, Messaging Apps,
+	 * WordPress REST API, LinkedIn / oEmbed Data, and More.
+	 */
 	#wpsso-home-page h3 {
 		font-size:22px;
 		font-weight:200;
@@ -93,6 +112,10 @@
 
 	@media screen and (max-width: 992px) {
 
+		#wpsso-home-page .page-section {
+			padding:40px 50px;
+		}
+
 		#wpsso-home-page h1 {
 			font-size:40px;
 		}
@@ -108,9 +131,16 @@
 		#wpsso-home-page h4 {
 			font-size:18px;
 		}
+	}
 
-		#document-sso-section {
-			padding:20px 30px 10px;
+	@media screen and (max-width: 782px) {
+
+		#wpsso-home-page .page-section {
+			padding:20px 30px;
+		}
+
+		#wpsso-home-page .page-section .top {
+			margin-top:20px;
 		}
 	}
 
@@ -126,17 +156,21 @@
 Twitter Cards, Google Rich Results with Structured Data, Messaging Apps,<br/>
 WordPress REST API, LinkedIn / oEmbed Data, and More.</h3>
 
-<p><img class="alignright size-medium wp-image-27160" data-wp-pid="27160" width="776" height="850" src="//wpsso.com/wp-content/uploads/2020/04/google-rich-results-product-776x850.png" alt="Google Rich Results for Schema Product Markup" style="width:50%; height:auto; max-width:776px;"></p>
+<div id="intro-section" class="page-section">
 
-<h5>Make sure your content looks great on all social and search sites - no matter how your URLs are crawled, shared, re-shared, posted, or embedded:</h5>
+	<img class="alignright size-medium wp-image-27160" data-wp-pid="27160" width="776" height="850" src="//wpsso.com/wp-content/uploads/2020/04/google-rich-results-product-776x850.png" alt="Google Rich Results for Schema Product Markup" style="width:50%; height:auto; max-width:776px;">
 
-<p>WPSSO creates meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph, Google Rich Results (aka Rich Snippets, Structured Data), Mobile Web Browsers, oEmbed data for LinkedIn, Pinterest Rich Pins, Twitter Cards &mdash; including complete markup for image SEO, video SEO, extensive e-Commerce product markup (for WooCommerce and others), mobile store apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content, supported plugin data, and service API data.</p>
+	<h5 class="top">Make sure your content looks great on all social and search sites - no matter how your URLs are crawled, shared, re-shared, posted, or embedded:</h5>
 
-<p>There's no need to manually re-enter descriptions, titles, product information, re-select images / videos, etc. like other meta tag and Schema markup plugins &mdash; WPSSO reads all your existing post, page, image, video, e-commerce product, recipe, rating, review, event, and SEO content automatically.</p>
+	<p>WPSSO creates meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph, Google Rich Results (aka Rich Snippets, Structured Data), Mobile Web Browsers, oEmbed data for LinkedIn, Pinterest Rich Pins, Twitter Cards &mdash; including complete markup for image SEO, video SEO, extensive e-Commerce product markup (for WooCommerce and others), mobile store apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content, supported plugin data, and service API data.</p>
 
-<p>WPSSO is also language / locale aware, which means you can customize several option values for different webpage languages.</p>
+	<p>There's no need to manually re-enter descriptions, titles, product information, re-select images / videos, etc. like other meta tag and Schema markup plugins &mdash; WPSSO reads all your existing post, page, image, video, e-commerce product, recipe, rating, review, event, and SEO content automatically.</p>
 
-<div id="document-sso-section">
+	<p>WPSSO is also language / locale aware, which means you can customize several option values for different webpage languages.</p>
+
+</div><!-- #intro-section -->
+
+<div id="sso-section" class="page-section">
 
 	<img class="alignleft size-medium wp-image-9395" style="width:50%; height:auto; max-width:50%;" src="https://wpsso.com/wp-content/uploads/2018/06/wpsso-edit-post-sso-metabox-customize-cropped-600x769.jpg" alt="" data-wp-pid="9395" width="600" height="769">
 
@@ -150,9 +184,9 @@ WordPress REST API, LinkedIn / oEmbed Data, and More.</h3>
 
 	<div style="clear:both"></div>
 
-</div><!-- #document-sso-section -->
+</div><!-- #sso-section -->
 
-<div id="plugin-service-section">
+<div id="api-section" class="page-section">
 
 	<img class="alignright size-medium wp-image-27159" data-wp-pid="27159" width="776" height="728" src="//wpsso.com/wp-content/uploads/2020/04/google-rich-results-recipe-776x728.png" alt="Google Rich Results for Schema Recipe Markup" style="width:50%; height:auto; max-width:776px;">
 
@@ -214,9 +248,9 @@ WordPress REST API, LinkedIn / oEmbed Data, and More.</h3>
 		<li>YouTube Videos and Playlists</li>
 	</ul>
 	
-</div><!-- #plugin-service-section -->
+</div><!-- #api-section -->
 
-<div id="addons-section">
+<div id="addons-section" class="page-section">
 
 	<h4 class="top">Free Complementary Add-ons for WPSSO Core</h4>
 	
@@ -243,9 +277,13 @@ WordPress REST API, LinkedIn / oEmbed Data, and More.</h3>
 
 <!-- wpsso-ignore -->
 
-<a class="btn btn-default read-more alignright" href="/extend/plugins/wpsso/free/?utm_source=wpsso&amp;utm_medium=web&amp;utm_content=read-more-free" target="_blank">Download the Standard version <i class="fa fa-chevron-right"></i></a>
+<div id="action-buttons">
 
-<a class="btn btn-default read-more more alignright" href="/extend/plugins/wpsso/?utm_source=wpsso&amp;utm_medium=web&amp;utm_content=read-more-premium">Purchase the Premium version <i class="fa fa-chevron-right"></i></a>
+	<a class="btn btn-default read-more alignright" href="/extend/plugins/wpsso/free/?utm_source=wpsso&amp;utm_medium=web&amp;utm_content=read-more-free" target="_blank">Download the Standard version <i class="fa fa-chevron-right"></i></a>
+
+	<a class="btn btn-default read-more more alignright" href="/extend/plugins/wpsso/?utm_source=wpsso&amp;utm_medium=web&amp;utm_content=read-more-premium">Purchase the Premium version <i class="fa fa-chevron-right"></i></a>
+
+</div><!-- #action-buttons -->
 
 <!-- /wpsso-ignore -->
 
