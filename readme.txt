@@ -308,6 +308,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 7.8.0-dev.1 (2020/06/01)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new `WpssoConfig::get_ext_dir()` method.
+	* Added a new `WpssoConfig::get_ext_file_path()` method.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.2.
+
 **Version 7.7.0 (2020/05/30)**
 
 * **New Features**
@@ -995,6 +1010,10 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 	* WordPress v3.9.
 
 == Upgrade Notice ==
+
+= 7.8.0-dev.1 =
+
+(2020/06/01) None.
 
 = 7.7.0 =
 
