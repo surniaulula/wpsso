@@ -2584,7 +2584,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$um_rec_version = WpssoConfig::$cf[ 'um' ][ 'rec_version' ];
 
-						$um_check_updates_transl = _x( 'Check for Updates', 'submit button', 'wpsso' );
+						$um_check_updates_transl = _x( 'Check for Plugin Updates', 'submit button', 'wpsso' );
 
 						$tools_settings_page_link = $this->p->util->get_admin_url( 'tools',
 							_x( 'Tools and Actions', 'lib file description', 'wpsso' ) );

@@ -5859,7 +5859,7 @@ msgstr ""
 
 #: lib/messages.php:2587
 msgctxt "submit button"
-msgid "Check for Updates"
+msgid "Check for Plugin Updates"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.

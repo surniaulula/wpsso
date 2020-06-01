@@ -4064,6 +4064,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 		/**
 		 * Since WPSSO Core v7.8.0.
+		 *
+		 * Returns false or a slashed directory path.
 		 */
 		public static function get_ext_dir( $ext ) {
 
@@ -4109,9 +4111,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return $local_cache[ $ext ] = false;
 		}
 
-		public static function get_ext_file_path( $ext, $file_name, $is_dir = false ) {
+		/**
+		 * Since WPSSO Core v7.8.0.
+		 *
+		 * Returns false, a slashed directory path, or the file path.
+		 */
+		public static function get_ext_file_path( $ext, $file_name = '', $is_dir = false ) {
 
-			if ( $ext_dir = self::get_ext_dir( $ext ) ) {
+			if ( $ext_dir = self::get_ext_dir( $ext ) ) {	// Returns false or a slashed directory path.
 
 				if ( $is_dir ) {	// Must be a directory.
 
