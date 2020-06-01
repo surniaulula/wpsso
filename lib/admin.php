@@ -3146,9 +3146,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$file_name = 'readme.txt';
-			$file_key  = SucomUtil::sanitize_hookname( $file_name );	// Rename readme.txt to readme_txt.
-			$file_dir  = SucomUtil::get_const( strtoupper( $ext ) . '_PLUGINDIR' );
-			$file_path = $file_dir ? trailingslashit( $file_dir ) . $file_name : false;
+			$file_path = WpssoConfig::get_ext_file_path( $ext, $file_name );
+			$file_key  = SucomUtil::sanitize_hookname( $file_name );	// Rename readme.txt to readme_txt (note underscore).
 			$file_url  = isset( $this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] ) ? 
 				$this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] : false;
 
@@ -3256,9 +3255,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$file_name = SucomUtil::sanitize_file_path( $file_name );
-			$file_key  = SucomUtil::sanitize_hookname( basename( $file_name ) );	// html/setup.html -> setup_html.
-			$file_dir  = SucomUtil::get_const( strtoupper( $ext ) . '_PLUGINDIR' );
-			$file_path = $file_dir ? trailingslashit( $file_dir ) . $file_name : false;
+			$file_path = WpssoConfig::get_ext_file_path( $ext, $file_name );
+			$file_key  = SucomUtil::sanitize_hookname( basename( $file_name ) );	// html/setup.html -> setup_html (note underscore).
 			$file_url  = isset( $this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] ) ? 
 				$this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] : false;
 

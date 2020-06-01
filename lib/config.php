@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '7.7.0',	// Plugin version.
+					'version'     => '7.8.0-dev.1',	// Plugin version.
 					'opt_version' => '740',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1816,7 +1816,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '2.11.0',	// Minimum update manager version (soft limit).
+				'rec_version' => '2.13.0-dev.1',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',
@@ -3654,14 +3654,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 					$pkg_dir = 'std';
 
-					$ext_dir_const = strtoupper( $ext ) . '_PLUGINDIR';
+					if ( ! $pro_disabled && defined( $ext_dir_const = strtoupper( $ext ) . '_PLUGINDIR' ) &&
+						is_dir( constant( $ext_dir_const ) . 'lib/pro/' ) ) {
 
-					if ( ! $pro_disabled ) {
-						if ( defined( $ext_dir_const ) ) {
-							if ( is_dir( constant( $ext_dir_const ) . 'lib/pro/' ) ) {
-								$pkg_dir = 'pro';
-							}
-						}
+						$pkg_dir = 'pro';
 					}
 
 					if ( isset( $info[ 'slug' ] ) ) {
@@ -3703,42 +3699,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			if ( ! empty( $url ) && false === strpos( $url, '//' ) ) {
 				$url = $plugin_base . $url;
 			}
-		}
-
-		/**
-		 * Since WPSSO Core v3.38.3.
-		 */
-		public static function get_ext_sorted() {
-
-			$cf = self::get_config();
-
-			/**
-			 * Sort the array by plugin name and maintain index association.
-			 */
-			uasort( $cf[ 'plugin' ], array( 'self', 'sort_ext_by_name' ) );
-
-			reset( $cf[ 'plugin' ] );	// Just in case.
-
-			$first_key = key( $cf[ 'plugin' ] );
-
-			/**
-			 * Make sure the core plugin is listed first.
-			 */
-			if ( 'wpsso' !== $first_key ) {
-
-				SucomUtil::move_to_front( $cf[ 'plugin' ], 'wpsso' );
-			}
-
-			return $cf[ 'plugin' ];
-		}
-
-		private static function sort_ext_by_name( $a, $b ) {
-
-			if ( isset( $a[ 'name' ] ) && isset( $b[ 'name' ] ) ) {		// Just in case.
-				return strnatcmp( $a[ 'name' ], $b[ 'name' ] );
-			}
-
-			return 0;	// No change.
 		}
 
 		public static function set_constants( $plugin_file_path ) {
@@ -3893,6 +3853,84 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return $var_const;
 		}
 
+		/**
+		 * Load all essential library files.
+		 *
+		 * Avoid calling is_admin() here as it can be unreliable this early in the load process - some plugins that operate
+		 * outside of the standard WordPress load process do not define WP_ADMIN as they should (which is required to by
+		 * is_admin() this early in the WordPress load process).
+		 */
+		public static function require_libs( $plugin_file_path ) {
+
+			require_once WPSSO_PLUGINDIR . 'lib/com/cache.php';
+			require_once WPSSO_PLUGINDIR . 'lib/com/nodebug.php';	// Always load the debug fallback class.
+			require_once WPSSO_PLUGINDIR . 'lib/com/nonotice.php';	// Always load the notice fallback class.
+			require_once WPSSO_PLUGINDIR . 'lib/com/plugin.php';
+			require_once WPSSO_PLUGINDIR . 'lib/com/util.php';
+			require_once WPSSO_PLUGINDIR . 'lib/com/util-wp.php';
+
+			require_once WPSSO_PLUGINDIR . 'lib/check.php';
+			require_once WPSSO_PLUGINDIR . 'lib/exception.php';	// Extends ErrorException.
+			require_once WPSSO_PLUGINDIR . 'lib/filters.php';
+			require_once WPSSO_PLUGINDIR . 'lib/functions.php';
+			require_once WPSSO_PLUGINDIR . 'lib/head.php';
+			require_once WPSSO_PLUGINDIR . 'lib/media.php';
+			require_once WPSSO_PLUGINDIR . 'lib/options.php';
+			require_once WPSSO_PLUGINDIR . 'lib/page.php';
+			require_once WPSSO_PLUGINDIR . 'lib/register.php';
+			require_once WPSSO_PLUGINDIR . 'lib/script.php';
+			require_once WPSSO_PLUGINDIR . 'lib/style.php';
+			require_once WPSSO_PLUGINDIR . 'lib/util.php';		// Extends SucomUtil.
+
+			/**
+			 * Post, term, user modules.
+			 */
+			require_once WPSSO_PLUGINDIR . 'lib/abstracts/wp-meta.php';
+			require_once WPSSO_PLUGINDIR . 'lib/post.php';		// Extends WpssoWpMeta.
+			require_once WPSSO_PLUGINDIR . 'lib/term.php';		// Extends WpssoWpMeta.
+			require_once WPSSO_PLUGINDIR . 'lib/user.php';		// Extends WpssoWpMeta.
+
+			/**
+			 * Meta tags and markup.
+			 */
+			require_once WPSSO_PLUGINDIR . 'lib/link-rel.php';
+			require_once WPSSO_PLUGINDIR . 'lib/meta-item.php';
+			require_once WPSSO_PLUGINDIR . 'lib/meta-name.php';
+			require_once WPSSO_PLUGINDIR . 'lib/oembed.php';
+			require_once WPSSO_PLUGINDIR . 'lib/opengraph.php';
+			require_once WPSSO_PLUGINDIR . 'lib/pinterest.php';
+			require_once WPSSO_PLUGINDIR . 'lib/schema.php';
+			require_once WPSSO_PLUGINDIR . 'lib/twittercard.php';
+
+			/**
+			 * Additional module library loader.
+			 */
+			require_once WPSSO_PLUGINDIR . 'lib/loader.php';
+
+			add_filter( 'wpsso_load_lib', array( 'WpssoConfig', 'load_lib' ), 10, 3 );
+		}
+
+		public static function load_lib( $ret = false, $filespec = '', $classname = '' ) {
+
+			if ( false === $ret && ! empty( $filespec ) ) {
+
+				$file_path = WPSSO_PLUGINDIR . 'lib/' . $filespec . '.php';
+
+				if ( file_exists( $file_path ) ) {
+
+					require_once $file_path;
+
+					if ( empty( $classname ) ) {
+						return SucomUtil::sanitize_classname( 'wpsso' . $filespec, $allow_underscore = false );
+					} else {
+						return $classname;
+					}
+				}
+			}
+
+			return $ret;
+		}
+
 		public static function get_cache_dir() {
 
 			if ( defined( 'WPSSO_CACHEDIR' ) ) {
@@ -3989,81 +4027,107 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		/**
-		 * Load all essential library files.
-		 *
-		 * Avoid calling is_admin() here as it can be unreliable this early in the load process - some plugins that operate
-		 * outside of the standard WordPress load process do not define WP_ADMIN as they should (which is required to by
-		 * is_admin() this early in the WordPress load process).
+		 * Since WPSSO Core v3.38.3.
 		 */
-		public static function require_libs( $plugin_file_path ) {
+		public static function get_ext_sorted() {
 
-			require_once WPSSO_PLUGINDIR . 'lib/com/cache.php';
-			require_once WPSSO_PLUGINDIR . 'lib/com/nodebug.php';	// Always load the debug fallback class.
-			require_once WPSSO_PLUGINDIR . 'lib/com/nonotice.php';	// Always load the notice fallback class.
-			require_once WPSSO_PLUGINDIR . 'lib/com/plugin.php';
-			require_once WPSSO_PLUGINDIR . 'lib/com/util.php';
-			require_once WPSSO_PLUGINDIR . 'lib/com/util-wp.php';
-
-			require_once WPSSO_PLUGINDIR . 'lib/check.php';
-			require_once WPSSO_PLUGINDIR . 'lib/exception.php';	// Extends ErrorException.
-			require_once WPSSO_PLUGINDIR . 'lib/filters.php';
-			require_once WPSSO_PLUGINDIR . 'lib/functions.php';
-			require_once WPSSO_PLUGINDIR . 'lib/head.php';
-			require_once WPSSO_PLUGINDIR . 'lib/media.php';
-			require_once WPSSO_PLUGINDIR . 'lib/options.php';
-			require_once WPSSO_PLUGINDIR . 'lib/page.php';
-			require_once WPSSO_PLUGINDIR . 'lib/register.php';
-			require_once WPSSO_PLUGINDIR . 'lib/script.php';
-			require_once WPSSO_PLUGINDIR . 'lib/style.php';
-			require_once WPSSO_PLUGINDIR . 'lib/util.php';		// Extends SucomUtil.
+			$cf = self::get_config();
 
 			/**
-			 * Post, term, user modules.
+			 * Sort the array by plugin name and maintain index association.
 			 */
-			require_once WPSSO_PLUGINDIR . 'lib/abstracts/wp-meta.php';
-			require_once WPSSO_PLUGINDIR . 'lib/post.php';		// Extends WpssoWpMeta.
-			require_once WPSSO_PLUGINDIR . 'lib/term.php';		// Extends WpssoWpMeta.
-			require_once WPSSO_PLUGINDIR . 'lib/user.php';		// Extends WpssoWpMeta.
+			uasort( $cf[ 'plugin' ], array( 'self', 'sort_ext_by_name' ) );
+
+			reset( $cf[ 'plugin' ] );	// Just in case.
+
+			$first_key = key( $cf[ 'plugin' ] );
 
 			/**
-			 * Meta tags and markup.
+			 * Make sure the core plugin is listed first.
 			 */
-			require_once WPSSO_PLUGINDIR . 'lib/link-rel.php';
-			require_once WPSSO_PLUGINDIR . 'lib/meta-item.php';
-			require_once WPSSO_PLUGINDIR . 'lib/meta-name.php';
-			require_once WPSSO_PLUGINDIR . 'lib/oembed.php';
-			require_once WPSSO_PLUGINDIR . 'lib/opengraph.php';
-			require_once WPSSO_PLUGINDIR . 'lib/pinterest.php';
-			require_once WPSSO_PLUGINDIR . 'lib/schema.php';
-			require_once WPSSO_PLUGINDIR . 'lib/twittercard.php';
+			if ( 'wpsso' !== $first_key ) {
 
-			/**
-			 * Additional module library loader.
-			 */
-			require_once WPSSO_PLUGINDIR . 'lib/loader.php';
+				SucomUtil::move_to_front( $cf[ 'plugin' ], 'wpsso' );
+			}
 
-			add_filter( 'wpsso_load_lib', array( 'WpssoConfig', 'load_lib' ), 10, 3 );
+			return $cf[ 'plugin' ];
 		}
 
-		public static function load_lib( $ret = false, $filespec = '', $classname = '' ) {
+		private static function sort_ext_by_name( $a, $b ) {
 
-			if ( false === $ret && ! empty( $filespec ) ) {
+			if ( isset( $a[ 'name' ] ) && isset( $b[ 'name' ] ) ) {		// Just in case.
+				return strnatcmp( $a[ 'name' ], $b[ 'name' ] );
+			}
 
-				$file_path = WPSSO_PLUGINDIR . 'lib/' . $filespec . '.php';
+			return 0;	// No change.
+		}
 
-				if ( file_exists( $file_path ) ) {
+		/**
+		 * Since WPSSO Core v7.8.0.
+		 */
+		public static function get_ext_dir( $ext ) {
 
-					require_once $file_path;
+			static $local_cache = array();
 
-					if ( empty( $classname ) ) {
-						return SucomUtil::sanitize_classname( 'wpsso' . $filespec, $allow_underscore = false );
-					} else {
-						return $classname;
+			if ( isset( $local_cache[ $ext ] ) ) {
+				return $local_cache[ $ext ];
+			}
+
+			/**
+			 * Check for active plugin constant first.
+			 */
+			$ext_dir_const = strtoupper( $ext ) . '_PLUGINDIR';
+
+			if ( defined( $ext_dir_const ) &&
+				is_dir( $ext_dir = constant( $ext_dir_const ) ) ) {
+
+				return $local_cache[ $ext ] = trailingslashit( $ext_dir );
+			}
+
+			/**
+			 * Fallback to checking for inactive plugin folder.
+			 */
+			$cf = self::get_config();
+
+			if ( isset( $cf[ 'plugin' ][ $ext ][ 'slug' ] ) ) {
+
+				$slug = $cf[ 'plugin' ][ $ext ][ 'slug' ];
+
+				if ( defined ( 'WPMU_PLUGIN_DIR' ) &&
+					is_dir( $ext_dir = trailingslashit( WPMU_PLUGIN_DIR ) . $slug . '/' ) ) {
+				
+					return $local_cache[ $ext ] = $ext_dir;
+				}
+
+				if ( defined ( 'WP_PLUGIN_DIR' ) &&
+					is_dir( $ext_dir = trailingslashit( WP_PLUGIN_DIR ) . $slug . '/' ) ) {
+
+					return $local_cache[ $ext ] = $ext_dir;
+				}
+			}
+
+			return $local_cache[ $ext ] = false;
+		}
+
+		public static function get_ext_file_path( $ext, $file_name, $is_dir = false ) {
+
+			if ( $ext_dir = self::get_ext_dir( $ext ) ) {
+
+				if ( $is_dir ) {	// Must be a directory.
+
+					if ( is_dir( $sub_dir = trailingslashit( $ext_dir . $file_name ) ) ) {
+						return $sub_dir;
+					}
+
+				} else {
+
+					if ( file_exists( $file_path = $ext_dir . $file_name ) ) {
+						return $file_path;
 					}
 				}
 			}
 
-			return $ret;
+			return false;
 		}
 	}
 }

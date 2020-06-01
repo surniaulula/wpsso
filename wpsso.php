@@ -15,7 +15,7 @@
  * Requires At Least: 4.2
  * Tested Up To: 5.4.1
  * WC Tested Up To: 4.2.0
- * Version: 7.7.0
+ * Version: 7.8.0-dev.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -772,20 +772,15 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 					if ( $info[ 'slug' ] === $domain ) {
 
-						$constant_name = strtoupper( $ext ) . '_PLUGINDIR';
+						$languages_mofile = 'languages/' . basename( $wp_mofile );
 
-						if ( defined( $constant_name ) && $plugin_dir = constant( $constant_name ) ) {
+						if ( $plugin_mofile = WpssoConfig::get_ext_file_path( $ext, $languages_mofile ) ) {
 
-							$plugin_mofile = $plugin_dir . 'languages/' . basename( $wp_mofile );
+							global $l10n;
 
-							if ( $plugin_mofile !== $wp_mofile && is_readable( $plugin_mofile ) ) {
+							unset( $l10n[ $domain ] );	// Prevent merging.
 
-								global $l10n;
-
-								unset( $l10n[ $domain ] );	// Prevent merging.
-
-								return $plugin_mofile;
-							}
+							return $plugin_mofile;
 						}
 
 						break;	// Stop here.

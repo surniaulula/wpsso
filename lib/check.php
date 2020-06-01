@@ -614,33 +614,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 			if ( $rc && isset( $lc[ $id ] ) ) {
 				return $lc[ $id ];
-			}
-
-			$uca = strtoupper( $ext );
-
-			if ( defined( 'WPSSO_PRO_DISABLE' ) && WPSSO_PRO_DISABLE ) {
-
+			} elseif ( defined( 'WPSSO_PRO_DISABLE' ) && WPSSO_PRO_DISABLE ) {
 				return $lc[ $id ] = false;
-
-			} elseif ( defined( $uca . '_PLUGINDIR' ) ) {
-
-				$ext_dir = constant( $uca . '_PLUGINDIR' );
-
-			} elseif ( isset( $this->p->cf[ 'plugin' ][ $ext ][ 'slug' ] ) ) {
-
-				$slug = $this->p->cf[ 'plugin' ][ $ext ][ 'slug' ];
-
-				if ( ! defined ( 'WPMU_PLUGIN_DIR' ) ||
-					! is_dir( $ext_dir = WPMU_PLUGIN_DIR . '/' . $slug . '/' ) ) {
-
-					if ( ! defined ( 'WP_PLUGIN_DIR' ) ||
-						! is_dir( $ext_dir = WP_PLUGIN_DIR . '/' . $slug . '/' ) ) {
-
-						return $lc[ $id ] = false;
-					}
-				}
-
-			} else {
+			} elseif ( ! $ext_dir = WpssoConfig::get_ext_dir( $ext ) ) {
 				return $lc[ $id ] = false;
 			}
 
