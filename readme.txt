@@ -308,7 +308,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.8.0-dev.1 (2020/06/01)**
+**Version 7.8.0-dev.2 (2020/06/01)**
 
 * **New Features**
 	* None.
@@ -1011,7 +1011,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 7.8.0-dev.1 =
+= 7.8.0-dev.2 =
 
 (2020/06/01) Added new methods in `WpssoConfig` to get add-on folder and file path information.
 
