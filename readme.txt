@@ -308,7 +308,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.8.0-dev.2 (2020/06/01)**
+**Version 7.8.0-dev.3 (2020/06/02)**
 
 * **New Features**
 	* None.
@@ -389,7 +389,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Changed the menu font icon for better compatibility between Mac OS and Windows (Mac OS superscripted the original font icon).
 	* Added new buttons in the SSO &gt; Tools and Actions page:
-		* Add Person Role for Content Creators
+		* Add Person Role to Content Creators
 		* Remove Person Role from All Users
 * **Bugfixes**
 	* None.
@@ -1011,9 +1011,9 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 7.8.0-dev.2 =
+= 7.8.0-dev.3 =
 
-(2020/06/01) Added new methods in `WpssoConfig` to get add-on folder and file path information.
+(2020/06/02) Added new methods in the `WpssoConfig` class to get add-on folder and file path information.
 
 = 7.7.0 =
 
