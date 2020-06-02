@@ -313,7 +313,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Minor code optimization to get add-on folder or file path.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -1013,7 +1013,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 = 7.8.0-dev.3 =
 
-(2020/06/02) Added new methods in the `WpssoConfig` class to get add-on folder and file path information.
+(2020/06/02) Minor code optimization to get add-on folder or file path. Added new methods in the `WpssoConfig` class to get add-on folder and file path information.
 
 = 7.7.0 =
 
