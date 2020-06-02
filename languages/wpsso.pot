@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 7.8.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 7.8.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1655,12 +1655,12 @@ msgctxt "lib file description"
 msgid "Advanced Settings"
 msgstr ""
 
-#: lib/gettext-config.php:23 lib/gettext-config.php:33 lib/messages.php:2547
+#: lib/gettext-config.php:23 lib/gettext-config.php:32 lib/messages.php:2547
 msgctxt "lib file description"
 msgid "Complementary Add-ons"
 msgstr ""
 
-#: lib/gettext-config.php:24 lib/gettext-config.php:34 lib/messages.php:2096
+#: lib/gettext-config.php:24 lib/gettext-config.php:33 lib/messages.php:2096
 #: lib/messages.php:2526 lib/messages.php:2535 lib/messages.php:2550
 msgctxt "lib file description"
 msgid "Premium Licenses"
@@ -1691,7 +1691,7 @@ msgctxt "lib file description"
 msgid "Image Sizes"
 msgstr ""
 
-#: lib/gettext-config.php:32 lib/messages.php:2590
+#: lib/gettext-config.php:34 lib/messages.php:2590
 msgctxt "lib file description"
 msgid "Tools and Actions"
 msgstr ""
@@ -2845,7 +2845,7 @@ msgstr ""
 #: lib/gettext-pro.php:17 lib/pro/admin/advanced.php:109
 #: lib/std/admin/advanced.php:111
 msgctxt "option label"
-msgid "Add Person Role for New Users"
+msgid "Add Person Role to New Users"
 msgstr ""
 
 #: lib/gettext-pro.php:18 lib/pro/admin/advanced.php:113
@@ -7324,7 +7324,7 @@ msgstr ""
 
 #: lib/submenu/tools.php:114
 msgctxt "submit button"
-msgid "Add %s Role for Content Creators"
+msgid "Add %s Role to Content Creators"
 msgstr ""
 
 #: lib/submenu/tools.php:115

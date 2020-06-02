@@ -14,7 +14,7 @@ _x( 'WP Caption Text Prefix', 'option label', 'wpsso' );
 _x( 'No Title Text', 'option label', 'wpsso' );
 _x( 'No Description Text', 'option label', 'wpsso' );
 _x( 'Check for Embedded Media', 'option label', 'wpsso' );
-_x( 'Add Person Role for New Users', 'option label', 'wpsso' );
+_x( 'Add Person Role to New Users', 'option label', 'wpsso' );
 _x( 'Enable WP Excerpt for Pages', 'option label', 'wpsso' );
 _x( 'Enable WP Tags for Pages', 'option label', 'wpsso' );
 _x( 'Check for Duplicate Meta Tags', 'option label', 'wpsso' );

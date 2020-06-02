@@ -108,7 +108,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			$table_rows[ 'plugin_new_user_is_person' ] = '' . 
-			$form->get_th_html( _x( 'Add Person Role for New Users', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_new_user_is_person' ) . 
+			$form->get_th_html( _x( 'Add Person Role to New Users', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_new_user_is_person' ) . 
 			$form->get_no_td_checkbox( 'plugin_new_user_is_person' );
 
 			$table_rows[ 'plugin_page_excerpt' ] = '' . 

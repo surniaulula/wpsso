@@ -190,7 +190,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 			$image_url = SucomUtil::get_mt_media_url( $og_images );
 
-			$image_html = '<!-- ' . $this->p->lca . ' pinterest pin it image added on ' . date( 'c' ) . ' -->' . "\n";
+			$image_html = "\n" . '<!-- ' . $this->p->lca . ' pinterest pin it image added on ' . date( 'c' ) . ' -->' . "\n";
 
 			$image_html .= '<div class="' . $this->p->lca . '-pinterest-pin-it-image" style="display:none !important;">' . "\n";
 

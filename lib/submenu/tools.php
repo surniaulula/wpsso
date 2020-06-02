@@ -111,7 +111,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			$clear_cache_dir_label_transl   = _x( 'Clear All Files in Cache Folder', 'submit button', 'wpsso' );
 			$clear_transients_label_transl  = _x( 'Clear All Database Transients', 'submit button', 'wpsso' );
 			$refresh_cache_label_transl     = _x( 'Refresh Transient Cache', 'submit button', 'wpsso' );
-			$add_persons_label_transl       = sprintf( _x( 'Add %s Role for Content Creators', 'submit button', 'wpsso' ), $role_label );
+			$add_persons_label_transl       = sprintf( _x( 'Add %s Role to Content Creators', 'submit button', 'wpsso' ), $role_label );
 			$remove_persons_label_transl    = sprintf( _x( 'Remove %s Role from All Users', 'submit button', 'wpsso' ), $role_label );
 			$export_settings_label_transl   = _x( 'Export Plugin and Add-on Settings', 'submit button', 'wpsso' );
 			$import_settings_label_transl   = _x( 'Import Plugin and Add-on Settings', 'submit button', 'wpsso' );

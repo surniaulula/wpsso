@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 7.7.0\n"
+"Project-Id-Version: WPSSO Core 7.8.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-05-28 14:50-0700\n"
-"PO-Revision-Date: 2020-05-28 14:50-0700\n"
+"POT-Creation-Date: 2020-06-01 15:10-0700\n"
+"PO-Revision-Date: 2020-06-01 15:12-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -265,7 +265,7 @@ msgstr "La validation du jeton nonce pour les options de réseau a échoué (mis
 msgid "Insufficient privileges to modify network options."
 msgstr "Privilèges insuffisants pour modifier les options de réseau."
 
-#: lib/admin.php:1057 lib/post.php:840 lib/term.php:672 lib/user.php:641
+#: lib/admin.php:1057 lib/post.php:840 lib/term.php:675 lib/user.php:641
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr "La validation du jeton nonce pour l'action %1$s \"%2$s\" a échoué."
 
@@ -694,46 +694,46 @@ msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr "Util. par site"
 
-#: lib/admin.php:3307
+#: lib/admin.php:3305
 msgid "Return to %s"
 msgstr "Retour à %s"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:3338
+#: lib/admin.php:3336
 msgid "Plugin <strong>activated</strong>."
 msgstr "Extension <strong>activé</strong>."
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:3363
+#: lib/admin.php:3361
 msgid "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-ons</a> to check if newer versions are available."
 msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise à jour pour %2$s et ses ajouts</a> afin de vérifier si des versions plus récentes sont disponibles."
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:3372
+#: lib/admin.php:3370
 msgid "You may <a href=\"%1$s\">refresh the update information for WordPress (plugins, themes and translations)</a> to check if newer versions are available."
 msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise jour pour WordPress (extensions, thèmes et traductions)</a> afin de vérifier si des versions plus récentes sont disponibles."
 
-#: lib/admin.php:3500
+#: lib/admin.php:3498
 msgid "Please select a %1$s settings file to import."
 msgstr "Veuillez sélectionner un fichier de réglages %1$s à importer."
 
-#: lib/admin.php:3507
+#: lib/admin.php:3505
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr "Le fichier de réglages %1$s à importer doit être un type mime \"%2$s\"."
 
-#: lib/admin.php:3514
+#: lib/admin.php:3512
 msgid "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr "Le fichier de réglages %1$s dépasse le maximum autorisé de %2$d octets."
 
-#: lib/admin.php:3528
+#: lib/admin.php:3526
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr "Le fichier de réglages %1$s semble vide ou corrompu."
 
-#: lib/admin.php:3538
+#: lib/admin.php:3536
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr "Le fichier de réglages %1$s n'a pas pu être décodé dans un tableau de réglages."
 
-#: lib/admin.php:3548
+#: lib/admin.php:3546
 msgid "Import of plugin and add-on settings is complete."
 msgstr "L'importation des réglages d'extension et ajouts est terminée."
 
@@ -1557,12 +1557,12 @@ msgctxt "lib file description"
 msgid "Advanced Settings"
 msgstr "Réglages avancés"
 
-#: lib/gettext-config.php:23 lib/gettext-config.php:33 lib/messages.php:2547
+#: lib/gettext-config.php:23 lib/gettext-config.php:32 lib/messages.php:2547
 msgctxt "lib file description"
 msgid "Complementary Add-ons"
 msgstr "Ajouts complémentaires"
 
-#: lib/gettext-config.php:24 lib/gettext-config.php:34 lib/messages.php:2096
+#: lib/gettext-config.php:24 lib/gettext-config.php:33 lib/messages.php:2096
 #: lib/messages.php:2526 lib/messages.php:2535 lib/messages.php:2550
 msgctxt "lib file description"
 msgid "Premium Licenses"
@@ -1593,7 +1593,7 @@ msgctxt "lib file description"
 msgid "Image Sizes"
 msgstr "Tailles d'images"
 
-#: lib/gettext-config.php:32 lib/messages.php:2590
+#: lib/gettext-config.php:34 lib/messages.php:2590
 msgctxt "lib file description"
 msgid "Tools and Actions"
 msgstr "Outils et actions"
@@ -2713,8 +2713,8 @@ msgstr "Découvrir les médias intégrés"
 #: lib/gettext-pro.php:17 lib/pro/admin/advanced.php:109
 #: lib/std/admin/advanced.php:111
 msgctxt "option label"
-msgid "Add Person Role for New Users"
-msgstr "Ajouter rôle de personne aux nouveaux utilisateurs"
+msgid "Add Person Role to New Users"
+msgstr "Ajouter le rôle de personne aux nouveaux utilisateurs"
 
 #: lib/gettext-pro.php:18 lib/pro/admin/advanced.php:113
 #: lib/std/admin/advanced.php:115
@@ -3274,29 +3274,29 @@ msgstr "Shop page"
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr "La valeur de l'option \"%1$s\" de WooCommerce est vide."
 
-#: lib/gettext-pro.php:136 lib/pro/ecom/woocommerce.php:139
+#: lib/gettext-pro.php:136 lib/pro/ecom/woocommerce.php:142
 msgid "The WooCommerce %s method is not available - please update to a newer version of WooCommerce."
 msgstr "La méthode WooCommerce %s n'est pas disponible - veuillez mettre à jour WooCommerce vers une version plus récente."
 
 #: lib/gettext-pro.php:137 lib/gettext-pro.php:142
-#: lib/pro/ecom/woocommerce.php:963 lib/pro/ecom/wpecommerce.php:533
+#: lib/pro/ecom/woocommerce.php:966 lib/pro/ecom/wpecommerce.php:533
 msgid "\"%s\" is an unknown Schema Product item condition."
 msgstr "\"%s\" est une condition d'élément de Schéma Produit inconnue."
 
 #: lib/gettext-pro.php:138 lib/gettext-pro.php:143
-#: lib/pro/ecom/woocommerce.php:966 lib/pro/ecom/wpecommerce.php:536
+#: lib/pro/ecom/woocommerce.php:969 lib/pro/ecom/wpecommerce.php:536
 msgid "Valid item condition values are (case is important): %s."
 msgstr "Les valeurs de condition d'élément valides sont (les majuscules et minuscules sont importants): %s."
 
-#: lib/gettext-pro.php:139 lib/pro/ecom/woocommerce.php:1124
+#: lib/gettext-pro.php:139 lib/pro/ecom/woocommerce.php:1127
 msgid "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax.html"
 msgstr "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax.html"
 
-#: lib/gettext-pro.php:140 lib/pro/ecom/woocommerce.php:1126
+#: lib/gettext-pro.php:140 lib/pro/ecom/woocommerce.php:1129
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr "La <a href=\"%1$s\">fonction WooCommerce %2$s</a> n'est pas disponible."
 
-#: lib/gettext-pro.php:141 lib/pro/ecom/woocommerce.php:1129
+#: lib/gettext-pro.php:141 lib/pro/ecom/woocommerce.php:1132
 msgid "Please update your site to WooCommerce version %s or newer."
 msgstr "SVP mettre à jour votre site à WooCommerce version %s ou plus récente."
 
@@ -3366,15 +3366,15 @@ msgstr "La valeur de l'option \"%s\" est vide et requise."
 msgid "Incomplete API options to instantiate the \"%s\" shortening service."
 msgstr "Options d'API incomplètes pour instancier le service de raccourcissement \"%s\"."
 
-#: lib/gettext-pro.php:174 lib/pro/util/wpseo-meta.php:105
+#: lib/gettext-pro.php:174 lib/pro/util/wpseo-meta.php:129
 msgid "Imported Yoast SEO \"%1$s\" metadata from post ID %2$d."
 msgstr "Importation de métadonnée Yoast SEO \"%1$s\" de l'ID d'article %2$d."
 
-#: lib/gettext-pro.php:175 lib/pro/util/wpseo-meta.php:215
+#: lib/gettext-pro.php:175 lib/pro/util/wpseo-meta.php:263
 msgid "Imported Yoast SEO \"%1$s\" metadata from term ID %2$d."
 msgstr "Importation de métadonnée Yoast SEO \"%1$s\" de l'ID du terme %2$d."
 
-#: lib/gettext-pro.php:176 lib/pro/util/wpseo-meta.php:287
+#: lib/gettext-pro.php:176 lib/pro/util/wpseo-meta.php:363
 msgid "Imported Yoast SEO \"%1$s\" metadata from user ID %2$d."
 msgstr "Importation de métadonnée Yoast SEO \"%1$s\" de l'ID d'utilisateur %2$d."
 
@@ -5077,7 +5077,7 @@ msgstr "Lorsque l'ajout %1$s est actif, une ou plusieurs mises à jour %2$s pour
 
 #: lib/messages.php:2587
 msgctxt "submit button"
-msgid "Check for Updates"
+msgid "Check for Plugin Updates"
 msgstr "Vérifier pour mises à jour"
 
 #. translators: Please ignore - translation uses a different text domain.
@@ -5668,7 +5668,7 @@ msgstr "supérieur au max recommandé de %1$0.3f secs"
 msgid "Slow query detected - get_posts() took %1$0.3f secs to get the children of post ID %2$d (%3$s)."
 msgstr "Requête lente détectée - get_posts() a pris %1$0.3f secs pour obtenir les enfants de l'article ID %2$d (%3$s)."
 
-#: lib/post.php:784 lib/post.php:1354 lib/schema.php:3043 lib/term.php:629
+#: lib/post.php:784 lib/post.php:1354 lib/schema.php:3043 lib/term.php:632
 #: lib/user.php:597
 msgid "checking meta tags"
 msgstr "vérification des balises méta"
@@ -6442,7 +6442,7 @@ msgstr "Actualiser le cache transitoire"
 
 #: lib/submenu/tools.php:114
 msgctxt "submit button"
-msgid "Add %s Role for Content Creators"
+msgid "Add %s Role to Content Creators"
 msgstr "Ajouter le rôle %s aux créateurs de contenu"
 
 #: lib/submenu/tools.php:115
@@ -6479,7 +6479,7 @@ msgstr "terme"
 msgid "Slow query detected - get_posts() took %1$0.3f secs to get posts for term ID %2$d in taxonomy %3$s (%4$s)."
 msgstr "Requête lente détectée - get_posts() a pris %1$0.3f secs pour obtenir les articles de taxonomie %3$s du terme ID %2$d (%4$s)."
 
-#: lib/term.php:878
+#: lib/term.php:881
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages pour le terme ID %1$s."
 

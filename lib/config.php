@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '7.8.0-dev.2',	// Plugin version.
+					'version'     => '7.8.0-dev.3',	// Plugin version.
 					'opt_version' => '740',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -181,9 +181,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'advanced'        => 'Advanced Settings',
 							'social-accounts' => 'Social Pages',
 							'image-sizes'     => 'Image Sizes',
-							'tools'           => 'Tools and Actions',
 							'addons'          => 'Complementary Add-ons',
 							'licenses'        => 'Premium Licenses',
+							'tools'           => 'Tools and Actions',
 						),
 					),
 				),
@@ -1452,7 +1452,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_html_attr_filter_prio' => 1000,
 					'plugin_head_attr_filter_name' => 'head_attributes',		// <head> Attributes Filter Hook.
 					'plugin_head_attr_filter_prio' => 1000,
-					'plugin_new_user_is_person'    => 0,				// Add Person Role for New Users.
+					'plugin_new_user_is_person'    => 0,				// Add Person Role to New Users.
 					'plugin_page_excerpt'          => 0,				// Enable WP Excerpt for Pages.
 					'plugin_page_tags'             => 0,				// Enable WP Tags for Pages.
 					'plugin_check_head'            => 1,				// Check for Duplicate Meta Tags.
@@ -1677,7 +1677,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings - Integration tab.
 					 */
-					'plugin_new_user_is_person'        => 0,			// Add Person Role for New Users.
+					'plugin_new_user_is_person'        => 0,			// Add Person Role to New Users.
 					'plugin_new_user_is_person:use'    => 'default',
 					'plugin_page_excerpt'              => 0,			// Enable WP Excerpt for Pages.
 					'plugin_page_excerpt:use'          => 'default',
@@ -1816,7 +1816,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '2.13.0-dev.2',	// Minimum update manager version (soft limit).
+				'rec_version' => '2.13.0-dev.3',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',
@@ -4072,6 +4072,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			static $local_cache = array();
 
 			if ( isset( $local_cache[ $ext ] ) ) {
+
 				return $local_cache[ $ext ];
 			}
 
