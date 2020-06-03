@@ -25,12 +25,6 @@
 
 'wpsso_add_link_rel_shortlink' ( $bool, $mod )
 
-'wpsso_add_metabox_post' ( $bool, $post_id, $post_type )
-
-'wpsso_add_metabox_term' ( $bool, $term_id )
-
-'wpsso_add_metabox_user' ( $bool, $user_id )
-
 'wpsso_add_schema_head_attributes' ( $bool )
 
 'wpsso_add_schema_meta_array' ( $bool )

@@ -71,6 +71,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 * Sets the parent::$head_tags and parent::$head_info class properties.
 					 */
 					add_action( 'current_screen', array( $this, 'load_meta_page' ), 100, 1 );
+
 					add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
 				}
 
@@ -747,16 +748,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			} else {
 
-				$add_metabox = empty( $this->p->options[ 'plugin_add_to_' . $post_obj->post_type ] ) ? false : true;
-
-				$add_metabox = apply_filters( $this->p->lca . '_add_metabox_post', $add_metabox, $post_id, $post_obj->post_type );
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'add metabox for post ID ' . $post_id . ' of type ' . $post_obj->post_type . ' is ' . 
-						( $add_metabox ? 'true' : 'false' ) );
-				}
-
-				if ( $add_metabox ) {
+				if ( ! empty( $this->p->options[ 'plugin_add_to_' . $post_obj->post_type ] ) ) {
 
 					/**
 					 * Hooked by woocommerce module to load front-end libraries and start a session.
@@ -1252,55 +1244,32 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function add_meta_boxes() {
 
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
-
-			if ( ( $post_obj = SucomUtil::get_post_object( true ) ) === false || empty( $post_obj->post_type ) ) {
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: object without post type' );
-				}
-
+			if ( false === ( $post_obj = SucomUtil::get_post_object( true ) ) || empty( $post_obj->post_type ) ) {
 				return;
-
-			} else {
-				$post_id = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
 			}
+
+			$post_id = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
 
 			if ( ( $post_obj->post_type === 'page' && ! current_user_can( 'edit_page', $post_id ) ) || ! current_user_can( 'edit_post', $post_id ) ) {
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'insufficient privileges to add metabox for ' . $post_obj->post_type . ' ID ' . $post_id );
-				}
-
 				return;
 			}
 
-			$add_metabox = empty( $this->p->options[ 'plugin_add_to_' . $post_obj->post_type ] ) ? false : true;
-
-			$add_metabox = apply_filters( $this->p->lca . '_add_metabox_post', $add_metabox, $post_id, $post_obj->post_type );
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'add metabox for post ID ' . $post_id . ' of type ' . $post_obj->post_type . ' is ' . 
-					( $add_metabox ? 'true' : 'false' ) );
+			if ( empty( $this->p->options[ 'plugin_add_to_' . $post_obj->post_type ] ) ) {
+				return;
 			}
 
-			if ( $add_metabox ) {
+			$metabox_id      = $this->p->cf[ 'meta' ][ 'id' ];
+			$metabox_title   = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+			$metabox_screen  = $post_obj->post_type;
+			$metabox_context = 'normal';
+			$metabox_prio    = 'default';
+			$callback_args   = array(	// Second argument passed to the callback function / method.
+				'__block_editor_compatible_meta_box' => true,
+			);
 
-				$metabox_id      = $this->p->cf[ 'meta' ][ 'id' ];
-				$metabox_title   = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
-				$metabox_screen  = $post_obj->post_type;
-				$metabox_context = 'normal';
-				$metabox_prio    = 'default';
-				$callback_args   = array(	// Second argument passed to the callback function / method.
-					'__block_editor_compatible_meta_box' => true,
-				);
-
-				add_meta_box( $this->p->lca . '_' . $metabox_id, $metabox_title,
-					array( $this, 'show_metabox_document_meta' ), $metabox_screen,
-						$metabox_context, $metabox_prio, $callback_args );
-			}
+			add_meta_box( $this->p->lca . '_' . $metabox_id, $metabox_title,
+				array( $this, 'show_metabox_document_meta' ), $metabox_screen,
+					$metabox_context, $metabox_prio, $callback_args );
 		}
 
 		public function ajax_get_metabox_document_meta() {

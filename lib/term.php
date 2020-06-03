@@ -124,7 +124,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					 */
 					add_action( 'current_screen', array( $this, 'load_meta_page' ), 300, 1 );
 
-					add_action( $this->query_tax_slug . '_edit_form', array( $this, 'show_metaboxes' ), 100, 1 );
+					add_action( $this->query_tax_slug . '_edit_form', array( $this, 'show_metaboxes' ), -100, 1 );
 				}
 
 				add_action( 'created_' . $this->query_tax_slug, array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 2 );	// Default is -100.
@@ -598,16 +598,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			parent::$head_tags = array();
 
-			$add_metabox = empty( $this->p->options[ 'plugin_add_to_tax_' . $this->query_tax_slug ] ) ? false : true;
-
-			$add_metabox = apply_filters( $this->p->lca . '_add_metabox_term', $add_metabox, $this->query_term_id );
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'add metabox for term ID ' . $this->query_term_id . ' is ' . 
-					( $add_metabox ? 'true' : 'false' ) );
-			}
-
-			if ( $add_metabox ) {
+			if ( ! empty( $this->p->options[ 'plugin_add_to_tax_' . $this->query_tax_slug ] ) ) {
 
 				do_action( $this->p->lca . '_admin_term_head', $mod, $screen->id );
 
@@ -693,47 +684,34 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		public function add_meta_boxes() {
 
 			if ( ! current_user_can( $this->query_tax_obj->cap->edit_terms ) ) {
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'insufficient privileges to add metabox for term ' . $this->query_term_id );
-				}
-
 				return;
 			}
 
-			$add_metabox = empty( $this->p->options[ 'plugin_add_to_tax_' . $this->query_tax_slug ] ) ? false : true;
-
-			$add_metabox = apply_filters( $this->p->lca . '_add_metabox_term', $add_metabox, $this->query_term_id );
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'add metabox for term ID ' . $this->query_term_id . ' is ' . 
-					( $add_metabox ? 'true' : 'false' ) );
+			if ( empty( $this->p->options[ 'plugin_add_to_tax_' . $this->query_tax_slug ] ) ) {
+				return;
 			}
 
-			if ( $add_metabox ) {
+			$metabox_id      = $this->p->cf[ 'meta' ][ 'id' ];
+			$metabox_title   = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+			$metabox_screen  = $this->p->lca . '-term';
+			$metabox_context = 'normal';
+			$metabox_prio    = 'default';
+			$callback_args   = array(	// Second argument passed to the callback.
+				'__block_editor_compatible_meta_box' => true,
+			);
 
-				$metabox_id      = $this->p->cf[ 'meta' ][ 'id' ];
-				$metabox_title   = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
-				$metabox_screen  = $this->p->lca . '-term';
-				$metabox_context = 'normal';
-				$metabox_prio    = 'default';
-				$callback_args   = array(	// Second argument passed to the callback.
-					'__block_editor_compatible_meta_box' => true,
-				);
-
-				add_meta_box( $this->p->lca . '_' . $metabox_id, $metabox_title,
-					array( $this, 'show_metabox_document_meta' ), $metabox_screen,
-						$metabox_context, $metabox_prio, $callback_args );
-			}
+			add_meta_box( $this->p->lca . '_' . $metabox_id, $metabox_title,
+				array( $this, 'show_metabox_document_meta' ), $metabox_screen,
+					$metabox_context, $metabox_prio, $callback_args );
 		}
 
 		public function show_metaboxes( $term_obj ) {
 
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
+			if ( ! current_user_can( $this->query_tax_obj->cap->edit_terms ) ) {
+				return;
 			}
 
-			if ( ! current_user_can( $this->query_tax_obj->cap->edit_terms ) ) {
+			if ( empty( $this->p->options[ 'plugin_add_to_tax_' . $this->query_tax_slug ] ) ) {
 				return;
 			}
 
