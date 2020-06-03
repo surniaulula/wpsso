@@ -308,17 +308,22 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.8.0-dev.4 (2020/06/02)**
+**Version 7.8.0-dev.5 (2020/06/02)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Minor code optimization to get add-on folder or file path.
 * **Bugfixes**
-	* None.
+	* Fixed missing metabox in term editing pages for taxonomies where 'show_in_menu' is false.
 * **Developer Notes**
 	* Added a new `WpssoConfig::get_ext_dir()` method.
 	* Added a new `WpssoConfig::get_ext_file_path()` method.
+	* Moved `WpssoUtil->get_post_types()` to `SucomUtilWP::get_post_types()`.
+	* Moved `WpssoUtil->get_taxonomies()` to `SucomUtilWP::get_taxonomies()`.
+	* Renamed the following filters:
+		* 'wpsso_get_post_types' to 'sucom_get_post_types'
+		* 'wpsso_get_taxonomies' to 'sucom_get_taxonomies'
 	* Removed the following filters:
 		* 'wpsso_add_metabox_post'
 		* 'wpsso_add_metabox_term'
@@ -1015,7 +1020,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 7.8.0-dev.4 =
+= 7.8.0-dev.5 =
 
 (2020/06/02) Minor code optimization to get add-on folder or file path. Added new methods in the `WpssoConfig` class to get add-on folder and file path information.
 
