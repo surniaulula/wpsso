@@ -308,7 +308,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.8.0-dev.3 (2020/06/02)**
+**Version 7.8.0-dev.4 (2020/06/02)**
 
 * **New Features**
 	* None.
@@ -319,6 +319,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Added a new `WpssoConfig::get_ext_dir()` method.
 	* Added a new `WpssoConfig::get_ext_file_path()` method.
+	* Removed the following filters:
+		* 'wpsso_add_metabox_post'
+		* 'wpsso_add_metabox_term'
+		* 'wpsso_add_metabox_user'
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
@@ -1011,7 +1015,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 7.8.0-dev.3 =
+= 7.8.0-dev.4 =
 
 (2020/06/02) Minor code optimization to get add-on folder or file path. Added new methods in the `WpssoConfig` class to get add-on folder and file path information.
 
