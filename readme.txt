@@ -313,9 +313,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Minor code optimization to get add-on folder or file path.
+	* Minor code optimization when getting folder and file path information for WPSSO add-ons.
 * **Bugfixes**
-	* Fixed missing metabox in term editing pages for taxonomies where 'show_in_menu' is false.
+	* Fixed missing metabox in term editing pages for taxonomies with 'show_in_menu' = false.
 * **Developer Notes**
 	* Added a new `WpssoConfig::get_ext_dir()` method.
 	* Added a new `WpssoConfig::get_ext_file_path()` method.
@@ -1022,7 +1022,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 = 7.8.0-dev.5 =
 
-(2020/06/02) Minor code optimization to get add-on folder or file path. Added new methods in the `WpssoConfig` class to get add-on folder and file path information.
+(2020/06/02) Minor code optimization when getting folder and file path information for WPSSO add-ons. Fixed missing metabox in term editing pages for taxonomies with 'show_in_menu' = false.
 
 = 7.7.0 =
 
