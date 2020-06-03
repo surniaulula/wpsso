@@ -1103,6 +1103,10 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		 */
 		public static function get_taxonomies( $output = 'objects' ) {
 
+			/**
+			 * Do not include 'show_in_menu' => 1 as some taxonomies (like WooCommerce attributes) do not show in the
+			 * main WordPress admin menu.
+			 */
 			$args = array( 'show_ui' => 1 );
 
 			$operator = 'and';
