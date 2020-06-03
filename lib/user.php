@@ -287,7 +287,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( ! $this->user_can_edit( $user_id, $rel_id ) ) {
+			if ( ! $this->user_can_save( $user_id, $rel_id ) ) {
 				return;
 			}
 
@@ -1306,9 +1306,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$this->clear_mod_cache( $mod );
 		}
 
-		public function user_can_edit( $user_id, $rel_id = false ) {
+		public function user_can_save( $user_id, $rel_id = false ) {
 
-			$user_can_edit = false;
+			$user_can_save = false;
 
 			if ( ! $this->verify_submit_nonce() ) {
 
@@ -1316,10 +1316,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$this->p->debug->log( 'exiting early: verify_submit_nonce failed' );
 				}
 
-				return $user_can_edit;
+				return $user_can_save;
 			}
 
-			if ( ! $user_can_edit = current_user_can( 'edit_user', $user_id ) ) {
+			if ( ! $user_can_save = current_user_can( 'edit_user', $user_id ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'insufficient privileges to save settings for user ID ' . $user_id );
@@ -1335,7 +1335,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 			}
 
-			return $user_can_edit;
+			return $user_can_save;
 		}
 
 		/**

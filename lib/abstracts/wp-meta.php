@@ -760,6 +760,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $this->must_be_extended( __METHOD__, false );	// Return false by default.
 		}
 
+		public function user_can_save( $mod_id, $rel_id = false ) {
+
+			return $this->must_be_extended( __METHOD__, false );	// Return false by default.
+		}
+
 		public function clear_cache( $mod_id, $rel_id = false ) {
 
 			return $this->must_be_extended( __METHOD__ );

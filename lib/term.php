@@ -276,7 +276,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( ! $this->user_can_edit( $term_id, $term_tax_id ) ) {
+			if ( ! $this->user_can_save( $term_id, $term_tax_id ) ) {
 				return;
 			}
 
@@ -334,9 +334,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$public_term_ids = array();
 
-			$args = array( 'show_in_menu' => 1, 'show_ui' => 1 );
-
-			$tax_names = get_taxonomies( $args, $output = 'names', $operator = 'and' );
+			$tax_names = SucomUtilWP::get_taxonomies( 'names' );
 
 			foreach ( $tax_names as $name ) {
 
@@ -351,6 +349,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				}
 
 				foreach ( $term_ids as $term_id ) {
+
 					$public_term_ids[ $term_id ] = $term_id;
 				}
 			}
@@ -834,18 +833,20 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$this->clear_mod_cache( $mod );
 		}
 
-		public function user_can_edit( $term_id, $term_tax_id = false ) {
+		public function user_can_save( $term_id, $term_tax_id = false ) {
 
-			$user_can_edit = false;
+			$user_can_save = false;
 
 			if ( ! $this->verify_submit_nonce() ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: verify_submit_nonce failed' );
 				}
-				return $user_can_edit;
+
+				return $user_can_save;
 			}
 
-			if ( ! $user_can_edit = current_user_can( $this->query_tax_obj->cap->edit_terms ) ) {
+			if ( ! $user_can_save = current_user_can( $this->query_tax_obj->cap->edit_terms ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'insufficient privileges to save settings for term ID ' . $term_id );
@@ -861,7 +862,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				}
 			}
 
-			return $user_can_edit;
+			return $user_can_save;
 		}
 
 		/**

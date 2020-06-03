@@ -871,7 +871,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$this->p->debug->log( 'checking options for prefix ' . $opt_pre );
 				}
 
-				foreach ( $this->get_post_types( 'names' ) as $name ) {
+				foreach ( SucomUtilWP::get_post_types( 'names' ) as $name ) {
 
 					$opt_key = $opt_pre . '_' . $name;
 
@@ -896,11 +896,28 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
+		 * Deprecated on 2020/06/03.
+		 */
+		public function get_post_types( $output = 'objects' ) {
+
+			return SucomUtilWP::get_post_types( $output );
+		}
+
+		/**
+		 * Deprecated on 2020/06/03.
+		 */
+		public function get_taxonomies( $output = 'objects' ) {
+
+			return SucomUtilWP::get_taxonomies( $output );
+		}
+
+		/**
 		 * Deprecated on 2020/04/15.
 		 */
 		public function add_ttns_to_opts( array &$opts, $mixed, $default = 1 ) {
 
 			if ( ! is_array( $mixed ) ) {
+
 				$mixed = array( $mixed => $default );
 			}
 
@@ -918,7 +935,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$this->p->debug->log( 'checking options for prefix ' . $opt_pre );
 				}
 
-				foreach ( $this->get_taxonomies( 'names' ) as $name ) {
+				foreach ( SucomUtilWP::get_taxonomies( 'names' ) as $name ) {
 
 					$opt_key = $opt_pre . '_' . $name;
 
@@ -931,6 +948,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						$opts[ $opt_key ] = $def_val;
 
 					} else {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'skipped ' . $opt_key . ' - already set' );
 						}
@@ -939,90 +957,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			return $opts;
-		}
-
-		/**
-		 * $output = objects | names
-		 */
-		public function get_post_types( $output = 'objects' ) {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
-
-			$ret      = array();
-			$args     = array( 'show_in_menu' => 1, 'show_ui' => 1 );
-			$operator = 'and';
-
-			switch ( $output ) {
-
-				/**
-				 * Make sure the output name is plural
-				 */
-				case 'name':
-				case 'object':
-
-					$output = $output . 's';
-
-					/**
-					 * No break.
-					 */
-
-				case 'names':
-				case 'objects':
-
-					$ret = get_post_types( $args, $output, $operator );
-
-					break;
-			}
-
-			if ( $output === 'objects' ) {
-				SucomUtilWP::sort_objects_by_label( $ret );
-			}
-
-			return apply_filters( $this->p->lca . '_get_post_types', $ret, $output );
-		}
-
-		/**
-		 * $output = objects | names
-		 */
-		public function get_taxonomies( $output = 'objects' ) {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
-
-			$ret      = array();
-			$args     = array( 'show_in_menu' => 1, 'show_ui' => 1 );
-			$operator = 'and';
-
-			switch ( $output ) {
-
-				/**
-				 * Make sure the output name is plural
-				 */
-				case 'name':
-				case 'object':
-
-					$output = $output . 's';
-
-					/**
-					 * No break.
-					 */
-
-				case 'names':
-				case 'objects':
-
-					$ret = get_taxonomies( $args, $output, $operator );
-
-					break;
-			}
-
-			if ( $output === 'objects' ) {
-				SucomUtilWP::sort_objects_by_label( $ret );
-			}
-
-			return apply_filters( $this->p->lca . '_get_taxonomies', $ret, $output );
 		}
 
 		public function get_form_cache( $name, $add_none = false ) {

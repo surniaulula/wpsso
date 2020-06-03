@@ -107,7 +107,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 */
 			if ( $is_admin || $doing_ajax ) {
 
-				$post_type_names = $this->p->util->get_post_types( 'names' );
+				$post_type_names = SucomUtilWP::get_post_types( 'names' );
 
 				if ( is_array( $post_type_names ) ) {
 
@@ -390,7 +390,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( ! $this->user_can_edit( $post_id, $rel_id ) ) {
+			if ( ! $this->user_can_save( $post_id, $rel_id ) ) {
 				return;
 			}
 
@@ -1667,7 +1667,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( ! $this->user_can_edit( $post_id, $rel_id ) ) {
+			if ( ! $this->user_can_save( $post_id, $rel_id ) ) {
 				return;
 			}
 
@@ -1718,15 +1718,17 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 		}
 
-		public function user_can_edit( $post_id, $rel_id = false ) {
+		public function user_can_save( $post_id, $rel_id = false ) {
 
-			$user_can_edit = false;
+			$user_can_save = false;
 
 			if ( ! $this->verify_submit_nonce() ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: verify_submit_nonce failed' );
 				}
-				return $user_can_edit;
+
+				return $user_can_save;
 			}
 
 			if ( ! $post_type = SucomUtil::get_request_value( 'post_type', 'POST' ) ) {	// Uses sanitize_text_field.
@@ -1734,15 +1736,22 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			switch ( $post_type ) {
-				case 'page' :
-					$user_can_edit = current_user_can( 'edit_' . $post_type, $post_id );
+
+				case 'page':
+
+					$user_can_save = current_user_can( 'edit_' . $post_type, $post_id );
+
 					break;
-				default :
-					$user_can_edit = current_user_can( 'edit_post', $post_id );
+
+				default:
+
+					$user_can_save = current_user_can( 'edit_post', $post_id );
+
 					break;
+
 			}
 
-			if ( ! $user_can_edit ) {
+			if ( ! $user_can_save ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'insufficient privileges to save settings for ' . $post_type . ' ID ' . $post_id );
@@ -1758,7 +1767,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 			}
 
-			return $user_can_edit;
+			return $user_can_save;
 		}
 
 		/**
