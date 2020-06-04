@@ -308,14 +308,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.8.0-b.1 (2020/06/04)**
+**Version 7.8.0-rc.1 (2020/06/04)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Minor code optimization when getting folder and file path information for WPSSO add-ons.
 * **Bugfixes**
-	* Fixed missing metabox in term editing pages for taxonomies with 'show_in_menu' = false.
+	* Fixed missing Document SSO metabox in term editing pages for taxonomies registered with 'show_in_menu' as false (for example, WooCommerce product attributes).
 * **Developer Notes**
 	* Added a new `WpssoConfig::get_ext_dir()` method.
 	* Added a new `WpssoConfig::get_ext_file_path()` method.
@@ -1020,9 +1020,9 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 7.8.0-b.1 =
+= 7.8.0-rc.1 =
 
-(2020/06/04) Minor code optimization when getting folder and file path information for WPSSO add-ons. Fixed missing metabox in term editing pages for taxonomies with 'show_in_menu' = false.
+(2020/06/04) Minor code optimization when getting folder and file path information for WPSSO add-ons. Fixed missing Document SSO metabox in term editing pages for taxonomies registered with 'show_in_menu' as false.
 
 = 7.7.0 =
 
