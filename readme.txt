@@ -308,7 +308,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.8.0-rc.1 (2020/06/04)**
+**Version 7.8.0 (2020/06/04)**
 
 * **New Features**
 	* None.
@@ -1020,7 +1020,7 @@ Added Schema Event properties for virtual, postponed, and canceled events as [su
 
 == Upgrade Notice ==
 
-= 7.8.0-rc.1 =
+= 7.8.0 =
 
 (2020/06/04) Minor code optimization when getting folder and file path information for WPSSO add-ons. Fixed missing Document SSO metabox in term editing pages for taxonomies registered with 'show_in_menu' as false.
 
