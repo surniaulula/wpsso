@@ -1427,7 +1427,7 @@ msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/edit.php:377 lib/page.php:968
+#: lib/edit.php:377 lib/page.php:979
 msgctxt "default title"
 msgid "No Title"
 msgstr ""
