@@ -3919,6 +3919,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			 * Only restore option values that were changed.
 			 */
 			foreach ( $ini_saved as $name => $value ) {
+
 				ini_set( $name, $value );
 			}
 		}
