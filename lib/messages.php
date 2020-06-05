@@ -1963,7 +1963,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= sprintf( __( 'The example image container uses the minimum recommended Facebook image dimensions of %s.', 'wpsso' ), $fb_img_dims );
 
-						 	$text .= '</p><p class="status-msg">';
+						 	$text .= '</p> <p class="status-msg">';
 
 							$text .= sprintf( __( 'Edit images in the <a href="%s">WordPress Media Library</a> to select a preferred cropping area (ie. top/bottom) and optimize the image SEO text.', 'wpsso' ), $upload_url );
 
@@ -2117,7 +2117,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= __( 'These are the product attribute names that you can create in your e-commerce plugin and not their values.', 'wpsso' ) . ' ';
 
-							$text .= '</p><p><center><strong>';
+							$text .= '</p> <p><center><strong>';
 							
 							$text .= __( 'Do not enter product attribute values here &ndash; these options are for product attribute names only.', 'wpsso' );
 							
@@ -2161,7 +2161,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= sprintf( __( 'These options allow you to customize the custom field names (aka metadata names) that %s can use to get additional information about your content.', 'wpsso' ), $info[ 'short_pro' ] ) . ' ';
 
-							$text .= '</p><p><center><strong>';
+							$text .= '</p> <p><center><strong>';
 
 							$text .= __( 'Do not enter custom field values here &ndash; these options are for custom field names only.', 'wpsso' );
 							
@@ -2214,7 +2214,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= sprintf( __( 'The <em>%1$s</em> column on the other hand is for display purposes only and can be changed as you wish.', 'wpsso' ), _x( 'Contact Field Label', 'column title', 'wpsso' ) ) . ' ';
 
-							$text .= '</p><p>';
+							$text .= '</p> <p>';
 
 							$text .= '<center>';
 
@@ -2389,13 +2389,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								 */
 								$text .= '<!-- show-once -->';
 
-								$text .= '<p style="margin-left:0;"><em>' . __( 'Additional information shown only to users with Administrative privileges:', 'wpsso' ) . '</em></p>';
+								$text .= ' <p style="margin-left:0;"><em>' . __( 'Additional information shown only to users with Administrative privileges:', 'wpsso' ) . '</em></p>';
 
 								$text .= '<ul>';
 
 								$img_sizes_page_link = $this->p->util->get_admin_url( 'image-sizes', _x( 'Image Sizes', 'lib file description', 'wpsso' ) );
 
-								$text .= '<li>' . sprintf( __( 'Update image size dimensions in the %s settings page.', 'wpsso' ), $img_sizes_page_link ) . '</li>';
+								$text .= ' <li>' . sprintf( __( 'Update image size dimensions in the %s settings page.', 'wpsso' ), $img_sizes_page_link ) . '</li>';
 
 								if ( empty( $this->p->options[ 'plugin_upscale_images' ] ) ) {
 
@@ -2406,7 +2406,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								$percent_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ) );
 
-								$text .= '<li>' . sprintf( __( 'Increase the %s option value.', 'wpsso' ), $percent_option_link ) . '</li>';
+								$text .= ' <li>' . sprintf( __( 'Increase the %s option value.', 'wpsso' ), $percent_option_link ) . '</li>';
 
 								if ( ! empty( $this->p->options[ 'plugin_check_img_dims' ] ) ) {
 
@@ -2458,7 +2458,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions and detect additional images and/or embedded videos provided by shortcodes.', 'wpsso' ), $info[ 'name' ] );
 
-						$text .= '</p><p>';
+						$text .= '</p> <p>';
 
 						$text .= '<b>' . __( 'Many themes and plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ) . '</b> ';
 
@@ -2506,7 +2506,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= __( 'It is also important for Google in cases where Schema markup describing the content is not available in the webpage (for example, when the complementary WPSSO JSON add-on is not active).', 'wpsso' ) . ' ';
 						}
 
-						$text .= '</p><p>';
+						$text .= '</p> <p>';
 
 						$text .= sprintf( __( 'The %1$s HTML tag in your header template(s) should include a function, action, or filter for its attributes.', 'wpsso' ), $tag_code ) . ' ';
 
@@ -2556,7 +2556,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '<b>' . sprintf( __( 'At least one Authentication ID has been entered in the %1$s settings page, but the %2$s add-on is not active.', 'wpsso' ), $licenses_page_link, $um_info[ 'name' ] ) . '</b> ';
 
-						$text .= '</p><p>';
+						$text .= '</p> <p>';
 
 						$text .= sprintf( __( 'This complementary add-on is required to update and enable the %1$s plugin and its %2$s add-ons.', 'wpsso' ), $info[ 'name_pro' ], $pro_transl ) . ' ';
 
@@ -2630,15 +2630,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '<ul>';
 
-						$text .= '<li>' . sprintf( __( 'Additional options in the %s metabox.', 'wpsso' ), $mb_title ) . '</li>';
+						$text .= ' <li>' . sprintf( __( 'Additional options in the %s metabox.', 'wpsso' ), $mb_title ) . '</li>';
 
-						$text .= '<li>' . __( 'Integration with 3rd party plugins and service APIs.', 'wpsso' ) . '</li>';
+						$text .= ' <li>' . __( 'Integration with 3rd party plugins and service APIs.', 'wpsso' ) . '</li>';
 
-						$text .= '<li>' . __( 'Advanced plugin settings.', 'wpsso' ) . '</li>';
+						$text .= ' <li>' . __( 'Advanced plugin settings.', 'wpsso' ) . '</li>';
 
-						$text .= '<li>' . __( 'Access to development and release candidate updates.', 'wpsso' ) . '</li>';
+						$text .= ' <li>' . __( 'Access to development and release candidate updates.', 'wpsso' ) . '</li>';
 
-						$text .= '<li>' . __( 'Premium plugin support.', 'wpsso' ) . '</li>';
+						$text .= ' <li>' . __( 'Premium plugin support.', 'wpsso' ) . '</li>';
 
 						$text .= '</ul>';
 
@@ -2667,11 +2667,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= __( 'Great ratings are an excellent way to encourage your plugin developers.', 'wpsso' );
 
-						$text .= '</p><p style="text-align:center;">';
+						$text .= '</p> <p style="text-align:center;">';
 
 						$text .= '<span class="' . $lca . '-rate-heart"></span> ';
 
-						$text .= '</p><p style="text-align:center;">';
+						$text .= '</p> <p style="text-align:center;">';
 
 						$text .= __( 'Please take a moment to support the continued development of your favorite plugins by quickly rating those you value.', 'wpsso' );
 
