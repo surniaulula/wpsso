@@ -294,7 +294,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:1057 lib/post.php:832 lib/term.php:665 lib/user.php:632
+#: lib/admin.php:1057 lib/post.php:838 lib/term.php:665 lib/user.php:632
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -918,7 +918,7 @@ msgstr ""
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:483 lib/gettext-com.php:32 lib/post.php:1606
+#: lib/com/notice.php:483 lib/gettext-com.php:32 lib/post.php:1612
 msgid "Edit"
 msgstr ""
 
@@ -6518,180 +6518,180 @@ msgid ""
 "post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:776 lib/post.php:1323 lib/schema.php:3043 lib/term.php:622
+#: lib/post.php:777 lib/post.php:1329 lib/schema.php:3043 lib/term.php:622
 #: lib/user.php:588
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/post.php:968
+#: lib/post.php:974
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:999
+#: lib/post.php:1005
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:1001
+#: lib/post.php:1007
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:1002
+#: lib/post.php:1008
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:1028
+#: lib/post.php:1034
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:1030
+#: lib/post.php:1036
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:1032
+#: lib/post.php:1038
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:1033
+#: lib/post.php:1039
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:1045 lib/util.php:1382
+#: lib/post.php:1051 lib/util.php:1382
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1057
+#: lib/post.php:1063
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1070
+#: lib/post.php:1076
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1083
+#: lib/post.php:1089
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1105
+#: lib/post.php:1111
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:1146
+#: lib/post.php:1152
 msgid "The webpage at %1$s does not include any Schema JSON-LD script(s)."
 msgstr ""
 
-#: lib/post.php:1148
+#: lib/post.php:1154
 msgid ""
 "Complete and accurate Schema JSON-LD markup is highly recommended for better "
 "ranking and click-through rates in search results."
 msgstr ""
 
-#: lib/post.php:1150
+#: lib/post.php:1156
 msgid ""
 "Consider activating the %1$s add-on to include Schema JSON-LD markup for "
 "Google Rich Results."
 msgstr ""
 
-#: lib/post.php:1168
+#: lib/post.php:1174
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:1184
+#: lib/post.php:1190
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1184
+#: lib/post.php:1190
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML &mdash; review the <a href=\"%1$s\">W3C Markup Validation "
 "Service</a> results and correct any errors."
 msgstr ""
 
-#: lib/post.php:1184
+#: lib/post.php:1190
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:1218
+#: lib/post.php:1224
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1220
+#: lib/post.php:1226
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1228
+#: lib/post.php:1234
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1231
+#: lib/post.php:1237
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1233
+#: lib/post.php:1239
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1380
+#: lib/post.php:1386
 msgid "Save a draft or publish to display these options."
 msgstr ""
 
-#: lib/post.php:1594 lib/script.php:317
+#: lib/post.php:1600 lib/script.php:317
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1608
+#: lib/post.php:1614
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1622
+#: lib/post.php:1628
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1623
+#: lib/post.php:1629
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1624
+#: lib/post.php:1630
 msgctxt "option label"
 msgid "No image index"
 msgstr ""
 
-#: lib/post.php:1625
+#: lib/post.php:1631
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1626
+#: lib/post.php:1632
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1627
+#: lib/post.php:1633
 msgctxt "option label"
 msgid "No translate"
 msgstr ""
 
-#: lib/post.php:1765
+#: lib/post.php:1771
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 

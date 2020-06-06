@@ -547,7 +547,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function get_column_content( $value, $column_name, $post_id ) {
 
-			if ( ! empty( $post_id ) && strpos( $column_name, $this->p->lca . '_' ) === 0 ) {	// Just in case.
+			if ( ! empty( $post_id ) && 0 === strpos( $column_name, $this->p->lca . '_' ) ) {	// Just in case.
 
 				$col_key = str_replace( $this->p->lca . '_', '', $column_name );
 
@@ -663,7 +663,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			switch ( $screen->id ) {
 
 				case 'upload':
-				case ( strpos( $screen->id, 'edit-' ) === 0 ? true : false ):	// Posts list table.
+				case ( 0 === strpos( $screen->id, 'edit-' ) ? true : false ):	// Posts list table.
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'exiting early: not a recognized post page' );
@@ -676,7 +676,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 * Get post object for sanity checks.
 			 */
 			$post_obj = SucomUtil::get_post_object( true );
-			$post_id  = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
+
+			$post_id = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'showing metabox for post ID ' . $post_id );
@@ -801,8 +802,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						 */
 						if ( current_user_can( 'manage_options' ) ) {
 
-							if ( apply_filters( $this->p->lca . '_check_post_head',
-								$this->p->options[ 'plugin_check_head' ], $post_id, $post_obj ) ) {
+							$check_head = empty( $this->p->options[ 'plugin_check_head' ] ) ? false : true;
+
+							if ( apply_filters( $this->p->lca . '_check_post_head', $check_head, $post_id, $post_obj ) ) {
+
+								if ( $this->p->debug->enabled ) {
+									$this->p->debug->log( 'checking post head' );
+								}
 
 								$this->check_post_head( $post_id, $post_obj );
 							}

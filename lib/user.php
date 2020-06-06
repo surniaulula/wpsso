@@ -428,7 +428,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function get_column_content( $value, $column_name, $user_id ) {
 
-			if ( ! empty( $user_id ) && strpos( $column_name, $this->p->lca . '_' ) === 0 ) {	// Just in case.
+			if ( ! empty( $user_id ) && 0 === strpos( $column_name, $this->p->lca . '_' ) ) {	// Just in case.
 
 				$col_key = str_replace( $this->p->lca . '_', '', $column_name );
 
@@ -531,8 +531,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				case 'profile':		// User profile page.
 				case 'user-edit':	// User editing page.
-				case ( strpos( $screen->id, 'profile_page_' ) === 0 ? true : false ):		// Your profile page.
-				case ( strpos( $screen->id, 'users_page_' . $this->p->lca ) === 0 ? true : false ):	// Custom social settings page.
+				case ( 0 === strpos( $screen->id, 'profile_page_' ) ? true : false ):		// Your profile page.
+				case ( 0 === strpos( $screen->id, 'users_page_' . $this->p->lca ) ? true : false ):	// Custom social settings page.
 
 					break;
 
@@ -887,7 +887,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 									 * All other contact methods are assumed to be URLs.
 									 */
 
-									if ( strpos( $value, '://' ) === false ) {
+									if ( false === strpos( $value, '://' ) ) {
 										$value = '';
 									}
 
@@ -1058,7 +1058,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 							/**
 							 * Don't proceed if the metabox is already first.
 							 */
-							if ( strpos( $user_opts[ $context ], $pagehook . '_' . $box_id ) !== 0 ) {
+							if ( 0 !== strpos( $user_opts[ $context ], $pagehook . '_' . $box_id ) ) {
 
 								$boxes = explode( ',', $user_opts[ $context ] );
 

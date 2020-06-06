@@ -456,7 +456,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		public function get_column_content( $value, $column_name, $term_id ) {
 
-			if ( ! empty( $term_id ) && strpos( $column_name, $this->p->lca . '_' ) === 0 ) {	// just in case
+			if ( ! empty( $term_id ) && 0 === strpos( $column_name, $this->p->lca . '_' ) ) {	// just in case
 
 				$col_key = str_replace( $this->p->lca . '_', '', $column_name );
 
