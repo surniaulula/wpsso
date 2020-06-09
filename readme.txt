@@ -318,7 +318,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a new WpssoOpenGraphNS class in lib/opengraph-ns.php.
+	* Added new 'wpsso_og_data_https_ogp_me_ns_{og_type}' filters.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
