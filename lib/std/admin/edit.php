@@ -35,9 +35,6 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
-			 * Select option arrays.
-			 */
 			$product_categories = $this->p->util->get_google_product_categories();
 			$currencies         = SucomUtil::get_currency_abbrev();
 

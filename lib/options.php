@@ -138,6 +138,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/**
 				 * Must be numeric (blank and zero are ok).
 				 */
+				case 'book_isbn':
 				case 'product_depth_value':
 				case 'product_fluid_volume_value':
 				case 'product_gtin14':

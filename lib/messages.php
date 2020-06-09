@@ -2719,6 +2719,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'label' => _x( 'Microdata Type URLs', 'option label', 'wpsso' ),
 						'desc'  => _x( 'additional microdata type URLs', 'tooltip fragment', 'wpsso' ),
 					),
+					'book_isbn' => array(
+						'label' => _x( 'Book ISBN', 'option label', 'wpsso' ),
+						'desc'  => _x( 'an ISBN code (aka International Standard Book Number)', 'tooltip fragment', 'wpsso' ),
+					),
 					'howto_steps' => array(
 						'label' => _x( 'How-To Steps', 'option label', 'wpsso' ),
 						'desc'  => _x( 'how-to steps', 'tooltip fragment', 'wpsso' ),

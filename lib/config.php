@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '7.8.0',	// Plugin version.
+					'version'     => '7.9.0-dev.1',	// Plugin version.
 					'opt_version' => '741',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1188,6 +1188,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Other taxonomy and post types.
 					 */
 					'og_type_for_article'                => 'article',
+					'og_type_for_book'                   => 'book',
 					'og_type_for_download'               => 'product',	// For Easy Digital Downloads.
 					'og_type_for_organization'           => 'website',
 					'og_type_for_place'                  => 'place',
@@ -1573,11 +1574,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings - Custom Fields (Metadata) tab.
 					 */
-					'plugin_cf_img_url'                    => '',		// Image URL Custom Field.
 					'plugin_cf_addl_type_urls'             => '',		// Microdata Type URLs Custom Field.
+					'plugin_cf_book_isbn'                  => '',		// Book ISBN Custom Field.
 					'plugin_cf_howto_steps'                => '',		// How-To Steps Custom Field.
 					'plugin_cf_howto_supplies'             => '',		// How-To Supplies Custom Field.
 					'plugin_cf_howto_tools'                => '',		// How-To Tools Custom Field.
+					'plugin_cf_img_url'                    => '',		// Image URL Custom Field.
 					'plugin_cf_product_avail'              => '',		// Product Availability Custom Field.
 					'plugin_cf_product_brand'              => '',		// Product Brand Custom Field.
 					'plugin_cf_product_category'           => '',		// Product Type ID Custom Field.
@@ -1758,6 +1760,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 */
 				'cf_md_index' => array(
 					'plugin_cf_addl_type_urls'             => 'schema_addl_type_url',	// Microdata Type URLs Custom Field.
+					'plugin_cf_book_isbn'                  => 'book_isbn',
 					'plugin_cf_howto_steps'                => 'schema_howto_step',		// How-To Steps Custom Field.
 					'plugin_cf_howto_supplies'             => 'schema_howto_supply',	// How-To Supplies Custom Field.
 					'plugin_cf_howto_tools'                => 'schema_howto_tool',		// How-To Tools Custom Field.
@@ -2290,11 +2293,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * Custom field option labels.
 				 */
 				'cf_labels' => array(
-					'plugin_cf_img_url'                    => 'Image URL Custom Field',
 					'plugin_cf_addl_type_urls'             => 'Microdata Type URLs Custom Field',
+					'plugin_cf_book_isbn'                  => 'Book ISBN Custom Field',
 					'plugin_cf_howto_steps'                => 'How-To Steps Custom Field',
 					'plugin_cf_howto_supplies'             => 'How-To Supplies Custom Field',
 					'plugin_cf_howto_tools'                => 'How-To Tools Custom Field',
+					'plugin_cf_img_url'                    => 'Image URL Custom Field',
 					'plugin_cf_product_avail'              => 'Product Availability Custom Field',
 					'plugin_cf_product_brand'              => 'Product Brand Custom Field',
 					'plugin_cf_product_category'           => 'Product Type ID Custom Field',
@@ -2463,6 +2467,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * Hard-code the Open Graph type based on the WordPress post type.
 				 */
 				'og_type_by_post_type' => array(
+					'book'         => 'book',
 					'organization' => 'website',
 					'place'        => 'place',
 					'product'      => 'product',
@@ -2473,6 +2478,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 */
 				'og_type_by_schema_type' => array(
 					'article'              => 'article',
+					'book'                 => 'book',
 					'place'                => 'place',	// Check for Schema place before Schema organization.
 					'organization'         => 'website',	// Check for Schema place before Schema organization.
 					'product'              => 'product',
@@ -2491,8 +2497,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'music.playlist'      => 'http://ogp.me/ns/music#',
 					'music.radio_station' => 'http://ogp.me/ns/music#',
 					'music.song'          => 'http://ogp.me/ns/music#',
-					'place'               => 'http://ogp.me/ns/place#',	// Supported by facebook and pinterest.
-					'product'             => 'http://ogp.me/ns/product#',	// Supported by facebook and pinterest.
+					'place'               => 'http://ogp.me/ns/place#',	// Supported by Facebook and Pinterest.
+					'product'             => 'http://ogp.me/ns/product#',	// Supported by Facebook and Pinterest.
 					'profile'             => 'http://ogp.me/ns/profile#',
 					'video.episode'       => 'http://ogp.me/ns/video#',
 					'video.movie'         => 'http://ogp.me/ns/video#',
@@ -2502,8 +2508,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'og_type_ns_compat' => array(
 					'article'             => 'http://ogp.me/ns/article#',
-					'place'               => 'http://ogp.me/ns/place#',	// Supported by facebook and pinterest.
-					'product'             => 'http://ogp.me/ns/product#',	// Supported by facebook and pinterest.
+					'book'                => 'http://ogp.me/ns/book#',
+					'place'               => 'http://ogp.me/ns/place#',	// Supported by Facebook and Pinterest.
+					'product'             => 'http://ogp.me/ns/product#',	// Supported by Facebook and Pinterest.
 					'website'             => 'http://ogp.me/ns/website#',
 				),
 				'og_type_mt' => array(						// See https://developers.facebook.com/docs/reference/opengraph/.
@@ -2518,7 +2525,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'book' => array(
 						'book:author'       => '',
-						'book:isbn'         => '',
+						'book:isbn'         => 'book_isbn',
 						'book:release_date' => '',
 						'book:tag'          => '',
 					),
