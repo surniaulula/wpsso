@@ -2486,32 +2486,32 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'software.application' => 'product',
 				),
 
-				'og_type_ns' => array(		// See http://ogp.me/#types.
-					'article'             => 'http://ogp.me/ns/article#',
-					'book'                => 'http://ogp.me/ns/book#',
-					'books.author'        => 'http://ogp.me/ns/books#',
-					'books.book'          => 'http://ogp.me/ns/books#',
-					'books.genre'         => 'http://ogp.me/ns/books#',
-					'business.business'   => 'http://ogp.me/ns/business#',
-					'music.album'         => 'http://ogp.me/ns/music#',
-					'music.playlist'      => 'http://ogp.me/ns/music#',
-					'music.radio_station' => 'http://ogp.me/ns/music#',
-					'music.song'          => 'http://ogp.me/ns/music#',
-					'place'               => 'http://ogp.me/ns/place#',	// Supported by Facebook and Pinterest.
-					'product'             => 'http://ogp.me/ns/product#',	// Supported by Facebook and Pinterest.
-					'profile'             => 'http://ogp.me/ns/profile#',
-					'video.episode'       => 'http://ogp.me/ns/video#',
-					'video.movie'         => 'http://ogp.me/ns/video#',
-					'video.other'         => 'http://ogp.me/ns/video#',
-					'video.tv_show'       => 'http://ogp.me/ns/video#',
-					'website'             => 'http://ogp.me/ns/website#',
+				'og_type_ns' => array(		// See https://ogp.me/#types.
+					'article'             => 'https://ogp.me/ns/article#',
+					'book'                => 'https://ogp.me/ns/book#',
+					'books.author'        => 'https://ogp.me/ns/books#',
+					'books.book'          => 'https://ogp.me/ns/books#',
+					'books.genre'         => 'https://ogp.me/ns/books#',
+					'business.business'   => 'https://ogp.me/ns/business#',
+					'music.album'         => 'https://ogp.me/ns/music#',
+					'music.playlist'      => 'https://ogp.me/ns/music#',
+					'music.radio_station' => 'https://ogp.me/ns/music#',
+					'music.song'          => 'https://ogp.me/ns/music#',
+					'place'               => 'https://ogp.me/ns/place#',	// Supported by Facebook and Pinterest.
+					'product'             => 'https://ogp.me/ns/product#',	// Supported by Facebook and Pinterest.
+					'profile'             => 'https://ogp.me/ns/profile#',
+					'video.episode'       => 'https://ogp.me/ns/video#',
+					'video.movie'         => 'https://ogp.me/ns/video#',
+					'video.other'         => 'https://ogp.me/ns/video#',
+					'video.tv_show'       => 'https://ogp.me/ns/video#',
+					'website'             => 'https://ogp.me/ns/website#',
 				),
 				'og_type_ns_compat' => array(
-					'article'             => 'http://ogp.me/ns/article#',
-					'book'                => 'http://ogp.me/ns/book#',
-					'place'               => 'http://ogp.me/ns/place#',	// Supported by Facebook and Pinterest.
-					'product'             => 'http://ogp.me/ns/product#',	// Supported by Facebook and Pinterest.
-					'website'             => 'http://ogp.me/ns/website#',
+					'article'             => 'https://ogp.me/ns/article#',
+					'book'                => 'https://ogp.me/ns/book#',
+					'place'               => 'https://ogp.me/ns/place#',	// Supported by Facebook and Pinterest.
+					'product'             => 'https://ogp.me/ns/product#',	// Supported by Facebook and Pinterest.
+					'website'             => 'https://ogp.me/ns/website#',
 				),
 				'og_type_mt' => array(						// See https://developers.facebook.com/docs/reference/opengraph/.
 					'article' => array(					// See https://developers.facebook.com/docs/reference/opengraph/object-type/article/.

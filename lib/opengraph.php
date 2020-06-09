@@ -18,6 +18,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 	class WpssoOpenGraph {
 
 		private $p;
+		private $ns;			// WpssoOpenGraphNS class object.
 
 		public function __construct( &$plugin ) {
 
@@ -26,6 +27,15 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
+
+			/**
+			 * Instantiate the WpssoOpenGraphNS class object.
+			 */
+			if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
+				require_once WPSSO_PLUGINDIR . 'lib/opengraph-ns.php';
+			}
+
+			$this->ns = new WpssoOpenGraphNS( $plugin );
 
 			$max_int = SucomUtil::get_max_int();
 
@@ -37,30 +47,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				'get_post_options'  => 3,
 				'save_post_options' => 4,
 			), $max_int );
-
-			/**
-			 * Hook the first available filter name (example: 'language_attributes').
-			 */
-			foreach ( array( 'plugin_html_attr_filter', 'plugin_head_attr_filter' ) as $opt_pre ) {
-
-				if ( ! empty( $this->p->options[ $opt_pre . '_name' ] ) && $this->p->options[ $opt_pre . '_name' ] !== 'none' ) {
-
-					$wp_filter_name = $this->p->options[ $opt_pre . '_name' ];
-
-					add_filter( $wp_filter_name, array( $this, 'add_ogpns_attributes' ),
-						 ( isset( $this->p->options[ $opt_pre . '_prio' ] ) ?
-						 	(int) $this->p->options[ $opt_pre . '_prio' ] : 100 ), 1 );
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'added add_ogpns_attributes filter for ' . $wp_filter_name );
-					}
-
-					break;	// Stop here.
-
-				} elseif ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'skipping add_ogpns_attributes for ' . $opt_pre . ' - filter name is empty or disabled' );
-				}
-			}
 		}
 
 		public function filter_plugin_image_sizes( $sizes ) {
@@ -85,79 +71,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			$this->update_post_md_opts( $md_opts, $post_id, $mod );	// Modifies the $md_opts array.
 
 			return $md_opts;
-		}
-
-		public function add_ogpns_attributes( $html_attr ) {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log_args( array (
-					'html_attr' => $html_attr,
-				) );
-			}
-
-			$use_post = apply_filters( $this->p->lca . '_use_post', false );
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'required call to get_page_mod()' );
-			}
-
-			$mod = $this->p->util->get_page_mod( $use_post );
-
-			$type_id = $this->get_mod_og_type( $mod );
-
-			$og_ns = array(
-				'og' => 'http://ogp.me/ns#',
-				'fb' => 'http://ogp.me/ns/fb#',
-			);
-
-			/**
-			 * Check that the og_type is known and add it's namespace value.
-			 *
-			 * Example: article, place, product, website, etc.
-			 */
-			if ( ! empty( $this->p->cf[ 'head' ][ 'og_type_ns' ][ $type_id ] ) ) {
-				$og_ns[ $type_id ] = $this->p->cf[ 'head' ][ 'og_type_ns' ][ $type_id ];
-			}
-
-			$og_ns = apply_filters( $this->p->lca . '_og_ns', $og_ns, $mod );
-
-			if ( SucomUtil::is_amp() ) {
-
-				/**
-				 * Nothing to do.
-				 */
-
-			} else {
-
-				$html_attr = ' ' . $html_attr;	// Prepare the string for testing.
-
-				/**
-				 * Find and remove an existing prefix attribute value.
-				 */
-				if ( strpos( $html_attr, 'prefix=' ) ) {
-
-					/**
-				 	 * s = A dot metacharacter in the pattern matches all characters, including newlines.
-					 *
-					 * See http://php.net/manual/en/reference.pcre.pattern.modifiers.php.
-					 */
-					if ( preg_match( '/^(.*)\sprefix=["\']([^"\']*)["\'](.*)$/s', $html_attr, $match ) ) {
-						$html_attr    = $match[1] . $match[3];	// Remove the prefix.
-					}
-				}
-
-				$prefix_value = '';
-
-				foreach ( $og_ns as $name => $url ) {
-					if ( strpos( $prefix_value, ' ' . $name . ': ' . $url ) === false ) {
-						$prefix_value .= ' ' . $name . ': ' . $url;
-					}
-				}
-
-				$html_attr .= ' prefix="' . trim( $prefix_value ) . '"';
-			}
-
-			return trim( $html_attr );
 		}
 
 		/**
@@ -516,6 +429,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->log( 'og:type already defined = ' . $mt_og[ 'og:type' ] );
 			}
 
+			$type_id = $mt_og[ 'og:type' ];
+
 			/**
 			 * URL meta tag.
 			 */
@@ -674,8 +589,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->log( 'checking og_type_mt array for known meta tags and md options' );
 			}
 
-			$type_id = $mt_og[ 'og:type' ];
-
 			if ( isset( $this->p->cf[ 'head' ][ 'og_type_mt' ][ $type_id ] ) ) {	// Check if og:type is in config.
 
 				/**
@@ -687,61 +600,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				 * Add post/term/user meta data to the Open Graph meta tags.
 				 */
 				$this->add_og_type_mt_md( $type_id, $mt_og, $md_opts );
-
-				/**
-				 * If we have a GTIN number, try to improve the assigned property name.
-				 */
-				self::check_gtin_mt_value( $mt_og );
-
-				/**
-				 * Include variations (aka product offers) if available.
-				 */
-				if ( ! empty( $mt_og[ 'product:offers' ] ) && is_array( $mt_og[ 'product:offers' ] ) ) {
-
-					foreach ( $mt_og[ 'product:offers' ] as $num => $offer ) {
-
-						foreach( $offer as $mt_name => $mt_value ) {
-
-							if ( isset( $this->p->cf[ 'head' ][ 'og_type_array' ][ 'product' ][ $mt_name ] ) ) {
-
-								$mt_og[ 'product' ][ $num ][ $mt_name ] = $mt_value;
-
-								if ( isset( $mt_og[ $mt_name ] ) ) {
-									unset ( $mt_og[ $mt_name ] );
-								}
-							}
-						}
-
-						/**
-						 * If we have a GTIN number, try to improve the assigned property name.
-						 */
-						self::check_gtin_mt_value( $offer );
-					}
-
-				} elseif ( isset( $mt_og[ 'product:price:amount' ] ) ) {
-
-					if ( is_numeric( $mt_og[ 'product:price:amount' ] ) ) {	// Allow for price of 0.
-
-						if ( empty( $mt_og[ 'product:price:currency' ] ) ) {
-							$mt_og[ 'product:price:currency' ] = $this->p->options[ 'plugin_def_currency' ];
-						}
-
-					} else {
-
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'product price amount must be numeric' );
-						}
-
-						unset( $mt_og[ 'product:price:amount' ] );
-						unset( $mt_og[ 'product:price:currency' ] );
-					}
-				}
 			}
 
 			/**
 			 * If the module is a post object, define the author, publishing date, etc. These values may still be used
-			 * by other filters, and if the og:type is not an article, the meta tags will be sanitized at the end of
-			 * WpssoHead::get_head_array().
+			 * by other non-article filters, and if the og:type is not an article, the meta tags will be sanitized (ie.
+			 * non-valid meta tags removed) at the end of WpssoHead::get_head_array().
 			 */
 			if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {
 
@@ -782,34 +646,40 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 
 				if ( ! isset( $mt_og[ 'article:publisher' ] ) ) {
+
 					$mt_og[ 'article:publisher' ] = SucomUtil::get_key_value( 'fb_publisher_url', $this->p->options, $mod );
 				}
 
 				if ( ! isset( $mt_og[ 'article:tag' ] ) ) {
+
 					$mt_og[ 'article:tag' ] = $this->p->page->get_tag_names( $mod );
 				}
 
 				if ( ! isset( $mt_og[ 'article:published_time' ] ) ) {
+
 					if ( $mod[ 'post_status' ] === 'publish' ) {	// Must be published to have publish time.
 						$mt_og[ 'article:published_time' ] = trim( get_post_time( 'c', $gmt = true, $mod[ 'id' ] ) );
 					}
 				}
 
 				if ( ! isset( $mt_og[ 'article:modified_time' ] ) ) {
-					$mt_og[ 'article:modified_time' ] = trim( get_post_modified_time( 'c', $gmt = true, $mod[ 'id' ] ) );
-				}
 
-				/**
-				 * Unset optional meta tags if empty.
-				 */
-				foreach ( array( 'article:modified_time', 'article:expiration_time' ) as $optional_mt_name ) {
-					if ( empty( $mt_og[ $optional_mt_name ] ) ) {
-						unset( $mt_og[ $optional_mt_name ] );
-					}
+					$mt_og[ 'article:modified_time' ] = trim( get_post_modified_time( 'c', $gmt = true, $mod[ 'id' ] ) );
 				}
 			}
 
-			return (array) apply_filters( $this->p->lca . '_og', $mt_og, $mod );
+			if ( ! empty( $this->p->cf[ 'head' ][ 'og_type_ns' ][ $type_id ] ) ) {
+
+				$og_ns = $this->p->cf[ 'head' ][ 'og_type_ns' ][ $type_id ];
+
+				$filter_name = $this->p->lca . '_og_data_' . SucomUtil::sanitize_hookname( $og_ns );
+
+				$mt_og = (array) apply_filters( $filter_name, $mt_og, $mod );
+			}
+
+			$mt_og = (array) apply_filters( $this->p->lca . '_og', $mt_og, $mod );
+
+			return $mt_og;
 		}
 
 		public function get_og_type_id_for_name( $type_name, $default_id = null ) {

@@ -236,6 +236,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
+						case 'tooltip-meta-book_isbn':		// Book ISBN.
+
+							$cf_frags = $this->get_cf_tooltip_fragments( preg_replace( '/^tooltip-meta-/', '', $msg_key ) );
+
+							$text = sprintf( __( 'The value of %1$s can be used in meta tags and Schema markup.', 'wpsso' ), $cf_frags[ 'desc' ] );
+
+						 	break;
+
 						case 'tooltip-meta-product_category':	// Product Category.
 
 							$general_page_link = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site',
