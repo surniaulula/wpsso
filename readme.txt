@@ -308,6 +308,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 7.9.0-dev.1 (2020/06/09)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added a new "Book ISBN" option in the Document SSO metabox.
+	* Added a new "Book ISBN Custom Field" option in the Advanced Settings page.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.2.
+
 **Version 7.8.0 (2020/06/04)**
 
 * **New Features**
@@ -541,6 +556,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 7.9.0-dev.1 =
+
+(2020/06/09) Added a new "Book ISBN" option in the Document SSO metabox.
 
 = 7.8.0 =
 
