@@ -185,6 +185,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'licenses'        => 'Premium Licenses',
 							'tools'           => 'Tools and Actions',
 						),
+						'users' => array(
+							'add-person' => 'Add Person',
+						),
 					),
 				),
 				'wpssoam' => array(			// Plugin acronym.
@@ -1965,6 +1968,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'users' => array(
 						'page' => 'users.php',
 						'cap'  => 'list_users',
+						'sub'  => array(
+							'add-person' => array(
+								'cap' => 'create_users',
+								'pos' => 2,
+							),
+						),
 					),
 				),
 				'roles' => array(
@@ -2055,20 +2064,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'version' => '1.12.1',
 			),
 			'menu' => array(
-				'title'        => 'SSO',	// Menu title.
-				'icon-code'    => '\f529',	// Icon CSS code.
-				'icon-family'  => 'WpssoIcons',	// Icon font family.
-				'dashicons' => array(
-					'addons'         => 'admin-plugins',
-					'essential'      => 'star-filled',
-					'licenses'       => 'admin-network',
-					'dashboard'      => 'dashboard',
-					'setup'          => 'welcome-learn-more',
-					'tools'          => 'admin-tools',
-					'site-addons'    => 'admin-plugins',
-					'site-licenses'  => 'admin-network',
-					'site-setup'     => 'welcome-learn-more',
-					'*'              => 'admin-settings',	// Default icon.
+				'title'       => 'SSO',		// Menu title.
+				'icon-code'   => '\f529',	// Icon CSS code.
+				'icon-family' => 'WpssoIcons',	// Icon font family.
+				'dashicons'   => array(
+					'add-person'    => 'admin-users',
+					'addons'        => 'admin-plugins',
+					'essential'     => 'star-filled',
+					'licenses'      => 'admin-network',
+					'dashboard'     => 'dashboard',
+					'setup'         => 'welcome-learn-more',
+					'tools'         => 'admin-tools',
+					'site-addons'   => 'admin-plugins',
+					'site-licenses' => 'admin-network',
+					'site-setup'    => 'welcome-learn-more',
+					'your-sso'      => 'id-alt',
+					'*'             => 'admin-settings',	// Default icon.
 				),
 			),
 			'notice' => array(

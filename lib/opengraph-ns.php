@@ -163,7 +163,7 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 			/**
 			 * If we have a GTIN number, try to improve the assigned property name.
 			 */
-			self::check_gtin_mt_value( $mt_og, $prefix = 'product' );
+			WpssoOpenGraph::check_gtin_mt_value( $mt_og, $prefix = 'product' );
 
 			/**
 			 * Include variations (aka product offers) if available.
@@ -187,7 +187,7 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 					/**
 					 * If we have a GTIN number, try to improve the assigned property name.
 					 */
-					self::check_gtin_mt_value( $offer );
+					WpssoOpenGraph::check_gtin_mt_value( $offer );
 				}
 
 			} elseif ( isset( $mt_og[ 'product:price:amount' ] ) ) {

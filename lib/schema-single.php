@@ -69,6 +69,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$ret[ 'identifier' ] = $mt_single[ $mt_pre . ':id' ];
 
 				if ( ! empty( $mt_single[ $mt_pre . ':size_name' ] ) ) {
+
 					$ret[ 'identifier' ] .= '-' . $mt_single[ $mt_pre . ':size_name' ];
 				}
 			}
@@ -142,12 +143,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			foreach ( array( 'width', 'height' ) as $prop_name ) {
+
 				if ( isset( $mt_single[ $mt_pre . ':' . $prop_name ] ) && $mt_single[ $mt_pre . ':' . $prop_name ] > 0 ) {	// Just in case.
 					$ret[ $prop_name ] = $mt_single[ $mt_pre . ':' . $prop_name ];
 				}
 			}
 
 			if ( ! empty( $mt_single[ $mt_pre . ':tag' ] ) ) {
+
 				if ( is_array( $mt_single[ $mt_pre . ':tag' ] ) ) {
 					$ret[ 'keywords' ] = implode( ', ', $mt_single[ $mt_pre . ':tag' ] );
 				} else {
@@ -159,6 +162,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Update the @id string based on $ret[ 'url' ] and $image_type_id.
 			 */
 			if ( ! empty( $mt_single[ $mt_pre . ':id' ] ) ) {
+
 				WpssoSchema::update_data_id( $ret, $image_type_id );
 			}
 
@@ -258,6 +262,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			if ( ! empty( $mt_single[ $mt_pre . ':tag' ] ) ) {
+
 				if ( is_array( $mt_single[ $mt_pre . ':tag' ] ) ) {
 					$ret[ 'keywords' ] = implode( ', ', $mt_single[ $mt_pre . ':tag' ] );
 				} else {

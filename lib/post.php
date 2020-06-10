@@ -673,14 +673,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/**
-			 * Get post object for sanity checks.
+			 * Get the post object for sanity checks.
 			 */
 			$post_obj = SucomUtil::get_post_object( true );
 
 			$post_id = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'showing metabox for post ID ' . $post_id );
+				$this->p->debug->log( 'post ID = ' . $post_id );
 			}
 
 			/**
@@ -747,71 +747,68 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->debug->log( 'head meta skipped: doing block editor for meta box' );
 				}
 
-			} else {
+			} elseif ( ! empty( $this->p->options[ 'plugin_add_to_' . $post_obj->post_type ] ) ) {
 
-				if ( ! empty( $this->p->options[ 'plugin_add_to_' . $post_obj->post_type ] ) ) {
+				/**
+				 * Hooked by woocommerce module to load front-end libraries and start a session.
+				 */
+				do_action( $this->p->lca . '_admin_post_head', $mod );
 
-					/**
-					 * Hooked by woocommerce module to load front-end libraries and start a session.
-					 */
-					do_action( $this->p->lca . '_admin_post_head', $mod );
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'setting head_meta_info static property' );
+				}
 
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'setting head_meta_info static property' );
-					}
+				/**
+				 * $read_cache is false to generate notices etc.
+				 */
+				parent::$head_tags = $this->p->head->get_head_array( $post_id, $mod, $read_cache = false );
 
-					/**
-					 * $read_cache is false to generate notices etc.
-					 */
-					parent::$head_tags = $this->p->head->get_head_array( $post_id, $mod, $read_cache = false );
+				parent::$head_info = $this->p->head->extract_head_info( $mod, parent::$head_tags );
 
-					parent::$head_info = $this->p->head->extract_head_info( $mod, parent::$head_tags );
+				/**
+				 * Check for missing open graph image and description values.
+				 */
+				if ( $mod[ 'is_public' ] && 'publish' === $mod[ 'post_status' ] ) {
 
-					/**
-					 * Check for missing open graph image and description values.
-					 */
-					if ( $mod[ 'is_public' ] && 'publish' === $mod[ 'post_status' ] ) {
+					$ref_url = empty( parent::$head_info[ 'og:url' ] ) ? null : parent::$head_info[ 'og:url' ];
 
-						$ref_url = empty( parent::$head_info[ 'og:url' ] ) ? null : parent::$head_info[ 'og:url' ];
+					$ref_url = $this->p->util->maybe_set_ref( $ref_url, $mod, __( 'checking meta tags', 'wpsso' ) );
 
-						$ref_url = $this->p->util->maybe_set_ref( $ref_url, $mod, __( 'checking meta tags', 'wpsso' ) );
+					foreach ( array( 'image', 'description' ) as $mt_suffix ) {
 
-						foreach ( array( 'image', 'description' ) as $mt_suffix ) {
+						if ( empty( parent::$head_info[ 'og:' . $mt_suffix ] ) ) {
 
-							if ( empty( parent::$head_info[ 'og:' . $mt_suffix ] ) ) {
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'og:' . $mt_suffix . ' meta tag is value empty and required' );
+							}
 
-								if ( $this->p->debug->enabled ) {
-									$this->p->debug->log( 'og:' . $mt_suffix . ' meta tag is value empty and required' );
-								}
+							if ( $this->p->notice->is_admin_pre_notices() ) {
 
-								if ( $this->p->notice->is_admin_pre_notices() ) {
+								$notice_msg = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
 
-									$notice_msg = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
+								$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-og-' . $mt_suffix;
 
-									$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-og-' . $mt_suffix;
-
-									$this->p->notice->err( $notice_msg, null, $notice_key );
-								}
+								$this->p->notice->err( $notice_msg, null, $notice_key );
 							}
 						}
+					}
 
-						$this->p->util->maybe_unset_ref( $ref_url);
+					$this->p->util->maybe_unset_ref( $ref_url);
 
-						/**
-						 * Check duplicates only when the post is available publicly and we have a valid permalink.
-						 */
-						if ( current_user_can( 'manage_options' ) ) {
+					/**
+					 * Check duplicates only when the post is available publicly and we have a valid permalink.
+					 */
+					if ( current_user_can( 'manage_options' ) ) {
 
-							$check_head = empty( $this->p->options[ 'plugin_check_head' ] ) ? false : true;
+						$check_head = empty( $this->p->options[ 'plugin_check_head' ] ) ? false : true;
 
-							if ( apply_filters( $this->p->lca . '_check_post_head', $check_head, $post_id, $post_obj ) ) {
+						if ( apply_filters( $this->p->lca . '_check_post_head', $check_head, $post_id, $post_obj ) ) {
 
-								if ( $this->p->debug->enabled ) {
-									$this->p->debug->log( 'checking post head' );
-								}
-
-								$this->check_post_head( $post_id, $post_obj );
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'checking post head' );
 							}
+
+							$this->check_post_head( $post_id, $post_obj );
 						}
 					}
 				}

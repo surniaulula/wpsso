@@ -570,6 +570,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				case 'edit-' . $this->query_tax_slug:
 
+					$mod = $this->get_mod( $this->query_term_id, $this->query_tax_slug );
+
 					break;
 
 				default:
@@ -582,12 +584,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'showing metabox for term ID ' . $this->query_term_id );
-			}
-
-			$mod = $this->get_mod( $this->query_term_id, $this->query_tax_slug );
-
-			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'term ID = ' . $this->query_term_id );
 				$this->p->debug->log( 'home url = ' . get_option( 'home' ) );
 				$this->p->debug->log( 'locale default = ' . SucomUtil::get_locale( 'default' ) );
 				$this->p->debug->log( 'locale current = ' . SucomUtil::get_locale( 'current' ) );
@@ -597,7 +594,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			parent::$head_tags = array();
 
-			if ( ! empty( $this->p->options[ 'plugin_add_to_tax_' . $this->query_tax_slug ] ) ) {
+			if ( $this->query_term_id && ! empty( $this->p->options[ 'plugin_add_to_tax_' . $this->query_tax_slug ] ) ) {
 
 				do_action( $this->p->lca . '_admin_term_head', $mod, $screen->id );
 

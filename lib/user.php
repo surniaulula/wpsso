@@ -529,10 +529,27 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			switch ( $screen->id ) {
 
+				case ( 0 === strpos( $screen->id, 'users_page_' . $this->p->lca . '-add-' ) ? true : false ):	// Add user page.
+
+					$user_id = null;
+
+					$mod = $this->get_mod( null );
+
+					break;
+
 				case 'profile':		// User profile page.
 				case 'user-edit':	// User editing page.
-				case ( 0 === strpos( $screen->id, 'profile_page_' ) ? true : false ):		// Your profile page.
-				case ( 0 === strpos( $screen->id, 'users_page_' . $this->p->lca ) ? true : false ):	// Custom social settings page.
+				case ( 0 === strpos( $screen->id, 'profile_page_' ) ? true : false ):			// Your profile page.
+				case ( 0 === strpos( $screen->id, 'users_page_' . $this->p->lca ) ? true : false ):	// Users settings page.
+
+					/**
+					 * Get the user id.
+					 *
+					 * Returns the current user id if the 'user_id' query argument is empty.
+					 */
+					$user_id = SucomUtil::get_user_object( false, 'id' );
+
+					$mod = $this->get_mod( $user_id );
 
 					break;
 
@@ -545,15 +562,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					return;
 			}
 
-			$user_id = SucomUtil::get_user_object( false, 'id' );
-
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'showing metabox for user ID ' . $user_id );
-			}
-
-			$mod = $this->get_mod( $user_id );
-
-			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'user ID = ' . $user_id );
 				$this->p->debug->log( 'home url = ' . get_option( 'home' ) );
 				$this->p->debug->log( 'locale default = ' . SucomUtil::get_locale( 'default' ) );
 				$this->p->debug->log( 'locale current = ' . SucomUtil::get_locale( 'current' ) );
@@ -563,7 +573,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			parent::$head_tags = array();
 
-			if ( ! empty( $this->p->options[ 'plugin_add_to_user_page' ] ) ) {
+			if ( $user_id && ! empty( $this->p->options[ 'plugin_add_to_user_page' ] ) ) {
 
 				do_action( $this->p->lca . '_admin_user_head', $mod, $screen->id );
 

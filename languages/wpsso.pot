@@ -294,7 +294,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:1057 lib/post.php:838 lib/term.php:665 lib/user.php:632
+#: lib/admin.php:1057 lib/post.php:835 lib/term.php:662 lib/user.php:642
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -328,7 +328,7 @@ msgstr ""
 
 #: lib/admin.php:1121 lib/admin.php:1132 lib/messages.php:790
 #: lib/submenu/tools.php:45 lib/submenu/tools.php:103 lib/user.php:48
-#: lib/user.php:1503 lib/user.php:1608 lib/user.php:1734
+#: lib/user.php:1513 lib/user.php:1618 lib/user.php:1744
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -918,7 +918,7 @@ msgstr ""
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:483 lib/gettext-com.php:32 lib/post.php:1612
+#: lib/com/notice.php:483 lib/gettext-com.php:32 lib/post.php:1609
 msgid "Edit"
 msgstr ""
 
@@ -6537,180 +6537,180 @@ msgid ""
 "post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:777 lib/post.php:1329 lib/schema.php:3043 lib/term.php:622
-#: lib/user.php:588
+#: lib/post.php:775 lib/post.php:1326 lib/schema.php:3043 lib/term.php:619
+#: lib/user.php:598
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/post.php:974
+#: lib/post.php:971
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:1005
+#: lib/post.php:1002
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:1007
+#: lib/post.php:1004
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:1008
+#: lib/post.php:1005
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:1034
+#: lib/post.php:1031
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:1036
+#: lib/post.php:1033
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:1038
+#: lib/post.php:1035
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:1039
+#: lib/post.php:1036
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:1051 lib/util.php:1382
+#: lib/post.php:1048 lib/util.php:1382
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1063
+#: lib/post.php:1060
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1076
+#: lib/post.php:1073
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1089
+#: lib/post.php:1086
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1111
+#: lib/post.php:1108
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:1152
+#: lib/post.php:1149
 msgid "The webpage at %1$s does not include any Schema JSON-LD script(s)."
 msgstr ""
 
-#: lib/post.php:1154
+#: lib/post.php:1151
 msgid ""
 "Complete and accurate Schema JSON-LD markup is highly recommended for better "
 "ranking and click-through rates in search results."
 msgstr ""
 
-#: lib/post.php:1156
+#: lib/post.php:1153
 msgid ""
 "Consider activating the %1$s add-on to include Schema JSON-LD markup for "
 "Google Rich Results."
 msgstr ""
 
-#: lib/post.php:1174
+#: lib/post.php:1171
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:1190
+#: lib/post.php:1187
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1190
+#: lib/post.php:1187
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML &mdash; review the <a href=\"%1$s\">W3C Markup Validation "
 "Service</a> results and correct any errors."
 msgstr ""
 
-#: lib/post.php:1190
+#: lib/post.php:1187
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:1224
+#: lib/post.php:1221
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1226
+#: lib/post.php:1223
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1234
+#: lib/post.php:1231
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1237
+#: lib/post.php:1234
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1239
+#: lib/post.php:1236
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1386
+#: lib/post.php:1383
 msgid "Save a draft or publish to display these options."
 msgstr ""
 
-#: lib/post.php:1600 lib/script.php:317
+#: lib/post.php:1597 lib/script.php:317
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1614
+#: lib/post.php:1611
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1628
+#: lib/post.php:1625
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1629
+#: lib/post.php:1626
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1630
+#: lib/post.php:1627
 msgctxt "option label"
 msgid "No image index"
 msgstr ""
 
-#: lib/post.php:1631
+#: lib/post.php:1628
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1632
+#: lib/post.php:1629
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1633
+#: lib/post.php:1630
 msgctxt "option label"
 msgid "No translate"
 msgstr ""
 
-#: lib/post.php:1771
+#: lib/post.php:1768
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -6760,41 +6760,41 @@ msgstr ""
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
-#: lib/schema-single.php:1017
+#: lib/schema-single.php:1022
 msgid "adding schema organization"
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1076
+#: lib/schema-single.php:1081
 msgid ""
 "An organization logo image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1079
+#: lib/schema-single.php:1084
 msgid ""
 "An organization banner image (600x60px) is missing and required for the "
 "\"%1$s\" organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or 'ID #'.
-#: lib/schema-single.php:1082
+#: lib/schema-single.php:1087
 msgid ""
 "Please enter the missing image URL in the \"%1$s\" %2$s organization "
 "settings."
 msgstr ""
 
 #. translators: site, as in the "site organization settings".
-#: lib/schema-single.php:1099
+#: lib/schema-single.php:1104
 msgid "site"
 msgstr ""
 
-#: lib/schema-single.php:1260
+#: lib/schema-single.php:1265
 msgid "adding schema for person user ID %1$s"
 msgstr ""
 
-#: lib/schema-single.php:1426
+#: lib/schema-single.php:1431
 msgid "adding schema place"
 msgstr ""
 
@@ -7382,7 +7382,7 @@ msgid ""
 "%2$d in taxonomy %3$s (%4$s)."
 msgstr ""
 
-#: lib/term.php:860
+#: lib/term.php:857
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -7427,56 +7427,56 @@ msgid ""
 "user ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/user.php:840
+#: lib/user.php:850
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:923
+#: lib/user.php:933
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:924
+#: lib/user.php:934
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:925
+#: lib/user.php:935
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1333
+#: lib/user.php:1343
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1522
+#: lib/user.php:1532
 msgid ""
 "Aborting task to add the %1$s role to content creators - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1537
+#: lib/user.php:1547
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1574
+#: lib/user.php:1584
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1576 lib/user.php:1676 lib/util-cache.php:151
+#: lib/user.php:1586 lib/user.php:1686 lib/util-cache.php:151
 #: lib/util-cache.php:636
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/user.php:1627
+#: lib/user.php:1637
 msgid ""
 "Aborting task to remove the %1$s role from all users - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1642
+#: lib/user.php:1652
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1674
+#: lib/user.php:1684
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 

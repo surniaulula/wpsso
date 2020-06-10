@@ -50,7 +50,7 @@ if ( ! class_exists( 'WpssoProfileYourSSO' ) && class_exists( 'WpssoAdmin' ) ) {
 			$user_id  = get_current_user_id();
 			$user_obj = get_userdata( $user_id );
 
-			if ( empty( $user_obj->ID ) ) {	// just in case
+			if ( empty( $user_obj->ID ) ) {	// Just in case.
 				wp_die( __( 'Invalid user ID.' ) );
 			}
 

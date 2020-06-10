@@ -3050,18 +3050,18 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					switch ( $screen_base ) {
 
-						case 'profile':
-						case 'user-edit':
-						case ( strpos( $screen_base, 'profile_page_' ) === 0 ? true : false ):
-						case ( strpos( $screen_base, 'users_page_' ) === 0 ? true : false ):
+						case 'profile':		// User profile page.
+						case 'user-edit':	// User editing page.
+						case ( 0 === strpos( $screen_base, 'profile_page_' ) ? true : false ):	// Your profile page.
+						case ( 0 === strpos( $screen_base, 'users_page_' ) ? true : false ):	// Users settings page.
 
 							$ret = true;
 
 							break;
 					}
 
-				} elseif ( self::get_request_value( 'user_id' ) !== '' ||  // Called too early for screen.
-					basename( $_SERVER[ 'PHP_SELF' ] ) === 'profile.php' ) {
+				} elseif ( '' !== self::get_request_value( 'user_id' ) ||  // Called too early for screen.
+					'profile.php' === basename( $_SERVER[ 'PHP_SELF' ] ) ) {
 
 					$ret = true;
 				}
@@ -3087,11 +3087,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				$user_obj = get_query_var( 'author_name' ) ?
 					get_user_by( 'slug', get_query_var( 'author_name' ) ) :
-					get_userdata( get_query_var( 'author' ) );
+						get_userdata( get_query_var( 'author' ) );
 
 			} elseif ( is_admin() ) {
 
-				if ( ( $user_id = self::get_request_value( 'user_id' ) ) === '' ) { // Uses sanitize_text_field().
+				if ( '' === ( $user_id = self::get_request_value( 'user_id' ) ) ) { // Uses sanitize_text_field().
 					$user_id = get_current_user_id();
 				}
 
