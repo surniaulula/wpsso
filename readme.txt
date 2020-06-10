@@ -308,16 +308,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.9.0-dev.1 (2020/06/09)**
+**Version 7.9.0-dev.1 (2020/06/10)**
 
 * **New Features**
-	* None.
-* **Improvements**
+	* Added a new Users &gt; Add Person page to create new persons.
 	* Added a new "Book ISBN" option in the Document SSO metabox.
 	* Added a new "Book ISBN Custom Field" option in the Advanced Settings page.
+* **Improvements**
+	* None.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Added a new WpssoUsersAddPerson class in lib/users/add-person.php.
 	* Added a new WpssoOpenGraphNS class in lib/opengraph-ns.php.
 	* Added new 'wpsso_og_data_https_ogp_me_ns_{og_type}' filters.
 * **Requires At Least**
@@ -351,9 +353,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 7.7.0 (2020/05/30)**
 
 * **New Features**
-	* None.
-* **Improvements**
 	* Added a "Copy notifications to clipboard." link in the SSO notifications list.
+* **Improvements**
 	* Added an informational message about Schema FAQPage, QAPage, and Question markup when selecting those types.
 * **Bugfixes**
 	* Fix to skip URL shortening for 404 and search pages.
@@ -371,10 +372,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 7.6.0 (2020/05/22)**
 
 * **New Features**
-	* None.
+	* Added a new "Show Yoast SEO Import Details" option under the SSO &gt; Advanced Settings &gt; Editing Pages &gt; Document Meta tab.
 * **Improvements**
 	* Added post cache clearing for attached post IDs (used by the WPSSO FAQ add-on).
-	* Added a new "Show Yoast SEO Import Details" option under the SSO &gt; Advanced Settings &gt; Editing Pages &gt; Document Meta tab.
 	* Removed the SSO &gt; General Settings &gt; Social and Search Sites &gt; Google &gt; Knowledge Graph for Home Page &gt; Include Schema WebSite option.
 	* Moved the 'sucom-block-editor-admin' script from the header (default location) to the footer in order to work around a bug in NextGEN Gallery.
 * **Bugfixes**
@@ -410,12 +410,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 7.4.0 (2020/05/09)**
 
 * **New Features**
-	* None.
-* **Improvements**
-	* Changed the menu font icon for better compatibility between Mac OS and Windows (Mac OS superscripted the original font icon).
 	* Added new buttons in the SSO &gt; Tools and Actions page:
 		* Add Person Role to Content Creators
 		* Remove Person Role from All Users
+* **Improvements**
+	* Changed the menu font icon for better compatibility between Mac OS and Windows (Mac OS superscripted the original font icon).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -494,8 +493,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 7.0.0 (2020/04/17)**
 
 * **New Features**
-	* Added taxonomy names to the SSO &gt; Advanced Settings &gt; Editing Pages &gt; Add Document SSO Metabox option.
 	* Deprecated the WPSSO Social Sharing Buttons (aka WPSSO SSB) add-on.
+	* Added taxonomy names to the SSO &gt; Advanced Settings &gt; Editing Pages &gt; Add Document SSO Metabox option.
 * **Improvements**
 	* Added a title to the tab content for mobile icon-only tabs.
 	* Added a default icon for unknown WPSSO settings tabs.
@@ -560,7 +559,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 7.9.0-dev.1 =
 
-(2020/06/09) Added a new "Book ISBN" option in the Document SSO metabox.
+(2020/06/10) Added a new Users &gt; Add Person page to create new persons. Added a new "Book ISBN" option in the Document SSO metabox.
 
 = 7.8.0 =
 
