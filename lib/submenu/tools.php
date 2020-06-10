@@ -33,11 +33,9 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 		protected function add_plugin_hooks() {
 
-			$min_int = SucomUtil::get_min_int();
-
 			$this->p->util->add_plugin_filters( $this, array(
 				'form_button_rows'  => 1,
-			), $min_int );
+			) );
 		}
 
 		protected function show_form_content() {
@@ -95,7 +93,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			echo sprintf( __( 'Members of the %s role may be hand selected for certain Schema properties (content creators are administrators, editors, authors or contributors).', 'wpsso' ), $role_label );
 			echo '</p>';
 
-			echo '</div><!-- #wpsso_tools -->' . "\n";
+			echo '</div><!-- #tools-content -->' . "\n";
 		}
 
 		public function filter_form_button_rows( $form_button_rows ) {
