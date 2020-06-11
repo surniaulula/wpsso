@@ -321,6 +321,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Added a new WpssoUsersAddPerson class in lib/users/add-person.php.
 	* Added a new WpssoOpenGraphNS class in lib/opengraph-ns.php.
+	* Added a new 'img_url' option sanitation type in WpssoOptions->check_value().
 	* Added new 'wpsso_og_data_https_ogp_me_ns_{og_type}' filters.
 * **Requires At Least**
 	* PHP v5.6.
