@@ -31,6 +31,11 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			$this->using_db_cache = wp_using_ext_object_cache() ? false : true;
 		}
 
+		/**
+		 * Called by WpssoAdmin->load_setting_page() after the 'wpsso-action' query is handled.
+		 *
+		 * Add settings page filter and action hooks.
+		 */
 		protected function add_plugin_hooks() {
 
 			$this->p->util->add_plugin_filters( $this, array(

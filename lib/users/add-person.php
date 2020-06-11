@@ -13,6 +13,10 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 
 	class WpssoUsersAddPerson extends WpssoAdmin {
 
+		private $errors        = array();
+		private $messages      = array();
+		private $create_errors = array();
+
 		public function __construct( &$plugin, $id, $name, $lib, $ext ) {
 
 			$this->p =& $plugin;
@@ -27,49 +31,80 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 			$this->menu_ext  = $ext;
 		}
 
+		/**
+		 * Called by WpssoAdmin->load_setting_page() after the 'wpsso-action' query is handled.
+		 *
+		 * Add settings page filter and action hooks.
+		 */
 		protected function add_plugin_hooks() {
 
-			$this->p->util->add_plugin_filters( $this, array(
-				'form_button_rows'  => 1,
-			) );
+			if ( ! current_user_can( 'create_users' ) ) {	// Just in case.
+	
+				wp_die( 
+					'<h1>' . __( 'You need a higher level of permission.' ) . '</h1>' .
+					'<p>' . __( 'Sorry, you are not allowed to create users.' ) . '</p>',
+					403
+				);
+			}
+
+			if ( isset( $_REQUEST[ 'action' ] ) && 'createuser' === $_REQUEST[ 'action' ] ) {
+
+				check_admin_referer( 'create-user', '_wpnonce_create-user' );
+	
+				$user_id = $this->create_person();
+
+				if ( is_wp_error( $user_id ) ) {
+
+					$this->create_errors = $user_id;
+
+				} else {
+
+					if ( current_user_can( 'list_users' ) ) {
+
+						$redirect = 'users.php?update=add&id=' . $user_id;
+
+					} else {
+
+						$redirect = add_query_arg( 'update', 'add', 'user-new.php' );
+					}
+	
+					wp_redirect( $redirect );
+
+					die();
+				}
+			}
+
+			if ( ! empty( $_GET[ 'update' ] ) ) {
+
+				if ( 'add' === $_GET[ 'update' ] ) {
+
+					$this->messages[] = __( 'Person added.', 'wpsso' );
+				}
+			}
 		}
 
 		protected function show_form_content() {
 
 			if ( ! current_user_can( 'create_users' ) ) {	// Just in case.
-				return;
+	
+				wp_die( 
+					'<h1>' . __( 'You need a higher level of permission.' ) . '</h1>' .
+					'<p>' . __( 'Sorry, you are not allowed to create users.' ) . '</p>',
+					403
+				);
 			}
 
-			/**
-			 * Add a form to support side metabox open / close functions.
-			 */
-			$menu_hookname = SucomUtil::sanitize_hookname( $this->menu_id );
-
-			echo '<form name="' . $this->p->lca . '" ' .
-				'id="' . $this->p->lca . '_setting_form_' . $menu_hookname . '" ' .
-				'action="options.php" method="post">' . "\n";
-
-			settings_fields( $this->p->lca . '_setting' );
-
-			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
-			wp_nonce_field( 'closedpostboxes', 'closedpostboxesnonce', false );
-			wp_nonce_field( 'meta-box-order', 'meta-box-order-nonce', false );
-
-			echo '</form>', "\n";
-
-			echo '<div id="add-person-content">' . "\n";
+			$this->show_notices();
 
 			$contact_methods = wp_get_user_contact_methods();
-
-			$editable_roles = array( 'none' => array( 'name' => _x( '[None]', 'option value', 'wpsso' ) ) );
-			
-			$editable_roles += array_reverse( get_editable_roles() );
+			$editable_roles  = array( 'none' => array( 'name' => _x( '[None]', 'option value', 'wpsso' ) ) );
+			$editable_roles  += array_reverse( get_editable_roles() );
 
 			unset( $editable_roles[ 'person' ] );
 
-			$creating = isset( $_POST[ 'createuser' ] );
-
 			$attr = array();
+
+			$have_submit = isset( $_POST[ 'createuser' ] );
 
 			foreach ( array_merge( array(
 				'user_login',
@@ -80,7 +115,7 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 				'role',
 			), array_keys( $contact_methods ) ) as $input ) {
 
-				$attr[ $input ] = $creating && isset( $_POST[ $input ] ) ? esc_attr( wp_unslash( $_POST[ $input ] ) ) : '';
+				$attr[ $input ] = $have_submit && isset( $_POST[ $input ] ) ? esc_attr( wp_unslash( $_POST[ $input ] ) ) : '';
 			}
 
 			if ( empty( $attr[ 'role' ] ) ) {
@@ -90,11 +125,13 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			?>
 
+			<div id="add-person-content">
+
 			<form method="post" name="createuser" id="createuser" class="validate" novalidate="novalidate">
 
-			<input type="hidden" name="action" value="createuser" />
 			<?php wp_nonce_field( 'create-user', '_wpnonce_create-user' ); ?>
 
+			<input type="hidden" name="action" value="createuser" />
 			<input type="hidden" name="send_user_notification" value="0" />
 			<input type="hidden" name="pass1" value="" />
 			<input type="hidden" name="pass2" value="" />
@@ -189,9 +226,51 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 			
 			<?php submit_button( __( 'Add Person', 'wpsso' ), 'primary', 'createuser', true, array( 'id' => 'createusersub' ) ); ?> 
 
-			</form><?php
+			</form>
 
-			echo '</div><!-- #add-person-content -->' . "\n";
+			</div><!-- #add-person-content --><?php
+		}
+
+		private function create_person() {
+
+			$user_id = 0;
+
+			return edit_user( $user_id );
+		}
+
+		private function show_notices() {
+
+			if ( ! empty( $this->errors ) && is_wp_error( $this->errors ) ) {
+
+				echo '<div class="error">';
+				echo '<ul>';
+
+				foreach ( $this->errors->get_error_messages() as $err ) {
+				
+					echo '<li>' . $err . '</li>';
+				}
+		
+				echo '</ul>';
+				echo '</div>';
+			}
+
+			if ( ! empty( $this->messages ) ) {
+
+				foreach ( $this->messages as $msg ) {
+
+					echo '<div id="message" class="updated notice is-dismissible"><p>' . $msg . '</p></div>';
+				}
+			}
+
+			if ( ! empty( $this->create_errors ) && is_wp_error( $this->create_errors ) ) {
+			
+				foreach ( $this->create_errors->get_error_messages() as $message ) {
+
+					echo '<div class="error">';
+					echo '<p>' . $message . '</p>';
+					echo '</div>';
+				}
+			}
 		}
 	}
 }

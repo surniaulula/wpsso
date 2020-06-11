@@ -1227,19 +1227,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
-			$this->add_footer_hooks();	// Include add-on name and version to settings page footer.
-			$this->add_plugin_hooks();
+			$this->add_plugin_hooks();	// Add settings page filter and action hooks.
+
 			$this->add_side_meta_boxes();	// Add side metaboxes before main metaboxes.
+
 			$this->add_meta_boxes();	// Add last to move any duplicate side metaboxes.
-		}
 
-		protected function add_footer_hooks() {
-
-			add_filter( 'admin_footer_text', array( $this, 'admin_footer_ext' ) );
-			add_filter( 'update_footer', array( $this, 'admin_footer_host' ) );
+			$this->add_footer_hooks();	// Include add-on name and version in settings page footer.
 		}
 
 		/**
+		 * Add settings page filter and action hooks.
+		 *
 		 * This method is extended by each submenu page.
 		 */
 		protected function add_plugin_hooks() {
@@ -1270,6 +1269,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 * This method is extended by each submenu page.
 		 */
 		protected function add_meta_boxes() {
+		}
+
+		/**
+		 * Include add-on name and version in settings page footer.
+		 */
+		protected function add_footer_hooks() {
+
+			add_filter( 'admin_footer_text', array( $this, 'admin_footer_ext' ) );
+
+			add_filter( 'update_footer', array( $this, 'admin_footer_host' ) );
 		}
 
 		/**
