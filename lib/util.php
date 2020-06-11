@@ -444,20 +444,36 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( ! empty( $media_url ) ) {
 
-					$image_info = $this->get_image_url_info( $media_url );
-
 					list(
 						$opts[ $opt_image_pre . ':width' . $opt_suffix ],	// Example: place_img_url:width_1.
 						$opts[ $opt_image_pre . ':height' . $opt_suffix ],	// Example: place_img_url:height_1.
 						$image_type,
 						$image_attr
-					) = $image_info;
+					) = $this->get_image_url_info( $media_url );
 				}
 			}
 
 			return $opts;
 		}
 
+		public function is_image_url( $image_url ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			$image_info = $this->get_image_url_info( $image_url );
+
+			if ( empty( $image_info[ 2 ] ) ) {	// Check for the IMAGETYPE_XXX constant integer.
+				return false;
+			}
+
+			return true;
+		}
+
+		/**
+		 * Always returns an array.
+		 */
 		public function get_image_url_info( $image_url ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -475,19 +491,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return $local_cache[ $image_url ];
 			}
 
-			$is_disabled    = self::get_const( 'WPSSO_PHP_GETIMGSIZE_DISABLE' );
 			$def_image_info = array( WPSSO_UNDEF, WPSSO_UNDEF, '', '' );
-			$image_info     = false;
 
-			if ( $is_disabled ) {
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: use of getimagesize() is disabled' );
-				}
-
-				return $local_cache[ $image_url ] = $def_image_info;	// Stop here.
-
-			} elseif ( empty( $image_url ) ) {
+			if ( empty( $image_url ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: image url is empty' );
@@ -536,12 +542,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$mtime_start = microtime( true );
-
-			$image_info = $this->p->cache->get_image_size( $image_url, $exp_secs = 300, $curl_opts = array(), $error_handler = 'wpsso_error_handler' );
-
+			$image_info  = $this->p->cache->get_image_size( $image_url, $exp_secs = 300, $curl_opts = array(), $error_handler = 'wpsso_error_handler' );
 			$mtime_total = microtime( true ) - $mtime_start;
-
-			$mtime_max = self::get_const( 'WPSSO_PHP_GETIMGSIZE_MAX_TIME', 1.50 );
+			$mtime_max   = self::get_const( 'WPSSO_PHP_GETIMGSIZE_MAX_TIME', 1.50 );
 
 			/**
 			 * Issue warning for slow getimagesize() request.

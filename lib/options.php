@@ -315,29 +315,34 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 *	'add_meta_property_og:image:secure_url' = 1
 				 *	'add_meta_property_og:video:secure_url' = 1
 				 *	'add_meta_itemprop_url'                 = 1
-				 *	'plugin_cf_img_url'                     = '_format_image_url'
-				 *	'plugin_cf_vid_url'                     = '_format_video_url'
+				 *	'plugin_cf_img_url'                     = ''
+				 *	'plugin_cf_vid_url'                     = ''
 				 *	'plugin_cf_review_item_image_url'       = ''
 				 */
 				case 'site_url':
 				case 'sharing_url':
 				case 'canonical_url':
 				case 'fb_page_url':
-				case 'og_def_img_url':
-				case 'og_img_url':
 				case 'og_vid_url':
 				case 'p_publisher_url':
 				case 'plugin_yourls_api_url':
 				case 'schema_addl_type_url':
-				case 'schema_banner_url':
-				case 'schema_img_url':
-				case 'schema_logo_url':
 				case 'schema_sameas_url':
-				case 'tc_lrg_img_url':
-				case 'tc_sum_img_url':
 				case ( strpos( $base_key, '_url' ) && isset( $this->p->cf[ 'form' ][ 'social_accounts' ][ $base_key ] ) ? true : false ):
 
 					return 'url';
+
+					break;
+
+				case 'og_def_img_url':
+				case 'og_img_url':
+				case 'schema_banner_url':
+				case 'schema_img_url':
+				case 'schema_logo_url':
+				case 'tc_lrg_img_url':
+				case 'tc_sum_img_url':
+
+					return 'img_url';
 
 					break;
 
@@ -1220,10 +1225,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 */
 			$og_single_image = $this->p->media->get_opts_single_image( $opts, $size_name, $opt_img_pre );
 
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log_arr( '$og_single_image', $og_single_image );
-			}
-
 			$og_single_image_url = SucomUtil::get_mt_media_url( $og_single_image );
 
 			if ( ! empty( $og_single_image_url ) ) {
@@ -1286,11 +1287,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					'date'      => __( 'The value of option "%s" must be a yyyy-mm-dd date - resetting this option to its default value.', 'wpsso' ),
 					'html'      => __( 'The value of option "%s" must be HTML code - resetting this option to its default value.', 'wpsso' ),
 					'img_id'    => __( 'The value of option "%s" must be an image ID - resetting this option to its default value.', 'wpsso' ),
+					'img_url'   => __( 'The value of option "%s" must be a valid image URL - resetting this option to its default value.', 'wpsso' ),
 					'not_blank' => __( 'The value of option "%s" cannot be an empty string - resetting this option to its default value.', 'wpsso' ),
 					'numeric'   => __( 'The value of option "%s" must be numeric - resetting this option to its default value.', 'wpsso' ),
 					'pos_num'   => __( 'The value of option "%1$s" must be equal to or greather than %2$s - resetting this option to its default value.', 'wpsso' ),
 					'time'      => __( 'The value of option "%s" must be a hh:mm time - resetting this option to its default value.', 'wpsso' ),
-					'url'       => __( 'The value of option "%s" must be a URL - resetting this option to its default value.', 'wpsso' ),
+					'url'       => __( 'The value of option "%s" must be a valid URL - resetting this option to its default value.', 'wpsso' ),
 				);
 			}
 
@@ -1456,6 +1458,19 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					break;
 
 				/**
+				 * Text strings that can be blank (line breaks are removed).
+				 */
+				case 'desc':
+				case 'one_line':
+				case 'preg':
+
+					if ( '' !== $opt_val ) {
+						$opt_val = trim( preg_replace( '/[\s\n\r]+/s', ' ', $opt_val ) );
+					}
+
+					break;
+
+				/**
 				 * Must be a floating-point number. The decimal precision defined before the switch() statement.
 				 */
 				case 'fnum':
@@ -1531,9 +1546,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/**
 				 * Integer / numeric options that must be 1 or more (not zero).
 				 */
-				case 'pos_int':
-				case 'img_width':	// Image height, subject to minimum value (typically, at least 200px).
 				case 'img_height':	// Image height, subject to minimum value (typically, at least 200px).
+				case 'img_width':	// Image height, subject to minimum value (typically, at least 200px).
+				case 'pos_int':
 
 					$ret_int = true;
 
@@ -1603,19 +1618,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					break;
 
 				/**
-				 * Text strings that can be blank (line breaks are removed).
-				 */
-				case 'preg':
-				case 'desc':
-				case 'one_line':
-
-					if ( '' !== $opt_val ) {
-						$opt_val = trim( preg_replace( '/[\s\n\r]+/s', ' ', $opt_val ) );
-					}
-
-					break;
-
-				/**
 				 * Must be empty or texturized.
 				 */
 				case 'textured':
@@ -1629,13 +1631,25 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/**
 				 * Empty string or a URL.
 				 */
+				case 'img_url':
+
+					if ( '' !== $opt_val ) {
+
+						if ( ! $this->p->util->is_image_url( $opt_val ) ) {
+
+							$this->p->notice->err( sprintf( $error_messages[ 'img_url' ], $opt_key ) );
+
+							$opt_val = $def_val;
+						}
+					}
+
 				case 'url':
 
 					if ( '' !== $opt_val ) {
 
 						$opt_val = SucomUtil::decode_html( $opt_val );	// Just in case.
 
-						if ( filter_var( $opt_val, FILTER_VALIDATE_URL ) === false ) {
+						if ( false === filter_var( $opt_val, FILTER_VALIDATE_URL ) ) {
 
 							$this->p->notice->err( sprintf( $error_messages[ 'url' ], $opt_key ) );
 

@@ -1913,7 +1913,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			} elseif ( false !== strpos( $img_mixed, '://' ) ) {
 
 				if ( $img_width === WPSSO_UNDEF || $img_height === WPSSO_UNDEF ) {
-					list( $img_width, $img_height, $img_type, $img_attr ) = $this->p->util->get_image_url_info( $img_mixed );
+
+					list(
+						$img_width,
+						$img_height,
+						$img_type,
+						$img_attr
+					) = $this->p->util->get_image_url_info( $img_mixed );
 				}
 
 				$img_label = '<a href="' . $img_mixed . '">' . $img_mixed . '</a>';
