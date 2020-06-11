@@ -462,6 +462,18 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
+			/**
+			 * Example $image_info:
+			 *
+			 * Array (
+			 *	[0] => 2048
+			 *	[1] => 2048
+			 *	[2] => 3
+			 *	[3] => width="2048" height="2048"
+			 *	[bits] => 8
+			 *	[mime] => image/png
+			 * )
+			 */
 			$image_info = $this->get_image_url_info( $image_url );
 
 			if ( empty( $image_info[ 2 ] ) ) {	// Check for the IMAGETYPE_XXX constant integer.
@@ -542,9 +554,24 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$mtime_start = microtime( true );
-			$image_info  = $this->p->cache->get_image_size( $image_url, $exp_secs = 300, $curl_opts = array(), $error_handler = 'wpsso_error_handler' );
+
+			/**
+			 * Example $image_info:
+			 *
+			 * Array (
+			 *	[0] => 2048
+			 *	[1] => 2048
+			 *	[2] => 3
+			 *	[3] => width="2048" height="2048"
+			 *	[bits] => 8
+			 *	[mime] => image/png
+			 * )
+			 */
+			$image_info = $this->p->cache->get_image_size( $image_url, $exp_secs = 300, $curl_opts = array(), $error_handler = 'wpsso_error_handler' );
+
 			$mtime_total = microtime( true ) - $mtime_start;
-			$mtime_max   = self::get_const( 'WPSSO_PHP_GETIMGSIZE_MAX_TIME', 1.50 );
+
+			$mtime_max = self::get_const( 'WPSSO_PHP_GETIMGSIZE_MAX_TIME', 1.50 );
 
 			/**
 			 * Issue warning for slow getimagesize() request.

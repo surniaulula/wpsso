@@ -373,7 +373,7 @@ msgid ""
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:1396 lib/users/user-edit.php:196
+#: lib/admin.php:1396
 msgid "Profile updated."
 msgstr ""
 
@@ -5604,7 +5604,6 @@ msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: lib/messages.php:2211 lib/users/add-person.php:199
-#: lib/users/user-edit.php:498
 msgid "Contact Info"
 msgstr ""
 
@@ -6304,7 +6303,7 @@ msgid ""
 "Activate the %s add-on<br/>for Schema markup and structured data options."
 msgstr ""
 
-#: lib/messages.php:3021 lib/util.php:3265
+#: lib/messages.php:3021 lib/util.php:3292
 msgid "No options available."
 msgstr ""
 
@@ -6530,12 +6529,12 @@ msgid "post"
 msgstr ""
 
 #: lib/post.php:499 lib/register.php:336 lib/term.php:425 lib/user.php:395
-#: lib/util.php:561 lib/util.php:2946
+#: lib/util.php:588 lib/util.php:2973
 msgid "%s warning:"
 msgstr ""
 
-#: lib/post.php:500 lib/term.php:426 lib/user.php:397 lib/util.php:563
-#: lib/util.php:2948
+#: lib/post.php:500 lib/term.php:426 lib/user.php:397 lib/util.php:590
+#: lib/util.php:2975
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -6589,7 +6588,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:1048 lib/util.php:1385
+#: lib/post.php:1048 lib/util.php:1412
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -6752,8 +6751,7 @@ msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr ""
 
-#: lib/profile/your-sso.php:54 lib/users/user-edit.php:23
-#: lib/users/user-edit.php:25
+#: lib/profile/your-sso.php:54
 msgid "Invalid user ID."
 msgstr ""
 
@@ -7490,13 +7488,10 @@ msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 
 #: lib/users/add-person.php:44 lib/users/add-person.php:86
-#: lib/users/user-new.php:15 lib/users/user-new.php:22
-#: lib/users/user-new.php:55 lib/users/user-new.php:156
 msgid "You need a higher level of permission."
 msgstr ""
 
 #: lib/users/add-person.php:45 lib/users/add-person.php:87
-#: lib/users/user-new.php:23 lib/users/user-new.php:157
 msgid "Sorry, you are not allowed to create users."
 msgstr ""
 
@@ -7504,16 +7499,12 @@ msgstr ""
 msgid "Person added."
 msgstr ""
 
-#: lib/users/add-person.php:142 lib/users/user-edit.php:405
-#: lib/users/user-new.php:481
+#: lib/users/add-person.php:142
 msgid "Username"
 msgstr ""
 
 #: lib/users/add-person.php:143 lib/users/add-person.php:157
-#: lib/users/add-person.php:166 lib/users/user-edit.php:454
-#: lib/users/user-edit.php:502 lib/users/user-new.php:481
-#: lib/users/user-new.php:485 lib/users/user-new.php:505
-#: lib/users/user-new.php:529
+#: lib/users/add-person.php:166
 msgid "(required)"
 msgstr ""
 
@@ -7521,13 +7512,11 @@ msgstr ""
 msgid "Usernames cannot be changed (without a plugin)."
 msgstr ""
 
-#: lib/users/add-person.php:156 lib/users/user-edit.php:444
-#: lib/users/user-new.php:490
+#: lib/users/add-person.php:156
 msgid "First Name"
 msgstr ""
 
-#: lib/users/add-person.php:165 lib/users/user-edit.php:449
-#: lib/users/user-new.php:494
+#: lib/users/add-person.php:165
 msgid "Last Name"
 msgstr ""
 
@@ -7535,13 +7524,11 @@ msgstr ""
 msgid "Additional Role"
 msgstr ""
 
-#: lib/users/add-person.php:205 lib/users/user-edit.php:502
-#: lib/users/user-new.php:389 lib/users/user-new.php:485
+#: lib/users/add-person.php:205
 msgid "Email"
 msgstr ""
 
-#: lib/users/add-person.php:213 lib/users/user-edit.php:537
-#: lib/users/user-new.php:498
+#: lib/users/add-person.php:213
 msgid "Website"
 msgstr ""
 
@@ -7549,554 +7536,12 @@ msgstr ""
 msgid "About the person"
 msgstr ""
 
-#: lib/users/add-person.php:241 lib/users/user-edit.php:571
+#: lib/users/add-person.php:241
 msgid "Biographical Info"
 msgstr ""
 
 #: lib/users/add-person.php:248
 msgid "Add Person"
-msgstr ""
-
-#: lib/users/user-edit.php:31
-msgid "Profile"
-msgstr ""
-
-#. translators: %s: User's display name.
-#: lib/users/user-edit.php:34
-msgid "Edit User %s"
-msgstr ""
-
-#: lib/users/user-edit.php:49
-msgid ""
-"Your profile contains information about you (your &#8220;account&#8221;) as "
-"well as some personal options related to using WordPress."
-msgstr ""
-
-#: lib/users/user-edit.php:50
-msgid ""
-"You can change your password, turn on keyboard shortcuts, change the color "
-"scheme of your WordPress administration screens, and turn off the WYSIWYG "
-"(Visual) editor, among other things. You can hide the Toolbar (formerly "
-"called the Admin Bar) from the front end of your site, however it cannot be "
-"disabled on the admin screens."
-msgstr ""
-
-#: lib/users/user-edit.php:51
-msgid ""
-"You can select the language you wish to use while using the WordPress "
-"administration screen without affecting the language site visitors see."
-msgstr ""
-
-#: lib/users/user-edit.php:52
-msgid ""
-"Your username cannot be changed, but you can use other fields to enter your "
-"real name or a nickname, and change which name to display on your posts."
-msgstr ""
-
-#: lib/users/user-edit.php:53
-msgid ""
-"You can log out of other devices, such as your phone or a public computer, "
-"by clicking the Log Out Everywhere Else button."
-msgstr ""
-
-#: lib/users/user-edit.php:54
-msgid ""
-"Required fields are indicated; the rest are optional. Profile information "
-"will only be displayed if your theme is set up to do so."
-msgstr ""
-
-#: lib/users/user-edit.php:55
-msgid "Remember to click the Update Profile button when you are finished."
-msgstr ""
-
-#: lib/users/user-edit.php:60 lib/users/user-new.php:246
-msgid "Overview"
-msgstr ""
-
-#: lib/users/user-edit.php:66 lib/users/user-new.php:267
-msgid "For more information:"
-msgstr ""
-
-#: lib/users/user-edit.php:67
-msgid ""
-"<a href=\"https://wordpress.org/support/article/users-your-profile-screen/"
-"\">Documentation on User Profiles</a>"
-msgstr ""
-
-#: lib/users/user-edit.php:68 lib/users/user-new.php:269
-msgid "<a href=\"https://wordpress.org/support/\">Support</a>"
-msgstr ""
-
-#: lib/users/user-edit.php:93 lib/users/user-edit.php:125
-#: lib/users/user-edit.php:181
-msgid "Sorry, you are not allowed to edit this user."
-msgstr ""
-
-#: lib/users/user-edit.php:191
-msgid "Important:"
-msgstr ""
-
-#: lib/users/user-edit.php:191
-msgid "This user has super admin privileges."
-msgstr ""
-
-#: lib/users/user-edit.php:198
-msgid "User updated."
-msgstr ""
-
-#: lib/users/user-edit.php:201
-msgid "&larr; Back to Users"
-msgstr ""
-
-#: lib/users/user-edit.php:208
-msgid "Error while saving the new email address. Please try again."
-msgstr ""
-
-#: lib/users/user-edit.php:227
-msgctxt "user"
-msgid "Add New"
-msgstr ""
-
-#: lib/users/user-edit.php:229
-msgctxt "user"
-msgid "Add Existing"
-msgstr ""
-
-#: lib/users/user-edit.php:256
-msgid "Personal Options"
-msgstr ""
-
-#: lib/users/user-edit.php:261
-msgid "Visual Editor"
-msgstr ""
-
-#: lib/users/user-edit.php:264
-msgid "Disable the visual editor when writing"
-msgstr ""
-
-#: lib/users/user-edit.php:284
-msgid "Syntax Highlighting"
-msgstr ""
-
-#: lib/users/user-edit.php:287
-msgid "Disable syntax highlighting when editing code"
-msgstr ""
-
-#: lib/users/user-edit.php:295
-msgid "Admin Color Scheme"
-msgstr ""
-
-#: lib/users/user-edit.php:317
-msgid "Keyboard Shortcuts"
-msgstr ""
-
-#: lib/users/user-edit.php:321
-msgid "Enable keyboard shortcuts for comment moderation."
-msgstr ""
-
-#: lib/users/user-edit.php:323
-msgid ""
-"<a href=\"https://wordpress.org/support/article/keyboard-shortcuts/\" target="
-"\"_blank\">More information</a>"
-msgstr ""
-
-#: lib/users/user-edit.php:329
-msgid "Toolbar"
-msgstr ""
-
-#: lib/users/user-edit.php:333
-msgid "Show Toolbar when viewing site"
-msgstr ""
-
-#. translators: The user language selection field label.
-#: lib/users/user-edit.php:345
-msgid "Language"
-msgstr ""
-
-#: lib/users/user-edit.php:401
-msgid "Name"
-msgstr ""
-
-#: lib/users/user-edit.php:406
-msgid "Usernames cannot be changed."
-msgstr ""
-
-#: lib/users/user-edit.php:410 lib/users/user-new.php:416
-#: lib/users/user-new.php:552
-msgid "Role"
-msgstr ""
-
-#: lib/users/user-edit.php:422 lib/users/user-edit.php:424
-msgid "&mdash; No role for this site &mdash;"
-msgstr ""
-
-#: lib/users/user-edit.php:433
-msgid "Super Admin"
-msgstr ""
-
-#: lib/users/user-edit.php:436
-msgid "Grant this user super admin privileges for the Network."
-msgstr ""
-
-#: lib/users/user-edit.php:438
-msgid ""
-"Super admin privileges cannot be removed because this user has the network "
-"admin email."
-msgstr ""
-
-#: lib/users/user-edit.php:454
-msgid "Nickname"
-msgstr ""
-
-#: lib/users/user-edit.php:459
-msgid "Display name publicly as"
-msgstr ""
-
-#: lib/users/user-edit.php:508
-msgid ""
-"If you change this, we will send you an email at your new address to confirm "
-"it. <strong>The new address will not become active until confirmed.</strong>"
-msgstr ""
-
-#. translators: %s: New email.
-#: lib/users/user-edit.php:521
-msgid "There is a pending change of your email to %s."
-msgstr ""
-
-#: lib/users/user-edit.php:527 lib/users/user-edit.php:642
-#: lib/users/user-new.php:522
-msgid "Cancel"
-msgstr ""
-
-#: lib/users/user-edit.php:567
-msgid "About Yourself"
-msgstr ""
-
-#: lib/users/user-edit.php:567
-msgid "About the user"
-msgstr ""
-
-#: lib/users/user-edit.php:573
-msgid ""
-"Share a little biographical information to fill out your profile. This may "
-"be shown publicly."
-msgstr ""
-
-#: lib/users/user-edit.php:578
-msgid "Profile Picture"
-msgstr ""
-
-#. translators: %s: Gravatar URL.
-#: lib/users/user-edit.php:586
-msgid "<a href=\"%s\">You can change your profile picture on Gravatar</a>."
-msgstr ""
-
-#: lib/users/user-edit.php:587
-msgid "https://en.gravatar.com/"
-msgstr ""
-
-#: lib/users/user-edit.php:625
-msgid "Account Management"
-msgstr ""
-
-#: lib/users/user-edit.php:628
-msgid "New Password"
-msgstr ""
-
-#: lib/users/user-edit.php:631
-msgid "Generate Password"
-msgstr ""
-
-#: lib/users/user-edit.php:636 lib/users/user-new.php:516
-msgid "Hide password"
-msgstr ""
-
-#: lib/users/user-edit.php:638 lib/users/user-new.php:518
-msgid "Hide"
-msgstr ""
-
-#: lib/users/user-edit.php:640 lib/users/user-new.php:520
-msgid "Cancel password change"
-msgstr ""
-
-#: lib/users/user-edit.php:649
-msgid "Repeat New Password"
-msgstr ""
-
-#: lib/users/user-edit.php:652
-msgid "Type your new password again."
-msgstr ""
-
-#: lib/users/user-edit.php:656 lib/users/user-new.php:535
-msgid "Confirm Password"
-msgstr ""
-
-#: lib/users/user-edit.php:660
-msgid "Confirm use of potentially weak password"
-msgstr ""
-
-#: lib/users/user-edit.php:670 lib/users/user-edit.php:680
-#: lib/users/user-edit.php:690
-msgid "Sessions"
-msgstr ""
-
-#: lib/users/user-edit.php:672 lib/users/user-edit.php:682
-msgid "Log Out Everywhere Else"
-msgstr ""
-
-#: lib/users/user-edit.php:674
-msgid "You are only logged in at this location."
-msgstr ""
-
-#: lib/users/user-edit.php:684
-msgid ""
-"Did you lose your phone or leave your account logged in at a public "
-"computer? You can log out everywhere else, and stay logged in here."
-msgstr ""
-
-#: lib/users/user-edit.php:692
-msgid "Log Out Everywhere"
-msgstr ""
-
-#. translators: %s: User's display name.
-#: lib/users/user-edit.php:696
-msgid "Log %s out of all locations."
-msgstr ""
-
-#: lib/users/user-edit.php:746
-msgid "Additional Capabilities"
-msgstr ""
-
-#: lib/users/user-edit.php:749
-msgid "Capabilities"
-msgstr ""
-
-#. translators: %s: Capability name.
-#: lib/users/user-edit.php:763
-msgid "Denied: %s"
-msgstr ""
-
-#: lib/users/user-edit.php:777
-msgid "Update Profile"
-msgstr ""
-
-#: lib/users/user-edit.php:777
-msgid "Update User"
-msgstr ""
-
-#: lib/users/user-new.php:16 lib/users/user-new.php:56
-msgid "Sorry, you are not allowed to add users to this network."
-msgstr ""
-
-#. translators: 1: Site title, 2: Site URL, 3: User role, 4: Activation URL.
-#: lib/users/user-new.php:116
-msgid ""
-"Hi,\n"
-"\n"
-"You've been invited to join '%1$s' at\n"
-"%2$s with the role of %3$s.\n"
-"\n"
-"Please click the following link to confirm the invite:\n"
-"%4$s"
-msgstr ""
-
-#. translators: Joining confirmation notification email subject. %s: Site title.
-#: lib/users/user-new.php:130
-msgid "[%s] Joining Confirmation"
-msgstr ""
-
-#: lib/users/user-new.php:222 lib/users/user-new.php:344
-#: lib/users/user-new.php:453 lib/users/user-new.php:579
-msgid "Add New User"
-msgstr ""
-
-#: lib/users/user-new.php:230
-msgid ""
-"To add a new user to your site, fill in the form on this screen and click "
-"the Add New User button at the bottom."
-msgstr ""
-
-#: lib/users/user-new.php:233
-msgid ""
-"Because this is a multisite installation, you may add accounts that already "
-"exist on the Network by specifying a username or email, and defining a role. "
-"For more options, such as specifying a password, you have to be a Network "
-"Administrator and use the hover link under an existing user&#8217;s name to "
-"Edit the user profile under Network Admin > All Users."
-msgstr ""
-
-#: lib/users/user-new.php:234
-msgid ""
-"New users will receive an email letting them know they&#8217;ve been added "
-"as a user for your site. This email will also contain their password. Check "
-"the box if you don&#8217;t want the user to receive a welcome email."
-msgstr ""
-
-#: lib/users/user-new.php:236
-msgid ""
-"New users are automatically assigned a password, which they can change after "
-"logging in. You can view or edit the assigned password by clicking the Show "
-"Password button. The username cannot be changed once the user has been added."
-msgstr ""
-
-#: lib/users/user-new.php:238
-msgid ""
-"By default, new users will receive an email letting them know they&#8217;ve "
-"been added as a user for your site. This email will also contain a password "
-"reset link. Uncheck the box if you don&#8217;t want to send the new user a "
-"welcome email."
-msgstr ""
-
-#: lib/users/user-new.php:241
-msgid ""
-"Remember to click the Add New User button at the bottom of this screen when "
-"you are finished."
-msgstr ""
-
-#: lib/users/user-new.php:254
-msgid "User Roles"
-msgstr ""
-
-#: lib/users/user-new.php:255
-msgid ""
-"Here is a basic overview of the different user roles and the permissions "
-"associated with each one:"
-msgstr ""
-
-#: lib/users/user-new.php:257
-msgid ""
-"Subscribers can read comments/comment/receive newsletters, etc. but cannot "
-"create regular site content."
-msgstr ""
-
-#: lib/users/user-new.php:258
-msgid ""
-"Contributors can write and manage their posts but not publish posts or "
-"upload media files."
-msgstr ""
-
-#: lib/users/user-new.php:259
-msgid ""
-"Authors can publish and manage their own posts, and are able to upload files."
-msgstr ""
-
-#: lib/users/user-new.php:260
-msgid ""
-"Editors can publish posts, manage posts as well as manage other people&#8217;"
-"s posts, etc."
-msgstr ""
-
-#: lib/users/user-new.php:261
-msgid "Administrators have access to all the administration features."
-msgstr ""
-
-#: lib/users/user-new.php:268
-msgid ""
-"<a href=\"https://wordpress.org/support/article/users-add-new-screen/"
-"\">Documentation on Adding New Users</a>"
-msgstr ""
-
-#: lib/users/user-new.php:303
-msgid ""
-"Invitation email sent to new user. A confirmation link must be clicked "
-"before their account is created."
-msgstr ""
-
-#: lib/users/user-new.php:306
-msgid ""
-"Invitation email sent to user. A confirmation link must be clicked for them "
-"to be added to your site."
-msgstr ""
-
-#: lib/users/user-new.php:309
-msgid "User has been added to your site."
-msgstr ""
-
-#: lib/users/user-new.php:312
-msgid "Edit user"
-msgstr ""
-
-#: lib/users/user-new.php:318
-msgid "That user is already a member of this site."
-msgstr ""
-
-#: lib/users/user-new.php:321
-msgid "That user could not be added to this site."
-msgstr ""
-
-#: lib/users/user-new.php:324
-msgid "User has been created, but could not be added to this site."
-msgstr ""
-
-#: lib/users/user-new.php:327
-msgid "The requested user does not exist."
-msgstr ""
-
-#: lib/users/user-new.php:330
-msgid "Please enter a valid email address."
-msgstr ""
-
-#: lib/users/user-new.php:335
-msgid "User added."
-msgstr ""
-
-#: lib/users/user-new.php:346 lib/users/user-new.php:385
-#: lib/users/user-new.php:446
-msgid "Add Existing User"
-msgstr ""
-
-#: lib/users/user-new.php:388
-msgid ""
-"Enter the email address of an existing user on this network to invite them "
-"to this site. That person will be sent an email asking them to confirm the "
-"invite."
-msgstr ""
-
-#: lib/users/user-new.php:392
-msgid ""
-"Enter the email address or username of an existing user on this network to "
-"invite them to this site. That person will be sent an email asking them to "
-"confirm the invite."
-msgstr ""
-
-#: lib/users/user-new.php:393
-msgid "Email or Username"
-msgstr ""
-
-#: lib/users/user-new.php:424 lib/users/user-new.php:565
-msgid "Skip Confirmation Email"
-msgstr ""
-
-#: lib/users/user-new.php:427 lib/users/user-new.php:568
-msgid "Add the user without sending an email that requires their confirmation."
-msgstr ""
-
-#: lib/users/user-new.php:456
-msgid "Create a brand new user and add them to this site."
-msgstr ""
-
-#: lib/users/user-new.php:504
-msgid "Password"
-msgstr ""
-
-#: lib/users/user-new.php:510
-msgid "Show password"
-msgstr ""
-
-#: lib/users/user-new.php:529
-msgid "Repeat Password"
-msgstr ""
-
-#: lib/users/user-new.php:539
-msgid "Confirm use of weak password"
-msgstr ""
-
-#: lib/users/user-new.php:544
-msgid "Send User Notification"
-msgstr ""
-
-#: lib/users/user-new.php:547
-msgid "Send the new user an email about their account."
 msgstr ""
 
 #: lib/util-cache.php:103
@@ -8227,49 +7672,49 @@ msgstr ""
 msgid "lbs"
 msgstr ""
 
-#: lib/util.php:565
+#: lib/util.php:592
 msgid ""
 "Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s "
 "(%3$s)."
 msgstr ""
 
-#: lib/util.php:1176
+#: lib/util.php:1203
 msgid "Error reading the %s file for the article sections list."
 msgstr ""
 
-#: lib/util.php:1274
+#: lib/util.php:1301
 msgid "Error reading the %s file for the product categories list."
 msgstr ""
 
-#: lib/util.php:1372
+#: lib/util.php:1399
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1411
+#: lib/util.php:1438
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1599
+#: lib/util.php:1626
 msgid ""
 "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
 "provider to have the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1612
+#: lib/util.php:1639
 msgid ""
 "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:2950
+#: lib/util.php:2977
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:2965
+#: lib/util.php:2992
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -8278,40 +7723,40 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2967
+#: lib/util.php:2994
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3296
+#: lib/util.php:3323
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3299
+#: lib/util.php:3326
 msgctxt "option comment"
 msgid "show these options now"
 msgstr ""
 
-#: lib/util.php:3304
+#: lib/util.php:3331
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3307
+#: lib/util.php:3334
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3638
+#: lib/util.php:3665
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3648
+#: lib/util.php:3675
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 
