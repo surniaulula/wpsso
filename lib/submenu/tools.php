@@ -43,26 +43,9 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			) );
 		}
 
-		protected function show_form_content() {
+		protected function show_post_body_setting_form() {
 
 			$role_label = _x( 'Person', 'user role', 'wpsso' );
-
-			/**
-			 * Add a form to support side metabox open / close functions.
-			 */
-			$menu_hookname = SucomUtil::sanitize_hookname( $this->menu_id );
-
-			echo '<form name="' . $this->p->lca . '" ' .
-				'id="' . $this->p->lca . '_setting_form_' . $menu_hookname . '" ' .
-				'action="options.php" method="post">' . "\n";
-
-			settings_fields( $this->p->lca . '_setting' );
-
-			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
-			wp_nonce_field( 'closedpostboxes', 'closedpostboxesnonce', false );
-			wp_nonce_field( 'meta-box-order', 'meta-box-order-nonce', false );
-
-			echo '</form>', "\n";
 
 			echo '<div id="tools-content">' . "\n";
 

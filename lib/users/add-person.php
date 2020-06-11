@@ -13,9 +13,9 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 
 	class WpssoUsersAddPerson extends WpssoAdmin {
 
-		private $errors        = array();
-		private $messages      = array();
-		private $create_errors = array();
+		private $errors     = array();
+		private $messages   = array();
+		private $add_errors = array();
 
 		public function __construct( &$plugin, $id, $name, $lib, $ext ) {
 
@@ -51,23 +51,16 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				check_admin_referer( 'create-user', '_wpnonce_create-user' );
 	
-				$user_id = $this->create_person();
+				$user_id = $this->add_person();
 
 				if ( is_wp_error( $user_id ) ) {
 
-					$this->create_errors = $user_id;
+					$this->add_errors = $user_id;
 
 				} else {
 
-					if ( current_user_can( 'list_users' ) ) {
+					$redirect = add_query_arg( 'update', 'add' );
 
-						$redirect = 'users.php?update=add&id=' . $user_id;
-
-					} else {
-
-						$redirect = add_query_arg( 'update', 'add', 'user-new.php' );
-					}
-	
 					wp_redirect( $redirect );
 
 					die();
@@ -81,9 +74,11 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->messages[] = __( 'Person added.', 'wpsso' );
 				}
 			}
+
+			wp_enqueue_script( 'user-profile' );
 		}
 
-		protected function show_form_content() {
+		protected function show_post_body_setting_form() {
 
 			if ( ! current_user_can( 'create_users' ) ) {	// Just in case.
 	
@@ -107,15 +102,18 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 			$have_submit = isset( $_POST[ 'createuser' ] );
 
 			foreach ( array_merge( array(
-				'user_login',
-				'first_name',
-				'last_name',
-				'email',
-				'url',
-				'role',
+				'user_login',	// Username.
+				'first_name',	// First name.
+				'last_name',	// Last name.
+				'role',		// Additional role.
+				'email',	// Email.
+				'url',		// Website.
+				'description',	// Biographical info.
 			), array_keys( $contact_methods ) ) as $input ) {
 
-				$attr[ $input ] = $have_submit && isset( $_POST[ $input ] ) ? esc_attr( wp_unslash( $_POST[ $input ] ) ) : '';
+				$attr[ $input ] = $have_submit && isset( $_POST[ $input ] ) ? wp_unslash( $_POST[ $input ] ) : '';
+
+				$attr[ $input ] = 'description' === $input ? esc_textarea( $attr[ $input ] ) : esc_attr( $attr[ $input ] );
 			}
 
 			if ( empty( $attr[ 'role' ] ) ) {
@@ -144,8 +142,12 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 					<th scope="row"><label for="user_login"><?php _e( 'Username' ); ?>
 						<span class="description"><?php _e( '(required)' ); ?></span></label></th>
 
-					<td><input name="user_login" type="text" id="user_login" value="<?php echo $attr[ 'user_login' ]; ?>"
-						aria-required="true" autocapitalize="none" autocorrect="off" maxlength="60" /></td>
+					<td>
+						<input name="user_login" type="text" id="user_login" value="<?php echo $attr[ 'user_login' ]; ?>"
+							aria-required="true" autocapitalize="none" autocorrect="off" maxlength="60" />
+						<p><span class="description"><?php _e( 'Usernames cannot be changed (without a plugin).',
+							'wpsso' ); ?></span></p>
+					</td>
 					
 				</tr>
 
@@ -192,6 +194,12 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				</tr>
 
+			</table>
+
+			<h2><?php _e( 'Contact Info', 'wpsso' ); ?></h2>
+
+			<table class="form-table" role="presentation">
+
 				<tr class="form-field">
 
 					<th scope="row"><label for="email"><?php _e( 'Email' ); ?></label></th>
@@ -224,6 +232,19 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			</table>
 			
+			<h2><?php _e( 'About the person', 'wpsso' ); ?></h2>
+
+			<table class="form-table" role="presentation">
+
+				<tr class="user-description-wrap">
+				
+					<th><label for="description"><?php _e( 'Biographical Info' ); ?></label></th> 
+					
+					<td><textarea name="description" id="description" rows="5" cols="30"><?php echo $attr[ 'description' ] ?></textarea></td>
+				</tr>
+
+			</table>
+
 			<?php submit_button( __( 'Add Person', 'wpsso' ), 'primary', 'createuser', true, array( 'id' => 'createusersub' ) ); ?> 
 
 			</form>
@@ -231,9 +252,11 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 			</div><!-- #add-person-content --><?php
 		}
 
-		private function create_person() {
+		private function add_person() {
 
 			$user_id = 0;
+
+			$password = wp_generate_password( 24 );
 
 			return edit_user( $user_id );
 		}
@@ -262,9 +285,9 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
-			if ( ! empty( $this->create_errors ) && is_wp_error( $this->create_errors ) ) {
+			if ( ! empty( $this->add_errors ) && is_wp_error( $this->add_errors ) ) {
 			
-				foreach ( $this->create_errors->get_error_messages() as $message ) {
+				foreach ( $this->add_errors->get_error_messages() as $message ) {
 
 					echo '<div class="error">';
 					echo '<p>' . $message . '</p>';

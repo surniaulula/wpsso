@@ -1351,13 +1351,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				echo '<div id="post-body-content" class="no-sidebar-content">' . "\n";
 			}
 
-			$this->show_form_content(); ?>
+			$this->show_post_body_setting_form();
 
-						</div><!-- #post-body-content -->
-					</div><!-- #post-body -->
-				</div><!-- #poststuff -->
-			</div><!-- .wrap -->
+			echo '</div><!-- #post-body-content -->' . "\n";
+			echo '</div><!-- #post-body -->' . "\n";
+			echo '</div><!-- #poststuff -->' . "\n";
+			echo '</div><!-- .wrap -->' . "\n";
 
+			?>
 			<script type="text/javascript">
 
 				jQuery( document ).ready(
@@ -1401,7 +1402,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $url;
 		}
 
-		protected function show_form_content() {
+		protected function show_post_body_setting_form() {
 
 			$menu_hookname = SucomUtil::sanitize_hookname( $this->menu_id );
 			$form_css_id   = $this->p->lca . '_setting_form_' . $menu_hookname;

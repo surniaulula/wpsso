@@ -61,7 +61,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			add_filter( 'user_contactmethods', array( $this, 'add_contact_methods' ), 20, 2 );
 
-			add_filter( 'user_' . $cm_fb_name . '_label', array( $this, 'fb_contact_label' ), 20, 1 );
+			add_filter( 'user_' . $cm_fb_name . '_label', array( $this, 'modify_fb_contact_label' ), 20, 1 );
 
 			add_action( $this->p->lca . '_add_person_role', array( $this, 'add_person_role' ), 10, 1 );	// For single scheduled task.
 
@@ -845,9 +845,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $fields;
 		}
 
-		public function fb_contact_label( $label ) {
-			return $label . '<br/><span class="description">' . 
-				__( '(not a Facebook Page URL)', 'wpsso' ) . '</span>';
+		public function modify_fb_contact_label( $label ) {
+
+			return $label . '<br/><span class="description" style="font-weight:normal;">' . 
+				__( '(not a Facebook Pages URL)', 'wpsso' ) . '</span>';
 		}
 
 		public function sanitize_submit_cm( $user_id ) {
