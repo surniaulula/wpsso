@@ -308,7 +308,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.9.0-dev.1 (2020/06/10)**
+**Version 7.9.0-dev.2 (2020/06/11)**
 
 * **New Features**
 	* Added a new Users &gt; Add Person page to create new persons.
@@ -557,9 +557,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 7.9.0-dev.1 =
+= 7.9.0-dev.2 =
 
-(2020/06/10) Added a new Users &gt; Add Person page to create new persons. Added a new "Book ISBN" option in the Document SSO metabox.
+(2020/06/11) Added a new Users &gt; Add Person page to create new persons. Added a new "Book ISBN" option in the Document SSO metabox.
 
 = 7.8.0 =
 
