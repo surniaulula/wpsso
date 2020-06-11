@@ -57,8 +57,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					return 'not_blank';
 
-					break;
-
 				/**
 				 * Optimize and check for add meta tags options first.
 				 */
@@ -67,8 +65,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					return 'checkbox';
 
-					break;
-
 				/**
 				 * Empty string or must include at least one HTML tag.
 				 */
@@ -76,16 +72,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					return 'html';
 
-					break;
-
 				/**
 				 * A regular expression.
 				 */
 				case ( preg_match( '/_preg$/', $base_key ) ? true : false ):
 
 					return 'preg';
-
-					break;
 
 				/**
 				 * JS and CSS code (cannot be blank).
@@ -96,8 +88,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					return 'code';
 
-					break;
-
 				/**
 				 * Gravity View field IDs.
 				 */
@@ -106,8 +96,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'gv_id_img':	// Post Image Field ID.
 
 					return 'blank_int';
-
-					break;
 
 				/**
 				 * Cast as integer (zero and -1 is ok).
@@ -122,8 +110,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					return 'integer';
 
-					break;
-
 				/**
 				 * Numeric options that must be positive (1 or more).
 				 */
@@ -132,8 +118,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case ( preg_match( '/_(len|warn)$/', $base_key ) ? true : false ):
 
 					return 'pos_int';
-
-					break;
 
 				/**
 				 * Must be numeric (blank and zero are ok).
@@ -155,8 +139,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					return 'blank_num';
 
-					break;
-
 				/**
 				 * Empty string or an image ID.
 				 */
@@ -175,16 +157,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					return 'img_width';
 
-					break;
-
 				/**
 				 * Image height, subject to minimum value (typically, at least 200px).
 				 */
 				case ( preg_match( '/_img_height$/', $base_key ) ? true : false ):
 
 					return 'img_height';
-
-					break;
 
 				/**
 				 * Must be texturized.
@@ -193,16 +171,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					return 'textured';
 
-					break;
-
 				/**
 				 * Empty or alpha-numeric uppercase (hyphens are allowed as well).
 				 */
 				case ( preg_match( '/_tid$/', $base_key ) ? true : false ):
 
 					return 'auth_id';
-
-					break;
 
 				/**
 				 * Empty or alpha-numeric (upper or lower case), plus underscores.
@@ -214,8 +188,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case ( preg_match( '/_api_key$/', $base_key ) ? true : false ):
 
 					return 'api_key';
-
-					break;
 
 				/**
 				 * Text strings that can be blank (line breaks are removed).
@@ -260,8 +232,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					return 'one_line';
 
-					break;
-
 				/**
 				 * Options that cannot be blank.
 				 */
@@ -287,8 +257,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					return 'not_blank';
 
-					break;
-
 				/**
 				 * twitter-style usernames (prepend with an at).
 				 */
@@ -296,16 +264,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					return 'at_name';
 
-					break;
-
 				/**
 				 * Strip leading urls off facebook usernames.
 				 */
 				case 'fb_admins':
 
 					return 'url_base';
-
-					break;
 
 				/**
 				 * Empty string or a URL.
@@ -332,8 +296,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					return 'url';
 
-					break;
-
 				case 'og_def_img_url':
 				case 'og_img_url':
 				case 'schema_banner_url':
@@ -344,16 +306,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					return 'img_url';
 
-					break;
-
 				/**
 				 * CSS color code.
 				 */
 				case ( false !== strpos( $base_key, '_color_' ) ? true : false ):
 
 					return 'color';
-
-					break;
 			}
 
 			return $type;
