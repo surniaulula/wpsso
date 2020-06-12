@@ -309,7 +309,7 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 			$user->user_login = isset( $_POST[ 'user_login' ] ) ?
 				$user->user_login = sanitize_user( wp_unslash( $_POST[ 'user_login' ] ), $strict = true ) : '';
 
-			$user->user_pass = wp_generate_password( 24 );
+			$user->user_pass = wp_generate_password( $length = 24, $special_chars = true, $extra_special_chars = false );
 			
 			$user->first_name = isset( $_POST[ 'first_name' ] ) ?
 				$user->first_name = sanitize_text_field( $_POST[ 'first_name' ] ) : '';
