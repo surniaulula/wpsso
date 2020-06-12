@@ -12,7 +12,7 @@ Requires PHP: 5.6
 Requires At Least: 4.2
 Tested Up To: 5.4.2
 WC Tested Up To: 4.2.0
-Stable Tag: 7.8.0
+Stable Tag: 7.9.0
 
 Make sure your content looks great on all social and search sites - no matter how your URLs are crawled, shared, re-shared, posted, or embedded.
 
@@ -561,8 +561,4 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 7.9.0 =
 
 (2020/06/12) Added a new Users &gt; Add a Person page to create new persons. Added a new "Book ISBN" option in the Document SSO metabox.
-
-= 7.8.0 =
-
-(2020/06/04) Minor code optimization when getting folder and file path information for WPSSO add-ons. Fixed missing Document SSO metabox in term editing pages for taxonomies registered with 'show_in_menu' as false.
 
