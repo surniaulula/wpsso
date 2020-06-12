@@ -40,11 +40,8 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! current_user_can( 'create_users' ) ) {	// Just in case.
 	
-				wp_die( 
-					'<h1>' . __( 'You need a higher level of permission.' ) . '</h1>' .
-					'<p>' . __( 'Sorry, you are not allowed to create users.' ) . '</p>',
-					403
-				);
+				wp_die( '<h1>' . __( 'You need a higher level of permission.' ) . '</h1>' .
+					'<p>' . __( 'Sorry, you are not allowed to create users.' ) . '</p>', 403 );
 			}
 
 			if ( isset( $_REQUEST[ 'action' ] ) && 'createuser' === $_REQUEST[ 'action' ] ) {
@@ -82,18 +79,15 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! current_user_can( 'create_users' ) ) {	// Just in case.
 	
-				wp_die( 
-					'<h1>' . __( 'You need a higher level of permission.' ) . '</h1>' .
-					'<p>' . __( 'Sorry, you are not allowed to create users.' ) . '</p>',
-					403
-				);
+				wp_die( '<h1>' . __( 'You need a higher level of permission.' ) . '</h1>' .
+					'<p>' . __( 'Sorry, you are not allowed to create users.' ) . '</p>', 403 );
 			}
 
 			$this->show_notices();
 
 			$contact_methods = wp_get_user_contact_methods();
-			$editable_roles  = array( 'none' => array( 'name' => _x( '[None]', 'option value', 'wpsso' ) ) );
-			$editable_roles  += array_reverse( get_editable_roles() );
+
+			$editable_roles = array( 'none' => array( 'name' => _x( '[None]', 'option value', 'wpsso' ) ) ) + array_reverse( get_editable_roles() );
 
 			unset( $editable_roles[ 'person' ] );
 
@@ -105,7 +99,7 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 				'user_login',	// Username.
 				'first_name',	// First name.
 				'last_name',	// Last name.
-				'role',		// Additional role.
+				'add_role',	// Additional role.
 				'email',	// Email.
 				'url',		// Website.
 				'description',	// Biographical info.
@@ -116,9 +110,9 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 				$attr[ $input ] = 'description' === $input ? esc_textarea( $attr[ $input ] ) : esc_attr( $attr[ $input ] );
 			}
 
-			if ( empty( $attr[ 'role' ] ) ) {
+			if ( empty( $attr[ 'add_role' ] ) ) {
 
-				$attr[ 'role' ] = get_option( 'default_role' );
+				$attr[ 'add_role' ] = 'none';
 			}
 
 			?>
@@ -175,19 +169,19 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 					
 					<td><select name="role" id="role"><?php 
 
-						foreach ( $editable_roles as $role => $details ) {
+						foreach ( $editable_roles as $add_role => $details ) {
 
-							$role = esc_attr( $role );
+							$add_role = esc_attr( $add_role );
 
 							$name = translate_user_role( $details[ 'name' ] );
 
 							echo '<option';
 
-							if ( $role === $attr[ 'role' ] ) {
+							if ( $add_role === $attr[ 'add_role' ] ) {
 								echo ' selected="selected"';
 							}
 
-							echo ' value="' . $role . '">' . $name . '</option>"';
+							echo ' value="' . $add_role . '">' . $name . '</option>"';
 						}
 
 					?></select></td>
@@ -216,7 +210,7 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				</tr>
 
-				<?php foreach ( wp_get_user_contact_methods() as $name => $desc ) {
+				<?php foreach ( $contact_methods as $name => $desc ) {
 				
 					echo '<tr class="user-' . $name . '-wrap">';
 
@@ -226,7 +220,7 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					echo '</label></th>';
 
-					echo '<td><input type="text" name="' . $name . '" id="' . $name . '" value="" class="regular-text" /></td></tr>';
+					echo '<td><input type="text" name="' . $name . '" id="' . $name . '" value="' . $attr[ $name ] . '" class="regular-text" /></td></tr>';
 
 				} ?>
 
@@ -250,15 +244,6 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 			</form>
 
 			</div><!-- #add-person-content --><?php
-		}
-
-		private function add_person() {
-
-			$user_id = 0;
-
-			$password = wp_generate_password( 24 );
-
-			return edit_user( $user_id );
 		}
 
 		private function show_notices() {
@@ -294,6 +279,152 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 					echo '</div>';
 				}
 			}
+		}
+
+		private function add_person() {
+
+			if ( ! current_user_can( 'create_users' ) ) {	// Just in case.
+	
+				wp_die( '<h1>' . __( 'You need a higher level of permission.' ) . '</h1>' .
+					'<p>' . __( 'Sorry, you are not allowed to create users.' ) . '</p>', 403 );
+			}
+
+			$contact_methods = wp_get_user_contact_methods();
+
+			$illegal_logins = (array) apply_filters( 'illegal_user_logins', array() );
+
+			$allowed_add_role = '';
+
+			/**
+			 * Create a user object.
+			 */
+			$user = new stdClass;
+
+			$user->user_login = isset( $_POST[ 'user_login' ] ) ?
+				$user->user_login = sanitize_user( wp_unslash( $_POST[ 'user_login' ] ), $strict = true ) : '';
+
+			$user->user_pass = wp_generate_password( 24 );
+			
+			$user->first_name = isset( $_POST[ 'first_name' ] ) ?
+				$user->first_name = sanitize_text_field( $_POST[ 'first_name' ] ) : '';
+			
+			$user->last_name = isset( $_POST[ 'last_name' ] ) ?
+				$user->last_name = sanitize_text_field( $_POST[ 'last_name' ] ) : '';
+			
+			$user->role = 'person';
+
+			$user->user_email = isset( $_POST[ 'email' ] ) ?
+				$user->user_email = sanitize_text_field( wp_unslash( $_POST[ 'email' ] ) ) : '';
+
+			if ( empty( $_POST[ 'url' ] ) || 'http://' === $_POST[ 'url' ] ) {
+
+				$user->user_url = '';
+
+			} else {
+
+				$protocols = implode( '|', array_map( 'preg_quote', wp_allowed_protocols() ) );
+
+				$user->user_url = esc_url_raw( $_POST[ 'url' ] );
+
+				$user->user_url = preg_match( '/^(' . $protocols . '):/is', $user->user_url ) ?
+					$user->user_url : 'http://' . $user->user_url;
+			}
+
+			$user->description = isset( $_POST[ 'description' ] ) ?
+				$user->description = trim( $_POST[ 'description' ] ) : '';
+
+			foreach ( $contact_methods as $method => $name ) {
+
+				if ( isset( $_POST[ $method ] ) ) {
+
+					$user->$method = sanitize_text_field( $_POST[ $method ] );
+				}
+			}
+
+			$errors = new WP_Error();
+
+			/**
+			 * Check the user login.
+			 */
+			if ( empty( $user->user_login ) ) {
+
+				// translators: Please ignore - translation uses a different text domain.
+				$errors->add( 'user_login', __( '<strong>Error</strong>: Please enter a username.' ),
+					array( 'form-field' => 'user_login' ) );
+
+			} elseif ( isset( $_POST[ 'user_login' ] ) && ! validate_username( $_POST[ 'user_login' ] ) ) {
+
+				// translators: Please ignore - translation uses a different text domain.
+				$errors->add( 'user_login', __( '<strong>Error</strong>: This username is invalid because it uses illegal characters. Please enter a valid username.' ),
+					array( 'form-field' => 'user_login' ) );
+
+			} elseif ( username_exists( $user->user_login ) ) {
+
+				// translators: Please ignore - translation uses a different text domain.
+				$errors->add( 'user_login', __( '<strong>Error</strong>: This username is already registered. Please choose another one.' ),
+					array( 'form-field' => 'user_login' ) );
+
+			} elseif ( in_array( strtolower( $user->user_login ), array_map( 'strtolower', $illegal_logins ), $strict = true ) ) {
+
+				// translators: Please ignore - translation uses a different text domain.
+				$errors->add( 'invalid_username', __( '<strong>Error</strong>: Sorry, that username is not allowed.' ),
+					array( 'form-field' => 'user_login' ) );
+			}
+
+			/**
+			 * Check the additional role.
+			 */
+			if ( ! empty( $_POST[ 'add_role' ] ) && $_POST[ 'add_role' ] !== 'none' ) {
+
+				$add_role = sanitize_text_field( $_POST[ 'add_role' ] );
+			
+				$editable_roles = get_editable_roles();
+
+				if ( current_user_can( 'promote_users' ) && ! empty( $editable_roles[ $add_role ] ) ) {
+
+					 $allowed_add_role = $add_role;
+
+				} else {
+
+					$errors->add( 'cannot_promote', __( '<strong>Error</strong>: You are not allowed to give users that role.', 'wpsso' ),
+						array( 'form-field' => 'add_role' ) );
+				}
+			}
+
+			/**
+			 * Check the email address.
+			 */
+			if ( ! empty( $user->user_email ) ) {
+
+				if ( ! is_email( $user->user_email ) ) {
+
+					// translators: Please ignore - translation uses a different text domain.
+					$errors->add( 'invalid_email', __( '<strong>Error</strong>: The email address isn&#8217;t correct.' ),
+						array( 'form-field' => 'email' ) );
+
+				} elseif ( email_exists( $user->user_email ) ) {
+
+					// translators: Please ignore - translation uses a different text domain.
+					$errors->add( 'email_exists', __( '<strong>Error</strong>: This email is already registered, please choose another one.' ),
+						array( 'form-field' => 'email' ) );
+				}
+			}
+
+			if ( $errors->has_errors() ) {
+
+				return $errors;
+			}
+
+			$user_id = wp_insert_user( $user );
+
+			if ( ! empty( $allowed_add_role ) ) {
+
+				$user_obj = new WP_User( $user_id );
+
+				$user_obj->add_role( $allowed_add_role );
+			}
+
+			return $user_id;
 		}
 	}
 }

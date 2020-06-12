@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 7.9.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 7.9.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2042,7 +2042,7 @@ msgstr ""
 #: lib/gettext-config.php:133 lib/gettext-config.php:135
 #: lib/gettext-config.php:208 lib/gettext-config.php:211
 #: lib/gettext-config.php:231 lib/gettext-config.php:240
-#: lib/users/add-person.php:95
+#: lib/users/add-person.php:90
 msgctxt "option value"
 msgid "[None]"
 msgstr ""
@@ -5603,7 +5603,7 @@ msgid ""
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/messages.php:2211 lib/users/add-person.php:199
+#: lib/messages.php:2211 lib/users/add-person.php:193
 msgid "Contact Info"
 msgstr ""
 
@@ -7487,61 +7487,103 @@ msgstr ""
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 
-#: lib/users/add-person.php:44 lib/users/add-person.php:86
+#: lib/users/add-person.php:43 lib/users/add-person.php:82
+#: lib/users/add-person.php:288
 msgid "You need a higher level of permission."
 msgstr ""
 
-#: lib/users/add-person.php:45 lib/users/add-person.php:87
+#: lib/users/add-person.php:44 lib/users/add-person.php:83
+#: lib/users/add-person.php:289
 msgid "Sorry, you are not allowed to create users."
 msgstr ""
 
-#: lib/users/add-person.php:74
+#: lib/users/add-person.php:71
 msgid "Person added."
 msgstr ""
 
-#: lib/users/add-person.php:142
+#: lib/users/add-person.php:136
 msgid "Username"
 msgstr ""
 
-#: lib/users/add-person.php:143 lib/users/add-person.php:157
-#: lib/users/add-person.php:166
+#: lib/users/add-person.php:137 lib/users/add-person.php:151
+#: lib/users/add-person.php:160
 msgid "(required)"
 msgstr ""
 
-#: lib/users/add-person.php:148
+#: lib/users/add-person.php:142
 msgid "Usernames cannot be changed (without a plugin)."
 msgstr ""
 
-#: lib/users/add-person.php:156
+#: lib/users/add-person.php:150
 msgid "First Name"
 msgstr ""
 
-#: lib/users/add-person.php:165
+#: lib/users/add-person.php:159
 msgid "Last Name"
 msgstr ""
 
-#: lib/users/add-person.php:174
+#: lib/users/add-person.php:168
 msgid "Additional Role"
 msgstr ""
 
-#: lib/users/add-person.php:205
+#: lib/users/add-person.php:199
 msgid "Email"
 msgstr ""
 
-#: lib/users/add-person.php:213
+#: lib/users/add-person.php:207
 msgid "Website"
 msgstr ""
 
-#: lib/users/add-person.php:235
+#: lib/users/add-person.php:229
 msgid "About the person"
 msgstr ""
 
-#: lib/users/add-person.php:241
+#: lib/users/add-person.php:235
 msgid "Biographical Info"
 msgstr ""
 
-#: lib/users/add-person.php:248
+#: lib/users/add-person.php:242
 msgid "Add Person"
+msgstr ""
+
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/users/add-person.php:352
+msgid "<strong>Error</strong>: Please enter a username."
+msgstr ""
+
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/users/add-person.php:358
+msgid ""
+"<strong>Error</strong>: This username is invalid because it uses illegal "
+"characters. Please enter a valid username."
+msgstr ""
+
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/users/add-person.php:364
+msgid ""
+"<strong>Error</strong>: This username is already registered. Please choose "
+"another one."
+msgstr ""
+
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/users/add-person.php:370
+msgid "<strong>Error</strong>: Sorry, that username is not allowed."
+msgstr ""
+
+#: lib/users/add-person.php:389
+msgid "<strong>Error</strong>: You are not allowed to give users that role."
+msgstr ""
+
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/users/add-person.php:402
+msgid "<strong>Error</strong>: The email address isn&#8217;t correct."
+msgstr ""
+
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/users/add-person.php:408
+msgid ""
+"<strong>Error</strong>: This email is already registered, please choose "
+"another one."
 msgstr ""
 
 #: lib/util-cache.php:103
