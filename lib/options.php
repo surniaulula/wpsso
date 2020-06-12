@@ -1036,7 +1036,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		/**
 		 * Save both options and site options.
 		 */
-		public function save_options( $options_name, &$opts, $network = false, $options_changed = false ) {
+		public function save_options( $options_name, array $opts, $network = false, $options_changed = false ) {
 
 			/**
 			 * Make sure we have something to work with.

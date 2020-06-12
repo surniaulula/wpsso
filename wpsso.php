@@ -232,6 +232,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 								case 'empty':	// Blank string, null, false, or 0.
 
 									if ( empty( $this->options[ $key ] ) ) {
+
 										$this->options[ $key ] = $this->site_options[ $key ];
 									}
 
@@ -242,6 +243,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 						$constant_name = 'WPSSO_ID_' . $blog_id . '_OPT_' . strtoupper( $key );
 
 						if ( isset( $defined_constants[ 'user' ][ $constant_name ] ) ) {
+
 							$this->options[ $key ] = $defined_constants[ 'user' ][ $constant_name ];
 						}
 					}
