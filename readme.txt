@@ -311,7 +311,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 7.9.0-b.1 (2020/06/12)**
 
 * **New Features**
-	* Added a new Users &gt; Add Person page to create new persons.
+	* Added a new Users &gt; Add a Person page to create new persons.
 	* Added a new "Book ISBN" option in the Document SSO metabox.
 	* Added a new "Book ISBN Custom Field" option in the Advanced Settings page.
 * **Improvements**
@@ -560,7 +560,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 7.9.0-b.1 =
 
-(2020/06/12) Added a new Users &gt; Add Person page to create new persons. Added a new "Book ISBN" option in the Document SSO metabox.
+(2020/06/12) Added a new Users &gt; Add a Person page to create new persons. Added a new "Book ISBN" option in the Document SSO metabox.
 
 = 7.8.0 =
 
