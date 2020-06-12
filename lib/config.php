@@ -186,7 +186,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'tools'           => 'Tools and Actions',
 						),
 						'users' => array(
-							'add-person' => 'Add Person',
+							'add-person' => 'Add a Person',
 						),
 					),
 				),

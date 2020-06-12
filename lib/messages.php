@@ -240,7 +240,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$cf_frags = $this->get_cf_tooltip_fragments( preg_replace( '/^tooltip-meta-/', '', $msg_key ) );
 
-							$text = sprintf( __( 'The value of %1$s can be used in meta tags and Schema markup.', 'wpsso' ), $cf_frags[ 'desc' ] );
+							$text = sprintf( __( 'The value of %s can be used in meta tags and Schema markup.', 'wpsso' ), $cf_frags[ 'desc' ] );
 
 						 	break;
 
@@ -263,7 +263,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							if ( ! empty( $cf_frags ) ) {	// Just in case.
 
-								$text = sprintf( __( 'The value of %1$s can be used in meta tags and Schema markup for simple products.', 'wpsso' ), $cf_frags[ 'desc' ] ) . ' ';
+								$text = sprintf( __( 'The value of %s can be used in meta tags and Schema markup for simple products.', 'wpsso' ), $cf_frags[ 'desc' ] ) . ' ';
 
 								$text .= __( 'When e-commerce product variations are available, the value from each variation will be used instead.', 'wpsso' ) . ' ';
 

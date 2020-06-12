@@ -40,7 +40,9 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! current_user_can( 'create_users' ) ) {	// Just in case.
 	
+				// translators: Please ignore - translation uses a different text domain.
 				wp_die( '<h1>' . __( 'You need a higher level of permission.' ) . '</h1>' .
+					// translators: Please ignore - translation uses a different text domain.
 					'<p>' . __( 'Sorry, you are not allowed to create users.' ) . '</p>', 403 );
 			}
 
@@ -79,7 +81,9 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! current_user_can( 'create_users' ) ) {	// Just in case.
 	
+				// translators: Please ignore - translation uses a different text domain.
 				wp_die( '<h1>' . __( 'You need a higher level of permission.' ) . '</h1>' .
+					// translators: Please ignore - translation uses a different text domain.
 					'<p>' . __( 'Sorry, you are not allowed to create users.' ) . '</p>', 403 );
 			}
 
@@ -165,7 +169,7 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 				
 				<tr class="form-field">
 				
-					<th scope="row"><label for="role"><?php _e( 'Additional Role' ); ?></label></th>
+					<th scope="row"><label for="role"><?php _e( 'Additional Role', 'wpsso' ); ?></label></th>
 					
 					<td><select name="role" id="role"><?php 
 
@@ -239,7 +243,7 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			</table>
 
-			<?php submit_button( __( 'Add Person', 'wpsso' ), 'primary', 'createuser', true, array( 'id' => 'createusersub' ) ); ?> 
+			<?php submit_button( __( 'Add the Person', 'wpsso' ), 'primary', 'createuser', true, array( 'id' => 'createusersub' ) ); ?> 
 
 			</form>
 
@@ -285,7 +289,9 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! current_user_can( 'create_users' ) ) {	// Just in case.
 	
+				// translators: Please ignore - translation uses a different text domain.
 				wp_die( '<h1>' . __( 'You need a higher level of permission.' ) . '</h1>' .
+					// translators: Please ignore - translation uses a different text domain.
 					'<p>' . __( 'Sorry, you are not allowed to create users.' ) . '</p>', 403 );
 			}
 
