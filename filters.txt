@@ -219,8 +219,6 @@
 
 'wpsso_save_post_options' ( $opts, $post_id, $rel_id, $mod )
 
-'wpsso_save_site_options' ( $opts )
-
 'wpsso_save_term_options' ( $opts, $term_id, $term_tax_id, $mod )
 
 'wpsso_save_user_options' ( $opts, $term_id, false, $mod )

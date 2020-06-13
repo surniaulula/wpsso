@@ -917,25 +917,24 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			/**
-			 * Get default values, including css for default stylesheets.
-			 */
-			$def_opts = $this->p->opt->get_defaults();
-
-			/**
 			 * Clear any old notices for the current user before sanitation checks.
 			 */
 			$this->p->notice->clear();
+
+			$options_name = WPSSO_OPTIONS_NAME;
+
+			$def_opts = $this->p->opt->get_defaults();
 
 			$opts = SucomUtil::restore_checkboxes( $opts );
 
 			$opts = array_merge( $this->p->options, $opts );
 
-			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network = false );	// Sanitation updates image width/height info.
+			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network = false );
 
 			/**
 			 * $doing_upgrade added in WPSSO Core v4.4.0.
 			 */
-			$opts = apply_filters( $this->p->lca . '_save_options', $opts, WPSSO_OPTIONS_NAME, $network = false, $doing_upgrade = false );
+			$opts = apply_filters( $this->p->lca . '_save_options', $opts, $options_name, $network = false, $doing_upgrade = false );
 
 			/**
 			 * Update the current options with any changes.
@@ -978,6 +977,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function save_site_options() {
 
 			if ( ! $page = SucomUtil::get_request_value( 'page', 'POST' ) ) {	// Uses sanitize_text_field.
+
 				$page = key( $this->p->cf[ '*' ][ 'lib' ][ 'sitesubmenu' ] );
 			}
 
@@ -1013,17 +1013,22 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 */
 			$this->p->notice->clear();
 
+			$options_name = WPSSO_SITE_OPTIONS_NAME;
+
 			$def_opts = $this->p->opt->get_site_defaults();
 
-			$opts = empty( $_POST[ WPSSO_SITE_OPTIONS_NAME ] ) ? $def_opts : SucomUtil::restore_checkboxes( $_POST[ WPSSO_SITE_OPTIONS_NAME ] );
+			$opts = SucomUtil::restore_checkboxes( $_POST[ $options_name ] );
 
 			$opts = array_merge( $this->p->site_options, $opts );
 
 			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network = true );
 
-			$opts = apply_filters( $this->p->lca . '_save_site_options', $opts, $def_opts, $network = true );
+			/**
+			 * $doing_upgrade added in WPSSO Core v4.4.0.
+			 */
+			$opts = apply_filters( $this->p->lca . '_save_options', $opts, $options_name, $network = true, $doing_upgrade = false );
 
-			update_site_option( WPSSO_SITE_OPTIONS_NAME, $opts );
+			update_site_option( $options_name, $opts );
 
 			$this->p->notice->upd( '<strong>' . __( 'Plugin settings have been saved.', 'wpsso' ) . '</strong>' );
 
