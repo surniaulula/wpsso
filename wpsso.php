@@ -256,7 +256,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 */
 		public function set_objects( $activate = false ) {
 
-			$is_admin = is_admin() ? true : false;	// Only check once.
+			$is_admin = is_admin() ? true : false;
 
 			$network = is_multisite() ? true : false;
 
