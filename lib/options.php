@@ -1056,12 +1056,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			$latest_version  = $this->p->cf[ 'opt' ][ 'version' ];
 
-			/**
-			 * $doing_upgrade added in WPSSO Core v4.4.0.
-			 */
 			$doing_upgrade = ! $is_new_options && ! $options_changed && $current_version === $latest_version ? false : true;
 
-			$opts = apply_filters( $this->p->lca . '_save_options', $opts, $options_name, $network, $doing_upgrade );
+			$opts = apply_filters( $this->p->lca . '_save_setting_options', $opts, $network, $doing_upgrade );
 
 			/**
 			 * Save the plugin version and options version.
@@ -1082,12 +1079,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( $network ) {
 
 				if ( $saved = update_site_option( $options_name, $opts ) ) {	// Auto-creates options with autoload no.
+
 					$this->p->site_options = $opts;				// Update the current plugin options array.
 				}
 
 			} else {
 
 				if ( $saved = update_option( $options_name, $opts ) ) {		// Auto-creates options with autoload yes.
+
 					$this->p->options = $opts;				// Update the current plugin options array.
 				}
 			}
