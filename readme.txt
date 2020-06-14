@@ -308,6 +308,22 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 7.10.0-dev.1 (2020/06/14)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Removed the 'wpsso_save_options' and 'wpsso_save_site_options' filters.
+	* Added a new 'wpsso_save_setting_options' filter:
+		* 'wpsso_save_setting_options' ( $opts, $network, $doing_upgrade )
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.2.
+
 **Version 7.9.0 (2020/06/12)**
 
 * **New Features**
@@ -557,6 +573,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 7.10.0-dev.1 =
+
+(2020/06/14) Replaced the 'wpsso_save_options' and 'wpsso_save_site_options' filters with 'wpsso_save_setting_options'.
 
 = 7.9.0 =
 
