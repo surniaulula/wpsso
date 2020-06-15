@@ -1,4 +1,4 @@
-=== WPSSO Core (The Complete Meta Tag and Schema Markup Solution) ===
+=== WPSSO Core ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -19,8 +19,6 @@ Make sure your content looks great on all social and search sites - no matter ho
 == Description ==
 
 <p style="margin:0;"><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
-
-<h3>The Complete Meta Tag and Schema Markup Solution</h3>
 
 **Make sure your content looks great on all social and search sites - no matter how your URLs are crawled, shared, re-shared, posted, or embedded:**
 
