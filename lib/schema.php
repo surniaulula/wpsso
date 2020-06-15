@@ -1388,6 +1388,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					$class_type_ids = array(
 						'book'           => 'book',
+						'book_audio'     => 'book.audio',
 						'creative_work'  => 'creative.work',
 						'course'         => 'course',
 						'event'          => 'event',
