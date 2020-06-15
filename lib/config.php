@@ -2382,6 +2382,17 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/**
+				 * See https://schema.org/BookFormatType.
+				 */
+				'book_format' => array(
+					'AudiobookFormat' => 'Audiobook',
+					'EBook'           => 'eBook',
+					'GraphicNovel'    => 'Graphic Novel',
+					'Hardcover'       => 'Hardcover',
+					'Paperback '      => 'Paperback',
+				),
+
+				/**
 				 * See https://developers.google.com/search/docs/data-types/job-postings.
 				 */
 				'employment_type' => array(

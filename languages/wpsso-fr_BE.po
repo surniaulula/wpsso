@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 7.9.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-06-12 07:49-0700\n"
+"POT-Creation-Date: 2020-06-12 07:51-0700\n"
 "PO-Revision-Date: 2020-06-12 07:51-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
@@ -4900,7 +4900,7 @@ msgid "Refer to the <a href=\"%s\">WooCommerce integration notes</a> for informa
 msgstr "Lisez les <a href=\"%s\">notes d'intégration WooCommerce</a> pour plus d'informations sur la configuration d'attributs de produit et champs personnalisés."
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/messages.php:2211 lib/users/add-person.php:198
+#: lib/messages.php:2211 lib/users/add-person.php:197
 msgid "Contact Info"
 msgstr "Informations de contacts"
 
@@ -6602,13 +6602,13 @@ msgstr "Le rôle %1$s a été supprimé de %2$d créateurs de contenu."
 
 #. translators: Please ignore - translation uses a different text domain.
 #: lib/users/add-person.php:44 lib/users/add-person.php:85
-#: lib/users/add-person.php:294
+#: lib/users/add-person.php:293
 msgid "You need a higher level of permission."
 msgstr "Vous devez avoir des droits supérieurs."
 
 #. translators: Please ignore - translation uses a different text domain.
 #: lib/users/add-person.php:46 lib/users/add-person.php:87
-#: lib/users/add-person.php:296
+#: lib/users/add-person.php:295
 msgid "Sorry, you are not allowed to create users."
 msgstr "Désolé, vous n’avez pas l’autorisation de créer des utilisateurs."
 
@@ -6616,82 +6616,82 @@ msgstr "Désolé, vous n’avez pas l’autorisation de créer des utilisateurs.
 msgid "Person added."
 msgstr "Personne ajoutée."
 
-#: lib/users/add-person.php:141
+#: lib/users/add-person.php:140
 msgid "Username"
 msgstr "Identifiant"
 
-#: lib/users/add-person.php:142 lib/users/add-person.php:156
-#: lib/users/add-person.php:165
+#: lib/users/add-person.php:141 lib/users/add-person.php:155
+#: lib/users/add-person.php:164
 msgid "(required)"
 msgstr "(requis)"
 
-#: lib/users/add-person.php:147
+#: lib/users/add-person.php:146
 msgid "Usernames cannot be changed (without a plugin)."
 msgstr "Les identifiants ne peuvent être modifiés."
 
-#: lib/users/add-person.php:155
+#: lib/users/add-person.php:154
 msgid "First Name"
 msgstr "Prénom"
 
-#: lib/users/add-person.php:164
+#: lib/users/add-person.php:163
 msgid "Last Name"
 msgstr "Nom de famille"
 
-#: lib/users/add-person.php:173
+#: lib/users/add-person.php:172
 msgid "Additional Role"
 msgstr "Rôle supplémentaire"
 
-#: lib/users/add-person.php:204
+#: lib/users/add-person.php:203
 msgid "Email"
 msgstr "Adresse de messagerie"
 
-#: lib/users/add-person.php:212
+#: lib/users/add-person.php:211
 msgid "Website"
 msgstr "Site web"
 
-#: lib/users/add-person.php:234
+#: lib/users/add-person.php:233
 msgid "About the person"
 msgstr "À propos de la personne"
 
-#: lib/users/add-person.php:240
+#: lib/users/add-person.php:239
 msgid "Biographical Info"
 msgstr "Renseignements biographiques"
 
-#: lib/users/add-person.php:247
+#: lib/users/add-person.php:246
 msgid "Add the Person"
 msgstr "Ajouter la personne"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/users/add-person.php:359
+#: lib/users/add-person.php:358
 msgid "<strong>Error</strong>: Please enter a username."
 msgstr "<strong>Erreur</strong> : veuillez renseigner l’identifiant."
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/users/add-person.php:365
+#: lib/users/add-person.php:364
 msgid "<strong>Error</strong>: This username is invalid because it uses illegal characters. Please enter a valid username."
 msgstr "<strong>Erreur</strong> : cet identifiant n’est pas valide, car il utilise des caractères non autorisés. Veuillez utiliser un identifiant valide."
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/users/add-person.php:371
+#: lib/users/add-person.php:370
 msgid "<strong>Error</strong>: This username is already registered. Please choose another one."
 msgstr "<strong>Erreur</strong> : cet identifiant est déjà utilisé. Veuillez en choisir un autre."
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/users/add-person.php:377
+#: lib/users/add-person.php:376
 msgid "<strong>Error</strong>: Sorry, that username is not allowed."
 msgstr "<strong>Erreur</strong>: désolé mais cet identifiant n’est pas autorisé."
 
-#: lib/users/add-person.php:396
+#: lib/users/add-person.php:395
 msgid "<strong>Error</strong>: You are not allowed to give users that role."
 msgstr "<strong>Error</strong>: vous n’avez pas l’autorisation de donner ce rôle aux utilisateurs."
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/users/add-person.php:409
+#: lib/users/add-person.php:408
 msgid "<strong>Error</strong>: The email address isn&#8217;t correct."
 msgstr "<strong>Erreur</strong>: l’adresse de messagerie est incorrecte."
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/users/add-person.php:415
+#: lib/users/add-person.php:414
 msgid "<strong>Error</strong>: This email is already registered, please choose another one."
 msgstr "<strong>Erreur</strong>: cette adresse de messagerie est déjà utilisée. Veuillez en choisir une autre."
 
