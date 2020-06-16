@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 7.10.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 7.10.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -955,7 +955,7 @@ msgid ""
 "option."
 msgstr ""
 
-#: lib/conflict.php:107 lib/gettext-pro.php:163 lib/gettext-pro.php:203
+#: lib/conflict.php:107 lib/gettext-pro.php:164 lib/gettext-pro.php:204
 #: lib/loader.php:158 lib/loader.php:171 lib/pro/review/yotpowc.php:195
 #: lib/pro/util/shorten.php:275
 msgid "%s error:"
@@ -1017,7 +1017,7 @@ msgid ""
 "installed."
 msgstr ""
 
-#: lib/conflict.php:226 lib/gettext-pro.php:183 lib/gettext-pro.php:193
+#: lib/conflict.php:226 lib/gettext-pro.php:184 lib/gettext-pro.php:194
 #: lib/pro/rating/rate-my-post.php:53 lib/pro/rating/wppostratings.php:51
 msgid "Plugin conflict detected"
 msgstr ""
@@ -1167,7 +1167,7 @@ msgid "WP Meta SEO"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:474 lib/gettext-pro.php:199
+#: lib/conflict.php:474 lib/gettext-pro.php:200
 #: lib/pro/rating/rate-my-post.php:68
 msgid "Settings"
 msgstr ""
@@ -1442,7 +1442,7 @@ msgctxt "default title"
 msgid "No Title"
 msgstr ""
 
-#: lib/edit.php:398 lib/gettext-pro.php:162 lib/page.php:737
+#: lib/edit.php:398 lib/gettext-pro.php:163 lib/page.php:737
 #: lib/pro/social/buddypress.php:656
 msgctxt "default description"
 msgid "No Description."
@@ -3154,7 +3154,7 @@ msgctxt "metabox title"
 msgid "Bitly URL Shortener"
 msgstr ""
 
-#: lib/gettext-pro.php:69 lib/gettext-pro.php:166
+#: lib/gettext-pro.php:69 lib/gettext-pro.php:167
 #: lib/pro/admin/advanced.php:387 lib/pro/util/shorten.php:323
 #: lib/std/admin/advanced.php:396
 msgctxt "option label"
@@ -3179,7 +3179,7 @@ msgctxt "metabox title"
 msgid "DLMY.App URL Shortener"
 msgstr ""
 
-#: lib/gettext-pro.php:73 lib/gettext-pro.php:168
+#: lib/gettext-pro.php:73 lib/gettext-pro.php:169
 #: lib/pro/admin/advanced.php:405 lib/pro/util/shorten.php:350
 #: lib/std/admin/advanced.php:414
 msgctxt "option label"
@@ -3192,7 +3192,7 @@ msgctxt "metabox title"
 msgid "Ow.ly URL Shortener"
 msgstr ""
 
-#: lib/gettext-pro.php:75 lib/gettext-pro.php:170
+#: lib/gettext-pro.php:75 lib/gettext-pro.php:171
 #: lib/pro/admin/advanced.php:415 lib/pro/util/shorten.php:375
 #: lib/std/admin/advanced.php:424
 msgctxt "option label"
@@ -3205,7 +3205,7 @@ msgctxt "metabox title"
 msgid "Your Own URL Shortener (YOURLS)"
 msgstr ""
 
-#: lib/gettext-pro.php:77 lib/gettext-pro.php:172
+#: lib/gettext-pro.php:77 lib/gettext-pro.php:173
 #: lib/pro/admin/advanced.php:425 lib/pro/util/shorten.php:423
 #: lib/std/admin/advanced.php:434
 msgctxt "option label"
@@ -3500,45 +3500,50 @@ msgstr ""
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:153 lib/pro/media/upscale.php:218
+#: lib/gettext-pro.php:153 lib/post.php:1048 lib/pro/media/youtube.php:168
+#: lib/util.php:1413
+msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
+msgstr ""
+
+#: lib/gettext-pro.php:154 lib/pro/media/upscale.php:218
 msgid ""
 "Failed to upscale image ID %1$s of %2$s by %3$s from %4$s to %5$s for the "
 "%6$s image size (exceeds %7$s maximum upscale setting)."
 msgstr ""
 
-#: lib/gettext-pro.php:154 lib/pro/media/upscale.php:226
+#: lib/gettext-pro.php:155 lib/pro/media/upscale.php:226
 msgid ""
 "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the "
 "%6$s image size."
 msgstr ""
 
-#: lib/gettext-pro.php:155 lib/gettext-pro.php:159 lib/pro/media/ngg.php:134
+#: lib/gettext-pro.php:156 lib/gettext-pro.php:160 lib/pro/media/ngg.php:134
 #: lib/pro/media/ngg.php:1381
 msgid "NextGEN Gallery"
 msgstr ""
 
-#: lib/gettext-pro.php:156 lib/pro/media/ngg.php:135
+#: lib/gettext-pro.php:157 lib/pro/media/ngg.php:135
 msgid "image ID %s"
 msgstr ""
 
-#: lib/gettext-pro.php:157 lib/media.php:132 lib/media.php:196
+#: lib/gettext-pro.php:158 lib/media.php:132 lib/media.php:196
 #: lib/pro/media/ngg.php:139
 msgid "cropped"
 msgstr ""
 
-#: lib/gettext-pro.php:158 lib/media.php:134 lib/pro/media/ngg.php:141
+#: lib/gettext-pro.php:159 lib/media.php:134 lib/pro/media/ngg.php:141
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is too small for the "
 "required %4$s image dimensions."
 msgstr ""
 
-#: lib/gettext-pro.php:160 lib/pro/social/buddypress.php:95
+#: lib/gettext-pro.php:161 lib/pro/social/buddypress.php:95
 #: lib/std/social/buddypress.php:52
 msgctxt "option label"
 msgid "BuddyPress Member Bio Field Name"
 msgstr ""
 
-#: lib/gettext-pro.php:161 lib/pro/social/buddypress.php:114
+#: lib/gettext-pro.php:162 lib/pro/social/buddypress.php:114
 #: lib/std/social/buddypress.php:69
 msgid ""
 "The BuddyPress member profile page does not include the <em>Biographical "
@@ -3549,147 +3554,147 @@ msgid ""
 msgstr ""
 
 #. translators: %s is the service id.
-#: lib/gettext-pro.php:164 lib/pro/util/shorten.php:301
+#: lib/gettext-pro.php:165 lib/pro/util/shorten.php:301
 msgid "The URL shortening library file for \"%s\" is missing and required."
 msgstr ""
 
-#: lib/gettext-pro.php:165 lib/gettext-pro.php:167 lib/gettext-pro.php:169
-#: lib/gettext-pro.php:171 lib/pro/util/shorten.php:322
+#: lib/gettext-pro.php:166 lib/gettext-pro.php:168 lib/gettext-pro.php:170
+#: lib/gettext-pro.php:172 lib/pro/util/shorten.php:322
 #: lib/pro/util/shorten.php:349 lib/pro/util/shorten.php:374
 #: lib/pro/util/shorten.php:422
 msgid "The \"%s\" option value is empty and required."
 msgstr ""
 
 #. translators: %s is the service id.
-#: lib/gettext-pro.php:173 lib/pro/util/shorten.php:468
+#: lib/gettext-pro.php:174 lib/pro/util/shorten.php:468
 msgid "Incomplete API options to instantiate the \"%s\" shortening service."
 msgstr ""
 
-#: lib/gettext-pro.php:174 lib/pro/util/wpseo-meta.php:129
+#: lib/gettext-pro.php:175 lib/pro/util/wpseo-meta.php:129
 msgid "Imported Yoast SEO \"%1$s\" metadata from post ID %2$d."
 msgstr ""
 
-#: lib/gettext-pro.php:175 lib/pro/util/wpseo-meta.php:263
+#: lib/gettext-pro.php:176 lib/pro/util/wpseo-meta.php:263
 msgid "Imported Yoast SEO \"%1$s\" metadata from term ID %2$d."
 msgstr ""
 
-#: lib/gettext-pro.php:176 lib/pro/util/wpseo-meta.php:363
+#: lib/gettext-pro.php:177 lib/pro/util/wpseo-meta.php:363
 msgid "Imported Yoast SEO \"%1$s\" metadata from user ID %2$d."
 msgstr ""
 
 #. translators: %s is the Events Calendar plugin name
-#: lib/gettext-pro.php:177 lib/pro/event/the-events-calendar.php:49
+#: lib/gettext-pro.php:178 lib/pro/event/the-events-calendar.php:49
 msgctxt "option value"
 msgid "[%s Venue]"
 msgstr ""
 
 #. translators: %s is the Events Calendar plugin name
-#: lib/gettext-pro.php:178 lib/pro/event/the-events-calendar.php:57
+#: lib/gettext-pro.php:179 lib/pro/event/the-events-calendar.php:57
 msgctxt "option value"
 msgid "[%s Organizer]"
 msgstr ""
 
-#: lib/gettext-pro.php:179 lib/pro/form/gravityview.php:50
+#: lib/gettext-pro.php:180 lib/pro/form/gravityview.php:50
 msgctxt "metabox title"
 msgid "Single Entry Integration"
 msgstr ""
 
-#: lib/gettext-pro.php:180 lib/pro/form/gravityview.php:77
+#: lib/gettext-pro.php:181 lib/pro/form/gravityview.php:77
 msgctxt "option label"
 msgid "Title Field ID"
 msgstr ""
 
-#: lib/gettext-pro.php:181 lib/pro/form/gravityview.php:81
+#: lib/gettext-pro.php:182 lib/pro/form/gravityview.php:81
 msgctxt "option label"
 msgid "Description Field ID"
 msgstr ""
 
-#: lib/gettext-pro.php:182 lib/pro/form/gravityview.php:85
+#: lib/gettext-pro.php:183 lib/pro/form/gravityview.php:85
 msgctxt "option label"
 msgid "Post Image Field ID"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:185 lib/pro/rating/wppostratings.php:58
+#: lib/gettext-pro.php:186 lib/pro/rating/wppostratings.php:58
 msgid "Enable Google Rich Snippets?"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:187 lib/pro/rating/wppostratings.php:64
+#: lib/gettext-pro.php:188 lib/pro/rating/wppostratings.php:64
 msgid "WP-PostRatings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:189 lib/pro/rating/wppostratings.php:66
+#: lib/gettext-pro.php:190 lib/pro/rating/wppostratings.php:66
 msgid "Ratings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:191 lib/pro/rating/wppostratings.php:68
+#: lib/gettext-pro.php:192 lib/pro/rating/wppostratings.php:68
 msgid "Ratings Options"
 msgstr ""
 
-#: lib/gettext-pro.php:192 lib/gettext-pro.php:202
+#: lib/gettext-pro.php:193 lib/gettext-pro.php:203
 #: lib/pro/rating/rate-my-post.php:76 lib/pro/rating/wppostratings.php:74
 msgid "please disable the %1$s option in the %2$s settings page."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:195 lib/pro/rating/rate-my-post.php:60
+#: lib/gettext-pro.php:196 lib/pro/rating/rate-my-post.php:60
 msgid "Type of structured data for rich snippets"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:197 lib/pro/rating/rate-my-post.php:66
+#: lib/gettext-pro.php:198 lib/pro/rating/rate-my-post.php:66
 msgid "Rate my Post"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:201 lib/pro/rating/rate-my-post.php:70
+#: lib/gettext-pro.php:202 lib/pro/rating/rate-my-post.php:70
 msgid "Rating Widget Settings"
 msgstr ""
 
 #. translators: %s is "App Key".
 #. translators: %s is "Secret Token".
-#: lib/gettext-pro.php:204 lib/gettext-pro.php:205
+#: lib/gettext-pro.php:205 lib/gettext-pro.php:206
 #: lib/pro/review/yotpowc.php:206 lib/pro/review/yotpowc.php:225
 msgid "Yotpo for WooCommerce \"%s\" setting value is empty."
 msgstr ""
 
 #. translators: %s is "wc_yotpo_compatible()".
-#: lib/gettext-pro.php:206 lib/pro/review/yotpowc.php:244
+#: lib/gettext-pro.php:207 lib/pro/review/yotpowc.php:244
 msgid "Yotpo for WooCommerce %s function is missing."
 msgstr ""
 
 #. translators: %s is "wc_yotpo_compatible()".
-#: lib/gettext-pro.php:207 lib/pro/review/yotpowc.php:264
+#: lib/gettext-pro.php:208 lib/pro/review/yotpowc.php:264
 msgid "Yotpo for WooCommerce %s function returned false."
 msgstr ""
 
 #. translators: %s is "yotpo-social-reviews-for-woocommerce".
-#: lib/gettext-pro.php:208 lib/pro/review/yotpowc.php:291
+#: lib/gettext-pro.php:209 lib/pro/review/yotpowc.php:291
 msgid ""
 "\"%s\" plugin not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
 msgstr ""
 
 #. translators: %s is the API library file path.
-#: lib/gettext-pro.php:209 lib/pro/review/yotpowc.php:312
+#: lib/gettext-pro.php:210 lib/pro/review/yotpowc.php:312
 msgid "Yotpo for WooCommerce API library file \"%s\" not found."
 msgstr ""
 
 #. translators: %s is the API library file path.
-#: lib/gettext-pro.php:210 lib/pro/review/yotpowc.php:337
+#: lib/gettext-pro.php:211 lib/pro/review/yotpowc.php:337
 msgid "Yotpo for WooCommerce \"%s\" class does not exist."
 msgstr ""
 
 #. translators: %s is the Job Manager plugin name
-#: lib/gettext-pro.php:211 lib/pro/job/wpjobmanager.php:49
+#: lib/gettext-pro.php:212 lib/pro/job/wpjobmanager.php:49
 msgctxt "option value"
 msgid "[%s Company]"
 msgstr ""
 
 #. translators: %s is the Job Manager plugin name
-#: lib/gettext-pro.php:212 lib/pro/job/wpjobmanager.php:57
+#: lib/gettext-pro.php:213 lib/pro/job/wpjobmanager.php:57
 msgctxt "option value"
 msgid "[%s Location]"
 msgstr ""
@@ -6333,7 +6338,7 @@ msgid ""
 "Activate the %s add-on<br/>for Schema markup and structured data options."
 msgstr ""
 
-#: lib/messages.php:3021 lib/util.php:3292
+#: lib/messages.php:3021 lib/util.php:3293
 msgid "No options available."
 msgstr ""
 
@@ -6559,12 +6564,12 @@ msgid "post"
 msgstr ""
 
 #: lib/post.php:499 lib/register.php:336 lib/term.php:425 lib/user.php:395
-#: lib/util.php:588 lib/util.php:2973
+#: lib/util.php:588 lib/util.php:2974
 msgid "%s warning:"
 msgstr ""
 
 #: lib/post.php:500 lib/term.php:426 lib/user.php:397 lib/util.php:590
-#: lib/util.php:2975
+#: lib/util.php:2976
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -6616,10 +6621,6 @@ msgstr ""
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
-msgstr ""
-
-#: lib/post.php:1048 lib/util.php:1412
-msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
 #: lib/post.php:1060
@@ -6797,41 +6798,41 @@ msgstr ""
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
-#: lib/schema-single.php:1022
+#: lib/schema-single.php:1023
 msgid "adding schema organization"
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1081
+#: lib/schema-single.php:1082
 msgid ""
 "An organization logo image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1084
+#: lib/schema-single.php:1085
 msgid ""
 "An organization banner image (600x60px) is missing and required for the "
 "\"%1$s\" organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or 'ID #'.
-#: lib/schema-single.php:1087
+#: lib/schema-single.php:1088
 msgid ""
 "Please enter the missing image URL in the \"%1$s\" %2$s organization "
 "settings."
 msgstr ""
 
 #. translators: site, as in the "site organization settings".
-#: lib/schema-single.php:1104
+#: lib/schema-single.php:1105
 msgid "site"
 msgstr ""
 
-#: lib/schema-single.php:1265
+#: lib/schema-single.php:1266
 msgid "adding schema for person user ID %1$s"
 msgstr ""
 
-#: lib/schema-single.php:1431
+#: lib/schema-single.php:1432
 msgid "adding schema place"
 msgstr ""
 
@@ -7764,31 +7765,31 @@ msgstr ""
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1438
+#: lib/util.php:1439
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1626
+#: lib/util.php:1627
 msgid ""
 "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
 "provider to have the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1639
+#: lib/util.php:1640
 msgid ""
 "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:2977
+#: lib/util.php:2978
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:2992
+#: lib/util.php:2993
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -7797,40 +7798,40 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2994
+#: lib/util.php:2995
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3323
+#: lib/util.php:3324
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3326
+#: lib/util.php:3327
 msgctxt "option comment"
 msgid "show these options now"
 msgstr ""
 
-#: lib/util.php:3331
+#: lib/util.php:3332
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3334
+#: lib/util.php:3335
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3665
+#: lib/util.php:3666
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3675
+#: lib/util.php:3676
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

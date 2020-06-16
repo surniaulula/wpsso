@@ -255,6 +255,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'uploadDate'   => $mt_pre . ':upload_date',
 				'thumbnailUrl' => $mt_pre . ':thumbnail_url',
 				'embedUrl'     => $mt_pre . ':embed_url',
+				'contentUrl'   => $mt_pre . ':stream_url',
 			) );
 
 			if ( ! empty( $mt_single[ $mt_pre . ':has_image' ] ) ) {

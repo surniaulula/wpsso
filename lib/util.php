@@ -1402,14 +1402,15 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				return false;
 
-			} elseif ( false === ( $html = $this->p->cache->get( $request, 'raw', 'transient', null, '', $curl_opts ) ) ) {
+			} elseif ( false === ( $html = $this->p->cache->get( $request, $format = 'raw',
+				$cache_type = 'transient', $exp_secs = null, $file_ext = '', $curl_opts ) ) ) {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: error caching ' . $request );
+					$this->p->debug->log( 'exiting early: error retrieving content from ' . $request );
 				}
 
 				if ( is_admin() ) {
-					$this->p->notice->err( sprintf( __( 'Error retrieving webpage from <a href="%1$s">%1$s</a>.',
+					$this->p->notice->err( sprintf( __( 'Error retrieving content from <a href="%1$s">%1$s</a>.',
 						'wpsso' ), $request ) );
 				}
 
@@ -3707,7 +3708,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			
 			if ( ! empty( $this->p->cf[ 'wp' ][ $cache_type ][ $md5_pre ][ 'opt_key' ] ) ) {	// Just in case.
 
-				$opt_key  = $this->p->cf[ 'wp' ][ $cache_type ][ $md5_pre ][ 'opt_key' ];
+				$opt_key = $this->p->cf[ 'wp' ][ $cache_type ][ $md5_pre ][ 'opt_key' ];
+
 				$exp_secs = isset( $this->p->options[ $opt_key ] ) ? $this->p->options[ $opt_key ] : $def_secs;
 
 			} else {
@@ -3717,10 +3719,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			if ( ! empty( $this->p->cf[ 'wp' ][ $cache_type ][ $md5_pre ][ 'filter' ] ) ) {	// Just in case.
 
 				$exp_filter = $this->p->cf[ 'wp' ][ $cache_type ][ $md5_pre ][ 'filter' ];
-				$exp_secs   = (int) apply_filters( $exp_filter, $exp_secs );
+
+				$exp_secs = (int) apply_filters( $exp_filter, $exp_secs );
 			}
 
 			if ( $exp_secs < $min_secs ) {
+
 				$exp_secs = $def_secs;
 			}
 

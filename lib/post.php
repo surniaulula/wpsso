@@ -1041,11 +1041,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( empty( $webpage_html ) ) {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: error retrieving webpage from ' . $check_url );
+					$this->p->debug->log( 'exiting early: error retrieving content from ' . $check_url );
 				}
 
 				if ( $is_admin ) {
-					$this->p->notice->err( sprintf( __( 'Error retrieving webpage from <a href="%1$s">%1$s</a>.', 'wpsso' ), $check_url ) );
+					$this->p->notice->err( sprintf( __( 'Error retrieving content from <a href="%1$s">%1$s</a>.', 'wpsso' ), $check_url ) );
 				}
 
 				return;	// Stop here.
