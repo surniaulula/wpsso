@@ -306,18 +306,19 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.10.0-dev.2 (2020/06/15)**
+**Version 7.10.0-dev.3 (2020/06/16)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added an 'embedUrl' and 'contentUrl' property (when available) to the Schema VideoObject markup.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
 	* Removed the 'wpsso_save_options' and 'wpsso_save_site_options' filters.
 	* Added a new 'wpsso_save_setting_options' filter:
 		* 'wpsso_save_setting_options' ( $opts, $network, $doing_upgrade )
+	* Updated the WpssoProMediaYoutube class to include the video embed and stream URLs.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
@@ -572,9 +573,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 7.10.0-dev.2 =
+= 7.10.0-dev.3 =
 
-(2020/06/15) Replaced the 'wpsso_save_options' and 'wpsso_save_site_options' filters with 'wpsso_save_setting_options'.
+(2020/06/16) Added an 'embedUrl' and 'contentUrl' property (when available) to the Schema VideoObject markup.
 
 = 7.9.0 =
 
