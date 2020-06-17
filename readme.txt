@@ -313,7 +313,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Added an 'embedUrl' and 'contentUrl' property (when available) to the Schema VideoObject markup.
 * **Bugfixes**
-	* None.
+	* Fixed the missing 'contentUrl' property for YouTube videos in Schema Recipe markup (required by Google).
 * **Developer Notes**
 	* Refactored the WpssoProMediaYoutube class to provide video duration, embed URL, and stream URL.
 	* Added a new 'wpsso_save_setting_options' filter:
@@ -575,7 +575,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 7.10.0-dev.4 =
 
-(2020/06/17) Added an 'embedUrl' and 'contentUrl' property (when available) to the Schema VideoObject markup.
+(2020/06/17) Added an 'embedUrl' and 'contentUrl' property (when available) to the Schema VideoObject markup. Fixed the missing 'contentUrl' property for YouTube videos in Schema Recipe markup (required by Google).
 
 = 7.9.0 =
 
