@@ -994,6 +994,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						$parts[ 5 ] = SucomUtil::esc_url_encode( $parts[ 5 ] );
 
 						if ( $parts[ 2 ] === 'itemprop' ) {	// An itemprop URL must be a 'link'.
+
 							$parts[ 1 ] = 'link';
 							$parts[ 4 ] = 'href';
 						}

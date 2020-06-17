@@ -948,7 +948,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			foreach ( $og_ret as $num => $og_single_video ) {
 
-				if ( ! empty( $og_single_video[ 'og:video:embed_url' ] ) ) {
+				if ( 'text/html' !== $og_single_video[ 'og:video:type' ] && ! empty( $og_single_video[ 'og:video:embed_url' ] ) ) {
 
 					/**
 					 * Start with a fresh copy of all og meta tags.
@@ -969,7 +969,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					 * Embedded videos may not have width / height information defined.
 					 */
 					foreach ( array( 'og:video:width', 'og:video:height' ) as $mt_name ) {
+
 						if ( isset( $og_single_embed[ $mt_name ] ) && $og_single_embed[ $mt_name ] === '' ) {
+
 							unset( $og_single_embed[ $mt_name ] );
 						}
 					}

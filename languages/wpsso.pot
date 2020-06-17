@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 7.10.0-dev.3\n"
+"Project-Id-Version: WPSSO Core 7.10.0-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3500,7 +3500,7 @@ msgstr ""
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:153 lib/post.php:1048 lib/pro/media/youtube.php:168
+#: lib/gettext-pro.php:153 lib/post.php:1048 lib/pro/media/youtube.php:167
 #: lib/util.php:1413
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
