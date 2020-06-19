@@ -306,7 +306,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.10.0-b.1 (2020/06/18)**
+**Version 7.10.0-rc.1 (2020/06/19)**
 
 * **New Features**
 	* None.
@@ -573,9 +573,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 7.10.0-b.1 =
+= 7.10.0-rc.1 =
 
-(2020/06/18) Added an 'embedUrl' and 'contentUrl' property (when available) to the Schema VideoObject markup. Fixed the missing 'contentUrl' property for YouTube videos in Schema Recipe markup (required by Google).
+(2020/06/19) Added an 'embedUrl' and 'contentUrl' property (when available) to the Schema VideoObject markup. Fixed the missing 'contentUrl' property for YouTube videos in Schema Recipe markup (required by Google).
 
 = 7.9.0 =
 
