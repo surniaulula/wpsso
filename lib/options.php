@@ -770,7 +770,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$opts[ 'add_meta_name_generator' ] = 1;
 			}
 
-			$opts[ 'add_meta_name_generator' ] = 'disabled';
+			$opts[ 'add_meta_name_generator:is' ] = 'disabled';
 
 			/**
 			 * Google does not recognize all Schema Organization sub-types as valid organization and publisher
