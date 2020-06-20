@@ -12,7 +12,7 @@ Requires PHP: 5.6
 Requires At Least: 4.2
 Tested Up To: 5.4.2
 WC Tested Up To: 4.2.0
-Stable Tag: 7.10.0
+Stable Tag: 7.10.1
 
 Make sure your content looks great on all social and search sites - no matter how your URLs are crawled, shared, re-shared, posted, or embedded.
 
@@ -306,7 +306,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.10.0 (2020/06/20)**
+**Version 7.10.1 (2020/06/20)**
 
 * **New Features**
 	* None.
@@ -573,7 +573,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 7.10.0 =
+= 7.10.1 =
 
 (2020/06/20) Added an 'embedUrl' and 'contentUrl' property (when available) to the Schema VideoObject markup. Fixed the missing 'contentUrl' property for YouTube videos in Schema Recipe markup (required by Google).
 
