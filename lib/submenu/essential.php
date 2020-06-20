@@ -35,7 +35,7 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 		protected function add_plugin_hooks() {
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'form_button_rows' => 1,
+				'form_button_rows' => 1,	// Filter form buttons for this settings page only.
 			) );
 		}
 

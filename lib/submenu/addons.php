@@ -38,9 +38,14 @@ if ( ! class_exists( 'WpssoSubmenuAddons' ) && class_exists( 'WpssoAdmin' ) ) {
 		 */
 		protected function add_plugin_hooks() {
 
+			/**
+			 * Make sure this filter runs last as it removed all form buttons.
+			 */
+			$max_int = SucomUtil::get_max_int();
+
 			$this->p->util->add_plugin_filters( $this, array(
-				'form_button_rows' => 1,
-			) );
+				'form_button_rows' => 1,	// Filter form buttons for this settings page only.
+			), $max_int );
 		}
 
 		/**

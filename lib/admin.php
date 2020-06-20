@@ -1513,9 +1513,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$change_show_label_transl = sprintf( _x( 'Change to "%s" View', 'submit button', 'wpsso' ), $change_show_name_transl );
 
 			/**
-			 * A two dimentional array of button rows. The 'submit' button will be assigned a class of
-			 * 'button-primary', while all other 1st row buttons will be 'button-secondary button-highlight'. The 2nd+
-			 * row buttons will be assigned a class of 'button-secondary'.
+			 * A default two dimentional array of button rows for settings pages.
+			 *
+			 * The 'submit' button will be assigned a class of 'button-primary', while all other 1st row buttons will
+			 * be 'button-secondary button-highlight'. The 2nd+ row buttons will be assigned a class of
+			 * 'button-secondary'.
 			 */
 			$form_button_rows = array(
 				array(
@@ -1524,8 +1526,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				),
 			);
 
-			$form_button_rows = apply_filters( $this->p->lca . '_form_button_rows',
-				$form_button_rows, $this->menu_id, $this->menu_name, $this->menu_lib, $this->menu_ext );
+			$form_button_rows = apply_filters( $this->p->lca . '_form_button_rows', $form_button_rows,
+				$this->menu_id, $this->menu_name, $this->menu_lib, $this->menu_ext );
 
 			$row_num = 0;
 

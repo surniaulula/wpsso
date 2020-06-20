@@ -27,8 +27,8 @@ if ( ! class_exists( 'WpssoSubmenuImageSizes' ) && class_exists( 'WpssoAdmin' ) 
 			$this->menu_ext  = $ext;
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'form_button_rows' => 2,
-			), $prio = -10000 );
+				'form_button_rows' => 2,	// Filter form buttons for all settings pages.
+			) );
 		}
 
 		public function filter_form_button_rows( $form_button_rows, $menu_id ) {
@@ -43,7 +43,6 @@ if ( ! class_exists( 'WpssoSubmenuImageSizes' ) && class_exists( 'WpssoAdmin' ) 
 
 					break;
 
-				case 'sso-tools':
 				case 'tools':
 
 					$row_num = 2;
