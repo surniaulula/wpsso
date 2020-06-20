@@ -757,17 +757,24 @@ if ( ! class_exists( 'SuextMarkdownParser' ) ) {
 			return $text;
 		}
 		function _doHeaders_callback_setext($matches) {
+
 			# Terrible hack to check we haven't found an empty list item.
-			if ($matches[2] == '-' && preg_match('{^-(?: |$)}', $matches[1]))
+			if ( $matches[2] == '-' && preg_match( '{^-(?: |$)}', $matches[1] ) ) {
 				return $matches[0];
+			}
 			
-			$level = $matches[2]{0} == '=' ? 1 : 2;
+			$level = $matches[2][0] == '=' ? 1 : 2;
+
 			$block = "<h$level>" . $this->runSpanGamut( $matches[1] ) . "</h$level>";
+
 			return "\n" . $this->hashBlock($block) . "\n\n";
 		}
 		function _doHeaders_callback_atx($matches) {
+
 			$level = strlen($matches[1]);
+
 			$block = "<h$level>" . $this->runSpanGamut( $matches[2] ) . "</h$level>";
+
 			return "\n" . $this->hashBlock($block) . "\n\n";
 		}
 	
@@ -1043,9 +1050,12 @@ if ( ! class_exists( 'SuextMarkdownParser' ) ) {
 				}
 				
 				$token_len = strlen($token);
+
 				if ($tree_char_em) {
+
 					# Reached closing marker while inside a three-char emphasis.
 					if ($token_len == 3) {
+
 						# Three-char closing marker, close em and strong.
 						array_shift($token_stack);
 						$span = array_shift($text_stack);
@@ -1054,7 +1064,9 @@ if ( ! class_exists( 'SuextMarkdownParser' ) ) {
 						$text_stack[0] .= $this->hashPart($span);
 						$em = '';
 						$strong = '';
+
 					} else {
+
 						# Other closing marker: close one em or strong and
 						# change current token state to match the other
 						$token_stack[0] = str_repeat($token{0}, 3-$token_len);
@@ -1065,9 +1077,13 @@ if ( ! class_exists( 'SuextMarkdownParser' ) ) {
 						$text_stack[0] = $this->hashPart($span);
 						$$tag = ''; # $$tag stands for $em or $strong
 					}
+
 					$tree_char_em = false;
+
 				} else if ($token_len == 3) {
+
 					if ($em) {
+
 						# Reached closing marker for both em and strong.
 						# Closing strong marker:
 						for ($i = 0; $i < 2; ++$i) {
@@ -1792,6 +1808,7 @@ if ( ! class_exists( 'SuextMarkdownParser' ) ) {
 				#            HTML Comments, processing instructions.
 				#
 				else if ( preg_match( '{^<(?:' . $this->clean_tags_re . ')\b}', $tag ) || $tag{1} == '!' || $tag{1} == '?' ) {
+
 					# Need to parse tag and following text using the HTML parser.
 					# (don't check for markdown attribute)
 					list( $block_text, $text ) = $this->_hashHTMLBlocks_inHTML( $tag . $text, "hashClean", false );
@@ -1926,14 +1943,18 @@ if ( ! class_exists( 'SuextMarkdownParser' ) ) {
 				#			 Comments and Processing Instructions.
 				#
 				if ( preg_match( '{^</?(?:' . $this->auto_close_tags_re . ')\b}', $tag ) || $tag{1} == '!' || $tag{1} == '?' ) {
+
 					# Just add the tag to the block as if it was text.
 					$block_text .= $tag;
+
 				} else {
+
 					#
 					# Increase/decrease nested tag count. Only do so if
 					# the tag's name match base tag's.
 					#
 					if ( preg_match( '{^</?' . $base_tag_name_re . '\b}', $tag ) ) {
+
 						if ( $tag{1} == '/' ) {
 							$depth--;
 						} else if ($tag{strlen($tag)-2} != '/')	{
@@ -1952,6 +1973,7 @@ if ( ! class_exists( 'SuextMarkdownParser' ) ) {
 						
 						# Check if text inside this tag must be parsed in span mode.
 						$this->mode = $attr_m[2] . $attr_m[3];
+
 						$span_mode = $this->mode == 'span' || $this->mode != 'block' &&
 							preg_match('{^<(?:' . $this->contain_span_tags_re . ')\b}', $tag);
 						
@@ -2063,18 +2085,27 @@ if ( ! class_exists( 'SuextMarkdownParser' ) ) {
 			return " id=\"$attr\"";
 		}
 		function _doHeaders_callback_setext( $matches ) {
+
 			if ( $matches[3] == '-' && preg_match( '{^- }', $matches[1] ) ) {
 				return $matches[0];
 			}
-			$level = $matches[3]{0} == '=' ? 1 : 2;
+
+			$level = $matches[3][0] == '=' ? 1 : 2;
+
 			$attr  = $this->_doHeaders_attr($matches[2]);
+
 			$block = "<h$level$attr>" . $this->runSpanGamut( $matches[1] ) . "</h$level>";
+
 			return "\n" . $this->hashBlock( $block ) . "\n\n";
 		}
 		function _doHeaders_callback_atx( $matches ) {
+
 			$level = strlen( $matches[1] );
+
 			$attr  = $this->_doHeaders_attr( $matches[3] );
+
 			$block = "<h$level$attr>" . $this->runSpanGamut( $matches[2] ) . "</h$level>";
+
 			return "\n" . $this->hashBlock( $block ) . "\n\n";
 		}
 	
