@@ -38,9 +38,14 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 		 */
 		protected function add_plugin_hooks() {
 
+			$min_int = SucomUtil::get_min_int();
+
+			/**
+			 * Make sure this filter runs first since it initializes a new form buttons array.
+			 */
 			$this->p->util->add_plugin_filters( $this, array(
 				'form_button_rows'  => 1,
-			) );
+			), $min_int );
 		}
 
 		protected function show_post_body_setting_form() {
