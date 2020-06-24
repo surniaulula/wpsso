@@ -1056,7 +1056,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			$latest_version  = $this->p->cf[ 'opt' ][ 'version' ];
 
-			$doing_upgrade = ! $is_new_options && ! $options_changed && $current_version === $latest_version ? false : true;
+			$doing_upgrade = $is_new_options || $options_changed || $current_version !== $latest_version ? true : false;
 
 			$opts = apply_filters( $this->p->lca . '_save_setting_options', $opts, $network, $doing_upgrade );
 
