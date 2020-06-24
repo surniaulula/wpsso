@@ -1063,7 +1063,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			/**
 			 * Save the plugin version and options version.
 			 */
-			$ext_version_updates = array();
+			$ext_updates = array();
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
@@ -1073,7 +1073,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					if ( ! isset( $opts[ $version_key ] ) || $opts[ $version_key ] !== $info[ 'version' ] ) {
 
-						$ext_version_updates[] = $ext;
+						$ext_updates[] = $ext;
 					}
 
 					$opts[ $version_key ] = $info[ 'version' ];
@@ -1104,11 +1104,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				/**
-				 * Example $ext_version_updates = array( 'wpssoum' ).
+				 * Example $ext_updates = array( 'wpssoum' ).
 				 */
-				if ( ! empty( $ext_version_updates ) ) {
+				if ( ! empty( $ext_updates ) ) {
 
-					do_action( $this->p->lca . '_ext_version_updates', $ext_version_updates );
+					do_action( $this->p->lca . '_version_updates', $ext_updates );
 				}
 			}
 

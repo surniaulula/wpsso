@@ -1,11 +1,13 @@
 
-'wpsso_init_objects' ( $plugin_activate )
+'wpsso_init_objects' ( $activate )
 
-'wpsso_init_plugin' ()
+'wpsso_init_plugin' ( $is_admin, $doing_ajax )
 
 'wpsso_init_textdomain' ( $debug_enabled )
 
 'wpsso_pre_apply_filters_text' ( $filter_name )
 
 'wpsso_after_apply_filters_text' ( $filter_name )
+
+'wpsso_version_updates' ( $ext_updates )
 
