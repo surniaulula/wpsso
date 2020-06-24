@@ -317,7 +317,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Refactored the WpssoProMediaYoutube class to provide video duration, embed URL, and stream URL.
 	* Added a new 'wpsso_save_setting_options' filter:
-		* 'wpsso_save_setting_options' ( $opts, $network, $doing_upgrade )
+		* 'wpsso_save_setting_options' ( $opts, $network, $upgrading )
 	* Removed the 'wpsso_save_options' and 'wpsso_save_site_options' filters.
 * **Requires At Least**
 	* PHP v5.6.
