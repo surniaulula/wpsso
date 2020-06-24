@@ -578,7 +578,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			$is_new_options  = empty( $opts[ 'options_version' ] ) ? true : false;	// Example: -wpsso512pro-wpssoum3gpl
 			$current_version = $is_new_options ? 0 : $opts[ 'options_version' ];	// Example: -wpsso512pro-wpssoum3gpl
 			$latest_version  = $this->p->cf[ 'opt' ][ 'version' ];
-			$options_changed = $current_version === $latest_version ? false : true;
+			$options_changed = $current_version !== $latest_version ? true : false;
 			$version_changed = false;
 			$defs            = null;	// Optimize and only get array when needed.
 
@@ -806,7 +806,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 				}
 
-				$this->save_options( $options_name, $opts, $network, $options_changed );
+				$this->save_options( $options_name, $opts, $network );
 			}
 
 			if ( $this->p->debug->enabled ) {
@@ -1036,7 +1036,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		/**
 		 * Save both options and site options.
 		 */
-		public function save_options( $options_name, array $opts, $network = false, $options_changed = false ) {
+		public function save_options( $options_name, array $opts, $network = false ) {
 
 			/**
 			 * Make sure we have something to work with.
@@ -1054,23 +1054,36 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			$current_version = $is_new_options ? 0 : $opts[ 'options_version' ];	// Example: -wpsso512pro-wpssoum3gpl
 
-			$latest_version  = $this->p->cf[ 'opt' ][ 'version' ];
+			$latest_version = $this->p->cf[ 'opt' ][ 'version' ];
 
-			$doing_upgrade = $is_new_options || $options_changed || $current_version !== $latest_version ? true : false;
+			$upgrading = $is_new_options || $current_version !== $latest_version ? true : false;
 
-			$opts = apply_filters( $this->p->lca . '_save_setting_options', $opts, $network, $doing_upgrade );
+			$opts = apply_filters( $this->p->lca . '_save_setting_options', $opts, $network, $upgrading );
 
 			/**
 			 * Save the plugin version and options version.
 			 */
+			$ext_version_update = array();
+
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
 				if ( isset( $info[ 'version' ] ) ) {
-					$opts[ 'plugin_' . $ext . '_version' ] = $info[ 'version' ];
+
+					$version_key = 'plugin_' . $ext . '_version';
+
+					if ( ! isset( $opts[ $version_key ] ) || $opts[ $version_key ] !== $info[ 'version' ] ) {
+
+						$ext_version_update[] = $ext;
+					}
+
+					$opts[ $version_key ] = $info[ 'version' ];
 				}
 
 				if ( isset( $info[ 'opt_version' ] ) ) {
-					$opts[ 'plugin_' . $ext . '_opt_version' ] = $info[ 'opt_version' ];
+
+					$opt_version_key = 'plugin_' . $ext . '_opt_version';
+			
+					$opts[ $opt_version_key ] = $info[ 'opt_version' ];
 				}
 			}
 
@@ -1089,11 +1102,16 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					$this->p->options = $opts;				// Update the current plugin options array.
 				}
+
+				if ( ! empty( $ext_version_update ) ) {
+
+					do_action( $this->p->lca . '_ext_version_update', $ext_version_update );
+				}
 			}
 
 			if ( $saved ) {
 
-				if ( $doing_upgrade ) {
+				if ( $upgrading ) {
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $options_name . ' settings have been upgraded and saved' );

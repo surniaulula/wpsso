@@ -215,7 +215,7 @@
 
 'wpsso_robots_content' ( $content, $mod, $directives )
 
-'wpsso_save_setting_options' ( $opts, $network, $doing_upgrade )
+'wpsso_save_setting_options' ( $opts, $network, $upgrading )
 
 'wpsso_save_post_options' ( $opts, $post_id, $rel_id, $mod )
 

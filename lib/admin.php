@@ -931,7 +931,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network = false );
 
-			$opts = apply_filters( $this->p->lca . '_save_setting_options', $opts, $network = false, $doing_upgrade = false );
+			$opts = apply_filters( $this->p->lca . '_save_setting_options', $opts, $network = false, $upgrading = false );
 
 			/**
 			 * Update the current options with any changes.
@@ -1020,7 +1020,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network = true );
 
-			$opts = apply_filters( $this->p->lca . '_save_setting_options', $opts, $network = true, $doing_upgrade = false );
+			$opts = apply_filters( $this->p->lca . '_save_setting_options', $opts, $network = true, $upgrading = false );
 
 			update_site_option( $options_name, $opts );
 
