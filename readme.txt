@@ -306,7 +306,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.11.0-dev.1 (2020/06/24)**
+**Version 7.11.0-rc.1 (2020/06/27)**
 
 * **New Features**
 	* None.
@@ -587,9 +587,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 7.11.0-dev.1 =
+= 7.11.0-rc.1 =
 
-(2020/06/24) Added a new 'wpsso_version_updates' action, which is run when add-on versions are updated / changed.
+(2020/06/27) Added a new 'wpsso_version_updates' action, which is run when add-on versions are updated / changed.
 
 = 7.10.1 =
 
