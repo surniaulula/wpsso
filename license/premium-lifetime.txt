@@ -19,12 +19,11 @@ FOLLOWING TERMS:
 1. Disclaimer of Warranty. You expressly acknowledge and agree that use of the
 Application is at your sole risk. THE APPLICATION IS PROVIDED "AS IS," WITH ALL
 FAULTS AND WITHOUT WARRANTY OF ANY KIND. The Author does not warrant that the
-functions contained in the Application will meet your requirements or those of
-the Employer, or that the operation of the Application will be uninterrupted or
-error-free. Furthermore, the Author does not warrant or make any representation
-regarding the use or the results of the use of the Application (including the
-related documentation) in terms of their correctness, accuracy, reliability, or
-otherwise.
+functions contained in the Application will meet your requirements, or that the
+operation of the Application will be uninterrupted or error-free. Furthermore,
+the Author does not warrant or make any representation regarding the use or the
+results of the use of the Application (including the related documentation) in
+terms of their correctness, accuracy, reliability, or otherwise.
 
 THE AUTHOR EXPRESSLY DISCLAIMS ANY WARRANTY OF MERCHANTABILITY, FITNESS FOR A
 PARTICULAR PURPOSE OR TITLE WITH RESPECT TO THE APPLICATION.
@@ -66,7 +65,7 @@ the WordPress Site Address option ("Site Address"). This License is effective
 until terminated as provided below. You may terminate this License by
 destroying the Application and any copies of the Application in your
 possession. This License will terminate automatically upon any violation of its
-terms by you or the Employer.
+terms.
 
 4. Support and upgrading. Licensee is entitled to receive upgrades of the
 Application, using the WordPress Upgrade system, at no additional fees for each
