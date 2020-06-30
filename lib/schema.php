@@ -2741,7 +2741,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			return date_format( date_create( $md_date . ' ' . $md_time . ' ' . $md_timezone ), 'c' );
+			$date_obj = date_create( $md_date . ' ' . $md_time . ' ' . $md_timezone );
+
+			return date_format( $date_obj, 'c' );
 		}
 
 		/**

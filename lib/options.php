@@ -34,12 +34,18 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'option_type' => 2
-			), $prio = -100 );
-
-			$this->p->util->add_plugin_filters( $this, array(
-				'init_objects' => 0
+				'init_objects' => 0,
+				'option_type'  => 2,
 			), $prio = 10000 );
+		}
+
+		public function filter_init_objects() {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'setting allow_cache to true' );
+			}
+
+			self::$allow_cache = true;
 		}
 
 		public function filter_option_type( $type, $base_key ) {
@@ -66,11 +72,50 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					return 'checkbox';
 
 				/**
-				 * Empty string or must include at least one HTML tag.
+				 * twitter-style usernames (prepend with an at).
 				 */
-				case 'og_vid_embed':
+				case 'tc_site':
 
-					return 'html';
+					return 'at_name';
+
+				/**
+				 * Empty or alpha-numeric uppercase (hyphens are allowed as well).
+				 */
+				case ( preg_match( '/_tid$/', $base_key ) ? true : false ):
+
+					return 'auth_id';
+
+				/**
+				 * Empty or alpha-numeric (upper or lower case), plus underscores.
+				 */
+				case 'fb_app_id':
+				case 'fb_app_secret':
+				case 'g_site_verify':	// Google Website Verification ID.
+				case 'p_site_verify':	// Pinterest Website Verification ID.
+				case ( preg_match( '/_api_key$/', $base_key ) ? true : false ):
+
+					return 'api_key';
+
+				/**
+				 * Empty or 'none' string, or color as #000000.
+				 */
+				case ( false !== strpos( $base_key, '_color_' ) ? true : false ):
+
+					return 'color';
+
+				/**
+				 * Empty or 'none' string, or date as yyyy-mm-dd.
+				 */
+				case ( preg_match( '/_date$/', $base_key ) ? true : false ):
+
+					return 'date';
+
+				/**
+				 * Empty or 'none' string, or time as hh:mm or hh:mm:ss.
+				 */
+				case ( preg_match( '/_time$/', $base_key ) ? true : false ):
+
+					return 'time';
 
 				/**
 				 * A regular expression.
@@ -165,29 +210,18 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					return 'img_height';
 
 				/**
+				 * Empty string or must include at least one HTML tag.
+				 */
+				case 'og_vid_embed':
+
+					return 'html';
+
+				/**
 				 * Must be texturized.
 				 */
 				case 'og_title_sep':
 
 					return 'textured';
-
-				/**
-				 * Empty or alpha-numeric uppercase (hyphens are allowed as well).
-				 */
-				case ( preg_match( '/_tid$/', $base_key ) ? true : false ):
-
-					return 'auth_id';
-
-				/**
-				 * Empty or alpha-numeric (upper or lower case), plus underscores.
-				 */
-				case 'fb_app_id':
-				case 'fb_app_secret':
-				case 'g_site_verify':	// Google Website Verification ID.
-				case 'p_site_verify':	// Pinterest Website Verification ID.
-				case ( preg_match( '/_api_key$/', $base_key ) ? true : false ):
-
-					return 'api_key';
 
 				/**
 				 * Text strings that can be blank (line breaks are removed).
@@ -258,11 +292,17 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					return 'not_blank';
 
 				/**
-				 * twitter-style usernames (prepend with an at).
+				 * Empty string or image URL.
 				 */
-				case 'tc_site':
+				case 'og_def_img_url':
+				case 'og_img_url':
+				case 'schema_banner_url':
+				case 'schema_img_url':
+				case 'schema_logo_url':
+				case 'tc_lrg_img_url':
+				case 'tc_sum_img_url':
 
-					return 'at_name';
+					return 'img_url';
 
 				/**
 				 * Strip leading urls off facebook usernames.
@@ -295,35 +335,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case ( strpos( $base_key, '_url' ) && isset( $this->p->cf[ 'form' ][ 'social_accounts' ][ $base_key ] ) ? true : false ):
 
 					return 'url';
-
-				case 'og_def_img_url':
-				case 'og_img_url':
-				case 'schema_banner_url':
-				case 'schema_img_url':
-				case 'schema_logo_url':
-				case 'tc_lrg_img_url':
-				case 'tc_sum_img_url':
-
-					return 'img_url';
-
-				/**
-				 * CSS color code.
-				 */
-				case ( false !== strpos( $base_key, '_color_' ) ? true : false ):
-
-					return 'color';
 			}
 
 			return $type;
-		}
-
-		public function filter_init_objects() {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'setting allow_cache to true' );
-			}
-
-			self::$allow_cache = true;
 		}
 
 		public function get_defaults( $opt_key = false, $force_filter = false ) {
