@@ -10,7 +10,7 @@
  * Author URI: https://wpsso.com/
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
- * Description: Make sure your content looks great on social sites and in search results - no matter how your URLs are crawled, shared, re-shared, posted or embedded.
+ * Description: Make sure your content looks great on social sites and search results - no matter how your URLs are crawled, shared, re-shared, posted or embedded.
  * Requires PHP: 5.6
  * Requires At Least: 4.2
  * Tested Up To: 5.4.2
