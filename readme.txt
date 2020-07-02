@@ -306,6 +306,32 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 7.12.0-dev.1 (2020/07/02)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added a new "WebSite Publisher Type" option under the SSO &gt; Essential Settings &gt; Google tab.
+	* Renamed the "User for Person Social Profile" option to "WebSite Publisher Person"
+	* Removed the "Knowledge Graph for Home Page" option.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Refactored the `WpssoSchemaGraph::optimize_json()` method to avoid possible duplicate Organization markup in the home page.
+	* Refactored the `WpssoSchema::update_data_id()` method to avoid possibly appending duplicate type IDs to the '@id' string.
+	* Deprecated the `WpssoAdmin::add_schema_knowledge_graph_table_rows()` method.
+	* Renamed setting option keys:
+		* 'schema_home_person_id' to 'site_pub_person_id'
+		* 'schema_logo_url' to 'site_org_logo_url'
+		* 'schema_banner_url' to 'site_org_banner_url'
+		* 'site_place_id' to 'site_org_place_id'
+	* Removed setting option keys:
+		* 'schema_add_home_organization'
+		* 'schema_add_home_person'
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.2.
+
 **Version 7.11.0 (2020/06/27)**
 
 * **New Features**
@@ -586,6 +612,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 7.12.0-dev.1 =
+
+(2020/07/02) Added a new "WebSite Publisher Type" option under the SSO &gt; Essential Settings &gt; Google tab.
 
 = 7.11.0 =
 
