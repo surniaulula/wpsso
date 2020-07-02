@@ -978,6 +978,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				return 0;
 			}
 
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->log( 'adding organization data for org id "' . $org_id . '"' );
+			}
+
 			/**
 			 * Returned organization option values can change depending on the locale, but the option key names should NOT be localized.
 			 *
@@ -1047,6 +1051,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			if ( ! empty( $org_opts[ $org_image_key ] ) ) {
+
 				self::add_image_data_mt( $ret[ 'image' ], $org_opts, $org_image_key );
 			}
 
@@ -1062,6 +1067,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 
 				if ( ! empty( $org_opts[ $org_logo_key ] ) ) {
+
 					self::add_image_data_mt( $ret[ 'logo' ], $org_opts, $org_logo_key, false );	// $list_element is false.
 				}
 

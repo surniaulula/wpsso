@@ -415,17 +415,48 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-site_org_schema_type':
+						case 'tooltip-site_pub_schema_type':	// WebSite Publisher Type.
 
-							$text = __( 'Google does not recognize all Schema Organization sub-types as valid organization and publisher types.', 'wpsso' ) . ' ';
+							$text .= __( 'Select a Schema publisher type for the content of this website.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'The WebSite organization type ID should be "%s" unless you are confident that Google will recognize your preferred Schema Organization sub-type as a valid organization.', 'wpsso' ), 'organization' ) . ' ';
-							
-							$text .= sprintf( __( 'To select a different organization type ID for your WebSite, define the %s constant with your preferred type ID (the type ID, not the Schema type URL).', 'wpsso' ), '<code>WPSSO_SCHEMA_ORGANIZATION_TYPE_ID</code>' );
+							$text .= __( 'Traditionally, the Schema Organization type is selected for business websites, where-as the Schema Person type is selected for personal websites.', 'wpsso' );
 
 							break;
 
-						case 'tooltip-site_place_id':
+						case 'tooltip-site_pub_person_id':	// WebSite Publisher Person.
+
+							$text = __( 'Select a user profile for the Schema publisher Person markup.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'The available Person list includes users with the "%1$s" or "%2$s" role.', 'wpsso' ),
+								_x( 'Administrator', 'user role', 'wpsso' ), _x( 'Editor', 'user role', 'wpsso' ) );
+
+							break;
+
+						case 'tooltip-site_org_schema_type':	// Organization Schema Type.
+
+							$text = __( 'Unfortunately, Google does not recognize all Schema Organization sub-types as valid organizations.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'The default Schema type ID for the WebSite organization is "%s".', 'wpsso' ), 'organization' ) . ' ';
+
+							$text .= sprintf( __( 'You should not change this default value unless you are confident that Google will recognize your preferred Schema Organization sub-type as a valid organization.', 'wpsso' ), 'organization' ) . ' ';
+							
+							$text .= sprintf( __( 'To select a different organization type ID for the WebSite, define the %s constant with your preferred type ID (note that this is a Schema type ID, not a Schema type URL).', 'wpsso' ), '<code>WPSSO_SCHEMA_ORGANIZATION_TYPE_ID</code>' );
+
+							break;
+
+						case 'tooltip-site_org_logo_url':	// Organization Logo URL.
+
+							$text = __( 'A URL for this organization\'s logo image that Google can show in its search results and <em>Knowledge Graph</em>.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-site_org_banner_url':	// Organization Banner URL.
+
+							$text = __( 'A URL for this organization\'s banner image &mdash; <strong>measuring exactly 600x60px</strong> &mdash; that Google News can show for Schema Article type content from this publisher.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-site_org_place_id':
 
 							if ( isset( $this->p->cf[ 'plugin' ][ 'wpssoplm' ] ) ) {
 
@@ -436,6 +467,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								$text = sprintf( __( 'Select an optional location for this organization (requires the %s add-on).',
 									'wpsso' ), $plm_addon_link );
 							}
+
+							break;
+
+						case 'tooltip-site-use':
+
+							$text = __( 'Individual sites/blogs may use this value as a default (when the plugin is first activated), if the current site/blog option value is blank, or force every site/blog to use this specific value.', 'wpsso' );
 
 							break;
 					}
@@ -1336,57 +1373,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $msg_key ) {
 
-						case 'tooltip-schema_knowledge_graph':	// Knowledge Graph for Home Page.
-
-							$social_accounts_link = $this->p->util->get_admin_url( 'social-accounts',
-								_x( 'Social Pages', 'lib file description', 'wpsso' ) );
-
-							$text = __( 'Enable or disable the Schema WebSite, Organization, and Person markup in the home page for Google\'s Knowledge Graph.', 'wpsso' ) . ' ';
-
-							/**
-							 * Include Schema WebSite.
-							 */
-							$text .= __( 'The Schema WebSite markup includes the site name, alternate site name, site URL, and search query URL.', 'wpsso' ) . ' ';
-
-							$text .= sprintf( __( 'Developers can hook the "%s" filter to modify the site search URL (or disable its addition by returning false).', 'wpsso' ), $this->p->lca . '_json_ld_search_url' ) . ' ';
-
-							/**
-							 * Include Schema Organization.
-							 */
-							$text .= sprintf( __( 'The Schema Organization markup includes all URLs entered in the %s settings page.', 'wpsso' ), $social_accounts_link ) . ' ';
-
-							/**
-							 * Include Schema Person.
-							 */
-							$text .= __( 'The Schema Person markup includes all contact method URLs entered in the user\'s WordPress profile page.', 'wpsso' );
-
-							$text .= __( 'Traditionally, the Schema Organization markup is included for business websites, where-as the Schema Person markup is included for personal websites.', 'wpsso' );
-
-							break;
-
-						case 'tooltip-schema_home_person_id':	// User for Person Social Profile.
-
-							$text = __( 'Select an optional site owner for the <em>Knowledge Graph</em> Person markup included in the front page.', 'wpsso' ) . ' ';
-
-							$text .= __( 'The Person markup includes all contact method URLs entered in the user\'s WordPress profile page.', 'wpsso' ) . ' ';
-
-							$text .= sprintf( __( 'The available Person list includes users with "%1$s" and/or "%2$s" roles.', 'wpsso' ),
-								_x( 'Administrator', 'user role', 'wpsso' ), _x( 'Editor', 'user role', 'wpsso' ) );
-
-							break;
-
-						case 'tooltip-schema_logo_url':		// Organization Logo URL.
-
-							$text = __( 'A URL for this organization\'s logo image that Google can use in its search results and <em>Knowledge Graph</em>.', 'wpsso' );
-
-							break;
-
-						case 'tooltip-schema_banner_url':	// Organization Banner URL.
-
-							$text = __( 'A URL for this organization\'s banner image &mdash; <strong>measuring exactly 600x60px</strong> &mdash; that Google News can use for Schema Article content from this publisher.', 'wpsso' );
-
-							break;
-
 						case 'tooltip-schema_img_max':		// Maximum Images to Include.
 
 							$text = __( 'The maximum number of images to include in Schema markup, including custom, featured, attached, and content images.', 'wpsso' ) . ' ';
@@ -1780,12 +1766,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-wp-cm-field-id':
 
 							$text = sprintf( __( 'The built-in WordPress <em>%1$s</em> column cannot be modified.', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ) );
-
-							break;
-
-						case 'tooltip-site-use':
-
-							$text = __( 'Individual sites/blogs may use this value as a default (when the plugin is first activated), if the current site/blog option value is blank, or force every site/blog to use this specific value.', 'wpsso' );
 
 							break;
 

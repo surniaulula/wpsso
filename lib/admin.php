@@ -1798,11 +1798,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						'(code) Facebook / Open Graph Meta Tags' => array(
 							'status' => class_exists( $this->p->lca . 'opengraph' ) ? 'on' : 'rec',
 						),
-						'(code) Knowledge Graph Person Markup' => array(
-							'status' => $this->p->options[ 'schema_add_home_person' ] ? 'on' : 'off',
-						),
 						'(code) Knowledge Graph Organization Markup' => array(
-							'status' => $this->p->options[ 'schema_add_home_organization' ] ? 'on' : 'off',
+							'status' => 'organization' === $this->p->options[ 'site_pub_schema_type' ] ? 'on' : 'off',
+						),
+						'(code) Knowledge Graph Person Markup' => array(
+							'status' => 'person' === $this->p->options[ 'site_pub_schema_type' ] ? 'on' : 'off',
 						),
 						'(code) Knowledge Graph WebSite Markup' => array(
 							'status' => 'on',
@@ -2769,22 +2769,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			unset( $type_select, $type_keys );	// Just in case.
 		}
 
+		/**
+		 * Deprecated on 2020/07/01.
+		 */
 		public function add_schema_knowledge_graph_table_rows( array &$table_rows, $form ) {
-
-			$table_rows[ 'schema_knowledge_graph' ] = '' . 
-			$form->get_th_html( _x( 'Knowledge Graph for Home Page', 'option label', 'wpsso' ), '', 'schema_knowledge_graph' ) . 
-			'<td>' .
-			'<p>' . $form->get_checkbox( 'schema_add_home_organization' ) . ' ' . __( 'Include Schema Organization', 'wpsso' ) . '</p>' .
-			'<p>' . $form->get_checkbox( 'schema_add_home_person' ) . ' ' . __( 'Include Schema Person', 'wpsso' ) . '</p>' .
-			'</td>';
-
-			$owner_roles = $this->p->cf[ 'wp' ][ 'roles' ][ 'owner' ];
-
-			$site_owners = SucomUtilWP::get_roles_user_select( $owner_roles );
-
-			$table_rows[ 'schema_home_person_id' ] = '' . 
-			$form->get_th_html( _x( 'User for Person Social Profile', 'option label', 'wpsso' ), '', 'schema_home_person_id' ) . 
-			'<td>' . $form->get_select( 'schema_home_person_id', $site_owners, $css_class = '', $css_id = '', $is_assoc = true ) . '</td>';
 		}
 
 		public function add_schema_item_props_table_rows( array &$table_rows, $form ) {
@@ -2794,18 +2782,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$max_media_items = $this->p->cf[ 'form' ][ 'max_media_items' ];
+			$json_req_msg    = $this->p->msgs->maybe_ext_required( 'wpssojson' );
 
-			$json_req_msg = $this->p->msgs->maybe_ext_required( 'wpssojson' );
-
-			$table_rows[ 'schema_logo_url' ] = '' . 
-			$form->get_th_html_locale( '<a href="https://developers.google.com/structured-data/customize/logos">' .
-			_x( 'Organization Logo URL', 'option label', 'wpsso' ) . '</a>', $css_class = '', $css_id = 'schema_logo_url' ) . 
-			'<td>' . $form->get_input_locale( 'schema_logo_url', $css_class = 'wide is_required' ) . '</td>';
-
-			$table_rows[ 'schema_banner_url' ] = '' . 
-			$form->get_th_html_locale( '<a href="https://developers.google.com/search/docs/data-types/article#logo-guidelines">' .
-			_x( 'Organization Banner URL', 'option label', 'wpsso' ) . '</a>', $css_class = '', $css_id = 'schema_banner_url' ) . 
-			'<td>' . $form->get_input_locale( 'schema_banner_url', $css_class = 'wide is_required' ) . '</td>';
+			$this->add_schema_publisher_type_table_rows( $table_rows, $form );
 
 			$table_rows[ 'seo_author_name' ] = $form->get_tr_hide( 'basic', 'seo_author_name' ) . 
 			$form->get_th_html( _x( 'Author / Person Name Format', 'option label', 'wpsso' ), $css_class = '', $css_id = 'seo_author_name' ) . 
@@ -2848,6 +2827,35 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$table_rows[ 'schema_desc_max_len' ] = $form->get_tr_hide( 'basic', 'schema_desc_max_len' ) . 
 			$form->get_th_html( _x( 'Max. Schema Description Length', 'option label', 'wpsso' ), '', 'schema_desc_max_len' ) . 
 			'<td>' . $form->get_input( 'schema_desc_max_len', 'chars' ) . ' ' . _x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
+		}
+
+		public function add_schema_publisher_type_table_rows( array &$table_rows, $form ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			$owner_roles = $this->p->cf[ 'wp' ][ 'roles' ][ 'owner' ];
+			$site_owners = SucomUtilWP::get_roles_user_select( $owner_roles );
+
+			$table_rows[ 'site_pub_schema_type' ] = '' . 
+			$this->form->get_th_html( _x( 'WebSite Publisher Type', 'option label', 'wpsso' ), $css_class = '', $css_id = 'site_pub_schema_type' ) . 
+			'<td>' . $this->form->get_select( 'site_pub_schema_type', $this->p->cf[ 'form' ][ 'publisher_types' ], $css_class = '', $css_id = '',
+				$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_change_unhide_rows' ) ) . '</td>';
+
+			$table_rows[ 'site_pub_person_id' ] = '<tr class="hide_site_pub_schema_type hide_site_pub_schema_type_person">' . 
+			$this->form->get_th_html( _x( 'WebSite Publisher Person', 'option label', 'wpsso' ), '', 'site_pub_person_id' ) . 
+			'<td>' . $this->form->get_select( 'site_pub_person_id', $site_owners, $css_class = '', $css_id = '', $is_assoc = true ) . '</td>';
+
+			$table_rows[ 'site_org_logo_url' ] = '<tr class="hide_site_pub_schema_type hide_site_pub_schema_type_organization">' .
+			$form->get_th_html_locale( '<a href="https://developers.google.com/structured-data/customize/logos">' .
+			_x( 'Organization Logo URL', 'option label', 'wpsso' ) . '</a>', $css_class = '', $css_id = 'site_org_logo_url' ) . 
+			'<td>' . $form->get_input_locale( 'site_org_logo_url', $css_class = 'wide is_required' ) . '</td>';
+
+			$table_rows[ 'site_org_banner_url' ] = '<tr class="hide_site_pub_schema_type hide_site_pub_schema_type_organization">' .
+			$form->get_th_html_locale( '<a href="https://developers.google.com/search/docs/data-types/article#logo-guidelines">' .
+			_x( 'Organization Banner URL', 'option label', 'wpsso' ) . '</a>', $css_class = '', $css_id = 'site_org_banner_url' ) . 
+			'<td>' . $form->get_input_locale( 'site_org_banner_url', $css_class = 'wide is_required' ) . '</td>';
 		}
 
 		public function add_schema_item_types_table_rows( array &$table_rows, $form ) {

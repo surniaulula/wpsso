@@ -77,17 +77,27 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 			self::$graph_data = array();
 		}
 
+		/**
+		 * Recursively remove null values, empty strings, and empty arrays.
+		 */
 		public static function clean_json( array &$arr ) {
 
 			foreach ( $arr as $key => $value ) {
 
 				if ( null === $value ) {		// Null value.
+
 					unset( $arr[ $key ] );
+
 				} elseif ( '' === $value ) {		// Empty string.
+
 					unset( $arr[ $key ] );
+
 				} elseif ( array() === $value ) {	// Empty array.
+
 					unset( $arr[ $key ] );
+
 				} elseif ( is_array( $value ) ) {
+
 					self::clean_json( $arr[ $key ] );
 				}
 			}
@@ -99,18 +109,23 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 			static $local_recursion = null;
 			static $local_id_anchor = null;
 
-			if ( null === $local_id_anchor ) {	// Optimize and call just once.
-				$local_id_anchor = WpssoSchema::get_id_anchor();
-			}
-
 			if ( isset( $json_data[ '@graph' ] ) ) {	// Top level of json.
+
 				$local_recursion = 0;
+
 			} elseif ( null !== $local_recursion ) {
+
 				$local_recursion++;
 			}
 
 			if ( $local_recursion > 32 ) {	// Just in case.
+
 				return;
+			}
+
+			if ( null === $local_id_anchor ) {	// Optimize and call just once.
+
+				$local_id_anchor = WpssoSchema::get_id_anchor();
 			}
 
 			foreach ( $json_data as $key => &$val ) {
@@ -119,23 +134,27 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 					self::optimize_json( $val );
 
-				} elseif ( $local_recursion > 2 && '@id' === $key && strpos( $val, $local_id_anchor ) ) {
+				} elseif ( '@id' === $key ) {
 
-					if ( count( $json_data ) > 1 ) {	// Ignore arrays with only an @id property.
+					if ( count( $json_data ) > 1 ) {	// Ignore arrays with a single element (ie. the @id property).
+				
+						if ( strpos( $val, $local_id_anchor ) ) {	// Only optimize our own @ids.
 
-						if ( ! isset( $local_new_data[ $val ] ) ) {
+							if ( empty( $local_new_data[ $val ] ) ) {
 
-							$local_new_data[ $val ] = $json_data;
+								$local_new_data[ $val ] = $json_data;
 
-							foreach ( $local_new_data[ $val ] as $new_key => &$new_val ) {
+								foreach ( $local_new_data[ $val ] as $new_key => &$new_val ) {
 
-								if ( is_array( $new_val ) ) {
-									self::optimize_json( $new_val );
+									if ( is_array( $new_val ) ) {
+	
+										self::optimize_json( $new_val );
+									}
 								}
 							}
-						}
 
-						$json_data = array( $key => $val );
+							$json_data = array( $key => $val );
+						}
 					}
 
 					break;
@@ -144,17 +163,35 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 			if ( isset( $json_data[ '@graph' ] ) ) {	// Top level of json.
 
-				$json_data[ '@graph' ] = array_merge( array_values( $local_new_data ), $json_data[ '@graph' ] );
+				$combined_graph = array_merge( array_values( $local_new_data ), $json_data[ '@graph' ] );
 
 				/**
-				 * Reset the static variables after saving/merging the new data.
+				 * Cleanup any empty @id arrays.
 				 */
-				$local_new_data  = array();
+				foreach ( $combined_graph as $num => $val ) {
+				
+					if ( is_array( $val ) ) {	// Just in case.
+
+						if ( ! empty( $val[ '@id' ] ) && 1 === count( $val ) ) {
+
+							unset( $combined_graph[ $num ] );
+						}
+					}
+				}
+
+				$json_data[ '@graph' ] = $combined_graph;
+
+				/**
+				 * Reset the static variables after merging the new data.
+				 */
+				$local_new_data = array();
+
 				$local_recursion = null;
 
 				return $json_data;
 
 			} elseif ( null !== $local_recursion ) {
+
 				$local_recursion--;
 			}
 		}

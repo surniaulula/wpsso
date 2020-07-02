@@ -90,7 +90,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'og_site_description'            => 'site_desc',
 					'org_url'                        => 'site_url',
 					'org_type'                       => 'site_org_schema_type',
-					'org_place_id'                   => 'site_place_id',
+					'org_place_id'                   => 'site_org_place_id',
 					'link_def_author_id'             => '',
 					'link_def_author_on_index'       => '',
 					'link_def_author_on_search'      => '',
@@ -143,12 +143,17 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				561 => array(
 					'plugin_shortlink' => 'plugin_wp_shortlink',
 				),
+
+				/**
+				 * 'schema_add_home_organization' and 'schema_add_home_person' will be unset in self::options()
+				 * after determining a new 'site_pub_schema_type' value (either 'organization' or 'person').
+				 */
 				569 => array(
 					'plugin_cf_add_type_urls'  => 'plugin_cf_addl_type_urls',
 					'schema_organization_json' => 'schema_add_home_organization',
 					'schema_person_json'       => 'schema_add_home_person',
 					'schema_website_json'      => '',
-					'schema_person_id'         => 'schema_home_person_id',
+					'schema_person_id'         => 'site_pub_person_id',
 				),
 				574 => array(
 					'plugin_json_post_data_cache_exp' => '',
@@ -341,6 +346,17 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_add_to_term' => '',	// Replaced by "plugin_add_to_tax_{tax_slug}" options.
 					'plugin_add_to_user' => 'plugin_add_to_user_page',
 				),
+
+				/**
+				 * 'schema_add_home_organization' and 'schema_add_home_person' will be unset in self::options()
+				 * after determining a new 'site_pub_schema_type' value (either 'organization' or 'person').
+				 */
+				744 => array(
+					'schema_banner_url'     => 'site_org_banner_url',
+					'schema_home_person_id' => 'site_pub_person_id',
+					'schema_logo_url'       => 'site_org_logo_url',
+					'site_place_id'         => 'site_org_place_id',
+				),
 			),
 		);
 
@@ -458,6 +474,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				foreach ( SucomUtil::preg_grep_keys( '/^(' . $keys_preg . ')(_[0-9]+)?$/', $opts ) as $key => $val ) {
 
 					if ( ! empty( $this->p->cf[ 'head' ][ 'schema_renamed' ][ $val ] ) ) {
+
 						$opts[ $key ] = $this->p->cf[ 'head' ][ 'schema_renamed' ][ $val ];
 					}
 				}
@@ -498,6 +515,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				if ( $prev_version > 0 && $prev_version <= 296 ) {
 
 					if ( empty( $opts[ 'plugin_min_shorten' ] ) || $opts[ 'plugin_min_shorten' ] < 22 ) {
+
 						$opts[ 'plugin_min_shorten' ] = 22;
 					}
 				}
@@ -505,6 +523,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				if ( $prev_version > 0 && $prev_version <= 373 ) {
 
 					if ( ! empty( $opts[ 'plugin_head_attr_filter_name' ] ) && $opts[ 'plugin_head_attr_filter_name' ] === 'language_attributes' ) {
+
 						$opts[ 'plugin_head_attr_filter_name' ] = 'head_attributes';
 					}
 				}
@@ -512,6 +531,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				if ( $prev_version > 0 && $prev_version <= 557 ) {
 
 					if ( isset( $opts[ 'plugin_cm_fb_label' ] ) && $opts[ 'plugin_cm_fb_label' ] === 'Facebook URL' ) {
+
 						$opts[ 'plugin_cm_fb_label' ] = 'Facebook User URL';
 					}
 
@@ -521,6 +541,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				if ( $prev_version > 0 && $prev_version <= 564 ) {
 
 					if ( isset( $opts[ 'schema_type_for_job_listing' ] ) && $opts[ 'schema_type_for_job_listing' ] === 'webpage' ) {
+
 						$opts[ 'schema_type_for_job_listing' ] = 'job.posting';
 					}
 				}
@@ -600,6 +621,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				if ( $prev_version > 0 && $prev_version <= 637 ) {
 
 					foreach ( SucomUtil::get_opts_begin( 'add_meta_property_product:', $opts ) as $key => $val ) {
+
 						$opts[ $key ] = 1;
 					}
 				}
@@ -610,8 +632,25 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				if ( $prev_version > 0 && $prev_version <= 637 ) {
 
 					if ( isset( $opts[ 'seo_desc_max_len' ] ) && $opts[ 'seo_desc_max_len' ] === 156 ) {
+
 						$opts[ 'seo_desc_max_len' ] = 220;
 					}
+				}
+
+				if ( $prev_version > 0 && $prev_version <= 744 ) {
+
+					if ( ! empty( $opts[ 'schema_add_home_organization' ] ) ) {
+
+						$opts[ 'site_pub_schema_type' ] = 'organization';
+
+					} elseif ( ! empty( $opts[ 'schema_add_home_person' ] ) ) {
+
+						$opts[ 'site_pub_schema_type' ] = 'person';
+					}
+
+					unset( $opts[ 'schema_add_home_organization' ] );
+
+					unset( $opts[ 'schema_add_home_person' ] );
 				}
 
 				/**

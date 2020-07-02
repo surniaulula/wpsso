@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '7.11.0',	// Plugin version.
-					'opt_version' => '742',		// Increment when changing default option values.
+					'version'     => '7.12.0-dev.1',	// Plugin version.
+					'opt_version' => '745',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Make sure your content looks great on social sites and search results - no matter how your URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -474,7 +474,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssoorg' => array(			// Plugin acronym.
 					'short'       => 'WPSSO ORG',	// Short plugin name.
 					'name'        => 'WPSSO Organization Markup',
-					'desc'        => 'Customize the Home Page Schema Organization Markup and Manage Additional Organizations (Publisher, Organizer, etc.).',
+					'desc'        => 'Customize the Schema Organization Markup for your WebSite and Manage Additional Organizations (Publisher, Organizer, etc.).',
 					'slug'        => 'wpsso-organization',
 					'base'        => 'wpsso-organization/wpsso-organization.php',
 					'update_auth' => 'tid',
@@ -1036,13 +1036,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'site_name_alt'                => '',		// (localized)
 					'site_desc'                    => '',		// (localized)
 					'site_url'                     => '',
-					'site_org_schema_type'         => 'organization',
-					'site_place_id'                => 'none',
-					'schema_add_home_organization' => 1,
-					'schema_add_home_person'       => 0,
-					'schema_home_person_id'        => 'none',
-					'schema_logo_url'              => '',
-					'schema_banner_url'            => '',
+					'site_org_banner_url'          => '',
+					'site_org_logo_url'            => '',
+					'site_org_place_id'            => 'none',
+					'site_org_schema_type'         => 'organization',	// Organization Schema Type.
+					'site_pub_schema_type'         => 'organization',	// WebSite Publisher Type.
+					'site_pub_person_id'           => 'none',		// WebSite Publisher Person.
 					'schema_img_max'               => 1,
 					'schema_desc_max_len'          => 250,		// Max. Schema Description Length (hard limit).
 
@@ -2205,6 +2204,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'author_types' => array(
 					'none'         => '[None]',
+					'organization' => 'Organization',
+					'person'       => 'Person',
+				),
+				'publisher_types' => array(
 					'organization' => 'Organization',
 					'person'       => 'Person',
 				),

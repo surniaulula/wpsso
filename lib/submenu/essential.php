@@ -171,15 +171,7 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 						return $this->p->msgs->get_schema_disabled_rows( $table_rows, $col_span = 1 );
 					}
 
-					$table_rows[ 'schema_logo_url' ] = '' . 
-					$this->form->get_th_html_locale( '<a href="https://developers.google.com/structured-data/customize/logos">' . 
-					_x( 'Organization Logo URL', 'option label', 'wpsso' ) . '</a>', $css_class = '', $css_id = 'schema_logo_url' ) .
-					'<td>' . $this->form->get_input_locale( 'schema_logo_url', $css_class = 'wide is_required' ) . '</td>';
-
-					$table_rows[ 'schema_banner_url' ] = '' . 
-					$this->form->get_th_html_locale( '<a href="https://developers.google.com/search/docs/data-types/article#logo-guidelines">' .
-					_x( 'Organization Banner URL', 'option label', 'wpsso' ) . '</a>', $css_class = '', $css_id = 'schema_banner_url' ) .
-					'<td>' . $this->form->get_input_locale( 'schema_banner_url', $css_class = 'wide is_required' ) . '</td>';
+					$this->add_schema_publisher_type_table_rows( $table_rows, $this->form );
 
 					break;
 

@@ -150,34 +150,36 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$org_id = 'none';
+
 			if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
+
 				$org_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_organization_org_id', $filter_opts = true, $pad_opts = true );
-			} else {
-				$org_id = null;
 			}
 
-			if ( null === $org_id ) {
+			if ( null === $org_id || 'none' === $org_id ) {	// Allow for $org_id = 0.
+
 				if ( $mod[ 'is_home' ] ) {	// Static or index page.
+
 					$org_id = 'site';
+
 				} else {
-					$org_id = 'none';
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'exiting early: organization id is null or "none"' );
+					}
+
+					return $json_data;
 				}
-			}
-
-			if ( $org_id === 'none' ) {
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: organization id is "none"' );
-				}
-
-				return $json_data;
 			}
 
 			/**
 			 * Possibly inherit the schema type.
 			 */
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'possibly inherit the schema type' );
+
 				$this->p->debug->log_arr( '$json_data', $json_data );
 			}
 
@@ -208,52 +210,35 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$user_id = 'none';
+
 			if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
+
 				$user_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_person_id', $filter_opts = true, $pad_opts = true );
-			} else {
-				$user_id = null;
 			}
 
-			if ( null === $user_id ) {
+			if ( empty( $user_id ) || 'none' === $user_id ) {
 
 				if ( $mod[ 'is_home' ] ) {	// Static or index page.
 
-					if ( empty( $this->p->options[ 'schema_home_person_id' ] ) ) {
-
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'exiting early: schema_home_person_id disabled for home page' );
-						}
-
-						return $json_data;	// Exit early.
-
-					} else {
-
-						$user_id = $this->p->options[ 'schema_home_person_id' ];
-
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'person / user_id for home page is ' . $user_id );
-						}
-					}
+					$user_id = $this->p->options[ 'site_pub_person_id' ];	// 'none' by default.
 
 				} elseif ( $mod[ 'is_user' ] ) {
 
-					$user_id = $mod[ 'id' ];
+					$user_id = $mod[ 'id' ];	// Could be false.
+
 				} else {
-					$user_id = false;
-				}
-			}
 
-			if ( empty( $user_id ) || $user_id === 'none' ) {
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: empty user_id' );
+					$user_id = 'none';
 				}
 
-				return $json_data;
+				if ( empty( $user_id ) || 'none' === $user_id ) {
 
-			} else {
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'user id is "' . $user_id . '"' );
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'exiting early: user id is empty or "none"' );
+					}
+
+					return $json_data;
 				}
 			}
 
@@ -261,7 +246,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Possibly inherit the schema type.
 			 */
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'possibly inherit the schema type' );
+
 				$this->p->debug->log_arr( '$json_data', $json_data );
 			}
 
@@ -280,6 +267,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Override author's website url and use the og url instead.
 			 */
 			if ( $mod[ 'is_home' ] ) {
+
 				$ret[ 'url' ] = $mt_og[ 'og:url' ];
 			}
 
@@ -321,31 +309,40 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$mt_og[ 'schema:type:name' ],
 			) = self::get_schema_type_url_parts( $page_type_url );		// Example: https://schema.org, TechArticle.
 
-			$page_type_ids    = array();
-			$page_type_added  = array();	// Prevent duplicate schema types.
-			$site_org_type_id = false;	// Just in case.
+			$page_type_ids   = array();
+			$page_type_added = array();	// Prevent duplicate schema types.
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'head schema type id is ' . $page_type_id . ' (' . $page_type_url . ')' );
 			}
 
 			/**
-			 * Include Schema WebSite, Organization, and/or Person markup on the home page.
-			 *
-			 * The custom 'site_org_schema_type' may be a sub-type of organization, and may be filtered as a
-			 * local.business.
+			 * Include Schema Organization or Person, and WebSite markup on the home page.
 			 */
 			if ( $mod[ 'is_home' ] ) {	// Static or index home page.
 
-				$site_org_type_id = $this->p->options[ 'site_org_schema_type' ];	// Organization or a sub-type of organization.
+				switch ( $this->p->options[ 'site_pub_schema_type' ] ) {
 
-				$page_type_ids[ $site_org_type_id ] = $this->p->options[ 'schema_add_home_organization' ];
-				$page_type_ids[ 'person' ]          = $this->p->options[ 'schema_add_home_person' ];
-				$page_type_ids[ 'website' ]         = true;
+					case 'organization':
 
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'organization schema type id is ' . $site_org_type_id );
+						$site_org_type_id = $this->p->options[ 'site_org_schema_type' ];	// Organization or a sub-type of organization.
+
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'organization schema type id is ' . $site_org_type_id );
+						}
+
+						$page_type_ids[ $site_org_type_id ] = true;
+
+						break;
+
+					case 'person':
+
+						$page_type_ids[ 'person' ] = true;
+
+						break;
 				}
+
+				$page_type_ids[ 'website' ] = true;
 			}
 
 			/**
@@ -1684,21 +1681,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Logo and banner image dimensions are localized as well.
 			 *
-			 * Example: 'schema_logo_url:width#fr_FR'.
+			 * Example: 'site_org_logo_url:width#fr_FR'.
 			 */
 			return array(
 				'org_url'               => SucomUtil::get_site_url( $wpsso->options, $mixed ),
 				'org_name'              => SucomUtil::get_site_name( $wpsso->options, $mixed ),
 				'org_name_alt'          => SucomUtil::get_site_name_alt( $wpsso->options, $mixed ),
 				'org_desc'              => SucomUtil::get_site_description( $wpsso->options, $mixed ),
-				'org_logo_url'          => SucomUtil::get_key_value( 'schema_logo_url', $wpsso->options, $mixed ),
-				'org_logo_url:width'    => SucomUtil::get_key_value( 'schema_logo_url:width', $wpsso->options, $mixed ),
-				'org_logo_url:height'   => SucomUtil::get_key_value( 'schema_logo_url:height', $wpsso->options, $mixed ),
-				'org_banner_url'        => SucomUtil::get_key_value( 'schema_banner_url', $wpsso->options, $mixed ),
-				'org_banner_url:width'  => SucomUtil::get_key_value( 'schema_banner_url:width', $wpsso->options, $mixed ),
-				'org_banner_url:height' => SucomUtil::get_key_value( 'schema_banner_url:height', $wpsso->options, $mixed ),
+				'org_logo_url'          => SucomUtil::get_key_value( 'site_org_logo_url', $wpsso->options, $mixed ),
+				'org_logo_url:width'    => SucomUtil::get_key_value( 'site_org_logo_url:width', $wpsso->options, $mixed ),
+				'org_logo_url:height'   => SucomUtil::get_key_value( 'site_org_logo_url:height', $wpsso->options, $mixed ),
+				'org_banner_url'        => SucomUtil::get_key_value( 'site_org_banner_url', $wpsso->options, $mixed ),
+				'org_banner_url:width'  => SucomUtil::get_key_value( 'site_org_banner_url:width', $wpsso->options, $mixed ),
+				'org_banner_url:height' => SucomUtil::get_key_value( 'site_org_banner_url:height', $wpsso->options, $mixed ),
 				'org_schema_type'       => $wpsso->options[ 'site_org_schema_type' ],
-				'org_place_id'          => $wpsso->options[ 'site_place_id' ],
+				'org_place_id'          => $wpsso->options[ 'site_org_place_id' ],
 				'org_sameas'            => $org_sameas,
 			);
 		}
@@ -3308,9 +3305,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			} else {
 
 				if ( ! empty( $type_url ) ) {
+
 					$id_url = $type_url;
+
 				} elseif ( ! empty( $json_data[ '@id' ] ) ) {
+
 					$id_url = $json_data[ '@id' ];
+
 				} else {
 					$id_url = $json_data[ 'url' ];
 				}
@@ -3321,14 +3322,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$type_id = preg_replace( '/^' . preg_quote( $id_anchor, '/' ) . '/', '', $type_id );
 
 				/**
-				 * Check to see if we already have an anchor ID in the URL.
+				 * Check if we already have an anchor ID in the URL.
 				 */
-				if ( false !== strpos( $id_url, $id_anchor ) ) {
-					$id_url = rtrim( $id_url, $id_delim );			// Avoid repeating the delimiter.
-					$id_url = rtrim( $id_url, $id_delim . $type_id );	// Avoid appending a duplicate type ID.
-					$id_url .= $id_delim . $type_id;
-				} else {
-					$id_url .= $id_anchor . $type_id;
+				if ( false === strpos( $id_url, $id_anchor ) ) {
+					$id_url .= $id_anchor;
+				}
+
+				/**
+				 * Check if we already have the type ID in the URL.
+				 */
+				if ( false === strpos( $id_url, $id_anchor . $type_id ) ) {
+					$id_url .= $type_id;
 				}
 
 				unset( $json_data[ '@id' ] );	// Just in case.

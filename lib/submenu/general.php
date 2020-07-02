@@ -283,8 +283,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						$css_class = '', $css_id = 'g_site_verify' ) . 
 					'<td>' . $this->form->get_input( 'g_site_verify', 'api_key' ) . '</td>';
 
-					$this->add_schema_knowledge_graph_table_rows( $table_rows, $this->form );
-
 					$this->add_schema_item_props_table_rows( $table_rows, $this->form );
 
 					$table_rows[ 'seo_desc_max_len' ] = $this->form->get_tr_hide( 'basic', 'seo_desc_max_len' ) . 
