@@ -123,9 +123,9 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 						$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json', 'on_change_unhide_rows' ),
 							$event_args = array(
 								'json_var'  => 'schema_types',
-								'exp_secs'  => $schema_exp_secs,
-								'is_transl' => true,	// No label translation required.
-								'is_sorted' => true,	// No label sorting required.
+								'exp_secs'  => $schema_exp_secs,	// Create and read from a javascript URL.
+								'is_transl' => true,			// No label translation required.
+								'is_sorted' => true,			// No label sorting required.
 							)
 						),
 				),
@@ -209,9 +209,9 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 						$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
 							$event_args = array(
 								'json_var'  => 'article_sections',
-								'exp_secs'  => $select_exp_secs,
-								'is_transl' => true,	// No label translation required.
-								'is_sorted' => true,	// No label sorting required.
+								'exp_secs'  => $select_exp_secs,	// Create and read from a javascript URL.
+								'is_transl' => true,			// No label translation required.
+								'is_sorted' => true,			// No label sorting required.
 							)
 						),
 				),

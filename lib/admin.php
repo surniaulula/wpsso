@@ -2889,9 +2889,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
 							$event_args = array(
 								'json_var'  => 'schema_types',
-								'exp_secs'  => $schema_exp_secs,
-								'is_transl' => true,	// No label translation required.
-								'is_sorted' => true,	// No label sorting required.
+								'exp_secs'  => $schema_exp_secs,	// Create and read from a javascript URL.
+								'is_transl' => true,			// No label translation required.
+								'is_sorted' => true,			// No label sorting required.
 							)
 						) .
 					'</td>';
@@ -2914,9 +2914,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
 						$event_args = array(
 							'json_var'  => 'schema_types',
-							'exp_secs'  => $schema_exp_secs,
-							'is_transl' => true,	// No label translation required.
-							'is_sorted' => true,	// No label sorting required.
+							'exp_secs'  => $schema_exp_secs,	// Create and read from a javascript URL.
+							'is_transl' => true,			// No label translation required.
+							'is_sorted' => true,			// No label sorting required.
 						)
 					) . ' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
 			}
@@ -2927,9 +2927,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
 					$event_args = array(
 						'json_var'  => 'schema_types',
-						'exp_secs'  => $schema_exp_secs,
-						'is_transl' => true,	// No label translation required.
-						'is_sorted' => true,	// No label sorting required.
+						'exp_secs'  => $schema_exp_secs,	// Create and read from a javascript URL.
+						'is_transl' => true,			// No label translation required.
+						'is_sorted' => true,			// No label sorting required.
 					)
 				) . ' ' .
 				sprintf( _x( 'for %s', 'option comment', 'wpsso' ), _x( 'Post Type Archive Page', 'option comment', 'wpsso' ) ) .
@@ -2961,9 +2961,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
 						$event_args = array(
 							'json_var'  => 'schema_types',
-							'exp_secs'  => $schema_exp_secs,
-							'is_transl' => true,	// No label translation required.
-							'is_sorted' => true,	// No label sorting required.
+							'exp_secs'  => $schema_exp_secs,	// Create and read from a javascript URL.
+							'is_transl' => true,			// No label translation required.
+							'is_sorted' => true,			// No label sorting required.
 						)
 					) . ' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
 			}
