@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 7.12.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-07-04 11:33-0700\n"
-"PO-Revision-Date: 2020-07-04 11:48-0700\n"
+"POT-Creation-Date: 2020-07-04 11:49-0700\n"
+"PO-Revision-Date: 2020-07-04 11:53-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -633,7 +633,7 @@ msgstr "Type d'éditeur du site Web"
 
 #: lib/admin.php:2847
 msgctxt "option label"
-msgid "WebSite Publisher Person"
+msgid "WebSite Publisher (Person)"
 msgstr "Éditeur du site Web (personne)"
 
 #: lib/admin.php:2852
@@ -3875,17 +3875,16 @@ msgid "The website description is used for the WordPress blog (non-static) front
 msgstr "La description du site Web est utilisée pour la page d'accueil blog de WordPress (non statique)."
 
 #: lib/messages.php:420
-#, fuzzy
-msgid "Select a Schema publisher type for the content of this website."
-msgstr "Sélectionnez un type de Schéma pour le document qui décrit le mieux le contenu principal de cette page Web."
+msgid "Select a Schema type for the publisher of the content for this website."
+msgstr "Sélectionnez un type de Schéma pour l'éditeur du contenu de ce site Web."
 
 #: lib/messages.php:422
 msgid "Traditionally, the Schema Organization type is selected for business websites, where-as the Schema Person type is selected for personal websites."
 msgstr "Traditionnellement, le type de Schéma Organisation est sélectionné pour les sites Web d'entreprise, alors que le type de Schéma Personne est sélectionné pour les sites Web personnels."
 
 #: lib/messages.php:428
-msgid "Select a user profile for the Schema publisher Person markup."
-msgstr "Sélectionnez un profil utilisateur pour le balisage Personne du Schéma d'éditeur."
+msgid "Select a user profile for the Schema Person publisher markup."
+msgstr "Sélectionnez un profil utilisateur pour le balisage d'éditeur de Schéma Person."
 
 #: lib/messages.php:430
 msgid "The available Person list includes users with the \"%1$s\" or \"%2$s\" role."
@@ -6921,9 +6920,8 @@ msgid "https://wpsso.com/extend/plugins/wpsso/"
 msgstr "https://wpsso.com/extend/plugins/wpsso/"
 
 #. Description of the plugin/theme
-#, fuzzy
 msgid "Make sure your content looks great on social sites and search results - no matter how your URLs are crawled, shared, re-shared, posted or embedded."
-msgstr "Assure que votre contenu a fière allure sur tous les sites - quelle que soit la manière dont vos pages Web sont explorées, partagées, re-partagées, publiées ou intégrées."
+msgstr "Assurez-vous que votre contenu a fière allure sur les sites sociaux et les résultats de recherche, quelle que soit la manière dont vos pages Web sont explorées, partagées, re-partagées, publiées ou intégrées."
 
 #. Author of the plugin/theme
 msgid "JS Morisset"
