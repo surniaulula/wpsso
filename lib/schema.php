@@ -3349,8 +3349,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 *	"@id": "/06d3730efc83058f497d3d44f2f364e3#sso/person"
 			 */
 			if ( $hash_url ) {
-				$json_data[ '@id' ] = preg_replace( '/^(.*:\/\/.*)(' . preg_quote( $id_anchor, '/' ) . '.*)?$/U',
-					'/' . md5( '$1' ) . '$2', $json_data[ '@id' ] );
+
+				if ( preg_match( '/^(.*:\/\/.*)(' . preg_quote( $id_anchor, '/' ) . '.*)?$/U', $json_data[ '@id' ], $matches ) ) {
+
+					$md5_url = '/' . md5( $matches[ 1 ] ) . $matches[ 2 ];
+
+					$json_data[ '@id' ] = str_replace( $matches[ 0 ], $md5_url, $json_data[ '@id' ] );
+				}
 			}
 
 			if ( $wpsso->debug->enabled ) {
