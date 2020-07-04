@@ -312,7 +312,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* Added a new "WebSite Publisher Type" option under the SSO &gt; Essential Settings &gt; Google tab.
-	* Renamed the "User for Person Social Profile" option to "WebSite Publisher Person"
+	* Renamed the "User for Person Social Profile" option to "WebSite Publisher (Person)"
 	* Removed the "Knowledge Graph for Home Page" option.
 * **Bugfixes**
 	* Fixed possible duplicate Organization markup in the home page.
@@ -616,7 +616,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 7.12.0-rc.1 =
 
-(2020/07/04) Fixed possible duplicate Organization markup in the home page. Added a new "WebSite Publisher Type" option under the SSO &gt; Essential Settings &gt; Google tab.
+(2020/07/04) Fixed possible duplicate Organization markup in the home page. Fixed a non-unique md5 hash value for the Schema Person @id string. Added a new "WebSite Publisher Type" option in the Essential Settings page.
 
 = 7.11.0 =
 
