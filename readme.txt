@@ -306,7 +306,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.12.0-dev.3 (2020/07/04)**
+**Version 7.12.0-b.1 (2020/07/04)**
 
 * **New Features**
 	* None.
@@ -613,7 +613,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 7.12.0-dev.3 =
+= 7.12.0-b.1 =
 
 (2020/07/04) Fixed possible duplicate Organization markup in the home page. Added a new "WebSite Publisher Type" option under the SSO &gt; Essential Settings &gt; Google tab.
 
