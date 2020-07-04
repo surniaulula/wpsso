@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 7.12.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-07-04 11:49-0700\n"
-"PO-Revision-Date: 2020-07-04 11:53-0700\n"
+"POT-Creation-Date: 2020-07-04 11:55-0700\n"
+"PO-Revision-Date: 2020-07-04 11:58-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1606,10 +1606,9 @@ msgid "Add a Person"
 msgstr "Ajouter une personne"
 
 #: lib/gettext-config.php:36
-#, fuzzy
 msgctxt "plugin description"
-msgid "Make sure your content looks great on social sites and search results - no matter how your URLs are crawled, shared, re-shared, posted, or embedded."
-msgstr "Assure que votre contenu a fière allure sur tous les sites - quelle que soit la manière dont vos pages Web sont explorées, partagées, re-partagées, publiées ou intégrées."
+msgid "Make sure your content looks great on social sites and search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded."
+msgstr "Assurez-vous que votre contenu a fière allure sur les sites sociaux et les résultats de recherche, quelle que soit la manière dont vos pages Web sont explorées, partagées, re-partagées, publiées ou intégrées."
 
 #: lib/gettext-config.php:37
 msgctxt "plugin description"
@@ -1637,7 +1636,6 @@ msgid "Google Rich Results and Structured Data for Articles, Carousels (aka Item
 msgstr "Résultats riche de Google et données structurées pour articles, carrousels, critiques, entreprise / référencement locale, étapes pratiques, évaluations de déclarations, événements, images, organisations, pages FAQ, produits, recettes, restaurants, videos, et plus."
 
 #: lib/gettext-config.php:42
-#, fuzzy
 msgctxt "plugin description"
 msgid "Customize the Schema Organization Markup for your WebSite and Manage Additional Organizations (Publisher, Organizer, etc.)."
 msgstr "Personnaliser le balisage de Schéma Organisation pour votre site Web et de gérer des organisations supplémentaires (éditeur, organisateur, etc.)."
@@ -3917,14 +3915,12 @@ msgid "To select a different organization type ID for the WebSite, define the %s
 msgstr "Pour choisir un ID de type d'organisation différent pour le site Web, définissez la constante %s avec l'ID de type souhaité (notez qu'il s'agit d'un ID de type de Schéma, pas d'une URL de type de Schéma)."
 
 #: lib/messages.php:449
-#, fuzzy
 msgid "A URL for this organization's logo image that Google can show in its search results and <em>Knowledge Graph</em>."
-msgstr "L'URL pour l'image du logo de cette organisation que Google peut utiliser dans ces résultats de recherche et <em>Knowledge Graph</em>."
+msgstr "L'URL pour l'image du logo de cette organisation que Google peut afficher dans ces résultats de recherche et <em>Knowledge Graph</em>."
 
 #: lib/messages.php:455
-#, fuzzy
 msgid "A URL for this organization's banner image &mdash; <strong>measuring exactly 600x60px</strong> &mdash; that Google News can show for Schema Article type content from this publisher."
-msgstr "L'URL d'image de bannière pour cette organisation &mdash; <strong>mesurant exactement 600x60px</strong> &mdash; que Google News peut utiliser pour le contenu Schéma d'Article de cet éditeur."
+msgstr "L'URL d'image de bannière pour cette organisation &mdash; <strong>mesurant exactement 600x60px</strong> &mdash; que Google News peut afficher pour le contenu Schéma d'Article de cet éditeur."
 
 #: lib/messages.php:467
 msgid "Select an optional location for this organization (requires the %s add-on)."
@@ -6920,7 +6916,7 @@ msgid "https://wpsso.com/extend/plugins/wpsso/"
 msgstr "https://wpsso.com/extend/plugins/wpsso/"
 
 #. Description of the plugin/theme
-msgid "Make sure your content looks great on social sites and search results - no matter how your URLs are crawled, shared, re-shared, posted or embedded."
+msgid "Make sure your content looks great on social sites and search results, no matter how your URLs are crawled, shared, re-shared, posted or embedded."
 msgstr "Assurez-vous que votre contenu a fière allure sur les sites sociaux et les résultats de recherche, quelle que soit la manière dont vos pages Web sont explorées, partagées, re-partagées, publiées ou intégrées."
 
 #. Author of the plugin/theme
