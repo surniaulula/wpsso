@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 7.12.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-07-04 11:33-0700\n"
-"PO-Revision-Date: 2020-07-04 11:33-0700\n"
+"PO-Revision-Date: 2020-07-04 11:48-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3880,19 +3880,16 @@ msgid "Select a Schema publisher type for the content of this website."
 msgstr "Sélectionnez un type de Schéma pour le document qui décrit le mieux le contenu principal de cette page Web."
 
 #: lib/messages.php:422
-#, fuzzy
 msgid "Traditionally, the Schema Organization type is selected for business websites, where-as the Schema Person type is selected for personal websites."
-msgstr "Traditionnellement, le balisage de Schéma d'organisation est inclus pour les sites Web d'entreprise, tandis que le balisage de Schéma de personne est inclus pour les sites Web personnels."
+msgstr "Traditionnellement, le type de Schéma Organisation est sélectionné pour les sites Web d'entreprise, alors que le type de Schéma Personne est sélectionné pour les sites Web personnels."
 
 #: lib/messages.php:428
-#, fuzzy
 msgid "Select a user profile for the Schema publisher Person markup."
-msgstr "Sélectionnez un format de nom pour les balises méta d'auteur et/ou le balisage Schéma de personne."
+msgstr "Sélectionnez un profil utilisateur pour le balisage Personne du Schéma d'éditeur."
 
 #: lib/messages.php:430
-#, fuzzy
 msgid "The available Person list includes users with the \"%1$s\" or \"%2$s\" role."
-msgstr "La liste des personnes disponibles inclut les utilisateurs avec les rôles \"%1$s\" et/ou \"%2$s\"."
+msgstr "La liste des personnes disponibles inclut les utilisateurs avec le rôle \"%1$s\" ou \"%2$s\"."
 
 #: lib/messages.php:431
 msgctxt "user role"
@@ -3905,24 +3902,20 @@ msgid "Editor"
 msgstr "Éditeur"
 
 #: lib/messages.php:437
-#, fuzzy
 msgid "Unfortunately, Google does not recognize all Schema Organization sub-types as valid organizations."
-msgstr "Google ne reconnaît pas tous les sous-types de Schéma Organisation en tant que types d'organisation et d'éditeur valides."
+msgstr "Malheureusement, Google ne reconnaît pas tous les sous-types de Schéma Organisation comme des organisations valides."
 
 #: lib/messages.php:439
-#, fuzzy
 msgid "The default Schema type ID for the WebSite organization is \"%s\"."
-msgstr "Le nom d'attribut par défaut est \"%s\"."
+msgstr "L'ID de type de Schéma par défaut pour l'organisation du site Web est \"%s\"."
 
 #: lib/messages.php:441
-#, fuzzy
 msgid "You should not change this default value unless you are confident that Google will recognize your preferred Schema Organization sub-type as a valid organization."
-msgstr "L'ID de type d'organisation du site Web devrait être \"%s\", sauf si vous êtes certain que Google reconnaîtra le sous-type que vous choisissez comme un type de Schéma Organisation valide."
+msgstr "Vous ne devez pas modifier cette valeur par défaut, sauf si vous êtes certain que Google reconnaîtra votre sous-type de Schéma Organisation souhaité comme une organisation valide."
 
 #: lib/messages.php:443
-#, fuzzy
 msgid "To select a different organization type ID for the WebSite, define the %s constant with your preferred type ID (note that this is a Schema type ID, not a Schema type URL)."
-msgstr "Pour choisir un ID de type d'organisation différent pour votre site Web, définissez la constante %s avec l'ID de type souhaité (l'ID de type, et non l'URL du type de Schéma)."
+msgstr "Pour choisir un ID de type d'organisation différent pour le site Web, définissez la constante %s avec l'ID de type souhaité (notez qu'il s'agit d'un ID de type de Schéma, pas d'une URL de type de Schéma)."
 
 #: lib/messages.php:449
 #, fuzzy
@@ -6939,38 +6932,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
-
-#~ msgctxt "option label"
-#~ msgid "Knowledge Graph for Home Page"
-#~ msgstr "Knowledge Graph page d'accueil"
-
-#~ msgid "Include Schema Organization"
-#~ msgstr "Inclure le Schéma d'organisation"
-
-#~ msgid "Include Schema Person"
-#~ msgstr "Inclure le Schéma de personne"
-
-#~ msgctxt "option label"
-#~ msgid "User for Person Social Profile"
-#~ msgstr "Utilisateur pour le profil social de personne"
-
-#~ msgid "Enable or disable the Schema WebSite, Organization, and Person markup in the home page for Google's Knowledge Graph."
-#~ msgstr "Activez ou désactivez le balisage Schéma \"WebSite\", \"Organization\" et \"Person\" dans la page d'accueil pour le Knowledge Graph de Google."
-
-#~ msgid "The Schema WebSite markup includes the site name, alternate site name, site URL, and search query URL."
-#~ msgstr "Le balisage de Schéma du site Web comprend le nom du site, le nom alternatif du site, l'URL du site, et l'URL de la requête de recherche."
-
-#~ msgid "Developers can hook the \"%s\" filter to modify the site search URL (or disable its addition by returning false)."
-#~ msgstr "Les développeurs peuvent accrocher le filtre \"%s\" pour modifier l'URL de recherche du site (ou désactiver son ajout en retournant false)."
-
-#~ msgid "The Schema Organization markup includes all URLs entered in the %s settings page."
-#~ msgstr "Le balisage de Schéma d'organisation inclut toutes les URL saisies dans la page de réglages %s."
-
-#~ msgid "The Schema Person markup includes all contact method URLs entered in the user's WordPress profile page."
-#~ msgstr "Le balisage de Schéma de personne inclut toutes les URL de contact saisies dans la page de profil de l'utilisateur WordPress."
-
-#~ msgid "Select an optional site owner for the <em>Knowledge Graph</em> Person markup included in the front page."
-#~ msgstr "Sélectionnez un propriétaire de site optionnel pour le balisage <em> Knowledge Graph </em> de personne inclus dans la page d'accueil."
-
-#~ msgid "The Person markup includes all contact method URLs entered in the user's WordPress profile page."
-#~ msgstr "Le balisage de personne comprend toutes les URL de contact entrées dans la page de profil de l'utilisateur WordPress."
