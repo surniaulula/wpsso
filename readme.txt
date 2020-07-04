@@ -306,7 +306,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.12.0-rc.1 (2020/07/04)**
+**Version 7.12.0 (2020/07/04)**
 
 * **New Features**
 	* None.
@@ -614,11 +614,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 7.12.0-rc.1 =
+= 7.12.0 =
 
 (2020/07/04) Fixed possible duplicate Organization markup in the home page. Fixed a non-unique md5 hash value for the Schema Person @id string. Added a new "WebSite Publisher Type" option in the Essential Settings page.
-
-= 7.11.0 =
-
-(2020/06/27) Added a new 'wpsso_version_updates' action, which is run when add-on versions are updated / changed.
 
