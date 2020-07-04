@@ -423,7 +423,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-site_pub_person_id':	// WebSite Publisher Person.
+						case 'tooltip-site_pub_person_id':	// WebSite Publisher (Person).
 
 							$text = __( 'Select a user profile for the Schema publisher Person markup.', 'wpsso' ) . ' ';
 

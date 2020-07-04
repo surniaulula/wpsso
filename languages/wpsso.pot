@@ -676,7 +676,7 @@ msgstr ""
 
 #: lib/admin.php:2847
 msgctxt "option label"
-msgid "WebSite Publisher Person"
+msgid "WebSite Publisher (Person)"
 msgstr ""
 
 #: lib/admin.php:2852

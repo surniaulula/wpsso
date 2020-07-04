@@ -2844,7 +2844,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_change_unhide_rows' ) ) . '</td>';
 
 			$table_rows[ 'site_pub_person_id' ] = '<tr class="hide_site_pub_schema_type hide_site_pub_schema_type_person">' . 
-			$this->form->get_th_html( _x( 'WebSite Publisher Person', 'option label', 'wpsso' ), '', 'site_pub_person_id' ) . 
+			$this->form->get_th_html( _x( 'WebSite Publisher (Person)', 'option label', 'wpsso' ), '', 'site_pub_person_id' ) . 
 			'<td>' . $this->form->get_select( 'site_pub_person_id', $site_owners, $css_class = '', $css_id = '', $is_assoc = true ) . '</td>';
 
 			$table_rows[ 'site_org_logo_url' ] = '<tr class="hide_site_pub_schema_type hide_site_pub_schema_type_organization">' .

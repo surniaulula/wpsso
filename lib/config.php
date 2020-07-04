@@ -1041,7 +1041,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'site_org_place_id'            => 'none',
 					'site_org_schema_type'         => 'organization',	// Organization Schema Type.
 					'site_pub_schema_type'         => 'organization',	// WebSite Publisher Type.
-					'site_pub_person_id'           => 'none',		// WebSite Publisher Person.
+					'site_pub_person_id'           => 'none',		// WebSite Publisher (Person).
 					'schema_img_max'               => 1,
 					'schema_desc_max_len'          => 250,		// Max. Schema Description Length (hard limit).
 
