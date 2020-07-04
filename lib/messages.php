@@ -417,7 +417,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-site_pub_schema_type':	// WebSite Publisher Type.
 
-							$text .= __( 'Select a Schema publisher type for the content of this website.', 'wpsso' ) . ' ';
+							$text .= __( 'Select a Schema type for the publisher of the content for this website.', 'wpsso' ) . ' ';
 
 							$text .= __( 'Traditionally, the Schema Organization type is selected for business websites, where-as the Schema Person type is selected for personal websites.', 'wpsso' );
 
@@ -425,7 +425,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-site_pub_person_id':	// WebSite Publisher (Person).
 
-							$text = __( 'Select a user profile for the Schema publisher Person markup.', 'wpsso' ) . ' ';
+							$text = __( 'Select a user profile for the Schema Person publisher markup.', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( 'The available Person list includes users with the "%1$s" or "%2$s" role.', 'wpsso' ),
 								_x( 'Administrator', 'user role', 'wpsso' ), _x( 'Editor', 'user role', 'wpsso' ) );

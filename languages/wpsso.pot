@@ -4126,7 +4126,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:420
-msgid "Select a Schema publisher type for the content of this website."
+msgid "Select a Schema type for the publisher of the content for this website."
 msgstr ""
 
 #: lib/messages.php:422
@@ -4136,7 +4136,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:428
-msgid "Select a user profile for the Schema publisher Person markup."
+msgid "Select a user profile for the Schema Person publisher markup."
 msgstr ""
 
 #: lib/messages.php:430
