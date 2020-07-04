@@ -306,7 +306,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.12.0-b.1 (2020/07/04)**
+**Version 7.12.0-rc.1 (2020/07/04)**
 
 * **New Features**
 	* None.
@@ -316,6 +316,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Removed the "Knowledge Graph for Home Page" option.
 * **Bugfixes**
 	* Fixed possible duplicate Organization markup in the home page.
+	* Fixed a non-unique md5 hash value for the Schema Person @id string.
 * **Developer Notes**
 	* Refactored the `WpssoSchemaGraph::optimize_json()` method to avoid possible duplicate Organization markup in the home page.
 	* Refactored the `WpssoSchema::update_data_id()` method to avoid possibly appending duplicate type IDs to the '@id' string.
@@ -613,7 +614,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 7.12.0-b.1 =
+= 7.12.0-rc.1 =
 
 (2020/07/04) Fixed possible duplicate Organization markup in the home page. Added a new "WebSite Publisher Type" option under the SSO &gt; Essential Settings &gt; Google tab.
 
