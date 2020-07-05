@@ -898,7 +898,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				/**
 				 * By default, define normal product prices (not on sale) as valid for 1 year.
 				 */
-				$valid_max_time  = SucomUtil::get_const( 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME', YEAR_IN_SECONDS );
+				$valid_max_time  = SucomUtil::get_const( 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME', MONTH_IN_SECONDS );
 
 				/**
 				 * Only define once for all offers to allow for (maybe) a common value in the AggregateOffer markup.
