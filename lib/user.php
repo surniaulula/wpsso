@@ -516,7 +516,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( get_user_meta( $user_id, $meta_key, $single = true ) === '' ) {	// Returns empty string if meta not found.
 
-				$head_info = $this->get_head_info( $user_id, $read_cache = true );
+				$this->get_head_info( $user_id, $read_cache = true );
 			}
 
 			unset( $local_recursion[ $user_id ][ $meta_key ] );
