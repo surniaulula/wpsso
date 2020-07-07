@@ -295,7 +295,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$opts = $this->get_submit_opts( $term_id );
 
+			/**
+			 * Just in case - do not save the SEO description if an SEO plugin is active.
+			 */
 			if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
+
 				unset( $opts[ 'seo_desc' ] );
 			}
 
@@ -463,6 +467,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				if ( ( $col_info = self::get_sortable_columns( $col_key ) ) !== null ) {
 
 					if ( isset( $col_info[ 'meta_key' ] ) ) {	// just in case
+
 						$value = $this->get_meta_cache_value( $term_id, $col_info[ 'meta_key' ] );
 					}
 				}
@@ -473,12 +478,22 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		public function get_meta_cache_value( $term_id, $meta_key, $none = '' ) {
 
-			$meta_cache = wp_cache_get( $term_id, 'term_meta' );	// optimize and check wp_cache first
+			/**
+			 * WordPress stores data using a post, term, or user ID, along with a group string.
+			 *
+			 * Example: wp_cache_get( 1, 'user_meta' );
+			 *
+			 * Returns (bool|mixed) false on failure to retrieve contents or the cache contents on success.
+			 *
+			 * $found (bool) (Optional) whether the key was found in the cache (passed by reference). Disambiguates a
+			 * return of false, a storable value. Default null.
+			 */
+			$meta_cache = wp_cache_get( $term_id, 'term_meta', $force = false, $found );	// Optimize and check wp_cache first.
 
 			if ( isset( $meta_cache[ $meta_key ][ 0 ] ) ) {
 				$value = (string) maybe_unserialize( $meta_cache[ $meta_key ][ 0 ] );
 			} else {
-				$value = (string) self::get_term_meta( $term_id, $meta_key, true );	// $single = true
+				$value = (string) self::get_term_meta( $term_id, $meta_key, $single = true );
 			}
 
 			if ( $value === 'none' ) {

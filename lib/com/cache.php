@@ -712,21 +712,24 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				case 'wp_cache':
 
-					$cache_id   = $this->lca . '_' . md5( $cache_salt );	// Add a prefix to the object cache id.
+					$cache_id = $this->lca . '_' . md5( $cache_salt );	// Add a prefix to the object cache id.
+
 					$cache_data = wp_cache_get( $cache_id, __CLASS__ );
 
 					break;
 
 				case 'transient':
 
-					$cache_id   = $this->lca . '_' . md5( $cache_salt );	// Add a prefix to the object cache id.
+					$cache_id = $this->lca . '_' . md5( $cache_salt );	// Add a prefix to the object cache id.
+
 					$cache_data = get_transient( $cache_id );
 
 					break;
 
 				case 'file':
 
-					$cache_id   = md5( $cache_salt );			// No lca prefix on file names.
+					$cache_id = md5( $cache_salt );			// No lca prefix on file names.
+
 					$cache_file = $this->base_dir . $cache_id . $file_ext;
 
 					$file_exp_secs = null === $exp_secs ? $this->default_file_cache_exp : $exp_secs;

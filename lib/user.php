@@ -297,7 +297,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$opts = $this->get_submit_opts( $user_id );
 
+			/**
+			 * Just in case - do not save the SEO description if an SEO plugin is active.
+			 */
 			if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
+
 				unset( $opts[ 'seo_desc' ] );
 			}
 
@@ -433,7 +437,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$col_key = str_replace( $this->p->lca . '_', '', $column_name );
 
 				if ( ( $col_info = self::get_sortable_columns( $col_key ) ) !== null ) {
+
 					if ( isset( $col_info[ 'meta_key' ] ) ) {	// Just in case.
+
 						$value = $this->get_meta_cache_value( $user_id, $col_info[ 'meta_key' ] );
 					}
 				}
@@ -443,7 +449,17 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function get_meta_cache_value( $user_id, $meta_key, $none = '' ) {
 
-			$meta_cache = wp_cache_get( $user_id, 'user_meta' );	// optimize and check wp_cache first
+			/**
+			 * WordPress stores data using a post, term, or user ID, along with a group string.
+			 *
+			 * Example: wp_cache_get( 1, 'user_meta' );
+			 *
+			 * Returns (bool|mixed) false on failure to retrieve contents or the cache contents on success.
+			 *
+			 * $found (bool) (Optional) whether the key was found in the cache (passed by reference). Disambiguates a
+			 * return of false, a storable value. Default null.
+			 */
+			$meta_cache = wp_cache_get( $user_id, 'user_meta', $force = false, $found );	// Optimize and check wp_cache first.
 
 			if ( isset( $meta_cache[ $meta_key ][ 0 ] ) ) {
 				$value = (string) maybe_unserialize( $meta_cache[ $meta_key ][ 0 ] );
@@ -465,8 +481,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			if ( ! empty( $user_id ) ) {	// Just in case.
+
 				if ( ( $sort_cols = self::get_sortable_columns( $col_key ) ) !== null ) {
+
 					if ( isset( $sort_cols[ 'meta_key' ] ) ) {	// Just in case.
+
 						update_user_meta( $user_id, $sort_cols[ 'meta_key' ], $content );
 					}
 				}
@@ -497,7 +516,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( get_user_meta( $user_id, $meta_key, $single = true ) === '' ) {	// Returns empty string if meta not found.
 
-				$this->get_head_info( $user_id, $read_cache = true );
+				$head_info = $this->get_head_info( $user_id, $read_cache = true );
 			}
 
 			unset( $local_recursion[ $user_id ][ $meta_key ] );

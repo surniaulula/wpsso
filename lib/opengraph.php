@@ -692,9 +692,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			if ( empty( $type_name ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: og type name is empty' );
 				}
+
 				return $default_id;	// Just in case.
 			}
 

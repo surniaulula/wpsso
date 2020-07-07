@@ -659,6 +659,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$cache_id = 'id:' . $obj_id;
 
 			if ( isset( $local_cache[ $cache_id ] ) ) {
+
 				return $local_cache[ $cache_id ];
 			}
 
@@ -790,7 +791,12 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				'salt' => 'WpssoPage::get_the_content(' . $mod_salt . ')',
 			);
 
-			$cleared_count = 0;
+			/**
+			 * WordPress stores data using a post, term, or user ID, along with a group string.
+			 *
+			 * Example: wp_cache_get( 1, 'user_meta' );
+			 */
+			$cleared_count = wp_cache_delete( $mod[ 'id' ], $mod[ 'name' ] . '_meta' );
 
 			$cleared_ids = array();
 
@@ -946,8 +952,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				 * If an image ID is being used, then remove the image url (only one can be defined).
 				 */
 				if ( empty( $md_opts[ $md_pre . '_img_id' ] ) ) {
+
 					unset( $md_opts[ $md_pre . '_img_id_pre' ] );
+
 				} else {
+
 					unset( $md_opts[ $md_pre . '_img_url' ] );
 				}
 			}
@@ -973,6 +982,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			foreach ( $this->p->cf[ 'opt' ][ 'cf_md_multi' ] as $md_multi => $is_multi ) {
 
 				if ( empty( $is_multi ) ) {	// True, false, or array.
+
 					continue;
 				}
 
@@ -988,6 +998,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				foreach ( $md_multi_opts as $md_num => $md_val ) {
 
 					if ( $md_val !== '' ) {	// Only save non-empty values.
+
 						$md_renum_opts[ $md_multi . '_' . $renum ] = $md_val;
 					}
 
@@ -995,8 +1006,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					 * Check if there are linked options, and if so, re-number those options as well.
 					 */
 					if ( is_array( $is_multi ) ) {
+
 						foreach ( $is_multi as $md_multi_linked ) {
+
 							if ( isset( $md_opts[ $md_multi_linked . '_' . $md_num ] ) ) {	// Just in case.
+
 								$md_renum_opts[ $md_multi_linked . '_' . $renum ] = $md_opts[ $md_multi_linked . '_' . $md_num ];
 							}
 						}
@@ -1011,7 +1025,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				$md_opts = SucomUtil::preg_grep_keys( '/^' . $md_multi . '_([0-9]+)$/', $md_opts, $invert = true );
 
 				if ( is_array( $is_multi ) ) {
+
 					foreach ( $is_multi as $md_multi_linked ) {
+
 						$md_opts = SucomUtil::preg_grep_keys( '/^' . $md_multi_linked . '_([0-9]+)$/', $md_opts, $invert = true );
 					}
 				}
@@ -1020,6 +1036,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				 * Save the re-numbered options.
 				 */
 				foreach ( $md_renum_opts as $md_key => $md_val ) {
+
 					$md_opts[ $md_key ] = $md_val;
 				}
 
@@ -1034,7 +1051,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				$md_opts[ 'options_version' ] = $this->p->cf[ 'opt' ][ 'version' ];
 
 				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
+
 					if ( isset( $info[ 'opt_version' ] ) ) {
+
 						$md_opts[ 'plugin_' . $ext . '_opt_version' ] = $info[ 'opt_version' ];
 					}
 				}
@@ -1064,6 +1083,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			if ( false !== $col_key ) {
 
 				if ( isset( $sort_cols[ $col_key ] ) ) {
+
 					return $sort_cols[ $col_key ];
 				}
 
@@ -1083,6 +1103,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			foreach ( $sort_cols as $col_key => $col_info ) {
 
 				if ( ! empty( $col_info[ 'meta_key' ] ) ) {
+
 					$meta_keys[ $col_key ] = $col_info[ 'meta_key' ];
 				}
 			}
@@ -1092,12 +1113,14 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		public static function get_column_headers() { 
 
-			$headers   = array();
+			$headers = array();
+
 			$sort_cols = self::get_sortable_columns();
 
 			foreach ( $sort_cols as $col_key => $col_info ) {
 
 				if ( ! empty( $col_info[ 'header' ] ) ) {
+
 					$headers[ $col_key ] = _x( $col_info[ 'header' ], 'column header', 'wpsso' );
 				}
 			}
@@ -1106,6 +1129,10 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		}
 
 		public function get_column_wp_cache( array $mod, $column_name ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
 
 			$value = '';
 
@@ -1117,14 +1144,35 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 					if ( isset( $col_info[ 'meta_key' ] ) ) {	// Just in case.
 
-						$meta_cache = wp_cache_get( $mod[ 'id' ], $mod[ 'name' ] . '_meta' );
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'getting meta cache for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );
+						}
 
-						if ( ! $meta_cache ) {
+						/**
+						 * WordPress stores data using a post, term, or user ID, along with a group string.
+						 *
+						 * Example: wp_cache_get( 1, 'user_meta' );
+						 *
+						 * Returns (bool|mixed) false on failure to retrieve contents or the cache contents on success.
+						 *
+						 * $found (bool) (Optional) whether the key was found in the cache (passed by reference). Disambiguates a
+						 * return of false, a storable value. Default null.
+						 */
+						$meta_cache = wp_cache_get( $mod[ 'id' ], $mod[ 'name' ] . '_meta', $force = false, $found );
+
+						if ( ! $found ) {
+
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'updating meta cache for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );
+							}
+
 							$meta_cache = update_meta_cache( $mod[ 'name' ], array( $mod[ 'id' ] ) );
+
 							$meta_cache = $meta_cache[ $mod[ 'id' ] ];
 						}
 
 						if ( isset( $meta_cache[ $col_info[ 'meta_key' ] ] ) ) {
+
 							$value = (string) maybe_unserialize( $meta_cache[ $col_info[ 'meta_key' ] ][ 0 ] );
 						}
 					}
@@ -1154,6 +1202,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			foreach ( self::get_sortable_columns() as $col_key => $col_info ) {
 
 				if ( ! empty( $col_info[ 'orderby' ] ) ) {
+
 					$columns[ $this->p->lca . '_' . $col_key ] = $this->p->lca . '_' . $col_key;
 				}
 			}

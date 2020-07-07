@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '7.12.0',	// Plugin version.
+					'version'     => '7.13.0-dev.1',	// Plugin version.
 					'opt_version' => '745',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1184,7 +1184,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_type_for_tax_category'      => 'website',
 					'og_type_for_tax_link_category' => 'website',
 					'og_type_for_tax_post_tag'      => 'website',
-					'og_type_for_user_page'         => 'website',
+					'og_type_for_user_page'         => 'profile',
 
 					/**
 					 * Other taxonomy and post types.
@@ -2496,6 +2496,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'organization' => 'website',
 					'place'        => 'place',
 					'product'      => 'product',
+					'profile'      => 'profile',
 				),
 
 				/**
@@ -2509,6 +2510,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'product'              => 'product',
 					'review'               => 'article',
 					'software.application' => 'product',
+					'webpage.profile'      => 'profile',
 				),
 
 				'og_type_ns' => array(		// See https://ogp.me/#types.
@@ -2536,6 +2538,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'book'                => 'https://ogp.me/ns/book#',
 					'place'               => 'https://ogp.me/ns/place#',	// Supported by Facebook and Pinterest.
 					'product'             => 'https://ogp.me/ns/product#',	// Supported by Facebook and Pinterest.
+					'profile'             => 'https://ogp.me/ns/profile#',
 					'website'             => 'https://ogp.me/ns/website#',
 				),
 				'og_type_mt' => array(						// See https://developers.facebook.com/docs/reference/opengraph/.

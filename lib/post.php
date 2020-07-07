@@ -404,6 +404,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 * Just in case - do not save the SEO description if an SEO plugin is active.
 			 */
 			if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
+
 				unset( $opts[ 'seo_desc' ] );
 			}
 
@@ -554,6 +555,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				if ( ( $col_info = self::get_sortable_columns( $col_key ) ) !== null ) {
 
 					if ( isset( $col_info[ 'meta_key' ] ) ) {	// Just in case.
+
 						$value = $this->get_meta_cache_value( $post_id, $col_info[ 'meta_key' ] );
 					}
 
@@ -562,6 +564,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						foreach( $col_info[ 'post_callbacks' ] as $input_name => $input_callback ) {
 
 							if ( ! empty( $input_callback ) ) {
+
 								$value .= "\n" . '<input name="' . $input_name . '" type="hidden" value="' . 
 									call_user_func( $input_callback, $post_id ) . '" readonly="readonly" />';
 							}
@@ -575,7 +578,17 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function get_meta_cache_value( $post_id, $meta_key, $none = '' ) {
 
-			$meta_cache = wp_cache_get( $post_id, 'post_meta' );	// Optimize and check wp_cache first.
+			/**
+			 * WordPress stores data using a post, term, or user ID, along with a group string.
+			 *
+			 * Example: wp_cache_get( 1, 'user_meta' );
+			 *
+			 * Returns (bool|mixed) false on failure to retrieve contents or the cache contents on success.
+			 *
+			 * $found (bool) (Optional) whether the key was found in the cache (passed by reference). Disambiguates a
+			 * return of false, a storable value. Default null.
+			 */
+			$meta_cache = wp_cache_get( $post_id, 'post_meta', $force = false, $found );	// Optimize and check wp_cache first.
 
 			if ( isset( $meta_cache[ $meta_key ][ 0 ] ) ) {
 				$value = (string) maybe_unserialize( $meta_cache[ $meta_key ][ 0 ] );
@@ -597,8 +610,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			if ( ! empty( $post_id ) ) {	// Just in case.
+
 				if ( ( $col_info = self::get_sortable_columns( $col_key ) ) !== null ) {
+
 					if ( isset( $col_info[ 'meta_key' ] ) ) {	// Just in case.
+
 						update_post_meta( $post_id, $col_info[ 'meta_key' ], $content );
 					}
 				}
