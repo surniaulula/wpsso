@@ -306,7 +306,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.13.0-dev.1 (TBD)**
+**Version 7.13.0-dev.1 (2020/07/07)**
 
 * **New Features**
 	* None.
@@ -315,7 +315,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed missing submission of form options that are disabled via jQuery.
 * **Developer Notes**
-	* None.
+	* Added a `sucomDisableUnchanged()` jQuery call to the 'profile' and 'sitesubmenu' form submissions.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
@@ -630,7 +630,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 7.13.0-dev.1 =
 
-(TBD) Fixed missing submission of form options that are disabled via jQuery.
+(2020/07/07) Fixed missing submission of form options that are disabled via jQuery.
 
 = 7.12.0 =
 
