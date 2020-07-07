@@ -306,6 +306,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 7.13.0-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed missing submission of form options that are disabled via jQuery.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.2.
+
 **Version 7.12.0 (2020/07/04)**
 
 * **New Features**
@@ -613,6 +627,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 7.13.0-dev.1 =
+
+(TBD) Fixed missing submission of form options that are disabled via jQuery.
 
 = 7.12.0 =
 
