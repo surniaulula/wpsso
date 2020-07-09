@@ -311,7 +311,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added contextual information about the Google Structured Data Testing Tool being deprecated.
 * **Bugfixes**
 	* Fixed missing submission of form options that are disabled via jQuery.
 * **Developer Notes**
