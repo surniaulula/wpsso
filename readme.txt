@@ -306,7 +306,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.13.0-dev.1 (2020/07/07)**
+**Version 7.12.1-b.1 (2020/07/09)**
 
 * **New Features**
 	* None.
@@ -628,9 +628,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 7.13.0-dev.1 =
+= 7.12.1-b.1 =
 
-(2020/07/07) Fixed missing submission of form options that are disabled via jQuery.
+(2020/07/09) Fixed missing submission of form options that are disabled via jQuery.
 
 = 7.12.0 =
 
