@@ -1831,21 +1831,23 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
-						case 'info-meta-validate-google-testing-tool':
+						case 'info-meta-validate-google-rich-results':
 
 							$text = '<p class="top">';
 
-							$text .= __( 'Verify the webpage structured data markup.', 'wpsso' );
+							$text .= __( 'Check the webpage structured data markup for Google Rich Result types (Job posting, Product, Recipe, etc.).', 'wpsso' );
 
 							$text .= '</p>';
 
 						 	break;
 
-						case 'info-meta-validate-google-rich-results':
+						case 'info-meta-validate-google-testing-tool':
 
 							$text = '<p class="top">';
 
-							$text .= __( 'Check the webpage structured data markup for Google Rich Result types (Job posting, Recipe, etc.).', 'wpsso' );
+							$text .= __( 'Validate the webpage JSON-LD, Microdata, and RDFa structured data markup.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'Although deprecated, this tool provides additional validation for Schema types beyond the limited <a href="%s">selection of available Google Rich Result types</a>.', 'wpsso' ), __( 'https://developers.google.com/search/docs/guides/search-gallery', 'wpsso' ) );
 
 							$text .= '</p>';
 
