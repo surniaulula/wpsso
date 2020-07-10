@@ -12,7 +12,7 @@ Requires PHP: 5.6
 Requires At Least: 4.2
 Tested Up To: 5.4.2
 WC Tested Up To: 4.3.0
-Stable Tag: 7.12.0
+Stable Tag: 7.12.1
 
 Make sure your content looks great on social sites and search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded.
 
@@ -306,7 +306,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.12.1 (2020/07/10)**
+**Version 7.12.1 (2020/07/11)**
 
 * **New Features**
 	* None.
@@ -630,7 +630,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 7.12.1 =
 
-(2020/07/10) Fixed missing submission of form options that are disabled dynamically using jQuery. Added contextual information about the Google Structured Data Testing Tool being deprecated.
+(2020/07/11) Fixed missing submission of form options that are disabled dynamically using jQuery. Added contextual information about the Google Structured Data Testing Tool being deprecated.
 
 = 7.12.0 =
 
