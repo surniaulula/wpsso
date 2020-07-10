@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '7.12.1-b.1',	// Plugin version.
+					'version'     => '7.12.1-rc.1',	// Plugin version.
 					'opt_version' => '745',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2879,13 +2879,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 									'webpage.gallery.image' => 'https://schema.org/ImageGallery',
 									'webpage.gallery.video' => 'https://schema.org/VideoGallery',
 								),
-								'webpage.contact'        => 'https://schema.org/ContactPage',
-								'webpage.faq'            => 'https://schema.org/FAQPage',
-								'webpage.item'           => 'https://schema.org/ItemPage',
-								'webpage.medical'        => 'https://schema.org/MedicalWebPage',
-								'webpage.profile'        => 'https://schema.org/ProfilePage',
-								'webpage.qa'             => 'https://schema.org/QAPage',
-								'webpage.search.results' => 'https://schema.org/SearchResultsPage',
+								'webpage.contact'             => 'https://schema.org/ContactPage',
+								'webpage.faq'                 => 'https://schema.org/FAQPage',
+								'webpage.item'                => 'https://schema.org/ItemPage',
+								'webpage.medical'             => 'https://schema.org/MedicalWebPage',
+								'webpage.profile'             => 'https://schema.org/ProfilePage',
+								'webpage.qa'                  => 'https://schema.org/QAPage',
+								'webpage.real.estate.listing' => 'https://schema.org/RealEstateListing',
+								'webpage.search.results'      => 'https://schema.org/SearchResultsPage',
 							),
 							'webpage.element' => 'https://schema.org/WebPageElement',
 							'website'         => 'https://schema.org/WebSite',
