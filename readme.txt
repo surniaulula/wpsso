@@ -306,14 +306,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.12.1-rc.1 (2020/07/10)**
+**Version 7.12.1 (2020/07/10)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added contextual information about the Google Structured Data Testing Tool being deprecated.
 * **Bugfixes**
-	* Fixed missing submission of form options that are disabled via jQuery.
+	* Fixed missing submission of form options that are disabled dynamically using jQuery.
 * **Developer Notes**
 	* Added a `sucomDisableUnchanged()` jQuery call to the 'profile' and 'sitesubmenu' form submissions.
 * **Requires At Least**
@@ -628,9 +628,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 7.12.1-rc.1 =
+= 7.12.1 =
 
-(2020/07/10) Fixed missing submission of form options that are disabled via jQuery.
+(2020/07/10) Fixed missing submission of form options that are disabled dynamically using jQuery. Added contextual information about the Google Structured Data Testing Tool being deprecated.
 
 = 7.12.0 =
 
