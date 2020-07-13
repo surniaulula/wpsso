@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 7.12.1\n"
+"Project-Id-Version: WPSSO Core 7.12.2-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1003,7 +1003,7 @@ msgstr ""
 
 #: lib/conflict.php:210 lib/gettext-pro.php:146 lib/gettext-pro.php:149
 #: lib/gettext-pro.php:152 lib/pro/media/slideshare.php:186
-#: lib/pro/media/vimeo.php:164 lib/pro/media/wistia.php:307
+#: lib/pro/media/vimeo.php:165 lib/pro/media/wistia.php:307
 msgid ""
 "Please contact your hosting provider to have the missing PHP function "
 "installed."
@@ -3481,13 +3481,13 @@ msgid "Please update your site to WooCommerce version %s or newer."
 msgstr ""
 
 #: lib/gettext-pro.php:144 lib/gettext-pro.php:147 lib/gettext-pro.php:150
-#: lib/pro/media/slideshare.php:181 lib/pro/media/vimeo.php:159
+#: lib/pro/media/slideshare.php:181 lib/pro/media/vimeo.php:160
 #: lib/pro/media/wistia.php:302
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
 #: lib/gettext-pro.php:145 lib/gettext-pro.php:148 lib/gettext-pro.php:151
-#: lib/pro/media/slideshare.php:183 lib/pro/media/vimeo.php:161
+#: lib/pro/media/slideshare.php:183 lib/pro/media/vimeo.php:162
 #: lib/pro/media/wistia.php:304
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
