@@ -306,6 +306,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 7.12.2-dev.1 (2020/07/13)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed an "undefined index formats" error for protected YouTube videos (without streaming data).
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.2.
+
 **Version 7.12.1 (2020/07/11)**
 
 * **New Features**
@@ -627,6 +641,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 7.12.2-dev.1 =
+
+(2020/07/13) Fixed an "undefined index formats" error for protected YouTube videos (without streaming data).
 
 = 7.12.1 =
 
