@@ -1392,7 +1392,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return false;
 
 			}
-			
+
 			if ( false !== stripos( $request, '<html' ) ) {	// Request contains html.
 
 				if ( $this->p->debug->enabled ) {
@@ -1416,20 +1416,27 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				return false;
 
-			} elseif ( false === ( $html = $this->p->cache->get( $request, $format = 'raw', $cache_type = 'transient',
-				$exp_secs = null, $cache_ext = '', $curl_opts ) ) ) {
-
+			} else {
+			
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: error retrieving content from ' . $request );
+					$this->p->debug->log( 'getting HTML for ' . $request );
 				}
 
-				if ( is_admin() ) {
-					$this->p->notice->err( sprintf( __( 'Error retrieving content from <a href="%1$s">%1$s</a>.',
-						'wpsso' ), $request ) );
+				$html = $this->p->cache->get( $request, $format = 'raw', $cache_type = 'transient', $exp_secs = 300, $cache_ext = '', $curl_opts );
+
+				if ( ! $html ) {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'exiting early: error retrieving HTML from ' . $request );
+					}
+
+					if ( is_admin() ) {
+						$this->p->notice->err( sprintf( __( 'Error retrieving HTML from <a href="%1$s">%1$s</a>.',
+							'wpsso' ), $request ) );
+					}
+
+					return false;
 				}
-
-				return false;
-
 			}
 			
 			$html = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// Convert to UTF8.
@@ -1590,13 +1597,15 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			} else {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'fetching body html for ' . $request );
+					$this->p->debug->log( 'getting HTML for ' . $request );
 				}
 
-				if ( ( $html = $this->p->cache->get( $request, 'raw', 'transient' ) ) === false ) {
+				$html = $this->p->cache->get( $request, $format = 'raw', $cache_type = 'transient', $exp_secs = 300 );
+
+				if ( ! $html ) {
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'exiting early: error caching ' . $request );
+						$this->p->debug->log( 'exiting early: error retrieving HTML from ' . $request );
 					}
 
 					return false;

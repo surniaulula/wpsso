@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 7.12.2-rc.2\n"
+"Project-Id-Version: WPSSO Core 7.12.2-rc.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3506,7 +3506,6 @@ msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
 #: lib/gettext-pro.php:155 lib/post.php:1064 lib/pro/media/youtube.php:173
-#: lib/util.php:1427
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -6333,7 +6332,7 @@ msgid ""
 "Activate the %s add-on<br/>for Schema markup and structured data options."
 msgstr ""
 
-#: lib/messages.php:3016 lib/util.php:3290
+#: lib/messages.php:3016 lib/util.php:3299
 msgid "No options available."
 msgstr ""
 
@@ -6559,12 +6558,12 @@ msgid "post"
 msgstr ""
 
 #: lib/post.php:500 lib/register.php:336 lib/term.php:429 lib/user.php:399
-#: lib/util.php:588 lib/util.php:2971
+#: lib/util.php:588 lib/util.php:2980
 msgid "%s warning:"
 msgstr ""
 
 #: lib/post.php:501 lib/term.php:430 lib/user.php:401 lib/util.php:590
-#: lib/util.php:2973
+#: lib/util.php:2982
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -7760,31 +7759,35 @@ msgstr ""
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1446
+#: lib/util.php:1434
+msgid "Error retrieving HTML from <a href=\"%1$s\">%1$s</a>."
+msgstr ""
+
+#: lib/util.php:1453
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1624
+#: lib/util.php:1633
 msgid ""
 "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
 "provider to have the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1637
+#: lib/util.php:1646
 msgid ""
 "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:2975
+#: lib/util.php:2984
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:2990
+#: lib/util.php:2999
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -7793,40 +7796,40 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2992
+#: lib/util.php:3001
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3321
+#: lib/util.php:3330
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3324
+#: lib/util.php:3333
 msgctxt "option comment"
 msgid "show these options now"
 msgstr ""
 
-#: lib/util.php:3329
+#: lib/util.php:3338
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3332
+#: lib/util.php:3341
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3663
+#: lib/util.php:3672
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3673
+#: lib/util.php:3682
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 
