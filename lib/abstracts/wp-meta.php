@@ -255,8 +255,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			 * Maybe initialize the cache.
 			 */
 			if ( ! isset( $local_cache[ $cache_id ] ) ) {
+
 				$local_cache[ $cache_id ] = array();
+
 			} elseif ( $this->md_cache_disabled ) {
+
 				$local_cache[ $cache_id ] = array();
 			}
 

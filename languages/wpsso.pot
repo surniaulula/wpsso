@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 7.12.1\n"
+"Project-Id-Version: WPSSO Core 7.12.2-rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -12,38 +12,38 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: lib/abstracts/wp-meta.php:590 lib/abstracts/wp-meta.php:599
+#: lib/abstracts/wp-meta.php:593 lib/abstracts/wp-meta.php:602
 msgctxt "metabox tab"
 msgid "Customize"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:591 lib/abstracts/wp-meta.php:600
+#: lib/abstracts/wp-meta.php:594 lib/abstracts/wp-meta.php:603
 #: lib/messages.php:2363
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:592
+#: lib/abstracts/wp-meta.php:595
 msgctxt "metabox tab"
 msgid "Preview"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:593
+#: lib/abstracts/wp-meta.php:596
 msgctxt "metabox tab"
 msgid "oEmbed"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:594
+#: lib/abstracts/wp-meta.php:597
 msgctxt "metabox tab"
 msgid "Head Markup"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:595
+#: lib/abstracts/wp-meta.php:598
 msgctxt "metabox tab"
 msgid "Validate"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:896
+#: lib/abstracts/wp-meta.php:899
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
@@ -3493,7 +3493,7 @@ msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
 #: lib/gettext-pro.php:153 lib/post.php:1064 lib/pro/media/youtube.php:167
-#: lib/util.php:1413
+#: lib/util.php:1427
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -6312,7 +6312,7 @@ msgid ""
 "Activate the %s add-on<br/>for Schema markup and structured data options."
 msgstr ""
 
-#: lib/messages.php:3003 lib/util.php:3293
+#: lib/messages.php:3003 lib/util.php:3290
 msgid "No options available."
 msgstr ""
 
@@ -6538,12 +6538,12 @@ msgid "post"
 msgstr ""
 
 #: lib/post.php:500 lib/register.php:336 lib/term.php:429 lib/user.php:399
-#: lib/util.php:588 lib/util.php:2974
+#: lib/util.php:588 lib/util.php:2971
 msgid "%s warning:"
 msgstr ""
 
 #: lib/post.php:501 lib/term.php:430 lib/user.php:401 lib/util.php:590
-#: lib/util.php:2976
+#: lib/util.php:2973
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -7735,35 +7735,35 @@ msgstr ""
 msgid "Error reading the %s file for the product categories list."
 msgstr ""
 
-#: lib/util.php:1399
+#: lib/util.php:1413
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1439
+#: lib/util.php:1446
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1627
+#: lib/util.php:1624
 msgid ""
 "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
 "provider to have the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1640
+#: lib/util.php:1637
 msgid ""
 "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:2978
+#: lib/util.php:2975
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:2993
+#: lib/util.php:2990
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -7772,40 +7772,40 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2995
+#: lib/util.php:2992
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3324
+#: lib/util.php:3321
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3327
+#: lib/util.php:3324
 msgctxt "option comment"
 msgid "show these options now"
 msgstr ""
 
-#: lib/util.php:3332
+#: lib/util.php:3329
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3335
+#: lib/util.php:3332
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3666
+#: lib/util.php:3663
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3676
+#: lib/util.php:3673
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

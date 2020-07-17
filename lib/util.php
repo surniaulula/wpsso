@@ -1359,6 +1359,20 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
+			if ( ! function_exists( 'mb_convert_encoding' ) ) {
+
+				$this->php_function_missing( 'mb_convert_encoding()', __METHOD__ );
+
+				return false;
+			}
+
+			if ( ! class_exists( 'DOMDocument' ) ) {
+
+				$this->php_class_missing( 'DOMDocument', __METHOD__ );
+
+				return false;
+			}
+
 			if ( empty( $request ) ) {	// Just in case.
 
 				if ( $this->p->debug->enabled ) {
@@ -1402,8 +1416,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				return false;
 
-			} elseif ( false === ( $html = $this->p->cache->get( $request, $format = 'raw',
-				$cache_type = 'transient', $exp_secs = null, $file_ext = '', $curl_opts ) ) ) {
+			} elseif ( false === ( $html = $this->p->cache->get( $request, $format = 'raw', $cache_type = 'transient',
+				$exp_secs = null, $file_ext = '', $curl_opts ) ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: error retrieving content from ' . $request );
@@ -1418,13 +1432,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			}
 			
-			if ( ! function_exists( 'mb_convert_encoding' ) ) {
-
-				$this->php_function_missing( 'mb_convert_encoding()', __METHOD__ );
-
-				return false;
-			}
-
 			$html = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// Convert to UTF8.
 
 			$html = preg_replace( '/<!--.*-->/Uums', '', $html );		// Pattern and subject strings are treated as UTF8.
@@ -1444,16 +1451,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			}
 		
-			/**
-			 * Now that we have HTML to parse, make sure we have the required PHP classes and functions.
-			 */
-			if ( ! class_exists( 'DOMDocument' ) ) {
-
-				$this->php_class_missing( 'DOMDocument', __METHOD__ );
-
-				return false;
-			}
-
 			$ret = array();
 
 			$doc = new DOMDocument();					// Since PHP v4.1.
