@@ -276,29 +276,35 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
 			WpssoAdmin::get_option_site_use( 'plugin_content_cache_exp', $form, $network );
 
-			$table_rows[ 'plugin_short_url_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_short_url_cache_exp' ) .
-			$form->get_th_html( _x( 'Shortened URL Cache Expiry', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_short_url_cache_exp' ) . 
-			'<td nowrap class="blank">' . $form->options[ 'plugin_short_url_cache_exp' ] . ' ' . 
-			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
-			WpssoAdmin::get_option_site_use( 'plugin_short_url_cache_exp', $form, $network );
-
 			$table_rows[ 'plugin_imgsize_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_imgsize_cache_exp' ) . 
 			$form->get_th_html( _x( 'Image URL Info Cache Expiry', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_imgsize_cache_exp' ) . 
 			'<td nowrap class="blank">' . $form->options[ 'plugin_imgsize_cache_exp' ] . ' ' . 
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
 			WpssoAdmin::get_option_site_use( 'plugin_imgsize_cache_exp', $form, $network );
 
-			$table_rows[ 'plugin_select_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_select_cache_exp' ) . 
-			$form->get_th_html( _x( 'Form Selects Cache Expiry', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_select_cache_exp' ) .
-			'<td nowrap class="blank">' . $form->options[ 'plugin_select_cache_exp' ] . ' ' . 
+			$table_rows[ 'plugin_vidinfo_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_vidinfo_cache_exp' ) . 
+			$form->get_th_html( _x( 'Video API Info Cache Expiry', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_vidinfo_cache_exp' ) . 
+			'<td nowrap class="blank">' . $form->options[ 'plugin_vidinfo_cache_exp' ] . ' ' . 
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
-			WpssoAdmin::get_option_site_use( 'plugin_select_cache_exp', $form, $network );
+			WpssoAdmin::get_option_site_use( 'plugin_vidinfo_cache_exp', $form, $network );
+
+			$table_rows[ 'plugin_short_url_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_short_url_cache_exp' ) .
+			$form->get_th_html( _x( 'Shortened URL Cache Expiry', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_short_url_cache_exp' ) . 
+			'<td nowrap class="blank">' . $form->options[ 'plugin_short_url_cache_exp' ] . ' ' . 
+			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
+			WpssoAdmin::get_option_site_use( 'plugin_short_url_cache_exp', $form, $network );
 
 			$table_rows[ 'plugin_types_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_types_cache_exp' ) . 
 			$form->get_th_html( _x( 'Schema Types Cache Expiry', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_types_cache_exp' ) . 
 			'<td nowrap class="blank">' . $form->options[ 'plugin_types_cache_exp' ] . ' ' . 
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
 			WpssoAdmin::get_option_site_use( 'plugin_types_cache_exp', $form, $network );
+
+			$table_rows[ 'plugin_select_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_select_cache_exp' ) . 
+			$form->get_th_html( _x( 'Form Selects Cache Expiry', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_select_cache_exp' ) .
+			'<td nowrap class="blank">' . $form->options[ 'plugin_select_cache_exp' ] . ' ' . 
+			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
+			WpssoAdmin::get_option_site_use( 'plugin_select_cache_exp', $form, $network );
 
 			$table_rows[ 'plugin_clear_on_activate' ] = $form->get_tr_hide( 'basic', 'plugin_clear_on_activate' ) . 
 			$form->get_th_html( _x( 'Clear All Caches on Activate', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_clear_on_activate' ) . 

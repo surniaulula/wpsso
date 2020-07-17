@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '7.12.2-rc.1',	// Plugin version.
-					'opt_version' => '745',		// Increment when changing default option values.
+					'version'     => '7.12.2-rc.2',	// Plugin version.
+					'opt_version' => '746',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Make sure your content looks great on social sites and search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -1466,12 +1466,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings - Cache tab.
 					 */
-					'plugin_content_cache_exp'   => HOUR_IN_SECONDS,	// Filtered Content Cache Expiry (1 hour).
-					'plugin_select_cache_exp'    => MONTH_IN_SECONDS,	// Form Selects Cache Expiry (1 month).
 					'plugin_head_cache_exp'      => WEEK_IN_SECONDS,	// Head Markup Cache Expiry (1 week).
+					'plugin_content_cache_exp'   => HOUR_IN_SECONDS,	// Filtered Content Cache Expiry (1 hour).
 					'plugin_imgsize_cache_exp'   => DAY_IN_SECONDS,		// Image URL Info Cache Expiry (1 day).
+					'plugin_vidinfo_cache_exp'   => DAY_IN_SECONDS,		// Video API Info Cache Expiry (1 day).
 					'plugin_short_url_cache_exp' => 7776000,		// Shortened URL Cache Expiry (90 days / 3 months).
 					'plugin_types_cache_exp'     => MONTH_IN_SECONDS,	// Schema Types Cache Expiry (1 month).
+					'plugin_select_cache_exp'    => MONTH_IN_SECONDS,	// Form Selects Cache Expiry (1 month).
 					'plugin_clear_on_activate'   => 1,			// Clear All Caches on Activate.
 					'plugin_clear_on_deactivate' => 0,			// Clear All Caches on Deactivate.
 					'plugin_clear_on_save'       => 0,			// Clear All Caches on Save Settings.
@@ -1707,18 +1708,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings - Cache tab.
 					 */
-					'plugin_content_cache_exp'       => HOUR_IN_SECONDS,	// Filtered Content Cache Expiry (1 hour).
-					'plugin_content_cache_exp:use'   => 'default',
-					'plugin_select_cache_exp'         => MONTH_IN_SECONDS,	// Form Selects Cache Expiry (1 month).
-					'plugin_select_cache_exp:use'     => 'default',
 					'plugin_head_cache_exp'          => WEEK_IN_SECONDS,	// Head Markup Cache Expiry (1 week).
 					'plugin_head_cache_exp:use'      => 'default',
+					'plugin_content_cache_exp'       => HOUR_IN_SECONDS,	// Filtered Content Cache Expiry (1 hour).
+					'plugin_content_cache_exp:use'   => 'default',
 					'plugin_imgsize_cache_exp'       => DAY_IN_SECONDS,	// Image URL Info Cache Expiry (1 day).
 					'plugin_imgsize_cache_exp:use'   => 'default',
+					'plugin_vidinfo_cache_exp'       => DAY_IN_SECONDS,	// Video API Info Cache Expiry (1 day).
+					'plugin_vidinfo_cache_exp:use'   => 'default',
 					'plugin_short_url_cache_exp'     => 7776000,		// Shortened URL Cache Expiry (90 days / 3 months).
 					'plugin_short_url_cache_exp:use' => 'default',
 					'plugin_types_cache_exp'         => MONTH_IN_SECONDS,	// Schema Types Cache Expiry (1 month).
 					'plugin_types_cache_exp:use'     => 'default',
+					'plugin_select_cache_exp'        => MONTH_IN_SECONDS,	// Form Selects Cache Expiry (1 month).
+					'plugin_select_cache_exp:use'    => 'default',
 					'plugin_clear_on_activate'       => 1,			// Clear All Caches on Activate.
 					'plugin_clear_on_activate:use'   => 'default',
 					'plugin_clear_on_deactivate'     => 0,			// Clear All Caches on Deactivate.
@@ -2027,7 +2030,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'wpsso_i_' => array(	// Default is day in seconds.
 						'label'   => 'Image URL Info',
 						'opt_key' => 'plugin_imgsize_cache_exp',
-						'filter'  => 'wpsso_cache_expire_image_url_size',
+						'filter'  => 'wpsso_cache_expire_image_info',
 					),
 					'wpsso_s_' => array(	// Default is 7776000 seconds.
 						'label'   => 'Shortened URLs',
@@ -2038,6 +2041,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'label'   => 'Schema Types',
 						'opt_key' => 'plugin_types_cache_exp',
 						'filter'  => 'wpsso_cache_expire_schema_types',
+					),
+					'wpsso_v_' => array(	// Default is day in seconds.
+						'label'   => 'Video API Info',
+						'opt_key' => 'plugin_vidinfo_cache_exp',
+						'filter'  => 'wpsso_cache_expire_video_info',
 					),
 					'wpsso_' => array(
 						'label' => 'All Transients',

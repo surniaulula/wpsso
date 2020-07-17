@@ -930,7 +930,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/**
 						 * Cache settings.
 						 */
-						case 'tooltip-plugin_head_cache_exp':
+						case 'tooltip-plugin_head_cache_exp':		// Head Markup Cache Expiry.
 
 							$cache_exp_secs = $this->p->opt->get_defaults( 'plugin_head_cache_exp' );
 
@@ -943,7 +943,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_content_cache_exp':
+						case 'tooltip-plugin_content_cache_exp':	// Filtered Content Cache Expiry.
 
 							$cache_exp_secs = $this->p->opt->get_defaults( 'plugin_content_cache_exp' );
 
@@ -956,46 +956,46 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_short_url_cache_exp':
-
-							$cache_exp_secs = $this->p->opt->get_defaults( 'plugin_short_url_cache_exp' );
-
-							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
-								_x( 'disabled', 'option comment', 'wpsso' );
-
-							$text = __( 'Shortened URLs are saved to the WordPress transient cache to optimize performance and API connections.', 'wpsso' ) . ' ';
-
-							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
-
-							break;
-
-						case 'tooltip-plugin_imgsize_cache_exp':
+						case 'tooltip-plugin_imgsize_cache_exp':	// Image URL Info Cache Expiry.
 
 							$cache_exp_secs = $this->p->opt->get_defaults( 'plugin_imgsize_cache_exp' );
 
 							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
 								_x( 'disabled', 'option comment', 'wpsso' );
 
-							$text = __( 'The size for image URLs (not image IDs) is retrieved and saved to the WordPress transient cache to optimize performance and network bandwidth.', 'wpsso' ) . ' ';
+							$text = __( 'The size information for image URLs (not image IDs) is retrieved and saved to the WordPress transient cache to optimize performance and save network bandwidth.', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
 
 							break;
 
-						case 'tooltip-plugin_select_cache_exp':
+						case 'tooltip-plugin_vidinfo_cache_exp':	// Video API Info Cache Expiry.
 
-							$cache_exp_secs = $this->p->opt->get_defaults( 'plugin_select_cache_exp' );
+							$cache_exp_secs = $this->p->opt->get_defaults( 'plugin_vidinfo_cache_exp' );
 
 							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
 								_x( 'disabled', 'option comment', 'wpsso' );
 
-							$text = __( 'The filtered text list arrays (for example, article sections and product categories) are saved to the WordPress transient cache to optimize performance and disk access.', 'wpsso' ) . ' ';
+							$text = __( 'Video information is retrieved from the video service API and saved to the WordPress transient cache to optimize performance and reduce API connections.', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
 
 							break;
 
-						case 'tooltip-plugin_types_cache_exp':
+						case 'tooltip-plugin_short_url_cache_exp':	// Shortened URL Cache Expiry.
+
+							$cache_exp_secs = $this->p->opt->get_defaults( 'plugin_short_url_cache_exp' );
+
+							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
+								_x( 'disabled', 'option comment', 'wpsso' );
+
+							$text = __( 'Shortened URLs are saved to the WordPress transient cache to optimize performance and reduce API connections.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
+
+							break;
+
+						case 'tooltip-plugin_types_cache_exp':		// Schema Types Cache Expiry.
 
 							$cache_exp_secs = $this->p->opt->get_defaults( 'plugin_types_cache_exp' );
 
@@ -1003,6 +1003,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								_x( 'disabled', 'option comment', 'wpsso' );
 
 							$text = __( 'The filtered Schema types array is saved to the WordPress transient cache to optimize performance.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
+
+							break;
+
+						case 'tooltip-plugin_select_cache_exp':		// Form Selects Cache Expiry.
+
+							$cache_exp_secs = $this->p->opt->get_defaults( 'plugin_select_cache_exp' );
+
+							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
+								_x( 'disabled', 'option comment', 'wpsso' );
+
+							$text = __( 'The filtered text list arrays (for example, article sections and product categories) are saved to the WordPress transient cache to optimize performance and disk access.', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
 

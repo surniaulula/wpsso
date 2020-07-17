@@ -60,6 +60,7 @@ _x( 'Head Markup', 'option label', 'wpsso' );
 _x( 'Image URL Info', 'option label', 'wpsso' );
 _x( 'Shortened URLs', 'option label', 'wpsso' );
 _x( 'Schema Types', 'option label', 'wpsso' );
+_x( 'Video API Info', 'option label', 'wpsso' );
 _x( 'All Transients', 'option label', 'wpsso' );
 _x( 'Filtered Content', 'option label', 'wpsso' );
 _x( 'All WP Objects', 'option label', 'wpsso' );

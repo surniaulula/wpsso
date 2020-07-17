@@ -43,7 +43,7 @@
 
 'wpsso_cache_expire_head_markup' ( $secs )
 
-'wpsso_cache_expire_image_url_size' ( $secs )
+'wpsso_cache_expire_image_info' ( $secs )
 
 'wpsso_cache_expire_schema_types' ( $secs )
 
@@ -52,6 +52,8 @@
 'wpsso_cache_expire_short_url' ( $secs )
 
 'wpsso_cache_expire_the_content' ( $secs )
+
+'wpsso_cache_expire_video_info' ( $secs )
 
 'wpsso_canonical_url' ( $url, $mod, $add_page )
 

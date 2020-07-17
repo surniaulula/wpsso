@@ -1417,7 +1417,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return false;
 
 			} elseif ( false === ( $html = $this->p->cache->get( $request, $format = 'raw', $cache_type = 'transient',
-				$exp_secs = null, $file_ext = '', $curl_opts ) ) ) {
+				$exp_secs = null, $cache_ext = '', $curl_opts ) ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: error retrieving content from ' . $request );
@@ -1453,7 +1453,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		
 			$ret = array();
 
-			$doc = new DOMDocument();					// Since PHP v4.1.
+			$doc = new DOMDocument();	// Since PHP v4.1.
 
 			$has_errors = false;
 
