@@ -65,7 +65,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/**
 			 * AMP
 			 */
-			if ( SucomUtil::is_amp() ) {
+			if ( SucomUtil::is_amp() ) {	// Returns null, true, or false.
 				$cache_index .= '_amp:true';
 			}
 

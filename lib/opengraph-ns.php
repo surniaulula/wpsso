@@ -93,7 +93,7 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 
 			$og_ns = apply_filters( $this->p->lca . '_og_ns', $og_ns, $mod );
 
-			if ( SucomUtil::is_amp() ) {
+			if ( SucomUtil::is_amp() ) {	// Returns null, true, or false.
 
 				/**
 				 * Nothing to do.
