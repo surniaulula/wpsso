@@ -1858,7 +1858,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = '<p class="top">';
 
-							$text .= __( 'Validate the webpage JSON-LD, Microdata, and RDFa structured data markup.', 'wpsso' ) . ' ';
+							$text .= __( 'Validate the webpage JSON-LD, Microdata and RDFa structured data markup.', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( 'Although deprecated, this tool provides additional validation for Schema types beyond the limited <a href="%s">selection of available Google Rich Result types</a>.', 'wpsso' ), __( 'https://developers.google.com/search/docs/guides/search-gallery', 'wpsso' ) );
 

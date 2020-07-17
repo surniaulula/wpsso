@@ -5392,7 +5392,7 @@ msgstr ""
 
 #: lib/messages.php:1861
 msgid ""
-"Validate the webpage JSON-LD, Microdata, and RDFa structured data markup."
+"Validate the webpage JSON-LD, Microdata and RDFa structured data markup."
 msgstr ""
 
 #: lib/messages.php:1863
