@@ -306,7 +306,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.12.2-dev.1 (2020/07/13)**
+**Version 7.12.2-rc.1 (2020/07/17)**
 
 * **New Features**
 	* None.
@@ -642,9 +642,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 7.12.2-dev.1 =
+= 7.12.2-rc.1 =
 
-(2020/07/13) Fixed an "undefined index formats" error for protected YouTube videos (without streaming data).
+(2020/07/17) Fixed an "undefined index formats" error for protected YouTube videos (without streaming data).
 
 = 7.12.1 =
 
