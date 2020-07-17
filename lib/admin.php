@@ -3232,7 +3232,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					}
 
 					$readme_from_url = true;
-					$readme_content  = $this->p->cache->get( $file_url, 'raw', 'file', $cache_exp_secs );
+
+					$readme_content = $this->p->cache->get( $file_url, 'raw', 'file', $cache_exp_secs );
 				}
 			} else {
 				delete_transient( $cache_id );	// Just in case.

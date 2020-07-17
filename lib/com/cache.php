@@ -22,14 +22,15 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		public $base_dir = '';
 		public $base_url = '/cache/';
 
-		public $default_file_cache_exp   = DAY_IN_SECONDS;	// 1 day.
-		public $default_object_cache_exp = 259200;		// 3 days.
-		public $curl_connect_timeout     = 5;			// The number of seconds to wait while trying to connect. Use 0 to wait indefinitely.
-		public $curl_timeout             = 15;			// The maximum number of seconds to allow cURL functions to execute. 
-		public $curl_max_redirs          = 10;			// The maximum amount of HTTP redirections to follow.
+		public $default_file_cache_exp   = DAY_IN_SECONDS;
+		public $default_object_cache_exp = DAY_IN_SECONDS;
+
+		public $curl_connect_timeout     = 5;	// The number of seconds to wait while trying to connect. Use 0 to wait indefinitely.
+		public $curl_timeout             = 15;	// The maximum number of seconds to allow cURL functions to execute. 
+		public $curl_max_redirs          = 10;	// The maximum amount of HTTP redirections to follow.
 
 		private $url_get_mtimes = array();
-		private $ignored_urls   = array(			// Saved on wp shutdown action.
+		private $ignored_urls   = array(	// Saved on wp shutdown action.
 			'transient_expires' => HOUR_IN_SECONDS,
 			'transient_loaded'  => false,
 			'ignore_for_secs'   => 900,
@@ -62,25 +63,36 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 
 			if ( $lca !== null ) {
+
 				$this->lca = $lca;
+
 			} elseif ( ! empty( $this->p->lca ) ) {
+
 				$this->lca = $this->p->lca;
 			}
 
 			$this->uca = strtoupper( $this->lca );
 
 			if ( $text_domain !== null ) {
+
 				$this->text_domain = $text_domain;
+
 			} elseif ( ! empty( $this->p->cf[ 'plugin' ][ $this->lca ][ 'text_domain' ] ) ) {
+
 				$this->text_domain = $this->p->cf[ 'plugin' ][ $this->lca ][ 'text_domain' ];
 			}
 
 			if ( $label_transl !== null ) {
+
 				$this->label_transl = $label_transl;	// argument is already translated
+
 			} elseif ( ! empty( $this->p->cf[ 'menu' ][ 'title' ] ) ) {
+
 				$this->label_transl = sprintf( __( '%s Notice', $this->text_domain ),
 					_x( $this->p->cf[ 'menu' ][ 'title' ], 'menu title', $this->text_domain ) );
+
 			} else {
+
 				$this->label_transl = __( 'Notice', $this->text_domain );
 			}
 
