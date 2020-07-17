@@ -306,7 +306,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.12.2-rc.2 (2020/07/17)**
+**Version 7.12.2-rc.3 (2020/07/17)**
 
 * **New Features**
 	* Added a "Video API Info" status to the SSO &gt; Dashboard &gt; Cache Status metabox.
@@ -643,7 +643,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 7.12.2-rc.2 =
+= 7.12.2-rc.3 =
 
 (2020/07/17) Fixed an "undefined index formats" error for protected YouTube videos (without streaming data). Added a "Video API Info Cache Expiry" option under the SSO &gt; Advanced Settings &gt; Cache tab.
 
