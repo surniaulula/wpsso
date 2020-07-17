@@ -486,7 +486,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				$notice_msg .= '<b>' . __( 'Great ratings are an excellent way to encourage your plugin developers and support the continued development of your favorite plugins!', 'wpsso' ) . '</b>';
 
 				$notice_msg .= '</p>';
-				
+
 				$notice_msg .= '<div class="notice-actions">';
 
 				$notice_msg .= $rate_plugin_button . $already_rated_button;

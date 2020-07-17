@@ -778,24 +778,33 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( $action !== 'plugin_information' ) {				// This filter only provides plugin data.
+
 				return $result;
+
 			} elseif ( empty( $args->slug ) ) {					// Make sure we have a slug in the request.
+
 				return $result;
+
 			} elseif ( empty( $this->p->cf[ '*' ][ 'slug' ][ $args->slug ] ) ) {	// Make sure the plugin slug is one of ours.
+
 				return $result;
+
 			} elseif ( isset( $result->slug ) && $result->slug === $args->slug ) {	// If the object from WordPress looks complete, return it as-is.
+
 				return $result;
 			}
 
 			$ext = $this->p->cf[ '*' ][ 'slug' ][ $args->slug ];			// Get the add-on acronym to read its config.
 
 			if ( empty( $this->p->cf[ 'plugin' ][ $ext ] ) ) {			// Make sure we have a config for that acronym.
+
 				return $result;
 			}
 
 			$plugin_data = $this->get_plugin_data( $ext, $read_cache = true );	// Get plugin data from the plugin readme.
 
 			if ( empty( $plugin_data ) ) {						// Make sure we have some data to return.
+
 				return $result;
 			}
 
