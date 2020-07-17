@@ -309,13 +309,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 7.12.2-rc.2 (2020/07/17)**
 
 * **New Features**
-	* None.
+	* Added a "Video API Info" status to the SSO &gt; Dashboard &gt; Cache Status metabox.
+	* Added a "Video API Info Cache Expiry" option under the SSO &gt; Advanced Settings &gt; Cache tab.
 * **Improvements**
 	* None.
 * **Bugfixes**
 	* Fixed an "undefined index formats" error for protected YouTube videos (without streaming data).
 * **Developer Notes**
-	* None.
+	* Updated the `SucomCache` class to rename '$file_ext' to '$cache_ext' and add its (optional) value to the transient cache id.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
@@ -644,7 +645,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 7.12.2-rc.2 =
 
-(2020/07/17) Fixed an "undefined index formats" error for protected YouTube videos (without streaming data).
+(2020/07/17) Fixed an "undefined index formats" error for protected YouTube videos (without streaming data). Added a "Video API Info Cache Expiry" option under the SSO &gt; Advanced Settings &gt; Cache tab.
 
 = 7.12.1 =
 
