@@ -23,7 +23,7 @@
 
 <p><strong>Reads your existing WordPress content, plugin and service API data:</strong></p>
 
-<p>There's no need to manually re-enter descriptions, titles, product information, re-select images / videos, etc. like other meta tag, Schema markup and SEO plugins.</p>
+<p>There's no need to manually re-enter descriptions, titles, product information, re-select images / videos, etc. like other meta tag, SEO and Schema markup plugins.</p>
 
 <p>WPSSO is language / locale aware, which means you can also customize many options for different languages.</p>
 

@@ -26,7 +26,7 @@ WPSSO creates meta tags and Schema markup for Facebook / Open Graph, Pinterest R
 
 **Reads your existing WordPress content, plugin and service API data:**
 
-There's no need to manually re-enter descriptions, titles, product information, re-select images / videos, etc. like other meta tag, Schema markup and SEO plugins.
+There's no need to manually re-enter descriptions, titles, product information, re-select images / videos, etc. like other meta tag, SEO and Schema markup plugins.
 
 WPSSO is language / locale aware, which means you can also customize many options for different languages.
 
