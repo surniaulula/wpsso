@@ -6329,8 +6329,8 @@ msgstr ""
 #. translators: %s is is the add-on name (and a link to the add-on page).
 #: lib/messages.php:3006
 msgid ""
-"Activate the %s add-on<br/>for additional structured data and Schema markup "
-"options."
+"Activate the %s add-on<br/>if you require additional structured data and "
+"Schema markup options."
 msgstr ""
 
 #: lib/messages.php:3016 lib/util.php:3299
