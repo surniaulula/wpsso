@@ -25,9 +25,9 @@
 
 <p>There's no need to manually re-enter descriptions, titles, product information, re-select images / videos, etc. like other meta tag, SEO and Schema markup plugins.</p>
 
-<p><strong>Optionally customize the plugin settings for different languages:</strong></p>
+<p><strong>Customize plugin settings for different languages:</strong></p>
 
-<p>Many setting options are language (locale) aware, which means you can customize their values for different front-end languages.</p>
+<p>Text, image and video related options are language / locale aware, which means you can customize their values for different front-end languages / locales.</p>
 
 <p><strong>Coded for maximum performance:</strong></p>
 

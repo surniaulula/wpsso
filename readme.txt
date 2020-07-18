@@ -28,9 +28,9 @@ WPSSO creates meta tags and Schema markup for Facebook / Open Graph, Pinterest R
 
 There's no need to manually re-enter descriptions, titles, product information, re-select images / videos, etc. like other meta tag, SEO and Schema markup plugins.
 
-**Optionally customize the plugin settings for different languages:**
+**Customize plugin settings for different languages:**
 
-Many setting options are language (locale) aware, which means you can customize their values for different front-end languages.
+Text, image and video related options are language / locale aware, which means you can customize their values for different front-end languages / locales.
 
 **Coded for maximum performance:**
 
