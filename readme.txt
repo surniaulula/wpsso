@@ -310,6 +310,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 7.13.1-dev.1 (2020/08/18)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* CSS updates for WordPress v5.5 to restore `.has-right-sidebar` layout in settings pages.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.2.
+
 **Version 7.13.0 (2020/08/18)**
 
 * **New Features**
@@ -647,6 +661,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 7.13.1-dev.1 =
+
+(2020/08/18) CSS updates for WordPress v5.5 to restore `.has-right-sidebar` layout in settings pages.
 
 = 7.13.0 =
 
