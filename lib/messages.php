@@ -3003,7 +3003,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				$link = $this->p->util->get_admin_url( 'addons#wpssojson', $this->p->cf[ 'plugin' ][ 'wpssojson' ][ 'name' ] );
 
 				// translators: %s is is the add-on name (and a link to the add-on page).
-				$text = sprintf( __( 'Activate the %s add-on<br/>for Schema markup and structured data options.', 'wpsso' ), $link );
+				$text = sprintf( __( 'Activate the %s add-on<br/>for additional structured data and Schema markup options.', 'wpsso' ), $link );
 
 				return '<p class="status-msg">' . $text . '</p>';
 			}

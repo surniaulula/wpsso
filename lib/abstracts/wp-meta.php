@@ -343,7 +343,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'tc_sum_img_url'    => '',
 
 					/**
-					 * Schema JSON-LD Markup / Rich Results.
+					 * Schema JSON-LD Markup / Google Rich Results.
 					 */
 					'schema_img_max'    => isset( $opts[ 'schema_img_max' ] ) ? (int) $opts[ 'schema_img_max' ] : 1,	// 1 by default.
 					'schema_img_id'     => '',

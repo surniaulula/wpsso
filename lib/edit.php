@@ -299,7 +299,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			 *
 			 * 	Twitter Card
 			 *
-			 * 	Schema JSON-LD Markup / Rich Results
+			 * 	Schema JSON-LD Markup / Google Rich Results
 			 */
 
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );

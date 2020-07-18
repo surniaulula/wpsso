@@ -109,7 +109,7 @@ _x( 'Product Weight', 'option label', 'wpsso' );
 _x( 'Product SKU', 'option label', 'wpsso' );
 _x( 'Product MPN', 'option label', 'wpsso' );
 _x( 'Product ISBN', 'option label', 'wpsso' );
-_x( 'Schema JSON-LD Markup / Rich Results', 'metabox title', 'wpsso' );
+_x( 'Schema JSON-LD Markup / Google Rich Results', 'metabox title', 'wpsso' );
 _x( 'Priority Video Information', 'metabox title', 'wpsso' );
 _x( 'Include Preview Images', 'option label', 'wpsso' );
 _x( 'Maximum Videos', 'option label', 'wpsso' );
@@ -123,7 +123,7 @@ _x( 'Image ID', 'option label', 'wpsso' );
 _x( 'or an Image URL', 'option label', 'wpsso' );
 _x( 'Image ID', 'option label', 'wpsso' );
 _x( 'or an Image URL', 'option label', 'wpsso' );
-_x( 'Schema JSON-LD Markup / Rich Results', 'metabox title', 'wpsso' );
+_x( 'Schema JSON-LD Markup / Google Rich Results', 'metabox title', 'wpsso' );
 __( 'Please select a page in the <a href="%s">WooCommerce Settings &gt; Advanced &gt; Page setup</a> section.', 'wpsso' );
 __( 'Please select a page in the <a href="%s">WooCommerce Settings &gt; Products &gt; General</a> section.', 'wpsso' );
 // translators: Please ignore - translation uses a different text domain.

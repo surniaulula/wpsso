@@ -176,7 +176,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				'subsection_schema' => array(
 					'td_class' => 'subsection',
 					'header'   => 'h4',
-					'label'    => _x( 'Schema JSON-LD Markup / Rich Results', 'metabox title', 'wpsso' )
+					'label'    => _x( 'Schema JSON-LD Markup / Google Rich Results', 'metabox title', 'wpsso' )
 				),
 				'wpssojson_addon_msg' => array(
 					'table_row' => ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ?
@@ -342,7 +342,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			}
 
 			/**
-			 * Schema JSON-LD Markup / Rich Results.
+			 * Schema JSON-LD Markup / Google Rich Results.
 			 */
 			$row_class = $form->in_options( '/^schema_img_/', $is_preg = true ) ? '' : 'hide_in_basic';
 
@@ -350,7 +350,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				'tr_class' => $row_class,
 				'td_class' => 'subsection',
 				'header'   => 'h4',
-				'label'    => _x( 'Schema JSON-LD Markup / Rich Results', 'metabox title', 'wpsso' )
+				'label'    => _x( 'Schema JSON-LD Markup / Google Rich Results', 'metabox title', 'wpsso' )
 			);
 
 			if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {

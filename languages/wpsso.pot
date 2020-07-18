@@ -3370,7 +3370,7 @@ msgstr ""
 #: lib/pro/admin/edit.php:349 lib/std/admin/edit.php:179
 #: lib/std/admin/edit.php:353
 msgctxt "metabox title"
-msgid "Schema JSON-LD Markup / Rich Results"
+msgid "Schema JSON-LD Markup / Google Rich Results"
 msgstr ""
 
 #: lib/gettext-pro.php:113 lib/pro/admin/edit.php:210
@@ -6329,7 +6329,8 @@ msgstr ""
 #. translators: %s is is the add-on name (and a link to the add-on page).
 #: lib/messages.php:3006
 msgid ""
-"Activate the %s add-on<br/>for Schema markup and structured data options."
+"Activate the %s add-on<br/>for additional structured data and Schema markup "
+"options."
 msgstr ""
 
 #: lib/messages.php:3016 lib/util.php:3299
