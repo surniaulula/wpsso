@@ -22,11 +22,13 @@ Make sure your content looks great on social sites and search results, no matter
 
 **Make sure your content looks great on social sites and search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded:**
 
-WPSSO creates meta tags and Schema markup for *Facebook / Open Graph, Pinterest Rich Pins, Twitter Cards, Google's Knowledge Graph and Rich Results (aka Rich Snippets, Structured Data), WhatsApp and Messaging Apps, Mobile Web Browsers, WordPress REST API, LinkedIn / oEmbed data and more* &mdash; including complete markup for image SEO, video SEO, extensive e-Commerce product markup (for WooCommerce and others), mobile store apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; *all from your existing WordPress content, supported plugin data, and service API data*.
+WPSSO creates meta tags and Schema markup for *Facebook / Open Graph, Pinterest Rich Pins, Twitter Cards, Google Knowledge Graph, Google Rich Results (aka Rich Snippets, Structured Data), WhatsApp and Messaging Apps, Mobile Web Browsers, WordPress REST API, LinkedIn / oEmbed data and more* &mdash; including complete markup for image SEO, video SEO, extensive e-Commerce product markup (for WooCommerce and others), mobile store apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; *all from your existing WordPress content, supported plugin data, and service API data*.
 
-There's no need to manually re-enter descriptions, titles, product information, re-select images / videos, etc. like other meta tag and Schema markup plugins &mdash; WPSSO reads all your existing post, page, image, video, e-commerce product, recipe, rating, review, event, and SEO content automatically.
+**Reads your existing WordPress content, plugin and service API data:**
 
-WPSSO is also language / locale aware, which means you can customize several option values for different webpage languages.
+There's no need to manually re-enter descriptions, titles, product information, re-select images / videos, etc. like other meta tag, Schema markup and SEO plugins.
+
+WPSSO is language / locale aware, which means you can also customize many options for different languages.
 
 **Coded for maximum performance:**
 
@@ -138,7 +140,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 
 * Twitter [Player Card](https://dev.twitter.com/cards/types/player) for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube.
 
-* Optionally upscale small images from the Media Library for social sharing and Schema markup.
+* Optional upscaling of small images from the Media Library for social sharing and Schema markup.
 
 * URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.
 
