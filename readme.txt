@@ -306,7 +306,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.12.2-rc.3 (2020/07/17)**
+**Version 7.13.0 (2020/08/18)**
 
 * **New Features**
 	* Added a "Video API Info" status to the SSO &gt; Dashboard &gt; Cache Status metabox.
@@ -317,6 +317,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed an "undefined index formats" error for protected YouTube videos (without streaming data).
 * **Developer Notes**
 	* Updated the `SucomCache` class to rename '$file_ext' to '$cache_ext' and add its (optional) value to the transient cache id.
+	* Updated the video API modules to include a '$cache_ext' value when calling the `SucomCache->get()` method.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
@@ -643,15 +644,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 7.12.2-rc.3 =
+= 7.13.0 =
 
-(2020/07/17) Fixed an "undefined index formats" error for protected YouTube videos (without streaming data). Added a "Video API Info Cache Expiry" option under the SSO &gt; Advanced Settings &gt; Cache tab.
-
-= 7.12.1 =
-
-(2020/07/11) Fixed missing submission of form options that are disabled dynamically using jQuery. Added contextual information about the Google Structured Data Testing Tool being deprecated.
-
-= 7.12.0 =
-
-(2020/07/04) Fixed possible duplicate Organization markup in the home page. Fixed a non-unique md5 hash value for the Schema Person @id string. Added a new "WebSite Publisher Type" option in the Essential Settings page.
+(2020/08/18) Fixed an "undefined index formats" error for protected YouTube videos (without streaming data). Added a "Video API Info Cache Expiry" option under the SSO &gt; Advanced Settings &gt; Cache tab.
 
