@@ -28,7 +28,9 @@ WPSSO creates meta tags and Schema markup for Facebook / Open Graph, Pinterest R
 
 There's no need to manually re-enter descriptions, titles, product information, re-select images / videos, etc. like other meta tag, SEO and Schema markup plugins.
 
-WPSSO is language / locale aware, which means you can also customize many options for different languages.
+**Optionally customize the plugin settings for different languages:**
+
+Many setting options are language (locale) aware, which means you can customize their values for different front-end languages.
 
 **Coded for maximum performance:**
 
@@ -113,7 +115,7 @@ WPSSO makes full use of all available caching methods &mdash; along with offerin
 
 * Contextual help for every plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/).
 
-<h3>Free Complementary Add-ons for WPSSO Core</h3>
+<h3>Free Complementary Add-ons</h3>
 
 Optionally activate free complementary add-on(s) for non-standard features:
 
