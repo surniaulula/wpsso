@@ -6329,8 +6329,8 @@ msgstr ""
 #. translators: %s is is the add-on name (and a link to the add-on page).
 #: lib/messages.php:3006
 msgid ""
-"Activate the %s add-on<br/>if you require additional structured data and "
-"Schema markup options."
+"Activate the %s add-on<br/>if you require additional Schema markup and "
+"structured data options."
 msgstr ""
 
 #: lib/messages.php:3016 lib/util.php:3299
@@ -7761,7 +7761,7 @@ msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
 #: lib/util.php:1434
-msgid "Error retrieving HTML from <a href=\"%1$s\">%1$s</a>."
+msgid "Error getting HTML from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
 #: lib/util.php:1453

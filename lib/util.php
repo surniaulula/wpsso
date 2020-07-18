@@ -1427,11 +1427,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				if ( ! $html ) {
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'exiting early: error retrieving HTML from ' . $request );
+						$this->p->debug->log( 'exiting early: error getting HTML from ' . $request );
 					}
 
 					if ( is_admin() ) {
-						$this->p->notice->err( sprintf( __( 'Error retrieving HTML from <a href="%1$s">%1$s</a>.',
+						$this->p->notice->err( sprintf( __( 'Error getting HTML from <a href="%1$s">%1$s</a>.',
 							'wpsso' ), $request ) );
 					}
 
@@ -1605,7 +1605,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				if ( ! $html ) {
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'exiting early: error retrieving HTML from ' . $request );
+						$this->p->debug->log( 'exiting early: error getting HTML from ' . $request );
 					}
 
 					return false;
