@@ -56,10 +56,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * licenses settings page) after plugin installation / activation / update.
 			 */
 			if ( ! empty( $_GET[ $this->p->lca . '_pageref_title' ] ) ) {
+
 				$this->pageref_title = esc_html( urldecode( $_GET[ $this->p->lca . '_pageref_title' ] ) );
 			}
 
 			if ( ! empty( $_GET[ $this->p->lca . '_pageref_url' ] ) ) {
+
 				$this->pageref_url = esc_url_raw( urldecode( $_GET[ $this->p->lca . '_pageref_url' ] ) );
 			}
 
@@ -454,7 +456,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function add_plugins_page_upgrade_notice() {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
+
 				if ( ! empty( $info[ 'base' ] ) ) {
+
 					add_action( 'in_plugin_update_message-' . $info[ 'base' ], array( $this, 'show_upgrade_notice' ), 10, 2 );
 				}
 			}
@@ -463,6 +467,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function show_upgrade_notice( $data, $response ) {
 
 			if ( isset( $data[ 'upgrade_notice' ] ) ) {	// Just in case.
+
 				echo '<span style="display:table;border-collapse:collapse;margin-left:26px;">';
 				echo '<span style="display:table-cell;">' . strip_tags( $data[ 'upgrade_notice' ] ) . '</span>';
 				echo '</span>';
@@ -1237,8 +1242,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$this->add_plugin_hooks();	// Add settings page filter and action hooks.
 
-			$this->add_side_meta_boxes();	// Add side metaboxes before main metaboxes.
-
 			$this->add_meta_boxes();	// Add last to move any duplicate side metaboxes.
 
 			$this->add_footer_hooks();	// Include add-on name and version in settings page footer.
@@ -1250,27 +1253,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 * This method is extended by each submenu page.
 		 */
 		protected function add_plugin_hooks() {
-		}
-
-		protected function add_side_meta_boxes() {
-
-			if ( ! self::$pkg[ $this->p->lca ][ 'pp' ] ) {
-
-				$metabox_id      = 'purchase_pro';
-				$metabox_title   = sprintf( _x( '%s Version Available', 'metabox title', 'wpsso' ),
-					_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) );
-				$metabox_screen  = $this->pagehook;
-				$metabox_context = 'side_fixed';
-				$metabox_prio    = 'default';
-				$callback_args   = array(	// Second argument passed to the callback function / method.
-				);
-
-				add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
-					array( $this, 'show_metabox_purchase_pro' ), $metabox_screen,
-						$metabox_context, $metabox_prio, $callback_args );
-
-				WpssoUser::reset_metabox_prefs( $this->pagehook, array( 'purchase_pro' ), '', '', true );
-			}
 		}
 
 		/**
@@ -1331,6 +1313,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$dashicon_html = $this->get_menu_dashicon_html( $this->menu_id );
 
+			$side_info_boxes = $this->get_side_info_purchase();
+
 			echo '<div class="wrap" id="' . $this->pagehook . '">' . "\n";
 			echo '<h1>';
 			echo $dashicon_html . ' ';
@@ -1339,29 +1323,38 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo self::$pkg[ $this->menu_ext ][ 'short' ];
 			echo ')</span></h1>' . "\n";
 
-			if ( ! self::$pkg[ $this->p->lca ][ 'pp' ] ) {
+			if ( ! empty( $side_info_boxes ) ) {
 
-				echo '<div id="poststuff" class="metabox-holder has-right-sidebar">' . "\n";
-
-				echo '<div id="side-info-column" class="inner-sidebar">' . "\n";
-				do_meta_boxes( $this->pagehook, $context = 'side_fixed', $object = null );
-				echo '</div><!-- #side-info-column -->' . "\n";
-
-				echo '<div id="post-body" class="has-sidebar">' . "\n";
-				echo '<div id="post-body-content" class="has-sidebar-content">' . "\n";
-
-			} else {
-
-				echo '<div id="poststuff" class="metabox-holder no-right-sidebar">' . "\n";
-				echo '<div id="post-body" class="no-sidebar">' . "\n";
-				echo '<div id="post-body-content" class="no-sidebar-content">' . "\n";
+				echo '<div class="has-side-info-column">' . "\n";
 			}
+
+			echo '<div id="poststuff" class="metabox-holder no-right-sidebar">' . "\n";
+			echo '<div id="post-body" class="no-sidebar">' . "\n";
+			echo '<div id="post-body-content" class="no-sidebar-content">' . "\n";
 
 			$this->show_post_body_setting_form();
 
 			echo '</div><!-- #post-body-content -->' . "\n";
 			echo '</div><!-- #post-body -->' . "\n";
 			echo '</div><!-- #poststuff -->' . "\n";
+
+			if ( ! empty( $side_info_boxes ) ) {
+
+				echo '<div id="side-info-column">' . "\n";
+
+				foreach ( $side_info_boxes as $box ) {
+			
+					echo '<table class="sucom-settings ' . $this->p->lca . ' side-info-box">' . "\n";
+					echo '<tr><td>' . "\n";
+					echo $box;
+					echo '</td></tr>' . "\n";
+					echo '</table><!-- .side-info-box -->' . "\n";
+				}
+
+				echo '</div><!-- #side-info-column -->' . "\n";
+				echo '</div><!-- .has-side-info-column -->' . "\n";
+			}
+
 			echo '</div><!-- .wrap -->' . "\n";
 
 			?>
@@ -1519,6 +1512,51 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo $this->get_form_buttons( $submit_label_transl );
 
 			echo '</form>', "\n";
+		}
+
+		protected function get_side_info_purchase() {
+
+			$side_info_boxes = array();
+
+			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
+
+				if ( empty( $info[ 'version' ] ) ) {	// Filter out add-ons that are not installed.
+
+					continue;
+				}
+
+				if ( empty( $info[ 'url' ][ 'purchase' ] ) ) {
+
+					continue;
+				}
+
+				$purchase_url = add_query_arg( array(
+					'utm_source'  => $this->p->lca,
+					'utm_medium'  => 'plugin',
+					'utm_content' => 'column-purchase',
+				), $info[ 'url' ][ 'purchase' ] );
+
+				$box = '<div class="side-info-header">' . "\n";
+				$box .= '<h2>' . __( 'Upgrade to Premium', 'wpsso' ) . '</h2>' . "\n";
+				$box .= '</div><!-- .side-info-header -->' . "\n";
+	
+				$box .= '<div class="side-info-icon">' . "\n";
+				$box .= $this->get_ext_img_icon( $ext ) . "\n";
+				$box .= '</div><!-- .side-info-icon -->' . "\n";
+	
+				$box .= '<div class="side-info-content has-buttons">' . "\n";
+				$box .= $this->p->msgs->get( 'column-purchase-' . $ext ) . "\n";
+				$box .= '</div><!-- .side-info-content -->' . "\n";
+	
+				$box .= '<div class="side-info-buttons">' . "\n";
+				$box .= $this->form->get_button( sprintf( _x( 'Purchase %s', 'submit button', 'wpsso' ), self::$pkg[ $ext ][ 'short_pro' ] ),
+					'button-secondary', 'column-purchase', $purchase_url, true ) . "\n";
+				$box .= '</div><!-- .side-info-buttons -->' . "\n";
+
+				$side_info_boxes[] = $box;
+			}
+
+			return $side_info_boxes;
 		}
 
 		protected function get_form_buttons( $submit_label_transl = '' ) {
@@ -1703,7 +1741,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				if ( empty( $info[ 'version' ] ) ) {	// Only active add-ons.
+				if ( empty( $info[ 'version' ] ) ) {	// Filter out add-ons that are not installed.
+
 					continue;
 				}
 
@@ -1865,6 +1904,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
 				if ( ! isset( $info[ 'lib' ][ 'pro' ] ) ) {
+
 					continue;
 				}
 
@@ -1912,6 +1952,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				foreach ( $info[ 'lib' ][ 'pro' ] as $sub => $libs ) {
 
 					if ( $sub === 'admin' ) {	// Skip status for admin menus and tabs.
+
 						continue;
 					}
 
@@ -1947,41 +1988,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '</table>';
 		}
 
-		public function show_metabox_purchase_pro() {
-
-			$info =& $this->p->cf[ 'plugin' ][ $this->p->lca ];
-
-			if ( ! empty( $info[ 'url' ][ 'purchase' ] ) ) {
-
-				$purchase_url = add_query_arg( array(
-					'utm_source'  => $this->p->lca,
-					'utm_medium'  => 'plugin',
-					'utm_content' => 'column-purchase-pro',
-				), $info[ 'url' ][ 'purchase' ] );
-
-			} else {
-				$purchase_url = '';
-			}
-
-			echo '<table class="sucom-settings ' . $this->p->lca . ' column-metabox"><tr><td>';
-
-			echo '<div class="column-metabox-icon">';
-			echo $this->get_ext_img_icon( $this->p->lca );
-			echo '</div>';
-
-			echo '<div class="column-metabox-content has-buttons">';
-			echo $this->p->msgs->get( 'column-purchase-pro' );
-			echo '</div>';
-
-			echo '<div class="column-metabox-buttons">';
-			echo $this->form->get_button( sprintf( _x( 'Purchase %s', 'submit button', 'wpsso' ),
-				$info[ 'short' ] . ' ' . _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) ),
-					'button-primary', 'column-purchase-pro', $purchase_url, true );
-			echo '</div>';
-
-			echo '</td></tr></table>';
-		}
-
 		public function show_metabox_help_support() {
 
 			echo '<table class="sucom-settings ' . $this->p->lca . ' column-metabox"><tr><td>';
@@ -1989,17 +1995,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
 				if ( empty( $info[ 'version' ] ) ) {	// Filter out add-ons that are not installed.
+
 					continue;
 				}
 
 				$action_links = array();
 
 				if ( ! empty( $info[ 'url' ][ 'faqs' ] ) ) {
+
 					$action_links[] = sprintf( __( '<a href="%s">Frequently Asked Questions</a>',
 						'wpsso' ), $info[ 'url' ][ 'faqs' ] );
 				}
 
 				if ( ! empty( $info[ 'url' ][ 'notes' ] ) ) {
+
 					$action_links[] = sprintf( __( '<a href="%s">Notes and Documentation</a>',
 						'wpsso' ), $info[ 'url' ][ 'notes' ] );
 				}
@@ -2016,6 +2025,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 				if ( ! empty( $action_links ) ) {
+
 					echo '<h4>' . $info[ 'name' ] . '</h4>' . "\n";
 					echo '<ul><li>' . implode( '</li><li>', $action_links ) . '</li></ul>' . "\n";
 				}
@@ -2037,15 +2047,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
 				if ( empty( $info[ 'version' ] ) ) {	// Filter out add-ons that are not installed.
+
 					continue;
 				}
 
 				if ( ! empty( $info[ 'url' ][ 'review' ] ) ) {
+
 					$action_links[] = '<a href="' . $info[ 'url' ][ 'review' ] . '">' . $info[ 'name' ] . '</a>';
 				}
 			}
 
 			if ( ! empty( $action_links ) ) {
+
 				echo '<ul><li>' . implode( '</li><li>', $action_links ) . '</li></ul>' . "\n";
 			}
 

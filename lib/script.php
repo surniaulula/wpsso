@@ -85,9 +85,6 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			wp_register_script( 'jquery-qtip', WPSSO_URLPATH . 'js/ext/jquery-qtip.' . $this->file_ext, 
 				array( 'jquery' ), $this->p->cf[ 'jquery-qtip' ][ 'version' ], $in_footer = true );
 
-			wp_register_script( 'sucom-settings-page', WPSSO_URLPATH . 'js/com/jquery-settings-page.' . $this->file_ext, 
-				array( 'jquery' ), $this->version, $in_footer = true );
-
 			wp_register_script( 'sucom-metabox', WPSSO_URLPATH . 'js/com/jquery-metabox.' . $this->file_ext, 
 				array( 'jquery' ), $this->version, $in_footer = true );
 

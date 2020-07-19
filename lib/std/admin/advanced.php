@@ -512,7 +512,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 				$table_rows[] = $tr_html .
 				$form->get_th_html( $opt_label, 'medium' ) . 
-				$form->get_no_td_checkbox( $cm_enabled_key, '', true ) . 
+				$form->get_no_td_checkbox( $cm_enabled_key, $comment = '', $extra_css_class = 'checkbox' ) . 
 				'<td class="blank medium">' . $form->get_no_input( $cm_name_key, 'medium' ) . '</td>' . 
 				'<td class="blank wide">' . $form->get_no_input_locale( $cm_label_key ) . '</td>';
 			}
@@ -547,11 +547,12 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				 * Not all social websites have a contact method field.
 				 */
 				if ( ! isset( $form->options[ $cm_enabled_key ] ) ) {
+
 					continue;
 				}
 
 				$table_rows[] = $form->get_th_html( $opt_label, 'medium' ) . 
-				'<td class="checkbox blank">' . $form->get_no_checkbox_comment( $cm_enabled_key ) . '</td>' . 
+				$form->get_no_td_checkbox( $cm_enabled_key, $comment = '', $extra_css_class = 'checkbox' ) . 
 				'<td class="medium">' . $form->get_no_input( $cm_name_key, 'medium' ) . '</td>' . 
 				'<td class="blank wide">' . $form->get_no_input_locale( $cm_label_key ) . '</td>';
 			}

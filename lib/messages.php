@@ -2625,7 +2625,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 				switch ( $msg_key ) {
 
-					case 'column-purchase-pro':
+					case 'column-purchase-wpsso':
 
 						$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
@@ -2650,7 +2650,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text .= __( 'How great is that!?', 'wpsso' ) . ' :-)</p>';
 
 
-						$text .= '<p><strong>' . sprintf( __( 'Purchase %1$s quickly and easily with PayPal!', 'wpsso' ), $info[ 'short_pro' ] ) . '</strong></p>';
+						$text .= '<p><strong>' . __( 'Purchase quickly and easily with PayPal!', 'wpsso' ) . '</strong></p>';
 
 						break;
 

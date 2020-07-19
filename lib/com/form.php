@@ -1839,7 +1839,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_no_td_checkbox( $name, $comment = '', $extra_css_class = '' ) {
 
-			return '<td class="' . $extra_css_class . ' blank">' . $this->get_no_checkbox_comment( $name, $comment ) . '</td>';
+			return '<td class="blank ' . $extra_css_class . '">' . $this->get_no_checkbox_comment( $name, $comment ) . '</td>';
 		}
 
 		public function get_no_checkbox( $name, $css_class = '', $css_id = '', $force = null, $group = null ) {
