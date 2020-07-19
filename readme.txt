@@ -138,9 +138,9 @@ Optionally activate free complementary add-on(s) for non-standard features:
 
 The Standard version is designed to satisfy the requirements of most standard WordPress sites / blogs. If your site requires additional 3rd party plugin or service API integration, like WooCommerce shops, embedded video support, or advanced customization features, then you may want the Premium version for those additional features.
 
-* Support for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube in content text.
+* Detection of embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube in the content text.
 
-* Twitter [Player Card](https://dev.twitter.com/cards/types/player) for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube.
+* Support for the Twitter [Player Card](https://dev.twitter.com/cards/types/player) for embedded videos.
 
 * Optional upscaling of small images from the Media Library for social sharing and Schema markup.
 
@@ -310,7 +310,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.13.1-dev.3 (2020/07/19)**
+**Version 7.13.1-dev.4 (2020/07/19)**
 
 * **New Features**
 	* None.
@@ -319,7 +319,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* CSS updates for WordPress v5.5 to restore `.has-right-sidebar` layout in settings pages.
+	* Refactored the side information column in plugin settings pages for WordPress v5.5.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
@@ -662,9 +662,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 7.13.1-dev.3 =
+= 7.13.1-dev.4 =
 
-(2020/07/19) CSS updates for WordPress v5.5 to restore `.has-right-sidebar` layout in settings pages.
+(2020/07/19) Refactored the side information column in plugin settings pages for WordPress v5.5.
 
 = 7.13.0 =
 

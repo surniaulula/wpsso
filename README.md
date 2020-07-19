@@ -142,8 +142,8 @@
 <p>The Standard version is designed to satisfy the requirements of most standard WordPress sites / blogs. If your site requires additional 3rd party plugin or service API integration, like WooCommerce shops, embedded video support, or advanced customization features, then you may want the Premium version for those additional features.</p>
 
 <ul>
-<li><p>Support for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube in content text.</p></li>
-<li><p>Twitter <a href="https://dev.twitter.com/cards/types/player">Player Card</a> for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube.</p></li>
+<li><p>Detection of embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube in the content text.</p></li>
+<li><p>Support for the Twitter <a href="https://dev.twitter.com/cards/types/player">Player Card</a> for embedded videos.</p></li>
 <li><p>Optional upscaling of small images from the Media Library for social sharing and Schema markup.</p></li>
 <li><p>URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.</p></li>
 <li><p>Integrates with 3rd party plugins and service APIs for additional image, video, eCommerce product details, SEO settings, etc. The following modules are included with the Premium version, and are automatically loaded if/when the supported plugins and/or services are required.</p>
