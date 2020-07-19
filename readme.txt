@@ -310,7 +310,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.13.1-dev.2 (2020/07/19)**
+**Version 7.13.1-dev.3 (2020/07/19)**
 
 * **New Features**
 	* None.
@@ -662,7 +662,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 7.13.1-dev.2 =
+= 7.13.1-dev.3 =
 
 (2020/07/19) CSS updates for WordPress v5.5 to restore `.has-right-sidebar` layout in settings pages.
 
