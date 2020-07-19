@@ -310,7 +310,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.13.1-dev.1 (2020/08/18)**
+**Version 7.13.1-dev.2 (2020/07/19)**
 
 * **New Features**
 	* None.
@@ -324,7 +324,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* PHP v5.6.
 	* WordPress v4.2.
 
-**Version 7.13.0 (2020/08/18)**
+**Version 7.13.0 (2020/07/18)**
 
 * **New Features**
 	* Added a "Video API Info" status to the SSO &gt; Dashboard &gt; Cache Status metabox.
@@ -662,11 +662,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 7.13.1-dev.1 =
+= 7.13.1-dev.2 =
 
-(2020/08/18) CSS updates for WordPress v5.5 to restore `.has-right-sidebar` layout in settings pages.
+(2020/07/19) CSS updates for WordPress v5.5 to restore `.has-right-sidebar` layout in settings pages.
 
 = 7.13.0 =
 
-(2020/08/18) Fixed an "undefined index formats" error for protected YouTube videos (without streaming data). Added a "Video API Info Cache Expiry" option under the SSO &gt; Advanced Settings &gt; Cache tab.
+(2020/07/18) Fixed an "undefined index formats" error for protected YouTube videos (without streaming data). Added a "Video API Info Cache Expiry" option under the SSO &gt; Advanced Settings &gt; Cache tab.
 
