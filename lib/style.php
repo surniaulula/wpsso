@@ -166,15 +166,18 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				WPSSO_URLPATH . 'css/com/settings-page.' . $this->file_ext,
 					array(), $this->version );
 
-			if ( $custom_style_css = get_transient( $cache_id ) ) {	// Not empty.
+			if ( $this->use_cache ) {
 
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'settings page style retrieved from cache' );
+				if ( $custom_style_css = get_transient( $cache_id ) ) {	// Not empty.
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'settings page style retrieved from cache' );
+					}
+
+					wp_add_inline_style( 'sucom-settings-page', $custom_style_css );	// Since WP v3.3.0.
+
+					return;
 				}
-
-				wp_add_inline_style( 'sucom-settings-page', $custom_style_css );	// Since WP v3.3.0.
-
-				return;
 			}
 
 			if ( $this->p->debug->enabled ) {
@@ -191,19 +194,17 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			$background_color = $this->p->cf[ 'notice' ][ 'update-nag' ][ 'background-color' ];
 
 			$custom_style_css .= '
-				#poststuff #side-info-column .postbox {
+				#poststuff #side_fixed-sortables .postbox {
 					border:1px solid ' . $border_color . ';
 				}
-				#poststuff #side-info-column .postbox h2 {
+				#poststuff #side_fixed-sortables .postbox > h2,
+				#poststuff #side_fixed-sortables .postbox .postbox-header {	/* WP v5.5. */
 					border-bottom:1px dotted ' . $border_color . ';
 				}
-				#poststuff #side-info-column .postbox.closed h2 {
-					border-bottom:1px solid ' . $border_color . ';
-				}
-				#poststuff #side-info-column .postbox.closed {
+				#poststuff #side_fixed-sortables .postbox.closed > h2,
+				#poststuff #side_fixed-sortables .postbox.closed .postbox-header {	/* WP v5.5. */
 					border-bottom:none;
 				}
-				#poststuff #side-info-column .postbox .inside td.blank,
 				#poststuff .dashboard_col .postbox .inside td.blank {
 					color:' . $color . ';
 					border-color:' . $border_color . ';

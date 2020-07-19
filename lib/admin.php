@@ -1342,13 +1342,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( ! self::$pkg[ $this->p->lca ][ 'pp' ] ) {
 
 				echo '<div id="poststuff" class="metabox-holder has-right-sidebar">' . "\n";
+
 				echo '<div id="side-info-column" class="inner-sidebar">' . "\n";
-
-				do_meta_boxes( $this->pagehook, $context = 'side_top', $object = null );
 				do_meta_boxes( $this->pagehook, $context = 'side_fixed', $object = null );
-				do_meta_boxes( $this->pagehook, $context = 'side', $object = null );
-
 				echo '</div><!-- #side-info-column -->' . "\n";
+
 				echo '<div id="post-body" class="has-sidebar">' . "\n";
 				echo '<div id="post-body-content" class="has-sidebar-content">' . "\n";
 

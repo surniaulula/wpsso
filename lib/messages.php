@@ -622,11 +622,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 */
 						case 'tooltip-og_img_max':		// Maximum Images to Include.
 
-							$text = __( 'The maximum number of images to include in Open Graph meta tags, including custom, featured, attached, and content images.', 'wpsso' ) . ' ';
+							$text = __( 'The maximum number of images to include in the Open Graph meta tags for the webpage.', 'wpsso' ) . ' ';
 
-							$text .= __( 'If you select "0", then no images will be included in Open Graph meta tags (<strong>not recommended</strong>).', 'wpsso' ) . ' ';
+							$text .= __( 'If you select "0", then no images will be included (<strong>not recommended</strong>).', 'wpsso' ) . ' ';
 
-							$text .= __( 'If no images are included in your Open Graph meta tags, then social sites may select any image from the webpage (including headers, sidebars, thumbnails, etc.).', 'wpsso' );
+							$text .= __( 'If no images are available in the Open Graph meta tags, social sites may choose any random image from the webpage, including headers, thumbnails, ads, etc.', 'wpsso' );
 
 							break;
 
@@ -1388,9 +1388,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-schema_img_max':		// Maximum Images to Include.
 
-							$text = __( 'The maximum number of images to include in Schema markup, including custom, featured, attached, and content images.', 'wpsso' ) . ' ';
+							$text = __( 'The maximum number of images to include in the Schema main entity markup for the webpage.', 'wpsso' ) . ' ';
 
-							$text .= __( 'If you select "0", then no images will be included in the Schema markup (<strong>not recommended</strong>).', 'wpsso' );
+							$text .= __( 'If you select "0", then no images will be included (<strong>not recommended</strong>).', 'wpsso' ) . ' ';
 
 							break;
 
