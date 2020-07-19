@@ -1548,9 +1548,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 	
 				$box .= '<div class="side-info-content has-buttons">' . "\n";
 				$box .= $this->p->msgs->get( 'column-purchase-' . $ext, $info ) . "\n";
-
-				$box .= '<p>' . sprintf( __( '<strong>%1$s licenses never expire</strong> &mdash; receive unlimited / lifetime updates and support for each licensed WordPress Site Address.', 'wpsso' ), self::$pkg[ $ext ][ 'name_pro' ] ) . ' ';
-
 				$box .= '</div><!-- .side-info-content -->' . "\n";
 	
 				$box .= '<div class="side-info-buttons">' . "\n";
