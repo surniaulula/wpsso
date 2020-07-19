@@ -224,10 +224,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				self::$pkg[ $ext ][ 'pdir' ]      = $ext_pdir;
 				self::$pkg[ $ext ][ 'pp' ]        = $ext_pp;
 				self::$pkg[ $ext ][ 'dist' ]      = $ext_pp ? $dist_pro_name : $dist_std_name;
+				self::$pkg[ $ext ][ 'short' ]     = $info[ 'short' ] . ' ' . self::$pkg[ $ext ][ 'dist' ];
 				self::$pkg[ $ext ][ 'short_pro' ] = $info[ 'short' ] . ' ' . $dist_pro_name;
 				self::$pkg[ $ext ][ 'short_std' ] = $info[ 'short' ] . ' ' . $dist_std_name;
-				self::$pkg[ $ext ][ 'short' ]     = $info[ 'short' ] . ' ' . self::$pkg[ $ext ][ 'dist' ];
 				self::$pkg[ $ext ][ 'name' ]      = SucomUtil::get_dist_name( $info[ 'name' ], self::$pkg[ $ext ][ 'dist' ] );
+				self::$pkg[ $ext ][ 'name_pro' ]  = SucomUtil::get_dist_name( $info[ 'name' ], $dist_pro_name );
+				self::$pkg[ $ext ][ 'name_std' ]  = SucomUtil::get_dist_name( $info[ 'name' ], $dist_std_name );
 				self::$pkg[ $ext ][ 'gen' ]       = $info[ 'short' ] . ( isset( $info[ 'version' ] ) ? ' ' . $info[ 'version' ] . '/' . $ext_stat : '' );
 			}
 
@@ -1514,7 +1516,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '</form>', "\n";
 		}
 
-		protected function get_side_info_purchase() {
+		private function get_side_info_purchase() {
 
 			$side_info_boxes = array();
 
@@ -1545,7 +1547,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$box .= '</div><!-- .side-info-icon -->' . "\n";
 	
 				$box .= '<div class="side-info-content has-buttons">' . "\n";
-				$box .= $this->p->msgs->get( 'column-purchase-' . $ext ) . "\n";
+				$box .= $this->p->msgs->get( 'column-purchase-' . $ext, $info ) . "\n";
+
+				$box .= '<p>' . sprintf( __( '<strong>%1$s licenses never expire</strong> &mdash; receive unlimited / lifetime updates and support for each licensed WordPress Site Address.', 'wpsso' ), self::$pkg[ $ext ][ 'name_pro' ] ) . ' ';
+
 				$box .= '</div><!-- .side-info-content -->' . "\n";
 	
 				$box .= '<div class="side-info-buttons">' . "\n";

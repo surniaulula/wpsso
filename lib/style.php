@@ -205,11 +205,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				#poststuff #side_fixed-sortables .postbox.closed .postbox-header {	/* WP v5.5. */
 					border-bottom:none;
 				}
-				#poststuff .dashboard_col .postbox .inside td.blank {
-					color:' . $color . ';
-					border-color:' . $border_color . ';
-					background-color:' . $background_color . ';
-				}
 			';
 
 			if ( strpos( $hook_name, '_page_' . $this->p->lca . '-dashboard' ) ) {

@@ -3689,14 +3689,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $val;
 		}
 
-		public static function add_dist_name( &$name, $type ) {
-
-			$name = self::get_dist_name( $name, $type );
-		}
-
 		public static function get_dist_name( $name, $type ) {
 
 			if ( false !== strpos( $name, $type ) ) {
+
 				$name = preg_replace( '/^(.*) ' . $type . '( [\[\(].+[\)\]])?$/U', '$1$2', $name );
 			}
 

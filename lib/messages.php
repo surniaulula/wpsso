@@ -125,17 +125,32 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			foreach ( array( 'short', 'name', 'version' ) as $info_key ) {
 
 				if ( ! isset( $info[ $info_key ] ) ) {
+
 					if ( ! isset( $this->p->cf[ 'plugin' ][ $lca ][ $info_key ] ) ) {	// Just in case.
+
 						$info[ $info_key ] = null;
+
+						continue;
+
 					} else {
+
 						$info[ $info_key ] = $this->p->cf[ 'plugin' ][ $lca ][ $info_key ];
 					}
 				}
 
-				$info[ $info_key . '_pro' ] = SucomUtil::get_dist_name( $info[ $info_key ], $pro_transl );
 
-				$info[ $info_key . '_pro_purchase' ] = empty( $url[ 'purchase' ] ) ?
-					$info[ $info_key . '_pro' ] : '<a href="' . $url[ 'purchase' ] . '">' . $info[ $info_key . '_pro' ] . '</a>';
+				switch ( $info_key ) {
+
+					case 'short':
+					case 'name':
+
+						$info[ $info_key . '_pro' ] = SucomUtil::get_dist_name( $info[ $info_key ], $pro_transl );
+
+						$info[ $info_key . '_pro_purchase' ] = empty( $url[ 'purchase' ] ) ? $info[ $info_key . '_pro' ] :
+							'<a href="' . $url[ 'purchase' ] . '">' . $info[ $info_key . '_pro' ] . '</a>';
+
+						break;
+				}
 			}
 
 			/**
@@ -2623,34 +2638,92 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			 */
 			} elseif ( strpos( $msg_key, 'column-' ) === 0 ) {
 
+				$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+
 				switch ( $msg_key ) {
 
 					case 'column-purchase-wpsso':
-
-						$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
 						$text = '<p>' . sprintf( __( '<strong>%s includes:</strong>', 'wpsso' ), $info[ 'short_pro' ] ) . '</p>';
 
 						$text .= '<ul>';
 
-						$text .= ' <li>' . sprintf( __( 'Additional options in the %s metabox.', 'wpsso' ), $mb_title ) . '</li>';
+						$text .= ' <li>' . __( 'Integration with 3rd party plugins and service APIs (WooCommerce, Yoast SEO, YouTube, Bitly, and many more).', 'wpsso' ) . '</li>';
 
-						$text .= ' <li>' . __( 'Integration with 3rd party plugins and service APIs.', 'wpsso' ) . '</li>';
+						$text .= ' <li>' . __( 'Detection of embedded videos in the content text.', 'wpsso' ) . '</li>';
+
+						$text .= ' <li>' . __( 'Support for Twitter Player Card meta tags.', 'wpsso' ) . '</li>';
+
+						$text .= ' <li>' . __( 'Upscaling of images and URL shortening.', 'wpsso' ) . '</li>';
 
 						$text .= ' <li>' . __( 'Advanced plugin settings.', 'wpsso' ) . '</li>';
 
-						$text .= ' <li>' . __( 'Access to development and release candidate updates.', 'wpsso' ) . '</li>';
+						$text .= ' <li>' . __( 'Access to development updates.', 'wpsso' ) . '</li>';
 
 						$text .= ' <li>' . __( 'Premium plugin support.', 'wpsso' ) . '</li>';
 
 						$text .= '</ul>';
 
-						$text .= '<p>' . sprintf( __( '<strong>%1$s licenses never expire</strong> &mdash; you may receive unlimited / lifetime updates and support for each licensed WordPress Site Address.', 'wpsso' ), $pro_transl ) . ' ';
+						break;
 
-						$text .= __( 'How great is that!?', 'wpsso' ) . ' :-)</p>';
+					case 'column-purchase-wpssojson':
 
+						$text = '<p>' . sprintf( __( '<strong>%s includes:</strong>', 'wpsso' ), $info[ 'short_pro' ] ) . '</p>';
 
-						$text .= '<p><strong>' . __( 'Purchase quickly and easily with PayPal!', 'wpsso' ) . '</strong></p>';
+						$text .= '<ul>';
+
+						$text .= ' <li>' . sprintf( __( 'Additional Schema options in the %s metabox to customize creative works, events, how-tos, job postings, movies, products, qa pages, recipes, reviews, and many more.', 'wpsso' ), $mb_title ) . '</li>';
+
+						$text .= ' <li>' . __( 'Access to development updates.', 'wpsso' ) . '</li>';
+
+						$text .= ' <li>' . __( 'Premium plugin support.', 'wpsso' ) . '</li>';
+
+						$text .= '</ul>';
+
+						break;
+
+					case 'column-purchase-wpssoorg':
+
+						$text = '<p>' . sprintf( __( '<strong>%s includes:</strong>', 'wpsso' ), $info[ 'short_pro' ] ) . '</p>';
+
+						$text .= '<ul>';
+
+						$text .= ' <li>' . __( 'Manage the details of multiple organizations.', 'wpsso' ) . '</li>';
+
+						$text .= ' <li>' . sprintf( __( 'Offers an organization selector for the %s add-on.', 'wpsso' ),
+							WpssoAdmin::$pkg[ 'wpssojson' ][ 'short_pro' ] ) . '</li>';
+
+						$text .= ' <li>' . __( 'Access to development updates.', 'wpsso' ) . '</li>';
+
+						$text .= ' <li>' . __( 'Premium plugin support.', 'wpsso' ) . '</li>';
+
+						$text .= '</ul>';
+
+						break;
+
+					case 'column-purchase-wpssoplm':
+
+						$text = '<p>' . sprintf( __( '<strong>%s includes:</strong>', 'wpsso' ), $info[ 'short_pro' ] ) . '</p>';
+
+						$text .= '<ul>';
+
+						$text .= ' <li>' . sprintf( __( 'Includes a %1$s tab in the %2$s metabox to select a place or customize place information.', 'wpsso' ), _x( 'Schema Place', 'metabox tab', 'wpsso' ), $mb_title ) . '</li>';
+
+						$text .= ' <li>' . __( 'Access to development updates.', 'wpsso' ) . '</li>';
+
+						$text .= ' <li>' . __( 'Premium plugin support.', 'wpsso' ) . '</li>';
+
+						$text .= '</ul>';
+
+						break;
+
+					case 'column-help-support':
+
+						$text = '<p>';
+
+						$text .= sprintf( __( '<strong>Development of %1$s is driven by user requests</strong> &mdash; we welcome all your comments and suggestions.', 'wpsso' ), $info[ 'short' ] ) . ' ;-)';
+
+						$text .= '</p>';
 
 						break;
 
