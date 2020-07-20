@@ -1950,12 +1950,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							} elseif ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
 
-								$link = $this->p->util->get_admin_url( 'addons#wpssojson',
-									$this->p->cf[ 'plugin' ][ 'wpssojson' ][ 'short' ] );
+								$json_info = $this->p->cf[ 'plugin' ][ 'wpssoplm' ];
+
+								$json_addon_link = $this->p->util->get_admin_url( 'addons#wpssojson', $json_info[ 'short' ] );
 
 								$text .= '<p class="status-msg left">* ';
 
-								$text .= sprintf( __( 'Activate the %s add-on for Google structured data markup.', 'wpsso' ), $link );
+								$text .= sprintf( __( 'Activate the %s add-on for Google structured data markup.',
+									'wpsso' ), $json_addon_link );
 
 								$text .= '</p>';
 							}
@@ -2652,7 +2654,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= ' <li>' . __( 'Detection of embedded videos in the content text.', 'wpsso' ) . '</li>';
 
-						$text .= ' <li>' . __( 'Support for Twitter Player Card meta tags.', 'wpsso' ) . '</li>';
+						$text .= ' <li>' . __( 'Provides Twitter Player Card meta tags.', 'wpsso' ) . '</li>';
 
 						$text .= ' <li>' . __( 'Upscaling of images and URL shortening.', 'wpsso' ) . '</li>';
 
@@ -2684,14 +2686,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'column-purchase-wpssoorg':
 
+						$json_info = $this->p->cf[ 'plugin' ][ 'wpssojson' ];
+
+						$json_addon_link = $this->p->util->get_admin_url( 'addons#wpssojson', $json_info[ 'name' ] );
+
 						$text = '<p>' . sprintf( __( '<strong>%s includes:</strong>', 'wpsso' ), $info[ 'short_pro' ] ) . '</p>';
 
 						$text .= '<ul>';
 
 						$text .= ' <li>' . __( 'Manage the details of multiple organizations.', 'wpsso' ) . '</li>';
 
-						$text .= ' <li>' . sprintf( __( 'Offers an organization selector for the %s add-on.', 'wpsso' ),
-							WpssoAdmin::$pkg[ 'wpssojson' ][ 'short_pro' ] ) . '</li>';
+						$text .= ' <li>' . sprintf( __( 'Offers an organization selector for the %s add-on.', 'wpsso' ), $json_addon_link ) . '</li>';
 
 						$text .= ' <li>' . __( 'Access to development updates.', 'wpsso' ) . '</li>';
 
@@ -3038,11 +3043,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		 */
 		public function p_img_disabled( $extra_css_class = '' ) {
 
-			$link = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest',
+			$pin_opt_link = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest',
 				_x( 'Add Hidden Image for Pinterest', 'option label', 'wpsso' ) );
 
 			// translators: %s is the option name, linked to its settings page.
-			$text = sprintf( __( 'Modifications disabled (%s option is unchecked).', 'wpsso' ), $link );
+			$text = sprintf( __( 'Modifications disabled (%s option is unchecked).', 'wpsso' ), $pin_opt_link );
 
 			return '<p class="status-msg smaller disabled ' . $extra_css_class . '">' . $text . '</p>';
 		}
@@ -3073,10 +3078,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			} else {
 
-				$link = $this->p->util->get_admin_url( 'addons#wpssojson', $this->p->cf[ 'plugin' ][ 'wpssojson' ][ 'name' ] );
+				$json_addon_link = $this->p->util->get_admin_url( 'addons#wpssojson',
+					$this->p->cf[ 'plugin' ][ 'wpssojson' ][ 'name' ] );
 
 				// translators: %s is is the add-on name (and a link to the add-on page).
-				$text = sprintf( __( 'Activate the %s add-on<br/>if you require additional options for Schema markup and structured data.', 'wpsso' ), $link );
+				$text = sprintf( __( 'Activate the %s add-on<br/>if you require additional options for Schema markup and structured data.',
+					'wpsso' ), $json_addon_link );
 
 				return '<p class="status-msg">' . $text . '</p>';
 			}
