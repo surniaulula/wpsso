@@ -1525,9 +1525,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( empty( $info[ 'version' ] ) ) {	// Filter out add-ons that are not installed.
 
 					continue;
-				}
 
-				if ( empty( $info[ 'url' ][ 'purchase' ] ) ) {
+				} elseif ( empty( $info[ 'url' ][ 'purchase' ] ) ) {
+
+					continue;
+
+				} elseif ( self::$pkg[ $ext ][ 'pp' ] ) {
 
 					continue;
 				}
