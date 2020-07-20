@@ -1315,7 +1315,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$dashicon_html = $this->get_menu_dashicon_html( $this->menu_id );
 
-			$side_info_boxes = $this->get_side_info_purchase();
+			$side_info_boxes = $this->get_side_info_boxes();
 
 			echo '<div class="wrap" id="' . $this->pagehook . '">' . "\n";
 			echo '<h1>';
@@ -1516,7 +1516,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '</form>', "\n";
 		}
 
-		private function get_side_info_purchase() {
+		private function get_side_info_boxes() {
 
 			$side_info_boxes = array();
 
