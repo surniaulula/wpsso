@@ -1554,7 +1554,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$box .= '</div><!-- .side-info-content -->' . "\n";
 	
 				$box .= '<div class="side-info-buttons">' . "\n";
-				$box .= $this->form->get_button( sprintf( _x( 'Purchase %s', 'submit button', 'wpsso' ), self::$pkg[ $ext ][ 'short_pro' ] ),
+				$box .= $this->form->get_button( sprintf( _x( 'Get %s', 'submit button', 'wpsso' ), self::$pkg[ $ext ][ 'short_pro' ] ),
 					'button-secondary', 'column-purchase', $purchase_url, true ) . "\n";
 				$box .= '</div><!-- .side-info-buttons -->' . "\n";
 

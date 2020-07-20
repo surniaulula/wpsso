@@ -2664,8 +2664,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '</ul>';
 
-						$text .= '<p>' . __( '<strong>Premium licenses do not expire</strong> &mdash; receive lifetime updates and support for each licensed WordPress Site Address.', 'wpsso' ) . '</p>';
-
 						break;
 
 					case 'column-purchase-wpssojson':

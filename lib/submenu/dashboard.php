@@ -13,7 +13,7 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 
 	class WpssoSubmenuDashboard extends WpssoAdmin {
 
-		private $max_cols = 3;
+		private $max_cols = 2;
 
 		public function __construct( &$plugin, $id, $name, $lib, $ext ) {
 
@@ -74,7 +74,7 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 				/**
 				 * CSS id values must use underscores instead of hyphens to order the metaboxes.
 				 */
-				echo '<div id="dashboard_col_' . $dashboard_col . '" class="max_cols_' . $this->max_cols . ' dashboard_col">';
+				echo '<div id="dashboard_col_' . $dashboard_col . '" class="dashboard_col max_cols_' . $this->max_cols . '">';
 
 				do_meta_boxes( $pagehook, 'dashboard_col_' . $dashboard_col, null );
 
@@ -101,8 +101,8 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 			$metabox_ids[ 'rate_review' ]  = _x( 'Your Rating is Important', 'metabox title', 'wpsso' );
 			$metabox_ids[ 'help_support' ] = _x( 'Help and Support', 'metabox title', 'wpsso' );
 			$metabox_ids[ 'version_info' ] = _x( 'Version Information', 'metabox title', 'wpsso' ); 
-			$metabox_ids[ 'status_std' ]   = sprintf( _x( '%s Features', 'metabox title', 'wpsso' ), $dist_std_name );
-			$metabox_ids[ 'status_pro' ]   = sprintf( _x( '%s Features', 'metabox title', 'wpsso' ), $dist_pro_name );
+			$metabox_ids[ 'status_std' ]   = sprintf( _x( '%s Features Status', 'metabox title', 'wpsso' ), $dist_std_name );
+			$metabox_ids[ 'status_pro' ]   = sprintf( _x( '%s Features Status', 'metabox title', 'wpsso' ), $dist_pro_name );
 
 			$dashboard_col = 0;
 
