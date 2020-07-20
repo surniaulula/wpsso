@@ -310,7 +310,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.13.1-dev.5 (2020/07/20)**
+**Version 7.13.1-b.1 (2020/07/20)**
 
 * **New Features**
 	* None.
@@ -662,7 +662,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 7.13.1-dev.5 =
+= 7.13.1-b.1 =
 
 (2020/07/20) Refactored the side information column in plugin settings pages for WordPress v5.5.
 
