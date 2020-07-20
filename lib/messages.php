@@ -2642,6 +2642,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 				$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
+				$li_support_link = empty( $info[ 'url' ][ 'support' ] ) ? '' :
+					'<li><a href="' . $info[ 'url' ][ 'support' ] . '">' . __( 'Premium plugin support.', 'wpsso' ) . '</a></li>';
+
 				switch ( $msg_key ) {
 
 					case 'column-purchase-wpsso':
@@ -2662,8 +2665,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= ' <li>' . __( 'Access to development updates.', 'wpsso' ) . '</li>';
 
-						$text .= ' <li>' . __( 'Premium plugin support.', 'wpsso' ) . '</li>';
-
+						$text .= $li_support_link;
+						
 						$text .= '</ul>';
 
 						break;
@@ -2678,8 +2681,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= ' <li>' . __( 'Access to development updates.', 'wpsso' ) . '</li>';
 
-						$text .= ' <li>' . __( 'Premium plugin support.', 'wpsso' ) . '</li>';
-
+						$text .= $li_support_link;
+						
 						$text .= '</ul>';
 
 						break;
@@ -2700,8 +2703,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= ' <li>' . __( 'Access to development updates.', 'wpsso' ) . '</li>';
 
-						$text .= ' <li>' . __( 'Premium plugin support.', 'wpsso' ) . '</li>';
-
+						$text .= $li_support_link;
+						
 						$text .= '</ul>';
 
 						break;
@@ -2716,8 +2719,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= ' <li>' . __( 'Access to development updates.', 'wpsso' ) . '</li>';
 
-						$text .= ' <li>' . __( 'Premium plugin support.', 'wpsso' ) . '</li>';
-
+						$text .= $li_support_link;
+						
 						$text .= '</ul>';
 
 						break;
