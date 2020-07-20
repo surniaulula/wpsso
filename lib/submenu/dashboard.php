@@ -13,8 +13,6 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 
 	class WpssoSubmenuDashboard extends WpssoAdmin {
 
-		private $max_cols = 2;
-
 		public function __construct( &$plugin, $id, $name, $lib, $ext ) {
 
 			$this->p =& $plugin;
@@ -64,17 +62,19 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 		public function action_form_content_metaboxes_dashboard( $pagehook ) {
 
 			/**
-			 * This settings page does not have any "normal" metaboxes, so hide that container.
-			 * Also set the container height to 0 to prevent drag-and-drop in that area, just in case.
+			 * This settings page does not have any "normal" metaboxes, so hide that container and set the container
+			 * height to 0 to prevent drag-and-drop in that area, just in case.
 			 */
 			echo '<style type="text/css">div#' . $pagehook . ' div#normal-sortables { display:none; height:0; min-height:0; }</style>';
 
-			foreach ( range( 1, $this->max_cols ) as $dashboard_col ) {
+			$max_cols = count( $this->get_side_info_boxes() ) ? 2 : 3;	// Uses local cache.
+
+			foreach ( range( 1, $max_cols ) as $dashboard_col ) {
 
 				/**
 				 * CSS id values must use underscores instead of hyphens to order the metaboxes.
 				 */
-				echo '<div id="dashboard_col_' . $dashboard_col . '" class="dashboard_col max_cols_' . $this->max_cols . '">';
+				echo '<div id="dashboard_col_' . $dashboard_col . '" class="dashboard_col max_cols_' . $max_cols . '">';
 
 				do_meta_boxes( $pagehook, 'dashboard_col_' . $dashboard_col, null );
 
@@ -104,11 +104,13 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 			$metabox_ids[ 'status_std' ]   = sprintf( _x( '%s Features Status', 'metabox title', 'wpsso' ), $dist_std_name );
 			$metabox_ids[ 'status_pro' ]   = sprintf( _x( '%s Features Status', 'metabox title', 'wpsso' ), $dist_pro_name );
 
+			$max_cols = count( $this->get_side_info_boxes() ) ? 2 : 3;	// Uses local cache.
+
 			$dashboard_col = 0;
 
 			foreach ( $metabox_ids as $metabox_id => $metabox_title ) {
 
-				$dashboard_col   = $dashboard_col >= $this->max_cols ? 1 : $dashboard_col + 1;
+				$dashboard_col   = $dashboard_col >= $max_cols ? 1 : $dashboard_col + 1;
 				$metabox_screen  = $this->pagehook;
 				$metabox_context = 'dashboard_col_' . $dashboard_col;	// Use underscores (not hyphens) to order metaboxes.
 				$metabox_prio    = 'default';

@@ -1242,6 +1242,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
+			$menu_ext = $this->menu_ext;	// Lowercase acronyn for plugin or add-on.
+
+			if ( empty( $menu_ext ) ) {
+
+				$menu_ext = $this->p->lca;
+			}
+
+			$this->get_form_object( $menu_ext );
+
 			$this->add_plugin_hooks();	// Add settings page filter and action hooks.
 
 			$this->add_meta_boxes();	// Add last to move any duplicate side metaboxes.
@@ -1302,20 +1311,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function show_setting_page() {
 
 			if ( ! $this->is_settings() ) {	// Default check is for $this->menu_id.
+
 				settings_errors( WPSSO_OPTIONS_NAME );
 			}
 
-			$menu_ext = $this->menu_ext;	// Lowercase acronyn for plugin or add-on.
-
-			if ( empty( $menu_ext ) ) {
-				$menu_ext = $this->p->lca;
-			}
-
-			$this->get_form_object( $menu_ext );
+			$side_info_boxes = $this->get_side_info_boxes();
 
 			$dashicon_html = $this->get_menu_dashicon_html( $this->menu_id );
-
-			$side_info_boxes = $this->get_side_info_boxes();
 
 			echo '<div class="wrap" id="' . $this->pagehook . '">' . "\n";
 			echo '<h1>';
@@ -1516,9 +1518,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '</form>', "\n";
 		}
 
-		private function get_side_info_boxes() {
+		protected function get_side_info_boxes() {
 
-			$side_info_boxes = array();
+			static $local_cache = null;
+
+			if ( null !== $local_cache ) {
+
+				return $local_cache;
+			}
+
+			$local_cache = array();
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
@@ -1558,10 +1567,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'button-secondary', 'column-purchase', $purchase_url, true ) . "\n";
 				$box .= '</div><!-- .side-info-buttons -->' . "\n";
 
-				$side_info_boxes[] = $box;
+				$local_cache[] = $box;
 			}
 
-			return $side_info_boxes;
+			return $local_cache;
 		}
 
 		protected function get_form_buttons( $submit_label_transl = '' ) {
