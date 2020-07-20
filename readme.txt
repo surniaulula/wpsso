@@ -310,14 +310,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.13.1-dev.4 (2020/07/19)**
+**Version 7.13.1-dev.4 (2020/07/20)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* None.
+	* Fixed an "undefined index url" error for videos with incomplete streaming data from the Google YouTube API.
 * **Developer Notes**
 	* Refactored the side information column in plugin settings pages for WordPress v5.5.
 * **Requires At Least**
@@ -664,7 +664,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 7.13.1-dev.4 =
 
-(2020/07/19) Refactored the side information column in plugin settings pages for WordPress v5.5.
+(2020/07/20) Refactored the side information column in plugin settings pages for WordPress v5.5.
 
 = 7.13.0 =
 
