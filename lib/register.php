@@ -237,11 +237,11 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				/**
 				 * Delete term settings and meta.
 				 */
-				foreach ( WpssoTerm::get_public_ids() as $id ) {
+				foreach ( WpssoTerm::get_public_ids() as $term_id ) {
 
-					WpssoTerm::delete_term_meta( $id, WPSSO_META_NAME );
+					WpssoTerm::delete_term_meta( $term_id, WPSSO_META_NAME );
 
-					WpssoTerm::delete_term_meta( $id, WPSSO_META_ATTACHED_NAME );
+					WpssoTerm::delete_term_meta( $term_id, WPSSO_META_ATTACHED_NAME );
 				}
 
 				/**
@@ -255,13 +255,13 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 				while ( $blog_user_ids = SucomUtil::get_user_ids( $blog_id, '', 1000 ) ) {	// Get a maximum of 1000 user IDs at a time.
 
-					foreach ( $blog_user_ids as $id ) {
+					foreach ( $blog_user_ids as $user_id ) {
 
-						delete_user_meta( $id, WPSSO_DISMISS_NAME );
+						delete_user_meta( $user_id, WPSSO_DISMISS_NAME );
 	
-						WpssoUser::delete_metabox_prefs( $id );
+						WpssoUser::delete_metabox_prefs( $user_id );
 
-						WpssoUser::remove_role_by_id( $id, $role = 'person' );
+						WpssoUser::remove_role_by_id( $user_id, $role = 'person' );
 					}
 				}
 

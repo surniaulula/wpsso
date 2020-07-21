@@ -190,11 +190,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$user_id = false === $user_id ? get_current_user_id() : $user_id;
 
 			if ( empty( $user_id ) ) {
+
 				if ( false !== $md_key ) {
+
 					return null;
-				} else {
-					return array();
 				}
+
+				return array();
 			}
 
 			static $local_cache = array();
@@ -208,8 +210,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			 * Maybe initialize the cache.
 			 */
 			if ( ! isset( $local_cache[ $cache_id ] ) ) {
+
 				$local_cache[ $cache_id ] = false;
+
 			} elseif ( $this->md_cache_disabled ) {
+
 				$local_cache[ $cache_id ] = false;
 			}
 
@@ -288,6 +293,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			if ( ! $this->user_can_save( $user_id, $rel_id ) ) {
+
 				return;
 			}
 
@@ -444,6 +450,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					}
 				}
 			}
+
 			return $value;
 		}
 
@@ -1027,128 +1034,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $author_meta;
 		}
 
+		/**
+		 * Deprecated on 2020/07/20.
+		 */
 		public static function reset_metabox_prefs( $pagehook, $box_ids = array(), $meta_name = '', $context = '', $force = false ) {
-
-			$user_id = get_current_user_id();	// Since WP v3.0.
-
-			switch ( $meta_name ) {
-
-				case 'order':
-				case 'meta-box-order':
-
-					$meta_states = array( 'meta-box-order' );
-
-					break;
-
-				case 'hidden':
-				case 'metaboxhidden':
-
-					$meta_states = array( 'metaboxhidden' );
-
-					break;
-
-				case 'closed':
-				case 'closedpostboxes':
-
-					$meta_states = array( 'closedpostboxes' );
-
-					break;
-
-				default:
-
-					$meta_states = array( 'meta-box-order', 'metaboxhidden', 'closedpostboxes' );
-
-					break;
-			}
-
-			foreach ( $meta_states as $state ) {
-
-				$meta_key = $state . '_' . $pagehook;
-
-				if ( $force && empty( $box_ids ) ) {
-
-					delete_user_meta( $user_id, $meta_key );
-				}
-
-				$is_changed = false;
-
-				$is_default = false;
-
-				$user_meta = get_user_meta( $user_id, $meta_key, $single = true );
-
-				if ( empty( $user_meta ) ) {
-
-					$is_changed = true;
-
-					$is_default = true;
-
-					$user_meta = array();
-				}
-
-				if ( $is_default || $force ) {
-
-					foreach ( $box_ids as $box_id ) {
-
-						/**
-						 * Change the order only if forced (default is controlled by add_meta_box() order).
-						 */
-						if ( $force && $state == 'meta-box-order' && ! empty( $user_meta[ $context ] ) ) {
-
-							/**
-							 * Don't proceed if the metabox is already first.
-							 */
-							if ( 0 !== strpos( $user_meta[ $context ], $pagehook . '_' . $box_id ) ) {
-
-								$boxes = explode( ',', $user_meta[ $context ] );
-
-								/**
-								 * Remove the box, no matter its position in the array.
-								 */
-								if ( false !== ( $key = array_search( $pagehook . '_' . $box_id, $boxes ) ) ) {
-									unset( $boxes[ $key ] );
-								}
-
-								/**
-								 * Assume we want to be top-most.
-								 */
-								array_unshift( $boxes, $pagehook . '_' . $box_id );
-
-								$user_meta[ $context ] = implode( ',', $boxes );
-
-								$is_changed = true;
-							}
-
-						} else {
-
-							/**
-							 * Check to see if the metabox is present for that state.
-							 */
-							$key = array_search( $pagehook . '_' . $box_id, $user_meta );
-
-							/**
-							 * If we're not targetting, then clear it, otherwise if we want a state, add if it's missing.
-							 */
-							if ( empty( $meta_name ) && false !== $key ) {
-
-								unset( $user_meta[ $key ] );
-
-								$is_changed = true;
-
-							} elseif ( ! empty( $meta_name ) && false === $key ) {
-
-								$user_meta[] = $pagehook . '_' . $box_id;
-
-								$is_changed = true;
-							}
-						}
-					}
-				}
-
-				if ( $is_default || $is_changed ) {
-
-					update_user_meta( $user_id, $meta_key, array_unique( $user_meta ) );
-				}
-			}
 		}
 
 		/**
@@ -1191,9 +1080,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$pagehook = get_plugin_page_hookname( $menu_slug, $parent_slug);
 
-			foreach ( array( 'meta-box-order', 'metaboxhidden', 'closedpostboxes' ) as $state ) {
+			foreach ( array( 'meta-box-order', 'metaboxhidden', 'closedpostboxes' ) as $mb_state ) {
 
-				$meta_key = $state . '_' . $pagehook;
+				$meta_key = $mb_state . '_' . $pagehook;
 
 				if ( false === $user_id ) {
 
@@ -1250,14 +1139,17 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			if ( false !== $pref_key ) {
+
 				if ( isset( self::$cache_pref[ $user_id ][ $pref_key ] ) ) {
+
 					return self::$cache_pref[ $user_id ][ $pref_key ];
-				} else {
-					return false;
 				}
-			} else {
-				return self::$cache_pref[ $user_id ];
+
+				return false;
+
 			}
+
+			return self::$cache_pref[ $user_id ];
 		}
 
 		public static function save_pref( $user_prefs, $user_id = false ) {
@@ -1265,10 +1157,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$user_id = empty( $user_id ) ? get_current_user_id() : $user_id;
 
 			if ( ! current_user_can( 'edit_user', $user_id ) ) {
+
 				return false;
 			}
 
 			if ( ! is_array( $user_prefs ) || empty( $user_prefs ) ) {
+
 				return false;
 			}
 
@@ -1289,9 +1183,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				return true;
 
-			} else {
-				return false;
 			}
+
+			return false;
 		}
 
 		public static function is_show_all( $user_id = false ) {
@@ -1314,10 +1208,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$show_opts = self::get_pref( 'show_opts' );
 
 			if ( $compare ) {
+
 				return $compare === $show_opts ? true : false;
-			} else {
-				return $show_opts;
 			}
+
+			return $show_opts;
 		}
 
 		public function clear_cache( $user_id, $rel_id = false ) {
@@ -1395,10 +1290,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$user_exists = SucomUtilWP::user_exists( $user_id );
 
 			if ( $user_exists ) {
+
 				return $this->get_md_images( $num, $size_name, $mod, $check_dupes, $md_pre, 'og' );
-			} else {
-				return apply_filters( $this->p->lca . '_get_other_user_images', array(), $num, $size_name, $user_id, $check_dupes, $md_pre );
 			}
+
+			return apply_filters( $this->p->lca . '_get_other_user_images', array(), $num, $size_name, $user_id, $check_dupes, $md_pre );
 		}
 
 		/**
@@ -1409,6 +1305,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$ret = array();
 
 			if ( empty( $user_ids ) ) {	// Just in case.
+
 				return $ret;
 			}
 
@@ -1425,12 +1322,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				foreach ( $user_ids as $user_id ) {
 
 					if ( empty( $user_id ) ) {
+
 						continue;
 					}
 
 					$value = $this->get_author_website( $user_id, $field_id );	// Returns a single URL string.
 
 					if ( ! empty( $value ) ) {	// Make sure we don't add empty values.
+
 						$ret[] = $value;
 					}
 				}

@@ -294,7 +294,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:1072 lib/post.php:851 lib/term.php:677 lib/user.php:664
+#: lib/admin.php:1072 lib/post.php:851 lib/term.php:677 lib/user.php:671
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -328,7 +328,7 @@ msgstr ""
 
 #: lib/admin.php:1136 lib/admin.php:1147 lib/messages.php:842
 #: lib/submenu/tools.php:53 lib/submenu/tools.php:94 lib/user.php:48
-#: lib/user.php:1543 lib/user.php:1648 lib/user.php:1774
+#: lib/user.php:1442 lib/user.php:1547 lib/user.php:1673
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -6574,12 +6574,12 @@ msgctxt "module name"
 msgid "post"
 msgstr ""
 
-#: lib/post.php:500 lib/register.php:336 lib/term.php:429 lib/user.php:399
+#: lib/post.php:500 lib/register.php:336 lib/term.php:429 lib/user.php:405
 #: lib/util.php:588 lib/util.php:2980
 msgid "%s warning:"
 msgstr ""
 
-#: lib/post.php:501 lib/term.php:430 lib/user.php:401 lib/util.php:590
+#: lib/post.php:501 lib/term.php:430 lib/user.php:407 lib/util.php:590
 #: lib/util.php:2982
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
@@ -6591,7 +6591,7 @@ msgid ""
 msgstr ""
 
 #: lib/post.php:791 lib/post.php:1342 lib/schema.php:3043 lib/term.php:634
-#: lib/user.php:620
+#: lib/user.php:627
 msgid "checking meta tags"
 msgstr ""
 
@@ -7470,62 +7470,62 @@ msgctxt "module name"
 msgid "user"
 msgstr ""
 
-#: lib/user.php:403
+#: lib/user.php:409
 msgid ""
 "Slow query detected - get_posts() took %1$0.3f secs to get posts authored by "
 "user ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/user.php:873
+#: lib/user.php:880
 msgid "(not a Facebook Pages URL)"
 msgstr ""
 
-#: lib/user.php:956
+#: lib/user.php:963
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:957
+#: lib/user.php:964
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:958
+#: lib/user.php:965
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1373
+#: lib/user.php:1268
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1562
+#: lib/user.php:1461
 msgid ""
 "Aborting task to add the %1$s role to content creators - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1577
+#: lib/user.php:1476
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1614
+#: lib/user.php:1513
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1616 lib/user.php:1716 lib/util-cache.php:151
+#: lib/user.php:1515 lib/user.php:1615 lib/util-cache.php:151
 #: lib/util-cache.php:636
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/user.php:1667
+#: lib/user.php:1566
 msgid ""
 "Aborting task to remove the %1$s role from all users - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1682
+#: lib/user.php:1581
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1714
+#: lib/user.php:1613
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 
