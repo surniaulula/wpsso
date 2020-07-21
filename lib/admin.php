@@ -1319,19 +1319,32 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$dashicon_html = $this->get_menu_dashicon_html( $this->menu_id );
 
-			echo '<div class="wrap" id="' . $this->pagehook . '">' . "\n";
+			/**
+			 * Settings page wrapper.
+			 */
+			echo '<div id="' . $this->pagehook . '" class="wrap">' . "\n";
+
+			/**
+			 * Settings page header.
+			 */
+			echo '<div id="' . $this->p->lca . '-setting-page-header">' . "\n";
 			echo '<h1>';
 			echo $dashicon_html . ' ';
 			echo $this->menu_name;
 			echo ' <span class="qualifier">(';
 			echo self::$pkg[ $this->menu_ext ][ 'short' ];
 			echo ')</span></h1>' . "\n";
+			echo '</div><!-- #' . $this->p->lca . '-setting-page-header -->' . "\n";
 
-			if ( ! empty( $side_info_boxes ) ) {
+			/**
+			 * Settings page content.
+			 */
+			echo '<div id="' . $this->p->lca . '-setting-page-content" class="' .
+				( empty( $side_info_boxes ) ? 'no' : 'has' ) . '-side-info-column">' . "\n";
 
-				echo '<div class="has-side-info-column">' . "\n";
-			}
-
+			/**
+			 * Metaboxes.
+			 */
 			echo '<div id="poststuff" class="metabox-holder no-right-sidebar">' . "\n";
 			echo '<div id="post-body" class="no-sidebar">' . "\n";
 			echo '<div id="post-body-content" class="no-sidebar-content">' . "\n";
@@ -1342,12 +1355,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '</div><!-- #post-body -->' . "\n";
 			echo '</div><!-- #poststuff -->' . "\n";
 
+			/**
+			 * Information boxes.
+			 */
 			if ( ! empty( $side_info_boxes ) ) {
 
 				echo '<div id="side-info-column">' . "\n";
 
 				foreach ( $side_info_boxes as $box ) {
-			
+
 					echo '<table class="sucom-settings ' . $this->p->lca . ' side-info-box">' . "\n";
 					echo '<tr><td>' . "\n";
 					echo $box;
@@ -1356,10 +1372,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 				echo '</div><!-- #side-info-column -->' . "\n";
-				echo '</div><!-- .has-side-info-column -->' . "\n";
 			}
 
-			echo '</div><!-- .wrap -->' . "\n";
+			echo '</div><!-- #' . $this->p->lca . '-setting-page-content -->' . "\n";
+			echo '</div><!-- #' . $this->pagehook .' -->' . "\n";
 
 			?>
 			<script type="text/javascript">
@@ -1557,15 +1573,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$box = '<div class="side-info-header">' . "\n";
 				$box .= '<h2>' . __( 'Upgrade to Premium', 'wpsso' ) . '</h2>' . "\n";
 				$box .= '</div><!-- .side-info-header -->' . "\n";
-	
+
 				$box .= '<div class="side-info-icon">' . "\n";
 				$box .= $this->get_ext_img_icon( $ext ) . "\n";
 				$box .= '</div><!-- .side-info-icon -->' . "\n";
-	
+
 				$box .= '<div class="side-info-content has-buttons">' . "\n";
 				$box .= $this->p->msgs->get( 'column-purchase-' . $ext, $info ) . "\n";
 				$box .= '</div><!-- .side-info-content -->' . "\n";
-	
+
 				$box .= '<div class="side-info-buttons">' . "\n";
 				$box .= $this->form->get_button( sprintf( _x( 'Get %s', 'submit button', 'wpsso' ), self::$pkg[ $ext ][ 'short_pro' ] ),
 					'button-secondary', 'column-purchase', $purchase_url, true ) . "\n";
