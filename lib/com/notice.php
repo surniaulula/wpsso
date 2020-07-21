@@ -560,9 +560,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				return false;
 			}
 
-			$user_dismissed = get_user_option( $this->dismiss_name, $user_id );
+			$user_dismissed = get_user_meta( $user_id, $this->dismiss_name, $single = true );
 
 			if ( ! is_array( $user_dismissed ) ) {
+
 				return false;
 			}
 
@@ -581,9 +582,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					unset( $user_dismissed[ $notice_key ] );
 
 					if ( empty( $user_dismissed ) ) {
-						delete_user_option( $user_id, $this->dismiss_name );
+
+						delete_user_meta( $user_id, $this->dismiss_name );
+
 					} else {
-						update_user_option( $user_id, $this->dismiss_name, $user_dismissed );
+
+						update_user_meta( $user_id, $this->dismiss_name, $user_dismissed );
 					}
 			
 					return false;
@@ -667,10 +671,14 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$this->p->debug->log( 'doing block editor is false' );
 			}
 
-			$nag_html         = '';
-			$msg_html         = '';
-			$user_id          = get_current_user_id();	// Always returns an integer.
-			$user_dismissed   = $user_id ? get_user_option( $this->dismiss_name, $user_id ) : false;
+			$nag_html = '';
+
+			$msg_html = '';
+
+			$user_id = get_current_user_id();	// Always returns an integer.
+
+			$user_dismissed = $user_id ? get_user_meta( $user_id, $this->dismiss_name, $single = true ) : false;
+
 			$update_user_meta = false;
 
 			$this->has_shown = true;
@@ -756,9 +764,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				if ( true === $update_user_meta ) {
 
 					if ( empty( $user_dismissed ) ) {
-						delete_user_option( $user_id, $this->dismiss_name );
+
+						delete_user_meta( $user_id, $this->dismiss_name );
+
 					} else {
-						update_user_option( $user_id, $this->dismiss_name, $user_dismissed );
+
+						update_user_meta( $user_id, $this->dismiss_name, $user_dismissed );
 					}
 				}
 			}
@@ -806,19 +817,23 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				die( -1 );
 			}
 
-			$user_dismissed = get_user_option( $this->dismiss_name, $user_id );
+			$user_dismissed = get_user_meta( $user_id, $this->dismiss_name, $single = true );
 
 			if ( ! is_array( $user_dismissed ) ) {
+
 				$user_dismissed = array();
 			}
 
 			if ( empty( $dismiss_info[ 'dismiss_time' ] ) || ! is_numeric( $dismiss_info[ 'dismiss_time' ] ) ) {
+
 				$user_dismissed[ $dismiss_info[ 'notice_key' ] ] = 0;
+
 			} else {
+
 				$user_dismissed[ $dismiss_info[ 'notice_key' ] ] = time() + $dismiss_info[ 'dismiss_time' ];
 			}
 
-			update_user_option( $user_id, $this->dismiss_name, $user_dismissed );
+			update_user_meta( $user_id, $this->dismiss_name, $user_dismissed );
 
 			die( '1' );
 		}
@@ -859,11 +874,15 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			check_ajax_referer( WPSSO_NONCE_NAME, '_ajax_nonce', true );
 
-			$user_id          = get_current_user_id();	// Always returns an integer.
-			$user_dismissed   = $user_id ? get_user_option( $this->dismiss_name, $user_id ) : false;
+			$user_id = get_current_user_id();	// Always returns an integer.
+
+			$user_dismissed = $user_id ? get_user_meta( $user_id, $this->dismiss_name, $single = true ) : false;
+
 			$update_user_meta = false;
-			$json_notices     = array();
-			$ajax_context     = empty( $_REQUEST[ 'context' ] ) ? '' : $_REQUEST[ 'context' ];	// 'block_editor' or 'toolbar_notices'
+
+			$json_notices = array();
+
+			$ajax_context = empty( $_REQUEST[ 'context' ] ) ? '' : $_REQUEST[ 'context' ];	// 'block_editor' or 'toolbar_notices'
 
 			$this->has_shown = true;
 
@@ -941,9 +960,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				if ( true === $update_user_meta ) {
 
 					if ( empty( $user_dismissed ) ) {
-						delete_user_option( $user_id, $this->dismiss_name );
+
+						delete_user_meta( $user_id, $this->dismiss_name );
+
 					} else {
-						update_user_option( $user_id, $this->dismiss_name, $user_dismissed );
+
+						update_user_meta( $user_id, $this->dismiss_name, $user_dismissed );
 					}
 				}
 			}

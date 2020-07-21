@@ -2587,7 +2587,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 * The user ID is different than the current / effective user ID, so check if the user locale is different
 			 * to the current locale and load the user locale if required.
 			 */
-			$user_locale = get_user_meta( $user_id, 'locale', true );
+			$user_locale = get_user_meta( $user_id, 'locale', $single = true );
 
 			$current_locale = get_locale();
 

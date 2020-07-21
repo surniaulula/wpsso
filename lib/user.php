@@ -462,8 +462,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$meta_cache = wp_cache_get( $user_id, 'user_meta', $force = false, $found );	// Optimize and check wp_cache first.
 
 			if ( isset( $meta_cache[ $meta_key ][ 0 ] ) ) {
+
 				$value = (string) maybe_unserialize( $meta_cache[ $meta_key ][ 0 ] );
+
 			} else {
+
 				$value = (string) get_user_meta( $user_id, $meta_key, $single = true );
 			}
 
@@ -514,7 +517,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$local_recursion[ $user_id ][ $meta_key ] = true;	// Prevent recursion.
 
-			if ( get_user_meta( $user_id, $meta_key, $single = true ) === '' ) {	// Returns empty string if meta not found.
+			if ( '' === get_user_meta( $user_id, $meta_key, $single = true ) ) {	// Returns empty string if meta not found.
 
 				$this->get_head_info( $user_id, $read_cache = true );
 			}
@@ -1063,17 +1066,23 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$meta_key = $state . '_' . $pagehook;
 
 				if ( $force && empty( $box_ids ) ) {
-					delete_user_option( $user_id, $meta_key );
+
+					delete_user_meta( $user_id, $meta_key );
 				}
 
 				$is_changed = false;
-				$is_default = false;
-				$user_opts  = get_user_option( $meta_key, $user_id );
 
-				if ( empty( $user_opts ) ) {
+				$is_default = false;
+
+				$user_meta = get_user_meta( $user_id, $meta_key, $single = true );
+
+				if ( empty( $user_meta ) ) {
+
 					$is_changed = true;
+
 					$is_default = true;
-					$user_opts  = array();
+
+					$user_meta = array();
 				}
 
 				if ( $is_default || $force ) {
@@ -1083,14 +1092,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						/**
 						 * Change the order only if forced (default is controlled by add_meta_box() order).
 						 */
-						if ( $force && $state == 'meta-box-order' && ! empty( $user_opts[ $context ] ) ) {
+						if ( $force && $state == 'meta-box-order' && ! empty( $user_meta[ $context ] ) ) {
 
 							/**
 							 * Don't proceed if the metabox is already first.
 							 */
-							if ( 0 !== strpos( $user_opts[ $context ], $pagehook . '_' . $box_id ) ) {
+							if ( 0 !== strpos( $user_meta[ $context ], $pagehook . '_' . $box_id ) ) {
 
-								$boxes = explode( ',', $user_opts[ $context ] );
+								$boxes = explode( ',', $user_meta[ $context ] );
 
 								/**
 								 * Remove the box, no matter its position in the array.
@@ -1104,7 +1113,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 								 */
 								array_unshift( $boxes, $pagehook . '_' . $box_id );
 
-								$user_opts[ $context ] = implode( ',', $boxes );
+								$user_meta[ $context ] = implode( ',', $boxes );
 
 								$is_changed = true;
 							}
@@ -1114,20 +1123,20 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 							/**
 							 * Check to see if the metabox is present for that state.
 							 */
-							$key = array_search( $pagehook . '_' . $box_id, $user_opts );
+							$key = array_search( $pagehook . '_' . $box_id, $user_meta );
 
 							/**
 							 * If we're not targetting, then clear it, otherwise if we want a state, add if it's missing.
 							 */
 							if ( empty( $meta_name ) && false !== $key ) {
 
-								unset( $user_opts[ $key ] );
+								unset( $user_meta[ $key ] );
 
 								$is_changed = true;
 
 							} elseif ( ! empty( $meta_name ) && false === $key ) {
 
-								$user_opts[] = $pagehook . '_' . $box_id;
+								$user_meta[] = $pagehook . '_' . $box_id;
 
 								$is_changed = true;
 							}
@@ -1136,7 +1145,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 
 				if ( $is_default || $is_changed ) {
-					update_user_option( $user_id, $meta_key, array_unique( $user_opts ) );
+
+					update_user_meta( $user_id, $meta_key, array_unique( $user_meta ) );
 				}
 			}
 		}
@@ -1201,13 +1211,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 						if ( ! empty( $user_obj->ID ) ) {	// Just in case.
 
-							delete_user_option( $user_obj->ID, $meta_key );
+							delete_user_meta( $user_obj->ID, $meta_key );
 						}
 					}
 
 				} elseif ( is_numeric( $user_id ) ) {
 
-					delete_user_option( $user_id, $meta_key );
+					delete_user_meta( $user_id, $meta_key );
 				}
 			}
 		}
@@ -1808,6 +1818,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				unset( $opts[ $attach_type ][ $attach_id ] );
 
 				if ( empty( $opts ) ) {	// Cleanup.
+
 					return delete_user_meta( $user_id, WPSSO_META_ATTACHED_NAME );
 				}
 

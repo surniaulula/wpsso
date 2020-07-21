@@ -1167,7 +1167,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'reset_user_dismissed_notices':
 
-							delete_user_option( $user_id, WPSSO_DISMISS_NAME );
+							delete_user_meta( $user_id, WPSSO_DISMISS_NAME );
 
 							$user_obj = get_userdata( $user_id );
 
@@ -1408,17 +1408,21 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected function show_post_body_setting_form() {
 
 			$menu_hookname = SucomUtil::sanitize_hookname( $this->menu_id );
-			$form_css_id   = $this->p->lca . '_setting_form_' . $menu_hookname;
+
+			$form_css_id = $this->p->lca . '_setting_form_' . $menu_hookname;
 
 			switch ( $this->menu_lib ) {
 
 				case 'profile':
 
-					$user_id     = get_current_user_id();
-					$user_obj    = get_user_to_edit( $user_id );
-					$admin_color = get_user_option( 'admin_color', $user_id );
+					$user_id = get_current_user_id();
+
+					$user_obj = get_user_to_edit( $user_id );
+
+					$admin_color = get_user_meta( $user_id, 'admin_color', $single = true );
 
 					if ( empty( $admin_color ) ) {
+
 						$admin_color = 'fresh';
 					}
 
