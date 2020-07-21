@@ -310,7 +310,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.13.1-b.2 (2020/07/20)**
+**Version 7.13.1-b.3 (2020/07/21)**
 
 * **New Features**
 	* None.
@@ -320,7 +320,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed an "undefined index url" error for videos with incomplete streaming data from the Google YouTube API.
 * **Developer Notes**
 	* Refactored the side information column in plugin settings pages for WordPress v5.5.
-	* Replaced all `get_user_option()` calls by `get_user_meta()`, which works reliably with WordPress v5.5.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
@@ -663,9 +662,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 7.13.1-b.2 =
+= 7.13.1-b.3 =
 
-(2020/07/20) Refactored the side information column in plugin settings pages for WordPress v5.5.
+(2020/07/21) Refactored the side information column in plugin settings pages for WordPress v5.5.
 
 = 7.13.0 =
 
