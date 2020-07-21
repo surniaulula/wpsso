@@ -320,6 +320,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed an "undefined index url" error for videos with incomplete streaming data from the Google YouTube API.
 * **Developer Notes**
 	* Refactored the side information column in plugin settings pages for WordPress v5.5.
+	* Replaced all `get_user_option()` calls by `get_user_meta()`, which works reliably with WordPress v5.5.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
