@@ -316,8 +316,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$opts = apply_filters( $this->p->lca . '_save_user_options', $opts, $user_id, $rel_id, $mod );
 
 			if ( empty( $opts ) ) {
+
 				delete_user_meta( $user_id, WPSSO_META_NAME );
+
 			} else {
+
 				update_user_meta( $user_id, WPSSO_META_NAME, $opts );
 			}
 
@@ -1100,13 +1103,17 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 						if ( ! empty( $user_obj->ID ) ) {	// Just in case.
 
-							delete_user_meta( $user_obj->ID, $meta_key );
+							delete_user_option( $user_obj->ID, $meta_key, $global = false );
+
+							delete_user_option( $user_obj->ID, $meta_key, $global = true );
 						}
 					}
 
 				} elseif ( is_numeric( $user_id ) ) {
 
-					delete_user_meta( $user_id, $meta_key );
+					delete_user_option( $user_id, $meta_key, $global = false );
+
+					delete_user_option( $user_id, $meta_key, $global = true );
 				}
 			}
 		}

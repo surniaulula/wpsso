@@ -259,6 +259,8 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 						delete_user_meta( $user_id, WPSSO_DISMISS_NAME );
 	
+						delete_user_option( $user_id, WPSSO_DISMISS_NAME );
+
 						WpssoUser::delete_metabox_prefs( $user_id );
 
 						WpssoUser::remove_role_by_id( $user_id, $role = 'person' );

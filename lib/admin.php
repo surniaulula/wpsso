@@ -1167,7 +1167,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'reset_user_dismissed_notices':
 
-							delete_user_meta( $user_id, WPSSO_DISMISS_NAME );
+							$this->p->notice->reset_dismissed( $user_id );
 
 							$user_obj = get_userdata( $user_id );
 
@@ -1419,7 +1419,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					$user_obj = get_user_to_edit( $user_id );
 
-					$admin_color = get_user_meta( $user_id, 'admin_color', $single = true );
+					$admin_color = get_user_option( 'admin_color', $user_id );	// Note that $user_id is the second argument.
 
 					if ( empty( $admin_color ) ) {
 
@@ -2570,6 +2570,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$notice_key = 'notice-header-tmpl-no-head-attr-' . SucomUtilWP::get_theme_slug_version();
 
 			if ( ! $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
+
 				return;
 			}
 
