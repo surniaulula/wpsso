@@ -2740,6 +2740,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'og_type_array' => array(			// Element of 'head' array.
 					'product' => array(
+						'product:availability'            => true,
 						'product:original_price:amount'   => true,	// Used by WooCommerce module.
 						'product:original_price:currency' => true,	// Used by WooCommerce module.
 						'product:pretax_price:amount'     => true,

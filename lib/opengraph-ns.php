@@ -174,6 +174,9 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 
 					foreach( $offer as $mt_name => $mt_value ) {
 
+						/**
+						 * Check if this meta tag can be repeated (ie. meta tag arrays are allowed).
+						 */
 						if ( isset( $this->p->cf[ 'head' ][ 'og_type_array' ][ 'product' ][ $mt_name ] ) ) {
 
 							$mt_og[ 'product' ][ $num ][ $mt_name ] = $mt_value;
