@@ -317,7 +317,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Added the "product:availability" meta tag to the list of allowed meta tag arrays (ie. can included multiple times).
 * **Bugfixes**
-	* None.
+	* Fixed a possible missing Open Graph image meta tag for WooCommerce products.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -678,7 +678,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 7.13.2-dev.1 =
 
-(2020/07/23) Added the "product:availability" meta tag to the list of allowed meta tag arrays (ie. can included multiple times).
+(2020/07/23) Fixed a possible missing Open Graph image meta tag for WooCommerce products. Added the "product:availability" meta tag to the list of allowed meta tag arrays (ie. can included multiple times).
 
 = 7.13.1 =
 
