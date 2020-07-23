@@ -310,6 +310,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 7.13.2-dev.1 (2020/07/23)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added the "product:availability" meta tag to the list of allowed meta tag arrays (ie. can included multiple times).
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.2.
+
 **Version 7.13.1 (2020/07/21)**
 
 * **New Features**
@@ -661,6 +675,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 7.13.2-dev.1 =
+
+(2020/07/23) Added the "product:availability" meta tag to the list of allowed meta tag arrays (ie. can included multiple times).
 
 = 7.13.1 =
 
