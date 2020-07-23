@@ -544,6 +544,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						 * images, so remove them here to avoid duplicate image meta tags.
 						 */
 						foreach ( $mt_og[ 'og:video' ] as &$og_single_video ) {
+
 							$og_single_video = SucomUtil::preg_grep_keys( '/^og:image/', $og_single_video, $invert = true );
 						}
 					}
@@ -997,6 +998,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'returning ' . count( $og_extend ) . ' videos' );
+
+				$this->p->debug->log_arr( '$og_extend', $og_extend );
 
 				$this->p->debug->mark( 'get all open graph videos' );	// End timer.
 			}

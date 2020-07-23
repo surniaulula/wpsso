@@ -626,8 +626,16 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$singles = array();
 
-			foreach ( $mt_array as $d_name => $d_val ) {	// First dimension array (associative).
+			$is_assoc = SucomUtil::is_assoc( $mt_array );
 
+			/**
+			 * First dimension array (associative).
+			 */
+			foreach ( $mt_array as $d_name => $d_val ) {
+
+				/**
+				 * Second dimension array.
+				 */
 				if ( is_array( $d_val ) ) {
 
 					/**
@@ -644,11 +652,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 						$singles[] = $this->get_single_mt( $tag, $type, $d_name, '', '', $mod );
 
-					/**
-					 * Second dimension array.
-					 */
 					} else foreach ( $d_val as $dd_num => $dd_val ) {
 
+						/**
+						 * Third dimension array (associative).
+						 */
 						if ( SucomUtil::is_assoc( $dd_val ) ) {
 
 							$use_video_image = true;
@@ -660,50 +668,52 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 								 * or the preview image is a duplicate.
 								 */
 								if ( empty( $dd_val[ 'og:video:has_image' ] ) ) {
+
 									$use_video_image = false;
 								}
 							}
 
-							/**
-							 * Third dimension array (associative).
-							 */
 							foreach ( $dd_val as $ddd_name => $ddd_val ) {
 
 								if ( ! $use_video_image && strpos( $ddd_name, 'og:image' ) === 0 ) {
+
 									continue;
 								}
 
+								/**
+								 * Fourth dimension array.
+								 */
 								if ( is_array( $ddd_val ) ) {
 
 									if ( empty( $ddd_val ) ) {
 
-										$singles[] = $this->get_single_mt( $tag,
-											$type, $ddd_name, '', '', $mod );
+										$singles[] = $this->get_single_mt( $tag, $type, $ddd_name, '', '', $mod );
 
-									} else foreach ( $ddd_val as $dddd_num => $dddd_val ) {	// Fourth dimension array.
+									} else foreach ( $ddd_val as $dddd_num => $dddd_val ) {
 
-										$singles[] = $this->get_single_mt( $tag,
-											$type, $ddd_name, $dddd_val, $d_name . ':' . 
-												( $dd_num + 1 ), $mod );
+										$cmt = $d_name . ':' . ( $dd_num + 1 );
+
+										$singles[] = $this->get_single_mt( $tag, $type, $ddd_name, $dddd_val, $cmt, $mod );
 									}
 
 								} else {
-									$singles[] = $this->get_single_mt( $tag,
-										$type, $ddd_name, $ddd_val, $d_name . ':' . 
-											( $dd_num + 1 ), $mod );
+
+									$cmt = $d_name . ':' . ( $dd_num + 1 );
+
+									$singles[] = $this->get_single_mt( $tag, $type, $ddd_name, $ddd_val, $cmt, $mod );
 								}
 							}
 
 						} else {
-							$singles[] = $this->get_single_mt( $tag,
-								$type, $d_name, $dd_val, $d_name . ':' . 
-									( $dd_num + 1 ), $mod );
+
+							$cmt = $d_name . ':' .  ( $dd_num + 1 );
+
+							$singles[] = $this->get_single_mt( $tag, $type, $d_name, $dd_val, $cmt, $mod );
 						}
 					}
 
 				} else {
-					$singles[] = $this->get_single_mt( $tag,
-						$type, $d_name, $d_val, '', $mod );
+					$singles[] = $this->get_single_mt( $tag, $type, $d_name, $d_val, '', $mod );
 				}
 			}
 
@@ -712,6 +722,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			foreach ( $singles as $num => $element ) {
 
 				foreach ( $element as $parts ) {
+
 					$merged[] = $parts;
 				}
 
@@ -753,6 +764,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					 * If an "itemprop" contains a url, then make sure it's a "link".
 					 */
 					if ( $tag !== 'link' && false !== filter_var( $value, FILTER_VALIDATE_URL ) ) {
+
 						$tag = 'link';
 					}
 				}
@@ -763,8 +775,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * All other meta tags use a "content" attribute name.
 			 */
 			if ( $tag === 'link' ) {
+
 				$attr = 'href';
+
 			} else {
+
 				$attr = 'content';
 			}
 
@@ -775,6 +790,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			static $charset = null;
 
 			if ( ! isset( $charset  ) ) {
+
 				$charset = get_bloginfo( 'charset' );
 			}
 
@@ -881,6 +897,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					 * the last insecure url (empty or not).
 					 */
 					if ( empty( $value ) || $value === $last_secure_url || $value === $last_url ) {
+
 						break;
 					}
 
