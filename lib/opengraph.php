@@ -1165,6 +1165,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				$this->p->debug->log( 'returning ' . count( $og_ret ) . ' images' );
 
+				$this->p->debug->log_arr( '$og_ret', $og_ret );
+
 				$this->p->debug->mark( 'get all open graph images' );	// End timer.
 			}
 
