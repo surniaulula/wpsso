@@ -243,7 +243,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 * [W3C says "there is no attribute 'property'"](https://wpsso.com/docs/plugins/wpsso/faqs/w3c-says-there-is-no-attribute-property/)
 * [Why are some HTML elements missing / misaligned / different?](https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-elements-missing-misaligned-different/)
 * [Why does Facebook show the wrong image / text?](https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/)
-* [Why does Google Structured Data Testing Tool show errors?](https://wpsso.com/docs/plugins/wpsso/faqs/why-does-google-structured-data-testing-tool-show-errors/)
+* [Why does Google Structured Data Test Tool show errors?](https://wpsso.com/docs/plugins/wpsso/faqs/why-does-google-structured-data-testing-tool-show-errors/)
 * [Why is the Open Graph title the same for every webpage?](https://wpsso.com/docs/plugins/wpsso/faqs/why-is-the-open-graph-title-the-same-for-every-webpage/)
 * [Why shouldn't I upload small images to the Media library?](https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/)
 
@@ -345,7 +345,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Added contextual information about the Google Structured Data Testing Tool being deprecated.
+	* Added contextual information about the Google Structured Data Test Tool being deprecated.
 * **Bugfixes**
 	* Fixed missing submission of form options that are disabled dynamically using jQuery.
 * **Developer Notes**
