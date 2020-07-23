@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 7.13.1\n"
+"Project-Id-Version: WPSSO Core 7.13.2-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5390,8 +5390,8 @@ msgstr ""
 #: lib/messages.php:1878
 msgid ""
 "Although deprecated, this tool provides additional validation for Schema "
-"types beyond the limited <a href=\"%s\">selection of available Google Rich "
-"Result types</a>."
+"types beyond the limited <a href=\"%s\">selection of Google Rich Result "
+"types</a>."
 msgstr ""
 
 #: lib/messages.php:1878
