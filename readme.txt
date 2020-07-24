@@ -310,7 +310,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.13.2-dev.1 (2020/07/23)**
+**Version 7.13.2-dev.2 (2020/07/24)**
 
 * **New Features**
 	* None.
@@ -319,7 +319,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed a possible missing Open Graph image meta tag for WooCommerce products.
 * **Developer Notes**
-	* None.
+	* Refactored the `WpssoHead->get_mt_array()` method.
+	* Added a new `WpssoHead->add_mt_array()` to recurse meta tag arrays.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
@@ -676,9 +677,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 7.13.2-dev.1 =
+= 7.13.2-dev.2 =
 
-(2020/07/23) Fixed a possible missing Open Graph image meta tag for WooCommerce products. Added the "product:availability" meta tag to the list of allowed meta tag arrays (ie. can included multiple times).
+(2020/07/24) Fixed a possible missing Open Graph image meta tag for WooCommerce products. Added the "product:availability" meta tag to the list of allowed meta tag arrays (ie. can included multiple times).
 
 = 7.13.1 =
 
