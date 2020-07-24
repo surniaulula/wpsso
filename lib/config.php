@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '7.13.2-dev.2',	// Plugin version.
+					'version'     => '7.13.2-dev.3',	// Plugin version.
 					'opt_version' => '746',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2738,8 +2738,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'video:tag'          => '',
 					),
 				),
-				'og_content_map' => array(			// Element of 'head' array.
-					'product:availability' => array(	// 'instock', 'oos', or 'pending'
+				'og_content_map' => array(	// Element of 'head' array.
+					'product:availability' => array(	// Allowed values are 'instock', 'oos', or 'pending'.
 				 		'Discontinued'        => 'oos',
 				 		'InStock'             => 'instock',
 				 		'InStoreOnly'         => 'instock',

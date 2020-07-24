@@ -569,7 +569,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/**
 			 * Combine and return all meta tags.
 			 */
-			$mt_og = $this->p->og->sanitize_array( $mod, $mt_og );	// Unset mis-matched og_type meta tags.
+			$mt_og = $this->p->og->sanitize_mt_array( $mt_og );	// Unset mis-matched og_type meta tags.
 
 			$cache_array[ $cache_index ] = array_merge(
 				$this->get_mt_array( $tag = 'meta', $type = 'name', $mt_gen, $mod ),

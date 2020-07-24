@@ -1547,14 +1547,24 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		 *
 		 * Called by WpssoHead::get_head_array() before merging all meta tag arrays.
 		 */
-		public function sanitize_array( array $mod, array $mt_og, $og_type = '' ) {
+		public function sanitize_mt_array( array $mt_og ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			if ( empty( $og_type ) ) {
+			/**
+			 * Array of meta tags to allow, reject, and map.
+			 */
+			static $allow  = null;
+			static $reject = null;
+			static $map    = null;
 
+			if ( null === $allow ) {	// Define the static variables once.
+
+				/**
+				 * The og:type is only needed when first run, to define the allow, reject, and map arrays.
+				 */
 				if ( empty( $mt_og[ 'og:type' ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
@@ -1565,38 +1575,73 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 
 				$og_type = $mt_og[ 'og:type' ];
-			}
 
-			if ( ! empty( $mt_og[ $og_type ] ) && is_array( $mt_og[ $og_type ] ) ) {
+				$allow  = array();
+				$reject = array();
+				$map    = array();
 
-				foreach ( $mt_og[ $og_type ] as $num => $mt_arr ) {
-					$mt_og[ $og_type ][ $num ] = $this->sanitize_array( $mod, $mt_arr, $og_type );
+				foreach ( $this->p->cf[ 'head' ][ 'og_type_mt' ] as $type_id => $og_type_mt_md ) {
+				
+					foreach ( $og_type_mt_md as $mt_name => $md_key ) {
+						
+						if (  $type_id === $og_type ) {
+							
+							$allow[ $mt_name ] = true;
+
+							/**
+							 * Example:
+							 *
+							 * 	'product:availability' => array(
+				 			 * 		'Discontinued'        => 'oos',
+				 			 * 		'InStock'             => 'instock',
+				 			 * 		'InStoreOnly'         => 'instock',
+				 			 * 		'LimitedAvailability' => 'instock',
+				 			 * 		'OnlineOnly'          => 'instock',
+				 			 * 		'OutOfStock'          => 'oos',
+				 			 * 		'PreOrder'            => 'pending',
+				 			 * 		'SoldOut '            => 'oos',
+							 * 	),
+							 */
+							if ( ! empty( $this->p->cf[ 'head' ][ 'og_content_map' ][ $mt_name ] ) ) {
+
+								$map[ $mt_name ] = $this->p->cf[ 'head' ][ 'og_content_map' ][ $mt_name ];
+							}
+
+						} else {
+
+							$reject[ $mt_name ] = true;
+						}
+					}
 				}
 			}
 
-			foreach ( $this->p->cf[ 'head' ][ 'og_type_mt' ] as $type_id => $og_type_mt_md ) {
+			/**
+			 * Check the meta tag names and their values.
+			 */
+			foreach ( $mt_og as $key => $val ) {
 
-				foreach ( $og_type_mt_md as $mt_name => $md_key ) {
+				if ( ! empty( $allow[ $key ] ) ) {
 
-					if ( isset( $mt_og[ $mt_name ] ) ) {
+					if ( isset( $map[ $key ][ $val ] ) ) {
 
-						if (  $type_id !== $og_type ) {	// Mis-matched meta tag for this og:type
-
-							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'removing extra meta tag ' . $mt_name );
-							}
-
-							unset( $mt_og[ $mt_name ] );
-
-						} elseif ( isset( $this->p->cf[ 'head' ][ 'og_content_map' ][ $mt_name ][ $mt_og[ $mt_name ] ] ) ) {
-
-							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'mapping content value for ' . $mt_name );
-							}
-
-							$mt_og[ $mt_name ] = $this->p->cf[ 'head' ][ 'og_content_map' ][ $mt_name ][ $mt_og[ $mt_name ] ];
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'mapping content value for ' . $key );
 						}
+
+						$mt_og[ $key ] = $map[ $key ][ $val ];	// Example: 'OutOfStock' to 'oos'.
 					}
+
+				} elseif ( ! empty( $reject[ $key ] ) ) {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'removing extra meta tag ' . $key );
+					}
+
+					unset( $mt_og[ $key ] );
+
+				} elseif ( is_array( $val ) ) {
+
+					$mt_og[ $key ] = $this->sanitize_mt_array( $val );
 				}
 			}
 
