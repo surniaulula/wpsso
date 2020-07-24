@@ -310,17 +310,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.13.2-dev.2 (2020/07/24)**
+**Version 7.13.2-dev.3 (2020/07/24)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added the "product:availability" meta tag to the list of allowed meta tag arrays (ie. can included multiple times).
+	* Enhanced the product offer information added to the Open Graph meta tags, including the product offer 'product:retailer_item_id', 'product:retailer_part_no', 'product:availability', 'product:color', etc. Previously, only the product offer price information was allowed to be added.
 * **Bugfixes**
-	* Fixed a possible missing Open Graph image meta tag for WooCommerce products.
+	* Fixed possible missing Open Graph image meta tags for WooCommerce products with variations.
 * **Developer Notes**
 	* Refactored the `WpssoHead->get_mt_array()` method.
-	* Added a new `WpssoHead->add_mt_array()` to recurse meta tag arrays.
+	* Added a new `WpssoHead->add_mt_array()` method to recurse meta tag arrays.
+	* Added a new `SucomUtil::get_mt_og_seed()` method to provide a default 'wpsso_og_seed' filter value.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
@@ -677,7 +678,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 7.13.2-dev.2 =
+= 7.13.2-dev.3 =
 
 (2020/07/24) Fixed a possible missing Open Graph image meta tag for WooCommerce products. Added the "product:availability" meta tag to the list of allowed meta tag arrays (ie. can included multiple times).
 
