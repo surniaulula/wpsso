@@ -245,6 +245,7 @@ _x( 'Limited Availability', 'option value', 'wpsso' );
 _x( 'Online Only', 'option value', 'wpsso' );
 _x( 'Out of Stock', 'option value', 'wpsso' );
 _x( 'Pre-Order', 'option value', 'wpsso' );
+_x( 'Pre-Sale', 'option value', 'wpsso' );
 _x( 'Sold Out', 'option value', 'wpsso' );
 _x( '[None]', 'option value', 'wpsso' );
 _x( 'Damaged', 'option value', 'wpsso' );

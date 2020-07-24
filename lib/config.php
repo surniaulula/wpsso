@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '7.14.0-dev.3',	// Plugin version.
+					'version'     => '7.14.0-dev.4',	// Plugin version.
 					'opt_version' => '746',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2449,6 +2449,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 		'OnlineOnly'          => 'Online Only',
 			 		'OutOfStock'          => 'Out of Stock',
 			 		'PreOrder'            => 'Pre-Order',
+			 		'PreSale'             => 'Pre-Sale',
 			 		'SoldOut '            => 'Sold Out',
 				),
 
@@ -2739,16 +2740,29 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 				),
 				'og_content_map' => array(	// Element of 'head' array.
-					'product:availability' => array(	// Allowed values are 'instock', 'oos', or 'pending'.
-				 		'Discontinued'        => 'oos',
-				 		'InStock'             => 'instock',
-				 		'InStoreOnly'         => 'instock',
-				 		'LimitedAvailability' => 'instock',
-				 		'OnlineOnly'          => 'instock',
-				 		'OutOfStock'          => 'oos',
-				 		'PreOrder'            => 'pending',
-				 		'SoldOut '            => 'oos',
+
+					/**
+					 * Validated on 2020/07/24.
+					 *
+					 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/#og-tags.
+					 */
+					'product:availability' => array(
+				 		'Discontinued'        => 'discontinued',
+				 		'InStock'             => 'in stock',
+				 		'InStoreOnly'         => 'in stock',
+				 		'LimitedAvailability' => 'in stock',
+				 		'OnlineOnly'          => 'in stock',
+				 		'OutOfStock'          => 'out of stock',
+				 		'PreOrder'            => 'preorder',
+			 			'PreSale'             => 'available for order',
+				 		'SoldOut'             => 'available for order',
 					),
+
+					/**
+					 * Validated on 2020/07/24.
+					 *
+					 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/#og-tags.
+					 */
 					'product:condition' => array(
 						'DamagedCondition'     => 'used',
 						'NewCondition'         => 'new',
