@@ -65,32 +65,27 @@ if ( ! class_exists( 'WpssoSchemaNoScript' ) ) {
 
 			if ( ! empty( $mt_og[ $og_type . ':rating:average' ] ) ) {
 
-				$meta_item_props[] = $this->p->head->get_single_mt( 'meta', 'itemprop', 'aggregaterating.ratingvalue',
-					$mt_og[ $og_type . ':rating:average' ], '', $mod );
+				$this->p->head->add_mt_singles( $meta_item_props, 'meta', 'itemprop', 'aggregaterating.ratingvalue', $mt_og[ $og_type . ':rating:average' ] );
 			}
 
 			if ( ! empty( $mt_og[ $og_type . ':rating:count' ] ) ) {
 
-				$meta_item_props[] = $this->p->head->get_single_mt( 'meta', 'itemprop', 'aggregaterating.ratingcount',
-					$mt_og[ $og_type . ':rating:count' ], '', $mod );
+				$this->p->head->add_mt_singles( $meta_item_props, 'meta', 'itemprop', 'aggregaterating.ratingcount', $mt_og[ $og_type . ':rating:count' ] );
 			}
 
 			if ( ! empty( $mt_og[ $og_type . ':rating:worst' ] ) ) {
 
-				$meta_item_props[] = $this->p->head->get_single_mt( 'meta', 'itemprop', 'aggregaterating.worstrating',
-					$mt_og[ $og_type . ':rating:worst' ], '', $mod );
+				$this->p->head->add_mt_singles( $meta_item_props, 'meta', 'itemprop', 'aggregaterating.worstrating', $mt_og[ $og_type . ':rating:worst' ] );
 			}
 
 			if ( ! empty( $mt_og[ $og_type . ':rating:best' ] ) ) {
 
-				$meta_item_props[] = $this->p->head->get_single_mt( 'meta', 'itemprop', 'aggregaterating.bestrating',
-					$mt_og[ $og_type . ':rating:best' ], '', $mod );
+				$this->p->head->add_mt_singles( $meta_item_props, 'meta', 'itemprop', 'aggregaterating.bestrating', $mt_og[ $og_type . ':rating:best' ] );
 			}
 
 			if ( ! empty( $mt_og[ $og_type . ':review:count' ] ) ) {
 
-				$meta_item_props[] = $this->p->head->get_single_mt( 'meta', 'itemprop', 'aggregaterating.reviewcount',
-					$mt_og[ $og_type . ':review:count' ], '', $mod );
+				$this->p->head->add_mt_singles( $meta_item_props, 'meta', 'itemprop', 'aggregaterating.reviewcount', $mt_og[ $og_type . ':review:count' ] );
 			}
 
 			$schema_noscript[] = array( '<noscript itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">' . "\n" );

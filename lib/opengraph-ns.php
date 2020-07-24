@@ -61,6 +61,7 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 		public function add_og_ns_attributes( $html_attr ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log_args( array (
 					'html_attr' => $html_attr,
 				) );
@@ -69,6 +70,7 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 			$use_post = apply_filters( $this->p->lca . '_use_post', false );
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'required call to get_page_mod()' );
 			}
 
@@ -136,6 +138,7 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 		public function filter_og_data_https_ogp_me_ns_article( array $mt_og, array $mod ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -145,6 +148,7 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 		public function filter_og_data_https_ogp_me_ns_book( array $mt_og, array $mod ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -157,6 +161,7 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 		public function filter_og_data_https_ogp_me_ns_product( array $mt_og, array $mod ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -172,25 +177,18 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 
 				foreach ( $mt_og[ 'product:offers' ] as $num => $offer ) {
 
-					foreach( $offer as $mt_name => $mt_value ) {
-
-						/**
-						 * Check if this meta tag can be repeated (ie. meta tag arrays are allowed).
-						 */
-						if ( isset( $this->p->cf[ 'head' ][ 'og_type_array' ][ 'product' ][ $mt_name ] ) ) {
-
-							$mt_og[ 'product' ][ $num ][ $mt_name ] = $mt_value;
-
-							if ( isset( $mt_og[ $mt_name ] ) ) {
-								unset ( $mt_og[ $mt_name ] );
-							}
-						}
-					}
-
 					/**
 					 * If we have a GTIN number, try to improve the assigned property name.
 					 */
-					WpssoOpenGraph::check_gtin_mt_value( $offer );
+					WpssoOpenGraph::check_gtin_mt_value( $offer, $prefix = 'product' );
+
+					foreach( $offer as $mt_name => $mt_value ) {
+
+						if ( isset( $mt_og[ $mt_name ] ) && ! is_array( $mt_value ) ) {
+
+							unset ( $mt_og[ $mt_name ] );
+						}
+					}
 				}
 
 			} elseif ( isset( $mt_og[ 'product:price:amount' ] ) ) {
@@ -198,12 +196,14 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 				if ( is_numeric( $mt_og[ 'product:price:amount' ] ) ) {	// Allow for price of 0.
 
 					if ( empty( $mt_og[ 'product:price:currency' ] ) ) {
+
 						$mt_og[ 'product:price:currency' ] = $this->p->options[ 'plugin_def_currency' ];
 					}
 
 				} else {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'product price amount must be numeric' );
 					}
 

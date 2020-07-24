@@ -253,10 +253,11 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 				$og_images = $this->p->og->get_all_images( $max_nums[ 'schema_img_max' ], $size_name, $mod, true, $md_pre = 'schema' );
 
 				/**
-				 * WpssoHead::get_single_mt() will make sure this URL is added as a link itemprop tag and not a
-				 * meta itemprop tag.
+				 * WpssoHead::add_mt_singles() will make sure this URL is added as a link itemprop tag (and not a
+				 * meta itemprop tag).
 				 */
 				foreach ( $og_images as $og_single_image ) {
+
 					$mt_item[ 'image' ][] = SucomUtil::get_mt_media_url( $og_single_image );
 				}
 			}
@@ -267,7 +268,9 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 		public static function add_mt_item_from_assoc( array &$mt_item, array &$assoc, array $names ) {
 
 			foreach ( $names as $prop_name => $key_name ) {
+
 				if ( ! empty( $assoc[ $key_name ] ) && $assoc[ $key_name ] !== WPSSO_UNDEF ) {
+
 					$mt_item[ $prop_name ] = $assoc[ $key_name ];
 				}
 			}

@@ -378,6 +378,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		public function get_array( array $mod, $size_name = null ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -385,19 +386,30 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 * The 'wpsso_og_seed' filter is hooked by the Premium e-commerce modules, for example, to provide product
 			 * meta tags.
 			 */
-			$mt_og    = apply_filters( $this->p->lca . '_og_seed', array(), $mod );
+			$mt_og = SucomUtil::get_mt_og_seed();
+
+			$mt_og = apply_filters( $this->p->lca . '_og_seed', $mt_og, $mod );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_arr( $this->p->lca . '_og_seed filter returned:', $mt_og );
+			}
+
 			$max_nums = $this->p->util->get_max_nums( $mod );
-			$has_pp   = $this->p->check->pp();
+
+			$has_pp = $this->p->check->pp();
 
 			if ( empty( $size_name ) ) {
+
 				$size_name = $this->p->lca . '-opengraph';
 			}
 
-			if ( ! empty( $mt_og ) ) {
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( $this->p->lca . '_og_seed filter returned:' );
-					$this->p->debug->log( $mt_og );
-				}
+			/**
+			 * Facebook app id meta tag.
+			 */
+			if ( ! isset( $mt_og[ 'fb:app_id' ] ) ) {
+
+				$mt_og[ 'fb:app_id' ] = $this->p->options[ 'fb_app_id' ];
 			}
 
 			/**
@@ -408,24 +420,21 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				if ( ! empty( $this->p->options[ 'fb_admins' ] ) ) {
 
 					foreach ( explode( ',', $this->p->options[ 'fb_admins' ] ) as $fb_admin ) {
+
 						$mt_og[ 'fb:admins' ][] = trim( $fb_admin );
 					}
 				}
 			}
 
 			/**
-			 * Facebook app id meta tag.
-			 */
-			if ( ! isset( $mt_og[ 'fb:app_id' ] ) ) {
-				$mt_og[ 'fb:app_id' ] = $this->p->options[ 'fb_app_id' ];
-			}
-
-			/**
 			 * Type id meta tag.
 			 */
 			if ( ! isset( $mt_og[ 'og:type' ] ) ) {
+
 				$mt_og[ 'og:type' ] = $this->get_mod_og_type( $mod );
+
 			} elseif ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'og:type already defined = ' . $mt_og[ 'og:type' ] );
 			}
 
@@ -435,8 +444,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 * URL meta tag.
 			 */
 			if ( ! isset( $mt_og[ 'og:url' ] ) ) {
+
 				$mt_og[ 'og:url' ] = $this->p->util->get_sharing_url( $mod );
+
 			} elseif ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'og:url already defined = ' . $mt_og[ 'og:url' ] );
 			}
 
@@ -444,8 +456,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 * Locale meta tag.
 			 */
 			if ( ! isset( $mt_og[ 'og:locale' ] ) ) {
+
 				$mt_og[ 'og:locale' ] = $this->get_fb_locale( $this->p->options, $mod );
+
 			} elseif ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'og:locale already defined = ' . $mt_og[ 'og:locale' ] );
 			}
 
@@ -455,12 +470,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			if ( ! isset( $mt_og[ 'og:site_name' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'getting site name for og:site_name meta tag' );
 				}
 
 				$mt_og[ 'og:site_name' ] = SucomUtil::get_site_name( $this->p->options, $mod );	// localized
 
 			} elseif ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'og:site_name already defined = ' . $mt_og[ 'og:site_name' ] );
 			}
 
@@ -470,16 +487,19 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			if ( ! isset( $mt_og[ 'og:title' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'getting title for og:title meta tag' );
 				}
 
 				$mt_og[ 'og:title' ] = $this->p->page->get_title( $this->p->options[ 'og_title_max_len' ], '...', $mod );
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'og:title value = ' . $mt_og[ 'og:title' ] );
 				}
 
 			} elseif ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'og:title already defined = ' . $mt_og[ 'og:title' ] );
 			}
 
@@ -489,6 +509,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			if ( ! isset( $mt_og[ 'og:description' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'getting description for og:description meta tag' );
 				}
 
@@ -496,10 +517,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					'...', $mod, $read_cache = true, $this->p->options[ 'og_desc_hashtags' ] );
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'og:description value = ' . $mt_og[ 'og:description' ] );
 				}
 
 			} elseif ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'og:description already defined = ' . $mt_og[ 'og:description' ] );
 			}
 
@@ -507,7 +530,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 * Updated date / time meta tag.
 			 */
 			if ( ! isset( $mt_og[ 'og:updated_time' ] ) ) {
+
 				if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {
+
 					$mt_og[ 'og:updated_time' ] = trim( get_post_modified_time( 'c', true, $mod[ 'id' ] ) );	// $gmt is true.
 				}
 			}
@@ -520,12 +545,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			if ( ! isset( $mt_og[ 'og:video' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'getting videos for og:video meta tag' );
 				}
 
 				if ( ! $has_pp ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'no video modules available' );
 					}
 
@@ -552,6 +579,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				} else {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'videos disabled: maximum videos is 0 or less' );
 					}
 				}
@@ -563,6 +591,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			if ( ! isset( $mt_og[ 'og:image' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'getting images for og:image meta tag' );
 				}
 
@@ -571,12 +600,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$mt_og[ 'og:image' ] = $this->get_all_images( $max_nums[ 'og_img_max' ], $size_name, $mod );
 
 					if ( empty( $mt_og[ 'og:image' ] ) ) {
+
 						unset( $mt_og[ 'og:video' ] );
 					}
 
 				} else {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'skipped getting images: maximum images is 0 or less' );
 					}
 				}
@@ -587,6 +618,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 * option name, then read it's value from the meta options.
 			 */
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'checking og_type_mt array for known meta tags and md options' );
 			}
 
@@ -631,6 +663,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							$this->p->options[ 'og_author_field' ] );
 
 					} else {
+
 						$mt_og[ 'article:author' ] = array();
 					}
 
@@ -680,12 +713,18 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$mt_og = (array) apply_filters( $this->p->lca . '_og', $mt_og, $mod );
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_arr( $this->p->lca . '_og filter returned:', $mt_og );
+			}
+
 			return $mt_og;
 		}
 
 		public function get_og_type_id_for_name( $type_name, $default_id = null ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log_args( array( 
 					'type_name'  => $type_name,
 					'default_id' => $default_id,
@@ -1044,6 +1083,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			$preview_images = $this->get_all_previews( $num_diff, $mod );
 
 			if ( ! empty( $preview_images ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'merging video preview image' );
+				}
+
 				$og_ret = array_merge( $og_ret, $preview_images );
 			}
 
@@ -1569,6 +1613,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			if ( empty( $this->p->cf[ 'head' ][ 'og_type_mt' ][ $type_id ] ) ) {	// Just in case.
+
 				return;
 			}
 

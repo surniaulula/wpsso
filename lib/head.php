@@ -333,11 +333,14 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$html .= $this->get_mt_mark( 'begin' );
 
-			foreach ( $this->get_head_array( $use_post, $mod, $read_cache ) as $mt ) {
+			$head_tags = $this->get_head_array( $use_post, $mod, $read_cache );
 
-				if ( ! empty( $mt[0] ) ) {
+			foreach ( $head_tags as $mt ) {
 
-					if ( $indent_num && strpos( $mt[0], '</noscript' ) === 0 ) {
+				if ( ! empty( $mt[ 0 ] ) ) {
+
+					if ( $indent_num && 0 === strpos( $mt[ 0 ], '</noscript' ) ) {
+
 						$indent_num = 0;
 					}
 
@@ -346,7 +349,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					/**
 					 * Indent meta tags within a noscript container.
 					 */
-					if ( strpos( $mt[0], '<noscript' ) === 0 ) {
+					if ( 0 === strpos( $mt[ 0 ], '<noscript' ) ) {
+
 						$indent_num = 1;
 					}
 				}
@@ -568,12 +572,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$mt_og = $this->p->og->sanitize_array( $mod, $mt_og );	// Unset mis-matched og_type meta tags.
 
 			$cache_array[ $cache_index ] = array_merge(
-				$this->get_mt_array( 'meta', 'name', $mt_gen, $mod ),
-				$this->get_mt_array( 'link', 'rel', $link_rel, $mod ),
-				$this->get_mt_array( 'meta', 'property', $mt_og, $mod ),
-				$this->get_mt_array( 'meta', 'name', $mt_tc, $mod ),
-				$this->get_mt_array( 'meta', 'itemprop', $mt_item, $mod ),
-				$this->get_mt_array( 'meta', 'name', $mt_name, $mod ),	// SEO description is last.
+				$this->get_mt_array( $tag = 'meta', $type = 'name', $mt_gen, $mod ),
+				$this->get_mt_array( $tag = 'link', $type = 'rel', $link_rel, $mod ),
+				$this->get_mt_array( $tag = 'meta', $type = 'property', $mt_og, $mod ),
+				$this->get_mt_array( $tag = 'meta', $type = 'name', $mt_tc, $mod ),
+				$this->get_mt_array( $tag = 'meta', $type = 'itemprop', $mt_item, $mod ),
+				$this->get_mt_array( $tag = 'meta', $type = 'name', $mt_name, $mod ),	// SEO description is last.
 				$schema_scripts
 			);
 
@@ -601,145 +605,97 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return $cache_array[ $cache_index ];
 		}
 
+		private function get_mt_array( $tag, $type, array $mixed, array $mod ) {
+
+			$mt_array = array();
+
+			$this->add_mt_array( $mt_array, $tag, $type, $name = '', $mixed, $cmt = '', $mod, $use_image = true );
+
+			return $mt_array;
+		}
+
 		/**
-		 * Loops through the arrays and calls get_single_mt() for each.
+		 * Loops through the arrays and calls self->add_mt_singles() for each.
+		 *
+		 * The $name argument is required for numeric arrays.
+		 *
+		 * $mixed can be a null, boolean, a string, numeric, a numeric array, or an associative array.
 		 */
-		private function get_mt_array( $tag, $type, array $mt_array, array $mod ) {
+		private function add_mt_array( array &$mt_array, $tag, $type, $name = '', $mixed, $cmt = '', $mod = false, $use_image = true ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( count( $mt_array ) . ' ' . $tag . ' ' . $type . ' to process' );
-				$this->p->debug->log( $mt_array );
+				$this->p->debug->log( $mixed );
 			}
 
-			if ( empty( $mt_array ) ) {
+			if ( is_array( $mixed ) ) {
 
-				return array();
+				if ( SucomUtil::is_assoc( $mixed ) ) {
 
-			} elseif ( ! is_array( $mt_array ) ) {
+					if ( isset( $mixed[ 'og:video:type' ] ) ) {
+	
+						if ( empty( $mixed[ 'og:video:has_image' ] ) ) {
 
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: mt_array argument is not an array' );
-				}
-
-				return array();
-			}
-
-			$singles = array();
-
-			$is_assoc = SucomUtil::is_assoc( $mt_array );
-
-			/**
-			 * First dimension array (associative).
-			 */
-			foreach ( $mt_array as $d_name => $d_val ) {
-
-				/**
-				 * Second dimension array.
-				 */
-				if ( is_array( $d_val ) ) {
-
-					/**
-					 * Skip internal product offer and review arrays.
-					 */
-					if ( preg_match( '/:(offers|reviews)$/', $d_name ) ) {
-
-						continue;
-
-					/**
-					 * Empty array - allow single mt filters a chance to modify the value.
-					 */
-					} elseif ( empty( $d_val ) ) {
-
-						$singles[] = $this->get_single_mt( $tag, $type, $d_name, '', '', $mod );
-
-					} else foreach ( $d_val as $dd_num => $dd_val ) {
-
-						/**
-						 * Third dimension array (associative).
-						 */
-						if ( SucomUtil::is_assoc( $dd_val ) ) {
-
-							$use_video_image = true;
-
-							if ( isset( $dd_val[ 'og:video:type' ] ) ) {
-
-								/**
-								 * og:video:has_image will be false if there is no preview image,
-								 * or the preview image is a duplicate.
-								 */
-								if ( empty( $dd_val[ 'og:video:has_image' ] ) ) {
-
-									$use_video_image = false;
-								}
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'ignoring video preview images' );
 							}
 
-							foreach ( $dd_val as $ddd_name => $ddd_val ) {
-
-								if ( ! $use_video_image && strpos( $ddd_name, 'og:image' ) === 0 ) {
-
-									continue;
-								}
-
-								/**
-								 * Fourth dimension array.
-								 */
-								if ( is_array( $ddd_val ) ) {
-
-									if ( empty( $ddd_val ) ) {
-
-										$singles[] = $this->get_single_mt( $tag, $type, $ddd_name, '', '', $mod );
-
-									} else foreach ( $ddd_val as $dddd_num => $dddd_val ) {
-
-										$cmt = $d_name . ':' . ( $dd_num + 1 );
-
-										$singles[] = $this->get_single_mt( $tag, $type, $ddd_name, $dddd_val, $cmt, $mod );
-									}
-
-								} else {
-
-									$cmt = $d_name . ':' . ( $dd_num + 1 );
-
-									$singles[] = $this->get_single_mt( $tag, $type, $ddd_name, $ddd_val, $cmt, $mod );
-								}
-							}
-
-						} else {
-
-							$cmt = $d_name . ':' .  ( $dd_num + 1 );
-
-							$singles[] = $this->get_single_mt( $tag, $type, $d_name, $dd_val, $cmt, $mod );
+							$use_image = false;
 						}
 					}
 
+					foreach ( $mixed as $key => $value ) {
+
+						if ( ! $use_image && 0 === strpos( $key, 'og:image' ) ) {
+
+							continue;
+
+						}
+
+						if ( is_array( $value ) ) {
+
+							$this->add_mt_array( $mt_array, $tag, $type, $key, $value, $cmt, $mod, $use_image );
+
+						} else {
+
+							$this->add_mt_singles( $mt_array, $tag, $type, $key, $value, $cmt, $mod );
+						}
+
+					}
+
 				} else {
-					$singles[] = $this->get_single_mt( $tag, $type, $d_name, $d_val, '', $mod );
+
+					foreach ( $mixed as $num => $value ) {
+
+						$cmt_num = ltrim( $cmt . ':' . $name . ':' . ( $num + 1 ), ':' );
+
+						if ( is_array( $value ) ) {
+
+							$this->add_mt_array( $mt_array, $tag, $type, $name, $value, $cmt_num, $mod, $use_image );
+
+						} else {
+
+							$this->add_mt_singles( $mt_array, $tag, $type, $name, $value, $cmt_num, $mod );
+						}
+					}
 				}
+
+			} else {
+
+				$this->add_mt_singles( $mt_array, $tag, $type, $name, $mixed, $cmt, $mod );
+
 			}
 
-			$merged = array();
-
-			foreach ( $singles as $num => $element ) {
-
-				foreach ( $element as $parts ) {
-
-					$merged[] = $parts;
-				}
-
-				unset ( $singles[ $num ] );
-			}
-
-			return $merged;
+			return $mt_array;
 		}
 
-		public function get_single_mt( $tag, $type, $name, $value, $cmt, array $mod ) {
+		public function add_mt_singles( &$mt_array, $tag, $type, $name, $value, $cmt = '', $mod = false ) {
 
 			/**
 			 * Check for known exceptions for the "property" $type.
 			 */
-			if ( $tag === 'meta' ) {
+			if ( 'meta' === $tag ) {
 
-				if ( $type === 'property' ) {
+				if ( 'property' === $type ) {
 
 					/**
 					 * Double-check the name to make sure its an open graph meta tag.
@@ -758,7 +714,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 							break;
 					}
 
-				} elseif ( $type === 'itemprop' ) {
+				} elseif ( 'itemprop' === $type ) {
 
 					/**
 					 * If an "itemprop" contains a url, then make sure it's a "link".
@@ -771,10 +727,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			/**
-			 * Sanitation check for both "link rel href" and "link itemprop href".
-			 * All other meta tags use a "content" attribute name.
+			 * Sanitation check for both "link rel href" and "link itemprop href". All other meta tags use a "content"
+			 * attribute name.
 			 */
-			if ( $tag === 'link' ) {
+			if ( 'link' === $tag ) {
 
 				$attr = 'href';
 
@@ -783,13 +739,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$attr = 'content';
 			}
 
-			$singles = array();
-
 			$log_prefix = $tag . ' ' . $type . ' ' . $name;
 
 			static $charset = null;
 
-			if ( ! isset( $charset  ) ) {
+			if ( null === $charset  ) {
 
 				$charset = get_bloginfo( 'charset' );
 			}
@@ -800,7 +754,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$this->p->debug->log( $log_prefix . ' value is an array (skipped)' );
 				}
 
-				return $singles;
+				return $mt_array;
 
 			} elseif ( is_object( $value ) ) {
 
@@ -808,15 +762,21 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$this->p->debug->log( $log_prefix . ' value is an object (skipped)' );
 				}
 
-				return $singles;
+				return $mt_array;
 			}
 
-			if ( false !== strpos( $value, '%%' ) ) {
+			/**
+			 * Expand inline variables.
+			 */
+			if ( false !== strpos( $value, '%%' ) && is_array( $mod ) ) {
+
 				$value = $this->p->util->replace_inline_vars( $value, $mod );
 			}
 
 			static $last_secure_url = null;
 			static $last_url        = null;
+
+			$singles = array();
 
 			switch ( $name ) {
 
@@ -836,10 +796,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 							$name_no_url     = str_replace( ':secure_url', '', $name );
 
 							if ( SucomUtil::is_https( $value ) ) {
+
 								$singles[] = array( '', $tag, $type, $name_secure_url, $attr, $value, $cmt );
 							}
 
 							$singles[] = array( '', $tag, $type, $name_url, $attr, $value, $cmt );
+
 							$singles[] = array( '', $tag, $type, $name_no_url, $attr, $value, $cmt );
 
 							$last_secure_url = $value;
@@ -870,10 +832,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 							$name_no_url     = str_replace( ':url', '', $name );
 
 							if ( SucomUtil::is_https( $value ) ) {
+
 								$singles[] = array( '', $tag, $type, $name_secure_url, $attr, $value, $cmt );
 							}
 
 							$singles[] = array( '', $tag, $type, $name_url, $attr, $value, $cmt );
+
 							$singles[] = array( '', $tag, $type, $name_no_url, $attr, $value, $cmt );
 
 							$last_url = $value;
@@ -916,7 +880,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			foreach ( $singles as $num => $parts ) {
 
-				if ( ! isset( $parts[ 6 ] ) ) {
+				if ( ! array_key_exists( 6, $parts ) ) {	// Just in case - check for missing $value element.
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'parts array is incomplete (skipped)' );
@@ -932,7 +896,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$this->p->debug->log( $log_prefix . ' = "' . $parts[ 5 ] . '"' );
 				}
 
-				if ( $parts[ 5 ] === '' || $parts[ 5 ] === null ) {	// Allow for 0.
+				if ( '' === $parts[ 5 ] || null === $parts[ 5 ] ) {	// Allow for 0.
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_prefix . ' skipped: value is empty' );
@@ -952,12 +916,15 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 
 				/**
-				 * Encode and escape all values, regardless if the head tag is enabled or not.
-				 * If the head tag is enabled, HTML will be created and saved in $parts[0].
+				 * Encode and escape all values, regardless if the head tag is enabled or not. If the head tag is
+				 * enabled, HTML will be created and saved in $parts[ 0 ].
 				 */
-				if ( $parts[ 2 ] === 'itemprop' && strpos( $parts[ 3 ], '.' ) !== 0 ) {
+				if ( 'itemprop' === $parts[ 2 ] && 0 !== strpos( $parts[ 3 ], '.' ) ) {
+
 					$match_name = preg_replace( '/^.*\./', '', $parts[ 3 ] );
+
 				} else {
+
 					$match_name = $parts[ 3 ];
 				}
 
@@ -965,6 +932,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				 * Boolean values are converted to their string equivalent.
 				 */
 				if ( is_bool( $parts[ 5 ] ) ) {
+
 					$parts[ 5 ] = $parts[ 5 ] ? 'true' : 'false';
 				}
 
@@ -1056,10 +1024,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$this->p->debug->log( $log_prefix . ' skipped: option is disabled' );
 				}
 
-				$singles[ $num ] = $parts;	// Save the HTML and encoded value.
+				$mt_array[] = $parts;	// Save the HTML and encoded value.
 			}
 
-			return $singles;
+			return $mt_array;
 		}
 	}
 }

@@ -1718,9 +1718,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$merged = $arr1;
 
 			foreach ( $arr2 as $key => &$value ) {
+
 				if ( is_array( $value ) && isset( $merged[ $key ] ) && is_array( $merged[ $key ] ) ) {
+
 					$merged[ $key ] = self::array_merge_recursive_distinct( $merged[ $key ], $value );
+
 				} else {
+
 					$merged[ $key ] = $value;
 				}
 			}
@@ -1733,9 +1737,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$return = array();
 
 		        foreach ( $arr as $key => $value ) {
+
 				if ( is_array( $value ) ) {
+
 					$return = array_merge( $return, self::array_flatten( $value ) );
+
 				} else {
+
 					$return[ $key ] = $value;
 				}
 			}
@@ -1748,9 +1756,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$return = '';
 
 		        foreach ( $arr as $value ) {
+
 			        if ( is_array( $value ) ) {
+
 					$return .= self::array_implode( $value, $glue ) . $glue;
+
 				} else {
+
 					$return .= $value . $glue;
 				}
 			}
@@ -1850,6 +1862,23 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return array( $first, $last, $next );
 		}
 
+		public static function get_mt_og_seed() {
+
+			return array(
+				'fb:app_id'       => null,
+				'fb:admins'       => null,
+				'og:type'         => null,
+				'og:url'          => null,
+				'og:locale'       => null,
+				'og:site_name'    => null,
+				'og:title'        => null,
+				'og:description'  => null,
+				'og:updated_time' => null,
+				'og:video'        => null,
+				'og:image'        => null,
+			);
+		}
+
 		/**
 		 * Pre-define the array key order for the list() construct.
 		 */
@@ -1876,6 +1905,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$og_ret = array(
 				$mt_pre . ':id'                              => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':url'                             => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':age_group'                       => '',
 				$mt_pre . ':availability'                    => '',
 				$mt_pre . ':brand'                           => '',	// There can only be one Open Graph brand meta tag, which must be a string, not an array.
@@ -1963,10 +1993,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':shipping_weight:units'           => '',
 			);
 
-			if ( isset( $mt_og[ 'og:type' ] ) && $mt_og[ 'og:type' ] === 'product' ) {
-				$og_ret[ $mt_pre ]              = array();		// Non-standard / internal meta tag.
-				$og_ret[ $mt_pre . ':offers' ]  = array();		// Non-standard / internal meta tag.
-				$og_ret[ $mt_pre . ':reviews' ] = array();		// Non-standard / internal meta tag.
+			if ( isset( $mt_og[ 'og:type' ] ) ) {
+			
+				if ( $mt_og[ 'og:type' ] === 'product' ) {
+
+					$og_ret[ $mt_pre . ':offers' ]  = array();		// Non-standard / internal meta tag.
+					$og_ret[ $mt_pre . ':reviews' ] = array();		// Non-standard / internal meta tag.
+				}
 			}
 
 			return self::maybe_merge_mt_og( $og_ret, $mt_og );
@@ -2006,6 +2039,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			 * Facebook applink meta tags.
 			 */
 			if ( $mt_pre === 'og' ) {
+
 				$og_ret += array(
 					'al:ios:app_name'        => '',
 					'al:ios:app_store_id'    => '',
@@ -2027,6 +2061,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		private static function maybe_merge_mt_og( array $og_ret, array $mt_og ) {
 
 			if ( empty( $mt_og ) ) {	// Nothing to merge.
+
 				return $og_ret;
 			} 
 
@@ -2037,6 +2072,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			 * array_key_exists() does, so use array_key_exists() here.
 			 */
 			if ( array_key_exists( 'og:type', $mt_og ) ) {
+
 				return array_merge( array( 'og:type' => $mt_og[ 'og:type' ] ), $og_ret, $mt_og );
 			}
 
@@ -2049,6 +2085,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_mt_media_url( array $assoc, $mt_media_pre = 'og:image', $mt_suffixes = null ) {
 
 			if ( ! is_array( $mt_suffixes ) ) {
+
 				$mt_suffixes = array( ':secure_url', ':url', '', ':embed_url' );
 			}
 
@@ -2057,12 +2094,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			 * array key (if it's available).
 			 */
 			if ( isset( $assoc[ $mt_media_pre ] ) && is_array( $assoc[ $mt_media_pre ] ) ) {
+
 				$first_media = reset( $assoc[ $mt_media_pre ] );
+
 			} else {
+
 				$first_media = reset( $assoc );
 			}
 
 			if ( is_array( $first_media ) ) {
+
 				return self::get_mt_media_url( $first_media, $mt_media_pre );
 			}
 
@@ -2070,7 +2111,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			 * First element is a text string, so check the array keys.
 			 */
 			foreach ( $mt_suffixes as $mt_suffix ) {
+
 				if ( ! empty( $assoc[ $mt_media_pre . $mt_suffix ] ) ) {
+
 					return $assoc[ $mt_media_pre . $mt_suffix ];	// Return first match.
 				}
 			}

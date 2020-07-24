@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '7.13.2-dev.1',	// Plugin version.
+					'version'     => '7.13.2-dev.2',	// Plugin version.
 					'opt_version' => '746',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2736,19 +2736,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'video:duration'     => '',
 						'video:release_date' => '',
 						'video:tag'          => '',
-					),
-				),
-				'og_type_array' => array(			// Element of 'head' array.
-					'product' => array(
-						'product:availability'            => true,
-						'product:original_price:amount'   => true,	// Used by WooCommerce module.
-						'product:original_price:currency' => true,	// Used by WooCommerce module.
-						'product:pretax_price:amount'     => true,
-						'product:pretax_price:currency'   => true,
-						'product:price:amount'            => true,
-						'product:price:currency'          => true,
-						'product:sale_price:amount'       => true,	// Used by WooCommerce module.
-						'product:sale_price:currency'     => true,	// Used by WooCommerce module.
 					),
 				),
 				'og_content_map' => array(			// Element of 'head' array.
