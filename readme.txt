@@ -312,12 +312,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 **Version 7.14.0-dev.3 (2020/07/24)**
 
+The Open Graph meta tags for WooCommerce products have been extended to include additional information for each product variation. The sanitation of Open Graph meta tags, and their generation from internal meta tag data, has also been completely refactored.
+
 * **New Features**
 	* None.
 * **Improvements**
-	* Extended the Open Graph product type by adding the 'product:retailer_item_id', 'product:retailer_part_no', 'product:availability', 'product:color', 'og:image', etc., meta tags for each product offer.
+	* Extended the Open Graph product type by adding all available product meta tags for each product offer (ie. 'product:retailer_item_id', 'product:retailer_part_no', 'product:availability', 'product:color', 'og:image', etc.).
 * **Bugfixes**
-	* Fixed possible missing Open Graph image for WooCommerce products with variations.
+	* Fixed a possible missing Open Graph image for WooCommerce products with variations.
 * **Developer Notes**
 	* Refactored the `WpssoHead->get_mt_array()` method.
 	* Refactored the `WpssoOpenGraph->sanitize_mt_array()` method.
@@ -681,7 +683,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 7.14.0-dev.3 =
 
-(2020/07/24) Extended the Open Graph product type meta tags for each product offer. Fixed possible missing Open Graph image for WooCommerce products with variations.
+(2020/07/24) Extended the Open Graph product type by adding all available product meta tags for each product offer. Fixed a possible missing Open Graph image for WooCommerce products with variations.
 
 = 7.13.1 =
 
