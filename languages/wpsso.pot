@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 7.14.0\n"
+"Project-Id-Version: WPSSO Core 7.14.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6595,7 +6595,7 @@ msgid ""
 "post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:791 lib/post.php:1342 lib/schema.php:3043 lib/term.php:634
+#: lib/post.php:791 lib/post.php:1342 lib/schema.php:3290 lib/term.php:634
 #: lib/user.php:630
 msgid "checking meta tags"
 msgstr ""
@@ -6852,32 +6852,32 @@ msgstr ""
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema.php:63
+#: lib/schema.php:68
 msgctxt "image size label"
 msgid "Schema Image"
 msgstr ""
 
-#: lib/schema.php:68
+#: lib/schema.php:73
 msgctxt "image size label"
 msgid "Schema Article Image"
 msgstr ""
 
-#: lib/schema.php:75
+#: lib/schema.php:80
 msgctxt "image size label"
 msgid "Schema Article AMP 1:1 Image"
 msgstr ""
 
-#: lib/schema.php:80
+#: lib/schema.php:85
 msgctxt "image size label"
 msgid "Schema Article AMP 4:3 Image"
 msgstr ""
 
-#: lib/schema.php:85
+#: lib/schema.php:90
 msgctxt "image size label"
 msgid "Schema Article AMP 16:9 Image"
 msgstr ""
 
-#: lib/schema.php:626
+#: lib/schema.php:670
 msgid "adding schema"
 msgstr ""
 

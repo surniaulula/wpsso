@@ -1937,7 +1937,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->mark();
+				$wpsso->debug->log( 'checking ' . $prefix . ' gtin values' );
 			}
 
 			if ( ! empty( $mt_og[ $prefix . ':gtin' ] ) ) {
@@ -1978,7 +1978,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->mark();
+				$wpsso->debug->log( 'checking ' . $prefix . ' price values' );
 			}
 
 			foreach ( array( 'original_price', 'pretax_price', 'price', 'sale_price', 'shipping_cost' ) as $price_name ) {
@@ -1994,12 +1994,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					} else {
 
-						if ( $wpsso->debug->enabled ) {
-
-							$wpsso->debug->log( $prefix . ':' . $price_name . ':amount is not numeric' );
-						}
-
 						unset( $mt_og[ $prefix . ':' . $price_name . ':amount' ] );
+
 						unset( $mt_og[ $prefix . ':' . $price_name . ':currency' ] );
 					}
 				}
