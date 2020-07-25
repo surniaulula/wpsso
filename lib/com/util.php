@@ -1969,10 +1969,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				/**
 				 * Product prices and shipping.
 				 */
-				$mt_pre . ':price:amount'                    => '',
-				$mt_pre . ':price:currency'                  => '',
+				$mt_pre . ':original_price:amount'           => '',
+				$mt_pre . ':original_price:currency'         => '',
 				$mt_pre . ':pretax_price:amount'             => '',
 				$mt_pre . ':pretax_price:currency'           => '',
+				$mt_pre . ':price:amount'                    => '',
+				$mt_pre . ':price:currency'                  => '',
 				$mt_pre . ':sale_price:amount'               => '',
 				$mt_pre . ':sale_price:currency'             => '',
 				$mt_pre . ':sale_price_dates:start'          => '',
@@ -1985,8 +1987,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':sale_price_dates:end_time'       => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':sale_price_dates:end_timezone'   => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':sale_price_dates:end_iso'        => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':original_price:amount'           => '',
-				$mt_pre . ':original_price:currency'         => '',
 				$mt_pre . ':shipping_cost:amount'            => '',
 				$mt_pre . ':shipping_cost:currency'          => '',
 				$mt_pre . ':shipping_weight:value'           => '',

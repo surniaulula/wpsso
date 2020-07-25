@@ -1967,24 +1967,27 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 		public static function check_price_mt_value( &$mt_og, $prefix = 'product' ) {	// Pass by reference is OK.
 
-			if ( isset( $mt_og[ $prefix . ':price:amount' ] ) ) {
+			foreach ( array( 'original_price', 'pretax_price', 'price', 'sale_price', 'shipping_cost' ) as $price_name ) {
 
-				if ( is_numeric( $mt_og[ $prefix . ':price:amount' ] ) ) {	// Allow for price of 0.
+				if ( isset( $mt_og[ $prefix . ':' . $price_name . ':amount' ] ) ) {
 
-					if ( empty( $mt_og[ $prefix . ':price:currency' ] ) ) {
+					if ( is_numeric( $mt_og[ $prefix . ':' . $price_name . ':amount' ] ) ) {	// Allow for price of 0.
 
-						$mt_og[ $prefix . ':price:currency' ] = $this->p->options[ 'plugin_def_currency' ];
+						if ( empty( $mt_og[ $prefix . ':' . $price_name . ':currency' ] ) ) {
+
+							$mt_og[ $prefix . ':' . $price_name . ':currency' ] = $this->p->options[ 'plugin_def_currency' ];
+						}
+
+					} else {
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'product price amount is not numeric' );
+						}
+
+						unset( $mt_og[ $prefix . ':' . $price_name . ':amount' ] );
+						unset( $mt_og[ $prefix . ':' . $price_name . ':currency' ] );
 					}
-
-				} else {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'product price amount is not numeric' );
-					}
-
-					unset( $mt_og[ $prefix . ':price:amount' ] );
-					unset( $mt_og[ $prefix . ':price:currency' ] );
 				}
 			}
 		}
