@@ -182,6 +182,9 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 					 */
 					WpssoOpenGraph::check_gtin_mt_value( $offer, $prefix = 'product' );
 
+					/**
+					 * Sanitize offer meta tags.
+					 */
 					foreach( $offer as $mt_name => $mt_value ) {
 
 						switch( $mt_name ) {
