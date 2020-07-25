@@ -1933,6 +1933,13 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		 */
 		public static function check_gtin_mt_value( &$mt_og, $prefix = 'product' ) {	// Pass by reference is OK.
 
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
+
 			if ( ! empty( $mt_og[ $prefix . ':gtin' ] ) ) {
 
 				/**
@@ -1967,6 +1974,13 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 		public static function check_price_mt_value( &$mt_og, $prefix = 'product' ) {	// Pass by reference is OK.
 
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
+
 			foreach ( array( 'original_price', 'pretax_price', 'price', 'sale_price', 'shipping_cost' ) as $price_name ) {
 
 				if ( isset( $mt_og[ $prefix . ':' . $price_name . ':amount' ] ) ) {
@@ -1975,14 +1989,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						if ( empty( $mt_og[ $prefix . ':' . $price_name . ':currency' ] ) ) {
 
-							$mt_og[ $prefix . ':' . $price_name . ':currency' ] = $this->p->options[ 'plugin_def_currency' ];
+							$mt_og[ $prefix . ':' . $price_name . ':currency' ] = $wpsso->options[ 'plugin_def_currency' ];
 						}
 
 					} else {
 
-						if ( $this->p->debug->enabled ) {
+						if ( $wpsso->debug->enabled ) {
 
-							$this->p->debug->log( 'product price amount is not numeric' );
+							$wpsso->debug->log( $prefix . ':' . $price_name . ':amount is not numeric' );
 						}
 
 						unset( $mt_og[ $prefix . ':' . $price_name . ':amount' ] );
@@ -1995,6 +2009,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		private function update_post_md_opts( &$md_opts, $post_id, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 

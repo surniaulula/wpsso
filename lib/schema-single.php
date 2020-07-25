@@ -975,6 +975,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$wpsso =& Wpsso::get_instance();
 
 			if ( $wpsso->debug->enabled ) {
+
 				$wpsso->debug->mark();
 			}
 
@@ -982,10 +983,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Check that the id is not true, false, null, or 'none'.
 			 */
 			if ( ! SucomUtil::is_valid_option_id( $org_id ) ) {
+
 				return 0;
 			}
 
 			if ( $wpsso->debug->enabled ) {
+
 				$wpsso->debug->log( 'adding organization data for org id "' . $org_id . '"' );
 			}
 
@@ -1001,6 +1004,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				if ( 'site' === $org_id ) {
 
 					if ( $wpsso->debug->enabled ) {
+
 						$wpsso->debug->log( 'getting site organization options array' );
 					}
 
@@ -1009,6 +1013,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				} else {
 
 					if ( $wpsso->debug->enabled ) {
+
 						$wpsso->debug->log( 'exiting early: unknown org_id ' . $org_id );
 					}
 
@@ -1054,6 +1059,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$org_image_key = 'org_logo_url';
 
 			if ( $wpsso->debug->enabled ) {
+
 				$wpsso->debug->log( 'adding image from ' . $org_image_key . ' option' );
 			}
 
@@ -1070,6 +1076,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			if ( ! empty( $org_logo_key ) ) {
 
 				if ( $wpsso->debug->enabled ) {
+
 					$wpsso->debug->log( 'adding logo from ' . $org_logo_key . ' option' );
 				}
 
@@ -1083,6 +1090,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					if ( empty( $ret[ 'logo' ] ) ) {
 
 						if ( $wpsso->debug->enabled ) {
+
 							$wpsso->debug->log( 'organization ' . $org_logo_key . ' image is missing and required' );
 						}
 
@@ -1159,15 +1167,22 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					 * 'plm_place_id' can be 'none', 'custom', or numeric (including 0).
 					 */
 					if ( ! empty( $mod[ 'obj' ] ) ) {
+
 						$place_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'plm_place_id' );
+
 					} else {
+
 						$place_id = null;
 					}
 
 					if ( null === $place_id ) {
+
 						$place_id = $org_opts[ 'org_place_id' ];
+
 					} else {
+
 						if ( $wpsso->debug->enabled ) {
+
 							$wpsso->debug->log( 'overriding org_place_id ' . $org_opts[ 'org_place_id' ] . ' with plm_place_id ' . $place_id );
 						}
 					}
@@ -1184,8 +1199,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$org_opts[ 'org_sameas' ] = apply_filters( $wpsso->lca . '_json_data_single_organization_sameas', $org_opts[ 'org_sameas' ], $mod, $org_id );
 
 			if ( ! empty( $org_opts[ 'org_sameas' ] ) && is_array( $org_opts[ 'org_sameas' ] ) ) {	// Just in case.
+
 				foreach ( $org_opts[ 'org_sameas' ] as $url ) {
+
 					if ( ! empty( $url ) ) {	// Just in case.
+
 						$ret[ 'sameAs' ][] = SucomUtil::esc_url_encode( $url );
 					}
 				}
@@ -1211,6 +1229,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Restore previous reference values for admin notices.
 			 */
 			if ( is_admin() ) {
+
 				$wpsso->notice->unset_ref( $sharing_url );
 			}
 
