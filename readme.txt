@@ -326,6 +326,7 @@ The Open Graph meta tags for WooCommerce products have been extended to include 
 	* Refactored the `WpssoOpenGraph->sanitize_mt_array()` method.
 	* Added a new `WpssoHead->add_mt_array()` method to recurse the meta tag arrays.
 	* Added a new `SucomUtil::get_mt_og_seed()` method to provide a default 'wpsso_og_seed' filter value.
+	* Added a new `WpssoOpenGraph::check_price_mt_value` method to sanitize product price values.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
