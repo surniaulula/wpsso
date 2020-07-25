@@ -193,7 +193,10 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 
 							case 'product:brand':
 
-								$mt_og[ $mt_name ] = $mt_value;
+								if ( ! isset( $mt_og[ $mt_name ] ) ) {
+
+									$mt_og[ $mt_name ] = $mt_value;
+								}
 
 								unset ( $mt_og[ 'product:offers' ][ $num ][ $mt_name ] );
 
@@ -203,9 +206,12 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 							case 'product:retailer_part_no':
 							case 'product:mfr_part_no':
 
-								if ( isset( $mt_og[ $mt_name ] ) && $mt_og[ $mt_name ] === $offer[ $mt_name ] ) {
+								if ( isset( $mt_og[ $mt_name ] ) ) {
+								
+									if ( $mt_og[ $mt_name ] === $offer[ $mt_name ] ) {
 
-									unset ( $mt_og[ $mt_name ] );
+										unset ( $mt_og[ $mt_name ] );
+									}
 								}
 
 								break;
