@@ -184,25 +184,42 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 
 					foreach( $offer as $mt_name => $mt_value ) {
 
-						if ( isset( $mt_og[ $mt_name ] ) && ! is_array( $mt_value ) ) {
+						switch( $mt_name ) {
 
-							switch( $mt_name ) {
+							case 'og:image':
+							case 'og:video':
 
-								case 'product:brand':
+								break;
 
-									$mt_og[ $mt_name ] = $mt_value;
+							case 'product:brand':
 
-									unset ( $mt_og[ 'product:offers' ][ $num ][ $mt_name ] );
+								$mt_og[ $mt_name ] = $mt_value;
 
-									break;
+								unset ( $mt_og[ 'product:offers' ][ $num ][ $mt_name ] );
 
-								default:
-							
+								break;
+
+							case 'product:retailer_item_id':
+							case 'product:retailer_part_no':
+							case 'product:mfr_part_no':
+
+								if ( isset( $mt_og[ $mt_name ] ) && $mt_og[ $mt_name ] === $offer[ $mt_name ] ) {
+
 									unset ( $mt_og[ $mt_name ] );
+								}
 
-									break;
-							}
+								break;
+
+							default:
+						
+								if ( isset( $mt_og[ $mt_name ] ) ) {
+
+									unset ( $mt_og[ $mt_name ] );
+								}
+
+								break;
 						}
+
 					}
 				}
 
