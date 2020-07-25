@@ -205,6 +205,12 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 							case 'product:retailer_item_id':
 							case 'product:retailer_part_no':
 							case 'product:mfr_part_no':
+							case 'product:gtin14':
+							case 'product:gtin13':
+							case 'product:gtin12':
+							case 'product:gtin8':
+							case 'product:gtin':
+							case 'product:isbn':
 
 								if ( isset( $mt_og[ $mt_name ] ) ) {
 								
