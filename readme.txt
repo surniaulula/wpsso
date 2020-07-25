@@ -315,11 +315,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 The Open Graph meta tags for WooCommerce products have been extended to include additional information for each product variation. The sanitation of Open Graph meta tags, and their generation from internal meta tag data, has also been completely refactored.
 
 * **New Features**
-	* None.
-* **Improvements**
 	* Extended the Open Graph product type by adding all available product meta tags for each product offer (ie. 'product:retailer_item_id', 'product:retailer_part_no', 'product:availability', 'product:color', 'og:image', etc.).
-	* Updated the Open Graph product availability values for Facebook (see https://developers.facebook.com/docs/marketing-api/catalog/reference/#og-tags).
+* **Improvements**
 	* Added 'PreSale' to the list of product availability values.
+	* Updated the Open Graph product availability values for Facebook (see [Facebook Marketing API &gt; Catalog &gt; Reference &gt; OpenGraph Tags](https://developers.facebook.com/docs/marketing-api/catalog/reference/#og-tags)).
 * **Bugfixes**
 	* Fixed a possible missing Open Graph image for WooCommerce products with variations.
 * **Developer Notes**
