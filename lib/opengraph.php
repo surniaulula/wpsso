@@ -1956,10 +1956,35 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					case 12:
 
 						if ( empty( $mt_og[ $prefix . ':upc' ] ) ) {
+
 							$mt_og[ $prefix . ':upc' ] = $mt_og[ $prefix . ':gtin' ];
 						}
 
 						break;
+				}
+			}
+		}
+
+		public static function check_price_mt_value( &$mt_og, $prefix = 'product' ) {	// Pass by reference is OK.
+
+			if ( isset( $mt_og[ $prefix . ':price:amount' ] ) ) {
+
+				if ( is_numeric( $mt_og[ $prefix . ':price:amount' ] ) ) {	// Allow for price of 0.
+
+					if ( empty( $mt_og[ $prefix . ':price:currency' ] ) ) {
+
+						$mt_og[ $prefix . ':price:currency' ] = $this->p->options[ 'plugin_def_currency' ];
+					}
+
+				} else {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'product price amount is not numeric' );
+					}
+
+					unset( $mt_og[ $prefix . ':price:amount' ] );
+					unset( $mt_og[ $prefix . ':price:currency' ] );
 				}
 			}
 		}

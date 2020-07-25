@@ -170,6 +170,8 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 			 */
 			WpssoOpenGraph::check_gtin_mt_value( $mt_og, $prefix = 'product' );
 
+			WpssoOpenGraph::check_price_mt_value( $mt_og, $prefix = 'product' );
+
 			/**
 			 * Include variations (aka product offers) if available.
 			 */
@@ -182,9 +184,8 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 					 */
 					WpssoOpenGraph::check_gtin_mt_value( $offer, $prefix = 'product' );
 
-					/**
-					 * Sanitize offer meta tags.
-					 */
+					WpssoOpenGraph::check_price_mt_value( $offer, $prefix = 'product' );
+
 					foreach( $offer as $mt_name => $mt_value ) {
 
 						switch( $mt_name ) {
@@ -236,26 +237,6 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 						}
 
 					}
-				}
-
-			} elseif ( isset( $mt_og[ 'product:price:amount' ] ) ) {
-
-				if ( is_numeric( $mt_og[ 'product:price:amount' ] ) ) {	// Allow for price of 0.
-
-					if ( empty( $mt_og[ 'product:price:currency' ] ) ) {
-
-						$mt_og[ 'product:price:currency' ] = $this->p->options[ 'plugin_def_currency' ];
-					}
-
-				} else {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'product price amount must be numeric' );
-					}
-
-					unset( $mt_og[ 'product:price:amount' ] );
-					unset( $mt_og[ 'product:price:currency' ] );
 				}
 			}
 
