@@ -186,7 +186,22 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 
 						if ( isset( $mt_og[ $mt_name ] ) && ! is_array( $mt_value ) ) {
 
-							unset ( $mt_og[ $mt_name ] );
+							switch( $mt_name ) {
+
+								case 'product:brand':
+
+									$mt_og[ $mt_name ] = $mt_value;
+
+									unset ( $mt_og[ 'product:offers' ][ $num ][ $mt_name ] );
+
+									break;
+
+								default:
+							
+									unset ( $mt_og[ $mt_name ] );
+
+									break;
+							}
 						}
 					}
 				}

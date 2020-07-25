@@ -835,6 +835,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$wpsso =& Wpsso::get_instance();
 
 			if ( $wpsso->debug->enabled ) {
+
 				$wpsso->debug->mark();
 			}
 
@@ -870,12 +871,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Fallback to the 'og:url' value, if one is available.
 			 */
 			if ( empty( $offer[ 'url' ] ) && ! empty( $mt_offer[ 'og:url' ] ) ) {
+
 				$offer[ 'url' ] = $mt_offer[ 'og:url' ];
 			}
 
 			if ( false === $offer ) {	// Just in case.
 
 				if ( $wpsso->debug->enabled ) {
+
 					$wpsso->debug->log( 'exiting early: missing basic product meta tags' );
 				}
 
@@ -906,6 +909,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				static $price_valid_until = null;
 
 				if ( null === $price_valid_until ) {
+
 					$price_valid_until = gmdate( 'c', time() + $valid_max_time );
 				}
 
@@ -921,6 +925,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			) );
 
 			if ( false !== $quantity ) {
+
 				$offer[ 'eligibleQuantity' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/QuantitativeValue', $quantity );
 			}
 
@@ -935,6 +940,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			if ( false !== $price_spec ) {
 
 				if ( isset( $offer[ 'eligibleQuantity' ] ) ) {
+
 					$price_spec[ 'eligibleQuantity' ] = $offer[ 'eligibleQuantity' ];
 				}
 
@@ -950,6 +956,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Images.
 			 */
 			if ( ! empty( $mt_offer[ 'og:image' ] ) ) {
+
 				WpssoSchema::add_images_data_mt( $offer[ 'image' ], $mt_offer[ 'og:image' ] );
 			}
 
