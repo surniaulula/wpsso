@@ -12,7 +12,7 @@ Requires PHP: 5.6
 Requires At Least: 4.2
 Tested Up To: 5.4.2
 WC Tested Up To: 4.3.1
-Stable Tag: 7.13.1
+Stable Tag: 7.14.0
 
 Make sure your content looks great on social sites and search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded.
 
@@ -685,12 +685,4 @@ The Open Graph meta tags for WooCommerce products have been extended to include 
 = 7.14.0 =
 
 (2020/07/25) Extended the Open Graph product type by adding all available product meta tags for each product offer. Fixed a possible missing Open Graph image for WooCommerce products with variations.
-
-= 7.13.1 =
-
-(2020/07/21) Refactored the side information column in plugin settings pages for WordPress v5.5.
-
-= 7.13.0 =
-
-(2020/07/18) Fixed an "undefined index formats" error for protected YouTube videos (without streaming data). Added a "Video API Info Cache Expiry" option under the SSO &gt; Advanced Settings &gt; Cache tab.
 
