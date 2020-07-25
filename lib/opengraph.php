@@ -6,10 +6,12 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+
 	die( 'Do. Or do not. There is no try.' );
 }
 
@@ -25,6 +27,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -32,6 +35,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 * Instantiate the WpssoOpenGraphNS class object.
 			 */
 			if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
+
 				require_once WPSSO_PLUGINDIR . 'lib/opengraph-ns.php';
 			}
 
@@ -81,6 +85,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		public function get_mod_og_type( array $mod, $get_ns = false, $use_mod_opts = true ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -98,6 +103,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				if ( isset( $local_cache[ $cache_salt ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'returning local cache value "' . $local_cache[ $cache_salt ] . '"' );
 					}
 
@@ -106,6 +112,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				} elseif ( is_object( $mod[ 'obj' ] ) && $use_mod_opts ) {	// Check for a column og_type value in wp_cache.
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'checking for value from column wp_cache' );
 					}
 
@@ -124,6 +131,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							} else {
 
 								if ( $this->p->debug->enabled ) {
+
 									$this->p->debug->log( 'columns wp_cache value "' . $value . '" not in og type ns' );
 								}
 
@@ -132,6 +140,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						}
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'returning column wp_cache value "' . $value . '"' );
 						}
 
@@ -140,10 +149,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'no value found in local cache or column wp_cache' );
 				}
 
 			} elseif ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'skipping cache check: mod name and/or id value is empty' );
 			}
 
@@ -163,44 +174,54 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					if ( empty( $type_id ) ) {	// Must be a non-empty string.
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'custom type id from meta is empty' );
 						}
 
 					} elseif ( $type_id === 'none' ) {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'custom type id is disabled with value none' );
 						}
 
 					} elseif ( empty( $og_type_ns[ $type_id ] ) ) {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'custom type id "' . $type_id . '" not in og types' );
 						}
 
 						$type_id = null;
 
 					} elseif ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'custom type id "' . $type_id . '" from ' . $mod[ 'name' ] . ' meta' );
 					}
 
 				} elseif ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'skipping custom type id - mod object is empty' );
 				}
 
 			} elseif ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'skipping custom type id - use_mod_opts is false' );
 			}
 
 			if ( empty( $type_id ) ) {
+
 				$is_custom = false;
+
 			} else {
+
 				$is_custom = true;
 			}
 
 			if ( empty( $type_id ) ) {	// If no custom of type, then use the default settings.
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'using plugin settings to determine og type' );
 				}
 
@@ -215,6 +236,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$type_id = apply_filters( $this->p->lca . '_og_type_for_home_page', $type_id, $mod );
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'using og type id "' . $type_id . '" for home page' );
 						}
 
@@ -225,6 +247,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$type_id = apply_filters( $this->p->lca . '_og_type_for_home_posts', $type_id, $mod );
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'using og type id "' . $type_id . '" for home posts' );
 						}
 					}
@@ -240,6 +263,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							$type_id = apply_filters( $this->p->lca . '_og_type_for_post_type_archive_page', $type_id, $mod );
 
 							if ( $this->p->debug->enabled ) {
+
 								$this->p->debug->log( 'using og type id "' . $type_id . '" for post_type_archive page' );
 							}
 
@@ -248,6 +272,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							$type_id = $this->get_og_type_id_for_name( $mod[ 'post_type' ] );
 
 							if ( $this->p->debug->enabled ) {
+
 								$this->p->debug->log( 'using og type id "' . $type_id . '" from post type option value' );
 							}
 
@@ -256,6 +281,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							$type_id = $mod[ 'post_type' ];
 
 							if ( $this->p->debug->enabled ) {
+
 								$this->p->debug->log( 'using og type id "' . $type_id . '" from post type name' );
 							}
 
@@ -266,6 +292,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							$type_id = apply_filters( $this->p->lca . '_og_type_for_post_type_unknown_type', $type_id, $mod );
 
 							if ( $this->p->debug->enabled ) {
+
 								$this->p->debug->log( 'using "page" og type for unknown post type ' . $mod[ 'post_type' ] );
 							}
 						}
@@ -277,6 +304,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$type_id = apply_filters( $this->p->lca . '_og_type_for_post_type_empty_type', $type_id, $mod );
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'using "page" og type for empty post type' );
 						}
 					}
@@ -288,11 +316,13 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$type_id = $this->get_og_type_id_for_name( 'tax_' . $mod[ 'tax_slug' ] );
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'using og type id "' . $type_id . '" from term option value' );
 						}
 					}
 
 					if ( empty( $type_id ) ) {	// Just in case.
+
 						$type_id = $this->get_og_type_id_for_name( 'archive_page' );
 					}
 
@@ -313,18 +343,21 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$type_id = $default_key;
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'using default og type id "' . $default_key . '"' );
 					}
 				}
 			}
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'og type id before filter is "' . $type_id . '"' );
 			}
 
 			$type_id = apply_filters( $this->p->lca . '_og_type', $type_id, $mod, $is_custom );
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'og type id after filter is "' . $type_id . '"' );
 			}
 
@@ -333,24 +366,28 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			if ( empty( $type_id ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'returning false: og type id is empty' );
 				}
 
 			} elseif ( $type_id === 'none' ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'returning false: og type id is disabled' );
 				}
 
 			} elseif ( ! isset( $og_type_ns[ $type_id ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'returning false: og type id "' . $type_id . '" is unknown' );
 				}
 
 			} elseif ( $get_ns ) {	// False by default.
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'returning og type namespace "' . $og_type_ns[ $type_id ] . '"' );
 				}
 
@@ -359,6 +396,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			} else {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'returning og type id "' . $type_id . '"' );
 				}
 
@@ -369,6 +407,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 * Optimize and cache post/term/user og type values.
 			 */
 			if ( $cache_salt ) {
+
 				$local_cache[ $cache_salt ] = $get_value;
 			}
 
@@ -734,6 +773,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			if ( empty( $type_name ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'exiting early: og type name is empty' );
 				}
 
@@ -748,6 +788,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			if ( empty( $type_id ) || $type_id === 'none' ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'og type id for ' . $type_name . ' is empty or disabled' );
 				}
 
@@ -756,12 +797,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			} elseif ( empty( $og_type_ns[ $type_id ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'og type id "' . $type_id . '" for ' . $type_name . ' not in og type ns' );
 				}
 
 				$type_id = $default_id;
 
 			} elseif ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'og type id for ' . $type_name . ' is ' . $type_id );
 			}
 
@@ -771,6 +814,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		public function get_og_types_select() {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -789,8 +833,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			if ( defined( 'SORT_STRING' ) ) {	// Just in case.
+
 				asort( $select, SORT_STRING );
+
 			} else {
+
 				asort( $select );
 			}
 
@@ -825,6 +872,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$og_single_image = SucomUtil::preg_grep_keys( '/^og:image/', $og_single_video );
 
 						if ( $this->p->util->push_max( $og_images, $og_single_image, $num ) ) {
+
 							return $og_images;
 						}
 					}
@@ -858,6 +906,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			if ( isset( $local_cache[ $cache_salt ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'returning video data from local cache' );
 				}
 
@@ -877,6 +926,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			if ( ! $has_pp ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'no video modules available' );
 				}
 
@@ -898,11 +948,13 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$use_prev = $mod_prev;	// Use true/false/1/0 value from the custom option.
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'setting use_prev to ' . ( empty( $use_prev ) ? 'false' : 'true' ) . ' from meta data' );
 					}
 				}
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->mark( 'checking for custom videos in ' . $mod[ 'name' ] . ' options' );	// Begin timer.
 				}
 
@@ -912,6 +964,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$og_ret = array_merge( $og_ret, $mod[ 'obj' ]->get_og_videos( $num_diff, $mod[ 'id' ], $check_dupes, $md_pre ) );
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->mark( 'checking for custom videos in ' . $mod[ 'name' ] . ' options' );	// End timer.
 				}
 
@@ -925,12 +978,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			if ( $mod[ 'is_post' ] && ! $this->p->util->is_maxed( $og_ret, $num ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->mark( 'checking for additional videos in the post content' );	// Begin timer.
 				}
 
 				$og_ret = array_merge( $og_ret, $this->p->media->get_content_videos( $num_diff, $mod, $check_dupes ) );
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->mark( 'checking for additional videos in the post content' );	// End timer.
 				}
 			}
@@ -943,6 +998,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			if ( empty( $use_prev ) && empty( $force_prev ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'use_prev and force_prev are false - removing video preview images' );
 				}
 
@@ -978,6 +1034,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$value = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_key );
 
 						if ( ! empty( $value ) ) {	// Must be a non-empty string.
+
 							$og_ret[ $num ][ $mt_name ] = $value;
 						}
 					}
@@ -1049,6 +1106,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		public function get_thumbnail_url( $size_name = 'thumbnail', array $mod, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -1085,6 +1143,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			if ( ! empty( $preview_images ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'merging video preview image' );
 				}
 
@@ -1100,6 +1159,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					if ( empty( $og_single_image ) ) {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'exiting early: no attachment image' );
 						}
 
@@ -1120,6 +1180,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$post_images = $this->p->media->get_post_images( $num_diff, $size_name, $mod[ 'id' ], $check_dupes, $md_pre );
 
 					if ( ! empty( $post_images ) ) {
+
 						$og_ret = array_merge( $og_ret, $post_images );
 					}
 				}
@@ -1130,6 +1191,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				if ( ! empty( $this->p->m[ 'media' ][ 'ngg' ] ) && ! $this->p->util->is_maxed( $og_ret, $num ) ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'checking for NGG query variables and shortcodes' );
 					}
 
@@ -1142,6 +1204,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					if ( count( $query_images ) > 0 ) {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'skipping NGG shortcode check - ' . count( $query_images ) . ' query image(s) returned' );
 						}
 
@@ -1154,6 +1217,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$shortcode_images = $ngg_obj->get_shortcode_og_images( $num_diff, $size_name, $mod[ 'id' ], $check_dupes );
 
 						if ( ! empty( $shortcode_images ) ) {
+
 							$og_ret = array_merge( $og_ret, $shortcode_images );
 						}
 					}
@@ -1166,6 +1230,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				if ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'checking the content text for images' );
 					}
 
@@ -1174,6 +1239,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$content_images = $this->p->media->get_content_images( $num_diff, $size_name, $mod, $check_dupes );
 
 					if ( ! empty( $content_images ) ) {
+
 						$og_ret = array_merge( $og_ret, $content_images );
 					}
 				}
@@ -1188,6 +1254,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$og_images = $mod[ 'obj' ]->get_og_images( $num_diff, $size_name, $mod[ 'id' ], $check_dupes, $md_pre );
 
 					if ( ! empty( $og_images ) ) {
+
 						$og_ret = array_merge( $og_ret, $og_images );
 					}
 				}
@@ -1196,12 +1263,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			if ( empty( $og_ret ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'no image(s) found - getting the default image' );
 				}
 
 				$default_images = $this->p->media->get_default_images( 1, $size_name, $check_dupes );
 
 				if ( ! empty( $default_images ) ) {
+
 					$og_ret = array_merge( $og_ret, $default_images );
 				}
 			}
@@ -1228,6 +1297,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		public function get_media_info( $size_name, array $request, array $mod, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -1255,6 +1325,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							if ( empty( $size_info[ 'width' ] ) && empty( $size_info[ 'height' ] ) ) {
 
 								if ( $this->p->debug->enabled ) {
+
 									$this->p->debug->log( 'missing size information for ' . $size_name );
 								}
 
@@ -1293,6 +1364,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					case 'pid':
 
 						if ( ! isset( $get_mt_name ) ) {
+
 							$get_mt_name = $mt_pre . ':image:id';
 						}
 
@@ -1302,16 +1374,19 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					case 'img_url':
 
 						if ( ! isset( $get_mt_name ) ) {
+
 							$get_mt_name = $mt_pre . ':image';
 						}
 
 						// no break - fall through
 
 						if ( $og_videos !== null ) {
+
 							$media_info[ $key ] = $this->get_media_value( $og_videos, $get_mt_name );
 						}
 
 						if ( empty( $media_info[ $key ] ) ) {
+
 							$media_info[ $key ] = $this->get_media_value( $og_images, $get_mt_name );
 						}
 
@@ -1379,6 +1454,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( $media_info );
 			}
 
@@ -1388,6 +1464,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		public function get_media_value( $mt_og, $mt_media_pre ) {
 
 			if ( empty( $mt_og ) || ! is_array( $mt_og ) ) {
+
 				return '';
 			}
 
@@ -1427,16 +1504,19 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				} elseif ( $og_media[ $key ] === '' || $og_media[ $key ] === null ) {	// Allow for 0.
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( $og_media[ $key ] . ' value is empty (skipped)' );
 					}
 
 				} elseif ( $og_media[ $key ] === WPSSO_UNDEF || $og_media[ $key ] === (string) WPSSO_UNDEF ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( $og_media[ $key ] . ' value is ' . WPSSO_UNDEF . ' (skipped)' );
 					}
 
 				} else {
+
 					return $og_media[ $key ];
 				}
 			}
@@ -1461,6 +1541,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				if ( ! empty( $opts[ $fb_locale_key ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'returning "' . $opts[ $fb_locale_key ] . '" locale for "' . $fb_locale_key . '" option key' );
 					}
 
@@ -1478,6 +1559,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			if ( empty( $locale ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'exiting early: locale value is empty' );
 				}
 
@@ -1504,6 +1586,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			if ( ! empty( $fb_pub_lang[ $locale ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'returning valid facebook locale "' . $locale . '"' );
 				}
 
@@ -1519,6 +1602,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			if ( ! empty( $fb_pub_lang[ $def_locale ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'returning default locale "' . $def_locale . '"' );
 				}
 
@@ -1530,6 +1614,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 * Fallback to en_US.
 			 */
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'returning fallback locale "en_US"' );
 			}
 
@@ -1550,6 +1635,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		public function sanitize_mt_array( array $mt_og ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -1568,6 +1654,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				if ( empty( $mt_og[ 'og:type' ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'og:type is empty and required for sanitation' );
 					}
 
@@ -1625,6 +1712,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					if ( isset( $map[ $key ][ $val ] ) ) {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'mapping content value for ' . $key );
 						}
 
@@ -1634,6 +1722,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				} elseif ( ! empty( $reject[ $key ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'removing extra meta tag ' . $key );
 					}
 
@@ -1654,6 +1743,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		public function add_og_type_mt_md( $type_id, array &$mt_og, array $md_opts ) {	// Pass by reference is OK.
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -1663,6 +1753,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'loading og_type_mt array for type id ' . $type_id );
 			}
 
@@ -1739,6 +1830,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					if ( $md_opts[ $md_key ] === 'none' ) {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'unsetting ' . $mt_name . ': ' .
 								$md_key . ' metadata is "none"' );
 						}
@@ -1761,6 +1853,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						preg_match( '/^[^_]+_(.*)_value$/', $md_key, $unit_match ) ) {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( $mt_name . ' from metadata = ' . $md_opts[ $md_key ] );
 						}
 
@@ -1777,6 +1870,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							if ( $unit_text = WpssoSchema::get_data_unit_text( $unit_match[ 1 ] ) ) {
 
 								if ( $this->p->debug->enabled ) {
+
 									$this->p->debug->log( $mt_units . ' from unit text = ' . $unit_text );
 								}
 
@@ -1794,6 +1888,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					} else {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( $mt_name . ' from metadata = ' . $md_opts[ $md_key ] );
 						}
 
@@ -1803,6 +1898,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				} elseif ( isset( $mt_og[ $mt_name ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( $mt_name . ' value kept = ' . $mt_og[ $mt_name ] );
 					}
 
@@ -1811,6 +1907,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					if ( $this->p->options[ 'og_def_' . $md_key ] !== 'none' ) {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( $mt_name . ' from options default = ' .
 								$this->p->options[ 'og_def_' . $md_key ] );
 						}
@@ -1821,6 +1918,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				} else {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( $mt_name . ' = null' );
 					}
 
@@ -1849,6 +1947,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					case 13:
 
 						if ( empty( $mt_og[ $prefix . ':ean' ] ) ) {
+
 							$mt_og[ $prefix . ':ean' ] = $mt_og[ $prefix . ':gtin' ];
 						}
 
