@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '7.14.1',	// Plugin version.
+					'version'     => '7.15.0-dev.1',	// Plugin version.
 					'opt_version' => '746',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -151,7 +151,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 							'util' => array(
 								'coauthors'     => '(plugin) Co-Authors Plus',
-								'shorten'       => '(api) URL Shortening APIs',
+								'shorten'       => '(api) URL Shortening Service',
 								'wpseo-meta'    => '(feature) Import Yoast SEO Social Meta',
 							),
 						),
@@ -1483,8 +1483,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings - Service APIs tab.
 					 */
-					'plugin_shortener'          => 'none',			// Preferred URL Shortening Service.
-					'plugin_wp_shortlink'       => 1,			// Use Shortnened URL for WP Shortlink.
+					'plugin_shortener'          => 'none',			// URL Shortening Service.
+					'plugin_wp_shortlink'       => 1,			// Use Shortened URL for WP Shortlink.
 					'plugin_min_shorten'        => 23,
 					'plugin_bitly_access_token' => '',			// Bitly Generic Access Token.
 					'plugin_bitly_domain'       => '',			// Bitly Short Domain (Optional).
@@ -2278,8 +2278,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 */
 				'shorteners' => array(
 					'none'    => '[None]',
-					'bitly'   => 'Bitly (suggested)',	// Requires lib/pro/ext/bitly.php.
-					'dlmyapp' => 'DLMY.App',		// Requires lib/pro/ext/dlmy.php.
+					'bitly'   => 'Bitly',		// Requires lib/pro/com/bitly.php.
+					'dlmyapp' => 'DLMY.App',	// Requires lib/pro/ext/dlmy.php.
 					'owly'    => 'Ow.ly',		// Requires lib/pro/ext/owly.php.
 					'tinyurl' => 'TinyURL',		// Requires lib/pro/ext/tinyurl.php.
 					'yourls'  => 'YOURLS',		// Requires lib/pro/ext/yourls.php.

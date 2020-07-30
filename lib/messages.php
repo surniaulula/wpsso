@@ -1105,7 +1105,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_wp_shortlink':
+						case 'tooltip-plugin_wp_shortlink':	// Use Shortened URL for WP Shortlink.
 
 							$text = sprintf( __( 'Use the shortened sharing URL for the <em>Get Shortlink</em> button in admin editing pages, along with the "%s" HTML tag value.', 'wpsso' ), 'link&nbsp;rel&nbsp;shortlink' );
 
@@ -2677,7 +2677,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '<ul>';
 
-						$text .= ' <li>' . sprintf( __( 'Additional Schema options in the %s metabox to customize creative works, events, how-tos, job postings, movies, products, qa pages, recipes, reviews, and many more.', 'wpsso' ), $mb_title ) . '</li>';
+						$text .= ' <li>' . sprintf( __( 'Additional Schema options in the %s metabox to customize creative works, events, how-tos, job postings, movies, products, recipes, reviews, and many more.', 'wpsso' ), $mb_title ) . '</li>';
 
 						$text .= ' <li>' . __( 'Access to development updates.', 'wpsso' ) . '</li>';
 

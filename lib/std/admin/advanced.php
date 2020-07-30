@@ -354,8 +354,9 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'yourls'   => 'plugin_yourls_api_url',		// YOURLS API URL.
 			) as $tr_key => $opt_key ) {
 
-				$tr_html[ $tr_key ] = empty( $form->options[ $opt_key ] ) && $form->options[ 'plugin_shortener' ] !== $tr_key ?
-					$form->get_tr_hide( 'basic' ) : '';
+				$tr_html[ $tr_key ] = empty( $form->options[ $opt_key ] ) &&
+					$form->options[ 'plugin_shortener' ] !== $tr_key ?
+						$form->get_tr_hide( 'basic' ) : '';
 			}
 
 			/**
@@ -375,7 +376,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
 
 			$table_rows[ 'plugin_shortener' ] = '' . 
-			$form->get_th_html( _x( 'Preferred URL Shortening Service', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_shortener' ) . 
+			$form->get_th_html( _x( 'URL Shortening Service', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_shortener' ) . 
 			'<td class="blank">[None]</td>';
 
 			$table_rows[ 'plugin_min_shorten' ] = $form->get_tr_hide( 'basic', 'plugin_min_shorten' ) . 
@@ -383,7 +384,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			'<td nowrap class="blank">' . $form->options[ 'plugin_min_shorten' ] . ' ' . _x( 'characters', 'option comment', 'wpsso' ) . '</td>';
 
 			$table_rows[ 'plugin_wp_shortlink' ] = '' . 
-			$form->get_th_html( _x( 'Short Sharing URL for WP Shortlink', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_wp_shortlink' ) . 
+			$form->get_th_html( _x( 'Use Shortened URL for WP Shortlink', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_wp_shortlink' ) . 
 			$form->get_no_td_checkbox( 'plugin_wp_shortlink' );
 
 			$table_rows[ 'plugin_add_link_rel_shortlink' ] = '' . 
@@ -396,7 +397,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 * Bitly URL shortener.
 			 */
 			$table_rows[ 'subsection_plugin_bitly' ] = $tr_html[ 'bitly' ] . 
-			'<td colspan="2" class="subsection"><h4>' . _x( 'Bitly URL Shortener', 'metabox title', 'wpsso' ) . '</h4></td>';
+			'<td colspan="2" class="subsection"><h4>' . _x( 'Bitly (URL Shortener)', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 			$table_rows[ 'plugin_bitly_access_token' ] = $tr_html[ 'bitly' ] . 
 			$form->get_th_html( _x( 'Bitly Generic Access Token', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_bitly_access_token' ) . 
@@ -414,7 +415,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 * DLMY.App URL shortener.
 			 */
 			$table_rows[ 'subsection_plugin_dlmyapp' ] = $tr_html[ 'dlmyapp' ] . 
-			'<td colspan="2" class="subsection"><h4>' . _x( 'DLMY.App URL Shortener', 'metabox title', 'wpsso' ) . '</h4></td>';
+			'<td colspan="2" class="subsection"><h4>' . _x( 'DLMY.App (URL Shortener)', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 			$table_rows[ 'plugin_dlmyapp_api_key' ] = $tr_html[ 'dlmyapp' ] . 
 			$form->get_th_html( _x( 'DLMY.App API Key', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_dlmyapp_api_key' ) . 
@@ -424,17 +425,29 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 * Owly URL shortener.
 			 */
 			$table_rows[ 'subsection_plugin_owly' ] = $tr_html[ 'owly' ] . 
-			'<td colspan="2" class="subsection"><h4>' . _x( 'Ow.ly URL Shortener', 'metabox title', 'wpsso' ) . '</h4></td>';
+			'<td colspan="2" class="subsection"><h4>' . _x( 'Ow.ly (URL Shortener)', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 			$table_rows[ 'plugin_owly_api_key' ] = $tr_html[ 'owly' ] . 
 			$form->get_th_html( _x( 'Ow.ly API Key', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_owly_api_key' ) . 
 			'<td class="blank mono">' . $form->options[ 'plugin_owly_api_key' ] . '</td>';
 
 			/**
+			 * Shopper Approved customer reviews.
+			 */
+			/*
+			$table_rows[ 'subsection_plugin_shopperapproved' ] = '' .
+			'<td colspan="2" class="subsection"><h4>' . _x( 'Shopper Approved (Customer Reviews)', 'metabox title', 'wpsso' ) . '</h4></td>';
+
+			$table_rows[ 'plugin_shopperapproved_token' ] = '' .
+			$form->get_th_html( _x( 'Shopper Approved Client ID', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_shopperapproved_token' ) .
+			'<td class="blank mono">' . $form->options[ 'plugin_shopperapproved_token' ] . '</td>';
+			*/
+
+			/**
 			 * YOURLS URL shortener.
 			 */
 			$table_rows[ 'subsection_plugin_yourls' ] = $tr_html[ 'yourls' ] . 
-			'<td colspan="2" class="subsection"><h4>' . _x( 'Your Own URL Shortener (YOURLS)', 'metabox title', 'wpsso' ) . '</h4></td>';
+			'<td colspan="2" class="subsection"><h4>' . _x( 'YOURLS (URL Shortener)', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 			$table_rows[ 'plugin_yourls_api_url' ] = $tr_html[ 'yourls' ] . 
 			$form->get_th_html( _x( 'YOURLS API URL', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_yourls_api_url' ) . 

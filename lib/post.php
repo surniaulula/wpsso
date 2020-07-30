@@ -151,9 +151,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( ! empty( $this->p->options[ 'plugin_shortener' ] ) && $this->p->options[ 'plugin_shortener' ] !== 'none' ) {
 
-				if ( ! empty( $this->p->options[ 'plugin_wp_shortlink' ] ) ) {
+				if ( ! empty( $this->p->options[ 'plugin_wp_shortlink' ] ) ) {	// Use Shortened URL for WP Shortlink.
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'adding pre_get_shortlink filters to shorten the sharing url' );
 					}
 
@@ -166,6 +167,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					if ( function_exists( 'wpme_get_shortlink_handler' ) ) {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'removing the jetpack pre_get_shortlink filter hook' );
 						}
 
