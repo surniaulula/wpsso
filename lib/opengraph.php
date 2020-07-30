@@ -743,7 +743,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			if ( ! empty( $this->p->cf[ 'head' ][ 'og_type_ns' ][ $type_id ] ) ) {
 
-				$og_ns = $this->p->cf[ 'head' ][ 'og_type_ns' ][ $type_id ];
+				$og_ns = $this->p->cf[ 'head' ][ 'og_type_ns' ][ $type_id ];	// Example: https://ogp.me/ns/product#
 
 				$filter_name = $this->p->lca . '_og_data_' . SucomUtil::sanitize_hookname( $og_ns );
 
