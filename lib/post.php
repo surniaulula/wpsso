@@ -1797,13 +1797,15 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			static $reviews_max = null;
 
 			if ( null === $reviews_max ) {	// Only set the value once.
+
 				$reviews_max = SucomUtil::get_const( 'WPSSO_SCHEMA_REVIEWS_PER_PAGE_MAX', 30 );
 			}
 
-			$ret = array();
+			$reviews = array();
 
 			if ( empty( $post_id ) ) {
-				return $ret;
+
+				return $reviews;
 			}
 
 			$comments = get_comments( array(
@@ -1817,26 +1819,38 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( is_array( $comments ) ) {
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( count( $comments ) . ' comment objects' );
+				}
+
 				foreach( $comments as $num => $comment_obj ) {
 
 					$og_review = $this->get_og_review_mt( $comment_obj, $og_type, $rating_meta, $worst_rating, $best_rating );
 
 					if ( ! empty( $og_review ) ) {	// Just in case.
-						$ret[] = $og_review;
+
+						$reviews[] = $og_review;
 					}
 				}
 
-				if ( count( $ret ) > $reviews_max ) {
+				if ( count( $reviews ) > $reviews_max ) {
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( count( $ret ) . ' reviews found (adjusted to ' . $reviews_max . ')' );
+
+						$this->p->debug->log( count( $reviews ) . ' reviews found (adjusted to ' . $reviews_max . ')' );
 					}
 
-					$ret = array_slice( $ret, 0, $reviews_max );
+					$reviews = array_slice( $reviews, 0, $reviews_max );
 				}
 			}
 
-			return $ret;
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_arr( '$reviews', $reviews );
+			}
+
+			return $reviews;
 		}
 
 		public function get_og_review_mt( $comment_obj, $og_type = 'product', $rating_meta = 'rating', $worst_rating = 1, $best_rating = 5 ) {
