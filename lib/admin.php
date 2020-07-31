@@ -97,6 +97,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * get_notice_system() can return true, false, or an array of notice types to include in the menu.
 				 */
 				if ( $this->p->notice->get_notice_system() ) {
+
 					add_action( 'admin_bar_menu', array( $this, 'add_admin_tb_notices_menu_item' ), WPSSO_TB_NOTICE_MENU_ORDER );
 				}
 
@@ -578,13 +579,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function append_wp_plugin_action_links( $action_links, $plugin_base, $menu_lib = 'submenu'  ) {
 
 			if ( ! isset( $this->p->cf[ '*' ][ 'base' ][ $plugin_base ] ) ) {
-				return $action_links;
-			}
 
-			foreach ( $action_links as $key => $val ) {
-				if ( false !== strpos( $val, '>Edit<' ) ) {
-					unset ( $action_links[ $key ] );
-				}
+				return $action_links;
 			}
 
 			$ext = $this->p->cf[ '*' ][ 'base' ][ $plugin_base ];
@@ -592,19 +588,32 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$settings_page = empty( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $menu_lib ] ) ?
 				'' : key( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $menu_lib ] );
 
-			if ( ! empty( $settings_page ) ) {
+			switch ( $ext ) {
 
-				$settings_page_transl = _x( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $menu_lib ][ $settings_page ], 'lib file description', 'wpsso' );
+				case $this->p->lca:
 
-				$action_links[] = '<a href="' . $this->p->util->get_admin_url( $settings_page ) . '">' . $settings_page_transl . '</a>';
-			}
+					if ( ! empty( $settings_page ) ) {
 
-			if ( $ext === $this->p->lca ) {	// Only add for the core plugin.
+						$action_links[] = '<a href="' . $this->p->util->get_admin_url( $settings_page ) . '">' .
+							__( 'Plugin Settings', 'wpsso' ) . '</a>';
+					}
 
-				$addons_page = 'sitesubmenu' === $menu_lib ? 'site-addons' : 'addons';
+					$addons_page = 'sitesubmenu' === $menu_lib ? 'site-addons' : 'addons';
 
-				$action_links[] = '<a href="' . $this->p->util->get_admin_url( $addons_page ) . '">' . 
-					_x( 'Complementary Add-ons', 'plugin action link', 'wpsso' ) . '</a>';
+					$action_links[] = '<a href="' . $this->p->util->get_admin_url( $addons_page ) . '">' . 
+						_x( 'Complementary Add-ons', 'plugin action link', 'wpsso' ) . '</a>';
+
+					break;
+
+				default:
+
+					if ( ! empty( $settings_page ) ) {
+
+						$action_links[] = '<a href="' . $this->p->util->get_admin_url( $settings_page ) . '">' .
+							__( 'Add-on Settings', 'wpsso' ) . '</a>';
+					}
+
+					break;
 			}
 
 			return $action_links;
@@ -1540,8 +1549,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			do_action( $action_name, $this->pagehook );
 
 			if ( $this->menu_lib === 'profile' ) {
+
 				$submit_label_transl = _x( 'Save All Profile Settings', 'submit button', 'wpsso' );
+
 			} else {
+
 				$submit_label_transl = _x( 'Save All Plugin Settings', 'submit button', 'wpsso' );
 			}
 
@@ -1608,6 +1620,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected function get_form_buttons( $submit_label_transl = '' ) {
 
 			if ( empty( $submit_label_transl ) ) {	// Just in case.
+
 				$submit_label_transl = _x( 'Save All Plugin Settings', 'submit button', 'wpsso' );
 			}
 
@@ -1639,10 +1652,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			foreach ( $form_button_rows as $key => $buttons_row ) {
 
 				if ( $row_num >= 2 ) {
+
 					$css_class = 'button-secondary';			// Third+ row.
+
 				} elseif ( $row_num >= 1 ) {
+
 					$css_class = 'button-secondary button-alt';		// Second row.
+
 				} else {
+
 					$css_class = 'button-secondary button-highlight';	// First row.
 				}
 
@@ -1651,6 +1669,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				foreach ( $buttons_row as $action_value => $mixed ) {
 
 					if ( empty( $action_value ) || empty( $mixed ) ) {	// Just in case.
+
 						continue;
 					}
 
@@ -1663,6 +1682,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						} else {
 
 							$action_url = $this->p->util->get_admin_url( '?' . $this->p->lca . '-action=' . $action_value );
+
 							$button_url = wp_nonce_url( $action_url, WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 
 							$buttons_html .= $this->form->get_button( $mixed, $css_class, '', $button_url );
@@ -1671,6 +1691,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					} elseif ( is_array( $mixed ) ) {
 
 						if ( ! empty( $mixed[ 'html' ] ) ) {
+
 							$buttons_html .= $mixed[ 'html' ];
 						}
 					}
@@ -2210,8 +2231,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		private static function feature_priority( $feature ) {
 
 			if ( strpos( $feature, '(feature)' ) === 0 ) {
+
 				return '(10) ' . $feature;
+
 			} else {
+
 				return $feature;
 			}
 		}
@@ -2440,6 +2464,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function add_admin_tb_notices_menu_item( $wp_admin_bar ) {
 
 			if ( ! current_user_can( 'edit_posts' ) ) {
+
 				return;
 			}
 
@@ -2529,6 +2554,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$def_val = 'head_attributes';
 
 			if ( empty( $this->p->options[ $opt_key ] ) || $this->p->options[ $opt_key ] !== $def_val ) {
+
 				return;
 			}
 
@@ -2536,6 +2562,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * Skip if previous check is already successful.
 			 */
 			if ( $passed = get_option( WPSSO_TMPL_HEAD_CHECK_NAME, $default = false ) ) {
+
 				return;
 			}
 
@@ -2546,6 +2573,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$action_value = SucomUtil::get_request_value( $action_query ) ;		// POST or GET with sanitize_text_field().
 
 			if ( 'modify_tmpl_head_attributes' === $action_value ) {
+
 				return;
 			}
 
