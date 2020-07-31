@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 7.15.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-07-30 13:11-0700\n"
-"PO-Revision-Date: 2020-07-30 13:12-0700\n"
+"POT-Creation-Date: 2020-07-30 13:14-0700\n"
+"PO-Revision-Date: 2020-07-30 13:14-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -7243,22 +7243,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
-
-#~ msgid "Generic feature module"
-#~ msgstr "Module de fonction générique"
-
-#~ msgctxt "lib file description"
-#~ msgid "WPML"
-#~ msgstr "WPML"
-
-#~ msgctxt "lib file description"
-#~ msgid "The SEO Framework"
-#~ msgstr "The SEO Framework"
-
-#~ msgctxt "lib file description"
-#~ msgid "WP Meta SEO"
-#~ msgstr "WP Meta SEO"
-
-#~ msgctxt "lib file description"
-#~ msgid "Yoast SEO"
-#~ msgstr "Yoast SEO"

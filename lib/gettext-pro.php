@@ -76,7 +76,7 @@ _x( 'DLMY.App API Key', 'option label', 'wpsso' );
 _x( 'Ow.ly (URL Shortener)', 'metabox title', 'wpsso' );
 _x( 'Ow.ly API Key', 'option label', 'wpsso' );
 _x( 'Shopper Approved (Customer Reviews)', 'metabox title', 'wpsso' );
-_x( 'Shopper Approved Client ID', 'option label', 'wpsso' );
+_x( 'Shopper Approved Token', 'option label', 'wpsso' );
 _x( 'YOURLS (URL Shortener)', 'metabox title', 'wpsso' );
 _x( 'YOURLS API URL', 'option label', 'wpsso' );
 _x( 'YOURLS Username', 'option label', 'wpsso' );
