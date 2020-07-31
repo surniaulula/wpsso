@@ -319,7 +319,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Renamed the config array keys for icons URLs from 'low' and 'high' to '1x' and '2x'.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
