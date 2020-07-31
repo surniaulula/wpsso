@@ -3473,12 +3473,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$icons = $this->p->cf[ 'plugin' ][ $ext ][ 'assets' ][ 'icons' ];
 
-				if ( ! empty( $icons[ 'low' ] ) ) {
-					$img_src = 'src="' . $icons[ 'low' ] . '"';
+				if ( ! empty( $icons[ '1x' ] ) ) {
+
+					$img_src = 'src="' . $icons[ '1x' ] . '"';
 				}
 
-				if ( ! empty( $icons[ 'high' ] ) ) {
-					$img_src .= ' srcset="' . $icons[ 'high' ] . ' 256w"';
+				if ( ! empty( $icons[ '2x' ] ) ) {
+
+					$img_src .= ' srcset="' . $icons[ '2x' ] . ' 256w"';
 				}
 			}
 

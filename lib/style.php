@@ -712,19 +712,19 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 					$banners = $this->p->cf[ 'plugin' ][ $ext ][ 'assets' ][ 'banners' ];
 
-					if ( ! empty( $banners[ 'low' ] ) || ! empty( $banners[ 'high' ] ) ) {	// Must have at least one banner.
+					if ( ! empty( $banners[ '1x' ] ) || ! empty( $banners[ '2x' ] ) ) {	// Must have at least one banner.
 
-						$low  = empty( $banners[ 'low' ] ) ? $banners[ 'high' ] : $banners[ 'low' ];
-						$high = empty( $banners[ 'high' ] ) ? $banners[ 'low' ] : $banners[ 'high' ];
+						$banner_1x = empty( $banners[ '1x' ] ) ? $banners[ '2x' ] : $banners[ '1x' ];
+						$banner_2x = empty( $banners[ '2x' ] ) ? $banners[ '1x' ] : $banners[ '2x' ];
 					
 						echo '<style type="text/css">' . "\n";
 
 						echo '#plugin-information #plugin-information-title.with-banner { '.
-							'background-image: url( ' . esc_url( $low ) . ' ); }' . "\n";
+							'background-image: url( ' . esc_url( $banner_1x ) . ' ); }' . "\n";
 
 						echo '@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) { ' .
 							'#plugin-information #plugin-information-title.with-banner { ' .
-							'background-image: url( ' . esc_url( $high ) . ' ); } }' . "\n";
+							'background-image: url( ' . esc_url( $banner_2x ) . ' ); } }' . "\n";
 
 						echo '</style>' . "\n";
 					}
