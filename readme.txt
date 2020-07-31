@@ -10,7 +10,7 @@ Tags: rich results, twitter cards, open graph, rich pins, meta tags, schema, soc
 Contributors: jsmoriss
 Requires PHP: 5.6
 Requires At Least: 4.2
-Tested Up To: 5.4.2
+Tested Up To: 5.5
 WC Tested Up To: 4.3.1
 Stable Tag: 7.14.1
 
@@ -310,12 +310,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.15.0-dev.1 (TBD)**
+**Version 7.15.0-dev.1 (2020/07/30)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added the ability to translate labels in the "Standard Features Status" and "Premium Features Status" metaboxes in the SSO &gt; Dashboard page.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -699,7 +699,7 @@ The Open Graph meta tags for WooCommerce products have been extended to include 
 
 = 7.15.0-dev.1 =
 
-(TBD) None.
+(2020/07/30) Added the ability to translate labels in the "Standard Features Status" and "Premium Features Status" metaboxes.
 
 = 7.14.1 =
 
