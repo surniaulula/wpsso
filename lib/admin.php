@@ -846,8 +846,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 */
 		public function get_plugin_data( $ext, $read_cache = true ) {
 
-			$data   = new StdClass;
-			$info   = $this->p->cf[ 'plugin' ][ $ext ];
+			$data = new StdClass;
+
+			$info = $this->p->cf[ 'plugin' ][ $ext ];
+
 			$readme = $this->get_readme_info( $ext, $read_cache );
 
 			if ( empty( $readme ) ) {	// Make sure we got something back.
