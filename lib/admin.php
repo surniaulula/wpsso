@@ -851,6 +851,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$readme = $this->get_readme_info( $ext, $read_cache );
 
 			if ( empty( $readme ) ) {	// Make sure we got something back.
+
 				return array();
 			}
 
@@ -873,6 +874,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'sections'          => 'sections',
 				'remaining_content' => 'other_notes',	// Added to sections.
 				'banners'           => 'banners',
+				'icons'             => 'icons',
 			) as $readme_key => $prop_name ) {
 
 				switch ( $readme_key ) {
@@ -909,10 +911,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						break;
 
 					case 'banners':	// From plugin config.
+					case 'icons':	// From plugin config.
 
 						if ( ! empty( $info[ 'assets' ][ $readme_key ] ) ) {
 
-							$data->$prop_name = $info[ 'assets' ][ $readme_key ];	// Array with low / high images.
+							$data->$prop_name = $info[ 'assets' ][ $readme_key ];	// Array with 1x / 2x images.
 						}
 
 						break;
@@ -3473,14 +3476,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$icons = $this->p->cf[ 'plugin' ][ $ext ][ 'assets' ][ 'icons' ];
 
-				if ( ! empty( $icons[ '1x' ] ) ) {
+				if ( ! empty( $icons[ 'low' ] ) ) {
 
-					$img_src = 'src="' . $icons[ '1x' ] . '"';
+					$img_src = 'src="' . $icons[ 'low' ] . '"';	// 128px.
 				}
 
-				if ( ! empty( $icons[ '2x' ] ) ) {
+				if ( ! empty( $icons[ 'high' ] ) ) {
 
-					$img_src .= ' srcset="' . $icons[ '2x' ] . ' 256w"';
+					$img_src .= ' srcset="' . $icons[ 'high' ] . ' 256w"';	// 256px.
 				}
 			}
 

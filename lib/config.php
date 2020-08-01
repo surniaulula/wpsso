@@ -6,6 +6,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
@@ -21,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '7.15.0-dev.2',	// Plugin version.
+					'version'     => '7.15.0-dev.3',	// Plugin version.
 					'opt_version' => '746',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -37,12 +38,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'assets'      => array(
 						'banners' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso/assets/banner-772x250.jpg',
-							'2x' => 'https://surniaulula.github.io/wpsso/assets/banner-1544x500.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso/assets/banner-772x250.jpg',
+							'high' => 'https://surniaulula.github.io/wpsso/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'1x' => 'images/icon-128x128.png',
-							'2x' => 'images/icon-256x256.png',
+							'low'  => 'images/icon-128x128.png',
+							'high' => 'images/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -203,12 +204,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'assets'      => array(
 						'banners' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-am/assets/banner-772x250.jpg',
-							'2x' => 'https://surniaulula.github.io/wpsso-am/assets/banner-1544x500.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso-am/assets/banner-772x250.jpg',
+							'high' => 'https://surniaulula.github.io/wpsso-am/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-am/assets/icon-128x128.png',
-							'2x' => 'https://surniaulula.github.io/wpsso-am/assets/icon-256x256.png',
+							'low'  => 'https://surniaulula.github.io/wpsso-am/assets/icon-128x128.png',
+							'high' => 'https://surniaulula.github.io/wpsso-am/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -259,12 +260,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'assets'      => array(
 						'banners' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-breadcrumbs/assets/banner-772x250.jpg',
-							'2x' => 'https://surniaulula.github.io/wpsso-breadcrumbs/assets/banner-1544x500.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso-breadcrumbs/assets/banner-772x250.jpg',
+							'high' => 'https://surniaulula.github.io/wpsso-breadcrumbs/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-breadcrumbs/assets/icon-128x128.png',
-							'2x' => 'https://surniaulula.github.io/wpsso-breadcrumbs/assets/icon-256x256.png',
+							'low'  => 'https://surniaulula.github.io/wpsso-breadcrumbs/assets/icon-128x128.png',
+							'high' => 'https://surniaulula.github.io/wpsso-breadcrumbs/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -315,12 +316,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'assets'      => array(
 						'banners' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-faq/assets/banner-772x250.jpg',
-							'2x' => 'https://surniaulula.github.io/wpsso-faq/assets/banner-1544x500.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso-faq/assets/banner-772x250.jpg',
+							'high' => 'https://surniaulula.github.io/wpsso-faq/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-faq/assets/icon-128x128.png',
-							'2x' => 'https://surniaulula.github.io/wpsso-faq/assets/icon-256x256.png',
+							'low'  => 'https://surniaulula.github.io/wpsso-faq/assets/icon-128x128.png',
+							'high' => 'https://surniaulula.github.io/wpsso-faq/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -371,12 +372,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'assets'      => array(
 						'banners' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-inherit-parent-meta/assets/banner-772x250.jpg',
-							'2x' => 'https://surniaulula.github.io/wpsso-inherit-parent-meta/assets/banner-1544x500.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso-inherit-parent-meta/assets/banner-772x250.jpg',
+							'high' => 'https://surniaulula.github.io/wpsso-inherit-parent-meta/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-inherit-parent-meta/assets/icon-128x128.png',
-							'2x' => 'https://surniaulula.github.io/wpsso-inherit-parent-meta/assets/icon-256x256.png',
+							'low'  => 'https://surniaulula.github.io/wpsso-inherit-parent-meta/assets/icon-128x128.png',
+							'high' => 'https://surniaulula.github.io/wpsso-inherit-parent-meta/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -427,12 +428,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'assets'      => array(
 						'banners' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-schema-json-ld/assets/banner-772x250.jpg',
-							'2x' => 'https://surniaulula.github.io/wpsso-schema-json-ld/assets/banner-1544x500.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso-schema-json-ld/assets/banner-772x250.jpg',
+							'high' => 'https://surniaulula.github.io/wpsso-schema-json-ld/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-schema-json-ld/assets/icon-128x128.png',
-							'2x' => 'https://surniaulula.github.io/wpsso-schema-json-ld/assets/icon-256x256.png',
+							'low'  => 'https://surniaulula.github.io/wpsso-schema-json-ld/assets/icon-128x128.png',
+							'high' => 'https://surniaulula.github.io/wpsso-schema-json-ld/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -484,12 +485,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'assets'      => array(
 						'banners' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-organization/assets/banner-772x250.jpg',
-							'2x' => 'https://surniaulula.github.io/wpsso-organization/assets/banner-1544x500.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso-organization/assets/banner-772x250.jpg',
+							'high' => 'https://surniaulula.github.io/wpsso-organization/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-organization/assets/icon-128x128.png',
-							'2x' => 'https://surniaulula.github.io/wpsso-organization/assets/icon-256x256.png',
+							'low'  => 'https://surniaulula.github.io/wpsso-organization/assets/icon-128x128.png',
+							'high' => 'https://surniaulula.github.io/wpsso-organization/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -540,12 +541,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'assets'      => array(
 						'banners' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-plm/assets/banner-772x250.jpg',
-							'2x' => 'https://surniaulula.github.io/wpsso-plm/assets/banner-1544x500.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso-plm/assets/banner-772x250.jpg',
+							'high' => 'https://surniaulula.github.io/wpsso-plm/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-plm/assets/icon-128x128.png',
-							'2x' => 'https://surniaulula.github.io/wpsso-plm/assets/icon-256x256.png',
+							'low'  => 'https://surniaulula.github.io/wpsso-plm/assets/icon-128x128.png',
+							'high' => 'https://surniaulula.github.io/wpsso-plm/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -596,12 +597,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'assets'      => array(
 						'banners' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-ratings-and-reviews/assets/banner-772x250.jpg',
-							'2x' => 'https://surniaulula.github.io/wpsso-ratings-and-reviews/assets/banner-1544x500.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso-ratings-and-reviews/assets/banner-772x250.jpg',
+							'high' => 'https://surniaulula.github.io/wpsso-ratings-and-reviews/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-ratings-and-reviews/assets/icon-128x128.png',
-							'2x' => 'https://surniaulula.github.io/wpsso-ratings-and-reviews/assets/icon-256x256.png',
+							'low'  => 'https://surniaulula.github.io/wpsso-ratings-and-reviews/assets/icon-128x128.png',
+							'high' => 'https://surniaulula.github.io/wpsso-ratings-and-reviews/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -652,12 +653,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'assets'      => array(
 						'banners' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-rest-api/assets/banner-772x250.jpg',
-							'2x' => 'https://surniaulula.github.io/wpsso-rest-api/assets/banner-1544x500.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso-rest-api/assets/banner-772x250.jpg',
+							'high' => 'https://surniaulula.github.io/wpsso-rest-api/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-rest-api/assets/icon-128x128.png',
-							'2x' => 'https://surniaulula.github.io/wpsso-rest-api/assets/icon-256x256.png',
+							'low'  => 'https://surniaulula.github.io/wpsso-rest-api/assets/icon-128x128.png',
+							'high' => 'https://surniaulula.github.io/wpsso-rest-api/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -708,12 +709,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'assets'      => array(
 						'banners' => array(
-							'1x'=> 'https://surniaulula.github.io/wpsso-rrssb/assets/banner-772x250.jpg',
-							'2x' => 'https://surniaulula.github.io/wpsso-rrssb/assets/banner-1544x500.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso-rrssb/assets/banner-772x250.jpg',
+							'high' => 'https://surniaulula.github.io/wpsso-rrssb/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'1x'=> 'https://surniaulula.github.io/wpsso-rrssb/assets/icon-128x128.png',
-							'2x' => 'https://surniaulula.github.io/wpsso-rrssb/assets/icon-256x256.png',
+							'low'  => 'https://surniaulula.github.io/wpsso-rrssb/assets/icon-128x128.png',
+							'high' => 'https://surniaulula.github.io/wpsso-rrssb/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -764,12 +765,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'assets'      => array(
 						'banners' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-strip-schema-microdata/assets/banner-772x250.jpg',
-							'2x' => 'https://surniaulula.github.io/wpsso-strip-schema-microdata/assets/banner-1544x500.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso-strip-schema-microdata/assets/banner-772x250.jpg',
+							'high' => 'https://surniaulula.github.io/wpsso-strip-schema-microdata/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-strip-schema-microdata/assets/icon-128x128.png',
-							'2x' => 'https://surniaulula.github.io/wpsso-strip-schema-microdata/assets/icon-256x256.png',
+							'low'  => 'https://surniaulula.github.io/wpsso-strip-schema-microdata/assets/icon-128x128.png',
+							'high' => 'https://surniaulula.github.io/wpsso-strip-schema-microdata/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -820,12 +821,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'assets'      => array(
 						'banners' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-tune-image-editors/assets/banner-772x250.jpg',
-							'2x' => 'https://surniaulula.github.io/wpsso-tune-image-editors/assets/banner-1544x500.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso-tune-image-editors/assets/banner-772x250.jpg',
+							'high' => 'https://surniaulula.github.io/wpsso-tune-image-editors/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-tune-image-editors/assets/icon-128x128.png',
-							'2x' => 'https://surniaulula.github.io/wpsso-tune-image-editors/assets/icon-256x256.png',
+							'low'  => 'https://surniaulula.github.io/wpsso-tune-image-editors/assets/icon-128x128.png',
+							'high' => 'https://surniaulula.github.io/wpsso-tune-image-editors/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -876,12 +877,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'assets'      => array(
 						'banners' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-user-locale/assets/banner-772x250.jpg',
-							'2x' => 'https://surniaulula.github.io/wpsso-user-locale/assets/banner-1544x500.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso-user-locale/assets/banner-772x250.jpg',
+							'high' => 'https://surniaulula.github.io/wpsso-user-locale/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-user-locale/assets/icon-128x128.png',
-							'2x' => 'https://surniaulula.github.io/wpsso-user-locale/assets/icon-256x256.png',
+							'low'  => 'https://surniaulula.github.io/wpsso-user-locale/assets/icon-128x128.png',
+							'high' => 'https://surniaulula.github.io/wpsso-user-locale/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -932,12 +933,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'assets'      => array(
 						'banners' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-um/assets/banner-772x250.jpg',
-							'2x' => 'https://surniaulula.github.io/wpsso-um/assets/banner-1544x500.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso-um/assets/banner-772x250.jpg',
+							'high' => 'https://surniaulula.github.io/wpsso-um/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-um/assets/icon-128x128.png',
-							'2x' => 'https://surniaulula.github.io/wpsso-um/assets/icon-256x256.png',
+							'low'  => 'https://surniaulula.github.io/wpsso-um/assets/icon-128x128.png',
+							'high' => 'https://surniaulula.github.io/wpsso-um/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -984,12 +985,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'assets'      => array(
 						'banners' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-wc-metadata/assets/banner-772x250.jpg',
-							'2x' => 'https://surniaulula.github.io/wpsso-wc-metadata/assets/banner-1544x500.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso-wc-metadata/assets/banner-772x250.jpg',
+							'high' => 'https://surniaulula.github.io/wpsso-wc-metadata/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-wc-metadata/assets/icon-128x128.png',
-							'2x' => 'https://surniaulula.github.io/wpsso-wc-metadata/assets/icon-256x256.png',
+							'low'  => 'https://surniaulula.github.io/wpsso-wc-metadata/assets/icon-128x128.png',
+							'high' => 'https://surniaulula.github.io/wpsso-wc-metadata/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -1824,7 +1825,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '3.0.0-dev.2',	// Minimum update manager version (soft limit).
+				'rec_version' => '3.0.0-dev.3',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',
@@ -3665,6 +3666,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		public static function get_config( $apply_filters = false, $read_cache = true ) {
 
 			if ( ! empty( self::$cf[ 'config_filtered' ] ) && $read_cache ) {
+
 				return self::$cf;
 			}
 
@@ -3700,30 +3702,34 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 					$pkg_dir = 'std';
 
-					if ( ! $pro_disabled && defined( $ext_dir_const = strtoupper( $ext ) . '_PLUGINDIR' ) &&
-						is_dir( constant( $ext_dir_const ) . 'lib/pro/' ) ) {
+					if ( defined( $ext_dir_const = strtoupper( $ext ) . '_PLUGINDIR' ) &&
+						is_dir( constant( $ext_dir_const ) . 'lib/pro/' ) && ! $pro_disabled ) {
 
 						$pkg_dir = 'pro';
 					}
 
 					if ( isset( $info[ 'slug' ] ) ) {
+
 						self::$cf[ '*' ][ 'slug' ][ $info[ 'slug' ] ] = $ext;
 					}
 
 					if ( isset( $info[ 'base' ] ) ) {
+
 						self::$cf[ '*' ][ 'base' ][ $info[ 'base' ] ] = $ext;
 					}
 
 					if ( isset( $info[ 'lib' ] ) && is_array( $info[ 'lib' ] ) ) {
-						self::$cf[ '*' ][ 'lib' ] = SucomUtil::array_merge_recursive_distinct(
-							self::$cf[ '*' ][ 'lib' ], $info[ 'lib' ] );
+
+						self::$cf[ '*' ][ 'lib' ] = SucomUtil::array_merge_recursive_distinct( self::$cf[ '*' ][ 'lib' ], $info[ 'lib' ] );
 					}
 
 					if ( isset( $info[ 'version' ] ) ) {
+
 						self::$cf[ '*' ][ 'version' ] .= '-' . $ext . $info[ 'version' ] . $pkg_dir;
 					}
 
 					if ( isset( $info[ 'opt_version' ] ) ) {
+
 						self::$cf[ 'opt' ][ 'version' ] .= '-' . $ext . $info[ 'opt_version' ] . $pkg_dir;
 					}
 
@@ -3732,8 +3738,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					$plugin_base = trailingslashit( plugins_url( '', $info[ 'base' ] ) );
 
-					array_walk_recursive( self::$cf[ 'plugin' ][ $ext ][ 'assets' ], 
-						array( __CLASS__, 'maybe_prefix_base_url' ), $plugin_base );
+					array_walk_recursive( self::$cf[ 'plugin' ][ $ext ][ 'assets' ], array( __CLASS__, 'maybe_prefix_base_url' ), $plugin_base );
 				}
 			}
 
@@ -3743,6 +3748,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		private static function maybe_prefix_base_url( &$url, $key, $plugin_base ) {
 
 			if ( ! empty( $url ) && false === strpos( $url, '//' ) ) {
+
 				$url = $plugin_base . $url;
 			}
 		}
@@ -3750,6 +3756,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		public static function set_constants( $plugin_file_path ) {
 
 			if ( defined( 'WPSSO_VERSION' ) ) {	// Define constants only once.
+
 				return;
 			}
 
@@ -3782,6 +3789,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		public static function set_variable_constants( $var_const = null ) {
 
 			if ( ! is_array( $var_const ) ) {
+
 				$var_const = (array) self::get_variable_constants();
 			}
 
@@ -3789,7 +3797,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Define the variable constants, if not already defined.
 			 */
 			foreach ( $var_const as $name => $value ) {
+
 				if ( ! defined( $name ) ) {
+
 					define( $name, $value );
 				}
 			}
@@ -3806,6 +3816,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				( defined( 'NONCE_KEY' ) ? NONCE_KEY : '' ) );
 
 			if ( defined( 'WPSSO_PLUGINDIR' ) ) {
+
 				$var_const[ 'WPSSO_ARTICLE_SECTIONS_LIST' ]   = WPSSO_PLUGINDIR . 'share/article-sections.txt';
 				$var_const[ 'WPSSO_PRODUCT_CATEGORIES_LIST' ] = WPSSO_PLUGINDIR . 'share/product-categories.txt';
 			}
@@ -3891,7 +3902,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Maybe override the default constant value with a pre-defined constant value.
 			 */
 			foreach ( $var_const as $name => $value ) {
+
 				if ( defined( $name ) ) {
+
 					$var_const[ $name ] = constant( $name );
 				}
 			}
@@ -3967,8 +3980,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					require_once $file_path;
 
 					if ( empty( $classname ) ) {
+
 						return SucomUtil::sanitize_classname( 'wpsso' . $filespec, $allow_underscore = false );
 					} else {
+
 						return $classname;
 					}
 				}
@@ -3980,6 +3995,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		public static function get_cache_dir() {
 
 			if ( defined( 'WPSSO_CACHEDIR' ) ) {
+
 				return WPSSO_CACHEDIR;
 			}
 
@@ -3988,12 +4004,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				$content_dir = trailingslashit( WP_CONTENT_DIR );
 
 				if ( self::is_cache_dir( $content_dir . 'cache/wpsso/' ) ) {
+
 					return $content_dir . 'cache/wpsso/';
 				}
 			}
 
 			if ( defined( 'WPSSO_PLUGINDIR' ) ) {
+
 				if ( self::is_cache_dir( WPSSO_PLUGINDIR . 'cache/' ) ) {
+
 					return WPSSO_PLUGINDIR . 'cache/';
 				}
 			}
@@ -4004,6 +4023,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		public static function get_cache_url() {
 
 			if ( defined( 'WPSSO_CACHEURL' ) ) {
+
 				return WPSSO_CACHEURL;
 			}
 
@@ -4012,13 +4032,17 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				$content_dir = trailingslashit( WP_CONTENT_DIR );
 
 				if ( self::is_cache_dir( $content_dir . 'cache/wpsso/' ) ) {
+
 					return content_url( 'cache/wpsso/' );
 				}
 			}
 
 			if ( defined( 'WPSSO_PLUGINDIR' ) ) {
+
 				if ( self::is_cache_dir( WPSSO_PLUGINDIR . 'cache/' ) ) {
+
 					if ( defined( 'WPSSO_URLPATH' ) ) {	// Just in case.
+
 						return WPSSO_URLPATH . 'cache/';
 					}
 				}
@@ -4035,6 +4059,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$access_file = $dir . '.htaccess';
 
 			if ( file_exists( $index_file ) ) {	// Assume directory permissions are good.
+
 				return true;
 			}
 
@@ -4102,6 +4127,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		private static function sort_ext_by_name( $a, $b ) {
 
 			if ( isset( $a[ 'name' ] ) && isset( $b[ 'name' ] ) ) {		// Just in case.
+
 				return strnatcmp( $a[ 'name' ], $b[ 'name' ] );
 			}
 
@@ -4127,8 +4153,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 */
 			$ext_dir_const = strtoupper( $ext ) . '_PLUGINDIR';
 
-			if ( defined( $ext_dir_const ) &&
-				is_dir( $ext_dir = constant( $ext_dir_const ) ) ) {
+			if ( defined( $ext_dir_const ) && is_dir( $ext_dir = constant( $ext_dir_const ) ) ) {
 
 				return $local_cache[ $ext ] = trailingslashit( $ext_dir );
 			}
@@ -4142,14 +4167,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 				$slug = $cf[ 'plugin' ][ $ext ][ 'slug' ];
 
-				if ( defined ( 'WPMU_PLUGIN_DIR' ) &&
-					is_dir( $ext_dir = trailingslashit( WPMU_PLUGIN_DIR ) . $slug . '/' ) ) {
+				if ( defined ( 'WPMU_PLUGIN_DIR' ) && is_dir( $ext_dir = trailingslashit( WPMU_PLUGIN_DIR ) . $slug . '/' ) ) {
 				
 					return $local_cache[ $ext ] = $ext_dir;
 				}
 
-				if ( defined ( 'WP_PLUGIN_DIR' ) &&
-					is_dir( $ext_dir = trailingslashit( WP_PLUGIN_DIR ) . $slug . '/' ) ) {
+				if ( defined ( 'WP_PLUGIN_DIR' ) && is_dir( $ext_dir = trailingslashit( WP_PLUGIN_DIR ) . $slug . '/' ) ) {
 
 					return $local_cache[ $ext ] = $ext_dir;
 				}
@@ -4170,12 +4193,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				if ( $is_dir ) {	// Must be a directory.
 
 					if ( is_dir( $sub_dir = trailingslashit( $ext_dir . $file_name ) ) ) {
+
 						return $sub_dir;
 					}
 
 				} else {
 
 					if ( file_exists( $file_path = $ext_dir . $file_name ) ) {
+
 						return $file_path;
 					}
 				}

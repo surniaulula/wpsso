@@ -24,6 +24,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 		public static function get_wp_plugin_dir() {
 
 			if ( defined( 'WP_PLUGIN_DIR' ) && is_dir( WP_PLUGIN_DIR ) && is_writable( WP_PLUGIN_DIR ) ) {
+
 				return WP_PLUGIN_DIR;
 			}
 
@@ -36,6 +37,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 		public static function get_plugins() {
 
 			if ( null !== SucomPlugin::$cache_plugins ) {
+
 				return SucomPlugin::$cache_plugins;
 			}
 

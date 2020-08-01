@@ -283,8 +283,11 @@ jQuery( document ).ready( function(){
 });';
 
 			if ( function_exists( 'wp_add_inline_script' ) ) {	// Since WP v4.5.0.
+
 				wp_add_inline_script( 'plugin-install', $custom_script_js );
+
 			} else {
+
 				echo '<script type="text/javascript">' . $custom_script_js . '</script>';
 			}
 		}

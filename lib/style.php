@@ -698,6 +698,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 		private function plugin_install_inline_style( $hook_name, $plugin_slug = false ) {	// $hook_name = plugin-install.php
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -712,22 +713,32 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 					$banners = $this->p->cf[ 'plugin' ][ $ext ][ 'assets' ][ 'banners' ];
 
-					if ( ! empty( $banners[ '1x' ] ) || ! empty( $banners[ '2x' ] ) ) {	// Must have at least one banner.
+					echo '<style type="text/css">' . "\n";
 
-						$banner_1x = empty( $banners[ '1x' ] ) ? $banners[ '2x' ] : $banners[ '1x' ];
-						$banner_2x = empty( $banners[ '2x' ] ) ? $banners[ '1x' ] : $banners[ '2x' ];
-					
-						echo '<style type="text/css">' . "\n";
+					if ( ! empty( $banners[ 'low' ] ) ) {
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'banners low = ' . $banners[ 'low' ] );
+						}
 
 						echo '#plugin-information #plugin-information-title.with-banner { '.
-							'background-image: url( ' . esc_url( $banner_1x ) . ' ); }' . "\n";
+							'background-image: url( ' . esc_url( $banners[ 'low' ] ) . ' ); }' . "\n";
+					}
+
+					if ( ! empty( $banners[ 'high' ] ) ) {
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'banners high = ' . $banners[ 'high' ] );
+						}
 
 						echo '@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) { ' .
 							'#plugin-information #plugin-information-title.with-banner { ' .
-							'background-image: url( ' . esc_url( $banner_2x ) . ' ); } }' . "\n";
-
-						echo '</style>' . "\n";
+							'background-image: url( ' . esc_url( $banners[ 'high' ] ) . ' ); } }' . "\n";
 					}
+
+					echo '</style>' . "\n";
 				}
 			}
 
