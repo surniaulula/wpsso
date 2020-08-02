@@ -315,6 +315,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
+	* Removed the Users &gt; Add a Person &gt; Additional Role option.
 	* Added the ability to translate labels in the "Standard Features Status" and "Premium Features Status" metaboxes in the SSO &gt; Dashboard page.
 * **Bugfixes**
 	* None.
