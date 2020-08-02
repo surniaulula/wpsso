@@ -3476,16 +3476,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! empty( $this->p->cf[ 'plugin' ][ $ext ][ 'assets' ][ 'icons' ] ) ) {
 
+				/**
+				 * Icon image array keys are '1x' and '2x'.
+				 */
 				$icons = $this->p->cf[ 'plugin' ][ $ext ][ 'assets' ][ 'icons' ];
 
-				if ( ! empty( $icons[ 'low' ] ) ) {
+				if ( ! empty( $icons[ '1x' ] ) ) {
 
-					$img_src = 'src="' . $icons[ 'low' ] . '"';	// 128px.
+					$img_src = 'src="' . $icons[ '1x' ] . '"';	// 128px.
 				}
 
-				if ( ! empty( $icons[ 'high' ] ) ) {
+				if ( ! empty( $icons[ '2x' ] ) ) {
 
-					$img_src .= ' srcset="' . $icons[ 'high' ] . ' 256w"';	// 256px.
+					$img_src .= ' srcset="' . $icons[ '2x' ] . ' 256w"';	// 256px.
 				}
 			}
 

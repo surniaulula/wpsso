@@ -715,23 +715,16 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 					echo '<style type="text/css">' . "\n";
 
+					/**
+					 * Banner image array keys are 'low' and 'high'.
+					 */
 					if ( ! empty( $banners[ 'low' ] ) ) {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'banners low = ' . $banners[ 'low' ] );
-						}
 
 						echo '#plugin-information #plugin-information-title.with-banner { '.
 							'background-image: url( ' . esc_url( $banners[ 'low' ] ) . ' ); }' . "\n";
 					}
 
 					if ( ! empty( $banners[ 'high' ] ) ) {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'banners high = ' . $banners[ 'high' ] );
-						}
 
 						echo '@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) { ' .
 							'#plugin-information #plugin-information-title.with-banner { ' .

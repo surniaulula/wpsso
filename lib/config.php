@@ -36,14 +36,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * URLs or relative paths to plugin banners and icons.
 					 */
-					'assets'      => array(
+					'assets' => array(
+
+						/**
+						 * Banner image array keys are 'low' and 'high'.
+						 */
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso/assets/banner-772x250.jpg',
 							'high' => 'https://surniaulula.github.io/wpsso/assets/banner-1544x500.jpg',
 						),
+
+						/**
+						 * Icon image array keys are '1x' and '2x'.
+						 */
 						'icons' => array(
-							'low'  => 'images/icon-128x128.png',
-							'high' => 'images/icon-256x256.png',
+							'1x' => 'images/icon-128x128.png',
+							'2x' => 'images/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -202,14 +210,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * URLs or relative paths to plugin banners and icons.
 					 */
-					'assets'      => array(
+					'assets' => array(
+
+						/**
+						 * Banner image array keys are 'low' and 'high'.
+						 */
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-am/assets/banner-772x250.jpg',
 							'high' => 'https://surniaulula.github.io/wpsso-am/assets/banner-1544x500.jpg',
 						),
+
+						/**
+						 * Icon image array keys are '1x' and '2x'.
+						 */
 						'icons' => array(
-							'low'  => 'https://surniaulula.github.io/wpsso-am/assets/icon-128x128.png',
-							'high' => 'https://surniaulula.github.io/wpsso-am/assets/icon-256x256.png',
+							'1x' => 'https://surniaulula.github.io/wpsso-am/assets/icon-128x128.png',
+							'2x' => 'https://surniaulula.github.io/wpsso-am/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -258,14 +274,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * URLs or relative paths to plugin banners and icons.
 					 */
-					'assets'      => array(
+					'assets' => array(
+
+						/**
+						 * Banner image array keys are 'low' and 'high'.
+						 */
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-breadcrumbs/assets/banner-772x250.jpg',
 							'high' => 'https://surniaulula.github.io/wpsso-breadcrumbs/assets/banner-1544x500.jpg',
 						),
+
+						/**
+						 * Icon image array keys are '1x' and '2x'.
+						 */
 						'icons' => array(
-							'low'  => 'https://surniaulula.github.io/wpsso-breadcrumbs/assets/icon-128x128.png',
-							'high' => 'https://surniaulula.github.io/wpsso-breadcrumbs/assets/icon-256x256.png',
+							'1x' => 'https://surniaulula.github.io/wpsso-breadcrumbs/assets/icon-128x128.png',
+							'2x' => 'https://surniaulula.github.io/wpsso-breadcrumbs/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -314,14 +338,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * URLs or relative paths to plugin banners and icons.
 					 */
-					'assets'      => array(
+					'assets' => array(
+
+						/**
+						 * Banner image array keys are 'low' and 'high'.
+						 */
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-faq/assets/banner-772x250.jpg',
 							'high' => 'https://surniaulula.github.io/wpsso-faq/assets/banner-1544x500.jpg',
 						),
+
+						/**
+						 * Icon image array keys are '1x' and '2x'.
+						 */
 						'icons' => array(
-							'low'  => 'https://surniaulula.github.io/wpsso-faq/assets/icon-128x128.png',
-							'high' => 'https://surniaulula.github.io/wpsso-faq/assets/icon-256x256.png',
+							'1x' => 'https://surniaulula.github.io/wpsso-faq/assets/icon-128x128.png',
+							'2x' => 'https://surniaulula.github.io/wpsso-faq/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -370,14 +402,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * URLs or relative paths to plugin banners and icons.
 					 */
-					'assets'      => array(
+					'assets' => array(
+
+						/**
+						 * Banner image array keys are 'low' and 'high'.
+						 */
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-inherit-parent-meta/assets/banner-772x250.jpg',
 							'high' => 'https://surniaulula.github.io/wpsso-inherit-parent-meta/assets/banner-1544x500.jpg',
 						),
+
+						/**
+						 * Icon image array keys are '1x' and '2x'.
+						 */
 						'icons' => array(
-							'low'  => 'https://surniaulula.github.io/wpsso-inherit-parent-meta/assets/icon-128x128.png',
-							'high' => 'https://surniaulula.github.io/wpsso-inherit-parent-meta/assets/icon-256x256.png',
+							'1x' => 'https://surniaulula.github.io/wpsso-inherit-parent-meta/assets/icon-128x128.png',
+							'2x' => 'https://surniaulula.github.io/wpsso-inherit-parent-meta/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -426,14 +466,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * URLs or relative paths to plugin banners and icons.
 					 */
-					'assets'      => array(
+					'assets' => array(
+
+						/**
+						 * Banner image array keys are 'low' and 'high'.
+						 */
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-schema-json-ld/assets/banner-772x250.jpg',
 							'high' => 'https://surniaulula.github.io/wpsso-schema-json-ld/assets/banner-1544x500.jpg',
 						),
+
+						/**
+						 * Icon image array keys are '1x' and '2x'.
+						 */
 						'icons' => array(
-							'low'  => 'https://surniaulula.github.io/wpsso-schema-json-ld/assets/icon-128x128.png',
-							'high' => 'https://surniaulula.github.io/wpsso-schema-json-ld/assets/icon-256x256.png',
+							'1x' => 'https://surniaulula.github.io/wpsso-schema-json-ld/assets/icon-128x128.png',
+							'2x' => 'https://surniaulula.github.io/wpsso-schema-json-ld/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -483,14 +531,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * URLs or relative paths to plugin banners and icons.
 					 */
-					'assets'      => array(
+					'assets' => array(
+
+						/**
+						 * Banner image array keys are 'low' and 'high'.
+						 */
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-organization/assets/banner-772x250.jpg',
 							'high' => 'https://surniaulula.github.io/wpsso-organization/assets/banner-1544x500.jpg',
 						),
+
+						/**
+						 * Icon image array keys are '1x' and '2x'.
+						 */
 						'icons' => array(
-							'low'  => 'https://surniaulula.github.io/wpsso-organization/assets/icon-128x128.png',
-							'high' => 'https://surniaulula.github.io/wpsso-organization/assets/icon-256x256.png',
+							'1x' => 'https://surniaulula.github.io/wpsso-organization/assets/icon-128x128.png',
+							'2x' => 'https://surniaulula.github.io/wpsso-organization/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -539,14 +595,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * URLs or relative paths to plugin banners and icons.
 					 */
-					'assets'      => array(
+					'assets' => array(
+
+						/**
+						 * Banner image array keys are 'low' and 'high'.
+						 */
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-plm/assets/banner-772x250.jpg',
 							'high' => 'https://surniaulula.github.io/wpsso-plm/assets/banner-1544x500.jpg',
 						),
+
+						/**
+						 * Icon image array keys are '1x' and '2x'.
+						 */
 						'icons' => array(
-							'low'  => 'https://surniaulula.github.io/wpsso-plm/assets/icon-128x128.png',
-							'high' => 'https://surniaulula.github.io/wpsso-plm/assets/icon-256x256.png',
+							'1x' => 'https://surniaulula.github.io/wpsso-plm/assets/icon-128x128.png',
+							'2x' => 'https://surniaulula.github.io/wpsso-plm/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -595,14 +659,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * URLs or relative paths to plugin banners and icons.
 					 */
-					'assets'      => array(
+					'assets' => array(
+
+						/**
+						 * Banner image array keys are 'low' and 'high'.
+						 */
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-ratings-and-reviews/assets/banner-772x250.jpg',
 							'high' => 'https://surniaulula.github.io/wpsso-ratings-and-reviews/assets/banner-1544x500.jpg',
 						),
+
+						/**
+						 * Icon image array keys are '1x' and '2x'.
+						 */
 						'icons' => array(
-							'low'  => 'https://surniaulula.github.io/wpsso-ratings-and-reviews/assets/icon-128x128.png',
-							'high' => 'https://surniaulula.github.io/wpsso-ratings-and-reviews/assets/icon-256x256.png',
+							'1x' => 'https://surniaulula.github.io/wpsso-ratings-and-reviews/assets/icon-128x128.png',
+							'2x' => 'https://surniaulula.github.io/wpsso-ratings-and-reviews/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -651,14 +723,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * URLs or relative paths to plugin banners and icons.
 					 */
-					'assets'      => array(
+					'assets' => array(
+
+						/**
+						 * Banner image array keys are 'low' and 'high'.
+						 */
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-rest-api/assets/banner-772x250.jpg',
 							'high' => 'https://surniaulula.github.io/wpsso-rest-api/assets/banner-1544x500.jpg',
 						),
+
+						/**
+						 * Icon image array keys are '1x' and '2x'.
+						 */
 						'icons' => array(
-							'low'  => 'https://surniaulula.github.io/wpsso-rest-api/assets/icon-128x128.png',
-							'high' => 'https://surniaulula.github.io/wpsso-rest-api/assets/icon-256x256.png',
+							'1x' => 'https://surniaulula.github.io/wpsso-rest-api/assets/icon-128x128.png',
+							'2x' => 'https://surniaulula.github.io/wpsso-rest-api/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -707,14 +787,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * URLs or relative paths to plugin banners and icons.
 					 */
-					'assets'      => array(
+					'assets' => array(
+
+						/**
+						 * Banner image array keys are 'low' and 'high'.
+						 */
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-rrssb/assets/banner-772x250.jpg',
 							'high' => 'https://surniaulula.github.io/wpsso-rrssb/assets/banner-1544x500.jpg',
 						),
+
+						/**
+						 * Icon image array keys are '1x' and '2x'.
+						 */
 						'icons' => array(
-							'low'  => 'https://surniaulula.github.io/wpsso-rrssb/assets/icon-128x128.png',
-							'high' => 'https://surniaulula.github.io/wpsso-rrssb/assets/icon-256x256.png',
+							'1x' => 'https://surniaulula.github.io/wpsso-rrssb/assets/icon-128x128.png',
+							'2x' => 'https://surniaulula.github.io/wpsso-rrssb/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -763,14 +851,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * URLs or relative paths to plugin banners and icons.
 					 */
-					'assets'      => array(
+					'assets' => array(
+
+						/**
+						 * Banner image array keys are 'low' and 'high'.
+						 */
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-strip-schema-microdata/assets/banner-772x250.jpg',
 							'high' => 'https://surniaulula.github.io/wpsso-strip-schema-microdata/assets/banner-1544x500.jpg',
 						),
+
+						/**
+						 * Icon image array keys are '1x' and '2x'.
+						 */
 						'icons' => array(
-							'low'  => 'https://surniaulula.github.io/wpsso-strip-schema-microdata/assets/icon-128x128.png',
-							'high' => 'https://surniaulula.github.io/wpsso-strip-schema-microdata/assets/icon-256x256.png',
+							'1x' => 'https://surniaulula.github.io/wpsso-strip-schema-microdata/assets/icon-128x128.png',
+							'2x' => 'https://surniaulula.github.io/wpsso-strip-schema-microdata/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -819,14 +915,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * URLs or relative paths to plugin banners and icons.
 					 */
-					'assets'      => array(
+					'assets' => array(
+
+						/**
+						 * Banner image array keys are 'low' and 'high'.
+						 */
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-tune-image-editors/assets/banner-772x250.jpg',
 							'high' => 'https://surniaulula.github.io/wpsso-tune-image-editors/assets/banner-1544x500.jpg',
 						),
+
+						/**
+						 * Icon image array keys are '1x' and '2x'.
+						 */
 						'icons' => array(
-							'low'  => 'https://surniaulula.github.io/wpsso-tune-image-editors/assets/icon-128x128.png',
-							'high' => 'https://surniaulula.github.io/wpsso-tune-image-editors/assets/icon-256x256.png',
+							'1x' => 'https://surniaulula.github.io/wpsso-tune-image-editors/assets/icon-128x128.png',
+							'2x' => 'https://surniaulula.github.io/wpsso-tune-image-editors/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -875,14 +979,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * URLs or relative paths to plugin banners and icons.
 					 */
-					'assets'      => array(
+					'assets' => array(
+
+						/**
+						 * Banner image array keys are 'low' and 'high'.
+						 */
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-user-locale/assets/banner-772x250.jpg',
 							'high' => 'https://surniaulula.github.io/wpsso-user-locale/assets/banner-1544x500.jpg',
 						),
+
+						/**
+						 * Icon image array keys are '1x' and '2x'.
+						 */
 						'icons' => array(
-							'low'  => 'https://surniaulula.github.io/wpsso-user-locale/assets/icon-128x128.png',
-							'high' => 'https://surniaulula.github.io/wpsso-user-locale/assets/icon-256x256.png',
+							'1x' => 'https://surniaulula.github.io/wpsso-user-locale/assets/icon-128x128.png',
+							'2x' => 'https://surniaulula.github.io/wpsso-user-locale/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -931,14 +1043,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * URLs or relative paths to plugin banners and icons.
 					 */
-					'assets'      => array(
+					'assets' => array(
+
+						/**
+						 * Banner image array keys are 'low' and 'high'.
+						 */
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-um/assets/banner-772x250.jpg',
 							'high' => 'https://surniaulula.github.io/wpsso-um/assets/banner-1544x500.jpg',
 						),
+
+						/**
+						 * Icon image array keys are '1x' and '2x'.
+						 */
 						'icons' => array(
-							'low'  => 'https://surniaulula.github.io/wpsso-um/assets/icon-128x128.png',
-							'high' => 'https://surniaulula.github.io/wpsso-um/assets/icon-256x256.png',
+							'1x' => 'https://surniaulula.github.io/wpsso-um/assets/icon-128x128.png',
+							'2x' => 'https://surniaulula.github.io/wpsso-um/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -983,14 +1103,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * URLs or relative paths to plugin banners and icons.
 					 */
-					'assets'      => array(
+					'assets' => array(
+
+						/**
+						 * Banner image array keys are 'low' and 'high'.
+						 */
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-wc-metadata/assets/banner-772x250.jpg',
 							'high' => 'https://surniaulula.github.io/wpsso-wc-metadata/assets/banner-1544x500.jpg',
 						),
+
+						/**
+						 * Icon image array keys are '1x' and '2x'.
+						 */
 						'icons' => array(
-							'low'  => 'https://surniaulula.github.io/wpsso-wc-metadata/assets/icon-128x128.png',
-							'high' => 'https://surniaulula.github.io/wpsso-wc-metadata/assets/icon-256x256.png',
+							'1x' => 'https://surniaulula.github.io/wpsso-wc-metadata/assets/icon-128x128.png',
+							'2x' => 'https://surniaulula.github.io/wpsso-wc-metadata/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
