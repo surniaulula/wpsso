@@ -310,7 +310,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.15.0-rc.1 (2020/08/02)**
+**Version 7.15.0 (2020/08/02)**
 
 * **New Features**
 	* None.
@@ -698,11 +698,7 @@ The Open Graph meta tags for WooCommerce products have been extended to include 
 
 == Upgrade Notice ==
 
-= 7.15.0-rc.1 =
+= 7.15.0 =
 
 (2020/08/02) Tested with WordPress v5.5. Added the ability to translate labels in the "Standard Features Status" and "Premium Features Status" metaboxes.
-
-= 7.14.1 =
-
-(2020/07/25) Extended the Open Graph product type by adding all available product meta tags for each product offer. Fixed a possible missing Open Graph image for WooCommerce products with variations.
 
