@@ -6,6 +6,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
@@ -22,6 +23,7 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -103,7 +105,6 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 				'user_login',	// Username.
 				'first_name',	// First name.
 				'last_name',	// Last name.
-				'add_role',	// Additional role.
 				'email',	// Email.
 				'url',		// Website.
 				'description',	// Biographical info.
@@ -112,11 +113,6 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 				$attr[ $input ] = $have_submit && isset( $_POST[ $input ] ) ? wp_unslash( $_POST[ $input ] ) : '';
 
 				$attr[ $input ] = 'description' === $input ? esc_textarea( $attr[ $input ] ) : esc_attr( $attr[ $input ] );
-			}
-
-			if ( empty( $attr[ 'add_role' ] ) ) {
-
-				$attr[ 'add_role' ] = 'none';
 			}
 
 			?>
@@ -160,38 +156,16 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				<tr class="form-field form-required">
 				
-					<th scope="row"><label for="last_name"><?php _e( 'Last Name' ); ?>
-						<span class="description"><?php _e( '(required)' ); ?></span></label></th>
-					
+					<th scope="row">
+						<label for="last_name"><?php _e( 'Last Name' ); ?>
+							<span class="description"><?php _e( '(required)' ); ?></span>
+						</label>
+					</th>
+
 					<td><input name="last_name" type="text" id="last_name" value="<?php echo $attr[ 'last_name' ]; ?>" /></td>
 
 				</tr>
 				
-				<tr class="form-field">
-				
-					<th scope="row"><label for="role"><?php _e( 'Additional Role', 'wpsso' ); ?></label></th>
-					
-					<td><select name="role" id="role"><?php 
-
-						foreach ( $editable_roles as $add_role => $details ) {
-
-							$add_role = esc_attr( $add_role );
-
-							$name = translate_user_role( $details[ 'name' ] );
-
-							echo '<option';
-
-							if ( $add_role === $attr[ 'add_role' ] ) {
-								echo ' selected="selected"';
-							}
-
-							echo ' value="' . $add_role . '">' . $name . '</option>"';
-						}
-
-					?></select></td>
-
-				</tr>
-
 			</table>
 
 			<h2><?php _e( 'Contact Info', 'wpsso' ); ?></h2>
@@ -299,8 +273,6 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$illegal_logins = (array) apply_filters( 'illegal_user_logins', array() );
 
-			$allowed_add_role = '';
-
 			/**
 			 * Create a user object.
 			 */
@@ -378,26 +350,6 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			/**
-			 * Check the additional role.
-			 */
-			if ( ! empty( $_POST[ 'add_role' ] ) && $_POST[ 'add_role' ] !== 'none' ) {
-
-				$add_role = sanitize_text_field( $_POST[ 'add_role' ] );
-			
-				$editable_roles = get_editable_roles();
-
-				if ( current_user_can( 'promote_users' ) && ! empty( $editable_roles[ $add_role ] ) ) {
-
-					 $allowed_add_role = $add_role;
-
-				} else {
-
-					$errors->add( 'cannot_promote', __( '<strong>Error</strong>: You are not allowed to give users that role.', 'wpsso' ),
-						array( 'form-field' => 'add_role' ) );
-				}
-			}
-
-			/**
 			 * Check the email address.
 			 */
 			if ( ! empty( $user->user_email ) ) {
@@ -422,13 +374,6 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$user_id = wp_insert_user( $user );
-
-			if ( ! empty( $allowed_add_role ) ) {
-
-				$user_obj = new WP_User( $user_id );
-
-				$user_obj->add_role( $allowed_add_role );
-			}
 
 			return $user_id;
 		}

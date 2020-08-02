@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 7.15.0-dev.3\n"
+"Project-Id-Version: WPSSO Core 7.15.0-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2297,7 +2297,7 @@ msgstr ""
 #: lib/gettext-config.php:180 lib/gettext-config.php:182
 #: lib/gettext-config.php:255 lib/gettext-config.php:258
 #: lib/gettext-config.php:283 lib/gettext-config.php:293
-#: lib/users/add-person.php:94
+#: lib/users/add-person.php:96
 msgctxt "option value"
 msgid "[None]"
 msgstr ""
@@ -5894,7 +5894,7 @@ msgid ""
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/messages.php:2223 lib/users/add-person.php:197
+#: lib/messages.php:2223 lib/users/add-person.php:171
 msgid "Contact Info"
 msgstr ""
 
@@ -7799,101 +7799,93 @@ msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/users/add-person.php:44 lib/users/add-person.php:85
-#: lib/users/add-person.php:293
+#: lib/users/add-person.php:46 lib/users/add-person.php:87
+#: lib/users/add-person.php:267
 msgid "You need a higher level of permission."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/users/add-person.php:46 lib/users/add-person.php:87
-#: lib/users/add-person.php:295
+#: lib/users/add-person.php:48 lib/users/add-person.php:89
+#: lib/users/add-person.php:269
 msgid "Sorry, you are not allowed to create users."
 msgstr ""
 
-#: lib/users/add-person.php:73
+#: lib/users/add-person.php:75
 msgid "Person added."
 msgstr ""
 
-#: lib/users/add-person.php:140
+#: lib/users/add-person.php:136
 msgid "Username"
 msgstr ""
 
-#: lib/users/add-person.php:141 lib/users/add-person.php:155
-#: lib/users/add-person.php:164
+#: lib/users/add-person.php:137 lib/users/add-person.php:151
+#: lib/users/add-person.php:161
 msgid "(required)"
 msgstr ""
 
-#: lib/users/add-person.php:146
+#: lib/users/add-person.php:142
 msgid "Usernames cannot be changed (without a plugin)."
 msgstr ""
 
-#: lib/users/add-person.php:154
+#: lib/users/add-person.php:150
 msgid "First Name"
 msgstr ""
 
-#: lib/users/add-person.php:163
+#: lib/users/add-person.php:160
 msgid "Last Name"
 msgstr ""
 
-#: lib/users/add-person.php:172
-msgid "Additional Role"
-msgstr ""
-
-#: lib/users/add-person.php:203
+#: lib/users/add-person.php:177
 msgid "Email"
 msgstr ""
 
-#: lib/users/add-person.php:211
+#: lib/users/add-person.php:185
 msgid "Website"
 msgstr ""
 
-#: lib/users/add-person.php:233
+#: lib/users/add-person.php:207
 msgid "About the person"
 msgstr ""
 
-#: lib/users/add-person.php:239
+#: lib/users/add-person.php:213
 msgid "Biographical Info"
 msgstr ""
 
-#: lib/users/add-person.php:246
+#: lib/users/add-person.php:220
 msgid "Add the Person"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/users/add-person.php:358
+#: lib/users/add-person.php:330
 msgid "<strong>Error</strong>: Please enter a username."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/users/add-person.php:364
+#: lib/users/add-person.php:336
 msgid ""
 "<strong>Error</strong>: This username is invalid because it uses illegal "
 "characters. Please enter a valid username."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/users/add-person.php:370
+#: lib/users/add-person.php:342
 msgid ""
 "<strong>Error</strong>: This username is already registered. Please choose "
 "another one."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/users/add-person.php:376
+#: lib/users/add-person.php:348
 msgid "<strong>Error</strong>: Sorry, that username is not allowed."
 msgstr ""
 
-#: lib/users/add-person.php:395
-msgid "<strong>Error</strong>: You are not allowed to give users that role."
-msgstr ""
-
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/users/add-person.php:408
+#: lib/users/add-person.php:360
 msgid "<strong>Error</strong>: The email address isn&#8217;t correct."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/users/add-person.php:414
+#: lib/users/add-person.php:366
 msgid ""
 "<strong>Error</strong>: This email is already registered, please choose "
 "another one."
@@ -8119,26 +8111,26 @@ msgstr ""
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 
-#: wpsso.php:513
+#: wpsso.php:527
 msgid ""
 "WP debug logging mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:526
+#: wpsso.php:540
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."
 msgstr ""
 
 #. translators: %s is the short plugin name.
-#: wpsso.php:534
+#: wpsso.php:548
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:535
+#: wpsso.php:549
 msgid "Please disable debug mode when debugging is complete."
 msgstr ""
 
