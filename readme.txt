@@ -315,7 +315,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Removed the Users &gt; Add a Person &gt; Additional Role option.
+	* Removed the Users &gt; Add Person &gt; Additional Role option.
 	* Added the ability to translate labels in the "Standard Features Status" and "Premium Features Status" metaboxes in the SSO &gt; Dashboard page.
 * **Bugfixes**
 	* None.
@@ -451,7 +451,7 @@ The Open Graph meta tags for WooCommerce products have been extended to include 
 **Version 7.9.0 (2020/06/12)**
 
 * **New Features**
-	* Added a new Users &gt; Add a Person page to create new persons.
+	* Added a new Users &gt; Add Person page to create new persons.
 	* Added a new "Book ISBN" option in the Document SSO metabox.
 	* Added a new "Book ISBN Custom Field" option in the Advanced Settings page.
 * **Improvements**
