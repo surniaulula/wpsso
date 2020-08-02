@@ -1953,7 +1953,7 @@ msgstr ""
 
 #: lib/gettext-config.php:78
 msgctxt "lib file description"
-msgid "Add a Person"
+msgid "Add Person"
 msgstr ""
 
 #: lib/gettext-config.php:79

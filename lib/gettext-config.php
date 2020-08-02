@@ -75,7 +75,7 @@ _x( 'Image Sizes', 'lib file description', 'wpsso' );
 _x( 'Complementary Add-ons', 'lib file description', 'wpsso' );
 _x( 'Premium Licenses', 'lib file description', 'wpsso' );
 _x( 'Tools and Actions', 'lib file description', 'wpsso' );
-_x( 'Add a Person', 'lib file description', 'wpsso' );
+_x( 'Add Person', 'lib file description', 'wpsso' );
 _x( 'Make sure your content looks great on social sites and search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded.', 'plugin description', 'wpsso' );
 _x( 'Apple Store / iTunes and Google Play App Meta Tags for Apple\'s mobile Safari Banner and Twitter\'s App Card.', 'plugin description', 'wpsso' );
 _x( 'Schema BreadcrumbList Markup in JSON-LD for Better Google Rich Results with Structured Data.', 'plugin description', 'wpsso' );
