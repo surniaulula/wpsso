@@ -310,7 +310,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.15.0-dev.4 (2020/08/01)**
+**Version 7.15.0-b.1 (2020/08/02)**
 
 * **New Features**
 	* None.
@@ -698,9 +698,9 @@ The Open Graph meta tags for WooCommerce products have been extended to include 
 
 == Upgrade Notice ==
 
-= 7.15.0-dev.4 =
+= 7.15.0-b.1 =
 
-(2020/08/01) Tested with WordPress v5.5. Added the ability to translate labels in the "Standard Features Status" and "Premium Features Status" metaboxes.
+(2020/08/02) Tested with WordPress v5.5. Added the ability to translate labels in the "Standard Features Status" and "Premium Features Status" metaboxes.
 
 = 7.14.1 =
 
