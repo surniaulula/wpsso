@@ -1478,7 +1478,7 @@ msgid "No Title"
 msgstr ""
 
 #: lib/edit.php:398 lib/gettext-pro.php:167 lib/page.php:737
-#: lib/pro/social/buddypress.php:658
+#: lib/pro/social/buddypress.php:710
 msgctxt "default description"
 msgid "No Description."
 msgstr ""
@@ -3809,13 +3809,13 @@ msgid ""
 "required %4$s image dimensions."
 msgstr ""
 
-#: lib/gettext-pro.php:165 lib/pro/social/buddypress.php:95
+#: lib/gettext-pro.php:165 lib/pro/social/buddypress.php:101
 #: lib/std/social/buddypress.php:52
 msgctxt "option label"
 msgid "BuddyPress Member Bio Field Name"
 msgstr ""
 
-#: lib/gettext-pro.php:166 lib/pro/social/buddypress.php:114
+#: lib/gettext-pro.php:166 lib/pro/social/buddypress.php:121
 #: lib/std/social/buddypress.php:69
 msgid ""
 "The BuddyPress member profile page does not include the <em>Biographical "
