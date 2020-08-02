@@ -119,6 +119,8 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			<div id="add-person-content">
 
+			<p><?php _e( 'Create a new person profile for use in Open Graph meta tags and Schema markup.', 'wpsso' ); ?></p>
+
 			<form method="post" name="createuser" id="createuser" class="validate" novalidate="novalidate">
 
 			<?php wp_nonce_field( 'create-user', '_wpnonce_create-user' ); ?>

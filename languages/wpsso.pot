@@ -5894,7 +5894,7 @@ msgid ""
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/messages.php:2223 lib/users/add-person.php:171
+#: lib/messages.php:2223 lib/users/add-person.php:173
 msgid "Contact Info"
 msgstr ""
 
@@ -7800,13 +7800,13 @@ msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: lib/users/add-person.php:46 lib/users/add-person.php:87
-#: lib/users/add-person.php:267
+#: lib/users/add-person.php:269
 msgid "You need a higher level of permission."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: lib/users/add-person.php:48 lib/users/add-person.php:89
-#: lib/users/add-person.php:269
+#: lib/users/add-person.php:271
 msgid "Sorry, you are not allowed to create users."
 msgstr ""
 
@@ -7814,78 +7814,84 @@ msgstr ""
 msgid "Person added."
 msgstr ""
 
-#: lib/users/add-person.php:136
+#: lib/users/add-person.php:122
+msgid ""
+"Create a new person profile for use in Open Graph meta tags and Schema "
+"markup."
+msgstr ""
+
+#: lib/users/add-person.php:138
 msgid "Username"
 msgstr ""
 
-#: lib/users/add-person.php:137 lib/users/add-person.php:151
-#: lib/users/add-person.php:161
+#: lib/users/add-person.php:139 lib/users/add-person.php:153
+#: lib/users/add-person.php:163
 msgid "(required)"
 msgstr ""
 
-#: lib/users/add-person.php:142
+#: lib/users/add-person.php:144
 msgid "Usernames cannot be changed (without a plugin)."
 msgstr ""
 
-#: lib/users/add-person.php:150
+#: lib/users/add-person.php:152
 msgid "First Name"
 msgstr ""
 
-#: lib/users/add-person.php:160
+#: lib/users/add-person.php:162
 msgid "Last Name"
 msgstr ""
 
-#: lib/users/add-person.php:177
+#: lib/users/add-person.php:179
 msgid "Email"
 msgstr ""
 
-#: lib/users/add-person.php:185
+#: lib/users/add-person.php:187
 msgid "Website"
 msgstr ""
 
-#: lib/users/add-person.php:207
+#: lib/users/add-person.php:209
 msgid "About the person"
 msgstr ""
 
-#: lib/users/add-person.php:213
+#: lib/users/add-person.php:215
 msgid "Biographical Info"
 msgstr ""
 
-#: lib/users/add-person.php:220
+#: lib/users/add-person.php:222
 msgid "Add the Person"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/users/add-person.php:330
+#: lib/users/add-person.php:332
 msgid "<strong>Error</strong>: Please enter a username."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/users/add-person.php:336
+#: lib/users/add-person.php:338
 msgid ""
 "<strong>Error</strong>: This username is invalid because it uses illegal "
 "characters. Please enter a valid username."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/users/add-person.php:342
+#: lib/users/add-person.php:344
 msgid ""
 "<strong>Error</strong>: This username is already registered. Please choose "
 "another one."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/users/add-person.php:348
+#: lib/users/add-person.php:350
 msgid "<strong>Error</strong>: Sorry, that username is not allowed."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/users/add-person.php:360
+#: lib/users/add-person.php:362
 msgid "<strong>Error</strong>: The email address isn&#8217;t correct."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/users/add-person.php:366
+#: lib/users/add-person.php:368
 msgid ""
 "<strong>Error</strong>: This email is already registered, please choose "
 "another one."
