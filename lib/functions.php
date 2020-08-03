@@ -6,10 +6,12 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+
 	die( 'Do. Or do not. There is no try.' );
 }
 
@@ -26,6 +28,7 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 if ( ! function_exists( 'wpsso_error_handler' ) ) {
 
 	if ( ! class_exists( 'WpssoErrorException' ) ) {		// Just in case.
+
 		require_once WPSSO_PLUGINDIR . 'lib/exception.php';	// Extends ErrorException.
 	}
 
@@ -49,6 +52,7 @@ if ( ! function_exists( 'wpsso_is_mobile' ) ) {
 		$wpsso =& Wpsso::get_instance();
 
 		if ( $wpsso->avail[ 'p' ][ 'vary_ua' ] ) {
+
 			return SucomUtil::is_mobile();
 		}
 
@@ -63,6 +67,7 @@ if ( ! function_exists( 'wpsso_get_is_functions' ) ) {
 		$wpsso =& Wpsso::get_instance();
 
 		if ( ! empty( $wpsso->util ) ) {	// Just in case.
+
 			return $wpsso->util->get_is_functions();
 		}
 	}
@@ -75,6 +80,7 @@ if ( ! function_exists( 'wpsso_schema_attributes' ) ) {
 		$wpsso =& Wpsso::get_instance();
 
 		if ( ! empty( $wpsso->meta_item ) ) {	// Just in case.
+
 			echo $wpsso->meta_item->filter_head_attributes( $attr );
 		}
 	}
@@ -87,6 +93,7 @@ if ( ! function_exists( 'wpsso_show_head' ) ) {
 		$wpsso =& Wpsso::get_instance();
 
 		if ( ! empty( $wpsso->head ) ) {	// Just in case.
+
 			echo $wpsso->head->show_head();
 		}
 	}
@@ -125,6 +132,7 @@ if ( ! function_exists( 'wpsso_clear_post_cache' ) ) {
 		$wpsso =& Wpsso::get_instance();
 
 		if ( ! empty( $wpsso->post ) ) {	// Just in case.
+
 			$wpsso->post->clear_cache( $post_id );
 		}
 	}
@@ -142,6 +150,7 @@ if ( ! function_exists( 'wpsso_get_page_mod' ) ) {
 		$wpsso =& Wpsso::get_instance();
 
 		if ( ! empty( $wpsso->util ) ) {	// Just in case.
+
 			return $wpsso->util->get_page_mod( $use_post );
 		}
 
@@ -156,6 +165,7 @@ if ( ! function_exists( 'wpsso_get_post_mod' ) ) {
 		$wpsso =& Wpsso::get_instance();
 
 		if ( ! empty( $wpsso->post ) ) {	// Just in case.
+
 			return $wpsso->post->get_mod( $post_id );
 		}
 
@@ -170,6 +180,7 @@ if ( ! function_exists( 'wpsso_get_term_mod' ) ) {
 		$wpsso =& Wpsso::get_instance();
 
 		if ( ! empty( $wpsso->term ) ) {	// Just in case.
+
 			return $wpsso->term->get_mod( $term_id );
 		}
 
@@ -184,6 +195,7 @@ if ( ! function_exists( 'wpsso_get_user_mod' ) ) {
 		$wpsso =& Wpsso::get_instance();
 
 		if ( ! empty( $wpsso->user ) ) {	// Just in case.
+
 			return $wpsso->user->get_mod( $user_id );
 		}
 
@@ -200,6 +212,7 @@ if ( ! function_exists( 'wpsso_get_mod_og_image' ) ) {
 		$og_image = $wpsso->og->get_all_images( $num = 1, $size_name, $mod, $check_dupes = false, $md_pre = 'og' );
 
 		if ( ! empty( $og_image[ 0 ] ) ) {
+
 			return $og_image[ 0 ];	// Return one dimension array.
 		}
 
@@ -225,6 +238,7 @@ if ( ! function_exists( 'wpsso_get_mod_og_image' ) ) {
  * get_mt_media_url() method. Example:
  *
  * if ( $og_image = wpsso_get_post_og_image( $post_id ) ) {	// Returns false or array.
+ *
  * 	$image_url = SucomUtil::get_mt_media_url( $og_image );	// Returns a string.
  * }
  */
@@ -233,6 +247,7 @@ if ( ! function_exists( 'wpsso_get_post_og_image' ) ) {
 	function wpsso_get_post_og_image( $post_id, $size_name = 'thumbnail' ) {
 
 		if ( $mod = wpsso_get_post_mod( $post_id ) ) {
+
 			return wpsso_get_mod_og_image( $mod, $size_name );
 		}
 
@@ -245,6 +260,7 @@ if ( ! function_exists( 'wpsso_get_term_og_image' ) ) {
 	function wpsso_get_term_og_image( $term_id, $size_name = 'thumbnail' ) {
 
 		if ( $mod = wpsso_get_term_mod( $term_id ) ) {
+
 			return wpsso_get_mod_og_image( $mod, $size_name );
 		}
 
@@ -333,23 +349,30 @@ if ( ! function_exists( 'wpsso_get_post_organization_options' ) ) {
 		 * Check that the id value is not true, false, null, or 'none'.
 		 */
 		if ( ! SucomUtil::is_valid_option_id( $type_id ) ) {
+
 			return array();
 		}
 
 		$wpsso =& Wpsso::get_instance();
 
 		if ( empty( $post_id ) ) {	// Just in case.
+
 			return false;
 		} elseif ( ! empty( $wpsso->post ) ) {	// Just in case.
+
 			$mod = $wpsso->post->get_mod( $post_id );
+
 		} else {
+
 			return false;
 		}
 
 		$org_opts = apply_filters( $wpsso->lca . '_get_organization_options', false, $mod, $type_id );
 
 		if ( empty( $org_opts ) ) {
+
 			if ( $org_id === 'site' ) {
+
 				$org_opts = WpssoSchema::get_site_organization( $mod );	// returns localized values
 			}
 		}
@@ -365,10 +388,15 @@ if ( ! function_exists( 'wpsso_get_post_place_options' ) ) {
 		$wpsso =& Wpsso::get_instance();
 
 		if ( empty( $post_id ) ) {	// Just in case.
+
 			return false;
+
 		} elseif ( ! empty( $wpsso->post ) ) {	// Just in case.
+
 			$mod = $wpsso->post->get_mod( $post_id );
+
 		} else {
+
 			return false;
 		}
 
