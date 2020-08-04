@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '7.15.0',	// Plugin version.
+					'version'     => '7.16.0-dev.1',	// Plugin version.
 					'opt_version' => '746',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -146,6 +146,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'wpultimaterecipe' => '(plugin) WP Ultimate Recipe',
 							),
 							'review' => array(
+								'shopperapproved' => '(api) Shopper Approved API',
 								'wpproductreview' => '(plugin) WP Product Review',
 								'yotpowc'         => '(plugin) Yotpo Social Reviews for WooCommerce',
 							),
@@ -160,7 +161,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 							'util' => array(
 								'coauthors'     => '(plugin) Co-Authors Plus',
-								'shorten'       => '(api) URL Shortening Service',
+								'shorten'       => '(feature) URL Shortening Service',
 								'wpseo-meta'    => '(feature) Import Yoast SEO Social Meta',
 							),
 						),
@@ -4110,6 +4111,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					if ( empty( $classname ) ) {
 
 						return SucomUtil::sanitize_classname( 'wpsso' . $filespec, $allow_underscore = false );
+
 					} else {
 
 						return $classname;

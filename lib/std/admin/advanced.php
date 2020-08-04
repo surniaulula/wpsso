@@ -434,14 +434,12 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			/**
 			 * Shopper Approved customer reviews.
 			 */
-			/*
 			$table_rows[ 'subsection_plugin_shopperapproved' ] = '' .
 			'<td colspan="2" class="subsection"><h4>' . _x( 'Shopper Approved (Customer Reviews)', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 			$table_rows[ 'plugin_shopperapproved_token' ] = '' .
 			$form->get_th_html( _x( 'Shopper Approved Token', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_shopperapproved_token' ) .
 			'<td class="blank mono">' . $form->options[ 'plugin_shopperapproved_token' ] . '</td>';
-			*/
 
 			/**
 			 * YOURLS URL shortener.

@@ -395,15 +395,21 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							switch ( $id ) {
 
-								case 'yotpowc':
+								case 'shopperapproved':
 
-									$chk[ 'function' ] = 'wc_yotpo_init';
+									$chk[ 'opt_key' ] = 'plugin_shopperapproved_token';
 
 									break;
 
 								case 'wpproductreview':
 
 									$chk[ 'class' ] = 'WPPR';
+
+									break;
+
+								case 'yotpowc':
+
+									$chk[ 'function' ] = 'wc_yotpo_init';
 
 									break;
 							}

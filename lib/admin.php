@@ -1919,7 +1919,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				$purchase = empty( $info[ 'url' ][ 'purchase' ] ) ? '' :
+				$purchase_url = empty( $info[ 'url' ][ 'purchase' ] ) ? '' :
 					add_query_arg( array(
 						'utm_source'  => $ext,
 						'utm_medium'  => 'plugin',
@@ -1947,12 +1947,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							$status_on = self::$pkg[ $ext ][ 'pp' ] ? 'on' : $status_off;
 
-							$features[ _x( $label, 'lib file description', $info[ 'text_domain' ] ) ] = array(
-								'sub'      => $sub,
-								'lib'      => $id,
-								'td_class' => $td_class,
-								'purchase' => $purchase,
-								'status'   => class_exists( $classname ) ? $status_on : $status_off,
+							$features[ $label ] = array(
+								'sub'          => $sub,
+								'lib'          => $id,
+								'td_class'     => $td_class,
+								'label_transl' => _x( $label, 'lib file description', $info[ 'text_domain' ] ),
+								'status'       => class_exists( $classname ) ? $status_on : $status_off,
+								'purchase_url' => $purchase_url,
 							);
 						}
 					}
@@ -2123,6 +2124,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				),
 			);
 
+			foreach ( $features as $label => $arr ) {
+
+				if ( ! empty( $arr[ 'label_transl' ] ) ) {
+
+					$label_transl = $arr[ 'label_transl' ];
+
+					unset( $features[ $label ], $arr[ 'label_transl' ] );
+					
+					$features[ $label_transl ] = $arr;
+				}
+			}
+
 			uksort( $features, array( 'self', 'sort_plugin_features' ) );
 
 			foreach ( $features as $label_transl => $arr ) {
@@ -2148,15 +2161,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					$icon_title   = '';
 					$icon_type    = preg_match( '/^\(([a-z\-]+)\) (.*)/', $label_transl, $match ) ? $match[ 1 ] : 'admin-generic';
-
-					if ( empty( $arr[ 'label' ] ) ) {
-						$label_transl = empty( $match[ 2 ] ) ? $label_transl : $match[ 2 ];
-					} else {
-						$label_transl = $arr[ 'label' ];
-					}
-
-					$label_url    = empty( $arr[ 'url' ] ) ? '' : $arr[ 'url' ];
-					$purchase_url = $status_key === 'rec' && ! empty( $arr[ 'purchase' ] ) ? $arr[ 'purchase' ] : '';
+					$label_transl = empty( $match[ 2 ] ) ? $label_transl : $match[ 2 ];
+					$label_url    = empty( $arr[ 'label_url' ] ) ? '' : $arr[ 'label_url' ];
+					$purchase_url = $status_key === 'rec' && ! empty( $arr[ 'purchase_url' ] ) ? $arr[ 'purchase_url' ] : '';
 					$td_class     = empty( $arr[ 'td_class' ] ) ? '' : ' ' . $arr[ 'td_class' ];
 
 					switch ( $icon_type ) {
@@ -2210,20 +2217,24 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							break;
 					}
 
-					echo '<tr>' .
-					'<td><div class="dashicons-before dashicons-' . $icon_type . '" title="' . $icon_title . '"></div></td>' .
-					'<td class="' . trim( $td_class ) . '">' .
-					( $label_url ? '<a href="' . $label_url . '">' : '' ).
-					$label_transl .
-					( $label_url ? '</a>' : '' ).
-					'</td>' .
-					'<td>' .
-					( $purchase_url ? '<a href="' . $purchase_url . '">' : '' ).
-					'<img src="' . WPSSO_URLPATH . 'images/' . $status_info[ $status_key ][ 'img' ] . '" ' .
-					'width="12" height="12" title="' . $status_info[ $status_key ][ 'title' ] . '"/>' .
-					( $purchase_url ? '</a>' : '' ).
-					'</td>' .
-					'</tr>' . "\n";
+					echo '<tr>';
+
+					echo '<td><div class="dashicons-before dashicons-' . $icon_type . '" title="' . $icon_title . '"></div></td>';
+
+					echo '<td class="' . trim( $td_class ) . '">';
+					echo $label_url ? '<a href="' . $label_url . '">' : '';
+					echo $label_transl;
+					echo $label_url ? '</a>' : '';
+					echo '</td>';
+
+					echo '<td>';
+					echo $purchase_url ? '<a href="' . $purchase_url . '">' : '';
+					echo '<img src="' . WPSSO_URLPATH . 'images/' . $status_info[ $status_key ][ 'img' ] . '"';
+					echo 'width="12" height="12" title="' . $status_info[ $status_key ][ 'title' ] . '"/>';
+					echo $purchase_url ? '</a>' : '';
+					echo '</td>';
+
+					echo '</tr>' . "\n";
 				}
 			}
 		}
@@ -3651,22 +3662,33 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$status_on = self::$pkg[ $ext ][ 'pp' ] ? 'on' : 'rec';
 
-			$features[ _x( '(feature) Use Filtered (aka SEO) Title', 'lib file description', 'wpsso' ) ] = array(
-				'td_class' => $td_class,
-				'status'   => $this->p->options[ 'plugin_filter_title' ] ? $status_on : 'off',
-				'url'      => $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' ),
+			$apikeys_tab_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_apikeys' );
+
+			$content_tab_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' );
+
+			$features[ '(api) Shopper Approved API' ][ 'label_url' ] = $apikeys_tab_url;
+
+			$features[ '(feature) URL Shortening Service' ][ 'label_url' ] = $apikeys_tab_url;
+
+			$features[ '(feature) Use Filtered (aka SEO) Title' ] = array(
+				'td_class'     => $td_class,
+				'label_transl' => _x( '(feature) Use Filtered (aka SEO) Title', 'lib file description', 'wpsso' ),
+				'label_url'    => $content_tab_url,
+				'status'       => $this->p->options[ 'plugin_filter_title' ] ? $status_on : 'off',
 			);
 
-			$features[ _x( '(feature) Use WordPress Content Filters', 'lib file description', 'wpsso' ) ] = array(
-				'td_class' => $td_class,
-				'status'   => $this->p->options[ 'plugin_filter_content' ] ? $status_on : 'off',
-				'url'      => $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' ),
+			$features[ '(feature) Use WordPress Content Filters' ] = array(
+				'td_class'     => $td_class,
+				'label_transl' => _x( '(feature) Use WordPress Content Filters', 'lib file description', 'wpsso' ),
+				'label_url'    => $content_tab_url,
+				'status'       => $this->p->options[ 'plugin_filter_content' ] ? $status_on : 'off',
 			);
 
-			$features[ _x( '(feature) Use WordPress Excerpt Filters', 'lib file description', 'wpsso' ) ] = array(
-				'td_class' => $td_class,
-				'status'   => $this->p->options[ 'plugin_filter_excerpt' ] ? $status_on : 'off',
-				'url'     => $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' ),
+			$features[ '(feature) Use WordPress Excerpt Filters' ] = array(
+				'td_class'     => $td_class,
+				'label_transl' => _x( '(feature) Use WordPress Excerpt Filters', 'lib file description', 'wpsso' ),
+				'label_url'    => $content_tab_url,
+				'status'       => $this->p->options[ 'plugin_filter_excerpt' ] ? $status_on : 'off',
 			);
 
 			foreach ( $this->p->cf[ 'form' ][ 'shorteners' ] as $svc_id => $name ) {
@@ -3675,6 +3697,32 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					continue;
 				}
+
+				$name_transl = _x( $name, 'option value', 'wpsso' );
+
+				$label_transl = sprintf( _x( '(api) %s Shortener API', 'lib file description', 'wpsso' ), $name_transl );
+
+				$status = 'off';
+
+				if ( isset( $this->p->m[ 'util' ][ 'shorten' ] ) ) {	// URL shortening service is enabled.
+
+					if ( $svc_id === $this->p->options[ 'plugin_shortener' ] ) {	// Shortener API service ID is selected.
+
+						$status = 'rec';
+
+						if ( $this->p->m[ 'util' ][ 'shorten' ]->get_svc_instance( $svc_id ) ) {	// False or object.
+
+							$status = 'on';
+						}
+					}
+				}
+
+				$features[ '(api) ' . $name . ' Shortener API' ] = array(
+					'td_class'     => $td_class,
+					'label_transl' => $label_transl,
+					'label_url'    => $apikeys_tab_url,
+					'status'       => $status,
+				);
 			}
 
 			return $features;
@@ -3690,24 +3738,29 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$features[ _x( '(code) Facebook / Open Graph Meta Tags', 'lib file description', 'wpsso' ) ] = array(
-				'status' => class_exists( $this->p->lca . 'opengraph' ) ? 'on' : 'rec',
+			$features[ '(code) Facebook / Open Graph Meta Tags' ] = array(
+				'label_transl' => _x( '(code) Facebook / Open Graph Meta Tags', 'lib file description', 'wpsso' ),
+				'status'       => class_exists( $this->p->lca . 'opengraph' ) ? 'on' : 'rec',
 			);
 
-			$features[ _x( '(code) Knowledge Graph Organization Markup', 'lib file description', 'wpsso' ) ] = array(
-				'status' => 'organization' === $this->p->options[ 'site_pub_schema_type' ] ? 'on' : 'off',
+			$features[ '(code) Knowledge Graph Organization Markup' ] = array(
+				'label_transl' => _x( '(code) Knowledge Graph Organization Markup', 'lib file description', 'wpsso' ),
+				'status'       => 'organization' === $this->p->options[ 'site_pub_schema_type' ] ? 'on' : 'off',
 			);
 
-			$features[ _x( '(code) Knowledge Graph Person Markup', 'lib file description', 'wpsso' ) ] = array(
-				'status' => 'person' === $this->p->options[ 'site_pub_schema_type' ] ? 'on' : 'off',
+			$features[ '(code) Knowledge Graph Person Markup' ] = array(
+				'label_transl' => _x( '(code) Knowledge Graph Person Markup', 'lib file description', 'wpsso' ),
+				'status'       => 'person' === $this->p->options[ 'site_pub_schema_type' ] ? 'on' : 'off',
 			);
 
-			$features[ _x( '(code) Knowledge Graph WebSite Markup', 'lib file description', 'wpsso' ) ] = array(
-				'status' => 'on',
+			$features[ '(code) Knowledge Graph WebSite Markup' ] = array(
+				'label_transl' => _x( '(code) Knowledge Graph WebSite Markup', 'lib file description', 'wpsso' ),
+				'status'       => 'on',
 			);
 
-			$features[ _x( '(code) Twitter Card Meta Tags', 'lib file description', 'wpsso' ) ] = array(
-				'status' => class_exists( $this->p->lca . 'twittercard' ) ? 'on' : 'rec',
+			$features[ '(code) Twitter Card Meta Tags' ] = array(
+				'label_transl' => _x( '(code) Twitter Card Meta Tags', 'lib file description', 'wpsso' ),
+				'status'       => class_exists( $this->p->lca . 'twittercard' ) ? 'on' : 'rec',
 			);
 
 			return $features;

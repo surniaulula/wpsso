@@ -1985,18 +1985,28 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				if ( isset( $mt_og[ $prefix . ':' . $price_name . ':amount' ] ) ) {
 
-					if ( is_numeric( $mt_og[ $prefix . ':' . $price_name . ':amount' ] ) ) {	// Allow for price of 0.
+					$amount_key   = $prefix . ':' . $price_name . ':amount';
+					$currency_key = $prefix . ':' . $price_name . ':currency';
 
-						if ( empty( $mt_og[ $prefix . ':' . $price_name . ':currency' ] ) ) {
+					if ( is_numeric( $mt_og[ $amount_key ] ) ) {	// Allow for price of 0.
 
-							$mt_og[ $prefix . ':' . $price_name . ':currency' ] = $wpsso->options[ 'plugin_def_currency' ];
+						if ( empty( $mt_og[ $currency_key ] ) ) {
+
+							$mt_og[ $currency_key ] = $wpsso->options[ 'plugin_def_currency' ];
 						}
 
 					} else {
 
-						unset( $mt_og[ $prefix . ':' . $price_name . ':amount' ] );
+						if ( ! empty( $mt_og[ $amount_key ] ) ) {	// Non-empty string, array, etc.
+						
+							if ( $wpsso->debug->enabled ) {
 
-						unset( $mt_og[ $prefix . ':' . $price_name . ':currency' ] );
+								$wpsso->debug->log( 'invalid ' . $amount_key . ' value = ' . print_r( $mt_og[ $amount_key ], true ) );
+							}
+						}
+
+						unset( $mt_og[ $amount_key ] );
+						unset( $mt_og[ $currency_key ] );
 					}
 				}
 			}

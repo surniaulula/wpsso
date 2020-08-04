@@ -6,10 +6,12 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+
 	die( 'Do. Or do not. There is no try.' );
 }
 
@@ -27,6 +29,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -47,6 +50,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 					case 'themes.php':		// Appearance
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'no modules required for current page' );
 						}
 
@@ -55,6 +59,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark( 'load distribution modules' );	// Begin timer.
 			}
 
@@ -65,6 +70,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 				if ( ! isset( $info[ 'lib' ][ $type_dir ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( $ext . ' lib/' . $type_dir . ' not defined' );
 					}
 
@@ -73,6 +79,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 				} elseif ( ! is_array( $info[ 'lib' ][ $type_dir ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( $ext . ' lib/' . $type_dir . ' not an array' );
 					}
 
@@ -85,6 +92,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 					 * Skip loading admin library modules if not in admin back-end.
 					 */
 					if ( 'admin' === $sub_dir && ! $is_admin ) {
+
 						continue;
 					}
 
@@ -98,6 +106,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 						 * Loading of admin library modules in back-end is always allowed.
 						 */
 						if ( 'admin' === $sub_dir && $is_admin ) {
+
 							$this->p->avail[ $sub_dir ][ $id ] = true;
 						}
 
@@ -120,6 +129,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 									if ( $ext === $this->p->lca ) {
 
 										if ( $this->p->debug->enabled ) {
+
 											$this->p->debug->log( $log_prefix . 'new library module for ' . $classname );
 										}
 
@@ -128,6 +138,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 											$this->p->m[ $sub_dir ][ $id ] = new $classname( $this->p );
 
 										} elseif ( $this->p->debug->enabled ) {
+
 											$this->p->debug->log( $log_prefix . 'library module already defined' );
 										}
 
@@ -139,12 +150,14 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 										$this->p->m_ext[ $ext ][ $sub_dir ][ $id ] = new $classname( $this->p );
 
 									} elseif ( $this->p->debug->enabled ) {
+
 										$this->p->debug->log( $log_prefix . 'library ext module already defined' );
 									}
 
 								} else {
 
 									if ( $this->p->debug->enabled ) {
+
 										$this->p->debug->log( $log_prefix . 'library class "' . $classname . '" is missing' );
 									}
 
@@ -165,6 +178,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 							} else {
 
 								if ( $this->p->debug->enabled ) {
+
 									$this->p->debug->log( $log_prefix . 'library class name cannot be determined' );
 								}
 
@@ -175,6 +189,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 										'wpsso' );
 
 								if ( $is_admin && is_object( $this->p->notice ) ) {
+
 									$this->p->notice->err( $error_msg );
 								}
 
@@ -182,6 +197,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 							}
 
 						} elseif ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( $log_prefix . 'avail is false' );
 						}
 					}
@@ -189,6 +205,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark( 'load distribution modules' );	// End timer.
 			}
 		}

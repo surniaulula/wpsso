@@ -15,7 +15,7 @@
  * Requires At Least: 4.2
  * Tested Up To: 5.5
  * WC Tested Up To: 4.3.1
- * Version: 7.15.0
+ * Version: 7.16.0-dev.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -124,7 +124,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 * Hooks the 'override_textdomain_mofile' filter (if debug is enabled) to use the local translation files
 			 * instead of those from wordpress.org.
 			 */
-			add_action( 'wpsso_init_textdomain', array( __CLASS__, 'init_textdomain' ), -10, 1 );
+			add_action( 'wpsso_init_textdomain', array( __CLASS__, 'init_textdomain' ), -1000, 1 );
 		}
 
 		public static function &get_instance() {
