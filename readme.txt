@@ -310,6 +310,29 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 7.16.0-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added shortening service API status to the SSO &gt; Dashboard &gt; Premium Features Status metabox:
+		* Bitly Shortener API
+		* DLMY.App Shortener API
+		* Ow.ly Shortener API
+		* TinyURL Shortener API
+		* YOURLS Shortener API
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new `WpssoProUtilShorten->load_lib()` method.
+	* Renamed the `WpssoProUtilShorten->set_instance()` method to `get_svc_instance()`.
+	* Refactored `WpssoProUtilShorten->get_svc_instance()` to use the new `self->load_lib()` method.
+	* Added more debugging messages to the `WpssoProEcomWooCommerce` class for missing product methods.
+	* Added a 'label_transl' key to the `$features` array for the SSO &gt; Dashboard &gt; Premium Features Status metabox.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.2.
+
 **Version 7.15.0 (2020/08/02)**
 
 * **New Features**
