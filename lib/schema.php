@@ -1870,6 +1870,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				/**
+				 * Trust the offer image size and add it directly.
+				 */
+				if ( ! empty( $mt_offer[ 'og:image' ] ) ) {
+
+					WpssoSchema::add_images_data_mt( $single_offer[ 'image' ], $mt_offer[ 'og:image' ] );
+				}
+
+				/**
 				 * Make sure we have a price currency value.
 				 */
 				$price_currency = isset( $single_offer[ 'priceCurrency' ] ) ?
@@ -2272,9 +2280,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $wpsso->debug->enabled ) {
 
 				$wpsso->debug->log( 'adding all image(s)' );
+
+				$wpsso->debug->log_arr( '$size_names', $size_names );
+
+				$wpsso->debug->log_arr( '$alt_size_names', $alt_size_names );
 			}
 
 			foreach ( $size_names as $size_name ) {
+
 				$og_images = array_merge( $og_images, $wpsso->og->get_all_images( $max_nums[ 'schema_img_max' ],
 					$size_name, $mod, $check_dupes = true, $md_pre = 'schema' ) );
 			}
@@ -3953,62 +3966,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			return $ppp;
-		}
-
-		/**
-		 * Deprecated on 2019/06/29.
-		 */
-		public static function add_og_single_image_data( &$json_data, $mt_single, $mt_pre = 'og:image', $list_element = true ) {
-
-			return WpssoSchemaSingle::add_image_data_mt( $json_data, $mt_single, $mt_pre, $list_element );
-		}
-
-		/**
-		 * Deprecated on 2019/04/18. 
-		 */
-		public static function add_single_event_data( &$json_data, array $mod, $event_id = false, $list_element = false ) {
-
-			return WpssoSchemaSingle::add_event_data( $json_data, $mod, $event_id, $list_element );
-		}
-
-		/**
-		 * Deprecated on 2019/04/18. 
-		 */
-		public static function add_single_job_data( &$json_data, array $mod, $job_id = false, $list_element = false ) {
-
-			return WpssoSchemaSingle::add_job_data( $json_data, $mod, $job_id, $list_element );
-		}
-
-		/**
-		 * Deprecated on 2019/04/18. 
-		 */
-		public static function get_single_offer_data( array $mod, array $mt_offer ) {
-
-			return WpssoSchemaSingle::get_offer_data( $mod, $mt_offer );
-		}
-
-		/**
-		 * Deprecated on 2019/04/18. 
-		 */
-		public static function add_single_organization_data( &$json_data, $mod, $org_id = 'site', $org_logo_key = 'org_logo_url', $list_element = false ) {
-
-			return WpssoSchemaSingle::add_organization_data( $json_data, $mod, $org_id, $org_logo_key, $list_element );
-		}
-
-		/**
-		 * Deprecated on 2019/04/18. 
-		 */
-		public static function add_single_person_data( &$json_data, $mod, $user_id, $list_element = true ) {
-
-			return WpssoSchemaSingle::add_person_data( $json_data, $mod, $user_id, $list_element );
-		}
-
-		/**
-		 * Deprecated on 2019/04/18. 
-		 */
-		public static function add_single_place_data( &$json_data, $mod, $place_id = false, $list_element = false ) {
-
-			return WpssoSchemaSingle::add_place_data( $json_data, $mod, $place_id, $list_element );
 		}
 	}
 }

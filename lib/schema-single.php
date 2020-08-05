@@ -6,10 +6,12 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+
 	die( 'Do. Or do not. There is no try.' );
 }
 
@@ -28,12 +30,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$wpsso =& Wpsso::get_instance();
 
 			if ( $wpsso->debug->enabled ) {
+
 				$wpsso->debug->mark();
 			}
 
 			if ( empty( $mt_single ) || ! is_array( $mt_single ) ) {
 
 				if ( $wpsso->debug->enabled ) {
+
 					$wpsso->debug->log( 'exiting early: options array is empty or not an array' );
 				}
 
@@ -45,6 +49,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			if ( empty( $image_url ) ) {
 
 				if ( $wpsso->debug->enabled ) {
+
 					$wpsso->debug->log( 'exiting early: ' . $mt_pre . ' URL values are empty' );
 				}
 
@@ -97,6 +102,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$ret[ 'alternateName' ] = $wpsso->page->get_title( $title_max_len, '...', $mod, true, false, true, 'schema_title_alt' );
 
 				if ( $ret[ 'name' ] === $ret[ 'alternateName' ] ) {	// Prevent duplicate values.
+
 					unset( $ret[ 'alternateName' ] );
 				}
 
@@ -106,6 +112,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$ret[ 'alternativeHeadline' ] = get_post_meta( $mod[ 'id' ], '_wp_attachment_image_alt', true );
 
 				if ( $ret[ 'name' ] === $ret[ 'alternativeHeadline' ] ) {	// Prevent duplicate values.
+
 					unset( $ret[ 'alternativeHeadline' ] );
 				}
 
@@ -145,6 +152,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			foreach ( array( 'width', 'height' ) as $prop_name ) {
 
 				if ( isset( $mt_single[ $mt_pre . ':' . $prop_name ] ) && $mt_single[ $mt_pre . ':' . $prop_name ] > 0 ) {	// Just in case.
+
 					$ret[ $prop_name ] = $mt_single[ $mt_pre . ':' . $prop_name ];
 				}
 			}
@@ -152,8 +160,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			if ( ! empty( $mt_single[ $mt_pre . ':tag' ] ) ) {
 
 				if ( is_array( $mt_single[ $mt_pre . ':tag' ] ) ) {
+
 					$ret[ 'keywords' ] = implode( ', ', $mt_single[ $mt_pre . ':tag' ] );
+
 				} else {
+
 					$ret[ 'keywords' ] = $mt_single[ $mt_pre . ':tag' ];
 				}
 			}
@@ -173,6 +184,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			} elseif ( is_array( $json_data ) ) {	// Just in case.
 
 				if ( SucomUtil::is_assoc( $json_data ) ) {	// Converting from associative to array element.
+
 					$json_data = array( $json_data );
 				}
 
@@ -212,12 +224,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$wpsso =& Wpsso::get_instance();
 
 			if ( $wpsso->debug->enabled ) {
+
 				$wpsso->debug->mark();
 			}
 
 			if ( empty( $mt_single ) || ! is_array( $mt_single ) ) {
 
 				if ( $wpsso->debug->enabled ) {
+
 					$wpsso->debug->log( 'exiting early: options array is empty or not an array' );
 				}
 
@@ -229,6 +243,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			if ( empty( $media_url ) ) {
 
 				if ( $wpsso->debug->enabled ) {
+
 					$wpsso->debug->log( 'exiting early: ' . $mt_pre . ' URL values are empty' );
 				}
 
@@ -259,14 +274,18 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			) );
 
 			if ( ! empty( $mt_single[ $mt_pre . ':has_image' ] ) ) {
+
 				self::add_image_data_mt( $ret[ 'thumbnail' ], $mt_single, null, false );	// $list_element is false.
 			}
 
 			if ( ! empty( $mt_single[ $mt_pre . ':tag' ] ) ) {
 
 				if ( is_array( $mt_single[ $mt_pre . ':tag' ] ) ) {
+
 					$ret[ 'keywords' ] = implode( ', ', $mt_single[ $mt_pre . ':tag' ] );
+
 				} else {
+
 					$ret[ 'keywords' ] = $mt_single[ $mt_pre . ':tag' ];
 				}
 			}
@@ -283,6 +302,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			} elseif ( is_array( $json_data ) ) {	// Just in case.
 
 				if ( SucomUtil::is_assoc( $json_data ) ) {	// Converting from associative to array element.
+
 					$json_data = array( $json_data );
 				}
 
@@ -309,6 +329,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				if ( ! $list_element && false !== ( $comment_type_url = WpssoSchema::get_data_type_url( $json_data ) ) ) {
 
 					if ( $wpsso->debug->enabled ) {
+
 						$wpsso->debug->log( 'using inherited schema type url = ' . $comment_type_url );
 					}
 
@@ -336,12 +357,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				} elseif ( is_array( $json_data ) ) {	// Just in case.
 
 					if ( SucomUtil::is_assoc( $json_data ) ) {	// Converting from associative to array element.
+
 						$json_data = array( $json_data );
 					}
 
 					$json_data[] = $ret;		// Add an item to the list.
 
 				} else {
+
 					$json_data = array( $ret );	// Add an item to the list.
 				}
 			}
@@ -370,6 +393,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					$comments_added = WpssoSchemaSingle::add_comment_data( $json_data, $mod, $reply->comment_ID, $comment_list_el = true );
 
 					if ( $comments_added ) {
+
 						$replies_added += $comments_added;
 					}
 				}
@@ -383,6 +407,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$wpsso =& Wpsso::get_instance();
 
 			if ( $wpsso->debug->enabled ) {
+
 				$wpsso->debug->mark();
 			}
 
@@ -402,6 +427,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			if ( empty( $event_opts ) ) {
 
 				if ( $wpsso->debug->enabled ) {
+
 					$wpsso->debug->log( 'exiting early: no event options' );
 				}
 
@@ -412,6 +438,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Add ISO formatted date options.
 			 */
 			if ( $wpsso->debug->enabled ) {
+
 				$wpsso->debug->log( 'checking for custom event start/end date and time' );
 			}
 
@@ -432,6 +459,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Add event offers.
 			 */
 			if ( $wpsso->debug->enabled ) {
+
 				$wpsso->debug->log( 'checking for custom event offers' );
 			}
 
@@ -446,7 +474,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$offer_opts = apply_filters( $wpsso->lca . '_get_event_offer_options', false, $mod, $event_id, $key_num );
 
 				if ( ! empty( $offer_opts ) ) {
+
 					if ( $wpsso->debug->enabled ) {
+
 						$wpsso->debug->log_arr( 'get_event_offer_options filters returned', $offer_opts );
 					}
 				}
@@ -475,6 +505,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					if ( ! isset( $event_opts[ 'offer_url' ] ) ) {
 
 						if ( $wpsso->debug->enabled ) {
+
 							$wpsso->debug->log( 'setting offer_url to ' . $def_sharing_url );
 						}
 
@@ -486,12 +517,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						if ( ! empty( $event_opts[ 'event_offers_start_date_iso' ] ) ) {
 
 							if ( $wpsso->debug->enabled ) {
+
 								$wpsso->debug->log( 'setting offer_valid_from_date to ' . $event_opts[ 'event_offers_start_date_iso' ] );
 							}
 
 							$offer_opts[ 'offer_valid_from_date' ] = $event_opts[ 'event_offers_start_date_iso' ];
 
 						} elseif ( $wpsso->debug->enabled ) {
+
 							$wpsso->debug->log( 'event option event_offers_start_date_iso is empty' );
 						}
 					}
@@ -501,12 +534,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						if ( ! empty( $event_opts[ 'event_offers_end_date_iso' ] ) ) {
 
 							if ( $wpsso->debug->enabled ) {
+
 								$wpsso->debug->log( 'setting offer_valid_to_date to ' . $event_opts[ 'event_offers_end_date_iso' ] );
 							}
 
 							$offer_opts[ 'offer_valid_to_date' ] = $event_opts[ 'event_offers_end_date_iso' ];
 
 						} elseif ( $wpsso->debug->enabled ) {
+
 							$wpsso->debug->log( 'event option event_offers_end_date_iso is empty' );
 						}
 					}
@@ -516,6 +551,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						$have_offers = true;
 
 						if ( $wpsso->debug->enabled ) {
+
 							$wpsso->debug->log( 'custom event offer found - creating new offers array' );
 						}
 
@@ -558,8 +594,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Rescheduled events, without a previous start date, is an invalid combination.
 			 */
 			if ( ! empty( $event_opts[ 'event_previous_date_iso' ] ) ) {
+
 				$ret[ 'eventStatus' ] = 'EventRescheduled';
+
 			} elseif ( isset( $ret[ 'eventStatus' ] ) && 'EventRescheduled' === $ret[ 'eventStatus' ] ) {
+
 				$ret[ 'eventStatus' ] = 'EventScheduled';
 			}
 
@@ -583,6 +622,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					 * Check that the id value is not true, false, null, or 'none'.
 					 */
 					if ( ! SucomUtil::is_valid_option_id( $id ) ) {
+
 						continue;
 					}
 
@@ -624,6 +664,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				foreach ( $event_opts[ 'event_offers' ] as $event_offer ) {
 
 					if ( ! is_array( $event_offer ) ) {	// Just in case.
+
 						continue;
 					}
 
@@ -659,6 +700,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			} elseif ( is_array( $json_data ) ) {	// Just in case.
 
 				if ( SucomUtil::is_assoc( $json_data ) ) {	// Converting from associative to array element.
+
 					$json_data = array( $json_data );
 				}
 
@@ -676,6 +718,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$wpsso =& Wpsso::get_instance();
 
 			if ( $wpsso->debug->enabled ) {
+
 				$wpsso->debug->mark();
 			}
 
@@ -691,6 +734,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			if ( empty( $job_opts ) ) {
 
 				if ( $wpsso->debug->enabled ) {
+
 					$wpsso->debug->log( 'exiting early: no job options' );
 				}
 
@@ -698,6 +742,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			if ( empty( $job_opts[ 'job_title' ] ) ) {
+
 				$job_opts[ 'job_title' ] = $wpsso->page->get_title( 0, '', $mod, true, false, true, 'schema_title', false );
 			}
 
@@ -705,6 +750,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Add ISO formatted date options.
 			 */
 			if ( $wpsso->debug->enabled ) {
+
 				$wpsso->debug->log( 'checking for custom job expire date and time' );
 			}
 
@@ -753,6 +799,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Allow for a preformatted employment types array.
 			 */
 			if ( ! empty( $job_opts[ 'job_empl_types' ] ) && is_array( $job_opts[ 'job_empl_types' ] ) ) {
+
 				$ret[ 'employmentType' ] = $job_opts[ 'job_empl_types' ];
 			}
 
@@ -760,7 +807,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Add single employment type options (value must be non-empty).
 			 */
 			foreach ( SucomUtil::preg_grep_keys( '/^job_empl_type_(.*)(:is)?$/U', $job_opts, false, '$1' ) as $empl_type => $checked ) {
+
 				if ( ! empty( $checked ) ) {
+
 					$ret[ 'employmentType' ][] = $empl_type;
 				}
 			}
@@ -781,6 +830,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					 * Check that the id value is not true, false, null, or 'none'.
 					 */
 					if ( ! SucomUtil::is_valid_option_id( $id ) ) {
+
 						continue;
 					}
 
@@ -815,6 +865,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			} elseif ( is_array( $json_data ) ) {	// Just in case.
 
 				if ( SucomUtil::is_assoc( $json_data ) ) {	// Converting from associative to array element.
+
 					$json_data = array( $json_data );
 				}
 
@@ -951,14 +1002,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Add the seller organization data.
 			 */
 			self::add_organization_data( $offer[ 'seller' ], $mod, 'site', 'org_logo_url', false );
-
-			/**
-			 * Images.
-			 */
-			if ( ! empty( $mt_offer[ 'og:image' ] ) ) {
-
-				WpssoSchema::add_images_data_mt( $offer[ 'image' ], $mt_offer[ 'og:image' ] );
-			}
 
 			return WpssoSchema::get_schema_type_context( 'https://schema.org/Offer', $offer );
 		}
@@ -1109,10 +1152,15 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 							$org_settings_msg   = __( 'Please enter the missing image URL in the "%1$s" %2$s organization settings.', 'wpsso' );
 
 							if ( 'org_logo_url' === $org_logo_key ) {
+
 								$notice_msg = sprintf( $logo_missing_msg, $ret[ 'name' ], $org_type_url );
+
 							} elseif ( 'org_banner_url' === $org_logo_key ) {
+
 								$notice_msg = sprintf( $banner_missing_msg, $ret[ 'name' ], $org_type_url );
+
 							} else {
+
 								$notice_msg = '';
 							}
 
@@ -1240,6 +1288,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			} elseif ( is_array( $json_data ) ) {	// Just in case.
 
 				if ( SucomUtil::is_assoc( $json_data ) ) {	// Converting from associative to array element.
+
 					$json_data = array( $json_data );
 				}
 
@@ -1260,10 +1309,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$wpsso =& Wpsso::get_instance();
 
 			if ( $wpsso->debug->enabled ) {
+
 				$wpsso->debug->mark();
 			}
 
-			$size_name   = $wpsso->lca . '-schema';
+			$size_name = $wpsso->lca . '-schema';
+
 			$sharing_url = '';
 
 			/**
@@ -1276,6 +1327,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				if ( empty( $person_id ) || $person_id === 'none' ) {
 
 					if ( $wpsso->debug->enabled ) {
+
 						$wpsso->debug->log( 'exiting early: no person_id' );
 					}
 
@@ -1283,6 +1335,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 
 				if ( $wpsso->debug->enabled ) {
+
 					$wpsso->debug->log( 'getting user module for person_id ' . $person_id );
 				}
 
@@ -1294,6 +1347,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				 * Set the reference values for admin notices.
 				 */
 				if ( is_admin() ) {
+
 					$wpsso->notice->set_ref( $sharing_url, $user_mod,
 						sprintf( __( 'adding schema for person user ID %1$s', 'wpsso' ), $person_id ) );
 				}
@@ -1301,6 +1355,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$user_desc = $user_mod[ 'obj' ]->get_options_multi( $person_id, $md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
 
 				if ( empty( $user_desc ) ) {
+
 					$user_desc = $user_mod[ 'obj' ]->get_author_meta( $person_id, 'description' );
 				}
 
@@ -1316,12 +1371,16 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					$url = $user_mod[ 'obj' ]->get_author_meta( $person_id, $cm_id );
 
 					if ( empty( $url ) ) {
+
 						continue;
+
 					} elseif ( $cm_id === $wpsso->options[ 'plugin_cm_twitter_name' ] ) {	// Convert twitter name to url.
+
 						$url = 'https://twitter.com/' . preg_replace( '/^@/', '', $url );
 					}
 
 					if ( false !== filter_var( $url, FILTER_VALIDATE_URL ) ) {
+
 						$user_sameas[] = $url;
 					}
 				}
@@ -1340,11 +1399,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				 * Restore previous reference values for admin notices.
 				 */
 				if ( is_admin() ) {
+
 					$wpsso->notice->unset_ref( $sharing_url );
 				}
 			}
 
 			if ( $wpsso->debug->enabled ) {
+
 				$wpsso->debug->log_arr( 'person options', $person_opts );
 			}
 
@@ -1369,6 +1430,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Images.
 			 */
 			if ( ! empty( $person_opts[ 'person_og_image' ] ) ) {
+
 				WpssoSchema::add_images_data_mt( $ret[ 'image' ], $person_opts[ 'person_og_image' ] );
 			}
 
@@ -1379,8 +1441,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$person_opts[ 'person_sameas' ] = apply_filters( $wpsso->lca . '_json_data_single_person_sameas', $person_opts[ 'person_sameas' ], $mod, $person_id );
 
 			if ( ! empty( $person_opts[ 'person_sameas' ] ) && is_array( $person_opts[ 'person_sameas' ] ) ) {	// Just in case.
+
 				foreach ( $person_opts[ 'person_sameas' ] as $url ) {
+
 					if ( ! empty( $url ) ) {	// Just in case.
+
 						$ret[ 'sameAs' ][] = SucomUtil::esc_url_encode( $url );
 					}
 				}
@@ -1401,6 +1466,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			} elseif ( is_array( $json_data ) ) {	// Just in case.
 
 				if ( SucomUtil::is_assoc( $json_data ) ) {	// Converting from associative to array element.
+
 					$json_data = array( $json_data );
 				}
 
@@ -1418,6 +1484,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$wpsso =& Wpsso::get_instance();
 
 			if ( $wpsso->debug->enabled ) {
+
 				$wpsso->debug->mark();
 			}
 
@@ -1425,6 +1492,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Check that the id is not true, false, null, or 'none'.
 			 */
 			if ( ! SucomUtil::is_valid_option_id( $place_id ) ) {
+
 				return 0;
 			}
 
@@ -1440,6 +1508,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			if ( empty( $place_opts ) ) {
 
 				if ( $wpsso->debug->enabled ) {
+
 					$wpsso->debug->log( 'exiting early: no place options' );
 				}
 
@@ -1493,6 +1562,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'postalCode'          => 'place_zipcode',
 				'addressCountry'      => 'place_country',	// Alpha2 country code.
 			) ) ) {
+
 				$ret[ 'address' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/PostalAddress', $postal_address );
 			}
 
@@ -1507,6 +1577,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'latitude'  => 'place_latitude',
 				'longitude' => 'place_longitude',
 			) ) ) {
+
 				$ret[ 'geo' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/GeoCoordinates', $geo );
 			}
 
@@ -1544,6 +1615,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						) as $prop_name => $opt_key ) {
 
 							if ( isset( $place_opts[ $opt_key ] ) && $place_opts[ $opt_key ] !== '' ) {
+
 								$weekday_spec[ $prop_name ] = $place_opts[ $opt_key ];
 							}
 						}
@@ -1554,6 +1626,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			if ( ! empty( $opening_spec ) ) {
+
 				$ret[ 'openingHoursSpecification' ] = $opening_spec;
 			}
 
@@ -1571,8 +1644,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					) as $prop_name => $opt_key ) {
 
 						if ( $opt_key === 'place_accept_res' ) {
+
 							$ret[ $prop_name ] = empty( $place_opts[ $opt_key ] ) ? 'false' : 'true';
+
 						} elseif ( isset( $place_opts[ $opt_key ] ) ) {
+
 							$ret[ $prop_name ] = $place_opts[ $opt_key ];
 						}
 					}
@@ -1623,6 +1699,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			} elseif ( is_array( $json_data ) ) {	// Just in case.
 
 				if ( SucomUtil::is_assoc( $json_data ) ) {	// Converting from associative to array element.
+
 					$json_data = array( $json_data );
 				}
 
@@ -1643,6 +1720,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$wpsso =& Wpsso::get_instance();
 
 			if ( $wpsso->debug->enabled ) {
+
 				$wpsso->debug->mark();
 			}
 
@@ -1651,6 +1729,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$single_type_from = 'inherited';
 
 			if ( ! $list_element ) {
+
 				$single_type_url = WpssoSchema::get_data_type_url( $json_data );
 			}
 
@@ -1678,6 +1757,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			if ( $wpsso->debug->enabled ) {
+
 				$wpsso->debug->log( 'using ' . $single_type_from . ' single type url: ' . $single_type_url );
 			}
 
