@@ -190,6 +190,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 		* Facebook Embedded Videos
 		* Gravatar (Author Image)
 		* Ow.ly
+		* Shopper Approved (Customer Ratings and Reviews)
 		* Slideshare Presentations
 		* Soundcloud Tracks (for the Twitter Player Card)
 		* TinyURL
@@ -310,10 +311,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.16.0-dev.2 (2020/08/05)**
+**Version 7.16.0-dev.3 (2020/08/05)**
 
 * **New Features**
-	* Added a new API integration module for Shopper Approved customer reviews.
+	* Added a new API integration module for Shopper Approved customer ratings and reviews.
 * **Improvements**
 	* Added shortening service API status to the SSO &gt; Dashboard &gt; Premium Features Status metabox:
 		* Bitly Shortener API
@@ -321,6 +322,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Ow.ly Shortener API
 		* TinyURL Shortener API
 		* YOURLS Shortener API
+	* Renamed the following SSO &gt; Image Sizes:
+		* Schema Article AMP 1x1 to Schema 1x1
+		* Schema Article AMP 4x3 to Schema 4x3
+		* Schema Article AMP 16x9 to Schema 16x9
+	* Removed the following SSO &gt; Image Sizes:
+		* Schema
+		* Schema Article
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -721,9 +729,9 @@ The Open Graph meta tags for WooCommerce products have been extended to include 
 
 == Upgrade Notice ==
 
-= 7.16.0-dev.2 =
+= 7.16.0-dev.3 =
 
-(2020/08/05) Added a new API integration module for Shopper Approved customer reviews. Added shortening service API status to the SSO &gt; Dashboard &gt; Premium Features Status metabox.
+(2020/08/05) Added a new API integration module for Shopper Approved customer ratings and reviews. Added shortening service API status to the SSO &gt; Dashboard &gt; Premium Features Status metabox.
 
 = 7.15.0 =
 
