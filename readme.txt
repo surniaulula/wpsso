@@ -310,10 +310,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.16.0-dev.1 (TBD)**
+**Version 7.16.0-dev.2 (2020/08/05)**
 
 * **New Features**
-	* None.
+	* Added a new API integration module for Shopper Approved customer reviews.
 * **Improvements**
 	* Added shortening service API status to the SSO &gt; Dashboard &gt; Premium Features Status metabox:
 		* Bitly Shortener API
@@ -720,6 +720,10 @@ The Open Graph meta tags for WooCommerce products have been extended to include 
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 7.16.0-dev.2 =
+
+(2020/08/05) Added a new API integration module for Shopper Approved customer reviews. Added shortening service API status to the SSO &gt; Dashboard &gt; Premium Features Status metabox.
 
 = 7.15.0 =
 
