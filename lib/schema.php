@@ -3526,7 +3526,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'exiting early: type_id value is empty and required' );
+					$wpsso->debug->log( 'exiting early: $type_id value is empty and required' );
 				}
 
 				return false;

@@ -6,6 +6,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
@@ -31,15 +32,16 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		private $url_get_mtimes = array();
 		private $ignored_urls   = array(	// Saved on wp shutdown action.
-			'transient_expires' => HOUR_IN_SECONDS,
+			'transient_expires' => DAY_IN_SECONDS,
 			'transient_loaded'  => false,
-			'ignore_for_secs'   => 900,
+			'ignore_secs'       => 1800,	// 30 mins.
 			'ignore_urls'       => array(),
 		);
 
 		public function __construct( $plugin = null, $lca = null, $text_domain = null, $label_transl = null ) {
 
 			if ( ! class_exists( 'SucomUtil' ) ) {	// Just in case.
+
 				require_once trailingslashit( dirname( __FILE__ ) ) . 'util.php';
 			}
 
@@ -58,6 +60,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$this->p =& $plugin;
 
 				if ( ! empty( $this->p->debug->enabled ) ) {
+
 					$this->p->debug->mark();
 				}
 			}
@@ -110,6 +113,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$cache_ret     = get_transient( $cache_id );
 
 				if ( false !== $cache_ret ) {
+
 					$this->ignored_urls = $cache_ret;
 				}
 
@@ -135,12 +139,15 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			if ( ! empty( $this->ignored_urls[ 'ignore_urls' ][ $url ] ) ) {
 
-				$time_left = $this->ignored_urls[ 'ignore_for_secs' ] - ( time() - $this->ignored_urls[ 'ignore_urls' ][ $url ] );
+				$time_diff = time() - $this->ignored_urls[ 'ignore_urls' ][ $url ];
+
+				$time_left = $this->ignored_urls[ 'ignore_secs' ] - $time_diff;
 
 				if ( $time_left > 0 ) {
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'ignoring url ' . $url . ' for another ' . $time_left . ' second(s)' );
+
+						$this->p->debug->log( 'requests to cache ' . $url . ' ignored for another ' . $time_left . ' second(s)' );
 					}
 
 					return true;
@@ -210,7 +217,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				}
 
 				$errors[] = sprintf( __( 'Requests to cache this URL will be ignored for %d second(s).',
-					$this->text_domain ), $this->ignored_urls[ 'ignore_for_secs' ] );
+					$this->text_domain ), $this->ignored_urls[ 'ignore_secs' ] );
 
 				/**
 				 * Combine all strings into one error notice.
@@ -219,8 +226,10 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'error connecting to ' . $url . ' for caching (http code ' . $http_code . ')' );
-				$this->p->debug->log( 'requests to cache this URL ignored for ' . $this->ignored_urls[ 'ignore_for_secs' ] . ' second(s)' );
+
+				$this->is_ignored_url( $url );
 			}
 		}
 
@@ -236,6 +245,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			if ( wp_cache_delete( $cache_id, __CLASS__ ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'cleared object cache salt: ' . $cache_salt );
 				}
 			}
@@ -243,6 +253,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			if ( delete_transient( $cache_id ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'cleared transient cache salt: ' . $cache_salt );
 				}
 			}
@@ -254,6 +265,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					$cache_ext = pathinfo( $url_path, PATHINFO_EXTENSION );
 
 					if ( $cache_ext ) {
+
 						$cache_ext = '.' . $cache_ext;
 					}
 				}
@@ -266,6 +278,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					if ( @unlink( $cache_file ) ) {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'cleared local cache file: ' . $cache_file );
 						}
 					}
@@ -302,6 +315,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		public function get_image_size( $image_url, $exp_secs = 300, array $curl_opts = array(), $error_handler = null ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -312,26 +326,31 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				if ( file_exists( $file_path ) ) {
 
 					if ( null !== $error_handler ) {
+
 						$previous_error_handler = set_error_handler( $error_handler );
 					}
 
 					$image_size = getimagesize( $file_path );
 
 					if ( null !== $error_handler ) {
+
 						restore_error_handler();
 					}
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log_arr( 'getimagesize', $image_size );
 					}
 
 					return $image_size;
 
 				} elseif ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( $file_path.' does not exist' );
 				}
 
 			} elseif ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'returned image file path is empty' );
 			}
 
@@ -341,6 +360,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		public function get_data_url( $cache_salt, $cache_data, $exp_secs = null, $cache_ext = '' ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -356,6 +376,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				if ( false !== $exp_secs && $file_mod_time > time() - $file_exp_secs ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'cached file found: returning url ' . $cache_url );
 					}
 
@@ -366,12 +387,14 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				} elseif ( @unlink( $cache_file ) ) {	// Remove expired file.
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'removed expired cache file ' . $cache_file );
 					}
 
 				} else {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'error removing cache file ' . $cache_file );
 					}
 
@@ -386,6 +409,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			} else {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'cached file not found: creating ' . $cache_url );
 				}
 			}
@@ -397,6 +421,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					$file_mod_time = filemtime( $cache_file );
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'cache data sucessfully saved' );
 					}
 
@@ -417,6 +442,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		public function get( $url, $format = 'url', $cache_type = 'file', $exp_secs = null, $cache_ext = '', array $curl_opts = array() ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -427,6 +453,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			if ( ! extension_loaded( 'curl' ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'exiting early: curl library is missing' );
 				}
 
@@ -442,6 +469,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			} elseif ( SucomUtil::get_const( $this->uca . '_PHP_CURL_DISABLE' ) ) { {
 
 				if ( $this->p->debug->enabled )
+
 					$this->p->debug->log( 'exiting early: curl has been disabled' );
 				}
 
@@ -456,6 +484,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$cache_ext = pathinfo( $url_path, PATHINFO_EXTENSION );
 
 				if ( $cache_ext ) {
+
 					$cache_ext = '.' . $cache_ext;
 				}
 			}
@@ -463,6 +492,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			$url_fragment = parse_url( $url, PHP_URL_FRAGMENT );
 
 			if ( ! empty( $url_fragment ) ) {
+
 				$url_fragment = '#' . $url_fragment;
 			}
 
@@ -483,6 +513,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					if ( false !== $cache_data ) {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'cached data found: returning ' . strlen( $cache_data ) . ' chars' );
 						}
 
@@ -504,6 +535,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						if ( false !== $exp_secs && $file_mod_time > time() - $file_exp_secs ) {
 
 							if ( $this->p->debug->enabled ) {
+
 								$this->p->debug->log( 'cached file found: returning ' . $format . ' ' . 
 									( $format === 'url' ? $cache_url : $cache_file ) );
 							}
@@ -523,12 +555,14 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						} elseif ( @unlink( $cache_file ) ) {	// Remove expired file.
 
 							if ( $this->p->debug->enabled ) {
+
 								$this->p->debug->log( 'removed expired cache file ' . $cache_file );
 							}
 
 						} else {
 
 							if ( $this->p->debug->enabled ) {
+
 								$this->p->debug->log( 'error removing cache file ' . $cache_file );
 							}
 
@@ -546,6 +580,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				default:
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'cache return type for ' . $format . ' is unknown' );
 					}
 
@@ -555,6 +590,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 
 			if ( $this->is_ignored_url( $url_nofrag ) ) {
+
 				return $failure;
 			}
 
@@ -597,6 +633,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				curl_setopt( $ch, CURLOPT_MAXREDIRS, $this->curl_max_redirs );
 
 			} elseif ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'curl: PHP safe_mode or open_basedir defined - cannot use CURLOPT_FOLLOWLOCATION' );
 			}
 
@@ -616,6 +653,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$curl_const_name = 'CURLOPT_' . $const_suffix;
 
 				if ( defined( $uca_const_name ) ) {
+
 					curl_setopt( $ch, constant( $curl_const_name ), constant( $uca_const_name ) );
 				}
 			}
@@ -633,6 +671,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				foreach ( $curl_opts as $opt_key => $opt_val ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'curl: setting custom curl option ' . $opt_key . ' = ' . $opt_val );
 					}
 
@@ -641,6 +680,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'curl: fetching ' . $url_nofrag );
 			}
 
@@ -653,17 +693,22 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			curl_close( $ch );
 
 			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'curl: execution time = ' . $mtime_total );
+
 				$this->p->debug->log( 'curl: http return code = ' . $http_code );
+
 				$this->p->debug->log( 'curl: ssl verify result = ' . $ssl_verify );
 			}
 
-			if ( 200 === $http_code ) {
+			if ( 200 === $http_code ) {	// HTTP 200 OK
 
 				$this->url_get_mtimes[ $url ] = $mtime_total;
 
 				if ( empty( $cache_data ) ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'cache data returned is empty' );
 					}
 
@@ -672,6 +717,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					if ( $this->save_cache_data( $cache_salt, $cache_data, $cache_type, $exp_secs, $cache_ext ) ) {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'cache data sucessfully saved' );
 						}
 					}
@@ -705,6 +751,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				}
 
 			} else {
+
 				$this->add_ignored_url( $url_nofrag, $http_code );
 			}
 
@@ -721,10 +768,12 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			$cache_data = false;
 
 			if ( false === $exp_secs ) {
+
 				return $cache_data;
 			}
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( $cache_type . ' cache salt ' . $cache_salt );
 			}
 
@@ -755,12 +804,14 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					if ( ! file_exists( $cache_file ) ) {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'cache file ' . $cache_file . ' does not exist' );
 						}
 
 					} elseif ( ! is_readable( $cache_file ) ) {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'cache file ' . $cache_file . ' is not readable' );
 						}
 
@@ -774,12 +825,14 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					} elseif ( filemtime( $cache_file ) < time() - $file_exp_secs ) {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( $cache_file . ' is expired' );
 						}
 
 					} elseif ( ! $fh = @fopen( $cache_file, 'rb' ) ) {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'failed to open the cache file ' . $cache_file . ' for reading' );
 						}
 
@@ -802,6 +855,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				default:
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'unknown cache type: ' . $cache_type );
 					}
 
@@ -809,6 +863,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 
 			if ( $this->p->debug->enabled && false !== $cache_data ) {
+
 				$this->p->debug->log( 'cache data retrieved from ' . $cache_type );
 			}
 
@@ -832,6 +887,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			$obj_exp_secs = null === $exp_secs ? $this->default_object_cache_exp : $exp_secs;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( $cache_type . ' cache salt ' . $cache_salt );
 			}
 
@@ -845,6 +901,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					wp_cache_set( $cache_id, $cache_data, __CLASS__, $obj_exp_secs );
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'cache data saved to ' . $cache_type . ' ' .
 							$cache_id . ' (' . $obj_exp_secs . ' seconds)' );
 					}
@@ -858,6 +915,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					set_transient( $cache_id, $cache_data, $obj_exp_secs );
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'cache data saved to ' . $cache_type . ' ' .
 							$cache_id . ' (' . $obj_exp_secs . ' seconds)' );
 					}
@@ -872,12 +930,14 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					$cache_file = $this->base_dir . $file_name;
 
 					if ( ! is_dir( $this->base_dir ) ) {
+
 						@mkdir( $this->base_dir );
 					}
 
 					if ( ! is_dir( $this->base_dir ) ) {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'failed to create the ' . $this->base_dir . ' cache folder.' );
 						}
 
@@ -891,6 +951,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					} elseif ( ! is_writable( $this->base_dir ) ) {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'cache folder ' . $this->base_dir . ' is not writable' );
 						}
 
@@ -904,6 +965,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					} elseif ( ! $fh = @fopen( $cache_file, 'wb' ) ) {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'failed to open the cache file ' . $cache_file . ' for writing' );
 						}
 
@@ -917,6 +979,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					} elseif ( fwrite( $fh, $cache_data ) ) {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'data saved to cache file ' . $cache_file );
 						}
 
@@ -931,6 +994,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						@unlink( $cache_file );	// Just in case.
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'failed writing data to cache file ' . $cache_file );
 						}
 
@@ -947,6 +1011,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				default:
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'unknown cache type: ' . $cache_type );
 					}
 

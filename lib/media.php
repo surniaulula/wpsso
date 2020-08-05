@@ -1898,10 +1898,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$img_label  = $img_mixed;
 
 			if ( 0 !== strpos( $size_name, $this->p->lca . '-' ) ) {	// Only check our own sizes.
+
 				return true;
 			}
 
 			if ( null === $media_lib ) {	// Default to the WordPress Media Library.
+
 				$media_lib = __( 'Media Library', 'wpsso' );
 			}
 

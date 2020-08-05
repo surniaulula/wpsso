@@ -118,11 +118,11 @@ if ( ! class_exists( 'WpssoSubmenuImageSizes' ) && class_exists( 'WpssoAdmin' ) 
 					$this->form->get_th_html( _x( 'Pinterest Pin It', 'option label', 'wpsso' ), '', 'p_img_size' ) . 
 					'<td>' . $this->form->get_input_image_dimensions( 'p_img', $p_img_disabled ) . $p_img_msg . '</td>';
 
-					$table_rows[ 'schema_00_img_size' ] = '' .		// Use a key name that sorts first.
+					$table_rows[ 'schema_00_img_size' ] = '' .		// Use an array key that sorts first.
 					$this->form->get_th_html( _x( 'Schema', 'option label', 'wpsso' ), '', 'schema_img_size' ) . 
 					'<td>' . $this->form->get_input_image_dimensions( 'schema_img' ) . '</td>';
 
-					$table_rows[ 'schema_article_00_img_size' ] = '' .	// Use a key name that sorts first.
+					$table_rows[ 'schema_article_00_img_size' ] = '' .	// Use an array key that sorts first.
 					$this->form->get_th_html( _x( 'Schema Article', 'option label', 'wpsso' ), '', 'schema_article_img_size' ) . 
 					'<td>' . $this->form->get_input_image_dimensions( 'schema_article_img' ) . '</td>';
 
@@ -142,7 +142,7 @@ if ( ! class_exists( 'WpssoSubmenuImageSizes' ) && class_exists( 'WpssoAdmin' ) 
 					$this->form->get_th_html( _x( 'Schema Thumbnail Image', 'option label', 'wpsso' ), '', 'thumb_img_size' ) . 
 					'<td>' . $this->form->get_input_image_dimensions( 'thumb_img' ) . '</td>';
 
-					$table_rows[ 'tc_00_sum_img_size' ] = '' .	// Use a key name that sorts first.
+					$table_rows[ 'tc_00_sum_img_size' ] = '' .	// Use an array key that sorts first.
 					$this->form->get_th_html( _x( 'Twitter Summary Card', 'option label', 'wpsso' ), '', 'tc_sum_img_size' ) . 
 					'<td>' . $this->form->get_input_image_dimensions( 'tc_sum_img' ) . '</td>';
 

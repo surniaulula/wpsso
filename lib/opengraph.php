@@ -1655,7 +1655,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'og:type is empty and required for sanitation' );
+						$this->p->debug->log( 'exiting early: og:type is empty and required for sanitation' );
 					}
 
 					return $mt_og;
