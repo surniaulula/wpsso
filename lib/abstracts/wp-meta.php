@@ -1586,6 +1586,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		/**
 		 * WpssoUser class specific methods.
+		 *
+		 * Called by WpssoOpenGraph->get_array() for a single post author and (possibly) several coauthors.
 		 */
 		public function get_authors_websites( $user_ids, $field_id = 'url' ) {
 
@@ -1599,17 +1601,25 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		/**
 		 * Since WPSSO Core v7.6.0.
+		 *
+		 * Used by WpssoFaqShortcodeQuestion->do_shortcode().
 		 */
 		public function add_attached( $obj_id, $attach_type, $attach_id ) {
 
 			return $this->must_be_extended( __METHOD__, $ret_val = false );	// No addition.
 		}
 
+		/**
+		 * Since WPSSO Core v7.6.0.
+		 */
 		public function delete_attached( $obj_id, $attach_type, $attach_id ) {
 
 			return $this->must_be_extended( __METHOD__, $ret_val = false );	// No delete.
 		}
 
+		/**
+		 * Since WPSSO Core v7.6.0.
+		 */
 		public function get_attached( $obj_id, $attach_type ) {
 
 			return $this->must_be_extended( __METHOD__, $ret_val = array() );	// No values.

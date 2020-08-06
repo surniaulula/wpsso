@@ -2880,15 +2880,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			'</td>';
 
 			$table_rows[ 'schema_1_1_img_size' ] = $form->get_tr_hide_img_dim( 'basic', 'schema_1_1_img' ) .
-			$form->get_th_html( _x( 'Schema 1:1 Image Size', 'option label', 'wpsso' ), '', 'schema_1_1_img_size' ) . 
+			$form->get_th_html( _x( 'Schema 1:1 (Google) Image Size', 'option label', 'wpsso' ), '', 'schema_1_1_img_size' ) . 
 			'<td>' . $form->get_input_image_dimensions( 'schema_1_1_img' ) . $json_req_msg . '</td>';
 
 			$table_rows[ 'schema_4_3_img_size' ] = $form->get_tr_hide_img_dim( 'basic', 'schema_4_3_img' ) .
-			$form->get_th_html( _x( 'Schema 4:3 Image Size', 'option label', 'wpsso' ), '', 'schema_4_3_img_size' ) . 
+			$form->get_th_html( _x( 'Schema 4:3 (Google) Image Size', 'option label', 'wpsso' ), '', 'schema_4_3_img_size' ) . 
 			'<td>' . $form->get_input_image_dimensions( 'schema_4_3_img' ) . $json_req_msg . '</td>';
 
 			$table_rows[ 'schema_16_9_img_size' ] = $form->get_tr_hide_img_dim( 'basic', 'schema_16_9_img' ) .
-			$form->get_th_html( _x( 'Schema 16:9 Image Size', 'option label', 'wpsso' ), '', 'schema_16_9_img_size' ) . 
+			$form->get_th_html( _x( 'Schema 16:9 (Google) Image Size', 'option label', 'wpsso' ), '', 'schema_16_9_img_size' ) . 
 			'<td>' . $form->get_input_image_dimensions( 'schema_16_9_img' ) . $json_req_msg . '</td>';
 
 			$table_rows[ 'thumb_img_size' ] = $form->get_tr_hide_img_dim( 'basic', 'thumb_img' ) .

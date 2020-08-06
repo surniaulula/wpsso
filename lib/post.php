@@ -213,6 +213,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->mark();
 			}
 
+			static $local_cache = array();
+
+			if ( isset( $local_cache[ $mod_id ] ) ) {
+
+				return $local_cache[ $mod_id ];
+			}
+
 			$mod = parent::$mod_defaults;
 
 			/**
@@ -259,7 +266,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Hooked by the 'coauthors' pro module.
 			 */
-			return apply_filters( $this->p->lca . '_get_post_mod', $mod, $mod_id );
+			return $local_cache[ $mod_id ] = apply_filters( $this->p->lca . '_get_post_mod', $mod, $mod_id );
 		}
 
 		/**
@@ -2251,6 +2258,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		/**
 		 * Since WPSSO Core v7.6.0.
+		 *
+		 * Used by WpssoFaqShortcodeQuestion->do_shortcode().
 		 */
 		public function add_attached( $post_id, $attach_type, $attach_id ) {
 
@@ -2271,6 +2280,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return false;	// No addition.
 		}
 
+		/**
+		 * Since WPSSO Core v7.6.0.
+		 */
 		public function delete_attached( $post_id, $attach_type, $attach_id ) {
 
 			$opts = get_post_meta( $post_id, WPSSO_META_ATTACHED_NAME, $single = true );
@@ -2290,6 +2302,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return false;	// No delete.
 		}
 
+		/**
+		 * Since WPSSO Core v7.6.0.
+		 *
+		 * Used by WpssoPost->clear_cache().
+		 */
 		public function get_attached( $post_id, $attach_type ) {
 
 			$opts = get_post_meta( $post_id, WPSSO_META_ATTACHED_NAME, $single = true );

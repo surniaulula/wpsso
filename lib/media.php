@@ -2078,7 +2078,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				case $this->p->lca . '-opengraph':
 
-					$markup_name = _x( 'Facebook Open Graph', 'option label', 'wpsso' );
+					$markup_name = _x( 'Open Graph (Facebook and oEmbed)', 'option label', 'wpsso' );
 					$min_width   = $cf_min[ 'og_img_width' ];			// Default is 200.
 					$min_height  = $cf_min[ 'og_img_height' ];			// Default is 200.
 					$max_ratio   = $cf_max[ 'og_img_ratio' ];			// Default is 3.000.
@@ -2087,7 +2087,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				case $this->p->lca . '-schema-1-1':
 
-					$markup_name = _x( 'Google Schema 1:1', 'option label', 'wpsso' );
+					$markup_name = _x( 'Schema 1:1 (Google)', 'option label', 'wpsso' );
 					$min_width   = $cf_min[ 'schema_1_1_img_width' ];	// Default is 1200.
 					$min_height  = $cf_min[ 'schema_1_1_img_height' ];	// Default is 1200.
 					$max_ratio   = 0;
@@ -2096,7 +2096,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				case $this->p->lca . '-schema-4-3':
 
-					$markup_name = _x( 'Google Schema 4:3', 'option label', 'wpsso' );
+					$markup_name = _x( 'Schema 4:3 (Google)', 'option label', 'wpsso' );
 					$min_width   = $cf_min[ 'schema_4_3_img_width' ];	// Default is 1200.
 					$min_height  = $cf_min[ 'schema_4_3_img_height' ];	// Default is 900.
 					$max_ratio   = 0;
@@ -2105,7 +2105,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				case $this->p->lca . '-schema-16-9':
 
-					$markup_name = _x( 'Google Schema 16:9', 'option label', 'wpsso' );
+					$markup_name = _x( 'Schema 16:9 (Google)', 'option label', 'wpsso' );
 					$min_width   = $cf_min[ 'schema_16_9_img_width' ];	// Default is 1200.
 					$min_height  = $cf_min[ 'schema_16_9_img_height' ];	// Default is 675.
 					$max_ratio   = 0;

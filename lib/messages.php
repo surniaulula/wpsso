@@ -1409,9 +1409,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-schema_1_1_img_size':	// Schema Article AMP 1:1 Img Size.
-						case 'tooltip-schema_4_3_img_size':	// Schema Article AMP 4:3 Img Size.
-						case 'tooltip-schema_16_9_img_size':	// Schema Article AMP 16:9 Img Size.
+						case 'tooltip-schema_1_1_img_size':	// Schema 1:1 Image Size.
+						case 'tooltip-schema_4_3_img_size':	// Schema 4:3 Image Size.
+						case 'tooltip-schema_16_9_img_size':	// Schema 16:9 Image Size.
 
 							if ( preg_match( '/^tooltip-(schema_([0-9]+)_([0-9]+))_img_size$/', $msg_key, $matches ) ) {
 

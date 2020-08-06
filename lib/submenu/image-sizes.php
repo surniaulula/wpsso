@@ -115,15 +115,15 @@ if ( ! class_exists( 'WpssoSubmenuImageSizes' ) && class_exists( 'WpssoAdmin' ) 
 					'<td>' . $this->form->get_input_image_dimensions( 'p_img', $p_img_disabled ) . $p_img_msg . '</td>';
 
 					$table_rows[ 'schema_01_01_img_size' ] = '' .
-					$this->form->get_th_html( _x( 'Schema Article AMP 1:1', 'option label', 'wpsso' ), '', 'schema_1_1_img_size' ) . 
+					$this->form->get_th_html( _x( 'Schema 1:1 (Google)', 'option label', 'wpsso' ), '', 'schema_1_1_img_size' ) . 
 					'<td>' . $this->form->get_input_image_dimensions( 'schema_1_1_img' ) . '</td>';
 
 					$table_rows[ 'schema_04_03_img_size' ] = '' .
-					$this->form->get_th_html( _x( 'Schema Article AMP 4:3', 'option label', 'wpsso' ), '', 'schema_4_3_img_size' ) . 
+					$this->form->get_th_html( _x( 'Schema 4:3 (Google)', 'option label', 'wpsso' ), '', 'schema_4_3_img_size' ) . 
 					'<td>' . $this->form->get_input_image_dimensions( 'schema_4_3_img' ) . '</td>';
 
 					$table_rows[ 'schema_16_09_img_size' ] = '' .
-					$this->form->get_th_html( _x( 'Schema Article AMP 16:9', 'option label', 'wpsso' ), '', 'schema_16_9_img_size' ) . 
+					$this->form->get_th_html( _x( 'Schema 16:9 (Google)', 'option label', 'wpsso' ), '', 'schema_16_9_img_size' ) . 
 					'<td>' . $this->form->get_input_image_dimensions( 'schema_16_9_img' ) . '</td>';
 
 					$table_rows[ 'schema_thumb_img_size' ] = '' .
