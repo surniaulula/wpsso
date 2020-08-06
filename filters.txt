@@ -173,8 +173,6 @@
 
 'wpsso_og_type' ( $og_type, $mod, $is_custom )
 
-'wpsso_opengraph_img_size_limits' ( array( $min_width, $min_height, $max_ratio ) )
-
 'wpsso_option_type' ( false, $base_key, $network, $mod )
 
 'wpsso_plugin_image_sizes' ( $sizes )
@@ -224,10 +222,6 @@
 'wpsso_save_term_options' ( $opts, $term_id, $term_tax_id, $mod )
 
 'wpsso_save_user_options' ( $opts, $term_id, false, $mod )
-
-'wpsso_schema_article_img_size_limits' ( array( $min_width, $min_height, $max_ratio ) )
-
-'wpsso_schema_img_size_limits' ( array( $min_width, $min_height, $max_ratio ) )
 
 'wpsso_schema_meta_itemprop' ( $mt_schema, $mod, $mt_og, $page_type_id )
 

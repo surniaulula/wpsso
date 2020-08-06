@@ -6,10 +6,12 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+
 	die( 'Do. Or do not. There is no try.' );
 }
 
@@ -24,6 +26,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -241,14 +244,14 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 		public function filter_metabox_sso_media_rows( $table_rows, $form, $head_info, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
 			$max_media_items = $this->p->cf[ 'form' ][ 'max_media_items' ];
-
-			$size_name = $this->p->lca . '-opengraph';
-
-			$media_info = $this->p->og->get_media_info( $size_name, array( 'pid', 'img_url' ), $mod, $md_pre = 'none', $mt_pre = 'og' );
+			$size_name       = $this->p->lca . '-opengraph';
+			$media_request   = array( 'pid', 'img_url' );
+			$media_info      = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'none', $mt_pre = 'og' );
 
 			/**
 			 * Metabox form rows.
@@ -308,6 +311,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 		public function filter_metabox_sso_preview_rows( $table_rows, $form, $head_info, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -321,6 +325,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			if ( $mod[ 'is_post' ] ) {
 
 				$shortlink_url = SucomUtilWP::wp_get_shortlink( $mod[ 'id' ], $context = 'post' );
+
 			} else {
 
 				$shortlink_url = apply_filters( $this->p->lca . '_get_short_url', $sharing_url,
@@ -340,14 +345,18 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					$og_prev_img_html .= '<div class="preview_img" style=" background-size:' ;
 
 					if ( $is_sufficient ) {
+
 						$og_prev_img_html .= 'cover';
+
 					} else {
+
 						$og_prev_img_html .= $head_info[ 'og:image:width' ] . 'px ' . $head_info[ 'og:image:height' ] . 'px';
 					}
 
 					$og_prev_img_html .= '; background-image:url(' . $media_url . ');" />';
 
 					if ( ! $is_sufficient ) {
+
 						$og_prev_img_html .= '<p>' . sprintf( _x( 'Image Size Smaller<br/>than Suggested Minimum<br/>of %s',
 							'preview image error', 'wpsso' ), $og_prev_width . 'x' . $og_prev_height . 'px' ) . '</p>';
 					}
@@ -416,6 +425,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 		public function filter_metabox_sso_oembed_rows( $table_rows, $form, $head_info, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -474,6 +484,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 		public function filter_metabox_sso_head_rows( $table_rows, $form, $head_info, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -491,14 +502,18 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 				if ( 1 === count( $parts ) ) {
 
 					if ( 0 === strpos( $parts[0], '<script ' ) ) {
+
 						$script_class = 'script';
+
 					} elseif ( 0 === strpos( $parts[0], '<noscript ' ) ) {
+
 						$script_class = 'noscript';
 					}
 
 					$table_rows[] = '<td colspan="5" class="html ' . $script_class . '"><pre>' . esc_html( $parts[0] ) . '</pre></td>';
 
 					if ( 'script' === $script_class || 0 === strpos( $parts[0], '</noscript>' ) ) {
+
 						$script_class = '';
 					}
 
@@ -510,6 +525,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					if ( $parts[5] === WPSSO_UNDEF || $parts[5] === (string) WPSSO_UNDEF ) {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( $parts[3] . ' value is ' . WPSSO_UNDEF . ' (skipped)' );
 						}
 
@@ -517,8 +533,11 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					}
 
 					if ( $parts[1] === 'meta' && $parts[2] === 'itemprop' && strpos( $parts[3], '.' ) !== 0 ) {
+
 						$match_name = preg_replace( '/^.*\./', '', $parts[3] );
+
 					} else {
+
 						$match_name = $parts[3];
 					}
 
@@ -533,8 +552,11 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					 * then mark the meta tag as disabled and hide it in basic view.
 					 */
 					if ( empty( $parts[ 0 ] ) ) {
+
 						$tr_class .= ' is_disabled hide_row_in_basic';
+
 					} else {
+
 						$tr_class .= ' is_enabled';
 					}
 
@@ -542,6 +564,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					 * The meta tag is enabled, but its value is empty (and not 0).
 					 */
 					if ( $opt_enabled && isset( $parts[ 5 ] ) && empty( $parts[ 5 ] ) && ! is_numeric( $parts[ 5 ] ) ) {
+
 						$tr_class .= ' is_empty';
 					}
 
@@ -566,6 +589,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 		public function filter_metabox_sso_validate_rows( $table_rows, $form, $head_info, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 

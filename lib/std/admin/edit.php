@@ -6,6 +6,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
@@ -20,6 +21,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -32,6 +34,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 		public function filter_metabox_sso_edit_rows( $table_rows, $form, $head_info, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -190,6 +193,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 		public function filter_metabox_sso_media_rows( $table_rows, $form, $head_info, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -264,9 +268,9 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			 */
 			$p_img_disabled = empty( $this->p->options[ 'p_add_img_html' ] ) ? true : false;
 			$p_img_msg      = $p_img_disabled ? $this->p->msgs->p_img_disabled() : '';
-
-			$media_info = $this->p->og->get_media_info( $this->p->lca . '-pinterest',
-				array( 'pid', 'img_url' ), $mod, $md_pre = array( 'schema', 'og' ), $mt_pre = 'og' );
+			$size_name      = $this->p->lca . '-pinterest';
+			$media_request  = array( 'pid', 'img_url' );
+			$media_info = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = array( 'schema', 'og' ), $mt_pre = 'og' );
 
 			$row_class = ! $p_img_disabled && $form->in_options( '/^p_img_/', $is_preg = true ) ? '' : 'hide_in_basic';
 
@@ -307,8 +311,8 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			 */
 			if ( ! empty( $size_name ) ) {
 
-				$media_info = $this->p->og->get_media_info( $size_name,
-					array( 'pid', 'img_url' ), $mod, $md_pre = 'og', $mt_pre = 'og' );
+				$media_request = array( 'pid', 'img_url' );
+				$media_info    = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og', $mt_pre = 'og' );
 	
 				/**
 				 * Hide unless a custom twitter card image exists.
@@ -354,6 +358,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			);
 
 			if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
+
 				$form_rows[ 'wpssojson_addon_msg' ] = array(
 					'tr_class'  => $row_class,
 					'table_row' => '<td colspan="2">' . $this->p->msgs->more_schema_options() . '</td>',

@@ -140,14 +140,13 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			if ( ! empty( $this->ignored_urls[ 'ignore_urls' ][ $url ] ) ) {
 
 				$time_diff = time() - $this->ignored_urls[ 'ignore_urls' ][ $url ];
-
 				$time_left = $this->ignored_urls[ 'ignore_secs' ] - $time_diff;
 
 				if ( $time_left > 0 ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'requests to cache ' . $url . ' ignored for another ' . $time_left . ' second(s)' );
+						$this->p->debug->log( 'requests to cache ' . $url . ' ignored for the next ' . $time_left . ' second(s)' );
 					}
 
 					return true;
@@ -216,7 +215,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					}
 				}
 
-				$errors[] = sprintf( __( 'Requests to cache this URL will be ignored for %d second(s).',
+				$errors[] = sprintf( __( 'Additional requests to retrieve and cache this URL will be silently ignored for the next %d second(s).',
 					$this->text_domain ), $this->ignored_urls[ 'ignore_secs' ] );
 
 				/**
@@ -235,9 +234,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		public function clear( $url, $cache_ext = '' ) {
 
-			$url_nofrag = preg_replace( '/#.*$/', '', $url );	// Remove the fragment.
-			$url_path   = parse_url( $url_nofrag, PHP_URL_PATH );
-
+			$url_nofrag    = preg_replace( '/#.*$/', '', $url );	// Remove the fragment.
+			$url_path      = parse_url( $url_nofrag, PHP_URL_PATH );
 			$cache_md5_pre = $this->lca . ( $cache_ext ? $cache_ext : '_' );
 			$cache_salt    = __CLASS__ . '::get(url:' . $url_nofrag . ')';
 			$cache_id      = $cache_md5_pre . md5( $cache_salt );
@@ -312,7 +310,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		 *
 		 * If $exp_secs is false, then get but do not save the data.
 		 */
-		public function get_image_size( $image_url, $exp_secs = 300, array $curl_opts = array(), $error_handler = null ) {
+		public function get_image_size( $image_url, $exp_secs = 300, $curl_opts = array(), $error_handler = null ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -399,6 +397,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					}
 
 					$error_pre = sprintf( '%s error:', __METHOD__ );
+
 					$error_msg = sprintf( __( 'Error removing cache file %s.', $this->text_domain ), $cache_file );
 
 					$this->p->notice->err( $error_msg );
@@ -438,8 +437,11 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		 * If $exp_secs is null, then use the default expiration time.
 		 *
 		 * If $exp_secs is false, then get but do not save the data.
+		 *
+		 * If $http_success is empty, save the data regardless of the HTTP return code.
 		 */
-		public function get( $url, $format = 'url', $cache_type = 'file', $exp_secs = null, $cache_ext = '', array $curl_opts = array() ) {
+		public function get( $url, $format = 'url', $cache_type = 'file', $exp_secs = null, $cache_ext = '', 
+			array $curl_opts = array(), array $http_success = array( 200 ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -458,6 +460,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				}
 
 				$error_pre = sprintf( '%s error:', __METHOD__ );
+
 				$error_msg = __( 'PHP cURL library missing &mdash; contact your hosting provider to have the cURL library installed.', $this->text_domain );
 
 				$this->p->notice->err( $error_msg );
@@ -567,6 +570,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 							}
 
 							$error_pre = sprintf( '%s error:', __METHOD__ );
+
 							$error_msg = sprintf( __( 'Error removing cache file %s.', $this->text_domain ), $cache_file );
 
 							$this->p->notice->err( $error_msg );
@@ -701,7 +705,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$this->p->debug->log( 'curl: ssl verify result = ' . $ssl_verify );
 			}
 
-			if ( 200 === $http_code ) {	// HTTP 200 OK
+			if ( empty( $http_success ) || in_array( $http_code, $http_success ) ) {
 
 				$this->url_get_mtimes[ $url ] = $mtime_total;
 
@@ -796,9 +800,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				case 'file':
 
-					$file_name  = md5( $cache_salt ) . $cache_ext;
-					$cache_file = $this->base_dir . $file_name;
-
+					$file_name     = md5( $cache_salt ) . $cache_ext;
+					$cache_file    = $this->base_dir . $file_name;
 					$file_exp_secs = null === $exp_secs ? $this->default_file_cache_exp : $exp_secs;
 
 					if ( ! file_exists( $cache_file ) ) {
@@ -816,6 +819,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						}
 
 						$error_pre = sprintf( '%s error:', __METHOD__ );
+
 						$error_msg = sprintf( __( 'Cache file %s is not readable.', $this->text_domain ), $cache_file );
 
 						$this->p->notice->err( $error_msg );
@@ -837,6 +841,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						}
 
 						$error_pre = sprintf( '%s error:', __METHOD__ );
+
 						$error_msg = sprintf( __( 'Failed to open the cache file %s for reading.', $this->text_domain ), $cache_file );
 
 						$this->p->notice->err( $error_msg );
@@ -942,6 +947,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						}
 
 						$error_pre = sprintf( '%s error:', __METHOD__ );
+
 						$error_msg = sprintf( __( 'Failed to create the %s cache folder.', $this->text_domain ), $this->base_dir );
 
 						$this->p->notice->err( $error_msg );
@@ -956,6 +962,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						}
 
 						$error_pre = sprintf( '%s error:', __METHOD__ );
+
 						$error_msg = sprintf( __( 'Cache folder %s is not writable.', $this->text_domain ), $this->base_dir );
 
 						$this->p->notice->err( $error_msg );
@@ -970,6 +977,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						}
 
 						$error_pre = sprintf( '%s error:', __METHOD__ );
+
 						$error_msg = sprintf( __( 'Failed to open the cache file %s for writing.', $this->text_domain ), $cache_file );
 
 						$this->p->notice->err( $error_msg );
@@ -999,6 +1007,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						}
 
 						$error_pre = sprintf( '%s error:', __METHOD__ );
+
 						$error_msg = sprintf( __( 'Failed writing data to cache file %s.', $this->text_domain ), $cache_file );
 
 						$this->p->notice->err( $error_msg );

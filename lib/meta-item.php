@@ -175,6 +175,7 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 			if ( ! apply_filters( $this->p->lca . '_add_schema_meta_array', true ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'exiting early: schema meta array disabled' );
 				}
 
@@ -192,6 +193,9 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 				'name' => 'og:title',
 			) );
 
+			/**
+			 * Description.
+			 */
 			if ( ! empty( $this->p->options[ 'add_meta_itemprop_description' ] ) ) {
 
 				$mt_item[ 'description' ] = $this->p->page->get_description( $this->p->options[ 'schema_desc_max_len' ],
@@ -199,63 +203,45 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 						$md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
 			}
 
-			switch ( $page_type_id ) {
+			/**
+			 * Thumbnail URL.
+			 */
+			if ( empty( $this->p->options[ 'add_link_itemprop_thumbnailurl' ] ) ) {
 
-				case 'blog.posting':
+				if ( $this->p->debug->enabled ) {
 
-					/**
-					 * BlogPosting is a sub-type of Article.
-					 */
-					$size_name = $this->p->lca . '-schema-article';
+					$this->p->debug->log( 'skipping thumbnail: link itemprop thumbnail is disabled' );
+				}
 
-					// No break - continue to add dates and thumbnail.
+			} else {
 
-				case 'webpage':
+				$mt_item[ 'thumbnailurl' ] = $this->p->og->get_thumbnail_url( $this->p->lca . '-thumbnail', $mod, $md_pre = 'schema' );
 
-					self::add_mt_item_from_assoc( $mt_item, $mt_og, array(
-						'datePublished' => 'article:published_time',
-						'dateModified'  => 'article:modified_time',
-					) );
+				if ( empty( $mt_item[ 'thumbnailurl' ] ) ) {
 
-					if ( empty( $this->p->options[ 'add_link_itemprop_thumbnailurl' ] ) ) {
-
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'skipping thumbnail: link itemprop thumbnail is disabled' );
-						}
-
-					} else {
-
-						$mt_item[ 'thumbnailurl' ] = $this->p->og->get_thumbnail_url( $this->p->lca . '-thumbnail', $mod, $md_pre = 'schema' );
-
-						if ( empty( $mt_item[ 'thumbnailurl' ] ) ) {
-							unset( $mt_item[ 'thumbnailurl' ] );
-						}
-					}
-
-					break;
+					unset( $mt_item[ 'thumbnailurl' ] );
+				}
 			}
 
 			/**
-			 * Add single image meta tags (no width or height).
+			 * Image URLs.
 			 */
 			if ( empty( $this->p->options[ 'add_link_itemprop_image' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'skipping images: meta itemprop image is disabled' );
 				}
 
 			} else {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'getting images for ' . $page_type_url );
 				}
 
 				$og_images = $this->p->og->get_all_images( $max_nums[ 'schema_img_max' ], $size_name, $mod, true, $md_pre = 'schema' );
 
-				/**
-				 * WpssoHead::add_mt_singles() will make sure this URL is added as a link itemprop tag (and not a
-				 * meta itemprop tag).
-				 */
 				foreach ( $og_images as $og_single_image ) {
 
 					$mt_item[ 'image' ][] = SucomUtil::get_mt_media_url( $og_single_image );

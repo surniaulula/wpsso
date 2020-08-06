@@ -606,8 +606,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					} else {
 
 						/**
-						 * The following get_all_images() method call will include any video preview
-						 * images, so remove them here to avoid duplicate image meta tags.
+						 * get_all_images() will include video preview images, so remove them to avoid
+						 * duplicate image meta tags.
 						 */
 						foreach ( $mt_og[ 'og:video' ] as &$og_single_video ) {
 
@@ -1103,58 +1103,186 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $og_extend;
 		}
 
-		public function get_thumbnail_url( $size_name = 'thumbnail', array $mod, $md_pre = 'og' ) {
+		public function get_thumbnail_url( $size_name, array $mod, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			$og_images = $this->get_all_images( $num = 1, $size_name, $mod, $check_dupes = true, $md_pre );
+			$og_ret = $this->get_all_images( $num = 1, $size_name, $mod, $check_dupes = true, $md_pre );
 
-			return SucomUtil::get_mt_media_url( $og_images, $mt_media_pre = 'og:image' );
+			return SucomUtil::get_mt_media_url( $og_ret, $mt_media_pre = 'og:image' );
 		}
 
 		/**
-		 * Note that the size_name is used to check for duplicates.
+		 * $size_names can be a string or an array since 2020/08/05.
+		 *
+		 * Note that each size name is used to check for duplicates.
 		 */
-		public function get_all_images( $num = 0, $size_name = 'thumbnail', array $mod, $check_dupes = true, $md_pre = 'og' ) {
+		public function get_all_images( $num, $size_names, array $mod, $check_dupes = true, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark( 'get all open graph images' );	// Begin timer.
+				$this->p->debug->mark( 'get all images' );	// Begin timer.
 
 				$this->p->debug->log_args( array(
 					'num'         => $num,
-					'size_name'   => $size_name,
+					'size_names'  => $size_names,
 					'mod'         => $mod,
 					'check_dupes' => $check_dupes,
 					'md_pre'      => $md_pre,
 				) );
 			}
 
-			$og_ret   = array();
-			$num_diff = SucomUtil::count_diff( $og_ret, $num );
+			$og_ret = array();
 
-			$this->p->util->clear_uniq_urls( $size_name );	// Clear cache for $size_name context.
+			if ( empty( $size_names ) ) {
 
-			$preview_images = $this->get_all_previews( $num_diff, $mod );
+				$size_names = array( $this->p->lca . '-opengraph' );
 
-			if ( ! empty( $preview_images ) ) {
+			} elseif ( is_string( $size_names ) ) {
+
+				switch ( $size_names ) {
+
+					case 'opengraph':	// Shortcut name.
+					case 'pinterest':	// Shortcut name.
+					case 'thumbnail':	// Shortcut name.
+
+						$size_names = array( $this->p->lca . '-' . $size_names );
+
+						break;
+
+					case 'schema':					// Shortcut name.
+					case $this->p->lca . '-schema':			// Deprecated on 2020/08/05.
+					case $this->p->lca . '-schema-article':		// Deprecated on 2020/08/05.
+					case $this->p->lca . '-schema-article-1-1':	// Deprecated on 2020/08/05.
+					case $this->p->lca . '-schema-article-4-3':	// Deprecated on 2020/08/05.
+					case $this->p->lca . '-schema-article-16-9':	// Deprecated on 2020/08/05.
+
+						$size_names = array(
+							$this->p->lca . '-schema-1-1',
+							$this->p->lca . '-schema-4-3',
+							$this->p->lca . '-schema-16-9',
+						);
+
+						break;
+
+					default:
+
+						$size_names = array( $size_names );
+
+						break;
+				}
+			}
+
+			if ( is_array( $size_names ) ) {	// Avoid boolean and integer values.
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'merging video preview image' );
+					$this->p->debug->log( 'getting all video preview images' );
+				}
+	
+				$preview_images = $this->get_all_previews( $num, $mod );
+	
+				if ( empty( $preview_images ) ) {
+
+					if ( $this->p->debug->enabled ) {
+	
+						$this->p->debug->log( 'no video preview images' );
+					}
+	
+				} else {
+	
+					if ( $this->p->debug->enabled ) {
+	
+						$this->p->debug->log( 'merging video preview images' );
+					}
+	
+					$og_ret = array_merge( $og_ret, $preview_images );
 				}
 
-				$og_ret = array_merge( $og_ret, $preview_images );
+				$num_diff = SucomUtil::count_diff( $og_ret, $num );
+
+				if ( $num_diff >= 1 ) {	// Just in case.
+
+					foreach ( $size_names as $size_name ) {
+
+						$og_images = $this->get_size_name_images( $num_diff, $size_name, $mod, $check_dupes, $md_pre );
+
+						if ( empty( $og_images ) ) {
+
+							if ( $this->p->debug->enabled ) {
+	
+								$this->p->debug->log( 'no images for size name ' . $size_name );
+							}
+	
+						} else {
+					
+							if ( $this->p->debug->enabled ) {
+	
+								$this->p->debug->log( 'merging ' . count( $og_images ) . ' images for size name ' . $size_name );
+							}
+	
+							$og_ret = array_merge( $og_ret, $og_images );
+						}
+					}
+				}
 			}
+
+			return $og_ret;
+		}
+
+		/**
+		 * $size_name must be a string.
+		 */
+		public function get_size_name_images( $num, $size_name, array $mod, $check_dupes = true, $md_pre = 'og' ) {
+
+			if ( ! is_string( $size_name ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: $size_name argument must be a string' );
+				}
+
+				return array();
+
+			} elseif ( $num < 1 ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: $num argument must be 1 or more' );
+				}
+
+				return array();
+			}
+
+			$size_info = $this->p->util->get_size_info( $size_name );
+
+			if ( empty( $size_info[ 'width' ] ) && empty( $size_info[ 'height' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: missing size information for ' . $size_name );
+				}
+
+				return array();
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'getting ' . $num . ' images for size name ' . $size_name );
+			}
+
+			$og_ret = array();
+
+			$this->p->util->clear_uniq_urls( $size_name );	// Clear cache for $size_name context.
 
 			if ( $mod[ 'is_post' ] ) {
 
 				if ( $mod[ 'post_type' ] === 'attachment' && wp_attachment_is_image( $mod[ 'id' ] ) ) {
 
-					$og_single_image = $this->p->media->get_attachment_image( $num_diff, $size_name, $mod[ 'id' ], $check_dupes );
+					$og_single_image = $this->p->media->get_attachment_image( $num, $size_name, $mod[ 'id' ], $check_dupes );
 
 					if ( empty( $og_single_image ) ) {
 
@@ -1165,9 +1293,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						return $og_ret;
 
-					} else {
-						return array_merge( $og_ret, $og_single_image );
 					}
+
+					return array_merge( $og_ret, $og_single_image );
 				}
 
 				/**
@@ -1175,14 +1303,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				 *
 				 * Allow for empty post id in order to execute featured / attached image filters for modules.
 				 */
-				if ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
+				$post_images = $this->p->media->get_post_images( $num, $size_name, $mod[ 'id' ], $check_dupes, $md_pre );
 
-					$post_images = $this->p->media->get_post_images( $num_diff, $size_name, $mod[ 'id' ], $check_dupes, $md_pre );
+				if ( ! empty( $post_images ) ) {
 
-					if ( ! empty( $post_images ) ) {
-
-						$og_ret = array_merge( $og_ret, $post_images );
-					}
+					$og_ret = array_merge( $og_ret, $post_images );
 				}
 
 				/**
@@ -1195,9 +1320,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$this->p->debug->log( 'checking for NGG query variables and shortcodes' );
 					}
 
-					$num_diff = SucomUtil::count_diff( $og_ret, $num );
-
 					$ngg_obj =& $this->p->m[ 'media' ][ 'ngg' ];
+
+					$num_diff = SucomUtil::count_diff( $og_ret, $num );
 
 					$query_images = $ngg_obj->get_query_og_images( $num_diff, $size_name, $mod[ 'id' ], $check_dupes );
 
@@ -1251,7 +1376,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				 */
 				if ( ! empty( $mod[ 'obj' ] ) ) {	// Term or user.
 
-					$og_images = $mod[ 'obj' ]->get_og_images( $num_diff, $size_name, $mod[ 'id' ], $check_dupes, $md_pre );
+					$og_images = $mod[ 'obj' ]->get_og_images( $num, $size_name, $mod[ 'id' ], $check_dupes, $md_pre );
 
 					if ( ! empty( $og_images ) ) {
 
@@ -1282,8 +1407,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->log( 'returning ' . count( $og_ret ) . ' images' );
 
 				$this->p->debug->log_arr( '$og_ret', $og_ret );
-
-				$this->p->debug->mark( 'get all open graph images' );	// End timer.
 			}
 
 			return $og_ret;
@@ -1296,7 +1419,16 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		 */
 		public function get_media_info( $size_name, array $request, array $mod, $md_pre = 'og', $mt_pre = 'og' ) {
 
-			if ( $this->p->debug->enabled ) {
+			if ( ! is_string( $size_name ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: $size_name argument must be a string' );
+				}
+
+				return array();
+
+			} elseif ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
@@ -1317,24 +1449,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						 */
 						if ( null === $og_images ) {
 
-							/**
-							 * Optimize and make sure the image size exists first, just in case.
-							 */
-							$size_info = $this->p->util->get_size_info( $size_name );
-
-							if ( empty( $size_info[ 'width' ] ) && empty( $size_info[ 'height' ] ) ) {
-
-								if ( $this->p->debug->enabled ) {
-
-									$this->p->debug->log( 'missing size information for ' . $size_name );
-								}
-
-								$og_images = array();
-
-							} else {
-
-								$og_images = $this->get_all_images( $num = 1, $size_name, $mod, $check_dupes = true, $md_pre );
-							}
+							$og_images = $this->get_size_name_images( $num = 1, $size_name, $mod, $check_dupes = true, $md_pre );
 						}
 
 						break;
@@ -1346,10 +1461,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						 */
 						if ( null === $og_videos ) {
 
-							/**
-							 * $md_pre may be 'none' when getting Open Graph option defaults (and not
-							 * their custom values).
-							 */
 							$og_videos = $this->get_all_videos( 1, $mod, $check_dupes = true, $md_pre );
 						}
 

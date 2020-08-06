@@ -6,10 +6,12 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+
 	die( 'Do. Or do not. There is no try.' );
 }
 
@@ -24,6 +26,7 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -41,12 +44,14 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 						 	(int) $this->p->options[ $opt_pre . '_prio' ] : 100 ), 1 );
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'added add_og_ns_attributes filter for ' . $wp_filter_name );
 					}
 
 					break;	// Stop here.
 
 				} elseif ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'skipping add_og_ns_attributes for ' . $opt_pre . ' - filter name is empty or disabled' );
 				}
 			}
@@ -116,6 +121,7 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 					 * See https://www.php.net/manual/en/reference.pcre.pattern.modifiers.php
 					 */
 					if ( preg_match( '/^(.*)\sprefix=["\']([^"\']*)["\'](.*)$/s', $html_attr, $match ) ) {
+
 						$html_attr    = $match[1] . $match[3];	// Remove the prefix.
 					}
 				}
@@ -125,6 +131,7 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 				foreach ( $og_ns as $name => $url ) {
 
 					if ( false === strpos( $prefix_value, ' ' . $name . ': ' . $url ) ) {
+
 						$prefix_value .= ' ' . $name . ': ' . $url;
 					}
 				}
@@ -195,6 +202,9 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 
 								break;
 
+							/**
+							 * Only include a single top-level product brand.
+							 */
 							case 'product:brand':
 
 								if ( ! isset( $mt_og[ $mt_name ] ) ) {
@@ -218,9 +228,19 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 
 								if ( isset( $mt_og[ $mt_name ] ) ) {
 								
+									if ( $this->p->debug->enabled ) { 
+
+										$this->p->debug->log( 'comparing main product vs offer ' . $mt_name . ' values' );
+									}
+
 									if ( $mt_og[ $mt_name ] === $offer[ $mt_name ] ) {
 
-										unset ( $mt_og[ $mt_name ] );
+										if ( $this->p->debug->enabled ) { 
+
+											$this->p->debug->log( 'identical values detected - unsetting offer ' . $mt_name );
+										}
+
+										unset ( $mt_og[ 'product:offers' ][ $num ][ $mt_name ] );
 									}
 								}
 

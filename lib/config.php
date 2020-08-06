@@ -23,7 +23,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '7.16.0-dev.3',	// Plugin version.
-					'opt_version' => '747',		// Increment when changing default option values.
+					'opt_version' => '748',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Make sure your content looks great on social sites and search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -2597,35 +2597,29 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'head' => array(
 				'limit' => array(
-					'schema_article_1_1_img_ratio'  => 1.000,
-					'schema_article_4_3_img_ratio'  => 1.333,
-					'schema_article_16_9_img_ratio' => 1.778,
+					'schema_1_1_img_ratio'  => 1.000,
+					'schema_4_3_img_ratio'  => 1.333,
+					'schema_16_9_img_ratio' => 1.778,
 				),
 				'limit_min' => array(
-					'og_desc_len'                    => 160,
-					'og_img_width'                   => 200,	// See https://developers.facebook.com/docs/sharing/best-practices.
-					'og_img_height'                  => 200,
-					'schema_article_img_width'       => 696,	// See https://developers.google.com/search/docs/data-types/articles.
-					'schema_article_img_height'      => 279,	// Calculated from the Article minimum image width and maximum image ratio.
-					'schema_article_1_1_img_width'   => 1200,
-					'schema_article_1_1_img_height'  => 1200,
-					'schema_article_4_3_img_width'   => 1200,
-					'schema_article_4_3_img_height'  => 900,
-					'schema_article_16_9_img_width'  => 1200,
-					'schema_article_16_9_img_height' => 675,
-					'schema_desc_len'                => 156,
-					'schema_img_width'               => 400,
-					'schema_img_height'              => 160,
-					'seo_desc_len'                   => 156,
-					'tc_desc_len'                    => 160,
-					'thumb_img_width'                => 300,	// Recommended minimum for WhatsApp is 300x200px.
-					'thumb_img_height'               => 200,
+					'og_desc_len'            => 160,
+					'og_img_width'           => 200,
+					'og_img_height'          => 200,
+					'schema_1_1_img_width'   => 1200,
+					'schema_1_1_img_height'  => 1200,
+					'schema_4_3_img_width'   => 1200,
+					'schema_4_3_img_height'  => 900,
+					'schema_16_9_img_width'  => 1200,
+					'schema_16_9_img_height' => 675,
+					'schema_desc_len'        => 156,
+					'seo_desc_len'           => 156,
+					'tc_desc_len'            => 160,
+					'thumb_img_width'        => 300,
+					'thumb_img_height'       => 200,
 				),
 				'limit_max' => array(
-					'og_img_ratio'             => 3.000,
-					'schema_article_img_ratio' => 2.500,
-					'schema_headline_len'      => 110,
-					'schema_img_ratio'         => 2.500,	// See https://developers.google.com/+/web/snippet/article-rendering.
+					'og_img_ratio'        => 3.000,
+					'schema_headline_len' => 110,
 				),
 
 				/**

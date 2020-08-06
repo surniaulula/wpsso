@@ -802,6 +802,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$sizes = array();
 
 			foreach ( get_intermediate_image_sizes() as $size_name ) {
+
 				$sizes[ $size_name ] = $this->get_size_info( $size_name, $attach_id );
 			}
 
@@ -814,36 +815,48 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		public function get_size_info( $size_name = 'thumbnail', $attach_id = false ) {
 
 			if ( ! is_string( $size_name ) ) {	// Just in case.
+
 				return false;
 			}
 
 			static $local_cache = array();
 
 			if ( isset( $local_cache[ $size_name ][ $attach_id ] ) ) {
+
 				return $local_cache[ $size_name ][ $attach_id ];
 			}
 
 			global $_wp_additional_image_sizes;
 
 			if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'width' ] ) ) {
+
 				$width = intval( $_wp_additional_image_sizes[ $size_name ][ 'width' ] );
+
 			} else {
+
 				$width = get_option( $size_name . '_size_w' );
 			}
 
 			if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'height' ] ) ) {
+
 				$height = intval( $_wp_additional_image_sizes[ $size_name ][ 'height' ] );
+
 			} else {
+
 				$height = get_option( $size_name . '_size_h' );
 			}
 
 			if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'crop' ] ) ) {
+
 				$crop = $_wp_additional_image_sizes[ $size_name ][ 'crop' ];
+
 			} else {
+
 				$crop = get_option( $size_name . '_crop' );
 			}
 
 			if ( ! is_array( $crop ) ) {
+
 				$crop = empty( $crop ) ? false : true;
 			}
 		
@@ -867,6 +880,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 
 				if ( $crop === array( 'center', 'center' ) ) {
+
 					$crop = true;
 				}
 			}

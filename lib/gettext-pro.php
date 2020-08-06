@@ -214,5 +214,6 @@ __( 'Yotpo for WooCommerce %s function returned false.', 'wpsso' );
 __( '"%s" plugin not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders.', 'wpsso' );
 __( 'Yotpo for WooCommerce API library file "%s" not found.', 'wpsso' );
 __( 'Yotpo for WooCommerce "%s" class does not exist.', 'wpsso' );
+__( 'getting shopper approved ratings and reviews', 'wpsso' );
 _x( '[%s Company]', 'option value', 'wpsso' );
 _x( '[%s Location]', 'option value', 'wpsso' );

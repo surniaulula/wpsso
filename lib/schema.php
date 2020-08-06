@@ -63,33 +63,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function filter_plugin_image_sizes( $sizes ) {
 
-			$sizes[ 'schema' ] = array(	// Option prefix.
-				'name'  => 'schema',
-				'label' => _x( 'Schema Image', 'image size label', 'wpsso' ),
+			$sizes[ 'schema_1_1' ] = array(		// Option prefix.
+				'name'   => 'schema-1-1',
+				'label'  => _x( 'Schema 1:1 Image', 'image size label', 'wpsso' ),
 			);
 
-			$sizes[ 'schema_article' ] = array(	// Option prefix.
-				'name'   => 'schema-article',
-				'label'  => _x( 'Schema Article Image', 'image size label', 'wpsso' ),
+			$sizes[ 'schema_4_3' ] = array(		// Option prefix.
+				'name'   => 'schema-4-3',
+				'label'  => _x( 'Schema 4:3 Image', 'image size label', 'wpsso' ),
 			);
 
-			if ( ! empty( $this->p->avail[ 'amp' ][ 'any' ] ) ) {
-
-				$sizes[ 'schema_article_1_1' ] = array(	// Option prefix.
-					'name'   => 'schema-article-1-1',
-					'label'  => _x( 'Schema Article AMP 1:1 Image', 'image size label', 'wpsso' ),
-				);
-
-				$sizes[ 'schema_article_4_3' ] = array(	// Option prefix.
-					'name'   => 'schema-article-4-3',
-					'label'  => _x( 'Schema Article AMP 4:3 Image', 'image size label', 'wpsso' ),
-				);
-
-				$sizes[ 'schema_article_16_9' ] = array(	// Option prefix.
-					'name'   => 'schema-article-16-9',
-					'label'  => _x( 'Schema Article AMP 16:9 Image', 'image size label', 'wpsso' ),
-				);
-			}
+			$sizes[ 'schema_16_9' ] = array(	// Option prefix.
+				'name'   => 'schema-16-9',
+				'label'  => _x( 'Schema 16:9 Image', 'image size label', 'wpsso' ),
+			);
 
 			return $sizes;
 		}
@@ -1907,6 +1894,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( $offer_num === 0 ) {
 
 					foreach ( preg_grep( '/^[^@]/', array_keys( $single_offer ) ) as $key ) {
+
 						$aggregate_common[ $price_currency ][ $key ] = $single_offer[ $key ];
 					}
 
@@ -2231,7 +2219,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/**
 		 * $size_names can be null, a string, or an array.
 		 */
-		public static function add_media_data( &$json_data, $mod, $mt_og, $size_names = null, $add_video = true, $alt_size_names = null ) {
+		public static function add_media_data( &$json_data, $mod, $mt_og, $size_names = null, $add_video = true ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -2262,42 +2250,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$size_names = array( $size_names );
 			}
 
-			/**
-			 * $alt_size_names must be empty, or an array of one or more image size names.
-			 *
-			 * Images created for $alt_size_names are not added to the markup - they are only created to make sure the
-			 * image file is available, and to generate image related notices.
-			 */
-			if ( empty( $alt_size_names ) ) {
-
-				$alt_size_names = null;
-
-			} elseif ( is_string( $alt_size_names ) ) {
-
-				$alt_size_names = array( $alt_size_names );
-			}
-
-			if ( $wpsso->debug->enabled ) {
-
-				$wpsso->debug->log( 'adding all image(s)' );
-
-				$wpsso->debug->log_arr( '$size_names', $size_names );
-
-				$wpsso->debug->log_arr( '$alt_size_names', $alt_size_names );
-			}
-
 			foreach ( $size_names as $size_name ) {
 
 				$og_images = array_merge( $og_images, $wpsso->og->get_all_images( $max_nums[ 'schema_img_max' ],
 					$size_name, $mod, $check_dupes = true, $md_pre = 'schema' ) );
-			}
-
-			if ( ! empty( $alt_size_names ) ) {
-
-				foreach ( $alt_size_names as $size_name ) {
-
-					$wpsso->og->get_all_images( $max_nums[ 'schema_img_max' ], $size_name, $mod, $check_dupes = true, $md_pre = 'schema' );
-				}
 			}
 
 			if ( ! empty( $og_images ) ) {
