@@ -370,14 +370,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-schema_img_url':	// or an Image URL.
-
-							$text = __( 'A customized image URL (instead of an image ID) to include first in the Schema meta tags and JSON-LD markup.', 'wpsso' ) . ' ';
-							
-							$text .= '<em>' . __( 'This field is disabled if a custom image ID is selected.', 'wpsso' ) . '</em>';
-
-						 	break;
-
 						case 'tooltip-meta-tc_lrg_img_id':	// Image ID.
 						case 'tooltip-meta-tc_sum_img_id':	// Image ID.
 

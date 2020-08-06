@@ -249,9 +249,13 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			}
 
 			$max_media_items = $this->p->cf[ 'form' ][ 'max_media_items' ];
+
+			/**
+			 * Get the default Open Graph image pid and URL.
+			 */
 			$size_name       = $this->p->lca . '-opengraph';
 			$media_request   = array( 'pid', 'img_url' );
-			$media_info      = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'none', $mt_pre = 'og' );
+			$media_info      = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'none' );
 
 			/**
 			 * Metabox form rows.

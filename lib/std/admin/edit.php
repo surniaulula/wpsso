@@ -268,9 +268,13 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			 */
 			$p_img_disabled = empty( $this->p->options[ 'p_add_img_html' ] ) ? true : false;
 			$p_img_msg      = $p_img_disabled ? $this->p->msgs->p_img_disabled() : '';
-			$size_name      = $this->p->lca . '-pinterest';
-			$media_request  = array( 'pid', 'img_url' );
-			$media_info = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = array( 'schema', 'og' ), $mt_pre = 'og' );
+
+			/**
+			 * Get the default Pinterest image pid and URL.
+			 */
+			$size_name     = $this->p->lca . '-pinterest';
+			$media_request = array( 'pid', 'img_url' );
+			$media_info    = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = array( 'schema', 'og' ) );
 
 			$row_class = ! $p_img_disabled && $form->in_options( '/^p_img_/', $is_preg = true ) ? '' : 'hide_in_basic';
 
@@ -311,8 +315,11 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			 */
 			if ( ! empty( $size_name ) ) {
 
+				/**
+				 * Get the default Twitter Card image pid and URL.
+				 */
 				$media_request = array( 'pid', 'img_url' );
-				$media_info    = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og', $mt_pre = 'og' );
+				$media_info    = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
 	
 				/**
 				 * Hide unless a custom twitter card image exists.

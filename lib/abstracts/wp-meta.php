@@ -52,7 +52,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'rp_img_crop'   => '',
 					'rp_img_crop_x' => '',
 					'rp_img_crop_y' => '',
-					'rp_img_url'    => 'schema_img_url',
+					'rp_img_url'    => '',
 				),
 				520 => array(
 					'p_img_id'     => 'schema_img_id',
@@ -62,7 +62,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'p_img_crop'   => '',
 					'p_img_crop_x' => '',
 					'p_img_crop_y' => '',
-					'p_img_url'    => 'schema_img_url',
+					'p_img_url'    => '',
 				),
 				537 => array(
 					'schema_add_type_url' => 'schema_addl_type_url_0',
@@ -128,6 +128,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				),
 				725 => array(
 					'product_volume_value' => 'product_fluid_volume_value',
+				),
+				748 => array(
+					'schema_img_url' => '',
 				),
 			),
 		);
@@ -351,7 +354,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'schema_img_max'    => isset( $opts[ 'schema_img_max' ] ) ? (int) $opts[ 'schema_img_max' ] : 1,	// 1 by default.
 					'schema_img_id'     => '',
 					'schema_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
-					'schema_img_url'    => '',
 
 					/**
 					 * Gravity View (Side Metabox).

@@ -296,7 +296,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'og_def_img_url':
 				case 'og_img_url':
-				case 'schema_img_url':
 				case 'site_org_banner_url':
 				case 'site_org_logo_url':
 				case 'tc_lrg_img_url':
