@@ -1017,7 +1017,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			if ( ! $is_assoc ) {
 
-				$new_values;
+				$new_values = array();
 
 				foreach ( $values as $option_value => $label ) {
 
@@ -1036,8 +1036,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$values = array( 'none' => '[None]' ) + $values;
 
-			return $this->get_select( $name, $values, $css_class, $css_id, $is_assoc = true, $is_disabled,
-				$selected, $event_names, $event_args );
+			return $this->get_select( $name, $values, $css_class, $css_id, $is_assoc = true, $is_disabled, $selected, $event_names, $event_args );
 		}
 
 		/**

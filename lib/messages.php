@@ -1083,7 +1083,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/**
 						 * Service APIs settings.
 						 */
-						case 'tooltip-plugin_gravatar_api':	// Gravatar is Author Default Image.
+						case 'tooltip-plugin_gravatar_api':	// Gravatar is Default Author Image.
 
 							$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 

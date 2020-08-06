@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '7.16.0-dev.3',	// Plugin version.
+					'version'     => '7.16.0-dev.4',	// Plugin version.
 					'opt_version' => '749',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1559,7 +1559,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_p_cap_prefix'   => 'Caption:',			// WP Caption Text Prefix.
 					'plugin_no_title_text'  => 'No Title',			// No Title Text.
 					'plugin_no_desc_text'   => 'No Description.',		// No Description Text.
-					'plugin_gravatar_api'   => 1,				// Gravatar is Author Default Image
+					'plugin_gravatar_api'   => 1,				// Gravatar is Default Author Image
 					'plugin_gravatar_size'  => 1200,			// Gravatar Image Size
 					'plugin_facebook_api'   => 1,				// Check for Embedded Media: Facebook Videos.
 					'plugin_slideshare_api' => 1,				// Check for Embedded Media: Slideshare Presentations.
@@ -1946,7 +1946,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '3.1.0-dev.3',	// Minimum update manager version (soft limit).
+				'rec_version' => '3.1.0-dev.4',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',
