@@ -328,9 +328,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/**
 		 * $attr = apply_filters( 'wp_get_attachment_image_attributes', $attr, $attachment );
 		 */
-		public function add_attachment_image_attributes( $attr, $attach ) {
+		public function add_attachment_image_attributes( $attr, $attachment ) {
 
-			$attr[ 'data-wp-pid' ] = $attach->ID;
+			$attr[ 'data-wp-pid' ] = $attachment->ID;
 
 			return $attr;
 		}
@@ -462,52 +462,26 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return apply_filters( $this->p->lca . '_og_featured', $og_images, $num, $size_name, $post_id, $check_dupes );
 		}
 
-		public function get_first_attached_image_id( $post_id ) {
-
-			if ( ! empty( $post_id ) ) {
-
-				/**
-				 * Check for an attachment page, just in case.
-				 */
-				if ( ( is_attachment( $post_id ) || get_post_type( $post_id ) === 'attachment' ) && wp_attachment_is_image( $post_id ) ) {
-
-					return $post_id;
-
-				} else {
-
-					$images = get_children( array( 'post_parent' => $post_id, 'post_type' => 'attachment', 'post_mime_type' => 'image' ) );
-					$attach = reset( $images );
-
-					if ( ! empty( $attach->ID ) ) {
-
-						return $attach->ID;
-					}
-				}
-			}
-
-			return false;
-		}
-
-		public function get_attachment_image( $num = 0, $size_name = 'thumbnail', $attach_id, $check_dupes = true ) {
+		public function get_attachment_image( $num = 0, $size_name = 'thumbnail', $attachment_id, $check_dupes = true ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array(
-					'num'         => $num,
-					'size_name'   => $size_name,
-					'attach_id'   => $attach_id,
-					'check_dupes' => $check_dupes,
+					'num'           => $num,
+					'size_name'     => $size_name,
+					'attachment_id' => $attachment_id,
+					'check_dupes'   => $check_dupes,
 				) );
 			}
 
 			$og_images       = array();
 			$og_single_image = SucomUtil::get_mt_image_seed();
 
-			if ( ! empty( $attach_id ) ) {
+			if ( ! empty( $attachment_id ) ) {
 
-				if ( wp_attachment_is_image( $attach_id ) ) {
+				if ( wp_attachment_is_image( $attachment_id ) ) {
 
-					$this->add_mt_single_image_src( $og_single_image, $attach_id, $size_name, $check_dupes );
+					$this->add_mt_single_image_src( $og_single_image, $attachment_id, $size_name, $check_dupes );
 
 					if ( ! empty( $og_single_image[ 'og:image:url' ] ) ) {
 
@@ -519,7 +493,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				} elseif ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'attachment id ' . $attach_id . ' is not an image' );
+					$this->p->debug->log( 'attachment id ' . $attachment_id . ' is not an image' );
 				}
 			}
 
@@ -559,11 +533,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						'post_mime_type' => 'image'
 					), OBJECT );	// OBJECT, ARRAY_A, or ARRAY_N.
 
-					foreach ( $images as $attach ) {
+					foreach ( $images as $attachment ) {
 
-						if ( ! empty( $attach->ID ) ) {
+						if ( ! empty( $attachment->ID ) ) {
 
-							$local_cache_attached_ids[ $post_id ][] = $attach->ID;
+							$local_cache_attached_ids[ $post_id ][] = $attachment->ID;
 						}
 					}
 
