@@ -3249,8 +3249,8 @@ msgstr ""
 msgid "Posts, Pages, and Custom Post Types"
 msgstr ""
 
-#: lib/gettext-pro.php:35 lib/media.php:134 lib/media.php:769 lib/media.php:911
-#: lib/media.php:2033 lib/pro/admin/advanced.php:212
+#: lib/gettext-pro.php:35 lib/media.php:134 lib/media.php:791 lib/media.php:933
+#: lib/media.php:2056 lib/pro/admin/advanced.php:212
 #: lib/std/admin/advanced.php:219
 msgid "Media Library"
 msgstr ""
@@ -4039,7 +4039,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: lib/media.php:137 lib/media.php:2040
+#: lib/media.php:137 lib/media.php:2063
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
@@ -4062,90 +4062,90 @@ msgid ""
 "all %1$d image sizes): %2$d by %3$d pixels."
 msgstr ""
 
-#: lib/media.php:772
+#: lib/media.php:794
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:774 lib/media.php:968
+#: lib/media.php:796 lib/media.php:990
 msgid ""
 "You may consider regenerating the thumbnails of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:793
+#: lib/media.php:815
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image dimensions for "
 "<a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:820
+#: lib/media.php:842
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image file path for "
 "<a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:912
+#: lib/media.php:934
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:963 lib/messages.php:3113
+#: lib/media.php:985 lib/messages.php:3113
 msgctxt "option value"
 msgid "cropped"
 msgstr ""
 
-#: lib/media.php:964 lib/messages.php:3113
+#: lib/media.php:986 lib/messages.php:3113
 msgctxt "option value"
 msgid "uncropped"
 msgstr ""
 
-#: lib/media.php:966
+#: lib/media.php:988
 msgid ""
 "Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress "
 "%3$s function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:1450
+#: lib/media.php:1472
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:2056
+#: lib/media.php:2079
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:2084
+#: lib/media.php:2107
 msgctxt "option label"
 msgid "Facebook Open Graph"
 msgstr ""
 
-#: lib/media.php:2093
+#: lib/media.php:2116
 msgctxt "option label"
 msgid "Google Schema 1:1"
 msgstr ""
 
-#: lib/media.php:2102
+#: lib/media.php:2125
 msgctxt "option label"
 msgid "Google Schema 4:3"
 msgstr ""
 
-#: lib/media.php:2111
+#: lib/media.php:2134
 msgctxt "option label"
 msgid "Google Schema 16:9"
 msgstr ""
 
-#: lib/media.php:2146
+#: lib/media.php:2169
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:2178
+#: lib/media.php:2201
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."

@@ -426,7 +426,19 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				} elseif ( $this->p->avail[ 'wp' ][ 'featured' ] && has_post_thumbnail( $post_id ) ) {
 
-					$pid = get_post_thumbnail_id( $post_id );
+					/**
+					 * Avoid making duplicate queries to the database.
+					 */
+					static $local_cache_featured = array();
+
+					if ( isset( $local_cache_featured[ $post_id ] ) ) {
+
+						$pid = $local_cache_featured[ $post_id ];
+
+					} else {
+
+						$pid = $local_cache_featured[ $post_id ] = get_post_thumbnail_id( $post_id );
+					}
 
 				} else {
 
@@ -526,37 +538,47 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				) );
 			}
 
-			$og_images       = array();
+			$og_images = array();
+
 			$og_single_image = SucomUtil::get_mt_image_seed();
 
 			if ( ! empty( $post_id ) ) {
 
-				$images = get_children( array(
-					'post_parent'    => $post_id,
-					'post_type'      => 'attachment',
-					'post_mime_type' => 'image'
-				), OBJECT );	// OBJECT, ARRAY_A, or ARRAY_N.
+				/**
+				 * Avoid making duplicate queries to the database.
+				 */
+				static $local_cache_attached_ids = array();
 
-				$attach_ids = array();
+				if ( ! isset( $local_cache_attached_ids[ $post_id ] ) ) {
 
-				foreach ( $images as $attach ) {
+					$local_cache_attached_ids[ $post_id ] = array();
 
-					if ( ! empty( $attach->ID ) ) {
+					$images = get_children( array(
+						'post_parent'    => $post_id,
+						'post_type'      => 'attachment',
+						'post_mime_type' => 'image'
+					), OBJECT );	// OBJECT, ARRAY_A, or ARRAY_N.
 
-						$attach_ids[] = $attach->ID;
+					foreach ( $images as $attach ) {
+
+						if ( ! empty( $attach->ID ) ) {
+
+							$local_cache_attached_ids[ $post_id ][] = $attach->ID;
+						}
 					}
+
+					rsort( $local_cache_attached_ids[ $post_id ], SORT_NUMERIC );
+
+					$local_cache_attached_ids[ $post_id ] = array_unique( apply_filters( $this->p->lca . '_attached_image_ids',
+						$local_cache_attached_ids[ $post_id ], $post_id ) );
 				}
-
-				rsort( $attach_ids, SORT_NUMERIC );
-
-				$attach_ids = array_unique( apply_filters( $this->p->lca . '_attached_image_ids', $attach_ids, $post_id ) );
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'found ' . count( $attach_ids ) . ' attached images for post_id ' . $post_id );
+					$this->p->debug->log( 'found ' . count( $local_cache_attached_ids[ $post_id ] ) . ' attached images for post_id ' . $post_id );
 				}
 
-				foreach ( $attach_ids as $pid ) {
+				foreach ( $local_cache_attached_ids[ $post_id ] as $pid ) {
 
 					$this->add_mt_single_image_src( $og_single_image, $pid, $size_name, $check_dupes );
 
@@ -1958,6 +1980,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					}
 
 					foreach( SucomUtil::preg_grep_keys( '/^' . $mt_media_pre . '(:.*)?$/', $og_single_video ) as $k => $v ) {
+
 						unset ( $og_single_video[ $k ] );
 					}
 
