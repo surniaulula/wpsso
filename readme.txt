@@ -311,7 +311,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.16.0-dev.4 (2020/08/06)**
+**Version 7.16.0-dev.5 (2020/08/06)**
 
 * **New Features**
 	* Added a new API integration module for Shopper Approved customer ratings and reviews.
@@ -732,7 +732,7 @@ The Open Graph meta tags for WooCommerce products have been extended to include 
 
 == Upgrade Notice ==
 
-= 7.16.0-dev.4 =
+= 7.16.0-dev.5 =
 
 (2020/08/06) Added a new API integration module for Shopper Approved customer ratings and reviews. Added shortening service API status to the SSO &gt; Dashboard &gt; Premium Features Status metabox.
 
