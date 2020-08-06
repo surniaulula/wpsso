@@ -56,11 +56,9 @@ WPSSO makes full use of all available caching methods &mdash; along with offerin
 
 	* Open Graph (Facebook and oEmbed)
 	* Pinterest Pin It
-	* Schema
-	* Schema Article
-	* Schema Article AMP 1:1
-	* Schema Article AMP 4:3
-	* Schema Article AMP 16:9
+	* Schema 1:1 (Google Rich Results)
+	* Schema 4:3 (Google Rich Results)
+	* Schema 16:9 (Google Rich Results)
 	* Schema Thumbnail Image
 	* Twitter Summary Card
 	* Twitter Large Image Summary Card
@@ -311,9 +309,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.16.0-dev.5 (2020/08/06)**
+**Version 7.16.0-dev.6 (2020/08/06)**
 
-Google has updated their Rich Results requirements and now prefer 1x1, 4x3, and 16x9 images for all Schema types, not just the Schema Article type for AMP webpages. The "Schema" and "Schema Article" image sizes have been removed and replaced by new Schema 1x1, 4x3, and 16x9 image sizes.
+Google has updated their Rich Results requirements and now prefer 1:1, 4:3, and 16:9 images for all Schema types, not just the Schema Article type for AMP webpages. The "Schema" and "Schema Article" image sizes have been removed and replaced by new Schema 1:1, 4:3, and 16:9 image sizes.
 
 * **New Features**
 	* Added a new API integration module for Shopper Approved customer ratings and reviews.
@@ -326,9 +324,9 @@ Google has updated their Rich Results requirements and now prefer 1x1, 4x3, and 
 		* TinyURL Shortener API
 		* YOURLS Shortener API
 	* Renamed the following SSO &gt; Image Sizes:
-		* Schema Article AMP 1x1 to Schema 1x1
-		* Schema Article AMP 4x3 to Schema 4x3
-		* Schema Article AMP 16x9 to Schema 16x9
+		* Schema Article AMP 1:1 to Schema 1:1
+		* Schema Article AMP 4:3 to Schema 4:3
+		* Schema Article AMP 16:9 to Schema 16:9
 	* Removed the following SSO &gt; Image Sizes:
 		* Schema
 		* Schema Article
@@ -736,7 +734,7 @@ The Open Graph meta tags for WooCommerce products have been extended to include 
 
 == Upgrade Notice ==
 
-= 7.16.0-dev.5 =
+= 7.16.0-dev.6 =
 
 (2020/08/06) Added a new API integration module for Shopper Approved customer ratings and reviews. Added shortening service API status to the SSO &gt; Dashboard &gt; Premium Features Status metabox.
 

@@ -53,11 +53,9 @@
 <ul>
 <li>Open Graph (Facebook and oEmbed)</li>
 <li>Pinterest Pin It</li>
-<li>Schema</li>
-<li>Schema Article</li>
-<li>Schema Article AMP 1:1</li>
-<li>Schema Article AMP 4:3</li>
-<li>Schema Article AMP 16:9</li>
+<li>Schema 1:1 (Google Rich Results)</li>
+<li>Schema 4:3 (Google Rich Results)</li>
+<li>Schema 16:9 (Google Rich Results)</li>
 <li>Schema Thumbnail Image</li>
 <li>Twitter Summary Card</li>
 <li>Twitter Large Image Summary Card</li>
