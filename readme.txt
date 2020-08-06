@@ -311,11 +311,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.16.0-dev.3 (2020/08/05)**
+**Version 7.16.0-dev.4 (2020/08/06)**
 
 * **New Features**
 	* Added a new API integration module for Shopper Approved customer ratings and reviews.
 * **Improvements**
+	* Added a new "Gravatar Image Size" option (default is 1200px).
 	* Added shortening service API status to the SSO &gt; Dashboard &gt; Premium Features Status metabox:
 		* Bitly Shortener API
 		* DLMY.App Shortener API
@@ -337,6 +338,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored `WpssoProUtilShorten->get_svc_instance()` to use the new `self->load_lib()` method.
 	* Added more debugging messages to the `WpssoProEcomWooCommerce` class for missing product methods.
 	* Added a 'label_transl' key to the `$features` array for the SSO &gt; Dashboard &gt; Premium Features Status metabox.
+	* Refactored the Gravatar integration module to always fallback to the "mystery person" image.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
@@ -729,9 +731,9 @@ The Open Graph meta tags for WooCommerce products have been extended to include 
 
 == Upgrade Notice ==
 
-= 7.16.0-dev.3 =
+= 7.16.0-dev.4 =
 
-(2020/08/05) Added a new API integration module for Shopper Approved customer ratings and reviews. Added shortening service API status to the SSO &gt; Dashboard &gt; Premium Features Status metabox.
+(2020/08/06) Added a new API integration module for Shopper Approved customer ratings and reviews. Added shortening service API status to the SSO &gt; Dashboard &gt; Premium Features Status metabox.
 
 = 7.15.0 =
 
