@@ -313,6 +313,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 **Version 7.16.0-dev.5 (2020/08/06)**
 
+Google has updated their Rich Results requirements and now prefer 1x1, 4x3, and 16x9 images for all Schema types, not just the Schema Article type for AMP webpages. The "Schema" and "Schema Article" image sizes have been removed and replaced by new Schema 1x1, 4x3, and 16x9 image sizes.
+
 * **New Features**
 	* Added a new API integration module for Shopper Approved customer ratings and reviews.
 * **Improvements**
@@ -330,6 +332,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Removed the following SSO &gt; Image Sizes:
 		* Schema
 		* Schema Article
+	* Removed the "Schema Image URL" option in the Document SSO metabox.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -339,7 +342,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added more debugging messages to the `WpssoProEcomWooCommerce` class for missing product methods.
 	* Added a 'label_transl' key to the `$features` array for the SSO &gt; Dashboard &gt; Premium Features Status metabox.
 	* Refactored the Gravatar integration module to always fallback to the "mystery person" image.
-	* Refactored the `WpssoMedia->get_attached_images()` method to use a local cache for post ID attached image IDs.
+	* Refactored the `WpssoMedia->get_featured()` method to use a local cache to avoid duplicate database queries.
+	* Refactored the `WpssoMedia->get_attached_images()` method to use a local cache to avoid duplicate database queries.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
