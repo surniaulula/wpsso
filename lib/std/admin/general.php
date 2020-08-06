@@ -33,6 +33,7 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 		public function filter_og_author_rows( $table_rows, $form ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -42,12 +43,17 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 			$form->get_th_html( _x( 'Gravatar is Author Default Image', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_gravatar_api' ) . 
 			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
 
+			$table_rows[ 'plugin_gravatar_size' ] = $form->get_tr_hide( 'basic', 'plugin_gravatar_size' ) . 
+			$form->get_th_html( _x( 'Gravatar Image Size', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_gravatar_size' ) . 
+			'<td class="blank">' . $form->get_no_input( 'plugin_gravatar_size', $css_class = 'short' ) . '</td>';
+
 			return $table_rows;
 		}
 
 		public function filter_og_images_rows( $table_rows, $form ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 

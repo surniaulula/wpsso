@@ -647,7 +647,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-og_img_size':		// Open Graph.
 
-							$def_img_dims = $this->get_def_img_dims( 'og_img' );
+							$def_img_dims = $this->get_def_img_dims( 'og' );
 
 							$text = sprintf( __( 'The image dimensions used for Facebook / Open Graph meta tags and oEmbed markup (the default dimensions are %s).', 'wpsso' ), $def_img_dims ) . ' ';
 
@@ -1087,9 +1087,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-							$text = __( 'If no custom image has been defined for an author, fallback to using their Gravatar image (if available) in author related meta tags and Schema markup.', 'wpsso' ) . ' ';
+							$text = __( 'If no custom image has been defined for an author, fallback to using their Gravatar image in author related meta tags and Schema markup.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'A customized image can be selected for/by each author in the WordPress user profile %s metabox.', 'wpsso' ), $mb_title );
+							$text .= sprintf( __( 'A customized image can be selected in the WordPress user profile %s metabox.', 'wpsso' ), $mb_title );
+
+							break;
+
+						case 'tooltip-plugin_gravatar_size':	// Gravatar Image Size.
+
+							$text = __( 'The requested Gravatar image width and height.', 'wpsso' ) . ' ';
+
+							$text = __( 'You may choose an image size anywhere from 1px up to 2048px, however note that many users have lower resolution images, so requesting larger sizes may result in pixelation/low-quality images.', 'wpsso' );
 
 							break;
 
@@ -1409,39 +1417,20 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-schema_img_size':		// Schema Image Size.
+						case 'tooltip-schema_1_1_img_size':	// Schema Article AMP 1:1 Img Size.
+						case 'tooltip-schema_4_3_img_size':	// Schema Article AMP 4:3 Img Size.
+						case 'tooltip-schema_16_9_img_size':	// Schema Article AMP 16:9 Img Size.
 
-							$def_img_dims = $this->get_def_img_dims( 'schema_img' );
+							if ( preg_match( '/^tooltip-(schema_([0-9]+)_([0-9]+))_img_size$/', $msg_key, $matches ) ) {
 
-							$text = sprintf( __( 'The image dimensions used for Schema meta tags and JSON-LD markup (the default dimensions are %s).', 'wpsso' ), $def_img_dims );
+								$opt_pre      = $matches[ 1 ];
+								$opt_ratio    = $matches[ 2 ] . ':' . $matches[ 3 ];
+								$def_img_dims = $this->get_def_img_dims( $opt_pre );
 
-							break;
+								$text = sprintf( __( 'The %1$s image dimensions used for Schema meta tags and JSON-LD markup (the default dimensions are %2$s).', 'wpsso' ), $opt_ratio, $def_img_dims ) . ' ';
 
-						case 'tooltip-schema_article_img_size':	// Schema Article Image Size.
-
-							$def_img_dims = $this->get_def_img_dims( 'schema_article_img' );
-
-							$text = sprintf( __( 'The image dimensions used for Schema Article meta tags and JSON-LD markup (the default dimensions are %s).', 'wpsso' ), $def_img_dims ) . ' ';
-
-							$text .= sprintf( __( 'The minimum image width required by Google is %dpx.', 'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ 'schema_article_img_width' ] ). ' ';
-
-							$text .= sprintf( __( 'If this image size is uncropped (default setting), the height value must be large enough to accommodate portrait / vertical images (default height is %dpx).', 'wpsso' ), $this->p->opt->get_defaults( 'schema_article_img_height' ) );
-
-							break;
-
-						case 'tooltip-schema_article_1_1_img_size':	// Schema Article AMP 1:1 Img Size.
-						case 'tooltip-schema_article_4_3_img_size':	// Schema Article AMP 4:3 Img Size.
-						case 'tooltip-schema_article_16_9_img_size':	// Schema Article AMP 16:9 Img Size.
-		
-							$opt_pre = preg_replace( '/^tooltip-(schema_article_.*_img)_size$/', '$1', $msg_key );
-
-							$opt_ratio = preg_replace( '/^schema_article_([0-9]+)_([0-9]+)_img$/', '$1:$2', $opt_pre );
-
-							$def_img_dims = $this->get_def_img_dims( $opt_pre );
-
-							$text = sprintf( __( 'The AMP %1$s image dimensions for Schema Article JSON-LD markup (the default dimensions are %2$s).', 'wpsso' ), $opt_ratio, $def_img_dims ) . ' ';
-
-							$text .= sprintf( __( 'The minimum image width required by Google is %dpx.', 'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ $opt_pre . '_width' ] ). ' ';
+								$text .= sprintf( __( 'The minimum image width required by Google is %dpx.', 'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ $opt_pre . '_img_width' ] ). ' ';
+							}
 
 							break;
 
@@ -1636,7 +1625,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-tc_sum_img_size':
 
-							$def_img_dims = $this->get_def_img_dims( 'tc_sum_img' );
+							$def_img_dims = $this->get_def_img_dims( $opt_pre = 'tc_sum' );
 
 							$text = sprintf( __( 'The image dimensions for the <a href="%1$s">Summary Card</a> (should be at least %2$s and less than %3$s).', 'wpsso' ), 'https://dev.twitter.com/docs/cards/types/summary-card', '120x120px', __( '1MB', 'wpsso' ) ) . ' ';
 
@@ -1646,7 +1635,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-tc_lrg_img_size':
 
-							$def_img_dims = $this->get_def_img_dims( 'tc_lrg_img' );
+							$def_img_dims = $this->get_def_img_dims( $opt_pre = 'tc_lrg' );
 
 							$text = sprintf( __( 'The image dimensions for the <a href="%1$s">Large Image Summary Card</a> (must be larger than %2$s and less than %3$s).', 'wpsso' ), 'https://dev.twitter.com/docs/cards/large-image-summary-card', '280x150px', __( '1MB', 'wpsso' ) ) . ' ';
 
@@ -1799,7 +1788,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-thumb_img_size':
 
-							$text = sprintf( __( 'The image dimensions used for the Schema "%1$s" property and the "%2$s" tag (the default dimensions are %3$s).', 'wpsso' ), 'thumbnailUrl', 'meta name thumbnail', $this->get_def_img_dims( 'thumb_img' ) );
+							$text = sprintf( __( 'The image dimensions used for the Schema "%1$s" property and the "%2$s" tag (the default dimensions are %3$s).', 'wpsso' ), 'thumbnailUrl', 'meta name thumbnail', $this->get_def_img_dims( $opt_pre = 'thumb' ) );
 
 							break;
 
@@ -3034,13 +3023,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			return $html;
 		}
 
-		public function recommend_img_dims( $opt_pre ) {
-
-			$og_def_img_dims = $this->p->msgs->get_def_img_dims( $opt_pre );
-
-			return ' <em>' . $this->p->msgs->get_def_img_dims( 'og_img' ). ' ' . __( 'recommended', 'wpsso' ) . '</em>';
-		}
-
 		/**
 		 * $extra_css_class can be empty, 'left', or 'inline'.
 		 */
@@ -3132,13 +3114,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			$def_opts = $this->p->opt->get_defaults();
 
-			$img_width = empty( $def_opts[ $opt_pre . '_width' ] ) ? 0 : $def_opts[ $opt_pre . '_width' ];
+			$img_width = empty( $def_opts[ $opt_pre . '_img_width' ] ) ? 0 : $def_opts[ $opt_pre . '_img_width' ];
 
-			$img_height = empty( $def_opts[ $opt_pre . '_height' ] ) ? 0 : $def_opts[ $opt_pre . '_height' ];
+			$img_height = empty( $def_opts[ $opt_pre . '_img_height' ] ) ? 0 : $def_opts[ $opt_pre . '_img_height' ];
 
-			$img_cropped = empty( $def_opts[ $opt_pre . '_crop' ] ) ?
-				_x( 'uncropped', 'option value', 'wpsso' ) :
-				_x( 'cropped', 'option value', 'wpsso' );
+			$img_cropped = empty( $def_opts[ $opt_pre . '_img_crop' ] ) ? _x( 'uncropped', 'option value', 'wpsso' ) : _x( 'cropped', 'option value', 'wpsso' );
 
 			return $img_width . 'x' . $img_height . 'px ' . $img_cropped;
 		}

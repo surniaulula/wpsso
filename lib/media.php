@@ -1106,8 +1106,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$og_single_image = SucomUtil::get_mt_image_seed();
 
 			foreach ( array( 'id', 'id_pre', 'url', 'url:width', 'url:height' ) as $key ) {
-				$def_img[ $key ] = empty( $this->p->options[ 'og_def_img_' . $key ] ) ?
-					'' : $this->p->options[ 'og_def_img_' . $key ];
+
+				$def_img[ $key ] = empty( $this->p->options[ 'og_def_img_' . $key ] ) ? '' : $this->p->options[ 'og_def_img_' . $key ];
 			}
 
 			if ( empty( $def_img[ 'id' ] ) && empty( $def_img[ 'url' ] ) ) {

@@ -1416,6 +1416,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		 * The returned array can include a varying number of elements, depending on the $request value.
 		 * 
 		 * $md_pre may be 'none' when getting Open Graph option defaults (and not their custom values).
+		 *
+		 * $size_name should be a string, not an array.
 		 */
 		public function get_media_info( $size_name, array $request, array $mod, $md_pre = 'og', $mt_pre = 'og' ) {
 
@@ -1461,7 +1463,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						 */
 						if ( null === $og_videos ) {
 
-							$og_videos = $this->get_all_videos( 1, $mod, $check_dupes = true, $md_pre );
+							$og_videos = $this->get_all_videos( $num = 1, $mod, $check_dupes = true, $md_pre );
 						}
 
 						break;
@@ -1479,7 +1481,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							$get_mt_name = $mt_pre . ':image:id';
 						}
 
-						// no break - fall through
+						// No break - fall through.
 
 					case 'image':
 					case 'img_url':
@@ -1489,9 +1491,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							$get_mt_name = $mt_pre . ':image';
 						}
 
-						// no break - fall through
+						// No break - fall through.
 
-						if ( $og_videos !== null ) {
+						if ( null !== $og_videos ) {
 
 							$media_info[ $key ] = $this->get_media_value( $og_videos, $get_mt_name );
 						}
@@ -1572,14 +1574,17 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $media_info;
 		}
 
+		/**
+		 * Also used by the WpssoProMediaGravatar class to get the default image URL.
+		 */
 		public function get_media_value( $mt_og, $mt_media_pre ) {
 
-			if ( empty( $mt_og ) || ! is_array( $mt_og ) ) {
+			if ( empty( $mt_og ) || ! is_array( $mt_og ) ) {	// Nothing to do.
 
 				return '';
 			}
 
-			$og_media = reset( $mt_og );	// only search the first media array
+			$og_media = reset( $mt_og );	// Only search the first media array.
 
 			switch ( $mt_media_pre ) {
 

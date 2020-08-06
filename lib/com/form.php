@@ -6,14 +6,17 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! class_exists( 'SucomUtil' ) ) {	// Just in case.
+
 	require_once './util.php';
 }
 
 if ( ! class_exists( 'SucomUtilWP' ) ) {	// Just in case.
+
 	require_once './util-wp.php';
 }
 
@@ -38,7 +41,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
+
 				$this->p->debug->log( 'form options name is ' . $opts_name );
 			}
 
@@ -78,6 +83,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$this->text_domain = $this->get_plugin_text_domain( $maybe_ext );
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'form text domain set to ' . $this->text_domain );
 			}
 		}
@@ -87,6 +93,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$this->def_text_domain = $this->get_plugin_text_domain( $maybe_ext );
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'form default text domain set to ' . $this->def_text_domain );
 			}
 		}
@@ -104,12 +111,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$value_transl = _x( $value, 'option value', $this->text_domain );	// Lca or ext text domain.
 
 				if ( $value === $value_transl && $this->text_domain !== $this->def_text_domain ) {
+
 					$value_transl = _x( $value, 'option value', $this->def_text_domain );	// Lca text domain.
 				}
 
 				return $value_transl;
 
 			} elseif ( $this->def_text_domain ) {
+
 				return _x( $value, 'option value', $this->def_text_domain );	// Lca text domain.
 			}
 
@@ -142,8 +151,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			if ( isset( $this->p->msgs ) ) {
 
 				if ( empty( $css_id ) ) {
+
 					$tooltip_index = 'tooltip-' . $label;
+
 				} else {
+
 					$tooltip_index = 'tooltip-' . $css_id;
 				}
 
@@ -154,6 +166,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			if ( isset( $atts[ 'is_locale' ] ) ) {
+
 				$label .= ' <span class="option_locale">[' . SucomUtil::get_locale() . ']</span>';
 			}
 
@@ -175,6 +188,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_css_class_hide_img_dim( $in_view = 'basic', $name ) {
 
 			foreach ( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $name_suffix ) {
+
 				$option_keys[] = $name . '_' . $name_suffix;
 			}
 
@@ -184,6 +198,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_css_class_hide_vid_dim( $in_view = 'basic', $name ) {
 
 			foreach ( array( 'width', 'height' ) as $name_suffix ) {
+
 				$option_keys[] = $name . '_' . $name_suffix;
 			}
 
@@ -282,16 +297,21 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				 * Placeholder.
 				 */
 				if ( empty( $val ) ) {
+
 					continue;
 				}
 
 				if ( empty( $val[ 'label' ] ) ) {	// Just in case.
+
 					$val[ 'label' ] = '';
 				}
 
 				if ( isset( $val[ 'tr_class' ] ) ) {
+
 					$tr = '<tr class="' . $val[ 'tr_class' ] . '">' . "\n";
+
 				} else {
+
 					$tr = '';
 				}
 
@@ -301,6 +321,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				if ( isset( $val[ 'table_row' ] ) ) {
 
 					if ( ! empty( $val[ 'table_row' ] ) ) {
+
 						$table_rows[ $key ] .= $tr . $val[ 'table_row' ] . "\n";
 					}
 
@@ -318,6 +339,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$table_rows[ $key ] .= '<' . $val[ 'header' ];
 
 					if ( ! empty( $val[ 'header_class' ] ) ) {
+
 						$table_rows[ $key ] .= ' class="' . $val[ 'header_class' ] . '"';
 					}
 					
@@ -350,6 +372,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			if ( $is_preg ) {
 
 				if ( ! is_array( $this->options ) ) {
+
 					return false;
 				}
 
@@ -372,10 +395,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_hidden( $name, $value = '', $is_checkbox = false ) {
 
 			if ( empty( $name ) ) {
+
 				return;	// Just in case.
 			}
 
 			if ( empty( $value ) && $value !== 0 && $this->in_options( $name ) ) {
+
 				$value = $this->options[ $name ];
 			}
 
@@ -392,18 +417,26 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_checkbox( $name, $css_class = '', $css_id = '', $is_disabled = false, $force = null, $group = null ) {
 
 			if ( empty( $name ) ) {
+
 				return;	// Just in case.
 			}
 
 			$input_disabled = 'disabled' === $this->get_options( $name . ':is' ) ? true : $is_disabled;
 
 			if ( $force !== null ) {
+
 				$input_checked = checked( $force, 1, false );
+
 			} elseif ( $this->in_options( $name ) ) {
+
 				$input_checked = checked( $this->options[ $name ], 1, false );
+
 			} elseif ( $this->in_defaults( $name ) ) {
+
 				$input_checked = checked( $this->defaults[ $name ], 1, false );
+
 			} else {
+
 				$input_checked = '';
 			}
 
@@ -432,10 +465,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_checklist( $name_prefix, $values = array(), $css_class = 'input_vertical_list', $css_id = '', $is_assoc = null, $is_disabled = false ) {
 
 			if ( empty( $name_prefix ) || ! is_array( $values ) ) {
+
 				return;
 			}
 
 			if ( null === $is_assoc ) {
+
 				$is_assoc = SucomUtil::is_assoc( $values );
 			}
 
@@ -450,6 +485,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			foreach ( $values as $name_suffix => $label ) {
 
 				if ( is_array( $label ) ) {	// Just in case.
+
 					$label = implode( ', ', $label );
 				}
 
@@ -458,8 +494,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				 * used as the saved value.
 				 */
 				if ( $is_assoc ) {
+
 					$input_name = $name_prefix . '_' . $name_suffix;
+
 				} else {
+
 					$input_name = $name_prefix . '_' . $label;
 				}
 
@@ -468,10 +507,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$label_transl = $this->get_value_transl( $label );
 
 				if ( $this->in_options( $input_name ) ) {
+
 					$input_checked = checked( $this->options[ $input_name ], 1, false );
+
 				} elseif ( $this->in_defaults( $input_name ) ) {	// Returns true or false.
+
 					$input_checked = checked( $this->defaults[ $input_name ], 1, false );
+
 				} else {
+
 					$input_checked = '';
 				}
 
@@ -505,10 +549,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_radio( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null, $is_disabled = false ) {
 
 			if ( empty( $name ) || ! is_array( $values ) ) {
+
 				return;
 			}
 
 			if ( null === $is_assoc ) {
+
 				$is_assoc = SucomUtil::is_assoc( $values );
 			}
 
@@ -525,6 +571,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			foreach ( $values as $val => $label ) {
 
 				if ( is_array( $label ) ) {	// Just in case.
+
 					$label = implode( ', ', $label );
 				}
 
@@ -533,6 +580,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				 * then the label / description is used as the saved value.
 				 */
 				if ( ! $is_assoc ) {
+
 					$val = $label;
 				}
 
@@ -561,6 +609,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$selected = false, $event_names = array(), $event_args = null ) {
 
 			if ( empty( $name ) ) {
+
 				return;
 			}
 
@@ -569,16 +618,21 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$values = apply_filters( $filter_name, $values );
 
 			if ( ! is_array( $values ) ) {
+
 				return;
 			}
 
 			if ( null === $is_assoc ) {
+
 				$is_assoc  = SucomUtil::is_assoc( $values );
 			}
 
 			if ( is_string( $event_names ) ) {
+
 				$event_names = array( $event_names );
+
 			} elseif ( ! is_array( $event_names ) ) {	// Ignore true, false, null, etc.
+
 				$event_names = array();
 			}
 
@@ -622,6 +676,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$select_opt_count++;	// Used to check for first option.
 
 				if ( is_array( $label ) ) {	// Just in case.
+
 					$label = implode( ', ', $label );
 				}
 
@@ -632,8 +687,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				 * Make sure option values are cast as strings for comparison.
 				 */
 				if ( $is_assoc ) {
+
 					$option_value = (string) $option_value;
+
 				} else {
+
 					$option_value = (string) $label;
 				}
 
@@ -642,8 +700,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				 * categories).
 				 */
 				if ( empty( $event_args[ 'is_transl' ] ) ) {
+
 					$label_transl = $this->get_value_transl( $label );
+
 				} else {
+
 					$label_transl = $label;
 				}
 
@@ -653,6 +714,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					case 'schema_img_max':
 
 						if ( 0 === $label ) {
+
 							$label_transl .= ' ' . $this->get_value_transl( '(no images)' );
 						}
 
@@ -662,6 +724,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					case 'schema_vid_max':
 
 						if ( 0 === $label ) {
+
 							$label_transl .= ' ' . $this->get_value_transl( '(no videos)' );
 						}
 
@@ -670,6 +733,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					default:
 
 						if ( '' ===  $label || 'none' === $label || '[None]' === $label ) {	// Just in case.
+
 							$label_transl = $this->get_value_transl( '[None]' );
 						}
 
@@ -681,7 +745,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				 * suffix.
 				 */
 				if ( $event_json_var ) {
+
 					if ( empty( $this->json_array_added[ $event_json_var ] ) ) {
+
 						$select_json_arr[ $option_value ] = $label_transl;
 					}
 				}
@@ -701,16 +767,24 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				 * Maybe get a selected="selected" string for this option.
 				 */
 				if ( ! is_bool( $selected ) ) {
+
 					$is_selected_html = selected( $selected, $option_value, false );
+
 				} elseif ( $in_options ) {
+
 					$is_selected_html = selected( $this->options[ $name ], $option_value, false );
+
 				} elseif ( $in_defaults ) {
+
 					$is_selected_html = selected( $this->defaults[ $name ], $option_value, false );
+
 				} else {
+
 					$is_selected_html = '';
 				}
 
 				if ( $is_selected_html || $select_opt_count === 1 ) {
+
 					$selected_value = $option_value;
 				}
 
@@ -730,6 +804,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			if ( empty( $event_args[ 'is_sorted' ] ) ) {
+
 				uasort( $select_opt_arr, array( 'self', 'sort_select_opt_by_label' ) );
 			}
 
@@ -865,6 +940,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$start_num = 0, $max_input = 10, $show_first = 3, $is_disabled = false ) {
 
 			if ( empty( $name ) ) {
+
 				return;	// Just in case.
 			}
 
@@ -890,6 +966,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$input_value    = $this->in_options( $input_name ) ? $this->options[ $input_name ] : '';
 
 				if ( $is_disabled && $key_num >= $show_first && empty( $display ) ) {
+
 					continue;
 				}
 				
@@ -929,10 +1006,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			 * Set 'none' as the default value is no default is defined.
 			 */
 			if ( ! empty( $name ) && ! isset( $this->defaults[ $name ] ) ) {
+
 				$this->defaults[ $name ] = 'none';
 			}
 
 			if ( null === $is_assoc ) {
+
 				$is_assoc  = SucomUtil::is_assoc( $values );
 			}
 
@@ -943,6 +1022,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				foreach ( $values as $option_value => $label ) {
 
 					if ( is_array( $label ) ) {	// Just in case.
+
 						$label = implode( ', ', $label );
 					}
 
@@ -971,6 +1051,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			static $local_cache = array();
 
 			if ( empty( $local_cache[ $step_mins ] ) ) {
+
 				$local_cache[ $step_mins ] = SucomUtil::get_hours_range( $start_secs = 0, $end_secs = DAY_IN_SECONDS,
 					$step_secs = 60 * $step_mins, $label_format = 'H:i' );
 			}
@@ -987,6 +1068,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$event_args .= '_add_none';
 
 				if ( ! empty( $name ) && ! isset( $this->defaults[ $name ] ) ) {
+
 					$this->defaults[ $name ] = 'none';
 				}
 
@@ -1017,6 +1099,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$this->defaults[ $name ] = get_option( 'timezone_string' );
 
 				if ( empty( $this->defaults[ $name ] ) ) {
+
 					$this->defaults[ $name ] = 'UTC';
 				}
 			}
@@ -1031,6 +1114,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			 * Set 'none' as the default value is no default is defined.
 			 */
 			if ( ! empty( $name ) && ! isset( $this->defaults[ $name ] ) ) {
+
 				$this->defaults[ $name ] = 'none';
 			}
 
@@ -1058,10 +1142,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_input( $name, $css_class = '', $css_id = '', $len = 0, $holder = '', $is_disabled = false, $tabidx = null, $elmt_attr = '' ) {
 
 			if ( empty( $name ) ) {
+
 				return;	// Just in case.
 			}
 
 			if ( $is_disabled || $this->get_options( $name . ':is' ) === 'disabled' ) {
+
 				return $this->get_no_input( $name, $css_class, $css_id, $holder );
 			}
 
@@ -1070,9 +1156,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$holder = $this->get_placeholder_sanitized( $name, $holder );
 
 			if ( ! is_array( $len ) ) {	// A non-array value defaults to a max length.
+
 				if ( empty( $len ) ) {
+
 					$len = array();
+
 				} else {
+
 					$len = array( 'max' => $len );
 				}
 			}
@@ -1080,6 +1170,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			if ( ! empty( $len ) ) {
 
 				if ( empty( $css_id ) ) {
+
 					$css_id = $name;
 				}
 
@@ -1123,6 +1214,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$value = $this->in_options( $name ) ? $this->options[ $name ] : '';
 
 				if ( $this->get_options( $name . ':is' ) === 'disabled' ) {
+
 					$is_disabled = true;
 				}
 			}
@@ -1147,6 +1239,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$value = $this->in_options( $name ) ? $this->options[ $name ] : '';
 
 				if ( $this->get_options( $name . ':is' ) === 'disabled' ) {
+
 					$is_disabled = true;
 				}
 			}
@@ -1168,6 +1261,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$data        = array();
 
 			if ( preg_match( '/^(.*)(_[0-9]+)$/', $name, $matches ) ) {
+
 				$name       = $matches[ 1 ];
 				$key_suffix = $matches[ 2 ];	// Mutiple numbered option.
 			}
@@ -1198,6 +1292,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			if ( ! empty( $this->p->avail[ 'media' ][ 'ngg' ] ) ) {
+
 				$media_libs[ 'ngg' ] = 'NextGEN Gallery';
 			}
 
@@ -1221,6 +1316,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$data[ 'pid' ] = $this->options[ $input_name_id ];
 
 			} elseif ( $default_lib === 'wp' && ! empty( $holder ) ) {
+
 				$data[ 'pid' ] = $holder;
 			}
 
@@ -1230,6 +1326,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					'sucom_image_upload_button button', $input_name,
 						'', false, $is_disabled, $data );
 			} else {
+
 				$upload_button = '';
 			}
 
@@ -1262,9 +1359,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$values = $this->p->cf[ 'form' ][ 'position_' . $key ];
 
 				if ( $add_none ) {
+
 					$html .= $this->get_select_none( $name . '_' . $key, $values, $css_class = 'crop-area',
 						$css_id = '', $is_assoc = true, $is_disabled );
+
 				} else {
+
 					$html .= $this->get_select( $name . '_' . $key, $values, $css_class = 'crop-area',
 						$css_id = '', $is_assoc = true, $is_disabled );
 				}
@@ -1308,6 +1408,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_input_multi( $name, $css_class = '', $css_id = '', $start_num = 0, $max_input = 20, $show_first = 5, $is_disabled = false ) {
 
 			if ( empty( $name ) ) {
+
 				return;	// Just in case.
 			}
 
@@ -1333,6 +1434,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$input_disabled = 'disabled' === $this->get_options( $input_name . ':is' ) ? true : $is_disabled;
 
 				if ( $is_disabled && $key_num >= $show_first && empty( $display ) ) {
+
 					continue;
 				}
 				
@@ -1409,6 +1511,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$def_height = empty( $media_info[ 'vid_height' ] ) ? '' : $media_info[ 'vid_height' ];
 
 				if ( ! empty( $def_width ) && ! empty( $def_height ) ) {
+
 					return $def_width . 'x' . $def_height . 'px';
 				}
 			}
@@ -1419,10 +1522,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_textarea( $name, $css_class = '', $css_id = '', $len = 0, $holder = '', $is_disabled = false ) {
 
 			if ( empty( $name ) ) {
+
 				return;	// Just in case.
 			}
 
 			if ( $this->get_options( $name . ':is' ) === 'disabled' ) {
+
 				$is_disabled = true;
 			}
 
@@ -1431,12 +1536,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$holder = $this->get_placeholder_sanitized( $name, $holder );
 
 			if ( ! is_array( $len ) ) {
+
 				$len = array( 'max' => $len );
 			}
 
 			if ( ! empty( $len[ 'max' ] ) ) {
 
 				if ( empty( $css_id ) ) {
+
 					$css_id = $name;
 				}
 
@@ -1477,15 +1584,20 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_button( $value, $css_class = '', $css_id = '', $url = '', $newtab = false, $is_disabled = false, $data = array() ) {
 
 			if ( true === $newtab ) {
+
 				$on_click = ' onClick="window.open(\'' . SucomUtil::esc_url_encode( $url ) . '\', \'_blank\');"';
+
 			} else {
+
 				$on_click = ' onClick="window.location.href = \'' . SucomUtil::esc_url_encode( $url ) . '\';"';
 			}
 
 			$data_attr = '';
 
 			if ( ! empty( $data ) && is_array( $data ) ) {
+
 				foreach ( $data as $data_key => $data_value ) {
+
 					$data_attr .= ' data-' . $data_key . '="' . esc_attr( $data_value ) . '"';
 				}
 			}
@@ -1505,8 +1617,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			if ( false !== $opt_key ) {
 
 				if ( isset( $this->options[ $opt_key ] ) ) {
+
 					return $this->options[ $opt_key ];
+
 				} else {
+
 					return $def_val;
 				}
 
@@ -1518,6 +1633,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_mixed_multi( $mixed, $css_class, $css_id, $start_num = 0, $max_input = 10, $show_first = 2, $is_disabled = false ) {
 
 			if ( empty( $mixed ) ) {
+
 				return;	// Just in case.
 			}
 
@@ -1563,14 +1679,22 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$in_defaults = $this->in_defaults( $input_name );	// Optimize and call only once.
 
 					if ( ! empty( $atts[ 'event_names' ] ) ) {
+
 						if ( is_array( $atts[ 'event_names' ] ) ) {
+
 							$event_names = $atts[ 'event_names' ];
+
 						} elseif ( is_string( $atts[ 'event_names' ] ) ) {
+
 							$event_names = array( $atts[ 'event_names' ] );
+
 						} elseif ( ! is_array( $event_names ) ) {	// Ignore true, false, null, etc.
+
 							$event_names = array();
 						}
+
 					} else {
+
 						$event_names = array();
 					}
 
@@ -1597,12 +1721,16 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					}
 
 					if ( isset( $atts[ 'placeholder' ] ) ) {
+
 						$holder = $this->get_placeholder_sanitized( $input_name, $atts[ 'placeholder' ] );
+
 					} else {
+
 						$holder = '';
 					}
 	
 					if ( $is_disabled && $key_num >= $show_first && empty( $display ) ) {
+
 						continue;
 					}
 
@@ -1610,6 +1738,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					 * Default paragraph display is an inline-block.
 					 */
 					if ( ! empty( $atts[ 'input_label' ] ) ) {
+
 						$html .= '<p class="multi_label">' . $atts[ 'input_label' ] . ':</p> ';
 					}
 
@@ -1624,12 +1753,19 @@ if ( ! class_exists( 'SucomForm' ) ) {
 								foreach ( $input_values as $input_value ) {
 
 									if ( $in_options ) {
+
 										$input_checked = checked( $this->options[ $input_name ], $input_value, false );
+
 									} elseif ( isset( $atts[ 'input_default' ] ) ) {
+
 										$input_checked = checked( $atts[ 'input_default' ], $input_value, false );
+
 									} elseif ( $in_defaults ) {
+
 										$input_checked = checked( $this->defaults[ $input_name ], $input_value, false );
+
 									} else {
+
 										$input_checked = '';
 									}
 
@@ -1639,6 +1775,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 								}
 
 								if ( ! empty( $radio_inputs ) ) {
+
 									$html .= '<p';
 									$html .= ' class="' . esc_attr( $input_class ) . '"';
 									$html .= ' id="' . esc_attr( $input_id ) . '"';
@@ -1702,6 +1839,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 								foreach ( $select_options as $option_value => $label ) {
 
 									if ( is_array( $label ) ) {	// Just in case.
+
 										$label = implode( ', ', $label );
 									}
 
@@ -1714,8 +1852,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 									 * comparison.
 									 */
 									if ( $is_assoc ) {
+
 										$option_value = (string) $option_value;
+
 									} else {
+
 										$option_value = (string) $label;
 									}
 
@@ -1724,8 +1865,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 									 * translated (for example, product categories).
 									 */
 									if ( empty( $event_args[ 'is_transl' ] ) ) {
+
 										$label_transl = $this->get_value_transl( $label );
+
 									} else {
+
 										$label_transl = $label;
 									}
 
@@ -1734,7 +1878,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 									 * array before adding the "(default)" suffix.
 									 */
 									if ( $event_json_var ) {
+
 										if ( empty( $this->json_array_added[ $event_json_var ] ) ) {
+
 											$select_json_arr[ $option_value ] = $label_transl;
 										}
 									}
@@ -1752,14 +1898,23 @@ if ( ! class_exists( 'SucomForm' ) ) {
 									}
 
 									if ( $select_selected !== null ) {
+
 										$is_selected_html = selected( $select_selected, $option_value, false );
+
 									} elseif ( $in_options ) {
+
 										$is_selected_html = selected( $this->options[ $input_name ], $option_value, false );
+
 									} elseif ( $select_default !== null ) {
+
 										$is_selected_html = selected( $select_default, $option_value, false );
+
 									} elseif ( $in_defaults ) {
+
 										$is_selected_html = selected( $this->defaults[ $input_name ], $option_value, false );
+
 									} else {
+
 										$is_selected_html = '';
 									}
 
@@ -1781,6 +1936,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 								}
 
 								if ( empty( $event_args[ 'is_sorted' ] ) ) {
+
 									uasort( $select_opt_arr, array( 'self', 'sort_select_opt_by_label' ) );
 								}
 
@@ -1944,6 +2100,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$holder = $this->get_placeholder_sanitized( $name, $holder );
 
 			if ( ! empty( $name ) ) {
+
 				$html .= $this->get_hidden( $name );
 			}
 
@@ -1992,6 +2149,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				if ( ! $key_num ) {
 
 					if ( $holder ) {
+
 						$html .= ' placeholder="' . esc_attr( $holder ) . '"';
 					}
 
@@ -2099,6 +2257,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public static function get_no_input_clipboard( $value, $css_class = 'wide', $css_id = '' ) {
 
 			if ( empty( $css_id ) ) {
+
 				$css_id = uniqid();
 			}
 
@@ -2155,6 +2314,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				if ( $a_char === '[' ) {
 
 					if ( $a_char === $b_char ) {
+
 						return strnatcmp( $a_label, $b_label );
 					}
 
@@ -2162,6 +2322,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 				
 				if ( $b_char === '[' ) {
+
 					return 1;	// $b is first.
 				}
 				
@@ -2176,6 +2337,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$key_suffix = '';
 
 			if ( preg_match( '/^(.*)(_[0-9]+)$/', $name, $matches ) ) {
+
 				$name       = $matches[1];
 				$key_suffix = $matches[2];
 			}
@@ -2202,12 +2364,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		private function get_placeholder_sanitized( $name, $holder = '' ) {
 
 			if ( empty( $name ) ) {	// Just in case.
+
 				return $holder;
 			}
 
 			if ( true === $holder ) {	// Use default value.
 
 				if ( isset( $this->defaults[ $name ] ) ) {
+
 					$holder = $this->defaults[ $name ];
 				}
 			}
@@ -2227,6 +2391,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						} elseif ( true === $holder ) {
 
 							if ( isset( $this->defaults[ $key_default ] ) ) {
+
 								$holder = $this->defaults[ $key_default ];
 							}
 						}
@@ -2235,6 +2400,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			if ( true === $holder ) {
+
 				$holder = '';	// Must be a string.
 			}
 
@@ -2244,6 +2410,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		private function get_placeholder_attrs( $type = 'input', $holder = '' ) {
 
 			if ( $holder === '' ) {
+
 				return '';
 			}
 
@@ -2256,6 +2423,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				' onBlur="' . $js_if_same . '"';
 
 			if ( $type === 'input' ) {
+
 				$html .= ' onKeyPress="if ( event.keyCode === 13 ) { ' . $js_if_same . ' }"';
 			}
 
@@ -2282,6 +2450,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html = '';
 
 			if ( empty( $event_json_var ) || ! is_string( $event_json_var ) ) {	// Just in case.
+
 				return $html;
 			}
 
@@ -2320,8 +2489,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$script_url = $this->p->cache->get_data_url( $cache_salt, $script_js, $event_args[ 'exp_secs' ], $cache_ext = '.js' );
 
 					if ( ! empty( $script_url ) ) {
+
 						$html .= '<script src="' . $script_url . '" async></script>' . "\n";
+
 					} else {
+
 						$html .= '<script type="text/javascript">' . "\n" . $script_js . '</script>' . "\n";
 					}
 
@@ -2353,6 +2525,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html = '';
 
 			if ( $this->show_hide_js_added ) {	// Only add the event script once.
+
 				return $html;
 			}
 
@@ -2372,6 +2545,7 @@ jQuery.each( [ 'show', 'hide' ], function( i, ev ){
 			var css_class = jQuery( this ).attr( 'class' );
 
 			if ( css_class && css_class.indexOf( 'hide_' ) == 0 ) {
+
 				this.trigger( ev );
 			}
 		}

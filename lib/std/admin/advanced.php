@@ -375,13 +375,18 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$form->get_th_html( _x( 'Gravatar is Author Default Image', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_gravatar_api' ) . 
 			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
 
+			$table_rows[ 'plugin_gravatar_size' ] = $form->get_tr_hide( 'basic', 'plugin_gravatar_size' ) . 
+			$form->get_th_html( _x( 'Gravatar Image Size', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_gravatar_size' ) . 
+			'<td class="blank">' . $form->get_no_input( 'plugin_gravatar_size', $css_class = 'short' ) . '</td>';
+
 			$table_rows[ 'plugin_shortener' ] = '' . 
 			$form->get_th_html( _x( 'URL Shortening Service', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_shortener' ) . 
-			'<td class="blank">[None]</td>';
+			'<td class="blank">' . $form->get_no_select_none( 'plugin_shortener' ) . '</td>';
 
 			$table_rows[ 'plugin_min_shorten' ] = $form->get_tr_hide( 'basic', 'plugin_min_shorten' ) . 
 			$form->get_th_html( _x( 'Minimum URL Length to Shorten', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_min_shorten' ) . 
-			'<td nowrap class="blank">' . $form->options[ 'plugin_min_shorten' ] . ' ' . _x( 'characters', 'option comment', 'wpsso' ) . '</td>';
+			'<td nowrap class="blank">' . $form->get_no_input( 'plugin_min_shorten', $css_class = 'short' ) . ' ' .
+				_x( 'characters', 'option comment', 'wpsso' ) . '</td>';
 
 			$table_rows[ 'plugin_wp_shortlink' ] = '' . 
 			$form->get_th_html( _x( 'Use Shortened URL for WP Shortlink', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_wp_shortlink' ) . 

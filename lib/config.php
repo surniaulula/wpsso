@@ -23,7 +23,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '7.16.0-dev.3',	// Plugin version.
-					'opt_version' => '748',		// Increment when changing default option values.
+					'opt_version' => '749',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Make sure your content looks great on social sites and search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -1196,40 +1196,30 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Schema image sizes.
 					 */
-					'schema_article_img_width'       => 1200,		// Must be at least 696px for Articles.
-					'schema_article_img_height'      => 1800,
-					'schema_article_img_crop'        => 0,
-					'schema_article_img_crop_x'      => 'center',
-					'schema_article_img_crop_y'      => 'center',
-					'schema_article_1_1_img_width'   => 1200,		// Must be at least 1200px for Articles.
-					'schema_article_1_1_img_height'  => 1200,
-					'schema_article_1_1_img_crop'    => 1,
-					'schema_article_1_1_img_crop_x'  => 'center',
-					'schema_article_1_1_img_crop_y'  => 'center',
-					'schema_article_4_3_img_width'   => 1200,		// Must be at least 1200px for Articles.
-					'schema_article_4_3_img_height'  => 900,
-					'schema_article_4_3_img_crop'    => 1,
-					'schema_article_4_3_img_crop_x'  => 'center',
-					'schema_article_4_3_img_crop_y'  => 'center',
-					'schema_article_16_9_img_width'  => 1200,		// Must be at least 1200px for Articles.
-					'schema_article_16_9_img_height' => 675,
-					'schema_article_16_9_img_crop'   => 1,
-					'schema_article_16_9_img_crop_x' => 'center',
-					'schema_article_16_9_img_crop_y' => 'center',
-					'schema_img_width'               => 1200,		// Must be at least 400px.
-					'schema_img_height'              => 1800,
-					'schema_img_crop'                => 0,
-					'schema_img_crop_x'              => 'center',
-					'schema_img_crop_y'              => 'center',
+					'schema_1_1_img_width'   => 1200,
+					'schema_1_1_img_height'  => 1200,
+					'schema_1_1_img_crop'    => 1,
+					'schema_1_1_img_crop_x'  => 'center',
+					'schema_1_1_img_crop_y'  => 'center',
+					'schema_4_3_img_width'   => 1200,
+					'schema_4_3_img_height'  => 900,
+					'schema_4_3_img_crop'    => 1,
+					'schema_4_3_img_crop_x'  => 'center',
+					'schema_4_3_img_crop_y'  => 'center',
+					'schema_16_9_img_width'  => 1200,
+					'schema_16_9_img_height' => 675,
+					'schema_16_9_img_crop'   => 1,
+					'schema_16_9_img_crop_x' => 'center',
+					'schema_16_9_img_crop_y' => 'center',
 
 					/**
 					 * Schema thumbnail image size.
 					 */
-					'thumb_img_width'              => 1200,
-					'thumb_img_height'             => 630,
-					'thumb_img_crop'               => 1,
-					'thumb_img_crop_x'             => 'center',
-					'thumb_img_crop_y'             => 'center',
+					'thumb_img_width'  => 1200,
+					'thumb_img_height' => 630,
+					'thumb_img_crop'   => 1,
+					'thumb_img_crop_x' => 'center',
+					'thumb_img_crop_y' => 'center',
 
 					/**
 					 * Standard WordPress types.
@@ -1570,6 +1560,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_no_title_text'  => 'No Title',			// No Title Text.
 					'plugin_no_desc_text'   => 'No Description.',		// No Description Text.
 					'plugin_gravatar_api'   => 1,				// Gravatar is Author Default Image
+					'plugin_gravatar_size'  => 1200,			// Gravatar Image Size
 					'plugin_facebook_api'   => 1,				// Check for Embedded Media: Facebook Videos.
 					'plugin_slideshare_api' => 1,				// Check for Embedded Media: Slideshare Presentations.
 					'plugin_soundcloud_api' => 1,				// Check for Embedded Media: Soundcloud Tracks.

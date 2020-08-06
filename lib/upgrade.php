@@ -357,7 +357,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'schema_logo_url'       => 'site_org_logo_url',
 					'site_place_id'         => 'site_org_place_id',
 				),
-				747 => array(
+				748 => array(
 					'schema_article_img_width'       => '',
 					'schema_article_img_height'      => '',
 					'schema_article_img_crop'        => '',

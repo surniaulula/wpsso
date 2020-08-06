@@ -49,6 +49,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Instantiate the WpssoSchemaNoScript class object.
 			 */
 			if ( ! class_exists( 'WpssoSchemaNoScript' ) ) {
+
 				require_once WPSSO_PLUGINDIR . 'lib/schema-noscript.php';
 			}
 
