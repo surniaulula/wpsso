@@ -339,6 +339,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added more debugging messages to the `WpssoProEcomWooCommerce` class for missing product methods.
 	* Added a 'label_transl' key to the `$features` array for the SSO &gt; Dashboard &gt; Premium Features Status metabox.
 	* Refactored the Gravatar integration module to always fallback to the "mystery person" image.
+	* Refactored the `WpssoMedia->get_attached_images()` method to use a local cache for post ID attached image IDs.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
