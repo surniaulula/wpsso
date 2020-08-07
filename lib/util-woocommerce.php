@@ -10,10 +10,12 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+
 	die( 'Do. Or do not. There is no try.' );
 }
 
@@ -31,6 +33,7 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 		}
@@ -41,8 +44,7 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 
 			$product = false;
 
-			if ( isset( $woocommerce->product_factory ) &&
-				is_callable( array( $woocommerce->product_factory, 'get_product' ) ) ) {
+			if ( isset( $woocommerce->product_factory ) && is_callable( array( $woocommerce->product_factory, 'get_product' ) ) ) {
 
 				$product = $woocommerce->product_factory->get_product( $product_id );
 
@@ -51,6 +53,7 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 				$product = new WC_Product( $product_id );
 
 			} elseif ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'no method or class to get product' );
 			}
 
@@ -70,6 +73,7 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 				$product_id = $product->id;
 
 			} elseif ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'no method or property to get product id' );
 			}
 
@@ -89,6 +93,7 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 				$product_type = $product->product_type;
 
 			} elseif ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'no method or property to get product type' );
 			}
 
@@ -109,6 +114,7 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 				if ( ! $variation ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'product child id ' . $child_id . ' is empty' );
 					}
 
@@ -117,6 +123,7 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 				} elseif ( ! $variation->exists() ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'product child id ' . $child_id . ' does not exist' );
 					}
 
@@ -125,6 +132,7 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 				} elseif ( 'variation' !== $this->get_product_type( $variation ) ) {	// Just in case.
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'product child id ' . $child_id . ' type is not a variation' );
 					}
 
@@ -133,6 +141,7 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 				} elseif ( ! $variation->variation_is_visible() ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'product child id ' . $child_id . ' variation is not visible' );
 					}
 
@@ -241,6 +250,7 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 			$to_unit = strtolower( $to_unit );
 
 			if ( empty( $from_unit ) ) {
+
 				$from_unit = strtolower( get_option( 'woocommerce_fluid_volume_unit', $default = 'ml' ) );
 			}
 
@@ -255,41 +265,72 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 					 * Metric units.
 					 */
 					case 'ml':		// Millilitre.
+
 						$volume *= 1;
+
 						break;
+
 					case 'cl':		// Centilitre.
+
 						$volume *= 10;
+
 						break;
+
 					case 'l':		// Liter.
+
 						$volume *= 1000;
+
 						break;
+
 					case 'kl':		// Kiloliter.
+
 						$volume *= 1000000;
+
 						break;
 
 					/**
 					 * Imperial units.
 					 */
 					case 'US tsp':		// US teaspoon.
+
 						$volume *= 4.92892;
+
 						break;
+
 					case 'US tbsp':		// US tablespoon.
+
 						$volume *= 14.7868;
+
 						break;
+
 					case 'US fl oz':	// US fluid oz.
+
 						$volume *= 29.5735;
+
 						break;
+
 					case 'US cup':		// US cup.
+
 						$volume *= 236.588;
+
 						break;
+
 					case 'US pt':		// US pint.
+
 						$volume *= 473.176;
+
 						break;
+
 					case 'US qt':		// US quart.
+
 						$volume *= 946.353;
+
 						break;
+
 					case 'US gal':		// US gallon.
+
 						$volume *= 3785.41;
+
 						break;
 				}
 
@@ -302,41 +343,72 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 					 * Metric units.
 					 */
 					case 'ml':		// Millilitre.
+
 						$volume *= 1;
+
 						break;
+
 					case 'cl':		// Centilitre.
+
 						$volume *= 0.1;
+
 						break;
+
 					case 'l':		// Liter.
+
 						$volume *= 0.001;
+
 						break;
+
 					case 'kl':		// Kiloliter.
+
 						$volume *= 0.000001;
+
 						break;
 
 					/**
 					 * Imperial units.
 					 */
 					case 'US tsp':		// US teaspoon.
+
 						$volume *= 0.202884;
+
 						break;
+
 					case 'US tbsp':		// US tablespoon.
+
 						$volume *= 0.067628;
+
 						break;
+
 					case 'US fl oz':	// US fluid oz.
+
 						$volume *= 0.033814;
+
 						break;
+
 					case 'US cup':		// US cup.
+
 						$volume *= 0.00422675;
+
 						break;
+
 					case 'US pt':		// US pint.
+
 						$volume *= 0.00211338;
+
 						break;
+
 					case 'US qt':		// US quart.
+
 						$volume *= 0.00105669;
+
 						break;
+
 					case 'US gal':		// US gallon.
+
 						$volume *= 0.000264172;
+
 						break;
 				}
 			}

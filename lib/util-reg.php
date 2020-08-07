@@ -6,10 +6,12 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+
 	die( 'Do. Or do not. There is no try.' );
 }
 
@@ -27,6 +29,7 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 		}
@@ -48,6 +51,7 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
 				if ( empty( $info[ 'version' ] ) ) {	// Not active.
+
 					continue;
 				}
 
@@ -81,6 +85,7 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 			}
 
 			if ( $have_changes ) {
+
 				$ext_reg = get_option( WPSSO_REG_TS_NAME, array() );
 			}
 
@@ -128,8 +133,11 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 					$event_version = SucomUtilWP::get_option_key( WPSSO_REG_TS_NAME, $ext . '_' . $event . '_version' );
 
 					if ( $event_version === $protect ) {
+
 						$protect = true;
+
 					} else {
+
 						$protect = false;
 					}
 

@@ -58,7 +58,7 @@ if ( ! class_exists( 'WpssoSubmenuSocialAccounts' ) && class_exists( 'WpssoAdmin
 				apply_filters( $filter_name, array(), $this->form )
 			);
 
-			$this->p->util->do_metabox_table( $table_rows, 'metabox-' . $metabox_id );
+			$this->p->util->metabox->do_table( $table_rows, 'metabox-' . $metabox_id );
 		}
 
 		protected function get_table_rows( $metabox_id, $tab_key ) {

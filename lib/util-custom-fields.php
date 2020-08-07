@@ -10,10 +10,12 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+
 	die( 'Do. Or do not. There is no try.' );
 }
 
@@ -31,6 +33,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -50,6 +53,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 		public function filter_import_custom_fields( array $md_opts, $wp_meta = false, array $cf_meta_keys = array() ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -59,6 +63,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 			if ( empty( $wp_meta ) || ! is_array( $wp_meta ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'wp_meta provided is empty or not an array' );
 				}
 
@@ -66,7 +71,9 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 			}
 
 			if ( ! empty( $cf_meta_keys ) ) {
+
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log_arr( '$cf_meta_keys', $cf_meta_keys );
 				}
 			}
@@ -76,6 +83,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 			static $local_cache = null;
 
 			if ( null === $local_cache ) {
+
 				$local_cache = (array) apply_filters( $this->p->lca . '_cf_md_index', $this->p->cf[ 'opt' ][ 'cf_md_index' ] );
 			}
 
@@ -88,6 +96,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 				if ( empty( $md_key ) ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'custom field ' . $cf_key . ' key is disabled' );
 					}
 
@@ -101,6 +110,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 					if ( empty( $cf_meta_keys[ $cf_key ] ) ) {	// Just in case.
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'meta keys ' . $cf_key . ' value is empty' );
 						}
 
@@ -117,6 +127,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 					if ( empty( $this->p->options[ $cf_key ] ) ) {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'custom field ' . $cf_key . ' option is empty' );
 						}
 
@@ -127,6 +138,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 				}
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'using custom field ' . $cf_key . ' meta key ' . $wp_meta_key );
 				}
 
@@ -136,6 +148,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 				if ( ! isset( $wp_meta[ $wp_meta_key ][ 0 ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'no ' . $wp_meta_key . ' meta key element 0 in wp_meta' );
 					}
 
@@ -143,6 +156,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 				}
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( $wp_meta_key . ' meta key found for ' . $md_key . ' option' );
 				}
 
@@ -159,12 +173,14 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 				if ( is_array( $mixed ) ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( $wp_meta_key . ' is array of ' . count( $mixed ) . ' values (decoding each value)' );
 					}
 
 					foreach ( $mixed as $val ) {
 
 						if ( is_array( $val ) ) {
+
 							$val = SucomUtil::array_implode( $val );
 						}
 
@@ -174,6 +190,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 				} else {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'decoding ' . $wp_meta_key . ' as string of ' . strlen( $mixed ) . ' chars' );
 					}
 
@@ -194,6 +211,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 					$md_opts[ $md_key . ':is' ] = 'disabled';
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'option ' . $md_key . ' = ' . print_r( $md_opts[ $md_key ], true ) );
 					}
 
@@ -212,6 +230,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 						$values = array_map( 'trim', explode( PHP_EOL, reset( $values ) ) );
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'exploded ' . $wp_meta_key . ' into array of ' . count( $values ) . ' elements' );
 						}
 					}

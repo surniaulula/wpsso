@@ -136,7 +136,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				);
 			}
 
-			$this->p->util->do_metabox_tabbed( $metabox_id, $tabs, $table_rows );
+			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
 		}
 
 		public function show_metabox_edit() {
@@ -161,7 +161,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				);
 			}
 
-			$this->p->util->do_metabox_tabbed( $metabox_id, $tabs, $table_rows );
+			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
 		}
 
 		public function show_metabox_types() {
@@ -184,7 +184,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				);
 			}
 
-			$this->p->util->do_metabox_tabbed( $metabox_id, $tabs, $table_rows );
+			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
 		}
 
 		public function show_metabox_contact_fields() {
@@ -208,9 +208,9 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				);
 			}
 
-			$this->p->util->do_metabox_table( array( '<td>' . $info_msg . '</td>' ), 'metabox-' . $metabox_id . '-info' );
+			$this->p->util->metabox->do_table( array( '<td>' . $info_msg . '</td>' ), 'metabox-' . $metabox_id . '-info' );
 
-			$this->p->util->do_metabox_tabbed( $metabox_id, $tabs, $table_rows );
+			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
 		}
 
 		public function show_metabox_head_tags() {
@@ -238,9 +238,9 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				);
 			}
 
-			$this->p->util->do_metabox_table( array( '<td>' . $info_msg . '</td>' ), 'metabox-' . $metabox_id . '-info' );
+			$this->p->util->metabox->do_table( array( '<td>' . $info_msg . '</td>' ), 'metabox-' . $metabox_id . '-info' );
 
-			$this->p->util->do_metabox_tabbed( $metabox_id, $tabs, $table_rows );
+			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
 		}
 
 		protected function get_table_rows( $metabox_id, $tab_key ) {

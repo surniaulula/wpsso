@@ -26,9 +26,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		private $p;		// Wpsso.
 
-		private $uniq_urls    = array();	// Array to detect duplicate images, etc.
+		private $cache_uniq_urls = array();	// Array to detect duplicate images, etc.
 
-		private $size_labels  = array();	// Reference array for image size labels.
+		private $cache_size_labels = array();	// Reference array for image size labels.
 
 		private $is_functions = array(
 			'is_ajax',
@@ -71,6 +71,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		public $cache;		// WpssoUtilCache.
 		public $cf;		// WpssoUtilCustomFields.
+		public $metabox;	// WpssoUtilMetabox.
 		public $reg;		// WpssoUtilReg.
 		public $wc;		// WpssoUtilWooCommerce.
 
@@ -82,6 +83,25 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				$this->p->debug->mark();
 			}
+
+			$this->set_instances( $plugin );
+
+			$this->add_plugin_filters( $this, array(
+				'pub_lang' => 3,
+			) );
+
+			/**
+			 * Several actions must be hooked to define our image sizes on the front-end, back-end, AJAX calls, REST
+			 * API calls, etc.
+			 */
+			add_action( 'wp', array( $this, 'add_plugin_image_sizes' ), -100 );		// For front-end.
+
+			add_action( 'admin_init', array( $this, 'add_plugin_image_sizes' ), -100 );	// For back-end + AJAX compatibility.
+
+			add_action( 'rest_api_init', array( $this, 'add_plugin_image_sizes' ), -100 );	// For REST API compatibility.
+		}
+
+		public function set_instances( &$plugin ) {
 
 			/**
 			 * WpssoUtilCache.
@@ -102,6 +122,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$this->cf = new WpssoUtilCustomFields( $plugin, $this );	// Constructor uses $this->add_plugin_filters().
+
+			/**
+			 * WpssoUtilMetabox.
+			 */
+			if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
+
+				require_once WPSSO_PLUGINDIR . 'lib/util-metabox.php';
+			}
+
+			$this->metabox = new WpssoUtilMetabox( $plugin );
 
 			/**
 			 * WpssoUtilReg.
@@ -125,20 +155,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				$this->wc = new WpssoUtilWooCommerce( $plugin );
 			}
-
-			$this->add_plugin_filters( $this, array(
-				'pub_lang' => 3,
-			) );
-
-			/**
-			 * Several actions must be hooked to define our image sizes on the front-end, back-end, AJAX calls, REST
-			 * API calls, etc.
-			 */
-			add_action( 'wp', array( $this, 'add_plugin_image_sizes' ), -100 );		// For front-end.
-
-			add_action( 'admin_init', array( $this, 'add_plugin_image_sizes' ), -100 );	// For back-end + AJAX compatibility.
-
-			add_action( 'rest_api_init', array( $this, 'add_plugin_image_sizes' ), -100 );	// For REST API compatibility.
 		}
 
 		public function filter_pub_lang( $current_lang, $publisher, $mixed = 'current' ) {
@@ -671,24 +687,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Example $size_name = 'wpsso-opengraph'.
-		 */
-		public function get_image_size_label( $size_name ) {
-
-			if ( ! empty( $this->size_labels[ $size_name ] ) ) {
-
-				return $this->size_labels[ $size_name ];
-
-			} else {
-				return $size_name;
-			}
-		}
-
-		/**
 		 * Can be called directly and from the "wp", "rest_api_init", and "current_screen" actions. The $wp_obj variable
 		 * can be false or a WP object (WP_Post, WP_Term, WP_User, WP_REST_Server, etc.). The $mod variable can be false,
-		 * and if so, it will be set using get_page_mod(). This method does not return a value, so do not use as a filter.
-		 * ;-)
+		 * and if so, it will be set using get_page_mod(). This method does not return a value, so do not use it as a
+		 * filter. ;-)
 		 */
 		public function add_plugin_image_sizes( $wp_obj = false, $image_sizes = array(), $filter_sizes = true ) {
 
@@ -812,13 +814,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					/**
 					 * A lookup array for image size labels, used in image size error messages.
 					 */
-					$this->size_labels[ $this->p->lca . '-' . $size_info[ 'name' ] ] = $size_info[ 'label' ];
+					$this->cache_size_labels[ $this->p->lca . '-' . $size_info[ 'name' ] ] = $size_info[ 'label' ];
 
 					/**
 					 * Add the image size.
 					 */
-					add_image_size( $this->p->lca . '-' . $size_info[ 'name' ],
-						$size_info[ 'width' ], $size_info[ 'height' ], $size_info[ 'crop' ] );
+					add_image_size( $this->p->lca . '-' . $size_info[ 'name' ], $size_info[ 'width' ], $size_info[ 'height' ], $size_info[ 'crop' ] );
 
 					if ( $this->p->debug->enabled ) {
 
@@ -839,6 +840,57 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				$this->p->debug->mark( 'define image sizes' );	// End timer.
 			}
+		}
+
+		/**
+		 * Example $size_name = 'wpsso-opengraph' returns 'Open Graph Image'.
+		 */
+		public function get_image_size_label( $size_name ) {
+
+			if ( ! empty( $this->cache_size_labels[ $size_name ] ) ) {
+
+				return $this->cache_size_labels[ $size_name ];
+
+			} else {
+
+				return $size_name;
+			}
+		}
+
+		public function get_image_size_names( $mixed ) {
+
+			$size_names = array_keys( $this->cache_size_labels );
+
+			if ( is_array( $mixed ) ) {
+
+				return array_intersect( $size_names, $mixed );	// Sanitize and return.
+
+			} elseif ( is_string( $mixed ) ) {
+
+				switch ( $mixed ) {
+
+					case 'opengraph':
+					case 'pinterest':
+					case 'thumbnail':
+
+						return array( $this->p->lca . '-' . $mixed );
+
+					case 'schema':
+					case $this->p->lca . '-schema':
+
+						return array(
+							$this->p->lca . '-schema-1-1',
+							$this->p->lca . '-schema-4-3',
+							$this->p->lca . '-schema-16-9',
+						);
+
+					default:
+
+						return array_intersect( $size_names, array( $mixed ) );
+				}
+			}
+
+			return array();
 		}
 
 		/**
@@ -2837,15 +2889,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->log( 'relative url found = ' . $url );
 			}
 
-			if ( 0 === strpos( $url, '//' ) ) {
+			if ( 0 === strpos( $url, '//' ) ) {	// Example: //host.com/dir/file/
 
 				$url = self::get_prot() . ':' . $url;
 
-			} elseif ( 0 === strpos( $url, '/' ) )  {
+			} elseif ( 0 === strpos( $url, '/' ) )  {	// Example: /dir/file/
 
 				$url = home_url( $url );
 
-			} else {
+			} else {	// Example: file/
+
 				$base = self::get_prot() . '://' . $_SERVER[ 'SERVER_NAME' ] . $_SERVER[ 'REQUEST_URI' ];
 
 				if ( false !== strpos( $base, '?' ) ) {
@@ -2877,12 +2930,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			foreach ( $mixed as $context ) {
 
-				if ( isset( $this->uniq_urls[ $context ] ) ) {
+				if ( isset( $this->cache_uniq_urls[ $context ] ) ) {
 
-					$cleared += count( $this->uniq_urls[ $context ] );
+					$cleared += count( $this->cache_uniq_urls[ $context ] );
 				}
 
-				$this->uniq_urls[ $context ] = array();
+				$this->cache_uniq_urls[ $context ] = array();
 
 				if ( $this->p->debug->enabled ) {
 
@@ -2894,6 +2947,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		public function is_dupe_url( $url, $context = 'default' ) {
+
 			return $this->is_uniq_url( $url, $context ) ? false : true;
 		}
 
@@ -2904,30 +2958,21 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return false;
 			}
 
-			/**
-			 * Complete the url with a protocol name.
-			 */
-			if ( 0 === strpos( $url, '//' ) ) {
+			$url = $this->fix_relative_url( $url );	// Just in case.
 
-				$url = self::get_prot() . '//' . $url;
-			}
+			if ( ! isset( $this->cache_uniq_urls[ $context ][ $url ] ) ) {
 
-			if ( $this->p->debug->enabled && strpos( $url, '://' ) === false ) {
+				if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'incomplete url given for context ' . $context . ': ' . $url );
-			}
+					$this->p->debug->log( 'uniq url saved for context ' . $context . ': ' . $url );
+				}
 
-			if ( ! isset( $this->uniq_urls[ $context ][ $url ] ) ) {
-
-				$this->uniq_urls[ $context ][ $url ] = 1;
-
-				return true;
-
+				return $this->cache_uniq_urls[ $context ][ $url ] = true;
 			}
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'duplicate url rejected for context ' . $context . ': ' . $url );
+				$this->p->debug->log( 'duplicate url found for context ' . $context . ': ' . $url );
 			}
 
 			return false;
@@ -3046,6 +3091,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		public function safe_apply_filters( array $args, array $mod = array(), $mtime_max = 0, $use_bfo = false ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -3402,230 +3448,20 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return '<a href="' . $admin_url . '">' . $link_text . '</a>';
 		}
 
+		/**
+		 * Deprecated on 2020/07/07.
+		 */
 		public function do_metabox_tabbed( $metabox_id = '', $tabs = array(), $table_rows = array(), $args = array() ) {
 
-			echo $this->get_metabox_tabbed( $metabox_id, $tabs, $table_rows, $args );
+			echo $this->metabox->get_tabbed( $metabox_id, $tabs, $table_rows, $args );
 		}
 
-		public function get_metabox_tabbed( $metabox_id = '', $tabs = array(), $table_rows = array(), $args = array() ) {
-
-			$tab_keys           = array_keys( $tabs );
-			$default_tab        = '_' . reset( $tab_keys );		// Must start with an underscore.
-			$class_metabox_tabs = 'sucom-metabox-tabs';
-			$class_link         = 'sucom-tablink';
-			$class_tabset       = 'sucom-tabset';
-			$metabox_html       = '';
-
-			if ( ! empty( $metabox_id ) ) {
-
-				$metabox_id = '_' . trim( $metabox_id, '_' );		// Must start with an underscore.
-
-				$class_metabox_tabs .= ' ' . $class_metabox_tabs . $metabox_id;
-			}
-
-			extract( array_merge( array(
-				'layout'        => 'horizontal',	// 'horizontal', 'vertical', or 'responsive'.
-				'is_auto_draft' => false,
-				'scroll_to'     => isset( $_GET[ 'scroll_to' ] ) ? '#' . self::sanitize_key( $_GET[ 'scroll_to' ] ) : '',
-			), $args ) );
-
-			$class_metabox_tabs .= ' ' . $layout . ( $is_auto_draft ? ' auto-draft' : '' );
-
-			$metabox_html .= "\n" . '<script type="text/javascript">jQuery( document ).ready( function() { ' . 
-				'sucomTabs(\'' . $metabox_id . '\', \'' . $default_tab . '\', \'' . $scroll_to . '\'); });</script>' . "\n";
-
-			$metabox_html .= '<div class="' . $class_metabox_tabs . '">' . "\n";
-
-			$metabox_html .= '<ul class="' . $class_metabox_tabs . '">' . "\n";
-
-			/**
-			 * Add the settings tab list.
-			 */
-			$tab_num = 0;
-
-			foreach ( $tabs as $tab => $title_transl ) {
-
-				$tab_num++;
-
-				$class_href_key = $class_tabset . $metabox_id . '-tab_' . $tab;
-				$class_icon_key = $class_link . ' ' . $class_link . $metabox_id . ' ' . $class_link . '-icon ' . $class_link . '-href_' . $tab;
-				$class_link_key = $class_link . ' ' . $class_link . $metabox_id . ' ' . $class_link . '-text ' . $class_link . '-href_' . $tab;
-
-				$metabox_html .= '<li class="tab_space' . ( $tab_num === 1 ? ' start_tabs' : '' ) . '"></li>';
-				$metabox_html .= '<li class="' . $class_href_key . '">';
-				$metabox_html .= '<a class="' . $class_icon_key . '" href="#' . $class_href_key . '"></a>';
-				$metabox_html .= '<a class="' . $class_link_key . '" href="#' . $class_href_key . '">' . $title_transl . '</a>';
-				$metabox_html .= '</li>';	// Do not add a newline.
-			}
-
-			$metabox_html .= '<li class="tab_space end_tabs"></li>';
-			$metabox_html .= '</ul><!-- .' . $class_metabox_tabs . ' -->' . "\n";
-
-			/**
-			 * Add the settings table for each tab.
-			 */
-			foreach ( $tabs as $tab => $title_transl ) {
-
-				$class_href_key = $class_tabset . $metabox_id . '-tab_' . $tab;
-
-				$metabox_html .= $this->get_metabox_table( $table_rows[ $tab ], $class_href_key, 
-					( empty( $metabox_id ) ? '' : $class_tabset . $metabox_id ), $class_tabset, $title_transl );
-			}
-
-			$metabox_html .= '</div><!-- .' . $class_metabox_tabs . ' -->' . "\n";
-
-			return $metabox_html;
-		}
-
+		/**
+		 * Deprecated on 2020/07/07.
+		 */
 		public function do_metabox_table( $table_rows, $class_href_key = '', $class_tabset_mb = '', $class_tabset = 'sucom-no_tabset', $title_transl = '' ) {
 
-			echo $this->get_metabox_table( $table_rows, $class_href_key, $class_tabset_mb, $class_tabset, $title_transl );
-		}
-
-		public function get_metabox_table( $table_rows, $class_href_key = '', $class_tabset_mb = '', $class_tabset = 'sucom-no_tabset', $title_transl = '' ) {
-
-			$metabox_html = '';
-
-			if ( ! is_array( $table_rows ) ) {	// Just in case.
-
-				return $metabox_html;
-			}
-
-			$total_rows  = count( $table_rows );
-			$count_rows  = 0;
-			$hidden_opts = 0;
-			$hidden_rows = 0;
-			$show_opts   = class_exists( $this->p->lca . 'user' ) ? call_user_func( array( $this->p->lca . 'user', 'show_opts' ) ) : 'basic';
-
-			foreach ( $table_rows as $key => $row ) {
-
-				if ( empty( $row ) ) {	// Just in case.
-
-					continue;
-				}
-
-				/**
-				 * Default row class and id attribute values.
-				 */
-				$tr = array(
-					'class' => 'sucom_alt' . 
-						( $count_rows % 2 ) . 
-						( $count_rows === 0 ? ' first_row' : '' ) . 
-						( $count_rows === ( $total_rows - 1 ) ? ' last_row' : '' ),
-					'id' => ( is_int( $key ) ? '' : 'tr_' . $key )
-				);
-
-				/**
-				 * If we don't already have a table row tag, then add one.
-				 */
-				if ( strpos( $row, '<tr ' ) === false ) {
-
-					$row = '<tr class="' . $tr[ 'class' ] . '"' . ( empty( $tr[ 'id' ] ) ? '' : ' id="' . $tr[ 'id' ] . '"' ) . '>' . $row;
-
-				} else {
-
-					foreach ( $tr as $att => $val ) {
-
-						if ( empty( $tr[ $att ] ) ) {
-
-							continue;
-						}
-
-						/**
-						 * If we're here, then we have a table row tag already. Count the number of rows
-						 * and options that are hidden.
-						 */
-						if ( $att === 'class' && ! empty( $show_opts ) &&
-							( $matched = preg_match( '/<tr [^>]*class="[^"]*hide(_row)?_in_' . $show_opts . '[" ]/', $row, $m ) > 0 ) ) {
-
-							if ( ! isset( $m[ 1 ] ) ) {
-
-								$hidden_opts += preg_match_all( '/(<th|<tr[^>]*><td)/', $row, $all_matches );
-							}
-
-							$hidden_rows += $matched;
-						}
-
-						/**
-						 * Add the attribute value.
-						 */
-						$row = preg_replace( '/(<tr [^>]*' . $att . '=")([^"]*)(")/', '$1$2 ' . $tr[ $att ] . '$3', $row, -1, $cnt );
-
-						/**
-						 * If one hasn't been added, then add both the attribute and its value.
-						 */
-						if ( $cnt < 1 ) {
-
-							$row = preg_replace( '/(<tr )/', '$1' . $att . '="' . $tr[ $att ] . '" ', $row, -1, $cnt );
-						}
-					}
-				}
-
-				/**
-				 * Add a closing table row tag if we don't already have one.
-				 */
-				if ( strpos( $row, '</tr>' ) === false ) {
-
-					$row .= '</tr>' . "\n";
-				}
-
-				/**
-				 * Update the table row array element with the new value.
-				 */
-				$table_rows[ $key ] = $row;
-
-				$count_rows++;
-			}
-
-			if ( 0 === $count_rows ) {
-				
-				$table_rows[ 'no_options' ] = '<tr><td align="center">' .
-					'<p class="status-msg">' . __( 'No options available.', 'wpsso' ) . '</p>' .
-					'</td></tr>';
-
-				$count_rows++;
-			}
-
-			$div_class = ( empty( $show_opts ) ? '' : 'sucom-show_' . $show_opts ) . 
-				( empty( $class_tabset ) ? '' : ' ' . $class_tabset ) . 
-				( empty( $class_tabset_mb ) ? '' : ' ' . $class_tabset_mb ) . 
-				( empty( $class_href_key ) ? '' : ' ' . $class_href_key );
-
-			$table_class = 'sucom-settings ' . $this->p->lca . 
-				( empty( $class_href_key ) ? '' : ' ' . $class_href_key ) . 
-				( $hidden_rows > 0 && $hidden_rows === $count_rows ? ' hide_in_' . $show_opts : '' );
-
-			$metabox_html .= '<div class="' . $div_class . '">' . "\n";
-			$metabox_html .= $title_transl ? '<h3 class="sucom-metabox-tab_title">' . $title_transl . '</h3>' : '';
-			$metabox_html .= '<table class="' . $table_class . '">' . "\n";
-
-			foreach ( $table_rows as $row ) {
-				$metabox_html .= $row;
-			}
-
-			$metabox_html .= '</table><!-- .' . $table_class . ' --> ' . "\n";
-			$metabox_html .= '</div><!-- .' . $div_class . ' -->' . "\n";
-
-			$show_opts_label = $this->p->cf[ 'form' ][ 'show_options' ][ $show_opts ];
-
-			if ( $hidden_opts > 0 ) {
-
-				$metabox_html .= '<div class="hidden_opts_msg ' . $class_tabset . '-msg ' . $class_tabset_mb . '-msg ' . $class_href_key . '-msg">' .
-					sprintf( _x( '%1$d additional options not shown in "%2$s" view', 'option comment', 'wpsso' ), $hidden_opts,
-						_x( $show_opts_label, 'option value', 'wpsso' ) ) .
-					' (<a href="javascript:void(0);" onClick="sucomViewUnhideRows( \'' . $class_href_key . '\', \'' . $show_opts . '\' );">' .
-						_x( 'show these options now', 'option comment', 'wpsso' ) . '</a>)</div>' . "\n";
-
-			} elseif ( $hidden_rows > 0 ) {
-
-				$metabox_html .= '<div class="hidden_opts_msg ' . $class_tabset . '-msg ' . $class_tabset_mb . '-msg ' . $class_href_key . '-msg">' .
-					sprintf( _x( '%1$d additional rows not shown in "%2$s" view', 'option comment', 'wpsso' ), $hidden_rows,
-						_x( $show_opts_label, 'option value', 'wpsso' ) ) .
-					' (<a href="javascript:void(0);" onClick="sucomViewUnhideRows( \'' . $class_href_key . '\', \'' . $show_opts . '\', \'hide_row_in\' );">' .
-						_x( 'show these rows now', 'option comment', 'wpsso' ) . '</a>)</div>' . "\n";
-			}
-
-			return $metabox_html;
+			echo $this->metabox->get_table( $table_rows, $class_href_key, $class_tabset_mb, $class_tabset, $title_transl );
 		}
 
 		/**

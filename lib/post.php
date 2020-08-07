@@ -1021,8 +1021,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			$exec_count = $this->p->debug->enabled ? 0 : (int) get_option( WPSSO_POST_CHECK_COUNT_NAME, $default = 0 );
-
-			$max_count = SucomUtil::get_const( 'WPSSO_DUPE_CHECK_HEADER_COUNT', 10 );
+			$max_count  = SucomUtil::get_const( 'WPSSO_DUPE_CHECK_HEADER_COUNT', 10 );
 
 			if ( $exec_count >= $max_count ) {
 
@@ -1060,8 +1059,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 */
 			$is_admin = is_admin();	// Call the function only once.
 
-			$short = $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'short' ];
-
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'getting html for ' . $check_url );
@@ -1083,9 +1080,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$this->p->cache->clear( $check_url );	// Clear the cached webpage, just in case.
 
 			$exp_secs     = $this->p->debug->enabled ? false : null;
-			$webpage_html = $this->p->cache->get( $check_url, 'raw', 'transient', $exp_secs, '', $curl_opts );
+			$webpage_html = $this->p->cache->get( $check_url, $format = 'raw', $cache_type = 'transient', $exp_secs, $cache_ext = '', $curl_opts );
 			$url_mtime    = $this->p->cache->get_url_mtime( $check_url );
-
 			$html_size    = strlen( $webpage_html );
 			$error_size   = (int) SucomUtil::get_const( 'WPSSO_DUPE_CHECK_ERROR_SIZE', 2500000 );
 			$warning_time = (int) SucomUtil::get_const( 'WPSSO_DUPE_CHECK_WARNING_TIME', 2.5 );
@@ -1195,8 +1191,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 
 				if ( $is_admin ) {
+			
+					$short_name = $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'short' ];
 
-					$this->p->notice->err( sprintf( __( 'A %2$s meta tag section was not found in <a href="%1$s">%1$s</a> &mdash; perhaps a webpage caching plugin or service needs to be refreshed?', 'wpsso' ), $check_url, $short ) );
+					$this->p->notice->err( sprintf( __( 'A %2$s meta tag section was not found in <a href="%1$s">%1$s</a> &mdash; perhaps a webpage caching plugin or service needs to be refreshed?', 'wpsso' ), $check_url, $short_name ) );
 				}
 
 				return;	// Stop here.
@@ -1221,7 +1219,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( $is_admin ) {
 
-					$this->p->notice->err( sprintf( __( 'The PHP preg_replace() function failed to remove the %1$s meta tag section &mdash; this could be an indication of a problem with PHP\'s PCRE library or a webpage filter corrupting the %1$s meta tags.', 'wpsso' ), $short ) );
+					$short_name = $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'short' ];
+
+					$this->p->notice->err( sprintf( __( 'The PHP preg_replace() function failed to remove the %1$s meta tag section &mdash; this could be an indication of a problem with PHP\'s PCRE library or a webpage filter corrupting the %1$s meta tags.', 'wpsso' ), $short_name ) );
 				}
 
 				return;	// Stop here.
@@ -1550,7 +1550,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$metabox_html = "\n" . '<div id="' . $mb_container_id . '">';
 
-			$metabox_html .= $this->p->util->get_metabox_tabbed( $metabox_id, $tabs, $table_rows, $tabbed_args );
+			$metabox_html .= $this->p->util->metabox->get_tabbed( $metabox_id, $tabs, $table_rows, $tabbed_args );
 
 			$metabox_html .= apply_filters( $mb_container_id . '_footer', '', $mod );
 

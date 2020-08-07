@@ -19,9 +19,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 	class WpssoTerm extends WpssoWpMeta {
 
-		protected $query_term_id  = 0;
-		protected $query_tax_slug = '';
-		protected $query_tax_obj  = false;
+		private $query_term_id  = 0;
+		private $query_tax_slug = '';
+		private $query_tax_obj  = false;
 
 		public function __construct( &$plugin ) {
 
@@ -855,7 +855,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$metabox_html = "\n" . '<div id="' . $mb_container_id . '">';
 
-			$metabox_html .= $this->p->util->get_metabox_tabbed( $metabox_id, $tabs, $table_rows, $tabbed_args );
+			$metabox_html .= $this->p->util->metabox->get_tabbed( $metabox_id, $tabs, $table_rows, $tabbed_args );
 
 			$metabox_html .= apply_filters( $mb_container_id . '_footer', '', $mod );
 

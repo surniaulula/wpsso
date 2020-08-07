@@ -133,45 +133,44 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 		}
 
-		public function is_ignored_url( $url ) {
+		public function is_ignored_url( $url_nofrag ) {
 
 			$this->maybe_load_ignored_urls();
 
-			if ( ! empty( $this->ignored_urls[ 'ignore_urls' ][ $url ] ) ) {
+			if ( isset( $this->ignored_urls[ 'ignore_urls' ][ $url_nofrag ] ) ) {
 
-				$time_diff = time() - $this->ignored_urls[ 'ignore_urls' ][ $url ];
+				$time_diff = time() - $this->ignored_urls[ 'ignore_urls' ][ $url_nofrag ];
 				$time_left = $this->ignored_urls[ 'ignore_secs' ] - $time_diff;
 
 				if ( $time_left > 0 ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'requests to cache ' . $url . ' ignored for the next ' . $time_left . ' second(s)' );
+						$this->p->debug->log( 'requests to cache ' . $url_nofrag . ' ignored for the next ' . $time_left . ' second(s)' );
 					}
 
 					return true;
 
-				} else {
-
-					unset( $this->ignored_urls[ 'ignore_urls' ][ $url ] );
 				}
+
+				unset( $this->ignored_urls[ 'ignore_urls' ][ $url_nofrag ] );
 			}
 
 			return false;
 		}
 
-		public function add_ignored_url( $url, $http_code ) {
+		public function add_ignored_url( $url_nofrag, $http_code ) {
 
 			$this->maybe_load_ignored_urls();
 
-			$this->ignored_urls[ 'ignore_urls' ][ $url ] = time();
+			$this->ignored_urls[ 'ignore_urls' ][ $url_nofrag ] = time();
 
 			if ( is_admin() ) {
 
 				$errors = array();
 
 				$errors[] = sprintf( __( 'Error connecting to %1$s for caching (HTTP code %2$d).',
-					$this->text_domain ), '<a href="' . $url . '">' . $url . '</a>', $http_code );
+					$this->text_domain ), '<a href="' . $url_nofrag . '">' . $url_nofrag . '</a>', $http_code );
 
 				if ( 301 === $http_code || 302 === $http_code ) {
 
@@ -226,10 +225,24 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'error connecting to ' . $url . ' for caching (http code ' . $http_code . ')' );
+				$this->p->debug->log( 'error connecting to ' . $url_nofrag . ' for caching (http code ' . $http_code . ')' );
 
-				$this->is_ignored_url( $url );
+				$this->is_ignored_url( $url_nofrag );
 			}
+		}
+
+		public function clear_ignored_url( $url_nofrag ) {
+
+			$this->maybe_load_ignored_urls();
+
+			if ( isset( $this->ignored_urls[ 'ignore_urls' ][ $url_nofrag ] ) ) {
+
+				unset( $this->ignored_urls[ 'ignore_urls' ][ $url_nofrag ] );
+			
+				return true;
+			}
+
+			return false;
 		}
 
 		public function clear( $url, $cache_ext = '' ) {
@@ -239,6 +252,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			$cache_md5_pre = $this->lca . ( $cache_ext ? $cache_ext : '_' );
 			$cache_salt    = __CLASS__ . '::get(url:' . $url_nofrag . ')';
 			$cache_id      = $cache_md5_pre . md5( $cache_salt );
+
+			$this->clear_ignored_url( $url_nofrag );
 
 			if ( wp_cache_delete( $cache_id, __CLASS__ ) ) {
 

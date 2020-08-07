@@ -364,10 +364,12 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 						 * 	$data->slug = wpsso
 						 */
 						if ( isset( $data->slug ) && strpos( $data->slug, $plugin_prefix ) === 0 ) {
+
 							$count++;
 						}
 
 					} else {
+
 						$count++;
 					}
 				}

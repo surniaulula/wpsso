@@ -6,10 +6,12 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+
 	die( 'Do. Or do not. There is no try.' );
 }
 
@@ -27,6 +29,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -45,6 +48,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 		public function update_count_notice() {
 
 			if ( ! current_user_can( 'update_plugins' ) ) {
+
 				return;
 			}
 
@@ -58,18 +62,16 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 				$info = $this->p->cf[ 'plugin' ][ $this->p->lca ];
 
-				$update_core_url = self_admin_url( 'update-core.php' );
-
 				$notice_key = 'have-updates-for-' . $this->p->lca;
 
-				$pending_transl = _n( 'There is <a href="%1$s">%2$d pending update for the %3$s plugin and/or its add-on(s)</a>.',
-					'There are <a href="%1$s">%2$d pending updates for the %3$s plugin and/or its add-on(s)</a>.', $update_count, 'wpsso' );
+				$notice_msg = sprintf( _n( 'There is <a href="%1$s">%2$d pending update for the %3$s plugin and its add-on(s)</a>.',
+					'There are <a href="%1$s">%2$d pending updates for the %3$s plugin and its add-on(s)</a>.', $update_count, 'wpsso' ),
+						self_admin_url( 'update-core.php' ), $update_count, $info[ 'short' ] ) . ' ';
 
-				$install_transl = _n( 'Please install this update at your earliest convenience.',
+				$notice_msg .= _n( 'Please install this update at your earliest convenience.',
 					'Please install these updates at your earliest convenience.', $update_count, 'wpsso' );
 
-				$this->p->notice->inf( sprintf( $pending_transl, $update_core_url, $update_count, $info[ 'short' ] ) . ' ' .
-					$install_transl, null, $notice_key );
+				$this->p->notice->inf( $notice_msg, null, $notice_key );
 			}
 		}
 
@@ -195,12 +197,14 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 		public function suggest_addons() {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
 			if ( ! $this->p->notice->can_dismiss() || ! current_user_can( 'manage_options' ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'exiting early: cannot dismiss or cannot manage options' );
 				}
 
@@ -218,6 +222,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			if ( empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'woocommerce is not active' );
 				}
 
@@ -227,6 +232,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {	// Since WPSSO Core v6.23.3.
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'schema markup is disabled' );
 				}
 
@@ -234,6 +240,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'maybe suggest addons for woocommerce' );
 			}
 
@@ -245,6 +252,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			 * All good - nothing to suggest.
 			 */
 			if ( ! empty( $pkg[ $this->p->lca ][ 'pp' ] ) && ! empty( $pkg[ $ext ][ 'pp' ] ) ) {
+
 				return;
 			}
 
@@ -256,6 +264,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			 * Skip if already dismissed.
 			 */
 			if ( ! $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
+
 				return;
 			}
 
@@ -323,12 +332,14 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 		public function timed_notices() {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
 			if ( ! $this->p->notice->can_dismiss() || ! current_user_can( 'manage_options' ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'exiting early: cannot dismiss or cannot manage options' );
 				}
 
@@ -400,6 +411,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 					 * The single notice per day period has not expired yet.
 					 */
 					if ( $showing_ext === $notice_key ) {
+
 						return 0;	// Stop here.
 					}
 
@@ -515,6 +527,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			$pkg = $this->p->admin->plugin_pkg_info();
 
 			if ( $pkg[ $ext ][ 'pdir' ] ) {
+
 				return 0;
 			}
 
@@ -523,6 +536,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			$months_transl   = __( 'two months', 'wpsso' );
 
 			if ( empty( $ext_reg[ $ext . '_install_time' ] ) || $ext_reg[ $ext . '_install_time' ] > $months_ago_secs ) {
+
 				return 0;
 			}
 

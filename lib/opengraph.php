@@ -414,33 +414,25 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $get_value;
 		}
 
-		public function get_array( array $mod, $size_name = null ) {
+		public function get_array( array $mod, $size_names = 'opengraph' ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			/**
-			 * The 'wpsso_og_seed' filter is hooked by the Premium e-commerce modules, for example, to provide product
-			 * meta tags.
-			 */
-			$mt_og = SucomUtil::get_mt_og_seed();
+			$has_pp = $this->p->check->pp();
 
-			$mt_og = apply_filters( $this->p->lca . '_og_seed', $mt_og, $mod );
+			$max_nums = $this->p->util->get_max_nums( $mod );
+
+			/**
+			 * 'wpsso_og_seed' is hooked by e-commerce modules to provide product meta tags.
+			 */
+			$mt_og = apply_filters( $this->p->lca . '_og_seed', SucomUtil::get_mt_og_seed(), $mod );
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_arr( $this->p->lca . '_og_seed filter returned:', $mt_og );
-			}
-
-			$max_nums = $this->p->util->get_max_nums( $mod );
-
-			$has_pp = $this->p->check->pp();
-
-			if ( empty( $size_name ) ) {
-
-				$size_name = $this->p->lca . '-opengraph';
 			}
 
 			/**
@@ -636,7 +628,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				if ( $max_nums[ 'og_img_max' ] > 0 ) {
 
-					$mt_og[ 'og:image' ] = $this->get_all_images( $max_nums[ 'og_img_max' ], $size_name, $mod );
+					$mt_og[ 'og:image' ] = $this->get_all_images( $max_nums[ 'og_img_max' ], $size_names, $mod );
 
 					if ( empty( $mt_og[ 'og:image' ] ) ) {
 
@@ -1103,14 +1095,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $og_extend;
 		}
 
-		public function get_thumbnail_url( $size_name, array $mod, $md_pre = 'og' ) {
+		public function get_thumbnail_url( $size_names = 'thumbnail', array $mod, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			$og_ret = $this->get_all_images( $num = 1, $size_name, $mod, $check_dupes = true, $md_pre );
+			$og_ret = $this->get_all_images( $num = 1, $size_names, $mod, $check_dupes = true, $md_pre );
 
 			return SucomUtil::get_mt_media_url( $og_ret, $mt_media_pre = 'og:image' );
 		}
@@ -1120,7 +1112,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		 *
 		 * Note that each size name is used to check for duplicates.
 		 */
-		public function get_all_images( $num, $size_names, array $mod, $check_dupes = true, $md_pre = 'og' ) {
+		public function get_all_images( $num, $size_names = 'opengraph', array $mod, $check_dupes = true, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1137,95 +1129,55 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$og_ret = array();
 
-			if ( empty( $size_names ) ) {
+			$size_names = $this->p->util->get_image_size_names( $size_names );	// Always returns an array.
 
-				$size_names = array( $this->p->lca . '-opengraph' );
+			if ( $this->p->debug->enabled ) {
 
-			} elseif ( is_string( $size_names ) ) {
-
-				switch ( $size_names ) {
-
-					case 'opengraph':	// Shortcut name.
-					case 'pinterest':	// Shortcut name.
-					case 'thumbnail':	// Shortcut name.
-
-						$size_names = array( $this->p->lca . '-' . $size_names );
-
-						break;
-
-					case 'schema':					// Shortcut name.
-					case $this->p->lca . '-schema':			// Deprecated on 2020/08/05.
-					case $this->p->lca . '-schema-article':		// Deprecated on 2020/08/05.
-					case $this->p->lca . '-schema-article-1-1':	// Deprecated on 2020/08/05.
-					case $this->p->lca . '-schema-article-4-3':	// Deprecated on 2020/08/05.
-					case $this->p->lca . '-schema-article-16-9':	// Deprecated on 2020/08/05.
-
-						$size_names = array(
-							$this->p->lca . '-schema-1-1',
-							$this->p->lca . '-schema-4-3',
-							$this->p->lca . '-schema-16-9',
-						);
-
-						break;
-
-					default:
-
-						$size_names = array( $size_names );
-
-						break;
-				}
+				$this->p->debug->log( 'getting all video preview images' );
 			}
 
-			if ( is_array( $size_names ) ) {	// Avoid boolean and integer values.
+			$preview_images = $this->get_all_previews( $num, $mod );
+
+			if ( empty( $preview_images ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'getting all video preview images' );
-				}
-	
-				$preview_images = $this->get_all_previews( $num, $mod );
-	
-				if ( empty( $preview_images ) ) {
-
-					if ( $this->p->debug->enabled ) {
-	
-						$this->p->debug->log( 'no video preview images' );
-					}
-	
-				} else {
-	
-					if ( $this->p->debug->enabled ) {
-	
-						$this->p->debug->log( 'merging video preview images' );
-					}
-	
-					$og_ret = array_merge( $og_ret, $preview_images );
+					$this->p->debug->log( 'no video preview images' );
 				}
 
-				$num_diff = SucomUtil::count_diff( $og_ret, $num );
+			} else {
 
-				if ( $num_diff >= 1 ) {	// Just in case.
+				if ( $this->p->debug->enabled ) {
 
-					foreach ( $size_names as $size_name ) {
+					$this->p->debug->log( 'merging video preview images' );
+				}
 
-						$og_images = $this->get_size_name_images( $num_diff, $size_name, $mod, $check_dupes, $md_pre );
+				$og_ret = array_merge( $og_ret, $preview_images );
+			}
 
-						if ( empty( $og_images ) ) {
+			$num_diff = SucomUtil::count_diff( $og_ret, $num );
 
-							if ( $this->p->debug->enabled ) {
-	
-								$this->p->debug->log( 'no images for size name ' . $size_name );
-							}
-	
-						} else {
-					
-							if ( $this->p->debug->enabled ) {
-	
-								$this->p->debug->log( 'merging ' . count( $og_images ) . ' images for size name ' . $size_name );
-							}
-	
-							$og_ret = array_merge( $og_ret, $og_images );
+			if ( $num_diff >= 1 ) {	// Just in case.
+
+				foreach ( $size_names as $size_name ) {
+
+					$og_images = $this->get_size_name_images( $num_diff, $size_name, $mod, $check_dupes, $md_pre );
+
+					if ( empty( $og_images ) ) {
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'no images for size name ' . $size_name );
 						}
+
+					} else {
+				
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'merging ' . count( $og_images ) . ' images for size name ' . $size_name );
+						}
+
+						$og_ret = array_merge( $og_ret, $og_images );
 					}
 				}
 			}

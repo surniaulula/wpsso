@@ -653,8 +653,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log( 'page type ID is ' . $page_type_id );
 			}
 
-			$size_name = $this->p->lca . '-schema';
-
 			$ref_url = $this->p->util->maybe_set_ref( null, $mod, __( 'adding schema', 'wpsso' ) );
 
 			if ( $this->p->debug->enabled ) {
@@ -662,7 +660,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log( 'getting open graph meta tag array' );
 			}
 
-			$mt_og = $this->p->og->get_array( $mod, $size_name );
+			$mt_og = $this->p->og->get_array( $mod, $size_names = 'schema' );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -2220,7 +2218,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/**
 		 * $size_names can be null, a string, or an array.
 		 */
-		public static function add_media_data( &$json_data, $mod, $mt_og, $size_names = null, $add_video = true ) {
+		public static function add_media_data( &$json_data, $mod, $mt_og, $size_names = 'schema', $add_video = true ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -2233,29 +2231,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Property:
 			 *	image as https://schema.org/ImageObject
 			 */
-			$og_images  = array();
-			$prev_count = 0;
 			$img_added  = 0;
-			$vid_added  = 0;
 			$max_nums   = $wpsso->util->get_max_nums( $mod, 'schema' );
-
-			/**
-			 * $size_names must be an array of one or more image size names.
-			 */
-			if ( empty( $size_names ) ) {
-
-				$size_names = array( $wpsso->lca . '-schema' );
-
-			} elseif ( is_string( $size_names ) ) {
-
-				$size_names = array( $size_names );
-			}
-
-			foreach ( $size_names as $size_name ) {
-
-				$og_images = array_merge( $og_images, $wpsso->og->get_all_images( $max_nums[ 'schema_img_max' ],
-					$size_name, $mod, $check_dupes = true, $md_pre = 'schema' ) );
-			}
+			$og_images  = $wpsso->og->get_all_images( $max_nums[ 'schema_img_max' ], $size_names, $mod, $check_dupes = true, $md_pre = 'schema' );
 
 			if ( ! empty( $og_images ) ) {
 
@@ -2284,6 +2262,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					$wpsso->debug->log( 'adding all video(s)' );
 				}
+
+				$vid_added = 0;
 
 				if ( ! empty( $mt_og[ 'og:video' ] ) ) {
 

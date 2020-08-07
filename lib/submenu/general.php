@@ -82,7 +82,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 				$table_rows[ $tab_key ] = apply_filters( $filter_name, $this->get_table_rows( $metabox_id, $tab_key ), $this->form );
 			}
 
-			$this->p->util->do_metabox_tabbed( $metabox_id, $tabs, $table_rows );
+			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
 		}
 
 		public function show_metabox_social_and_search() {
@@ -106,7 +106,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 				$table_rows[ $tab_key ] = apply_filters( $filter_name, $this->get_table_rows( $metabox_id, $tab_key ), $this->form );
 			}
 
-			$this->p->util->do_metabox_tabbed( $metabox_id, $tabs, $table_rows );
+			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
 		}
 
 		protected function get_table_rows( $metabox_id, $tab_key ) {

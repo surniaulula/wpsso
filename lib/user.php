@@ -19,7 +19,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 	class WpssoUser extends WpssoWpMeta {
 
-		protected static $cache_user_prefs = array();	// Used by get_pref() and save_pref().
+		private static $cache_user_prefs = array();	// Used by get_pref() and save_pref().
 
 		public function __construct( &$plugin ) {
 
@@ -849,7 +849,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$metabox_html = "\n" . '<div id="' . $mb_container_id . '">';
 
-			$metabox_html .= $this->p->util->get_metabox_tabbed( $metabox_id, $tabs, $table_rows, $tabbed_args );
+			$metabox_html .= $this->p->util->metabox->get_tabbed( $metabox_id, $tabs, $table_rows, $tabbed_args );
 
 			$metabox_html .= apply_filters( $mb_container_id . '_footer', '', $mod );
 
