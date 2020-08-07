@@ -145,11 +145,11 @@
 
 'wpsso_og_default_img_url' ( $image_url )
 
-'wpsso_og_ecom_edd' ( $og_ecom, $mod )
+'wpsso_og_ecom_edd' ( $mt_ecom, $mod )
 
-'wpsso_og_ecom_woocommerce' ( $og_ecom, $mod )
+'wpsso_og_ecom_woocommerce' ( $mt_ecom, $mod )
 
-'wpsso_og_ecom_wpecommerce' ( $og_ecom, $mod )
+'wpsso_og_ecom_wpecommerce' ( $mt_ecom, $mod )
 
 'wpsso_og_featured' ( $mt_ret, $num, $size_name, $post_id, $check_dupes )
 
