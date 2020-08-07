@@ -309,7 +309,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.16.0-dev.6 (2020/08/06)**
+**Version 7.16.0-dev.7 (2020/08/07)**
 
 Google has updated their Rich Results requirements and now prefer 1:1, 4:3, and 16:9 images for all Schema types, not just the Schema Article type for AMP webpages. The "Schema" and "Schema Article" image sizes have been removed and replaced by new Schema 1:1, 4:3, and 16:9 image sizes.
 
@@ -334,6 +334,7 @@ Google has updated their Rich Results requirements and now prefer 1:1, 4:3, and 
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Added a new `WpssoUtilMetabox` class.
 	* Added a new `WpssoProUtilShorten->load_lib()` method.
 	* Renamed the `WpssoProUtilShorten->set_instance()` method to `get_svc_instance()`.
 	* Refactored `WpssoProUtilShorten->get_svc_instance()` to use the new `self->load_lib()` method.
@@ -734,9 +735,9 @@ The Open Graph meta tags for WooCommerce products have been extended to include 
 
 == Upgrade Notice ==
 
-= 7.16.0-dev.6 =
+= 7.16.0-dev.7 =
 
-(2020/08/06) Added a new API integration module for Shopper Approved customer ratings and reviews. Added shortening service API status to the SSO &gt; Dashboard &gt; Premium Features Status metabox.
+(2020/08/07) Added a new API integration module for Shopper Approved customer ratings and reviews. Added shortening service API status to the SSO &gt; Dashboard &gt; Premium Features Status metabox.
 
 = 7.15.0 =
 
