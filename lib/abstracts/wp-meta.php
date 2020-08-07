@@ -6,10 +6,12 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+
 	die( 'Do. Or do not. There is no try.' );
 }
 
@@ -205,6 +207,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$wpsso =& Wpsso::get_instance();
 
 			if ( $wpsso->debug->enabled ) {
+
 				$wpsso->debug->mark();
 			}
 
@@ -241,6 +244,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		public function get_defaults( $mod_id, $md_key = false ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log_args( array( 
 					'mod_id'      => $mod_id, 
 					'md_key'       => $md_key, 
@@ -252,6 +256,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$class = get_called_class();
 
 			if ( __CLASS__ === $class ) {	// Just in case.
+
 				return $this->must_be_extended( __METHOD__, array() );
 			}
 
@@ -366,28 +371,33 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				if ( WpssoOptions::can_cache() ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'setting options_filtered to 1' );
 					}
 
 					$md_defs[ 'options_filtered' ] = 1;	// Set before calling filter to prevent recursion.
 
 				} elseif ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'options_filtered value unchanged' );
 				}
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'applying get_md_defaults filters' );
 				}
 
 				$md_defs = apply_filters( $this->p->lca . '_get_md_defaults', $md_defs, $mod );
 
 			} elseif ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'get_md_defaults filter skipped' );
 			}
 
 			if ( false !== $md_key ) {
 
 				if ( isset( $md_defs[ $md_key ] ) ) {
+
 					return $md_defs[ $md_key ];
 				}
 
@@ -400,8 +410,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		public function get_options( $mod_id, $md_key = false, $filter_opts = true, $pad_opts = false ) {
 
 			if ( false === $md_key ) {	// Allow for 0.
+
 				$ret_val = array();
+
 			} else {
+
 				$ret_val = null;
 			}
 
@@ -425,7 +438,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				$keys_preg = 'schema_type|plm_place_schema_type';
 
 				foreach ( SucomUtil::preg_grep_keys( '/^(' . $keys_preg . ')(_[0-9]+)?$/', $md_opts ) as $key => $val ) {
+
 					if ( ! empty( $this->p->cf[ 'head' ][ 'schema_renamed' ][ $val ] ) ) {
+
 						$md_opts[ $key ] = $this->p->cf[ 'head' ][ 'schema_renamed' ][ $val ];
 					}
 				}
@@ -457,6 +472,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 						foreach ( $def_opts as $key => $val ) {
 
 							if ( ! isset( $md_opts[ $key ] ) && $val !== '' ) {
+
 								$md_opts[ $key ] = $def_opts[ $key ];
 							}
 						}
@@ -471,6 +487,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				if ( ! isset( $md_opts[ $md_key ] ) || $md_opts[ $md_key ] === '' ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'returning null value: ' . $md_key . ' not set or empty string' );
 					}
 
@@ -478,6 +495,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				}
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'returning meta value: ' . $md_key . ' = ' . $md_opts[ $md_key ] );
 				}
 
@@ -517,6 +535,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			foreach ( $this->get_posts_ids( $mod, $ppp, $paged, $posts_args ) as $post_id ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'getting mod for post object ID ' . $post_id );
 				}
 
@@ -615,6 +634,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			 * Exclude the 'Priority Media' tab from attachment editing pages.
 			 */
 			if ( $mod[ 'post_type' ] === 'attachment' ) {
+
 				unset( $tabs[ 'media' ] );
 			}
 
@@ -622,6 +642,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			 * Exclude the 'oEmbed' tab from non-post editing pages.
 			 */
 			if ( ! function_exists( 'get_oembed_response_data' ) ||	! $mod[ 'is_post' ] || ! $mod[ 'id' ] ) {
+
 				unset( $tabs[ 'oembed' ] );
 			}
 
@@ -645,6 +666,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$method_name = 'get_table_rows_' . $metabox_id . '_' . $tab_key . '_tab';
 
 			if ( method_exists( $this->edit, $method_name ) ) {
+
 				$table_rows = call_user_func( array( $this->edit, $method_name ), $this->form, $head_info, $mod );
 			}
 
@@ -661,6 +683,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$class = get_called_class();
 
 			if ( __CLASS__ === $class ) {	// Just in case.
+
 				return $this->must_be_extended( __METHOD__, array() );
 			}
 
@@ -690,6 +713,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		public function get_options_multi( $mod_id, $md_key = false, $filter_opts = true ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log_args( array( 
 					'mod_id'      => $mod_id, 
 					'md_key'      => $md_key, 
@@ -698,6 +722,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			}
 
 			if ( empty( $mod_id ) ) {
+
 				return null;
 			}
 
@@ -712,8 +737,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			} else {							// Return the first matching index value.
 
 				if ( is_array( $md_key ) ) {
+
 					$check_md_keys = array_unique( $md_key );	// Prevent duplicate key values.
+
 				} else {
+
 					$check_md_keys = array( $md_key );		// Convert a string to an array.
 				}
 
@@ -734,12 +762,14 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					} else {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'getting id ' . $mod_id . ' option ' . $md_key . ' value' );
 						}
 
 						if ( ( $md_val = $this->get_options( $mod_id, $md_key, $filter_opts ) ) !== null ) {
 
 							if ( $this->p->debug->enabled ) {
+
 								$this->p->debug->log( 'option ' . $md_key . ' value found (not null)' );
 							}
 
@@ -782,6 +812,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		protected function clear_mod_cache( array $mod, array $cache_types = array(), $sharing_url = false ) {
 
 			if ( false === $sharing_url ) {
+
 				$sharing_url = $this->p->util->get_sharing_url( $mod );
 			}
 
@@ -829,6 +860,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 						$cache_key = trim( $cache_key );
 
 						if ( empty( $cache_key ) ) {
+
 							$cache_key = $cache_id;
 						}
 
@@ -837,6 +869,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					}
 
 					if ( isset( $cleared_ids[ $type_name ][ $cache_id ] ) ) {	// skip duplicate cache ids
+
 						continue;
 					}
 
@@ -862,6 +895,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					}
 
 					if ( $ret ) {
+
 						$cleared_count++;
 					}
 
@@ -877,6 +911,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			if ( empty( $_POST ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'empty POST for submit' );
 				}
 
@@ -887,6 +922,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			if ( empty( $_POST[ WPSSO_NONCE_NAME ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'submit POST missing nonce token' );
 				}
 
@@ -897,10 +933,12 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			if ( ! wp_verify_nonce( $_POST[ WPSSO_NONCE_NAME ], WpssoAdmin::get_nonce_action() ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'submit nonce token validation failed' );
 				}
 
 				if ( is_admin() ) {
+
 					$this->p->notice->err( __( 'Nonce token validation failed for the submitted form (update ignored).',
 						'wpsso' ) );
 				}
@@ -1084,6 +1122,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				$sort_cols = (array) apply_filters( $wpsso->lca . '_get_sortable_columns', $wpsso->cf[ 'edit' ][ 'columns' ] );
 
 				if ( $wpsso->debug->enabled ) {
+
 					$wpsso->debug->log_arr( '$sort_cols', $sort_cols );
 				}
 			}
@@ -1139,6 +1178,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		public function get_column_wp_cache( array $mod, $column_name ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -1153,6 +1193,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					if ( isset( $col_info[ 'meta_key' ] ) ) {	// Just in case.
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'getting meta cache for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );
 						}
 
@@ -1171,6 +1212,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 						if ( ! $found ) {
 
 							if ( $this->p->debug->enabled ) {
+
 								$this->p->debug->log( 'updating meta cache for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );
 							}
 
@@ -1231,6 +1273,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					foreach ( array( 'meta_key', 'orderby' ) as $set_name ) {
 
 						if ( ! empty( $col_info[ $set_name ] ) ) {
+
 							$query->set( $set_name, $col_info[ $set_name ] );
 						}
 					}
@@ -1250,6 +1293,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					if ( ! empty( $this->p->options[ 'plugin_' . $col_key . '_col_' . $mod_name] ) ) {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'adding ' . $this->p->lca . '_' . $col_key . ' column' );
 						}
 
@@ -1266,29 +1310,26 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			if ( empty( $pid ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'exiting early: image id is empty' );
 				}
 
 				return '';
 			}
 
-			$media_html  = false;
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'getting thumbnail for image id ' . $pid );
-			}
-
-			$mt_single_image = array();
-
-			$this->p->media->add_mt_single_image_src( $mt_single_image, $pid, $size_name = 'thumbnail', $check_dupes = false );
+			/**
+			 * Get the 'thumbnail' image size.
+			 */
+			$mt_single_image = $this->p->media->get_mt_single_image_src( $pid, $size_name = 'thumbnail', $check_dupes = false );
 
 			$media_url = SucomUtil::get_mt_media_url( $mt_single_image );
 
 			if ( ! empty( $media_url ) ) {
-				$media_html = '<img src="' . $media_url . '">';
+
+				return '<img src="' . $media_url . '">';
 			}
 
-			return $media_html;
+			return false;
 		}
 
 		/**
@@ -1297,6 +1338,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		public function get_md_images( $num, $size_name, array $mod, $check_dupes = true, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log_args( array( 
 					'num'         => $num,
 					'size_name'   => $size_name,
@@ -1310,12 +1352,16 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$mt_ret = array();
 
 			if ( empty( $mod[ 'id' ] ) ) {
+
 				return $mt_ret;
 			}
 
 			if ( is_array( $md_pre ) ) {
+
 				$md_pre_unique = array_merge( $md_pre, array( 'og' ) );
+
 			} else {
+
 				$md_pre_unique = array( $md_pre, 'og' );
 			}
 
@@ -1324,8 +1370,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			foreach( $md_pre_unique as $opt_pre ) {
 
 				if ( $opt_pre === 'none' ) {		// Special index keyword.
+
 					break;
+
 				} elseif ( empty( $opt_pre ) ) {	// Skip empty md_pre values.
+
 					continue;
 				}
 
@@ -1346,8 +1395,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					$pid = $pre === 'ngg' ? 'ngg-' . $pid : $pid;
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'using custom ' . $opt_pre . ' image id = "' . $pid . '"',
-							get_class( $this ) );	// log extended class name
+
+						$this->p->debug->log( 'using custom ' . $opt_pre . ' image id = "' . $pid . '"', get_class( $this ) );
 					}
 
 					$this->p->media->add_mt_single_image_src( $mt_single_image, $pid, $size_name, $check_dupes, $mt_pre );
@@ -1356,6 +1405,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				if ( empty( $mt_single_image[ $mt_pre . ':image:url' ] ) && ! empty( $url ) ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'using custom ' . $opt_pre . ' image url = "' . $url . '"',
 							get_class( $this ) );	// log extended class name
 					}
@@ -1369,7 +1419,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				}
 
 				if ( ! empty( $mt_single_image[ $mt_pre . ':image:url' ] ) ) {
+
 					if ( $this->p->util->push_max( $mt_ret, $mt_single_image, $num ) ) {
+
 						return $mt_ret;
 					}
 				}
@@ -1378,6 +1430,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				 * Stop here if we had a custom image ID or URL.
 				 */
 				if ( $pid || $url ) {
+
 					break;
 				}
 			}
@@ -1387,15 +1440,16 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				if ( $pid > 0 ) {	// Quick sanity check.
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'adding image pid: ' . $pid );
 					}
 
-					$mt_single_image = SucomUtil::get_mt_image_seed( $mt_pre );
-
-					$this->p->media->add_mt_single_image_src( $mt_single_image, $pid, $size_name, $check_dupes, $mt_pre );
+					$mt_single_image = $this->p->media->get_mt_single_image_src( $pid, $size_name, $check_dupes, $mt_pre );
 
 					if ( ! empty( $mt_single_image[ $mt_pre . ':image:url' ] ) ) {
+
 						if ( $this->p->util->push_max( $mt_ret, $mt_single_image, $num ) ) {
+
 							return $mt_ret;
 						}
 					}
@@ -1407,6 +1461,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				if ( false !== strpos( $url, '://' ) ) {	// Quick sanity check.
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'adding image url: ' . $url );
 					}
 
@@ -1420,7 +1475,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					$this->p->util->add_image_url_size( $mt_single_image, $mt_pre . ':image' );
 
 					if ( ! empty( $mt_single_image[ $mt_pre . ':image:url' ] ) ) {
+
 						if ( $this->p->util->push_max( $mt_ret, $mt_single_image, $num ) ) {
+
 							return $mt_ret;
 						}
 					}
@@ -1433,6 +1490,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		protected function must_be_extended( $method, $ret = true ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( $method . ' must be extended', get_class( $this ) );	// Log the extended class name.
 			}
 
@@ -1445,6 +1503,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		public function get_og_images( $num, $size_name, $mod_id, $check_dupes = true, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -1459,6 +1518,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		public function get_og_videos( $num = 0, $mod_id, $check_dupes = false, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log_args( array( 
 					'num'         => $num,
 					'mod_id'      => $mod_id,
@@ -1469,16 +1529,20 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			}
 
 			$mod       = $this->get_mod( $mod_id );	// Required for get_content_videos().
-			$og_ret    = array();
-			$og_videos = array();
+			$mt_ret    = array();
+			$mt_videos = array();
 
 			if ( empty( $mod_id ) ) {
-				return $og_ret;
+
+				return $mt_ret;
 			}
 
 			if ( is_array( $md_pre ) ) {
+
 				$md_pre_unique = array_merge( $md_pre, array( 'og' ) );
+
 			} else {
+
 				$md_pre_unique = array( $md_pre, 'og' );
 			}
 
@@ -1495,16 +1559,18 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				if ( ! empty( $embed_html ) ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'fetching video(s) from custom ' . $opt_pre . ' embed code',
 							get_class( $this ) );	// Log extended class name.
 					}
 
-					$og_ret = array_merge( $og_ret, $this->p->media->get_content_videos( $num, $mod, $check_dupes, $embed_html ) );
+					$mt_ret = array_merge( $mt_ret, $this->p->media->get_content_videos( $num, $mod, $check_dupes, $embed_html ) );
 				}
 
 				if ( ! empty( $video_url ) && ( ! $check_dupes || $this->p->util->is_uniq_url( $video_url ) ) ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'fetching video from custom ' . $opt_pre . ' url ' . $video_url, get_class( $this ) );
 					}
 
@@ -1518,15 +1584,16 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 						'api'      => '',
 					);
 
-					$og_videos = $this->p->media->get_video_details( $args, $check_dupes, true );
+					$mt_videos = $this->p->media->get_video_details( $args, $check_dupes, true );
 
-					if ( $this->p->util->push_max( $og_ret, $og_videos, $num ) )  {
-						return $og_ret;
+					if ( $this->p->util->push_max( $mt_ret, $mt_videos, $num ) )  {
+
+						return $mt_ret;
 					}
 				}
 			}
 
-			return $og_ret;
+			return $mt_ret;
 		}
 
 		public function get_og_img_column_html( $head_info, $mod, $md_pre = 'og', $mt_pre = 'og' ) {
@@ -1535,19 +1602,15 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			if ( ! empty( $head_info[ $mt_pre . ':image:id' ] ) ) {
 
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'getting thumbnail for image id ' . $head_info[ $mt_pre . ':image:id' ] );
-				}
-
-				$mt_single_image = array();
+				$pid = $head_info[ $mt_pre . ':image:id' ];
 
 				/**
-				 * Get the smaller thumbnail image as a preview image.
+				 * Get the 'thumbnail' image size.
 				 */
-				$this->p->media->add_mt_single_image_src( $mt_single_image, $head_info[ $mt_pre . ':image:id' ],
-					$size_name = 'thumbnail', $check_dupes = false );
+				$mt_single_image = $this->p->media->get_mt_single_image_src( $pid, $size_name = 'thumbnail', $check_dupes = false );
 
 				if ( ! empty( $mt_single_image[ $mt_pre . ':image:url' ] ) ) {	// Just in case.
+
 					$head_info =& $mt_single_image;
 				}
 			}
@@ -1555,6 +1618,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$media_url = SucomUtil::get_mt_media_url( $head_info );
 
 			if ( ! empty( $media_url ) ) {
+
 				$media_html = '<div class="preview_img" style="background-image:url(' . $media_url . ');"></div>';
 			}
 

@@ -12,38 +12,38 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: lib/abstracts/wp-meta.php:598 lib/abstracts/wp-meta.php:607
+#: lib/abstracts/wp-meta.php:617 lib/abstracts/wp-meta.php:626
 msgctxt "metabox tab"
 msgid "Customize"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:599 lib/abstracts/wp-meta.php:608
+#: lib/abstracts/wp-meta.php:618 lib/abstracts/wp-meta.php:627
 #: lib/messages.php:2374
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:600
+#: lib/abstracts/wp-meta.php:619
 msgctxt "metabox tab"
 msgid "Preview"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:601
+#: lib/abstracts/wp-meta.php:620
 msgctxt "metabox tab"
 msgid "oEmbed"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:602
+#: lib/abstracts/wp-meta.php:621
 msgctxt "metabox tab"
 msgid "Head Markup"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:603
+#: lib/abstracts/wp-meta.php:622
 msgctxt "metabox tab"
 msgid "Validate"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:904
+#: lib/abstracts/wp-meta.php:942
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
@@ -1043,8 +1043,8 @@ msgid ""
 msgstr ""
 
 #: lib/conflict.php:210 lib/gettext-pro.php:152 lib/gettext-pro.php:155
-#: lib/gettext-pro.php:158 lib/pro/media/slideshare.php:191
-#: lib/pro/media/vimeo.php:173 lib/pro/media/wistia.php:312
+#: lib/gettext-pro.php:158 lib/pro/media/slideshare.php:210
+#: lib/pro/media/vimeo.php:184 lib/pro/media/wistia.php:345
 msgid ""
 "Please contact your hosting provider to have the missing PHP function "
 "installed."
@@ -3249,8 +3249,8 @@ msgstr ""
 msgid "Posts, Pages, and Custom Post Types"
 msgstr ""
 
-#: lib/gettext-pro.php:35 lib/media.php:134 lib/media.php:765 lib/media.php:907
-#: lib/media.php:2030 lib/pro/admin/advanced.php:212
+#: lib/gettext-pro.php:35 lib/media.php:134 lib/media.php:770 lib/media.php:912
+#: lib/media.php:2036 lib/pro/admin/advanced.php:212
 #: lib/std/admin/advanced.php:219
 msgid "Media Library"
 msgstr ""
@@ -3759,33 +3759,33 @@ msgstr ""
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/gettext-pro.php:145 lib/pro/ecom/woocommerce.php:1295
+#: lib/gettext-pro.php:145 lib/pro/ecom/woocommerce.php:1288
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/gettext-pro.php:146 lib/pro/ecom/woocommerce.php:1297
+#: lib/gettext-pro.php:146 lib/pro/ecom/woocommerce.php:1290
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:147 lib/pro/ecom/woocommerce.php:1300
+#: lib/gettext-pro.php:147 lib/pro/ecom/woocommerce.php:1293
 msgid "Please update your site to WooCommerce version %s or newer."
 msgstr ""
 
 #: lib/gettext-pro.php:150 lib/gettext-pro.php:153 lib/gettext-pro.php:156
-#: lib/pro/media/slideshare.php:186 lib/pro/media/vimeo.php:168
-#: lib/pro/media/wistia.php:307
+#: lib/pro/media/slideshare.php:205 lib/pro/media/vimeo.php:179
+#: lib/pro/media/wistia.php:340
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
 #: lib/gettext-pro.php:151 lib/gettext-pro.php:154 lib/gettext-pro.php:157
-#: lib/pro/media/slideshare.php:188 lib/pro/media/vimeo.php:170
-#: lib/pro/media/wistia.php:309
+#: lib/pro/media/slideshare.php:207 lib/pro/media/vimeo.php:181
+#: lib/pro/media/wistia.php:342
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:159 lib/post.php:1151 lib/pro/media/youtube.php:174
+#: lib/gettext-pro.php:159 lib/post.php:1151 lib/pro/media/youtube.php:187
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -4039,7 +4039,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: lib/media.php:137 lib/media.php:2037
+#: lib/media.php:137 lib/media.php:2043
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
@@ -4062,90 +4062,90 @@ msgid ""
 "all %1$d image sizes): %2$d by %3$d pixels."
 msgstr ""
 
-#: lib/media.php:768
+#: lib/media.php:773
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:770 lib/media.php:964
+#: lib/media.php:775 lib/media.php:969
 msgid ""
 "You may consider regenerating the thumbnails of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:789
+#: lib/media.php:794
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image dimensions for "
 "<a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:816
+#: lib/media.php:821
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image file path for "
 "<a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:908
+#: lib/media.php:913
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:959 lib/messages.php:3113
+#: lib/media.php:964 lib/messages.php:3113
 msgctxt "option value"
 msgid "cropped"
 msgstr ""
 
-#: lib/media.php:960 lib/messages.php:3113
+#: lib/media.php:965 lib/messages.php:3113
 msgctxt "option value"
 msgid "uncropped"
 msgstr ""
 
-#: lib/media.php:962
+#: lib/media.php:967
 msgid ""
 "Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress "
 "%3$s function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:1446
+#: lib/media.php:1452
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:2053
+#: lib/media.php:2059
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:2081 lib/submenu/image-sizes.php:110
+#: lib/media.php:2087 lib/submenu/image-sizes.php:110
 msgctxt "option label"
 msgid "Open Graph (Facebook and oEmbed)"
 msgstr ""
 
-#: lib/media.php:2090 lib/submenu/image-sizes.php:118
+#: lib/media.php:2096 lib/submenu/image-sizes.php:118
 msgctxt "option label"
 msgid "Schema 1:1 (Google)"
 msgstr ""
 
-#: lib/media.php:2099 lib/submenu/image-sizes.php:122
+#: lib/media.php:2105 lib/submenu/image-sizes.php:122
 msgctxt "option label"
 msgid "Schema 4:3 (Google)"
 msgstr ""
 
-#: lib/media.php:2108 lib/submenu/image-sizes.php:126
+#: lib/media.php:2114 lib/submenu/image-sizes.php:126
 msgctxt "option label"
 msgid "Schema 16:9 (Google)"
 msgstr ""
 
-#: lib/media.php:2143
+#: lib/media.php:2149
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:2175
+#: lib/media.php:2181
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -6845,7 +6845,7 @@ msgid ""
 "post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:857 lib/post.php:1471 lib/schema.php:3240 lib/term.php:692
+#: lib/post.php:857 lib/post.php:1471 lib/schema.php:3238 lib/term.php:692
 #: lib/user.php:678
 msgid "checking meta tags"
 msgstr ""
@@ -7650,32 +7650,32 @@ msgstr ""
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
-#: lib/twittercard.php:39
+#: lib/twittercard.php:42
 msgctxt "image size label"
 msgid "Twitter Summary Card"
 msgstr ""
 
-#: lib/twittercard.php:44
+#: lib/twittercard.php:47
 msgctxt "image size label"
 msgid "Twitter Large Image Summary Card"
 msgstr ""
 
-#: lib/twittercard.php:486
+#: lib/twittercard.php:533
 msgctxt "metabox title"
 msgid "Twitter App Card"
 msgstr ""
 
-#: lib/twittercard.php:494
+#: lib/twittercard.php:541
 msgctxt "metabox title"
 msgid "Twitter Player Card"
 msgstr ""
 
-#: lib/twittercard.php:502
+#: lib/twittercard.php:549
 msgctxt "metabox title"
 msgid "Twitter Summary Card"
 msgstr ""
 
-#: lib/twittercard.php:510
+#: lib/twittercard.php:557
 msgctxt "metabox title"
 msgid "Twitter Large Image Summary Card"
 msgstr ""

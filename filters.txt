@@ -39,7 +39,7 @@
 
 'wpsso_attached_image_ids' ( $attach_ids, $post_id )
 
-'wpsso_attached_images' ( $og_ret, $num, $size_name, $post_id, $check_dupes )
+'wpsso_attached_images' ( $mt_ret, $num, $size_name, $post_id, $check_dupes )
 
 'wpsso_cache_expire_head_markup' ( $secs )
 
@@ -151,7 +151,7 @@
 
 'wpsso_og_ecom_wpecommerce' ( $og_ecom, $mod )
 
-'wpsso_og_featured' ( $og_ret, $num, $size_name, $post_id, $check_dupes )
+'wpsso_og_featured' ( $mt_ret, $num, $size_name, $post_id, $check_dupes )
 
 'wpsso_og_ns' ( $ns )
 

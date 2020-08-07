@@ -6,10 +6,12 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+
 	die( 'Do. Or do not. There is no try.' );
 }
 
@@ -24,6 +26,7 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -33,6 +36,7 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {	// Since WPSSO Core v6.23.3.
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'schema markup is disabled' );
 				}
 
@@ -53,12 +57,14 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 		public function add_head_attributes() {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
 			if ( ! $this->is_head_attributes_enabled() ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'exiting early: head attributes disabled' );
 				}
 
@@ -68,12 +74,14 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 			if ( ! empty( $this->p->options[ 'plugin_head_attr_filter_name' ] ) ) {	// Just in case.
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'calling filter ' . $this->p->options[ 'plugin_head_attr_filter_name' ] );
 				}
 
 				echo apply_filters( $this->p->options[ 'plugin_head_attr_filter_name' ], '' );
 
 			} elseif ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'plugin_head_attr_filter_name is empty' );
 			}
 		}
@@ -81,12 +89,14 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 		public function filter_head_attributes( $head_attr = '' ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
 			if ( ! $this->is_head_attributes_enabled() ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'exiting early: head attributes disabled' );
 				}
 
@@ -96,6 +106,7 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 			$use_post = apply_filters( $this->p->lca . '_use_post', false );
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'required call to get_page_mod()' );
 			}
 
@@ -106,6 +117,7 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 			if ( empty( $page_type_url ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'exiting early: schema head type value is empty' );
 				}
 
@@ -116,8 +128,11 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 			 * Fix incorrect itemscope values
 			 */
 			if ( false !== strpos( $head_attr, 'itemscope="itemscope"' ) ) {
+
 				$head_attr = preg_replace( '/ *itemscope="itemscope"/', ' itemscope', $head_attr );
+
 			} elseif ( false === strpos( $head_attr, 'itemscope' ) ) {
+
 				$head_attr .= ' itemscope';
 			}
 
@@ -125,14 +140,18 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 			 * Replace existing itemtype values.
 			 */
 			if ( false !== strpos( $head_attr, 'itemtype="' ) ) {
+
 				$head_attr = preg_replace( '/ *itemtype="[^"]+"/', ' itemtype="' . $page_type_url . '"', $head_attr );
+
 			} else {
+
 				$head_attr .= ' itemtype="' . $page_type_url . '"';
 			}
 
 			$head_attr = trim( $head_attr );
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'returning head attributes "' . $head_attr . '"' );
 			}
 
@@ -145,6 +164,7 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 				$this->p->options[ 'plugin_head_attr_filter_name' ] === 'none' ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'head attributes disabled for empty option name' );
 				}
 
@@ -154,6 +174,7 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 			if ( ! apply_filters( $this->p->lca . '_add_schema_head_attributes', true ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'head attributes disabled by filters' );
 				}
 
@@ -166,6 +187,7 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 		public function get_array( array $mod, array $mt_og = array() ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -182,9 +204,8 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 				return array();	// Empty array.
 			}
 
-			$mt_item       = array();
-			$size_name     = $this->p->lca . '-schema';	// Default image size name.
-			$max_nums      = $this->p->util->get_max_nums( $mod, 'schema' );
+			$mt_item = array();
+
 			$page_type_id  = $this->p->schema->get_mod_schema_type( $mod, $get_id = true );
 			$page_type_url = $this->p->schema->get_schema_type_url( $page_type_id );
 
@@ -240,11 +261,13 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 					$this->p->debug->log( 'getting images for ' . $page_type_url );
 				}
 
-				$og_images = $this->p->og->get_all_images( $max_nums[ 'schema_img_max' ], $size_name, $mod, true, $md_pre = 'schema' );
+				$max_nums = $this->p->util->get_max_nums( $mod, 'schema' );
 
-				foreach ( $og_images as $og_single_image ) {
+				$mt_images = $this->p->og->get_all_images( $max_nums[ 'schema_img_max' ], $size_names = 'schema', $mod, true, $md_pre = 'schema' );
 
-					$mt_item[ 'image' ][] = SucomUtil::get_mt_media_url( $og_single_image );
+				foreach ( $mt_images as $mt_single_image ) {
+
+					$mt_item[ 'image' ][] = SucomUtil::get_mt_media_url( $mt_single_image );
 				}
 			}
 

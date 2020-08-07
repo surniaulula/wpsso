@@ -1214,14 +1214,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 *	'og:image:size_name' => null,
 			 * );
 			 */
-			$og_single_image = $this->p->media->get_opts_single_image( $opts, $size_name, $opt_img_pre );
+			$mt_single_image = $this->p->media->get_opts_single_image( $opts, $size_name, $opt_img_pre );
 
-			$og_single_image_url = SucomUtil::get_mt_media_url( $og_single_image );
+			$mt_single_image_url = SucomUtil::get_mt_media_url( $mt_single_image );
 
-			if ( ! empty( $og_single_image_url ) ) {
+			if ( ! empty( $mt_single_image_url ) ) {
 
-				$image_href    = '<a href="' . $og_single_image_url . '">' . $og_single_image_url . '</a>';
-				$image_dims    = $og_single_image[ 'og:image:width' ] . 'x' . $og_single_image[ 'og:image:height' ] . 'px';
+				$image_href    = '<a href="' . $mt_single_image_url . '">' . $mt_single_image_url . '</a>';
+				$image_dims    = $mt_single_image[ 'og:image:width' ] . 'x' . $mt_single_image[ 'og:image:height' ] . 'px';
 				$required_dims = '600x60px';
 
 				if ( $image_dims !== $required_dims ) {

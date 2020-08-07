@@ -1884,7 +1884,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_mt_image_seed( $mt_pre = 'og', array $mt_og = array() ) {
 
-			$og_ret = array(
+			$mt_ret = array(
 				$mt_pre . ':image:secure_url' => '',
 				$mt_pre . ':image:url'        => '',
 				$mt_pre . ':image:width'      => '',
@@ -1895,7 +1895,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':image:size_name'  => '',	// Non-standard / internal meta tag.
 			);
 
-			return self::maybe_merge_mt_og( $og_ret, $mt_og );
+			return self::maybe_merge_mt_og( $mt_ret, $mt_og );
 		}
 
 		/**
@@ -1903,7 +1903,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_mt_product_seed( $mt_pre = 'product', array $mt_og = array() ) {
 
-			$og_ret = array(
+			$mt_ret = array(
 				$mt_pre . ':id'                              => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':url'                             => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':age_group'                       => '',
@@ -1997,17 +1997,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			
 				if ( $mt_og[ 'og:type' ] === 'product' ) {
 
-					$og_ret[ $mt_pre . ':offers' ]  = array();		// Non-standard / internal meta tag.
-					$og_ret[ $mt_pre . ':reviews' ] = array();		// Non-standard / internal meta tag.
+					$mt_ret[ $mt_pre . ':offers' ]  = array();		// Non-standard / internal meta tag.
+					$mt_ret[ $mt_pre . ':reviews' ] = array();		// Non-standard / internal meta tag.
 				}
 			}
 
-			return self::maybe_merge_mt_og( $og_ret, $mt_og );
+			return self::maybe_merge_mt_og( $mt_ret, $mt_og );
 		}
 
 		public static function get_mt_video_seed( $mt_pre = 'og', array $mt_og = array() ) {
 
-			$og_ret = array(
+			$mt_ret = array(
 				$mt_pre . ':video:secure_url'      => '',
 				$mt_pre . ':video:url'             => '',
 				$mt_pre . ':video:type'            => '',	// Example: 'application/x-shockwave-flash' or 'text/html'.
@@ -2033,14 +2033,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':video:googleplay_url'  => '',	// Non-standard / internal meta tag for Twitter player card.
 			);
 
-			$og_ret += self::get_mt_image_seed( $mt_pre );
+			$mt_ret += self::get_mt_image_seed( $mt_pre );
 
 			/**
 			 * Facebook applink meta tags.
 			 */
 			if ( $mt_pre === 'og' ) {
 
-				$og_ret += array(
+				$mt_ret += array(
 					'al:ios:app_name'        => '',
 					'al:ios:app_store_id'    => '',
 					'al:ios:url'             => '',
@@ -2052,17 +2052,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				);
 			}
 
-			return self::maybe_merge_mt_og( $og_ret, $mt_og );
+			return self::maybe_merge_mt_og( $mt_ret, $mt_og );
 		}
 
 		/**
 		 * Private method used by get_mt_image_seed(), get_mt_product_seed(), and get_mt_video_seed().
 		 */
-		private static function maybe_merge_mt_og( array $og_ret, array $mt_og ) {
+		private static function maybe_merge_mt_og( array $mt_ret, array $mt_og ) {
 
 			if ( empty( $mt_og ) ) {	// Nothing to merge.
 
-				return $og_ret;
+				return $mt_ret;
 			} 
 
 			/**
@@ -2073,10 +2073,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			 */
 			if ( array_key_exists( 'og:type', $mt_og ) ) {
 
-				return array_merge( array( 'og:type' => $mt_og[ 'og:type' ] ), $og_ret, $mt_og );
+				return array_merge( array( 'og:type' => $mt_og[ 'og:type' ] ), $mt_ret, $mt_og );
 			}
 
-			return array_merge( $og_ret, $mt_og );
+			return array_merge( $mt_ret, $mt_og );
 		}
 
 		/**

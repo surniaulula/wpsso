@@ -3955,6 +3955,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_PHP_GETIMGSIZE_MAX_TIME' ]     = 1.50;	// Send an error to trigger_error() if getimagesize() takes longer.
 			$var_const[ 'WPSSO_REFRESH_CACHE_SLEEP_TIME' ]    = 0.50;	// Seconds to sleep between requests when refreshing the cache.
 			$var_const[ 'WPSSO_SELECT_PERSON_NAMES_MAX' ]     = 100;	// Maximum number of persons to include in a form select.
+			$var_const[ 'WPSSO_GRAVATAR_IMAGE_SIZE_MAX' ]     = 2048;	// Maximum available width of images from Gravatar.com.
 
 			/**
 			 * Schema limits.
@@ -4084,9 +4085,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			add_filter( 'wpsso_load_lib', array( 'WpssoConfig', 'load_lib' ), 10, 3 );
 		}
 
-		public static function load_lib( $ret = false, $filespec = '', $classname = '' ) {
+		public static function load_lib( $success = false, $filespec = '', $classname = '' ) {
 
-			if ( false === $ret && ! empty( $filespec ) ) {
+			if ( false === $success && ! empty( $filespec ) ) {
 
 				$file_path = WPSSO_PLUGINDIR . 'lib/' . $filespec . '.php';
 
@@ -4098,14 +4099,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 						return SucomUtil::sanitize_classname( 'wpsso' . $filespec, $allow_underscore = false );
 
-					} else {
-
-						return $classname;
 					}
+
+					return $classname;
 				}
 			}
 
-			return $ret;
+			return $success;
 		}
 
 		public static function get_cache_dir() {

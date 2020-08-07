@@ -6,10 +6,12 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+
 	die( 'Do. Or do not. There is no try.' );
 }
 
@@ -24,6 +26,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -44,6 +47,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 		public function get_array( array $mod, array $mt_og = array(), $author_id = 0 ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -59,6 +63,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 					$mt_name[ 'author' ] = $this->p->user->get_author_meta( $author_id, $this->p->options[ 'seo_author_name' ] );
 
 				} elseif ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'skipped author meta tag - og:type is not an article' );
 				}
 			}
@@ -80,6 +85,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 				$mt_name[ 'thumbnail' ] = $this->p->og->get_thumbnail_url( $this->p->lca . '-thumbnail', $mod, $md_pre = 'og' );
 
 				if ( empty( $mt_name[ 'thumbnail' ] ) ) {
+
 					unset( $mt_name[ 'thumbnail' ] );
 				}
 			}
@@ -90,6 +96,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 			if ( ! empty( $this->p->options[ 'add_meta_name_google-site-verification' ] ) ) {
 
 				if ( ! empty( $this->p->options[ 'g_site_verify' ] ) ) {	// Google Website Verification ID.
+
 					$mt_name[ 'google-site-verification' ] = $this->p->options[ 'g_site_verify' ];
 				}
 			}
@@ -100,6 +107,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 			if ( ! empty( $this->p->options[ 'add_meta_name_p:domain_verify' ] ) ) {
 
 				if ( ! empty( $this->p->options[ 'p_site_verify' ] ) ) {	// Pinterest Website Verification ID.
+
 					$mt_name[ 'p:domain_verify' ] = $this->p->options[ 'p_site_verify' ];
 				}
 			}

@@ -2050,9 +2050,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Pass a single or two dimension image array in $mt_list.
+		 * Pass a single or two dimension image array in $mt_images.
 		 */
-		public static function add_images_data_mt( &$json_data, &$mt_list, $mt_pre = 'og:image' ) {
+		public static function add_images_data_mt( &$json_data, &$mt_images, $mt_pre = 'og:image' ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -2063,16 +2063,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$images_added = 0;
 
-			if ( isset( $mt_list[ 0 ] ) && is_array( $mt_list[ 0 ] ) ) {	// 2 dimensional array.
+			if ( isset( $mt_images[ 0 ] ) && is_array( $mt_images[ 0 ] ) ) {	// 2 dimensional array.
 
-				foreach ( $mt_list as $og_single_image ) {
+				foreach ( $mt_images as $mt_single_image ) {
 
-					$images_added += WpssoSchemaSingle::add_image_data_mt( $json_data, $og_single_image, $mt_pre, $list_element = true );
+					$images_added += WpssoSchemaSingle::add_image_data_mt( $json_data, $mt_single_image, $mt_pre, $list_element = true );
 				}
 
-			} elseif ( is_array( $mt_list ) ) {
+			} elseif ( is_array( $mt_images ) ) {
 
-				$images_added += WpssoSchemaSingle::add_image_data_mt( $json_data, $mt_list, $mt_pre, $list_element = true );
+				$images_added += WpssoSchemaSingle::add_image_data_mt( $json_data, $mt_images, $mt_pre, $list_element = true );
 			}
 
 			return $images_added;	// Return count of images added.
@@ -2233,16 +2233,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			$img_added  = 0;
 			$max_nums   = $wpsso->util->get_max_nums( $mod, 'schema' );
-			$og_images  = $wpsso->og->get_all_images( $max_nums[ 'schema_img_max' ], $size_names, $mod, $check_dupes = true, $md_pre = 'schema' );
+			$mt_images  = $wpsso->og->get_all_images( $max_nums[ 'schema_img_max' ], $size_names, $mod, $check_dupes = true, $md_pre = 'schema' );
 
-			if ( ! empty( $og_images ) ) {
+			if ( ! empty( $mt_images ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
 					$wpsso->debug->log( 'adding images to json data' );
 				}
 
-				$img_added = self::add_images_data_mt( $json_data[ 'image' ], $og_images );
+				$img_added = self::add_images_data_mt( $json_data[ 'image' ], $mt_images );
 			}
 
 			if ( $wpsso->debug->enabled ) {
@@ -2590,24 +2590,22 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Provide a single or two-dimension video array in $mt_list.
+		 * Provide a single or two-dimension video array in $mt_videos.
 		 */
-		public static function add_videos_data_mt( &$json_data, $mt_list, $mt_pre = 'og:video' ) {
+		public static function add_videos_data_mt( &$json_data, $mt_videos, $mt_pre = 'og:video' ) {
 
 			$videos_added = 0;
 
-			if ( isset( $mt_list[ 0 ] ) && is_array( $mt_list[ 0 ] ) ) {	// 2 dimensional array.
+			if ( isset( $mt_videos[ 0 ] ) && is_array( $mt_videos[ 0 ] ) ) {	// 2 dimensional array.
 
-				foreach ( $mt_list as $og_single_video ) {
+				foreach ( $mt_videos as $mt_single_video ) {
 
-					$videos_added += WpssoSchemaSingle::add_video_data_mt( $json_data,
-						$og_single_video, $mt_pre, $list_element = true );
+					$videos_added += WpssoSchemaSingle::add_video_data_mt( $json_data, $mt_single_video, $mt_pre, $list_element = true );
 				}
 
-			} elseif ( is_array( $mt_list ) ) {
+			} elseif ( is_array( $mt_videos ) ) {
 
-				$videos_added += WpssoSchemaSingle::add_video_data_mt( $json_data,
-					$mt_list, $mt_pre, $list_element = true );
+				$videos_added += WpssoSchemaSingle::add_video_data_mt( $json_data, $mt_videos, $mt_pre, $list_element = true );
 			}
 
 			return $videos_added;	// return count of videos added
