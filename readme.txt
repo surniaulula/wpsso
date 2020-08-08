@@ -169,7 +169,6 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 		* [WooCommerce Currency Switcher](https://wordpress.org/plugins/woocommerce-currency-switcher/)
 		* [WooCommerce UPC, EAN, and ISBN](https://wordpress.org/plugins/woo-add-gtin/)
 		* WooCommerce Show Single Variations
-		* [WP eCommerce](https://wordpress.org/plugins/wp-e-commerce/)
 		* [WP Job Manager](https://wordpress.org/plugins/wp-job-manager/)
 		* [WP Meta SEO](https://wordpress.org/plugins/wp-meta-seo/)
 		* [WP-PostRatings](https://wordpress.org/plugins/wp-postratings/)
@@ -309,9 +308,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.16.0-dev.8 (2020/08/08)**
+**Version 8.0.0-dev.8 (2020/08/08)**
 
 Google has updated their Rich Results requirements and now prefer 1:1, 4:3, and 16:9 images for all Schema types, not just the Schema Article type for AMP webpages. The "Schema" and "Schema Article" image sizes have been removed and replaced by new Schema 1:1, 4:3, and 16:9 image sizes.
+
+The [WP eCommerce](https://wordpress.org/plugins/wp-e-commerce/) plugin is no longer supported (last update in January 2019) and the WPSSO Core Premium integration module for WP eCommerce has been removed.
 
 * **New Features**
 	* Added an API integration module for Shopper Approved customer ratings and reviews. See the SSO &gt; Advanced Settings &gt; Service APIs tab to enter your Shopper Approved API token and enabled reviews for specific post types (for example, the "product" custom post type).
@@ -331,6 +332,7 @@ Google has updated their Rich Results requirements and now prefer 1:1, 4:3, and 
 		* Schema
 		* Schema Article
 	* Removed the "Schema Image URL" option in the Document SSO metabox.
+	* Removed the WPSSO Core Premium integration module for the [WP eCommerce](https://wordpress.org/plugins/wp-e-commerce/) plugin.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -735,7 +737,7 @@ The Open Graph meta tags for WooCommerce products have been extended to include 
 
 == Upgrade Notice ==
 
-= 7.16.0-dev.8 =
+= 8.0.0-dev.8 =
 
 (2020/08/08) Added an API integration module for Shopper Approved customer ratings and reviews. Added Schema 1:1, 4:3, and 16:9 images for Google.
 
