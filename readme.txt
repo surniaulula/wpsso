@@ -309,12 +309,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 7.16.0-dev.7 (2020/08/07)**
+**Version 7.16.0-dev.8 (2020/08/08)**
 
 Google has updated their Rich Results requirements and now prefer 1:1, 4:3, and 16:9 images for all Schema types, not just the Schema Article type for AMP webpages. The "Schema" and "Schema Article" image sizes have been removed and replaced by new Schema 1:1, 4:3, and 16:9 image sizes.
 
 * **New Features**
-	* Added a new API integration module for Shopper Approved customer ratings and reviews.
+	* Added an API integration module for Shopper Approved customer ratings and reviews. See the SSO &gt; Advanced Settings &gt; Service APIs tab to enter your Shopper Approved API token and enabled reviews for specific post types (for example, the "product" custom post type).
 * **Improvements**
 	* Added a new "Gravatar Image Size" option (default is 1200px).
 	* Added shortening service API status to the SSO &gt; Dashboard &gt; Premium Features Status metabox:
@@ -324,9 +324,9 @@ Google has updated their Rich Results requirements and now prefer 1:1, 4:3, and 
 		* TinyURL Shortener API
 		* YOURLS Shortener API
 	* Renamed the following SSO &gt; Image Sizes:
-		* Schema Article AMP 1:1 to Schema 1:1
-		* Schema Article AMP 4:3 to Schema 4:3
-		* Schema Article AMP 16:9 to Schema 16:9
+		* Schema Article AMP 1:1 to Schema 1:1 (Google)
+		* Schema Article AMP 4:3 to Schema 4:3 (Google)
+		* Schema Article AMP 16:9 to Schema 16:9 (Google)
 	* Removed the following SSO &gt; Image Sizes:
 		* Schema
 		* Schema Article
@@ -735,9 +735,9 @@ The Open Graph meta tags for WooCommerce products have been extended to include 
 
 == Upgrade Notice ==
 
-= 7.16.0-dev.7 =
+= 7.16.0-dev.8 =
 
-(2020/08/07) Added a new API integration module for Shopper Approved customer ratings and reviews. Added shortening service API status to the SSO &gt; Dashboard &gt; Premium Features Status metabox.
+(2020/08/08) Added an API integration module for Shopper Approved customer ratings and reviews. Added Schema 1:1, 4:3, and 16:9 images for Google.
 
 = 7.15.0 =
 
