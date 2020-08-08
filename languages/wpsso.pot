@@ -816,12 +816,12 @@ msgctxt "lib file description"
 msgid "(code) Twitter Card Meta Tags"
 msgstr ""
 
-#: lib/com/bfo.php:242 lib/com/cache.php:94 lib/com/notice.php:103
+#: lib/com/bfo.php:242 lib/com/cache.php:94 lib/com/notice.php:118
 #: lib/gettext-com.php:6 lib/gettext-com.php:27 lib/gettext-com.php:34
 msgid "%s Notice"
 msgstr ""
 
-#: lib/com/bfo.php:245 lib/com/cache.php:99 lib/com/notice.php:106
+#: lib/com/bfo.php:245 lib/com/cache.php:99 lib/com/notice.php:123
 #: lib/gettext-com.php:7 lib/gettext-com.php:28 lib/gettext-com.php:35
 msgid "Notice"
 msgstr ""
@@ -938,23 +938,23 @@ msgctxt "option comment"
 msgid "from"
 msgstr ""
 
-#: lib/com/notice.php:251 lib/gettext-com.php:29
+#: lib/com/notice.php:276 lib/gettext-com.php:29
 msgid "Forever"
 msgstr ""
 
-#: lib/com/notice.php:253 lib/gettext-com.php:30
+#: lib/com/notice.php:278 lib/gettext-com.php:30
 msgid "This notice can be dismissed permanently."
 msgstr ""
 
-#: lib/com/notice.php:265 lib/gettext-com.php:31
+#: lib/com/notice.php:290 lib/gettext-com.php:31
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:485 lib/gettext-com.php:32 lib/post.php:1768
+#: lib/com/notice.php:513 lib/gettext-com.php:32 lib/post.php:1768
 msgid "Edit"
 msgstr ""
 
-#: lib/com/notice.php:489 lib/gettext-com.php:33
+#: lib/com/notice.php:517 lib/gettext-com.php:33
 msgid "Reference: %s"
 msgstr ""
 

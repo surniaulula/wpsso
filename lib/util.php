@@ -3758,7 +3758,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return $local_cache;
 			}
 
-			$atts_names = array();
+			$attr_names = array();
 
 			foreach ( $local_cache as $key => $val ) {
 
@@ -3767,10 +3767,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$key = preg_replace( '/_(value|units)$/', $sep . '$1', $key );
 				}
 
-				$atts_names[ $prefix . $sep . $key ] = $val;
+				$attr_names[ $prefix . $sep . $key ] = $val;
 			}
 
-			return $atts_names;
+			return $attr_names;
 		}
 
 		public function maybe_set_ref( $sharing_url = null, $mod = false, $msg_transl = '' ) {

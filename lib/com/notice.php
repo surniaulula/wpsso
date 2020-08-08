@@ -6,6 +6,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
@@ -36,6 +37,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			static $do_once = null;	// Just in case.
 
 			if ( true === $do_once ) {
+
 				return;
 			}
 
@@ -61,6 +63,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$this->p =& $plugin;
 
 				if ( ! empty( $this->p->debug->enabled ) ) {
+
 					$this->p->debug->mark();
 				}
 			}
@@ -69,8 +72,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 * Set the lower and upper case acronyms.
 			 */
 			if ( $lca !== null ) {
+
 				$this->lca = $lca;
+
 			} elseif ( ! empty( $this->p->lca ) ) {
+
 				$this->lca = $this->p->lca;
 			}
 
@@ -80,8 +86,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 * Set the text domain.
 			 */
 			if ( $text_domain !== null ) {
+
 				$this->text_domain = $text_domain;
+
 			} elseif ( ! empty( $this->p->cf[ 'plugin' ][ $this->lca ][ 'text_domain' ] ) ) {
+
 				$this->text_domain = $this->p->cf[ 'plugin' ][ $this->lca ][ 'text_domain' ];
 			}
 
@@ -89,8 +98,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 * Set the dismiss key name.
 			 */
 			if ( defined( $this->uca . '_DISMISS_NAME' ) ) {
+
 				$this->dismiss_name = constant( $this->uca . '_DISMISS_NAME' );
+
 			} else {
+
 				$this->dismiss_name = $this->lca . '_dismissed';
 			}
 
@@ -98,11 +110,16 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 * Set the translated notice label.
 			 */
 			if ( false !== $label_transl ) {
+
 				$this->label_transl = $label_transl;
+
 			} elseif ( ! empty( $this->p->cf[ 'menu' ][ 'title' ] ) ) {
+
 				$this->label_transl = sprintf( __( '%s Notice', $this->text_domain ),
 					_x( $this->p->cf[ 'menu' ][ 'title' ], 'menu title', $this->text_domain ) );
+
 			} else {
+
 				$this->label_transl = __( 'Notice', $this->text_domain );
 			}
 
@@ -126,13 +143,16 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			} elseif ( 'toolbar_notices' === $this->p->options[ 'plugin_notice_system' ] ) {
 
 				$this->tb_notices = true;
+
 			} else {
+
 				$this->tb_notices = false;
 			}
 
 			if ( defined( $this->uca . '_TOOLBAR_NOTICES' ) ) {
 
 				if ( ! empty( $this->p->debug->enabled ) ) {
+
 					$this->p->debug->log( $this->uca . '_TOOLBAR_NOTICES is defined' );
 				}
 
@@ -142,6 +162,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			if ( true === $this->tb_notices ) {
 
 				if ( ! empty( $this->p->debug->enabled ) ) {
+
 					$this->p->debug->log( 'tb_notices is true' );
 				}
 
@@ -151,6 +172,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			if ( empty( $this->tb_notices ) || ! is_array( $this->tb_notices ) ) {
 
 				if ( ! empty( $this->p->debug->enabled ) ) {
+
 					$this->p->debug->log( 'tb_notices is empty or not an array' );
 				}
 
@@ -179,6 +201,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 * Do not show a dismiss button by default.
 			 *
 			 * if ( ! isset( $payload[ 'dismiss_diff' ] ) ) {
+			 *
 			 * 	$payload[ 'dismiss_diff' ] = false;
 			 * }
 			 */
@@ -209,6 +232,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private function log( $msg_type, $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false, $payload = array() ) {
 
 			if ( empty( $msg_type ) || empty( $msg_text ) ) {
+
 				return false;
 			}
 
@@ -217,6 +241,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$user_id = is_numeric( $user_id ) ? (int) $user_id : $current_user_id;	// User ID can be true, false, null, or a number.
 
 			if ( empty( $user_id ) ) {	// User ID is 0 (cron user, for example).
+
 				return false;
 			}
 
@@ -272,7 +297,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						$msg_close_div = '';
 
 						if ( substr( $msg_text, -6 ) === '</div>' ) {
+
 							$msg_text = substr( $msg_text, 0, -6 );
+
 							$msg_close_div = '</div>';
 						}
 
@@ -334,6 +361,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$user_id = is_numeric( $user_id ) ? (int) $user_id : $current_user_id;	// User ID can be true, false, null, or a number.
 
 				if ( empty( $user_id ) ) {	// User ID is 0 (cron user, for example).
+
 					return false;
 				}
 
@@ -496,10 +524,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		public function is_ref_url( $url = null ) {
 
 			if ( null === $url || $url === $this->get_ref( $ref_key = 'url' ) ) {
+
 				return true;
-			} else {
-				return false;
+
 			}
+
+			return false;
 		}
 
 		public function is_admin_pre_notices( $notice_key = false, $user_id = null ) {
@@ -514,6 +544,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					if ( $this->is_dismissed( $notice_key, $user_id ) ) {
 
 						if ( ! empty( $this->p->debug->enabled ) ) {
+
 							$this->p->debug->log( 'returning false: ' . $notice_key . ' is dismissed' );
 						}
 
@@ -524,6 +555,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				if ( $this->has_shown ) {
 
 					if ( ! empty( $this->p->debug->enabled ) ) {
+
 						$this->p->debug->log( 'returning false: notices have been shown' );
 					}
 
@@ -533,6 +565,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			} else {
 
 				if ( ! empty( $this->p->debug->enabled ) ) {
+
 					$this->p->debug->log( 'returning false: is not admin' );
 				}
 
@@ -637,6 +670,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		public function show_admin_notices() {
 
 			if ( ! empty( $this->p->debug->enabled ) ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -649,6 +683,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			if ( ! empty( $this->tb_notices ) && is_array( $this->tb_notices ) ) {
 
 				if ( ! empty( $this->p->debug->enabled ) ) {
+
 					$this->p->debug->log_arr( 'tb_notices', $this->tb_notices );
 				}
 
@@ -657,11 +692,13 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			} else {
 
 				if ( ! empty( $this->p->debug->enabled ) ) {
+
 					$this->p->debug->log( 'toolbar notices are disabled' );
 				}
 			}
 
 			if ( ! empty( $this->p->debug->enabled ) ) {
+
 				$this->p->debug->log_arr( 'notice_types', $notice_types );
 			}
 
@@ -683,6 +720,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			if ( SucomUtilWP::doing_block_editor() ) {
 
 				if ( ! empty( $this->p->debug->enabled ) ) {
+
 					$this->p->debug->log( 'exiting early: doing block editor' );
 				}
 
@@ -690,6 +728,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			if ( ! empty( $this->p->debug->enabled ) ) {
+
 				$this->p->debug->log( 'doing block editor is false' );
 			}
 
@@ -715,6 +754,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			foreach ( $notice_types as $msg_type ) {
 
 				if ( ! isset( $this->notice_cache[ $user_id ][ $msg_type ] ) ) {	// Just in case.
+
 					continue;
 				}
 
@@ -821,6 +861,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		public function ajax_dismiss_notice() {
 
 			if ( ! SucomUtil::get_const( 'DOING_AJAX' ) ) {	// Just in case.
+
 				return;
 			}
 
@@ -828,6 +869,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$dismiss_info = array();
 
 			if ( empty( $user_id ) || ! current_user_can( 'edit_user', $user_id ) ) {
+
 				die( -1 );
 			}
 
@@ -841,6 +883,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			if ( empty( $dismiss_info[ 'notice_key' ] ) ) {	// Just in case.
+
 				die( -1 );
 			}
 
@@ -868,8 +911,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		public function ajax_get_notices_json() {
 
 			if ( ! SucomUtil::get_const( 'DOING_AJAX' ) ) {
+
 				return;
+
 			} elseif ( SucomUtil::get_const( 'DOING_AUTOSAVE' ) ) {
+
 				die( -1 );
 			}
 
@@ -878,8 +924,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			if ( ! empty( $_REQUEST[ '_notice_types' ] ) ) {
 
 				if ( is_array( $_REQUEST[ '_notice_types' ] ) ) {
+
 					$notice_types = $_REQUEST[ '_notice_types' ];
+
 				} else {
+
 					$notice_types = explode( ',', $_REQUEST[ '_notice_types' ] );
 				}
 			}
@@ -887,8 +936,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			if ( ! empty( $_REQUEST[ '_exclude_types' ] ) ) {
 
 				if ( is_array( $_REQUEST[ '_exclude_types' ] ) ) {
+
 					$exclude_types = $_REQUEST[ '_exclude_types' ];
+
 				} else {
+
 					$exclude_types = explode( ',', $_REQUEST[ '_exclude_types' ] );
 				}
 
@@ -896,6 +948,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			if ( empty( $notice_types ) ) {	// Just in case.
+
 				die( -1 );
 			}
 
@@ -1120,8 +1173,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$match_md5 = md5( $matches[ 0 ] );
 
 				if ( isset( $show_once[ $match_md5 ] ) ) {
+
 					$payload[ 'msg_text' ] = str_replace( $matches[ 0 ], '', $payload[ 'msg_text' ] );
+
 				} else {
+
 					$show_once[ $match_md5 ] = true;
 				}
 			}
@@ -1148,10 +1204,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private function maybe_add_update_errors( $user_id ) {
 
 			if ( ! class_exists( 'SucomUpdate' ) ) {
+
 				return;
 			}
 
 			if ( empty( $this->p->cf[ 'plugin' ] ) ) {
+
 				return;
 			}
 
@@ -1182,6 +1240,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$result = false;
 
 			if ( empty( $user_id ) ) {	// User ID is 0 (cron user, for example).
+
 				return $result;
 			}
 
@@ -1205,8 +1264,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			if ( $have_notices ) {
+
 				$result = set_transient( $cache_id, $this->notice_cache[ $user_id ], $cache_exp_secs );
+
 			} else {
+
 				delete_transient( $cache_id );
 			}
 
@@ -1269,6 +1331,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private function get_notice_transient( $user_id ) {
 
 			if ( empty( $user_id ) ) {	// User ID is 0 (cron user, for example).
+
 				return array();
 			}
 
@@ -1279,6 +1342,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$transient_cache = get_transient( $cache_id );
 
 			if ( ! is_array( $transient_cache ) ) {
+
 				$transient_cache = array();
 			}
 
@@ -1295,7 +1359,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 
 			if ( $this->use_cache ) {
+
 				if ( $custom_style_css = get_transient( $cache_id ) ) {	// Not empty.
+
 					return '<style type="text/css">' . $custom_style_css . '</style>';
 				}
 			}
@@ -1654,7 +1720,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 
 			if ( $this->use_cache ) {
+
 				if ( $custom_style_css = get_transient( $cache_id ) ) {	// Not empty.
+
 					return '<style type="text/css">' . $custom_style_css . '</style>';
 				}
 			}
@@ -1662,8 +1730,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$custom_style_css = '';	// Start with an empty string.
 
 			if ( isset( $this->p->cf[ 'notice' ] ) ) {
+
 				foreach ( $this->p->cf[ 'notice' ] as $css_class => $css_props ) {
+
 					foreach ( $css_props as $prop_name => $prop_value ) {
+
 						$custom_style_css .= '.' . $this->lca . '-notice.' . $css_class . '{' . $prop_name . ':' . $prop_value . ';}' . "\n";
 					}
 				}
@@ -1692,6 +1763,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			if ( $this->use_cache ) {
 
 				if ( method_exists( 'SucomUtil', 'minify_css' ) ) {
+
 					$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->lca );
 				}
 
@@ -1720,6 +1792,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		if ( notice.data( "notice-key" ) ) {
+
 			jQuery.post( ajaxurl, ajaxDismissData );
 		}
 
