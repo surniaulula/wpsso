@@ -223,7 +223,6 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 
 * [Can I use the Premium plugin on multiple websites?](https://wpsso.com/docs/plugins/wpsso/faqs/can-i-use-the-pro-version-on-multiple-websites/)
 * [Does LinkedIn read the Open Graph meta tags?](https://wpsso.com/docs/plugins/wpsso/faqs/does-linkedin-read-the-open-graph-meta-tags/)
-* [How can I exclude / ignore certain parts of the content text?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-exclude-ignore-certain-parts-of-the-content-text/)
 * [How can I fix a ERR_TOO_MANY_REDIRECTS error?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-a-err_too_many_redirects-error/)
 * [How can I fix a generic HTTP 500 error?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-a-generic-http-500-error/)
 * [How can I fix a PHP fatal "out of memory" error?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-a-php-fatal-out-of-memory-error/)
