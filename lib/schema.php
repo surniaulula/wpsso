@@ -65,18 +65,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public function filter_plugin_image_sizes( $sizes ) {
 
 			$sizes[ 'schema_1_1' ] = array(		// Option prefix.
-				'name'   => 'schema-1-1',
-				'label'  => _x( 'Schema 1:1 Image', 'image size label', 'wpsso' ),
+				'name'  => 'schema-1-1',	// Size name suffix.
+				'label' => _x( 'Schema 1:1 (Google)', 'option label', 'wpsso' ),
 			);
 
 			$sizes[ 'schema_4_3' ] = array(		// Option prefix.
-				'name'   => 'schema-4-3',
-				'label'  => _x( 'Schema 4:3 Image', 'image size label', 'wpsso' ),
+				'name'  => 'schema-4-3',	// Size name suffix.
+				'label' => _x( 'Schema 4:3 (Google)', 'option label', 'wpsso' ),
 			);
 
 			$sizes[ 'schema_16_9' ] = array(	// Option prefix.
-				'name'   => 'schema-16-9',
-				'label'  => _x( 'Schema 16:9 Image', 'image size label', 'wpsso' ),
+				'name'  => 'schema-16-9',	// Size name suffix.
+				'label' => _x( 'Schema 16:9 (Google)', 'option label', 'wpsso' ),
 			);
 
 			return $sizes;
@@ -92,7 +92,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$ret = self::get_schema_type_context( 'https://schema.org/WebSite', array(
+			$json_ret = self::get_schema_type_context( 'https://schema.org/WebSite', array(
 				'url' => SucomUtil::get_site_url( $this->p->options, $mod ),
 			) );
 
@@ -104,7 +104,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( ! empty( $value ) ) {
 
-					$ret[ $key ] = $value;
+					$json_ret[ $key ] = $value;
 				}
 			}
 
@@ -123,7 +123,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( ! empty( $search_url ) ) {
 
-				$ret[ 'potentialAction' ][] = self::get_schema_type_context( 'https://schema.org/SearchAction', array(
+				$json_ret[ 'potentialAction' ][] = self::get_schema_type_context( 'https://schema.org/SearchAction', array(
 					'target'      => $search_url,
 					'query-input' => 'required name=search_term_string',
 				) );
@@ -134,7 +134,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			
-			return self::return_data_from_filter( $json_data, $ret, $is_main );
+			return self::return_data_from_filter( $json_data, $json_ret, $is_main );
 		}
 
 		/**
@@ -181,7 +181,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log_arr( '$json_data', $json_data );
 			}
 
-			$ret = self::get_data_context( $json_data );	// Returns array() if no schema type found.
+			$json_ret = self::get_data_context( $json_data );	// Returns array() if no schema type found.
 
 		 	/**
 			 * $org_id can be 'none', 'site', or a number (including 0).
@@ -195,9 +195,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log( 'adding data for organization id = ' . $org_id );
 			}
 
-			WpssoSchemaSingle::add_organization_data( $ret, $mod, $org_id, $org_logo_key = 'org_logo_url', $list_element = false );
+			WpssoSchemaSingle::add_organization_data( $json_ret, $mod, $org_id, $org_logo_key = 'org_logo_url', $list_element = false );
 
-			return self::return_data_from_filter( $json_data, $ret, $is_main );
+			return self::return_data_from_filter( $json_data, $json_ret, $is_main );
 		}
 
 		/**
@@ -253,7 +253,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log_arr( '$json_data', $json_data );
 			}
 
-			$ret = self::get_data_context( $json_data );	// Returns array() if no schema type found.
+			$json_ret = self::get_data_context( $json_data );	// Returns array() if no schema type found.
 
 		 	/**
 			 * $user_id can be 'none' or a number (including 0).
@@ -263,17 +263,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log( 'adding data for person id = ' . $user_id );
 			}
 
-			WpssoSchemaSingle::add_person_data( $ret, $mod, $user_id, $list_element = false );
+			WpssoSchemaSingle::add_person_data( $json_ret, $mod, $user_id, $list_element = false );
 
 			/**
 			 * Override author's website url and use the og url instead.
 			 */
 			if ( $mod[ 'is_home' ] ) {
 
-				$ret[ 'url' ] = $mt_og[ 'og:url' ];
+				$json_ret[ 'url' ] = $mt_og[ 'og:url' ];
 			}
 
-			return self::return_data_from_filter( $json_data, $ret, $is_main );
+			return self::return_data_from_filter( $json_data, $json_ret, $is_main );
 		}
 
 		public function has_json_data_filter( array $mod, $type_url = '' ) {
@@ -3096,12 +3096,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 *
 		 * Example usage:
 		 *
-		 *	WpssoSchema::add_data_itemprop_from_assoc( $ret, $mt_og, array(
+		 *	WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_og, array(
 		 *		'datePublished' => 'article:published_time',
 		 *		'dateModified'  => 'article:modified_time',
 		 *	) );
 		 *
-		 *	WpssoSchema::add_data_itemprop_from_assoc( $ret, $org_opts, array(
+		 *	WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $org_opts, array(
 		 *		'url'           => 'org_url',
 		 *		'name'          => 'org_name',
 		 *		'alternateName' => 'org_name_alt',

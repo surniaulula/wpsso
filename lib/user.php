@@ -1381,7 +1381,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		/**
 		 * Methods that return an associative array of Open Graph meta tags.
 		 */
-		public function get_og_images( $num, $size_name, $user_id, $check_dupes = true, $md_pre = 'og' ) {
+		public function get_og_images( $num, $size_name, $user_id, $check_dupes = true, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1397,7 +1397,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $user_exists ) {
 
-				return $this->get_md_images( $num, $size_name, $mod, $check_dupes, $md_pre, 'og' );
+				return $this->get_md_images( $num, $size_name, $mod, $check_dupes, $md_pre, $mt_pre );
 			}
 
 			return apply_filters( $this->p->lca . '_get_other_user_images', array(), $num, $size_name, $user_id, $check_dupes, $md_pre );
@@ -1410,11 +1410,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 */
 		public function get_authors_websites( $user_ids, $meta_key = 'url' ) {
 
-			$ret = array();
+			$urls = array();
 
 			if ( empty( $user_ids ) ) {	// Just in case.
 
-				return $ret;
+				return $urls;
 			}
 
 			if ( ! is_array( $user_ids ) ) {
@@ -1440,12 +1440,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					if ( ! empty( $value ) ) {	// Make sure we don't add empty values.
 
-						$ret[] = $value;
+						$urls[] = $value;
 					}
 				}
 			}
 
-			return $ret;
+			return $urls;
 		}
 
 		public function get_author_website( $user_id, $meta_key = 'url' ) {

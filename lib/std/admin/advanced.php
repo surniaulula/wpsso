@@ -168,12 +168,13 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$add_to_metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
 			$add_to_values = array( 'user_page' => _x( 'User Profile', 'option label', 'wpsso' ) );
-			$add_to_values = SucomUtilWP::get_post_type_labels( $add_to_values, '', _x( 'Post Type', 'option label', 'wpsso' ) );
-			$add_to_values = SucomUtilWP::get_taxonomy_labels( $add_to_values, 'tax_', _x( 'Taxonomy', 'option label', 'wpsso' ) );
+			$add_to_values = SucomUtilWP::get_post_type_labels( $add_to_values, $val_prefix = '', _x( 'Post Type', 'option label', 'wpsso' ) );
+			$add_to_values = SucomUtilWP::get_taxonomy_labels( $add_to_values, $val_prefix = 'tax_', _x( 'Taxonomy', 'option label', 'wpsso' ) );
 
 			$table_rows[ 'plugin_add_to' ] = '' .
 			$form->get_th_html( sprintf( _x( 'Add %s Metabox', 'option label', 'wpsso' ), $add_to_metabox_title ), $css_class = '', $css_id = 'plugin_add_to' ) . 
-			'<td class="blank">' . $form->get_no_checklist( 'plugin_add_to', $add_to_values, $css_class = 'input_vertical_list', $css_id = '', $is_assoc = true ) . '</td>';
+			'<td class="blank">' . $form->get_no_checklist( 'plugin_add_to', $add_to_values,
+				$css_class = 'input_vertical_list', $css_id = '', $is_assoc = true ) . '</td>';
 
 			/**
 			 * Read Yoast SEO social meta.
@@ -452,8 +453,15 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			'<td colspan="2" class="subsection"><h4>' . _x( 'Shopper Approved (Customer Ratings and Reviews)', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 			$table_rows[ 'plugin_shopperapproved_token' ] = '' .
-			$form->get_th_html( _x( 'Shopper Approved Token', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_shopperapproved_token' ) .
+			$form->get_th_html( _x( 'Shopper Approved API Token', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_shopperapproved_token' ) .
 			'<td class="blank mono"></td>';
+
+			$sa_for_values = SucomUtilWP::get_post_type_labels( array(), $val_prefix = '', _x( 'Post Type', 'option label', 'wpsso' ) );
+
+			$table_rows[ 'plugin_shopperapproved_for' ] = '' .
+			$form->get_th_html( _x( 'Get Reviews for Post Type', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_shopperapproved_for' ) .
+			'<td class="blank">' . $form->get_no_checklist( 'plugin_shopperapproved_for', $sa_for_values,
+				$css_class = 'input_vertical_list', $css_id = '', $is_assoc = true ) . '</td>';
 
 			/**
 			 * YOURLS URL shortener.

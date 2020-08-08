@@ -56,8 +56,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		public function filter_plugin_image_sizes( $sizes ) {
 
 			$sizes[ 'og' ] = array(		// Option prefix.
-				'name'  => 'opengraph',
-				'label' => _x( 'Open Graph Image', 'image size label', 'wpsso' ),
+				'name'  => 'opengraph',	// Size name suffix.
+				'label' => _x( 'Open Graph (Facebook and oEmbed)', 'option label', 'wpsso' ),
 			);
 
 			return $sizes;
@@ -1326,7 +1326,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			} else {
 
 				/**
-				 * get_og_images() also provides filter hooks for additional image ids and urls.
+				 * get_og_images() provides filter hooks for additional image ids and urls.
+				 *
+				 * Unless $md_pre is 'none', get_og_images() will fallback to using the 'og' custom meta.
 				 */
 				if ( ! empty( $mod[ 'obj' ] ) ) {	// Term or user.
 

@@ -6,10 +6,12 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+
 	die( 'Do. Or do not. There is no try.' );
 }
 
@@ -24,6 +26,7 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -58,6 +61,7 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 		 * $author = get_userdata( $post->post_author );
 		 *
 		 * if ( $author ) {
+		 *
 		 * 	$data[ 'author_name' ] = $author->display_name;
 		 *	$data[ 'author_url' ]  = get_author_posts_url( $author->ID );
 		 * }
@@ -69,6 +73,7 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 				$head_info = $this->p->post->get_head_info( $post->ID );	// Uses a static local cache.
 
 				if ( ! empty( $head_info[ 'og:title' ] ) ) {
+
 					$data[ 'title' ] = $head_info[ 'og:title' ];
 				}
 			}
@@ -96,10 +101,11 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 				if ( isset( $head_info[ 'og:image:width' ] ) && $head_info[ 'og:image:width' ] > 0 && 
 					isset( $head_info[ 'og:image:height' ] ) && $head_info[ 'og:image:height' ] > 0 ) {
 
-					$og_image_url = SucomUtil::get_mt_media_url( $head_info, $mt_media_pre = 'og:image' );
+					$mt_image_url = SucomUtil::get_mt_media_url( $head_info, $mt_media_pre = 'og:image' );
 
-					if ( $og_image_url ) {
-						$data[ 'thumbnail_url' ]    = $og_image_url;
+					if ( $mt_image_url ) {
+
+						$data[ 'thumbnail_url' ]    = $mt_image_url;
 						$data[ 'thumbnail_width' ]  = $head_info[ 'og:image:width' ];
 						$data[ 'thumbnail_height' ] = $head_info[ 'og:image:height' ];
 					}
@@ -121,6 +127,7 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 				$head_info = $this->p->post->get_head_info( $post->ID );	// Uses a static local cache.
 
 				if ( ! empty( $head_info[ 'og:image:id' ] ) ) {
+
 					$pid = $head_info[ 'og:image:id' ];
 				}
 			}
@@ -165,6 +172,7 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 				$head_info = $this->p->post->get_head_info( $post->ID );	// Uses a static local cache.
 
 				if ( ! empty( $head_info[ 'og:description' ] ) ) {
+
 					$excerpt = $head_info[ 'og:description' ];
 				}
 			}

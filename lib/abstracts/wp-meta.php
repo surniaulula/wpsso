@@ -1500,7 +1500,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		/**
 		 * Note that $md_pre can be a text string or array of prefixes.
 		 */
-		public function get_og_images( $num, $size_name, $mod_id, $check_dupes = true, $md_pre = 'og' ) {
+		public function get_og_images( $num, $size_name, $mod_id, $check_dupes = true, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1509,7 +1509,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			$mod = $this->get_mod( $mod_id );
 
-			return $this->get_md_images( $num, $size_name, $mod, $check_dupes, $md_pre, 'og' );
+			return $this->get_md_images( $num, $size_name, $mod, $check_dupes, $md_pre, $mt_pre );
 		}
 
 		/**
@@ -1630,7 +1630,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $this->must_be_extended( __METHOD__, array() );	// Return an empty array.
 		}
 
-		public function get_og_review_mt( $comment_obj, $og_type = 'product', $rating_meta = 'rating', $worst_rating = 1, $best_rating = 5 ) {
+		public function get_og_comment_review( $comment_obj, $og_type = 'product', $rating_meta = 'rating', $worst_rating = 1, $best_rating = 5 ) {
 
 			return $this->must_be_extended( __METHOD__, array() );	// Return an empty array.
 		}

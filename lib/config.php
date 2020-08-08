@@ -22,8 +22,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '7.16.0-dev.7',	// Plugin version.
-					'opt_version' => '749',		// Increment when changing default option values.
+					'version'     => '7.16.0-dev.8',	// Plugin version.
+					'opt_version' => '751',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Make sure your content looks great on social sites and search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -1604,19 +1604,21 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings - Service APIs tab.
 					 */
-					'plugin_shortener'             => 'none',	// URL Shortening Service.
-					'plugin_wp_shortlink'          => 1,		// Use Shortened URL for WP Shortlink.
-					'plugin_min_shorten'           => 23,
-					'plugin_bitly_access_token'    => '',		// Bitly Generic Access Token.
-					'plugin_bitly_domain'          => '',		// Bitly Short Domain (Optional).
-					'plugin_bitly_group_name'      => '',		// Bitly Group Name (Optional).
-					'plugin_dlmyapp_api_key'       => '',		// DLMY.App API Key.
-					'plugin_owly_api_key'          => '',		// Ow.ly API Key.
-					'plugin_shopperapproved_token' => '',		// Shopper Approved Token.
-					'plugin_yourls_api_url'        => '',		// YOURLS API URL.
-					'plugin_yourls_username'       => '',		// YOURLS Username.
-					'plugin_yourls_password'       => '',		// YOURLS Password.
-					'plugin_yourls_token'          => '',		// YOURLS Token.
+					'plugin_shortener'                    => 'none',	// URL Shortening Service.
+					'plugin_wp_shortlink'                 => 1,		// Use Shortened URL for WP Shortlink.
+					'plugin_min_shorten'                  => 23,
+					'plugin_bitly_access_token'           => '',		// Bitly Generic Access Token.
+					'plugin_bitly_domain'                 => '',		// Bitly Short Domain (Optional).
+					'plugin_bitly_group_name'             => '',		// Bitly Group Name (Optional).
+					'plugin_dlmyapp_api_key'              => '',		// DLMY.App API Key.
+					'plugin_owly_api_key'                 => '',		// Ow.ly API Key.
+					'plugin_shopperapproved_token'        => '',		// Shopper Approved API Token.
+					'plugin_shopperapproved_for_download' => 1,		// For Easy Digital Downloads.
+					'plugin_shopperapproved_for_product'  => 1,
+					'plugin_yourls_api_url'               => '',		// YOURLS API URL.
+					'plugin_yourls_username'              => '',		// YOURLS Username.
+					'plugin_yourls_password'              => '',		// YOURLS Password.
+					'plugin_yourls_token'                 => '',		// YOURLS Token.
 
 					/**
 					 * Advanced Settings - Table Columns tab.
@@ -1946,7 +1948,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '3.1.0-dev.7',	// Minimum update manager version (soft limit).
+				'rec_version' => '3.1.0-dev.8',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',

@@ -35,7 +35,7 @@
 
 'wpsso_article_sections' ( array $sections )
 
-'wpsso_attached_accept_img_dims' ( $bool, $img_url, $img_width, $img_height, $size_name, $pid )
+'wpsso_attached_accept_img_dims' ( $accept, $img_url, $img_width, $img_height, $size_name, $pid )
 
 'wpsso_attached_image_ids' ( $attach_ids, $post_id )
 
@@ -65,7 +65,7 @@
 
 'wpsso_columns_post_{post_type_name}' ( true )
 
-'wpsso_content_accept_img_dims' ( $bool, $img_url, $img_width, $img_height, $size_name, $mod )
+'wpsso_content_accept_img_dims' ( $accept, $img_url, $img_width, $img_height, $size_name, $mod )
 
 'wpsso_content_image_preg_html_tag' ( $default = 'img' )
 
@@ -123,7 +123,7 @@
 
 'wpsso_monthly_archive_description' ( $desc_text, $mod )
 
-'wpsso_ngg_accept_img_dims' ( $bool, $img_url, $img_width, $img_height, $size_name, $pid )
+'wpsso_ngg_accept_img_dims' ( $accept, $img_url, $img_width, $img_height, $size_name, $pid )
 
 'wpsso_ngg_tags_seed' ( $tags, $pid )
 

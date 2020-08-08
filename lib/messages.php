@@ -6,10 +6,12 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+
 	die( 'Do. Or do not. There is no try.' );
 }
 
@@ -27,6 +29,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 		}
@@ -34,6 +37,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		public function get( $msg_key = false, $info = array() ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log_args( array(
 					'msg_key' => $msg_key,
 					'info'    => $info,
@@ -116,6 +120,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				), $url[ 'purchase' ] );
 
 			} else {
+
 				$url[ 'purchase' ] = '';
 			}
 
@@ -1149,6 +1154,20 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_owly_api_key':
 
 							$text = sprintf( __( 'To use Ow.ly as your preferred shortening service, you must provide the Ow.ly API Key for this website (complete this form to <a href="%s">Request Ow.ly API Access</a>).', 'wpsso' ), 'https://docs.google.com/forms/d/1Fn8E-XlJvZwlN4uSRNrAIWaY-nN_QA3xAHUJ7aEF7NU/viewform' );
+
+							break;
+
+						case 'tooltip-plugin_shopperapproved_token':
+
+							$text = __( 'Your Shopper Approved API Token is required to retrieve Shopper Approved customer ratings and reviews.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( '<a href="%s">Log into Shopper Approved and visit the API Dashboard</a>, then scroll down to find your Site ID and API Token.', 'wpsso' ), 'https://www.shopperapproved.com/account/setup/api/merchant-api' );
+
+							break;
+
+						case 'tooltip-plugin_shopperapproved_for':
+
+							$text = __( 'Retrieve Shopper Approved customer ratings and reviews for these selected post types.', 'wpsso' );
 
 							break;
 
@@ -2289,9 +2308,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text .= empty( $url[ 'purchase' ] ) ? '' : '<a href="' . $url[ 'purchase' ] . '">';
 
 						if ( $lca === $this->p->lca ) {
+
 							$text .= sprintf( __( 'Purchase the %1$s plugin to upgrade and get the following features.',
 								'wpsso' ), $info[ 'short_pro' ] );
+
 						} else {
+
 							$text .= sprintf( __( 'Purchase the %1$s add-on to upgrade and get the following features.',
 								'wpsso' ), $info[ 'short_pro' ] );
 						}
@@ -2333,6 +2355,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'pro-purchase-link':
 
 						if ( empty( $info[ 'ext' ] ) ) {	// Nothing to do.
+
 							break;
 						}
 
@@ -2341,12 +2364,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = _x( 'Get More Licenses', 'plugin action link', 'wpsso' );
 
 						} elseif ( $info[ 'ext' ] === $lca ) {
+
 							$text = sprintf( _x( 'Purchase %s Plugin', 'plugin action link', 'wpsso' ), $pro_transl );
+
 						} else {
+
 							$text = sprintf( _x( 'Purchase %s Add-on', 'plugin action link', 'wpsso' ), $pro_transl );
 						}
 
 						if ( ! empty( $info[ 'url' ] ) ) {
+
 							$text = '<a href="' . $info[ 'url' ] . '"' . ( empty( $info[ 'tabindex' ] ) ? '' :
 								' tabindex="' . $info[ 'tabindex' ] . '"' ) . '>' .  $text . '</a>';
 						}
@@ -2933,6 +2960,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			if ( false !== $local_cache ) {
 
 				if ( isset( $local_cache[ $msg_key ] ) ) {
+
 					return $local_cache[ $msg_key ];
 				}
 
@@ -2947,6 +2975,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			list( $ext, $p_ext ) = $this->get_ext_p_ext( $ext );
 
 			if ( empty( $ext ) ) {
+
 				return '';
 			}
 
@@ -3087,6 +3116,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			if ( is_string( $ext ) ) {
 
 				if ( strpos( $ext, $this->p->lca ) !== 0 ) {
+
 					$ext = $this->p->lca . $ext;
 				}
 
@@ -3104,12 +3134,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 		private function get_def_img_dims( $opt_pre ) {
 
-			$def_opts = $this->p->opt->get_defaults();
-
-			$img_width = empty( $def_opts[ $opt_pre . '_img_width' ] ) ? 0 : $def_opts[ $opt_pre . '_img_width' ];
-
-			$img_height = empty( $def_opts[ $opt_pre . '_img_height' ] ) ? 0 : $def_opts[ $opt_pre . '_img_height' ];
-
+			$def_opts    = $this->p->opt->get_defaults();
+			$img_width   = empty( $def_opts[ $opt_pre . '_img_width' ] ) ? 0 : $def_opts[ $opt_pre . '_img_width' ];
+			$img_height  = empty( $def_opts[ $opt_pre . '_img_height' ] ) ? 0 : $def_opts[ $opt_pre . '_img_height' ];
 			$img_cropped = empty( $def_opts[ $opt_pre . '_img_crop' ] ) ? _x( 'uncropped', 'option value', 'wpsso' ) : _x( 'cropped', 'option value', 'wpsso' );
 
 			return $img_width . 'x' . $img_height . 'px ' . $img_cropped;

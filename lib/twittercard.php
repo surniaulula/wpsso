@@ -37,14 +37,14 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 		public function filter_plugin_image_sizes( $sizes ) {
 
-			$sizes[ 'tc_sum' ] = array(
-				'name'  => 'tc-summary',
-				'label' => _x( 'Twitter Summary Card', 'image size label', 'wpsso' ),
+			$sizes[ 'tc_sum' ] = array(		// Option prefix.
+				'name'  => 'tc-summary',	// Size name suffix.
+				'label' => _x( 'Twitter Summary Card', 'option label', 'wpsso' ),
 			);
 
-			$sizes[ 'tc_lrg' ] = array(
-				'name'  => 'tc-lrgimg',
-				'label' => _x( 'Twitter Large Image Summary Card', 'image size label', 'wpsso' ),
+			$sizes[ 'tc_lrg' ] = array(		// Option prefix.
+				'name'  => 'tc-lrgimg',		// Size name suffix.
+				'label' => _x( 'Twitter Large Image Summary Card', 'option label', 'wpsso' ),
 			);
 
 			return $sizes;
@@ -504,8 +504,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 				if ( ! empty( $mixed[ 'is_post' ] ) ) {
 
-					if ( ! empty( $mixed[ 'post_type' ] ) &&
-						! empty( $this->p->options[ 'tc_type_for_' . $mixed[ 'post_type' ] ] ) ) {
+					if ( ! empty( $mixed[ 'post_type' ] ) && ! empty( $this->p->options[ 'tc_type_for_' . $mixed[ 'post_type' ] ] ) ) {
 
 						$card_type = $this->p->options[ 'tc_type_for_' . $mixed[ 'post_type' ] ];
 
@@ -571,14 +570,14 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			 *		'tc_lrg',
 			 *	)
 			 */
-			$ret = array( $card_type, $card_label, $size_name, $md_pre );
+			$card_info = array( $card_type, $card_label, $size_name, $md_pre );
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_arr( '$ret', $ret );
+				$this->p->debug->log_arr( '$card_info', $card_info );
 			}
 
-			return $ret;
+			return $card_info;
 		}
 	}
 }

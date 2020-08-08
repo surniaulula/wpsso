@@ -6,10 +6,12 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+
 	die( 'Do. Or do not. There is no try.' );
 }
 
@@ -24,6 +26,7 @@ if ( ! class_exists( 'WpssoSchemaNoScript' ) ) {
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -38,10 +41,12 @@ if ( ! class_exists( 'WpssoSchemaNoScript' ) ) {
 		public function filter_schema_scripts( array $schema_scripts, array $mod, array $mt_og ) {
 
 			if ( ! apply_filters( $this->p->lca . '_add_schema_noscript_aggregaterating', true ) ) {
+
 				return $schema_scripts;
 			}
 
 			if ( empty( $mt_og[ 'og:type' ] ) ) {	// Just in case.
+
 				return $mt_og;
 			}
 
@@ -54,6 +59,7 @@ if ( ! class_exists( 'WpssoSchemaNoScript' ) ) {
 				( empty( $mt_og[ $og_type . ':rating:count' ] ) && empty( $mt_og[ $og_type . ':review:count' ] ) ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'exiting early: rating average and/or counts are empty' );
 				}
 
@@ -91,6 +97,7 @@ if ( ! class_exists( 'WpssoSchemaNoScript' ) ) {
 			$schema_noscript[] = array( '<noscript itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">' . "\n" );
 
 			foreach ( $meta_item_props as $arr ) {
+
 				$schema_noscript[] = reset( $arr );
 			}
 

@@ -77,7 +77,9 @@ _x( 'DLMY.App API Key', 'option label', 'wpsso' );
 _x( 'Ow.ly (URL Shortener)', 'metabox title', 'wpsso' );
 _x( 'Ow.ly API Key', 'option label', 'wpsso' );
 _x( 'Shopper Approved (Customer Ratings and Reviews)', 'metabox title', 'wpsso' );
-_x( 'Shopper Approved Token', 'option label', 'wpsso' );
+_x( 'Shopper Approved API Token', 'option label', 'wpsso' );
+_x( 'Post Type', 'option label', 'wpsso' );
+_x( 'Get Reviews for Post Type', 'option label', 'wpsso' );
 _x( 'YOURLS (URL Shortener)', 'metabox title', 'wpsso' );
 _x( 'YOURLS API URL', 'option label', 'wpsso' );
 _x( 'YOURLS Username', 'option label', 'wpsso' );
@@ -161,7 +163,6 @@ __( 'Failed to upscale image ID %1$s of %2$s by %3$s from %4$s to %5$s for the %
 __( 'Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the %6$s image size.', 'wpsso' );
 __( 'NextGEN Gallery', 'wpsso' );
 __( 'image ID %s', 'wpsso' );
-__( 'cropped', 'wpsso' );
 __( '%1$s %2$s ignored &mdash; the resulting image of %3$s is too small for the required %4$s image dimensions.', 'wpsso' );
 __( 'NextGEN Gallery', 'wpsso' );
 _x( 'BuddyPress Member Bio Field Name', 'option label', 'wpsso' );

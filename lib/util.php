@@ -28,7 +28,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		private $cache_uniq_urls = array();	// Array to detect duplicate images, etc.
 
-		private $cache_size_labels = array();	// Reference array for image size labels.
+		private $cache_size_labels = array();	// Reference array for translated image size labels.
 
 		private $is_functions = array(
 			'is_ajax',
@@ -619,11 +619,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 *	[mime] => image/png
 			 * )
 			 */
-			$image_info = $this->p->cache->get_image_size( $image_url, $exp_secs = 300, $curl_opts = array(), $error_handler = 'wpsso_error_handler' );
-
+			$image_info  = $this->p->cache->get_image_size( $image_url, $exp_secs = 300, $curl_opts = array(), $error_handler = 'wpsso_error_handler' );
 			$mtime_total = microtime( true ) - $mtime_start;
-
-			$mtime_max = self::get_const( 'WPSSO_PHP_GETIMGSIZE_MAX_TIME', 1.50 );
+			$mtime_max   = self::get_const( 'WPSSO_PHP_GETIMGSIZE_MAX_TIME', 1.50 );
 
 			/**
 			 * Issue warning for slow getimagesize() request.
@@ -702,7 +700,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 *	Array (
 			 *		[og] => Array (
 			 *			[name] => opengraph
-			 *			[label] => Open Graph Image
+			 *			[label] => Open Graph	// Pre-translated.
 			 *		)
 			 *	)
 			 */
@@ -812,9 +810,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				if ( $size_info[ 'width' ] > 0 && $size_info[ 'height' ] > 0 ) {
 
 					/**
-					 * A lookup array for image size labels, used in image size error messages.
+					 * A lookup array for translated image size labels, used in image size error messages.
 					 */
-					$this->cache_size_labels[ $this->p->lca . '-' . $size_info[ 'name' ] ] = $size_info[ 'label' ];
+					$this->cache_size_labels[ $this->p->lca . '-' . $size_info[ 'name' ] ] = $size_info[ 'label' ];	// Pre-translated.
 
 					/**
 					 * Add the image size.
@@ -823,10 +821,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'image size ' . $this->p->lca . '-' . $size_info[ 'name' ] . ' ' . 
-							$size_info[ 'width' ] . 'x' . $size_info[ 'height' ] . 
-							( empty( $size_info[ 'crop' ] ) ? '' : ' crop ' . 
-								$size_info[ 'crop_x' ] . '/' . $size_info[ 'crop_y' ] ) . ' added' );
+						$this->p->debug->log( 'added image size ' . $this->p->lca . '-' . $size_info[ 'name' ] . ' ' . 
+							$size_info[ 'width' ] . 'x' . $size_info[ 'height' ] .  ' ' . ( empty( $size_info[ 'crop' ] ) ?
+								'uncropped' : 'cropped ' . $size_info[ 'crop_x' ] . '/' . $size_info[ 'crop_y' ] ) );
 					}
 				}
 			}
@@ -851,10 +848,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				return $this->cache_size_labels[ $size_name ];
 
-			} else {
-
-				return $size_name;
 			}
+
+			return $size_name;
 		}
 
 		public function get_image_size_names( $mixed ) {
@@ -955,13 +951,20 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$crop = get_option( $size_name . '_crop' );
 			}
 
-			if ( ! is_array( $crop ) ) {
-
-				$crop = empty( $crop ) ? false : true;
-			}
-		
 			/**
-			 * Check the image metadata for a custom crop area.
+			 * Standardize to true, false, or non-empty array.
+			 */
+			if ( empty( $crop ) ) {	// 0, false, null, or empty array.
+				
+				$crop = false;
+
+			} elseif ( ! is_array( $crop ) ) {	// 1, or true.
+
+				$crop = true;
+			}
+
+			/**
+			 * If the image size is cropped, then check the image metadata for a custom crop area.
 			 */
 			if ( $crop && $attach_id && is_numeric( $attach_id ) ) {
 
@@ -978,17 +981,25 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						$crop = $new_crop;			// Update the crop array.
 					}
 				}
-
-				if ( $crop === array( 'center', 'center' ) ) {
-
-					$crop = true;
-				}
 			}
 
+			if ( $crop === array( 'center', 'center' ) ) {
+
+				$crop = true;
+			}
+
+			$is_cropped = empty( $crop ) ? false : true;
+
+			/**
+			 * Crop can be true, false, or an array.
+			 */
 			return $local_cache[ $size_name ][ $attach_id ] = array(
-				'width'  => $width,
-				'height' => $height,
-				'crop'   => $crop,
+				'width'      => $width,
+				'height'     => $height,
+				'crop'       => $crop,
+				'is_cropped' => $is_cropped,
+				'dimensions' => $width . 'x' . $height . ' ' . ( $is_cropped ? __( 'cropped', 'wpsso' ) : __( 'uncropped', 'wpsso' ) ),
+				'label'      => $this->get_image_size_label( $size_name ),	// Pre-translated.
 			);
 		}
 
@@ -1611,8 +1622,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			}
 		
-			$ret = array();
-
 			$doc = new DOMDocument();	// Since PHP v4.1.
 
 			$has_errors = false;
@@ -1675,14 +1684,17 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				@$doc->loadHTML( $html );	// Load HTML and ignore errors.
 			}
 
-			$xpath = new DOMXPath( $doc );
-			$metas = $xpath->query( $query );
+			$xpath   = new DOMXPath( $doc );
+			$metas   = $xpath->query( $query );
+			$met_ret = array();
+
 
 			foreach ( $metas as $m ) {
 
-				$m_atts = array();		// Put all attributes in a single array.
+				$m_atts = array();	// Put all attributes in a single array.
 
 				foreach ( $m->attributes as $a ) {
+
 					$m_atts[ $a->name ] = $a->value;
 				}
 
@@ -1691,12 +1703,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$m_atts[ 'textContent' ] = $m->textContent;
 				}
 
-				$ret[ $m->tagName ][] = $m_atts;
+				$mt_ret[ $m->tagName ][] = $m_atts;
 			}
 
 			if ( $this->p->debug->enabled ) {
 
-				if ( empty( $ret ) ) {	// Empty array.
+				if ( empty( $mt_ret ) ) {	// Empty array.
 
 					if ( false === $request ) {	// $request argument is html
 
@@ -1708,11 +1720,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					}
 
 				} else {
-					$this->p->debug->log( 'returning array of ' . count( $ret ) . ' meta tags' );
+					$this->p->debug->log( 'returning array of ' . count( $mt_ret ) . ' meta tags' );
 				}
 			}
 
-			return $ret;
+			return $mt_ret;
 		}
 
 		public function get_html_body( $request, $remove_script = true ) {
@@ -1853,6 +1865,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					);
 
 				} else {
+
 					$function_info[ $function ] = array( $function . '() not found', null, 0 );
 				}
 			}
@@ -3228,11 +3241,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->mark( 'applying WordPress ' . $filter_name . ' filters' );	// Begin timer.
 			}
 
-			$mtime_start = microtime( true );
-
+			$mtime_start  = microtime( true );
 			$filter_value = call_user_func_array( 'apply_filters', $args );
-
-			$mtime_total = microtime( true ) - $mtime_start;
+			$mtime_total  = microtime( true ) - $mtime_start;
 
 			if ( $this->p->debug->enabled ) {
 
@@ -3308,6 +3319,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = WEEK_IN_SECONDS );
 
 					} else {
+
 						$this->p->notice->warn( $error_msg );
 					}
 				}
@@ -3746,7 +3758,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return $local_cache;
 			}
 
-			$ret = array();
+			$atts_names = array();
 
 			foreach ( $local_cache as $key => $val ) {
 
@@ -3755,10 +3767,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$key = preg_replace( '/_(value|units)$/', $sep . '$1', $key );
 				}
 
-				$ret[ $prefix . $sep . $key ] = $val;
+				$atts_names[ $prefix . $sep . $key ] = $val;
 			}
 
-			return $ret;
+			return $atts_names;
 		}
 
 		public function maybe_set_ref( $sharing_url = null, $mod = false, $msg_transl = '' ) {

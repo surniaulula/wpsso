@@ -121,7 +121,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				$notice_msg = sprintf( __( 'A task to clear the cache was started at %s.', 'wpsso' ), gmdate( 'c' ) );
 
-				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-begin' );
+				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
 
 			$this->stop_refresh();	// Just in case.
@@ -163,7 +163,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 						'wpsso' ) . '</strong>';
 				}
 
-				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-end' );
+				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
 
 			if ( $refresh ) {
@@ -615,7 +615,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				$notice_msg = sprintf( __( 'A task to refresh the transient cache was started at %s.', 'wpsso' ), gmdate( 'c' ) );
 
-				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-begin' );
+				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
 
 			if ( 0 === get_current_user_id() ) {		// User is the scheduler.
@@ -667,7 +667,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				$notice_msg .= sprintf( __( 'The total execution time for this task was %0.3f seconds.', 'wpsso' ), $mtime_total );
 
-				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-end' );
+				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
 
 			delete_transient( $cache_id );
