@@ -1331,7 +1331,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						 */
 						case ( preg_match( '/^' . $content_img_preg[ 'pid_attr' ] . '$/', $attr_name ) ? true : false ):
 
-							// build a filter hook for 3rd party modules to return image information
+							// Build a filter hook for 3rd party modules to return image information.
 							$filter_name = $this->p->lca . '_get_content_' . $tag_name . '_' . ( preg_replace( '/-/', '_', $attr_name ) );
 
 							if ( $this->p->debug->enabled ) {

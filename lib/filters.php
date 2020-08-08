@@ -6,10 +6,12 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+
 	die( 'Do. Or do not. There is no try.' );
 }
 
@@ -27,6 +29,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			static $do_once = null;
 
 			if ( true === $do_once ) {
+
 				return;	// Stop here.
 			}
 
@@ -35,6 +38,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -141,6 +145,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				foreach ( $mixed as $size_name => $disabled ) {
 
 					if ( false !== strpos( $size_name, $this->p->lca . '-' ) ) {
+
 						unset( $mixed[ $size_name ] );
 					}
 				}
@@ -156,6 +161,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			foreach ( $_wp_additional_image_sizes as $size_name => $size_info ) {
 
 				if ( false !== strpos( $size_name, $this->p->lca . '-' ) ) {
+
 					$mixed[ $size_name ] = 1;
 				}
 			}
@@ -193,6 +199,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 		public function cleanup_wpseo_notifications() {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -202,6 +209,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			if ( method_exists( 'WPSEO_Options', 'get' ) ) {
 
 				if ( ! WPSEO_Options::get( 'opengraph' ) ) {
+
 					return;
 				}
 			}
@@ -222,6 +230,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 					$notif_obj    = $notif_center->get_notification_by_id( $notif_id );
 
 					if ( empty( $notif_obj ) ) {
+
 						return;
 					}
 
@@ -230,8 +239,11 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 					 * '<div class="yoast-alert"></div>'.
 					 */
 					if ( method_exists( 'Yoast_Notification', 'render' ) ) {
+
 						$notif_html = $notif_obj->render();
+
 					} else {
+
 						$notif_html = $notif_obj->message;
 					}
 
@@ -278,6 +290,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 		public function cleanup_wpseo_frontend_presenters( $presenters ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -288,6 +301,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				if ( preg_match( '/(Open_Graph|Twitter|Schema)/', $class_name ) ) {
 			
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'removing presenter: ' . $class_name );
 					}
 
@@ -296,6 +310,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				} else {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'skipping presenter: ' . $class_name );
 					}
 				}
@@ -312,6 +327,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 		public function cleanup_wpseo_filters() {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -321,6 +337,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				if ( false !== ( $prio = has_action( 'wpseo_head', array( $GLOBALS[ 'wpseo_og' ], 'opengraph' ) ) ) ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'removing wpseo_head action for opengraph' );
 					}
 
@@ -333,6 +350,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				if ( false !== ( $prio = has_action( 'wpseo_head', array( 'WPSEO_Twitter', 'get_instance' ) ) ) ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'removing wpseo_head action for twitter' );
 					}
 
@@ -345,6 +363,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				if ( false !== ( $prio = has_action( 'wpseo_head', array( WPSEO_Frontend::$instance, 'publisher' ) ) ) ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'removing wpseo_head action for publisher' );
 					}
 
@@ -356,6 +375,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			 * Disable Yoast SEO JSON-LD.
 			 */
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'disabling wpseo_json_ld_output filters' );
 			}
 
@@ -370,6 +390,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 		public function cleanup_rankmath_filters() {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 

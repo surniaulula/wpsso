@@ -3714,69 +3714,69 @@ msgctxt "metabox title"
 msgid "Pinterest Pin It"
 msgstr ""
 
-#: lib/gettext-pro.php:133 lib/pro/ecom/woocommerce.php:58
+#: lib/gettext-pro.php:133 lib/pro/ecom/woocommerce.php:63
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Advanced &gt; Page setup</a> section."
 msgstr ""
 
-#: lib/gettext-pro.php:134 lib/pro/ecom/woocommerce.php:61
+#: lib/gettext-pro.php:134 lib/pro/ecom/woocommerce.php:66
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Products &gt; General</a> section."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:136 lib/pro/ecom/woocommerce.php:65
+#: lib/gettext-pro.php:136 lib/pro/ecom/woocommerce.php:70
 msgid "My account page"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:138 lib/pro/ecom/woocommerce.php:66
+#: lib/gettext-pro.php:138 lib/pro/ecom/woocommerce.php:71
 msgid "Cart page"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:140 lib/pro/ecom/woocommerce.php:67
+#: lib/gettext-pro.php:140 lib/pro/ecom/woocommerce.php:72
 msgid "Checkout page"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/gettext-pro.php:142 lib/pro/ecom/woocommerce.php:68
+#: lib/gettext-pro.php:142 lib/pro/ecom/woocommerce.php:73
 msgid "Shop page"
 msgstr ""
 
-#: lib/gettext-pro.php:143 lib/pro/ecom/woocommerce.php:73
+#: lib/gettext-pro.php:143 lib/pro/ecom/woocommerce.php:78
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: lib/gettext-pro.php:144 lib/pro/ecom/woocommerce.php:147
+#: lib/gettext-pro.php:144 lib/pro/ecom/woocommerce.php:160
 msgid ""
 "The WooCommerce %s method is not available - please update to a newer "
 "version of WooCommerce."
 msgstr ""
 
 #: lib/gettext-pro.php:145 lib/gettext-pro.php:150
-#: lib/pro/ecom/woocommerce.php:1062 lib/pro/ecom/wpecommerce.php:604
+#: lib/pro/ecom/woocommerce.php:1075 lib/pro/ecom/wpecommerce.php:604
 msgid "\"%s\" is an unknown Schema Product item condition."
 msgstr ""
 
 #: lib/gettext-pro.php:146 lib/gettext-pro.php:151
-#: lib/pro/ecom/woocommerce.php:1065 lib/pro/ecom/wpecommerce.php:607
+#: lib/pro/ecom/woocommerce.php:1078 lib/pro/ecom/wpecommerce.php:607
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/gettext-pro.php:147 lib/pro/ecom/woocommerce.php:1284
+#: lib/gettext-pro.php:147 lib/pro/ecom/woocommerce.php:1297
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/gettext-pro.php:148 lib/pro/ecom/woocommerce.php:1286
+#: lib/gettext-pro.php:148 lib/pro/ecom/woocommerce.php:1299
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:149 lib/pro/ecom/woocommerce.php:1289
+#: lib/gettext-pro.php:149 lib/pro/ecom/woocommerce.php:1302
 msgid "Please update your site to WooCommerce version %s or newer."
 msgstr ""
 
@@ -3973,7 +3973,7 @@ msgstr ""
 msgid "Yotpo for WooCommerce \"%s\" class does not exist."
 msgstr ""
 
-#: lib/gettext-pro.php:220 lib/pro/review/shopperapproved.php:112
+#: lib/gettext-pro.php:220 lib/pro/review/shopperapproved.php:123
 msgid "getting shopper approved ratings and reviews"
 msgstr ""
 
