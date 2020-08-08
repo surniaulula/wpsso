@@ -155,12 +155,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								case 'wpecommerce':
-
-									$chk[ 'class' ] = 'WP_eCommerce';
-
-									break;
-
 								case 'wpm-product-gtin-wc':
 
 									$chk[ 'class' ] = 'WPM_Product_GTIN_WC';

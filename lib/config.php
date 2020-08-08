@@ -22,8 +22,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '7.16.0-dev.8',	// Plugin version.
-					'opt_version' => '751',		// Increment when changing default option values.
+					'version'     => '8.0.0-dev.8',	// Plugin version.
+					'opt_version' => '752',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Make sure your content looks great on social sites and search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -103,7 +103,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'woocommerce-brands'            => '(plugin) WooCommerce Brands',
 								'woocommerce-currency-switcher' => '(plugin) WooCommerce Currency Switcher',
 								'woo-add-gtin'                  => '(plugin) WooCommerce UPC, EAN, and ISBN',
-								'wpecommerce'                   => '(plugin) WP eCommerce',
 								'wpm-product-gtin-wc'           => '(plugin) Product GTIN for WooCommerce',
 								'yith-woocommerce-brands'       => '(plugin) YITH WooCommerce Brands Add-on',
 							),
@@ -1268,7 +1267,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_tribe_events'           => 'event',		// For The Events Calendar.
 					'schema_type_for_webpage'                => 'webpage',
 					'schema_type_for_website'                => 'website',
-					'schema_type_for_wpsc-product'           => 'product',		// For WP eCommerce.
 
 					/**
 					 * Facebook options.
@@ -1325,7 +1323,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_type_for_tc_events'              => 'article',	// For Tickera.
 					'og_type_for_tribe_events'           => 'article',	// For The Events Calendar.
 					'og_type_for_website'                => 'website',
-					'og_type_for_wpsc-product'           => 'product',	// For WP eCommerce.
 
 					'og_author_field'            => 'facebook',		// Author Profile URL Field.
 					'og_def_article_section'     => 'none',			// Default Article Section.
@@ -1677,7 +1674,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_add_to_topic'                  => 0,		// Bbpress
 					'plugin_add_to_tribe_events'           => 1,		// The Events Calendar.
 					'plugin_add_to_tribe-ea-record'        => 1,		// The Events Calendar.
-					'plugin_add_to_wpsc-product'           => 1,		// For WP eCommerce.
 
 					/**
 					 * Advanced Settings - Product Attributes tab.

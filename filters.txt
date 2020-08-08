@@ -149,8 +149,6 @@
 
 'wpsso_og_ecom_woocommerce' ( $mt_ecom, $mod )
 
-'wpsso_og_ecom_wpecommerce' ( $mt_ecom, $mod )
-
 'wpsso_og_featured' ( $mt_ret, $num, $size_name, $post_id, $check_dupes )
 
 'wpsso_og_ns' ( $ns )

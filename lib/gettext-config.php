@@ -25,7 +25,6 @@ _x( '(plugin) WooCommerce', 'lib file description', 'wpsso' );
 _x( '(plugin) WooCommerce Brands', 'lib file description', 'wpsso' );
 _x( '(plugin) WooCommerce Currency Switcher', 'lib file description', 'wpsso' );
 _x( '(plugin) WooCommerce UPC, EAN, and ISBN', 'lib file description', 'wpsso' );
-_x( '(plugin) WP eCommerce', 'lib file description', 'wpsso' );
 _x( '(plugin) Product GTIN for WooCommerce', 'lib file description', 'wpsso' );
 _x( '(plugin) YITH WooCommerce Brands Add-on', 'lib file description', 'wpsso' );
 _x( '(plugin) The Events Calendar', 'lib file description', 'wpsso' );
