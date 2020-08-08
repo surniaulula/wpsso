@@ -893,13 +893,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 * Get the width, height and crop value for all image sizes. Returns an associative array with the image size name
 		 * as the array key value.
 		 */
-		public function get_image_sizes( $attach_id = false ) {
+		public function get_image_sizes( $attachment_id = false ) {
 
 			$sizes = array();
 
 			foreach ( get_intermediate_image_sizes() as $size_name ) {
 
-				$sizes[ $size_name ] = $this->get_size_info( $size_name, $attach_id );
+				$sizes[ $size_name ] = $this->get_size_info( $size_name, $attachment_id );
 			}
 
 			return $sizes;
@@ -908,7 +908,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/**
 		 * Get the width, height and crop value for a specific image size.
 		 */
-		public function get_size_info( $size_name = 'thumbnail', $attach_id = false ) {
+		public function get_size_info( $size_name = 'thumbnail', $attachment_id = false ) {
 
 			if ( ! is_string( $size_name ) ) {	// Just in case.
 
@@ -917,9 +917,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			static $local_cache = array();
 
-			if ( isset( $local_cache[ $size_name ][ $attach_id ] ) ) {
+			if ( isset( $local_cache[ $size_name ][ $attachment_id ] ) ) {
 
-				return $local_cache[ $size_name ][ $attach_id ];
+				return $local_cache[ $size_name ][ $attachment_id ];
 			}
 
 			global $_wp_additional_image_sizes;
@@ -966,13 +966,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			/**
 			 * If the image size is cropped, then check the image metadata for a custom crop area.
 			 */
-			if ( $crop && $attach_id && is_numeric( $attach_id ) ) {
+			if ( $crop && $attachment_id && is_numeric( $attachment_id ) ) {
 
 				$new_crop = is_array( $crop ) ? $crop : array( 'center', 'center' );
 
 				foreach ( array( 'attach_img_crop_x', 'attach_img_crop_y' ) as $crop_key => $md_key ) {
 
-					$value = $this->p->post->get_options( $attach_id, $md_key );
+					$value = $this->p->post->get_options( $attachment_id, $md_key );
 
 					if ( $value && $value !== 'none' ) {		// Custom crop value found.
 
@@ -993,7 +993,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			/**
 			 * Crop can be true, false, or an array.
 			 */
-			return $local_cache[ $size_name ][ $attach_id ] = array(
+			return $local_cache[ $size_name ][ $attachment_id ] = array(
 				'width'      => $width,
 				'height'     => $height,
 				'crop'       => $crop,

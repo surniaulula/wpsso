@@ -610,6 +610,39 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $args;
 		}
 
+		/**
+		 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
+		 */
+		public function get_mt_single_image_sizes( $pid, $size_names = 'thumbnail', $check_dupes = true, $mt_pre = 'og' ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_args( array(
+					'pid'         => $pid,
+					'size_names'  => $size_names,
+					'check_dupes' => $check_dupes,
+					'mt_pre'      => $mt_pre,
+				) );
+			}
+
+			$mt_ret = array();
+
+			$size_names = $this->p->util->get_image_size_names( $size_names );	// Always returns an array.
+
+			foreach ( $size_names as $size_name ) {
+
+				$mt_single_image = $this->get_mt_single_image_src( $pid, $size_name, $check_dupes );
+
+				if ( ! empty( $mt_single_image[ 'og:image:url' ] ) ) {
+
+					$mt_ret[] = $mt_single_image;
+				}
+			}
+
+			return $mt_ret;
+
+		}
+
 		public function get_mt_single_image_src( $pid, $size_name = 'thumbnail', $check_dupes = true, $mt_pre = 'og' ) {
 
 			$mt_single_image = SucomUtil::get_mt_image_seed( $mt_pre );
@@ -1005,8 +1038,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			/**
 			 * Some image_downsize hooks may return only 3 elements, so use array_pad() to sanitize the returned array.
 			 */
-			list( $img_url, $img_width, $img_height, $img_intermediate ) = apply_filters( $this->p->lca . '_image_downsize',
-				array_pad( image_downsize( $pid, ( $use_full_size ? 'full' : $size_name ) ), 4, null ), $pid, $size_name );
+			$img_downsize = array_pad( image_downsize( $pid, ( $use_full_size ? 'full' : $size_name ) ), 4, null );
+
+			list(
+				$img_url,
+				$img_width,
+				$img_height,
+				$img_intermediate
+			) = apply_filters( $this->p->lca . '_image_downsize', $img_downsize, $pid, $size_name );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1021,6 +1060,15 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 
 				return self::reset_image_src_args();
+
+			} elseif ( $check_dupes && $this->p->util->is_dupe_url( $img_url, $size_name ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: duplicate ' . $size_name . ' url: ' . $img_url );
+				}
+
+				return self::reset_image_src_args();
 			}
 
 			/**
@@ -1030,19 +1078,16 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( apply_filters( $this->p->lca . '_attached_accept_img_dims', $img_size_within_limits, $img_url, $img_width, $img_height, $size_name, $pid ) ) {
 
-				if ( ! $check_dupes || $this->p->util->is_uniq_url( $img_url, $size_name ) ) {
+				if ( $this->p->debug->enabled ) {
 
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'applying rewrite_image_url filter for ' . $img_url );
-					}
-
-					$img_url = $this->p->util->fix_relative_url( $img_url );
-
-					$img_url = apply_filters( $this->p->lca . '_rewrite_image_url', $img_url );
-
-					return self::reset_image_src_args( array( $img_url, $img_width, $img_height, $size_info[ 'is_cropped' ], $pid, $img_alt, $size_name ) );
+					$this->p->debug->log( 'applying rewrite_image_url filter for ' . $img_url );
 				}
+
+				$img_url = $this->p->util->fix_relative_url( $img_url );
+
+				$img_url = apply_filters( $this->p->lca . '_rewrite_image_url', $img_url );
+
+				return self::reset_image_src_args( array( $img_url, $img_width, $img_height, $size_info[ 'is_cropped' ], $pid, $img_alt, $size_name ) );
 			}
 
 			return self::reset_image_src_args();

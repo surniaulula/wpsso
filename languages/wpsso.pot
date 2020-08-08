@@ -3250,8 +3250,8 @@ msgstr ""
 msgid "Posts, Pages, and Custom Post Types"
 msgstr ""
 
-#: lib/gettext-pro.php:35 lib/media.php:133 lib/media.php:755 lib/media.php:897
-#: lib/media.php:2019 lib/pro/admin/advanced.php:213
+#: lib/gettext-pro.php:35 lib/media.php:133 lib/media.php:788 lib/media.php:930
+#: lib/media.php:2064 lib/pro/admin/advanced.php:213
 #: lib/std/admin/advanced.php:220
 msgid "Media Library"
 msgstr ""
@@ -3766,17 +3766,17 @@ msgstr ""
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/gettext-pro.php:147 lib/pro/ecom/woocommerce.php:1288
+#: lib/gettext-pro.php:147 lib/pro/ecom/woocommerce.php:1284
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/gettext-pro.php:148 lib/pro/ecom/woocommerce.php:1290
+#: lib/gettext-pro.php:148 lib/pro/ecom/woocommerce.php:1286
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:149 lib/pro/ecom/woocommerce.php:1293
+#: lib/gettext-pro.php:149 lib/pro/ecom/woocommerce.php:1289
 msgid "Please update your site to WooCommerce version %s or newer."
 msgstr ""
 
@@ -4041,7 +4041,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: lib/media.php:136 lib/media.php:2026
+#: lib/media.php:136 lib/media.php:2071
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
@@ -4064,70 +4064,70 @@ msgid ""
 "all %1$d image sizes): %2$d by %3$d pixels."
 msgstr ""
 
-#: lib/media.php:758
+#: lib/media.php:791
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:760 lib/media.php:954
+#: lib/media.php:793 lib/media.php:987
 msgid ""
 "You may consider regenerating the thumbnails of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:779
+#: lib/media.php:812
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image dimensions for "
 "<a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:806
+#: lib/media.php:839
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image file path for "
 "<a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:898
+#: lib/media.php:931
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:949 lib/messages.php:3140
+#: lib/media.php:982 lib/messages.php:3140
 msgctxt "option value"
 msgid "cropped"
 msgstr ""
 
-#: lib/media.php:950 lib/messages.php:3140
+#: lib/media.php:983 lib/messages.php:3140
 msgctxt "option value"
 msgid "uncropped"
 msgstr ""
 
-#: lib/media.php:952
+#: lib/media.php:985
 msgid ""
 "Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress "
 "%3$s function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:1436
+#: lib/media.php:1481
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:2042
+#: lib/media.php:2087
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:2125
+#: lib/media.php:2170
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:2155
+#: lib/media.php:2200
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."

@@ -1044,18 +1044,18 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		 *
 		 * Used by WpssoFaqShortcodeQuestion->do_shortcode().
 		 */
-		public function add_attached( $term_id, $attach_type, $attach_id ) {
+		public function add_attached( $term_id, $attach_type, $attachment_id ) {
 
 			$opts = self::get_term_meta( $term_id, WPSSO_META_ATTACHED_NAME, $single = true );
 
-			if ( ! isset( $opts[ $attach_type ][ $attach_id ] ) ) {
+			if ( ! isset( $opts[ $attach_type ][ $attachment_id ] ) ) {
 
 				if ( ! is_array( $opts ) ) {
 
 					$opts = array();
 				}
 
-				$opts[ $attach_type ][ $attach_id ] = true;
+				$opts[ $attach_type ][ $attachment_id ] = true;
 
 				return self::update_term_meta( $term_id, WPSSO_META_ATTACHED_NAME, $opts );
 			}
@@ -1066,13 +1066,13 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		/**
 		 * Since WPSSO Core v7.6.0.
 		 */
-		public function delete_attached( $term_id, $attach_type, $attach_id ) {
+		public function delete_attached( $term_id, $attach_type, $attachment_id ) {
 
 			$opts = self::get_term_meta( $term_id, WPSSO_META_ATTACHED_NAME, $single = true );
 
-			if ( isset( $opts[ $attach_type ][ $attach_id ] ) ) {
+			if ( isset( $opts[ $attach_type ][ $attachment_id ] ) ) {
 
-				unset( $opts[ $attach_type ][ $attach_id ] );
+				unset( $opts[ $attach_type ][ $attachment_id ] );
 
 				if ( empty( $opts ) ) {	// Cleanup.
 

@@ -1110,7 +1110,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		}
 
 		/**
-		 * $size_names can be a string or an array since 2020/08/05.
+		 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
 		 *
 		 * Note that each size name is used to check for duplicates.
 		 */
@@ -1246,7 +1246,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						}
 
 						return $mt_ret;
-
 					}
 
 					return array_merge( $mt_ret, $mt_single_image );

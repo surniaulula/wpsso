@@ -2261,18 +2261,18 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 *
 		 * Used by WpssoFaqShortcodeQuestion->do_shortcode().
 		 */
-		public function add_attached( $post_id, $attach_type, $attach_id ) {
+		public function add_attached( $post_id, $attach_type, $attachment_id ) {
 
 			$opts = get_post_meta( $post_id, WPSSO_META_ATTACHED_NAME, $single = true );
 
-			if ( ! isset( $opts[ $attach_type ][ $attach_id ] ) ) {
+			if ( ! isset( $opts[ $attach_type ][ $attachment_id ] ) ) {
 
 				if ( ! is_array( $opts ) ) {
 
 					$opts = array();
 				}
 
-				$opts[ $attach_type ][ $attach_id ] = true;
+				$opts[ $attach_type ][ $attachment_id ] = true;
 			
 				return update_post_meta( $post_id, WPSSO_META_ATTACHED_NAME, $opts );
 			}
@@ -2283,13 +2283,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		/**
 		 * Since WPSSO Core v7.6.0.
 		 */
-		public function delete_attached( $post_id, $attach_type, $attach_id ) {
+		public function delete_attached( $post_id, $attach_type, $attachment_id ) {
 
 			$opts = get_post_meta( $post_id, WPSSO_META_ATTACHED_NAME, $single = true );
 
-			if ( isset( $opts[ $attach_type ][ $attach_id ] ) ) {
+			if ( isset( $opts[ $attach_type ][ $attachment_id ] ) ) {
 
-				unset( $opts[ $attach_type ][ $attach_id ] );
+				unset( $opts[ $attach_type ][ $attachment_id ] );
 
 				if ( empty( $opts ) ) {	// Cleanup.
 
