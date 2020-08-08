@@ -1251,7 +1251,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 */
 			foreach( array( 'html_tag', 'pid_attr' ) as $type ) {
 
-				$filter_name = $this->p->lca . '_content_image_preg_' . $type;
+				$filter_name = $this->p->lca . '_content_image_preg_' . $type;	// No need to sanitize.
 
 				if ( false !== has_filter( $filter_name ) ) {
 
@@ -1331,8 +1331,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						 */
 						case ( preg_match( '/^' . $content_img_preg[ 'pid_attr' ] . '$/', $attr_name ) ? true : false ):
 
-							// Build a filter hook for 3rd party modules to return image information.
-							$filter_name = $this->p->lca . '_get_content_' . $tag_name . '_' . ( preg_replace( '/-/', '_', $attr_name ) );
+							// Filter hook for 3rd party modules to return image information.
+							$filter_name = SucomUtil::sanitize_hookname( $this->p->lca . '_get_content_' . $tag_name . '_' . $attr_name );
 
 							if ( $this->p->debug->enabled ) {
 
@@ -1713,7 +1713,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			/**
 			 * Additional filters / modules may detect other embedded video markup.
 			 */
-			$filter_name = $this->p->lca . '_content_videos';
+			$filter_name = $this->p->lca . '_content_videos';	// No need to sanitize.
 
 			if ( false !== has_filter( $filter_name ) ) {
 
@@ -1813,7 +1813,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return array();
 			}
 
-			$filter_name = $this->p->lca . '_video_details';
+			$filter_name = $this->p->lca . '_video_details';	// No need to sanitize.
 
 			/**
 			 * Maybe filter using a specific API library hook.
