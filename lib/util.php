@@ -325,8 +325,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$name_label = empty( $size_info ) ? $opt_pre : (string) $size_info;
 
 					$size_info = array(
-						'name'  => $name_label,
-						'label' => $name_label
+						'name'         => $name_label,
+						'label_transl' => $name_label
 					);
 				}
 
@@ -403,7 +403,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					/**
 					 * A lookup array for translated image size labels, used in image size error messages.
 					 */
-					$this->cache_size_labels[ $this->p->lca . '-' . $size_info[ 'name' ] ] = $size_info[ 'label' ];	// Pre-translated.
+					$this->cache_size_labels[ $this->p->lca . '-' . $size_info[ 'name' ] ] = $size_info[ 'label_transl' ];
 
 					/**
 					 * Add the image size.
@@ -850,7 +850,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Example $size_name = 'wpsso-opengraph' returns 'Open Graph Image'.
+		 * Example $size_name = 'wpsso-opengraph' returns 'Open Graph'.
 		 */
 		public function get_image_size_label( $size_name ) {
 
@@ -1008,12 +1008,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 * Crop can be true, false, or an array.
 			 */
 			return $local_cache[ $size_name ][ $attachment_id ] = array(
-				'width'      => $width,
-				'height'     => $height,
-				'crop'       => $crop,
-				'is_cropped' => $is_cropped,
-				'dimensions' => $width . 'x' . $height . ' ' . ( $is_cropped ? __( 'cropped', 'wpsso' ) : __( 'uncropped', 'wpsso' ) ),
-				'label'      => $this->get_image_size_label( $size_name ),	// Pre-translated.
+				'width'        => $width,
+				'height'       => $height,
+				'crop'         => $crop,
+				'is_cropped'   => $is_cropped,
+				'dimensions'   => $width . 'x' . $height . ' ' . ( $is_cropped ? __( 'cropped', 'wpsso' ) : __( 'uncropped', 'wpsso' ) ),
+				'label_transl' => $this->get_image_size_label( $size_name ),	// Returns pre-translated labels.
 			);
 		}
 
@@ -3020,6 +3020,21 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return false;
 		}
 
+		public function merge_max( &$dst, &$src, $num = 0 ) {
+
+			if ( ! is_array( $dst ) || ! is_array( $src ) ) {
+
+				return false;
+			}
+
+			if ( ! empty( $src ) && array_filter( $src ) ) {
+
+				$dst = array_merge( $dst, $src );
+			}
+
+			return $this->slice_max( $dst, $num );	// Returns true or false.
+		}
+
 		public function push_max( &$dst, &$src, $num = 0 ) {
 
 			if ( ! is_array( $dst ) || ! is_array( $src ) ) {
@@ -3027,9 +3042,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return false;
 			}
 
-			/**
-			 * If the array is not empty, or contains some non-empty values, then push it.
-			 */
 			if ( ! empty( $src ) && array_filter( $src ) ) {
 
 				array_push( $dst, $src );
@@ -3045,24 +3057,24 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return false;
 			}
 
-			$has = count( $arr );
+			$has_count = count( $arr );
 
 			if ( $num > 0 ) {
 
-				if ( $has == $num ) {
+				if ( $has_count == $num ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'max values reached (' . $has . ' == ' . $num . ')' );
+						$this->p->debug->log( 'max values reached (' . $has_count . ' == ' . $num . ')' );
 					}
 
 					return true;
 
-				} elseif ( $has > $num ) {
+				} elseif ( $has_count > $num ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'max values reached (' . $has . ' > ' . $num . ') - slicing array' );
+						$this->p->debug->log( 'max values reached (' . $has_count . ' > ' . $num . ') - slicing array' );
 					}
 
 					$arr = array_slice( $arr, 0, $num );

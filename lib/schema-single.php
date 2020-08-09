@@ -19,9 +19,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 	class WpssoSchemaSingle {
 
-		public function __construct() {
-		}
-
 		/**
 		 * Pass a single dimension image array in $mt_single.
 		 */
@@ -883,8 +880,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			$size_name = $wpsso->lca . '-schema';
-
 			/**
 			 * Note that 'og:url' may be provided instead of 'product:url'.
 			 *
@@ -1308,14 +1303,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			$size_name = $wpsso->lca . '-schema';
-
-			$sharing_url = '';
-
 			/**
-			 * Maybe get options from integration modules.
+			 * Maybe get options from integration modules (example: WpssoProEventTheEventsCalendar).
 			 */
 			$person_opts = apply_filters( $wpsso->lca . '_get_person_options', false, $mod, $person_id );
+			$sharing_url = '';
 
 			if ( empty( $person_opts ) ) {
 
@@ -1329,74 +1321,83 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					return 0;
 				}
 
-				if ( $wpsso->debug->enabled ) {
+				static $local_cache_person_opts = array();
+				static $local_cache_person_urls = array();
 
-					$wpsso->debug->log( 'getting user module for person_id ' . $person_id );
-				}
+				if ( ! isset( $local_cache_person_opts[ $person_id ] ) ) {
 
-				$user_mod = $wpsso->user->get_mod( $person_id );
+					if ( $wpsso->debug->enabled ) {
 
-				$sharing_url = $wpsso->util->get_sharing_url( $user_mod );
-
-				/**
-				 * Set the reference values for admin notices.
-				 */
-				if ( is_admin() ) {
-
-					$wpsso->notice->set_ref( $sharing_url, $user_mod,
-						sprintf( __( 'adding schema for person user ID %1$s', 'wpsso' ), $person_id ) );
-				}
-
-				$user_desc = $user_mod[ 'obj' ]->get_options_multi( $person_id, $md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
-
-				if ( empty( $user_desc ) ) {
-
-					$user_desc = $user_mod[ 'obj' ]->get_author_meta( $person_id, 'description' );
-				}
-
-				/**
-				 * Remove shortcodes, strip html, etc.
-				 */
-				$user_desc = $wpsso->util->cleanup_html_tags( $user_desc );
-
-				$user_sameas = array();
-
-				foreach ( WpssoUser::get_user_id_contact_methods( $person_id ) as $cm_id => $cm_label ) {
-
-					$url = $user_mod[ 'obj' ]->get_author_meta( $person_id, $cm_id );
-
-					if ( empty( $url ) ) {
-
-						continue;
-
-					} elseif ( $cm_id === $wpsso->options[ 'plugin_cm_twitter_name' ] ) {	// Convert twitter name to url.
-
-						$url = 'https://twitter.com/' . preg_replace( '/^@/', '', $url );
+						$wpsso->debug->log( 'getting user module for person_id ' . $person_id );
 					}
 
-					if ( false !== filter_var( $url, FILTER_VALIDATE_URL ) ) {
+					$user_mod = $wpsso->user->get_mod( $person_id );
 
-						$user_sameas[] = $url;
+					$local_cache_person_urls[ $person_id ] = $wpsso->util->get_sharing_url( $user_mod );
+
+					/**
+					 * Set the reference values for admin notices.
+					 */
+					if ( is_admin() ) {
+
+						$wpsso->notice->set_ref( $local_cache_person_urls[ $person_id ], $user_mod,
+							sprintf( __( 'adding schema for person user ID %1$s', 'wpsso' ), $person_id ) );
+					}
+
+					$user_desc = $user_mod[ 'obj' ]->get_options_multi( $person_id, $md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
+
+					if ( empty( $user_desc ) ) {
+
+						$user_desc = $user_mod[ 'obj' ]->get_author_meta( $person_id, 'description' );
+					}
+
+					/**
+					 * Remove shortcodes, strip html, etc.
+					 */
+					$user_desc = $wpsso->util->cleanup_html_tags( $user_desc );
+	
+					$user_sameas = array();
+	
+					foreach ( WpssoUser::get_user_id_contact_methods( $person_id ) as $cm_id => $cm_label ) {
+	
+						$url = $user_mod[ 'obj' ]->get_author_meta( $person_id, $cm_id );
+	
+						if ( empty( $url ) ) {
+	
+							continue;
+	
+						} elseif ( $cm_id === $wpsso->options[ 'plugin_cm_twitter_name' ] ) {	// Convert twitter name to url.
+	
+							$url = 'https://twitter.com/' . preg_replace( '/^@/', '', $url );
+						}
+	
+						if ( false !== filter_var( $url, FILTER_VALIDATE_URL ) ) {
+	
+							$user_sameas[] = $url;
+						}
+					}
+	
+					$local_cache_person_opts[ $person_id ] = array(
+						'person_type'      => 'person',
+						'person_url'       => $user_mod[ 'obj' ]->get_author_website( $person_id, 'url' ),	// Returns a single URL string.
+						'person_name'      => $user_mod[ 'obj' ]->get_author_meta( $person_id, $wpsso->options[ 'seo_author_name' ] ),
+						'person_desc'      => $user_desc,
+						'person_job_title' => $user_mod[ 'obj' ]->get_options( $person_id, 'schema_person_job_title' ),
+						'person_og_image'  => $user_mod[ 'obj' ]->get_og_images( $num = 1, $size_names = 'schema', $person_id, false ),
+						'person_sameas'    => $user_sameas,
+					);
+
+					/**
+					 * Restore previous reference values for admin notices.
+					 */
+					if ( is_admin() ) {
+	
+						$wpsso->notice->unset_ref( $local_cache_person_urls[ $person_id ] );
 					}
 				}
 
-				$person_opts = array(
-					'person_type'      => 'person',
-					'person_url'       => $user_mod[ 'obj' ]->get_author_website( $person_id, 'url' ),	// Returns a single URL string.
-					'person_name'      => $user_mod[ 'obj' ]->get_author_meta( $person_id, $wpsso->options[ 'seo_author_name' ] ),
-					'person_desc'      => $user_desc,
-					'person_job_title' => $user_mod[ 'obj' ]->get_options( $person_id, 'schema_person_job_title' ),
-					'person_og_image'  => $user_mod[ 'obj' ]->get_og_images( 1, $size_name, $person_id, false ),
-					'person_sameas'    => $user_sameas,
-				);
-
-				/**
-				 * Restore previous reference values for admin notices.
-				 */
-				if ( is_admin() ) {
-
-					$wpsso->notice->unset_ref( $sharing_url );
-				}
+				$person_opts = $local_cache_person_opts[ $person_id ];
+				$sharing_url = $local_cache_person_urls[ $person_id ];
 			}
 
 			if ( $wpsso->debug->enabled ) {
@@ -1433,6 +1434,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Google's knowledge graph.
 			 */
 			$person_opts[ 'person_sameas' ] = isset( $person_opts[ 'person_sameas' ] ) ? $person_opts[ 'person_sameas' ] : array();
+
 			$person_opts[ 'person_sameas' ] = apply_filters( $wpsso->lca . '_json_data_single_person_sameas', $person_opts[ 'person_sameas' ], $mod, $person_id );
 
 			if ( ! empty( $person_opts[ 'person_sameas' ] ) && is_array( $person_opts[ 'person_sameas' ] ) ) {	// Just in case.

@@ -55,9 +55,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 		public function filter_plugin_image_sizes( $sizes ) {
 
-			$sizes[ 'og' ] = array(		// Option prefix.
-				'name'  => 'opengraph',	// Size name suffix.
-				'label' => _x( 'Open Graph (Facebook and oEmbed)', 'option label', 'wpsso' ),
+			$sizes[ 'og' ] = array(			// Option prefix.
+				'name'         => 'opengraph',	// Size name suffix.
+				'label_transl' => _x( 'Open Graph (Facebook and oEmbed)', 'option label', 'wpsso' ),
 			);
 
 			return $sizes;
@@ -1111,8 +1111,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 		/**
 		 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
-		 *
-		 * Note that each size name is used to check for duplicates.
 		 */
 		public function get_all_images( $num, $size_names = 'opengraph', array $mod, $check_dupes = true, $md_pre = 'og' ) {
 

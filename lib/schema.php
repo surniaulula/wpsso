@@ -64,19 +64,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function filter_plugin_image_sizes( $sizes ) {
 
-			$sizes[ 'schema_1_1' ] = array(		// Option prefix.
-				'name'  => 'schema-1-1',	// Size name suffix.
-				'label' => _x( 'Schema 1:1 (Google)', 'option label', 'wpsso' ),
+			$sizes[ 'schema_1_1' ] = array(			// Option prefix.
+				'name'         => 'schema-1-1',		// Size name suffix.
+				'label_transl' => _x( 'Schema 1:1 (Google)', 'option label', 'wpsso' ),
 			);
 
-			$sizes[ 'schema_4_3' ] = array(		// Option prefix.
-				'name'  => 'schema-4-3',	// Size name suffix.
-				'label' => _x( 'Schema 4:3 (Google)', 'option label', 'wpsso' ),
+			$sizes[ 'schema_4_3' ] = array(			// Option prefix.
+				'name'         => 'schema-4-3',		// Size name suffix.
+				'label_transl' => _x( 'Schema 4:3 (Google)', 'option label', 'wpsso' ),
 			);
 
-			$sizes[ 'schema_16_9' ] = array(	// Option prefix.
-				'name'  => 'schema-16-9',	// Size name suffix.
-				'label' => _x( 'Schema 16:9 (Google)', 'option label', 'wpsso' ),
+			$sizes[ 'schema_16_9' ] = array(		// Option prefix.
+				'name'         => 'schema-16-9',	// Size name suffix.
+				'label_transl' => _x( 'Schema 16:9 (Google)', 'option label', 'wpsso' ),
 			);
 
 			return $sizes;

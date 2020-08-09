@@ -114,9 +114,9 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 			if ( ! empty( $this->p->options[ 'p_add_img_html' ] ) ) {	// Just in case.
 
-				$sizes[ 'p' ] = array(		// Option prefix.
-					'name'  => 'pinterest',	// Size name suffix.
-					'label' => _x( 'Pinterest Pin It', 'option label', 'wpsso' ),
+				$sizes[ 'p' ] = array(			// Option prefix.
+					'name'         => 'pinterest',	// Size name suffix.
+					'label_transl' => _x( 'Pinterest Pin It', 'option label', 'wpsso' ),
 				);
 			}
 

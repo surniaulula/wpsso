@@ -6,10 +6,12 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+
 	die( 'Do. Or do not. There is no try.' );
 }
 
@@ -30,6 +32,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -42,6 +45,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		public function filter_init_objects() {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'setting allow_cache to true' );
 			}
 
@@ -51,6 +55,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		public function filter_option_type( $type, $base_key ) {
 
 			if ( ! empty( $type ) ) {
+
 				return $type;
 			}
 
@@ -342,6 +347,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		public function get_defaults( $opt_key = false, $force_filter = false ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log_args( array( 
 					'opt_key'      => $opt_key, 
 					'force_filter' => $force_filter, 
@@ -357,6 +363,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( $force_filter || empty( $this->defaults_cache[ 'options_filtered' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->mark( 'get_defaults filters' );	// Begin timer.
 				}
 
@@ -364,6 +371,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 * Add defaults using a key prefix array and post type names.
 				 */
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'adding defaults derived from post type names' );
 				}
 
@@ -378,6 +386,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 * Add defaults using a key prefix array and term names.
 				 */
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'adding defaults derived from term names' );
 				}
 
@@ -448,6 +457,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'applying get_defaults filters' );
 				}
 
@@ -461,6 +471,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->mark( 'get_defaults filters' );	// End timer.
 				}
 			}
@@ -481,6 +492,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		public function get_site_defaults( $opt_key = false, $force_filter = false ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log_args( array( 
 					'opt_key'      => $opt_key, 
 					'force_filter' => $force_filter, 
@@ -495,6 +507,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( $force_filter || empty( $this->site_defaults_cache[ 'options_filtered' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->mark( 'get_site_defaults filters' );	// Begin timer.
 				}
 
@@ -509,6 +522,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'applying get_site_defaults filters' );
 				}
 
@@ -522,6 +536,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->mark( 'get_site_defaults filters' );	// End timer.
 				}
 			}
@@ -567,14 +582,18 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( $error_msg );
 				}
 
 				if ( is_admin() ) {
 
 					if ( $network ) {
+
 						$admin_url = $this->p->util->get_admin_url( 'network' );
+
 					} else {
+
 						$admin_url = $this->p->util->get_admin_url( 'general' );
 					}
 
@@ -587,6 +606,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark( 'checking options' );	// Begin timer.
 			}
 
@@ -631,6 +651,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( ! $is_new_options && $options_changed ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( $options_name . ' current v' . $current_version .
 						' different than latest v' . $latest_version );
 				}
@@ -645,8 +666,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				if ( null === $defs ) {	// Only get default options once.
 
 					if ( $network ) {
+
 						$defs = $this->get_site_defaults();
+
 					} else {
+
 						$defs = $this->get_defaults();
 					}
 				}
@@ -689,10 +713,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							if ( isset( $opts[ $opt_key ] ) ) {
 
 								if ( $opts[ $opt_key ] === $def_val ) {
+
 									continue;
 								}
 
 								if ( is_admin() ) {
+
 									$this->p->notice->warn( sprintf( $notice_msg, $opt_key ) );
 								}
 							}
@@ -713,6 +739,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'seo plugin found - checking meta tag options' );
 					}
 
@@ -729,6 +756,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						if ( $opts[ $opt_key ] !== $def_val ) {
 
 							if ( $this->p->debug->enabled ) {
+
 								$this->p->debug->log( 'setting ' . $opt_key . ' to ' . $def_val );
 							}
 
@@ -744,6 +772,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 * Add options using a key prefix array and post type names.
 			 */
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'adding options derived from post type names' );
 			}
 
@@ -758,6 +787,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 * Add options using a key prefix array and term names.
 			 */
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'adding options derived from term names' );
 			}
 
@@ -781,8 +811,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 * tags, requests for plugin support will be denied.
 			 */
 			if ( SucomUtil::get_const( 'WPSSO_META_GENERATOR_DISABLE' ) ) {
+
 				$opts[ 'add_meta_name_generator' ] = 0;
+
 			} else {
+
 				$opts[ 'add_meta_name_generator' ] = 1;
 			}
 
@@ -799,6 +832,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			$site_org_type_id = SucomUtil::get_const( 'WPSSO_SCHEMA_ORGANIZATION_TYPE_ID', 'organization' );
 
 			if ( ! preg_match( '/^[a-z\.]+$/', $site_org_type_id ) ) {	// Quick sanitation to allow only valid IDs.
+
 				$site_org_type_id = 'organization';
 			}
 
@@ -815,8 +849,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					if ( null === $defs ) {	// Only get default options once.
 
 						if ( $network ) {
+
 							$defs = $this->get_site_defaults();
+
 						} else {
+
 							$defs = $this->get_defaults();
 						}
 					}
@@ -826,6 +863,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark( 'checking options' );	// End timer.
 			}
 
@@ -838,6 +876,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		public function sanitize( $opts = array(), $defs = array(), $network = false, $mod = false ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -874,6 +913,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			foreach ( $opts as $opt_key => $opt_val ) {
 
 				if ( empty( $opt_key ) ) {
+
 					continue;
 				}
 
@@ -906,6 +946,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			foreach ( SucomUtil::preg_grep_keys( '/^(.*)_img_width$/', $opts, $invert = false, $replace = '$1' ) as $opt_pre => $img_width ) {
 
 				if ( ! isset( $opts[ $opt_pre . '_img_height' ] ) ) {	// Just in case;
+
 					continue;
 				}
 
@@ -918,10 +959,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				if ( false !== $mod ) {
 
 					if ( empty( $img_width ) && isset( $this->p->options[ $opt_pre . '_img_width' ] ) ) {
+
 						$img_width = $this->p->options[ $opt_pre . '_img_width' ];
 					}
 
 					if ( empty( $img_height ) && isset( $this->p->options[ $opt_pre . '_img_height' ] ) ) {
+
 						$img_height = $this->p->options[ $opt_pre . '_img_height' ];
 					}
 				}
@@ -930,6 +973,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 * Both width and height are required to calculate and check the aspect ratio.
 				 */
 				if ( empty( $img_width ) || empty( $img_height ) ) {
+
 					continue;
 				}
 
@@ -939,6 +983,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				foreach ( array( 'limit', 'limit_max' ) as $limit_type ) {
 
 					if ( ! isset( $this->p->cf[ 'head' ][ $limit_type ][ $opt_pre . '_img_ratio' ] ) ) {
+
 						continue;
 					}
 
@@ -954,6 +999,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$opts[ $opt_pre . '_img_crop:is' ] = 'disabled';	// Prevent changes in settings page.
 
 							if ( $img_ratio !== $limit_ratio ) {
+
 								$error_msg = sprintf( __( 'Option keys "%1$s" (%2$d) and "%3$s" (%4$d) have an aspect ratio of %5$s:1, which not equal to the required image ratio of %6$s:1.', 'wpsso' ), $opt_pre . '_img_width', $img_width, $opt_pre . '_img_height', $img_height, $img_ratio, $limit_ratio );
 							}
 
@@ -991,6 +1037,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				if ( empty( $opts[ $opt_pre . '_img_id' ] ) ) {
 
 					if ( isset( $defs[ $opt_pre . '_img_id_pre' ] ) ) {	// Just in case.
+
 						$opts[ $opt_pre . '_img_id_pre' ] = $defs[ $opt_pre . '_img_id_pre' ];
 					}
 
@@ -1060,6 +1107,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( empty( $opts ) || ! is_array( $opts ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'exiting early: options variable is empty and/or not array' );
 				}
 
@@ -1133,6 +1181,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				if ( $upgrading ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( $options_name . ' settings have been upgraded and saved' );
 					}
 
@@ -1145,12 +1194,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 
 				} elseif ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( $options_name . ' settings have been saved silently' );
 				}
 
 			} else {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'wordpress failed to save the ' . $options_name . ' settings' );
 				}
 			}
@@ -1169,6 +1220,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		private function refresh_image_url_sizes( array &$opts ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -1196,6 +1248,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 * Skip if notices have already been shown.
 			 */
 			if ( ! $this->p->notice->is_admin_pre_notices() ) {
+
 				return;
 			}
 
@@ -1254,6 +1307,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		private function check_value( $opt_key, $base_key, $opt_val, $def_val, $network, $mod ) {
 
 			if ( is_array( $opt_val ) ) {
+
 				return $opt_val;
 			}
 
@@ -1270,6 +1324,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( null === $error_messages ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'translating error messages' );
 				}
 
@@ -1355,6 +1410,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'at_name':
 
 					if ( '' !== $opt_val ) {
+
 						$opt_val = SucomUtil::get_at_name( $opt_val );
 					}
 
@@ -1394,6 +1450,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$opt_val = $def_val;
 
 						if ( '' === $opt_val ) {
+
 							$ret_int = false;
 						}
 					}
@@ -1418,6 +1475,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'csv_blank':
 
 					if ( '' !== $opt_val ) {
+
 						$opt_val = implode( ', ', SucomUtil::explode_csv( $opt_val ) );
 					}
 
@@ -1459,6 +1517,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'preg':
 
 					if ( '' !== $opt_val ) {
+
 						$opt_val = trim( preg_replace( '/[\s\n\r]+/s', ' ', $opt_val ) );
 					}
 
@@ -1554,8 +1613,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					 * Check for a hard-coded minimum value (for example, 200 for "og_img_width").
 					 */
 					if ( isset( $this->p->cf[ 'head' ][ 'limit_min' ][ $base_key ] ) ) {
+
 						$min_int = $this->p->cf[ 'head' ][ 'limit_min' ][ $base_key ];
+
 					} else {
+
 						$min_int = 1;
 					}
 
@@ -1617,6 +1679,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'textured':
 
 					if ( '' !== $opt_val ) {
+
 						$opt_val = trim( wptexturize( ' ' . $opt_val . ' ' ) );
 					}
 
@@ -1659,6 +1722,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'url_base':
 
 					if ( '' !== $opt_val ) {
+
 						$opt_val = preg_replace( '/(http|https):\/\/[^\/]*?\//', '', $opt_val );
 					}
 
@@ -1671,6 +1735,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				default:
 
 					if ( $def_val === 0 || $def_val === 1 ) {	// Make sure the default option is also a 1 or 0, just in case.
+
 						$opt_val = empty( $opt_val ) ? 0 : 1;
 					}
 
@@ -1678,8 +1743,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			if ( $ret_int ) {
+
 				$opt_val = intval( $opt_val );
+
 			} elseif ( $ret_fnum ) {
+
 				$opt_val = sprintf( '%.' . $num_prec . 'f', $opt_val );
 			}
 

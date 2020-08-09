@@ -64,9 +64,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		public function filter_plugin_image_sizes( $sizes ) {
 
-			$sizes[ 'thumb' ] = array(	// Option prefix.
-				'name'  => 'thumbnail',	// Size name suffix.
-				'label' => _x( 'Schema Thumbnail', 'option label', 'wpsso' ),
+			$sizes[ 'thumb' ] = array(		// Option prefix.
+				'name'         => 'thumbnail',	// Size name suffix.
+				'label_transl' => _x( 'Schema Thumbnail', 'option label', 'wpsso' ),
 			);
 
 			return $sizes;
@@ -135,7 +135,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$img_title    = get_the_title( $pid );
 				$img_label    = sprintf( __( 'image ID %1$s (%2$s)', 'wpsso' ), $pid, $img_title );
 				$img_label    = empty( $img_edit_url ) ? $img_label : '<a href="' . $img_edit_url . '">' . $img_label . '</a>';
-				$req_img_dims = '<b>' . $size_info[ 'label' ] . '</b> (' . $size_info[ 'dimensions' ] . ')';
+				$req_img_dims = '<b>' . $size_info[ 'label_transl' ] . '</b> (' . $size_info[ 'dimensions' ] . ')';
 				$error_msg    = __( '%1$s %2$s ignored &mdash; the resulting image of %3$s is too small for the required %4$s image dimensions.', 'wpsso' );
 				$rejected_msg = $this->p->msgs->get( 'notice-image-rejected' );
 				$notice_key   = 'wp_' . $pid . '_' . $size_text . '_' . $size_name . '_' . $size_info[ 'dimensions' ] . '_rejected';
@@ -196,7 +196,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			if ( $this->p->notice->is_admin_pre_notices() ) {
 
 				$notice_key   = 'content_' . $mt_image_url . '_' . $size_name . '_rejected';
-				$req_img_dims = '<b>' . $$size_info[ 'label' ] . '</b> (' . $size_info[ 'dimensions' ] . ')';
+				$req_img_dims = '<b>' . $size_info[ 'label_transl' ] . '</b> (' . $size_info[ 'dimensions' ] . ')';
 				$error_msg    = __( 'Image %1$s in content ignored &mdash; the image width and height is too small for the required %2$s image dimensions.', 'wpsso' );
 				$data_attr_msg = $content_passed ? '' : ' ' . sprintf( __( '%1$s includes an additional \'data-wp-pid\' attribute for Media Library images &mdash; if this image was selected from the Media Library before %1$s was activated, try removing and adding the image back to your content.', 'wpsso' ), $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'short' ] );
 
@@ -357,7 +357,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				 *
 				 * Unless $md_pre is 'none', get_og_images() will fallback to using the 'og' custom meta.
 				 */
-				$mt_ret = array_merge( $mt_ret, $this->p->post->get_og_images( 1, $size_name, $post_id, $check_dupes, $md_pre ) );
+				$mt_ret = array_merge( $mt_ret, $this->p->post->get_og_images( $num, $size_name, $post_id, $check_dupes, $md_pre ) );
 			}
 
 			/**
@@ -524,8 +524,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					rsort( $local_cache_attached_ids[ $post_id ], SORT_NUMERIC );
 
-					$local_cache_attached_ids[ $post_id ] = array_unique( apply_filters( $this->p->lca . '_attached_image_ids',
-						$local_cache_attached_ids[ $post_id ], $post_id ) );
+					$filter_name = $this->p->lca . '_attached_image_ids';
+
+					$local_cache_attached_ids[ $post_id ] = array_unique( apply_filters( $filter_name, $local_cache_attached_ids[ $post_id ], $post_id ) );
 				}
 
 				if ( $this->p->debug->enabled ) {
@@ -2059,7 +2060,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$cf_max     = $this->p->cf[ 'head' ][ 'limit_max' ];
 			$img_ratio  = 0;
 			$img_label  = $img_mixed;
-			$size_label = $this->p->util->get_image_size_label( $size_name );
+			$size_label = $this->p->util->get_image_size_label( $size_name );	// Returns pre-translated labels.
 
 			if ( 0 !== strpos( $size_name, $this->p->lca . '-' ) ) {	// Only check our own sizes.
 

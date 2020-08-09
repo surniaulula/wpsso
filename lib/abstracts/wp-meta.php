@@ -1333,15 +1333,17 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		}
 
 		/**
-		 * Note that $md_pre can be a text string or array of prefixes.
+		 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
+		 *
+		 * $md_pre can be a text string or array of prefixes.
 		 */
-		public function get_md_images( $num, $size_name, array $mod, $check_dupes = true, $md_pre = 'og', $mt_pre = 'og' ) {
+		public function get_md_images( $num = 0, $size_names, array $mod, $check_dupes = true, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array( 
 					'num'         => $num,
-					'size_name'   => $size_name,
+					'size_names'  => $size_names,
 					'mod'         => $mod,
 					'check_dupes' => $check_dupes,
 					'md_pre'      => $md_pre,
@@ -1349,25 +1351,20 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				), get_class( $this ) );
 			}
 
-			$mt_ret = array();
+			if ( empty( $mod[ 'id' ] ) ) {	// Just in case.
 
-			if ( empty( $mod[ 'id' ] ) ) {
+				return array();
+			
+			} elseif ( $num < 1 ) {	// Just in case.
 
-				return $mt_ret;
+				return array();
 			}
 
-			if ( is_array( $md_pre ) ) {
+			$size_names = $this->p->util->get_image_size_names( $size_names );	// Always returns an array.
+			$md_pre     = is_array( $md_pre ) ? array_merge( $md_pre, array( 'og' ) ) : array( $md_pre, 'og' );
+			$mt_ret     = array();
 
-				$md_pre_unique = array_merge( $md_pre, array( 'og' ) );
-
-			} else {
-
-				$md_pre_unique = array( $md_pre, 'og' );
-			}
-
-			$md_pre_unique = array_unique( $md_pre_unique );
-
-			foreach( $md_pre_unique as $opt_pre ) {
+			foreach( array_unique( $md_pre ) as $opt_pre ) {
 
 				if ( $opt_pre === 'none' ) {		// Special index keyword.
 
@@ -1378,16 +1375,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					continue;
 				}
 
-				/**
-				 * Get an empty image meta tag array.
-				 */
-				$mt_single_image = SucomUtil::get_mt_image_seed( $mt_pre );
-
-				/**
-				 * Get the image id, library prefix, and/or url values.
-				 */
 				$pid = $this->get_options( $mod[ 'id' ], $opt_pre . '_img_id' );
-				$pre = $this->get_options( $mod[ 'id' ], $opt_pre . '_img_id_pre' );	// Default library prefix.
+				$pre = $this->get_options( $mod[ 'id' ], $opt_pre . '_img_id_pre' );
 				$url = $this->get_options( $mod[ 'id' ], $opt_pre . '_img_url' );
 
 				if ( $pid > 0 ) {
@@ -1399,26 +1388,25 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 						$this->p->debug->log( 'using custom ' . $opt_pre . ' image id = "' . $pid . '"', get_class( $this ) );
 					}
 
-					$this->p->media->add_mt_single_image_src( $mt_single_image, $pid, $size_name, $check_dupes, $mt_pre );
+					$mt_ret = $this->p->media->get_mt_single_image_sizes( $pid, $size_names, $check_dupes, $mt_pre );
+
 				}
 
-				if ( empty( $mt_single_image[ $mt_pre . ':image:url' ] ) && ! empty( $url ) ) {
+				if ( empty( $mt_ret ) && $url ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'using custom ' . $opt_pre . ' image url = "' . $url . '"',
-							get_class( $this ) );	// log extended class name
+						$this->p->debug->log( 'using custom ' . $opt_pre . ' image url = "' . $url . '"', get_class( $this ) );
 					}
 
 					$img_width  = $this->get_options( $mod[ 'id' ], $opt_pre . '_img_url:width' );
 					$img_height = $this->get_options( $mod[ 'id' ], $opt_pre . '_img_url:height' );
 
+					$mt_single_image = SucomUtil::get_mt_image_seed( $mt_pre );
+
 					$mt_single_image[ $mt_pre . ':image:url' ]    = $url;
 					$mt_single_image[ $mt_pre . ':image:width' ]  = $img_width > 0 ? $img_width : WPSSO_UNDEF;
 					$mt_single_image[ $mt_pre . ':image:height' ] = $img_height > 0 ? $img_height : WPSSO_UNDEF;
-				}
-
-				if ( ! empty( $mt_single_image[ $mt_pre . ':image:url' ] ) ) {
 
 					if ( $this->p->util->push_max( $mt_ret, $mt_single_image, $num ) ) {
 
@@ -1426,16 +1414,22 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					}
 				}
 
-				/**
-				 * Stop here if we had a custom image ID or URL.
-				 */
-				if ( $pid || $url ) {
+				if ( $pid || $url ) {	// Stop after first $md_pre image found.
 
 					break;
 				}
 			}
 
-			foreach ( apply_filters( $this->p->lca . '_' . $mod[ 'name' ] . '_image_ids', array(), $size_name, $mod[ 'id' ], $mod ) as $pid ) {
+			if ( $this->p->util->is_maxed( $mt_ret, $num ) ) {
+
+				return $mt_ret;
+			}
+
+			$filter_name = $this->p->lca . '_' . $mod[ 'name' ] . '_image_ids';
+
+			$image_ids = apply_filters( $filter_name, array(), $size_names, $mod[ 'id' ], $mod );
+
+			foreach ( $image_ids as $pid ) {
 
 				if ( $pid > 0 ) {	// Quick sanity check.
 
@@ -1444,19 +1438,20 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 						$this->p->debug->log( 'adding image pid: ' . $pid );
 					}
 
-					$mt_single_image = $this->p->media->get_mt_single_image_src( $pid, $size_name, $check_dupes, $mt_pre );
+					$mt_images = $this->p->media->get_mt_single_image_sizes( $pid, $size_names, $check_dupes, $mt_pre );
 
-					if ( ! empty( $mt_single_image[ $mt_pre . ':image:url' ] ) ) {
+					if ( $this->p->util->merge_max( $mt_ret, $mt_images, $num ) ) {
 
-						if ( $this->p->util->push_max( $mt_ret, $mt_single_image, $num ) ) {
-
-							return $mt_ret;
-						}
+						return $mt_ret;
 					}
 				}
 			}
 
-			foreach ( apply_filters( $this->p->lca . '_' . $mod[ 'name' ] . '_image_urls', array(), $size_name, $mod[ 'id' ], $mod ) as $url ) {
+			$filter_name = $this->p->lca . '_' . $mod[ 'name' ] . '_image_urls';
+
+			$image_urls = apply_filters( $filter_name, array(), $size_names, $mod[ 'id' ], $mod );
+
+			foreach ( $image_urls as $url ) {
 
 				if ( false !== strpos( $url, '://' ) ) {	// Quick sanity check.
 
@@ -1469,17 +1464,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 					$mt_single_image[ $mt_pre . ':image:url' ] = $url;
 
-					/**
-					 * Add correct image sizes for the image URL using getimagesize().
-					 */
 					$this->p->util->add_image_url_size( $mt_single_image, $mt_pre . ':image' );
 
-					if ( ! empty( $mt_single_image[ $mt_pre . ':image:url' ] ) ) {
+					if ( $this->p->util->push_max( $mt_ret, $mt_single_image, $num ) ) {
 
-						if ( $this->p->util->push_max( $mt_ret, $mt_single_image, $num ) ) {
-
-							return $mt_ret;
-						}
+						return $mt_ret;
 					}
 				}
 			}
@@ -1498,9 +1487,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		}
 
 		/**
-		 * Note that $md_pre can be a text string or array of prefixes.
+		 * Extended by the WpssoUser class to support non-WordPress user images.
+		 *
+		 * $md_pre can be a text string or array of prefixes.
 		 */
-		public function get_og_images( $num, $size_name, $mod_id, $check_dupes = true, $md_pre = 'og', $mt_pre = 'og' ) {
+		public function get_og_images( $num = 0, $size_names, $mod_id, $check_dupes = true, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1509,11 +1500,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			$mod = $this->get_mod( $mod_id );
 
-			return $this->get_md_images( $num, $size_name, $mod, $check_dupes, $md_pre, $mt_pre );
+			return $this->get_md_images( $num, $size_names, $mod, $check_dupes, $md_pre, $mt_pre );
 		}
 
 		/**
-		 * Note that $md_pre can be a text string or array of prefixes.
+		 * $md_pre can be a text string or array of prefixes.
 		 */
 		public function get_og_videos( $num = 0, $mod_id, $check_dupes = false, $md_pre = 'og', $mt_pre = 'og' ) {
 
@@ -1528,54 +1519,52 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				), get_class( $this ) );
 			}
 
-			$mod       = $this->get_mod( $mod_id );	// Required for get_content_videos().
-			$mt_ret    = array();
-			$mt_videos = array();
+			if ( empty( $mod_id ) ) {	// Just in case.
 
-			if ( empty( $mod_id ) ) {
+				return array();
 
-				return $mt_ret;
+			} elseif ( $num < 1 ) {	// Just in case.
+
+				return array();
 			}
 
-			if ( is_array( $md_pre ) ) {
+			$mod    = $this->get_mod( $mod_id );	// Required for get_content_videos().
+			$md_pre = is_array( $md_pre ) ? array_merge( $md_pre, array( 'og' ) ) : array( $md_pre, 'og' );
+			$mt_ret = array();
 
-				$md_pre_unique = array_merge( $md_pre, array( 'og' ) );
+			foreach( array_unique( $md_pre ) as $opt_pre ) {
 
-			} else {
+				if ( $opt_pre === 'none' ) {		// Special index keyword.
 
-				$md_pre_unique = array( $md_pre, 'og' );
-			}
+					break;
 
-			$md_pre_unique = array_unique( $md_pre_unique );
+				} elseif ( empty( $opt_pre ) ) {	// Skip empty md_pre values.
 
-			foreach( $md_pre_unique as $opt_pre ) {
-
-				$embed_html = $this->get_options( $mod_id, $opt_pre . '_vid_embed' );
-				$video_url  = $this->get_options( $mod_id, $opt_pre . '_vid_url' );
-
-				/**
-				 * Retrieve one or more videos from the embed HTML code. 
-				 */
-				if ( ! empty( $embed_html ) ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'fetching video(s) from custom ' . $opt_pre . ' embed code',
-							get_class( $this ) );	// Log extended class name.
-					}
-
-					$mt_ret = array_merge( $mt_ret, $this->p->media->get_content_videos( $num, $mod, $check_dupes, $embed_html ) );
+					continue;
 				}
 
-				if ( ! empty( $video_url ) && ( ! $check_dupes || $this->p->util->is_uniq_url( $video_url ) ) ) {
+				$html = $this->get_options( $mod_id, $opt_pre . '_vid_embed' );
+				$url  = $this->get_options( $mod_id, $opt_pre . '_vid_url' );
+
+				if ( $html ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'fetching video from custom ' . $opt_pre . ' url ' . $video_url, get_class( $this ) );
+						$this->p->debug->log( 'fetching video(s) from custom ' . $opt_pre . ' embed code', get_class( $this ) );
+					}
+
+					$mt_ret = $this->p->media->get_content_videos( $num, $mod, $check_dupes, $html );
+				}
+
+				if ( empty( $mt_ret ) && $url && ( ! $check_dupes || $this->p->util->is_uniq_url( $url ) ) ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'fetching video from custom ' . $opt_pre . ' url ' . $url, get_class( $this ) );
 					}
 
 					$args = array(
-						'url'      => $video_url,
+						'url'      => $url,
 						'width'    => WPSSO_UNDEF,
 						'height'   => WPSSO_UNDEF,
 						'type'     => '',
@@ -1584,12 +1573,12 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 						'api'      => '',
 					);
 
-					$mt_videos = $this->p->media->get_video_details( $args, $check_dupes, true );
+					$mt_ret = $this->p->media->get_video_details( $args, $check_dupes, true );
+				}
 
-					if ( $this->p->util->push_max( $mt_ret, $mt_videos, $num ) )  {
+				if ( $html || $url ) {	// Stop after first $md_pre video found.
 
-						return $mt_ret;
-					}
+					break;
 				}
 			}
 
