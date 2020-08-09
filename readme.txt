@@ -309,7 +309,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 **Version 8.0.0-dev.8 (2020/08/08)**
 
-Google has updated their Rich Results requirements and now prefer 1:1, 4:3, and 16:9 images for all Schema types, not just the Schema Article type for AMP webpages. The "Schema" and "Schema Article" image sizes have been removed and replaced by new Schema 1:1, 4:3, and 16:9 image sizes.
+Google has updated their Rich Results requirements and now prefers 1:1, 4:3, and 16:9 images for all Schema types, not just the Schema Article type for AMP webpages. The "Schema" and "Schema Article" image sizes have been removed and replaced by new Schema 1:1, 4:3, and 16:9 image sizes.
 
 The [WP eCommerce](https://wordpress.org/plugins/wp-e-commerce/) plugin is no longer supported (last update in January 2019) and the WPSSO Core Premium integration module for WP eCommerce has been removed.
 
