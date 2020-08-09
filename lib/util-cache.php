@@ -133,6 +133,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
 
+				/**
+				 * Register image sizes and include WooCommerce front-end libs.
+				 */
 				do_action( $this->p->lca . '_scheduled_task_started', $user_id );
 			}
 
@@ -625,8 +628,28 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
 
+				/**
+				 * Register image sizes and include WooCommerce front-end libs.
+				 */
 				do_action( $this->p->lca . '_scheduled_task_started', $user_id );
 			}
+
+			$size_names = $this->p->util->get_image_size_names();
+
+			$post_ids = call_user_func( array( $this->p->lca . 'post', 'get_public_ids' ) );	// Call static method.
+
+			foreach ( $post_ids as $post_id ) {
+
+				foreach ( $size_names as $size_name ) {
+
+					/**
+					 * get_mt_single_image_src() returns an og:image:url value, not an og:image:secure_url.
+					 */
+					$mt_ret = $this->p->media->get_featured( $num = 1, $size_name, $post_id, $check_dupes = false );
+				}
+			}
+
+			unset( $post_ids );
 
 			$total_count = array(
 				'post' => 0,
@@ -677,8 +700,6 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 * Called by refresh_cache().
 		 */
 		private function refresh_mod_head_meta( array $mod, $read_cache = false ) {
-
-			$this->p->util->add_plugin_image_sizes( $wp_obj = false, $image_sizes = array(), $filter_sizes = true );
 
 			$head_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache );
 

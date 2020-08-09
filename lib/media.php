@@ -348,7 +348,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				) );
 			}
 
-			$mt_images = array();
+			$mt_ret = array();
 
 			if ( ! empty( $post_id ) ) {
 
@@ -357,30 +357,30 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				 *
 				 * Unless $md_pre is 'none', get_og_images() will fallback to using the 'og' custom meta.
 				 */
-				$mt_images = array_merge( $mt_images, $this->p->post->get_og_images( 1, $size_name, $post_id, $check_dupes, $md_pre ) );
+				$mt_ret = array_merge( $mt_ret, $this->p->post->get_og_images( 1, $size_name, $post_id, $check_dupes, $md_pre ) );
 			}
 
 			/**
 			 * Allow for empty post_id in order to execute featured / attached image filters for modules.
 			 */
-			if ( ! $this->p->util->is_maxed( $mt_images, $num ) ) {
+			if ( ! $this->p->util->is_maxed( $mt_ret, $num ) ) {
 
-				$num_diff = SucomUtil::count_diff( $mt_images, $num );
+				$num_diff = SucomUtil::count_diff( $mt_ret, $num );
 
-				$mt_images = array_merge( $mt_images, $this->get_featured( $num_diff, $size_name, $post_id, $check_dupes ) );
+				$mt_ret = array_merge( $mt_ret, $this->get_featured( $num_diff, $size_name, $post_id, $check_dupes ) );
 			}
 
 			/**
 			 * 'wpsso_attached_images' filter is used by the buddypress module.
 			 */
-			if ( ! $this->p->util->is_maxed( $mt_images, $num ) ) {
+			if ( ! $this->p->util->is_maxed( $mt_ret, $num ) ) {
 
-				$num_diff = SucomUtil::count_diff( $mt_images, $num );
+				$num_diff = SucomUtil::count_diff( $mt_ret, $num );
 
-				$mt_images = array_merge( $mt_images, $this->get_attached_images( $num_diff, $size_name, $post_id, $check_dupes ) );
+				$mt_ret = array_merge( $mt_ret, $this->get_attached_images( $num_diff, $size_name, $post_id, $check_dupes ) );
 			}
 
-			return $mt_images;
+			return $mt_ret;
 		}
 
 		public function get_featured( $num = 0, $size_name = 'thumbnail', $post_id, $check_dupes = true ) {
@@ -395,58 +395,52 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				) );
 			}
 
-			$mt_images = array();
+			$mt_ret = array();
 
 			if ( ! empty( $post_id ) ) {
 
 				/**
-				 * Check for an attachment page, just in case.
+				 * Avoid making duplicate queries to the database.
 				 */
-				if ( ( is_attachment( $post_id ) || get_post_type( $post_id ) === 'attachment' ) && wp_attachment_is_image( $post_id ) ) {
+				static $local_cache_featured_ids = array();
 
-					if ( $this->p->debug->enabled ) {
+				if ( isset( $local_cache_featured_ids[ $post_id ] ) ) {	// False or image ID.
 
-						$this->p->debug->log( 'post_type is an attachment - using post_id ' . $post_id .  ' as the image id' );
-					}
+					$pid = $local_cache_featured_ids[ $post_id ];
 
-					$pid = $post_id;
-
+				/**
+				 * If the post ID is an attachment page, then use the post ID as the image ID.
+				 */
+				} elseif ( ( is_attachment( $post_id ) || 'attachment' === get_post_type( $post_id ) ) && wp_attachment_is_image( $post_id ) ) {
+	
+					$pid = $local_cache_featured_ids[ $post_id ] = $post_id;
+	
 				} elseif ( $this->p->avail[ 'wp' ][ 'featured' ] && has_post_thumbnail( $post_id ) ) {
-
-					/**
-					 * Avoid making duplicate queries to the database.
-					 */
-					static $local_cache_featured = array();
-
-					if ( isset( $local_cache_featured[ $post_id ] ) ) {
-
-						$pid = $local_cache_featured[ $post_id ];
-
-					} else {
-
-						$pid = $local_cache_featured[ $post_id ] = get_post_thumbnail_id( $post_id );
-					}
-
+	
+					$pid = $local_cache_featured_ids[ $post_id ] = get_post_thumbnail_id( $post_id );
+	
 				} else {
-
-					$pid = false;
+	
+					$pid = $local_cache_featured_ids[ $post_id ] = false;
 				}
 
-				if ( ! empty( $pid ) ) {
+				if ( ! empty( $pid ) ) {	// False or image ID.
 
+					/**
+					 * get_mt_single_image_src() returns an og:image:url value, not an og:image:secure_url.
+					 */
 					$mt_single_image = $this->get_mt_single_image_src( $pid, $size_name, $check_dupes );
 
 					if ( ! empty( $mt_single_image[ 'og:image:url' ] ) ) {
 
-						/**
-						 * Add the image but do not return yet, so we can apply the 'wpsso_og_featured' filter.
-						 */
-						$this->p->util->push_max( $mt_images, $mt_single_image, $num );
+						$this->p->util->push_max( $mt_ret, $mt_single_image, $num );
+
+						// Continue and apply the 'wpsso_og_featured' filter.
 					}
 				}
 			}
 
-			return apply_filters( $this->p->lca . '_og_featured', $mt_images, $num, $size_name, $post_id, $check_dupes );
+			return apply_filters( $this->p->lca . '_og_featured', $mt_ret, $num, $size_name, $post_id, $check_dupes );
 		}
 
 		public function get_attachment_image( $num = 0, $size_name = 'thumbnail', $attachment_id, $check_dupes = true ) {
@@ -461,19 +455,22 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				) );
 			}
 
-			$mt_images = array();
+			$mt_ret = array();
 
 			if ( ! empty( $attachment_id ) ) {
 
 				if ( wp_attachment_is_image( $attachment_id ) ) {
 
+					/**
+					 * get_mt_single_image_src() returns an og:image:url value, not an og:image:secure_url.
+					 */
 					$mt_single_image = $this->get_mt_single_image_src( $attachment_id, $size_name, $check_dupes );
 
 					if ( ! empty( $mt_single_image[ 'og:image:url' ] ) ) {
 
-						if ( $this->p->util->push_max( $mt_images, $mt_single_image, $num ) ) {
+						if ( $this->p->util->push_max( $mt_ret, $mt_single_image, $num ) ) {
 
-							return $mt_images;
+							return $mt_ret;
 						}
 					}
 
@@ -483,7 +480,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 			}
 
-			return $mt_images;
+			return $mt_ret;
 		}
 
 		public function get_attached_images( $num = 0, $size_name = 'thumbnail', $post_id, $check_dupes = true ) {
@@ -498,7 +495,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				) );
 			}
 
-			$mt_images = array();
+			$mt_ret = array();
 
 			if ( ! empty( $post_id ) ) {
 
@@ -538,11 +535,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				foreach ( $local_cache_attached_ids[ $post_id ] as $pid ) {
 
+					/**
+					 * get_mt_single_image_src() returns an og:image:url value, not an og:image:secure_url.
+					 */
 					$mt_single_image = $this->get_mt_single_image_src( $pid, $size_name, $check_dupes );
 
 					if ( ! empty( $mt_single_image[ 'og:image:url' ] ) ) {
 
-						if ( $this->p->util->push_max( $mt_images, $mt_single_image, $num ) ) {
+						if ( $this->p->util->push_max( $mt_ret, $mt_single_image, $num ) ) {
 
 							break;	// Stop here and apply the 'wpsso_attached_images' filter.
 						}
@@ -553,7 +553,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			/**
 			 * The 'wpsso_attached_images' filter is used by the buddypress module.
 			 */
-			return apply_filters( $this->p->lca . '_attached_images', $mt_images, $num, $size_name, $post_id, $check_dupes );
+			return apply_filters( $this->p->lca . '_attached_images', $mt_ret, $num, $size_name, $post_id, $check_dupes );
 		}
 
 		/**
@@ -631,6 +631,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			foreach ( $size_names as $size_name ) {
 
+				/**
+				 * get_mt_single_image_src() returns an og:image:url value, not an og:image:secure_url.
+				 */
 				$mt_single_image = $this->get_mt_single_image_src( $pid, $size_name, $check_dupes );
 
 				if ( ! empty( $mt_single_image[ 'og:image:url' ] ) ) {
@@ -643,6 +646,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		}
 
+		/**
+		 * get_mt_single_image_src() returns an og:image:url value, not an og:image:secure_url.
+		 */
 		public function get_mt_single_image_src( $pid, $size_name = 'thumbnail', $check_dupes = true, $mt_pre = 'og' ) {
 
 			$mt_single_image = SucomUtil::get_mt_image_seed( $mt_pre );
@@ -1131,7 +1137,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				) );
 			}
 
-			$mt_images = array();
+			$mt_ret = array();
 
 			foreach ( array( 'id', 'id_pre', 'url', 'url:width', 'url:height' ) as $key ) {
 
@@ -1145,7 +1151,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$this->p->debug->log( 'exiting early: no default image defined' );
 				}
 
-				return $mt_images;
+				return $mt_ret;
 			}
 
 			$mt_single_image = SucomUtil::get_mt_image_seed();
@@ -1178,13 +1184,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( ! empty( $mt_single_image[ 'og:image:url' ] ) ) {
 
-				if ( $this->p->util->push_max( $mt_images, $mt_single_image, $num ) ) {
+				if ( $this->p->util->push_max( $mt_ret, $mt_single_image, $num ) ) {
 
-					return $mt_images;
+					return $mt_ret;
 				}
 			}
 
-			return $mt_images;
+			return $mt_ret;
 		}
 
 		public function get_content_images( $num = 0, $size_name = 'thumbnail', $mod = true, $check_dupes = true, $content = '' ) {
@@ -1215,7 +1221,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$mod = $this->p->util->get_page_mod( $mod );
 			}
 
-			$mt_images = array();
+			$mt_ret = array();
 
 			/**
 			 * Allow custom content to be passed as an argument in $content.
@@ -1239,7 +1245,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$this->p->debug->log( 'exiting early: empty post content' );
 				}
 
-				return $mt_images;
+				return $mt_ret;
 			}
 
 			$content_img_preg = $this->default_content_img_preg;
@@ -1497,20 +1503,21 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					if ( ! empty( $mt_single_image[ 'og:image:url' ] ) ) {
 
-						$mt_single_image[ 'og:image:url' ] = apply_filters( $this->p->lca . '_rewrite_image_url',
-							$this->p->util->fix_relative_url( $mt_single_image[ 'og:image:url' ] ) );
+						$mt_single_image[ 'og:image:url' ] = $this->p->util->fix_relative_url( $mt_single_image[ 'og:image:url' ] );
+
+						$mt_single_image[ 'og:image:url' ] = apply_filters( $this->p->lca . '_rewrite_image_url', $mt_single_image[ 'og:image:url' ] );
 
 						if ( ! $check_dupes || $this->p->util->is_uniq_url( $mt_single_image[ 'og:image:url' ], $size_name ) ) {
 
-							if ( $this->p->util->push_max( $mt_images, $mt_single_image, $num ) ) {
+							if ( $this->p->util->push_max( $mt_ret, $mt_single_image, $num ) ) {
 
-								return $mt_images;
+								return $mt_ret;
 							}
 						}
 					}
 				}
 
-				return $mt_images;
+				return $mt_ret;
 			}
 
 			if ( $this->p->debug->enabled ) {
@@ -1518,7 +1525,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->log( 'no matching <' . $content_img_preg[ 'html_tag' ] . '/> html tag(s) found' );
 			}
 
-			return $mt_images;
+			return $mt_ret;
 		}
 
 		/**

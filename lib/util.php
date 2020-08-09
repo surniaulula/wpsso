@@ -84,24 +84,28 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$this->set_instances( $plugin );
+			$this->set_util_instances( $plugin );
 
 			$this->add_plugin_filters( $this, array(
 				'pub_lang' => 3,
 			) );
 
+			$this->add_plugin_actions( $this, array(
+				'scheduled_task_started' => 1,
+			), $prio = -1000 );
+
 			/**
 			 * Several actions must be hooked to define our image sizes on the front-end, back-end, AJAX calls, REST
 			 * API calls, etc.
 			 */
-			add_action( 'wp', array( $this, 'add_plugin_image_sizes' ), -100 );		// For front-end.
+			add_action( 'wp', array( $this, 'add_plugin_image_sizes' ), -100 );				// Front-end compatibility.
 
-			add_action( 'admin_init', array( $this, 'add_plugin_image_sizes' ), -100 );	// For back-end + AJAX compatibility.
+			add_action( 'admin_init', array( $this, 'add_plugin_image_sizes' ), -100 );			// Back-end + AJAX compatibility.
 
-			add_action( 'rest_api_init', array( $this, 'add_plugin_image_sizes' ), -100 );	// For REST API compatibility.
+			add_action( 'rest_api_init', array( $this, 'add_plugin_image_sizes' ), -100 );			// REST API compatibility.
 		}
 
-		public function set_instances( &$plugin ) {
+		public function set_util_instances( &$plugin ) {
 
 			/**
 			 * WpssoUtilCache.
@@ -263,6 +267,167 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			return $current_lang;
+		}
+
+		public function action_scheduled_task_started( $user_id ) {
+
+			$this->add_plugin_image_sizes();
+		}
+
+		/**
+		 * Can be called directly and from the "wp", "rest_api_init", and "current_screen" actions. The $wp_obj variable
+		 * can be false or a WP object (WP_Post, WP_Term, WP_User, WP_REST_Server, etc.). The $mod variable can be false,
+		 * and if so, it will be set using get_page_mod().
+		 *
+		 * This method does not return a value, so do not use it as a filter. ;-)
+		 */
+		public function add_plugin_image_sizes( $wp_obj = false, $image_sizes = array(), $filter_sizes = true ) {
+
+			/**
+			 * Allow various plugin add-ons to provide their image names, labels, etc. The first dimension array key is
+			 * the option name prefix by default. You can also include the width, height, crop, crop_x, and crop_y
+			 * values.
+			 *
+			 *	Array (
+			 *		[og] => Array (
+			 *			[name] => opengraph
+			 *			[label] => Open Graph	// Pre-translated.
+			 *		)
+			 *	)
+			 */
+			if ( $this->p->debug->enabled ) {
+
+				$doing_ajax = SucomUtil::get_const( 'DOING_AJAX' );
+
+				$wp_obj_type = gettype( $wp_obj ) === 'object' ? get_class( $wp_obj ) . ' object' : gettype( $wp_obj );
+
+				$this->p->debug->log( 'DOING_AJAX is ' . ( $doing_ajax ? 'true' : 'false' ) );
+
+				$this->p->debug->log( '$wp_obj type is ' . $wp_obj_type );
+
+				$this->p->debug->mark( 'define image sizes' );	// Begin timer.
+			}
+
+			/**
+			 * Get default options only once.
+			 */
+			static $def_opts = null;
+
+			if ( $filter_sizes ) {
+
+				$image_sizes = apply_filters( $this->p->lca . '_plugin_image_sizes', $image_sizes );
+			}
+
+			foreach( $image_sizes as $opt_pre => $size_info ) {
+
+				if ( ! is_array( $size_info ) ) {	// Just in case.
+
+					$name_label = empty( $size_info ) ? $opt_pre : (string) $size_info;
+
+					$size_info = array(
+						'name'  => $name_label,
+						'label' => $name_label
+					);
+				}
+
+				$opt_pre = preg_replace( '/_img$/', '', $opt_pre );	// Just in case.
+
+				foreach ( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $key ) {
+
+					/**
+					 * Value provided by filters.
+					 */
+					if ( isset( $size_info[ $key ] ) ) {
+
+						continue;
+
+					/**
+					 * Plugin settings.
+					 */
+					} elseif ( isset( $this->p->options[ $opt_pre . '_img_' . $key ] ) ) {
+
+						$size_info[ $key ] = $this->p->options[ $opt_pre . '_img_' . $key ];
+
+					/**
+					 * Default settings.
+					 */
+					} else {
+
+						if ( null === $def_opts ) {
+
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'getting default option values' );
+							}
+
+							$def_opts = $this->p->opt->get_defaults();
+						}
+
+						if ( isset( $def_opts[ $opt_pre . '_img_' . $key ] ) ) {	// Just in case.
+
+							$size_info[ $key ] = $def_opts[ $opt_pre . '_img_' . $key ];
+
+						} else {
+
+							$size_info[ $key ] = null;
+						}
+					}
+				}
+
+				if ( empty( $size_info[ 'crop' ] ) ) {
+
+					$size_info[ 'crop' ] = false;
+
+				} else {
+
+					$size_info[ 'crop' ] = true;
+
+					$new_crop = array( 'center', 'center' );
+
+					foreach ( array( 'crop_x', 'crop_y' ) as $crop_key => $key ) {
+
+						if ( ! empty( $size_info[ $key ] ) && $size_info[ $key ] !== 'none' ) {
+
+							$new_crop[ $crop_key ] = $size_info[ $key ];
+						}
+					}
+
+					if ( $new_crop !== array( 'center', 'center' ) ) {
+
+						$size_info[ 'crop' ] = $new_crop;
+					}
+				}
+
+				if ( $size_info[ 'width' ] > 0 && $size_info[ 'height' ] > 0 ) {
+
+					/**
+					 * A lookup array for translated image size labels, used in image size error messages.
+					 */
+					$this->cache_size_labels[ $this->p->lca . '-' . $size_info[ 'name' ] ] = $size_info[ 'label' ];	// Pre-translated.
+
+					/**
+					 * Add the image size.
+					 */
+					add_image_size( $this->p->lca . '-' . $size_info[ 'name' ], $size_info[ 'width' ], $size_info[ 'height' ], $size_info[ 'crop' ] );
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'added image size ' . $this->p->lca . '-' . $size_info[ 'name' ] . ' ' . 
+							$size_info[ 'width' ] . 'x' . $size_info[ 'height' ] .  ' ' . ( empty( $size_info[ 'crop' ] ) ?
+								'uncropped' : 'cropped ' . $size_info[ 'crop_x' ] . '/' . $size_info[ 'crop_y' ] ) );
+					}
+				}
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				if ( ! $doing_ajax ) {
+
+					$this->p->debug->log_arr( 'get_image_sizes', $this->get_image_sizes() );
+				}
+
+				$this->p->debug->mark( 'define image sizes' );	// End timer.
+			}
 		}
 
 		/**
@@ -685,161 +850,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Can be called directly and from the "wp", "rest_api_init", and "current_screen" actions. The $wp_obj variable
-		 * can be false or a WP object (WP_Post, WP_Term, WP_User, WP_REST_Server, etc.). The $mod variable can be false,
-		 * and if so, it will be set using get_page_mod(). This method does not return a value, so do not use it as a
-		 * filter. ;-)
-		 */
-		public function add_plugin_image_sizes( $wp_obj = false, $image_sizes = array(), $filter_sizes = true ) {
-
-			/**
-			 * Allow various plugin add-ons to provide their image names, labels, etc. The first dimension array key is
-			 * the option name prefix by default. You can also include the width, height, crop, crop_x, and crop_y
-			 * values.
-			 *
-			 *	Array (
-			 *		[og] => Array (
-			 *			[name] => opengraph
-			 *			[label] => Open Graph	// Pre-translated.
-			 *		)
-			 *	)
-			 */
-			if ( $this->p->debug->enabled ) {
-
-				$doing_ajax = SucomUtil::get_const( 'DOING_AJAX' );
-
-				$wp_obj_type = gettype( $wp_obj ) === 'object' ? get_class( $wp_obj ) . ' object' : gettype( $wp_obj );
-
-				$this->p->debug->log( 'DOING_AJAX is ' . ( $doing_ajax ? 'true' : 'false' ) );
-
-				$this->p->debug->log( '$wp_obj type is ' . $wp_obj_type );
-
-				$this->p->debug->mark( 'define image sizes' );	// Begin timer.
-			}
-
-			/**
-			 * Get default options only once.
-			 */
-			static $def_opts = null;
-
-			if ( $filter_sizes ) {
-
-				$image_sizes = apply_filters( $this->p->lca . '_plugin_image_sizes', $image_sizes );
-			}
-
-			foreach( $image_sizes as $opt_pre => $size_info ) {
-
-				if ( ! is_array( $size_info ) ) {	// Just in case.
-
-					$name_label = empty( $size_info ) ? $opt_pre : (string) $size_info;
-
-					$size_info = array(
-						'name'  => $name_label,
-						'label' => $name_label
-					);
-				}
-
-				$opt_pre = preg_replace( '/_img$/', '', $opt_pre );	// Just in case.
-
-				foreach ( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $key ) {
-
-					/**
-					 * Value provided by filters.
-					 */
-					if ( isset( $size_info[ $key ] ) ) {
-
-						continue;
-
-					/**
-					 * Plugin settings.
-					 */
-					} elseif ( isset( $this->p->options[ $opt_pre . '_img_' . $key ] ) ) {
-
-						$size_info[ $key ] = $this->p->options[ $opt_pre . '_img_' . $key ];
-
-					/**
-					 * Default settings.
-					 */
-					} else {
-
-						if ( null === $def_opts ) {
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'getting default option values' );
-							}
-
-							$def_opts = $this->p->opt->get_defaults();
-						}
-
-						if ( isset( $def_opts[ $opt_pre . '_img_' . $key ] ) ) {	// Just in case.
-
-							$size_info[ $key ] = $def_opts[ $opt_pre . '_img_' . $key ];
-
-						} else {
-
-							$size_info[ $key ] = null;
-						}
-					}
-				}
-
-				if ( empty( $size_info[ 'crop' ] ) ) {
-
-					$size_info[ 'crop' ] = false;
-
-				} else {
-
-					$size_info[ 'crop' ] = true;
-
-					$new_crop = array( 'center', 'center' );
-
-					foreach ( array( 'crop_x', 'crop_y' ) as $crop_key => $key ) {
-
-						if ( ! empty( $size_info[ $key ] ) && $size_info[ $key ] !== 'none' ) {
-
-							$new_crop[ $crop_key ] = $size_info[ $key ];
-						}
-					}
-
-					if ( $new_crop !== array( 'center', 'center' ) ) {
-
-						$size_info[ 'crop' ] = $new_crop;
-					}
-				}
-
-				if ( $size_info[ 'width' ] > 0 && $size_info[ 'height' ] > 0 ) {
-
-					/**
-					 * A lookup array for translated image size labels, used in image size error messages.
-					 */
-					$this->cache_size_labels[ $this->p->lca . '-' . $size_info[ 'name' ] ] = $size_info[ 'label' ];	// Pre-translated.
-
-					/**
-					 * Add the image size.
-					 */
-					add_image_size( $this->p->lca . '-' . $size_info[ 'name' ], $size_info[ 'width' ], $size_info[ 'height' ], $size_info[ 'crop' ] );
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'added image size ' . $this->p->lca . '-' . $size_info[ 'name' ] . ' ' . 
-							$size_info[ 'width' ] . 'x' . $size_info[ 'height' ] .  ' ' . ( empty( $size_info[ 'crop' ] ) ?
-								'uncropped' : 'cropped ' . $size_info[ 'crop_x' ] . '/' . $size_info[ 'crop_y' ] ) );
-					}
-				}
-			}
-
-			if ( $this->p->debug->enabled ) {
-
-				if ( ! $doing_ajax ) {
-
-					$this->p->debug->log_arr( 'get_image_sizes', $this->get_image_sizes() );
-				}
-
-				$this->p->debug->mark( 'define image sizes' );	// End timer.
-			}
-		}
-
-		/**
 		 * Example $size_name = 'wpsso-opengraph' returns 'Open Graph Image'.
 		 */
 		public function get_image_size_label( $size_name ) {
@@ -853,11 +863,15 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $size_name;
 		}
 
-		public function get_image_size_names( $mixed ) {
+		public function get_image_size_names( $mixed = null ) {
 
 			$size_names = array_keys( $this->cache_size_labels );
 
-			if ( is_array( $mixed ) ) {
+			if ( null === $mixed ) {
+
+				return $size_names;
+
+			} elseif ( is_array( $mixed ) ) {
 
 				return array_intersect( $size_names, $mixed );	// Sanitize and return.
 
@@ -895,14 +909,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		public function get_image_sizes( $attachment_id = false ) {
 
-			$sizes = array();
+			$image_sizes = array();
 
 			foreach ( get_intermediate_image_sizes() as $size_name ) {
 
-				$sizes[ $size_name ] = $this->get_size_info( $size_name, $attachment_id );
+				$image_sizes[ $size_name ] = $this->get_size_info( $size_name, $attachment_id );
 			}
 
-			return $sizes;
+			return $image_sizes;
 		}
 
 		/**

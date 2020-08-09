@@ -1623,6 +1623,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
 
+				/**
+				 * Register image sizes and include WooCommerce front-end libs.
+				 */
 				do_action( $this->p->lca . '_scheduled_task_started', $user_id );
 			}
 
@@ -1733,6 +1736,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
 
+				/**
+				 * Register image sizes and include WooCommerce front-end libs.
+				 */
 				do_action( $this->p->lca . '_scheduled_task_started', $user_id );
 			}
 
