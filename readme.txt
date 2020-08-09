@@ -332,6 +332,7 @@ The [WP eCommerce](https://wordpress.org/plugins/wp-e-commerce/) plugin is no lo
 		* Schema Article
 	* Removed the "Schema Image URL" option in the Document SSO metabox.
 	* Removed the WPSSO Core Premium integration module for the [WP eCommerce](https://wordpress.org/plugins/wp-e-commerce/) plugin.
+	* Removed the SSO &gt; Advanced Settings &gt; Cache &gt; Clear All Caches on Save Settings option.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
