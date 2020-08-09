@@ -6,6 +6,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
@@ -20,6 +21,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -72,8 +74,11 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 					echo '* ';
 
 					if ( empty( $this->p->options[ 'plugin_clear_short_urls' ] ) ) {
+
 						echo sprintf( __( '%1$s option is unchecked - shortened URLs cache will be preserved.', 'wpsso' ), $settings_page_link );
+
 					} else {
+
 						echo sprintf( __( '%1$s option is checked - shortened URLs cache will be cleared.', 'wpsso' ), $settings_page_link );
 					}
 
@@ -83,8 +88,9 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			echo '<p class="status-msg smaller left">';
 			echo '** ';
-			echo sprintf( __( 'Members of the %s role may be hand selected for certain Schema properties (content creators are administrators, editors, authors or contributors).', 'wpsso' ), $role_label );
-			echo '</p>';
+			echo sprintf( __( 'Members of the %s role may be selected for certain Schema properties.', 'wpsso' ), $role_label ) . ' ';
+			echo __( '"Content Creators" are all administrators, editors, authors, or contributors.', 'wpsso' );
+			echo '</p>' . "\n";
 
 			echo '</div><!-- #tools-content -->' . "\n";
 		}

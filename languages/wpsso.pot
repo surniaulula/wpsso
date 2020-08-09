@@ -268,7 +268,7 @@ msgctxt "plugin action link"
 msgid "Community Forum"
 msgstr ""
 
-#: lib/admin.php:986 lib/submenu/tools.php:100
+#: lib/admin.php:986 lib/submenu/tools.php:106
 msgctxt "submit button"
 msgid "Clear All Caches"
 msgstr ""
@@ -324,7 +324,7 @@ msgid ""
 msgstr ""
 
 #: lib/admin.php:1150 lib/admin.php:1161 lib/messages.php:839
-#: lib/submenu/tools.php:53 lib/submenu/tools.php:94 lib/user.php:52
+#: lib/submenu/tools.php:55 lib/submenu/tools.php:100 lib/user.php:52
 #: lib/user.php:1579 lib/user.php:1690 lib/user.php:1821
 msgctxt "user role"
 msgid "Person"
@@ -388,7 +388,7 @@ msgctxt "submit button"
 msgid "Get %s"
 msgstr ""
 
-#: lib/admin.php:1622 lib/submenu/tools.php:98
+#: lib/admin.php:1622 lib/submenu/tools.php:104
 msgctxt "submit button"
 msgid "Change to \"%s\" View"
 msgstr ""
@@ -3345,7 +3345,7 @@ msgid "Clear All Caches on Deactivate"
 msgstr ""
 
 #: lib/gettext-pro.php:60 lib/pro/admin/advanced.php:320
-#: lib/std/admin/advanced.php:329 lib/submenu/tools.php:68
+#: lib/std/admin/advanced.php:329 lib/submenu/tools.php:70
 msgctxt "option label"
 msgid "Refresh Short URLs on Clear Cache"
 msgstr ""
@@ -7549,66 +7549,70 @@ msgctxt "metabox title"
 msgid "WebSite Social Pages and Accounts"
 msgstr ""
 
-#: lib/submenu/tools.php:75
+#: lib/submenu/tools.php:78
 msgid "%1$s option is unchecked - shortened URLs cache will be preserved."
 msgstr ""
 
-#: lib/submenu/tools.php:77
+#: lib/submenu/tools.php:82
 msgid "%1$s option is checked - shortened URLs cache will be cleared."
 msgstr ""
 
-#: lib/submenu/tools.php:86
+#: lib/submenu/tools.php:91
+msgid "Members of the %s role may be selected for certain Schema properties."
+msgstr ""
+
+#: lib/submenu/tools.php:92
 msgid ""
-"Members of the %s role may be hand selected for certain Schema properties "
-"(content creators are administrators, editors, authors or contributors)."
-msgstr ""
-
-#: lib/submenu/tools.php:101
-msgctxt "submit button"
-msgid "Clear All Caches and Short URLs"
-msgstr ""
-
-#: lib/submenu/tools.php:102
-msgctxt "submit button"
-msgid "Clear All Files in Cache Folder"
-msgstr ""
-
-#: lib/submenu/tools.php:103
-msgctxt "submit button"
-msgid "Clear All Database Transients"
-msgstr ""
-
-#: lib/submenu/tools.php:104
-msgctxt "submit button"
-msgid "Refresh Transient Cache"
-msgstr ""
-
-#: lib/submenu/tools.php:105
-msgctxt "submit button"
-msgid "Add %s Role to Content Creators"
-msgstr ""
-
-#: lib/submenu/tools.php:106
-msgctxt "submit button"
-msgid "Remove %s Role from All Users"
+"\"Content Creators\" are all administrators, editors, authors, or "
+"contributors."
 msgstr ""
 
 #: lib/submenu/tools.php:107
 msgctxt "submit button"
-msgid "Export Plugin and Add-on Settings"
+msgid "Clear All Caches and Short URLs"
 msgstr ""
 
 #: lib/submenu/tools.php:108
 msgctxt "submit button"
+msgid "Clear All Files in Cache Folder"
+msgstr ""
+
+#: lib/submenu/tools.php:109
+msgctxt "submit button"
+msgid "Clear All Database Transients"
+msgstr ""
+
+#: lib/submenu/tools.php:110
+msgctxt "submit button"
+msgid "Refresh Transient Cache"
+msgstr ""
+
+#: lib/submenu/tools.php:111
+msgctxt "submit button"
+msgid "Add %s Role to Content Creators"
+msgstr ""
+
+#: lib/submenu/tools.php:112
+msgctxt "submit button"
+msgid "Remove %s Role from All Users"
+msgstr ""
+
+#: lib/submenu/tools.php:113
+msgctxt "submit button"
+msgid "Export Plugin and Add-on Settings"
+msgstr ""
+
+#: lib/submenu/tools.php:114
+msgctxt "submit button"
 msgid "Import Plugin and Add-on Settings"
 msgstr ""
 
-#: lib/submenu/tools.php:153
+#: lib/submenu/tools.php:159
 msgctxt "submit button"
 msgid "Reset Dismissed Notices"
 msgstr ""
 
-#: lib/submenu/tools.php:154
+#: lib/submenu/tools.php:160
 msgctxt "submit button"
 msgid "Reset Metabox Layout"
 msgstr ""
