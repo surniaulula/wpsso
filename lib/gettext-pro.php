@@ -57,7 +57,6 @@ _x( 'Form Selects Cache Expiry', 'option label', 'wpsso' );
 _x( 'seconds (0 to disable)', 'option comment', 'wpsso' );
 _x( 'Clear All Caches on Activate', 'option label', 'wpsso' );
 _x( 'Clear All Caches on Deactivate', 'option label', 'wpsso' );
-_x( 'Clear All Caches on Save Settings', 'option label', 'wpsso' );
 _x( 'Refresh Short URLs on Clear Cache', 'option label', 'wpsso' );
 _x( 'Clear Term Cache for Published Post', 'option label', 'wpsso' );
 _x( 'Clear Post Cache for New Comment', 'option label', 'wpsso' );

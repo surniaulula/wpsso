@@ -391,6 +391,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_add_to_wpsc-product'   => '',
 					'schema_type_for_wpsc-product' => '',
 				),
+				752 => array(
+					'plugin_clear_on_save' => '',
+				),
 			),
 		);
 

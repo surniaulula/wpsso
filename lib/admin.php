@@ -982,26 +982,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 */
 			$this->p->options = $opts;
 
-			if ( empty( $this->p->options[ 'plugin_clear_on_save' ] ) ) {
+			$clear_cache_link = $this->p->util->get_admin_url( wp_nonce_url( '?' . $this->p->lca . '-action=clear_cache',
+				WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME ), _x( 'Clear All Caches', 'submit button', 'wpsso' ) );
 
-				$clear_cache_link = $this->p->util->get_admin_url( wp_nonce_url( '?' . $this->p->lca . '-action=clear_cache',
-					WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME ), _x( 'Clear All Caches', 'submit button', 'wpsso' ) );
-
-				$this->p->notice->upd( '<strong>' . __( 'Plugin settings have been saved.', 'wpsso' ) . '</strong> ' .
-					sprintf( __( 'Note that some caches may take several days to expire and reflect these changes (or %s now).',
-						'wpsso' ), $clear_cache_link ) );
-
-			} else {
-
-				$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
-					_x( 'Clear All Caches on Save Settings', 'option label', 'wpsso' ) );
-
-				$this->p->notice->upd( '<strong>' . __( 'Plugin settings have been saved.', 'wpsso' ) . '</strong> ' .
-					sprintf( __( 'A background task will begin shortly to clear all caches (%s is enabled).',
-						'wpsso' ), $settings_page_link ) );
-
-				$this->p->util->cache->schedule_clear( $user_id = get_current_user_id(), $clear_other = true );
-			}
+			$this->p->notice->upd( '<strong>' . __( 'Plugin settings have been saved.', 'wpsso' ) . '</strong> ' .
+				sprintf( __( 'Note that some caches may take several days to expire and reflect these changes (or %s now).',
+					'wpsso' ), $clear_cache_link ) );
 
 			if ( empty( $opts[ 'plugin_filter_content' ] ) ) {
 

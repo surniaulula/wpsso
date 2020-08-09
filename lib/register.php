@@ -6,10 +6,12 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+
 	die( 'Do. Or do not. There is no try.' );
 }
 
@@ -133,6 +135,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			 * Add the "person" role for all WpssoUser::get_public_ids(). 
 			 */
 			if ( $new_install ) {
+
 				$this->p->user->schedule_add_person_role();
 			}
 
@@ -157,13 +160,14 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 					sprintf( __( 'A background task will begin shortly to clear all caches (%s is enabled).',
 						'wpsso' ), $settings_page_link ) );
 
-				$this->p->util->cache->schedule_clear( $user_id = get_current_user_id(), $clear_other = true );
+				$this->p->util->cache->schedule_clear( $user_id = get_current_user_id(), $clear_other = true, $clear_short = null, $refresh = true );
 			}
 
 			/**
 			 * End of plugin activation.
 			 */
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'done plugin activation' );
 			}
 		}
@@ -192,6 +196,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 						$cache_file = $cache_dir . $file_name;
 
 						if ( ! preg_match( '/^(\..*|index\.php)$/', $file_name ) && is_file( $cache_file ) ) {
+
 							@unlink( $cache_file );
 						}
 					}
@@ -201,6 +206,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			}
 
 			if ( class_exists( 'WpssoAdmin' ) ) {	// Just in case.
+
 				WpssoAdmin::reset_admin_check_options();
 			}
 		}
@@ -284,6 +290,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				$transient_name = str_replace( $prefix, '', $option_name );
 
 				if ( ! empty( $transient_name ) ) {
+
 					delete_transient( $transient_name );
 				}
 			}
@@ -298,6 +305,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			foreach ( array( 'wp', 'php' ) as $key ) {
 
 				if ( empty( $cf[ $key ][ 'min_version' ] ) ) {
+
 					return;
 				}
 
@@ -323,6 +331,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				$version_url = $cf[ $key ][ 'version_url' ];
 
 				if ( version_compare( $app_version, $min_version, '>=' ) ) {
+
 					continue;
 				}
 

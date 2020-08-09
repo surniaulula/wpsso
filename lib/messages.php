@@ -1045,12 +1045,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_clear_on_save':		// Clear All Caches on Save Settings.
-
-							$text = sprintf( __( 'Automatically clear all caches when the %s plugin settings are saved.', 'wpsso' ), $info[ 'short' ] );
-
-							break;
-
 						case 'tooltip-plugin_clear_short_urls':		// Refresh Short URLs on Clear Cache.
 
 							$cache_exp_secs = (int) apply_filters( $this->p->lca . '_cache_expire_short_url',

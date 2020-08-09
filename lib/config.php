@@ -23,7 +23,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '8.0.0-dev.8',	// Plugin version.
-					'opt_version' => '752',		// Increment when changing default option values.
+					'opt_version' => '753',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Make sure your content looks great on social sites and search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -1593,7 +1593,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_select_cache_exp'    => MONTH_IN_SECONDS,	// Form Selects Cache Expiry (1 month).
 					'plugin_clear_on_activate'   => 1,			// Clear All Caches on Activate.
 					'plugin_clear_on_deactivate' => 0,			// Clear All Caches on Deactivate.
-					'plugin_clear_on_save'       => 0,			// Clear All Caches on Save Settings.
 					'plugin_clear_short_urls'    => 0,			// Refresh Short URLs on Clear Cache.
 					'plugin_clear_post_terms'    => 1,			// Clear Term Cache for Published Post.
 					'plugin_clear_for_comment'   => 1,			// Clear Post Cache for New Comment.
@@ -1846,8 +1845,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_clear_on_activate:use'   => 'default',
 					'plugin_clear_on_deactivate'     => 0,			// Clear All Caches on Deactivate.
 					'plugin_clear_on_deactivate:use' => 'default',
-					'plugin_clear_on_save'           => 0,			// Clear All Caches on Save Settings.
-					'plugin_clear_on_save:use'       => 'default',
 					'plugin_clear_short_urls'        => 0,			// Refresh Short URLs on Clear Cache.
 					'plugin_clear_short_urls:use'    => 'default',
 					'plugin_clear_post_terms'        => 1,			// Clear Term Cache for Published Post.

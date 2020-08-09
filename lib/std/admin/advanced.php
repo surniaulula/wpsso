@@ -325,11 +325,6 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$form->get_no_td_checkbox( 'plugin_clear_on_deactivate' ) . 
 			WpssoAdmin::get_option_site_use( 'plugin_clear_on_deactivate', $form, $network );
 
-			$table_rows[ 'plugin_clear_on_save' ] = '' . 
-			$form->get_th_html( _x( 'Clear All Caches on Save Settings', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_clear_on_save' ) . 
-			$form->get_no_td_checkbox( 'plugin_clear_on_save' ) . 
-			WpssoAdmin::get_option_site_use( 'plugin_clear_on_save', $form, $network );
-
 			$table_rows[ 'plugin_clear_short_urls' ] = $form->get_tr_hide( 'basic', 'plugin_clear_short_urls' ) . 
 			$form->get_th_html( _x( 'Refresh Short URLs on Clear Cache', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_clear_short_urls' ) . 
 			$form->get_no_td_checkbox( 'plugin_clear_short_urls' ) . 
