@@ -6,6 +6,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
@@ -22,6 +23,7 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteLicenses' ) && class_exists( 'WpssoAdm
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -34,6 +36,7 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteLicenses' ) && class_exists( 'WpssoAdm
 		protected function set_form_object( $menu_ext ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'setting site form object for '.$menu_ext );
 			}
 

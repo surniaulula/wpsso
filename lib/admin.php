@@ -44,6 +44,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -141,6 +142,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function load_network_menu_objects() {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -150,12 +152,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function load_menu_objects( $menu_libs = array() ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
 			$this->plugin_pkg_info();
 
 			if ( empty( $menu_libs ) ) {
+
 				$menu_libs = array( 'dashboard', 'plugins', 'profile', 'settings', 'submenu', 'tools', 'users' );
 			}
 
@@ -164,6 +168,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
 					if ( ! isset( $info[ 'lib' ][ $menu_lib ] ) ) {	// Not all add-ons have submenus.
+
 						continue;
 					}
 
@@ -174,6 +179,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						if ( is_string( $classname ) && class_exists( $classname ) ) {
 
 							if ( $this->p->debug->enabled ) {
+
 								$this->p->debug->log( 'loading classname ' . $classname . ' for menu id ' . $menu_id );
 							}
 
@@ -185,6 +191,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							$this->submenu[ $menu_id ] = new $classname( $this->p, $menu_id, $menu_name, $menu_lib, $ext );
 
 						} elseif ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'classname not found for menu lib ' . $menu_lib . '/' . $menu_id );
 						}
 					}
@@ -249,6 +256,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function add_network_admin_menus() {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -263,10 +271,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function add_admin_menus( $menu_lib = '' ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
 			if ( empty( $menu_lib ) ) {	// Just in case.
+
 				$menu_lib = 'submenu';
 			}
 
@@ -367,8 +377,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 				if ( isset( $this->submenu[ $arg[ 1 ] ] ) ) {
+
 					$this->submenu[ $arg[ 1 ] ]->add_submenu_page( $arg[ 0 ], '', '', '', '', $css_class );
+
 				} else {
+
 					$this->add_submenu_page( $arg[ 0 ], $arg[ 1 ], $arg[ 2 ], $arg[ 3 ], $arg[ 4 ], $css_class );
 				}
 			}
@@ -385,8 +398,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * Match WordPress behavior (users page for admins, profile page for everyone else).
 				 */
 				if ( 'profile' === $menu_lib && current_user_can( 'list_users' ) ) {
+
 					$parent_slug = $this->p->cf[ 'wp' ][ 'admin' ][ 'users' ][ 'page' ];
+
 				} else {
+
 					$parent_slug = $this->p->cf[ 'wp' ][ 'admin' ][ $menu_lib ][ 'page' ];
 				}
 
@@ -395,6 +411,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
 					if ( ! isset( $info[ 'lib' ][ $menu_lib ] ) ) {	// Not all add-ons have submenus.
+
 						continue;
 					}
 
@@ -416,8 +433,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				foreach ( $sorted_menu as $key => $arg ) {
 
 					if ( isset( $this->submenu[ $arg[ 1 ] ] ) ) {
+
 						$this->submenu[ $arg[ 1 ] ]->add_submenu_page( $arg[ 0 ] );
+
 					} else {
+
 						$this->add_submenu_page( $arg[ 0 ], $arg[ 1 ], $arg[ 2 ], $arg[ 3 ], $arg[ 4 ] );
 					}
 				}
@@ -430,7 +450,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected function set_form_object( $menu_ext ) {	// $menu_ext required for text_domain.
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
+
 				$this->p->debug->log( 'setting form object for ' . $menu_ext );
 			}
 
@@ -442,12 +464,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function &get_form_object( $menu_ext ) {	// $menu_ext required for text_domain.
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
 			if ( ! isset( $this->form ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'form object not defined' );
 				}
 
@@ -456,6 +480,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			} elseif ( $this->form->get_menu_ext() !== $menu_ext ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'form object text domain does not match' );
 				}
 
@@ -511,14 +536,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected function add_submenu_page( $parent_slug, $menu_id = '', $menu_name = '', $menu_lib = '', $menu_ext = '', $css_class = '' ) {
 
 			if ( empty( $menu_id ) ) {
+
 				$menu_id = $this->menu_id;
 			}
 
 			if ( empty( $menu_name ) ) {
+
 				$menu_name = $this->menu_name;
 			}
 
 			if ( empty( $menu_lib ) ) {
+
 				$menu_lib = $this->menu_lib;
 			}
 
@@ -527,6 +555,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$menu_ext = $this->menu_ext;	// Lowercase acronyn for plugin or add-on.
 
 				if ( empty( $menu_ext ) ) {
+
 					$menu_ext = $this->p->lca;
 				}
 			}
@@ -714,16 +743,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function check_plugin_names( $req, $url ) {
 
 			if ( false === strpos( $url, '/api.wordpress.org/plugins/update-check/' ) ) {
+
 				return $req;
 			}
 
 			if ( empty( $req[ 'body' ][ 'plugins' ] ) ) {
+
 				return $req;
 			}
 
 			$data = json_decode( $req[ 'body' ][ 'plugins' ], $assoc = true );
 
 			if ( empty( $data[ 'plugins' ] ) || ! is_array( $data[ 'plugins' ] ) ) {
+
 				return $req;
 			}
 
@@ -734,12 +766,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$slug = preg_replace( '/\/.*$/', '', $file_path );		// Get the plugin slug (without the file name).
 
 				if ( empty( $this->p->cf[ '*' ][ 'slug' ][ $slug ] ) ) {	// Make sure the plugin slug is one of ours.
+
 					continue;
 				}
 
 				$ext  = $this->p->cf[ '*' ][ 'slug' ][ $slug ];			// Get the add-on acronym to read its config.
 
 				if ( empty( $this->p->cf[ 'plugin' ][ $ext ] ) ) {		// Make sure we have a config for that acronym.
+
 					continue;
 				}
 
@@ -754,6 +788,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( $have_changes ) {							// Only re-encode $data when necessary.
+
 				$req[ 'body' ][ 'plugins' ] = SucomUtil::json_encode_array( $data );
 			}
 
@@ -767,10 +802,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function add_expect_header( $req, $url ) {
 
 			if ( ! is_array( $req ) ) {
+
 				$req = array();
 			}
 
 			if ( ! isset( $req[ 'headers' ] ) || ! is_array( $req[ 'headers' ] ) ) {
+
 				$req[ 'headers' ] = array();
 			}
 
@@ -782,6 +819,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function maybe_allow_hosts( $is_allowed, $ip, $url ) {
 
 			if ( $is_allowed ) {	// Already allowed.
+
 				return $is_allowed;
 			}
 
@@ -790,6 +828,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				foreach ( $this->p->cf[ 'extend' ] as $host ) {
 
 					if ( 0 === strpos( $url, $host ) ) {
+
 						return true;
 					}
 				}
@@ -804,6 +843,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function external_plugin_data( $result, $action = null, $args = null ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -957,6 +997,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * Just in case - make sure we do not return or save empty settings.
 			 */
 			if ( ! is_array( $opts ) ) {
+
 				$opts = $this->p->options;
 			}
 
@@ -965,16 +1006,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 */
 			$this->p->notice->clear();
 
-			$options_name = WPSSO_OPTIONS_NAME;
-
 			$def_opts = $this->p->opt->get_defaults();
 
 			$opts = SucomUtil::restore_checkboxes( $opts );
-
 			$opts = array_merge( $this->p->options, $opts );
-
 			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network = false );
-
 			$opts = apply_filters( $this->p->lca . '_save_setting_options', $opts, $network = false, $upgrading = false );
 
 			/**
@@ -1011,6 +1047,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( empty( $_POST[ WPSSO_NONCE_NAME ] ) ) {	// WPSSO_NONCE_NAME is an md5() string.
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'nonce token validation post field missing' );
 				}
 
@@ -1040,19 +1077,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 */
 			$this->p->notice->clear();
 
-			$options_name = WPSSO_SITE_OPTIONS_NAME;
-
 			$def_opts = $this->p->opt->get_site_defaults();
 
-			$opts = SucomUtil::restore_checkboxes( $_POST[ $options_name ] );
-
+			$opts = SucomUtil::restore_checkboxes( $_POST[ WPSSO_SITE_OPTIONS_NAME ] );
 			$opts = array_merge( $this->p->site_options, $opts );
-
 			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network = true );
-
 			$opts = apply_filters( $this->p->lca . '_save_setting_options', $opts, $network = true, $upgrading = false );
 
-			update_site_option( $options_name, $opts );
+			update_site_option( WPSSO_SITE_OPTIONS_NAME, $opts );
 
 			$this->p->notice->upd( '<strong>' . __( 'Plugin settings have been saved.', 'wpsso' ) . '</strong>' );
 
@@ -1078,6 +1110,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( empty( $nonce_value ) ) {	// WPSSO_NONCE_NAME is an md5() string.
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'nonce token validation field missing' );
 					}
 
@@ -1723,6 +1756,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * count is last.
 			 */
 			if ( isset( $this->p->cf[ 'wp' ][ 'transient' ][ $all_transients_pre ] ) ) {	
+
 				SucomUtil::move_to_end( $this->p->cf[ 'wp' ][ 'transient' ], $all_transients_pre );
 			}
 
@@ -1759,8 +1793,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 				if ( is_numeric( $cache_exp_secs ) && $cache_exp_secs > 0 ) {
+
 					$cache_exp_hours = number_format( $cache_exp_secs / 60 / 60, $decimals = 1, $dec_point = '.', $thousands_sep = '' );
+
 				} else {
+
 					$cache_exp_hours = $cache_exp_secs;
 				}
 
@@ -1770,6 +1807,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				echo '<td class="cache-size">' . $cache_size . '</td>';
 
 				if ( $cache_md5_pre !== $all_transients_pre ) {
+
 					echo '<td class="cache-expiration">' . $cache_exp_hours . $cache_exp_suffix . '</td>';
 				}
 
@@ -1779,6 +1817,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			do_action( $this->p->lca . '_column_metabox_cache_status_table_rows', $table_cols, $this->form, $db_transient_keys );
 
 			if ( $have_filtered_exp ) {
+
 				echo '<tr><td></td></tr>' . "\n";
 				echo '<tr><td colspan="' . $table_cols . '"><p class="status-msg smaller left">* ' .
 					__( 'Cache expiration modified by filter.', 'wpsso' ) . '</small></p></td></tr>' . "\n";
@@ -1866,6 +1905,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * Only show the stable version if the latest version is different (ie. latest is a non-stable version).
 				 */
 				if ( $stable_version !== $latest_version ) {
+
 					echo '<tr><th class="version-label">' . _x( 'Stable', 'option label', 'wpsso' ) . ':</th>
 						<td class="version-number">' . $stable_version . '</td></tr>';
 				}
@@ -1881,6 +1921,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					echo '<tr><td colspan="' . $table_cols . '" class="latest-notice">';
 
 					if ( ! empty( $latest_notice ) ) {
+
 						echo '<p><em><strong>Version ' . $latest_version . '</strong> ' . $latest_notice . '</em></p>';
 					}
 
@@ -2089,6 +2130,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		private function is_lib( $lib_name, $menu_id = false ) {
 
 			if ( false === $menu_id ) {
+
 				$menu_id = $this->menu_id;
 			}
 
@@ -2282,8 +2324,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * Plugin separator.
 				 */
 				if ( $ext_num < $ext_total ) {
+
 					$table_rows[ 'dotted_line' ] = '<td class="ext-info-plugin-separator"></td>';
+
 				} else {
+
 					$table_rows[] = '<td></td>';
 				}
 
@@ -2319,6 +2364,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			foreach ( $ext_sorted as $ext => $info ) {
 
 				if ( empty( $info[ 'update_auth' ] ) ) {	// Only show plugins with Premium versions.
+
 					unset( $ext_sorted[ $ext ] );
 				}
 			}
@@ -2380,6 +2426,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						} elseif ( $key === 'exp_date' ) {
 
 							if ( $val === '0000-00-00 00:00:00' ) {
+
 								$val = _x( 'Never', 'option value', 'wpsso' );
 							}
 
@@ -2399,6 +2446,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								$qty_total = SucomUpdate::get_option( $ext, 'qty_total' );
 
 								if ( null !== $qty_reg && null !== $qty_total ) {
+
 									$val = sprintf( __( '%d of %d site addresses registered', 'wpsso' ),
 										$qty_reg, $qty_total );
 								}
@@ -2436,8 +2484,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * Plugin separator.
 				 */
 				if ( $ext_num < $ext_total ) {
+
 					$table_rows[ 'dotted_line' ] = '<td colspan="2" class="ext-info-plugin-separator"></td>';
+
 				} else {
+
 					$table_rows[] = '<td></td>';
 				}
 
@@ -2502,10 +2553,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$footer_html = '<div class="admin-footer-ext">';
 
 			if ( isset( self::$pkg[ $this->menu_ext ][ 'name' ] ) ) {
+
 				$footer_html .= self::$pkg[ $this->menu_ext ][ 'name' ] . '<br/>';
 			}
 
 			if ( isset( self::$pkg[ $this->menu_ext ][ 'gen' ] ) ) {
+
 				$footer_html .= self::$pkg[ $this->menu_ext ][ 'gen' ] . '<br/>';
 			}
 
@@ -2548,6 +2601,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function check_tmpl_head_attributes() {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -2620,6 +2674,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function check_wp_config_constants() {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -2627,6 +2682,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * Skip if previous check is already successful.
 			 */
 			if ( $passed = get_option( WPSSO_WP_CONFIG_CHECK_NAME, $default = false ) ) {
+
 				return;
 			}
 
@@ -2846,6 +2902,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function add_schema_item_props_table_rows( array &$table_rows, $form ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -2889,6 +2946,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function add_schema_publisher_type_table_rows( array &$table_rows, $form ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -2921,8 +2979,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$se_func = 'get_select';
 
 			if ( ! self::$pkg[ $this->p->lca ][ 'pp' ] ) {
+
 				$td_attr = ' class="blank"';
 				$se_func = 'get_no_select';
+
 				$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 			}
 
@@ -3075,8 +3135,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$in_func = 'get_input';
 
 			if ( ! self::$pkg[ $this->p->lca ][ 'pp' ] ) {
+
 				$td_attr = ' class="blank"';
 				$in_func = 'get_no_input';
+
 				$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 			}
 
@@ -3098,8 +3160,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$in_func = 'get_input';
 
 			if ( ! self::$pkg[ $this->p->lca ][ 'pp' ] ) {
+
 				$td_attr = ' class="blank"';
 				$in_func = 'get_no_input';
+
 				$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 			}
 
@@ -3145,6 +3209,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * Make sure we have a label for the custom field option.
 				 */
 				if ( ! empty( $this->p->cf[ 'form' ][ 'cf_labels' ][ $opt_key ] ) ) {
+
 					$opt_labels[ $opt_key ] = $this->p->cf[ 'form' ][ 'cf_labels' ][ $opt_key ];
 				}
 			}
@@ -3215,6 +3280,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function get_readme_info( $ext, $read_cache = true ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log_args( array( 
 					'ext'        => $ext,
 					'read_cache' => $read_cache,
@@ -3239,6 +3305,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			static $cache_exp_secs = null;
 
 			if ( null === $cache_exp_secs ) {
+
 				$cache_exp_filter = $this->p->lca . '_cache_expire_' . $file_key;	// Example: 'wpsso_cache_expire_readme_txt'.
 				$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, DAY_IN_SECONDS );
 			}
@@ -3254,6 +3321,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$readme_info = get_transient( $cache_id );
 
 					if ( is_array( $readme_info ) ) {
+
 						return $readme_info;	// Stop here.
 					}
 				}
@@ -3264,6 +3332,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					 * Clear the cache first if reading the cache is disabled.
 					 */
 					if ( ! $read_cache ) {
+
 						$this->p->cache->clear( $file_url );
 					}
 
@@ -3300,7 +3369,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * Remove possibly inaccurate information from the local readme file.
 				 */
 				if ( ! $readme_from_url && is_array( $readme_info ) ) {
+
 					foreach ( array( 'stable_tag', 'upgrade_notice' ) as $key ) {
+
 						unset ( $readme_info[ $key ] );
 					}
 				}
@@ -3314,6 +3385,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				set_transient( $cache_id, $readme_info, $cache_exp_secs );
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'readme_info saved to transient cache for ' . $cache_exp_secs . ' seconds' );
 				}
 			}
@@ -3324,6 +3396,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function get_config_url_content( $ext, $file_name, $cache_exp_secs = null ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log_args( array( 
 					'ext'            => $ext,
 					'file_name'      => $file_name,
@@ -3340,6 +3413,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			list( $file_path, $file_url ) = SucomUtil::get_file_path_locale( $file_path, $file_url );
 
 			if ( null === $cache_exp_secs ) {
+
 				$cache_exp_secs = WEEK_IN_SECONDS;
 			}
 
@@ -3516,6 +3590,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			ini_set( 'implicit_flush', 1 );
 
 			if ( function_exists( 'apache_setenv' ) ) {
+
 				apache_setenv( 'no-gzip', 1 );
 			}
 
@@ -3525,6 +3600,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * Remove all dots, except last one, for MSIE clients.
 			 */
 			if ( strstr( $_SERVER[ 'HTTP_USER_AGENT' ], 'MSIE' ) ) {
+
 				$file_name_gz = preg_replace( '/\./', '%2e', $file_name_gz, substr_count( $file_name_gz, '.' ) - 1 );
 			}
 

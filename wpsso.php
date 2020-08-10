@@ -264,14 +264,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 */
 		public function set_objects( $activate = false ) {
 
-			$is_admin = is_admin() ? true : false;
-
-			$network = is_multisite() ? true : false;
-
+			$is_admin   = is_admin() ? true : false;
 			$doing_cron = defined( 'DOING_CRON' ) ? DOING_CRON : false;
-
-			$debug_log = false;
-
+			$debug_log  = false;
 			$debug_html = false;
 
 			if ( defined( 'WPSSO_DEBUG_LOG' ) && WPSSO_DEBUG_LOG ) {
@@ -473,21 +468,31 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->options = $this->opt->get_defaults();
 			}
 
-			$this->options = $this->opt->check_options( WPSSO_OPTIONS_NAME, $this->options, $network, $activate );
+			if ( $this->debug->enabled ) {
+
+				$this->debug->log( 'checking ' . WPSSO_OPTIONS_NAME . ' options' );
+			}
+
+			$this->options = $this->opt->check_options( WPSSO_OPTIONS_NAME, $this->options, $network = false, $activate );
 
 			if ( $this->debug->enabled ) {
 
 				$this->debug->log( 'options array len is ' . SucomUtil::serialized_len( $this->options ) . ' bytes' );
 			}
 
-			if ( $network ) {
+			if ( is_multisite() ) {	// Load the site options array.
 
 				if ( ! empty( $this->site_options[ '__reload_defaults' ] ) ) {
 
 					$this->site_options = $this->opt->get_site_defaults();
 				}
 
-				$this->site_options = $this->opt->check_options( WPSSO_SITE_OPTIONS_NAME, $this->site_options, $network, $activate );
+				if ( $this->debug->enabled ) {
+
+					$this->debug->log( 'checking ' . WPSSO_SITE_OPTIONS_NAME . ' options' );
+				}
+
+				$this->site_options = $this->opt->check_options( WPSSO_SITE_OPTIONS_NAME, $this->site_options, $network = true, $activate );
 
 				if ( $this->debug->enabled ) {
 

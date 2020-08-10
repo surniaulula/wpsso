@@ -6,6 +6,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
@@ -155,6 +156,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 			$active_plugins = SucomPlugin::get_active_plugins( $use_cache );
 
 			if ( isset( $active_plugins[ $plugin_base ] ) ) {	// Associative array of true/false values.
+
 				return $active_plugins[ $plugin_base ];		// Return true/false.
 			}
 
@@ -168,6 +170,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 			if ( empty( $active_plugins[ $plugin_base ] ) ) {
 
 				if ( ! $silent ) {
+
 					do_action( 'activate_plugin', $plugin_base );
 					do_action( 'activate_' . $plugin_base );
 				}
@@ -179,6 +182,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 				$updated = update_option( 'active_plugins', $active_plugins );
 
 				if ( ! $silent ) {
+
 					do_action( 'activated_plugin', $plugin_base );
 				}
 
@@ -257,6 +261,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 			}
 
 			if ( ! function_exists( 'plugins_api' ) ) {
+
 				require_once trailingslashit( ABSPATH ) . 'wp-admin/includes/plugin-install.php';
 			}
 
@@ -313,16 +318,19 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 			$plugin_url = SucomPlugin::get_slug_download_url( $plugin_slug, $unfiltered );
 
 			if ( is_wp_error( $plugin_url ) ) {
+
 				return $plugin_url;
 			}
 
 			if ( ! function_exists( 'download_url' ) ) {
+
 				require_once trailingslashit( ABSPATH ) . 'wp-admin/includes/file.php';
 			}
 
 			$plugin_zip = download_url( $plugin_url );
 
 			if ( is_wp_error( $plugin_zip ) ) {
+
 				return $plugin_zip;
 			}
 
@@ -333,6 +341,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 			@unlink( $plugin_zip );
 
 			if ( is_wp_error( $unzip_file ) ) {
+
 				return $unzip_file;
 			}
 
