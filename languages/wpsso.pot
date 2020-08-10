@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.0.0-dev.10\n"
+"Project-Id-Version: WPSSO Core 8.0.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3235,7 +3235,7 @@ msgid "Posts, Pages, and Custom Post Types"
 msgstr ""
 
 #: lib/gettext-pro.php:35 lib/media.php:122 lib/media.php:1094
-#: lib/media.php:1226 lib/media.php:2172 lib/pro/admin/advanced.php:213
+#: lib/media.php:1226 lib/media.php:2170 lib/pro/admin/advanced.php:213
 #: lib/std/admin/advanced.php:220
 msgid "Media Library"
 msgstr ""
@@ -4024,7 +4024,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: lib/media.php:125 lib/media.php:2182
+#: lib/media.php:125 lib/media.php:2180
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
@@ -4097,17 +4097,17 @@ msgid ""
 "org</a>."
 msgstr ""
 
-#: lib/media.php:2198
+#: lib/media.php:2196
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:2249
+#: lib/media.php:2247
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:2282
+#: lib/media.php:2280
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."

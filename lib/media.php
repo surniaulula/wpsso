@@ -1452,9 +1452,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/**
 		 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
 		 */
-		public function get_mt_opts_images( $opts, $size_names = null, $img_pre = 'og_img', $key_num = null ) {
-
-			$mt_pre = 'og';
+		public function get_mt_opts_images( $opts, $size_names = null, $img_pre = 'og_img', $key_num = null, $mt_pre = 'og' ) {
 
 			$img_opts = array();
 
@@ -1494,9 +1492,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/**
 		 * Used by WpssoOptions->check_banner_image_size() and WpssoOrgFilters->check_banner_image_size().
 		 */
-		public function get_mt_img_pre_url( $opts, $img_pre = 'og_img', $key_num = null ) {
+		public function get_mt_img_pre_url( $opts, $img_pre = 'og_img', $key_num = null, $mt_pre = 'og' ) {
 
-			$mt_ret = $this->get_mt_opts_images( $opts, $size_name = false, $img_pre, $key_num );
+			$mt_ret = $this->get_mt_opts_images( $opts, $size_name = false, $img_pre, $key_num, $mt_pre );
 
 			return isset( $mt_ret[ 0 ] ) ? $mt_ret[ 0 ] : array();
 		}
