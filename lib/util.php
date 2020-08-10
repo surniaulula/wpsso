@@ -617,44 +617,45 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * $opt_prefixes can be a single key name or an array of key names. Uses a reference variable to modify the $opts
-		 * array directly.
+		 * $media_prefixes can be a single key name or an array of key names.
+		 *
+		 * Uses a reference variable to modify the $opts array directly.
 		 */
-		public function add_image_url_size( array &$opts, $opt_prefixes = 'og:image' ) {
+		public function add_image_url_size( array &$opts, $media_prefixes = 'og:image' ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			if ( ! is_array( $opt_prefixes ) ) {
+			if ( ! is_array( $media_prefixes ) ) {
 
-				$opt_prefixes = array( $opt_prefixes );
+				$media_prefixes = array( $media_prefixes );
 			}
 
-			foreach ( $opt_prefixes as $opt_image_pre ) {
+			foreach ( $media_prefixes as $media_pre ) {
 
 				$opt_suffix = '';
 
-				if ( preg_match( '/^(.*)(#.*)$/', $opt_image_pre, $matches ) ) {	// Language.
+				if ( preg_match( '/^(.*)(#.*)$/', $media_pre, $matches ) ) {	// Language.
 
-					$opt_image_pre = $matches[ 1 ];
-					$opt_suffix    = $matches[ 2 ] . $opt_suffix;
+					$media_pre  = $matches[ 1 ];
+					$opt_suffix = $matches[ 2 ] . $opt_suffix;
 				}
 
-				if ( preg_match( '/^(.*)(_[0-9]+)$/', $opt_image_pre, $matches ) ) {	// Multi-option.
+				if ( preg_match( '/^(.*)(_[0-9]+)$/', $media_pre, $matches ) ) {	// Multi-option.
 
-					$opt_image_pre = $matches[ 1 ];
-					$opt_suffix    = $matches[ 2 ] . $opt_suffix;
+					$media_pre  = $matches[ 1 ];
+					$opt_suffix = $matches[ 2 ] . $opt_suffix;
 				}
 
-				$media_url = self::get_mt_media_url( $opts, $opt_image_pre . $opt_suffix );
+				$media_url = self::get_first_mt_media_url( $opts, $media_pre . $opt_suffix );
 
 				if ( ! empty( $media_url ) ) {
 
 					list(
-						$opts[ $opt_image_pre . ':width' . $opt_suffix ],	// Example: place_img_url:width_1.
-						$opts[ $opt_image_pre . ':height' . $opt_suffix ],	// Example: place_img_url:height_1.
+						$opts[ $media_pre . ':width' . $opt_suffix ],	// Example: place_img_url:width_1.
+						$opts[ $media_pre . ':height' . $opt_suffix ],	// Example: place_img_url:height_1.
 						$image_type,
 						$image_attr
 					) = $this->get_image_url_info( $media_url );

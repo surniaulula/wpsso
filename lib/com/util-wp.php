@@ -6,6 +6,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
@@ -28,6 +29,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			$db_query .= ' WHERE option_name LIKE \'' . $opt_row_prefix . $transient_prefix . '%\'';
 
 			if ( $only_expired ) {
+
 				$db_query .= ' AND option_value < ' . $current_time;	// Expiration time older than current time.
 			}
 
@@ -39,6 +41,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			 * Remove '_transient_' or '_transient_timeout_' prefix from option name.
 			 */
 			foreach( $result as $option_name ) {
+
 				$transient_keys[] = str_replace( $opt_row_prefix, '', $option_name );
 			}
 
@@ -71,12 +74,15 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				$shortcode_tags = array();		// Init a new empty shortcode tags array.
 
 				foreach ( $shortcode_names as $key ) {
+
 					if ( isset( $registered_tags[ $key ] ) ) {
+
 						$shortcode_tags[ $key ] = $registered_tags[ $key ];
 					}
 				}
 
 				if ( ! empty( $shortcode_tags ) ) {	// Just in case.
+
 					$content = do_shortcode( $content, $ignore_html );
 				}
 
@@ -177,6 +183,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			$shortlink = wp_get_shortlink( $id, $context, $allow_slugs );	// Since WP v3.0.
 
 			if ( empty( $shortlink ) || ! is_string( $shortlink) || filter_var( $shortlink, FILTER_VALIDATE_URL ) === false ) {
+
 				$shortlink = self::raw_wp_get_shortlink( $id, $context, $allow_slugs );
 			}
 
@@ -254,6 +261,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 					 * Compare value stored in database and maybe fix inconsistencies.
 					 */
 					if ( self::raw_do_option( 'get', 'home' ) !== $url ) {
+
 						self::raw_do_option( 'update', 'home', $url );
 					}
 
@@ -282,6 +290,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			$url = self::raw_set_url_scheme( $url, $scheme );
 
 			if ( $path && is_string( $path ) ) {
+
 				$url .= '/' . ltrim( $path, '/' );
 			}
 
@@ -315,6 +324,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 					 * Compare value stored in database and maybe fix inconsistencies.
 					 */
 					if ( self::raw_do_option( 'get', 'siteurl' ) !== $url ) {
+
 						self::raw_do_option( 'update', 'siteurl', $url );
 					}
 
@@ -333,6 +343,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			$url = self::raw_set_url_scheme( $url, $scheme );
 
 			if ( $path && is_string( $path ) ) {
+
 				$url .= '/' . ltrim( $path, '/' );
 			}
 
@@ -347,10 +358,15 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		private static function raw_set_url_scheme( $url, $scheme = null ) {
 
 			if ( ! $scheme ) {
+
 				$scheme = is_ssl() ? 'https' : 'http';
+
 			} elseif ( $scheme === 'admin' || $scheme === 'login' || $scheme === 'login_post' || $scheme === 'rpc' ) {
+
 				$scheme = is_ssl() || force_ssl_admin() ? 'https' : 'http';
+
 			} elseif ( $scheme !== 'http' && $scheme !== 'https' && $scheme !== 'relative' ) {
+
 				$scheme = is_ssl() ? 'https' : 'http';
 			}
 
@@ -365,10 +381,12 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				$url = ltrim( preg_replace( '#^\w+://[^/]*#', '', $url ) );
 
 				if ( $url !== '' && $url[0] === '/' ) {
+
 					$url = '/' . ltrim( $url, "/ \t\n\r\0\x0B" );
 				}
 
 			} else {
+
 				$url = preg_replace( '#^\w+://#', $scheme . '://', $url );
 			}
 
@@ -459,6 +477,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				$result         = delete_option( $option );
 				
 				if ( $result ) {
+
 					delete_option( $option_timeout );
 				}
 			}
@@ -499,6 +518,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				}
 
 				if ( ! isset( $value ) ) {
+
 					$value = get_option( $transient_option );
 				}
 			}
@@ -562,6 +582,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 					}
 
 					if ( $update ) {
+
 						$result = update_option( $transient_option, $value );
 					}
 				}
@@ -610,12 +631,16 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				$function_name = '';
 
 				if ( is_object( $hook_info[ 'function' ][0] ) ) {
+
 					$class_name = get_class( $hook_info[ 'function' ][0] );
+
 				} elseif ( is_string( $hook_info[ 'function' ][0] ) ) {
+
 					$class_name = $hook_info[ 'function' ][0];
 				}
 
 				if ( is_string( $hook_info[ 'function' ][1] ) ) {
+
 					$function_name = $hook_info[ 'function' ][1];
 
 				}
@@ -645,12 +670,14 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			$tmpl_file_paths   = (array) glob( $parent_tmpl_dir . '/header*.php' );	// Returns false on error.
 
 			if ( $parent_tmpl_dir !== $child_tmpl_dir ) {
+
 				$tmpl_file_paths = array_merge( $tmpl_file_paths, (array) glob( $child_tmpl_dir . '/header*.php' ) );
 			}
 
 			foreach ( $tmpl_file_paths as $tmpl_file ) {
 
 				if ( $skip_backups && preg_match( '/^.*\.php~.*$/', $tmpl_file ) ) { // Skip backup files.
+
 					continue;
 				}
 
@@ -663,14 +690,23 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		public static function doing_frontend() {
 
 			if ( is_admin() ) {
+
 				return false;
+
 			} elseif ( defined( 'DOING_CRON' ) && DOING_CRON ) {
+
 				return false;
+
 			} elseif ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+
 				return true;	// An ajax call is considered a frontend task.
+
 			} elseif ( self::doing_rest() ) {
+
 				return false;
+
 			} else {
+
 				return true;
 			}
 		}
@@ -678,6 +714,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		public static function doing_rest() { 
 
 			if ( empty( $_SERVER[ 'REQUEST_URI' ] ) ) {
+
 				return false;
 			}
 			
@@ -694,6 +731,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			 * Optimize - once true, stay true.
 			 */
 			if ( $is_doing ) {
+
 				return true;
 			}
 
@@ -707,8 +745,11 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			$is_classic    = isset( $_REQUEST[ 'classic-editor' ] ) && empty( $_REQUEST[ 'classic-editor' ] ) ? false : true;
 
 			if ( ! empty( $_REQUEST[ 'post_ID' ] ) ) {
+
 				$post_id = $_REQUEST[ 'post_ID' ];
+
 			} elseif ( ! empty( $_REQUEST[ 'post' ] ) && is_numeric( $_REQUEST[ 'post' ] ) ) {
+
 				$post_id = $_REQUEST[ 'post' ];
 			}
 
@@ -724,9 +765,13 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 					global $wp_version;
 
 					if ( version_compare( $wp_version, '5.2', '<' ) ) {
+
 						$can_edit_id = true;
+
 					} else {
+
 						if ( use_block_editor_for_post( $post_id ) ) {
+
 							$can_edit_id = true;
 						}
 					}
@@ -734,6 +779,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				} elseif ( function_exists( 'gutenberg_can_edit_post' ) ) {
 
 					if ( gutenberg_can_edit_post( $post_id ) ) {
+
 						$can_edit_id = true;
 					}
 				}
@@ -750,12 +796,14 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 						if ( function_exists( 'use_block_editor_for_post_type' ) ) {
 
 							if ( use_block_editor_for_post_type( $post_type ) ) {
+
 								$can_edit_type = true;
 							}
 
 						} elseif ( function_exists( 'gutenberg_can_edit_post_type' ) ) {
 
 							if ( gutenberg_can_edit_post_type( $post_type ) ) {
+
 								$can_edit_type = true;
 							}
 						}
@@ -766,12 +814,19 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			if ( $can_edit_id && $can_edit_type ) {
 
 				if ( $is_gutenbox ) {
+
 					$is_doing = true;
+
 				} elseif ( $is_meta_box ) {
+
 					$is_doing = true;
+
 				} elseif ( ! $is_classic ) {
+
 					$is_doing = true;
+
 				} elseif ( $post_id && $req_action === 'edit' ) {
+
 					$is_doing = true;
 				}
 			}
@@ -784,9 +839,13 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			$ret = false;
 
 			if ( ! empty( $role ) ) {	// Just in case.
+
 				if ( function_exists( 'wp_roles' ) ) {
+
 					$ret = wp_roles()->is_role( $role );
+
 				} else {
+
 					$ret = $GLOBALS[ 'wp_roles' ]->is_role( $role );
 				}
 			}
@@ -811,6 +870,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			$user_select = self::get_roles_user_names( $roles, $blog_id, $limit );
 
 			if ( $add_none ) {
+
 				$user_select = array( 'none' => 'none' ) + $user_select;
 			}
 
@@ -820,10 +880,12 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		public static function get_roles_user_names( array $roles, $blog_id = null, $limit = '' ) {
 
 			if ( empty( $roles ) ) {
+
 				return array();
 			};
 
 			if ( empty( $blog_id ) ) {
+
 				$blog_id = get_current_blog_id();
 			}
 
@@ -834,6 +896,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				$role_users = self::get_user_names( $role, $blog_id, $limit );	// Can return false with a numeric $limit argument.
 
 				if ( ! empty( $role_users ) && is_array( $role_users ) ) {	// Check return value, just in case.
+
 					$user_names += $role_users;
 				}
 			}
@@ -842,9 +905,13 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			 * Use asort() or uasort() to maintain the ID => display_name association.
 			 */
 			if ( ! empty( $user_names ) ) {	// Skip if nothing to sort.
+
 				if ( defined( 'SORT_STRING' ) ) {
+
 					asort( $user_names, SORT_STRING );
+
 				} else {
+
 					uasort( $user_names, 'strnatcmp' );
 				}
 			}
@@ -898,10 +965,12 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			static $offset = '';
 
 			if ( empty( $blog_id ) ) {
+
 				$blog_id = get_current_blog_id();
 			}
 
 			if ( is_numeric( $limit ) ) {
+
 				$offset = '' === $offset ? 0 : $offset + $limit;
 			}
 
@@ -942,6 +1011,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			static $local_cache = null;
 
 			if ( null !== $local_cache ) {
+
 				return $local_cache;
 			}
 
@@ -956,46 +1026,60 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				$size_count++;
 
 				if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'width' ] ) ) {
+
 					$width = intval( $_wp_additional_image_sizes[ $size_name ][ 'width' ] );
+
 				} else {
+
 					$width = get_option( $size_name . '_size_w' );
 				}
 
 				if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'height' ] ) ) {
+
 					$height = intval( $_wp_additional_image_sizes[ $size_name ][ 'height' ] );
+
 				} else {
+
 					$height = get_option( $size_name . '_size_h' );
 				}
 
 				if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'crop' ] ) ) {
+
 					$crop = $_wp_additional_image_sizes[ $size_name ][ 'crop' ];
+
 				} else {
+
 					$crop = get_option( $size_name . '_crop' );
 				}
 
 				if ( ! is_array( $crop ) ) {
+
 					$crop = empty( $crop ) ? false : true;
 				}
 
 				if ( $crop ) {
 
 					if ( $width > $min_width ) {
+
 						$min_width = $width;
 					}
 
 					if ( $height > $min_height ) {
+
 						$min_height = $height;
 					}
 
 				} elseif ( $width < $height ) {
 
 					if ( $width > $min_width ) {
+
 						$min_width = $width;
 					}
 
 				} else {
 
 					if ( $height > $min_height ) {
+
 						$min_height = $height;
 					}
 				}
@@ -1009,12 +1093,14 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			global $wpdb;
  
  			if ( ! $meta_type || ! $meta_key ) {
+
 				return false;
 			}
  
 			$table = _get_meta_table( $meta_type );
 		
 			if ( ! $table ) {
+
 				return false;
 			}
  
@@ -1029,6 +1115,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
  			$result = $wpdb->get_col( $query );
 
 			if ( isset( $result[ 0 ] ) && is_numeric( $result[ 0 ] ) ) {	// Just in case;
+
 				return $result[ 0 ];
 			}
 
@@ -1151,6 +1238,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				 * Only show the slug (ie. name) of custom post types and taxonomies.
 				 */
 				if ( empty( $obj->_builtin ) ) {
+
 					$desc = '[' . $obj->name . ']';
 				}
 				
@@ -1218,8 +1306,11 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		public static function update_option_key( $opt_name, $key, $value, $protect = false, $site = false ) {
 
 			if ( $site ) {
+
 				$opts = get_site_option( $opt_name, array() );
+
 			} else {
+
 				$opts = get_option( $opt_name, array() );
 			}
 
@@ -1231,8 +1322,11 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			$opts[ $key ] = $value;
 
 			if ( $site ) {
+
 				return update_site_option( $opt_name, $opts );
+
 			} else {
+
 				return update_option( $opt_name, $opts );
 			}
 		}
@@ -1245,12 +1339,16 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		public static function get_option_key( $opt_name, $key, $site = false ) {
 
 			if ( $site ) {
+
 				$opts = get_site_option( $opt_name, array() );
+
 			} else {
+
 				$opts = get_option( $opt_name, array() );
 			}
 
 			if ( isset( $opts[ $key ] ) ) {
+
 				return $opts[ $key ];
 			}
 
@@ -1265,8 +1363,11 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		public static function delete_option_key( $opt_name, $key, $site = false ) {
 
 			if ( $site ) {
+
 				$opts = get_site_option( $opt_name, array() );
+
 			} else {
+
 				$opts = get_option( $opt_name, array() );
 			}
 
@@ -1275,16 +1376,23 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				unset( $opts[ $key ] );
 
 				if ( empty( $opts ) ) {	// Cleanup.
+
 					if ( $site ) {
+
 						return delete_site_option( $opt_name );
+
 					} else {
+
 						return delete_option( $opt_name );
 					}
 				}
 
 				if ( $site ) {
+
 					return update_site_option( $opt_name, $opts );
+
 				} else {
+
 					return update_option( $opt_name, $opts );
 				}
 			}

@@ -47,24 +47,14 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'schema_recipe_calories' => 'schema_recipe_nutri_cal',
 				),
 				514 => array(
-					'rp_img_id'     => 'schema_img_id',
-					'rp_img_id_pre' => 'schema_img_id_pre',
+					'rp_img_id'     => 'p_img_id',
+					'rp_img_id_pre' => 'p_img_id_pre',
 					'rp_img_width'  => '',
 					'rp_img_height' => '',
 					'rp_img_crop'   => '',
 					'rp_img_crop_x' => '',
 					'rp_img_crop_y' => '',
-					'rp_img_url'    => '',
-				),
-				520 => array(
-					'p_img_id'     => 'schema_img_id',
-					'p_img_id_pre' => 'schema_img_id_pre',
-					'p_img_width'  => '',
-					'p_img_height' => '',
-					'p_img_crop'   => '',
-					'p_img_crop_x' => '',
-					'p_img_crop_y' => '',
-					'p_img_url'    => '',
+					'rp_img_url'    => 'p_img_url',
 				),
 				537 => array(
 					'schema_add_type_url' => 'schema_addl_type_url_0',
@@ -130,9 +120,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				),
 				725 => array(
 					'product_volume_value' => 'product_fluid_volume_value',
-				),
-				748 => array(
-					'schema_img_url' => '',
 				),
 			),
 		);
@@ -344,11 +331,19 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'og_vid_desc'     => '',	// Custom value for first video.
 
 					/**
+					 * Pinterest.
+					 */
+					'p_img_id'     => '',
+					'p_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
+					'p_img_url'    => '',
+
+					/**
 					 * Twitter Card.
 					 */
 					'tc_lrg_img_id'     => '',
 					'tc_lrg_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
 					'tc_lrg_img_url'    => '',
+
 					'tc_sum_img_id'     => '',
 					'tc_sum_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
 					'tc_sum_img_url'    => '',
@@ -359,6 +354,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'schema_img_max'    => isset( $opts[ 'schema_img_max' ] ) ? (int) $opts[ 'schema_img_max' ] : 1,	// 1 by default.
 					'schema_img_id'     => '',
 					'schema_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
+					'schema_img_url'    => '',
 
 					/**
 					 * Gravity View (Side Metabox).
@@ -1319,11 +1315,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			 */
 			$mt_single_image = $this->p->media->get_mt_single_image_src( $pid, $size_name = 'thumbnail', $check_dupes = false );
 
-			$media_url = SucomUtil::get_mt_media_url( $mt_single_image );
+			$image_url = SucomUtil::get_first_mt_media_url( $mt_single_image );
 
-			if ( ! empty( $media_url ) ) {
+			if ( ! empty( $image_url ) ) {
 
-				return '<img src="' . $media_url . '">';
+				return '<img src="' . $image_url . '">';
 			}
 
 			return false;
@@ -1385,7 +1381,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 						$this->p->debug->log( 'using custom ' . $opt_pre . ' image id = "' . $pid . '"', get_class( $this ) );
 					}
 
-					$mt_ret = $this->p->media->get_mt_single_image_sizes( $pid, $size_names, $check_dupes, $mt_pre );
+					$mt_ret = $this->p->media->get_mt_pid_images( $pid, $size_names, $check_dupes, $mt_pre );
 
 				}
 
@@ -1435,7 +1431,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 						$this->p->debug->log( 'adding image pid: ' . $pid );
 					}
 
-					$mt_images = $this->p->media->get_mt_single_image_sizes( $pid, $size_names, $check_dupes, $mt_pre );
+					$mt_images = $this->p->media->get_mt_pid_images( $pid, $size_names, $check_dupes, $mt_pre );
 
 					if ( $this->p->util->merge_max( $mt_ret, $mt_images, $num ) ) {
 
@@ -1601,11 +1597,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				}
 			}
 
-			$media_url = SucomUtil::get_mt_media_url( $head_info );
+			$image_url = SucomUtil::get_first_mt_media_url( $head_info );
 
-			if ( ! empty( $media_url ) ) {
+			if ( ! empty( $image_url ) ) {
 
-				$media_html = '<div class="preview_img" style="background-image:url(' . $media_url . ');"></div>';
+				$media_html = '<div class="preview_img" style="background-image:url(' . $image_url . ');"></div>';
 			}
 
 			return $media_html;

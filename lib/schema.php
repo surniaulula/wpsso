@@ -2052,7 +2052,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/**
 		 * Pass a single or two dimension image array in $mt_images.
 		 */
-		public static function add_images_data_mt( &$json_data, &$mt_images, $mt_pre = 'og:image' ) {
+		public static function add_images_data_mt( &$json_data, &$mt_images, $media_pre = 'og:image' ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -2067,12 +2067,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				foreach ( $mt_images as $mt_single_image ) {
 
-					$images_added += WpssoSchemaSingle::add_image_data_mt( $json_data, $mt_single_image, $mt_pre, $list_element = true );
+					$images_added += WpssoSchemaSingle::add_image_data_mt( $json_data, $mt_single_image, $media_pre, $list_element = true );
 				}
 
 			} elseif ( is_array( $mt_images ) ) {
 
-				$images_added += WpssoSchemaSingle::add_image_data_mt( $json_data, $mt_images, $mt_pre, $list_element = true );
+				$images_added += WpssoSchemaSingle::add_image_data_mt( $json_data, $mt_images, $media_pre, $list_element = true );
 			}
 
 			return $images_added;	// Return count of images added.
@@ -2592,7 +2592,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/**
 		 * Provide a single or two-dimension video array in $mt_videos.
 		 */
-		public static function add_videos_data_mt( &$json_data, $mt_videos, $mt_pre = 'og:video' ) {
+		public static function add_videos_data_mt( &$json_data, $mt_videos, $media_pre = 'og:video' ) {
 
 			$videos_added = 0;
 
@@ -2600,12 +2600,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				foreach ( $mt_videos as $mt_single_video ) {
 
-					$videos_added += WpssoSchemaSingle::add_video_data_mt( $json_data, $mt_single_video, $mt_pre, $list_element = true );
+					$videos_added += WpssoSchemaSingle::add_video_data_mt( $json_data, $mt_single_video, $media_pre, $list_element = true );
 				}
 
 			} elseif ( is_array( $mt_videos ) ) {
 
-				$videos_added += WpssoSchemaSingle::add_video_data_mt( $json_data, $mt_videos, $mt_pre, $list_element = true );
+				$videos_added += WpssoSchemaSingle::add_video_data_mt( $json_data, $mt_videos, $media_pre, $list_element = true );
 			}
 
 			return $videos_added;	// return count of videos added

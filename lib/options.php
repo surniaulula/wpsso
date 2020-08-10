@@ -301,6 +301,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'og_def_img_url':
 				case 'og_img_url':
+				case 'schema_img_url':
 				case 'site_org_banner_url':
 				case 'site_org_logo_url':
 				case 'tc_lrg_img_url':
@@ -1253,12 +1254,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			/**
 			 * Add correct image sizes for the image URL using getimagesize().
 			 */
-			$this->p->util->add_image_url_size( $opts, $img_url_keys );	// $opts passed by reference.
+			$this->p->util->add_image_url_size( $opts, $img_url_keys );
 
-			$this->check_banner_image_size( $opts );
+			$this->check_banner_image_size( $opts, $img_pre = 'site_org_banner' );
 		}
 
-		private function check_banner_image_size( $opts ) {
+		private function check_banner_image_size( $opts, $img_pre ) {
 
 			/**
 			 * Skip if notices have already been shown.
@@ -1268,8 +1269,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				return;
 			}
 
-			$size_name          = false;	// Only check banner urls - skip any banner image id options.
-			$opt_img_pre        = 'schema_banner';
 			$settings_page_link = $this->p->util->get_admin_url( 'essential#sucom-tabset_essential-tab_google',
 				_x( 'Organization Banner URL', 'option label', 'wpsso' ) );
 
@@ -1286,13 +1285,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 *	'og:image:size_name' => null,
 			 * );
 			 */
-			$mt_single_image = $this->p->media->get_opts_single_image( $opts, $size_name, $opt_img_pre );
+			$mt_single_image = $this->p->media->get_opts_single_image( $opts, $size_name = false, $img_pre );
 
-			$mt_single_image_url = SucomUtil::get_mt_media_url( $mt_single_image );
+			$image_url = SucomUtil::get_first_mt_media_url( $mt_single_image );
 
-			if ( ! empty( $mt_single_image_url ) ) {
+			if ( ! empty( $image_url ) ) {
 
-				$image_href    = '<a href="' . $mt_single_image_url . '">' . $mt_single_image_url . '</a>';
+				$image_href    = '<a href="' . $image_url . '">' . $image_url . '</a>';
 				$image_dims    = $mt_single_image[ 'og:image:width' ] . 'x' . $mt_single_image[ 'og:image:height' ] . 'px';
 				$required_dims = '600x60px';
 
@@ -1300,10 +1299,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					if ( $image_dims === '-1x-1px' ) {
 
-						$error_msg = sprintf( __( 'The %1$s image dimensions cannot be determined.',
+						$error_msg = sprintf( __( 'The %s image dimensions cannot be determined.',
 							'wpsso' ), $settings_page_link ) . ' ';
 
-						$error_msg .= sprintf( __( 'Please make sure this site can access the image URL at %1$s using the PHP getimagesize() function.',
+						$error_msg .= sprintf( __( 'Please make sure this site can access %s using the PHP getimagesize() function.',
 							'wpsso' ), $image_href );
 
 					} else {
@@ -1311,7 +1310,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$error_msg = sprintf( __( 'The %1$s image dimensions are %2$s and must be exactly %3$s.',
 							'wpsso' ), $settings_page_link, $image_dims, $required_dims ) . ' ';
 
-						$error_msg .= sprintf( __( 'Please correct the banner image at %s.',
+						$error_msg .= sprintf( __( 'Please correct the %s banner image.',
 							'wpsso' ), $image_href );
 					}
 

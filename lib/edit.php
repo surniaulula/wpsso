@@ -322,7 +322,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			$og_prev_width    = 600;
 			$og_prev_height   = 315;
 			$og_prev_img_html = '';
-			$media_url        = SucomUtil::get_mt_media_url( $head_info );
+			$image_url        = SucomUtil::get_first_mt_media_url( $head_info );
 			$sharing_url      = $this->p->util->get_sharing_url( $mod, $add_page = false );
 			$canonical_url    = $this->p->util->get_canonical_url( $mod, $add_page = false );
 
@@ -342,7 +342,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			$is_sufficient = true === $have_sizes && $head_info[ 'og:image:width' ] >= $og_prev_width && 
 				$head_info[ 'og:image:height' ] >= $og_prev_height ? true : false;
 
-			if ( ! empty( $media_url ) ) {
+			if ( ! empty( $image_url ) ) {
 
 				if ( $have_sizes ) {
 
@@ -357,7 +357,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 						$og_prev_img_html .= $head_info[ 'og:image:width' ] . 'px ' . $head_info[ 'og:image:height' ] . 'px';
 					}
 
-					$og_prev_img_html .= '; background-image:url(' . $media_url . ');" />';
+					$og_prev_img_html .= '; background-image:url(' . $image_url . ');" />';
 
 					if ( ! $is_sufficient ) {
 
@@ -369,7 +369,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 				} else {
 
-					$og_prev_img_html .= '<div class="preview_img" style="background-image:url(' . $media_url . ');" />';
+					$og_prev_img_html .= '<div class="preview_img" style="background-image:url(' . $image_url . ');" />';
 					$og_prev_img_html .= '<p>' . _x( 'Image Size Unknown<br/>or Not Available', 'preview image error', 'wpsso' ) . '</p>';
 					$og_prev_img_html .= '</div>';
 				}

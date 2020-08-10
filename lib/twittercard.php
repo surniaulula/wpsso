@@ -179,7 +179,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 									if ( empty( $player_embed_url ) ) {
 
-										$player_embed_url = SucomUtil::get_mt_media_url( $mt_single_video, 'og:video' );
+										$player_embed_url = SucomUtil::get_first_mt_media_url( $mt_single_video, $media_pre = 'og:video' );
 
 										if ( $this->p->debug->enabled ) {
 
@@ -197,7 +197,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 									if ( empty( $player_stream_url ) ) {
 
-										$player_stream_url = SucomUtil::get_mt_media_url( $mt_single_video, 'og:video' );
+										$player_stream_url = SucomUtil::get_first_mt_media_url( $mt_single_video, $media_pre = 'og:video' );
 
 										if ( $this->p->debug->enabled ) {
 
@@ -270,7 +270,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 							/**
 							 * Get the video preview image (if one is available).
 							 */
-							$mt_tc[ 'twitter:image' ] = SucomUtil::get_mt_media_url( $mt_single_video, $mt_media_pre = 'og:image' );
+							$mt_tc[ 'twitter:image' ] = SucomUtil::get_first_mt_media_url( $mt_single_video );
 
 							if ( ! empty( $mt_single_video[ 'og:image:alt' ] ) ) {
 
@@ -287,7 +287,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 									$this->p->debug->log( 'player card: no video image - using og:image instead' );
 								}
 
-								$mt_tc[ 'twitter:image' ] = SucomUtil::get_mt_media_url( $mt_og[ 'og:image' ] );
+								$mt_tc[ 'twitter:image' ] = SucomUtil::get_first_mt_media_url( $mt_og[ 'og:image' ] );
 							}
 						}
 
@@ -323,7 +323,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 						$mt_single_image = reset( $mt_images );
 
-						$mt_single_image_url = SucomUtil::get_mt_media_url( $mt_single_image );
+						$image_url = SucomUtil::get_first_mt_media_url( $mt_single_image );
 
 						/**
 						 * Two 'summary_large_image' pages cannot have the same image URL, so add the post
@@ -331,11 +331,11 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						 */
 						if ( 'summary_large_image' === $card_type ) {
 
-							$mt_single_image_url = add_query_arg( 'p', $mod[ 'id' ], $mt_single_image_url );
+							$image_url = add_query_arg( 'p', $mod[ 'id' ], $image_url );
 						}
 
 						$mt_tc[ 'twitter:card' ]  = $card_type;
-						$mt_tc[ 'twitter:image' ] = $mt_single_image_url;
+						$mt_tc[ 'twitter:image' ] = $image_url;
 
 						if ( ! empty( $mt_single_image[ 'og:image:alt' ] ) ) {
 
@@ -369,10 +369,10 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 									$mt_single_image = reset( $mt_images );
 
-									$mt_single_image_url = SucomUtil::get_mt_media_url( $mt_single_image );
+									$image_url = SucomUtil::get_first_mt_media_url( $mt_single_image );
 
 									$mt_tc[ 'twitter:card' ]  = $card_type;
-									$mt_tc[ 'twitter:image' ] = $mt_single_image_url;
+									$mt_tc[ 'twitter:image' ] = $image_url;
 
 									if ( ! empty( $mt_single_image[ 'og:image:alt' ] ) ) {
 
@@ -429,9 +429,9 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 					$mt_single_image = reset( $mt_images );
 
-					$mt_single_image_url = SucomUtil::get_mt_media_url( $mt_single_image );
+					$image_url = SucomUtil::get_first_mt_media_url( $mt_single_image );
 
-					$mt_tc[ 'twitter:image' ] = $mt_single_image_url;
+					$mt_tc[ 'twitter:image' ] = $image_url;
 
 					if ( ! empty( $mt_single_image[ 'og:image:alt' ] ) ) {
 

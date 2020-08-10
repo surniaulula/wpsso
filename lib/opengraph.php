@@ -851,7 +851,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			foreach ( $mt_videos as $mt_single_video ) {
 
-				$image_url = SucomUtil::get_mt_media_url( $mt_single_video, $mt_media_pre = 'og:image' );
+				$image_url = SucomUtil::get_first_mt_media_url( $mt_single_video );
 
 				/**
 				 * Check preview images for duplicates since the same videos may be available in different formats
@@ -1072,8 +1072,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					/**
 					 * Add application/x-shockwave-flash video first and the text/html video second.
 					 */
-					if ( SucomUtil::get_mt_media_url( $mt_single_video, $mt_media_pre = 'og:video',
-						$mt_suffixes = array( ':secure_url', ':url', '' ) ) ) {
+					if ( SucomUtil::get_first_mt_media_url( $mt_single_video, $media_pre = 'og:video', $mt_suffixes = array( ':secure_url', ':url', '' ) ) ) {
 
 						$og_extend[] = $mt_single_video;
 					}
@@ -1106,7 +1105,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$mt_ret = $this->get_all_images( $num = 1, $size_names, $mod, $check_dupes = true, $md_pre );
 
-			return SucomUtil::get_mt_media_url( $mt_ret, $mt_media_pre = 'og:image' );
+			return SucomUtil::get_first_mt_media_url( $mt_ret );
 		}
 
 		/**
@@ -1530,7 +1529,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		/**
 		 * Also used by the WpssoProMediaGravatar class to get the default image URL.
 		 */
-		public function get_media_value( $mt_og, $mt_media_pre ) {
+		public function get_media_value( $mt_og, $media_pre ) {
 
 			if ( empty( $mt_og ) || ! is_array( $mt_og ) ) {	// Nothing to do.
 
@@ -1539,17 +1538,17 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$og_media = reset( $mt_og );	// Only search the first media array.
 
-			switch ( $mt_media_pre ) {
+			switch ( $media_pre ) {
 
 				/**
 				 * If we're asking for an image or video url, then search all three values sequentially.
 				 */
-				case ( preg_match( '/:(image|video)(:secure_url|:url)?$/', $mt_media_pre ) ? true : false ):
+				case ( preg_match( '/:(image|video)(:secure_url|:url)?$/', $media_pre ) ? true : false ):
 
 					$mt_search = array(
-						$mt_media_pre . ':secure_url',	// og:image:secure_url
-						$mt_media_pre . ':url',		// og:image:url
-						$mt_media_pre,			// og:image
+						$media_pre . ':secure_url',	// og:image:secure_url
+						$media_pre . ':url',		// og:image:url
+						$media_pre,			// og:image
 					);
 
 					break;
@@ -1559,7 +1558,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				 */
 				default:
 
-					$mt_search = array( $mt_media_pre );
+					$mt_search = array( $media_pre );
 
 					break;
 			}

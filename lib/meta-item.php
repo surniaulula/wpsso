@@ -267,7 +267,7 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 
 				foreach ( $mt_images as $mt_single_image ) {
 
-					$mt_item[ 'image' ][] = SucomUtil::get_mt_media_url( $mt_single_image );
+					$mt_item[ 'image' ][] = SucomUtil::get_first_mt_media_url( $mt_single_image );
 				}
 			}
 

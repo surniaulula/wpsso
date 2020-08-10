@@ -101,11 +101,11 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 				if ( isset( $head_info[ 'og:image:width' ] ) && $head_info[ 'og:image:width' ] > 0 && 
 					isset( $head_info[ 'og:image:height' ] ) && $head_info[ 'og:image:height' ] > 0 ) {
 
-					$mt_image_url = SucomUtil::get_mt_media_url( $head_info, $mt_media_pre = 'og:image' );
+					$image_url = SucomUtil::get_first_mt_media_url( $head_info );
 
-					if ( $mt_image_url ) {
+					if ( $image_url ) {
 
-						$data[ 'thumbnail_url' ]    = $mt_image_url;
+						$data[ 'thumbnail_url' ]    = $image_url;
 						$data[ 'thumbnail_width' ]  = $head_info[ 'og:image:width' ];
 						$data[ 'thumbnail_height' ] = $head_info[ 'og:image:height' ];
 					}
