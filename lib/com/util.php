@@ -2080,9 +2080,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
+		 * Deprecated on 2020/08/10.
+		 */
+		public static function get_mt_media_url( array $assoc, $media_pre = 'og:image', $mt_suffixes = null ) {
+			
+			return self::get_first_mt_media_url( $assoc, $media_pre, $mt_suffixes );
+		}
+
+		/**
 		 * Return the first URL from the associative array (og:image:secure_url, og:image:url, og:image).
 		 */
-		public static function get_first_mt_media_url( array $assoc, $mt_media_pre = 'og:image', $mt_suffixes = null ) {
+		public static function get_first_mt_media_url( array $assoc, $media_pre = 'og:image', $mt_suffixes = null ) {
 
 			if ( ! is_array( $mt_suffixes ) ) {
 
@@ -2092,11 +2100,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			/**
 			 * Check for two dimensional arrays and keep following the first array element.
 			 *
-			 * Prefer the $mt_media_pre array key (if it's available).
+			 * Prefer the $media_pre array key (if it's available).
 			 */
-			if ( isset( $assoc[ $mt_media_pre ] ) && is_array( $assoc[ $mt_media_pre ] ) ) {
+			if ( isset( $assoc[ $media_pre ] ) && is_array( $assoc[ $media_pre ] ) ) {
 
-				$first_media = reset( $assoc[ $mt_media_pre ] );
+				$first_media = reset( $assoc[ $media_pre ] );
 
 			} else {
 
@@ -2105,7 +2113,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( is_array( $first_media ) ) {	// Recurse until we hit bottom (ie. we have a string).
 
-				return self::get_first_mt_media_url( $first_media, $mt_media_pre );
+				return self::get_first_mt_media_url( $first_media, $media_pre );
 			}
 
 			/**
@@ -2113,9 +2121,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			 */
 			foreach ( $mt_suffixes as $mt_suffix ) {
 
-				if ( ! empty( $assoc[ $mt_media_pre . $mt_suffix ] ) ) {
+				if ( ! empty( $assoc[ $media_pre . $mt_suffix ] ) ) {
 
-					return $assoc[ $mt_media_pre . $mt_suffix ];	// Return first match.
+					return $assoc[ $media_pre . $mt_suffix ];	// Return first match.
 				}
 			}
 
