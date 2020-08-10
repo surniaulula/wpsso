@@ -1252,7 +1252,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_other'                  => 'other',
 					'schema_type_for_person'                 => 'person',
 					'schema_type_for_place'                  => 'place',
-					'schema_type_for_product'                => 'product',		// For WooCommerce and most e-commerce plugins.
+					'schema_type_for_product'                => 'product',		// For WooCommerce etc.
 					'schema_type_for_qa'                     => 'webpage.qa',
 					'schema_type_for_question'               => 'question',
 					'schema_type_for_recipe'                 => 'recipe',		// For WP Ultimate Recipe.
@@ -1312,7 +1312,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_type_for_download'               => 'product',	// For Easy Digital Downloads.
 					'og_type_for_organization'           => 'website',
 					'og_type_for_place'                  => 'place',
-					'og_type_for_product'                => 'product', 	// For WooCommerce and most e-commerce plugins.
+					'og_type_for_product'                => 'product', 	// For WooCommerce etc.
 					'og_type_for_question'               => 'article',
 					'og_type_for_tax_faq_category'       => 'website',
 					'og_type_for_tax_product_brand'      => 'website',	// For WooCommerce Brands.
@@ -1608,9 +1608,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_bitly_group_name'             => '',		// Bitly Group Name (Optional).
 					'plugin_dlmyapp_api_key'              => '',		// DLMY.App API Key.
 					'plugin_owly_api_key'                 => '',		// Ow.ly API Key.
+					'plugin_shopperapproved_site_id'      => '',		// Shopper Approved Site ID.
 					'plugin_shopperapproved_token'        => '',		// Shopper Approved API Token.
 					'plugin_shopperapproved_for_download' => 1,		// For Easy Digital Downloads.
-					'plugin_shopperapproved_for_product'  => 1,
+					'plugin_shopperapproved_for_product'  => 1,		// For WooCommerce, etc.
 					'plugin_yourls_api_url'               => '',		// YOURLS API URL.
 					'plugin_yourls_username'              => '',		// YOURLS Username.
 					'plugin_yourls_password'              => '',		// YOURLS Password.
@@ -1661,18 +1662,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_add_to_download'               => 1,		// For Easy Digital Downloads.
 					'plugin_add_to_organization'           => 1,
 					'plugin_add_to_place'                  => 1,
-					'plugin_add_to_product'                => 1,
+					'plugin_add_to_product'                => 1,		// For WooCommerce, etc.
 					'plugin_add_to_question'               => 1,
-					'plugin_add_to_reply'                  => 0,		// Bbpress
+					'plugin_add_to_reply'                  => 0,		// For Bbpress
 					'plugin_add_to_tax_faq_category'       => 1,
 					'plugin_add_to_tax_product_brand'      => 1,		// For WooCommerce Brands.
 					'plugin_add_to_tax_product_cat'        => 1,		// For WooCommerce.
 					'plugin_add_to_tax_product_tag'        => 1,		// For WooCommerce.
 					'plugin_add_to_tax_pwb-brand'          => 1,		// For Perfect WooCommerce Brands Add-on.
 					'plugin_add_to_tax_yith_product_brand' => 1,		// For YITH WooCommerce Brands Add-on.
-					'plugin_add_to_topic'                  => 0,		// Bbpress
-					'plugin_add_to_tribe_events'           => 1,		// The Events Calendar.
-					'plugin_add_to_tribe-ea-record'        => 1,		// The Events Calendar.
+					'plugin_add_to_topic'                  => 0,		// For Bbpress
+					'plugin_add_to_tribe_events'           => 1,		// For The Events Calendar.
+					'plugin_add_to_tribe-ea-record'        => 1,		// For The Events Calendar.
 
 					/**
 					 * Advanced Settings - Product Attributes tab.

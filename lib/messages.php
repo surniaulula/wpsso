@@ -1159,11 +1159,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
+						case 'tooltip-plugin_shopperapproved_site_id':
 						case 'tooltip-plugin_shopperapproved_token':
 
-							$text = __( 'Your Shopper Approved API Token is required to retrieve Shopper Approved customer ratings and reviews.', 'wpsso' ) . ' ';
+							$text = __( 'Your Shopper Approved Site ID and API Token are required to retrieve Shopper Approved customer ratings and reviews.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( '<a href="%s">Log into Shopper Approved and visit the API Dashboard</a>, then scroll down to find your Site ID and API Token.', 'wpsso' ), 'https://www.shopperapproved.com/account/setup/api/merchant-api' );
+							$text .= sprintf( __( '<a href="%s">Login to your Shopper Approved account and go to the API Dashboard</a>, then scroll down to find your Site ID and API Token.', 'wpsso' ), 'https://www.shopperapproved.com/account/setup/api/merchant-api' );
 
 							break;
 

@@ -447,6 +447,10 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[ 'subsection_plugin_shopperapproved' ] = '' .
 			'<td colspan="2" class="subsection"><h4>' . _x( 'Shopper Approved (Customer Ratings and Reviews)', 'metabox title', 'wpsso' ) . '</h4></td>';
 
+			$table_rows[ 'plugin_shopperapproved_site_id' ] = '' .
+			$form->get_th_html( _x( 'Shopper Approved Site ID', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_shopperapproved_site_id' ) .
+			'<td class="blank mono"></td>';
+
 			$table_rows[ 'plugin_shopperapproved_token' ] = '' .
 			$form->get_th_html( _x( 'Shopper Approved API Token', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_shopperapproved_token' ) .
 			'<td class="blank mono"></td>';
