@@ -1260,7 +1260,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			$this->check_banner_image_size( $opts, $img_pre = 'site_org_banner' );
 		}
 
-		private function check_banner_image_size( $opts, $img_pre ) {
+		private function check_banner_image_size( $opts, $img_pre = 'site_org_banner' ) {
 
 			/**
 			 * Skip if notices have already been shown.
@@ -1286,7 +1286,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 *	'og:image:size_name' => null,
 			 * );
 			 */
-			$mt_single_image = $this->p->media->get_opts_single_image( $opts, $size_name = false, $img_pre );
+			$mt_single_image = $this->p->media->get_mt_img_pre_url( $opts, $img_pre );
 
 			$image_url = SucomUtil::get_first_mt_media_url( $mt_single_image );
 

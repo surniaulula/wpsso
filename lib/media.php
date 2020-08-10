@@ -58,6 +58,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			add_filter( 'get_image_tag', array( $this, 'get_image_tag' ), 10, 6 );
 		}
 
+		/**
+		 * $size_name must be a string.
+		 */
 		public function filter_attached_accept_img_dims( $accept, $img_url, $img_width, $img_height, $size_name, $pid ) {
 
 			/**
@@ -134,6 +137,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return false;
 		}
 
+		/**
+		 * $size_name must be a string.
+		 */
 		public function filter_content_accept_img_dims( $accept, $og_image, $size_name, $attr_name, $content_passed ) {
 
 			/**
@@ -220,19 +226,19 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		}
 
 		/**
-		 * Note that $size_name can be a string or an array().
+		 * Note that $size can be a string or an array().
 		 */
-		public function maybe_adjust_max_image_size( $max_sizes = array(), $size_name = '', $context = '' ) {
+		public function maybe_adjust_max_image_size( $max_image_size = array(), $size = '', $context = '' ) {
 
 			/**
-			 * Allow only our sizes to exceed the editor width.
+			 * Allow our sizes to exceed the editor width.
 			 */
-			if ( is_string( $size_name ) && 0 === strpos( $size_name, $this->p->lca . '-' ) ) {
+			if ( is_string( $size ) && 0 === strpos( $size, $this->p->lca . '-' ) ) {
 
-				$max_sizes = array( 0, 0 );
+				$max_image_size = array( 0, 0 );
 			}
 
-			return $max_sizes;
+			return $max_image_size;
 		}
 
 		/**
@@ -323,6 +329,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $html;
 		}
 
+		/**
+		 * $size_name must be a string.
+		 */
 		public function get_post_images( $num = 0, $size_name = 'thumbnail', $post_id, $check_dupes = true, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -371,6 +380,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $mt_ret;
 		}
 
+		/**
+		 * $size_name must be a string.
+		 */
 		public function get_featured( $num = 0, $size_name = 'thumbnail', $post_id, $check_dupes = true ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -431,6 +443,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return apply_filters( $this->p->lca . '_og_featured', $mt_ret, $num, $size_name, $post_id, $check_dupes );
 		}
 
+		/**
+		 * $size_name must be a string.
+		 */
 		public function get_attached_images( $num = 0, $size_name = 'thumbnail', $post_id, $check_dupes = true ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -505,6 +520,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return apply_filters( $this->p->lca . '_attached_images', $mt_ret, $num, $size_name, $post_id, $check_dupes );
 		}
 
+		/**
+		 * $size_name must be a string.
+		 */
 		public function get_content_images( $num = 0, $size_name = 'thumbnail', $mod = true, $check_dupes = true, $content = '' ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -840,6 +858,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $mt_ret;
 		}
 
+		/**
+		 * $size_name must be a string.
+		 */
 		public function get_default_images( $num = 1, $size_name = 'thumbnail', $check_dupes = true ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -907,6 +928,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $mt_ret;
 		}
 
+		/**
+		 * $size_name must be a string.
+		 */
 		public function get_attachment_image( $num = 0, $size_name = 'thumbnail', $attachment_id, $check_dupes = true ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -1397,6 +1421,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		/**
 		 * get_mt_single_image_src() returns an og:image:url value, not an og:image:secure_url.
+		 *
+		 * $size_name must be a string.
 		 */
 		public function get_mt_single_image_src( $pid, $size_name = 'thumbnail', $check_dupes = true, $mt_pre = 'og' ) {
 
@@ -1407,6 +1433,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $mt_single_image;
 		}
 
+		/**
+		 * $size_name must be a string.
+		 */
 		public function add_mt_single_image_src( array &$mt_single_image, $pid, $size_name = 'thumbnail', $check_dupes = true, $mt_pre = 'og' ) {
 
 			list(
@@ -1421,7 +1450,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		}
 
 		/**
-		 * $img_pre = 'og_img' | 'schema_banner' | 'org_banner'
+		 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
 		 */
 		public function get_mt_opts_images( $opts, $size_names = null, $img_pre = 'og_img', $key_num = null ) {
 
@@ -1462,6 +1491,19 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $mt_ret;
 		}
 
+		/**
+		 * Used by WpssoOptions->check_banner_image_size() and WpssoOrgFilters->check_banner_image_size().
+		 */
+		public function get_mt_img_pre_url( $opts, $img_pre = 'og_img', $key_num = null ) {
+
+			$mt_ret = $this->get_mt_opts_images( $opts, $size_name = false, $img_pre, $key_num );
+
+			return isset( $mt_ret[ 0 ] ) ? $mt_ret[ 0 ] : array();
+		}
+
+		/**
+		 * Deprecated on 2020/08/10.
+		 */
 		public function get_opts_single_image( $opts, $size_name = null, $img_pre = 'og_img', $key_num = null ) {
 
 			$mt_ret = $this->get_mt_opts_images( $opts, $size_name, $img_pre, $key_num );
@@ -2176,9 +2218,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$img_ratio = number_format( $img_ratio, 3, '.', '' );
 			}
 
-			$cf_min  = $this->p->cf[ 'head' ][ 'limit_min' ];
-			$cf_max  = $this->p->cf[ 'head' ][ 'limit_max' ];
-			$opt_pre = $this->p->util->get_image_size_opt( $size_name );
+			$cf_min     = $this->p->cf[ 'head' ][ 'limit_min' ];
+			$cf_max     = $this->p->cf[ 'head' ][ 'limit_max' ];
+			$opt_pre    = $this->p->util->get_image_size_opt( $size_name );
 			$min_width  = isset( $cf_min[ $opt_pre . '_img_width' ] ) ? $cf_min[ $opt_pre . '_img_width' ] : 0;
 			$min_height = isset( $cf_min[ $opt_pre . '_img_height' ] ) ? $cf_min[ $opt_pre . '_img_height' ] : 0;
 			$max_ratio  = isset( $cf_max[ $opt_pre . '_img_ratio' ] ) ? $cf_max[ $opt_pre . '_img_ratio' ] : 0;

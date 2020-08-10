@@ -414,6 +414,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $get_value;
 		}
 
+		/**
+		 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
+		 *
+		 * $size_name is passed as-is to $this->get_all_images().
+		 */
 		public function get_array( array $mod, $size_names = 'opengraph' ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -1096,6 +1101,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $og_extend;
 		}
 
+		/**
+		 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
+		 *
+		 * $size_name is passed as-is to $this->get_all_images().
+		 */
 		public function get_thumbnail_url( $size_names = 'thumbnail', array $mod, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -1160,6 +1170,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				foreach ( $size_names as $size_name ) {
 
+					/**
+					 * $size_name must be a string.
+					 */
 					$mt_images = $this->get_size_name_images( $num_diff, $size_name, $mod, $check_dupes, $md_pre );
 
 					if ( empty( $mt_images ) ) {
@@ -1233,6 +1246,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				if ( $mod[ 'post_type' ] === 'attachment' && wp_attachment_is_image( $mod[ 'id' ] ) ) {
 
+					/**
+					 * $size_name must be a string.
+					 */
 					$mt_single_image = $this->p->media->get_attachment_image( $num, $size_name, $mod[ 'id' ], $check_dupes );
 
 					if ( empty( $mt_single_image ) ) {

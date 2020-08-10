@@ -1669,9 +1669,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			if ( ! empty( $place_opts[ 'place_img_id' ] ) || ! empty( $place_opts[ 'place_img_url' ] ) ) {
 
-				/**
-				 * Changed from get_opts_single_image() to get_mt_opts_images() on 2020/08/10.
-				 */
 				$mt_images = $wpsso->media->get_mt_opts_images( $place_opts, $size_names = 'schema', $img_pre = 'place_img' );
 
 				WpssoSchema::add_images_data_mt( $json_ret[ 'image' ], $mt_images );
