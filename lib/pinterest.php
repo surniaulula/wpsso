@@ -6,10 +6,12 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+
 	die( 'Do. Or do not. There is no try.' );
 }
 
@@ -114,8 +116,8 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 			if ( ! empty( $this->p->options[ 'p_add_img_html' ] ) ) {	// Just in case.
 
-				$sizes[ 'p' ] = array(			// Option prefix.
-					'name'         => 'pinterest',	// Size name suffix.
+				$sizes[ 'p' ] = array(		// Option prefix.
+					'name'         => 'pinterest',
 					'label_transl' => _x( 'Pinterest Pin It', 'option label', 'wpsso' ),
 				);
 			}

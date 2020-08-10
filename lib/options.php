@@ -994,7 +994,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						continue;
 					}
 
-					$error_msg = false;
+					$notice_msg = false;
 
 					$limit_ratio = number_format( $this->p->cf[ 'head' ][ $limit_type ][ $opt_pre . '_img_ratio' ], 3, '.', '' );
 
@@ -1007,7 +1007,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 							if ( $img_ratio !== $limit_ratio ) {
 
-								$error_msg = sprintf( __( 'Option keys "%1$s" (%2$d) and "%3$s" (%4$d) have an aspect ratio of %5$s:1, which not equal to the required image ratio of %6$s:1.', 'wpsso' ), $opt_pre . '_img_width', $img_width, $opt_pre . '_img_height', $img_height, $img_ratio, $limit_ratio );
+								$notice_msg = sprintf( __( 'Option keys "%1$s" (%2$d) and "%3$s" (%4$d) have an aspect ratio of %5$s:1, which not equal to the required image ratio of %6$s:1.', 'wpsso' ), $opt_pre . '_img_width', $img_width, $opt_pre . '_img_height', $img_height, $img_ratio, $limit_ratio );
 							}
 
 							break;
@@ -1015,17 +1015,18 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						case 'limit_max':
 					
 							if ( $img_crop && $img_ratio >= $limit_ratio ) {
-								$error_msg = sprintf( __( 'Option keys "%1$s" (%2$d) and "%3$s" (%4$d) have an aspect ratio of %5$s:1, which is equal to / or greater than the maximum image ratio of %6$s:1.', 'wpsso' ), $opt_pre . '_img_width', $img_width, $opt_pre . '_img_height', $img_height, $img_ratio, $limit_ratio );
+
+								$notice_msg = sprintf( __( 'Option keys "%1$s" (%2$d) and "%3$s" (%4$d) have an aspect ratio of %5$s:1, which is equal to / or greater than the maximum image ratio of %6$s:1.', 'wpsso' ), $opt_pre . '_img_width', $img_width, $opt_pre . '_img_height', $img_height, $img_ratio, $limit_ratio );
 							}
 
 							break;
 					}
 
-					if ( $error_msg ) {
+					if ( $notice_msg ) {
 
-						$error_msg .= ' ' . __( 'These options have been reset to their default values.', 'wpsso' );
+						$notice_msg .= ' ' . __( 'These options have been reset to their default values.', 'wpsso' );
 
-						$this->p->notice->err( $error_msg );
+						$this->p->notice->err( $notice_msg );
 
 						$opts[ $opt_pre . '_img_width' ]  = $defs[ $opt_pre . '_img_width' ];
 						$opts[ $opt_pre . '_img_height' ] = $defs[ $opt_pre . '_img_height' ];

@@ -593,7 +593,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Add place, organization, and person data.
 			 *
-			 * Use $opt_prefix => $prop_name association as the property name may be repeated (ie. non-unique).
+			 * Use $opt_pre => $prop_name association as the property name may be repeated (ie. non-unique).
 			 */
 			foreach ( array( 
 				'event_online_url'          => 'location',
@@ -602,9 +602,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'event_organizer_person_id' => 'organizer',
 				'event_performer_org_id'    => 'performer',
 				'event_performer_person_id' => 'performer',
-			) as $opt_prefix => $prop_name ) {
+			) as $opt_pre => $prop_name ) {
 
-				foreach ( SucomUtil::preg_grep_keys( '/^' . $opt_prefix . '(_[0-9]+)?$/', $event_opts ) as $opt_key => $id ) {
+				foreach ( SucomUtil::preg_grep_keys( '/^' . $opt_pre . '(_[0-9]+)?$/', $event_opts ) as $opt_key => $id ) {
 
 					/**
 					 * Check that the id value is not true, false, null, or 'none'.
@@ -614,12 +614,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						continue;
 					}
 
-					switch ( $opt_prefix ) {
+					switch ( $opt_pre ) {
 
 						case 'event_online_url':
 
 							$json_ret[ 'location' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/VirtualLocation', array(
-								'url' => $event_opts[ $opt_prefix ],
+								'url' => $event_opts[ $opt_pre ],
 							) );
 
 							break;
@@ -806,14 +806,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Add place, organization, and person data.
 			 *
-			 * Use $opt_prefix => $prop_name association as the property name may be repeated (ie. non-unique).
+			 * Use $opt_pre => $prop_name association as the property name may be repeated (ie. non-unique).
 			 */
 			foreach ( array( 
 				'job_hiring_org_id' => 'hiringOrganization',
 				'job_location_id'   => 'jobLocation',
-			) as $opt_prefix => $prop_name ) {
+			) as $opt_pre => $prop_name ) {
 
-				foreach ( SucomUtil::preg_grep_keys( '/^' . $opt_prefix . '(_[0-9]+)?$/', $job_opts ) as $opt_key => $id ) {
+				foreach ( SucomUtil::preg_grep_keys( '/^' . $opt_pre . '(_[0-9]+)?$/', $job_opts ) as $opt_key => $id ) {
 
 					/**
 					 * Check that the id value is not true, false, null, or 'none'.
@@ -823,7 +823,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						continue;
 					}
 
-					switch ( $opt_prefix ) {
+					switch ( $opt_pre ) {
 
 						case 'job_hiring_org_id':
 

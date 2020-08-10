@@ -26,9 +26,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		private $p;		// Wpsso.
 
-		private $cache_uniq_urls = array();	// Array to detect duplicate images, etc.
-
-		private $cache_size_labels = array();	// Reference array for translated image size labels.
+		private $cache_uniq_urls   = array();	// Array to detect duplicate images, etc.
+		private $cache_size_labels = array();	// Array for image size labels.
+		private $cache_size_opts   = array();	// Array for image size option prefix.
 
 		private $is_functions = array(
 			'is_ajax',
@@ -322,15 +322,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( ! is_array( $size_info ) ) {	// Just in case.
 
-					$name_label = empty( $size_info ) ? $opt_pre : (string) $size_info;
-
-					$size_info = array(
-						'name'         => $name_label,
-						'label_transl' => $name_label
-					);
+					continue;
 				}
-
-				$opt_pre = preg_replace( '/_img$/', '', $opt_pre );	// Just in case.
 
 				foreach ( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $key ) {
 
@@ -400,10 +393,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( $size_info[ 'width' ] > 0 && $size_info[ 'height' ] > 0 ) {
 
-					/**
-					 * A lookup array for translated image size labels, used in image size error messages.
-					 */
 					$this->cache_size_labels[ $this->p->lca . '-' . $size_info[ 'name' ] ] = $size_info[ 'label_transl' ];
+
+					$this->cache_size_opts[ $this->p->lca . '-' . $size_info[ 'name' ] ] = $opt_pre;
 
 					/**
 					 * Add the image size.
@@ -851,7 +843,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Example $size_name = 'wpsso-opengraph' returns 'Open Graph'.
+		 * Example $size_name = 'wpsso-opengraph' returns 'Open Graph' pre-translated.
 		 */
 		public function get_image_size_label( $size_name ) {
 
@@ -862,6 +854,20 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			return $size_name;
+		}
+
+		/**
+		 * Example $size_name = 'wpsso-opengraph' returns 'og'.
+		 */
+		public function get_image_size_opt( $size_name ) {
+
+			if ( isset( $this->cache_size_opts[ $size_name ] ) ) {
+
+				return $this->cache_size_opts[ $size_name ];
+
+			}
+
+			return '';
 		}
 
 		public function get_image_size_names( $mixed = null ) {
@@ -1014,7 +1020,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				'crop'         => $crop,
 				'is_cropped'   => $is_cropped,
 				'dimensions'   => $width . 'x' . $height . ' ' . ( $is_cropped ? __( 'cropped', 'wpsso' ) : __( 'uncropped', 'wpsso' ) ),
-				'label_transl' => $this->get_image_size_label( $size_name ),	// Returns pre-translated labels.
+				'label_transl' => $this->get_image_size_label( $size_name ),
+				'opt_prefix'   => $this->get_image_size_opt( $size_name ),
 			);
 		}
 
@@ -1034,9 +1041,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/**
 		 * Add options using a key prefix string / array and post type names.
 		 */
-		public function add_post_type_names( array &$opts, array $pre_defs ) {
+		public function add_post_type_names( array &$opts, array $opt_pre_defs ) {
 
-			foreach ( $pre_defs as $opt_pre => $def_val ) {
+			foreach ( $opt_pre_defs as $opt_pre => $def_val ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -1101,9 +1108,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/**
 		 * Add options using a key prefix string / array and term names.
 		 */
-		public function add_taxonomy_names( array &$opts, array $pre_defs ) {
+		public function add_taxonomy_names( array &$opts, array $opt_pre_defs ) {
 
-			foreach ( $pre_defs as $opt_pre => $def_val ) {
+			foreach ( $opt_pre_defs as $opt_pre => $def_val ) {
 
 				if ( $this->p->debug->enabled ) {
 

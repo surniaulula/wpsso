@@ -1438,10 +1438,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							if ( preg_match( '/^tooltip-(schema_([0-9]+)_([0-9]+))_img_size$/', $msg_key, $matches ) ) {
 
 								$opt_pre      = $matches[ 1 ];
-								$opt_ratio    = $matches[ 2 ] . ':' . $matches[ 3 ];
+								$ratio_msg    = $matches[ 2 ] . ':' . $matches[ 3 ];
 								$def_img_dims = $this->get_def_img_dims( $opt_pre );
 
-								$text = sprintf( __( 'The %1$s image dimensions used for Schema meta tags and JSON-LD markup (the default dimensions are %2$s).', 'wpsso' ), $opt_ratio, $def_img_dims ) . ' ';
+								$text = sprintf( __( 'The %1$s image dimensions used for Schema meta tags and JSON-LD markup (the default dimensions are %2$s).', 'wpsso' ), $ratio_msg, $def_img_dims ) . ' ';
 
 								$text .= sprintf( __( 'The minimum image width required by Google is %dpx.', 'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ $opt_pre . '_img_width' ] ). ' ';
 							}
