@@ -334,7 +334,7 @@ The [WP eCommerce](https://wordpress.org/plugins/wp-e-commerce/) plugin is no lo
 	* Removed the WPSSO Core Premium integration module for the [WP eCommerce](https://wordpress.org/plugins/wp-e-commerce/) plugin.
 	* Removed the SSO &gt; Advanced Settings &gt; Cache &gt; Clear All Caches on Save Settings option.
 * **Bugfixes**
-	* None.
+	* Fixed incorrect sanitation of plugin settings for multisite blogs.
 * **Developer Notes**
 	* Added a new `WpssoUtilMetabox` class.
 	* Added a new `WpssoProUtilShorten->load_lib()` method.
@@ -739,7 +739,7 @@ The Open Graph meta tags for WooCommerce products have been extended to include 
 
 = 8.0.0-b.1 =
 
-(2020/08/10) Added an API integration module for Shopper Approved customer ratings and reviews. Added Schema 1:1, 4:3, and 16:9 images for Google.
+(2020/08/10) Added an API integration module for Shopper Approved customer ratings and reviews. Added Schema 1:1, 4:3, and 16:9 images for Google. Fixed incorrect sanitation of plugin settings for multisite blogs.
 
 = 7.15.0 =
 
