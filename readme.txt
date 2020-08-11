@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 5.6
 Requires At Least: 4.2
 Tested Up To: 5.5
-WC Tested Up To: 4.3.1
+WC Tested Up To: 4.3.2
 Stable Tag: 7.15.0
 
 Make sure your content looks great on social sites and search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded.
@@ -307,7 +307,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.0.0-b.2 (2020/08/10)**
+**Version 8.0.0-b.3 (2020/08/11)**
 
 Google has updated their Rich Results requirements and now prefers 1:1, 4:3, and 16:9 images for all Schema types, not just the Schema Article type for AMP webpages. The "Schema" and "Schema Article" image sizes have been removed and replaced by new Schema 1:1, 4:3, and 16:9 image sizes.
 
@@ -338,6 +338,7 @@ The [WP eCommerce](https://wordpress.org/plugins/wp-e-commerce/) plugin is no lo
 * **Developer Notes**
 	* Added a new `WpssoUtilMetabox` class.
 	* Added a new `WpssoProUtilShorten->load_lib()` method.
+	* Added new `WpssoSchema::is_valid_key()` and `is_valid_val()` methods.
 	* Renamed the `WpssoProUtilShorten->set_instance()` method to `get_svc_instance()`.
 	* Refactored `WpssoProUtilShorten->get_svc_instance()` to use the new `self->load_lib()` method.
 	* Added more debugging messages to the `WpssoProEcomWooCommerce` class for missing product methods.
@@ -737,9 +738,9 @@ The Open Graph meta tags for WooCommerce products have been extended to include 
 
 == Upgrade Notice ==
 
-= 8.0.0-b.2 =
+= 8.0.0-b.3 =
 
-(2020/08/10) Added an API integration module for Shopper Approved customer ratings and reviews. Added Schema 1:1, 4:3, and 16:9 images for Google. Fixed incorrect sanitation of plugin settings for multisite blogs.
+(2020/08/11) Added an API integration module for Shopper Approved customer ratings and reviews. Added Schema 1:1, 4:3, and 16:9 images for Google. Fixed incorrect sanitation of plugin settings for multisite blogs.
 
 = 7.15.0 =
 
