@@ -162,7 +162,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			return false;
 		}
 
-		public function add_ignored_url( $url_nofrag, $http_code ) {
+		public function add_ignored_url( $url_nofrag, $http_code = 0, $mtime_total = null ) {
 
 			$this->maybe_load_ignored_urls();
 
@@ -172,8 +172,32 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				$errors = array();
 
-				$errors[] = sprintf( __( 'Error connecting to %1$s for caching (HTTP code %2$d).',
-					$this->text_domain ), '<a href="' . $url_nofrag . '">' . $url_nofrag . '</a>', $http_code );
+				if ( $http_code ) {
+
+					if ( $mtime_total ) {
+
+						$errors[] = sprintf( __( 'Error retrieving %1$s for caching (HTTP code %3$d after %2$d seconds).',
+							$this->text_domain ), '<a href="' . $url_nofrag . '">' . $url_nofrag . '</a>', $mtime_total, $http_code );
+
+					} else {
+
+						$errors[] = sprintf( __( 'Error retrieving %1$s for caching (HTTP code %2$d).',
+							$this->text_domain ), '<a href="' . $url_nofrag . '">' . $url_nofrag . '</a>', $http_code );
+					}
+
+				} else {
+
+					if ( $mtime_total ) {
+
+						$errors[] = sprintf( __( 'Error retrieving %1$s for caching (after %2$d seconds).',
+							$this->text_domain ), '<a href="' . $url_nofrag . '">' . $url_nofrag . '</a>', $mtime_total );
+
+					} else {
+
+						$errors[] = sprintf( __( 'Error retrieving %1$s for caching.',
+							$this->text_domain ), '<a href="' . $url_nofrag . '">' . $url_nofrag . '</a>' );
+					}
+				}
 
 				if ( 301 === $http_code || 302 === $http_code ) {
 
@@ -223,7 +247,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				/**
 				 * Combine all strings into one error notice.
 				 */
-				$this->p->notice->err( implode( ' ', $errors ) );
+				$this->p->notice->err( $errors );
 			}
 
 			if ( $this->p->debug->enabled ) {
@@ -775,7 +799,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			} else {
 
-				$this->add_ignored_url( $url_nofrag, $http_code );
+				$this->add_ignored_url( $url_nofrag, $http_code, $mtime_total );
 			}
 
 			return $failure;

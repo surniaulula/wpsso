@@ -1494,6 +1494,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 */
 		public function get_mt_img_pre_url( $opts, $img_pre = 'og_img', $key_num = null, $mt_pre = 'og' ) {
 
+			/**
+			 * $size_name is false to ignore image IDs and only use image URLs.
+			 */
 			$mt_ret = $this->get_mt_opts_images( $opts, $size_name = false, $img_pre, $key_num, $mt_pre );
 
 			return isset( $mt_ret[ 0 ] ) ? $mt_ret[ 0 ] : array();

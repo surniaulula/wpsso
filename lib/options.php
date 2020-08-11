@@ -1298,7 +1298,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				if ( $image_dims !== $required_dims ) {
 
-					if ( $image_dims === '-1x-1px' ) {
+					if ( '-1x-1px' === $image_dims ) {
 
 						$error_msg = sprintf( __( 'The %s image dimensions cannot be determined.',
 							'wpsso' ), $settings_page_link ) . ' ';

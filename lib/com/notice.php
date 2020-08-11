@@ -229,7 +229,17 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$this->log( 'upd', $msg_text, $user_id, $notice_key, $dismiss_time, $payload );
 		}
 
+		/**
+		 * $msg_text can be a single text string, or an array of text strings.
+		 */
 		private function log( $msg_type, $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false, $payload = array() ) {
+
+			/**
+			 * If $msg_text is an array of text strings, implode the array into a single text string.
+			 */
+			$msg_text = is_array( $msg_text ) ? implode( ' ', $msg_text ) : (string) $msg_text;
+
+			$msg_text = trim( $msg_text );
 
 			if ( empty( $msg_type ) || empty( $msg_text ) ) {
 
@@ -292,8 +302,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 					if ( ! empty( $payload[ 'dismiss_diff' ] ) && $dismiss_suffix_msg ) {
 
-						$msg_text = trim( $msg_text );
-
 						$msg_close_div = '';
 
 						if ( substr( $msg_text, -6 ) === '</div>' ) {
@@ -342,13 +350,13 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		 */
 		public function clear_key( $notice_key, $user_id = null ) {
 
-			$this->clear( '', '', $notice_key, $user_id );
+			$this->clear( '', $notice_key, $user_id );
 		}
 
 		/**
 		 * Clear a message type, message text, notice key from the notice cache, or clear all notices.
 		 */
-		public function clear( $msg_type = '', $msg_text = '', $notice_key = false, $user_id = null ) {
+		public function clear( $msg_type = '', $notice_key = false, $user_id = null ) {
 
 			$current_user_id = get_current_user_id();	// Always returns an integer.
 
@@ -392,22 +400,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						}
 
 					/**
-					 * Clear a specific message text.
-					 */
-					} elseif ( ! empty( $msg_text ) ) {
-
-						foreach ( $this->notice_cache[ $user_id ][ $msg_type ] as $msg_key => $payload ) {
-
-							if ( ! empty( $payload[ 'msg_text' ] ) && $payload[ 'msg_text' ] === $msg_text ) {
-
-								unset( $this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] );
-							}
-						}
-
-					/**
 					 * Clear all notices for a message type.
 					 */
 					} else {
+
 						$this->notice_cache[ $user_id ][ $msg_type ] = array();
 					}
 				}
