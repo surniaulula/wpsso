@@ -1417,7 +1417,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				return false;
 
-			} elseif ( $id === 'none' ) {
+			} elseif ( 'none' === $id ) {	// Disabled option.
 
 				return false;
 

@@ -1985,7 +1985,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$user_id = $mod[ 'post_author' ];
 			}
 
-			if ( empty( $user_id ) || $user_id === 'none' ) {
+			if ( empty( $user_id ) || 'none' === $user_id ) {
 
 				if ( $wpsso->debug->enabled ) {
 
@@ -2959,10 +2959,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 *
 		 * array(
 		 * 	'depth'        => 'product:depth:value',
+		 * 	'fluid_volume' => 'product:fluid_volume:value',
 		 * 	'height'       => 'product:height:value',
 		 * 	'length'       => 'product:length:value',
 		 * 	'size'         => 'product:size',
-		 * 	'fluid_volume' => 'product:fluid_volume:value',
 		 * 	'weight'       => 'product:weight:value',
 		 * 	'width'        => 'product:width:value',
 		 * );
@@ -3136,42 +3136,89 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$prop_name = $key_name;
 				}
 
-				if ( isset( $assoc[ $key_name ] ) && $assoc[ $key_name ] !== '' ) {	// Exclude empty strings.
+				if ( self::is_valid_key( $assoc, $key_name ) ) {	// Not null, an empty string, or 'none'.
 
-					if ( ( 'width' === $prop_name || 'height' === $prop_name ) && WPSSO_UNDEF === $assoc[ $key_name ] ) {
-
-						continue;
-
-					} elseif ( isset( $json_data[ $prop_name ] ) && empty( $overwrite ) ) {
+					if ( isset( $json_data[ $prop_name ] ) && empty( $overwrite ) ) {
 
 						if ( $wpsso->debug->enabled ) {
 
 							$wpsso->debug->log( 'skipping ' . $prop_name . ': itemprop exists and overwrite is false' );
 						}
 
+						continue;
+
+					}
+
+					if ( is_string( $assoc[ $key_name ] ) && false !== filter_var( $assoc[ $key_name ], FILTER_VALIDATE_URL ) ) {
+
+						$json_data[ $prop_name ] = SucomUtil::esc_url_encode( $assoc[ $key_name ] );
+
 					} else {
 
-						if ( is_string( $assoc[ $key_name ] ) && false !== filter_var( $assoc[ $key_name ], FILTER_VALIDATE_URL ) ) {
-
-							$json_data[ $prop_name ] = SucomUtil::esc_url_encode( $assoc[ $key_name ] );
-
-						} else {
-
-							$json_data[ $prop_name ] = $assoc[ $key_name ];
-						}
-
-						if ( $wpsso->debug->enabled ) {
-
-							$wpsso->debug->log( 'assigned ' . $key_name . ' value to itemprop ' . $prop_name . ' = ' . 
-								print_r( $json_data[ $prop_name ], true ) );
-						}
-
-						$prop_added++;
+						$json_data[ $prop_name ] = $assoc[ $key_name ];
 					}
+
+					if ( $wpsso->debug->enabled ) {
+
+						$wpsso->debug->log( 'assigned ' . $key_name . ' value to itemprop ' . $prop_name . ' = ' . 
+							print_r( $json_data[ $prop_name ], true ) );
+					}
+
+					$prop_added++;
 				}
 			}
 
 			return $prop_added;
+		}
+
+		/**
+		 * Since WPSSO Core v8.0.0.
+		 *
+		 * Checks both the array key and its value. The array key must exist, and its value cannot be null, an empty
+		 * string, the 'none' string, and if the key is a width or height, the value cannot be -1.
+		 */
+		public static function is_valid_key( $assoc, $key ) {
+
+			if ( ! isset( $assoc[ $key ] ) ) {
+
+				return false;
+
+			} elseif ( ! self::is_valid_val( $assoc[ $key ] ) ) {	// Not null, an empty string, or 'none'.
+
+				return false;
+
+			} elseif ( 'width' === $key || 'height' === $key ) {
+		
+				if ( WPSSO_UNDEF === $assoc[ $key ] ) {	// Invalid width or height.
+
+					return false;
+				}
+			}
+
+			return true;
+		}
+
+		/**
+		 * Since WPSSO Core v8.0.0.
+		 *
+		 * The value cannot be null, an empty string, or the 'none' string.
+		 */
+		public static function is_valid_val( $val ) {
+
+			if ( null === $assoc[ $key ] ) {	// Null value is not valid.
+
+				return false;
+
+			} elseif ( '' === $assoc[ $key ] ) {	// Empty string.
+
+				return false;
+
+			} elseif ( 'none' === $assoc[ $key ] ) {	// Disabled option.
+
+				return false;
+			}
+
+			return true;
 		}
 
 		/**

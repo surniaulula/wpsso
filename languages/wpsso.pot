@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.0.0-b.2\n"
+"Project-Id-Version: WPSSO Core 8.0.0-b.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6838,7 +6838,7 @@ msgid ""
 "post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:857 lib/post.php:1471 lib/schema.php:3243 lib/term.php:692
+#: lib/post.php:857 lib/post.php:1471 lib/schema.php:3290 lib/term.php:692
 #: lib/user.php:678
 msgid "checking meta tags"
 msgstr ""
