@@ -846,7 +846,8 @@ msgid "END OUTPUT"
 msgstr ""
 
 #: lib/com/cache.php:179 lib/gettext-com.php:8
-msgid "Error retrieving %1$s for caching (HTTP code %3$d after %2$d seconds)."
+msgid ""
+"Error retrieving %1$s for caching (HTTP code %3$d after %2$.03f seconds)."
 msgstr ""
 
 #: lib/com/cache.php:184 lib/gettext-com.php:9
@@ -854,7 +855,7 @@ msgid "Error retrieving %1$s for caching (HTTP code %2$d)."
 msgstr ""
 
 #: lib/com/cache.php:192 lib/gettext-com.php:10
-msgid "Error retrieving %1$s for caching (after %2$d seconds)."
+msgid "Error retrieving %1$s for caching (after %2$.03f seconds)."
 msgstr ""
 
 #: lib/com/cache.php:197 lib/gettext-com.php:11

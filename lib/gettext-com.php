@@ -5,9 +5,9 @@
  */
 __( '%s Notice', 'wpsso' );
 __( 'Notice', 'wpsso' );
-__( 'Error retrieving %1$s for caching (HTTP code %3$d after %2$d seconds).', 'wpsso' );
+__( 'Error retrieving %1$s for caching (HTTP code %3$d after %2$.03f seconds).', 'wpsso' );
 __( 'Error retrieving %1$s for caching (HTTP code %2$d).', 'wpsso' );
-__( 'Error retrieving %1$s for caching (after %2$d seconds).', 'wpsso' );
+__( 'Error retrieving %1$s for caching (after %2$.03f seconds).', 'wpsso' );
 __( 'Error retrieving %1$s for caching.', 'wpsso' );
 __( 'The PHP "%s" setting is enabled &mdash; the PHP cURL library cannot follow URL redirects.', 'wpsso' );
 __( 'The "%s" setting is deprecated since PHP version 5.3 and removed from PHP since version 5.4.', 'wpsso' );
