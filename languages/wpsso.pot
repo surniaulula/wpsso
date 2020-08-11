@@ -847,7 +847,7 @@ msgstr ""
 
 #: lib/com/cache.php:179 lib/gettext-com.php:8
 msgid ""
-"Error retrieving %1$s for caching (HTTP code %3$d after %2$.03f seconds)."
+"Error retrieving %1$s for caching (HTTP code %2$d after %3$.03f seconds)."
 msgstr ""
 
 #: lib/com/cache.php:184 lib/gettext-com.php:9

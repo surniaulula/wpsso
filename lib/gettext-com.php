@@ -5,7 +5,7 @@
  */
 __( '%s Notice', 'wpsso' );
 __( 'Notice', 'wpsso' );
-__( 'Error retrieving %1$s for caching (HTTP code %3$d after %2$.03f seconds).', 'wpsso' );
+__( 'Error retrieving %1$s for caching (HTTP code %2$d after %3$.03f seconds).', 'wpsso' );
 __( 'Error retrieving %1$s for caching (HTTP code %2$d).', 'wpsso' );
 __( 'Error retrieving %1$s for caching (after %2$.03f seconds).', 'wpsso' );
 __( 'Error retrieving %1$s for caching.', 'wpsso' );

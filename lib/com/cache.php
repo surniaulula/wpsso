@@ -176,8 +176,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 					if ( $mtime_total ) {
 
-						$errors[] = sprintf( __( 'Error retrieving %1$s for caching (HTTP code %3$d after %2$.03f seconds).',
-							$this->text_domain ), '<a href="' . $url_nofrag . '">' . $url_nofrag . '</a>', $mtime_total, $http_code );
+						$errors[] = sprintf( __( 'Error retrieving %1$s for caching (HTTP code %2$d after %3$.03f seconds).',
+							$this->text_domain ), '<a href="' . $url_nofrag . '">' . $url_nofrag . '</a>', $http_code, $mtime_total );
 
 					} else {
 
