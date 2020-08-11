@@ -187,7 +187,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 		* Facebook Embedded Videos
 		* Gravatar (Author Image)
 		* Ow.ly
-		* Shopper Approved (Customer Ratings and Reviews)
+		* Shopper Approved (Ratings and Reviews)
 		* Slideshare Presentations
 		* Soundcloud Tracks (for the Twitter Player Card)
 		* TinyURL

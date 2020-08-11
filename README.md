@@ -190,7 +190,7 @@
 <li>Facebook Embedded Videos</li>
 <li>Gravatar (Author Image)</li>
 <li>Ow.ly</li>
-<li>Shopper Approved (Customer Ratings and Reviews)</li>
+<li>Shopper Approved (Ratings and Reviews)</li>
 <li>Slideshare Presentations</li>
 <li>Soundcloud Tracks (for the Twitter Player Card)</li>
 <li>TinyURL</li>
