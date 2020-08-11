@@ -314,7 +314,7 @@ Google has updated their Rich Results requirements and now prefers 1:1, 4:3, and
 The [WP eCommerce](https://wordpress.org/plugins/wp-e-commerce/) plugin is no longer supported (last update in January 2019) and the WPSSO Core Premium integration module for WP eCommerce has been removed.
 
 * **New Features**
-	* Added an API integration module for Shopper Approved customer ratings and reviews. See the SSO &gt; Advanced Settings &gt; Service APIs tab to enter your Shopper Approved API token and enabled reviews for specific post types (for example, the "product" custom post type).
+	* Added an API integration module for Shopper Approved ratings and reviews. See the SSO &gt; Advanced Settings &gt; Service APIs tab to enter your Shopper Approved API token and enabled reviews for specific post types (for example, the "product" custom post type).
 * **Improvements**
 	* Added a new "Gravatar Image Size" option (default is 1200px).
 	* Added shortening service API status to the SSO &gt; Dashboard &gt; Premium Features Status metabox:
@@ -740,7 +740,7 @@ The Open Graph meta tags for WooCommerce products have been extended to include 
 
 = 8.0.0-b.3 =
 
-(2020/08/11) Added an API integration module for Shopper Approved customer ratings and reviews. Added Schema 1:1, 4:3, and 16:9 images for Google. Fixed incorrect sanitation of plugin settings for multisite blogs.
+(2020/08/11) Added an API integration module for Shopper Approved ratings and reviews. Added Schema 1:1, 4:3, and 16:9 images for Google. Fixed incorrect sanitation of plugin settings for multisite blogs.
 
 = 7.15.0 =
 
