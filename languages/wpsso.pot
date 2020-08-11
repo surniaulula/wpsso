@@ -3965,27 +3965,23 @@ msgstr ""
 msgid "getting shopper approved ratings and reviews"
 msgstr ""
 
-#: lib/gettext-pro.php:219 lib/gettext-pro.php:221
-#: lib/pro/review/shopperapproved.php:163
-#: lib/pro/review/shopperapproved.php:252
+#: lib/gettext-pro.php:219 lib/pro/review/shopperapproved.php:324
 msgid "There has been a previous error connecting to %s for caching."
 msgstr ""
 
-#: lib/gettext-pro.php:220 lib/gettext-pro.php:222
-#: lib/pro/review/shopperapproved.php:166
-#: lib/pro/review/shopperapproved.php:255
+#: lib/gettext-pro.php:220 lib/pro/review/shopperapproved.php:327
 msgid ""
 "Requests to retrieve and cache this URL are ignored for another %d second(s)"
 msgstr ""
 
 #. translators: %s is the Job Manager plugin name
-#: lib/gettext-pro.php:223 lib/pro/job/wpjobmanager.php:49
+#: lib/gettext-pro.php:221 lib/pro/job/wpjobmanager.php:49
 msgctxt "option value"
 msgid "[%s Company]"
 msgstr ""
 
 #. translators: %s is the Job Manager plugin name
-#: lib/gettext-pro.php:224 lib/pro/job/wpjobmanager.php:57
+#: lib/gettext-pro.php:222 lib/pro/job/wpjobmanager.php:57
 msgctxt "option value"
 msgid "[%s Location]"
 msgstr ""

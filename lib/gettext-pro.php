@@ -218,7 +218,5 @@ __( 'Yotpo for WooCommerce "%s" class does not exist.', 'wpsso' );
 __( 'getting shopper approved ratings and reviews', 'wpsso' );
 __( 'There has been a previous error connecting to %s for caching.', 'wpsso' );
 __( 'Requests to retrieve and cache this URL are ignored for another %d second(s)', 'wpsso' );
-__( 'There has been a previous error connecting to %s for caching.', 'wpsso' );
-__( 'Requests to retrieve and cache this URL are ignored for another %d second(s)', 'wpsso' );
 _x( '[%s Company]', 'option value', 'wpsso' );
 _x( '[%s Location]', 'option value', 'wpsso' );
