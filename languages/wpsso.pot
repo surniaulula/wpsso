@@ -3961,19 +3961,19 @@ msgstr ""
 msgid "Yotpo for WooCommerce \"%s\" class does not exist."
 msgstr ""
 
-#: lib/gettext-pro.php:218 lib/pro/review/shopperapproved.php:136
+#: lib/gettext-pro.php:218 lib/pro/review/shopperapproved.php:135
 msgid "getting shopper approved ratings and reviews"
 msgstr ""
 
 #: lib/gettext-pro.php:219 lib/gettext-pro.php:221
-#: lib/pro/review/shopperapproved.php:164
-#: lib/pro/review/shopperapproved.php:253
+#: lib/pro/review/shopperapproved.php:163
+#: lib/pro/review/shopperapproved.php:252
 msgid "There has been a previous error connecting to %s for caching."
 msgstr ""
 
 #: lib/gettext-pro.php:220 lib/gettext-pro.php:222
-#: lib/pro/review/shopperapproved.php:167
-#: lib/pro/review/shopperapproved.php:256
+#: lib/pro/review/shopperapproved.php:166
+#: lib/pro/review/shopperapproved.php:255
 msgid ""
 "Requests to retrieve and cache this URL are ignored for another %d second(s)"
 msgstr ""
