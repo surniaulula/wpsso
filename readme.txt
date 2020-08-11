@@ -307,7 +307,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.0.0-rc.1 (2020/08/11)**
+**Version 8.0.0 (2020/08/11)**
 
 Google has updated their Rich Results requirements and now prefers 1:1, 4:3, and 16:9 images for all Schema types, not just the Schema Article type for AMP webpages. The "Schema" and "Schema Article" image sizes have been removed and replaced by new Schema 1:1, 4:3, and 16:9 image sizes.
 
@@ -738,11 +738,7 @@ The Open Graph meta tags for WooCommerce products have been extended to include 
 
 == Upgrade Notice ==
 
-= 8.0.0-rc.1 =
+= 8.0.0 =
 
 (2020/08/11) Added an API integration module for Shopper Approved ratings and reviews. Added support for Schema 1:1, 4:3, and 16:9 images for Google. Fixed incorrect sanitation of plugin settings for multisite blogs.
-
-= 7.15.0 =
-
-(2020/08/02) Tested with WordPress v5.5. Added the ability to translate labels in the "Standard Features Status" and "Premium Features Status" metaboxes.
 
