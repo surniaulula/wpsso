@@ -1096,7 +1096,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'The requested Gravatar image width and height.', 'wpsso' ) . ' ';
 
-							$text = __( 'You may choose an image size anywhere from 1px up to 2048px, however note that many users have lower resolution images, so requesting larger sizes may result in pixelation/low-quality images.', 'wpsso' );
+							$text = __( 'You may choose an image size from 1px up to 2048px, however note that many users have lower resolution images, so choosing a larger size may result in pixelation and lower-quality images.', 'wpsso' );
 
 							break;
 
@@ -1162,7 +1162,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_shopperapproved_site_id':
 						case 'tooltip-plugin_shopperapproved_token':
 
-							$text = __( 'Your Shopper Approved Site ID and API Token are required to retrieve Shopper Approved customer ratings and reviews.', 'wpsso' ) . ' ';
+							$text = __( 'Your Shopper Approved Site ID and API Token are required to retrieve ratings and reviews from Shopper Approved.', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( '<a href="%s">Login to your Shopper Approved account and go to the API Dashboard</a>, then scroll down to find your Site ID and API Token.', 'wpsso' ), 'https://www.shopperapproved.com/account/setup/api/merchant-api' );
 
@@ -1170,7 +1170,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_shopperapproved_for':
 
-							$text = __( 'Retrieve Shopper Approved customer ratings and reviews for these selected post types.', 'wpsso' );
+							$text = __( 'Retrieve ratings and reviews from Shopper Approved for the selected post types.', 'wpsso' );
 
 							break;
 

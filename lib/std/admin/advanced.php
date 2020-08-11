@@ -442,7 +442,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			'<td class="blank mono"></td>';
 
 			/**
-			 * Shopper Approved customer ratings and reviews.
+			 * Shopper Approved ratings and reviews.
 			 */
 			$table_rows[ 'subsection_plugin_shopperapproved' ] = '' .
 			'<td colspan="2" class="subsection"><h4>' . _x( 'Shopper Approved (Ratings and Reviews)', 'metabox title', 'wpsso' ) . '</h4></td>';

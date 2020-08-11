@@ -4066,9 +4066,9 @@ msgid ""
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:1099
+#: lib/media.php:1099 lib/media.php:1275
 msgid ""
-"You may consider re-generating the thumbnails of all WordPress Media Library "
+"You may consider regenerating the thumbnails of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
@@ -4097,13 +4097,6 @@ msgstr ""
 msgid ""
 "Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress "
 "%3$s function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
-msgstr ""
-
-#: lib/media.php:1275
-msgid ""
-"You may consider regenerating the thumbnails of all WordPress Media Library "
-"images using one of <a href=\"%s\">several available plugins from WordPress."
-"org</a>."
 msgstr ""
 
 #: lib/media.php:2196
@@ -5064,9 +5057,9 @@ msgstr ""
 
 #: lib/messages.php:1099
 msgid ""
-"You may choose an image size anywhere from 1px up to 2048px, however note "
-"that many users have lower resolution images, so requesting larger sizes may "
-"result in pixelation/low-quality images."
+"You may choose an image size from 1px up to 2048px, however note that many "
+"users have lower resolution images, so choosing a larger size may result in "
+"pixelation and lower-quality images."
 msgstr ""
 
 #: lib/messages.php:1105
@@ -5138,8 +5131,8 @@ msgstr ""
 
 #: lib/messages.php:1165
 msgid ""
-"Your Shopper Approved Site ID and API Token are required to retrieve Shopper "
-"Approved customer ratings and reviews."
+"Your Shopper Approved Site ID and API Token are required to retrieve ratings "
+"and reviews from Shopper Approved."
 msgstr ""
 
 #: lib/messages.php:1167
@@ -5150,8 +5143,8 @@ msgstr ""
 
 #: lib/messages.php:1173
 msgid ""
-"Retrieve Shopper Approved customer ratings and reviews for these selected "
-"post types."
+"Retrieve ratings and reviews from Shopper Approved for the selected post "
+"types."
 msgstr ""
 
 #: lib/messages.php:1179
@@ -7592,7 +7585,7 @@ msgstr ""
 
 #: lib/submenu/tools.php:92
 msgid ""
-"\"Content Creators\" are all administrators, editors, authors, or "
+"\"Content Creators\" are all administrators, editors, authors, and "
 "contributors."
 msgstr ""
 

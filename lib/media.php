@@ -1096,7 +1096,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$img_title     = get_the_title( $pid );
 				$img_func_url  = __( 'https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/', 'wpsso' );
 				$img_func_name = 'wp_get_attachment_metadata()';
-				$img_regen_msg = sprintf( __( 'You may consider re-generating the thumbnails of all WordPress Media Library images using one of <a href="%s">several available plugins from WordPress.org</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/regenerate+thumbnails/' );
+				$img_regen_msg = sprintf( __( 'You may consider regenerating the thumbnails of all WordPress Media Library images using one of <a href="%s">several available plugins from WordPress.org</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/regenerate+thumbnails/' );
 
 				if ( isset( $img_meta[ 'file' ] ) ) {
 

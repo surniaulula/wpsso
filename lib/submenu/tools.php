@@ -89,7 +89,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			echo '<p class="status-msg smaller left">';
 			echo '** ';
 			echo sprintf( __( 'Members of the %s role may be selected for certain Schema properties.', 'wpsso' ), $role_label ) . ' ';
-			echo __( '"Content Creators" are all administrators, editors, authors, or contributors.', 'wpsso' );
+			echo __( '"Content Creators" are all administrators, editors, authors, and contributors.', 'wpsso' );
 			echo '</p>' . "\n";
 
 			echo '</div><!-- #tools-content -->' . "\n";
