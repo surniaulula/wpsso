@@ -1601,16 +1601,18 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					return;	// Stop here.
 			}
 
-			$mod           = $this->get_mod( $post_id );
-			$permalink     = get_permalink( $post_id );
+			$mod = $this->get_mod( $post_id );
+
 			$col_meta_keys = parent::get_column_meta_keys();
-			$cache_types   = array();
-			$cache_md5_pre = $this->p->lca . '_';
 
 			foreach ( $col_meta_keys as $col_key => $meta_key ) {
 
 				delete_post_meta( $post_id, $meta_key );
 			}
+
+			$permalink = get_permalink( $post_id );
+
+			$this->p->cache->clear( $permalink );
 
 			if ( ini_get( 'open_basedir' ) ) {
 
@@ -1621,22 +1623,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$check_url = SucomUtilWP::wp_get_shortlink( $post_id, $context = 'post' );
 			}
 
-			$cache_types[ 'transient' ][] = array(
-				'id'   => $cache_md5_pre . md5( 'SucomCache::get(url:' . $permalink . ')' ),
-				'pre'  => $cache_md5_pre,
-				'salt' => 'SucomCache::get(url:' . $permalink . ')',
-			);
-
 			if ( $permalink !== $check_url ) {
 
-				$cache_types[ 'transient' ][] = array(
-					'id'   => $cache_md5_pre . md5( 'SucomCache::get(url:' . $check_url . ')' ),
-					'pre'  => $cache_md5_pre,
-					'salt' => 'SucomCache::get(url:' . $check_url . ')',
-				);
+				$this->p->cache->clear( $check_url );
 			}
 
-			$this->clear_mod_cache( $mod, $cache_types );
+			$this->clear_mod_cache( $mod );
 
 			/**
 			 * Clear the post terms (categories, tags, etc.) for published (aka public) posts.

@@ -26,7 +26,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		public $default_file_cache_exp   = DAY_IN_SECONDS;
 		public $default_object_cache_exp = DAY_IN_SECONDS;
 
-		public $curl_connect_timeout     = 5;	// The number of seconds to wait while trying to connect. Use 0 to wait indefinitely.
+		public $curl_connect_timeout     = 10;	// The number of seconds to wait while trying to connect. Use 0 to wait indefinitely.
 		public $curl_timeout             = 15;	// The maximum number of seconds to allow cURL functions to execute. 
 		public $curl_max_redirs          = 10;	// The maximum amount of HTTP redirections to follow.
 
@@ -133,6 +133,9 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 		}
 
+		/**
+		 * Returns false or time in seconds.
+		 */
 		public function is_ignored_url( $url_nofrag ) {
 
 			$this->maybe_load_ignored_urls();
@@ -146,10 +149,10 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'requests to cache ' . $url_nofrag . ' ignored for the next ' . $time_left . ' second(s)' );
+						$this->p->debug->log( 'requests to retrieve and cache ' . $url_nofrag . ' are ignored for another ' . $time_left . ' second(s)' );
 					}
 
-					return true;
+					return $time_left;
 
 				}
 
@@ -214,7 +217,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					}
 				}
 
-				$errors[] = sprintf( __( 'Additional requests to retrieve and cache this URL will be silently ignored for the next %d second(s).',
+				$errors[] = sprintf( __( 'Additional requests to retrieve and cache this URL will be ignored for another %d second(s).',
 					$this->text_domain ), $this->ignored_urls[ 'ignore_secs' ] );
 
 				/**
@@ -227,7 +230,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				$this->p->debug->log( 'error connecting to ' . $url_nofrag . ' for caching (http code ' . $http_code . ')' );
 
-				$this->is_ignored_url( $url_nofrag );
+				$this->is_ignored_url( $url_nofrag );	// Returns false or time in seconds.
 			}
 		}
 
@@ -608,7 +611,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					break;
 			}
 
-			if ( $this->is_ignored_url( $url_nofrag ) ) {
+			if ( $this->is_ignored_url( $url_nofrag ) ) {	// Returns false or time in seconds.
 
 				return $failure;
 			}
@@ -617,8 +620,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			curl_setopt( $ch, CURLOPT_URL, $url_nofrag );
 			curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
-			curl_setopt( $ch, CURLOPT_CONNECTTIMEOUT, $this->curl_connect_timeout );
-			curl_setopt( $ch, CURLOPT_TIMEOUT, $this->curl_timeout );
+			curl_setopt( $ch, CURLOPT_CONNECTTIMEOUT, $this->curl_connect_timeout );	// 10 seconds (default is 300 seconds).
+			curl_setopt( $ch, CURLOPT_TIMEOUT, $this->curl_timeout );			// 15 seconds (default is no timeout).
 
 			/**
 			 * When negotiating a TLS or SSL connection, the server sends a certificate indicating its identity. Curl
@@ -664,6 +667,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				'PROXY',
 				'PROXYUSERPWD',
 				'USERAGENT',
+				'CONNECTTIMEOUT',
 			);
 
 			foreach ( $allowed_curl_const as $const_suffix ) {

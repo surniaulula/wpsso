@@ -1774,6 +1774,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$wpsso =& Wpsso::get_instance();
 
 			if ( $wpsso->debug->enabled ) {
+
 				$wpsso->debug->mark();
 			}
 
@@ -1805,7 +1806,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 *
 			 * Example: 'site_org_logo_url:width#fr_FR'.
 			 */
-			return array(
+			$org_opts = array(
 				'org_url'               => SucomUtil::get_site_url( $wpsso->options, $mixed ),
 				'org_name'              => SucomUtil::get_site_name( $wpsso->options, $mixed ),
 				'org_name_alt'          => SucomUtil::get_site_name_alt( $wpsso->options, $mixed ),
@@ -1820,6 +1821,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'org_place_id'          => $wpsso->options[ 'site_org_place_id' ],
 				'org_sameas'            => $org_sameas,
 			);
+
+			return $org_opts;
 		}
 
 		public static function add_aggregate_offer_data( &$json_data, array $mod, array $mt_offers ) {
@@ -3205,15 +3208,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public static function is_valid_val( $val ) {
 
-			if ( null === $assoc[ $key ] ) {	// Null value is not valid.
+			if ( null === $val ) {	// Null value is not valid.
 
 				return false;
 
-			} elseif ( '' === $assoc[ $key ] ) {	// Empty string.
+			} elseif ( '' === $val ) {	// Empty string.
 
 				return false;
 
-			} elseif ( 'none' === $assoc[ $key ] ) {	// Disabled option.
+			} elseif ( 'none' === $val ) {	// Disabled option.
 
 				return false;
 			}

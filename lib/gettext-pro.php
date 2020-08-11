@@ -216,5 +216,9 @@ __( '"%s" plugin not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders.', 'w
 __( 'Yotpo for WooCommerce API library file "%s" not found.', 'wpsso' );
 __( 'Yotpo for WooCommerce "%s" class does not exist.', 'wpsso' );
 __( 'getting shopper approved ratings and reviews', 'wpsso' );
+__( 'There has been a previous error connecting to %s for caching.', 'wpsso' );
+__( 'Requests to retrieve and cache this URL are ignored for another %d second(s)', 'wpsso' );
+__( 'There has been a previous error connecting to %s for caching.', 'wpsso' );
+__( 'Requests to retrieve and cache this URL are ignored for another %d second(s)', 'wpsso' );
 _x( '[%s Company]', 'option value', 'wpsso' );
 _x( '[%s Location]', 'option value', 'wpsso' );

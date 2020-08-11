@@ -861,6 +861,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 						}
 
 					} else {
+
 						$cache_id = $cache_key = $mixed;
 					}
 
