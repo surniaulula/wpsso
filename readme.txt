@@ -313,8 +313,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* Added new options under SSO &gt; Advanced Settings &gt; Shopper Approved:
-		* Shopper Approved Review Limit (100) reviews
-		* Shopper Approved Review Age (60) months
+		* Maximum Number of Reviews (100)
+		* Maximum Age of Reviews (60) months
 * **Bugfixes**
 	* None.
 * **Developer Notes**
