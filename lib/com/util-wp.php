@@ -1243,7 +1243,8 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				}
 				
 			} else {
-				$decs = '(' . $obj->description . ')';
+
+				$desc = '(' . $obj->description . ')';
 			}
 
 			return trim( $obj->label . ' ' . $desc );
