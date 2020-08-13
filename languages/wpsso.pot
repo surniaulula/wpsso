@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.1.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 8.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3248,7 +3248,7 @@ msgid "Posts, Pages, and Custom Post Types"
 msgstr ""
 
 #: lib/gettext-pro.php:35 lib/media.php:122 lib/media.php:1094
-#: lib/media.php:1226 lib/media.php:2173 lib/pro/admin/advanced.php:213
+#: lib/media.php:1226 lib/media.php:2187 lib/pro/admin/advanced.php:213
 #: lib/std/admin/advanced.php:220
 msgid "Media Library"
 msgstr ""
@@ -4064,7 +4064,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: lib/media.php:125 lib/media.php:2183
+#: lib/media.php:125 lib/media.php:2197
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
@@ -4130,17 +4130,17 @@ msgid ""
 "%3$s function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:2199
+#: lib/media.php:2213
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:2250
+#: lib/media.php:2264
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:2283
+#: lib/media.php:2297
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."

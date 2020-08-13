@@ -1512,6 +1512,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return isset( $mt_ret[ 0 ] ) ? $mt_ret[ 0 ] : array();
 		}
 
+		/**
+		 * Returns an array of single video associative arrays.
+		 */
 		public function get_content_videos( $num = 0, $mod = true, $check_dupes = true, $content = '' ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -1642,6 +1645,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								'height' => preg_match( '/ height=[\'"]?([0-9]+)[\'"]?/i', $media[ 0 ], $match ) ? $match[ 1 ] : WPSSO_UNDEF,
 							);
 
+							/**
+							 * Returns a single video associative array.
+							 */
 							$mt_single_video = $this->get_video_details( $args, $check_dupes );
 
 							if ( ! empty( $mt_single_video ) ) {
@@ -1693,6 +1699,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 									if ( ! $check_dupes || $this->p->util->is_uniq_url( $args[ 'url' ], 'content_video' ) ) {
 
+										/**
+										 * Returns a single video associative array.
+										 */
 										$mt_single_video = $this->get_video_details( $args, $check_dupes );
 
 										if ( ! empty( $mt_single_video ) ) {
@@ -1739,6 +1748,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $mt_videos;
 		}
 
+		/**
+		 * Returns a single video associative array.
+		 */
 		public function get_video_details( array $args, $check_dupes = true, $fallback = false ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -1981,17 +1993,19 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				return array();
 
-			} else {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'returning single video array' );
-				}
-
-				return $mt_single_video;
 			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'returning single video array' );
+			}
+
+			return $mt_single_video;
 		}
 
+		/**
+		 * Modifies a single video associative array.
+		 */
 		public function add_og_video_from_url( array &$mt_single_video, $url ) {
 
 			if ( $this->p->debug->enabled ) {

@@ -614,7 +614,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						foreach ( $mt_og[ 'og:video' ] as &$mt_single_video ) {
 
-							if ( is_array( $mt_single_video ) ) {
+							if ( is_array( $mt_single_video ) ) {	// Just in case.
 
 								$mt_single_video = SucomUtil::preg_grep_keys( '/^og:image/', $mt_single_video, $invert = true );
 
@@ -897,6 +897,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $mt_images;
 		}
 
+		/**
+		 * Returns an array of single video associative arrays.
+		 */
 		public function get_all_videos( $num = 0, array $mod, $check_dupes = true, $md_pre = 'og', $force_prev = false ) {
 
 			$cache_args = array(
