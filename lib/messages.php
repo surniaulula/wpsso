@@ -2414,10 +2414,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-							$md_tab = _x( 'Priority Media', 'metabox tab', 'wpsso' );
+							$media_tab = _x( 'Priority Media', 'metabox tab', 'wpsso' );
 
 							$text .= sprintf( __( 'A larger custom image can be selected in the %1$s metabox under the %2$s tab.',
-								'wpsso' ), $mb_title, $md_tab );
+								'wpsso' ), $mb_title, $media_tab );
 						}
 
 						/**
@@ -2453,6 +2453,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 										'wpsso' ) . '</em></p>';
 
 								$text .= '<ul>';
+
+								$text .= '<li>' . sprintf( __( 'Select a larger image under the %1$s &gt; %2$s tab.',
+									'wpsso' ), $mb_title, $media_tab ) . '</li>';
 
 								if ( empty( $this->p->options[ 'plugin_upscale_images' ] ) ) {
 
