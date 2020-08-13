@@ -2413,49 +2413,74 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						if ( WpssoWpMeta::is_meta_page() ) {
 
 							$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
-							$md_tab   = _x( 'Priority Media', 'metabox tab', 'wpsso' );
+
+							$md_tab = _x( 'Priority Media', 'metabox tab', 'wpsso' );
 
 							$text .= sprintf( __( 'A larger custom image can be selected in the %1$s metabox under the %2$s tab.',
 								'wpsso' ), $mb_title, $md_tab );
 						}
 
 						/**
-						 * WpssoMedia->img_size_within_limits() uses show_adjust_img_opts = false for
-						 * images with an incorrect aspect ratio.
+						 * WpssoMedia->is_image_within_config_limits() sets 'show_adjust_img_opts' = false
+						 * for images with an aspect ratio that exceeds the hard-coded config limits.
 						 */
-						if ( ! isset( $info[ 'show_adjust_img_opts' ] ) || ! empty( $info[ 'show_adjust_img_opts' ] ) ) {
+						if ( ! isset( $info[ 'show_adjust_img_opts' ] ) ||
+							! empty( $info[ 'show_adjust_img_opts' ] ) ) {
 
 							if ( current_user_can( 'manage_options' ) ) {
 
+								$upscale_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
+									_x( 'Upscale Media Library Images', 'option label', 'wpsso' ) );
+
+								$pct_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
+									_x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ) );
+
+								$img_dim_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
+									_x( 'Enforce Image Dimension Checks', 'option label', 'wpsso' ) );
+
+								$img_sizes_page_link = $this->p->util->get_admin_url( 'image-sizes',
+									_x( 'Image Sizes', 'lib file description', 'wpsso' ) );
+
 								/**
-								 * Signal that additional md5() matching sections should be removed from the notice messages.
+								 * Add an HTML comment to signal that additional md5() matching
+								 * sections should be removed from any following notice messages
+								 * (ie. show this section only once).
 								 */
 								$text .= '<!-- show-once -->';
 
-								$text .= ' <p style="margin-left:0;"><em>' . __( 'Additional information shown only to users with Administrative privileges:', 'wpsso' ) . '</em></p>';
+								$text .= ' <p style="margin-left:0;"><em>' .
+									__( 'Additional information shown only to users with Administrative privileges:',
+										'wpsso' ) . '</em></p>';
 
 								$text .= '<ul>';
 
-								$img_sizes_page_link = $this->p->util->get_admin_url( 'image-sizes', _x( 'Image Sizes', 'lib file description', 'wpsso' ) );
-
-								$text .= ' <li>' . sprintf( __( 'Update image size dimensions in the %s settings page.', 'wpsso' ), $img_sizes_page_link ) . '</li>';
-
 								if ( empty( $this->p->options[ 'plugin_upscale_images' ] ) ) {
 
-									$upscale_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', _x( 'Upscale Media Library Images', 'option label', 'wpsso' ) );
+									$text .= '<li>' . sprintf( __( 'Enable the %s option.',
+										'wpsso' ), $upscale_option_link ) . '</li>';
 
-									$text .= '<li>' . sprintf( __( 'Enable the %s option.', 'wpsso' ), $upscale_option_link ) . '</li>';
+								} else {
+
+									$text .= ' <li>' . sprintf( __( 'Increase the %s option value.',
+										'wpsso' ), $pct_option_link ) . '</li>';
 								}
 
-								$percent_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ) );
+								/**
+								 * WpssoMedia->is_image_within_config_limits() sets
+								 * 'show_adjust_img_size_opts' = false for images that are too
+								 * small for the hard-coded config limits.
+								 */
+								if ( ! isset( $info[ 'show_adjust_img_size_opts' ] ) ||
+									! empty( $info[ 'show_adjust_img_size_opts' ] ) ) {
 
-								$text .= ' <li>' . sprintf( __( 'Increase the %s option value.', 'wpsso' ), $percent_option_link ) . '</li>';
+									$text .= ' <li>' . sprintf( __( 'Update image size dimensions in the %s settings page.',
+										'wpsso' ), $img_sizes_page_link ) . '</li>';
 
-								if ( ! empty( $this->p->options[ 'plugin_check_img_dims' ] ) ) {
+									if ( ! empty( $this->p->options[ 'plugin_check_img_dims' ] ) ) {
 
-									$img_dim_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', _x( 'Enforce Image Dimension Checks', 'option label', 'wpsso' ) );
-
-									$text .= ' <li>' . sprintf( __( 'Disable the %s option (not recommended).', 'wpsso' ), $img_dim_option_link ) . '</li>';
+										$text .= ' <li>' . sprintf( __( 'Disable the %s option (not recommended).',
+											'wpsso' ), $img_dim_option_link ) . '</li>';
+									}
 								}
 
 								$text .= '</ul>';

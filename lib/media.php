@@ -765,8 +765,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								break;	// Stop here.
 							}
 
-							$check_size_limits      = true;
-							$img_size_within_limits = true;
+							$check_size_limits = true;
+							$img_within_limits = true;
 
 							/**
 							 * Get the actual width and height of the image using http / https.
@@ -791,8 +791,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								if ( $mt_single_image[ 'og:image:width' ] === WPSSO_UNDEF &&
 									$mt_single_image[ 'og:image:height' ] === WPSSO_UNDEF ) {
 
-									$check_size_limits      = false;
-									$img_size_within_limits = false;
+									$check_size_limits = false;
+									$img_within_limits = false;
 								}
 
 							} elseif ( $this->p->debug->enabled ) {
@@ -812,7 +812,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								/**
 								 * Check if image exceeds hard-coded limits (dimensions, ratio, etc.).
 								 */
-								$img_size_within_limits = $this->img_size_within_limits( $mt_single_image[ 'og:image:url' ],
+								$img_within_limits = $this->is_image_within_config_limits( $mt_single_image[ 'og:image:url' ],
 									$size_name, $mt_single_image[ 'og:image:width' ], $mt_single_image[ 'og:image:height' ],
 										__( 'Content', 'wpsso' ) );
 
@@ -822,7 +822,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 									' (' . $mt_single_image[ 'og:image:width' ] . 'x' . $mt_single_image[ 'og:image:height' ] . ')' );
 							}
 
-							if ( ! apply_filters( $this->p->lca . '_content_accept_img_dims', $img_size_within_limits,
+							if ( ! apply_filters( $this->p->lca . '_content_accept_img_dims', $img_within_limits,
 								$mt_single_image, $size_name, $attr_name, $content_passed ) ) {
 
 								$mt_single_image = array();
@@ -1364,9 +1364,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			/**
 			 * Check if image exceeds hard-coded limits (dimensions, ratio, etc.).
 			 */
-			$img_size_within_limits = $this->img_size_within_limits( $pid, $size_name, $img_width, $img_height );
+			$img_within_limits = $this->is_image_within_config_limits( $pid, $size_name, $img_width, $img_height );
 
-			if ( apply_filters( $this->p->lca . '_attached_accept_img_dims', $img_size_within_limits, $img_url, $img_width, $img_height, $size_name, $pid ) ) {
+			if ( apply_filters( $this->p->lca . '_attached_accept_img_dims', $img_within_limits, $img_url, $img_width, $img_height, $size_name, $pid ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -2175,7 +2175,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 *
 		 * $img_lib can be 'Media Library', 'NextGEN Gallery', 'Content', etc.
 		 */
-		public function img_size_within_limits( $img_mixed, $size_name, $img_width, $img_height, $img_lib = null ) {
+		public function is_image_within_config_limits( $img_mixed, $size_name, $img_width, $img_height, $img_lib = null ) {
 
 			if ( 0 !== strpos( $size_name, $this->p->lca . '-' ) ) {	// Only check our own sizes.
 
@@ -2296,7 +2296,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					 */
 					$notice_msg = sprintf( __( '%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>.', 'wpsso' ), $img_lib, $img_label, $img_width . 'x' . $img_height, $min_width . 'x' . $min_height, $size_label ) . ' ';
 
-					$notice_msg .= $this->p->msgs->get( 'notice-image-rejected' );
+					$notice_msg .= $this->p->msgs->get( 'notice-image-rejected', array( 'show_adjust_img_size_opts' => false ) );
 
 					$notice_key = 'image_' . $img_mixed . '_' . $img_width . 'x' . $img_height . '_' . $size_name . '_smaller_than_minimum_allowed';
 
