@@ -307,6 +307,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.0.1-dev.1 (2020/08/11)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added extra checks and debugging messages for a possible invalid video array from the `WpssoOpenGraph->get_all_videos()` method.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.2.
+
 **Version 8.0.0 (2020/08/11)**
 
 Google has updated their Rich Results requirements and now prefers 1:1, 4:3, and 16:9 images for all Schema types, not just the Schema Article type for AMP webpages. The "Schema" and "Schema Article" image sizes have been removed and replaced by new Schema 1:1, 4:3, and 16:9 image sizes.
@@ -737,6 +751,10 @@ The Open Graph meta tags for WooCommerce products have been extended to include 
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.0.1-dev.1 =
+
+(2020/08/12) Added extra checks and debugging messages for a possible invalid video array.
 
 = 8.0.0 =
 
