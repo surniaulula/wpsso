@@ -307,7 +307,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.1.0-dev.2 (2020/08/13)**
+**Version 8.1.0 (2020/08/13)**
 
 * **New Features**
 	* None.
@@ -316,7 +316,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Maximum Number of Reviews (100)
 		* Maximum Age of Reviews (60) months
 * **Bugfixes**
-	* None.
+	* Fixed a PHP fatal error for `SucomUtil::preg_grep_keys()` when adding a custom video from the Document SSO metabox.
 * **Developer Notes**
 	* Added extra checks and debugging messages for a possible invalid video array from the `WpssoOpenGraph->get_all_videos()` method.
 * **Requires At Least**
@@ -754,7 +754,7 @@ The Open Graph meta tags for WooCommerce products have been extended to include 
 
 == Upgrade Notice ==
 
-= 8.1.0-dev.2 =
+= 8.1.0 =
 
 (2020/08/13) Added extra checks and debugging messages for a possible invalid video array.
 
