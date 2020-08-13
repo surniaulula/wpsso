@@ -163,8 +163,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/**
 				 * Numeric options that must be positive (1 or more).
 				 */
-				case 'plugin_upscale_img_max':
 				case 'plugin_min_shorten':
+				case 'plugin_shopperapproved_num_max':
+				case 'plugin_shopperapproved_age_max':
+				case 'plugin_upscale_img_max':
 				case ( preg_match( '/_(len|warn)$/', $base_key ) ? true : false ):
 
 					return 'pos_int';
@@ -263,6 +265,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'plugin_bitly_group_name':		// Bitly Group Name (Optional).
 				case 'plugin_dlmyapp_api_key':
 				case 'plugin_owly_api_key':
+				case 'plugin_shopperapproved_site_id':
+				case 'plugin_shopperapproved_token':
 				case 'plugin_yourls_username':
 				case 'plugin_yourls_password':
 				case 'plugin_yourls_token':

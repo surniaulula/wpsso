@@ -23,7 +23,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '8.0.1-dev.1',	// Plugin version.
-					'opt_version' => '753',		// Increment when changing default option values.
+					'opt_version' => '754',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Make sure your content looks great on social sites and search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -1610,6 +1610,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_owly_api_key'                 => '',		// Ow.ly API Key.
 					'plugin_shopperapproved_site_id'      => '',		// Shopper Approved Site ID.
 					'plugin_shopperapproved_token'        => '',		// Shopper Approved API Token.
+					'plugin_shopperapproved_num_max'      => 100,		// Shopper Approved Review Limit.
+					'plugin_shopperapproved_age_max'      => 60,		// Shopper Approved Review Age.
 					'plugin_shopperapproved_for_download' => 1,		// For Easy Digital Downloads.
 					'plugin_shopperapproved_for_product'  => 1,		// For WooCommerce, etc.
 					'plugin_yourls_api_url'               => '',		// YOURLS API URL.

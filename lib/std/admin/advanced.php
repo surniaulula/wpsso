@@ -455,6 +455,14 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$form->get_th_html( _x( 'Shopper Approved API Token', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_shopperapproved_token' ) .
 			'<td class="blank mono"></td>';
 
+			$table_rows[ 'plugin_shopperapproved_num_max' ] = '' .
+			$form->get_th_html( _x( 'Shopper Approved Review Limit', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_shopperapproved_num_max' ) .
+			'<td>' . $form->get_no_input( 'plugin_shopperapproved_num_max', $css_class = 'short' ) . ' ' . _x( 'reviews', 'option comment', 'wpsso' ) . '</td>';
+
+			$table_rows[ 'plugin_shopperapproved_age_max' ] = '' .
+			$form->get_th_html( _x( 'Shopper Approved Review Age', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_shopperapproved_age_max' ) .
+			'<td>' . $form->get_no_input( 'plugin_shopperapproved_age_max', $css_class = 'short' ) . ' ' . _x( 'months', 'option comment', 'wpsso' ) . '</td>';
+
 			$sa_for_values = SucomUtilWP::get_post_type_labels( array(), $val_prefix = '', _x( 'Post Type', 'option label', 'wpsso' ) );
 
 			$table_rows[ 'plugin_shopperapproved_for' ] = '' .

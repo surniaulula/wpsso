@@ -893,13 +893,29 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						return array( $this->p->lca . '-' . $mixed );
 
 					case 'schema':
-					case $this->p->lca . '-schema':
 
 						return array(
 							$this->p->lca . '-schema-1-1',
 							$this->p->lca . '-schema-4-3',
 							$this->p->lca . '-schema-16-9',
 						);
+
+					case $this->p->lca . '-schema':			// Deprecated on 2020/08/12.
+					case $this->p->lca . '-schema-article':		// Deprecated on 2020/08/12.
+
+						return array( $this->p->lca . '-schema-1-1' );
+
+					case $this->p->lca . '-schema-article-1-1':	// Deprecated on 2020/08/12.
+
+						return array( $this->p->lca . '-schema-1-1' );
+
+					case $this->p->lca . '-schema-article-4-3':	// Deprecated on 2020/08/12.
+
+						return array( $this->p->lca . '-schema-4-3' );
+
+					case $this->p->lca . '-schema-article-16-9':	// Deprecated on 2020/08/12.
+
+						return array( $this->p->lca . '-schema-16-9' );
 
 					default:
 

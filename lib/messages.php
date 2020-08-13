@@ -1168,6 +1168,18 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
+						case 'tooltip-plugin_shopperapproved_num_max':
+
+							$text = __( 'The maximum number of reviews retrieved from the Shopper Approved API.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-plugin_shopperapproved_age_max':
+
+							$text = __( 'The maximum age of reviews retrieved from the Shopper Approved API.', 'wpsso' );
+
+							break;
+
 						case 'tooltip-plugin_shopperapproved_for':
 
 							$text = __( 'Retrieve ratings and reviews from Shopper Approved for the selected post types.', 'wpsso' );
