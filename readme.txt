@@ -307,7 +307,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.1.0-dev.1 (2020/08/11)**
+**Version 8.1.0-dev.2 (2020/08/13)**
 
 * **New Features**
 	* None.
@@ -754,9 +754,9 @@ The Open Graph meta tags for WooCommerce products have been extended to include 
 
 == Upgrade Notice ==
 
-= 8.1.0-dev.1 =
+= 8.1.0-dev.2 =
 
-(2020/08/12) Added extra checks and debugging messages for a possible invalid video array.
+(2020/08/13) Added extra checks and debugging messages for a possible invalid video array.
 
 = 8.0.0 =
 
