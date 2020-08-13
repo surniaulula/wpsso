@@ -612,21 +612,19 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							$this->p->debug->log( 'removing video images to avoid duplicates' );
 						}
 
-						foreach ( $mt_og[ 'og:video' ] as &$mt_single_video ) {
+						foreach ( $mt_og[ 'og:video' ] as $key => $mt_single_video ) {
 
-							if ( is_array( $mt_single_video ) ) {	// Just in case.
-
-								$mt_single_video = SucomUtil::preg_grep_keys( '/^og:image/', $mt_single_video, $invert = true );
-
-							} else {
+							if ( ! is_array( $mt_single_video ) ) {	// Just in case.
 
 								if ( $this->p->debug->enabled ) {
 
 									$this->p->debug->log( 'video ignored: $mt_single_video is not an array' );
-
-									$this->p->debug->log( $mt_single_video );
 								}
+
+								continue;
 							}
+
+							$mt_og[ 'og:video' ][ $key ] = SucomUtil::preg_grep_keys( '/^og:image/', $mt_single_video, $invert = true );
 						}
 					}
 
@@ -1066,6 +1064,16 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			$og_extend = array();
 
 			foreach ( $mt_ret as $num => $mt_single_video ) {
+
+				if ( ! is_array( $mt_single_video ) ) {	// Just in case.
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'video ignored: $mt_single_video is not an array' );
+					}
+
+					continue;
+				}
 
 				if ( 'text/html' !== $mt_single_video[ 'og:video:type' ] && ! empty( $mt_single_video[ 'og:video:embed_url' ] ) ) {
 
