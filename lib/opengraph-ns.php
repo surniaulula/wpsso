@@ -192,15 +192,7 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 						switch( $mt_name ) {
 
 							/**
-							 * Allow the main product and the offer to have the same images.
-							 */
-							case 'og:image':
-							case 'og:video':
-
-								break;
-
-							/**
-							 * Allow only a single top-level main product brand.
+							 * Allow only a single main product brand.
 							 */
 							case 'product:brand':
 
@@ -210,31 +202,6 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 								}
 
 								unset ( $offer[ $mt_name ] );
-
-								break;
-
-							/**
-							 * Allow cascading and remove duplicate offer values.
-							 */
-							default:
-
-								if ( isset( $mt_og[ $mt_name ] ) ) {
-								
-									if ( $this->p->debug->enabled ) { 
-
-										$this->p->debug->log( 'comparing main product vs offer ' . $mt_name . ' value' );
-									}
-
-									if ( $mt_og[ $mt_name ] === $offer[ $mt_name ] ) {
-
-										if ( $this->p->debug->enabled ) { 
-
-											$this->p->debug->log( 'identical values detected - unsetting offer ' . $mt_name );
-										}
-
-										unset ( $offer[ $mt_name ] );
-									}
-								}
 
 								break;
 						}

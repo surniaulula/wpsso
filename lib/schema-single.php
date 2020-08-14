@@ -899,8 +899,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'gtin12'          => 'product:gtin12',			// Valid for both products and offers.
 				'gtin8'           => 'product:gtin8',			// Valid for both products and offers.
 				'gtin'            => 'product:gtin',			// Valid for both products and offers.
+				'availability'    => 'product:availability',		// Only valid for offers.
 				'itemCondition'   => 'product:condition',
-				'availability'    => 'product:availability',
 				'price'           => 'product:price:amount',
 				'priceCurrency'   => 'product:price:currency',
 				'priceValidUntil' => 'product:sale_price_dates:end',
