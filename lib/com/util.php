@@ -1952,25 +1952,36 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_mt_product_seed( $mt_pre = 'product', array $mt_og = array() ) {
 
 			$mt_ret = array(
+				
+				/**
+				 * Product part numbers.
+				 */
 				$mt_pre . ':id'                              => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':url'                             => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':age_group'                       => '',
-				$mt_pre . ':availability'                    => '',
-				$mt_pre . ':brand'                           => '',	// There can only be one Open Graph brand meta tag, which must be a string, not an array.
-				$mt_pre . ':category'                        => '',	// Product category ID.
-				$mt_pre . ':color'                           => '',
-				$mt_pre . ':condition'                       => '',
+				$mt_pre . ':retailer_item_id'                => '',	// Product ID.
+				$mt_pre . ':retailer_part_no'                => '',	// Product SKU.
+				$mt_pre . ':mfr_part_no'                     => '',	// Product MPN.
 				$mt_pre . ':ean'                             => '',	// aka EAN, EAN-13, GTIN-13.
-				$mt_pre . ':expiration_time'                 => '',
 				$mt_pre . ':gtin14'                          => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':gtin13'                          => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':gtin12'                          => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':gtin8'                           => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':gtin'                            => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':is_product_shareable'            => '',
 				$mt_pre . ':isbn'                            => '',
+				$mt_pre . ':upc'                             => '',	// Aka the UPC, UPC-A, UPC, GTIN-12.
+
+				/**
+				 * Product attributes and descriptions.
+				 */
+				$mt_pre . ':url'                             => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':age_group'                       => '',
+				$mt_pre . ':availability'                    => '',
+				$mt_pre . ':brand'                           => '',
+				$mt_pre . ':category'                        => '',	// Product category ID.
+				$mt_pre . ':color'                           => '',
+				$mt_pre . ':condition'                       => '',
+				$mt_pre . ':expiration_time'                 => '',
+				$mt_pre . ':is_product_shareable'            => '',
 				$mt_pre . ':material'                        => '',
-				$mt_pre . ':mfr_part_no'                     => '',	// Product MPN.
 				$mt_pre . ':pattern'                         => '',
 				$mt_pre . ':plural_title'                    => '',
 				$mt_pre . ':product_link'                    => '',
@@ -1982,11 +1993,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':quantity:unit_text'              => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':retailer'                        => '',
 				$mt_pre . ':retailer_category'               => '',
-				$mt_pre . ':retailer_item_id'                => '',	// Product ID.
-				$mt_pre . ':retailer_part_no'                => '',	// Product SKU.
 				$mt_pre . ':retailer_title'                  => '',
 				$mt_pre . ':target_gender'                   => '',
-				$mt_pre . ':upc'                             => '',	// Aka the UPC, UPC-A, UPC, GTIN-12.
 
 				/**
 				 * Product ratings and reviews.
