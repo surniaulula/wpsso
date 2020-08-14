@@ -126,17 +126,17 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 					}
 				}
 
-				$prefix_value = '';
+				$attr_val = '';
 
 				foreach ( $og_ns as $name => $url ) {
 
-					if ( false === strpos( $prefix_value, ' ' . $name . ': ' . $url ) ) {
+					if ( false === strpos( $attr_val, ' ' . $name . ': ' . $url ) ) {
 
-						$prefix_value .= ' ' . $name . ': ' . $url;
+						$attr_val .= ' ' . $name . ': ' . $url;
 					}
 				}
 
-				$html_attr .= ' prefix="' . trim( $prefix_value ) . '"';
+				$html_attr .= ' prefix="' . trim( $attr_val ) . '"';
 			}
 
 			return trim( $html_attr );
@@ -172,38 +172,35 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
-			 * If we have a GTIN number, try to improve the assigned property name.
-			 */
-			WpssoOpenGraph::check_gtin_mt_value( $mt_og, $prefix = 'product' );
+			WpssoOpenGraph::check_mt_value_gtin( $mt_og, $mt_pre = 'product' );
 
-			WpssoOpenGraph::check_price_mt_value( $mt_og, $prefix = 'product' );
+			WpssoOpenGraph::check_mt_value_price( $mt_og, $mt_pre = 'product' );
 
 			/**
 			 * Include variations (aka product offers) if available.
 			 */
 			if ( ! empty( $mt_og[ 'product:offers' ] ) && is_array( $mt_og[ 'product:offers' ] ) ) {
 
-				foreach ( $mt_og[ 'product:offers' ] as $num => $offer ) {
+				foreach ( $mt_og[ 'product:offers' ] as $num => &$offer ) {	// Allow changes to the offer array.
 
-					/**
-					 * If we have a GTIN number, try to improve the assigned property name.
-					 */
-					WpssoOpenGraph::check_gtin_mt_value( $offer, $prefix = 'product' );
+					WpssoOpenGraph::check_mt_value_gtin( $offer, $mt_pre = 'product' );
 
-					WpssoOpenGraph::check_price_mt_value( $offer, $prefix = 'product' );
+					WpssoOpenGraph::check_mt_value_price( $offer, $mt_pre = 'product' );
 
 					foreach( $offer as $mt_name => $mt_value ) {
 
 						switch( $mt_name ) {
 
+							/**
+							 * Allow the main product and the offer to have the same images.
+							 */
 							case 'og:image':
 							case 'og:video':
 
 								break;
 
 							/**
-							 * Only include a single top-level product brand.
+							 * Allow only a single top-level main product brand.
 							 */
 							case 'product:brand':
 
@@ -212,25 +209,20 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 									$mt_og[ $mt_name ] = $mt_value;
 								}
 
-								unset ( $mt_og[ 'product:offers' ][ $num ][ $mt_name ] );
+								unset ( $offer[ $mt_name ] );
 
 								break;
 
-							case 'product:retailer_item_id':
-							case 'product:retailer_part_no':
-							case 'product:mfr_part_no':
-							case 'product:gtin14':
-							case 'product:gtin13':
-							case 'product:gtin12':
-							case 'product:gtin8':
-							case 'product:gtin':
-							case 'product:isbn':
+							/**
+							 * Allow cascading and remove duplicate offer values.
+							 */
+							default:
 
 								if ( isset( $mt_og[ $mt_name ] ) ) {
 								
 									if ( $this->p->debug->enabled ) { 
 
-										$this->p->debug->log( 'comparing main product vs offer ' . $mt_name . ' values' );
+										$this->p->debug->log( 'comparing main product vs offer ' . $mt_name . ' value' );
 									}
 
 									if ( $mt_og[ $mt_name ] === $offer[ $mt_name ] ) {
@@ -240,17 +232,8 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 											$this->p->debug->log( 'identical values detected - unsetting offer ' . $mt_name );
 										}
 
-										unset ( $mt_og[ 'product:offers' ][ $num ][ $mt_name ] );
+										unset ( $offer[ $mt_name ] );
 									}
-								}
-
-								break;
-
-							default:
-						
-								if ( isset( $mt_og[ $mt_name ] ) ) {
-
-									unset ( $mt_og[ $mt_name ] );
 								}
 
 								break;

@@ -56,7 +56,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$this->noscript = new WpssoSchemaNoScript( $plugin );
 
 			$this->p->util->add_plugin_filters( $this, array( 
-				'plugin_image_sizes' => 1,
+				'plugin_image_sizes'   => 1,
+				'sanitize_md_defaults' => 2,
+				'sanitize_md_options'  => 2,
 			), $prio = 5 );
 
 			add_action( 'wp_ajax_' . $this->p->lca . '_schema_type_og_type', array( $this, 'ajax_schema_type_og_type' ) );
@@ -85,6 +87,23 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			);
 
 			return $sizes;
+		}
+
+		public function filter_sanitize_md_defaults( $md_defs, $mod ) {
+
+			return $this->filter_sanitize_md_options( $md_defs, $mod );
+		}
+
+		public function filter_sanitize_md_options( $md_opts, $mod ) {
+
+			if ( ! empty( $mod[ 'is_post' ] ) ) {
+
+			 	self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_condition', $enum_key = 'item_condition', $val_suffix = 'Condition' );
+
+				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_avail', $enum_key = 'item_availability' );
+			}
+
+			return $md_opts;
 		}
 
 		/**
@@ -3232,6 +3251,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$prop_added = self::add_data_itemprop_from_assoc( $json_data, $assoc, $names, $overwrite );
 
 			foreach ( $names as $prop_name => $key_name ) {
+
 				unset( $assoc[ $key_name ] );
 			}
 
@@ -3317,92 +3337,37 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Sanitize the sameAs array - make sure URLs are valid and remove any duplicates.
+		 * Convert a numeric category ID to its Google product type string.
 		 */
-		public static function check_sameas_prop_values( &$json_data ) {
+		public static function check_prop_value_category( &$json_data, $prop_name = 'category' ) {
 
 			$wpsso =& Wpsso::get_instance();
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->mark();
+				$wpsso->debug->log( 'checking category property value' );
 			}
 
-			if ( ! empty( $json_data[ 'sameAs' ] ) ) {
-
-				$added_urls = array();
-
-				foreach ( $json_data[ 'sameAs' ] as $num => $url ) {
-
-					if ( empty( $url ) ) {
-
-						if ( $wpsso->debug->enabled ) {
-
-							$wpsso->debug->log( 'skipping sameAs url #' . $num . ' - value is empty' );
-						}
-
-					} elseif ( isset( $json_data[ 'url' ] ) && $json_data[ 'url' ] === $url ) {
-
-						if ( $wpsso->debug->enabled ) {
-
-							$wpsso->debug->log( 'skipping sameAs url #' . $num . ' - value is "url" property (' . $url . ')' );
-						}
-
-					} elseif ( isset( $added_urls[ $url ] ) ) {	// Already added.
-
-						if ( $wpsso->debug->enabled ) {
-
-							$wpsso->debug->log( 'skipping sameAs url #' . $num . ' - value already added (' . $url . ')' );
-						}
-
-					} elseif ( filter_var( $url, FILTER_VALIDATE_URL ) === false ) {
-
-						if ( $wpsso->debug->enabled ) {
-
-							$wpsso->debug->log( 'skipping sameAs url #' . $num . ' - value is not valid (' . $url . ')' );
-						}
-
-					} else {	// Mark the url as already added and get the next url.
-
-						$added_urls[ $url ] = true;
-
-						continue;	// Get the next url.
-					}
-
-					unset( $json_data[ 'sameAs' ][ $num ] );	// Remove the duplicate / invalid url.
-				}
-
-				$json_data[ 'sameAs' ] = array_values( $json_data[ 'sameAs' ] );	// Reindex / renumber the array.
-			}
-		}
-
-		public static function check_category_prop_value( &$json_data ) {
-
-			$wpsso =& Wpsso::get_instance();
-
-			if ( $wpsso->debug->enabled ) {
-
-				$wpsso->debug->mark();
-			}
-
-			if ( ! empty( $json_data[ 'category' ] ) ) {
+			if ( ! empty( $json_data[ $prop_name ] ) ) {
 
 				/**
 				 * Numeric category IDs are expected to be Google product type IDs.
 				 *
 				 * See https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt.
 				 */
-				if ( is_numeric( $json_data[ 'category' ] ) ) {
+				if ( is_numeric( $json_data[ $prop_name ] ) ) {
+
+					$cat_id = $json_data[ $prop_name ];
 
 					$categories = $wpsso->util->get_google_product_categories();
 
-					if ( isset( $categories[ $json_data[ 'category' ] ] ) ) {
+					if ( isset( $categories[ $cat_id ] ) ) {
 
-						$json_data[ 'category' ] = $categories[ $json_data[ 'category' ] ];
+						$json_data[ $prop_name ] = $categories[ $cat_id ];
 
 					} else {
 
-						unset( $json_data[ 'category' ] );
+						unset( $json_data[ $prop_name ] );
 					}
 				}
 			}
@@ -3413,25 +3378,25 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * 
 		 * Pass $json_data by reference to modify the array directly.
 		 *
-		 * A similar method exists as WpssoOpenGraph::check_gtin_mt_value().
+		 * A similar method exists as WpssoOpenGraph::check_mt_value_gtin().
 		 */
-		public static function check_gtin_prop_value( &$json_data ) {
+		public static function check_prop_value_gtin( &$json_data, $prop_name = 'gtin' ) {
 
 			$wpsso =& Wpsso::get_instance();
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->mark();
+				$wpsso->debug->log( 'checking ' . $prop_name . ' property value' );
 			}
 
-			if ( ! empty( $json_data[ 'gtin' ] ) ) {
+			if ( ! empty( $json_data[ $prop_name ] ) ) {
 
 				/**
 				 * The value may come from a custom field, so trim it, just in case.
 				 */
-				$json_data[ 'gtin' ] = trim( $json_data[ 'gtin' ] );
+				$json_data[ $prop_name ] = trim( $json_data[ $prop_name ] );
 
-				$gtin_len = strlen( $json_data[ 'gtin' ] );
+				$gtin_len = strlen( $json_data[ $prop_name ] );
 
 				switch ( $gtin_len ) {
 
@@ -3440,9 +3405,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					case 12:
 					case 8:
 
-						if ( empty( $json_data[ 'gtin' . $gtin_len ] ) ) {
+						if ( empty( $json_data[ $prop_name . $gtin_len ] ) ) {
 
-							$json_data[ 'gtin' . $gtin_len ] = $json_data[ 'gtin' ];
+							$json_data[ $prop_name . $gtin_len ] = $json_data[ $prop_name ];
 						}
 
 						break;
@@ -3451,60 +3416,137 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Example usage:
-		 *
-		 *	WpssoSchema::check_itemprop_content_map( $offer, 'itemCondition', 'product:condition' );
-		 *
-		 *	WpssoSchema::check_itemprop_content_map( $offer, 'availability', 'product:availability' );
+		 * Sanitize the sameAs array - make sure URLs are valid and remove any duplicates.
 		 */
-		public static function check_itemprop_content_map( &$json_data, $prop_name, $map_name ) {
+		public static function check_prop_value_sameas( &$json_data, $prop_name = 'sameAs' ) {
 
 			$wpsso =& Wpsso::get_instance();
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->mark();
+				$wpsso->debug->log( 'checking ' . $prop_name . ' property value' );
 			}
 
-			if ( ! is_array( $json_data ) ) {
+			if ( ! empty( $json_data[ $prop_name ] ) ) {
 
-				if ( $wpsso->debug->enabled ) {
+				if ( ! is_array( $json_data[ $prop_name ] ) ) {	// Just in case.
 
-					$wpsso->debug->log( 'nothing to do - json_data is not an array' );
+					$json_data[ $prop_name ] = array( $json_data[ $prop_name ] );
 				}
 
-			} elseif ( empty( $json_data[ $prop_name ] ) ) {
+				$added_urls = array();
 
-				if ( $wpsso->debug->enabled ) {
+				foreach ( $json_data[ $prop_name ] as $num => $url ) {
 
-					$wpsso->debug->log( 'item property name "' . $prop_name . '" value is empty' );
+					if ( empty( $url ) ) {
+
+						if ( $wpsso->debug->enabled ) {
+
+							$wpsso->debug->log( 'skipping ' . $prop_name . ' url #' . $num . ': value is empty' );
+						}
+
+					} elseif ( isset( $json_data[ 'url' ] ) && $json_data[ 'url' ] === $url ) {
+
+						if ( $wpsso->debug->enabled ) {
+
+							$wpsso->debug->log( 'skipping ' . $prop_name . ' url #' . $num . ': value is "url" property (' . $url . ')' );
+						}
+
+					} elseif ( isset( $added_urls[ $url ] ) ) {	// Already added.
+
+						if ( $wpsso->debug->enabled ) {
+
+							$wpsso->debug->log( 'skipping ' . $prop_name . ' url #' . $num . ': value already added (' . $url . ')' );
+						}
+
+					} elseif ( false === filter_var( $url, FILTER_VALIDATE_URL ) ) {
+
+						if ( $wpsso->debug->enabled ) {
+
+							$wpsso->debug->log( 'skipping ' . $prop_name . ' url #' . $num . ': value is not valid (' . $url . ')' );
+						}
+
+					} else {	// Mark the url as already added and get the next url.
+
+						$added_urls[ $url ] = true;
+
+						continue;	// Get the next url.
+					}
+
+					unset( $json_data[ $prop_name ][ $num ] );	// Remove the duplicate / invalid url.
 				}
 
-			} elseif ( empty( $wpsso->cf[ 'head' ][ 'og_content_map' ][ $map_name ] ) ) {
+				$json_data[ $prop_name ] = array_values( $json_data[ $prop_name ] );	// Reindex / renumber the array.
+			}
+		}
+
+		/**
+		 * Deprecated on 2020/08/14.
+		 */
+		public static function check_itemprop_content_map( &$json_data, $prop_name, $map_name ) {
+		}
+
+		/**
+		 * Example usage:
+		 *
+		 *	WpssoSchema::check_prop_value_enumeration( $offer, 'availability', 'item_availability' );
+		 *
+		 *	WpssoSchema::check_prop_value_enumeration( $offer, 'itemCondition', 'item_condition', 'Condition' );
+		 */
+		public static function check_prop_value_enumeration( &$json_data, $prop_name, $enum_key, $val_suffix = '' ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'checking ' . $prop_name . ' property value' );
+			}
+
+			if ( empty( $json_data[ $prop_name ] ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'og_content_map name "' . $map_name . '" is unknown' );
+					$wpsso->debug->log( $prop_name . ' property value is empty' );
+				}
+
+			} elseif ( 'none' === $json_data[ $prop_name ] ) {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( $prop_name . ' property value is none' );
+				}
+
+			} elseif ( empty( $wpsso->cf[ 'form' ][ $enum_key ] ) ) {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( $enum_key . ' enumeration key is unknown' );
 				}
 
 			} else {
 
-				$content_map = $wpsso->cf[ 'head' ][ 'og_content_map' ][ $map_name ];
+				$enum_select = $wpsso->cf[ 'form' ][ $enum_key ];
 
-				if ( empty( $content_map[ $json_data [ $prop_name ] ] ) ) {
+				$prop_val = $json_data[ $prop_name ];
 
-					if ( $wpsso->debug->enabled ) {
+				if ( ! isset( $enum_select[ $prop_val ] ) ) {
 
-						$wpsso->debug->log( 'unsetting invalid item property name "' . $prop_name . '" value "' . $json_data[ $prop_name ] . '"' );
-					}
+					if ( isset( $conditions[ 'https://schema.org/' . $prop_val ] ) ) {
 
-					unset( $json_data[ $prop_name ] );
+						$json_data[ $prop_name ] = 'https://schema.org/' . $prop_val;
 
-				} else {
+					} elseif ( $val_suffix && isset( $conditions[ 'https://schema.org/' . $prop_val . $val_suffix ] ) ) {
 
-					if ( $wpsso->debug->enabled ) {
+						$json_data[ $prop_name ] = 'https://schema.org/' . $prop_val . $val_suffix;
 
-						$wpsso->debug->log( 'item property name "' . $prop_name . '" value "' . $json_data[ $prop_name ] . '" is valid' );
+					} else {
+
+						if ( $wpsso->debug->enabled ) {
+
+							$wpsso->debug->log( 'invalid ' . $prop_name . ' property value "' . $prop_val . '"' );
+						}
+					
+						unset( $json_data[ $prop_name ] );
 					}
 				}
 			}

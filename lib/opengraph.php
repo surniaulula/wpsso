@@ -1790,18 +1790,16 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							$allow[ $mt_name ] = true;
 
 							/**
-							 * Example:
-							 *
-							 * 	'product:availability' => array(
-				 			 * 		'Discontinued'        => 'oos',
-				 			 * 		'InStock'             => 'instock',
-				 			 * 		'InStoreOnly'         => 'instock',
-				 			 * 		'LimitedAvailability' => 'instock',
-				 			 * 		'OnlineOnly'          => 'instock',
-				 			 * 		'OutOfStock'          => 'oos',
-				 			 * 		'PreOrder'            => 'pending',
-				 			 * 		'SoldOut '            => 'oos',
-							 * 	),
+							 * 'product:availability' => array(
+				 			 * 	'https://schema.org/Discontinued'        => 'oos',
+				 			 * 	'https://schema.org/InStock'             => 'instock',
+				 			 * 	'https://schema.org/InStoreOnly'         => 'instock',
+				 			 * 	'https://schema.org/LimitedAvailability' => 'instock',
+				 			 * 	'https://schema.org/OnlineOnly'          => 'instock',
+				 			 * 	'https://schema.org/OutOfStock'          => 'oos',
+				 			 * 	'https://schema.org/PreOrder'            => 'pending',
+				 			 * 	'https://schema.org/SoldOut'             => 'oos',
+							 * ),
 							 */
 							if ( ! empty( $this->p->cf[ 'head' ][ 'og_content_map' ][ $mt_name ] ) ) {
 
@@ -1945,8 +1943,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'unsetting ' . $mt_name . ': ' .
-								$md_key . ' metadata is "none"' );
+							$this->p->debug->log( 'unsetting ' . $mt_name . ': ' . $md_key . ' metadata is "none"' );
 						}
 
 						unset( $mt_og[ $mt_name ] );
@@ -1976,6 +1973,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$mt_units = $mt_match[ 1 ] . ':units';
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'checking for ' . $mt_units . ' unit text' );
 						}
 
@@ -2042,43 +2040,46 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		}
 
 		/**
-		 * If we have a GTIN number, try to improve the assigned property name. Pass $mt_og by reference to modify the
-		 * array directly. A similar method exists as WpssoSchema::check_gtin_prop_value().
+		 * If we have a GTIN number, try to improve the assigned property name.
+		 *
+		 * Pass $mt_og by reference to modify the array directly.
+		 *
+		 * A similar method exists as WpssoSchema::check_prop_value_gtin().
 		 */
-		public static function check_gtin_mt_value( &$mt_og, $prefix = 'product' ) {	// Pass by reference is OK.
+		public static function check_mt_value_gtin( &$mt_og, $mt_pre = 'product' ) {	// Pass by reference is OK.
 
 			$wpsso =& Wpsso::get_instance();
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->log( 'checking ' . $prefix . ' gtin values' );
+				$wpsso->debug->log( 'checking ' . $mt_pre . ' gtin value' );
 			}
 
-			if ( ! empty( $mt_og[ $prefix . ':gtin' ] ) ) {
+			if ( ! empty( $mt_og[ $mt_pre . ':gtin' ] ) ) {
 
 				/**
 				 * The value may come from a custom field, so trim it, just in case.
 				 */
-				$mt_og[ $prefix . ':gtin' ] = trim( $mt_og[ $prefix . ':gtin' ] );
+				$mt_og[ $mt_pre . ':gtin' ] = trim( $mt_og[ $mt_pre . ':gtin' ] );
 
-				$gtin_len = strlen( $mt_og[ $prefix . ':gtin' ] );
+				$gtin_len = strlen( $mt_og[ $mt_pre . ':gtin' ] );
 
 				switch ( $gtin_len ) {
 
 					case 13:
 
-						if ( empty( $mt_og[ $prefix . ':ean' ] ) ) {
+						if ( empty( $mt_og[ $mt_pre . ':ean' ] ) ) {
 
-							$mt_og[ $prefix . ':ean' ] = $mt_og[ $prefix . ':gtin' ];
+							$mt_og[ $mt_pre . ':ean' ] = $mt_og[ $mt_pre . ':gtin' ];
 						}
 
 						break;
 
 					case 12:
 
-						if ( empty( $mt_og[ $prefix . ':upc' ] ) ) {
+						if ( empty( $mt_og[ $mt_pre . ':upc' ] ) ) {
 
-							$mt_og[ $prefix . ':upc' ] = $mt_og[ $prefix . ':gtin' ];
+							$mt_og[ $mt_pre . ':upc' ] = $mt_og[ $mt_pre . ':gtin' ];
 						}
 
 						break;
@@ -2086,21 +2087,21 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 		}
 
-		public static function check_price_mt_value( &$mt_og, $prefix = 'product' ) {	// Pass by reference is OK.
+		public static function check_mt_value_price( &$mt_og, $mt_pre = 'product' ) {	// Pass by reference is OK.
 
 			$wpsso =& Wpsso::get_instance();
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->log( 'checking ' . $prefix . ' price values' );
+				$wpsso->debug->log( 'checking ' . $mt_pre . ' price value' );
 			}
 
 			foreach ( array( 'original_price', 'pretax_price', 'price', 'sale_price', 'shipping_cost' ) as $price_name ) {
 
-				if ( isset( $mt_og[ $prefix . ':' . $price_name . ':amount' ] ) ) {
+				if ( isset( $mt_og[ $mt_pre . ':' . $price_name . ':amount' ] ) ) {
 
-					$amount_key   = $prefix . ':' . $price_name . ':amount';
-					$currency_key = $prefix . ':' . $price_name . ':currency';
+					$amount_key   = $mt_pre . ':' . $price_name . ':amount';
+					$currency_key = $mt_pre . ':' . $price_name . ':currency';
 
 					if ( is_numeric( $mt_og[ $amount_key ] ) ) {	// Allow for price of 0.
 

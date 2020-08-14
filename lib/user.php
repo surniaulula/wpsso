@@ -289,11 +289,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				if ( empty( $md_opts[ 'options_filtered' ] ) ) {
 
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'applying get_user_options filters for user_id ' . $user_id . ' meta' );
-					}
-
 					$md_opts[ 'options_filtered' ] = 1;	// Set before calling filter to prevent recursion.
 
 					$mod = $this->get_mod( $user_id );
@@ -301,14 +296,32 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					/**
 					 * Since WPSSO Core v7.1.0.
 					 */
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'applying get_md_options filters' );
+					}
+
 					$md_opts = apply_filters( $this->p->lca . '_get_md_options', $md_opts, $mod );
+
+					/**
+					 * Since WPSSO Core v4.31.0.
+					 */
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'applying get_user_options filters for user_id ' . $user_id . ' meta' );
+					}
 
 					$md_opts = apply_filters( $this->p->lca . '_get_user_options', $md_opts, $user_id, $mod );
 
+					/**
+					 * Since WPSSO Core v8.2.0.
+					 */
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log_arr( 'user_id ' . $user_id . ' meta options filtered', $md_opts );
+						$this->p->debug->log( 'applying sanitize_md_options filters' );
 					}
+
+					$md_opts = apply_filters( $this->p->lca . '_sanitize_md_options', $md_opts, $mod );
 				}
 			}
 

@@ -265,6 +265,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			if ( ! WpssoOptions::can_cache() || empty( $md_defs[ 'options_filtered' ] ) ) {
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'get_md_defaults filter allowed' );
+				}
+
 				$mod = $this->get_mod( $mod_id );
 
 				$opts =& $this->p->options;		// Shortcut variable name.
@@ -378,12 +383,25 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					$this->p->debug->log( 'options_filtered value unchanged' );
 				}
 
+				/**
+				 * Since WPSSO Core v3.28.0.
+				 */
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'applying get_md_defaults filters' );
 				}
 
 				$md_defs = apply_filters( $this->p->lca . '_get_md_defaults', $md_defs, $mod );
+
+				/**
+				 * Since WPSSO Core v8.2.0.
+				 */
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'applying sanitize_md_defaults filters' );
+				}
+
+				$md_defs = apply_filters( $this->p->lca . '_sanitize_md_defaults', $md_defs, $mod );
 
 			} elseif ( $this->p->debug->enabled ) {
 
@@ -417,10 +435,18 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $this->must_be_extended( __METHOD__, $ret_val );
 		}
 
+		/**
+		 * Check if options need to be upgraded.
+		 */
 		protected function upgrade_options( array &$md_opts ) {
 
-			if ( ! empty( $md_opts ) && ( empty( $md_opts[ 'options_version' ] ) || 
-				$md_opts[ 'options_version' ] !== $this->p->cf[ 'opt' ][ 'version' ] ) ) {
+			if ( ! empty( $md_opts ) && ( empty( $md_opts[ 'options_version' ] ) || $md_opts[ 'options_version' ] !== $this->p->cf[ 'opt' ][ 'version' ] ) ) {
+
+				/**
+				 * Save / create the current options version number for version checks to follow.
+				 */
+				$prev_version = empty( $md_opts[ 'plugin_' . $this->p->lca . '_opt_version' ] ) ?
+					0 : $md_opts[ 'plugin_' . $this->p->lca . '_opt_version' ];
 
 				$rename_filter_name = $this->p->lca . '_rename_md_options_keys';
 
@@ -431,13 +457,13 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				/**
 				 * Check for schema type IDs that need to be renamed.
 				 */
-				$keys_preg = 'schema_type|plm_place_schema_type';
+				$schema_type_keys_preg = 'schema_type|plm_place_schema_type';
 
-				foreach ( SucomUtil::preg_grep_keys( '/^(' . $keys_preg . ')(_[0-9]+)?$/', $md_opts ) as $key => $val ) {
+				foreach ( SucomUtil::preg_grep_keys( '/^(' . $schema_type_keys_preg . ')(_[0-9]+)?$/', $md_opts ) as $md_key => $md_val ) {
 
-					if ( ! empty( $this->p->cf[ 'head' ][ 'schema_renamed' ][ $val ] ) ) {
+					if ( ! empty( $this->p->cf[ 'head' ][ 'schema_renamed' ][ $md_val ] ) ) {
 
-						$md_opts[ $key ] = $this->p->cf[ 'head' ][ 'schema_renamed' ][ $val ];
+						$md_opts[ $md_key ] = $this->p->cf[ 'head' ][ 'schema_renamed' ][ $md_val ];
 					}
 				}
 
@@ -461,15 +487,15 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				if ( empty( $md_opts[ 'options_padded' ] ) ) {
 
-					$def_opts = $this->get_defaults( $mod_id );
+					$md_defs = $this->get_defaults( $mod_id );
 
-					if ( is_array( $def_opts ) ) {	// Just in case.
+					if ( is_array( $md_defs ) ) {	// Just in case.
 
-						foreach ( $def_opts as $key => $val ) {
+						foreach ( $md_defs as $md_key => $md_val ) {
 
-							if ( ! isset( $md_opts[ $key ] ) && $val !== '' ) {
+							if ( ! isset( $md_opts[ $md_key ] ) && $md_val !== '' ) {
 
-								$md_opts[ $key ] = $def_opts[ $key ];
+								$md_opts[ $md_key ] = $md_defs[ $md_key ];
 							}
 						}
 					}
@@ -1176,7 +1202,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$value = '';
+			$column_val = '';
 
 			if ( ! empty( $mod[ 'id' ] ) && strpos( $column_name, $this->p->lca . '_' ) === 0 ) {	// Just in case.
 
@@ -1217,13 +1243,13 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 						if ( isset( $meta_cache[ $col_info[ 'meta_key' ] ] ) ) {
 
-							$value = (string) maybe_unserialize( $meta_cache[ $col_info[ 'meta_key' ] ][ 0 ] );
+							$column_val = (string) maybe_unserialize( $meta_cache[ $col_info[ 'meta_key' ] ][ 0 ] );
 						}
 					}
 				}
 			}
 
-			return $value;
+			return $column_val;
 		}
 
 		public function get_column_content( $value, $column_name, $id ) {

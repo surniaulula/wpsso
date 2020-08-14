@@ -36,14 +36,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 		public function get( $msg_key = false, $info = array() ) {
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log_args( array(
-					'msg_key' => $msg_key,
-					'info'    => $info,
-				) );
-			}
-
 			$msg_key = sanitize_title_with_dashes( $msg_key );
 
 			/**
@@ -88,8 +80,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			/**
 			 * Get the array of plugin urls (download, purchase, etc.).
 			 */
-			$url = isset( $this->p->cf[ 'plugin' ][ $lca ][ 'url' ] ) ?
-				$this->p->cf[ 'plugin' ][ $lca ][ 'url' ] : array();
+			$url = isset( $this->p->cf[ 'plugin' ][ $lca ][ 'url' ] ) ? $this->p->cf[ 'plugin' ][ $lca ][ 'url' ] : array();
 
 			/**
 			 * Add query arguments to the Premium purchase URL.

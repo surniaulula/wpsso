@@ -377,37 +377,55 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( empty( $md_opts[ 'options_filtered' ] ) ) {
 
+					$md_opts[ 'options_filtered' ] = 1;	// Set before calling filters to prevent recursion.
+
 					$mod = $this->get_mod( $post_id );
 
 					/**
-					 * The 'import_custom_fields' filter is executed BEFORE the 'wpsso_get_post_options'
-					 * filter, so values retrieved from custom fields may get overwritten by later filters.
+					 * The 'import_custom_fields' filter is executed before the 'wpsso_get_md_options' and
+					 * 'wpsso_get_post_options' filters, so values retrieved from custom fields may get
+					 * overwritten by later filters.
 					 */
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'applying import_custom_fields filters for post id ' . $post_id . ' metadata' );
+					}
+
 					$md_opts = apply_filters( $this->p->lca . '_import_custom_fields', $md_opts, get_post_meta( $post_id ) );
 
+					/**
+					 * Since WPSSO Core v7.1.0.
+					 */
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'applying get_md_options filters' );
+					}
+
+					$md_opts = apply_filters( $this->p->lca . '_get_md_options', $md_opts, $mod );
+
+					/**
+					 * Since WPSSO Core v4.31.0.
+					 *
+					 * Hooked by several integration modules to provide information about the current content.
+					 * e-Commerce integration modules will provide information on their product (price,
+					 * condition, etc.) and disable these options in the Document SSO metabox.
+					 */
 					if ( $this->p->debug->enabled ) {
 
 						$this->p->debug->log( 'applying get_post_options filters for post id ' . $post_id . ' metadata' );
 					}
 
-					$md_opts[ 'options_filtered' ] = 1;	// Set before calling filter to prevent recursion.
-
-					/**
-					 * Since WPSSO Core v7.1.0.
-					 */
-					$md_opts = apply_filters( $this->p->lca . '_get_md_options', $md_opts, $mod );
-
-					/**
-					 * Hooked by several integration modules to provide information about the current content.
-					 * E-commerce integration modules will provide information on their product (price,
-					 * condition, etc.) and disable these options in the Document SSO metabox.
-					 */
 					$md_opts = apply_filters( $this->p->lca . '_get_post_options', $md_opts, $post_id, $mod );
 
+					/**
+					 * Since WPSSO Core v8.2.0.
+					 */
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log_arr( 'post_id ' . $post_id . ' meta options filtered', $md_opts );
+						$this->p->debug->log( 'applying sanitize_md_options filters' );
 					}
+
+					$md_opts = apply_filters( $this->p->lca . '_sanitize_md_options', $md_opts, $mod );
 				}
 			}
 

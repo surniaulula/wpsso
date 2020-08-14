@@ -581,13 +581,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 *
 			 * Rescheduled events, without a previous start date, is an invalid combination.
 			 */
-			if ( ! empty( $event_opts[ 'event_previous_date_iso' ] ) ) {
+			if ( ! empty( $json_ret[ 'previousStartDate' ] ) ) {
 
-				$json_ret[ 'eventStatus' ] = 'EventRescheduled';
+				$json_ret[ 'eventStatus' ] = 'https://schema.org/EventRescheduled';
 
-			} elseif ( isset( $json_ret[ 'eventStatus' ] ) && 'EventRescheduled' === $json_ret[ 'eventStatus' ] ) {
+			} elseif ( isset( $json_ret[ 'eventStatus' ] ) && 'https://schema.org/EventRescheduled' === $json_ret[ 'eventStatus' ] ) {
 
-				$json_ret[ 'eventStatus' ] = 'EventScheduled';
+				$json_ret[ 'eventStatus' ] = 'https://schema.org/EventScheduled';
 			}
 
 			/**
@@ -924,13 +924,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				return false;
 			}
 
-			WpssoSchema::check_category_prop_value( $offer );
+			/**
+			 * Convert a numeric category ID to its Google product type string.
+			 */
+			WpssoSchema::check_prop_value_category( $offer );
 
-			WpssoSchema::check_gtin_prop_value( $offer );
-
-			WpssoSchema::check_itemprop_content_map( $offer, 'itemCondition', 'product:condition' );
-
-			WpssoSchema::check_itemprop_content_map( $offer, 'availability', 'product:availability' );
+			WpssoSchema::check_prop_value_gtin( $offer );
 
 			/**
 			 * Prevents a missing property warning from the Google validator.

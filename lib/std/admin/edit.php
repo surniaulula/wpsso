@@ -95,7 +95,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'    => _x( 'Product Availability', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_avail',
 					'content'  => $form->get_no_select( 'product_avail', $this->p->cf[ 'form' ][ 'item_availability' ],
-						$css_class = '', $css_id = '', $is_assoc = true, $selected = true ),
+						$css_class = '', $css_id = '', $is_assoc = true ),
 				),
 				'og_product_condition' => array(		// Open Graph meta tag product:condition.
 					'tr_class' => 'hide_og_type hide_og_type_product',

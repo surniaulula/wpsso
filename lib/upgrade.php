@@ -487,6 +487,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 			if ( $prev_version > 0 && $prev_version <= 342 ) {
 
 				if ( ! empty( $opts[ 'plugin_file_cache_hrs' ] ) ) {
+
 					$opts[ 'plugin_social_file_cache_exp' ] = $opts[ 'plugin_file_cache_hrs' ] * HOUR_IN_SECONDS;
 				}
 

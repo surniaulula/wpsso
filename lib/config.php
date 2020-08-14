@@ -22,8 +22,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.1.0',	// Plugin version.
-					'opt_version' => '754',		// Increment when changing default option values.
+					'version'     => '8.2.0-dev.1',	// Plugin version.
+					'opt_version' => '756',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Make sure your content looks great on social sites and search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -2513,20 +2513,24 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/**
+				 * A Schema enumerated value.
+				 *
 				 * See https://schema.org/BookFormatType.
 				 */
 				'book_format' => array(
-					'AudiobookFormat' => 'Audiobook',
-					'EBook'           => 'eBook',
-					'GraphicNovel'    => 'Graphic Novel',
-					'Hardcover'       => 'Hardcover',
-					'Paperback '      => 'Paperback',
+					'none'                               => '[None]',
+					'https://schema.org/AudiobookFormat' => 'Audiobook',
+					'https://schema.org/EBook'           => 'eBook',
+					'https://schema.org/GraphicNovel'    => 'Graphic Novel',
+					'https://schema.org/Hardcover'       => 'Hardcover',
+					'https://schema.org/Paperback '      => 'Paperback',
 				),
 
 				/**
 				 * See https://developers.google.com/search/docs/data-types/job-postings.
 				 */
 				'employment_type' => array(
+					'none'       => '[None]',
 					'full_time'  => 'Full Time',
 					'part_time'  => 'Part Time',
 					'contractor' => 'Contractor',
@@ -2538,50 +2542,60 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/**
+				 * A Schema enumerated value.
+				 *
 				 * See https://schema.org/EventAttendanceModeEnumeration.
 				 */
 				'event_attendance' => array(
-					'OfflineEventAttendanceMode' => 'Physical Location',	// Default.
-					'OnlineEventAttendanceMode'  => 'Online',
-					'MixedEventAttendanceMode'   => 'Mixed',
+					'none'                                          => '[None]',
+					'https://schema.org/MixedEventAttendanceMode'   => 'Mixed',
+					'https://schema.org/OnlineEventAttendanceMode'  => 'Online',
+					'https://schema.org/OfflineEventAttendanceMode' => 'Physical Location',	// Default.
 				),
 
 				/**
+				 * A Schema enumerated value.
+				 *
 				 * See https://schema.org/EventStatusType.
 				 */
 				'event_status' => array(	
-					'EventCancelled'   => 'Cancelled',
-					'EventMovedOnline' => 'Moved Online',
-					'EventPostponed'   => 'Postponed',
-					'EventRescheduled' => 'Rescheduled',
-					'EventScheduled'   => 'Scheduled',	// Default.
+					'none'                                => '[None]',
+					'https://schema.org/EventCancelled'   => 'Cancelled',
+					'https://schema.org/EventMovedOnline' => 'Moved Online',
+					'https://schema.org/EventPostponed'   => 'Postponed',
+					'https://schema.org/EventRescheduled' => 'Rescheduled',
+					'https://schema.org/EventScheduled'   => 'Scheduled',	// Default.
 				),
 
 				/**
+				 * A Schema enumerated value.
+				 *
 				 * See https://schema.org/ItemAvailability.
 				 */
 				'item_availability' => array(
-					'none'                => '[None]',
-			 		'Discontinued'        => 'Discontinued',
-			 		'InStock'             => 'In Stock',
-			 		'InStoreOnly'         => 'In Store Only',
-			 		'LimitedAvailability' => 'Limited Availability',
-			 		'OnlineOnly'          => 'Online Only',
-			 		'OutOfStock'          => 'Out of Stock',
-			 		'PreOrder'            => 'Pre-Order',
-			 		'PreSale'             => 'Pre-Sale',
-			 		'SoldOut '            => 'Sold Out',
+					'none'                                   => '[None]',
+			 		'https://schema.org/Discontinued'        => 'Discontinued',
+			 		'https://schema.org/InStock'             => 'In Stock',
+			 		'https://schema.org/InStoreOnly'         => 'In Store Only',
+			 		'https://schema.org/LimitedAvailability' => 'Limited Availability',
+			 		'https://schema.org/OnlineOnly'          => 'Online Only',
+			 		'https://schema.org/OutOfStock'          => 'Out of Stock',
+			 		'https://schema.org/PreOrder'            => 'Pre-Order',
+			 		'https://schema.org/PreSale'             => 'Pre-Sale',
+			 		'https://schema.org/SoldOut'             => 'Sold Out',
 				),
 
 				/**
+				 * A Schema enumerated value.
+				 *
 				 * See https://schema.org/OfferItemCondition.
 				 */
 				'item_condition' => array(
-					'none'                 => '[None]',
-					'DamagedCondition'     => 'Damaged',
-					'NewCondition'         => 'New',
-					'RefurbishedCondition' => 'Refurbished',
-					'UsedCondition'        => 'Used',
+					'none'                                    => '[None]',
+					'https://schema.org/DamagedCondition'     => 'Damaged',
+					'https://schema.org/NewCondition'         => 'New',
+					'https://schema.org/RefurbishedCondition' => 'Refurbished',
+					'https://schema.org/UsedCondition'        => 'Used',
 				),
 			),
 			'head' => array(
@@ -2861,27 +2875,27 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/#og-tags.
 					 */
 					'product:availability' => array(
-				 		'Discontinued'        => 'discontinued',
-				 		'InStock'             => 'in stock',
-				 		'InStoreOnly'         => 'in stock',
-				 		'LimitedAvailability' => 'in stock',
-				 		'OnlineOnly'          => 'in stock',
-				 		'OutOfStock'          => 'out of stock',
-				 		'PreOrder'            => 'preorder',
-			 			'PreSale'             => 'available for order',
-				 		'SoldOut'             => 'available for order',
+				 		'https://schema.org/Discontinued'        => 'discontinued',
+				 		'https://schema.org/InStock'             => 'in stock',
+				 		'https://schema.org/InStoreOnly'         => 'in stock',
+				 		'https://schema.org/LimitedAvailability' => 'in stock',
+				 		'https://schema.org/OnlineOnly'          => 'in stock',
+				 		'https://schema.org/OutOfStock'          => 'out of stock',
+				 		'https://schema.org/PreOrder'            => 'preorder',
+			 			'https://schema.org/PreSale'             => 'available for order',
+				 		'https://schema.org/SoldOut'             => 'available for order',
 					),
 
 					/**
-					 * Validated on 2020/07/24.
+					 * Validated on 2020/08/14.
 					 *
 					 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/#og-tags.
 					 */
 					'product:condition' => array(
-						'DamagedCondition'     => 'used',
-						'NewCondition'         => 'new',
-						'RefurbishedCondition' => 'refurbished',
-						'UsedCondition'        => 'used',
+						'https://schema.org/DamagedCondition'     => 'used',
+						'https://schema.org/NewCondition'         => 'new',
+						'https://schema.org/RefurbishedCondition' => 'refurbished',
+						'https://schema.org/UsedCondition'        => 'used',
 					),
 				),
 				'schema_type' => array(				// Element of 'head' array.

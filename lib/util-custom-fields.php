@@ -43,8 +43,8 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 		}
 
 		/**
-		 * The 'import_custom_fields' filter is executed before the 'wpsso_get_post_options' filter, so values retrieved from
-		 * custom fields may get overwritten by later filters.
+		 * The 'import_custom_fields' filter is executed before the 'wpsso_get_md_options' and 'wpsso_get_post_options'
+		 * filters, so values retrieved from custom fields may get overwritten by later filters.
 		 *
 		 * For example, the WooCommerce integration module hooks the 'wpsso_get_post_options' filter and provides
 		 * information about the main / simple product, including any product attributes, and disables these options in the
