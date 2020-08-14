@@ -307,7 +307,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.2.0-b.1 (2020/08/14)**
+**Version 8.2.0-b.2 (2020/08/14)**
 
 **Google has updated their Rich Results requirements to use the complete URL of Schema enumeration values instead of only the enumeration name (as they previously required). The product availability, product condition, event attendance, event status, and offer availability values have all been updated to include their complete enumeration URL. For example, a previous product condition might have been 'New' or 'NewCondition' and will now be included in Schema markup as 'https://schema.org/NewCondition'.**
 
@@ -321,6 +321,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new 'wpsso_sanitize_md_options' filter hook in WpssoSchema to sanitize the post metadata product availability and condition values.
 	* Added a new `WpssoSchema::check_prop_value_enumeration()` method.
 	* Deprecated the `WpssoSchema::check_itemprop_content_map()` method.
+	* Replaced the jQuery `.load( handler )` event function trigger with `.on( 'load', handler )`.
+	* Replaced the jQuery `hover` event with `mouseenter` in SucomForm->get_event_load_json_script().
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
@@ -624,7 +626,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.2.0-b.1 =
+= 8.2.0-b.2 =
 
 (2020/08/14) Added 'https://schema.org/' to the Schema item availability, item condition, event attendance, and event status property values.
 
