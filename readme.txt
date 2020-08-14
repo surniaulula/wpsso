@@ -309,7 +309,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 **Version 8.2.0-dev.2 (2020/08/14)**
 
-Google has updated their Rich Results requirements to use the complete URL of Schema enumeration values instead of only the enumeration name (as they previously required). The product availability, product condition, event attendance, event status, and offer availability values have all been updated to include their complete enumeration URL. For example, a previous product condition might have been 'New' or 'NewCondition' and will now be included in Schema markup as 'https://schema.org/NewCondition'.
+**Google has updated their Rich Results requirements to use the complete URL of Schema enumeration values instead of only the enumeration name (as they previously required). The product availability, product condition, event attendance, event status, and offer availability values have all been updated to include their complete enumeration URL. For example, a previous product condition might have been 'New' or 'NewCondition' and will now be included in Schema markup as 'https://schema.org/NewCondition'.**
 
 * **New Features**
 	* None.
@@ -345,7 +345,7 @@ Google has updated their Rich Results requirements to use the complete URL of Sc
 
 **Google has updated their Rich Results requirements and now prefers 1:1, 4:3, and 16:9 images for all Schema types, not just the Schema Article type for AMP webpages. The "Schema" and "Schema Article" image sizes have been removed and replaced by new Schema 1:1, 4:3, and 16:9 image sizes (minimum dimensions are 1200x1200px, 1200x900px, and 1200x675px).**
 
-The [WP eCommerce](https://wordpress.org/plugins/wp-e-commerce/) plugin is no longer supported (last update in January 2019) and the WPSSO Core Premium integration module for WP eCommerce has been removed.
+**The [WP eCommerce](https://wordpress.org/plugins/wp-e-commerce/) plugin is no longer supported (last update in January 2019) and the WPSSO Core Premium integration module for WP eCommerce has been removed.**
 
 * **New Features**
 	* Added an API integration module for Shopper Approved ratings and reviews. See the SSO &gt; Advanced Settings &gt; Service APIs tab to enter your Shopper Approved API token and enabled reviews for specific post types (for example, the "product" custom post type).
@@ -401,7 +401,7 @@ The [WP eCommerce](https://wordpress.org/plugins/wp-e-commerce/) plugin is no lo
 
 **Version 7.14.1 (2020/07/25)**
 
-The Open Graph meta tags for WooCommerce products have been extended to include additional information for each product variation. The sanitation of Open Graph meta tags, and their generation from internal meta tag data, has also been completely refactored.
+**The Open Graph meta tags for WooCommerce products have been extended to include additional information for each product variation. The sanitation of Open Graph meta tags, and their generation from internal meta tag data, has also been completely refactored.**
 
 * **New Features**
 	* Extended the Open Graph product type by adding all available product meta tags for each product offer (ie. 'product:retailer_item_id', 'product:retailer_part_no', 'product:availability', 'product:color', 'og:image', etc.).
