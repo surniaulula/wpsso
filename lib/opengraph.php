@@ -1736,6 +1736,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		}
 
 		/**
+		 * Called by WpssoHead::get_head_array() before merging all meta tag arrays.
+		 *
 		 * Unset mis-matched og_type meta tags using the 'og_type_mt' array as a reference. For example, remove all
 		 * 'article' meta tags if the og_type is 'website'. Removing only known meta tags (using the 'og_type_mt' array as
 		 * a reference) protects internal meta tags that may be used later by WpssoHead->extract_head_info(). For example,
@@ -1743,8 +1745,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		 *
 		 * The 'og_content_map' array is also checked for Schema values that need to be swapped for simpler Open Graph meta
 		 * tag values.
-		 *
-		 * Called by WpssoHead::get_head_array() before merging all meta tag arrays.
 		 */
 		public function sanitize_mt_array( array $mt_og ) {
 

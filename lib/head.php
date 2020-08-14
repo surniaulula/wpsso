@@ -6,10 +6,12 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+
 	die( 'Do. Or do not. There is no try.' );
 }
 
@@ -24,12 +26,14 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
 			add_action( 'wp_head', array( $this, 'show_head' ), WPSSO_HEAD_PRIORITY );
 
 			if ( ! empty( $this->p->avail[ 'amp' ][ 'any' ] ) ) {
+
 				add_action( 'amp_post_template_head', array( $this, 'show_head' ), WPSSO_HEAD_PRIORITY );
 			}
 		}
@@ -49,16 +53,19 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		public function get_head_cache_index( $mixed = 'current', $sharing_url = false ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
 			$cache_index = '';
 
 			if ( false !== $mixed ) {
+
 				$cache_index .= '_locale:' . SucomUtil::get_locale( $mixed );
 			}
 
 			if ( false !== $sharing_url ) {
+
 				$cache_index .= '_url:' . $sharing_url;
 			}
 
@@ -66,6 +73,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * AMP
 			 */
 			if ( SucomUtil::is_amp() ) {	// Returns null, true, or false.
+
 				$cache_index .= '_amp:true';
 			}
 
@@ -74,6 +82,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$cache_index = apply_filters( $this->p->lca . '_head_cache_index', $cache_index, $mixed, $sharing_url );
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'returned cache index is "' . $cache_index . '"' );
 			}
 
@@ -86,18 +95,23 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		public function show_head() {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
 			if ( function_exists( 'current_action' ) ) {	// Since WP v3.9.
+
 				$current  = current_action();
+
 			} else {
+
 				$current  = current_filter();
 			}
 
 			$use_post = apply_filters( $this->p->lca . '_use_post', false );
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'required call to get_page_mod()' );
 			}
 
@@ -106,18 +120,23 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$add_head_html = apply_filters( $this->p->lca . '_add_head_html', true, $mod );
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'home url = ' . get_option( 'home' ) );
 				$this->p->debug->log( 'locale default = ' . SucomUtil::get_locale( 'default' ) );
 				$this->p->debug->log( 'locale current = ' . SucomUtil::get_locale( 'current' ) );
 				$this->p->debug->log( 'locale mod = ' . SucomUtil::get_locale( $mod ) );
 				$this->p->debug->log( 'wp_query salt = ' . SucomUtil::get_query_salt() );
 				$this->p->debug->log( 'add_head_html = ' . ( $add_head_html ? 'true' : 'false' ) );
+
 				$this->p->util->log_is_functions();
 			}
 
 			if ( $add_head_html ) {
+
 				echo $this->get_head_html( $use_post, $mod, $read_cache = true );
+
 			} else {
+
 				echo "\n" . '<!-- ' . $this->p->lca . ' head html is disabled -->' . "\n";
 			}
 		}
@@ -132,6 +151,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			foreach ( $head_mt as $mt ) {
 
 				if ( ! isset( $mt[ 2 ] ) || ! isset( $mt[ 3 ] ) ) {
+
 					continue;
 				}
 
@@ -148,6 +168,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					case ( strpos( $mt_match, 'name-twitter:' ) === 0 ? true : false ):
 
 						if ( ! isset( $head_info[ $mt[ 3 ] ] ) ) {	// Only save the first meta tag value.
+
 							$head_info[ $mt[ 3 ] ] = $mt[ 5 ];
 						}
 
@@ -156,6 +177,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					case ( preg_match( '/^property-((og|p):(image|video))(:secure_url|:url)?$/', $mt_match, $m ) ? true : false ):
 
 						if ( ! empty( $mt[ 5 ] ) ) {
+
 							$has_media[ $m[ 1 ] ] = true;	// Optimize media loop.
 						}
 
@@ -170,6 +192,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			foreach ( array( 'og:image', 'og:video', 'p:image' ) as $mt_pre ) {
 
 				if ( empty( $has_media[ $mt_pre ] ) ) {
+
 					continue;
 				}
 
@@ -178,6 +201,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				foreach ( $head_mt as $mt ) {
 
 					if ( ! isset( $mt[ 2 ] ) || ! isset( $mt[ 3 ] ) ) {
+
 						continue;
 					}
 
@@ -189,8 +213,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						 * If we already found media, then skip to the next media prefix.
 						 */
 						if ( ! empty( $head_info[ $mt_pre ] ) ) {
+
 							continue 2;
+
 						} else {
+
 							continue;	// Skip meta tags without matching prefix.
 						}
 					}
@@ -202,6 +229,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						case ( preg_match( '/^property-' . $mt_pre . '(:secure_url|:url)?$/', $mt_match, $m ) ? true : false ):
 
 							if ( ! empty( $head_info[ $mt_pre ] ) ) {	// Only save the media URL once.
+
 								continue 2;				// Get the next meta tag.
 							}
 
@@ -217,6 +245,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						case ( preg_match( '/^property-' . $mt_pre . ':(width|height|cropped|id|title|description)$/', $mt_match, $m ) ? true : false ):
 
 							if ( true !== $is_first ) {	// Only save for first media found.
+
 								continue 2;		// Get the next meta tag.
 							}
 
@@ -233,6 +262,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			foreach ( WpssoWpMeta::get_sortable_columns() as $col_key => $col_info ) {
 
 				if ( empty( $col_info[ 'meta_key' ] ) || strpos( $col_info[ 'meta_key' ], '_' . $this->p->lca . '_head_info_' ) !== 0 ) {
+
 					continue;
 				}
 
@@ -243,6 +273,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					if ( $col_info[ 'mt_name' ] === 'og:image' ) {	// Get the image thumbnail HTML.
 
 						if ( $og_img = $mod[ 'obj' ]->get_og_img_column_html( $head_info, $mod ) ) {
+
 							$meta_value = $og_img;
 						}
 
@@ -253,6 +284,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'updating meta for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' ' . $col_key . ' = ' . $meta_value );
 				}
 
@@ -280,8 +312,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						'content="' . $this->p->lca . ' meta tags ' . $type . '"/>' . "\n" : '';
 
 					if ( $type === 'begin' ) {
+
 						$mt_mark = $html_comment . "\n" . $mt_name;
+
 					} else {
+
 						$mt_mark = $mt_name . $html_comment . "\n";
 					}
 
@@ -308,6 +343,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		public function get_head_html( $use_post = false, $mod = false, $read_cache = true ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -323,6 +359,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( ! is_array( $mod ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'optional call to get_page_mod()' );
 				}
 
@@ -372,6 +409,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		public function get_head_array( $use_post = false, $mod = false, $read_cache = true ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark( 'build head array' );	// Begin timer.
 			}
 
@@ -381,6 +419,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( ! is_array( $mod ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'optional call to get_page_mod()' );
 				}
 
@@ -392,6 +431,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( empty( $sharing_url ) ) {	// Just in case.
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'exiting early: get_sharing_url() returned an empty string' );
 				}
 
@@ -411,6 +451,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( is_404() || is_search() ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'setting cache expiration to 0 seconds for 404 or search page' );
 				}
 
@@ -418,6 +459,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'sharing url = ' . $sharing_url );
 				$this->p->debug->log( 'cache expire = ' . $cache_exp_secs );
 				$this->p->debug->log( 'cache salt = ' . $cache_salt );
@@ -436,6 +478,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						if ( is_array( $cache_array[ $cache_index ] ) ) {	// Just in case.
 
 							if ( $this->p->debug->enabled ) {
+
 								$this->p->debug->log( 'cache index found in transient cache' );
 								$this->p->debug->mark( 'build head array' );	// End timer.
 							}
@@ -445,16 +488,19 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						} else {
 
 							if ( $this->p->debug->enabled ) {
+
 								$this->p->debug->log( 'cache index is not an array' );
 							}
 						}
 					} else {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'cache index not in transient cache' );
 						}
 
 						if ( ! is_array( $cache_array ) ) {
+
 							$cache_array = array();
 						}
 					}
@@ -462,6 +508,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				} else {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'read cache for head is disabled' );
 					}
 				}
@@ -469,12 +516,14 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			} else {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'head array transient cache is disabled' );
 				}
 
 				if ( SucomUtil::delete_transient_array( $cache_id ) ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'deleted transient cache id ' . $cache_id );
 					}
 				}
@@ -491,6 +540,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$author_id = WpssoUser::get_author_id( $mod );
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'author_id = ' . ( false === $author_id ? 'false' : $author_id ) );
 			}
 
@@ -533,6 +583,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {	// Since WPSSO Core v6.23.3.
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'schema markup is disabled' );
 				}
 
@@ -589,6 +640,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$expires_in_secs = SucomUtil::update_transient_array( $cache_id, $cache_array, $cache_exp_secs );
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'head array saved to transient cache (expires in ' . $expires_in_secs . ' secs)' );
 				}
 			}
@@ -599,6 +651,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$this->p->util->maybe_unset_ref( $sharing_url );
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark( 'build head array' );	// End timer.
 			}
 
@@ -624,6 +677,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		private function add_mt_array( array &$mt_array, $tag, $type, $name = '', $mixed, $cmt = '', $mod = false, $use_image = true ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( $mixed );
 			}
 
@@ -636,6 +690,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						if ( empty( $mixed[ 'og:video:has_image' ] ) ) {
 
 							if ( $this->p->debug->enabled ) {
+
 								$this->p->debug->log( 'ignoring video preview images' );
 							}
 
@@ -751,6 +806,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( is_array( $value ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( $log_prefix . ' value is an array (skipped)' );
 				}
 
@@ -759,6 +815,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			} elseif ( is_object( $value ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( $log_prefix . ' value is an object (skipped)' );
 				}
 
@@ -807,6 +864,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 							$last_secure_url = $value;
 
 							if ( $this->p->debug->enabled ) {
+
 								$this->p->debug->log_arr( 'singles', $singles );
 							}
 						}
@@ -843,6 +901,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 							$last_url = $value;
 
 							if ( $this->p->debug->enabled ) {
+
 								$this->p->debug->log_arr( 'singles', $singles );
 							}
 						}
@@ -883,7 +942,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				if ( ! array_key_exists( 6, $parts ) ) {	// Just in case - check for missing $value element.
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'parts array is incomplete (skipped)' );
+
 						$this->p->debug->log_arr( '$parts', $parts );
 					}
 
@@ -899,6 +960,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				if ( '' === $parts[ 5 ] || null === $parts[ 5 ] ) {	// Allow for 0.
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( $log_prefix . ' skipped: value is empty' );
 					}
 
@@ -909,6 +971,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				} elseif ( $parts[ 5 ] === WPSSO_UNDEF || $parts[ 5 ] === (string) WPSSO_UNDEF ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( $log_prefix . ' skipped: value is ' . WPSSO_UNDEF );
 					}
 
@@ -1021,6 +1084,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						'<' . $parts[ 1 ] . ' ' . $parts[ 2 ] . '="' . $match_name . '" ' . $parts[ 4 ] . '="' . $parts[ 5 ] . '"/>' . "\n";
 
 				} elseif ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( $log_prefix . ' skipped: option is disabled' );
 				}
 
