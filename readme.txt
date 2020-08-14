@@ -307,6 +307,24 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.2.0-dev.1 (2020/08/14)**
+
+Google has updated their Rich Results requirements to use the complete URL of Schema enumeration values instead of only the enumeration name (as they previously required). The product availability, product condition, event attendance, event status, and offer availability values have all been updated to include their complete enumeration URL. For example, a previous product condition might have been 'New' or 'NewCondition' and will now be included in Schema markup as 'https://schema.org/NewCondition'.
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added 'https://schema.org/' to the Schema item availability, item condition, event attendance, and event status property values.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new 'wpsso_sanitize_md_options' filter hook in WpssoSchema to sanitize the post metadata product availability and condition values.
+	* Added a new `WpssoSchema::check_prop_value_enumeration()` method.
+	* Deprecated the `WpssoSchema::check_itemprop_content_map()` method.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.2.
+
 **Version 8.1.0 (2020/08/13)**
 
 * **New Features**
@@ -397,7 +415,7 @@ The Open Graph meta tags for WooCommerce products have been extended to include 
 	* Refactored the `WpssoOpenGraph->sanitize_mt_array()` method.
 	* Added a new `WpssoHead->add_mt_array()` method to recurse the meta tag arrays.
 	* Added a new `SucomUtil::get_mt_og_seed()` method to provide a default 'wpsso_og_seed' filter value.
-	* Added a new `WpssoOpenGraph::check_price_mt_value` method to sanitize product price values.
+	* Added a new `WpssoOpenGraph::check_mt_value_price` method to sanitize product price values.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
@@ -604,161 +622,13 @@ The Open Graph meta tags for WooCommerce products have been extended to include 
 	* PHP v5.6.
 	* WordPress v4.2.
 
-**Version 7.4.0 (2020/05/09)**
-
-* **New Features**
-	* Added new buttons in the SSO &gt; Tools and Actions page:
-		* Add Person Role to Content Creators
-		* Remove Person Role from All Users
-* **Improvements**
-	* Changed the menu font icon for better compatibility between Mac OS and Windows (Mac OS superscripted the original font icon).
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added a new lib/util-cache.php library file.
-* **Requires At Least**
-	* PHP v5.6.
-	* WordPress v4.2.
-
-**Version 7.3.0 (2020/05/01)**
-
-* **New Features**
-	* Added a new WPSSO Product Metadata for WooCommerce add-on.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added a new lib/util-woocommerce.php library file.
-* **Requires At Least**
-	* PHP v5.6.
-	* WordPress v4.2.
-
-**Version 7.2.0 (2020/04/28)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added a new 'wpseo_frontend_presenters' filter to disable Open Graph, Twitter, and Schema markup in Yoast SEO v14.0.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Renamed the 'plugin_product_attr_' option keys to 'plugin_attr_product_' for the new WPSSO WCMD add-on.
-	* Moved the lib/pro/util/custom-fields.php library class to lib/util-custom-fields.php.
-	* Removed applying the following filters, which are no longer compatible with Yoast SEO v14.0.
-		* 'wpseo_desc'
-		* 'wpseo_metadesc'
-		* 'wpseo_title'
-* **Requires At Least**
-	* PHP v5.6.
-	* WordPress v4.2.
-
-**Version 7.1.0 (2020/04/25)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* The "Import Yoast SEO Social Meta" feature module (Advanced Settings page) now reads image IDs instead of image URLs, and shows an update notice for any custom metadata values read (Premium version).
-	* The "Structured data product" setting for the Product GTIN (EAN, UPC, ISBN) for WooCommerce plugin is now checked to assign the GTIN/ISBN/MPN value to the correct Schema property (Premium version).
-* **Bugfixes**
-	* Fixed a conflict when both a custom Image ID and Image URL were provided for the same option.
-* **Developer Notes**
-	* Added a new 'wpsso_get_md_options' filter.
-	* Added a new `SucomForm->get_input_locale()` method.
-	* Added a new `SucomForm->get_textarea_locale()` method.
-	* Added a new `SucomForm->get_th_html_locale()` method.
-	* Refactored the WpssoProUtilWpseoMeta class methods (ie. the "Import Yoast SEO Social Meta" feature module).
-	* Refactored the `SucomForm->get_css_class_hide()` method to check both localized and non-localized values.
-* **Requires At Least**
-	* PHP v5.6.
-	* WordPress v4.2.
-
-**Version 7.0.1 (2020/04/19)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added a fallback to the full size image if the requested image size is uncropped and one side matches the image size.
-* **Bugfixes**
-	* Fixed a possible error notice when the WordPress `image_make_intermediate_size()` function returns false instead of creating a resized image as expected.
-* **Developer Notes**
-	* Added a 'wp_image_resize_identical_dimensions' filter (added in WordPress v5.3) hook in `WpssoMedia->maybe_resize_fuzzy_dimensions()` to prevent WordPress from skipping image creation if the resized image and the original image are "close enough".
-* **Requires At Least**
-	* PHP v5.6.
-	* WordPress v4.2.
-
-**Version 7.0.0 (2020/04/17)**
-
-* **New Features**
-	* Deprecated the WPSSO Social Sharing Buttons (aka WPSSO SSB) add-on.
-	* Added taxonomy names to the SSO &gt; Advanced Settings &gt; Editing Pages &gt; Add Document SSO Metabox option.
-* **Improvements**
-	* Added a title to the tab content for mobile icon-only tabs.
-	* Added a default icon for unknown WPSSO settings tabs.
-	* Added a dismiss link to WPSSO "update-nag" notices.
-	* Updated the Image ID and Image URL option enabled/disabled behavior:
-		* The Image ID option is disabled when an Image URL is entered.
-		* The Image URL option is disabled when an Image ID is selected.
-	* Renamed the Document SSO "Head" tab to "Head Markup".
-	* Renamed the SSO &gt; Advanced Settings "Plugin Behavior" tab to "Standard Settings".
-	* Renamed the 'Enforce Image Size Checks' option to 'Enforce Image Dimension Checks'.
-	* Renamed the 'Video Size' option to 'Video Dimensions'.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added new methods:
-		* `SucomUtil::add_query_fragment()`
-		* `SucomUtil::get_mod_anchor()`
-		* `SucomUtil::sanitize_anchor()`
-		* `SucomUtilWP::get_post_type_labels()`
-		* `SucomUtilWP::get_taxonomy_labels()`
-		* `SucomUtilWP::is_post_type_public()`
-		* `SucomUtilWP::sort_objects_by_label()`
-		* `WpssoUtil->add_post_type_names()`
-		* `WpssoUtil->add_taxonomy_names()`
-		* `WpssoUtil::get_fragment_anchor()` (for the WPSSO FAQ add-on)
-	* Updated post type and taxonomy "public" query filters:
-		* From:
-			* `array( 'public' => 1, 'show_ui' => 1 )`
-		* To:
-			* `array( 'show_in_menu' => 1, 'show_ui' => 1 )`
-		* In:
-			* `WpssoTerm::get_public_ids()`
-			* `WpssoUtil->get_post_types()`
-			* `SucomUtilWP::get_post_type_labels()`
-			* `SucomUtilWP::get_taxonomy_labels()`
-	* Added a new 'is_public' key to the `$mod` associative array (value is `true` by default, and `false` for non-public post types and taxonomies).
-	* Added a static local cache to the `WpssoUtil->get_page_url()` private method.
-	* Refactored the `SucomForm->get_checklist_post_types()` method and removed the `$values` argument.
-	* Removed the `$src_id` argument from `WpssoUtil->get_canonical_url()`.
-	* Removed the `$src_id` argument from `WpssoUtil->get_sharing_url()`.
-	* Removed the `$src_id` argument from `WpssoUtil->get_page_url()`.
-	* Removed the `$src_id` argument from following filters:
-		* 'wpsso_archive_page_url'
-		* 'wpsso_canonical_url'
-		* 'wpsso_home_url'
-		* 'wpsso_post_url'
-		* 'wpsso_search_url'
-		* 'wpsso_server_request_url_cache_disabled'
-		* 'wpsso_server_request_url'
-		* 'wpsso_sharing_url'
-		* 'wpsso_term_url'
-		* 'wpsso_user_url'
-	* Removed the 'plugin_add_to_term' option key (replaced by new 'plugin_add_to_tax_{tax_slug}' options).
-	* Renamed the 'wpsso_server_request_url_disable_cache' filter to 'wpsso_server_request_url_cache_disabled'.
-	* Deprecated the `WpssoUtil->get_atts_css_attr()` public method.
-	* Deprecated the `WpssoUtil->get_atts_src_id()` public method.
-* **Requires At Least**
-	* PHP v5.6.
-	* WordPress v4.2.
-
 == Upgrade Notice ==
+
+= 8.2.0-dev.1 =
+
+(2020/08/14) Added 'https://schema.org/' to the Schema item availability, item condition, event attendance, and event status property values.
 
 = 8.1.0 =
 
 (2020/08/13) Added extra checks and debugging messages for a possible invalid video array.
-
-= 8.0.0 =
-
-(2020/08/11) Added an API integration module for Shopper Approved ratings and reviews. Added support for Schema 1:1, 4:3, and 16:9 images for Google. Fixed incorrect sanitation of plugin settings for multisite blogs.
 
