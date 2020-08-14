@@ -165,6 +165,10 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 			return $mt_og;
 		}
 
+		/**
+		 * The output from these methods are provided to the WPSSO JSON add-on, so do not unset array elements unless you
+		 * want to exclude them from Schema JSON-LD markup.
+		 */
 		public function filter_og_data_https_ogp_me_ns_product( array $mt_og, array $mod ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -187,25 +191,17 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 
 					WpssoOpenGraph::check_mt_value_price( $offer, $mt_pre = 'product' );
 
-					foreach( $offer as $mt_name => $mt_value ) {
+					/**
+					 * Allow only a single main product brand.
+					 */
+					if ( ! empty( $offer[ 'product:brand' ] ) ) {
 
-						switch( $mt_name ) {
+						if ( empty( $mt_og[ 'product:brand' ] ) ) {
 
-							/**
-							 * Allow only a single main product brand.
-							 */
-							case 'product:brand':
-
-								if ( ! isset( $mt_og[ $mt_name ] ) ) {
-
-									$mt_og[ $mt_name ] = $mt_value;
-								}
-
-								unset ( $offer[ $mt_name ] );
-
-								break;
+							$mt_og[ 'product:brand' ] = $mt_value;
 						}
 
+						unset ( $offer[ 'product:brand' ] );
 					}
 				}
 			}

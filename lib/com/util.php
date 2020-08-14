@@ -1598,7 +1598,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			foreach ( $match as $key ) {
 
-				if ( $replace ) {
+				if ( false !== $replace ) {	// Can be an empty string.
 
 					$fixed = preg_replace( $pattern, $replace, $key );
 
@@ -2657,7 +2657,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			/**
 			 * Unchecked checkboxes are not provided, so re-create them here based on hidden values.
 			 */
-			$checkbox = self::preg_grep_keys( '/^is_checkbox_/', $opts, false, '' );
+			$checkbox = self::preg_grep_keys( '/^is_checkbox_/', $opts, $invert = false, $replace = '' );
 
 			foreach ( $checkbox as $key => $val ) {
 
