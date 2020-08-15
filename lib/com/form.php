@@ -906,10 +906,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 								} else {
 
-									/**
-									 * Use $(window).load() instead of $(document).ready() for the WordPress block editor.
-									 */
-									$html .= 'jQuery( window ).load( function(){';
+									$html .= 'jQuery( window ).on( \'load\', function(){';
 									$html .= 'sucomSelectChangeUnhideRows( \'' . $hide_class . '\', \'' . $show_class . '\' );';
 									$html .= '});';
 								}
@@ -2508,10 +2505,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$select_id_esc = esc_js( $select_id );
 
 			/**
-			 * The hover event is also required for Firefox to render the option list correctly.
+			 * The 'hover' event (aka 'mouseenter mouseleave') is also required for Firefox to render the option list correctly.
+			 *
+			 * Replaced the 'hover' event with 'mouseenter' on 2020/08/14.
 			 */
 			$html .= '<script type="text/javascript">' . "\n";
-			$html .= 'jQuery( \'select#' . $select_id_esc . ':not( .json_loaded )\' ).on( \'hover focus load_json\', function(){';
+			$html .= 'jQuery( \'select#' . $select_id_esc . ':not( .json_loaded )\' ).on( \'mouseenter focus load_json\', function(){';
 			$html .= 'sucomSelectLoadJson( \'select#' . $select_id_esc . '\', \'' . $event_json_var . '\' );';
 			$html .= '});' . "\n";
 			$html .= '</script>' . "\n";

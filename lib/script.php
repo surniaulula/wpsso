@@ -241,7 +241,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 				jQuery( document ).ready( function() {
 
-					jQuery( window ).load( function() {
+					jQuery( window ).on( 'load', function() {
 
 						sucomUpdateToolbar( 'wpsso' );
 					});

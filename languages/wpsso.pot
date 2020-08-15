@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.2.0-b.1\n"
+"Project-Id-Version: WPSSO Core 8.2.0-b.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -930,12 +930,12 @@ msgstr ""
 msgid "Failed writing data to cache file %s."
 msgstr ""
 
-#: lib/com/form.php:1341 lib/gettext-com.php:28
+#: lib/com/form.php:1338 lib/gettext-com.php:28
 msgctxt "option comment"
 msgid "crop"
 msgstr ""
 
-#: lib/com/form.php:1343 lib/gettext-com.php:29
+#: lib/com/form.php:1340 lib/gettext-com.php:29
 msgctxt "option comment"
 msgid "from"
 msgstr ""
