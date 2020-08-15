@@ -15,7 +15,7 @@
  * Requires At Least: 4.2
  * Tested Up To: 5.5
  * WC Tested Up To: 4.3.2
- * Version: 8.2.0-b.2
+ * Version: 8.2.0-rc.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *

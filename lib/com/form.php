@@ -2505,9 +2505,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$select_id_esc = esc_js( $select_id );
 
 			/**
-			 * The 'hover' event (aka 'mouseenter mouseleave') is also required for Firefox to render the option list correctly.
-			 *
-			 * Replaced the 'hover' event with 'mouseenter' on 2020/08/14.
+			 * The 'mouseenter' event is required for Firefox to render the option list correctly.
 			 */
 			$html .= '<script type="text/javascript">' . "\n";
 			$html .= 'jQuery( \'select#' . $select_id_esc . ':not( .json_loaded )\' ).on( \'mouseenter focus load_json\', function(){';
