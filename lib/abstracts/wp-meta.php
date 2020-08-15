@@ -491,11 +491,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 					if ( is_array( $md_defs ) ) {	// Just in case.
 
-						foreach ( $md_defs as $md_key => $md_val ) {
+						foreach ( $md_defs as $md_defs_key => $md_defs_val ) {
 
-							if ( ! isset( $md_opts[ $md_key ] ) && $md_val !== '' ) {
+							if ( ! isset( $md_opts[ $md_defs_key ] ) && $md_defs_val !== '' ) {
 
-								$md_opts[ $md_key ] = $md_defs[ $md_key ];
+								$md_opts[ $md_defs_key ] = $md_defs[ $md_defs_key ];
 							}
 						}
 					}
