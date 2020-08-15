@@ -3337,6 +3337,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
+		 * Deprecated on 2020/08/14.
+		 */
+		public static function check_category_prop_value( &$json_data ) {
+		}
+
+		/**
 		 * Convert a numeric category ID to its Google product type string.
 		 */
 		public static function check_prop_value_category( &$json_data, $prop_name = 'category' ) {
@@ -3371,6 +3377,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 				}
 			}
+		}
+
+		/**
+		 * Deprecated on 2020/08/14.
+		 */
+		public static function check_gtin_prop_value( &$json_data ) {
 		}
 
 		/**
@@ -3413,6 +3425,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						break;
 				}
 			}
+		}
+
+		/**
+		 * Deprecated on 2020/08/14.
+		 */
+		public static function check_sameas_prop_values( &$json_data ) {
 		}
 
 		/**
