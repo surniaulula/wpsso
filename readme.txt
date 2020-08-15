@@ -307,7 +307,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.2.0-rc.1 (2020/08/15)**
+**Version 8.2.0 (2020/08/15)**
 
 **Google has updated their Rich Results requirements to use the complete URL of Schema enumeration values instead of only the enumeration name (as they previously required). The product availability, product condition, event attendance, event status, and offer availability values have all been updated to include their complete enumeration URL. For example, a previous product condition might have been 'New' or 'NewCondition' and will now be included in Schema markup as 'https://schema.org/NewCondition'.**
 
@@ -608,29 +608,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* PHP v5.6.
 	* WordPress v4.2.
 
-**Version 7.5.0 (2020/05/14)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* The WPSSO Tweet a Quote add-on has been deprecated and removed.
-	* Added a check to prevent post URLs from non-public post types from being shortened.
-* **Bugfixes**
-	* Fixed an ignored Product Availability value in the Document SSO metabox for custom product pages that are not e-commerce product pages.
-* **Developer Notes**
-	* Added a new WpssoSchema->get_json_data_home_website() method.
-	* Added a new WpssoWpMeta::get_mod_home() method.
-* **Requires At Least**
-	* PHP v5.6.
-	* WordPress v4.2.
-
 == Upgrade Notice ==
 
-= 8.2.0-rc.1 =
+= 8.2.0 =
 
 (2020/08/15) Added 'https://schema.org/' to the Schema item availability, item condition, event attendance, and event status property values.
-
-= 8.1.0 =
-
-(2020/08/13) Added extra checks and debugging messages for a possible invalid video array.
 
