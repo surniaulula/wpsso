@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.2.0\n"
+"Project-Id-Version: WPSSO Core 8.2.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-08-14 17:48-0700\n"
-"PO-Revision-Date: 2020-08-14 17:50-0700\n"
+"PO-Revision-Date: 2020-08-15 09:59-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -5294,7 +5294,7 @@ msgstr "Informations complémentaires montré uniquement aux utilisateurs admini
 
 #: lib/messages.php:2448
 msgid "Select a larger image under the %1$s &gt; %2$s tab."
-msgstr "Sélectionnez une image plus grande sous l'onglet %1$ &gt; %2$s."
+msgstr "Sélectionnez une image plus grande sous l'onglet %1$s &gt; %2$s."
 
 #: lib/messages.php:2453
 msgid "Enable the %s option."
