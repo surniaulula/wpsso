@@ -1,4 +1,4 @@
-=== WPSSO Core | The Complete Meta Tag and Schema Rich Results Solution ===
+=== WPSSO Core | The Complete Meta Tag and Schema / Rich Results Solution ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
