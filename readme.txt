@@ -1,4 +1,4 @@
-=== WPSSO Core | The Complete Meta Tag and Schema / Rich Results Solution ===
+=== WPSSO Core | The Ultimate Meta Tag and Schema / Rich Results Solution ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -24,11 +24,11 @@ Make sure your content looks great on social sites and search results, no matter
 
 WPSSO creates meta tags and Schema markup for Facebook / Open Graph, Pinterest Rich Pins, Twitter Cards, Google Knowledge Graph, Google Rich Results (aka Rich Snippets, Structured Data), WhatsApp and Messaging Apps, Mobile Web Browsers, WordPress REST API, LinkedIn / oEmbed data and more &mdash; including complete markup for image SEO, video SEO, extensive e-Commerce product markup (for WooCommerce and others), mobile store apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content, supported plugin data, and service API data.
 
-**Reads your existing WordPress content, plugin and service API data:**
+**Uses your existing WordPress content, plugin data, and service API data:**
 
 There's no need to manually re-enter descriptions, titles, product information, re-select images / videos, etc. like other meta tag, SEO and Schema markup plugins.
 
-**Customize plugin settings for different languages:**
+**Customize the plugin settings for different languages:**
 
 Text, image and video related options are language / locale aware, which means you can customize their values for different front-end languages / locales.
 
