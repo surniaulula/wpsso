@@ -32,9 +32,9 @@ There's no need to manually re-enter descriptions, titles, product information, 
 
 Text, image and video related options are language / locale aware, which means you can customize their values for different front-end languages / locales.
 
-**Coded for maximum performance:**
+**Coded for maximum WordPress performance and compatibility:**
 
-WPSSO makes full use of all available caching methods &mdash; along with offering advanced caching features like pre-seeding in background. WPSSO Core and its complementary add-ons load only the libraries and classes they need, keeping their code small, fast and light. All code is fully tested and compatible with the latest version of WordPress and PHP v7.x (WordPress v4.2 and PHP v5.6 or newer required).
+WPSSO makes full use of all available caching methods &mdash; along with offering advanced caching features like pre-seeding in background. WPSSO Core and its complementary add-ons load only the libraries and classes they need, keeping their code small, fast and light. All code is fully tested and compatible with the latest version of WordPress and PHP v7.x (WordPress v4.2 and PHP v5.6 or newer is required).
 
 <h3>Users Love the WPSSO Core Plugin</h3>
 
