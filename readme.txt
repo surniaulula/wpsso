@@ -30,7 +30,7 @@ There's no need to manually re-enter descriptions, titles, product information, 
 
 **Customize the plugin settings for different languages:**
 
-Text, image and video related options are language / locale aware, which means you can customize their values for different front-end languages / locales.
+Text, image, and video related options are WordPress language / locale aware, which means you can easily switch languages and customize options for different front-end languages.
 
 **Coded for maximum WordPress performance and compatibility:**
 
