@@ -1,4 +1,4 @@
-<h1>WPSSO Core</h1><h3>The Automated Meta Tag and Schema Rich Results Solution</h3>
+<h1>WPSSO Core</h1><h3>The Complete Meta Tag and Schema Rich Results Solution</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
