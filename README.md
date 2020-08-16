@@ -27,7 +27,7 @@
 
 <p><strong>Customize the plugin settings for different languages:</strong></p>
 
-<p>Text, image, and video related options are WordPress language / locale aware, which means you can easily switch languages and customize options for different front-end languages.</p>
+<p>Text, image, and video related options are WordPress language / locale aware, which means you can easily switch languages and customize these options for different front-end languages.</p>
 
 <p><strong>Coded for maximum WordPress performance and compatibility:</strong></p>
 
