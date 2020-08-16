@@ -1,4 +1,4 @@
-<h1>WPSSO Core</h1><h3>The Ultimate Meta Tag and Schema Solution</h3>
+<h1>WPSSO Core</h1><h3>The Automated Meta Tag and Schema Rich Results Solution</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
@@ -10,7 +10,7 @@
 <tr><th align="right" valign="top" nowrap>Tested Up To WooCommerce</th><td>4.3.3</td></tr>
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
 <tr><th align="right" valign="top" nowrap>License</th><td><a href="https://www.gnu.org/licenses/gpl.txt">GPLv3</a></td></tr>
-<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>rich results, twitter cards, open graph, rich pins, meta tags, schema, social sharing, seo, structured data, facebook, linkedin, google, pinterest</td></tr>
+<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>twitter, google, pinterest, linkedin, facebook, open graph, rich pins, meta tags, schema, rich results, social sharing, seo, structured data</td></tr>
 </table>
 
 <h2>Description</h2>

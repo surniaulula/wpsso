@@ -1,4 +1,4 @@
-=== WPSSO Core | The Ultimate Meta Tag and Schema Solution ===
+=== WPSSO Core | The Automated Meta Tag and Schema Rich Results Solution ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -6,7 +6,7 @@ Domain Path: /languages
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
-Tags: rich results, twitter cards, open graph, rich pins, meta tags, schema, social sharing, seo, structured data, facebook, linkedin, google, pinterest
+Tags: twitter, google, pinterest, linkedin, facebook, open graph, rich pins, meta tags, schema, rich results, social sharing, seo, structured data
 Contributors: jsmoriss
 Requires PHP: 5.6
 Requires At Least: 4.2
