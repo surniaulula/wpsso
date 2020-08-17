@@ -2494,16 +2494,33 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/**
-				 * See https://developers.facebook.com/docs/reference/opengraph/object-type/product/.
+				 * Validated on 2020/08/17.
+				 *
+				 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/#og-tags.
+				 *
+				 * Optional for dynamic ads. N/A for commerce. Age group associated to the item. Accepted values:
+				 * adult, all ages, teen, kids, toddler, infant, newborn.
 				 */
 				'age_group' => array(
-					'none'   => '[None]',
-					'kids'   => 'Kids',
-					'adult'  => 'Adult',
+					'none'     => '[None]',
+					'adult'    => 'Adult',
+					'all ages' => 'All Ages',
+					'teen'     => 'Teen',
+					'kids'     => 'Kids',
+					'toddler'  => 'Toddler',
+					'infant'   => 'Infant',
+					'newborn'  => 'Newborn',
 				),
 
 				/**
+				 * Validated on 2020/08/17.
+				 *
 				 * See https://schema.org/suggestedGender.
+				 *
+				 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/#og-tags.
+				 *
+				 * Optional for dynamic ads. Required for commerce. Determines gender for sizing. Supported values:
+				 * female, male, unisex.
 				 */
 				'audience_gender' => array(
 					'none'   => '[None]',
@@ -2527,18 +2544,24 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/**
+				 * Validated on 2020/08/17.
+				 *
 				 * See https://developers.google.com/search/docs/data-types/job-postings.
+				 *
+				 * Choose one or more of the following case-sensitive values: "FULL_TIME" "PART_TIME" "CONTRACTOR"
+				 * "TEMPORARY" "INTERN" "VOLUNTEER" "PER_DIEM" "OTHER" You can include more than one employmentType
+				 * property.
 				 */
 				'employment_type' => array(
 					'none'       => '[None]',
-					'full_time'  => 'Full Time',
-					'part_time'  => 'Part Time',
-					'contractor' => 'Contractor',
-					'temporary'  => 'Temporary',
-					'intern'     => 'Intern',
-					'volunteer'  => 'Volunteer',
-					'per_diem'   => 'Per Diem',
-					'other'      => 'Other',
+					'FULL_TIME'  => 'Full Time',
+					'PART_TIME'  => 'Part Time',
+					'CONTRACTOR' => 'Contractor',
+					'TEMPORARY'  => 'Temporary',
+					'INTERN'     => 'Intern',
+					'VOLUNTEER'  => 'Volunteer',
+					'PER_DIEM'   => 'Per Diem',
+					'OTHER'      => 'Other',
 				),
 
 				/**
@@ -2870,9 +2893,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'og_content_map' => array(	// Element of 'head' array.
 
 					/**
-					 * Validated on 2020/07/24.
+					 * Validated on 2020/08/17.
 					 *
 					 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/#og-tags.
+					 *
+					 * Required. Current availability of the item: in stock, out of stock, available for order,
+					 * discontinued. Supports pixel-based catalogs.
 					 */
 					'product:availability' => array(
 				 		'https://schema.org/Discontinued'        => 'discontinued',
@@ -2887,9 +2913,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 
 					/**
-					 * Validated on 2020/08/14.
+					 * Validated on 2020/08/17.
 					 *
 					 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/#og-tags.
+					 *
+					 * Required. Current condition of the item: new, refurbished, used. Supports pixel-based
+					 * catalogs.
 					 */
 					'product:condition' => array(
 						'https://schema.org/DamagedCondition'     => 'used',
