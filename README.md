@@ -27,7 +27,7 @@
 
 <p><strong>Customize the plugin settings for different languages:</strong></p>
 
-<p>Text, image, and video related options are WordPress language / locale aware, which means you can easily switch languages and customize these options for different front-end languages.</p>
+<p>Text, image, and video related options are WordPress language / locale aware, which means you can easily switch languages and customize these options for different front-end webpage languages.</p>
 
 <p><strong>Coded for maximum WordPress performance and compatibility:</strong></p>
 
@@ -116,7 +116,7 @@
 
 <h3>Free Complementary Add-ons</h3>
 
-<p>Optionally activate free complementary add-on(s) for non-standard features:</p>
+<p>Optionally activate free complementary add-ons for more non-standard features:</p>
 
 <ul>
 <li><a href="https://wordpress.org/plugins/wpsso-faq/">WPSSO FAQ Manager</a> to manage FAQ categories with Question and Answer pages.</li>

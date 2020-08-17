@@ -30,7 +30,7 @@ There's no need to manually re-enter descriptions, titles, product information, 
 
 **Customize the plugin settings for different languages:**
 
-Text, image, and video related options are WordPress language / locale aware, which means you can easily switch languages and customize these options for different front-end languages.
+Text, image, and video related options are WordPress language / locale aware, which means you can easily switch languages and customize these options for different front-end webpage languages.
 
 **Coded for maximum WordPress performance and compatibility:**
 
@@ -115,7 +115,7 @@ WPSSO makes full use of all available caching methods &mdash; along with offerin
 
 <h3>Free Complementary Add-ons</h3>
 
-Optionally activate free complementary add-on(s) for non-standard features:
+Optionally activate free complementary add-ons for more non-standard features:
 
 * [WPSSO FAQ Manager](https://wordpress.org/plugins/wpsso-faq/) to manage FAQ categories with Question and Answer pages.
 * [WPSSO Inherit Parent Metadata](https://wordpress.org/plugins/wpsso-inherit-parent-meta/) to inherit featured and custom images.
