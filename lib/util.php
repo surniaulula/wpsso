@@ -1551,6 +1551,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$is_admin = is_admin();	// Optimize and call once.
+
 			if ( ! function_exists( 'mb_convert_encoding' ) ) {
 
 				$this->php_function_missing( 'mb_convert_encoding()', __METHOD__ );
@@ -1605,7 +1607,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$this->p->debug->log( 'exiting early: request argument is not html or a valid url' );
 				}
 
-				if ( is_admin() ) {
+				if ( $is_admin ) {
 
 					$this->p->notice->err( sprintf( __( 'The %1$s request argument is not HTML or a valid URL.',
 						'wpsso' ), __FUNCTION__ ) );
@@ -1629,7 +1631,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						$this->p->debug->log( 'exiting early: error getting HTML from ' . $request );
 					}
 
-					if ( is_admin() ) {
+					if ( $is_admin ) {
 
 						$this->p->notice->err( sprintf( __( 'Error getting HTML from <a href="%1$s">%1$s</a>.',
 							'wpsso' ), $request ) );
@@ -1650,7 +1652,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$this->p->debug->log( 'exiting early: html for ' . $request . ' is empty' );
 				}
 
-				if ( is_admin() ) {
+				if ( $is_admin ) {
 
 					$this->p->notice->err( sprintf( __( 'Webpage retrieved from <a href="%1$s">%1$s</a> is empty.',
 						'wpsso' ), $request ) );
@@ -1662,70 +1664,60 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		
 			$doc = new DOMDocument();	// Since PHP v4.1.
 
-			$has_errors = false;
+			if ( function_exists( 'libxml_use_internal_errors' ) ) {	// Since PHP v5.1.
 
-			if ( $libxml_errors ) {
+				$libxml_prev_state = libxml_use_internal_errors( true );	// Enable user error handling.
 
-				if ( ! function_exists( 'libxml_use_internal_errors' ) ) {	// Since PHP v5.1.
+				if ( ! $doc->loadHTML( $html ) ) {	// loadXML() is too strict for most webpages.
 
-					$this->php_function_missing( 'libxml_use_internal_errors()', __METHOD__ );
+					if ( $this->p->debug->enabled ) {
 
-					@$doc->loadHTML( $html );	// Load HTML and ignore errors.
+						$this->p->debug->log( 'loadHTML returned error(s)' );
+					}
 
-				} else {
-
-					$libxml_prev_state = libxml_use_internal_errors( true );	// Enable user error handling.
-
-					if ( ! $doc->loadHTML( $html ) ) {	// loadXML() is too strict for most webpages.
-
-						$has_errors = true;
+					/**
+					 *	libXMLError {
+					 *		public int $level;
+					 *		public int $code;
+					 *		public int $column;
+					 *		public string $message;
+					 *		public string $file;
+					 *		public int $line;
+					 *	}
+					 */
+					foreach ( libxml_get_errors() as $error ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'loadHTML returned error(s)' );
+							$this->p->debug->log( 'libxml error: ' . $error->message );
 						}
 
-						foreach ( libxml_get_errors() as $error ) {
+						if ( $libxml_errors ) {
 
-							/**
-							 *	libXMLError {
-							 *		public int $level;
-							 *		public int $code;
-							 *		public int $column;
-							 *		public string $message;
-							 *		public string $file;
-							 *		public int $line;
-							 *	}
-							 */
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'libxml error: ' . $error->message );
-							}
-
-							if ( is_admin() ) {
+							if ( $is_admin ) {
 
 								$this->p->notice->err( 'PHP libXML error: ' . $error->message );
 							}
 						}
-
-						libxml_clear_errors();	// Clear any HTML parsing errors.
-
-					} elseif ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'loadHTML was successful' );
 					}
 
-					libxml_use_internal_errors( $libxml_prev_state );	// Restore previous error handling.
+					libxml_clear_errors();	// Clear any HTML parsing errors.
+
+				} elseif ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'loadHTML was successful' );
 				}
 
+				libxml_use_internal_errors( $libxml_prev_state );	// Restore previous error handling.
+
 			} else {
+
 				@$doc->loadHTML( $html );	// Load HTML and ignore errors.
 			}
 
 			$xpath   = new DOMXPath( $doc );
 			$metas   = $xpath->query( $query );
 			$met_ret = array();
-
 
 			foreach ( $metas as $m ) {
 

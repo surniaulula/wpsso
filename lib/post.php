@@ -1305,9 +1305,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->log( 'checking the stripped webpage html for duplicates' );
 			}
 
-			$metas           = $this->p->util->get_html_head_meta( $html_stripped, $query = '/html/head/link|/html/head/meta', $libxml_errors = true );
-			$check_opts      = SucomUtil::preg_grep_keys( '/^add_/', $this->p->options, false, '' );
-			$conflicts_msg   = __( 'Conflict detected &mdash; your theme or another plugin is adding %1$s to the head section of this webpage.', 'wpsso' );
+			$metas = $this->p->util->get_html_head_meta( $html_stripped, $query = '/html/head/link|/html/head/meta', $libxml_errors = true );
+
+			$check_opts = SucomUtil::preg_grep_keys( '/^add_/', $this->p->options, false, '' );
+
+			$conflicts_msg = __( 'Conflict detected &mdash; your theme or another plugin is adding %1$s to the head section of this webpage.', 'wpsso' );
+
 			$conflicts_found = 0;
 
 			if ( is_array( $metas ) ) {
