@@ -42,6 +42,9 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				$this->p->debug->mark();
 			}
 
+			/**
+			 * Prevent WP Retina 2x from creating 2x images for WPSSO image sizes.
+			 */
 			if ( ! empty( $this->p->avail[ 'media' ][ 'wp-retina-2x' ] ) ) {
 
 				add_filter( 'option_wr2x_ignore_sizes', array( $this, 'update_wr2x_ignore_sizes' ), 10, 1 );
@@ -133,6 +136,9 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			}
 		}
 
+		/**
+		 * Prevent WP Retina 2x from creating 2x images for WPSSO image sizes.
+		 */
 		public function update_wr2x_ignore_sizes( $mixed ) {
 
 			global $_wp_additional_image_sizes;
