@@ -316,7 +316,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Added 'https://schema.org/' to the Schema item availability, item condition, event attendance, and event status property values.
 * **Bugfixes**
-	* None.
+	* Fixed a possible missing 'publisher' property for the Schema Article type.
 * **Developer Notes**
 	* Added a new 'wpsso_sanitize_md_options' filter hook in WpssoSchema to sanitize the post metadata product availability and condition values.
 	* Added a new `WpssoSchema::check_prop_value_enumeration()` method.
