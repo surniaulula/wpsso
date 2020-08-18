@@ -6,10 +6,12 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+
 	die( 'Do. Or do not. There is no try.' );
 }
 
@@ -28,6 +30,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -37,6 +40,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			$this->version   = WpssoConfig::get_version();
 
 			if ( is_admin() ) {
+
 				add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_styles' ), -1000 );
 			}
 		}
@@ -44,6 +48,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 		public function admin_enqueue_styles( $hook_name ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'hook name = ' . $hook_name );
 				$this->p->debug->log( 'screen base = ' . SucomUtil::get_screen_base() );
 			}
@@ -82,6 +87,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				case ( preg_match( '/_page_' . $this->p->lca . '-.*(addons|licenses)/', $hook_name ) ? true : false ):
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'enqueuing styles for addons and licenses page' );
 					}
 
@@ -95,6 +101,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				case ( false !== strpos( $hook_name, '_page_' . $this->p->lca . '-' ) ? true : false ):
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'enqueuing styles for settings page' );
 					}
 
@@ -114,6 +121,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				case ( SucomUtil::is_toplevel_edit( $hook_name ) ):	// Required for event espresso plugin.
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'enqueuing styles for editing page' );
 					}
 
@@ -134,6 +142,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 						if ( isset( $this->p->cf[ '*' ][ 'slug' ][ $plugin_slug ] ) ) {
 
 							if ( $this->p->debug->enabled ) {
+
 								$this->p->debug->log( 'enqueuing styles for plugin install page' );
 							}
 
@@ -171,6 +180,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				if ( $custom_style_css = get_transient( $cache_id ) ) {	// Not empty.
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'settings page style retrieved from cache' );
 					}
 
@@ -181,6 +191,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark( 'create and minify settings page style' );	// Begin timer.
 			}
 
@@ -208,12 +219,14 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			';
 
 			if ( strpos( $hook_name, '_page_' . $this->p->lca . '-dashboard' ) ) {
+
 				$custom_style_css .= 'div#' . $hook_name . ' div#normal-sortables { min-height:0; }';
 			}
 
 			$custom_style_css = apply_filters( $this->p->lca . '_settings_page_custom_style_css', $custom_style_css );
 	
 			if ( method_exists( 'SucomUtil', 'minify_css' ) ) {
+
 				$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->p->lca );
 			}
 
@@ -222,6 +235,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			wp_add_inline_style( 'sucom-settings-page', $custom_style_css );	// Since WP v3.3.0.
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark( 'create and minify settings page style' );	// End timer.
 			}
 		}
@@ -229,6 +243,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 		private function add_admin_page_style( $hook_name ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -257,6 +272,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				if ( $custom_style_css = get_transient( $cache_id ) ) {	// not empty
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'admin page style retrieved from cache' );
 					}
 
@@ -267,6 +283,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark( 'create and minify admin page style' );	// Begin timer.
 			}
 
@@ -403,6 +420,14 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			';
 
 			/**
+			 * The Yoast SEO metabox "Schema" tab and its options cannot be disabled, so hide them instead.
+			 */
+			$custom_style_css .= '
+				#wpseo-meta-tab-schema { display: none; }
+				#wpseo-meta-section-schema { display: none; }
+			';
+
+			/**
 			 * List table columns.
 			 */
 			foreach ( array(
@@ -443,6 +468,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				) as $css_name => $opt_suffix ) {
 
 					if ( ! empty( $this->p->options[ $opt_key . $opt_suffix ] ) ) {
+
 						$custom_style_css .= "\t\t" . $css_name . ':' . $this->p->options[ $opt_key . $opt_suffix ] . ";\n";
 					}
 				}
@@ -596,6 +622,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			';
 
 			if ( isset( $sort_cols[ 'schema_type' ][ 'width' ] ) ) {
+
 				$custom_style_css .= '
 					.column-' . $lca . '_schema_type {
 						width:' . $sort_cols[ 'schema_type' ][ 'width' ] . ';
@@ -607,6 +634,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			}
 
 			if ( isset( $sort_cols[ 'og_type' ][ 'width' ] ) ) {
+
 				$custom_style_css .= '
 					.column-' . $lca . '_og_type {
 						width:' . $sort_cols[ 'og_type' ][ 'width' ] . ' !important;
@@ -627,6 +655,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				';
 
 				if ( isset( $sort_cols[ 'og_img' ][ 'height' ] ) ) {
+
 					$custom_style_css .= '
 						.column-' . $lca . '_og_img .preview_img { 
 							max-width:' . $sort_cols[ 'og_img' ][ 'width' ] . ' !important;
@@ -668,7 +697,9 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			';
 
 			foreach ( $sort_cols as $col_name => $col_info ) {
+
 				if ( isset( $col_info[ 'width' ] ) ) {
+
 					$custom_style_css .= '
 						table.wp-list-table > thead > tr > th.column-' . $lca . '_' . $col_name . ',
 						table.wp-list-table > tbody > tr > td.column-' . $lca . '_' . $col_name . ' {
@@ -682,6 +713,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			if ( $this->use_cache ) {
 
 				if ( method_exists( 'SucomUtil', 'minify_css' ) ) {
+
 					$custom_style_css = SucomUtil::minify_css( $custom_style_css, $lca );
 				}
 
@@ -691,6 +723,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			wp_add_inline_style( 'sucom-admin-page', $custom_style_css );	// Since WP v3.3.0.
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark( 'create and minify admin page style' );	// End timer.
 			}
 		}
