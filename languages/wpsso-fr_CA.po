@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 8.2.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-08-14 17:48-0700\n"
-"PO-Revision-Date: 2020-08-15 09:59-0700\n"
+"POT-Creation-Date: 2020-08-19 06:15-0700\n"
+"PO-Revision-Date: 2020-08-19 06:17-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -885,7 +885,7 @@ msgstr "Cet avis peut être masqué définitivement."
 msgid "This notice can be dismissed for %s."
 msgstr "Cet avis peut être masqué pour %s."
 
-#: lib/com/notice.php:509 lib/gettext-com.php:35 lib/post.php:1778
+#: lib/com/notice.php:509 lib/gettext-com.php:35 lib/post.php:1781
 msgid "Edit"
 msgstr "Modifier"
 
@@ -2159,10 +2159,10 @@ msgstr "fh"
 #: lib/gettext-config.php:155 lib/gettext-config.php:158
 #: lib/gettext-config.php:161 lib/gettext-config.php:177
 #: lib/gettext-config.php:180 lib/gettext-config.php:182
-#: lib/gettext-config.php:255 lib/gettext-config.php:258
-#: lib/gettext-config.php:262 lib/gettext-config.php:268
-#: lib/gettext-config.php:277 lib/gettext-config.php:281
-#: lib/gettext-config.php:287 lib/gettext-config.php:297
+#: lib/gettext-config.php:255 lib/gettext-config.php:263
+#: lib/gettext-config.php:267 lib/gettext-config.php:273
+#: lib/gettext-config.php:282 lib/gettext-config.php:286
+#: lib/gettext-config.php:292 lib/gettext-config.php:302
 #: lib/users/add-person.php:96
 msgctxt "option value"
 msgid "[None]"
@@ -2680,260 +2680,285 @@ msgstr "Nom d'attribut sexe cible"
 
 #: lib/gettext-config.php:256
 msgctxt "option value"
-msgid "Kids"
-msgstr "Enfants"
-
-#: lib/gettext-config.php:257
-msgctxt "option value"
 msgid "Adult"
 msgstr "Adulte"
 
+#: lib/gettext-config.php:257
+msgctxt "option value"
+msgid "All Ages"
+msgstr "Tout âge"
+
+#: lib/gettext-config.php:258
+msgctxt "option value"
+msgid "Teen"
+msgstr "Adolescent"
+
 #: lib/gettext-config.php:259
+msgctxt "option value"
+msgid "Kids"
+msgstr "Enfants"
+
+#: lib/gettext-config.php:260
+msgctxt "option value"
+msgid "Toddler"
+msgstr "Préscolaire"
+
+#: lib/gettext-config.php:261
+msgctxt "option value"
+msgid "Infant"
+msgstr "Bébé"
+
+#: lib/gettext-config.php:262
+msgctxt "option value"
+msgid "Newborn"
+msgstr "Nouveau-né"
+
+#: lib/gettext-config.php:264
 msgctxt "option value"
 msgid "Male"
 msgstr "Masculin"
 
-#: lib/gettext-config.php:260
+#: lib/gettext-config.php:265
 msgctxt "option value"
 msgid "Female"
 msgstr "Féminin"
 
-#: lib/gettext-config.php:261
+#: lib/gettext-config.php:266
 msgctxt "option value"
 msgid "Unisex"
 msgstr "Unisexe"
 
-#: lib/gettext-config.php:263
+#: lib/gettext-config.php:268
 msgctxt "option value"
 msgid "Audiobook"
 msgstr "Livre audio"
 
-#: lib/gettext-config.php:264
+#: lib/gettext-config.php:269
 msgctxt "option value"
 msgid "eBook"
 msgstr "Livre électronique"
 
-#: lib/gettext-config.php:265
+#: lib/gettext-config.php:270
 msgctxt "option value"
 msgid "Graphic Novel"
 msgstr "Roman graphique"
 
-#: lib/gettext-config.php:266
+#: lib/gettext-config.php:271
 msgctxt "option value"
 msgid "Hardcover"
 msgstr "Couverture rigide"
 
-#: lib/gettext-config.php:267
+#: lib/gettext-config.php:272
 msgctxt "option value"
 msgid "Paperback"
 msgstr "Livre de poche"
 
-#: lib/gettext-config.php:269
+#: lib/gettext-config.php:274
 msgctxt "option value"
 msgid "Full Time"
 msgstr "Temps plein"
 
-#: lib/gettext-config.php:270
+#: lib/gettext-config.php:275
 msgctxt "option value"
 msgid "Part Time"
 msgstr "Temps partiel"
 
-#: lib/gettext-config.php:271
+#: lib/gettext-config.php:276
 msgctxt "option value"
 msgid "Contractor"
 msgstr "Sous-traitant"
 
-#: lib/gettext-config.php:272
+#: lib/gettext-config.php:277
 msgctxt "option value"
 msgid "Temporary"
 msgstr "Temporaire"
 
-#: lib/gettext-config.php:273
+#: lib/gettext-config.php:278
 msgctxt "option value"
 msgid "Intern"
 msgstr "Stagiaire"
 
-#: lib/gettext-config.php:274
+#: lib/gettext-config.php:279
 msgctxt "option value"
 msgid "Volunteer"
 msgstr "Volontaire"
 
-#: lib/gettext-config.php:275
+#: lib/gettext-config.php:280
 msgctxt "option value"
 msgid "Per Diem"
 msgstr "Per diem"
 
-#: lib/gettext-config.php:276
+#: lib/gettext-config.php:281
 msgctxt "option value"
 msgid "Other"
 msgstr "Autre"
 
-#: lib/gettext-config.php:278
+#: lib/gettext-config.php:283
 msgctxt "option value"
 msgid "Mixed"
 msgstr "Mixte"
 
-#: lib/gettext-config.php:279
+#: lib/gettext-config.php:284
 msgctxt "option value"
 msgid "Online"
 msgstr "En ligne"
 
-#: lib/gettext-config.php:280
+#: lib/gettext-config.php:285
 msgctxt "option value"
 msgid "Physical Location"
 msgstr "Emplacement physique"
 
-#: lib/gettext-config.php:282
+#: lib/gettext-config.php:287
 msgctxt "option value"
 msgid "Cancelled"
 msgstr "Annulé"
 
-#: lib/gettext-config.php:283
+#: lib/gettext-config.php:288
 msgctxt "option value"
 msgid "Moved Online"
 msgstr "Déplacé en ligne"
 
-#: lib/gettext-config.php:284
+#: lib/gettext-config.php:289
 msgctxt "option value"
 msgid "Postponed"
 msgstr "Reporté"
 
-#: lib/gettext-config.php:285
+#: lib/gettext-config.php:290
 msgctxt "option value"
 msgid "Rescheduled"
 msgstr "Replanifié"
 
-#: lib/gettext-config.php:286
+#: lib/gettext-config.php:291
 msgctxt "option value"
 msgid "Scheduled"
 msgstr "Planifié"
 
-#: lib/gettext-config.php:288
+#: lib/gettext-config.php:293
 msgctxt "option value"
 msgid "Discontinued"
 msgstr "Discontinué"
 
-#: lib/gettext-config.php:289
+#: lib/gettext-config.php:294
 msgctxt "option value"
 msgid "In Stock"
 msgstr "En main"
 
-#: lib/gettext-config.php:290
+#: lib/gettext-config.php:295
 msgctxt "option value"
 msgid "In Store Only"
 msgstr "En magasin uniquement"
 
-#: lib/gettext-config.php:291
+#: lib/gettext-config.php:296
 msgctxt "option value"
 msgid "Limited Availability"
 msgstr "Disponibilité limitée"
 
-#: lib/gettext-config.php:292
+#: lib/gettext-config.php:297
 msgctxt "option value"
 msgid "Online Only"
 msgstr "En ligne seulement"
 
-#: lib/gettext-config.php:293
+#: lib/gettext-config.php:298
 msgctxt "option value"
 msgid "Out of Stock"
 msgstr "Rupture de stock"
 
-#: lib/gettext-config.php:294
+#: lib/gettext-config.php:299
 msgctxt "option value"
 msgid "Pre-Order"
 msgstr "Pré-commande"
 
-#: lib/gettext-config.php:295
+#: lib/gettext-config.php:300
 msgctxt "option value"
 msgid "Pre-Sale"
 msgstr "Prévente"
 
-#: lib/gettext-config.php:296
+#: lib/gettext-config.php:301
 msgctxt "option value"
 msgid "Sold Out"
 msgstr "Épuisé"
 
-#: lib/gettext-config.php:298
+#: lib/gettext-config.php:303
 msgctxt "option value"
 msgid "Damaged"
 msgstr "Endommagé"
 
-#: lib/gettext-config.php:299
+#: lib/gettext-config.php:304
 msgctxt "option value"
 msgid "New"
 msgstr "Neuf"
 
-#: lib/gettext-config.php:300
+#: lib/gettext-config.php:305
 msgctxt "option value"
 msgid "Refurbished"
 msgstr "Remis à neuf"
 
-#: lib/gettext-config.php:301
+#: lib/gettext-config.php:306
 msgctxt "option value"
 msgid "Used"
 msgstr "Usagé"
 
-#: lib/gettext-config.php:302
+#: lib/gettext-config.php:307
 msgctxt "option value"
 msgid "Every day"
 msgstr "Chaque jour"
 
-#: lib/gettext-config.php:303
+#: lib/gettext-config.php:308
 msgctxt "option value"
 msgid "Every two days"
 msgstr "Aux deux jours"
 
-#: lib/gettext-config.php:304
+#: lib/gettext-config.php:309
 msgctxt "option value"
 msgid "Every three days"
 msgstr "Aux trois jours"
 
-#: lib/gettext-config.php:305
+#: lib/gettext-config.php:310
 msgctxt "option value"
 msgid "Every four days"
 msgstr "Aux quatre jours"
 
-#: lib/gettext-config.php:306
+#: lib/gettext-config.php:311
 msgctxt "option value"
 msgid "Every five days"
 msgstr "Aux cinq jours"
 
-#: lib/gettext-config.php:307
+#: lib/gettext-config.php:312
 msgctxt "option value"
 msgid "Every six days"
 msgstr "Aux six jours"
 
-#: lib/gettext-config.php:308
+#: lib/gettext-config.php:313
 msgctxt "option value"
 msgid "Every week"
 msgstr "Chaque semaine"
 
-#: lib/gettext-config.php:309
+#: lib/gettext-config.php:314
 msgctxt "option value"
 msgid "Every two weeks"
 msgstr "Aux deux semaines"
 
-#: lib/gettext-config.php:310
+#: lib/gettext-config.php:315
 msgctxt "option value"
 msgid "Development and Up"
 msgstr "Développement et plus"
 
-#: lib/gettext-config.php:311
+#: lib/gettext-config.php:316
 msgctxt "option value"
 msgid "Alpha and Up"
 msgstr "Alpha et plus"
 
-#: lib/gettext-config.php:312
+#: lib/gettext-config.php:317
 msgctxt "option value"
 msgid "Beta and Up"
 msgstr "Bêta et plus"
 
-#: lib/gettext-config.php:313
+#: lib/gettext-config.php:318
 msgctxt "option value"
 msgid "Release Candidate and Up"
 msgstr "Candidat stable et plus"
 
-#: lib/gettext-config.php:314
+#: lib/gettext-config.php:319
 msgctxt "option value"
 msgid "Stable / Production"
 msgstr "Stable / production"
@@ -6010,12 +6035,12 @@ msgid "post"
 msgstr "article"
 
 #: lib/post.php:559 lib/register.php:347 lib/term.php:485 lib/user.php:457
-#: lib/util.php:797 lib/util.php:3344
+#: lib/util.php:797 lib/util.php:3336
 msgid "%s warning:"
 msgstr "Alerte %s:"
 
 #: lib/post.php:560 lib/term.php:486 lib/user.php:459 lib/util.php:799
-#: lib/util.php:3346
+#: lib/util.php:3338
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr "supérieur au max recommandé de %1$0.3f secs"
 
@@ -6023,7 +6048,7 @@ msgstr "supérieur au max recommandé de %1$0.3f secs"
 msgid "Slow query detected - get_posts() took %1$0.3f secs to get the children of post ID %2$d (%3$s)."
 msgstr "Requête lente détectée - get_posts() a pris %1$0.3f secs pour obtenir les enfants de l'article ID %2$d (%3$s)."
 
-#: lib/post.php:875 lib/post.php:1489 lib/schema.php:3313 lib/term.php:705
+#: lib/post.php:875 lib/post.php:1492 lib/schema.php:3313 lib/term.php:705
 #: lib/user.php:691
 msgid "checking meta tags"
 msgstr "vérification des balises méta"
@@ -6088,87 +6113,87 @@ msgstr "Un balisage de Schéma JSON-LD complet et précis est vivement recommand
 msgid "Consider activating the %1$s add-on to include Schema JSON-LD markup for Google Rich Results."
 msgstr "Considérez activer l'ajout %1$s pour inclure le balisage de Schéma JSON-LD pour des résultats riches Google."
 
-#: lib/post.php:1310
+#: lib/post.php:1312
 msgid "Conflict detected &mdash; your theme or another plugin is adding %1$s to the head section of this webpage."
 msgstr "Conflit détecté &mdash; votre thème ou une autre extension ajoute une balise %1$s à l'entête de cette page Web."
 
-#: lib/post.php:1327
+#: lib/post.php:1330
 msgid "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> (no \"link\" or \"meta\" HTML tags were found)."
 msgstr "Une erreur s'est produite lors de l'analyse des balises méta de tête pour <a href=\"%1$s\">%1$s</a> (aucune balise HTML \"link\" ou \"meta\" ont été trouvée)."
 
-#: lib/post.php:1327
+#: lib/post.php:1330
 msgid "The webpage may contain HTML syntax errors preventing PHP from successfully parsing the HTML &mdash; review the <a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any errors."
 msgstr "La page Web peut contenir des erreurs de syntaxe HTML empêchant PHP d'analyser correctement le code HTML &mdash; consulter les résultats du <a href=\"%1$s\">W3C Markup Validation Service</a> et corrigez les erreurs."
 
-#: lib/post.php:1327
+#: lib/post.php:1330
 msgid "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr "Vous pouvez ignorer toutes les erreurs d'attribut \"nopin\" sans risque, ou désactiver l'attribut \"nopin\" sous l'<a href=\"%s\">onglet de réglages Pinterest</a>."
 
-#: lib/post.php:1365
+#: lib/post.php:1368
 msgid "%1$d duplicate meta tags found."
 msgstr "%1$d balises méta en double trouvées."
 
-#: lib/post.php:1367
+#: lib/post.php:1370
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr "Vérification %1$d de %2$d a échoué (réessaie à suivre)..."
 
-#: lib/post.php:1375
+#: lib/post.php:1378
 msgid "Awesome! No duplicate meta tags found."
 msgstr "Génial! Aucune balise méta dupliquée trouvée."
 
-#: lib/post.php:1379
+#: lib/post.php:1382
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr "L'option de débogage est activée - cette vérification sera répétée..."
 
-#: lib/post.php:1383
+#: lib/post.php:1386
 msgid "Check %1$d of %2$d successful..."
 msgstr "Vérification %1$d de %2$d réussi..."
 
 # Ignore the post type to avoid gender issues in the French translation.
-#: lib/post.php:1547
+#: lib/post.php:1550
 msgid "Save a draft or publish to display these options."
 msgstr "Enregistrez un brouillon ou publiez pour afficher ces options."
 
-#: lib/post.php:1766 lib/script.php:317
+#: lib/post.php:1769 lib/script.php:317
 msgctxt "option label"
 msgid "Robots"
 msgstr "Robots"
 
-#: lib/post.php:1780
+#: lib/post.php:1783
 msgid "Edit robots"
 msgstr "Modifier robots"
 
-#: lib/post.php:1794
+#: lib/post.php:1797
 msgctxt "option label"
 msgid "No archive"
 msgstr "Pas d'archivage"
 
-#: lib/post.php:1795
+#: lib/post.php:1798
 msgctxt "option label"
 msgid "No follow"
 msgstr "Pas de suivi"
 
-#: lib/post.php:1796
+#: lib/post.php:1799
 msgctxt "option label"
 msgid "No image index"
 msgstr "Pas d'indexation d'image"
 
-#: lib/post.php:1797
+#: lib/post.php:1800
 msgctxt "option label"
 msgid "No index"
 msgstr "Pas d'indexation"
 
-#: lib/post.php:1798
+#: lib/post.php:1801
 msgctxt "option label"
 msgid "No snippet"
 msgstr "Pas d'extrait"
 
-#: lib/post.php:1799
+#: lib/post.php:1802
 msgctxt "option label"
 msgid "No translate"
 msgstr "Pas de traduction"
 
-#: lib/post.php:1950
+#: lib/post.php:1953
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages pour %1$s ID %2$s."
 
@@ -7132,47 +7157,47 @@ msgstr "Erreur de lecture du fichier %s pour la liste des rubriques d'article."
 msgid "Error reading the %s file for the product categories list."
 msgstr "Erreur de lecture du fichier %s pour de la liste des catégories de produit."
 
-#: lib/util.php:1610
+#: lib/util.php:1612
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr "L'argument de demande à %1$s n'est pas du HTML ou un URL valide."
 
-#: lib/util.php:1634
+#: lib/util.php:1636
 msgid "Error getting HTML from <a href=\"%1$s\">%1$s</a>."
 msgstr "Erreur lors de l'obtention du code HTML de <a href=\"%1$s\">%1$s</a>."
 
-#: lib/util.php:1655
+#: lib/util.php:1657
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr "La page Web récupéré de <a href=\"%1$s\">%1$s</a> est vide."
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1853
+#: lib/util.php:1845
 msgid "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting provider to have the missing class installed."
 msgstr "La classe PHP <code>%1$s</code> est manquante &ndash; contactez votre fournisseur d'hébergement pour installer la classe manquante."
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1867
+#: lib/util.php:1859
 msgid "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting provider to have the missing function installed."
 msgstr "La fonction PHP <code>%1$s</code> est manquante &ndash; contactez votre fournisseur d'hébergement pour installer la fonction manquante."
 
-#: lib/util.php:3348
+#: lib/util.php:3340
 msgid "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the \"%2$s\" filter (%3$s)."
 msgstr "Crochet(s) de filtre lent détecté - WordPress a pris %1$0.3f secs pour exécuter le filtre \"%2$s\" (%3$s)."
 
-#: lib/util.php:3363
+#: lib/util.php:3355
 msgid "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f seconds to execute. This is longer than the recommended maximum of %3$0.3f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr "Crochet(s) de filtre lent détecté &mdash le filtre WordPress %1$s a pris %2$0.3f secondes pour exécuter. Ceci est plus long que le maximum recommandé de %3$0.3f secondes et peut affecter le temps de chargement de la page. S'il vous plaît, envisagez d'examiner les fonctions d'extensions de tiers partie et de thème accrochées au filtre WordPress %1$s pour du code PHP lent et/ou sous-optimal."
 
-#: lib/util.php:3365
+#: lib/util.php:3357
 msgid "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance."
 msgstr "Si vous activez l'extension %1$s et effacez le cache de %2$s (pour ré-appliquer le filtre), vous obtiendrez peut-être plus d'informations sur les crochets spécifiques ou le code PHP affectant les performances."
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3869
+#: lib/util.php:3861
 msgid "%1$s for this %2$s"
 msgstr "%1$s pour cet %2$s"
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3879
+#: lib/util.php:3871
 msgid "%1$s for %2$s ID %3$d"
 msgstr "%1$s pour %2$s ID %3$d"
 
