@@ -393,7 +393,20 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( $size_info[ 'width' ] > 0 && $size_info[ 'height' ] > 0 ) {
 
-					$this->cache_size_labels[ $this->p->lca . '-' . $size_info[ 'name' ] ] = $size_info[ 'label_transl' ];
+					if ( isset( $size_info[ 'label_transl' ] ) ) {
+
+						$size_label = $size_info[ 'label_transl' ];
+
+					} elseif ( isset( $size_info[ 'label' ] ) ) {
+
+						$size_label = $size_info[ 'label' ];
+
+					} else {
+
+						$size_label = $size_info[ 'name' ];
+					}
+
+					$this->cache_size_labels[ $this->p->lca . '-' . $size_info[ 'name' ] ] = $size_label;
 
 					$this->cache_size_opts[ $this->p->lca . '-' . $size_info[ 'name' ] ] = $opt_pre;
 
