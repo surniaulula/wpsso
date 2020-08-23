@@ -1060,7 +1060,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 			}
 
-			$mt_ret = array();
+			$mt_extend = array();
 
 			foreach ( $mt_videos as &$mt_single_video ) {	// Uses reference.
 
@@ -1107,22 +1107,22 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					 */
 					if ( SucomUtil::get_first_mt_media_url( $mt_single_video, $media_pre = 'og:video', $mt_suffixes = array( ':secure_url', ':url', '' ) ) ) {
 
-						$mt_ret[] = $mt_single_video;
+						$mt_extend[] = $mt_single_video;
 					}
 
-					$mt_ret[] = $og_single_embed;
+					$mt_extend[] = $og_single_embed;
 
 				} else {
 
-					$mt_ret[] = $mt_single_video;
+					$mt_extend[] = $mt_single_video;
 				}
 			}
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'returning ' . count( $mt_ret ) . ' videos' );
+				$this->p->debug->log( 'returning ' . count( $mt_extend ) . ' videos' );
 
-				$this->p->debug->log_arr( '$mt_ret', $mt_ret );
+				$this->p->debug->log_arr( '$mt_extend', $mt_extend );
 
 				$this->p->debug->mark( 'get all open graph videos' );	// End timer.
 			}
@@ -1130,7 +1130,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			/**
 			 * Update the local static cache and return the videos array.
 			 */
-			return $mt_videos = $mt_ret;
+			return $mt_videos = $mt_extend;
 		}
 
 		/**
