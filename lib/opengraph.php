@@ -928,14 +928,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				return $local_cache[ $cache_salt ];
 
-			} else {
-
-				$local_cache[ $cache_salt ] = array();
-
-				$mt_ret =& $local_cache[ $cache_salt ];
 			}
 
-			$mt_ret = array();
+			$local_cache[ $cache_salt ] = array();
+
+			$mt_videos =& $local_cache[ $cache_salt ];
+
 			$has_pp = $this->p->check->pp();
 
 			if ( ! $has_pp ) {
@@ -945,11 +943,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$this->p->debug->log( 'no video modules available' );
 				}
 
-				return $mt_ret;	// Return an empty array.
+				return $mt_videos;	// Return an empty array.
 			}
 
 			$use_prev = $this->p->options[ 'og_vid_prev_img' ];
-			$num_diff = SucomUtil::count_diff( $mt_ret, $num );
+
+			$num_diff = SucomUtil::count_diff( $mt_videos, $num );
 
 			$this->p->util->clear_uniq_urls( array( 'video', 'content_video', 'video_details' ) );
 
@@ -979,7 +978,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				/**
 				 * get_og_videos() converts the $md_pre value to an array and always checks for 'og' metadata as a fallback.
 				 */
-				$mt_ret = array_merge( $mt_ret, $mod[ 'obj' ]->get_og_videos( $num_diff, $mod[ 'id' ], $check_dupes, $md_pre ) );
+				$mt_videos = array_merge( $mt_videos, $mod[ 'obj' ]->get_og_videos( $num_diff, $mod[ 'id' ], $check_dupes, $md_pre ) );
 
 				if ( $this->p->debug->enabled ) {
 
@@ -988,19 +987,19 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			}
 
-			$num_diff = SucomUtil::count_diff( $mt_ret, $num );
+			$num_diff = SucomUtil::count_diff( $mt_videos, $num );
 
 			/**
 			 * Optionally get more videos from the post content.
 			 */
-			if ( $mod[ 'is_post' ] && ! $this->p->util->is_maxed( $mt_ret, $num ) ) {
+			if ( $mod[ 'is_post' ] && ! $this->p->util->is_maxed( $mt_videos, $num ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->mark( 'checking for additional videos in the post content' );	// Begin timer.
 				}
 
-				$mt_ret = array_merge( $mt_ret, $this->p->media->get_content_videos( $num_diff, $mod, $check_dupes ) );
+				$mt_videos = array_merge( $mt_videos, $this->p->media->get_content_videos( $num_diff, $mod, $check_dupes ) );
 
 				if ( $this->p->debug->enabled ) {
 
@@ -1008,7 +1007,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 			}
 
-			$this->p->util->slice_max( $mt_ret, $num );
+			$this->p->util->slice_max( $mt_videos, $num );
 
 			/**
 			 * Optionally remove the image meta tags (aka video preview).
@@ -1020,11 +1019,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$this->p->debug->log( 'use_prev and force_prev are false - removing video preview images' );
 				}
 
-				foreach ( $mt_ret as &$mt_single_video ) {
+				foreach ( $mt_videos as &$mt_single_video ) {	// Uses reference.
 
 					$mt_single_video = SucomUtil::preg_grep_keys( '/^og:image/', $mt_single_video, $invert = true );
 
-					$mt_ret[ $num ][ 'og:video:has_image' ] = false;
+					$mt_single_video[ 'og:video:has_image' ] = false;
 				}
 			}
 
@@ -1037,7 +1036,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 */
 			if ( ! empty( $mod[ 'obj' ] ) && $md_pre !== 'none' ) {
 
-				foreach ( $mt_ret as $num => $mt_single_video ) {
+				foreach ( $mt_videos as &$mt_single_video ) {	// Uses reference.
 
 					foreach ( array(
 						'og_vid_width'  => 'og:video:width',
@@ -1053,7 +1052,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						if ( ! empty( $value ) ) {	// Must be a non-empty string.
 
-							$mt_ret[ $num ][ $mt_name ] = $value;
+							$mt_single_video[ $mt_name ] = $value;
 						}
 					}
 
@@ -1061,9 +1060,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 			}
 
-			$og_extend = array();
+			$mt_ret = array();
 
-			foreach ( $mt_ret as $num => $mt_single_video ) {
+			foreach ( $mt_videos as &$mt_single_video ) {	// Uses reference.
 
 				if ( ! is_array( $mt_single_video ) ) {	// Just in case.
 
@@ -1108,27 +1107,30 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					 */
 					if ( SucomUtil::get_first_mt_media_url( $mt_single_video, $media_pre = 'og:video', $mt_suffixes = array( ':secure_url', ':url', '' ) ) ) {
 
-						$og_extend[] = $mt_single_video;
+						$mt_ret[] = $mt_single_video;
 					}
 
-					$og_extend[] = $og_single_embed;
+					$mt_ret[] = $og_single_embed;
 
 				} else {
 
-					$og_extend[] = $mt_single_video;
+					$mt_ret[] = $mt_single_video;
 				}
 			}
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'returning ' . count( $og_extend ) . ' videos' );
+				$this->p->debug->log( 'returning ' . count( $mt_ret ) . ' videos' );
 
-				$this->p->debug->log_arr( '$og_extend', $og_extend );
+				$this->p->debug->log_arr( '$mt_ret', $mt_ret );
 
 				$this->p->debug->mark( 'get all open graph videos' );	// End timer.
 			}
 
-			return $og_extend;
+			/**
+			 * Update the local static cache and return the videos array.
+			 */
+			return $mt_videos = $mt_ret;
 		}
 
 		/**
