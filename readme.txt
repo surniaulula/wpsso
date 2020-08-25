@@ -307,6 +307,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.2.2-dev.1 (2020/08/25)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed the Shopper Approved integration modules to skip the WooCommerce shop page.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.2.
+
 **Version 8.2.1 (2020/08/15)**
 
 **Google has updated their Rich Results requirements to use the complete URL of Schema enumeration values instead of only the enumeration name (as they previously required). The product availability, product condition, event attendance, event status, and offer availability values have all been updated to include their complete enumeration URL. For example, a previous product condition might have been 'New' or 'NewCondition' and will now be included in Schema markup as 'https://schema.org/NewCondition'.**
@@ -609,6 +623,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.2.2-dev.1 =
+
+(2020/08/25) Fixed the Shopper Approved integration modules to skip the WooCommerce shop page.
 
 = 8.2.1 =
 
