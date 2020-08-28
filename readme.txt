@@ -307,14 +307,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.2.2-rc.1 (2020/08/27)**
+**Version 8.2.2 (2020/08/27)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* Fixed the Shopper Approved integration modules to skip the WooCommerce shop page.
+	* Fixed the Shopper Approved integration modules to skip the WooCommerce shop archive page.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -557,78 +557,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* PHP v5.6.
 	* WordPress v4.2.
 
-**Version 7.8.0 (2020/06/04)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Minor code optimization when getting folder and file path information for WPSSO add-ons.
-* **Bugfixes**
-	* Fixed missing Document SSO metabox in term editing pages for taxonomies registered with 'show_in_menu' as false (for example, WooCommerce product attributes).
-* **Developer Notes**
-	* Added a new `WpssoConfig::get_ext_dir()` method.
-	* Added a new `WpssoConfig::get_ext_file_path()` method.
-	* Moved `WpssoUtil->get_post_types()` to `SucomUtilWP::get_post_types()`.
-	* Moved `WpssoUtil->get_taxonomies()` to `SucomUtilWP::get_taxonomies()`.
-	* Renamed the following filters:
-		* 'wpsso_get_post_types' to 'sucom_get_post_types'
-		* 'wpsso_get_taxonomies' to 'sucom_get_taxonomies'
-	* Removed the following filters:
-		* 'wpsso_add_metabox_post'
-		* 'wpsso_add_metabox_term'
-		* 'wpsso_add_metabox_user'
-* **Requires At Least**
-	* PHP v5.6.
-	* WordPress v4.2.
-
-**Version 7.7.0 (2020/05/30)**
-
-* **New Features**
-	* Added a "Copy notifications to clipboard." link in the SSO notifications list.
-* **Improvements**
-	* Added an informational message about Schema FAQPage, QAPage, and Question markup when selecting those types.
-* **Bugfixes**
-	* Fix to skip URL shortening for 404 and search pages.
-* **Developer Notes**
-	* Added a new WpssoEdit class in lib/edit.php for post, term, and user editing page filters.
-	* Added a new `SucomUtil::is_non_assoc()` method to test for non-associative arrays.
-	* Added a new `SucomUtil::is_mod_current_screen()` method for notice text in `WpssoUtil::maybe_set_ref()`.
-	* Added a new `WpssoWpMeta->$md_cache_disabled` property to skip local caches when saving post/term/user options.
-	* Added new 'wpsso_json_data_validate_https_schema_org_{item_type}' filters for WPSSO JSON v3.10.0.
-	* Moved the lib/wp-meta.php library file to lib/abstracts/wp-meta.php.
-* **Requires At Least**
-	* PHP v5.6.
-	* WordPress v4.2.
-
-**Version 7.6.0 (2020/05/22)**
-
-* **New Features**
-	* Added a new "Show Yoast SEO Import Details" option under the SSO &gt; Advanced Settings &gt; Editing Pages &gt; Document Meta tab.
-* **Improvements**
-	* Added post cache clearing for attached post IDs (used by the WPSSO FAQ add-on).
-	* Removed the SSO &gt; General Settings &gt; Social and Search Sites &gt; Google &gt; Knowledge Graph for Home Page &gt; Include Schema WebSite option.
-	* Moved the 'sucom-block-editor-admin' script from the header (default location) to the footer in order to work around a bug in NextGEN Gallery.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added a new 'wpsso_schema_types_select' filter.
-	* Updated the `WpssoPost->clear_cache()` method to clear attached post IDs.
-	* Added recursion prevention in the WpssoPost, WpssoTerm, and WpssoUser `clear_cache()` methods.
-	* Added new methods in the WpssoPost, WpssoTerm, WpssoUser, and WpssoWpMeta classes:
-		* add_attached()
-		* delete_attached()
-		* get_attached()
-* **Requires At Least**
-	* PHP v5.6.
-	* WordPress v4.2.
-
 == Upgrade Notice ==
 
-= 8.2.2-rc.1 =
+= 8.2.2 =
 
-(2020/08/27) Fixed the Shopper Approved integration modules to skip the WooCommerce shop page.
-
-= 8.2.1 =
-
-(2020/08/15) Added 'https://schema.org/' to the Schema item availability, item condition, event attendance, and event status property values.
+(2020/08/27) Fixed the Shopper Approved integration modules to skip the WooCommerce shop archive page.
 
