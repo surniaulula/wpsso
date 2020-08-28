@@ -12,7 +12,7 @@ Requires PHP: 5.6
 Requires At Least: 4.2
 Tested Up To: 5.5
 WC Tested Up To: 4.4.1
-Stable Tag: 8.2.1
+Stable Tag: 8.2.2
 
 Make sure your content looks great on social sites and search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded.
 
@@ -307,7 +307,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.2.2 (2020/08/27)**
+**Version 8.2.2 (2020/08/28)**
 
 * **New Features**
 	* None.
@@ -561,5 +561,5 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 8.2.2 =
 
-(2020/08/27) Fixed the Shopper Approved integration modules to skip the WooCommerce shop archive page.
+(2020/08/28) Fixed the Shopper Approved integration modules to skip the WooCommerce shop archive page.
 
