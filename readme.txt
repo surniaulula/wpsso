@@ -307,7 +307,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.2.2-dev.1 (2020/08/25)**
+**Version 8.2.2-rc.1 (2020/08/27)**
 
 * **New Features**
 	* None.
@@ -624,9 +624,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.2.2-dev.1 =
+= 8.2.2-rc.1 =
 
-(2020/08/25) Fixed the Shopper Approved integration modules to skip the WooCommerce shop page.
+(2020/08/27) Fixed the Shopper Approved integration modules to skip the WooCommerce shop page.
 
 = 8.2.1 =
 
