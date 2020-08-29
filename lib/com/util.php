@@ -3908,7 +3908,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 *
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
-		public static function get_site_name( array $opts, $mixed = 'current' ) {
+		public static function get_site_name( array $opts = array(), $mixed = 'current' ) {
 
 			$site_name = empty( $opts ) ? '' : self::get_key_value( 'site_name', $opts, $mixed );
 
@@ -3932,7 +3932,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 *
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
-		public static function get_site_description( array $opts, $mixed = 'current' ) {
+		public static function get_site_description( array $opts = array(), $mixed = 'current' ) {
 
 			$site_desc = empty( $opts ) ? '' : self::get_key_value( 'site_desc', $opts, $mixed );
 
@@ -3981,7 +3981,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		/**
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
-		public static function is_site_https( array $opts, $mixed = 'current' ) {
+		public static function is_site_https( array $opts = array(), $mixed = 'current' ) {
 
 			if ( self::get_const( 'FORCE_SSL' ) ) {	// Optimize - all front-end URLs are forced to https.
 
