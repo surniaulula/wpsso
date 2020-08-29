@@ -2240,6 +2240,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_key_value( $key, array $opts, $mixed = 'current' ) {
 
 			$key_locale = self::get_key_locale( $key, $opts, $mixed );
+
 			$val_locale = isset( $opts[ $key_locale ] ) ? $opts[ $key_locale ] : null;
 
 			/**
@@ -2250,6 +2251,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				if ( false !== ( $pos = strpos( $key_locale, '#' ) ) ) {
 
 					$key_default = substr( $key_locale, 0, $pos );
+
 					$key_default = self::get_key_locale( $key_default, $opts, 'default' );
 
 					if ( $key_locale !== $key_default ) {
@@ -3344,7 +3346,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( ! isset( $charset  ) ) {
 
-				$charset = get_bloginfo( 'charset' );
+				$charset = get_bloginfo( $show = 'charset', $filter = 'raw' );	// Only get it once.
 			}
 
 			return html_entity_decode( self::decode_utf8( $encoded ), ENT_QUOTES, $charset );
@@ -3546,7 +3548,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( ! isset( $charset ) ) {
 
-				$charset = get_bloginfo( 'charset' ); // Only get it once.
+				$charset = get_bloginfo( $show = 'charset', $filter = 'raw' );	// Only get it once.
 			}
 
 			$content = htmlentities( $content, ENT_QUOTES, $charset, $double_encode = false );
@@ -3828,12 +3830,20 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function is_toplevel_edit( $hook_name ) {
 
-			return false !== strpos( $hook_name, 'toplevel_page_' ) && (
-				( self::get_request_value( 'action', 'GET' ) === 'edit' && // Uses sanitize_text_field().
-					(int) self::get_request_value( 'post', 'GET' ) > 0 ) ||
-				( self::get_request_value( 'action', 'GET' ) === 'create_new' &&
-					self::get_request_value( 'return', 'GET' ) === 'edit' )
-			) ? true : false;
+			if ( false !== strpos( $hook_name, 'toplevel_page_' ) ) {
+			
+				if ( 'edit' === self::get_request_value( 'action', 'GET' ) && (int) self::get_request_value( 'post', 'GET' ) > 0 )  {
+
+					return true;
+				}
+
+				if ( 'create_new' === self::get_request_value( 'action', 'GET' ) && 'edit' === self::get_request_value( 'return', 'GET' ) ) {
+
+					return true;
+				}
+			}
+			
+			return false;
 		}
 
 		public static function is_true( $mixed, $allow_null = false ) {
@@ -3900,19 +3910,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_site_name( array $opts, $mixed = 'current' ) {
 
-			$ret = self::get_key_value( 'site_name', $opts, $mixed );
+			$site_name = empty( $opts ) ? '' : self::get_key_value( 'site_name', $opts, $mixed );
 
-			if ( empty( $ret ) ) {
+			if ( empty( $site_name ) ) {
 
-				$ret = get_bloginfo( 'name', 'display' );
+				$site_name = get_bloginfo( $show = 'name', $filter = 'raw' );	// Fallback to default WordPress value.
 			}
 
-			return $ret;
+			return $site_name;
 		}
 
 		public static function get_site_name_alt( array $opts, $mixed = 'current' ) {
 
-			return self::get_key_value( 'site_name_alt', $opts, $mixed );
+			return empty( $opts ) ? '' : self::get_key_value( 'site_name_alt', $opts, $mixed );
 		}
 
 		/**
@@ -3924,33 +3934,48 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_site_description( array $opts, $mixed = 'current' ) {
 
-			$ret = self::get_key_value( 'site_desc', $opts, $mixed );
+			$site_desc = empty( $opts ) ? '' : self::get_key_value( 'site_desc', $opts, $mixed );
 
-			if ( empty( $ret ) ) {
+			if ( empty( $site_desc ) ) {
 
-				$ret = get_bloginfo( 'description', 'display' );
+				$site_desc = get_bloginfo( $show = 'description', $filter = 'raw' );	// Fallback to default WordPress value.
 			}
 
-			return $ret;
+			return $site_desc;
 		}
 
 		/**
 		 * Site Address (URL).
 		 *
-		 * Returns a custom site address URL or the default WordPress site address URL (aka home URL).
+		 * Returns a custom site address URL or the default site address URL (aka home URL).
 		 *
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
-		public static function get_site_url( array $opts, $mixed = 'current' ) {
+		public static function get_site_url( array $opts = array(), $mixed = 'current' ) {
 
-			$ret = self::get_key_value( 'site_url', $opts, $mixed );
+			$site_url = empty( $opts ) ? '' : self::get_key_value( 'site_url', $opts, $mixed );
 
-			if ( empty( $ret ) ) {
+			if ( empty( $site_url ) ) {	// Fallback to default WordPress value.
 
-				$ret = get_bloginfo( 'url' );	// Aka get_home_url().
+				$site_url = get_bloginfo( $show = 'url', $filter = 'raw' );	// Fallback to default WordPress value.
 			}
 
-			return $ret;
+			return $site_url;
+		}
+
+		/**
+		 * WordPress Address (URL).
+		 */
+		public static function get_wp_url( array $opts = array(), $mixed = 'current' ) {
+
+			$wp_url = empty( $opts ) ? '' : self::get_key_value( 'wp_url', $opts, $mixed );
+
+			if ( empty( $wp_url ) ) {
+
+				$wp_url = get_bloginfo( $show = 'wpurl', $filter = 'raw' );	// Fallback to default WordPress value.
+			}
+
+			return $wp_url;
 		}
 
 		/**

@@ -2237,9 +2237,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 			}
 
-			if ( $this->p->debug->enabled ) {
+			if ( ! empty( $mod[ 'name' ] ) ) {
 
-				$this->p->debug->log( 'getting $mod array from ' . $mod[ 'name' ] . ' module object' );
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'getting $mod array from ' . $mod[ 'name' ] . ' module object' );
+				}
 			}
 
 			switch ( $mod[ 'name' ] ) {
@@ -2266,7 +2269,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'object is unknown - merging $mod defaults' );
+						$this->p->debug->log( 'module object is unknown: merging $mod defaults' );
 					}
 
 					$mod = array_merge( WpssoWpMeta::$mod_defaults, $mod );
@@ -2281,9 +2284,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 *
 			 * If we don't have a module, then check if we're on the home posts page.
 			 */
-			if ( $mod[ 'name' ] === false ) {
+			if ( empty( $mod[ 'name' ] ) ) {
 
-				$mod[ 'is_home_posts' ] = $mod[ 'is_home' ] = is_home();
+				$mod[ 'is_home' ] = $mod[ 'is_home_posts' ] = is_home();
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'is_home and is_home_posts are ' . ( $mod[ 'is_home' ] ? 'true' : 'false' ) );
+				}
 			}
 
 			if ( $this->p->debug->enabled ) {
