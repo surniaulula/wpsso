@@ -307,6 +307,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.2.3-dev.2 (2020/08/29)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new `SucomUtil::get_wp_url()` method.
+	* Refactored the `SucomUtil::is_toplevel_edit()` method.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.2.
+
 **Version 8.2.2 (2020/08/28)**
 
 * **New Features**
@@ -558,6 +573,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.2.3-dev.2 =
+
+(2020/08/29) Added a new `SucomUtil::get_wp_url()` method.
 
 = 8.2.2 =
 
