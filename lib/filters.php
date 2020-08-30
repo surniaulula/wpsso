@@ -401,8 +401,27 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			}
 
 			remove_all_actions( 'rank_math/opengraph/facebook' );
+
 			remove_all_actions( 'rank_math/opengraph/twitter' );
-			remove_all_actions( 'rank_math/json_ld' );
+
+			if ( empty( $this->p->avail[ 'p_ext' ][ 'bc' ] ) ) {
+
+				add_filter( 'rank_math/json_ld', array( $this, 'cleanup_rankmath_json_ld' ), PHP_INT_MAX );
+
+			} else {
+
+				remove_all_actions( 'rank_math/json_ld' );
+			}
+		}
+
+		public function cleanup_rankmath_json_ld( $data ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			return SucomUtil::preg_grep_keys( '/^BreadcrumbList$/', $data );
 		}
 
 		/**
