@@ -307,12 +307,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.2.3-dev.2 (2020/08/29)**
+**Version 8.2.3-dev.3 (2020/08/30)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Updated the cleanup of Rank Math markup to remove all Schema JSON-LD except for BreadcrumbList (when the WPSSO BC add-on is not active).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -574,9 +574,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.2.3-dev.2 =
+= 8.2.3-dev.3 =
 
-(2020/08/29) Added a new `SucomUtil::get_wp_url()` method.
+(2020/08/30) Updated the cleanup of Rank Math markup. Added a new `SucomUtil::get_wp_url()` method.
 
 = 8.2.2 =
 
