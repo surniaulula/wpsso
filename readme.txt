@@ -307,7 +307,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.2.3-dev.3 (2020/08/30)**
+**Version 8.2.3-dev.3 (2020/09/01)**
 
 * **New Features**
 	* None.
@@ -576,7 +576,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 8.2.3-dev.3 =
 
-(2020/08/30) Updated the cleanup of Rank Math markup. Added a new `SucomUtil::get_wp_url()` method.
+(2020/09/01) Updated the cleanup of Rank Math markup. Added a new `SucomUtil::get_wp_url()` method.
 
 = 8.2.2 =
 
