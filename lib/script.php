@@ -6,10 +6,12 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+
 	die( 'Do. Or do not. There is no try.' );
 }
 
@@ -28,6 +30,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -49,6 +52,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 					 * Add jQuery to update the toolbar menu item counter and container on page load.
 					 */
 					if ( ! empty( $this->tb_notices ) ) {
+
 						add_action( 'admin_footer', array( $this, 'update_toolbar_on_load_script' ), 1000 );
 					}
 				}
@@ -58,6 +62,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 		public function enqueue_block_editor_assets() {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -69,12 +74,18 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			wp_register_script( 'sucom-block-editor-admin', WPSSO_URLPATH . 'js/block-editor-admin.' . $this->file_ext, 
 				array( 'wp-data', 'wp-editor', 'wp-edit-post' ), $this->version, $in_footer = true );
 
+			wp_register_script( 'sucom-block-editor-primary-term', WPSSO_URLPATH . 'js/block-editor-primary-term.' . $this->file_ext, 
+				array(), $this->version, $in_footer = true );
+
 			wp_enqueue_script( 'sucom-block-editor-admin' );
+
+			//wp_enqueue_script( 'sucom-block-editor-primary-term' );
 		}
 
 		public function admin_enqueue_scripts( $hook_name ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'hook name = ' . $hook_name );
 				$this->p->debug->log( 'screen base = ' . SucomUtil::get_screen_base() );
 			}
@@ -105,6 +116,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				case ( preg_match( '/_page_' . $this->p->lca . '-.*(addons|licenses)/', $hook_name ) ? true : false ) :
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'enqueuing scripts for addons and licenses page' );
 					}
 
@@ -120,6 +132,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				case ( false !== strpos( $hook_name, '_page_' . $this->p->lca . '-' ) ? true : false ):
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'enqueuing scripts for settings page' );
 					}
 
@@ -139,6 +152,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				case ( SucomUtil::is_toplevel_edit( $hook_name ) ):	// Required for event espresso plugin.
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'enqueuing scripts for editing page' );
 					}
 
@@ -151,6 +165,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 					if ( function_exists( 'wp_enqueue_media' ) ) {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( 'wp_enqueue_media() function is available' );
 						}
 
@@ -167,6 +182,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 						wp_localize_script( 'sucom-admin-media', 'sucomAdminMediaL10n', $this->get_admin_media_script_data() );
 
 					} elseif ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'wp_enqueue_media() function not found' );
 					}
 
@@ -183,6 +199,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 						if ( isset( $this->p->cf[ '*' ][ 'slug' ][ $plugin_slug ] ) ) {
 
 							if ( $this->p->debug->enabled ) {
+
 								$this->p->debug->log( 'enqueuing scripts for plugin install page' );
 							}
 
@@ -202,6 +219,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 		public function update_toolbar_on_load_script() {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -212,6 +230,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			if ( SucomUtilWP::doing_block_editor() ) {
 
 				if ( ! empty( $this->p->debug->enabled ) ) {
+
 					$this->p->debug->log( 'exiting early: doing block editor' );
 				}
 
@@ -228,6 +247,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			if ( empty( $this->tb_notices ) || ! is_array( $this->tb_notices ) ) {
 
 				if ( ! empty( $this->p->debug->enabled ) ) {
+
 					$this->p->debug->log( 'exiting early: no toolbar notice types defined' );
 				}
 
@@ -258,6 +278,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 		private function add_plugin_install_iframe_script( $hook_name ) {	// $hook_name = plugin-install.php
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -295,6 +316,7 @@ jQuery( document ).ready( function(){
 		private function add_admin_page_script( $hook_name ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
