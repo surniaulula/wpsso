@@ -74,12 +74,19 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			wp_register_script( 'sucom-block-editor-admin', WPSSO_URLPATH . 'js/block-editor-admin.' . $this->file_ext, 
 				array( 'wp-data', 'wp-editor', 'wp-edit-post' ), $this->version, $in_footer = true );
 
-			wp_register_script( 'sucom-block-editor-primary-term', WPSSO_URLPATH . 'js/block-editor-primary-term.' . $this->file_ext, 
-				array(), $this->version, $in_footer = true );
-
 			wp_enqueue_script( 'sucom-block-editor-admin' );
 
-			//wp_enqueue_script( 'sucom-block-editor-primary-term' );
+			/*
+			wp_register_script( 'wpsso-block-editor', WPSSO_URLPATH . 'js/dist/block-editor.' . $this->file_ext, 
+				array( 'wp-data', 'wp-components', 'wp-editor', 'wp-edit-post', 'wp-i18n' ), $this->version, $in_footer = true );
+
+			wp_enqueue_script( 'wpsso-block-editor' );
+
+			wp_register_script( 'wpsso-block-editor-primary-term', WPSSO_URLPATH . 'js/dist/block-editor-primary-term.' . $this->file_ext, 
+				array(), $this->version, $in_footer = true );
+
+			wp_enqueue_script( 'wpsso-block-editor-primary-term' );
+			*/
 		}
 
 		public function admin_enqueue_scripts( $hook_name ) {

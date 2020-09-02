@@ -2401,11 +2401,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'notice-image-rejected':
 
-						if ( WpssoWpMeta::is_meta_page() ) {
+						$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-							$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+						$media_tab = _x( 'Priority Media', 'metabox tab', 'wpsso' );
 
-							$media_tab = _x( 'Priority Media', 'metabox tab', 'wpsso' );
+						$is_meta_page = WpssoWpMeta::is_meta_page();
+
+						if ( $is_meta_page ) {
 
 							$text .= sprintf( __( 'A larger custom image can be selected in the %1$s metabox under the %2$s tab.',
 								'wpsso' ), $mb_title, $media_tab );
@@ -2445,8 +2447,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								$text .= '<ul>';
 
-								$text .= '<li>' . sprintf( __( 'Select a larger image under the %1$s &gt; %2$s tab.',
-									'wpsso' ), $mb_title, $media_tab ) . '</li>';
+								if ( $is_meta_page ) {
+
+									$text .= '<li>' . sprintf( __( 'Select a larger image under the %1$s &gt; %2$s tab.',
+										'wpsso' ), $mb_title, $media_tab ) . '</li>';
+								}
 
 								if ( empty( $this->p->options[ 'plugin_upscale_images' ] ) ) {
 

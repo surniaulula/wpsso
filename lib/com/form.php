@@ -474,13 +474,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$is_assoc = SucomUtil::is_assoc( $values );
 			}
 
+			unset( $values[ 'none' ] );	// Just in case - remove 'none' value for selects.
+
 			$input_id = empty( $css_id ) ? 'checklist_' . $name_prefix : 'checklist_' . $css_id;
 
 			/**
 			 * Use the "input_vertical_list" class to align the checbox input vertically.
 			 */
-			$html = '<div ' . ( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' ) .
-				' id="' . esc_attr( $input_id ) . '">' . "\n";
+			$html = '<div ' . ( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' ) . ' id="' . esc_attr( $input_id ) . '">' . "\n";
 
 			foreach ( $values as $name_suffix => $label ) {
 
@@ -2008,8 +2009,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_no_checkbox_comment( $name, $comment = '' ) {
 
-			return $this->get_checkbox( $name, $css_class = '', $css_id = '', $is_disabled = true ) .
-				( empty( $comment ) ? '' : ' ' . $comment );
+			return $this->get_checkbox( $name, $css_class = '', $css_id = '', $is_disabled = true ) . ( empty( $comment ) ? '' : ' ' . $comment );
 		}
 
 		public function get_no_checklist( $name_prefix, $values = array(), $css_class = 'input_vertical_list', $css_id = '', $is_assoc = null ) {

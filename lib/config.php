@@ -2549,8 +2549,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * See https://developers.google.com/search/docs/data-types/job-postings.
 				 *
 				 * Choose one or more of the following case-sensitive values: "FULL_TIME" "PART_TIME" "CONTRACTOR"
-				 * "TEMPORARY" "INTERN" "VOLUNTEER" "PER_DIEM" "OTHER" You can include more than one employmentType
-				 * property.
+				 * "TEMPORARY" "INTERN" "VOLUNTEER" "PER_DIEM" "OTHER". You can include more than one
+				 * employmentType property.
 				 */
 				'employment_type' => array(
 					'none'       => '[None]',
