@@ -219,7 +219,8 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 				$post_type = get_post_type_object( $post->post_type ); 
 
-				if ( 'page' === $post->post_type && $post->ID == get_option( 'page_on_front' ) && 'page' == get_option( 'show_on_front' ) ) {
+				if ( 'page' === $post->post_type && (int) $post->ID === (int) get_option( 'page_on_front' ) &&
+					'page' === get_option( 'show_on_front' ) ) {
 
 					$shortlink = self::raw_home_url( '/' );
 

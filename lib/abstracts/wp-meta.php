@@ -202,7 +202,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			$post_id = 0;
 			
-			if ( get_option( 'show_on_front' ) === 'page' ) {
+			if ( 'page' === get_option( 'show_on_front' ) ) {
 			
 				if ( ! $post_id = (int) get_option( 'page_on_front', $default = 0 ) ) {
 

@@ -2735,7 +2735,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			/**
 			 * Fallback to null so $use_post = 0 does not match.
 			 */
-			$post_id = get_option( 'show_on_front' ) === 'page' ? (int) get_option( 'page_on_front' ) : null;
+			$post_id = 'page' === get_option( 'show_on_front' ) ? (int) get_option( 'page_on_front' ) : null;
 
 			if ( $post_id > 0 ) {
 
@@ -2759,7 +2759,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			/**
 			 * Fallback to null so $use_post = 0 does not match.
 			 */
-			$post_id = get_option( 'show_on_front' ) === 'page' ? (int) get_option( 'page_for_posts' ) : null;
+			$post_id = 'page' === get_option( 'show_on_front' ) ? (int) get_option( 'page_for_posts' ) : null;
 
 			if ( is_numeric( $use_post ) && (int) $use_post === $post_id ) {
 
@@ -2934,11 +2934,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				$ret = true;
 
-			} elseif ( ! is_home() && is_front_page() && get_option( 'show_on_front' ) === 'page' ) { // Static front page.
+			} elseif ( ! is_home() && is_front_page() && 'page' === get_option( 'show_on_front' ) ) { // Static front page.
 
 				$ret = true;
 
-			} elseif ( is_home() && ! is_front_page() && get_option( 'show_on_front' ) === 'page' ) { // Static posts page.
+			} elseif ( is_home() && ! is_front_page() && 'page' === get_option( 'show_on_front' ) ) { // Static posts page.
 
 				$ret = true;
 
