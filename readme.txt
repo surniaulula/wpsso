@@ -307,7 +307,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.2.3-dev.5 (2020/09/02)**
+**Version 8.2.3-dev.5 (2020/09/03)**
 
 * **New Features**
 	* None.
@@ -576,7 +576,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 8.2.3-dev.5 =
 
-(2020/09/02) Fixed the user profile query for Schema markup to include only posts and not pages.
+(2020/09/03) Fixed the user profile query for Schema markup to include only posts and not pages.
 
 = 8.2.2 =
 
