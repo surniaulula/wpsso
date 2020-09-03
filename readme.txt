@@ -314,7 +314,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Updated the cleanup of Rank Math markup to remove all Schema JSON-LD except for BreadcrumbList (when the WPSSO BC add-on is not active).
 * **Bugfixes**
-	* Fixed the user profile query for Schema markup to include only posts and not pages.
+	* Fixed the Schema markup user profile query to include only posts and not pages.
 * **Developer Notes**
 	* Added a new `SucomUtil::get_wp_url()` method.
 	* Refactored the `SucomUtil::is_toplevel_edit()` method.
@@ -576,7 +576,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 8.2.3-b.1 =
 
-(2020/09/03) Fixed the user profile query for Schema markup to include only posts and not pages.
+(2020/09/03) Fixed the Schema markup user profile query to include only posts and not pages.
 
 = 8.2.2 =
 
