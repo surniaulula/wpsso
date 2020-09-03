@@ -3906,6 +3906,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					if ( $mod[ 'is_post_type_archive' ] ) {
 
 						$posts_args[ 'post_type' ] = $mod[ 'post_type' ];
+					
+					} elseif ( $mod[ 'is_user' ] ) {
+
+						$posts_args[ 'post_type' ] = 'post';
 					}
 
 					global $wp_query;
