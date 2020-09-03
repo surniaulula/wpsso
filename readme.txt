@@ -307,14 +307,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.2.3-dev.4 (2020/09/02)**
+**Version 8.2.3-dev.5 (2020/09/02)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Updated the cleanup of Rank Math markup to remove all Schema JSON-LD except for BreadcrumbList (when the WPSSO BC add-on is not active).
 * **Bugfixes**
-	* None.
+	* Fixed the user profile query for Schema markup to include only posts and not pages.
 * **Developer Notes**
 	* Added a new `SucomUtil::get_wp_url()` method.
 	* Refactored the `SucomUtil::is_toplevel_edit()` method.
@@ -574,9 +574,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.2.3-dev.4 =
+= 8.2.3-dev.5 =
 
-(2020/09/02) Updated the cleanup of Rank Math markup. Added a new `SucomUtil::get_wp_url()` method.
+(2020/09/02) Fixed the user profile query for Schema markup to include only posts and not pages.
 
 = 8.2.2 =
 
