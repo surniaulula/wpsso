@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.2.3-b.1',	// Plugin version.
+					'version'     => '8.2.3-b.2',	// Plugin version.
 					'opt_version' => '756',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1254,10 +1254,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_place'                  => 'place',
 					'schema_type_for_product'                => 'product',		// For WooCommerce etc.
 					'schema_type_for_qa'                     => 'webpage.qa',
-					'schema_type_for_question'               => 'question',
+					'schema_type_for_question'               => 'question',		// For WPSSO FAQ.
 					'schema_type_for_recipe'                 => 'recipe',		// For WP Ultimate Recipe.
 					'schema_type_for_review'                 => 'review',		// For WP Product Review.
-					'schema_type_for_tax_faq_category'       => 'webpage.faq',	// For WPSSO FAQ Add-on.
+					'schema_type_for_tax_faq_category'       => 'webpage.faq',	// For WPSSO FAQ.
 					'schema_type_for_tax_product_brand'      => 'item.list',	// For WooCommerce Brands.
 					'schema_type_for_tax_product_cat'        => 'item.list',	// For WooCommerce.
 					'schema_type_for_tax_product_tag'        => 'item.list',	// For WooCommerce.
