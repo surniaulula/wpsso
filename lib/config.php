@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.2.3-dev.4',	// Plugin version.
+					'version'     => '8.2.3-dev.5',	// Plugin version.
 					'opt_version' => '756',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2383,14 +2383,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'center' => 'Center',
 					'bottom' => 'Bottom',
 				),
-				'breadcrumbs_for_posts' => array(
-					'none'       => '[None]',
-					'categories' => 'Categories',
-					'ancestors'  => 'Parents',
+				'breadcrumbs_for_posts' => array(	// Breadcrumbs by Post Type.
+					'none'         => '[No Breadcrumbs]',
+					'categories'   => 'Home Page(s) and Categories',
+					'ancestors'    => 'Home Page(s) and Parents',
 				),
-				'breadcrumbs_for_terms' => array(
-					'none'      => '[None]',
-					'ancestors' => 'Parents',
+				'breadcrumbs_for_terms' => array(	// Breadcrumbs by Taxonomy.
+					'none'      => '[No Breadcrumbs]',
+					'ancestors' => 'Home Page(s) and Parents',
+				),
+				'breadcrumbs_for_users' => array(	// Breadcrumbs for User Profile.
+					'none' => '[No Breadcrumbs]',
+					'home' => 'Home Page(s)',
 				),
 
 				/**

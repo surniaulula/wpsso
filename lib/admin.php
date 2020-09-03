@@ -2820,6 +2820,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$og_types = $this->p->og->get_og_types_select();
 
+			/**
+			 * Open Graph Type.
+			 */
 			foreach ( array( 
 				'home_page'    => _x( 'Type for Page Homepage', 'option label', 'wpsso' ),
 				'home_posts'   => _x( 'Type for Posts Homepage', 'option label', 'wpsso' ),
@@ -2831,8 +2834,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$opt_key = 'og_type_for_' . $type_name;
 
 				$table_rows[ $opt_key ] = $form->get_tr_hide( 'basic', $opt_key ) .
-				$form->get_th_html( $th_label, '', $opt_key ) . 
-				'<td' . $td_attr . '>' . $form->$se_func( $opt_key, $og_types, $css_class = 'og_type' ) . '</td>';
+					$form->get_th_html( $th_label, '', $opt_key ) . 
+					'<td' . $td_attr . '>' . $form->$se_func( $opt_key, $og_types, $css_class = 'og_type' ) . '</td>';
 			}
 
 			/**
@@ -2861,10 +2864,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$th_label = _x( 'Type by Post Type', 'option label', 'wpsso' );
 
 			$table_rows[ $tr_key ] = '' .
-			$form->get_th_html( $th_label, '', $tr_key ) .
-			'<td' . $td_attr . '>' . $type_select . '</td>';
+				$form->get_th_html( $th_label, $css_class = '', $css_id = $tr_key ) .
+				'<td' . $td_attr . '>' . $type_select . '</td>';
 
-			unset( $type_select, $type_keys );	// Just in case.
+			unset( $type_select, $type_keys, $post_types, $tr_key, $th_label );	// Just in case.
 
 			/**
 			 * Open Graph Type by Taxonomy.
@@ -2886,11 +2889,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$tr_key   = 'og_type_for_ttn';
 			$th_label = _x( 'Type by Taxonomy', 'option label', 'wpsso' );
 
-			$table_rows[ $tr_key ] = $form->get_tr_hide( 'basic', $type_keys ) . 
-			$form->get_th_html( $th_label, '', $tr_key ) . 
-			'<td' . $td_attr . '>' . $type_select . '</td>';
+			$table_rows[ $tr_key ] = $form->get_tr_hide( 'basic', $type_keys ) .
+				$form->get_th_html( $th_label, '', $tr_key ) . '<td' . $td_attr . '>' . $type_select . '</td>';
 
-			unset( $type_select, $type_keys );	// Just in case.
+			unset( $type_select, $type_keys, $taxonomies, $tr_key, $th_label );	// Just in case.
 		}
 
 		/**
@@ -2990,6 +2992,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$schema_types = $this->p->schema->get_schema_types_select( $context = 'settings' );
 
+			/**
+			 * Schema Type.
+			 */
 			foreach ( array( 
 				'home_page'    => _x( 'Type for Page Homepage', 'option label', 'wpsso' ),
 				'home_posts'   => _x( 'Type for Posts Homepage', 'option label', 'wpsso' ),
@@ -3056,10 +3061,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$th_label = _x( 'Type by Post Type', 'option label', 'wpsso' );
 
 			$table_rows[ $tr_key ] = '' . 
-			$form->get_th_html( $th_label, '', $tr_key ) . 
-			'<td' . $td_attr . '>' . $type_select . '</td>';
+				$form->get_th_html( $th_label, '', $tr_key ) . '<td' . $td_attr . '>' . $type_select . '</td>';
 
-			unset( $type_select, $type_keys );	// Just in case.
+			unset( $type_select, $type_keys, $post_types, $tr_key, $th_label );	// Just in case.
 
 			/**
 			 * Schema Type by Taxonomy.
@@ -3089,10 +3093,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$th_label = _x( 'Type by Taxonomy', 'option label', 'wpsso' );
 
 			$table_rows[ $tr_key ] = $form->get_tr_hide( 'basic', $type_keys ) .
-			$form->get_th_html( $th_label, '', $tr_key ) . 
-			'<td' . $td_attr . '>' . $type_select . '</td>';
+				$form->get_th_html( $th_label, '', $tr_key ) . '<td' . $td_attr . '>' . $type_select . '</td>';
 
-			unset( $type_select, $type_keys );	// Just in case.
+			unset( $type_select, $type_keys, $taxonomies, $tr_key, $th_label );	// Just in case.
 		}
 
 		public function add_advanced_plugin_settings_table_rows( array &$table_rows, $form, $network = false ) {

@@ -83,11 +83,6 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			 * 	array( 'wp-data', 'wp-components', 'wp-editor', 'wp-edit-post', 'wp-i18n' ), $this->version, $in_footer = true );
 			 *
 			 * wp_enqueue_script( 'wpsso-block-editor' );
-			 *
-			 * wp_register_script( 'wpsso-block-editor-primary-term', WPSSO_URLPATH . 'js/dist/block-editor-primary-term.' . $this->file_ext, 
-			 * 	array(), $this->version, $in_footer = true );
-			 *
-			 * wp_enqueue_script( 'wpsso-block-editor-primary-term' );
 			 */
 		}
 

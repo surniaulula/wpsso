@@ -2411,6 +2411,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $posts_data_count;
 
 			} else {
+
 				$added_page_type_ids[ $page_type_id ] = true;
 			}
 
@@ -3815,7 +3816,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( $wpsso->debug->enabled ) {
 
-						$wpsso->debug->log( 'home is posts (archive = true)' );
+						$wpsso->debug->log( 'main query is home posts (archive = true)' );
 					}
 
 					$is_archive = true;
@@ -3824,7 +3825,25 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( $wpsso->debug->enabled ) {
 
-						$wpsso->debug->log( 'post type is archive (archive = true)' );
+						$wpsso->debug->log( 'main query is post type archive (archive = true)' );
+					}
+
+					$is_archive = true;
+
+				} elseif ( $mod[ 'is_term' ] ) {
+
+					if ( $wpsso->debug->enabled ) {
+
+						$wpsso->debug->log( 'main query is term (archive = true)' );
+					}
+
+					$is_archive = true;
+
+				} elseif ( $mod[ 'is_user' ] ) {
+
+					if ( $wpsso->debug->enabled ) {
+
+						$wpsso->debug->log( 'main query is user (archive = true)' );
 					}
 
 					$is_archive = true;
@@ -3983,6 +4002,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$page_posts_mods = $mod[ 'obj' ]->get_posts_mods( $mod, $ppp, $wpsso_paged, $posts_args );
 
 			} else {
+
 				if ( $wpsso->debug->enabled ) {
 
 					$wpsso->debug->log( 'no source to get post mods' );

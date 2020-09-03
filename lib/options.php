@@ -381,10 +381,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				$this->p->util->add_post_type_names( $this->defaults_cache, array(
-					'plugin_add_to'              => 1,		// Add Document SSO Metabox.
-					'plugin_shopperapproved_for' => 0,		// Get Reviews for Post Type.
 					'og_type_for'                => 'article',
 					'schema_type_for'            => 'webpage',
+					'plugin_add_to'              => 1,		// Add Document SSO Metabox.
+					'plugin_shopperapproved_for' => 0,		// Get Reviews for Post Type.
 				) );
 
 				/**
@@ -396,9 +396,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				$this->p->util->add_taxonomy_names( $this->defaults_cache, array(
-					'plugin_add_to_tax'   => 1,		// Add Document SSO Metabox.
 					'og_type_for_tax'     => 'website',
 					'schema_type_for_tax' => 'item.list',
+					'plugin_add_to_tax'   => 1,		// Add Document SSO Metabox.
 				) );
 
 				/**
