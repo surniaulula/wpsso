@@ -307,7 +307,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.3.0-rc.2 (2020/09/05)**
+**Version 8.3.0 (2020/09/05)**
 
 * **New Features**
 	* None.
@@ -540,49 +540,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* PHP v5.6.
 	* WordPress v4.2.
 
-**Version 7.10.1 (2020/06/20)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added an 'embedUrl' and 'contentUrl' property (when available) to the Schema VideoObject markup.
-* **Bugfixes**
-	* Fixed the missing 'contentUrl' property for YouTube videos in Schema Recipe markup (required by Google).
-* **Developer Notes**
-	* Refactored the WpssoProMediaYoutube class to provide video duration, embed URL, and stream URL.
-	* Added a new 'wpsso_save_setting_options' filter:
-		* 'wpsso_save_setting_options' ( $opts, $network, $upgrading )
-	* Removed the 'wpsso_save_options' and 'wpsso_save_site_options' filters.
-* **Requires At Least**
-	* PHP v5.6.
-	* WordPress v4.2.
-
-**Version 7.9.0 (2020/06/12)**
-
-* **New Features**
-	* Added a new Users &gt; Add Person page to create new persons.
-	* Added a new "Book ISBN" option in the Document SSO metabox.
-	* Added a new "Book ISBN Custom Field" option in the Advanced Settings page.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added a new WpssoUsersAddPerson class in lib/users/add-person.php.
-	* Added a new WpssoOpenGraphNS class in lib/opengraph-ns.php.
-	* Added a new 'img_url' option sanitation type in WpssoOptions->check_value().
-	* Added new 'wpsso_og_data_https_ogp_me_ns_{og_type}' filters.
-* **Requires At Least**
-	* PHP v5.6.
-	* WordPress v4.2.
-
 == Upgrade Notice ==
 
-= 8.3.0-rc.2 =
+= 8.3.0 =
 
 (2020/09/05) Fixed the Schema markup user profile query to include only posts and not pages.
-
-= 8.2.2 =
-
-(2020/08/28) Fixed the Shopper Approved integration modules to skip the WooCommerce shop archive page.
 
