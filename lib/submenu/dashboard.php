@@ -66,6 +66,7 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 			 * height to 0 to prevent drag-and-drop in that area, just in case.
 			 */
 			echo '<style type="text/css">div#' . $pagehook . ' div#normal-sortables { display:none; height:0; min-height:0; }</style>';
+			echo '<div id="dashboard_col_wrap">' . "\n";
 
 			$max_cols = count( $this->get_side_info_boxes() ) ? 2 : 3;	// Uses local cache.
 
@@ -74,13 +75,15 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 				/**
 				 * CSS id values must use underscores instead of hyphens to order the metaboxes.
 				 */
-				echo '<div id="dashboard_col_' . $dashboard_col . '" class="dashboard_col max_cols_' . $max_cols . '">';
+				echo '<div id="dashboard_col_' . $dashboard_col . '" class="dashboard_col max_cols_' . $max_cols .
+					( $dashboard_col == $max_cols ? ' dashboard_col_last' : '' ) . '">' . "\n";
 
 				do_meta_boxes( $pagehook, 'dashboard_col_' . $dashboard_col, null );
 
 				echo '</div><!-- #dashboard_col_' . $dashboard_col . ' -->' . "\n";
 			}
 
+			echo '</div><!-- #dashboard_col_wrap -->' . "\n";
 			echo '<div style="clear:both;"></div>' . "\n";
 		}
 

@@ -225,12 +225,15 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			$custom_style_css = apply_filters( $this->p->lca . '_settings_page_custom_style_css', $custom_style_css );
 	
-			if ( method_exists( 'SucomUtil', 'minify_css' ) ) {
+			if ( $this->use_cache ) {
 
-				$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->p->lca );
+				if ( method_exists( 'SucomUtil', 'minify_css' ) ) {
+
+					$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->p->lca );
+				}
+
+				set_transient( $cache_id, $custom_style_css, $cache_exp_secs );
 			}
-
-			set_transient( $cache_id, $custom_style_css, $cache_exp_secs );
 
 			wp_add_inline_style( 'sucom-settings-page', $custom_style_css );	// Since WP v3.3.0.
 

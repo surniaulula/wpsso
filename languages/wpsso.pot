@@ -7403,27 +7403,27 @@ msgctxt "metabox tab"
 msgid "SEO / Other"
 msgstr ""
 
-#: lib/submenu/dashboard.php:98
+#: lib/submenu/dashboard.php:101
 msgctxt "metabox title"
 msgid "Cache Status"
 msgstr ""
 
-#: lib/submenu/dashboard.php:101
+#: lib/submenu/dashboard.php:104
 msgctxt "metabox title"
 msgid "Your Rating is Important"
 msgstr ""
 
-#: lib/submenu/dashboard.php:102
+#: lib/submenu/dashboard.php:105
 msgctxt "metabox title"
 msgid "Help and Support"
 msgstr ""
 
-#: lib/submenu/dashboard.php:103
+#: lib/submenu/dashboard.php:106
 msgctxt "metabox title"
 msgid "Version Information"
 msgstr ""
 
-#: lib/submenu/dashboard.php:104 lib/submenu/dashboard.php:105
+#: lib/submenu/dashboard.php:107 lib/submenu/dashboard.php:108
 msgctxt "metabox title"
 msgid "%s Features Status"
 msgstr ""
