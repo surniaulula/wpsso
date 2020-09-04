@@ -43,7 +43,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $cache;		// SucomCache (object and file caching).
 		public $check;		// WpssoCheck.
 		public $conflict;	// WpssoConflict (admin plugin conflict checks).
-		public $compat;		// WpssoCompat (actions and filters for compatibility).
+		public $compat;		// WpssoCompat (3rd party plugin and theme compatibility actions and filters).
 		public $debug;		// SucomDebug or SucomNoDebug.
 		public $edit;		// WpssoEdit
 		public $head;		// WpssoHead.

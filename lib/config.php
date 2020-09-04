@@ -4086,7 +4086,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			require_once WPSSO_PLUGINDIR . 'lib/com/util-wp.php';
 
 			require_once WPSSO_PLUGINDIR . 'lib/check.php';
-			require_once WPSSO_PLUGINDIR . 'lib/compat.php';	// Actions and filters for compatibility.
+			require_once WPSSO_PLUGINDIR . 'lib/compat.php';	// 3rd party plugin and theme compatibility actions and filters.
 			require_once WPSSO_PLUGINDIR . 'lib/exception.php';	// Extends ErrorException.
 			require_once WPSSO_PLUGINDIR . 'lib/functions.php';
 			require_once WPSSO_PLUGINDIR . 'lib/head.php';

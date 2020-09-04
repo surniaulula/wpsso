@@ -18,7 +18,7 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 if ( ! class_exists( 'WpssoCompat' ) ) {
 
 	/**
-	 * Actions and filters for compatibility.
+	 * 3rd party plugin and theme compatibility actions and filters.
 	 */
 	class WpssoCompat {
 
