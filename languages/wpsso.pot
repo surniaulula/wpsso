@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.3.0-rc.1\n"
+"Project-Id-Version: WPSSO Core 8.3.0-rc.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1507,12 +1507,12 @@ msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/edit.php:408 lib/page.php:1102
+#: lib/edit.php:408 lib/page.php:1106
 msgctxt "default title"
 msgid "No Title"
 msgstr ""
 
-#: lib/edit.php:411 lib/gettext-pro.php:169 lib/page.php:806
+#: lib/edit.php:411 lib/gettext-pro.php:169 lib/page.php:805
 #: lib/pro/social/buddypress.php:710
 msgctxt "default description"
 msgid "No Description."
@@ -6865,56 +6865,56 @@ msgid ""
 "its default value."
 msgstr ""
 
-#: lib/page.php:585 lib/page.php:590 lib/page.php:710
+#: lib/page.php:587 lib/page.php:592 lib/page.php:709
 msgctxt "default description"
 msgid "Archive for %s."
 msgstr ""
 
-#: lib/page.php:678
+#: lib/page.php:680
 msgctxt "default description"
 msgid "Tag archive for %s."
 msgstr ""
 
-#: lib/page.php:694
+#: lib/page.php:693
 msgctxt "default description"
 msgid "Category archive for %s."
 msgstr ""
 
-#: lib/page.php:726
+#: lib/page.php:725
 msgctxt "default description"
 msgid "Authored by %s."
 msgstr ""
 
-#: lib/page.php:744
+#: lib/page.php:743
 msgid "Search Results for &#8220;%s&#8221;"
 msgstr ""
 
-#: lib/page.php:754
+#: lib/page.php:753
 msgctxt "default description"
 msgid "Yearly archive for %s."
 msgstr ""
 
-#: lib/page.php:760
+#: lib/page.php:759
 msgctxt "default description"
 msgid "Monthly archive for %s."
 msgstr ""
 
-#: lib/page.php:766
+#: lib/page.php:765
 msgctxt "default description"
 msgid "Daily archive for %s."
 msgstr ""
 
-#: lib/page.php:773
+#: lib/page.php:772
 msgctxt "default description"
 msgid "Archive page."
 msgstr ""
 
-#: lib/page.php:968 lib/page.php:972
+#: lib/page.php:972 lib/page.php:976
 msgctxt "default title"
 msgid "%s Archive"
 msgstr ""
 
-#: lib/page.php:1054
+#: lib/page.php:1058
 msgid "Search Results %1$s %2$s"
 msgstr ""
 

@@ -261,6 +261,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 * $mod = true | false | post_id | array
 		 *
 		 * $md_key = true | false | string | array
+		 *
+		 * Use $sep = false to avoid adding parent names in the term title.
 		 */
 		public function get_title( $max_len = 70, $dots = '', $mod = false, $read_cache = true,
 			$add_hashtags = false, $do_encode = true, $md_key = 'og_title', $sep = null ) {
@@ -309,7 +311,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$md_key = array_unique( $md_key );	// Just in case.
 
-			if ( null === $sep ) {
+			if ( null === $sep ) {	// Can be false.
 
 				$sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
 			}
@@ -686,9 +688,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					 */
 					} elseif ( SucomUtil::is_category_page( $mod[ 'id' ] ) ) {
 
-						/**
-						 * Includes parent names in the category title if the $sep value is not empty.
-						 */
 						if ( ! $desc_text = category_description( $mod[ 'id' ] ) ) {
 
 							$desc_text = sprintf( _x( 'Category archive for %s.', 'default description', 'wpsso' ), get_cat_name( $mod[ 'id' ] ) );
@@ -928,11 +927,16 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return apply_filters( $this->p->lca . '_text', $text, $mod, $add_hashtags, $md_key );
 		}
 
+		/**
+		 * $mod = array
+		 *
+		 * Use $sep = false to avoid adding parent names in the term title.
+		 */
 		public function get_the_title( array $mod, $sep = null ) {
 
 			$title_text = '';
 
-			if ( null === $sep ) {
+			if ( null === $sep ) {	// Can be false.
 
 				$sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
 			}
@@ -1014,7 +1018,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$term_obj = get_term( $mod[ 'id' ], $mod[ 'tax_slug' ] );
 
 				/**
-				 * Includes parent names in the term title if the $sep value is not empty.
+				 * Use $sep = false to avoid adding parent names in the term title.
 				 */
 				$title_text = $this->get_term_title( $term_obj, $sep );
 
