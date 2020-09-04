@@ -307,7 +307,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.2.3-b.2 (2020/09/03)**
+**Version 8.3.0-b.3 (2020/09/03)**
 
 * **New Features**
 	* None.
@@ -318,6 +318,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Added a new `SucomUtil::get_wp_url()` method.
 	* Refactored the `SucomUtil::is_toplevel_edit()` method.
+	* Refactored the `WpssoUtil->get_page_url()` method to handle 'is_search' and 'is_date' module array elements.
+	* Refactored the `WpssoPage->get_description()` method to handle 'is_search' and 'is_date' module array elements.
+	* Refactored the `WpssoPage->get_the_title()` method to handle 'is_search' and 'is_date' module array elements.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
@@ -574,7 +577,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.2.3-b.2 =
+= 8.3.0-b.3 =
 
 (2020/09/03) Fixed the Schema markup user profile query to include only posts and not pages.
 
