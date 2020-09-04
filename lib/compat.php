@@ -15,17 +15,17 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 	die( 'Do. Or do not. There is no try.' );
 }
 
-if ( ! class_exists( 'WpssoFilters' ) ) {
+if ( ! class_exists( 'WpssoCompat' ) ) {
 
-	class WpssoFilters {
+	/**
+	 * Actions and filters for compatibility.
+	 */
+	class WpssoCompat {
 
 		private $p;
 
 		public function __construct( &$plugin ) {
 
-			/**
-			 * Just in case - prevent filters from being hooked and executed more than once.
-			 */
 			static $do_once = null;
 
 			if ( true === $do_once ) {
@@ -89,33 +89,31 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				}
 
 				/**
-				 * Disable Yoast SEO social meta tags and Schema markup.
+				 * Disable Yoast SEO social meta tags.
 				 */
 				if ( ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) ) {
 
 					/**
 					 * Since Yoast SEO v14.0.
-					 *
-					 * Disable Yoast SEO social meta tags and Schema markup.
 					 */
 					if ( method_exists( 'Yoast\WP\SEO\Integrations\Front_End_Integration', 'get_presenters' ) ) {
 
-						add_filter( 'wpseo_frontend_presenters', array( $this, 'cleanup_wpseo_frontend_presenters' ), 10000 );
+						add_filter( 'wpseo_frontend_presenters', array( $this, 'cleanup_wpseo_frontend_presenters' ), 1000 );
 
 					} else {
 
-						add_action( 'template_redirect', array( $this, 'cleanup_wpseo_filters' ), 10000 );
+						add_action( 'template_redirect', array( $this, 'cleanup_wpseo_actions' ), 1000 );
 
-						add_action( 'amp_post_template_head', array( $this, 'cleanup_wpseo_filters' ), -10000 );
+						add_action( 'amp_post_template_head', array( $this, 'cleanup_wpseo_actions' ), -2000 );
 					}
 				}
 
 				/**
-				 * Disable Rank Math social meta tags and Schema markup.
+				 * Disable Rank Math social meta tags.
 				 */
 				if ( ! empty( $this->p->avail[ 'seo' ][ 'rankmath' ] ) ) {
 
-					add_action( 'rank_math/head', array( $this, 'cleanup_rankmath_filters' ), -10000 );
+					add_action( 'rank_math/head', array( $this, 'cleanup_rankmath_actions' ), -2000 );
 				}
 
 				/**
@@ -123,7 +121,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				 */
 				if ( function_exists( 'nxs_initSNAP' ) ) {
 
-					add_action( 'wp_head', array( __CLASS__, 'remove_snap_og_meta_tags_holder' ), -1000 );
+					add_action( 'wp_head', array( __CLASS__, 'remove_snap_og_meta_tags_holder' ), -2000 );
 				}
 
 				/**
@@ -131,7 +129,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				 */
 				if ( SucomUtil::get_const( 'FORCE_SSL' ) ) {
 
-					add_action( 'wp_loaded', array( __CLASS__, 'force_ssl_redirect' ), -1000 );
+					add_action( 'wp_loaded', array( __CLASS__, 'force_ssl_redirect' ), -2000 );
 				}
 			}
 		}
@@ -291,7 +289,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 		/**
 		 * Since Yoast SEO v14.0.
 		 *
-		 * Disable Yoast SEO social meta tags and Schema markup.
+		 * Disable Yoast SEO social meta tags.
 		 */
 		public function cleanup_wpseo_frontend_presenters( $presenters ) {
 
@@ -304,7 +302,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 
 				$class_name = get_class( $obj );
 
-				if ( preg_match( '/(Open_Graph|Twitter|Schema)/', $class_name ) ) {
+				if ( preg_match( '/(Open_Graph|Twitter)/', $class_name ) ) {
 			
 					if ( $this->p->debug->enabled ) {
 
@@ -328,9 +326,9 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 		/**
 		 * Deprecated since 2020/04/28 by Yoast SEO v14.0.
 		 *
-		 * Disable Yoast SEO social meta tags and Schema markup.
+		 * Disable Yoast SEO social meta tags.
 		 */
-		public function cleanup_wpseo_filters() {
+		public function cleanup_wpseo_actions() {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -376,24 +374,12 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 					$ret = remove_action( 'wpseo_head', array( WPSEO_Frontend::$instance, 'publisher' ), $prio );
 				}
 			}
-
-			/**
-			 * Disable Yoast SEO JSON-LD.
-			 */
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'disabling wpseo_json_ld_output filters' );
-			}
-
-			add_filter( 'wpseo_json_ld_output', '__return_false', PHP_INT_MAX );
-
-			add_filter( 'wpseo_schema_graph_pieces', '__return_empty_array', PHP_INT_MAX );
 		}
 
 		/**
-		 * Disable Rank Math social meta tags and Schema markup.
+		 * Disable Rank Math social meta tags.
 		 */
-		public function cleanup_rankmath_filters() {
+		public function cleanup_rankmath_actions() {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -403,25 +389,6 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			remove_all_actions( 'rank_math/opengraph/facebook' );
 
 			remove_all_actions( 'rank_math/opengraph/twitter' );
-
-			if ( empty( $this->p->avail[ 'p_ext' ][ 'bc' ] ) ) {
-
-				add_filter( 'rank_math/json_ld', array( $this, 'cleanup_rankmath_json_ld' ), PHP_INT_MAX );
-
-			} else {
-
-				remove_all_actions( 'rank_math/json_ld' );
-			}
-		}
-
-		public function cleanup_rankmath_json_ld( $data ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			return SucomUtil::preg_grep_keys( '/^BreadcrumbList$/', $data );
 		}
 
 		/**

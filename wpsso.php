@@ -15,7 +15,7 @@
  * Requires At Least: 4.2
  * Tested Up To: 5.5
  * WC Tested Up To: 4.4.1
- * Version: 8.3.0-b.3
+ * Version: 8.3.0-rc.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -43,6 +43,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $cache;		// SucomCache (object and file caching).
 		public $check;		// WpssoCheck.
 		public $conflict;	// WpssoConflict (admin plugin conflict checks).
+		public $compat;		// WpssoCompat (actions and filters for compatibility).
 		public $debug;		// SucomDebug or SucomNoDebug.
 		public $edit;		// WpssoEdit
 		public $head;		// WpssoHead.
@@ -153,6 +154,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$classnames = $this->get_lib_classnames( 'widget' );	// Always returns an array.
 
 			foreach ( $classnames as $id => $classname ) {
+
 				register_widget( $classname );
 			}
 		}
@@ -303,7 +305,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 *	$opt
 			 *	$script
 			 *	$style
-			 *	$filters
+			 *	$compat
 			 *	$msgs
 			 *	$admin
 			 */
@@ -372,9 +374,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->debug->mark( 'init options do action' );	// End timer.
 			}
 
-			$this->filters = new WpssoFilters( $this );
-			$this->script  = new WpssoScript( $this );
-			$this->style   = new WpssoStyle( $this );
+			$this->compat = new WpssoCompat( $this );	// Actions and filters for compatibility.
+			$this->script = new WpssoScript( $this );
+			$this->style  = new WpssoStyle( $this );
 
 			if ( $is_admin ) {
 
