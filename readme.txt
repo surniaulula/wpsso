@@ -307,12 +307,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.3.0-b.3 (2020/09/03)**
+**Version 8.3.0-rc.1 (2020/09/04)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Updated the cleanup of Rank Math markup to remove all Schema JSON-LD except for BreadcrumbList (when the WPSSO BC add-on is not active).
+	* Updated the cleanup method for Rank Math to remove only the Facebook and Twitter meta tags.
 * **Bugfixes**
 	* Fixed the Schema markup user profile query to include only posts and not pages.
 * **Developer Notes**
@@ -577,9 +577,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.3.0-b.3 =
+= 8.3.0-rc.1 =
 
-(2020/09/03) Fixed the Schema markup user profile query to include only posts and not pages.
+(2020/09/04) Fixed the Schema markup user profile query to include only posts and not pages.
 
 = 8.2.2 =
 
