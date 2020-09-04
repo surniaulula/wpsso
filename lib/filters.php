@@ -111,7 +111,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				}
 
 				/**
-				 * Disable Rank Math social meta tags.
+				 * Disable Rank Math social meta tags and Schema markup.
 				 */
 				if ( ! empty( $this->p->avail[ 'seo' ][ 'rankmath' ] ) ) {
 

@@ -428,6 +428,14 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			';
 
 			/**
+			 * The Rank Math SEO metabox "Social" tab and its options cannot be disabled, so hide them instead.
+			 */
+			$custom_style_css .= '
+				.rank-math-tabs > div > a[href="#setting-panel-social"] { display: none; }
+				.rank-math-tabs-content .setting-panel-social { display: none; }
+			';
+
+			/**
 			 * List table columns.
 			 */
 			foreach ( array(

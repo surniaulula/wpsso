@@ -330,13 +330,13 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					$type_id = $this->get_og_type_id_for_name( 'user_page' );
 
-				} elseif ( SucomUtil::is_archive_page() ) {	// Just in case.
-
-					$type_id = $this->get_og_type_id_for_name( 'archive_page' );
-
 				} elseif ( is_search() ) {
 
 					$type_id = $this->get_og_type_id_for_name( 'search_page' );
+
+				} elseif ( SucomUtil::is_archive_page() ) {	// Just in case.
+
+					$type_id = $this->get_og_type_id_for_name( 'archive_page' );
 
 				} else {	// Everything else.
 

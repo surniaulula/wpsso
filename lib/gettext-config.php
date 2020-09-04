@@ -179,8 +179,6 @@ _x( 'Home Page(s) and Categories', 'option value', 'wpsso' );
 _x( 'Home Page(s) and Parents', 'option value', 'wpsso' );
 _x( '[No Breadcrumbs]', 'option value', 'wpsso' );
 _x( 'Home Page(s) and Parents', 'option value', 'wpsso' );
-_x( '[No Breadcrumbs]', 'option value', 'wpsso' );
-_x( 'Home Page(s)', 'option value', 'wpsso' );
 _x( '[None]', 'option value', 'wpsso' );
 _x( 'Bitly', 'option value', 'wpsso' );
 _x( 'DLMY.App', 'option value', 'wpsso' );

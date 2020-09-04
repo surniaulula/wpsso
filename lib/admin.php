@@ -2824,11 +2824,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * Open Graph Type.
 			 */
 			foreach ( array( 
-				'home_page'    => _x( 'Type for Page Homepage', 'option label', 'wpsso' ),
-				'home_posts'   => _x( 'Type for Posts Homepage', 'option label', 'wpsso' ),
-				'user_page'    => _x( 'Type for User Profile', 'option label', 'wpsso' ),
-				'search_page'  => _x( 'Type for Search Results', 'option label', 'wpsso' ),
-				'archive_page' => _x( 'Type for Other Archive', 'option label', 'wpsso' ),
+				'home_page'    => _x( 'Open Graph Type for Page Homepage', 'option label', 'wpsso' ),
+				'home_posts'   => _x( 'Open Graph Type for Posts Homepage', 'option label', 'wpsso' ),
+				'user_page'    => _x( 'Open Graph Type for User Profile', 'option label', 'wpsso' ),
+				'search_page'  => _x( 'Open Graph Type for Search Results', 'option label', 'wpsso' ),
+				'archive_page' => _x( 'Open Graph Type for Other Archive', 'option label', 'wpsso' ),
 			) as $type_name => $th_label ) {
 
 				$opt_key = 'og_type_for_' . $type_name;
@@ -2861,7 +2861,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				sprintf( _x( 'for %s', 'option comment', 'wpsso' ), _x( 'Post Type Archive Page', 'option comment', 'wpsso' ) ) . '</p>' . "\n";
 
 			$tr_key   = 'og_type_for_ptn';
-			$th_label = _x( 'Type by Post Type', 'option label', 'wpsso' );
+			$th_label = _x( 'Open Graph Type by Post Type', 'option label', 'wpsso' );
 
 			$table_rows[ $tr_key ] = '' .
 				$form->get_th_html( $th_label, $css_class = '', $css_id = $tr_key ) .
@@ -2887,7 +2887,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$tr_key   = 'og_type_for_ttn';
-			$th_label = _x( 'Type by Taxonomy', 'option label', 'wpsso' );
+			$th_label = _x( 'Open Graph Type by Taxonomy', 'option label', 'wpsso' );
 
 			$table_rows[ $tr_key ] = $form->get_tr_hide( 'basic', $type_keys ) .
 				$form->get_th_html( $th_label, '', $tr_key ) . '<td' . $td_attr . '>' . $type_select . '</td>';
@@ -2996,11 +2996,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * Schema Type.
 			 */
 			foreach ( array( 
-				'home_page'    => _x( 'Type for Page Homepage', 'option label', 'wpsso' ),
-				'home_posts'   => _x( 'Type for Posts Homepage', 'option label', 'wpsso' ),
-				'user_page'    => _x( 'Type for User Profile', 'option label', 'wpsso' ),
-				'search_page'  => _x( 'Type for Search Results', 'option label', 'wpsso' ),
-				'archive_page' => _x( 'Type for Other Archive', 'option label', 'wpsso' ),
+				'home_page'    => _x( 'Schema Type for Page Homepage', 'option label', 'wpsso' ),
+				'home_posts'   => _x( 'Schema Type for Posts Homepage', 'option label', 'wpsso' ),
+				'user_page'    => _x( 'Schema Type for User Profile', 'option label', 'wpsso' ),
+				'search_page'  => _x( 'Schema Type for Search Results', 'option label', 'wpsso' ),
+				'archive_page' => _x( 'Schema Type for Other Archive', 'option label', 'wpsso' ),
 			) as $type_name => $th_label ) {
 
 				$opt_key = 'schema_type_for_' . $type_name;
@@ -3058,7 +3058,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'</p>' . "\n";
 
 			$tr_key   = 'schema_type_for_ptn';
-			$th_label = _x( 'Type by Post Type', 'option label', 'wpsso' );
+			$th_label = _x( 'Schema Type by Post Type', 'option label', 'wpsso' );
 
 			$table_rows[ $tr_key ] = '' . 
 				$form->get_th_html( $th_label, '', $tr_key ) . '<td' . $td_attr . '>' . $type_select . '</td>';
@@ -3090,7 +3090,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$tr_key   = 'schema_type_for_ttn';
-			$th_label = _x( 'Type by Taxonomy', 'option label', 'wpsso' );
+			$th_label = _x( 'Schema Type by Taxonomy', 'option label', 'wpsso' );
 
 			$table_rows[ $tr_key ] = $form->get_tr_hide( 'basic', $type_keys ) .
 				$form->get_th_html( $th_label, '', $tr_key ) . '<td' . $td_attr . '>' . $type_select . '</td>';

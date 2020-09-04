@@ -2544,9 +2544,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( $mod[ 'is_post' ] ) {
 
-				if ( ! empty( $mod[ 'id' ] ) ) {
+				if ( $mod[ 'is_post_type_archive' ] ) {
 
-					if ( ! empty( $mod[ 'obj' ] ) ) {
+					$url = $this->check_url_string( get_post_type_archive_link( $mod[ 'post_type' ] ), 'post_type_archive' );
+
+				} elseif ( ! empty( $mod[ 'id' ] ) ) {	// Just in case.
+
+					if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
 
 						$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $type . '_url' );	// Returns null if an index key is not found.
 					}
@@ -2568,8 +2572,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 								$post_obj->post_status = 'publish';
 
-								$post_obj->post_name = $post_obj->post_name ? 
-									$post_obj->post_name : sanitize_title( $post_obj->post_title );
+								if ( empty( $post_obj->post_name ) ) {
+								
+									$post_obj->post_name = sanitize_title( $post_obj->post_title );
+								}
 
 								$url = get_permalink( $post_obj );
 							}
@@ -2592,7 +2598,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						$url = $this->check_url_string( $url, 'post permalink' );
 					}
 
-					if ( ! empty( $url ) && $add_page && get_query_var( 'page' ) > 1 ) {
+					if ( $add_page && get_query_var( 'page' ) > 1 && ! empty( $url ) ) {
 
 						global $wp_rewrite;
 
@@ -2621,106 +2627,106 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				$url = apply_filters( $this->p->lca . '_post_url', $url, $mod, $add_page );
 
-			} else {
+			} elseif ( $mod[ 'is_home' ] ) {
 
-				if ( $mod[ 'is_home' ] ) {
+				if ( 'page' === get_option( 'show_on_front' ) ) {	// Show_on_front = posts | page.
 
-					if ( 'page' === get_option( 'show_on_front' ) ) {	// Show_on_front = posts | page.
+					$url = $this->check_url_string( get_permalink( get_option( 'page_for_posts' ) ), 'page for posts' );
 
-						$url = $this->check_url_string( get_permalink( get_option( 'page_for_posts' ) ), 'page for posts' );
+				} else {
 
-					} else {
+					$url = apply_filters( $this->p->lca . '_home_url', home_url( '/' ), $mod, $add_page );
 
-						$url = apply_filters( $this->p->lca . '_home_url', home_url( '/' ), $mod, $add_page );
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'home url = ' . $url );
+					}
+				}
+
+			} elseif ( $mod[ 'is_term' ] ) {
+
+				if ( ! empty( $mod[ 'id' ] ) ) {
+
+					if ( ! empty( $mod[ 'obj' ] ) ) {
+
+						$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $type . '_url' );	// Returns null if an index key is not found.
+					}
+
+					if ( ! empty( $url ) ) {	// Must be a non-empty string.
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'home url = ' . $url );
+							$this->p->debug->log( 'custom term ' . $type . '_url = ' . $url );
 						}
+
+					} else {
+
+						$url = $this->check_url_string( get_term_link( $mod[ 'id' ], $mod[ 'tax_slug' ] ), 'term link' );
 					}
-
-				} elseif ( $mod[ 'is_term' ] ) {
-
-					if ( ! empty( $mod[ 'id' ] ) ) {
-
-						if ( ! empty( $mod[ 'obj' ] ) ) {
-
-							$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $type . '_url' );	// Returns null if an index key is not found.
-						}
-
-						if ( ! empty( $url ) ) {	// Must be a non-empty string.
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'custom term ' . $type . '_url = ' . $url );
-							}
-
-						} else {
-
-							$url = $this->check_url_string( get_term_link( $mod[ 'id' ], $mod[ 'tax_slug' ] ), 'term link' );
-						}
-					}
-
-					$url = apply_filters( $this->p->lca . '_term_url', $url, $mod, $add_page );
-
-				} elseif ( $mod[ 'is_user' ] ) {
-
-					if ( ! empty( $mod[ 'id' ] ) ) {
-
-						if ( ! empty( $mod[ 'obj' ] ) ) {
-
-							$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $type . '_url' );	// Returns null if an index key is not found.
-						}
-
-						if ( ! empty( $url ) ) {	// Must be a non-empty string.
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'custom user ' . $type . '_url = ' . $url );
-							}
-
-						} else {
-
-							$url = get_author_posts_url( $mod[ 'id' ] );
-
-							$url = $this->check_url_string( $url, 'author posts' );
-						}
-					}
-
-					$url = apply_filters( $this->p->lca . '_user_url', $url, $mod, $add_page );
-
-				} elseif ( is_search() ) {
-
-					$url = $this->check_url_string( get_search_link(), 'search link' );
-
-					$url = apply_filters( $this->p->lca . '_search_url', $url, $mod, $add_page );
-
-				} elseif ( function_exists( 'get_post_type_archive_link' ) && $mod[ 'is_post_type_archive' ] ) {
-
-					$url = $this->check_url_string( get_post_type_archive_link( get_query_var( 'post_type' ) ), 'post_type_archive' );
-
-				} elseif ( self::is_archive_page() ) {
-
-					if ( is_date() ) {
-
-						if ( is_day() ) {
-
-							$url = $this->check_url_string( get_day_link( get_query_var( 'year' ),
-								get_query_var( 'monthnum' ), get_query_var( 'day' ) ), 'day link' );
-
-						} elseif ( is_month() ) {
-
-							$url = $this->check_url_string( get_month_link( get_query_var( 'year' ),
-								get_query_var( 'monthnum' ) ), 'month link' );
-
-						} elseif ( is_year() ) {
-
-							$url = $this->check_url_string( get_year_link( get_query_var( 'year' ) ), 'year link' );
-						}
-					}
-
-					$url = apply_filters( $this->p->lca . '_archive_page_url', $url, $mod, $add_page );
 				}
+
+				$url = apply_filters( $this->p->lca . '_term_url', $url, $mod, $add_page );
+
+			} elseif ( $mod[ 'is_user' ] ) {
+
+				if ( ! empty( $mod[ 'id' ] ) ) {
+
+					if ( ! empty( $mod[ 'obj' ] ) ) {
+
+						$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $type . '_url' );	// Returns null if an index key is not found.
+					}
+
+					if ( ! empty( $url ) ) {	// Must be a non-empty string.
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'custom user ' . $type . '_url = ' . $url );
+						}
+
+					} else {
+
+						$url = get_author_posts_url( $mod[ 'id' ] );
+
+						$url = $this->check_url_string( $url, 'author posts' );
+					}
+				}
+
+				$url = apply_filters( $this->p->lca . '_user_url', $url, $mod, $add_page );
+
+			/**
+			 * $mod[ 'is_search' ] = true will return the search page URL.
+			 *
+			 * $mod[ 'is_search' ] = false will skip this section, even if is_search() is true.
+			 */
+			} elseif ( ! empty( $mod[ 'is_search' ] ) || ( ! isset( $mod[ 'is_search' ] ) && is_search() ) ) {
+
+				$url = $this->check_url_string( get_search_link(), 'search link' );
+
+				$url = apply_filters( $this->p->lca . '_search_url', $url, $mod, $add_page );
+
+			} elseif ( ! empty( $mod[ 'is_archive' ] ) || ( ! isset( $mod[ 'is_archive' ] ) && self::is_archive_page() ) ) {
+
+				if ( ! empty( $mod[ 'is_date' ] ) || ( ! isset( $mod[ 'is_date' ] ) && is_date() ) ) {
+
+					if ( ! empty( $mod[ 'is_year' ] ) || ( ! isset( $mod[ 'is_year' ] ) && is_year() ) ) {
+	
+						$url = $this->check_url_string( get_year_link( get_query_var( 'year' ) ), 'year link' );
+
+					} elseif ( ! empty( $mod[ 'is_month' ] ) || ( ! isset( $mod[ 'is_month' ] ) && is_month() ) ) {
+
+						$url = $this->check_url_string( get_month_link( get_query_var( 'year' ),
+							get_query_var( 'monthnum' ) ), 'month link' );
+
+					} elseif ( ! empty( $mod[ 'is_day' ] ) || ( ! isset( $mod[ 'is_day' ] ) && is_day() ) ) {
+
+						$url = $this->check_url_string( get_day_link( get_query_var( 'year' ),
+							get_query_var( 'monthnum' ), get_query_var( 'day' ) ), 'day link' );
+					}
+				}
+
+				$url = apply_filters( $this->p->lca . '_archive_page_url', $url, $mod, $add_page );
+
+			} else {
 
 				$url = $this->get_url_paged( $url, $mod, $add_page );
 			}

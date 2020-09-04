@@ -2700,7 +2700,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$ret = false;
 
-			if ( is_archive() ) {
+			if ( is_archive() ) {	// False for search page.
 
 				$ret = true;
 
