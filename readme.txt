@@ -307,7 +307,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.3.0-rc.1 (2020/09/04)**
+**Version 8.3.0-rc.2 (2020/09/05)**
 
 * **New Features**
 	* None.
@@ -578,9 +578,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.3.0-rc.1 =
+= 8.3.0-rc.2 =
 
-(2020/09/04) Fixed the Schema markup user profile query to include only posts and not pages.
+(2020/09/05) Fixed the Schema markup user profile query to include only posts and not pages.
 
 = 8.2.2 =
 
