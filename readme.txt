@@ -321,6 +321,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored the `WpssoUtil->get_page_url()` method to handle 'is_search' and 'is_date' module array elements.
 	* Refactored the `WpssoPage->get_description()` method to handle 'is_search' and 'is_date' module array elements.
 	* Refactored the `WpssoPage->get_the_title()` method to handle 'is_search' and 'is_date' module array elements.
+	* Added a lib/compat.php library file for 3rd party plugin and theme compatibility actions and filters.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
