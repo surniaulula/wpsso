@@ -25,7 +25,7 @@
 
 <p>There's no need to manually re-enter descriptions, titles, product information, re-select images / videos, etc. like other meta tag, SEO and Schema markup plugins.</p>
 
-<p>WPSSO can be used as your only social and search optimization plugin, or in combination with your favorite SEO plugin (including, All In One SEO Pack, Rank Math SEO, The SEO Framework, WP Meta SEO, and Yoast SEO) to improve its SEO meta tags and Schema markup.</p>
+<p>WPSSO can be used as your one and only social and search optimization plugin, or in combination with your favorite SEO plugin (including, All In One SEO Pack, Rank Math SEO, The SEO Framework, WP Meta SEO, and Yoast SEO) to improve your SEO plugin's meta tags and Schema markup.</p>
 
 <p><strong>Customize the plugin settings for different languages:</strong></p>
 
