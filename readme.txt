@@ -28,7 +28,7 @@ WPSSO creates meta tags and Schema markup for Facebook / Open Graph, Pinterest R
 
 There's no need to manually re-enter descriptions, titles, product information, re-select images / videos, etc. like other meta tag, SEO and Schema markup plugins.
 
-WPSSO can be used as your one and only *social and search optimization* plugin, or in combination with your favorite SEO plugin to improve its meta tags and Schema markup (including, All In One SEO Pack, Rank Math SEO, The SEO Framework, WP Meta SEO, and Yoast SEO).
+WPSSO can be used as your one and only *social and search optimization* plugin, or in combination with your favorite SEO plugin to improve its meta tags and Schema markup (including, All In One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, The SEO Framework, WP Meta SEO, Yoast SEO, and more).
 
 **Customize the plugin settings for different languages:**
 
@@ -79,13 +79,13 @@ WPSSO makes full use of all available caching methods &mdash; along with offerin
 
 * Customize values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags), custom post types, and user profiles.
 
-* Built-in support for AMP plugins:
+* Built-in compatibility with AMP plugins:
 
 	* [AMP](https://wordpress.org/plugins/amp/)
 	* [Better AMP](https://wordpress.org/plugins/better-amp/)
 	* [AMP for WP](https://wordpress.org/plugins/accelerated-mobile-pages/)
 
-* Built-in support for caching plugins:
+* Built-in compatibility with caching plugins:
 
 	* Autoptimize
 	* Cache Enabler
@@ -99,7 +99,7 @@ WPSSO makes full use of all available caching methods &mdash; along with offerin
 	* WP Rocket Cache
 	* WP Super Cache.
 
-* Built-in support for advanced WordPress configurations:
+* Built-in compatibility for advanced WordPress configurations:
 
 	* WordPress MU Domain Mapping
 	* Network / Multisite Installations

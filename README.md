@@ -25,7 +25,7 @@
 
 <p>There's no need to manually re-enter descriptions, titles, product information, re-select images / videos, etc. like other meta tag, SEO and Schema markup plugins.</p>
 
-<p>WPSSO can be used as your one and only <em>social and search optimization</em> plugin, or in combination with your favorite SEO plugin to improve its meta tags and Schema markup (including, All In One SEO Pack, Rank Math SEO, The SEO Framework, WP Meta SEO, and Yoast SEO).</p>
+<p>WPSSO can be used as your one and only <em>social and search optimization</em> plugin, or in combination with your favorite SEO plugin to improve its meta tags and Schema markup (including, All In One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, The SEO Framework, WP Meta SEO, Yoast SEO, and more).</p>
 
 <p><strong>Customize the plugin settings for different languages:</strong></p>
 
@@ -75,14 +75,14 @@
 <li>Archive Pages</li>
 </ul></li>
 <li><p>Customize values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags), custom post types, and user profiles.</p></li>
-<li><p>Built-in support for AMP plugins:</p>
+<li><p>Built-in compatibility with AMP plugins:</p>
 
 <ul>
 <li><a href="https://wordpress.org/plugins/amp/">AMP</a></li>
 <li><a href="https://wordpress.org/plugins/better-amp/">Better AMP</a></li>
 <li><a href="https://wordpress.org/plugins/accelerated-mobile-pages/">AMP for WP</a></li>
 </ul></li>
-<li><p>Built-in support for caching plugins:</p>
+<li><p>Built-in compatibility with caching plugins:</p>
 
 <ul>
 <li>Autoptimize</li>
@@ -97,7 +97,7 @@
 <li>WP Rocket Cache</li>
 <li>WP Super Cache.</li>
 </ul></li>
-<li><p>Built-in support for advanced WordPress configurations:</p>
+<li><p>Built-in compatibility for advanced WordPress configurations:</p>
 
 <ul>
 <li>WordPress MU Domain Mapping</li>
