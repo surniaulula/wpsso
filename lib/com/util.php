@@ -4118,7 +4118,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$ini_set = array(
 				'display_errors' => 0,
 				'log_errors'     => 1,
-				'error_log'      => is_string( WP_DEBUG_LOG ) ? WP_DEBUG_LOG : WP_CONTENT_DIR . '/debug.log',
+				'error_log'      => defined( 'WP_DEBUG_LOG' ) && is_string( WP_DEBUG_LOG ) && WP_DEBUG_LOG ?
+					WP_DEBUG_LOG : WP_CONTENT_DIR . '/debug.log',
 			);
 
 			$ini_saved = array();
