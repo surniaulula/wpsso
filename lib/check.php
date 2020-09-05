@@ -35,7 +35,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			),
 			'seo' => array(
 				'jetpack-seo' => 'Jetpack SEO Tools',
-				'rankmath'    => 'SEO by Rank Math',
+				'rankmath'    => 'Rank Math',
 				'seou'        => 'SEO Ultimate',
 				'sq'          => 'Squirrly SEO',
 				'wpseo-wc'    => 'Yoast WooCommerce SEO',
