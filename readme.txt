@@ -28,6 +28,8 @@ WPSSO creates meta tags and Schema markup for Facebook / Open Graph, Pinterest R
 
 There's no need to manually re-enter descriptions, titles, product information, re-select images / videos, etc. like other meta tag, SEO and Schema markup plugins.
 
+WPSSO can be used as your only social and search optimization plugin, or in combination with your favorite SEO plugin (including, All In One SEO Pack, Rank Math SEO, The SEO Framework, WP Meta SEO, and Yoast SEO) to improve its SEO meta tags and Schema markup. 
+
 **Customize the plugin settings for different languages:**
 
 Text, image, and video related options are WordPress language / locale aware, which means you can easily switch languages and customize these options for different front-end webpage languages.
