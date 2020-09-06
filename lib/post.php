@@ -894,7 +894,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						}
 					}
 
-					$this->p->util->maybe_unset_ref( $ref_url);
+					$this->p->util->maybe_unset_ref( $ref_url );
 
 					/**
 					 * Check duplicates only when the post is available publicly and we have a valid permalink.

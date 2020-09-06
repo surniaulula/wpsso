@@ -1066,7 +1066,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$sharing_url = $wpsso->util->get_sharing_url( $mod );
 
-				$wpsso->notice->set_ref( $sharing_url, $mod, __( 'adding schema organization', 'wpsso' ) );
+				$wpsso->util->maybe_set_ref( $sharing_url, $mod, __( 'adding schema organization', 'wpsso' ) );
 			}
 
 			/**
@@ -1266,7 +1266,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			if ( is_admin() ) {
 
-				$wpsso->notice->unset_ref( $sharing_url );
+				$wpsso->util->maybe_unset_ref( $sharing_url );
 			}
 
 			if ( empty( $list_element ) ) {		// Add a single item.
@@ -1339,8 +1339,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					 */
 					if ( is_admin() ) {
 
-						$wpsso->notice->set_ref( $local_cache_person_urls[ $person_id ], $user_mod,
-							sprintf( __( 'adding schema for person user ID %1$s', 'wpsso' ), $person_id ) );
+						$wpsso->util->maybe_set_ref( $local_cache_person_urls[ $person_id ], $user_mod, __( 'adding schema person', 'wpsso' ) );
 					}
 
 					$user_desc = $user_mod[ 'obj' ]->get_options_multi( $person_id, $md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
@@ -1391,7 +1390,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					 */
 					if ( is_admin() ) {
 	
-						$wpsso->notice->unset_ref( $local_cache_person_urls[ $person_id ] );
+						$wpsso->util->maybe_unset_ref( $local_cache_person_urls[ $person_id ] );
 					}
 				}
 
@@ -1525,7 +1524,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$sharing_url = $wpsso->util->get_sharing_url( $mod );
 
-				$wpsso->notice->set_ref( $sharing_url, $mod, __( 'adding schema place', 'wpsso' ) );
+				$wpsso->util->maybe_set_ref( $sharing_url, $mod, __( 'adding schema place', 'wpsso' ) );
 			}
 
 			/**
@@ -1684,7 +1683,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Restore previous reference values for admin notices.
 			 */
 			if ( is_admin() ) {
-				$wpsso->notice->unset_ref( $sharing_url );
+
+				$wpsso->util->maybe_unset_ref( $sharing_url );
 			}
 
 			if ( empty( $list_element ) ) {		// Add a single item.

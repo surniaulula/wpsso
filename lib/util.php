@@ -3842,6 +3842,15 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $attr_names;
 		}
 
+		/**
+		 * Maybe set the notice reference URL and translated message.
+		 *
+		 * Example messages, depending on the $mod array:
+		 *
+		 *	adding schema organization
+		 *	adding schema organization for this page
+		 *	adding schema organization for page ID 123
+		 */
 		public function maybe_set_ref( $sharing_url = null, $mod = false, $msg_transl = '' ) {
 
 			static $is_admin = null;
@@ -3873,19 +3882,21 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( $mod[ 'is_post' ] && $mod[ 'post_type_label' ] ) {
 
-				$name = mb_strtolower( $mod[ 'post_type_label' ] );
+				$name_transl = mb_strtolower( $mod[ 'post_type_label' ] );
 
 			} elseif ( $mod[ 'is_term' ] && $mod[ 'tax_label' ] ) {
 
-				$name = mb_strtolower( $mod[ 'tax_label' ] );
+				$name_transl = mb_strtolower( $mod[ 'tax_label' ] );
+
 			} else {
-				$name = $mod[ 'name_transl' ];
+
+				$name_transl = $mod[ 'name_transl' ];	// Translated module name.
 			}
 
 			if ( self::is_mod_current_screen( $mod ) ) {
 
 				// translators: %1$s is an action message, %2$s is the module or post type name.
-				$msg_transl = sprintf( __( '%1$s for this %2$s', 'wpsso' ), $msg_transl, $name );
+				$msg_transl = sprintf( __( '%1$s for this %2$s', 'wpsso' ), $msg_transl, $name_transl );
 
 				/**
 				 * Exclude the $mod array to avoid adding an 'Edit' link to the notice message.
@@ -3895,7 +3906,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			// translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-			$msg_transl = sprintf( __( '%1$s for %2$s ID %3$d', 'wpsso' ), $msg_transl, $name, $mod[ 'id' ] );
+			$msg_transl = sprintf( __( '%1$s for %2$s ID %3$d', 'wpsso' ), $msg_transl, $name_transl, $mod[ 'id' ] );
 			
 			return $this->p->notice->set_ref( $sharing_url, $mod, $msg_transl );
 		}
