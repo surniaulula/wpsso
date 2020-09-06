@@ -315,7 +315,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* Added a new "Robots Meta" tab in the Document SSO metabox.
-	* Update the SSO menu and toolbar notification icons.
+	* Updated the SSO menu and toolbar notification icons.
+	* Cleanup of CSS for plugin settings pages.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
