@@ -62,22 +62,37 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 						array(), $this->p->cf[ 'jquery-ui' ][ 'version' ] );
 
 			/**
+			 * Register styles for option help popup.
+			 * 
 			 * See http://qtip2.com/download.
 			 */
 			wp_register_style( 'jquery-qtip.js',
 				WPSSO_URLPATH . 'css/ext/jquery-qtip.' . $this->file_ext,
 					array(), $this->p->cf[ 'jquery-qtip' ][ 'version' ] );
 
+			/**
+			 * Register styles for settings pages.
+			 */
+			wp_register_style( 'sucom-settings-page',
+				WPSSO_URLPATH . 'css/com/settings-page.' . $this->file_ext,
+					array(), $this->version );
+
+			/**
+			 * Register styles for settings tables.
+			 */
 			wp_register_style( 'sucom-settings-table',
 				WPSSO_URLPATH . 'css/com/settings-table.' . $this->file_ext,
 					array(), $this->version );
 
+			/**
+			 * Register styles for metabox tabs.
+			 */
 			wp_register_style( 'sucom-metabox-tabs',
 				WPSSO_URLPATH . 'css/com/metabox-tabs.' . $this->file_ext,
 					array(), $this->version );
 
 			/**
-			 * Only load stylesheets where we need them.
+			 * Only load stylesheets we need.
 			 */
 			switch ( $hook_name ) {
 
@@ -105,7 +120,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 						$this->p->debug->log( 'enqueuing styles for settings page' );
 					}
 
-					$this->add_settings_page_style( $hook_name );
+					wp_enqueue_style( 'sucom-settings-page' );
 
 					// No break.
 
@@ -161,86 +176,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			$classes .= ' plugins-php';
 
 			return $classes;
-		}
-
-		private function add_settings_page_style( $hook_name ) {
-
-			$cache_md5_pre    = $this->p->lca . '_';
-			$cache_exp_filter = $this->p->lca . '_cache_expire_admin_css';
-			$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, DAY_IN_SECONDS );
-			$cache_salt       = __METHOD__ . '(hook_name:' . $hook_name . '_urlpath:' . WPSSO_URLPATH . '_version:' . $this->version . ')';
-			$cache_id         = $cache_md5_pre . md5( $cache_salt );
-
-			wp_enqueue_style( 'sucom-settings-page',
-				WPSSO_URLPATH . 'css/com/settings-page.' . $this->file_ext,
-					array(), $this->version );
-
-			if ( $this->use_cache ) {
-
-				if ( $custom_style_css = get_transient( $cache_id ) ) {	// Not empty.
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'settings page style retrieved from cache' );
-					}
-
-					wp_add_inline_style( 'sucom-settings-page', $custom_style_css );	// Since WP v3.3.0.
-
-					return;
-				}
-			}
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark( 'create and minify settings page style' );	// Begin timer.
-			}
-
-			$custom_style_css = '';	// Start with an empty string.
-
-			/**
-			 * Re-use the notice border colors for the side column and dashboard metaboxes.
-			 */
-			$color            = $this->p->cf[ 'notice' ][ 'css-class' ][ 'update-nag' ][ 'color' ];
-			$border_color     = $this->p->cf[ 'notice' ][ 'css-class' ][ 'update-nag' ][ 'border-color' ];
-			$background_color = $this->p->cf[ 'notice' ][ 'css-class' ][ 'update-nag' ][ 'background-color' ];
-
-			$custom_style_css .= '
-				#poststuff #side_fixed-sortables .postbox {
-					border:1px solid ' . $border_color . ';
-				}
-				#poststuff #side_fixed-sortables .postbox > h2,
-				#poststuff #side_fixed-sortables .postbox .postbox-header {	/* WP v5.5. */
-					border-bottom:1px dotted ' . $border_color . ';
-				}
-				#poststuff #side_fixed-sortables .postbox.closed > h2,
-				#poststuff #side_fixed-sortables .postbox.closed .postbox-header {	/* WP v5.5. */
-					border-bottom:none;
-				}
-			';
-
-			if ( strpos( $hook_name, '_page_' . $this->p->lca . '-dashboard' ) ) {
-
-				$custom_style_css .= 'div#' . $hook_name . ' div#normal-sortables { min-height:0; }';
-			}
-
-			$custom_style_css = apply_filters( $this->p->lca . '_settings_page_custom_style_css', $custom_style_css );
-	
-			if ( $this->use_cache ) {
-
-				if ( method_exists( 'SucomUtil', 'minify_css' ) ) {
-
-					$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->p->lca );
-				}
-
-				set_transient( $cache_id, $custom_style_css, $cache_exp_secs );
-			}
-
-			wp_add_inline_style( 'sucom-settings-page', $custom_style_css );	// Since WP v3.3.0.
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark( 'create and minify settings page style' );	// End timer.
-			}
 		}
 
 		private function add_admin_page_style( $hook_name ) {
