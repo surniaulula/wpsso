@@ -127,6 +127,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 * Determine if the DEV constant is defined.
 			 */
 			$this->doing_dev = SucomUtil::get_const( $this->uca . '_DEV' );
+
 			$this->use_cache = $this->doing_dev ? false : true;	// Read/save minimized CSS from/to transient cache.
 
 			/**
@@ -195,6 +196,25 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 		}
 
+		public function is_enabled() {
+
+			return $this->enabled ? true : false;
+		}
+
+		public function enable( $state = true ) {
+
+			$prev_state = $this->is_enabled();
+
+			$this->enabled = $state;
+
+			return $prev_state;	// Return the previous state to save and restore.
+		}
+
+		public function disable( $state = false ) {
+
+			return $this->enable( $state );	// Return the previous state to save and restore.
+		}
+
 		public function nag( $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false, $payload = array() ) {
 
 			/**
@@ -233,6 +253,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		 * $msg_text can be a single text string, or an array of text strings.
 		 */
 		private function log( $msg_type, $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false, $payload = array() ) {
+
+			if ( ! $this->enabled ) {	// Just in case.
+
+				return false;
+			}
 
 			/**
 			 * If $msg_text is an array of text strings, implode the array into a single text string.

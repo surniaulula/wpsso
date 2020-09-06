@@ -6,6 +6,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
@@ -16,8 +17,8 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		private $p;
 		private $display_name = '';
 		private $log_prefix   = '';
-		private $buffer       = array();	// Accumulate text strings going to html output.
-		private $subsys       = array();	// Associative array to enable various outputs.
+		private $log_buffer   = array();	// Accumulate text strings going to html output.
+		private $outputs      = array();	// Associative array to enable various outputs.
 		private $start_stats  = null;
 		private $begin_marks  = array();
 		private $log_msg_cols = array(
@@ -25,11 +26,12 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			'%-55s: ',
 		);
 
-		public $enabled = false;		// True if at least one subsys is true.
+		public $enabled = false;		// True if at least one $outputs array element is true.
 
-		public function __construct( &$plugin, $subsys = array( 'html' => false, 'log' => false ) ) {
+		public function __construct( &$plugin, array $outputs = array( 'html' => false, 'log' => false ) ) {
 
 			if ( ! class_exists( 'SucomUtil' ) ) {	// Just in case.
+
 				require_once trailingslashit( dirname( __FILE__ ) ) . 'util.php';
 			}
 
@@ -42,17 +44,20 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 			$this->display_name = $this->p->lca;
 			$this->log_prefix   = strtoupper( $this->display_name );
-			$this->subsys       = $subsys;
+			$this->outputs      = $outputs;
 
 			$this->is_enabled();	// Sets $this->enabled value.
 
-			if ( ! empty( $subsys[ 'log' ] ) ) {
+			if ( ! empty( $outputs[ 'log' ] ) ) {
+
 				if ( ! isset( $_SESSION ) ) {
+
 					session_start();
 				}
 			}
 
 			if ( $this->enabled ) {
+
 				$this->mark();
 			}
 		}
@@ -61,49 +66,50 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 			if ( ! empty( $name ) ) {
 
-				return isset( $this->subsys[ $name ] ) ? $this->subsys[ $name ] : false;
-
-			} else {
-
-				/**
-				 * Return true if any sybsys is true - use strict checking.
-				 */
-				$this->enabled = in_array( true, $this->subsys, true ) ? true : false;
+				return isset( $this->outputs[ $name ] ) ? $this->outputs[ $name ] : false;
 			}
 
-			return $this->enabled;
+			return $this->enabled = in_array( true, $this->outputs ) ? true : false;	// True if any sybsys is true.
 		}
 
 		public function enable( $name, $state = true ) {
 
+			$prev_state = $this->is_enabled( $name );
+
 			if ( ! empty( $name ) ) {
 
-				$this->subsys[ $name ] = $state;
+				$this->outputs[ $name ] = $state;
 
 				if ( $name === 'log' ) {
+
 					if ( ! isset( $_SESSION ) ) {
+
 						session_start();
 					}
 				}
 			}
 
 			$this->is_enabled();	// Sets $this->enabled value.
+
+			return $prev_state;	// Return the previous state to save and restore.
 		}
 
-		public function disable( $name ) {
+		public function disable( $name, $state = false ) {
 
-			$this->enable( $name, false );
+			return $this->enable( $name, $state );	// Return the previous state to save and restore.
 		}
 
 		public function log_args( array $arr, $class_seq = 1, $func_seq = false ) {
 
 			if ( ! $this->enabled ) {
+
 				return;
 			}
 
 			if ( is_int( $class_seq ) ) {
 
 				if ( false === $func_seq ) {
+
 					$func_seq = $class_seq;
 				}
 
@@ -111,8 +117,11 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			}
 
 			if ( is_int( $func_seq ) ) {
+
 				$func_seq++;
+
 			} elseif ( false === $func_seq ) {
+
 				$func_seq = 2;
 			}
 
@@ -122,12 +131,14 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		public function log_arr( $prefix, $mixed, $class_seq = 1, $func_seq = false ) {
 
 			if ( ! $this->enabled ) {
+
 				return;
 			}
 
 			if ( is_int( $class_seq ) ) {
 
 				if ( false === $func_seq ) {
+
 					$func_seq = $class_seq;
 				}
 
@@ -135,19 +146,27 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			}
 
 			if ( is_int( $func_seq ) ) {
+
 				$func_seq++;
+
 			} elseif ( false === $func_seq ) {
+
 				$func_seq = 2;
 			}
 
 			if ( is_object( $mixed ) ) {
+
 				$prefix = trim( $prefix . ' ' . get_class( $mixed ) . ' object vars' );
-				$mixed  = get_object_vars( $mixed );
+
+				$mixed = get_object_vars( $mixed );
 			}
 
 			if ( is_array( $mixed ) ) {
+
 				$this->log( $prefix . ' ' . trim( print_r( SucomUtil::pretty_array( $mixed, false ), true ) ), $class_seq, $func_seq );
+
 			} else {
+
 				$this->log( $prefix . ' ' . $mixed, $class_seq, $func_seq );
 			}
 		}
@@ -155,15 +174,18 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		public function log( $input = '', $class_seq = 1, $func_seq = false ) {
 
 			if ( ! $this->enabled ) {
+
 				return;
 			}
 
-			$stack   = debug_backtrace();
+			$stack = debug_backtrace();
+
 			$log_msg = '';
 
 			if ( is_int( $class_seq ) ) {
 
 				if ( false === $func_seq ) {
+
 					$func_seq = $class_seq;
 				}
 
@@ -172,6 +194,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			} else {
 
 				if ( false === $func_seq ) {
+
 					$func_seq = 1;
 				}
 
@@ -179,8 +202,11 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			}
 
 			if ( is_int( $func_seq ) ) {
+
 				$log_msg .= sprintf( $this->log_msg_cols[ 1 ], ( empty( $stack[ $func_seq ][ 'function' ] ) ? '' : $stack[ $func_seq ][ 'function' ] ) );
+
 			} else {
+
 				$log_msg .= sprintf( $this->log_msg_cols[ 1 ], $func_seq );
 			}
 
@@ -192,20 +218,27 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			}
 
 			if ( is_array( $input ) ) {
+
 				$log_msg .= trim( print_r( $input, true ) );
+
 			} elseif ( is_object( $input ) ) {
+
 				$log_msg .= print_r( 'object ' . get_class( $input ), true );
+
 			} else {
+
 				$log_msg .= $input;
 			}
 
-			if ( $this->subsys[ 'html' ] ) {
-				$this->buffer[] = $log_msg;
+			if ( $this->outputs[ 'html' ] ) {
+
+				$this->log_buffer[] = $log_msg;
 			}
 
-			if ( $this->subsys[ 'log' ] ) {
+			if ( $this->outputs[ 'log' ] ) {
 
-				$session_id    = session_id();
+				$session_id = session_id();
+
 				$connection_id = $session_id ? $session_id : $_SERVER[ 'REMOTE_ADDR' ];
 
 				error_log( $connection_id . ' ' . $this->log_prefix . ' ' . $log_msg );
@@ -215,6 +248,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		public function mark( $id = false, $comment = '' ) {
 
 			if ( ! $this->enabled ) {
+
 				return;
 			}
 
@@ -224,6 +258,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			);
 
 			if ( null === $this->start_stats ) {
+
 				$this->start_stats = $cur_stats;
 			}
 
@@ -267,10 +302,15 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		private function get_mem_text( $mem ) {
 
 			if ( $mem < 1024 ) {
+
 				return $mem . ' bytes';
+
 			} elseif ( $mem < 1048576 ) {
+
 				return round( $mem / 1024, 2) . ' kb';
+
 			} else {
+
 				return round( $mem / 1048576, 2) . ' mb';
 			}
 		}
@@ -278,6 +318,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		public function show_html( $data = null, $title = null ) {
 
 			if ( ! $this->is_enabled( 'html' ) ) {
+
 				return;
 			}
 
@@ -287,10 +328,12 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		public function get_html( $data = null, $title = null, $class_seq = 1, $func_seq = false ) {
 
 			if ( ! $this->is_enabled( 'html' ) ) {
+
 				return;
 			}
 
 			if ( false === $func_seq ) {
+
 				$func_seq = $class_seq;
 			}
 
@@ -299,23 +342,29 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			$stack = debug_backtrace();
 
 			if ( ! empty( $stack[ $class_seq ][ 'class' ] ) ) {
+
 				$from .= $stack[ $class_seq ][ 'class' ] . '::';
 			}
 
 			if ( ! empty( $stack[ $func_seq ][ 'function' ] ) ) {
+
 				$from .= $stack[ $func_seq ][ 'function' ];
 			}
 
 			if ( null === $data ) {
-				$data = $this->buffer;
-				$this->buffer = array();
+
+				$data = $this->log_buffer;
+
+				$this->log_buffer = array();
 			}
 
 			if ( ! empty( $from ) ) {
+
 				$html .= ' from ' . $from . '()';
 			}
 
 			if ( ! empty( $title ) ) {
+
 				$html .= ' ' . $title;
 			}
 
@@ -330,6 +379,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 					$is_assoc = SucomUtil::is_assoc( $data );
 
 					if ( $is_assoc ) {
+
 						ksort( $data );
 					}
 
