@@ -800,12 +800,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						}
 					}
 
-					/**
-					 * Only show a single nag message at a time.
-					 */
 					if ( 'nag' === $msg_type ) {
 
-						if ( empty( $nag_html ) ) {
+						if ( empty( $nag_html ) ) {	// Only show a single nag message at a time.
 
 							$nag_html .= $this->get_notice_html( $msg_type, $payload );
 						}
@@ -837,7 +834,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 			}
 
-			echo $nag_html . "\n";
+			echo $nag_html . "\n";	// Empty string by default.
 
 			echo $msg_html . "\n";
 

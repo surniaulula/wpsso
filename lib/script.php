@@ -77,7 +77,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			wp_enqueue_script( 'sucom-block-editor-admin' );
 
 			/**
-			 * Work in progress for WPSSO Core v8.4.0.
+			 * Work in progress for WPSSO Core v9.0.0.
 			 *
 			 * wp_register_script( 'wpsso-block-editor', WPSSO_URLPATH . 'js/dist/block-editor.' . $this->file_ext, 
 			 * 	array( 'wp-data', 'wp-components', 'wp-editor', 'wp-edit-post', 'wp-i18n' ), $this->version, $in_footer = true );
