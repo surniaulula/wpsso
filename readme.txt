@@ -315,8 +315,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* Added a new "Robots Meta" tab in the Document SSO metabox.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.2.
+
+**Version 8.3.1 (2020/09/06)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Improved the CSS of plugin settings pages.
 	* Updated the SSO menu and toolbar notification icons.
-	* Cleanup of CSS for plugin settings pages.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -559,6 +572,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.3.1 =
+
+(2020/09/06) Improved the CSS of plugin settings pages. Updated the SSO menu and toolbar notification icons.
 
 = 8.3.0 =
 
