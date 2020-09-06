@@ -323,7 +323,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* PHP v5.6.
 	* WordPress v4.2.
 
-**Version 8.3.1-rc.2 (2020/09/06)**
+**Version 8.3.1 (2020/09/06)**
 
 * **New Features**
 	* None.
@@ -558,25 +558,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* PHP v5.6.
 	* WordPress v4.2.
 
-**Version 7.11.0 (2020/06/27)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added a new 'wpsso_version_updates' action, which is run when add-on versions are updated / changed.
-* **Requires At Least**
-	* PHP v5.6.
-	* WordPress v4.2.
-
 == Upgrade Notice ==
 
-= 8.3.1-rc.2 =
+= 8.3.1 =
 
-(2020/09/06) Improved the CSS of plugin settings pages. Improved the notice reference message when adding Schema Organization, Person, and Place markup. Updated the SSO menu and toolbar notification icons.
+(2020/09/06) Improved the CSS of plugin settings pages. Improved notice reference messages. Updated the SSO menu and toolbar notification icons.
 
 = 8.3.0 =
 
