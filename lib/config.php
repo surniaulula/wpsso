@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.3.0',	// Plugin version.
+					'version'     => '8.4.0-dev.1',	// Plugin version.
 					'opt_version' => '756',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2191,10 +2191,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'version' => '1.12.1',
 			),
 			'menu' => array(
-				'title'       => 'SSO',		// Menu title.
-				'icon-code'   => '\f529',	// Icon CSS code.
-				'icon-family' => 'WpssoIcons',	// Icon font family.
-				'dashicons'   => array(
+				'title'     => 'SSO',		// Menu title.
+				'icon-code' => '\e81e',		// Icon CSS code.
+				'icon-font' => 'WpssoIcons',	// Icon font family.
+				'dashicons' => array(
 					'add-person'    => 'admin-users',
 					'addons'        => 'admin-plugins',
 					'essential'     => 'star-filled',
@@ -2210,21 +2210,25 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'notice' => array(
-				'update-nag' => array(		// CSS class name.
-					'color'            => '#144e14',	// CSS property name and value.
-					'border-width'     => '1px',
-					'border-style'     => 'solid',
-					'border-color'     => '#33cc33',
-					'background-color' => '#e0f7e0',
-				),
-				'update-nag a' => array(
-					'color' => '#1f7e1f',
-				),
-				'update-nag a:active' => array(
-					'color' => '#279d27',
-				),
-				'update-nag a:hover' => array(
-					'color' => '#279d27',
+				'icon-code' => '\e81d',					// Icon CSS code.
+				'icon-font' => 'WpssoIcons',				// Icon font family.
+				'css-class' => array(					// Used by WpssoStyle->add_admin_page_style().
+					'update-nag' => array(				// CSS class name.
+						'color'            => '#144e14',	// CSS property name and value.
+						'border-width'     => '1px',
+						'border-style'     => 'solid',
+						'border-color'     => '#33cc33',
+						'background-color' => '#e0f7e0',
+					),
+					'update-nag a' => array(
+						'color' => '#1f7e1f',
+					),
+					'update-nag a:active' => array(
+						'color' => '#279d27',
+					),
+					'update-nag a:hover' => array(
+						'color' => '#279d27',
+					),
 				),
 			),
 			'meta' => array(			// Post, term, user add_meta_box() settings.

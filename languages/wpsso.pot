@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.3.0\n"
+"Project-Id-Version: WPSSO Core 8.4.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -12,12 +12,12 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: lib/abstracts/wp-meta.php:639 lib/abstracts/wp-meta.php:648
+#: lib/abstracts/wp-meta.php:639 lib/abstracts/wp-meta.php:649
 msgctxt "metabox tab"
 msgid "Customize"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:640 lib/abstracts/wp-meta.php:649
+#: lib/abstracts/wp-meta.php:640 lib/abstracts/wp-meta.php:650
 #: lib/messages.php:2406
 msgctxt "metabox tab"
 msgid "Priority Media"
@@ -25,25 +25,30 @@ msgstr ""
 
 #: lib/abstracts/wp-meta.php:641
 msgctxt "metabox tab"
-msgid "Preview"
+msgid "Robots Meta"
 msgstr ""
 
 #: lib/abstracts/wp-meta.php:642
 msgctxt "metabox tab"
-msgid "oEmbed"
+msgid "Preview"
 msgstr ""
 
 #: lib/abstracts/wp-meta.php:643
 msgctxt "metabox tab"
-msgid "Head Markup"
+msgid "oEmbed"
 msgstr ""
 
 #: lib/abstracts/wp-meta.php:644
 msgctxt "metabox tab"
+msgid "Head Markup"
+msgstr ""
+
+#: lib/abstracts/wp-meta.php:645
+msgctxt "metabox tab"
 msgid "Validate"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:965
+#: lib/abstracts/wp-meta.php:966
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
@@ -1546,106 +1551,106 @@ msgctxt "option label"
 msgid "oEmbed HTML"
 msgstr ""
 
-#: lib/edit.php:482
+#: lib/edit.php:483
 msgid "No oEmbed HTML found."
 msgstr ""
 
-#: lib/edit.php:612
+#: lib/edit.php:613
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/edit.php:613
+#: lib/edit.php:614
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/edit.php:617
+#: lib/edit.php:618
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/edit.php:618
+#: lib/edit.php:619
 msgctxt "submit button"
 msgid "Validate Microdata"
 msgstr ""
 
-#: lib/edit.php:624
+#: lib/edit.php:625
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/edit.php:625
+#: lib/edit.php:626
 msgctxt "submit button"
 msgid "Validate PageSpeed"
 msgstr ""
 
-#: lib/edit.php:629
+#: lib/edit.php:630
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/edit.php:630
+#: lib/edit.php:631
 msgctxt "submit button"
 msgid "Validate Rich Results"
 msgstr ""
 
-#: lib/edit.php:634
+#: lib/edit.php:635
 msgctxt "option label"
 msgid "Google Structured Data Test (Deprecated)"
 msgstr ""
 
-#: lib/edit.php:635
+#: lib/edit.php:636
 msgctxt "submit button"
 msgid "Validate Structured Data"
 msgstr ""
 
-#: lib/edit.php:639
+#: lib/edit.php:640
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/edit.php:640
+#: lib/edit.php:641
 msgctxt "submit button"
 msgid "Validate Metadata"
 msgstr ""
 
-#: lib/edit.php:644
+#: lib/edit.php:645
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/edit.php:645
+#: lib/edit.php:646
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/edit.php:649
+#: lib/edit.php:650
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/edit.php:650
+#: lib/edit.php:651
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/edit.php:656
+#: lib/edit.php:657
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr ""
 
-#: lib/edit.php:657
+#: lib/edit.php:658
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/edit.php:661
+#: lib/edit.php:662
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr ""
 
-#: lib/edit.php:662
+#: lib/edit.php:663
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr ""

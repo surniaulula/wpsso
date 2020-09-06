@@ -200,9 +200,9 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			/**
 			 * Re-use the notice border colors for the side column and dashboard metaboxes.
 			 */
-			$color            = $this->p->cf[ 'notice' ][ 'update-nag' ][ 'color' ];
-			$border_color     = $this->p->cf[ 'notice' ][ 'update-nag' ][ 'border-color' ];
-			$background_color = $this->p->cf[ 'notice' ][ 'update-nag' ][ 'background-color' ];
+			$color            = $this->p->cf[ 'notice' ][ 'css-class' ][ 'update-nag' ][ 'color' ];
+			$border_color     = $this->p->cf[ 'notice' ][ 'css-class' ][ 'update-nag' ][ 'border-color' ];
+			$background_color = $this->p->cf[ 'notice' ][ 'css-class' ][ 'update-nag' ][ 'background-color' ];
 
 			$custom_style_css .= '
 				#poststuff #side_fixed-sortables .postbox {
@@ -325,11 +325,39 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			 */
 			$custom_style_css .= '
 				#wpadminbar #wp-toolbar #' . $lca . '-toolbar-notices-icon.ab-icon::before { 
-					content:"' . $this->p->cf[ 'menu' ][ 'icon-code' ] . '";
-					font-family:'. $this->p->cf[ 'menu' ][ 'icon-family' ] . ';
+					content:"' . $this->p->cf[ 'notice' ][ 'icon-code' ] . '";
+					font-family:'. $this->p->cf[ 'notice' ][ 'icon-font' ] . ';
 				}
 			';
 
+			foreach ( $this->p->cf[ 'notice' ][ 'css-class' ] as $css_class => $css_props ) {
+
+				foreach ( $css_props as $prop_name => $prop_value ) {
+
+					$custom_style_css .= '.' . $lca . '-notice.' . $css_class . '{' . $prop_name . ':' . $prop_value . ';}' . "\n";
+				}
+			}
+
+			$custom_style_css .= '
+				.' . $lca . '-notice.update-nag .notice-message {
+					padding:15px 30px;
+				}
+				.' . $lca . '-notice.update-nag .notice-message p,
+				.' . $lca . '-notice.update-nag .notice-message ul,
+				.' . $lca . '-notice.update-nag .notice-message ol {
+					margin:15px 0;
+				}
+				.' . $lca . '-notice.update-nag .notice-message ul li {
+					list-style-type:square;
+				}
+				.' . $lca . '-notice.update-nag .notice-message ol li {
+					list-style-type:decimal;
+				}
+				.' . $lca . '-notice.update-nag .notice-message li {
+					margin:5px 0 5px 60px;
+				}
+			';
+			
 			/**
 			 * Admin menu and sub-menu items.
 			 */
@@ -339,7 +367,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				#adminmenu li.menu-top.toplevel_page_' . $menu . ':hover div.wp-menu-image::before,
 				#adminmenu li.menu-top.toplevel_page_' . $sitemenu . ':hover div.wp-menu-image::before {
 					content:"' . $this->p->cf[ 'menu' ][ 'icon-code' ] . '";
-					font-family:'. $this->p->cf[ 'menu' ][ 'icon-family' ] . ';
+					font-family:'. $this->p->cf[ 'menu' ][ 'icon-font' ] . ';
 				}
 				#adminmenu #toplevel_page_' . $menu . ' ul > li > a,
 				#adminmenu #toplevel_page_' . $sitemenu . ' ul > li > a {

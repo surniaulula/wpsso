@@ -441,10 +441,10 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			$xml_url     = $this->p->util->get_oembed_url( $mod, 'xml' );
 			$oembed_data = $this->p->util->get_oembed_data( $mod, $oembed_width );
 
-			$table_rows[] = $form->get_th_html( _x( 'oEmbed JSON URL', 'option label', 'wpsso' ), 'medium' ) . 
+			$table_rows[] = $form->get_th_html( _x( 'oEmbed JSON URL', 'option label', 'wpsso' ), 'medium nowrap' ) . 
 			'<td>' . SucomForm::get_no_input_clipboard( $json_url ) . '</td>';
 
-			$table_rows[] = $form->get_th_html( _x( 'oEmbed XML URL', 'option label', 'wpsso' ), 'medium' ) . 
+			$table_rows[] = $form->get_th_html( _x( 'oEmbed XML URL', 'option label', 'wpsso' ), 'medium nowrap' ) . 
 			'<td>' . SucomForm::get_no_input_clipboard( $xml_url ) . '</td>';
 
 			$table_rows[ 'subsection_oembed_data' ] = '<td colspan="2" class="subsection"><h4>' . 
@@ -479,6 +479,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 				$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-meta-oembed-html' ) . '</td>';
 
 			} else {
+
 				$table_rows[] = '<td colspan="2"><p class="status-msg">' . __( 'No oEmbed HTML found.', 'wpsso' ) . '</p></td>';
 			}
 

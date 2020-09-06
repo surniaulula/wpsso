@@ -837,12 +837,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 			}
 
-			if ( ! empty( $nag_html ) ) {
-
-				echo $this->get_nag_style();
-
-				echo $nag_html . "\n";
-			}
+			echo $nag_html . "\n";
 
 			echo $msg_html . "\n";
 
@@ -1060,9 +1055,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		private function get_notice_html( $msg_type, array $payload, $notice_alt = false ) {
 
-			$charset = get_bloginfo( 'charset' );
-
-			$notice_class = $notice_alt ? 'notice notice-alt' : 'notice';
+			$charset        = get_bloginfo( 'charset' );
+			$css_class_type = $notice_alt ? 'notice notice-alt' : 'notice';
+			$notice_display = 'block';
 
 			switch ( $msg_type ) {
 
@@ -1070,47 +1065,48 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 					$payload[ 'notice_label' ] = '';	// No label for nag notices.
 
-					$msg_type = 'nag';
-					$wp_class = 'update-nag';
+					$msg_type       = 'nag';
+					$css_class      = 'update-nag';
+					$notice_display = 'inline-block';
 
 					break;
 
 				case 'err':
 				case 'error':
 
-					$msg_type = 'err';
-					$wp_class = $notice_class . ' notice-error error';
+					$msg_type  = 'err';
+					$css_class = $css_class_type . ' notice-error error';
 
 					break;
 
 				case 'warn':
 				case 'warning':
 
-					$msg_type = 'warn';
-					$wp_class = $notice_class . ' notice-warning';
+					$msg_type  = 'warn';
+					$css_class = $css_class_type . ' notice-warning';
 
 					break;
 
 				case 'inf':
 				case 'info':
 
-					$msg_type = 'inf';
-					$wp_class = $notice_class . ' notice-info';
+					$msg_type  = 'inf';
+					$css_class = $css_class_type . ' notice-info';
 
 					break;
 
 				case 'upd':
 				case 'updated':
 
-					$msg_type = 'upd';
-					$wp_class = $notice_class . ' notice-success updated';
+					$msg_type  = 'upd';
+					$css_class = $css_class_type . ' notice-success updated';
 
 					break;
 
 				default:	// Unknown $msg_type.
 
-					$msg_type = 'unknown';
-					$wp_class = $notice_class;
+					$msg_type  = 'unknown';
+					$css_class = $css_class_type;
 
 					break;
 			}
@@ -1135,11 +1131,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$style_attr = ' style="' . 
 				( empty( $payload[ 'style' ] ) ? '' : $payload[ 'style' ] ) .
-				( empty( $payload[ 'hidden' ] ) ? 'display:block;' : 'display:none;' ) . '"';
+				( empty( $payload[ 'hidden' ] ) ? 'display:' . $notice_display . ';' : 'display:none;' ) . '"';
 
 			$msg_html = '<div class="' . $this->lca . '-notice ' . 
 				( $is_dismissible ? $this->lca . '-dismissible ' : '' ) .
-				$wp_class . '"' . $css_id_attr . $style_attr . $data_attr . '>';	// Display block or none.
+				$css_class . '"' . $css_id_attr . $style_attr . $data_attr . '>';	// Display block or none.
 
 			/**
 			 * Float the dismiss button on the right, so the button must be added first.
@@ -1434,7 +1430,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					background:inherit;
 				}
 				#wpadminbar #wp-toolbar .has-toolbar-notices #' . $this->lca . '-toolbar-notices-icon.ab-icon::before { 
-					color:#fff;
+					color:#fff;			/* White on background color. */
 					background-color:inherit;
 				}
 				#wpadminbar #wp-toolbar .has-toolbar-notices #' . $this->lca . '-toolbar-notices-count {
@@ -1697,69 +1693,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			if ( $this->use_cache ) {
 
 				if ( method_exists( 'SucomUtil', 'minify_css' ) ) {
-					$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->lca );
-				}
-
-				set_transient( $cache_id, $custom_style_css, $cache_exp_secs );
-			}
-
-			return '<style type="text/css">' . $custom_style_css . '</style>';
-		}
-
-		private function get_nag_style() {
-
-			global $wp_version;
-
-			$cache_md5_pre  = $this->lca . '_';
-			$cache_exp_secs = DAY_IN_SECONDS;
-			$cache_salt     = __METHOD__ . '(wp_version:' . $wp_version . ')';
-			$cache_id       = $cache_md5_pre . md5( $cache_salt );
-
-			if ( $this->use_cache ) {
-
-				if ( $custom_style_css = get_transient( $cache_id ) ) {	// Not empty.
-
-					return '<style type="text/css">' . $custom_style_css . '</style>';
-				}
-			}
-
-			$custom_style_css = '';	// Start with an empty string.
-
-			if ( isset( $this->p->cf[ 'notice' ] ) ) {
-
-				foreach ( $this->p->cf[ 'notice' ] as $css_class => $css_props ) {
-
-					foreach ( $css_props as $prop_name => $prop_value ) {
-
-						$custom_style_css .= '.' . $this->lca . '-notice.' . $css_class . '{' . $prop_name . ':' . $prop_value . ';}' . "\n";
-					}
-				}
-			}
-
-			$custom_style_css .= '
-				.' . $this->lca . '-notice.update-nag .notice-message {
-					padding:15px 30px;
-				}
-				.' . $this->lca . '-notice.update-nag p,
-				.' . $this->lca . '-notice.update-nag ul,
-				.' . $this->lca . '-notice.update-nag ol {
-					margin:15px 0;
-				}
-				.' . $this->lca . '-notice.update-nag ul li {
-					list-style-type:square;
-				}
-				.' . $this->lca . '-notice.update-nag ol li {
-					list-style-type:decimal;
-				}
-				.' . $this->lca . '-notice.update-nag li {
-					margin:5px 0 5px 60px;
-				}
-			';
-			
-			if ( $this->use_cache ) {
-
-				if ( method_exists( 'SucomUtil', 'minify_css' ) ) {
-
 					$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->lca );
 				}
 

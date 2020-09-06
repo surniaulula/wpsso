@@ -638,6 +638,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 						$tabs[ 'edit' ]     = _x( 'Customize', 'metabox tab', 'wpsso' );
 						$tabs[ 'media' ]    = _x( 'Priority Media', 'metabox tab', 'wpsso' );
+						$tabs[ 'robots' ]   = _x( 'Robots Meta', 'metabox tab', 'wpsso' );
 						$tabs[ 'preview' ]  = _x( 'Preview', 'metabox tab', 'wpsso' );
 						$tabs[ 'oembed' ]   = _x( 'oEmbed', 'metabox tab', 'wpsso' );
 						$tabs[ 'head' ]     = _x( 'Head Markup', 'metabox tab', 'wpsso' );
