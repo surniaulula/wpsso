@@ -922,22 +922,21 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		public static function user_exists( $user_id ) {
 
-			if ( is_numeric( $user_id ) && $user_id > 0 ) { // true is not valid.
+			if ( is_numeric( $user_id ) && $user_id > 0 ) { // True is not valid.
 
-				$user_id = (int) $user_id; // Cast as integer for array.
+				$user_id = (int) $user_id; // Cast as integer for cache array.
 
 				if ( isset( self::$cache_user_exists[ $user_id ] ) ) {
 
 					return self::$cache_user_exists[ $user_id ];
 
-				} else {
-
-					global $wpdb;
-
-					$select_sql = 'SELECT COUNT(ID) FROM ' . $wpdb->users . ' WHERE ID = %d';
-
-					return self::$cache_user_exists[ $user_id ] = $wpdb->get_var( $wpdb->prepare( $select_sql, $user_id ) ) ? true : false;
 				}
+
+				global $wpdb;
+
+				$select_sql = 'SELECT COUNT(ID) FROM ' . $wpdb->users . ' WHERE ID = %d';
+
+				return self::$cache_user_exists[ $user_id ] = $wpdb->get_var( $wpdb->prepare( $select_sql, $user_id ) ) ? true : false;
 			}
 
 			return false;

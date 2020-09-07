@@ -35,6 +35,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			$this->p->util->add_plugin_filters( $this, array( 
 				'metabox_sso_edit_rows'     => 4,
 				'metabox_sso_media_rows'    => 4,
+				'metabox_sso_robots_rows'   => 4,
 				'metabox_sso_preview_rows'  => 4,
 				'metabox_sso_oembed_rows'   => 4,
 				'metabox_sso_head_rows'     => 4,
@@ -310,6 +311,28 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			 */
 
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
+		}
+
+		public function filter_metabox_sso_robots_rows( $table_rows, $form, $head_info, $mod ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			$default_directives = SucomUtil::get_robots_default_directives();
+
+			foreach ( array(
+				'noarchive'    => _x( 'No archive', 'option label', 'wpsso' ),
+				'nofollow'     => _x( 'No follow', 'option label', 'wpsso' ),
+				'noimageindex' => _x( 'No image index', 'option label', 'wpsso' ),
+				'noindex'      => _x( 'No index', 'option label', 'wpsso' ),
+				'nosnippet'    => _x( 'No snippet', 'option label', 'wpsso' ),
+				'notranslate'  => _x( 'No translate', 'option label', 'wpsso' ),
+			) as $directive => $directive_label ) {
+			}
+
+			return $table_rows;
 		}
 
 		public function filter_metabox_sso_preview_rows( $table_rows, $form, $head_info, $mod ) {

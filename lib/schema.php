@@ -376,7 +376,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			/**
-			 * Could be an organization, website, or person, so include last to re-enable (if disabled by default).
+			 * Could be an organization, website, or person, so include last to reenable (if disabled by default).
 			 */
 			if ( ! empty( $page_type_url ) ) {
 

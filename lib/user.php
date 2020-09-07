@@ -118,7 +118,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				 * add_action( 'parse_query', array( $this, 'set_column_orderby' ), 10, 1 );
 				 */
 
-				add_action( 'get_user_metadata', array( $this, 'check_sortable_metadata' ), 10, 4 );
+				add_action( 'get_user_metadata', array( $this, 'check_sortable_user_metadata' ), 10, 4 );
 
 				/**
 				 * Exit here if not a user or profile page.
@@ -153,7 +153,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		/**
 		 * Get the $mod object for a user ID.
 		 */
-		public function get_mod( $mod_id ) {
+		public function get_mod( $user_id ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -162,9 +162,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			static $local_cache = array();
 
-			if ( isset( $local_cache[ $mod_id ] ) ) {
+			if ( isset( $local_cache[ $user_id ] ) ) {
 
-				return $local_cache[ $mod_id ];
+				return $local_cache[ $user_id ];
 			}
 
 			$mod = parent::$mod_defaults;
@@ -172,7 +172,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			/**
 			 * Common elements.
 			 */
-			$mod[ 'id' ]          = is_numeric( $mod_id ) ? (int) $mod_id : 0;	// Cast as integer.
+			$mod[ 'id' ]          = is_numeric( $user_id ) ? (int) $user_id : 0;	// Cast as integer.
 			$mod[ 'name' ]        = 'user';
 			$mod[ 'name_transl' ] = _x( 'user', 'module name', 'wpsso' );
 			$mod[ 'obj' ]         =& $this;
@@ -182,7 +182,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			 */
 			$mod[ 'is_user' ] = true;
 
-			return $local_cache[ $mod_id ] = apply_filters( $this->p->lca . '_get_user_mod', $mod, $mod_id );
+			return $local_cache[ $user_id ] = apply_filters( $this->p->lca . '_get_user_mod', $mod, $user_id );
 		}
 
 		/**
@@ -244,9 +244,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				if ( $user_exists ) {
 
-					$md_opts = get_user_meta( $user_id, WPSSO_META_NAME, $single = true );
+					$user_exists_id = $user_id;
+
+					$md_opts = get_user_meta( $user_exists_id, WPSSO_META_NAME, $single = true );
 
 				} else {
+
+					$user_exists_id = 0;
 
 					$md_opts = apply_filters( $this->p->lca . '_get_other_user_meta', false, $user_id );
 				}
@@ -257,16 +261,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 
 				/**
-				 * Check if options need to be upgraded.
+				 * Check if options need to be upgraded and saved.
 				 */
-				if ( $this->upgrade_options( $md_opts ) ) {
+				if ( $this->upgrade_options( $md_opts, $user_exists_id ) ) {
 
 					/**
 					 * Save the upgraded options.
 					 */
 					if ( $user_exists ) {
 
-						update_user_meta( $user_id, WPSSO_META_NAME, $md_opts );
+						update_user_meta( $user_exists_id, WPSSO_META_NAME, $md_opts );
 
 					} else {
 
@@ -490,24 +494,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $this->add_mod_column_headings( $columns, 'user' );
 		}
 
-		public function get_column_content( $value, $column_name, $user_id ) {
-
-			if ( ! empty( $user_id ) && 0 === strpos( $column_name, $this->p->lca . '_' ) ) {	// Just in case.
-
-				$col_key = str_replace( $this->p->lca . '_', '', $column_name );
-
-				if ( ( $col_info = self::get_sortable_columns( $col_key ) ) !== null ) {
-
-					if ( isset( $col_info[ 'meta_key' ] ) ) {	// Just in case.
-
-						$value = $this->get_meta_cache_value( $user_id, $col_info[ 'meta_key' ] );
-					}
-				}
-			}
-
-			return $value;
-		}
-
 		public function get_meta_cache_value( $user_id, $meta_key, $none = '' ) {
 
 			/**
@@ -539,57 +525,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $value;
 		}
 
-		public function update_sortable_meta( $user_id, $col_key, $content ) {
+		public function check_sortable_user_metadata( $value, $user_id, $meta_key, $single ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			if ( ! empty( $user_id ) ) {	// Just in case.
-
-				if ( ( $sort_cols = self::get_sortable_columns( $col_key ) ) !== null ) {
-
-					if ( isset( $sort_cols[ 'meta_key' ] ) ) {	// Just in case.
-
-						update_user_meta( $user_id, $sort_cols[ 'meta_key' ], $content );
-					}
-				}
-			}
-		}
-
-		public function check_sortable_metadata( $value, $user_id, $meta_key, $single ) {
-
-			/**
-			 * Example $meta_key value: '_wpsso_head_info_og_img_thumb'.
-			 */
-			if ( 0 !== strpos( $meta_key, '_' . $this->p->lca . '_head_info_' ) ) {
-
-				return $value;	// Return null.
-			}
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'user ID ' . $user_id . ' for meta key ' . $meta_key );
-			}
-
-			static $local_recursion = array();
-
-			if ( isset( $local_recursion[ $user_id ][ $meta_key ] ) ) {
-
-				return $value;	// Return null
-			}
-
-			$local_recursion[ $user_id ][ $meta_key ] = true;	// Prevent recursion.
-
-			if ( '' === get_user_meta( $user_id, $meta_key, $single = true ) ) {	// Returns empty string if meta not found.
-
-				$this->get_head_info( $user_id, $read_cache = true );
-			}
-
-			unset( $local_recursion[ $user_id ][ $meta_key ] );
-
-			return $value;	// Return null.
+			return $this->check_sortable_metadata( $value, $user_id, $meta_key, $single );
 		}
 
 		/**
@@ -811,14 +754,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			echo '<!-- ' . $this->p->lca . ' user metabox section end -->' . "\n";
 		}
 
-		public function ajax_metabox_document_meta() {
+		public function ajax_get_metabox_document_meta() {
 
 			die( -1 );	// Nothing to do.
-		}
-
-		public function show_metabox_document_meta( $user_obj ) {
-
-			echo $this->get_metabox_document_meta( $user_obj );
 		}
 
 		public function get_metabox_document_meta( $user_obj ) {
@@ -1846,67 +1784,27 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		/**
-		 * Since WPSSO Core v7.6.0.
-		 *
-		 * Used by WpssoFaqShortcodeQuestion->do_shortcode().
+		 * Since WPSSO Core v8.4.0.
 		 */
-		public function add_attached( $user_id, $attach_type, $attachment_id ) {
+		public static function get_meta( $user_id, $meta_key, $single = false ) {
 
-			$opts = get_user_meta( $user_id, WPSSO_META_ATTACHED_NAME, $single = true );
-
-			if ( ! isset( $opts[ $attach_type ][ $attachment_id ] ) ) {
-
-				if ( ! is_array( $opts ) ) {
-
-					$opts = array();
-				}
-
-				$opts[ $attach_type ][ $attachment_id ] = true;
-
-				return update_user_meta( $user_id, WPSSO_META_ATTACHED_NAME, $opts );
-			}
-
-			return false;	// No addition.
+			return get_user_meta( $user_id, $meta_key, $single );
 		}
 
 		/**
-		 * Since WPSSO Core v7.6.0.
+		 * Since WPSSO Core v8.4.0.
 		 */
-		public function delete_attached( $user_id, $attach_type, $attachment_id ) {
+		public static function update_meta( $user_id, $meta_key, $value ) {
 
-			$opts = get_user_meta( $user_id, WPSSO_META_ATTACHED_NAME, $single = true );
-
-			if ( isset( $opts[ $attach_type ][ $attachment_id ] ) ) {
-
-				unset( $opts[ $attach_type ][ $attachment_id ] );
-
-				if ( empty( $opts ) ) {	// Cleanup.
-
-					return delete_user_meta( $user_id, WPSSO_META_ATTACHED_NAME );
-				}
-
-				return update_user_meta( $user_id, WPSSO_META_ATTACHED_NAME, $opts );
-			}
-
-			return false;	// No delete.
+			return update_user_meta( $user_id, $meta_key, $value );
 		}
 
 		/**
-		 * Since WPSSO Core v7.6.0.
+		 * Since WPSSO Core v8.4.0.
 		 */
-		public function get_attached( $user_id, $attach_type ) {
+		public static function delete_meta( $user_id, $meta_key ) {
 
-			$opts = get_user_meta( $user_id, WPSSO_META_ATTACHED_NAME, $single = true );
-
-			if ( isset( $opts[ $attach_type ] ) ) {
-
-				if ( is_array( $opts[ $attach_type ] ) ) {	// Just in case.
-
-					return $opts[ $attach_type ];
-				}
-			}
-
-			return array();	// No values.
+			return delete_user_meta( $user_id, $meta_key );
 		}
 	}
 }

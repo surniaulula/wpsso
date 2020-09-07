@@ -143,6 +143,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 		/**
 		 * Extract certain key fields for display and sanity checks.
+		 *
+		 * Save meta tag values for later sorting in list tables.
 		 */
 		public function extract_head_info( array $mod, array $head_mt ) {
 

@@ -19,6 +19,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 	class WpssoPost extends WpssoWpMeta {
 
+		private static $saved_shortlink_url = null;	// Used by get_sharing_shortlink() and maybe_restore_shortlink().
+		private static $cache_shortlinks    = array();	// Used by get_sharing_shortlink() and maybe_restore_shortlink().
+
 		public function __construct( &$plugin ) {
 
 			$this->p =& $plugin;
@@ -154,7 +157,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 */
 				add_action( 'parse_query', array( $this, 'set_column_orderby' ), 10, 1 );
 
-				add_action( 'get_post_metadata', array( $this, 'check_sortable_metadata' ), 10, 4 );
+				add_action( 'get_post_metadata', array( $this, 'check_sortable_post_metadata' ), 10, 4 );
 			}
 
 			if ( ! empty( $this->p->options[ 'plugin_shortener' ] ) && $this->p->options[ 'plugin_shortener' ] !== 'none' ) {
@@ -206,7 +209,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		/**
 		 * Get the $mod object for a post ID.
 		 */
-		public function get_mod( $mod_id ) {
+		public function get_mod( $post_id ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -215,9 +218,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			static $local_cache = array();
 
-			if ( isset( $local_cache[ $mod_id ] ) ) {
+			if ( isset( $local_cache[ $post_id ] ) ) {
 
-				return $local_cache[ $mod_id ];
+				return $local_cache[ $post_id ];
 			}
 
 			$mod = parent::$mod_defaults;
@@ -225,7 +228,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Common elements.
 			 */
-			$mod[ 'id' ]          = is_numeric( $mod_id ) ? (int) $mod_id : 0;	// Cast as integer.
+			$mod[ 'id' ]          = is_numeric( $post_id ) ? (int) $post_id : 0;	// Cast as integer.
 			$mod[ 'name' ]        = 'post';
 			$mod[ 'name_transl' ] = _x( 'post', 'module name', 'wpsso' );
 			$mod[ 'obj' ]         =& $this;
@@ -234,8 +237,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 * Post elements.
 			 */
 			$mod[ 'is_post' ]       = true;
-			$mod[ 'is_home_page' ]  = SucomUtil::is_home_page( $mod_id );
-			$mod[ 'is_home_posts' ] = $mod[ 'is_home_page' ] ? false : SucomUtil::is_home_posts( $mod_id );
+			$mod[ 'is_home_page' ]  = SucomUtil::is_home_page( $post_id );
+			$mod[ 'is_home_posts' ] = $mod[ 'is_home_page' ] ? false : SucomUtil::is_home_posts( $post_id );
 			$mod[ 'is_home' ]       = $mod[ 'is_home_page' ] || $mod[ 'is_home_posts' ] ? true : false;
 
 			if ( $mod[ 'id' ] ) {	// Just in case.
@@ -266,7 +269,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Hooked by the 'coauthors' pro module.
 			 */
-			return $local_cache[ $mod_id ] = apply_filters( $this->p->lca . '_get_post_mod', $mod, $mod_id );
+			return $local_cache[ $post_id ] = apply_filters( $this->p->lca . '_get_post_mod', $mod, $post_id );
 		}
 
 		/**
@@ -352,9 +355,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 
 				/**
-				 * Check if options need to be upgraded.
+				 * Check if options need to be upgraded and saved.
 				 */
-				if ( $this->upgrade_options( $md_opts ) ) {
+				if ( $this->upgrade_options( $md_opts, $post_id ) ) {
 
 					/**
 					 * Save the upgraded options.
@@ -464,12 +467,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( empty( $opts ) ) {
 
-				delete_post_meta( $post_id, WPSSO_META_NAME );
+				return delete_post_meta( $post_id, WPSSO_META_NAME );
 
-			} else {
-
-				update_post_meta( $post_id, WPSSO_META_NAME, $opts );
 			}
+
+			return update_post_meta( $post_id, WPSSO_META_NAME, $opts );
 		}
 
 		public function delete_options( $post_id, $rel_id = false ) {
@@ -616,7 +618,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$col_key = str_replace( $this->p->lca . '_', '', $column_name );
 
-				if ( ( $col_info = self::get_sortable_columns( $col_key ) ) !== null ) {
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'getting column value for ' . $col_key );
+				}
+
+				if ( null !== ( $col_info = self::get_sortable_columns( $col_key ) ) ) {
 
 					if ( isset( $col_info[ 'meta_key' ] ) ) {	// Just in case.
 
@@ -641,6 +648,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		public function get_meta_cache_value( $post_id, $meta_key, $none = '' ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			/**
 			 * WordPress stores data using a post, term, or user ID, along with a group string.
@@ -671,57 +683,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $value;
 		}
 
-		public function update_sortable_meta( $post_id, $col_key, $content ) {
+		public function check_sortable_post_metadata( $value, $post_id, $meta_key, $single ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			if ( ! empty( $post_id ) ) {	// Just in case.
-
-				if ( ( $col_info = self::get_sortable_columns( $col_key ) ) !== null ) {
-
-					if ( isset( $col_info[ 'meta_key' ] ) ) {	// Just in case.
-
-						update_post_meta( $post_id, $col_info[ 'meta_key' ], $content );
-					}
-				}
-			}
-		}
-
-		public function check_sortable_metadata( $value, $post_id, $meta_key, $single ) {
-
-			/**
-			 * Example $meta_key value: '_wpsso_head_info_og_img_thumb'.
-			 */
-			if ( 0 !== strpos( $meta_key, '_' . $this->p->lca . '_head_info_' ) ) {
-
-				return $value;	// Return null.
-			}
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'post ID ' . $post_id . ' for meta key ' . $meta_key );
-			}
-
-			static $local_recursion = array();
-
-			if ( isset( $local_recursion[ $post_id ][ $meta_key ] ) ) {
-
-				return $value;	// Return null.
-			}
-
-			$local_recursion[ $post_id ][ $meta_key ] = true;			// Prevent recursion.
-
-			if ( get_post_meta( $post_id, $meta_key, $single = true ) === '' ) {	// Returns empty string if meta not found.
-
-				$this->get_head_info( $post_id, $read_cache = true );
-			}
-
-			unset( $local_recursion[ $post_id ][ $meta_key ] );
-
-			return $value;	// Return null.
+			return $this->check_sortable_metadata( $value, $post_id, $meta_key, $single );
 		}
 
 		/**
@@ -1514,11 +1483,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			die( $metabox_html );
 		}
 
-		public function show_metabox_document_meta( $post_obj ) {
-
-			echo $this->get_metabox_document_meta( $post_obj );
-		}
-
 		public function get_metabox_document_meta( $post_obj ) {
 
 			$metabox_id = $this->p->cf[ 'meta' ][ 'id' ];
@@ -1683,7 +1647,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 */
 			foreach ( array( 'post' ) as $attach_type ) {
 
-				$attached_ids = $this->get_attached( $post_id, $attach_type );
+				$attached_ids = self::get_attached( $post_id, $attach_type );
 
 				foreach ( $attached_ids as $post_id => $bool ) {
 				
@@ -2074,7 +2038,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				) );
 			}
 
-			self::$cache_short_url = null;	// Just in case.
+			self::$saved_shortlink_url = null;	// Just in case.
 
 			if ( isset( self::$cache_shortlinks[ $post_id ][ $context ][ $allow_slugs ] ) ) {
 
@@ -2084,7 +2048,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						self::$cache_shortlinks[ $post_id ][ $context ][ $allow_slugs ] );
 				}
 
-				return self::$cache_short_url = self::$cache_shortlinks[ $post_id ][ $context ][ $allow_slugs ];
+				return self::$saved_shortlink_url = self::$cache_shortlinks[ $post_id ][ $context ][ $allow_slugs ];
 			}
 
 			/**
@@ -2235,14 +2199,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->log( 'returning shortlink = ' . $short_url );
 			}
 
-			return self::$cache_short_url = self::$cache_shortlinks[ $post_id ][ $context ][ $allow_slugs ] = $short_url;	// Success - return short url.
+			return self::$saved_shortlink_url = self::$cache_shortlinks[ $post_id ][ $context ][ $allow_slugs ] = $short_url;	// Success - return short url.
 		}
 
 		public function maybe_restore_shortlink( $shortlink = false, $post_id = 0, $context = 'post', $allow_slugs = true ) {
 
-			if ( self::$cache_short_url === $shortlink ) {	// Shortlink value has not changed.
+			if ( self::$saved_shortlink_url === $shortlink ) {	// Shortlink value has not changed.
 
-				self::$cache_short_url = null;	// Just in case.
+				self::$saved_shortlink_url = null;	// Just in case.
 
 				if ( $this->p->debug->enabled ) {
 
@@ -2252,7 +2216,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return $shortlink;
 			}
 
-			self::$cache_short_url = null;	// Just in case.
+			self::$saved_shortlink_url = null;	// Just in case.
 
 			if ( isset( self::$cache_shortlinks[ $post_id ][ $context ][ $allow_slugs ] ) ) {
 
@@ -2269,69 +2233,27 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/**
-		 * Since WPSSO Core v7.6.0.
-		 *
-		 * Used by WpssoFaqShortcodeQuestion->do_shortcode().
+		 * Since WPSSO Core v8.4.0.
 		 */
-		public function add_attached( $post_id, $attach_type, $attachment_id ) {
+		public static function get_meta( $post_id, $meta_key, $single = false ) {
 
-			$opts = get_post_meta( $post_id, WPSSO_META_ATTACHED_NAME, $single = true );
-
-			if ( ! isset( $opts[ $attach_type ][ $attachment_id ] ) ) {
-
-				if ( ! is_array( $opts ) ) {
-
-					$opts = array();
-				}
-
-				$opts[ $attach_type ][ $attachment_id ] = true;
-			
-				return update_post_meta( $post_id, WPSSO_META_ATTACHED_NAME, $opts );
-			}
-
-			return false;	// No addition.
+			return get_post_meta( $post_id, $meta_key, $single );
 		}
 
 		/**
-		 * Since WPSSO Core v7.6.0.
+		 * Since WPSSO Core v8.4.0.
 		 */
-		public function delete_attached( $post_id, $attach_type, $attachment_id ) {
+		public static function update_meta( $post_id, $meta_key, $value ) {
 
-			$opts = get_post_meta( $post_id, WPSSO_META_ATTACHED_NAME, $single = true );
-
-			if ( isset( $opts[ $attach_type ][ $attachment_id ] ) ) {
-
-				unset( $opts[ $attach_type ][ $attachment_id ] );
-
-				if ( empty( $opts ) ) {	// Cleanup.
-
-					return delete_post_meta( $post_id, WPSSO_META_ATTACHED_NAME );
-				}
-
-				return update_post_meta( $post_id, WPSSO_META_ATTACHED_NAME, $opts );
-			}
-
-			return false;	// No delete.
+			return update_post_meta( $post_id, $meta_key, $value );
 		}
 
 		/**
-		 * Since WPSSO Core v7.6.0.
-		 *
-		 * Used by WpssoPost->clear_cache().
+		 * Since WPSSO Core v8.4.0.
 		 */
-		public function get_attached( $post_id, $attach_type ) {
+		public static function delete_meta( $post_id, $meta_key ) {
 
-			$opts = get_post_meta( $post_id, WPSSO_META_ATTACHED_NAME, $single = true );
-
-			if ( isset( $opts[ $attach_type ] ) ) {
-
-				if ( is_array( $opts[ $attach_type ] ) ) {	// Just in case.
-
-					return $opts[ $attach_type ];
-				}
-			}
-
-			return array();	// No values.
+			return delete_post_meta( $post_id, $meta_key );
 		}
 	}
 }

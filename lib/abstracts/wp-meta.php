@@ -30,12 +30,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 * The WpssoPost, WpssoTerm, and WpssoUser->load_meta_page() methods define the $head_tags and $head_info static
 		 * variables.
 		 */
-		protected static $head_tags         = false;	// Must be false by default.
-		protected static $head_info         = array();
-		protected static $last_column_id    = null;	// Cache id of the last column request in list table.
-		protected static $last_column_array = array();	// Array of column values for last column requested.
-		protected static $cache_short_url   = null;
-		protected static $cache_shortlinks  = array();
+		protected static $head_tags = false;	// Must be false by default.
+		protected static $head_info = array();
 
 		protected static $rename_md_options_keys = array(
 			'wpsso' => array(
@@ -167,7 +163,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		public function __construct( &$plugin ) {
 
-			return $this->must_be_extended( __METHOD__ );
+			return self::must_be_extended();
 		}
 
 		/**
@@ -175,7 +171,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 */
 		public function add_wp_hooks() {
 
-			return $this->must_be_extended( __METHOD__ );
+			return self::must_be_extended();
 		}
 
 		/**
@@ -183,7 +179,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 */
 		public function get_mod( $mod_id ) {
 
-			return $this->must_be_extended( __METHOD__, self::$mod_defaults );
+			return self::must_be_extended( static::$mod_defaults );
 		}
 
 		/**
@@ -198,7 +194,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			$mod = self::$mod_defaults;
+			$mod = static::$mod_defaults;
 
 			$post_id = 0;
 			
@@ -244,7 +240,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			if ( __CLASS__ === $class ) {	// Just in case.
 
-				return $this->must_be_extended( __METHOD__, array() );
+				return self::must_be_extended( $ret_val = array() );
 			}
 
 			$cache_id = 'id:' . $mod_id;
@@ -369,6 +365,32 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'gv_id_img'   => 0,	// Post Image Field ID
 				);
 
+				$default_directives = SucomUtil::get_robots_default_directives();
+
+				foreach ( array(
+					'noarchive'         => false,
+					'nofollow'          => false,
+					'noimageindex'      => false,
+					'noindex'           => false,
+					'nosnippet'         => false,
+					'notranslate'       => false,
+					'max-image-preview' => 'large',	// Max size for image preview.
+					'max-snippet'       => -1,	// Max characters for textual snippet (-1 = no limit).
+					'max-video-preview' => -1,	// Max seconds for video snippet (-1 = no limit).
+				) as $directive => $def_val ) {
+
+					$opt_key = SucomUtil::sanitize_hookname( 'robots_' . $directive );
+
+					if ( is_bool( $def_val ) ) {
+
+						$md_defs[ $opt_key ] = $def_val ? 1 : 0;
+
+					} else {
+
+						$md_defs[ $opt_key ] = $def_val;
+					}
+				}
+
 				if ( WpssoOptions::can_cache() ) {
 
 					if ( $this->p->debug->enabled ) {
@@ -423,22 +445,15 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		public function get_options( $mod_id, $md_key = false, $filter_opts = true, $pad_opts = false ) {
 
-			if ( false === $md_key ) {	// Allow for 0.
+			$ret_val = false === $md_key ? array() : null;	// Allow for $md_key = 0.
 
-				$ret_val = array();
-
-			} else {
-
-				$ret_val = null;
-			}
-
-			return $this->must_be_extended( __METHOD__, $ret_val );
+			return self::must_be_extended( $ret_val );
 		}
 
 		/**
 		 * Check if options need to be upgraded.
 		 */
-		protected function upgrade_options( array &$md_opts ) {
+		protected function upgrade_options( array &$md_opts, $mod_id ) {
 
 			if ( ! empty( $md_opts ) && ( empty( $md_opts[ 'options_version' ] ) || $md_opts[ 'options_version' ] !== $this->p->cf[ 'opt' ][ 'version' ] ) ) {
 
@@ -450,7 +465,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				$rename_filter_name = $this->p->lca . '_rename_md_options_keys';
 
-				$rename_options_keys = apply_filters( $rename_filter_name, self::$rename_md_options_keys );
+				$rename_options_keys = apply_filters( $rename_filter_name, static::$rename_md_options_keys );
 
 				$this->p->util->rename_opts_by_ext( $md_opts, $rename_options_keys );
 
@@ -464,6 +479,35 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					if ( ! empty( $this->p->cf[ 'head' ][ 'schema_renamed' ][ $md_val ] ) ) {
 
 						$md_opts[ $md_key ] = $this->p->cf[ 'head' ][ 'schema_renamed' ][ $md_val ];
+					}
+				}
+
+				/**
+				 * Import and delete deprecated robots post metadata.
+				 */
+				if ( $prev_version > 0 && $prev_version <= 756 ) {
+
+					foreach ( array(
+						'noarchive',
+						'nofollow',
+						'noimageindex',
+						'noindex',
+						'nosnippet',
+						'notranslate',
+					) as $directive => $def_val ) {
+	
+						$opt_key = SucomUtil::sanitize_hookname( 'robots_' . $directive );
+
+						$meta_key = SucomUtil::sanitize_hookname( '_' . $this->p->lca . '_' . $directive );
+	
+						$value = static::get_meta( $mod_id, $meta_key, $single = true );
+
+						if ( '' !== $value ) {
+
+							$md_opts[ $opt_key ] = (int) $value;
+
+							static::delete_meta( $mod_id, $meta_key );	// Delete after importing.
+						}
 					}
 				}
 
@@ -529,12 +573,12 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		public function save_options( $mod_id, $rel_id = false ) {
 
-			return $this->must_be_extended( __METHOD__ );
+			return self::must_be_extended( $ret_val = false );
 		}
 
 		public function delete_options( $mod_id, $rel_id = false ) {
 
-			return $this->must_be_extended( __METHOD__, $mod_id );
+			return self::must_be_extended( $ret_val = false );
 		}
 
 		/**
@@ -547,7 +591,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		public function get_posts_ids( array $mod, $ppp = null, $paged = null, array $posts_args = array() ) {
 
-			return $this->must_be_extended( __METHOD__, array() );	// Return an empty array.
+			return self::must_be_extended( $ret_val = array() );	// Return an empty array.
 		}
 
 		public function get_posts_mods( array $mod, $ppp = null, $paged = null, array $posts_args = array() ) {
@@ -572,22 +616,24 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		public function add_meta_boxes() {
 
-			return $this->must_be_extended( __METHOD__ );
+			return self::must_be_extended();
 		}
 
-		public function ajax_metabox_document_meta() {
+		public function ajax_get_metabox_document_meta() {
 
-			return $this->must_be_extended( __METHOD__ );
+			self::must_be_extended();
+
+			die( -1 );	// Nothing to do.
 		}
 
 		public function show_metabox_document_meta( $obj ) {
 
-			return $this->must_be_extended( __METHOD__ );
+			echo $this->get_metabox_document_meta( $obj );
 		}
 
 		public function get_metabox_document_meta( $obj ) {
 
-			return $this->must_be_extended( __METHOD__ );
+			return self::must_be_extended();
 		}
 
 		public function get_metabox_javascript( $container_id ) {
@@ -638,7 +684,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 						$tabs[ 'edit' ]     = _x( 'Customize', 'metabox tab', 'wpsso' );
 						$tabs[ 'media' ]    = _x( 'Priority Media', 'metabox tab', 'wpsso' );
-						//$tabs[ 'robots' ]   = _x( 'Robots Meta', 'metabox tab', 'wpsso' );	// Since WPSSO Core v8.4.0.
+						$tabs[ 'robots' ]   = _x( 'Robots Meta', 'metabox tab', 'wpsso' );	// Since WPSSO Core v8.4.0.
 						$tabs[ 'preview' ]  = _x( 'Preview', 'metabox tab', 'wpsso' );
 						$tabs[ 'oembed' ]   = _x( 'oEmbed', 'metabox tab', 'wpsso' );
 						$tabs[ 'head' ]     = _x( 'Head Markup', 'metabox tab', 'wpsso' );
@@ -696,28 +742,20 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $table_rows;
 		}
 
-		/**
-		 * Called by the WpssoPost, WpssoTerm, and WpssoUser->check_sortable_metadata() methods.
-		 */
-		public function get_head_info( $obj_id, $read_cache = true ) {
+		public function get_head_info( $mod_id, $read_cache = true ) {
 
 			static $local_cache = array();
 
 			$class = get_called_class();
 
-			if ( __CLASS__ === $class ) {	// Just in case.
-
-				return $this->must_be_extended( __METHOD__, array() );
-			}
-
-			$cache_id = 'id:' . $obj_id;
+			$cache_id = 'mod_id:' . $mod_id;
 
 			if ( isset( $local_cache[ $cache_id ] ) ) {
 
 				return $local_cache[ $cache_id ];
 			}
 
-			$mod = $this->get_mod( $obj_id );
+			$mod = $this->get_mod( $mod_id );
 
 			$local_head_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache );
 
@@ -731,7 +769,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 * is an array, then get the first non-empty option from the options array. This is an easy way to provide a
 		 * fallback value for the first array key. Use 'none' as a key name to skip this fallback behavior.
 		 *
-		 * Example: get_options_multi( $id, array( 'seo_desc', 'og_desc' ) );
+		 * Example: get_options_multi( $mod_id, array( 'seo_desc', 'og_desc' ) );
 		 */
 		public function get_options_multi( $mod_id, $md_key = false, $filter_opts = true ) {
 
@@ -796,7 +834,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 								$this->p->debug->log( 'option ' . $md_key . ' value found (not null)' );
 							}
 
-							break;				// Stop after first match.
+							break;	// Stop after first match.
 						}
 					}
 				}
@@ -819,17 +857,17 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		public function user_can_edit( $mod_id, $rel_id = false ) {
 
-			return $this->must_be_extended( __METHOD__, false );	// Return false by default.
+			return self::must_be_extended( $ret_val = false );	// Return false by default.
 		}
 
 		public function user_can_save( $mod_id, $rel_id = false ) {
 
-			return $this->must_be_extended( __METHOD__, false );	// Return false by default.
+			return self::must_be_extended( $ret_val = false );	// Return false by default.
 		}
 
 		public function clear_cache( $mod_id, $rel_id = false ) {
 
-			return $this->must_be_extended( __METHOD__ );
+			return self::must_be_extended();
 		}
 
 		protected function clear_mod_cache( array $mod, array $cache_types = array(), $sharing_url = false ) {
@@ -1166,7 +1204,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			$meta_keys = array();
 
-			$sort_cols = self::get_sortable_columns();
+			$sort_cols = static::get_sortable_columns();
 
 			foreach ( $sort_cols as $col_key => $col_info ) {
 
@@ -1183,7 +1221,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			$headers = array();
 
-			$sort_cols = self::get_sortable_columns();
+			$sort_cols = static::get_sortable_columns();
 
 			foreach ( $sort_cols as $col_key => $col_info ) {
 
@@ -1209,7 +1247,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				$col_key = str_replace( $this->p->lca . '_', '', $column_name );
 
-				if ( ( $col_info = self::get_sortable_columns( $col_key ) ) !== null ) {
+				if ( ( $col_info = static::get_sortable_columns( $col_key ) ) !== null ) {
 
 					if ( isset( $col_info[ 'meta_key' ] ) ) {	// Just in case.
 
@@ -1253,24 +1291,87 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $column_val;
 		}
 
-		public function get_column_content( $value, $column_name, $id ) {
+		public function get_column_content( $value, $column_name, $mod_id ) {
 
-			return $this->must_be_extended( __METHOD__, $value );
+			if ( ! empty( $mod_id ) && 0 === strpos( $column_name, $this->p->lca . '_' ) ) {	// Just in case.
+
+				$col_key = str_replace( $this->p->lca . '_', '', $column_name );
+
+				if ( ( $col_info = static::get_sortable_columns( $col_key ) ) !== null ) {
+
+					if ( isset( $col_info[ 'meta_key' ] ) ) {	// just in case
+
+						$value = $this->get_meta_cache_value( $mod_id, $col_info[ 'meta_key' ] );
+					}
+				}
+			}
+
+			return $value;
 		}
 
-		public function get_meta_cache_value( $id, $meta_key, $none = '' ) {
+		public function get_meta_cache_value( $mod_id, $meta_key, $none = '' ) {
 
-			return $this->must_be_extended( __METHOD__, $none );
+			return self::must_be_extended( $none );
 		}
 
-		public function update_sortable_meta( $obj_id, $col_key, $content ) { 
+		protected function check_sortable_metadata( $value, $mod_id, $meta_key, $single ) {
 
-			return $this->must_be_extended( __METHOD__ );
+			/**
+			 * Example $meta_key value:
+			 *
+			 *	'_wpsso_head_info_og_img_thumb'.
+			 */
+			if ( 0 !== strpos( $meta_key, '_' . $this->p->lca . '_head_info_' ) ) {
+
+				return $value;	// Return null.
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			static $local_no_recurs = array();
+
+			if ( isset( $local_no_recurs[ $mod_id ][ $meta_key ] ) ) {
+
+				return $value;	// Return null.
+			}
+
+			$local_no_recurs[ $mod_id ][ $meta_key ] = true;	// Prevent recursion.
+
+			if ( '' === static::get_meta( $mod_id, $meta_key, $single = true ) ) {
+
+				$this->get_head_info( $mod_id, $read_cache = true );
+			}
+
+			unset( $local_no_recurs[ $mod_id ][ $meta_key ] );
+
+			return $value;	// Return null.
+		}
+
+		public function update_sortable_meta( $mod_id, $col_key, $content ) { 
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			if ( ! empty( $mod_id ) ) {	// Just in case.
+
+				if ( ( $sort_cols = static::get_sortable_columns( $col_key ) ) !== null ) {
+
+					if ( isset( $sort_cols[ 'meta_key' ] ) ) {	// Just in case.
+
+						static::update_meta( $mod_id, $sort_cols[ 'meta_key' ], $content );
+					}
+				}
+			}
 		}
 
 		public function add_sortable_columns( $columns ) { 
 
-			foreach ( self::get_sortable_columns() as $col_key => $col_info ) {
+			foreach ( static::get_sortable_columns() as $col_key => $col_info ) {
 
 				if ( ! empty( $col_info[ 'orderby' ] ) ) {
 
@@ -1289,7 +1390,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				$col_key = str_replace( $this->p->lca . '_', '', $col_name );
 
-				if ( ( $col_info = self::get_sortable_columns( $col_key ) ) !== null ) {
+				if ( ( $col_info = static::get_sortable_columns( $col_key ) ) !== null ) {
 
 					foreach ( array( 'meta_key', 'orderby' ) as $set_name ) {
 
@@ -1306,7 +1407,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			if ( ! empty( $mod_name ) ) {
 
-				foreach ( self::get_column_headers() as $col_key => $col_header ) {
+				foreach ( static::get_column_headers() as $col_key => $col_header ) {
 
 					/**
 					 * Check if the column is enabled globally for the post, term, or user edit list.
@@ -1499,16 +1600,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $mt_images;
 		}
 
-		protected function must_be_extended( $method, $ret = true ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( $method . ' must be extended', get_class( $this ) );	// Log the extended class name.
-			}
-
-			return $ret;
-		}
-
 		/**
 		 * Extended by the WpssoUser class to support non-WordPress user images.
 		 *
@@ -1662,12 +1753,12 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		public function get_og_type_reviews( $mod_id, $og_type = 'product', $rating_meta = 'rating', $worst_rating = 1, $best_rating = 5 ) {
 
-			return $this->must_be_extended( __METHOD__, array() );	// Return an empty array.
+			return self::must_be_extended( $ret_val = array() );	// Return an empty array.
 		}
 
 		public function get_og_comment_review( $comment_obj, $og_type = 'product', $rating_meta = 'rating', $worst_rating = 1, $best_rating = 5 ) {
 
-			return $this->must_be_extended( __METHOD__, array() );	// Return an empty array.
+			return self::must_be_extended( $ret_val = array() );	// Return an empty array.
 		}
 
 		/**
@@ -1675,12 +1766,12 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 */
 		public function get_sharing_shortlink( $shortlink = false, $mod_id = 0, $context = 'post', $allow_slugs = true ) {
 
-			return $this->must_be_extended( __METHOD__, '' );
+			return self::must_be_extended( $ret_val = '' );
 		}
 
 		public function maybe_restore_shortlink( $shortlink = false, $mod_id = 0, $context = 'post', $allow_slugs = true ) {
 
-			return $this->must_be_extended( __METHOD__, '' );
+			return self::must_be_extended( $ret_val = '' );
 		}
 
 		/**
@@ -1690,12 +1781,30 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 */
 		public function get_authors_websites( $user_ids, $field_id = 'url' ) {
 
-			return $this->must_be_extended( __METHOD__, array() );
+			return self::must_be_extended( $ret_val = array() );
 		}
 
 		public function get_author_website( $user_id, $field_id = 'url' ) {
 
-			return $this->must_be_extended( __METHOD__, '' );
+			return self::must_be_extended( $ret_val = '' );
+		}
+
+		/**
+		 * Since WPSSO Core v7.6.0.
+		 */
+		public static function get_attached( $mod_id, $attach_type ) {
+
+			$opts = static::get_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $single = true );
+
+			if ( isset( $opts[ $attach_type ] ) ) {
+
+				if ( is_array( $opts[ $attach_type ] ) ) {	// Just in case.
+
+					return $opts[ $attach_type ];
+				}
+			}
+
+			return array();	// No values.
 		}
 
 		/**
@@ -1703,25 +1812,83 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 *
 		 * Used by WpssoFaqShortcodeQuestion->do_shortcode().
 		 */
-		public function add_attached( $obj_id, $attach_type, $attach_id ) {
+		public static function add_attached( $mod_id, $attach_type, $attach_id ) {
 
-			return $this->must_be_extended( __METHOD__, $ret_val = false );	// No addition.
+			$opts = static::get_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $single = true );
+
+			if ( ! isset( $opts[ $attach_type ][ $attachment_id ] ) ) {
+
+				if ( ! is_array( $opts ) ) {
+
+					$opts = array();
+				}
+
+				$opts[ $attach_type ][ $attachment_id ] = true;
+
+				return static::update_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $opts );
+			}
+
+			return false;	// No addition.
 		}
 
 		/**
 		 * Since WPSSO Core v7.6.0.
 		 */
-		public function delete_attached( $obj_id, $attach_type, $attach_id ) {
+		public static function delete_attached( $mod_id, $attach_type, $attach_id ) {
 
-			return $this->must_be_extended( __METHOD__, $ret_val = false );	// No delete.
+			$opts = static::get_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $single = true );
+
+			if ( isset( $opts[ $attach_type ][ $attachment_id ] ) ) {
+
+				unset( $opts[ $attach_type ][ $attachment_id ] );
+
+				if ( empty( $opts ) ) {	// Cleanup.
+
+					return static::delete_meta( $mod_id, WPSSO_META_ATTACHED_NAME );
+				}
+
+				return static::update_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $opts );
+			}
+
+			return false;	// No delete.
 		}
 
 		/**
-		 * Since WPSSO Core v7.6.0.
+		 * Since WPSSO Core v8.4.0.
 		 */
-		public function get_attached( $obj_id, $attach_type ) {
+		public static function get_meta( $mod_id, $meta_key, $single = false ) {
 
-			return $this->must_be_extended( __METHOD__, $ret_val = array() );	// No values.
+			$ret_val = false === $single ? array() : '';
+
+			return self::must_be_extended( $ret_val );
+		}
+
+		/**
+		 * Since WPSSO Core v8.4.0.
+		 */
+		public static function update_meta( $mod_id, $meta_key, $value ) {
+
+			return self::must_be_extended( $ret_val = false ); // No update.
+		}
+
+		/**
+		 * Since WPSSO Core v8.4.0.
+		 */
+		public static function delete_meta( $mod_id, $meta_key ) {
+
+			return self::must_be_extended( $ret_val = false ); // No delete.
+		}
+
+		protected static function must_be_extended( $method, $ret_val = null ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'method must be extended', $class_seq = 2, $func_seq = 2 );
+			}
+
+			return $ret_val;
 		}
 	}
 }
