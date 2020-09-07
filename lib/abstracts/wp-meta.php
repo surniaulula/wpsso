@@ -633,7 +633,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		public function get_metabox_document_meta( $obj ) {
 
-			return self::must_be_extended();
+			return self::must_be_extended( $ret_val = '' );	 // Empty html.
 		}
 
 		public function get_metabox_javascript( $container_id ) {
