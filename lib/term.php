@@ -79,7 +79,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					$this->p->debug->log( 'adding column filters for taxonomy ' . $this->query_tax_slug );
 				}
 
-				add_filter( 'manage_edit-' . $this->query_tax_slug . '_columns', array( $this, 'add_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
+				add_filter( 'manage_edit-' . $this->query_tax_slug . '_columns', array( $this, 'add_term_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
 
 				/**
 				 * Enable orderby meta_key only if we have a meta table.
@@ -506,14 +506,14 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return $post_ids;
 		}
 
-		public function add_column_headings( $columns ) {
+		public function add_term_column_headings( $columns ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			return $this->add_mod_column_headings( $columns, 'term' );
+			return $this->add_column_headings( $columns, $list_type = 'term' );
 		}
 
 		public function get_meta_cache_value( $term_id, $meta_key, $none = '' ) {

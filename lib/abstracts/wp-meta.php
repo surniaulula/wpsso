@@ -179,7 +179,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 */
 		public function get_mod( $mod_id ) {
 
-			return self::must_be_extended( static::$mod_defaults );
+			return self::must_be_extended( self::$mod_defaults );
 		}
 
 		/**
@@ -194,7 +194,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			$mod = static::$mod_defaults;
+			$mod = self::$mod_defaults;
 
 			$post_id = 0;
 			
@@ -465,7 +465,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				$rename_filter_name = $this->p->lca . '_rename_md_options_keys';
 
-				$rename_options_keys = apply_filters( $rename_filter_name, static::$rename_md_options_keys );
+				$rename_options_keys = apply_filters( $rename_filter_name, self::$rename_md_options_keys );
 
 				$this->p->util->rename_opts_by_ext( $md_opts, $rename_options_keys );
 
@@ -500,13 +500,13 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 						$meta_key = SucomUtil::sanitize_hookname( '_' . $this->p->lca . '_' . $directive );
 	
-						$value = static::get_meta( $mod_id, $meta_key, $single = true );
+						$value = static::get_meta( $mod_id, $meta_key, $single = true );	// Use static method from child.
 
 						if ( '' !== $value ) {
 
 							$md_opts[ $opt_key ] = (int) $value;
 
-							static::delete_meta( $mod_id, $meta_key );	// Delete after importing.
+							static::delete_meta( $mod_id, $meta_key );	// Use static method from child.
 						}
 					}
 				}
@@ -1168,6 +1168,28 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		}
 
 		/**
+		 * Return translated column headers.
+		 *
+		 * Called by add_column_headings(), WpssoStdAdminAdvanced->filter_edit_table_columns_rows(), and WpssoProAdminAdvanced->filter_edit_table_columns_rows().
+		 */
+		public static function get_column_headers() { 
+
+			$headers = array();
+
+			$sort_cols = self::get_sortable_columns();
+
+			foreach ( $sort_cols as $col_key => $col_info ) {
+
+				if ( ! empty( $col_info[ 'header' ] ) ) {
+
+					$headers[ $col_key ] = _x( $col_info[ 'header' ], 'column header', 'wpsso' );
+				}
+			}
+
+			return $headers;
+		}
+
+		/**
 		 * Return sortable column keys and their query sort info.
 		 */
 		public static function get_sortable_columns( $col_key = false ) { 
@@ -1204,7 +1226,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			$meta_keys = array();
 
-			$sort_cols = static::get_sortable_columns();
+			$sort_cols = self::get_sortable_columns();
 
 			foreach ( $sort_cols as $col_key => $col_info ) {
 
@@ -1215,23 +1237,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			}
 
 			return $meta_keys;
-		}
-
-		public static function get_column_headers() { 
-
-			$headers = array();
-
-			$sort_cols = static::get_sortable_columns();
-
-			foreach ( $sort_cols as $col_key => $col_info ) {
-
-				if ( ! empty( $col_info[ 'header' ] ) ) {
-
-					$headers[ $col_key ] = _x( $col_info[ 'header' ], 'column header', 'wpsso' );
-				}
-			}
-
-			return $headers;
 		}
 
 		public function get_column_wp_cache( array $mod, $column_name ) {
@@ -1247,7 +1252,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				$col_key = str_replace( $this->p->lca . '_', '', $column_name );
 
-				if ( ( $col_info = static::get_sortable_columns( $col_key ) ) !== null ) {
+				if ( ( $col_info = self::get_sortable_columns( $col_key ) ) !== null ) {
 
 					if ( isset( $col_info[ 'meta_key' ] ) ) {	// Just in case.
 
@@ -1297,7 +1302,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				$col_key = str_replace( $this->p->lca . '_', '', $column_name );
 
-				if ( ( $col_info = static::get_sortable_columns( $col_key ) ) !== null ) {
+				if ( ( $col_info = self::get_sortable_columns( $col_key ) ) !== null ) {
 
 					if ( isset( $col_info[ 'meta_key' ] ) ) {	// just in case
 
@@ -1340,7 +1345,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			$local_no_recurs[ $mod_id ][ $meta_key ] = true;	// Prevent recursion.
 
-			if ( '' === static::get_meta( $mod_id, $meta_key, $single = true ) ) {
+			if ( '' === static::get_meta( $mod_id, $meta_key, $single = true ) ) {	// Use static method from child.
 
 				$this->get_head_info( $mod_id, $read_cache = true );
 			}
@@ -1359,11 +1364,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			if ( ! empty( $mod_id ) ) {	// Just in case.
 
-				if ( ( $sort_cols = static::get_sortable_columns( $col_key ) ) !== null ) {
+				if ( ( $sort_cols = self::get_sortable_columns( $col_key ) ) !== null ) {
 
 					if ( isset( $sort_cols[ 'meta_key' ] ) ) {	// Just in case.
 
-						static::update_meta( $mod_id, $sort_cols[ 'meta_key' ], $content );
+						static::update_meta( $mod_id, $sort_cols[ 'meta_key' ], $content );	// Use static method from child.
 					}
 				}
 			}
@@ -1371,7 +1376,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		public function add_sortable_columns( $columns ) { 
 
-			foreach ( static::get_sortable_columns() as $col_key => $col_info ) {
+			foreach ( self::get_sortable_columns() as $col_key => $col_info ) {
 
 				if ( ! empty( $col_info[ 'orderby' ] ) ) {
 
@@ -1390,7 +1395,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				$col_key = str_replace( $this->p->lca . '_', '', $col_name );
 
-				if ( ( $col_info = static::get_sortable_columns( $col_key ) ) !== null ) {
+				if ( ( $col_info = self::get_sortable_columns( $col_key ) ) !== null ) {
 
 					foreach ( array( 'meta_key', 'orderby' ) as $set_name ) {
 
@@ -1403,16 +1408,20 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			}
 		}
 
-		public function add_mod_column_headings( $columns, $mod_name = '' ) { 
+		/**
+		 * Called by WpssoPost->add_post_column_headings(), WpssoPost->add_media_column_headings(),
+		 * WpssoTerm->add_term_column_headings(), and WpssoUser->add_user_column_headings().
+		 */
+		protected function add_column_headings( $columns, $list_type = '' ) { 
 
-			if ( ! empty( $mod_name ) ) {
+			if ( ! empty( $list_type ) ) {
 
-				foreach ( static::get_column_headers() as $col_key => $col_header ) {
+				foreach ( self::get_column_headers() as $col_key => $col_header ) {
 
 					/**
-					 * Check if the column is enabled globally for the post, term, or user edit list.
+					 * Check if the column is enabled globally for the post, media, term, or user edit list.
 					 */
-					if ( ! empty( $this->p->options[ 'plugin_' . $col_key . '_col_' . $mod_name] ) ) {
+					if ( ! empty( $this->p->options[ 'plugin_' . $col_key . '_col_' . $list_type ] ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
@@ -1794,7 +1803,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 */
 		public static function get_attached( $mod_id, $attach_type ) {
 
-			$opts = static::get_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $single = true );
+			$opts = static::get_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $single = true );	// Use static method from child.
 
 			if ( isset( $opts[ $attach_type ] ) ) {
 
@@ -1814,7 +1823,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 */
 		public static function add_attached( $mod_id, $attach_type, $attach_id ) {
 
-			$opts = static::get_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $single = true );
+			$opts = static::get_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $single = true );	// Use static method from child.
 
 			if ( ! isset( $opts[ $attach_type ][ $attachment_id ] ) ) {
 
@@ -1825,7 +1834,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				$opts[ $attach_type ][ $attachment_id ] = true;
 
-				return static::update_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $opts );
+				return static::update_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $opts );	// Use static method from child.
 			}
 
 			return false;	// No addition.
@@ -1836,7 +1845,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 */
 		public static function delete_attached( $mod_id, $attach_type, $attach_id ) {
 
-			$opts = static::get_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $single = true );
+			$opts = static::get_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $single = true );	// Use static method from child.
 
 			if ( isset( $opts[ $attach_type ][ $attachment_id ] ) ) {
 
@@ -1844,10 +1853,10 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				if ( empty( $opts ) ) {	// Cleanup.
 
-					return static::delete_meta( $mod_id, WPSSO_META_ATTACHED_NAME );
+					return static::delete_meta( $mod_id, WPSSO_META_ATTACHED_NAME );	// // Use static method from child.
 				}
 
-				return static::update_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $opts );
+				return static::update_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $opts );	// // Use static method from child.
 			}
 
 			return false;	// No delete.

@@ -105,7 +105,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$this->p->debug->log( 'adding column filters for users' );
 				}
 
-				add_filter( 'manage_users_columns', array( $this, 'add_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
+				add_filter( 'manage_users_columns', array( $this, 'add_user_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
 
 				add_filter( 'manage_users_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
 
@@ -484,14 +484,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $post_ids;
 		}
 
-		public function add_column_headings( $columns ) {
+		public function add_user_column_headings( $columns ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			return $this->add_mod_column_headings( $columns, 'user' );
+			return $this->add_column_headings( $columns, $list_type = 'user' );
 		}
 
 		public function get_meta_cache_value( $user_id, $meta_key, $none = '' ) {

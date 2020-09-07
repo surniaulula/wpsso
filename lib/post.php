@@ -589,7 +589,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->mark();
 			}
 
-			return $this->add_mod_column_headings( $columns, 'post' );
+			return $this->add_column_headings( $columns, $list_type = 'post' );
 		}
 
 		public function add_media_column_headings( $columns ) {
@@ -599,7 +599,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->mark();
 			}
 
-			return $this->add_mod_column_headings( $columns, 'media' );
+			return $this->add_column_headings( $columns, $list_type = 'media' );
 		}
 
 		public function show_column_content( $column_name, $post_id ) {
