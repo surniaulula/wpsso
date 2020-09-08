@@ -309,12 +309,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.4.0-dev.1 (TBD)**
+**Version 8.4.0-dev.2 (TBD)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a new "Robots Meta" tab in the Document SSO metabox.
+	* Added a new "Robots Meta" tab in the Document SSO metabox with options for Google Search:
+		* No Archive
+		* No Follow
+		* No Image Index
+		* No Index
+		* No Snippet
+		* No Translate
+		* Max Snippet Length
+		* Max Image Preview
+		* Max Video Preview
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -559,6 +568,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.4.0-dev.2 =
+
+(2020/09/08) Added a new "Robots Meta" tab in the Document SSO metabox with options for Google Search.
 
 = 8.3.1 =
 
