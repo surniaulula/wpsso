@@ -2338,7 +2338,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= __( 'If your theme or another plugin already creates one or more of these HTML tags, you can uncheck them here to prevent duplicates from being added.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'Please note that the <code>%1$s</code> and <code>%2$s</code> SEO HTML tags are unchecked and disabled automatically if a known SEO plugin is detected, and the <code>%3$s</code> HTML tag is unchecked by default (as themes often include this HTML tag in their header templates).', 'wpsso' ), 'meta name description', 'meta name robots', 'link rel canonical' );
+							$text .= sprintf( __( 'Please note that the <code>%1$s</code> and <code>%2$s</code> SEO HTML tags are disabled automatically if a known SEO plugin is detected, and the <code>%3$s</code> HTML tag is unchecked by default (as themes often include this HTML tag in their header templates).', 'wpsso' ), 'meta name description', 'meta name robots', 'link rel canonical' );
 
 							$text .= '</p>';
 

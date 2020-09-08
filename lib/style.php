@@ -356,36 +356,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			';
 
 			/**
-			 * Post publish robots option.
-			 */
-			$custom_style_css .= '
-				#post-' . $lca . '-robots {
-					display:table;
-				}
-				#post-' . $lca . '-robots-label {
-					display:table-cell;
-					padding-left:3px;
-					vertical-align:top;
-				}
-				#post-' . $lca . '-robots-display {
-					display:table-cell;
-					padding-left:3px;
-					vertical-align:top;
-				}
-				#post-' . $lca . '-robots-content {
-					display:block;
-					word-wrap:normal;
-					font-weight:bold;
-				}
-				#post-' . $lca . '-robots-content a {
-					font-weight:normal;
-				}
-				#post-' . $lca . '-robots-select {
-					display:none;
-				}
-			';
-
-			/**
 			 * The Yoast SEO metabox "Schema" tab and its options cannot be disabled, so hide them instead.
 			 */
 			$custom_style_css .= '

@@ -340,7 +340,6 @@ jQuery( document ).ready( function(){
 		public function get_admin_page_script_data() {
 
 			$option_labels = array(
-				'robots'      => _x( 'Robots', 'option label', 'wpsso' ),
 				'schema_type' => _x( 'Schema Type', 'option label', 'wpsso' ),
 			);
 
