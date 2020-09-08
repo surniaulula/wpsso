@@ -1391,10 +1391,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					display:block;
 				}
 				body.wp-admin.is-fullscreen-mode.has-toolbar-notices .block-editor__container {
-					min-height:calc(100vh - 32px);
+					min-height:calc(100vh - 32px);	/* Non-fullscreen default. */
 				}
 				body.wp-admin.is-fullscreen-mode.has-toolbar-notices .interface-interface-skeleton {
-					top:32px;
+					top:32px;	/* Non-fullscreen default. */
 				}
 			';
 
