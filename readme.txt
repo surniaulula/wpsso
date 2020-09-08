@@ -309,7 +309,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.4.0-dev.2 (TBD)**
+**Version 8.4.0-dev.2 (2020/09/08)**
 
 * **New Features**
 	* None.
