@@ -1365,7 +1365,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					$notice_msg .= sprintf( __( 'If another SEO plugin or your theme templates are not adding the <code>%1$s</code> HTML tag to your webpages, you should re-enable this option.', 'wpsso' ), 'meta name robots' ) . ' ';
 
-					$notice_key = $this->menu_id . '-robots-notice-unchecked-no-seo-plugin';
+					$notice_key = 'advanced-robots-notice-unchecked-without-seo-plugin';
 
 					$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
 				}

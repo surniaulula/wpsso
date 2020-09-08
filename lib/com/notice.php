@@ -698,8 +698,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$notice_types = $this->all_types;
 
 			/**
-			 * If toolbar notices are being used, exclude these from being shown. The default toolbar notices array is
-			 * err, warn, and inf.
+			 * If toolbar notices are being used, exclude these from being shown.
+			 *
+			 * The default toolbar notices array is err, warn, and inf.
 			 */
 			if ( ! empty( $this->tb_notices ) && is_array( $this->tb_notices ) ) {
 
@@ -1391,6 +1392,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 				body.wp-admin.is-fullscreen-mode.has-toolbar-notices .block-editor__container {
 					min-height:calc(100vh - 32px);
+				}
+				body.wp-admin.is-fullscreen-mode.has-toolbar-notices .interface-interface-skeleton {
+					top:32px;
 				}
 			';
 
