@@ -324,6 +324,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Max Snippet Length
 		* Max Image Preview
 		* Max Video Preview
+	* Removed the "Robots" options from the classic editor Publish metabox.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
