@@ -1355,6 +1355,23 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
+		protected function maybe_show_robots_notice() {
+
+			if ( empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
+
+				if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
+
+					$notice_msg = sprintf( __( 'Please note that the <code>%1$s</code> HTML tag is unchecked and a known SEO plugin has not been detected.', 'wpsso' ), 'meta name robots' ) . ' ';
+
+					$notice_msg .= sprintf( __( 'If another SEO plugin or your theme templates are not adding the <code>%1$s</code> HTML tag to your webpages, you should re-enable this option.', 'wpsso' ), 'meta name robots' ) . ' ';
+
+					$notice_key = $this->menu_id . '-robots-notice-unchecked-no-seo-plugin';
+
+					$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
+				}
+			}
+		}
+
 		public function show_setting_page() {
 
 			if ( ! $this->is_settings() ) {	// Default check is for $this->menu_id.

@@ -34,6 +34,8 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 		 */
 		protected function add_meta_boxes() {
 
+			$this->maybe_show_robots_notice();
+
 			/**
 			 * Advanced Settings metabox.
 			 */
