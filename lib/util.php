@@ -3697,35 +3697,68 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/**
 		 * See https://developers.google.com/search/reference/robots_meta_tag.
 		 */
-		public function get_robots_content( array $mod ) {
+		public function get_robots_content( array $mod = array() ) {
+
+			$inverse_directives = array(
+				'nofollow'     => array( 'follow' ),				// Do not follow links on this webpage.
+				'noimageindex' => array( 'max-image-preview' ),			// Do not index images on this webpage.
+				'noindex'      => array( 'index' ),				// Do not show this webpage in search results.
+				'nosnippet'    => array( 'max-snippet', 'max-video-preview' ),	// Do not show a text snippet or video preview in search results.
+			);
 
 			$directives = self::get_robots_default_directives();
 
+			/**
+			 * Maybe get custom directive values for this webpage.
+			 */
 			if ( $mod[ 'id' ] && is_object( $mod[ 'obj' ] ) ) {
 
-				foreach ( array(
-					'noarchive'    => array(),
-					'nofollow'     => array( 'follow' => true ),
-					'noimageindex' => array( 'max-image-preview' => 'large' ),
-					'noindex'      => array( 'index' => true ),
-					'nosnippet'    => array( 'max-snippet' => -1, 'max-video-preview' => -1 ),
-					'notranslate'  => array(),
-				) as $directive => $inverse ) {
+				$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
 
-					$meta_key = '_' . $this->p->lca . '_' . $directive;
+				foreach ( $directives as $directive_key => $directive_value ) {
 
-					/**
-					 * Returns '0', '1', or empty string.
-					 */
-					$meta_value = $mod[ 'obj' ]->get_meta_cache_value( $mod[ 'id' ], $meta_key );	// Always returns a string.
+					$opt_key = SucomUtil::sanitize_hookname( 'robots_' . $directive_key );
 
-					if ( '' !== $meta_value ) {
+					if ( isset( $md_opts[ $opt_key ] ) ) {
 
-						$directives[ $directive ] = $meta_value ? true : false;
+						if ( is_bool( $directive_value ) ) {	// Default is a boolean value, so set as boolean.
 
-						foreach ( $inverse as $inverse_directive => $inverse_value ) {
+							$directives[ $directive_key ] = $md_opts[ $opt_key ] ? true : false;	// Force boolean.
 
-							$directives[ $inverse_directive ] = $meta_value ? false : $inverse_value;
+							/**
+							 * Check for inverse directive boolean values.
+							 */
+							if ( isset( $inverse_directives[ $directive_key ] ) ) {
+
+								foreach ( $inverse_directives[ $directive_key ] as $inverse_key ) {
+
+									if ( isset( $directives[ $inverse_key ] ) && is_bool( $directives[ $inverse_key ] ) ) {
+
+										$directives[ $inverse_key ] = $md_opts[ $opt_key ] ? false : true;	// Inverse boolean.
+									}
+								}
+							}
+
+						} else {
+
+							$directives[ $directive_key ] = $md_opts[ $opt_key ];
+						}
+					}
+				}
+			}
+
+			/**
+			 * Sanity check - make sure inverse directives are unset.
+			 */
+			foreach ( $inverse_directives as $directive_key => $inverse_keys ) {
+
+				if ( ! empty( $directives[ $directive_key ] ) ) {	// $directive_key is true.
+
+					foreach ( $inverse_keys as $inverse_key ) {	// Unset each inverse directive.
+
+						if ( isset( $directives[ $inverse_key ] ) ) {	// Just in case.
+							
+							unset( $directives[ $inverse_key ] );
 						}
 					}
 				}
@@ -3733,19 +3766,19 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$content = '';
 
-			foreach ( $directives as $directive => $val ) {
+			foreach ( $directives as $directive_key => $directive_value ) {
 
-				if ( false === $val ) {
+				if ( false === $directive_value ) {		// Nothing to do.
 
 					continue;
 
-				} elseif ( true === $val ) {
+				} elseif ( true === $directive_value ) {	// Add the directive.
 
-					$content .= $directive . ', ';	// Noindex, nofollow, etc.
+					$content .= $directive_key . ', ';	// index, follow, etc.
 
-				} else {
+				} else {					// Add the directive and its value.
 
-					$content .= $directive . ':' . $val . ', ';	// Max-image-preview, max-video-preview, etc.
+					$content .= $directive_key . ':' . $directive_value . ', ';
 				}
 			}
 

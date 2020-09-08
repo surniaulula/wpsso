@@ -236,28 +236,16 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			static $local_cache = array();
 
-			$class = get_called_class();
+			if ( ! isset( $local_cache[ $mod_id ] ) ) {
 
-			if ( __CLASS__ === $class ) {	// Just in case.
-
-				return self::must_be_extended( $ret_val = array() );
-			}
-
-			$cache_id = 'id:' . $mod_id;
-
-			/**
-			 * Maybe initialize the cache.
-			 */
-			if ( ! isset( $local_cache[ $cache_id ] ) ) {
-
-				$local_cache[ $cache_id ] = array();
+				$local_cache[ $mod_id ] = array();
 
 			} elseif ( $this->md_cache_disabled ) {
 
-				$local_cache[ $cache_id ] = array();
+				$local_cache[ $mod_id ] = array();
 			}
 
-			$md_defs =& $local_cache[ $cache_id ];	// Shortcut variable name.
+			$md_defs =& $local_cache[ $mod_id ];	// Shortcut variable name.
 
 			if ( ! WpssoOptions::can_cache() || empty( $md_defs[ 'options_filtered' ] ) ) {
 
@@ -365,29 +353,39 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'gv_id_img'   => 0,	// Post Image Field ID
 				);
 
+				/**
+				 * See https://developers.google.com/search/reference/robots_meta_tag.
+				 */
 				$default_directives = SucomUtil::get_robots_default_directives();
 
-				foreach ( array(
-					'noarchive'         => false,
-					'nofollow'          => false,
-					'noimageindex'      => false,
-					'noindex'           => false,
-					'nosnippet'         => false,
-					'notranslate'       => false,
-					'max-image-preview' => 'large',	// Max size for image preview.
-					'max-snippet'       => -1,	// Max characters for textual snippet (-1 = no limit).
-					'max-video-preview' => -1,	// Max seconds for video snippet (-1 = no limit).
-				) as $directive => $def_val ) {
+				foreach ( $default_directives as $directive => $value ) {
 
 					$opt_key = SucomUtil::sanitize_hookname( 'robots_' . $directive );
 
-					if ( is_bool( $def_val ) ) {
+					/**
+					 * Save as a checkbox:
+					 *
+					 *	'robots_noarchive'
+					 *	'robots_nofollow'
+					 *	'robots_noimageindex'
+					 *	'robots_noindex'
+					 *	'robots_nosnippet'
+					 *	'robots_notranslate'
+					 */
+					if ( 0 === strpos( $directive, 'no' ) && is_bool( $value ) ) {
 
-						$md_defs[ $opt_key ] = $def_val ? 1 : 0;
+						$md_defs[ $opt_key ] = $value ? 1 : 0;
 
-					} else {
+					/**
+					 * Save the directive value:
+					 *
+					 *	'robots_max_snippet'
+					 *	'robots_max_image_preview'
+					 *	'robots_max_video_preview'
+					 */
+					} elseif ( 0 === strpos( $directive, 'max' ) ) {
 
-						$md_defs[ $opt_key ] = $def_val;
+						$md_defs[ $opt_key ] = $value;
 					}
 				}
 
@@ -485,7 +483,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				/**
 				 * Import and delete deprecated robots post metadata.
 				 */
-				if ( $prev_version > 0 && $prev_version <= 756 ) {
+				if ( $prev_version > 0 && $prev_version <= 759 ) {
 
 					foreach ( array(
 						'noarchive',
@@ -494,7 +492,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 						'noindex',
 						'nosnippet',
 						'notranslate',
-					) as $directive => $def_val ) {
+					) as $directive ) {
 	
 						$opt_key = SucomUtil::sanitize_hookname( 'robots_' . $directive );
 
@@ -680,20 +678,20 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				case $this->p->cf[ 'meta' ][ 'id' ]:	// 'sso' metabox ID.
 
-					if ( $mod[ 'is_public' ] ) {	// Since WPSSO Core v7.0.0.
+					$tabs[ 'edit' ]  = _x( 'Customize', 'metabox tab', 'wpsso' );
+					$tabs[ 'media' ] = _x( 'Priority Media', 'metabox tab', 'wpsso' );
 
-						$tabs[ 'edit' ]     = _x( 'Customize', 'metabox tab', 'wpsso' );
-						$tabs[ 'media' ]    = _x( 'Priority Media', 'metabox tab', 'wpsso' );
-						$tabs[ 'robots' ]   = _x( 'Robots Meta', 'metabox tab', 'wpsso' );	// Since WPSSO Core v8.4.0.
+					if ( $mod[ 'is_public' ] ) {	// Since WPSSO Core v7.0.0.
+				
+						if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
+
+							$tabs[ 'robots' ] = _x( 'Robots Meta', 'metabox tab', 'wpsso' );	// Since WPSSO Core v8.4.0.
+						}
+
 						$tabs[ 'preview' ]  = _x( 'Preview', 'metabox tab', 'wpsso' );
 						$tabs[ 'oembed' ]   = _x( 'oEmbed', 'metabox tab', 'wpsso' );
 						$tabs[ 'head' ]     = _x( 'Head Markup', 'metabox tab', 'wpsso' );
 						$tabs[ 'validate' ] = _x( 'Validate', 'metabox tab', 'wpsso' );
-
-					} else {
-
-						$tabs[ 'edit' ]     = _x( 'Customize', 'metabox tab', 'wpsso' );
-						$tabs[ 'media' ]    = _x( 'Priority Media', 'metabox tab', 'wpsso' );
 					}
 
 					break;
@@ -746,13 +744,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			static $local_cache = array();
 
-			$class = get_called_class();
+			if ( isset( $local_cache[ $mod_id ] ) ) {
 
-			$cache_id = 'mod_id:' . $mod_id;
-
-			if ( isset( $local_cache[ $cache_id ] ) ) {
-
-				return $local_cache[ $cache_id ];
+				return $local_cache[ $mod_id ];
 			}
 
 			$mod = $this->get_mod( $mod_id );
@@ -761,7 +755,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			$local_head_info = $this->p->head->extract_head_info( $mod, $local_head_tags );
 
-			return $local_cache[ $cache_id ] = $local_head_info;
+			return $local_cache[ $mod_id ] = $local_head_info;
 		}
 
 		/**
@@ -1494,7 +1488,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			}
 
 			$size_names = $this->p->util->get_image_size_names( $size_names );	// Always returns an array.
-			$md_pre     = is_array( $md_pre ) ? array_merge( $md_pre, array( 'og' ) ) : array( $md_pre, 'og' );
+
+			$md_pre = is_array( $md_pre ) ? array_merge( $md_pre, array( 'og' ) ) : array( $md_pre, 'og' );
+
 			$mt_images  = array();
 
 			foreach( array_unique( $md_pre ) as $opt_pre ) {
@@ -1655,8 +1651,10 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				return array();
 			}
 
-			$mod       = $this->get_mod( $mod_id );	// Required for get_content_videos().
-			$md_pre    = is_array( $md_pre ) ? array_merge( $md_pre, array( 'og' ) ) : array( $md_pre, 'og' );
+			$mod = $this->get_mod( $mod_id );	// Required for get_content_videos().
+
+			$md_pre = is_array( $md_pre ) ? array_merge( $md_pre, array( 'og' ) ) : array( $md_pre, 'og' );
+
 			$mt_videos = array();
 
 			foreach( array_unique( $md_pre ) as $opt_pre ) {

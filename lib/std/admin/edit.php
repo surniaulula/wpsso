@@ -77,7 +77,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Brand', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_brand',
-					'content'  => $form->get_no_input( 'product_brand', $css_class = '', $css_id = '', $placeholder = true ),
+					'content'  => $form->get_no_input( 'product_brand', $css_class = '', $css_id = '', $holder = true ),
 				),
 				'og_product_price' => array(		// Open Graph meta tags product:price:amount and product:price:currency.
 					'tr_class' => 'hide_og_type hide_og_type_product',
@@ -85,7 +85,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Price', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_price',
-					'content'  => $form->get_no_input( 'product_price', $css_class = 'price', $css_id = '', $placeholder = true ) . ' ' .
+					'content'  => $form->get_no_input( 'product_price', $css_class = 'price', $css_id = '', $holder = true ) . ' ' .
 						$form->get_no_select( 'product_currency', $currencies, $css_class = 'currency' ),
 				),
 				'og_product_avail' => array(		// Open Graph meta tag product:availability.
@@ -112,7 +112,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Material', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_material',
-					'content'  => $form->get_no_input( 'product_material', $css_class = '', $css_id = '', $placeholder = true ),
+					'content'  => $form->get_no_input( 'product_material', $css_class = '', $css_id = '', $holder = true ),
 				),
 				'og_product_color' => array(		// Open Graph meta tag product:color.
 					'tr_class' => 'hide_og_type hide_og_type_product',
@@ -120,7 +120,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Color', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_color',
-					'content'  => $form->get_no_input( 'product_color', $css_class = '', $css_id = '', $placeholder = true ),
+					'content'  => $form->get_no_input( 'product_color', $css_class = '', $css_id = '', $holder = true ),
 				),
 				'og_product_target_gender' => array(	// Open Graph meta tag product:target_gender.
 					'tr_class' => 'hide_og_type hide_og_type_product',
@@ -137,7 +137,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Size', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_size',
-					'content'  => $form->get_no_input( 'product_size', $css_class = '', $css_id = '', $placeholder = true ),
+					'content'  => $form->get_no_input( 'product_size', $css_class = '', $css_id = '', $holder = true ),
 				),
 				'og_product_weight_value' => array(	// Open Graph meta tag product:weight:value.
 					'tr_class' => 'hide_og_type hide_og_type_product',
@@ -145,7 +145,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Weight', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_weight_value',
-					'content'  => $form->get_no_input( 'product_weight_value', $css_class = '', $css_id = '', $placeholder = true ) .
+					'content'  => $form->get_no_input( 'product_weight_value', $css_class = '', $css_id = '', $holder = true ) .
 						WpssoAdmin::get_option_unit_comment( 'product_weight_value' ),
 				),
 				'og_product_retailer_part_no' => array(	// Open Graph meta tag product:retailer_part_no.
@@ -154,7 +154,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product SKU', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_retailer_part_no',
-					'content'  => $form->get_no_input( 'product_retailer_part_no', $css_class = '', $css_id = '', $placeholder = true ),
+					'content'  => $form->get_no_input( 'product_retailer_part_no', $css_class = '', $css_id = '', $holder = true ),
 				),
 				'og_product_mfr_part_no' => array(	// Open Graph meta tag product:mfr_part_no.
 					'tr_class' => 'hide_og_type hide_og_type_product',
@@ -162,7 +162,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product MPN', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_mfr_part_no',
-					'content'  => $form->get_no_input( 'product_mfr_part_no', $css_class = '', $css_id = '', $placeholder = true ),
+					'content'  => $form->get_no_input( 'product_mfr_part_no', $css_class = '', $css_id = '', $holder = true ),
 				),
 				'og_product_isbn' => array(		// Open Graph meta tag product:isbn.
 					'tr_class' => 'hide_og_type hide_og_type_product',
@@ -170,7 +170,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product ISBN', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_isbn',
-					'content'  => $form->get_no_input( 'product_isbn', $css_class = '', $css_id = '', $placeholder = true ),
+					'content'  => $form->get_no_input( 'product_isbn', $css_class = '', $css_id = '', $holder = true ),
 				),
 
 				/**

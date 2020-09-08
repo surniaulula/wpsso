@@ -2149,8 +2149,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				} else {
 
 					if ( isset( $md_opts[ 'schema_type' ] ) ) {
+
 						$type_id = $md_opts[ 'schema_type' ];
+
 					} else {
+
 						$type_id = $this->p->schema->get_mod_schema_type( $mod, $get_id = true, $use_mod_opts = false );
 					}
 

@@ -6,6 +6,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
@@ -18,6 +19,7 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -98,6 +100,7 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 			 * Don't include the 'cache_status' metabox if we're using an external object cache.
 			 */
 			if ( ! $external_cache ) {
+
 				$metabox_ids[ 'cache_status' ] = _x( 'Cache Status', 'metabox title', 'wpsso' );
 			}
 

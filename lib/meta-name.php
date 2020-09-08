@@ -37,10 +37,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 
 			if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
 
-				if ( ! get_option( 'blog_public' ) ) {
-
-					remove_action( 'wp_head', 'noindex', 1 );
-				}
+				remove_action( 'wp_head', 'noindex', 1 );
 			}
 		}
 

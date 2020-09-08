@@ -37,7 +37,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			$this->doing_dev = SucomUtil::get_const( 'WPSSO_DEV' );
 			$this->use_cache = $this->doing_dev ? false : true;	// Read/save minimized CSS from/to transient cache.
 			$this->file_ext  = $this->doing_dev ? 'css' : 'min.css';
-			$this->version   = WpssoConfig::get_version();
+			$this->version   = WpssoConfig::get_version() . ( $this->doing_dev ? gmdate( '-ymd-His' ) : '' );
 
 			if ( is_admin() ) {
 

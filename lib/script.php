@@ -36,7 +36,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 			$this->doing_dev = SucomUtil::get_const( 'WPSSO_DEV' );
 			$this->file_ext  = $this->doing_dev ? 'js' : 'min.js';
-			$this->version   = WpssoConfig::get_version();
+			$this->version   = WpssoConfig::get_version() . ( $this->doing_dev ? gmdate( '-ymd-His' ) : '' );
 
 			if ( ! SucomUtil::get_const( 'DOING_AJAX' ) ) {
 

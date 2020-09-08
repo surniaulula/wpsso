@@ -4247,51 +4247,43 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_robots_default_directives() {
 
-			if ( isset( $_GET[ 'replytocom' ] ) ) {
-
-				$directives = array(
-					'follow'    => true,	// Allow follow.
-					'noarchive' => true,
-					'noindex'   => true,
-					'nosnippet' => true,
-				);
-
-			/**
-			 * The site is not public, so discourage robots from indexing the site.
-			 */
-			} elseif ( ! get_option( 'blog_public' ) ) {
-
-				$directives = array(
-					'noarchive' => true,
-					'nofollow'  => true,
-					'noindex'   => true,
-					'nosnippet' => true,
-				);
+			$directives = array(
+				'follow'            => true,	// Follow by default.
+				'index'             => true,	// Index by default.
+				'noarchive'         => false,
+				'nofollow'          => false,
+				'noimageindex'      => false,
+				'noindex'           => false,
+				'nosnippet'         => false,
+				'notranslate'       => false,
+				'max-snippet'       => -1,	// Max characters for textual snippet (-1 = no limit).
+				'max-image-preview' => 'large',	// Max size for image preview.
+				'max-video-preview' => -1,	// Max seconds for video snippet (-1 = no limit).
+			);
 
 			/**
-			 * The current webpage should not be indexed, but allow robots to follow links.
+			 * If the site is not public, discourage robots from indexing the site.
 			 */
-			} elseif ( is_404() || is_search() ) {
+			if ( ! get_option( 'blog_public' ) ) {
 
-				$directives = array(
-					'follow'    => true,	// Allow follow.
-					'noarchive' => true,
-					'noindex'   => true,
-					'nosnippet' => true,
-				);
+				$directives[ 'follow' ]       = false;	// No follow.
+				$directives[ 'index' ]        = false;	// No index.
+				$directives[ 'noarchive' ]    = true;
+				$directives[ 'nofollow' ]     = true;
+				$directives[ 'noimageindex' ] = true;
+				$directives[ 'noindex' ]      = true;
+				$directives[ 'nosnippet' ]    = true;
+				$directives[ 'notranslate' ]  = true;
 
 			/**
-			 * Default robots.
+			 * The webpage should not be indexed, but allow robots to follow links.
 			 */
-			} else {
+			} elseif ( isset( $_GET[ 'replytocom' ] ) || is_404() || is_search() ) {
 
-				$directives = array(
-					'follow'            => true,	// Allow follow.
-					'index'             => true,	// Allow index.
-					'max-image-preview' => 'large',	// Max size for image preview.
-					'max-snippet'       => -1,	// Max characters for textual snippet (-1 = no limit).
-					'max-video-preview' => -1,	// Max seconds for video snippet (-1 = no limit).
-				);
+				$directives[ 'index' ]     = false;	// No index.
+				$directives[ 'noarchive' ] = true;
+				$directives[ 'noindex' ]   = true;
+				$directives[ 'nosnippet' ] = true;
 			}
 
 			return apply_filters( 'sucom_robots_default_directives', $directives );

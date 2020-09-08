@@ -392,6 +392,64 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
+						case 'tooltip-meta-robots_noarchive':
+
+							$text = __( 'Do not show a cached link in search results.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-robots_nofollow':
+
+							$text = __( 'Do not follow links on this webpage.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-robots_noimageindex':
+
+							$text = __( 'Do not index images on this webpage.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-robots_noindex':
+
+							$text = __( 'Do not show this webpage in search results.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-robots_nosnippet':
+
+							$text = __( 'Do not show a text snippet or video preview in search results.', 'wpsso' ) . ' ';
+							
+							$text .= __( 'Google may still show a static image thumbnail (if available) when it determines that using an images results in a better user-experience.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-robots_notranslate':
+
+							$text = __( 'Do not offer translation of this webpage in search results.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-robots_max_snippet':
+
+							$text = __( 'Use a maximum of number characters as a textual snippet for this webpage in search result.', 'wpsso' ) . ' ';
+
+							$text .= __( 'This does not affect image or video previews, nor does it apply to text in the Schema markup of this webpage.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-robots_max_image_preview':
+
+							$text = __( '.', 'wpsso' ) . ' ';
+
+						 	break;
+
+						case 'tooltip-meta-robots_max_video_preview':
+
+							$text = __( '.', 'wpsso' ) . ' ';
+
+						 	break;
+
 						default:
 
 							$text = apply_filters( $lca . '_messages_tooltip_meta', $text, $msg_key, $info );
@@ -1987,13 +2045,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	$text = '<p class="status-msg">';
 
-							$text .= sprintf( __( 'The example image container uses the minimum recommended Facebook image dimensions of %s.', 'wpsso' ), $fb_img_dims );
+							$text .= sprintf( __( 'The example image container uses the minimum recommended Facebook image dimensions of %s.', 'wpsso' ), $fb_img_dims ) . ' ';
 
-						 	$text .= '</p> <p class="status-msg">';
+							$text .= sprintf( __( 'You can edit images in the <a href="%s">WordPress Media Library</a> to select a preferred cropping area (ie. top or bottom), along with optimizing the image social and SEO texts.', 'wpsso' ), $upload_url );
 
-							$text .= sprintf( __( 'Edit images in the <a href="%s">WordPress Media Library</a> to select a preferred cropping area (ie. top/bottom) and optimize the image SEO text.', 'wpsso' ), $upload_url );
-
-							$text .= '</p>';
+							$text .= '</p>' . "\n";
 
 						 	break;
 
@@ -2083,13 +2139,29 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<p>';
 
-							$text .= sprintf( __( 'Edit images in the <a href="%s">WordPress Media Library</a> to select a preferred cropping area (ie. top/bottom) and optimize the image SEO text.', 'wpsso' ), $upload_url );
+							$text .= sprintf( __( 'You can edit images in the <a href="%s">WordPress Media Library</a> to select a preferred cropping area (ie. top or bottom), along with optimizing the image social and SEO texts.', 'wpsso' ), $upload_url );
+
+							$text .= '</p>' . "\n";
+
+							$text .= '</blockquote>';
+
+							break;
+
+						case 'info-robots-meta':
+
+							$text = '<blockquote class="top-info">';
+
+							$text .= '<p>';
+
+							$text .= __( 'The robots meta tag lets you utilize a granular, page-specific approach to controlling how an individual page should be indexed and served to users in Google Search results.', 'wpsso' ) . ' ';
+
+							$text .= __( 'The following directives can be used to control indexing and serving of a snippet with the robots meta tag.', 'wpsso' );
 
 							$text .= '</p>';
 
 							$text .= '</blockquote>';
 
-							break;
+						 	break;
 
 						case 'info-plugin-tid':		// Shown in the Licenses settings page.
 

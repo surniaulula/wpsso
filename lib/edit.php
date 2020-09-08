@@ -234,8 +234,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Book ISBN', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-book_isbn',
-					'content'  => $form->get_input( 'book_isbn', $css_class = '', $css_id = '',
-						array( 'min' => 10, 'max' => 13 ), $placeholder = true ),
+					'content'  => $form->get_input( 'book_isbn', $css_class = '', $css_id = '', array( 'min' => 10, 'max' => 13 ) ),
 				),
 			);
 
@@ -313,6 +312,9 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
 		}
 
+		/**
+		 * See https://developers.google.com/search/reference/robots_meta_tag.
+		 */
 		public function filter_metabox_sso_robots_rows( $table_rows, $form, $head_info, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -320,17 +322,62 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$default_directives = SucomUtil::get_robots_default_directives();
+			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-robots-meta' ) . '</td>';
 
-			foreach ( array(
-				'noarchive'    => _x( 'No archive', 'option label', 'wpsso' ),
-				'nofollow'     => _x( 'No follow', 'option label', 'wpsso' ),
-				'noimageindex' => _x( 'No image index', 'option label', 'wpsso' ),
-				'noindex'      => _x( 'No index', 'option label', 'wpsso' ),
-				'nosnippet'    => _x( 'No snippet', 'option label', 'wpsso' ),
-				'notranslate'  => _x( 'No translate', 'option label', 'wpsso' ),
-			) as $directive => $directive_label ) {
-			}
+			$table_rows[ 'robots_noarchive' ] = '' .
+				$form->get_th_html( _x( 'No Archive', 'option label', 'wpsso' ),
+					$css_class = 'medium', $css_id = 'meta-robots_noarchive' ) . 
+				'<td>' . $form->get_checkbox( 'robots_noarchive' ) . ' ' .
+				_x( 'do not show a cached link in search results', 'option comment', 'wpsso' ) . '</td>';
+
+			$table_rows[ 'robots_nofollow' ] = '' .
+				$form->get_th_html( _x( 'No Follow', 'option label', 'wpsso' ),
+					$css_class = 'medium', $css_id = 'meta-robots_nofollow' ) . 
+				'<td>' . $form->get_checkbox( 'robots_nofollow' ) . ' ' .
+				_x( 'do not follow links on this webpage', 'option comment', 'wpsso' ) . '</td>';
+
+			$table_rows[ 'robots_noimageindex' ] = '' .
+				$form->get_th_html( _x( 'No Image Index', 'option label', 'wpsso' ),
+					$css_class = 'medium', $css_id = 'meta-robots_noimageindex' ) . 
+				'<td>' . $form->get_checkbox( 'robots_noimageindex' ) . ' ' .
+				_x( 'do not index images on this webpage', 'option comment', 'wpsso' ) . '</td>';
+
+			$table_rows[ 'robots_noindex' ] = '' .
+				$form->get_th_html( _x( 'No Index', 'option label', 'wpsso' ),
+					$css_class = 'medium', $css_id = 'meta-robots_noindex' ) . 
+				'<td>' . $form->get_checkbox( 'robots_noindex' ) . ' ' .
+				_x( 'do not show this webpage in search results', 'option comment', 'wpsso' ) . '</td>';
+
+			$table_rows[ 'robots_nosnippet' ] = '' .
+				$form->get_th_html( _x( 'No Snippet', 'option label', 'wpsso' ),
+					$css_class = 'medium', $css_id = 'meta-robots_nosnippet' ) . 
+				'<td>' . $form->get_checkbox( 'robots_nosnippet' ) . ' ' .
+				_x( 'do not show a text snippet or video preview in search results', 'option comment', 'wpsso' ) . '</td>';
+
+			$table_rows[ 'robots_notranslate' ] = '' .
+				$form->get_th_html( _x( 'No Translate', 'option label', 'wpsso' ),
+					$css_class = 'medium', $css_id = 'meta-robots_notranslate' ) . 
+				'<td>' . $form->get_checkbox( 'robots_notranslate' ) . ' ' .
+				_x( 'do not offer translation of this webpage in search results', 'option comment', 'wpsso' ) . '</td>';
+
+			$table_rows[ 'robots_max_snippet' ] = '' .
+				$form->get_th_html( _x( 'Max Snippet Length', 'option label', 'wpsso' ),
+					$css_class = 'medium', $css_id = 'meta-robots_max_snippet' ) . 
+				'<td>' . $form->get_input( 'robots_max_snippet', $css_class = 'chars', $css_id = '', $len = 0, $holder = true ) . ' ' .
+				_x( 'characters or less', 'option comment', 'wpsso' ) . ' (' .
+				_x( '-1 is no limit', 'option comment', 'wpsso' ) . ')</td>';
+
+			$table_rows[ 'robots_max_image_preview' ] = '' .
+				$form->get_th_html( _x( 'Max Image Preview', 'option label', 'wpsso' ),
+					$css_class = 'medium', $css_id = 'meta-robots_max_image_preview' ) . 
+				'<td>' . $form->get_select( 'robots_max_image_preview', $this->p->cf[ 'form' ][ 'robots_max_image_preview' ] ) . '</td>';
+
+			$table_rows[ 'robots_max_video_preview' ] = '' .
+				$form->get_th_html( _x( 'Max Video Preview', 'option label', 'wpsso' ),
+					$css_class = 'medium', $css_id = 'meta-robots_max_video_preview' ) . 
+				'<td>' . $form->get_input( 'robots_max_video_preview', $css_class = 'chars', $css_id = '', $len = 0, $holder = true ) .
+				_x( 'seconds', 'option comment', 'wpsso' ) . ' (' .
+				_x( '-1 is no limit', 'option comment', 'wpsso' ) . ')</td>';
 
 			return $table_rows;
 		}
@@ -345,6 +392,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			$og_prev_width    = 600;
 			$og_prev_height   = 315;
 			$og_prev_img_html = '';
+
 			$image_url        = SucomUtil::get_first_mt_media_url( $head_info );
 			$sharing_url      = $this->p->util->get_sharing_url( $mod, $add_page = false );
 			$canonical_url    = $this->p->util->get_canonical_url( $mod, $add_page = false );
@@ -405,45 +453,44 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			}
 
 			$table_rows[] = '' . 
-			$form->get_th_html( _x( 'Sharing URL', 'option label', 'wpsso' ), 'medium' ) . 
-			'<td>' . SucomForm::get_no_input_clipboard( $sharing_url ) . '</td>';
+				$form->get_th_html( _x( 'Sharing URL', 'option label', 'wpsso' ), $css_class = 'medium' ) . 
+				'<td>' . SucomForm::get_no_input_clipboard( $sharing_url ) . '</td>';
 
 			$table_rows[] = ( $sharing_url === $canonical_url ? '<tr class="hide_in_basic">' : '' ) . 
-			$form->get_th_html( _x( 'Canonical URL', 'option label', 'wpsso' ), 'medium' ) . 
-			'<td>' . SucomForm::get_no_input_clipboard( $canonical_url ) . '</td>';
+				$form->get_th_html( _x( 'Canonical URL', 'option label', 'wpsso' ), $css_class = 'medium' ) . 
+				'<td>' . SucomForm::get_no_input_clipboard( $canonical_url ) . '</td>';
 
-			$table_rows[] = ( empty( $this->p->options[ 'plugin_shortener' ] ) || 
-				$this->p->options[ 'plugin_shortener' ] === 'none' ||
-					$sharing_url === $shortlink_url ? '<tr class="hide_in_basic">' : '' ) . 
-			$form->get_th_html( _x( 'Shortlink URL', 'option label', 'wpsso' ), 'medium' ) . 
-			'<td>' . SucomForm::get_no_input_clipboard( $shortlink_url ) . '</td>';
+			$table_rows[] = ( empty( $this->p->options[ 'plugin_shortener' ] ) || $this->p->options[ 'plugin_shortener' ] === 'none' ||
+				$sharing_url === $shortlink_url ? '<tr class="hide_in_basic">' : '' ) . 
+				$form->get_th_html( _x( 'Shortlink URL', 'option label', 'wpsso' ), $css_class = 'medium' ) . 
+				'<td>' . SucomForm::get_no_input_clipboard( $shortlink_url ) . '</td>';
 
 			$table_rows[ 'subsection_og_example' ] = '<td colspan="2" class="subsection"><h4>' . 
 				_x( 'Facebook / Open Graph Example', 'option label', 'wpsso' ) . '</h4></td>';
 
 			$table_rows[] = '' .
-			'<td colspan="2" class="preview_container">
-				<div class="preview_box_border">
-					<div class="preview_box">
-						' . $og_prev_img_html . '
-						<div class="preview_txt">
-							<div class="preview_title">' . ( empty( $head_info[ 'og:title' ] ) ?
-								_x( 'No Title', 'default title', 'wpsso' ) : $head_info[ 'og:title' ] ) . 
-							'</div><!-- .preview_title -->
-							<div class="preview_desc">' . ( empty( $head_info[ 'og:description' ] ) ?
-								_x( 'No Description.', 'default description', 'wpsso' ) : $head_info[ 'og:description' ] ) . 
-							'</div><!-- .preview_desc -->
-							<div class="preview_by">' . 
-								$_SERVER[ 'SERVER_NAME' ] . 
-								( empty( $this->p->options[ 'add_meta_property_article:author' ] ) ||
-									empty( $head_info[ 'article:author:name' ] ) ?
-										'' : ' | By ' . $head_info[ 'article:author:name' ] ) . 
-							'</div><!-- .preview_by -->
-						</div><!-- .preview_txt -->
-					</div><!-- .preview_box -->
-				</div><!-- .preview_box_border -->
-			</td><!-- .preview_container -->';
-
+				'<td colspan="2" class="preview_container">
+					<div class="preview_box_border">
+						<div class="preview_box">
+							' . $og_prev_img_html . '
+							<div class="preview_txt">
+								<div class="preview_title">' . ( empty( $head_info[ 'og:title' ] ) ?
+									_x( 'No Title', 'default title', 'wpsso' ) : $head_info[ 'og:title' ] ) . 
+								'</div><!-- .preview_title -->
+								<div class="preview_desc">' . ( empty( $head_info[ 'og:description' ] ) ?
+									_x( 'No Description.', 'default description', 'wpsso' ) : $head_info[ 'og:description' ] ) . 
+								'</div><!-- .preview_desc -->
+								<div class="preview_by">' . 
+									$_SERVER[ 'SERVER_NAME' ] . 
+									( empty( $this->p->options[ 'add_meta_property_article:author' ] ) ||
+										empty( $head_info[ 'article:author:name' ] ) ?
+											'' : ' | By ' . $head_info[ 'article:author:name' ] ) . 
+								'</div><!-- .preview_by -->
+							</div><!-- .preview_txt -->
+						</div><!-- .preview_box -->
+					</div><!-- .preview_box_border -->
+				</td><!-- .preview_container -->';
+	
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-meta-social-preview' ) . '</td>';
 
 			return $table_rows;
@@ -464,11 +511,11 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			$xml_url     = $this->p->util->get_oembed_url( $mod, 'xml' );
 			$oembed_data = $this->p->util->get_oembed_data( $mod, $oembed_width );
 
-			$table_rows[] = $form->get_th_html( _x( 'oEmbed JSON URL', 'option label', 'wpsso' ), 'medium nowrap' ) . 
-			'<td>' . SucomForm::get_no_input_clipboard( $json_url ) . '</td>';
+			$table_rows[] = $form->get_th_html( _x( 'oEmbed JSON URL', 'option label', 'wpsso' ), $css_class = 'medium nowrap' ) . 
+				'<td>' . SucomForm::get_no_input_clipboard( $json_url ) . '</td>';
 
-			$table_rows[] = $form->get_th_html( _x( 'oEmbed XML URL', 'option label', 'wpsso' ), 'medium nowrap' ) . 
-			'<td>' . SucomForm::get_no_input_clipboard( $xml_url ) . '</td>';
+			$table_rows[] = $form->get_th_html( _x( 'oEmbed XML URL', 'option label', 'wpsso' ), $css_class = 'medium nowrap' ) . 
+				'<td>' . SucomForm::get_no_input_clipboard( $xml_url ) . '</td>';
 
 			$table_rows[ 'subsection_oembed_data' ] = '<td colspan="2" class="subsection"><h4>' . 
 				_x( 'oEmbed Data', 'option label', 'wpsso' ) . '</h4></td>';
@@ -692,7 +739,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 				if ( ! empty( $b[ 'title' ] ) ) {
 
-					$table_rows[ 'validate_' . $key ] = $form->get_th_html( $b[ 'title' ], 'medium' );
+					$table_rows[ 'validate_' . $key ] = $form->get_th_html( $b[ 'title' ], $css_class = 'medium' );
 
 					$table_rows[ 'validate_' . $key ] .= '<td class="validate">' . 
 						( isset( $b[ 'msg' ] ) ? $b[ 'msg' ] : $this->p->msgs->get( 'info-meta-validate-' . $key ) ) .

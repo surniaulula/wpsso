@@ -22,8 +22,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.4.0-dev.1',	// Plugin version.
-					'opt_version' => '756',		// Increment when changing default option values.
+					'version'     => '8.4.0-dev.2',	// Plugin version.
+					'opt_version' => '760',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Make sure your content looks great on social sites and search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -2323,6 +2323,19 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'at'         => 'at',
 					'tz'         => 'tz',
 				),
+				'notice_systems' => array(
+					'toolbar_notices' => 'SSO Toolbar Notices',
+					'admin_notices'   => 'WP Admin Notices',
+				),
+				'show_options' => array(
+					'basic' => 'Basic Options',
+					'all'   => 'All Options',
+				),
+				'site_option_use' => array(
+					'default' => 'New activation',
+					'empty'   => 'If value is empty',
+					'force'   => 'Force this value',
+				),
 				'script_locations' => array(
 					'none'   => '[None]',
 					'header' => 'Header',
@@ -2364,19 +2377,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'custom' => '[Custom Place]',
 					'new'    => '[New Place]',
 				),
-				'show_options' => array(
-					'basic' => 'Basic Options',
-					'all'   => 'All Options',
-				),
-				'notice_systems' => array(
-					'toolbar_notices' => 'SSO Toolbar Notices',
-					'admin_notices'   => 'WP Admin Notices',
-				),
-				'site_option_use' => array(
-					'default' => 'New activation',
-					'empty'   => 'If value is empty',
-					'force'   => 'Force this value',
-				),
+
+				/**
+				 * Image preferred cropping.
+				 */
 				'position_crop_x' => array(
 					'left'   => 'Left',
 					'center' => 'Center',
@@ -2387,6 +2391,19 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'center' => 'Center',
 					'bottom' => 'Bottom',
 				),
+
+				/**
+				 * Robots meta.
+				 */
+				'robots_max_image_preview' => array(
+					'none'     => '[None]',
+					'standard' => 'Standard',
+					'large'    => 'Large',
+				),
+
+				/**
+				 * Breadcrumbs settings.
+				 */
 				'breadcrumbs_for_posts' => array(	// Breadcrumbs by Post Type.
 					'none'         => '[No Breadcrumbs]',
 					'categories'   => 'Home Page(s) and Categories',

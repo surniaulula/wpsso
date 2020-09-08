@@ -1148,8 +1148,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				return $this->get_no_input( $name, $css_class, $css_id, $holder );
 			}
 
-			$html   = '';
-			$value  = $this->in_options( $name ) ? $this->options[ $name ] : '';
+			$html = '';
+
+			$value = $this->in_options( $name ) ? $this->options[ $name ] : '';
+
 			$holder = $this->get_placeholder_sanitized( $name, $holder );
 
 			if ( ! is_array( $len ) ) {	// A non-array value defaults to a max length.
@@ -1175,17 +1177,24 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			$html .= '<input type="text" name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"';
+
 			$html .= empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"';
+
 			$html .= empty( $css_id ) ? ' id="text_' . esc_attr( $name ) . '"' : ' id="text_' . esc_attr( $css_id ) . '"';
+
 			$html .= is_numeric( $tabidx ) ? '' : ' tabindex="' . esc_attr( $tabidx ) . '"';
+
 			$html .= empty( $elmt_attr ) ? '' : ' ' . $elmt_attr;
 
 			foreach ( $len as $key => $val ) {
+
 				$html .= empty( $len[ $key ] ) ? '' : ' ' . $key . 'Length="' . esc_attr( $len[ $key ] ) . '"';
 			}
 
 			$html .= $this->get_placeholder_attrs( 'input', $holder );
+
 			$html .= ' value="' . esc_attr( $value ) . '" />' . "\n";
+
 			$html .= empty( $len ) ? '' : '<div id="text_' . esc_attr( $css_id ) . '-lenMsg"></div>' . "\n";
 
 			return $html;
@@ -2366,7 +2375,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			if ( true === $holder ) {	// Use default value.
 
-				if ( isset( $this->defaults[ $name ] ) ) {
+				if ( isset( $this->defaults[ $name ] ) ) {	// Not null.
 
 					$holder = $this->defaults[ $name ];
 				}
