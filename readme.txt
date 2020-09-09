@@ -325,7 +325,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Max Image Preview
 		* Max Video Preview
 	* Removed the "Robots" options from the classic editor Publish metabox.
-	* Added a information level notice in the SSO &gt; Advanced Settings page if the "meta name robots" HTML tag and a known SEO plugin has not been detected.
+	* Added a dismissible notice if the "meta name robots" HTML tag and a known SEO plugin has not been detected.
+	* Replaced the option tooltip help image with a font.
 * **Bugfixes**
 	* Fixed the top toolbar overlaying content when there are SSO notifications in block editor fullscreen mode.
 * **Developer Notes**
