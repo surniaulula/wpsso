@@ -39,6 +39,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				add_action( 'admin_head', array( $this, 'requires_notices' ), -100 );
 				add_action( 'admin_head', array( $this, 'suggest_addons' ), 100 );
 				add_action( 'admin_head', array( $this, 'timed_notices' ), 200 );
+				add_action( 'admin_head', array( $this, 'robots_notice' ), 300 );
 			}
 		}
 
@@ -52,10 +53,6 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				return;
 			}
 
-			/**
-			 * Check the 'update_plugins' site transient and return the number of updates pending for a given slug
-			 * prefix.
-			 */
 			$update_count = SucomPlugin::get_updates_count( $plugin_prefix = $this->p->lca );
 
 			if ( $update_count > 0 ) {
@@ -77,8 +74,10 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 		public function requires_notices() {
 
-			$pkg      = $this->p->admin->plugin_pkg_info();
-			$um_info  = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
+			$pkg = $this->p->admin->plugin_pkg_info();
+
+			$um_info = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
+
 			$have_tid = false;
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
@@ -171,7 +170,8 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 								continue 2;
 						}
 
-						$app_label   = WpssoConfig::$cf[ $key ][ 'label' ];
+						$app_label = WpssoConfig::$cf[ $key ][ 'label' ];
+
 						$rec_version = WpssoConfig::$cf[ $key ][ 'rec_version' ];
 
 						if ( version_compare( $app_version, $rec_version, '<' ) ) {
@@ -212,6 +212,57 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			}
 
 			$this->suggest_addons_woocommerce();
+		}
+
+		public function timed_notices() {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			if ( ! $this->p->notice->can_dismiss() || ! current_user_can( 'manage_options' ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: cannot dismiss or cannot manage options' );
+				}
+
+				return;	// Stop here.
+			}
+
+			/**
+			 * Only show a single notice at a time.
+			 */
+			if ( ! $this->single_notice_review() ) {
+
+				if ( ! $this->single_notice_upsell() ) {
+
+					 // Add more timed notices here as needed.
+				}
+			}
+		}
+
+		public function robots_notice() {
+
+			if ( ! current_user_can( 'manage_options' ) ) {
+
+				return;
+			}
+
+			if ( empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
+
+				if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
+
+					$notice_msg = sprintf( __( 'Please note that the <code>%1$s</code> HTML tag is disabled and a known SEO plugin has not been detected.', 'wpsso' ), 'meta name robots' ) . ' ';
+
+					$notice_msg .= sprintf( __( 'If another SEO plugin or your theme templates are not adding the <code>%1$s</code> HTML tag to your webpages, you should re-enable this option.', 'wpsso' ), 'meta name robots' ) . ' ';
+
+					$notice_key = 'advanced-robots-notice-unchecked-without-seo-plugin';
+
+					$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
+				}
+			}
 		}
 
 		/**
@@ -329,40 +380,8 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			}
 		}
 
-		public function timed_notices() {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			if ( ! $this->p->notice->can_dismiss() || ! current_user_can( 'manage_options' ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: cannot dismiss or cannot manage options' );
-				}
-
-				return;	// Stop here.
-			}
-
-			/**
-			 * Only show a single notice at a time.
-			 */
-			if ( ! $this->single_notice_review() ) {
-
-				if ( ! $this->single_notice_upsell() ) {
-
-					/**
-					 * Optionally add more timed notices here.
-					 */
-				}
-			}
-		}
-
 		/**
-		 * This method is called by $this->timed_notices() only if WordPress can dismiss notices and the user can manage
-		 * options.
+		 * This method is called by timed_notices() if WordPress can dismiss notices and the user can manage options.
 		 *
 		 * Returns 0 by default and 1 if a notice has been created.
 		 */
@@ -384,8 +403,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				$notice_key = 'timed-notice-' . $ext . '-plugin-review';
-
+				$notice_key  = 'timed-notice-' . $ext . '-plugin-review';
 				$showing_ext = get_transient( $cache_id );	// Returns an empty string or the $notice_key value.
 
 				/**
@@ -516,8 +534,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 		}
 
 		/**
-		 * This method is called by $this->timed_notices() only if WordPress can dismiss notices and the user can manage
-		 * options.
+		 * This method is called by timed_notices() if WordPress can dismiss notices and the user can manage options.
 		 *
 		 * Returns 0 by default and 1 if a notice has been created.
 		 */
@@ -531,24 +548,22 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				return 0;
 			}
 
-			$ext_reg         = $this->p->util->reg->get_ext_reg();
-			$months_ago_secs = time() - ( 2 * MONTH_IN_SECONDS );
-			$months_transl   = __( 'two months', 'wpsso' );
+			$ext_reg           = $this->p->util->reg->get_ext_reg();
+			$months_ago_secs   = time() - ( 2 * MONTH_IN_SECONDS );
+			$months_ago_transl = __( 'two months', 'wpsso' );
 
 			if ( empty( $ext_reg[ $ext . '_install_time' ] ) || $ext_reg[ $ext . '_install_time' ] > $months_ago_secs ) {
 
 				return 0;
 			}
 
-			$form         = $this->p->admin->get_form_object( $this->p->lca );
-			$user_id      = get_current_user_id();
-			$info         = $this->p->cf[ 'plugin' ][ $ext ];
-			$notice_key   = 'timed-notice-' . $ext . '-pro-purchase-notice';
-			$dismiss_time = true;	// Allow the notice to be dismissed forever.
-
+			$form           = $this->p->admin->get_form_object( $this->p->lca );
+			$user_id        = get_current_user_id();
+			$info           = $this->p->cf[ 'plugin' ][ $ext ];
+			$notice_key     = 'timed-notice-' . $ext . '-pro-purchase-notice';
+			$dismiss_time   = true;	// Allow the notice to be dismissed forever.
 			$wp_plugin_link = '<a href="' . $info[ 'url' ][ 'home' ] . '">' . $info[ 'name' ] . '</a>';
-
-			$purchase_url = add_query_arg( array(
+			$purchase_url   = add_query_arg( array(
 				'utm_source'  => $ext,
 				'utm_medium'  => 'plugin',
 				'utm_content' => 'pro-purchase-notice',
@@ -594,17 +609,21 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 			$notice_msg .= '<b>' . __( 'Fantastic!', 'wpsso' ) . '</b> ';
 
-			$notice_msg .= sprintf( __( 'You\'ve been using %1$s for more than %2$s now, which is awesome!', 'wpsso' ), $wp_plugin_link, $months_transl );
+			$notice_msg .= sprintf( __( 'You\'ve been using %1$s for more than %2$s now, which is awesome!',
+				'wpsso' ), $wp_plugin_link, $months_ago_transl );
 
 			$notice_msg .= '</p><p>';
 
-			$notice_msg .= sprintf( __( 'We\'ve put many years of time and effort into making %s and its add-ons the best possible.', 'wpsso' ), $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'name' ] ) . ' ';
+			$notice_msg .= sprintf( __( 'We\'ve put many years of time and effort into making %s and its add-ons the best possible.',
+				'wpsso' ), $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'name' ] ) . ' ';
 
-			$notice_msg .= sprintf( __( 'I hope you\'ve enjoyed all the new features, improvements and updates over the past %s.', 'wpsso' ), $months_transl );
+			$notice_msg .= sprintf( __( 'I hope you\'ve enjoyed all the new features, improvements and updates over the past %s.',
+				'wpsso' ), $months_ago_transl );
 
 			$notice_msg .= '</p><p>';
 
-			$notice_msg .= sprintf( __( 'Have you thought about purchasing the %s version? It comes with a lot of great extra features!', 'wpsso' ), _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) );
+			$notice_msg .= sprintf( __( 'Have you thought about purchasing the %s version? It comes with a lot of great extra features!',
+				'wpsso' ), _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) );
 
 			$notice_msg .= '</p>';
 

@@ -464,18 +464,21 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 */
 						case 'tooltip-meta-robots_max_image_preview':
 
-							$text = __( 'Set the maximum size of an image preview for this webpage in search results.', 'wpsso' );
+							$text = __( 'Suggest the maximum size of an image preview for this webpage in search results.', 'wpsso' );
 
 							$text .= '<ul>';
 
-							$text .= '<li>' . sprintf( __( '%s = No image preview will be shown.', 'wpsso' ),
-								_x( $this->p->cf[ 'form' ][ 'robots_max_image_preview' ][ 'none' ], 'option value', 'wpsso' ) ) . '</li>';
+							$text .= '<li>' . sprintf( __( '%s = No preview image will be shown.', 'wpsso' ),
+								_x( $this->p->cf[ 'form' ][ 'robots_max_image_preview' ][ 'none' ],
+									'option value', 'wpsso' ) ) . '</li>';
 
-							$text .= '<li>' . sprintf( __( '%s = A default image preview may be shown.', 'wpsso' ),
-								_x( $this->p->cf[ 'form' ][ 'robots_max_image_preview' ][ 'standard' ], 'option value', 'wpsso' ) ) . '</li>';
+							$text .= '<li>' . sprintf( __( '%s = A default preview image size may be used.', 'wpsso' ),
+								_x( $this->p->cf[ 'form' ][ 'robots_max_image_preview' ][ 'standard' ],
+									'option value', 'wpsso' ) ) . '</li>';
 
-							$text .= '<li>' . sprintf( __( '%s = A larger image preview, up to the width of the viewport, may be shown.', 'wpsso' ),
-								_x( $this->p->cf[ 'form' ][ 'robots_max_image_preview' ][ 'large' ], 'option value', 'wpsso' ) ) . '</li>';
+							$text .= '<li>' . sprintf( __( '%s = A larger preview image size, up to the width of the viewport, may be used.',
+								'wpsso' ), _x( $this->p->cf[ 'form' ][ 'robots_max_image_preview' ][ 'large' ],
+									'option value', 'wpsso' ) ) . '</li>';
 
 							$text .= '</ul>';
 
@@ -490,7 +493,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<ul>';
 
-							$text .= '<li>' . __( '0 = Shows a static preview image for videos in search results, if image previews are allowed for this webpage.', 'wpsso' ) . '</li>';
+							$text .= '<li>' . __( '0 = Shows a static preview image for videos, if preview images are allowed for this webpage in search results.', 'wpsso' ) . '</li>';
 
 							$text .= '<li>' . __( '-1 = No limit.', 'wpsso' ) . '</li>';
 
@@ -2201,9 +2204,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<p>';
 
-							$text .= __( 'The robots meta tag lets you utilize a granular, page-specific approach to controlling how an individual page should be indexed and served to users in Google Search results.', 'wpsso' ) . ' ';
-
-							$text .= __( 'The following directives can be used to control indexing and serving of a snippet with the robots meta tag.', 'wpsso' );
+							$text .= __( 'The robots meta tag lets you utilize a granular, webpage-specific approach to controlling how an individual webpage should be indexed and served to users in Google Search results.', 'wpsso' ) . ' ';
 
 							$text .= '</p>';
 
@@ -2386,7 +2387,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= __( 'If your theme or another plugin already creates one or more of these HTML tags, you can uncheck them here to prevent duplicates from being added.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'Please note that the <code>%1$s</code> and <code>%2$s</code> SEO HTML tags are disabled automatically if a known SEO plugin is detected, and the <code>%3$s</code> HTML tag is unchecked by default (as themes often include this HTML tag in their header templates).', 'wpsso' ), 'meta name description', 'meta name robots', 'link rel canonical' );
+							$text .= sprintf( __( 'Please note that the <code>%1$s</code> and <code>%2$s</code> SEO HTML tags are disabled automatically if a known SEO plugin is detected, and the <code>%3$s</code> HTML tag is disabled by default (as themes often include this HTML tag in their header templates).', 'wpsso' ), 'meta name description', 'meta name robots', 'link rel canonical' );
 
 							$text .= '</p>';
 
