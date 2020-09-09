@@ -309,7 +309,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.4.0-dev.3 (2020/09/09)**
+**Version 8.4.0-dev.4 (2020/09/09)**
 
 * **New Features**
 	* None.
@@ -507,7 +507,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.4.0-dev.3 =
+= 8.4.0-dev.4 =
 
 (2020/09/09) Added a new "Robots Meta" tab in the Document SSO metabox with options for Google Search.
 
