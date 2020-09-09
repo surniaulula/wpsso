@@ -309,7 +309,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.4.0-dev.2 (2020/09/08)**
+**Version 8.4.0-dev.3 (2020/09/08)**
 
 * **New Features**
 	* None.
@@ -325,10 +325,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Max Image Preview
 		* Max Video Preview
 	* Removed the "Robots" options from the classic editor Publish metabox.
+	* Added a information level notice in the SSO &gt; Advanced Settings page if the "meta name robots" HTML tag and a known SEO plugin has not been detected.
 * **Bugfixes**
-	* None.
+	* Fixed the top toolbar overlaying content when there are SSO notifications in block editor fullscreen mode.
 * **Developer Notes**
-	* None.
+	* Added a post/term/user ID argument to the `WpssoWpMeta->upgrade_options()` method.
+	* Added new `get_meta()`, `update_meta()`, and `delete_meta()` static methods in the WpssoWpMeta, WpssoPost, WpssoTerm, and WpssoUser classes.
+	* Moved the `get_attached()`, `add_attached()`, and `delete_attached()` static methods from the WpssoPost, WpssoTerm, and WpssoUser classes to the WpssoWpMeta class.
+	* Changed `WpssoWpMeta->must_be_extended()` to `WpssoWpMeta::must_be_extended()`.
+	* Refactored `SucomUtil::get_robots_default_directives()` to include disabled directives as well.
+	* Refactored `WpssoUtil::get_robots_content()` to use WPSSO post/term/user options from the Document SSO metabox.
+	* Removed the `WpssoPost->show_robots_options()` and `WpssoPost->save_robots_options()` methods (replaced by the "Robots Meta" tab in the Document SSO metabox).
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
@@ -570,7 +577,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.4.0-dev.2 =
+= 8.4.0-dev.3 =
 
 (2020/09/08) Added a new "Robots Meta" tab in the Document SSO metabox with options for Google Search.
 
