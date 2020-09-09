@@ -352,7 +352,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 				$form->get_th_html( _x( 'No Snippet', 'option label', 'wpsso' ),
 					$css_class = 'medium', $css_id = 'meta-robots_nosnippet' ) . 
 				'<td>' . $form->get_checkbox( 'robots_nosnippet' ) . ' ' .
-				_x( 'do not show a text snippet or video preview in search results', 'option comment', 'wpsso' ) . '</td>';
+				_x( 'do not show a text snippet or a video preview in search results', 'option comment', 'wpsso' ) . '</td>';
 
 			$table_rows[ 'robots_notranslate' ] = '' .
 				$form->get_th_html( _x( 'No Translate', 'option label', 'wpsso' ),
@@ -365,7 +365,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					$css_class = 'medium', $css_id = 'meta-robots_max_snippet' ) . 
 				'<td>' . $form->get_input( 'robots_max_snippet', $css_class = 'chars', $css_id = '', $len = 0, $holder = true ) . ' ' .
 				_x( 'characters or less', 'option comment', 'wpsso' ) . ' (' .
-				_x( '-1 is no limit', 'option comment', 'wpsso' ) . ')</td>';
+				_x( '-1 for no limit', 'option comment', 'wpsso' ) . ')</td>';
 
 			$table_rows[ 'robots_max_image_preview' ] = '' .
 				$form->get_th_html( _x( 'Max Image Preview', 'option label', 'wpsso' ),
@@ -377,7 +377,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					$css_class = 'medium', $css_id = 'meta-robots_max_video_preview' ) . 
 				'<td>' . $form->get_input( 'robots_max_video_preview', $css_class = 'chars', $css_id = '', $len = 0, $holder = true ) .
 				_x( 'seconds', 'option comment', 'wpsso' ) . ' (' .
-				_x( '-1 is no limit', 'option comment', 'wpsso' ) . ')</td>';
+				_x( '-1 for no limit', 'option comment', 'wpsso' ) . ')</td>';
 
 			return $table_rows;
 		}

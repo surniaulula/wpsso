@@ -3703,7 +3703,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				'nofollow'     => array( 'follow' ),				// Do not follow links on this webpage.
 				'noimageindex' => array( 'max-image-preview' ),			// Do not index images on this webpage.
 				'noindex'      => array( 'index' ),				// Do not show this webpage in search results.
-				'nosnippet'    => array( 'max-snippet', 'max-video-preview' ),	// Do not show a text snippet or video preview in search results.
+				'nosnippet'    => array( 'max-snippet', 'max-video-preview' ),	// Do not show a text snippet or a video preview in search results.
 			);
 
 			$directives = self::get_robots_default_directives();
