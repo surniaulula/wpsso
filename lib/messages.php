@@ -2949,9 +2949,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			if ( strpos( $msg_key, 'tooltip-' ) === 0 && ! empty( $text ) ) {
 
-				$text = '<img src="' . WPSSO_URLPATH . 'images/question-mark.png" width="14" height="14" class="' .
-					( isset( $info[ 'class' ] ) ? $info[ 'class' ] : $this->p->cf[ 'form' ][ 'tooltip_class' ] ) .
-						'" alt="' . esc_attr( $text ) . '" />';
+				$text = '<span class="' . $this->p->cf[ 'form' ][ 'tooltip_class' ] . '" data-help="' . esc_attr( $text ) . '">' .
+					'<span class="' . $this->p->cf[ 'form' ][ 'tooltip_class' ] . '-icon"></span></span>';
 			}
 
 			return $text;
@@ -3198,6 +3197,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			$html = '';
 
 			if ( ! empty( $this->form->options[ 'og_vid_prev_img' ] ) ) {
+
 				$html .= ' <em>' . _x( 'note that video preview images are enabled (and included first)', 'option comment', 'wpsso' ) . '</em>';
 			}
 
@@ -3242,17 +3242,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 				return $this->schema_disabled();
 
-			} else {
-
-				$json_addon_link = $this->p->util->get_admin_url( 'addons#wpssojson',
-					$this->p->cf[ 'plugin' ][ 'wpssojson' ][ 'name' ] );
-
-				// translators: %s is is the add-on name (and a link to the add-on page).
-				$text = sprintf( __( 'Activate the %s add-on<br/>if you require additional options for Schema markup and structured data.',
-					'wpsso' ), $json_addon_link );
-
-				return '<p class="status-msg">' . $text . '</p>';
 			}
+
+			$json_addon_link = $this->p->util->get_admin_url( 'addons#wpssojson',
+				$this->p->cf[ 'plugin' ][ 'wpssojson' ][ 'name' ] );
+
+			// translators: %s is is the add-on name (and a link to the add-on page).
+			$text = sprintf( __( 'Activate the %s add-on<br/>if you require additional options for Schema markup and structured data.',
+				'wpsso' ), $json_addon_link );
+
+			return '<p class="status-msg">' . $text . '</p>';
 		}
 
 		public function schema_disabled() {
@@ -3294,9 +3293,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 		private function get_def_img_dims( $opt_pre ) {
 
-			$def_opts    = $this->p->opt->get_defaults();
-			$img_width   = empty( $def_opts[ $opt_pre . '_img_width' ] ) ? 0 : $def_opts[ $opt_pre . '_img_width' ];
-			$img_height  = empty( $def_opts[ $opt_pre . '_img_height' ] ) ? 0 : $def_opts[ $opt_pre . '_img_height' ];
+			$def_opts = $this->p->opt->get_defaults();
+
+			$img_width = empty( $def_opts[ $opt_pre . '_img_width' ] ) ? 0 : $def_opts[ $opt_pre . '_img_width' ];
+
+			$img_height = empty( $def_opts[ $opt_pre . '_img_height' ] ) ? 0 : $def_opts[ $opt_pre . '_img_height' ];
+
 			$img_cropped = empty( $def_opts[ $opt_pre . '_img_crop' ] ) ? _x( 'uncropped', 'option value', 'wpsso' ) : _x( 'cropped', 'option value', 'wpsso' );
 
 			return $img_width . 'x' . $img_height . 'px ' . $img_cropped;
