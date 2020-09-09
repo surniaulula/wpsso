@@ -309,7 +309,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.4.0-dev.3 (2020/09/08)**
+**Version 8.4.0-dev.3 (2020/09/09)**
 
 * **New Features**
 	* None.
@@ -336,6 +336,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored `SucomUtil::get_robots_default_directives()` to include disabled directives as well.
 	* Refactored `WpssoUtil::get_robots_content()` to use WPSSO post/term/user options from the Document SSO metabox.
 	* Removed the `WpssoPost->show_robots_options()` and `WpssoPost->save_robots_options()` methods (replaced by the "Robots Meta" tab in the Document SSO metabox).
+	* Added custom CSS filters for Yoast SEO and Rank Math in the WpssoCompat class.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
@@ -579,7 +580,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 8.4.0-dev.3 =
 
-(2020/09/08) Added a new "Robots Meta" tab in the Document SSO metabox with options for Google Search.
+(2020/09/09) Added a new "Robots Meta" tab in the Document SSO metabox with options for Google Search.
 
 = 8.3.1 =
 
