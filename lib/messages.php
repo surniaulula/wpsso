@@ -464,7 +464,20 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 */
 						case 'tooltip-meta-robots_max_image_preview':
 
-							//$text = __( '', 'wpsso' ) . ' ';
+							$text = __( 'Set the maximum size of an image preview for this webpage in search results.', 'wpsso' );
+
+							$text .= '<ul>';
+
+							$text .= '<li>' . sprintf( __( '%s = No image preview will be shown.', 'wpsso' ),
+								_x( $this->p->cf[ 'form' ][ 'robots_max_image_preview' ][ 'none' ], 'option value', 'wpsso' ) ) . '</li>';
+
+							$text .= '<li>' . sprintf( __( '%s = A default image preview may be shown.', 'wpsso' ),
+								_x( $this->p->cf[ 'form' ][ 'robots_max_image_preview' ][ 'standard' ], 'option value', 'wpsso' ) ) . '</li>';
+
+							$text .= '<li>' . sprintf( __( '%s = A larger image preview, up to the width of the viewport, may be shown.', 'wpsso' ),
+								_x( $this->p->cf[ 'form' ][ 'robots_max_image_preview' ][ 'large' ], 'option value', 'wpsso' ) ) . '</li>';
+
+							$text .= '</ul>';
 
 						 	break;
 
@@ -473,7 +486,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 */
 						case 'tooltip-meta-robots_max_video_preview':
 
-							//$text = __( '', 'wpsso' ) . ' ';
+							$text = __( 'Use a maximum of number seconds for the video snippets of videos from this webpage in search results.', 'wpsso' );
+
+							$text .= '<ul>';
+
+							$text .= '<li>' . __( '0 = Shows a static preview image for videos in search results, if image previews are allowed for this webpage.', 'wpsso' ) . '</li>';
+
+							$text .= '<li>' . __( '-1 = No limit.', 'wpsso' ) . '</li>';
+
+							$text .= '</ul>';
 
 						 	break;
 
