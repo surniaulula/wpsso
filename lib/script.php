@@ -324,8 +324,9 @@ jQuery( document ).ready( function(){
 				$this->p->debug->mark();
 			}
 
-			wp_register_script( 'sucom-admin-page', WPSSO_URLPATH . 'js/com/jquery-admin-page.' . $this->file_ext, 
-				array( 'jquery' ), $this->version, $in_footer = true );
+			wp_register_script( 'sucom-admin-page',
+				WPSSO_URLPATH . 'js/com/jquery-admin-page.' . $this->file_ext, 
+					array( 'jquery' ), $this->version, $in_footer = true );
 
 			wp_localize_script( 'sucom-admin-page', 'sucomAdminPageL10n', $this->get_admin_page_script_data() );
 

@@ -187,17 +187,18 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			$lca = $this->p->lca;
 
-			$sort_cols = WpssoWpMeta::get_sortable_columns();	// Uses a static cache.
+			$filter_name   = $lca . '_admin_page_style_css';
+			$filter_ids    = SucomUtilWP::get_filter_hook_ids( $filter_name );
+			$sortable_cols = WpssoWpMeta::get_sortable_columns();	// Uses a static cache.
 
 			$cache_md5_pre    = $lca . '_';
 			$cache_exp_filter = $lca . '_cache_expire_admin_css';
 			$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, DAY_IN_SECONDS );
 
 			$cache_salt = __METHOD__ . '(';
-			$cache_salt .= 'hook_name:' . $hook_name;
-			$cache_salt .= '_urlpath:' . WPSSO_URLPATH;
 			$cache_salt .= '_version:' . $this->version;
-			$cache_salt .= '_columns:' . implode( ',', array_keys( $sort_cols ) );
+			$cache_salt .= '_filters:' . implode( ',', array_keys( $filter_ids ) );
+			$cache_salt .= '_columns:' . implode( ',', array_keys( $sortable_cols ) );
 			$cache_salt .= ')';
 			$cache_id   = $cache_md5_pre . md5( $cache_salt );
 
@@ -356,22 +357,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			';
 
 			/**
-			 * The Yoast SEO metabox "Schema" tab and its options cannot be disabled, so hide them instead.
-			 */
-			$custom_style_css .= '
-				#wpseo-meta-tab-schema { display: none; }
-				#wpseo-meta-section-schema { display: none; }
-			';
-
-			/**
-			 * The Rank Math SEO metabox "Social" tab and its options cannot be disabled, so hide them instead.
-			 */
-			$custom_style_css .= '
-				.rank-math-tabs > div > a[href="#setting-panel-social"] { display: none; }
-				.rank-math-tabs-content .setting-panel-social { display: none; }
-			';
-
-			/**
 			 * List table columns.
 			 */
 			foreach ( array(
@@ -454,11 +439,11 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					width:75%;
 				}
 				table.wp-list-table.tags > thead > tr > th.column-description,
-				table.wp-list-table.tags > tbody > tr > td.column-description {	/* Taxonomy table */
+				table.wp-list-table.tags > tbody > tr > td.column-description {		/* Taxonomy table */
 					width:25%;
 				}
-				table.wp-list-table.users > thead > tr > th,	/* Users table. */
-				table.wp-list-table.users > tbody > tr > td {
+				table.wp-list-table.users > thead > tr > th,
+				table.wp-list-table.users > tbody > tr > td {			/* Users table. */
 					width:15%;
 				}
 				table.wp-list-table.users > thead > tr > th.column-email,
@@ -472,7 +457,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					width:50px;
 				}
 				table.wp-list-table > thead > tr > th.column-posts.num,
-				table.wp-list-table > tbody > tr > td.column-posts.num {	/* Count text. */
+				table.wp-list-table > tbody > tr > td.column-posts.num {	/* Counter. */
 					width:75px;
 				}
 				table.wp-list-table > thead > tr > th.column-featured,
@@ -491,8 +476,8 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				table.wp-list-table > tbody > tr > td.column-expirationdate {
 					width:7em;
 				}
-				table.wp-list-table > thead > tr > th.column-job_position,	/* WP Job Manager. */
-				table.wp-list-table > tbody > tr > td.column-job_position {
+				table.wp-list-table > thead > tr > th.column-job_position,
+				table.wp-list-table > tbody > tr > td.column-job_position {	/* WP Job Manager. */
 					width:20%;
 				}
 				table.wp-list-table > thead > tr > th.column-job_listing_type,
@@ -521,43 +506,19 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				table.wp-list-table > tbody > tr > td.column-job_actions {
 					width:7em;
 				}
-				table.wp-list-table > thead > tr > th.column-seotitle,		/* All In One SEO. */
+				table.wp-list-table > thead > tr > th.column-seotitle,
 				table.wp-list-table > tbody > tr > td.column-seotitle,
 				table.wp-list-table > thead > tr > th.column-seodesc,
-				table.wp-list-table > tbody > tr > td.column-seodesc {
+				table.wp-list-table > tbody > tr > td.column-seodesc {		/* All In One SEO. */
 					width:20%;
 				}
 				table.wp-list-table > thead > tr > th.column-term-id,
 				table.wp-list-table > tbody > tr > td.column-term-id {
 					width:40px;
 				}
-				table.wp-list-table > thead > tr > th.column-thumb,		/* WooCommerce Brands */
-				table.wp-list-table > tbody > tr > td.column-thumb {
+				table.wp-list-table > thead > tr > th.column-thumb,
+				table.wp-list-table > tbody > tr > td.column-thumb {		/* WooCommerce Brands */
 					width:60px;
-				}
-				table.wp-list-table > thead > tr > th.column-wpseo-links,	/* Yoast SEO. */
-				table.wp-list-table > tbody > tr > td.column-wpseo-links,
-				table.wp-list-table > thead > tr > th.column-wpseo-linked,
-				table.wp-list-table > tbody > tr > td.column-wpseo-linked,
-				table.wp-list-table > thead > tr > th.column-wpseo-score,
-				table.wp-list-table > tbody > tr > td.column-wpseo-score,
-				table.wp-list-table > thead > tr > th.column-wpseo-score-readability,
-				table.wp-list-table > tbody > tr > td.column-wpseo-score-readability {
-					width:40px;
-				}
-				table.wp-list-table > thead > tr > th.column-wpseo-title,	/* Yoast SEO. */
-				table.wp-list-table > tbody > tr > td.column-wpseo-title,
-				table.wp-list-table > thead > tr > th.column-wpseo-metadesc,
-				table.wp-list-table > tbody > tr > td.column-wpseo-metadesc {
-					width:20%;
-				}
-				table.wp-list-table > thead > tr > th.column-wpseo-focuskw,	/* Yoast SEO. */
-				table.wp-list-table > tbody > tr > td.column-wpseo-focuskw {
-					width:8em;	/* Leave room for the sort arrow. */
-				}
-				table.wp-list-table > thead > tr > th.column-rank_math_seo_details,	/* Rank Math. */
-				table.wp-list-table > tbody > tr > td.column-rank_math_seo_details {
-					width:170px;
 				}
 				table.wp-list-table > thead > tr > th.column-template,
 				table.wp-list-table > tbody > tr > td.column-template {
@@ -565,47 +526,47 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				}
 			';
 
-			if ( isset( $sort_cols[ 'schema_type' ][ 'width' ] ) ) {
+			if ( isset( $sortable_cols[ 'schema_type' ][ 'width' ] ) ) {
 
 				$custom_style_css .= '
 					.column-' . $lca . '_schema_type {
-						width:' . $sort_cols[ 'schema_type' ][ 'width' ] . ';
-						max-width:' . $sort_cols[ 'schema_type' ][ 'width' ] . ';
+						width:' . $sortable_cols[ 'schema_type' ][ 'width' ] . ';
+						max-width:' . $sortable_cols[ 'schema_type' ][ 'width' ] . ';
 						white-space:nowrap;
 						overflow:hidden;
 					}
 				';
 			}
 
-			if ( isset( $sort_cols[ 'og_type' ][ 'width' ] ) ) {
+			if ( isset( $sortable_cols[ 'og_type' ][ 'width' ] ) ) {
 
 				$custom_style_css .= '
 					.column-' . $lca . '_og_type {
-						width:' . $sort_cols[ 'og_type' ][ 'width' ] . ' !important;
-						max-width:' . $sort_cols[ 'og_type' ][ 'width' ] . ' !important;
+						width:' . $sortable_cols[ 'og_type' ][ 'width' ] . ' !important;
+						max-width:' . $sortable_cols[ 'og_type' ][ 'width' ] . ' !important;
 						white-space:nowrap;
 						overflow:hidden;
 					}
 				';
 			}
 
-			if ( isset( $sort_cols[ 'og_img' ][ 'width' ] ) ) {
+			if ( isset( $sortable_cols[ 'og_img' ][ 'width' ] ) ) {
 			
 				$custom_style_css .= '
 					.column-' . $lca . '_og_img { 
-						width:' . $sort_cols[ 'og_img' ][ 'width' ] . ' !important;
-						max-width:' . $sort_cols[ 'og_img' ][ 'width' ] . ' !important;
+						width:' . $sortable_cols[ 'og_img' ][ 'width' ] . ' !important;
+						max-width:' . $sortable_cols[ 'og_img' ][ 'width' ] . ' !important;
 					}
 				';
 
-				if ( isset( $sort_cols[ 'og_img' ][ 'height' ] ) ) {
+				if ( isset( $sortable_cols[ 'og_img' ][ 'height' ] ) ) {
 
 					$custom_style_css .= '
 						.column-' . $lca . '_og_img .preview_img { 
-							max-width:' . $sort_cols[ 'og_img' ][ 'width' ] . ' !important;
-							height:' . $sort_cols[ 'og_img' ][ 'height' ] . ';
-							min-height:' . $sort_cols[ 'og_img' ][ 'height' ] . ';
-							background-size:' . $sort_cols[ 'og_img' ][ 'width' ] . ' auto;
+							max-width:' . $sortable_cols[ 'og_img' ][ 'width' ] . ' !important;
+							height:' . $sortable_cols[ 'og_img' ][ 'height' ] . ';
+							min-height:' . $sortable_cols[ 'og_img' ][ 'height' ] . ';
+							background-size:' . $sortable_cols[ 'og_img' ][ 'width' ] . ' auto;
 							background-repeat:no-repeat;
 							background-position:center center;
 							overflow:hidden;
@@ -617,7 +578,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			}
 
 			$custom_style_css .= '
-
 				.column-' . $lca . '_og_desc {
 					overflow:hidden;
 				}
@@ -640,7 +600,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				}
 			';
 
-			foreach ( $sort_cols as $col_name => $col_info ) {
+			foreach ( $sortable_cols as $col_name => $col_info ) {
 
 				if ( isset( $col_info[ 'width' ] ) ) {
 
@@ -653,6 +613,8 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					';
 				}
 			}
+
+			$custom_style_css = apply_filters( $filter_name, $custom_style_css );
 
 			if ( $this->use_cache ) {
 

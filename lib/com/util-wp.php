@@ -412,6 +412,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				'pre_update_option_' . $opt_name,
 				'pre_update_option',
 			) as $tag ) {
+
 				unset( $wp_filter[ $tag ] );
 			}
 
@@ -592,6 +593,26 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $result;
 		}
 
+		public static function get_filter_hook_ids( $filter_name ) {
+
+			global $wp_filter;
+
+			$hook_ids = array();
+
+			if ( isset( $wp_filter[ $filter_name ]->callbacks ) ) {
+
+				foreach ( $wp_filter[ $filter_name ]->callbacks as $hook_prio => $hook_group ) {
+
+					foreach ( $hook_group as $hook_id => $hook_info ) {
+
+						$hook_ids[] = $hook_id;
+					}
+				}
+			}
+
+			return $hook_ids;
+		}
+
 		public static function get_filter_hook_names( $filter_name ) {
 
 			global $wp_filter;
@@ -602,7 +623,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 				foreach ( $wp_filter[ $filter_name ]->callbacks as $hook_prio => $hook_group ) {
 
-					foreach ( $hook_group as $hook_ref => $hook_info ) {
+					foreach ( $hook_group as $hook_id => $hook_info ) {
 
 						if ( ( $hook_name = self::get_hook_function_name( $hook_info ) ) !== '' ) {
 

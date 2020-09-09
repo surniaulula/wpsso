@@ -1170,9 +1170,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			$headers = array();
 
-			$sort_cols = self::get_sortable_columns();
+			$sortable_cols = self::get_sortable_columns();
 
-			foreach ( $sort_cols as $col_key => $col_info ) {
+			foreach ( $sortable_cols as $col_key => $col_info ) {
 
 				if ( ! empty( $col_info[ 'header' ] ) ) {
 
@@ -1188,41 +1188,41 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 */
 		public static function get_sortable_columns( $col_key = false ) { 
 
-			static $sort_cols = null;
+			static $local_cache = null;
 
-			if ( null === $sort_cols ) {
+			if ( null === $local_cache ) {
 
 				$wpsso =& Wpsso::get_instance();
 
-				$sort_cols = (array) apply_filters( $wpsso->lca . '_get_sortable_columns', $wpsso->cf[ 'edit' ][ 'columns' ] );
+				$local_cache = (array) apply_filters( $wpsso->lca . '_get_sortable_columns', $wpsso->cf[ 'edit' ][ 'columns' ] );
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log_arr( '$sort_cols', $sort_cols );
+					$wpsso->debug->log_arr( 'sortable columns', $local_cache );
 				}
 			}
 
 			if ( false !== $col_key ) {
 
-				if ( isset( $sort_cols[ $col_key ] ) ) {
+				if ( isset( $local_cache[ $col_key ] ) ) {
 
-					return $sort_cols[ $col_key ];
+					return $local_cache[ $col_key ];
 				}
 
 				return null;
 				
 			}
 
-			return $sort_cols;
+			return $local_cache;
 		}
 
 		public static function get_column_meta_keys() { 
 
 			$meta_keys = array();
 
-			$sort_cols = self::get_sortable_columns();
+			$sortable_cols = self::get_sortable_columns();
 
-			foreach ( $sort_cols as $col_key => $col_info ) {
+			foreach ( $sortable_cols as $col_key => $col_info ) {
 
 				if ( ! empty( $col_info[ 'meta_key' ] ) ) {
 
@@ -1358,11 +1358,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			if ( ! empty( $mod_id ) ) {	// Just in case.
 
-				if ( ( $sort_cols = self::get_sortable_columns( $col_key ) ) !== null ) {
+				if ( ( $sortable_cols = self::get_sortable_columns( $col_key ) ) !== null ) {
 
-					if ( isset( $sort_cols[ 'meta_key' ] ) ) {	// Just in case.
+					if ( isset( $sortable_cols[ 'meta_key' ] ) ) {	// Just in case.
 
-						static::update_meta( $mod_id, $sort_cols[ 'meta_key' ], $content );	// Use static method from child.
+						static::update_meta( $mod_id, $sortable_cols[ 'meta_key' ], $content );	// Use static method from child.
 					}
 				}
 			}

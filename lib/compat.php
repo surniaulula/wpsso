@@ -43,7 +43,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			}
 
 			/**
-			 * Prevent WP Retina 2x from creating 2x images for WPSSO image sizes.
+			 * WP Retina 2x.
 			 */
 			if ( ! empty( $this->p->avail[ 'media' ][ 'wp-retina-2x' ] ) ) {
 
@@ -51,14 +51,6 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			}
 
 			if ( is_admin() ) {
-
-				/**
-				 * Cleanup incorrect Yoast SEO notifications.
-				 */
-				if ( ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) ) {
-
-					add_action( 'admin_init', array( $this, 'cleanup_wpseo_notifications' ), 15 );
-				}
 
 				if ( class_exists( 'GFForms' ) ) {
 
@@ -74,10 +66,32 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 					add_action( 'gravityview_noconflict_scripts', array( $this, 'update_gform_noconflict_scripts' ) );
 				}
 
+				/**
+				 * Rank Math.
+				 */
+				if ( ! empty( $this->p->avail[ 'seo' ][ 'rankmath' ] ) ) {
+
+					$this->p->util->add_plugin_filters( $this, array( 
+						'admin_page_style_css_rank_math' => array( 'admin_page_style_css' => 1 ),
+					) );
+				}
+
+				/**
+				 * Yoast SEO.
+				 */
+				if ( ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) ) {
+
+					add_action( 'admin_init', array( $this, 'cleanup_wpseo_notifications' ), 15 );
+				
+					$this->p->util->add_plugin_filters( $this, array( 
+						'admin_page_style_css_wpseo' => array( 'admin_page_style_css' => 1 ),
+					) );
+				}
+
 			} else {
 
 				/**
-				 * Disable JetPack open graph meta tags.
+				 * JetPack.
 				 */
 				if ( ! empty( $this->p->avail[ 'util' ][ 'jetpack' ] ) ) {
 
@@ -89,7 +103,23 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				}
 
 				/**
-				 * Disable Yoast SEO social meta tags.
+				 * NextScripts: Social Networks Auto-Poster.
+				 */
+				if ( function_exists( 'nxs_initSNAP' ) ) {
+
+					add_action( 'wp_head', array( __CLASS__, 'remove_snap_og_meta_tags_holder' ), -2000 );
+				}
+
+				/**
+				 * Rank Math.
+				 */
+				if ( ! empty( $this->p->avail[ 'seo' ][ 'rankmath' ] ) ) {
+
+					add_action( 'rank_math/head', array( $this, 'cleanup_rankmath_actions' ), -2000 );
+				}
+
+				/**
+				 * Yoast SEO.
 				 */
 				if ( ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) ) {
 
@@ -106,30 +136,6 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 
 						add_action( 'amp_post_template_head', array( $this, 'cleanup_wpseo_actions' ), -2000 );
 					}
-				}
-
-				/**
-				 * Disable Rank Math social meta tags.
-				 */
-				if ( ! empty( $this->p->avail[ 'seo' ][ 'rankmath' ] ) ) {
-
-					add_action( 'rank_math/head', array( $this, 'cleanup_rankmath_actions' ), -2000 );
-				}
-
-				/**
-				 * Prevent SNAP from adding meta tags for the Facebook user agent.
-				 */
-				if ( function_exists( 'nxs_initSNAP' ) ) {
-
-					add_action( 'wp_head', array( __CLASS__, 'remove_snap_og_meta_tags_holder' ), -2000 );
-				}
-
-				/**
-				 * Honor the FORCE_SSL constant on the front-end with a 301 redirect.
-				 */
-				if ( SucomUtil::get_const( 'FORCE_SSL' ) ) {
-
-					add_action( 'wp_loaded', array( __CLASS__, 'force_ssl_redirect' ), -2000 );
 				}
 			}
 		}
@@ -179,8 +185,9 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				'jquery-ui.js',
 				'jquery-qtip.js',
 				'sucom-admin-page',
-				'sucom-settings-table',
 				'sucom-metabox-tabs',
+				'sucom-settings-page',
+				'sucom-settings-table',
 				'wp-color-picker',
 			) );
 		}
@@ -190,10 +197,13 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			return array_merge( $scripts, array(
 				'jquery-ui-datepicker',
 				'jquery-qtip',
+				'sucom-admin-media',
+				'sucom-admin-page',
+				'sucom-block-editor-admin',
 				'sucom-metabox',
+				'sucom-settings-page',
 				'sucom-tooltips',
 				'wp-color-picker',
-				'sucom-admin-media',
 			) );
 		}
 
@@ -376,9 +386,6 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			}
 		}
 
-		/**
-		 * Disable Rank Math social meta tags.
-		 */
 		public function cleanup_rankmath_actions() {
 
 			if ( $this->p->debug->enabled ) {
@@ -386,37 +393,89 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				$this->p->debug->mark();
 			}
 
+			/**
+			 * Disable Rank Math social meta tags.
+			 */
 			remove_all_actions( 'rank_math/opengraph/facebook' );
 
 			remove_all_actions( 'rank_math/opengraph/twitter' );
 		}
 
-		/**
-		 * Prevent SNAP from adding meta tags for the Facebook user agent.
-		 */
 		public static function remove_snap_og_meta_tags_holder() {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			/**
+			 * Prevent SNAP from adding meta tags for the Facebook user agent.
+			 */
 			remove_action( 'wp_head', 'nxs_addOGTagsPreHolder', 150 );
 		}
 
-		/**
-		 * Redirect from HTTP to HTTPS if the current webpage URL is not HTTPS. A 301 redirect is considered a best
-		 * practice when moving from HTTP to HTTPS. See https://en.wikipedia.org/wiki/HTTP_301 for more info.
-		 */
-		public static function force_ssl_redirect() {
+		public function filter_admin_page_style_css_rank_math( $custom_style_css ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			/**
-			 * Check for web server variables in case WP is being used from the command line.
+			 * Fix the width of Rank Math list table columns.
 			 */
-			if ( isset( $_SERVER[ 'HTTP_HOST' ] ) && isset( $_SERVER[ 'REQUEST_URI' ] ) ) {
-
-				if ( ! SucomUtil::is_https() ) {
-
-					wp_redirect( 'https://' . $_SERVER[ 'HTTP_HOST' ] . $_SERVER[ 'REQUEST_URI' ], 301 );
-
-					exit();
+			$custom_style_css .= '
+				table.wp-list-table > thead > tr > th.column-rank_math_seo_details,
+				table.wp-list-table > tbody > tr > td.column-rank_math_seo_details {
+					width:170px;
 				}
+			';
+
+			/**
+			 * The "Social" metabox tab and its options cannot be disabled, so hide them instead.
+			 */
+			$custom_style_css .= '
+				.rank-math-tabs > div > a[href="#setting-panel-social"] { display: none; }
+				.rank-math-tabs-content .setting-panel-social { display: none; }
+			';
+
+			return $custom_style_css;
+		}
+
+		public function filter_admin_page_style_css_wpseo( $custom_style_css ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
 			}
+
+			/**
+			 * Fix the width of Yoast SEO list table columns.
+			 */
+			$custom_style_css .= '
+				table.wp-list-table > thead > tr > th.column-wpseo-links,
+				table.wp-list-table > tbody > tr > td.column-wpseo-links,
+				table.wp-list-table > thead > tr > th.column-wpseo-linked,
+				table.wp-list-table > tbody > tr > td.column-wpseo-linked,
+				table.wp-list-table > thead > tr > th.column-wpseo-score,
+				table.wp-list-table > tbody > tr > td.column-wpseo-score,
+				table.wp-list-table > thead > tr > th.column-wpseo-score-readability,
+				table.wp-list-table > tbody > tr > td.column-wpseo-score-readability {
+					width:40px;
+				}
+				table.wp-list-table > thead > tr > th.column-wpseo-title,
+				table.wp-list-table > tbody > tr > td.column-wpseo-title,
+				table.wp-list-table > thead > tr > th.column-wpseo-metadesc,
+				table.wp-list-table > tbody > tr > td.column-wpseo-metadesc {
+					width:20%;
+				}
+				table.wp-list-table > thead > tr > th.column-wpseo-focuskw,
+				table.wp-list-table > tbody > tr > td.column-wpseo-focuskw {
+					width:8em;	/* Leave room for the sort arrow. */
+				}
+			';
+
+			return $custom_style_css;
 		}
 	}
 }

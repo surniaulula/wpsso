@@ -155,10 +155,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'og_desc_hashtags': 
 				case 'schema_img_max':
 				case 'schema_vid_max':
+				case 'robots_max_snippet':
+				case 'robots_max_video_preview':
 				case ( preg_match( '/_(cache_exp|caption_hashtags|filter_prio)$/', $base_key ) ? true : false ):
 				case ( preg_match( '/_(img|logo|banner)_url(:width|:height)$/', $base_key ) ? true : false ):
 
-					return 'integer';
+					return 'integer';	// Aka 'int'.
 
 				/**
 				 * Numeric options that must be positive (1 or more).
@@ -169,7 +171,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'plugin_upscale_img_max':
 				case ( preg_match( '/_(len|warn)$/', $base_key ) ? true : false ):
 
-					return 'pos_int';
+					return 'pos_integer';	// Ala 'pos_int'.
 
 				/**
 				 * Must be numeric (blank and zero are ok).
@@ -293,6 +295,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'product_avail':			// Select option with 'none' as default.
 				case 'product_condition':		// Select option with 'none' as default.
 				case 'product_target_gender':		// Select option with 'none' as default.
+				case 'robots_max_image_preview':
 				case ( false !== strpos( $base_key, '_crop_x' ) ? true : false ):
 				case ( false !== strpos( $base_key, '_crop_y' ) ? true : false ):
 				case ( false !== strpos( $base_key, '_type_for_' ) ? true : false ):
@@ -1622,12 +1625,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'img_height':	// Image height, subject to minimum value (typically, at least 200px).
 				case 'img_width':	// Image height, subject to minimum value (typically, at least 200px).
 				case 'pos_int':
+				case 'pos_integer':
 
 					$ret_int = true;
 
 					// No break.
 
 				case 'pos_num':
+				case 'pos_number':
 
 					/**
 					 * Check for a hard-coded minimum value (for example, 200 for "og_img_width").
