@@ -3829,6 +3829,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$use_wp_query = true;
 
+				$posts_args[ 'post_type' ] = 'post';
+
 			} elseif ( $mod[ 'is_post_type_archive' ] ) {
 
 				if ( $wpsso->debug->enabled ) {
