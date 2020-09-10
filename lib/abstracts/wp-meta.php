@@ -591,7 +591,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 */
 		public static function get_public_ids() {
 
-			return array();
+			return self::must_be_extended( $ret_val = array() );
 		}
 
 		public function get_posts_ids( array $mod, $ppp = null, $paged = null, array $posts_args = array() ) {

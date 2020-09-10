@@ -3845,6 +3845,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$posts_args[ 'post_type' ] = 'post';
 			}
 
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log_arr( '$posts_args', $posts_args );
+			}
+
 			$page_posts_mods = array();
 
 			if ( $use_wp_query ) {
