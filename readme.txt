@@ -324,6 +324,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Snippet Max. Length
 		* Image Preview Size
 		* Video Max. Previews
+	* Added new options under the SSO &gt; General Settings &gt; Google tab:
+		* Robots Snippet Max. Length
+		* Robots Image Preview Size
+		* Robots Video Max. Previews
 	* Removed the "Robots" options from the classic editor Publish metabox.
 	* Added a dismissible notice if the "meta name robots" HTML tag and a known SEO plugin has not been detected.
 	* Replaced the option tooltip help image with a font.
