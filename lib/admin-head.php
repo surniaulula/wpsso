@@ -254,9 +254,15 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 				if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
 
-					$notice_msg = sprintf( __( 'Please note that the <code>%1$s</code> HTML tag is disabled and a known SEO plugin has not been detected.', 'wpsso' ), 'meta name robots' ) . ' ';
+					$seo_other_tab_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_head_tags-tab_seo_other',
+						_x( 'SSO', 'menu title', 'wpsso' ) . ' &gt; ' .
+						_x( 'Advanced Settings', 'lib file description', 'wpsso' ) . ' &gt; ' .
+						_x( 'HTML Tags', 'metabox title', 'wpsso' ) . ' &gt; ' .
+						_x( 'SEO / Other', 'metabox tab', 'wpsso' ) );
 
-					$notice_msg .= sprintf( __( 'If another SEO plugin or your theme templates are not adding the <code>%1$s</code> HTML tag to your webpages, you should re-enable this option.', 'wpsso' ), 'meta name robots' ) . ' ';
+					$notice_msg = sprintf( __( 'Please note that the <code>%1$s</code> HTML tag is currently disabled and a known SEO plugin has not been detected.', 'wpsso' ), 'meta name robots' ) . ' ';
+
+					$notice_msg .= sprintf( __( 'If another SEO plugin or your theme templates are not adding the <code>%1$s</code> HTML tag to your webpages, you can re-enable this option under the %2$s tab.', 'wpsso' ), 'meta name robots', $seo_other_tab_link ) . ' ';
 
 					$notice_key = 'advanced-robots-notice-unchecked-without-seo-plugin';
 

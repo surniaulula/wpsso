@@ -236,11 +236,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-article_section':	// Article Section.
 
-							$general_page_link = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site',
+							$article_section_option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site',
 								_x( 'Default Article Section', 'option label', 'wpsso' ) );
 
 							$text = sprintf( __( 'A customized section for this article, which may be different than the %s option value.',
-								'wpsso' ), $general_page_link ) . ' ';
+								'wpsso' ), $article_section_option_link ) . ' ';
 
 							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag.', 'wpsso' ),
 								'<code>article:section</code>' );
@@ -257,11 +257,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-product_category':	// Product Category.
 
-							$general_page_link = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site',
+							$product_cat_option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site',
 								_x( 'Default Product Category', 'option label', 'wpsso' ) );
 
 							$text = sprintf( __( 'A customized category for this product, which may be different than the %s option value.',
-								'wpsso' ), $general_page_link ) . ' ';
+								'wpsso' ), $product_cat_option_link ) . ' ';
 
 							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag.',
 								'wpsso' ), '<code>product:category</code>' );
@@ -1369,7 +1369,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					}	// End of tooltip-plugin switch.
 
 				/**
-				 * Publisher 'Facebook' settings.
+				 * Facebook settings.
 				 */
 				} elseif ( strpos( $msg_key, 'tooltip-fb_' ) === 0 ) {
 
@@ -1431,7 +1431,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					}	// End of tooltip-fb switch.
 
 				/**
-				 * Publisher 'Google' settings.
+				 * Google settings.
 				 */
 				} elseif ( strpos( $msg_key, 'tooltip-g_' ) === 0 ) {
 
@@ -1447,7 +1447,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					}
 				
 				/**
-				 * Publisher 'SEO' settings.
+				 * SEO settings.
 				 */
 				} elseif ( strpos( $msg_key, 'tooltip-seo_' ) === 0 ) {
 
@@ -1476,7 +1476,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					}	// End of tooltip-google switch.
 
 				/**
-				 * Publisher 'Robots' settings.
+				 * Robots settings.
 				 */
 				} elseif ( strpos( $msg_key, 'tooltip-robots_' ) === 0 ) {
 
@@ -1543,8 +1543,25 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					}	// End of tooltip-robots switch.
 
+					$robots_disabled = empty( $this->p->options[ 'add_meta_name_robots' ] ) ? true : false;
+
+					if ( $robots_disabled ) {
+
+						$seo_other_tab_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_head_tags-tab_seo_other',
+							_x( 'SSO', 'menu title', 'wpsso' ) . ' &gt; ' .
+							_x( 'Advanced Settings', 'lib file description', 'wpsso' ) . ' &gt; ' .
+							_x( 'HTML Tags', 'metabox title', 'wpsso' ) . ' &gt; ' .
+							_x( 'SEO / Other', 'metabox tab', 'wpsso' ) );
+
+						$text .= ' ' . sprintf( __( 'Note that the <code>%1$s</code> HTML tag is currently disabled.',
+							'wpsso' ), 'meta name robots' ) . ' ';
+
+						$text .= sprintf( __( 'You can re-enable this option under the %2$s tab.',
+							'wpsso' ), 'meta name robots', $seo_other_tab_link );
+					}
+
 				/**
-				 * Publisher 'Schema' settings.
+				 * Schema settings.
 				 */
 				} elseif ( strpos( $msg_key, 'tooltip-schema_' ) === 0 ) {
 
@@ -1655,7 +1672,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					}	// End of tooltip-google switch.
 
 				/**
-				 * Publisher 'Pinterest' settings.
+				 * Pinterest settings.
 				 */
 				} elseif ( strpos( $msg_key, 'tooltip-p_' ) === 0 ) {
 
@@ -1726,7 +1743,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					}	// End of tooltip-p switch.
 
 				/**
-				 * Publisher 'Twitter' settings.
+				 * Twitter settings.
 				 */
 				} elseif ( strpos( $msg_key, 'tooltip-tc_' ) === 0 ) {
 
@@ -1793,7 +1810,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					}	// End of tooltip-tc switch.
 
 				/**
-				 * Publisher 'Instagram' settings.
+				 * Instagram settings.
 				 */
 				} elseif ( strpos( $msg_key, 'tooltip-instagram_' ) === 0 ) {
 
@@ -1820,7 +1837,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					}	// End of tooltip-instagram switch.
 
 				/**
-				 * Publisher 'LinkedIn' settings.
+				 * LinkedIn settings.
 				 */
 				} elseif ( strpos( $msg_key, 'tooltip-linkedin_' ) === 0 ) {
 
@@ -1847,7 +1864,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					}	// End of tooltip-linkedin switch.
 
 				/**
-				 * Publisher 'Myspace' settings.
+				 * Myspace settings.
 				 */
 				} elseif ( strpos( $msg_key, 'tooltip-myspace_' ) === 0 ) {
 
@@ -1874,7 +1891,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						}	// End of tooltip-myspace switch.
 
 				/**
-				 * Publisher 'Wikipedia' settings.
+				 * Wikipedia settings.
 				 */
 				} elseif ( strpos( $msg_key, 'tooltip-wikipedia_' ) === 0 ) {
 
@@ -2402,7 +2419,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= __( 'If your theme or another plugin already creates one or more of these HTML tags, you can uncheck them here to prevent duplicates from being added.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'Please note that the <code>%1$s</code> and <code>%2$s</code> SEO HTML tags are disabled automatically if a known SEO plugin is detected, and the <code>%3$s</code> HTML tag is disabled by default (as themes often include this HTML tag in their header templates).', 'wpsso' ), 'meta name description', 'meta name robots', 'link rel canonical' );
+							$text .= sprintf( __( 'Please note that the <code>%1$s</code> and <code>%2$s</code> HTML tags are disabled automatically if a known SEO plugin is detected, and the <code>%3$s</code> HTML tag is disabled by default (as themes often include this HTML tag in their header templates).', 'wpsso' ), 'meta name description', 'meta name robots', 'link rel canonical' );
 
 							$text .= '</p>';
 
@@ -2652,12 +2669,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'notice-content-filters-disabled':
 
-						$filters_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content',
+						$content_filters_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content',
 							_x( 'Use WordPress Content Filters', 'option label', 'wpsso' ) );
 
 						$text = '<p class="top">';
 
-						$text .= '<b>' . sprintf( __( 'The %1$s advanced option is currently disabled.', 'wpsso' ), $filters_option_link ) . '</b> ';
+						$text .= '<b>' . sprintf( __( 'The %1$s advanced option is currently disabled.',
+							'wpsso' ), $content_filters_option_link ) . '</b> ';
 
 						$text .= sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions and detect additional images and/or embedded videos provided by shortcodes.', 'wpsso' ), $info[ 'name' ] );
 
@@ -2789,7 +2807,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$um_check_updates_transl = _x( 'Check for Plugin Updates', 'submit button', 'wpsso' );
 
-						$tools_settings_page_link = $this->p->util->get_admin_url( 'tools',
+						$tools_page_link = $this->p->util->get_admin_url( 'tools',
 							_x( 'Tools and Actions', 'lib file description', 'wpsso' ) );
 
 						$wp_updates_page_link = '<a href="' . admin_url( 'update-core.php' ) . '">' . 
@@ -2800,7 +2818,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text = sprintf( __( '%1$s version %2$s requires the use of %3$s version %4$s or newer (version %5$s is currently installed).', 'wpsso' ), $info[ 'name_pro' ], $info[ 'version' ], $um_info[ 'short' ], $um_rec_version, $um_version ) . ' ';
 
-						$text .= sprintf( __( 'If an update for %1$s is not available under the WordPress %2$s page, use the <em>%3$s</em> button in the %4$s settings page to force an immediate refresh of the plugin update information.', 'wpsso' ), $um_info[ 'name' ], $wp_updates_page_link, $um_check_updates_transl, $tools_settings_page_link );
+						$text .= sprintf( __( 'If an update for %1$s is not available under the WordPress %2$s page, use the <em>%3$s</em> button in the %4$s settings page to force an immediate refresh of the plugin update information.', 'wpsso' ), $um_info[ 'name' ], $wp_updates_page_link, $um_check_updates_transl, $tools_page_link );
 
 						break;
 
@@ -3224,11 +3242,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		 */
 		public function p_img_disabled( $extra_css_class = '' ) {
 
-			$pin_opt_link = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest',
+			$pin_option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest',
 				_x( 'Add Hidden Image for Pinterest', 'option label', 'wpsso' ) );
 
 			// translators: %s is the option name, linked to its settings page.
-			$text = sprintf( __( 'Modifications disabled (%s option is unchecked).', 'wpsso' ), $pin_opt_link );
+			$text = sprintf( __( 'Modifications disabled (%s option is unchecked).', 'wpsso' ), $pin_option_link );
 
 			return '<p class="status-msg smaller disabled ' . $extra_css_class . '">' . $text . '</p>';
 		}

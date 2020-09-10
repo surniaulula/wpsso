@@ -305,22 +305,26 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					/**
 					 * Publisher 'Robots' settings.
 					 */
+					$robots_disabled = empty( $this->p->options[ 'add_meta_name_robots' ] ) ? true : false;
+
 					$table_rows[ 'robots_max_snippet' ] = $this->form->get_tr_hide( 'basic', 'robots_max_snippet' ) .
 					$this->form->get_th_html( _x( 'Robots Snippet Max. Length', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'robots_max_snippet' ) . 
-					'<td>' . $this->form->get_input( 'robots_max_snippet', $css_class = 'chars', $css_id = '', $len = 0, $holder = true ) . ' ' .
-					_x( 'characters or less', 'option comment', 'wpsso' ) . ' (' .
-					_x( '-1 for no limit', 'option comment', 'wpsso' ) . ')</td>';
+					'<td>' . $this->form->get_input( 'robots_max_snippet',
+						$css_class = 'chars', $css_id = '', $len = 0, $holder = true, $robots_disabled ) . ' ' .
+					_x( 'characters or less', 'option comment', 'wpsso' ) . ' (' . _x( '-1 for no limit', 'option comment', 'wpsso' ) . ')</td>';
 
 					$table_rows[ 'robots_max_image_preview' ] = $this->form->get_tr_hide( 'basic', 'robots_max_image_preview' ) .
 					$this->form->get_th_html( _x( 'Robots Image Preview Size', 'option label', 'wpsso' ),
-						$css_class = 'medium', $css_id = 'robots_max_image_preview' ) . 
-					'<td>' . $this->form->get_select( 'robots_max_image_preview', $this->p->cf[ 'form' ][ 'robots_max_image_preview' ] ) . '</td>';
+						$css_class = '', $css_id = 'robots_max_image_preview' ) . 
+					'<td>' . $this->form->get_select( 'robots_max_image_preview', $this->p->cf[ 'form' ][ 'robots_max_image_preview' ],
+						$css_class = '', $css_id = '', $is_assoc = true, $robots_disabled ) . '</td>';
 
 					$table_rows[ 'robots_max_video_preview' ] = $this->form->get_tr_hide( 'basic', 'robots_max_video_preview' ) .
 					$this->form->get_th_html( _x( 'Robots Video Max. Previews', 'option label', 'wpsso' ),
 						$css_class = 'medium', $css_id = 'robots_max_video_preview' ) . 
-					'<td>' . $this->form->get_input( 'robots_max_video_preview', $css_class = 'chars', $css_id = '', $len = 0, $holder = true ) .
+					'<td>' . $this->form->get_input( 'robots_max_video_preview',
+						$css_class = 'chars', $css_id = '', $len = 0, $holder = true, $robots_disabled ) .
 					_x( 'seconds', 'option comment', 'wpsso' ) . ' (' . _x( '-1 for no limit', 'option comment', 'wpsso' ) . ')</td>';
 
 					break;
