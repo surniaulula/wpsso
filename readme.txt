@@ -309,7 +309,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.4.0-b.1 (2020/09/10)**
+**Version 8.4.0-rc.1 (2020/09/10)**
 
 * **New Features**
 	* None.
@@ -514,7 +514,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.4.0-b.1 =
+= 8.4.0-rc.1 =
 
 (2020/09/10) Added a new "Robots Meta" tab in the Document SSO metabox with options for Google Search. Fixed a bug that prevented getting posts for archive pages, when not in an archive page. Fixed the top toolbar overlaying the block editor in fullscreen mode.
 
