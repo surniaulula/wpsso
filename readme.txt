@@ -12,7 +12,7 @@ Requires PHP: 5.6
 Requires At Least: 4.2
 Tested Up To: 5.5
 WC Tested Up To: 4.5.1
-Stable Tag: 8.3.1
+Stable Tag: 8.4.0
 
 Make sure your content looks great on social sites and search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded.
 
@@ -476,42 +476,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored the Gravatar integration module to always fallback to the "mystery person" image.
 	* Refactored the `WpssoMedia->get_featured()` method to use a local cache to avoid duplicate database queries.
 	* Refactored the `WpssoMedia->get_attached_images()` method to use a local cache to avoid duplicate database queries.
-* **Requires At Least**
-	* PHP v5.6.
-	* WordPress v4.2.
-
-**Version 7.15.0 (2020/08/02)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Removed the Users &gt; Add Person &gt; Additional Role option.
-	* Added the ability to translate labels in the "Standard Features Status" and "Premium Features Status" metaboxes in the SSO &gt; Dashboard page.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Tested with WordPress v5.5.
-* **Requires At Least**
-	* PHP v5.6.
-	* WordPress v4.2.
-
-**Version 7.14.1 (2020/07/25)**
-
-**The Open Graph meta tags for WooCommerce products have been extended to include additional information for each product variation. The sanitation of Open Graph meta tags, and their generation from internal meta tag data, has also been completely refactored.**
-
-* **New Features**
-	* Extended the Open Graph product type by adding all available product meta tags for each product offer (ie. 'product:retailer_item_id', 'product:retailer_part_no', 'product:availability', 'product:color', 'og:image', etc.).
-* **Improvements**
-	* Added 'PreSale' to the list of product availability values.
-	* Updated the Open Graph product availability values (see [Facebook Marketing API &gt; Catalog &gt; Reference &gt; OpenGraph Tags](https://developers.facebook.com/docs/marketing-api/catalog/reference/#og-tags)).
-* **Bugfixes**
-	* Fixed a possible missing Open Graph image for WooCommerce products with variations.
-* **Developer Notes**
-	* Refactored the `WpssoHead->get_mt_array()` method.
-	* Refactored the `WpssoOpenGraph->sanitize_mt_array()` method.
-	* Added a new `WpssoHead->add_mt_array()` method to recurse the meta tag arrays.
-	* Added a new `SucomUtil::get_mt_og_seed()` method to provide a default 'wpsso_og_seed' filter value.
-	* Added a new `WpssoOpenGraph::check_mt_value_price` method to sanitize product price values.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
