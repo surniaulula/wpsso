@@ -22,8 +22,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.4.0-dev.4',	// Plugin version.
-					'opt_version' => '760',		// Increment when changing default option values.
+					'version'     => '8.4.0-dev.5',	// Plugin version.
+					'opt_version' => '761',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Make sure your content looks great on social sites and search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -1172,7 +1172,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'site_pub_schema_type'         => 'organization',	// WebSite Publisher Type.
 					'site_pub_person_id'           => 'none',		// WebSite Publisher (Person).
 					'schema_img_max'               => 1,
-					'schema_desc_max_len'          => 250,		// Max. Schema Description Length (hard limit).
+					'schema_desc_max_len'          => 250,		// Schema Description Max. Length (hard limit).
 
 					/**
 					 * Open Graph image size.
@@ -1324,41 +1324,44 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_type_for_tribe_events'           => 'article',	// For The Events Calendar.
 					'og_type_for_website'                => 'website',
 
-					'og_author_field'            => 'facebook',		// Author Profile URL Field.
-					'og_def_article_section'     => 'none',			// Default Article Section.
-					'og_def_img_id'              => '',			// Default / Fallback Image ID.
-					'og_def_img_id_pre'          => 'wp',
-					'og_def_img_url'             => '',			// or Default / Fallback Image URL.
-					'og_def_product_category'    => 'none',			// Default Product Category.
-					'og_img_max'                 => 1,
-					'og_vid_max'                 => 1,
-					'og_vid_autoplay'            => 1,
-					'og_vid_prev_img'            => 1,			// Include Video Preview Images.
-					'og_title_sep'               => '-',
-					'og_title_max_len'           => 70,
-					'og_title_warn_len'          => 40,
-					'og_desc_max_len'            => 300,
-					'og_desc_warn_len'           => 200,
-					'og_desc_hashtags'           => 0,
-					'g_site_verify'              => '',			// Google Website Verification ID.
-					'p_site_verify'              => '',			// Pinterest Website Verification ID.
-					'p_publisher_url'            => '',
-					'p_add_nopin_header_img_tag' => 1,			// Add "nopin" to Site Header Image.
-					'p_add_nopin_media_img_tag'  => 0,			// Add "nopin" to WordPress Media.
-					'p_add_img_html'             => 0,			// Add Hidden Image for Pinterest.
-					'p_img_desc_max_len'         => 300,			// Maximum Image Description Length (hard limit).
-					'p_img_desc_warn_len'        => 100,			// Maximum Image Description Length (soft limit).
-					'sc_publisher_url'           => '',
-					'seo_desc_max_len'           => 220,			// Max. Description Meta Tag Length (hard limit).
-					'seo_author_name'            => 'display_name',		// Author / Person Name Format.
-					'tumblr_publisher_url'       => '',
-					'yt_publisher_url'           => '',
+					'og_author_field'              => 'facebook',		// Author Profile URL Field.
+					'og_def_article_section'       => 'none',			// Default Article Section.
+					'og_def_img_id'                => '',			// Default / Fallback Image ID.
+					'og_def_img_id_pre'            => 'wp',
+					'og_def_img_url'               => '',			// or Default / Fallback Image URL.
+					'og_def_product_category'      => 'none',			// Default Product Category.
+					'og_img_max'                   => 1,
+					'og_vid_max'                   => 1,
+					'og_vid_autoplay'              => 1,
+					'og_vid_prev_img'              => 1,			// Include Video Preview Images.
+					'og_title_sep'                 => '-',
+					'og_title_max_len'             => 70,
+					'og_title_warn_len'            => 40,
+					'og_desc_max_len'              => 300,
+					'og_desc_warn_len'             => 200,
+					'og_desc_hashtags'             => 0,
+					'g_site_verify'                => '',			// Google Website Verification ID.
+					'p_site_verify'                => '',			// Pinterest Website Verification ID.
+					'p_publisher_url'              => '',
+					'p_add_nopin_header_img_tag'   => 1,			// Add "nopin" to Site Header Image.
+					'p_add_nopin_media_img_tag'    => 0,			// Add "nopin" to WordPress Media.
+					'p_add_img_html'               => 0,			// Add Hidden Image for Pinterest.
+					'p_img_desc_max_len'           => 300,			// Image Description Max. Length (hard limit).
+					'p_img_desc_warn_len'          => 100,			// Image Description Max. Length (soft limit).
+					'robots_max_snippet'           => -1,
+					'robots_max_image_preview'     => 'large',
+					'robots_max_video_preview'     => -1,
+					'sc_publisher_url'             => '',
+					'seo_author_name'              => 'display_name',	// Author / Person Name Format.
+					'seo_desc_max_len'             => 220,			// Description Meta Tag Max. Length (hard limit).
+					'tumblr_publisher_url'         => '',
+					'yt_publisher_url'             => '',
 
 					/**
 					 * Twitter Card options.
 					 */
 					'tc_site'           => '',				// Twitter Business @username (localized).
-					'tc_desc_max_len'   => 200,				// Maximum Description Length (hard limit).
+					'tc_desc_max_len'   => 200,				// Description Max. Length (hard limit).
 					'tc_type_singular'  => 'summary_large_image',
 					'tc_type_default'   => 'summary',
 					'tc_sum_img_width'  => 1200,

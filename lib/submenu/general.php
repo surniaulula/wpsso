@@ -182,7 +182,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>' . $this->form->get_input( 'og_title_sep', 'short' ) . '</td>';
 
 					$table_rows[ 'og_title_max_len' ] = '' . 
-					$this->form->get_th_html( _x( 'Maximum Title Length', 'option label', 'wpsso' ),
+					$this->form->get_th_html( _x( 'Title Max. Length', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'og_title_max_len' ) . 
 					'<td>' . 
 					$this->form->get_input( 'og_title_max_len', $css_class = 'chars' ) . ' ' . 
@@ -192,7 +192,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'</td>';
 
 					$table_rows[ 'og_desc_max_len' ] = '' . 
-					$this->form->get_th_html( _x( 'Maximum Description Length', 'option label', 'wpsso' ),
+					$this->form->get_th_html( _x( 'Description Max. Length', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'og_desc_max_len' ) . 
 					'<td>' . 
 					$this->form->get_input( 'og_desc_max_len', $css_class = 'chars' ) . ' ' . 
@@ -280,18 +280,48 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						return $this->p->msgs->get_schema_disabled_rows( $table_rows, $col_span = 1 );
 					}
 
+					/**
+					 * Publisher 'Google' settings.
+					 */
 					$table_rows[ 'g_site_verify' ] = '' .
 					$this->form->get_th_html( _x( 'Google Website Verification ID', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'g_site_verify' ) . 
 					'<td>' . $this->form->get_input( 'g_site_verify', 'api_key' ) . '</td>';
 
+					/**
+					 * Publisher 'Schema' settings.
+					 */
 					$this->add_schema_item_props_table_rows( $table_rows, $this->form );
 
+					/**
+					 * Publisher 'SEO' settings.
+					 */
 					$table_rows[ 'seo_desc_max_len' ] = $this->form->get_tr_hide( 'basic', 'seo_desc_max_len' ) . 
-					$this->form->get_th_html( _x( 'Max. Description Meta Tag Length', 'option label', 'wpsso' ),
+					$this->form->get_th_html( _x( 'Description Meta Tag Max. Length', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'seo_desc_max_len' ) . 
 					'<td>' . $this->form->get_input( 'seo_desc_max_len', $css_class = 'chars' ) . ' ' .
 					_x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
+
+					/**
+					 * Publisher 'Robots' settings.
+					 */
+					$table_rows[ 'robots_max_snippet' ] = $this->form->get_tr_hide( 'basic', 'robots_max_snippet' ) .
+					$this->form->get_th_html( _x( 'Robots Snippet Max. Length', 'option label', 'wpsso' ),
+						$css_class = '', $css_id = 'robots_max_snippet' ) . 
+					'<td>' . $this->form->get_input( 'robots_max_snippet', $css_class = 'chars', $css_id = '', $len = 0, $holder = true ) . ' ' .
+					_x( 'characters or less', 'option comment', 'wpsso' ) . ' (' .
+					_x( '-1 for no limit', 'option comment', 'wpsso' ) . ')</td>';
+
+					$table_rows[ 'robots_max_image_preview' ] = $this->form->get_tr_hide( 'basic', 'robots_max_image_preview' ) .
+					$this->form->get_th_html( _x( 'Robots Image Preview Size', 'option label', 'wpsso' ),
+						$css_class = 'medium', $css_id = 'robots_max_image_preview' ) . 
+					'<td>' . $this->form->get_select( 'robots_max_image_preview', $this->p->cf[ 'form' ][ 'robots_max_image_preview' ] ) . '</td>';
+
+					$table_rows[ 'robots_max_video_preview' ] = $this->form->get_tr_hide( 'basic', 'robots_max_video_preview' ) .
+					$this->form->get_th_html( _x( 'Robots Video Max. Previews', 'option label', 'wpsso' ),
+						$css_class = 'medium', $css_id = 'robots_max_video_preview' ) . 
+					'<td>' . $this->form->get_input( 'robots_max_video_preview', $css_class = 'chars', $css_id = '', $len = 0, $holder = true ) .
+					_x( 'seconds', 'option comment', 'wpsso' ) . ' (' . _x( '-1 for no limit', 'option comment', 'wpsso' ) . ')</td>';
 
 					break;
 
@@ -326,7 +356,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					' <em>' . _x( 'recommended (adds a hidden image in the content)', 'option comment', 'wpsso' ) . '</em></td>';
 
 					$table_rows[ 'p_img_desc_max_len' ] = $this->form->get_tr_hide( 'basic', 'p_img_desc_max_len' ) . 
-					$this->form->get_th_html( _x( 'Maximum Image Description Length', 'option label', 'wpsso' ),
+					$this->form->get_th_html( _x( 'Image Description Max. Length', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'p_img_desc_max_len' ) . 
 					'<td>' .
 					$this->form->get_input( 'p_img_desc_max_len', $css_class = 'chars' ) . ' ' . 
@@ -350,7 +380,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>' . $this->form->get_input_locale( 'tc_site' ) . '</td>';
 
 					$table_rows[ 'tc_desc_max_len' ] = $this->form->get_tr_hide( 'basic', 'tc_desc_max_len' ) . 
-					$this->form->get_th_html( _x( 'Maximum Description Length', 'option label', 'wpsso' ),
+					$this->form->get_th_html( _x( 'Description Max. Length', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'tc_desc_max_len' ) . 
 					'<td>' . $this->form->get_input( 'tc_desc_max_len', $css_class = 'chars' ) . ' ' . 
 					_x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';

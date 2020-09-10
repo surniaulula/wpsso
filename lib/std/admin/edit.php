@@ -212,7 +212,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Include Preview Images', 'option label', 'wpsso' ),
-					'tooltip'  => 'og_vid_prev_img',	// Use tooltip message from settings.
+					'tooltip'  => 'og_vid_prev_img',	// Use the tooltip from plugin settings.
 					'content'  => $form->get_no_checkbox( 'og_vid_prev_img' ) . $this->p->msgs->preview_images_first(),
 				),
 				'og_vid_max' => $mod[ 'is_post' ] ? array(
@@ -220,9 +220,9 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Maximum Videos', 'option label', 'wpsso' ),
-					'tooltip'  => 'og_vid_max',	// Use tooltip message from settings.
+					'tooltip'  => 'og_vid_max',	// Use the tooltip from plugin settings.
 					'content'  => $form->get_no_select( 'og_vid_max', range( 0, $max_media_items ), $css_class = 'medium' ),
-				) : '',	// Placeholder if not a post module.
+				) : '',	// Add a placeholder if not a post module.
 				'og_vid_dimensions' => array(
 					'tr_class' => $form->get_css_class_hide_vid_dim( 'basic', 'og_vid' ),
 					'th_class' => 'medium',

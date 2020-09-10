@@ -612,6 +612,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 			} else {
+
 				self::update_data_id( $json_data, $page_type_id );
 			}
 
@@ -2106,7 +2107,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Called by WpssoJsonProHeadItemList.
+		 * Called by WpssoJsonFiltersTypeItemList.
 		 */
 		public static function add_itemlist_data( array &$json_data, array $mod, array $mt_og, $page_type_id, $is_main, $ppp = false ) {
 
@@ -2636,7 +2637,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Called by WpssoJsonProHeadQAPage.
+		 * Called by WpssoJsonFiltersTypeQAPage.
 		 *
 		 * $json_data may be a null property, so do not force the array type on this method argument.
 		 */
@@ -3795,6 +3796,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$thing[ 'organization' ][ 'local.business' ] =& $thing[ 'place' ][ 'local.business' ];
 		}
 
+		/**
+		 * $posts_args, for example, can provide a different sort order.
+		 */
 		private static function get_page_posts_mods( array $mod, $page_type_id, $is_main, $ppp, $wpsso_paged, array $posts_args = array() ) {
 
 			$wpsso =& Wpsso::get_instance();
@@ -3804,74 +3808,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			$page_posts_mods = array();
-
-			if ( $is_main ) {
-
-				if ( $mod[ 'is_home_posts' ] ) {
-
-					if ( $wpsso->debug->enabled ) {
-
-						$wpsso->debug->log( 'main query is home posts (archive = true)' );
-					}
-
-					$is_archive = true;
-
-				} elseif ( $mod[ 'is_post_type_archive' ] ) {
-
-					if ( $wpsso->debug->enabled ) {
-
-						$wpsso->debug->log( 'main query is post type archive (archive = true)' );
-					}
-
-					$is_archive = true;
-
-				} elseif ( $mod[ 'is_term' ] ) {
-
-					if ( $wpsso->debug->enabled ) {
-
-						$wpsso->debug->log( 'main query is term (archive = true)' );
-					}
-
-					$is_archive = true;
-
-				} elseif ( $mod[ 'is_user' ] ) {
-
-					if ( $wpsso->debug->enabled ) {
-
-						$wpsso->debug->log( 'main query is user (archive = true)' );
-					}
-
-					$is_archive = true;
-
-				} elseif ( ! is_object( $mod[ 'obj' ] ) ) {
-
-					if ( $wpsso->debug->enabled ) {
-
-						$wpsso->debug->log( 'object is false (archive = true)' );
-					}
-
-					$is_archive = true;
-
-				} else {
-
-					if ( $wpsso->debug->enabled ) {
-
-						$wpsso->debug->log( 'is main is true (archive = false)' );
-					}
-
-					$is_archive = false;
-				}
-
-			} else {
-
-				if ( $wpsso->debug->enabled ) {
-
-					$wpsso->debug->log( 'is main is false (archive = false)' );
-				}
-
-				$is_archive = false;
-			}
+			$use_wp_query = is_object( $mod[ 'obj' ] ) ? false : true;
 
 			$posts_args = array_merge( array(
 				'has_password'   => false,
@@ -3883,53 +3820,54 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'posts_per_page' => $ppp,
 			), $posts_args );
 
-			if ( $is_archive ) {
+			if ( $mod[ 'is_home_posts' ] ) {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'module is home posts (use_wp_query = true)' );
+				}
+
+				$use_wp_query = true;
+
+			} elseif ( $mod[ 'is_post_type_archive' ] ) {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'module is post type archive (use_wp_query = true)' );
+				}
+
+				$use_wp_query = true;
+
+				$posts_args[ 'post_type' ] = $mod[ 'post_type' ];
+
+			} elseif ( $mod[ 'is_user' ] ) {
+
+				$posts_args[ 'post_type' ] = 'post';
+			}
+
+			$page_posts_mods = array();
+
+			if ( $use_wp_query ) {
 
 				if ( $wpsso->debug->enabled ) {
 
 					$wpsso->debug->log( 'using query loop to get post mods' );
 				}
 
-				/**
-				 * Setup the query for archive pages in the back-end.
-				 */
-				$use_query = SucomUtilWP::doing_frontend() ? true : false;
+				global $wp_query;
 
-				$use_query = apply_filters( $wpsso->lca . '_page_posts_use_query', $use_query, $mod );
+				$saved_wp_query = $wp_query;
 
-				if ( ! $use_query ) {
+				if ( $wpsso->debug->enabled ) {
 
-					if ( $mod[ 'is_post_type_archive' ] ) {
+					$wpsso->debug->log( 'setting the $wp_query variable' );
+				}
 
-						$posts_args[ 'post_type' ] = $mod[ 'post_type' ];
-					
-					} elseif ( $mod[ 'is_user' ] ) {
+				$wp_query = new WP_Query( $posts_args );
 
-						$posts_args[ 'post_type' ] = 'post';
-					}
+				if ( $mod[ 'is_home_posts' ] ) {
 
-					global $wp_query;
-
-					$saved_wp_query = $wp_query;
-
-					if ( $wpsso->debug->enabled ) {
-
-						$wpsso->debug->log( 'setting the $wp_query variable' );
-					}
-
-					$wp_query = new WP_Query( $posts_args );
-
-					if ( $mod[ 'is_home_posts' ] ) {
-
-						$wp_query->is_home = true;
-					}
-
-				} else {
-
-					if ( $wpsso->debug->enabled ) {
-
-						$wpsso->debug->log( 'keeping existing $wp_query variable' );
-					}
+					$wp_query->is_home = true;
 				}
 
 				$have_num = 0;
@@ -3979,20 +3917,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$wpsso->debug->log( 'no posts to add' );
 				}
 
-				/**
-				 * Restore the original WP_Query.
-				 */
-				if ( ! $use_query ) {
+				if ( $wpsso->debug->enabled ) {
 
-					if ( $wpsso->debug->enabled ) {
-
-						$wpsso->debug->log( 'restoring the $wp_query variable' );
-					}
-
-					$wp_query = $saved_wp_query;
+					$wpsso->debug->log( 'restoring the $wp_query variable' );
 				}
 
-			} elseif ( is_object( $mod[ 'obj' ] ) && method_exists( $mod[ 'obj' ], 'get_posts_mods' ) ) {
+				$wp_query = $saved_wp_query;
+
+			} elseif ( is_object( $mod[ 'obj' ] ) ) {	// Just in case.
 
 				if ( $wpsso->debug->enabled ) {
 

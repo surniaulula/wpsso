@@ -2941,7 +2941,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			'<td>' . $form->get_input_image_dimensions( 'thumb_img' ) . '</td>';
 
 			$table_rows[ 'schema_desc_max_len' ] = $form->get_tr_hide( 'basic', 'schema_desc_max_len' ) . 
-			$form->get_th_html( _x( 'Max. Schema Description Length', 'option label', 'wpsso' ), '', 'schema_desc_max_len' ) . 
+			$form->get_th_html( _x( 'Schema Description Max. Length', 'option label', 'wpsso' ), '', 'schema_desc_max_len' ) . 
 			'<td>' . $form->get_input( 'schema_desc_max_len', 'chars' ) . ' ' . _x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
 		}
 

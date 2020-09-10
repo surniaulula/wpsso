@@ -448,59 +448,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
-						/**
-						 * See https://developers.google.com/search/reference/robots_meta_tag#max-snippet.
-						 */
-						case 'tooltip-meta-robots_max_snippet':
-
-							$text = __( 'Use a maximum of number characters as a textual snippet for this webpage in search result.', 'wpsso' ) . ' ';
-
-							$text .= __( 'This does not affect image or video previews, nor does it apply to text in the Schema markup of this webpage.', 'wpsso' );
-
-						 	break;
-
-						/**
-						 * See https://developers.google.com/search/reference/robots_meta_tag#max-image-preview.
-						 */
-						case 'tooltip-meta-robots_max_image_preview':
-
-							$text = __( 'Suggest the maximum size of an image preview for this webpage in search results.', 'wpsso' );
-
-							$text .= '<ul>';
-
-							$text .= '<li>' . sprintf( __( '%s = No preview image will be shown.', 'wpsso' ),
-								_x( $this->p->cf[ 'form' ][ 'robots_max_image_preview' ][ 'none' ],
-									'option value', 'wpsso' ) ) . '</li>';
-
-							$text .= '<li>' . sprintf( __( '%s = A default preview image size may be used.', 'wpsso' ),
-								_x( $this->p->cf[ 'form' ][ 'robots_max_image_preview' ][ 'standard' ],
-									'option value', 'wpsso' ) ) . '</li>';
-
-							$text .= '<li>' . sprintf( __( '%s = A larger preview image size, up to the width of the viewport, may be used.',
-								'wpsso' ), _x( $this->p->cf[ 'form' ][ 'robots_max_image_preview' ][ 'large' ],
-									'option value', 'wpsso' ) ) . '</li>';
-
-							$text .= '</ul>';
-
-						 	break;
-
-						/**
-						 * See https://developers.google.com/search/reference/robots_meta_tag#max-video-preview.
-						 */
-						case 'tooltip-meta-robots_max_video_preview':
-
-							$text = __( 'Use a maximum of number seconds for the video snippets of videos from this webpage in search results.', 'wpsso' );
-
-							$text .= '<ul>';
-
-							$text .= '<li>' . __( '0 = Shows a static preview image for videos, if preview images are allowed for this webpage in search results.', 'wpsso' ) . '</li>';
-
-							$text .= '<li>' . __( '-1 = No limit.', 'wpsso' ) . '</li>';
-
-							$text .= '</ul>';
-
-						 	break;
-
 						default:
 
 							$text = apply_filters( $lca . '_messages_tooltip_meta', $text, $msg_key, $info );
@@ -700,13 +647,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-og_title_max_len':	// Maximum Title Length.
+						case 'tooltip-og_title_max_len':	// Title Max. Length.
 
 							$text = sprintf( __( 'The maximum length for the Facebook / Open Graph title value (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'og_title_max_len' ) );
 
 							break;
 
-						case 'tooltip-og_desc_max_len':		// Maximum Description Length.
+						case 'tooltip-og_desc_max_len':		// Description Max. Length.
 
 							$text = sprintf( __( 'The maximum length for the Facebook / Open Graph description value (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'og_desc_max_len' ) ) . ' ';
 
@@ -1512,9 +1459,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-seo_desc_max_len':	// Max. Description Meta Tag Length.
+						case 'tooltip-seo_desc_max_len':	// Description Meta Tag Max. Length.
 
-							$text = sprintf( __( 'The maximum length for the Google Search / SEO description value (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'seo_desc_max_len' ) ) . ' ';
+							$text = sprintf( __( 'The maximum length for the SEO description meta tag value (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'seo_desc_max_len' ) ) . ' ';
 
 							$text .= sprintf( __( 'The maximum length must be at least %d characters or more.', 'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ 'seo_desc_len' ] );
 
@@ -1527,6 +1474,74 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 					}	// End of tooltip-google switch.
+
+				/**
+				 * Publisher 'Robots' settings.
+				 */
+				} elseif ( strpos( $msg_key, 'tooltip-robots_' ) === 0 ) {
+
+					switch ( $msg_key ) {
+
+						/**
+						 * See https://developers.google.com/search/reference/robots_meta_tag#max-snippet.
+						 */
+						case 'tooltip-robots_max_snippet':	// Robots Snippet Max. Length
+
+							$text = __( 'Suggest a maximum of number characters for the textual snippet in search results.', 'wpsso' ) . ' ';
+
+							$text .= __( 'This does not affect image or video previews, or apply to text in Schema markup.', 'wpsso' );
+
+						 	break;
+
+						/**
+						 * See https://developers.google.com/search/reference/robots_meta_tag#max-image-preview.
+						 */
+						case 'tooltip-robots_max_image_preview':
+
+							$text = __( 'Suggest the maximum size of the image preview in search results.', 'wpsso' );
+
+							$text .= '<ul>';
+
+							$text .= '<li>' . sprintf( __( '%s = No preview image will be shown.', 'wpsso' ),
+								_x( $this->p->cf[ 'form' ][ 'robots_max_image_preview' ][ 'none' ],
+									'option value', 'wpsso' ) ) . '</li>';
+
+							$text .= '<li>' . sprintf( __( '%s = A default image preview size may be used.', 'wpsso' ),
+								_x( $this->p->cf[ 'form' ][ 'robots_max_image_preview' ][ 'standard' ],
+									'option value', 'wpsso' ) ) . '</li>';
+
+							$text .= '<li>' . sprintf( __( '%s = A larger image preview size, up to the width of the viewport, may be used.',
+								'wpsso' ), _x( $this->p->cf[ 'form' ][ 'robots_max_image_preview' ][ 'large' ],
+									'option value', 'wpsso' ) ) . '</li>';
+
+							$text .= '</ul>';
+
+						 	break;
+
+						/**
+						 * See https://developers.google.com/search/reference/robots_meta_tag#max-video-preview.
+						 */
+						case 'tooltip-robots_max_video_preview':
+
+							$text = __( 'Suggest a maximum of number seconds for video snippets in search results.', 'wpsso' );
+
+							$text .= '<ul>';
+
+							$text .= '<li>' . __( '0 = Shows a static image for videos, if image previews are allowed in search results.', 'wpsso' ) . '</li>';
+
+							$text .= '<li>' . __( '-1 = No limit.', 'wpsso' ) . '</li>';
+
+							$text .= '</ul>';
+
+						 	break;
+
+						default:
+
+							$text = apply_filters( $lca . '_messages_tooltip_robots', $text, $msg_key, $info );
+
+							break;
+
+					}	// End of tooltip-robots switch.
 
 				/**
 				 * Publisher 'Schema' settings.
@@ -1560,7 +1575,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-schema_desc_max_len':		// Max. Schema Description Length.
+						case 'tooltip-schema_desc_max_len':		// Schema Description Max. Length.
 
 							$text = sprintf( __( 'The maximum length for the Schema description value (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'schema_desc_max_len' ) ) . ' ';
 
@@ -1688,7 +1703,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-p_img_desc_max_len':		// Maximum Image Description Length.
+						case 'tooltip-p_img_desc_max_len':		// Image Description Max. Length.
 
 							$text = sprintf( __( 'The maximum length used for the Pinterest Pin It browser button description (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'p_img_desc_max_len' ) ) . ' ';
 

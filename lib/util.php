@@ -3699,70 +3699,34 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		public function get_robots_content( array $mod = array() ) {
 
-			$inverse_directives = array(
-				'nofollow'     => array( 'follow' ),				// Do not follow links on this webpage.
-				'noimageindex' => array( 'max-image-preview' ),			// Do not index images on this webpage.
-				'noindex'      => array( 'index' ),				// Do not show this webpage in search results.
-				'nosnippet'    => array( 'max-snippet', 'max-video-preview' ),	// Do not show a text snippet or a video preview in search results.
-			);
-
 			$directives = self::get_robots_default_directives();
+				
+			$md_opts = $mod[ 'id' ] && is_object( $mod[ 'obj' ] ) ? $mod[ 'obj' ]->get_options( $mod[ 'id' ] ) : array();
 
-			/**
-			 * Maybe get custom directive values for this webpage.
-			 */
-			if ( $mod[ 'id' ] && is_object( $mod[ 'obj' ] ) ) {
+			foreach ( $directives as $directive_key => $directive_value ) {
 
-				$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
+				$opt_key = SucomUtil::sanitize_hookname( 'robots_' . $directive_key );
 
-				foreach ( $directives as $directive_key => $directive_value ) {
+				/**
+				 * Maybe use a custom directive value for this webpage.
+				 */
+				if ( isset( $md_opts[ $opt_key ] ) ) {
 
-					$opt_key = SucomUtil::sanitize_hookname( 'robots_' . $directive_key );
+					self::set_robots_directive( $directives, $directive_key, $md_opts[ $opt_key ] );
 
-					if ( isset( $md_opts[ $opt_key ] ) ) {
+				/**
+				 * Maybe read a default value from the plugin settings.
+				 */
+				} elseif ( isset( $this->p->options[ $opt_key ] ) ) {
 
-						if ( is_bool( $directive_value ) ) {	// Default is a boolean value, so set as boolean.
-
-							$directives[ $directive_key ] = $md_opts[ $opt_key ] ? true : false;	// Force boolean.
-
-							/**
-							 * Check for inverse directive boolean values.
-							 */
-							if ( isset( $inverse_directives[ $directive_key ] ) ) {
-
-								foreach ( $inverse_directives[ $directive_key ] as $inverse_key ) {
-
-									if ( isset( $directives[ $inverse_key ] ) && is_bool( $directives[ $inverse_key ] ) ) {
-
-										$directives[ $inverse_key ] = $md_opts[ $opt_key ] ? false : true;	// Inverse boolean.
-									}
-								}
-							}
-
-						} else {
-
-							$directives[ $directive_key ] = $md_opts[ $opt_key ];
-						}
-					}
+					self::set_robots_directive( $directives, $directive_key, $this->p->options[ $opt_key ] );
 				}
 			}
 
 			/**
-			 * Sanity check - make sure inverse directives are unset.
+			 * Sanity check - make sure inverse directives are removed.
 			 */
-			foreach ( $inverse_directives as $directive_key => $inverse_keys ) {
-
-				if ( ! empty( $directives[ $directive_key ] ) ) {	// $directive_key is true.
-
-					foreach ( $inverse_keys as $inverse_key ) {	// Unset each inverse directive.
-
-						if ( isset( $directives[ $inverse_key ] ) ) {	// Just in case.
-							
-							unset( $directives[ $inverse_key ] );
-						}
-					}
-				}
-			}
+			self::sanitize_robots_directives( $directives );
 
 			$content = '';
 

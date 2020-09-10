@@ -363,6 +363,13 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					$opt_key = SucomUtil::sanitize_hookname( 'robots_' . $directive );
 
 					/**
+					 * Use a default value from the plugin settings, if one exists.
+					 */
+					if ( isset( $this->p->options[ $opt_key ] ) ) {
+
+						$md_defs[ $opt_key ] = $this->p->options[ $opt_key ];
+
+					/**
 					 * Save as a checkbox:
 					 *
 					 *	'robots_noarchive'
@@ -372,7 +379,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					 *	'robots_nosnippet'
 					 *	'robots_notranslate'
 					 */
-					if ( 0 === strpos( $directive, 'no' ) && is_bool( $value ) ) {
+					} elseif ( 0 === strpos( $directive, 'no' ) && is_bool( $value ) ) {
 
 						$md_defs[ $opt_key ] = $value ? 1 : 0;
 
@@ -1819,7 +1826,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 *
 		 * Used by WpssoFaqShortcodeQuestion->do_shortcode().
 		 */
-		public static function add_attached( $mod_id, $attach_type, $attach_id ) {
+		public static function add_attached( $mod_id, $attach_type, $attachment_id ) {
 
 			$opts = static::get_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $single = true );	// Use static method from child.
 
@@ -1841,7 +1848,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		/**
 		 * Since WPSSO Core v7.6.0.
 		 */
-		public static function delete_attached( $mod_id, $attach_type, $attach_id ) {
+		public static function delete_attached( $mod_id, $attach_type, $attachment_id ) {
 
 			$opts = static::get_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $single = true );	// Use static method from child.
 
