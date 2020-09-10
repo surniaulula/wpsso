@@ -214,7 +214,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-seo_desc':		// Search Description.
 
-							$text = __( 'A customized description for the Google Search "description" meta tag.', 'wpsso' );
+							$text = __( 'A customized description for the SEO description meta tag.', 'wpsso' );
+
+							$text .= $this->maybe_html_tag_disabled_text( $parts = array( 'meta', 'name', 'description' ) );
 
 						 	break;
 
@@ -1439,9 +1441,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-g_site_verify':	// Google Website Verification ID.
 
-							$text .= sprintf( __( 'To verify your website ownership with <a href="%1$s">Google\'s Search Console</a>, select the "Settings" left-side menu option in the Search Console, then "Ownership and verification", and choose the "HTML tag" method.', 'wpsso' ), 'https://search.google.com/search-console' ) . ' ';
+							$text .= sprintf( __( 'To verify your website ownership with <a href="%1$s">Google\'s Search Console</a>, select the <em>Settings</em> left-side menu option in the Search Console, then <em>Ownership and verification</em>, and then choose the <em>HTML tag</em> method.', 'wpsso' ), 'https://search.google.com/search-console' ) . ' ';
 
-							$text .= __( 'Enter the "google-site-verification" meta tag <code>content</code> value here (enter only the verification ID string, not the meta tag HTML).', 'wpsso' );
+							$text .= __( 'Enter the "google-site-verification" meta tag <code>content</code> value here (enter only the verification ID value, not the whole HTML tag).', 'wpsso' );
+
+							$text .= $this->maybe_html_tag_disabled_text( $parts = array( 'meta', 'name', 'google-site-verification' ) );
 
 							break;
 					}
@@ -1464,6 +1468,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = sprintf( __( 'The maximum length for the SEO description meta tag value (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'seo_desc_max_len' ) ) . ' ';
 
 							$text .= sprintf( __( 'The maximum length must be at least %d characters or more.', 'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ 'seo_desc_len' ] );
+
+							$text .= $this->maybe_html_tag_disabled_text( $parts = array( 'meta', 'name', 'description' ) );
 
 							break;
 
@@ -1543,22 +1549,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					}	// End of tooltip-robots switch.
 
-					$robots_disabled = empty( $this->p->options[ 'add_meta_name_robots' ] ) ? true : false;
-
-					if ( $robots_disabled ) {
-
-						$seo_other_tab_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_head_tags-tab_seo_other',
-							_x( 'SSO', 'menu title', 'wpsso' ) . ' &gt; ' .
-							_x( 'Advanced Settings', 'lib file description', 'wpsso' ) . ' &gt; ' .
-							_x( 'HTML Tags', 'metabox title', 'wpsso' ) . ' &gt; ' .
-							_x( 'SEO / Other', 'metabox tab', 'wpsso' ) );
-
-						$text .= ' ' . sprintf( __( 'Note that the <code>%s</code> HTML tag is currently disabled.',
-							'wpsso' ), 'meta name robots' ) . ' ';
-
-						$text .= sprintf( __( 'You can re-enable this option under the %s tab.',
-							'wpsso' ), 'meta name robots', $seo_other_tab_link );
-					}
+					$text .= $this->maybe_html_tag_disabled_text( $parts = array( 'meta', 'name', 'robots' ) );
 
 				/**
 				 * Schema settings.
@@ -2970,7 +2961,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						break;
 				}
+
 			} else {
+
 				$text = apply_filters( $lca . '_messages', $text, $msg_key, $info );
 			}
 
@@ -3301,6 +3294,39 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			$table_rows[ 'schema_disabled' ] = '<tr><td align="center" colspan="' . $col_span . '">' . $this->schema_disabled() . '</td></tr>';
 
 			return $table_rows;
+		}
+
+		private function maybe_html_tag_disabled_text( array $parts ) {
+
+			$text = '';
+
+			if ( empty( $parts[ 2 ] ) ) {	// Check for an incomplete HTML tag parts array.
+
+				return $text;
+			}
+
+			$opt_key = strtolower( 'add_' . implode( '_', $parts ) );	// Use same concatenation technique as WpssoHead->add_mt_singles().
+
+			$html_tag = implode( ' ', $parts );	// HTML tag string for display.
+
+			$is_disabled = empty( $this->p->options[ $opt_key ] ) ? true : false;
+
+			if ( $is_disabled ) {
+
+				$seo_other_tab_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_head_tags-tab_seo_other',
+					_x( 'SSO', 'menu title', 'wpsso' ) . ' &gt; ' .
+					_x( 'Advanced Settings', 'lib file description', 'wpsso' ) . ' &gt; ' .
+					_x( 'HTML Tags', 'metabox title', 'wpsso' ) . ' &gt; ' .
+					_x( 'SEO / Other', 'metabox tab', 'wpsso' ) );
+
+				$text .= ' ' . sprintf( __( 'Note that the <code>%s</code> HTML tag is currently disabled.',
+					'wpsso' ), $html_tag ) . ' ';
+
+				$text .= sprintf( __( 'You can re-enable this option under the %s tab.',
+					'wpsso' ), $html_tag, $seo_other_tab_link );
+			}
+
+			return $text;
 		}
 
 		private function get_ext_p_ext( $ext ) {

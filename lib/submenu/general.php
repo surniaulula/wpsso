@@ -283,29 +283,35 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					}
 
 					/**
-					 * Publisher 'Google' settings.
+					 * Google settings.
 					 */
+					$g_verif_disabled = empty( $this->p->options[ 'add_meta_name_google-site-verification' ] ) ? true : false;
+
 					$table_rows[ 'g_site_verify' ] = '' .
 					$this->form->get_th_html( _x( 'Google Website Verification ID', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'g_site_verify' ) . 
-					'<td>' . $this->form->get_input( 'g_site_verify', 'api_key' ) . '</td>';
+					'<td>' . $this->form->get_input( 'g_site_verify',
+						$css_class = 'api_key', $css_id = '', $len = 0, $holder = false, $g_verif_disabled ) . ' ' .
 
 					/**
-					 * Publisher 'Schema' settings.
+					 * Schema settings.
 					 */
 					$this->add_schema_item_props_table_rows( $table_rows, $this->form );
 
 					/**
-					 * Publisher 'SEO' settings.
+					 * SEO settings.
 					 */
+					$seo_desc_disabled = empty( $this->p->options[ 'add_meta_name_description' ] ) ? true : false;
+
 					$table_rows[ 'seo_desc_max_len' ] = $this->form->get_tr_hide( 'basic', 'seo_desc_max_len' ) . 
 					$this->form->get_th_html( _x( 'Description Meta Tag Max. Length', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'seo_desc_max_len' ) . 
-					'<td>' . $this->form->get_input( 'seo_desc_max_len', $css_class = 'chars' ) . ' ' .
+					'<td>' . $this->form->get_input( 'seo_desc_max_len',
+						$css_class = 'chars', $css_id = '', $len = 0, $holder = false, $seo_desc_disabled ) . ' ' .
 					_x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
 
 					/**
-					 * Publisher 'Robots' settings.
+					 * Robots settings.
 					 */
 					$robots_disabled = empty( $this->p->options[ 'add_meta_name_robots' ] ) ? true : false;
 
@@ -313,7 +319,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->form->get_th_html( _x( 'Robots Snippet Max. Length', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'robots_max_snippet' ) . 
 					'<td>' . $this->form->get_input( 'robots_max_snippet',
-						$css_class = 'chars', $css_id = '', $len = 0, $holder = true, $robots_disabled ) . ' ' .
+						$css_class = 'chars', $css_id = '', $len = 0, $holder = false, $robots_disabled ) . ' ' .
 					_x( 'characters or less', 'option comment', 'wpsso' ) . ' (' . _x( '-1 for no limit', 'option comment', 'wpsso' ) . ')</td>';
 
 					$table_rows[ 'robots_max_image_preview' ] = $this->form->get_tr_hide( 'basic', 'robots_max_image_preview' ) .
@@ -326,7 +332,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->form->get_th_html( _x( 'Robots Video Max. Previews', 'option label', 'wpsso' ),
 						$css_class = 'medium', $css_id = 'robots_max_video_preview' ) . 
 					'<td>' . $this->form->get_input( 'robots_max_video_preview',
-						$css_class = 'chars', $css_id = '', $len = 0, $holder = true, $robots_disabled ) .
+						$css_class = 'chars', $css_id = '', $len = 0, $holder = false, $robots_disabled ) .
 					_x( 'seconds', 'option comment', 'wpsso' ) . ' (' . _x( '-1 for no limit', 'option comment', 'wpsso' ) . ')</td>';
 
 					break;

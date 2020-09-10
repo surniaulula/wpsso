@@ -2608,7 +2608,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			/**
 			 * Only check if using the default filter name.
 			 */
-			$opt_key = 'plugin_head_attr_filter_name';
+			$opt_key = 'plugin_head_attr_filter_name';	// Hard-coded value - no sanitation required.
 			$def_val = 'head_attributes';
 
 			if ( empty( $this->p->options[ $opt_key ] ) || $this->p->options[ $opt_key ] !== $def_val ) {
@@ -2831,7 +2831,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'archive_page' => _x( 'Open Graph Type for Other Archive', 'option label', 'wpsso' ),
 			) as $type_name => $th_label ) {
 
-				$opt_key = 'og_type_for_' . $type_name;
+				$opt_key = 'og_type_for_' . $type_name;	// Hard-coded value - no sanitation required.
 
 				$table_rows[ $opt_key ] = $form->get_tr_hide( 'basic', $opt_key ) .
 					$form->get_th_html( $th_label, '', $opt_key ) . 
@@ -2847,7 +2847,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $post_types as $obj ) {
 
-				$type_keys[] = $opt_key = 'og_type_for_' . $obj->name;
+				$type_keys[] = $opt_key = SucomUtil::sanitize_hookname( 'og_type_for_' . $obj->name );
 
 				$obj_label = SucomUtilWP::get_object_label( $obj );
 
@@ -2855,7 +2855,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
 			}
 
-			$type_keys[] = $opt_key = 'og_type_for_post_archive';
+			$type_keys[] = $opt_key = 'og_type_for_post_archive';	// Hard-coded value - no sanitation required.
 
 			$type_select .= '<p>' . $form->$se_func( $opt_key, $og_types, $css_class = 'og_type' ) . ' ' .
 				sprintf( _x( 'for %s', 'option comment', 'wpsso' ), _x( 'Post Type Archive Page', 'option comment', 'wpsso' ) ) . '</p>' . "\n";
@@ -2878,7 +2878,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $taxonomies as $obj ) {
 
-				$type_keys[] = $opt_key = 'og_type_for_tax_' . $obj->name;
+				$type_keys[] = $opt_key = SucomUtil::sanitize_hookname( 'og_type_for_tax_' . $obj->name );
 
 				$obj_label = SucomUtilWP::get_object_label( $obj );
 
@@ -3003,7 +3003,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'archive_page' => _x( 'Schema Type for Other Archive', 'option label', 'wpsso' ),
 			) as $type_name => $th_label ) {
 
-				$opt_key = 'schema_type_for_' . $type_name;
+				$opt_key = 'schema_type_for_' . $type_name;	// Hard-coded value - no sanitation required.
 
 				$table_rows[ $opt_key ] = $form->get_tr_hide( 'basic', $opt_key ) . 
 					$form->get_th_html( $th_label, '', $opt_key ) . 
@@ -3028,7 +3028,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $post_types as $obj ) {
 
-				$type_keys[] = $opt_key = 'schema_type_for_' . $obj->name;
+				$type_keys[] = $opt_key = SucomUtil::sanitize_hookname( 'schema_type_for_' . $obj->name );
 
 				$obj_label = SucomUtilWP::get_object_label( $obj );
 
@@ -3043,7 +3043,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					) . ' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
 			}
 
-			$type_keys[] = $opt_key = 'schema_type_for_post_archive';
+			$type_keys[] = $opt_key = 'schema_type_for_post_archive';	// Hard-coded value - no sanitation required.
 
 			$type_select .= '<p>' . $form->$se_func( $opt_key, $schema_types, $css_class = 'schema_type', $css_id = '',
 				$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
@@ -3074,7 +3074,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $taxonomies as $obj ) {
 
-				$type_keys[] = $opt_key = 'schema_type_for_tax_' . $obj->name;
+				$type_keys[] = $opt_key = SucomUtil::sanitize_hookname( 'schema_type_for_tax_' . $obj->name );
 
 				$obj_label = SucomUtilWP::get_object_label( $obj );
 

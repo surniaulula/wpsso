@@ -126,7 +126,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->log( 'locale current = ' . SucomUtil::get_locale( 'current' ) );
 				$this->p->debug->log( 'locale mod = ' . SucomUtil::get_locale( $mod ) );
 				$this->p->debug->log( 'wp_query salt = ' . SucomUtil::get_query_salt() );
-				$this->p->debug->log( 'add_head_html = ' . ( $add_head_html ? 'true' : 'false' ) );
+				$this->p->debug->log( 'add head html = ' . ( $add_head_html ? 'true' : 'false' ) );
 
 				$this->p->util->log_is_functions();
 			}
@@ -1078,9 +1078,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				/**
 				 * Convert mixed case itemprop names (for example) to lower case to determine the option key value.
 				 */
-				$opt_name = strtolower( 'add_' . $parts[ 1 ] . '_' . $parts[ 2 ] . '_' . $parts[ 3 ] );
+				$opt_key = strtolower( 'add_' . $parts[ 1 ] . '_' . $parts[ 2 ] . '_' . $parts[ 3 ] );
 
-				if ( ! empty( $this->p->options[ $opt_name ] ) ) {
+				if ( ! empty( $this->p->options[ $opt_key ] ) ) {
 
 					$parts[0] = ( empty( $parts[ 6 ] ) ? '' : '<!-- ' . $parts[ 6 ] . ' -->' ) . 
 						'<' . $parts[ 1 ] . ' ' . $parts[ 2 ] . '="' . $match_name . '" ' . $parts[ 4 ] . '="' . $parts[ 5 ] . '"/>' . "\n";
