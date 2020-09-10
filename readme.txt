@@ -309,7 +309,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.4.0-dev.5 (2020/09/09)**
+**Version 8.4.0-b.1 (2020/09/10)**
 
 * **New Features**
 	* None.
@@ -329,7 +329,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Replaced the option tooltip help image with a font.
 * **Bugfixes**
 	* Fixed a bug since v8.3.0 that prevented getting posts for archive pages, when not in an archive page.
-	* Fixed the top toolbar overlaying content when there are SSO notifications in block editor fullscreen mode.
+	* Fixed the top toolbar overlaying the block editor in fullscreen mode when there are SSO notifications.
 * **Developer Notes**
 	* Refactored the `WpssoSchema::get_page_posts_mods()` method to allow getting posts for archive pages, when not in an archive page.
 	* Refactored `SucomUtil::get_robots_default_directives()` to include disabled directives as well.
@@ -510,9 +510,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.4.0-dev.5 =
+= 8.4.0-b.1 =
 
-(2020/09/09) Added a new "Robots Meta" tab in the Document SSO metabox with options for Google Search.
+(2020/09/10) Added a new "Robots Meta" tab in the Document SSO metabox with options for Google Search. Fixed a bug that prevented getting posts for archive pages, when not in an archive page. Fixed the top toolbar overlaying the block editor in fullscreen mode.
 
 = 8.3.1 =
 
