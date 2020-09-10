@@ -316,8 +316,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **This release also fixes an important bug, introduced in v8.3.0, that prevented getting archive post objects when not in an archive page.**
 
 * **New Features**
-	* None.
-* **Improvements**
 	* Added a new "Robots Meta" tab in the Document SSO metabox with options for Google Search:
 		* No Archive
 		* No Follow
@@ -332,8 +330,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Robots Snippet Max. Length
 		* Robots Image Preview Size
 		* Robots Video Max. Previews
-	* Removed the "Robots" options from the classic editor Publish metabox.
+* **Improvements**
 	* Added a dismissible notice if the "meta name robots" HTML tag and a known SEO plugin has not been detected.
+	* Removed the "Robots" options from the classic editor Publish metabox.
 	* Replaced the option tooltip help image with a font.
 * **Bugfixes**
 	* Fixed an important bug, introduced in v8.3.0, that prevented getting archive post objects when not in an archive page.
