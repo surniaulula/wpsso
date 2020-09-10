@@ -311,6 +311,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 **Version 8.4.0-rc.1 (2020/09/10)**
 
+**This release adds a new "Robots Meta" tab in the Document SSO metabox with options for Google Search and other search engine robots.**
+
+**This release also fixes an important bug, introduced in v8.3.0, that prevented getting archive post objects when not in an archive page.**
+
 * **New Features**
 	* None.
 * **Improvements**
@@ -332,10 +336,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a dismissible notice if the "meta name robots" HTML tag and a known SEO plugin has not been detected.
 	* Replaced the option tooltip help image with a font.
 * **Bugfixes**
-	* Fixed a bug since v8.3.0 that prevented getting posts for archive pages, when not in an archive page.
+	* Fixed an important bug, introduced in v8.3.0, that prevented getting archive post objects when not in an archive page.
 	* Fixed the top toolbar overlaying the block editor in fullscreen mode when there are SSO notifications.
 * **Developer Notes**
-	* Refactored the `WpssoSchema::get_page_posts_mods()` method to allow getting posts for archive pages, when not in an archive page.
+	* Refactored the `WpssoSchema::get_page_posts_mods()` method to allow getting archive post objects when not in an archive page.
 	* Refactored `SucomUtil::get_robots_default_directives()` to include disabled directives as well.
 	* Refactored `WpssoUtil::get_robots_content()` to use custom options from the Document SSO metabox.
 	* Added a post/term/user ID argument to the `WpssoWpMeta->upgrade_options()` method.
