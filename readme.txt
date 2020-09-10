@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 5.6
 Requires At Least: 4.2
 Tested Up To: 5.5
-WC Tested Up To: 4.5.0
+WC Tested Up To: 4.5.1
 Stable Tag: 8.3.1
 
 Make sure your content looks great on social sites and search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded.
@@ -309,7 +309,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.4.0-dev.4 (2020/09/09)**
+**Version 8.4.0-dev.5 (2020/09/09)**
 
 * **New Features**
 	* None.
@@ -321,21 +321,23 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* No Index
 		* No Snippet
 		* No Translate
-		* Max Snippet Length
-		* Max Image Preview
-		* Max Video Preview
+		* Snippet Max. Length
+		* Image Preview Size
+		* Video Max. Previews
 	* Removed the "Robots" options from the classic editor Publish metabox.
 	* Added a dismissible notice if the "meta name robots" HTML tag and a known SEO plugin has not been detected.
 	* Replaced the option tooltip help image with a font.
 * **Bugfixes**
+	* Fixed a bug since v8.3.0 that prevented getting posts for archive pages, when not in an archive page.
 	* Fixed the top toolbar overlaying content when there are SSO notifications in block editor fullscreen mode.
 * **Developer Notes**
+	* Refactored the `WpssoSchema::get_page_posts_mods()` method to allow getting posts for archive pages, when not in an archive page.
+	* Refactored `SucomUtil::get_robots_default_directives()` to include disabled directives as well.
+	* Refactored `WpssoUtil::get_robots_content()` to use custom options from the Document SSO metabox.
 	* Added a post/term/user ID argument to the `WpssoWpMeta->upgrade_options()` method.
 	* Added new `get_meta()`, `update_meta()`, and `delete_meta()` static methods in the WpssoWpMeta, WpssoPost, WpssoTerm, and WpssoUser classes.
 	* Moved the `get_attached()`, `add_attached()`, and `delete_attached()` static methods from the WpssoPost, WpssoTerm, and WpssoUser classes to the WpssoWpMeta class.
-	* Changed `WpssoWpMeta->must_be_extended()` to `WpssoWpMeta::must_be_extended()`.
-	* Refactored `SucomUtil::get_robots_default_directives()` to include disabled directives as well.
-	* Refactored `WpssoUtil::get_robots_content()` to use WPSSO post/term/user options from the Document SSO metabox.
+	* Changed `WpssoWpMeta->must_be_extended()` to a `WpssoWpMeta::must_be_extended()` static method.
 	* Removed the `WpssoPost->show_robots_options()` and `WpssoPost->save_robots_options()` methods (replaced by the "Robots Meta" tab in the Document SSO metabox).
 	* Added custom CSS filters for Yoast SEO and Rank Math in the WpssoCompat class.
 * **Requires At Least**
@@ -508,7 +510,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.4.0-dev.4 =
+= 8.4.0-dev.5 =
 
 (2020/09/09) Added a new "Robots Meta" tab in the Document SSO metabox with options for Google Search.
 
