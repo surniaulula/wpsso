@@ -260,7 +260,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 						_x( 'HTML Tags', 'metabox title', 'wpsso' ) . ' &gt; ' .
 						_x( 'SEO / Other', 'metabox tab', 'wpsso' ) );
 
-					$notice_msg = sprintf( __( 'Please note that the <code>%1$s</code> HTML tag is currently disabled and a known SEO plugin has not been detected.', 'wpsso' ), 'meta name robots' ) . ' ';
+					$notice_msg = sprintf( __( 'Please note that the <code>%s</code> HTML tag is currently disabled and a known SEO plugin has not been detected.', 'wpsso' ), 'meta name robots' ) . ' ';
 
 					$notice_msg .= sprintf( __( 'If another SEO plugin or your theme templates are not adding the <code>%1$s</code> HTML tag to your webpages, you can re-enable this option under the %2$s tab.', 'wpsso' ), 'meta name robots', $seo_other_tab_link ) . ' ';
 

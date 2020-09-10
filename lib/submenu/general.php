@@ -182,6 +182,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>' . $this->form->get_input( 'og_title_sep', 'short' ) . '</td>';
 
 					$table_rows[ 'og_title_max_len' ] = '' . 
+					// translators: Title Max. Length label for Open Graph.
 					$this->form->get_th_html( _x( 'Title Max. Length', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'og_title_max_len' ) . 
 					'<td>' . 
@@ -192,6 +193,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'</td>';
 
 					$table_rows[ 'og_desc_max_len' ] = '' . 
+					// translators: Description Max. Length label for Twitter and Open Graph.
 					$this->form->get_th_html( _x( 'Description Max. Length', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'og_desc_max_len' ) . 
 					'<td>' . 
@@ -384,6 +386,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>' . $this->form->get_input_locale( 'tc_site' ) . '</td>';
 
 					$table_rows[ 'tc_desc_max_len' ] = $this->form->get_tr_hide( 'basic', 'tc_desc_max_len' ) . 
+					// translators: Description Max. Length label for Twitter and Open Graph.
 					$this->form->get_th_html( _x( 'Description Max. Length', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'tc_desc_max_len' ) . 
 					'<td>' . $this->form->get_input( 'tc_desc_max_len', $css_class = 'chars' ) . ' ' . 

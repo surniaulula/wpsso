@@ -1498,11 +1498,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 */
 						case 'tooltip-robots_max_image_preview':
 
-							$text = __( 'Suggest the maximum size of the image preview in search results.', 'wpsso' );
+							$text = __( 'Suggest a maximum size for the image preview in search results.', 'wpsso' );
 
 							$text .= '<ul>';
 
-							$text .= '<li>' . sprintf( __( '%s = No preview image will be shown.', 'wpsso' ),
+							$text .= '<li>' . sprintf( __( '%s = No image preview will be shown.', 'wpsso' ),
 								_x( $this->p->cf[ 'form' ][ 'robots_max_image_preview' ][ 'none' ],
 									'option value', 'wpsso' ) ) . '</li>';
 
@@ -1553,10 +1553,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							_x( 'HTML Tags', 'metabox title', 'wpsso' ) . ' &gt; ' .
 							_x( 'SEO / Other', 'metabox tab', 'wpsso' ) );
 
-						$text .= ' ' . sprintf( __( 'Note that the <code>%1$s</code> HTML tag is currently disabled.',
+						$text .= ' ' . sprintf( __( 'Note that the <code>%s</code> HTML tag is currently disabled.',
 							'wpsso' ), 'meta name robots' ) . ' ';
 
-						$text .= sprintf( __( 'You can re-enable this option under the %2$s tab.',
+						$text .= sprintf( __( 'You can re-enable this option under the %s tab.',
 							'wpsso' ), 'meta name robots', $seo_other_tab_link );
 					}
 
