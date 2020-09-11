@@ -1437,39 +1437,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $columns;
 		}
 
-		public function get_pid_thumb_img_html( $pid, $mod, $md_pre = 'og' ) {
-
-			$media_html = '';
-
-			if ( empty( $pid ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: image id is empty' );
-				}
-
-				return $media_html;
-			}
-
-			$size_name = 'thumbnail';
-
-			$media_html .= '<!-- getting the WordPress "' . $size_name . '" image size for image id ' . $pid . ' -->';
-
-			/**
-			 * get_mt_single_image_src() returns an og:image:url value, not an og:image:secure_url.
-			 */
-			$mt_single_image = $this->p->media->get_mt_single_image_src( $pid, $size_name, $check_dupes = false );
-
-			$image_url = SucomUtil::get_first_mt_media_url( $mt_single_image );
-
-			if ( ! empty( $image_url ) ) {
-
-				$media_html .= '<img src="' . $image_url . '">';
-			}
-
-			return $media_html;
-		}
-
 		/**
 		 * Returns an array of single image associative arrays.
 		 *
@@ -1781,7 +1748,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			if ( ! empty( $image_url ) ) {
 
-				$media_html .= '<div class="col_thumb_img" style="background-image:url(' . $image_url . ');"></div><!-- .col_thumb_img -->';
+				$media_html .= '<div class="wp_thumb_img" style="background-image:url(' . $image_url . ');"></div><!-- .wp_thumb_img -->';
 			}
 
 			return $media_html;
