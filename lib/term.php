@@ -828,7 +828,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				$this->p->debug->mark();
 			}
-			
+
 			static $do_once = array();
 
 			if ( isset( $do_once[ $term_id ][ $term_tax_id ] ) ) {

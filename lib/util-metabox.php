@@ -216,7 +216,7 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 			}
 
 			if ( 0 === $count_rows ) {
-				
+
 				$table_rows[ 'no_options' ] = '<tr><td align="center">' .
 					'<p class="status-msg">' . __( 'No options available.', 'wpsso' ) . '</p>' .
 					'</td></tr>';

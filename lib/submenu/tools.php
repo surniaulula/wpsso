@@ -63,14 +63,14 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			 * option value.
 			 */
 			if ( $this->using_db_cache ) {
-			
+
 				if ( $this->p->options[ 'plugin_shortener' ] !== 'none' ) {
 
 					$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
 						_x( 'Refresh Short URLs on Clear Cache', 'option label', 'wpsso' ) );
 
 					echo '<p class="status-msg smaller left">';
-					
+
 					echo '* ';
 
 					if ( empty( $this->p->options[ 'plugin_clear_short_urls' ] ) ) {
@@ -118,7 +118,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			 * option value.
 			 */
 			if ( $this->using_db_cache ) {
-			
+
 				if ( $this->p->options[ 'plugin_shortener' ] !== 'none' ) {
 
 					$clear_cache_label_transl .= ' *';

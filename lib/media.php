@@ -412,15 +412,15 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				 * If the post ID is an attachment page, then use the post ID as the image ID.
 				 */
 				} elseif ( ( is_attachment( $post_id ) || 'attachment' === get_post_type( $post_id ) ) && wp_attachment_is_image( $post_id ) ) {
-	
+
 					$pid = $local_cache_featured_ids[ $post_id ] = $post_id;
-	
+
 				} elseif ( $this->p->avail[ 'wp' ][ 'featured' ] && has_post_thumbnail( $post_id ) ) {
-	
+
 					$pid = $local_cache_featured_ids[ $post_id ] = get_post_thumbnail_id( $post_id );
-	
+
 				} else {
-	
+
 					$pid = $local_cache_featured_ids[ $post_id ] = false;
 				}
 
@@ -1427,7 +1427,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		public function get_mt_single_image_src( $pid, $size_name = 'thumbnail', $check_dupes = true, $mt_pre = 'og' ) {
 
 			$mt_single_image = SucomUtil::get_mt_image_seed( $mt_pre );
-		
+
 			$this->add_mt_single_image_src( $mt_single_image, $pid, $size_name, $check_dupes, $mt_pre );
 
 			return $mt_single_image;

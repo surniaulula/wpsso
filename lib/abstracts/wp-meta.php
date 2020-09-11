@@ -197,17 +197,17 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$mod = self::$mod_defaults;
 
 			$post_id = 0;
-			
+
 			if ( 'page' === get_option( 'show_on_front' ) ) {
-			
+
 				if ( ! $post_id = (int) get_option( 'page_on_front', $default = 0 ) ) {
 
 					$post_id = (int) get_option( 'page_for_posts', $default = 0 );
 				}
-			
+
 				$mod = $wpsso->post->get_mod( $post_id );
 			}
-			
+
 			/**
 			 * Post elements.
 			 */
@@ -500,11 +500,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 						'nosnippet',
 						'notranslate',
 					) as $directive ) {
-	
+
 						$opt_key = SucomUtil::sanitize_hookname( 'robots_' . $directive );
 
 						$meta_key = SucomUtil::sanitize_hookname( '_' . $this->p->lca . '_' . $directive );
-	
+
 						$value = static::get_meta( $mod_id, $meta_key, $single = true );	// Use static method from child.
 
 						if ( '' !== $value ) {
@@ -689,7 +689,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					$tabs[ 'media' ] = _x( 'Priority Media', 'metabox tab', 'wpsso' );
 
 					if ( $mod[ 'is_public' ] ) {	// Since WPSSO Core v7.0.0.
-				
+
 						if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
 
 							$tabs[ 'robots' ] = _x( 'Robots Meta', 'metabox tab', 'wpsso' );	// Since WPSSO Core v8.4.0.
@@ -1217,7 +1217,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				}
 
 				return null;
-				
+
 			}
 
 			return $local_cache;
@@ -1488,7 +1488,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			if ( empty( $mod[ 'id' ] ) ) {	// Just in case.
 
 				return array();
-			
+
 			} elseif ( $num < 1 ) {	// Just in case.
 
 				return array();

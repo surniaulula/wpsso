@@ -598,7 +598,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 							$this->p->debug->log( 'before post_archive_description filter = ' . $desc_text );
 						}
-	
+
 						$desc_text = apply_filters( $this->p->lca . '_post_archive_description', $desc_text, $mod, $post_type_obj );
 
 					} else {
@@ -609,14 +609,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						 * If there's no excerpt, then fallback to the content.
 						 */
 						if ( empty( $desc_text ) ) {
-	
+
 							if ( $this->p->debug->enabled ) {
 
 								$this->p->debug->log( 'getting the content for post ID ' . $mod[ 'id' ] );
 							}
-	
+
 							$desc_text = $this->get_the_content( $mod, $read_cache, $md_key );
-	
+
 							/**
 							 * Ignore everything before the first paragraph if true.
 							 */
@@ -749,17 +749,17 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					if ( ! empty( $mod[ 'is_date' ] ) || ( ! isset( $mod[ 'is_date' ] ) && is_date() ) ) {
 
 						if ( ! empty( $mod[ 'is_year' ] ) || ( ! isset( $mod[ 'is_year' ] ) && is_year() ) ) {
-	
+
 							$desc_text = sprintf( _x( 'Yearly archive for %s.', 'default description', 'wpsso' ), get_the_date( 'Y' ) );
 
 							$desc_text = apply_filters( $this->p->lca . '_yearly_archive_description', $desc_text, $mod );
 
 						} elseif ( ! empty( $mod[ 'is_month' ] ) || ( ! isset( $mod[ 'is_month' ] ) && is_month() ) ) {
-	
+
 							$desc_text = sprintf( _x( 'Monthly archive for %s.', 'default description', 'wpsso' ), get_the_date( 'F Y' ) );
 
 							$desc_text = apply_filters( $this->p->lca . '_monthly_archive_description', $desc_text, $mod );
-	
+
 						} elseif ( ! empty( $mod[ 'is_day' ] ) || ( ! isset( $mod[ 'is_day' ] ) && is_day() ) ) {
 
 							$desc_text = sprintf( _x( 'Daily archive for %s.', 'default description', 'wpsso' ), get_the_date() );
@@ -1146,14 +1146,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 * Use the excerpt, if we have one.
 			 */
 			if ( $mod[ 'is_post' ] ) {
-			
+
 				if ( has_excerpt( $mod[ 'id' ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
 						$this->p->debug->log( 'getting the excerpt for post id ' . $mod[ 'id' ] );
 					}
-	
+
 					$excerpt_text = get_post_field( 'post_excerpt', $mod[ 'id' ] );
 
 					$filter_excerpt = empty( $this->p->options[ 'plugin_filter_excerpt' ] ) ? false : true;
@@ -1665,7 +1665,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						}
 					}
 				}
-				
+
 				$tags = array_unique( $tags );
 			}
 
@@ -1754,7 +1754,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						'link'      => false,
 						'inclusive' => true,
 					) );
-	
+
 					if ( is_wp_error( $term_parents ) ) {
 
 						if ( $this->p->debug->enabled ) {

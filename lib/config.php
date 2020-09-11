@@ -811,20 +811,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'wpsso'  => true,
 					),
 					'url' => array(
-						
+
 						/**
 						 * WordPress.org.
 						 */
 						'home'   => 'https://wordpress.org/plugins/wpsso-rrssb/',
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-rrssb',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-rrssb/reviews/?rate=5#new-post',
-						
+
 						/**
 						 * GitHub.com.
 						 */
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-rrssb/master/readme.txt',
 						'setup_html' => '',
-						
+
 						/**
 						 * WPSSO.com.
 						 */
@@ -4349,7 +4349,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				$slug = $cf[ 'plugin' ][ $ext ][ 'slug' ];
 
 				if ( defined ( 'WPMU_PLUGIN_DIR' ) && is_dir( $ext_dir = trailingslashit( WPMU_PLUGIN_DIR ) . $slug . '/' ) ) {
-				
+
 					return $local_cache[ $ext ] = $ext_dir;
 				}
 

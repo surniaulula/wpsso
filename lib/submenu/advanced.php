@@ -279,13 +279,13 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				 * Editing Pages metabox.
 				 */
 				case 'edit-product_attrs':
-			
+
 					$this->add_advanced_product_attrs_table_rows( $table_rows, $this->form );
 
 					break;
 
 				case 'edit-custom_fields':
-			
+
 					$this->add_advanced_custom_fields_table_rows( $table_rows, $this->form );
 
 					break;

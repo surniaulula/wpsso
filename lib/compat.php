@@ -82,7 +82,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				if ( ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) ) {
 
 					add_action( 'admin_init', array( $this, 'cleanup_wpseo_notifications' ), 15 );
-				
+
 					$this->p->util->add_plugin_filters( $this, array( 
 						'admin_page_style_css_wpseo' => array( 'admin_page_style_css' => 1 ),
 					) );
@@ -313,7 +313,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				$class_name = get_class( $obj );
 
 				if ( preg_match( '/(Open_Graph|Twitter)/', $class_name ) ) {
-			
+
 					if ( $this->p->debug->enabled ) {
 
 						$this->p->debug->log( 'removing presenter: ' . $class_name );

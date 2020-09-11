@@ -41,7 +41,7 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 		protected function add_plugin_hooks() {
 
 			if ( ! current_user_can( 'create_users' ) ) {	// Just in case.
-	
+
 				// translators: Please ignore - translation uses a different text domain.
 				wp_die( '<h1>' . __( 'You need a higher level of permission.' ) . '</h1>' .
 					// translators: Please ignore - translation uses a different text domain.
@@ -51,7 +51,7 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 			if ( isset( $_REQUEST[ 'action' ] ) && 'createuser' === $_REQUEST[ 'action' ] ) {
 
 				check_admin_referer( 'create-user', '_wpnonce_create-user' );
-	
+
 				$user_id = $this->add_person();
 
 				if ( is_wp_error( $user_id ) ) {
@@ -82,7 +82,7 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 		protected function show_post_body_setting_form() {
 
 			if ( ! current_user_can( 'create_users' ) ) {	// Just in case.
-	
+
 				// translators: Please ignore - translation uses a different text domain.
 				wp_die( '<h1>' . __( 'You need a higher level of permission.' ) . '</h1>' .
 					// translators: Please ignore - translation uses a different text domain.
@@ -132,7 +132,7 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 			<input type="hidden" name="send_user_notification" value="0" />
 
 			<table class="form-table" role="presentation">
-			
+
 				<tr class="form-field form-required">
 
 					<th scope="row"><label for="user_login"><?php _e( 'Username' ); ?>
@@ -144,20 +144,20 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 						<p><span class="description"><?php _e( 'Usernames cannot be changed (without a plugin).',
 							'wpsso' ); ?></span></p>
 					</td>
-					
+
 				</tr>
 
 				<tr class="form-field form-required">
-				
+
 					<th scope="row"><label for="first_name"><?php _e( 'First Name' ); ?>
 						<span class="description"><?php _e( '(required)' ); ?></span></label></th>
-					
+
 					<td><input name="first_name" type="text" id="first_name" value="<?php echo $attr[ 'first_name' ]; ?>" /></td>
 
 				</tr>
 
 				<tr class="form-field form-required">
-				
+
 					<th scope="row">
 						<label for="last_name"><?php _e( 'Last Name' ); ?>
 							<span class="description"><?php _e( '(required)' ); ?></span>
@@ -167,7 +167,7 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 					<td><input name="last_name" type="text" id="last_name" value="<?php echo $attr[ 'last_name' ]; ?>" /></td>
 
 				</tr>
-				
+
 			</table>
 
 			<h2><?php _e( 'Contact Info', 'wpsso' ); ?></h2>
@@ -177,13 +177,13 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 				<tr class="form-field">
 
 					<th scope="row"><label for="email"><?php _e( 'Email' ); ?></label></th>
-					
+
 					<td><input name="email" type="email" id="email" value="<?php echo $attr[ 'email' ]; ?>" /></td>
-					
+
 				</tr>
-				
+
 				<tr class="form-field">
-				
+
 					<th scope="row"><label for="url"><?php _e( 'Website' ); ?></label></th>
 
 					<td><input name="url" type="url" id="url" class="code" value="<?php echo $attr[ 'url' ]; ?>" /></td>
@@ -191,11 +191,11 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 				</tr>
 
 				<?php foreach ( $contact_methods as $name => $desc ) {
-				
+
 					echo '<tr class="user-' . $name . '-wrap">';
 
 					echo '<th><label for="' . $name . '">';
-			
+
 					echo apply_filters( 'user_' . $name . '_label', $desc );
 
 					echo '</label></th>';
@@ -205,15 +205,15 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 				} ?>
 
 			</table>
-			
+
 			<h2><?php _e( 'About the person', 'wpsso' ); ?></h2>
 
 			<table class="form-table" role="presentation">
 
 				<tr class="user-description-wrap">
-				
+
 					<th><label for="description"><?php _e( 'Biographical Info' ); ?></label></th> 
-					
+
 					<td><textarea name="description" id="description" rows="5" cols="30"><?php echo $attr[ 'description' ] ?></textarea></td>
 				</tr>
 
@@ -234,10 +234,10 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 				echo '<ul>';
 
 				foreach ( $this->errors->get_error_messages() as $err ) {
-				
+
 					echo '<li>' . $err . '</li>';
 				}
-		
+
 				echo '</ul>';
 				echo '</div>';
 			}
@@ -251,7 +251,7 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( ! empty( $this->add_errors ) && is_wp_error( $this->add_errors ) ) {
-			
+
 				foreach ( $this->add_errors->get_error_messages() as $message ) {
 
 					echo '<div class="error">';
@@ -264,7 +264,7 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 		private function add_person() {
 
 			if ( ! current_user_can( 'create_users' ) ) {	// Just in case.
-	
+
 				// translators: Please ignore - translation uses a different text domain.
 				wp_die( '<h1>' . __( 'You need a higher level of permission.' ) . '</h1>' .
 					// translators: Please ignore - translation uses a different text domain.
@@ -284,13 +284,13 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 				$user->user_login = sanitize_user( wp_unslash( $_POST[ 'user_login' ] ), $strict = true ) : '';
 
 			$user->user_pass = wp_generate_password( $length = 24, $special_chars = true, $extra_special_chars = false );
-			
+
 			$user->first_name = isset( $_POST[ 'first_name' ] ) ?
 				$user->first_name = sanitize_text_field( $_POST[ 'first_name' ] ) : '';
-			
+
 			$user->last_name = isset( $_POST[ 'last_name' ] ) ?
 				$user->last_name = sanitize_text_field( $_POST[ 'last_name' ] ) : '';
-			
+
 			$user->role = 'person';
 
 			$user->user_email = isset( $_POST[ 'email' ] ) ?

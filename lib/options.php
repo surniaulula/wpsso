@@ -712,7 +712,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( ! $network ) {
 
 				if ( ! $is_new_options && $version_changed ) {
-				
+
 					if ( empty( $opts[ 'plugin_wpsso_tid' ] ) && ! $this->p->check->pp( 'wpsso', $li = false ) ) {
 
 						// translators: %s is the option key name.
@@ -1008,7 +1008,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					switch ( $limit_type ) {
 
 						case 'limit':
-				
+
 							$opts[ $opt_pre . '_img_crop' ]    = 1;
 							$opts[ $opt_pre . '_img_crop:is' ] = 'disabled';	// Prevent changes in settings page.
 
@@ -1020,7 +1020,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							break;
 
 						case 'limit_max':
-					
+
 							if ( $img_crop && $img_ratio >= $limit_ratio ) {
 
 								$notice_msg = sprintf( __( 'Option keys "%1$s" (%2$d) and "%3$s" (%4$d) have an aspect ratio of %5$s:1, which is equal to / or greater than the maximum image ratio of %6$s:1.', 'wpsso' ), $opt_pre . '_img_width', $img_width, $opt_pre . '_img_height', $img_height, $img_ratio, $limit_ratio );
@@ -1171,7 +1171,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				if ( isset( $info[ 'opt_version' ] ) ) {
 
 					$opt_version_key = 'plugin_' . $ext . '_opt_version';
-			
+
 					$opts[ $opt_version_key ] = $info[ 'opt_version' ];
 				}
 			}

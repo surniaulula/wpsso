@@ -1982,7 +1982,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_mt_product_seed( $mt_pre = 'product', array $mt_og = array() ) {
 
 			$mt_ret = array(
-				
+
 				/**
 				 * Product part numbers.
 				 */
@@ -2080,7 +2080,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			);
 
 			if ( isset( $mt_og[ 'og:type' ] ) ) {
-			
+
 				if ( $mt_og[ 'og:type' ] === 'product' ) {
 
 					$mt_ret[ $mt_pre . ':offers' ]  = array();		// Non-standard / internal meta tag.
@@ -2169,7 +2169,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * Deprecated on 2020/08/10.
 		 */
 		public static function get_mt_media_url( array $assoc, $media_pre = 'og:image', $mt_suffixes = null ) {
-			
+
 			return self::get_first_mt_media_url( $assoc, $media_pre, $mt_suffixes );
 		}
 
@@ -3861,7 +3861,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function is_toplevel_edit( $hook_name ) {
 
 			if ( false !== strpos( $hook_name, 'toplevel_page_' ) ) {
-			
+
 				if ( 'edit' === self::get_request_value( 'action', 'GET' ) && (int) self::get_request_value( 'post', 'GET' ) > 0 )  {
 
 					return true;
@@ -3872,7 +3872,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					return true;
 				}
 			}
-			
+
 			return false;
 		}
 
@@ -4153,7 +4153,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$ini_saved[ $name ] = ini_get( $name );	// Returns false if option does not exist.
 
 				if ( false !== $ini_saved[ $name ] ) {
-				
+
 					if ( $ini_saved[ $name ] !== $value ) {
 
 						ini_set( $name, $value );
@@ -4320,7 +4320,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 							 * If the inverse is also a boolean, then set the inverse boolean value.
 							 */
 							if ( isset( self::$robots_directives[ $inverse_key ] ) ) {	// Directive must be known.
-							
+
 								if ( is_bool( self::$robots_directives[ $inverse_key ] ) ) {	// Also a boolean.
 
 									$directives[ $inverse_key ] = $directive_value ? false : true;	// Inverse boolean.
@@ -4348,7 +4348,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					foreach ( $inverse_keys as $inverse_key ) {	// Unset each inverse directive.
 
 						if ( isset( $directives[ $inverse_key ] ) ) {	// Just in case.
-							
+
 							unset( $directives[ $inverse_key ] );
 						}
 					}

@@ -1273,7 +1273,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				$this->p->debug->mark();
 			}
-			
+
 			static $do_once = array();
 
 			if ( isset( $do_once[ $user_id ][ $rel_id ] ) ) {

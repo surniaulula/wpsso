@@ -361,7 +361,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 
 			return $hook_name;
 		}
-		
+
 		private static function get_min_int() {
 
 			return defined( 'PHP_INT_MIN' ) ? PHP_INT_MIN : -2147483648;	// Since PHP 7.0.0.

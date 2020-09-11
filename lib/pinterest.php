@@ -140,7 +140,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			 * Do not add the pinterest image if the current webpage is amp or rss feed.
 			 */
 			if ( SucomUtil::is_amp() || is_feed() ) {
-				
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: is amp or feed' );
 				}

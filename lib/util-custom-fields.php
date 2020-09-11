@@ -123,7 +123,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 				 * Make sure the filtered custom field key is known.
 				 */
 				} else {
-				
+
 					if ( empty( $this->p->options[ $cf_key ] ) ) {
 
 						if ( $this->p->debug->enabled ) {

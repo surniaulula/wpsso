@@ -753,7 +753,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				 */
 				$cache_salt = __METHOD__ . '(url:' . $image_url . ')';
 				$cache_id   = $cache_md5_pre . md5( $cache_salt );
-	
+
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'transient cache salt ' . $cache_salt );
@@ -1005,7 +1005,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 * Standardize to true, false, or non-empty array.
 			 */
 			if ( empty( $crop ) ) {	// 0, false, null, or empty array.
-				
+
 				$crop = false;
 
 			} elseif ( ! is_array( $crop ) ) {	// 1, or true.
@@ -1363,7 +1363,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				 */
 				$cache_salt = __METHOD__ . '(' . $text_list_file . ')';
 				$cache_id   = $cache_md5_pre . md5( $cache_salt );
-	
+
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'transient cache salt ' . $cache_salt );
@@ -1467,7 +1467,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				 */
 				$cache_salt = __METHOD__ . '(' . $text_list_file . ')';
 				$cache_id   = $cache_md5_pre . md5( $cache_salt );
-	
+
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'transient cache salt ' . $cache_salt );
@@ -1590,7 +1590,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return false;
 
 			}
-			
+
 			if ( empty( $query ) ) {	// Just in case.
 
 				if ( $this->p->debug->enabled ) {
@@ -1629,7 +1629,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return false;
 
 			} else {
-			
+
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'getting HTML for ' . $request );
@@ -1653,7 +1653,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					return false;
 				}
 			}
-			
+
 			$html = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// Convert to UTF8.
 
 			$html = preg_replace( '/<!--.*-->/Uums', '', $html );		// Pattern and subject strings are treated as UTF8.
@@ -1674,7 +1674,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return false;
 
 			}
-		
+
 			$doc = new DOMDocument();	// Since PHP v4.1.
 
 			if ( function_exists( 'libxml_use_internal_errors' ) ) {	// Since PHP v5.1.
@@ -2369,7 +2369,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 	* Maybe enforce the FORCE_SSL constant.
 			 	*/
 				if ( self::get_const( 'FORCE_SSL' ) && ! self::is_https( $url ) ) {
-	
+
 					if ( $this->p->debug->enabled ) {
 
 						$this->p->debug->log( 'force ssl is enabled - replacing http by https' );
@@ -2573,7 +2573,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 								$post_obj->post_status = 'publish';
 
 								if ( empty( $post_obj->post_name ) ) {
-								
+
 									$post_obj->post_name = sanitize_title( $post_obj->post_title );
 								}
 
@@ -2709,7 +2709,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				if ( ! empty( $mod[ 'is_date' ] ) || ( ! isset( $mod[ 'is_date' ] ) && is_date() ) ) {
 
 					if ( ! empty( $mod[ 'is_year' ] ) || ( ! isset( $mod[ 'is_year' ] ) && is_year() ) ) {
-	
+
 						$url = $this->check_url_string( get_year_link( get_query_var( 'year' ) ), 'year link' );
 
 					} elseif ( ! empty( $mod[ 'is_month' ] ) || ( ! isset( $mod[ 'is_month' ] ) && is_month() ) ) {
@@ -2750,7 +2750,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 * Maybe enforce the FORCE_SSL constant.
 			 */
 			if ( strpos( $url, '://' ) ) {	// Only check URLs with a protocol.
-				
+
 				if ( self::get_const( 'FORCE_SSL' ) && ! self::is_https( $url ) ) {
 
 					if ( $this->p->debug->enabled ) {
@@ -3264,7 +3264,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 * Make sure the $post object is correct before filtering.
 			 */
 			if ( ! empty( $mod[ 'is_post' ] ) ) {
-			
+
 				if ( ! empty( $mod[ 'id' ] ) ) {
 
 					if ( ! isset( $post->ID ) || $post->ID !== $mod[ 'id' ] ) {
@@ -3273,7 +3273,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 							$this->p->debug->log( 'resetting post object from mod id ' . $mod[ 'id' ] );
 						}
-	
+
 						$post = self::get_post_object( $mod[ 'id' ] );	// Redefine the $post global.
 
 					} elseif ( $this->p->debug->enabled ) {
@@ -3380,9 +3380,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						$query_monitor_link = '<a href="https://wordpress.org/plugins/query-monitor/">Query Monitor</a>';
 
 						$notice_msg = sprintf( __( 'Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f seconds to execute. This is longer than the recommended maximum of %3$0.3f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code.', 'wpsso' ), $filter_api_link, $mtime_total, $mtime_max ) . ' ';
-						
+
 						$notice_msg .= sprintf( __( 'Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance.', 'wpsso' ), $query_monitor_link, $info[ 'short' ] );
-						
+
 						$notice_key = 'slow-filter-hooks-detected-' . $filter_name;
 
 						$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = WEEK_IN_SECONDS );
@@ -3663,7 +3663,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 							$alt = trim( $alt );
 
 							if ( ! empty( $alt ) ) {
-							
+
 								$alt = empty( $alt_prefix ) ? $alt : $alt_prefix . ' ' . $alt;
 
 								/**
@@ -3700,7 +3700,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		public function get_robots_content( array $mod = array() ) {
 
 			$directives = self::get_robots_default_directives();
-				
+
 			$md_opts = $mod[ 'id' ] && is_object( $mod[ 'obj' ] ) ? $mod[ 'obj' ]->get_options( $mod[ 'id' ] ) : array();
 
 			foreach ( $directives as $directive_key => $directive_value ) {
@@ -3871,7 +3871,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				return $this->p->notice->set_ref( $sharing_url, $mod );
 			}
-			
+
 			if ( empty( $mod[ 'id' ] ) ) {
 
 				return $this->p->notice->set_ref( $sharing_url, $mod, $msg_transl );
@@ -3904,7 +3904,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			// translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
 			$msg_transl = sprintf( __( '%1$s for %2$s ID %3$d', 'wpsso' ), $msg_transl, $name_transl, $mod[ 'id' ] );
-			
+
 			return $this->p->notice->set_ref( $sharing_url, $mod, $msg_transl );
 		}
 
@@ -3937,7 +3937,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				return $local_cache[ $md5_pre ][ $cache_type ];
 			}
-			
+
 			if ( ! empty( $this->p->cf[ 'wp' ][ $cache_type ][ $md5_pre ][ 'opt_key' ] ) ) {	// Just in case.
 
 				$opt_key = $this->p->cf[ 'wp' ][ $cache_type ][ $md5_pre ][ 'opt_key' ];

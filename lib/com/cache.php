@@ -265,7 +265,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			if ( isset( $this->ignored_urls[ 'ignore_urls' ][ $url_nofrag ] ) ) {
 
 				unset( $this->ignored_urls[ 'ignore_urls' ][ $url_nofrag ] );
-			
+
 				return true;
 			}
 

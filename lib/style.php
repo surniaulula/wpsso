@@ -293,7 +293,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					margin:5px 0 5px 60px;
 				}
 			';
-			
+
 			/**
 			 * Admin menu and sub-menu items.
 			 */
@@ -551,7 +551,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			}
 
 			if ( isset( $sortable_cols[ 'og_img' ][ 'width' ] ) ) {
-			
+
 				$custom_style_css .= '
 					.column-' . $lca . '_og_img { 
 						width:' . $sortable_cols[ 'og_img' ][ 'width' ] . ' !important;

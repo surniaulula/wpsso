@@ -113,7 +113,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				$wp_config_file_path = $parent_abspath . 'wp-config.php';
 
 			}
-		
+
 			return $wp_config_file_path;
 		}
 
@@ -128,7 +128,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 				return wp_encode_emoji( $content );	// Since WP v4.2.
 			}
-			
+
 			/**
 			 * If mb_convert_encoding() is not available, then return the string un-converted.
 			 */
@@ -196,9 +196,9 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		 * Last synchronized with WordPress v5.0.3 on 2019/01/29.
 		 */
 		public static function raw_wp_get_shortlink( $id = 0, $context = 'post', $allow_slugs = true ) {
-		
+
 			$post_id = 0;
-			
+
 			if ( 'query' === $context && is_singular() ) {
 
 				$post_id = get_queried_object_id();
@@ -229,7 +229,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 					$shortlink = self::raw_home_url( '?p=' . $post_id );
 				}
 			} 
-			
+
 			return $shortlink;
 		}
 
@@ -467,23 +467,23 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		}
 
 		public static function raw_delete_transient( $transient ) { 
-		
+
 			if ( wp_using_ext_object_cache() ) {
-			
+
 				$result = wp_cache_delete( $transient, 'transient' );
-				
+
 			} else {
-			
+
 				$option_timeout = '_transient_timeout_' . $transient;
 				$option         = '_transient_' . $transient;
 				$result         = delete_option( $option );
-				
+
 				if ( $result ) {
 
 					delete_option( $option_timeout );
 				}
 			}
-			
+
 			return $result;
 		}
 
@@ -739,7 +739,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 				return false;
 			}
-			
+
 			$rest_prefix = trailingslashit( rest_get_url_prefix() );
 
 			return strpos( $_SERVER[ 'REQUEST_URI' ], $rest_prefix ) !== false ? true : false;
@@ -832,7 +832,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 					}
 				}
 			}
-	
+
 			if ( $can_edit_id && $can_edit_type ) {
 
 				if ( $is_gutenbox ) {
@@ -1112,27 +1112,27 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		public static function count_metadata( $meta_type, $meta_key ) {
 
 			global $wpdb;
- 
+
  			if ( ! $meta_type || ! $meta_key ) {
 
 				return false;
 			}
- 
+
 			$table = _get_meta_table( $meta_type );
-		
+
 			if ( ! $table ) {
 
 				return false;
 			}
- 
+
 			$type_column = sanitize_key( $meta_type . '_id' );
 
 			$id_column = 'user' == $meta_type ? 'umeta_id' : 'meta_id';
 
 			$meta_key = wp_unslash( $meta_key );
- 
+
  			$query = $wpdb->prepare( "SELECT COUNT( $id_column ) FROM $table WHERE meta_key = %s", $meta_key );
- 
+
  			$result = $wpdb->get_col( $query );
 
 			if ( isset( $result[ 0 ] ) && is_numeric( $result[ 0 ] ) ) {	// Just in case;
@@ -1161,7 +1161,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				$args = array( 'name' => $post_type_name, 'public'  => 1 );
 
 				$post_types = get_post_types( $args, $output = 'names', $operator = 'and' );
-			
+
 				if ( isset( $post_types[ 0 ] ) && $post_types[ 0 ] === $post_type_name ) {
 
 					return true;
@@ -1252,7 +1252,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		public static function get_object_label( $obj ) {
 
 			$desc = '';
-				
+
 			if ( empty( $obj->description ) ) {
 
 				/**
@@ -1262,7 +1262,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 					$desc = '[' . $obj->name . ']';
 				}
-				
+
 			} else {
 
 				$desc = '(' . $obj->description . ')';

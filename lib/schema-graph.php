@@ -139,7 +139,7 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 				} elseif ( '@id' === $key ) {
 
 					if ( count( $json_data ) > 1 ) {	// Ignore arrays with a single element (ie. the @id property).
-				
+
 						if ( strpos( $val, $local_id_anchor ) ) {	// Only optimize our own @ids.
 
 							if ( empty( $local_new_data[ $val ] ) ) {
@@ -149,7 +149,7 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 								foreach ( $local_new_data[ $val ] as $new_key => &$new_val ) {
 
 									if ( is_array( $new_val ) ) {
-	
+
 										self::optimize_json( $new_val );
 									}
 								}
@@ -171,7 +171,7 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 				 * Cleanup any empty @id arrays.
 				 */
 				foreach ( $combined_graph as $num => $val ) {
-				
+
 					if ( is_array( $val ) ) {	// Just in case.
 
 						if ( ! empty( $val[ '@id' ] ) && 1 === count( $val ) ) {

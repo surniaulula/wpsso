@@ -1353,28 +1353,28 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					 * Remove shortcodes, strip html, etc.
 					 */
 					$user_desc = $wpsso->util->cleanup_html_tags( $user_desc );
-	
+
 					$user_sameas = array();
-	
+
 					foreach ( WpssoUser::get_user_id_contact_methods( $person_id ) as $cm_id => $cm_label ) {
-	
+
 						$url = $user_mod[ 'obj' ]->get_author_meta( $person_id, $cm_id );
-	
+
 						if ( empty( $url ) ) {
-	
+
 							continue;
-	
+
 						} elseif ( $cm_id === $wpsso->options[ 'plugin_cm_twitter_name' ] ) {	// Convert twitter name to url.
-	
+
 							$url = 'https://twitter.com/' . preg_replace( '/^@/', '', $url );
 						}
-	
+
 						if ( false !== filter_var( $url, FILTER_VALIDATE_URL ) ) {
-	
+
 							$user_sameas[] = $url;
 						}
 					}
-	
+
 					$local_cache_person_opts[ $person_id ] = array(
 						'person_type'      => 'person',
 						'person_url'       => $user_mod[ 'obj' ]->get_author_website( $person_id, 'url' ),	// Returns a single URL string.
@@ -1389,7 +1389,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					 * Restore previous reference values for admin notices.
 					 */
 					if ( is_admin() ) {
-	
+
 						$wpsso->util->maybe_unset_ref( $local_cache_person_urls[ $person_id ] );
 					}
 				}

@@ -664,7 +664,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 						update_user_option( $user_id, $this->dismiss_name, $user_dismissed, $global = false );
 					}
-			
+
 					return false;
 				}
 			}
@@ -1327,7 +1327,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 								$this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] = $payload;
 							}
-							
 						}
 					}
 				}

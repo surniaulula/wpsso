@@ -1215,7 +1215,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						}
 
 					} else {
-				
+
 						if ( $this->p->debug->enabled ) {
 
 							$this->p->debug->log( 'merging ' . count( $mt_images ) . ' images for size name ' . $size_name );
@@ -1784,11 +1784,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$map    = array();
 
 				foreach ( $this->p->cf[ 'head' ][ 'og_type_mt' ] as $type_id => $og_type_mt_md ) {
-				
+
 					foreach ( $og_type_mt_md as $mt_name => $md_key ) {
-						
+
 						if (  $type_id === $og_type ) {
-							
+
 							$allow[ $mt_name ] = true;
 
 							/**
@@ -2115,7 +2115,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					} else {
 
 						if ( ! empty( $mt_og[ $amount_key ] ) ) {	// Non-empty string, array, etc.
-						
+
 							if ( $wpsso->debug->enabled ) {
 
 								$wpsso->debug->log( 'invalid ' . $amount_key . ' value = ' . print_r( $mt_og[ $amount_key ], true ) );

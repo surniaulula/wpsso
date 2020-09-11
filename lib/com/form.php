@@ -251,7 +251,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$opt_locale_key = SucomUtil::get_key_locale( $opt_key, $this->options );
 
 				if ( isset( $this->defaults[ $opt_locale_key ] ) ) {
-					
+
 					if ( isset( $this->options[ $opt_locale_key ] ) ) {
 
 						if ( $this->options[ $opt_locale_key ] !== $this->defaults[ $opt_locale_key ] ) {
@@ -342,7 +342,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 						$table_rows[ $key ] .= ' class="' . $val[ 'header_class' ] . '"';
 					}
-					
+
 					$table_rows[ $key ] .= '>' . $val[ 'label' ] . '</' . $val[ 'header' ] . '>';
 
 					$table_rows[ $key ] .= '</td>' . "\n";
@@ -359,7 +359,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$table_rows[ $key ] .= '<td' . $col_span . $td_class . '>';
 
 					$table_rows[ $key ] .= empty( $val[ 'content' ] ) ? '' : $val[ 'content' ];
-							
+
 					$table_rows[ $key ] .= '</td>' . "\n";
 				}
 			}
@@ -967,7 +967,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					continue;
 				}
-				
+
 				$html .= '<div class="multi_container select_multi" id="multi_' . esc_attr( $input_id ) . '"';
 				$html .= $display ? '' : ' style="display:none;"';
 				$html .= '>' . "\n";
@@ -1443,7 +1443,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					continue;
 				}
-				
+
 				$elmt_attr = 'onFocus="if ( jQuery(\'input#text_' . $input_id_prev . '\').val().length ) { '.
 					'jQuery(\'div#multi_' . esc_attr( $input_id_next ) . '\').show(); }"';
 
@@ -1734,7 +1734,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 						$holder = '';
 					}
-	
+
 					if ( $is_disabled && $key_num >= $show_first && empty( $display ) ) {
 
 						continue;
@@ -1935,7 +1935,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 											$select_opt_arr[ $option_value ] = '<option value="' . esc_attr( $option_value ) . '"' .
 												$is_selected_html . '>' . $label_transl . '</option>';
-												
+
 											$select_opt_added++; 
 										}
 									}
@@ -2045,7 +2045,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_no_select( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null,
 			$selected = false, $event_names = array(), $event_args = null ) {
-		
+
 			return $this->get_select( $name, $values, $css_class, $css_id, $is_assoc,
 				$is_disabled = true, $selected, $event_names, $event_args );
 		}
@@ -2059,7 +2059,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_no_select_options( $name, array $opts, $values = array(), $css_class = '', $css_id = '',
 			$is_assoc = null, $event_names = array(), $event_args = null ) {
-		
+
 			$selected = isset( $opts[ $name ] ) ? $opts[ $name ] : true;
 
 			return $this->get_select( $name, $values, $css_class, $css_id, $is_assoc,
@@ -2067,12 +2067,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_no_select_time( $name, $css_class = '', $css_id = '', $selected = false, $step_mins = 15, $add_none = false ) {
-		
+
 			return $this->get_select_time( $name, $css_class, $css_id, $is_disabled = true, $selected, $step_mins, $add_none );
 		}
 
 		public function get_no_select_time_options( $name, array $opts, $css_class = '', $css_id = '', $step_mins = 15, $add_none = false ) {
-		
+
 			$selected = isset( $opts[ $name ] ) ? $opts[ $name ] : true;
 
 			return $this->get_select_time( $name, $css_class, $css_id, $is_disabled = true, $selected, $step_mins, $add_none );
@@ -2325,12 +2325,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					return -1;	// $a is first.
 				}
-				
+
 				if ( $b_char === '[' ) {
 
 					return 1;	// $b is first.
 				}
-				
+
 				return strnatcmp( $a_label, $b_label );	// Binary safe case-insensitive string comparison.
 			}
 
@@ -2482,7 +2482,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= '<!-- adding ' . $event_json_var . ' array -->' . "\n";
 
 				if ( ! empty( $event_args[ 'exp_secs' ] ) ) {
-				
+
 					/**
 					 * Array values may be localized, so include the current locale in the cache salt string.
 					 */

@@ -64,7 +64,7 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 						$update_event = true;
 
 					} elseif ( $event === 'update' ) {
-					
+
 						if ( empty( $ext_reg[ $ext . '_' . $event . '_version' ] ) ) {
 
 							$update_event = true;

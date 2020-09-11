@@ -1049,7 +1049,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function save_site_options() {
-			
+
 			$default_page     = key( $this->p->cf[ '*' ][ 'lib' ][ 'sitesubmenu' ] );
 			$default_page_url = $this->p->util->get_admin_url( $default_page );
 			$setting_page     = SucomUtil::get_request_value( 'page', 'POST', $default_page );
@@ -2174,7 +2174,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$label_transl = $arr[ 'label_transl' ];
 
 					unset( $features[ $label ], $arr[ 'label_transl' ] );
-					
+
 					$features[ $label_transl ] = $arr;
 				}
 			}
@@ -2404,8 +2404,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$plugin_name_html = '<h4>' . $info[ 'name' ] . '</h4>';
 
 				$table_rows[ 'plugin_name' ] = '<td colspan="2" class="ext-info-plugin-name" id="ext-info-plugin-name-' . $ext . '">' .
-					$plugin_name_html . ( empty( $ext_links ) ? '' : '<div class="row-actions visible">' .
-						implode( ' | ', $ext_links ) . '</div>' ) . '</td>';
+				$plugin_name_html . ( empty( $ext_links ) ? '' : '<div class="row-actions visible">' . implode( ' | ', $ext_links ) . '</div>' ) . '</td>';
 
 				/**
 				 * Plugin authentication ID and license information.

@@ -157,7 +157,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log( 'skipping search action: search url is empty' );
 			}
 
-			
 			return self::return_data_from_filter( $json_data, $json_ret, $is_main );
 		}
 
@@ -587,7 +586,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 * Add website, organization, and person markup to home page.
 				 */
 				if ( false !== has_filter( $data_filter_name ) ) {
-				
+
 					$json_data = apply_filters( $data_filter_name, $json_data, $mod, $mt_og, $page_type_id, $is_main );
 
 					if ( false !== has_filter( $valid_filter_name ) ) {
@@ -3208,7 +3207,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return false;
 
 			} elseif ( 'width' === $key || 'height' === $key ) {
-		
+
 				if ( WPSSO_UNDEF === $assoc[ $key ] ) {	// Invalid width or height.
 
 					return false;
@@ -3245,7 +3244,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Since WPSSO Core v7.7.0.
 		 */
 		public static function move_data_itemprop_from_assoc( array &$json_data, array &$assoc, array $names, $overwrite = true ) {
-			
+
 			$prop_added = self::add_data_itemprop_from_assoc( $json_data, $assoc, $names, $overwrite );
 
 			foreach ( $names as $prop_name => $key_name ) {
@@ -3561,7 +3560,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 							$wpsso->debug->log( 'invalid ' . $prop_name . ' property value "' . $prop_val . '"' );
 						}
-					
+
 						unset( $json_data[ $prop_name ] );
 					}
 				}

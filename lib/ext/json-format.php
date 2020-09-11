@@ -38,7 +38,7 @@ if ( ! class_exists( 'SuextJsonFormat' ) ) {
 			$newLine     = "\n";
 			$prevChar    = '';
 			$outOfQuotes = true;
-			
+
 			for ( $i = 0; $i < $strLen; $i++ ) {
 
 				$copyLen = strcspn( $json, $outOfQuotes ? " \t\r\n\",:[{}]" : "\\\"", $i );
@@ -62,7 +62,7 @@ if ( ! class_exists( 'SuextJsonFormat' ) ) {
 
 					continue;
 				}
-				
+
 				if ( $char === '"' && $prevChar !== '\\' ) {
 
 					$outOfQuotes = !$outOfQuotes;

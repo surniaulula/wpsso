@@ -62,7 +62,7 @@ if ( ! class_exists( 'WpssoSubmenuAddons' ) && class_exists( 'WpssoAdmin' ) ) {
 		 * Called by the extended WpssoAdmin class.
 		 */
 		protected function add_meta_boxes() {
-	
+
 			$metabox_id      = 'addons';
 			$metabox_title   = _x( 'Complementary Add-ons', 'metabox title', 'wpsso' );
 			$metabox_screen  = $this->pagehook;

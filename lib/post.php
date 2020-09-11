@@ -1171,7 +1171,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 
 				if ( $is_admin ) {
-			
+
 					$short_name = $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'short' ];
 
 					$this->p->notice->err( sprintf( __( 'A %2$s meta tag section was not found in <a href="%1$s">%1$s</a> &mdash; perhaps a webpage caching plugin or service needs to be refreshed?', 'wpsso' ), $check_url, $short_name ) );
@@ -1550,7 +1550,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$this->p->debug->mark();
 			}
-			
+
 			static $do_once = array();
 
 			if ( isset( $do_once[ $post_id ][ $rel_id ] ) ) {
@@ -1643,7 +1643,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$attached_ids = self::get_attached( $post_id, $attach_type );
 
 				foreach ( $attached_ids as $post_id => $bool ) {
-				
+
 					if ( $bool ) {
 
 						$this->p->$attach_type->clear_cache( $post_id );

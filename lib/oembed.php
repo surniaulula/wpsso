@@ -67,7 +67,7 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 		 * }
 		 */
 		public function post_oembed_response_data( $data, $post, $width, $height ) {
-			
+
 			if ( ! empty( $post->ID ) ) {	// Just in case.
 
 				$head_info = $this->p->post->get_head_info( $post->ID );	// Uses a static local cache.

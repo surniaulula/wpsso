@@ -320,7 +320,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				 */
 				$media_request = array( 'pid', 'img_url' );
 				$media_info    = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
-	
+
 				/**
 				 * Hide unless a custom twitter card image exists.
 				 */

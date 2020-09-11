@@ -396,9 +396,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			 * Autoptimize.
 			 */
 			if ( class_exists( 'autoptimizeCache' ) ) {
-			
+
 				if ( method_exists( 'autoptimizeCache', 'clearall' ) ) {
-				
+
 					autoptimizeCache::clearall();
 
 					$notice_msg .= sprintf( $cleared_msg, 'Autoptimize' );
@@ -409,7 +409,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			 * Cache Enabler.
 			 */
 			if ( class_exists( 'Cache_Enabler' ) ) {
-			
+
 				if ( method_exists('Cache_Enabler', 'clear_total_cache') ) { 
 
 					Cache_Enabler::clear_total_cache();
@@ -471,7 +471,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			 * Siteground Optimizer.
 			 */
 			if ( function_exists( 'sg_cachepress_purge_cache' ) ) {
-			
+
 				sg_cachepress_purge_cache();
 
 				$notice_msg .= sprintf( $cleared_msg, 'Siteground Optimizer' );

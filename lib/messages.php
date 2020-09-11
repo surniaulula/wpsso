@@ -355,7 +355,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-meta-p_img_url':		// or an Image URL.
 
 							$text = __( 'A customized image URL (instead of an image ID) for the Pinterest Pin It browser button.', 'wpsso' ) . ' ';
-							
+
 							$text .= '<em>' . __( 'This field is disabled if a custom image ID is selected.', 'wpsso' ) . '</em>';
 
 						 	break;
@@ -371,7 +371,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-meta-schema_img_url':	// or an Image URL.
 
 							$text = __( 'A customized image URL (instead of an image ID) to include first in the Schema meta tags and JSON-LD markup.', 'wpsso' ) . ' ';
-							
+
 							$text .= '<em>' . __( 'This field is disabled if a custom image ID is selected.', 'wpsso' ) . '</em>';
 
 						 	break;
@@ -389,7 +389,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-meta-tc_sum_img_url':	// or an Image URL.
 
 							$text = __( 'A customized image URL (instead of an image ID) for the Twitter Card image.', 'wpsso' ) . ' ';
-							
+
 							$text .= '<em>' . __( 'This field is disabled if a custom image ID is selected.', 'wpsso' ) . '</em>';
 
 						 	break;
@@ -436,7 +436,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-meta-robots_nosnippet':
 
 							$text = __( 'Do not show a text snippet or a video preview in search results.', 'wpsso' ) . ' ';
-							
+
 							$text .= __( 'Google may still show a static image thumbnail (if available) when it determines that using an image provides a better user-experience.', 'wpsso' );
 
 						 	break;
@@ -469,7 +469,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = sprintf( __( 'The website name is used for the Facebook / Open Graph and Pinterest Rich Pin %s meta tag.',
 								'wpsso' ), '<code>og:site_name</code>' ) . ' ';
-							
+
 							break;
 
 						case 'tooltip-site_name_alt':
@@ -508,7 +508,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= sprintf( __( 'The default Schema type ID for the WebSite organization is "%s".', 'wpsso' ), 'organization' ) . ' ';
 
 							$text .= sprintf( __( 'You should not change this default value unless you are confident that Google will recognize your preferred Schema Organization sub-type as a valid organization.', 'wpsso' ), 'organization' ) . ' ';
-							
+
 							$text .= sprintf( __( 'To select a different organization type ID for the WebSite, define the %s constant with your preferred type ID (note that this is a Schema type ID, not a Schema type URL).', 'wpsso' ), '<code>WPSSO_SCHEMA_ORGANIZATION_TYPE_ID</code>' );
 
 							break;
@@ -1449,7 +1449,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 					}
-				
+
 				/**
 				 * SEO settings.
 				 */
@@ -2160,7 +2160,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= __( 'Schema FAQPage markup is a collection of Questions and Answers, and WordPress manages a collection of related content in two different ways:', 'wpsso' ) . ' ';
 
 							$text .= __( 'Schema FAQPage can be a parent page with Schema Question child pages, or a taxonomy (ie. categories, tags or custom taxonomies) term with Schema Question posts / pages assigned to that term.', 'wpsso' ) . ' ';
-							
+
 							$text .= '</p>';
 
 							$text .= '</blockquote>';
@@ -2174,13 +2174,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= '<p>';
 
 							$text .= __( 'Google requires that Schema QAPage markup include one or more user submitted and upvoted answers.', 'wpsso' ) . ' ';
-							
+
 							$text .= __( 'The Schema QAPage document title is a summary of the question and the content text is the complete question.', 'wpsso' ) . ' ';
 
 							$text .= '</p>';
 
 							$text .= '</blockquote>';
-						
+
 							break;
 
 						case 'info-schema-question':
@@ -2288,9 +2288,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= __( 'These are the product attribute names that you can create in your e-commerce plugin and not their values.', 'wpsso' ) . ' ';
 
 							$text .= '</p> <p><center><strong>';
-							
+
 							$text .= __( 'Do not enter product attribute values here &ndash; these options are for product attribute names only.', 'wpsso' );
-							
+
 							$text .= '</strong><br/>';
 
 							$text .= __( 'You can create the following product attribute names and choose their corresponding values in your e-commerce plugin.', 'wpsso' );
@@ -2334,7 +2334,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= '</p> <p><center><strong>';
 
 							$text .= __( 'Do not enter custom field values here &ndash; these options are for custom field names only.', 'wpsso' );
-							
+
 							$text .= '</strong><br/>';
 
 							$text .= __( 'Use the following custom field names when creating custom fields for your posts, pages, and custom post types.', 'wpsso' );
@@ -2710,7 +2710,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text = '<p class="top">';
 
 						$text .= __( 'At least one of your theme header templates does not offer a recognized way to modify the head HTML tag attributes.', 'wpsso' ) . ' ';
-						
+
 						$text .= __( 'Adding the document Schema item type to the head HTML tag attributes is important for Pinterest.', 'wpsso' ) . ' ';
 
 						if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
@@ -2858,7 +2858,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text .= ' <li>' . __( 'Access to development updates.', 'wpsso' ) . '</li>';
 
 						$text .= $li_support_link;
-						
+
 						$text .= '</ul>';
 
 						break;
@@ -2874,7 +2874,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text .= ' <li>' . __( 'Access to development updates.', 'wpsso' ) . '</li>';
 
 						$text .= $li_support_link;
-						
+
 						$text .= '</ul>';
 
 						break;
@@ -2896,7 +2896,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text .= ' <li>' . __( 'Access to development updates.', 'wpsso' ) . '</li>';
 
 						$text .= $li_support_link;
-						
+
 						$text .= '</ul>';
 
 						break;
@@ -2912,7 +2912,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text .= ' <li>' . __( 'Access to development updates.', 'wpsso' ) . '</li>';
 
 						$text .= $li_support_link;
-						
+
 						$text .= '</ul>';
 
 						break;
@@ -3175,7 +3175,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) );
 
 			$html .= '</p>';
-			
+
 			return $html . $this->pro_feature( 'wpsso' );
 		}
 

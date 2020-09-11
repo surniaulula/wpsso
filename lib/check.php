@@ -572,7 +572,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								$all_enabled = false;
 
 								foreach ( $chk[ 'opt_key' ] as $key ) {
-							
+
 									if ( $this->is_opt_enabled( $key ) ) {
 
 										$all_enabled = true;

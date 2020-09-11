@@ -672,7 +672,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 							return "\n\n" . '<!-- wpsso ' . $filter . ' filter hook priority ' .
 								$min_int . ' mark -->' . "\n\n" . $str;
 						};
-	
+
 						add_filter( $filter, $function, $min_int );
 
 						/**
@@ -682,7 +682,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 							return $str . "\n\n" . '<!-- wpsso ' . $filter . ' filter hook priority ' .
 								$max_int . ' mark -->' . "\n\n";
 						};
-	
+
 						add_filter( $filter, $function, $max_int );
 					}
 				}

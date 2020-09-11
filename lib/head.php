@@ -688,7 +688,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				if ( SucomUtil::is_assoc( $mixed ) ) {
 
 					if ( isset( $mixed[ 'og:video:type' ] ) ) {
-	
+
 						if ( empty( $mixed[ 'og:video:has_image' ] ) ) {
 
 							if ( $this->p->debug->enabled ) {

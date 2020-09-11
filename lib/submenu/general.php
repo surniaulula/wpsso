@@ -102,7 +102,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 			$table_rows = array();
 
 			foreach ( $tabs as $tab_key => $title ) {
-				
+
 				$filter_name = $this->p->lca . '_' . $metabox_id . '_' . $tab_key . '_rows';
 
 				$table_rows[ $tab_key ] = apply_filters( $filter_name, $this->get_table_rows( $metabox_id, $tab_key ), $this->form );

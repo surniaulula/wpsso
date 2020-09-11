@@ -308,7 +308,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				if ( $mod[ 'is_post' ] ) {
 
 					list( $card_type, $card_label, $size_name, $md_pre ) = $this->get_card_info( $mod );
-					
+
 					/**
 					 * Post meta image.
 					 */
@@ -360,11 +360,11 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 									$this->p->debug->log( $card_type . ' card: checking for singlepic image' );
 								}
-	
+
 								$ngg_obj =& $this->p->m[ 'media' ][ 'ngg' ];
 
 								$mt_images = $ngg_obj->get_singlepic_og_images( 1, $size_name, $mod[ 'id' ], $check_dupes );
-	
+
 								if ( ! empty( $mt_images ) ) {
 
 									$mt_single_image = reset( $mt_images );
