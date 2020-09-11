@@ -231,6 +231,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 							switch ( $this->site_options[ $key . ':use' ] ) {
 
+								case'always':
 								case'force':
 
 									$this->options[ $key ] = $this->site_options[ $key ];

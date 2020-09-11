@@ -492,7 +492,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function register_setting() {
 
-			register_setting( $this->p->lca . '_setting', WPSSO_OPTIONS_NAME, array( $this, 'registered_setting_sanitation' ) );
+			register_setting( $this->p->lca . '_setting', WPSSO_OPTIONS_NAME, $args = array(
+				'sanitize_callback' => array( $this, 'registered_setting_sanitation' ),
+			) );
 		}
 
 		public function add_plugins_page_upgrade_notice() {
@@ -614,24 +616,25 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return $action_links;
 			}
 
-			$ext = $this->p->cf[ '*' ][ 'base' ][ $plugin_base ];
-
-			$settings_page = empty( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $menu_lib ] ) ?
-				'' : key( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $menu_lib ] );
+			$ext               = $this->p->cf[ '*' ][ 'base' ][ $plugin_base ];
+			$info              = $this->p->cf[ 'plugin' ][ $ext ];
+			$settings_page     = empty( $info[ 'lib' ][ $menu_lib ] ) ? '' : key( $info[ 'lib' ][ $menu_lib ] );
+			$settings_page_url = $this->p->util->get_admin_url( $settings_page );
 
 			switch ( $ext ) {
 
 				case $this->p->lca:
 
+					$addons_page     = 'sitesubmenu' === $menu_lib ? 'site-addons' : 'addons';
+					$addons_page_url = $this->p->util->get_admin_url( $addons_page );
+
 					if ( ! empty( $settings_page ) ) {
 
-						$action_links[] = '<a href="' . $this->p->util->get_admin_url( $settings_page ) . '">' .
-							__( 'Plugin Settings', 'wpsso' ) . '</a>';
+						$action_links[] = '<a href="' . $settings_page_url . '">' .
+							_x( 'Plugin Settings', 'plugin action link', 'wpsso' ) . '</a>';
 					}
 
-					$addons_page = 'sitesubmenu' === $menu_lib ? 'site-addons' : 'addons';
-
-					$action_links[] = '<a href="' . $this->p->util->get_admin_url( $addons_page ) . '">' . 
+					$action_links[] = '<a href="' . $addons_page_url . '">' . 
 						_x( 'Complementary Add-ons', 'plugin action link', 'wpsso' ) . '</a>';
 
 					break;
@@ -640,8 +643,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					if ( ! empty( $settings_page ) ) {
 
-						$action_links[] = '<a href="' . $this->p->util->get_admin_url( $settings_page ) . '">' .
-							__( 'Add-on Settings', 'wpsso' ) . '</a>';
+						$action_links[] = '<a href="' . $settings_page_url . '">' .
+							_x( 'Add-on Settings', 'plugin action link', 'wpsso' ) . '</a>';
 					}
 
 					break;
@@ -659,7 +662,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! empty( $info[ 'base' ] ) ) {
 
-				$install_url = is_multisite() ? network_admin_url( 'plugin-install.php', null ) :
+				$install_url = is_multisite() ?
+					network_admin_url( 'plugin-install.php', null ) :
 					get_admin_url( $blog_id = null, 'plugin-install.php' );
 
 				$details_url = add_query_arg( array(
@@ -988,8 +992,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
-		 * This method receives only a partial options array, so re-create a full one. WordPress handles the actual saving
-		 * of the options to the database table.
+		 * This method receives only a partial options array, so re-create a full one.
+		 *
+		 * WordPress handles the actual saving of the options to the database table.
 		 */
 		public function registered_setting_sanitation( $opts ) {
 
@@ -1018,8 +1023,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 */
 			$this->p->options = $opts;
 
-			$clear_cache_link = $this->p->util->get_admin_url( wp_nonce_url( '?' . $this->p->lca . '-action=clear_cache',
-				WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME ), _x( 'Clear All Caches', 'submit button', 'wpsso' ) );
+			/**
+			 * Create a clear cache URL from the current page URL.
+			 */
+			$clear_cache_url = SucomUtil::get_request_value( '_wp_http_referer', 'POST', $this->p->util->get_admin_url() );
+			$clear_cache_url = add_query_arg( $this->p->lca . '-action', 'clear_cache', $clear_cache_url );
+			$clear_cache_url = wp_nonce_url( $clear_cache_url, WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
+
+			$clear_cache_link = '<a href="' . $clear_cache_url . '">' . _x( 'Clear All Caches', 'submit button', 'wpsso' ) . '</a>';
 
 			$this->p->notice->upd( '<strong>' . __( 'Plugin settings have been saved.', 'wpsso' ) . '</strong> ' .
 				sprintf( __( 'Note that some caches may take several days to expire and reflect these changes (or %s now).',
@@ -1038,11 +1049,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function save_site_options() {
-
-			if ( ! $page = SucomUtil::get_request_value( 'page', 'POST' ) ) {	// Uses sanitize_text_field.
-
-				$page = key( $this->p->cf[ '*' ][ 'lib' ][ 'sitesubmenu' ] );
-			}
+			
+			$default_page     = key( $this->p->cf[ '*' ][ 'lib' ][ 'sitesubmenu' ] );
+			$default_page_url = $this->p->util->get_admin_url( $default_page );
+			$setting_page     = SucomUtil::get_request_value( 'page', 'POST', $default_page );
+			$setting_page_url = $this->p->util->get_admin_url( $setting_page );
 
 			if ( empty( $_POST[ WPSSO_NONCE_NAME ] ) ) {	// WPSSO_NONCE_NAME is an md5() string.
 
@@ -1051,7 +1062,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$this->p->debug->log( 'nonce token validation post field missing' );
 				}
 
-				wp_redirect( $this->p->util->get_admin_url( $page ) );
+				wp_redirect( $default_page_url );	// Do not trust the 'page' request value.
 
 				exit;
 
@@ -1059,7 +1070,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$this->p->notice->err( __( 'Nonce token validation failed for network options (update ignored).', 'wpsso' ) );
 
-				wp_redirect( $this->p->util->get_admin_url( $page ) );
+				wp_redirect( $default_page_url );	// Do not trust the 'page' request value.
 
 				exit;
 
@@ -1067,7 +1078,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$this->p->notice->err( __( 'Insufficient privileges to modify network options.', 'wpsso' ) );
 
-				wp_redirect( $this->p->util->get_admin_url( $page ) );
+				wp_redirect( $setting_page_url );
 
 				exit;
 			}
@@ -1086,9 +1097,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			update_site_option( WPSSO_SITE_OPTIONS_NAME, $opts );
 
-			$this->p->notice->upd( '<strong>' . __( 'Plugin settings have been saved.', 'wpsso' ) . '</strong>' );
+			$this->p->notice->upd( '<strong>' . __( 'Network plugin settings have been saved.', 'wpsso' ) . '</strong>' );
 
-			wp_redirect( $this->p->util->get_admin_url( $page ) . '&settings-updated=true' );
+			$setting_page_url = add_query_arg( 'settings-updated', 'true', $setting_page_url );
+
+			wp_redirect( $setting_page_url );
 
 			exit;	// Stop after redirect.
 		}
@@ -3498,35 +3511,33 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function get_check_for_updates_link( $get_notice = true ) {
 
-			$link_url = '';
-
+			$check_url   = '';
 			$notice_html = '';
 
 			if ( class_exists( 'WpssoUm' ) ) {
 
 				$this->plugin_pkg_info();
 
-				$link_url = wp_nonce_url( $this->p->util->get_admin_url( 'um-general?' . $this->p->lca . '-action=check_for_updates' ),
-					WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
-
+				$check_url  = $this->p->util->get_admin_url( 'um-general?' . $this->p->lca . '-action=check_for_updates' );
+				$check_url  = wp_nonce_url( $check_url, WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 				$short_name = self::$pkg[ 'wpsso' ][ 'short' ];
 
 				// translators: %1$s is the URL, %2$s is the short plugin name.
 				$notice_transl = __( 'You may <a href="%1$s">refresh the update information for %2$s and its add-ons</a> to check if newer versions are available.', 'wpsso' );
 
-				$notice_html = sprintf( $notice_transl, $link_url, $short_name );
+				$notice_html = sprintf( $notice_transl, $check_url, $short_name );
 
 			} elseif ( empty( $_GET[ 'force-check' ] ) ) {
 
-				$link_url = self_admin_url( 'update-core.php?force-check=1' );
+				$check_url = self_admin_url( 'update-core.php?force-check=1' );
 
 				// translators: %1$s is the URL.
 				$notice_transl = __( 'You may <a href="%1$s">refresh the update information for WordPress (plugins, themes and translations)</a> to check if newer versions are available.', 'wpsso' );
 
-				$notice_html = sprintf( $notice_transl, $link_url );
+				$notice_html = sprintf( $notice_transl, $check_url );
 			}
 
-			return $get_notice ? $notice_html : $link_url;
+			return $get_notice ? $notice_html : $check_url;
 		}
 
 		/**
@@ -3714,12 +3725,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 */
 		public function filter_status_pro_features( $features, $ext, $info ) {
 
-			$td_class = self::$pkg[ $ext ][ 'pp' ] ? '' : 'blank';
-
-			$status_on = self::$pkg[ $ext ][ 'pp' ] ? 'on' : 'rec';
-
+			$td_class        = self::$pkg[ $ext ][ 'pp' ] ? '' : 'blank';
+			$status_on       = self::$pkg[ $ext ][ 'pp' ] ? 'on' : 'rec';
 			$apikeys_tab_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_apikeys' );
-
 			$content_tab_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' );
 
 			$features[ '(api) Shopper Approved API' ][ 'label_url' ] = $apikeys_tab_url;

@@ -2336,8 +2336,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'site_option_use' => array(
 					'default' => 'New activation',
-					'empty'   => 'If value is empty',
-					'force'   => 'Force this value',
+					'empty'   => 'If empty',
+					'force'   => 'Always',
 				),
 				'script_locations' => array(
 					'none'   => '[None]',
