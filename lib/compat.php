@@ -107,7 +107,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				 */
 				if ( function_exists( 'nxs_initSNAP' ) ) {
 
-					add_action( 'wp_head', array( __CLASS__, 'remove_snap_og_meta_tags_holder' ), -2000 );
+					add_action( 'wp_head', array( $this, 'remove_snap_og_meta_tags_holder' ), -2000 );
 				}
 
 				/**
@@ -401,7 +401,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			remove_all_actions( 'rank_math/opengraph/twitter' );
 		}
 
-		public static function remove_snap_og_meta_tags_holder() {
+		public function remove_snap_og_meta_tags_holder() {
 
 			if ( $this->p->debug->enabled ) {
 
