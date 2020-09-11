@@ -2257,12 +2257,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'height'   => 'auto',
 					),
 					'og_img' => array(
-						'header'   => 'SSO Image',
-						'mt_name'  => 'og:image',
-						'meta_key' => '_wpsso_head_info_og_img_thumb',
-						'orderby'  => false,	// Do not offer column sorting.
-						'width'    => '75px',
-						'height'   => '40px',
+						'header'    => 'SSO Image',
+						'mt_name'   => 'og:image',
+						'meta_key'  => '_wpsso_head_info_og_img_thumb',
+						'orderby'   => false,	// Do not offer column sorting.
+						'width'     => '75px',
+						'height'    => '40px',
 					),
 					'og_desc' => array(
 						'header'   => 'SSO Desc',

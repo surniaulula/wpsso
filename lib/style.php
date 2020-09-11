@@ -185,8 +185,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$lca = $this->p->lca;
-
+			$lca           = $this->p->lca;
 			$filter_name   = $lca . '_admin_page_style_css';
 			$filter_ids    = SucomUtilWP::get_filter_hook_ids( $filter_name );
 			$sortable_cols = WpssoWpMeta::get_sortable_columns();	// Uses a static cache.
@@ -559,10 +558,10 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					}
 				';
 
-				if ( isset( $sortable_cols[ 'og_img' ][ 'height' ] ) ) {
+				if ( isset( $sortable_cols[ 'og_img' ][ 'height' ] ) ) {	// Just in case.
 
 					$custom_style_css .= '
-						.column-' . $lca . '_og_img .preview_img { 
+						.column-' . $lca . '_og_img .col_thumb_img { 
 							max-width:' . $sortable_cols[ 'og_img' ][ 'width' ] . ' !important;
 							height:' . $sortable_cols[ 'og_img' ][ 'height' ] . ';
 							min-height:' . $sortable_cols[ 'og_img' ][ 'height' ] . ';

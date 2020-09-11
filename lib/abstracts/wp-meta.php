@@ -1746,30 +1746,42 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			$media_html = '';
 
-			if ( ! empty( $head_info[ $mt_pre . ':image:id' ] ) ) {
+			if ( empty( $head_info[ $mt_pre . ':image:id' ] ) ) {
+
+				$media_html .= '<!-- checking head info array for image url -->';
+
+			} else {
 
 				$pid = $head_info[ $mt_pre . ':image:id' ];
 
 				$size_name = 'thumbnail';
-
-				$media_html .= '<!-- getting the WordPress "' . $size_name . '" image size for image id ' . $pid . ' -->';
 
 				/**
 				 * get_mt_single_image_src() returns an og:image:url value, not an og:image:secure_url.
 				 */
 				$mt_single_image = $this->p->media->get_mt_single_image_src( $pid, $size_name, $check_dupes = false, $mt_pre );
 
-				if ( ! empty( $mt_single_image[ $mt_pre . ':image:url' ] ) ) {	// Just in case.
+				$media_html .= '<!-- getting ' . $size_name . ' size for image id ' . $pid . ' = ';
 
-					$head_info =& $mt_single_image;
+				if ( empty( $mt_single_image[ $mt_pre . ':image:url' ] ) ) {	// Just in case.
+
+					$media_html .= 'failed';
+
+				} else {
+
+					$media_html .= 'success';
+
+					$head_info =& $mt_single_image;	// Use the updated image information.
 				}
+				
+				$media_html .= ' -->';
 			}
 
 			$image_url = SucomUtil::get_first_mt_media_url( $head_info );
 
 			if ( ! empty( $image_url ) ) {
 
-				$media_html .= '<div class="preview_img" style="background-image:url(' . $image_url . ');"></div><!-- .preview_img -->';
+				$media_html .= '<div class="col_thumb_img" style="background-image:url(' . $image_url . ');"></div><!-- .col_thumb_img -->';
 			}
 
 			return $media_html;
