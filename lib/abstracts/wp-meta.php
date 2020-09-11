@@ -1053,9 +1053,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			foreach ( array( 'og', 'p', 'schema', 'tc_lrg', 'tc_sum' ) as $md_pre ) {
 
 				/**
-				 * If there's no image ID, then remove the image ID library prefix.
+				 * If there's no image id, then remove the image id library prefix.
 				 *
-				 * If an image ID is being used, then remove the image url (only one can be defined).
+				 * If an image id is being used, then remove the image url (only one can be defined).
 				 */
 				if ( empty( $md_opts[ $md_pre . '_img_id' ] ) ) {
 
@@ -1439,6 +1439,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		public function get_pid_thumb_img_html( $pid, $mod, $md_pre = 'og' ) {
 
+			$media_html = '';
+
 			if ( empty( $pid ) ) {
 
 				if ( $this->p->debug->enabled ) {
@@ -1446,22 +1448,26 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					$this->p->debug->log( 'exiting early: image id is empty' );
 				}
 
-				return '';
+				return $media_html;
 			}
 
+			$size_name = 'thumbnail';
+
+			$media_html .= '<!-- getting the WordPress "' . $size_name . '" image size for image id ' . $pid . ' -->';
+
 			/**
-			 * Get the 'thumbnail' image size.
+			 * get_mt_single_image_src() returns an og:image:url value, not an og:image:secure_url.
 			 */
-			$mt_single_image = $this->p->media->get_mt_single_image_src( $pid, $size_name = 'thumbnail', $check_dupes = false );
+			$mt_single_image = $this->p->media->get_mt_single_image_src( $pid, $size_name, $check_dupes = false );
 
 			$image_url = SucomUtil::get_first_mt_media_url( $mt_single_image );
 
 			if ( ! empty( $image_url ) ) {
 
-				return '<img src="' . $image_url . '">';
+				$media_html .= '<img src="' . $image_url . '">';
 			}
 
-			return false;
+			return $media_html;
 		}
 
 		/**
@@ -1738,16 +1744,20 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		public function get_og_img_column_html( $head_info, $mod, $md_pre = 'og', $mt_pre = 'og' ) {
 
-			$media_html  = false;
+			$media_html = '';
 
 			if ( ! empty( $head_info[ $mt_pre . ':image:id' ] ) ) {
 
 				$pid = $head_info[ $mt_pre . ':image:id' ];
 
+				$size_name = 'thumbnail';
+
+				$media_html .= '<!-- getting the WordPress "' . $size_name . '" image size for image id ' . $pid . ' -->';
+
 				/**
-				 * Get the 'thumbnail' image size.
+				 * get_mt_single_image_src() returns an og:image:url value, not an og:image:secure_url.
 				 */
-				$mt_single_image = $this->p->media->get_mt_single_image_src( $pid, $size_name = 'thumbnail', $check_dupes = false );
+				$mt_single_image = $this->p->media->get_mt_single_image_src( $pid, $size_name, $check_dupes = false, $mt_pre );
 
 				if ( ! empty( $mt_single_image[ $mt_pre . ':image:url' ] ) ) {	// Just in case.
 
@@ -1759,7 +1769,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			if ( ! empty( $image_url ) ) {
 
-				$media_html = '<div class="preview_img" style="background-image:url(' . $image_url . ');"></div>';
+				$media_html .= '<div class="preview_img" style="background-image:url(' . $image_url . ');"></div><!-- .preview_img -->';
 			}
 
 			return $media_html;

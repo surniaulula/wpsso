@@ -642,9 +642,6 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				foreach ( $size_names as $size_name ) {
 
-					/**
-					 * get_mt_single_image_src() returns an og:image:url value, not an og:image:secure_url.
-					 */
 					$mt_ret = $this->p->media->get_featured( $num = 1, $size_name, $post_id, $check_dupes = false );
 				}
 			}
