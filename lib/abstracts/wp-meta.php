@@ -1748,7 +1748,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			if ( ! empty( $image_url ) ) {
 
-				$media_html .= '<div class="wp_thumb_img" style="background-image:url(' . $image_url . ');"></div><!-- .wp_thumb_img -->';
+				$media_html .= '<div class="wp_thumb_bg_img" style="background-image:url(' . $image_url . ');"></div><!-- .wp_thumb_bg_img -->';
 			}
 
 			return $media_html;
