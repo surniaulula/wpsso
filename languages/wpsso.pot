@@ -903,8 +903,8 @@ msgstr ""
 
 #: lib/com/bfo.php:290 lib/gettext-com.php:40
 msgid ""
-"Unlike WordPress actions, WordPress filters must always return text, not "
-"echo text to the webpage output."
+"Unlike WordPress actions, WordPress filters must always return their text, "
+"not echo it to the webpage output."
 msgstr ""
 
 #: lib/com/bfo.php:293 lib/gettext-com.php:41

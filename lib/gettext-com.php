@@ -37,7 +37,7 @@ __( 'Reference: %s', 'wpsso' );
 __( '%s Notice', 'wpsso' );
 __( 'Notice', 'wpsso' );
 __( 'The "%1$s" hook with priority %2$d in the "%3$s" filter has incorrectly sent output to the webpage.', 'wpsso' );
-__( 'Unlike WordPress actions, WordPress filters must always return text, not echo text to the webpage output.', 'wpsso' );
+__( 'Unlike WordPress actions, WordPress filters must always return their text, not echo it to the webpage output.', 'wpsso' );
 __( 'Please contact the author of that filter and report this issue as a coding error.', 'wpsso' );
 __( 'Incorrect webpage output:', 'wpsso' );
 __( 'BEGIN OUTPUT', 'wpsso' );

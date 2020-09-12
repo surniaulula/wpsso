@@ -287,7 +287,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 				$error_text = __( 'The "%1$s" hook with priority %2$d in the "%3$s" filter has incorrectly sent output to the webpage.',
 					$this->text_domain ) . ' ';
 
-				$error_text .= __( 'Unlike WordPress actions, WordPress filters must always return text, not echo text to the webpage output.',
+				$error_text .= __( 'Unlike WordPress actions, WordPress filters must always return their text, not echo it to the webpage output.',
 					$this->text_domain ) . ' ';
 
 				$error_text .= __( 'Please contact the author of that filter and report this issue as a coding error.',
