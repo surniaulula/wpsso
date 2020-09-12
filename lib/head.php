@@ -272,11 +272,16 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				if ( ! empty( $col_info[ 'mt_name' ]  ) ) {
 
-					if ( $col_info[ 'mt_name' ] === 'og:image' ) {	// Get the image thumbnail HTML.
+					if ( 'og:image' === $col_info[ 'mt_name' ] ) {	// Get the image thumbnail HTML.
 
-						if ( $og_img = $mod[ 'obj' ]->get_og_img_column_html( $head_info, $mod ) ) {
+						if ( $media_html = $mod[ 'obj' ]->get_head_info_thumb_bg_img( $head_info, $mod ) ) {
 
-							$meta_value = $og_img;
+							/**
+							 * Example:
+							 *
+							 *	<div class="wp-thumb-bg-img" style="background-image:url(https://.../thumbnail.jpg);"></div>
+							 */
+							$meta_value = $media_html;
 						}
 
 					} elseif ( isset( $head_info[ $col_info[ 'mt_name' ] ] ) ) {

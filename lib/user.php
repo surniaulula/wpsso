@@ -1329,6 +1329,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $user_can_save;
 		}
 
+		/**
+		 * Returns an array of single image associative arrays.
+		 *
+		 * $md_pre can be a text string or array of prefixes.
+		 */
 		public function get_og_images( $num, $size_names, $user_id, $check_dupes = true, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {

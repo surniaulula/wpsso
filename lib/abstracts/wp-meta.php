@@ -1709,7 +1709,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $mt_videos;
 		}
 
-		public function get_og_img_column_html( $head_info, $mod, $md_pre = 'og', $mt_pre = 'og' ) {
+		public function get_head_info_thumb_bg_img( $head_info, $mod, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1730,6 +1730,18 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				/**
 				 * get_mt_single_image_src() returns an og:image:url value, not an og:image:secure_url.
+				 *
+				 * Example:
+				 *
+				 * 	array(
+				 *		$mt_pre . ':image:url'        => '',
+				 *		$mt_pre . ':image:width'      => '',
+				 *		$mt_pre . ':image:height'     => '',
+				 *		$mt_pre . ':image:cropped'    => '',	// Non-standard / internal meta tag.
+				 *		$mt_pre . ':image:id'         => '',	// Non-standard / internal meta tag.
+				 *		$mt_pre . ':image:alt'        => '',
+				 *		$mt_pre . ':image:size_name'  => '',	// Non-standard / internal meta tag.
+				 * 	);
 				 */
 				$mt_single_image = $this->p->media->get_mt_single_image_src( $pid, $size_name, $check_dupes = false, $mt_pre );
 
@@ -1765,7 +1777,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					$this->p->debug->log( 'thumbnail image url = ' . $image_url );
 				}
 
-				$media_html .= '<div class="wp_thumb_bg_img" style="background-image:url(' . $image_url . ');"></div><!-- .wp_thumb_bg_img -->';
+				$media_html .= '<div class="wp-thumb-bg-img" style="background-image:url(' . $image_url . ');"></div><!-- .wp-thumb-bg-img -->';
 			}
 
 			if ( $this->p->debug->enabled ) {
@@ -1776,6 +1788,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $media_html;
 		}
 
+		/**
+		 * Methods that return an associative array of Open Graph meta tags.
+		 */
 		public function get_og_type_reviews( $mod_id, $og_type = 'product', $rating_meta = 'rating', $worst_rating = 1, $best_rating = 5 ) {
 
 			return self::must_be_extended( $ret_val = array() );	// Return an empty array.

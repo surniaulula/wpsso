@@ -561,7 +561,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				if ( isset( $sortable_cols[ 'og_img' ][ 'height' ] ) ) {	// Just in case.
 
 					$custom_style_css .= '
-						.column-' . $lca . '_og_img div.wp_thumb_bg_img { 
+						.column-' . $lca . '_og_img div.wp-thumb-bg-img { 
 							max-width:' . $sortable_cols[ 'og_img' ][ 'width' ] . ' !important;
 							height:' . $sortable_cols[ 'og_img' ][ 'height' ] . ';
 							min-height:' . $sortable_cols[ 'og_img' ][ 'height' ] . ';

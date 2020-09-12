@@ -369,7 +369,7 @@ msgstr ""
 
 #: lib/admin.php:1196 lib/admin.php:1207 lib/messages.php:896
 #: lib/submenu/tools.php:55 lib/submenu/tools.php:100 lib/user.php:52
-#: lib/user.php:1527 lib/user.php:1638 lib/user.php:1769
+#: lib/user.php:1532 lib/user.php:1643 lib/user.php:1774
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -885,43 +885,43 @@ msgctxt "lib file description"
 msgid "(code) Twitter Card Meta Tags"
 msgstr ""
 
-#: lib/com/bfo.php:242 lib/com/cache.php:94 lib/com/notice.php:118
+#: lib/com/bfo.php:266 lib/com/cache.php:94 lib/com/notice.php:118
 #: lib/gettext-com.php:6 lib/gettext-com.php:30 lib/gettext-com.php:37
 msgid "%s Notice"
 msgstr ""
 
-#: lib/com/bfo.php:245 lib/com/cache.php:99 lib/com/notice.php:123
+#: lib/com/bfo.php:271 lib/com/cache.php:99 lib/com/notice.php:123
 #: lib/gettext-com.php:7 lib/gettext-com.php:31 lib/gettext-com.php:38
 msgid "Notice"
 msgstr ""
 
-#: lib/com/bfo.php:261 lib/gettext-com.php:39
+#: lib/com/bfo.php:287 lib/gettext-com.php:39
 msgid ""
 "The \"%1$s\" hook with priority %2$d in the \"%3$s\" filter has incorrectly "
 "sent output to the webpage."
 msgstr ""
 
-#: lib/com/bfo.php:264 lib/gettext-com.php:40
+#: lib/com/bfo.php:290 lib/gettext-com.php:40
 msgid ""
-"All WordPress filter hooks must return their text, not send it to the "
-"webpage output."
+"Unlike WordPress actions, WordPress filters must always return text, not "
+"echo text to the webpage output."
 msgstr ""
 
-#: lib/com/bfo.php:267 lib/gettext-com.php:41
+#: lib/com/bfo.php:293 lib/gettext-com.php:41
 msgid ""
-"Please contact the author of that filter hook and report this issue as a "
-"coding error."
+"Please contact the author of that filter and report this issue as a coding "
+"error."
 msgstr ""
 
-#: lib/com/bfo.php:307 lib/gettext-com.php:42
+#: lib/com/bfo.php:336 lib/gettext-com.php:42
 msgid "Incorrect webpage output:"
 msgstr ""
 
-#: lib/com/bfo.php:308 lib/gettext-com.php:43
+#: lib/com/bfo.php:337 lib/gettext-com.php:43
 msgid "BEGIN OUTPUT"
 msgstr ""
 
-#: lib/com/bfo.php:309 lib/gettext-com.php:44
+#: lib/com/bfo.php:338 lib/gettext-com.php:44
 msgid "END OUTPUT"
 msgstr ""
 
@@ -4206,27 +4206,27 @@ msgctxt "option value"
 msgid "[%s Location]"
 msgstr ""
 
-#: lib/head.php:552
+#: lib/head.php:557
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:561
+#: lib/head.php:566
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:570
+#: lib/head.php:575
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:579
+#: lib/head.php:584
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:601
+#: lib/head.php:606
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:610
+#: lib/head.php:615
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -8005,36 +8005,36 @@ msgstr ""
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1546
+#: lib/user.php:1551
 msgid ""
 "Aborting task to add the %1$s role to content creators - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1561
+#: lib/user.php:1566
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1603
+#: lib/user.php:1608
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1605 lib/user.php:1711 lib/util-cache.php:161
+#: lib/user.php:1610 lib/user.php:1716 lib/util-cache.php:161
 #: lib/util-cache.php:688
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/user.php:1657
+#: lib/user.php:1662
 msgid ""
 "Aborting task to remove the %1$s role from all users - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1672
+#: lib/user.php:1677
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1709
+#: lib/user.php:1714
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 
