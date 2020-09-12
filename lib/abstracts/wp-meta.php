@@ -1711,6 +1711,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		public function get_og_img_column_html( $head_info, $mod, $md_pre = 'og', $mt_pre = 'og' ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark( 'getting thumbnail image' );	// Begin timer.
+			}
+
 			$media_html = '';
 
 			if ( empty( $head_info[ $mt_pre . ':image:id' ] ) ) {
@@ -1746,9 +1751,26 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			$image_url = SucomUtil::get_first_mt_media_url( $head_info );
 
-			if ( ! empty( $image_url ) ) {
+			if ( empty( $image_url ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'no thumbnail image url' );
+				}
+
+			} else {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'thumbnail image url = ' . $image_url );
+				}
 
 				$media_html .= '<div class="wp_thumb_bg_img" style="background-image:url(' . $image_url . ');"></div><!-- .wp_thumb_bg_img -->';
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark( 'getting thumbnail image' );	// End timer.
 			}
 
 			return $media_html;
