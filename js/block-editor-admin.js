@@ -1,9 +1,10 @@
 
-var { getCurrentPostId }           = wp.data.select( 'core/editor' );
-var { isSavingMetaBoxes }          = wp.data.select( 'core/edit-post' );
-var { createNotice, removeNotice } = wp.data.dispatch( 'core/notices' );
-var { createElement, RawHTML }     = wp.element;
-
+var getCurrentPostId   = wp.data.select( 'core/editor' ).getCurrentPostId;
+var isSavingMetaBoxes  = wp.data.select( 'core/edit-post' ).isSavingMetaBoxes;
+var createNotice       = wp.data.dispatch( 'core/notices' ).createNotice;
+var removeNotice       = wp.data.dispatch( 'core/notices' ).removeNotice;
+var createElement      = wp.element.createElement;
+var RawHTML            = wp.element.RawHTML;
 var wasSavingContainer = false;
 
 jQuery( document ).ready( function() {
@@ -59,6 +60,7 @@ function wpssoUpdateContainers() {
 				 * The returned HTML includes javascript to call the sucomInitMetabox() function.
 				 */
 				if ( html ) {
+
 					jQuery( '#' + container_id ).replaceWith( html );
 				}
 			} );
@@ -99,9 +101,15 @@ function wpssoCreateNotices() {
 
 				var noticeObj     = false;
 				var noticeStatus  = false;
-				var noticeHtml    = data[ noticeType ][ noticeKey ][ 'msg_html' ];
 				var noticeSpoken  = data[ noticeType ][ noticeKey ][ 'msg_spoken' ];
-				var noticeElement = createElement( RawHTML, {}, noticeHtml );
+				
+				/**
+				 * The current version of the block editor casts the notice message as a string, so we
+				 * cannot give createNotice() an html message or RawHTML element.
+				 *
+				 * var noticeHtml    = data[ noticeType ][ noticeKey ][ 'msg_html' ];
+				 * var noticeElement = createElement( RawHTML, {}, noticeHtml );
+				 */
 
 				var noticeOptions = {
 					id: noticeKey,
@@ -110,12 +118,19 @@ function wpssoCreateNotices() {
 				};
 
 				if ( noticeType == 'err' ) {
+
 					noticeStatus = 'error';
+
 				} else if ( noticeType == 'warn' ) {
+
 					noticeStatus = 'warning';
+
 				} else if ( noticeType == 'inf' ) {
+
 					noticeStatus = 'info';
+
 				} else if ( noticeType == 'upd' ) {
+
 					noticeStatus = 'success';
 				}
 
@@ -144,4 +159,3 @@ function wpssoCreateNotices() {
 		sucomUpdateToolbar( 'wpsso' );
 	} );
 }
-
