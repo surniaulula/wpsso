@@ -2319,7 +2319,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public static function show_lib_gettext_php( $mixed, $context = 'lib file description', $text_domain ) {
+		public static function show_lib_gettext_php( $mixed, $context, $text_domain ) {
 
 			if ( is_array( $mixed ) ) {
 
@@ -2343,14 +2343,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				return;
 
-			} elseif ( strpos( $mixed, '/' ) === 0 ) {	// Regular expression.
+			} elseif ( 0 === strpos( $mixed, '/' ) ) {	// Regular expression.
 
 				return;
 
 			} elseif ( false !== filter_var( $mixed, FILTER_VALIDATE_URL ) ) {	// URL
 
 				return;
-
 			}
 
 			echo '_x( \'' . $mixed . '\', \'' . $context . '\', \'' . $text_domain . '\' );' . "\n";
