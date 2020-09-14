@@ -96,8 +96,8 @@ msgstr ""
 msgctxt "html paragraph"
 msgid ""
 "Taking the time to read this Setup Guide and review the plugin Essential "
-"Settings page will greatly help your click-through rates and ranking in "
-"Google search results."
+"Settings page will help your click-through rates and rankings in Google "
+"search results."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:23
