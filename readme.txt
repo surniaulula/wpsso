@@ -309,14 +309,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.5.0-dev.1 (2020/09/14)**
+**Version 8.5.0-dev.2 (2020/09/14)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added translation support for the SSO &gt; Setup Guide page.
 * **Bugfixes**
-	* None.
+	* Fixed an incorrect "The value of option must be numeric" error message for 'robots_max_snippet' and 'robots_max_video_preview' when saving posts.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -495,9 +495,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.5.0-dev.1 =
+= 8.5.0-dev.2 =
 
-(2020/09/14) Added translation support for the SSO &gt; Setup Guide page.
+(2020/09/14) Added translation support for the SSO &gt; Setup Guide page.  Fixed an incorrect "The value of option must be numeric" error message.
 
 = 8.4.1 =
 
