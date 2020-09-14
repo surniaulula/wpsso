@@ -140,6 +140,10 @@ table.sucom-settings p {
 	line-height:2em;
 }
 
+table.sucom-settings.html-content-metabox p {
+	line-height:1.6em;
+}
+
 table.sucom-settings pre {
 	font-family:"Courier", monospace;
 	font-size:0.95em;

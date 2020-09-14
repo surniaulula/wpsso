@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.4.1\n"
+"Project-Id-Version: WPSSO Core 8.4.2-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -12,566 +12,1182 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: gettext/gettext-com.php:6 gettext/gettext-com.php:30
-#: gettext/gettext-com.php:37 lib/com/bfo.php:266 lib/com/cache.php:94
-#: lib/com/notice.php:118 lib/gettext-com.php:6 lib/gettext-com.php:30
-#: lib/gettext-com.php:37
+#: gettext/gettext-html-setup.php:6
+msgctxt "html header"
+msgid "Business Social Accounts (Optional)"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:7
+msgctxt "html header"
+msgid "Author Social Accounts (Optional)"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:8
+msgctxt "html header"
+msgid "Review Essential Settings"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:9
+msgctxt "html header"
+msgid "Keep an Eye on Notifications"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:10
+msgctxt "html header"
+msgid "Schema Markup vs Google Rich Results"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:11
+msgctxt "html header"
+msgid "Social and Search Image Sizes"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:12
+msgctxt "html header"
+msgid "Cropped or Uncropped?"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:13
+msgctxt "html header"
+msgid "Upscale / Enlarge Images?"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:14
+msgctxt "html header"
+msgid "Validation Tools"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:15
+msgctxt "html header"
+msgid "Interface and General Usage"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:16
+msgctxt "html header"
+msgid "Documentation and Resources"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:17
+msgctxt "html header"
+msgid "Frequently Asked Questions"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:18
+msgctxt "html header"
+msgid "BuddyPress Integration"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:19
+msgctxt "html header"
+msgid "WooCommerce Integration"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:20
+msgctxt "html header"
+msgid "Developers and WebSite Designers"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:21
+msgctxt "html paragraph"
+msgid ""
+"Taking the time to read this Setup Guide and review the Essential Settings "
+"page will help your click-through rates and your ranking in Google search "
+"results."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:22
+msgctxt "html paragraph"
+msgid ""
+"If you use BuddyPress or WooCommerce, review the <a href=\"#documentation-"
+"and-resources\">Documentation and Resources</a> section for additional "
+"integration notes."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:23
+msgctxt "html paragraph"
+msgid ""
+"If you haven't already done so, create a Facebook Page and Twitter account "
+"for your website / business. You can enter all your website / business "
+"social account information on the WordPress <em><strong>SSO &gt; Social "
+"Pages</strong></em> settings page. The social account URLs are used by WPSSO "
+"Core for Open Graph, Schema, and other meta tag values - including the "
+"Organization social profiles in Schema JSON-LD markup (which may appear in "
+"Google Search results to highlight your website / business social pages)."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:24
+msgctxt "html paragraph"
+msgid "<strong>Related information:</strong>"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:25
+msgctxt "html paragraph"
+msgid ""
+"Ask your content authors to enter their Facebook and Twitter contact "
+"information on their WordPress user profile page. Each author's contact "
+"information can appear in various meta tag values and Schema JSON-LD markup, "
+"but only if they complete their user profile. All URLs found in the author's "
+"contact methods will be listed in the author social profile markup for "
+"Google. "
+msgstr ""
+
+#: gettext/gettext-html-setup.php:26
+msgctxt "html paragraph"
+msgid ""
+"Review the site description on the <em><strong>SSO &gt; Essential Settings</"
+"strong></em> page and select a default / fallback image ID or URL. The "
+"default image is used for index / archive pages, and as a fallback for posts "
+"and pages that do not have a suitable image featured, attached, or available "
+"in their content."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:27
+msgctxt "html paragraph"
+msgid ""
+"<strong>Do not forget to submit a few example posts / pages to the "
+"validation tools mentioned below.</strong> Some markup formats, like "
+"Pinterest Rich Pins, must be requested / enabled when submitting an example "
+"post / page to their validation tool."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:28
+msgctxt "html paragraph"
+msgid ""
+"WPSSO Core and its complementary add-ons attempt to keep notifications to a "
+"minimum, issuing only informational, warning, or error notifications when "
+"required. The default WordPress notication messages can feel intrusive and "
+"over-used, and are not compatible with the new block editor in WordPress v5, "
+"so WPSSO Core includes its own (more discreet) notification system in the "
+"top toolbar."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:29
+msgctxt "html paragraph"
+msgid ""
+"Look for the SSO icon in the top toolbar - by default, it should remain grey "
+"with a \"0\" notification count. If there are notifications, the count will "
+"increase and the SSO icon be shown on a red, yellow, or blue background."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:30
+msgctxt "html paragraph"
+msgid ""
+"Schema (aka \"Schema.org\") is a collaborative, community lead standard for "
+"structured data markup. Schema markup is classified by type, and each type "
+"is associated with a set of properties. The types are arranged in a "
+"hierarchy and <a href=\"https://schema.org/docs/schemas.html\">the current "
+"Schema vocabulary consists of 816 types, 1307 properties, and 289 "
+"enumeration values</a>. The Schema vocabulary can be used with many "
+"different encodings, including meta tags, RDFa, Microdata and JSON-LD. WPSSO "
+"Core adds Schema markup to webpages as meta tags for Pinterest and other "
+"social / search crawlers that can read Schema markup meta tags. The <a href="
+"\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD "
+"Markup add-on</a> is required to provide complete Schema markup as JSON-LD "
+"for Google."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:31
+msgctxt "html paragraph"
+msgid ""
+"<a href=\"https://developers.google.com/search/docs/guides/intro-structured-"
+"data\">Google Rich Results are a set of minimum requirements for a small "
+"selection of Schema types</a>, which includes specific images dimensions "
+"(example, a 600x60px organization banner \"logo\" image for article "
+"publishers), limited values for some properties (example, product "
+"conditions), specific Schema types for some property relations, etc. Google "
+"Rich Results require several layers of Schema markup (aka a multi-"
+"dimensional arrays) that must be expressed using JSON-LD (preferred by "
+"Google) in the webpage header or footer, or with RDFa / Microdata markup "
+"(deprecated standards) in theme templates."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:32
+msgctxt "html paragraph"
+msgid ""
+"If your theme templates do not include RDFa / Microdata markup for Google "
+"Rich Results, you should enable the <a href=\"https://wordpress.org/plugins/"
+"wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a>. If your "
+"theme templates include incomplete or incorrect RDFa / Microdata markup (a "
+"common problem), you should enable both the WPSSO Schema JSON-LD Markup add-"
+"on and the <a href=\"https://wordpress.org/plugins/wpsso-strip-schema-"
+"microdata/\">WPSSO Strip Schema Microdata add-on</a> to remove the "
+"incomplete or incorrect Microdata markup from your templates."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:33
+msgctxt "html paragraph"
+msgid ""
+"<strong>Not sure if your theme templates support Google Rich Results?</"
+"strong> Submit an example post / page URL from your site to the <a href="
+"\"https://search.google.com/test/rich-results\">Google Rich Results Test "
+"Tool</a> or the <a href=\"https://search.google.com/structured-data/testing-"
+"tool/u/0/\">Google Structured Data Test Tool</a>, and compare the results "
+"before / after enabling the <a href=\"https://wordpress.org/plugins/wpsso-"
+"schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a>. Between checks, "
+"don't forget to clear the cache of any caching plugin or service you may be "
+"using, along with clearing the WPSSO cache in the <em><strong>SSO &gt; Tools "
+"and Actions</strong></em> settings page. ;-)"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:34
+msgctxt "html paragraph"
+msgid ""
+"<strong>The difference between cropped and uncropped image dimensions is "
+"important to understand</strong>. When resizing and cropping an image, it "
+"will be resized so that both sides meet or exceed the image dimensions "
+"required, and the excess width or height is trimmed. The resulting image "
+"will match the required dimensions exactly (having sacrificed parts of the "
+"image). When resizing without cropping, the original aspect ratio is "
+"preservedm and no parts of the image are sacrificed. The image will be "
+"resized so both the width and height fit within the designed size - so only "
+"oneside of the image has to match the required size."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:35
+msgctxt "html paragraph"
+msgid ""
+"Most social and search sites automatically crop images to fit within a "
+"specific size container - for example, Facebook shows link share images in a "
+"600x315px container. By offering pre-cropped images of the correct size, "
+"site owners can control how images are cropped instead of letting social and "
+"search sites crop images automatically (and sometimes incorrectly)."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:36
+msgctxt "html paragraph"
+msgid ""
+"<strong>WordPress does not upscale / enlarge images</strong>. WordPress can "
+"only create smaller images from larger full size originals. Upscaled images "
+"do not look as sharp or clear, and if enlarged too much, will look fuzzy and "
+"unappealing - not something you want to promote on social and search sites. "
+"WPSSO Core Premium includes an optional module that allows upscaling of "
+"WordPress Media Library images (up to a maximum upscale percentage). For "
+"example, a full size image of 100x200px could be upscaled up to 150x300px "
+"using a maximum of 50%, but resizing any larger would fail. If you feel "
+"strongly that upscaling small images is something you require (instead of "
+"uploading larger full size originals), you can enable the <em><strong>SSO "
+"&gt; Advanced Settings&gt; Integration &gt; Upscale Media Library Images</"
+"strong></em> option."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:37
+msgctxt "html paragraph"
+msgid ""
+"Submit a few sample posts, pages, etc. to the <a href=\"https://developers."
+"facebook.com/tools/debug/\">Facebook Sharing Debugger</a> to verify your "
+"Open Graph meta tags. A link to the Facebook debugger is available under the "
+"Validate tab in the Document SSO metabox (on post, term, and user editing "
+"pages). Submitting a URL to the Facebook debugger can also be used to clear "
+"Facebook's cache (after clicking the \"Fetch new scrape information\" "
+"button). If you're validating older posts / pages, pre-dating the activation "
+"of WPSSO Core, note that <a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/"
+"why-does-facebook-show-the-wrong-image-text/\">Facebook may continue to use "
+"the old meta tag values from its cache</a>, even after fetching the new "
+"scrape information."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:38
+msgctxt "html paragraph"
+msgid ""
+"Submit an example post / page to the <a href=\"http://developers.pinterest."
+"com/rich_pins/validator/\">Pinterest Rich Pins Validator</a>. Note that the "
+"Pinterest validator recognizes known Rich Pin types only (article, recipe, "
+"product, etc.) - your home page and WordPress archive pages are generally "
+"not valid Rich Pin types. Pinterest Rich Pins are an extension of Open Graph "
+"and Schema meta tags, but the Rich Pins Validator can be a little buggy, so "
+"double check any errors with the Facebook debugger to make sure they are "
+"actual / real errors. If you haven't already requested / enabled Rich Pins "
+"support from Pinterest for your website, you can request Rich Pin support "
+"when validating an example Post / Page from your site (that uses a known "
+"Rich Pin type)."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:39
+msgctxt "html paragraph"
+msgid ""
+"If you have activated the WPSSO Schema JSON-LD Markup add-on, you can also "
+"submit URLs to the <a href=\"https://search.google.com/test/rich-results"
+"\">Google Rich Results Test Tool</a> or the <a href=\"https://search.google."
+"com/structured-data/testing-tool/u/0/\">Google Structured Data Test Tool</"
+"a>. WPSSO Core includes all the meta tags social sites need, along with "
+"Schema markup for Google's Knowledge Graph in the site home page. To express "
+"more complex Schema markup you must activate the <a href=\"https://wordpress."
+"org/plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a>. "
+"Some Schema types may also require additional organization and/or location "
+"information from the <a href=\"https://wordpress.org/plugins/wpsso-"
+"organization/\">WPSSO Organization Markup add-on</a> and/or <a href="
+"\"https://wordpress.org/plugins/wpsso-plm/\">WPSSO Place and Local SEO "
+"Markup add-on</a>."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:40
+msgctxt "html paragraph"
+msgid ""
+"Submit index / archive and Post / Page URLs to the <a href=\"https://"
+"validator.w3.org/\">W3C Markup Validation Service</a> to verify the HTML of "
+"your theme templates. Social and search engine crawlers expect properly "
+"coded HTML markup that conforms to current HTML / XHTML standards. If your "
+"webpages contain serious HTML markup errors, social and search crawlers may "
+"be unable to read your meta tags and Schema markup. You should report any "
+"template markup errors to your theme author."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:41
+msgctxt "html paragraph"
+msgid "<strong>Validators:</strong>"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:42
+msgctxt "html paragraph"
+msgid ""
+"On most WordPress admin pages you'll find a \"Screen Options\" drop-down tab "
+"on the upper right-hand side of the page. You can use these options to "
+"include / exclude specific metaboxes and columns from the current page. For "
+"example, when viewing the Posts or Pages list you can use the \"Screen "
+"Options\" drop-down tab to hide / view the \"Schema\" and \"SSO Image\" "
+"columns. You can also enable / disable these columns globally under the "
+"<em><strong>SSO &gt; Advanced Settings&gt; Editing Pages &gt; Table Columns</"
+"strong></em> tab."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:43
+msgctxt "html paragraph"
+msgid ""
+"When editing a Post, Page, category, tag, etc., you'll find a Document SSO "
+"metabox below the content area where you can customize default texts, images "
+"and videos. The Document SSO metabox shows a different set of options based "
+"on the content type (aka Schema type or Open Graph type) selected, allowing "
+"you to customize the details of articles, events, e-Commerce products, "
+"recipes, reviews, and more. The \"Preview\" tab shows how this webpage might "
+"look when shared on Facebook, the \"Head Markup\" tab shows a complete list "
+"of meta tags and markup created by the WPSSO Core plugin and its add-ons, "
+"and the \"Validate\" tab allows you to submit the current webpage URL to a "
+"number of test and validation tools (mentioned above)."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:44
+msgctxt "html paragraph"
+msgid ""
+"WPSSO Core is a powerful tool and social framework that detects images and "
+"videos from a variety of sources (attached, featured, content, etc.), along "
+"with 3rd party plugins and e-commerce product information. It's worth noting "
+"some of the most common questions, to get an idea of what WPSSO Core can do, "
+"and some of the issues that may come up. Some of the most relevant / popular "
+"frequently asked questions are:"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:45
+msgctxt "html paragraph"
+msgid ""
+"Comments and suggestions to improve the plugin are always welcome &mdash; "
+"please <a href=\"https://surniaulula.com/support/create_ticket/\">open a "
+"ticket if you have any ideas you would like to share with us</a>. ;-)"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:46
+msgctxt "html paragraph"
+msgid ""
+"BuddyPress is not well integrated with the WordPress core functions, so "
+"there are specific <a href=\"https://wpsso.com/docs/plugins/wpsso/"
+"installation/integration/buddypress-integration/\">BuddyPress Integration "
+"Notes</a> available to help you overcome some BuddyPress limitations."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:47
+msgctxt "html paragraph"
+msgid ""
+"The <a href=\"https://wpsso.com/docs/plugins/wpsso/installation/integration/"
+"woocommerce-integration/\">WooCommerce Integration Notes</a> are useful to "
+"include additional product information in meta tags and Schema markup, like "
+"the product brand, color, condition, material, size, etc."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:48
+msgctxt "html paragraph"
+msgid ""
+"<strong>The WooCommerce plugin is known to offer incomplete Schema markup "
+"for Google.</strong> The <a href=\"https://wpsso.com/extend/plugins/wpsso/"
+"\">WPSSO Core Premium plugin</a> and its <a href=\"https://wordpress.org/"
+"plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a> "
+"provide a far better solution by offering complete Facebook / Pinterest "
+"Product meta tags and Schema Product markup for Google Rich Results &mdash; "
+"including additional product images, product variations, product information "
+"(brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, "
+"MPN, size, SKU, weight, etc), product reviews, product ratings, sale start / "
+"end dates, sale prices, pre-tax prices, VAT prices, and much, much more."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:49
+msgctxt "html paragraph"
+msgid ""
+"WordPress developers and website designers may want to consider a few "
+"additional settings..."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:50
+msgctxt "html paragraph"
+msgid ""
+"If you know that your theme header templates do not include any social meta "
+"tags, and no other plugin is adding social meta tags to your webpages, then "
+"you could disable the \"Check for Duplicate Meta Tags\" option under the "
+"<em><strong>SSO &gt; Advanced Settings&gt; Integration</strong></em> tab."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:51
+msgctxt "html paragraph"
+msgid ""
+"If your theme uses custom fields to manage additional images, video URLs, "
+"embed video HTML, product details, etc., you can enter their custom field "
+"names under the <em><strong>SSO &gt; Advanced Settings&gt; Editing Pages "
+"&gt; Custom Fields (Metadata)</strong></em> tab."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:52
+msgctxt "html paragraph"
+msgid ""
+"WPSSO Core adds \"meta name description\" and \"meta name robots\" HTML tags "
+"to the webpage by default, unless an SEO plugin is detected (in which case "
+"they are disabled automatically). You can enable or disable individual SEO "
+"HTML tags under the <em><strong>SSO &gt; Advanced Settings&gt; HTML Tags "
+"&gt; SEO / Other</strong></em> tab."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:53
+msgctxt "html paragraph"
+msgid ""
+"WPSSO Core creates Schema WebSite, Organization, and Person social JSON-LD "
+"markup in the front page for Google's Knowledge Graph. If your theme does "
+"not include proper Schema markup for your post / page content (aka Microdata "
+"markup), you should consider enabling the <a href=\"https://wordpress.org/"
+"plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a>, "
+"which can provide complete Schema JSON-LD / SEO markup for your content "
+"(Schema Article, Place, Product, etc.)."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:54
+msgctxt "html list item"
+msgid ""
+"<a href=\"https://www.facebook.com/business/learn/set-up-facebook-page"
+"\">Setup a Facebook Business Page</a>"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:55
+msgctxt "html list item"
+msgid ""
+"<a href=\"https://business.twitter.com/en/basics/create-a-twitter-business-"
+"profile.html\">Create a Twitter Business Profile</a>"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:56
+msgctxt "html list item"
+msgid ""
+"<a href=\"https://business.google.com/create\">Add your Business to Google</"
+"a>"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:57
+msgctxt "html list item"
+msgid ""
+"<a href=\"https://www.pinterest.com/business/create/\">Create a Pinterest "
+"Business Account</a>"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:58
+msgctxt "html list item"
+msgid ""
+"<a href=\"https://developers.facebook.com/tools/debug/\">Facebook Sharing "
+"Debugger</a>"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:59
+msgctxt "html list item"
+msgid ""
+"<a href=\"https://business.facebook.com/ads/microdata/debug\">Facebook "
+"Microdata Debug Tool</a>"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:60
+msgctxt "html list item"
+msgid ""
+"<a href=\"https://search.google.com/test/rich-results\">Google Rich Results "
+"Test</a>"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:61
+msgctxt "html list item"
+msgid ""
+"<a href=\"https://search.google.com/structured-data/testing-tool/u/0/"
+"\">Google Structured Data Test Tool</a> &mdash; although deprecated, this "
+"tool provides additional validation for Schema types beyond the limited <a "
+"href=\"https://developers.google.com/search/docs/guides/search-gallery"
+"\">selection of Google Rich Result types</a>."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:62
+msgctxt "html list item"
+msgid ""
+"<a href=\"https://www.linkedin.com/post-inspector/inspect/\">LinkedIn Post "
+"Inspector</a>"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:63
+msgctxt "html list item"
+msgid ""
+"<a href=\"https://developers.pinterest.com/tools/url-debugger/\">Pinterest "
+"Rich Pins Validator</a>"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:64
+msgctxt "html list item"
+msgid ""
+"<a href=\"https://cards-dev.twitter.com/validator\">Twitter Card Validator</"
+"a>"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:65
+msgctxt "html list item"
+msgid ""
+"<a href=\"https://validator.w3.org/\">W3C Markup Validation Service</a> "
+"&mdash; recommended to check your theme templates for HTML markup issues."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:66
+msgctxt "html list item"
+msgid ""
+"<a href=\"https://developers.google.com/speed/pagespeed/insights/\">Google "
+"PageSpeed Insights</a> &mdash; recommended for general site / webpage health "
+"check (results influence SEO ranking)."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:67
+msgctxt "html list item"
+msgid ""
+"<a href=\"https://support.google.com/webmasters/answer/7451184\">Google's "
+"Search Engine Optimization (SEO) Starter Guide</a> &mdash; essential reading "
+"to understand Google SEO ranking factors."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:68
+msgctxt "html list item"
+msgid ""
+"<a href=\"https://www.webpagetest.org/\">Webpage Performance Test with "
+"Waterfall</a> &mdash; recommended to check and/or diagnose basic performance "
+"issues."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:69
+msgctxt "html list item"
+msgid ""
+"<a href=\"https://www.ssllabs.com/ssltest/\">SSL Server Test by SSL Labs</a> "
+"&mdash; recommended check for any site using https."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:70
+msgctxt "html list item"
+msgid ""
+"<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-google-"
+"structured-data-hatom-errors/\">How do I fix Google Structured Data &gt; "
+"hatom errors?</a>"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:71
+msgctxt "html list item"
+msgid ""
+"<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-"
+"detect-select-images/\">How does WPSSO Core find / detect / select images?</"
+"a>"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:72
+msgctxt "html list item"
+msgid ""
+"<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-"
+"detect-select-videos/\">How does WPSSO Core find / detect / select videos?</"
+"a>"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:73
+msgctxt "html list item"
+msgid ""
+"<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-"
+"elements-missing-misaligned-different/\">Why are some HTML elements "
+"missing / misaligned / different?</a>"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:74
+msgctxt "html list item"
+msgid ""
+"<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-"
+"the-wrong-image-text/\">Why does Facebook show the wrong image / text?</a>"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:75
+msgctxt "html list item"
+msgid ""
+"<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-"
+"small-images-to-the-media-library/\">Why shouldn't I upload small images to "
+"the Media library?</a>"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:76
+msgctxt "html list item"
+msgid ""
+"More <a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/\">Frequently Asked "
+"Questions</a>..."
+msgstr ""
+
+#: gettext/gettext-lib-com.php:6 gettext/gettext-lib-com.php:30
+#: gettext/gettext-lib-com.php:37 lib/com/bfo.php:266 lib/com/cache.php:94
+#: lib/com/notice.php:118
 msgid "%s Notice"
 msgstr ""
 
-#: gettext/gettext-com.php:7 gettext/gettext-com.php:31
-#: gettext/gettext-com.php:38 lib/com/bfo.php:271 lib/com/cache.php:99
-#: lib/com/notice.php:123 lib/gettext-com.php:7 lib/gettext-com.php:31
-#: lib/gettext-com.php:38
+#: gettext/gettext-lib-com.php:7 gettext/gettext-lib-com.php:31
+#: gettext/gettext-lib-com.php:38 lib/com/bfo.php:271 lib/com/cache.php:99
+#: lib/com/notice.php:123
 msgid "Notice"
 msgstr ""
 
-#: gettext/gettext-com.php:8 lib/com/cache.php:179 lib/gettext-com.php:8
+#: gettext/gettext-lib-com.php:8 lib/com/cache.php:179
 msgid ""
 "Error retrieving %1$s for caching (HTTP code %2$d after %3$.03f seconds)."
 msgstr ""
 
-#: gettext/gettext-com.php:9 lib/com/cache.php:184 lib/gettext-com.php:9
+#: gettext/gettext-lib-com.php:9 lib/com/cache.php:184
 msgid "Error retrieving %1$s for caching (HTTP code %2$d)."
 msgstr ""
 
-#: gettext/gettext-com.php:10 lib/com/cache.php:192 lib/gettext-com.php:10
+#: gettext/gettext-lib-com.php:10 lib/com/cache.php:192
 msgid "Error retrieving %1$s for caching (after %2$.03f seconds)."
 msgstr ""
 
-#: gettext/gettext-com.php:11 lib/com/cache.php:197 lib/gettext-com.php:11
+#: gettext/gettext-lib-com.php:11 lib/com/cache.php:197
 msgid "Error retrieving %1$s for caching."
 msgstr ""
 
-#: gettext/gettext-com.php:12 gettext/gettext-com.php:15 lib/com/cache.php:214
-#: lib/com/cache.php:231 lib/gettext-com.php:12 lib/gettext-com.php:15
+#: gettext/gettext-lib-com.php:12 gettext/gettext-lib-com.php:15
+#: lib/com/cache.php:214 lib/com/cache.php:231
 msgid ""
 "The PHP \"%s\" setting is enabled &mdash; the PHP cURL library cannot follow "
 "URL redirects."
 msgstr ""
 
-#: gettext/gettext-com.php:13 lib/com/cache.php:217 lib/gettext-com.php:13
+#: gettext/gettext-lib-com.php:13 lib/com/cache.php:217
 msgid ""
 "The \"%s\" setting is deprecated since PHP version 5.3 and removed from PHP "
 "since version 5.4."
 msgstr ""
 
-#: gettext/gettext-com.php:14 lib/com/cache.php:220 lib/gettext-com.php:14
+#: gettext/gettext-lib-com.php:14 lib/com/cache.php:220
 msgid ""
 "Please contact your hosting provider to have this setting disabled or "
 "install a newer version of PHP."
 msgstr ""
 
-#: gettext/gettext-com.php:16 lib/com/cache.php:234 lib/gettext-com.php:16
+#: gettext/gettext-lib-com.php:16 lib/com/cache.php:234
 msgid "Please contact your hosting provider to have this setting disabled."
 msgstr ""
 
-#: gettext/gettext-com.php:17 lib/com/cache.php:239 lib/gettext-com.php:17
+#: gettext/gettext-lib-com.php:17 lib/com/cache.php:239
 msgid "The maximum number of URL redirects (%d) may have been exceeded."
 msgstr ""
 
-#: gettext/gettext-com.php:18 lib/com/cache.php:244 lib/gettext-com.php:18
+#: gettext/gettext-lib-com.php:18 lib/com/cache.php:244
 msgid ""
 "Additional requests to retrieve and cache this URL will be ignored for "
 "another %d second(s)."
 msgstr ""
 
-#: gettext/gettext-com.php:19 gettext/gettext-com.php:21 lib/com/cache.php:443
-#: lib/com/cache.php:616 lib/gettext-com.php:19 lib/gettext-com.php:21
-#: lib/util-cache.php:232
+#: gettext/gettext-lib-com.php:19 gettext/gettext-lib-com.php:21
+#: lib/com/cache.php:443 lib/com/cache.php:616 lib/util-cache.php:232
 msgid "Error removing cache file %s."
 msgstr ""
 
-#: gettext/gettext-com.php:20 lib/com/cache.php:506 lib/gettext-com.php:20
+#: gettext/gettext-lib-com.php:20 lib/com/cache.php:506
 msgid ""
 "PHP cURL library missing &mdash; contact your hosting provider to have the "
 "cURL library installed."
 msgstr ""
 
-#: gettext/gettext-com.php:22 lib/com/cache.php:866 lib/gettext-com.php:22
+#: gettext/gettext-lib-com.php:22 lib/com/cache.php:866
 msgid "Cache file %s is not readable."
 msgstr ""
 
-#: gettext/gettext-com.php:23 lib/com/cache.php:888 lib/gettext-com.php:23
+#: gettext/gettext-lib-com.php:23 lib/com/cache.php:888
 msgid "Failed to open the cache file %s for reading."
 msgstr ""
 
-#: gettext/gettext-com.php:24 lib/com/cache.php:994 lib/gettext-com.php:24
+#: gettext/gettext-lib-com.php:24 lib/com/cache.php:994
 msgid "Failed to create the %s cache folder."
 msgstr ""
 
-#: gettext/gettext-com.php:25 lib/com/cache.php:1009 lib/gettext-com.php:25
+#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1009
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: gettext/gettext-com.php:26 lib/com/cache.php:1024 lib/gettext-com.php:26
+#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1024
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: gettext/gettext-com.php:27 lib/com/cache.php:1054 lib/gettext-com.php:27
+#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1054
 msgid "Failed writing data to cache file %s."
 msgstr ""
 
-#: gettext/gettext-com.php:28 lib/com/form.php:1348 lib/gettext-com.php:28
+#: gettext/gettext-lib-com.php:28 lib/com/form.php:1348
 msgctxt "option comment"
 msgid "crop"
 msgstr ""
 
-#: gettext/gettext-com.php:29 lib/com/form.php:1350 lib/gettext-com.php:29
+#: gettext/gettext-lib-com.php:29 lib/com/form.php:1350
 msgctxt "option comment"
 msgid "from"
 msgstr ""
 
-#: gettext/gettext-com.php:32 lib/com/notice.php:311 lib/gettext-com.php:32
+#: gettext/gettext-lib-com.php:32 lib/com/notice.php:311
 msgid "Forever"
 msgstr ""
 
-#: gettext/gettext-com.php:33 lib/com/notice.php:313 lib/gettext-com.php:33
+#: gettext/gettext-lib-com.php:33 lib/com/notice.php:313
 msgid "This notice can be dismissed permanently."
 msgstr ""
 
-#: gettext/gettext-com.php:34 lib/com/notice.php:325 lib/gettext-com.php:34
+#: gettext/gettext-lib-com.php:34 lib/com/notice.php:325
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: gettext/gettext-com.php:35 lib/com/notice.php:535 lib/gettext-com.php:35
+#: gettext/gettext-lib-com.php:35 lib/com/notice.php:535
 msgid "Edit"
 msgstr ""
 
-#: gettext/gettext-com.php:36 lib/com/notice.php:539 lib/gettext-com.php:36
+#: gettext/gettext-lib-com.php:36 lib/com/notice.php:539
 msgid "Reference: %s"
 msgstr ""
 
-#: gettext/gettext-com.php:39 lib/com/bfo.php:287 lib/gettext-com.php:39
+#: gettext/gettext-lib-com.php:39 lib/com/bfo.php:287
 msgid ""
 "The \"%1$s\" hook with priority %2$d in the \"%3$s\" filter has incorrectly "
 "sent output to the webpage."
 msgstr ""
 
-#: gettext/gettext-com.php:40 lib/com/bfo.php:290 lib/gettext-com.php:40
+#: gettext/gettext-lib-com.php:40 lib/com/bfo.php:290
 msgid ""
 "Unlike WordPress actions, WordPress filters must always return their text, "
 "not echo it to the webpage output."
 msgstr ""
 
-#: gettext/gettext-com.php:41 lib/com/bfo.php:293 lib/gettext-com.php:41
+#: gettext/gettext-lib-com.php:41 lib/com/bfo.php:293
 msgid ""
 "Please contact the author of that filter and report this issue as a coding "
 "error."
 msgstr ""
 
-#: gettext/gettext-com.php:42 lib/com/bfo.php:336 lib/gettext-com.php:42
+#: gettext/gettext-lib-com.php:42 lib/com/bfo.php:336
 msgid "Incorrect webpage output:"
 msgstr ""
 
-#: gettext/gettext-com.php:43 lib/com/bfo.php:337 lib/gettext-com.php:43
+#: gettext/gettext-lib-com.php:43 lib/com/bfo.php:337
 msgid "BEGIN OUTPUT"
 msgstr ""
 
-#: gettext/gettext-com.php:44 lib/com/bfo.php:338 lib/gettext-com.php:44
+#: gettext/gettext-lib-com.php:44 lib/com/bfo.php:338
 msgid "END OUTPUT"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-com.php:46 lib/com/plugin.php:297 lib/gettext-com.php:46
+#: gettext/gettext-lib-com.php:46 lib/com/plugin.php:297
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-com.php:48 lib/com/plugin.php:308 lib/gettext-com.php:48
+#: gettext/gettext-lib-com.php:48 lib/com/plugin.php:308
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
-#: gettext/gettext-config.php:6 lib/gettext-config.php:6
+#: gettext/gettext-lib-config.php:6
 msgctxt "distribution name"
 msgid "Premium"
 msgstr ""
 
-#: gettext/gettext-config.php:7 lib/gettext-config.php:7
+#: gettext/gettext-lib-config.php:7
 msgctxt "distribution name"
 msgid "Standard"
 msgstr ""
 
-#: gettext/gettext-config.php:8 lib/gettext-config.php:8
+#: gettext/gettext-lib-config.php:8
 msgctxt "option value"
 msgid "Image:"
 msgstr ""
 
-#: gettext/gettext-config.php:9 lib/gettext-config.php:9
+#: gettext/gettext-lib-config.php:9
 msgctxt "option value"
 msgid "Caption:"
 msgstr ""
 
-#: gettext/gettext-config.php:10 lib/gettext-config.php:10
+#: gettext/gettext-lib-config.php:10
 msgctxt "option value"
 msgid "Facebook User URL"
 msgstr ""
 
-#: gettext/gettext-config.php:11 lib/gettext-config.php:11
+#: gettext/gettext-lib-config.php:11
 msgctxt "option value"
 msgid "Instagram URL"
 msgstr ""
 
-#: gettext/gettext-config.php:12 lib/gettext-config.php:12
+#: gettext/gettext-lib-config.php:12
 msgctxt "option value"
 msgid "LinkedIn URL"
 msgstr ""
 
-#: gettext/gettext-config.php:13 lib/gettext-config.php:13
+#: gettext/gettext-lib-config.php:13
 msgctxt "option value"
 msgid "Myspace URL"
 msgstr ""
 
-#: gettext/gettext-config.php:14 lib/gettext-config.php:14
+#: gettext/gettext-lib-config.php:14
 msgctxt "option value"
 msgid "Pinterest URL"
 msgstr ""
 
-#: gettext/gettext-config.php:15 lib/gettext-config.php:15
+#: gettext/gettext-lib-config.php:15
 msgctxt "option value"
 msgid "Soundcloud URL"
 msgstr ""
 
-#: gettext/gettext-config.php:16 lib/gettext-config.php:16
+#: gettext/gettext-lib-config.php:16
 msgctxt "option value"
 msgid "Skype Username"
 msgstr ""
 
-#: gettext/gettext-config.php:17 lib/gettext-config.php:17
+#: gettext/gettext-lib-config.php:17
 msgctxt "option value"
 msgid "Tumblr URL"
 msgstr ""
 
-#: gettext/gettext-config.php:18 lib/gettext-config.php:18
+#: gettext/gettext-lib-config.php:18
 msgctxt "option value"
 msgid "Twitter @username"
 msgstr ""
 
-#: gettext/gettext-config.php:19 lib/gettext-config.php:19
+#: gettext/gettext-lib-config.php:19
 msgctxt "option value"
 msgid "Wikipedia Page URL"
 msgstr ""
 
-#: gettext/gettext-config.php:20 lib/gettext-config.php:20
+#: gettext/gettext-lib-config.php:20
 msgctxt "option value"
 msgid "YouTube Channel URL"
 msgstr ""
 
-#: gettext/gettext-config.php:21 lib/gettext-config.php:21
+#: gettext/gettext-lib-config.php:21
 msgctxt "lib file description"
 msgid "(plugin) Easy Digital Downloads"
 msgstr ""
 
-#: gettext/gettext-config.php:22 lib/gettext-config.php:22
+#: gettext/gettext-lib-config.php:22
 msgctxt "lib file description"
 msgid "(plugin) WooCommerce Show Single Variations"
 msgstr ""
 
-#: gettext/gettext-config.php:23 lib/gettext-config.php:23
+#: gettext/gettext-lib-config.php:23
 msgctxt "lib file description"
 msgid "(plugin) Perfect WooCommerce Brands"
 msgstr ""
 
-#: gettext/gettext-config.php:24 lib/gettext-config.php:24
+#: gettext/gettext-lib-config.php:24
 msgctxt "lib file description"
 msgid "(plugin) WooCommerce"
 msgstr ""
 
-#: gettext/gettext-config.php:25 lib/gettext-config.php:25
+#: gettext/gettext-lib-config.php:25
 msgctxt "lib file description"
 msgid "(plugin) WooCommerce Brands"
 msgstr ""
 
-#: gettext/gettext-config.php:26 lib/gettext-config.php:26
+#: gettext/gettext-lib-config.php:26
 msgctxt "lib file description"
 msgid "(plugin) WooCommerce Currency Switcher"
 msgstr ""
 
-#: gettext/gettext-config.php:27 lib/gettext-config.php:27
+#: gettext/gettext-lib-config.php:27
 msgctxt "lib file description"
 msgid "(plugin) WooCommerce UPC, EAN, and ISBN"
 msgstr ""
 
-#: gettext/gettext-config.php:28 lib/gettext-config.php:28
+#: gettext/gettext-lib-config.php:28
 msgctxt "lib file description"
 msgid "(plugin) Product GTIN for WooCommerce"
 msgstr ""
 
-#: gettext/gettext-config.php:29 lib/gettext-config.php:29
+#: gettext/gettext-lib-config.php:29
 msgctxt "lib file description"
 msgid "(plugin) YITH WooCommerce Brands Add-on"
 msgstr ""
 
-#: gettext/gettext-config.php:30 lib/gettext-config.php:30
+#: gettext/gettext-lib-config.php:30
 msgctxt "lib file description"
 msgid "(plugin) The Events Calendar"
 msgstr ""
 
-#: gettext/gettext-config.php:31 lib/gettext-config.php:31
+#: gettext/gettext-lib-config.php:31
 msgctxt "lib file description"
 msgid "(plugin) GravityView"
 msgstr ""
 
-#: gettext/gettext-config.php:32 lib/gettext-config.php:32
+#: gettext/gettext-lib-config.php:32
 msgctxt "lib file description"
 msgid "(plugin) bbPress"
 msgstr ""
 
-#: gettext/gettext-config.php:33 lib/gettext-config.php:33
+#: gettext/gettext-lib-config.php:33
 msgctxt "lib file description"
 msgid "(plugin) Simple Job Board"
 msgstr ""
 
-#: gettext/gettext-config.php:34 lib/gettext-config.php:34
+#: gettext/gettext-lib-config.php:34
 msgctxt "lib file description"
 msgid "(plugin) WP Job Manager"
 msgstr ""
 
-#: gettext/gettext-config.php:35 lib/gettext-config.php:35
+#: gettext/gettext-lib-config.php:35
 msgctxt "lib file description"
 msgid "(plugin) Polylang"
 msgstr ""
 
-#: gettext/gettext-config.php:36 lib/gettext-config.php:36
+#: gettext/gettext-lib-config.php:36
 msgctxt "lib file description"
 msgid "(plugin) WPML"
 msgstr ""
 
-#: gettext/gettext-config.php:37 lib/gettext-config.php:37
+#: gettext/gettext-lib-config.php:37
 msgctxt "lib file description"
 msgid "(api) Facebook Video API"
 msgstr ""
 
-#: gettext/gettext-config.php:38 lib/gettext-config.php:38
+#: gettext/gettext-lib-config.php:38
 msgctxt "lib file description"
 msgid "(api) Gravatar Image API"
 msgstr ""
 
-#: gettext/gettext-config.php:39 lib/gettext-config.php:39
+#: gettext/gettext-lib-config.php:39
 msgctxt "lib file description"
 msgid "(plugin) NextGEN Gallery, NextCellent Gallery"
 msgstr ""
 
-#: gettext/gettext-config.php:40 lib/gettext-config.php:40
+#: gettext/gettext-lib-config.php:40
 msgctxt "lib file description"
 msgid "(plugin) rtMedia for WordPress, BuddyPress and bbPress"
 msgstr ""
 
-#: gettext/gettext-config.php:41 lib/gettext-config.php:41
+#: gettext/gettext-lib-config.php:41
 msgctxt "lib file description"
 msgid "(api) Slideshare API"
 msgstr ""
 
-#: gettext/gettext-config.php:42 lib/gettext-config.php:42
+#: gettext/gettext-lib-config.php:42
 msgctxt "lib file description"
 msgid "(api) Soundcloud API"
 msgstr ""
 
-#: gettext/gettext-config.php:43 lib/gettext-config.php:43
+#: gettext/gettext-lib-config.php:43
 msgctxt "lib file description"
 msgid "(feature) Upscale Media Library Images"
 msgstr ""
 
-#: gettext/gettext-config.php:44 lib/gettext-config.php:44
+#: gettext/gettext-lib-config.php:44
 msgctxt "lib file description"
 msgid "(api) Vimeo Video API"
 msgstr ""
 
-#: gettext/gettext-config.php:45 lib/gettext-config.php:45
+#: gettext/gettext-lib-config.php:45
 msgctxt "lib file description"
 msgid "(api) Wistia Video API"
 msgstr ""
 
-#: gettext/gettext-config.php:46 lib/gettext-config.php:46
+#: gettext/gettext-lib-config.php:46
 msgctxt "lib file description"
 msgid "(api) WP Video Shortcode API"
 msgstr ""
 
-#: gettext/gettext-config.php:47 lib/gettext-config.php:47
+#: gettext/gettext-lib-config.php:47
 msgctxt "lib file description"
 msgid "(api) YouTube Video / Playlist API"
 msgstr ""
 
-#: gettext/gettext-config.php:48 lib/gettext-config.php:48
+#: gettext/gettext-lib-config.php:48
 msgctxt "lib file description"
 msgid "(plugin) Rate my Post"
 msgstr ""
 
-#: gettext/gettext-config.php:49 lib/gettext-config.php:49
+#: gettext/gettext-lib-config.php:49
 msgctxt "lib file description"
 msgid "(plugin) WP-PostRatings"
 msgstr ""
 
-#: gettext/gettext-config.php:50 lib/gettext-config.php:50
+#: gettext/gettext-lib-config.php:50
 msgctxt "lib file description"
 msgid "(plugin) WP Recipe Maker"
 msgstr ""
 
-#: gettext/gettext-config.php:51 lib/gettext-config.php:51
+#: gettext/gettext-lib-config.php:51
 msgctxt "lib file description"
 msgid "(plugin) WP Ultimate Recipe"
 msgstr ""
 
-#: gettext/gettext-config.php:52 lib/gettext-config.php:52
+#: gettext/gettext-lib-config.php:52
 msgctxt "lib file description"
 msgid "(api) Shopper Approved API"
 msgstr ""
 
-#: gettext/gettext-config.php:53 lib/gettext-config.php:53
+#: gettext/gettext-lib-config.php:53
 msgctxt "lib file description"
 msgid "(plugin) WP Product Review"
 msgstr ""
 
-#: gettext/gettext-config.php:54 lib/gettext-config.php:54
+#: gettext/gettext-lib-config.php:54
 msgctxt "lib file description"
 msgid "(plugin) Yotpo Social Reviews for WooCommerce"
 msgstr ""
 
-#: gettext/gettext-config.php:55 lib/gettext-config.php:55
+#: gettext/gettext-lib-config.php:55
 msgctxt "lib file description"
 msgid "(plugin) All in One SEO Pack"
 msgstr ""
 
-#: gettext/gettext-config.php:56 lib/gettext-config.php:56
+#: gettext/gettext-lib-config.php:56
 msgctxt "lib file description"
 msgid "(plugin) The SEO Framework"
 msgstr ""
 
-#: gettext/gettext-config.php:57 lib/gettext-config.php:57
+#: gettext/gettext-lib-config.php:57
 msgctxt "lib file description"
 msgid "(plugin) WP Meta SEO"
 msgstr ""
 
-#: gettext/gettext-config.php:58 lib/gettext-config.php:58
+#: gettext/gettext-lib-config.php:58
 msgctxt "lib file description"
 msgid "(plugin) Yoast SEO"
 msgstr ""
 
-#: gettext/gettext-config.php:59 gettext/gettext-config.php:67
-#: lib/gettext-config.php:59 lib/gettext-config.php:67
+#: gettext/gettext-lib-config.php:59 gettext/gettext-lib-config.php:67
 msgctxt "lib file description"
 msgid "(plugin) BuddyPress"
 msgstr ""
 
-#: gettext/gettext-config.php:60 lib/gettext-config.php:60
+#: gettext/gettext-lib-config.php:60
 msgctxt "lib file description"
 msgid "(plugin) Co-Authors Plus"
 msgstr ""
 
-#: gettext/gettext-config.php:61 lib/gettext-config.php:61
+#: gettext/gettext-lib-config.php:61
 msgctxt "lib file description"
 msgid "(feature) URL Shortening Service"
 msgstr ""
 
-#: gettext/gettext-config.php:62 lib/gettext-config.php:62
+#: gettext/gettext-lib-config.php:62
 msgctxt "lib file description"
 msgid "(feature) Import Yoast SEO Social Meta"
 msgstr ""
 
-#: gettext/gettext-config.php:63 lib/gettext-config.php:63
+#: gettext/gettext-lib-config.php:63
 msgctxt "lib file description"
 msgid "Your SSO"
 msgstr ""
 
-#: gettext/gettext-config.php:64 gettext/gettext-config.php:72
-#: lib/admin-head.php:259 lib/gettext-config.php:64 lib/gettext-config.php:72
-#: lib/messages.php:3318
+#: gettext/gettext-lib-config.php:64 gettext/gettext-lib-config.php:72
+#: lib/admin-head.php:259 lib/messages.php:3318
 msgctxt "lib file description"
 msgid "Advanced Settings"
 msgstr ""
 
-#: gettext/gettext-config.php:65 gettext/gettext-config.php:75
-#: lib/gettext-config.php:65 lib/gettext-config.php:75 lib/messages.php:2759
+#: gettext/gettext-lib-config.php:65 gettext/gettext-lib-config.php:75
+#: lib/messages.php:2759
 msgctxt "lib file description"
 msgid "Complementary Add-ons"
 msgstr ""
 
-#: gettext/gettext-config.php:66 gettext/gettext-config.php:76
-#: lib/gettext-config.php:66 lib/gettext-config.php:76 lib/messages.php:2266
-#: lib/messages.php:2738 lib/messages.php:2747 lib/messages.php:2762
+#: gettext/gettext-lib-config.php:66 gettext/gettext-lib-config.php:76
+#: lib/messages.php:2266 lib/messages.php:2738 lib/messages.php:2747
+#: lib/messages.php:2762
 msgctxt "lib file description"
 msgid "Premium Licenses"
 msgstr ""
 
-#: gettext/gettext-config.php:68 lib/gettext-config.php:68
+#: gettext/gettext-lib-config.php:68
 msgctxt "lib file description"
 msgid "Essential Settings"
 msgstr ""
 
-#: gettext/gettext-config.php:69 lib/admin-head.php:372
-#: lib/gettext-config.php:69
+#: gettext/gettext-lib-config.php:69 lib/admin-head.php:372
 msgctxt "lib file description"
 msgid "Setup Guide"
 msgstr ""
 
-#: gettext/gettext-config.php:70 lib/gettext-config.php:70
+#: gettext/gettext-lib-config.php:70
 msgctxt "lib file description"
 msgid "Dashboard"
 msgstr ""
 
-#: gettext/gettext-config.php:71 lib/gettext-config.php:71
+#: gettext/gettext-lib-config.php:71
 msgctxt "lib file description"
 msgid "General Settings"
 msgstr ""
 
-#: gettext/gettext-config.php:73 lib/gettext-config.php:73
+#: gettext/gettext-lib-config.php:73
 msgctxt "lib file description"
 msgid "Social Pages"
 msgstr ""
 
-#: gettext/gettext-config.php:74 lib/gettext-config.php:74 lib/messages.php:931
-#: lib/messages.php:2579
+#: gettext/gettext-lib-config.php:74 lib/messages.php:931 lib/messages.php:2579
 msgctxt "lib file description"
 msgid "Image Sizes"
 msgstr ""
 
-#: gettext/gettext-config.php:77 lib/gettext-config.php:77
-#: lib/messages.php:2802
+#: gettext/gettext-lib-config.php:77 lib/messages.php:2802
 msgctxt "lib file description"
 msgid "Tools and Actions"
 msgstr ""
 
-#: gettext/gettext-config.php:78 lib/gettext-config.php:78
+#: gettext/gettext-lib-config.php:78
 msgctxt "lib file description"
 msgid "Add Person"
 msgstr ""
 
-#: gettext/gettext-config.php:79 lib/gettext-config.php:79
+#: gettext/gettext-lib-config.php:79
 msgctxt "plugin description"
 msgid ""
 "Make sure your content looks great on social sites and search results, no "
 "matter how your URLs are crawled, shared, re-shared, posted, or embedded."
 msgstr ""
 
-#: gettext/gettext-config.php:80 lib/gettext-config.php:80
+#: gettext/gettext-lib-config.php:80
 msgctxt "plugin description"
 msgid ""
 "Apple Store / iTunes and Google Play App Meta Tags for Apple's mobile Safari "
 "Banner and Twitter's App Card."
 msgstr ""
 
-#: gettext/gettext-config.php:81 lib/gettext-config.php:81
+#: gettext/gettext-lib-config.php:81
 msgctxt "plugin description"
 msgid ""
 "Schema BreadcrumbList Markup in JSON-LD for Better Google Rich Results with "
 "Structured Data."
 msgstr ""
 
-#: gettext/gettext-config.php:82 lib/gettext-config.php:82
+#: gettext/gettext-lib-config.php:82
 msgctxt "plugin description"
 msgid ""
 "Create FAQ and Question / Answer Pages with Optional Shortcodes to Include "
 "FAQs and Questions in your Content."
 msgstr ""
 
-#: gettext/gettext-config.php:83 lib/gettext-config.php:83
+#: gettext/gettext-lib-config.php:83
 msgctxt "plugin description"
 msgid ""
 "Inherit the Featured and Custom Images from Parents for Posts, Pages, Custom "
 "Post Types, Categories, Tags, and Custom Taxonomies."
 msgstr ""
 
-#: gettext/gettext-config.php:84 lib/gettext-config.php:84
+#: gettext/gettext-lib-config.php:84
 msgctxt "plugin description"
 msgid ""
 "Google Rich Results and Structured Data for Articles, Carousels (aka Item "
@@ -580,1151 +1196,1134 @@ msgid ""
 "Videos, and More."
 msgstr ""
 
-#: gettext/gettext-config.php:85 lib/gettext-config.php:85
+#: gettext/gettext-lib-config.php:85
 msgctxt "plugin description"
 msgid ""
 "Customize the Schema Organization Markup for your WebSite and Manage "
 "Additional Organizations (Publisher, Organizer, etc.)."
 msgstr ""
 
-#: gettext/gettext-config.php:86 lib/gettext-config.php:86
+#: gettext/gettext-lib-config.php:86
 msgctxt "plugin description"
 msgid ""
 "Manage Places and Local SEO for Facebook / Open Graph, Pinterest, Google "
 "Local Business and Schema Place."
 msgstr ""
 
-#: gettext/gettext-config.php:87 lib/gettext-config.php:87
+#: gettext/gettext-lib-config.php:87
 msgctxt "plugin description"
 msgid ""
 "Ratings and Reviews for WordPress Comments with Schema Aggregate Rating and "
 "Schema Review Markup."
 msgstr ""
 
-#: gettext/gettext-config.php:88 lib/gettext-config.php:88
+#: gettext/gettext-lib-config.php:88
 msgctxt "plugin description"
 msgid ""
 "Enhances the WordPress REST API Post, Term and User Queries with an Array of "
 "Social Meta Tags, SEO HTML Tags and Schema JSON-LD Markup."
 msgstr ""
 
-#: gettext/gettext-config.php:89 lib/gettext-config.php:89
+#: gettext/gettext-lib-config.php:89
 msgctxt "plugin description"
 msgid ""
 "Ridiculously Responsive (SVG) Social Sharing Buttons for your Content, "
 "Excerpts, CSS Sidebar, Widget, Shortcode, Templates, and Editor."
 msgstr ""
 
-#: gettext/gettext-config.php:90 lib/gettext-config.php:90
+#: gettext/gettext-lib-config.php:90
 msgctxt "plugin description"
 msgid ""
 "Remove Outdated / Incorrect Microdata from Theme Templates for Better Google "
 "Rich Results with Schema JSON-LD Markup."
 msgstr ""
 
-#: gettext/gettext-config.php:91 lib/gettext-config.php:91
+#: gettext/gettext-lib-config.php:91
 msgctxt "plugin description"
 msgid ""
 "Improves the Look of Thumbnails and Resized Images for Better Click-Through-"
 "Rates on Social and Search Sites."
 msgstr ""
 
-#: gettext/gettext-config.php:92 lib/gettext-config.php:92
+#: gettext/gettext-lib-config.php:92
 msgctxt "plugin description"
 msgid ""
 "Quick and Easy Locale / Language / Region Selector for the WordPress Admin "
 "Toolbar."
 msgstr ""
 
-#: gettext/gettext-config.php:93 lib/gettext-config.php:93
+#: gettext/gettext-lib-config.php:93
 msgctxt "plugin description"
 msgid ""
 "Update Manager for the WPSSO Core Premium Plugin and its Premium "
 "Complementary Add-ons."
 msgstr ""
 
-#: gettext/gettext-config.php:94 lib/gettext-config.php:94
+#: gettext/gettext-lib-config.php:94
 msgctxt "plugin description"
 msgid ""
 "GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, Depth, and "
 "Volume for WooCommerce Products and Variations."
 msgstr ""
 
-#: gettext/gettext-config.php:95 lib/admin-head.php:258
-#: lib/gettext-config.php:95 lib/messages.php:3317
+#: gettext/gettext-lib-config.php:95 lib/admin-head.php:258
+#: lib/messages.php:3317
 msgctxt "menu title"
 msgid "SSO"
 msgstr ""
 
-#: gettext/gettext-config.php:96 lib/gettext-config.php:96
+#: gettext/gettext-lib-config.php:96
 msgctxt "metabox title"
 msgid "Document SSO"
 msgstr ""
 
-#: gettext/gettext-config.php:97 lib/gettext-config.php:97
+#: gettext/gettext-lib-config.php:97
 msgctxt "column header"
 msgid "Schema"
 msgstr ""
 
-#: gettext/gettext-config.php:98 lib/gettext-config.php:98
+#: gettext/gettext-lib-config.php:98
 msgctxt "column header"
 msgid "OG Type"
 msgstr ""
 
-#: gettext/gettext-config.php:99 lib/gettext-config.php:99
+#: gettext/gettext-lib-config.php:99
 msgctxt "column header"
 msgid "SSO Image"
 msgstr ""
 
-#: gettext/gettext-config.php:100 lib/gettext-config.php:100
+#: gettext/gettext-lib-config.php:100
 msgctxt "column header"
 msgid "SSO Desc"
 msgstr ""
 
-#: gettext/gettext-config.php:101 lib/gettext-config.php:101
+#: gettext/gettext-lib-config.php:101
 msgctxt "option label"
 msgid "Form Selects"
 msgstr ""
 
-#: gettext/gettext-config.php:102 lib/gettext-config.php:102
+#: gettext/gettext-lib-config.php:102
 msgctxt "option label"
 msgid "Head Markup"
 msgstr ""
 
-#: gettext/gettext-config.php:103 lib/gettext-config.php:103
+#: gettext/gettext-lib-config.php:103
 msgctxt "option label"
 msgid "Image URL Info"
 msgstr ""
 
-#: gettext/gettext-config.php:104 lib/gettext-config.php:104
+#: gettext/gettext-lib-config.php:104
 msgctxt "option label"
 msgid "Shortened URLs"
 msgstr ""
 
-#: gettext/gettext-config.php:105 lib/gettext-config.php:105
+#: gettext/gettext-lib-config.php:105
 msgctxt "option label"
 msgid "Schema Types"
 msgstr ""
 
-#: gettext/gettext-config.php:106 lib/gettext-config.php:106
+#: gettext/gettext-lib-config.php:106
 msgctxt "option label"
 msgid "Video API Info"
 msgstr ""
 
-#: gettext/gettext-config.php:107 lib/gettext-config.php:107
+#: gettext/gettext-lib-config.php:107
 msgctxt "option label"
 msgid "All Transients"
 msgstr ""
 
-#: gettext/gettext-config.php:108 lib/gettext-config.php:108
+#: gettext/gettext-lib-config.php:108
 msgctxt "option label"
 msgid "Filtered Content"
 msgstr ""
 
-#: gettext/gettext-config.php:109 lib/gettext-config.php:109
+#: gettext/gettext-lib-config.php:109
 msgctxt "option label"
 msgid "All WP Objects"
 msgstr ""
 
-#: gettext/gettext-config.php:110 lib/gettext-config.php:110
+#: gettext/gettext-lib-config.php:110
 msgctxt "option value"
 msgid "Yes"
 msgstr ""
 
-#: gettext/gettext-config.php:111 lib/gettext-config.php:111
+#: gettext/gettext-lib-config.php:111
 msgctxt "option value"
 msgid "No"
 msgstr ""
 
-#: gettext/gettext-config.php:112 lib/gettext-config.php:112
+#: gettext/gettext-lib-config.php:112
 msgctxt "option value"
 msgid "True"
 msgstr ""
 
-#: gettext/gettext-config.php:113 lib/gettext-config.php:113
+#: gettext/gettext-lib-config.php:113
 msgctxt "option value"
 msgid "False"
 msgstr ""
 
-#: gettext/gettext-config.php:114 lib/gettext-config.php:114
+#: gettext/gettext-lib-config.php:114
 msgctxt "option value"
 msgid "On"
 msgstr ""
 
-#: gettext/gettext-config.php:115 lib/gettext-config.php:115
+#: gettext/gettext-lib-config.php:115
 msgctxt "option value"
 msgid "Off"
 msgstr ""
 
-#: gettext/gettext-config.php:116 lib/gettext-config.php:116
+#: gettext/gettext-lib-config.php:116
 msgctxt "option value"
 msgid "Sunday"
 msgstr ""
 
-#: gettext/gettext-config.php:117 lib/gettext-config.php:117
+#: gettext/gettext-lib-config.php:117
 msgctxt "option value"
 msgid "Monday"
 msgstr ""
 
-#: gettext/gettext-config.php:118 lib/gettext-config.php:118
+#: gettext/gettext-lib-config.php:118
 msgctxt "option value"
 msgid "Tuesday"
 msgstr ""
 
-#: gettext/gettext-config.php:119 lib/gettext-config.php:119
+#: gettext/gettext-lib-config.php:119
 msgctxt "option value"
 msgid "Wednesday"
 msgstr ""
 
-#: gettext/gettext-config.php:120 lib/gettext-config.php:120
+#: gettext/gettext-lib-config.php:120
 msgctxt "option value"
 msgid "Thursday"
 msgstr ""
 
-#: gettext/gettext-config.php:121 lib/gettext-config.php:121
+#: gettext/gettext-lib-config.php:121
 msgctxt "option value"
 msgid "Friday"
 msgstr ""
 
-#: gettext/gettext-config.php:122 lib/gettext-config.php:122
+#: gettext/gettext-lib-config.php:122
 msgctxt "option value"
 msgid "Saturday"
 msgstr ""
 
-#: gettext/gettext-config.php:123 lib/gettext-config.php:123
+#: gettext/gettext-lib-config.php:123
 msgctxt "option value"
 msgid "Public Holidays"
 msgstr ""
 
-#: gettext/gettext-config.php:124 lib/gettext-config.php:124
+#: gettext/gettext-lib-config.php:124
 msgctxt "option value"
 msgid "Hour"
 msgstr ""
 
-#: gettext/gettext-config.php:125 lib/gettext-config.php:125
+#: gettext/gettext-lib-config.php:125
 msgctxt "option value"
 msgid "Day"
 msgstr ""
 
-#: gettext/gettext-config.php:126 lib/gettext-config.php:126
+#: gettext/gettext-lib-config.php:126
 msgctxt "option value"
 msgid "Week"
 msgstr ""
 
-#: gettext/gettext-config.php:127 lib/gettext-config.php:127
+#: gettext/gettext-lib-config.php:127
 msgctxt "option value"
 msgid "Month"
 msgstr ""
 
-#: gettext/gettext-config.php:128 lib/gettext-config.php:128
+#: gettext/gettext-lib-config.php:128
 msgctxt "option value"
 msgid "Year"
 msgstr ""
 
-#: gettext/gettext-config.php:129 lib/gettext-config.php:129
+#: gettext/gettext-lib-config.php:129
 msgctxt "option value"
 msgid "(default)"
 msgstr ""
 
-#: gettext/gettext-config.php:130 lib/gettext-config.php:130
+#: gettext/gettext-lib-config.php:130
 msgctxt "option value"
 msgid "(no images)"
 msgstr ""
 
-#: gettext/gettext-config.php:131 lib/gettext-config.php:131
+#: gettext/gettext-lib-config.php:131
 msgctxt "option value"
 msgid "(no videos)"
 msgstr ""
 
-#: gettext/gettext-config.php:132 lib/gettext-config.php:132
+#: gettext/gettext-lib-config.php:132
 msgctxt "option value"
 msgid "(settings value)"
 msgstr ""
 
-#: gettext/gettext-config.php:133 lib/gettext-config.php:133
+#: gettext/gettext-lib-config.php:133
 msgctxt "option value"
 msgid "(option disabled)"
 msgstr ""
 
-#: gettext/gettext-config.php:134 lib/gettext-config.php:134
+#: gettext/gettext-lib-config.php:134
 msgctxt "option value"
 msgid "default is %s"
 msgstr ""
 
-#: gettext/gettext-config.php:135 lib/gettext-config.php:135
-#: lib/messages.php:816
+#: gettext/gettext-lib-config.php:135 lib/messages.php:816
 msgctxt "option value"
 msgid "checked"
 msgstr ""
 
-#: gettext/gettext-config.php:136 lib/gettext-config.php:136
-#: lib/messages.php:817
+#: gettext/gettext-lib-config.php:136 lib/messages.php:817
 msgctxt "option value"
 msgid "unchecked"
 msgstr ""
 
-#: gettext/gettext-config.php:137 lib/gettext-config.php:137
+#: gettext/gettext-lib-config.php:137
 msgctxt "option value"
 msgid "at"
 msgstr ""
 
-#: gettext/gettext-config.php:138 lib/gettext-config.php:138
+#: gettext/gettext-lib-config.php:138
 msgctxt "option value"
 msgid "tz"
 msgstr ""
 
-#: gettext/gettext-config.php:139 lib/gettext-config.php:139
+#: gettext/gettext-lib-config.php:139
 msgctxt "option value"
 msgid "SSO Toolbar Notices"
 msgstr ""
 
-#: gettext/gettext-config.php:140 lib/gettext-config.php:140
+#: gettext/gettext-lib-config.php:140
 msgctxt "option value"
 msgid "WP Admin Notices"
 msgstr ""
 
-#: gettext/gettext-config.php:141 lib/gettext-config.php:141
+#: gettext/gettext-lib-config.php:141
 msgctxt "option value"
 msgid "Basic Options"
 msgstr ""
 
-#: gettext/gettext-config.php:142 lib/gettext-config.php:142
+#: gettext/gettext-lib-config.php:142
 msgctxt "option value"
 msgid "All Options"
 msgstr ""
 
-#: gettext/gettext-config.php:143 lib/gettext-config.php:143
+#: gettext/gettext-lib-config.php:143
 msgctxt "option value"
 msgid "New activation"
 msgstr ""
 
-#: gettext/gettext-config.php:144 lib/gettext-config.php:144
+#: gettext/gettext-lib-config.php:144
 msgctxt "option value"
 msgid "If empty"
 msgstr ""
 
-#: gettext/gettext-config.php:145 lib/gettext-config.php:145
+#: gettext/gettext-lib-config.php:145
 msgctxt "option value"
 msgid "Always"
 msgstr ""
 
-#: gettext/gettext-config.php:146 gettext/gettext-config.php:149
-#: gettext/gettext-config.php:153 gettext/gettext-config.php:158
-#: gettext/gettext-config.php:162 gettext/gettext-config.php:165
-#: gettext/gettext-config.php:168 gettext/gettext-config.php:177
-#: gettext/gettext-config.php:185 gettext/gettext-config.php:258
-#: gettext/gettext-config.php:266 gettext/gettext-config.php:270
-#: gettext/gettext-config.php:276 gettext/gettext-config.php:285
-#: gettext/gettext-config.php:289 gettext/gettext-config.php:295
-#: gettext/gettext-config.php:305 lib/gettext-config.php:146
-#: lib/gettext-config.php:149 lib/gettext-config.php:153
-#: lib/gettext-config.php:158 lib/gettext-config.php:162
-#: lib/gettext-config.php:165 lib/gettext-config.php:168
-#: lib/gettext-config.php:177 lib/gettext-config.php:185
-#: lib/gettext-config.php:258 lib/gettext-config.php:266
-#: lib/gettext-config.php:270 lib/gettext-config.php:276
-#: lib/gettext-config.php:285 lib/gettext-config.php:289
-#: lib/gettext-config.php:295 lib/gettext-config.php:305
-#: lib/users/add-person.php:96
+#: gettext/gettext-lib-config.php:146 gettext/gettext-lib-config.php:149
+#: gettext/gettext-lib-config.php:153 gettext/gettext-lib-config.php:158
+#: gettext/gettext-lib-config.php:162 gettext/gettext-lib-config.php:165
+#: gettext/gettext-lib-config.php:168 gettext/gettext-lib-config.php:177
+#: gettext/gettext-lib-config.php:185 gettext/gettext-lib-config.php:258
+#: gettext/gettext-lib-config.php:266 gettext/gettext-lib-config.php:270
+#: gettext/gettext-lib-config.php:276 gettext/gettext-lib-config.php:285
+#: gettext/gettext-lib-config.php:289 gettext/gettext-lib-config.php:295
+#: gettext/gettext-lib-config.php:305 lib/users/add-person.php:96
 msgctxt "option value"
 msgid "[None]"
 msgstr ""
 
-#: gettext/gettext-config.php:147 lib/gettext-config.php:147
+#: gettext/gettext-lib-config.php:147
 msgctxt "option value"
 msgid "Header"
 msgstr ""
 
-#: gettext/gettext-config.php:148 lib/gettext-config.php:148
+#: gettext/gettext-lib-config.php:148
 msgctxt "option value"
 msgid "Footer"
 msgstr ""
 
-#: gettext/gettext-config.php:150 lib/gettext-config.php:150
+#: gettext/gettext-lib-config.php:150
 msgctxt "option value"
 msgid "Title Only"
 msgstr ""
 
-#: gettext/gettext-config.php:151 lib/gettext-config.php:151
+#: gettext/gettext-lib-config.php:151
 msgctxt "option value"
 msgid "Excerpt Only"
 msgstr ""
 
-#: gettext/gettext-config.php:152 lib/gettext-config.php:152
+#: gettext/gettext-lib-config.php:152
 msgctxt "option value"
 msgid "Title and Excerpt"
 msgstr ""
 
-#: gettext/gettext-config.php:154 gettext/gettext-config.php:156
-#: lib/gettext-config.php:154 lib/gettext-config.php:156
+#: gettext/gettext-lib-config.php:154 gettext/gettext-lib-config.php:156
 msgctxt "option value"
 msgid "Organization"
 msgstr ""
 
-#: gettext/gettext-config.php:155 gettext/gettext-config.php:157
-#: lib/gettext-config.php:155 lib/gettext-config.php:157
+#: gettext/gettext-lib-config.php:155 gettext/gettext-lib-config.php:157
 msgctxt "option value"
 msgid "Person"
 msgstr ""
 
-#: gettext/gettext-config.php:159 lib/gettext-config.php:159
+#: gettext/gettext-lib-config.php:159
 msgctxt "option value"
 msgid "First and Last Names"
 msgstr ""
 
-#: gettext/gettext-config.php:160 lib/gettext-config.php:160
+#: gettext/gettext-lib-config.php:160
 msgctxt "option value"
 msgid "Display Name"
 msgstr ""
 
-#: gettext/gettext-config.php:161 lib/gettext-config.php:161
+#: gettext/gettext-lib-config.php:161
 msgctxt "option value"
 msgid "Nickname"
 msgstr ""
 
-#: gettext/gettext-config.php:163 lib/gettext-config.php:163
+#: gettext/gettext-lib-config.php:163
 msgctxt "option value"
 msgid "[Custom Address]"
 msgstr ""
 
-#: gettext/gettext-config.php:164 lib/gettext-config.php:164
+#: gettext/gettext-lib-config.php:164
 msgctxt "option value"
 msgid "[New Address]"
 msgstr ""
 
-#: gettext/gettext-config.php:166 lib/gettext-config.php:166
+#: gettext/gettext-lib-config.php:166
 msgctxt "option value"
 msgid "[New Organization]"
 msgstr ""
 
-#: gettext/gettext-config.php:167 lib/gettext-config.php:167
+#: gettext/gettext-lib-config.php:167
 msgctxt "option value"
 msgid "[WebSite Organization]"
 msgstr ""
 
-#: gettext/gettext-config.php:169 lib/gettext-config.php:169
+#: gettext/gettext-lib-config.php:169
 msgctxt "option value"
 msgid "[Custom Place]"
 msgstr ""
 
-#: gettext/gettext-config.php:170 lib/gettext-config.php:170
+#: gettext/gettext-lib-config.php:170
 msgctxt "option value"
 msgid "[New Place]"
 msgstr ""
 
-#: gettext/gettext-config.php:171 lib/gettext-config.php:171
+#: gettext/gettext-lib-config.php:171
 msgctxt "option value"
 msgid "Left"
 msgstr ""
 
-#: gettext/gettext-config.php:172 gettext/gettext-config.php:175
-#: lib/gettext-config.php:172 lib/gettext-config.php:175
+#: gettext/gettext-lib-config.php:172 gettext/gettext-lib-config.php:175
 msgctxt "option value"
 msgid "Center"
 msgstr ""
 
-#: gettext/gettext-config.php:173 lib/gettext-config.php:173
+#: gettext/gettext-lib-config.php:173
 msgctxt "option value"
 msgid "Right"
 msgstr ""
 
-#: gettext/gettext-config.php:174 lib/gettext-config.php:174
+#: gettext/gettext-lib-config.php:174
 msgctxt "option value"
 msgid "Top"
 msgstr ""
 
-#: gettext/gettext-config.php:176 lib/gettext-config.php:176
+#: gettext/gettext-lib-config.php:176
 msgctxt "option value"
 msgid "Bottom"
 msgstr ""
 
-#: gettext/gettext-config.php:178 lib/gettext-config.php:178
+#: gettext/gettext-lib-config.php:178
 msgctxt "option value"
 msgid "Standard"
 msgstr ""
 
-#: gettext/gettext-config.php:179 lib/gettext-config.php:179
+#: gettext/gettext-lib-config.php:179
 msgctxt "option value"
 msgid "Large"
 msgstr ""
 
-#: gettext/gettext-config.php:180 gettext/gettext-config.php:183
-#: lib/gettext-config.php:180 lib/gettext-config.php:183
+#: gettext/gettext-lib-config.php:180 gettext/gettext-lib-config.php:183
 msgctxt "option value"
 msgid "[No Breadcrumbs]"
 msgstr ""
 
-#: gettext/gettext-config.php:181 lib/gettext-config.php:181
+#: gettext/gettext-lib-config.php:181
 msgctxt "option value"
 msgid "Home Page(s) and Categories"
 msgstr ""
 
-#: gettext/gettext-config.php:182 gettext/gettext-config.php:184
-#: lib/gettext-config.php:182 lib/gettext-config.php:184
+#: gettext/gettext-lib-config.php:182 gettext/gettext-lib-config.php:184
 msgctxt "option value"
 msgid "Home Page(s) and Parents"
 msgstr ""
 
-#: gettext/gettext-config.php:186 lib/gettext-config.php:186
+#: gettext/gettext-lib-config.php:186
 msgctxt "option value"
 msgid "Bitly"
 msgstr ""
 
-#: gettext/gettext-config.php:187 lib/gettext-config.php:187
+#: gettext/gettext-lib-config.php:187
 msgctxt "option value"
 msgid "DLMY.App"
 msgstr ""
 
-#: gettext/gettext-config.php:188 lib/gettext-config.php:188
+#: gettext/gettext-lib-config.php:188
 msgctxt "option value"
 msgid "Ow.ly"
 msgstr ""
 
-#: gettext/gettext-config.php:189 lib/gettext-config.php:189
+#: gettext/gettext-lib-config.php:189
 msgctxt "option value"
 msgid "TinyURL"
 msgstr ""
 
-#: gettext/gettext-config.php:190 lib/gettext-config.php:190
+#: gettext/gettext-lib-config.php:190
 msgctxt "option value"
 msgid "YOURLS"
 msgstr ""
 
-#: gettext/gettext-config.php:191 lib/gettext-config.php:191
+#: gettext/gettext-lib-config.php:191
 msgctxt "option value"
 msgid "Facebook Business Page URL"
 msgstr ""
 
-#: gettext/gettext-config.php:192 lib/gettext-config.php:192
+#: gettext/gettext-lib-config.php:192
 msgctxt "option value"
 msgid "Instagram Business Profile URL"
 msgstr ""
 
-#: gettext/gettext-config.php:193 lib/gettext-config.php:193
+#: gettext/gettext-lib-config.php:193
 msgctxt "option value"
 msgid "LinkedIn Business Page URL"
 msgstr ""
 
-#: gettext/gettext-config.php:194 lib/gettext-config.php:194
+#: gettext/gettext-lib-config.php:194
 msgctxt "option value"
 msgid "Myspace Business Page URL"
 msgstr ""
 
-#: gettext/gettext-config.php:195 lib/gettext-config.php:195
+#: gettext/gettext-lib-config.php:195
 msgctxt "option value"
 msgid "Pinterest Business Page URL"
 msgstr ""
 
-#: gettext/gettext-config.php:196 lib/gettext-config.php:196
+#: gettext/gettext-lib-config.php:196
 msgctxt "option value"
 msgid "Soundcloud Business Page URL"
 msgstr ""
 
-#: gettext/gettext-config.php:197 lib/gettext-config.php:197
+#: gettext/gettext-lib-config.php:197
 msgctxt "option value"
 msgid "Twitter Business @username"
 msgstr ""
 
-#: gettext/gettext-config.php:198 lib/gettext-config.php:198
+#: gettext/gettext-lib-config.php:198
 msgctxt "option value"
 msgid "Tumblr Business Page URL"
 msgstr ""
 
-#: gettext/gettext-config.php:199 lib/gettext-config.php:199
+#: gettext/gettext-lib-config.php:199
 msgctxt "option value"
 msgid "Wikipedia Organization Page URL"
 msgstr ""
 
-#: gettext/gettext-config.php:200 lib/gettext-config.php:200
+#: gettext/gettext-lib-config.php:200
 msgctxt "option value"
 msgid "YouTube Business Channel URL"
 msgstr ""
 
-#: gettext/gettext-config.php:201 lib/gettext-config.php:201
+#: gettext/gettext-lib-config.php:201
 msgctxt "option value"
 msgid "Facebook Videos"
 msgstr ""
 
-#: gettext/gettext-config.php:202 lib/gettext-config.php:202
+#: gettext/gettext-lib-config.php:202
 msgctxt "option value"
 msgid "Slideshare Presentations"
 msgstr ""
 
-#: gettext/gettext-config.php:203 lib/gettext-config.php:203
+#: gettext/gettext-lib-config.php:203
 msgctxt "option value"
 msgid "Soundcloud Tracks"
 msgstr ""
 
-#: gettext/gettext-config.php:204 lib/gettext-config.php:204
+#: gettext/gettext-lib-config.php:204
 msgctxt "option value"
 msgid "Vimeo Videos"
 msgstr ""
 
-#: gettext/gettext-config.php:205 lib/gettext-config.php:205
+#: gettext/gettext-lib-config.php:205
 msgctxt "option value"
 msgid "Wistia Videos"
 msgstr ""
 
-#: gettext/gettext-config.php:206 lib/gettext-config.php:206
+#: gettext/gettext-lib-config.php:206
 msgctxt "option value"
 msgid "WordPress Video Shortcode"
 msgstr ""
 
-#: gettext/gettext-config.php:207 lib/gettext-config.php:207
+#: gettext/gettext-lib-config.php:207
 msgctxt "option value"
 msgid "YouTube Videos and Playlists"
 msgstr ""
 
-#: gettext/gettext-config.php:208 lib/gettext-config.php:208
+#: gettext/gettext-lib-config.php:208
 msgctxt "option label"
 msgid "Microdata Type URLs Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:209 lib/gettext-config.php:209
+#: gettext/gettext-lib-config.php:209
 msgctxt "option label"
 msgid "Book ISBN Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:210 lib/gettext-config.php:210
+#: gettext/gettext-lib-config.php:210
 msgctxt "option label"
 msgid "How-To Steps Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:211 lib/gettext-config.php:211
+#: gettext/gettext-lib-config.php:211
 msgctxt "option label"
 msgid "How-To Supplies Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:212 lib/gettext-config.php:212
+#: gettext/gettext-lib-config.php:212
 msgctxt "option label"
 msgid "How-To Tools Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:213 lib/gettext-config.php:213
+#: gettext/gettext-lib-config.php:213
 msgctxt "option label"
 msgid "Image URL Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:214 lib/gettext-config.php:214
+#: gettext/gettext-lib-config.php:214
 msgctxt "option label"
 msgid "Product Availability Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:215 lib/gettext-config.php:215
+#: gettext/gettext-lib-config.php:215
 msgctxt "option label"
 msgid "Product Brand Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:216 lib/gettext-config.php:216
+#: gettext/gettext-lib-config.php:216
 msgctxt "option label"
 msgid "Product Type ID Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:217 lib/gettext-config.php:217
+#: gettext/gettext-lib-config.php:217
 msgctxt "option label"
 msgid "Product Color Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:218 lib/gettext-config.php:218
+#: gettext/gettext-lib-config.php:218
 msgctxt "option label"
 msgid "Product Condition Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:219 lib/gettext-config.php:219
+#: gettext/gettext-lib-config.php:219
 msgctxt "option label"
 msgid "Product Currency Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:220 lib/gettext-config.php:220
+#: gettext/gettext-lib-config.php:220
 msgctxt "option label"
 msgid "Product Depth Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:221 lib/gettext-config.php:221
+#: gettext/gettext-lib-config.php:221
 msgctxt "option label"
 msgid "Product Fluid Volume Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:222 lib/gettext-config.php:222
+#: gettext/gettext-lib-config.php:222
 msgctxt "option label"
 msgid "Product GTIN-14 Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:223 lib/gettext-config.php:223
+#: gettext/gettext-lib-config.php:223
 msgctxt "option label"
 msgid "Product GTIN-13 (EAN) Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:224 lib/gettext-config.php:224
+#: gettext/gettext-lib-config.php:224
 msgctxt "option label"
 msgid "Product GTIN-12 (UPC) Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:225 lib/gettext-config.php:225
+#: gettext/gettext-lib-config.php:225
 msgctxt "option label"
 msgid "Product GTIN-8 Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:226 lib/gettext-config.php:226
+#: gettext/gettext-lib-config.php:226
 msgctxt "option label"
 msgid "Product GTIN Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:227 lib/gettext-config.php:227
+#: gettext/gettext-lib-config.php:227
 msgctxt "option label"
 msgid "Product Height Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:228 lib/gettext-config.php:228
+#: gettext/gettext-lib-config.php:228
 msgctxt "option label"
 msgid "Product ISBN Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:229 lib/gettext-config.php:229
+#: gettext/gettext-lib-config.php:229
 msgctxt "option label"
 msgid "Product Length Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:230 lib/gettext-config.php:230
+#: gettext/gettext-lib-config.php:230
 msgctxt "option label"
 msgid "Product Material Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:231 lib/gettext-config.php:231
+#: gettext/gettext-lib-config.php:231
 msgctxt "option label"
 msgid "Product MPN Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:232 lib/gettext-config.php:232
+#: gettext/gettext-lib-config.php:232
 msgctxt "option label"
 msgid "Product Price Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:233 lib/gettext-config.php:233
+#: gettext/gettext-lib-config.php:233
 msgctxt "option label"
 msgid "Product Size Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:234 lib/gettext-config.php:234
+#: gettext/gettext-lib-config.php:234
 msgctxt "option label"
 msgid "Product SKU Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:235 lib/gettext-config.php:235
+#: gettext/gettext-lib-config.php:235
 msgctxt "option label"
 msgid "Product Target Gender Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:236 lib/gettext-config.php:236
+#: gettext/gettext-lib-config.php:236
 msgctxt "option label"
 msgid "Product Weight Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:237 lib/gettext-config.php:237
+#: gettext/gettext-lib-config.php:237
 msgctxt "option label"
 msgid "Product Width Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:238 lib/gettext-config.php:238
+#: gettext/gettext-lib-config.php:238
 msgctxt "option label"
 msgid "Recipe Ingredients Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:239 lib/gettext-config.php:239
+#: gettext/gettext-lib-config.php:239
 msgctxt "option label"
 msgid "Recipe Instructions Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:240 lib/gettext-config.php:240
+#: gettext/gettext-lib-config.php:240
 msgctxt "option label"
 msgid "Same-As URLs Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:241 lib/gettext-config.php:241
+#: gettext/gettext-lib-config.php:241
 msgctxt "option label"
 msgid "Video URL Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:242 lib/gettext-config.php:242
+#: gettext/gettext-lib-config.php:242
 msgctxt "option label"
 msgid "Video Embed HTML Custom Field"
 msgstr ""
 
-#: gettext/gettext-config.php:243 lib/gettext-config.php:243
+#: gettext/gettext-lib-config.php:243
 msgctxt "option label"
 msgid "Brand Attribute Name"
 msgstr ""
 
-#: gettext/gettext-config.php:244 lib/gettext-config.php:244
+#: gettext/gettext-lib-config.php:244
 msgctxt "option label"
 msgid "Color Attribute Name"
 msgstr ""
 
-#: gettext/gettext-config.php:245 lib/gettext-config.php:245
+#: gettext/gettext-lib-config.php:245
 msgctxt "option label"
 msgid "Condition Attribute Name"
 msgstr ""
 
-#: gettext/gettext-config.php:246 lib/gettext-config.php:246
+#: gettext/gettext-lib-config.php:246
 msgctxt "option label"
 msgid "Depth Attribute Name"
 msgstr ""
 
-#: gettext/gettext-config.php:247 lib/gettext-config.php:247
+#: gettext/gettext-lib-config.php:247
 msgctxt "option label"
 msgid "Fluid Volume Attribute Name"
 msgstr ""
 
-#: gettext/gettext-config.php:248 lib/gettext-config.php:248
+#: gettext/gettext-lib-config.php:248
 msgctxt "option label"
 msgid "GTIN-14 Attribute Name"
 msgstr ""
 
-#: gettext/gettext-config.php:249 lib/gettext-config.php:249
+#: gettext/gettext-lib-config.php:249
 msgctxt "option label"
 msgid "GTIN-13 (EAN) Attribute Name"
 msgstr ""
 
-#: gettext/gettext-config.php:250 lib/gettext-config.php:250
+#: gettext/gettext-lib-config.php:250
 msgctxt "option label"
 msgid "GTIN-12 (UPC) Attribute Name"
 msgstr ""
 
-#: gettext/gettext-config.php:251 lib/gettext-config.php:251
+#: gettext/gettext-lib-config.php:251
 msgctxt "option label"
 msgid "GTIN-8 Attribute Name"
 msgstr ""
 
-#: gettext/gettext-config.php:252 lib/gettext-config.php:252
+#: gettext/gettext-lib-config.php:252
 msgctxt "option label"
 msgid "GTIN Attribute Name"
 msgstr ""
 
-#: gettext/gettext-config.php:253 lib/gettext-config.php:253
+#: gettext/gettext-lib-config.php:253
 msgctxt "option label"
 msgid "ISBN Attribute Name"
 msgstr ""
 
-#: gettext/gettext-config.php:254 lib/gettext-config.php:254
+#: gettext/gettext-lib-config.php:254
 msgctxt "option label"
 msgid "Material Attribute Name"
 msgstr ""
 
-#: gettext/gettext-config.php:255 lib/gettext-config.php:255
+#: gettext/gettext-lib-config.php:255
 msgctxt "option label"
 msgid "MPN Attribute Name"
 msgstr ""
 
-#: gettext/gettext-config.php:256 lib/gettext-config.php:256
+#: gettext/gettext-lib-config.php:256
 msgctxt "option label"
 msgid "Size Attribute Name"
 msgstr ""
 
-#: gettext/gettext-config.php:257 lib/gettext-config.php:257
+#: gettext/gettext-lib-config.php:257
 msgctxt "option label"
 msgid "Target Gender Attribute Name"
 msgstr ""
 
-#: gettext/gettext-config.php:259 lib/gettext-config.php:259
+#: gettext/gettext-lib-config.php:259
 msgctxt "option value"
 msgid "Adult"
 msgstr ""
 
-#: gettext/gettext-config.php:260 lib/gettext-config.php:260
+#: gettext/gettext-lib-config.php:260
 msgctxt "option value"
 msgid "All Ages"
 msgstr ""
 
-#: gettext/gettext-config.php:261 lib/gettext-config.php:261
+#: gettext/gettext-lib-config.php:261
 msgctxt "option value"
 msgid "Teen"
 msgstr ""
 
-#: gettext/gettext-config.php:262 lib/gettext-config.php:262
+#: gettext/gettext-lib-config.php:262
 msgctxt "option value"
 msgid "Kids"
 msgstr ""
 
-#: gettext/gettext-config.php:263 lib/gettext-config.php:263
+#: gettext/gettext-lib-config.php:263
 msgctxt "option value"
 msgid "Toddler"
 msgstr ""
 
-#: gettext/gettext-config.php:264 lib/gettext-config.php:264
+#: gettext/gettext-lib-config.php:264
 msgctxt "option value"
 msgid "Infant"
 msgstr ""
 
-#: gettext/gettext-config.php:265 lib/gettext-config.php:265
+#: gettext/gettext-lib-config.php:265
 msgctxt "option value"
 msgid "Newborn"
 msgstr ""
 
-#: gettext/gettext-config.php:267 lib/gettext-config.php:267
+#: gettext/gettext-lib-config.php:267
 msgctxt "option value"
 msgid "Male"
 msgstr ""
 
-#: gettext/gettext-config.php:268 lib/gettext-config.php:268
+#: gettext/gettext-lib-config.php:268
 msgctxt "option value"
 msgid "Female"
 msgstr ""
 
-#: gettext/gettext-config.php:269 lib/gettext-config.php:269
+#: gettext/gettext-lib-config.php:269
 msgctxt "option value"
 msgid "Unisex"
 msgstr ""
 
-#: gettext/gettext-config.php:271 lib/gettext-config.php:271
+#: gettext/gettext-lib-config.php:271
 msgctxt "option value"
 msgid "Audiobook"
 msgstr ""
 
-#: gettext/gettext-config.php:272 lib/gettext-config.php:272
+#: gettext/gettext-lib-config.php:272
 msgctxt "option value"
 msgid "eBook"
 msgstr ""
 
-#: gettext/gettext-config.php:273 lib/gettext-config.php:273
+#: gettext/gettext-lib-config.php:273
 msgctxt "option value"
 msgid "Graphic Novel"
 msgstr ""
 
-#: gettext/gettext-config.php:274 lib/gettext-config.php:274
+#: gettext/gettext-lib-config.php:274
 msgctxt "option value"
 msgid "Hardcover"
 msgstr ""
 
-#: gettext/gettext-config.php:275 lib/gettext-config.php:275
+#: gettext/gettext-lib-config.php:275
 msgctxt "option value"
 msgid "Paperback"
 msgstr ""
 
-#: gettext/gettext-config.php:277 lib/gettext-config.php:277
+#: gettext/gettext-lib-config.php:277
 msgctxt "option value"
 msgid "Full Time"
 msgstr ""
 
-#: gettext/gettext-config.php:278 lib/gettext-config.php:278
+#: gettext/gettext-lib-config.php:278
 msgctxt "option value"
 msgid "Part Time"
 msgstr ""
 
-#: gettext/gettext-config.php:279 lib/gettext-config.php:279
+#: gettext/gettext-lib-config.php:279
 msgctxt "option value"
 msgid "Contractor"
 msgstr ""
 
-#: gettext/gettext-config.php:280 lib/gettext-config.php:280
+#: gettext/gettext-lib-config.php:280
 msgctxt "option value"
 msgid "Temporary"
 msgstr ""
 
-#: gettext/gettext-config.php:281 lib/gettext-config.php:281
+#: gettext/gettext-lib-config.php:281
 msgctxt "option value"
 msgid "Intern"
 msgstr ""
 
-#: gettext/gettext-config.php:282 lib/gettext-config.php:282
+#: gettext/gettext-lib-config.php:282
 msgctxt "option value"
 msgid "Volunteer"
 msgstr ""
 
-#: gettext/gettext-config.php:283 lib/gettext-config.php:283
+#: gettext/gettext-lib-config.php:283
 msgctxt "option value"
 msgid "Per Diem"
 msgstr ""
 
-#: gettext/gettext-config.php:284 lib/gettext-config.php:284
+#: gettext/gettext-lib-config.php:284
 msgctxt "option value"
 msgid "Other"
 msgstr ""
 
-#: gettext/gettext-config.php:286 lib/gettext-config.php:286
+#: gettext/gettext-lib-config.php:286
 msgctxt "option value"
 msgid "Mixed"
 msgstr ""
 
-#: gettext/gettext-config.php:287 lib/gettext-config.php:287
+#: gettext/gettext-lib-config.php:287
 msgctxt "option value"
 msgid "Online"
 msgstr ""
 
-#: gettext/gettext-config.php:288 lib/gettext-config.php:288
+#: gettext/gettext-lib-config.php:288
 msgctxt "option value"
 msgid "Physical Location"
 msgstr ""
 
-#: gettext/gettext-config.php:290 lib/gettext-config.php:290
+#: gettext/gettext-lib-config.php:290
 msgctxt "option value"
 msgid "Cancelled"
 msgstr ""
 
-#: gettext/gettext-config.php:291 lib/gettext-config.php:291
+#: gettext/gettext-lib-config.php:291
 msgctxt "option value"
 msgid "Moved Online"
 msgstr ""
 
-#: gettext/gettext-config.php:292 lib/gettext-config.php:292
+#: gettext/gettext-lib-config.php:292
 msgctxt "option value"
 msgid "Postponed"
 msgstr ""
 
-#: gettext/gettext-config.php:293 lib/gettext-config.php:293
+#: gettext/gettext-lib-config.php:293
 msgctxt "option value"
 msgid "Rescheduled"
 msgstr ""
 
-#: gettext/gettext-config.php:294 lib/gettext-config.php:294
+#: gettext/gettext-lib-config.php:294
 msgctxt "option value"
 msgid "Scheduled"
 msgstr ""
 
-#: gettext/gettext-config.php:296 lib/gettext-config.php:296
+#: gettext/gettext-lib-config.php:296
 msgctxt "option value"
 msgid "Discontinued"
 msgstr ""
 
-#: gettext/gettext-config.php:297 lib/gettext-config.php:297
+#: gettext/gettext-lib-config.php:297
 msgctxt "option value"
 msgid "In Stock"
 msgstr ""
 
-#: gettext/gettext-config.php:298 lib/gettext-config.php:298
+#: gettext/gettext-lib-config.php:298
 msgctxt "option value"
 msgid "In Store Only"
 msgstr ""
 
-#: gettext/gettext-config.php:299 lib/gettext-config.php:299
+#: gettext/gettext-lib-config.php:299
 msgctxt "option value"
 msgid "Limited Availability"
 msgstr ""
 
-#: gettext/gettext-config.php:300 lib/gettext-config.php:300
+#: gettext/gettext-lib-config.php:300
 msgctxt "option value"
 msgid "Online Only"
 msgstr ""
 
-#: gettext/gettext-config.php:301 lib/gettext-config.php:301
+#: gettext/gettext-lib-config.php:301
 msgctxt "option value"
 msgid "Out of Stock"
 msgstr ""
 
-#: gettext/gettext-config.php:302 lib/gettext-config.php:302
+#: gettext/gettext-lib-config.php:302
 msgctxt "option value"
 msgid "Pre-Order"
 msgstr ""
 
-#: gettext/gettext-config.php:303 lib/gettext-config.php:303
+#: gettext/gettext-lib-config.php:303
 msgctxt "option value"
 msgid "Pre-Sale"
 msgstr ""
 
-#: gettext/gettext-config.php:304 lib/gettext-config.php:304
+#: gettext/gettext-lib-config.php:304
 msgctxt "option value"
 msgid "Sold Out"
 msgstr ""
 
-#: gettext/gettext-config.php:306 lib/gettext-config.php:306
+#: gettext/gettext-lib-config.php:306
 msgctxt "option value"
 msgid "Damaged"
 msgstr ""
 
-#: gettext/gettext-config.php:307 lib/gettext-config.php:307
+#: gettext/gettext-lib-config.php:307
 msgctxt "option value"
 msgid "New"
 msgstr ""
 
-#: gettext/gettext-config.php:308 lib/gettext-config.php:308
+#: gettext/gettext-lib-config.php:308
 msgctxt "option value"
 msgid "Refurbished"
 msgstr ""
 
-#: gettext/gettext-config.php:309 lib/gettext-config.php:309
+#: gettext/gettext-lib-config.php:309
 msgctxt "option value"
 msgid "Used"
 msgstr ""
 
-#: gettext/gettext-config.php:310 lib/gettext-config.php:310
+#: gettext/gettext-lib-config.php:310
 msgctxt "option value"
 msgid "Every day"
 msgstr ""
 
-#: gettext/gettext-config.php:311 lib/gettext-config.php:311
+#: gettext/gettext-lib-config.php:311
 msgctxt "option value"
 msgid "Every two days"
 msgstr ""
 
-#: gettext/gettext-config.php:312 lib/gettext-config.php:312
+#: gettext/gettext-lib-config.php:312
 msgctxt "option value"
 msgid "Every three days"
 msgstr ""
 
-#: gettext/gettext-config.php:313 lib/gettext-config.php:313
+#: gettext/gettext-lib-config.php:313
 msgctxt "option value"
 msgid "Every four days"
 msgstr ""
 
-#: gettext/gettext-config.php:314 lib/gettext-config.php:314
+#: gettext/gettext-lib-config.php:314
 msgctxt "option value"
 msgid "Every five days"
 msgstr ""
 
-#: gettext/gettext-config.php:315 lib/gettext-config.php:315
+#: gettext/gettext-lib-config.php:315
 msgctxt "option value"
 msgid "Every six days"
 msgstr ""
 
-#: gettext/gettext-config.php:316 lib/gettext-config.php:316
+#: gettext/gettext-lib-config.php:316
 msgctxt "option value"
 msgid "Every week"
 msgstr ""
 
-#: gettext/gettext-config.php:317 lib/gettext-config.php:317
+#: gettext/gettext-lib-config.php:317
 msgctxt "option value"
 msgid "Every two weeks"
 msgstr ""
 
-#: gettext/gettext-config.php:318 lib/gettext-config.php:318
+#: gettext/gettext-lib-config.php:318
 msgctxt "option value"
 msgid "Development and Up"
 msgstr ""
 
-#: gettext/gettext-config.php:319 lib/gettext-config.php:319
+#: gettext/gettext-lib-config.php:319
 msgctxt "option value"
 msgid "Alpha and Up"
 msgstr ""
 
-#: gettext/gettext-config.php:320 lib/gettext-config.php:320
+#: gettext/gettext-lib-config.php:320
 msgctxt "option value"
 msgid "Beta and Up"
 msgstr ""
 
-#: gettext/gettext-config.php:321 lib/gettext-config.php:321
+#: gettext/gettext-lib-config.php:321
 msgctxt "option value"
 msgid "Release Candidate and Up"
 msgstr ""
 
-#: gettext/gettext-config.php:322 lib/gettext-config.php:322
+#: gettext/gettext-lib-config.php:322
 msgctxt "option value"
 msgid "Stable / Production"
 msgstr ""
 
-#: gettext/gettext-pro.php:6 lib/gettext-pro.php:6
-#: lib/pro/admin/advanced.php:57 lib/std/admin/advanced.php:57
+#: gettext/gettext-lib-pro.php:6 lib/pro/admin/advanced.php:57
+#: lib/std/admin/advanced.php:57
 msgctxt "option label"
 msgid "Use Filtered (aka SEO) Title"
 msgstr ""
 
-#: gettext/gettext-pro.php:7 lib/gettext-pro.php:7 lib/messages.php:2664
+#: gettext/gettext-lib-pro.php:7 lib/messages.php:2664
 #: lib/pro/admin/advanced.php:61 lib/std/admin/advanced.php:61
 msgctxt "option label"
 msgid "Use WordPress Content Filters"
 msgstr ""
 
-#: gettext/gettext-pro.php:8 gettext/gettext-pro.php:22
-#: gettext/gettext-pro.php:101 lib/gettext-pro.php:8 lib/gettext-pro.php:22
-#: lib/gettext-pro.php:101 lib/pro/admin/advanced.php:62
+#: gettext/gettext-lib-pro.php:8 gettext/gettext-lib-pro.php:22
+#: gettext/gettext-lib-pro.php:101 lib/pro/admin/advanced.php:62
 #: lib/pro/admin/advanced.php:131 lib/pro/admin/general.php:66
 #: lib/std/admin/advanced.php:62 lib/std/admin/advanced.php:133
 #: lib/std/admin/general.php:64 lib/submenu/essential.php:192
@@ -1733,218 +2332,213 @@ msgctxt "option comment"
 msgid "recommended"
 msgstr ""
 
-#: gettext/gettext-pro.php:9 lib/gettext-pro.php:9
-#: lib/pro/admin/advanced.php:65 lib/std/admin/advanced.php:65
+#: gettext/gettext-lib-pro.php:9 lib/pro/admin/advanced.php:65
+#: lib/std/admin/advanced.php:65
 msgctxt "option label"
 msgid "Use WordPress Excerpt Filters"
 msgstr ""
 
-#: gettext/gettext-pro.php:10 lib/gettext-pro.php:10
-#: lib/pro/admin/advanced.php:69 lib/std/admin/advanced.php:69
+#: gettext/gettext-lib-pro.php:10 lib/pro/admin/advanced.php:69
+#: lib/std/admin/advanced.php:69
 msgctxt "option label"
 msgid "Content Starts at 1st Paragraph"
 msgstr ""
 
-#: gettext/gettext-pro.php:11 lib/gettext-pro.php:11
-#: lib/pro/admin/advanced.php:73 lib/std/admin/advanced.php:73
+#: gettext/gettext-lib-pro.php:11 lib/pro/admin/advanced.php:73
+#: lib/std/admin/advanced.php:73
 msgctxt "option label"
 msgid "Use Image Alt if No Content"
 msgstr ""
 
-#: gettext/gettext-pro.php:12 lib/gettext-pro.php:12
-#: lib/pro/admin/advanced.php:77 lib/std/admin/advanced.php:77
+#: gettext/gettext-lib-pro.php:12 lib/pro/admin/advanced.php:77
+#: lib/std/admin/advanced.php:77
 msgctxt "option label"
 msgid "Content Image Alt Prefix"
 msgstr ""
 
-#: gettext/gettext-pro.php:13 lib/gettext-pro.php:13
-#: lib/pro/admin/advanced.php:81 lib/std/admin/advanced.php:81
+#: gettext/gettext-lib-pro.php:13 lib/pro/admin/advanced.php:81
+#: lib/std/admin/advanced.php:81
 msgctxt "option label"
 msgid "WP Caption Text Prefix"
 msgstr ""
 
-#: gettext/gettext-pro.php:14 lib/gettext-pro.php:14
-#: lib/pro/admin/advanced.php:85 lib/std/admin/advanced.php:85
+#: gettext/gettext-lib-pro.php:14 lib/pro/admin/advanced.php:85
+#: lib/std/admin/advanced.php:85
 msgctxt "option label"
 msgid "No Title Text"
 msgstr ""
 
-#: gettext/gettext-pro.php:15 lib/gettext-pro.php:15
-#: lib/pro/admin/advanced.php:89 lib/std/admin/advanced.php:89
+#: gettext/gettext-lib-pro.php:15 lib/pro/admin/advanced.php:89
+#: lib/std/admin/advanced.php:89
 msgctxt "option label"
 msgid "No Description Text"
 msgstr ""
 
-#: gettext/gettext-pro.php:16 gettext/gettext-pro.php:106
-#: lib/gettext-pro.php:16 lib/gettext-pro.php:106
+#: gettext/gettext-lib-pro.php:16 gettext/gettext-lib-pro.php:106
 #: lib/pro/admin/advanced.php:100 lib/pro/admin/general.php:104
 #: lib/std/admin/advanced.php:100 lib/std/admin/general.php:104
 msgctxt "option label"
 msgid "Check for Embedded Media"
 msgstr ""
 
-#: gettext/gettext-pro.php:17 lib/gettext-pro.php:17
-#: lib/pro/admin/advanced.php:114 lib/std/admin/advanced.php:116
+#: gettext/gettext-lib-pro.php:17 lib/pro/admin/advanced.php:114
+#: lib/std/admin/advanced.php:116
 msgctxt "option label"
 msgid "Add Person Role to New Users"
 msgstr ""
 
-#: gettext/gettext-pro.php:18 lib/gettext-pro.php:18
-#: lib/pro/admin/advanced.php:118 lib/std/admin/advanced.php:120
+#: gettext/gettext-lib-pro.php:18 lib/pro/admin/advanced.php:118
+#: lib/std/admin/advanced.php:120
 msgctxt "option label"
 msgid "Enable WP Excerpt for Pages"
 msgstr ""
 
-#: gettext/gettext-pro.php:19 lib/gettext-pro.php:19
-#: lib/pro/admin/advanced.php:122 lib/std/admin/advanced.php:124
+#: gettext/gettext-lib-pro.php:19 lib/pro/admin/advanced.php:122
+#: lib/std/admin/advanced.php:124
 msgctxt "option label"
 msgid "Enable WP Tags for Pages"
 msgstr ""
 
-#: gettext/gettext-pro.php:20 lib/gettext-pro.php:20
-#: lib/pro/admin/advanced.php:126 lib/std/admin/advanced.php:128
+#: gettext/gettext-lib-pro.php:20 lib/pro/admin/advanced.php:126
+#: lib/std/admin/advanced.php:128
 msgctxt "option label"
 msgid "Check for Duplicate Meta Tags"
 msgstr ""
 
-#: gettext/gettext-pro.php:21 gettext/gettext-pro.php:100
-#: lib/gettext-pro.php:21 lib/gettext-pro.php:100 lib/messages.php:2576
-#: lib/pro/admin/advanced.php:130 lib/pro/admin/general.php:65
-#: lib/std/admin/advanced.php:132 lib/std/admin/general.php:63
+#: gettext/gettext-lib-pro.php:21 gettext/gettext-lib-pro.php:100
+#: lib/messages.php:2576 lib/pro/admin/advanced.php:130
+#: lib/pro/admin/general.php:65 lib/std/admin/advanced.php:132
+#: lib/std/admin/general.php:63
 msgctxt "option label"
 msgid "Enforce Image Dimension Checks"
 msgstr ""
 
-#: gettext/gettext-pro.php:23 gettext/gettext-pro.php:102
-#: lib/gettext-pro.php:23 lib/gettext-pro.php:102 lib/messages.php:2570
-#: lib/pro/admin/advanced.php:134 lib/pro/admin/general.php:69
-#: lib/std/admin/advanced.php:136 lib/std/admin/general.php:67
+#: gettext/gettext-lib-pro.php:23 gettext/gettext-lib-pro.php:102
+#: lib/messages.php:2570 lib/pro/admin/advanced.php:134
+#: lib/pro/admin/general.php:69 lib/std/admin/advanced.php:136
+#: lib/std/admin/general.php:67
 msgctxt "option label"
 msgid "Upscale Media Library Images"
 msgstr ""
 
-#: gettext/gettext-pro.php:24 lib/gettext-pro.php:24 lib/messages.php:2573
+#: gettext/gettext-lib-pro.php:24 lib/messages.php:2573
 #: lib/pro/admin/advanced.php:138 lib/std/admin/advanced.php:140
 msgctxt "option label"
 msgid "Maximum Image Upscale Percent"
 msgstr ""
 
-#: gettext/gettext-pro.php:25 lib/gettext-pro.php:25
-#: lib/pro/admin/advanced.php:142 lib/std/admin/advanced.php:144
+#: gettext/gettext-lib-pro.php:25 lib/pro/admin/advanced.php:142
+#: lib/std/admin/advanced.php:144
 msgctxt "option label"
 msgid "&lt;html&gt; Attributes Filter Hook"
 msgstr ""
 
-#: gettext/gettext-pro.php:26 lib/gettext-pro.php:26
-#: lib/pro/admin/advanced.php:147 lib/std/admin/advanced.php:149
+#: gettext/gettext-lib-pro.php:26 lib/pro/admin/advanced.php:147
+#: lib/std/admin/advanced.php:149
 msgctxt "option label"
 msgid "&lt;head&gt; Attributes Filter Hook"
 msgstr ""
 
-#: gettext/gettext-pro.php:27 lib/gettext-pro.php:27
-#: lib/pro/admin/advanced.php:166 lib/std/admin/advanced.php:170
+#: gettext/gettext-lib-pro.php:27 lib/pro/admin/advanced.php:166
+#: lib/std/admin/advanced.php:170
 msgctxt "option label"
 msgid "User Profile"
 msgstr ""
 
-#: gettext/gettext-pro.php:28 gettext/gettext-pro.php:84 lib/gettext-pro.php:28
-#: lib/gettext-pro.php:84 lib/pro/admin/advanced.php:167
-#: lib/pro/admin/advanced.php:454 lib/std/admin/advanced.php:171
-#: lib/std/admin/advanced.php:466
+#: gettext/gettext-lib-pro.php:28 gettext/gettext-lib-pro.php:84
+#: lib/pro/admin/advanced.php:167 lib/pro/admin/advanced.php:454
+#: lib/std/admin/advanced.php:171 lib/std/admin/advanced.php:466
 msgctxt "option label"
 msgid "Post Type"
 msgstr ""
 
-#: gettext/gettext-pro.php:29 lib/gettext-pro.php:29
-#: lib/pro/admin/advanced.php:168 lib/std/admin/advanced.php:172
+#: gettext/gettext-lib-pro.php:29 lib/pro/admin/advanced.php:168
+#: lib/std/admin/advanced.php:172
 msgctxt "option label"
 msgid "Taxonomy"
 msgstr ""
 
-#: gettext/gettext-pro.php:30 lib/gettext-pro.php:30
-#: lib/pro/admin/advanced.php:171 lib/std/admin/advanced.php:175
+#: gettext/gettext-lib-pro.php:30 lib/pro/admin/advanced.php:171
+#: lib/std/admin/advanced.php:175
 msgctxt "option label"
 msgid "Add %s Metabox"
 msgstr ""
 
-#: gettext/gettext-pro.php:31 lib/gettext-pro.php:31
-#: lib/pro/admin/advanced.php:179 lib/std/admin/advanced.php:183
+#: gettext/gettext-lib-pro.php:31 lib/pro/admin/advanced.php:179
+#: lib/std/admin/advanced.php:183
 msgctxt "option label"
 msgid "Import Yoast SEO Social Meta"
 msgstr ""
 
-#: gettext/gettext-pro.php:32 lib/gettext-pro.php:32
-#: lib/pro/admin/advanced.php:183 lib/std/admin/advanced.php:187
+#: gettext/gettext-lib-pro.php:32 lib/pro/admin/advanced.php:183
+#: lib/std/admin/advanced.php:187
 msgctxt "option label"
 msgid "Show Yoast SEO Import Details"
 msgstr ""
 
-#: gettext/gettext-pro.php:33 lib/gettext-pro.php:33
-#: lib/pro/admin/advanced.php:190 lib/std/admin/advanced.php:194
+#: gettext/gettext-lib-pro.php:33 lib/pro/admin/advanced.php:190
+#: lib/std/admin/advanced.php:194
 msgctxt "option label"
 msgid "Default Currency"
 msgstr ""
 
-#: gettext/gettext-pro.php:34 lib/gettext-pro.php:34
-#: lib/pro/admin/advanced.php:213 lib/std/admin/advanced.php:219
+#: gettext/gettext-lib-pro.php:34 lib/pro/admin/advanced.php:213
+#: lib/std/admin/advanced.php:219
 msgid "Posts, Pages, and Custom Post Types"
 msgstr ""
 
-#: gettext/gettext-pro.php:35 lib/gettext-pro.php:35 lib/media.php:122
-#: lib/media.php:1094 lib/media.php:1226 lib/media.php:2187
-#: lib/pro/admin/advanced.php:214 lib/std/admin/advanced.php:220
+#: gettext/gettext-lib-pro.php:35 lib/media.php:122 lib/media.php:1094
+#: lib/media.php:1226 lib/media.php:2187 lib/pro/admin/advanced.php:214
+#: lib/std/admin/advanced.php:220
 msgid "Media Library"
 msgstr ""
 
-#: gettext/gettext-pro.php:36 lib/gettext-pro.php:36
-#: lib/pro/admin/advanced.php:215 lib/std/admin/advanced.php:221
+#: gettext/gettext-lib-pro.php:36 lib/pro/admin/advanced.php:215
+#: lib/std/admin/advanced.php:221
 msgid "Categories, Tags, and Custom Taxonomies"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-pro.php:38 lib/gettext-pro.php:38
-#: lib/pro/admin/advanced.php:217 lib/std/admin/advanced.php:223
+#: gettext/gettext-lib-pro.php:38 lib/pro/admin/advanced.php:217
+#: lib/std/admin/advanced.php:223
 msgid "Users"
 msgstr ""
 
-#: gettext/gettext-pro.php:39 lib/gettext-pro.php:39
-#: lib/pro/admin/advanced.php:242 lib/std/admin/advanced.php:248
+#: gettext/gettext-lib-pro.php:39 lib/pro/admin/advanced.php:242
+#: lib/std/admin/advanced.php:248
 msgctxt "option label"
 msgid "Additional List Table Columns"
 msgstr ""
 
-#: gettext/gettext-pro.php:40 lib/gettext-pro.php:40
-#: lib/pro/admin/advanced.php:249 lib/std/admin/advanced.php:255
+#: gettext/gettext-lib-pro.php:40 lib/pro/admin/advanced.php:249
+#: lib/std/admin/advanced.php:255
 msgctxt "option label"
 msgid "Title / Name Column Width"
 msgstr ""
 
-#: gettext/gettext-pro.php:41 gettext/gettext-pro.php:43 lib/gettext-pro.php:41
-#: lib/gettext-pro.php:43 lib/pro/admin/advanced.php:251
-#: lib/pro/admin/advanced.php:256 lib/std/admin/advanced.php:257
-#: lib/std/admin/advanced.php:262
+#: gettext/gettext-lib-pro.php:41 gettext/gettext-lib-pro.php:43
+#: lib/pro/admin/advanced.php:251 lib/pro/admin/advanced.php:256
+#: lib/std/admin/advanced.php:257 lib/std/admin/advanced.php:262
 msgctxt "option comment"
 msgid "and max width"
 msgstr ""
 
-#: gettext/gettext-pro.php:42 lib/gettext-pro.php:42
-#: lib/pro/admin/advanced.php:254 lib/std/admin/advanced.php:260
+#: gettext/gettext-lib-pro.php:42 lib/pro/admin/advanced.php:254
+#: lib/std/admin/advanced.php:260
 msgctxt "option label"
 msgid "Default Width for Posts / Pages"
 msgstr ""
 
-#: gettext/gettext-pro.php:44 lib/gettext-pro.php:44
-#: lib/pro/admin/advanced.php:269 lib/std/admin/advanced.php:277
+#: gettext/gettext-lib-pro.php:44 lib/pro/admin/advanced.php:269
+#: lib/std/admin/advanced.php:277
 msgctxt "option label"
 msgid "Head Markup Cache Expiry"
 msgstr ""
 
-#: gettext/gettext-pro.php:45 gettext/gettext-pro.php:47
-#: gettext/gettext-pro.php:49 gettext/gettext-pro.php:51
-#: gettext/gettext-pro.php:53 gettext/gettext-pro.php:55
-#: gettext/gettext-pro.php:57 lib/gettext-pro.php:45 lib/gettext-pro.php:47
-#: lib/gettext-pro.php:49 lib/gettext-pro.php:51 lib/gettext-pro.php:53
-#: lib/gettext-pro.php:55 lib/gettext-pro.php:57 lib/pro/admin/advanced.php:271
+#: gettext/gettext-lib-pro.php:45 gettext/gettext-lib-pro.php:47
+#: gettext/gettext-lib-pro.php:49 gettext/gettext-lib-pro.php:51
+#: gettext/gettext-lib-pro.php:53 gettext/gettext-lib-pro.php:55
+#: gettext/gettext-lib-pro.php:57 lib/pro/admin/advanced.php:271
 #: lib/pro/admin/advanced.php:277 lib/pro/admin/advanced.php:283
 #: lib/pro/admin/advanced.php:289 lib/pro/admin/advanced.php:295
 #: lib/pro/admin/advanced.php:301 lib/pro/admin/advanced.php:307
@@ -1956,544 +2550,518 @@ msgctxt "option comment"
 msgid "seconds (0 to disable)"
 msgstr ""
 
-#: gettext/gettext-pro.php:46 lib/gettext-pro.php:46
-#: lib/pro/admin/advanced.php:275 lib/std/admin/advanced.php:283
+#: gettext/gettext-lib-pro.php:46 lib/pro/admin/advanced.php:275
+#: lib/std/admin/advanced.php:283
 msgctxt "option label"
 msgid "Filtered Content Cache Expiry"
 msgstr ""
 
-#: gettext/gettext-pro.php:48 lib/gettext-pro.php:48
-#: lib/pro/admin/advanced.php:281 lib/std/admin/advanced.php:289
+#: gettext/gettext-lib-pro.php:48 lib/pro/admin/advanced.php:281
+#: lib/std/admin/advanced.php:289
 msgctxt "option label"
 msgid "Image URL Info Cache Expiry"
 msgstr ""
 
-#: gettext/gettext-pro.php:50 lib/gettext-pro.php:50
-#: lib/pro/admin/advanced.php:287 lib/std/admin/advanced.php:295
+#: gettext/gettext-lib-pro.php:50 lib/pro/admin/advanced.php:287
+#: lib/std/admin/advanced.php:295
 msgctxt "option label"
 msgid "Video API Info Cache Expiry"
 msgstr ""
 
-#: gettext/gettext-pro.php:52 lib/gettext-pro.php:52
-#: lib/pro/admin/advanced.php:293 lib/std/admin/advanced.php:301
+#: gettext/gettext-lib-pro.php:52 lib/pro/admin/advanced.php:293
+#: lib/std/admin/advanced.php:301
 msgctxt "option label"
 msgid "Shortened URL Cache Expiry"
 msgstr ""
 
-#: gettext/gettext-pro.php:54 lib/gettext-pro.php:54
-#: lib/pro/admin/advanced.php:299 lib/std/admin/advanced.php:307
+#: gettext/gettext-lib-pro.php:54 lib/pro/admin/advanced.php:299
+#: lib/std/admin/advanced.php:307
 msgctxt "option label"
 msgid "Schema Types Cache Expiry"
 msgstr ""
 
-#: gettext/gettext-pro.php:56 lib/gettext-pro.php:56
-#: lib/pro/admin/advanced.php:305 lib/std/admin/advanced.php:313
+#: gettext/gettext-lib-pro.php:56 lib/pro/admin/advanced.php:305
+#: lib/std/admin/advanced.php:313
 msgctxt "option label"
 msgid "Form Selects Cache Expiry"
 msgstr ""
 
-#: gettext/gettext-pro.php:58 lib/gettext-pro.php:58
-#: lib/pro/admin/advanced.php:311 lib/register.php:157
-#: lib/std/admin/advanced.php:319
+#: gettext/gettext-lib-pro.php:58 lib/pro/admin/advanced.php:311
+#: lib/register.php:157 lib/std/admin/advanced.php:319
 msgctxt "option label"
 msgid "Clear All Caches on Activate"
 msgstr ""
 
-#: gettext/gettext-pro.php:59 lib/gettext-pro.php:59
-#: lib/pro/admin/advanced.php:316 lib/std/admin/advanced.php:324
+#: gettext/gettext-lib-pro.php:59 lib/pro/admin/advanced.php:316
+#: lib/std/admin/advanced.php:324
 msgctxt "option label"
 msgid "Clear All Caches on Deactivate"
 msgstr ""
 
-#: gettext/gettext-pro.php:60 lib/gettext-pro.php:60
-#: lib/pro/admin/advanced.php:321 lib/std/admin/advanced.php:329
-#: lib/submenu/tools.php:70
+#: gettext/gettext-lib-pro.php:60 lib/pro/admin/advanced.php:321
+#: lib/std/admin/advanced.php:329 lib/submenu/tools.php:70
 msgctxt "option label"
 msgid "Refresh Short URLs on Clear Cache"
 msgstr ""
 
-#: gettext/gettext-pro.php:61 lib/gettext-pro.php:61
-#: lib/pro/admin/advanced.php:326 lib/std/admin/advanced.php:334
+#: gettext/gettext-lib-pro.php:61 lib/pro/admin/advanced.php:326
+#: lib/std/admin/advanced.php:334
 msgctxt "option label"
 msgid "Clear Term Cache for Published Post"
 msgstr ""
 
-#: gettext/gettext-pro.php:62 lib/gettext-pro.php:62
-#: lib/pro/admin/advanced.php:331 lib/std/admin/advanced.php:339
+#: gettext/gettext-lib-pro.php:62 lib/pro/admin/advanced.php:331
+#: lib/std/admin/advanced.php:339
 msgctxt "option label"
 msgid "Clear Post Cache for New Comment"
 msgstr ""
 
-#: gettext/gettext-pro.php:63 gettext/gettext-pro.php:98 lib/gettext-pro.php:63
-#: lib/gettext-pro.php:98 lib/pro/admin/advanced.php:369
-#: lib/pro/admin/general.php:47 lib/std/admin/advanced.php:380
-#: lib/std/admin/general.php:43
+#: gettext/gettext-lib-pro.php:63 gettext/gettext-lib-pro.php:98
+#: lib/pro/admin/advanced.php:369 lib/pro/admin/general.php:47
+#: lib/std/admin/advanced.php:380 lib/std/admin/general.php:43
 msgctxt "option label"
 msgid "Gravatar is Default Author Image"
 msgstr ""
 
-#: gettext/gettext-pro.php:64 gettext/gettext-pro.php:99 lib/gettext-pro.php:64
-#: lib/gettext-pro.php:99 lib/pro/admin/advanced.php:373
-#: lib/pro/admin/general.php:51 lib/std/admin/advanced.php:384
-#: lib/std/admin/general.php:47
+#: gettext/gettext-lib-pro.php:64 gettext/gettext-lib-pro.php:99
+#: lib/pro/admin/advanced.php:373 lib/pro/admin/general.php:51
+#: lib/std/admin/advanced.php:384 lib/std/admin/general.php:47
 msgctxt "option label"
 msgid "Gravatar Image Size"
 msgstr ""
 
-#: gettext/gettext-pro.php:65 lib/gettext-pro.php:65
-#: lib/pro/admin/advanced.php:377 lib/std/admin/advanced.php:388
+#: gettext/gettext-lib-pro.php:65 lib/pro/admin/advanced.php:377
+#: lib/std/admin/advanced.php:388
 msgctxt "option label"
 msgid "URL Shortening Service"
 msgstr ""
 
-#: gettext/gettext-pro.php:66 lib/gettext-pro.php:66
-#: lib/pro/admin/advanced.php:381 lib/std/admin/advanced.php:392
+#: gettext/gettext-lib-pro.php:66 lib/pro/admin/advanced.php:381
+#: lib/std/admin/advanced.php:392
 msgctxt "option label"
 msgid "Minimum URL Length to Shorten"
 msgstr ""
 
-#: gettext/gettext-pro.php:67 lib/gettext-pro.php:67
-#: lib/pro/admin/advanced.php:382 lib/std/admin/advanced.php:394
+#: gettext/gettext-lib-pro.php:67 lib/pro/admin/advanced.php:382
+#: lib/std/admin/advanced.php:394
 msgctxt "option comment"
 msgid "characters"
 msgstr ""
 
-#: gettext/gettext-pro.php:68 lib/gettext-pro.php:68
-#: lib/pro/admin/advanced.php:385 lib/std/admin/advanced.php:397
+#: gettext/gettext-lib-pro.php:68 lib/pro/admin/advanced.php:385
+#: lib/std/admin/advanced.php:397
 msgctxt "option label"
 msgid "Use Shortened URL for WP Shortlink"
 msgstr ""
 
-#: gettext/gettext-pro.php:69 lib/gettext-pro.php:69
-#: lib/pro/admin/advanced.php:389 lib/std/admin/advanced.php:401
+#: gettext/gettext-lib-pro.php:69 lib/pro/admin/advanced.php:389
+#: lib/std/admin/advanced.php:401
 msgctxt "option label"
 msgid "Add \"%s\" HTML Tag"
 msgstr ""
 
-#: gettext/gettext-pro.php:70 lib/gettext-pro.php:70
-#: lib/pro/admin/advanced.php:398 lib/std/admin/advanced.php:410
+#: gettext/gettext-lib-pro.php:70 lib/pro/admin/advanced.php:398
+#: lib/std/admin/advanced.php:410
 msgctxt "metabox title"
 msgid "Bitly (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-pro.php:71 gettext/gettext-pro.php:171
-#: lib/gettext-pro.php:71 lib/gettext-pro.php:171
+#: gettext/gettext-lib-pro.php:71 gettext/gettext-lib-pro.php:171
 #: lib/pro/admin/advanced.php:401 lib/pro/util/shorten.php:320
 #: lib/std/admin/advanced.php:413
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
 msgstr ""
 
-#: gettext/gettext-pro.php:72 lib/gettext-pro.php:72
-#: lib/pro/admin/advanced.php:405 lib/std/admin/advanced.php:417
+#: gettext/gettext-lib-pro.php:72 lib/pro/admin/advanced.php:405
+#: lib/std/admin/advanced.php:417
 msgctxt "option label"
 msgid "Bitly Short Domain (Optional)"
 msgstr ""
 
-#: gettext/gettext-pro.php:73 lib/gettext-pro.php:73
-#: lib/pro/admin/advanced.php:409 lib/std/admin/advanced.php:421
+#: gettext/gettext-lib-pro.php:73 lib/pro/admin/advanced.php:409
+#: lib/std/admin/advanced.php:421
 msgctxt "option label"
 msgid "Bitly Group Name (Optional)"
 msgstr ""
 
-#: gettext/gettext-pro.php:74 lib/gettext-pro.php:74
-#: lib/pro/admin/advanced.php:416 lib/std/admin/advanced.php:428
+#: gettext/gettext-lib-pro.php:74 lib/pro/admin/advanced.php:416
+#: lib/std/admin/advanced.php:428
 msgctxt "metabox title"
 msgid "DLMY.App (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-pro.php:75 gettext/gettext-pro.php:173
-#: lib/gettext-pro.php:75 lib/gettext-pro.php:173
+#: gettext/gettext-lib-pro.php:75 gettext/gettext-lib-pro.php:173
 #: lib/pro/admin/advanced.php:419 lib/pro/util/shorten.php:346
 #: lib/std/admin/advanced.php:431
 msgctxt "option label"
 msgid "DLMY.App API Key"
 msgstr ""
 
-#: gettext/gettext-pro.php:76 lib/gettext-pro.php:76
-#: lib/pro/admin/advanced.php:426 lib/std/admin/advanced.php:438
+#: gettext/gettext-lib-pro.php:76 lib/pro/admin/advanced.php:426
+#: lib/std/admin/advanced.php:438
 msgctxt "metabox title"
 msgid "Ow.ly (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-pro.php:77 gettext/gettext-pro.php:175
-#: lib/gettext-pro.php:77 lib/gettext-pro.php:175
+#: gettext/gettext-lib-pro.php:77 gettext/gettext-lib-pro.php:175
 #: lib/pro/admin/advanced.php:429 lib/pro/util/shorten.php:370
 #: lib/std/admin/advanced.php:441
 msgctxt "option label"
 msgid "Ow.ly API Key"
 msgstr ""
 
-#: gettext/gettext-pro.php:78 lib/gettext-pro.php:78
-#: lib/pro/admin/advanced.php:436 lib/std/admin/advanced.php:448
+#: gettext/gettext-lib-pro.php:78 lib/pro/admin/advanced.php:436
+#: lib/std/admin/advanced.php:448
 msgctxt "metabox title"
 msgid "Shopper Approved (Ratings and Reviews)"
 msgstr ""
 
-#: gettext/gettext-pro.php:79 lib/gettext-pro.php:79
-#: lib/pro/admin/advanced.php:439 lib/std/admin/advanced.php:451
+#: gettext/gettext-lib-pro.php:79 lib/pro/admin/advanced.php:439
+#: lib/std/admin/advanced.php:451
 msgctxt "option label"
 msgid "Shopper Approved Site ID"
 msgstr ""
 
-#: gettext/gettext-pro.php:80 lib/gettext-pro.php:80
-#: lib/pro/admin/advanced.php:443 lib/std/admin/advanced.php:455
+#: gettext/gettext-lib-pro.php:80 lib/pro/admin/advanced.php:443
+#: lib/std/admin/advanced.php:455
 msgctxt "option label"
 msgid "Shopper Approved API Token"
 msgstr ""
 
-#: gettext/gettext-pro.php:81 lib/gettext-pro.php:81
-#: lib/pro/admin/advanced.php:447 lib/std/admin/advanced.php:459
+#: gettext/gettext-lib-pro.php:81 lib/pro/admin/advanced.php:447
+#: lib/std/admin/advanced.php:459
 msgctxt "option label"
 msgid "Maximum Number of Reviews"
 msgstr ""
 
-#: gettext/gettext-pro.php:82 lib/gettext-pro.php:82
-#: lib/pro/admin/advanced.php:451 lib/std/admin/advanced.php:463
+#: gettext/gettext-lib-pro.php:82 lib/pro/admin/advanced.php:451
+#: lib/std/admin/advanced.php:463
 msgctxt "option label"
 msgid "Maximum Age of Reviews"
 msgstr ""
 
-#: gettext/gettext-pro.php:83 lib/gettext-pro.php:83
-#: lib/pro/admin/advanced.php:452 lib/std/admin/advanced.php:464
+#: gettext/gettext-lib-pro.php:83 lib/pro/admin/advanced.php:452
+#: lib/std/admin/advanced.php:464
 msgctxt "option comment"
 msgid "months"
 msgstr ""
 
-#: gettext/gettext-pro.php:85 lib/gettext-pro.php:85
-#: lib/pro/admin/advanced.php:457 lib/std/admin/advanced.php:469
+#: gettext/gettext-lib-pro.php:85 lib/pro/admin/advanced.php:457
+#: lib/std/admin/advanced.php:469
 msgctxt "option label"
 msgid "Get Reviews for Post Type"
 msgstr ""
 
-#: gettext/gettext-pro.php:86 lib/gettext-pro.php:86
-#: lib/pro/admin/advanced.php:465 lib/std/admin/advanced.php:477
+#: gettext/gettext-lib-pro.php:86 lib/pro/admin/advanced.php:465
+#: lib/std/admin/advanced.php:477
 msgctxt "metabox title"
 msgid "YOURLS (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-pro.php:87 gettext/gettext-pro.php:177
-#: lib/gettext-pro.php:87 lib/gettext-pro.php:177
+#: gettext/gettext-lib-pro.php:87 gettext/gettext-lib-pro.php:177
 #: lib/pro/admin/advanced.php:468 lib/pro/util/shorten.php:411
 #: lib/std/admin/advanced.php:480
 msgctxt "option label"
 msgid "YOURLS API URL"
 msgstr ""
 
-#: gettext/gettext-pro.php:88 lib/gettext-pro.php:88
-#: lib/pro/admin/advanced.php:472 lib/std/admin/advanced.php:484
+#: gettext/gettext-lib-pro.php:88 lib/pro/admin/advanced.php:472
+#: lib/std/admin/advanced.php:484
 msgctxt "option label"
 msgid "YOURLS Username"
 msgstr ""
 
-#: gettext/gettext-pro.php:89 lib/gettext-pro.php:89
-#: lib/pro/admin/advanced.php:476 lib/std/admin/advanced.php:488
+#: gettext/gettext-lib-pro.php:89 lib/pro/admin/advanced.php:476
+#: lib/std/admin/advanced.php:488
 msgctxt "option label"
 msgid "YOURLS Password"
 msgstr ""
 
-#: gettext/gettext-pro.php:90 lib/gettext-pro.php:90
-#: lib/pro/admin/advanced.php:480 lib/std/admin/advanced.php:492
+#: gettext/gettext-lib-pro.php:90 lib/pro/admin/advanced.php:480
+#: lib/std/admin/advanced.php:492
 msgctxt "option label"
 msgid "YOURLS Token"
 msgstr ""
 
-#: gettext/gettext-pro.php:91 gettext/gettext-pro.php:94 lib/gettext-pro.php:91
-#: lib/gettext-pro.php:94 lib/pro/admin/advanced.php:494
-#: lib/pro/admin/advanced.php:558 lib/std/admin/advanced.php:508
-#: lib/std/admin/advanced.php:575
+#: gettext/gettext-lib-pro.php:91 gettext/gettext-lib-pro.php:94
+#: lib/pro/admin/advanced.php:494 lib/pro/admin/advanced.php:558
+#: lib/std/admin/advanced.php:508 lib/std/admin/advanced.php:575
 msgctxt "column title"
 msgid "Show"
 msgstr ""
 
-#: gettext/gettext-pro.php:92 gettext/gettext-pro.php:95 lib/gettext-pro.php:92
-#: lib/gettext-pro.php:95 lib/messages.php:1920 lib/messages.php:1922
-#: lib/messages.php:1934 lib/messages.php:2383 lib/pro/admin/advanced.php:495
+#: gettext/gettext-lib-pro.php:92 gettext/gettext-lib-pro.php:95
+#: lib/messages.php:1920 lib/messages.php:1922 lib/messages.php:1934
+#: lib/messages.php:2383 lib/pro/admin/advanced.php:495
 #: lib/pro/admin/advanced.php:559 lib/std/admin/advanced.php:509
 #: lib/std/admin/advanced.php:576
 msgctxt "column title"
 msgid "Contact Field ID"
 msgstr ""
 
-#: gettext/gettext-pro.php:93 gettext/gettext-pro.php:96 lib/gettext-pro.php:93
-#: lib/gettext-pro.php:96 lib/messages.php:1928 lib/messages.php:2385
-#: lib/pro/admin/advanced.php:496 lib/pro/admin/advanced.php:560
-#: lib/std/admin/advanced.php:510 lib/std/admin/advanced.php:577
+#: gettext/gettext-lib-pro.php:93 gettext/gettext-lib-pro.php:96
+#: lib/messages.php:1928 lib/messages.php:2385 lib/pro/admin/advanced.php:496
+#: lib/pro/admin/advanced.php:560 lib/std/admin/advanced.php:510
+#: lib/std/admin/advanced.php:577
 msgctxt "column title"
 msgid "Contact Field Label"
 msgstr ""
 
-#: gettext/gettext-pro.php:97 lib/gettext-pro.php:97
-#: lib/pro/admin/advanced.php:644 lib/std/admin/advanced.php:661
+#: gettext/gettext-lib-pro.php:97 lib/pro/admin/advanced.php:644
+#: lib/std/admin/advanced.php:661
 msgid ""
 "An SEO plugin has been detected &mdash; some basic SEO meta tags have been "
 "unchecked and disabled automatically."
 msgstr ""
 
-#: gettext/gettext-pro.php:103 lib/gettext-pro.php:103
-#: lib/pro/admin/general.php:85 lib/std/admin/general.php:85
+#: gettext/gettext-lib-pro.php:103 lib/pro/admin/general.php:85
+#: lib/std/admin/general.php:85
 msgctxt "option label"
 msgid "Maximum Videos to Include"
 msgstr ""
 
-#: gettext/gettext-pro.php:104 lib/gettext-pro.php:104
-#: lib/pro/admin/general.php:89 lib/std/admin/general.php:89
+#: gettext/gettext-lib-pro.php:104 lib/pro/admin/general.php:89
+#: lib/std/admin/general.php:89
 msgctxt "option label"
 msgid "Include Video Preview Images"
 msgstr ""
 
-#: gettext/gettext-pro.php:105 lib/gettext-pro.php:105
-#: lib/pro/admin/general.php:93 lib/std/admin/general.php:93
+#: gettext/gettext-lib-pro.php:105 lib/pro/admin/general.php:93
+#: lib/std/admin/general.php:93
 msgctxt "option label"
 msgid "Force Autoplay when Possible"
 msgstr ""
 
-#: gettext/gettext-pro.php:107 lib/gettext-pro.php:107
-#: lib/pro/admin/edit.php:61 lib/std/admin/edit.php:56
+#: gettext/gettext-lib-pro.php:107 lib/pro/admin/edit.php:61
+#: lib/std/admin/edit.php:56
 msgctxt "metabox title"
 msgid "Basic Product Information"
 msgstr ""
 
-#: gettext/gettext-pro.php:108 lib/gettext-pro.php:108 lib/messages.php:3028
+#: gettext/gettext-lib-pro.php:108 lib/messages.php:3028
 #: lib/pro/admin/edit.php:71 lib/std/admin/edit.php:70
 msgctxt "option label"
 msgid "Product Category"
 msgstr ""
 
-#: gettext/gettext-pro.php:109 lib/gettext-pro.php:109 lib/messages.php:3024
+#: gettext/gettext-lib-pro.php:109 lib/messages.php:3024
 #: lib/pro/admin/edit.php:86 lib/std/admin/edit.php:78
 msgctxt "option label"
 msgid "Product Brand"
 msgstr ""
 
-#: gettext/gettext-pro.php:110 lib/gettext-pro.php:110 lib/messages.php:3092
+#: gettext/gettext-lib-pro.php:110 lib/messages.php:3092
 #: lib/pro/admin/edit.php:93 lib/std/admin/edit.php:86
 msgctxt "option label"
 msgid "Product Price"
 msgstr ""
 
-#: gettext/gettext-pro.php:111 lib/gettext-pro.php:111 lib/messages.php:3020
+#: gettext/gettext-lib-pro.php:111 lib/messages.php:3020
 #: lib/pro/admin/edit.php:103 lib/std/admin/edit.php:95
 msgctxt "option label"
 msgid "Product Availability"
 msgstr ""
 
-#: gettext/gettext-pro.php:112 lib/gettext-pro.php:112 lib/messages.php:3037
+#: gettext/gettext-lib-pro.php:112 lib/messages.php:3037
 #: lib/pro/admin/edit.php:111 lib/std/admin/edit.php:104
 msgctxt "option label"
 msgid "Product Condition"
 msgstr ""
 
-#: gettext/gettext-pro.php:113 lib/gettext-pro.php:113 lib/messages.php:3084
+#: gettext/gettext-lib-pro.php:113 lib/messages.php:3084
 #: lib/pro/admin/edit.php:119 lib/std/admin/edit.php:113
 msgctxt "option label"
 msgid "Product Material"
 msgstr ""
 
-#: gettext/gettext-pro.php:114 lib/gettext-pro.php:114 lib/messages.php:3033
+#: gettext/gettext-lib-pro.php:114 lib/messages.php:3033
 #: lib/pro/admin/edit.php:126 lib/std/admin/edit.php:121
 msgctxt "option label"
 msgid "Product Color"
 msgstr ""
 
-#: gettext/gettext-pro.php:115 lib/gettext-pro.php:115 lib/messages.php:3104
+#: gettext/gettext-lib-pro.php:115 lib/messages.php:3104
 #: lib/pro/admin/edit.php:133 lib/std/admin/edit.php:129
 msgctxt "option label"
 msgid "Product Target Gender"
 msgstr ""
 
-#: gettext/gettext-pro.php:116 lib/gettext-pro.php:116 lib/messages.php:3100
+#: gettext/gettext-lib-pro.php:116 lib/messages.php:3100
 #: lib/pro/admin/edit.php:141 lib/std/admin/edit.php:138
 msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: gettext/gettext-pro.php:117 lib/gettext-pro.php:117 lib/messages.php:3113
+#: gettext/gettext-lib-pro.php:117 lib/messages.php:3113
 #: lib/pro/admin/edit.php:148 lib/std/admin/edit.php:146
 msgctxt "option label"
 msgid "Product Weight"
 msgstr ""
 
-#: gettext/gettext-pro.php:118 lib/gettext-pro.php:118 lib/messages.php:3096
+#: gettext/gettext-lib-pro.php:118 lib/messages.php:3096
 #: lib/pro/admin/edit.php:156 lib/std/admin/edit.php:155
 msgctxt "option label"
 msgid "Product SKU"
 msgstr ""
 
-#: gettext/gettext-pro.php:119 lib/gettext-pro.php:119 lib/messages.php:3088
+#: gettext/gettext-lib-pro.php:119 lib/messages.php:3088
 #: lib/pro/admin/edit.php:163 lib/std/admin/edit.php:163
 msgctxt "option label"
 msgid "Product MPN"
 msgstr ""
 
-#: gettext/gettext-pro.php:120 lib/gettext-pro.php:120 lib/messages.php:3075
+#: gettext/gettext-lib-pro.php:120 lib/messages.php:3075
 #: lib/pro/admin/edit.php:170 lib/std/admin/edit.php:171
 msgctxt "option label"
 msgid "Product ISBN"
 msgstr ""
 
-#: gettext/gettext-pro.php:121 gettext/gettext-pro.php:135
-#: lib/gettext-pro.php:121 lib/gettext-pro.php:135 lib/pro/admin/edit.php:181
-#: lib/pro/admin/edit.php:362 lib/std/admin/edit.php:182
-#: lib/std/admin/edit.php:364
+#: gettext/gettext-lib-pro.php:121 gettext/gettext-lib-pro.php:135
+#: lib/pro/admin/edit.php:181 lib/pro/admin/edit.php:362
+#: lib/std/admin/edit.php:182 lib/std/admin/edit.php:364
 msgctxt "metabox title"
 msgid "Schema JSON-LD Markup / Google Rich Results"
 msgstr ""
 
-#: gettext/gettext-pro.php:122 lib/gettext-pro.php:122
-#: lib/pro/admin/edit.php:216 lib/std/admin/edit.php:206
+#: gettext/gettext-lib-pro.php:122 lib/pro/admin/edit.php:216
+#: lib/std/admin/edit.php:206
 msgctxt "metabox title"
 msgid "Priority Video Information"
 msgstr ""
 
-#: gettext/gettext-pro.php:123 lib/gettext-pro.php:123
-#: lib/pro/admin/edit.php:220 lib/std/admin/edit.php:214
+#: gettext/gettext-lib-pro.php:123 lib/pro/admin/edit.php:220
+#: lib/std/admin/edit.php:214
 msgctxt "option label"
 msgid "Include Preview Images"
 msgstr ""
 
-#: gettext/gettext-pro.php:124 lib/gettext-pro.php:124
-#: lib/pro/admin/edit.php:227 lib/std/admin/edit.php:222
+#: gettext/gettext-lib-pro.php:124 lib/pro/admin/edit.php:227
+#: lib/std/admin/edit.php:222
 msgctxt "option label"
 msgid "Maximum Videos"
 msgstr ""
 
-#: gettext/gettext-pro.php:125 lib/gettext-pro.php:125
-#: lib/pro/admin/edit.php:234 lib/std/admin/edit.php:230
+#: gettext/gettext-lib-pro.php:125 lib/pro/admin/edit.php:234
+#: lib/std/admin/edit.php:230
 msgctxt "option label"
 msgid "Video Dimensions"
 msgstr ""
 
-#: gettext/gettext-pro.php:126 lib/gettext-pro.php:126 lib/messages.php:3135
+#: gettext/gettext-lib-pro.php:126 lib/messages.php:3135
 #: lib/pro/admin/edit.php:240 lib/std/admin/edit.php:237
 msgctxt "option label"
 msgid "Video Embed HTML"
 msgstr ""
 
-#: gettext/gettext-pro.php:127 lib/gettext-pro.php:127
-#: lib/pro/admin/edit.php:246 lib/std/admin/edit.php:244
+#: gettext/gettext-lib-pro.php:127 lib/pro/admin/edit.php:246
+#: lib/std/admin/edit.php:244
 msgctxt "option label"
 msgid "or a Video URL"
 msgstr ""
 
-#: gettext/gettext-pro.php:128 lib/gettext-pro.php:128
-#: lib/pro/admin/edit.php:253 lib/std/admin/edit.php:252
+#: gettext/gettext-lib-pro.php:128 lib/pro/admin/edit.php:253
+#: lib/std/admin/edit.php:252
 msgctxt "option label"
 msgid "Video Name / Title"
 msgstr ""
 
-#: gettext/gettext-pro.php:129 lib/gettext-pro.php:129
-#: lib/pro/admin/edit.php:261 lib/std/admin/edit.php:260
+#: gettext/gettext-lib-pro.php:129 lib/pro/admin/edit.php:261
+#: lib/std/admin/edit.php:260
 msgctxt "option label"
 msgid "Video Description"
 msgstr ""
 
-#: gettext/gettext-pro.php:130 lib/gettext-pro.php:130
-#: lib/pro/admin/edit.php:287 lib/std/admin/edit.php:285
+#: gettext/gettext-lib-pro.php:130 lib/pro/admin/edit.php:287
+#: lib/std/admin/edit.php:285
 msgctxt "metabox title"
 msgid "Pinterest Pin It"
 msgstr ""
 
-#: gettext/gettext-pro.php:131 gettext/gettext-pro.php:133 lib/edit.php:289
-#: lib/gettext-pro.php:131 lib/gettext-pro.php:133 lib/pro/admin/edit.php:293
-#: lib/pro/admin/edit.php:339 lib/std/admin/edit.php:292
-#: lib/std/admin/edit.php:340
+#: gettext/gettext-lib-pro.php:131 gettext/gettext-lib-pro.php:133
+#: lib/edit.php:289 lib/pro/admin/edit.php:293 lib/pro/admin/edit.php:339
+#: lib/std/admin/edit.php:292 lib/std/admin/edit.php:340
 msgctxt "option label"
 msgid "Image ID"
 msgstr ""
 
-#: gettext/gettext-pro.php:132 gettext/gettext-pro.php:134 lib/edit.php:295
-#: lib/gettext-pro.php:132 lib/gettext-pro.php:134 lib/pro/admin/edit.php:301
-#: lib/pro/admin/edit.php:347 lib/std/admin/edit.php:301
-#: lib/std/admin/edit.php:349
+#: gettext/gettext-lib-pro.php:132 gettext/gettext-lib-pro.php:134
+#: lib/edit.php:295 lib/pro/admin/edit.php:301 lib/pro/admin/edit.php:347
+#: lib/std/admin/edit.php:301 lib/std/admin/edit.php:349
 msgctxt "option label"
 msgid "or an Image URL"
 msgstr ""
 
-#: gettext/gettext-pro.php:136 lib/gettext-pro.php:136
-#: lib/pro/ecom/woocommerce.php:58
+#: gettext/gettext-lib-pro.php:136 lib/pro/ecom/woocommerce.php:58
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Advanced &gt; Page setup</a> section."
 msgstr ""
 
-#: gettext/gettext-pro.php:137 lib/gettext-pro.php:137
-#: lib/pro/ecom/woocommerce.php:61
+#: gettext/gettext-lib-pro.php:137 lib/pro/ecom/woocommerce.php:61
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Products &gt; General</a> section."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-pro.php:139 lib/gettext-pro.php:139
-#: lib/pro/ecom/woocommerce.php:65
+#: gettext/gettext-lib-pro.php:139 lib/pro/ecom/woocommerce.php:65
 msgid "My account page"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-pro.php:141 lib/gettext-pro.php:141
-#: lib/pro/ecom/woocommerce.php:66
+#: gettext/gettext-lib-pro.php:141 lib/pro/ecom/woocommerce.php:66
 msgid "Cart page"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-pro.php:143 lib/gettext-pro.php:143
-#: lib/pro/ecom/woocommerce.php:67
+#: gettext/gettext-lib-pro.php:143 lib/pro/ecom/woocommerce.php:67
 msgid "Checkout page"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-pro.php:145 lib/gettext-pro.php:145
-#: lib/pro/ecom/woocommerce.php:68
+#: gettext/gettext-lib-pro.php:145 lib/pro/ecom/woocommerce.php:68
 msgid "Shop page"
 msgstr ""
 
-#: gettext/gettext-pro.php:146 lib/gettext-pro.php:146
-#: lib/pro/ecom/woocommerce.php:73
+#: gettext/gettext-lib-pro.php:146 lib/pro/ecom/woocommerce.php:73
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: gettext/gettext-pro.php:147 lib/gettext-pro.php:147
-#: lib/pro/ecom/woocommerce.php:155
+#: gettext/gettext-lib-pro.php:147 lib/pro/ecom/woocommerce.php:155
 msgid ""
 "The WooCommerce %s method is not available - please update to a newer "
 "version of WooCommerce."
 msgstr ""
 
-#: gettext/gettext-pro.php:148 lib/gettext-pro.php:148
-#: lib/pro/ecom/woocommerce.php:1226
+#: gettext/gettext-lib-pro.php:148 lib/pro/ecom/woocommerce.php:1226
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: gettext/gettext-pro.php:149 lib/gettext-pro.php:149
-#: lib/pro/ecom/woocommerce.php:1228
+#: gettext/gettext-lib-pro.php:149 lib/pro/ecom/woocommerce.php:1228
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: gettext/gettext-pro.php:150 lib/gettext-pro.php:150
-#: lib/pro/ecom/woocommerce.php:1231
+#: gettext/gettext-lib-pro.php:150 lib/pro/ecom/woocommerce.php:1231
 msgid "Please update your site to WooCommerce version %s or newer."
 msgstr ""
 
-#: gettext/gettext-pro.php:151 gettext/gettext-pro.php:154
-#: gettext/gettext-pro.php:157 lib/gettext-pro.php:151 lib/gettext-pro.php:154
-#: lib/gettext-pro.php:157 lib/pro/media/slideshare.php:205
+#: gettext/gettext-lib-pro.php:151 gettext/gettext-lib-pro.php:154
+#: gettext/gettext-lib-pro.php:157 lib/pro/media/slideshare.php:205
 #: lib/pro/media/vimeo.php:179 lib/pro/media/wistia.php:340
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
-#: gettext/gettext-pro.php:152 gettext/gettext-pro.php:155
-#: gettext/gettext-pro.php:158 lib/gettext-pro.php:152 lib/gettext-pro.php:155
-#: lib/gettext-pro.php:158 lib/pro/media/slideshare.php:207
+#: gettext/gettext-lib-pro.php:152 gettext/gettext-lib-pro.php:155
+#: gettext/gettext-lib-pro.php:158 lib/pro/media/slideshare.php:207
 #: lib/pro/media/vimeo.php:181 lib/pro/media/wistia.php:342
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
-#: gettext/gettext-pro.php:153 gettext/gettext-pro.php:156
-#: gettext/gettext-pro.php:159 lib/conflict.php:210 lib/gettext-pro.php:153
-#: lib/gettext-pro.php:156 lib/gettext-pro.php:159
+#: gettext/gettext-lib-pro.php:153 gettext/gettext-lib-pro.php:156
+#: gettext/gettext-lib-pro.php:159 lib/conflict.php:210
 #: lib/pro/media/slideshare.php:210 lib/pro/media/vimeo.php:184
 #: lib/pro/media/wistia.php:345
 msgid ""
@@ -2501,51 +3069,46 @@ msgid ""
 "installed."
 msgstr ""
 
-#: gettext/gettext-pro.php:160 lib/gettext-pro.php:160 lib/post.php:1131
+#: gettext/gettext-lib-pro.php:160 lib/post.php:1131
 #: lib/pro/media/youtube.php:187
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: gettext/gettext-pro.php:161 lib/gettext-pro.php:161
-#: lib/pro/media/upscale.php:218
+#: gettext/gettext-lib-pro.php:161 lib/pro/media/upscale.php:218
 msgid ""
 "Failed to upscale image ID %1$s of %2$s by %3$s from %4$s to %5$s for the "
 "%6$s image size (exceeds %7$s maximum upscale setting)."
 msgstr ""
 
-#: gettext/gettext-pro.php:162 lib/gettext-pro.php:162
-#: lib/pro/media/upscale.php:226
+#: gettext/gettext-lib-pro.php:162 lib/pro/media/upscale.php:226
 msgid ""
 "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the "
 "%6$s image size."
 msgstr ""
 
-#: gettext/gettext-pro.php:163 gettext/gettext-pro.php:166
-#: lib/gettext-pro.php:163 lib/gettext-pro.php:166 lib/pro/media/ngg.php:137
-#: lib/pro/media/ngg.php:1542
+#: gettext/gettext-lib-pro.php:163 gettext/gettext-lib-pro.php:166
+#: lib/pro/media/ngg.php:137 lib/pro/media/ngg.php:1542
 msgid "NextGEN Gallery"
 msgstr ""
 
-#: gettext/gettext-pro.php:164 lib/gettext-pro.php:164
-#: lib/pro/media/ngg.php:138
+#: gettext/gettext-lib-pro.php:164 lib/pro/media/ngg.php:138
 msgid "image ID %s"
 msgstr ""
 
-#: gettext/gettext-pro.php:165 lib/gettext-pro.php:165 lib/media.php:128
-#: lib/pro/media/ngg.php:140
+#: gettext/gettext-lib-pro.php:165 lib/media.php:128 lib/pro/media/ngg.php:140
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is too small for the "
 "required %4$s image dimensions."
 msgstr ""
 
-#: gettext/gettext-pro.php:167 lib/gettext-pro.php:167
-#: lib/pro/social/buddypress.php:101 lib/std/social/buddypress.php:52
+#: gettext/gettext-lib-pro.php:167 lib/pro/social/buddypress.php:101
+#: lib/std/social/buddypress.php:52
 msgctxt "option label"
 msgid "BuddyPress Member Bio Field Name"
 msgstr ""
 
-#: gettext/gettext-pro.php:168 lib/gettext-pro.php:168
-#: lib/pro/social/buddypress.php:121 lib/std/social/buddypress.php:69
+#: gettext/gettext-lib-pro.php:168 lib/pro/social/buddypress.php:121
+#: lib/std/social/buddypress.php:69
 msgid ""
 "The BuddyPress member profile page does not include the <em>Biographical "
 "Info</em> text from the WordPress user profile. If you've created an "
@@ -2554,219 +3117,186 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: gettext/gettext-pro.php:169 lib/edit.php:482 lib/gettext-pro.php:169
-#: lib/page.php:805 lib/pro/social/buddypress.php:710
+#: gettext/gettext-lib-pro.php:169 lib/edit.php:482 lib/page.php:805
+#: lib/pro/social/buddypress.php:710
 msgctxt "default description"
 msgid "No Description."
 msgstr ""
 
-#: gettext/gettext-pro.php:170 gettext/gettext-pro.php:172
-#: gettext/gettext-pro.php:174 gettext/gettext-pro.php:176
-#: lib/gettext-pro.php:170 lib/gettext-pro.php:172 lib/gettext-pro.php:174
-#: lib/gettext-pro.php:176 lib/pro/util/shorten.php:319
-#: lib/pro/util/shorten.php:345 lib/pro/util/shorten.php:369
-#: lib/pro/util/shorten.php:410
+#: gettext/gettext-lib-pro.php:170 gettext/gettext-lib-pro.php:172
+#: gettext/gettext-lib-pro.php:174 gettext/gettext-lib-pro.php:176
+#: lib/pro/util/shorten.php:319 lib/pro/util/shorten.php:345
+#: lib/pro/util/shorten.php:369 lib/pro/util/shorten.php:410
 msgid "The \"%s\" option value is empty and required."
 msgstr ""
 
-#: gettext/gettext-pro.php:178 gettext/gettext-pro.php:180
-#: gettext/gettext-pro.php:211 lib/conflict.php:107 lib/gettext-pro.php:178
-#: lib/gettext-pro.php:180 lib/gettext-pro.php:211 lib/loader.php:171
+#: gettext/gettext-lib-pro.php:178 gettext/gettext-lib-pro.php:180
+#: gettext/gettext-lib-pro.php:211 lib/conflict.php:107 lib/loader.php:171
 #: lib/loader.php:185 lib/pro/review/yotpowc.php:203
 #: lib/pro/util/shorten.php:454 lib/pro/util/shorten.php:491
 msgid "%s error:"
 msgstr ""
 
 #. translators: %s is the service id.
-#: gettext/gettext-pro.php:179 lib/gettext-pro.php:179
-#: lib/pro/util/shorten.php:457
+#: gettext/gettext-lib-pro.php:179 lib/pro/util/shorten.php:457
 msgid "Incomplete API options to instantiate the \"%s\" shortening service."
 msgstr ""
 
 #. translators: %s is the shortening service id.
-#: gettext/gettext-pro.php:181 lib/gettext-pro.php:181
-#: lib/pro/util/shorten.php:494
+#: gettext/gettext-lib-pro.php:181 lib/pro/util/shorten.php:494
 msgid "The URL shortening library file for \"%s\" is missing and required."
 msgstr ""
 
-#: gettext/gettext-pro.php:182 lib/gettext-pro.php:182
-#: lib/pro/util/wpseo-meta.php:129
+#: gettext/gettext-lib-pro.php:182 lib/pro/util/wpseo-meta.php:129
 msgid "Imported Yoast SEO \"%1$s\" metadata from post ID %2$d."
 msgstr ""
 
-#: gettext/gettext-pro.php:183 lib/gettext-pro.php:183
-#: lib/pro/util/wpseo-meta.php:263
+#: gettext/gettext-lib-pro.php:183 lib/pro/util/wpseo-meta.php:263
 msgid "Imported Yoast SEO \"%1$s\" metadata from term ID %2$d."
 msgstr ""
 
-#: gettext/gettext-pro.php:184 lib/gettext-pro.php:184
-#: lib/pro/util/wpseo-meta.php:363
+#: gettext/gettext-lib-pro.php:184 lib/pro/util/wpseo-meta.php:363
 msgid "Imported Yoast SEO \"%1$s\" metadata from user ID %2$d."
 msgstr ""
 
 #. translators: %s is the Events Calendar plugin name
-#: gettext/gettext-pro.php:185 lib/gettext-pro.php:185
-#: lib/pro/event/the-events-calendar.php:51
+#: gettext/gettext-lib-pro.php:185 lib/pro/event/the-events-calendar.php:51
 msgctxt "option value"
 msgid "[%s Venue]"
 msgstr ""
 
 #. translators: %s is the Events Calendar plugin name
-#: gettext/gettext-pro.php:186 lib/gettext-pro.php:186
-#: lib/pro/event/the-events-calendar.php:59
+#: gettext/gettext-lib-pro.php:186 lib/pro/event/the-events-calendar.php:59
 msgctxt "option value"
 msgid "[%s Organizer]"
 msgstr ""
 
-#: gettext/gettext-pro.php:187 lib/gettext-pro.php:187
-#: lib/pro/form/gravityview.php:50
+#: gettext/gettext-lib-pro.php:187 lib/pro/form/gravityview.php:50
 msgctxt "metabox title"
 msgid "Single Entry Integration"
 msgstr ""
 
-#: gettext/gettext-pro.php:188 lib/gettext-pro.php:188
-#: lib/pro/form/gravityview.php:77
+#: gettext/gettext-lib-pro.php:188 lib/pro/form/gravityview.php:77
 msgctxt "option label"
 msgid "Title Field ID"
 msgstr ""
 
-#: gettext/gettext-pro.php:189 lib/gettext-pro.php:189
-#: lib/pro/form/gravityview.php:81
+#: gettext/gettext-lib-pro.php:189 lib/pro/form/gravityview.php:81
 msgctxt "option label"
 msgid "Description Field ID"
 msgstr ""
 
-#: gettext/gettext-pro.php:190 lib/gettext-pro.php:190
-#: lib/pro/form/gravityview.php:85
+#: gettext/gettext-lib-pro.php:190 lib/pro/form/gravityview.php:85
 msgctxt "option label"
 msgid "Post Image Field ID"
 msgstr ""
 
-#: gettext/gettext-pro.php:191 gettext/gettext-pro.php:201 lib/conflict.php:226
-#: lib/gettext-pro.php:191 lib/gettext-pro.php:201
-#: lib/pro/rating/rate-my-post.php:53 lib/pro/rating/wppostratings.php:51
+#: gettext/gettext-lib-pro.php:191 gettext/gettext-lib-pro.php:201
+#: lib/conflict.php:226 lib/pro/rating/rate-my-post.php:53
+#: lib/pro/rating/wppostratings.php:51
 msgid "Plugin conflict detected"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-pro.php:193 lib/gettext-pro.php:193
-#: lib/pro/rating/wppostratings.php:58
+#: gettext/gettext-lib-pro.php:193 lib/pro/rating/wppostratings.php:58
 msgid "Enable Google Rich Snippets?"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-pro.php:195 lib/gettext-pro.php:195
-#: lib/pro/rating/wppostratings.php:64
+#: gettext/gettext-lib-pro.php:195 lib/pro/rating/wppostratings.php:64
 msgid "WP-PostRatings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-pro.php:197 lib/gettext-pro.php:197
-#: lib/pro/rating/wppostratings.php:66
+#: gettext/gettext-lib-pro.php:197 lib/pro/rating/wppostratings.php:66
 msgid "Ratings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-pro.php:199 lib/gettext-pro.php:199
-#: lib/pro/rating/wppostratings.php:68
+#: gettext/gettext-lib-pro.php:199 lib/pro/rating/wppostratings.php:68
 msgid "Ratings Options"
 msgstr ""
 
-#: gettext/gettext-pro.php:200 gettext/gettext-pro.php:210
-#: lib/gettext-pro.php:200 lib/gettext-pro.php:210
+#: gettext/gettext-lib-pro.php:200 gettext/gettext-lib-pro.php:210
 #: lib/pro/rating/rate-my-post.php:76 lib/pro/rating/wppostratings.php:74
 msgid "please disable the %1$s option in the %2$s settings page."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-pro.php:203 lib/gettext-pro.php:203
-#: lib/pro/rating/rate-my-post.php:60
+#: gettext/gettext-lib-pro.php:203 lib/pro/rating/rate-my-post.php:60
 msgid "Type of structured data for rich snippets"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-pro.php:205 lib/gettext-pro.php:205
-#: lib/pro/rating/rate-my-post.php:66
+#: gettext/gettext-lib-pro.php:205 lib/pro/rating/rate-my-post.php:66
 msgid "Rate my Post"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-pro.php:207 lib/conflict.php:474 lib/gettext-pro.php:207
+#: gettext/gettext-lib-pro.php:207 lib/conflict.php:474
 #: lib/pro/rating/rate-my-post.php:68
 msgid "Settings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-pro.php:209 lib/gettext-pro.php:209
-#: lib/pro/rating/rate-my-post.php:70
+#: gettext/gettext-lib-pro.php:209 lib/pro/rating/rate-my-post.php:70
 msgid "Rating Widget Settings"
 msgstr ""
 
 #. translators: %s is "App Key".
 #. translators: %s is "Secret Token".
-#: gettext/gettext-pro.php:212 gettext/gettext-pro.php:213
-#: lib/gettext-pro.php:212 lib/gettext-pro.php:213
+#: gettext/gettext-lib-pro.php:212 gettext/gettext-lib-pro.php:213
 #: lib/pro/review/yotpowc.php:215 lib/pro/review/yotpowc.php:235
 msgid "Yotpo for WooCommerce \"%s\" setting value is empty."
 msgstr ""
 
 #. translators: %s is "wc_yotpo_compatible()".
-#: gettext/gettext-pro.php:214 lib/gettext-pro.php:214
-#: lib/pro/review/yotpowc.php:255
+#: gettext/gettext-lib-pro.php:214 lib/pro/review/yotpowc.php:255
 msgid "Yotpo for WooCommerce %s function is missing."
 msgstr ""
 
 #. translators: %s is "wc_yotpo_compatible()".
-#: gettext/gettext-pro.php:215 lib/gettext-pro.php:215
-#: lib/pro/review/yotpowc.php:276
+#: gettext/gettext-lib-pro.php:215 lib/pro/review/yotpowc.php:276
 msgid "Yotpo for WooCommerce %s function returned false."
 msgstr ""
 
 #. translators: %s is "yotpo-social-reviews-for-woocommerce".
-#: gettext/gettext-pro.php:216 lib/gettext-pro.php:216
-#: lib/pro/review/yotpowc.php:304
+#: gettext/gettext-lib-pro.php:216 lib/pro/review/yotpowc.php:304
 msgid ""
 "\"%s\" plugin not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
 msgstr ""
 
 #. translators: %s is the API library file path.
-#: gettext/gettext-pro.php:217 lib/gettext-pro.php:217
-#: lib/pro/review/yotpowc.php:326
+#: gettext/gettext-lib-pro.php:217 lib/pro/review/yotpowc.php:326
 msgid "Yotpo for WooCommerce API library file \"%s\" not found."
 msgstr ""
 
 #. translators: %s is the API library file path.
-#: gettext/gettext-pro.php:218 lib/gettext-pro.php:218
-#: lib/pro/review/yotpowc.php:353
+#: gettext/gettext-lib-pro.php:218 lib/pro/review/yotpowc.php:353
 msgid "Yotpo for WooCommerce \"%s\" class does not exist."
 msgstr ""
 
-#: gettext/gettext-pro.php:219 lib/gettext-pro.php:219
-#: lib/pro/review/shopperapproved.php:148
+#: gettext/gettext-lib-pro.php:219 lib/pro/review/shopperapproved.php:148
 msgid "getting shopper approved ratings and reviews"
 msgstr ""
 
-#: gettext/gettext-pro.php:220 lib/gettext-pro.php:220
-#: lib/pro/review/shopperapproved.php:339
+#: gettext/gettext-lib-pro.php:220 lib/pro/review/shopperapproved.php:339
 msgid "There has been a previous error connecting to %s for caching."
 msgstr ""
 
-#: gettext/gettext-pro.php:221 lib/gettext-pro.php:221
-#: lib/pro/review/shopperapproved.php:342
+#: gettext/gettext-lib-pro.php:221 lib/pro/review/shopperapproved.php:342
 msgid ""
 "Requests to retrieve and cache this URL are ignored for another %d second(s)"
 msgstr ""
 
 #. translators: %s is the Job Manager plugin name
-#: gettext/gettext-pro.php:222 lib/gettext-pro.php:222
-#: lib/pro/job/wpjobmanager.php:51
+#: gettext/gettext-lib-pro.php:222 lib/pro/job/wpjobmanager.php:51
 msgctxt "option value"
 msgid "[%s Company]"
 msgstr ""
 
 #. translators: %s is the Job Manager plugin name
-#: gettext/gettext-pro.php:223 lib/gettext-pro.php:223
-#: lib/pro/job/wpjobmanager.php:59
+#: gettext/gettext-lib-pro.php:223 lib/pro/job/wpjobmanager.php:59
 msgctxt "option value"
 msgid "[%s Location]"
 msgstr ""
@@ -3534,96 +4064,96 @@ msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:3471
+#: lib/admin.php:3492
 msgid "Return to %s"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:3502
+#: lib/admin.php:3523
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:3525
+#: lib/admin.php:3546
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:3534
+#: lib/admin.php:3555
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes and translations)</a> to check if newer versions are "
 "available."
 msgstr ""
 
-#: lib/admin.php:3669
+#: lib/admin.php:3690
 msgid "Please select a %1$s settings file to import."
 msgstr ""
 
-#: lib/admin.php:3676
+#: lib/admin.php:3697
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr ""
 
-#: lib/admin.php:3683
+#: lib/admin.php:3704
 msgid ""
 "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr ""
 
-#: lib/admin.php:3697
+#: lib/admin.php:3718
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr ""
 
-#: lib/admin.php:3707
+#: lib/admin.php:3728
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr ""
 
-#: lib/admin.php:3717
+#: lib/admin.php:3738
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 
-#: lib/admin.php:3738
+#: lib/admin.php:3759
 msgctxt "lib file description"
 msgid "(feature) Use Filtered (aka SEO) Title"
 msgstr ""
 
-#: lib/admin.php:3745
+#: lib/admin.php:3766
 msgctxt "lib file description"
 msgid "(feature) Use WordPress Content Filters"
 msgstr ""
 
-#: lib/admin.php:3752
+#: lib/admin.php:3773
 msgctxt "lib file description"
 msgid "(feature) Use WordPress Excerpt Filters"
 msgstr ""
 
-#: lib/admin.php:3766
+#: lib/admin.php:3787
 msgctxt "lib file description"
 msgid "(api) %s Shortener API"
 msgstr ""
 
-#: lib/admin.php:3805
+#: lib/admin.php:3826
 msgctxt "lib file description"
 msgid "(code) Facebook / Open Graph Meta Tags"
 msgstr ""
 
-#: lib/admin.php:3810
+#: lib/admin.php:3831
 msgctxt "lib file description"
 msgid "(code) Knowledge Graph Organization Markup"
 msgstr ""
 
-#: lib/admin.php:3815
+#: lib/admin.php:3836
 msgctxt "lib file description"
 msgid "(code) Knowledge Graph Person Markup"
 msgstr ""
 
-#: lib/admin.php:3820
+#: lib/admin.php:3841
 msgctxt "lib file description"
 msgid "(code) Knowledge Graph WebSite Markup"
 msgstr ""
 
-#: lib/admin.php:3825
+#: lib/admin.php:3846
 msgctxt "lib file description"
 msgid "(code) Twitter Card Meta Tags"
 msgstr ""

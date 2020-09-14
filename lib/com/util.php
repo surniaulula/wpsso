@@ -2216,6 +2216,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return ''; // Empty string.
 		}
 
+		/**
+		 * Check for a local translated file name, and if found, return a file path and file URL to the translated version.
+		 */
 		public static function get_file_path_locale( $file_path, $file_url = false ) {
 
 			if ( preg_match( '/^(.*)(\.[a-z0-9]+)$/', $file_path, $matches ) ) {
@@ -2226,12 +2229,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					if ( file_exists( $file_path_locale ) ) {
 
-						$file_path = $file_path_locale;
-
 						if ( $file_url ) {
 
-							$file_url = self::get_file_path_locale( $file_url );
+							$file_base = basename( $file_path );
+
+							$file_base_locale = basename( $file_path_locale );
+
+							$file_url = str_replace( '/' . $file_base, '/' . $file_base_locale, $file_url );
 						}
+
+						$file_path = $file_path_locale;
 					}
 				}
 			}
@@ -2244,7 +2251,112 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $file_path;
 		}
 
-		public static function transl_key_values( $pattern, array &$opts, $text_domain = false ) {
+		/**
+		 * Translate HTML headers, paragraphs, and list items.
+		 */
+		public static function get_html_transl( $html, $text_domain ) {
+
+			$gettext = self::get_html_gettext( $html, $text_domain );
+
+			foreach ( $gettext as $repl => $arr ) {
+
+				$transl = _x( $arr[ 'text' ], $arr[ 'context' ], $arr[ 'text_domain' ] );
+
+				$html = str_replace( $repl, $arr[ 'begin' ] . $transl . $arr[ 'end' ], $html );
+			}
+
+			return $html;
+		}
+
+		public static function get_html_gettext( $html, $text_domain ) {
+
+			$gettext = array();
+
+			foreach ( array(
+				'/(<h[0-9][^>]*>)(.*)(<\/h[0-9]>)/Uis' => 'html header',
+				'/(<p>|<p [^>]*>)(.*)(<\/p>)/Uis'      => 'html paragraph',	// Get paragraphs before list items.
+				'/(<li[^>]*>)(.*)(<\/li>)/Uis'         => 'html list item',
+			) as $pattern => $context ) {
+
+				if ( preg_match_all( $pattern, $html, $all_matches, PREG_SET_ORDER ) ) {
+
+					foreach ( $all_matches as $num => $matches ) {
+
+						list( $match, $begin, $text, $end ) = $matches;
+
+						$html = str_replace( $match, '', $html );	// Do not match again.
+
+						if ( '' === $text ) {	// Ignore HTML tags with no content.
+
+							continue;
+						}
+
+						$text = preg_replace( '/[\s\n\r]+/s', ' ', $text );	// Put everything on one line.
+
+						$gettext[ $match ] = array(
+							'begin'       => $begin,
+							'text'        => $text,
+							'end'         => $end,
+							'context'     => $context,
+							'text_domain' => $text_domain,
+						);
+					}
+				}
+			}
+
+			return $gettext;
+		}
+
+		public static function show_html_gettext_php( $html, $text_domain ) {
+
+			$gettext = self::get_html_gettext( $html, $text_domain );
+
+			foreach ( $gettext as $repl => $arr ) {
+
+				$arr[ 'text' ] = str_replace( '\'', '\\\'', $arr[ 'text' ] );
+
+				echo '_x( \'' . $arr[ 'text' ] . '\', \'' . $arr[ 'context' ] . '\', \'' . $arr[ 'text_domain' ] . '\' );' . "\n";
+			}
+		}
+
+		public static function show_lib_gettext_php( $mixed, $context = 'lib file description', $text_domain ) {
+
+			if ( is_array( $mixed ) ) {
+
+				foreach ( $mixed as $key => $val ) {
+
+					if ( 'admin' === $key ) {
+
+						continue;
+					}
+
+					self::show_lib_gettext_php( $val, $context, $text_domain );
+				}
+
+				return;
+
+			} elseif ( is_numeric( $mixed ) ) {	// Number.
+
+				return;
+
+			} elseif ( empty( $mixed ) ) {		// Empty.
+
+				return;
+
+			} elseif ( strpos( $mixed, '/' ) === 0 ) {	// Regular expression.
+
+				return;
+
+			} elseif ( false !== filter_var( $mixed, FILTER_VALIDATE_URL ) ) {	// URL
+
+				return;
+
+			}
+
+			echo '_x( \'' . $mixed . '\', \'' . $context . '\', \'' . $text_domain . '\' );' . "\n";
+		}
+
+		public static function transl_key_values( $pattern, array &$opts, $text_domain ) {
 
 			foreach ( self::preg_grep_keys( $pattern, $opts ) as $key => $val ) {
 
@@ -3582,7 +3694,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			$content = htmlentities( $content, ENT_QUOTES, $charset, $double_encode = false );
-
 			$content = SucomUtilWP::wp_encode_emoji( $content );
 
 			return $content;
@@ -3639,19 +3750,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return '{}'; // Empty string.
 		}
 
-		public static function get_json_scripts( $content, $do_decode = true ) {
+		public static function get_json_scripts( $html, $do_decode = true ) {
 
 			if ( function_exists( 'mb_convert_encoding' ) ) {
 
-				$content = mb_convert_encoding( $content, 'HTML-ENTITIES', 'UTF-8' );	// Convert to UTF8.
+				$html = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// Convert to UTF8.
 			}
 
 			/**
 			 * Remove containers that should not include json scripts.
 			 */
-			$content = preg_replace( '/<!--.*-->/Uums', '', $content );
-			$content = preg_replace( '/<pre[ >].*<\/pre>/Uiums', '', $content );
-			$content = preg_replace( '/<textarea[ >].*<\/textarea>/Uiums', '', $content );
+			$html = preg_replace( '/<!--.*-->/Uums', '', $html );
+			$html = preg_replace( '/<pre[ >].*<\/pre>/Uiums', '', $html );
+			$html = preg_replace( '/<textarea[ >].*<\/textarea>/Uiums', '', $html );
 
 			$json_data = array();
 
@@ -3662,8 +3773,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			 *
 			 * See http://php.net/manual/en/reference.pcre.pattern.modifiers.php.
 			 */
-			if ( preg_match_all( '/<script\b[^>]*type=["\']application\/ld\+json["\'][^>]*>(.*)<\/script>/Uis',
-				$content, $all_matches, PREG_SET_ORDER ) ) {
+			if ( preg_match_all( '/<script\b[^>]*type=["\']application\/ld\+json["\'][^>]*>(.*)<\/script>/Uis', $html, $all_matches, PREG_SET_ORDER ) ) {
 
 				foreach ( $all_matches as $num => $matches ) {
 

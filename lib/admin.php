@@ -3302,13 +3302,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				) );
 			}
 
-			$file_name = 'readme.txt';
-			$file_path = WpssoConfig::get_ext_file_path( $ext, $file_name );
-			$file_key  = SucomUtil::sanitize_hookname( $file_name );	// Rename readme.txt to readme_txt (note underscore).
+			$rel_file  = 'readme.txt';
+			$file_path = WpssoConfig::get_ext_file_path( $ext, $rel_file );
+			$file_key  = SucomUtil::sanitize_hookname( $rel_file );	// Changes readme.txt to readme_txt (note underscore).
 			$file_url  = isset( $this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] ) ? 
 				$this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] : false;
-
-			list( $file_path, $file_url ) = SucomUtil::get_file_path_locale( $file_path, $file_url );
 
 			$cache_md5_pre = $this->p->lca . '_';
 			$cache_salt    = __METHOD__ . '(ext:' . $ext . ')';
@@ -3408,24 +3406,39 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return is_array( $readme_info ) ? $readme_info : array();	// Just in case.
 		}
 
-		public function get_config_url_content( $ext, $file_name, $cache_exp_secs = null ) {
+		/**
+		 * Deprecated on 2020/09/14.
+		 */
+		public function get_config_url_content( $ext, $rel_file, $cache_exp_secs = null ) {
+
+			return $this->get_ext_file_content( $ext, $rel_file, $cache_exp_secs );
+		}
+
+		/**
+		 * Called from WpssoSubmenuSetup->show_metabox_setup_guide() and WpssoJsonSubmenuSchemaShortcode->show_metabox_schema_shortcode().
+		 */
+		public function get_ext_file_content( $ext, $rel_file, $cache_exp_secs = null ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array( 
 					'ext'            => $ext,
-					'file_name'      => $file_name,
+					'rel_file'       => $rel_file,
 					'cache_exp_secs' => $cache_exp_secs,
 				) );
 			}
 
-			$file_name = SucomUtil::sanitize_file_path( $file_name );
-			$file_path = WpssoConfig::get_ext_file_path( $ext, $file_name );
-			$file_key  = SucomUtil::sanitize_hookname( basename( $file_name ) );	// html/setup.html -> setup_html (note underscore).
-			$file_url  = isset( $this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] ) ? 
+			$rel_file = SucomUtil::sanitize_file_path( $rel_file );
+
+			$file_path = WpssoConfig::get_ext_file_path( $ext, $rel_file );
+
+			$file_key = SucomUtil::sanitize_hookname( basename( $rel_file ) );	// Changes html/setup.html to setup_html (note underscore).
+
+			$file_url = isset( $this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] ) ? 
 				$this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] : false;
 
-			list( $file_path, $file_url ) = SucomUtil::get_file_path_locale( $file_path, $file_url );
+			$text_domain = isset( $this->p->cf[ 'plugin' ][ $ext ][ 'text_domain' ] ) ?
+				$this->p->cf[ 'plugin' ][ $ext ][ 'text_domain' ] : false;
 
 			if ( null === $cache_exp_secs ) {
 
@@ -3444,7 +3457,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
-			if ( empty( $cache_content ) ) {
+			if ( empty( $cache_content ) ) {	// No content from the file URL cache.
 
 				if ( $file_path && file_exists( $file_path ) && $fh = @fopen( $file_path, 'rb' ) ) {
 
@@ -3452,6 +3465,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					fclose( $fh );
 				}
+			}
+
+			if ( $text_domain ) {
+
+				/**
+				 * Translate HTML headers, paragraphs, and list items.
+				 */
+				$cache_content = SucomUtil::get_html_transl( $cache_content, $text_domain );
 			}
 
 			return $cache_content;
