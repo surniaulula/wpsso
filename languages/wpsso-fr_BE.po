@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 8.4.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-09-14 09:59-0700\n"
-"PO-Revision-Date: 2020-09-14 10:05-0700\n"
+"POT-Creation-Date: 2020-09-14 10:10-0700\n"
+"PO-Revision-Date: 2020-09-14 10:10-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -210,163 +210,163 @@ msgstr ""
 
 #: gettext/gettext-html-setup.php:45
 msgctxt "html paragraph"
-msgid "Comments and suggestions to improve the plugin are always welcome &mdash; please <a href=\"https://surniaulula.com/support/create_ticket/\">open a ticket if you have any ideas you would like to share with us</a>. ;-)"
-msgstr ""
+msgid "More <a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/\">Frequently Asked Questions</a>..."
+msgstr "Plus de <a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/\">questions fréquemment posées</a> ..."
 
 #: gettext/gettext-html-setup.php:46
 msgctxt "html paragraph"
-msgid "BuddyPress is not well integrated with the WordPress core functions, so there are specific <a href=\"https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/\">BuddyPress Integration Notes</a> available to help you overcome some BuddyPress limitations."
+msgid "Comments and suggestions to improve the plugin are always welcome &mdash; please <a href=\"https://surniaulula.com/support/create_ticket/\">open a ticket if you have any ideas you would like to share with us</a>. ;-)"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:47
 msgctxt "html paragraph"
-msgid "The <a href=\"https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/\">WooCommerce Integration Notes</a> are useful to include additional product information in meta tags and Schema markup, like the product brand, color, condition, material, size, etc."
+msgid "BuddyPress is not well integrated with the WordPress core functions, so there are specific <a href=\"https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/\">BuddyPress Integration Notes</a> available to help you overcome some BuddyPress limitations."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:48
 msgctxt "html paragraph"
-msgid "<strong>The WooCommerce plugin is known to offer incomplete Schema markup for Google.</strong> The <a href=\"https://wpsso.com/extend/plugins/wpsso/\">WPSSO Core Premium plugin</a> and its <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a> provide a far better solution by offering complete Facebook / Pinterest Product meta tags and Schema Product markup for Google Rich Results &mdash; including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, and much, much more."
+msgid "The <a href=\"https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/\">WooCommerce Integration Notes</a> are useful to include additional product information in meta tags and Schema markup, like the product brand, color, condition, material, size, etc."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:49
 msgctxt "html paragraph"
-msgid "WordPress developers and website designers may want to consider a few additional settings..."
+msgid "<strong>The WooCommerce plugin is known to offer incomplete Schema markup for Google.</strong> The <a href=\"https://wpsso.com/extend/plugins/wpsso/\">WPSSO Core Premium plugin</a> and its <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a> provide a far better solution by offering complete Facebook / Pinterest Product meta tags and Schema Product markup for Google Rich Results &mdash; including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, and much, much more."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:50
 msgctxt "html paragraph"
-msgid "If you know that your theme header templates do not include any social meta tags, and no other plugin is adding social meta tags to your webpages, then you could disable the \"Check for Duplicate Meta Tags\" option under the <em><strong>SSO &gt; Advanced Settings&gt; Integration</strong></em> tab."
+msgid "WordPress developers and website designers may want to consider a few additional settings..."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:51
 msgctxt "html paragraph"
-msgid "If your theme uses custom fields to manage additional images, video URLs, embed video HTML, product details, etc., you can enter their custom field names under the <em><strong>SSO &gt; Advanced Settings&gt; Editing Pages &gt; Custom Fields (Metadata)</strong></em> tab."
+msgid "If you know that your theme header templates do not include any social meta tags, and no other plugin is adding social meta tags to your webpages, then you could disable the \"Check for Duplicate Meta Tags\" option under the <em><strong>SSO &gt; Advanced Settings&gt; Integration</strong></em> tab."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:52
 msgctxt "html paragraph"
-msgid "WPSSO Core adds \"meta name description\" and \"meta name robots\" HTML tags to the webpage by default, unless an SEO plugin is detected (in which case they are disabled automatically). You can enable or disable individual SEO HTML tags under the <em><strong>SSO &gt; Advanced Settings&gt; HTML Tags &gt; SEO / Other</strong></em> tab."
+msgid "If your theme uses custom fields to manage additional images, video URLs, embed video HTML, product details, etc., you can enter their custom field names under the <em><strong>SSO &gt; Advanced Settings&gt; Editing Pages &gt; Custom Fields (Metadata)</strong></em> tab."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:53
 msgctxt "html paragraph"
-msgid "WPSSO Core creates Schema WebSite, Organization, and Person social JSON-LD markup in the front page for Google's Knowledge Graph. If your theme does not include proper Schema markup for your post / page content (aka Microdata markup), you should consider enabling the <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a>, which can provide complete Schema JSON-LD / SEO markup for your content (Schema Article, Place, Product, etc.)."
+msgid "WPSSO Core adds \"meta name description\" and \"meta name robots\" HTML tags to the webpage by default, unless an SEO plugin is detected (in which case they are disabled automatically). You can enable or disable individual SEO HTML tags under the <em><strong>SSO &gt; Advanced Settings&gt; HTML Tags &gt; SEO / Other</strong></em> tab."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:54
-msgctxt "html list item"
-msgid "<a href=\"https://www.facebook.com/business/learn/set-up-facebook-page\">Setup a Facebook Business Page</a>"
+msgctxt "html paragraph"
+msgid "WPSSO Core creates Schema WebSite, Organization, and Person social JSON-LD markup in the front page for Google's Knowledge Graph. If your theme does not include proper Schema markup for your post / page content (aka Microdata markup), you should consider enabling the <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a>, which can provide complete Schema JSON-LD / SEO markup for your content (Schema Article, Place, Product, etc.)."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:55
 msgctxt "html list item"
-msgid "<a href=\"https://business.twitter.com/en/basics/create-a-twitter-business-profile.html\">Create a Twitter Business Profile</a>"
+msgid "<a href=\"https://www.facebook.com/business/learn/set-up-facebook-page\">Setup a Facebook Business Page</a>"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:56
 msgctxt "html list item"
-msgid "<a href=\"https://business.google.com/create\">Add your Business to Google</a>"
+msgid "<a href=\"https://business.twitter.com/en/basics/create-a-twitter-business-profile.html\">Create a Twitter Business Profile</a>"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:57
 msgctxt "html list item"
-msgid "<a href=\"https://www.pinterest.com/business/create/\">Create a Pinterest Business Account</a>"
+msgid "<a href=\"https://business.google.com/create\">Add your Business to Google</a>"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:58
 msgctxt "html list item"
-msgid "<a href=\"https://developers.facebook.com/tools/debug/\">Facebook Sharing Debugger</a>"
+msgid "<a href=\"https://www.pinterest.com/business/create/\">Create a Pinterest Business Account</a>"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:59
 msgctxt "html list item"
-msgid "<a href=\"https://business.facebook.com/ads/microdata/debug\">Facebook Microdata Debug Tool</a>"
+msgid "<a href=\"https://developers.facebook.com/tools/debug/\">Facebook Sharing Debugger</a>"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:60
 msgctxt "html list item"
-msgid "<a href=\"https://search.google.com/test/rich-results\">Google Rich Results Test</a>"
+msgid "<a href=\"https://business.facebook.com/ads/microdata/debug\">Facebook Microdata Debug Tool</a>"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:61
 msgctxt "html list item"
-msgid "<a href=\"https://search.google.com/structured-data/testing-tool/u/0/\">Google Structured Data Test Tool</a> &mdash; although deprecated, this tool provides additional validation for Schema types beyond the limited <a href=\"https://developers.google.com/search/docs/guides/search-gallery\">selection of Google Rich Result types</a>."
+msgid "<a href=\"https://search.google.com/test/rich-results\">Google Rich Results Test</a>"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:62
 msgctxt "html list item"
-msgid "<a href=\"https://www.linkedin.com/post-inspector/inspect/\">LinkedIn Post Inspector</a>"
+msgid "<a href=\"https://search.google.com/structured-data/testing-tool/u/0/\">Google Structured Data Test Tool</a> &mdash; although deprecated, this tool provides additional validation for Schema types beyond the limited <a href=\"https://developers.google.com/search/docs/guides/search-gallery\">selection of Google Rich Result types</a>."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:63
 msgctxt "html list item"
-msgid "<a href=\"https://developers.pinterest.com/tools/url-debugger/\">Pinterest Rich Pins Validator</a>"
+msgid "<a href=\"https://www.linkedin.com/post-inspector/inspect/\">LinkedIn Post Inspector</a>"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:64
 msgctxt "html list item"
-msgid "<a href=\"https://cards-dev.twitter.com/validator\">Twitter Card Validator</a>"
+msgid "<a href=\"https://developers.pinterest.com/tools/url-debugger/\">Pinterest Rich Pins Validator</a>"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:65
 msgctxt "html list item"
-msgid "<a href=\"https://validator.w3.org/\">W3C Markup Validation Service</a> &mdash; recommended to check your theme templates for HTML markup issues."
+msgid "<a href=\"https://cards-dev.twitter.com/validator\">Twitter Card Validator</a>"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:66
 msgctxt "html list item"
-msgid "<a href=\"https://developers.google.com/speed/pagespeed/insights/\">Google PageSpeed Insights</a> &mdash; recommended for general site / webpage health check (results influence SEO ranking)."
+msgid "<a href=\"https://validator.w3.org/\">W3C Markup Validation Service</a> &mdash; recommended to check your theme templates for HTML markup issues."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:67
 msgctxt "html list item"
-msgid "<a href=\"https://support.google.com/webmasters/answer/7451184\">Google's Search Engine Optimization (SEO) Starter Guide</a> &mdash; essential reading to understand Google SEO ranking factors."
+msgid "<a href=\"https://developers.google.com/speed/pagespeed/insights/\">Google PageSpeed Insights</a> &mdash; recommended for general site / webpage health check (results influence SEO ranking)."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:68
 msgctxt "html list item"
-msgid "<a href=\"https://www.webpagetest.org/\">Webpage Performance Test with Waterfall</a> &mdash; recommended to check and/or diagnose basic performance issues."
+msgid "<a href=\"https://support.google.com/webmasters/answer/7451184\">Google's Search Engine Optimization (SEO) Starter Guide</a> &mdash; essential reading to understand Google SEO ranking factors."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:69
 msgctxt "html list item"
-msgid "<a href=\"https://www.ssllabs.com/ssltest/\">SSL Server Test by SSL Labs</a> &mdash; recommended check for any site using https."
+msgid "<a href=\"https://www.webpagetest.org/\">Webpage Performance Test with Waterfall</a> &mdash; recommended to check and/or diagnose basic performance issues."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:70
 msgctxt "html list item"
-msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-google-structured-data-hatom-errors/\">How do I fix Google Structured Data &gt; hatom errors?</a>"
+msgid "<a href=\"https://www.ssllabs.com/ssltest/\">SSL Server Test by SSL Labs</a> &mdash; recommended check for any site using https."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:71
 msgctxt "html list item"
-msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/\">How does WPSSO Core find / detect / select images?</a>"
+msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-google-structured-data-hatom-errors/\">How do I fix Google Structured Data &gt; hatom errors?</a>"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:72
 msgctxt "html list item"
-msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-videos/\">How does WPSSO Core find / detect / select videos?</a>"
+msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/\">How does WPSSO Core find / detect / select images?</a>"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:73
 msgctxt "html list item"
-msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-elements-missing-misaligned-different/\">Why are some HTML elements missing / misaligned / different?</a>"
+msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-videos/\">How does WPSSO Core find / detect / select videos?</a>"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:74
 msgctxt "html list item"
-msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/\">Why does Facebook show the wrong image / text?</a>"
+msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-elements-missing-misaligned-different/\">Why are some HTML elements missing / misaligned / different?</a>"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:75
 msgctxt "html list item"
-msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/\">Why shouldn't I upload small images to the Media library?</a>"
+msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/\">Why does Facebook show the wrong image / text?</a>"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:76
 msgctxt "html list item"
-msgid "More <a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/\">Frequently Asked Questions</a>..."
-msgstr "Plus de <a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/\">questions fréquemment posées</a> ..."
+msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/\">Why shouldn't I upload small images to the Media library?</a>"
+msgstr ""
 
 #: gettext/gettext-lib-com.php:6 gettext/gettext-lib-com.php:30
 #: gettext/gettext-lib-com.php:37 lib/com/bfo.php:266 lib/com/cache.php:94
