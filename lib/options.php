@@ -150,7 +150,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'robots_max_snippet':		// Snippet Max. Length.
 				case 'robots_max_video_preview':	// Video Max. Previews
 
-					if ( ! is_array( $mod ) ) {	// Must be an interger in plugin settings.
+					if ( empty( $mod[ 'name' ] ) ) {	// Must be an interger in plugin settings.
 					
 						return 'integer';
 					}
@@ -913,7 +913,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			/**
 			 * Add any missing options from the defaults, unless sanitizing for a module.
 			 */
-			if ( ! is_array( $mod ) ) {
+			if ( empty( $mod[ 'name' ] ) ) {
 
 				foreach ( $defs as $opt_key => $def_val ) {
 

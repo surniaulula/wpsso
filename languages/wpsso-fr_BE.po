@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 8.5.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-09-14 12:35-0700\n"
-"PO-Revision-Date: 2020-09-14 12:38-0700\n"
+"PO-Revision-Date: 2020-09-14 15:12-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -321,7 +321,7 @@ msgstr "<a href=\"https://cards-dev.twitter.com/validator\">Vérificateur de car
 #: gettext/gettext-html-setup.php:67
 msgctxt "html list item"
 msgid "<a href=\"https://validator.w3.org/\">W3C Markup Validation Service</a> &mdash; recommended to check your theme templates for HTML markup issues."
-msgstr ""
+msgstr "<a href=\"https://validator.w3.org/\">Service de validation de balisage W3C</a> &mdash; recommandé de vérifier vos modèles de thème pour des problèmes de balisage HTML."
 
 #: gettext/gettext-html-setup.php:68
 msgctxt "html list item"
@@ -331,7 +331,7 @@ msgstr "<a href=\"https://developers.google.com/speed/pagespeed/insights/\">Goog
 #: gettext/gettext-html-setup.php:69
 msgctxt "html list item"
 msgid "<a href=\"https://support.google.com/webmasters/answer/7451184\">Google's Search Engine Optimization (SEO) Starter Guide</a> &mdash; essential reading to understand Google SEO ranking factors."
-msgstr ""
+msgstr "<a href=\"https://support.google.com/webmasters/answer/7451184?hl=fr\">Bien débuter en référencement naturel (SEO)</a> &mdash; lecture essentielle pour comprendre les facteurs de classement SEO de Google."
 
 #: gettext/gettext-html-setup.php:70
 msgctxt "html list item"
@@ -346,27 +346,27 @@ msgstr ""
 #: gettext/gettext-html-setup.php:72
 msgctxt "html list item"
 msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-google-structured-data-hatom-errors/\">How do I fix Google Structured Data &gt; hatom errors?</a>"
-msgstr ""
+msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-google-structured-data-hatom-errors/\">Comment corriger les erreurs de données structurées Google &gt; hatom?</a>"
 
 #: gettext/gettext-html-setup.php:73
 msgctxt "html list item"
 msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/\">How does WPSSO Core find / detect / select images?</a>"
-msgstr ""
+msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/\">Comment WPSSO Core trouve / détecte / sélectionne les images?</a>"
 
 #: gettext/gettext-html-setup.php:74
 msgctxt "html list item"
 msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-videos/\">How does WPSSO Core find / detect / select videos?</a>"
-msgstr ""
+msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-videos/\">Comment WPSSO Core trouve / détecte / sélectionne les videos?</a>"
 
 #: gettext/gettext-html-setup.php:75
 msgctxt "html list item"
 msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-elements-missing-misaligned-different/\">Why are some HTML elements missing / misaligned / different?</a>"
-msgstr ""
+msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-elements-missing-misaligned-different/\">Pourquoi certains éléments HTML sont-ils manquants / mal alignés / différents?</a>"
 
 #: gettext/gettext-html-setup.php:76
 msgctxt "html list item"
 msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/\">Why does Facebook show the wrong image / text?</a>"
-msgstr ""
+msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/\">Pourquoi Facebook affiche-t-il la mauvaise image / texte?</a>"
 
 #: gettext/gettext-html-setup.php:77
 msgctxt "html list item"
