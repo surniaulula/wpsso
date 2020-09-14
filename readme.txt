@@ -309,6 +309,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.4.2-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.2.
+
 **Version 8.4.1 (2020/09/11)**
 
 **This release adds a new "Robots Meta" tab in the Document SSO metabox with options for Google Search and other search engine robots.**
