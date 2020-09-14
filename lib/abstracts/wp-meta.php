@@ -1015,10 +1015,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		protected function get_submit_opts( $mod_id ) {
 
-			$mod = $this->get_mod( $mod_id );
-
+			$mod     = $this->get_mod( $mod_id );
 			$md_defs = $this->get_defaults( $mod[ 'id' ] );
-
 			$md_prev = $this->get_options( $mod[ 'id' ] );
 
 			/**
@@ -1068,15 +1066,29 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			}
 
 			/**
-			 * Remove "use plugin settings", or "same as default" option values, or empty strings.
+			 * Remove empty strings, "use plugin settings", or "same as default" option values.
+			 *
+			 * Use strict comparison to manage conversion (don't allow string to integer conversion, for example).
 			 */
 			foreach ( $md_opts as $md_key => $md_val ) {
 
-				/**
-				 * Use strict comparison to manage conversion (don't allow string to integer conversion, for example).
-				 */
-				if ( $md_val === '' || $md_val === WPSSO_UNDEF || $md_val === (string) WPSSO_UNDEF || 
-					( isset( $md_defs[ $md_key ] ) && ( $md_val === $md_defs[ $md_key ] || $md_val === (string) $md_defs[ $md_key ] ) ) ) {
+				if ( '' === $md_val ) {
+				
+					unset( $md_opts[ $md_key ] );
+
+				} elseif ( isset( $md_defs[ $md_key ] ) && ( $md_val === $md_defs[ $md_key ] || $md_val === (string) $md_defs[ $md_key ] ) ) {
+
+					unset( $md_opts[ $md_key ] );
+
+				} elseif ( $md_val === WPSSO_UNDEF || $md_val === (string) WPSSO_UNDEF ) {
+
+					switch ( $md_key ) {
+
+						case 'robots_max_snippet':
+						case 'robots_max_video_preview':
+
+							continue;
+					}
 
 					unset( $md_opts[ $md_key ] );
 				}

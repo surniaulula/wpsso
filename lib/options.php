@@ -38,7 +38,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			$this->p->util->add_plugin_filters( $this, array(
 				'init_objects' => 0,
-				'option_type'  => 2,
+				'option_type'  => 4,
 			), $prio = 10000 );
 		}
 
@@ -52,7 +52,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			self::$allow_cache = true;
 		}
 
-		public function filter_option_type( $type, $base_key ) {
+		public function filter_option_type( $type, $base_key, $network, $mod ) {
 
 			if ( ! empty( $type ) ) {
 
@@ -141,11 +141,21 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/**
 				 * Gravity View field IDs.
 				 */
-				case 'gv_id_title':	// Title Field ID.
-				case 'gv_id_desc':	// Description Field ID.
-				case 'gv_id_img':	// Post Image Field ID.
+				case 'gv_id_title':			// Title Field ID.
+				case 'gv_id_desc':			// Description Field ID.
+				case 'gv_id_img':			// Post Image Field ID.
 
 					return 'blank_int';
+
+				case 'robots_max_snippet':		// Snippet Max. Length.
+				case 'robots_max_video_preview':	// Video Max. Previews
+
+					if ( ! is_array( $mod ) ) {	// Must be an interger in plugin settings.
+					
+						return 'integer';
+					}
+
+					return 'blank_int';		// Allow blank (ie. default) for options.
 
 				/**
 				 * Cast as integer (zero and -1 is ok).
@@ -155,8 +165,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'og_desc_hashtags': 
 				case 'schema_img_max':
 				case 'schema_vid_max':
-				case 'robots_max_snippet':
-				case 'robots_max_video_preview':
 				case ( preg_match( '/_(cache_exp|caption_hashtags|filter_prio)$/', $base_key ) ? true : false ):
 				case ( preg_match( '/_(img|logo|banner)_url(:width|:height)$/', $base_key ) ? true : false ):
 
@@ -295,7 +303,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'product_avail':			// Select option with 'none' as default.
 				case 'product_condition':		// Select option with 'none' as default.
 				case 'product_target_gender':		// Select option with 'none' as default.
-				case 'robots_max_image_preview':
+				case 'robots_max_image_preview':	// Image Preview Size.
 				case ( false !== strpos( $base_key, '_crop_x' ) ? true : false ):
 				case ( false !== strpos( $base_key, '_crop_y' ) ? true : false ):
 				case ( false !== strpos( $base_key, '_type_for_' ) ? true : false ):
@@ -905,7 +913,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			/**
 			 * Add any missing options from the defaults, unless sanitizing for a module.
 			 */
-			if ( false === $mod ) {
+			if ( ! is_array( $mod ) ) {
 
 				foreach ( $defs as $opt_key => $def_val ) {
 
@@ -1402,7 +1410,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			$ret_fnum = false;
 			$num_prec = 0;
 
-			if ( strpos( $option_type, 'fnum' ) === 0 ) {
+			if ( 0 === strpos( $option_type, 'fnum' ) ) {
 
 				$num_prec = substr( $option_type, 4 );
 

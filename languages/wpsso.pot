@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.5.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 8.5.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -112,12 +112,12 @@ msgstr ""
 msgctxt "html paragraph"
 msgid ""
 "If you haven't already done so, create a Facebook Page and Twitter account "
-"for your website / business. You can enter all your website / business "
-"social account information on the WordPress <em><strong>SSO &gt; Social "
-"Pages</strong></em> settings page. The social account URLs are used by WPSSO "
-"Core for Open Graph, Schema, and other meta tag values - including the "
-"Organization social profiles in Schema JSON-LD markup (which may appear in "
-"Google Search results to highlight your website / business social pages)."
+"for your business / website. You can enter all your business / website "
+"social account information in the <em><strong>SSO &gt; Social Pages</"
+"strong></em> settings page. The social account URLs are used by WPSSO Core "
+"for Open Graph and Schema meta tag values, along with Schema Organization "
+"markup in JSON-LD format (which may appear in Google Search results to "
+"highlight your business / website social pages)."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:25
@@ -568,8 +568,8 @@ msgstr ""
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://developers.google.com/speed/pagespeed/insights/\">Google "
-"PageSpeed Insights</a> &mdash; recommended for general site / webpage health "
-"check (results influence SEO ranking)."
+"PageSpeed Insights</a> &mdash; recommended for general site and webpage "
+"health checks (results influence SEO ranking)."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:69
@@ -584,7 +584,7 @@ msgstr ""
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.webpagetest.org/\">Webpage Performance Test with "
-"Waterfall</a> &mdash; recommended to check and/or diagnose basic performance "
+"Waterfall</a> &mdash; recommended to check and diagnose basic performance "
 "issues."
 msgstr ""
 
@@ -592,7 +592,7 @@ msgstr ""
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.ssllabs.com/ssltest/\">SSL Server Test by SSL Labs</a> "
-"&mdash; recommended check for any site using https."
+"&mdash; recommended test for any site using https."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:72
@@ -631,7 +631,7 @@ msgstr ""
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-"
-"the-wrong-image-text/\">Why does Facebook show the wrong image / text?</a>"
+"the-wrong-image-text/\">Why does Facebook show the wrong image or text?</a>"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:77
@@ -3618,7 +3618,7 @@ msgstr ""
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
-#: lib/admin.php:1144 lib/options.php:1216
+#: lib/admin.php:1144 lib/options.php:1224
 msgid "A background task will begin shortly to clear all caches."
 msgstr ""
 
@@ -3990,7 +3990,7 @@ msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:2986 lib/options.php:1281
+#: lib/admin.php:2986 lib/options.php:1289
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
@@ -7580,157 +7580,157 @@ msgctxt "option label"
 msgid "Open Graph (Facebook and oEmbed)"
 msgstr ""
 
-#: lib/options.php:585
+#: lib/options.php:593
 msgid "WordPress could not find an entry for %s in the options table."
 msgstr ""
 
-#: lib/options.php:589
+#: lib/options.php:597
 msgid ""
 "WordPress returned a non-array value when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:593
+#: lib/options.php:601
 msgid ""
 "WordPress returned an empty array when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:597
+#: lib/options.php:605
 msgid ""
 "WordPress returned an unknown condition when reading %s from the options "
 "table."
 msgstr ""
 
-#: lib/options.php:616
+#: lib/options.php:624
 msgid ""
 "The plugin settings have been returned to their default values &mdash; <a "
 "href=\"%s\">please review and save the new settings</a>."
 msgstr ""
 
 #. translators: %s is the option key name.
-#: lib/options.php:719
+#: lib/options.php:727
 msgid ""
 "Non-standard value found for the \"%s\" option - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1017
+#: lib/options.php:1025
 msgid ""
 "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of "
 "%5$s:1, which not equal to the required image ratio of %6$s:1."
 msgstr ""
 
-#: lib/options.php:1026
+#: lib/options.php:1034
 msgid ""
 "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of "
 "%5$s:1, which is equal to / or greater than the maximum image ratio of "
 "%6$s:1."
 msgstr ""
 
-#: lib/options.php:1034
+#: lib/options.php:1042
 msgid "These options have been reset to their default values."
 msgstr ""
 
-#: lib/options.php:1088
+#: lib/options.php:1096
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length "
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:1215
+#: lib/options.php:1223
 msgid "Plugin settings have been upgraded and saved."
 msgstr ""
 
-#: lib/options.php:1310
+#: lib/options.php:1318
 msgid "The %s image dimensions cannot be determined."
 msgstr ""
 
-#: lib/options.php:1313
+#: lib/options.php:1321
 msgid ""
 "Please make sure this site can access %s using the PHP getimagesize() "
 "function."
 msgstr ""
 
-#: lib/options.php:1318
+#: lib/options.php:1326
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr ""
 
-#: lib/options.php:1321
+#: lib/options.php:1329
 msgid "Please correct the %s banner image."
 msgstr ""
 
-#: lib/options.php:1355
+#: lib/options.php:1363
 msgid ""
 "The value of option \"%s\" must be alpha-numeric - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1356
+#: lib/options.php:1364
 msgid ""
 "The value of option \"%s\" must be blank or numeric - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1357
+#: lib/options.php:1365
 msgid ""
 "The value of option \"%s\" must be a CSS color code - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1358
+#: lib/options.php:1366
 msgid ""
 "The value of option \"%s\" must be a comma-delimited list of URL(s) - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1359
+#: lib/options.php:1367
 msgid ""
 "The value of option \"%s\" must be a yyyy-mm-dd date - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1360
+#: lib/options.php:1368
 msgid ""
 "The value of option \"%s\" must be HTML code - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1361
+#: lib/options.php:1369
 msgid ""
 "The value of option \"%s\" must be an image ID - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1362
+#: lib/options.php:1370
 msgid ""
 "The value of option \"%s\" must be a valid image URL - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1363
+#: lib/options.php:1371
 msgid ""
 "The value of option \"%s\" cannot be an empty string - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1364
+#: lib/options.php:1372
 msgid ""
 "The value of option \"%s\" must be numeric - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1365
+#: lib/options.php:1373
 msgid ""
 "The value of option \"%1$s\" must be equal to or greather than %2$s - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1366
+#: lib/options.php:1374
 msgid ""
 "The value of option \"%s\" must be a hh:mm time - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1367
+#: lib/options.php:1375
 msgid ""
 "The value of option \"%s\" must be a valid URL - resetting this option to "
 "its default value."

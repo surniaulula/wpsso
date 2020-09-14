@@ -1150,9 +1150,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$html = '';
 
-			$value = $this->in_options( $name ) ? $this->options[ $name ] : '';
-
 			$holder = $this->get_placeholder_sanitized( $name, $holder );
+
+			$value = $this->in_options( $name ) ? $this->options[ $name ] : '';
 
 			if ( ! is_array( $len ) ) {	// A non-array value defaults to a max length.
 
@@ -1556,16 +1556,24 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= $this->get_textlen_script( 'textarea_' . $css_id );
 			}
 
-			$html .= '<textarea ' .
-				( $is_disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"' ) .
-				( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' ) .
-				( empty( $css_id ) ? ' id="textarea_' . esc_attr( $name ) . '"' : ' id="textarea_' . esc_attr( $css_id ) . '"' ) .
-				( empty( $len[ 'max' ] ) || $is_disabled ? '' : ' maxLength="' . esc_attr( $len[ 'max' ] ) . '"' ) .
-				( empty( $len[ 'warn' ] ) || $is_disabled ? '' : ' warnLength="' . esc_attr( $len[ 'warn' ] ) . '"' ) .
-				( empty( $len[ 'max' ] ) && empty( $len[ 'rows' ] ) ? '' : ( empty( $len[ 'rows' ] ) ?
-					' rows="'.( round( $len[ 'max' ] / 100 ) + 1 ) . '"' : ' rows="' . $len[ 'rows' ] . '"' ) ) .
-				( $this->get_placeholder_attrs( 'textarea', $holder ) ) . '>' . esc_attr( $value ) . '</textarea>' .
-				( empty( $len[ 'max' ] ) || $is_disabled ? '' : ' <div id="textarea_' . esc_attr( $css_id ) . '-lenMsg"></div>' );
+			$html .= '<textarea ';
+
+			$html .= $is_disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"';
+
+			$html .= empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"';
+
+			$html .= empty( $css_id ) ? ' id="textarea_' . esc_attr( $name ) . '"' : ' id="textarea_' . esc_attr( $css_id ) . '"';
+
+			$html .= empty( $len[ 'max' ] ) || $is_disabled ? '' : ' maxLength="' . esc_attr( $len[ 'max' ] ) . '"';
+
+			$html .= empty( $len[ 'warn' ] ) || $is_disabled ? '' : ' warnLength="' . esc_attr( $len[ 'warn' ] ) . '"';
+
+			$html .= empty( $len[ 'max' ] ) && empty( $len[ 'rows' ] ) ? '' :
+				( empty( $len[ 'rows' ] ) ? ' rows="'.( round( $len[ 'max' ] / 100 ) + 1 ) . '"' : ' rows="' . $len[ 'rows' ] . '"' );
+
+			$html .= $this->get_placeholder_attrs( 'textarea', $holder ) . '>' . esc_attr( $value ) . '</textarea>';
+
+			$html .= empty( $len[ 'max' ] ) || $is_disabled ? '' : ' <div id="textarea_' . esc_attr( $css_id ) . '-lenMsg"></div>';
 
 			return $html;
 		}

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 8.5.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-09-14 11:12-0700\n"
-"PO-Revision-Date: 2020-09-14 11:15-0700\n"
+"POT-Creation-Date: 2020-09-14 12:35-0700\n"
+"PO-Revision-Date: 2020-09-14 12:38-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -101,12 +101,12 @@ msgstr "Prendre le temps de lire ce guide de configuration et de consulter la pa
 #: gettext/gettext-html-setup.php:23
 msgctxt "html paragraph"
 msgid "If you use the WooCommerce plugin, don't miss the <a href=\"#documentation-and-resources\">Documentation and Resources section bellow</a> for additional WooCommerce integration notes."
-msgstr "Si vous utilisez l'extension WooCommerce, ne manquez pas la <a href=\"#documentation-and-resources\">section ci-dessous Documentation et ressources</a> pour des notes d'intégration supplémentaires pour WooCommerce."
+msgstr "Si vous utilisez l'extension WooCommerce, ne manquez pas la <a href=\"#documentation-and-resources\">section Documentation et ressources ci-dessous</a> pour des notes d'intégration additionnelles pour WooCommerce."
 
 #: gettext/gettext-html-setup.php:24
 msgctxt "html paragraph"
-msgid "If you haven't already done so, create a Facebook Page and Twitter account for your website / business. You can enter all your website / business social account information on the WordPress <em><strong>SSO &gt; Social Pages</strong></em> settings page. The social account URLs are used by WPSSO Core for Open Graph, Schema, and other meta tag values - including the Organization social profiles in Schema JSON-LD markup (which may appear in Google Search results to highlight your website / business social pages)."
-msgstr ""
+msgid "If you haven't already done so, create a Facebook Page and Twitter account for your business / website. You can enter all your business / website social account information in the <em><strong>SSO &gt; Social Pages</strong></em> settings page. The social account URLs are used by WPSSO Core for Open Graph and Schema meta tag values, along with Schema Organization markup in JSON-LD format (which may appear in Google Search results to highlight your business / website social pages)."
+msgstr "Si vous ne l'avez pas déjà fait, créez une page Facebook et un compte Twitter pour votre entreprise / site Web. Vous pouvez saisir toutes les informations relatives au compte social de votre entreprise / site Web dans la page des réglages <em><strong>SSO &gt; Pages sociales</strong></em>. Les URL des comptes sociaux sont utilisées par WPSSO Core pour les valeurs de balise méta Open Graph et de Schéma, ainsi que le balisage d'Organisation de Schéma en format JSON-LD (qui peut apparaître dans les résultats de recherche Google pour mettre en évidence les pages sociales de votre entreprise / site Web)."
 
 #: gettext/gettext-html-setup.php:25
 msgctxt "html paragraph"
@@ -266,42 +266,42 @@ msgstr ""
 #: gettext/gettext-html-setup.php:56
 msgctxt "html list item"
 msgid "<a href=\"https://www.facebook.com/business/learn/set-up-facebook-page\">Setup a Facebook Business Page</a>"
-msgstr ""
+msgstr "<a href=\"https://www.facebook.com/business/learn/set-up-facebook-page\">Configurer une page d'entreprise Facebook</a>"
 
 #: gettext/gettext-html-setup.php:57
 msgctxt "html list item"
 msgid "<a href=\"https://business.twitter.com/en/basics/create-a-twitter-business-profile.html\">Create a Twitter Business Profile</a>"
-msgstr ""
+msgstr "<a href=\"https://business.twitter.com/en/basics/create-a-twitter-business-profile.html\">Créer un profil d'entreprise Twitter</a>"
 
 #: gettext/gettext-html-setup.php:58
 msgctxt "html list item"
 msgid "<a href=\"https://business.google.com/create\">Add your Business to Google</a>"
-msgstr ""
+msgstr "<a href=\"https://business.google.com/create\">Ajoutez votre entreprise à Google</a>"
 
 #: gettext/gettext-html-setup.php:59
 msgctxt "html list item"
 msgid "<a href=\"https://www.pinterest.com/business/create/\">Create a Pinterest Business Account</a>"
-msgstr ""
+msgstr "<a href=\"https://www.pinterest.com/business/create/\">Créer un compte d'entreprise Pinterest</a>"
 
 #: gettext/gettext-html-setup.php:60
 msgctxt "html list item"
 msgid "<a href=\"https://developers.facebook.com/tools/debug/\">Facebook Sharing Debugger</a>"
-msgstr ""
+msgstr "<a href=\"https://developers.facebook.com/tools/debug/\">Débogueur de partage Facebook</a>"
 
 #: gettext/gettext-html-setup.php:61
 msgctxt "html list item"
 msgid "<a href=\"https://business.facebook.com/ads/microdata/debug\">Facebook Microdata Debug Tool</a>"
-msgstr ""
+msgstr "<a href=\"https://business.facebook.com/ads/microdata/debug\">Outil de débogage des microdonnées Facebook</a>"
 
 #: gettext/gettext-html-setup.php:62
 msgctxt "html list item"
 msgid "<a href=\"https://search.google.com/test/rich-results\">Google Rich Results Test</a>"
-msgstr ""
+msgstr "<a href=\"https://search.google.com/test/rich-results\">Test de résultats riches Google</a>"
 
 #: gettext/gettext-html-setup.php:63
 msgctxt "html list item"
 msgid "<a href=\"https://search.google.com/structured-data/testing-tool/u/0/\">Google Structured Data Test Tool</a> &mdash; although deprecated, this tool provides additional validation for Schema types beyond the limited <a href=\"https://developers.google.com/search/docs/guides/search-gallery\">selection of Google Rich Result types</a>."
-msgstr ""
+msgstr "<a href=\"https://search.google.com/structured-data/testing-tool/u/0/\">Outil de test des données structurées de Google</a> &mdash; bien que obsolète, cet outil fournit une validation supplémentaire pour les types de Schémas au-delà de la <a href=\"https://developers.google.com/search/docs/guides/search-gallery\">sélection limitée de types Google Rich Results</a>."
 
 #: gettext/gettext-html-setup.php:64
 msgctxt "html list item"
@@ -311,12 +311,12 @@ msgstr ""
 #: gettext/gettext-html-setup.php:65
 msgctxt "html list item"
 msgid "<a href=\"https://developers.pinterest.com/tools/url-debugger/\">Pinterest Rich Pins Validator</a>"
-msgstr ""
+msgstr "<a href=\"https://developers.pinterest.com/tools/url-debugger/\">Validateur Pinterest Rich Pins</a>"
 
 #: gettext/gettext-html-setup.php:66
 msgctxt "html list item"
 msgid "<a href=\"https://cards-dev.twitter.com/validator\">Twitter Card Validator</a>"
-msgstr ""
+msgstr "<a href=\"https://cards-dev.twitter.com/validator\">Vérificateur de carte Twitter</a>"
 
 #: gettext/gettext-html-setup.php:67
 msgctxt "html list item"
@@ -325,8 +325,8 @@ msgstr ""
 
 #: gettext/gettext-html-setup.php:68
 msgctxt "html list item"
-msgid "<a href=\"https://developers.google.com/speed/pagespeed/insights/\">Google PageSpeed Insights</a> &mdash; recommended for general site / webpage health check (results influence SEO ranking)."
-msgstr ""
+msgid "<a href=\"https://developers.google.com/speed/pagespeed/insights/\">Google PageSpeed Insights</a> &mdash; recommended for general site and webpage health checks (results influence SEO ranking)."
+msgstr "<a href=\"https://developers.google.com/speed/pagespeed/insights/\">Google PageSpeed Insights</a> &mdash; recommandé pour les vérifications générales de l'état du site et des pages Web (les résultats influencent le classement SEO)."
 
 #: gettext/gettext-html-setup.php:69
 msgctxt "html list item"
@@ -335,12 +335,12 @@ msgstr ""
 
 #: gettext/gettext-html-setup.php:70
 msgctxt "html list item"
-msgid "<a href=\"https://www.webpagetest.org/\">Webpage Performance Test with Waterfall</a> &mdash; recommended to check and/or diagnose basic performance issues."
+msgid "<a href=\"https://www.webpagetest.org/\">Webpage Performance Test with Waterfall</a> &mdash; recommended to check and diagnose basic performance issues."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:71
 msgctxt "html list item"
-msgid "<a href=\"https://www.ssllabs.com/ssltest/\">SSL Server Test by SSL Labs</a> &mdash; recommended check for any site using https."
+msgid "<a href=\"https://www.ssllabs.com/ssltest/\">SSL Server Test by SSL Labs</a> &mdash; recommended test for any site using https."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:72
