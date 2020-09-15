@@ -131,7 +131,7 @@ Optionally activate free complementary add-ons for more non-standard features:
 * [WPSSO Schema Breadcrumbs Markup](https://wordpress.org/plugins/wpsso-breadcrumbs/) to add Breadcrumbs markup for Google.
 * [WPSSO Schema JSON-LD Markup](https://wordpress.org/plugins/wpsso-schema-json-ld/) to provide Google with Schema markup in its preferred format.
 * [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata/) to strip incorrect markup from templates.
-* [WPSSO Tune Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors/) for better looking WordPress thumbnails.
+* [WPSSO Tune WP Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors/) for better looking WordPress thumbnails.
 * [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale/) to switch languages quickly and easily.
 
 <h3>WPSSO Core Premium Features</h3>
@@ -309,7 +309,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.5.0-b.2 (2020/09/15)**
+**Version 8.5.0-rc.1 (2020/09/15)**
 
 * **New Features**
 	* None.
@@ -497,7 +497,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.5.0-b.2 =
+= 8.5.0-rc.1 =
 
 (2020/09/15) Added translation support for the SSO &gt; Setup Guide page. Fixed an incorrect "The value of option must be numeric" error message.
 
