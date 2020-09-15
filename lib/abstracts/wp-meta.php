@@ -1087,10 +1087,12 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 						case 'robots_max_snippet':
 						case 'robots_max_video_preview':
 
-							continue;
-					}
+							break;
 
-					unset( $md_opts[ $md_key ] );
+						default:
+					
+							unset( $md_opts[ $md_key ] );
+					}
 				}
 			}
 
