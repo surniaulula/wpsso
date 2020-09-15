@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 8.5.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-09-14 12:35-0700\n"
-"PO-Revision-Date: 2020-09-14 15:12-0700\n"
+"POT-Creation-Date: 2020-09-14 17:00-0700\n"
+"PO-Revision-Date: 2020-09-14 17:02-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -170,7 +170,7 @@ msgstr ""
 
 #: gettext/gettext-html-setup.php:37
 msgctxt "html paragraph"
-msgid "<strong>WordPress does not upscale / enlarge images</strong>. WordPress can only create smaller images from larger full size originals. Upscaled images do not look as sharp or clear, and if enlarged too much, will look fuzzy and unappealing - not something you want to promote on social and search sites. WPSSO Core Premium includes an optional module that allows upscaling of WordPress Media Library images (up to a maximum upscale percentage). For example, a full size image of 100x200px could be upscaled up to 150x300px using a maximum of 50%, but resizing any larger would fail. If you feel strongly that upscaling small images is something you require (instead of uploading larger full size originals), you can enable the <em><strong>SSO &gt; Advanced Settings&gt; Integration &gt; Upscale Media Library Images</strong></em> option."
+msgid "<strong>WordPress does not upscale / enlarge images</strong>. WordPress can only create smaller images from larger full size originals. Upscaled images do not look as sharp or clear, and if enlarged too much, will look fuzzy and unappealing - not something you want to promote on social and search sites. WPSSO Core Premium includes an optional module that allows upscaling of WordPress Media Library images (up to a maximum upscale percentage). For example, a full size image of 100x200px could be upscaled up to 150x300px using a maximum of 50%, but resizing any larger would fail. If you feel strongly that upscaling small images is something you require (instead of uploading larger full size originals), you can enable the <em><strong>SSO &gt; Advanced Settings &gt; Integration &gt; Upscale Media Library Images</strong></em> option."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:38
@@ -200,7 +200,7 @@ msgstr "<strong>Validateurs:</strong>"
 
 #: gettext/gettext-html-setup.php:43
 msgctxt "html paragraph"
-msgid "On most WordPress admin pages you'll find a \"Screen Options\" drop-down tab on the upper right-hand side of the page. You can use these options to include / exclude specific metaboxes and columns from the current page. For example, when viewing the Posts or Pages list you can use the \"Screen Options\" drop-down tab to hide / view the \"Schema\" and \"SSO Image\" columns. You can also enable / disable these columns globally under the <em><strong>SSO &gt; Advanced Settings&gt; Editing Pages &gt; Table Columns</strong></em> tab."
+msgid "On most WordPress admin pages you'll find a \"Screen Options\" drop-down tab on the upper right-hand side of the page. You can use these options to include / exclude specific metaboxes and columns from the current page. For example, when viewing the Posts or Pages list you can use the \"Screen Options\" drop-down tab to hide / view the \"Schema\" and \"SSO Image\" columns. You can also enable / disable these columns globally under the <em><strong>SSO &gt; Advanced Settings &gt; Editing Pages &gt; Table Columns</strong></em> tab."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:44
@@ -225,7 +225,7 @@ msgstr ""
 
 #: gettext/gettext-html-setup.php:48
 msgctxt "html paragraph"
-msgid "BuddyPress is not well integrated with the WordPress core functions, so there are specific <a href=\"https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/\">BuddyPress Integration Notes</a> available to help you overcome some BuddyPress limitations."
+msgid "BuddyPress was not originally created as a WordPress plugin, and consequently BuddyPress is not well integrated with WordPress core features and functions. There are specific <a href=\"https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/\">BuddyPress Integration Notes</a> available to help you with some known BuddyPress integration issues."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:49
@@ -240,138 +240,133 @@ msgstr ""
 
 #: gettext/gettext-html-setup.php:51
 msgctxt "html paragraph"
-msgid "WordPress developers and website designers may want to consider a few additional settings..."
-msgstr ""
+msgid "WordPress developers and website designers may consider a few additional settings:"
+msgstr "Les développeurs WordPress et les concepteurs de sites Web peuvent envisager quelques réglages supplémentaires:"
 
 #: gettext/gettext-html-setup.php:52
 msgctxt "html paragraph"
-msgid "If you know that your theme header templates do not include any social meta tags, and no other plugin is adding social meta tags to your webpages, then you could disable the \"Check for Duplicate Meta Tags\" option under the <em><strong>SSO &gt; Advanced Settings&gt; Integration</strong></em> tab."
-msgstr ""
+msgid "If your theme uses custom fields (ie. post metadata) to manage additional image URLs, video URLs, embedded video HTML, e-commerce product details, etc., you can enter their custom field names under the <em><strong>SSO &gt; Advanced Settings &gt; Editing Pages &gt; Custom Fields (Metadata)</strong></em> tab."
+msgstr "Si votre thème utilise des champs personnalisés (c.à.d., des métadonnées d'article) pour gérer des URL d'image supplémentaires, des URL de vidéo, du HTML de vidéo intégré, des détails sur les produits de commerce électronique, etc., vous pouvez saisir leurs noms de champs personnalisés sous l'onglet <em><strong>SSO &gt; Réglages avancés &gt; Pages d'édition &gt; Champs personnalisés</strong></em>."
 
 #: gettext/gettext-html-setup.php:53
 msgctxt "html paragraph"
-msgid "If your theme uses custom fields to manage additional images, video URLs, embed video HTML, product details, etc., you can enter their custom field names under the <em><strong>SSO &gt; Advanced Settings&gt; Editing Pages &gt; Custom Fields (Metadata)</strong></em> tab."
-msgstr ""
+msgid "WPSSO Core adds a <code>meta name description</code> and <code>meta name robots</code> HTML tag to the webpage by default, unless an SEO plugin is detected (in that case they are disabled automatically). You can enable or disable individual SEO HTML tags under the <em><strong>SSO &gt; Advanced Settings &gt; HTML Tags &gt; SEO / Other</strong></em> tab."
+msgstr "WPSSO Core ajoute une balise HTML <code>meta name description</code> et <code>meta name robots</code> à la page Web par défaut, sauf si un plugin SEO est détecté (dans ce cas, ils sont automatiquement désactivés). Vous pouvez activer ou désactiver des balises HTML SEO individuelles sous l'onglet <em><strong>SSO &gt; Réglages avancés &gt; Balises HTML &gt; SEO / autre</strong></em>."
 
 #: gettext/gettext-html-setup.php:54
 msgctxt "html paragraph"
-msgid "WPSSO Core adds \"meta name description\" and \"meta name robots\" HTML tags to the webpage by default, unless an SEO plugin is detected (in which case they are disabled automatically). You can enable or disable individual SEO HTML tags under the <em><strong>SSO &gt; Advanced Settings&gt; HTML Tags &gt; SEO / Other</strong></em> tab."
-msgstr ""
+msgid "WPSSO Core creates Schema WebSite, Organization, and Person social markup for Google's Knowledge Graph in the front page using JSON-LD. If your theme does not include Schema markup (using JSON-LD or Microdata formats) for your post / page content, you should consider enabling the <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a> to provide complete Schema markup for your content (ie. Schema Article, Place, Product, etc.)."
+msgstr "WPSSO Core crée le balisage de Schéma social WebSite, Organization et Person pour le Knowledge Graph de Google sur la page d'accueil à l'aide de JSON-LD. Si votre thème n'inclut pas un balisage de Schéma (en utilisant les formats JSON-LD ou Microdata) pour le contenu de vos articles / pages, vous devriez envisager d'activer le <a href = \"https://wordpress.org/plugins/wpsso-schema-json -ld/\">l'ajout WPSSO de balisage de Schéma JSON-LD</a> pour fournir un balisage complet de Schéma pour votre contenu (c.à.d., Schéma d'article, place, produit, etc.)."
 
 #: gettext/gettext-html-setup.php:55
-msgctxt "html paragraph"
-msgid "WPSSO Core creates Schema WebSite, Organization, and Person social JSON-LD markup in the front page for Google's Knowledge Graph. If your theme does not include proper Schema markup for your post / page content (aka Microdata markup), you should consider enabling the <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a>, which can provide complete Schema JSON-LD / SEO markup for your content (Schema Article, Place, Product, etc.)."
-msgstr ""
-
-#: gettext/gettext-html-setup.php:56
 msgctxt "html list item"
 msgid "<a href=\"https://www.facebook.com/business/learn/set-up-facebook-page\">Setup a Facebook Business Page</a>"
 msgstr "<a href=\"https://www.facebook.com/business/learn/set-up-facebook-page\">Configurer une page d'entreprise Facebook</a>"
 
-#: gettext/gettext-html-setup.php:57
+#: gettext/gettext-html-setup.php:56
 msgctxt "html list item"
 msgid "<a href=\"https://business.twitter.com/en/basics/create-a-twitter-business-profile.html\">Create a Twitter Business Profile</a>"
 msgstr "<a href=\"https://business.twitter.com/en/basics/create-a-twitter-business-profile.html\">Créer un profil d'entreprise Twitter</a>"
 
-#: gettext/gettext-html-setup.php:58
+#: gettext/gettext-html-setup.php:57
 msgctxt "html list item"
 msgid "<a href=\"https://business.google.com/create\">Add your Business to Google</a>"
 msgstr "<a href=\"https://business.google.com/create\">Ajoutez votre entreprise à Google</a>"
 
-#: gettext/gettext-html-setup.php:59
+#: gettext/gettext-html-setup.php:58
 msgctxt "html list item"
 msgid "<a href=\"https://www.pinterest.com/business/create/\">Create a Pinterest Business Account</a>"
 msgstr "<a href=\"https://www.pinterest.com/business/create/\">Créer un compte d'entreprise Pinterest</a>"
 
-#: gettext/gettext-html-setup.php:60
+#: gettext/gettext-html-setup.php:59
 msgctxt "html list item"
 msgid "<a href=\"https://developers.facebook.com/tools/debug/\">Facebook Sharing Debugger</a>"
 msgstr "<a href=\"https://developers.facebook.com/tools/debug/\">Débogueur de partage Facebook</a>"
 
-#: gettext/gettext-html-setup.php:61
+#: gettext/gettext-html-setup.php:60
 msgctxt "html list item"
 msgid "<a href=\"https://business.facebook.com/ads/microdata/debug\">Facebook Microdata Debug Tool</a>"
 msgstr "<a href=\"https://business.facebook.com/ads/microdata/debug\">Outil de débogage des microdonnées Facebook</a>"
 
-#: gettext/gettext-html-setup.php:62
+#: gettext/gettext-html-setup.php:61
 msgctxt "html list item"
 msgid "<a href=\"https://search.google.com/test/rich-results\">Google Rich Results Test</a>"
 msgstr "<a href=\"https://search.google.com/test/rich-results\">Test de résultats riches Google</a>"
 
-#: gettext/gettext-html-setup.php:63
+#: gettext/gettext-html-setup.php:62
 msgctxt "html list item"
 msgid "<a href=\"https://search.google.com/structured-data/testing-tool/u/0/\">Google Structured Data Test Tool</a> &mdash; although deprecated, this tool provides additional validation for Schema types beyond the limited <a href=\"https://developers.google.com/search/docs/guides/search-gallery\">selection of Google Rich Result types</a>."
 msgstr "<a href=\"https://search.google.com/structured-data/testing-tool/u/0/\">Outil de test des données structurées de Google</a> &mdash; bien que obsolète, cet outil fournit une validation supplémentaire pour les types de Schémas au-delà de la <a href=\"https://developers.google.com/search/docs/guides/search-gallery\">sélection limitée de types Google Rich Results</a>."
 
-#: gettext/gettext-html-setup.php:64
+#: gettext/gettext-html-setup.php:63
 msgctxt "html list item"
 msgid "<a href=\"https://www.linkedin.com/post-inspector/inspect/\">LinkedIn Post Inspector</a>"
-msgstr ""
+msgstr "<a href=\"https://www.linkedin.com/post-inspector/inspect/\">Inspecteur LinkedIn de publication</a>"
 
-#: gettext/gettext-html-setup.php:65
+#: gettext/gettext-html-setup.php:64
 msgctxt "html list item"
 msgid "<a href=\"https://developers.pinterest.com/tools/url-debugger/\">Pinterest Rich Pins Validator</a>"
 msgstr "<a href=\"https://developers.pinterest.com/tools/url-debugger/\">Validateur Pinterest Rich Pins</a>"
 
-#: gettext/gettext-html-setup.php:66
+#: gettext/gettext-html-setup.php:65
 msgctxt "html list item"
 msgid "<a href=\"https://cards-dev.twitter.com/validator\">Twitter Card Validator</a>"
 msgstr "<a href=\"https://cards-dev.twitter.com/validator\">Vérificateur de carte Twitter</a>"
 
-#: gettext/gettext-html-setup.php:67
+#: gettext/gettext-html-setup.php:66
 msgctxt "html list item"
 msgid "<a href=\"https://validator.w3.org/\">W3C Markup Validation Service</a> &mdash; recommended to check your theme templates for HTML markup issues."
 msgstr "<a href=\"https://validator.w3.org/\">Service de validation de balisage W3C</a> &mdash; recommandé de vérifier vos modèles de thème pour des problèmes de balisage HTML."
 
-#: gettext/gettext-html-setup.php:68
+#: gettext/gettext-html-setup.php:67
 msgctxt "html list item"
 msgid "<a href=\"https://developers.google.com/speed/pagespeed/insights/\">Google PageSpeed Insights</a> &mdash; recommended for general site and webpage health checks (results influence SEO ranking)."
 msgstr "<a href=\"https://developers.google.com/speed/pagespeed/insights/\">Google PageSpeed Insights</a> &mdash; recommandé pour les vérifications générales de l'état du site et des pages Web (les résultats influencent le classement SEO)."
 
-#: gettext/gettext-html-setup.php:69
+#: gettext/gettext-html-setup.php:68
 msgctxt "html list item"
 msgid "<a href=\"https://support.google.com/webmasters/answer/7451184\">Google's Search Engine Optimization (SEO) Starter Guide</a> &mdash; essential reading to understand Google SEO ranking factors."
 msgstr "<a href=\"https://support.google.com/webmasters/answer/7451184?hl=fr\">Bien débuter en référencement naturel (SEO)</a> &mdash; lecture essentielle pour comprendre les facteurs de classement SEO de Google."
 
-#: gettext/gettext-html-setup.php:70
+#: gettext/gettext-html-setup.php:69
 msgctxt "html list item"
 msgid "<a href=\"https://www.webpagetest.org/\">Webpage Performance Test with Waterfall</a> &mdash; recommended to check and diagnose basic performance issues."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:71
+#: gettext/gettext-html-setup.php:70
 msgctxt "html list item"
 msgid "<a href=\"https://www.ssllabs.com/ssltest/\">SSL Server Test by SSL Labs</a> &mdash; recommended test for any site using https."
-msgstr ""
+msgstr "<a href=\"https://www.ssllabs.com/ssltest/\">Test de serveur SSL par SSL Labs</a> &mdash; test recommandé pour tout site utilisant https."
 
-#: gettext/gettext-html-setup.php:72
+#: gettext/gettext-html-setup.php:71
 msgctxt "html list item"
 msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-google-structured-data-hatom-errors/\">How do I fix Google Structured Data &gt; hatom errors?</a>"
 msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-google-structured-data-hatom-errors/\">Comment corriger les erreurs de données structurées Google &gt; hatom?</a>"
 
-#: gettext/gettext-html-setup.php:73
+#: gettext/gettext-html-setup.php:72
 msgctxt "html list item"
 msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/\">How does WPSSO Core find / detect / select images?</a>"
 msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/\">Comment WPSSO Core trouve / détecte / sélectionne les images?</a>"
 
-#: gettext/gettext-html-setup.php:74
+#: gettext/gettext-html-setup.php:73
 msgctxt "html list item"
 msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-videos/\">How does WPSSO Core find / detect / select videos?</a>"
 msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-videos/\">Comment WPSSO Core trouve / détecte / sélectionne les videos?</a>"
 
-#: gettext/gettext-html-setup.php:75
+#: gettext/gettext-html-setup.php:74
 msgctxt "html list item"
 msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-elements-missing-misaligned-different/\">Why are some HTML elements missing / misaligned / different?</a>"
 msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-elements-missing-misaligned-different/\">Pourquoi certains éléments HTML sont-ils manquants / mal alignés / différents?</a>"
 
+#: gettext/gettext-html-setup.php:75
+msgctxt "html list item"
+msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/\">Why does Facebook show the wrong image or text?</a>"
+msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/\">Pourquoi Facebook affiche-t-il la mauvaise image ou le mauvais texte?</a>"
+
 #: gettext/gettext-html-setup.php:76
 msgctxt "html list item"
-msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/\">Why does Facebook show the wrong image / text?</a>"
-msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/\">Pourquoi Facebook affiche-t-il la mauvaise image / texte?</a>"
-
-#: gettext/gettext-html-setup.php:77
-msgctxt "html list item"
 msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/\">Why shouldn't I upload small images to the Media library?</a>"
-msgstr ""
+msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/\">Pourquoi ne devrais-je pas télécharger de petites images dans la Médiathèque?</a>"
 
 #: gettext/gettext-lib-com.php:6 gettext/gettext-lib-com.php:30
 #: gettext/gettext-lib-com.php:37 lib/com/bfo.php:266 lib/com/cache.php:94
@@ -3237,7 +3232,7 @@ msgstr "Les réglages réseau ont été sauvegardés."
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr "La validation du jeton nonce pour l'action %1$s \"%2$s\" a échoué."
 
-#: lib/admin.php:1144 lib/options.php:1216
+#: lib/admin.php:1144 lib/options.php:1224
 msgid "A background task will begin shortly to clear all caches."
 msgstr "Une tâche en arrière-plan va commencer sous peu pour vider tous les caches."
 
@@ -3595,7 +3590,7 @@ msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr "URL logo de organisation"
 
-#: lib/admin.php:2986 lib/options.php:1281
+#: lib/admin.php:2986 lib/options.php:1289
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr "URL bannière d'organisation"
@@ -6479,116 +6474,116 @@ msgctxt "option label"
 msgid "Open Graph (Facebook and oEmbed)"
 msgstr "Open Graph (Facebook et oEmbed)"
 
-#: lib/options.php:585
+#: lib/options.php:593
 msgid "WordPress could not find an entry for %s in the options table."
 msgstr "WordPress n'a pas pu trouver une entrée pour %s dans sa table d'options."
 
-#: lib/options.php:589
+#: lib/options.php:597
 msgid "WordPress returned a non-array value when reading %s from the options table."
 msgstr "WordPress a retourné une valeur non-tableau lors de la lecture de %s dans sa table d'options."
 
-#: lib/options.php:593
+#: lib/options.php:601
 msgid "WordPress returned an empty array when reading %s from the options table."
 msgstr "WordPress a retourné un tableau vide lors de la lecture de %s dans sa table d'options."
 
-#: lib/options.php:597
+#: lib/options.php:605
 msgid "WordPress returned an unknown condition when reading %s from the options table."
 msgstr "WordPress a retourné un état inconnu lors de la lecture de %s dans sa table options."
 
-#: lib/options.php:616
+#: lib/options.php:624
 msgid "The plugin settings have been returned to their default values &mdash; <a href=\"%s\">please review and save the new settings</a>."
 msgstr "Les réglages de l'extension ont été retournée à leurs valeurs par défaut, <a href=\"%s\">s'il vous plaît examiner et sauvegarder les nouveaux réglages</a>."
 
 #. translators: %s is the option key name.
-#: lib/options.php:719
+#: lib/options.php:727
 msgid "Non-standard value found for the \"%s\" option - resetting the option to its default value."
 msgstr "Valeur non standard trouvée pour l'option \"%s\" - réinitialisation de l'option à sa valeur par défaut."
 
-#: lib/options.php:1017
+#: lib/options.php:1025
 msgid "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of %5$s:1, which not equal to the required image ratio of %6$s:1."
 msgstr "Les clefs d'option \"%1$s\" (%2$d) et \"%3$s\" (%4$d) ont un format d'image égal à %5$s:1, qui n'est pas égal ratio d'image requis de %6$s:1."
 
-#: lib/options.php:1026
+#: lib/options.php:1034
 msgid "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of %5$s:1, which is equal to / or greater than the maximum image ratio of %6$s:1."
 msgstr "Les clefs d'option \"%1$s\" (%2$d) et \"%3$s\" (%4$d) ont un format d'image égal à %5$s:1, qui est égal ou supérieur au maximum ratio d'image de %6$s:1."
 
-#: lib/options.php:1034
+#: lib/options.php:1042
 msgid "These options have been reset to their default values."
 msgstr "Ces options ont été réinitialisées à leurs valeurs par défaut."
 
-#: lib/options.php:1088
+#: lib/options.php:1096
 msgid "The Facebook App ID must be numeric and 32 characters or less in length &mdash; the value of \"%s\" is not valid."
 msgstr "L'ID d'application Facebook doit être numérique et 32 ​​caractères ou moins de longueur - la valeur \"%s\" n'est pas valide."
 
-#: lib/options.php:1215
+#: lib/options.php:1223
 msgid "Plugin settings have been upgraded and saved."
 msgstr "Les réglages ont été mis à jour et sauvegardés."
 
-#: lib/options.php:1310
+#: lib/options.php:1318
 msgid "The %s image dimensions cannot be determined."
 msgstr "Les dimensions de l'image %s ne peuvent pas être déterminées."
 
-#: lib/options.php:1313
+#: lib/options.php:1321
 msgid "Please make sure this site can access %s using the PHP getimagesize() function."
 msgstr "Assurez-vous que ce site peut accéder à %s en utilisant la fonction PHP getimagesize()."
 
-#: lib/options.php:1318
+#: lib/options.php:1326
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr "Les dimensions de l'image %1$s sont %2$s et doivent être exactement %3$s."
 
-#: lib/options.php:1321
+#: lib/options.php:1329
 msgid "Please correct the %s banner image."
 msgstr "Veuillez corriger l'image bannière %s."
 
-#: lib/options.php:1355
+#: lib/options.php:1363
 msgid "The value of option \"%s\" must be alpha-numeric - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être alphanumérique - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1356
+#: lib/options.php:1364
 msgid "The value of option \"%s\" must be blank or numeric - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être vide ou numérique - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1357
+#: lib/options.php:1365
 msgid "The value of option \"%s\" must be a CSS color code - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être un code de couleur CSS - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1358
+#: lib/options.php:1366
 msgid "The value of option \"%s\" must be a comma-delimited list of URL(s) - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être une liste d'URLs délimitée par des virgules - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1359
+#: lib/options.php:1367
 msgid "The value of option \"%s\" must be a yyyy-mm-dd date - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être une date yyyy-mm-dd - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1360
+#: lib/options.php:1368
 msgid "The value of option \"%s\" must be HTML code - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être du code HTML - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1361
+#: lib/options.php:1369
 msgid "The value of option \"%s\" must be an image ID - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être un ID d'image - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1362
+#: lib/options.php:1370
 msgid "The value of option \"%s\" must be a valid image URL - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être une URL d'image valide - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1363
+#: lib/options.php:1371
 msgid "The value of option \"%s\" cannot be an empty string - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" ne peut pas être un chaine de caractère vide - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1364
+#: lib/options.php:1372
 msgid "The value of option \"%s\" must be numeric - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être numérique - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1365
+#: lib/options.php:1373
 msgid "The value of option \"%1$s\" must be equal to or greather than %2$s - resetting this option to its default value."
 msgstr "La valeur de l'option \"%1$s\" doit être égal ou supérieur à %2$s - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1366
+#: lib/options.php:1374
 msgid "The value of option \"%s\" must be a hh:mm time - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être une heure hh:mm - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1367
+#: lib/options.php:1375
 msgid "The value of option \"%s\" must be a valid URL - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être une URL valide - l'option est remise à sa valeur par défaut."
 

@@ -109,7 +109,7 @@
 
 <h4>Upscale / Enlarge Images?</h4>
 
-<p><strong>WordPress does not upscale / enlarge images</strong>. WordPress can only create smaller images from larger full size originals. Upscaled images do not look as sharp or clear, and if enlarged too much, will look fuzzy and unappealing - not something you want to promote on social and search sites. WPSSO Core Premium includes an optional module that allows upscaling of WordPress Media Library images (up to a maximum upscale percentage). For example, a full size image of 100x200px could be upscaled up to 150x300px using a maximum of 50%, but resizing any larger would fail. If you feel strongly that upscaling small images is something you require (instead of uploading larger full size originals), you can enable the <em><strong>SSO &gt; Advanced Settings&gt; Integration &gt; Upscale Media Library Images</strong></em> option.</p>
+<p><strong>WordPress does not upscale / enlarge images</strong>. WordPress can only create smaller images from larger full size originals. Upscaled images do not look as sharp or clear, and if enlarged too much, will look fuzzy and unappealing - not something you want to promote on social and search sites. WPSSO Core Premium includes an optional module that allows upscaling of WordPress Media Library images (up to a maximum upscale percentage). For example, a full size image of 100x200px could be upscaled up to 150x300px using a maximum of 50%, but resizing any larger would fail. If you feel strongly that upscaling small images is something you require (instead of uploading larger full size originals), you can enable the <em><strong>SSO &gt; Advanced Settings &gt; Integration &gt; Upscale Media Library Images</strong></em> option.</p>
 
 </dd>
 
@@ -157,7 +157,7 @@
 
 <dd>
 
-<p>On most WordPress admin pages you'll find a "Screen Options" drop-down tab on the upper right-hand side of the page. You can use these options to include / exclude specific metaboxes and columns from the current page. For example, when viewing the Posts or Pages list you can use the "Screen Options" drop-down tab to hide / view the "Schema" and "SSO Image" columns. You can also enable / disable these columns globally under the <em><strong>SSO &gt; Advanced Settings&gt; Editing Pages &gt; Table Columns</strong></em> tab.</p>
+<p>On most WordPress admin pages you'll find a "Screen Options" drop-down tab on the upper right-hand side of the page. You can use these options to include / exclude specific metaboxes and columns from the current page. For example, when viewing the Posts or Pages list you can use the "Screen Options" drop-down tab to hide / view the "Schema" and "SSO Image" columns. You can also enable / disable these columns globally under the <em><strong>SSO &gt; Advanced Settings &gt; Editing Pages &gt; Table Columns</strong></em> tab.</p>
 
 <p>When editing a Post, Page, category, tag, etc., you'll find a Document SSO metabox below the content area where you can customize default texts, images and videos. The Document SSO metabox shows a different set of options based on the content type (aka Schema type or Open Graph type) selected, allowing you to customize the details of articles, events, e-Commerce products, recipes, reviews, and more. The "Preview" tab shows how this webpage might look when shared on Facebook, the "Head Markup" tab shows a complete list of meta tags and markup created by the WPSSO Core plugin and its add-ons, and the "Validate" tab allows you to submit the current webpage URL to a number of test and validation tools (mentioned above).</p>
 
@@ -188,7 +188,7 @@
 
 <h4>BuddyPress Integration</h4>
 
-<p>BuddyPress is not well integrated with the WordPress core functions, so there are specific <a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/">BuddyPress Integration Notes</a> available to help you overcome some BuddyPress limitations.</p>
+<p>BuddyPress was not originally created as a WordPress plugin, and consequently BuddyPress is not well integrated with WordPress core features and functions. There are specific <a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/">BuddyPress Integration Notes</a> available to help you with some known BuddyPress integration issues.</p>
 
 <img src="https://surniaulula.github.io/wpsso/images/wpsso-and-woocommerce-text.png" class="alignright">
 
@@ -204,21 +204,18 @@
 
 <dd>
 
-<p>WordPress developers and website designers may want to consider a few additional settings...</p>
+<p>WordPress developers and website designers may consider a few additional settings:</p>
 
 <ul>
 
-<!-- Check for Duplicate Meta Tags -->
-<li><p>If you know that your theme header templates do not include any social meta tags, and no other plugin is adding social meta tags to your webpages, then you could disable the "Check for Duplicate Meta Tags" option under the <em><strong>SSO &gt; Advanced Settings&gt; Integration</strong></em> tab.</p></li>
-
 <!-- Custom Field Names -->
-<li><p>If your theme uses custom fields to manage additional images, video URLs, embed video HTML, product details, etc., you can enter their custom field names under the <em><strong>SSO &gt; Advanced Settings&gt; Editing Pages &gt; Custom Fields (Metadata)</strong></em> tab.</p></li>
+<li><p>If your theme uses custom fields (ie. post metadata) to manage additional image URLs, video URLs, embedded video HTML, e-commerce product details, etc., you can enter their custom field names under the <em><strong>SSO &gt; Advanced Settings &gt; Editing Pages &gt; Custom Fields (Metadata)</strong></em> tab.</p></li>
 
 <!-- SEO plugins and meta tags -->
-<li><p>WPSSO Core adds "meta name description" and "meta name robots" HTML tags to the webpage by default, unless an SEO plugin is detected (in which case they are disabled automatically). You can enable or disable individual SEO HTML tags under the <em><strong>SSO &gt; Advanced Settings&gt; HTML Tags &gt; SEO / Other</strong></em> tab.</p></li>
+<li><p>WPSSO Core adds a <code>meta name description</code> and <code>meta name robots</code> HTML tag to the webpage by default, unless an SEO plugin is detected (in that case they are disabled automatically). You can enable or disable individual SEO HTML tags under the <em><strong>SSO &gt; Advanced Settings &gt; HTML Tags &gt; SEO / Other</strong></em> tab.</p></li>
 
 <!-- WPSSO Schema JSON-LD Markup -->
-<li><p>WPSSO Core creates Schema WebSite, Organization, and Person social JSON-LD markup in the front page for Google's Knowledge Graph. If your theme does not include proper Schema markup for your post / page content (aka Microdata markup), you should consider enabling the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup add-on</a>, which can provide complete Schema JSON-LD / SEO markup for your content (Schema Article, Place, Product, etc.).</p></li>
+<li><p>WPSSO Core creates Schema WebSite, Organization, and Person social markup for Google's Knowledge Graph in the front page using JSON-LD. If your theme does not include Schema markup (using JSON-LD or Microdata formats) for your post / page content, you should consider enabling the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup add-on</a> to provide complete Schema markup for your content (ie. Schema Article, Place, Product, etc.).</p></li>
 
 </ul>
 

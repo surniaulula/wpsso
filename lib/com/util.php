@@ -2347,7 +2347,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				return;
 
-			} elseif ( false !== filter_var( $mixed, FILTER_VALIDATE_URL ) ) {	// URL
+			} elseif ( false !== filter_var( $mixed, FILTER_VALIDATE_URL ) ) {	// URL.
 
 				return;
 			}
