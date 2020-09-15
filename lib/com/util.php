@@ -2352,6 +2352,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return;
 			}
 
+			$mixed = str_replace( '\'', '\\\'', $mixed );
+
 			echo '_x( \'' . $mixed . '\', \'' . $context . '\', \'' . $text_domain . '\' );' . "\n";
 		}
 
