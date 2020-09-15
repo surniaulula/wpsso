@@ -88,8 +88,8 @@ _x( 'WPSSO Ridiculously Responsive Social Sharing Buttons', 'plugin name', 'wpss
 _x( 'Ridiculously Responsive (SVG) Social Sharing Buttons for your Content, Excerpts, CSS Sidebar, Widget, Shortcode, Templates, and Editor.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Strip Schema Microdata', 'plugin name', 'wpsso' );
 _x( 'Remove Outdated / Incorrect Microdata from Theme Templates for Better Google Rich Results with Schema JSON-LD Markup.', 'plugin description', 'wpsso' );
-_x( 'WPSSO Tune Image Editors', 'plugin name', 'wpsso' );
-_x( 'Improves the Look of Thumbnails and Resized Images for Better Click-Through-Rates on Social and Search Sites.', 'plugin description', 'wpsso' );
+_x( 'WPSSO Tune WP Image Editors', 'plugin name', 'wpsso' );
+_x( 'Improves the Appearance of Images for Better Click-Through-Rates from Social and Search Sites.', 'plugin description', 'wpsso' );
 _x( 'WPSSO User Locale Selector', 'plugin name', 'wpsso' );
 _x( 'Quick and Easy Locale / Language / Region Selector for the WordPress Admin Toolbar.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Update Manager', 'plugin name', 'wpsso' );

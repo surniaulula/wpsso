@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.5.0-b.2',	// Plugin version.
+					'version'     => '8.5.0-rc.1',	// Plugin version.
 					'opt_version' => '761',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -907,8 +907,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'wpssotie' => array(			// Plugin acronym.
 					'short'       => 'WPSSO TIE',	// Short plugin name.
-					'name'        => 'WPSSO Tune Image Editors',
-					'desc'        => 'Improves the Look of Thumbnails and Resized Images for Better Click-Through-Rates on Social and Search Sites.',
+					'name'        => 'WPSSO Tune WP Image Editors',
+					'desc'        => 'Improves the Appearance of Images for Better Click-Through-Rates from Social and Search Sites.',
 					'slug'        => 'wpsso-tune-image-editors',
 					'base'        => 'wpsso-tune-image-editors/wpsso-tune-image-editors.php',
 					'update_auth' => '',		// No premium version.

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 8.5.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-09-15 10:45-0700\n"
-"PO-Revision-Date: 2020-09-15 10:45-0700\n"
+"POT-Creation-Date: 2020-09-15 11:38-0700\n"
+"PO-Revision-Date: 2020-09-15 11:39-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -160,17 +160,17 @@ msgstr "<strong>Vous ne savez pas si vos modèles de thème fournissent déjà u
 
 #: gettext/gettext-html-setup.php:35
 msgctxt "html paragraph"
-msgid "<strong>The difference between cropped and uncropped image dimensions is important to understand</strong>. When resizing and cropping an image, it will be resized so that both sides meet or exceed the image dimensions required, and the excess width or height is trimmed. The resulting image will match the required dimensions exactly (having sacrificed parts of the image). When resizing without cropping, the original aspect ratio is preservedm and no parts of the image are sacrificed. The image will be resized so both the width and height fit within the designed size - so only oneside of the image has to match the required size."
-msgstr ""
+msgid "<strong>The difference between a cropped and uncropped image size is important to understand.</strong> When resizing and cropping an image, it will be resized so that both sides meet or exceed the image dimensions requested, and the excess width or height will be trimmed. The resulting image will match the required dimensions <em>exactly</em> (having sacrificed parts of the image). When resizing without cropping, the original aspect ratio is preserved and no parts of the image are sacrificed. The image will be resized so that both the width and height will fit <em>within</em> the requested width and height - meaning that only one side of the image will match the requested dimensions."
+msgstr "<strong>Il est important de comprendre la différence entre une taille d'image recadrée et non recadrée.</strong> Lors du redimensionnement et du recadrage d'une image, celle-ci sera redimensionnée de sorte que les deux côtés atteignent ou dépassent les dimensions de l'image demandées, et la largeur ou la hauteur excédentaire seront coupées. L'image résultante correspondra aux dimensions requises <em>exactement</em> (après avoir sacrifié des parties de l'image). Lors du redimensionnement sans recadrage, le rapport hauteur / largeur d'origine est conservé et aucune partie de l'image n'est sacrifiée. L'image sera redimensionnée de manière à ce que la largeur et la hauteur correspondent <em>dans</em> la largeur et la hauteur demandées - ce qui signifie qu'un seul côté de l'image correspondra aux dimensions demandées."
 
 #: gettext/gettext-html-setup.php:36
 msgctxt "html paragraph"
-msgid "Most social and search sites automatically crop images to fit within a specific size container - for example, Facebook shows link share images in a 600x315px container. By offering pre-cropped images of the correct size, site owners can control how images are cropped instead of letting social and search sites crop images automatically (and sometimes incorrectly)."
-msgstr ""
+msgid "Most social and search sites automatically crop images to fit within a specific size container - for example, Facebook shows link share images within a 600x315px container. By offering pre-cropped images of the correct dimension, site owners can control how images are cropped, instead of letting social and search sites crop images automatically (and sometimes incorrectly)."
+msgstr "La plupart des sites sociaux et de recherche recadrent automatiquement les images pour les adapter à un conteneur de taille spécifique - par exemple, Facebook affiche des images de partage de liens dans un conteneur de 600x315px. En proposant des images pré-recadrées de la bonne dimension, les propriétaires de sites peuvent contrôler la façon dont les images sont recadrées, au lieu de laisser les sites sociaux et de recherche recadrer les images automatiquement (et parfois de manière incorrecte)."
 
 #: gettext/gettext-html-setup.php:37
 msgctxt "html paragraph"
-msgid "<strong>WordPress does not upscale / enlarge images</strong>. WordPress can only create smaller images from larger full size originals. Upscaled images do not look as sharp or clear, and if enlarged too much, will look fuzzy and unappealing - not something you want to promote on social and search sites. WPSSO Core Premium includes an optional module that allows upscaling of WordPress Media Library images (up to a maximum upscale percentage). For example, a full size image of 100x200px could be upscaled up to 150x300px using a maximum of 50%, but resizing any larger would fail. If you feel strongly that upscaling small images is something you require (instead of uploading larger full size originals), you can enable the <em><strong>SSO &gt; Advanced Settings &gt; Integration &gt; Upscale Media Library Images</strong></em> option."
+msgid "<strong>WordPress does not upscale / enlarge images.</strong> WordPress can only create smaller images from larger full size originals. Upscaled images do not look as sharp or clear, and if enlarged too much, will look fuzzy and unappealing - not something you want to promote on social and search sites. WPSSO Core Premium includes an optional module that allows upscaling of WordPress Media Library images (up to a maximum upscale percentage). For example, a full size image of 100x200px could be upscaled up to 150x300px using a maximum of 50%, but resizing any larger would fail. If you feel strongly that upscaling small images is something you require (instead of uploading larger full size originals), you can enable the <em><strong>SSO &gt; Advanced Settings &gt; Integration &gt; Upscale Media Library Images</strong></em> option."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:38
@@ -929,13 +929,13 @@ msgstr "Supprimez les microdonnées obsolètes / incorrectes des modèles de th�
 
 #: gettext/gettext-lib-config.php:91
 msgctxt "plugin name"
-msgid "WPSSO Tune Image Editors"
-msgstr "WPSSO ajuster les éditeurs d'images"
+msgid "WPSSO Tune WP Image Editors"
+msgstr "WPSSO ajuster les éditeurs d'image WP"
 
 #: gettext/gettext-lib-config.php:92
 msgctxt "plugin description"
-msgid "Improves the Look of Thumbnails and Resized Images for Better Click-Through-Rates on Social and Search Sites."
-msgstr "Améliore l'apparence des images redimensionnées pour de meilleurs taux de clics sur les sites sociaux et de recherche."
+msgid "Improves the Appearance of Images for Better Click-Through-Rates from Social and Search Sites."
+msgstr "Améliore l'apparence des images pour de meilleurs taux de clics des sites sociaux et de recherche."
 
 #: gettext/gettext-lib-config.php:93
 msgctxt "plugin name"
@@ -960,7 +960,7 @@ msgstr "Gestionnaire de mise à jour pour l'extension WPSSO Core Premium et ses 
 #: gettext/gettext-lib-config.php:97
 msgctxt "plugin name"
 msgid "WPSSO Product Metadata for WooCommerce"
-msgstr "WPSSO métadonnées de produit pour WooCommerce"
+msgstr "WPSSO métadonnées de produit WooCommerce"
 
 #: gettext/gettext-lib-config.php:98
 msgctxt "plugin description"
