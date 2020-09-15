@@ -50,25 +50,10 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 					$metabox_context, $metabox_prio, $callback_args );
 
 			/**
-			 * Document Types metabox.
-			 */
-			$metabox_id      = 'types';
-			$metabox_title   = _x( 'Document Types', 'metabox title', 'wpsso' );
-			$metabox_screen  = $this->pagehook;
-			$metabox_context = 'normal';
-			$metabox_prio    = 'default';
-			$callback_args   = array(	// Second argument passed to the callback function / method.
-			);
-
-			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
-				array( $this, 'show_metabox_' . $metabox_id ), $metabox_screen,
-					$metabox_context, $metabox_prio, $callback_args );
-
-			/**
-			 * Editing Pages metabox.
+			 * Editing and Metadata metabox.
 			 */
 			$metabox_id      = 'edit';
-			$metabox_title   = _x( 'Editing Pages', 'metabox title', 'wpsso' );
+			$metabox_title   = _x( 'Editing and Metadata', 'metabox title', 'wpsso' );
 			$metabox_screen  = $this->pagehook;
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
@@ -150,30 +135,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'table_columns' => _x( 'Table Columns', 'metabox tab', 'wpsso' ),
 				'document_meta' => _x( 'Document Meta', 'metabox tab', 'wpsso' ),
 				'product_attrs' => _x( 'Product Attributes', 'metabox tab', 'wpsso' ),
-				'custom_fields' => _x( 'Custom Fields (Metadata)', 'metabox tab', 'wpsso' ),
-			) );
-
-			foreach ( $tabs as $tab_key => $title ) {
-
-				$filter_name = $this->p->lca . '_' . $metabox_id . '_' . $tab_key . '_rows';
-
-				$table_rows[ $tab_key ] = array_merge(
-					$this->get_table_rows( $metabox_id, $tab_key ),
-					(array) apply_filters( $filter_name, array(), $this->form, $network = false )
-				);
-			}
-
-			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
-		}
-
-		public function show_metabox_types() {
-
-			$metabox_id = 'types';
-			$table_rows = array();
-
-			$tabs = apply_filters( $this->p->lca . '_advanced_' . $metabox_id . '_tabs', array(
-				'og_types'     => _x( 'Open Graph Types', 'metabox tab', 'wpsso' ),
-				'schema_types' => _x( 'Schema Types', 'metabox tab', 'wpsso' ),
+				'custom_fields' => _x( 'Custom Fields', 'metabox tab', 'wpsso' ),
 			) );
 
 			foreach ( $tabs as $tab_key => $title ) {
@@ -261,22 +223,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 					break;
 
 				/**
-				 * Document Types metabox.
-				 */
-				case 'types-og_types':
-
-					$this->add_og_types_table_rows( $table_rows, $this->form );
-
-					break;
-
-				case 'types-schema_types':
-
-					$this->add_schema_item_types_table_rows( $table_rows, $this->form );
-
-					break;
-
-				/**
-				 * Editing Pages metabox.
+				 * Editing and Metadata metabox.
 				 */
 				case 'edit-product_attrs':
 

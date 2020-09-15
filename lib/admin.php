@@ -1744,6 +1744,33 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $buttons_html;
 		}
 
+		public function show_metabox_table( $obj, $mb ) {
+
+			if ( isset( $mb[ 'args' ][ 'page_id' ] ) && isset( $mb[ 'args' ][ 'metabox_id' ] )  ) {
+
+				$page_id     = $mb[ 'args' ][ 'page_id' ];
+				$metabox_id  = $mb[ 'args' ][ 'metabox_id' ];
+				$filter_name = $this->p->lca . '_' . $page_id . '_' . $metabox_id . '_rows';
+
+				$table_rows = array_merge(
+					$this->get_table_rows( $page_id, $metabox_id ),
+					(array) apply_filters( $filter_name, array(), $this->form, $network = false )
+				);
+
+				$this->p->util->metabox->do_table( $table_rows, 'metabox-' . $page_id . '-' . $metabox_id );
+
+			} else {
+				
+				$table_rows = array(
+					'<td><p class="status-msg">' .
+					__( 'Missing page ID or metabox ID to create the metabox table.', 'wpsso' ) .
+					'</p></td>'
+				);
+
+				$this->p->util->metabox->do_table( $table_rows );
+			}
+		}
+
 		public function show_metabox_cache_status() {
 
 			$table_cols         = 4;
@@ -2902,7 +2929,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$th_label = _x( 'Open Graph Type by Taxonomy', 'option label', 'wpsso' );
 
 			$table_rows[ $tr_key ] = $form->get_tr_hide( 'basic', $type_keys ) .
-				$form->get_th_html( $th_label, '', $tr_key ) . '<td' . $td_attr . '>' . $type_select . '</td>';
+			$form->get_th_html( $th_label, '', $tr_key ) . '<td' . $td_attr . '>' . $type_select . '</td>';
 
 			unset( $type_select, $type_keys, $taxonomies, $tr_key, $th_label );	// Just in case.
 		}
@@ -3018,17 +3045,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$opt_key = 'schema_type_for_' . $type_name;	// Hard-coded value - no sanitation required.
 
 				$table_rows[ $opt_key ] = $form->get_tr_hide( 'basic', $opt_key ) . 
-					$form->get_th_html( $th_label, '', $opt_key ) . 
-					'<td' . $td_attr . '>' . $form->$se_func( $opt_key, $schema_types, $css_class = 'schema_type', $css_id = '',
-						$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
-							$event_args = array(
-								'json_var'  => 'schema_types',
-								'exp_secs'  => $schema_exp_secs,	// Create and read from a javascript URL.
-								'is_transl' => true,			// No label translation required.
-								'is_sorted' => true,			// No label sorting required.
-							)
-						) .
-					'</td>';
+				$form->get_th_html( $th_label, '', $opt_key ) . 
+				'<td' . $td_attr . '>' . $form->$se_func( $opt_key, $schema_types, $css_class = 'schema_type', $css_id = '',
+					$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
+						$event_args = array(
+							'json_var'  => 'schema_types',
+							'exp_secs'  => $schema_exp_secs,	// Create and read from a javascript URL.
+							'is_transl' => true,			// No label translation required.
+							'is_sorted' => true,			// No label sorting required.
+						)
+					) .
+				'</td>';
 			}
 
 			/**
@@ -3072,8 +3099,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$tr_key   = 'schema_type_for_ptn';
 			$th_label = _x( 'Schema Type by Post Type', 'option label', 'wpsso' );
 
-			$table_rows[ $tr_key ] = '' . 
-				$form->get_th_html( $th_label, '', $tr_key ) . '<td' . $td_attr . '>' . $type_select . '</td>';
+			$table_rows[ $tr_key ] = $form->get_th_html( $th_label, '', $tr_key ) . '<td' . $td_attr . '>' . $type_select . '</td>';
 
 			unset( $type_select, $type_keys, $post_types, $tr_key, $th_label );	// Just in case.
 
@@ -3105,7 +3131,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$th_label = _x( 'Schema Type by Taxonomy', 'option label', 'wpsso' );
 
 			$table_rows[ $tr_key ] = $form->get_tr_hide( 'basic', $type_keys ) .
-				$form->get_th_html( $th_label, '', $tr_key ) . '<td' . $td_attr . '>' . $type_select . '</td>';
+			$form->get_th_html( $th_label, '', $tr_key ) . '<td' . $td_attr . '>' . $type_select . '</td>';
 
 			unset( $type_select, $type_keys, $taxonomies, $tr_key, $th_label );	// Just in case.
 		}

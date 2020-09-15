@@ -306,7 +306,7 @@ div.auto-draft div.sucom-show_basic.sucom-tabset_sso.active {		/* Document SSO m
 	content:"\e809";	/* .icon-edit */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_custom_fields::before {		/* SSO > Advanced Settings > Editing Pages > Custom Fields (Metadata) tab. */
+.sucom-tablink-icon.sucom-tablink-href_custom_fields::before {		/* SSO > Advanced Settings > Editing and Metadata > Custom Fields tab. */
 	content:"\e80c";	/* .icon-key */
 }
 
@@ -314,7 +314,7 @@ div.auto-draft div.sucom-show_basic.sucom-tabset_sso.active {		/* Document SSO m
 	content:"\f2c3";	/* .icon-id-card-o */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_document_meta::before {		/* SSO > Advanced Settings > Editing Pages > Document Meta tab. */
+.sucom-tablink-icon.sucom-tablink-href_document_meta::before {		/* SSO > Advanced Settings > Editing and Metadata > Document Meta tab. */
 	content:"\e809";	/* .icon-edit */
 }
 

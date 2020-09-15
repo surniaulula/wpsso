@@ -47,7 +47,7 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 
 			$this->p->util->add_plugin_actions( $this, array(
 				'form_content_metaboxes_dashboard' => array(
-					'form_content_metaboxes_dashboard' => 1,
+					'form_content_metaboxes_dashboard'     => 1,
 					'form_content_metaboxes_sso_dashboard' => 1,
 				)
 			) );
@@ -70,7 +70,7 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 			echo '<style type="text/css">div#' . $pagehook . ' div#normal-sortables { display:none; height:0; min-height:0; }</style>';
 			echo '<div id="dashboard_col_wrap">' . "\n";
 
-			$max_cols = count( $this->get_side_info_boxes() ) ? 2 : 3;	// Uses local cache.
+			$max_cols = 2;
 
 			foreach ( range( 1, $max_cols ) as $dashboard_col ) {
 
@@ -110,7 +110,7 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 			$metabox_ids[ 'status_std' ]   = sprintf( _x( '%s Features Status', 'metabox title', 'wpsso' ), $dist_std_name );
 			$metabox_ids[ 'status_pro' ]   = sprintf( _x( '%s Features Status', 'metabox title', 'wpsso' ), $dist_pro_name );
 
-			$max_cols = count( $this->get_side_info_boxes() ) ? 2 : 3;	// Uses local cache.
+			$max_cols = 2;
 
 			$dashboard_col = 0;
 

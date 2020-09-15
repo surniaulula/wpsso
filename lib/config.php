@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.5.0-b.1',	// Plugin version.
+					'version'     => '8.5.0-b.2',	// Plugin version.
 					'opt_version' => '761',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -183,16 +183,17 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 						),
 						'submenu' => array(
-							'essential'       => 'Essential Settings',
-							'setup'           => 'Setup Guide',
-							'dashboard'       => 'Dashboard',
-							'general'         => 'General Settings',
-							'advanced'        => 'Advanced Settings',
-							'social-accounts' => 'Social Pages',
-							'image-sizes'     => 'Image Sizes',
-							'addons'          => 'Complementary Add-ons',
-							'licenses'        => 'Premium Licenses',
-							'tools'           => 'Tools and Actions',
+							'essential'      => 'Essential Settings',
+							'setup'          => 'Setup Guide',
+							'dashboard'      => 'Dashboard',
+							'general'        => 'General Settings',
+							'social-pages'   => 'Social Pages',
+							'image-sizes'    => 'Image Sizes',
+							'document-types' => 'Document Types',
+							'advanced'       => 'Advanced Settings',
+							'addons'         => 'Complementary Add-ons',
+							'licenses'       => 'Premium Licenses',
+							'tools'          => 'Tools and Actions',
 						),
 						'users' => array(
 							'add-person' => 'Add Person',
@@ -1700,7 +1701,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_attr_product_target_gender'      => 'Gender',		// Target Gender Attribute Name.
 
 					/**
-					 * Advanced Settings - Custom Fields (Metadata) tab.
+					 * Advanced Settings - Custom Fields tab.
 					 */
 					'plugin_cf_addl_type_urls'             => '',		// Microdata Type URLs Custom Field.
 					'plugin_cf_book_isbn'                  => '',		// Book ISBN Custom Field.

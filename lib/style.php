@@ -324,7 +324,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				#adminmenu ul.wp-submenu div.' . $lca . '-menu-item.menu-item-label {
 					width:100%;
 				}
-				#adminmenu ul.wp-submenu div.' . $lca . '-menu-item.' . $lca . '-essential,
+				#adminmenu ul.wp-submenu div.' . $lca . '-menu-item.' . $lca . '-setup,
 				#adminmenu ul.wp-submenu div.' . $lca . '-menu-item.top-last-submenu-page.with-add-ons {
 					padding-bottom:12px;
 					border-bottom:1px solid;

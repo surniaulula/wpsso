@@ -1334,7 +1334,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						/**
-						 * Custom Fields (Metadata) settings
+						 * Custom Fields settings
 						 */
 						case ( 0 === strpos( $msg_key, 'tooltip-plugin_cf_' ) ? true : false ):
 
@@ -2418,7 +2418,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'info-image-sizes':
+						case 'info-image_dimensions':
 
 							$text = '<blockquote class="top-info">';
 

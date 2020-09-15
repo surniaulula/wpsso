@@ -88,7 +88,7 @@
 
 <h3>Customize Product Attribute Names</h3>
 
-<p>You can customize the default Product Attribute names that WPSSO Core Premium reads from WooCommerce under the <em>SSO &gt; Advanced Settings&gt; Editing Pages &gt; Product Attributes</em> tab. Modifying the default name can be useful if you already have one or more existing WooCommerce Product Attributes with different names &mdash; for example, using the "Colour" Product Attribute name instead of "Color". ;-)</p>
+<p>You can customize the default Product Attribute names that WPSSO Core Premium reads from WooCommerce under the <em>SSO &gt; Advanced Settings&gt; Editing and Metadata &gt; Product Attributes</em> tab. Modifying the default name can be useful if you already have one or more existing WooCommerce Product Attributes with different names &mdash; for example, using the "Colour" Product Attribute name instead of "Color". ;-)</p>
 
 <blockquote><p><strong>WPSSO Core Premium uses the Product Attribute names to request Product Attribute values from WooCommerce. Make sure the Product Attribute names in the WPSSO Core settings are identical (upper/lower case is important) to the Product Attribute names you create and use in WooCommerce.</strong></p></blockquote>
 
@@ -99,9 +99,9 @@
 <p>It's possible to use WordPress Custom Fields (aka WordPress post metadata) instead of WooCommerce Product Attributes, but there are some downsides to doing this. Custom fields can only be created for the main product, not for variations, and as such can only offer information for simple products or the main product including all its variations. This may be suitable for values like Brand, where the main product and all its variations share the same Brand value, but may not work for variable information like Color, Size, and singular product information like GTIN, ISBN, and MPN. Keep in mind that WooCommerce is a plugin designed to manage products and product information &mdash; using the built-in features of WooCommerce makes more sense than using free-form / non-standard Custom Fields. If you're certain that you want to use WordPress Custom Fields instead of WooCommerce Product Attributes, you need to:</p>
 
 <ol>
-	<li>Clear the relevant Product Attribute name under the <em>SSO &gt; Advanced Settings &gt; Editing Pages &gt; Product Attributes</em> tab.</li>
+	<li>Clear the relevant Product Attribute name under the <em>SSO &gt; Advanced Settings &gt; Editing and Metadata &gt; Product Attributes</em> tab.</li>
 
-	<li>Enter the relevant Custom Field name under the <em>SSO &gt; Advanced Settings &gt; Editing Pages &gt; Custom Fields</em> tab.</li>
+	<li>Enter the relevant Custom Field name under the <em>SSO &gt; Advanced Settings &gt; Editing and Metadata &gt; Custom Fields</em> tab.</li>
 </ol>
 
 <h2>Document SSO &gt; Customize</h2>
@@ -111,9 +111,9 @@
 <p>Like WordPress Custom Fields (see above), customized values in the Document SSO metabox can only offer one value, and as such can only offer information for simple products or the main product including all its variations. If you're certain that you want to use customized values in the Document SSO metabox, instead of WooCommerce Product Attributes or WordPress Custom Fields, you need to:</p>
 
 <ol>
-	<li>Clear the relevant Product Attribute name under the <em>SSO &gt; Advanced Settings &gt; Editing Pages &gt; Product Attributes</em> tab.</li>
+	<li>Clear the relevant Product Attribute name under the <em>SSO &gt; Advanced Settings &gt; Editing and Metadata &gt; Product Attributes</em> tab.</li>
 
-	<li>Clear the relevant Custom Field name under the <em>SSO &gt; Advanced Settings &gt; Editing Pages &gt; Custom Fields</em> tab.</li>
+	<li>Clear the relevant Custom Field name under the <em>SSO &gt; Advanced Settings &gt; Editing and Metadata &gt; Custom Fields</em> tab.</li>
 </ol>
 
 <h2>Product Prices with Value Added Tax (VAT)</h2>

@@ -10,9 +10,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
-if ( ! class_exists( 'WpssoSubmenuSocialAccounts' ) && class_exists( 'WpssoAdmin' ) ) {
+if ( ! class_exists( 'WpssoSubmenuSocialPages' ) && class_exists( 'WpssoAdmin' ) ) {
 
-	class WpssoSubmenuSocialAccounts extends WpssoAdmin {
+	class WpssoSubmenuSocialPages extends WpssoAdmin {
 
 		public function __construct( &$plugin, $id, $name, $lib, $ext ) {
 
@@ -37,39 +37,26 @@ if ( ! class_exists( 'WpssoSubmenuSocialAccounts' ) && class_exists( 'WpssoAdmin
 			$this->maybe_show_language_notice();
 
 			$metabox_id      = 'social_accounts';
-			$metabox_title   = _x( 'WebSite Social Pages and Accounts', 'metabox title', 'wpsso' );
+			$metabox_title   = _x( 'Social Pages and Accounts', 'metabox title', 'wpsso' );
 			$metabox_screen  = $this->pagehook;
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
 			$callback_args   = array(	// Second argument passed to the callback function / method.
+				'page_id'    => SucomUtil::sanitize_hookname( $this->menu_id ),
+				'metabox_id' => $metabox_id,
 			);
 
-			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
-				array( $this, 'show_metabox_social_accounts' ), $metabox_screen,
-					$metabox_context, $metabox_prio, $callback_args );
+			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title, array( $this, 'show_metabox_table' ),
+				$metabox_screen, $metabox_context, $metabox_prio, $callback_args );
 		}
 
-		public function show_metabox_social_accounts() {
-
-			$metabox_id = $this->menu_id;
-
-			$filter_name = SucomUtil::sanitize_hookname( $this->p->lca . '_' . $metabox_id . '_general_rows' );
-
-			$table_rows = array_merge(
-				$this->get_table_rows( $metabox_id, 'general' ),
-				apply_filters( $filter_name, array(), $this->form )
-			);
-
-			$this->p->util->metabox->do_table( $table_rows, 'metabox-' . $metabox_id );
-		}
-
-		protected function get_table_rows( $metabox_id, $tab_key ) {
+		protected function get_table_rows( $page_id, $metabox_id ) {
 
 			$table_rows = array();
 
-			switch ( $metabox_id . '-' . $tab_key ) {
+			switch ( $page_id . '-' . $metabox_id ) {
 
-				case 'social-accounts-general':
+				case 'social_pages-social_accounts':
 
 					$social_accounts = apply_filters( $this->p->lca . '_social_accounts', $this->p->cf[ 'form' ][ 'social_accounts' ] );
 

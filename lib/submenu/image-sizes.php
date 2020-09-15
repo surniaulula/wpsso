@@ -52,10 +52,9 @@ if ( ! class_exists( 'WpssoSubmenuImageSizes' ) && class_exists( 'WpssoAdmin' ) 
 					break;
 			}
 
-			if ( null !== $row_num ) {
+			if ( null !== $row_num ) {	// Just in case.
 
-				$form_button_rows[ $row_num ][ 'reload_default_image_sizes' ] = _x( 'Reload Default Image Sizes',
-					'submit button', 'wpsso' );
+				$form_button_rows[ $row_num ][ 'reload_default_image_sizes' ] = _x( 'Reload Default Image Sizes', 'submit button', 'wpsso' );
 			}
 
 			return $form_button_rows;
@@ -72,39 +71,26 @@ if ( ! class_exists( 'WpssoSubmenuImageSizes' ) && class_exists( 'WpssoAdmin' ) 
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
 			$callback_args   = array(	// Second argument passed to the callback function / method.
+				'page_id'    => SucomUtil::sanitize_hookname( $this->menu_id ),
+				'metabox_id' => $metabox_id,
 			);
 
-			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
-				array( $this, 'show_metabox_image_dimensions' ), $metabox_screen,
-					$metabox_context, $metabox_prio, $callback_args );
+			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title, array( $this, 'show_metabox_table' ),
+				$metabox_screen, $metabox_context, $metabox_prio, $callback_args );
 		}
 
-		public function show_metabox_image_dimensions() {
-
-			$metabox_id = $this->menu_id;
-			$table_rows = array();
-			$info_msg   = $this->p->msgs->get( 'info-' . $metabox_id );
-
-			$table_rows[ 'info-' . $metabox_id ] = '<td colspan="2">' . $info_msg . '</td>';
-
-			$filter_name = SucomUtil::sanitize_hookname( $this->p->lca . '_' . $metabox_id . '_general_rows' );
-
-			$table_rows = array_merge(
-				$table_rows,
-				$this->get_table_rows( $metabox_id, 'general' ),
-				apply_filters( $filter_name, array(), $this->form )
-			);
-
-			$this->p->util->metabox->do_table( $table_rows, 'metabox-' . $metabox_id );
-		}
-
-		protected function get_table_rows( $metabox_id, $tab_key ) {
+		protected function get_table_rows( $page_id, $metabox_id ) {
 
 			$table_rows = array();
 
-			switch ( $metabox_id . '-' . $tab_key ) {
+			switch ( $page_id . '-' . $metabox_id ) {
 
-				case 'image-sizes-general':
+				case 'image_sizes-image_dimensions':
+
+					if ( $info_msg = $this->p->msgs->get( 'info-' . $metabox_id ) ) {
+
+						$table_rows[ 'info-' . $metabox_id ] = '<td colspan="2">' . $info_msg . '</td>';
+					}
 
 					$p_img_disabled = empty( $this->p->options[ 'p_add_img_html' ] ) ? true : false;
 					$p_img_msg      = $p_img_disabled ? $this->p->msgs->p_img_disabled( $extra_css_class = 'inline' ) : '';
