@@ -309,16 +309,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.5.0-b.1 (2020/09/15)**
+**Version 8.5.0-b.2 (2020/09/15)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added translation support for the SSO &gt; Setup Guide page.
+	* Moved the SSO &gt; Advanced Settings &gt; Document Types metabox to a new SSO &gt; Document Types settings page.
 * **Bugfixes**
 	* Fixed an incorrect "The value of option must be numeric" error message for 'robots_max_snippet' and 'robots_max_video_preview' when saving posts.
 * **Developer Notes**
-	* None.
+	* Moved extracted translation strings from lib/gettext-*.php files to a new gettext/ folder.
+	* Added a new gettext/gettext-html-setup.php file to translate the Setup Guide.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
@@ -495,7 +497,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.5.0-b.1 =
+= 8.5.0-b.2 =
 
 (2020/09/15) Added translation support for the SSO &gt; Setup Guide page. Fixed an incorrect "The value of option must be numeric" error message.
 
