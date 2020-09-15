@@ -309,7 +309,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.5.0-b.1 (2020/09/14)**
+**Version 8.5.0-b.1 (2020/09/15)**
 
 * **New Features**
 	* None.
@@ -497,7 +497,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 8.5.0-b.1 =
 
-(2020/09/14) Added translation support for the SSO &gt; Setup Guide page. Fixed an incorrect "The value of option must be numeric" error message.
+(2020/09/15) Added translation support for the SSO &gt; Setup Guide page. Fixed an incorrect "The value of option must be numeric" error message.
 
 = 8.4.1 =
 
