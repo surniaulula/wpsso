@@ -309,7 +309,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.5.0-rc.1 (2020/09/15)**
+**Version 8.5.0 (2020/09/15)**
 
 * **New Features**
 	* None.
@@ -497,11 +497,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.5.0-rc.1 =
+= 8.5.0 =
 
 (2020/09/15) Added translation support for the SSO &gt; Setup Guide page. Fixed an incorrect "The value of option must be numeric" error message.
-
-= 8.4.1 =
-
-(2020/09/11) Added a new "Robots Meta" tab in the Document SSO metabox with options for Google Search. Fixed a bug that prevented getting posts for archive pages, when not in an archive page. Fixed the top toolbar overlaying the block editor in fullscreen mode.
 
