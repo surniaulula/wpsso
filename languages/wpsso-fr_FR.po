@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 8.5.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-09-15 08:40-0700\n"
-"PO-Revision-Date: 2020-09-15 09:09-0700\n"
+"POT-Creation-Date: 2020-09-15 10:45-0700\n"
+"PO-Revision-Date: 2020-09-15 10:45-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -130,18 +130,18 @@ msgstr "<strong>N'oubliez pas de soumettre quelques exemples d'articles / pages 
 
 #: gettext/gettext-html-setup.php:29
 msgctxt "html paragraph"
-msgid "WPSSO Core and its complementary add-ons attempt to keep notifications to a minimum, issuing only informational, warning, or error notifications when required. The default WordPress notication messages can feel intrusive and over-used, and are not compatible with the new block editor in WordPress v5, so WPSSO Core includes its own (more discreet) notification system in the top toolbar."
-msgstr ""
+msgid "WPSSO Core and its complementary add-ons attempt to keep notifications to a minimum, issuing only informational, warning, or error notifications when required. Messages from the default WordPress notication system can feel intrusive and over-used, and are not compatible with the new block editor in WordPress v5, so WPSSO Core includes its own (more discreet) notification system in the top toolbar."
+msgstr "WPSSO Core et ses modules complémentaires tentent de réduire au minimum les notifications, en émettant uniquement des notifications d'information, d'avertissement ou d'erreur lorsque cela est nécessaire. Les messages du système de notification WordPress par défaut peuvent sembler intrusifs et surutilisés, et ne sont pas compatibles avec le nouvel éditeur de blocs de WordPress v5, donc WPSSO Core inclut son propre système de notification (plus discret) dans la barre d'outils supérieure."
 
 #: gettext/gettext-html-setup.php:30
 msgctxt "html paragraph"
-msgid "Look for the SSO icon in the top toolbar - by default, it should remain grey with a \"0\" notification count. If there are notifications, the count will increase and the SSO icon be shown on a red, yellow, or blue background."
-msgstr ""
+msgid "Look for the SSO notification icon in the top toolbar - by default, it will be grey with a 0 count. If there are notifications, the count will increase, and the SSO icon be shown on a red, yellow, or blue background. WPSSO notifications are context sensitive - they relate to the content shown in the current webpage."
+msgstr "Recherchez l'icône de notification SSO dans la barre d'outils supérieure - par défaut, elle sera grise avec un décompte de 0. S'il y a des notifications, le nombre augmentera et l'icône SSO sera affichée sur un fond rouge, jaune ou bleu. Les notifications WPSSO sont sensibles au contexte - elles se rapportent au contenu affiché dans la page Web actuelle."
 
 #: gettext/gettext-html-setup.php:31
 msgctxt "html paragraph"
 msgid "Schema (aka \"Schema.org\") is a collaborative, community lead standard for structured data markup. Schema markup is classified by type, and each type is associated with a set of properties. The types are arranged in a hierarchy and <a href=\"https://schema.org/docs/schemas.html\">the current Schema vocabulary consists of 841 types, 1369 properties, and 352 enumeration values</a>. The Schema vocabulary can be used with many different encodings, including meta tags, RDFa, Microdata, and JSON-LD. WPSSO Core adds Schema markup to webpages using meta tags for Pinterest and other social crawlers. The <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a> is required to provide additional markup using JSON-LD encoding for Google and other search engines."
-msgstr "Le Schéma (alias «Schema.org») est une norme de collaboration et de direction communautaire pour le balisage de données structurées. Le balisage de Schéma est classé par type et chaque type est associé à un ensemble de propriétés. Les types sont organisés dans une hiérarchie et <a href=\"https://schema.org/docs/schemas.html\">le vocabulaire de Schéma actuel comprend 841 types, 1369 propriétés et 352 valeurs d'énumération</a>. Le vocabulaire de Schéma peut être utilisé avec de nombreux encodages différents, y compris les balises méta, RDFa, Microdata et JSON-LD. WPSSO Core ajoute un balisage de Schéma aux pages Web à l'aide de balises méta pour Pinterest et d'autres robots sociaux. <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">L'ajout de balisage JSON-LD de Schéma WPSSO</a> est requis pour fournir un balisage supplémentaire à l'aide du codage JSON-LD pour Google et autres moteurs de recherche."
+msgstr "Le Schéma (alias «Schema.org») est une norme de collaboration et de direction communautaire pour le balisage de données structurées. Le balisage de Schéma est classé par type et chaque type est associé à un ensemble de propriétés. Les types sont organisés dans une hiérarchie et <a href=\"https://schema.org/docs/schemas.html\">le vocabulaire de Schéma actuel comprend 841 types, 1369 propriétés et 352 valeurs d'énumération</a>. Le vocabulaire de Schéma peut être utilisé avec de nombreux encodages différents, y compris les balises méta, RDFa, Microdata et JSON-LD. WPSSO Core ajoute un balisage de Schéma aux pages Web à l'aide de balises méta pour Pinterest et d'autres robots sociaux. <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">L'ajout WPSSO balisage JSON-LD de Schéma</a> est requis pour fournir un balisage supplémentaire à l'aide du codage JSON-LD pour Google et autres moteurs de recherche."
 
 #: gettext/gettext-html-setup.php:32
 msgctxt "html paragraph"
@@ -150,13 +150,13 @@ msgstr "<a href=\"https://developers.google.com/search/docs/guides/intro-structu
 
 #: gettext/gettext-html-setup.php:33
 msgctxt "html paragraph"
-msgid "If your theme templates do not include RDFa / Microdata markup for Google Rich Results, you should enable the <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a>. If your theme templates include incomplete or incorrect RDFa / Microdata markup (a common problem), you should enable both the WPSSO Schema JSON-LD Markup add-on and the <a href=\"https://wordpress.org/plugins/wpsso-strip-schema-microdata/\">WPSSO Strip Schema Microdata add-on</a> to remove the incomplete or incorrect Microdata markup from your templates."
-msgstr ""
+msgid "If your theme templates do not provide RDFa / Microdata markup for Google Rich Results, you should enable the <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a>. If your theme templates include incomplete or incorrect RDFa / Microdata markup (a common problem), you should enable both the WPSSO Schema JSON-LD Markup add-on and the <a href=\"https://wordpress.org/plugins/wpsso-strip-schema-microdata/\">WPSSO Strip Schema Microdata add-on</a> to also remove the incomplete or incorrect Microdata markup."
+msgstr "Si vos modèles de thème ne fournissent pas de balisage RDFa / microdonnées pour les résultats enrichis Google, vous pouvez activer <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">l'ajout WPSSO balisage JSON-LD de Schéma</a>. Si vos modèles de thème incluent un balisage RDFa / microdonnées incomplet ou incorrect (un problème courant), vous devez activer à la fois l'ajout WPSSO balisage JSON-LD de Schéma et <a href=\"https://wordpress.org/plugins/wpsso-strip-schema-microdata/\">l'ajout WPSSO supprimer microdonnées de Schéma</a> pour également supprimer le balisage de microdonnées incomplet ou incorrect."
 
 #: gettext/gettext-html-setup.php:34
 msgctxt "html paragraph"
-msgid "<strong>Not sure if your theme templates support Google Rich Results?</strong> Submit an example post / page URL from your site to the <a href=\"https://search.google.com/test/rich-results\">Google Rich Results Test Tool</a> or the <a href=\"https://search.google.com/structured-data/testing-tool/u/0/\">Google Structured Data Test Tool</a>, and compare the results before / after enabling the <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a>. Between checks, don't forget to clear the cache of any caching plugin or service you may be using, along with clearing the WPSSO cache in the <em><strong>SSO &gt; Tools and Actions</strong></em> settings page. ;-)"
-msgstr ""
+msgid "<strong>Not sure if your theme templates already provide markup for Google rich results?</strong> Submit a post or page URL from your website to the <a href=\"https://search.google.com/test/rich-results\">Google Rich Results Test Tool</a> or the <a href=\"https://search.google.com/structured-data/testing-tool/u/0/\">Google Structured Data Test Tool</a>, and compare the results before / after enabling the <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a>. Between checks, don't forget to clear the cache of any caching plugin or service you may be using, along with clearing the WPSSO cache in the <em><strong>SSO &gt; Tools and Actions</strong></em> settings page. ;-)"
+msgstr "<strong>Vous ne savez pas si vos modèles de thème fournissent déjà un balisage pour les résultats enrichis Google?</strong> Fournissez une URL d'article ou de page de votre site Web au <a href=\"https://search.google.com/test/rich-results\">Test de résultats riches Google</a> ou l'<a href=\"https://search.google.com/structured-data/testing-tool/u/0/\">Outil de test des données structurées de Google</a> et comparez les résultats avant / après l'activation de <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">l'ajout WPSSO balisage JSON-LD de Schéma</a>. Entre les vérifications, n'oubliez pas de vider le cache de toute extension ou service de mise en cache que vous utilisez, ainsi que de vider le cache WPSSO dans la page de réglages <em><strong>SSO &gt; Outils et actions</strong></em>. ;-)"
 
 #: gettext/gettext-html-setup.php:35
 msgctxt "html paragraph"
@@ -256,7 +256,7 @@ msgstr "WPSSO Core ajoute une balise HTML <code>meta name description</code> et 
 #: gettext/gettext-html-setup.php:54
 msgctxt "html paragraph"
 msgid "WPSSO Core creates Schema WebSite, Organization, and Person social markup for Google's Knowledge Graph in the front page using JSON-LD. If your theme does not include Schema markup (using JSON-LD or Microdata formats) for your post / page content, you should consider enabling the <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a> to provide complete Schema markup for your content (ie. Schema Article, Place, Product, etc.)."
-msgstr "WPSSO Core crée le balisage de Schéma social WebSite, Organization et Person pour le Knowledge Graph de Google sur la page d'accueil à l'aide de JSON-LD. Si votre thème n'inclut pas un balisage de Schéma (en utilisant les formats JSON-LD ou Microdata) pour le contenu de vos articles / pages, vous devriez envisager d'activer le <a href = \"https://wordpress.org/plugins/wpsso-schema-json -ld/\">l'ajout de balisage JSON-LD de Schéma WPSSO</a> pour fournir un balisage complet de Schéma pour votre contenu (c.à.d., Schéma d'article, place, produit, etc.)."
+msgstr "WPSSO Core crée le balisage de Schéma social WebSite, Organization et Person pour le Knowledge Graph de Google sur la page d'accueil à l'aide de JSON-LD. Si votre thème n'inclut pas un balisage de Schéma (en utilisant les formats JSON-LD ou Microdata) pour le contenu de vos articles / pages, vous devriez envisager d'activer le <a href = \"https://wordpress.org/plugins/wpsso-schema-json -ld/\">l'ajout WPSSO balisage JSON-LD de Schéma</a> pour fournir un balisage complet de Schéma pour votre contenu (c.à.d., Schéma d'article, place, produit, etc.)."
 
 #: gettext/gettext-html-setup.php:55
 msgctxt "html list item"
@@ -3127,7 +3127,7 @@ msgstr "L'extension WooCommerce v%s est connue pour offrir un balisage de schém
 
 #: lib/admin-head.php:379
 msgid "The WPSSO Core Premium plugin (required for WooCommerce integration) and its WPSSO Schema JSON-LD Markup add-on provide a far better solution by offering complete Facebook / Pinterest Product meta tags and Schema Product markup for Google Rich Results &mdash; including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, and much, much more."
-msgstr "L'extension WPSSO Core Premium (requis pour l'intégration de WooCommerce) et son ajout de balisage JSON-LD de Schéma WPSSO offre une meilleure solution en proposant des balises méta de produit Facebook / Pinterest complètes et un balisage de produit Schéma pour les résultats riches Google &mdash; y compris des images de produit supplémentaires, des variations de produits, des informations sur les produits (marque, couleur, état, EAN, dimensions, GTIN-8/12/13/14, ISBN, matériau, MPN, taille, SKU, etc.), critiques de produits, évaluations de produits, dates de début / fin des ventes, prix de vente, prix hors taxes, prix TVA et bien plus encore."
+msgstr "L'extension WPSSO Core Premium (requis pour l'intégration de WooCommerce) et son ajout WPSSO balisage JSON-LD de Schéma offre une meilleure solution en proposant des balises méta de produit Facebook / Pinterest complètes et un balisage de produit Schéma pour les résultats riches Google &mdash; y compris des images de produit supplémentaires, des variations de produits, des informations sur les produits (marque, couleur, état, EAN, dimensions, GTIN-8/12/13/14, ISBN, matériau, MPN, taille, SKU, etc.), critiques de produits, évaluations de produits, dates de début / fin des ventes, prix de vente, prix hors taxes, prix TVA et bien plus encore."
 
 #: lib/admin-head.php:383
 msgid "As suggested in the %1$s, you can (and should) submit a few product URLs to the %2$s and make sure your Schema Product markup is complete."
@@ -3498,341 +3498,341 @@ msgstr "Module fonctionnalité de partage"
 msgid "Additional functionality module"
 msgstr "Module fonctionnalités supplémentaires"
 
-#: lib/admin.php:2439
+#: lib/admin.php:2441
 msgctxt "option label"
 msgid "%s Authentication ID"
 msgstr "ID d'authentification %s"
 
-#: lib/admin.php:2453
+#: lib/admin.php:2455
 msgctxt "option label"
 msgid "Support and Updates Expire"
 msgstr "Support et mises à jour expire"
 
-#: lib/admin.php:2454
+#: lib/admin.php:2456
 msgctxt "option label"
 msgid "License Information"
 msgstr "Informations de licence"
 
-#: lib/admin.php:2463
+#: lib/admin.php:2465
 msgctxt "option value"
 msgid "Not available"
 msgstr "Non disponible"
 
-#: lib/admin.php:2469
+#: lib/admin.php:2471
 msgctxt "option value"
 msgid "Never"
 msgstr "Jamais"
 
-#: lib/admin.php:2477
+#: lib/admin.php:2479
 msgid "%s site addresses registered"
 msgstr "%s adresses de sites enregistrées"
 
-#: lib/admin.php:2489
+#: lib/admin.php:2491
 msgid "%d of %d site addresses registered"
 msgstr "%d de %d adresses de sites enregistrées"
 
-#: lib/admin.php:2569
+#: lib/admin.php:2571
 msgid "Fetching %s notifications..."
 msgstr "Récupération des notifications %s..."
 
-#: lib/admin.php:2760
+#: lib/admin.php:2762
 msgid "No header templates found in the parent or child theme directories."
 msgstr "Aucun modèle d'en-tête trouvés dans le répertoire de thème parent ou enfant."
 
-#: lib/admin.php:2780
+#: lib/admin.php:2782
 msgid "No <code>%1$s</code> HTML tag found in the <code>%2$s</code> template."
 msgstr "Aucune balise HTML <code>%1$s</code> trouvée dans le modèle <code>%2$s</code> ."
 
-#: lib/admin.php:2791
+#: lib/admin.php:2793
 msgid "Error copying <code>%1$s</code> to <code>%2$s</code>."
 msgstr "Erreur lors de la copie de <code>%1$s</code> vers <code>%2$s</code> ."
 
-#: lib/admin.php:2803
+#: lib/admin.php:2805
 msgid "Failed to open template file <code>%s</code> for writing."
 msgstr "Échec d'ouverture du fichier de modèle <code>%s</code> en écriture."
 
-#: lib/admin.php:2811
+#: lib/admin.php:2813
 msgid "The <code>%s</code> template has been successfully modified and saved."
 msgstr "Le modèle <code>%s</code> a été modifié et enregistré avec succès."
 
-#: lib/admin.php:2814
+#: lib/admin.php:2816
 msgid "A backup copy of the original template has been saved as <code>%s</code> in the same folder."
 msgstr "Une copie de sauvegarde du modèle d'origine a été enregistrée en tant que <code>%s</code> dans le même dossier."
 
-#: lib/admin.php:2823
+#: lib/admin.php:2825
 msgid "Failed to write the <code>%s</code> template."
 msgstr "Échec d'écriture du modèle <code>%s</code> ."
 
-#: lib/admin.php:2826
+#: lib/admin.php:2828
 msgid "You may need to restore the original template saved as <code>%s</code> in the same folder."
 msgstr "Vous devrez peut-être restaurer le modèle d'origine enregistré en tant que <code>%s</code> dans le même dossier."
 
-#: lib/admin.php:2866
+#: lib/admin.php:2868
 msgctxt "option label"
 msgid "Open Graph Type for Page Homepage"
 msgstr "Type Open Graph pour page d'accueil singulière"
 
-#: lib/admin.php:2867
+#: lib/admin.php:2869
 msgctxt "option label"
 msgid "Open Graph Type for Posts Homepage"
 msgstr "Type Open Graph pour page d'accueil d'articles"
 
-#: lib/admin.php:2868
+#: lib/admin.php:2870
 msgctxt "option label"
 msgid "Open Graph Type for User Profile"
 msgstr "Type Open Graph pour profil d'utilisateur"
 
-#: lib/admin.php:2869
+#: lib/admin.php:2871
 msgctxt "option label"
 msgid "Open Graph Type for Search Results"
 msgstr "Type Open Graph pour résultats de recherche"
 
-#: lib/admin.php:2870
+#: lib/admin.php:2872
 msgctxt "option label"
 msgid "Open Graph Type for Other Archive"
 msgstr "Type Open Graph pour autre archive"
 
-#: lib/admin.php:2894 lib/admin.php:2900 lib/admin.php:2925 lib/admin.php:3082
-#: lib/admin.php:3096 lib/admin.php:3127
+#: lib/admin.php:2896 lib/admin.php:2902 lib/admin.php:2927 lib/admin.php:3084
+#: lib/admin.php:3098 lib/admin.php:3129
 msgctxt "option comment"
 msgid "for %s"
 msgstr "pour %s"
 
-#: lib/admin.php:2900 lib/admin.php:3096
+#: lib/admin.php:2902 lib/admin.php:3098
 msgctxt "option comment"
 msgid "Post Type Archive Page"
 msgstr "Page d'archive pour type d'article"
 
-#: lib/admin.php:2903
+#: lib/admin.php:2905
 msgctxt "option label"
 msgid "Open Graph Type by Post Type"
 msgstr "Type Open Graph par type d'article"
 
-#: lib/admin.php:2929
+#: lib/admin.php:2931
 msgctxt "option label"
 msgid "Open Graph Type by Taxonomy"
 msgstr "Type Open Graph par taxonomie"
 
-#: lib/admin.php:2956
+#: lib/admin.php:2958
 msgctxt "option label"
 msgid "Author / Person Name Format"
 msgstr "Format du nom d'auteur"
 
-#: lib/admin.php:2960 lib/submenu/general.php:226
+#: lib/admin.php:2962 lib/submenu/general.php:226
 msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr "Images maximum a inclure"
 
-#: lib/admin.php:2967
+#: lib/admin.php:2969
 msgctxt "option label"
 msgid "Schema 1:1 (Google) Image Size"
 msgstr "Taille d'image Schéma 1:1 (Google)"
 
-#: lib/admin.php:2971
+#: lib/admin.php:2973
 msgctxt "option label"
 msgid "Schema 4:3 (Google) Image Size"
 msgstr "Taille d'image Schéma 4:3 (Google)"
 
-#: lib/admin.php:2975
+#: lib/admin.php:2977
 msgctxt "option label"
 msgid "Schema 16:9 (Google) Image Size"
 msgstr "Taille d'image Schéma 16:9 (Google)"
 
-#: lib/admin.php:2979
+#: lib/admin.php:2981
 msgctxt "option label"
 msgid "Schema Thumbnail Image Size"
 msgstr "Taille d'image miniature Schéma"
 
-#: lib/admin.php:2983
+#: lib/admin.php:2985
 msgctxt "option label"
 msgid "Schema Description Max. Length"
 msgstr "Longueur max. description Schéma"
 
-#: lib/admin.php:2984 lib/edit.php:370 lib/submenu/general.php:311
+#: lib/admin.php:2986 lib/edit.php:370 lib/submenu/general.php:311
 #: lib/submenu/general.php:323 lib/submenu/general.php:399
 msgctxt "option comment"
 msgid "characters or less"
 msgstr "caractères ou moins"
 
-#: lib/admin.php:2998
+#: lib/admin.php:3000
 msgctxt "option label"
 msgid "WebSite Publisher Type"
 msgstr "Type d'éditeur du site Web"
 
-#: lib/admin.php:3003
+#: lib/admin.php:3005
 msgctxt "option label"
 msgid "WebSite Publisher (Person)"
 msgstr "Éditeur du site Web (personne)"
 
-#: lib/admin.php:3008
+#: lib/admin.php:3010
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr "URL logo de organisation"
 
-#: lib/admin.php:3013 lib/options.php:1289
+#: lib/admin.php:3015 lib/options.php:1289
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr "URL bannière d'organisation"
 
-#: lib/admin.php:3038
+#: lib/admin.php:3040
 msgctxt "option label"
 msgid "Schema Type for Page Homepage"
 msgstr "Type de Schéma pour page d'accueil singulière"
 
-#: lib/admin.php:3039
+#: lib/admin.php:3041
 msgctxt "option label"
 msgid "Schema Type for Posts Homepage"
 msgstr "Type de Schéma pour page d'accueil d'articles"
 
-#: lib/admin.php:3040
+#: lib/admin.php:3042
 msgctxt "option label"
 msgid "Schema Type for User Profile"
 msgstr "Type de Schéma pour profil d'utilisateur"
 
-#: lib/admin.php:3041
+#: lib/admin.php:3043
 msgctxt "option label"
 msgid "Schema Type for Search Results"
 msgstr "Type de Schéma pour résultats de recherche"
 
-#: lib/admin.php:3042
+#: lib/admin.php:3044
 msgctxt "option label"
 msgid "Schema Type for Other Archive"
 msgstr "Type de Schéma pour autre archive"
 
-#: lib/admin.php:3100
+#: lib/admin.php:3102
 msgctxt "option label"
 msgid "Schema Type by Post Type"
 msgstr "Type de Schéma par type d'article"
 
-#: lib/admin.php:3131
+#: lib/admin.php:3133
 msgctxt "option label"
 msgid "Schema Type by Taxonomy"
 msgstr "Type de Schéma par taxonomie"
 
-#: lib/admin.php:3142
+#: lib/admin.php:3144
 msgctxt "option label"
 msgid "Remove Settings on Uninstall"
 msgstr "Supprimer les réglages lors de la désinstallation"
 
-#: lib/admin.php:3144
+#: lib/admin.php:3146
 msgctxt "option comment"
 msgid "including any custom meta for posts, terms and users"
 msgstr "y compris méta personnalisée d'articles, termes et utilisateurs"
 
-#: lib/admin.php:3148
+#: lib/admin.php:3150
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr "Ajout messages de débogage caché"
 
-#: lib/admin.php:3150
+#: lib/admin.php:3152
 msgctxt "option comment"
 msgid "WPSSO_HTML_DEBUG constant is true"
 msgstr "la constante WPSSO_HTML_DEBUG est vraie"
 
-#: lib/admin.php:3155
+#: lib/admin.php:3157
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr "Options à afficher par défaut"
 
-#: lib/admin.php:3160
+#: lib/admin.php:3162
 msgctxt "option label"
 msgid "Notification System"
 msgstr "Système de notification"
 
-#: lib/admin.php:3293
+#: lib/admin.php:3295
 msgctxt "option comment"
 msgid "in %s"
 msgstr "en %s"
 
-#: lib/admin.php:3308
+#: lib/admin.php:3310
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr "Util. par site"
 
-#: lib/admin.php:3518
+#: lib/admin.php:3520
 msgid "Return to %s"
 msgstr "Retour à %s"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:3549
+#: lib/admin.php:3551
 msgid "Plugin <strong>activated</strong>."
 msgstr "Extension <strong>activé</strong>."
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:3572
+#: lib/admin.php:3574
 msgid "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-ons</a> to check if newer versions are available."
 msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise à jour pour %2$s et ses ajouts</a> afin de vérifier si des versions plus récentes sont disponibles."
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:3581
+#: lib/admin.php:3583
 msgid "You may <a href=\"%1$s\">refresh the update information for WordPress (plugins, themes and translations)</a> to check if newer versions are available."
 msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise jour pour WordPress (extensions, thèmes et traductions)</a> afin de vérifier si des versions plus récentes sont disponibles."
 
-#: lib/admin.php:3716
+#: lib/admin.php:3718
 msgid "Please select a %1$s settings file to import."
 msgstr "Veuillez sélectionner un fichier de réglages %1$s à importer."
 
-#: lib/admin.php:3723
+#: lib/admin.php:3725
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr "Le fichier de réglages %1$s à importer doit être un type mime \"%2$s\"."
 
-#: lib/admin.php:3730
+#: lib/admin.php:3732
 msgid "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr "Le fichier de réglages %1$s dépasse le maximum autorisé de %2$d octets."
 
-#: lib/admin.php:3744
+#: lib/admin.php:3746
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr "Le fichier de réglages %1$s semble vide ou corrompu."
 
-#: lib/admin.php:3754
+#: lib/admin.php:3756
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr "Le fichier de réglages %1$s n'a pas pu être décodé dans un tableau de réglages."
 
-#: lib/admin.php:3764
+#: lib/admin.php:3766
 msgid "Import of plugin and add-on settings is complete."
 msgstr "L'importation des réglages d'extension et ajouts est terminée."
 
-#: lib/admin.php:3785
+#: lib/admin.php:3787
 msgctxt "lib file description"
 msgid "(feature) Use Filtered (aka SEO) Title"
 msgstr "(feature) Utiliser le titre filtré (SEO)"
 
-#: lib/admin.php:3792
+#: lib/admin.php:3794
 msgctxt "lib file description"
 msgid "(feature) Use WordPress Content Filters"
 msgstr "(feature) Utiliser les filtres de contenu WP"
 
-#: lib/admin.php:3799
+#: lib/admin.php:3801
 msgctxt "lib file description"
 msgid "(feature) Use WordPress Excerpt Filters"
 msgstr "(feature) Utiliser les filtres d'extrait WP"
 
-#: lib/admin.php:3813
+#: lib/admin.php:3815
 msgctxt "lib file description"
 msgid "(api) %s Shortener API"
 msgstr "(api) API de raccourcissement %s"
 
-#: lib/admin.php:3852
+#: lib/admin.php:3854
 msgctxt "lib file description"
 msgid "(code) Facebook / Open Graph Meta Tags"
 msgstr "(code) Balises méta Facebook / Open Graph"
 
-#: lib/admin.php:3857
+#: lib/admin.php:3859
 msgctxt "lib file description"
 msgid "(code) Knowledge Graph Organization Markup"
 msgstr "(code) Balisage Knowledge Graph d'organisation"
 
-#: lib/admin.php:3862
+#: lib/admin.php:3864
 msgctxt "lib file description"
 msgid "(code) Knowledge Graph Person Markup"
 msgstr "(code) Balisage Knowledge Graph de personne"
 
-#: lib/admin.php:3867
+#: lib/admin.php:3869
 msgctxt "lib file description"
 msgid "(code) Knowledge Graph WebSite Markup"
 msgstr "(code) Balisage Knowledge Graph de site Web"
 
-#: lib/admin.php:3872
+#: lib/admin.php:3874
 msgctxt "lib file description"
 msgid "(code) Twitter Card Meta Tags"
 msgstr "(code) Balises méta de carte Twitter"
@@ -7895,11 +7895,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
-
-#~ msgctxt "option value"
-#~ msgid "Image:"
-#~ msgstr "Image:"
-
-#~ msgctxt "option value"
-#~ msgid "Caption:"
-#~ msgstr "Légende:"

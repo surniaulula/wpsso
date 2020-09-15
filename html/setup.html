@@ -75,9 +75,9 @@
 
 <dd>
 
-<p>WPSSO Core and its complementary add-ons attempt to keep notifications to a minimum, issuing only informational, warning, or error notifications when required. The default WordPress notication messages can feel intrusive and over-used, and are not compatible with the new block editor in WordPress v5, so WPSSO Core includes its own (more discreet) notification system in the top toolbar.</p>
+<p>WPSSO Core and its complementary add-ons attempt to keep notifications to a minimum, issuing only informational, warning, or error notifications when required. Messages from the default WordPress notication system can feel intrusive and over-used, and are not compatible with the new block editor in WordPress v5, so WPSSO Core includes its own (more discreet) notification system in the top toolbar.</p>
 
-<p>Look for the SSO icon in the top toolbar - by default, it should remain grey with a "0" notification count. If there are notifications, the count will increase and the SSO icon be shown on a red, yellow, or blue background.</p>
+<p>Look for the SSO notification icon in the top toolbar - by default, it will be grey with a 0 count. If there are notifications, the count will increase, and the SSO icon be shown on a red, yellow, or blue background. WPSSO notifications are context sensitive - they relate to the content shown in the current webpage.</p>
 
 </dd>
 
@@ -91,9 +91,9 @@
 
 <p><a href="https://developers.google.com/search/docs/guides/intro-structured-data">Google Rich Results are a set of requirements for a small selection of Schema types</a>, which includes specific images dimensions, a limited set of values for some Schema properties, limited Schema types for some property relations, and more. Google Rich Results require several layers of related markup (aka a multi-dimensional arrays) that must be expressed using JSON-LD in the webpage head section (preferred by Google), or with RDFa / Microdata markup in theme templates (deprecated standards).</p>
 
-<p>If your theme templates do not include RDFa / Microdata markup for Google Rich Results, you should enable the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup add-on</a>. If your theme templates include incomplete or incorrect RDFa / Microdata markup (a common problem), you should enable both the WPSSO Schema JSON-LD Markup add-on and the <a href="https://wordpress.org/plugins/wpsso-strip-schema-microdata/">WPSSO Strip Schema Microdata add-on</a> to remove the incomplete or incorrect Microdata markup from your templates.</p>
+<p>If your theme templates do not provide RDFa / Microdata markup for Google Rich Results, you should enable the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup add-on</a>. If your theme templates include incomplete or incorrect RDFa / Microdata markup (a common problem), you should enable both the WPSSO Schema JSON-LD Markup add-on and the <a href="https://wordpress.org/plugins/wpsso-strip-schema-microdata/">WPSSO Strip Schema Microdata add-on</a> to also remove the incomplete or incorrect Microdata markup.</p>
 
-<p><strong>Not sure if your theme templates support Google Rich Results?</strong> Submit an example post / page URL from your site to the <a href="https://search.google.com/test/rich-results">Google Rich Results Test Tool</a> or the <a href="https://search.google.com/structured-data/testing-tool/u/0/">Google Structured Data Test Tool</a>, and compare the results before / after enabling the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup add-on</a>. Between checks, don't forget to clear the cache of any caching plugin or service you may be using, along with clearing the WPSSO cache in the <em><strong>SSO &gt; Tools and Actions</strong></em> settings page. ;-)</p>
+<p><strong>Not sure if your theme templates already provide markup for Google rich results?</strong> Submit a post or page URL from your website to the <a href="https://search.google.com/test/rich-results">Google Rich Results Test Tool</a> or the <a href="https://search.google.com/structured-data/testing-tool/u/0/">Google Structured Data Test Tool</a>, and compare the results before / after enabling the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup add-on</a>. Between checks, don't forget to clear the cache of any caching plugin or service you may be using, along with clearing the WPSSO cache in the <em><strong>SSO &gt; Tools and Actions</strong></em> settings page. ;-)</p>
 
 </dd>
 

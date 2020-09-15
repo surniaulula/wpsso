@@ -158,18 +158,20 @@ msgctxt "html paragraph"
 msgid ""
 "WPSSO Core and its complementary add-ons attempt to keep notifications to a "
 "minimum, issuing only informational, warning, or error notifications when "
-"required. The default WordPress notication messages can feel intrusive and "
-"over-used, and are not compatible with the new block editor in WordPress v5, "
-"so WPSSO Core includes its own (more discreet) notification system in the "
-"top toolbar."
+"required. Messages from the default WordPress notication system can feel "
+"intrusive and over-used, and are not compatible with the new block editor in "
+"WordPress v5, so WPSSO Core includes its own (more discreet) notification "
+"system in the top toolbar."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:30
 msgctxt "html paragraph"
 msgid ""
-"Look for the SSO icon in the top toolbar - by default, it should remain grey "
-"with a \"0\" notification count. If there are notifications, the count will "
-"increase and the SSO icon be shown on a red, yellow, or blue background."
+"Look for the SSO notification icon in the top toolbar - by default, it will "
+"be grey with a 0 count. If there are notifications, the count will increase, "
+"and the SSO icon be shown on a red, yellow, or blue background. WPSSO "
+"notifications are context sensitive - they relate to the content shown in "
+"the current webpage."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:31
@@ -205,29 +207,29 @@ msgstr ""
 #: gettext/gettext-html-setup.php:33
 msgctxt "html paragraph"
 msgid ""
-"If your theme templates do not include RDFa / Microdata markup for Google "
+"If your theme templates do not provide RDFa / Microdata markup for Google "
 "Rich Results, you should enable the <a href=\"https://wordpress.org/plugins/"
 "wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a>. If your "
 "theme templates include incomplete or incorrect RDFa / Microdata markup (a "
 "common problem), you should enable both the WPSSO Schema JSON-LD Markup add-"
 "on and the <a href=\"https://wordpress.org/plugins/wpsso-strip-schema-"
-"microdata/\">WPSSO Strip Schema Microdata add-on</a> to remove the "
-"incomplete or incorrect Microdata markup from your templates."
+"microdata/\">WPSSO Strip Schema Microdata add-on</a> to also remove the "
+"incomplete or incorrect Microdata markup."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:34
 msgctxt "html paragraph"
 msgid ""
-"<strong>Not sure if your theme templates support Google Rich Results?</"
-"strong> Submit an example post / page URL from your site to the <a href="
-"\"https://search.google.com/test/rich-results\">Google Rich Results Test "
-"Tool</a> or the <a href=\"https://search.google.com/structured-data/testing-"
-"tool/u/0/\">Google Structured Data Test Tool</a>, and compare the results "
-"before / after enabling the <a href=\"https://wordpress.org/plugins/wpsso-"
-"schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a>. Between checks, "
-"don't forget to clear the cache of any caching plugin or service you may be "
-"using, along with clearing the WPSSO cache in the <em><strong>SSO &gt; Tools "
-"and Actions</strong></em> settings page. ;-)"
+"<strong>Not sure if your theme templates already provide markup for Google "
+"rich results?</strong> Submit a post or page URL from your website to the <a "
+"href=\"https://search.google.com/test/rich-results\">Google Rich Results "
+"Test Tool</a> or the <a href=\"https://search.google.com/structured-data/"
+"testing-tool/u/0/\">Google Structured Data Test Tool</a>, and compare the "
+"results before / after enabling the <a href=\"https://wordpress.org/plugins/"
+"wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a>. Between "
+"checks, don't forget to clear the cache of any caching plugin or service you "
+"may be using, along with clearing the WPSSO cache in the <em><strong>SSO "
+"&gt; Tools and Actions</strong></em> settings page. ;-)"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:35
@@ -3884,351 +3886,351 @@ msgstr ""
 msgid "Additional functionality module"
 msgstr ""
 
-#: lib/admin.php:2439
+#: lib/admin.php:2441
 msgctxt "option label"
 msgid "%s Authentication ID"
 msgstr ""
 
-#: lib/admin.php:2453
+#: lib/admin.php:2455
 msgctxt "option label"
 msgid "Support and Updates Expire"
 msgstr ""
 
-#: lib/admin.php:2454
+#: lib/admin.php:2456
 msgctxt "option label"
 msgid "License Information"
 msgstr ""
 
-#: lib/admin.php:2463
+#: lib/admin.php:2465
 msgctxt "option value"
 msgid "Not available"
 msgstr ""
 
-#: lib/admin.php:2469
+#: lib/admin.php:2471
 msgctxt "option value"
 msgid "Never"
 msgstr ""
 
-#: lib/admin.php:2477
+#: lib/admin.php:2479
 msgid "%s site addresses registered"
 msgstr ""
 
-#: lib/admin.php:2489
+#: lib/admin.php:2491
 msgid "%d of %d site addresses registered"
 msgstr ""
 
-#: lib/admin.php:2569
+#: lib/admin.php:2571
 msgid "Fetching %s notifications..."
 msgstr ""
 
-#: lib/admin.php:2760
+#: lib/admin.php:2762
 msgid "No header templates found in the parent or child theme directories."
 msgstr ""
 
-#: lib/admin.php:2780
+#: lib/admin.php:2782
 msgid "No <code>%1$s</code> HTML tag found in the <code>%2$s</code> template."
 msgstr ""
 
-#: lib/admin.php:2791
+#: lib/admin.php:2793
 msgid "Error copying <code>%1$s</code> to <code>%2$s</code>."
 msgstr ""
 
-#: lib/admin.php:2803
+#: lib/admin.php:2805
 msgid "Failed to open template file <code>%s</code> for writing."
 msgstr ""
 
-#: lib/admin.php:2811
+#: lib/admin.php:2813
 msgid "The <code>%s</code> template has been successfully modified and saved."
 msgstr ""
 
-#: lib/admin.php:2814
+#: lib/admin.php:2816
 msgid ""
 "A backup copy of the original template has been saved as <code>%s</code> in "
 "the same folder."
 msgstr ""
 
-#: lib/admin.php:2823
+#: lib/admin.php:2825
 msgid "Failed to write the <code>%s</code> template."
 msgstr ""
 
-#: lib/admin.php:2826
+#: lib/admin.php:2828
 msgid ""
 "You may need to restore the original template saved as <code>%s</code> in "
 "the same folder."
 msgstr ""
 
-#: lib/admin.php:2866
+#: lib/admin.php:2868
 msgctxt "option label"
 msgid "Open Graph Type for Page Homepage"
 msgstr ""
 
-#: lib/admin.php:2867
+#: lib/admin.php:2869
 msgctxt "option label"
 msgid "Open Graph Type for Posts Homepage"
 msgstr ""
 
-#: lib/admin.php:2868
+#: lib/admin.php:2870
 msgctxt "option label"
 msgid "Open Graph Type for User Profile"
 msgstr ""
 
-#: lib/admin.php:2869
+#: lib/admin.php:2871
 msgctxt "option label"
 msgid "Open Graph Type for Search Results"
 msgstr ""
 
-#: lib/admin.php:2870
+#: lib/admin.php:2872
 msgctxt "option label"
 msgid "Open Graph Type for Other Archive"
 msgstr ""
 
-#: lib/admin.php:2894 lib/admin.php:2900 lib/admin.php:2925 lib/admin.php:3082
-#: lib/admin.php:3096 lib/admin.php:3127
+#: lib/admin.php:2896 lib/admin.php:2902 lib/admin.php:2927 lib/admin.php:3084
+#: lib/admin.php:3098 lib/admin.php:3129
 msgctxt "option comment"
 msgid "for %s"
 msgstr ""
 
-#: lib/admin.php:2900 lib/admin.php:3096
+#: lib/admin.php:2902 lib/admin.php:3098
 msgctxt "option comment"
 msgid "Post Type Archive Page"
 msgstr ""
 
-#: lib/admin.php:2903
+#: lib/admin.php:2905
 msgctxt "option label"
 msgid "Open Graph Type by Post Type"
 msgstr ""
 
-#: lib/admin.php:2929
+#: lib/admin.php:2931
 msgctxt "option label"
 msgid "Open Graph Type by Taxonomy"
 msgstr ""
 
-#: lib/admin.php:2956
+#: lib/admin.php:2958
 msgctxt "option label"
 msgid "Author / Person Name Format"
 msgstr ""
 
-#: lib/admin.php:2960 lib/submenu/general.php:226
+#: lib/admin.php:2962 lib/submenu/general.php:226
 msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr ""
 
-#: lib/admin.php:2967
+#: lib/admin.php:2969
 msgctxt "option label"
 msgid "Schema 1:1 (Google) Image Size"
 msgstr ""
 
-#: lib/admin.php:2971
+#: lib/admin.php:2973
 msgctxt "option label"
 msgid "Schema 4:3 (Google) Image Size"
 msgstr ""
 
-#: lib/admin.php:2975
+#: lib/admin.php:2977
 msgctxt "option label"
 msgid "Schema 16:9 (Google) Image Size"
 msgstr ""
 
-#: lib/admin.php:2979
+#: lib/admin.php:2981
 msgctxt "option label"
 msgid "Schema Thumbnail Image Size"
 msgstr ""
 
-#: lib/admin.php:2983
+#: lib/admin.php:2985
 msgctxt "option label"
 msgid "Schema Description Max. Length"
 msgstr ""
 
-#: lib/admin.php:2984 lib/edit.php:370 lib/submenu/general.php:311
+#: lib/admin.php:2986 lib/edit.php:370 lib/submenu/general.php:311
 #: lib/submenu/general.php:323 lib/submenu/general.php:399
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
-#: lib/admin.php:2998
+#: lib/admin.php:3000
 msgctxt "option label"
 msgid "WebSite Publisher Type"
 msgstr ""
 
-#: lib/admin.php:3003
+#: lib/admin.php:3005
 msgctxt "option label"
 msgid "WebSite Publisher (Person)"
 msgstr ""
 
-#: lib/admin.php:3008
+#: lib/admin.php:3010
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:3013 lib/options.php:1289
+#: lib/admin.php:3015 lib/options.php:1289
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
 
-#: lib/admin.php:3038
+#: lib/admin.php:3040
 msgctxt "option label"
 msgid "Schema Type for Page Homepage"
 msgstr ""
 
-#: lib/admin.php:3039
+#: lib/admin.php:3041
 msgctxt "option label"
 msgid "Schema Type for Posts Homepage"
 msgstr ""
 
-#: lib/admin.php:3040
+#: lib/admin.php:3042
 msgctxt "option label"
 msgid "Schema Type for User Profile"
 msgstr ""
 
-#: lib/admin.php:3041
+#: lib/admin.php:3043
 msgctxt "option label"
 msgid "Schema Type for Search Results"
 msgstr ""
 
-#: lib/admin.php:3042
+#: lib/admin.php:3044
 msgctxt "option label"
 msgid "Schema Type for Other Archive"
 msgstr ""
 
-#: lib/admin.php:3100
+#: lib/admin.php:3102
 msgctxt "option label"
 msgid "Schema Type by Post Type"
 msgstr ""
 
-#: lib/admin.php:3131
+#: lib/admin.php:3133
 msgctxt "option label"
 msgid "Schema Type by Taxonomy"
 msgstr ""
 
-#: lib/admin.php:3142
+#: lib/admin.php:3144
 msgctxt "option label"
 msgid "Remove Settings on Uninstall"
 msgstr ""
 
-#: lib/admin.php:3144
+#: lib/admin.php:3146
 msgctxt "option comment"
 msgid "including any custom meta for posts, terms and users"
 msgstr ""
 
-#: lib/admin.php:3148
+#: lib/admin.php:3150
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
 
-#: lib/admin.php:3150
+#: lib/admin.php:3152
 msgctxt "option comment"
 msgid "WPSSO_HTML_DEBUG constant is true"
 msgstr ""
 
-#: lib/admin.php:3155
+#: lib/admin.php:3157
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr ""
 
-#: lib/admin.php:3160
+#: lib/admin.php:3162
 msgctxt "option label"
 msgid "Notification System"
 msgstr ""
 
-#: lib/admin.php:3293
+#: lib/admin.php:3295
 msgctxt "option comment"
 msgid "in %s"
 msgstr ""
 
-#: lib/admin.php:3308
+#: lib/admin.php:3310
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:3518
+#: lib/admin.php:3520
 msgid "Return to %s"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:3549
+#: lib/admin.php:3551
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:3572
+#: lib/admin.php:3574
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:3581
+#: lib/admin.php:3583
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes and translations)</a> to check if newer versions are "
 "available."
 msgstr ""
 
-#: lib/admin.php:3716
+#: lib/admin.php:3718
 msgid "Please select a %1$s settings file to import."
 msgstr ""
 
-#: lib/admin.php:3723
+#: lib/admin.php:3725
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr ""
 
-#: lib/admin.php:3730
+#: lib/admin.php:3732
 msgid ""
 "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr ""
 
-#: lib/admin.php:3744
+#: lib/admin.php:3746
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr ""
 
-#: lib/admin.php:3754
+#: lib/admin.php:3756
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr ""
 
-#: lib/admin.php:3764
+#: lib/admin.php:3766
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 
-#: lib/admin.php:3785
+#: lib/admin.php:3787
 msgctxt "lib file description"
 msgid "(feature) Use Filtered (aka SEO) Title"
 msgstr ""
 
-#: lib/admin.php:3792
+#: lib/admin.php:3794
 msgctxt "lib file description"
 msgid "(feature) Use WordPress Content Filters"
 msgstr ""
 
-#: lib/admin.php:3799
+#: lib/admin.php:3801
 msgctxt "lib file description"
 msgid "(feature) Use WordPress Excerpt Filters"
 msgstr ""
 
-#: lib/admin.php:3813
+#: lib/admin.php:3815
 msgctxt "lib file description"
 msgid "(api) %s Shortener API"
 msgstr ""
 
-#: lib/admin.php:3852
+#: lib/admin.php:3854
 msgctxt "lib file description"
 msgid "(code) Facebook / Open Graph Meta Tags"
 msgstr ""
 
-#: lib/admin.php:3857
+#: lib/admin.php:3859
 msgctxt "lib file description"
 msgid "(code) Knowledge Graph Organization Markup"
 msgstr ""
 
-#: lib/admin.php:3862
+#: lib/admin.php:3864
 msgctxt "lib file description"
 msgid "(code) Knowledge Graph Person Markup"
 msgstr ""
 
-#: lib/admin.php:3867
+#: lib/admin.php:3869
 msgctxt "lib file description"
 msgid "(code) Knowledge Graph WebSite Markup"
 msgstr ""
 
-#: lib/admin.php:3872
+#: lib/admin.php:3874
 msgctxt "lib file description"
 msgid "(code) Twitter Card Meta Tags"
 msgstr ""
