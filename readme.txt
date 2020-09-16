@@ -309,6 +309,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.5.1-dev.1 (2020/09/16)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added a visual acknowledgement message when the WordPress Site Address URL value has changed.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new WpssoAdminFilters class in lib/admin-filters.php.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.2.
+
 **Version 8.5.0 (2020/09/15)**
 
 * **New Features**
@@ -496,6 +510,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.5.1-dev.1 =
+
+(2020/09/16) Added a visual acknowledgement message when the WordPress Site Address URL value has changed.
 
 = 8.5.0 =
 
