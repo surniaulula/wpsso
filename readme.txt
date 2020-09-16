@@ -326,9 +326,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 **Version 8.5.0 (2020/09/15)**
 
-**The SSO &gt; Setup Guide is now available for translation, and a complete French translation will be available shortly.**
+**The SSO &gt; Setup Guide content is now available for translation and the complete French translation will be available shortly.**
 
-**If you are fluent in a language other than English, and would like to assist translating the WPSSO Core settings pages (option labels and help popups), notice messages, and the Setup Guide, [you can contribute to the translation of WPSSO Core here](https://translate.wordpress.org/projects/wp-plugins/wpsso/).**
+**If you are fluent in a language other than English, and would like to assist translating the WPSSO Core option labels, help text, notice messages, and the Setup Guide, [you can contribute to the translation of WPSSO Core here](https://translate.wordpress.org/projects/wp-plugins/wpsso/).**
 
 * **New Features**
 	* None.
