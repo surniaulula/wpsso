@@ -309,12 +309,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.5.1-dev.1 (2020/09/16)**
+**Version 8.5.1-dev.2 (2020/09/16)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a visual acknowledgement message when the Site Address URL value has changed.
+	* Additional translation string adjustments for the SSO &gt; Setup Guide.
+	* Added an acknowledgement message when the Site Address URL value has changed.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -511,9 +512,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.5.1-dev.1 =
+= 8.5.1-dev.2 =
 
-(2020/09/16) Added a visual acknowledgement message when the Site Address URL value has changed.
+(2020/09/16) Additional translation string adjustments for the SSO &gt; Setup Guide. Added an acknowledgement message when the Site Address URL value has changed.
 
 = 8.5.0 =
 
