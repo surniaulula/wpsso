@@ -314,7 +314,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a visual acknowledgement message when the WordPress Site Address URL value has changed.
+	* Added a visual acknowledgement message when the Site Address URL value has changed.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -513,7 +513,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 8.5.1-dev.1 =
 
-(2020/09/16) Added a visual acknowledgement message when the WordPress Site Address URL value has changed.
+(2020/09/16) Added a visual acknowledgement message when the Site Address URL value has changed.
 
 = 8.5.0 =
 
