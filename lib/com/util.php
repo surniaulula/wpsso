@@ -4379,12 +4379,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_robots_default_directives() {
 
+			$is_public = get_option( 'blog_public' );
+
 			$default_directives = self::$robots_directives;
 
 			/**
 			 * If the site is not public, discourage robots from indexing the site.
 			 */
-			if ( ! get_option( 'blog_public' ) ) {
+			if ( ! $is_public ) {
 
 				$default_directives[ 'follow' ]       = false;	// No follow.
 				$default_directives[ 'index' ]        = false;	// No index.

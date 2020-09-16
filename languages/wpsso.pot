@@ -294,17 +294,13 @@ msgstr ""
 #: gettext/gettext-html-setup.php:39
 msgctxt "html paragraph"
 msgid ""
-"Submit an example post / page to the <a href=\"http://developers.pinterest."
+"Submit an example post or page to the <a href=\"http://developers.pinterest."
 "com/rich_pins/validator/\">Pinterest Rich Pins Validator</a>. Note that the "
-"Pinterest validator recognizes known Rich Pin types only (article, recipe, "
+"Pinterest validator recognizes only known Rich Pin types (article, recipe, "
 "product, etc.) - your home page and WordPress archive pages are generally "
-"not valid Rich Pin types. Pinterest Rich Pins are an extension of Open Graph "
-"and Schema meta tags, but the Rich Pins Validator can be a little buggy, so "
-"double check any errors with the Facebook debugger to make sure they are "
-"actual / real errors. If you haven't already requested / enabled Rich Pins "
-"support from Pinterest for your website, you can request Rich Pin support "
-"when validating an example Post / Page from your site (that uses a known "
-"Rich Pin type)."
+"not valid Rich Pin types. If you haven't already requested Rich Pins support "
+"for your website from Pinterest, you can submit a request when validating "
+"your first example post or page."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:40
@@ -4598,7 +4594,7 @@ msgid ""
 "version of WPBakery Visual Composer immediately."
 msgstr ""
 
-#: lib/conflict.php:734
+#: lib/conflict.php:737
 msgid ""
 "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to "
 "discourage search engines and social sites from indexing this site. This is "

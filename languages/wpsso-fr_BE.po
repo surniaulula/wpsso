@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 8.5.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-09-16 11:21-0700\n"
-"PO-Revision-Date: 2020-09-16 11:39-0700\n"
+"POT-Creation-Date: 2020-09-16 15:52-0700\n"
+"PO-Revision-Date: 2020-09-16 15:52-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -180,7 +180,7 @@ msgstr "Soumettez quelques exemples d'articles, de pages, etc. au <a href=\"http
 
 #: gettext/gettext-html-setup.php:39
 msgctxt "html paragraph"
-msgid "Submit an example post / page to the <a href=\"http://developers.pinterest.com/rich_pins/validator/\">Pinterest Rich Pins Validator</a>. Note that the Pinterest validator recognizes known Rich Pin types only (article, recipe, product, etc.) - your home page and WordPress archive pages are generally not valid Rich Pin types. Pinterest Rich Pins are an extension of Open Graph and Schema meta tags, but the Rich Pins Validator can be a little buggy, so double check any errors with the Facebook debugger to make sure they are actual / real errors. If you haven't already requested / enabled Rich Pins support from Pinterest for your website, you can request Rich Pin support when validating an example Post / Page from your site (that uses a known Rich Pin type)."
+msgid "Submit an example post or page to the <a href=\"http://developers.pinterest.com/rich_pins/validator/\">Pinterest Rich Pins Validator</a>. Note that the Pinterest validator recognizes only known Rich Pin types (article, recipe, product, etc.) - your home page and WordPress archive pages are generally not valid Rich Pin types. If you haven't already requested Rich Pins support for your website from Pinterest, you can submit a request when validating your first example post or page."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:40
@@ -4164,7 +4164,7 @@ msgstr "WPBakery Visual Composer version %s et versions antérieures sont connus
 msgid "To avoid jQuery crashing on show / hide jQuery events, please update your version of WPBakery Visual Composer immediately."
 msgstr "Pour éviter le plantage de jQuery lors de l'affichage / masquage des événements jQuery, veuillez mettre à jour votre version de WPBakery Visual Composer immédiatement."
 
-#: lib/conflict.php:734
+#: lib/conflict.php:737
 msgid "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to discourage search engines and social sites from indexing this site. This is not compatible with the purpose of optimizing your content for social and search engines &mdash; please uncheck the option to allow search engines and social sites to access your site."
 msgstr "L'option de WordPress <a href=\"%s\">Visibilité pour les moteurs de recherche</a> est définie afin de demander aux moteurs de recherche et robots sociaux de ne pas indexer ce site. Cela n'est pas compatible avec le but d'optimiser votre contenu pour les moteurs de recherche et les réseaux sociaux &mdash; veuillez décocher cette option pour autoriser les moteurs de recherche et robots sociaux d'accéder votre site."
 

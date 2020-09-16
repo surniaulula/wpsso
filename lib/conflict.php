@@ -720,9 +720,12 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 		private function conflict_check_wp() {
 
+			$is_production = function_exists( 'wp_get_environment_type' ) &&	// Since WP v5.5.
+				'production' === wp_get_environment_type() ? true : false;
+
 			$is_public = get_option( 'blog_public' );
 
-			if ( ! $is_public ) {
+			if ( $is_production && ! $is_public ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -735,7 +738,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 				$notice_key = 'wp-search-engine-visibility-disabled';
 
-				$dismiss_time = YEAR_IN_SECONDS;
+				$dismiss_time = MONTH_IN_SECONDS;
 
 				$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time );
 			}
