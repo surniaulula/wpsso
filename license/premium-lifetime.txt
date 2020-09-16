@@ -60,10 +60,10 @@ upon Licensee's full payment of the applicable fees the Author grants to you,
 and you accept, a personal, nonexclusive, nontransferable license to install
 and use the Application at a single Site Address per License purchased. For the
 purposes of this License a single Site Address shall mean a website, accessible
-by one fully qualified domain name and path to its document root as defined in
-the WordPress Site Address option ("Site Address"). This License is effective
-until terminated as provided below. You may terminate this License by
-destroying the Application and any copies of the Application in your
+by one fully qualified domain name and path to its document root as shown in
+the WordPress general settings Site Address (URL) option ("Site Address"). This
+License is effective until terminated as provided below. You may terminate this
+License by destroying the Application and any copies of the Application in your
 possession. This License will terminate automatically upon any violation of its
 terms.
 

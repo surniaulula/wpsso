@@ -2639,7 +2639,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public static function reset_admin_check_options() {
 
 			delete_option( WPSSO_POST_CHECK_COUNT_NAME );
+
 			delete_option( WPSSO_TMPL_HEAD_CHECK_NAME );
+
 			delete_option( WPSSO_WP_CONFIG_CHECK_NAME );
 		}
 
@@ -2676,7 +2678,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return;	// Stop here.
 			}
 
-			$notice_msg = sprintf( __( 'The WordPress Site Address URL value has been changed from %1$s to %2$s.', 'wpsso' ), $old_value, $new_value );
+			$notice_msg = sprintf( __( 'The Site Address URL value has been changed from %1$s to %2$s.', 'wpsso' ), $old_value, $new_value );
 	
 			$notice_key = __FUNCTION__ . '_' . $old_value . '_' . $new_value;
 
@@ -2763,6 +2765,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
+delete_option( WPSSO_WP_CONFIG_CHECK_NAME );
 			/**
 			 * Skip if previous check is already successful.
 			 */
@@ -2782,6 +2785,30 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$notice_msg = $this->p->msgs->get( $notice_key );
 
 					$this->p->notice->err( $notice_msg, null, $notice_key );
+
+					return;	// Stop here.
+				}
+			}
+
+			$is_public = get_option( 'blog_public' );
+
+			if ( $is_public ) {
+
+				$home_url = SucomUtilWP::raw_get_home_url();
+
+				if ( preg_match( '/^([a-z]+):\/\/([0-9\.]+)(:[0-9]+)?$/', $home_url ) ) {
+
+					$general_settings_url = get_admin_url( $blog_id = null, 'options-general.php' );
+
+					$reading_settings_url = get_admin_url( $blog_id = null, 'options-reading.php' );
+
+					$notice_msg = sprintf( __( 'The WordPress <a href="%1$s">Search Engine Visibility</a> option is set to allow search engines and social sites to access this site, but your <a href="%2$s">Site Address URL</a> value is an IP address (%3$s).', 'wpsso' ), $reading_settings_url, $general_settings_url, $home_url ) . ' ';
+
+					$notice_msg .= __( 'Please update your Search Engine Visibility option to discourage search engines from indexing this site, or use a fully qualified domain name as your Site Address URL.', 'wpsso' );
+
+					$notice_key = 'notice-wp-config-home-url-ip-address';
+
+					$this->p->notice->warn( $notice_msg, null, $notice_key );
 
 					return;	// Stop here.
 				}

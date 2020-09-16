@@ -6,10 +6,12 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+
 	die( 'Do. Or do not. There is no try.' );
 }
 
@@ -27,6 +29,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -69,6 +72,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 			if ( isset( $result[ 'max_allowed_packet' ]->Value ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'db max_allowed_packet value is "' . $result[ 'max_allowed_packet' ]->Value . '"' );
 				}
 
@@ -127,6 +131,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				if ( ! extension_loaded( $php_ext ) ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'php ' . $php_ext . ' extension module is not loaded' );
 					}
 
@@ -186,6 +191,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 						if ( ! class_exists( $class_name ) ) {
 
 							if ( $this->p->debug->enabled ) {
+
 								$this->p->debug->log( 'php ' . $class_name . ' class is missing' );
 							}
 
@@ -202,6 +208,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 						if ( ! function_exists( $function_name ) ) {
 
 							if ( $this->p->debug->enabled ) {
+
 								$this->p->debug->log( 'php ' . $function_name . '() function is missing' );
 							}
 
@@ -248,6 +255,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 						__( 'Feature Manager', 'all-in-one-seo-pack' ) . '</a>';
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( $log_pre . 'aioseop social meta feature is enabled' );
 					}
 
@@ -271,6 +279,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 						__( 'General Settings', 'all-in-one-seo-pack' ) . '</a>';
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( $log_pre . 'aioseop schema markup option is checked' );
 					}
 
@@ -302,6 +311,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 						$label_transl = '<strong>' . __( 'Open Graph Integrator', 'seo-ultimate' ) . '</strong>';
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( $log_pre . 'seo ultimate opengraph module is enabled' );
 						}
 
@@ -343,6 +353,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					if ( ! empty( $opts[ $opt_key ] ) ) {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( $log_pre . 'squirrly seo ' . $opt_key . ' option is enabled' );
 						}
 
@@ -373,6 +384,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					if ( ! empty( $opts[ $opt_key ] ) ) {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( $log_pre . 'squirrly seo ' . $opt_key . ' option is enabled' );
 						}
 
@@ -423,6 +435,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					if ( ! empty( $opts[ $opt_key ] ) ) {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( $log_pre . 'autodescription ' . $opt_key . ' option is checked' );
 						}
 
@@ -446,6 +459,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					$label_transl = '<strong>' . __( 'Output Authorized Presence?', 'autodescription' ) . '</strong>';
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( $log_pre . 'autodescription knowledge_output option is checked' );
 					}
 
@@ -487,6 +501,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					if ( ! empty( $opts[ $opt_key ] ) ) {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( $log_pre . 'wpmetaseo ' . $opt_key . ' option is not empty' );
 						}
 
@@ -501,6 +516,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					$label_transl = '<strong>' . __( 'Social sharing block', 'wp-meta-seo' ) . '</strong>';
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( $log_pre . 'wpmetaseo metaseo_showsocial option is enabled' );
 					}
 
@@ -549,6 +565,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					if ( ! empty( $opts[ $opt_key ] ) ) {
 
 						if ( $this->p->debug->enabled ) {
+
 							$this->p->debug->log( $log_pre . 'wpseo ' . $opt_key . ' option is not empty' );
 						}
 
@@ -576,6 +593,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 						__( 'Facebook', 'wordpress-seo' ) . '</a>';
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( $log_pre . 'wpseo opengraph option is enabled' );
 					}
 
@@ -599,6 +617,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 						__( 'Facebook', 'wordpress-seo' ) . '</a>';
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( $log_pre . 'wpseo fbadminapp option is not empty' );
 					}
 
@@ -625,6 +644,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 						__( 'Twitter', 'wordpress-seo' ) . '</a>';
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( $log_pre . 'wpseo twitter option is enabled' );
 					}
 
@@ -679,6 +699,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				if ( version_compare( WPB_VC_VERSION, $wpb_vc_version_event_bug, '<=' ) ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'visual composer version with event bug detected' );
 					}
 
@@ -699,15 +720,18 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 		private function conflict_check_wp() {
 
-			if ( ! get_option( 'blog_public' ) ) {
+			$is_public = get_option( 'blog_public' );
+
+			if ( ! $is_public ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'wp blog_public option is disabled' );
 				}
 
 				$settings_url = get_admin_url( $blog_id = null, 'options-reading.php' );
 
-				$notice_msg = sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engine and social sites from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck the option to allow search engines and social sites to access your content.', 'wpsso' ), $settings_url );
+				$notice_msg = sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engines and social sites from indexing this site. This is not compatible with the purpose of optimizing your content for social and search engines &mdash; please uncheck the option to allow search engines and social sites to access your site.', 'wpsso' ), $settings_url );
 
 				$notice_key = 'wp-search-engine-visibility-disabled';
 
