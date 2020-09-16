@@ -21,6 +21,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		protected $p;
 		protected $head;
+		protected $filters;
 		protected $menu_id;
 		protected $menu_name;
 		protected $menu_lib;
@@ -50,6 +51,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$doing_ajax = SucomUtil::get_const( 'DOING_AJAX' );
 
+			if ( ! class_exists( 'WpssoAdminHead' ) ) {
+
+				require_once WPSSO_PLUGINDIR . 'lib/admin-head.php';
+			}
+
+			$this->head = new WpssoAdminHead( $plugin );
+
+			if ( ! class_exists( 'WpssoAdminFilters' ) ) {
+
+				require_once WPSSO_PLUGINDIR . 'lib/admin-filters.php';
+			}
+
+			$this->filters = new WpssoAdminFilters( $plugin );
+
 			/**
 			 * The WpssoScript add_iframe_inline_script() method includes jQuery in the thickbox iframe to add the
 			 * iframe_parent arguments when the Install or Update button is clicked.
@@ -71,18 +86,24 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			add_action( 'activated_plugin', array( $this, 'reset_admin_check_options' ), 10 );
 			add_action( 'after_switch_theme', array( $this, 'reset_admin_check_options' ), 10 );
 			add_action( 'upgrader_process_complete', array( $this, 'reset_admin_check_options' ), 10 );
+			add_action( 'update_option_home', array( $this, 'site_address_changed' ), PHP_INT_MAX, 3 );
+			add_action( 'sucom_update_option_home', array( $this, 'site_address_changed' ), PHP_INT_MAX, 3 );
+
+			add_filter( 'http_request_args', array( $this, 'check_plugin_names' ), 500, 2 );
+			add_filter( 'http_request_args', array( $this, 'add_expect_header' ), 1000, 2 );
+			add_filter( 'http_request_host_is_external', array( $this, 'maybe_allow_hosts' ), 1000, 3 );
 
 			/**
-			 * Optimize performance and do not load if this is an ajax call (ie. DOING_AJAX is true).
+			 * Provide plugin data / information from the readme.txt for additional add-ons. Don't hook the
+			 * 'plugins_api_result' filter if the update manager is active as it provides more complete plugin
+			 * data than what's available from the readme.txt.
 			 */
+			if ( empty( $this->p->avail[ 'p_ext' ][ 'um' ] ) ) {	// Since WPSSO UM v1.6.0.
+
+				add_filter( 'plugins_api_result', array( $this, 'external_plugin_data' ), 1000, 3 );	// Since WP v2.7.
+			}
+
 			if ( ! $doing_ajax ) {
-
-				if ( ! class_exists( 'WpssoAdminHead' ) ) {
-
-					require_once WPSSO_PLUGINDIR . 'lib/admin-head.php';
-				}
-
-				$this->head = new WpssoAdminHead( $plugin );
 
 				/**
 				 * The admin_menu action is run before admin_init.
@@ -96,17 +117,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_action( 'admin_init', array( $this, 'check_wp_config_constants' ), 10 );
 				add_action( 'admin_init', array( $this, 'register_setting' ) );
 
-				/**
-				 * get_notice_system() can return true, false, or an array of notice types to include in the menu.
-				 */
-				if ( $this->p->notice->get_notice_system() ) {
-
-					add_action( 'admin_bar_menu', array( $this, 'add_admin_tb_notices_menu_item' ), WPSSO_TB_NOTICE_MENU_ORDER );
-				}
-
-				add_filter( 'plugin_action_links', array( $this, 'append_wp_plugin_action_links' ), 10, 2 );
-				add_filter( 'wp_redirect', array( $this, 'profile_updated_redirect' ), -100, 2 );
-
 				if ( is_multisite() ) {
 
 					add_action( 'network_admin_menu', array( $this, 'load_network_menu_objects' ), -1000 );
@@ -115,27 +125,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					add_filter( 'network_admin_plugin_action_links', array( $this, 'append_site_wp_plugin_action_links' ), 10, 2 );
 				}
 
-		 		/**
-				 * Provide plugin data / information from the readme.txt for additional add-ons. Don't hook the
-				 * 'plugins_api_result' filter if the update manager is active as it provides more complete plugin
-				 * data than what's available from the readme.txt.
-				 */
-				if ( empty( $this->p->avail[ 'p_ext' ][ 'um' ] ) ) {	// Since WPSSO UM v1.6.0.
-
-					add_filter( 'plugins_api_result', array( $this, 'external_plugin_data' ), 1000, 3 );	// Since WP v2.7.
-				}
-
-				add_filter( 'http_request_args', array( $this, 'check_plugin_names' ), 500, 2 );
-				add_filter( 'http_request_args', array( $this, 'add_expect_header' ), 1000, 2 );
-				add_filter( 'http_request_host_is_external', array( $this, 'maybe_allow_hosts' ), 1000, 3 );
+				add_filter( 'plugin_action_links', array( $this, 'append_wp_plugin_action_links' ), 10, 2 );
 				add_filter( 'install_plugin_complete_actions', array( $this, 'plugin_complete_actions' ), 1000, 1 );
 				add_filter( 'update_plugin_complete_actions', array( $this, 'plugin_complete_actions' ), 1000, 1 );
-				add_filter( 'wp_redirect', array( $this, 'plugin_complete_redirect' ), 1000, 1 );
 
-				$this->p->util->add_plugin_filters( $this, array( 
-					'status_pro_features' => 3,
-					'status_std_features' => 3,
-				), $prio = -10000 );
+				add_filter( 'wp_redirect', array( $this, 'plugin_complete_redirect' ), 1000, 1 );
+				add_filter( 'wp_redirect', array( $this, 'profile_updated_redirect' ), -100, 2 );
+
+				/**
+				 * get_notice_system() can return true, false, or an array of notice types to include in the menu.
+				 */
+				if ( $this->p->notice->get_notice_system() ) {
+
+					add_action( 'admin_bar_menu', array( $this, 'add_admin_tb_notices_menu_item' ), WPSSO_TB_NOTICE_MENU_ORDER );
+				}
 			}
 		}
 
@@ -2614,7 +2617,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$footer_html = '<div class="admin-footer-host">';
 
-			$home_url  = strtolower( SucomUtilWP::raw_get_home_url() );
+			$home_url = strtolower( SucomUtilWP::raw_get_home_url() );
+
 			$host_name = preg_replace( '/^[^:]*:\/\//', '', $home_url );
 
 			$footer_html .= $host_name . '<br/>';
@@ -2637,6 +2641,46 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			delete_option( WPSSO_POST_CHECK_COUNT_NAME );
 			delete_option( WPSSO_TMPL_HEAD_CHECK_NAME );
 			delete_option( WPSSO_WP_CONFIG_CHECK_NAME );
+		}
+
+		/**
+		 * Since WPSSO Core v8.5.1.
+		 *
+		 * Called when the WordPress Settings > Site Address URL or the WP_HOME constant value is changed.
+		 */
+		public function site_address_changed( $old_value, $new_value, $option = 'home' ) {
+
+			static $do_once = null;
+
+			if ( true === $do_once ) {
+
+				return;	// Stop here.
+			}
+
+			$do_once = true;
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			if ( $old_value === $new_value ) {	// Nothing to do.
+
+				return;	// Stop here.
+			}
+
+			$user_id = get_current_user_id();
+
+			if ( ! $user_id ) {	// Nobody there.
+
+				return;	// Stop here.
+			}
+
+			$notice_msg = sprintf( __( 'The WordPress Site Address URL value has been changed from %1$s to %2$s.', 'wpsso' ), $old_value, $new_value );
+	
+			$notice_key = __FUNCTION__ . '_' . $old_value . '_' . $new_value;
+
+			$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
 		}
 
 		public function check_tmpl_head_attributes() {
@@ -3766,116 +3810,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->p->notice->upd( __( 'Import of plugin and add-on settings is complete.', 'wpsso' ) );
 
 			return true;
-		}
-
-		/**
-		 * Filter for 'wpsso_status_pro_features'.
-		 */
-		public function filter_status_pro_features( $features, $ext, $info ) {
-
-			$td_class        = self::$pkg[ $ext ][ 'pp' ] ? '' : 'blank';
-			$status_on       = self::$pkg[ $ext ][ 'pp' ] ? 'on' : 'rec';
-			$apikeys_tab_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_apikeys' );
-			$content_tab_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' );
-
-			$features[ '(api) Shopper Approved API' ][ 'label_url' ] = $apikeys_tab_url;
-
-			$features[ '(feature) URL Shortening Service' ][ 'label_url' ] = $apikeys_tab_url;
-
-			$features[ '(feature) Use Filtered (aka SEO) Title' ] = array(
-				'td_class'     => $td_class,
-				'label_transl' => _x( '(feature) Use Filtered (aka SEO) Title', 'lib file description', 'wpsso' ),
-				'label_url'    => $content_tab_url,
-				'status'       => $this->p->options[ 'plugin_filter_title' ] ? $status_on : 'off',
-			);
-
-			$features[ '(feature) Use WordPress Content Filters' ] = array(
-				'td_class'     => $td_class,
-				'label_transl' => _x( '(feature) Use WordPress Content Filters', 'lib file description', 'wpsso' ),
-				'label_url'    => $content_tab_url,
-				'status'       => $this->p->options[ 'plugin_filter_content' ] ? $status_on : 'off',
-			);
-
-			$features[ '(feature) Use WordPress Excerpt Filters' ] = array(
-				'td_class'     => $td_class,
-				'label_transl' => _x( '(feature) Use WordPress Excerpt Filters', 'lib file description', 'wpsso' ),
-				'label_url'    => $content_tab_url,
-				'status'       => $this->p->options[ 'plugin_filter_excerpt' ] ? $status_on : 'off',
-			);
-
-			foreach ( $this->p->cf[ 'form' ][ 'shorteners' ] as $svc_id => $name ) {
-
-				if ( 'none' === $svc_id ) {
-
-					continue;
-				}
-
-				$name_transl = _x( $name, 'option value', 'wpsso' );
-
-				$label_transl = sprintf( _x( '(api) %s Shortener API', 'lib file description', 'wpsso' ), $name_transl );
-
-				$status = 'off';
-
-				if ( isset( $this->p->m[ 'util' ][ 'shorten' ] ) ) {	// URL shortening service is enabled.
-
-					if ( $svc_id === $this->p->options[ 'plugin_shortener' ] ) {	// Shortener API service ID is selected.
-
-						$status = 'rec';
-
-						if ( $this->p->m[ 'util' ][ 'shorten' ]->get_svc_instance( $svc_id ) ) {	// False or object.
-
-							$status = 'on';
-						}
-					}
-				}
-
-				$features[ '(api) ' . $name . ' Shortener API' ] = array(
-					'td_class'     => $td_class,
-					'label_transl' => $label_transl,
-					'label_url'    => $apikeys_tab_url,
-					'status'       => $status,
-				);
-			}
-
-			return $features;
-		}
-
-		/**
-		 * Filter for 'wpsso_status_std_features'.
-		 */
-		public function filter_status_std_features( $features, $ext, $info ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			$features[ '(code) Facebook / Open Graph Meta Tags' ] = array(
-				'label_transl' => _x( '(code) Facebook / Open Graph Meta Tags', 'lib file description', 'wpsso' ),
-				'status'       => class_exists( $this->p->lca . 'opengraph' ) ? 'on' : 'rec',
-			);
-
-			$features[ '(code) Knowledge Graph Organization Markup' ] = array(
-				'label_transl' => _x( '(code) Knowledge Graph Organization Markup', 'lib file description', 'wpsso' ),
-				'status'       => 'organization' === $this->p->options[ 'site_pub_schema_type' ] ? 'on' : 'off',
-			);
-
-			$features[ '(code) Knowledge Graph Person Markup' ] = array(
-				'label_transl' => _x( '(code) Knowledge Graph Person Markup', 'lib file description', 'wpsso' ),
-				'status'       => 'person' === $this->p->options[ 'site_pub_schema_type' ] ? 'on' : 'off',
-			);
-
-			$features[ '(code) Knowledge Graph WebSite Markup' ] = array(
-				'label_transl' => _x( '(code) Knowledge Graph WebSite Markup', 'lib file description', 'wpsso' ),
-				'status'       => 'on',
-			);
-
-			$features[ '(code) Twitter Card Meta Tags' ] = array(
-				'label_transl' => _x( '(code) Twitter Card Meta Tags', 'lib file description', 'wpsso' ),
-				'status'       => class_exists( $this->p->lca . 'twittercard' ) ? 'on' : 'rec',
-			);
-
-			return $features;
 		}
 	}
 }

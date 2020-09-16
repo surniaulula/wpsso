@@ -4086,9 +4086,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Site Address (URL).
+		 * Site Address URL.
 		 *
-		 * Returns a custom site address URL or the default site address URL (aka home URL).
+		 * Returns a custom site address URL or the default site address URL (aka the 'home' URL).
 		 *
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */

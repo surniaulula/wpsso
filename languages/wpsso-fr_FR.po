@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 8.5.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-09-15 11:38-0700\n"
-"PO-Revision-Date: 2020-09-15 11:39-0700\n"
+"POT-Creation-Date: 2020-09-15 15:55-0700\n"
+"PO-Revision-Date: 2020-09-15 15:55-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -55,7 +55,7 @@ msgstr "Recadrée ou non recadrée?"
 
 #: gettext/gettext-html-setup.php:14
 msgctxt "html header"
-msgid "Upscale / Enlarge Images?"
+msgid "Upscale (Enlarge) Images?"
 msgstr "Agrandir les images?"
 
 #: gettext/gettext-html-setup.php:15
@@ -170,8 +170,8 @@ msgstr "La plupart des sites sociaux et de recherche recadrent automatiquement l
 
 #: gettext/gettext-html-setup.php:37
 msgctxt "html paragraph"
-msgid "<strong>WordPress does not upscale / enlarge images.</strong> WordPress can only create smaller images from larger full size originals. Upscaled images do not look as sharp or clear, and if enlarged too much, will look fuzzy and unappealing - not something you want to promote on social and search sites. WPSSO Core Premium includes an optional module that allows upscaling of WordPress Media Library images (up to a maximum upscale percentage). For example, a full size image of 100x200px could be upscaled up to 150x300px using a maximum of 50%, but resizing any larger would fail. If you feel strongly that upscaling small images is something you require (instead of uploading larger full size originals), you can enable the <em><strong>SSO &gt; Advanced Settings &gt; Integration &gt; Upscale Media Library Images</strong></em> option."
-msgstr ""
+msgid "<strong>WordPress does not upscale (enlarge) images.</strong> WordPress can only create smaller images from larger full size originals. Upscaled images do not look as sharp or clear, and if upscaled too much, will look fuzzy and unappealing - not something you want to promote on social and search sites. WPSSO Core Premium includes an optional module to allow upscaling of WordPress Media Library images (up to a maximum upscale percentage). For example, a full size image of 100x200px could be upscaled up to 150x300px using a maximum upscaling value of 50%, but trying to resize any larger than this would fail. If you feel strongly that upscaling small images is something you require (instead of uploading larger full size originals), you can enable the <em><strong>SSO > Advanced Settings > Integration > Upscale Media Library Images</strong></em> option."
+msgstr "<strong>WordPress n'agrandit pas les images.</strong> WordPress ne peut créer que des images plus petites à partir d'originaux de grande taille. Les images agrandies ne semblent pas aussi nettes ou claires, et si elles sont trop agrandies, elles auront l'air floues et peu attrayantes - ce n'est pas quelque chose que vous souhaitez promouvoir sur les sites sociaux et de recherche. WPSSO Core Premium comprend un module optionnel pour permettre l'agrandissement des images de la médiathèque WordPress (jusqu'à un pourcentage d'agrandissement maximal). Par exemple, une image pleine taille de 100x200px pourrait être agrandie jusqu'à 150x300px en utilisant une valeur d'agrandissement maximale de 50%, mais essayer de redimensionner plus grand que cela échouerait. Si vous pensez que l’agrandissement de petites images est quelque chose dont vous avez besoin (au lieu de télécharger des originaux de plus grande taille), vous pouvez activer l'option <em><strong>SSO &gt; Paramètres avancés &gt; Intégration &gt; Agrandir les images de la médiathèque</strong></em>."
 
 #: gettext/gettext-html-setup.php:38
 msgctxt "html paragraph"
@@ -641,7 +641,7 @@ msgstr "(api) API Soundcloud"
 #: gettext/gettext-lib-config.php:30
 msgctxt "lib file description"
 msgid "(feature) Upscale Media Library Images"
-msgstr "(feature) Agrandir les images de la bibliothèque de médias"
+msgstr "(feature) Agrandir les images de la médiathèque"
 
 #: gettext/gettext-lib-config.php:31
 msgctxt "lib file description"
@@ -2175,7 +2175,7 @@ msgstr "Appliquer vérifications taille d'image"
 #: lib/std/admin/general.php:67
 msgctxt "option label"
 msgid "Upscale Media Library Images"
-msgstr "Agrandir les images de la bibliothèque de médias"
+msgstr "Agrandir les images de la médiathèque"
 
 #: gettext/gettext-lib-pro.php:24 lib/messages.php:2573
 #: lib/pro/admin/advanced.php:138 lib/std/admin/advanced.php:140
@@ -2247,7 +2247,7 @@ msgstr "Articles, pages et types d'articles personnalisés"
 #: lib/media.php:1226 lib/media.php:2187 lib/pro/admin/advanced.php:214
 #: lib/std/admin/advanced.php:220
 msgid "Media Library"
-msgstr "la bibliothèque de médias"
+msgstr "la médiathèque"
 
 #: gettext/gettext-lib-pro.php:36 lib/pro/admin/advanced.php:215
 #: lib/std/admin/advanced.php:221
@@ -4543,8 +4543,8 @@ msgid "Image %1$s in content ignored &mdash; the image width and height is too s
 msgstr "L'image %1$s du contenu ignorée &mdash; la largeur et la hauteur de l'image sont insuffisante pour les dimensions requises par %2$s."
 
 #: lib/media.php:193
-msgid "%1$s includes an additional 'data-wp-pid' attribute for Media Library images &mdash; if this image was selected from the Media Library before %1$s was activated, try removing and adding the image back to your content."
-msgstr "%1$s inclut un attribut supplémentaire 'data-wp-pid' pour les images de la bibliothèque de médias &mdash; si cette image provient de la bibliothèque de médias, et quelle a été inséré au contenu avant que %1$s soit activé, essayez de supprimer et ré-ajouter à nouveau l'image au contenu."
+msgid "%1$s includes an additional 'data-wp-pid' attribute for WordPress Media Library images &mdash; if this image was selected from the Media Library before %1$s was activated, try removing and adding the image back to your content."
+msgstr ""
 
 #: lib/media.php:212
 msgid "<strong>Suggested minimum dimension for uploaded images</strong> (to satisfy all %1$d image sizes): %2$d by %3$d pixels."
@@ -4995,7 +4995,7 @@ msgstr "Vous pouvez entrer un URL d'image par défaut au lieu de choisir un ID d
 
 #: lib/messages.php:724
 msgid "The image URL option allows you to use an image outside of a managed collection (WordPress Media Library or NextGEN Gallery), and/or a smaller logo style image."
-msgstr "L'option URL d'image vous permet d'utiliser une image à l'extérieur d'une collection gérée (bibliothèque de médias WordPress ou NextGEN Gallery), et/ou utiliser une image plus petite de style logo."
+msgstr "L'option URL d'image vous permet d'utiliser une image à l'extérieur d'une collection gérée (médiathèque WordPress ou NextGEN Gallery), et/ou utiliser une image plus petite de style logo."
 
 #: lib/messages.php:726
 msgid "The image should be at least %s or more in width and height."
@@ -5154,16 +5154,16 @@ msgid "When this option is enabled, full size images used for meta tags and Sche
 msgstr "Lorsque cette option est activée, les images de pleine grandeur, utilisées pour les balises méta et balisage Schéma, doivent être égales (ou supérieur) aux dimensions d'image que vous avez définies dans les réglages %s &mdash; les images qui ne respectent pas, ou ne dépassent pas, les exigences minimales seront ignorées."
 
 #: lib/messages.php:939
-msgid "WordPress does not upscale / enlarge images &mdash; WordPress can only create smaller images from larger full size originals."
-msgstr "WordPress n'agrandit pas les images &mdash; WordPress ne peut créer que des images plus petites à partir d'originaux plus grands."
+msgid "WordPress does not upscale (enlarge) images &mdash; WordPress can only create smaller images from larger full size originals."
+msgstr ""
 
 #: lib/messages.php:941
-msgid "Upscaled images do not look as sharp or clear, and if enlarged too much, will look fuzzy and unappealing &mdash; not something you want to promote on social and search sites."
-msgstr "Les images agrandies ne semblent pas aussi nettes et claires, et si elles sont trop agrandies, peuvent apparaître floues et moins attrayantes - pas quelque chose que vous souhaitez promouvoir sur les sites sociaux et de recherche."
+msgid "Upscaled images do not look as sharp or clear, and if upscaled too much, will look fuzzy and unappealing - not something you want to promote on social and search sites."
+msgstr ""
 
 #: lib/messages.php:943
-msgid "%1$s includes a feature that allows upscaling of WordPress Media Library images for %2$s image sizes (up to a maximum upscale percentage)."
-msgstr "%1$s comprend une fonctionnalité qui permet d'agrandir les images de la bibliothèque de médias WordPress pour %2$s (jusqu'à un pourcentage d'agrandissement maximal)."
+msgid "%1$s includes an optional module to allow upscaling of WordPress Media Library images (up to a maximum upscale percentage)."
+msgstr ""
 
 #: lib/messages.php:945
 msgid "Do not enable this option unless you want to publish lower quality images on social and search sites."
@@ -5606,7 +5606,7 @@ msgstr "Ajouter une image masquée pour Pinterest"
 
 #: lib/messages.php:1702
 msgid "Add a \"nopin\" attribute to images from the WordPress Media Library to prevent the Pin It browser button from suggesting those images."
-msgstr "Ajouter un attribut \"nopin\" aux images de la bibliothèque de médias de WordPress pour empêcher que le bouton de navigateur Pin It suggère ces images."
+msgstr "Ajouter un attribut \"nopin\" aux images de la médiathèque WordPress pour empêcher que le bouton de navigateur Pin It suggère ces images."
 
 #: lib/messages.php:1704
 msgid "If this option is enabled, you should also enable the \"%s\" option to provide an image for the Pin It browser button."
@@ -5784,9 +5784,9 @@ msgstr "Activez une extension AMP pour créer et valider les pages AMP."
 msgid "The example image container uses the minimum recommended Facebook image dimensions of %s."
 msgstr "Le conteneur d'image de cet exemple utilise les dimensions d'image Facebook recommandées minimales de %s."
 
-#: lib/messages.php:2124
-msgid "You can edit images in the <a href=\"%s\">WordPress Media Library</a> to select a preferred cropping area (ie. top or bottom) and optimize the image social and SEO texts."
-msgstr "Vous pouvez éditer les images dans la <a href=\"%s\">bibliothèque de médias WordPress</a> pour sélectionner une zone de recadrage préférée (par exemple, en haut ou en bas) et optimiser les textes sociaux et SEO de l'image."
+#: lib/messages.php:2124 lib/messages.php:2216
+msgid "You can edit images in the <a href=\"%s\">WordPress Media Library</a> to select a preferred cropping area (ie. top or bottom), along with optimizing the image social and SEO texts."
+msgstr "Vous pouvez éditer les images dans la <a href=\"%s\">médiathèque WordPress</a> pour sélectionner une zone de recadrage préférée (comme exemple, en haut ou en bas) et optimiser les textes sociaux et SEO de l'image."
 
 #: lib/messages.php:2134
 msgid "oEmbed HTML is provided by the WordPress or theme <code>%s</code> template, which may not use all available oEmbed data."
@@ -5815,10 +5815,6 @@ msgstr "Le Schéma Question peut être une page enfant d'un parent Schéma FAQPa
 #: lib/messages.php:2200
 msgid "The Schema Question document title is a summary of the question and the content text is the complete answer for that question."
 msgstr "Le titre du document Schéma Question est un résumé de la question et le texte du contenu est la réponse complète à cette question."
-
-#: lib/messages.php:2216
-msgid "You can edit images in the <a href=\"%s\">WordPress Media Library</a> to select a preferred cropping area (ie. top or bottom), along with optimizing the image social and SEO texts."
-msgstr "Vous pouvez éditer les images dans la <a href=\"%s\">bibliothèque de médias WordPress</a> pour sélectionner une zone de recadrage préférée (comme exemple, en haut ou en bas) et optimiser les textes sociaux et SEO de l'image."
 
 #: lib/messages.php:2230
 msgid "The robots meta tag lets you utilize a granular, webpage-specific approach to controlling how an individual webpage should be indexed and served to users in Google Search results."
@@ -6043,7 +6039,7 @@ msgstr "La définition de la constante %1$s dans votre fichier %2$s contient une
 
 #: lib/messages.php:2691
 msgid "WordPress uses the %1$s constant to provide a single unique canonical URL for each webpage and Media Library content."
-msgstr "WordPress utilise la constante %1$s pour fournir une seule URL canonique pour chaque page Web et le contenu de la bibliothèque de médias."
+msgstr "WordPress utilise la constante %1$s pour fournir une seule URL canonique pour chaque page Web et le contenu de la médiathèque."
 
 #: lib/messages.php:2693
 msgid "A changing %1$s value will create different canonical URLs in your webpages, leading to duplicate content penalties from Google, incorrect social share counts, possible broken media links, mixed content issues, and SSL certificate errors."
@@ -7895,3 +7891,6 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
+
+#~ msgid "You can edit images in the <a href=\"%s\">WordPress Media Library</a> to select a preferred cropping area (ie. top or bottom) and optimize the image social and SEO texts."
+#~ msgstr "Vous pouvez éditer les images dans la <a href=\"%s\">médiathèque WordPress</a> pour sélectionner une zone de recadrage préférée (par exemple, en haut ou en bas) et optimiser les textes sociaux et SEO de l'image."

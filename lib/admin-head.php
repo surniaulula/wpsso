@@ -33,7 +33,9 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( ! SucomUtil::get_const( 'DOING_AJAX' ) ) {
+			$doing_ajax = SucomUtil::get_const( 'DOING_AJAX' );
+
+			if ( ! $doing_ajax ) {
 
 				add_action( 'admin_head', array( $this, 'update_count_notice' ), -200 );
 				add_action( 'admin_head', array( $this, 'requires_notices' ), -100 );

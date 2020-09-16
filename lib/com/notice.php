@@ -1233,12 +1233,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				if ( SucomUpdate::is_configured( $ext ) ) {	// Since WPSSO UM v1.0.
 
-					$uerr = SucomUpdate::get_umsg( $ext );	// Since WPSSO UM v1.0.
+					$ue = SucomUpdate::get_umsg( $ext );	// Since WPSSO UM v1.0.
 
-					if ( ! empty( $uerr ) ) {
+					if ( ! empty( $ue ) ) {
 
-						$msg_text   = preg_replace( '/<!--spoken-->(.*?)<!--\/spoken-->/Us', ' ', $uerr );
-						$msg_spoken = preg_replace( '/<!--not-spoken-->(.*?)<!--\/not-spoken-->/Us', ' ', $uerr );
+						$msg_text   = preg_replace( '/<!--spoken-->(.*?)<!--\/spoken-->/Us', ' ', $ue );
+						$msg_spoken = preg_replace( '/<!--not-spoken-->(.*?)<!--\/not-spoken-->/Us', ' ', $ue );
 						$msg_spoken = SucomUtil::decode_html( SucomUtil::strip_html( $msg_spoken ) );
 						$msg_key    = sanitize_key( $msg_spoken );
 

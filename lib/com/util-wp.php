@@ -202,13 +202,15 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			if ( 'query' === $context && is_singular() ) {
 
 				$post_id = get_queried_object_id();
-				$post    = get_post( $post_id );
+
+				$post = get_post( $post_id );
 
 			} elseif ( 'post' === $context ) {
 
 				$post = get_post( $id );
 
 				if ( ! empty( $post->ID ) ) {
+
 					$post_id = $post->ID;
 				}
 			}
@@ -219,8 +221,9 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 				$post_type = get_post_type_object( $post->post_type ); 
 
-				if ( 'page' === $post->post_type && (int) $post->ID === (int) get_option( 'page_on_front' ) &&
-					'page' === get_option( 'show_on_front' ) ) {
+				if ( 'page' === $post->post_type &&
+					(int) $post->ID === (int) get_option( 'page_on_front' ) &&
+						'page' === get_option( 'show_on_front' ) ) {
 
 					$shortlink = self::raw_home_url( '/' );
 
@@ -252,6 +255,8 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			global $pagenow;
 
+			$opt_name = 'home';
+
 			if ( empty( $blog_id ) || ! is_multisite() ) {
 
 				if ( defined( 'WP_HOME' ) && WP_HOME ) {
@@ -259,21 +264,25 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 					$url = untrailingslashit( WP_HOME );
 
 					/**
-					 * Compare value stored in database and maybe fix inconsistencies.
+					 * Compare the value stored in the database and fix inconsistencies.
 					 */
-					if ( self::raw_do_option( 'get', 'home' ) !== $url ) {
+					$db_url = self::raw_do_option( $action = 'get', $opt_name );	// Returns false by default.
 
-						self::raw_do_option( 'update', 'home', $url );
+					if ( $db_url !== $url ) {
+
+						self::raw_do_option( $action = 'update', $opt_name, $url );
 					}
 
 				} else {
-					$url = self::raw_do_option( 'get', 'home' );
+
+					$url = self::raw_do_option( $action = 'get', $opt_name );	// Returns false by default.
 				}
 
 			} else {
+
 				switch_to_blog( $blog_id );
 
-				$url = self::raw_do_option( 'get', 'home' );
+				$url = self::raw_do_option( $action = 'get', $opt_name );	// Returns false by default.
 
 				restore_current_blog();
 			}
@@ -283,7 +292,9 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				if ( is_ssl() && ! is_admin() && 'wp-login.php' !== $pagenow ) {
 
 					$scheme = 'https';
+
 				} else {
+
 					$scheme = parse_url( $url, PHP_URL_SCHEME );
 				}
 			}
@@ -315,6 +326,8 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		 */
 		public static function raw_get_site_url( $blog_id = null, $path = '', $scheme = null ) {
 
+			$opt_name = 'siteurl';
+
 			if ( empty( $blog_id ) || ! is_multisite() ) {
 
 				if ( defined( 'WP_SITEURL' ) && WP_SITEURL ) {
@@ -322,21 +335,25 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 					$url = untrailingslashit( WP_SITEURL );
 
 					/**
-					 * Compare value stored in database and maybe fix inconsistencies.
+					 * Compare the value stored in the database and fix inconsistencies.
 					 */
-					if ( self::raw_do_option( 'get', 'siteurl' ) !== $url ) {
+					$db_url = self::raw_do_option( $action = 'get', $opt_name );	// Returns false by default.
 
-						self::raw_do_option( 'update', 'siteurl', $url );
+					if ( $db_url !== $url ) {
+
+						self::raw_do_option( $action = 'update', $opt_name, $url );
 					}
 
 				} else {
-					$url = self::raw_do_option( 'get', 'siteurl' );
+
+					$url = self::raw_do_option( $action = 'get', $opt_name );	// Returns false by default.
 				}
 
 			} else {
+
 				switch_to_blog( $blog_id );
 
-				$url = self::raw_do_option( 'get', 'siteurl' );
+				$url = self::raw_do_option( $action = 'get', $opt_name );	// Returns false by default.
 
 				restore_current_blog();
 			}
@@ -374,6 +391,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			$url = trim( $url );
 
 			if ( substr( $url, 0, 2 ) === '//' ) {
+
 				$url = 'http:' . $url;
 			}
 
@@ -395,75 +413,63 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		}
 
 		/**
-		 * Temporarily disable filter and action hooks before calling get_option(), update_option, and delete_option().
+		 * Temporarily disable filter and action hooks before calling get_option(), update_option(), and delete_option().
 		 */
-		public static function raw_do_option( $action, $opt_name, $val = null ) {
+		public static function raw_do_option( $action, $opt_name, $value = null, $default = false ) {
 
 			global $wp_filter, $wp_actions;
 
-			$saved_wp_filter  = $wp_filter;
-			$saved_wp_actions = $wp_actions;
+			$saved_filter  = $wp_filter;
+			$saved_actions = $wp_actions;
 
-			foreach ( array(
-				'sanitize_option_' . $opt_name,
-				'default_option_' . $opt_name,
-				'pre_option_' . $opt_name,
-				'option_' . $opt_name,	
-				'pre_update_option_' . $opt_name,
-				'pre_update_option',
-			) as $tag ) {
+			$wp_filter  = array();
+			$wp_actions = array();
 
-				unset( $wp_filter[ $tag ] );
-			}
-
-			$ret = null;
+			$success   = null;
+			$old_value = false;
 
 			switch( $action ) {
 
 				case 'get':
 				case 'get_option':
 
-					$ret = get_option( $opt_name, $default = $val );
+					$success = get_option( $opt_name, $default );
 
 					break;
 
 				case 'update':
 				case 'update_option':
 
-					foreach ( array(
-						'update_option',
-						'update_option_' . $opt_name,
-						'updated_option',
-					) as $tag ) {
-						unset( $wp_actions[ $tag ] );
-					}
+					$old_value = get_option( $opt_name, $default );
 
-					$ret = update_option( $opt_name, $val );
+					$success = update_option( $opt_name, $value );
 
 					break;
 
 				case 'delete':
 				case 'delete_option':
 
-					foreach ( array(
-						'delete_option',
-						'delete_option_' . $opt_name,
-						'deleted_option',
-					) as $tag ) {
-						unset( $wp_actions[ $tag ] );
-					}
-
-					$ret = delete_option( $opt_name );
+					$success = delete_option( $opt_name );
 
 					break;
 			}
 
-			$wp_filter  = $saved_wp_filter;
-			$wp_actions = $saved_wp_actions;
+			$wp_filter  = $saved_filter;
+			$wp_actions = $saved_actions;
 
-			unset( $saved_wp_filter, $saved_wp_actions );
+			unset( $saved_filter, $saved_actions );
 
-			return $ret;
+			switch( $action ) {
+
+				case 'update':
+				case 'update_option':
+
+					do_action( 'sucom_update_option_' . $opt_name, $old_value, $value, $opt_name );
+
+					break;
+			}
+
+			return $success;
 		}
 
 		public static function raw_delete_transient( $transient ) { 
@@ -507,7 +513,8 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 					if ( ! isset( $alloptions[ $transient_option ] ) ) {
 
 						$transient_timeout = '_transient_timeout_' . $transient;
-						$timeout           = get_option( $transient_timeout );
+
+						$timeout = get_option( $transient_timeout );	// Returns false by default.
 
 						if ( false !== $timeout && $timeout < time() ) {
 
@@ -521,7 +528,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 				if ( ! isset( $value ) ) {
 
-					$value = get_option( $transient_option );
+					$value = get_option( $transient_option );	// Returns false by default.
 				}
 			}
 
@@ -541,7 +548,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				$transient_timeout = '_transient_timeout_' . $transient;
 				$transient_option  = '_transient_' . $transient;
 
-				if ( false === get_option( $transient_option ) ) {
+				if ( false === get_option( $transient_option ) ) {	// Returns false by default.
 
 					$autoload = 'yes';
 
@@ -567,7 +574,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 					if ( $expiration ) {
 
-						if ( false === get_option( $transient_timeout ) ) {
+						if ( false === get_option( $transient_timeout ) ) {	// Returns false by default.
 
 							delete_option( $transient_option );
 
@@ -858,21 +865,21 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		public static function role_exists( $role ) {
 
-			$ret = false;
+			$exists = false;
 
 			if ( ! empty( $role ) ) {	// Just in case.
 
 				if ( function_exists( 'wp_roles' ) ) {
 
-					$ret = wp_roles()->is_role( $role );
+					$exists = wp_roles()->is_role( $role );
 
 				} else {
 
-					$ret = $GLOBALS[ 'wp_roles' ]->is_role( $role );
+					$exists = $GLOBALS[ 'wp_roles' ]->is_role( $role );
 				}
 			}
 
-			return $ret;
+			return $exists;
 		}
 
 		public static function get_roles_user_ids( array $roles, $blog_id = null, $limit = '' ) {
@@ -1011,6 +1018,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			$user_names = array();
 
 			foreach ( get_users( $user_args ) as $user_obj ) {
+
 				$user_names[ $user_obj->ID ] = $user_obj->display_name;
 			}
 
@@ -1052,7 +1060,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 				} else {
 
-					$width = get_option( $size_name . '_size_w' );
+					$width = get_option( $size_name . '_size_w' );	// Returns false by default.
 				}
 
 				if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'height' ] ) ) {
@@ -1061,7 +1069,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 				} else {
 
-					$height = get_option( $size_name . '_size_h' );
+					$height = get_option( $size_name . '_size_h' );	// Returns false by default.
 				}
 
 				if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'crop' ] ) ) {
@@ -1070,7 +1078,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 				} else {
 
-					$crop = get_option( $size_name . '_crop' );
+					$crop = get_option( $size_name . '_crop' );	// Returns false by default.
 				}
 
 				if ( ! is_array( $crop ) ) {
@@ -1329,11 +1337,11 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			if ( $site ) {
 
-				$opts = get_site_option( $opt_name, array() );
+				$opts = get_site_option( $opt_name, $default = array() );	// Returns an array by default.
 
 			} else {
 
-				$opts = get_option( $opt_name, array() );
+				$opts = get_option( $opt_name, $default = array() );	// Returns an array by default.
 			}
 
 			if ( $protect && isset( $opts[ $key ] ) ) {
@@ -1362,11 +1370,11 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			if ( $site ) {
 
-				$opts = get_site_option( $opt_name, array() );
+				$opts = get_site_option( $opt_name, $default = array() );	// Returns an array by default.
 
 			} else {
 
-				$opts = get_option( $opt_name, array() );
+				$opts = get_option( $opt_name, $default = array() );	// Returns an array by default.
 			}
 
 			if ( isset( $opts[ $key ] ) ) {
@@ -1386,11 +1394,11 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			if ( $site ) {
 
-				$opts = get_site_option( $opt_name, array() );
+				$opts = get_site_option( $opt_name, $default = array() );	// Returns an array by default.
 
 			} else {
 
-				$opts = get_option( $opt_name, array() );
+				$opts = get_option( $opt_name, $default = array() );	// Returns an array by default.
 			}
 
 			if ( isset( $opts[ $key ] ) ) {
