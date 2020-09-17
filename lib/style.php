@@ -168,7 +168,9 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					break;	// Stop here.
 			}
 
-			$this->add_admin_page_style( $hook_name );
+			$this->register_admin_page_style( $hook_name );
+
+			$this->enqueue_admin_page_style( $hook_name );
 		}
 
 		public function add_plugins_body_class( $classes ) {
@@ -178,7 +180,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			return $classes;
 		}
 
-		private function add_admin_page_style( $hook_name ) {
+		private function register_admin_page_style( $hook_name ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -206,7 +208,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				$this->p->debug->log( 'enqueueing style sucom-admin-page' );
 			}
 
-			wp_enqueue_style( 'sucom-admin-page',
+			wp_register_style( 'sucom-admin-page',
 				WPSSO_URLPATH . 'css/com/admin-page.' . $this->file_ext,
 					array(), $this->version );
 
@@ -646,6 +648,43 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 				$this->p->debug->mark( 'create and minify admin page style' );	// End timer.
 			}
+		}
+
+		/**
+		 * This method is run a second time by the 'admin_enqueue_scripts' action with a priority of PHP_INT_MAX to make
+		 * sure another plugin (like Squirrly SEO) has not cleared our admin page styles from the queue.
+		 */
+		public function enqueue_admin_page_style( $hook_name ) {
+
+			$style_handles = array( 'sucom-admin-page' );
+
+			static $enqueued = null;	// Default value for first execution.
+
+			if ( ! $enqueued ) {		// Re-check the $wp_styles queue at priority PHP_INT_MAX.
+
+				add_action( 'admin_enqueue_scripts', array( $this, __FUNCTION__ ), PHP_INT_MAX );
+			}
+
+			global $wp_styles;
+
+			foreach ( $style_handles as $handle ) {
+
+				if ( ! $enqueued || ! isset( $wp_styles->queue ) || ! in_array( $handle, $wp_styles->queue ) ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'enqueueing style ' . $handle );
+					}
+
+					wp_enqueue_style( $handle );
+
+				} elseif ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( $handle . ' style already enqueued' );
+				}
+			}
+
+			$enqueued = true;	// Signal that we've already run once.
 		}
 
 		private function plugin_install_inline_style( $hook_name, $plugin_slug = false ) {	// $hook_name = plugin-install.php

@@ -1,10 +1,12 @@
 <?php
 
 if ( ! defined( 'ABSPATH' ) ) {
+
         die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! defined( 'SUEXT_README_MARKDOWN' ) ) {
+
 	define( 'SUEXT_README_MARKDOWN', dirname(__FILE__) . '/markdown.php' );
 }
 
@@ -12,11 +14,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 
 	class SuextParseReadme {
 
-		function __construct( &$debug = false ) {
-
-			if ( ! empty( $this->debug->enabled ) ) {
-				$this->debug->mark();
-			}
+		function __construct() {
 		}
 
 		function parse_readme( $file ) {
@@ -341,10 +339,11 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 			if ( $markdown ) {
 
 				if ( ! function_exists( 'suext_markdown' ) ) {
+
 					require_once SUEXT_README_MARKDOWN;
 				}
 
-				$text = suext_markdown( $text, $this->debug );
+				$text = suext_markdown( $text );
 			}
 
 			$allowed = array(

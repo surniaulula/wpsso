@@ -1,41 +1,49 @@
 <?php
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! defined( 'SUEXT_MARKDOWN_EMPTY_ELEMENT_SUFFIX' ) ) {
+
 	define( 'SUEXT_MARKDOWN_EMPTY_ELEMENT_SUFFIX', ' />');
 }
 
 if ( ! defined( 'SUEXT_MARKDOWN_TAB_WIDTH' ) ) {
+
 	define( 'SUEXT_MARKDOWN_TAB_WIDTH', 4 );
 }
 
 if ( ! defined( 'SUEXT_MARKDOWN_FN_LINK_TITLE' ) ) {
+
 	define( 'SUEXT_MARKDOWN_FN_LINK_TITLE', '' );
 }
 
 if ( ! defined( 'SUEXT_MARKDOWN_FN_BACKLINK_TITLE' ) ) {
+
 	define( 'SUEXT_MARKDOWN_FN_BACKLINK_TITLE', '' );
 }
 
 if ( ! defined( 'SUEXT_MARKDOWN_FN_LINK_CLASS' ) ) {
+
 	define( 'SUEXT_MARKDOWN_FN_LINK_CLASS', '' );
 }
 
 if ( ! defined( 'SUEXT_MARKDOWN_FN_BACKLINK_CLASS' ) ) {
+
 	define( 'SUEXT_MARKDOWN_FN_BACKLINK_CLASS', '' );
 }
 
 if ( ! function_exists( 'suext_markdown' ) ) {
 
-	function suext_markdown( $text, &$debug = false ) {
+	function suext_markdown( $text ) {
 
 		static $parser;
 
 		if ( ! isset( $parser ) ) {
-			$parser = new SuextMarkdownParserExtra( $debug );
+
+			$parser = new SuextMarkdownParserExtra();
 		}
 
 		return $parser->transform( $text );
@@ -70,11 +78,7 @@ if ( ! class_exists( 'SuextMarkdownParser' ) ) {
 		var $predef_urls = array();
 		var $predef_titles = array();
 
-		function __construct( &$debug = false ) {
-
-			if ( ! empty( $this->debug->enabled ) ) {
-				$this->debug->mark();
-			}
+		function __construct() {
 
 			$this->_initDetab();
 			$this->prepareItalicsAndBold();
@@ -1511,10 +1515,7 @@ if ( ! class_exists( 'SuextMarkdownParser' ) ) {
 		# Predefined abbreviations.
 		var $predef_abbr = array();
 
-		function __construct( &$debug = false ) {
-
-			if ( ! empty( $this->debug->enabled ) )
-				$this->debug->mark();
+		function __construct() {
 
 			# Add extra escapable characters before parent constructor
 			# initialize the table.
@@ -1538,7 +1539,7 @@ if ( ! class_exists( 'SuextMarkdownParser' ) ) {
 				"doAbbreviations"    => 70,
 				);
 
-			parent::__construct( $debug );
+			parent::__construct();
 		}
 
 

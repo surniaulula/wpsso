@@ -214,7 +214,9 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 					break;
 			}
 
-			$this->add_admin_page_script( $hook_name );
+			$this->register_admin_page_script( $hook_name );
+
+			$this->enqueue_admin_page_script( $hook_name );
 		}
 
 		/**
@@ -322,12 +324,7 @@ jQuery( document ).ready( function(){
 			}
 		}
 
-		private function add_admin_page_script( $hook_name ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
+		public function register_admin_page_script( $hook_name ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -339,15 +336,43 @@ jQuery( document ).ready( function(){
 					array( 'jquery' ), $this->version, $in_footer = true );
 
 			wp_localize_script( 'sucom-admin-page', 'sucomAdminPageL10n', $this->get_admin_page_script_data() );
+		}
 
-			if ( $this->p->debug->enabled ) {
+		/**
+		 * This method is run a second time by the 'admin_enqueue_scripts' action with a priority of PHP_INT_MAX to make
+		 * sure another plugin (like Squirrly SEO) has not cleared our admin page scripts from the queue.
+		 */
+		public function enqueue_admin_page_script( $hook_name ) {
 
-				$this->p->debug->log( 'enqueueing script sucom-admin-page' );
+			$script_handles = array( 'sucom-admin-page', 'jquery' );
+
+			static $enqueued = null;	// Default value for first execution.
+
+			if ( ! $enqueued ) {		// Re-check the $wp_scripts queue at priority PHP_INT_MAX.
+
+				add_action( 'admin_enqueue_scripts', array( $this, __FUNCTION__ ), PHP_INT_MAX );
 			}
 
-			wp_enqueue_script( 'sucom-admin-page' );
+			global $wp_scripts;
 
-			wp_enqueue_script( 'jquery' );	// Required for dismissible notices.
+			foreach ( $script_handles as $handle ) {
+
+				if ( ! $enqueued || ! isset( $wp_scripts->queue ) || ! in_array( $handle, $wp_scripts->queue ) ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'enqueueing script ' . $handle );
+					}
+
+					wp_enqueue_script( $handle );
+
+				} elseif ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( $handle . ' script already enqueued' );
+				}
+			}
+
+			$enqueued = true;	// Signal that we've already run once.
 		}
 
 		/**
@@ -406,6 +431,5 @@ jQuery( document ).ready( function(){
 				'_select_image' => __( 'Select Image', 'wpsso' ),
 			);
 		}
-
 	}
 }

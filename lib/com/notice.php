@@ -1507,6 +1507,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				#wpadminbar .' . $this->lca . '-notice.updated > div {
 					min-height:50px;
 				}
+				#wpadminbar .' . $this->lca . '-notice.notice.notice-alt {
+					display:block !important;	/* Undo Squirrly SEO display:none !important. */
+				}
 				#wpadminbar div.' . $this->lca . '-notice.notice-copy {
 					font-size:0.9em;
 					line-height:1;
@@ -1719,6 +1722,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			if ( $this->use_cache ) {
 
 				if ( method_exists( 'SucomUtil', 'minify_css' ) ) {
+
 					$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->lca );
 				}
 
@@ -1751,14 +1755,18 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			jQuery.post( ajaxurl, ajaxDismissData );
 		}
 
+		/**
+		 * We use remove() instead of hide() for containers with "display:block !important;".
+		 */
 		if ( dismiss_msg ) {
 
-			notice.children( "button.notice-dismiss" ).hide();
+			notice.children( "button.notice-dismiss" ).remove();
 
 			jQuery( this ).closest( "div.notice-message" ).html( dismiss_msg );
 
 		} else {
-			notice.hide();
+
+			notice.remove();
 		}
 	} ); 
 
