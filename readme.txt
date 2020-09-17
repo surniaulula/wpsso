@@ -309,7 +309,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.5.1-dev.2 (2020/09/16)**
+**Version 8.5.1-dev.3 (2020/09/17)**
 
 * **New Features**
 	* None.
@@ -317,7 +317,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Additional translation string adjustments for the SSO &gt; Setup Guide.
 	* Added an acknowledgement message when the Site Address URL value has changed.
 * **Bugfixes**
-	* None.
+	* Fixed All In One SEO Pack plugin detection by using its new 'AIOSEOP_Core' class.
 * **Developer Notes**
 	* Added a new WpssoAdminFilters class in lib/admin-filters.php.
 * **Requires At Least**
@@ -326,7 +326,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 **Version 8.5.0 (2020/09/15)**
 
-**The SSO &gt; Setup Guide content is now available for translation and the complete French translation will be available shortly.**
+**The SSO &gt; Setup Guide content is now available for translation and the complete French translation of the Setup Guide will be available shortly.**
 
 **If you are fluent in a language other than English, and would like to assist translating the WPSSO Core option labels, help text, notice messages, and the Setup Guide, [you can contribute to the translation of WPSSO Core here](https://translate.wordpress.org/projects/wp-plugins/wpsso/).**
 
@@ -516,9 +516,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.5.1-dev.2 =
+= 8.5.1-dev.3 =
 
-(2020/09/16) Additional translation string adjustments for the SSO &gt; Setup Guide. Added an acknowledgement message when the Site Address URL value has changed.
+(2020/09/17) Additional translation string adjustments for the Setup Guide. Added an acknowledgement message when the Site Address URL value has changed. Fixed All In One SEO Pack plugin detection.
 
 = 8.5.0 =
 
