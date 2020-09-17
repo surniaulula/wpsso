@@ -1041,7 +1041,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						}
 					}
 
-					$payload[ 'msg_html' ] = $this->get_notice_html( $msg_type, $payload, true );	// $notice_alt is true.
+					$payload[ 'msg_html' ] = $this->get_notice_html( $msg_type, $payload, $notice_alt = true );
 
 					$json_notices[ $msg_type ][ $msg_key ] = $payload;
 				}

@@ -660,7 +660,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			static $enqueued = null;	// Default value for first execution.
 
-			if ( ! $enqueued ) {		// Re-check the $wp_styles queue at priority PHP_INT_MAX.
+			if ( ! $enqueued ) {	// Re-check the $wp_styles queue at priority PHP_INT_MAX.
 
 				add_action( 'admin_enqueue_scripts', array( $this, __FUNCTION__ ), PHP_INT_MAX );
 			}
