@@ -66,8 +66,9 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 			$result = $wpdb->get_results( $db_query, OBJECT_K );
 
 			/**
-			 * https://dev.mysql.com/doc/refman/8.0/en/program-variables.html
-			 * https://dev.mysql.com/doc/refman/8.0/en/packet-too-large.html
+			 * See https://dev.mysql.com/doc/refman/8.0/en/program-variables.html.
+			 *
+			 * See https://dev.mysql.com/doc/refman/8.0/en/packet-too-large.html.
 			 */
 			if ( isset( $result[ 'max_allowed_packet' ]->Value ) ) {
 
@@ -97,8 +98,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 		private function conflict_check_php() {
 
 			/**
-			 * Load the WP class libraries to avoid triggering a known bug in EWWW when applying the 'wp_image_editors'
-			 * filter.
+			 * Load WP class libraries to avoid triggering a bug in EWWW when applying the 'wp_image_editors' filter.
 			 */
 			require_once ABSPATH . WPINC . '/class-wp-image-editor.php';
 			require_once ABSPATH . WPINC . '/class-wp-image-editor-gd.php';
@@ -235,12 +235,15 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 			$log_pre = 'seo plugin conflict detected - ';
 
 			/**
-			 * All in One SEO Pack
+			 * All in One SEO Pack.
 			 */
 			if ( $this->p->avail[ 'seo' ][ 'aioseop' ] ) {
 
 				$opts = get_option( 'aioseop_options' );
 
+				/**
+				 * Check for Open Graph.
+				 */
 				if ( ! empty( $opts[ 'modules' ][ 'aiosp_feature_manager_options' ][ 'aiosp_feature_manager_enable_opengraph' ] ) ) {
 
 					// translators: Please ignore - translation uses a different text domain.
@@ -263,6 +266,9 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
 
+				/**
+				 * Check for Knowledge Graph.
+				 */
 				if ( ! empty( $opts[ 'aiosp_schema_markup' ] ) ) {
 
 					// translators: Please ignore - translation uses a different text domain.
@@ -289,7 +295,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 			}
 
 			/**
-			 * SEO Ultimate
+			 * SEO Ultimate.
 			 */
 			if ( $this->p->avail[ 'seo' ][ 'seou' ] ) {
 
@@ -305,6 +311,9 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 				if ( ! empty( $opts[ 'modules' ] ) && is_array( $opts[ 'modules' ] ) ) {
 
+					/**
+					 * Check for Open Graph.
+					 */
 					if ( array_key_exists( 'opengraph', $opts[ 'modules' ] ) && $opts[ 'modules' ][ 'opengraph' ] !== -10 ) {
 
 						// translators: Please ignore - translation uses a different text domain.
@@ -322,16 +331,16 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 			}
 
 			/**
-			 * Squirrly SEO
+			 * Squirrly SEO.
 			 */
 			if ( $this->p->avail[ 'seo' ][ 'sq' ] ) {
 
 				$opts = json_decode( get_option( 'sq_options' ), $assoc = true );
 
 				/**
-				 * Squirrly SEO > SEO Settings > Social Media > Social Media Options Metabox
+				 * Check for Open Graph and Twitter Cards.
 				 */
-				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=sq_seo#socials' );
+				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=sq_seosettings&tab=social' );
 
 				$settings_link = '<a href="' . $settings_url . '">' .
 					// translators: Please ignore - translation uses a different text domain.
@@ -339,15 +348,11 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					// translators: Please ignore - translation uses a different text domain.
 					__( 'SEO Settings', 'squirrly-seo' ) . ' &gt; ' .
 					// translators: Please ignore - translation uses a different text domain.
-					__( 'Social Media', 'squirrly-seo' ) . ' &gt; ' .
-					// translators: Please ignore - translation uses a different text domain.
-					__( 'Social Media Options', 'squirrly-seo' ) . '</a>';
+					__( 'Social Media', 'squirrly-seo' ) . '</a>';
 
 				foreach ( array(
-					'sq_auto_facebook' => '"<strong>' . __( 'Add the Social Open Graph protocol so that your Facebook shares look good.',
-						'wpsso' ) . '</strong>"',
-					'sq_auto_twitter' => '"<strong>' . __( 'Add the Twitter card in your tweets.',
-						'wpsso' ) . '</strong>"',
+					'sq_auto_facebook' => '<strong>' . __( 'Activate Open Graph', 'wpsso' ) . '</strong>',
+					'sq_auto_twitter'  => '<strong>' . __( 'Activate Twitter Card', 'wpsso' ) . '</strong>',
 				) as $opt_key => $label_transl ) {
 
 					if ( ! empty( $opts[ $opt_key ] ) ) {
@@ -357,15 +362,15 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 							$this->p->debug->log( $log_pre . 'squirrly seo ' . $opt_key . ' option is enabled' );
 						}
 
-						$this->p->notice->err( $notice_pre . sprintf( __( 'please disable the %1$s option in the %2$s metabox.',
+						$this->p->notice->err( $notice_pre . sprintf( __( 'please disable the %1$s option in the %2$s settings.',
 							'wpsso' ), $label_transl, $settings_link ) );
 					}
 				}
 
 				/**
-				 * Squirrly SEO > SEO Settings > SEO Settings > Let Squirrly SEO Optimize This Blog Metabox
+				 * Check for Knowledge Graph.
 				 */
-				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=sq_seo#seo' );
+				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=sq_seosettings&tab=jsonld' );
 
 				$settings_link = '<a href="' . $settings_url . '">' .
 					// translators: Please ignore - translation uses a different text domain.
@@ -373,12 +378,10 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					// translators: Please ignore - translation uses a different text domain.
 					__( 'SEO Settings', 'squirrly-seo' ) . ' &gt; ' .
 					// translators: Please ignore - translation uses a different text domain.
-					__( 'SEO Settings', 'squirrly-seo' ) . ' &gt; ' .
-					// translators: Please ignore - translation uses a different text domain.
-					__( 'Let Squirrly SEO Optimize This Blog', 'squirrly-seo' ) . '</a>';
+					__( 'JSON LD', 'squirrly-seo' ) . '</a>';
 
 				foreach ( array(
-					'sq_auto_jsonld' => '"<strong>' . __( 'adds the Json-LD metas for Semantic SEO', 'wpsso' ) . '</strong>"',
+					'sq_auto_jsonld' => '<strong>' . __( 'Activate JSON-LD', 'wpsso' ) . '</strong>',
 				) as $opt_key => $label_transl ) {
 
 					if ( ! empty( $opts[ $opt_key ] ) ) {
@@ -395,7 +398,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 			}
 
 			/**
-			 * The SEO Framework
+			 * The SEO Framework.
 			 */
 			if ( $this->p->avail[ 'seo' ][ 'autodescription' ] ) {
 
@@ -404,7 +407,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				$opts = $tsf->get_all_options();
 
 				/**
-				 * The SEO Framework > Social Meta Settings Metabox
+				 * Check for Open Graph and Twitter Cards.
 				 */
 				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=theseoframework-settings' );
 
@@ -419,16 +422,16 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 				foreach ( array(
 					// translators: Please ignore - translation uses a different text domain.
-					'og_tags'       => '<strong>' . __( 'Output Open Graph meta tags?', 'autodescription' ) . '</strong>',
+					'og_tags'           => '<strong>' . __( 'Output Open Graph meta tags?', 'autodescription' ) . '</strong>',
 					// translators: Please ignore - translation uses a different text domain.
-					'facebook_tags' => '<strong>' . __( 'Output Facebook meta tags?', 'autodescription' ) . '</strong>',
+					'facebook_tags'     => '<strong>' . __( 'Output Facebook meta tags?', 'autodescription' ) . '</strong>',
 					// translators: Please ignore - translation uses a different text domain.
-					'twitter_tags'  => '<strong>' . __( 'Output Twitter meta tags?', 'autodescription' ) . '</strong>',
+					'twitter_tags'      => '<strong>' . __( 'Output Twitter meta tags?', 'autodescription' ) . '</strong>',
 					// translators: Please ignore - translation uses a different text domain.
 					'post_publish_time' => '<strong>' . sprintf( __( 'Add %1$s to %2$s?', 'autodescription' ),
 						'article:published_time', $posts_i18n ) . '</strong>',
 					// translators: Please ignore - translation uses a different text domain.
-					'post_modify_time' => '<strong>' . sprintf( __( 'Add %1$s to %2$s?', 'autodescription' ),
+					'post_modify_time'  => '<strong>' . sprintf( __( 'Add %1$s to %2$s?', 'autodescription' ),
 						'article:modified_time', $posts_i18n ) . '</strong>',
 				) as $opt_key => $label_transl ) {
 
@@ -445,7 +448,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				}
 
 				/**
-				 * The SEO Framework > Schema Settings Metabox
+				 * Check for Knowledge Graph.
 				 */
 				$settings_link = '<a href="' . $settings_url . '">' .
 					// translators: Please ignore - translation uses a different text domain.
@@ -470,14 +473,14 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 			}
 
 			/**
-			 * WP Meta SEO
+			 * WP Meta SEO.
 			 */
 			if ( $this->p->avail[ 'seo' ][ 'wpmetaseo' ] ) {
 
 				$opts = get_option( '_metaseo_settings' );
 
 				/**
-				 * WP Meta SEO > Settings > Global
+				 * Check for Open Graph and Twitter Cards.
 				 */
 				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=metaseo_settings' );
 
@@ -526,14 +529,14 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 			}
 
 			/**
-			 * Yoast SEO
+			 * Yoast SEO.
 			 */
 			if ( $this->p->avail[ 'seo' ][ 'wpseo' ] ) {
 
 				$opts = get_option( 'wpseo_social' );
 
 				/**
-				 * Yoast SEO > Social > Accounts Tab
+				 * Check for Social Pages.
 				 */
 				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=wpseo_social#top#accounts' );
 
@@ -547,19 +550,19 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 				foreach ( array(
 					// translators: Please ignore - translation uses a different text domain.
-					'facebook_site'   => '<strong>' . __( 'Facebook Page URL', 'wordpress-seo' ) . '</strong>',
+					'facebook_site' => '<strong>' . __( 'Facebook Page URL', 'wordpress-seo' ) . '</strong>',
 					// translators: Please ignore - translation uses a different text domain.
-					'twitter_site'    => '<strong>' . __( 'Twitter Username', 'wordpress-seo' ) . '</strong>',
+					'twitter_site'  => '<strong>' . __( 'Twitter Username', 'wordpress-seo' ) . '</strong>',
 					// translators: Please ignore - translation uses a different text domain.
-					'instagram_url'   => '<strong>' . __( 'Instagram URL', 'wordpress-seo' ) . '</strong>',
+					'instagram_url' => '<strong>' . __( 'Instagram URL', 'wordpress-seo' ) . '</strong>',
 					// translators: Please ignore - translation uses a different text domain.
-					'linkedin_url'    => '<strong>' . __( 'LinkedIn URL', 'wordpress-seo' ) . '</strong>',
+					'linkedin_url'  => '<strong>' . __( 'LinkedIn URL', 'wordpress-seo' ) . '</strong>',
 					// translators: Please ignore - translation uses a different text domain.
-					'myspace_url'     => '<strong>' . __( 'MySpace URL', 'wordpress-seo' ) . '</strong>',
+					'myspace_url'   => '<strong>' . __( 'MySpace URL', 'wordpress-seo' ) . '</strong>',
 					// translators: Please ignore - translation uses a different text domain.
-					'pinterest_url'   => '<strong>' . __( 'Pinterest URL', 'wordpress-seo' ) . '</strong>',
+					'pinterest_url' => '<strong>' . __( 'Pinterest URL', 'wordpress-seo' ) . '</strong>',
 					// translators: Please ignore - translation uses a different text domain.
-					'youtube_url'     => '<strong>' . __( 'YouTube URL', 'wordpress-seo' ) . '</strong>',
+					'youtube_url'   => '<strong>' . __( 'YouTube URL', 'wordpress-seo' ) . '</strong>',
 				) as $opt_key => $label_transl ) {
 
 					if ( ! empty( $opts[ $opt_key ] ) ) {
@@ -575,7 +578,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				}
 
 				/**
-				 * Yoast SEO > Social > Faceboook Tab
+				 * Check for Open Graph.
 				 */
 				if ( ! empty( $opts[ 'opengraph' ] ) ) {
 
@@ -626,7 +629,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				}
 
 				/**
-				 * Yoast SEO > Social > Twitter Tab
+				 * Check for Twitter Cards.
 				 */
 				if ( ! empty( $opts[ 'twitter' ] ) ) {
 
@@ -652,36 +655,6 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
 			}
-
-			/**
-			 * Yoast SEO for WooCommerce
-			 */
-			if ( $this->p->avail[ 'seo' ][ 'wpseo-wc' ] ) {
-
-				$ext = 'wpssojson';
-				$pkg = $this->p->admin->plugin_pkg_info();
-
-				$wpseo_wc_label = 'Yoast SEO: WooCommerce';
-
-				if ( ! empty( $pkg[ $this->p->lca ][ 'pp' ] ) && ! empty( $pkg[ $ext ][ 'pp' ] ) ) {
-
-					$plugins_url = is_multisite() ? network_admin_url( 'plugins.php', null ) :
-						get_admin_url( $blog_id = null, 'plugins.php' );
-
-					$plugins_url = add_query_arg( array( 's' => 'yoast seo' ), $plugins_url );
-
-					$notice_msg = sprintf( __( 'The combination of %1$s and its %2$s add-on provide much better Schema markup for WooCommerce products than the %3$s plugin.', 'wpsso' ), $pkg[ $this->p->lca ][ 'short_pro' ], $pkg[ $ext ][ 'short_pro' ], $wpseo_wc_label ) . ' ';
-
-					$notice_msg .= sprintf( __( 'There is absolutely no advantage in continuing to use the %1$s plugin.', 'wpsso' ), $wpseo_wc_label ) . ' ';
-
-					$notice_msg .= sprintf( __( 'To avoid adding incorrect and confusing Schema markup in your webpages, <a href="%1$s">please deactivate the %2$s plugin immediately</a>.' ), $plugins_url, $wpseo_wc_label );
-
-					$notice_key = 'deactivate-wpseo-woocommerce';
-
-					$this->p->notice->err( $notice_msg, null, $notice_key );
-				}
-			}
-
 		}
 
 		private function conflict_check_vc() {

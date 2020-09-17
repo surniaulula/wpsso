@@ -201,6 +201,11 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			$cache_salt .= ')';
 			$cache_id   = $cache_md5_pre . md5( $cache_salt );
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'enqueueing style sucom-admin-page' );
+			}
+
 			wp_enqueue_style( 'sucom-admin-page',
 				WPSSO_URLPATH . 'css/com/admin-page.' . $this->file_ext,
 					array(), $this->version );
@@ -211,7 +216,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'admin page style retrieved from cache' );
+						$this->p->debug->log( 'adding sucom-admin-page inline style from cache' );
 					}
 
 					wp_add_inline_style( 'sucom-admin-page', $custom_style_css );	// Since WP v3.3.0.
@@ -615,6 +620,11 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			$custom_style_css = apply_filters( $filter_name, $custom_style_css );
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'saving sucom-admin-page inline style to cache' );
+			}
+
 			if ( $this->use_cache ) {
 
 				if ( method_exists( 'SucomUtil', 'minify_css' ) ) {
@@ -623,6 +633,11 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				}
 
 				set_transient( $cache_id, $custom_style_css, $cache_exp_secs );
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'adding sucom-admin-page inline style' );
 			}
 
 			wp_add_inline_style( 'sucom-admin-page', $custom_style_css );	// Since WP v3.3.0.

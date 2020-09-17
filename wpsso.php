@@ -42,8 +42,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $admin;		// WpssoAdmin (admin menus and settings page loader).
 		public $cache;		// SucomCache (object and file caching).
 		public $check;		// WpssoCheck.
-		public $conflict;	// WpssoConflict (admin plugin conflict checks).
 		public $compat;		// WpssoCompat (3rd party plugin and theme compatibility actions and filters).
+		public $conflict;	// WpssoConflict (admin plugin conflict checks).
 		public $debug;		// SucomDebug or SucomNoDebug.
 		public $edit;		// WpssoEdit
 		public $head;		// WpssoHead.
@@ -623,8 +623,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->debug->mark( 'init plugin' );	// Begin timer.
 			}
 
-			$is_admin = is_admin() ? true : false;	// Only check once.
-
+			$is_admin   = is_admin() ? true : false;	// Only check once.
 			$doing_ajax = SucomUtil::get_const( 'DOING_AJAX' );
 
 			if ( $this->debug->enabled ) {

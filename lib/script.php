@@ -261,6 +261,11 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			/**
 			 * Make sure to run this script last, so WordPress does not move notices out of the toolbar.
 			 */
+			if ( ! empty( $this->p->debug->enabled ) ) {
+
+				$this->p->debug->log( 'adding jQuery call for sucomUpdateToolbar()' );
+			}
+
 			?><script type="text/javascript">
 
 				jQuery( document ).ready( function() {
@@ -324,11 +329,21 @@ jQuery( document ).ready( function(){
 				$this->p->debug->mark();
 			}
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'registering script sucom-admin-page' );
+			}
+
 			wp_register_script( 'sucom-admin-page',
 				WPSSO_URLPATH . 'js/com/jquery-admin-page.' . $this->file_ext, 
 					array( 'jquery' ), $this->version, $in_footer = true );
 
 			wp_localize_script( 'sucom-admin-page', 'sucomAdminPageL10n', $this->get_admin_page_script_data() );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'enqueueing script sucom-admin-page' );
+			}
 
 			wp_enqueue_script( 'sucom-admin-page' );
 

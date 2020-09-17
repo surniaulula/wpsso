@@ -51,6 +51,7 @@ function sucomUpdateToolbar( lca ) {
 	 * Just in case - no use getting notices if there's nothing to get.
 	 */
 	if ( ! sucomAdminPageL10n._tb_notices ) {
+
 		return;
 	}
 
