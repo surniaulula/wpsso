@@ -306,19 +306,19 @@ msgstr ""
 #: gettext/gettext-html-setup.php:40
 msgctxt "html paragraph"
 msgid ""
-"If you have activated the WPSSO Schema JSON-LD Markup add-on, you can also "
+"If you have activated the <a href=\"https://wordpress.org/plugins/wpsso-"
+"schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a>, you can also "
 "submit URLs to the <a href=\"https://search.google.com/test/rich-results"
 "\">Google Rich Results Test Tool</a> or the <a href=\"https://search.google."
 "com/structured-data/testing-tool/u/0/\">Google Structured Data Test Tool</"
-"a>. WPSSO Core includes all the meta tags social sites need, along with "
-"Schema markup for Google's Knowledge Graph in the site home page. To express "
-"more complex Schema markup you must activate the <a href=\"https://wordpress."
-"org/plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a>. "
-"Some Schema types may also require additional organization and/or location "
-"information from the <a href=\"https://wordpress.org/plugins/wpsso-"
-"organization/\">WPSSO Organization Markup add-on</a> and/or <a href="
-"\"https://wordpress.org/plugins/wpsso-plm/\">WPSSO Place and Local SEO "
-"Markup add-on</a>."
+"a>. WPSSO Core includes all the meta tags that social sites need, along with "
+"Schema markup for Google's Knowledge Graph in the site home page, but to "
+"create Schema markup for your post / page content, you must activate the "
+"WPSSO Schema JSON-LD Markup add-on. Some Schema types may also require "
+"additional organization and/or location information from the <a href="
+"\"https://wordpress.org/plugins/wpsso-organization/\">WPSSO Organization "
+"Markup add-on</a> and/or <a href=\"https://wordpress.org/plugins/wpsso-plm/"
+"\">WPSSO Place and Local SEO Markup add-on</a>."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:41
@@ -3140,7 +3140,7 @@ msgid ""
 "installed."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:160 lib/post.php:1131
+#: gettext/gettext-lib-pro.php:160 lib/post.php:1135
 #: lib/pro/media/youtube.php:187
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
@@ -3724,7 +3724,7 @@ msgstr ""
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:1135 lib/post.php:901 lib/term.php:685 lib/user.php:681
+#: lib/admin.php:1135 lib/post.php:905 lib/term.php:688 lib/user.php:681
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -7858,158 +7858,158 @@ msgctxt "option label"
 msgid "Pinterest Pin It"
 msgstr ""
 
-#: lib/post.php:226
+#: lib/post.php:230
 msgctxt "module name"
 msgid "post"
 msgstr ""
 
-#: lib/post.php:554 lib/register.php:347 lib/term.php:485 lib/user.php:461
+#: lib/post.php:558 lib/register.php:347 lib/term.php:488 lib/user.php:461
 #: lib/util.php:810 lib/util.php:3363
 msgid "%s warning:"
 msgstr ""
 
-#: lib/post.php:555 lib/term.php:486 lib/user.php:463 lib/util.php:812
+#: lib/post.php:559 lib/term.php:489 lib/user.php:463 lib/util.php:812
 #: lib/util.php:3365
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
-#: lib/post.php:556
+#: lib/post.php:560
 msgid ""
 "Slow query detected - get_posts() took %1$0.3f secs to get the children of "
 "post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:837 lib/post.php:1454 lib/schema.php:3310 lib/term.php:639
+#: lib/post.php:841 lib/post.php:1458 lib/schema.php:3310 lib/term.php:642
 #: lib/user.php:634
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/post.php:1049
+#: lib/post.php:1053
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:1080
+#: lib/post.php:1084
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:1082
+#: lib/post.php:1086
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:1083
+#: lib/post.php:1087
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:1112
+#: lib/post.php:1116
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:1114
+#: lib/post.php:1118
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:1116
+#: lib/post.php:1120
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:1117
+#: lib/post.php:1121
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:1145
+#: lib/post.php:1149
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1160
+#: lib/post.php:1164
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1177
+#: lib/post.php:1181
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1204
+#: lib/post.php:1208
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:1249
+#: lib/post.php:1253
 msgid "The webpage at %1$s does not include any Schema JSON-LD script(s)."
 msgstr ""
 
-#: lib/post.php:1251
+#: lib/post.php:1255
 msgid ""
 "Complete and accurate Schema JSON-LD markup is highly recommended for better "
 "ranking and click-through rates in search results."
 msgstr ""
 
-#: lib/post.php:1253
+#: lib/post.php:1257
 msgid ""
 "Consider activating the %1$s add-on to include Schema JSON-LD markup for "
 "Google Rich Results."
 msgstr ""
 
-#: lib/post.php:1274
+#: lib/post.php:1278
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:1292
+#: lib/post.php:1296
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1292
+#: lib/post.php:1296
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML &mdash; review the <a href=\"%1$s\">W3C Markup Validation "
 "Service</a> results and correct any errors."
 msgstr ""
 
-#: lib/post.php:1292
+#: lib/post.php:1296
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:1330
+#: lib/post.php:1334
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1332
+#: lib/post.php:1336
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1340
+#: lib/post.php:1344
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1344
+#: lib/post.php:1348
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1348
+#: lib/post.php:1352
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1507
+#: lib/post.php:1511
 msgid "Save a draft or publish to display these options."
 msgstr ""
 
-#: lib/post.php:1748
+#: lib/post.php:1752
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -8641,18 +8641,18 @@ msgctxt "submit button"
 msgid "Reset Metabox Layout"
 msgstr ""
 
-#: lib/term.php:175
+#: lib/term.php:178
 msgctxt "module name"
 msgid "term"
 msgstr ""
 
-#: lib/term.php:487
+#: lib/term.php:490
 msgid ""
 "Slow query detected - get_posts() took %1$0.3f secs to get posts for term ID "
 "%2$d in taxonomy %3$s (%4$s)."
 msgstr ""
 
-#: lib/term.php:886
+#: lib/term.php:889
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 

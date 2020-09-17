@@ -44,9 +44,9 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 					$this->tb_notices = $this->p->notice->get_notice_system();
 
-					add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_editor_assets' ), -1000 );
+					add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_editor_assets' ), WPSSO_BLOCK_ASSETS_PRIORITY );
 
-					add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), -1000 );
+					add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), WPSSO_ADMIN_SCRIPTS_PRIORITY );
 
 					/**
 					 * Add jQuery to update the toolbar menu item counter and container on page load.

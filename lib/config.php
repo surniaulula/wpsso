@@ -4065,13 +4065,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/**
 			 * Hook priorities.
 			 */
-			$var_const[ 'WPSSO_ADD_MENU_PRIORITY' ]         = -20;
-			$var_const[ 'WPSSO_ADD_SUBMENU_PRIORITY' ]      = -10;
-			$var_const[ 'WPSSO_ADD_COLUMN_PRIORITY' ]       = 100;
-			$var_const[ 'WPSSO_HEAD_PRIORITY' ]             = 10;
-			$var_const[ 'WPSSO_META_SAVE_PRIORITY' ]        = -100;	// Save our custom post/term/user meta before clearing the cache.
-			$var_const[ 'WPSSO_META_CACHE_PRIORITY' ]       = -10;	// Clear our cache before priority 10 (where most caching plugins are hooked).
-			$var_const[ 'WPSSO_SEO_SEED_FILTERS_PRIORITY' ] = 100;
+			$var_const[ 'WPSSO_ADD_MENU_PRIORITY' ]      = -20;	// 'admin_menu' hook priority.
+			$var_const[ 'WPSSO_ADD_SUBMENU_PRIORITY' ]   = -10;	// 'admin_menu' hook priority.
+			$var_const[ 'WPSSO_ADD_COLUMN_PRIORITY' ]    = 100;
+			$var_const[ 'WPSSO_ADMIN_SCRIPTS_PRIORITY' ] = -1000;	// 'admin_enqueue_scripts' hook priority.
+			$var_const[ 'WPSSO_BLOCK_ASSETS_PRIORITY' ]  = -1000;	// 'enqueue_block_editor_assets' hook priority.
+			$var_const[ 'WPSSO_HEAD_PRIORITY' ]          = 10;
+			$var_const[ 'WPSSO_META_SAVE_PRIORITY' ]     = -100;	// Save our custom post/term/user meta before clearing the cache.
+			$var_const[ 'WPSSO_META_CACHE_PRIORITY' ]    = -10;	// Clear our cache before priority 10 (where most caching plugins are hooked).
+			$var_const[ 'WPSSO_SEO_SEED_PRIORITY' ]      = 100;
 
 			/**
 			 * PHP cURL library settings.

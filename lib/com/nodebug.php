@@ -28,4 +28,3 @@ if ( ! class_exists( 'SucomNoDebug' ) ) {
 		public function get_html() { return ''; }
 	}
 }
-

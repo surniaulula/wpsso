@@ -113,24 +113,27 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( is_array( $post_type_names ) ) {
 
-					foreach ( $post_type_names as $name ) {
+					foreach ( $post_type_names as $post_type_name ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'adding column filters for post type ' . $name );
+							$this->p->debug->log( 'adding column filters for post type ' . $post_type_name );
 						}
 
 						/**
 						 * See https://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns.
 						 */
-						add_filter( 'manage_' . $name . '_posts_columns', array( $this, 'add_post_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
+						add_filter( 'manage_' . $post_type_name . '_posts_columns',
+							array( $this, 'add_post_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
 
-						add_filter( 'manage_edit-' . $name . '_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
+						add_filter( 'manage_edit-' . $post_type_name . '_sortable_columns',
+							array( $this, 'add_sortable_columns' ), 10, 1 );
 
 						/**
 						 * See https://codex.wordpress.org/Plugin_API/Action_Reference/manage_$post_type_posts_custom_column.
 						 */
-						add_action( 'manage_' . $name . '_posts_custom_column', array( $this, 'show_column_content' ), 10, 2 );
+						add_action( 'manage_' . $post_type_name . '_posts_custom_column',
+							array( $this, 'show_column_content' ), 10, 2 );
 					}
 				}
 
@@ -139,7 +142,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->debug->log( 'adding column filters for media library' );
 				}
 
-				add_filter( 'manage_media_columns', array( $this, 'add_media_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );	// Default is 100.
+				add_filter( 'manage_media_columns', array( $this, 'add_media_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
+
 				add_filter( 'manage_upload_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
 
 				add_action( 'manage_media_custom_column', array( $this, 'show_column_content' ), 10, 2 );
