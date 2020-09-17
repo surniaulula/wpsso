@@ -311,13 +311,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 **Version 8.5.1-dev.3 (2020/09/17)**
 
+**The SSO &gt; Setup Guide content is now available for translation. If you are fluent in a language other than English, and would like to assist translating the WPSSO Core option labels, help text, notice messages, or Setup Guide, [you can contribute to the translation of WPSSO Core here](https://translate.wordpress.org/projects/wp-plugins/wpsso/).**
+
 * **New Features**
 	* None.
 * **Improvements**
-	* Additional translation string adjustments for the SSO &gt; Setup Guide.
+	* Additional translation string updates for the SSO &gt; Setup Guide.
 	* Added an acknowledgement message when the Site Address URL value has changed.
 * **Bugfixes**
-	* Fixed All In One SEO Pack plugin detection by using its new 'AIOSEOP_Core' class.
+	* Fixed All In One SEO Pack plugin detection by using the "AIOSEOP_Core" class name.
 	* Fixed Squirrly SEO conflict notification texts and links for the latest version of Squirrly SEO.
 * **Developer Notes**
 	* Added a new WpssoAdminFilters class in lib/admin-filters.php.
@@ -331,7 +333,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 **The SSO &gt; Setup Guide content is now available for translation and the complete French translation of the Setup Guide will be available shortly.**
 
-**If you are fluent in a language other than English, and would like to assist translating the WPSSO Core option labels, help text, notice messages, and the Setup Guide, [you can contribute to the translation of WPSSO Core here](https://translate.wordpress.org/projects/wp-plugins/wpsso/).**
+**If you are fluent in a language other than English, and would like to assist translating the WPSSO Core option labels, help text, notice messages, or Setup Guide, [you can contribute to the translation of WPSSO Core here](https://translate.wordpress.org/projects/wp-plugins/wpsso/).**
 
 * **New Features**
 	* None.
@@ -521,7 +523,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 8.5.1-dev.3 =
 
-(2020/09/17) Additional translation string adjustments for the Setup Guide. Added an acknowledgement message when the Site Address URL value has changed. Fixed All In One SEO Pack plugin detection.
+(2020/09/17) Additional translation string updates for the Setup Guide. Fixed All In One SEO Pack plugin detection. Fixed Squirrly SEO conflict notification texts and links.
 
 = 8.5.0 =
 
