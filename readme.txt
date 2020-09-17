@@ -321,6 +321,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed Squirrly SEO conflict notification texts and links for the latest version of Squirrly SEO.
 * **Developer Notes**
 	* Added a new WpssoAdminFilters class in lib/admin-filters.php.
+	* Added a new WPSSO_ADMIN_SCRIPTS_PRIORITY constant.
+	* Renamed the WPSSO_SEO_SEED_FILTERS_PRIORITY constant to WPSSO_SEO_SEED_PRIORITY.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.
