@@ -318,6 +318,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added an acknowledgement message when the Site Address URL value has changed.
 * **Bugfixes**
 	* Fixed All In One SEO Pack plugin detection by using its new 'AIOSEOP_Core' class.
+	* Fixed Squirrly SEO conflict notification texts and links for the latest version of Squirrly SEO.
 * **Developer Notes**
 	* Added a new WpssoAdminFilters class in lib/admin-filters.php.
 * **Requires At Least**
