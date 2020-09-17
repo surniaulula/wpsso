@@ -107,7 +107,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 						 */
 						if ( 'admin' === $sub_dir && $is_admin ) {
 
-							$this->p->avail[ $sub_dir ][ $id ] = true;
+							$this->p->avail[ $sub_dir ][ 'any' ] = $this->p->avail[ $sub_dir ][ $id ] = true;
 						}
 
 						/**

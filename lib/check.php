@@ -421,7 +421,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 								case 'aioseop':
 
-									$chk[ 'function' ] = 'aioseop_init_class';
+									$chk[ 'class' ] = 'AIOSEOP_Core';
 
 									break;
 
