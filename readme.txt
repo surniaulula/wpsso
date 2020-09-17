@@ -322,6 +322,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed All In One SEO Pack plugin detection by using the "AIOSEOP_Core" class name.
 	* Fixed Squirrly SEO conflict notification texts and links for the latest version of Squirrly SEO.
 * **Developer Notes**
+	* Added enqueue recursion to work around the Squirrly SEO `fixEnqueueErrors()` and `clearStyles()` methods that break toolbar notifications.
 	* Added a new WpssoAdminFilters class in lib/admin-filters.php.
 	* Added a new WPSSO_ADMIN_SCRIPTS_PRIORITY constant.
 	* Added a new WPSSO_BLOCK_ASSETS_PRIORITY constant.
