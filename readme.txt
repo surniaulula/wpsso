@@ -309,7 +309,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.5.1-dev.3 (2020/09/17)**
+**Version 8.5.1-dev.4 (2020/09/17)**
 
 **The SSO &gt; Setup Guide content is now available for translation. If you are fluent in a language other than English, and would like to assist translating the WPSSO Core option labels, help text, notice messages, or Setup Guide, [you can contribute to the translation of WPSSO Core here](https://translate.wordpress.org/projects/wp-plugins/wpsso/).**
 
@@ -324,6 +324,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Added a new WpssoAdminFilters class in lib/admin-filters.php.
 	* Added a new WPSSO_ADMIN_SCRIPTS_PRIORITY constant.
+	* Added a new WPSSO_BLOCK_ASSETS_PRIORITY constant.
 	* Renamed the WPSSO_SEO_SEED_FILTERS_PRIORITY constant to WPSSO_SEO_SEED_PRIORITY.
 * **Requires At Least**
 	* PHP v5.6.
@@ -519,7 +520,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.5.1-dev.3 =
+= 8.5.1-dev.4 =
 
 (2020/09/17) Additional translation string updates for the Setup Guide. Fixed All In One SEO Pack plugin detection. Fixed Squirrly SEO conflict notification texts and links.
 
