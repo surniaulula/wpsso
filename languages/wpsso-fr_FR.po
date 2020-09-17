@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 8.5.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-09-17 08:35-0700\n"
-"PO-Revision-Date: 2020-09-17 08:38-0700\n"
+"POT-Creation-Date: 2020-09-17 08:50-0700\n"
+"PO-Revision-Date: 2020-09-17 08:50-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -180,8 +180,8 @@ msgstr "Soumettez quelques exemples d'articles, de pages, etc. au <a href=\"http
 
 #: gettext/gettext-html-setup.php:39
 msgctxt "html paragraph"
-msgid "Submit an example post or page to the <a href=\"http://developers.pinterest.com/rich_pins/validator/\">Pinterest Rich Pins Validator</a>. Note that the Pinterest validator recognizes only known Rich Pin types (article, recipe, product, etc.) - your home page and WordPress archive pages are generally not valid Rich Pin types. If you haven't already requested Rich Pins support for your website from Pinterest, you can submit a request when validating your first example post or page."
-msgstr ""
+msgid "Submit an example post or page to the <a href=\"http://developers.pinterest.com/rich_pins/validator/\">Pinterest Rich Pins Validator</a>. Note that the Pinterest validator recognizes only known Rich Pin types (article, recipe, product, etc.) - your home page and WordPress archive pages are generally not valid Rich Pin types. If you haven't already requested Rich Pin approval from Pinterest for your website, you can submit a request when validating your first example post or page."
+msgstr "Soumettez un exemple d'article ou de page au <a href=\"http://developers.pinterest.com/rich_pins/validator/\">Validateur Pinterest Rich Pins</a>. Notez que le validateur Pinterest reconnaît uniquement les types Rich Pin connus (article, recette, produit, etc.) - votre page d'accueil et les pages d'archives WordPress ne sont généralement pas des types Rich Pin valides. Si vous n'avez pas encore demandé l'approbation de Rich Pin auprès de Pinterest pour votre site Web, vous pouvez soumettre une demande lors de la validation de votre premier exemple d'article ou de page."
 
 #: gettext/gettext-html-setup.php:40
 msgctxt "html paragraph"
@@ -2966,7 +2966,7 @@ msgid "Rate my Post"
 msgstr "Rate my Post"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:207 lib/conflict.php:491
+#: gettext/gettext-lib-pro.php:207 lib/conflict.php:494
 #: lib/pro/rating/rate-my-post.php:68
 msgid "Settings"
 msgstr "Settings"
@@ -3926,7 +3926,7 @@ msgstr "Use Schema.org Markup"
 msgid "General Settings"
 msgstr "General Settings"
 
-#: lib/conflict.php:292 lib/conflict.php:445 lib/conflict.php:469
+#: lib/conflict.php:292 lib/conflict.php:448 lib/conflict.php:472
 msgid "please uncheck the %1$s option in the %2$s metabox."
 msgstr "SVP décocher l'option %1$s dans le métabox %2$s."
 
@@ -3950,12 +3950,12 @@ msgid "please disable the %1$s module in the %2$s settings."
 msgstr "SVP désactiver le module %1$s dans les réglages %2$s."
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:347 lib/conflict.php:377
+#: lib/conflict.php:347 lib/conflict.php:379
 msgid "Squirrly"
 msgstr "Squirrly"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:349 lib/conflict.php:379
+#: lib/conflict.php:349 lib/conflict.php:381
 msgid "SEO Settings"
 msgstr "SEO Settings"
 
@@ -3964,191 +3964,194 @@ msgstr "SEO Settings"
 msgid "Social Media"
 msgstr "Social Media"
 
-#: lib/conflict.php:354
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/conflict.php:355
 msgid "Activate Open Graph"
 msgstr "Activer Open Graph"
 
-#: lib/conflict.php:355
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/conflict.php:357
 msgid "Activate Twitter Card"
 msgstr "Activer carte Twitter"
 
-#: lib/conflict.php:365 lib/conflict.php:526 lib/conflict.php:603
-#: lib/conflict.php:654
+#: lib/conflict.php:367 lib/conflict.php:529 lib/conflict.php:606
+#: lib/conflict.php:657
 msgid "please disable the %1$s option in the %2$s settings."
 msgstr "SVP désactiver l'option %1$s dans les réglages %2$s."
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:381
+#: lib/conflict.php:383
 msgid "JSON LD"
-msgstr ""
+msgstr "JSON LD"
 
-#: lib/conflict.php:384
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/conflict.php:387
 msgid "Activate JSON-LD"
-msgstr ""
+msgstr "Activer JSON-LD"
 
-#: lib/conflict.php:394
+#: lib/conflict.php:397
 msgid "please disable the %1$s option in the %2$s metabox."
 msgstr "SVP désactiver l'option %1$s dans le métabox %2$s."
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:416 lib/conflict.php:455
+#: lib/conflict.php:419 lib/conflict.php:458
 msgid "The SEO Framework"
 msgstr "The SEO Framework"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:418
+#: lib/conflict.php:421
 msgid "Social Meta Settings"
 msgstr "Social Meta Settings"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:421
+#: lib/conflict.php:424
 msgid "Posts"
 msgstr "Posts"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:425
+#: lib/conflict.php:428
 msgid "Output Open Graph meta tags?"
 msgstr "Output Open Graph meta tags?"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:427
+#: lib/conflict.php:430
 msgid "Output Facebook meta tags?"
 msgstr "Output Facebook meta tags?"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:429
+#: lib/conflict.php:432
 msgid "Output Twitter meta tags?"
 msgstr "Output Twitter meta tags?"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:431 lib/conflict.php:434
+#: lib/conflict.php:434 lib/conflict.php:437
 msgid "Add %1$s to %2$s?"
 msgstr "Add %1$s to %2$s?"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:457
+#: lib/conflict.php:460
 msgid "Schema Settings"
 msgstr "Schema Settings"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:462
+#: lib/conflict.php:465
 msgid "Output Authorized Presence?"
 msgstr "Output Authorized Presence?"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:489
+#: lib/conflict.php:492
 msgid "WP Meta SEO"
 msgstr "WP Meta SEO"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:493
+#: lib/conflict.php:496
 msgid "Global"
 msgstr "Global"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:497
+#: lib/conflict.php:500
 msgid "Facebook profile URL"
 msgstr "Facebook profile URL"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:499 lib/conflict.php:610
+#: lib/conflict.php:502 lib/conflict.php:613
 msgid "Facebook App ID"
 msgstr "ID d'application Facebook"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:501 lib/conflict.php:555
+#: lib/conflict.php:504 lib/conflict.php:558
 msgid "Twitter Username"
 msgstr "Twitter Username"
 
-#: lib/conflict.php:511 lib/conflict.php:575 lib/conflict.php:627
+#: lib/conflict.php:514 lib/conflict.php:578 lib/conflict.php:630
 msgid "please remove the %1$s option value in the %2$s settings."
 msgstr "SVP supprimez la valeur de l'option %1$s dans les réglages %2$s."
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:519
+#: lib/conflict.php:522
 msgid "Social sharing block"
 msgstr "Social sharing block"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:545 lib/conflict.php:592 lib/conflict.php:616
-#: lib/conflict.php:643
+#: lib/conflict.php:548 lib/conflict.php:595 lib/conflict.php:619
+#: lib/conflict.php:646
 msgid "Yoast SEO"
 msgstr "Yoast SEO"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:547 lib/conflict.php:594 lib/conflict.php:618
-#: lib/conflict.php:645
+#: lib/conflict.php:550 lib/conflict.php:597 lib/conflict.php:621
+#: lib/conflict.php:648
 msgid "Social"
 msgstr "Social"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:549
+#: lib/conflict.php:552
 msgid "Accounts"
 msgstr "Comptes"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:553
+#: lib/conflict.php:556
 msgid "Facebook Page URL"
 msgstr "Facebook Page URL"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:557
+#: lib/conflict.php:560
 msgid "Instagram URL"
 msgstr "Instagram URL"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:559
+#: lib/conflict.php:562
 msgid "LinkedIn URL"
 msgstr "LinkedIn URL"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:561
+#: lib/conflict.php:564
 msgid "MySpace URL"
 msgstr "MySpace URL"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:563
+#: lib/conflict.php:566
 msgid "Pinterest URL"
 msgstr "Pinterest URL"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:565
+#: lib/conflict.php:568
 msgid "YouTube URL"
 msgstr "YouTube URL"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:586
+#: lib/conflict.php:589
 msgid "Add Open Graph meta data"
 msgstr "Add Open Graph meta data"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:596 lib/conflict.php:620
+#: lib/conflict.php:599 lib/conflict.php:623
 msgid "Facebook"
 msgstr "Facebook"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:637
+#: lib/conflict.php:640
 msgid "Add Twitter Card meta data"
 msgstr "Add Twitter Card meta data"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:647
+#: lib/conflict.php:650
 msgid "Twitter"
 msgstr "Twitter"
 
-#: lib/conflict.php:681
+#: lib/conflict.php:684
 msgid "An issue with WPBakery Visual Composer has been detected."
 msgstr "Un problème avec WPBakery Visual Composer a été détecté."
 
-#: lib/conflict.php:683
+#: lib/conflict.php:686
 msgid "WPBakery Visual Composer version %s and older are known to have a bug in their jQuery event handling code."
 msgstr "WPBakery Visual Composer version %s et versions antérieures sont connus pour avoir un bogue dans leur code de gestion des événements jQuery."
 
-#: lib/conflict.php:685
+#: lib/conflict.php:688
 msgid "To avoid jQuery crashing on show / hide jQuery events, please update your version of WPBakery Visual Composer immediately."
 msgstr "Pour éviter le plantage de jQuery lors de l'affichage / masquage des événements jQuery, veuillez mettre à jour votre version de WPBakery Visual Composer immédiatement."
 
-#: lib/conflict.php:710
+#: lib/conflict.php:713
 msgid "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to discourage search engines and social sites from indexing this site. This is not compatible with the purpose of optimizing your content for social and search engines &mdash; please uncheck the option to allow search engines and social sites to access your site."
 msgstr "L'option de WordPress <a href=\"%s\">Visibilité pour les moteurs de recherche</a> est définie afin de demander aux moteurs de recherche et robots sociaux de ne pas indexer ce site. Cela n'est pas compatible avec le but d'optimiser votre contenu pour les moteurs de recherche et les réseaux sociaux &mdash; veuillez décocher cette option pour autoriser les moteurs de recherche et robots sociaux d'accéder votre site."
 
@@ -7887,30 +7890,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
-
-#~ msgid "Social Media Options"
-#~ msgstr "Social Media Options"
-
-#~ msgid "Add the Social Open Graph protocol so that your Facebook shares look good."
-#~ msgstr "Ajoutez le protocole social Open Graph pour que vos partages Facebook soient beaux."
-
-#~ msgid "Add the Twitter card in your tweets."
-#~ msgstr "Ajoutez la carte Twitter dans vos tweets."
-
-#~ msgid "Let Squirrly SEO Optimize This Blog"
-#~ msgstr "Let Squirrly SEO Optimize This Blog"
-
-#~ msgid "adds the Json-LD metas for Semantic SEO"
-#~ msgstr "ajoute les metas Json-LD pour SEO sémantique"
-
-#~ msgid "The combination of %1$s and its %2$s add-on provide much better Schema markup for WooCommerce products than the %3$s plugin."
-#~ msgstr "La combinaison de %1$s et son ajout complémentaire %2$s fournit un balisage de Schéma bien meilleur pour les produits WooCommerce que l'extension %3$s."
-
-#~ msgid "There is absolutely no advantage in continuing to use the %1$s plugin."
-#~ msgstr "Il n'y a absolument aucun avantage à continuer d'utiliser l'extension %1$s."
-
-#~ msgid "To avoid adding incorrect and confusing Schema markup in your webpages, <a href=\"%1$s\">please deactivate the %2$s plugin immediately</a>."
-#~ msgstr "Pour éviter d'ajouter un balisage de Schéma incorrect et déroutant dans vos pages Web, <a href=\"%1$s\">veuillez désactiver l'extension %2$s immédiatement</a>."
-
-#~ msgid "Alternatively, you can select to use the standard WordPress admin notification system."
-#~ msgstr "Vous pouvez également choisir d'utiliser le système de notification d'administration standard de WordPress."

@@ -1193,7 +1193,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 */
 			foreach ( preg_grep( '/:is$/', array_keys( $opts ) ) as $key ) {
 
-				if ( 'disabled' ===  $opts[ $key ] ) {
+				if ( 'disabled' === $opts[ $key ] ) {
 				
 					unset( $opts[ $key ] );
 				}
