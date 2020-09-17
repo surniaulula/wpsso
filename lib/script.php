@@ -214,9 +214,9 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 					break;
 			}
 
-			$this->register_admin_page_script( $hook_name );
+			$this->admin_register_page_scripts( $hook_name );
 
-			$this->enqueue_admin_page_script( $hook_name );
+			$this->admin_enqueue_page_scripts( $hook_name );
 		}
 
 		/**
@@ -324,7 +324,7 @@ jQuery( document ).ready( function(){
 			}
 		}
 
-		public function register_admin_page_script( $hook_name ) {
+		public function admin_register_page_scripts( $hook_name ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -342,7 +342,7 @@ jQuery( document ).ready( function(){
 		 * This method is run a second time by the 'admin_enqueue_scripts' action with a priority of PHP_INT_MAX to make
 		 * sure another plugin (like Squirrly SEO) has not cleared our admin page scripts from the queue.
 		 */
-		public function enqueue_admin_page_script( $hook_name ) {
+		public function admin_enqueue_page_scripts( $hook_name ) {
 
 			$script_handles = array( 'sucom-admin-page', 'jquery' );
 

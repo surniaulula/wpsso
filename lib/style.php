@@ -168,9 +168,9 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					break;	// Stop here.
 			}
 
-			$this->register_admin_page_style( $hook_name );
+			$this->admin_register_page_styles( $hook_name );
 
-			$this->enqueue_admin_page_style( $hook_name );
+			$this->admin_enqueue_page_styles( $hook_name );
 		}
 
 		public function add_plugins_body_class( $classes ) {
@@ -180,7 +180,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			return $classes;
 		}
 
-		private function register_admin_page_style( $hook_name ) {
+		private function admin_register_page_styles( $hook_name ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -654,7 +654,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 		 * This method is run a second time by the 'admin_enqueue_scripts' action with a priority of PHP_INT_MAX to make
 		 * sure another plugin (like Squirrly SEO) has not cleared our admin page styles from the queue.
 		 */
-		public function enqueue_admin_page_style( $hook_name ) {
+		public function admin_enqueue_page_styles( $hook_name ) {
 
 			$style_handles = array( 'sucom-admin-page' );
 
