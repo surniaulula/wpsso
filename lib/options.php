@@ -1158,7 +1158,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			$opts = apply_filters( $this->p->lca . '_save_setting_options', $opts, $network, $upgrading );
 
 			/**
-			 * Save the plugin version and options version.
+			 * Save plugin version and option version.
 			 */
 			$ext_updates = array();
 
@@ -1185,6 +1185,19 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			$opts[ 'options_version' ] = $latest_version;	// Mark the new options array as current.
+
+			/**
+			 * Avoid saving the disabled status.
+			 *
+			 * Example: add_meta_name_robots:is = 'disabled'
+			 */
+			foreach ( preg_grep( '/:is$/', array_keys( $opts ) ) as $key ) {
+
+				if ( 'disabled' ===  $opts[ $key ] ) {
+				
+					unset( $opts[ $key ] );
+				}
+			}
 
 			if ( $network ) {
 

@@ -351,8 +351,10 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					__( 'Social Media', 'squirrly-seo' ) . '</a>';
 
 				foreach ( array(
-					'sq_auto_facebook' => '<strong>' . __( 'Activate Open Graph', 'wpsso' ) . '</strong>',
-					'sq_auto_twitter'  => '<strong>' . __( 'Activate Twitter Card', 'wpsso' ) . '</strong>',
+					// translators: Please ignore - translation uses a different text domain.
+					'sq_auto_facebook' => '<strong>' . __( 'Activate Open Graph', 'squirrly-seo' ) . '</strong>',
+					// translators: Please ignore - translation uses a different text domain.
+					'sq_auto_twitter'  => '<strong>' . __( 'Activate Twitter Card', 'squirrly-seo' ) . '</strong>',
 				) as $opt_key => $label_transl ) {
 
 					if ( ! empty( $opts[ $opt_key ] ) ) {
@@ -381,7 +383,8 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					__( 'JSON LD', 'squirrly-seo' ) . '</a>';
 
 				foreach ( array(
-					'sq_auto_jsonld' => '<strong>' . __( 'Activate JSON-LD', 'wpsso' ) . '</strong>',
+					// translators: Please ignore - translation uses a different text domain.
+					'sq_auto_jsonld' => '<strong>' . __( 'Activate JSON-LD', 'squirrly-seo' ) . '</strong>',
 				) as $opt_key => $label_transl ) {
 
 					if ( ! empty( $opts[ $opt_key ] ) ) {

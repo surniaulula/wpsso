@@ -801,9 +801,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= __( 'Select the notification system for SSO notices.', 'wpsso' ) . ' ';
 
-							$text .= __( 'Toolbar notices are available under a single toolbar menu item, which changes color based on the notice types it contains.', 'wpsso' ) . ' ';
+							$text .= __( 'Toolbar notices are available under a single notification icon in the top toolbar, which changes color based on the severity of notices.', 'wpsso' ) . ' ';
 
-							$text .= __( 'Alternatively, you can select to use the standard WordPress admin notification system.', 'wpsso' );
+							$text .= __( 'Alternatively, you can select the standard WordPress notification system, but note that the WordPress notification system is not compatible with the block editor in WordPress v5.', 'wpsso' );
 
 							break;
 

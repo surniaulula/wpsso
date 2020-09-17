@@ -3304,7 +3304,7 @@ msgid "Rate my Post"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:207 lib/conflict.php:491
+#: gettext/gettext-lib-pro.php:207 lib/conflict.php:494
 #: lib/pro/rating/rate-my-post.php:68
 msgid "Settings"
 msgstr ""
@@ -3728,7 +3728,7 @@ msgstr ""
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
-#: lib/admin.php:1147 lib/options.php:1224
+#: lib/admin.php:1147 lib/options.php:1237
 msgid "A background task will begin shortly to clear all caches."
 msgstr ""
 
@@ -4122,7 +4122,7 @@ msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:3086 lib/options.php:1289
+#: lib/admin.php:3086 lib/options.php:1302
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
@@ -4347,7 +4347,7 @@ msgstr ""
 msgid "General Settings"
 msgstr ""
 
-#: lib/conflict.php:292 lib/conflict.php:445 lib/conflict.php:469
+#: lib/conflict.php:292 lib/conflict.php:448 lib/conflict.php:472
 msgid "please uncheck the %1$s option in the %2$s metabox."
 msgstr ""
 
@@ -4371,12 +4371,12 @@ msgid "please disable the %1$s module in the %2$s settings."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:347 lib/conflict.php:377
+#: lib/conflict.php:347 lib/conflict.php:379
 msgid "Squirrly"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:349 lib/conflict.php:379
+#: lib/conflict.php:349 lib/conflict.php:381
 msgid "SEO Settings"
 msgstr ""
 
@@ -4385,195 +4385,198 @@ msgstr ""
 msgid "Social Media"
 msgstr ""
 
-#: lib/conflict.php:354
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/conflict.php:355
 msgid "Activate Open Graph"
 msgstr ""
 
-#: lib/conflict.php:355
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/conflict.php:357
 msgid "Activate Twitter Card"
 msgstr ""
 
-#: lib/conflict.php:365 lib/conflict.php:526 lib/conflict.php:603
-#: lib/conflict.php:654
+#: lib/conflict.php:367 lib/conflict.php:529 lib/conflict.php:606
+#: lib/conflict.php:657
 msgid "please disable the %1$s option in the %2$s settings."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:381
+#: lib/conflict.php:383
 msgid "JSON LD"
 msgstr ""
 
-#: lib/conflict.php:384
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/conflict.php:387
 msgid "Activate JSON-LD"
 msgstr ""
 
-#: lib/conflict.php:394
+#: lib/conflict.php:397
 msgid "please disable the %1$s option in the %2$s metabox."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:416 lib/conflict.php:455
+#: lib/conflict.php:419 lib/conflict.php:458
 msgid "The SEO Framework"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:418
+#: lib/conflict.php:421
 msgid "Social Meta Settings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:421
+#: lib/conflict.php:424
 msgid "Posts"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:425
+#: lib/conflict.php:428
 msgid "Output Open Graph meta tags?"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:427
+#: lib/conflict.php:430
 msgid "Output Facebook meta tags?"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:429
+#: lib/conflict.php:432
 msgid "Output Twitter meta tags?"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:431 lib/conflict.php:434
+#: lib/conflict.php:434 lib/conflict.php:437
 msgid "Add %1$s to %2$s?"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:457
+#: lib/conflict.php:460
 msgid "Schema Settings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:462
+#: lib/conflict.php:465
 msgid "Output Authorized Presence?"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:489
+#: lib/conflict.php:492
 msgid "WP Meta SEO"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:493
+#: lib/conflict.php:496
 msgid "Global"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:497
+#: lib/conflict.php:500
 msgid "Facebook profile URL"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:499 lib/conflict.php:610
+#: lib/conflict.php:502 lib/conflict.php:613
 msgid "Facebook App ID"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:501 lib/conflict.php:555
+#: lib/conflict.php:504 lib/conflict.php:558
 msgid "Twitter Username"
 msgstr ""
 
-#: lib/conflict.php:511 lib/conflict.php:575 lib/conflict.php:627
+#: lib/conflict.php:514 lib/conflict.php:578 lib/conflict.php:630
 msgid "please remove the %1$s option value in the %2$s settings."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:519
+#: lib/conflict.php:522
 msgid "Social sharing block"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:545 lib/conflict.php:592 lib/conflict.php:616
-#: lib/conflict.php:643
+#: lib/conflict.php:548 lib/conflict.php:595 lib/conflict.php:619
+#: lib/conflict.php:646
 msgid "Yoast SEO"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:547 lib/conflict.php:594 lib/conflict.php:618
-#: lib/conflict.php:645
+#: lib/conflict.php:550 lib/conflict.php:597 lib/conflict.php:621
+#: lib/conflict.php:648
 msgid "Social"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:549
+#: lib/conflict.php:552
 msgid "Accounts"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:553
+#: lib/conflict.php:556
 msgid "Facebook Page URL"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:557
+#: lib/conflict.php:560
 msgid "Instagram URL"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:559
+#: lib/conflict.php:562
 msgid "LinkedIn URL"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:561
+#: lib/conflict.php:564
 msgid "MySpace URL"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:563
+#: lib/conflict.php:566
 msgid "Pinterest URL"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:565
+#: lib/conflict.php:568
 msgid "YouTube URL"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:586
+#: lib/conflict.php:589
 msgid "Add Open Graph meta data"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:596 lib/conflict.php:620
+#: lib/conflict.php:599 lib/conflict.php:623
 msgid "Facebook"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:637
+#: lib/conflict.php:640
 msgid "Add Twitter Card meta data"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:647
+#: lib/conflict.php:650
 msgid "Twitter"
 msgstr ""
 
-#: lib/conflict.php:681
+#: lib/conflict.php:684
 msgid "An issue with WPBakery Visual Composer has been detected."
 msgstr ""
 
-#: lib/conflict.php:683
+#: lib/conflict.php:686
 msgid ""
 "WPBakery Visual Composer version %s and older are known to have a bug in "
 "their jQuery event handling code."
 msgstr ""
 
-#: lib/conflict.php:685
+#: lib/conflict.php:688
 msgid ""
 "To avoid jQuery crashing on show / hide jQuery events, please update your "
 "version of WPBakery Visual Composer immediately."
 msgstr ""
 
-#: lib/conflict.php:710
+#: lib/conflict.php:713
 msgid ""
 "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to "
 "discourage search engines and social sites from indexing this site. This is "
@@ -5653,14 +5656,15 @@ msgstr ""
 
 #: lib/messages.php:804
 msgid ""
-"Toolbar notices are available under a single toolbar menu item, which "
-"changes color based on the notice types it contains."
+"Toolbar notices are available under a single notification icon in the top "
+"toolbar, which changes color based on the severity of notices."
 msgstr ""
 
 #: lib/messages.php:806
 msgid ""
-"Alternatively, you can select to use the standard WordPress admin "
-"notification system."
+"Alternatively, you can select the standard WordPress notification system, "
+"but note that the WordPress notification system is not compatible with the "
+"block editor in WordPress v5."
 msgstr ""
 
 #: lib/messages.php:819
@@ -7696,101 +7700,101 @@ msgid ""
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:1223
+#: lib/options.php:1236
 msgid "Plugin settings have been upgraded and saved."
 msgstr ""
 
-#: lib/options.php:1318
+#: lib/options.php:1331
 msgid "The %s image dimensions cannot be determined."
 msgstr ""
 
-#: lib/options.php:1321
+#: lib/options.php:1334
 msgid ""
 "Please make sure this site can access %s using the PHP getimagesize() "
 "function."
 msgstr ""
 
-#: lib/options.php:1326
+#: lib/options.php:1339
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr ""
 
-#: lib/options.php:1329
+#: lib/options.php:1342
 msgid "Please correct the %s banner image."
 msgstr ""
 
-#: lib/options.php:1363
+#: lib/options.php:1376
 msgid ""
 "The value of option \"%s\" must be alpha-numeric - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1364
+#: lib/options.php:1377
 msgid ""
 "The value of option \"%s\" must be blank or numeric - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1365
+#: lib/options.php:1378
 msgid ""
 "The value of option \"%s\" must be a CSS color code - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1366
+#: lib/options.php:1379
 msgid ""
 "The value of option \"%s\" must be a comma-delimited list of URL(s) - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1367
+#: lib/options.php:1380
 msgid ""
 "The value of option \"%s\" must be a yyyy-mm-dd date - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1368
+#: lib/options.php:1381
 msgid ""
 "The value of option \"%s\" must be HTML code - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1369
+#: lib/options.php:1382
 msgid ""
 "The value of option \"%s\" must be an image ID - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1370
+#: lib/options.php:1383
 msgid ""
 "The value of option \"%s\" must be a valid image URL - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1371
+#: lib/options.php:1384
 msgid ""
 "The value of option \"%s\" cannot be an empty string - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1372
+#: lib/options.php:1385
 msgid ""
 "The value of option \"%s\" must be numeric - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1373
+#: lib/options.php:1386
 msgid ""
 "The value of option \"%1$s\" must be equal to or greather than %2$s - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1374
+#: lib/options.php:1387
 msgid ""
 "The value of option \"%s\" must be a hh:mm time - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1375
+#: lib/options.php:1388
 msgid ""
 "The value of option \"%s\" must be a valid URL - resetting this option to "
 "its default value."
