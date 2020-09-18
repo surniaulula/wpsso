@@ -1955,8 +1955,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( empty( $shortlink ) ) {
 
-					if ( 'page' === get_post_type( $post_id ) && (int) $post_id === (int) get_option( 'page_on_front' ) &&
-						'page' === get_option( 'show_on_front' ) ) {
+					if ( 'page' === get_post_type( $post_id ) &&
+						(int) $post_id === (int) get_option( 'page_on_front' ) &&
+							'page' === get_option( 'show_on_front' ) ) {
 
 						$shortlink = home_url( '/' );
 

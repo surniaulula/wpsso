@@ -402,16 +402,6 @@ table.sucom-settings th.head_tags {
 	padding:2px 6px;
 }
 
-table.sucom-settings td.show_on {
-	min-width:110px;
-	white-space:nowrap;
-}
-
-table.sucom-settings td.show_on input[type="checkbox"] { 
-	margin:0 6px 0 0;
-	vertical-align:text-bottom;
-}
-
 table.sucom-settings td.weekday {
 	width:120px;
 	min-width:120px;
@@ -758,7 +748,7 @@ table.sucom-settings td input[type="text"].api_key { width:400px; font-family:"C
 
 table.sucom-settings td input[type="text"].wide { width:100%; }
 
-table.sucom-settings td input[type="checkbox"] { margin:0 4px 0 0; }
+table.sucom-settings td input[type="checkbox"] { margin:4px 4px 0 0; }
 
 table.sucom-settings td.blank input[type="checkbox"] { margin:2px 8px 2px 2px; }
 
@@ -790,6 +780,10 @@ table.sucom-settings td div.input_vertical_list > span {
 	display:block;
 	margin:0 0 5px 0;
 	line-height:2em;
+}
+
+table.sucom-settings td div.input_vertical_list input[type="checkbox"] {
+	margin-top:0;
 }
 
 table.sucom-settings td span.wp-picker-input-wrap input {
@@ -1271,14 +1265,6 @@ table.sucom-settings.html-content-metabox td dd {	/* Definition description. */
 table.sucom-settings.addons-metabox,
 table.sucom-settings.licenses-metabox {
 	padding:20px 30px;
-}
-
-/**
- * SSO > Responsive Buttons settings page.
- */
-div.metabox-rrssb_share table.sucom-settings td.show_on {
-	min-width:80px;
-	padding-right:4px;
 }
 
 /**
