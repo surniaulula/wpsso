@@ -2755,6 +2755,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
+			/**
+			 * Mark all template head checks as complete.
+			 */
 			update_option( WPSSO_TMPL_HEAD_CHECK_NAME, $passed = true, $autoload = false );
 		}
 
@@ -2765,7 +2768,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-delete_option( WPSSO_WP_CONFIG_CHECK_NAME );
 			/**
 			 * Skip if previous check is already successful.
 			 */
@@ -2790,6 +2792,9 @@ delete_option( WPSSO_WP_CONFIG_CHECK_NAME );
 				}
 			}
 
+			/**
+			 * Since WPSSO Core v8.5.1.
+			 */
 			$is_public = get_option( 'blog_public' );
 
 			if ( $is_public ) {
@@ -2814,6 +2819,9 @@ delete_option( WPSSO_WP_CONFIG_CHECK_NAME );
 				}
 			}
 
+			/**
+			 * Mark all WordPress config checks as complete.
+			 */
 			update_option( WPSSO_WP_CONFIG_CHECK_NAME, $passed = true, $autoload = false );
 		}
 

@@ -1187,6 +1187,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			$opts[ 'options_version' ] = $latest_version;	// Mark the new options array as current.
 
 			/**
+			 * Since WPSSO Core v8.5.1.
+			 *
 			 * Avoid saving the disabled status.
 			 *
 			 * Example: add_meta_name_robots:is = 'disabled'

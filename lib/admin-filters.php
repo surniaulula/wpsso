@@ -17,6 +17,9 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 
 if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 
+	/**
+	 * Since WPSSO Core v8.5.1.
+	 */
 	class WpssoAdminFilters {
 
 		private $p;

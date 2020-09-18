@@ -339,6 +339,8 @@ jQuery( document ).ready( function(){
 		}
 
 		/**
+		 * Since WPSSO Core v8.5.1.
+		 *
 		 * This method is run a second time by the 'admin_enqueue_scripts' action with a priority of PHP_INT_MAX to make
 		 * sure another plugin (like Squirrly SEO) has not cleared our admin page scripts from the queue.
 		 */
