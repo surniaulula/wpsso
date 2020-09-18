@@ -3046,8 +3046,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'publication.volume' => 'https://schema.org/PublicationVolume',
 							'question'           => 'https://schema.org/Question',
 							'review'             => array(
-								'review'       => 'https://schema.org/Review',
-								'review.claim' => 'https://schema.org/ClaimReview',
+								'review'                => 'https://schema.org/Review',
+								'review.claim'          => 'https://schema.org/ClaimReview',
+								'review.critic'         => array(
+									'review.critic'       => 'https://schema.org/CriticReview',
+									'article.news.review' => 'https://schema.org/ReviewNewsArticle',
+								),
+								'review.employer'       => 'https://schema.org/EmployerReview',
+								'review.media'          => 'https://schema.org/MediaReview',
+								'review.recommendation' => 'https://schema.org/Recommendation',
+								'review.user'           => 'https://schema.org/UserReview',
 							),
 							'sculpture'            => 'https://schema.org/Sculpture',
 							'series'               => 'https://schema.org/Series',
