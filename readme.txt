@@ -309,7 +309,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.5.1-dev.4 (2020/09/17)**
+**Version 8.5.1-b.1 (2020/09/18)**
 
 **The SSO &gt; Setup Guide content is now available for translation. If you are fluent in a language other than English, and would like to assist translating the WPSSO Core option labels, help text, notice messages, or Setup Guide, [you can contribute to the translation of WPSSO Core here](https://translate.wordpress.org/projects/wp-plugins/wpsso/).**
 
@@ -521,9 +521,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.5.1-dev.4 =
+= 8.5.1-b.1 =
 
-(2020/09/17) Additional translation string updates for the Setup Guide. Fixed All In One SEO Pack plugin detection. Fixed Squirrly SEO conflict notification texts and links.
+(2020/09/18) Additional translation string updates for the Setup Guide. Fixed All In One SEO Pack plugin detection. Fixed Squirrly SEO conflict notification texts and links.
 
 = 8.5.0 =
 
