@@ -318,6 +318,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Additional translation string updates for the SSO &gt; Setup Guide.
 	* Added an acknowledgement message when the Site Address URL value has changed.
+	* Added new Schema Review sub-types:
+		* https://schema.org/CriticReview
+		* https://schema.org/EmployerReview
+		* https://schema.org/MediaReview
+		* https://schema.org/Recommendation
+		* https://schema.org/UserReview
 * **Bugfixes**
 	* Fixed All In One SEO Pack plugin detection by using the "AIOSEOP_Core" class name.
 	* Fixed Squirrly SEO conflict notification texts and links for the latest version of Squirrly SEO.
@@ -523,7 +529,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 8.5.1-b.1 =
 
-(2020/09/18) Additional translation string updates for the Setup Guide. Fixed All In One SEO Pack plugin detection. Fixed Squirrly SEO conflict notification texts and links.
+(2020/09/18) Additional translation string updates for the Setup Guide. Fixed All In One SEO Pack plugin detection. Fixed Squirrly SEO conflict notification texts and links. Added new Schema Review sub-types.
 
 = 8.5.0 =
 
