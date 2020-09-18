@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 8.5.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-09-17 17:12-0700\n"
-"PO-Revision-Date: 2020-09-17 17:17-0700\n"
+"PO-Revision-Date: 2020-09-17 17:52-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -176,7 +176,7 @@ msgstr "<strong>WordPress n'agrandit pas les images.</strong> WordPress ne peut 
 #: gettext/gettext-html-setup.php:38
 msgctxt "html paragraph"
 msgid "Submit a few sample posts, pages, etc. to the <a href=\"https://developers.facebook.com/tools/debug/\">Facebook Sharing Debugger</a> to verify your Open Graph meta tags. A link to the Facebook debugger is available under the Validate tab in the Document SSO metabox (on post, term, and user editing pages). Submitting a URL to the Facebook debugger can also be used to clear Facebook's cache (after clicking the \"Fetch new scrape information\" button). If you're validating older posts / pages, pre-dating the activation of WPSSO Core, note that <a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/\">Facebook may continue to use the old meta tag values from its cache</a>, even after fetching the new scrape information."
-msgstr "Soumettez quelques exemples d'articles, de pages, etc. au <a href=\"https://developers.facebook.com/tools/debug/\">Débogueur de partage Facebook</a> pour vérifier vos balises méta Open Graph. Un lien vers le débogueur Facebook est disponible sous l'onglet Valider dans la métabox Document SSO (sur les pages d'édition d'articles, termes et utilisateurs). La soumission d'une URL au débogueur de Facebook peut également être utilisée pour vider le cache de Facebook (après avoir cliqué sur le bouton «Scrape Again»). Si vous validez des articles / pages plus anciens, avant l'activation de WPSSO Core, notez que <a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show- the-false-image-text/\">Facebook peut continuer à utiliser les anciennes valeurs de balises méta de son cache</a>, même après avoir récupéré les nouvelles informations avec le bouton «Scrape Again»."
+msgstr "Soumettez quelques exemples d'articles, de pages, etc. au <a href=\"https://developers.facebook.com/tools/debug/\">Débogueur de partage Facebook</a> pour vérifier vos balises méta Open Graph. Un lien vers le débogueur Facebook est disponible sous l'onglet Valider dans la métabox Document SSO (sur les pages d'édition d'articles, termes et utilisateurs). La soumission d'une URL au débogueur de Facebook peut également être utilisée pour vider le cache de Facebook (après avoir cliqué sur le bouton «Scrape Again»). Si vous validez des articles / pages plus anciens, avant l'activation de WPSSO Core, notez que <a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/\">Facebook peut continuer à utiliser les anciennes valeurs de balises méta de son cache</a>, même après avoir récupéré les nouvelles informations avec le bouton «Scrape Again»."
 
 #: gettext/gettext-html-setup.php:39
 msgctxt "html paragraph"
@@ -256,7 +256,7 @@ msgstr "WPSSO Core ajoute une balise HTML <code>meta name description</code> et 
 #: gettext/gettext-html-setup.php:54
 msgctxt "html paragraph"
 msgid "WPSSO Core creates Schema WebSite, Organization, and Person social markup for Google's Knowledge Graph in the front page using JSON-LD. If your theme does not include Schema markup (using JSON-LD or Microdata formats) for your post / page content, you should consider enabling the <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a> to provide complete Schema markup for your content (ie. Schema Article, Place, Product, etc.)."
-msgstr "WPSSO Core crée le balisage de Schéma social WebSite, Organization et Person pour le Knowledge Graph de Google sur la page d'accueil à l'aide de JSON-LD. Si votre thème n'inclut pas un balisage de Schéma (en utilisant les formats JSON-LD ou Microdata) pour le contenu de vos articles / pages, vous devriez envisager d'activer le <a href = \"https://wordpress.org/plugins/wpsso-schema-json -ld/\">l'ajout WPSSO balisage JSON-LD de Schéma</a> pour fournir un balisage complet de Schéma pour votre contenu (c.à.d., Schéma d'article, place, produit, etc.)."
+msgstr "WPSSO Core crée le balisage de Schéma social WebSite, Organization et Person pour le Knowledge Graph de Google sur la page d'accueil à l'aide de JSON-LD. Si votre thème n'inclut pas un balisage de Schéma (en utilisant les formats JSON-LD ou Microdata) pour le contenu de vos articles / pages, vous devriez envisager d'activer le <a href=\"https://wordpress.org/plugins/wpsso-schema-json -ld/\">l'ajout WPSSO balisage JSON-LD de Schéma</a> pour fournir un balisage complet de Schéma pour votre contenu (c.à.d., Schéma d'article, place, produit, etc.)."
 
 #: gettext/gettext-html-setup.php:55
 msgctxt "html list item"
