@@ -13,6 +13,7 @@ function sucomCopyById( css_id ) {
 		var elemVal = elem.value;
 
 		if ( undefined === elemVal ) {
+
 			elemVal = elem.textContent;
 		}
 
@@ -43,6 +44,20 @@ function sucomCopyById( css_id ) {
 	}
 
 	return false;
+}
+
+/**
+ * Convert some HTML tags to spaces first, strip everything else, then convert multiple spaces to a single space.
+ */
+function sucomStripHtml( html ) {
+
+	html = html.replace( /<(p|pre|ul|li|br\/?)( [^<>]*>|>)/gi, ' ' );
+
+	html = html.replace( /<[^<>]*>/gi, '' );
+
+	html = html.replace( /\s\s+/gi, ' ' );
+
+	return html;
 }
 
 function sucomUpdateToolbar( lca ) {
@@ -94,7 +109,7 @@ function sucomUpdateToolbar( lca ) {
 				noticeText += '[' + noticeType + '] ';
 				noticeText += data[ noticeType ][ noticeKey ][ 'notice_label' ];
 				noticeText += ': ';
-				noticeText += data[ noticeType ][ noticeKey ][ 'msg_text' ];
+				noticeText += sucomStripHtml( data[ noticeType ][ noticeKey ][ 'msg_text' ] );
 				noticeText += "\n";
 			} );
 		} );

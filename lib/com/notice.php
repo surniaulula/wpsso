@@ -894,6 +894,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 * Quick sanitation of input values.
 			 */
 			foreach ( array( 'notice_key', 'dismiss_time' ) as $key ) {
+
 				$dismiss_info[ $key ] = sanitize_text_field( filter_input( INPUT_POST, $key ) );
 			}
 
@@ -1077,7 +1078,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			return $this->tb_notices;
 		}
 
-		private function get_notice_html( $msg_type, array $payload, $notice_alt = false ) {
+		/**
+		 * Use a reference for the $payload variable so we can modify the 'msg_text' element and remove text that should be
+		 * shown only once.
+		 */
+		private function get_notice_html( $msg_type, array &$payload, $notice_alt = false ) {
 
 			$charset        = get_bloginfo( 'charset' );
 			$css_class_type = $notice_alt ? 'notice notice-alt' : 'notice';
@@ -1190,6 +1195,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				if ( isset( $show_once[ $match_md5 ] ) ) {
 
+					/**
+					 * The $payload is a reference variable so we can modify the 'msg_text' element and remove
+					 * text that should be shown only once.
+					 */
 					$payload[ 'msg_text' ] = str_replace( $matches[ 0 ], '', $payload[ 'msg_text' ] );
 
 				} else {
@@ -1197,7 +1206,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					$show_once[ $match_md5 ] = true;
 				}
 			}
-
 
 			$msg_html .= '<div class="notice-message">' . $payload[ 'msg_text' ] . '</div><!-- .notice-message -->';
 
