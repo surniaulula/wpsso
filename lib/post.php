@@ -1293,7 +1293,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$validator_url     = 'https://validator.w3.org/nu/?doc=' . urlencode( $check_url );
 						$settings_page_url = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest' );
 
-						$this->p->notice->err( sprintf( __( 'An error occured parsing the head meta tags from <a href="%1$s">%1$s</a> (no "link" or "meta" HTML tags were found).', 'wpsso' ), $check_url ) . ' ' . sprintf( __( 'The webpage may contain HTML syntax errors preventing PHP from successfully parsing the HTML &mdash; review the <a href="%1$s">W3C Markup Validation Service</a> results and correct any errors.', 'wpsso' ), $validator_url ) . ' ' . sprintf( __( 'You may safely ignore any "nopin" attribute errors, or disable the "nopin" attribute under the <a href="%s">Pinterest settings tab</a>.', 'wpsso' ), $settings_page_url ) );
+						$this->p->notice->err( sprintf( __( 'An error occured parsing the head meta tags from <a href="%1$s">%1$s</a> (no "link" or "meta" HTML tags were found).', 'wpsso' ), $check_url ) . ' ' . sprintf( __( 'The webpage may contain HTML syntax errors preventing PHP from successfully parsing the HTML &mdash; review the <a href="%1$s">W3C Markup Validator</a> results and correct any errors.', 'wpsso' ), $validator_url ) . ' ' . sprintf( __( 'You may safely ignore any "nopin" attribute errors, or disable the "nopin" attribute under the <a href="%s">Pinterest settings tab</a>.', 'wpsso' ), $settings_page_url ) );
 					}
 
 				} else {

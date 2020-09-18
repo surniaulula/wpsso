@@ -731,7 +731,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'url'   => $mod[ 'is_post' ] && $have_amp ? 'https://validator.ampproject.org/#url=' . $amp_url_encoded : '',
 				),
 				'w3c' => array(
-					'title' => _x( 'W3C Markup Validation', 'option label', 'wpsso' ),
+					'title' => _x( 'W3C Markup Validator', 'option label', 'wpsso' ),
 					'label' => _x( 'Validate HTML Markup', 'submit button', 'wpsso' ),
 					'url'   => 'https://validator.w3.org/nu/?doc=' . $sharing_url_encoded,
 				),
