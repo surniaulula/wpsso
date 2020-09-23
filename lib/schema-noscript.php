@@ -66,44 +66,36 @@ if ( ! class_exists( 'WpssoSchemaNoScript' ) ) {
 				return $schema_scripts;
 			}
 
-			$meta_item_props = array();
-			$schema_noscript = array();
+			$schema_scripts[] = array( '<noscript itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">' . "\n" );
 
 			if ( ! empty( $mt_og[ $og_type . ':rating:average' ] ) ) {
 
-				$this->p->head->add_mt_singles( $meta_item_props, 'meta', 'itemprop', 'aggregaterating.ratingvalue', $mt_og[ $og_type . ':rating:average' ] );
+				$this->p->head->add_mt_singles( $schema_scripts, 'meta', 'itemprop', 'aggregaterating.ratingvalue', $mt_og[ $og_type . ':rating:average' ] );
 			}
 
 			if ( ! empty( $mt_og[ $og_type . ':rating:count' ] ) ) {
 
-				$this->p->head->add_mt_singles( $meta_item_props, 'meta', 'itemprop', 'aggregaterating.ratingcount', $mt_og[ $og_type . ':rating:count' ] );
+				$this->p->head->add_mt_singles( $schema_scripts, 'meta', 'itemprop', 'aggregaterating.ratingcount', $mt_og[ $og_type . ':rating:count' ] );
 			}
 
 			if ( ! empty( $mt_og[ $og_type . ':rating:worst' ] ) ) {
 
-				$this->p->head->add_mt_singles( $meta_item_props, 'meta', 'itemprop', 'aggregaterating.worstrating', $mt_og[ $og_type . ':rating:worst' ] );
+				$this->p->head->add_mt_singles( $schema_scripts, 'meta', 'itemprop', 'aggregaterating.worstrating', $mt_og[ $og_type . ':rating:worst' ] );
 			}
 
 			if ( ! empty( $mt_og[ $og_type . ':rating:best' ] ) ) {
 
-				$this->p->head->add_mt_singles( $meta_item_props, 'meta', 'itemprop', 'aggregaterating.bestrating', $mt_og[ $og_type . ':rating:best' ] );
+				$this->p->head->add_mt_singles( $schema_scripts, 'meta', 'itemprop', 'aggregaterating.bestrating', $mt_og[ $og_type . ':rating:best' ] );
 			}
 
 			if ( ! empty( $mt_og[ $og_type . ':review:count' ] ) ) {
 
-				$this->p->head->add_mt_singles( $meta_item_props, 'meta', 'itemprop', 'aggregaterating.reviewcount', $mt_og[ $og_type . ':review:count' ] );
+				$this->p->head->add_mt_singles( $schema_scripts, 'meta', 'itemprop', 'aggregaterating.reviewcount', $mt_og[ $og_type . ':review:count' ] );
 			}
 
-			$schema_noscript[] = array( '<noscript itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">' . "\n" );
+			$schema_scripts[] = array( '</noscript>' . "\n" );
 
-			foreach ( $meta_item_props as $arr ) {
-
-				$schema_noscript[] = reset( $arr );
-			}
-
-			$schema_noscript[] = array( '</noscript>' . "\n" );
-
-			return array_merge( $schema_noscript, $schema_scripts );
+			return $schema_scripts;
 		}
 	}
 }
