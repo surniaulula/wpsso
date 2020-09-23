@@ -307,6 +307,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.5.2-dev.1 (2020/09/22)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed incorrect Schema AggregateRating meta tag values when the WPSSO JSON add-on is not active.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.2.
+
 **Version 8.5.1 (2020/09/18)**
 
 **The SSO &gt; Setup Guide content is now available for translation. If you are fluent in a language other than English, and would like to assist translating the WPSSO Core option labels, help text, notice messages, or Setup Guide, [you can contribute to the translation of WPSSO Core here](https://translate.wordpress.org/projects/wp-plugins/wpsso/).**
@@ -524,6 +538,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.5.2-dev.1 =
+
+(2020/09/22) Fixed incorrect Schema AggregateRating meta tag values when the WPSSO JSON add-on is not active.
 
 = 8.5.1 =
 
