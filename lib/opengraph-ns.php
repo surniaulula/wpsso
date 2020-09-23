@@ -39,9 +39,9 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 
 					$wp_filter_name = $this->p->options[ $opt_pre . '_name' ];
 
-					add_filter( $wp_filter_name, array( $this, 'add_og_ns_attributes' ),
-						 ( isset( $this->p->options[ $opt_pre . '_prio' ] ) ?
-						 	(int) $this->p->options[ $opt_pre . '_prio' ] : 100 ), 1 );
+					$wp_filter_prio = isset( $this->p->options[ $opt_pre . '_prio' ] ) ? (int) $this->p->options[ $opt_pre . '_prio' ] : 100;
+
+					add_filter( $wp_filter_name, array( $this, 'add_og_ns_attributes' ), $wp_filter_prio, 1 );
 
 					if ( $this->p->debug->enabled ) {
 

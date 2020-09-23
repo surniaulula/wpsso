@@ -1089,24 +1089,24 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( null === $local_cache ) {
 
-				/**
-				 * The amp_is_request() and is_amp_endpoint() functions cannot be called before the 'parse_query'
-				 * action has run, so if the 'parse_query' action has not run, leave the $local_cache as null to
-				 * allow for future checks.
-				 */
-				if ( function_exists( 'amp_is_request' ) ) {	// AMP.
+				if ( is_admin() ) {
 
-					if ( did_action( 'parse_query' ) ) {
+					$local_cache = false;
+
+				/**
+				 * The amp_is_request() function cannot be called before the 'wp' action has run, so if the 'wp'
+				 * action has not run, leave the $local_cache as null to allow for future checks.
+				 */
+				} elseif ( function_exists( 'amp_is_request' ) ) {	// AMP.
+
+					if ( did_action( 'wp' ) ) {
 
 						$local_cache = amp_is_request();
 					}
 
 				} elseif ( function_exists( 'is_amp_endpoint' ) ) {	// AMP and Better AMP.
 
-					if ( did_action( 'parse_query' ) ) {
-
-						$local_cache = is_amp_endpoint();
-					}
+					$local_cache = is_amp_endpoint();
 
 				} elseif ( function_exists( 'ampforwp_is_amp_endpoint' ) ) {	// AMP for WP.
 
