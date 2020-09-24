@@ -184,16 +184,16 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$mod[ 'is_term' ]  = true;
 			$mod[ 'tax_slug' ] = SucomUtil::get_term_object( $mod[ 'id' ], (string) $tax_slug, 'taxonomy' );
 
-			if ( $tax_object = get_taxonomy( $mod[ 'tax_slug' ] ) ) {
+			if ( $tax_obj = get_taxonomy( $mod[ 'tax_slug' ] ) ) {
 
-				if ( isset( $tax_object->labels->singular_name ) ) {
+				if ( isset( $tax_obj->labels->singular_name ) ) {
 
-					$mod[ 'tax_label' ] = $tax_object->labels->singular_name;
+					$mod[ 'tax_label' ] = $tax_obj->labels->singular_name;
 				}
 
-				if ( isset( $tax_object->public ) ) {
+				if ( isset( $tax_obj->public ) ) {
 
-					$mod[ 'is_public' ] = $tax_object->public ? true : false;
+					$mod[ 'is_public' ] = $tax_obj->public ? true : false;
 				}
 			}
 
