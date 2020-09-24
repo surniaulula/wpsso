@@ -542,7 +542,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 8.6.0-b.1 =
 
-(2020/09/24) Added WooCommerce product shipping data for the WPSSO JSON v4.4.0 add-on. Fixed incorrect Schema AggregateRating meta tag markup when the WPSSO JSON add-on is not active.
+(2020/09/24) Added WooCommerce product shipping data for the WPSSO JSON v4.4.0 add-on. Fixed incorrect Schema AggregateRating meta tag markup. Fixed an "undeclared static property" error in the SSO &gt; Dashboard page.
 
 = 8.5.1 =
 
