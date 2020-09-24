@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.6.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 8.6.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3410,47 +3410,47 @@ msgstr ""
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/admin-filters.php:66
+#: lib/admin-filters.php:67
 msgctxt "lib file description"
 msgid "(feature) Use Filtered (aka SEO) Title"
 msgstr ""
 
-#: lib/admin-filters.php:73
+#: lib/admin-filters.php:74
 msgctxt "lib file description"
 msgid "(feature) Use WordPress Content Filters"
 msgstr ""
 
-#: lib/admin-filters.php:80
+#: lib/admin-filters.php:81
 msgctxt "lib file description"
 msgid "(feature) Use WordPress Excerpt Filters"
 msgstr ""
 
-#: lib/admin-filters.php:94
+#: lib/admin-filters.php:95
 msgctxt "lib file description"
 msgid "(api) %s Shortener API"
 msgstr ""
 
-#: lib/admin-filters.php:133
+#: lib/admin-filters.php:134
 msgctxt "lib file description"
 msgid "(code) Facebook / Open Graph Meta Tags"
 msgstr ""
 
-#: lib/admin-filters.php:138
+#: lib/admin-filters.php:139
 msgctxt "lib file description"
 msgid "(code) Knowledge Graph Organization Markup"
 msgstr ""
 
-#: lib/admin-filters.php:143
+#: lib/admin-filters.php:144
 msgctxt "lib file description"
 msgid "(code) Knowledge Graph Person Markup"
 msgstr ""
 
-#: lib/admin-filters.php:148
+#: lib/admin-filters.php:149
 msgctxt "lib file description"
 msgid "(code) Knowledge Graph WebSite Markup"
 msgstr ""
 
-#: lib/admin-filters.php:153
+#: lib/admin-filters.php:154
 msgctxt "lib file description"
 msgid "(code) Twitter Card Meta Tags"
 msgstr ""

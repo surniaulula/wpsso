@@ -52,8 +52,9 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 		 */
 		public function filter_status_pro_features( $features, $ext, $info ) {
 
-			$td_class        = self::$pkg[ $ext ][ 'pp' ] ? '' : 'blank';
-			$status_on       = self::$pkg[ $ext ][ 'pp' ] ? 'on' : 'rec';
+			$pkg             = $this->p->admin->plugin_pkg_info();
+			$td_class        = $pkg[ $ext ][ 'pp' ] ? '' : 'blank';
+			$status_on       = $pkg[ $ext ][ 'pp' ] ? 'on' : 'rec';
 			$apikeys_tab_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_apikeys' );
 			$content_tab_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' );
 
