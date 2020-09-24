@@ -307,12 +307,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.5.2-dev.1 (2020/09/22)**
+**Version 8.6.0-dev.1 (2020/09/22)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added WooCommerce product shipping data (zone, class, methods, and locations) for the WPSSO JSON add-on.
 * **Bugfixes**
 	* Fixed incorrect Schema AggregateRating meta tag values when the WPSSO JSON add-on is not active.
 * **Developer Notes**
@@ -539,9 +539,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.5.2-dev.1 =
+= 8.6.0-dev.1 =
 
-(2020/09/22) Fixed incorrect Schema AggregateRating meta tag values when the WPSSO JSON add-on is not active.
+(2020/09/22) Added WooCommerce product shipping data for the WPSSO JSON add-on. Fixed incorrect Schema AggregateRating meta tag values when the WPSSO JSON add-on is not active.
 
 = 8.5.1 =
 
