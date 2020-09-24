@@ -10,7 +10,7 @@
 <tr><th align="right" valign="top" nowrap>Tested Up To WooCommerce</th><td>4.5.2</td></tr>
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
 <tr><th align="right" valign="top" nowrap>License</th><td><a href="https://www.gnu.org/licenses/gpl.txt">GPLv3</a></td></tr>
-<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>twitter, google, pinterest, linkedin, facebook, open graph, rich pins, meta tags, schema, rich results, social sharing, seo, structured data</td></tr>
+<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>twitter, pinterest, linkedin, facebook, open graph, google, rich pins, meta tags, schema, rich results, social sharing, seo, structured data</td></tr>
 </table>
 
 <h2>Description</h2>
