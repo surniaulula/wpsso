@@ -307,7 +307,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.6.0-dev.1 (2020/09/24)**
+**Version 8.6.0-dev.2 (2020/09/24)**
 
 * **New Features**
 	* None.
@@ -539,7 +539,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.6.0-dev.1 =
+= 8.6.0-dev.2 =
 
 (2020/09/24) Added WooCommerce product shipping data for the WPSSO JSON add-on. Fixed incorrect Schema AggregateRating meta tag values when the WPSSO JSON add-on is not active.
 
