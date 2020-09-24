@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.6.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 8.6.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3104,17 +3104,17 @@ msgid ""
 "version of WooCommerce."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:148 lib/pro/ecom/woocommerce.php:1379
+#: gettext/gettext-lib-pro.php:148 lib/pro/ecom/woocommerce.php:1428
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:149 lib/pro/ecom/woocommerce.php:1381
+#: gettext/gettext-lib-pro.php:149 lib/pro/ecom/woocommerce.php:1430
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:150 lib/pro/ecom/woocommerce.php:1384
+#: gettext/gettext-lib-pro.php:150 lib/pro/ecom/woocommerce.php:1433
 msgid "Please update your site to WooCommerce version %s or newer."
 msgstr ""
 
