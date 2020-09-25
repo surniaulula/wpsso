@@ -307,7 +307,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.6.0-b.2 (2020/09/24)**
+**Version 8.6.0-rc.1 (2020/09/25)**
 
 * **New Features**
 	* None.
@@ -540,9 +540,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.6.0-b.2 =
+= 8.6.0-rc.1 =
 
-(2020/09/24) Added WooCommerce product shipping data for the WPSSO JSON v4.4.0 add-on. Fixed incorrect Schema AggregateRating meta tag markup. Fixed an "undeclared static property" error in the SSO &gt; Dashboard page.
+(2020/09/25) Added WooCommerce product shipping data for the WPSSO JSON v4.4.0 add-on. Fixed incorrect Schema AggregateRating meta tag markup. Fixed an "undeclared static property" error in the SSO &gt; Dashboard page.
 
 = 8.5.1 =
 
