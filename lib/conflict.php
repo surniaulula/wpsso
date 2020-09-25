@@ -421,7 +421,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					__( 'Social Meta Settings', 'autodescription' ) . '</a>';
 
 				// translators: Please ignore - translation uses a different text domain.
-				$posts_i18n = __( 'Posts', 'autodescription' );
+				$posts_i18n = __( 'posts', 'autodescription' );
 
 				foreach ( array(
 					// translators: Please ignore - translation uses a different text domain.

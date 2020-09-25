@@ -4457,7 +4457,7 @@ msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: lib/conflict.php:424
-msgid "Posts"
+msgid "posts"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
