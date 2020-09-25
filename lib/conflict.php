@@ -431,6 +431,8 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					// translators: Please ignore - translation uses a different text domain.
 					'twitter_tags'      => '<strong>' . __( 'Output Twitter meta tags?', 'autodescription' ) . '</strong>',
 					// translators: Please ignore - translation uses a different text domain.
+					'oembed_scripts'    => '<strong>' . __( 'Output oEmbed scripts?', 'autodescription' ) . '</strong>',
+					// translators: Please ignore - translation uses a different text domain.
 					'post_publish_time' => '<strong>' . sprintf( __( 'Add %1$s to %2$s?', 'autodescription' ),
 						'article:published_time', $posts_i18n ) . '</strong>',
 					// translators: Please ignore - translation uses a different text domain.
@@ -472,7 +474,6 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					$this->p->notice->err( $notice_pre . sprintf( __( 'please uncheck the %1$s option in the %2$s metabox.',
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
-
 			}
 
 			/**
