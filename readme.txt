@@ -9,7 +9,7 @@ Assets URI: https://surniaulula.github.io/wpsso/assets/
 Tags: twitter, pinterest, linkedin, facebook, open graph, google, rich pins, meta tags, schema, rich results, social sharing, seo, structured data
 Contributors: jsmoriss
 Requires PHP: 5.6
-Requires At Least: 4.2
+Requires At Least: 4.4
 Tested Up To: 5.5.1
 WC Tested Up To: 4.5.2
 Stable Tag: 8.5.1
@@ -307,11 +307,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.6.0-rc.1 (2020/09/25)**
+**Version 8.6.0-rc.2 (2020/09/25)**
+
+**The minimum WordPress version has been increased from v4.2 to v4.4.**
 
 * **New Features**
 	* None.
 * **Improvements**
+	* Added a new "Webpage Document Title" option under the SSO &gt; Advanced Settings &gt; Content and Text tab.
 	* Added WooCommerce product shipping data (zone, class, methods, and locations) for the WPSSO JSON v4.4.0 add-on.
 * **Bugfixes**
 	* Fixed incorrect Schema AggregateRating meta tag markup when the WPSSO JSON add-on is not active.
@@ -320,7 +323,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Requires At Least**
 	* PHP v5.6.
-	* WordPress v4.2.
+	* WordPress v4.4.
 
 **Version 8.5.1 (2020/09/18)**
 
@@ -540,9 +543,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.6.0-rc.1 =
+= 8.6.0-rc.2 =
 
-(2020/09/25) Added WooCommerce product shipping data for the WPSSO JSON v4.4.0 add-on. Fixed incorrect Schema AggregateRating meta tag markup. Fixed an "undeclared static property" error in the SSO &gt; Dashboard page.
+(2020/09/25) Added a new "Webpage Document Title" option under the SSO &gt; Advanced Settings &gt; Content and Text tab. Fixed incorrect Schema AggregateRating meta tag markup. Fixed an "undeclared static property" error in the SSO &gt; Dashboard page.
 
 = 8.5.1 =
 
