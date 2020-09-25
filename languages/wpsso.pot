@@ -1574,7 +1574,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:157
 msgctxt "option value"
-msgid "Schema Alternate Name (Title)"
+msgid "Schema Alternate Name"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:158
@@ -3065,7 +3065,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:130 lib/pro/admin/edit.php:253
 #: lib/std/admin/edit.php:252
 msgctxt "option label"
-msgid "Video Name / Title"
+msgid "Video Name (Title)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:131 lib/pro/admin/edit.php:261
@@ -5711,10 +5711,10 @@ msgstr ""
 
 #: lib/messages.php:817
 msgid ""
-"If your theme header template(s) create a title HTML tag for the webpage, "
-"instead of letting WordPress provide one, then this feature will not work "
-"for you &mdash; contact your theme author and request that they add support "
-"for the WordPress 'title-tag' feature."
+"If your theme header templates create a title HTML tag for the webpage, "
+"instead of letting WordPress provide one, then this option will not work for "
+"you &mdash; contact your theme author and request that they add support for "
+"the WordPress 'title-tag' feature."
 msgstr ""
 
 #: lib/messages.php:827

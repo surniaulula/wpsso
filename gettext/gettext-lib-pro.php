@@ -127,7 +127,7 @@ _x( 'Maximum Videos', 'option label', 'wpsso' );
 _x( 'Video Dimensions', 'option label', 'wpsso' );
 _x( 'Video Embed HTML', 'option label', 'wpsso' );
 _x( 'or a Video URL', 'option label', 'wpsso' );
-_x( 'Video Name / Title', 'option label', 'wpsso' );
+_x( 'Video Name (Title)', 'option label', 'wpsso' );
 _x( 'Video Description', 'option label', 'wpsso' );
 _x( 'Pinterest Pin It', 'metabox title', 'wpsso' );
 _x( 'Image ID', 'option label', 'wpsso' );

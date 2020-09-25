@@ -2330,7 +2330,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'wp_title'         => 'WordPress Title',
 					'og_title'         => 'Default Title',
 					'schema_title'     => 'Schema Name (Title)',
-					'schema_title_alt' => 'Schema Alternate Name (Title)',
+					'schema_title_alt' => 'Schema Alternate Name',
 				),
 				'notice_systems' => array(
 					'toolbar_notices' => 'SSO Toolbar Notices',

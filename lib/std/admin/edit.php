@@ -249,7 +249,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tr_class' => $form->get_css_class_hide( 'basic', 'og_vid_title' ),
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'Video Name / Title', 'option label', 'wpsso' ),
+					'label'    => _x( 'Video Name (Title)', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_vid_title',
 					'content'  => $form->get_no_input_value( '', $css_class = 'wide' ),	// The Standard plugin does not include video modules.
 				),

@@ -335,7 +335,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-og_vid_title':	// Video Name / Title.
+						case 'tooltip-meta-og_vid_title':	// Video Name (Title).
 						case 'tooltip-meta-og_vid_desc':	// Video Description.
 
 							$text = sprintf( __( 'The %1$s video API modules can offer a default video name / title and description, provided that information is available from the service API.', 'wpsso' ), $info[ 'short_pro' ] ) . ' ';
@@ -814,7 +814,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = sprintf( __( '%1$s can provide a custom title HTML tag for themes that support the WordPress \'title-tag\' feature (available since WordPress v4.4).', 'wpsso' ), $info[ 'name' ] ) . ' ';
 
-							$text .= __( 'If your theme header template(s) create a title HTML tag for the webpage, instead of letting WordPress provide one, then this feature will not work for you &mdash; contact your theme author and request that they add support for the WordPress \'title-tag\' feature.', 'wpsso' );
+							$text .= __( 'If your theme header templates create a title HTML tag for the webpage, instead of letting WordPress provide one, then this option will not work for you &mdash; contact your theme author and request that they add support for the WordPress \'title-tag\' feature.', 'wpsso' );
 
 							break;
 

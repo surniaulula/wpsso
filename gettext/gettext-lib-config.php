@@ -154,7 +154,7 @@ _x( 'tz', 'option value', 'wpsso' );
 _x( 'WordPress Title', 'option value', 'wpsso' );
 _x( 'Default Title', 'option value', 'wpsso' );
 _x( 'Schema Name (Title)', 'option value', 'wpsso' );
-_x( 'Schema Alternate Name (Title)', 'option value', 'wpsso' );
+_x( 'Schema Alternate Name', 'option value', 'wpsso' );
 _x( 'SSO Toolbar Notices', 'option value', 'wpsso' );
 _x( 'WP Admin Notices', 'option value', 'wpsso' );
 _x( 'Basic Options', 'option value', 'wpsso' );
