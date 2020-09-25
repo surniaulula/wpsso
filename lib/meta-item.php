@@ -204,20 +204,98 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 				return array();	// Empty array.
 			}
 
-			$mt_item = array();
-
+			$mt_item       = array();
 			$page_type_id  = $this->p->schema->get_mod_schema_type( $mod, $get_id = true );
 			$page_type_url = $this->p->schema->get_schema_type_url( $page_type_id );
 
-			self::add_mt_item_from_assoc( $mt_item, $mt_og, array(
-				'url'  => 'og:url',
-				'name' => 'og:title',
-			) );
+			/**
+			 * Property:
+			 *	url
+			 */
+			if ( empty( $this->p->options[ 'add_link_itemprop_url' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'skipping url: link itemprop url is disabled' );
+				}
+
+			} else {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'getting url (fragment anchor or canonical url)' );
+				}
+
+				if ( empty( $mod[ 'is_public' ] ) ) {				// Since WPSSO Core v7.0.0.
+
+					$mt_item[ 'url' ] = WpssoUtil::get_fragment_anchor( $mod );	// Since WPSSO Core v7.0.0.
+
+				} else {
+
+					$mt_item[ 'url' ] = $this->p->util->get_canonical_url( $mod );
+				}
+			}
 
 			/**
-			 * Description.
+			 * Property:
+			 *	name
 			 */
-			if ( ! empty( $this->p->options[ 'add_meta_itemprop_description' ] ) ) {
+			if ( empty( $this->p->options[ 'add_meta_itemprop_name' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'skipping name: meta itemprop name is disabled' );
+				}
+
+			} else {
+
+				$mt_item[ 'name' ] = $this->p->page->get_title( 0, '', $mod, $read_cache = true,
+					$add_hashtags = false, $do_encode = true, $md_key = 'schema_title' );
+			}
+
+			/**
+			 * Property:
+			 *	alternatename
+			 */
+			if ( empty( $this->p->options[ 'add_meta_itemprop_alternatename' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'skipping alternatename: meta itemprop alternatename is disabled' );
+				}
+
+			} else {
+
+				$mt_item[ 'alternatename' ] = $this->p->page->get_title( $this->p->options[ 'og_title_max_len' ],
+					$dots = '...', $mod, $read_cache = true, $add_hashtags = false, $do_encode = true,
+						$md_key = 'schema_title_alt' );
+
+				if ( isset( $mt_item[ 'name' ] ) ) {
+
+					if ( $mt_item[ 'name' ] === $mt_item[ 'alternatename' ] ) {	// Prevent duplicate values.
+
+						unset( $mt_item[ 'alternatename' ] );
+					}
+				}
+			}
+
+			/**
+			 * Property:
+			 *	description
+			 */
+			if ( empty( $this->p->options[ 'add_meta_itemprop_description' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'skipping description: meta itemprop description is disabled' );
+				}
+
+			} else {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'getting schema description with fallback schema_desc, seo_desc, og_desc' );
+				}
 
 				$mt_item[ 'description' ] = $this->p->page->get_description( $this->p->options[ 'schema_desc_max_len' ],
 					$dots = '...', $mod, $read_cache = true, $add_hashtags = false, $do_encode = true,
@@ -225,33 +303,14 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 			}
 
 			/**
-			 * Thumbnail URL.
-			 */
-			if ( empty( $this->p->options[ 'add_link_itemprop_thumbnailurl' ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'skipping thumbnail: link itemprop thumbnail is disabled' );
-				}
-
-			} else {
-
-				$mt_item[ 'thumbnailurl' ] = $this->p->og->get_thumbnail_url( $this->p->lca . '-thumbnail', $mod, $md_pre = 'schema' );
-
-				if ( empty( $mt_item[ 'thumbnailurl' ] ) ) {
-
-					unset( $mt_item[ 'thumbnailurl' ] );
-				}
-			}
-
-			/**
-			 * Image URLs.
+			 * Property:
+			 *	image
 			 */
 			if ( empty( $this->p->options[ 'add_link_itemprop_image' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'skipping images: meta itemprop image is disabled' );
+					$this->p->debug->log( 'skipping images: link itemprop image is disabled' );
 				}
 
 			} else {
@@ -261,8 +320,7 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 					$this->p->debug->log( 'getting images for ' . $page_type_url );
 				}
 
-				$max_nums = $this->p->util->get_max_nums( $mod, 'schema' );
-
+				$max_nums  = $this->p->util->get_max_nums( $mod, 'schema' );
 				$mt_images = $this->p->og->get_all_images( $max_nums[ 'schema_img_max' ], $size_names = 'schema', $mod, true, $md_pre = 'schema' );
 
 				foreach ( $mt_images as $mt_single_image ) {
@@ -271,18 +329,33 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 				}
 			}
 
-			return (array) apply_filters( $this->p->lca . '_schema_meta_itemprop', $mt_item, $mod, $mt_og, $page_type_id );
-		}
+			/**
+			 * Property:
+			 *	thumbnailurl
+			 */
+			if ( empty( $this->p->options[ 'add_link_itemprop_thumbnailurl' ] ) ) {
 
-		public static function add_mt_item_from_assoc( array &$mt_item, array &$assoc, array $names ) {
+				if ( $this->p->debug->enabled ) {
 
-			foreach ( $names as $prop_name => $key_name ) {
+					$this->p->debug->log( 'skipping thumbnail: link itemprop thumbnailurl is disabled' );
+				}
 
-				if ( ! empty( $assoc[ $key_name ] ) && $assoc[ $key_name ] !== WPSSO_UNDEF ) {
+			} else {
 
-					$mt_item[ $prop_name ] = $assoc[ $key_name ];
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'getting thumbnailurl for ' . $page_type_url );
+				}
+
+				$mt_item[ 'thumbnailurl' ] = $this->p->og->get_thumbnail_url( $this->p->lca . '-thumbnail', $mod, $md_pre = 'schema' );
+
+				if ( empty( $mt_item[ 'thumbnailurl' ] ) ) {
+
+					unset( $mt_item[ 'thumbnailurl' ] );
 				}
 			}
+
+			return (array) apply_filters( $this->p->lca . '_schema_meta_itemprop', $mt_item, $mod, $mt_og, $page_type_id );
 		}
 	}
 }
