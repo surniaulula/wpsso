@@ -30,7 +30,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->mark();
 			}
 
-			add_action( 'pre_get_document_title', array( $this, 'pre_get_document_title' ), 1000 );
+			add_action( 'pre_get_document_title', array( $this, 'pre_get_document_title' ), 1000 );	// Since WP v4.4.
 		}
 
 		/**
