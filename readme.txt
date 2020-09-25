@@ -307,7 +307,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.6.0-rc.2 (2020/09/25)**
+**Version 8.6.0 (2020/09/25)**
 
 **The minimum WordPress version has been increased from v4.2 to v4.4.**
 
@@ -543,11 +543,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.6.0-rc.2 =
+= 8.6.0 =
 
 (2020/09/25) Added a new "Webpage Document Title" option under the SSO &gt; Advanced Settings &gt; Content and Text tab. Fixed incorrect Schema AggregateRating meta tag markup. Fixed an "undeclared static property" error in the SSO &gt; Dashboard page.
-
-= 8.5.1 =
-
-(2020/09/18) Additional translation string updates for the Setup Guide. Fixed All In One SEO Pack plugin detection. Fixed Squirrly SEO conflict notification texts and links. Added new Schema Review sub-types.
 
