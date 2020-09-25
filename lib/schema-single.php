@@ -89,14 +89,18 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				/**
 				 * Get the image title.
 				 */
-				$json_ret[ 'name' ] = $wpsso->page->get_title( 0, '', $mod, true, false, true, 'schema_title', false );
+				$json_ret[ 'name' ] = $wpsso->page->get_title( $title_max_len = 0, $dots = '', $mod,
+					$read_cache = true, $add_hashtags = false, $do_encode = true,
+						$md_key = 'schema_title', $sep = false );
 
 				/**
 				 * Get the image alternate title, if one has been defined in the custom post meta.
 				 */
 				$title_max_len = $wpsso->options[ 'og_title_max_len' ];
 
-				$json_ret[ 'alternateName' ] = $wpsso->page->get_title( $title_max_len, '...', $mod, true, false, true, 'schema_title_alt' );
+				$json_ret[ 'alternateName' ] = $wpsso->page->get_title( $title_max_len, $dots = '...', $mod,
+					$read_cache = true, $add_hashtags = false, $do_encode = true,
+						$md_key = 'schema_title_alt' );
 
 				if ( $json_ret[ 'name' ] === $json_ret[ 'alternateName' ] ) {	// Prevent duplicate values.
 

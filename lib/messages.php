@@ -810,13 +810,21 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/**
 						 * Content settings.
 						 */
-						case 'tooltip-plugin_filter_title':	// Use Filtered (aka SEO) Title.
+						case 'tooltip-plugin_document_title':	// Webpage Document Title.
+
+							$text = sprintf( __( '%1$s can provide a custom title HTML tag for themes that support the WordPress \'title-tag\' feature (available since WordPress v4.4).', 'wpsso' ), $info[ 'name' ] ) . ' ';
+
+							$text .= __( 'If your theme header template(s) create a title HTML tag for the webpage, instead of letting WordPress provide one, then this feature will not work for you &mdash; contact your theme author and request that they add support for the WordPress \'title-tag\' feature.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-plugin_filter_title':	// Use WordPress Title Filters.
 
 							$def_checked = $this->p->opt->get_defaults( 'plugin_filter_title' ) ?
 								_x( 'checked', 'option value', 'wpsso' ) :
 								_x( 'unchecked', 'option value', 'wpsso' );
 
-							$text = __( 'The title values provided by WordPress may include modifications by themes and/or SEO plugins (appending the site name or expanding inline variables, for example, is a common practice).', 'wpsso' ) . ' ';
+							$text = __( 'The default title value provided by WordPress may include modifications by themes and/or other SEO plugins (appending the site name or expanding inline variables, for example, is a common practice).', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( 'Uncheck this option to always use the original unmodified title value from WordPress (default is %s).', 'wpsso' ), $def_checked ) . ' ';
 
@@ -891,7 +899,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/**
 						 * Integration settings
 						 */
-						case 'tooltip-plugin_new_user_is_person':	// Add Person Role to New Users.
+						case 'tooltip-plugin_new_user_is_person':	// Add Person Role for New Users.
 
 							$text = sprintf( __( 'Automatically add the "%s" role when a new user is created.', 'wpsso' ), _x( 'Person', 'user role', 'wpsso' ) ) . ' ';
 

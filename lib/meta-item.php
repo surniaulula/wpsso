@@ -266,8 +266,10 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 
 			} else {
 
-				$mt_item[ 'alternatename' ] = $this->p->page->get_title( $this->p->options[ 'og_title_max_len' ],
-					$dots = '...', $mod, $read_cache = true, $add_hashtags = false, $do_encode = true,
+				$title_max_len = $this->p->options[ 'og_title_max_len' ];
+
+				$mt_item[ 'alternatename' ] = $this->p->page->get_title( $title_max_len, $dots = '...', $mod,
+					$read_cache = true, $add_hashtags = false, $do_encode = true,
 						$md_key = 'schema_title_alt' );
 
 				if ( isset( $mt_item[ 'name' ] ) ) {

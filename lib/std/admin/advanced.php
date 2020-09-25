@@ -53,9 +53,13 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
+			$table_rows[ 'plugin_document_title' ] = '' .
+			$form->get_th_html( _x( 'Webpage Document Title', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_document_title' ) .
+			'<td class="blank">' . $form->get_no_select( 'plugin_document_title',  $this->p->cf[ 'form' ][ 'document_title' ] ) . '</td>';
+
 			$table_rows[ 'plugin_filter_title' ] = '' . 
-			$form->get_th_html( _x( 'Use Filtered (aka SEO) Title', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_filter_title' ) . 
-			$form->get_no_td_checkbox( 'plugin_filter_title' );
+			$form->get_th_html( _x( 'Use WordPress Title Filters', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_filter_title' ) . 
+			$form->get_no_td_checkbox( 'plugin_filter_title', '<em>' . _x( 'not recommended', 'option comment', 'wpsso' ) . '</em>' );
 
 			$table_rows[ 'plugin_filter_content' ] = '' . 
 			$form->get_th_html( _x( 'Use WordPress Content Filters', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_filter_content' ) . 
@@ -113,7 +117,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			$table_rows[ 'plugin_new_user_is_person' ] = '' . 
-			$form->get_th_html( _x( 'Add Person Role to New Users', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_new_user_is_person' ) . 
+			$form->get_th_html( _x( 'Add Person Role for New Users', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_new_user_is_person' ) . 
 			$form->get_no_td_checkbox( 'plugin_new_user_is_person' );
 
 			$table_rows[ 'plugin_page_excerpt' ] = '' . 
@@ -136,7 +140,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$form->get_th_html( _x( 'Upscale Media Library Images', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_upscale_images' ) . 
 			$form->get_no_td_checkbox( 'plugin_upscale_images' );
 
-			$table_rows[ 'plugin_upscale_img_max' ] = '' .
+			$table_rows[ 'plugin_upscale_img_max' ] = $form->get_tr_hide( 'basic', 'plugin_upscale_img_max' ) .
 			$form->get_th_html( _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_upscale_img_max' ) . 
 			'<td class="blank">' . $form->get_no_input( 'plugin_upscale_img_max', $css_class = 'short' ) . ' %</td>';
 

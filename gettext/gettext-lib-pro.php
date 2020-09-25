@@ -3,7 +3,9 @@
 /**
  * Extract of translatable strings from lib/pro/.
  */
-_x( 'Use Filtered (aka SEO) Title', 'option label', 'wpsso' );
+_x( 'Webpage Document Title', 'option label', 'wpsso' );
+_x( 'Use WordPress Title Filters', 'option label', 'wpsso' );
+_x( 'not recommended', 'option comment', 'wpsso' );
 _x( 'Use WordPress Content Filters', 'option label', 'wpsso' );
 _x( 'recommended', 'option comment', 'wpsso' );
 _x( 'Use WordPress Excerpt Filters', 'option label', 'wpsso' );
@@ -14,7 +16,7 @@ _x( 'WP Caption Text Prefix', 'option label', 'wpsso' );
 _x( 'No Title Text', 'option label', 'wpsso' );
 _x( 'No Description Text', 'option label', 'wpsso' );
 _x( 'Check for Embedded Media', 'option label', 'wpsso' );
-_x( 'Add Person Role to New Users', 'option label', 'wpsso' );
+_x( 'Add Person Role for New Users', 'option label', 'wpsso' );
 _x( 'Enable WP Excerpt for Pages', 'option label', 'wpsso' );
 _x( 'Enable WP Tags for Pages', 'option label', 'wpsso' );
 _x( 'Check for Duplicate Meta Tags', 'option label', 'wpsso' );

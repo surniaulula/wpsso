@@ -29,6 +29,71 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				$this->p->debug->mark();
 			}
+
+			add_action( 'pre_get_document_title', array( $this, 'pre_get_document_title' ), 1000 );
+		}
+
+		/**
+		 * Filters the WordPress document title before it is generated.
+		 */
+		public function pre_get_document_title( $title = '' ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			$title_prov = empty( $this->p->options[ 'plugin_document_title' ] ) ? 'wp_title' : $this->p->options[ 'plugin_document_title' ];
+
+			if ( 'wp_title' === $title_prov ) {	// Nothing to do.
+
+				return $title;
+			}
+
+			$use_post = apply_filters( $this->p->lca . '_use_post', false );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'required call to get_page_mod()' );
+			}
+
+			$mod = $this->p->util->get_page_mod( $use_post );
+
+			switch ( $title_prov ) {
+
+				case 'og_title':
+
+					$title_max_len = $this->p->options[ 'og_title_max_len' ];
+
+					$title = $this->p->page->get_title( $title_max_len, '...', $mod );
+
+					break;
+
+				case 'schema_title':
+
+					$title = $this->p->page->get_title( $title_max_len = 0, $dots = '', $mod,
+						$read_cache = true, $add_hashtags = false, $do_encode = true,
+							$md_key = 'schema_title' );
+
+					break;
+
+				case 'schema_title_alt':
+
+					$title_max_len = $this->p->options[ 'og_title_max_len' ];
+
+					$title = $this->p->page->get_title( $title_max_len, $dots = '...', $mod,
+						$read_cache = true, $add_hashtags = false, $do_encode = true,
+							$md_key = 'schema_title_alt' );
+
+					break;
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'returning ' . $title_prov . ' = ' . $title );
+			}
+
+			return $title;
 		}
 
 		public function get_quote( array $mod ) {
@@ -1775,11 +1840,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						}
 					}
 				}
-			}
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'before wp_title filter = "' . $title_text . '"' );
 			}
 
 			/**

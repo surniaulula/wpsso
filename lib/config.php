@@ -22,8 +22,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.6.0-rc.1',	// Plugin version.
-					'opt_version' => '762',		// Increment when changing default option values.
+					'version'     => '8.6.0-rc.2',	// Plugin version.
+					'opt_version' => '763',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Make sure your content looks great on social sites and search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -1549,7 +1549,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings - Content tab.
 					 */
-					'plugin_filter_title'   => 0,				// Use Filtered (aka SEO) Title.
+					'plugin_document_title' => 'wp_title',			// Webpage Document Title.
+					'plugin_filter_title'   => 0,				// Use WordPress Title Filters.
 					'plugin_filter_content' => 0,				// Use WordPress Content Filters.
 					'plugin_filter_excerpt' => 0,				// Use WordPress Excerpt Filters.
 					'plugin_p_strip'        => 1,				// Content Starts at 1st Paragraph.
@@ -1575,7 +1576,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_html_attr_filter_prio' => 1000,
 					'plugin_head_attr_filter_name' => 'head_attributes',		// <head> Attributes Filter Hook.
 					'plugin_head_attr_filter_prio' => 1000,
-					'plugin_new_user_is_person'    => 0,				// Add Person Role to New Users.
+					'plugin_new_user_is_person'    => 0,				// Add Person Role for New Users.
 					'plugin_page_excerpt'          => 0,				// Enable WP Excerpt for Pages.
 					'plugin_page_tags'             => 0,				// Enable WP Tags for Pages.
 					'plugin_check_head'            => 1,				// Check for Duplicate Meta Tags.
@@ -1806,7 +1807,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings - Integration tab.
 					 */
-					'plugin_new_user_is_person'        => 0,			// Add Person Role to New Users.
+					'plugin_new_user_is_person'        => 0,			// Add Person Role for New Users.
 					'plugin_new_user_is_person:use'    => 'default',
 					'plugin_page_excerpt'              => 0,			// Enable WP Excerpt for Pages.
 					'plugin_page_excerpt:use'          => 'default',
@@ -2044,11 +2045,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/**
 			 * WordPress config.
 			 *
-			 * WordPress v4.2 was released on April 23, 2015.
+			 * WordPress v4.4 was released on December 8, 2015.
 			 */
 			'wp' => array(
 				'label'       => 'WordPress',
-				'min_version' => '4.2',		// Hard limit - deactivate the plugin when activating.
+				'min_version' => '4.4',		// Hard limit - deactivate the plugin when activating.
 				'rec_version' => '5.4.1',	// Soft limit - issue warning if lower version found.
 				'version_url' => 'https://codex.wordpress.org/Supported_Versions?nocache=1',
 				'tb_iframe'   => array(		// Thickbox iframe.
@@ -2324,6 +2325,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'unchecked'  => 'unchecked',
 					'at'         => 'at',
 					'tz'         => 'tz',
+				),
+				'document_title' => array(	// Webpage Document Title.
+					'wp_title'         => 'WordPress Title',
+					'og_title'         => 'Default Title',
+					'schema_title'     => 'Schema Name (Title)',
+					'schema_title_alt' => 'Schema Alternate Name (Title)',
 				),
 				'notice_systems' => array(
 					'toolbar_notices' => 'SSO Toolbar Notices',

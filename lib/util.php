@@ -95,13 +95,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			), $prio = -1000 );
 
 			/**
-			 * Several actions must be hooked to define our image sizes on the front-end, back-end, AJAX calls, REST
-			 * API calls, etc.
+			 * All three actions must be hooked to add our image sizes on the front-end, back-end, AJAX calls, REST API
+			 * calls, etc.
 			 */
 			add_action( 'wp', array( $this, 'add_plugin_image_sizes' ), -100 );				// Front-end compatibility.
-
 			add_action( 'admin_init', array( $this, 'add_plugin_image_sizes' ), -100 );			// Back-end + AJAX compatibility.
-
 			add_action( 'rest_api_init', array( $this, 'add_plugin_image_sizes' ), -100 );			// REST API compatibility.
 		}
 

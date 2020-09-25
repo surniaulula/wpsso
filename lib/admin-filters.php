@@ -62,9 +62,9 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 
 			$features[ '(feature) URL Shortening Service' ][ 'label_url' ] = $apikeys_tab_url;
 
-			$features[ '(feature) Use Filtered (aka SEO) Title' ] = array(
+			$features[ '(feature) Use WordPress Title Filters' ] = array(
 				'td_class'     => $td_class,
-				'label_transl' => _x( '(feature) Use Filtered (aka SEO) Title', 'lib file description', 'wpsso' ),
+				'label_transl' => _x( '(feature) Use WordPress Title Filters', 'lib file description', 'wpsso' ),
 				'label_url'    => $content_tab_url,
 				'status'       => $this->p->options[ 'plugin_filter_title' ] ? $status_on : 'off',
 			);
