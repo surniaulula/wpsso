@@ -332,6 +332,7 @@ table.sucom-settings td p.pro-feature-msg {
 	color:#999;
 	font-size:0.95em;
 	font-style:italic;
+	line-height:1.4em;
 	text-align:center;
 	margin:0 0 5px 0;
 }
@@ -963,7 +964,6 @@ table.sucom-settings .preview_txt {
 	position:relative;
 	text-align:left;
 	word-wrap:break-word;
-	width:600px;
 }
 
 table.sucom-settings .preview_title {
