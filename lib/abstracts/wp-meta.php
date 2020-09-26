@@ -758,11 +758,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			$mod = $this->get_mod( $mod_id );
 
-			$local_head_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache );
+			$head_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache );
 
-			$local_head_info = $this->p->head->extract_head_info( $mod, $local_head_tags );
+			$head_info = $this->p->head->extract_head_info( $mod, $head_tags );
 
-			return $local_cache[ $mod_id ] = $local_head_info;
+			return $local_cache[ $mod_id ] = $head_info;
 		}
 
 		/**

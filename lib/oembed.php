@@ -35,6 +35,8 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 			 */
 			add_filter( 'oembed_response_data', array( $this, 'post_oembed_response_data' ), 10000, 4 );
 			add_filter( 'oembed_response_data', array( $this, 'post_oembed_response_data_rich' ), 11000, 4 );
+			add_filter( 'post_embed_url', array( $this, 'post_embed_url' ), 10000, 2 );
+			add_filter( 'embed_html', array( $this, 'post_embed_html' ), 10000, 4 );
 
 			/**
 			 * Filters that are called in the loop.
@@ -43,6 +45,7 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 			add_filter( 'embed_thumbnail_image_size', array( $this, 'the_embed_thumbnail_image_size' ), 10000, 2 );
 			add_filter( 'embed_thumbnail_image_shape', array( $this, 'the_embed_thumbnail_image_shape' ), 10000, 2 );
 			add_filter( 'the_excerpt_embed', array( $this, 'the_embed_excerpt' ), 10000, 1 );
+			add_filter( 'embed_site_title_html', array( $this, 'the_embed_site_title_html' ), 10000, 1 );
 		}
 
 		/**
@@ -115,6 +118,16 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 			return $data;
 		}
 
+		public function post_embed_url( $embed_url, $post ) {
+
+			return $embed_url;
+		}
+
+		public function post_embed_html( $output, $post, $width, $height ) {
+
+			return $output;
+		}
+
 		/**
 		 * Filters the thumbnail image ID for use in the embed template.
 		 */
@@ -178,6 +191,11 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 			}
 
 			return $excerpt;
+		}
+
+		public function the_embed_site_title_html( $site_title ) {
+
+			return $site_title;
 		}
 	}
 }

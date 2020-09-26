@@ -653,7 +653,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					if ( empty( $mt_og[ 'og:image' ] ) ) {
 
-						unset( $mt_og[ 'og:video' ] );
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'no images returned' );
+						}
+
+						unset( $mt_og[ 'og:image' ] );
 					}
 
 				} else {
