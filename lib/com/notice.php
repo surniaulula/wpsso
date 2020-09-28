@@ -1160,7 +1160,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$style_attr = ' style="' . 
 				( empty( $payload[ 'style' ] ) ? '' : $payload[ 'style' ] ) .
-				( empty( $payload[ 'hidden' ] ) ? 'display:' . $notice_display . ';' : 'display:none;' ) . '"';
+				( empty( $payload[ 'hidden' ] ) ? 'display:' . $notice_display . ' !important;' : 'display:none !important;' ) . '"';
 
 			$msg_html = '<div class="' . $this->lca . '-notice ' . 
 				( $is_dismissible ? $this->lca . '-dismissible ' : '' ) .
@@ -1517,6 +1517,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 				#wpadminbar .' . $this->lca . '-notice.notice.notice-alt {
 					display:block !important;	/* Undo Squirrly SEO display:none !important. */
+					position:static !important;	/* Undo Squirrly SEO display:none !important. */
+					top:inherit !important;		/* Undo Squirrly SEO display:none !important. */
+					height:auto !important;		/* Undo Squirrly SEO display:none !important. */
 				}
 				#wpadminbar div.' . $this->lca . '-notice.notice-copy {
 					font-size:0.9em;
