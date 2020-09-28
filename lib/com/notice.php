@@ -1251,8 +1251,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						$msg_key    = sanitize_key( $msg_spoken );
 
 						$this->notice_cache[ $user_id ][ 'err' ][ $msg_key ] = array(
-							'msg_text'   => $msg_text,
-							'msg_spoken' => $msg_spoken,
+							'notice_label' => $this->label_transl,
+							'notice_key'   => $msg_key,
+							'notice_time'  => time(),
+							'notice_ttl'   => 0,
+							'msg_text'     => $msg_text,
+							'msg_spoken'   => $msg_spoken,
 						);
 					}
 				}
