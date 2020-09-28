@@ -1516,10 +1516,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					min-height:50px;
 				}
 				#wpadminbar .' . $this->lca . '-notice.notice.notice-alt {
-					display:block !important;	/* Undo Squirrly SEO display:none !important. */
-					position:static !important;	/* Undo Squirrly SEO display:none !important. */
-					top:inherit !important;		/* Undo Squirrly SEO display:none !important. */
-					height:auto !important;		/* Undo Squirrly SEO display:none !important. */
+					display:block !important;	/* Fix Squirrly SEO display:none !important. */
+					position:static !important;	/* Fix Squirrly SEO position:absolute !important. */
+					top:inherit !important;		/* Fix Squirrly SEO top:-1000px !important. */
+					height:auto !important;		/* Fix Squirrly SEO height:0 !important. */
 				}
 				#wpadminbar div.' . $this->lca . '-notice.notice-copy {
 					font-size:0.9em;
