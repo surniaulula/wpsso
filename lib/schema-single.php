@@ -989,6 +989,25 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$offer[ 'priceSpecification' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/PriceSpecification', $price_spec );
 			}
 
+			if ( empty( $mt_offer[ 'product:shipping_offers' ] ) ) {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'product shipping offers is empty' );
+				}
+
+			} elseif ( is_array( $mt_offer[ 'product:shipping_offers' ] ) ) {
+
+				//error_log( print_r( $mt_offer[ 'product:shipping_offers' ], true ) );
+
+			} else {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'product shipping offers is not an array' );
+				}
+			}
+
 			/**
 			 * Add the seller organization data.
 			 */

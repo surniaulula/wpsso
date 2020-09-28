@@ -8114,41 +8114,41 @@ msgstr ""
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
-#: lib/schema-single.php:1073
+#: lib/schema-single.php:1092
 msgid "adding schema organization"
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1137
+#: lib/schema-single.php:1156
 msgid ""
 "An organization logo image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1140
+#: lib/schema-single.php:1159
 msgid ""
 "An organization banner image (600x60px) is missing and required for the "
 "\"%1$s\" organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or 'ID #'.
-#: lib/schema-single.php:1143
+#: lib/schema-single.php:1162
 msgid ""
 "Please enter the missing image URL in the \"%1$s\" %2$s organization "
 "settings."
 msgstr ""
 
 #. translators: site, as in the "site organization settings".
-#: lib/schema-single.php:1165
+#: lib/schema-single.php:1184
 msgid "site"
 msgstr ""
 
-#: lib/schema-single.php:1346
+#: lib/schema-single.php:1365
 msgid "adding schema person"
 msgstr ""
 
-#: lib/schema-single.php:1531
+#: lib/schema-single.php:1550
 msgid "adding schema place"
 msgstr ""
 
