@@ -2467,9 +2467,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							$val = _x( 'Not available', 'option value', 'wpsso' );
 
-						} elseif ( $key === 'exp_date' ) {
+						} elseif ( 'exp_date' === $key ) {
 
-							if ( $val === '0000-00-00 00:00:00' ) {
+							if ( '0000-00-00 00:00:00' === $val ) {
 
 								$val = _x( 'Never', 'option value', 'wpsso' );
 							}
