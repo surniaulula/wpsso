@@ -89,7 +89,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			add_action( 'update_option_home', array( $this, 'site_address_changed' ), PHP_INT_MAX, 3 );
 			add_action( 'sucom_update_option_home', array( $this, 'site_address_changed' ), PHP_INT_MAX, 3 );
 
-			add_filter( 'http_request_args', array( $this, 'check_plugin_names' ), 500, 2 );
+			//add_filter( 'http_request_args', array( $this, 'check_plugin_names' ), 500, 2 );
 			add_filter( 'http_request_args', array( $this, 'add_expect_header' ), 1000, 2 );
 			add_filter( 'http_request_host_is_external', array( $this, 'maybe_allow_hosts' ), 1000, 3 );
 
