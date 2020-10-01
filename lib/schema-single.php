@@ -56,8 +56,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
-			list( $image_type_id, $image_type_url ) = self::get_type_id_url( $json_data,
-				$type_opts = false, $opt_key = 'image_type', $def_type_id = 'image.object', $list_element );
+			list( $image_type_id, $image_type_url ) = self::get_type_id_url( $json_data, $type_opts = false,
+				$opt_key = 'image_type', $def_type_id = 'image.object', $list_element );
 
 			$json_ret = WpssoSchema::get_schema_type_context( $image_type_url, array(
 				'url' => SucomUtil::esc_url_encode( $image_url ),
@@ -255,8 +255,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
-			list( $video_type_id, $video_type_url ) = self::get_type_id_url( $json_data,
-				$type_opts = false, $opt_key = false, $def_type_id = 'video.object', $list_element );
+			list( $video_type_id, $video_type_url ) = self::get_type_id_url( $json_data, $type_opts = false,
+				$opt_key = false, $def_type_id = 'video.object', $list_element );
 
 			$json_ret = WpssoSchema::get_schema_type_context( $video_type_url, array(
 				'url' => SucomUtil::esc_url_encode( $media_url ),
@@ -563,8 +563,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
-			list( $event_type_id, $event_type_url ) = self::get_type_id_url( $json_data,
-				$event_opts, $opt_key = 'event_type', $def_type_id = 'event', $list_element );
+			list( $event_type_id, $event_type_url ) = self::get_type_id_url( $json_data, $event_opts,
+				$opt_key = 'event_type', $def_type_id = 'event', $list_element );
 
 			/**
 			 * Begin Schema event markup creation.
@@ -759,8 +759,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
-			list( $job_type_id, $job_type_url ) = self::get_type_id_url( $json_data,
-				$job_opts, $opt_key = 'job_type', $def_type_id = 'job.posting', $list_element );
+			list( $job_type_id, $job_type_url ) = self::get_type_id_url( $json_data, $job_opts,
+				$opt_key = 'job_type', $def_type_id = 'job.posting', $list_element );
 
 			/**
 			 * Begin Schema job markup creation.
@@ -884,6 +884,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->debug->mark();
 			}
 
+			$offer = WpssoSchema::get_schema_type_context( 'https://schema.org/Offer' );
+
 			/**
 			 * Note that 'og:url' may be provided instead of 'product:url'.
 			 *
@@ -891,7 +893,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 *
 			 * Note that there is no Schema 'size' property.
 			 */
-			$offer = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array( 
+			WpssoSchema::add_data_itemprop_from_assoc( $offer, $mt_offer, array( 
 				'url'             => 'product:url',
 				'name'            => 'product:title',
 				'description'     => 'product:description',
@@ -998,7 +1000,27 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			} elseif ( is_array( $mt_offer[ 'product:shipping_offers' ] ) ) {
 
-				//error_log( print_r( $mt_offer[ 'product:shipping_offers' ], true ) );
+				foreach ( $mt_offer[ 'product:shipping_offers' ] as $opt_num => $shipping_opts ) {
+
+					if ( ! is_array( $shipping_opts ) ) {	// Just in case.
+
+						if ( $wpsso->debug->enabled ) {
+
+							$wpsso->debug->log( 'skipping shipping #' . $opt_num . ': not an array' );
+						}
+	
+						continue;
+					}
+
+					$shipping_details = WpssoSchemaSingle::get_shipping_offer_data( $mod, $shipping_opts, $offer[ 'url' ] );
+
+					if ( false === $shipping_details ) {
+
+						continue;
+					}
+
+					$offer[ 'shippingDetails' ][] = $shipping_details;
+				}
 
 			} else {
 
@@ -1013,7 +1035,102 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			self::add_organization_data( $offer[ 'seller' ], $mod, 'site', 'org_logo_url', false );
 
-			return WpssoSchema::get_schema_type_context( 'https://schema.org/Offer', $offer );
+			return $offer;
+		}
+
+		public static function get_shipping_offer_data( array $mod, array $shipping_opts, $offer_url = '' ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
+
+			$shipping_offer = WpssoSchema::get_schema_type_context( 'https://schema.org/OfferShippingDetails' );
+
+			WpssoSchema::add_data_itemprop_from_assoc( $shipping_offer, $shipping_opts, array( 
+				'name' => 'shipping_name',
+			) );
+
+			if ( isset( $shipping_opts[ 'shipping_rates' ] ) ) {
+
+				$aggregate_rates = array();
+
+				foreach ( $shipping_opts[ 'shipping_rates' ] as $rate_num => $rate_opts ) {
+
+					$price_currency = isset( $rate_opts[ 'shipping_currency' ] ) ?
+						$rate_opts[ 'shipping_currency' ] : $wpsso->options[ 'plugin_def_currency' ];
+
+					/**
+					 * Keep track of the lowest and highest price by currency.
+					 */
+					if ( isset( $rate_opts[ 'shipping_cost' ] ) ) {	// Just in case.
+
+						if ( ! isset( $aggregate_rates[ $price_currency ][ 'minValue' ] )
+							|| $aggregate_rates[ $price_currency ][ 'minValue' ] > $rate_opts[ 'shipping_cost' ] ) {
+	
+							$aggregate_rates[ $price_currency ][ 'minValue' ] = $rate_opts[ 'shipping_cost' ];
+						}
+	
+						if ( ! isset( $aggregate_rates[ $price_currency ][ 'maxValue' ] )
+							|| $aggregate_rates[ $price_currency ][ 'maxValue' ] < $rate_opts[ 'shipping_cost' ] ) {
+	
+							$aggregate_rates[ $price_currency ][ 'maxValue' ] = $rate_opts[ 'shipping_cost' ];
+						}
+
+						$aggregate_rates[ $price_currency ][ 'currency' ] = $price_currency;
+					}
+				}
+
+				foreach ( $aggregate_rates as $price_currency => $monetary_amount ) {
+
+					if ( isset( $monetary_amount[ 'minValue' ] ) && isset( $monetary_amount[ 'maxValue' ] ) &&
+						$monetary_amount[ 'minValue' ] === $monetary_amount[ 'maxValue' ] ) {
+
+						$monetary_amount[ 'value' ] = $monetary_amount[ 'minValue' ];
+
+						unset( $monetary_amount[ 'minValue' ], $monetary_amount[ 'maxValue' ] );
+					}
+
+					$shipping_offer[ 'shippingRate' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/MonetaryAmount', $monetary_amount );
+				}
+			}
+
+			/*
+			if ( isset( $shipping_opts[ 'shipping_destinations' ] ) ) {
+
+				$aggregate_postal_codes = array();
+
+				$aggregate_regions = array();
+
+				$aggregate_countries = array();
+
+				foreach ( $shipping_opts[ 'shipping_destinations' ] as $dest_num => $dest_opts ) {
+
+					$shipping_country = isset( $dest_opts[ 'country_code' ] ) ? $dest_opts[ 'country_code' ] : 'US';
+
+					if ( ! empty( $dest_opts[ 'postal_code' ] ) ) {
+
+						$aggregate_postal_codes[ $shipping_country ][] = $dest_opts[ 'postal_code' ];
+
+					} elseif ( ! empty( $dest_opts[ 'region_code' ] ) ) {	// State / Province.
+
+						$aggregate_regions[ $shipping_country ][] = $dest_opts[ 'region_code' ];
+
+					} elseif ( ! empty( $dest_opts[ 'country_code' ] ) ) {
+
+						$aggregate_countries[ 'World' ][] = $dest_opts[ 'country_code' ];
+					}
+				}
+			}
+			*/
+
+			$shipping_id = empty( $shipping_opts[ 'shipping_id' ] ) ? '' :  $shipping_opts[ 'shipping_id' ];
+
+			WpssoSchema::update_data_id( $shipping_offer, $shipping_id, $offer_url );
+
+			return $shipping_offer;
 		}
 
 		/**
@@ -1077,8 +1194,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
-			list( $org_type_id, $org_type_url ) = self::get_type_id_url( $json_data,
-				$org_opts, $opt_key = 'org_schema_type', $def_type_id = 'organization', $list_element );
+			list( $org_type_id, $org_type_url ) = self::get_type_id_url( $json_data, $org_opts,
+				$opt_key = 'org_schema_type', $def_type_id = 'organization', $list_element );
 
 			$json_ret = WpssoSchema::get_schema_type_context( $org_type_url );
 
@@ -1429,8 +1546,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
-			list( $person_type_id, $person_type_url ) = self::get_type_id_url( $json_data,
-				$person_opts, $opt_key = 'person_type', $def_type_id = 'person', $list_element );
+			list( $person_type_id, $person_type_url ) = self::get_type_id_url( $json_data, $person_opts,
+				$opt_key = 'person_type', $def_type_id = 'person', $list_element );
 
 			$json_ret = WpssoSchema::get_schema_type_context( $person_type_url );
 
@@ -1472,8 +1589,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$json_ret = apply_filters( $wpsso->lca . '_json_data_single_person', $json_ret, $mod, $person_id );
 
 			/**
-			 * Update the '@id' string based on the $sharing_url and the $person_type_id. Encode the URL part of the
-			 * '@id' string to hide the WordPress login username.
+			 * Update the '@id' string based on the $sharing_url and the $person_type_id.
+			 *
+			 * Encode the URL part of the '@id' string to hide the WordPress login username.
 			 */
 			WpssoSchema::update_data_id( $json_ret, $person_type_id, $sharing_url, $hash_url = true );
 
@@ -1535,8 +1653,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
-			list( $place_type_id, $place_type_url ) = self::get_type_id_url( $json_data,
-				$place_opts, $opt_key = 'place_schema_type', $def_type_id = 'place', $list_element );
+			list( $place_type_id, $place_type_url ) = self::get_type_id_url( $json_data, $place_opts,
+				$opt_key = 'place_schema_type', $def_type_id = 'place', $list_element );
 
 			$json_ret = WpssoSchema::get_schema_type_context( $place_type_url );
 
@@ -1575,8 +1693,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'streetAddress'       => 'place_street_address', 
 				'postOfficeBoxNumber' => 'place_po_box_number', 
 				'addressLocality'     => 'place_city',
-				'addressRegion'       => 'place_state',
-				'postalCode'          => 'place_zipcode',
+				'addressRegion'       => 'place_region',
+				'postalCode'          => 'place_postal_code',
 				'addressCountry'      => 'place_country',	// Alpha2 country code.
 			) ) ) {
 
@@ -1734,7 +1852,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		/**
 		 * If not adding a list element, then inherit the existing schema type url (if one exists).
 		 */
-		public static function get_type_id_url( $json_data, $type_opts, $opt_key, $def_type_id, $list_element = false ) {
+		private static function get_type_id_url( $json_data, $type_opts, $opt_key, $def_type_id, $list_element = false ) {
 
 			$wpsso =& Wpsso::get_instance();
 

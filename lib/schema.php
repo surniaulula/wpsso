@@ -1299,8 +1299,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( preg_match( '/^(.+:\/\/.+)\/([^\/]+)$/', $type_url, $match ) ) {
 
-				$context_value = $match[1];
-				$type_value    = $match[2];
+				$context_value = $match[ 1 ];
+				$type_value    = $match[ 2 ];
 
 				/**
 				 * Check for schema extension (example: https://health-lifesci.schema.org).
@@ -1316,9 +1316,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( preg_match( '/^(.+:\/\/)([^\.]+)\.([^\.]+\.[^\.]+)$/', $context_value, $ext ) ) {
 
 					$context_value = array( 
-						$ext[1] . $ext[3],
+						$ext[ 1 ] . $ext[ 3 ],
 						array(
-							$ext[2] => $ext[0],
+							$ext[ 2 ] => $ext[ 0 ],
 						)
 					);
 				}
@@ -1901,16 +1901,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 */
 				if ( isset( $single_offer[ 'price' ] ) ) {	// Just in case.
 
-					if ( ! isset( $aggregate_prices[ $price_currency ][ 'low' ] )
-						|| $aggregate_prices[ $price_currency ][ 'low' ] > $single_offer[ 'price' ] ) {		// Save lower price.
+					if ( ! isset( $aggregate_prices[ $price_currency ][ 'lowPrice' ] )
+						|| $aggregate_prices[ $price_currency ][ 'lowPrice' ] > $single_offer[ 'price' ] ) {
 
-						$aggregate_prices[ $price_currency ][ 'low' ] = $single_offer[ 'price' ];
+						$aggregate_prices[ $price_currency ][ 'lowPrice' ] = $single_offer[ 'price' ];
 					}
 
-					if ( ! isset( $aggregate_prices[ $price_currency ][ 'high' ] )
-						|| $aggregate_prices[ $price_currency ][ 'high' ] < $single_offer[ 'price' ] ) {	// Save higher price.
+					if ( ! isset( $aggregate_prices[ $price_currency ][ 'highPrice' ] )
+						|| $aggregate_prices[ $price_currency ][ 'highPrice' ] < $single_offer[ 'price' ] ) {
 
-						$aggregate_prices[ $price_currency ][ 'high' ] = $single_offer[ 'price' ];
+						$aggregate_prices[ $price_currency ][ 'highPrice' ] = $single_offer[ 'price' ];
 					}
 				}
 
@@ -1942,7 +1942,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/**
 				 * Add the complete offer.
 				 */
-				$aggregate_offers[ $price_currency ][] = self::get_schema_type_context( 'https://schema.org/Offer', $single_offer );
+				$aggregate_offers[ $price_currency ][] = $single_offer;
 			}
 
 			/**
@@ -1957,11 +1957,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					/**
 					 * Maybe set the 'lowPrice' and 'highPrice' properties.
 					 */
-					foreach ( array( 'low', 'high' ) as $mark ) {
+					foreach ( array( 'lowPrice', 'highPrice' ) as $price_mark ) {
 
-						if ( isset( $aggregate_prices[ $price_currency ][ $mark ] ) ) {
+						if ( isset( $aggregate_prices[ $price_currency ][ $price_mark ] ) ) {
 
-							$offer_group[ $mark . 'Price' ] = $aggregate_prices[ $price_currency ][ $mark ];
+							$offer_group[ $price_mark ] = $aggregate_prices[ $price_currency ][ $price_mark ];
 						}
 					}
 
@@ -3647,6 +3647,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$id_url = $json_data[ '@id' ];
 
 				} else {
+
 					$id_url = $json_data[ 'url' ];
 				}
 
