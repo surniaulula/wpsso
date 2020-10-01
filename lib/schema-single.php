@@ -1097,38 +1097,59 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			/*
 			if ( isset( $shipping_opts[ 'shipping_destinations' ] ) ) {
 
-				$aggregate_postal_codes = array();
+				$aggregate_dest = array();
 
-				$aggregate_regions = array();
-
-				$aggregate_countries = array();
+				$aggregate_keys = array(
+					'postal_code' => 'postalCode',
+					'region_code' => 'addressRegion',
+					'country_code' => 'addressCountry',
+				);
 
 				foreach ( $shipping_opts[ 'shipping_destinations' ] as $dest_num => $dest_opts ) {
 
-					$shipping_country = isset( $dest_opts[ 'country_code' ] ) ? $dest_opts[ 'country_code' ] : 'US';
+					$country = empty( $dest_opts[ 'country_code' ] ) ? 'US' : $dest_opts[ 'country_code' ];
 
-					if ( ! empty( $dest_opts[ 'postal_code' ] ) ) {
+					foreach ( $aggregate_keys as $key => $prop_name ) {
 
-						$aggregate_postal_codes[ $shipping_country ][] = $dest_opts[ 'postal_code' ];
+						if ( ! empty( $dest_opts[ $key ] ) ) {
 
-					} elseif ( ! empty( $dest_opts[ 'region_code' ] ) ) {	// State / Province.
+							$rel = 'country_code' === $key ? 'world' : $country;
 
-						$aggregate_regions[ $shipping_country ][] = $dest_opts[ 'region_code' ];
+							$aggregate_dest[ $key ][ $rel ][] = $dest_opts[ $key ];
 
-					} elseif ( ! empty( $dest_opts[ 'country_code' ] ) ) {
+							continue 2;
+						}
+					}
+				}
+			
+				foreach ( $aggregate_keys as $key => $prop_name ) {
 
-						$aggregate_countries[ 'World' ][] = $dest_opts[ 'country_code' ];
+					if ( ! empty( $aggregate_dest[ $key ] ) ) {
+
+						foreach ( $aggregate_dest[ $key ] as $rel => $val ) {
+
+							$defined_region = array();
+
+							if ( 'world' !== $key ) {
+
+								$defined_region[ 'addressCountry' ] = $rel;
+							}
+
+							$defined_region[ $prop_name ] = $val;
+
+							$shipping_offer[ 'shippingDestination' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/DefinedRegion',
+								$defined_region );
+						}
 					}
 				}
 			}
-			*/
 
-			$shipping_id = empty( $shipping_opts[ 'shipping_id' ] ) ? '' :  $shipping_opts[ 'shipping_id' ];
+			if  ( ! empty( $shipping_opts[ 'shipping_id' ] ) ) {
 
-			WpssoSchema::update_data_id( $shipping_offer, $shipping_id, $offer_url );
+				WpssoSchema::update_data_id( $shipping_offer, $shipping_opts[ 'shipping_id' ], $offer_url );
+			}
 
 			return $shipping_offer;
 		}
