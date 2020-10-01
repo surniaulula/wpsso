@@ -1102,45 +1102,77 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$aggregate_dest = array();
 
 				$aggregate_keys = array(
-					'postal_code' => 'postalCode',
-					'region_code' => 'addressRegion',
+					'postal_code'  => 'postalCode',
+					'region_code'  => 'addressRegion',
 					'country_code' => 'addressCountry',
 				);
 
 				foreach ( $shipping_opts[ 'shipping_destinations' ] as $dest_num => $dest_opts ) {
 
-					$country = empty( $dest_opts[ 'country_code' ] ) ? 'US' : $dest_opts[ 'country_code' ];
+					$cc = empty( $dest_opts[ 'country_code' ] ) ? 'none' : $dest_opts[ 'country_code' ];
 
-					foreach ( $aggregate_keys as $key => $prop_name ) {
+					foreach ( $aggregate_keys as $opt_key => $prop_name ) {
 
-						if ( ! empty( $dest_opts[ $key ] ) ) {
+						if ( ! empty( $dest_opts[ $opt_key ] ) ) {
 
-							$rel = 'country_code' === $key ? 'world' : $country;
+							/**
+							 * Add all countries to a single 'none' array.
+							 */
+							$rel_cc = 'country_code' === $opt_key ? 'none' : $cc;
 
-							$aggregate_dest[ $key ][ $rel ][] = $dest_opts[ $key ];
+							$aggregate_dest[ $opt_key ][ $rel_cc ][] = $dest_opts[ $opt_key ];
 
 							continue 2;
 						}
 					}
 				}
 			
-				foreach ( $aggregate_keys as $key => $prop_name ) {
+				foreach ( $aggregate_keys as $opt_key => $prop_name ) {
 
-					if ( ! empty( $aggregate_dest[ $key ] ) ) {
+					if ( ! empty( $aggregate_dest[ $opt_key ] ) ) {
 
-						foreach ( $aggregate_dest[ $key ] as $rel => $val ) {
+						foreach ( $aggregate_dest[ $opt_key ] as $rel_cc => $val ) {
 
 							$defined_region = array();
 
-							if ( 'world' !== $key ) {
+							if ( 'none' !== $rel_cc ) {
 
-								$defined_region[ 'addressCountry' ] = $rel;
+								$defined_region[ 'addressCountry' ] = $rel_cc;
 							}
 
-							$defined_region[ $prop_name ] = $val;
+							/**
+							 * Check for wildcards and ranges in postal codes, and if found, add a
+							 * 'postalCodeRange' element and remove the postal code from the postal
+							 * code array (so it's not included in the 'postalCode' element).
+							 */
+							if ( 'postal_code' === $opt_key ) {
 
-							$shipping_offer[ 'shippingDestination' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/DefinedRegion',
-								$defined_region );
+								foreach ( $val as $num => $post_code ) {
+
+									if ( preg_match( '/^([0-9]+)...([0-9]+)$/', $post_code, $matches ) ) {
+
+										$defined_region[ 'postalCodeRange' ][] = WpssoSchema::get_schema_type_context(
+											'https://schema.org/PostalCodeRangeSpecification',
+											array(
+												'postalCodeBegin' => $matches[ 1 ],
+												'postalCodeEnd'   => $matches[ 2 ],
+											)
+										);
+
+										unset( $val[ $num ] );
+									}
+								}
+							}
+
+							if ( ! empty( $val ) ) {
+
+								$defined_region[ $prop_name ] = $val;
+
+								$shipping_offer[ 'shippingDestination' ][] = WpssoSchema::get_schema_type_context(
+									'https://schema.org/DefinedRegion',
+									$defined_region
+								);
+							}
 						}
 					}
 				}
