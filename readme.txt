@@ -565,5 +565,5 @@ Added support for the new Schema 'shippingDetails' property in Schema Product of
 
 = 8.6.0 =
 
-(2020/09/25) Added a new "Webpage Document Title" option under the SSO &gt; Advanced Settings &gt; Content and Text tab. Fixed incorrect Schema AggregateRating meta tag markup. Fixed an "undeclared static property" error in the SSO &gt; Dashboard page.
+(2020/09/25) Added a new "Webpage Document Title" option in the Advanced Settings. Fixed incorrect Schema AggregateRating meta tag markup. Fixed an "undeclared static property" error in the Dashboard page.
 
