@@ -309,14 +309,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 **Version 8.7.0-b.2 (2020/10/02)**
 
-Added support for the new Schema 'shippingDetails' property in Schema Product offers for WooCommerce products. [Google is now showing shipping costs from Schema markup in search results.](https://webmasters.googleblog.com/2020/09/new-schemaorg-support-for-retailer.html)
+Added support for the new Schema shippingDetails property in Schema Product offers for WooCommerce products. [Google is now showing shipping costs from Schema markup in search results.](https://webmasters.googleblog.com/2020/09/new-schemaorg-support-for-retailer.html)
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added support for the new Schema 'shippingDetails' property in Schema Product offers for WooCommerce products, including shippingRate values by currency, and shippingDestination with countries, states, and postal code limits (WooCommerce postal code wildcards and ranges are supported).
+	* Added support for the new Schema shippingDetails property in Schema Product offers for WooCommerce products, including shippingRate values by currency, and shippingDestination with countries, states, and postal code limits (WooCommerce postal code wildcards and ranges are supported).
 * **Bugfixes**
-	* None.
+	* Fixed a bug that prevented abbreviated Schema enumerations from being detected (ie. New and NewCondition as abbreviations for https://schema.org/NewCondition).
 * **Developer Notes**
 	* Deprecated the `wpsso_is_mobile()` function.
 	* Deprecated the `SucomUtil::is_mobile()` method.
@@ -564,7 +564,7 @@ Added support for the new Schema 'shippingDetails' property in Schema Product of
 
 = 8.7.0-b.2 =
 
-(2020/10/02) Added support for the new Schema 'shippingDetails' property in Schema Product offers for WooCommerce products.
+(2020/10/02) Fixed a bug that prevented abbreviated Schema enumerations from being detected. Added support for the new Schema shippingDetails property in Schema Product offers for WooCommerce products.
 
 = 8.6.0 =
 
