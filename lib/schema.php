@@ -3546,11 +3546,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( ! isset( $enum_select[ $prop_val ] ) ) {
 
-					if ( isset( $conditions[ 'https://schema.org/' . $prop_val ] ) ) {
+					if ( isset( $enum_select[ 'https://schema.org/' . $prop_val ] ) ) {
 
 						$json_data[ $prop_name ] = 'https://schema.org/' . $prop_val;
 
-					} elseif ( $val_suffix && isset( $conditions[ 'https://schema.org/' . $prop_val . $val_suffix ] ) ) {
+					} elseif ( $val_suffix && isset( $enum_select[ 'https://schema.org/' . $prop_val . $val_suffix ] ) ) {
 
 						$json_data[ $prop_name ] = 'https://schema.org/' . $prop_val . $val_suffix;
 
