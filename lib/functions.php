@@ -45,16 +45,12 @@ if ( ! function_exists( 'wpsso_error_handler' ) ) {
 	}
 }
 
+/**
+ * Deprecated on 2020/10/02.
+ */
 if ( ! function_exists( 'wpsso_is_mobile' ) ) {
 
 	function wpsso_is_mobile() {
-
-		$wpsso =& Wpsso::get_instance();
-
-		if ( $wpsso->avail[ 'p' ][ 'vary_ua' ] ) {
-
-			return SucomUtil::is_mobile();
-		}
 
 		return null;
 	}

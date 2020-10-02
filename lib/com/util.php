@@ -1125,32 +1125,20 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $local_cache;
 		}
 
+		/**
+		 * Deprecated on 2020/10/02.
+		 */
 		public static function is_mobile() {
 
-			static $local_cache = null;
-			static $mobile_obj  = null;
-
-			if ( ! isset( $local_cache ) ) {
-
-				if ( ! isset( $mobile_obj ) ) {	// Load class object on first check
-
-					if ( ! class_exists( 'SuextMobileDetect' ) ) {
-
-						require_once dirname( __FILE__ ) . '/../ext/mobile-detect.php';
-					}
-
-					$mobile_obj = new SuextMobileDetect();
-				}
-
-				$local_cache = $mobile_obj->isMobile();
-			}
-
-			return $local_cache;
+			return null;
 		}
 
+		/**
+		 * Deprecated on 2020/10/02.
+		 */
 		public static function is_desktop() {
 
-			return self::is_mobile() ? false : true;
+			return null;
 		}
 
 		public static function is_https( $url = '' ) {

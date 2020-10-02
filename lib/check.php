@@ -31,7 +31,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			),
 			'p' => array(
 				'schema'  => 'Schema Markup',
-				'vary_ua' => 'Vary by User Agent',
 			),
 			'seo' => array(
 				'jetpack-seo' => 'Jetpack SEO Tools',
@@ -322,17 +321,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								case 'schema':
 
 									$get_avail[ $sub ][ $id ] = SucomUtil::get_const( 'WPSSO_SCHEMA_MARKUP_DISABLE' ) ? false : true;
-
-									break;
-
-								case 'vary_ua':
-
-									$get_avail[ $sub ][ $id ] = SucomUtil::get_const( 'WPSSO_VARY_USER_AGENT_DISABLE' ) ? false : true;
-
-									/**
-									 * Maintain backwards compatibility.
-									 */
-									$get_avail[ '*' ][ $id ] = $get_avail[ $sub ][ $id ];
 
 									break;
 							}

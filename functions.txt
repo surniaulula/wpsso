@@ -31,7 +31,5 @@ wpsso_get_user_mod( $user_id );
 
 wpsso_get_user_og_image( $user_id, $size_name = 'thumbnail' );	// Returns false or array.
 
-wpsso_is_mobile();
-
 wpsso_schema_attributes( $attr = '' );
 
