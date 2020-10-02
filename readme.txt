@@ -314,11 +314,14 @@ Added support for the new Schema 'shippingDetails' property in Schema Product of
 * **New Features**
 	* None.
 * **Improvements**
-	* Added support for the new Schema 'shippingDetails' property in Schema Product offers for WooCommerce products.
+	* Added support for the new Schema 'shippingDetails' property in Schema Product offers for WooCommerce products, including shippingRate values by currency, and shippingDestination with countries, states, and postal code limits (WooCommerce postal code wildcards and ranges are supported).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Deprecated the `wpsso_is_mobile()` function.
+	* Deprecated the `SucomUtil::is_mobile()` method.
+	* Deprecated the `SucomUtil::is_desktop()` method.
+	* Removed the lib/ext/mobile-detect.php library file.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.4.
