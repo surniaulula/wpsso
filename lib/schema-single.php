@@ -1053,6 +1053,81 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'name' => 'shipping_name',
 			) );
 
+			if ( isset( $shipping_opts[ 'shipping_destinations' ] ) ) {
+
+				$dest_keys = array(
+					'country_code' => 'addressCountry',	// Can be a string or an array.
+					'region_code'  => 'addressRegion',
+					'postal_code'  => 'postalCode',		// Can be a string or an array.
+				);
+
+				foreach ( $shipping_opts[ 'shipping_destinations' ] as $dest_num => $dest_opts ) {
+
+					$defined_region = array();
+
+					foreach ( $dest_opts as $opt_key => $val ) {
+
+						if ( empty( $val ) ) {	// Ignore 0, false, or empty array.
+
+							continue;
+						}
+
+						if ( ! isset( $dest_keys[ $opt_key ] ) ) {	// Make sure we have a Schema property name.
+							
+							continue;
+						}
+
+						$prop_name = $dest_keys[ $opt_key ];
+
+						/**
+						 * Check for wildcards and ranges in postal codes.
+						 */
+						if ( 'postal_code' === $opt_key ) {
+
+							if ( ! is_array( $val ) ) {	// Just in case.
+
+								$val = array( $val );
+							}
+
+							foreach ( $val as $num => $postal_code ) {
+
+								if ( preg_match( '/^(.+)\*$/', $postal_code, $matches ) ||
+									preg_match( '/^(.+)\.\.\.(.+)$/', $postal_code, $matches ) ) {
+
+									$postal_code_range = WpssoSchema::get_schema_type_context(
+										'https://schema.org/PostalCodeRangeSpecification',
+											array( 'postalCodeBegin' => $matches[ 1 ] ) );
+
+									if ( isset( $matches[ 2 ] ) ) {
+
+										$postal_code_range[ 'postalCodeEnd' ] = $matches[ 2 ];
+									}
+
+									$defined_region[ 'postalCodeRange' ][] = $postal_code_range;
+
+								} elseif ( ! empty( $postal_code ) ) {
+
+									$defined_region[ 'postalCode' ][] = $postal_code;
+								}
+							}
+
+						} elseif ( ! empty( $val ) ) {
+
+							$defined_region[ $prop_name ] = $val;
+
+						}
+					}
+
+					if ( ! empty( $defined_region ) ) {
+
+						$shipping_offer[ 'shippingDestination' ][] = WpssoSchema::get_schema_type_context(
+							'https://schema.org/DefinedRegion',
+							$defined_region
+						);
+					}
+				}
+			}
+
 			if ( isset( $shipping_opts[ 'shipping_rates' ] ) ) {
 
 				$aggregate_rates = array();
@@ -1061,6 +1136,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 					$price_currency = isset( $rate_opts[ 'shipping_currency' ] ) ?
 						$rate_opts[ 'shipping_currency' ] : $wpsso->options[ 'plugin_def_currency' ];
+
+					if ( isset( $rate_opts[ 'shipping_name' ] ) ) {
+
+						$aggregate_rates[ $price_currency ][ 'name' ] = $rate_opts[ 'shipping_name' ];
+					}
 
 					/**
 					 * Keep track of the lowest and highest price by currency.
@@ -1094,87 +1174,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					}
 
 					$shipping_offer[ 'shippingRate' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/MonetaryAmount', $monetary_amount );
-				}
-			}
-
-			if ( isset( $shipping_opts[ 'shipping_destinations' ] ) ) {
-
-				$aggregate_dest = array();
-
-				$aggregate_keys = array(
-					'postal_code'  => 'postalCode',
-					'region_code'  => 'addressRegion',
-					'country_code' => 'addressCountry',
-				);
-
-				foreach ( $shipping_opts[ 'shipping_destinations' ] as $dest_num => $dest_opts ) {
-
-					$cc = empty( $dest_opts[ 'country_code' ] ) ? 'none' : $dest_opts[ 'country_code' ];
-
-					foreach ( $aggregate_keys as $opt_key => $prop_name ) {
-
-						if ( ! empty( $dest_opts[ $opt_key ] ) ) {
-
-							/**
-							 * Add all countries to a single 'none' array.
-							 */
-							$rel_cc = 'country_code' === $opt_key ? 'none' : $cc;
-
-							$aggregate_dest[ $opt_key ][ $rel_cc ][] = $dest_opts[ $opt_key ];
-
-							continue 2;
-						}
-					}
-				}
-			
-				foreach ( $aggregate_keys as $opt_key => $prop_name ) {
-
-					if ( ! empty( $aggregate_dest[ $opt_key ] ) ) {
-
-						foreach ( $aggregate_dest[ $opt_key ] as $rel_cc => $val ) {
-
-							$defined_region = array();
-
-							if ( 'none' !== $rel_cc ) {
-
-								$defined_region[ 'addressCountry' ] = $rel_cc;
-							}
-
-							/**
-							 * Check for wildcards and ranges in postal codes, and if found, add a
-							 * 'postalCodeRange' element and remove the postal code from the postal
-							 * code array (so it's not included in the 'postalCode' element).
-							 */
-							if ( 'postal_code' === $opt_key ) {
-
-								foreach ( $val as $num => $post_code ) {
-
-									if ( preg_match( '/^([0-9]+)...([0-9]+)$/', $post_code, $matches ) ) {
-
-										$defined_region[ 'postalCodeRange' ][] = WpssoSchema::get_schema_type_context(
-											'https://schema.org/PostalCodeRangeSpecification',
-											array(
-												'postalCodeBegin' => $matches[ 1 ],
-												'postalCodeEnd'   => $matches[ 2 ],
-											)
-										);
-
-										unset( $val[ $num ] );
-									}
-								}
-							}
-
-							if ( ! empty( $val ) ) {
-
-								$defined_region[ $prop_name ] = $val;
-
-								$shipping_offer[ 'shippingDestination' ][] = WpssoSchema::get_schema_type_context(
-									'https://schema.org/DefinedRegion',
-									$defined_region
-								);
-							}
-						}
-					}
 				}
 			}
 
