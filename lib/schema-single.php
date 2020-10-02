@@ -1038,6 +1038,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			return $offer;
 		}
 
+		/**
+		 * Returns OfferShippingDetails with shippingDestination and shippingRate properties.
+		 *
+		 * See https://developers.google.com/search/docs/data-types/product#shipping-details-best-practices.
+		 */
 		public static function get_shipping_offer_data( array $mod, array $shipping_opts, $offer_url = '' ) {
 
 			$wpsso =& Wpsso::get_instance();
@@ -1049,12 +1054,22 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			$shipping_offer = WpssoSchema::get_schema_type_context( 'https://schema.org/OfferShippingDetails' );
 
+			/**
+			 * An @id property is added at the end of this method, from the combination of the 'shipping_id' and
+			 * $offer_url values.
+			 */
 			WpssoSchema::add_data_itemprop_from_assoc( $shipping_offer, $shipping_opts, array( 
 				'name' => 'shipping_name',
 			) );
 
 			if ( isset( $shipping_opts[ 'shipping_destinations' ] ) ) {
 
+				/**
+				 * Each destination options array can include an array of countries, a single country, or a single
+				 * country and state - all with postal code limits, if any were found above.
+				 *
+				 * See https://developers.google.com/search/docs/data-types/product#shipping-details-best-practices.
+				 */
 				$dest_keys = array(
 					'country_code' => 'addressCountry',	// Can be a string or an array.
 					'region_code'  => 'addressRegion',
@@ -1065,6 +1080,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 					$defined_region = array();
 
+					/**
+					 * For each option key, assign its value to the associated Schema property name.
+					 *
+					 * If the option key is a postal code array, then check each value for a wildcard or range.
+					 * If a wildcard or range is found, then assign its value to the postalCodeRange property
+					 * instead.
+					 */
 					foreach ( $dest_opts as $opt_key => $val ) {
 
 						if ( empty( $val ) ) {	// Ignore 0, false, or empty array.
@@ -1130,6 +1152,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			if ( isset( $shipping_opts[ 'shipping_rates' ] ) ) {
 
+				/**
+				 * Google appears to expect multiple shipping destinations, but only a single shipping rate, so try
+				 * and provide a single value using minValue and maxValue properties. We cannot mix currency types,
+				 * so determine minValue and maxValue per currency (just in case). At most, one shipping rate per
+				 * currency will be created.
+				 *
+				 * See https://developers.google.com/search/docs/data-types/product#shipping-details-best-practices.
+				 */
 				$aggregate_rates = array();
 
 				foreach ( $shipping_opts[ 'shipping_rates' ] as $rate_num => $rate_opts ) {
@@ -1143,7 +1173,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					}
 
 					/**
-					 * Keep track of the lowest and highest price by currency.
+					 * Keep track of the lowest and highest price per currency.
 					 */
 					if ( isset( $rate_opts[ 'shipping_cost' ] ) ) {	// Just in case.
 
@@ -1165,6 +1195,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				foreach ( $aggregate_rates as $price_currency => $monetary_amount ) {
 
+					/**
+					 * Check if minValue and maxValue are the same, and if they are, replace them with a single
+					 * value property instead.
+					 */
 					if ( isset( $monetary_amount[ 'minValue' ] ) && isset( $monetary_amount[ 'maxValue' ] ) &&
 						$monetary_amount[ 'minValue' ] === $monetary_amount[ 'maxValue' ] ) {
 
