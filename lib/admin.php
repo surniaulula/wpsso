@@ -89,7 +89,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			add_action( 'update_option_home', array( $this, 'site_address_changed' ), PHP_INT_MAX, 3 );
 			add_action( 'sucom_update_option_home', array( $this, 'site_address_changed' ), PHP_INT_MAX, 3 );
 
-			//add_filter( 'http_request_args', array( $this, 'check_plugin_names' ), 500, 2 );
 			add_filter( 'http_request_args', array( $this, 'add_expect_header' ), 1000, 2 );
 			add_filter( 'http_request_host_is_external', array( $this, 'maybe_allow_hosts' ), 1000, 3 );
 
@@ -745,66 +744,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
-		 * Check and maybe fix plugin names for update checks.
-		 */
-		public function check_plugin_names( $req, $url ) {
-
-			if ( false === strpos( $url, '/api.wordpress.org/plugins/update-check/' ) ) {
-
-				return $req;
-			}
-
-			if ( empty( $req[ 'body' ][ 'plugins' ] ) ) {
-
-				return $req;
-			}
-
-			$data = json_decode( $req[ 'body' ][ 'plugins' ], $assoc = true );
-
-			if ( empty( $data[ 'plugins' ] ) || ! is_array( $data[ 'plugins' ] ) ) {
-
-				return $req;
-			}
-
-			$have_changes = false;							// Only re-encode $data when required.
-
-			foreach ( $data[ 'plugins' ] as $file_path => &$details ) {		// Use reference to modify plugin $details.
-
-				$slug = preg_replace( '/\/.*$/', '', $file_path );		// Get the plugin slug (without the file name).
-
-				if ( empty( $this->p->cf[ '*' ][ 'slug' ][ $slug ] ) ) {	// Make sure the plugin slug is one of ours.
-
-					continue;
-				}
-
-				$ext  = $this->p->cf[ '*' ][ 'slug' ][ $slug ];			// Get the add-on acronym to read its config.
-
-				if ( empty( $this->p->cf[ 'plugin' ][ $ext ] ) ) {		// Make sure we have a config for that acronym.
-
-					continue;
-				}
-
-				$info = $this->p->cf[ 'plugin' ][ $ext ];
-
-				if ( empty( $details[ 'Name' ] ) || $details[ 'Name' ] !== $info[ 'name' ] ) {
-
-					$have_changes = true;					// Re-encoding the $data will be necessary.
-
-					$details[ 'Name' ] = $details[ 'Title' ] = $info[ 'name' ];
-				}
-			}
-
-			if ( $have_changes ) {							// Only re-encode $data when necessary.
-
-				$req[ 'body' ][ 'plugins' ] = SucomUtil::json_encode_array( $data );
-			}
-
-			return $req;
-		}
-
-		/**
-		 * Define and disable the "Expect: 100-continue" header. $req should be an array, so make sure other filters aren't
-		 * giving us a string or boolean.
+		 * Define and disable the "Expect: 100-continue" header.
+		 *
+		 * $req should be an array, so make sure other filters aren't giving us a string or boolean.
 		 */
 		public function add_expect_header( $req, $url ) {
 
