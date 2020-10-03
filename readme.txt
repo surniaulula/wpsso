@@ -309,7 +309,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 **Version 8.7.0 (2020/10/02)**
 
-Added support for the new Schema shippingDetails property in Schema Product offers for WooCommerce products. [Google is now showing shipping costs from Schema markup in search results.](https://webmasters.googleblog.com/2020/09/new-schemaorg-support-for-retailer.html)
+**Added support for the new Schema shippingDetails property in Schema Product offers for WooCommerce products. Note that [Google is now showing shipping costs from Schema markup in search results](https://webmasters.googleblog.com/2020/09/new-schemaorg-support-for-retailer.html).**
 
 * **New Features**
 	* None.
