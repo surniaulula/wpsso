@@ -307,7 +307,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.7.1-dev.2 (2020/10/04)**
+**Version 8.7.1-rc.1 (2020/10/04)**
 
 * **New Features**
 	* None.
@@ -577,7 +577,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.7.1-dev.2 =
+= 8.7.1-rc.1 =
 
 (2020/10/04) Added a check for WooCommerce shipping requirements (ie. coupon and/or minimum amount) when getting shipping rates. Changed the Schema OfferShippingDetails shippingRate property to from a single min/max value to an array of values.
 
