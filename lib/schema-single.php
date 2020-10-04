@@ -1152,9 +1152,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				 * See https://developers.google.com/search/docs/data-types/product#shipping-details-best-practices.
 				 */
 				$rate_keys = array(
-					'shipping_name'     => 'name',
-					'shipping_currency' => 'currency',
-					'shipping_cost'     => 'value',
+					'rate_name'     => 'name',
+					'rate_cost'     => 'value',
+					'rate_currency' => 'currency',
 				);
 
 				foreach ( $shipping_opts[ 'shipping_rates' ] as $rate_num => $rate_opts ) {
