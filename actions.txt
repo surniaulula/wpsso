@@ -9,5 +9,5 @@
 
 'wpsso_after_apply_filters_text' ( $filter_name )
 
-'wpsso_version_updates' ( $ext_updates )
+'wpsso_version_updates' ( array $ext_updates )
 
