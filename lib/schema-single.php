@@ -59,9 +59,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			list( $image_type_id, $image_type_url ) = self::get_type_id_url( $json_data, $type_opts = false,
 				$opt_key = 'image_type', $def_type_id = 'image.object', $list_element );
 
-			$json_ret = WpssoSchema::get_schema_type_context( $image_type_url, array(
-				'url' => SucomUtil::esc_url_encode( $image_url ),
-			) );
+			$json_ret = WpssoSchema::get_schema_type_context(
+				$image_type_url,
+				array(
+					'url' => SucomUtil::esc_url_encode( $image_url ),
+				)
+			);
 
 			/**
 			 * Maybe add an 'identifier' value based on the size name and image ID.
@@ -258,9 +261,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			list( $video_type_id, $video_type_url ) = self::get_type_id_url( $json_data, $type_opts = false,
 				$opt_key = false, $def_type_id = 'video.object', $list_element );
 
-			$json_ret = WpssoSchema::get_schema_type_context( $video_type_url, array(
-				'url' => SucomUtil::esc_url_encode( $media_url ),
-			) );
+			$json_ret = WpssoSchema::get_schema_type_context(
+				$video_type_url,
+				array(
+					'url' => SucomUtil::esc_url_encode( $media_url ),
+				)
+			);
 
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_single, array(
 				'name'         => $media_pre . ':title',
@@ -341,14 +347,20 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					$comment_type_url = 'https://schema.org/Comment';
 				}
 
-				$json_ret = WpssoSchema::get_schema_type_context( $comment_type_url, array(
-					'url'         => get_comment_link( $cmt->comment_ID ),
-					'dateCreated' => mysql2date( 'c', $cmt->comment_date_gmt ),
-					'description' => get_comment_excerpt( $cmt->comment_ID ),
-					'author'      => WpssoSchema::get_schema_type_context( 'https://schema.org/Person', array(
-						'name' => $cmt->comment_author,
-					) ),
-				) );
+				$json_ret = WpssoSchema::get_schema_type_context(
+					$comment_type_url,
+					array(
+						'url'         => get_comment_link( $cmt->comment_ID ),
+						'dateCreated' => mysql2date( 'c', $cmt->comment_date_gmt ),
+						'description' => get_comment_excerpt( $cmt->comment_ID ),
+						'author'      => WpssoSchema::get_schema_type_context(
+							'https://schema.org/Person',
+							array(
+								'name' => $cmt->comment_author,
+							)
+						),
+					)
+				);
 
 				$comments_added++;
 
@@ -622,9 +634,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 						case 'event_online_url':
 
-							$json_ret[ 'location' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/VirtualLocation', array(
-								'url' => $event_opts[ $opt_pre ],
-							) );
+							$json_ret[ 'location' ][] = WpssoSchema::get_schema_type_context(
+								'https://schema.org/VirtualLocation',
+								array(
+									'url' => $event_opts[ $opt_pre ],
+								)
+							);
 
 							break;
 
@@ -1115,7 +1130,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 									$postal_code_range = WpssoSchema::get_schema_type_context(
 										'https://schema.org/PostalCodeRangeSpecification',
-											array( 'postalCodeBegin' => $matches[ 1 ] ) );
+										array(
+											'postalCodeBegin' => $matches[ 1 ],
+										)
+									);
 
 									if ( isset( $matches[ 2 ] ) ) {
 
@@ -1175,10 +1193,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 					if ( ! empty( $monetary_amount ) ) {
 
-						$shipping_offer[ 'shippingRate' ][] = WpssoSchema::get_schema_type_context(
+						$shipping_rate = WpssoSchema::get_schema_type_context(
 							'https://schema.org/MonetaryAmount',
 							$monetary_amount
 						);
+
+						$shipping_offer[ 'shippingRate' ][] = $shipping_rate;
 					}
 				}
 			}
@@ -1856,9 +1876,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 					if ( ! empty( $order_url ) ) {	// Just in case.
 
-						$json_ret[ 'potentialAction' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/OrderAction', array(
-							'target'   => $order_url,
-						) );
+						$json_ret[ 'potentialAction' ][] = WpssoSchema::get_schema_type_context(
+							'https://schema.org/OrderAction',
+							array(
+								'target' => $order_url,
+							)
+						);
 					}
 				}
 			}
