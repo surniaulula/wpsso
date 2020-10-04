@@ -1089,11 +1089,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					 */
 					foreach ( $dest_opts as $opt_key => $val ) {
 
-						if ( empty( $val ) ) {	// Ignore 0, false, or empty array.
-
-							continue;
-						}
-
 						if ( ! isset( $dest_keys[ $opt_key ] ) ) {	// Make sure we have a Schema property name.
 							
 							continue;
@@ -1133,10 +1128,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 								}
 							}
 
-						} elseif ( ! empty( $val ) ) {
+						} else {
 
 							$defined_region[ $prop_name ] = $val;
-
 						}
 					}
 
@@ -1153,61 +1147,37 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			if ( isset( $shipping_opts[ 'shipping_rates' ] ) ) {
 
 				/**
-				 * Google appears to expect multiple shipping destinations, but only a single shipping rate, so try
-				 * and provide a single value using minValue and maxValue properties. We cannot mix currency types,
-				 * so determine minValue and maxValue per currency (just in case). At most, one shipping rate per
-				 * currency will be created.
-				 *
 				 * See https://developers.google.com/search/docs/data-types/product#shipping-details-best-practices.
 				 */
-				$aggregate_rates = array();
+				$rate_keys = array(
+					'shipping_name'     => 'name',
+					'shipping_currency' => 'currency',
+					'shipping_cost'     => 'value',
+				);
 
 				foreach ( $shipping_opts[ 'shipping_rates' ] as $rate_num => $rate_opts ) {
 
-					$price_currency = isset( $rate_opts[ 'shipping_currency' ] ) ?
-						$rate_opts[ 'shipping_currency' ] : $wpsso->options[ 'plugin_def_currency' ];
+					$monetary_amount = array();
 
-					if ( isset( $rate_opts[ 'shipping_name' ] ) ) {
+					foreach ( $rate_opts as $opt_key => $val ) {
 
-						$aggregate_rates[ $price_currency ][ 'name' ] = $rate_opts[ 'shipping_name' ];
-					}
-
-					/**
-					 * Keep track of the lowest and highest price per currency.
-					 */
-					if ( isset( $rate_opts[ 'shipping_cost' ] ) ) {	// Just in case.
-
-						if ( ! isset( $aggregate_rates[ $price_currency ][ 'minValue' ] )
-							|| $aggregate_rates[ $price_currency ][ 'minValue' ] > $rate_opts[ 'shipping_cost' ] ) {
-	
-							$aggregate_rates[ $price_currency ][ 'minValue' ] = $rate_opts[ 'shipping_cost' ];
-						}
-	
-						if ( ! isset( $aggregate_rates[ $price_currency ][ 'maxValue' ] )
-							|| $aggregate_rates[ $price_currency ][ 'maxValue' ] < $rate_opts[ 'shipping_cost' ] ) {
-	
-							$aggregate_rates[ $price_currency ][ 'maxValue' ] = $rate_opts[ 'shipping_cost' ];
+						if ( ! isset( $rate_keys[ $opt_key ] ) ) {	// Make sure we have a Schema property name.
+							
+							continue;
 						}
 
-						$aggregate_rates[ $price_currency ][ 'currency' ] = $price_currency;
-					}
-				}
+						$prop_name = $rate_keys[ $opt_key ];
 
-				foreach ( $aggregate_rates as $price_currency => $monetary_amount ) {
-
-					/**
-					 * Check if minValue and maxValue are the same, and if they are, replace them with a single
-					 * value property instead.
-					 */
-					if ( isset( $monetary_amount[ 'minValue' ] ) && isset( $monetary_amount[ 'maxValue' ] ) &&
-						$monetary_amount[ 'minValue' ] === $monetary_amount[ 'maxValue' ] ) {
-
-						$monetary_amount[ 'value' ] = $monetary_amount[ 'minValue' ];
-
-						unset( $monetary_amount[ 'minValue' ], $monetary_amount[ 'maxValue' ] );
+						$monetary_amount[ $prop_name ] = $val;
 					}
 
-					$shipping_offer[ 'shippingRate' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/MonetaryAmount', $monetary_amount );
+					if ( ! empty( $monetary_amount ) ) {
+
+						$shipping_offer[ 'shippingRate' ][] = WpssoSchema::get_schema_type_context(
+							'https://schema.org/MonetaryAmount',
+							$monetary_amount
+						);
+					}
 				}
 			}
 
