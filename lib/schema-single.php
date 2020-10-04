@@ -1035,6 +1035,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			self::add_organization_data( $offer[ 'seller' ], $mod, 'site', 'org_logo_url', false );
 
+			$offer = apply_filters( $wpsso->lca . '_json_data_single_offer', $offer, $mod );
+
 			return $offer;
 		}
 
@@ -1185,6 +1187,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				WpssoSchema::update_data_id( $shipping_offer, $shipping_opts[ 'shipping_id' ], $offer_url );
 			}
+
+			$shipping_offer = apply_filters( $wpsso->lca . '_json_data_single_shipping_offer', $shipping_offer, $mod );
 
 			return $shipping_offer;
 		}
