@@ -307,6 +307,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.7.1-dev.1 (2020/10/02)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Changed the Schema OfferShippingDetails shippingRate property to from a single min/max value to an array of values.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.4.
+
 **Version 8.7.0 (2020/10/02)**
 
 **Added support for the new Schema shippingDetails property in Schema Product offers for WooCommerce products. Note that [Google is now showing shipping costs from Schema markup in search results](https://webmasters.googleblog.com/2020/09/new-schemaorg-support-for-retailer.html).**
@@ -561,6 +575,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.7.1-dev.1 =
+
+(2020/10/02) Changed the Schema OfferShippingDetails shippingRate property to from a single min/max value to an array of values.
 
 = 8.7.0 =
 
