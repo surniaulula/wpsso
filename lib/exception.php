@@ -6,10 +6,12 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+
 	die( 'Do. Or do not. There is no try.' );
 }
 
@@ -67,10 +69,12 @@ if ( ! class_exists( 'WpssoErrorException' ) ) {
 			$this->p =& Wpsso::get_instance();
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
 			if ( isset( $this->http_result_codes[ (int) $errno ] ) ) {
+
 				$errstr .= ' HTTP ' . $errno . ' ' . $this->http_result_codes[ (int) $errno ] . '.';
 			}
 
@@ -91,6 +95,7 @@ if ( ! class_exists( 'WpssoErrorException' ) ) {
 			$errstr = $this->getMessage();
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( $errstr );
 			}
 

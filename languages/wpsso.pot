@@ -3414,13 +3414,13 @@ msgctxt "option value"
 msgid "[%s Location]"
 msgstr ""
 
-#: lib/abstracts/com/add-on.php:155
+#: lib/abstracts/com/add-on.php:157
 msgid ""
 "The %1$s add-on requires the %2$s plugin &mdash; please activate the missing "
 "plugin."
 msgstr ""
 
-#: lib/abstracts/com/add-on.php:169
+#: lib/abstracts/com/add-on.php:171
 msgid ""
 "The %1$s add-on requires %2$s version %3$s or newer (version %4$s is "
 "currently installed)."

@@ -4011,7 +4011,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			}
 		}
 
-		public static function set_constants( $plugin_file_path ) {
+		public static function set_constants( $plugin_file ) {
 
 			if ( defined( 'WPSSO_VERSION' ) ) {	// Define constants only once.
 
@@ -4023,12 +4023,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/**
 			 * Define fixed constants.
 			 */
-			define( 'WPSSO_FILEPATH', $plugin_file_path );						
+			define( 'WPSSO_FILEPATH', $plugin_file );						
 			define( 'WPSSO_PLUGINBASE', $info[ 'base' ] );	// Example: wpsso/wpsso.php.
-			define( 'WPSSO_PLUGINDIR', trailingslashit( realpath( dirname( $plugin_file_path ) ) ) );
+			define( 'WPSSO_PLUGINDIR', trailingslashit( realpath( dirname( $plugin_file ) ) ) );
 			define( 'WPSSO_PLUGINSLUG', $info[ 'slug' ] );	// Example: wpsso.
 			define( 'WPSSO_UNDEF', -1 );			// Default undefined image width / height value.
-			define( 'WPSSO_URLPATH', trailingslashit( plugins_url( '', $plugin_file_path ) ) );
+			define( 'WPSSO_URLPATH', trailingslashit( plugins_url( '', $plugin_file ) ) );
 			define( 'WPSSO_VERSION', $info[ 'version' ] );						
 
 			define( 'WPSSO_INIT_CONFIG_PRIORITY', -10 );
@@ -4180,7 +4180,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		 * outside of the standard WordPress load process do not define WP_ADMIN as they should (which is required to by
 		 * is_admin() this early in the WordPress load process).
 		 */
-		public static function require_libs( $plugin_file_path ) {
+		public static function require_libs( $plugin_file ) {
 
 			require_once WPSSO_PLUGINDIR . 'lib/com/cache.php';
 			require_once WPSSO_PLUGINDIR . 'lib/com/nodebug.php';	// Always load the debug fallback class.
