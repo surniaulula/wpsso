@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 		private $p;
 
-		private static $extend_lib_checks = array(
+		private $extend_lib_checks = array(
 			'amp' => array(
 				'amp'                      => 'AMP',	// AMP, Better AMP, etc.
 				'accelerated-mobile-pages' => 'Accelerated Mobile Pages',
@@ -69,7 +69,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 			$get_avail = array();	// Initialize the array to return.
 
-			$lib_checks = SucomUtil::array_merge_recursive_distinct( $this->p->cf[ '*' ][ 'lib' ][ 'pro' ], self::$extend_lib_checks );
+			$lib_checks = SucomUtil::array_merge_recursive_distinct( $this->p->cf[ '*' ][ 'lib' ][ 'pro' ], $this->extend_lib_checks );
 
 			foreach ( $lib_checks as $sub => $lib ) {
 

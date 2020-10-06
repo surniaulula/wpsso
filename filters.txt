@@ -81,7 +81,7 @@
 
 'wpsso_get_avail' ( $ret )
 
-'wpsso_get_config' ( $cf, $plugin_version )
+'wpsso_get_config' ( array $cf )
 
 'wpsso_get_defaults' ( $defaults )
 

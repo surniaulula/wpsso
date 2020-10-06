@@ -6,6 +6,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) || ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 

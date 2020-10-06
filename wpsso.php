@@ -15,7 +15,7 @@
  * Requires At Least: 4.4
  * Tested Up To: 5.5.1
  * WC Tested Up To: 4.5.2
- * Version: 8.7.1
+ * Version: 8.8.0-dev.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -125,7 +125,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 * Hooks the 'override_textdomain_mofile' filter (if debug is enabled) to use the local translation files
 			 * instead of those from wordpress.org.
 			 */
-			add_action( 'wpsso_init_textdomain', array( __CLASS__, 'init_textdomain' ), -1000, 1 );
+			add_action( 'wpsso_init_textdomain', array( $this, 'init_textdomain' ), -1000, 1 );
 		}
 
 		public static function &get_instance() {
@@ -368,7 +368,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->debug->mark( 'init options do action' );	// Begin timer.
 			}
 
-			do_action( 'wpsso_init_options', $activate );
+			do_action( 'wpsso_init_options' );
 
 			if ( $this->debug->enabled ) {
 
@@ -454,7 +454,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			/**
 			 * Init additional class objects.
 			 */
-			do_action( 'wpsso_init_objects', $activate );
+			do_action( 'wpsso_init_objects' );
 
 			if ( $this->debug->enabled ) {
 
@@ -717,30 +717,29 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		}
 
 		/**
-		 * Runs at wpsso_init_textdomain priority -10.
+		 * Runs at wpsso_init_textdomain priority -1000.
 		 *
 		 * The 'wpsso_init_textdomain' action is run after the $check, $avail, and $debug properties are defined.
 		 *
-		 * Hooks the 'override_textdomain_mofile' filter (if debug is enabled) to use the local translation files
-		 * instead of those from wordpress.org.
+		 * If debug is enabled, hooks the 'override_textdomain_mofile' filter to use local translation files instead of translations from wordpress.org.
 		 */
-		public static function init_textdomain( $debug_enabled = false ) {
+		public function init_textdomain( $debug_enabled = false ) {
 
-			static $loaded = null;
+			static $local_cache = null;
 
-			if ( null !== $loaded ) {
+			if ( null === $local_cache ) {	// Do once.
 
-				return;
+				$local_cache = 'wpsso';
+
+				if ( $debug_enabled ) {
+
+					add_filter( 'load_textdomain_mofile', array( $this, 'override_textdomain_mofile' ), 10, 3 );
+				}
+
+				load_plugin_textdomain( 'wpsso', false, 'wpsso/languages/' );
 			}
 
-			$loaded = true;
-
-			if ( $debug_enabled ) {
-
-				add_filter( 'load_textdomain_mofile', array( self::get_instance(), 'override_textdomain_mofile' ), 10, 3 );
-			}
-
-			load_plugin_textdomain( 'wpsso', false, 'wpsso/languages/' );
+			return $local_cache;
 		}
 
 		public function get_lib_classnames( $type_dir ) {

@@ -116,7 +116,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 		private function activate_plugin() {
 
-			Wpsso::init_textdomain();
+			$this->p->init_textdomain();
 
 			$this->check_required( WpssoConfig::$cf );
 

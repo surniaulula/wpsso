@@ -1508,10 +1508,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'code':
 				case 'not_blank':
+				case 'not_blank_quiet':
 
 					if ( '' === $opt_val && '' !== $def_val ) {
 
-						$this->p->notice->err( sprintf( $error_messages[ 'not_blank' ], $opt_key ) );
+						if ( false === strpos( $option_type, '_quiet' ) ) {
+
+							$this->p->notice->err( sprintf( $error_messages[ 'not_blank' ], $opt_key ) );
+						}
 
 						$opt_val = $def_val;
 					}
