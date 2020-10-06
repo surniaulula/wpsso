@@ -310,13 +310,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 8.8.0-dev.1 (TBD)**
 
 * **New Features**
-	* None.
+	* Added a new WPSSO Shipping Delivery Estimates for WooCommerce add-on.
 * **Improvements**
 	* None.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a new WpssoAddOn class in lib/abstracts/add-on.php.
+	* Added a new SucomAddOn class in lib/abstracts/com/add-on.php.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.4.
@@ -590,6 +591,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.8.0-dev.1 =
+
+(TBD) Added a new WPSSO Shipping Delivery Estimates for WooCommerce add-on.
 
 = 8.7.1 =
 
