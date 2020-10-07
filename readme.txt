@@ -307,10 +307,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.8.0-dev.1 (TBD)**
+**Version 8.8.0-dev.2 (TBD)**
 
 * **New Features**
-	* Added a new WPSSO Shipping Delivery Estimates for WooCommerce add-on.
+	* [Currently in Development] Added a new WPSSO Shipping Delivery Estimates for WooCommerce add-on.
 * **Improvements**
 	* None.
 * **Bugfixes**
@@ -592,7 +592,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.8.0-dev.1 =
+= 8.8.0-dev.2 =
 
 (TBD) Added a new WPSSO Shipping Delivery Estimates for WooCommerce add-on.
 
