@@ -1156,6 +1156,20 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 					if ( ! empty( $defined_region ) ) {
 
+						if  ( ! empty( $dest_opts[ 'destination_id' ] ) ) {
+
+							if  ( ! empty( $dest_opts[ 'destination_rel' ] ) ) {
+
+								WpssoSchema::update_data_id( $defined_region, $dest_opts[ 'destination_id' ],
+									$dest_opts[ 'destination_rel' ] );
+
+							} else {
+
+								WpssoSchema::update_data_id( $defined_region, $dest_opts[ 'destination_id' ],
+									$offer_url );
+							}
+						}
+
 						$shipping_offer[ 'shippingDestination' ][] = WpssoSchema::get_schema_type_context(
 							'https://schema.org/DefinedRegion',
 							$defined_region
@@ -1205,7 +1219,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			if  ( ! empty( $shipping_opts[ 'shipping_id' ] ) ) {
 
-				WpssoSchema::update_data_id( $shipping_offer, $shipping_opts[ 'shipping_id' ], $offer_url );
+				if  ( ! empty( $shipping_opts[ 'shipping_rel' ] ) ) {
+
+					WpssoSchema::update_data_id( $shipping_offer, $shipping_opts[ 'shipping_id' ], $shipping_opts[ 'shipping_rel' ] );
+
+				} else {
+
+					WpssoSchema::update_data_id( $shipping_offer, $shipping_opts[ 'shipping_id' ], $offer_url );
+				}
 			}
 
 			$shipping_offer = apply_filters( $wpsso->lca . '_json_data_single_shipping_offer', $shipping_offer, $mod );
