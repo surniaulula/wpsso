@@ -1160,7 +1160,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssowcsd' => array(			// Plugin acronym.
 					'short'       => 'WPSSO WCSD',	// Short plugin name.
 					'name'        => 'WPSSO Shipping Delivery Estimates for WooCommerce',
-					'desc'        => 'Shipping delivery time estimates for WooCommerce shipping zones and methods.',
+					'desc'        => 'Shipping delivery estimates for WooCommerce shipping zones and methods.',
 					'slug'        => 'wpsso-wc-shipping-delivery',
 					'base'        => 'wpsso-wc-shipping-delivery/wpsso-wc-shipping-delivery.php',
 					'update_auth' => '',		// No premium version.

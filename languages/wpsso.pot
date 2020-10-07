@@ -1288,8 +1288,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:100
 msgctxt "plugin description"
-msgid ""
-"Shipping delivery time estimates for WooCommerce shipping zones and methods."
+msgid "Shipping delivery estimates for WooCommerce shipping zones and methods."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:101 lib/admin-head.php:260
@@ -3147,17 +3146,17 @@ msgid ""
 "version of WooCommerce."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:150 lib/pro/ecom/woocommerce.php:1412
+#: gettext/gettext-lib-pro.php:150 lib/pro/ecom/woocommerce.php:1420
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:151 lib/pro/ecom/woocommerce.php:1414
+#: gettext/gettext-lib-pro.php:151 lib/pro/ecom/woocommerce.php:1422
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:152 lib/pro/ecom/woocommerce.php:1417
+#: gettext/gettext-lib-pro.php:152 lib/pro/ecom/woocommerce.php:1425
 msgid "Please update your site to WooCommerce version %s or newer."
 msgstr ""
 
