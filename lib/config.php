@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.8.0-dev.1',	// Plugin version.
+					'version'     => '8.8.0-dev.2',	// Plugin version.
 					'opt_version' => '763',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1157,70 +1157,70 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'latest'    => '',	// Optional.
 					),
 				),
-				'wpssowcsd' => array(			// Plugin acronym.
-					'short'       => 'WPSSO WCSD',	// Short plugin name.
-					'name'        => 'WPSSO Shipping Delivery Estimates for WooCommerce',
-					'desc'        => 'Shipping delivery estimates for WooCommerce shipping zones and methods.',
-					'slug'        => 'wpsso-wc-shipping-delivery',
-					'base'        => 'wpsso-wc-shipping-delivery/wpsso-wc-shipping-delivery.php',
-					'update_auth' => '',		// No premium version.
-
-					/**
-					 * URLs or relative paths to plugin banners and icons.
-					 */
-					'assets' => array(
-
-						/**
-						 * Banner image array keys are 'low' and 'high'.
-						 */
-						'banners' => array(
-							'low'  => 'https://surniaulula.github.io/wpsso-wc-shipping-delivery/assets/banner-772x250.jpg',
-							'high' => 'https://surniaulula.github.io/wpsso-wc-shipping-delivery/assets/banner-1544x500.jpg',
-						),
-
-						/**
-						 * Icon image array keys are '1x' and '2x'.
-						 */
-						'icons' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-wc-shipping-delivery/assets/icon-128x128.png',
-							'2x' => 'https://surniaulula.github.io/wpsso-wc-shipping-delivery/assets/icon-256x256.png',
-						),
-					),
-					'hosts' => array(
-						'wp_org' => true,
-						'github' => true,
-						'wpsso'  => true,
-					),
-					'url' => array(
-
-						/**
-						 * WordPress.org.
-						 */
-						'home'   => 'https://wordpress.org/plugins/wpsso-wc-shipping-delivery/',
-						'forum'  => 'https://wordpress.org/support/plugin/wpsso-wc-shipping-delivery',
-						'review' => 'https://wordpress.org/support/plugin/wpsso-wc-shipping-delivery/reviews/?rate=5#new-post',
-
-						/**
-						 * GitHub.com.
-						 */
-						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-wc-shipping-delivery/master/readme.txt',
-						'setup_html' => '',
-
-						/**
-						 * WPSSO.com.
-						 */
-						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-wc-shipping-delivery/changelog/',
-						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-wc-shipping-delivery/',
-						'install'   => 'https://wpsso.com/docs/plugins/wpsso-wc-shipping-delivery/installation/',
-						'faqs'      => '',
-						'notes'     => '',
-						'support'   => '',	// Premium support ticket.
-						'purchase'  => '',	// Purchase page.
-						'info'      => '',	// License information.
-						'update'    => 'https://wpsso.com/extend/plugins/wpsso-wc-shipping-delivery/update/',
-						'latest'    => '',	// Optional.
-					),
-				),
+//				'wpssowcsd' => array(			// Plugin acronym.
+//					'short'       => 'WPSSO WCSD',	// Short plugin name.
+//					'name'        => 'WPSSO Shipping Delivery Estimates for WooCommerce',
+//					'desc'        => 'Shipping delivery estimates for WooCommerce shipping zones and methods.',
+//					'slug'        => 'wpsso-wc-shipping-delivery',
+//					'base'        => 'wpsso-wc-shipping-delivery/wpsso-wc-shipping-delivery.php',
+//					'update_auth' => '',		// No premium version.
+//
+//					/**
+//					 * URLs or relative paths to plugin banners and icons.
+//					 */
+//					'assets' => array(
+//
+//						/**
+//						 * Banner image array keys are 'low' and 'high'.
+//						 */
+//						'banners' => array(
+//							'low'  => 'https://surniaulula.github.io/wpsso-wc-shipping-delivery/assets/banner-772x250.jpg',
+//							'high' => 'https://surniaulula.github.io/wpsso-wc-shipping-delivery/assets/banner-1544x500.jpg',
+//						),
+//
+//						/**
+//						 * Icon image array keys are '1x' and '2x'.
+//						 */
+//						'icons' => array(
+//							'1x' => 'https://surniaulula.github.io/wpsso-wc-shipping-delivery/assets/icon-128x128.png',
+//							'2x' => 'https://surniaulula.github.io/wpsso-wc-shipping-delivery/assets/icon-256x256.png',
+//						),
+//					),
+//					'hosts' => array(
+//						'wp_org' => true,
+//						'github' => true,
+//						'wpsso'  => true,
+//					),
+//					'url' => array(
+//
+//						/**
+//						 * WordPress.org.
+//						 */
+//						'home'   => 'https://wordpress.org/plugins/wpsso-wc-shipping-delivery/',
+//						'forum'  => 'https://wordpress.org/support/plugin/wpsso-wc-shipping-delivery',
+//						'review' => 'https://wordpress.org/support/plugin/wpsso-wc-shipping-delivery/reviews/?rate=5#new-post',
+//
+//						/**
+//						 * GitHub.com.
+//						 */
+//						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-wc-shipping-delivery/master/readme.txt',
+//						'setup_html' => '',
+//
+//						/**
+//						 * WPSSO.com.
+//						 */
+//						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-wc-shipping-delivery/changelog/',
+//						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-wc-shipping-delivery/',
+//						'install'   => 'https://wpsso.com/docs/plugins/wpsso-wc-shipping-delivery/installation/',
+//						'faqs'      => '',
+//						'notes'     => '',
+//						'support'   => '',	// Premium support ticket.
+//						'purchase'  => '',	// Purchase page.
+//						'info'      => '',	// License information.
+//						'update'    => 'https://wpsso.com/extend/plugins/wpsso-wc-shipping-delivery/update/',
+//						'latest'    => '',	// Optional.
+//					),
+//				),
 			),
 			'opt' => array(
 				'defaults' => array(

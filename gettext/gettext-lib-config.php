@@ -96,8 +96,6 @@ _x( 'WPSSO Update Manager', 'plugin name', 'wpsso' );
 _x( 'Update Manager for the WPSSO Core Premium Plugin and its Premium Complementary Add-ons.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Product Metadata for WooCommerce', 'plugin name', 'wpsso' );
 _x( 'GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, Depth, and Volume for WooCommerce Products and Variations.', 'plugin description', 'wpsso' );
-_x( 'WPSSO Shipping Delivery Estimates for WooCommerce', 'plugin name', 'wpsso' );
-_x( 'Shipping delivery estimates for WooCommerce shipping zones and methods.', 'plugin description', 'wpsso' );
 _x( 'SSO', 'menu title', 'wpsso' );
 _x( 'Document SSO', 'metabox title', 'wpsso' );
 _x( 'Facebook User URL', 'option value', 'wpsso' );
