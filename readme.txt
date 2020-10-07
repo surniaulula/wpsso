@@ -307,7 +307,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.8.0-dev.2 (TBD)**
+**Version 8.8.0-dev.2 (2020/10/07)**
 
 * **New Features**
 	* [Currently in Development] Added a new WPSSO Shipping Delivery Estimates for WooCommerce add-on.
@@ -594,7 +594,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 8.8.0-dev.2 =
 
-(TBD) Added a new WPSSO Shipping Delivery Estimates for WooCommerce add-on.
+(2020/10/07) Added a new WPSSO Shipping Delivery Estimates for WooCommerce add-on.
 
 = 8.7.1 =
 
@@ -603,8 +603,4 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 8.7.0 =
 
 (2020/10/02) Fixed a bug that prevented abbreviated Schema enumerations from being detected. Added support for the new Schema shippingDetails property in Schema Product offers for WooCommerce products.
-
-= 8.6.0 =
-
-(2020/09/25) Added a new "Webpage Document Title" option in the Advanced Settings. Fixed incorrect Schema AggregateRating meta tag markup. Fixed an "undeclared static property" error in the Dashboard page.
 
