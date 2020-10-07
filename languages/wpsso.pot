@@ -631,6 +631,18 @@ msgid ""
 "the Media library?</a>"
 msgstr ""
 
+#: gettext/gettext-lib-abstracts-com.php:6 lib/abstracts/com/add-on.php:157
+msgid ""
+"The %1$s add-on requires the %2$s plugin &mdash; please activate the missing "
+"plugin."
+msgstr ""
+
+#: gettext/gettext-lib-abstracts-com.php:7 lib/abstracts/com/add-on.php:171
+msgid ""
+"The %1$s add-on requires %2$s version %3$s or newer (version %4$s is "
+"currently installed)."
+msgstr ""
+
 #: gettext/gettext-lib-com.php:6 gettext/gettext-lib-com.php:30
 #: gettext/gettext-lib-com.php:37 lib/com/bfo.php:266 lib/com/cache.php:94
 #: lib/com/notice.php:118
@@ -3401,18 +3413,6 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:225 lib/pro/job/wpjobmanager.php:59
 msgctxt "option value"
 msgid "[%s Location]"
-msgstr ""
-
-#: lib/abstracts/com/add-on.php:157
-msgid ""
-"The %1$s add-on requires the %2$s plugin &mdash; please activate the missing "
-"plugin."
-msgstr ""
-
-#: lib/abstracts/com/add-on.php:171
-msgid ""
-"The %1$s add-on requires %2$s version %3$s or newer (version %4$s is "
-"currently installed)."
 msgstr ""
 
 #: lib/abstracts/wp-meta.php:688
