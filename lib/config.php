@@ -1157,12 +1157,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'latest'    => '',	// Optional.
 					),
 				),
-//				'wpssowcsd' => array(			// Plugin acronym.
-//					'short'       => 'WPSSO WCSD',	// Short plugin name.
-//					'name'        => 'WPSSO Shipping Delivery Estimates for WooCommerce',
-//					'desc'        => 'Shipping delivery estimates for WooCommerce shipping zones and methods.',
-//					'slug'        => 'wpsso-wc-shipping-delivery',
-//					'base'        => 'wpsso-wc-shipping-delivery/wpsso-wc-shipping-delivery.php',
+//				'wpssowcsdt' => array(			// Plugin acronym.
+//					'short'       => 'WPSSO WCSDT',	// Short plugin name.
+//					'name'        => 'WPSSO Shipping Delivery Time for WooCommerce',
+//					'desc'        => 'Shipping delivery time estimates for WooCommerce shipping zones, methods, and classes.',
+//					'slug'        => 'wpsso-wc-shipping-delivery-time',
+//					'base'        => 'wpsso-wc-shipping-delivery-time/wpsso-wc-shipping-delivery-time.php',
 //					'update_auth' => '',		// No premium version.
 //
 //					/**
@@ -1174,16 +1174,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 //						 * Banner image array keys are 'low' and 'high'.
 //						 */
 //						'banners' => array(
-//							'low'  => 'https://surniaulula.github.io/wpsso-wc-shipping-delivery/assets/banner-772x250.jpg',
-//							'high' => 'https://surniaulula.github.io/wpsso-wc-shipping-delivery/assets/banner-1544x500.jpg',
+//							'low'  => 'https://surniaulula.github.io/wpsso-wc-shipping-delivery-time/assets/banner-772x250.jpg',
+//							'high' => 'https://surniaulula.github.io/wpsso-wc-shipping-delivery-time/assets/banner-1544x500.jpg',
 //						),
 //
 //						/**
 //						 * Icon image array keys are '1x' and '2x'.
 //						 */
 //						'icons' => array(
-//							'1x' => 'https://surniaulula.github.io/wpsso-wc-shipping-delivery/assets/icon-128x128.png',
-//							'2x' => 'https://surniaulula.github.io/wpsso-wc-shipping-delivery/assets/icon-256x256.png',
+//							'1x' => 'https://surniaulula.github.io/wpsso-wc-shipping-delivery-time/assets/icon-128x128.png',
+//							'2x' => 'https://surniaulula.github.io/wpsso-wc-shipping-delivery-time/assets/icon-256x256.png',
 //						),
 //					),
 //					'hosts' => array(
@@ -1196,28 +1196,28 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 //						/**
 //						 * WordPress.org.
 //						 */
-//						'home'   => 'https://wordpress.org/plugins/wpsso-wc-shipping-delivery/',
-//						'forum'  => 'https://wordpress.org/support/plugin/wpsso-wc-shipping-delivery',
-//						'review' => 'https://wordpress.org/support/plugin/wpsso-wc-shipping-delivery/reviews/?rate=5#new-post',
+//						'home'   => 'https://wordpress.org/plugins/wpsso-wc-shipping-delivery-time/',
+//						'forum'  => 'https://wordpress.org/support/plugin/wpsso-wc-shipping-delivery-time',
+//						'review' => 'https://wordpress.org/support/plugin/wpsso-wc-shipping-delivery-time/reviews/?rate=5#new-post',
 //
 //						/**
 //						 * GitHub.com.
 //						 */
-//						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-wc-shipping-delivery/master/readme.txt',
+//						'readme_txt' =>	'https://raw.githubusercontent.com/SurniaUlula/wpsso-wc-shipping-delivery-time/master/readme.txt',
 //						'setup_html' => '',
 //
 //						/**
 //						 * WPSSO.com.
 //						 */
-//						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-wc-shipping-delivery/changelog/',
-//						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-wc-shipping-delivery/',
-//						'install'   => 'https://wpsso.com/docs/plugins/wpsso-wc-shipping-delivery/installation/',
+//						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-wc-shipping-delivery-time/changelog/',
+//						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-wc-shipping-delivery-time/',
+//						'install'   => 'https://wpsso.com/docs/plugins/wpsso-wc-shipping-delivery-time/installation/',
 //						'faqs'      => '',
 //						'notes'     => '',
 //						'support'   => '',	// Premium support ticket.
 //						'purchase'  => '',	// Purchase page.
 //						'info'      => '',	// License information.
-//						'update'    => 'https://wpsso.com/extend/plugins/wpsso-wc-shipping-delivery/update/',
+//						'update'    => 'https://wpsso.com/extend/plugins/wpsso-wc-shipping-delivery-time/update/',
 //						'latest'    => '',	// Optional.
 //					),
 //				),
@@ -2011,7 +2011,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '3.3.0',	// Minimum update manager version (soft limit).
+				'rec_version' => '3.4.0-dev.2',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',
