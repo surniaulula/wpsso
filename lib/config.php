@@ -1160,7 +1160,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 //				'wpssowcsdt' => array(			// Plugin acronym.
 //					'short'       => 'WPSSO WCSDT',	// Short plugin name.
 //					'name'        => 'WPSSO Shipping Delivery Time for WooCommerce',
-//					'desc'        => 'Shipping delivery time estimates for WooCommerce shipping zones, methods, and classes.',
+//					'desc'        => 'Shipping Delivery Time Estimates for WooCommerce Shipping Zones, Methods, and Classes.',
 //					'slug'        => 'wpsso-wc-shipping-delivery-time',
 //					'base'        => 'wpsso-wc-shipping-delivery-time/wpsso-wc-shipping-delivery-time.php',
 //					'update_auth' => '',		// No premium version.
