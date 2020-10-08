@@ -65,7 +65,7 @@ _x( 'Premium Licenses', 'lib file description', 'wpsso' );
 _x( 'Tools and Actions', 'lib file description', 'wpsso' );
 _x( 'Add Person', 'lib file description', 'wpsso' );
 _x( 'WPSSO Core', 'plugin name', 'wpsso' );
-_x( 'Make sure your content looks great on social sites and search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded.', 'plugin description', 'wpsso' );
+_x( 'Make Sure Your Content Looks Great on Social Sites and Search Results, No Matter How Your URLs are Crawled, Shared, Re-shared, Posted, or Embedded.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Mobile App Meta Tags', 'plugin name', 'wpsso' );
 _x( 'Apple Store / iTunes and Google Play App Meta Tags for Apple\'s mobile Safari Banner and Twitter\'s App Card.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Schema Breadcrumbs Markup', 'plugin name', 'wpsso' );

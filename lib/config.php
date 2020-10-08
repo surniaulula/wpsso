@@ -26,7 +26,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'opt_version' => '763',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
-					'desc'        => 'Make sure your content looks great on social sites and search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded.',
+					'desc'        => 'Make Sure Your Content Looks Great on Social Sites and Search Results, No Matter How Your URLs are Crawled, Shared, Re-shared, Posted, or Embedded.',
 					'slug'        => 'wpsso',
 					'base'        => 'wpsso/wpsso.php',
 					'update_auth' => 'tid',
