@@ -310,7 +310,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 8.8.0-dev.2 (2020/10/07)**
 
 * **New Features**
-	* [Currently in Development] Added a new WPSSO Shipping Delivery Estimates for WooCommerce add-on.
+	* [Currently in Development] Added a new WPSSO Shipping Delivery Time for WooCommerce add-on.
 * **Improvements**
 	* None.
 * **Bugfixes**
@@ -594,7 +594,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 8.8.0-dev.2 =
 
-(2020/10/07) Added a new WPSSO Shipping Delivery Estimates for WooCommerce add-on.
+(2020/10/07) Added a new WPSSO Shipping Delivery Time for WooCommerce add-on.
 
 = 8.7.1 =
 
