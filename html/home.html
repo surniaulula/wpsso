@@ -1,11 +1,35 @@
 
 <style type="text/css">
 
+	#wpsso-home-page {
+		margin-top:-30px;	/* Remove the .entry-content top margin of 30px. */
+	}
+
 	#wpsso-home-page .page-section {
 		clear:both;
 		width:100%;
 		margin:0;
 		padding:70px 80px 60px 80px;
+	}
+
+	#header-background {
+		position:relative;
+		height:800px;
+		background-image:url("https://wpsso.com/wp-content/uploads/2020/10/wpsso-circle-icon-2400x2400-1-1200x1200.png");
+		background-position:center;
+		background-repeat:no-repeat;
+		background-size:800px 800px;
+		margin-bottom:60px;
+	}
+
+	#header-section {
+		position:absolute;
+		top:50%;
+		transform:translateY(-50%);
+		clear:both;
+		width:100%;
+		padding:0;
+		margin:0;
 	}
 
 	#intro-section {
@@ -35,27 +59,28 @@
 		text-align:center;
 		letter-spacing:0.4px;
 		color:#0f533d;
-		margin:30px 0 15px 0;
+		margin:15px 0 15px 0;
 	}
 
 	#wpsso-home-page h2 {
-		font-size:34px;
+		font-size:36px;
 		font-weight:200;
 		font-style:normal;
 		text-align:center;
 		letter-spacing:0.8px;
 		line-height:1.3em;
+		color:#4b4b4b;
 		margin:30px 0 20px 0;
 	}
 
 	#wpsso-home-page h3 {
-		font-size:22px;
+		font-size:21px;
 		font-weight:200;
 		font-style:normal;
 		text-align:center;
 		letter-spacing:0.2px;
 		line-height:1.3em;
-		margin:20px 0 60px 0;
+		margin:20px 0 30px 0;
 	}
 
 	#wpsso-home-page h4 {
@@ -99,14 +124,40 @@
 		margin:0 0 60px 0;
 	}
 
+	@media screen and (max-width: 1200px) {
+
+		#header-background {
+			height:700px;
+			background-size:700px 700px;
+		}
+
+		#wpsso-home-page h1 {
+			font-size:50px;
+		}
+
+		#wpsso-home-page h2 {
+			font-size:32px;
+		}
+
+	}
+
 	@media screen and (max-width: 992px) {
 
 		#wpsso-home-page .page-section {
 			padding:40px 50px;
 		}
 
+		#header-background {
+			height:600px;
+			background-size:600px 600px;
+		}
+
 		#wpsso-home-page h1 {
 			font-size:40px;
+		}
+
+		#wpsso-home-page h2 {
+			font-size:26px;
 		}
 
 		#wpsso-home-page h3 {
@@ -133,13 +184,21 @@
 
 <div id="wpsso-home-page">
 
-<h1>WordPress Social and Search Optimizer</h1>
+<div id="header-background">
 
-<h2>The Complete Meta Tag and Schema Markup Solution</h2>
+	<div id="header-section">
 
-<h3>Make Sure Your Content Looks Great on Social Sites and<br/>
-Search Results, No Matter How Your URLs are Crawled,<br/>
-Shared, Re-shared, Posted, or Embedded</h3>
+		<h1>WordPress Social and Search Optimizer</h1>
+
+		<h2>The Complete Meta Tag<br/>and Schema Markup Solution</h2>
+
+		<h3>Make Sure Your Content Looks Great on Social Sites<br/>
+		and Search Results, No Matter How Your URLs<br/>
+		are Crawled, Shared, Re-shared,<br/>
+		Posted, or Embedded</h3>
+
+	</div>
+</div>
 
 <div id="intro-section" class="page-section">
 
