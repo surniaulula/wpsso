@@ -2,7 +2,7 @@
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
-<tr><th align="right" valign="top" nowrap>Summary</th><td>Make sure your content looks great on social sites and search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded.</td></tr>
+<tr><th align="right" valign="top" nowrap>Summary</th><td>Make Sure Your Content Looks Great on Social Sites and Search Results, No Matter How Your URLs are Crawled, Shared, Re-shared, Posted, or Embedded.</td></tr>
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>8.7.1</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires PHP</th><td>5.6 or newer</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires WordPress</th><td>4.4 or newer</td></tr>
@@ -19,7 +19,7 @@
 
 <p><strong>Make sure your content looks great on social sites and search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded:</strong></p>
 
-<p>WPSSO creates meta tags and Schema markup for Facebook / Open Graph, Pinterest Rich Pins, Twitter Cards, Google Knowledge Graph, Google Rich Results (aka Rich Snippets, Structured Data), WhatsApp and Messaging Apps, Mobile Web Browsers, WordPress REST API, LinkedIn / oEmbed data and more &mdash; including complete markup for image SEO, video SEO, extensive e-Commerce product markup (for WooCommerce and others), mobile store apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content, supported plugin data, and service API data.</p>
+<p>WPSSO provides meta tags and Schema markup for Facebook / Open Graph, Pinterest Rich Pins, Twitter Cards, Google Knowledge Graph, Google Rich Results (aka Rich Snippets, Structured Data), WhatsApp and Messaging Apps, Mobile Web Browsers, WordPress REST API, LinkedIn / oEmbed data and more &mdash; including complete markup for image SEO, video SEO, extensive e-Commerce product markup (for WooCommerce and others), mobile store apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content, supported plugin data, and service API data.</p>
 
 <p><strong>Uses your existing WordPress content, plugin data, and service API data:</strong></p>
 

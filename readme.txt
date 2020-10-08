@@ -14,7 +14,7 @@ Tested Up To: 5.5.1
 WC Tested Up To: 4.5.2
 Stable Tag: 8.7.1
 
-Make sure your content looks great on social sites and search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded.
+Make Sure Your Content Looks Great on Social Sites and Search Results, No Matter How Your URLs are Crawled, Shared, Re-shared, Posted, or Embedded.
 
 == Description ==
 
@@ -22,7 +22,7 @@ Make sure your content looks great on social sites and search results, no matter
 
 **Make sure your content looks great on social sites and search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded:**
 
-WPSSO creates meta tags and Schema markup for Facebook / Open Graph, Pinterest Rich Pins, Twitter Cards, Google Knowledge Graph, Google Rich Results (aka Rich Snippets, Structured Data), WhatsApp and Messaging Apps, Mobile Web Browsers, WordPress REST API, LinkedIn / oEmbed data and more &mdash; including complete markup for image SEO, video SEO, extensive e-Commerce product markup (for WooCommerce and others), mobile store apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content, supported plugin data, and service API data.
+WPSSO provides meta tags and Schema markup for Facebook / Open Graph, Pinterest Rich Pins, Twitter Cards, Google Knowledge Graph, Google Rich Results (aka Rich Snippets, Structured Data), WhatsApp and Messaging Apps, Mobile Web Browsers, WordPress REST API, LinkedIn / oEmbed data and more &mdash; including complete markup for image SEO, video SEO, extensive e-Commerce product markup (for WooCommerce and others), mobile store apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content, supported plugin data, and service API data.
 
 **Uses your existing WordPress content, plugin data, and service API data:**
 
