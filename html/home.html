@@ -2,7 +2,7 @@
 <style type="text/css">
 
 	#wpsso-home-page {
-		margin-top:-30px;	/* Remove the .entry-content top margin of 30px. */
+		margin-top:-20px;	/* Adjust the .entry-content top margin of 30px. */
 	}
 
 	#wpsso-home-page .page-section {
@@ -55,9 +55,9 @@
 	#wpsso-home-page h1 {
 		font-family:"HelveticaNeue-Light","Helvetica Neue Light","Segoe UI Light","Helvetica Neue","Segoe UI","Helvetica",Arial,"Lucida Grande",sans-serif; 
 		font-weight:200;
-		font-size:60px;
+		font-size:64px;
 		text-align:center;
-		letter-spacing:0.4px;
+		letter-spacing:0.2px;
 		color:#0f533d;
 		margin:15px 0 15px 0;
 	}
@@ -67,39 +67,39 @@
 		font-weight:200;
 		font-style:normal;
 		text-align:center;
-		letter-spacing:0.8px;
+		letter-spacing:0.6px;
 		line-height:1.3em;
 		color:#4b4b4b;
-		margin:30px 0 20px 0;
+		margin:30px 0 30px 0;
 	}
 
 	#wpsso-home-page h3 {
-		font-size:21px;
+		font-size:22px;
 		font-weight:200;
 		font-style:normal;
 		text-align:center;
 		letter-spacing:0.2px;
 		line-height:1.3em;
-		margin:20px 0 30px 0;
+		margin:30px 0 30px 0;
 	}
 
-	#wpsso-home-page h4 {
+	#wpsso-home-page .page-section h4 {
 		font-size:20px;
 		font-weight:500;
 		margin:40px 0 30px 0;
 	}
 
-	#wpsso-home-page h4.top {
+	#wpsso-home-page .page-section h4.top {
 		margin-top:10px;
 	}
 
-	#wpsso-home-page h5 {
+	#wpsso-home-page .page-section h5 {
 		font-size:18px;
 		font-weight:500;
 		margin:40px 0 20px 0;
 	}
 
-	#wpsso-home-page h5.top {
+	#wpsso-home-page .page-section h5.top {
 		margin-top:0;
 	}
 
@@ -164,7 +164,7 @@
 			font-size:18px;
 		}
 
-		#wpsso-home-page h4 {
+		#wpsso-home-page .page-section h4 {
 			font-size:18px;
 		}
 	}
@@ -177,6 +177,47 @@
 
 		#wpsso-home-page .page-section .top {
 			margin-top:20px;
+		}
+
+		#header-background {
+			height:500px;
+			background-size:500px 500px;
+		}
+
+		#wpsso-home-page h1 {
+			font-size:34px;
+		}
+
+		#wpsso-home-page h2 {
+			font-size:24px;
+		}
+
+		#wpsso-home-page h3 {
+			font-size:15px;
+		}
+
+		#wpsso-home-page .page-section h4 {
+			font-size:18px;
+		}
+	}
+
+	@media screen and (max-width: 568px) {
+
+		#header-background {
+			height:400px;
+			background-size:400px 400px;
+		}
+
+		#wpsso-home-page h1 {
+			font-size:29px;
+		}
+
+		#wpsso-home-page h2 {
+			font-size:21px;
+		}
+
+		#wpsso-home-page h3 {
+			display:none;
 		}
 	}
 
