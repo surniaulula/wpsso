@@ -36,6 +36,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				'jetpack-seo' => 'Jetpack SEO Tools',
 				'rankmath'    => 'Rank Math',
 				'seou'        => 'SEO Ultimate',
+				'slim-seo'    => 'Slim SEO',
 				'sq'          => 'Squirrly SEO',
 				'wpseo-wc'    => 'Yoast WooCommerce SEO',
 			),
@@ -443,6 +444,12 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								case 'seou':
 
 									$chk[ 'plugin' ] = 'seo-ultimate/seo-ultimate.php';
+
+									break;
+
+								case 'slim-seo':
+
+									$chk[ 'plugin' ] = 'slim-seo/slim-seo.php';
 
 									break;
 

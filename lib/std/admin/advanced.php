@@ -59,15 +59,18 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[ 'plugin_filter_title' ] = '' . 
 			$form->get_th_html( _x( 'Use WordPress Title Filters', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_filter_title' ) . 
-			$form->get_no_td_checkbox( 'plugin_filter_title', '<em>' . _x( 'not recommended', 'option comment', 'wpsso' ) . '</em>' );
+			$form->get_no_td_checkbox( 'plugin_filter_title',
+				'<em>' . _x( 'not recommended', 'option comment', 'wpsso' ) . '</em>' );
 
 			$table_rows[ 'plugin_filter_content' ] = '' . 
 			$form->get_th_html( _x( 'Use WordPress Content Filters', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_filter_content' ) . 
-			$form->get_no_td_checkbox( 'plugin_filter_content', '<em>' . _x( 'recommended', 'option comment', 'wpsso' ) . '</em>' );
+			$form->get_no_td_checkbox( 'plugin_filter_content',
+				'<em>' . _x( 'recommended (see help text)', 'option comment', 'wpsso' ) . '</em>' );
 
 			$table_rows[ 'plugin_filter_excerpt' ] = '' . 
 			$form->get_th_html( _x( 'Use WordPress Excerpt Filters', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_filter_excerpt' ) . 
-			$form->get_no_td_checkbox( 'plugin_filter_excerpt' );
+			$form->get_no_td_checkbox( 'plugin_filter_excerpt',
+				'<em>' . _x( 'recommended only if using shortcodes in excerpts', 'option comment', 'wpsso' ) . '</em>' );
 
 			$table_rows[ 'plugin_p_strip' ] = $form->get_tr_hide( 'basic', 'plugin_p_strip' ) .
 			$form->get_th_html( _x( 'Content Starts at 1st Paragraph', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_p_strip' ) . 
