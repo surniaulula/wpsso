@@ -55,7 +55,8 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[ 'plugin_document_title' ] = '' .
 			$form->get_th_html( _x( 'Webpage Document Title', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_document_title' ) .
-			'<td class="blank">' . $form->get_no_select( 'plugin_document_title',  $this->p->cf[ 'form' ][ 'document_title' ] ) . '</td>';
+			'<td class="blank">' . $form->get_no_select( 'plugin_document_title',  $this->p->cf[ 'form' ][ 'document_title' ] ) .
+				$this->p->msgs->maybe_title_tag_disabled() . '</td>';
 
 			$table_rows[ 'plugin_filter_title' ] = '' . 
 			$form->get_th_html( _x( 'Use WordPress Title Filters', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_filter_title' ) . 

@@ -812,9 +812,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 */
 						case 'tooltip-plugin_document_title':	// Webpage Document Title.
 
-							$text = sprintf( __( '%1$s can provide a custom title HTML tag for themes that support the WordPress \'title-tag\' feature (available since WordPress v4.4).', 'wpsso' ), $info[ 'name' ] ) . ' ';
+							if ( ! current_theme_supports( 'title-tag' ) ) {
 
-							$text .= __( 'If your theme header templates create a title HTML tag for the webpage, instead of letting WordPress provide one, then this option will not work for you &mdash; contact your theme author and request that they add support for the WordPress \'title-tag\' feature.', 'wpsso' );
+								$text .= sprintf( __( 'Your theme does not support <a href="%s">the WordPress Title Tag</a>.', 'wpsso' ),
+									__( 'https://codex.wordpress.org/Title_Tag', 'wpsso' ) ) . ' ';
+
+								$text .= __( 'Please contact your theme author and request that they add support for the WordPress Title Tag feature (available since WordPress v4.1).', 'wpsso' ) . ' ';
+							}
+
+							$text .= sprintf( __( '%1$s can provide a customized value for the %2$s HTML tag.', 'wpsso' ), $info[ 'name' ], '<code>&amp;lt;title&amp;gt;</code>' ) . ' ';
+
+							$text .= sprintf( __( 'The %1$s HTML tag value is used by web browsers to display the webpage title in the browser tab.', 'wpsso' ), '<code>&amp;lt;title&amp;gt;</code>' ) . ' ';
 
 							break;
 
@@ -3302,6 +3310,22 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			$table_rows[ 'schema_disabled' ] = '<tr><td align="center" colspan="' . $col_span . '">' . $this->schema_disabled() . '</td></tr>';
 
 			return $table_rows;
+		}
+
+		/**
+		 * Used for the 'Webpage Document Title' option.
+		 */
+		public function maybe_title_tag_disabled() {
+
+			if ( ! current_theme_supports( 'title-tag' ) ) {
+
+				$text = sprintf( __( 'Your theme does not support <a href="%s">the WordPress Title Tag</a>.', 'wpsso' ),
+					__( 'https://codex.wordpress.org/Title_Tag', 'wpsso' ) );
+
+				return '<span style="color:red;font-style:italic;font-weight:600;">' . $text . '</span>';
+			}
+
+			return '';
 		}
 
 		private function maybe_html_tag_disabled_text( array $parts ) {
