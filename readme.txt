@@ -307,7 +307,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.8.0-dev.4 (2020/10/12)**
+**Version 8.8.0-dev.4 (2020/10/13)**
 
 * **New Features**
 	* [Currently in Development] Added a new WPSSO Shipping Delivery Time for WooCommerce add-on.
@@ -594,7 +594,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 8.8.0-dev.4 =
 
-(2020/10/12) Added a new WPSSO Shipping Delivery Time for WooCommerce add-on.
+(2020/10/13) Added a new WPSSO Shipping Delivery Time for WooCommerce add-on.
 
 = 8.7.1 =
 
