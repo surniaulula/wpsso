@@ -1105,7 +1105,16 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 							foreach ( $val as $num => $postal_code ) {
 
-								if ( preg_match( '/^(.+)\*$/', $postal_code, $matches ) ||
+								/**
+								 * Note that wildcards and ranges cannot be mixed, and ranges only
+								 * work with postal codes that are numeric (ie. US zip codes). 
+								 *
+								 * Examples:
+								 *
+								 *	H*
+								 *	96200...96600
+								 */
+								if ( preg_match( '/^(.+)\*+$/', $postal_code, $matches ) ||
 									preg_match( '/^(.+)\.\.\.(.+)$/', $postal_code, $matches ) ) {
 
 									$postal_code_range = WpssoSchema::get_schema_type_context(
