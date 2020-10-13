@@ -312,16 +312,6 @@ table.sucom-settings td.ext-info-plugin-separator {
 	border-bottom:1px dotted #ddd;
 }
 
-table.sucom-settings td span.ext-req-msg,
-table.sucom-settings td span.ext-req-msg a {
-	font-size:0.95em;
-	font-style:italic;
-	font-weight:normal;
-	text-align:left;
-	color:#999;
-	margin-left:2px;
-}
-
 table.sucom-settings td p {
 	color:#555;
 	margin:0 0 10px 0;
@@ -337,16 +327,16 @@ table.sucom-settings td p.pro-feature-msg {
 	margin:0 0 5px 0;
 }
 
+table.sucom-settings td p.pro-feature-msg a {
+	color:#999;
+}
+
 table.sucom-settings td p.status-msg.smaller {
 	font-size:0.85em;
 }
 
 table.sucom-settings td p.status-msg.smaller.disabled {
 	margin:0 5px;
-}
-
-table.sucom-settings td p.pro-feature-msg a {
-	color:#999;
 }
 
 table.sucom-settings td p.centered {
@@ -364,9 +354,26 @@ table.sucom-settings td p.inline {
 
 table.sucom-settings td p.ext-req-msg {
 	display:inline;
-	font-size:0.95em;
 	font-style:italic;
 	font-weight:normal;
+}
+
+table.sucom-settings td span.ext-req-msg,
+table.sucom-settings td span.ext-req-msg a {
+	color:#999;
+	font-style:italic;
+	font-weight:normal;
+	text-align:left;
+	margin-left:2px;
+}
+
+table.sucom-settings td span.option-warning,
+table.sucom-settings td span.option-warning a {
+	color:#f00;
+	font-style:italic;
+	font-weight:normal;
+	text-align:left;
+	margin-left:2px;
 }
 
 table.sucom-settings td a.ext-anchor {

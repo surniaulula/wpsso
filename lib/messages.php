@@ -814,15 +814,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							if ( ! current_theme_supports( 'title-tag' ) ) {
 
-								$text .= sprintf( __( 'Your theme does not support <a href="%s">the WordPress Title Tag</a>.', 'wpsso' ),
-									__( 'https://codex.wordpress.org/Title_Tag', 'wpsso' ) ) . ' ';
+								$text .= '<strong>' . sprintf( __( 'Your theme does not support <a href="%s">the WordPress Title Tag</a>.', 'wpsso' ), __( 'https://codex.wordpress.org/Title_Tag', 'wpsso' ) ) . '</strong> ';
 
 								$text .= __( 'Please contact your theme author and request that they add support for the WordPress Title Tag feature (available since WordPress v4.1).', 'wpsso' ) . ' ';
 							}
 
 							$text .= sprintf( __( '%1$s can provide a customized value for the %2$s HTML tag.', 'wpsso' ), $info[ 'name' ], '<code>&amp;lt;title&amp;gt;</code>' ) . ' ';
 
-							$text .= sprintf( __( 'The %1$s HTML tag value is used by web browsers to display the webpage title in the browser tab.', 'wpsso' ), '<code>&amp;lt;title&amp;gt;</code>' ) . ' ';
+							$text .= sprintf( __( 'The %1$s HTML tag value is used by web browsers to display the webpage document title in browser tabs.', 'wpsso' ), '<code>&amp;lt;title&amp;gt;</code>' ) . ' ';
 
 							break;
 
@@ -3317,15 +3316,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		 */
 		public function maybe_title_tag_disabled() {
 
-			if ( ! current_theme_supports( 'title-tag' ) ) {
+			if ( current_theme_supports( 'title-tag' ) ) {
 
-				$text = sprintf( __( 'Your theme does not support <a href="%s">the WordPress Title Tag</a>.', 'wpsso' ),
-					__( 'https://codex.wordpress.org/Title_Tag', 'wpsso' ) );
-
-				return '<span style="color:red;font-style:italic;font-weight:600;">' . $text . '</span>';
+				return '';
 			}
 
-			return '';
+			$text = sprintf( __( 'theme does not support <a href="%s">the WordPress Title Tag</a>', 'wpsso' ),
+				__( 'https://codex.wordpress.org/Title_Tag', 'wpsso' ) );
+
+			return '<span class="option-warning">' . $text . '</span>';
 		}
 
 		private function maybe_html_tag_disabled_text( array $parts ) {
