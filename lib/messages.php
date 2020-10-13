@@ -1706,7 +1706,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-p_add_nopin_header_img_tag':	// Add "nopin" to Site Header Image.
 
-							$text = __( 'Add a "nopin" attribute to the site header and Gravatar images to prevent the Pin It browser button from suggesting those images.', 'wpsso' );
+							$text = sprintf( __( 'Add a %s attribute to the site header and Gravatar images to prevent the Pin It browser button from suggesting those images.', 'wpsso' ), '<code>data-pin-nopin</code>' );
 
 							break;
 
@@ -1714,7 +1714,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$add_img_html_label = _x( 'Add Hidden Image for Pinterest', 'option label', 'wpsso' );
 
-							$text = __( 'Add a "nopin" attribute to images from the WordPress Media Library to prevent the Pin It browser button from suggesting those images.', 'wpsso' ) . ' ';
+							$text = sprintf( __( 'Add a %s attribute to images from the WordPress Media Library to prevent the Pin It browser button from suggesting those images.', 'wpsso' ), '<code>data-pin-nopin</code>' ) . ' ';
 
 							$text .= sprintf( __( 'If this option is enabled, you should also enable the "%s" option to provide an image for the Pin It browser button.', 'wpsso' ), $add_img_html_label );
 

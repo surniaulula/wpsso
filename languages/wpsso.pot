@@ -6544,8 +6544,8 @@ msgstr ""
 
 #: lib/messages.php:1709
 msgid ""
-"Add a \"nopin\" attribute to the site header and Gravatar images to prevent "
-"the Pin It browser button from suggesting those images."
+"Add a %s attribute to the site header and Gravatar images to prevent the Pin "
+"It browser button from suggesting those images."
 msgstr ""
 
 #: lib/messages.php:1715 lib/messages.php:3254 lib/submenu/essential.php:195
@@ -6556,8 +6556,8 @@ msgstr ""
 
 #: lib/messages.php:1717
 msgid ""
-"Add a \"nopin\" attribute to images from the WordPress Media Library to "
-"prevent the Pin It browser button from suggesting those images."
+"Add a %s attribute to images from the WordPress Media Library to prevent the "
+"Pin It browser button from suggesting those images."
 msgstr ""
 
 #: lib/messages.php:1719
@@ -7944,7 +7944,7 @@ msgstr ""
 msgid "Search Results %1$s %2$s"
 msgstr ""
 
-#: lib/pinterest.php:121 lib/submenu/image-sizes.php:103
+#: lib/pinterest.php:127 lib/submenu/image-sizes.php:103
 msgctxt "option label"
 msgid "Pinterest Pin It"
 msgstr ""
@@ -8066,14 +8066,8 @@ msgstr ""
 #: lib/post.php:1296
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
-"parsing the HTML &mdash; review the <a href=\"%1$s\">W3C Markup Validator</"
-"a> results and correct any errors."
-msgstr ""
-
-#: lib/post.php:1296
-msgid ""
-"You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
-"\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
+"parsing the HTML document &mdash; please review the <a href=\"%1$s\">W3C "
+"Markup Validator</a> results and correct any syntax errors."
 msgstr ""
 
 #: lib/post.php:1334

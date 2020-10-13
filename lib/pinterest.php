@@ -29,6 +29,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -56,7 +57,8 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			global $allowedposttags;
 
 			if ( ! empty( $this->p->options[ 'p_add_nopin_media_img_tag' ] ) ) {
-				$allowedposttags[ 'img' ][ 'nopin' ] = true;
+
+				$allowedposttags[ 'img' ][ 'data-pin-nopin' ] = true;
 			}
 		}
 
@@ -66,7 +68,8 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 		public function add_attachment_image_attributes( $attr, $attach ) {
 
 			if ( ! empty( $this->p->options[ 'p_add_nopin_media_img_tag' ] ) ) {
-				$attr[ 'nopin' ] = 'nopin';
+
+				$attr[ 'data-pin-nopin' ] = 'nopin';
 			}
 
 			return $attr;
@@ -77,9 +80,10 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 		 */
 		public function get_header_image_tag( $html, $header, $attr ) {
 
-			$html = SucomUtil::insert_html_tag_attributes( $html, array(
-				'nopin' => empty( $this->p->options[ 'p_add_nopin_header_img_tag' ] ) ? false : 'nopin'
-			) );
+			if ( ! empty( $this->p->options[ 'p_add_nopin_header_img_tag' ] ) ) {
+
+				$html = SucomUtil::insert_html_tag_attributes( $html, array( 'data-pin-nopin' => 'nopin' ) );
+			}
 
 			return $html;
 		}
@@ -93,9 +97,10 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 		 */
 		public function get_avatar_image_tag( $html, $id_or_email, $size_px, $default_type, $alt ) {
 
-			$html = SucomUtil::insert_html_tag_attributes( $html, array(
-				'nopin' => empty( $this->p->options[ 'p_add_nopin_header_img_tag' ] ) ? false : 'nopin'
-			) );
+			if ( ! empty( $this->p->options[ 'p_add_nopin_header_img_tag' ] ) ) {
+
+				$html = SucomUtil::insert_html_tag_attributes( $html, array( 'data-pin-nopin' => 'nopin' ) );
+			}
 
 			return $html;
 		}
@@ -105,9 +110,10 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 		 */
 		public function get_image_tag( $html, $id, $alt, $title, $align, $size ) {
 
-			$html = SucomUtil::insert_html_tag_attributes( $html, array(
-				'nopin' => empty( $this->p->options[ 'p_add_nopin_media_img_tag' ] ) ? false : 'nopin'
-			) );
+			if ( ! empty( $this->p->options[ 'p_add_nopin_media_img_tag' ] ) ) {
+
+				$html = SucomUtil::insert_html_tag_attributes( $html, array( 'data-pin-nopin' => 'nopin' ) );
+			}
 
 			return $html;
 		}
@@ -133,6 +139,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 		public function get_pinterest_img_html( $content = '' ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -142,6 +149,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			if ( SucomUtil::is_amp() || is_feed() ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'exiting early: is amp or feed' );
 				}
 
@@ -154,6 +162,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			if ( ! empty( $GLOBALS[ $this->p->lca . '_doing_filter_the_content' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'exiting early: doing the content filter' );
 				}
 
@@ -167,6 +176,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			$use_post = apply_filters( $this->p->lca . '_use_post', $use_post );
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'required call to get_page_mod()' );
 			}
 
@@ -177,6 +187,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			if ( ! empty( $local_recursion[ $cache_salt ] ) ) {		// Check for recursion.
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'exiting early: content filter recursion detected' );
 				}
 
@@ -199,12 +210,14 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			if ( empty( $image_url ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'image url for pinterest is empty' );
 				}
 
 			} else {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'adding image url for pinterest = ' . $image_url );
 				}
 
@@ -213,6 +226,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 						$md_key = array( 'p_img_desc', 'og_desc' ) );
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'pinterest data pin description = ' . $data_pin_desc );
 				}
 
@@ -231,6 +245,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			$image_html .= '</div><!-- .' . $this->p->lca . '-pinterest-pin-it-image -->' . "\n\n";
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'done' );
 			}
 
