@@ -59,12 +59,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			list( $image_type_id, $image_type_url ) = self::get_type_id_url( $json_data, $type_opts = false,
 				$opt_key = 'image_type', $def_type_id = 'image.object', $list_element );
 
-			$json_ret = WpssoSchema::get_schema_type_context(
-				$image_type_url,
-				array(
-					'url' => SucomUtil::esc_url_encode( $image_url ),
-				)
-			);
+			$json_ret = WpssoSchema::get_schema_type_context( $image_type_url, array( 'url' => SucomUtil::esc_url_encode( $image_url ) ) );
 
 			/**
 			 * Maybe add an 'identifier' value based on the size name and image ID.
@@ -261,12 +256,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			list( $video_type_id, $video_type_url ) = self::get_type_id_url( $json_data, $type_opts = false,
 				$opt_key = false, $def_type_id = 'video.object', $list_element );
 
-			$json_ret = WpssoSchema::get_schema_type_context(
-				$video_type_url,
-				array(
-					'url' => SucomUtil::esc_url_encode( $media_url ),
-				)
-			);
+			$json_ret = WpssoSchema::get_schema_type_context( $video_type_url, array( 'url' => SucomUtil::esc_url_encode( $media_url ) ) );
 
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_single, array(
 				'name'         => $media_pre . ':title',
@@ -347,20 +337,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					$comment_type_url = 'https://schema.org/Comment';
 				}
 
-				$json_ret = WpssoSchema::get_schema_type_context(
-					$comment_type_url,
-					array(
-						'url'         => get_comment_link( $cmt->comment_ID ),
-						'dateCreated' => mysql2date( 'c', $cmt->comment_date_gmt ),
-						'description' => get_comment_excerpt( $cmt->comment_ID ),
-						'author'      => WpssoSchema::get_schema_type_context(
-							'https://schema.org/Person',
-							array(
-								'name' => $cmt->comment_author,
-							)
-						),
-					)
-				);
+				$json_ret = WpssoSchema::get_schema_type_context( $comment_type_url, array(
+					'url'         => get_comment_link( $cmt->comment_ID ),
+					'dateCreated' => mysql2date( 'c', $cmt->comment_date_gmt ),
+					'description' => get_comment_excerpt( $cmt->comment_ID ),
+					'author'      => WpssoSchema::get_schema_type_context( 'https://schema.org/Person', array(
+						'name' => $cmt->comment_author,
+					) ),
+				) );
 
 				$comments_added++;
 
@@ -635,11 +619,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						case 'event_online_url':
 
 							$json_ret[ 'location' ][] = WpssoSchema::get_schema_type_context(
-								'https://schema.org/VirtualLocation',
-								array(
-									'url' => $event_opts[ $opt_pre ],
-								)
-							);
+								'https://schema.org/VirtualLocation', array( 'url' => $event_opts[ $opt_pre ] ) );
 
 							break;
 
@@ -1130,9 +1110,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 									$postal_code_range = WpssoSchema::get_schema_type_context(
 										'https://schema.org/PostalCodeRangeSpecification',
-										array(
-											'postalCodeBegin' => $matches[ 1 ],
-										)
+										array( 'postalCodeBegin' => $matches[ 1 ] )
 									);
 
 									if ( isset( $matches[ 2 ] ) ) {
@@ -1171,49 +1149,68 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						}
 
 						$shipping_offer[ 'shippingDestination' ][] = WpssoSchema::get_schema_type_context(
-							'https://schema.org/DefinedRegion',
-							$defined_region
-						);
+							'https://schema.org/DefinedRegion', $defined_region );
 					}
 				}
 			}
 
-			if ( isset( $shipping_opts[ 'shipping_rates' ] ) ) {
+			if ( isset( $shipping_opts[ 'shipping_rate' ] ) ) {
 
 				/**
 				 * See https://developers.google.com/search/docs/data-types/product#shipping-details-best-practices.
 				 */
-				$rate_keys = array(
-					'rate_name'     => 'name',
-					'rate_cost'     => 'value',
-					'rate_currency' => 'currency',
+				$shipping_rate_keys = array(
+					'shipping_rate_name'     => 'name',
+					'shipping_rate_cost'     => 'value',
+					'shipping_rate_currency' => 'currency',
 				);
 
-				foreach ( $shipping_opts[ 'shipping_rates' ] as $rate_num => $rate_opts ) {
+				$shipping_rate = array();
 
-					$monetary_amount = array();
+				foreach ( $shipping_opts[ 'shipping_rate' ] as $opt_key => $val ) {
 
-					foreach ( $rate_opts as $opt_key => $val ) {
-
-						if ( ! isset( $rate_keys[ $opt_key ] ) ) {	// Make sure we have a Schema property name.
+					if ( isset( $shipping_rate_keys[ $opt_key ] ) ) {
 							
-							continue;
-						}
-
-						$prop_name = $rate_keys[ $opt_key ];
-
-						$monetary_amount[ $prop_name ] = $val;
+						$shipping_rate[ $shipping_rate_keys[ $opt_key ] ] = $val;
 					}
+				}
 
-					if ( ! empty( $monetary_amount ) ) {
+				if ( ! empty( $shipping_rate ) ) {
 
-						$shipping_rate = WpssoSchema::get_schema_type_context(
-							'https://schema.org/MonetaryAmount',
-							$monetary_amount
-						);
+					$shipping_offer[ 'shippingRate' ] = WpssoSchema::get_schema_type_context(
+						'https://schema.org/MonetaryAmount', $shipping_rate );
+				}
+			}
 
-						$shipping_offer[ 'shippingRate' ][] = $shipping_rate;
+			if ( isset( $shipping_opts[ 'delivery_time' ] ) ) {
+
+				$transit_keys = array(
+					'transit_days'     => 'value',
+					'transit_min_days' => 'minValue',
+					'transit_max_days' => 'maxValue',
+				);
+
+				$delivery_time = array();
+				$transit_time  = array();
+
+				foreach ( $shipping_opts[ 'delivery_time' ] as $opt_key => $val ) {
+
+					if ( isset( $transit_keys[ $opt_key ] ) ) {	// Make sure we have a Schema property name.
+
+						$transit_time[ $transit_keys[ $opt_key ] ] = $val;
 					}
+				}
+
+				if ( ! empty( $transit_time ) ) {
+
+					$delivery_time[ 'transitTime' ] = WpssoSchema::get_schema_type_context(
+						'https://schema.org/QuantitativeValue', $transit_time );
+				}
+
+				if ( ! empty( $delivery_time ) ) {
+
+					$shipping_offer[ 'deliveryTime' ] = WpssoSchema::get_schema_type_context(
+						'https://schema.org/ShippingDeliveryTime', $delivery_time );
 				}
 			}
 
@@ -1898,11 +1895,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					if ( ! empty( $order_url ) ) {	// Just in case.
 
 						$json_ret[ 'potentialAction' ][] = WpssoSchema::get_schema_type_context(
-							'https://schema.org/OrderAction',
-							array(
-								'target' => $order_url,
-							)
-						);
+							'https://schema.org/OrderAction', array( 'target' => $order_url ) );
 					}
 				}
 			}

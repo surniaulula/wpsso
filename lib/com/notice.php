@@ -34,15 +34,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public function __construct( $plugin = null, $lca = null, $text_domain = null, $label_transl = false ) {
 
-			static $do_once = null;	// Just in case.
-
-			if ( true === $do_once ) {
-
-				return;
-			}
-
-			$do_once = true;
-
 			if ( ! class_exists( 'SucomUtil' ) ) {	// Just in case.
 
 				require_once trailingslashit( dirname( __FILE__ ) ) . 'util.php';
@@ -185,6 +176,15 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		 * Add WordPress action and filters hooks.
 		 */
 		private function add_wp_hooks() {
+
+			static $do_once = null;	// Just in case.
+
+			if ( true === $do_once ) {
+
+				return;
+			}
+
+			$do_once = true;
 
 			if ( is_admin() ) {
 

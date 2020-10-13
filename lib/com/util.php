@@ -1402,7 +1402,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function sanitize_key( $key ) {
 
-			return preg_replace( '/[^a-z0-9_\-]/', '', strtolower( $key ) );
+			return preg_replace( '/[^a-z0-9\-_:]/', '', strtolower( $key ) );
 		}
 
 		public static function sanitize_anchor( $anchor ) {
