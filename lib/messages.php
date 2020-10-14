@@ -2421,11 +2421,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<p>';
 
-							$text .= sprintf( __( '%s adds the following Facebook, Open Graph, Twitter, Schema, Pinterest, and SEO HTML tags to the <code>&lt;head&gt;</code> section of your webpages.', 'wpsso' ), $info[ 'short' ] ) . ' ';
+							// translators: %1$s is the plugin name, %2$s is <head>.
+							$text .= sprintf( __( '%1%s adds the following Facebook, Open Graph, Twitter, Schema, Pinterest, and SEO HTML tags to the %2$s section of your webpages.', 'wpsso' ), $info[ 'short' ], '<code>&lt;head&gt;</code>' ) . ' ';
 
 							$text .= __( 'If your theme or another plugin already creates one or more of these HTML tags, you can uncheck them here to prevent duplicates from being added.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'Please note that the <code>%1$s</code> and <code>%2$s</code> HTML tags are disabled automatically if a known SEO plugin is detected, and the <code>%3$s</code> HTML tag is disabled by default (as themes often include this HTML tag in their header templates).', 'wpsso' ), 'meta name description', 'meta name robots', 'link rel canonical' );
+							// translators: %1$s is "link rel canonical", %2$s is "meta name description", and %3$s is "meta name robots".
+							$text .= sprintf( __( 'Please note that the %1$s HTML tag is disabled by default (as themes often include this HTML tag in their header templates), and the <code>%2$s</code> and <code>%3$s</code> HTML tags are disabled automatically if a known SEO plugin is detected.', 'wpsso' ), '<code>link rel canonical</code>', '<code>meta name description</code>', '<code>meta name robots</code>' );
 
 							$text .= '</p>';
 

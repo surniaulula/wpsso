@@ -6,10 +6,12 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
 if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
+
 	die( 'Do. Or do not. There is no try.' );
 }
 
@@ -24,6 +26,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -35,6 +38,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 			if ( $add_link_rel_shortlink ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'removing default wp_shortlink_wp_head action' );
 				}
 
@@ -44,6 +48,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 			add_action( 'wp_head', array( $this, 'maybe_disable_rel_canonical' ), -1000 );
 
 			if ( ! empty( $this->p->avail[ 'amp' ][ 'any' ] ) ) {
+
 				add_action( 'amp_post_template_head', array( $this, 'maybe_disable_rel_canonical' ), -1000 );
 			}
 		}
@@ -54,14 +59,18 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 		public function maybe_disable_rel_canonical() {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
 			if ( ! empty( $this->p->options[ 'add_link_rel_canonical' ] ) ) {
 
 				if ( function_exists( 'current_action' ) ) {	// Since WP v3.9.
+
 					$current  = current_action();
+
 				} else {
+
 					$current  = current_filter();
 				}
 
@@ -87,6 +96,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 		public function get_array( array $mod, array $mt_og = array(), $author_id = 0, $sharing_url = '' ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -128,6 +138,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 				} elseif ( ! empty( $sharing_url ) ) {	// Just in case.
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'using ' . $this->p->lca . '_get_short_url filters to get shortlink' );
 					}
 
@@ -139,20 +150,24 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 				if ( empty( $shortlink ) ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'skipping shortlink: short url is empty' );
 					}
 
 				} elseif ( $shortlink === $sharing_url ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'skipping shortlink: short url is identical to sharing url' );
 					}
 
 				} else {
+
 					$link_rel[ 'shortlink' ] = $shortlink;
 				}
 
 			} elseif ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'skipping shortlink: add_link_rel_shortlink filter returned false' );
 			}
 

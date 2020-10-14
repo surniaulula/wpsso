@@ -721,7 +721,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				if ( ! $is_new_options && $version_changed ) {
 
-					if ( empty( $opts[ 'plugin_wpsso_tid' ] ) && ! $this->p->check->pp( 'wpsso', $li = false ) ) {
+					if ( empty( $opts[ 'plugin_wpsso_tid' ] ) ) {
 
 						// translators: %s is the option key name.
 						$notice_msg = __( 'Non-standard value found for the "%s" option - resetting the option to its default value.', 'wpsso' );
@@ -773,34 +773,37 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 */
 			if ( ! $network ) {
 
-				if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
+				$seo_other_opts = array();
 
-					if ( $this->p->debug->enabled ) {
+				if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
 
-						$this->p->debug->log( 'seo plugin found - checking meta tag options' );
+					if ( empty( $opts[ 'plugin_wpsso_tid' ] ) ) {
+
+						$seo_other_opts = array(
+							'add_link_rel_canonical'    => 0,
+							'add_meta_name_description' => 1,
+							'add_meta_name_robots'      => 1,
+						);
 					}
 
-					foreach ( array(
+				} else {
+					
+					$seo_other_opts = array(
 						'add_link_rel_canonical'    => 0,
 						'add_meta_name_description' => 0,
 						'add_meta_name_robots'      => 0,
-					) as $opt_key => $def_val ) {
+					);
+				}
 
-						$def_val = (int) apply_filters( $this->p->lca . '_' . $opt_key, $def_val );
+				foreach ( $seo_other_opts as $opt_key => $def_val ) {
 
-						$opts[ $opt_key . ':is' ] = 'disabled';	// Prevent changes in settings page.
+					$opts[ $opt_key . ':is' ] = 'disabled';	// Prevent changes in settings page.
 
-						if ( $opts[ $opt_key ] !== $def_val ) {
+					if ( $opts[ $opt_key ] !== $def_val ) {
 
-							if ( $this->p->debug->enabled ) {
+						$opts[ $opt_key ] = $def_val;
 
-								$this->p->debug->log( 'setting ' . $opt_key . ' to ' . $def_val );
-							}
-
-							$opts[ $opt_key ] = $def_val;
-
-							$options_changed = true;	// Save the options.
-						}
+						$options_changed = true;	// Save the options.
 					}
 				}
 			}
