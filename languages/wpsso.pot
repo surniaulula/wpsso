@@ -7969,12 +7969,12 @@ msgid "post"
 msgstr ""
 
 #: lib/post.php:558 lib/register.php:347 lib/term.php:488 lib/user.php:461
-#: lib/util.php:808 lib/util.php:3361
+#: lib/util.php:808 lib/util.php:3376
 msgid "%s warning:"
 msgstr ""
 
 #: lib/post.php:559 lib/term.php:489 lib/user.php:463 lib/util.php:810
-#: lib/util.php:3363
+#: lib/util.php:3378
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -9114,31 +9114,31 @@ msgstr ""
 msgid "Error getting HTML from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:1668
+#: lib/util.php:1676
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1856
+#: lib/util.php:1871
 msgid ""
 "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
 "provider to have the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1870
+#: lib/util.php:1885
 msgid ""
 "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:3365
+#: lib/util.php:3380
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3380
+#: lib/util.php:3395
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -9147,7 +9147,7 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3382
+#: lib/util.php:3397
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
@@ -9155,12 +9155,12 @@ msgid ""
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3894
+#: lib/util.php:3909
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3904
+#: lib/util.php:3919
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

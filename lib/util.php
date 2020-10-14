@@ -1654,19 +1654,34 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$html = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// Convert to UTF8.
 
-			$html = preg_replace( '/<!--.*-->/Uums', '', $html );		// Pattern and subject strings are treated as UTF8.
+			/**
+			 * U = Ungreedy.
+			 * u = UTF-8.
+			 * m = Multiline.
+			 * s = Dot matches newlines.
+			 */
+			$html = preg_replace( '/<!--.*-->/Uums', '', $html );	// Pattern and subject strings are treated as UTF8.
 
 			if ( empty( $html ) ) {	// Returned html for url is empty.
 
-				if ( $this->p->debug->enabled ) {
+				if ( $request ) {
 
-					$this->p->debug->log( 'exiting early: html for ' . $request . ' is empty' );
-				}
+					if ( $this->p->debug->enabled ) {
 
-				if ( $is_admin ) {
+						$this->p->debug->log( 'exiting early: html for ' . $request . ' is empty' );
+					}
 
-					$this->p->notice->err( sprintf( __( 'Webpage retrieved from <a href="%1$s">%1$s</a> is empty.',
-						'wpsso' ), $request ) );
+					if ( $is_admin ) {
+
+						$this->p->notice->err( sprintf( __( 'Webpage retrieved from <a href="%1$s">%1$s</a> is empty.', 'wpsso' ), $request ) );
+					}
+
+				} else {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'exiting early: submitted html is empty' );
+					}
 				}
 
 				return false;
