@@ -1,6 +1,6 @@
 
 function sucomCopyById( css_id ) {
-	
+
 	try {
 
 		var copyClipboardMsg = sucomAdminPageL10n._copy_clipboard_msg;
@@ -23,13 +23,13 @@ function sucomCopyById( css_id ) {
 		target.style.position = 'absolute';
 		target.style.top      = '0';
 		target.style.left     = '-9999px';
-	
+
 		document.body.appendChild( target );
 
 		target.textContent = elemVal;
 
 		target.focus();
-	
+
 		target.setSelectionRange( 0, target.value.length );
 
 		document.execCommand( 'copy' );
@@ -166,4 +166,3 @@ function sucomUpdateToolbar( lca ) {
 		}
 	} );
 }
-

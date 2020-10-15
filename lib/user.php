@@ -1493,12 +1493,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 */
 		public function schedule_add_person_role( $user_id = null ) {
 
-			$user_id = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
-
+			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 			$event_time = time() + 5;	// Add a 5 second event buffer.
-
 			$event_hook = $this->p->lca . '_add_person_role';
-
 			$event_args = array( $user_id );
 
 			$this->stop_add_person_role();	// Just in case.
@@ -1620,12 +1617,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 */
 		public function schedule_remove_person_role( $user_id = null ) {
 
-			$user_id = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
-
+			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 			$event_time = time() + 5;	// Add a 5 second event buffer.
-
 			$event_hook = $this->p->lca . '_remove_person_role';
-
 			$event_args = array( $user_id );
 
 			wp_schedule_single_event( $event_time, $event_hook, $event_args );

@@ -37,12 +37,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'init_objects' => 0,
+				'init_objects' => 3,
 				'option_type'  => 4,
 			), $prio = 10000 );
 		}
 
-		public function filter_init_objects() {
+		public function filter_init_objects( $is_admin, $doing_ajax, $doing_cron ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -151,7 +151,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'robots_max_video_preview':	// Video Max. Previews
 
 					if ( empty( $mod[ 'name' ] ) ) {	// Must be an interger in plugin settings.
-					
+
 						return 'integer';
 					}
 
@@ -369,7 +369,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					'force_filter' => $force_filter, 
 				) );
 			}
-
 
 			if ( empty( $this->defaults_cache ) || empty( self::$allow_cache ) ) {
 
@@ -787,7 +786,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 
 				} else {
-					
+
 					$seo_other_opts = array(
 						'add_link_rel_canonical'    => 0,
 						'add_meta_name_description' => 0,
@@ -1199,7 +1198,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			foreach ( preg_grep( '/:is$/', array_keys( $opts ) ) as $key ) {
 
 				if ( 'disabled' === $opts[ $key ] ) {
-				
+
 					unset( $opts[ $key ] );
 				}
 			}

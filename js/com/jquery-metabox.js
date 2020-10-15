@@ -38,7 +38,7 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 		var checked    = actor.prop( 'checked' );
 		var group      = actor.data( 'group' );
 		var checkboxes = jQuery( 'input[type="checkbox"][data-group="' + group + '"]' );
-	
+
 		checkboxes.prop( 'checked', checked );
 
 		checkboxes.addClass( 'changed' );
@@ -232,19 +232,19 @@ function sucomTextLen( css_id ) {
 
 			limit_html = min_len;
 			msg_transl = '{0} of {1} characters minimum';
-	
+
 			if ( ! sucomAdminPageL10n._min_len_msg ) {
 				msg_transl = sucomAdminPageL10n._min_len_msg;
 			}
 
 		} else {
-		
+
 			if ( max_len > min_len ) {
 				limit_html = String( min_len ) + '-' + String( max_len );
 			}
 
 			msg_transl = '{0} of {1} characters required';
-	
+
 			if ( ! sucomAdminPageL10n._req_len_msg ) {
 				msg_transl = sucomAdminPageL10n._req_len_msg;
 			}
@@ -253,7 +253,7 @@ function sucomTextLen( css_id ) {
 	} else if ( max_len ) {
 
 		msg_transl = '{0} of {1} characters maximum';
-	
+
 		if ( ! sucomAdminPageL10n._max_len_msg ) {
 			msg_transl = sucomAdminPageL10n._max_len_msg;
 		}
@@ -472,11 +472,11 @@ String.prototype.formatUnicorn = String.prototype.formatUnicorn || function () {
 		var t = typeof arguments[ 0 ];
 		var key;
 		var args = ( "string" === t || "number" === t ) ? Array.prototype.slice.call( arguments ) : arguments[ 0 ];
-		
+
 		for ( key in args ) {
 			str = str.replace( new RegExp( "\\{" + key + "\\}", "gi" ), args[ key ] );
 		}
 	}
-	
+
 	return str;
 }

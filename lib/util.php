@@ -2933,28 +2933,40 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 * The user ID is different than the current / effective user ID, so check if the user locale is different
 			 * to the current locale and load the user locale if required.
 			 */
-			$user_locale = get_user_meta( $user_id, 'locale', $single = true );
-
 			$current_locale = get_locale();
+			$user_locale    = get_user_meta( $user_id, 'locale', $single = true );
 
-			if ( ! empty( $user_locale ) && $user_locale !== $current_locale ) {
+			$this->maybe_load_textdomain( $current_locale, $user_locale, $plugin_slug = 'wpsso' );
 
-				$domain        = 'wpsso';
-				$rel_path      = 'wpsso/languages/';
-				$mofile        = $domain . '-' . $user_locale . '.mo';
+			return $user_id;
+		}
+
+		public function maybe_load_textdomain( $current_locale, $new_locale, $plugin_slug ) {
+
+			static $local_cache = array();
+
+			if ( isset( $local_cache[ $new_locale ][ $plugin_slug ] ) ) {
+
+				return $local_cache[ $new_locale ][ $plugin_slug ];
+			}
+
+			if ( $new_locale && $new_locale !== $current_locale ) {
+
+				$rel_path      = $plugin_slug . '/languages/';
+				$mofile        = $plugin_slug . '-' . $new_locale . '.mo';
 				$wp_mopath     = WP_LANG_DIR . '/plugins/' . $mofile;
 				$plugin_mopath = WP_PLUGIN_DIR . '/' . $rel_path . $mofile;
 
 				/**
 				 * Try to load from the WordPress languages directory first.
 				 */
-				if ( ! load_textdomain( $domain, $wp_mopath ) ) {
+				if ( load_textdomain( $plugin_slug, $wp_mopath ) || load_textdomain( $plugin_slug, $plugin_mopath ) ) {
 
-					load_textdomain( $domain, $plugin_mopath );
+					return $local_cache[ $new_locale ][ $plugin_slug ] = true;
 				}
 			}
 
-			return $user_id;
+			return $local_cache[ $new_locale ][ $plugin_slug ] = false;
 		}
 
 		/**

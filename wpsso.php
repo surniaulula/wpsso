@@ -121,11 +121,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			/**
 			 * The 'wpsso_init_textdomain' action is run after the $check, $avail, and $debug properties are defined.
-			 *
-			 * Hooks the 'override_textdomain_mofile' filter (if debug is enabled) to use the local translation files
-			 * instead of those from wordpress.org.
+			 * If debug is enabled, hook the 'override_textdomain_mofile' filter to use local translation files instead
+			 * of translations from wordpress.org.
 			 */
-			add_action( 'wpsso_init_textdomain', array( $this, 'init_textdomain' ), -1000, 1 );
+			add_action( 'wpsso_init_textdomain', array( $this, 'init_textdomain' ), -1000, 0 );
+
+			add_action( 'change_locale', array( $this, 'change_locale' ), -1000, 1 );
 		}
 
 		public static function &get_instance() {
@@ -268,6 +269,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public function set_objects( $activate = false ) {
 
 			$is_admin   = is_admin() ? true : false;
+			$doing_ajax = defined( 'DOING_AJAX' ) ? DOING_AJAX : false;
 			$doing_cron = defined( 'DOING_CRON' ) ? DOING_CRON : false;
 			$debug_log  = false;
 			$debug_html = false;
@@ -344,7 +346,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			/**
 			 * The 'wpsso_init_textdomain' action is run after the $check, $avail, and $debug properties are defined.
 			 */
-			do_action( 'wpsso_init_textdomain', $this->debug->enabled );
+			do_action( 'wpsso_init_textdomain' );
 
 			/**
 			 * Make sure a notice object is always available.
@@ -356,6 +358,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->notice = new SucomNotice( $this );
 
 			} else {
+
 				$this->notice = new SucomNoNotice();
 			}
 
@@ -454,7 +457,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			/**
 			 * Init additional class objects.
 			 */
-			do_action( 'wpsso_init_objects' );
+			do_action( 'wpsso_init_objects', $is_admin, $doing_ajax, $doing_cron );
 
 			if ( $this->debug->enabled ) {
 
@@ -624,7 +627,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			}
 
 			$is_admin   = is_admin() ? true : false;	// Only check once.
-			$doing_ajax = SucomUtil::get_const( 'DOING_AJAX' );
+			$doing_ajax = defined( 'DOING_AJAX' ) ? DOING_AJAX : false;
+			$doing_cron = defined( 'DOING_CRON' ) ? DOING_CRON : false;
 
 			if ( $this->debug->enabled ) {
 
@@ -703,7 +707,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			/**
 			 * All WPSSO objects are instantiated and configured.
 			 */
-			do_action( 'wpsso_init_plugin', $is_admin, $doing_ajax );
+			do_action( 'wpsso_init_plugin', $is_admin, $doing_ajax, $doing_cron );
 
 			if ( $this->debug->enabled ) {
 
@@ -716,30 +720,35 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			}
 		}
 
+		public function change_locale( $locale ) {
+
+			do_action( 'wpsso_init_textdomain' );
+		}
+
 		/**
 		 * Runs at wpsso_init_textdomain priority -1000.
 		 *
-		 * The 'wpsso_init_textdomain' action is run after the $check, $avail, and $debug properties are defined.
+		 * The 'wpsso_init_textdomain' action is run after the $check, $avail, and $debug properties are defined. If debug
+		 * is enabled, hook the 'override_textdomain_mofile' filter to use local translation files instead of translations
+		 * from wordpress.org.
 		 *
-		 * If debug is enabled, hooks the 'override_textdomain_mofile' filter to use local translation files instead of translations from wordpress.org.
+		 * May also be called via the 'change_locale' action, in which case the $debug property is probably not available.
 		 */
-		public function init_textdomain( $debug_enabled = false ) {
+		public function init_textdomain() {
 
-			static $local_cache = null;
+			if ( ! empty( $this->debug->enabled ) ) {
 
-			if ( null === $local_cache ) {	// Do once.
+				static $do_once = null;
 
-				$local_cache = 'wpsso';
+				if ( null === $do_once ) {
 
-				if ( $debug_enabled ) {
+					$do_once = true;
 
 					add_filter( 'load_textdomain_mofile', array( $this, 'override_textdomain_mofile' ), 10, 3 );
 				}
-
-				load_plugin_textdomain( 'wpsso', false, 'wpsso/languages/' );
 			}
 
-			return $local_cache;
+			load_plugin_textdomain( 'wpsso', false, 'wpsso/languages/' );
 		}
 
 		public function get_lib_classnames( $type_dir ) {

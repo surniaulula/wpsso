@@ -1249,7 +1249,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 							$msg_spoken = preg_replace( '/<!--not-spoken-->(.*?)<!--\/not-spoken-->/Us', ' ', $msg );
 							$msg_spoken = SucomUtil::decode_html( SucomUtil::strip_html( $msg_spoken ) );
 							$msg_key    = sanitize_key( $msg_spoken );
-	
+
 							$this->notice_cache[ $user_id ][ $type ][ $msg_key ] = array(
 								'notice_label' => $this->label_transl,
 								'notice_key'   => $msg_key,

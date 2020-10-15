@@ -1003,7 +1003,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 							$wpsso->debug->log( 'skipping shipping #' . $opt_num . ': not an array' );
 						}
-	
+
 						continue;
 					}
 
@@ -1087,7 +1087,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					foreach ( $dest_opts as $opt_key => $val ) {
 
 						if ( ! isset( $dest_keys[ $opt_key ] ) ) {	// Make sure we have a Schema property name.
-							
+
 							continue;
 						}
 
@@ -1179,7 +1179,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				foreach ( $shipping_opts[ 'shipping_rate' ] as $opt_key => $val ) {
 
 					if ( isset( $shipping_rate_keys[ $opt_key ] ) ) {
-							
+
 						$shipping_rate[ $shipping_rate_keys[ $opt_key ] ] = $val;
 					}
 				}
@@ -1210,22 +1210,23 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					) as $opt_key => $quant_prop_name ) {
 
 						if ( isset( $shipping_opts[ 'delivery_time' ][ $opt_key ] ) ) {
-						
+
 							$quant_id .= '-' . $shipping_opts[ 'delivery_time' ][ $opt_key ];
-	
+
 							$quant_time[ $quant_prop_name ] = $shipping_opts[ 'delivery_time' ][ $opt_key ];
+
 						} else {
-						
+
 							$quant_id .= '-0';
 						}
 					}
-	
+
 					if ( ! empty( $quant_time ) ) {
 
 						$quant_time[ 'unitName' ] = 'Days';
 						$quant_time[ 'unitText' ] = 'd';
 						$quant_time[ 'unitCode' ] = 'DAY';
-	
+
 						WpssoSchema::update_data_id( $quant_time, $quant_id, $offer_url );
 
 						$delivery_time[ $delivery_prop_name ] = WpssoSchema::get_schema_type_context(

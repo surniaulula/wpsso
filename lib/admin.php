@@ -1713,7 +1713,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->util->metabox->do_table( $table_rows, 'metabox-' . $page_id . '-' . $metabox_id );
 
 			} else {
-				
+
 				$table_rows = array(
 					'<td><p class="status-msg">' .
 					__( 'Missing page ID or metabox ID to create the metabox table.', 'wpsso' ) .
@@ -2451,8 +2451,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							 */
 							if ( ! empty( $info[ 'url' ][ 'info' ] ) ) {
 
-								$locale = is_admin() && function_exists( 'get_user_locale' ) ?
-									get_user_locale() : get_locale();
+								/**
+								 * get_user_locale() is available since WP v4.7.0, so make sure it exists before calling it. :)
+								 */
+								$locale = is_admin() && function_exists( 'get_user_locale' ) ? get_user_locale() : get_locale();
 
 								$info_url = add_query_arg( array(
 									'tid'       => $this->p->options[ 'plugin_' . $ext . '_tid' ],
@@ -2629,7 +2631,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$notice_msg = sprintf( __( 'The Site Address URL value has been changed from %1$s to %2$s.', 'wpsso' ), $old_value, $new_value );
-	
+
 			$notice_key = __FUNCTION__ . '_' . $old_value . '_' . $new_value;
 
 			$this->p->notice->upd( $notice_msg, $user_id, $notice_key );

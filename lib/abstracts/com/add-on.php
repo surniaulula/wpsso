@@ -23,7 +23,7 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 
 		public function __construct() {}
 
-		public function init_textdomain( $debug_enabled = false ) {}
+		public function init_textdomain() {}
 
 		public function get_config( array $config ) {
 
@@ -35,7 +35,7 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 			return SucomUtil::array_merge_recursive_distinct( $config, $this->cf );
 		}
 
-		public function init_objects() {}
+		public function init_objects( $is_admin, $doing_ajax, $doing_cron ) {}
 
 		public function get_avail( array $avail ) {
 
@@ -51,7 +51,7 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 			return $avail;
 		}
 
-		public function init_plugin_notices( $is_admin, $doing_ajax ) {
+		public function init_plugin_notices( $is_admin, $doing_ajax, $doing_cron ) {
 
 			$missing_reqs = $this->get_missing_requirements();	// Returns false or an array of missing requirements.
 
@@ -71,7 +71,7 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 
 							SucomUtil::safe_error_log( $error_pre . ' ' . $req_info[ 'notice' ], $strip_html = true );
 						}
-			
+
 						if ( $this->p->debug->enabled ) {
 
 							$this->p->debug->log( strtolower( $req_info[ 'notice' ] ) );
@@ -131,6 +131,9 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 				return $local_cache = false;
 			}
 
+			$addon_name  = $info[ 'name' ];
+			$text_domain = $info[ 'text_domain' ];
+
 			foreach ( $info[ 'req' ] as $key => $req_info ) {
 
 				if ( ! empty( $req_info[ 'home' ] ) ) {
@@ -152,26 +155,25 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 
 				} elseif ( ! empty( $req_info[ 'plugin_class' ] ) && ! class_exists( $req_info[ 'plugin_class' ] ) ) {
 
-					$text_domain = $this->init_textdomain();	// If not already loaded, load the textdomain now.
+					$this->init_textdomain();	// If not already loaded, load the textdomain now.
 
 					$notice_msg = __( 'The %1$s add-on requires the %2$s plugin &mdash; please activate the missing plugin.',
 						$text_domain );
 
-					$req_info[ 'notice' ] = sprintf( $notice_msg, $info[ 'name' ], $req_name );
-				}
+					$req_info[ 'notice' ] = sprintf( $notice_msg, $addon_name, $req_name );
 
-				if ( ! empty( $req_info[ 'version' ] ) ) {
+				} elseif ( ! empty( $req_info[ 'version' ] ) ) {
 
 					if ( ! empty( $req_info[ 'min_version' ] ) ) {
 
 						if ( version_compare( $req_info[ 'version' ], $req_info[ 'min_version' ], '<' ) ) {
 
-							$text_domain = $this->init_textdomain();	// If not already loaded, load the textdomain now.
+							$this->init_textdomain();	// If not already loaded, load the textdomain now.
 
 							$notice_msg = __( 'The %1$s add-on requires %2$s version %3$s or newer (version %4$s is currently installed).',
 								$text_domain );
 
-							$req_info[ 'notice' ] = sprintf( $notice_msg, $info[ 'name' ],
+							$req_info[ 'notice' ] = sprintf( $notice_msg, $addon_name,
 								$req_name, $req_info[ 'min_version' ], $req_info[ 'version' ] );
 						}
 					}

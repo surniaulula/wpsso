@@ -2539,14 +2539,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			} else {
 
-				if ( is_admin() && function_exists( 'get_user_locale' ) ) {	// Since WP v4.7.
-
-					$locale = get_user_locale();
-
-				} else {
-
-					$locale = get_locale();
-				}
+				/**
+				 * get_user_locale() is available since WP v4.7.0, so make sure it exists before calling it. :)
+				 */
+				$locale = is_admin() && function_exists( 'get_user_locale' ) ? get_user_locale() : get_locale();
 			}
 
 			return self::$cache_locale[ $cache_index ] = apply_filters( 'sucom_locale', $locale, $mixed );

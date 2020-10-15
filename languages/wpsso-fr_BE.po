@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.7.0\n"
+"Project-Id-Version: WPSSO Core 8.8.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-10-02 14:08-0700\n"
-"PO-Revision-Date: 2020-10-02 14:09-0700\n"
+"POT-Creation-Date: 2020-10-07 16:23-0700\n"
+"PO-Revision-Date: 2020-10-07 16:23-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -367,6 +367,14 @@ msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-sh
 msgctxt "html list item"
 msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/\">Why shouldn't I upload small images to the Media library?</a>"
 msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/\">Pourquoi ne devrais-je pas télécharger de petites images dans la Médiathèque?</a>"
+
+#: gettext/gettext-lib-abstracts-com.php:6 lib/abstracts/com/add-on.php:157
+msgid "The %1$s add-on requires the %2$s plugin &mdash; please activate the missing plugin."
+msgstr "L'ajout %1$s nécessite l'extension %2$s &mdash; veuillez activer l'extension manquante."
+
+#: gettext/gettext-lib-abstracts-com.php:7 lib/abstracts/com/add-on.php:171
+msgid "The %1$s add-on requires %2$s version %3$s or newer (version %4$s is currently installed)."
+msgstr "L'ajout %1$s nécessite %2$s version %3$s ou plus récente (la version %4$s est actuellement installée)."
 
 #: gettext/gettext-lib-com.php:6 gettext/gettext-lib-com.php:30
 #: gettext/gettext-lib-com.php:37 lib/com/bfo.php:266 lib/com/cache.php:94
@@ -2814,15 +2822,15 @@ msgstr "La valeur de l'option \"%1$s\" de WooCommerce est vide."
 msgid "The WooCommerce %s method is not available - please update to a newer version of WooCommerce."
 msgstr "La méthode WooCommerce %s n'est pas disponible - veuillez mettre à jour WooCommerce vers une version plus récente."
 
-#: gettext/gettext-lib-pro.php:150 lib/pro/ecom/woocommerce.php:1392
+#: gettext/gettext-lib-pro.php:150 lib/pro/ecom/woocommerce.php:1425
 msgid "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax.html"
 msgstr "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax.html"
 
-#: gettext/gettext-lib-pro.php:151 lib/pro/ecom/woocommerce.php:1394
+#: gettext/gettext-lib-pro.php:151 lib/pro/ecom/woocommerce.php:1427
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr "La <a href=\"%1$s\">fonction WooCommerce %2$s</a> n'est pas disponible."
 
-#: gettext/gettext-lib-pro.php:152 lib/pro/ecom/woocommerce.php:1397
+#: gettext/gettext-lib-pro.php:152 lib/pro/ecom/woocommerce.php:1430
 msgid "Please update your site to WooCommerce version %s or newer."
 msgstr "SVP mettre à jour votre site à WooCommerce version %s ou plus récente."
 
@@ -6943,35 +6951,35 @@ msgstr "%1$s nécessite %2$s version %3$s ou supérieure et a été désactivé.
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr "SVP mettre à jour %1$s avant d'essayer de réactiver l'extension %2$s."
 
-#: lib/schema-single.php:1295
+#: lib/schema-single.php:1310
 msgid "adding schema organization"
 msgstr "ajout de schéma d'organisation"
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1359
+#: lib/schema-single.php:1374
 msgid "An organization logo image is missing and required for the \"%1$s\" organization Schema %2$s markup."
 msgstr "Une image de logo d'organisation est manquante et requise pour le balisage de Schéma %2$s de l'organisation \"%1$s\"."
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1362
+#: lib/schema-single.php:1377
 msgid "An organization banner image (600x60px) is missing and required for the \"%1$s\" organization Schema %2$s markup."
 msgstr "Une image de bannière d'organisation (600x60px) est manquante et requise pour le balisage de Schéma %2$s de l'organisation \"%1$s\"."
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or 'ID #'.
-#: lib/schema-single.php:1365
+#: lib/schema-single.php:1380
 msgid "Please enter the missing image URL in the \"%1$s\" %2$s organization settings."
 msgstr "Veuillez fournir l'URL de l'image manquante dans les paramètres de l'organisation %2$s \"%1$s\"."
 
 #. translators: site, as in the "site organization settings".
-#: lib/schema-single.php:1387
+#: lib/schema-single.php:1402
 msgid "site"
 msgstr "site"
 
-#: lib/schema-single.php:1568
+#: lib/schema-single.php:1583
 msgid "adding schema person"
 msgstr "ajout de schéma de personne"
 
-#: lib/schema-single.php:1754
+#: lib/schema-single.php:1769
 msgid "adding schema place"
 msgstr "ajout de schéma d'endroit"
 

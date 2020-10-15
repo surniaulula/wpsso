@@ -102,7 +102,7 @@ function wpssoCreateNotices() {
 				var noticeObj     = false;
 				var noticeStatus  = false;
 				var noticeSpoken  = data[ noticeType ][ noticeKey ][ 'msg_spoken' ];
-				
+
 				/**
 				 * The current version of the block editor casts the notice message as a string, so we
 				 * cannot give createNotice() an html message or RawHTML element.

@@ -49,12 +49,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 */
 		public function schedule_clear( $user_id = null, $clear_other = false, $clear_short = null, $refresh = true ) {
 
-			$user_id = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
-
+			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 			$event_time = time() + 5;	// Add a 5 second event buffer.
-
 			$event_hook = $this->p->lca . '_clear_cache';
-
 			$event_args = array( $user_id, $clear_other, $clear_short, $refresh );
 
 			wp_schedule_single_event( $event_time, $event_hook, $event_args );
@@ -548,12 +545,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 */
 		public function schedule_refresh( $user_id = null, $read_cache = false ) {
 
-			$user_id = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
-
+			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 			$event_time = time() + 5;	// Add a 5 second event buffer.
-
 			$event_hook = $this->p->lca . '_refresh_cache';
-
 			$event_args = array( $user_id, $read_cache );
 
 			$this->stop_refresh();	// Just in case.

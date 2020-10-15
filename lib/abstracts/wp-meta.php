@@ -1073,7 +1073,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			foreach ( $md_opts as $md_key => $md_val ) {
 
 				if ( '' === $md_val ) {
-				
+
 					unset( $md_opts[ $md_key ] );
 
 				} elseif ( isset( $md_defs[ $md_key ] ) && ( $md_val === $md_defs[ $md_key ] || $md_val === (string) $md_defs[ $md_key ] ) ) {
@@ -1090,7 +1090,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 							break;
 
 						default:
-					
+
 							unset( $md_opts[ $md_key ] );
 					}
 				}
@@ -1771,7 +1771,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 					$head_info =& $mt_single_image;	// Use the updated image information.
 				}
-				
+
 				$media_html .= ' -->';
 			}
 

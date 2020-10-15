@@ -64,9 +64,9 @@ if ( ! class_exists( 'WpssoAddOn' ) ) {
 			/**
 			 * WPSSO action hooks.
 			 */
-			add_action( 'wpsso_init_textdomain', array( $this, 'init_textdomain' ), $prio, 1 );
-			add_action( 'wpsso_init_objects', array( $this, 'init_objects' ), $prio, 0 );
-			add_action( 'wpsso_init_plugin', array( $this, 'init_plugin_notices' ), $prio, 2 );
+			add_action( 'wpsso_init_textdomain', array( $this, 'init_textdomain' ), $prio, 0 );
+			add_action( 'wpsso_init_objects', array( $this, 'init_objects' ), $prio, 3 );
+			add_action( 'wpsso_init_plugin', array( $this, 'init_plugin_notices' ), $prio, 3 );
 
 			if ( method_exists( $this, 'init_check_options' ) ) {	// May exist only in some add-ons.
 
