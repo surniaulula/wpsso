@@ -14,8 +14,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 
 	class SuextParseReadme {
 
-		function __construct() {
-		}
+		function __construct() {}
 
 		function parse_readme( $file ) {
 
@@ -32,10 +31,12 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 			$file_contents = trim( $file_contents );
 
 			if ( 0 === strpos( $file_contents, "\xEF\xBB\xBF" ) ) {
+
 				$file_contents = substr( $file_contents, 3 );
 			}
 
 			if ( ! preg_match('|^===(.*)===|', $file_contents, $_title ) ) {
+
 				return array(); // require a title
 			}
 
@@ -45,38 +46,54 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 			$file_contents = $this->chop_string( $file_contents, $_title[ 0 ] );
 
 			if ( preg_match( '|Plugin Name: *(.*)|i', $file_contents, $_plugin_name ) ) {
+
 				$plugin_name = $this->sanitize_text( $_plugin_name[ 1 ] );
 			} else {
 				$plugin_name = null;
 			}
 
 			if ( preg_match( '|Plugin Slug: *(.*)|i', $file_contents, $_plugin_slug ) ) {
+
 				$plugin_slug = $this->sanitize_text( $_plugin_slug[ 1 ] );
+
 			} else {
+
 				$plugin_slug = null;
 			}
 
 			if ( preg_match( '|License: *(.*)|i', $file_contents, $_license ) ) {
+
 				$license = $this->sanitize_text( $_license[ 1 ] );
+
 			} else {
+
 				$license = null;
 			}
 
 			if ( preg_match( '|License URI: *(.*)|i', $file_contents, $_license_uri ) ) {
+
 				$license_uri = esc_url_raw( $_license_uri[ 1 ] );
+
 			} else {
+
 				$license_uri = null;
 			}
 
 			if ( preg_match( '|Donate Link: *(.*)|i', $file_contents, $_donate_link ) ) {
+
 				$donate_link = esc_url_raw( $_donate_link[ 1 ] );
+
 			} else {
+
 				$donate_link = null;
 			}
 
 			if ( preg_match( '|Assets URI: *(.*)|i', $file_contents, $_assets_uri ) ) {
+
 				$assets_uri = esc_url_raw( $_assets_uri[ 1 ] );
+
 			} else {
+
 				$assets_uri = null;
 			}
 
@@ -85,9 +102,12 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 				$tags = preg_split( '|,[\s]*?|', trim( $_tags[ 1 ] ) );
 
 				foreach ( array_keys($tags) as $t ) {
+
 					$tags[$t] = $this->sanitize_text( $tags[$t] );
 				}
+
 			} else {
+
 				$tags = array();
 			}
 
@@ -102,6 +122,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 					$c_sanitized = trim( $this->user_sanitize( $all_contributors[$c] ) );
 
 					if ( strlen( $c_sanitized ) > 0 ) {
+
 						$contributors[$c] = $c_sanitized;
 					}
 
@@ -110,32 +131,48 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 			}
 
 			if ( preg_match( '|Requires PHP: *(.*)|i', $file_contents, $_requires_php ) ) {
+
 				$requires_php = $this->sanitize_text( $_requires_php[ 1 ] );
+
 			} else {
+
 				$requires_php = null;
 			}
 
 			if ( preg_match( '|Requires At Least: *(.*)|i', $file_contents, $_requires_at_least ) ) {
+
 				$requires_at_least = $this->sanitize_text( $_requires_at_least[ 1 ] );
+
 			} else {
+
 				$requires_at_least = null;
 			}
 
 			if ( preg_match( '|Tested Up To: *(.*)|i', $file_contents, $_tested_up_to ) ) {
+
 				$tested_up_to = $this->sanitize_text( $_tested_up_to[ 1 ] );
+
 			} else {
+
 				$tested_up_to = null;
 			}
 
 			if ( preg_match( '|WC Tested Up To: *(.*)|i', $file_contents, $_wc_tested_up_to ) ) {
+
 				$wc_tested_up_to = $this->sanitize_text( $_wc_tested_up_to[ 1 ] );
+
 			} else {
+
 				$wc_tested_up_to = null;
+
 			}
 
 			if ( preg_match( '|Stable Tag: *(.*)|i', $file_contents, $_stable_tag ) ) {
+
 				$stable_tag = $this->sanitize_text( $_stable_tag[ 1 ] );
+
 			} else {
+
 				$stable_tag = null;
 			}
 
@@ -154,8 +191,11 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 				'wc_tested_up_to',
 				'stable_tag',
 			) as $chop ) {
+
 				if ( $$chop ) {
+
 					$_chop = '_' . $chop;
+
 					$file_contents = $this->chop_string( $file_contents, ${ $_chop }[ 0 ] );
 				}
 			}
@@ -163,6 +203,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 			$file_contents = trim( $file_contents );
 
 			if ( ! preg_match( '/(^(.*?))^[\s]*=+?[\s]*.+?[\s]*=+?/ms', $file_contents, $_short_description ) ) {
+
 				$_short_description = array( 1 => &$file_contents, 2 => &$file_contents );
 			}
 
@@ -171,12 +212,16 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 			$short_description   = substr( $short_desc_filtered, 0, 150 );
 
 			if ( $short_desc_length > strlen( $short_description ) ) {
+
 				$truncated = true;
+
 			} else {
+
 				$truncated = false;
 			}
 
 			if ( $_short_description[ 1 ] ) {
+
 				$file_contents = $this->chop_string( $file_contents, $_short_description[ 1 ] );
 			}
 
@@ -210,10 +255,14 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 				'change_log' => 'changelog',
 				'upgrade_notice' => 'upgrade_notice',
 			) as $section_key => $final_key ) {
+
 				if ( isset( $sections[$section_key] ) ) {
+
 					if ( empty( $final_sections[$final_key] ) ) {
+
 						$final_sections[$final_key] = $sections[$section_key]['section_content'];
 					}
+
 					unset( $sections[$section_key] );
 				}
 			}
@@ -225,7 +274,9 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 				preg_match_all('|<li>(.*?)</li>|s', $final_sections['screenshots'], $screenshots, PREG_SET_ORDER);
 
 				if ( $screenshots ) {
+
 					foreach ( (array) $screenshots as $ss ) {
+
 						$final_screenshots[] = $ss[ 1 ];
 					}
 				}
@@ -237,7 +288,9 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 				$split = preg_split( '#<h4>(.*?)</h4>#', $final_sections['upgrade_notice'], -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY );
 
 				for ( $i = 0; $i < count( $split ); $i += 2 ) {
+
 					if ( isset( $split[$i + 1] ) ) {
+
 						$upgrade_notice[$this->sanitize_text( $split[$i] )] = substr( $this->sanitize_text( $split[$i + 1] ), 0, 300 );
 					}
 				}
@@ -249,8 +302,11 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 			}
 
 			$excerpt = false;
+
 			if ( ! isset ( $final_sections['description'] ) ) {
+
 				$final_sections = array_merge( array( 'description' => $this->filter_text( $_short_description[2], true ) ), $final_sections );
+
 				$excerpt = true;
 			}
 
@@ -306,13 +362,17 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 		function user_sanitize( $text, $strict = false ) {
 
 			if ( function_exists('user_sanitize') ) {	// bbPress native
+
 				return user_sanitize( $text, $strict );
 			}
 
 			if ( $strict ) {
+
 				$text = preg_replace('/[^a-z0-9-]/i', '', $text);
 				$text = preg_replace('|-+|', '-', $text);
+
 			} else {
+
 				$text = preg_replace('/[^a-z0-9_-]/i', '', $text);
 			}
 
@@ -322,9 +382,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 		function sanitize_text( $text ) { // Not fancy.
 
 			$text = strip_tags( $text );
-
 			$text = esc_html( $text );
-
 			$text = trim( $text );
 
 			return $text;
@@ -396,11 +454,15 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 			$text = str_replace( array( "\r\n", "\r" ), "\n", $text );
 
 			if ( ! $markdown ) {
+
 				// this gets the "inline" code blocks, but can't be used with markdown
 				$text = preg_replace_callback( "!(`)(.*?)`!", array( __CLASS__, 'encodeit' ), $text );
+
 				// this gets the "block level" code blocks and converts them to pre code
 				$text = preg_replace_callback( "!(^|\n)`(.*?)`!s", array( __CLASS__, 'encodeit'), $text );
+
 			} else {
+
 				// markdown can do inline code, we convert bbPress style block level code to markdown style
 				$text = preg_replace_callback( "!(^|\n)([ \t]*?)`(.*?)`!s", array( __CLASS__, 'indent' ), $text );
 			}
@@ -419,6 +481,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 		function encodeit( $matches ) {
 
 			if ( function_exists( 'encodeit' ) ) {	// bbPress native
+
 				return encodeit( $matches );
 			}
 
@@ -431,6 +494,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 			$text = '<code>' . $text . '</code>';
 
 			if ( '`' != $matches[ 1 ] ) {
+
 				$text = '<pre>' . $text . '</pre>';
 			}
 
@@ -440,6 +504,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 		function decodeit( $matches ) {
 
 			if ( function_exists('decodeit') ) {	// bbPress native
+
 				return decodeit( $matches );
 			}
 
@@ -451,11 +516,11 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 			$text = str_replace( '&#39;', "'", $text );
 
 			if ( '<pre><code>' == $matches[ 1 ] ) {
+
 				$text = "\n$text\n";
 			}
 
 			return "`$text`";
 		}
-
-	} // End class.
+	}
 }

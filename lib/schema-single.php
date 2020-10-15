@@ -1147,13 +1147,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 							if  ( ! empty( $dest_opts[ 'destination_rel' ] ) ) {
 
-								WpssoSchema::update_data_id( $defined_region, $dest_opts[ 'destination_id' ],
-									$dest_opts[ 'destination_rel' ] );
+								WpssoSchema::update_data_id( $defined_region,
+									$dest_opts[ 'destination_id' ], $dest_opts[ 'destination_rel' ] );
 
 							} else {
 
-								WpssoSchema::update_data_id( $defined_region, $dest_opts[ 'destination_id' ],
-									$offer_url );
+								WpssoSchema::update_data_id( $defined_region,
+									$dest_opts[ 'destination_id' ], $offer_url );
 							}
 						}
 
@@ -1193,27 +1193,44 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			if ( isset( $shipping_opts[ 'delivery_time' ] ) ) {
 
-				$transit_keys = array(
-					'transit_days'     => 'value',
-					'transit_min_days' => 'minValue',
-					'transit_max_days' => 'maxValue',
-				);
-
 				$delivery_time = array();
-				$transit_time  = array();
 
-				foreach ( $shipping_opts[ 'delivery_time' ] as $opt_key => $val ) {
+				foreach ( array(
+					'handling' => 'handlingTime',
+					'transit'  => 'transitTime'
+				) as $opt_pre => $delivery_prop_name ) {
 
-					if ( isset( $transit_keys[ $opt_key ] ) ) {	// Make sure we have a Schema property name.
+					$quant_id   = 'days';
+					$quant_time = array();
 
-						$transit_time[ $transit_keys[ $opt_key ] ] = $val;
+					foreach( array(
+						$opt_pre . '_days'     => 'value',
+						$opt_pre . '_min_days' => 'minValue',
+						$opt_pre . '_max_days' => 'maxValue',
+					) as $opt_key => $quant_prop_name ) {
+
+						if ( isset( $shipping_opts[ 'delivery_time' ][ $opt_key ] ) ) {
+						
+							$quant_id .= '-' . $shipping_opts[ 'delivery_time' ][ $opt_key ];
+	
+							$quant_time[ $quant_prop_name ] = $shipping_opts[ 'delivery_time' ][ $opt_key ];
+						} else {
+						
+							$quant_id .= '-0';
+						}
 					}
-				}
+	
+					if ( ! empty( $quant_time ) ) {
 
-				if ( ! empty( $transit_time ) ) {
+						$quant_time[ 'unitName' ] = 'Days';
+						$quant_time[ 'unitText' ] = 'd';
+						$quant_time[ 'unitCode' ] = 'DAY';
+	
+						WpssoSchema::update_data_id( $quant_time, $quant_id, $offer_url );
 
-					$delivery_time[ 'transitTime' ] = WpssoSchema::get_schema_type_context(
-						'https://schema.org/QuantitativeValue', $transit_time );
+						$delivery_time[ $delivery_prop_name ] = WpssoSchema::get_schema_type_context(
+							'https://schema.org/QuantitativeValue', $quant_time );
+					}
 				}
 
 				if ( ! empty( $delivery_time ) ) {

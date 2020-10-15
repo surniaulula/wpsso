@@ -121,10 +121,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					add_action( 'network_admin_menu', array( $this, 'load_network_menu_objects' ), -1000 );
 					add_action( 'network_admin_menu', array( $this, 'add_network_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
 					add_action( 'network_admin_edit_' . WPSSO_SITE_OPTIONS_NAME, array( $this, 'save_site_options' ) );
-					add_filter( 'network_admin_plugin_action_links', array( $this, 'append_site_wp_plugin_action_links' ), 10, 2 );
+
+					/**
+					 * Argument 5 is $menu_lib = 'sitesubmenu', so limit method arguments to 4.
+					 */
+					add_filter( 'network_admin_plugin_action_links', array( $this, 'add_site_plugin_action_links' ), 10, 4 );
 				}
 
-				add_filter( 'plugin_action_links', array( $this, 'append_wp_plugin_action_links' ), 10, 2 );
+				/**
+				 * Argument 5 is $menu_lib = 'submenu', so limit method arguments to 4.
+				 */
+				add_filter( 'plugin_action_links', array( $this, 'add_plugin_action_links' ), 10, 4 );
+
 				add_filter( 'install_plugin_complete_actions', array( $this, 'plugin_complete_actions' ), 1000, 1 );
 				add_filter( 'update_plugin_complete_actions', array( $this, 'plugin_complete_actions' ), 1000, 1 );
 
@@ -603,15 +611,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		/**
 		 * Plugin links for the WordPress network plugins page.
 		 */
-		public function append_site_wp_plugin_action_links( $action_links, $plugin_base, $menu_lib = 'sitesubmenu' ) {
+		public function add_site_plugin_action_links( $action_links, $plugin_base, $plugin_data, $context, $menu_lib = 'sitesubmenu' ) {
 
-			return $this->append_wp_plugin_action_links( $action_links, $plugin_base, $menu_lib );
+			return $this->add_plugin_action_links( $action_links, $plugin_base, $plugin_data, $context, $menu_lib );
 		}
 
 		/**
 		 * Plugin links for the WordPress plugins page.
 		 */
-		public function append_wp_plugin_action_links( $action_links, $plugin_base, $menu_lib = 'submenu'  ) {
+		public function add_plugin_action_links( $action_links, $plugin_base, $plugin_data, $context, $menu_lib = 'submenu'  ) {
 
 			if ( ! isset( $this->p->cf[ '*' ][ 'base' ][ $plugin_base ] ) ) {
 
