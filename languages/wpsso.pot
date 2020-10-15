@@ -1107,8 +1107,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:68
 msgctxt "plugin description"
 msgid ""
-"Make Sure Your Content Looks Great on Social Sites and Search Results, No "
-"Matter How Your URLs are Crawled, Shared, Re-shared, Posted, or Embedded."
+"Make sure your content looks great on social sites and in search results, no "
+"matter how your URLs are crawled, shared, re-shared, posted, or embedded."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:69
@@ -1119,8 +1119,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:70
 msgctxt "plugin description"
 msgid ""
-"Apple Store / iTunes and Google Play App Meta Tags for Apple's mobile Safari "
-"Banner and Twitter's App Card."
+"Apple Store / iTunes and Google Play App meta tags for Apple's mobile Safari "
+"banner and Twitter's App Card."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:71
@@ -1131,8 +1131,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:72
 msgctxt "plugin description"
 msgid ""
-"Schema BreadcrumbList Markup in JSON-LD for Better Google Rich Results with "
-"Structured Data."
+"Schema BreadcrumbList markup with JSON-LD structured data for better Google "
+"Rich Results."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:73
@@ -1143,8 +1143,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:74
 msgctxt "plugin description"
 msgid ""
-"Create FAQ and Question / Answer Pages with Optional Shortcodes to Include "
-"FAQs and Questions in your Content."
+"Create FAQ and Question / Answer Pages with optional shortcodes to include "
+"FAQs and Questions / Answers in your content."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:75
@@ -1155,8 +1155,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:76
 msgctxt "plugin description"
 msgid ""
-"Inherit the Featured and Custom Images from Parents for Posts, Pages, Custom "
-"Post Types, Categories, Tags, and Custom Taxonomies."
+"Inherit the featured and custom images from parents for posts, pages, custom "
+"post types, categories, tags, and custom taxonomies."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:77
@@ -1167,10 +1167,9 @@ msgstr ""
 #: gettext/gettext-lib-config.php:78
 msgctxt "plugin description"
 msgid ""
-"Google Rich Results and Structured Data for Articles, Carousels (aka Item "
-"Lists), Claim Reviews, Events, FAQ Pages, How-Tos, Images, Local Business / "
-"Local SEO, Organizations, Products, Ratings, Recipes, Restaurants, Reviews, "
-"Videos, and More."
+"Google Rich Results and JSON-LD structured data for Articles, Carousels, "
+"Events, FAQ pages, How-tos, Local SEO, Products, Recipes, Ratings, Reviews, "
+"and more."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:79
@@ -1181,8 +1180,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:80
 msgctxt "plugin description"
 msgid ""
-"Customize the Schema Organization Markup for your WebSite and Manage "
-"Additional Organizations (Publisher, Organizer, etc.)."
+"Customize the Schema Organization markup for your website and create "
+"additional Schema Organizations (publisher, organizer, etc.)."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:81
@@ -1193,8 +1192,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:82
 msgctxt "plugin description"
 msgid ""
-"Manage Places and Local SEO for Facebook / Open Graph, Pinterest, Google "
-"Local Business and Schema Place."
+"Manage Schema Places and Local SEO for Facebook / Open Graph, Pinterest, and "
+"Google Local Business."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:83
@@ -1217,8 +1216,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:86
 msgctxt "plugin description"
 msgid ""
-"Enhances the WordPress REST API Post, Term and User Queries with an Array of "
-"Social Meta Tags, SEO HTML Tags and Schema JSON-LD Markup."
+"Enhances the WordPress REST API post, term and user queries with an array of "
+"social meta tags, SEO HTML tags and Schema JSON-LD markup."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:87
@@ -1229,8 +1228,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:88
 msgctxt "plugin description"
 msgid ""
-"Ridiculously Responsive (SVG) Social Sharing Buttons for your Content, "
-"Excerpts, CSS Sidebar, Widget, Shortcode, Templates, and Editor."
+"Ridiculously Responsive (SVG) Social Sharing Buttons for your content, "
+"excerpts, CSS sidebar, widget, shortcode, templates, and editor."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:89
@@ -1241,8 +1240,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:90
 msgctxt "plugin description"
 msgid ""
-"Remove Outdated / Incorrect Microdata from Theme Templates for Better Google "
-"Rich Results with Schema JSON-LD Markup."
+"Remove Schema Microdata and RDFa from the webpage for better Google Rich "
+"Results using Schema JSON-LD markup."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:91
@@ -1253,8 +1252,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:92
 msgctxt "plugin description"
 msgid ""
-"Improves the Appearance of Images for Better Click-Through-Rates from Social "
-"and Search Sites."
+"Improves the appearance of WordPress images for better click-through-rates "
+"from social and search sites."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:93
@@ -1265,8 +1264,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:94
 msgctxt "plugin description"
 msgid ""
-"Quick and Easy Locale / Language / Region Selector for the WordPress Admin "
-"Toolbar."
+"Quick and easy locale / language / region selector for the WordPress admin "
+"toolbar."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:95
@@ -1277,8 +1276,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:96
 msgctxt "plugin description"
 msgid ""
-"Update Manager for the WPSSO Core Premium Plugin and its Premium "
-"Complementary Add-ons."
+"Update Manager for the WPSSO Core Premium plugin and its Premium "
+"complementary add-ons."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:97
@@ -1289,8 +1288,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:98
 msgctxt "plugin description"
 msgid ""
-"GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, Depth, and "
-"Volume for WooCommerce Products and Variations."
+"GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, depth, and "
+"volume for WooCommerce products and variations."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:99
@@ -1301,8 +1300,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:100
 msgctxt "plugin description"
 msgid ""
-"Shipping Delivery Time Estimates for WooCommerce Shipping Zones, Methods, "
-"and Classes."
+"Shipping delivery time estimates for WooCommerce shipping zones, methods, "
+"and classes."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:101 lib/admin-head.php:260
@@ -9197,8 +9196,8 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Make Sure Your Content Looks Great on Social Sites and Search Results, No "
-"Matter How Your URLs are Crawled, Shared, Re-shared, Posted, or Embedded."
+"Make sure your content looks great on social sites and in search results, no "
+"matter how your URLs are crawled, shared, re-shared, posted, or embedded."
 msgstr ""
 
 #. Author of the plugin/theme
