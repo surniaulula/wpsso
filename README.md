@@ -2,7 +2,7 @@
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
-<tr><th align="right" valign="top" nowrap>Summary</th><td>Make Sure Your Content Looks Great on Social Sites and Search Results, No Matter How Your URLs are Crawled, Shared, Re-shared, Posted, or Embedded.</td></tr>
+<tr><th align="right" valign="top" nowrap>Summary</th><td>Make sure your content looks great on social sites and in search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded.</td></tr>
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>8.7.1</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires PHP</th><td>5.6 or newer</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires WordPress</th><td>4.4 or newer</td></tr>
@@ -17,7 +17,7 @@
 
 <p style="margin:0;"><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
 
-<p><strong>Make sure your content looks great on social sites and search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded:</strong></p>
+<p><strong>Make sure your content looks great on social sites and in search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded:</strong></p>
 
 <p>WPSSO provides meta tags and Schema markup for Facebook / Open Graph, Pinterest Rich Pins, Twitter Cards, Google Knowledge Graph, Google Rich Results (aka Rich Snippets, Structured Data), WhatsApp and Messaging Apps, Mobile Web Browsers, WordPress REST API, LinkedIn / oEmbed data and more &mdash; including complete markup for image SEO, video SEO, extensive e-Commerce product markup (for WooCommerce and others), mobile store apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content, supported plugin data, and service API data.</p>
 
@@ -126,7 +126,7 @@
 <li><a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta Tags</a> to manage mobile App information.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-organization/">WPSSO Organization Markup</a> to manage multiple Organizations.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-plm/">WPSSO Place and Local SEO Markup</a> to manage multiple locations.</li>
-<li><a href="https://wordpress.org/plugins/wpsso-wc-metadata/">WPSSO Product Metadata for WooCommerce</a> to manage GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, Depth, and Volume product information in WooCommerce.</li>
+<li><a href="https://wordpress.org/plugins/wpsso-wc-metadata/">WPSSO Product Metadata for WooCommerce</a> to manage GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, depth, and volume for WooCommerce products and variations.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-ratings-and-reviews/">WPSSO Ratings and Reviews</a> to add ratings in WordPress comments.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-rest-api/">WPSSO REST API</a> to add meta tags and Schema markup in REST API queries.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-rrssb/">WPSSO Ridiculously Responsive Social Sharing Buttons</a> to add responsive share buttons.</li>
