@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.8.0-b.1\n"
+"Project-Id-Version: WPSSO Core 8.8.0-b.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3170,21 +3170,21 @@ msgid ""
 "version of WooCommerce."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:151 lib/pro/ecom/woocommerce.php:1001
+#: gettext/gettext-lib-pro.php:151 lib/pro/ecom/woocommerce.php:1274
 msgid "World"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:152 lib/pro/ecom/woocommerce.php:1480
+#: gettext/gettext-lib-pro.php:152 lib/pro/ecom/woocommerce.php:1464
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:153 lib/pro/ecom/woocommerce.php:1482
+#: gettext/gettext-lib-pro.php:153 lib/pro/ecom/woocommerce.php:1466
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:154 lib/pro/ecom/woocommerce.php:1485
+#: gettext/gettext-lib-pro.php:154 lib/pro/ecom/woocommerce.php:1469
 msgid "Please update your site to WooCommerce version %s or newer."
 msgstr ""
 
@@ -8162,41 +8162,41 @@ msgstr ""
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
-#: lib/schema-single.php:1334
+#: lib/schema-single.php:1369
 msgid "adding schema organization"
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1398
+#: lib/schema-single.php:1433
 msgid ""
 "An organization logo image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1401
+#: lib/schema-single.php:1436
 msgid ""
 "An organization banner image (600x60px) is missing and required for the "
 "\"%1$s\" organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or 'ID #'.
-#: lib/schema-single.php:1404
+#: lib/schema-single.php:1439
 msgid ""
 "Please enter the missing image URL in the \"%1$s\" %2$s organization "
 "settings."
 msgstr ""
 
 #. translators: site, as in the "site organization settings".
-#: lib/schema-single.php:1426
+#: lib/schema-single.php:1461
 msgid "site"
 msgstr ""
 
-#: lib/schema-single.php:1607
+#: lib/schema-single.php:1642
 msgid "adding schema person"
 msgstr ""
 
-#: lib/schema-single.php:1793
+#: lib/schema-single.php:1828
 msgid "adding schema place"
 msgstr ""
 
@@ -8995,91 +8995,91 @@ msgid "show these rows now"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:185
+#: lib/util-woocommerce.php:253
 msgid "mm"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:188
+#: lib/util-woocommerce.php:256
 msgid "cm"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:191
+#: lib/util-woocommerce.php:259
 msgid "m"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:194
+#: lib/util-woocommerce.php:262
 msgid "in"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:197
+#: lib/util-woocommerce.php:265
 msgid "yd"
 msgstr ""
 
-#: lib/util-woocommerce.php:231
+#: lib/util-woocommerce.php:299
 msgid "ml"
 msgstr ""
 
-#: lib/util-woocommerce.php:232
+#: lib/util-woocommerce.php:300
 msgid "cl"
 msgstr ""
 
-#: lib/util-woocommerce.php:233
+#: lib/util-woocommerce.php:301
 msgid "l"
 msgstr ""
 
-#: lib/util-woocommerce.php:234
+#: lib/util-woocommerce.php:302
 msgid "kl"
 msgstr ""
 
-#: lib/util-woocommerce.php:235
+#: lib/util-woocommerce.php:303
 msgid "US tsp"
 msgstr ""
 
-#: lib/util-woocommerce.php:236
+#: lib/util-woocommerce.php:304
 msgid "US tbsp"
 msgstr ""
 
-#: lib/util-woocommerce.php:237
+#: lib/util-woocommerce.php:305
 msgid "US fl oz"
 msgstr ""
 
-#: lib/util-woocommerce.php:238
+#: lib/util-woocommerce.php:306
 msgid "US cup"
 msgstr ""
 
-#: lib/util-woocommerce.php:239
+#: lib/util-woocommerce.php:307
 msgid "US pt"
 msgstr ""
 
-#: lib/util-woocommerce.php:240
+#: lib/util-woocommerce.php:308
 msgid "US qt"
 msgstr ""
 
-#: lib/util-woocommerce.php:241
+#: lib/util-woocommerce.php:309
 msgid "US gal"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:440
+#: lib/util-woocommerce.php:508
 msgid "g"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:443
+#: lib/util-woocommerce.php:511
 msgid "kg"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:446
+#: lib/util-woocommerce.php:514
 msgid "oz"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:449
+#: lib/util-woocommerce.php:517
 msgid "lbs"
 msgstr ""
 

@@ -959,12 +959,23 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'value'    => 'product:quantity:value',
 				'minValue' => 'product:quantity:minimum',
 				'maxValue' => 'product:quantity:maximum',
-				'unitCode' => 'product:quantity:unit_code',
+				'unitCode' => 'product:quantity:unit_code',	// UN/CEFACT Common Code (3 characters).
 				'unitText' => 'product:quantity:unit_text',
 			) );
 
 			if ( false !== $quantity ) {
 
+				if ( ! isset( $quantity[ 'value' ] ) ) {
+
+					if ( isset( $quantity[ 'minValue' ] ) && isset( $quantity[ 'maxValue' ] ) &&
+						$quantity[ 'minValue' ] === $quantity[ 'maxValue' ] ) {
+	
+						$quantity[ 'value' ] = $quantity[ 'minValue' ];
+	
+						unset( $quantity[ 'minValue' ], $quantity[ 'maxValue' ] );
+					}
+				}
+	
 				$offer[ 'eligibleQuantity' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/QuantitativeValue', $quantity );
 			}
 
@@ -1193,44 +1204,68 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			if ( isset( $shipping_opts[ 'delivery_time' ] ) ) {
 
+				$delivery_opts =& $shipping_opts[ 'delivery_time' ];
 				$delivery_time = array();
 
 				foreach ( array(
 					'handling' => 'handlingTime',
 					'transit'  => 'transitTime'
-				) as $opt_pre => $delivery_prop_name ) {
+				) as $delivery_opt_pre => $delivery_prop_name ) {
 
-					$quant_id   = 'days';
-					$quant_time = array();
+					$quant_id = 'qv';
+					$quantity = array();
 
 					foreach( array(
-						$opt_pre . '_days'     => 'value',
-						$opt_pre . '_min_days' => 'minValue',
-						$opt_pre . '_max_days' => 'maxValue',
+						$delivery_opt_pre . '_name'      => 'name',
+						$delivery_opt_pre . '_minimum'   => 'minValue',
+						$delivery_opt_pre . '_maximum'   => 'maxValue',
+						$delivery_opt_pre . '_unit_code' => 'unitCode',	// UN/CEFACT Common Code (3 characters).
+						$delivery_opt_pre . '_unit_text' => 'unitText',
 					) as $opt_key => $quant_prop_name ) {
 
-						if ( isset( $shipping_opts[ 'delivery_time' ][ $opt_key ] ) ) {
+						if ( isset( $delivery_opts[ $opt_key ] ) ) {
 
-							$quant_id .= '-' . $shipping_opts[ 'delivery_time' ][ $opt_key ];
+							/**
+							 * Skip the name and unit text for the quantity @id value.
+							 */
+							if ( 'name' !== $quant_prop_name && 'unitText' !== $quant_prop_name ) {
+							
+								$quant_id .= '-' . $delivery_opts[ $opt_key ];
+							}
 
-							$quant_time[ $quant_prop_name ] = $shipping_opts[ 'delivery_time' ][ $opt_key ];
+							$quantity[ $quant_prop_name ] = $delivery_opts[ $opt_key ];
 
 						} else {
 
-							$quant_id .= '-0';
+							$quant_id .= '--';
 						}
 					}
 
-					if ( ! empty( $quant_time ) ) {
+					if ( ! empty( $quantity ) ) {
 
-						$quant_time[ 'unitName' ] = 'Days';
-						$quant_time[ 'unitText' ] = 'd';
-						$quant_time[ 'unitCode' ] = 'DAY';
+						if ( ! isset( $quantity[ 'value' ] ) ) {
 
-						WpssoSchema::update_data_id( $quant_time, $quant_id, $offer_url );
+							if ( isset( $quantity[ 'minValue' ] ) && isset( $quantity[ 'maxValue' ] ) &&
+								$quantity[ 'minValue' ] === $quantity[ 'maxValue' ] ) {
+
+								$quantity[ 'value' ] = $quantity[ 'minValue' ];
+
+								unset( $quantity[ 'minValue' ], $quantity[ 'maxValue' ] );
+							}
+						}
+
+						if ( ! empty( $quantity[ 'unitCode' ] ) ) {
+
+							$quant_id = strtolower( $quant_id );
+
+							$quant_rel = empty( $delivery_opts[ $delivery_opt_pre . '_rel' ] ) ?
+								$offer_url : $delivery_opts[ $delivery_opt_pre . '_rel' ];
+
+							WpssoSchema::update_data_id( $quantity, $quant_id, $quant_rel );
+						}
 
 						$delivery_time[ $delivery_prop_name ] = WpssoSchema::get_schema_type_context(
-							'https://schema.org/QuantitativeValue', $quant_time );
+							'https://schema.org/QuantitativeValue', $quantity );
 					}
 				}
 

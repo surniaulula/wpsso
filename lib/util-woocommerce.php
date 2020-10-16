@@ -24,6 +24,7 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 	class WpssoUtilWooCommerce {
 
 		private $p;
+		private $fee_cost = '';	// Package cost for the [fee] shortcode.
 
 		/**
 		 * Instantiated by WpssoUtil->__construct().
@@ -60,6 +61,9 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 			return $product;
 		}
 
+		/**
+		 * Returns product id from product object.
+		 */
 		public function get_product_id( $product ) {
 
 			$product_id = 0;
@@ -159,6 +163,70 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 			}
 
 			return $available_variations;
+		}
+
+		/**
+		 * Returns false, or the variation product object.
+		 */
+		public function get_variation_product( $mixed ) {
+
+			$product = false;
+
+			if ( ! is_array( $mixed ) ) {
+
+				return false;	// Stop here.
+
+			} elseif ( empty( $mixed[ 'variation_id' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: variation id is empty' );
+				}
+
+				return false;	// Stop here.
+
+			} elseif ( empty( $mixed[ 'variation_is_visible' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: variation is not visible' );
+				}
+
+				return false;	// Stop here.
+
+			} elseif ( empty( $mixed[ 'variation_is_active' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: variation is not active' );
+				}
+
+				return false;	// Stop here.
+
+			} elseif ( empty( $mixed[ 'is_purchasable' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: variation is not purchaseable' );
+				}
+
+				return false;	// Stop here.
+
+			}
+			
+			$product = $this->get_product( $mixed[ 'variation_id' ] );
+
+			if ( false === $product ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: no product for variation id ' . $mixed[ 'variation_id' ] );
+				}
+
+				return false;	// Stop here.
+			}
+
+			return $product;
 		}
 
 		/**
