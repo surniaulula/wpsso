@@ -1,0 +1,66 @@
+
+<div id="wpsso-buddypress-notes">
+
+<p>BuddyPress is not well integrated with the WordPress core functions. For example, BuddyPress does not register custom post types with WordPress, does not store images in the WordPress Media Library, or provide members access to their Biographical Info in the WordPress user profile. These integration issues lead to some limitations that can take a bit of effort to overcome.</p>
+
+<h3>BuddyPress Avatar and Group Images</h3>
+
+<p>By default, member avatars are provided by <a href="http://gravatar.com/">Gravatar</a>. WPSSO Core Premium recognizes Gravatar URLs, and can include Gravatar images of the correct dimensions in webpage meta tags. If a member <em>changes</em> their default avatar image, or an avatar image is assigned for a group, BuddyPress will save those images with a dimension of 150x150px (by default). This is much too small for Facebook or any other social website to use when a member or group webpage is shared. To include the custom BuddyPress member and group images in the webpage meta tags, you must adjust the BuddyPress full size image dimensions.</p>
+
+<p>Add the following to your bp-custom.php file, and increase the default <code>BP_AVATAR_FULL_WIDTH</code> and <code>BP_AVATAR_FULL_HEIGHT</code> from 150 to 200 or more (larger is better). The thumbnail sizes can remain the same -- I've included them here, with their default values, for informational purposes only. See the <a href="https://codex.buddypress.org/themes/guides/customizing-buddypress-avatars/">Customizing BuddyPress Avatars</a> guide for additional information.</p>
+
+<pre class="wp-block-preformatted">
+if ( ! defined( 'BP_AVATAR_THUMB_WIDTH' ) ) {
+    define( 'BP_AVATAR_THUMB_WIDTH', 50 );
+}
+
+if ( ! defined( 'BP_AVATAR_THUMB_HEIGHT' ) ) {
+    define( 'BP_AVATAR_THUMB_HEIGHT', 50 );
+}
+
+if ( ! defined( 'BP_AVATAR_FULL_WIDTH' ) ) {
+    define( 'BP_AVATAR_FULL_WIDTH', 150 );
+}
+
+if ( ! defined( 'BP_AVATAR_FULL_HEIGHT' ) ) {
+    define( 'BP_AVATAR_FULL_HEIGHT', 150 );
+}
+</pre>
+
+<p>If the <code>BP_AVATAR_FULL_WIDTH</code> and <code>BP_AVATAR_FULL_HEIGHT</code> values you've chosen are smaller than the image dimensions in the WordPress <em>Settings &gt; SSO Image Sizes</em> page, <strong>you will also need to uncheck the Enforce Image Dimensions Check option on the <em>SSO &gt; Advanced</em> settings page under the Integration tab</strong>.</p>
+
+<p>As an alternative, you could specify much larger BuddyPress full size width and height values, and downsize / adjust them on BuddyPress pages using CSS. The result will be member and group images featured more prominently on some social websites (Facebook prefers images larger than 600x315, for example).</p>
+
+<h3>BuddyPress Activity Images and Videos</h3>
+
+<p>The BuddyPress activity content is analyzed for images and videos like traditional WordPress Post or Page content. Unfortunately, since BuddyPress does not use the WordPress Media Library functions, images within the content cannot be detected by their image ID alone. <strong>This means that image HTML tags within the activity content must have a width and height attribute larger than the image dimensions you've chosen on the WordPress <em>Settings &gt; SSO Image Sizes</em> page</strong> (or uncheck the Enforce Image Dimensions Check option on the <em>SSO &gt; Advanced</em> settings page under the Integration tab). If you can, adding correct image width and height HTML attributes is the recommended solution.</p>
+
+<blockquote class="wp-block-quote">
+	<p>As an alternative, you can also use the BuddyPress rtMedia plugin, which integrates properly with the WordPress Media Library (and is supported by WPSSO Core Premium).</p>
+</blockquote>
+
+<h4>Allow Small or Unknown Size Images</h4>
+
+<p>If you're comfortable with WordPress filters and/or PHP code, you can also hook the 'wpsso_content_accept_img_size' filter to globally accept BudyPress images in activity content that may be too small and/or have an unknown size.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre class="wp-block-preformatted">
+add_filter( 'wpsso_content_accept_img_size', 'filter_content_accept_img_size', 10, 6 );
+
+function filter_content_accept_img_size( $ret, $img_url, $img_width, $img_height, $size_name, $post_id ) {
+
+    if ( bp_is_current_component( 'activity' ) ) {
+        $ret = true;
+    }
+
+    return $ret;
+}
+</pre>
+
+<h3>BuddyPress Member Biographical Info</h3>
+
+<p>The BuddyPress member profile page does not include the WordPress Biographical Info text from the WordPress user profile. If you've created an additional BuddyPress Profile Field for members to enter their profile description, enter the field name in the BuddyPress Member Bio Field Name option on the <em>SSO &gt; Advanced</em> settings page (example: Biographical Info, About Me, etc.).</p>
+
+</div><!-- #wpsso-buddypress-notes -->
+
