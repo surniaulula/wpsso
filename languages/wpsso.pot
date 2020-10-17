@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.8.0-b.2\n"
+"Project-Id-Version: WPSSO Core 8.8.0-rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -9162,26 +9162,26 @@ msgstr ""
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 
-#: wpsso.php:538
+#: wpsso.php:539
 msgid ""
 "WP debug logging mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:551
+#: wpsso.php:552
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."
 msgstr ""
 
 #. translators: %s is the short plugin name.
-#: wpsso.php:559
+#: wpsso.php:560
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:560
+#: wpsso.php:561
 msgid "Please disable debug mode when debugging is complete."
 msgstr ""
 
