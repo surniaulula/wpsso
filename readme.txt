@@ -12,7 +12,7 @@ Requires PHP: 5.6
 Requires At Least: 4.4
 Tested Up To: 5.5.1
 WC Tested Up To: 4.6.0
-Stable Tag: 8.8.0
+Stable Tag: 8.8.1
 
 Make sure your content looks great on social sites and in search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded.
 
@@ -307,14 +307,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.8.0 (2020/10/17)**
+**Version 8.8.1 (2020/10/17)**
 
 * **New Features**
 	* Added a new WPSSO Shipping Delivery Time for WooCommerce add-on.
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* None.
+	* Fixed backwards compatibility with older 'init_objects' and 'init_plugin' action arguments.
 * **Developer Notes**
 	* Added a new WpssoAddOn class in lib/abstracts/add-on.php.
 	* Added a new SucomAddOn class in lib/abstracts/com/add-on.php.
@@ -592,7 +592,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.8.0 =
+= 8.8.1 =
 
 (2020/10/17) Added a new WPSSO Shipping Delivery Time for WooCommerce add-on.
 

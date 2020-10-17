@@ -37,12 +37,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'init_objects' => 3,
+				'init_objects' => 1,
 				'option_type'  => 4,
 			), $prio = 10000 );
 		}
 
-		public function filter_init_objects( $is_admin, $doing_ajax, $doing_cron ) {
+		public function init_objects( $is_admin ) {
 
 			if ( $this->p->debug->enabled ) {
 
