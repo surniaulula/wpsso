@@ -5761,8 +5761,8 @@ msgstr ""
 
 #: lib/messages.php:824
 msgid ""
-"The %1$s HTML tag value is used by web browsers to display the webpage "
-"document title in browser tabs."
+"The %1$s HTML tag value is used by web browsers to display the current "
+"webpage title in the browser tab."
 msgstr ""
 
 #: lib/messages.php:834
@@ -7028,7 +7028,7 @@ msgstr ""
 #. translators: %1$s is the plugin name, %2$s is <head>.
 #: lib/messages.php:2425
 msgid ""
-"%1%s adds the following Facebook, Open Graph, Twitter, Schema, Pinterest, "
+"%1$s adds the following Facebook, Open Graph, Twitter, Schema, Pinterest, "
 "and SEO HTML tags to the %2$s section of your webpages."
 msgstr ""
 
@@ -7042,9 +7042,8 @@ msgstr ""
 #: lib/messages.php:2430
 msgid ""
 "Please note that the %1$s HTML tag is disabled by default (as themes often "
-"include this HTML tag in their header templates), and the <code>%2$s</code> "
-"and <code>%3$s</code> HTML tags are disabled automatically if a known SEO "
-"plugin is detected."
+"include this HTML tag in their header templates), and the %2$s and %3$s HTML "
+"tags are disabled automatically if a known SEO plugin is detected."
 msgstr ""
 
 #: lib/messages.php:2444
