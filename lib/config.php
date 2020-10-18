@@ -1203,7 +1203,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						/**
 						 * GitHub.com.
 						 */
-						'readme_txt' =>	'https://raw.githubusercontent.com/SurniaUlula/wpsso-wc-shipping-delivery-time/master/readme.txt',
+						'readme_txt' =>	'https://raw.githubusercontent.com/SurniaUlula/wpsso-wc-shipping-delivery-time/main/readme.txt',
 						'setup_html' => '',
 
 						/**

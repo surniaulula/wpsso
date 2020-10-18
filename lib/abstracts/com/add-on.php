@@ -51,7 +51,7 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 			return $avail;
 		}
 
-		public function init_plugin_notices( $is_admin, $doing_ajax ) {
+		public function init_plugin_notices( $is_admin = false, $doing_ajax = false ) {
 
 			$missing_reqs = $this->get_missing_requirements();	// Returns false or an array of missing requirements.
 
