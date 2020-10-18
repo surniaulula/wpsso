@@ -42,7 +42,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			), $prio = 10000 );
 		}
 
-		public function init_objects( $is_admin ) {
+		/**
+		 * $is_admin, $doing_ajax, and $doing_cron available since WPSSO Core v8.8.0.
+		 */
+		public function init_objects( $is_admin = false, $doing_ajax = false, $doing_cron = false ) {
 
 			if ( $this->p->debug->enabled ) {
 

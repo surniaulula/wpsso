@@ -59,14 +59,21 @@ if ( ! class_exists( 'WpssoAddOn' ) ) {
 			 * WPSSO filter hooks.
 			 */
 			add_filter( 'wpsso_get_config', array( $this, 'get_config' ), $prio, 1 );
+
 			add_filter( 'wpsso_get_avail', array( $this, 'get_avail' ), $prio, 1 );
 
 			/**
 			 * WPSSO action hooks.
 			 */
-			add_action( 'wpsso_init_textdomain', array( $this, 'init_textdomain' ), $prio, 0 );
-			add_action( 'wpsso_init_objects', array( $this, 'init_objects' ), $prio, 1 );
-			add_action( 'wpsso_init_plugin', array( $this, 'init_plugin_notices' ), $prio, 2 );
+			if ( method_exists( $this, 'init_textdomain' ) ) {
+			
+				add_action( 'wpsso_init_textdomain', array( $this, 'init_textdomain' ), $prio, 0 );
+			}
+
+			if ( method_exists( $this, 'init_objects' ) ) {
+			
+				add_action( 'wpsso_init_objects', array( $this, 'init_objects' ), $prio, 1 );
+			}
 
 			if ( method_exists( $this, 'init_check_options' ) ) {	// May exist only in some add-ons.
 
@@ -74,7 +81,13 @@ if ( ! class_exists( 'WpssoAddOn' ) ) {
 			}
 
 			/**
-			 * WordPress action hooks.
+			 * The SucomAddon->init_plugin_notices() method adds toolbar notices for any missing requirements.
+			 */
+			add_action( 'wpsso_init_plugin', array( $this, 'init_plugin_notices' ), $prio, 2 );
+
+			/**
+			 * If SucomAddon->init_plugin_notices() is not executed, then show any missing requirements using the
+			 * standard WordPress admin notices action.
 			 */
 			add_action( 'all_admin_notices', array( $this, 'show_admin_notices' ), $prio, 0 );
 		}

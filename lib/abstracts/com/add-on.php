@@ -19,11 +19,9 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 		protected $p_ext = '';
 		protected $cf    = array();
 
-		protected $notice_added = false;
+		protected $did_plugin_notices = false;
 
 		public function __construct() {}
-
-		public function init_textdomain() {}
 
 		public function get_config( array $config ) {
 
@@ -34,8 +32,6 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 
 			return SucomUtil::array_merge_recursive_distinct( $config, $this->cf );
 		}
-
-		public function init_objects( $is_admin ) {}
 
 		public function get_avail( array $avail ) {
 
@@ -51,11 +47,17 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 			return $avail;
 		}
 
-		public function init_plugin_notices( $is_admin = false, $doing_ajax = false ) {
+		/**
+		 * All WPSSO Core objects are instantiated and configured.
+		 *
+		 * $is_admin and $doing_ajax available since WPSSO Core v7.10.0.
+		 * $doing_cron available since WPSSO Core v8.8.0.
+		 */
+		public function init_plugin_notices( $is_admin = false, $doing_ajax = false, $doing_cron = false ) {
 
 			$missing_reqs = $this->get_missing_requirements();	// Returns false or an array of missing requirements.
 
-			$this->notice_added = true;
+			$this->did_plugin_notices = true;
 
 			if ( ! $doing_ajax && $missing_reqs ) {
 
@@ -85,7 +87,7 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 
 		public function show_admin_notices() {
 
-			if ( $this->notice_added ) {	// Nothing to do.
+			if ( $this->did_plugin_notices ) {	// Nothing to do.
 
 				return;	// Stop here.
 			}
@@ -107,8 +109,6 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 				}
 			}
 		}
-
-		protected function add_hooks() {}
 
 		/**
 		 * Returns false or an array of missing requirements.
