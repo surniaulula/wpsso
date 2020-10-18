@@ -117,7 +117,7 @@ WPSSO makes full use of all available caching methods &mdash; along with offerin
 
 <h3>Free Complementary Add-ons</h3>
 
-Optionally activate free complementary add-ons for more non-standard features:
+Optionally activate one or more free complementary add-ons for additional, non-standard options and features:
 
 * [WPSSO FAQ Manager](https://wordpress.org/plugins/wpsso-faq/) to manage FAQ categories with Question and Answer pages.
 * [WPSSO Inherit Parent Metadata](https://wordpress.org/plugins/wpsso-inherit-parent-meta/) to inherit featured and custom images.
@@ -130,6 +130,7 @@ Optionally activate free complementary add-ons for more non-standard features:
 * [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) to add responsive share buttons.
 * [WPSSO Schema Breadcrumbs Markup](https://wordpress.org/plugins/wpsso-breadcrumbs/) to add Breadcrumbs markup for Google.
 * [WPSSO Schema JSON-LD Markup](https://wordpress.org/plugins/wpsso-schema-json-ld/) to provide Google with Schema markup in its preferred format.
+* [WPSSO Shipping Delivery Time for WooCommerce](https://wordpress.org/plugins/wpsso-wc-shipping-delivery-time/) to provide shipping delivery time estimates for WooCommerce shipping zones, methods, and classes.
 * [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata/) to strip incorrect markup from templates.
 * [WPSSO Tune WP Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors/) for better looking WordPress thumbnails.
 * [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale/) to switch languages quickly and easily.
