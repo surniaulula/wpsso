@@ -25,7 +25,8 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 
 		function parse_readme( $file_path ) {
 
-			$file_contents   = @implode( '', @file( $file_path ) );
+			$file_contents = @implode( '', @file( $file_path ) );
+
 			$readme_contents = $this->parse_readme_contents( $file_contents );
 
 			return $readme_contents;
@@ -34,6 +35,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 		function parse_readme_contents( $file_contents ) {
 
 			$file_contents = str_replace( array( "\r\n", "\r" ), "\n", $file_contents );
+
 			$file_contents = trim( $file_contents );
 
 			if ( 0 === strpos( $file_contents, "\xEF\xBB\xBF" ) ) {
@@ -47,6 +49,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 			}
 
 			$title = trim( $_title[ 1 ], '=' );
+
 			$title = $this->sanitize_text( $title );
 
 			$file_contents = $this->chop_string( $file_contents, $_title[ 0 ] );
@@ -407,12 +410,12 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 
 			if ( $markdown ) {
 
-				if ( ! function_exists( 'suext_markdown' ) ) {
+				if ( ! class_exists( 'SuextMarkdown' ) ) {
 
 					require_once dirname( __FILE__ ) . '/markdown.php';
 				}
 
-				$text = suext_markdown( $text );
+				$text = SuextMarkdown::transform( $text );
 			}
 
 			$allowed = array(

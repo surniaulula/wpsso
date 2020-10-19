@@ -5,28 +5,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
-if ( ! class_exists( 'Michelf\Markdown' ) ) {
+if ( ! class_exists( 'Michelf\MarkdownExtra' ) ) {
 
-	require_once dirname( __FILE__ ) . '/markdown/Markdown.inc.php';
+	require_once dirname( __FILE__ ) . '/markdown/MarkdownExtra.inc.php';
 }
 
 if ( ! function_exists( 'suext_markdown' ) ) {
 
 	function suext_markdown( $text ) {
 
-		return Michelf\Markdown::defaultTransform( $text );
+		return SuextMarkdown::transform( $text );
 	}
 }
 
-if ( ! class_exists( 'SuextMarkdownParser' ) ) {
+if ( ! class_exists( 'SuextMarkdown' ) ) {
 
-	class SuextMarkdownParser {
+	class SuextMarkdown {
 
-		function __construct() {}
-
-		function transform( $text ) {
+		public static function transform( $text ) {
 		
-			return Michelf\Markdown::defaultTransform( $text );
+			return Michelf\MarkdownExtra::defaultTransform( $text );
 		}
 	}
 }
