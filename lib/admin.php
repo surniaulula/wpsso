@@ -3421,7 +3421,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( $file_path && file_exists( $file_path ) && $fh = @fopen( $file_path, 'rb' ) ) {
 
 					$readme_from_url = false;
-					$readme_content  = fread( $fh, filesize( $file_path ) );
+
+					$readme_content = fread( $fh, filesize( $file_path ) );
 
 					fclose( $fh );
 				}
@@ -3433,7 +3434,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			} else {
 
-				$parser = new SuextParseReadme( $this->p->debug );
+				if ( ! class_exists( 'SuextParseReadme' ) ) {
+
+					require_once WPSSO_PLUGINDIR . 'lib/ext/parse-readme.php';
+				}
+
+				$parser = new SuextParseReadme();
 
 				$readme_info = $parser->parse_readme_contents( $readme_content );
 

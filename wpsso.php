@@ -390,7 +390,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				require_once WPSSO_PLUGINDIR . 'lib/edit.php';
 				require_once WPSSO_PLUGINDIR . 'lib/messages.php';
 				require_once WPSSO_PLUGINDIR . 'lib/com/form.php';
-				require_once WPSSO_PLUGINDIR . 'lib/ext/parse-readme.php';
 
 				$this->admin    = new WpssoAdmin( $this );	// Admin menus and settings page loader.
 				$this->conflict = new WpssoConflict( $this );	// Admin plugin conflict checks.
