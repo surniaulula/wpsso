@@ -310,16 +310,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.9.0-dev.1 (TBD)**
+**Version 8.9.0-dev.1 (2020/10/19)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Updated the markdown library to parse WordPress readme syntax.
+	* Updated the markdown library used to parse WordPress readme files.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Refactored lib/ext/markdown.php to use a new lib/ext/markdown/MarkdownExtra.inc.php library.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.4.
@@ -608,6 +608,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.9.0-dev.1 =
+
+(2020/10/19) Updated the markdown library used to parse WordPress readme files.
 
 = 8.8.1 =
 
