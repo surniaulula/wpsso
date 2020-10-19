@@ -119,7 +119,7 @@ WPSSO makes full use of all available caching methods &mdash; along with offerin
 
 Do you need even more advanced, special and unique features?
 	
-Simply activate the free complementary add-on(s) you need:
+Simply activate the free complementary add-on(s) you require:
 
 * [WPSSO FAQ Manager](https://wordpress.org/plugins/wpsso-faq/) to manage FAQ categories with Question and Answer pages.
 * [WPSSO Inherit Parent Metadata](https://wordpress.org/plugins/wpsso-inherit-parent-meta/) to inherit featured and custom images.
