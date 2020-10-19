@@ -152,7 +152,7 @@
 <li><p>Integrates with 3rd party plugins and service APIs for additional image, video, eCommerce product details, SEO settings, etc. The following modules are included with the Premium version, and are automatically loaded if/when the supported plugins and/or services are required.</p>
 
 <ul>
-<li><p><strong>Integration with 3rd Party Plugins:</strong> </p>
+<li><p><strong>Integration with 3rd Party Plugins:</strong></p>
 
 <ul>
 <li><a href="https://wordpress.org/plugins/all-in-one-seo-pack/">All in One SEO Pack</a></li>
@@ -243,7 +243,7 @@
 <ul>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/can-i-use-the-pro-version-on-multiple-websites/">Can I use the Premium plugin on multiple websites?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/does-linkedin-read-the-open-graph-meta-tags/">Does LinkedIn read the Open Graph meta tags?</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-a-err_too_many_redirects-error/">How can I fix a ERR<em>TOO</em>MANY_REDIRECTS error?</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-a-err_too_many_redirects-error/">How can I fix a ERR_TOO_MANY_REDIRECTS error?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-a-generic-http-500-error/">How can I fix a generic HTTP 500 error?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-a-php-fatal-out-of-memory-error/">How can I fix a PHP fatal "out of memory" error?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-an-http-error-when-uploading-images/">How can I fix an HTTP error when uploading images?</a></li>
