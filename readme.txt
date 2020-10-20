@@ -118,7 +118,7 @@ WPSSO makes full use of all available caching methods &mdash; along with offerin
 <h3>Free Complementary Add-ons</h3>
 
 Do you need even more advanced, special and unique features?
-	
+
 Simply activate the free complementary add-on(s) you require:
 
 * [WPSSO FAQ Manager](https://wordpress.org/plugins/wpsso-faq/) to manage FAQ categories with Question and Answer pages.
@@ -310,7 +310,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.9.0-dev.1 (2020/10/19)**
+**Version 8.9.0-dev.2 (2020/10/19)**
 
 * **New Features**
 	* None.
@@ -320,6 +320,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Refactored lib/ext/markdown.php to use a new lib/ext/markdown/MarkdownExtra.inc.php library.
+	* Added a new `SucomForm->get_business_hours()` method.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.4.
@@ -609,7 +610,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.9.0-dev.1 =
+= 8.9.0-dev.2 =
 
 (2020/10/19) Updated the markdown library used to parse WordPress readme files.
 
