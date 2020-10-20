@@ -106,7 +106,7 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 
 			$metabox_ids[ 'rate_review' ]  = _x( 'Your Rating is Important', 'metabox title', 'wpsso' );
 			$metabox_ids[ 'help_support' ] = _x( 'Help and Support', 'metabox title', 'wpsso' );
-			$metabox_ids[ 'version_info' ] = _x( 'Version Information', 'metabox title', 'wpsso' ); 
+			$metabox_ids[ 'version_info' ] = _x( 'Version Information', 'metabox title', 'wpsso' );
 			$metabox_ids[ 'status_std' ]   = sprintf( _x( '%s Features Status', 'metabox title', 'wpsso' ), $dist_std_name );
 			$metabox_ids[ 'status_pro' ]   = sprintf( _x( '%s Features Status', 'metabox title', 'wpsso' ), $dist_pro_name );
 

@@ -1880,18 +1880,21 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Property:
 			 *	openingHoursSpecification as https://schema.org/OpeningHoursSpecification
 			 */
+			$weekdays =& $wpsso->cf[ 'form' ][ 'weekdays' ];
+
 			$opening_hours_spec = array();
 
-			foreach ( $wpsso->cf[ 'form' ][ 'weekdays' ] as $day_name => $day_label ) {
+			foreach ( $weekdays as $day_name => $day_label ) {
 
 				if ( ! empty( $place_opts[ 'place_day_' . $day_name ] ) ) {
 
-					$open_close = SucomUtil::get_open_close(
+					$open_close = SucomUtil::get_open_close_hours(
 						$place_opts,
 						'place_day_' . $day_name . '_open',
 						'place_midday_close',
 						'place_midday_open',
-						'place_day_' . $day_name . '_close'
+						'place_day_' . $day_name . '_close',
+						'place_timezone'
 					);
 
 					foreach ( $open_close as $open => $close ) {

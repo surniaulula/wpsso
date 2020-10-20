@@ -212,14 +212,14 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				<tr class="user-description-wrap">
 
-					<th><label for="description"><?php _e( 'Biographical Info' ); ?></label></th> 
+					<th><label for="description"><?php _e( 'Biographical Info' ); ?></label></th>
 
 					<td><textarea name="description" id="description" rows="5" cols="30"><?php echo $attr[ 'description' ] ?></textarea></td>
 				</tr>
 
 			</table>
 
-			<?php submit_button( __( 'Add the Person', 'wpsso' ), 'primary', 'createuser', true, array( 'id' => 'createusersub' ) ); ?> 
+			<?php submit_button( __( 'Add the Person', 'wpsso' ), 'primary', 'createuser', true, array( 'id' => 'createusersub' ) ); ?>
 
 			</form>
 

@@ -2361,7 +2361,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		public function get_cropped_image_filename( $file_path, $size_info ) {
 
 			$dir  = pathinfo( $file_path, PATHINFO_DIRNAME );	// Returns '.' for filenames without paths.
-			$ext  = pathinfo( $file_path, PATHINFO_EXTENSION ); 
+			$ext  = pathinfo( $file_path, PATHINFO_EXTENSION );
 			$base = wp_basename( $file_path, '.' . $ext );
 
 			$new_dir    = '.' === $dir ? '' : trailingslashit( $dir );
@@ -2382,7 +2382,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 			}
 
-			return $new_dir . $new_base . $new_suffix . $new_ext; 
+			return $new_dir . $new_base . $new_suffix . $new_ext;
 		}
 
 		/**

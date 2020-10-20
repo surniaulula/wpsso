@@ -216,7 +216,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				return $local_cache = wp_timezone_string();
 			}
 
-			$timezone_string = get_option( 'timezone_string' ); 
+			$timezone_string = get_option( 'timezone_string' );
 
 			if ( $timezone_string ) {
 
@@ -241,7 +241,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			$sign      = ( $offset < 0 ) ? '-' : '+';
 			$abs_hour  = abs( $hours );
 			$abs_mins  = abs( $minutes * 60 );
-			$tz_offset = sprintf( '%s%02d:%02d', $sign, $abs_hour, $abs_mins ); 
+			$tz_offset = sprintf( '%s%02d:%02d', $sign, $abs_hour, $abs_mins );
 
 			return $tz_offset;
 		}
@@ -348,7 +348,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			if ( ! empty( $post_id ) ) {
 
-				$post_type = get_post_type_object( $post->post_type ); 
+				$post_type = get_post_type_object( $post->post_type );
 
 				if ( 'page' === $post->post_type &&
 					(int) $post->ID === (int) get_option( 'page_on_front' ) &&
@@ -360,7 +360,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 					$shortlink = self::raw_home_url( '?p=' . $post_id );
 				}
-			} 
+			}
 
 			return $shortlink;
 		}

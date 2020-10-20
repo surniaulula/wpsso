@@ -98,7 +98,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			$this->cf = WpssoConfig::get_config( $apply_filters = false );
 
-			WpssoConfig::set_constants( __FILE__ );	
+			WpssoConfig::set_constants( __FILE__ );
 
 			WpssoConfig::require_libs( __FILE__ );		// Includes the register.php class library.
 

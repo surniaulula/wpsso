@@ -4027,13 +4027,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/**
 			 * Define fixed constants.
 			 */
-			define( 'WPSSO_FILEPATH', $plugin_file );						
+			define( 'WPSSO_FILEPATH', $plugin_file );
 			define( 'WPSSO_PLUGINBASE', $info[ 'base' ] );	// Example: wpsso/wpsso.php.
 			define( 'WPSSO_PLUGINDIR', trailingslashit( realpath( dirname( $plugin_file ) ) ) );
 			define( 'WPSSO_PLUGINSLUG', $info[ 'slug' ] );	// Example: wpsso.
 			define( 'WPSSO_UNDEF', -1 );			// Default undefined image width / height value.
 			define( 'WPSSO_URLPATH', trailingslashit( plugins_url( '', $plugin_file ) ) );
-			define( 'WPSSO_VERSION', $info[ 'version' ] );						
+			define( 'WPSSO_VERSION', $info[ 'version' ] );
 
 			define( 'WPSSO_INIT_CONFIG_PRIORITY', -10 );
 			define( 'WPSSO_INIT_OPTIONS_PRIORITY', 9 );

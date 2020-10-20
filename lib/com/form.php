@@ -800,7 +800,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						$select_opt_arr[ $option_value ] = '<option value="' . esc_attr( $option_value ) . '"' .
 							$is_selected_html . '>' . $label_transl . '</option>';
 
-						$select_opt_added++; 
+						$select_opt_added++;
 					}
 				}
 			}
@@ -819,7 +819,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html .= empty( $default_value ) ? '' : ' data-default-value="' . esc_attr( $default_value ) . '"';
 			$html .= empty( $default_text ) ? '' : ' data-default-text="' . esc_attr( $default_text ) . '"';
 			$html .= '>' . "\n";
-			$html .= implode( "\n", $select_opt_arr ); 
+			$html .= implode( "\n", $select_opt_arr );
 			$html .= '<!-- ' . $select_opt_added . ' select options added -->' . "\n";
 			$html .= '</select>' . "\n";
 
@@ -1959,7 +1959,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 											$select_opt_arr[ $option_value ] = '<option value="' . esc_attr( $option_value ) . '"' .
 												$is_selected_html . '>' . $label_transl . '</option>';
 
-											$select_opt_added++; 
+											$select_opt_added++;
 										}
 									}
 								}
@@ -1978,7 +1978,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 								$html .= empty( $default_value ) ? '' : ' data-default-value="' . esc_attr( $default_value ) . '"';
 								$html .= empty( $default_text ) ? '' : ' data-default-text="' . esc_attr( $default_text ) . '"';
 								$html .= ' ' . $elmt_attr . '>' . "\n";
-								$html .= implode( "\n", $select_opt_arr ); 
+								$html .= implode( "\n", $select_opt_arr );
 								$html .= '<!-- ' . $select_opt_added . ' select options added -->' . "\n";
 								$html .= '</select>' . "\n";
 

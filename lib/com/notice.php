@@ -1782,7 +1782,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			notice.remove();
 		}
-	} ); 
+	} );
 
 </script>' . "\n";
 		}

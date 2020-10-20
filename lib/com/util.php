@@ -10,6 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
+if ( ! class_exists( 'SucomUtilWP' ) ) {
+
+	require_once dirname( __FILE__ ) . '/util-wp.php';
+}
+
 if ( ! class_exists( 'SucomUtil' ) ) {
 
 	class SucomUtil {
@@ -834,34 +839,45 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return defined( 'PHP_INT_MAX' ) ? PHP_INT_MAX : 2147483647;	// Since PHP 5.0.2.
 		}
 
-		private static function get_formatted_timezone( $tz_name, $format ) {
-
-			$dt = new DateTime();
-
-			$dt->setTimeZone( new DateTimeZone( $tz_name ) );
-
-			return $dt->format( $format );
-		}
-
 		/**
-		 * Use "tz" in the method name to hint that input is an abbreviation.
+		 * Use "tz" in the method name to hint that method argument is an abbreviation.
 		 */
 		public static function get_tz_name( $tz_abbr ) {
 
 			return timezone_name_from_abbr( $tz_abbr );
 		}
 
+		/**
+		 * Get a timezone abbreviation (ie. 'EST', 'MDT', etc.).
+		 */
 		public static function get_timezone_abbr( $tz_name ) {
 
 			return self::get_formatted_timezone( $tz_name, 'T' );
 		}
 
 		/**
-		 * Timezone offset in seconds - offset west of UTC is negative, and east of UTC is positive.
+		 * Timezone offset in seconds (offset west of UTC is negative, and east of UTC is positive).
 		 */
-		public static function get_timezone_offset( $tz_name ) {
+		public static function get_timezone_offset_secs( $tz_name ) {
 
 			return self::get_formatted_timezone( $tz_name, 'Z' );
+		}
+
+		/**
+		 * Timezone difference to UTC with colon between hours and minutes.
+		 */
+		public static function get_timezone_offset_hours( $tz_name ) {
+
+			return self::get_formatted_timezone( $tz_name, 'P' );
+		}
+
+		public static function get_formatted_timezone( $tz_name, $format ) {
+
+			$dt = new DateTime();
+
+			$dt->setTimeZone( new DateTimeZone( $tz_name ) );
+
+			return $dt->format( $format );
 		}
 
 		private static function maybe_get_array( $arr, $key = false, $add_none = false ) {
@@ -1061,21 +1077,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Checks for 'none' value in midday_close and midday_open.
+		 * Checks for 'none' and invalid times for midday close and open.
 		 */
-		public static function is_valid_midday( $open, $midday_close, $midday_open, $close ) {
+		public static function is_valid_midday( $hm_o, $hm_midday_c, $hm_midday_o, $hm_c ) {
 
 			/**
 			 * Performa a quick sanitation before using strtotime().
 			 */
-			if ( empty( $midday_close ) || empty( $midday_open ) || $midday_close === 'none' || $midday_open === 'none' ) {
+			if ( empty( $hm_midday_c ) || empty( $hm_midday_o ) || $hm_midday_c === 'none' || $hm_midday_o === 'none' ) {
 
 				return false;
 			}
 
-			if ( strtotime( $midday_close ) < strtotime( $midday_open ) &&
-				strtotime( $open ) < strtotime( $midday_close ) &&
-					strtotime( $midday_open ) < strtotime( $close ) ) {
+			if ( strtotime( $hm_midday_c ) < strtotime( $hm_midday_o ) &&
+				strtotime( $hm_o ) < strtotime( $hm_midday_c ) &&
+					strtotime( $hm_midday_o ) < strtotime( $hm_c ) ) {
 
 				return true;
 			}
@@ -1554,35 +1570,54 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return strlen( $serialized );
 		}
 
-		public static function get_open_close( array $opts, $key_open, $key_midday_close, $key_midday_open, $key_close ) {
+		/**
+		 * Deprecated on 2020/10/20.
+		 */
+		public static function get_open_close( array $opts, $key_o, $key_midday_close, $key_midday_o, $key_c ) {
 
-			$open_close = array();
+			return self::get_open_close_hours( $opts, $key_o, $key_midday_close, $key_midday_o, $key_c );
+		}
 
-			if ( ! empty( $opts[ $key_open ] ) && ! empty( $opts[ $key_close ] ) ) {	// Have opening and closing hours.
+		/**
+		 * Returns an associative array of open => close hours.
+		 */
+		public static function get_open_close_hours( array $opts, $key_o, $key_midday_c, $key_midday_o, $key_c, $key_tz = '' ) {
 
-				$open_close[ $opts[ $key_open ] ] = $opts[ $key_close ];
+			$oc_pairs = array();
 
-				if ( ! empty( $opts[ $key_midday_close ] ) && ! empty( $opts[ $key_midday_open ] ) ) {
+			if ( ! empty( $opts[ $key_o ] ) && ! empty( $opts[ $key_c ] ) ) {	// Have opening and closing hours.
+
+				$timezone  = empty( $key_tz ) || empty( $opts[ $key_tz ] ) ? SucomUtilWP::get_default_timezone() : $opts[ $key_tz ];
+				$tz_offset = 'Z' . self::get_timezone_offset_hours( $timezone );
+				$hm_tz_o   = $opts[ $key_o ] . $tz_offset;
+				$hm_tz_c   = $opts[ $key_c ] . $tz_offset;
+
+				$oc_pairs[ $hm_tz_o ] = $hm_tz_c;
+
+				if ( ! empty( $opts[ $key_midday_c ] ) && ! empty( $opts[ $key_midday_o ] ) ) {
 
 					/**
-					 * Checks for 'none' value in midday_close and midday_open.
+					 * Checks for 'none' and invalid times for midday close and open.
 					 */
-					$has_midday = self::is_valid_midday(
-						$opts[ $key_open ],
-						$opts[ $key_midday_close ],
-						$opts[ $key_midday_open ],
-						$opts[ $key_close ]
+					$is_valid_midday = self::is_valid_midday(
+						$opts[ $key_o ],
+						$opts[ $key_midday_c ],
+						$opts[ $key_midday_o ],
+						$opts[ $key_c ]
 					);
 
-					if ( $has_midday ) {
+					if ( $is_valid_midday ) {
 
-						$open_close[ $opts[ $key_open ] ]        = $opts[ $key_midday_close ];
-						$open_close[ $opts[ $key_midday_open ] ] = $opts[ $key_close ];
-					}	
+						$hm_tz_midday_c = $opts[ $key_midday_c ] . $tz_offset;
+						$hm_tz_midday_o = $opts[ $key_midday_o ] . $tz_offset;
+
+						$oc_pairs[ $hm_tz_o ]        = $hm_tz_midday_c;
+						$oc_pairs[ $hm_tz_midday_o ] = $hm_tz_c;
+					}
 				}
 			}
 
-			return $open_close;
+			return $oc_pairs;
 		}
 
 		public static function get_opts_begin( $str, array $opts ) {
@@ -2137,7 +2172,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( empty( $mt_og ) ) {	// Nothing to merge.
 
 				return $mt_ret;
-			} 
+			}
 
 			/**
 			 * Always keep the 'og:type' meta tag top-most.
@@ -3679,6 +3714,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			$content = htmlentities( $content, ENT_QUOTES, $charset, $double_encode = false );
+
 			$content = SucomUtilWP::wp_encode_emoji( $content );
 
 			return $content;
