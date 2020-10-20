@@ -118,6 +118,135 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		}
 
 		/**
+		 * Returns an associative array of timezone strings (ie. 'Africa/Abidjan'), 'UTC', and offsets (ie. '-07:00').
+		 */
+		public static function get_timezones() {
+
+			$timezones = timezone_identifiers_list();
+
+			$timezones = array_combine( $timezones, $timezones );	// Create an associative array.
+
+			$offset_range = array(
+				-12,
+				-11.5,
+				-11,
+				-10.5,
+				-10,
+				-9.5,
+				-9,
+				-8.5,
+				-8,
+				-7.5,
+				-7,
+				-6.5,
+				-6,
+				-5.5,
+				-5,
+				-4.5,
+				-4,
+				-3.5,
+				-3,
+				-2.5,
+				-2,
+				-1.5,
+				-1,
+				-0.5,
+				0,
+				0.5,
+				1,
+				1.5,
+				2,
+				2.5,
+				3,
+				3.5,
+				4,
+				4.5,
+				5,
+				5.5,
+				5.75,
+				6,
+				6.5,
+				7,
+				7.5,
+				8,
+				8.5,
+				8.75,
+				9,
+				9.5,
+				10,
+				10.5,
+				11,
+				11.5,
+				12,
+				12.75,
+				13,
+				13.75,
+				14,
+			);
+
+			/**
+			 * Create date( 'P' ) formatted timezone values (ie. -07:00).
+			 */
+			foreach ( $offset_range as $offset ) {
+
+				$offset_value = self::format_tz_offset( $offset );
+
+				$offset_name = 'UTC' . $offset_value;
+
+				$timezones[ $offset_value ] = $offset_name;
+			}
+
+			return $timezones;
+		}
+
+		/**
+		 * May return a timezone string (ie. 'Africa/Abidjan'), 'UTC', or an offset (ie. '-07:00').
+		 */
+		public static function get_default_timezone() {
+
+			static $local_cache = null;
+
+			if ( null !== $local_cache ) {
+
+				return $local_cache;
+			}
+
+			if ( function_exists( wp_timezone_string() ) ) {	// Since WP v5.3.
+
+				return $local_cache = wp_timezone_string();
+			}
+
+			$timezone_string = get_option( 'timezone_string' ); 
+
+			if ( $timezone_string ) {
+
+				return $local_cache = $timezone_string;
+			}
+
+			$offset = (float) get_option( 'gmt_offset' );
+
+			$tz_offset = self::format_tz_offset( $offset );
+
+			return $local_cache = $tz_offset;
+		}
+
+		/**
+		 * Returns a date( 'P' ) formatted timezone value (ie. -07:00).
+		 */
+		public static function format_tz_offset( $offset ) {
+
+			$hours   = (int) $offset;
+			$minutes = ( $offset - $hours );
+
+			$sign      = ( $offset < 0 ) ? '-' : '+';
+			$abs_hour  = abs( $hours );
+			$abs_mins  = abs( $minutes * 60 );
+			$tz_offset = sprintf( '%s%02d:%02d', $sign, $abs_hour, $abs_mins ); 
+
+			return $tz_offset;
+		}
+
+		/**
 		 * wp_encode_emoji() is only available since WordPress v4.2.
 		 *
 		 * Use the WordPress function if available, otherwise provide the same functionality.

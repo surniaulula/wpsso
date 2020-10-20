@@ -308,11 +308,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				if ( isset( $val[ 'tr_class' ] ) ) {
 
-					$tr = '<tr class="' . $val[ 'tr_class' ] . '">' . "\n";
+					$tr_html = '<tr class="' . $val[ 'tr_class' ] . '">' . "\n";
 
 				} else {
 
-					$tr = '';
+					$tr_html = '';
 				}
 
 				/**
@@ -322,7 +322,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					if ( ! empty( $val[ 'table_row' ] ) ) {
 
-						$table_rows[ $key ] .= $tr . $val[ 'table_row' ] . "\n";
+						$table_rows[ $key ] .= $tr_html . $val[ 'table_row' ] . "\n";
 					}
 
 					continue;
@@ -334,7 +334,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					$col_span = ' colspan="' . ( isset( $val[ 'col_span' ] ) ? $val[ 'col_span' ] : 2 ) . '"';
 
-					$table_rows[ $key ] .= $tr . '<td' . $col_span . $td_class . '>';
+					$table_rows[ $key ] .= $tr_html . '<td' . $col_span . $td_class . '>';
 
 					$table_rows[ $key ] .= '<' . $val[ 'header' ];
 
@@ -351,7 +351,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					$col_span = empty( $val[ 'col_span' ] ) ? '' : ' colspan="' . $val[ 'col_span' ] .'"';
 
-					$table_rows[ $key ] .= $tr . $this->get_th_html( $val[ 'label' ], 
+					$table_rows[ $key ] .= $tr_html . $this->get_th_html( $val[ 'label' ], 
 						( empty( $val[ 'th_class' ] ) ? '' : $val[ 'th_class' ] ),
 						( empty( $val[ 'tooltip' ] ) ? '' : $val[ 'tooltip' ] )
 					) . "\n";
@@ -405,6 +405,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			$html = $is_checkbox ? $this->get_hidden( 'is_checkbox_' . $name, 1, false ) : '';
+
 			$html .= '<input type="hidden" name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '" ' .
 				'value="' . esc_attr( $value ) . '" />' . "\n";
 
@@ -611,7 +612,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			if ( empty( $name ) ) {
 
-				return;
+				return '';
 			}
 
 			$filter_name = SucomUtil::sanitize_hookname( $this->lca . '_form_select_' . $name );
@@ -620,7 +621,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			if ( ! is_array( $values ) ) {
 
-				return;
+				return '';
 			}
 
 			if ( null === $is_assoc ) {
@@ -1042,8 +1043,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		 *
 		 * By default, the 'none' array elements is not added.
 		 */
-		public function get_select_time( $name, $css_class = '', $css_id = '', $is_disabled = false,
-			$selected = false, $step_mins = 15, $add_none = false ) {
+		public function get_select_time( $name, $css_class = '', $css_id = '', $is_disabled = false, $selected = false, $step_mins = 15, $add_none = false ) {
 
 			static $local_cache = array();
 
@@ -1069,12 +1069,17 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$this->defaults[ $name ] = 'none';
 				}
 
-				return $this->get_select_none( $name, $local_cache[ $step_mins ], $css_class, $css_id, $is_assoc = true, $is_disabled,
-					$selected, $event_names, $event_args );
+				return $this->get_select_none( $name, $local_cache[ $step_mins ], $css_class, $css_id, $is_assoc = true,
+					$is_disabled, $selected, $event_names, $event_args );
 			}
 
-			return $this->get_select( $name, $local_cache[ $step_mins ], $css_class, $css_id, $is_assoc = true, $is_disabled,
-				$selected, $event_names, $event_args );
+			return $this->get_select( $name, $local_cache[ $step_mins ], $css_class, $css_id, $is_assoc = true,
+				$is_disabled, $selected, $event_names, $event_args );
+		}
+
+		public function get_select_time_none( $name, $css_class = '', $css_id = '', $is_disabled = false, $selected = false, $step_mins = 15 ) {
+
+			return $this->get_select_time( $name, $css_class, $css_id, $is_disabled, $selected, $step_mins, $add_none = true );
 		}
 
 		/**
@@ -1082,27 +1087,23 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		 */
 		public function get_select_timezone( $name, $css_class = '', $css_id = '', $is_disabled = false, $selected = false ) {
 
-			$css_class   = trim( 'timezone ' . $css_class );
-			$timezones   = timezone_identifiers_list();
-			$event_names = array( 'on_focus_load_json' );
-			$event_args  = 'timezones';
+			$css_class = trim( 'timezone ' . $css_class );
+
+			/**
+			 * Returns an associative array of timezone strings (ie. 'Africa/Abidjan'), 'UTC', and offsets (ie. '-07:00').
+			 */
+			$timezones = SucomUtilWP::get_timezones();
 
 			if ( empty( $this->defaults[ $name ] ) ) {
 
 				/**
-				 * The timezone string will be empty if a UTC offset, instead of a city, has selected in the
-				 * WordPress settings.
+				 * May return a timezone string (ie. 'Africa/Abidjan'), 'UTC', or an offset (ie. '-07:00').
 				 */
-				$this->defaults[ $name ] = get_option( 'timezone_string' );
-
-				if ( empty( $this->defaults[ $name ] ) ) {
-
-					$this->defaults[ $name ] = 'UTC';
-				}
+				$this->defaults[ $name ] = SucomUtilWP::get_default_timezone();
 			}
 
-			return $this->get_select( $name, $timezones, $css_class, $css_id, $is_assoc = false, $is_disabled,
-				$selected, $event_names, $event_args );
+			return $this->get_select( $name, $timezones, $css_class, $css_id, $is_assoc = true, $is_disabled, $selected,
+				$event_names = array( 'on_focus_load_json' ), $event_args = 'timezones');
 		}
 
 		public function get_select_country( $name, $css_class = '', $css_id = '', $is_disabled = false, $selected = false ) {
@@ -1477,12 +1478,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		/**
 		 * Deprecated on 2019/07/14.
 		 */
-		public function get_date_time_iso( $name_prefix = '', $is_disabled = false, $step_mins = 15, $add_none = true ) {
+		public function get_date_time_iso( $name_prefix, $is_disabled = false, $step_mins = 15, $add_none = true ) {
 
 			return $this->get_date_time_tz( $name_prefix, $is_disabled, $step_mins, $add_none );
 		}
 
-		public function get_date_time_tz( $name_prefix = '', $is_disabled = false, $step_mins = 15, $add_none = true ) {
+		public function get_date_time_tz( $name_prefix, $is_disabled = false, $step_mins = 15, $add_none = true ) {
 
 			$selected = false;
 
@@ -1634,14 +1635,28 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					return $this->options[ $opt_key ];
 
-				} else {
-
-					return $def_val;
 				}
 
-			} else {
-				return $this->options;
+				return $def_val;
 			}
+
+			return $this->options;
+		}
+
+		public function get_defaults( $opt_key = false ) {
+
+			if ( false !== $opt_key ) {
+
+				if ( isset( $this->defaults[ $opt_key ] ) ) {
+
+					return $this->defaults[ $opt_key ];
+
+				}
+
+				return null;
+			}
+
+			return $this->options;
 		}
 
 		public function get_mixed_multi( $mixed, $css_class, $css_id, $start_num = 0, $max_input = 10, $show_first = 2, $is_disabled = false ) {
@@ -2003,10 +2018,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		/* * * * * * * * * * * * * * *
-		 * DISABLED METHODS SECTION  *
-		 * * * * * * * * * * * * * * */
-
+		/**
+		 * ----------------
+		 * DISABLED METHODS
+		 * ----------------
+		 */
 		public function get_no_td_checkbox( $name, $comment = '', $extra_css_class = '' ) {
 
 			return '<td class="blank ' . $extra_css_class . '">' . $this->get_no_checkbox_comment( $name, $comment ) . '</td>';
@@ -2070,13 +2086,24 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$selected = isset( $opts[ $name ] ) ? $opts[ $name ] : true;
 
-			return $this->get_select( $name, $values, $css_class, $css_id, $is_assoc,
-				$is_disabled = true, $selected, $event_names, $event_args );
+			return $this->get_select( $name, $values, $css_class, $css_id, $is_assoc, $is_disabled = true, $selected, $event_names, $event_args );
 		}
 
 		public function get_no_select_time( $name, $css_class = '', $css_id = '', $selected = false, $step_mins = 15, $add_none = false ) {
 
 			return $this->get_select_time( $name, $css_class, $css_id, $is_disabled = true, $selected, $step_mins, $add_none );
+		}
+
+		public function get_no_select_time_none( $name, $css_class = '', $css_id = '', $selected = false, $step_mins = 15 ) {
+
+			return $this->get_select_time( $name, $css_class, $css_id, $is_disabled = true, $selected, $step_mins, $add_none = true );
+		}
+
+		public function get_no_select_time_options_none( $name, array $opts, $css_class = '', $css_id = '', $step_mins = 15 ) {
+
+			$selected = isset( $opts[ $name ] ) ? $opts[ $name ] : true;
+
+			return $this->get_select_time( $name, $css_class, $css_id, $is_disabled = true, $selected, $step_mins, $add_none = true );
 		}
 
 		public function get_no_select_time_options( $name, array $opts, $css_class = '', $css_id = '', $step_mins = 15, $add_none = false ) {
@@ -2304,10 +2331,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_mixed_multi( $mixed, $css_class, $css_id, $start_num, $max_input, $show_first, $is_disabled = true );
 		}
 
-		/* * * * * * * * * * * * * *
-		 * PRIVATE METHODS SECTION *
-		 * * * * * * * * * * * * * */
-
+		/**
+		 * ---------------
+		 * PRIVATE METHODS 
+		 * ---------------
+		 */
 		private static function sort_select_opt_by_label( $a, $b ) {
 
 			/**

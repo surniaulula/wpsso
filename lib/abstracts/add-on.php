@@ -66,12 +66,12 @@ if ( ! class_exists( 'WpssoAddOn' ) ) {
 			 * WPSSO action hooks.
 			 */
 			if ( method_exists( $this, 'init_textdomain' ) ) {
-			
+
 				add_action( 'wpsso_init_textdomain', array( $this, 'init_textdomain' ), $prio, 0 );
 			}
 
 			if ( method_exists( $this, 'init_objects' ) ) {
-			
+
 				add_action( 'wpsso_init_objects', array( $this, 'init_objects' ), $prio, 1 );
 			}
 

@@ -164,7 +164,7 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 					$req_info[ 'notice' ] = sprintf( $notice_msg, $addon_name, $req_name );
 
 				}
-				
+
 				/**
 				 * A version value from a global variable or constant.
 				 */

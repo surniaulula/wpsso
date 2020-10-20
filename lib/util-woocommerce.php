@@ -213,7 +213,7 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 				return false;	// Stop here.
 
 			}
-			
+
 			$product = $this->get_product( $mixed[ 'variation_id' ] );
 
 			if ( false === $product ) {

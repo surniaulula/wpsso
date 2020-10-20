@@ -23,7 +23,7 @@ if ( ! class_exists( 'SuextMarkdown' ) ) {
 	class SuextMarkdown {
 
 		public static function transform( $text ) {
-		
+
 			return Michelf\MarkdownExtra::defaultTransform( $text );
 		}
 	}

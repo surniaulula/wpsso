@@ -969,13 +969,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 					if ( isset( $quantity[ 'minValue' ] ) && isset( $quantity[ 'maxValue' ] ) &&
 						$quantity[ 'minValue' ] === $quantity[ 'maxValue' ] ) {
-	
+
 						$quantity[ 'value' ] = $quantity[ 'minValue' ];
-	
+
 						unset( $quantity[ 'minValue' ], $quantity[ 'maxValue' ] );
 					}
 				}
-	
+
 				$offer[ 'eligibleQuantity' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/QuantitativeValue', $quantity );
 			}
 
@@ -1229,7 +1229,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 							 * Skip the name and unit text for the quantity @id value.
 							 */
 							if ( 'name' !== $quant_prop_name && 'unitText' !== $quant_prop_name ) {
-							
+
 								$quant_id .= '-' . $delivery_opts[ $opt_key ];
 							}
 
@@ -1880,18 +1880,18 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Property:
 			 *	openingHoursSpecification as https://schema.org/OpeningHoursSpecification
 			 */
-			$opening_spec = array();
+			$opening_hours_spec = array();
 
-			foreach ( $wpsso->cf[ 'form' ][ 'weekdays' ] as $weekday => $label ) {
+			foreach ( $wpsso->cf[ 'form' ][ 'weekdays' ] as $day_name => $day_label ) {
 
-				if ( ! empty( $place_opts[ 'place_day_' . $weekday ] ) ) {
+				if ( ! empty( $place_opts[ 'place_day_' . $day_name ] ) ) {
 
 					$open_close = SucomUtil::get_open_close(
 						$place_opts,
-						'place_day_' . $weekday . '_open',
+						'place_day_' . $day_name . '_open',
 						'place_midday_close',
 						'place_midday_open',
-						'place_day_' . $weekday . '_close'
+						'place_day_' . $day_name . '_close'
 					);
 
 					foreach ( $open_close as $open => $close ) {
@@ -1899,7 +1899,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						$weekday_spec = array(
 							'@context'  => 'https://schema.org',
 							'@type'     => 'OpeningHoursSpecification',
-							'dayOfWeek' => $label,
+							'dayOfWeek' => $day_label,
 							'opens'     => $open,
 							'closes'    => $close,
 						);
@@ -1915,14 +1915,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 							}
 						}
 
-						$opening_spec[] = $weekday_spec;
+						$opening_hours_spec[] = $weekday_spec;
 					}
 				}
 			}
 
-			if ( ! empty( $opening_spec ) ) {
+			if ( ! empty( $opening_hours_spec ) ) {
 
-				$json_ret[ 'openingHoursSpecification' ] = $opening_spec;
+				$json_ret[ 'openingHoursSpecification' ] = $opening_hours_spec;
 			}
 
 			/**
