@@ -310,7 +310,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.9.0-dev.2 (2020/10/19)**
+**Version 8.9.0-dev.2 (2020/10/20)**
 
 * **New Features**
 	* None.
@@ -320,7 +320,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Refactored lib/ext/markdown.php to use a new lib/ext/markdown/MarkdownExtra.inc.php library.
-	* Added a new `SucomForm->get_business_hours()` method.
+	* Refactored the `SucomForm->get_select_timezone()` method.
+	* Added a new `SucomUtilWP::get_timezones()` method.
+	* Added a new `SucomUtilWP::get_default_timezone()` method.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.4.
@@ -612,7 +614,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 8.9.0-dev.2 =
 
-(2020/10/19) Updated the markdown library used to parse WordPress readme files.
+(2020/10/20) Updated the markdown library used to parse WordPress readme files.
 
 = 8.8.1 =
 
