@@ -17,7 +17,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 	 */
 	class SucomPlugin {
 
-		private static $cache_plugins = null;	// Common cache for get_plugins() and clear_plugins().
+		private static $get_plugins_cache = null;	// Common cache for get_plugins() and clear_plugins().
 
 		public function __construct() {
 		}
@@ -37,12 +37,12 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 		 */
 		public static function get_plugins() {
 
-			if ( null !== SucomPlugin::$cache_plugins ) {
+			if ( null !== SucomPlugin::$get_plugins_cache ) {
 
-				return SucomPlugin::$cache_plugins;
+				return SucomPlugin::$get_plugins_cache;
 			}
 
-			SucomPlugin::$cache_plugins = array();	// Default value.
+			SucomPlugin::$get_plugins_cache = array();	// Default value.
 
 			if ( ! function_exists( 'get_plugins' ) ) {	// Load the WordPress library if necessary.
 
@@ -63,7 +63,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 
 			if ( function_exists( 'get_plugins' ) ) {
 
-				SucomPlugin::$cache_plugins = get_plugins();
+				SucomPlugin::$get_plugins_cache = get_plugins();
 
 			} elseif ( method_exists( 'SucomUtil', 'safe_error_log' ) ) {	// Just in case.
 
@@ -73,12 +73,12 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 				SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
 			}
 
-			return SucomPlugin::$cache_plugins;
+			return SucomPlugin::$get_plugins_cache;
 		}
 
 		public static function clear_plugins_cache() {
 
-			SucomPlugin::$cache_plugins = null;
+			SucomPlugin::$get_plugins_cache = null;
 		}
 
 		/**
@@ -88,9 +88,10 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 
 			static $local_cache = null;
 
-			if ( ! $use_cache || ! isset( $local_cache ) ) {
+			if ( ! $use_cache || null === $local_cache ) {
 
-				$local_cache    = array();
+				$local_cache = array();
+
 				$active_plugins = get_option( 'active_plugins', array() );
 
 				if ( is_multisite() ) {
@@ -98,11 +99,13 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 					$active_network_plugins = array_keys( get_site_option( 'active_sitewide_plugins', array() ) );
 
 					if ( ! empty( $active_network_plugins ) ) {
+
 						$active_plugins = array_merge( $active_plugins, $active_network_plugins );
 					}
 				}
 
 				foreach ( $active_plugins as $plugin_base ) {
+
 					$local_cache[ $plugin_base ] = true;
 				}
 			}

@@ -466,6 +466,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 		}
@@ -542,6 +543,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 							}
 
 							if ( ! empty( $new_key ) ) {
+
 								$opts[ $new_key ] = $val;
 							}
 
@@ -695,6 +697,48 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				 * Refresh the schema types transient cache.
 				 */
 				$this->p->schema->get_schema_types_array( $flatten = true, $read_cache = false );
+
+				
+				/**
+				 * Remove the options from deprecated add-ons.
+				 */
+				if ( $prev_version > 0 && $prev_version <= 765 ) {
+
+					if ( ! class_exists( 'WpssoSsb' ) ) {	// Make sure the deprecated add-on is not active.
+
+						unset(
+							$opts[ 'buttons_preset_ssb-content' ],
+							$opts[ 'buttons_preset_ssb-excerpt' ],
+							$opts[ 'buttons_preset_ssb-sidebar' ],
+							$opts[ 'buttons_preset_ssb-shortcode' ],
+							$opts[ 'buttons_preset_ssb-widget' ],
+							$opts[ 'buttons_css_ssb-content' ],
+							$opts[ 'buttons_css_ssb-excerpt' ],
+							$opts[ 'buttons_css_ssb-sharing' ],
+							$opts[ 'buttons_css_ssb-shortcode' ],
+							$opts[ 'buttons_css_ssb-sidebar' ],
+							$opts[ 'buttons_css_ssb-widget' ],
+							$opts[ 'buttons_js_ssb-sidebar' ],
+							$opts[ 'email_ssb_html' ],
+							$opts[ 'plugin_social_file_cache_exp' ],
+							$opts[ 'wa_ssb_html' ]
+						);
+					}
+
+					if ( ! class_exists( 'WpssoTaq' ) ) {	// Make sure the deprecated add-on is not active.
+
+						unset(
+							$opts[ 'taq_add_via' ],
+							$opts[ 'taq_rec_author' ],
+							$opts[ 'taq_link_text' ],
+							$opts[ 'taq_add_button' ],
+							$opts[ 'taq_use_style' ],
+							$opts[ 'taq_use_script' ],
+							$opts[ 'taq_popup_width' ],
+							$opts[ 'taq_popup_height' ]
+						);
+					}
+				}
 
 			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) ) {
 

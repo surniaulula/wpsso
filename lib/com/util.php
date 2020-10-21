@@ -1699,7 +1699,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function next_key( $needle, array &$input, $loop = true ) {
 
 			$keys = array_keys( $input );
-			$pos  = array_search( $needle, $keys );
+
+			$pos = array_search( $needle, $keys );
 
 			if ( false !== $pos ) {
 
@@ -1936,7 +1937,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_first_last_next_nums( array $input ) {
 
-			$keys  = array_keys( $input );
+			$keys = array_keys( $input );
+
 			$count = count( $keys );
 
 			if ( $count && ! is_numeric( implode( $keys ) ) ) { // Check for non-numeric keys.
@@ -1957,8 +1959,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			sort( $keys ); // Sort numerically.
 
 			$first = (int) reset( $keys );       // Get the first number.
-			$last  = (int) end( $keys );         // Get the last number.
-			$next  = $count ? $last + 1 : $last; // Next is 0 (not 1) for an empty array.
+
+			$last = (int) end( $keys );         // Get the last number.
+
+			$next = $count ? $last + 1 : $last; // Next is 0 (not 1) for an empty array.
 
 			return array( $first, $last, $next );
 		}

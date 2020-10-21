@@ -801,12 +801,12 @@ msgid "END OUTPUT"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:46 lib/com/plugin.php:297
+#: gettext/gettext-lib-com.php:46 lib/com/plugin.php:300
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:48 lib/com/plugin.php:308
+#: gettext/gettext-lib-com.php:48 lib/com/plugin.php:311
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
