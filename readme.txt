@@ -310,12 +310,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.9.0-dev.3 (2020/10/20)**
+**Version 8.9.0-dev.3 (2020/10/21)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Updated the markdown library used to parse WordPress readme files.
+	* Added a check for the post status before retrieving Shopper Approved ratings and reviews (Premium version).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -347,8 +348,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a check for WooCommerce shipping requirements (ie. coupon and/or minimum amount) when getting shipping rates.
-	* Changed the Schema OfferShippingDetails shippingRate property from min/max values to an array of values.
+	* Added a check for WooCommerce shipping requirements (ie. coupon and/or minimum amount) when getting shipping rates (Premium version).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -364,7 +364,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Added support for the new Schema shippingDetails property in Schema Product offers for WooCommerce products, including shippingRate values by currency, and shippingDestination with countries, states, and postal code limits (WooCommerce postal code wildcards and ranges are supported).
+	* Added support for the new Schema shippingDetails property in Schema Product offers for WooCommerce products, including shippingRate values by currency, and shippingDestination with countries, states, and postal code limits (Premium version).
 * **Bugfixes**
 	* Fixed a bug that prevented abbreviated Schema enumerations from being detected (ie. New and NewCondition as abbreviations for https://schema.org/NewCondition).
 * **Developer Notes**
@@ -384,7 +384,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* Added a new "Webpage Document Title" option under the SSO &gt; Advanced Settings &gt; Content and Text tab.
-	* Added WooCommerce product shipping data (zone, class, methods, and locations) for the WPSSO JSON v4.4.0 add-on.
+	* Added WooCommerce product shipping data (zone, class, methods, and locations) for the WPSSO JSON v4.4.0 add-on (Premium version).
 * **Bugfixes**
 	* Fixed incorrect Schema AggregateRating meta tag markup when the WPSSO JSON add-on is not active.
 	* Fixed an "undeclared static property" error in the SSO &gt; Dashboard page.
@@ -524,7 +524,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* Fixed the Shopper Approved integration modules to skip the WooCommerce shop archive page.
+	* Fixed the Shopper Approved integration modules to skip the WooCommerce shop archive page (Premium version).
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -556,7 +556,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Added new options under SSO &gt; Advanced Settings &gt; Shopper Approved:
+	* Added new options under SSO &gt; Advanced Settings &gt; Shopper Approved (Premium version):
 		* Maximum Number of Reviews (100)
 		* Maximum Age of Reviews (60) months
 * **Bugfixes**
@@ -574,7 +574,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **The [WP eCommerce](https://wordpress.org/plugins/wp-e-commerce/) plugin is no longer supported (last update in January 2019) and the WPSSO Core Premium integration module for WP eCommerce has been removed.**
 
 * **New Features**
-	* Added an API integration module for Shopper Approved ratings and reviews. See the SSO &gt; Advanced Settings &gt; Service APIs tab to enter your Shopper Approved API token and enabled reviews for specific post types (for example, the "product" custom post type).
+	* Added an API integration module for Shopper Approved ratings and reviews. See the SSO &gt; Advanced Settings &gt; Service APIs tab to enter your Shopper Approved API token and enabled reviews for specific post types (Premium version).
 * **Improvements**
 	* Added a new "Gravatar Image Size" option (default is 1200px).
 	* Added shortening service API status to the SSO &gt; Dashboard &gt; Premium Features Status metabox:
@@ -591,8 +591,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Schema
 		* Schema Article
 	* Removed the "Schema Image URL" option in the Document SSO metabox.
-	* Removed the WPSSO Core Premium integration module for the [WP eCommerce](https://wordpress.org/plugins/wp-e-commerce/) plugin.
-	* Removed the SSO &gt; Advanced Settings &gt; Cache &gt; Clear All Caches on Save Settings option.
+	* Removed the WPSSO Core Premium integration module for the [WP eCommerce](https://wordpress.org/plugins/wp-e-commerce/) plugin (Premium version).
+	* Removed the SSO &gt; Advanced Settings &gt; Cache &gt; Clear All Caches on Save Settings option (Premium version).
 * **Bugfixes**
 	* Fixed incorrect sanitation of plugin settings for multisite blogs.
 * **Developer Notes**
@@ -601,7 +601,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added new `WpssoSchema::is_valid_key()` and `is_valid_val()` methods.
 	* Renamed the `WpssoProUtilShorten->set_instance()` method to `get_svc_instance()`.
 	* Refactored `WpssoProUtilShorten->get_svc_instance()` to use the new `self->load_lib()` method.
-	* Added more debugging messages to the `WpssoProEcomWooCommerce` class for missing product methods.
+	* Added more debugging messages to the `WpssoProEcomWooCommerce` class for missing product class methods (Premium version).
 	* Added a 'label_transl' key to the `$features` array for the SSO &gt; Dashboard &gt; Premium Features Status metabox.
 	* Refactored the Gravatar integration module to always fallback to the "mystery person" image.
 	* Refactored the `WpssoMedia->get_featured()` method to use a local cache to avoid duplicate database queries.
@@ -614,7 +614,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 8.9.0-dev.3 =
 
-(2020/10/20) Updated the markdown library used to parse WordPress readme files.
+(2020/10/21) Updated the markdown library used to parse WordPress readme files.
 
 = 8.8.1 =
 
