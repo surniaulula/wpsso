@@ -984,7 +984,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Only check publicly available posts.
 			 */
-			if ( ! isset( $post_obj->post_status ) || $post_obj->post_status !== 'publish' ) {
+			if ( ! isset( $post_obj->post_status ) || 'publish' !== $post_obj->post_status ) {
 
 				if ( $this->p->debug->enabled ) {
 

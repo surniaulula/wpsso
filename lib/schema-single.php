@@ -1415,7 +1415,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					self::add_image_data_mt( $json_ret[ 'logo' ], $org_opts, $org_logo_key, false );	// $list_element is false.
 				}
 
-				if ( ! $mod[ 'is_post' ] || $mod[ 'post_status' ] === 'publish' ) {
+				if ( ! $mod[ 'is_post' ] || 'publish' === $mod[ 'post_status' ] ) {
 
 					if ( empty( $json_ret[ 'logo' ] ) ) {
 

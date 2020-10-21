@@ -748,7 +748,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				if ( ! isset( $mt_og[ 'article:published_time' ] ) ) {
 
-					if ( $mod[ 'post_status' ] === 'publish' ) {	// Must be published to have publish time.
+					if ( 'publish' === $mod[ 'post_status' ] ) {	// Must be published to have publish time.
+
 						$mt_og[ 'article:published_time' ] = trim( get_post_time( 'c', $gmt = true, $mod[ 'id' ] ) );
 					}
 				}

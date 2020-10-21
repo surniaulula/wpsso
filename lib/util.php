@@ -2348,7 +2348,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( ! empty( $mod[ 'id' ] ) ) {
 
-					if ( $mod[ 'post_status' ] !== 'publish' ) {
+					if ( 'publish' !== $mod[ 'post_status' ] ) {
 
 						$post_obj = self::get_post_object( $mod[ 'id' ], $output = 'object' );
 
@@ -2430,7 +2430,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( ! empty( $mod[ 'id' ] ) ) {
 
-					if ( $mod[ 'post_status' ] !== 'publish' ) {
+					if ( 'publish' !== $mod[ 'post_status' ] ) {
 
 						$post_obj = self::get_post_object( $mod[ 'id' ], $output = 'object' );
 
@@ -2575,7 +2575,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 							$this->p->debug->log( 'custom post ' . $type . '_url = ' . $url );
 						}
 
-					} elseif ( $mod[ 'post_status' ] !== 'publish' ) {
+					} elseif ( 'publish' !== $mod[ 'post_status' ] ) {
 
 						$post_obj = self::get_post_object( $mod[ 'id' ], $output = 'object' );
 

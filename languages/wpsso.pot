@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.9.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 8.9.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3416,15 +3416,15 @@ msgstr ""
 msgid "Yotpo for WooCommerce \"%s\" class does not exist."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:223 lib/pro/review/shopperapproved.php:148
+#: gettext/gettext-lib-pro.php:223 lib/pro/review/shopperapproved.php:157
 msgid "getting shopper approved ratings and reviews"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:224 lib/pro/review/shopperapproved.php:339
+#: gettext/gettext-lib-pro.php:224 lib/pro/review/shopperapproved.php:348
 msgid "There has been a previous error connecting to %s for caching."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:225 lib/pro/review/shopperapproved.php:342
+#: gettext/gettext-lib-pro.php:225 lib/pro/review/shopperapproved.php:351
 msgid ""
 "Requests to retrieve and cache this URL are ignored for another %d second(s)"
 msgstr ""
