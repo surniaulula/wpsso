@@ -698,7 +698,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				 */
 				$this->p->schema->get_schema_types_array( $flatten = true, $read_cache = false );
 
-				
+
 				/**
 				 * Remove the options from deprecated add-ons.
 				 */
