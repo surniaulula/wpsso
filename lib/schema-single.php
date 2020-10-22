@@ -1886,16 +1886,19 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			foreach ( $weekdays as $day_name => $day_label ) {
 
-				if ( ! empty( $place_opts[ 'place_day_' . $day_name ] ) ) {
+				/**
+				 * Returns an empty array or an associative array of open => close hours with timezone offset.
+				 */
+				$open_close = SucomUtil::get_open_close_hours_tz(
+					$place_opts,
+					'place_day_' . $day_name . '_open',
+					'place_midday_close',
+					'place_midday_open',
+					'place_day_' . $day_name . '_close',
+					'place_timezone'
+				);
 
-					$open_close = SucomUtil::get_open_close_hours(
-						$place_opts,
-						'place_day_' . $day_name . '_open',
-						'place_midday_close',
-						'place_midday_open',
-						'place_day_' . $day_name . '_close',
-						'place_timezone'
-					);
+				if ( ! empty( $open_close ) ) {
 
 					foreach ( $open_close as $open => $close ) {
 

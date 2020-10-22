@@ -1692,8 +1692,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					break;
 
 				case 'color':
-				case 'date':
-				case 'time':
+				case 'date':	// Empty or 'none' string, or date as yyyy-mm-dd.
+				case 'time':	// Empty or 'none' string, or time as hh:mm or hh:mm:ss.
 
 					$opt_val = trim( $opt_val );
 

@@ -457,74 +457,87 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		/**
 		 * Check if options need to be upgraded.
+		 *
+		 * Returns true or false.
+		 *
+		 * $md_opts is passed by reference so the array can be modified.
 		 */
 		protected function upgrade_options( array &$md_opts, $mod_id ) {
 
-			if ( ! empty( $md_opts ) && ( empty( $md_opts[ 'options_version' ] ) || $md_opts[ 'options_version' ] !== $this->p->cf[ 'opt' ][ 'version' ] ) ) {
-
-				/**
-				 * Save / create the current options version number for version checks to follow.
-				 */
-				$prev_version = empty( $md_opts[ 'plugin_' . $this->p->lca . '_opt_version' ] ) ?
-					0 : $md_opts[ 'plugin_' . $this->p->lca . '_opt_version' ];
-
-				$rename_filter_name = $this->p->lca . '_rename_md_options_keys';
-
-				$rename_options_keys = apply_filters( $rename_filter_name, self::$rename_md_options_keys );
-
-				$this->p->util->rename_opts_by_ext( $md_opts, $rename_options_keys );
-
-				/**
-				 * Check for schema type IDs that need to be renamed.
-				 */
-				$schema_type_keys_preg = 'schema_type|plm_place_schema_type';
-
-				foreach ( SucomUtil::preg_grep_keys( '/^(' . $schema_type_keys_preg . ')(_[0-9]+)?$/', $md_opts ) as $md_key => $md_val ) {
-
-					if ( ! empty( $this->p->cf[ 'head' ][ 'schema_renamed' ][ $md_val ] ) ) {
-
-						$md_opts[ $md_key ] = $this->p->cf[ 'head' ][ 'schema_renamed' ][ $md_val ];
-					}
-				}
-
-				/**
-				 * Import and delete deprecated robots post metadata.
-				 */
-				if ( $prev_version > 0 && $prev_version <= 759 ) {
-
-					foreach ( array(
-						'noarchive',
-						'nofollow',
-						'noimageindex',
-						'noindex',
-						'nosnippet',
-						'notranslate',
-					) as $directive ) {
-
-						$opt_key = SucomUtil::sanitize_hookname( 'robots_' . $directive );
-
-						$meta_key = SucomUtil::sanitize_hookname( '_' . $this->p->lca . '_' . $directive );
-
-						$value = static::get_meta( $mod_id, $meta_key, $single = true );	// Use static method from child.
-
-						if ( '' !== $value ) {
-
-							$md_opts[ $opt_key ] = (int) $value;
-
-							static::delete_meta( $mod_id, $meta_key );	// Use static method from child.
-						}
-					}
-				}
-
-				/**
-				 * Mark options as current.
-				 */
-				$md_opts[ 'options_version' ] = $this->p->cf[ 'opt' ][ 'version' ];
-
-				return true;
+			if ( empty( $md_opts ) ) {
+			
+				return false;
+			}
+			
+			if ( isset( $md_opts[ 'options_version' ] ) && $md_opts[ 'options_version' ] === $this->p->cf[ 'opt' ][ 'version' ] ) {
+				
+				return false;
 			}
 
-			return false;
+			/**
+			 * Save / create the current options version number for version checks to follow.
+			 */
+			$version_key = 'plugin_' . $this->p->lca . '_opt_version';
+
+			$prev_version = empty( $md_opts[ $version_key ] ) ? 0 : $md_opts[ $version_key ];
+
+			$rename_filter_name = $this->p->lca . '_rename_md_options_keys';
+			$upgraded_filter_name = $this->p->lca . '_upgraded_md_options';
+
+			$rename_options_keys = apply_filters( $rename_filter_name, self::$rename_md_options_keys );
+
+			$this->p->util->rename_opts_by_ext( $md_opts, $rename_options_keys );
+
+			/**
+			 * Check for schema type IDs that need to be renamed.
+			 */
+			$schema_type_keys_preg = 'schema_type|plm_place_schema_type';
+
+			foreach ( SucomUtil::preg_grep_keys( '/^(' . $schema_type_keys_preg . ')(_[0-9]+)?$/', $md_opts ) as $md_key => $md_val ) {
+
+				if ( ! empty( $this->p->cf[ 'head' ][ 'schema_renamed' ][ $md_val ] ) ) {
+
+					$md_opts[ $md_key ] = $this->p->cf[ 'head' ][ 'schema_renamed' ][ $md_val ];
+				}
+			}
+
+			/**
+			 * Import and delete deprecated robots post metadata.
+			 */
+			if ( $prev_version > 0 && $prev_version <= 759 ) {
+
+				foreach ( array(
+					'noarchive',
+					'nofollow',
+					'noimageindex',
+					'noindex',
+					'nosnippet',
+					'notranslate',
+				) as $directive ) {
+
+					$opt_key = SucomUtil::sanitize_hookname( 'robots_' . $directive );
+
+					$meta_key = SucomUtil::sanitize_hookname( '_' . $this->p->lca . '_' . $directive );
+
+					$value = static::get_meta( $mod_id, $meta_key, $single = true );	// Use static method from child.
+
+					if ( '' !== $value ) {
+
+						$md_opts[ $opt_key ] = (int) $value;
+
+						static::delete_meta( $mod_id, $meta_key );	// Use static method from child.
+					}
+				}
+			}
+		
+			$md_opts = apply_filters( $upgraded_filter_name, $md_opts );
+
+			/**
+			 * Mark options as current.
+			 */
+			$md_opts[ 'options_version' ] = $this->p->cf[ 'opt' ][ 'version' ];
+
+			return true;
 		}
 
 		/**

@@ -1076,6 +1076,27 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
+		public static function is_valid_day( $hm_o, $hm_c ) {
+
+			/**
+			 * Performa a quick sanitation before using strtotime().
+			 */
+			if ( empty( $hm_o ) || empty( $hm_c ) || 'none' === $hm_o || 'none' === $hm_c ) {
+
+				return false;
+			}
+
+			$hm_o_time = strtotime( $hm_o );
+			$hm_c_time = strtotime( $hm_c );
+
+			if ( $hm_o_time < $hm_c_time ) {
+
+				return true;
+			}
+
+			return false;
+		}
+
 		/**
 		 * Checks for 'none' and invalid times for midday close and open.
 		 */
@@ -1084,16 +1105,30 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			/**
 			 * Performa a quick sanitation before using strtotime().
 			 */
-			if ( empty( $hm_midday_c ) || empty( $hm_midday_o ) || $hm_midday_c === 'none' || $hm_midday_o === 'none' ) {
+			if ( empty( $hm_o ) || empty( $hm_c ) || 'none' === $hm_o || 'none' === $hm_c ) {
 
 				return false;
 			}
 
-			if ( strtotime( $hm_midday_c ) < strtotime( $hm_midday_o ) &&
-				strtotime( $hm_o ) < strtotime( $hm_midday_c ) &&
-					strtotime( $hm_midday_o ) < strtotime( $hm_c ) ) {
+			if ( empty( $hm_midday_c ) || empty( $hm_midday_o ) || 'none' === $hm_midday_c || 'none' === $hm_midday_o ) {
 
-				return true;
+				return false;
+			}
+
+			$hm_o_time        = strtotime( $hm_o );
+			$hm_midday_c_time = strtotime( $hm_midday_c );
+			$hm_midday_o_time = strtotime( $hm_midday_o );
+			$hm_c_time        = strtotime( $hm_c );
+
+			if ( $hm_o_time < $hm_midday_c_time ) {
+
+				if ( $hm_midday_c_time < $hm_midday_o_time ) {
+
+					if ( $hm_midday_o_time < $hm_c_time ) {
+
+						return true;
+					}
+				}
 			}
 
 			return false;
@@ -1575,49 +1610,60 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_open_close( array $opts, $key_o, $key_midday_close, $key_midday_o, $key_c ) {
 
-			return self::get_open_close_hours( $opts, $key_o, $key_midday_close, $key_midday_o, $key_c );
+			return self::get_open_close_hours_tz( $opts, $key_o, $key_midday_close, $key_midday_o, $key_c );
 		}
 
 		/**
-		 * Returns an associative array of open => close hours.
+		 * Returns an empty array or an associative array of open => close hours with timezone offset.
 		 */
-		public static function get_open_close_hours( array $opts, $key_o, $key_midday_c, $key_midday_o, $key_c, $key_tz = '' ) {
+		public static function get_open_close_hours_tz( array $opts, $key_o, $key_midday_c, $key_midday_o, $key_c, $key_tz = '' ) {
 
-			$oc_pairs = array();
+			$oc_pairs        = array();
+			$is_valid_day    = false;
+			$is_valid_midday = false;
 
-			if ( ! empty( $opts[ $key_o ] ) && ! empty( $opts[ $key_c ] ) ) {	// Have opening and closing hours.
+			if ( ! empty( $opts[ $key_o ] ) && ! empty( $opts[ $key_c ] ) ) {
 
-				$timezone  = empty( $key_tz ) || empty( $opts[ $key_tz ] ) ? SucomUtilWP::get_default_timezone() : $opts[ $key_tz ];
-				$tz_offset = 'Z' . self::get_timezone_offset_hours( $timezone );
-				$hm_tz_o   = $opts[ $key_o ] . $tz_offset;
-				$hm_tz_c   = $opts[ $key_c ] . $tz_offset;
-
-				$oc_pairs[ $hm_tz_o ] = $hm_tz_c;
+				$is_valid_day = self::is_valid_day( $opts[ $key_o ], $opts[ $key_c ] );
 
 				if ( ! empty( $opts[ $key_midday_c ] ) && ! empty( $opts[ $key_midday_o ] ) ) {
 
-					/**
-					 * Checks for 'none' and invalid times for midday close and open.
-					 */
-					$is_valid_midday = self::is_valid_midday(
-						$opts[ $key_o ],
-						$opts[ $key_midday_c ],
-						$opts[ $key_midday_o ],
-						$opts[ $key_c ]
-					);
+					$is_valid_midday = self::is_valid_midday( $opts[ $key_o ], $opts[ $key_midday_c ], $opts[ $key_midday_o ], $opts[ $key_c ] );
+				}
+
+				if ( $is_valid_day ) {
+
+					$timezone  = empty( $key_tz ) || empty( $opts[ $key_tz ] ) ? SucomUtilWP::get_default_timezone() : $opts[ $key_tz ];
+					$tz_offset = self::get_timezone_offset_hours( $timezone );
+					$hm_tz_o   = self::get_hm_tz( $opts[ $key_o ], $tz_offset );
+					$hm_tz_c   = self::get_hm_tz( $opts[ $key_c ], $tz_offset );
 
 					if ( $is_valid_midday ) {
 
-						$hm_tz_midday_c = $opts[ $key_midday_c ] . $tz_offset;
-						$hm_tz_midday_o = $opts[ $key_midday_o ] . $tz_offset;
-
+						$hm_tz_midday_c = self::get_hm_tz( $opts[ $key_midday_c ], $tz_offset );
+						$hm_tz_midday_o = self::get_hm_tz( $opts[ $key_midday_o ], $tz_offset );
+	
 						$oc_pairs[ $hm_tz_o ]        = $hm_tz_midday_c;
 						$oc_pairs[ $hm_tz_midday_o ] = $hm_tz_c;
+
+					} else {
+
+						$oc_pairs[ $hm_tz_o ] = $hm_tz_c;
 					}
 				}
 			}
 
 			return $oc_pairs;
+		}
+
+		private static function get_hm_tz( $hm, $tz_offset ) {
+
+			if ( false === strpos( $hm, 'Z' ) ) {
+			
+				return $hm . 'Z' . $tz_offset;
+			}
+
+			return $hm;
 		}
 
 		public static function get_opts_begin( $str, array $opts ) {
@@ -3904,7 +3950,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_alpha2_country_name( $country_code, $default_code = false ) {
 
-			if ( empty( $country_code ) || $country_code === 'none' ) {
+			if ( empty( $country_code ) || 'none' === $country_code ) {
 
 				return false;
 			}

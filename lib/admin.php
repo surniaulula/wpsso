@@ -25,7 +25,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected $menu_id;
 		protected $menu_name;
 		protected $menu_lib;
-		protected $menu_ext;
+		protected $menu_ext;	// Lowercase acronyn for plugin or add-on.
 		protected $pagehook;
 		protected $pageref_url;
 		protected $pageref_title;
@@ -295,7 +295,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->menu_id   = key( $libs );
 			$this->menu_name = $libs[ $this->menu_id ];
 			$this->menu_lib  = $menu_lib;
-			$this->menu_ext  = $this->p->lca;
+			$this->menu_ext  = $this->p->lca;	// Lowercase acronyn for plugin or add-on.
 
 			if ( isset( $this->submenu[ $this->menu_id ] ) ) {
 
@@ -456,6 +456,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		/**
 		 * Called by show_setting_page() and extended by the sitesubmenu classes to load site options instead.
+		 *
+		 * $menu_ext is the lowercase acronyn for the plugin or add-on.
 		 */
 		protected function set_form_object( $menu_ext ) {	// $menu_ext required for text_domain.
 
@@ -471,6 +473,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->form = new SucomForm( $this->p, WPSSO_OPTIONS_NAME, $this->p->options, $def_opts, $menu_ext );
 		}
 
+		/**
+		 * $menu_ext is the lowercase acronyn for the plugin or add-on.
+		 */
 		public function &get_form_object( $menu_ext ) {	// $menu_ext required for text_domain.
 
 			if ( $this->p->debug->enabled ) {

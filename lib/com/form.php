@@ -27,9 +27,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		private $p;
 		private $lca;
 		private $opts_name          = null;
-		private $menu_ext           = null;	// Lca or ext lowercase acronym.
-		private $text_domain        = false;	// Lca or ext text domain.
-		private $def_text_domain    = false;	// Lca text domain (fallback).
+		private $menu_ext           = null;	// Lowercase acronyn for plugin or add-on.
+		private $text_domain        = false;	// Text domain for plugin or add-on.
+		private $def_text_domain    = false;	// Default text domain (fallback).
 		private $show_hide_js_added = false;
 		private $json_array_added   = array();
 
@@ -51,7 +51,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$this->opts_name =& $opts_name;
 			$this->options   =& $opts;
 			$this->defaults  =& $def_opts;
-			$this->menu_ext  = empty( $menu_ext ) ? $this->lca : $menu_ext;	// Lca or ext lowercase acronym.
+			$this->menu_ext  = empty( $menu_ext ) ? $this->lca : $menu_ext;	// Lowercase acronyn for plugin or add-on.
 
 			$this->set_text_domain( $this->menu_ext );
 
@@ -63,6 +63,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->opts_name;
 		}
 
+		/**
+		 * $menu_ext is the lowercase acronyn for the plugin or add-on.
+		 */
 		public function get_menu_ext() {
 
 			return $this->menu_ext;
@@ -78,9 +81,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->def_text_domain;
 		}
 
-		public function set_text_domain( $maybe_ext ) {
+		/**
+		 * $menu_ext is the lowercase acronyn for the plugin or add-on.
+		 */
+		public function set_text_domain( $menu_ext ) {
 
-			$this->text_domain = $this->get_plugin_text_domain( $maybe_ext );
+			$this->text_domain = $this->get_plugin_text_domain( $menu_ext );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -88,9 +94,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 		}
 
-		public function set_default_text_domain( $maybe_ext ) {
+		/**
+		 * $menu_ext is the lowercase acronyn for the plugin or add-on.
+		 */
+		public function set_default_text_domain( $menu_ext ) {
 
-			$this->def_text_domain = $this->get_plugin_text_domain( $maybe_ext );
+			$this->def_text_domain = $this->get_plugin_text_domain( $menu_ext );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -98,10 +107,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 		}
 
-		public function get_plugin_text_domain( $maybe_ext ) {
+		/**
+		 * $menu_ext is the lowercase acronyn for the plugin or add-on.
+		 */
+		public function get_plugin_text_domain( $menu_ext ) {
 
-			return isset( $this->p->cf[ 'plugin' ][ $maybe_ext ][ 'text_domain' ] ) ?
-				$this->p->cf[ 'plugin' ][ $maybe_ext ][ 'text_domain' ] : $maybe_ext;
+			return isset( $this->p->cf[ 'plugin' ][ $menu_ext ][ 'text_domain' ] ) ?
+				$this->p->cf[ 'plugin' ][ $menu_ext ][ 'text_domain' ] : $menu_ext;
 		}
 
 		public function get_value_transl( $value ) {

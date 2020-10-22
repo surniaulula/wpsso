@@ -353,6 +353,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				/**
 				 * Check if options need to be upgraded and saved.
+				 *
+				 * Returns true or false.
+				 *
+				 * $md_opts is passed by reference so the array can be modified.
 				 */
 				if ( $this->upgrade_options( $md_opts, $post_id ) ) {
 

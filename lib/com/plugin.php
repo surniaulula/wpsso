@@ -19,8 +19,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 
 		private static $get_plugins_cache = null;	// Common cache for get_plugins() and clear_plugins().
 
-		public function __construct() {
-		}
+		public function __construct() {}
 
 		public static function get_wp_plugin_dir() {
 

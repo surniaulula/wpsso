@@ -591,6 +591,10 @@ table.sucom-settings td.blank {
 	border:1px dotted #e3e3e3;
 }
 
+table.sucom-settings table.business_hours td.blank {
+	min-width:auto;
+}
+
 table.sucom-settings td.blank a {
 	color:#999;
 }

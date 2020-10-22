@@ -63,7 +63,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_columns_taxonomy'        => 'plugin_columns_term',
 					'plugin_add_to_taxonomy'         => '',	// Replaced by "plugin_add_to_tax_{tax_slug}" options.
 					'plugin_ignore_small_img'        => 'plugin_check_img_dims',
-					'plugin_file_cache_exp'          => 'plugin_social_file_cache_exp',
+					'plugin_file_cache_exp'          => '',
 					'plugin_object_cache_exp'        => '',
 					'buttons_use_social_css'         => 'buttons_use_social_style',
 					'buttons_enqueue_social_css'     => 'buttons_enqueue_social_style',
@@ -402,7 +402,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				500 => array(
 					'plugin_tid'              => 'plugin_wpsso_tid',
 					'plugin_ignore_small_img' => 'plugin_check_img_dims',
-					'plugin_file_cache_exp'   => 'plugin_social_file_cache_exp',
+					'plugin_file_cache_exp'   => '',
 					'plugin_object_cache_exp' => '',
 					'plugin_cache_info'       => '',
 					'plugin_verify_certs'     => '',
@@ -479,26 +479,13 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 			/**
 			 * Save / create the current options version number for version checks to follow.
 			 */
-			$prev_version = empty( $opts[ 'plugin_' . $this->p->lca . '_opt_version' ] ) ?
-				0 : $opts[ 'plugin_' . $this->p->lca . '_opt_version' ];
+			$version_key = 'plugin_' . $this->p->lca . '_opt_version';
 
-			/**
-			 * Adjust before renaming the option key(s).
-			 */
-			if ( $prev_version > 0 && $prev_version <= 342 ) {
-
-				if ( ! empty( $opts[ 'plugin_file_cache_hrs' ] ) ) {
-
-					$opts[ 'plugin_social_file_cache_exp' ] = $opts[ 'plugin_file_cache_hrs' ] * HOUR_IN_SECONDS;
-				}
-
-				unset( $opts[ 'plugin_file_cache_hrs' ] );
-			}
+			$prev_version = empty( $opts[ $version_key ] ) ? 0 : $opts[ $version_key ];
 
 			if ( $options_name === constant( 'WPSSO_OPTIONS_NAME' ) ) {
 
-				$rename_filter_name = $this->p->lca . '_rename_options_keys';
-
+				$rename_filter_name   = $this->p->lca . '_rename_options_keys';
 				$upgraded_filter_name = $this->p->lca . '_upgraded_options';
 
 				$rename_options_keys = apply_filters( $rename_filter_name, self::$rename_options_keys );
@@ -742,8 +729,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 
 			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) ) {
 
-				$rename_filter_name = $this->p->lca . '_rename_site_options_keys';
-
+				$rename_filter_name   = $this->p->lca . '_rename_site_options_keys';
 				$upgraded_filter_name = $this->p->lca . '_upgraded_site_options';
 
 				$this->p->util->rename_opts_by_ext( $opts, apply_filters( $rename_filter_name, self::$rename_site_options_keys ) );
