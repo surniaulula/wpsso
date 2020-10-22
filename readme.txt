@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 5.6
 Requires At Least: 4.4
 Tested Up To: 5.5.1
-WC Tested Up To: 4.6.0
+WC Tested Up To: 4.6.1
 Stable Tag: 8.8.1
 
 Make sure your content looks great on social sites and in search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded.
@@ -310,7 +310,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.9.0-dev.4 (2020/10/21)**
+**Version 8.9.0-dev.5 (2020/10/22)**
 
 * **New Features**
 	* None.
@@ -612,9 +612,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.9.0-dev.4 =
+= 8.9.0-dev.5 =
 
-(2020/10/21) Updated the markdown library used to parse WordPress readme files.
+(2020/10/22) Updated the markdown library used to parse WordPress readme files.
 
 = 8.8.1 =
 
