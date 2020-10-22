@@ -1091,6 +1091,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_select_time_none( $name, $css_class = '', $css_id = '', $is_disabled = false, $selected = false, $step_mins = 15 ) {
 
+			/**
+			 * Set 'none' as the default value is no default is defined.
+			 */
+			if ( ! empty( $name ) && ! isset( $this->defaults[ $name ] ) ) {
+
+				$this->defaults[ $name ] = 'none';
+			}
+
 			return $this->get_select_time( $name, $css_class, $css_id, $is_disabled, $selected, $step_mins, $add_none = true );
 		}
 
@@ -2108,12 +2116,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_no_select_time_none( $name, $css_class = '', $css_id = '', $selected = false, $step_mins = 15 ) {
 
-			return $this->get_select_time( $name, $css_class, $css_id, $is_disabled = true, $selected, $step_mins, $add_none = true );
-		}
+			/**
+			 * Set 'none' as the default value is no default is defined.
+			 */
+			if ( ! empty( $name ) && ! isset( $this->defaults[ $name ] ) ) {
 
-		public function get_no_select_time_options_none( $name, array $opts, $css_class = '', $css_id = '', $step_mins = 15 ) {
-
-			$selected = isset( $opts[ $name ] ) ? $opts[ $name ] : true;
+				$this->defaults[ $name ] = 'none';
+			}
 
 			return $this->get_select_time( $name, $css_class, $css_id, $is_disabled = true, $selected, $step_mins, $add_none = true );
 		}
@@ -2123,6 +2132,21 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$selected = isset( $opts[ $name ] ) ? $opts[ $name ] : true;
 
 			return $this->get_select_time( $name, $css_class, $css_id, $is_disabled = true, $selected, $step_mins, $add_none );
+		}
+
+		public function get_no_select_time_options_none( $name, array $opts, $css_class = '', $css_id = '', $step_mins = 15 ) {
+
+			/**
+			 * Set 'none' as the default value is no default is defined.
+			 */
+			if ( ! empty( $name ) && ! isset( $this->defaults[ $name ] ) ) {
+
+				$this->defaults[ $name ] = 'none';
+			}
+
+			$selected = isset( $opts[ $name ] ) ? $opts[ $name ] : true;
+
+			return $this->get_select_time( $name, $css_class, $css_id, $is_disabled = true, $selected, $step_mins, $add_none = true );
 		}
 
 		public function get_no_select_timezone( $name, $css_class = '', $css_id = '', $selected = false ) {
