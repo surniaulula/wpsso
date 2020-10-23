@@ -24,7 +24,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 	class WpssoUtil extends SucomUtil {
 
-		private $p;		// Wpsso.
+		private $p;	// Wpsso class object.
 
 		private $cache_uniq_urls   = array();	// Array to detect duplicate images, etc.
 		private $cache_size_labels = array();	// Array for image size labels.

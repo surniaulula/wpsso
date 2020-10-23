@@ -19,7 +19,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 	class WpssoMessages {
 
-		private $p;
+		private $p;	// Wpsso class object.
 
 		/**
 		 * Instantiated by Wpsso->set_objects() when is_admin() is true.

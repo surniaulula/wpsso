@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.9.0-dev.5\n"
+"Project-Id-Version: WPSSO Core 8.9.0-dev.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -631,182 +631,182 @@ msgid ""
 "the Media library?</a>"
 msgstr ""
 
-#: gettext/gettext-lib-abstracts-com.php:6 lib/abstracts/com/add-on.php:161
+#: gettext/gettext-lib-abstracts-com.php:6 lib/abstracts/com/add-on.php:162
 msgid ""
 "The %1$s add-on requires the %2$s plugin &mdash; please activate the missing "
 "plugin."
 msgstr ""
 
-#: gettext/gettext-lib-abstracts-com.php:7 lib/abstracts/com/add-on.php:179
+#: gettext/gettext-lib-abstracts-com.php:7 lib/abstracts/com/add-on.php:180
 msgid ""
 "The %1$s add-on requires %2$s version %3$s or newer (version %4$s is "
 "currently installed)."
 msgstr ""
 
 #: gettext/gettext-lib-com.php:6 gettext/gettext-lib-com.php:30
-#: gettext/gettext-lib-com.php:37 lib/com/bfo.php:266 lib/com/cache.php:94
-#: lib/com/notice.php:109
+#: gettext/gettext-lib-com.php:37 lib/com/bfo.php:267 lib/com/cache.php:95
+#: lib/com/notice.php:110
 msgid "%s Notice"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:7 gettext/gettext-lib-com.php:31
-#: gettext/gettext-lib-com.php:38 lib/com/bfo.php:271 lib/com/cache.php:99
-#: lib/com/notice.php:114
+#: gettext/gettext-lib-com.php:38 lib/com/bfo.php:272 lib/com/cache.php:100
+#: lib/com/notice.php:115
 msgid "Notice"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:8 lib/com/cache.php:179
+#: gettext/gettext-lib-com.php:8 lib/com/cache.php:180
 msgid ""
 "Error retrieving %1$s for caching (HTTP code %2$d after %3$.03f seconds)."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:9 lib/com/cache.php:184
+#: gettext/gettext-lib-com.php:9 lib/com/cache.php:185
 msgid "Error retrieving %1$s for caching (HTTP code %2$d)."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:10 lib/com/cache.php:192
+#: gettext/gettext-lib-com.php:10 lib/com/cache.php:193
 msgid "Error retrieving %1$s for caching (after %2$.03f seconds)."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:11 lib/com/cache.php:197
+#: gettext/gettext-lib-com.php:11 lib/com/cache.php:198
 msgid "Error retrieving %1$s for caching."
 msgstr ""
 
 #: gettext/gettext-lib-com.php:12 gettext/gettext-lib-com.php:15
-#: lib/com/cache.php:214 lib/com/cache.php:231
+#: lib/com/cache.php:215 lib/com/cache.php:232
 msgid ""
 "The PHP \"%s\" setting is enabled &mdash; the PHP cURL library cannot follow "
 "URL redirects."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:13 lib/com/cache.php:217
+#: gettext/gettext-lib-com.php:13 lib/com/cache.php:218
 msgid ""
 "The \"%s\" setting is deprecated since PHP version 5.3 and removed from PHP "
 "since version 5.4."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:14 lib/com/cache.php:220
+#: gettext/gettext-lib-com.php:14 lib/com/cache.php:221
 msgid ""
 "Please contact your hosting provider to have this setting disabled or "
 "install a newer version of PHP."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:16 lib/com/cache.php:234
+#: gettext/gettext-lib-com.php:16 lib/com/cache.php:235
 msgid "Please contact your hosting provider to have this setting disabled."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:17 lib/com/cache.php:239
+#: gettext/gettext-lib-com.php:17 lib/com/cache.php:240
 msgid "The maximum number of URL redirects (%d) may have been exceeded."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:18 lib/com/cache.php:244
+#: gettext/gettext-lib-com.php:18 lib/com/cache.php:245
 msgid ""
 "Additional requests to retrieve and cache this URL will be ignored for "
 "another %d second(s)."
 msgstr ""
 
 #: gettext/gettext-lib-com.php:19 gettext/gettext-lib-com.php:21
-#: lib/com/cache.php:443 lib/com/cache.php:616 lib/util-cache.php:229
+#: lib/com/cache.php:444 lib/com/cache.php:617 lib/util-cache.php:229
 msgid "Error removing cache file %s."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:20 lib/com/cache.php:506
+#: gettext/gettext-lib-com.php:20 lib/com/cache.php:507
 msgid ""
 "PHP cURL library missing &mdash; contact your hosting provider to have the "
 "cURL library installed."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:22 lib/com/cache.php:866
+#: gettext/gettext-lib-com.php:22 lib/com/cache.php:867
 msgid "Cache file %s is not readable."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:23 lib/com/cache.php:888
+#: gettext/gettext-lib-com.php:23 lib/com/cache.php:889
 msgid "Failed to open the cache file %s for reading."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:24 lib/com/cache.php:994
+#: gettext/gettext-lib-com.php:24 lib/com/cache.php:995
 msgid "Failed to create the %s cache folder."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1009
+#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1010
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1024
+#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1025
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1054
+#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1055
 msgid "Failed writing data to cache file %s."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:28 lib/com/form.php:1369
+#: gettext/gettext-lib-com.php:28 lib/com/form.php:1370
 msgctxt "option comment"
 msgid "crop"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:29 lib/com/form.php:1371
+#: gettext/gettext-lib-com.php:29 lib/com/form.php:1372
 msgctxt "option comment"
 msgid "from"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:32 lib/com/notice.php:311
+#: gettext/gettext-lib-com.php:32 lib/com/notice.php:312
 msgid "Forever"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:33 lib/com/notice.php:313
+#: gettext/gettext-lib-com.php:33 lib/com/notice.php:314
 msgid "This notice can be dismissed permanently."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:34 lib/com/notice.php:325
+#: gettext/gettext-lib-com.php:34 lib/com/notice.php:326
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:35 lib/com/notice.php:535
+#: gettext/gettext-lib-com.php:35 lib/com/notice.php:536
 msgid "Edit"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:36 lib/com/notice.php:539
+#: gettext/gettext-lib-com.php:36 lib/com/notice.php:540
 msgid "Reference: %s"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:39 lib/com/bfo.php:287
+#: gettext/gettext-lib-com.php:39 lib/com/bfo.php:288
 msgid ""
 "The \"%1$s\" hook with priority %2$d in the \"%3$s\" filter has incorrectly "
 "sent output to the webpage."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:40 lib/com/bfo.php:290
+#: gettext/gettext-lib-com.php:40 lib/com/bfo.php:291
 msgid ""
 "Unlike WordPress actions, WordPress filters must always return their text, "
 "not echo it to the webpage output."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:41 lib/com/bfo.php:293
+#: gettext/gettext-lib-com.php:41 lib/com/bfo.php:294
 msgid ""
 "Please contact the author of that filter and report this issue as a coding "
 "error."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:42 lib/com/bfo.php:336
+#: gettext/gettext-lib-com.php:42 lib/com/bfo.php:337
 msgid "Incorrect webpage output:"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:43 lib/com/bfo.php:337
+#: gettext/gettext-lib-com.php:43 lib/com/bfo.php:338
 msgid "BEGIN OUTPUT"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:44 lib/com/bfo.php:338
+#: gettext/gettext-lib-com.php:44 lib/com/bfo.php:339
 msgid "END OUTPUT"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:46 lib/com/plugin.php:299
+#: gettext/gettext-lib-com.php:46 lib/com/plugin.php:296
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:48 lib/com/plugin.php:310
+#: gettext/gettext-lib-com.php:48 lib/com/plugin.php:307
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
@@ -2803,7 +2803,7 @@ msgid "Bitly (URL Shortener)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:74 gettext/gettext-lib-pro.php:175
-#: lib/pro/admin/advanced.php:410 lib/pro/util/shorten.php:320
+#: lib/pro/admin/advanced.php:410 lib/pro/util/shorten.php:321
 #: lib/std/admin/advanced.php:421
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
@@ -2828,7 +2828,7 @@ msgid "DLMY.App (URL Shortener)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:78 gettext/gettext-lib-pro.php:177
-#: lib/pro/admin/advanced.php:428 lib/pro/util/shorten.php:346
+#: lib/pro/admin/advanced.php:428 lib/pro/util/shorten.php:347
 #: lib/std/admin/advanced.php:439
 msgctxt "option label"
 msgid "DLMY.App API Key"
@@ -2841,7 +2841,7 @@ msgid "Ow.ly (URL Shortener)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:80 gettext/gettext-lib-pro.php:179
-#: lib/pro/admin/advanced.php:438 lib/pro/util/shorten.php:370
+#: lib/pro/admin/advanced.php:438 lib/pro/util/shorten.php:371
 #: lib/std/admin/advanced.php:449
 msgctxt "option label"
 msgid "Ow.ly API Key"
@@ -2896,7 +2896,7 @@ msgid "YOURLS (URL Shortener)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:90 gettext/gettext-lib-pro.php:181
-#: lib/pro/admin/advanced.php:477 lib/pro/util/shorten.php:411
+#: lib/pro/admin/advanced.php:477 lib/pro/util/shorten.php:412
 #: lib/std/admin/advanced.php:488
 msgctxt "option label"
 msgid "YOURLS API URL"
@@ -3242,13 +3242,13 @@ msgid ""
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:171 lib/pro/social/buddypress.php:101
-#: lib/std/social/buddypress.php:52
+#: lib/std/social/buddypress.php:55
 msgctxt "option label"
 msgid "BuddyPress Member Bio Field Name"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:172 lib/pro/social/buddypress.php:121
-#: lib/std/social/buddypress.php:69
+#: lib/std/social/buddypress.php:73
 msgid ""
 "The BuddyPress member profile page does not include the <em>Biographical "
 "Info</em> text from the WordPress user profile. If you've created an "
@@ -3265,25 +3265,25 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:174 gettext/gettext-lib-pro.php:176
 #: gettext/gettext-lib-pro.php:178 gettext/gettext-lib-pro.php:180
-#: lib/pro/util/shorten.php:319 lib/pro/util/shorten.php:345
-#: lib/pro/util/shorten.php:369 lib/pro/util/shorten.php:410
+#: lib/pro/util/shorten.php:320 lib/pro/util/shorten.php:346
+#: lib/pro/util/shorten.php:370 lib/pro/util/shorten.php:411
 msgid "The \"%s\" option value is empty and required."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:182 gettext/gettext-lib-pro.php:184
 #: gettext/gettext-lib-pro.php:215 lib/conflict.php:111 lib/loader.php:171
 #: lib/loader.php:185 lib/pro/review/yotpowc.php:203
-#: lib/pro/util/shorten.php:454 lib/pro/util/shorten.php:491
+#: lib/pro/util/shorten.php:455 lib/pro/util/shorten.php:492
 msgid "%s error:"
 msgstr ""
 
 #. translators: %s is the service id.
-#: gettext/gettext-lib-pro.php:183 lib/pro/util/shorten.php:457
+#: gettext/gettext-lib-pro.php:183 lib/pro/util/shorten.php:458
 msgid "Incomplete API options to instantiate the \"%s\" shortening service."
 msgstr ""
 
 #. translators: %s is the shortening service id.
-#: gettext/gettext-lib-pro.php:185 lib/pro/util/shorten.php:494
+#: gettext/gettext-lib-pro.php:185 lib/pro/util/shorten.php:495
 msgid "The URL shortening library file for \"%s\" is missing and required."
 msgstr ""
 
@@ -3441,42 +3441,42 @@ msgctxt "option value"
 msgid "[%s Location]"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:701
+#: lib/abstracts/wp-meta.php:702
 msgctxt "metabox tab"
 msgid "Customize"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:702 lib/messages.php:2567
+#: lib/abstracts/wp-meta.php:703 lib/messages.php:2567
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:708
+#: lib/abstracts/wp-meta.php:709
 msgctxt "metabox tab"
 msgid "Robots Meta"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:711
+#: lib/abstracts/wp-meta.php:712
 msgctxt "metabox tab"
 msgid "Preview"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:712
+#: lib/abstracts/wp-meta.php:713
 msgctxt "metabox tab"
 msgid "oEmbed"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:713
+#: lib/abstracts/wp-meta.php:714
 msgctxt "metabox tab"
 msgid "Head Markup"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:714
+#: lib/abstracts/wp-meta.php:715
 msgctxt "metabox tab"
 msgid "Validate"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1018
+#: lib/abstracts/wp-meta.php:1019
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
@@ -4664,7 +4664,7 @@ msgctxt "option label"
 msgid "Preferred Cropping"
 msgstr ""
 
-#: lib/edit.php:127 lib/script.php:386
+#: lib/edit.php:127 lib/script.php:387
 msgctxt "option label"
 msgid "Schema Type"
 msgstr ""
@@ -8110,32 +8110,32 @@ msgstr ""
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:101 lib/pro/forum/bbpress.php:192
+#: lib/pro/forum/bbpress.php:102 lib/pro/forum/bbpress.php:193
 msgctxt "bbpress single user description"
 msgid "%s's Profile"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:201
+#: lib/pro/forum/bbpress.php:202
 msgctxt "bbpress single user description"
 msgid "%s's Topics Started"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:207
+#: lib/pro/forum/bbpress.php:208
 msgctxt "bbpress single user description"
 msgid "%s's Replies Created"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:213
+#: lib/pro/forum/bbpress.php:214
 msgctxt "bbpress single user description"
 msgid "%s's Favorites"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:219
+#: lib/pro/forum/bbpress.php:220
 msgctxt "bbpress single user description"
 msgid "%s's Subscriptions"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:225
+#: lib/pro/forum/bbpress.php:226
 msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr ""
@@ -8223,39 +8223,39 @@ msgstr ""
 msgid "adding schema"
 msgstr ""
 
-#: lib/script.php:393
+#: lib/script.php:394
 msgid "No %s notifications."
 msgstr ""
 
-#: lib/script.php:397
+#: lib/script.php:398
 msgid "Copy notifications to clipboard."
 msgstr ""
 
-#: lib/script.php:418
+#: lib/script.php:419
 msgid "Copied to clipboard."
 msgstr ""
 
-#: lib/script.php:419
+#: lib/script.php:420
 msgid "Value linked to %s option"
 msgstr ""
 
-#: lib/script.php:420
+#: lib/script.php:421
 msgid "{0} of {1} characters minimum"
 msgstr ""
 
-#: lib/script.php:421
+#: lib/script.php:422
 msgid "{0} of {1} characters required"
 msgstr ""
 
-#: lib/script.php:422
+#: lib/script.php:423
 msgid "{0} of {1} characters maximum"
 msgstr ""
 
-#: lib/script.php:423
+#: lib/script.php:424
 msgid "{0} characters"
 msgstr ""
 
-#: lib/script.php:433
+#: lib/script.php:434
 msgid "Select Image"
 msgstr ""
 
@@ -8994,91 +8994,91 @@ msgid "show these rows now"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:253
+#: lib/util-woocommerce.php:254
 msgid "mm"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:256
+#: lib/util-woocommerce.php:257
 msgid "cm"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:259
+#: lib/util-woocommerce.php:260
 msgid "m"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:262
+#: lib/util-woocommerce.php:263
 msgid "in"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:265
+#: lib/util-woocommerce.php:266
 msgid "yd"
 msgstr ""
 
-#: lib/util-woocommerce.php:299
+#: lib/util-woocommerce.php:300
 msgid "ml"
 msgstr ""
 
-#: lib/util-woocommerce.php:300
+#: lib/util-woocommerce.php:301
 msgid "cl"
 msgstr ""
 
-#: lib/util-woocommerce.php:301
+#: lib/util-woocommerce.php:302
 msgid "l"
 msgstr ""
 
-#: lib/util-woocommerce.php:302
+#: lib/util-woocommerce.php:303
 msgid "kl"
 msgstr ""
 
-#: lib/util-woocommerce.php:303
+#: lib/util-woocommerce.php:304
 msgid "US tsp"
 msgstr ""
 
-#: lib/util-woocommerce.php:304
+#: lib/util-woocommerce.php:305
 msgid "US tbsp"
 msgstr ""
 
-#: lib/util-woocommerce.php:305
+#: lib/util-woocommerce.php:306
 msgid "US fl oz"
 msgstr ""
 
-#: lib/util-woocommerce.php:306
+#: lib/util-woocommerce.php:307
 msgid "US cup"
 msgstr ""
 
-#: lib/util-woocommerce.php:307
+#: lib/util-woocommerce.php:308
 msgid "US pt"
 msgstr ""
 
-#: lib/util-woocommerce.php:308
+#: lib/util-woocommerce.php:309
 msgid "US qt"
 msgstr ""
 
-#: lib/util-woocommerce.php:309
+#: lib/util-woocommerce.php:310
 msgid "US gal"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:508
+#: lib/util-woocommerce.php:509
 msgid "g"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:511
+#: lib/util-woocommerce.php:512
 msgid "kg"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:514
+#: lib/util-woocommerce.php:515
 msgid "oz"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:517
+#: lib/util-woocommerce.php:518
 msgid "lbs"
 msgstr ""
 

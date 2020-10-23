@@ -19,7 +19,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 	class WpssoCheck {
 
-		private $p;
+		private $p;	// Wpsso class object.
 
 		private $extend_lib_checks = array(
 			'amp' => array(

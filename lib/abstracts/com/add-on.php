@@ -14,7 +14,8 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 
 	abstract class SucomAddOn {
 
-		protected $p;
+		protected $p;	// Plugin class object.
+
 		protected $ext   = '';
 		protected $p_ext = '';
 		protected $cf    = array();

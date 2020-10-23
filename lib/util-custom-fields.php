@@ -23,7 +23,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 
 	class WpssoUtilCustomFields {
 
-		private $p;
+		private $p;	// Wpsso class object.
 
 		/**
 		 * Instantiated by WpssoUtil->__construct().

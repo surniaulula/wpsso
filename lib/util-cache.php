@@ -23,7 +23,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 	class WpssoUtilCache {
 
-		private $p;
+		private $p;	// Wpsso class object.
 
 		/**
 		 * Instantiated by WpssoUtil->__construct().

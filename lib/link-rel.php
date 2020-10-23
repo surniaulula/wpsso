@@ -19,7 +19,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 
 	class WpssoLinkRel {
 
-		private $p;
+		private $p;	// Wpsso class object.
 
 		public function __construct( &$plugin ) {
 

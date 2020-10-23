@@ -19,7 +19,7 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 
 	class WpssoUtilReg {
 
-		private $p;
+		private $p;	// Wpsso class object.
 
 		/**
 		 * Instantiated by WpssoUtil->__construct().

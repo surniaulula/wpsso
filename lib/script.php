@@ -19,7 +19,8 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 	class WpssoScript {
 
-		private $p;
+		private $p;	// Wpsso class object.
+
 		private $doing_dev  = false;
 		private $file_ext   = 'min.js';
 		private $version    = '';

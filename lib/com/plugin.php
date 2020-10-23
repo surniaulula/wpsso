@@ -12,9 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'SucomPlugin' ) ) {
 
-	/**
-	 * Use SucomPlugin::method() instead of self::method() to use the same local caches.
-	 */
 	class SucomPlugin {
 
 		private static $get_plugins_cache = null;	// Common cache for get_plugins() and clear_plugins().
@@ -36,12 +33,12 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 		 */
 		public static function get_plugins() {
 
-			if ( null !== SucomPlugin::$get_plugins_cache ) {
+			if ( null !== SucomPlugin::$get_plugins_cache ) {	// Use SucomPlugin (not self) for single variable reference.
 
-				return SucomPlugin::$get_plugins_cache;
+				return SucomPlugin::$get_plugins_cache;		// Use SucomPlugin (not self) for single variable reference.
 			}
 
-			SucomPlugin::$get_plugins_cache = array();	// Default value.
+			SucomPlugin::$get_plugins_cache = array();	// Use SucomPlugin (not self) for single variable reference.
 
 			if ( ! function_exists( 'get_plugins' ) ) {	// Load the WordPress library if necessary.
 
@@ -62,7 +59,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 
 			if ( function_exists( 'get_plugins' ) ) {
 
-				SucomPlugin::$get_plugins_cache = get_plugins();
+				SucomPlugin::$get_plugins_cache = get_plugins();	// Use SucomPlugin (not self) for single variable reference.
 
 			} elseif ( method_exists( 'SucomUtil', 'safe_error_log' ) ) {	// Just in case.
 
@@ -72,12 +69,12 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 				SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
 			}
 
-			return SucomPlugin::$get_plugins_cache;
+			return SucomPlugin::$get_plugins_cache;	// Use SucomPlugin (not self) for single variable reference.
 		}
 
 		public static function clear_plugins_cache() {
 
-			SucomPlugin::$get_plugins_cache = null;
+			SucomPlugin::$get_plugins_cache = null;	// Use SucomPlugin (not self) for single variable reference.
 		}
 
 		/**
@@ -138,7 +135,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 				return $local_cache[ $plugin_base ] = false;
 			}
 
-			$plugins = SucomPlugin::get_plugins();				// Front-end safe and uses cache.
+			$plugins = self::get_plugins();				// Front-end safe and uses cache.
 
 			if ( ! empty( $plugins[ $plugin_base ] ) ) {			// Check for a valid plugin header.
 
@@ -155,7 +152,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 		 */
 		public static function is_plugin_active( $plugin_base, $use_cache = true ) {
 
-			$active_plugins = SucomPlugin::get_active_plugins( $use_cache );
+			$active_plugins = self::get_active_plugins( $use_cache );
 
 			if ( isset( $active_plugins[ $plugin_base ] ) ) {	// Associative array of true/false values.
 
@@ -212,7 +209,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 				return $local_cache[ $plugin_slug ] = false;
 			}
 
-			foreach ( SucomPlugin::get_active_plugins( $use_cache = true ) as $plugin_base => $active ) {
+			foreach ( self::get_active_plugins( $use_cache = true ) as $plugin_base => $active ) {
 
 				if ( strpos( $plugin_base, $plugin_slug . '/' ) === 0 ) {	// Plugin slug found.
 
@@ -276,14 +273,14 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 
 		public static function get_slug_name( $plugin_slug, $unfiltered = true ) {
 
-			$plugin_info = SucomPlugin::get_slug_info( $plugin_slug, array(), $unfiltered );
+			$plugin_info = self::get_slug_info( $plugin_slug, array(), $unfiltered );
 
 			return empty( $plugin_info->name ) ? $plugin_slug : $plugin_info->name;
 		}
 
 		public static function get_slug_download_url( $plugin_slug, $unfiltered = true ) {
 
-			$plugin_info = SucomPlugin::get_slug_info( $plugin_slug, array( 'downloadlink' => true ), $unfiltered );
+			$plugin_info = self::get_slug_info( $plugin_slug, array( 'downloadlink' => true ), $unfiltered );
 
 			if ( is_wp_error( $plugin_info ) ) {
 
@@ -317,7 +314,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 		 */
 		public static function download_and_install_slug( $plugin_slug, $unfiltered = true ) {
 
-			$plugin_url = SucomPlugin::get_slug_download_url( $plugin_slug, $unfiltered );
+			$plugin_url = self::get_slug_download_url( $plugin_slug, $unfiltered );
 
 			if ( is_wp_error( $plugin_url ) ) {
 
@@ -404,7 +401,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 
 				return $local_cache[ $plugin_base ] = false;
 
-			} elseif ( ! SucomPlugin::is_plugin_installed( $plugin_base ) ) {	// Call with class name to use the same common local cache.
+			} elseif ( ! self::is_plugin_installed( $plugin_base ) ) {
 
 				return $local_cache[ $plugin_base ] = false;
 			}

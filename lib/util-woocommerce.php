@@ -23,7 +23,8 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 
 	class WpssoUtilWooCommerce {
 
-		private $p;
+		private $p;	// Wpsso class object.
+
 		private $fee_cost = '';	// Package cost for the [fee] shortcode.
 
 		/**

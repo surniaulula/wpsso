@@ -19,13 +19,11 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 	class WpssoSchemaGraph {
 
-		private $p;
 		private static $graph_context = 'https://schema.org';
 		private static $graph_type    = 'graph';
 		private static $graph_data    = array();
 
-		public function __construct() {
-		}
+		public function __construct() {}
 
 		public static function get_type_url() {
 

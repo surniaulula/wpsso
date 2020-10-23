@@ -19,7 +19,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 	class WpssoTwitterCard {
 
-		private $p;
+		private $p;	// Wpsso class object.
 
 		public function __construct( &$plugin ) {
 

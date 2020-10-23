@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 	 */
 	class WpssoAdminFilters {
 
-		private $p;
+		private $p;	// Wpsso class object.
 
 		/**
 		 * Instantiated by WpssoAdmin->__construct().

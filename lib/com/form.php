@@ -24,8 +24,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 	class SucomForm {
 
-		private $p;
-		private $lca;
+		private $p;	// Plugin class object.
+
+		private $lca                = null;
 		private $opts_name          = null;
 		private $menu_ext           = null;	// Lowercase acronyn for plugin or add-on.
 		private $text_domain        = false;	// Text domain for plugin or add-on.

@@ -14,7 +14,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 	class WpssoStdAdminAdvanced {
 
-		private $p;
+		private $p;	// Wpsso class object.
 
 		private $head_tags_opts = array();
 

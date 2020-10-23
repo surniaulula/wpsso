@@ -14,7 +14,8 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 	class SucomDebug {
 
-		private $p;
+		private $p;	// Plugin class object.
+
 		private $display_name = '';
 		private $log_prefix   = '';
 		private $log_buffer   = array();	// Accumulate text strings going to html output.

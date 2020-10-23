@@ -19,7 +19,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 	class WpssoPinterest {
 
-		private $p;
+		private $p;	// Wpsso class object.
 
 		/**
 		 * Note that options from the WPSSO Core setting pages and Document SSO metabox use a "p" option prefix.

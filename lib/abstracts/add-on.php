@@ -19,11 +19,13 @@ if ( ! class_exists( 'WpssoAddOn' ) ) {
 
 	abstract class WpssoAddOn extends SucomAddOn {
 
-		public $reg;
+		protected $p;	// Wpsso class object.
 
 		protected $ext   = '';
 		protected $p_ext = '';
 		protected $cf    = array();
+
+		public $reg;
 
 		public function __construct( $plugin_file, $classname ) {
 

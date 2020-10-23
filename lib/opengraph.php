@@ -19,8 +19,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 	class WpssoOpenGraph {
 
-		private $p;
-		private $ns;			// WpssoOpenGraphNS class object.
+		private $p;	// Wpsso class object.
+		private $ns;	// WpssoOpenGraphNS class object.
 
 		public function __construct( &$plugin ) {
 

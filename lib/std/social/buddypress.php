@@ -6,6 +6,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
@@ -13,7 +14,8 @@ if ( ! class_exists( 'WpssoStdSocialBuddypress' ) ) {
 
 	class WpssoStdSocialBuddypress {
 
-		private $p;
+		private $p;	// Wpsso class object.
+
 		private $sharing;
 
 		public function __construct( &$plugin ) {
@@ -21,6 +23,7 @@ if ( ! class_exists( 'WpssoStdSocialBuddypress' ) ) {
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -59,6 +62,7 @@ if ( ! class_exists( 'WpssoStdSocialBuddypress' ) ) {
 		public function filter_messages_tooltip_plugin( $text, $msg_key ) {
 
 			if ( strpos( $msg_key, 'tooltip-plugin_bp_' ) !== 0 ) {
+
 				return $text;
 			}
 

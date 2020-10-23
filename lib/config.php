@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.9.0-dev.5',	// Plugin version.
+					'version'     => '8.9.0-dev.6',	// Plugin version.
 					'opt_version' => '766',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -3952,6 +3952,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 				/**
 				 * Apply filters to have add-ons include their config.
+				 *
+				 * $plugin_version was added in WPSSO Core v3.33.6.
+				 * $plugin_version was removed in WPSSO Core v8.7.1.
 				 */
 				self::$cf = apply_filters( 'wpsso_get_config', self::$cf );
 

@@ -14,7 +14,8 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 
 	class SucomBFO {
 
-		private $p;
+		private $p;	// Plugin class object.
+
 		private $lca          = 'sucom';
 		private $text_domain  = 'sucom';
 		private $label_transl = '';

@@ -19,7 +19,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 	class WpssoAdminHead {
 
-		private $p;
+		private $p;	// Wpsso class object.
 
 		/**
 		 * Instantiated by WpssoAdmin->__construct().

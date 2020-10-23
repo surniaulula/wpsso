@@ -9,7 +9,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 
 	class SuextParseReadme {
 
-		private static $instance = null;
+		private static $instance = null;	// SuextParseReadme class object.
 
 		function __construct() {}
 

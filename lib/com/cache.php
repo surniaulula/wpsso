@@ -14,7 +14,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 	class SucomCache {
 
-		private $p;
+		private $p;	// Plugin class object.
+
 		private $lca          = 'sucom';
 		private $uca          = 'SUCOM';
 		private $text_domain  = 'sucom';

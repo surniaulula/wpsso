@@ -23,7 +23,7 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 
 	class WpssoUtilMetabox {
 
-		private $p;
+		private $p;	// Wpsso class object.
 
 		/**
 		 * Instantiated by WpssoUtil->__construct().

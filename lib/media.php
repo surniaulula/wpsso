@@ -19,7 +19,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 	class WpssoMedia {
 
-		private $p;
+		private $p;	// Wpsso class object.
 
 		private $default_content_img_preg = array(
 			'html_tag' => 'img',

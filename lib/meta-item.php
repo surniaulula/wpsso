@@ -19,7 +19,7 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 
 	class WpssoMetaItem {
 
-		private $p;
+		private $p;	// Wpsso class object.
 
 		public function __construct( &$plugin ) {
 

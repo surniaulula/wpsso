@@ -19,7 +19,8 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 	class WpssoStyle {
 
-		private $p;
+		private $p;	// Wpsso class object.
+
 		private $doing_dev = false;
 		private $use_cache = true;	// Read/save minimized CSS from/to transient cache.
 		private $file_ext  = 'min.css';

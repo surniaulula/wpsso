@@ -15,7 +15,7 @@
  * Requires At Least: 4.4
  * Tested Up To: 5.5.1
  * WC Tested Up To: 4.6.1
- * Version: 8.9.0-dev.5
+ * Version: 8.9.0-dev.6
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -39,39 +39,39 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		/**
 		 * Library class object variables.
 		 */
-		public $admin;		// WpssoAdmin (admin menus and settings page loader).
-		public $cache;		// SucomCache (object and file caching).
-		public $check;		// WpssoCheck.
-		public $compat;		// WpssoCompat (3rd party plugin and theme compatibility actions and filters).
-		public $conflict;	// WpssoConflict (admin plugin conflict checks).
-		public $debug;		// SucomDebug or SucomNoDebug.
-		public $edit;		// WpssoEdit
-		public $head;		// WpssoHead.
-		public $loader;		// WpssoLoader.
-		public $media;		// WpssoMedia (images, videos, etc.).
-		public $msgs;		// WpssoMessages (admin tooltip messages).
-		public $notice;		// SucomNotice or SucomNoNotice.
-		public $opt;		// WpssoOptions.
-		public $page;		// WpssoPage (page title, desc, etc.).
-		public $post;		// WpssoPost.
-		public $reg;		// WpssoRegister.
-		public $script;		// WpssoScript (admin jquery tooltips).
-		public $style;		// WpssoStyle (admin styles).
-		public $term;		// WpssoTerm.
-		public $user;		// WpssoUser.
-		public $util;		// WpssoUtil (extends SucomUtil).
+		public $admin;		// WpssoAdmin (admin menus and settings page loader) class object.
+		public $cache;		// SucomCache (object and file caching) class object.
+		public $check;		// WpssoCheck class object.
+		public $compat;		// WpssoCompat (3rd party plugin and theme compatibility actions and filters) class object.
+		public $conflict;	// WpssoConflict (admin plugin conflict checks) class object.
+		public $debug;		// SucomDebug or SucomNoDebug class object.
+		public $edit;		// WpssoEdit class object.
+		public $head;		// WpssoHead class object.
+		public $loader;		// WpssoLoader class object.
+		public $media;		// WpssoMedia (images, videos, etc.) class object.
+		public $msgs;		// WpssoMessages (admin tooltip messages) class object.
+		public $notice;		// SucomNotice or SucomNoNotice class object.
+		public $opt;		// WpssoOptions class object.
+		public $page;		// WpssoPage (page title, desc, etc.) class object.
+		public $post;		// WpssoPost class object.
+		public $reg;		// WpssoRegister class object.
+		public $script;		// WpssoScript (admin jquery tooltips) class object.
+		public $style;		// WpssoStyle (admin styles) class object.
+		public $term;		// WpssoTerm class object.
+		public $user;		// WpssoUser class object.
+		public $util;		// WpssoUtil (extends SucomUtil) class object.
 
 		/**
 		 * Library class object variables for meta tags and markup.
 		 */
-		public $link_rel;	// WpssoLinkRel.
-		public $meta_item;	// WpssoMetaItem.
-		public $meta_name;	// WpssoMetaName.
-		public $oembed;		// WpssoOembed.
-		public $og;		// WpssoOpenGraph.
-		public $pinterest;	// WpssoPinterest.
-		public $schema;		// WpssoSchema.
-		public $tc;		// WpssoTwitterCard.
+		public $link_rel;	// WpssoLinkRel class object.
+		public $meta_item;	// WpssoMetaItem class object.
+		public $meta_name;	// WpssoMetaName class object.
+		public $oembed;		// WpssoOembed class object.
+		public $og;		// WpssoOpenGraph class object.
+		public $pinterest;	// WpssoPinterest class object.
+		public $schema;		// WpssoSchema class object.
+		public $tc;		// WpssoTwitterCard class object.
 
 		/**
 		 * Reference variables (config, options, modules, etc.).
@@ -85,7 +85,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $site_options = array();	// Multisite options.
 		public $sc           = array();	// Shortcodes.
 
-		private static $instance = null;
+		private static $instance = null;	// Wpsso class object.
 
 		/**
 		 * Wpsso constructor.

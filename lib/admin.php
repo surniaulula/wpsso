@@ -3444,7 +3444,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					require_once WPSSO_PLUGINDIR . 'lib/ext/parse-readme.php';
 				}
 
-				$parser = new SuextParseReadme();
+				$parser =& SuextParseReadme::get_instance();
 
 				$readme_info = $parser->parse_readme_contents( $readme_content );
 

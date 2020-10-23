@@ -22,8 +22,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 	abstract class WpssoWpMeta {
 
-		protected $p;
-		protected $form;
+		protected $p;		// Wpsso class object.
+		protected $form;	// SucomForm class object.
+
 		protected $md_cache_disabled = false;	// Disable local caches when saving options.
 
 		/**

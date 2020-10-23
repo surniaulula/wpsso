@@ -29,10 +29,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 	class WpssoSchema {
 
-		private $p;				// Wpsso class object.
-		private $noscript;			// WpssoSchemaNoScript class object.
+		private $p;		// Wpsso class object.
+		private $noscript;	// WpssoSchemaNoScript class object.
 
-		private $types_cache = array();		// Schema types array cache.
+		private $types_cache = array();	// Schema types array cache.
 
 		private static $units_cache = null;	// Schema unicodes array cache.
 

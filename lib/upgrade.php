@@ -19,7 +19,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 
 	class WpssoOptionsUpgrade {
 
-		private $p;		// Wpsso class object.
+		private $p;	// Wpsso class object.
 
 		private static $rename_options_keys = array(
 			'wpsso' => array(	// WPSSO Core plugin.
