@@ -90,7 +90,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			 */
 			wp_register_style( 'sucom-metabox-tabs',
 				WPSSO_URLPATH . 'css/com/metabox-tabs.' . $this->file_ext,
-					array(), $this->version );
+					array( 'wp-color-picker' ), $this->version );
 
 			/**
 			 * Only load stylesheets we need.
@@ -145,7 +145,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					wp_enqueue_style( 'jquery-qtip.js' );
 					wp_enqueue_style( 'sucom-settings-table' );
 					wp_enqueue_style( 'sucom-metabox-tabs' );
-					wp_enqueue_style( 'wp-color-picker' );
 
 					break;	// Stop here.
 
