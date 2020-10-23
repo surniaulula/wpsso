@@ -310,7 +310,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.9.0-dev.6 (2020/10/23)**
+**Version 8.9.0-b.1 (2020/10/23)**
 
 * **New Features**
 	* None.
@@ -612,7 +612,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.9.0-dev.6 =
+= 8.9.0-b.1 =
 
 (2020/10/23) Updated the markdown library used to parse WordPress readme files.
 
