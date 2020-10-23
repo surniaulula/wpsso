@@ -651,19 +651,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->p->debug->log( '$options_changed = ' . $options_changed );
 			}
 
-			/**
-			 * Hard-code fixed options.
-			 */
-			foreach ( array( 'og:image', 'og:video' ) as $mt_name ) {
-
-				$opts[ 'add_meta_property_' . $mt_name . ':secure_url' ]    = 0;		// Always unchecked.
-				$opts[ 'add_meta_property_' . $mt_name . ':secure_url:is' ] = 'disabled';	// Prevent changes in settings page.
-				$opts[ 'add_meta_property_' . $mt_name . ':url' ]           = 0;		// Always unchecked.
-				$opts[ 'add_meta_property_' . $mt_name . ':url:is' ]        = 'disabled';	// Prevent changes in settings page.
-				$opts[ 'add_meta_property_' . $mt_name ]                    = 1;		// Always checked (canonical URL).
-				$opts[ 'add_meta_property_' . $mt_name . ':is' ]            = 'disabled';	// Prevent changes in settings page.
-			}
-
 			if ( ! $is_new_options ) {
 
 				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
@@ -717,10 +704,75 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			/**
-			 * Adjust / cleanup options.
+			 * Adjust / cleanup non-network options.
 			 */
 			if ( ! $network ) {
 
+				/**
+				 * If an SEO plugin is detected, adjust SEO related options.
+				 */
+				$seo_other_opts = array();
+
+				if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
+
+					if ( empty( $opts[ 'plugin_wpsso_tid' ] ) ) {
+
+						$seo_other_opts = array(
+							'add_link_rel_canonical'    => 0,
+							'add_meta_name_description' => 1,
+							'add_meta_name_robots'      => 1,
+						);
+					}
+
+				} else {
+
+					$seo_other_opts = array(
+						'add_link_rel_canonical'    => 0,
+						'add_meta_name_description' => 0,
+						'add_meta_name_robots'      => 0,
+					);
+				}
+
+				foreach ( $seo_other_opts as $opt_key => $def_val ) {
+
+					$opts[ $opt_key . ':is' ] = 'disabled';	// Prevent changes in settings page.
+
+					if ( $opts[ $opt_key ] !== $def_val ) {
+
+						$opts[ $opt_key ] = $def_val;
+
+						$options_changed = true;	// Save the options.
+					}
+				}
+
+				/**
+				 * Hard-code fixed options.
+				 */
+				foreach ( array( 'og:image', 'og:video' ) as $mt_name ) {
+	
+					$opts[ 'add_meta_property_' . $mt_name . ':secure_url' ]    = 0;		// Always unchecked.
+					$opts[ 'add_meta_property_' . $mt_name . ':secure_url:is' ] = 'disabled';	// Prevent changes in settings page.
+					$opts[ 'add_meta_property_' . $mt_name . ':url' ]           = 0;		// Always unchecked.
+					$opts[ 'add_meta_property_' . $mt_name . ':url:is' ]        = 'disabled';	// Prevent changes in settings page.
+					$opts[ 'add_meta_property_' . $mt_name ]                    = 1;		// Always checked (canonical URL).
+					$opts[ 'add_meta_property_' . $mt_name . ':is' ]            = 'disabled';	// Prevent changes in settings page.
+				}
+
+				/**
+				 * Google Website Verification ID.
+				 */
+				$opts[ 'add_meta_name_google-site-verification' ]    = empty( $opts[ 'g_site_verify' ] ) ? 0 : 1;
+				$opts[ 'add_meta_name_google-site-verification:is' ] = 'disabled';
+
+				/**
+				 * Pinterest Website Verification ID.
+				 */
+				$opts[ 'add_meta_name_p:domain_verify' ]    = empty( $opts[ 'p_site_verify' ] ) ? 0 : 1;
+				$opts[ 'add_meta_name_p:domain_verify:is' ] = 'disabled';
+
+				/**
+				 * Check for incompatible options between versions.
+				 */
 				if ( ! $is_new_options && $version_changed ) {
 
 					if ( empty( $opts[ 'plugin_wpsso_tid' ] ) ) {
@@ -766,46 +818,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 							$options_changed = true;	// Save the options.
 						}
-					}
-				}
-			}
-
-			/**
-			 * If an SEO plugin is detected, adjust some related SEO options.
-			 */
-			if ( ! $network ) {
-
-				$seo_other_opts = array();
-
-				if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
-
-					if ( empty( $opts[ 'plugin_wpsso_tid' ] ) ) {
-
-						$seo_other_opts = array(
-							'add_link_rel_canonical'    => 0,
-							'add_meta_name_description' => 1,
-							'add_meta_name_robots'      => 1,
-						);
-					}
-
-				} else {
-
-					$seo_other_opts = array(
-						'add_link_rel_canonical'    => 0,
-						'add_meta_name_description' => 0,
-						'add_meta_name_robots'      => 0,
-					);
-				}
-
-				foreach ( $seo_other_opts as $opt_key => $def_val ) {
-
-					$opts[ $opt_key . ':is' ] = 'disabled';	// Prevent changes in settings page.
-
-					if ( $opts[ $opt_key ] !== $def_val ) {
-
-						$opts[ $opt_key ] = $def_val;
-
-						$options_changed = true;	// Save the options.
 					}
 				}
 			}
