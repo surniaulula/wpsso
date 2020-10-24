@@ -320,7 +320,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Refactored lib/ext/markdown.php to use a new lib/ext/markdown/MarkdownExtra.inc.php library.
+	* Refactored lib/ext/markdown.php to use lib/ext/markdown/MarkdownExtra.inc.php.
 	* Refactored the `SucomForm->get_select_timezone()` method.
 	* Added a new `SucomUtilWP::get_timezones()` method.
 	* Added a new `SucomUtilWP::get_default_timezone()` method.
