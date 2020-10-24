@@ -320,6 +320,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Re-added the `WpssoUtil::save_all_times()` deprecated method for old add-ons.
 	* Refactored lib/ext/markdown.php to use lib/ext/markdown/MarkdownExtra.inc.php.
 	* Refactored the `SucomForm->get_select_timezone()` method.
 	* Added a new `SucomUtilWP::get_timezones()` method.
