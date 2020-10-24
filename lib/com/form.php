@@ -1052,7 +1052,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		/**
-		 * The "hour-mins" class is always prefixed to the $css_class value.
+		 * The "time-hh-mm" class is always prefixed to the $css_class value.
 		 *
 		 * By default, the 'none' array elements is not added.
 		 */
@@ -1066,7 +1066,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$step_secs = 60 * $step_mins, $label_format = 'H:i' );
 			}
 
-			$css_class   = trim( 'hour-mins ' . $css_class );
+			$css_class   = trim( 'time-hh-mm ' . $css_class );
 			$event_names = array( 'on_focus_load_json' );
 			$event_args  = 'hour_mins_step_' . $step_mins;
 
@@ -1513,7 +1513,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html .= $this->get_value_transl( 'at' ) . ' ';
 
 			/**
-			 * The "hour-mins" class is always prefixed to the $css_class value.
+			 * The "time-hh-mm" class is always prefixed to the $css_class value.
 			 */
 			$html .= $this->get_select_time( $name_prefix . '_time', $css_class = '', $css_id = '', $is_disabled, $selected, $step_mins, $add_none ) . ' ';
 

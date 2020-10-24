@@ -686,7 +686,7 @@ table.sucom-settings td select.xshort { width:60px; }
 
 table.sucom-settings td select.currency { width:70px; }
 
-table.sucom-settings td select.hour-mins { width:80px; }
+table.sucom-settings td select.time-hh-mm { width:82px; }
 
 table.sucom-settings td select.yes-no { width:85px; }
 

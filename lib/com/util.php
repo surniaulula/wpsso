@@ -1254,14 +1254,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function update_prot( $url = '' ) {
 
-			if ( strpos( $url, '/' ) === 0 ) { // Skip relative urls.
+			if ( 0 === strpos( $url, '/' ) ) { // Skip relative urls.
 
 				return $url;
 			}
 
 			$prot_slash = self::get_prot() . '://';
 
-			if ( strpos( $url, $prot_slash ) === 0 ) { // Skip correct urls.
+			if ( 0 === strpos( $url, $prot_slash ) ) { // Skip correct urls.
 
 				return $url;
 			}
@@ -1658,12 +1658,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		private static function get_hm_tz( $hm, $tz_offset ) {
 
-			if ( false === strpos( $hm, 'Z' ) ) {
+			if ( false !== ( $pos = strpos( $hm, 'Z' ) ) ) {
 			
-				return $hm . 'Z' . $tz_offset;
+				$hm = substr( $hm, 0, $pos );
 			}
 
-			return $hm;
+			return $hm . 'Z' . $tz_offset;
 		}
 
 		public static function get_opts_begin( $str, array $opts ) {
@@ -1672,7 +1672,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			foreach ( $opts as $key => $value ) {
 
-				if ( strpos( $key, $str ) === 0 ) {
+				if ( 0 === strpos( $key, $str ) ) {
 
 					$found[ $key ] = $value;
 				}
@@ -2507,7 +2507,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			 */
 			if ( false !== ( $pos = strpos( $key, '#' ) ) ) {
 
-				$key = substr_replace( $key, '', $pos );
+				$key = substr( $key, 0, $pos );
 			}
 
 			$default    = self::get_locale( 'default' );
@@ -3549,7 +3549,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			/**
 			 * If we don't have something to decode, then return immediately.
 			 */
-			if ( strpos( $encoded, '&' ) === false ) {
+			if ( false === strpos( $encoded, '&' ) ) {
 
 				return $encoded;
 			}
@@ -3569,7 +3569,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			/**
 			 * if we don't have something to decode, then return immediately.
 			 */
-			if ( strpos( $encoded, '&#' ) === false ) {
+			if ( false === strpos( $encoded, '&#' ) ) {
 
 				return $encoded;
 			}
@@ -3676,14 +3676,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function strip_shortcodes( $text ) {
 
-			if ( strpos( $text, '[' ) === false ) { // Optimize and check if there are shortcodes.
+			if ( false === strpos( $text, '[' ) ) { // Optimize and check if there are shortcodes.
 
 				return $text;
 			}
 
 			$text = strip_shortcodes( $text );      // Remove registered shortcodes.
 
-			if ( strpos( $text, '[' ) === false ) { // Stop here if no shortcodes.
+			if ( false === strpos( $text, '[' ) ) { // Stop here if no shortcodes.
 
 				return $text;
 			}
@@ -4435,7 +4435,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			foreach ( $attr_names_values as $attr_name => $attr_value ) {
 
-				if ( false !== $attr_value && strpos( $html, ' ' . $attr_name . '=' ) === false ) {
+				if ( false !== $attr_value && false === strpos( $html, ' ' . $attr_name . '=' ) ) {
 
 					$html = preg_replace( '/ *\/?' . '>/', ' ' . $attr_name . '="' . $attr_value . '"$0', $html );
 				}
